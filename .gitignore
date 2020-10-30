@@ -1,6 +1,7 @@
 node_modules
 
 .idea
+.vscode
 *.log
 
 packages/viti-cli/lib
