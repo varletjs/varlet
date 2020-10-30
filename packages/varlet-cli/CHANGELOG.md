@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/haoziqaq/varlet/compare/v0.1.2...v0.1.3) (2020-10-30)
+
+
+### Bug Fixes
+
+* **所有子包的package.json:** 修改publicConfig字段 ([d711a57](https://github.com/haoziqaq/varlet/commit/d711a57f6307d8dd9b2f5b2b9a9a869a10d02f7d))
+
+
+
+
+
 ## [0.1.2](https://github.com/haoziqaq/varlet/compare/v0.1.1...v0.1.2) (2020-10-30)
 
 **Note:** Version bump only for package @varlet/cli
