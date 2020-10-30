@@ -7,6 +7,9 @@
   "command": {
     "version": {
       "conventionalCommits": true
+    },
+    "publish": {
+      "access": "public"
     }
   },
   "ignoreChanges": [
