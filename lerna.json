@@ -7,10 +7,10 @@
   "command": {
     "version": {
       "conventionalCommits": true
-    },
-    "publish": {
-      "access": "public"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "ignoreChanges": [
     "**/*.md"
