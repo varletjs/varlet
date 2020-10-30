@@ -1,7 +1,6 @@
 {
   "name": "@varlet/cli",
   "version": "0.1.6",
-  "private": false,
   "description": "cli of varlet",
   "keywords": [
     "cli",
@@ -20,8 +19,5 @@
   "scripts": {
     "dev": "tsc --watch"
   },
-  "publishConfig": {
-    "access": "publish"
-  },
-  "gitHead": "9a86311687ae56b776852d30dfed09ee930e92d5"
+  "gitHead": "5d0fd4bae88bc6f65335da5cfb944489cca16693"
 }

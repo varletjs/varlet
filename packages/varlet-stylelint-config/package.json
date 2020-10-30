@@ -1,6 +1,5 @@
 {
   "name": "@varlet/stylelint-config",
-  "private": false,
   "version": "0.1.6",
   "description": "stylelint config of varlet",
   "keywords": [
@@ -19,8 +18,5 @@
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^20.0.0"
   },
-  "publishConfig": {
-    "access": "publish"
-  },
-  "gitHead": "9a86311687ae56b776852d30dfed09ee930e92d5"
+  "gitHead": "5d0fd4bae88bc6f65335da5cfb944489cca16693"
 }
