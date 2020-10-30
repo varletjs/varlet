@@ -1,6 +1,6 @@
 {
   "name": "@varlet/eslint-config",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "eslint config of viti",
   "keywords": [
     "eslint",
