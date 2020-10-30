@@ -4,4 +4,4 @@ node_modules
 .vscode
 *.log
 
-packages/viti-cli/lib
+packages/varlet-cli/lib
