@@ -18,5 +18,8 @@
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^20.0.0"
   },
-  "gitHead": "6a34fb715e3540af46aeb4e123f69b92ee431938"
+  "publishConfig": {
+    "access": "publish"
+  },
+  "gitHead": "399d9ab543ad8e91ae0e1b5baa536b233a2e8197"
 }
