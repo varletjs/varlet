@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/haoziqaq/varlet/compare/v0.1.4...v0.1.5) (2020-10-30)
+
+
+### Bug Fixes
+
+* **lerna.json:** 修改了lerna.json的public选项 ([831e521](https://github.com/haoziqaq/varlet/commit/831e5219eaa9628decafa53d8e97274c5900c408))
+
+
+
+
+
 ## [0.1.4](https://github.com/haoziqaq/varlet/compare/v0.1.3...v0.1.4) (2020-10-30)
 
 
