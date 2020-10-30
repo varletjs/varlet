@@ -1,0 +1,31 @@
+{
+  "name": "@varlet/eslint-config",
+  "version": "0.0.0",
+  "description": "eslint config of viti",
+  "keywords": [
+    "eslint",
+    "tslint",
+    "config",
+    "viti"
+  ],
+  "author": "haoziqaq <357229046@qq.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haoziqaq/varlet.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0",
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-vue": "^7.1.0"
+  },
+  "gitHead": "6a34fb715e3540af46aeb4e123f69b92ee431938"
+}

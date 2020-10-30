@@ -1,0 +1,6 @@
+node_modules
+
+.idea
+*.log
+
+packages/viti-cli/lib

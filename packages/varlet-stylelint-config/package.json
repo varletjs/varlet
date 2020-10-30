@@ -1,0 +1,22 @@
+{
+  "name": "@varlet/stylelint-config",
+  "version": "0.0.0",
+  "description": "stylelint config of varlet",
+  "keywords": [
+    "stylelint",
+    "varlet"
+  ],
+  "author": "haoziqaq <357229046@qq.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haoziqaq/varlet.git"
+  },
+  "dependencies": {
+    "stylelint": "^13.7.2",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^20.0.0"
+  },
+  "gitHead": "6a34fb715e3540af46aeb4e123f69b92ee431938"
+}

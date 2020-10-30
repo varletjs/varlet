@@ -1,0 +1,24 @@
+{
+  "name": "@varlet/cli",
+  "version": "0.0.0",
+  "private": false,
+  "description": "cli of varlet",
+  "keywords": [
+    "cli",
+    "varlet"
+  ],
+  "author": "haoziqaq <357229046@qq.com>",
+  "license": "MIT",
+  "main": "lbd/index.js",
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haoziqaq/varlet.git"
+  },
+  "scripts": {
+    "dev": "tsc --watch"
+  },
+  "gitHead": "6a34fb715e3540af46aeb4e123f69b92ee431938"
+}
