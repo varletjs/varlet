@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://user/haoziqaq/varlet/compare/v0.1.3...v0.1.4) (2020-10-30)
+
+
+### Bug Fixes
+
+* **root package.json:** 修改主包package.json ([1ecfad0](https://user/haoziqaq/varlet/commits/1ecfad052da65abb7329dc5c4645717722366496))
+
+
+
+
+
 ## [0.1.3](https://user/haoziqaq/varlet/compare/v0.1.2...v0.1.3) (2020-10-30)
 
 
