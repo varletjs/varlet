@@ -5,3 +5,4 @@ node_modules
 *.log
 
 packages/varlet-cli/lib
+packages/varlet-ui/site

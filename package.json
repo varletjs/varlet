@@ -34,13 +34,16 @@
   },
   "eslintConfig": {
     "root": true,
+    "ignorePatterns": [
+      "packages/varlet-cli/lib/**"
+    ],
     "extends": [
       "@varlet"
     ]
   },
   "stylelint": {
     "extends": [
-      "varlet-stylelint-config"
+      "@varlet/stylelint-config"
     ]
   },
   "publishConfig": {
@@ -51,10 +54,14 @@
     "@commitlint/config-conventional": "^11.0.0",
     "commitizen": "^4.2.2",
     "cz-lerna-changelog": "^2.0.3",
+    "eslint": "^7.12.1",
     "husky": "^4.3.0",
     "lerna": "^3.22.1",
     "lint-staged": "^10.5.0",
     "prettier": "^2.1.2",
-    "typescript": "^4.0.5"
+    "stylelint": "^13.7.2",
+    "typescript": "^4.0.5",
+    "vue": "3.0.2",
+    "vue-router": "4.0.0-rc.1"
   }
 }
