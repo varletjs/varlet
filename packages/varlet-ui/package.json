@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "description": "A material like components library",
   "keywords": [
     "Vue",
@@ -20,7 +20,5 @@
   },
   "bugs": {
     "url": "https://github.com/haoziqaq/varlet/issues"
-  },
-  "dependencies": {},
-  "devDependencies": {}
+  }
 }
