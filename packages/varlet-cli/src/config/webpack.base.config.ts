@@ -45,11 +45,18 @@ export function createBabelConfig() {
   return {
     loader: 'babel-loader',
     options: {
-      presets: ['@babel/preset-env'],
-      plugins: ['@babel/plugin-transform-runtime'],
-      targets: {
-        "ie": "11"
-      }
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            targets: {
+              chrome: "58",
+              ie: "11"
+            }
+          }
+        ]
+      ],
+      plugins: ['@babel/plugin-transform-runtime']
     }
   }
 }
@@ -98,7 +105,6 @@ export function createBaseConfig() {
         {
           test: /\.vue$/,
           use: ['cache-loader', 'vue-loader'],
-          exclude: /node_modules/
         },
         {
           test: /\.js$/,
@@ -106,7 +112,6 @@ export function createBaseConfig() {
             'cache-loader',
             createBabelConfig()
           ],
-          exclude: /node_modules/
         },
         {
           test: /\.ts$/,
@@ -118,7 +123,6 @@ export function createBaseConfig() {
               options: { appendTsSuffixTo: [/\.vue$/] }
             }
           ],
-          exclude: /node_modules/
         },
         {
           test: /\.(png|jpg|gif|jpeg|svg)$/,

@@ -26,7 +26,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-vue": "^7.1.0"
   },
-  "gitHead": "5d0fd4bae88bc6f65335da5cfb944489cca16693",
+  "gitHead": "c0aed5bc04c05335b66607dbcab6455dafad1de4",
   "peerDependencies": {
     "eslint": "^7.12.1"
   }
