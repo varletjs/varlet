@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/haoziqaq/varlet/compare/v0.2.1...v0.3.0) (2020-11-06)
+
+
+### Features
+
+* **cli:** 实现compile命令,可编译出es,commonjs规范两套发布代码|实现--watch文件监听,按需编译有改动的文件 ([a00695a](https://github.com/haoziqaq/varlet/commit/a00695a2f0dc66e7ee9674c6ee18e12583cf614b))
+
+
+
+
+
 ## [0.2.1](https://github.com/haoziqaq/varlet/compare/v0.2.0...v0.2.1) (2020-11-03)
 
 
