@@ -112,6 +112,7 @@ export function createBaseConfig() {
             'cache-loader',
             createBabelConfig()
           ],
+          exclude: /node_modules/
         },
         {
           test: /\.ts$/,
@@ -155,13 +156,6 @@ export function createBaseConfig() {
         {
           test: /\.css$/,
           use: createCSSLoaders()
-        },
-        {
-          test: /\.scss$/,
-          use: [
-            ...createCSSLoaders(),
-            'sass-loader'
-          ]
         },
         {
           test: /\.less$/,

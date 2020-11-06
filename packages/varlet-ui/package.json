@@ -16,7 +16,9 @@
   },
   "scripts": {
     "dev": "varlet-cli dev",
-    "build": "varlet-cli build"
+    "build": "varlet-cli build",
+    "compile": "varlet-cli compile",
+    "compile:watch": "varlet-cli compile --watch"
   },
   "bugs": {
     "url": "https://github.com/haoziqaq/varlet/issues"

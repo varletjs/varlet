@@ -35,7 +35,10 @@
   "eslintConfig": {
     "root": true,
     "ignorePatterns": [
-      "packages/varlet-cli/lib/**"
+      "packages/varlet-cli/lib/**",
+      "packages/varlet-cli/site/**",
+      "packages/varlet-ui/es/**",
+      "packages/varlet-ui/cjs/**"
     ],
     "extends": [
       "@varlet"
@@ -44,6 +47,12 @@
   "stylelint": {
     "extends": [
       "@varlet/stylelint-config"
+    ],
+    "ignoreFiles": [
+      "packages/varlet-cli/lib/**",
+      "packages/varlet-ui/es/**",
+      "packages/varlet-cli/cjs/**",
+      "packages/varlet-cli/site/**"
     ]
   },
   "publishConfig": {

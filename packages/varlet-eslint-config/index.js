@@ -33,6 +33,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-unused-expressions': 'off',
     'no-restricted-globals': 'off',
+    'no-use-before-define': 'off',
     'class-methods-use-this': 'off',
     'global-require': 'off',
     'prefer-destructuring': ['error', { object: true, array: false }],
