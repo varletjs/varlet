@@ -1,7 +1,7 @@
 import logger from '../shared/logger'
 import ora from 'ora'
 import { compileES } from '../compiler/compileES'
-import { copy, readdir, remove } from 'fs-extra'
+import { copy, remove } from 'fs-extra'
 import { CJS_DIR, ES_DIR, SRC_DIR } from '../shared/constant'
 import { compileCJS } from '../compiler/compileCJS'
 import { watch } from 'chokidar'

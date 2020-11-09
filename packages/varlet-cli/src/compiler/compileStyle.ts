@@ -6,10 +6,6 @@ import { replaceExt } from '../shared/fsUtils'
 
 export const IMPORT_LESS_PATH_RE = /((?<!['"`])import\s+['"]\s*\.{1,2}\/.+\.)less(\s*['"`])(?!\s*['"`])/g
 export const REQUIRE_LESS_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\.{1,2}\/.+\.)less(\s*['"`]\))(?!\s*['"`])/g
-export const IMPORT_VUE_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+\.)vue(\s*['"`])(?!\s*['"`])/g
-export const REQUIRE_VUE_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\.{1,2}\/.+\.)vue(\s*['"`]\))(?!\s*['"`])/g
-export const IMPORT_TS_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+\.)ts(\s*['"`])(?!\s*['"`])/g
-export const REQUIRE_TS_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\.{1,2}\/.+\.)ts(\s*['"`]\))(?!\s*['"`])/g
 export const EMPTY_SPACE_RE = /[\s]+/g
 export const EMPTY_LINE_RE = /[\n\r]*/g
 
@@ -20,24 +16,6 @@ export function replaceStyleExt(script: string) {
   return script
     .replace(IMPORT_LESS_PATH_RE, replacer)
     .replace(REQUIRE_LESS_PATH_RE, replacer)
-}
-
-export function replaceVueExt(script: string) {
-  const replacer = (_: any, p1: string, p2: string): string => {
-    return `${p1}js${p2}`
-  }
-  return script
-    .replace(IMPORT_VUE_PATH_RE, replacer)
-    .replace(REQUIRE_VUE_PATH_RE, replacer)
-}
-
-export function replaceTSExt(script: string) {
-  const replacer = (_: any, p1: string, p2: string): string => {
-    return `${p1}js${p2}`
-  }
-  return script
-    .replace(IMPORT_TS_PATH_RE, replacer)
-    .replace(REQUIRE_TS_PATH_RE, replacer)
 }
 
 export function clearEmptyLine(style: string) {
