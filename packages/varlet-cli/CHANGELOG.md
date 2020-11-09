@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/haoziqaq/varlet/compare/v0.3.0...v0.3.1) (2020-11-09)
+
+
+### Bug Fixes
+
+* **cli:** 修改.vue文件编译规则 ([71ab372](https://github.com/haoziqaq/varlet/commit/71ab37266132fa0771802aa57dbef1e6e3670e5a))
+
+
+
+
+
 # [0.3.0](https://github.com/haoziqaq/varlet/compare/v0.2.1...v0.3.0) (2020-11-06)
 
 
