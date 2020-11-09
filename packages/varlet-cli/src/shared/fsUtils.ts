@@ -1,8 +1,7 @@
 import slash from 'slash'
-import { parse } from 'path'
+import { parse , extname, resolve } from 'path'
 import { lstatSync, pathExistsSync, readdir, writeFileSync } from 'fs-extra'
-import { extname, resolve } from 'path'
-import { EXAMPLE_DIR_NAME, SITE_MOBILE_ROUTES, SRC_DIR, TESTS_DIR_NAME } from './constant'
+import { EXAMPLE_DIR_INDEX, EXAMPLE_DIR_NAME, SITE_MOBILE_ROUTES, SRC_DIR, TESTS_DIR_NAME } from './constant'
 import { getVarletConfig } from '../config/varlet.config'
 
 export function accessProperty(target: any, operator: string) {
@@ -58,8 +57,8 @@ export async function getMobileSiteExamplePaths(): Promise<string[]> {
     .map(filename => resolve(SRC_DIR, filename))
     .filter(path => isDir(resolve(path, EXAMPLE_DIR_NAME)))
     .map(path => resolve(path, EXAMPLE_DIR_NAME))
-    .filter(path => pathExistsSync(resolve(path, 'index.vue')))
-    .map(path => slash(resolve(path, 'index.vue')))
+    .filter(path => pathExistsSync(resolve(path, EXAMPLE_DIR_INDEX)))
+    .map(path => slash(resolve(path, EXAMPLE_DIR_INDEX)))
 }
 
 export async function buildMobileSiteRoutes() {

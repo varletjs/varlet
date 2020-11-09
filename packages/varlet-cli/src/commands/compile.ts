@@ -47,7 +47,7 @@ export async function recompile(path: string) {
 }
 
 export function handleFilesChange() {
-  watch(SRC_DIR).on('change', async (path: string, ...args) => {
+  watch(SRC_DIR).on('change', async (path: string) => {
     if (isExampleDir(path) || isTestsDir(path)) {
       return
     }
