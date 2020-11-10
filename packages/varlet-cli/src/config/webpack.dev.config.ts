@@ -1,6 +1,6 @@
 import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
-import { createBaseConfig } from './webpack.base.config'
+import { createBaseConfig, createBasePlugins } from './webpack.base.config'
 
 export function getDevConfig() {
   return merge(createBaseConfig() as any, {
@@ -19,9 +19,10 @@ export function getDevConfig() {
     },
     plugins: [
       new WebpackBarPlugin({
-        name: 'Varlet development building',
+        name: 'Site development building',
         color: '#15DD6A'
-      })
+      }),
+      ...createBasePlugins()
     ]
   })
 }

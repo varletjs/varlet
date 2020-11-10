@@ -14,6 +14,15 @@ export function accessProperty(target: any, operator: string) {
   }, target)
 }
 
+export function getDirComponentNames(dir: string[]) {
+  return dir.filter((filename: string) => {
+    return ![
+      ...accessProperty(getVarletConfig(), 'componentsIgnores'),
+      'index.js'
+    ].includes(filename)
+  })
+}
+
 export function isDir(path: string): boolean {
   return pathExistsSync(path) && lstatSync(path).isDirectory()
 }
@@ -78,4 +87,13 @@ export async function buildMobileSiteRoutes() {
   writeFileSync(SITE_MOBILE_ROUTES, `export default [\
   ${routes.join(',')}
 ]`)
+}
+
+export function bigCamelize(str: string): string {
+  return camelize(str)
+    .replace(str.charAt(0), str.charAt(0).toUpperCase())
+}
+
+export function camelize(str: string): string {
+  return str.replace(/-(\w)/g, (_: any, p: string) => p.toUpperCase());
 }

@@ -51,7 +51,7 @@ export async function compileSFC(path: string, modules: string | boolean = false
           source: style.content,
           filename: stylePath,
           id: scopeId,
-          scoped: true
+          scoped: style.scoped
         })
         // less
         writeFileSync(stylePath, clearEmptyLine(code), 'utf-8')

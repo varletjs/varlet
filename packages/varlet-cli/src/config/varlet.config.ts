@@ -2,6 +2,7 @@ import { pathExistsSync } from 'fs-extra'
 import { VARLET_CONFIG } from '../shared/constant'
 
 export const defaultConfig = {
+  namespace: 'varlet',
   pc: {
     title: 'Varlet 组件库文档',
     description: 'Varlet 组件库文档',

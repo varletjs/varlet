@@ -51,8 +51,9 @@
     "ignoreFiles": [
       "packages/varlet-cli/lib/**",
       "packages/varlet-ui/es/**",
-      "packages/varlet-cli/cjs/**",
-      "packages/varlet-cli/site/**"
+      "packages/varlet-ui/cjs/**",
+      "packages/varlet-ui/umd/**",
+      "packages/varlet-ui/site/**"
     ]
   },
   "publishConfig": {

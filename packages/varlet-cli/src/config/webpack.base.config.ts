@@ -165,7 +165,6 @@ export function createBaseConfig() {
           ]
         }
       ]
-    },
-    plugins: createBasePlugins()
+    }
   }
 }

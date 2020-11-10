@@ -8,6 +8,7 @@ export const OUTPUT_SITE_PATH = resolve(CWD, 'site')
 export const SRC_DIR = resolve(CWD, 'src')
 export const ES_DIR = resolve(CWD, 'es')
 export const CJS_DIR = resolve(CWD, 'cjs')
+export const UMD_DIR = resolve(CWD, 'umd')
 export const SITE_MOBILE_ROUTES = resolve(__dirname, '../../site/mobile/routes.ts')
 export const EXAMPLE_DIR_NAME = 'example'
 export const EXAMPLE_DIR_INDEX = 'index.vue'

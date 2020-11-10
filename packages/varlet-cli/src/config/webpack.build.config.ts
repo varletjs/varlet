@@ -1,7 +1,7 @@
 import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import { createBaseConfig } from './webpack.base.config'
+import { createBaseConfig, createBasePlugins } from './webpack.base.config'
 import { OUTPUT_SITE_PATH } from '../shared/constant'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 
@@ -16,14 +16,15 @@ export function getBuildConfig() {
     },
     plugins: [
       new WebpackBarPlugin({
-        name: 'Varlet production building',
+        name: 'Site production building',
         color: '#15DD6A'
       }),
       new MiniCssExtractPlugin({
         filename: 'css/[name].[hash:8].css',
         chunkFilename: 'css/[id].[chunkhash:8].css'
       }),
-      new CleanWebpackPlugin()
+      new CleanWebpackPlugin(),
+      ...createBasePlugins()
     ]
   })
 }
