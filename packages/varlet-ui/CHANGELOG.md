@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/haoziqaq/varlet/compare/v0.3.2...v0.4.0) (2020-11-10)
+
+
+### Features
+
+* **cli:** 支持打包成umd ([af0645f](https://github.com/haoziqaq/varlet/commit/af0645f8bf648717bf8d616024ac612af4764a51))
+
+
+
+
+
 ## [0.3.2](https://github.com/haoziqaq/varlet/compare/v0.3.1...v0.3.2) (2020-11-09)
 
 **Note:** Version bump only for package @varlet/ui
