@@ -56,7 +56,6 @@
     "slash": "^3.0.0",
     "style-loader": "^2.0.0",
     "ts-loader": "^8.0.7",
-    "typescript": "^4.0.5",
     "vue-loader": "^16.0.0-beta.9",
     "webpack": "4",
     "webpack-dev-server": "^3.11.0",
