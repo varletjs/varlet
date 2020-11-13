@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/haoziqaq/varlet/compare/v0.4.0...v0.5.0) (2020-11-13)
+
+
+### Bug Fixes
+
+* **.gitignore:** 移除cli routes文件的依赖托管 ([1576643](https://github.com/haoziqaq/varlet/commit/15766436d3e9e3f16f527635b5fbc97349d39d13))
+* **cli:** 移除typescript依赖 ([67cd726](https://github.com/haoziqaq/varlet/commit/67cd726ea0fbc72279e8c9a83b13d0bbc4803c6b))
+
+
+### Features
+
+* **cli:** 增加jest单测命令 一键执行所有单测文件 或是执行某一个组件的单测文件 ([b23bfee](https://github.com/haoziqaq/varlet/commit/b23bfeebf6be90f4e417e3210c3fc82976f59b73))
+* add auto create pc site route ([65cd41a](https://github.com/haoziqaq/varlet/commit/65cd41a085a22eee4c4cf0b39b3ba727939b4ed3))
+
+
+
+
+
 # [0.4.0](https://github.com/haoziqaq/varlet/compare/v0.3.2...v0.4.0) (2020-11-10)
 
 
