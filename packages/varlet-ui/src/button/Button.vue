@@ -1,13 +1,26 @@
 <template>
-  <div class="varlet-button lock"></div>
+  <div class="varlet-button lock">
+    <p>Times clicked: {{ count }}</p>
+    <button @click="increment">increment</button>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, Ref } from 'vue'
 import '../styles/common.less'
 
 export default defineComponent({
-  name: 'VarletButton'
+  name: 'VarletButton',
+  setup() {
+    const count: Ref<number> = ref(0)
+
+    return {
+      count,
+      increment() {
+        count.value++
+      }
+    }
+  }
 })
 </script>
 

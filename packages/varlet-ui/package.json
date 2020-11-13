@@ -7,6 +7,11 @@
     "Material",
     "UI"
   ],
+  "files": [
+    "es",
+    "cjs",
+    "umd"
+  ],
   "author": "haoziqaq <357229046@qq.com>",
   "license": "MIT",
   "main": "lib/varlet-ui.js",
@@ -19,7 +24,8 @@
     "build": "varlet-cli build",
     "compile": "varlet-cli compile",
     "compile:watch": "varlet-cli compile --watch",
-    "create": "varlet-cli create"
+    "create": "varlet-cli create",
+    "jest": "varlet-cli jest"
   },
   "bugs": {
     "url": "https://github.com/haoziqaq/varlet/issues"

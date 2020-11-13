@@ -38,7 +38,9 @@
       "packages/varlet-cli/lib/**",
       "packages/varlet-cli/site/**",
       "packages/varlet-ui/es/**",
-      "packages/varlet-ui/cjs/**"
+      "packages/varlet-ui/cjs/**",
+      "packages/varlet-ui/umd/**",
+      "packages/varlet-ui/src/*/__tests__/**"
     ],
     "extends": [
       "@varlet"

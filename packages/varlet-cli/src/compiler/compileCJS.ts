@@ -10,7 +10,7 @@ export async function compileCJSDir(cjsDir: string[], dirPath: string) {
   await Promise.all(
     cjsDir.map((filename: string) => {
       const path: string = resolve(dirPath, filename)
-      return isDir(path) ? compileComponent(path) : null
+      return isDir(path) ? compileComponent(path, 'cjs') : null
     })
   )
   compileLibraryEntry(dirPath, getDirComponentNames(cjsDir), 'cjs')
@@ -19,8 +19,8 @@ export async function compileCJSDir(cjsDir: string[], dirPath: string) {
 export async function compileCJS() {
   try {
     await copy(SRC_DIR, CJS_DIR)
-    const esDir: string[] = await readdir(CJS_DIR)
-    await compileCJSDir(esDir, CJS_DIR)
+    const cjsDir: string[] = await readdir(CJS_DIR)
+    await compileCJSDir(cjsDir, CJS_DIR)
   } catch (e) {
     logger.error(e.toString())
   }
