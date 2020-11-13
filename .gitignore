@@ -3,6 +3,7 @@ node_modules
 .idea
 .vscode
 *.log
+.DS_Store
 
 packages/varlet-cli/lib
 packages/varlet-cli/site/mobile/routes.ts
