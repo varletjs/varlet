@@ -1,7 +1,7 @@
-import { accessProperty, bigCamelize } from '../shared/fsUtils'
+import { accessProperty, bigCamelize, camelize } from '../shared/fsUtils'
 import { mkdirsSync, pathExistsSync, writeFile } from 'fs-extra'
 import { resolve } from 'path'
-import { SRC_DIR } from '../shared/constant'
+import { SRC_DIR, TESTS_DIR_NAME } from '../shared/constant'
 import { getVarletConfig } from '../config/varlet.config'
 import logger from '../shared/logger'
 
@@ -22,7 +22,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-.${namespace} {
+.${namespace}-${name} {
   display: flex;
 }
 </style>
@@ -36,14 +36,28 @@ ${bigCamelize(name)}.install = function(app) {
 
 export default ${bigCamelize(name)}
 `
+  const testsTemplate = `\
+const ${bigCamelize(name)} = require('../../../cjs/${name}').default
+const { render } = require('@testing-library/vue')
+
+test('test ${camelize(name)}', async () => {
+  const wrapper = render(${bigCamelize(name)})
+  console.log(wrapper)
+})
+`
   const componentDir = resolve(SRC_DIR, name)
+  const testsDir = resolve(SRC_DIR, name, TESTS_DIR_NAME)
   if (pathExistsSync(componentDir)) {
-    logger.error('component directory existed')
+    logger.error('component directory is existed')
     return
   }
   mkdirsSync(componentDir)
+  mkdirsSync(testsDir)
   await Promise.all([
     writeFile(resolve(componentDir, `${bigCamelize(name)}.vue`), vueTemplate),
-    writeFile(resolve(componentDir, 'index.ts'), indexTemplate)
+    writeFile(resolve(componentDir, 'index.ts'), indexTemplate),
+    writeFile(resolve(testsDir, 'index.spec.js'), testsTemplate)
   ])
+
+  logger.success('create success!')
 }
