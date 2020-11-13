@@ -17,6 +17,9 @@ export default defineComponent({
 			count,
 		}
 	},
+	mounted() {
+		console.log(this.$config)
+	},
 })
 </script>
 
