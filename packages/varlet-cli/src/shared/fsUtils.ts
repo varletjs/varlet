@@ -78,7 +78,7 @@ export function convertMobileSiteExamplePathToComponentName(
 }
 
 export function getRouterPathByPcSiteDocsPath(path: string): string {
-	return path.split(DOCS_DIR_NAME)[1]
+	return path.split(DOCS_DIR_NAME)[1].split('.')[0]
 }
 
 export async function getMobileSiteExamplePaths(): Promise<string[]> {
@@ -109,7 +109,7 @@ export function getPcSiteDocsPaths(): string[] {
 		}, {})
 	return Object.entries(docsDirMap).reduce((pathList: string[], pathMap) => {
 		pathMap[1].forEach((filename) => {
-			pathList.push(resolve(pathMap[0], filename))
+			pathList.push(slash(resolve(pathMap[0], filename)))
 		})
 		return pathList
 	}, [])
