@@ -126,6 +126,10 @@ export function createBaseConfig() {
           ],
         },
         {
+          test: /\.md$/,
+          use: [ "vue-loader", '@varlet/markdown-loader'],
+        },
+        {
           test: /\.(png|jpg|gif|jpeg|svg)$/,
           use: {
             loader: 'url-loader',

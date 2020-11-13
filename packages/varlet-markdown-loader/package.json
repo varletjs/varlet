@@ -1,0 +1,34 @@
+{
+  "name": "@varlet/markdown-loader",
+  "version": "0.5.0",
+  "description": "markdown loader of varlet",
+  "keywords": [
+    "loader",
+    "varlet"
+  ],
+  "author": "BeADre <beadre_wang@163.com>",
+  "homepage": "https://github.com/haoziqaq/varlet#readme",
+  "license": "MIT",
+  "main": "./markdownLoader.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haoziqaq/varlet.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/haoziqaq/varlet/issues"
+  },
+  "dependencies": {
+    "markdown-it": "^12.0.2",
+    "highlight.js": "^10.3.2"
+  }
+}
