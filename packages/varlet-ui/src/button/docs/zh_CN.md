@@ -2,11 +2,9 @@
 
 ```javascript
 import Vue from 'vue'
-import { Button } from 'vant'
+import { Button } from 'varlet'
 
 Vue.use(Button)
 ```
 
-```javascript
-let a = 3
-```
+的撒开的卡萨来得及看撒

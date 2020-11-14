@@ -22,23 +22,43 @@ module.exports = {
 					en_US: 'Essentials',
 				},
 				isTitle: true,
-				children: [
-					{
-						text: {
-							zh_CN: 'Button 按钮',
-							en_US: 'Button',
-							doc: 'button',
-						},
-					},
-				],
+			},
+			{
+				text: {
+					zh_CN: '快速上手',
+					en_US: 'Quickstart',
+				},
+				doc: 'quickstart',
+			},
+			{
+				text: {
+					zh_CN: '基础组件',
+					en_US: 'Basic Components',
+				},
+				isTitle: true,
+			},
+			{
+				text: {
+					zh_CN: 'Button 按钮',
+					en_US: 'Button',
+				},
+				doc: 'button',
+			},
+			{
+				text: {
+					zh_CN: 'CheckBox 复选框',
+					en_US: 'CheckBox',
+				},
+				doc: 'checkbox',
 			},
 		],
+		language: 'zh_CN',
 	},
 	mobile: {
 		title: 'Varlet 组件库示例',
 		description: 'Varlet 组件库示例',
 		logo: 'https://cn.vuejs.org/images/logo.png',
 	},
-	siteIgnores: ['styles', 'utils', 'docs'],
-	componentsIgnores: ['styles', 'utils', 'docs'],
+	siteIgnores: ['styles', 'utils'],
+	componentsIgnores: ['styles', 'utils'],
 }
