@@ -77,8 +77,12 @@ export function convertMobileSiteExamplePathToComponentName(
 	return path.replace(`/${EXAMPLE_DIR_NAME}/index.vue`, '').replace(/.*\//g, '')
 }
 
-export function getRouterPathByPcSiteDocsPath(path: string): string {
-	return path.split(DOCS_DIR_NAME)[1].split('.')[0]
+export function getRouterPathByPcSiteDocsPath(
+	path: string,
+	componentName: string
+): string {
+	const language = path.split('/').slice(-1)[0].split('.')[0]
+	return `/${language}/${componentName}`
 }
 
 export async function getMobileSiteExamplePaths(): Promise<string[]> {
@@ -97,22 +101,36 @@ export async function getMobileSiteExamplePaths(): Promise<string[]> {
 		.map((path) => slash(resolve(path, EXAMPLE_DIR_INDEX)))
 }
 
-export function getPcSiteDocsPaths(): string[] {
-	const DOCS_DIR = resolve(SRC_DIR, DOCS_DIR_NAME)
-	const docsDir: string[] = readdirSync(DOCS_DIR)
-	const docsDirMap = docsDir
-		.filter((filename) => isDir(resolve(DOCS_DIR, filename)))
-		.map((filename) => resolve(DOCS_DIR, filename))
-		.reduce((pathMap: PathMap, path: string) => {
-			pathMap[path] = readdirSync(path)
+export function getPcSiteDocsPaths(): PathMap {
+	const varletConfig = getVarletConfig()
+	const srcDir: string[] = readdirSync(SRC_DIR)
+	return srcDir
+		.filter(
+			(filename) =>
+				!accessProperty(varletConfig, 'siteIgnores').includes(filename)
+		)
+		.filter((filename) => isDir(resolve(SRC_DIR, filename)))
+		.reduce((pathMap: PathMap, dirName: string) => {
+			const path = slash(resolve(SRC_DIR, dirName, DOCS_DIR_NAME))
+			if (isDir(path))
+				pathMap[dirName] = readdirSync(path).map((filename) =>
+					resolve(path, filename)
+				)
 			return pathMap
 		}, {})
-	return Object.entries(docsDirMap).reduce((pathList: string[], pathMap) => {
-		pathMap[1].forEach((filename) => {
-			pathList.push(slash(resolve(pathMap[0], filename)))
+}
+
+export function getRoutes(pathsMap: PathMap) {
+	return Object.entries(pathsMap).map((pathArray) => {
+		return pathArray[1].map((path) => {
+			return `
+  {
+    path: '${getRouterPathByPcSiteDocsPath(path, pathArray[0])}',
+    component: () => import('${path}')
+  }\
+`
 		})
-		return pathList
-	}, [])
+	})
 }
 
 export async function buildMobileSiteRoutes() {
@@ -145,16 +163,8 @@ export function buildPcSiteRoutes() {
 		return
 	}
 
-	const paths = getPcSiteDocsPaths()
-	const routes = paths.map(
-		(path) => `
-  {
-    path: '${getRouterPathByPcSiteDocsPath(path)}',
-    component: () => import('${path}')
-  }\
-`
-	)
-
+	const pathsMap = getPcSiteDocsPaths()
+	const routes = getRoutes(pathsMap)
 	writeFileSync(
 		SITE_PC_ROUTES,
 		`export default [\
