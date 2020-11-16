@@ -28,7 +28,7 @@ export function accessProperty(target: any, operator: string) {
 		if (value === null || value === undefined) {
 			return null
 		}
-		return value[key]
+		return value[key] || []
 	}, target)
 }
 
