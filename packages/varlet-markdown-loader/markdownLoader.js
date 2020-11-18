@@ -1,5 +1,6 @@
 const markdown = require('markdown-it')
 const hljs = require('highlight.js')
+const cardWrapper = require('./src/card-wrapper.js')
 
 function highlight(str, lang) {
 	if (lang && hljs.getLanguage(lang)) {
@@ -19,7 +20,7 @@ function markLoader(source) {
 		typographer: true,
 		highlight,
 	})
-	const html = md.render(source)
+	const html = cardWrapper(md.render(source))
 
 	return (
 		'<template>\n' +
