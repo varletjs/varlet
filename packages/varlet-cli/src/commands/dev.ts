@@ -3,7 +3,7 @@ import WebpackDevServer from 'webpack-dev-server'
 import logger from '../shared/logger'
 import { getDevConfig } from '../config/webpack.dev.config'
 import { getPort } from 'portfinder'
-import { buildMobileSiteRoutes, buildPcSiteRoutes } from '../shared/fsUtils'
+import { buildMobileSiteRoutes, buildPcSiteRoutes } from '../compiler/compileRoutes'
 import { setDev } from '../shared/env'
 
 export function runDevServer(port: number, config: any) {
@@ -24,8 +24,11 @@ export function runDevServer(port: number, config: any) {
 
 export async function dev() {
 	setDev()
-	await buildMobileSiteRoutes()
-	buildPcSiteRoutes()
+
+  await Promise.all([
+    buildMobileSiteRoutes(),
+    buildPcSiteRoutes()
+  ])
 
 	const config = getDevConfig()
 	const { port } = config.devServer

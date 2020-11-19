@@ -13,6 +13,9 @@
     "type": "git",
     "url": "https://github.com/haoziqaq/varlet.git"
   },
+  "bugs": {
+    "url": "https://github.com/haoziqaq/varlet/issues"
+  },
   "dependencies": {
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^20.0.0"

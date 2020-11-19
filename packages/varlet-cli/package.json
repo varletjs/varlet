@@ -23,6 +23,9 @@
     "type": "git",
     "url": "https://github.com/haoziqaq/varlet.git"
   },
+  "bugs": {
+    "url": "https://github.com/haoziqaq/varlet/issues"
+  },
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc"

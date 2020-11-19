@@ -58,7 +58,5 @@ module.exports = {
 		title: 'Varlet 组件库示例',
 		description: 'Varlet 组件库示例',
 		logo: 'https://cn.vuejs.org/images/logo.png',
-	},
-	siteIgnores: ['styles', 'utils'],
-	componentsIgnores: ['styles', 'utils'],
+	}
 }

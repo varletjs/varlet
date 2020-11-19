@@ -1,13 +1,18 @@
 import webpack from 'webpack'
 import logger from '../shared/logger'
-import { buildMobileSiteRoutes } from '../shared/fsUtils'
+import { buildMobileSiteRoutes, buildPcSiteRoutes } from '../compiler/compileRoutes'
 import { getBuildConfig } from '../config/webpack.build.config'
 import { setProd } from '../shared/env'
 
 export async function build() {
   try {
     setProd()
-    await buildMobileSiteRoutes()
+
+    await Promise.all([
+      buildMobileSiteRoutes(),
+      buildPcSiteRoutes()
+    ])
+
     const config = getBuildConfig()
 
     webpack(config, (err, stats) => {

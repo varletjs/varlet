@@ -19,6 +19,9 @@
     "type": "git",
     "url": "git+https://github.com/haoziqaq/varlet.git"
   },
+  "bugs": {
+    "url": "https://github.com/haoziqaq/varlet/issues"
+  },
   "scripts": {
     "dev": "varlet-cli dev",
     "build": "varlet-cli build",
@@ -26,9 +29,6 @@
     "compile:watch": "varlet-cli compile --watch",
     "create": "varlet-cli create",
     "jest": "varlet-cli jest"
-  },
-  "bugs": {
-    "url": "https://github.com/haoziqaq/varlet/issues"
   },
   "gitHead": "c0aed5bc04c05335b66607dbcab6455dafad1de4"
 }

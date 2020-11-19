@@ -58,31 +58,36 @@ export async function compileScriptFile(path: string, modules: string | boolean 
   await compileScript(sources, path, modules)
 }
 
-export function compileLibraryEntry(dir: string, componentNames: string[], modules: string | boolean = false) {
-  const imports = componentNames.map((componentName: string) => `import ${bigCamelize(componentName)} from './${componentName}'`).join('\n')
+export function compileLibraryEntry(
+  dir: string,
+  componentNames: string[],
+  exportDirNames: string[],
+  modules: string | boolean = false
+) {
+  const imports = exportDirNames.map((exportDirNames: string) => `import ${bigCamelize(exportDirNames)} from './${exportDirNames}'`).join('\n')
   const cssImports = componentNames.map((componentName: string) => `import './${componentName}/style'`).join('\n')
-  const requires = componentNames.map((componentName: string) => `var ${bigCamelize(componentName)} = require('./${componentName}')`).join('\n')
+  const requires = exportDirNames.map((exportDirNames: string) => `var ${bigCamelize(exportDirNames)} = require('./${exportDirNames}')`).join('\n')
   const cssRequires = componentNames.map((componentName: string) => `require('./${componentName}/style')`).join('\n')
 
   const install = `\
 function install(app) {
-  ${componentNames.map((componentName: string) => `app.use(${bigCamelize(componentName)})`).join('\n  ')}
+  ${exportDirNames.map((exportDirName: string) => `${bigCamelize(exportDirName)}.install && app.use(${bigCamelize(exportDirName)})`).join('\n  ')}
 }
 `
   const esExports = `\
 export {
-  ${componentNames.map((componentName: string) => `${bigCamelize(componentName)}`).join(',\n  ')}
+  ${exportDirNames.map((exportDirName: string) => `${bigCamelize(exportDirName)}`).join(',\n  ')}
 }
 
 export default {
   install,
-  ${componentNames.map((componentName: string) => `${bigCamelize(componentName)}`).join(',\n  ')},
+  ${exportDirNames.map((exportDirName: string) => `${bigCamelize(exportDirName)}`).join(',\n  ')},
 }\
 `
   const cjsExports = `\
 module.exports = {
   install,
-  ${componentNames.map((componentName: string) => `${bigCamelize(componentName)}`).join(',\n  ')}
+  ${exportDirNames.map((exportDirName: string) => `${bigCamelize(exportDirName)}`).join(',\n  ')}
 }\
 `
 

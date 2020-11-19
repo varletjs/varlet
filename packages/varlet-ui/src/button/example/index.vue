@@ -1,10 +1,15 @@
 <template>
-	<button>test</button>
+	<varlet-button></varlet-button>
 </template>
 
 <script>
+import Button from '..'
+
 export default {
-	name: 'Index'
+	name: 'Index',
+  components: {
+	  [Button.name]: Button
+  }
 }
 </script>
 

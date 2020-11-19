@@ -1,7 +1,7 @@
 import { accessProperty, bigCamelize, camelize } from '../shared/fsUtils'
-import { mkdirsSync, pathExistsSync, writeFile } from 'fs-extra'
+import { mkdirs, pathExistsSync, writeFile } from 'fs-extra'
 import { resolve } from 'path'
-import { SRC_DIR, TESTS_DIR_NAME } from '../shared/constant'
+import { EXAMPLE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from '../shared/constant'
 import { getVarletConfig } from '../config/varlet.config'
 import logger from '../shared/logger'
 
@@ -30,7 +30,7 @@ export default defineComponent({
   const indexTemplate = `\
 import ${bigCamelize(name)} from './${bigCamelize(name)}.vue'
 
-${bigCamelize(name)}.install = function(app) {
+${bigCamelize(name)}.install = function(app: any) {
   app.component(${bigCamelize(name)}.name, ${bigCamelize(name)})
 }
 
@@ -45,18 +45,47 @@ test('test ${camelize(name)}', async () => {
   console.log(wrapper)
 })
 `
+  const exampleTemplate = `\
+<template>
+  <${namespace}-${name}/>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import ${bigCamelize(name)} from '..'
+
+export default defineComponent({
+  name: '${bigCamelize(name)}Example',
+  components: {
+    [${bigCamelize(name)}.name]: ${bigCamelize(name)}
+  }
+})
+</script>
+
+<style scoped>
+.example-container {
+  background: antiquewhite;
+}
+</style>
+`
   const componentDir = resolve(SRC_DIR, name)
   const testsDir = resolve(SRC_DIR, name, TESTS_DIR_NAME)
+  const exampleDir = resolve(SRC_DIR, name, EXAMPLE_DIR_NAME)
+
   if (pathExistsSync(componentDir)) {
     logger.error('component directory is existed')
     return
   }
-  mkdirsSync(componentDir)
-  mkdirsSync(testsDir)
+  await Promise.all([
+    mkdirs(componentDir),
+    mkdirs(testsDir),
+    mkdirs(exampleDir),
+  ])
   await Promise.all([
     writeFile(resolve(componentDir, `${bigCamelize(name)}.vue`), vueTemplate),
     writeFile(resolve(componentDir, 'index.ts'), indexTemplate),
-    writeFile(resolve(testsDir, 'index.spec.js'), testsTemplate)
+    writeFile(resolve(testsDir, 'index.spec.js'), testsTemplate),
+    writeFile(resolve(exampleDir, 'index.vue'), exampleTemplate)
   ])
 
   logger.success('create success!')

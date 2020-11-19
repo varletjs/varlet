@@ -5,7 +5,7 @@ import { copy, readdir, remove } from 'fs-extra'
 import { CJS_DIR, ES_DIR, SRC_DIR, UMD_DIR } from '../shared/constant'
 import { compileCJS } from '../compiler/compileCJS'
 import { watch } from 'chokidar'
-import { getDirComponentNames, isExampleDir, isTestsDir } from '../shared/fsUtils'
+import { getComponentNames, getExportDirNames, isExampleDir, isTestsDir } from '../shared/fsUtils'
 import { compileComponent, compileFile } from '../compiler/compileComponent'
 import { parse } from 'path'
 import { compileLibraryEntry } from '../compiler/compileScript'
@@ -34,9 +34,9 @@ export async function recompile(path: string) {
     await Promise.all([copy(path, esPath), copy(path, cjsPath)])
     await Promise.all([compileFile(esPath), compileFile(cjsPath, 'cjs')])
   }
-  const dirs: Array<Array<string>> = await Promise.all([readdir(ES_DIR), readdir(CJS_DIR)])
-  compileLibraryEntry(ES_DIR, getDirComponentNames(dirs[0]))
-  compileLibraryEntry(CJS_DIR, getDirComponentNames(dirs[1]), 'cjs')
+  const [componentNames, exportDirNames]: Array<Array<string>> = await Promise.all([getComponentNames(), getExportDirNames()])
+  compileLibraryEntry(ES_DIR, componentNames, exportDirNames)
+  compileLibraryEntry(CJS_DIR, componentNames, exportDirNames, 'cjs')
 }
 
 export function handleFilesChange() {

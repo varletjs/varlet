@@ -15,6 +15,9 @@
     "type": "git",
     "url": "https://github.com/haoziqaq/varlet.git"
   },
+  "bugs": {
+    "url": "https://github.com/haoziqaq/varlet/issues"
+  },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },

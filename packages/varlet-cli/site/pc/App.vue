@@ -50,7 +50,7 @@
 			<router-view />
 			<div class="varlet-site-mobile">
 				<iframe
-					:src="`/mobile.html#/${componentName}`"
+					:src="`./mobile.html#/${componentName}`"
 					:style="simulatorStyle"
 				></iframe>
 			</div>
@@ -395,6 +395,7 @@ iframe {
 		}
 
 		&-nav {
+      padding: 10px 0;
 			flex: 0 0 220px;
 			position: sticky;
 			height: 100vh;
@@ -442,6 +443,7 @@ iframe {
 			flex: 0 0 360px;
 			top: 30px;
 			position: sticky;
+      margin-top: 30px;
 			margin-right: 30px;
 			height: 85vh;
 			z-index: 1;

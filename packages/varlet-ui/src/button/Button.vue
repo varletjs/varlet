@@ -1,7 +1,7 @@
 <template>
   <div class="varlet-button lock">
     <p>Times clicked: {{ count }}</p>
-    <button @click="increment">increment</button>
+    <button @click="increment">increment123</button>
   </div>
 </template>
 

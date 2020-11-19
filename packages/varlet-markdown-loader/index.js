@@ -1,6 +1,6 @@
 const markdown = require('markdown-it')
 const hljs = require('highlight.js')
-const cardWrapper = require('./src/card-wrapper.js')
+const cardWrapper = require('./src/cardWrapper.js')
 
 function highlight(str, lang) {
 	if (lang && hljs.getLanguage(lang)) {

@@ -1,4 +1,4 @@
-import { EXAMPLE_DIR_NAME, TESTS_DIR_NAME } from '../shared/constant'
+import { EXAMPLE_DIR_NAME, TESTS_DIR_NAME, DOCS_DIR_NAME } from '../shared/constant'
 import { readdir, removeSync } from 'fs-extra'
 import { isDir, isLess, isScript, isSFC } from '../shared/fsUtils'
 import { compileSFC } from './compileSFC'
@@ -11,7 +11,7 @@ export async function compileComponent(path: string, modules: string | boolean =
   await Promise.all(
     dirs.map((filename) => {
       const filePath = resolve(path, filename)
-      ;[TESTS_DIR_NAME, EXAMPLE_DIR_NAME].includes(filename) && removeSync(filePath)
+      ;[TESTS_DIR_NAME, EXAMPLE_DIR_NAME, DOCS_DIR_NAME].includes(filename) && removeSync(filePath)
       return compileFile(filePath, modules)
     })
   )
