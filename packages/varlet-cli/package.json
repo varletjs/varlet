@@ -15,8 +15,9 @@
   "files": [
     "lib",
     "site",
-    "varlet.default.config.js",
-    "tsconfig.json"
+    "src/shims-vue.d.ts",
+    "src/shims-md.d.ts",
+    "varlet.default.config.js"
   ],
   "repository": {
     "type": "git",

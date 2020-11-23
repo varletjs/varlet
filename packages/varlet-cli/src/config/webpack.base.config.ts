@@ -1,11 +1,12 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import path from 'path'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { resolve } from 'path'
 import {
-	EXTENSIONS,
-	POSTCSS_CONFIG,
-	TS_CONFIG,
-	VARLET_CONFIG,
+  CWD,
+  EXTENSIONS,
+  POSTCSS_CONFIG,
+  TS_CONFIG,
+  VARLET_CONFIG
 } from '../shared/constant'
 import { createPostcssOptions } from './postcss.config'
 import { ForkTsCheckerWebpackPlugin } from 'fork-ts-checker-webpack-plugin/lib/ForkTsCheckerWebpackPlugin'
@@ -72,7 +73,7 @@ export function createBasePlugins(): WebpackPluginInstance[] {
 	const plugins: WebpackPluginInstance[] = [
 		new VueLoaderPlugin(),
 		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, '../../site/pc/index.html'),
+			template: resolve(__dirname, '../../site/pc/index.html'),
 			filename: 'index.html',
 			chunks: ['pc'],
 			title: accessProperty(varletConfig, 'pc.title'),
@@ -81,7 +82,7 @@ export function createBasePlugins(): WebpackPluginInstance[] {
 			...commonTemplateOption,
 		}),
 		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, '../../site/mobile/mobile.html'),
+			template: resolve(__dirname, '../../site/mobile/mobile.html'),
 			filename: 'mobile.html',
 			chunks: ['mobile'],
 			title: accessProperty(varletConfig, 'mobile.title'),
@@ -99,8 +100,8 @@ export function createBasePlugins(): WebpackPluginInstance[] {
 export function createBaseConfig() {
 	return {
 		entry: {
-			pc: path.resolve(__dirname, '../../site/pc/main.ts'),
-			mobile: path.resolve(__dirname, '../../site/mobile/main.ts'),
+			pc: resolve(__dirname, '../../site/pc/main.ts'),
+			mobile: resolve(__dirname, '../../site/mobile/main.ts'),
 		},
 		resolve: {
 			extensions: EXTENSIONS,
@@ -129,7 +130,7 @@ export function createBaseConfig() {
 							options: {
 							  appendTsSuffixTo: [/\.vue$/],
                 compilerOptions: {
-                  declaration: false
+							    declaration: false
                 }
               },
 						},
