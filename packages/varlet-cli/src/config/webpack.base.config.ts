@@ -129,6 +129,7 @@ export function createBaseConfig() {
 							loader: 'ts-loader',
 							options: {
 							  appendTsSuffixTo: [/\.vue$/],
+                allowTsInNodeModules: true,
                 compilerOptions: {
 							    declaration: false
                 }
