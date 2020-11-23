@@ -1,7 +1,7 @@
 import logger from '../shared/logger'
 import ora from 'ora'
 import { compileES } from '../compiler/compileES'
-import { copy, readdir, remove } from 'fs-extra'
+import { copy, remove } from 'fs-extra'
 import { CJS_DIR, ES_DIR, SRC_DIR, UMD_DIR } from '../shared/constant'
 import { compileCJS } from '../compiler/compileCJS'
 import { watch } from 'chokidar'
@@ -51,18 +51,13 @@ export function handleFilesChange() {
 
 export async function compile(cmd: { watch: boolean }) {
   const s = ora('Compile start for ES & CJS & UMD').start()
-  try {
-    await removeDir()
-    await Promise.all([compileES(), compileCJS()])
-    await compileUMD()
-    s.succeed('Compile success!')
+  await removeDir()
+  await Promise.all([compileES(), compileCJS()])
+  await compileUMD()
+  s.succeed('Compile success!')
 
-    if (cmd.watch) {
-      handleFilesChange()
-      logger.info('i will watching your files change')
-    }
-  } catch (err) {
-    logger.error(err.toString())
-    s.fail('Compile fail!')
+  if (cmd.watch) {
+    handleFilesChange()
+    logger.info('i will watching your files change')
   }
 }

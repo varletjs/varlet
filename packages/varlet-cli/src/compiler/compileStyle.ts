@@ -1,4 +1,3 @@
-import logger from '../shared/logger'
 import { mkdirSync, pathExistsSync, readFileSync, writeFileSync } from 'fs-extra'
 import { render } from 'less'
 import { parse, resolve } from 'path'
@@ -25,13 +24,9 @@ export function clearEmptyLine(style: string) {
 }
 
 export async function compileLess(path: string) {
-  try {
-    const source = readFileSync(path, 'utf-8')
-    const { css } = await render(source, { filename: path })
-    writeFileSync(replaceExt(path, '.css'), clearEmptyLine(css), 'utf-8')
-  } catch (e) {
-    logger.error(e.toString())
-  }
+  const source = readFileSync(path, 'utf-8')
+  const { css } = await render(source, { filename: path })
+  writeFileSync(replaceExt(path, '.css'), clearEmptyLine(css), 'utf-8')
 }
 
 export function emitStyleEntry(path: string, modules: string | boolean = false) {

@@ -1,7 +1,7 @@
-import { setProd } from '../shared/env'
-import { getUmdConfig } from '../config/webpack.umd.config'
 import webpack from 'webpack'
 import logger from '../shared/logger'
+import { setProd } from '../shared/env'
+import { getUmdConfig } from '../config/webpack.umd.config'
 
 export function compileUMD() {
   return new Promise((resolve, reject) => {

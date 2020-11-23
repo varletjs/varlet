@@ -126,7 +126,12 @@ export function createBaseConfig() {
 						createBabelConfig(),
 						{
 							loader: 'ts-loader',
-							options: { appendTsSuffixTo: [/\.vue$/] },
+							options: {
+							  appendTsSuffixTo: [/\.vue$/],
+                compilerOptions: {
+                  declaration: false
+                }
+              },
 						},
 					],
 				},

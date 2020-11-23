@@ -2,6 +2,9 @@
   "name": "@varlet/ui",
   "version": "0.5.0",
   "description": "A material like components library",
+  "module": "es/index.js",
+  "main": "cjs/index.js",
+  "style": "umd/varlet.css",
   "keywords": [
     "Vue",
     "Material",
@@ -14,7 +17,6 @@
   ],
   "author": "haoziqaq <357229046@qq.com>",
   "license": "MIT",
-  "main": "lib/varlet-ui.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/haoziqaq/varlet.git"

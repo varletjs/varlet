@@ -1,4 +1,3 @@
-import logger from '../shared/logger'
 import { runCLI } from 'jest'
 import { resolve } from 'path'
 import { CWD, JEST_CONFIG, SRC_DIR } from '../shared/constant'
@@ -10,9 +9,5 @@ export async function jest(cmd: { component?: string }) {
     rootDir,
     config: JEST_CONFIG,
   }
-  try {
-    await runCLI(config as any, [CWD])
-  } catch (e) {
-    logger.error(e.toString())
-  }
+  await runCLI(config as any, [CWD])
 }

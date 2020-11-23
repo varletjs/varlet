@@ -1,9 +1,9 @@
+import logger from '../shared/logger'
 import { accessProperty, bigCamelize, camelize } from '../shared/fsUtils'
 import { mkdirs, pathExistsSync, writeFile } from 'fs-extra'
 import { resolve } from 'path'
 import { EXAMPLE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from '../shared/constant'
 import { getVarletConfig } from '../config/varlet.config'
-import logger from '../shared/logger'
 
 export async function create(name: string) {
   const varletConfig = getVarletConfig()

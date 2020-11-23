@@ -29,28 +29,24 @@ export function replaceTSExt(script: string) {
 }
 
 export async function compileScript(script: string, path: string, modules: string | boolean = false) {
-  try {
-    let { code } = await transformAsync(script, {
-      filename: replaceExt(path, '.ts'),
-      presets: [
-        [require('@babel/preset-env'), {
-          loose: true,
-          modules
-        }],
-        require('@babel/preset-typescript')
-      ],
-      plugins: [
-        require('@babel/plugin-transform-runtime')
-      ]
-    }) as BabelFileResult
-    code = replaceStyleExt(code as string)
-    code = replaceVueExt(code as string)
-    code = replaceTSExt(code as string)
-    removeSync(path)
-    writeFileSync(replaceExt(path, '.js'), code, 'utf8')
-  } catch (e) {
-    logger.error(e.toString())
-  }
+  let { code } = await transformAsync(script, {
+    filename: replaceExt(path, '.ts'),
+    presets: [
+      [require('@babel/preset-env'), {
+        loose: true,
+        modules
+      }],
+      require('@babel/preset-typescript')
+    ],
+    plugins: [
+      require('@babel/plugin-transform-runtime')
+    ]
+  }) as BabelFileResult
+  code = replaceStyleExt(code as string)
+  code = replaceVueExt(code as string)
+  code = replaceTSExt(code as string)
+  removeSync(path)
+  writeFileSync(replaceExt(path, '.js'), code, 'utf8')
 }
 
 export async function compileScriptFile(path: string, modules: string | boolean = false) {

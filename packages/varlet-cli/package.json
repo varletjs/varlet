@@ -13,11 +13,9 @@
   "license": "MIT",
   "main": "lbd/index.js",
   "files": [
-    "lib/commands",
-    "lib/config",
-    "lib/shared",
-    "lib/index.js",
-    "lib/index.d.js"
+    "lib",
+    "site",
+    "varlet.default.config.js"
   ],
   "repository": {
     "type": "git",
