@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "0.6.0",
+  "version": "0.5.0",
   "description": "A material like components library",
   "module": "es/index.js",
   "main": "cjs/index.js",
@@ -32,5 +32,5 @@
     "create": "varlet-cli create",
     "jest": "varlet-cli jest"
   },
-  "gitHead": "c0aed5bc04c05335b66607dbcab6455dafad1de4"
+  "gitHead": "5dabda353dc88340816ddc6f6ac8081c0680908f"
 }

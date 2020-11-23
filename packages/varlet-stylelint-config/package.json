@@ -1,6 +1,6 @@
 {
   "name": "@varlet/stylelint-config",
-  "version": "0.6.0",
+  "version": "0.5.0",
   "description": "stylelint config of varlet",
   "keywords": [
     "stylelint",
@@ -20,7 +20,7 @@
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^20.0.0"
   },
-  "gitHead": "c0aed5bc04c05335b66607dbcab6455dafad1de4",
+  "gitHead": "5dabda353dc88340816ddc6f6ac8081c0680908f",
   "peerDependencies": {
     "stylelint": "^13.7.2"
   }

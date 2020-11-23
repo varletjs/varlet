@@ -1,6 +1,6 @@
 {
   "name": "@varlet/eslint-config",
-  "version": "0.6.0",
+  "version": "0.5.0",
   "description": "eslint config of varlet",
   "keywords": [
     "eslint",
@@ -29,7 +29,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-vue": "^7.1.0"
   },
-  "gitHead": "c0aed5bc04c05335b66607dbcab6455dafad1de4",
+  "gitHead": "5dabda353dc88340816ddc6f6ac8081c0680908f",
   "peerDependencies": {
     "eslint": "^7.12.1"
   }
