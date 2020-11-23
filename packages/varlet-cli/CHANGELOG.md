@@ -14,7 +14,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.6.0](https://github.com/haoziqaq/varlet/compare/v0.5.0...v0.6.0) (2020-11-23)
+# [0.5.1](https://github.com/haoziqaq/varlet/compare/v0.5.0...v0.6.0) (2020-11-23)
 
 
 ### Bug Fixes
