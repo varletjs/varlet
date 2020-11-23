@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://user/haoziqaq/varlet/compare/v0.5.3...v0.5.4) (2020-11-23)
+
+
+### Bug Fixes
+
+* **cli:** tsconfig.json加入生产依赖 ([7c56dd2](https://user/haoziqaq/varlet/commits/7c56dd22f54001c503dabadd9e77392ce043ad10))
+
+
+
+
+
 ## [0.5.3](https://user/haoziqaq/varlet/compare/v0.5.2...v0.5.3) (2020-11-23)
 
 
