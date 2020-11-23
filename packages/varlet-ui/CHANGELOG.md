@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/haoziqaq/varlet/compare/v0.5.0...v0.6.0) (2020-11-23)
+
+
+### Bug Fixes
+
+* **cli:** 增加功能create命令生成单测模板 ([0a2cf55](https://github.com/haoziqaq/varlet/commit/0a2cf55042d18ed0889a2a44ac390eb8dffbf245))
+
+
+### Features
+
+* add example of checkbox ([6effb17](https://github.com/haoziqaq/varlet/commit/6effb177ade2f8e69a2756f9481829688c0f3961))
+* add style of site ([b936468](https://github.com/haoziqaq/varlet/commit/b9364680cc6bd4952a2e01a62e4c897af8ff6b97))
+* add test file and router ([fb6615c](https://github.com/haoziqaq/varlet/commit/fb6615c0d92fc086cd91824f4aa49750c0433526))
+* connect nav and router ([0bc640f](https://github.com/haoziqaq/varlet/commit/0bc640f2cf2081abc378b5db8644d8edeb374763))
+
+
+
+
+
 # [0.5.0](https://github.com/haoziqaq/varlet/compare/v0.4.0...v0.5.0) (2020-11-13)
 
 

@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/haoziqaq/varlet/compare/v0.5.0...v0.6.0) (2020-11-23)
+
+
+### Bug Fixes
+
+* add active style ([e23ecb2](https://github.com/haoziqaq/varlet/commit/e23ecb27e564ef761c3f9bd1588956dc0a0e4385))
+* modify router path ([5451c55](https://github.com/haoziqaq/varlet/commit/5451c552072ad8f1693cf46e51499be0623db2f6))
+* sentenced to empty ([2f21c5b](https://github.com/haoziqaq/varlet/commit/2f21c5b52753ac4b520c9cf8530b6b35dd2658f8))
+* **cli:** 增加功能create命令生成单测模板 ([0a2cf55](https://github.com/haoziqaq/varlet/commit/0a2cf55042d18ed0889a2a44ac390eb8dffbf245))
+
+
+### Features
+
+* add config to globalProperties ([00e2ebf](https://github.com/haoziqaq/varlet/commit/00e2ebf5ee38e1cb2eb0638ad03d724c837eeb44))
+* add iframe and add style ([5086937](https://github.com/haoziqaq/varlet/commit/508693748e3f9ee574d4db33b9fd83bd57bd66b1))
+* add markdon-loader ([7dc787b](https://github.com/haoziqaq/varlet/commit/7dc787bfc7719aeef3bdab263a6fffe267e2c9e7))
+* add style of site ([b936468](https://github.com/haoziqaq/varlet/commit/b9364680cc6bd4952a2e01a62e4c897af8ff6b97))
+* add test file and router ([fb6615c](https://github.com/haoziqaq/varlet/commit/fb6615c0d92fc086cd91824f4aa49750c0433526))
+* connect nav and router ([0bc640f](https://github.com/haoziqaq/varlet/commit/0bc640f2cf2081abc378b5db8644d8edeb374763))
+
+
+
+
+
 # [0.5.0](https://github.com/haoziqaq/varlet/compare/v0.4.0...v0.5.0) (2020-11-13)
 
 
