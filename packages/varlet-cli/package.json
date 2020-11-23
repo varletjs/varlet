@@ -15,7 +15,8 @@
   "files": [
     "lib",
     "site",
-    "varlet.default.config.js"
+    "varlet.default.config.js",
+    "tsconfig.json"
   ],
   "repository": {
     "type": "git",
