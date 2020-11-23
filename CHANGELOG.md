@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.6](https://user/haoziqaq/varlet/compare/v0.5.5...v0.5.6) (2020-11-23)
+
+
+### Bug Fixes
+
+* **cli:** 启动生成varlet.config.js ([d8dfa5e](https://user/haoziqaq/varlet/commits/d8dfa5ef9ec48ab1c234db0a2b4e20baf3c8f934))
+
+
+
+
+
 ## [0.5.5](https://user/haoziqaq/varlet/compare/v0.5.4...v0.5.5) (2020-11-23)
 
 
