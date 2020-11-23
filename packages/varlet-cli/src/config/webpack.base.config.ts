@@ -2,7 +2,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { resolve } from 'path'
 import {
-  CWD,
   EXTENSIONS,
   POSTCSS_CONFIG,
   TS_CONFIG,
@@ -11,7 +10,7 @@ import {
 import { createPostcssOptions } from './postcss.config'
 import { ForkTsCheckerWebpackPlugin } from 'fork-ts-checker-webpack-plugin/lib/ForkTsCheckerWebpackPlugin'
 import { VueLoaderPlugin } from 'vue-loader'
-import { pathExistsSync } from 'fs-extra'
+import { pathExistsSync, writeFileSync } from 'fs-extra'
 import { WebpackPluginInstance } from 'webpack'
 import { isDev } from '../shared/env'
 import { accessProperty } from '../shared/fsUtils'

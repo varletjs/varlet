@@ -5,6 +5,8 @@ import { getDevConfig } from '../config/webpack.dev.config'
 import { getPort } from 'portfinder'
 import { buildMobileSiteRoutes, buildPcSiteRoutes } from '../compiler/compileRoutes'
 import { setDev } from '../shared/env'
+import { pathExistsSync, writeFileSync } from 'fs-extra'
+import { VARLET_CONFIG } from '../shared/constant'
 
 export function runDevServer(port: number, config: any) {
 	const { host } = config.devServer
@@ -24,6 +26,8 @@ export function runDevServer(port: number, config: any) {
 
 export async function dev() {
 	setDev()
+
+  !pathExistsSync(VARLET_CONFIG) && writeFileSync(VARLET_CONFIG, 'module.exports = {}')
 
   await Promise.all([
     buildMobileSiteRoutes(),
