@@ -17,6 +17,7 @@
     "site",
     "src/shims-vue.d.ts",
     "src/shims-md.d.ts",
+    "tsconfig.json",
     "varlet.default.config.js"
   ],
   "repository": {
