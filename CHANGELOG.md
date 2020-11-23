@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://user/haoziqaq/varlet/compare/v0.5.1...v0.5.2) (2020-11-23)
+
+
+### Bug Fixes
+
+* **all changelog:** 修正版本号 ([af8f2b6](https://user/haoziqaq/varlet/commits/af8f2b65d01a436601a5ebfe076be1f75df95c5c))
+* **添加tsconfig.json到cli的依赖列表:** tsconfig.json ([3e55747](https://user/haoziqaq/varlet/commits/3e55747cf3e9877ed30646d13dde35f7c6f0e0a5))
+
+
+
+
+
 ## [0.5.1](https://user/haoziqaq/varlet/compare/v0.6.0...v0.5.1) (2020-11-23)
 
 
