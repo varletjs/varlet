@@ -5,7 +5,7 @@ test('increments value on click', async () => {
   const { getByText } = render(Button)
 
   // getByText returns the first matching node for the provided text, and
-  // throws an error if no elements match or if more than one match is found.
+  // throws an error if no elements match or if more than one match is found.bv
   getByText('Times clicked: 0')
 
   const button = getByText('increment')

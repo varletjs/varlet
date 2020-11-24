@@ -22,3 +22,12 @@ yarn安装:yarn add typescript vue@3.0.2 vue-router@4.0.0-rc.1 @varlet/cli -D
 }
 ```
 
+## 命令介绍
+```
+varlet-cli dev 启动一个开发服务器文档站点
+varlet-cli build 打包文档站点代码
+varlet-cli compile 编译出 es,cjs,umd规范的组件库代码
+varlet-cli create <name>创建一个组件
+varlet-cli jest 测试src下所有的单元测试脚本
+```
+

@@ -7,7 +7,6 @@
 
 <script lang="ts">
 import { defineComponent, ref, Ref } from 'vue'
-import '../styles/common.less'
 
 export default defineComponent({
   name: 'VarletButton',
@@ -25,6 +24,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../styles/common.less';
 .varlet {
   display: flex;
 }
