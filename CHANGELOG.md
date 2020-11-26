@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.7](https://user/haoziqaq/varlet/compare/v0.5.6...v0.5.7) (2020-11-26)
+
+
+### Bug Fixes
+
+* **ui:** ripple指令原型完成 ([43f8665](https://user/haoziqaq/varlet/commits/43f8665e3254fe66b69ca542c9c5daa49a30cce4))
+
+
+
+
+
 ## [0.5.6](https://user/haoziqaq/varlet/compare/v0.5.5...v0.5.6) (2020-11-23)
 
 
