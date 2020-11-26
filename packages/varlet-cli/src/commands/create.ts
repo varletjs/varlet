@@ -63,7 +63,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.example-container {
+.example {
   background: antiquewhite;
 }
 </style>

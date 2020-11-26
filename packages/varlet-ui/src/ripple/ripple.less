@@ -1,0 +1,18 @@
+.varlet {
+
+  &-ripple {
+    position: absolute;
+    transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    opacity: 0;
+    will-change: transform, opacity;
+    pointer-events: none;
+
+    &--enter {
+      position: relative;
+      z-index: 1;
+    }
+  }
+}

@@ -1,8 +1,11 @@
 import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
 import { createBaseConfig, createBasePlugins } from './webpack.base.config'
+import { getVarletConfig } from './varlet.config'
+import { accessProperty } from '../shared/fsUtils'
 
 export function getDevConfig() {
+  const varletConfig = getVarletConfig()
   return merge(createBaseConfig() as any, {
     mode: 'development',
     devtool: 'source-map',
@@ -10,8 +13,8 @@ export function getDevConfig() {
       chunkFilename: 'js/[name].[chunkhash:8].js',
     },
     devServer: {
-      port: 8080,
-      host: 'localhost',
+      port: accessProperty(varletConfig, 'port'),
+      host: accessProperty(varletConfig, 'host'),
       publicPath: '/',
       stats: 'errors-only',
       disableHostCheck: true,

@@ -1,5 +1,7 @@
 module.exports = {
 	namespace: 'varlet',
+  host: 'localhost',
+  port: 8080,
 	pc: {
 		title: 'Varlet 组件库文档',
 		description: 'Varlet 组件库文档',
