@@ -44,6 +44,7 @@ export async function compileSFC(path: string, modules: string | boolean = false
       content = injectRender(content, code)
       // script
       await compileScript(content, replaceExt(path, 'Sfc.ts'), modules)
+
       // style
       styles.forEach((style: SFCStyleBlock, index: number) => {
         const stylePath = replaceExt(path, `Sfc${index === 0 ? '' : index}.${style.lang}`)

@@ -35,7 +35,7 @@
           </div>
           <div
             class="varlet-skeleton__row"
-            v-for="(r, index) in Array.from({ length: row - 1 })"
+            v-for="(r, index) in row"
             :key="r"
             :style="{ width: rowWidth[index] }"
           >
