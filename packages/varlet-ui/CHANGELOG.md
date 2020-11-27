@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.13](https://github.com/haoziqaq/varlet/compare/v0.5.10...v0.5.13) (2020-11-27)
+
+
+### Bug Fixes
+
+* **ui/skeleton:** 修复row的迭代bug ([d1640ac](https://github.com/haoziqaq/varlet/commit/d1640ac6da277ef5023b0cfb136c5a0787d370cd))
+
+
+
+
+
 ## [0.5.10](https://github.com/haoziqaq/varlet/compare/v0.5.9...v0.5.10) (2020-11-27)
 
 
