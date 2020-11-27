@@ -1,33 +1,40 @@
 <template>
   <div class="example">
-    <div v-varlet-ripple class="example__button">长按钮水波纹</div>
+    <app-type>基本使用</app-type>
+    <div class="example__button" v-ripple>基本使用</div>
+
+    <app-type>修改颜色</app-type>
+    <div class="example__button" v-ripple="{ color: 'red' }">修改颜色</div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import VarletRipple from '..'
+import Ripple from '..'
 
 export default defineComponent({
   name: 'RippleExample',
   directives: {
-    VarletRipple
+    Ripple
   }
 })
 </script>
 
 <style scoped lang="less">
 .example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
 
   &__button {
     width: 200px;
     height: 70px;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 0 1px #ddd;
+    box-shadow: 0 0 3px 3px #ddd;
     text-align: center;
     line-height: 70px;
     box-sizing: border-box;
+    margin-bottom: 20px;
   }
 }
 </style>

@@ -1,0 +1,111 @@
+@skeleton-content-padding: 16px;
+
+@skeleton-card-height: 160px;
+@skeleton-card-background-color: rgba(0, 0, 0, .12);
+
+@skeleton-animation-background: linear-gradient(
+  90deg,
+  hsla(0, 0%, 100%, 0),
+  hsla(0, 0%, 100%, .3),
+  hsla(0, 0%, 100%, 0)
+);
+
+@skeleton-avatar-size: 34px;
+@skeleton-avatar-background-color: rgba(0, 0, 0, .12);
+
+@skeleton-title-width: 50%;
+@skeleton-title-background-color: rgba(0, 0, 0, .12);
+
+@skeleton-row-height: 16px;
+
+@keyframes varlet-skeleton-animation {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.varlet-skeleton {
+  width: 100%;
+
+  &__content {
+    padding: @skeleton-content-padding;
+  }
+
+  &__card {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: @skeleton-card-height;
+    background-color: @skeleton-card-background-color;
+    margin-bottom: 16px;
+  }
+
+  &__article {
+    display: flex;
+    width: 100%;
+  }
+
+  &__avatar {
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    width: @skeleton-avatar-size;
+    height: @skeleton-avatar-size;
+    border-radius: 50%;
+    background-color: @skeleton-avatar-background-color;
+    margin-right: 16px;
+  }
+
+  &__section {
+    width: 100%;
+    padding-top: 8px;
+  }
+
+  &__title {
+    position: relative;
+    overflow: hidden;
+    width: @skeleton-title-width;
+    height: @skeleton-row-height;
+    background-color: @skeleton-title-background-color;
+    border-radius: 10px;
+  }
+
+  &__row {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: @skeleton-row-height;
+    background-color: @skeleton-title-background-color;
+    margin-top: 16px;
+    border-radius: 10px;
+  }
+
+  &__fullscreen {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: @skeleton-title-background-color;
+  }
+
+  &--animation {
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      animation: varlet-skeleton-animation 1.2s infinite;
+      background: @skeleton-animation-background;
+    }
+  }
+}

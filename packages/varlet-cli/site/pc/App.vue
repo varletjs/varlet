@@ -43,7 +43,7 @@
 				<p v-for="item in menu" class="varlet-site-nav__item">
 					<span v-if="item.isTitle">{{ item.text[language] }}</span>
 					<router-link :to="'/' + language + '/' + item.doc" v-else>
-						{{ item.text[language] }}
+            {{ item.text[language] }}
 					</router-link>
 				</p>
 			</div>

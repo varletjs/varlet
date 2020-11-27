@@ -3,7 +3,6 @@ import { bigCamelize, replaceExt } from '../shared/fsUtils'
 import { replaceStyleExt } from './compileStyle'
 import { writeFileSync, readFileSync, removeSync } from 'fs-extra'
 import { resolve } from 'path'
-import logger from '../shared/logger'
 
 export const IMPORT_VUE_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.vue(\s*['"`])(?!\s*['"`])/g
 export const REQUIRE_VUE_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\.{1,2}\/.+)\.vue(\s*['"`]\))(?!\s*['"`])/g

@@ -1,0 +1,69 @@
+<template>
+  <div class="example">
+    <app-type>基本使用</app-type>
+    <varlet-skeleton
+      v-model:loading="loading"
+      title
+      :row="3"
+    >
+      加载的内容
+    </varlet-skeleton>
+
+    <app-type>自定义段落高度</app-type>
+    <varlet-skeleton
+      v-model:loading="loading"
+      title
+      :row="3"
+      :row-width="['300px', '200px', '100px']"
+    >
+      加载的内容
+    </varlet-skeleton>
+
+    <app-type>显示头像</app-type>
+    <varlet-skeleton
+      v-model:loading="loading"
+      avatar
+      title
+      :row="3"
+    >
+      加载的内容
+    </varlet-skeleton>
+
+    <app-type>显示卡片</app-type>
+    <varlet-skeleton
+      v-model:loading="loading"
+      card
+      avatar
+      title
+      :row="3"
+    >
+      加载的内容
+    </varlet-skeleton>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref, Ref } from 'vue'
+import Skeleton from '..'
+
+export default defineComponent({
+  name: 'SkeletonExample',
+  components: {
+    [Skeleton.name]: Skeleton
+  },
+  setup() {
+    const loading: Ref<boolean> = ref(true)
+
+    return { loading }
+  }
+})
+</script>
+
+<style scoped lang="less">
+.example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+}
+</style>

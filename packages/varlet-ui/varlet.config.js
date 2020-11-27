@@ -20,39 +20,18 @@ module.exports = {
 		menu: [
 			{
 				text: {
-					zh_CN: '开发指南',
-					en_US: 'Essentials',
+					zh_CN: '水波指令',
+					en_US: 'Ripple',
 				},
-				isTitle: true,
+				doc: 'ripple',
 			},
-			{
-				text: {
-					zh_CN: '快速上手',
-					en_US: 'Quickstart',
-				},
-				doc: 'quickstart',
-			},
-			{
-				text: {
-					zh_CN: '基础组件',
-					en_US: 'Basic Components',
-				},
-				isTitle: true,
-			},
-			{
-				text: {
-					zh_CN: 'Button 按钮',
-					en_US: 'Button',
-				},
-				doc: 'button',
-			},
-			{
-				text: {
-					zh_CN: 'CheckBox 复选框',
-					en_US: 'CheckBox',
-				},
-				doc: 'checkbox',
-			},
+      {
+        text: {
+          zh_CN: '骨架屏',
+          en_US: 'Skeleton',
+        },
+        doc: 'skeleton',
+      },
 		],
 		language: 'zh_CN',
 	},
