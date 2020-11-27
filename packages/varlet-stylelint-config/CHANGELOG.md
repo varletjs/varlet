@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.9](https://github.com/haoziqaq/varlet/compare/v0.5.8...v0.5.9) (2020-11-27)
+
+
+### Bug Fixes
+
+* **all package.json:** 修改了peer依赖 改成了依赖大于目标版本 ([294eced](https://github.com/haoziqaq/varlet/commit/294ecedce9e2f4bb85eea6556eac34e450818d05))
+
+
+
+
+
 ## [0.5.1](https://github.com/haoziqaq/varlet/compare/v0.6.0...v0.5.1) (2020-11-23)
 
 
