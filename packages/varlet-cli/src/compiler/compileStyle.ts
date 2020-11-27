@@ -29,6 +29,14 @@ export async function compileLess(path: string) {
   writeFileSync(replaceExt(path, '.css'), clearEmptyLine(css), 'utf-8')
 }
 
+export function buildStyleEntry(dir: string) {
+  const styleDir: string = resolve(dir, './style')
+  const styleIndex: string = resolve(dir, './style/index.js')
+
+  !pathExistsSync(styleDir) && mkdirSync(styleDir)
+  !pathExistsSync(styleIndex) && writeFileSync(styleIndex, '', 'utf-8')
+}
+
 export function emitStyleEntry(path: string, modules: string | boolean = false) {
   const { ext, dir, base } = parse(path)
   const styleDir: string = resolve(dir, './style')

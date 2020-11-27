@@ -6,11 +6,11 @@ import { resolve } from 'path'
 import { compileScriptFile } from './compileScript'
 import { compileLess } from './compileStyle'
 
-export async function compileComponent(path: string, modules: string | boolean = false) {
-  const dirs = await readdir(path)
+export async function compileComponent(dir: string, modules: string | boolean = false) {
+  const dirs = await readdir(dir)
   await Promise.all(
     dirs.map((filename) => {
-      const filePath = resolve(path, filename)
+      const filePath = resolve(dir, filename)
       ;[TESTS_DIR_NAME, EXAMPLE_DIR_NAME, DOCS_DIR_NAME].includes(filename) && removeSync(filePath)
       return compileFile(filePath, modules)
     })
