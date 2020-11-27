@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.10](https://github.com/haoziqaq/varlet/compare/v0.5.9...v0.5.10) (2020-11-27)
+
+
+### Bug Fixes
+
+* **cli ui:** 统一给每个包增加另一个style入口 方便babel-import-plugin解析 ([cd1ef49](https://github.com/haoziqaq/varlet/commit/cd1ef4957d9659c840d710bc423f44234d8340d2))
+
+
+
+
+
 ## [0.5.9](https://github.com/haoziqaq/varlet/compare/v0.5.8...v0.5.9) (2020-11-27)
 
 
