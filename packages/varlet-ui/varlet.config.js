@@ -1,7 +1,53 @@
+const menu = [
+	{
+		text: {
+			zh_CN: '开发指南',
+			en_US: 'Essentials',
+		},
+		isTitle: true,
+	},
+	{
+		text: {
+			zh_CN: '快速上手',
+			en_US: 'Quickstart',
+		},
+		doc: 'quickstart',
+	},
+	{
+		text: {
+			zh_CN: '基础组件',
+			en_US: 'Basic Components',
+		},
+		isTitle: true,
+	},
+	{
+		text: {
+			zh_CN: 'Button 按钮',
+			en_US: 'Button',
+		},
+		doc: 'button',
+	},
+	{
+		text: {
+			zh_CN: '水波指令',
+			en_US: 'Ripple',
+		},
+		doc: 'ripple',
+	},
+	{
+		text: {
+			zh_CN: '骨架屏',
+			en_US: 'Skeleton',
+		},
+		doc: 'skeleton',
+	},
+]
+
 module.exports = {
 	namespace: 'varlet',
-  host: '192.168.1.181',
-  port: 8080,
+	// host: '192.168.1.181',
+	host: '0.0.0.0',
+	port: 8080,
 	pc: {
 		title: 'Varlet 组件库示例',
 		description: 'Varlet 组件库示例',
@@ -25,13 +71,13 @@ module.exports = {
 				},
 				doc: 'ripple',
 			},
-      {
-        text: {
-          zh_CN: '骨架屏',
-          en_US: 'Skeleton',
-        },
-        doc: 'skeleton',
-      },
+			{
+				text: {
+					zh_CN: '骨架屏',
+					en_US: 'Skeleton',
+				},
+				doc: 'skeleton',
+			},
 		],
 		language: 'zh_CN',
 	},
@@ -39,5 +85,5 @@ module.exports = {
 		title: 'Varlet 组件库示例',
 		description: 'Varlet 组件库示例',
 		logo: 'https://cn.vuejs.org/images/logo.png',
-	}
+	},
 }
