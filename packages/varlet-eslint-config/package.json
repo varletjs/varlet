@@ -31,6 +31,6 @@
   },
   "gitHead": "5dabda353dc88340816ddc6f6ac8081c0680908f",
   "peerDependencies": {
-    "eslint": "^7.12.1"
+    "eslint": ">=7.12.1"
   }
 }

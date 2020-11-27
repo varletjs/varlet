@@ -33,7 +33,7 @@
     "jest": "varlet-cli jest"
   },
   "peerDependencies": {
-    "vue": "3.0.2"
+    "vue": ">=3.0.2"
   },
-  "gitHead": "5dabda353dc88340816ddc6f6ac8081c0680908f"
+  "gitHead": "ddefaa2451eee17eb1e834a64a5b00e50d07f0ee"
 }
