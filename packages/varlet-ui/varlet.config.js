@@ -78,6 +78,13 @@ module.exports = {
 				},
 				doc: 'skeleton',
 			},
+			{
+				text: {
+					zh_CN: '加载',
+					en_US: 'Loading',
+				},
+				doc: 'loading',
+			},
 		],
 		language: 'zh_CN',
 	},

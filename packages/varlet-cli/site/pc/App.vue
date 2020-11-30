@@ -48,10 +48,7 @@
 			</div>
 			<router-view />
 			<div class="varlet-site-mobile">
-				<iframe
-					:src="`./mobile.html#/${componentName}`"
-					:style="simulatorStyle"
-				></iframe>
+				<iframe :src="`./mobile.html#/${componentName}`"></iframe>
 			</div>
 		</div>
 	</div>
@@ -68,14 +65,7 @@ import {
 } from 'vue'
 
 export default defineComponent({
-	computed: {
-		simulatorStyle() {
-			const height = Math.min(640, window.innerHeight - 90)
-			return {
-				height: height + 'px',
-			}
-		},
-	},
+	computed: {},
 	data() {
 		return {
 			menu: [],
@@ -123,6 +113,7 @@ body {
 iframe {
 	display: block;
 	width: 100%;
+	height: 100%;
 	border: none;
 }
 

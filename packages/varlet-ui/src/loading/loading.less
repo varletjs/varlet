@@ -1,0 +1,324 @@
+.varlet-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__wave {
+    @loading-wave-width: 100px;
+    @loading-wave-height: 50px;
+    @loading-cube-size-item-width: 6px;
+
+    text-align: center;
+
+    &-large {
+      width: @loading-wave-width;
+      height: @loading-wave-height;
+    }
+
+    &-medium {
+      width: @loading-wave-width * 0.8;
+      height: @loading-wave-height * 0.8;
+    }
+
+    &-small {
+      width: @loading-wave-width * 0.6;
+      height: @loading-wave-height * 0.6;
+    }
+
+    &-item {
+      height: 100%;
+      display: inline-block;
+      margin-left: 5px;
+      animation: 1.2s ease-in-out infinite wave;
+
+      &:nth-child(1) {
+        animation-delay: -1.2s;
+        margin-left: 0;
+      }
+
+      &:nth-child(2) {
+        animation-delay: -1.1s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: -1s;
+      }
+
+      &:nth-child(4) {
+        animation-delay: -.9s;
+      }
+
+      &:nth-child(5) {
+        animation-delay: -.8s;
+      }
+    }
+
+    &-item-large {
+      width: @loading-cube-size-item-width;
+    }
+
+    &-item-medium {
+      width: @loading-cube-size-item-width - 1;
+
+    }
+
+    &-item-small {
+      width: @loading-cube-size-item-width - 2;
+    }
+
+    @keyframes wave {
+      0%, 40%, 100% {
+        transform: scaleY(0.4);
+      }
+      20% {
+        transform: scaleY(1);
+      }
+    }
+
+  }
+
+  &__cube {
+    @loading-cube-size-width: 100px;
+    @loading-cube-size-height: 50px;
+    @loading-cube-size-item-width: 15px;
+    @loading-cube-size-item-height: 15px;
+
+    display: flex;
+    align-items: center;
+
+    &-large {
+      width: @loading-cube-size-width;
+      height: @loading-cube-size-height;
+    }
+
+    &-medium {
+      width: @loading-cube-size-width * 0.8;
+      height: @loading-cube-size-height * 0.8;
+    }
+
+    &-small {
+      width: @loading-cube-size-width * 0.6;
+      height: @loading-cube-size-height * 0.6;
+    }
+
+    &-item {
+      display: inline-block;
+      margin-right: 5px;
+      transform-origin: right bottom;
+      animation: 2s ease infinite cube;
+
+      &:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+
+      &:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      &:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+
+    }
+
+    &-item-large {
+      height: @loading-cube-size-item-height;
+      width: @loading-cube-size-item-width;
+    }
+
+    &-item-medium {
+      height: @loading-cube-size-item-height * 0.8;
+      width: @loading-cube-size-item-width * 0.8;
+
+    }
+
+    &-item-small {
+      height: @loading-cube-size-item-height * 0.6;
+      width: @loading-cube-size-item-width * 0.6;
+    }
+
+    @keyframes cube {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: rotate(90deg) scale(0.3);
+      }
+    }
+
+  }
+
+  &__rect {
+    @loading-rect-size-width: 100px;
+    @loading-rect-size-height: 50px;
+    @loading-rect-size-item-width: 8px;
+    @loading-rect-size-item-height: 20px;
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
+    &-large {
+      width: @loading-rect-size-width;
+      height: @loading-rect-size-height;
+    }
+
+    &-medium {
+      width: @loading-rect-size-width * 0.8;
+      height: @loading-rect-size-height * 0.8;
+    }
+
+    &-small {
+      width: @loading-rect-size-width * 0.6;
+      height: @loading-rect-size-height * 0.6;
+    }
+
+    &-item {
+      animation: 4s ease-in-out infinite rect;
+
+      &:nth-child(1) {
+        animation-delay: 1.75s;
+      }
+
+      &:nth-child(2) {
+        animation-delay: 1.5s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 1.25s;
+      }
+
+      &:nth-child(4) {
+        animation-delay: 1s;
+      }
+
+      &:nth-child(5) {
+        animation-delay: .75s;
+      }
+
+      &:nth-child(6) {
+        animation-delay: .5s;
+      }
+
+      &:nth-child(7) {
+        animation-delay: .25s;
+      }
+
+      &:nth-child(8) {
+        animation-delay: 0s;
+      }
+    }
+
+    &-item-large {
+      height: @loading-rect-size-item-height;
+      width: @loading-rect-size-item-width;
+    }
+
+    &-item-medium {
+      height: @loading-rect-size-item-height * 0.75;
+      width: @loading-rect-size-item-width * 0.75;
+
+    }
+
+    &-item-small {
+      height: @loading-rect-size-item-height * 0.5;
+      width: @loading-rect-size-item-width * 0.5;
+    }
+
+    @keyframes rect {
+      0% {
+        opacity: .3;
+      }
+      25% {
+        opacity: 1;
+      }
+      50% {
+        opacity: .3;
+      }
+      65% {
+        opacity: 1;
+      }
+      100% {
+        opacity: .3;
+      }
+    }
+  }
+
+  &__disappear {
+    @loading-disappear-size-width: 100px;
+    @loading-disappear-size-height: 50px;
+    @loading-disappear-size-item-width: 15px;
+    @loading-disappear-size-item-height: 15px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: nowrap;
+
+    &-large {
+      width: @loading-disappear-size-width;
+      height: @loading-disappear-size-height;
+    }
+
+    &-medium {
+      width: @loading-disappear-size-width * 0.8;
+      height: @loading-disappear-size-height * 0.8;
+    }
+
+    &-small {
+      width: @loading-disappear-size-width * 0.6;
+      height: @loading-disappear-size-height * 0.6;
+    }
+
+    &-item {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      animation: 0.8s ease-in-out infinite alternate disappear;
+
+      &:nth-child(1) {
+        animation-delay: -.4s;
+      }
+
+      &:nth-child(2) {
+        animation-delay: -.2s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 0s;
+      }
+    }
+
+    &-item-large {
+      height: @loading-disappear-size-item-height;
+      width: @loading-disappear-size-item-width;
+    }
+
+    &-item-medium {
+      height: @loading-disappear-size-item-height * 0.8;
+      width: @loading-disappear-size-item-width * 0.8;
+
+    }
+
+    &-item-small {
+      height: @loading-disappear-size-item-height * 0.6;
+      width: @loading-disappear-size-item-width * 0.6;
+    }
+  }
+
+  @keyframes disappear {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
