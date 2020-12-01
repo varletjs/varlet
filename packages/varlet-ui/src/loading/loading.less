@@ -1,14 +1,16 @@
-@loading-normal-width: 64px;
-@loading-normal-height: 36px;
+@import "../styles/var";
 
-@loading-large-width: 78px;
-@loading-large-height: 44px;
+@loading-normal-width: 50px;
+@loading-normal-height: @font-size-md + 2;
 
-@loading-small-width: 50px;
-@loading-small-height: 28px;
+@loading-large-width: 64px;
+@loading-large-height: @font-size-lg + 2;
 
-@loading-mini-width: 36px;
-@loading-mini-height: 22px;
+@loading-small-width: 36px;
+@loading-small-height: @font-size-sm + 2;
+
+@loading-mini-width: 22px;
+@loading-mini-height: @font-size-xs + 2;
 
 .varlet-loading {
   display: flex;
@@ -16,7 +18,7 @@
   align-items: center;
 
   &__wave {
-    @loading-cube-size-item-width: 6px;
+    @loading-cube-size-item-width: 5px;
     @loading-cube-size-item-margin: 5px;
 
     text-align: center;
@@ -131,7 +133,7 @@
     &-item {
       display: inline-block;
       transform-origin: right bottom;
-      animation: 2s ease infinite cube;
+      animation: 1.5s ease infinite cube;
 
       &:nth-child(1) {
         animation-delay: 0.2s;
@@ -192,7 +194,7 @@
 
   &__rect {
     @loading-rect-size-item-width: 8px;
-    @loading-rect-size-item-height: 20px;
+    @loading-rect-size-item-height: 100%;
 
     display: flex;
     flex-wrap: nowrap;
@@ -220,7 +222,7 @@
     }
 
     &-item {
-      animation: 4s ease-in-out infinite rect;
+      animation: 2s ease-in-out infinite rect;
 
       &:nth-child(1) {
         animation-delay: 1.75s;
@@ -326,7 +328,7 @@
 
     &-item {
       border-radius: 50%;
-      animation: 0.8s ease-in-out infinite alternate disappear;
+      animation: 0.5s ease-in-out infinite alternate disappear;
 
       &:nth-child(1) {
         animation-delay: -.4s;
