@@ -15,19 +15,19 @@ export default defineComponent({
 ### Type
 
 ```html
-<varlet-loading type="cube" />
-<varlet-loading type="wave" />
-<varlet-loading type="rect" />
-<varlet-loading type="disappear" />
+<var-loading type="cube" />
+<var-loading type="wave" />
+<var-loading type="rect" />
+<var-loading type="disappear" />
 ```
 
 ### Size
 
 ```html
-<varlet-loading type="cube" size="small" />
-<varlet-loading type="wave" size="small" />
-<varlet-loading type="rect" size="small" />
-<varlet-loading type="disappear" size="small" />
+<var-loading type="cube" size="small" />
+<var-loading type="wave" size="small" />
+<var-loading type="rect" size="small" />
+<var-loading type="disappear" size="small" />
 ```
 
 ## API

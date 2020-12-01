@@ -44,7 +44,8 @@ const menu = [
 ]
 
 module.exports = {
-	namespace: 'varlet',
+	namespace: 'var',
+	title: 'varlet',
 	host: '0.0.0.0',
 	port: 8080,
 	pc: {

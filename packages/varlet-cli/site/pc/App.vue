@@ -3,7 +3,7 @@
 		<div class="varlet-site-header">
 			<span class="varlet-site-header__logo">
 				<img :src="header.logo" alt="" />
-				<span>{{ namespace }}</span>
+				<span>{{ title }}</span>
 			</span>
 			<span class="varlet-site-header__nav">
 				<a
@@ -72,7 +72,7 @@ export default defineComponent({
 			language: '',
 			header: {},
 			componentName: 'button',
-			namespace: '',
+			title: '',
 			versionList: ['2.10.14', '1.x', '3.x'],
 			isHideVersion: true,
 		}
@@ -87,12 +87,12 @@ export default defineComponent({
 	},
 	created() {
 		const _this: any = this
-		const { pc = {}, namespace } = _this.$config
+		const { pc = {}, title } = _this.$config
 		const { description, header = {}, logo, menu = [], language } = pc
 		this.menu = menu
 		this.language = language
 		this.header = header
-		this.namespace = namespace
+		this.title = title
 	},
 	watch: {
 		$route(to, from) {
