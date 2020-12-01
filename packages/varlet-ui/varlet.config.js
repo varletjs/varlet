@@ -45,7 +45,7 @@ const menu = [
 
 module.exports = {
 	namespace: 'varlet',
-  host: 'localhost',
+  host: '0.0.0.0',
   port: 8080,
 	pc: {
 		title: 'Varlet 组件库示例',

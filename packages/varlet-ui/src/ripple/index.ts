@@ -56,7 +56,8 @@ function createRipple(this: RippleHTMLElement, event: TouchEvent) {
   ripple.dataset.createdAt = String(performance.now())
 
   const styles = window.getComputedStyle(this)
-  styles.position === 'static' && this.classList.add('varlet-ripple--enter')
+  styles.zIndex === 'auto' && this.classList.add('varlet-ripple--flat')
+  styles.position === 'static' && this.classList.add('varlet--relative')
 
   this.classList.add('varlet--hidden')
   this.appendChild(ripple)
@@ -82,7 +83,8 @@ function removeRipple(this: RippleHTMLElement) {
     setTimeout(() => {
       const ripples: NodeListOf<RippleHTMLElement> = this.querySelectorAll('.varlet-ripple')
       if (ripples.length === 1) {
-        this.classList.remove('varlet-ripple--enter')
+        this.classList.remove('varlet-ripple--flat')
+        this.classList.remove('varlet--relative')
         this.classList.remove('varlet--hidden')
       }
       lastRipple.parentNode?.removeChild(lastRipple)

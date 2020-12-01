@@ -17,9 +17,7 @@
     @click="trigger"
   >
     <varlet-loading v-if="loading"></varlet-loading>
-    <div v-else>
-      <slot/>
-    </div>
+    <slot v-else/>
   </button>
 </template>
 
