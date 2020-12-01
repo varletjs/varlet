@@ -10,6 +10,7 @@ import { VARLET_CONFIG } from '../shared/constant'
 
 export function runDevServer(port: number, config: any) {
 	const { host } = config.devServer
+  config.devServer.port = port
 	const server = new WebpackDevServer(webpack(config), config.devServer)
 
 	;(server as any).showStatus = function () {}

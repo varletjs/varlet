@@ -12,7 +12,8 @@ interface RippleStyles {
 }
 
 interface RippleOptions {
-  color?: string
+  color?: string,
+  disabled?: string
 }
 
 interface RippleHTMLElement extends HTMLElement {
@@ -39,6 +40,10 @@ function computeRippleStyles(element: RippleHTMLElement, event: TouchEvent): Rip
 }
 
 function createRipple(this: RippleHTMLElement, event: TouchEvent) {
+  if (this._ripple?.disabled) {
+    return
+  }
+
   const { x, y, centerX, centerY, size }: RippleStyles = computeRippleStyles(this, event)
 
   const ripple: RippleHTMLElement = document.createElement('div')
@@ -100,10 +105,6 @@ function unmounted(el: RippleHTMLElement) {
 }
 
 function updated(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>) {
-  if (binding.value === binding.oldValue) {
-    return
-  }
-
   el._ripple = binding.value
 }
 
@@ -112,7 +113,7 @@ const Ripple: Directive & Plugin = {
   unmounted,
   updated,
   install(app: any) {
-    app.directive('VarletRipple', this)
+    app.directive('ripple', this)
   }
 }
 
