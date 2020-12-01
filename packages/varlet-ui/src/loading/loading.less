@@ -361,14 +361,16 @@
       height: @loading-disappear-size-item-height * 0.4;
       width: @loading-disappear-size-item-width * 0.4;
     }
+
+    @keyframes disappear {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
   }
 
-  @keyframes disappear {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
 }

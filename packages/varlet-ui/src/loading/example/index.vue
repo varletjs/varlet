@@ -73,6 +73,10 @@ export default defineComponent({
 	&__text-block {
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: space-between;
+		.varlet-loading {
+			padding: 8px 0;
+		}
 	}
 }
 </style>
