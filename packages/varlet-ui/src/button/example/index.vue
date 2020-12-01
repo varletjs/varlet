@@ -12,7 +12,7 @@
     <varlet-button class="example__button" type="danger" size="small">测试</varlet-button>
     <varlet-button class="example__button" type="danger" size="mini">测试</varlet-button>
 
-    <varlet-button class="example__button" type="info" size="normal" block>测试测试测试测试测试测试测试测试</varlet-button>
+    <varlet-button class="example__button" type="info" size="normal" block>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</varlet-button>
     <varlet-button class="example__button" type="warning" size="large" block>测试</varlet-button>
 
     <varlet-button
@@ -29,13 +29,22 @@
       size="large"
       background="rgb(114, 50, 221)"
       color="rgb(255,192,0)"
-      @click="trigger"
     >
       修改颜色
     </varlet-button>
 
-    <varlet-button class="example__button" type="primary"  @click="trigger">切换状态</varlet-button>
+    <varlet-button class="example__button" type="primary" @click="trigger">切换状态</varlet-button>
     <varlet-button class="example__button" type="plain" size="large" :disabled="disabled">{{ disabled ? '禁用' : '启用' }}</varlet-button>
+
+    <varlet-button
+      class="example__button"
+      type="success"
+      size="large"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      给老子转!
+    </varlet-button>
   </div>
 </template>
 
@@ -50,10 +59,14 @@ export default defineComponent({
   },
   setup() {
     const disabled: Ref<boolean> = ref(true)
+    const loading: Ref<boolean> = ref(true)
+
     return {
       disabled,
+      loading,
       trigger() {
         disabled.value = !disabled.value
+        loading.value = !loading.value
       }
     }
   }

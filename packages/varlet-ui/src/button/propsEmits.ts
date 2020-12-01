@@ -23,6 +23,11 @@ export const props = {
     default: 'normal',
     validator: sizeValidator
   },
+  // 加载状态
+  loading: {
+    type: Boolean,
+    default: false
+  },
   // 原型按钮
   round: {
     type: Boolean,
@@ -48,4 +53,6 @@ export const props = {
   }
 }
 
-export const emits = ['click']
+export const emits = {
+  click: null
+}

@@ -127,7 +127,7 @@ export default defineComponent({
 		},
 		color: {
 			type: String,
-			default: '#00BCD4',
+			default: 'currentColor',
 		},
 		fontColor: {
 			type: String,

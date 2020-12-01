@@ -4,23 +4,10 @@
 
 @button-border-radius: 4px;
 
-@button-normal-width: 64px;
-@button-normal-height: 36px;
-@button-normal-padding: 3px 16px;
-
-@button-large-width: 78px;
-@button-large-height: 44px;
-@button-large-padding: 6px 20px;
-
-@button-small-width: 50px;
-@button-small-height: 28px;
-@button-small-padding: 2px 12px;
-
-@button-mini-width: 36px;
-@button-mini-height: 22px;
-@button-mini-padding: 1px 8px;
-
-@button-round-size: auto;
+@button-normal-padding: 10px 16px;
+@button-large-padding: 13px 23px;
+@button-small-padding: 7px 12px;
+@button-mini-padding: 4px 10px;
 @button-round-padding: 7px;
 
 @button-disabled-color: rgba(0,0,0,.26);
@@ -35,6 +22,7 @@
   border-radius: @button-border-radius;
   user-select: none;
   transition: box-shadow .2s;
+  will-change: box-shadow;
 
   &:active {
     box-shadow:
@@ -73,36 +61,26 @@
   }
 
   &--normal {
-    min-width: @button-normal-width;
-    min-height: @button-normal-height;
     padding: @button-normal-padding;
     font-size: @font-size-md;
   }
 
   &--large {
-    min-width: @button-large-width;
-    min-height: @button-large-height;
     padding: @button-large-padding;
     font-size: @font-size-lg;
   }
 
   &--small {
-    min-width: @button-small-width;
-    min-height: @button-small-height;
     padding: @button-small-padding;
     font-size: @font-size-sm;
   }
 
   &--mini {
-    min-width: @button-mini-width;
-    min-height: @button-mini-height;
     padding: @button-mini-padding;
     font-size: @font-size-xs;
   }
 
   &--round {
-    min-width: @button-round-size;
-    min-height: @button-round-size;
     padding: @button-round-padding;
     border-radius: 50%;
   }
