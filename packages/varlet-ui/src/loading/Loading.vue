@@ -117,35 +117,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { props } from './propsEmits'
 
 export default defineComponent({
 	name: 'VarletLoading',
-	props: {
-		type: {
-			type: String,
-			default: 'wave',
-		},
-		color: {
-			type: String,
-			default: 'currentColor',
-		},
-		fontColor: {
-			type: String,
-			default: '#ccc',
-		},
-		size: {
-			type: String,
-			default: 'normal',
-		},
-		fontSize: {
-			type: Number,
-			default: 14,
-		},
-		vertical: {
-			type: Boolean,
-			default: true,
-		},
-	},
+	props,
 })
 </script>
 
