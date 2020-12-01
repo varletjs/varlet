@@ -5,7 +5,6 @@
 				<img :src="header.logo" alt="" />
 				<span>{{ namespace }}</span>
 			</span>
-			<!--			<input type="text" :placeholder="header.search[language]" />-->
 			<span class="varlet-site-header__nav">
 				<a
 					target="_blank"
@@ -43,16 +42,13 @@
 				<p v-for="item in menu" class="varlet-site-nav__item">
 					<span v-if="item.isTitle">{{ item.text[language] }}</span>
 					<router-link :to="'/' + language + '/' + item.doc" v-else>
-            {{ item.text[language] }}
+						{{ item.text[language] }}
 					</router-link>
 				</p>
 			</div>
 			<router-view />
 			<div class="varlet-site-mobile">
-				<iframe
-					:src="`./mobile.html#/${componentName}`"
-					:style="simulatorStyle"
-				></iframe>
+				<iframe :src="`./mobile.html#/${componentName}`"></iframe>
 			</div>
 		</div>
 	</div>
@@ -69,29 +65,7 @@ import {
 } from 'vue'
 
 export default defineComponent({
-	setup(props) {
-		// const state = reactive({
-		//   menu: []
-		// })
-		// onMounted(() => {
-		//   const internalInstance = getCurrentInstance()
-		//   const { pc = {} } = (internalInstance as ComponentInternalInstance).appContext.config.globalProperties.$config
-		//   const { description, header = {}, logo, menu = [] } = pc
-		//
-		//   state.menu = menu;
-		//   return {
-		//     state
-		//   }
-		// })
-	},
-	computed: {
-		simulatorStyle() {
-			const height = Math.min(640, window.innerHeight - 90)
-			return {
-				height: height + 'px',
-			}
-		},
-	},
+	computed: {},
 	data() {
 		return {
 			menu: [],
@@ -139,6 +113,7 @@ body {
 iframe {
 	display: block;
 	width: 100%;
+	height: 100%;
 	border: none;
 }
 
@@ -206,7 +181,7 @@ iframe {
 				position: relative;
 				padding-right: 20px;
 
-				&:after {
+				&::after {
 					position: absolute;
 					top: 7px;
 					right: 7px;
@@ -395,7 +370,7 @@ iframe {
 		}
 
 		&-nav {
-      padding: 10px 0;
+			padding: 10px 0;
 			flex: 0 0 220px;
 			position: sticky;
 			height: 100vh;
@@ -443,7 +418,7 @@ iframe {
 			flex: 0 0 360px;
 			top: 30px;
 			position: sticky;
-      margin-top: 30px;
+			margin-top: 30px;
 			margin-right: 30px;
 			height: 85vh;
 			z-index: 1;
