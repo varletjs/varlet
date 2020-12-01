@@ -31,19 +31,4 @@ export const props = {
 		type: String,
 		default: 'currentColor',
 	},
-	// 文字颜色
-	fontColor: {
-		type: String,
-		default: '#ccc',
-	},
-	// 字体大小
-	fontSize: {
-		type: Number,
-		default: 14,
-	},
-	// 是否垂直排列图标和文字内容
-	vertical: {
-		type: Boolean,
-		default: true,
-	},
 }

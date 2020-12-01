@@ -18,32 +18,6 @@
 				<varlet-loading type="disappear" size="small" />
 			</div>
 		</div>
-		<div class="loading-demo__text">
-			<app-type>Text</app-type>
-			<div class="loading-demo__text-block">
-				<varlet-loading type="cube" size="small">加载中</varlet-loading>
-				<varlet-loading type="wave" size="small">加载中</varlet-loading>
-				<varlet-loading type="rect" size="small">加载中</varlet-loading>
-				<varlet-loading type="disappear" size="small">加载中</varlet-loading>
-			</div>
-		</div>
-		<div class="loading-demo__text">
-			<app-type>Horizontal</app-type>
-			<div class="loading-demo__text-block">
-				<varlet-loading type="cube" size="small" :vertical="false">
-					加载中
-				</varlet-loading>
-				<varlet-loading type="wave" size="small" :vertical="false">
-					加载中
-				</varlet-loading>
-				<varlet-loading type="rect" size="small" :vertical="false">
-					加载中
-				</varlet-loading>
-				<varlet-loading type="disappear" size="small" :vertical="false">
-					加载中
-				</varlet-loading>
-			</div>
-		</div>
 	</div>
 </template>
 

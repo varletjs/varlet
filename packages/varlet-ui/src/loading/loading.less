@@ -18,10 +18,12 @@
   align-items: center;
 
   &__wave {
-    @loading-cube-size-item-width: 5px;
-    @loading-cube-size-item-margin: 5px;
+    @loading-wave-size-item-width: 5px;
+    @loading-wave-size-item-margin: 5px;
 
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &-large {
       width: @loading-large-width;
@@ -71,24 +73,24 @@
     }
 
     &-item-large {
-      width: @loading-cube-size-item-width;
-      margin-left: @loading-cube-size-item-margin;
+      width: @loading-wave-size-item-width;
+      margin-left: @loading-wave-size-item-margin;
     }
 
     &-item-normal {
-      width: @loading-cube-size-item-width - 1;
-      margin-left: @loading-cube-size-item-margin - 1;
+      width: @loading-wave-size-item-width - 1;
+      margin-left: @loading-wave-size-item-margin - 1;
 
     }
 
     &-item-small {
-      width: @loading-cube-size-item-width - 2;
-      margin-left: @loading-cube-size-item-margin - 2;
+      width: @loading-wave-size-item-width - 2;
+      margin-left: @loading-wave-size-item-margin - 2;
     }
 
     &-item-mini {
-      width: @loading-cube-size-item-width - 3;
-      margin-left: @loading-cube-size-item-margin - 3;
+      width: @loading-wave-size-item-width - 3;
+      margin-left: @loading-wave-size-item-margin - 3;
     }
 
     @keyframes wave {
@@ -103,8 +105,8 @@
   }
 
   &__cube {
-    @loading-cube-size-item-width: 14px;
-    @loading-cube-size-item-height: 14px;
+    @loading-cube-size-item-width: 10px;
+    @loading-cube-size-item-height: 10px;
     @loading-cube-size-item-margin: 5px;
 
     display: flex;
@@ -161,21 +163,21 @@
     }
 
     &-item-normal {
-      height: @loading-cube-size-item-height - 3;
-      width: @loading-cube-size-item-width  - 3;
+      height: @loading-cube-size-item-height - 2;
+      width: @loading-cube-size-item-width  - 2;
       margin-left: @loading-cube-size-item-margin - 1;
 
     }
 
     &-item-small {
-      height: @loading-cube-size-item-height - 6;
-      width: @loading-cube-size-item-width - 6;
+      height: @loading-cube-size-item-height - 4;
+      width: @loading-cube-size-item-width - 4;
       margin-left: @loading-cube-size-item-margin - 2;
     }
 
     &-item-mini {
-      height: @loading-cube-size-item-height  - 9;
-      width: @loading-cube-size-item-width   - 9;
+      height: @loading-cube-size-item-height  - 6;
+      width: @loading-cube-size-item-width   - 6;
       margin-left: @loading-cube-size-item-margin - 3;
     }
 
@@ -372,9 +374,5 @@
         opacity: 0;
       }
     }
-  }
-
-  &__text {
-    margin: 5px;
   }
 }

@@ -1,8 +1,5 @@
 <template>
-	<div
-		class="varlet-loading"
-		:style="{ flexDirection: vertical ? 'column' : 'row' }"
-	>
+	<div class="varlet-loading">
 		<div
 			:class="`varlet-loading__wave varlet-loading__wave-${size}`"
 			v-if="type === 'wave'"
@@ -106,12 +103,6 @@
 				:class="`varlet-loading__disappear-item varlet-loading__disappear-item-${size}`"
 			></div>
 		</div>
-		<span
-			class="varlet-loading__text"
-			:style="{ fontSize: fontSize + 'px', color: fontColor }"
-		>
-			<slot></slot>
-		</span>
 	</div>
 </template>
 
