@@ -34,14 +34,8 @@ export default defineComponent({
 
 ### Props
 
-| Attribute | Description                                    | Type     | Default   |
-| --------- | ---------------------------------------------- | -------- | --------- |
-| color     | Loading color                                  | _string_ | `#00BCD4` |
-| type      | Can be set to `wave` `cube` `rect` `disappear` | _string_ | `wave`    |
-| size      | Can be set to `large` `normal` `small` `mini`  | _string_ | `normal`  |
-
-### Slots
-
-| Name    | Description  |
-| ------- | ------------ |
-| default | Loading text |
+| Attribute | Description                                    | Type     | Default        |
+| --------- | ---------------------------------------------- | -------- | -------------- |
+| color     | Loading color                                  | _string_ | `currentColor` |
+| type      | Can be set to `wave` `cube` `rect` `disappear` | _string_ | `wave`         |
+| size      | Can be set to `large` `normal` `small` `mini`  | _string_ | `normal`       |

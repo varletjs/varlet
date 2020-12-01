@@ -34,14 +34,8 @@ export default defineComponent({
 
 ### 属性
 
-| 参数  | 说明                                                      | 类型     | 默认值    |
-| ----- | --------------------------------------------------------- | -------- | --------- |
-| color | loading 的颜色                                            | _string_ | `#00BCD4` |
-| type  | loading 的类型，可选值为 `wave` `cube` `rect` `disappear` | _string_ | `wave`    |
-| size  | loading 的大小，可选值位 `large` `normal` `small` `mini`  | _string_ | `normal`  |
-
-### Slots
-
-| 名称    | 说明     |
-| ------- | -------- |
-| default | 加载文案 |
+| 参数  | 说明                                                      | 类型     | 默认值         |
+| ----- | --------------------------------------------------------- | -------- | -------------- |
+| color | loading 的颜色                                            | _string_ | `currentColor` |
+| type  | loading 的类型，可选值为 `wave` `cube` `rect` `disappear` | _string_ | `wave`         |
+| size  | loading 的大小，可选值位 `large` `normal` `small` `mini`  | _string_ | `normal`       |
