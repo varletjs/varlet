@@ -30,18 +30,18 @@
 		<div class="loading-demo__text">
 			<app-type>Horizontal</app-type>
 			<div class="loading-demo__text-block">
-				<varlet-loading type="cube" size="small" :vertical="false"
-					>加载中</varlet-loading
-				>
-				<varlet-loading type="wave" size="small" :vertical="false"
-					>加载中</varlet-loading
-				>
-				<varlet-loading type="rect" size="small" :vertical="false"
-					>加载中</varlet-loading
-				>
-				<varlet-loading type="disappear" size="small" :vertical="false"
-					>加载中</varlet-loading
-				>
+				<varlet-loading type="cube" size="small" :vertical="false">
+					加载中
+				</varlet-loading>
+				<varlet-loading type="wave" size="small" :vertical="false">
+					加载中
+				</varlet-loading>
+				<varlet-loading type="rect" size="small" :vertical="false">
+					加载中
+				</varlet-loading>
+				<varlet-loading type="disappear" size="small" :vertical="false">
+					加载中
+				</varlet-loading>
 			</div>
 		</div>
 	</div>

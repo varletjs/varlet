@@ -135,7 +135,7 @@ export default defineComponent({
 		},
 		size: {
 			type: String,
-			default: 'medium',
+			default: 'normal',
 		},
 		fontSize: {
 			type: Number,

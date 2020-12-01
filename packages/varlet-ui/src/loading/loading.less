@@ -1,34 +1,49 @@
+@loading-normal-width: 64px;
+@loading-normal-height: 36px;
+
+@loading-large-width: 78px;
+@loading-large-height: 44px;
+
+@loading-small-width: 50px;
+@loading-small-height: 28px;
+
+@loading-mini-width: 36px;
+@loading-mini-height: 22px;
+
 .varlet-loading {
   display: flex;
   justify-content: center;
   align-items: center;
 
   &__wave {
-    @loading-wave-width: 100px;
-    @loading-wave-height: 50px;
     @loading-cube-size-item-width: 6px;
+    @loading-cube-size-item-margin: 5px;
 
     text-align: center;
 
     &-large {
-      width: @loading-wave-width;
-      height: @loading-wave-height;
+      width: @loading-large-width;
+      height: @loading-large-height;
     }
 
-    &-medium {
-      width: @loading-wave-width * 0.8;
-      height: @loading-wave-height * 0.8;
+    &-normal {
+      width: @loading-normal-width;
+      height: @loading-normal-height;
     }
 
     &-small {
-      width: @loading-wave-width * 0.6;
-      height: @loading-wave-height * 0.6;
+      width: @loading-small-width;
+      height: @loading-small-height;
+    }
+
+    &-mini {
+      width: @loading-mini-width;
+      height: @loading-mini-height;
     }
 
     &-item {
       height: 100%;
       display: inline-block;
-      margin-left: 5px;
       animation: 1.2s ease-in-out infinite wave;
 
       &:nth-child(1) {
@@ -55,15 +70,23 @@
 
     &-item-large {
       width: @loading-cube-size-item-width;
+      margin-left: @loading-cube-size-item-margin;
     }
 
-    &-item-medium {
+    &-item-normal {
       width: @loading-cube-size-item-width - 1;
+      margin-left: @loading-cube-size-item-margin - 1;
 
     }
 
     &-item-small {
       width: @loading-cube-size-item-width - 2;
+      margin-left: @loading-cube-size-item-margin - 2;
+    }
+
+    &-item-mini {
+      width: @loading-cube-size-item-width - 3;
+      margin-left: @loading-cube-size-item-margin - 3;
     }
 
     @keyframes wave {
@@ -78,37 +101,41 @@
   }
 
   &__cube {
-    @loading-cube-size-width: 100px;
-    @loading-cube-size-height: 50px;
-    @loading-cube-size-item-width: 15px;
-    @loading-cube-size-item-height: 15px;
+    @loading-cube-size-item-width: 14px;
+    @loading-cube-size-item-height: 14px;
+    @loading-cube-size-item-margin: 5px;
 
     display: flex;
     align-items: center;
 
     &-large {
-      width: @loading-cube-size-width;
-      height: @loading-cube-size-height;
+      width: @loading-large-width;
+      height: @loading-large-height;
     }
 
-    &-medium {
-      width: @loading-cube-size-width * 0.8;
-      height: @loading-cube-size-height * 0.8;
+    &-normal {
+      width: @loading-normal-width;
+      height: @loading-normal-height;
     }
 
     &-small {
-      width: @loading-cube-size-width * 0.6;
-      height: @loading-cube-size-height * 0.6;
+      width: @loading-small-width;
+      height: @loading-small-height;
+    }
+
+    &-mini {
+      width: @loading-mini-width;
+      height: @loading-mini-height;
     }
 
     &-item {
       display: inline-block;
-      margin-right: 5px;
       transform-origin: right bottom;
       animation: 2s ease infinite cube;
 
       &:nth-child(1) {
         animation-delay: 0.2s;
+        margin-left: 0;
       }
 
       &:nth-child(2) {
@@ -128,17 +155,26 @@
     &-item-large {
       height: @loading-cube-size-item-height;
       width: @loading-cube-size-item-width;
+      margin-left: @loading-cube-size-item-margin;
     }
 
-    &-item-medium {
-      height: @loading-cube-size-item-height * 0.8;
-      width: @loading-cube-size-item-width * 0.8;
+    &-item-normal {
+      height: @loading-cube-size-item-height - 3;
+      width: @loading-cube-size-item-width  - 3;
+      margin-left: @loading-cube-size-item-margin - 1;
 
     }
 
     &-item-small {
-      height: @loading-cube-size-item-height * 0.6;
-      width: @loading-cube-size-item-width * 0.6;
+      height: @loading-cube-size-item-height - 6;
+      width: @loading-cube-size-item-width - 6;
+      margin-left: @loading-cube-size-item-margin - 2;
+    }
+
+    &-item-mini {
+      height: @loading-cube-size-item-height  - 9;
+      width: @loading-cube-size-item-width   - 9;
+      margin-left: @loading-cube-size-item-margin - 3;
     }
 
     @keyframes cube {
@@ -155,8 +191,6 @@
   }
 
   &__rect {
-    @loading-rect-size-width: 100px;
-    @loading-rect-size-height: 50px;
     @loading-rect-size-item-width: 8px;
     @loading-rect-size-item-height: 20px;
 
@@ -166,18 +200,23 @@
     align-items: center;
 
     &-large {
-      width: @loading-rect-size-width;
-      height: @loading-rect-size-height;
+      width: @loading-large-width;
+      height: @loading-large-height;
     }
 
-    &-medium {
-      width: @loading-rect-size-width * 0.8;
-      height: @loading-rect-size-height * 0.8;
+    &-normal {
+      width: @loading-normal-width;
+      height: @loading-normal-height;
     }
 
     &-small {
-      width: @loading-rect-size-width * 0.6;
-      height: @loading-rect-size-height * 0.6;
+      width: @loading-small-width;
+      height: @loading-small-height;
+    }
+
+    &-mini {
+      width: @loading-mini-width;
+      height: @loading-mini-height;
     }
 
     &-item {
@@ -221,15 +260,20 @@
       width: @loading-rect-size-item-width;
     }
 
-    &-item-medium {
-      height: @loading-rect-size-item-height * 0.75;
-      width: @loading-rect-size-item-width * 0.75;
+    &-item-normal {
+      height: @loading-rect-size-item-height * 0.9;
+      width: @loading-rect-size-item-width * 0.8;
 
     }
 
     &-item-small {
-      height: @loading-rect-size-item-height * 0.5;
-      width: @loading-rect-size-item-width * 0.5;
+      height: @loading-rect-size-item-height * 0.8;
+      width: @loading-rect-size-item-width * 0.6;
+    }
+
+    &-item-mini {
+      height: @loading-rect-size-item-height * 0.7;
+      width: @loading-rect-size-item-width * 0.4;
     }
 
     @keyframes rect {
@@ -252,8 +296,6 @@
   }
 
   &__disappear {
-    @loading-disappear-size-width: 100px;
-    @loading-disappear-size-height: 50px;
     @loading-disappear-size-item-width: 15px;
     @loading-disappear-size-item-height: 15px;
 
@@ -263,23 +305,26 @@
     flex-flow: nowrap;
 
     &-large {
-      width: @loading-disappear-size-width;
-      height: @loading-disappear-size-height;
+      width: @loading-large-width;
+      height: @loading-large-height;
     }
 
-    &-medium {
-      width: @loading-disappear-size-width * 0.8;
-      height: @loading-disappear-size-height * 0.8;
+    &-normal {
+      width: @loading-normal-width;
+      height: @loading-normal-height;
     }
 
     &-small {
-      width: @loading-disappear-size-width * 0.6;
-      height: @loading-disappear-size-height * 0.6;
+      width: @loading-small-width;
+      height: @loading-small-height;
+    }
+
+    &-mini {
+      width: @loading-mini-width;
+      height: @loading-mini-height;
     }
 
     &-item {
-      width: 12px;
-      height: 12px;
       border-radius: 50%;
       animation: 0.8s ease-in-out infinite alternate disappear;
 
@@ -301,7 +346,7 @@
       width: @loading-disappear-size-item-width;
     }
 
-    &-item-medium {
+    &-item-normal {
       height: @loading-disappear-size-item-height * 0.8;
       width: @loading-disappear-size-item-width * 0.8;
 
@@ -310,6 +355,11 @@
     &-item-small {
       height: @loading-disappear-size-item-height * 0.6;
       width: @loading-disappear-size-item-width * 0.6;
+    }
+
+    &-item-mini {
+      height: @loading-disappear-size-item-height * 0.4;
+      width: @loading-disappear-size-item-width * 0.4;
     }
   }
 

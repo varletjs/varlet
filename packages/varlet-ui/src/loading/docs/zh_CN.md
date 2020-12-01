@@ -56,7 +56,7 @@ export default defineComponent({
 | --------- | --------------------------------------------------------- | --------- | --------- |
 | color     | loading 的颜色                                            | _string_  | `#00BCD4` |
 | type      | loading 的类型，可选值为 `wave` `cube` `rect` `disappear` | _string_  | `wave`    |
-| size      | loading 的大小，可选值位 `large` `medium` `small`         | _string_  | `medium`  |
+| size      | loading 的大小，可选值位 `large` `normal` `small` `mini`  | _string_  | `medium`  |
 | fontColor | 字体颜色                                                  | _string_  | `#ccc`    |
 | fontSize  | 字体大小                                                  | _number_  | `14`      |
 | vertical  | 是否垂直排列图标和文字内容                                | _boolean_ | `true`    |

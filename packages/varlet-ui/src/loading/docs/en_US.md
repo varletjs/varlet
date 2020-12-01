@@ -56,7 +56,7 @@ export default defineComponent({
 | --------- | ---------------------------------------------------- | --------- | --------- |
 | color     | Loading color                                        | _string_  | `#00BCD4` |
 | type      | Can be set to `wave` `cube` `rect` `disappear`       | _string_  | `wave`    |
-| size      | Can be set to `large` `medium` `small`               | _string_  | `medium`  |
+| size      | Can be set to `large` `normal` `small` `mini`        | _string_  | `medium`  |
 | fontColor | Text color                                           | _string_  | `#ccc`    |
 | fontSize  | Text font size                                       | _number_  | `14`      |
 | vertical  | Whether to arrange icons and text content vertically | _boolean_ | `true`    |
