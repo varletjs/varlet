@@ -1,20 +1,5 @@
 <template>
   <div class="example">
-    <varlet-button class="example__button" type="plain" size="large">测试</varlet-button>
-
-    <varlet-button class="example__button" type="primary" size="large">测试</varlet-button>
-    <varlet-button class="example__button" type="primary" size="normal">测试</varlet-button>
-    <varlet-button class="example__button" type="primary" size="small">测试</varlet-button>
-    <varlet-button class="example__button" type="primary" size="mini">测试</varlet-button>
-
-    <varlet-button class="example__button" type="danger" size="large">测试</varlet-button>
-    <varlet-button class="example__button" type="danger">测试</varlet-button>
-    <varlet-button class="example__button" type="danger" size="small">测试</varlet-button>
-    <varlet-button class="example__button" type="danger" size="mini">测试</varlet-button>
-
-    <varlet-button class="example__button" type="info" size="normal" block>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</varlet-button>
-    <varlet-button class="example__button" type="warning" size="large" block>测试</varlet-button>
-
     <varlet-button
       class="example__button"
       round
@@ -38,12 +23,162 @@
 
     <varlet-button
       class="example__button"
-      type="success"
+      type="primary"
       size="large"
       v-model:loading="loading"
       @click="trigger"
     >
-      给老子转!
+      Large
+    </varlet-button>
+    <varlet-button
+      class="example__button"
+      type="primary"
+      size="normal"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Normal
+    </varlet-button>
+    <varlet-button
+      class="example__button"
+      type="primary"
+      size="small"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Small
+    </varlet-button>
+    <varlet-button
+      class="example__button"
+      type="primary"
+      size="mini"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Mini
+    </varlet-button>
+
+    <varlet-button
+      class="example__button"
+      type="danger"
+      loading-type="cube"
+      size="large"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Large
+    </varlet-button>
+    <varlet-button
+      class="example__button"
+      type="danger"
+      loading-type="cube"
+      size="normal"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Normal
+    </varlet-button>
+    <varlet-button
+      class="example__button"
+      type="danger"
+      loading-type="cube"
+      size="small"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Small
+    </varlet-button>
+    <varlet-button
+      class="example__button"
+      type="danger"
+      loading-type="cube"
+      size="mini"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Mini
+    </varlet-button>
+
+    <varlet-button
+      class="example__button"
+      type="warning"
+      loading-type="rect"
+      size="large"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Large
+    </varlet-button>
+    <varlet-button
+      class="example__button"
+      type="warning"
+      loading-type="rect"
+      size="normal"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Normal
+    </varlet-button>
+    <varlet-button
+      class="example__button"
+      type="warning"
+      loading-type="rect"
+      size="small"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Small
+    </varlet-button>
+    <varlet-button
+      class="example__button"
+      type="warning"
+      loading-type="rect"
+      size="mini"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Mini
+    </varlet-button>
+
+    <varlet-button
+      class="example__button"
+      type="success"
+      loading-type="disappear"
+      size="large"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Large
+    </varlet-button>
+    <varlet-button
+      class="example__button"
+      type="success"
+      loading-type="disappear"
+      size="normal"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Normal
+    </varlet-button>
+    <varlet-button
+      class="example__button"
+      type="success"
+      loading-type="disappear"
+      size="small"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Small
+    </varlet-button>
+    <varlet-button
+      class="example__button"
+      type="success"
+      loading-type="disappear"
+      size="mini"
+      v-model:loading="loading"
+      @click="trigger"
+    >
+      Mini
     </varlet-button>
   </div>
 </template>

@@ -1,3 +1,9 @@
+import {
+  typeValidator as loadingTypeValidator,
+  sizeValidator as loadingSizeValidator,
+  getTypeDefault as getLoadingTypeDefault
+} from '../loading/propsEmits'
+
 function typeValidator(type: string): boolean {
   const validTypes = ['plain', 'primary', 'info', 'success', 'warning', 'danger']
 
@@ -27,6 +33,18 @@ export const props = {
   loading: {
     type: Boolean,
     default: false
+  },
+  // 加载动画类型
+  loadingType: {
+    type: String,
+    default: getLoadingTypeDefault,
+    validator: loadingTypeValidator
+  },
+  // 加载动画尺寸
+  loadingSize: {
+    type: String,
+    default: (props: any) => props.size,
+    validator: loadingSizeValidator
   },
   // 原型按钮
   round: {

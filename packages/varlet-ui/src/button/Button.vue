@@ -16,7 +16,11 @@
     :disabled="disabled"
     @click="trigger"
   >
-    <varlet-loading v-if="loading"></varlet-loading>
+    <varlet-loading
+      :type="loadingType"
+      :size="loadingSize"
+      v-if="loading"
+    />
     <slot v-else/>
   </button>
 </template>
