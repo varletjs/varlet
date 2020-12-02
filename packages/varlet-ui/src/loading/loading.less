@@ -1,25 +1,29 @@
-@loading-normal-width: 64px;
-@loading-normal-height: 36px;
+@import "../styles/var";
 
-@loading-large-width: 78px;
-@loading-large-height: 44px;
+@loading-normal-width: 50px;
+@loading-normal-height: @font-size-md + 2;
 
-@loading-small-width: 50px;
-@loading-small-height: 28px;
+@loading-large-width: 64px;
+@loading-large-height: @font-size-lg + 2;
 
-@loading-mini-width: 36px;
-@loading-mini-height: 22px;
+@loading-small-width: 36px;
+@loading-small-height: @font-size-sm + 2;
 
-.varlet-loading {
+@loading-mini-width: 22px;
+@loading-mini-height: @font-size-xs + 2;
+
+.var-loading {
   display: flex;
   justify-content: center;
   align-items: center;
 
   &__wave {
-    @loading-cube-size-item-width: 6px;
-    @loading-cube-size-item-margin: 5px;
+    @loading-wave-size-item-width: 5px;
+    @loading-wave-size-item-margin: 5px;
 
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &-large {
       width: @loading-large-width;
@@ -69,24 +73,24 @@
     }
 
     &-item-large {
-      width: @loading-cube-size-item-width;
-      margin-left: @loading-cube-size-item-margin;
+      width: @loading-wave-size-item-width;
+      margin-left: @loading-wave-size-item-margin;
     }
 
     &-item-normal {
-      width: @loading-cube-size-item-width - 1;
-      margin-left: @loading-cube-size-item-margin - 1;
+      width: @loading-wave-size-item-width - 1;
+      margin-left: @loading-wave-size-item-margin - 1;
 
     }
 
     &-item-small {
-      width: @loading-cube-size-item-width - 2;
-      margin-left: @loading-cube-size-item-margin - 2;
+      width: @loading-wave-size-item-width - 2;
+      margin-left: @loading-wave-size-item-margin - 2;
     }
 
     &-item-mini {
-      width: @loading-cube-size-item-width - 3;
-      margin-left: @loading-cube-size-item-margin - 3;
+      width: @loading-wave-size-item-width - 3;
+      margin-left: @loading-wave-size-item-margin - 3;
     }
 
     @keyframes wave {
@@ -101,8 +105,8 @@
   }
 
   &__cube {
-    @loading-cube-size-item-width: 14px;
-    @loading-cube-size-item-height: 14px;
+    @loading-cube-size-item-width: 10px;
+    @loading-cube-size-item-height: 10px;
     @loading-cube-size-item-margin: 5px;
 
     display: flex;
@@ -131,7 +135,7 @@
     &-item {
       display: inline-block;
       transform-origin: right bottom;
-      animation: 2s ease infinite cube;
+      animation: 1.5s ease infinite cube;
 
       &:nth-child(1) {
         animation-delay: 0.2s;
@@ -159,21 +163,21 @@
     }
 
     &-item-normal {
-      height: @loading-cube-size-item-height - 3;
-      width: @loading-cube-size-item-width  - 3;
+      height: @loading-cube-size-item-height - 2;
+      width: @loading-cube-size-item-width  - 2;
       margin-left: @loading-cube-size-item-margin - 1;
 
     }
 
     &-item-small {
-      height: @loading-cube-size-item-height - 6;
-      width: @loading-cube-size-item-width - 6;
+      height: @loading-cube-size-item-height - 4;
+      width: @loading-cube-size-item-width - 4;
       margin-left: @loading-cube-size-item-margin - 2;
     }
 
     &-item-mini {
-      height: @loading-cube-size-item-height  - 9;
-      width: @loading-cube-size-item-width   - 9;
+      height: @loading-cube-size-item-height  - 6;
+      width: @loading-cube-size-item-width   - 6;
       margin-left: @loading-cube-size-item-margin - 3;
     }
 
@@ -192,7 +196,7 @@
 
   &__rect {
     @loading-rect-size-item-width: 8px;
-    @loading-rect-size-item-height: 20px;
+    @loading-rect-size-item-height: 100%;
 
     display: flex;
     flex-wrap: nowrap;
@@ -220,7 +224,7 @@
     }
 
     &-item {
-      animation: 4s ease-in-out infinite rect;
+      animation: 2s ease-in-out infinite rect;
 
       &:nth-child(1) {
         animation-delay: 1.75s;
@@ -326,7 +330,7 @@
 
     &-item {
       border-radius: 50%;
-      animation: 0.8s ease-in-out infinite alternate disappear;
+      animation: 0.5s ease-in-out infinite alternate disappear;
 
       &:nth-child(1) {
         animation-delay: -.4s;
@@ -370,7 +374,5 @@
         opacity: 0;
       }
     }
-
   }
-
 }

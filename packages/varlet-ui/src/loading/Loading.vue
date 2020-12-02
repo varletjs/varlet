@@ -1,117 +1,108 @@
 <template>
-	<div
-		class="varlet-loading"
-		:style="{ flexDirection: vertical ? 'column' : 'row' }"
-	>
+	<div class="var-loading">
 		<div
-			:class="`varlet-loading__wave varlet-loading__wave-${size}`"
+			:class="`var-loading__wave var-loading__wave-${size}`"
 			v-if="type === 'wave'"
 		>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__wave-item varlet-loading__wave-item-${size}`"
+				:class="`var-loading__wave-item var-loading__wave-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__wave-item varlet-loading__wave-item-${size}`"
+				:class="`var-loading__wave-item var-loading__wave-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__wave-item varlet-loading__wave-item-${size}`"
+				:class="`var-loading__wave-item var-loading__wave-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__wave-item varlet-loading__wave-item-${size}`"
+				:class="`var-loading__wave-item var-loading__wave-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__wave-item varlet-loading__wave-item-${size}`"
+				:class="`var-loading__wave-item var-loading__wave-item-${size}`"
 			></div>
 		</div>
 
 		<div
-			:class="`varlet-loading__cube varlet-loading__cube-${size}`"
+			:class="`var-loading__cube var-loading__cube-${size}`"
 			v-if="type === 'cube'"
 		>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__cube-item varlet-loading__cube-item-${size}`"
+				:class="`var-loading__cube-item var-loading__cube-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__cube-item varlet-loading__cube-item-${size}`"
+				:class="`var-loading__cube-item var-loading__cube-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__cube-item varlet-loading__cube-item-${size}`"
+				:class="`var-loading__cube-item var-loading__cube-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__cube-item varlet-loading__cube-item-${size}`"
+				:class="`var-loading__cube-item var-loading__cube-item-${size}`"
 			></div>
 		</div>
 
 		<div
-			:class="`varlet-loading__rect varlet-loading__rect-${size}`"
+			:class="`var-loading__rect var-loading__rect-${size}`"
 			v-if="type === 'rect'"
 		>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__rect-item varlet-loading__rect-item-${size}`"
+				:class="`var-loading__rect-item var-loading__rect-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__rect-item varlet-loading__rect-item-${size}`"
+				:class="`var-loading__rect-item var-loading__rect-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__rect-item varlet-loading__rect-item-${size}`"
+				:class="`var-loading__rect-item var-loading__rect-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__rect-item varlet-loading__rect-item-${size}`"
+				:class="`var-loading__rect-item var-loading__rect-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__rect-item varlet-loading__rect-item-${size}`"
+				:class="`var-loading__rect-item var-loading__rect-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__rect-item varlet-loading__rect-item-${size}`"
+				:class="`var-loading__rect-item var-loading__rect-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__rect-item varlet-loading__rect-item-${size}`"
+				:class="`var-loading__rect-item var-loading__rect-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__rect-item varlet-loading__rect-item-${size}`"
+				:class="`var-loading__rect-item var-loading__rect-item-${size}`"
 			></div>
 		</div>
 
 		<div
-			:class="`varlet-loading__disappear varlet-loading__disappear-${size}`"
+			:class="`var-loading__disappear var-loading__disappear-${size}`"
 			v-if="type === 'disappear'"
 		>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__disappear-item varlet-loading__disappear-item-${size}`"
+				:class="`var-loading__disappear-item var-loading__disappear-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__disappear-item varlet-loading__disappear-item-${size}`"
+				:class="`var-loading__disappear-item var-loading__disappear-item-${size}`"
 			></div>
 			<div
 				:style="{ backgroundColor: color }"
-				:class="`varlet-loading__disappear-item varlet-loading__disappear-item-${size}`"
+				:class="`var-loading__disappear-item var-loading__disappear-item-${size}`"
 			></div>
 		</div>
-		<span
-			class="varlet-loading__text"
-			:style="{ fontSize: fontSize + 'px', color: fontColor }"
-		>
-			<slot></slot>
-		</span>
 	</div>
 </template>
 
@@ -120,7 +111,7 @@ import { defineComponent } from 'vue'
 import { props } from './propsEmits'
 
 export default defineComponent({
-	name: 'VarletLoading',
+	name: 'VarLoading',
 	props,
 })
 </script>

@@ -15,54 +15,27 @@ export default defineComponent({
 ### Type
 
 ```html
-<varlet-loading type="cube" />
-<varlet-loading type="wave" />
-<varlet-loading type="rect" />
-<varlet-loading type="disappear" />
+<var-loading type="cube" />
+<var-loading type="wave" />
+<var-loading type="rect" />
+<var-loading type="disappear" />
 ```
 
 ### Size
 
 ```html
-<varlet-loading type="cube" size="small" />
-<varlet-loading type="wave" size="small" />
-<varlet-loading type="rect" size="small" />
-<varlet-loading type="disappear" size="small" />
-```
-
-### Text
-
-```html
-<varlet-loading type="cube">loading</varlet-loading>
-<varlet-loading type="wave">loading</varlet-loading>
-<varlet-loading type="rect">loading</varlet-loading>
-<varlet-loading type="disappear">loading</varlet-loading>
-```
-
-### Horizontal
-
-```html
-<varlet-loading type="cube" :vertical="false">loading</varlet-loading>
-<varlet-loading type="wave" :vertical="false">loading</varlet-loading>
-<varlet-loading type="rect" :vertical="false">loading</varlet-loading>
-<varlet-loading type="disappear" :vertical="false">loading</varlet-loading>
+<var-loading type="cube" size="small" />
+<var-loading type="wave" size="small" />
+<var-loading type="rect" size="small" />
+<var-loading type="disappear" size="small" />
 ```
 
 ## API
 
 ### Props
 
-| Attribute | Description                                          | Type      | Default   |
-| --------- | ---------------------------------------------------- | --------- | --------- |
-| color     | Loading color                                        | _string_  | `#00BCD4` |
-| type      | Can be set to `wave` `cube` `rect` `disappear`       | _string_  | `wave`    |
-| size      | Can be set to `large` `normal` `small` `mini`        | _string_  | `normal`  |
-| fontColor | Text color                                           | _string_  | `#ccc`    |
-| fontSize  | Text font size                                       | _number_  | `14`      |
-| vertical  | Whether to arrange icons and text content vertically | _boolean_ | `true`    |
-
-### Slots
-
-| Name    | Description  |
-| ------- | ------------ |
-| default | Loading text |
+| Attribute | Description                                    | Type     | Default        |
+| --------- | ---------------------------------------------- | -------- | -------------- |
+| color     | Loading color                                  | _string_ | `currentColor` |
+| type      | Can be set to `wave` `cube` `rect` `disappear` | _string_ | `wave`         |
+| size      | Can be set to `large` `normal` `small` `mini`  | _string_ | `normal`       |

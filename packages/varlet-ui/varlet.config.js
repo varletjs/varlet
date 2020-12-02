@@ -44,9 +44,10 @@ const menu = [
 ]
 
 module.exports = {
-	namespace: 'varlet',
-  host: '0.0.0.0',
-  port: 8080,
+	namespace: 'var',
+	title: 'varlet',
+	host: '0.0.0.0',
+	port: 8080,
 	pc: {
 		title: 'Varlet 组件库示例',
 		description: 'Varlet 组件库示例',
@@ -65,24 +66,31 @@ module.exports = {
 		menu: [
 			{
 				text: {
-					zh_CN: '水波指令',
+					zh_CN: 'Ripple 水波指令',
 					en_US: 'Ripple',
 				},
 				doc: 'ripple',
 			},
 			{
 				text: {
-					zh_CN: '骨架屏',
+					zh_CN: 'Skeleton 骨架屏',
 					en_US: 'Skeleton',
 				},
 				doc: 'skeleton',
 			},
 			{
 				text: {
-					zh_CN: '加载',
+					zh_CN: 'Loading 加载',
 					en_US: 'Loading',
 				},
 				doc: 'loading',
+			},
+			{
+				text: {
+					zh_CN: 'Button 按钮',
+					en_US: 'Button',
+				},
+				doc: 'button',
 			},
 		],
 		language: 'zh_CN',
