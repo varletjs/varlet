@@ -46,7 +46,7 @@ export const props = {
     default: (props: any) => props.size,
     validator: loadingSizeValidator
   },
-  // 原型按钮
+  // 圆型按钮
   round: {
     type: Boolean,
     default: false

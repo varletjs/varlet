@@ -25,7 +25,7 @@
       class="example__button"
       type="primary"
       size="large"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Large
@@ -34,7 +34,7 @@
       class="example__button"
       type="primary"
       size="normal"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Normal
@@ -43,7 +43,7 @@
       class="example__button"
       type="primary"
       size="small"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Small
@@ -52,7 +52,7 @@
       class="example__button"
       type="primary"
       size="mini"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Mini
@@ -63,7 +63,7 @@
       type="danger"
       loading-type="cube"
       size="large"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Large
@@ -73,7 +73,7 @@
       type="danger"
       loading-type="cube"
       size="normal"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Normal
@@ -83,7 +83,7 @@
       type="danger"
       loading-type="cube"
       size="small"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Small
@@ -93,7 +93,7 @@
       type="danger"
       loading-type="cube"
       size="mini"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Mini
@@ -104,7 +104,7 @@
       type="warning"
       loading-type="rect"
       size="large"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Large
@@ -114,7 +114,7 @@
       type="warning"
       loading-type="rect"
       size="normal"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Normal
@@ -124,7 +124,7 @@
       type="warning"
       loading-type="rect"
       size="small"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Small
@@ -134,7 +134,7 @@
       type="warning"
       loading-type="rect"
       size="mini"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Mini
@@ -145,7 +145,7 @@
       type="success"
       loading-type="disappear"
       size="large"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Large
@@ -155,7 +155,7 @@
       type="success"
       loading-type="disappear"
       size="normal"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Normal
@@ -165,7 +165,7 @@
       type="success"
       loading-type="disappear"
       size="small"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Small
@@ -175,7 +175,7 @@
       type="success"
       loading-type="disappear"
       size="mini"
-      v-model:loading="loading"
+      :loading="loading"
       @click="trigger"
     >
       Mini
