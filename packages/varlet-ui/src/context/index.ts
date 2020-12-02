@@ -8,4 +8,4 @@ const context: Context = {
   zIndex: 2000
 }
 
-export default reactive(context)
+export default reactive<Context>(context)
