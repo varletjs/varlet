@@ -17,5 +17,6 @@ const router = createRouter({
 })
 
 const app = createApp(App as any)
+
 app.config.globalProperties.$config = mergeConfig
 app.use(router).mount('#app')

@@ -1,11 +1,13 @@
 import { reactive } from 'vue'
 
 interface Context {
+  locks: Record<any, number>
   zIndex: number
 }
 
 const context: Context = {
-  zIndex: 2000
+  locks: {},
+  zIndex: 2000,
 }
 
 export default reactive<Context>(context)
