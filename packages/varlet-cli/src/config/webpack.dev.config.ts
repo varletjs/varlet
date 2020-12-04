@@ -18,7 +18,8 @@ export function getDevConfig() {
       publicPath: '/',
       stats: 'errors-only',
       disableHostCheck: true,
-      hot: true
+      hot: true,
+      open: true
     },
     plugins: [
       new WebpackBarPlugin({

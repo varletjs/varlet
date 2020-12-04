@@ -92,6 +92,13 @@ module.exports = {
 				},
 				doc: 'button',
 			},
+      {
+        text: {
+          zh_CN: 'Popup 弹出层',
+          en_US: 'Popup',
+        },
+        doc: 'popup',
+      },
 		],
 		language: 'zh_CN',
 	},

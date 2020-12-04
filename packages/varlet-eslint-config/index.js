@@ -50,6 +50,7 @@ module.exports = {
     'vue/attributes-order': 'off',
     'vue/require-default-prop': 'off',
     'vue/no-unused-components': 'off',
+    'vue/require-explicit-emits': 'off',
     // typescript-eslint
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',

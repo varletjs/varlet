@@ -1,25 +1,80 @@
 <template>
   <teleport :to="teleport" :disabled="disabled">
-    <transition name="var-fade">
+    <transition
+      name="var-fade"
+      @after-enter="$emit('opened')"
+      @after-leave="$emit('closed')"
+    >
       <div
         class="var-popup"
         :style="{
-          'z-index': context.zIndex
+          'z-index': zIndex
         }"
         v-show="show"
       >
         <div
           class="var-popup__overlay"
+          :class="[overlayClass]"
           :style="{
-          'z-index': context.zIndex + 1
-        }"
+            'z-index': zIndex + 1,
+            'background-color': !overlay ? 'transparent' : null,
+            ...overlayStyle
+          }"
           @click="hidePopup"
         >
           <transition name="var-pop-center">
             <div
-              class="var-popup__center"
+              class="var-popup__center var-elevation--3"
               v-bind="$attrs"
               v-if="position === 'center'"
+              v-show="show"
+              @click.stop
+            >
+              <slot/>
+            </div>
+          </transition>
+
+          <transition name="var-pop-up">
+            <div
+              class="var-popup__bottom var-elevation--3"
+              v-bind="$attrs"
+              v-if="position === 'bottom'"
+              v-show="show"
+              @click.stop
+            >
+              <slot/>
+            </div>
+          </transition>
+
+          <transition name="var-pop-down">
+            <div
+              class="var-popup__top var-elevation--3"
+              v-bind="$attrs"
+              v-if="position === 'top'"
+              v-show="show"
+              @click.stop
+            >
+              <slot/>
+            </div>
+          </transition>
+
+          <transition name="var-pop-right">
+            <div
+              class="var-popup__left var-elevation--3"
+              v-bind="$attrs"
+              v-if="position === 'left'"
+              v-show="show"
+              @click.stop
+            >
+              <slot/>
+            </div>
+          </transition>
+
+          <transition name="var-pop-left">
+            <div
+              class="var-popup__right var-elevation--3"
+              v-bind="$attrs"
+              v-if="position === 'right'"
               v-show="show"
               @click.stop
             >
@@ -33,27 +88,37 @@
 </template>
 
 <script lang="ts">
-import context from '../context'
-import { defineComponent, onMounted } from 'vue'
-import { props } from './propsEmits'
+import { defineComponent, watch } from 'vue'
+import { props, emits } from './propsEmits'
 import { useLock } from '../context/lock'
-import { useTeleport } from '../context/teleport'
+import { useTeleport } from '../utils/teleport'
 import { useZIndex } from '../context/zIndex'
 
 export default defineComponent({
   name: 'VarPopup',
+  inheritAttrs: false,
   props,
+  emits,
   setup(props, { emit }) {
+    // context
     const { disabled } = useTeleport()
-    useZIndex(props, 'show', 2)
-    useLock(props, 'show')
+    const { zIndex } = useZIndex(props, 'show', 2)
+    useLock(props, 'show', 'lockScroll')
+    // events open close
+    watch(() => props.show, (newValue: boolean) => {
+      newValue ? emit('open') : emit('close')
+    })
 
-    onMounted(() => console.log(123))
-
-    const hidePopup = () => emit('update:show', false)
+    const hidePopup = () => {
+      emit('click-overlay')
+      if (props.closeOnClickOverlay === false) {
+        return
+      }
+      emit('update:show', false)
+    }
 
     return {
-      context,
+      zIndex,
       disabled,
       hidePopup
     }

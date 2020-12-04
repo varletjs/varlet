@@ -1,0 +1,47 @@
+@import "../styles/var";
+
+@dialog-width: 270px;
+@dialog-padding: 20px;
+@dialog-border-radius: 2px;
+
+@dialog-message-padding: 26px 0;
+@dialog-message-line-height: 24px;
+
+@dialog-button-margin-left: 6px;
+
+.var-dialog {
+  width: @dialog-width;
+  padding: @dialog-padding;
+  border-radius: 3px;
+
+  &__popup-radius {
+    border-radius: @dialog-border-radius
+  }
+
+  &__title {
+    font-size: @font-size-lg;
+    font-weight: 600;
+  }
+
+  &__message {
+    padding: @dialog-message-padding;
+    color: @color-font-md;
+    line-height: @dialog-message-line-height;
+    font-size: @font-size-md;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    margin-left: @dialog-button-margin-left;
+    background-color: transparent;
+    box-shadow: none;
+
+    &:active {
+      box-shadow: none;
+    }
+  }
+}

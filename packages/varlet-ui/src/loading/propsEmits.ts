@@ -1,29 +1,22 @@
 export function typeValidator(type: string): boolean {
-	const validTypes = ['wave', 'cube', 'rect', 'disappear']
-	return validTypes.includes(type)
+	return ['wave', 'cube', 'rect', 'disappear'].includes(type)
 }
 
 export function sizeValidator(size: string): boolean {
-	const validSizes = ['normal', 'mini', 'small', 'large']
-
-	return validSizes.includes(size)
+	return ['normal', 'mini', 'small', 'large'].includes(size)
 }
-
-export const getTypeDefault = () => 'wave'
-
-export const getSizeDefault = () => 'normal'
 
 export const props = {
 	// loading类型
 	type: {
 		type: String,
-		default: getTypeDefault,
+		default: 'wave',
 		validator: typeValidator,
 	},
 	// loading尺寸
 	size: {
 		type: String,
-		default: getSizeDefault,
+		default: 'normal',
 		validator: sizeValidator,
 	},
 	// loading颜色

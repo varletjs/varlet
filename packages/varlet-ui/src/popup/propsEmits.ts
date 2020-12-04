@@ -19,7 +19,7 @@ export const props = {
   // 是否显示遮罩层
   overlay: {
     type: Boolean,
-    default: false
+    default: true
   },
   // 遮罩层class名
   overlayClass: {
@@ -46,5 +46,10 @@ export const props = {
 }
 
 export const emits = {
-  'update:show': null
+  'update:show': null,
+  'open': null,
+  'close': null,
+  'opened': null,
+  'closed': null,
+  'click-overlay': null
 }

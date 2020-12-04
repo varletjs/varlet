@@ -1,19 +1,12 @@
-import {
-  typeValidator as loadingTypeValidator,
-  sizeValidator as loadingSizeValidator,
-  getTypeDefault as getLoadingTypeDefault
-} from '../loading/propsEmits'
+import { props as loadingProps } from '../loading/propsEmits'
+import { pickProps } from '../utils/components'
 
 function typeValidator(type: string): boolean {
-  const validTypes = ['plain', 'primary', 'info', 'success', 'warning', 'danger']
-
-  return validTypes.includes(type)
+  return ['plain', 'primary', 'info', 'success', 'warning', 'danger'].includes(type)
 }
 
 function sizeValidator(size: string): boolean {
-  const validSizes = ['normal', 'mini', 'small', 'large']
-
-  return validSizes.includes(size)
+  return ['normal', 'mini', 'small', 'large'].includes(size)
 }
 
 export const props = {
@@ -35,17 +28,9 @@ export const props = {
     default: false
   },
   // 加载动画类型
-  loadingType: {
-    type: String,
-    default: getLoadingTypeDefault,
-    validator: loadingTypeValidator
-  },
+  loadingType: pickProps(loadingProps, 'type'),
   // 加载动画尺寸
-  loadingSize: {
-    type: String,
-    default: (props: any) => props.size,
-    validator: loadingSizeValidator
-  },
+  loadingSize: pickProps(loadingProps, 'size'),
   // 圆型按钮
   round: {
     type: Boolean,
