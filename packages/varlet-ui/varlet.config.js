@@ -92,13 +92,20 @@ module.exports = {
 				},
 				doc: 'button',
 			},
-      {
-        text: {
-          zh_CN: 'Popup 弹出层',
-          en_US: 'Popup',
-        },
-        doc: 'popup',
-      },
+			{
+				text: {
+					zh_CN: 'Popup 弹出层',
+					en_US: 'Popup',
+				},
+				doc: 'popup',
+			},
+			{
+				text: {
+					zh_CN: 'Snackbar 消息条',
+					en_US: 'Snackbar',
+				},
+				doc: 'snackbar',
+			},
 		],
 		language: 'zh_CN',
 	},
