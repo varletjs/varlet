@@ -98,4 +98,7 @@ export const props = {
 		type: Function,
 		default: () => {},
 	},
+	_update: {
+		type: String,
+	},
 }

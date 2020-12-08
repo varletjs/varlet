@@ -30,6 +30,9 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 	const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>(
 		snackOptions
 	)
+
+	const id = Date.now()
+
 	const Host = {
 		setup() {
 			return () =>
@@ -37,34 +40,71 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 					TransitionGroup,
 					{
 						...props,
-					},
-					Snackbar.instances.map((value: any) => {
-						console.log(reactiveSnackOptions)
-						return h(value, {
-							...reactiveSnackOptions,
-							...{
-								key: value.id,
-								'onUpdate:show': (value: boolean) => {
-									reactiveSnackOptions.show = value
-								},
+						...{
+							style: {
+								position: 'absolute',
+								top: 0,
+								left: 0,
+								right: 0,
 							},
-						})
-					})
+						},
+					},
+					Snackbar.instances.map(
+						({ id, reactiveSnackOptions, _update }: any) => {
+							return h(VarSnackbar, {
+								...reactiveSnackOptions,
+								...{
+									key: id,
+									_update,
+									'onUpdate:show': (value: boolean) => {
+										reactiveSnackOptions.show = value
+									},
+									onClosed: () => {
+										for (let i = 0; i < Snackbar.instances.length; i++) {
+											// if (Snackbar.instances[i].id === id) Snackbar.instances.splice(i, 1)
+										}
+									},
+								},
+							})
+						}
+					)
 				)
 		},
 	}
 
 	if (!Snackbar.isMount) {
 		Snackbar.isMount = true
-		const { unmountInstance } = mountInstance(Host)
+		mountInstance(Host)
 	}
 
 	if (Snackbar.allowMultiple) {
-		VarSnackbar.id = Date.now()
-		Snackbar.instances.push(VarSnackbar)
+		Snackbar.instances.push({
+			id,
+			reactiveSnackOptions,
+		})
+
 		nextTick(() => {
 			reactiveSnackOptions.show = true
 		})
+	} else {
+		const { length } = Snackbar.instances
+		const id = Date.now()
+		if (length === 1) {
+			Snackbar.instances[0].reactiveSnackOptions = {
+				...Snackbar.instances[0].reactiveSnackOptions,
+				...reactiveSnackOptions,
+			}
+			Snackbar.instances[0]._update = `update-${id}`
+		} else {
+			Snackbar.instances.push({
+				id,
+				reactiveSnackOptions,
+				_update: `update-${id}`,
+			})
+			nextTick(() => {
+				reactiveSnackOptions.show = true
+			})
+		}
 	}
 }
 
@@ -83,9 +123,6 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 })
 
 Snackbar.install = function (app: any) {
-	// if (Snackbar.allowMultiple) {
-	//
-	// }
 	app.component(VarSnackbar.name, VarSnackbar)
 }
 
@@ -98,10 +135,10 @@ Snackbar.instances = reactive([])
 Snackbar.Component = VarSnackbar
 
 const props = {
-	name: 'var-fade',
+	name: 'var-snackbar-fade',
+	tag: 'div',
 	afterEnter: 'onOpened',
 	afterLeave: 'onClosed',
 }
 
-// export default createSnackbar
 export default Snackbar
