@@ -42,7 +42,7 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 						...props,
 						...{
 							style: {
-								position: 'absolute',
+								position: 'fixed',
 								top: 0,
 								left: 0,
 								right: 0,
@@ -50,7 +50,7 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 						},
 					},
 					Snackbar.instances.map(
-						({ id, reactiveSnackOptions, _update }: any) => {
+						({ id, reactiveSnackOptions, _update, time }: any) => {
 							return h(VarSnackbar, {
 								...reactiveSnackOptions,
 								...{
@@ -78,14 +78,15 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 	}
 
 	if (Snackbar.allowMultiple) {
+    reactiveSnackOptions.show = true
 		Snackbar.instances.push({
 			id,
 			reactiveSnackOptions,
 		})
 
-		nextTick(() => {
-			reactiveSnackOptions.show = true
-		})
+		// nextTick(() => {
+		// 	reactiveSnackOptions.show = true
+		// })
 	} else {
 		const { length } = Snackbar.instances
 		const id = Date.now()

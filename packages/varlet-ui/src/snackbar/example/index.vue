@@ -184,7 +184,7 @@ export default defineComponent({
 		const create = (type: any) => {
 			Snackbar({
 				content: "Hello, I'm a snackbar",
-				type,
+				type
 			})
 		}
 
@@ -247,5 +247,19 @@ export default defineComponent({
 			margin: 5px 0;
 		}
 	}
+}
+
+.list-complete-item {
+  transition: all 0.8s ease;
+}
+
+.list-complete-enter-from,
+.list-complete-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.list-complete-leave-active {
+  position: absolute;
 }
 </style>

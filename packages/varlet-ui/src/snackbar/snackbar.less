@@ -3,15 +3,15 @@
 .var-snackbar {
   display: flex;
   justify-content: center;
-  //left: 0;
-  //right: 0;
-  //top: 0;
-  //bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: all 1s ease;
   //position: absolute;
 
   &__wrapper {
     display: flex;
-
     border-radius: 4px;
     color: hsla(0, 0%, 100%, .87);
     font-size: 14px;
@@ -40,11 +40,17 @@
     }
   }
 
-  &-fade-leave-active, &-fade-enter-active{
-    transition: all 1s ease;
+  &-fade-leave-active {
+    position: absolute;
   }
 
-  &-fade-enter-from, &-fade-leave-to {
+  //&-fade-enter-active,
+  //&-fade-leave-active {
+  //  transition: all 1s ease;
+  //}
+
+  &-fade-enter-from,
+  &-fade-leave-to {
     opacity: 0;
     transform: translateY(-30px);
   }

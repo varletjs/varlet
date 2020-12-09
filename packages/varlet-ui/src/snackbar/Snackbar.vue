@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed, watch, ref, Ref } from 'vue'
+import { defineComponent, reactive, computed, watch, ref, Ref, onMounted } from 'vue'
 import Loading from '../loading'
 import Button from '../button'
 import { useZIndex } from '../context/zIndex'
@@ -91,6 +91,15 @@ export default defineComponent({
 				}, props.duration)
 			}
 		)
+
+    onMounted(() => {
+      if (props.show) {
+        props.onOpen && props.onOpen()
+        timer.value = setTimeout(() => {
+          ctx.emit('update:show', false)
+        }, props.duration)
+      }
+    })
 		return {
 			snackbarStyle,
 			alignItems,
