@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed, watch } from 'vue'
+import { defineComponent, reactive, computed, watch, ref, Ref } from 'vue'
 import Loading from '../loading'
 import Button from '../button'
 import { useZIndex } from '../context/zIndex'
@@ -52,6 +52,7 @@ export default defineComponent({
 	props,
 	emits: ['update:show'],
 	setup(props, ctx) {
+		const timer: Ref<any> = ref(null)
 		const { disabled } = useTeleport()
 		const { zIndex } = useZIndex(props, 'show', 2)
 		useLock(props, 'show', 'lockScroll')
@@ -68,15 +69,26 @@ export default defineComponent({
 			zIndex,
 		})
 
-		watch(() => props.show, (show) => {
+		watch(
+			() => props.show,
+			(show) => {
 				if (show) {
 					props.onOpen && props.onOpen()
-					setTimeout(() => {
+					timer.value = setTimeout(() => {
 						ctx.emit('update:show', false)
 					}, props.duration)
 				} else if (show === false) {
 					props.onClose && props.onClose()
 				}
+			}
+		)
+		watch(
+			() => props._update,
+			() => {
+				clearTimeout(timer.value)
+				timer.value = setTimeout(() => {
+					ctx.emit('update:show', false)
+				}, props.duration)
 			}
 		)
 		return {

@@ -182,7 +182,6 @@ export default defineComponent({
 		}
 
 		const create = (type: any) => {
-			console.log('create')
 			Snackbar({
 				content: "Hello, I'm a snackbar",
 				type,
