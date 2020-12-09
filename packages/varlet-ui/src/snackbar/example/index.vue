@@ -151,7 +151,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, reactive, toRefs, onMounted } from 'vue'
+import { defineComponent, ref, Ref, reactive, toRefs } from 'vue'
 import Button from '../../button'
 import Snackbar from '..'
 
@@ -216,10 +216,6 @@ export default defineComponent({
 		const closed = () => {
 			window.alert('closed!')
 		}
-
-		onMounted(() => {
-			Snackbar.allowMultiple(false)
-		})
 
 		return {
 			...toRefs(shows),

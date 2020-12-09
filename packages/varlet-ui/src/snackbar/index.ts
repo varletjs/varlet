@@ -42,13 +42,10 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 					{
 						...props,
 						...{
-							class: `var-transition-group ${
-								reactiveSnackOptions.forbidClick && 'var-pointer-auto'
-							}`,
+							class: 'var-transition-group',
 						},
 						onAfterLeave: (element: any) => {
 							if (element.parentElement) {
-								console.log(element.parentElement.classList)
 								element.parentElement.classList.remove('var-pointer-auto')
 							}
 							const id = element.__vueParentComponent.vnode.key
@@ -60,6 +57,15 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 					},
 					Snackbar.instances.map(
 						({ id, reactiveSnackOptions, _update }: any) => {
+							if (reactiveSnackOptions.forbidClick) {
+								const transitionGroupEl = document.querySelector(
+									'.var-transition-group'
+								)
+								;(transitionGroupEl as HTMLElement).classList.add(
+									'var-pointer-auto'
+								)
+							}
+							// reactiveSnackOptions.forbidClick && 'var-pointer-auto'
 							return h(VarSnackbar, {
 								...reactiveSnackOptions,
 								...{
