@@ -3,166 +3,41 @@
 		name="var-snackbar-fade"
 		@after-enter="onOpened"
 		@after-leave="onClosed"
-		v-if="_isDeclarative"
 	>
-		<div
-			class="var-snackbar"
-			:style="{
-				alignItems,
-				pointerEvents: forbidClick ? 'auto' : 'none',
-				position: 'absolute',
-			}"
-			v-show="show"
+		<var-snackbar-core
+			v-bind="$props"
+			v-on="$event"
+			@update:show="update"
+			class="var--absolute"
 		>
-			<div
-				:class="`var-snackbar__wrapper var-elevation--4 ${
-					vertical ? 'var-snackbar__vertical' : ''
-				}`"
-				:style="snackbarStyle"
-			>
-				<div :class="`var-snackbar__content ${contentClass}`">
-					<var-loading
-						:type="loadingType"
-						:size="loadingSize"
-						v-if="type === 'loading'"
-					/>
-					<slot>
-						{{ content }}
-					</slot>
-				</div>
-				<div class="var-snackbar__action">
-					<var-button
-						type="primary"
-						size="small"
-						v-if="['success', 'error', 'info', 'warning'].includes(type)"
-					>
-						{{ type }}
-					</var-button>
-					<slot name="action"></slot>
-				</div>
-			</div>
-		</div>
-	</transition>
-
-	<div
-		class="var-snackbar"
-		:style="{ alignItems, pointerEvents: forbidClick ? 'auto' : 'none' }"
-		v-show="show"
-		v-else
-	>
-		<div
-			:class="`var-snackbar__wrapper var-elevation--4 ${
-				vertical ? 'var-snackbar__vertical' : ''
-			}`"
-			:style="snackbarStyle"
-		>
-			<div :class="`var-snackbar__content ${contentClass}`">
-				<var-loading
-					:type="loadingType"
-					:size="loadingSize"
-					v-if="type === 'loading'"
-				/>
-				<slot>
-					{{ content }}
-				</slot>
-			</div>
-			<div class="var-snackbar__action">
-				<var-button
-					type="primary"
-					size="small"
-					v-if="['success', 'error', 'info', 'warning'].includes(type)"
-				>
-					{{ type }}
-				</var-button>
+			<slot>
+				{{ content }}
+			</slot>
+			<template #action>
 				<slot name="action"></slot>
-			</div>
-		</div>
-	</div>
+			</template>
+		</var-snackbar-core>
+	</transition>
 </template>
 
-<script lang="ts">
-import {
-	defineComponent,
-	reactive,
-	computed,
-	watch,
-	ref,
-	Ref,
-	onMounted,
-} from 'vue'
-import Loading from '../loading'
-import Button from '../button'
-import { useZIndex } from '../context/zIndex'
-import { useTeleport } from '../utils/teleport'
-import { props } from './propsEmits'
-import { useLock } from '../context/lock'
+<script>
+import SnackbarCore from '../snackbar-core'
+import { props, emits } from '../snackbar-core/propsEmits'
 
-export default defineComponent({
+export default {
 	name: 'VarSnackbar',
 	components: {
-		[Loading.name]: Loading,
-		[Button.name]: Button,
+		[SnackbarCore.name]: SnackbarCore,
 	},
 	props,
-	emits: ['update:show'],
-	setup(props, ctx) {
-		const timer: Ref<any> = ref(null)
-		const { disabled } = useTeleport()
-		const { zIndex } = useZIndex(props, 'show', 2)
-		useLock(props, 'show', 'lockScroll')
-		const alignItems = computed(() => {
-			if (props.position === 'top') return 'flex-start'
-			if (props.position === 'center') return 'center'
-			if (props.position === 'bottom') return 'flex-end'
-		})
-		const snackbarStyle = reactive({
-			backgroundColor: props.color,
-			width: typeof props.width === 'string' ? props.width : props.width + 'px',
-			height:
-				typeof props.height === 'string' ? props.height : props.height + 'px',
-			zIndex,
-		})
-
-		watch(
-			() => props.show,
-			(show) => {
-				if (show) {
-					props.onOpen && props.onOpen()
-					timer.value = setTimeout(() => {
-						ctx.emit('update:show', false)
-					}, props.duration)
-				} else if (show === false) {
-					props.onClose && props.onClose()
-				}
-			}
-		)
-		watch(
-			() => props._update,
-			() => {
-				clearTimeout(timer.value)
-				timer.value = setTimeout(() => {
-					ctx.emit('update:show', false)
-				}, props.duration)
-			}
-		)
-
-		onMounted(() => {
-			if (props.show) {
-				props.onOpen && props.onOpen()
-				timer.value = setTimeout(() => {
-					ctx.emit('update:show', false)
-				}, props.duration)
-			}
-		})
+	emits,
+	setup(props, { emit }) {
+		const update = (value) => {
+			emit('update:show', value)
+		}
 		return {
-			snackbarStyle,
-			alignItems,
-			disabled,
+			update,
 		}
 	},
-})
+}
 </script>
-
-<style lang="less">
-@import './snackbar';
-</style>

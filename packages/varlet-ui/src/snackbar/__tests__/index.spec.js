@@ -1,7 +1,8 @@
-const Snackbar = require('../../../cjs/snackbar').default
+const SnackbarTransition = require('../../../cjs/snackbar-core-transition')
+	.default
 const { render } = require('@testing-library/vue')
 
-test('test snackbar', async () => {
-	const wrapper = render(Snackbar)
+test('test snackbarTransition', async () => {
+	const wrapper = render(SnackbarTransition)
 	console.log(wrapper)
 })

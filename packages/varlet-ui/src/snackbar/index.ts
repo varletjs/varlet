@@ -1,3 +1,4 @@
+import VarSnackbarCore from '../snackbar-core'
 import VarSnackbar from './Snackbar.vue'
 import { mountInstance } from '../utils/components'
 import { h, reactive, TransitionGroup } from 'vue'
@@ -22,7 +23,6 @@ interface SnackbarOptions {
 	onClose?: () => void
 	onOpened?: () => void
 	onClosed?: () => void
-	_isDeclarative?: boolean
 }
 
 const Snackbar: any = function (options: SnackbarOptions): void {
@@ -65,8 +65,7 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 									'var-pointer-auto'
 								)
 							}
-							// reactiveSnackOptions.forbidClick && 'var-pointer-auto'
-							return h(VarSnackbar, {
+							return h(VarSnackbarCore, {
 								...reactiveSnackOptions,
 								...{
 									key: id,
@@ -89,7 +88,6 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 
 	if (Snackbar.isAllowMultiple) {
 		reactiveSnackOptions.show = true
-		reactiveSnackOptions._isDeclarative = false
 		Snackbar.instances.push({
 			id,
 			reactiveSnackOptions,
@@ -97,7 +95,6 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 	} else {
 		const { length } = Snackbar.instances
 		reactiveSnackOptions.show = true
-		reactiveSnackOptions._isDeclarative = false
 		const id = Date.now()
 		if (length === 1) {
 			Snackbar.instances[0].reactiveSnackOptions = {
@@ -133,11 +130,11 @@ Snackbar.install = function (app: any) {
 	app.component(VarSnackbar.name, VarSnackbar)
 }
 
-Snackbar.allowMultiple = function (bool = true) {
+Snackbar.allowMultiple = function (bool = false) {
 	this.isAllowMultiple = !!bool
 }
 
-Snackbar.isAllowMultiple = true
+Snackbar.isAllowMultiple = false
 
 Snackbar.instances = reactive([]) as any[]
 

@@ -3,7 +3,12 @@
 		<div class="snackbar-demo__basic">
 			<app-type>基本使用</app-type>
 			<div class="snackbar-demo__basic-block">
-				<var-button type="primary" size="small" @click="changeValue('show1')">
+				<var-button
+					type="primary"
+					size="small"
+					style="cursor: help"
+					@click="changeValue('show1')"
+				>
 					基本使用
 				</var-button>
 				<var-button type="primary" size="small" @click="changeValue('show2')">
@@ -162,7 +167,7 @@ export default defineComponent({
 		[Button.name]: Button,
 	},
 	setup() {
-		const text: Ref<string> = ref("Hello, I'm a snackbar")
+		const text: Ref<string> = ref("Hello, I'm a snackbar-core")
 		const shows: any = reactive({
 			show1: false,
 			show2: false,
@@ -183,21 +188,21 @@ export default defineComponent({
 
 		const create = (type: any) => {
 			Snackbar({
-				content: "Hello, I'm a snackbar",
+				content: "Hello, I'm a snackbar-core",
 				type,
 			})
 		}
 
 		const createMethod = (type: any) => {
 			Snackbar[type]({
-				content: "Hello, I'm a snackbar",
+				content: "Hello, I'm a snackbar-core",
 				forbidClick: type === 'loading',
 			})
 		}
 
 		const createPosition = (position: 'top' | 'center' | 'bottom') => {
 			Snackbar({
-				content: "Hello, I'm a snackbar",
+				content: "Hello, I'm a snackbar-core",
 				position,
 			})
 		}

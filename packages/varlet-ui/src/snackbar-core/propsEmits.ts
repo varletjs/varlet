@@ -101,8 +101,8 @@ export const props = {
 	_update: {
 		type: String,
 	},
-	_isDeclarative: {
-		type: Boolean,
-		default: true,
-	},
+}
+
+export const emits = {
+	'update:show': null,
 }
