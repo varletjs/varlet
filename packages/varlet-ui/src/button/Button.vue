@@ -36,14 +36,16 @@ export default defineComponent({
 	props,
 	emits,
 	setup(props, { emit }) {
-		return {
-			trigger() {
-				if (props.loading) {
-					return
-				}
+	  const trigger = () => {
+      if (props.loading) {
+        return
+      }
 
-				emit('click')
-			},
+      emit('click')
+    }
+
+		return {
+      trigger
 		}
 	},
 })

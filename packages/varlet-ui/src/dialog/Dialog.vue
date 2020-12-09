@@ -14,7 +14,7 @@
     @click-overlay="handleClickOverlay"
   >
     <div
-      class="var-dialog"
+      class="var--box var-dialog"
       v-bind="$attrs"
     >
       <div class="var-dialog__title">

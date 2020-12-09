@@ -1,15 +1,12 @@
 import logger from '../shared/logger'
 import ora from 'ora'
-import { compileES } from '../compiler/compileES'
 import { copy, remove } from 'fs-extra'
 import { CJS_DIR, ES_DIR, SRC_DIR, UMD_DIR } from '../shared/constant'
-import { compileCJS } from '../compiler/compileCJS'
 import { watch } from 'chokidar'
 import { getComponentNames, getExportDirNames, isExampleDir, isTestsDir } from '../shared/fsUtils'
-import { compileComponent, compileFile } from '../compiler/compileComponent'
+import { compileModule, compileFile, compileDir } from '../compiler/compileModule'
 import { parse } from 'path'
 import { compileLibraryEntry } from '../compiler/compileScript'
-import { compileUMD } from '../compiler/compileUMD'
 
 export function removeDir() {
   return Promise.all([
@@ -19,22 +16,32 @@ export function removeDir() {
   ])
 }
 
-export async function recompile(path: string) {
-  const esPath = path.replace('src', 'es')
-  const cjsPath = path.replace('src', 'cjs')
-  const { ext, dir } = parse(path)
-  const { dir: esDir } = parse(esPath)
-  const { dir: cjsDir } = parse(cjsPath)
+export async function recompile(changedPath: string) {
+  const changedESPath = changedPath.replace('src', 'es')
+  const changedCjsPath = changedPath.replace('src', 'cjs')
+
+  const { ext, dir: changedDir } = parse(changedPath)
+  const { dir: changedEsDir } = parse(changedESPath)
+  const { dir: changedCjsDir } = parse(changedCjsPath)
+
   if (ext === '.vue') {
     // style deps collection
-    await Promise.all([remove(esDir), remove(cjsDir)])
-    await Promise.all([copy(dir, esDir), copy(dir, cjsDir)])
-    await Promise.all([compileComponent(esDir), compileComponent(cjsDir, 'cjs')])
+    await Promise.all([remove(changedEsDir), remove(changedCjsDir)])
+    await Promise.all([copy(changedDir, changedEsDir), copy(changedDir, changedCjsDir)])
+    await Promise.all([compileDir(changedEsDir), compileDir(changedCjsDir, 'cjs')])
   } else {
-    await Promise.all([copy(path, esPath), copy(path, cjsPath)])
-    await Promise.all([compileFile(esPath), compileFile(cjsPath, 'cjs')])
+    await Promise.all([copy(changedPath, changedESPath), copy(changedPath, changedCjsPath)])
+    await Promise.all([compileFile(changedESPath), compileFile(changedCjsPath, 'cjs')])
   }
-  const [componentNames, exportDirNames]: Array<Array<string>> = await Promise.all([getComponentNames(), getExportDirNames()])
+
+  const [
+    componentNames,
+    exportDirNames
+  ]: Array<Array<string>> = await Promise.all([
+    getComponentNames(),
+    getExportDirNames()
+  ])
+
   compileLibraryEntry(ES_DIR, componentNames, exportDirNames)
   compileLibraryEntry(CJS_DIR, componentNames, exportDirNames, 'cjs')
 }
@@ -51,9 +58,11 @@ export function handleFilesChange() {
 
 export async function compile(cmd: { watch: boolean }) {
   const s = ora('Compile start for ES & CJS & UMD').start()
+
   await removeDir()
-  await Promise.all([compileES(), compileCJS()])
-  await compileUMD()
+  await Promise.all([compileModule(), compileModule('cjs')])
+  await compileModule('umd')
+
   s.succeed('Compile success!')
 
   if (cmd.watch) {

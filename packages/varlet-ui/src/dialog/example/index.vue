@@ -1,8 +1,9 @@
 <template>
+  <app-type>声明式调用</app-type>
   <var-dialog
     v-model:show="show"
     title="哈哈哈"
-    message="啊实打实打算"
+    message="测试声明式调用测试声明式调用测试声明式调用测试声明式调用测试声明式调用测试声明式调用测试声明式调用"
     @confirm="() => log('confirm')"
     @cancel="() => log('cancel')"
     @open="() => log('open')"
@@ -10,9 +11,7 @@
     @opened="() => log('opened')"
     @closed="() => log('closed')"
     @click-overlay="() => log('click-overlay')"
-    :before-close="handleBeforeClose"
-  >
-  </var-dialog>
+  />
 
   <var-button type="success" size="large" @click="show = true">开启</var-button>
   <var-button type="success" size="large" @click="create">命令开启</var-button>
@@ -32,24 +31,30 @@ export default defineComponent({
   setup() {
     const show: Ref<boolean> = ref(false)
 
+    const handleBeforeClose = (done: () => void) => {
+      console.log('2秒关闭...')
+      setTimeout(() => {
+        done()
+      }, 2000)
+    }
+
+    const log = (message: string) => console.log(message)
+
+    const create = async () => {
+      const state = await Dialog({
+        title: '测试',
+        cancelButton: false,
+        message: '测试文字测试文字测试文字测试文字测试文字测试文字测试文字'
+      })
+
+      console.log(state)
+    }
+
     return {
       show,
-      log(message: string) {
-        console.log(message)
-      },
-      handleBeforeClose(done: () => void) {
-        console.log('2秒关闭...')
-        setTimeout(() => {
-          done()
-        }, 2000)
-      },
-      async create() {
-        const state = await Dialog({
-          title: '测试',
-          cancelButton: false,
-          message: '哈哈哈哈哈'
-        })
-      }
+      log,
+      handleBeforeClose,
+      create
     }
   }
 })

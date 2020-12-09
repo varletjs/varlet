@@ -24,52 +24,50 @@ interface SnackbarOptions {
 	onClosed?: () => void
 }
 
-const Snackbar: any = function (options: SnackbarOptions): void {
-	const snackOptions: SnackbarOptions =
-		Object.prototype.toString.call(options) === '[object Object]' ? options : {}
-	const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>(
-		snackOptions
-	)
-	const Host = {
-		setup() {
-			return () =>
-				h(
-					TransitionGroup,
-					{
-						...props,
-					},
-					Snackbar.instances.map((value: any) => {
-						console.log(reactiveSnackOptions)
-						return h(value, {
-							...reactiveSnackOptions,
-							...{
-								key: value.id,
-								'onUpdate:show': (value: boolean) => {
-									reactiveSnackOptions.show = value
-								},
-							},
-						})
-					})
-				)
-		},
-	}
+function Snackbar(options: SnackbarOptions) {
+  const snackOptions: SnackbarOptions =
+    Object.prototype.toString.call(options) === '[object Object]' ? options : {}
+  const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>(
+    snackOptions
+  )
 
-	if (!Snackbar.isMount) {
-		Snackbar.isMount = true
-		const { unmountInstance } = mountInstance(Host)
-	}
+  if (!Snackbar.instances.length) {
+    const Host = {
+      setup() {
+        return () => h(TransitionGroup,{
+              ...props,
+            },
+            Snackbar.instances.map(({ id, reactiveSnackOptions }) => {
+              return h(VarSnackbar, {
+                ...reactiveSnackOptions,
+                ...{
+                  key: id,
+                  'onUpdate:show': (value: boolean) => {
+                    reactiveSnackOptions.show = value
+                  }
+                },
+              })
+            })
+          )
+      },
+    }
+    const { unmountInstance } = mountInstance(Host)
+  }
 
-	if (Snackbar.allowMultiple) {
-		VarSnackbar.id = Date.now()
-		Snackbar.instances.push(VarSnackbar)
-		nextTick(() => {
-			reactiveSnackOptions.show = true
-		})
-	}
+  if (Snackbar.allowMultiple) {
+    Snackbar.instances.push({
+      id: Date.now(),
+      reactiveSnackOptions
+    })
+
+    nextTick().then(() => {
+      reactiveSnackOptions.show = true
+    })
+  }
 }
 
-;['success', 'warning', 'info', 'error', 'loading'].forEach((type: string) => {
-	Snackbar[type] = (options: any) => {
+['success', 'warning', 'info', 'error', 'loading'].forEach((type: any) => {
+	Snackbar[type] = (options: SnackbarOptions | string) => {
 		if (typeof options === 'string') {
 			options = {
 				content: options,
@@ -83,17 +81,12 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 })
 
 Snackbar.install = function (app: any) {
-	// if (Snackbar.allowMultiple) {
-	//
-	// }
 	app.component(VarSnackbar.name, VarSnackbar)
 }
 
 Snackbar.allowMultiple = true
 
-Snackbar.isMount = false
-
-Snackbar.instances = reactive([])
+Snackbar.instances = reactive([]) as any[]
 
 Snackbar.Component = VarSnackbar
 

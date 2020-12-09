@@ -6,7 +6,7 @@
       @after-leave="$emit('closed')"
     >
       <div
-        class="var-popup"
+        class="var--box var-popup"
         :style="{
           'z-index': zIndex
         }"

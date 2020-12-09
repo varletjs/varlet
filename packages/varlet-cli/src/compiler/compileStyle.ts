@@ -1,4 +1,4 @@
-import { mkdirSync, pathExistsSync, readFileSync, writeFileSync } from 'fs-extra'
+import { mkdirSync, pathExistsSync, readFileSync, writeFileSync, ensureFileSync } from 'fs-extra'
 import { render } from 'less'
 import { parse, resolve } from 'path'
 import { replaceExt } from '../shared/fsUtils'
@@ -39,17 +39,15 @@ export function buildStyleEntry(dir: string) {
 
 export function emitStyleEntry(path: string, modules: string | boolean = false) {
   const { ext, dir, base } = parse(path)
-  const styleDir: string = resolve(dir, './style')
   const styleIndex: string = resolve(dir, './style/index.js')
   const styleLess: string = resolve(dir, './style/less.js')
-
-  !pathExistsSync(styleDir) && mkdirSync(styleDir)
-  !pathExistsSync(styleIndex) && writeFileSync(styleIndex, '', 'utf-8')
-  !pathExistsSync(styleLess) && writeFileSync(styleLess, '', 'utf-8')
+  ensureFileSync(styleIndex)
+  ensureFileSync(styleLess)
 
   const emitPath = ext === '.css' ? styleIndex : styleLess
   const emitScript = modules === 'cjs' ? `require('../${base}')\n` : `import '../${base}'\n`
   const currentScript = readFileSync(emitPath, 'utf-8')
+
   writeFileSync(emitPath, `${currentScript}${emitScript}`)
 }
 

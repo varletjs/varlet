@@ -1,5 +1,5 @@
 <template>
-	<div class="var-loading">
+	<div class="var--box var-loading">
 		<div
 			:class="`var-loading__wave var-loading__wave-${size}`"
 			v-if="type === 'wave'"

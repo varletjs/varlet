@@ -68,10 +68,7 @@ export default defineComponent({
 			zIndex,
 		})
 
-		watch(
-			() => props.show,
-			(show) => {
-				console.log('watch')
+		watch(() => props.show, (show) => {
 				if (show) {
 					props.onOpen && props.onOpen()
 					setTimeout(() => {

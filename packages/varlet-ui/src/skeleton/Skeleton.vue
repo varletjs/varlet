@@ -1,5 +1,5 @@
 <template>
-	<div class="var-skeleton">
+	<div class="var--box var-skeleton">
 		<div class="var-skeleton__data" v-if="!loading">
 			<slot />
 		</div>
