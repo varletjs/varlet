@@ -1,8 +1,54 @@
 <template>
+	<transition
+		name="var-snackbar-fade"
+		@after-enter="onOpened"
+		@after-leave="onClosed"
+		v-if="_isDeclarative"
+	>
+		<div
+			class="var-snackbar"
+			:style="{
+				alignItems,
+				pointerEvents: forbidClick ? 'auto' : 'none',
+				position: 'absolute',
+			}"
+			v-show="show"
+		>
+			<div
+				:class="`var-snackbar__wrapper var-elevation--4 ${
+					vertical ? 'var-snackbar__vertical' : ''
+				}`"
+				:style="snackbarStyle"
+			>
+				<div :class="`var-snackbar__content ${contentClass}`">
+					<var-loading
+						:type="loadingType"
+						:size="loadingSize"
+						v-if="type === 'loading'"
+					/>
+					<slot>
+						{{ content }}
+					</slot>
+				</div>
+				<div class="var-snackbar__action">
+					<var-button
+						type="primary"
+						size="small"
+						v-if="['success', 'error', 'info', 'warning'].includes(type)"
+					>
+						{{ type }}
+					</var-button>
+					<slot name="action"></slot>
+				</div>
+			</div>
+		</div>
+	</transition>
+
 	<div
 		class="var-snackbar"
 		:style="{ alignItems, pointerEvents: forbidClick ? 'auto' : 'none' }"
 		v-show="show"
+		v-else
 	>
 		<div
 			:class="`var-snackbar__wrapper var-elevation--4 ${
@@ -35,7 +81,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed, watch, ref, Ref, onMounted } from 'vue'
+import {
+	defineComponent,
+	reactive,
+	computed,
+	watch,
+	ref,
+	Ref,
+	onMounted,
+} from 'vue'
 import Loading from '../loading'
 import Button from '../button'
 import { useZIndex } from '../context/zIndex'
@@ -92,14 +146,14 @@ export default defineComponent({
 			}
 		)
 
-    onMounted(() => {
-      if (props.show) {
-        props.onOpen && props.onOpen()
-        timer.value = setTimeout(() => {
-          ctx.emit('update:show', false)
-        }, props.duration)
-      }
-    })
+		onMounted(() => {
+			if (props.show) {
+				props.onOpen && props.onOpen()
+				timer.value = setTimeout(() => {
+					ctx.emit('update:show', false)
+				}, props.duration)
+			}
+		})
 		return {
 			snackbarStyle,
 			alignItems,

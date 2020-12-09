@@ -151,7 +151,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, reactive, toRefs } from 'vue'
+import { defineComponent, ref, Ref, reactive, toRefs, onMounted } from 'vue'
 import Button from '../../button'
 import Snackbar from '..'
 
@@ -184,13 +184,14 @@ export default defineComponent({
 		const create = (type: any) => {
 			Snackbar({
 				content: "Hello, I'm a snackbar",
-				type
+				type,
 			})
 		}
 
 		const createMethod = (type: any) => {
 			Snackbar[type]({
 				content: "Hello, I'm a snackbar",
+				forbidClick: type === 'loading',
 			})
 		}
 
@@ -215,6 +216,10 @@ export default defineComponent({
 		const closed = () => {
 			window.alert('closed!')
 		}
+
+		onMounted(() => {
+			Snackbar.allowMultiple(false)
+		})
 
 		return {
 			...toRefs(shows),
@@ -250,16 +255,16 @@ export default defineComponent({
 }
 
 .list-complete-item {
-  transition: all 0.8s ease;
+	transition: all 0.8s ease;
 }
 
 .list-complete-enter-from,
 .list-complete-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
+	opacity: 0;
+	transform: translateY(30px);
 }
 
 .list-complete-leave-active {
-  position: absolute;
+	position: absolute;
 }
 </style>

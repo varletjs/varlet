@@ -1,6 +1,6 @@
 import VarSnackbar from './Snackbar.vue'
 import { mountInstance } from '../utils/components'
-import { h, reactive, TransitionGroup, nextTick } from 'vue'
+import { h, reactive, TransitionGroup } from 'vue'
 
 interface SnackbarOptions {
 	type?: 'loading' | 'success' | 'error' | 'warning' | 'info'
@@ -22,6 +22,7 @@ interface SnackbarOptions {
 	onClose?: () => void
 	onOpened?: () => void
 	onClosed?: () => void
+	_isDeclarative?: boolean
 }
 
 const Snackbar: any = function (options: SnackbarOptions): void {
@@ -41,16 +42,24 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 					{
 						...props,
 						...{
-							style: {
-								position: 'fixed',
-								top: 0,
-								left: 0,
-								right: 0,
-							},
+							class: `var-transition-group ${
+								reactiveSnackOptions.forbidClick && 'var-pointer-auto'
+							}`,
+						},
+						onAfterLeave: (element: any) => {
+							if (element.parentElement) {
+								console.log(element.parentElement.classList)
+								element.parentElement.classList.remove('var-pointer-auto')
+							}
+							const id = element.__vueParentComponent.vnode.key
+							for (let i = 0; i < Snackbar.instances.length; i++) {
+								if (Snackbar.instances[i].id === id)
+									Snackbar.instances.splice(i, 1)
+							}
 						},
 					},
 					Snackbar.instances.map(
-						({ id, reactiveSnackOptions, _update, time }: any) => {
+						({ id, reactiveSnackOptions, _update }: any) => {
 							return h(VarSnackbar, {
 								...reactiveSnackOptions,
 								...{
@@ -58,11 +67,6 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 									_update,
 									'onUpdate:show': (value: boolean) => {
 										reactiveSnackOptions.show = value
-									},
-									onClosed: () => {
-										for (let i = 0; i < Snackbar.instances.length; i++) {
-											// if (Snackbar.instances[i].id === id) Snackbar.instances.splice(i, 1)
-										}
 									},
 								},
 							})
@@ -77,18 +81,17 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 		mountInstance(Host)
 	}
 
-	if (Snackbar.allowMultiple) {
-    reactiveSnackOptions.show = true
+	if (Snackbar.isAllowMultiple) {
+		reactiveSnackOptions.show = true
+		reactiveSnackOptions._isDeclarative = false
 		Snackbar.instances.push({
 			id,
 			reactiveSnackOptions,
 		})
-
-		// nextTick(() => {
-		// 	reactiveSnackOptions.show = true
-		// })
 	} else {
 		const { length } = Snackbar.instances
+		reactiveSnackOptions.show = true
+		reactiveSnackOptions._isDeclarative = false
 		const id = Date.now()
 		if (length === 1) {
 			Snackbar.instances[0].reactiveSnackOptions = {
@@ -101,9 +104,6 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 				id,
 				reactiveSnackOptions,
 				_update: `update-${id}`,
-			})
-			nextTick(() => {
-				reactiveSnackOptions.show = true
 			})
 		}
 	}
@@ -127,7 +127,11 @@ Snackbar.install = function (app: any) {
 	app.component(VarSnackbar.name, VarSnackbar)
 }
 
-Snackbar.allowMultiple = true
+Snackbar.allowMultiple = function (bool = true) {
+	this.isAllowMultiple = !!bool
+}
+
+Snackbar.isAllowMultiple = true
 
 Snackbar.instances = reactive([]) as any[]
 

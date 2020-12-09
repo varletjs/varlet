@@ -1,5 +1,15 @@
 @import "../styles/elevation";
-
+.var-transition-group {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+.var-pointer-auto{
+  pointer-events: auto
+}
 .var-snackbar {
   display: flex;
   justify-content: center;
@@ -7,15 +17,15 @@
   right: 0;
   top: 0;
   bottom: 0;
-  transition: all 1s ease;
   //position: absolute;
+  transition: all .15s cubic-bezier(0, 0, .2, 1);
 
   &__wrapper {
     display: flex;
     border-radius: 4px;
     color: hsla(0, 0%, 100%, .87);
     font-size: 14px;
-    margin: 12px 24px;
+    margin: 6px 24px;
     align-items: center;
     border-color: currentColor;
     pointer-events: auto;
@@ -42,12 +52,8 @@
 
   &-fade-leave-active {
     position: absolute;
+    //transition: all 0.1s ease;
   }
-
-  //&-fade-enter-active,
-  //&-fade-leave-active {
-  //  transition: all 1s ease;
-  //}
 
   &-fade-enter-from,
   &-fade-leave-to {
