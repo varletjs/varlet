@@ -147,7 +147,7 @@
 <script lang="ts">
 import { defineComponent, ref, Ref, reactive, toRefs } from 'vue'
 import Button from '../../button'
-import Snackbar from '..'
+import Snackbar, { SnackbarType } from '..'
 
 export default defineComponent({
 	name: 'SnackbarExample',
@@ -174,7 +174,7 @@ export default defineComponent({
 		}
 
 		const create = (type: any) => {
-			const snackbar = Snackbar({
+			const snackbar: any = Snackbar({
 				content: "Hello, I'm a snackbar-core",
 				type,
 			})
@@ -183,7 +183,7 @@ export default defineComponent({
 			}, 1000)
 		}
 
-		const createMethod = (type: any) => {
+		const createMethod = (type: SnackbarType) => {
 			Snackbar[type]({
 				content: "Hello, I'm a snackbar-core",
 				forbidClick: type === 'loading',

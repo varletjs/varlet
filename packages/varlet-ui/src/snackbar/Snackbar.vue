@@ -21,10 +21,11 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 import SnackbarCore from '../snackbar-core'
 import { props, emits } from '../snackbar-core/propsEmits'
 
-export default {
+export default defineComponent({
 	name: 'VarSnackbar',
 	components: {
 		[SnackbarCore.name]: SnackbarCore,
@@ -39,5 +40,5 @@ export default {
 			update,
 		}
 	},
-}
+})
 </script>
