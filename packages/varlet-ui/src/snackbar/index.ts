@@ -28,7 +28,7 @@ const Snackbar: any = function (options: SnackbarOptions): any {
 	const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>(
 		snackOptions
 	)
-	let snackbarList: any[]
+	let snackbarList: any[] = reactive([])
 	const Host = {
 		setup() {
 			return () => {
