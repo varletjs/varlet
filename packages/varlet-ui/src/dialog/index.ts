@@ -27,7 +27,7 @@ type DialogResolveState = 'confirm' | 'cancel' | 'close'
 
 function Dialog(options: DialogOptions | string): Promise<DialogResolveState> {
   return new Promise((resolve) => {
-    const dialogOptions: DialogOptions = (isString(options) ? { message: options } : options)
+    const dialogOptions: DialogOptions = isString(options) ? { message: options } : options
     const reactiveDialogOptions: DialogOptions = reactive<DialogOptions>(dialogOptions)
 
     const { unmountInstance } = mountInstance(

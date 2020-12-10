@@ -23,92 +23,91 @@ interface SnackbarOptions {
 	onClosed?: () => void
 }
 
+const TransitionGroupHost = {
+  setup() {
+    return () => {
+      const snackbarList = Snackbar.instances.map(
+        ({ id, reactiveSnackOptions, _update }: any) => {
+          if (reactiveSnackOptions.forbidClick) {
+            const transitionGroupEl = document.querySelector(
+              '.var-transition-group'
+              )
+            ;(transitionGroupEl as HTMLElement).classList.add(
+              'var-pointer-auto'
+            )
+          }
+          return h(VarSnackbarCore, {
+            ...reactiveSnackOptions,
+            ...{
+              key: id,
+              style: {
+                position: 'relative',
+                top: getTop(reactiveSnackOptions.position),
+              },
+              _update,
+              'onUpdate:show': (value: boolean) => {
+                reactiveSnackOptions.show = value
+              },
+            },
+          })
+        }
+      )
+
+      return h(
+        TransitionGroup,
+        {
+          ...transitionGroupProps,
+          onAfterLeave: removeInstance,
+        },
+        snackbarList
+      )
+    }
+  },
+}
+
 const Snackbar: any = function (options: SnackbarOptions): any {
 	const snackOptions: SnackbarOptions = isBasicObject(options) ? options : {}
 	const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>(
 		snackOptions
 	)
-	let snackbarList: any[] = reactive([])
-	const Host = {
-		setup() {
-			return () => {
-				snackbarList = Snackbar.instances.map(
-					({ id, reactiveSnackOptions, _update }: any) => {
-						if (reactiveSnackOptions.forbidClick) {
-							const transitionGroupEl = document.querySelector(
-								'.var-transition-group'
-							)
-							;(transitionGroupEl as HTMLElement).classList.add(
-								'var-pointer-auto'
-							)
-						}
-						return h(VarSnackbarCore, {
-							...reactiveSnackOptions,
-							...{
-								key: id,
-								style: {
-									position: 'relative',
-									top: getTop(reactiveSnackOptions.position),
-								},
-								_update,
-								'onUpdate:show': (value: boolean) => {
-									reactiveSnackOptions.show = value
-								},
-							},
-						})
-					}
-				)
+  reactiveSnackOptions.show = true
 
-				return h(
-					TransitionGroup,
-					{
-						...transitionGroupProps,
-						onAfterLeave: removeInstance,
-					},
-					snackbarList
-				)
-			}
-		},
-	}
+  const api = {
+	  clear() {
+      reactiveSnackOptions.show = false
+    }
+  }
 
 	if (!Snackbar.isMount) {
 		Snackbar.isMount = true
-		mountInstance(Host)
+		mountInstance(TransitionGroupHost)
 	}
 
-	const id = Date.now()
-	reactiveSnackOptions.show = true
+  const id = Date.now()
+  const { length } = Snackbar.instances
 
-	if (Snackbar.isAllowMultiple) {
-		Snackbar.instances.push({
-			id,
-			reactiveSnackOptions,
-		})
+  if (length === 0) {
+    Snackbar.instances.push({
+      id,
+      reactiveSnackOptions,
+    })
+    return api
+  }
+
+	if (!Snackbar.isAllowMultiple) {
+    Snackbar.instances[0].reactiveSnackOptions = {
+      ...Snackbar.instances[0].reactiveSnackOptions,
+      ...reactiveSnackOptions,
+    }
+    Snackbar.instances[0]._update = `update-${id}`
 	} else {
-		const { length } = Snackbar.instances
-		if (length === 1) {
-			Snackbar.instances[0].reactiveSnackOptions = {
-				...Snackbar.instances[0].reactiveSnackOptions,
-				...reactiveSnackOptions,
-			}
-			Snackbar.instances[0]._update = `update-${id}`
-		} else {
-			Snackbar.instances.push({
-				id,
-				reactiveSnackOptions,
-				_update: `update-${id}`,
-			})
-		}
-	}
-	return {
-		clear: () => {
-			for (let i = 0; i < snackbarList.length; i++) {
-				if (snackbarList[i].key === id) {
-					snackbarList[i].component.emit('update:show', false)
-				}
-			}
-		},
-	}
+    Snackbar.instances.push({
+      id,
+      reactiveSnackOptions,
+    })
+  }
+
+	return api
 }
 
 ;['success', 'warning', 'info', 'error', 'loading'].forEach((type: any) => {

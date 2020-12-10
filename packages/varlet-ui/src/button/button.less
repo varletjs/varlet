@@ -21,14 +21,14 @@
   line-height: 1.2;
   border-radius: @button-border-radius;
   user-select: none;
-  transition: box-shadow .2s;
+  transition: box-shadow .2s linear;
   will-change: box-shadow;
 
   &:active {
     box-shadow:
-      0 3px 3px -2px @shadow-key-umbra-opacity,
-      0 3px 4px 0 @shadow-key-penumbra-opacity,
-      0 6px 8px 0 rgba(0, 0, 0, 0.24);
+      0 6px 6px -3px @shadow-key-umbra-opacity,
+      0 10px 14px 1px @shadow-key-penumbra-opacity,
+      0 4px 18px 3px @shadow-key-ambient-opacity
   }
 
   &--plain {
