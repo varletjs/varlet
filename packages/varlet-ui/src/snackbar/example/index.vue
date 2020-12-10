@@ -3,12 +3,7 @@
 		<div class="snackbar-demo__basic">
 			<app-type>基本使用</app-type>
 			<div class="snackbar-demo__basic-block">
-				<var-button
-					type="primary"
-					size="small"
-					style="cursor: help"
-					@click="changeValue('show1')"
-				>
+				<var-button type="primary" size="small" @click="changeValue('show1')">
 					基本使用
 				</var-button>
 				<var-button type="primary" size="small" @click="changeValue('show2')">
@@ -19,12 +14,6 @@
 				</var-button>
 				<var-button type="primary" size="small" @click="changeValue('show4')">
 					自定义关闭时间
-				</var-button>
-				<var-button type="primary" size="small" @click="changeValue('show5')">
-					自定义背景色
-				</var-button>
-				<var-button type="primary" size="small" @click="changeValue('show6')">
-					自定义宽高
 				</var-button>
 			</div>
 		</div>
@@ -100,7 +89,7 @@
 			</div>
 		</div>
 
-		<var-snackbar v-model:show="show1">
+		<var-snackbar v-model:show="show1" position="bottom">
 			{{ text }}
 		</var-snackbar>
 
@@ -173,8 +162,6 @@ export default defineComponent({
 			show2: false,
 			show3: false,
 			show4: false,
-			show5: false,
-			show6: false,
 			show7: false,
 			show8: false,
 			show9: false,
@@ -187,10 +174,13 @@ export default defineComponent({
 		}
 
 		const create = (type: any) => {
-			Snackbar({
+			const snackbar = Snackbar({
 				content: "Hello, I'm a snackbar-core",
 				type,
 			})
+			setTimeout(function () {
+				snackbar.clear()
+			}, 1000)
 		}
 
 		const createMethod = (type: any) => {

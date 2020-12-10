@@ -8,7 +8,7 @@
 			v-bind="$props"
 			v-on="$event"
 			@update:show="update"
-			class="var--absolute"
+			class="var--absolute var-snackbar-transition"
 		>
 			<slot>
 				{{ content }}

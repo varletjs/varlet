@@ -32,23 +32,10 @@ export const props = {
 	contentClass: {
 		type: String,
 	},
-	// snackbar的高度
-	height: {
-		type: [Number, String],
-	},
-	// snackbar的宽度
-	width: {
-		type: [Number, String],
-	},
-	// snackbar的背景颜色
-	color: {
-		type: String,
-		default: '#333',
-	},
 	// snackbar 持续时间
 	duration: {
 		type: Number,
-		default: 3000,
+		default: 300000,
 	},
 	// 是否将消息条内容堆叠在操作（按钮）之上
 	vertical: {

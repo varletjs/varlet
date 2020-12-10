@@ -1,7 +1,8 @@
+import { h, reactive, TransitionGroup } from 'vue'
 import VarSnackbarCore from '../snackbar-core'
 import VarSnackbar from './Snackbar.vue'
 import { mountInstance } from '../utils/components'
-import { h, reactive, TransitionGroup } from 'vue'
+import { isBasicObject } from '../utils/shared'
 
 interface SnackbarOptions {
 	type?: 'loading' | 'success' | 'error' | 'warning' | 'info'
@@ -12,9 +13,6 @@ interface SnackbarOptions {
 	teleport?: string
 	lockScroll?: boolean
 	contentClass?: string
-	height?: number | string
-	width?: number | string
-	color?: string
 	duration?: number
 	vertical?: boolean
 	show?: boolean
@@ -25,59 +23,51 @@ interface SnackbarOptions {
 	onClosed?: () => void
 }
 
-const Snackbar: any = function (options: SnackbarOptions): void {
-	const snackOptions: SnackbarOptions =
-		Object.prototype.toString.call(options) === '[object Object]' ? options : {}
+const Snackbar: any = function (options: SnackbarOptions): any {
+	const snackOptions: SnackbarOptions = isBasicObject(options) ? options : {}
 	const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>(
 		snackOptions
 	)
-
-	const id = Date.now()
-
+	let snackbarList: any[]
 	const Host = {
 		setup() {
-			return () =>
-				h(
+			return () => {
+				snackbarList = Snackbar.instances.map(
+					({ id, reactiveSnackOptions, _update }: any) => {
+						if (reactiveSnackOptions.forbidClick) {
+							const transitionGroupEl = document.querySelector(
+								'.var-transition-group'
+							)
+							;(transitionGroupEl as HTMLElement).classList.add(
+								'var-pointer-auto'
+							)
+						}
+						return h(VarSnackbarCore, {
+							...reactiveSnackOptions,
+							...{
+								key: id,
+								style: {
+									position: 'relative',
+									top: getTop(reactiveSnackOptions.position),
+								},
+								_update,
+								'onUpdate:show': (value: boolean) => {
+									reactiveSnackOptions.show = value
+								},
+							},
+						})
+					}
+				)
+
+				return h(
 					TransitionGroup,
 					{
-						...props,
-						...{
-							class: 'var-transition-group',
-						},
-						onAfterLeave: (element: any) => {
-							if (element.parentElement) {
-								element.parentElement.classList.remove('var-pointer-auto')
-							}
-							const id = element.__vueParentComponent.vnode.key
-							for (let i = 0; i < Snackbar.instances.length; i++) {
-								if (Snackbar.instances[i].id === id)
-									Snackbar.instances.splice(i, 1)
-							}
-						},
+						...transitionGroupProps,
+						onAfterLeave: removeInstance,
 					},
-					Snackbar.instances.map(
-						({ id, reactiveSnackOptions, _update }: any) => {
-							if (reactiveSnackOptions.forbidClick) {
-								const transitionGroupEl = document.querySelector(
-									'.var-transition-group'
-								)
-								;(transitionGroupEl as HTMLElement).classList.add(
-									'var-pointer-auto'
-								)
-							}
-							return h(VarSnackbarCore, {
-								...reactiveSnackOptions,
-								...{
-									key: id,
-									_update,
-									'onUpdate:show': (value: boolean) => {
-										reactiveSnackOptions.show = value
-									},
-								},
-							})
-						}
-					)
+					snackbarList
 				)
+			}
 		},
 	}
 
@@ -86,16 +76,16 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 		mountInstance(Host)
 	}
 
+	const id = Date.now()
+	reactiveSnackOptions.show = true
+
 	if (Snackbar.isAllowMultiple) {
-		reactiveSnackOptions.show = true
 		Snackbar.instances.push({
 			id,
 			reactiveSnackOptions,
 		})
 	} else {
 		const { length } = Snackbar.instances
-		reactiveSnackOptions.show = true
-		const id = Date.now()
 		if (length === 1) {
 			Snackbar.instances[0].reactiveSnackOptions = {
 				...Snackbar.instances[0].reactiveSnackOptions,
@@ -109,6 +99,15 @@ const Snackbar: any = function (options: SnackbarOptions): void {
 				_update: `update-${id}`,
 			})
 		}
+	}
+	return {
+		clear: () => {
+			for (let i = 0; i < snackbarList.length; i++) {
+				if (snackbarList[i].key === id) {
+					snackbarList[i].component.emit('update:show', false)
+				}
+			}
+		},
 	}
 }
 
@@ -134,17 +133,33 @@ Snackbar.allowMultiple = function (bool = false) {
 	this.isAllowMultiple = !!bool
 }
 
-Snackbar.isAllowMultiple = false
+Snackbar.isAllowMultiple = true
 
 Snackbar.instances = reactive([]) as any[]
 
 Snackbar.Component = VarSnackbar
 
-const props = {
+const transitionGroupProps = {
 	name: 'var-snackbar-fade',
 	tag: 'div',
+	class: 'var-transition-group',
 	afterEnter: 'onOpened',
 	afterLeave: 'onClosed',
+}
+
+function removeInstance(element: any) {
+	element.parentElement &&
+		element.parentElement.classList.remove('var-pointer-auto')
+	const { key } = element.__vueParentComponent.vnode
+	for (let i = 0; i < Snackbar.instances.length; i++) {
+		if (Snackbar.instances[i].id === key) Snackbar.instances.splice(i, 1)
+	}
+}
+
+function getTop(postion: string) {
+	if (postion === 'center') return '45%'
+	if (postion === 'bottom') return '85%'
+	return '5%'
 }
 
 export default Snackbar

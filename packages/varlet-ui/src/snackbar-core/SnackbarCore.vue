@@ -1,11 +1,11 @@
 <template>
 	<div
 		class="var-snackbar"
-		:style="{ alignItems, pointerEvents: forbidClick ? 'auto' : 'none' }"
+		:style="{ pointerEvents: forbidClick ? 'auto' : 'none' }"
 		v-show="show"
 	>
 		<div
-			:class="`var-snackbar__wrapper var-elevation--4 ${
+			:class="`var-snackbar__wrapper var-snackbar__wrapper-${position} var-elevation--4 ${
 				vertical ? 'var-snackbar__vertical' : ''
 			}`"
 			:style="snackbarStyle"
@@ -64,16 +64,8 @@ export default defineComponent({
 		const { disabled } = useTeleport()
 		const { zIndex } = useZIndex(props, 'show', 1)
 		useLock(props, 'show', 'lockScroll')
-		const alignItems = computed(() => {
-			if (props.position === 'top') return 'flex-start'
-			if (props.position === 'center') return 'center'
-			if (props.position === 'bottom') return 'flex-end'
-		})
+
 		const snackbarStyle = reactive({
-			backgroundColor: props.color,
-			width: typeof props.width === 'string' ? props.width : props.width + 'px',
-			height:
-				typeof props.height === 'string' ? props.height : props.height + 'px',
 			zIndex,
 		})
 
@@ -110,7 +102,6 @@ export default defineComponent({
 		})
 		return {
 			snackbarStyle,
-			alignItems,
 			disabled,
 		}
 	},

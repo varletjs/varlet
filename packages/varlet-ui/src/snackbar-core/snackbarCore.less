@@ -14,54 +14,76 @@
   pointer-events: auto
 }
 
-.var-snackbar {
-  display: flex;
-  justify-content: center;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  //position: absolute;
-  transition: all .15s cubic-bezier(0, 0, .2, 1);
-
-  &__wrapper {
+.var {
+  &-snackbar {
     display: flex;
-    border-radius: 4px;
-    color: hsla(0, 0%, 100%, .87);
-    font-size: 14px;
-    margin: 6px 24px;
-    align-items: center;
-    border-color: currentColor;
-    pointer-events: auto;
-  }
+    justify-content: center;
+    align-items: baseline;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all .15s cubic-bezier(0, 0, .2, 1);
 
-  &__content {
-    flex-grow: 1;
-    padding: 14px 16px;
-  }
+    &__wrapper {
+      display: flex;
+      border-radius: 4px;
+      color: hsla(0, 0%, 100%, .87);
+      background: #333;
+      font-size: 14px;
+      margin: 6px 24px;
+      align-items: center;
+      border-color: currentColor;
+      pointer-events: auto;
+    }
 
-  &__action {
-    margin-right: 8px;
-  }
+    &__content {
+      flex-grow: 1;
+      padding: 14px 16px;
+    }
 
-  &__vertical {
-    flex-direction: column;
-    align-items: flex-start;
+    &__action {
+      margin-right: 8px;
+    }
 
-    .var-snackbar__action {
-      align-self: flex-end;
-      margin-bottom: 8px;
+    &__vertical {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .var-snackbar__action {
+        align-self: flex-end;
+        margin-bottom: 8px;
+      }
+    }
+
+    &-fade-leave-active {
+      position: absolute;
+    }
+
+    &-fade-enter-from,
+    &-fade-leave-to {
+      opacity: 0;
+      transform: translateY(-30px);
     }
   }
 
-  &-fade-leave-active {
-    position: absolute;
-    //transition: all 0.1s ease;
-  }
+  &-snackbar-transition {
+    top: 0;
 
-  &-fade-enter-from,
-  &-fade-leave-to {
-    opacity: 0;
-    transform: translateY(-30px);
+    .var-snackbar__wrapper {
+      position: relative;
+
+      &-top {
+        top: 5%;
+      }
+
+      &-center {
+        top: 45%;
+      }
+
+      &-bottom {
+        top: 85%;
+      }
+    }
   }
 }
+
