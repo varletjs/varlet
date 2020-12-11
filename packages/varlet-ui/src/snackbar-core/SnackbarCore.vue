@@ -39,7 +39,6 @@ import { defineComponent, reactive, watch, ref, Ref, onMounted } from 'vue'
 import Loading from '../loading'
 import Button from '../button'
 import { useZIndex } from '../context/zIndex'
-import { useTeleport } from '../utils/teleport'
 import { props, emits } from './propsEmits'
 import { useLock } from '../context/lock'
 
@@ -53,7 +52,6 @@ export default defineComponent({
 	emits,
 	setup(props, ctx) {
 		const timer: Ref<any> = ref(null)
-		const { disabled } = useTeleport()
 		const { zIndex } = useZIndex(props, 'show', 1)
 		useLock(props, 'show', 'lockScroll')
 
@@ -94,7 +92,6 @@ export default defineComponent({
 		})
 		return {
 			snackbarStyle,
-			disabled,
 		}
 	},
 })

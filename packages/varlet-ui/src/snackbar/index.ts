@@ -4,11 +4,11 @@ import VarSnackbar from './Snackbar.vue'
 import { mountInstance } from '../utils/components'
 import { isBaseObject } from '../utils/shared'
 
+export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
+
 type SnackbarHandel = {
 	clear: () => void
 }
-
-export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
 interface SnackbarOptions {
 	type?: SnackbarType
@@ -37,13 +37,21 @@ interface UniqSnackbarOptions {
 
 interface Snackbar {
 	(options: SnackbarOptions): SnackbarHandel
+
 	install(app: App): void
+
 	allowMultiple(bool: boolean): void
+
 	success(options: SnackbarOptions | string): void
+
 	warning(options: SnackbarOptions | string): void
+
 	info(options: SnackbarOptions | string): void
+
 	error(options: SnackbarOptions | string): void
+
 	loading(options: SnackbarOptions | string): void
+
 	isAllowMultiple: boolean
 	isMount: boolean | undefined
 	uniqSnackbarOptions: UniqSnackbarOptions[]
@@ -96,7 +104,8 @@ const TransitionGroupHost = {
 					...transitionGroupProps,
 					onAfterLeave: removeUniqOption,
 				},
-				snackbarList
+				// remove [Vue warn]: Non-function value encountered for default slot. Prefer function slots for better performance
+				() => snackbarList
 			)
 		}
 	},
@@ -110,12 +119,6 @@ const Snackbar: Snackbar = <Snackbar>(
 		)
 		reactiveSnackOptions.show = true
 
-		const api = {
-			clear() {
-				reactiveSnackOptions.show = false
-			},
-		}
-
 		if (!Snackbar.isMount) {
 			Snackbar.isMount = true
 			mountInstance(TransitionGroupHost)
@@ -128,22 +131,18 @@ const Snackbar: Snackbar = <Snackbar>(
 			reactiveSnackOptions,
 		}
 
-		if (length === 0) {
-			Snackbar.uniqSnackbarOptions.push(uniqSnackbarOptionItem)
-			return api
-		}
-
-		if (!Snackbar.isAllowMultiple) {
-			Snackbar.uniqSnackbarOptions[0].reactiveSnackOptions = {
-				...Snackbar.uniqSnackbarOptions[0].reactiveSnackOptions,
-				...reactiveSnackOptions,
-			}
-			Snackbar.uniqSnackbarOptions[0]._update = `update-${id}`
+		if (length === 0 || Snackbar.isAllowMultiple) {
+			addUniqOption(uniqSnackbarOptionItem)
 		} else {
-			Snackbar.uniqSnackbarOptions.push(uniqSnackbarOptionItem)
+			const _update = `update-${id}`
+			updateUniqOption(reactiveSnackOptions, _update)
 		}
 
-		return api
+		return {
+			clear() {
+				reactiveSnackOptions.show = false
+			},
+		}
 	}
 )
 
@@ -168,10 +167,15 @@ Snackbar.install = function (app: any) {
 }
 
 Snackbar.allowMultiple = function (bool = false) {
-	this.isAllowMultiple = !!bool
+	if (bool !== Snackbar.isAllowMultiple) {
+		for (let i = 0; i < Snackbar.uniqSnackbarOptions.length; i++) {
+			Snackbar.uniqSnackbarOptions[i].reactiveSnackOptions.show = false
+		}
+		this.isAllowMultiple = !!bool
+	}
 }
 
-Snackbar.isAllowMultiple = true
+Snackbar.isAllowMultiple = false
 
 Snackbar.isMount = false
 
@@ -187,6 +191,21 @@ function removeUniqOption(element: HTMLElement): void {
 		if (Snackbar.uniqSnackbarOptions[i].id === +(id as string))
 			Snackbar.uniqSnackbarOptions.splice(i, 1)
 	}
+}
+
+function addUniqOption(uniqSnackbarOptionItem: UniqSnackbarOptions) {
+	Snackbar.uniqSnackbarOptions.push(uniqSnackbarOptionItem)
+}
+
+function updateUniqOption(
+	reactiveSnackOptions: SnackbarOptions,
+	_update: string
+) {
+	Snackbar.uniqSnackbarOptions[0].reactiveSnackOptions = {
+		...Snackbar.uniqSnackbarOptions[0].reactiveSnackOptions,
+		...reactiveSnackOptions,
+	}
+	Snackbar.uniqSnackbarOptions[0]._update = _update
 }
 
 function getTop(position = 'top'): string {

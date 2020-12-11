@@ -15,6 +15,9 @@
 				<var-button type="primary" size="small" @click="changeValue('show4')">
 					自定义关闭时间
 				</var-button>
+				<var-button type="primary" size="small" @click="changeMultiple()">
+					切换单例或多例
+				</var-button>
 			</div>
 		</div>
 		<div class="snackbar-demo__type">
@@ -115,14 +118,6 @@
 			{{ text }}
 		</var-snackbar>
 
-		<var-snackbar v-model:show="show5" color="#c792ea">
-			{{ text }}
-		</var-snackbar>
-
-		<var-snackbar v-model:show="show6" :width="380" :height="200">
-			{{ text }}
-		</var-snackbar>
-
 		<var-snackbar v-model:show="show7" type="success">
 			{{ text }}
 		</var-snackbar>
@@ -157,6 +152,7 @@ export default defineComponent({
 	},
 	setup() {
 		const text: Ref<string> = ref("Hello, I'm a snackbar-core")
+		const isAllowMultiple: Ref<boolean> = ref(true)
 		const shows: any = reactive({
 			show1: false,
 			show2: false,
@@ -197,6 +193,11 @@ export default defineComponent({
 			})
 		}
 
+		const changeMultiple = () => {
+			Snackbar.allowMultiple(isAllowMultiple.value)
+			isAllowMultiple.value = !isAllowMultiple.value
+		}
+
 		const open = () => {
 			window.alert('open!')
 		}
@@ -223,6 +224,7 @@ export default defineComponent({
 			opened,
 			closed,
 			close,
+			changeMultiple,
 		}
 	},
 })
