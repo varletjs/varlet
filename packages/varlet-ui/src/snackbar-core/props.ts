@@ -85,11 +85,10 @@ export const props = {
 		type: Function,
 		default: () => {},
 	},
+	'onUpdate:show': {
+		type: Function,
+	},
 	_update: {
 		type: String,
 	},
-}
-
-export const emits = {
-	'update:show': null,
 }

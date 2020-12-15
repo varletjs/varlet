@@ -39,7 +39,7 @@ import { defineComponent, reactive, watch, ref, Ref, onMounted } from 'vue'
 import Loading from '../loading'
 import Button from '../button'
 import { useZIndex } from '../context/zIndex'
-import { props, emits } from './propsEmits'
+import { props } from './props'
 import { useLock } from '../context/lock'
 
 export default defineComponent({
@@ -49,9 +49,8 @@ export default defineComponent({
 		[Button.name]: Button,
 	},
 	props,
-	emits,
-	setup(props, ctx) {
-		const timer: Ref<any> = ref(null)
+	setup(props) {
+		const timer: Ref = ref(null)
 		const { zIndex } = useZIndex(props, 'show', 1)
 		useLock(props, 'show', 'lockScroll')
 
@@ -65,7 +64,7 @@ export default defineComponent({
 				if (show) {
 					props.onOpen && props.onOpen()
 					timer.value = setTimeout(() => {
-						ctx.emit('update:show', false)
+						props['onUpdate:show'] && props['onUpdate:show'](false)
 					}, props.duration)
 				} else if (show === false) {
 					props.onClose && props.onClose()
@@ -77,7 +76,7 @@ export default defineComponent({
 			() => {
 				clearTimeout(timer.value)
 				timer.value = setTimeout(() => {
-					ctx.emit('update:show', false)
+					props['onUpdate:show'] && props['onUpdate:show'](false)
 				}, props.duration)
 			}
 		)
@@ -86,7 +85,7 @@ export default defineComponent({
 			if (props.show) {
 				props.onOpen && props.onOpen()
 				timer.value = setTimeout(() => {
-					ctx.emit('update:show', false)
+					props['onUpdate:show'] && props['onUpdate:show'](false)
 				}, props.duration)
 			}
 		})

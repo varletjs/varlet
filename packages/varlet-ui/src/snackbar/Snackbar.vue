@@ -7,7 +7,6 @@
 		>
 			<var-snackbar-core
 				v-bind="$props"
-				@update:show="update"
 				class="var--absolute var-snackbar-transition"
 			>
 				<slot>
@@ -25,7 +24,7 @@
 import { defineComponent } from 'vue'
 import SnackbarCore from '../snackbar-core'
 import { useTeleport } from '../utils/teleport'
-import { props, emits } from '../snackbar-core/propsEmits'
+import { props } from '../snackbar-core/props'
 
 export default defineComponent({
 	name: 'VarSnackbar',
@@ -33,14 +32,10 @@ export default defineComponent({
 		[SnackbarCore.name]: SnackbarCore,
 	},
 	props,
-	emits,
-	setup(props, { emit }) {
+	setup() {
 		const { disabled } = useTeleport()
-		const update = (value) => {
-			emit('update:show', value)
-		}
+
 		return {
-			update,
 			disabled,
 		}
 	},
