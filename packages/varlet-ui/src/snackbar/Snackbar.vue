@@ -35,7 +35,9 @@ export default defineComponent({
 	props,
 	emits,
 	setup(props, { emit }) {
-		const { disabled } = useTeleport()
+    console.log(props)
+
+    const { disabled } = useTeleport()
 		const update = (value) => {
 			emit('update:show', value)
 		}

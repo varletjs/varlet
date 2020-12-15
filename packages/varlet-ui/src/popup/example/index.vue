@@ -2,7 +2,7 @@
   <div class="example">
     <var-popup
       v-model:show="center"
-      style="padding: 20px; font-size: 20px;"
+      style="padding: 20px;"
     >
       <div>测试文字测试文字测试</div>
       <div>测试文字测试文字测试</div>
@@ -12,7 +12,7 @@
     <var-popup
       v-model:show="bottom"
       position="bottom"
-      style="padding: 20px; font-size: 20px;"
+      style="padding: 20px;"
     >
       <div>测试文字测试文字测试</div>
       <div>测试文字测试文字测试</div>
@@ -22,7 +22,7 @@
     <var-popup
       v-model:show="top"
       position="top"
-      style="padding: 20px; font-size: 20px;"
+      style="padding: 20px;"
     >
       <div>测试文字测试文字测试</div>
       <div>测试文字测试文字测试</div>
@@ -32,7 +32,7 @@
     <var-popup
       v-model:show="left"
       position="left"
-      style="padding: 20px; font-size: 20px;"
+      style="padding: 20px;"
     >
       <div>测试文字测试文字测试</div>
       <div>测试文字测试文字测试</div>
@@ -42,7 +42,7 @@
     <var-popup
       v-model:show="right"
       position="right"
-      style="padding: 20px; font-size: 20px;"
+      style="padding: 20px;"
     >
       <div>测试文字测试文字测试</div>
       <div>测试文字测试文字测试</div>
@@ -63,7 +63,7 @@
     <var-popup
       v-model:show="overlayClass"
       position="center"
-      style="padding: 20px; font-size: 20px;"
+      style="padding: 20px;"
       overlay-class="example__overlay"
     >
       <div>测试文字测试文字测试</div>
@@ -74,7 +74,7 @@
     <var-popup
       v-model:show="overlayStyle"
       position="center"
-      style="padding: 20px; font-size: 20px;"
+      style="padding: 20px;"
       :overlay-style="{'background-color': '#000'}"
     >
       <div>测试文字测试文字测试</div>
@@ -86,7 +86,7 @@
       v-model:show="showLockScroll"
       position="center"
       :lock-scroll="lockScroll"
-      style="padding: 20px; font-size: 20px;"
+      style="padding: 20px;"
     >
       <div>测试文字测试文字测试</div>
       <div>测试文字测试文字测试</div>
@@ -100,7 +100,7 @@
       v-model:show="closeOnClickOverlay"
       :close-on-click-overlay="false"
       position="center"
-      style="padding: 20px; font-size: 20px;"
+      style="padding: 20px;"
     >
       <div>测试文字测试文字测试</div>
       <div>测试文字测试文字测试</div>
@@ -111,7 +111,7 @@
 
     <var-popup
       v-model:show="event"
-      style="padding: 20px; font-size: 20px;"
+      style="padding: 20px;"
       @open="() => log('open')"
       @opened="() => log('opened')"
       @close="() => log('close')"
@@ -121,7 +121,6 @@
       <div>测试文字测试文字测试</div>
       <div>测试文字测试文字测试</div>
     </var-popup>
-
 
     <var-button type="primary" size="large" style="margin: 10px;" @click="center = true">居中弹出</var-button>
     <var-button type="primary" size="large" style="margin: 10px;" @click="bottom = true">下方弹出</var-button>

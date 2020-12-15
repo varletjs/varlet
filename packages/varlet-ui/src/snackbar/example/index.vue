@@ -201,12 +201,13 @@ export default defineComponent({
 		const open = () => {
 			window.alert('open!')
 		}
-		const close = () => {
-			window.alert('close!')
+		const close = (e) => {
+      console.log(e)
+      window.alert('close!')
 		}
 
-		const opened = () => {
-			window.alert('opened!')
+		const opened = (e) => {
+      window.alert('opened!')
 		}
 
 		const closed = () => {

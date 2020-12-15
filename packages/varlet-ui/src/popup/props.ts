@@ -1,7 +1,5 @@
 function positionValidator(position: string): boolean {
-  const validPositions = ['top', 'bottom', 'right', 'left', 'center']
-
-  return validPositions.includes(position)
+  return ['top', 'bottom', 'right', 'left', 'center'].includes(position)
 }
 
 export const props = {
@@ -42,14 +40,23 @@ export const props = {
   // teleport
   teleport: {
     default: 'body'
+  },
+  onOpen: {
+    type: Function
+  },
+  onClose: {
+    type: Function
+  },
+  onOpened: {
+    type: Function
+  },
+  onClosed: {
+    type: Function
+  },
+  onClickOverlay: {
+    type: Function
+  },
+  'onUpdate:show': {
+    type: Function
   }
-}
-
-export const emits = {
-  'update:show': null,
-  'open': null,
-  'close': null,
-  'opened': null,
-  'closed': null,
-  'click-overlay': null
 }

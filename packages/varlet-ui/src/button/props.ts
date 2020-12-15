@@ -53,9 +53,9 @@ export const props = {
   // 按钮背景颜色
   background: {
     type: String
+  },
+  // 点击回调
+  onClick: {
+    type: Function
   }
-}
-
-export const emits = {
-  click: null
 }

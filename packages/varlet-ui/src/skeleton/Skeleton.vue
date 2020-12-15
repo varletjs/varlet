@@ -44,7 +44,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { props } from './propsEmits'
+import { props } from './props'
 
 export default defineComponent({
 	name: 'VarSkeleton',

@@ -107,6 +107,7 @@ const TransitionGroupHost = {
 				// remove [Vue warn]: Non-function value encountered for default slot. Prefer function slots for better performance
 				() => snackbarList
 			)
+
 		}
 	},
 }

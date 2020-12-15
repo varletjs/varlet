@@ -7,10 +7,10 @@
     :lock-scroll="lockScroll"
     :close-on-click-overlay="popupCloseOnClickOverlay"
     :teleport="teleport"
-    @open="$emit('open')"
-    @close="$emit('close')"
-    @opened="$emit('opened')"
-    @closed="$emit('closed')"
+    @open="$props.onOpen"
+    @close="$props.onClose"
+    @opened="$props.onOpened"
+    @closed="$props.onClosed"
     @click-overlay="handleClickOverlay"
   >
     <div
@@ -57,7 +57,7 @@
 <script lang="ts">
 import Popup from '../popup'
 import Button from '../button'
-import { props, emits } from './propsEmits'
+import { props } from './props'
 import { defineComponent, ref, Ref, watch } from 'vue'
 
 export default defineComponent({
@@ -68,18 +68,17 @@ export default defineComponent({
   },
   inheritAttrs: false,
   props,
-  emits,
-  setup(props, { emit }) {
+  setup(props) {
     // 需要透传到popup组件里并需要特殊处理的参数
     const popupShow: Ref<boolean> = ref(false)
     const popupCloseOnClickOverlay: Ref<boolean> = ref(false)
 
     watch(() => props.show, (newValue) => {
+      console.log(newValue)
       popupShow.value = newValue
     }, { immediate: true })
-
     watch(() => props.closeOnClickOverlay, (newValue) => {
-      if (props.beforeClose) {
+      if (props.onBeforeClose) {
         // 异步关闭情况下 禁止点击弹出层关闭
         popupCloseOnClickOverlay.value = false
         return
@@ -88,36 +87,36 @@ export default defineComponent({
     }, { immediate: true })
 
     // 异步关闭回调
-    const done = () => emit('update:show', false)
+    const done = () => props['onUpdate:show']?.(false)
 
     const handleClickOverlay = () => {
-      emit('click-overlay')
+      props.onClickOverlay?.()
       if (props.closeOnClickOverlay === false) {
         return
       }
-      if (props.beforeClose) {
-        props.beforeClose(done)
+      if (props.onBeforeClose) {
+        props.onBeforeClose(done)
         return
       }
-      emit('update:show', false)
+      props['onUpdate:show']?.(false)
     }
 
     const confirm = () => {
-      emit('confirm')
+      props.onConfirm?.()
       if (props.beforeClose) {
-        props.beforeClose(done)
+        props.onBeforeClose(done)
         return
       }
-      emit('update:show', false)
+      props['onUpdate:show']?.(false)
     }
 
     const cancel = () => {
-      emit('cancel')
-      if (props.beforeClose) {
-        props.beforeClose(done)
+      props.onCancel?.()
+      if (props.onBeforeClose) {
+        props.onBeforeClose(done)
         return
       }
-      emit('update:show', false)
+      props['onUpdate:show']?.(false)
     }
 
     return {

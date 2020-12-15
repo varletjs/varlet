@@ -68,7 +68,7 @@ export default defineComponent({
 						ctx.emit('update:show', false)
 					}, props.duration)
 				} else if (show === false) {
-					props.onClose && props.onClose()
+					props.onClose && props.onClose('123213')
 				}
 			}
 		)

@@ -1,5 +1,5 @@
 import { pickProps } from '../utils/components'
-import { props as popupProps, emits as popupEmits } from '../popup/propsEmits'
+import { props as popupProps } from '../popup/props'
 
 function messageAlignValidator(messageAlign: string): boolean {
   return ['left', 'right'].includes(messageAlign)
@@ -10,6 +10,9 @@ export const props = {
   show: {
     type: Boolean,
     default: false
+  },
+  'onUpdate:show': {
+    type: Function
   },
   // 标题
   title: {
@@ -65,7 +68,15 @@ export const props = {
     type: String
   },
   // 关闭前回调函数
-  beforeClose: {
+  onBeforeClose: {
+    type: Function
+  },
+  // 确认回调
+  onConfirm: {
+    type: Function
+  },
+  // 取消回调
+  onCancel: {
     type: Function
   },
   ...pickProps(popupProps, [
@@ -73,19 +84,11 @@ export const props = {
     'overlayClass',
     'lockScroll',
     'closeOnClickOverlay',
-    'teleport'
-  ])
-}
-
-export const emits = {
-  'update:show': null,
-  'confirm': null,
-  'cancel': null,
-  ...pickProps(popupEmits, [
-    'open',
-    'close',
-    'opened',
-    'closed',
-    'click-overlay'
+    'teleport',
+    'onOpen',
+    'onClose',
+    'onOpened',
+    'onClosed',
+    'onClickOverlay'
   ])
 }

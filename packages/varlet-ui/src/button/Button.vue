@@ -1,7 +1,7 @@
 <template>
 	<button
 		v-ripple="{ disabled }"
-		class="var--box var-button var-elevation--3"
+		class="var--box var-button var-elevation--2"
 		:class="[
 			`var-button--${type}`,
 			`var-button--${size}`,
@@ -25,7 +25,7 @@
 import Ripple from '../ripple'
 import Loading from '../Loading'
 import { defineComponent } from 'vue'
-import { props, emits } from './propsEmits'
+import { props } from './props'
 
 export default defineComponent({
 	name: 'VarButton',
@@ -34,14 +34,13 @@ export default defineComponent({
 	},
 	directives: { Ripple },
 	props,
-	emits,
-	setup(props, { emit }) {
-	  const trigger = () => {
+	setup(props) {
+    const trigger = () => {
       if (props.loading) {
         return
       }
 
-      emit('click')
+      props.onClick?.()
     }
 
 		return {

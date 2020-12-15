@@ -31,6 +31,7 @@ body {
 	padding: 0;
 	background: white;
 	min-height: 100%;
+  font-family: '微软雅黑 Light',sans-serif;
 }
 
 header {
