@@ -107,7 +107,6 @@ const TransitionGroupHost = {
 				// remove [Vue warn]: Non-function value encountered for default slot. Prefer function slots for better performance
 				() => snackbarList
 			)
-
 		}
 	},
 }
@@ -163,7 +162,7 @@ const Snackbar: Snackbar = <Snackbar>(
 	}
 )
 
-Snackbar.install = function (app: any) {
+Snackbar.install = function (app: App) {
 	app.component(VarSnackbar.name, VarSnackbar)
 }
 
