@@ -31,7 +31,7 @@ body {
 	padding: 0;
 	background: white;
 	min-height: 100%;
-  font-family: '微软雅黑 Light',sans-serif;
+	font-family: '微软雅黑 Light', sans-serif;
 }
 
 header {
@@ -46,7 +46,7 @@ header {
 }
 
 .router-view__block {
-	padding: 0 15px;
+	padding: 0 15px 30px;
 }
 
 * {

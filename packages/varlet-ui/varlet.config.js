@@ -106,6 +106,13 @@ module.exports = {
 				},
 				doc: 'snackbar',
 			},
+			{
+				text: {
+					zh_CN: 'Progress 进度条',
+					en_US: 'Progress',
+				},
+				doc: 'progress',
+			},
 		],
 		language: 'zh_CN',
 	},
