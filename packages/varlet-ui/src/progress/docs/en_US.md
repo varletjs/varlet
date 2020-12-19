@@ -10,9 +10,9 @@ Display the current progress of an operation flow.
 import { Progress } from '@varlet/ui'
 
 export default defineComponent({
-	components: {
-		[Progress.name]: Progress,
-	},
+  components: {
+    [Progress.name]: Progress,
+  },
 })
 ```
 
@@ -23,7 +23,8 @@ export default defineComponent({
 Use `value` to set completion value.
 
 ```html
-<var-progress :value="20" /> <var-progress :value="value" />
+<var-progress :value="20" />
+<var-progress :value="value" />
 ```
 
 ### Style
@@ -32,11 +33,11 @@ Use `line-width` to set width of Progress bar. Use `color` to set color of Progr
 
 ```html
 <var-progress :value="30" line-width="8" />
-<var-progress
-	:value="60"
-	line-width="10"
-	color="purple"
-	track-color="#dec3e6"
+<var-progress 
+  :value="60" 
+  line-width="10" 
+  color="purple" 
+  track-color="#dec3e6" 
 />
 <var-progress :value="80" line-width="10" ripple />
 ```
@@ -48,7 +49,9 @@ Use `show-action` to show `action`. The default value for `action` is the percen
 ```html
 <var-progress :value="30" show-action />
 <var-progress :value="value" show-action />
-<var-progress :value="100" show-action> success </var-progress>
+<var-progress :value="100" show-action>
+  success
+</var-progress>
 ```
 
 ### Custom style
@@ -68,8 +71,18 @@ Use `size` to change size of Progress.
 
 ```html
 <var-progress :value="30" line-width="3" mode="circle" />
-<var-progress :value="50" line-width="3" size="56" mode="circle" />
-<var-progress :value="70" line-width="3" size="72" mode="circle" />
+<var-progress 
+  :value="50" 
+  line-width="3" 
+  size="56" 
+  mode="circle" 
+/>
+<var-progress 
+  :value="70" 
+  line-width="3" 
+  size="72" 
+  mode="circle" 
+/>
 ```
 
 ### Style
@@ -78,11 +91,11 @@ Use `line-width` to set width of Progress bar. Use `color` to set color of Progr
 
 ```html
 <var-progress :value="30" line-width="8" />
-<var-progress
-	:value="60"
-	line-width="10"
-	color="purple"
-	track-color="#dec3e6"
+<var-progress 
+  :value="60" 
+  line-width="10" 
+  color="purple" 
+  track-color="#dec3e6" 
 />
 <var-progress :value="80" line-width="10" ripple />
 ```
@@ -92,16 +105,28 @@ Use `line-width` to set width of Progress bar. Use `color` to set color of Progr
 Use `show-action` to show `action`. The default value for `action` is the percentage of current progress, and you can use slot to insert custom content.
 
 ```html
-<var-progress :value="30" line-width="5" size="56" mode="circle" show-action />
-<var-progress
-	:value="value"
-	line-width="5"
-	size="56"
-	mode="circle"
-	show-action
+<var-progress 
+  :value="30" 
+  line-width="5" 
+  size="56" 
+  mode="circle" 
+  show-action 
 />
-<var-progress :value="100" line-width="5" size="56" mode="circle" show-action>
-	success
+<var-progress 
+  :value="value" 
+  line-width="5" 
+  size="56" 
+  mode="circle" 
+  show-action 
+/>
+<var-progress 
+  :value="100" 
+  line-width="5"
+  size="56" 
+  mode="circle" 
+  show-action
+>
+  success
 </var-progress>
 ```
 
@@ -110,20 +135,25 @@ Use `show-action` to show `action`. The default value for `action` is the percen
 Use `rotate` to change origin.
 
 ```html
-<var-progress :value="value" line-width="5" size="56" mode="circle" />
-<var-progress
-	:value="value"
-	line-width="5"
-	size="56"
-	mode="circle"
-	:rotate="90"
+<var-progress 
+  :value="value" 
+  line-width="5" 
+  size="56" 
+  mode="circle" 
 />
 <var-progress
-	:value="value"
-	line-width="5"
-	size="56"
-	mode="circle"
-	:rotate="180"
+  :value="value"
+  line-width="5"
+  size="56"
+  mode="circle"
+  :rotate="90"
+/>
+<var-progress
+  :value="value"
+  line-width="5"
+  size="56"
+  mode="circle"
+  :rotate="180"
 />
 ```
 
@@ -132,23 +162,28 @@ Use `rotate` to change origin.
 Use `show-track` to hide Progress-Track.
 
 ```html
-<var-progress :value="30" line-width="3" mode="circle" :show-track="false" />
-<var-progress
-	:value="50"
-	line-width="5"
-	size="56"
-	mode="circle"
-	:show-track="false"
-	show-action
+<var-progress 
+  :value="30" 
+  line-width="3" 
+  mode="circle" 
+  :show-track="false" 
 />
 <var-progress
-	:value="value"
-	line-width="8"
-	size="72"
-	mode="circle"
-	:show-track="false"
-	show-action
-	:rotate="90"
+  :value="50"
+  line-width="5"
+  size="56"
+  mode="circle"
+  :show-track="false"
+  show-action
+/>
+<var-progress
+  :value="value"
+  line-width="8"
+  size="72"
+  mode="circle"
+  :show-track="false"
+  show-action
+  :rotate="90"
 />
 ```
 
@@ -174,8 +209,9 @@ Use `show-track` to hide Progress-Track.
 ### Progress circle
 
 **_Note：Progress circle not support the `ripple` attribute_**
+
 | Attribute | Description | Type | Default |
-| ----- | --------------------------------------------------------- | -------- | -------------- |
+| ----- | ----------------------------- | -------- | -------------- |
 | value | completion value | _number_ | `0` |
 | lineWidth | To set width of the progress bar | _number_ ｜ _string_ | `4` |
 | color | To set color of the progress bar | _string_ | `#005CAF` |

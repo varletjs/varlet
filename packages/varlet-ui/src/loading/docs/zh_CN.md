@@ -6,9 +6,9 @@
 import { Loading } from '@varlet/ui'
 
 export default defineComponent({
-	components: {
-		[Loading.name]: Loading,
-	},
+  components: { 
+    [Loading.name]: Loading,
+  },
 })
 ```
 
