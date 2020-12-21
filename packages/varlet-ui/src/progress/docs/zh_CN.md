@@ -200,9 +200,9 @@ export default defineComponent({
 | 参数        | 说明                | 类型                 | 默认值    |
 | ----------- | ------------------- | -------------------- | --------- |
 | value       | progress 的进度     | _number_             | `0`       |
-| lineWidth   | progress 的线宽     | _number_ ｜ _string_ | `4`       |
+| line-width   | progress 的线宽     | _number_ ｜ _string_ | `4`       |
 | color       | progress 的颜色     | _string_             | `#005CAF` |
-| trackColor  | progress 轨道的颜色 | _string_             | `#afd9ff` |
+| track-color  | progress 轨道的颜色 | _string_             | `#afd9ff` |
 | ripple      | 水波纹加载效果      | _boolean_            | `false`   |
 | show-action | 是否显示 action     | _boolean_            | `false`   |
 
@@ -213,10 +213,10 @@ export default defineComponent({
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
 | value | progress 的进度 | _number_ | `0` |
-| lineWidth | progress 的线宽 | _number_ ｜ _string_ | `4` |
+| line-width | progress 的线宽 | _number_ ｜ _string_ | `4` |
 | color | progress 的颜色 | _string_ | `#005CAF` |
-| trackColor | progress 轨道的颜色 | _string_ | `#afd9ff` |
+| track-color | progress 轨道的颜色 | _string_ | `#afd9ff` |
 | show-action | 是否显示 action | _boolean_ | `false` |
-| size | progress 的尺寸 | _number_ | `40` |
+| size | progress 的尺寸 | _number_ ｜ _string_ | `40` |
 | rotate | progress 的原点 | _number_ | `0` |
 | show-track | 是否显示 progress 的轨道 | _boolean_ | `true` |

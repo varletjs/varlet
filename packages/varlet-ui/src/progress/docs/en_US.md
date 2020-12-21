@@ -200,9 +200,9 @@ Use `show-track` to hide Progress-Track.
 | Attribute   | Description                            | Type                 | Default   |
 | ----------- | -------------------------------------- | -------------------- | --------- |
 | value       | completion value                       | _number_             | `0`       |
-| lineWidth   | To set width of the progress bar       | _number_ ｜ _string_ | `4`       |
+| line-width   | To set width of the progress bar       | _number_ ｜ _string_ | `4`       |
 | color       | To set color of the progress bar       | _string_             | `#005CAF` |
-| trackColor  | To set color of the progress track     | _string_             | `#afd9ff` |
+| track-color  | To set color of the progress track     | _string_             | `#afd9ff` |
 | ripple      | To set loading style for progress      | _boolean_            | `false`   |
 | show-action | Whether the `action` is visible or not | _boolean_            | `false`   |
 
@@ -213,10 +213,10 @@ Use `show-track` to hide Progress-Track.
 | Attribute | Description | Type | Default |
 | ----- | ----------------------------- | -------- | -------------- |
 | value | completion value | _number_ | `0` |
-| lineWidth | To set width of the progress bar | _number_ ｜ _string_ | `4` |
+| line-width | To set width of the progress bar | _number_ ｜ _string_ | `4` |
 | color | To set color of the progress bar | _string_ | `#005CAF` |
-| trackColor | To set color of the progress track | _string_ | `#afd9ff` |
+| track-color | To set color of the progress track | _string_ | `#afd9ff` |
 | show-action | Whether the `action` is visible or not | _boolean_ | `false` |
-| size | To set size of progress | _number_ | `40` |
+| size | To set size of progress | _number_ ｜ _string_ | `40` |
 | rotate | To set origin of progress | _number_ | `0` |
 | show-track | Whether the progress track is visible or not | _boolean_ | `true` |
