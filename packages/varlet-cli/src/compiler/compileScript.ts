@@ -11,7 +11,7 @@ export const REQUIRE_TS_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\.{1,2}\/.+\
 
 export function replaceVueExt(script: string) {
   const replacer = (_: any, p1: string, p2: string): string => {
-    return `${p1}Sfc.js${p2}`
+    return `${p1}.js${p2}`
   }
   return script
     .replace(IMPORT_VUE_PATH_RE, replacer)

@@ -43,7 +43,7 @@ export async function compileSFC(path: string, modules: string | boolean = false
       const { code } = render
       content = injectRender(content, code)
       // script
-      await compileScript(content, replaceExt(path, 'Sfc.ts'), modules)
+      await compileScript(content, path, modules)
 
       // style
       styles.forEach((style: SFCStyleBlock, index: number) => {
