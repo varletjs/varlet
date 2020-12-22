@@ -1,8 +1,13 @@
+function modeValidator(mode: string): boolean {
+	return ['linear', 'circle'].includes(mode)
+}
+
 export const props = {
 	// progress 模式
 	mode: {
 		type: String,
 		default: 'linear',
+		validator: modeValidator,
 	},
 	// progress 线宽
 	lineWidth: {
