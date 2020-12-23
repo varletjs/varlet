@@ -196,7 +196,7 @@ function diff(el: LazyHTMLElement, binding: DirectiveBinding<string>): boolean {
 }
 
 function updated(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
-  diff(el, binding) && mounted(el, binding)
+  diff(el, binding) ? mounted(el, binding) : check(el)
 }
 
 const Lazy: Directive & Plugin = {

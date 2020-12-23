@@ -13,7 +13,7 @@ interface RippleStyles {
 
 interface RippleOptions {
 	color?: string
-	disabled?: string
+	disabled?: boolean
 }
 
 interface RippleHTMLElement extends HTMLElement {
@@ -83,8 +83,7 @@ function removeRipple(this: RippleHTMLElement) {
 	}
 
 	const lastRipple: RippleHTMLElement = ripples[ripples.length - 1]
-	const delay: number =
-		300 - performance.now() + Number(lastRipple.dataset.createdAt)
+	const delay: number = 300 - performance.now() + Number(lastRipple.dataset.createdAt)
 
 	setTimeout(() => {
 		lastRipple.style.opacity = `0`

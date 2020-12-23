@@ -1,5 +1,7 @@
 <template>
   <button @click="push">push</button>
+  <button @click="move">move</button>
+
   <img
     style="width: 200px; height: 200px"
     v-for="i in images"
@@ -64,6 +66,9 @@ export default defineComponent({
           id: Date.now(),
           url: 'https://cn.vuejs.org/images/logo.png'
         })
+      },
+      move() {
+        images.unshift(images.pop() as any)
       }
     }
   }
