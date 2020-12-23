@@ -1,0 +1,125 @@
+@import "../styles/var";
+
+@button-border-radius: 2px;
+@button-padding: 0px 4px;
+//@button-large-padding: 0px 11.5px;
+//@button-small-padding: 0px 6px;
+//@button-mini-padding: 0px 5px;
+
+
+.var-chips {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: @button-border-radius;
+
+  &-fade-enter-from,
+  &-fade-leave-to {
+    opacity: 0;
+  }
+  &-fade-enter-active,
+  &-fade-leave-active {
+    transition: opacity .3s;
+  }
+
+
+  &--plain {
+    background-color: @color-background-base;
+    border-color: #999;
+    color: #999;
+  }
+
+  &--primary {
+    border-color: @color-primary;
+    color: #fff;
+    background-color: @color-primary;
+  }
+
+  &--info {
+    border-color: @color-info;
+    color: #fff;
+    background-color: @color-info;
+  }
+
+  &--success {
+    border-color: @color-success;
+    color: #fff;
+    background-color: @color-success;
+  }
+
+  &--warning {
+    border-color: @color-warning;
+    color: #fff;
+    background-color: @color-warning;
+  }
+
+  &--danger {
+    border-color: @color-danger;
+    color: #fff;
+    background-color: @color-danger;
+  }
+
+  //&--hollow&--plain, &--hollow&--primary, &--hollow&--info, &--hollow&--sussess, &--hollow&--warning, &--hollow&--danger {
+  //  background-color: #fff;
+  //}
+
+  &--hollow&--primary {
+    background-color: #fff;
+    color: @color-primary;
+    border-color: @color-primary;
+  }
+
+  &--hollow&--plain {
+    background-color: #fff;
+    color: #999;
+    border-color: #999;
+  }
+
+  &--hollow&--info {
+    background-color: #fff;
+    color: @color-info;
+    border-color: @color-info;
+  }
+
+  &--hollow&--success {
+    background-color: #fff;
+    color: @color-success;
+    border-color: @color-success;
+  }
+
+  &--hollow&--warning {
+    background-color: #fff;
+    color: @color-warning;
+    border-color: @color-warning;
+  }
+
+  &--hollow&--danger {
+    background-color: #fff;
+    color: @color-danger;
+    border-color: @color-danger;
+  }
+
+  &--round {
+    border-radius: 100px;
+  }
+
+  &--normal {
+    padding: @button-padding;
+    font-size: @font-size-md;
+  }
+
+  &--large {
+    padding: @button-padding;
+    font-size: @font-size-lg;
+  }
+
+  &--small {
+    padding: @button-padding;
+    font-size: @font-size-sm;
+  }
+
+  &--mini {
+    padding: @button-padding;
+    font-size: @font-size-xs;
+  }
+
+}
