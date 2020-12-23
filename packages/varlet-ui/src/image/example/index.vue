@@ -8,7 +8,6 @@
   <var-image width="200px" height="400px" fit="cover" radius="50%" error="https://cn.vuejs.org/images/logo.png" src="https://asdadsaas.com" :ripple="true"></var-image>
   <var-image width="200px" height="200px" fit="cover" radius="50%" error="https://cn.vuejs.org/images/logo.png" src="https://asdadsaas.com" :ripple="true"></var-image>
   <var-image width="200px" height="400px" fit="cover" error="https://cn.vuejs.org/images/logo.png" src="https://asdadsaas.com" :ripple="true"></var-image>
-
 </template>
 
 <script lang="ts">

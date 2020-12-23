@@ -12,7 +12,7 @@
       :class="[
          `var-chips--${type}`,
          `var-chips--${size}`,
-         block?'var--block':'var--inline',
+         block?'var--flex':'var--inline-flex',
          round?'var-chips--round':null,
          hollow?'var-chips--hollow':null
     ]"

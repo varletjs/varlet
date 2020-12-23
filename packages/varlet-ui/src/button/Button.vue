@@ -5,7 +5,7 @@
 		:class="[
 			`var-button--${type}`,
 			`var-button--${size}`,
-			block ? 'var--block' : 'var--inline',
+			block ? 'var--flex' : 'var--inline-flex',
 			round ? 'var-button--round' : null,
 			disabled ? 'var-button--disabled' : null,
 		]"
