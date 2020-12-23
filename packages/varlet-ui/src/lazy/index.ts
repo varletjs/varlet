@@ -191,6 +191,15 @@ function observe(el: LazyHTMLElement) {
   observer.observe(el)
 }
 
+function diff(el: LazyHTMLElement, binding: DirectiveBinding<string>): boolean {
+  const { src, arg, attempt, loading, error } = el._lazy
+  return src !== binding.value ||
+    arg !== binding.arg ||
+    attempt !== Number(el.getAttribute(LAZY_ATTEMPT)) ||
+    loading !== el.getAttribute(LAZY_LOADING) ||
+    error !== el.getAttribute(LAZY_ERROR)
+}
+
 function mounted(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
   !el.getAttribute('src') && el.setAttribute('src', PIXEL)
 
@@ -206,15 +215,6 @@ function mounted(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
 
 function unmounted(el: LazyHTMLElement) {
   clear(el)
-}
-
-function diff(el: LazyHTMLElement, binding: DirectiveBinding<string>): boolean {
-  const { src, arg, attempt, loading, error } = el._lazy
-  return src !== binding.value ||
-    arg !== binding.arg ||
-    attempt !== Number(el.getAttribute(LAZY_ATTEMPT)) ||
-    loading !== el.getAttribute(LAZY_LOADING) ||
-    error !== el.getAttribute(LAZY_ERROR)
 }
 
 function updated(el: LazyHTMLElement, binding: DirectiveBinding<string>) {

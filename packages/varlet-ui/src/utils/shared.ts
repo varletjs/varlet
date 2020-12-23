@@ -1,8 +1,8 @@
 export interface CacheInstance<T> {
   cache: T[]
-  has(key: T)
-  add(key: T)
-  remove(key: T)
+  has(key: T): boolean
+  add(key: T): void
+  remove(key: T): void
 }
 
 export const isString = (val: unknown): val is string => typeof val === 'string'
