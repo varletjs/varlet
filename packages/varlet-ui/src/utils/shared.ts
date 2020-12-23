@@ -1,3 +1,10 @@
+export interface CacheInstance<T> {
+  cache: T[]
+  has(key: T)
+  add(key: T)
+  remove(key: T)
+}
+
 export const isString = (val: unknown): val is string => typeof val === 'string'
 
 export const isBaseObject = (val: unknown) => Object.prototype.toString.call(val) === '[object Object]'
@@ -43,4 +50,26 @@ export const createInViewportObserver = <T>(handler: (el: T) => void): Intersect
       }
     })
   })
+}
+
+export const createCache = <T>(max: number): CacheInstance<T> => {
+  const cache: T[] = []
+
+  return {
+    cache,
+    has(key: T) {
+      return cache.includes(key)
+    },
+    add(key: T) {
+      if (this.has(key)) {
+        return
+      }
+
+      this.cache.length === max && cache.shift()
+      this.cache.push(key)
+    },
+    remove(key: T) {
+      this.has(key) && removeItem(this.cache, key)
+    }
+  }
 }

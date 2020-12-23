@@ -1,7 +1,13 @@
 import { App, Directive, Plugin } from 'vue'
 import { DirectiveBinding } from '@vue/runtime-core'
 import { inViewport } from '../utils/elements'
-import { checkIntersectionObserverAPI, createInViewportObserver, removeItem, throttle } from '../utils/shared'
+import {
+  CacheInstance,
+  checkIntersectionObserverAPI, createCache,
+  createInViewportObserver,
+  removeItem,
+  throttle
+} from '../utils/shared'
 
 interface LazyOptions {
   loading?: string
@@ -18,19 +24,22 @@ type Lazy = LazyOptions & {
   attemptLock: boolean
 }
 
-type LazyHTMLElement = HTMLElement & { lazy: Lazy }
+type LazyHTMLElement = HTMLElement & { _lazy: Lazy }
 
 const BACKGROUND_IMAGE_ARG_NAME = 'background-image'
 const LAZY_LOADING = 'lazy-loading'
 const LAZY_ERROR = 'lazy-error'
 const LAZY_ATTEMPT = 'lazy-attempt'
 const EVENTS = ['resize', 'animationend', 'transitionend', 'touchmove', 'scroll']
+const PIXEL = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
 
 const lazyElements: LazyHTMLElement[] = []
 
+const imageCache: CacheInstance<string> = createCache<string>(100)
+
 let defaultLazyOptions: LazyOptions = {
-  loading: '',
-  error: '',
+  loading: PIXEL,
+  error: PIXEL,
   attempt: 3,
   throttleWait: 300,
 }
@@ -42,21 +51,21 @@ let observer: IntersectionObserver | null = null
 const useIntersectionObserverAPI: boolean = checkIntersectionObserverAPI()
 
 function setLoading(el: LazyHTMLElement) {
-  el.lazy.loading
-    ? el.lazy.arg === BACKGROUND_IMAGE_ARG_NAME
-      ? el.style.backgroundImage = `url(${el.lazy.loading})`
-      : el.setAttribute('src', el.lazy.loading)
+  el._lazy.loading
+    ? el._lazy.arg === BACKGROUND_IMAGE_ARG_NAME
+      ? el.style.backgroundImage = `url(${el._lazy.loading})`
+      : el.setAttribute('src', el._lazy.loading)
     : null
 
   !useIntersectionObserverAPI && checkAll()
 }
 
 function setError(el: LazyHTMLElement) {
-  if (el.lazy.error) {
-    if (el.lazy.arg === BACKGROUND_IMAGE_ARG_NAME) {
-      el.style.backgroundImage = `url(${el.lazy.error})`
+  if (el._lazy.error) {
+    if (el._lazy.arg === BACKGROUND_IMAGE_ARG_NAME) {
+      el.style.backgroundImage = `url(${el._lazy.error})`
     } else {
-      el.setAttribute('src', el.lazy.error)
+      el.setAttribute('src', el._lazy.error)
     }
   }
 
@@ -65,7 +74,7 @@ function setError(el: LazyHTMLElement) {
 }
 
 function setSuccess(el: LazyHTMLElement, attemptSRC: string) {
-  el.lazy.arg === BACKGROUND_IMAGE_ARG_NAME
+  el._lazy.arg === BACKGROUND_IMAGE_ARG_NAME
     ? el.style.backgroundImage = `url(${attemptSRC})`
     : el.setAttribute('src', attemptSRC)
 
@@ -86,10 +95,10 @@ function unbindEvents() {
 }
 
 function buildAttemptSRC(el: LazyHTMLElement): string {
-  const { src } = el.lazy
+  const { src } = el._lazy
 
-  if (el.lazy.currentAttempt === 0) {
-    el.lazy.currentAttempt++
+  if (el._lazy.currentAttempt === 0) {
+    el._lazy.currentAttempt++
     return src
   }
 
@@ -98,7 +107,7 @@ function buildAttemptSRC(el: LazyHTMLElement): string {
   const params: string = index > -1 ? src.slice(src.indexOf('?')) : ''
 
   const searchParams = new URLSearchParams(params)
-  searchParams.set('lazyAttempt', String(++el.lazy.currentAttempt))
+  searchParams.set('lazyAttempt', String(++el._lazy.currentAttempt))
 
   return `${url}?${searchParams.toString()}`
 }
@@ -110,7 +119,7 @@ function mergeLazyOptions(el: LazyHTMLElement, binding: DirectiveBinding<string>
     attempt: el.getAttribute(LAZY_ATTEMPT) ? Number(el.getAttribute(LAZY_ATTEMPT)) : defaultLazyOptions.attempt
   }
 
-  el.lazy = {
+  el._lazy = {
     src: binding.value,
     arg: binding.arg,
     currentAttempt: 0,
@@ -118,31 +127,42 @@ function mergeLazyOptions(el: LazyHTMLElement, binding: DirectiveBinding<string>
     ...lazyInnerOptions
   }
 
-  defaultLazyOptions.filter?.(el.lazy)
+  defaultLazyOptions.filter?.(el._lazy)
 }
 
-function attemptLoad(el: LazyHTMLElement) {
-  if (el.lazy.attemptLock === true) {
-    return
-  }
-  el.lazy.attemptLock = true
-
-  setLoading(el)
-
-  const attemptSRC: string = buildAttemptSRC(el)
-
+function createImage(el: LazyHTMLElement, attemptSRC: string) {
   const image: HTMLImageElement = new Image()
   image.src = attemptSRC
   image.addEventListener('load', () => {
-    el.lazy.attemptLock = false
+    el._lazy.attemptLock = false
+
+    imageCache.add(attemptSRC)
     setSuccess(el, attemptSRC)
   })
   image.addEventListener('error', () => {
-    el.lazy.attemptLock = false
-    ;(el.lazy.currentAttempt as number) >= (el.lazy.attempt as number)
+    el._lazy.attemptLock = false
+
+    ;(el._lazy.currentAttempt as number) >= (el._lazy.attempt as number)
       ? setError(el)
       : attemptLoad(el)
   })
+}
+
+function attemptLoad(el: LazyHTMLElement) {
+  if (el._lazy.attemptLock === true) {
+    return
+  }
+  el._lazy.attemptLock = true
+
+  const attemptSRC: string = buildAttemptSRC(el)
+  if (imageCache.has(attemptSRC)) {
+    setSuccess(el, attemptSRC)
+    el._lazy.attemptLock = false
+    return
+  }
+
+  setLoading(el)
+  createImage(el, attemptSRC)
 }
 
 function check(el: LazyHTMLElement) {
@@ -172,6 +192,8 @@ function observe(el: LazyHTMLElement) {
 }
 
 function mounted(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
+  !el.getAttribute('src') && el.setAttribute('src', PIXEL)
+
   mergeLazyOptions(el, binding)
 
   if (useIntersectionObserverAPI) {
@@ -187,7 +209,7 @@ function unmounted(el: LazyHTMLElement) {
 }
 
 function diff(el: LazyHTMLElement, binding: DirectiveBinding<string>): boolean {
-  const { src, arg, attempt, loading, error } = el.lazy
+  const { src, arg, attempt, loading, error } = el._lazy
   return src !== binding.value ||
     arg !== binding.arg ||
     attempt !== Number(el.getAttribute(LAZY_ATTEMPT)) ||

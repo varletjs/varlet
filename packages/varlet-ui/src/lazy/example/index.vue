@@ -3,13 +3,10 @@
   <button @click="move">move</button>
 
   <img
-    style="width: 200px; height: 200px"
+    style="width: 200px; height: 200px; object-fit: cover"
     v-for="i in images"
     :key="i.id"
     v-lazy="i.url"
-    lazy-loading="https://himg.bdimg.com/sys/portraitn/item/47a3bac4d7d3befd5141515061"
-    lazy-error="https://himg.bdimg.com/sys/portraitn/item/47a3bac4d7d3befd5141515061"
-    lazy-attempt="1"
   >
 
   <button @click="fix">reset</button>
@@ -28,34 +25,34 @@ export default defineComponent({
     const images = reactive([
       {
         id: 1,
-        url: 'https://cn.vuejs.org/images/logo.png',
+        url: 'https://ddtask.oss-cn-shanghai.aliyuncs.com/ddtask/201208ysl/images/1606982343202.jpg?Expires=1608703112&OSSAccessKeyId=TMP.3Kj8QoTDYVpdcwERRbtMRUh7wkoZvgG25VLcqMaqzYFdcqECUoupXbaFYu36z8tcVvCgwHxUo2RF1xdB46MJpNesxSzKsv&Signature=tmLF4Y65KgbR%2FeUXdZTGSMArxIo%3D&versionId=CAEQFBiBgMDNormesRciIGU5YmQ5MWQwZjZhZTQxNGY5Nzk5YjM1ZDRhY2Q0NzYw&response-content-type=application%2Foctet-stream',
       },
       {
         id: 2,
-        url: 'https://cn.vuejs.org/imagessss/logo.png',
+        url: 'https://ddtask.oss-cn-shanghai.aliyuncs.com/ddtask/201208ysl/images/1606982343202.jpg?Expires=1608703112&OSSAccessKeyId=TMP.3Kj8QoTDYVpdcwERRbtMRUh7wkoZvgG25VLcqMaqzYFdcqECUoupXbaFYu36z8tcVvCgwHxUo2RF1xdB46MJpNesxSzKsv&Signature=tmLF4Y65KgbR%2FeUXdZTGSMArxIo%3D&versionId=CAEQFBiBgMDNormesRciIGU5YmQ5MWQwZjZhZTQxNGY5Nzk5YjM1ZDRhY2Q0NzYw&response-content-type=application%2Foctet-stream',
       },
       {
         id: 3,
-        url: 'https://cn.vuejs.org/images/logo.png',
+        url: 'https://ddtask.oss-cn-shanghai.aliyuncs.com/ddtask/201208ysl/images/1606982343202.jpg?Expires=1608703112&OSSAccessKeyId=TMP.3Kj8QoTDYVpdcwERRbtMRUh7wkoZvgG25VLcqMaqzYFdcqECUoupXbaFYu36z8tcVvCgwHxUo2RF1xdB46MJpNesxSzKsv&Signature=tmLF4Y65KgbR%2FeUXdZTGSMArxIo%3D&versionId=CAEQFBiBgMDNormesRciIGU5YmQ5MWQwZjZhZTQxNGY5Nzk5YjM1ZDRhY2Q0NzYw&response-content-type=application%2Foctet-stream',
       },
       {
         id: 4,
-        url: 'https://cn.vuejs.org/images/logo.png',
+        url: 'https://ddtask.oss-cn-shanghai.aliyuncs.com/ddtask/201208ysl/images/1606982343202.jpg?Expires=1608703112&OSSAccessKeyId=TMP.3Kj8QoTDYVpdcwERRbtMRUh7wkoZvgG25VLcqMaqzYFdcqECUoupXbaFYu36z8tcVvCgwHxUo2RF1xdB46MJpNesxSzKsv&Signature=tmLF4Y65KgbR%2FeUXdZTGSMArxIo%3D&versionId=CAEQFBiBgMDNormesRciIGU5YmQ5MWQwZjZhZTQxNGY5Nzk5YjM1ZDRhY2Q0NzYw&response-content-type=application%2Foctet-stream',
       },{
         id: 5,
-        url: 'https://cn.vuejs.org/images/logo.png',
+        url: 'https://ddtask.oss-cn-shanghai.aliyuncs.com/ddtask/201208ysl/images/1606982343202.jpg?Expires=1608703112&OSSAccessKeyId=TMP.3Kj8QoTDYVpdcwERRbtMRUh7wkoZvgG25VLcqMaqzYFdcqECUoupXbaFYu36z8tcVvCgwHxUo2RF1xdB46MJpNesxSzKsv&Signature=tmLF4Y65KgbR%2FeUXdZTGSMArxIo%3D&versionId=CAEQFBiBgMDNormesRciIGU5YmQ5MWQwZjZhZTQxNGY5Nzk5YjM1ZDRhY2Q0NzYw&response-content-type=application%2Foctet-stream',
       }
     ])
 
     return {
       images,
       fix() {
-        images[1].url = 'https://cn.vuejs.org/images/logo.png'
+        images[1].url = 'https://ddtask.oss-cn-shanghai.aliyuncs.com/ddtask/201208ysl/images/1606982343202.jpg?Expires=1608703112&OSSAccessKeyId=TMP.3Kj8QoTDYVpdcwERRbtMRUh7wkoZvgG25VLcqMaqzYFdcqECUoupXbaFYu36z8tcVvCgwHxUo2RF1xdB46MJpNesxSzKsv&Signature=tmLF4Y65KgbR%2FeUXdZTGSMArxIo%3D&versionId=CAEQFBiBgMDNormesRciIGU5YmQ5MWQwZjZhZTQxNGY5Nzk5YjM1ZDRhY2Q0NzYw&response-content-type=application%2Foctet-stream'
       },
       push() {
         images.push({
           id: Date.now(),
-          url: 'https://cn.vuejs.org/images/logo.png'
+          url: 'https://ddtask.oss-cn-shanghai.aliyuncs.com/ddtask/201208ysl/images/1606982343202.jpg?Expires=1608703112&OSSAccessKeyId=TMP.3Kj8QoTDYVpdcwERRbtMRUh7wkoZvgG25VLcqMaqzYFdcqECUoupXbaFYu36z8tcVvCgwHxUo2RF1xdB46MJpNesxSzKsv&Signature=tmLF4Y65KgbR%2FeUXdZTGSMArxIo%3D&versionId=CAEQFBiBgMDNormesRciIGU5YmQ5MWQwZjZhZTQxNGY5Nzk5YjM1ZDRhY2Q0NzYw&response-content-type=application%2Foctet-stream'
         })
       },
       pop() {
