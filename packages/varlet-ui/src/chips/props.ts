@@ -25,7 +25,7 @@ export const props = {
 //  是否使用水波纹
   disabled: {
     type: Boolean,
-    default: false
+    default: true
   },
 //  是否空心
   hollow: {
@@ -63,14 +63,17 @@ export const props = {
 //  字体颜色
   textcolor: {
     type: String
-  }
+  },
 //  图标样式
 //   iconType:pickProps(iconProps,'type'),
 //  图标大小
 //   iconSize:pickProps(iconProps,'size'),
+  closeIcon: {
+    type: String
+  },
 //  取消回调
-//   onClose: {
-//     type: Function
-//   },
+  onClose: {
+    type: Function
+  }
 }
 

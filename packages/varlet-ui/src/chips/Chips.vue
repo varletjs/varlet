@@ -2,13 +2,13 @@
   <transition
     name="var-fade"
   >
-    <div
+    <span
       v-ripple="{disabled}"
-      class="var-chips var--box"
+      class="var-chips var--box var-elevation--2"
       :style="{
          color:textcolor?textcolor:(hollow?color:'#fff'),
          background:hollow?'#fff':color,
-         borderColor:hollow?color:'none'}"
+         borderColor:hollow?color:(color?color:'none')}"
       :class="[
          `var-chips--${type}`,
          `var-chips--${size}`,
@@ -16,13 +16,13 @@
          round?'var-chips--round':null,
          hollow?'var-chips--hollow':null
     ]"
-      v-show="show"
     >
+      <slot name="left"></slot>
       <slot/>
-      <div v-if="paralyse" class="var-chips--operator" @click="hideChips">
-        <slot name="operator">x</slot>
-      </div>
-    </div>
+      <slot name="right"></slot>
+      <span v-if="paralyse&&!closeIcon" class="var-chips--close">x</span>
+      <span v-else-if="paralyse&&closeIcon" class="var-chips--close">{{closeIcon}}</span>
+    </span>
   </transition>
 </template>
 
@@ -37,26 +37,10 @@
 		directives: { Ripple },
 		props,
 		setup(props) {
-			const show: Ref<boolean> = ref(true)
-			const hideChips = () => {
-				show.value = false
-			}
-			return {
-				show,
-				hideChips
-			}
-
 		}
 	})
 </script>
 
 <style lang="less">
   @import './chips';
-  /*.var-chips {*/
-  /*  display: flex;*/
-  /*}*/
-  .var-chips--operator {
-    margin-left: 4px;
-    cursor: pointer;
-  }
 </style>
