@@ -41,8 +41,7 @@
       <var-chips type="primary" hollow paralyse v-if="show1" @close="show1=false">标签</var-chips>
       <var-chips type="primary" paralyse v-if="show2" @close="show2=false" round>标签</var-chips>
       <var-chips type="primary" paralyse v-if="show4" @close="show4=false" close-icon="=">标签</var-chips>
-      <var-chips type="primary" paralyse  size="mini" v-if="show3" @close="show3=false">标签</var-chips>
-<!--      <var-chips type="primary" paralyse v-if="show1" @close="show1=false" close-icon="=">标签</var-chips>-->
+      <var-chips type="primary" paralyse size="mini" v-if="show3" @close="show3=false">标签</var-chips>
     </div>
 
     <div>自定义颜色标签</div>
@@ -51,8 +50,8 @@
       <var-chips color="#7232dd" hollow>标签</var-chips>
       <var-chips color="#faecd8" textcolor="#e6a23c" hollow>标签</var-chips>
       <var-chips color="#faecd8" textcolor="#e6a23c">标签</var-chips>
-      <var-chips color="#faecd8" textcolor="#e6a23c" paralyse  v-if="show6" @close="show6=false">标签</var-chips>
-      <var-chips color="#faecd8" textcolor="#e6a23c" hollow paralyse  v-if="show5" @close="show5=false"> 标签</var-chips>
+      <var-chips color="#faecd8" textcolor="#e6a23c" paralyse v-if="show6" @close="show6=false">标签</var-chips>
+      <var-chips color="#faecd8" textcolor="#e6a23c" hollow paralyse v-if="show5" @close="show5=false"> 标签</var-chips>
 
 
     </div>
@@ -68,7 +67,6 @@
         <template #right>
           <span>-</span>
         </template>
-
         标签
       </var-chips>
     </div>
@@ -96,11 +94,11 @@
 			return {
 				show,
 				show1,
-        show2,
-        show3,
-        show4,
-        show5,
-        show6
+				show2,
+				show3,
+				show4,
+				show5,
+				show6
 			}
 		}
 	})

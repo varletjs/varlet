@@ -12,7 +12,7 @@
       :class="[
          `var-chips--${type}`,
          `var-chips--${size}`,
-         block?'var--flex':'var--inline-flex',
+         block?'var--block':'var--inline',
          round?'var-chips--round':null,
          hollow?'var-chips--hollow':null
     ]"
@@ -20,8 +20,8 @@
       <slot name="left"></slot>
       <slot/>
       <slot name="right"></slot>
-      <span v-if="paralyse&&!closeIcon" class="var-chips--close">x</span>
-      <span v-else-if="paralyse&&closeIcon" class="var-chips--close">{{closeIcon}}</span>
+      <span v-if="paralyse&&!closeIcon" class="var-chips--close" @click="$props.onClose">x</span>
+      <span v-else-if="paralyse&&closeIcon" class="var-chips--close" @click="$props.onClose">{{closeIcon}}</span>
     </span>
   </transition>
 </template>
