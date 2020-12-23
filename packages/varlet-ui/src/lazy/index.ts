@@ -196,7 +196,13 @@ function diff(el: LazyHTMLElement, binding: DirectiveBinding<string>): boolean {
 }
 
 function updated(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
-  diff(el, binding) ? mounted(el, binding) : check(el)
+  diff(el, binding)
+    ? mounted(el, binding)
+    : !useIntersectionObserverAPI
+      ? lazyElements.includes(el)
+        ? check(el)
+        : null
+      : null
 }
 
 const Lazy: Directive & Plugin = {
