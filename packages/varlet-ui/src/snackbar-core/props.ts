@@ -49,7 +49,7 @@ export const props = {
 	// 是否禁止滚动穿透
 	lockScroll: {
 		type: Boolean,
-		default: true,
+		default: false,
 	},
 	// 控制组件可见还是隐藏
 	show: {
