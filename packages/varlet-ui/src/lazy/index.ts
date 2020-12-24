@@ -109,24 +109,6 @@ function unbindEvents() {
   listenTargets = []
 }
 
-function buildAttemptSRC(el: LazyHTMLElement): string {
-  const { src } = el._lazy
-
-  if (el._lazy.currentAttempt === 0) {
-    el._lazy.currentAttempt++
-    return src
-  }
-
-  const index: number = src.indexOf('?')
-  const url: string = index > -1 ? src.slice(0,  index) : src
-  const params: string = index > -1 ? src.slice(src.indexOf('?')) : ''
-
-  const searchParams = new URLSearchParams(params)
-  searchParams.set('lazyAttempt', String(++el._lazy.currentAttempt))
-
-  return `${url}?${searchParams.toString()}`
-}
-
 function mergeLazyOptions(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
   const lazyInnerOptions: LazyOptions = {
     loading: el.getAttribute(LAZY_LOADING) ?? defaultLazyOptions.loading,
@@ -168,8 +150,10 @@ function attemptLoad(el: LazyHTMLElement) {
     return
   }
   el._lazy.attemptLock = true
+  el._lazy.currentAttempt++
 
-  const attemptSRC: string = buildAttemptSRC(el)
+  const { src: attemptSRC }: Lazy = el._lazy
+
   if (imageCache.has(attemptSRC)) {
     setSuccess(el, attemptSRC)
     el._lazy.attemptLock = false

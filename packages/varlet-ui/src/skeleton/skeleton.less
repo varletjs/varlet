@@ -1,6 +1,8 @@
 @skeleton-content-padding: 16px;
 
 @skeleton-card-height: 160px;
+@skeleton-card-border-radius: 4px;
+@skeleton-card-margin-bottom: 16px;
 @skeleton-card-background-color: rgba(0, 0, 0, .12);
 
 @skeleton-animation-background: linear-gradient(
@@ -11,12 +13,16 @@
 );
 
 @skeleton-avatar-size: 34px;
+@skeleton-avatar-margin-right: 16px;
 @skeleton-avatar-background-color: rgba(0, 0, 0, .12);
 
 @skeleton-title-width: 50%;
+@skeleton-title-border-radius: 10px;
 @skeleton-title-background-color: rgba(0, 0, 0, .12);
 
-@skeleton-row-height: 16px;
+@skeleton-row-height: 12px;
+@skeleton-row-border-radius: 10px;
+@skeleton-row-margin-top: 10px;
 
 @keyframes var-skeleton-animation {
   from {
@@ -41,7 +47,8 @@
     width: 100%;
     height: @skeleton-card-height;
     background-color: @skeleton-card-background-color;
-    margin-bottom: 16px;
+    margin-bottom: @skeleton-card-margin-bottom;
+    border-radius: @skeleton-card-border-radius;
   }
 
   &__article {
@@ -57,7 +64,7 @@
     height: @skeleton-avatar-size;
     border-radius: 50%;
     background-color: @skeleton-avatar-background-color;
-    margin-right: 16px;
+    margin-right: @skeleton-avatar-margin-right;
   }
 
   &__section {
@@ -71,7 +78,7 @@
     width: @skeleton-title-width;
     height: @skeleton-row-height;
     background-color: @skeleton-title-background-color;
-    border-radius: 10px;
+    border-radius: @skeleton-title-border-radius;
   }
 
   &__row {
@@ -80,8 +87,8 @@
     width: 100%;
     height: @skeleton-row-height;
     background-color: @skeleton-title-background-color;
-    margin-top: 16px;
-    border-radius: 10px;
+    margin-top: @skeleton-row-margin-top;
+    border-radius: @skeleton-row-border-radius;
   }
 
   &__fullscreen {
