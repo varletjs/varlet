@@ -67,13 +67,16 @@ export async function compileModule(modules: string | boolean = false) {
   await Promise.all(
     dir.map((filename: string) => {
       const path: string = resolve(MODULE_DIR, filename)
+
       isDir(path) && buildStyleEntry(path)
-      return isDir(path) ? compileDir(path) : null
+
+      return isDir(path) ? compileDir(path, modules) : null
     })
   )
-  compileLibraryEntry(
+  await compileLibraryEntry(
     MODULE_DIR,
     await getComponentNames(),
-    await getExportDirNames()
+    await getExportDirNames(),
+    modules
   )
 }
