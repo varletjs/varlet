@@ -1,6 +1,6 @@
 import { App, Directive, Plugin } from 'vue'
 import { DirectiveBinding } from '@vue/runtime-core'
-import { inViewport } from '../utils/elements'
+import { getParentScroller, inViewport } from '../utils/elements'
 import {
   CacheInstance,
   checkIntersectionObserverAPI, createCache,
@@ -26,14 +26,18 @@ type Lazy = LazyOptions & {
 
 type LazyHTMLElement = HTMLElement & { _lazy: Lazy }
 
+type ListenTarget = Window | HTMLElement
+
 const BACKGROUND_IMAGE_ARG_NAME = 'background-image'
 const LAZY_LOADING = 'lazy-loading'
 const LAZY_ERROR = 'lazy-error'
 const LAZY_ATTEMPT = 'lazy-attempt'
-const EVENTS = ['resize', 'animationend', 'transitionend', 'touchmove', 'scroll']
+const EVENTS = ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend', 'touchmove']
 const PIXEL = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
 
 const lazyElements: LazyHTMLElement[] = []
+
+let listenTargets: ListenTarget[] = []
 
 const imageCache: CacheInstance<string> = createCache<string>(100)
 
@@ -82,16 +86,25 @@ function setSuccess(el: LazyHTMLElement, attemptSRC: string) {
   !useIntersectionObserverAPI && checkAll()
 }
 
-function bindEvents() {
+function bindEvents(listenTarget: ListenTarget) {
+  if (listenTargets.includes(listenTarget)) {
+    return
+  }
+  listenTargets.push(listenTarget)
+
   EVENTS.forEach((event: string) => {
-    window.addEventListener(event, checkAllWithThrottle)
+    listenTarget.addEventListener(event, checkAllWithThrottle)
   })
 }
 
 function unbindEvents() {
-  EVENTS.forEach((event: string) => {
-    window.removeEventListener(event, checkAllWithThrottle)
+  listenTargets.forEach((listenTarget: ListenTarget) => {
+    EVENTS.forEach((event: string) => {
+      listenTarget.removeEventListener(event, checkAllWithThrottle)
+    })
   })
+
+  listenTargets = []
 }
 
 function buildAttemptSRC(el: LazyHTMLElement): string {
@@ -208,7 +221,10 @@ function mounted(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
   if (useIntersectionObserverAPI) {
     observe(el)
   } else {
-    !lazyElements.includes(el) && lazyElements.push(el) === 1 && bindEvents()
+    if (!lazyElements.includes(el) && lazyElements.push(el) === 1) {
+      bindEvents(window)
+      bindEvents(getParentScroller(el))
+    }
     check(el)
   }
 }
