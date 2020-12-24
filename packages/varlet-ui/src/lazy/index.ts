@@ -15,6 +15,7 @@ interface LazyOptions {
   attempt?: number
   throttleWait?: number
   filter?: (lazy: Lazy) => void
+  events?: string[]
 }
 
 type Lazy = LazyOptions & {
@@ -46,6 +47,7 @@ let defaultLazyOptions: LazyOptions = {
   error: PIXEL,
   attempt: 3,
   throttleWait: 300,
+  events: EVENTS
 }
 
 let checkAllWithThrottle = throttle(checkAll, defaultLazyOptions.throttleWait)
@@ -92,14 +94,14 @@ function bindEvents(listenTarget: ListenTarget) {
   }
   listenTargets.push(listenTarget)
 
-  EVENTS.forEach((event: string) => {
+  defaultLazyOptions.events.forEach((event: string) => {
     listenTarget.addEventListener(event, checkAllWithThrottle)
   })
 }
 
 function unbindEvents() {
   listenTargets.forEach((listenTarget: ListenTarget) => {
-    EVENTS.forEach((event: string) => {
+    defaultLazyOptions.events.forEach((event: string) => {
       listenTarget.removeEventListener(event, checkAllWithThrottle)
     })
   })
@@ -221,10 +223,8 @@ function mounted(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
   if (useIntersectionObserverAPI) {
     observe(el)
   } else {
-    if (!lazyElements.includes(el) && lazyElements.push(el) === 1) {
-      bindEvents(window)
-      bindEvents(getParentScroller(el))
-    }
+    bindEvents(window)
+    bindEvents(getParentScroller(el))
     check(el)
   }
 }
