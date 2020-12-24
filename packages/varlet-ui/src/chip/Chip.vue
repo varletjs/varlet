@@ -4,43 +4,41 @@
   >
     <span
       v-ripple="{disabled}"
-      class="var-chips var--box var-elevation--2"
+      class="var-chip var--box var-elevation--2"
       :style="{
          color:textcolor?textcolor:(hollow?color:'#fff'),
          background:hollow?'#fff':color,
          borderColor:hollow?color:(color?color:'none')}"
       :class="[
-         `var-chips--${type}`,
-         `var-chips--${size}`,
+         `var-chip--${type}`,
+         `var-chip--${size}`,
          block?'var--block':'var--inline',
-         round?'var-chips--round':null,
-         hollow?'var-chips--hollow':null
+         round?'var-chip--round':null,
+         hollow?'var-chip--hollow':null
     ]"
     >
       <slot name="left"></slot>
       <slot/>
       <slot name="right"></slot>
-      <span v-if="paralyse&&!closeIcon" class="var-chips--close" @click="$props.onClose">x</span>
-      <span v-else-if="paralyse&&closeIcon" class="var-chips--close" @click="$props.onClose">{{closeIcon}}</span>
+      <span v-if="paralyse&&!closeIcon" class="var-chip--close" @click="$props.onClose">x</span>
+      <span v-else-if="paralyse&&closeIcon" class="var-chip--close" @click="$props.onClose">{{closeIcon}}</span>
     </span>
   </transition>
 </template>
 
 <script lang="ts">
 	import Ripple from '../ripple'
-	import { defineComponent, Ref, ref } from 'vue'
+	import { defineComponent } from 'vue'
 	import { props } from './props'
 
 	export default defineComponent({
-		name: 'VarChips',
+		name: 'VarChip',
 		components: {},
 		directives: { Ripple },
-		props,
-		setup(props) {
-		}
+		props
 	})
 </script>
 
 <style lang="less">
-  @import './chips';
+  @import './chip';
 </style>
