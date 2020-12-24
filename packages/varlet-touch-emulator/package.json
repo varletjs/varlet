@@ -1,0 +1,21 @@
+{
+  "name": "@varlet/touch-emulator",
+  "version": "0.5.1",
+  "description": "touch-emulator",
+  "keywords": [
+    "emulator",
+    "varlet"
+  ],
+  "author": "BeADre <beadre_wang@163.com>",
+  "homepage": "https://github.com/haoziqaq/varlet#readme",
+  "license": "MIT",
+  "main": "index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haoziqaq/varlet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/haoziqaq/varlet/issues"
+  },
+  "gitHead": "5dabda353dc88340816ddc6f6ac8081c0680908f"
+}
