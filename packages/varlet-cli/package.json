@@ -30,7 +30,7 @@
     "dev": "tsc --watch",
     "build": "tsc"
   },
-  "gitHead": "ddefaa2451eee17eb1e834a64a5b00e50d07f0ee",
+  "gitHead": "42554856ff028f6f411a35f468e0f763978270b0",
   "dependencies": {
     "@babel/core": "^7.12.3",
     "@babel/plugin-transform-runtime": "^7.12.1",

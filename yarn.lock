@@ -2646,10 +2646,8 @@
     "@typescript-eslint/types" "4.6.0"
     eslint-visitor-keys "^2.0.0"
 
-"@varlet/icons@^0.0.0":
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/@varlet/icons/-/icons-0.0.0.tgz#67154c7b84e2530a5f993d5e0d62393940f67887"
-  integrity sha512-3YZtKYqcgtjXPsoKLH1sLUg6Ko7ldJ3d15nm2AkA+3r0w/D+FLOZQTgJxxQuHhi95CZOcWnHgQV533kAuyqRBg==
+"@varlet/icons@^7.0.0":
+  version "0.7.0"
   dependencies:
     commander "^6.2.1"
     fs-extra "^9.0.1"
