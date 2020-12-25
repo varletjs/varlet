@@ -5,28 +5,39 @@ import { getVarletConfig } from './varlet.config'
 import { accessProperty } from '../shared/fsUtils'
 
 export function getDevConfig() {
-  const varletConfig = getVarletConfig()
-  return merge(createBaseConfig() as any, {
-    mode: 'development',
-    devtool: 'source-map',
-    output: {
-      chunkFilename: 'js/[name].[chunkhash:8].js',
-    },
-    devServer: {
-      port: accessProperty(varletConfig, 'port'),
-      host: accessProperty(varletConfig, 'host'),
-      publicPath: '/',
-      stats: 'errors-only',
-      disableHostCheck: true,
-      hot: true,
-      open: true
-    },
-    plugins: [
-      new WebpackBarPlugin({
-        name: 'Site development building',
-        color: '#15DD6A'
-      }),
-      ...createBasePlugins()
-    ]
-  })
+	const varletConfig = getVarletConfig()
+	return merge(createBaseConfig() as any, {
+		mode: 'development',
+		devtool: 'source-map',
+		output: {
+			chunkFilename: 'js/[name].[chunkhash:8].js',
+		},
+		devServer: {
+			port: accessProperty(varletConfig, 'port'),
+			host: accessProperty(varletConfig, 'host'),
+			publicPath: '/',
+			stats: 'errors-only',
+			disableHostCheck: true,
+			hot: true,
+		},
+		optimization: {
+			splitChunks: {
+				cacheGroups: {
+					chunks: {
+						chunks: 'all',
+						minChunks: 2,
+						minSize: 0,
+						name: 'chunks',
+					},
+				},
+			},
+		},
+		plugins: [
+			new WebpackBarPlugin({
+				name: 'Site development building',
+				color: '#15DD6A',
+			}),
+			...createBasePlugins(),
+		],
+	})
 }

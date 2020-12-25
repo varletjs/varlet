@@ -1,0 +1,36 @@
+{
+  "name": "@varlet/icons",
+  "version": "0.0.0",
+  "description": "Icons of varlet",
+  "bin": {
+    "varlet-icons": "lib/index.js"
+  },
+  "keywords": [
+    "icons",
+    "svg",
+    "builder",
+    "varlet"
+  ],
+  "author": "haoziqaq <357229046@qq.com>",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haoziqaq/varlet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/haoziqaq/varlet/issues"
+  },
+  "scripts": {
+    "build": "varlet-icons build"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "commander": "^6.2.1",
+    "fs-extra": "^9.0.1",
+    "webfont": "^9.0.0"
+  }
+}

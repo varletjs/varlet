@@ -1,4 +1,4 @@
-import webpack from 'webpack'
+import webpack, { Stats } from 'webpack'
 import logger from '../shared/logger'
 import { buildMobileSiteRoutes, buildPcSiteRoutes } from '../compiler/compileRoutes'
 import { getBuildConfig } from '../config/webpack.build.config'
@@ -7,19 +7,16 @@ import { pathExistsSync, writeFileSync } from 'fs-extra'
 import { VARLET_CONFIG } from '../shared/constant'
 
 export async function build() {
-  setProd()
+	setProd()
 
-  !pathExistsSync(VARLET_CONFIG) && writeFileSync(VARLET_CONFIG, 'module.exports = {}')
+	!pathExistsSync(VARLET_CONFIG) && writeFileSync(VARLET_CONFIG, 'module.exports = {}')
 
-  await Promise.all([
-    buildMobileSiteRoutes(),
-    buildPcSiteRoutes()
-  ])
+	await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
 
-  const config = getBuildConfig()
+	const config = getBuildConfig()
 
-  webpack(config, (err, stats) => {
-    err && logger.error(err.toString())
-    stats.hasErrors() && logger.error(stats)
-  })
+	webpack(config, (err, stats: Stats) => {
+		err && logger.error(err.toString())
+		stats?.hasErrors() && logger.error(stats)
+	})
 }

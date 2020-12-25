@@ -8,7 +8,10 @@ node_modules
 packages/varlet-cli/lib
 packages/varlet-cli/site/mobile/routes.ts
 packages/varlet-cli/site/pc/routes.ts
+
 packages/varlet-ui/site
 packages/varlet-ui/es
 packages/varlet-ui/cjs
 packages/varlet-ui/umd
+
+packages/varlet-icons/dist
