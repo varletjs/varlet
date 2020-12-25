@@ -3,6 +3,75 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://user/haoziqaq/varlet/compare/v0.5.13...v0.7.0) (2020-12-25)
+
+
+### Bug Fixes
+
+* **cli/compiler:** 修复cjs编译bug 增加编译不同模块标准库css,less入口文件 ([226bc04](https://user/haoziqaq/varlet/commits/226bc0426f217e834512990edf78077f92fbed78))
+* **icons:** 子包@varlet/icons完成 svg待选 ([76c8cbd](https://user/haoziqaq/varlet/commits/76c8cbd9ff7494e442e6a0edcaed4e9e603905da))
+* **ui:** 添加@varlet/icons依赖 ([f32de8c](https://user/haoziqaq/varlet/commits/f32de8cd8936a4fee07ad4cb1506c1863730b51a))
+* fix style of snackbar ([2858e3e](https://user/haoziqaq/varlet/commits/2858e3e972fea79a49b8efa9757235a97e385392))
+* **cli:** 修改.vue文件编译逻辑 ([5e2e64a](https://user/haoziqaq/varlet/commits/5e2e64a48acdcf81ba446acc668ebbb32d519ce9))
+* **cli:** 重构部分代码 ([e4840dc](https://user/haoziqaq/varlet/commits/e4840dc59c5087a007d819a0f8db9db795f234a9))
+* **commands:** modify indexTemplate of create ([48a0687](https://user/haoziqaq/varlet/commits/48a068701253ceeaca11937a24251c5f5712d435))
+* **loading:** remove text ([86ec547](https://user/haoziqaq/varlet/commits/86ec5475af3d98e523cb1ddf81b42f830e9b4d82))
+* **snackbar:** add type definition ([a3283ff](https://user/haoziqaq/varlet/commits/a3283ff7f4e2f32ff55ced1a8d2b54d885df4be8))
+* **snackbar:** modify default duration ([520cf47](https://user/haoziqaq/varlet/commits/520cf47bfab6effec9e4bf64baf759b82f5b0881))
+* **snackbar:** modify position prop ([2862958](https://user/haoziqaq/varlet/commits/2862958021311cdd16eb3f540570a9351438b2d6))
+* **ui:** button原型制作中 已完成基本type size color基本交互 ([5d528ea](https://user/haoziqaq/varlet/commits/5d528ead4d3f13df3d70ee95b837cd819ef4d1e4))
+* **ui:** button原型完成 ([cdf32e5](https://user/haoziqaq/varlet/commits/cdf32e5f8a1e431fa052684f828d0dbceab46f96))
+* **ui:** menu组件原型完成 重构button popup dialog skeleton的props ([09a57b1](https://user/haoziqaq/varlet/commits/09a57b1d692eeab909ab0c1e2672d1095f2df12e))
+* **ui:** popup dialog原型完成 ([4c3da72](https://user/haoziqaq/varlet/commits/4c3da72d776d682c4b1be1b96e445076f53012c1))
+* **ui:** snackbar index.ts重构 ([a76a0be](https://user/haoziqaq/varlet/commits/a76a0be18dab5fd317d2011704764f4fe1ad4e98))
+* **ui:** snackbar 解决动画问题 ([da87973](https://user/haoziqaq/varlet/commits/da87973acb1b44b194459d9cda76bb31da5227ba))
+* **ui:** 修复类型问题 ([10ebe7a](https://user/haoziqaq/varlet/commits/10ebe7a90e9dfe71b5d87712f5bc55374213cff0))
+* **ui:** 修改了ripple的定位 ([67fd0cc](https://user/haoziqaq/varlet/commits/67fd0cc137a0e64b9c7058477ad56d9c5ed2b6f9))
+* **ui:** 增加button组件的loading参数校验 ([4d839c1](https://user/haoziqaq/varlet/commits/4d839c1297bf3069d5e8f299ff64d9eed822c853))
+* **ui:** 增加ui全局上下文 适配teleport keep-alive 锁操作 ([d237750](https://user/haoziqaq/varlet/commits/d237750e8efa0ef33841239c0c2e19d745726abe))
+* **ui:** 定义组件上下文对象 ([4e926c7](https://user/haoziqaq/varlet/commits/4e926c70fcbd49b848205709bcde00a93420bb98))
+* **ui:** 按钮组件开发 ([4fddcbd](https://user/haoziqaq/varlet/commits/4fddcbda84737fb499e0adcc798b5a73f5cf55ea))
+* **ui/image:** image原型完成 ([97fcc83](https://user/haoziqaq/varlet/commits/97fcc8333ef1648dd82fe2b34ab284cc753600b8))
+* **ui/lazy:** lazy原型完成 ([e332fa8](https://user/haoziqaq/varlet/commits/e332fa86eed8f6d1598473ba19b023a19c7ed54b))
+* **ui/lazy:** 修复CacheInstance类型错误 ([1573b56](https://user/haoziqaq/varlet/commits/1573b5614099fcc2da18c440dd1d27a332076adb))
+* **ui/lazy:** 修复了lazy在兼容模式下 图片从视口外操作到视口内没有进行check的bug ([8af34d0](https://user/haoziqaq/varlet/commits/8af34d0f0aa8b2f36002e43657de130095871340))
+* **ui/lazy:** 修复了部分情况下图片update重复check的bug ([f8fcf78](https://user/haoziqaq/varlet/commits/f8fcf7892a9b6b37c5400d49a931fbad7cbb631b))
+* **ui/lazy:** 增加1px像素占位 增加图片URL缓存 ([865a10c](https://user/haoziqaq/varlet/commits/865a10c7e51b0308c99d7387ab5740c7843e31b1))
+* **ui/lazy:** 增加局部滚动的案例cover ([c24820a](https://user/haoziqaq/varlet/commits/c24820a97d59fe2a97a9902afbc8f09615e99897))
+* **ui/lazy:** 增加绑定事件配置 ([64a95cb](https://user/haoziqaq/varlet/commits/64a95cb0777cbf695bfd6d0269a344af4e6ae813))
+* **ui/lazy,skeleton:** 修改了skeleton样式 取消了lazy尝试请求的请求数参数 ([df1c8e1](https://user/haoziqaq/varlet/commits/df1c8e1ee6ef1d5db88ff2a4e50dc1a42ff224a7))
+* **ui/styles:** 修改common.less中的状态名 ([8e30223](https://user/haoziqaq/varlet/commits/8e302236c8d6f90e042eaa5deffcdfb12a4958dd))
+* add class for transition-group ([75e3df6](https://user/haoziqaq/varlet/commits/75e3df66067c26fb4eaa9c17d549a2e59501e536))
+* add isDeclarative for snackbar ([a156647](https://user/haoziqaq/varlet/commits/a156647f2917e6f82b069557f851844e6647a0a5))
+* add margin for loading text and detection componentName ([b42046e](https://user/haoziqaq/varlet/commits/b42046e7538d8b05b61b47085446f73c9c46a1b3))
+* add typescript type(App) ([4d49a7b](https://user/haoziqaq/varlet/commits/4d49a7bde63167b93c144badc353d0004af91109))
+* modify loading docs and example ([66be153](https://user/haoziqaq/varlet/commits/66be153e324c1378e80ee4ab94c0c7609ddd936e))
+* modify size and animation of loading ([63eb392](https://user/haoziqaq/varlet/commits/63eb392b01a46b469b1f9944f364970a64e686bb))
+* remove console ([675f910](https://user/haoziqaq/varlet/commits/675f910b8639d9f985c53fd43f8804e30b101029))
+
+
+### Features
+
+* add button for menu ([e9e1860](https://user/haoziqaq/varlet/commits/e9e1860ccfb1f50624467c32d0ee2fba291a44f9))
+* add chips ([ed1cc95](https://user/haoziqaq/varlet/commits/ed1cc95d8a41d064804ec04be43714bbb69ef9eb))
+* add progress ([170d515](https://user/haoziqaq/varlet/commits/170d5150aa3dd43c2d2c13ad5c43a154f91749a2))
+* add propsEmits for loading ([41bfdab](https://user/haoziqaq/varlet/commits/41bfdab7d298901cdbbcc77ae14326b765af5a8f))
+* add touch emulater ([6836953](https://user/haoziqaq/varlet/commits/6836953943f38229b5b46361f30f077a00116db7))
+* complete snackbar ([f7aa36b](https://user/haoziqaq/varlet/commits/f7aa36b27d232242ddc796a5550086ef2a75e94d))
+* loading ([d93e481](https://user/haoziqaq/varlet/commits/d93e4812b18f8d4cb310797947416f8feeb97271))
+* modify loading size ([321526c](https://user/haoziqaq/varlet/commits/321526c3290e431eb5dbd82891712acddde15839))
+* snackbar ([ff3483d](https://user/haoziqaq/varlet/commits/ff3483d0a734ca822eb03b44710b20a7093f783a))
+
+
+### Performance Improvements
+
+* add validator for progress mode ([8eb9721](https://user/haoziqaq/varlet/commits/8eb9721cc4b4c7141a48efa285c2b383e8cab2e0))
+* refactor snackbar ([fd58373](https://user/haoziqaq/varlet/commits/fd583733d6c85a60d2fc05f7613c59689fdabe1d))
+
+
+
+
+
 # [0.6.0](https://user/haoziqaq/varlet/compare/v0.5.13...v0.6.0) (2020-12-24)
 
 

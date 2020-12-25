@@ -1,6 +1,6 @@
 {
   "name": "@varlet/icons",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Icons of varlet",
   "bin": {
     "varlet-icons": "lib/index.js"
@@ -27,7 +27,6 @@
   "scripts": {
     "build": "varlet-icons build"
   },
-  "devDependencies": {},
   "dependencies": {
     "commander": "^6.2.1",
     "fs-extra": "^9.0.1",

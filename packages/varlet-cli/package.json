@@ -1,6 +1,6 @@
 {
   "name": "@varlet/cli",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "cli of varlet",
   "bin": {
     "varlet-cli": "./lib/index.js"
@@ -37,7 +37,7 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
     "@testing-library/vue": "^6.0.0",
-    "@varlet/markdown-loader": "^0.6.0",
+    "@varlet/markdown-loader": "^0.7.0",
     "@vue/compiler-sfc": "^3.0.2",
     "autoprefixer": "8.0.0",
     "babel-loader": "^8.1.0",

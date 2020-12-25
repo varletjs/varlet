@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/haoziqaq/varlet/compare/v0.5.13...v0.7.0) (2020-12-25)
+
+
+### Bug Fixes
+
+* **cli:** 修改.vue文件编译逻辑 ([5e2e64a](https://github.com/haoziqaq/varlet/commit/5e2e64a48acdcf81ba446acc668ebbb32d519ce9))
+* **cli:** 重构部分代码 ([e4840dc](https://github.com/haoziqaq/varlet/commit/e4840dc59c5087a007d819a0f8db9db795f234a9))
+* **cli/compiler:** 修复cjs编译bug 增加编译不同模块标准库css,less入口文件 ([226bc04](https://github.com/haoziqaq/varlet/commit/226bc0426f217e834512990edf78077f92fbed78))
+* **commands:** modify indexTemplate of create ([48a0687](https://github.com/haoziqaq/varlet/commit/48a068701253ceeaca11937a24251c5f5712d435))
+* **icons:** 子包@varlet/icons完成 svg待选 ([76c8cbd](https://github.com/haoziqaq/varlet/commit/76c8cbd9ff7494e442e6a0edcaed4e9e603905da))
+* **ui:** button原型制作中 已完成基本type size color基本交互 ([5d528ea](https://github.com/haoziqaq/varlet/commit/5d528ead4d3f13df3d70ee95b837cd819ef4d1e4))
+* **ui:** menu组件原型完成 重构button popup dialog skeleton的props ([09a57b1](https://github.com/haoziqaq/varlet/commit/09a57b1d692eeab909ab0c1e2672d1095f2df12e))
+* **ui:** merge ([0c5918f](https://github.com/haoziqaq/varlet/commit/0c5918f0d811691acf9a5549a0e00e1d198435f1))
+* **ui:** popup dialog原型完成 ([4c3da72](https://github.com/haoziqaq/varlet/commit/4c3da72d776d682c4b1be1b96e445076f53012c1))
+* **ui:** 增加ui全局上下文 适配teleport keep-alive 锁操作 ([d237750](https://github.com/haoziqaq/varlet/commit/d237750e8efa0ef33841239c0c2e19d745726abe))
+* **ui/lazy:** lazy原型完成 ([e332fa8](https://github.com/haoziqaq/varlet/commit/e332fa86eed8f6d1598473ba19b023a19c7ed54b))
+* add margin for loading text and detection componentName ([b42046e](https://github.com/haoziqaq/varlet/commit/b42046e7538d8b05b61b47085446f73c9c46a1b3))
+
+
+### Features
+
+* add progress ([170d515](https://github.com/haoziqaq/varlet/commit/170d5150aa3dd43c2d2c13ad5c43a154f91749a2))
+* add touch emulater ([6836953](https://github.com/haoziqaq/varlet/commit/6836953943f38229b5b46361f30f077a00116db7))
+* loading ([d93e481](https://github.com/haoziqaq/varlet/commit/d93e4812b18f8d4cb310797947416f8feeb97271))
+
+
+
+
+
 # [0.6.0](https://github.com/haoziqaq/varlet/compare/v0.5.13...v0.6.0) (2020-12-24)
 
 
