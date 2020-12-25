@@ -35,5 +35,8 @@
   "peerDependencies": {
     "vue": ">=3.0.2"
   },
-  "gitHead": "ddefaa2451eee17eb1e834a64a5b00e50d07f0ee"
+  "gitHead": "ddefaa2451eee17eb1e834a64a5b00e50d07f0ee",
+  "dependencies": {
+    "@varlet/icons": "^0.0.0"
+  }
 }

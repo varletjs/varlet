@@ -1,6 +1,6 @@
 {
   "name": "@varlet/icons",
-  "version": "0.0.0",
+  "version": "0.6.0",
   "description": "Icons of varlet",
   "bin": {
     "varlet-icons": "lib/index.js"
