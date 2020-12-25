@@ -1,31 +1,19 @@
 <template>
-	<div
-		class="var-snackbar"
-		:style="{ pointerEvents: forbidClick ? 'auto' : 'none' }"
-		v-show="show"
-	>
+	<div class="var-snackbar" :style="{ pointerEvents: forbidClick ? 'auto' : 'none' }" v-show="show">
 		<div
 			:class="`var-snackbar__wrapper var-snackbar__wrapper-${position} var-elevation--4 ${
 				vertical ? 'var-snackbar__vertical' : ''
 			}`"
 			:style="snackbarStyle"
 		>
-			<div :class="`var-snackbar__content ${contentClass}`">
-				<var-loading
-					:type="loadingType"
-					:size="loadingSize"
-					v-if="type === 'loading'"
-				/>
+			<div :class="`var-snackbar__content${contentClass ? ` ${contentClass}` : ''}`">
+				<var-loading :type="loadingType" :size="loadingSize" v-if="type === 'loading'" />
 				<slot>
 					{{ content }}
 				</slot>
 			</div>
 			<div class="var-snackbar__action">
-				<var-button
-					type="primary"
-					size="small"
-					v-if="['success', 'error', 'info', 'warning'].includes(type)"
-				>
+				<var-button type="primary" size="small" v-if="['success', 'error', 'info', 'warning'].includes(type)">
 					{{ type }}
 				</var-button>
 				<slot name="action"></slot>
