@@ -5,12 +5,13 @@ import { getDevConfig } from '../config/webpack.dev.config'
 import { getPort } from 'portfinder'
 import { buildMobileSiteRoutes, buildPcSiteRoutes } from '../compiler/compileRoutes'
 import { setDev } from '../shared/env'
-import { pathExistsSync, writeFileSync } from 'fs-extra'
-import { VARLET_CONFIG } from '../shared/constant'
+import { ensureDirSync } from 'fs-extra'
+import { SRC_DIR, VARLET_CONFIG } from '../shared/constant'
+import { ensureConfigFile } from '../shared/fsUtils'
 
 export function runDevServer(port: number, config: any) {
 	const { host } = config.devServer
-  config.devServer.port = port
+	config.devServer.port = port
 	const server = new WebpackDevServer(webpack(config), config.devServer)
 
 	;(server as any).showStatus = function () {}
@@ -28,12 +29,10 @@ export function runDevServer(port: number, config: any) {
 export async function dev() {
 	setDev()
 
-  !pathExistsSync(VARLET_CONFIG) && writeFileSync(VARLET_CONFIG, 'module.exports = {}')
+	ensureConfigFile(VARLET_CONFIG)
+	ensureDirSync(SRC_DIR)
 
-  await Promise.all([
-    buildMobileSiteRoutes(),
-    buildPcSiteRoutes()
-  ])
+	await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
 
 	const config = getDevConfig()
 	const { port } = config.devServer

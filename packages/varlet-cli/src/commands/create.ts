@@ -2,12 +2,7 @@ import logger from '../shared/logger'
 import { accessProperty, bigCamelize, camelize } from '../shared/fsUtils'
 import { mkdirs, pathExistsSync, writeFile } from 'fs-extra'
 import { resolve } from 'path'
-import {
-	DOCS_DIR_NAME,
-	EXAMPLE_DIR_NAME,
-	SRC_DIR,
-	TESTS_DIR_NAME,
-} from '../shared/constant'
+import { DOCS_DIR_NAME, EXAMPLE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from '../shared/constant'
 import { getVarletConfig } from '../config/varlet.config'
 
 export async function create(name: string) {
@@ -83,12 +78,7 @@ export default defineComponent({
 		logger.error('component directory is existed')
 		return
 	}
-	await Promise.all([
-		mkdirs(componentDir),
-		mkdirs(testsDir),
-		mkdirs(exampleDir),
-		mkdirs(docsDir),
-	])
+	await Promise.all([mkdirs(componentDir), mkdirs(testsDir), mkdirs(exampleDir), mkdirs(docsDir)])
 	await Promise.all([
 		writeFile(resolve(componentDir, `${bigCamelize(name)}.vue`), vueTemplate),
 		writeFile(resolve(componentDir, 'index.ts'), indexTemplate),

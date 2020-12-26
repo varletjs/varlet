@@ -100,7 +100,7 @@ ${modules === 'cjs' ? cssRequires : cssImports}
 	const umdTemplate = `\
 ${modules === 'cjs' ? requires : imports}\n
 ${install}
-${cssImports}
+${modules === 'cjs' ? cssRequires : cssImports}\n
 ${modules === 'cjs' ? cjsExports : esExports}
 `
 

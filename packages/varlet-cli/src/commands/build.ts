@@ -3,13 +3,13 @@ import logger from '../shared/logger'
 import { buildMobileSiteRoutes, buildPcSiteRoutes } from '../compiler/compileRoutes'
 import { getBuildConfig } from '../config/webpack.build.config'
 import { setProd } from '../shared/env'
-import { pathExistsSync, writeFileSync } from 'fs-extra'
 import { VARLET_CONFIG } from '../shared/constant'
+import { ensureConfigFile } from '../shared/fsUtils'
 
 export async function build() {
 	setProd()
 
-	!pathExistsSync(VARLET_CONFIG) && writeFileSync(VARLET_CONFIG, 'module.exports = {}')
+	ensureConfigFile(VARLET_CONFIG)
 
 	await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
 
