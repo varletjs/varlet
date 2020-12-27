@@ -17,9 +17,8 @@ export default {
 	watch: {
 		$route(this: any, to: any) {
 			const index = to.path.lastIndexOf('/')
-			const componentName = to.path.slice(index + 1)
-			this.componentName =
-				componentName[0]?.toUpperCase() + componentName.slice(1)
+			const componentName = to.path.slice(index + 1).replace(/-([a-z])/g, (all, i) => i.toUpperCase())
+			this.componentName = componentName[0]?.toUpperCase() + componentName.slice(1)
 		},
 	},
 }
