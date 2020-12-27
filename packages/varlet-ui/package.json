@@ -37,6 +37,6 @@
   },
   "gitHead": "42554856ff028f6f411a35f468e0f763978270b0",
   "dependencies": {
-    "@varlet/icons": "^7.0.0"
+    "@varlet/icons": "^0.7.0"
   }
 }
