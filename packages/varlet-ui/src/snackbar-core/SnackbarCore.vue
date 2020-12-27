@@ -64,7 +64,7 @@ export default defineComponent({
 			() => {
 				clearTimeout(timer.value)
 				timer.value = setTimeout(() => {
-					props['onUpdate:show'] && props['onUpdate:show'](false)
+					props['onUpdate:show']?.(false)
 				}, props.duration)
 			}
 		)
@@ -73,7 +73,7 @@ export default defineComponent({
 			if (props.show) {
 				props.onOpen && props.onOpen()
 				timer.value = setTimeout(() => {
-					props['onUpdate:show'] && props['onUpdate:show'](false)
+					props['onUpdate:show']?.(false)
 				}, props.duration)
 			}
 		})
