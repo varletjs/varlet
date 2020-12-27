@@ -68,6 +68,13 @@ module.exports = {
 				},
 				doc: 'progress',
 			},
+			{
+				text: {
+					zh_CN: 'PullRefresh 下拉刷新',
+					en_US: 'PullRefresh',
+				},
+				doc: 'pull-refresh',
+			},
 		],
 		language: 'zh_CN',
 	},
