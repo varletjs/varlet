@@ -9,12 +9,7 @@
 		<div class="progress-demo__style">
 			<app-type>不同样式</app-type>
 			<var-progress :value="30" line-width="8" />
-			<var-progress
-				:value="60"
-				line-width="10"
-				color="purple"
-				track-color="#dec3e6"
-			/>
+			<var-progress :value="60" line-width="10" color="purple" track-color="#dec3e6" />
 			<var-progress :value="80" line-width="10" ripple />
 		</div>
 
@@ -36,98 +31,47 @@
 			<app-type>不同尺寸</app-type>
 			<div class="progress-demo__circle">
 				<var-progress :value="30" line-width="3" mode="circle" />
-				<var-progress :value="50" line-width="3" size="56" mode="circle" />
-				<var-progress :value="70" line-width="3" size="72" mode="circle" />
+				<var-progress :value="50" line-width="3" :size="56" mode="circle" />
+				<var-progress :value="70" line-width="3" :size="72" mode="circle" />
 			</div>
 		</div>
 
 		<div>
 			<app-type>不同样式</app-type>
 			<div class="progress-demo__circle">
-				<var-progress :value="30" line-width="5" size="56" mode="circle" />
-				<var-progress :value="50" line-width="12" size="56" mode="circle" />
-				<var-progress
-					:value="70"
-					line-width="8"
-					size="56"
-					mode="circle"
-					color="purple"
-					track-color="#dec3e6"
-				/>
+				<var-progress :value="30" line-width="5" :size="56" mode="circle" />
+				<var-progress :value="50" line-width="12" :size="56" mode="circle" />
+				<var-progress :value="70" line-width="8" :size="56" mode="circle" color="purple" track-color="#dec3e6" />
 			</div>
 		</div>
 
 		<div>
 			<app-type>显示标签</app-type>
 			<div class="progress-demo__circle">
-				<var-progress
-					:value="30"
-					line-width="5"
-					size="56"
-					mode="circle"
-					show-action
-				/>
-				<var-progress
-					:value="value"
-					line-width="5"
-					size="56"
-					mode="circle"
-					show-action
-				/>
-				<var-progress
-					:value="100"
-					line-width="5"
-					size="56"
-					mode="circle"
-					show-action
-				>
-					success
-				</var-progress>
+				<var-progress :value="30" line-width="5" :size="56" mode="circle" show-action />
+				<var-progress :value="value" line-width="5" :size="56" mode="circle" show-action />
+				<var-progress :value="100" line-width="5" :size="56" mode="circle" show-action> success </var-progress>
 			</div>
 		</div>
 
 		<div>
 			<app-type>不同原点</app-type>
 			<div class="progress-demo__circle">
-				<var-progress :value="value" line-width="5" size="56" mode="circle" />
-				<var-progress
-					:value="value"
-					line-width="5"
-					size="56"
-					mode="circle"
-					:rotate="90"
-				/>
-				<var-progress
-					:value="value"
-					line-width="5"
-					size="56"
-					mode="circle"
-					:rotate="180"
-				/>
+				<var-progress :value="value" line-width="5" :size="56" mode="circle" />
+				<var-progress :value="value" line-width="5" :size="56" mode="circle" :rotate="90" />
+				<var-progress :value="value" line-width="5" :size="56" mode="circle" :rotate="180" />
 			</div>
 		</div>
 
 		<div>
 			<app-type>隐藏轨道</app-type>
 			<div class="progress-demo__circle">
-				<var-progress
-					:value="30"
-					line-width="3"
-					mode="circle"
-					:show-track="false"
-				/>
-				<var-progress
-					:value="50"
-					line-width="5"
-					size="56"
-					mode="circle"
-					:show-track="false"
-					show-action
-				/>
+				<var-progress :value="30" line-width="3" mode="circle" :show-track="false" />
+				<var-progress :value="50" line-width="5" :size="56" mode="circle" :show-track="false" show-action />
 				<var-progress
 					:value="value"
 					line-width="8"
-					size="72"
+					:size="72"
 					mode="circle"
 					:show-track="false"
 					show-action
