@@ -1,20 +1,23 @@
 <template>
 	<button
 		v-ripple="{ disabled }"
-		class="var--box var-button var-elevation--2"
+		class="var--box var-button"
 		:class="[
-			`var-button--${type}`,
 			`var-button--${size}`,
-			block ? 'var--flex' : 'var--inline-flex',
-			round ? 'var-button--round' : null,
+			block ? 'var--flex' : null,
 			disabled ? 'var-button--disabled' : null,
+			plain ? `var-button--plain-${type}` : `var-button--${type}`,
+			plain ? 'var-button--plain' : 'var-elevation--2',
+			round ? 'var-button--round' : null,
+			outline ? 'var-button--outline' : null,
 		]"
 		:style="{
 			color: color,
 			background: background,
 		}"
 		:disabled="disabled"
-		@click="trigger"
+		@click="handleClick"
+		@touchstart="handleTouchstart"
 	>
 		<var-loading :type="loadingType" :size="loadingSize" v-if="loading" />
 		<slot v-else />
@@ -35,16 +38,25 @@ export default defineComponent({
 	directives: { Ripple },
 	props,
 	setup(props) {
-    const trigger = () => {
-      if (props.loading) {
-        return
-      }
+		const handleClick = (event: Event) => {
+			if (props.loading || props.disabled) {
+				return
+			}
 
-      props.onClick?.()
-    }
+			props.onClick?.(event)
+		}
+
+		const handleTouchstart = (event: Event) => {
+			if (props.loading || props.disabled) {
+				return
+			}
+
+			props.onTouchstart?.(event)
+		}
 
 		return {
-      trigger
+			handleClick,
+			handleTouchstart,
 		}
 	},
 })

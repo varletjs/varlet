@@ -4,20 +4,21 @@
 
 @button-border-radius: 4px;
 
-@button-normal-padding: 10px 16px;
-@button-large-padding: 13px 23px;
-@button-small-padding: 7px 12px;
-@button-mini-padding: 4.5px 10px;
-@button-round-padding: 7px;
+@button-normal-padding: 9px 15px;
+@button-large-padding: 12px 22px;
+@button-small-padding: 6px 11px;
+@button-mini-padding: 3.5px 9px;
+@button-round-padding: 6px;
 
 @button-disabled-color: rgba(0,0,0,.26);
 @button-disabled-background-color: rgba(0,0,0,.12);
 
 .var-button {
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   outline: none;
-  border: none;
+  border: thin solid transparent;
   line-height: 1.2;
   border-radius: @button-border-radius;
   user-select: none;
@@ -31,7 +32,8 @@
       0 3px 14px 2px @shadow-key-ambient-opacity
   }
 
-  &--plain {
+  &--default {
+    color: inherit;
     background-color: @color-background-base;
   }
 
@@ -58,6 +60,30 @@
   &--danger {
     color: #fff;
     background-color: @color-danger;
+  }
+
+  &--plain-default {
+    color: inherit;
+  }
+
+  &--plain-primary {
+    color: @color-primary;
+  }
+
+  &--plain-info {
+    color: @color-info;
+  }
+
+  &--plain-success {
+    color: @color-success;;
+  }
+
+  &--plain-warning {
+    color: @color-warning;
+  }
+
+  &--plain-danger {
+    color: @color-danger;
   }
 
   &--normal {
@@ -88,5 +114,17 @@
   &--disabled {
     background-color: @button-disabled-background-color;
     color: @button-disabled-color;
+  }
+
+  &--outline {
+    border: thin solid currentColor;
+  }
+
+  &--plain {
+    background-color: transparent;
+
+    &:active {
+      box-shadow: none;
+    }
   }
 }

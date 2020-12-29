@@ -18,8 +18,7 @@ export default {
 		$route(this: any, to: any) {
 			const index = to.path.lastIndexOf('/')
 			const componentName = to.path.slice(index + 1)
-			this.componentName =
-				componentName[0]?.toUpperCase() + componentName.slice(1)
+			this.componentName = componentName[0]?.toUpperCase() + componentName.slice(1)
 		},
 	},
 }
@@ -32,6 +31,11 @@ body {
 	background: white;
 	min-height: 100%;
 	font-family: '微软雅黑 Light', sans-serif;
+}
+
+::-webkit-scrollbar {
+	width: 0;
+	background: transparent;
 }
 
 header {

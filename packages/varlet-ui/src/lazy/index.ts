@@ -24,9 +24,10 @@ type Lazy = LazyOptions & {
 	arg: string | undefined
 	currentAttempt: number
 	attemptLock: boolean
+	state: 'pending' | 'success' | 'error'
 }
 
-type LazyHTMLElement = HTMLElement & { _lazy: Lazy }
+export type LazyHTMLElement = HTMLElement & { _lazy: Lazy }
 
 type ListenTarget = Window | HTMLElement
 
@@ -35,7 +36,7 @@ const LAZY_LOADING = 'lazy-loading'
 const LAZY_ERROR = 'lazy-error'
 const LAZY_ATTEMPT = 'lazy-attempt'
 const EVENTS = ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend', 'touchmove']
-const PIXEL = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
+export const PIXEL = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
 
 const lazyElements: LazyHTMLElement[] = []
 
@@ -43,7 +44,7 @@ let listenTargets: ListenTarget[] = []
 
 const imageCache: CacheInstance<string> = createCache<string>(100)
 
-let defaultLazyOptions: LazyOptions = {
+export const defaultLazyOptions: LazyOptions = {
 	loading: PIXEL,
 	error: PIXEL,
 	attempt: 3,
@@ -76,6 +77,8 @@ function setError(el: LazyHTMLElement) {
 		}
 	}
 
+	el._lazy.state = 'error'
+
 	clear(el)
 	!useIntersectionObserverAPI && checkAll()
 }
@@ -84,6 +87,8 @@ function setSuccess(el: LazyHTMLElement, attemptSRC: string) {
 	el._lazy.arg === BACKGROUND_IMAGE_ARG_NAME
 		? (el.style.backgroundImage = `url(${attemptSRC})`)
 		: el.setAttribute('src', attemptSRC)
+
+	el._lazy.state = 'success'
 
 	clear(el)
 	!useIntersectionObserverAPI && checkAll()
@@ -110,7 +115,7 @@ function unbindEvents() {
 	listenTargets = []
 }
 
-function mergeLazyOptions(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
+function updateLazyOptions(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
 	const lazyInnerOptions: LazyOptions = {
 		loading: el.getAttribute(LAZY_LOADING) ?? defaultLazyOptions.loading,
 		error: el.getAttribute(LAZY_ERROR) ?? defaultLazyOptions.error,
@@ -121,6 +126,7 @@ function mergeLazyOptions(el: LazyHTMLElement, binding: DirectiveBinding<string>
 		src: binding.value,
 		arg: binding.arg,
 		currentAttempt: 0,
+		state: 'pending',
 		attemptLock: false,
 		...lazyInnerOptions,
 	}
@@ -202,7 +208,7 @@ function diff(el: LazyHTMLElement, binding: DirectiveBinding<string>): boolean {
 function mounted(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
 	!el.getAttribute('src') && el.setAttribute('src', PIXEL)
 
-	mergeLazyOptions(el, binding)
+	updateLazyOptions(el, binding)
 
 	if (useIntersectionObserverAPI) {
 		observe(el)
@@ -227,12 +233,21 @@ function updated(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
 		: null
 }
 
+function mergeLazyOptions(lazyOptions: LazyOptions) {
+	defaultLazyOptions.events = lazyOptions.events ?? defaultLazyOptions.events
+	defaultLazyOptions.loading = lazyOptions.loading ?? defaultLazyOptions.loading
+	defaultLazyOptions.error = lazyOptions.error ?? defaultLazyOptions.error
+	defaultLazyOptions.attempt = lazyOptions.attempt ?? defaultLazyOptions.attempt
+	defaultLazyOptions.throttleWait = lazyOptions.throttleWait ?? defaultLazyOptions.throttleWait
+	defaultLazyOptions.filter = lazyOptions.filter
+}
+
 const Lazy: Directive & Plugin = {
 	mounted,
 	unmounted,
 	updated,
 	install(app: App, lazyOptions: LazyOptions) {
-		defaultLazyOptions = { ...defaultLazyOptions, ...lazyOptions }
+		mergeLazyOptions(lazyOptions)
 
 		checkAllWithThrottle = throttle(checkAll, defaultLazyOptions.throttleWait)
 

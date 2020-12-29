@@ -1,5 +1,5 @@
 import { pickProps } from '../utils/components'
-import { props as loadingProps } from '../loading/propsEmits'
+import { props as loadingProps } from '../loading/props'
 
 export function positionValidator(type: string): boolean {
 	const validPositions = ['top', 'center', 'bottom']

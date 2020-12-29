@@ -8,12 +8,7 @@ import { Skeleton } from '@varlet/ui'
 export default defineComponent({
   components: { 
     [Skeleton.name]: Skeleton,
-  },
-  setup() {
-    const loading: Ref<boolean> = ref(true)
-
-    return { loading }
-  },
+  }
 })
 ```
 
