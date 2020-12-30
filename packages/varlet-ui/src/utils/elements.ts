@@ -1,48 +1,48 @@
-export function getTop(element: HTMLElement): number {
-  const { top } = element.getBoundingClientRect()
+import { isUndef } from './shared'
 
-  return top + (document.body.scrollTop || document.documentElement.scrollTop)
+export function getTop(element: HTMLElement): number {
+	const { top } = element.getBoundingClientRect()
+
+	return top + (document.body.scrollTop || document.documentElement.scrollTop)
 }
 
 export function getLeft(element: HTMLElement): number {
-  return element.getBoundingClientRect().left
+	return element.getBoundingClientRect().left
 }
 
 export function inViewport(element: HTMLElement) {
-  const { top, bottom, left, right } = element.getBoundingClientRect()
+	const { top, bottom, left, right } = element.getBoundingClientRect()
 
-  const xInViewport = left < window.innerWidth && right > 0
-  const yInViewport = top < window.innerHeight && bottom > 0
+	const xInViewport = left < window.innerWidth && right > 0
+	const yInViewport = top < window.innerHeight && bottom > 0
 
-  return xInViewport && yInViewport
+	return xInViewport && yInViewport
 }
 
-export function getParentScroller(el: HTMLElement) {
-  let element = el
+export function getParentScroller(el: HTMLElement, direction?: 'x' | 'y') {
+	let element = el
 
-  while (element) {
-    if (!element.parentNode) {
-      break
-    }
+	while (element) {
+		if (!element.parentNode) {
+			break
+		}
 
-    element = element.parentNode as HTMLElement
+		element = element.parentNode as HTMLElement
 
-    if (
-      element === document.body ||
-      element === document.documentElement
-    ) {
-      break
-    }
+		if (element === document.body || element === document.documentElement) {
+			break
+		}
 
-    const { overflow, overflowX, overflowY } = window.getComputedStyle(element)
-    if (
-      /(scroll|auto)/.test(overflow) ||
-      /(scroll|auto)/.test(overflowX) ||
-      /(scroll|auto)/.test(overflowY)
-    ) {
-      return element
-    }
-  }
+		const scrollRE = /(scroll|auto)/
 
-  return window
+		const { overflow, overflowX, overflowY } = window.getComputedStyle(element)
+		const passOverflow = scrollRE.test(overflow)
+		const passOverflowX = (direction === 'x' || isUndef(direction)) && scrollRE.test(overflowX)
+		const passOverflowY = (direction === 'y' || isUndef(direction)) && scrollRE.test(overflowY)
+		if (passOverflow || passOverflowX || passOverflowY) {
+			return element
+		}
+	}
+
+	return window
 }
