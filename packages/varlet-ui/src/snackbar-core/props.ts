@@ -1,21 +1,22 @@
+import { PropType } from 'vue'
 import { pickProps } from '../utils/components'
 import { props as loadingProps } from '../loading/props'
+import { SNACKBAR_TYPE, SnackbarType } from '../snackbar'
 
 export function positionValidator(type: string): boolean {
 	const validPositions = ['top', 'center', 'bottom']
 	return validPositions.includes(type)
 }
 
-export function typeValidator(type: string): boolean {
-	const validPositions = ['loading', 'success', 'warning', 'info', 'error']
-	return validPositions.includes(type)
+export function typeValidator(type: SnackbarType): boolean {
+	return SNACKBAR_TYPE.includes(type)
 }
 
 export const getPositionDefault = () => 'top'
 
 export const props = {
 	type: {
-		type: String,
+		type: String as PropType<SnackbarType>,
 		validator: typeValidator,
 	},
 	// snackbar显示的位置

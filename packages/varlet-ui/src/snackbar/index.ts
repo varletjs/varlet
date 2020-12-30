@@ -58,6 +58,8 @@ interface Snackbar {
 	Component: RendererElement
 }
 
+export const SNACKBAR_TYPE: Array<SnackbarType> = ['loading', 'success', 'warning', 'info', 'error']
+
 const transitionGroupProps: any = {
 	name: 'var-snackbar-fade',
 	tag: 'div',
@@ -72,12 +74,8 @@ const TransitionGroupHost = {
 			const snackbarList = Snackbar.uniqSnackbarOptions.map(
 				({ id, reactiveSnackOptions, _update }: UniqSnackbarOptions) => {
 					if (reactiveSnackOptions.forbidClick) {
-						const transitionGroupEl = document.querySelector(
-							'.var-transition-group'
-						)
-						;(transitionGroupEl as HTMLElement).classList.add(
-							'var-pointer-auto'
-						)
+						const transitionGroupEl = document.querySelector('.var-transition-group')
+						;(transitionGroupEl as HTMLElement).classList.add('var-pointer-auto')
 					}
 					if (Snackbar.isAllowMultiple) reactiveSnackOptions.position = 'top'
 					return h(VarSnackbarCore, {
@@ -111,56 +109,52 @@ const TransitionGroupHost = {
 	},
 }
 
-const Snackbar: Snackbar = <Snackbar>(
-	function (options: SnackbarOptions = {}): SnackbarHandel {
-		const snackOptions: SnackbarOptions = isBaseObject(options) ? options : {}
-		const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>(
-			snackOptions
-		)
-		reactiveSnackOptions.show = true
+const Snackbar: Snackbar = <Snackbar>function (options: SnackbarOptions = {}): SnackbarHandel {
+	const snackOptions: SnackbarOptions = isBaseObject(options) ? options : {}
+	const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>(snackOptions)
+	reactiveSnackOptions.show = true
 
-		if (!Snackbar.isMount) {
-			Snackbar.isMount = true
-			mountInstance(TransitionGroupHost)
-		}
-
-		const id = Date.now()
-		const { length } = Snackbar.uniqSnackbarOptions
-		const uniqSnackbarOptionItem: UniqSnackbarOptions = {
-			id,
-			reactiveSnackOptions,
-		}
-
-		if (length === 0 || Snackbar.isAllowMultiple) {
-			addUniqOption(uniqSnackbarOptionItem)
-		} else {
-			const _update = `update-${id}`
-			updateUniqOption(reactiveSnackOptions, _update)
-		}
-
-		return {
-			clear() {
-				reactiveSnackOptions.show = false
-			},
-		}
+	if (!Snackbar.isMount) {
+		Snackbar.isMount = true
+		mountInstance(TransitionGroupHost)
 	}
-)
 
-;(['success', 'warning', 'info', 'error', 'loading'] as const).forEach(
-	(type) => {
-		Snackbar[type] = (options: SnackbarOptions | string): SnackbarHandel => {
-			if (typeof options === 'string') {
-				options = {
-					content: options,
-					type,
-				}
-			} else {
-				options.type = type
+	const id = Date.now()
+	const { length } = Snackbar.uniqSnackbarOptions
+	const uniqSnackbarOptionItem: UniqSnackbarOptions = {
+		id,
+		reactiveSnackOptions,
+	}
+
+	if (length === 0 || Snackbar.isAllowMultiple) {
+		addUniqOption(uniqSnackbarOptionItem)
+	} else {
+		const _update = `update-${id}`
+		updateUniqOption(reactiveSnackOptions, _update)
+	}
+
+	return {
+		clear() {
+			if (!Snackbar.isAllowMultiple && Snackbar.uniqSnackbarOptions.length)
+				Snackbar.uniqSnackbarOptions[0].reactiveSnackOptions.show = false
+			else reactiveSnackOptions.show = false
+		},
+	}
+}
+
+SNACKBAR_TYPE.forEach((type) => {
+	Snackbar[type] = (options: SnackbarOptions | string): SnackbarHandel => {
+		if (typeof options === 'string') {
+			options = {
+				content: options,
+				type,
 			}
-			return Snackbar(options)
+		} else {
+			options.type = type
 		}
+		return Snackbar(options)
 	}
-)
+})
 
 Snackbar.install = function (app: App) {
 	app.component(VarSnackbar.name, VarSnackbar)
@@ -184,12 +178,10 @@ Snackbar.uniqSnackbarOptions = reactive<UniqSnackbarOptions[]>([])
 Snackbar.Component = VarSnackbar
 
 function removeUniqOption(element: HTMLElement): void {
-	element.parentElement &&
-		element.parentElement.classList.remove('var-pointer-auto')
+	element.parentElement && element.parentElement.classList.remove('var-pointer-auto')
 	const id = element.getAttribute('data-id')
 	for (let i = 0; i < Snackbar.uniqSnackbarOptions.length; i++) {
-		if (Snackbar.uniqSnackbarOptions[i].id === +(id as string))
-			Snackbar.uniqSnackbarOptions.splice(i, 1)
+		if (Snackbar.uniqSnackbarOptions[i].id === +(id as string)) Snackbar.uniqSnackbarOptions.splice(i, 1)
 	}
 }
 
@@ -197,10 +189,7 @@ function addUniqOption(uniqSnackbarOptionItem: UniqSnackbarOptions) {
 	Snackbar.uniqSnackbarOptions.push(uniqSnackbarOptionItem)
 }
 
-function updateUniqOption(
-	reactiveSnackOptions: SnackbarOptions,
-	_update: string
-) {
+function updateUniqOption(reactiveSnackOptions: SnackbarOptions, _update: string) {
 	Snackbar.uniqSnackbarOptions[0].reactiveSnackOptions = {
 		...Snackbar.uniqSnackbarOptions[0].reactiveSnackOptions,
 		...reactiveSnackOptions,
