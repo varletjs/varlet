@@ -14,4 +14,7 @@ export const props = {
 		type: Number,
 		default: 10,
 	},
+	onScroll: {
+		type: Function,
+	},
 }

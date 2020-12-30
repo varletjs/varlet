@@ -9,7 +9,6 @@
 	>
 		<div
 			class="var-sticky__wrapper"
-			ref="scannerEl"
 			:style="{
 				position: isFixed ? 'fixed' : null,
 				left: isFixed ? fixedLeft : null,
@@ -61,8 +60,12 @@ export default defineComponent({
 				fixedTop.value = `${scrollerTop + offsetTop.value}px`
 				fixedLeft.value = `${stickyLeft}px`
 				isFixed.value = true
+
+				props.onScroll?.(offsetTop.value, isFixed.value)
 			} else {
 				isFixed.value = false
+
+				props.onScroll?.(currentOffsetTop, isFixed.value)
 			}
 		}
 

@@ -9,7 +9,7 @@
 		</var-sticky>
 
 		<div class="scroller">
-			<var-sticky style="margin-top: 100px" offset-top="50px">
+			<var-sticky style="margin-top: 100px" offset-top="50px" @scroll="handleScroll">
 				<var-button>50px</var-button>
 			</var-sticky>
 			<div class="i"></div>
@@ -27,6 +27,14 @@ export default defineComponent({
 	components: {
 		[Sticky.name]: Sticky,
 		[Button.name]: Button,
+	},
+	setup() {
+		return {
+			handleScroll(top, isFixed) {
+				console.log(top)
+				console.log(isFixed)
+			},
+		}
 	},
 })
 </script>
