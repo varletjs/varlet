@@ -46,3 +46,34 @@ export function getParentScroller(el: HTMLElement, direction?: 'x' | 'y') {
 
 	return window
 }
+
+export function isPx(value: unknown) {
+	if (typeof value === 'number') {
+		return true
+	}
+	return typeof value === 'string' && value.endsWith('px')
+}
+
+export function isRem(value: unknown) {
+	if (typeof value === 'number') {
+		return false
+	}
+
+	return typeof value === 'string' && value.endsWith('rem')
+}
+
+export function formatPx(value: string | number) {
+	return typeof value === 'number' ? value : +value.replace('px', '')
+}
+
+export function remToPx(rem: string | number): number {
+	if (typeof rem === 'number') {
+		return rem
+	}
+
+	const value = +rem.replace('rem', '')
+
+	const rootFontSize = window.getComputedStyle(document.documentElement).fontSize
+
+	return value * parseFloat(rootFontSize)
+}
