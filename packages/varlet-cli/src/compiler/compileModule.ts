@@ -11,7 +11,7 @@ import webpack, { Stats } from 'webpack'
 import logger from '../shared/logger'
 
 export function compileUMD() {
-	return new Promise((resolve, reject) => {
+	return new Promise<void>((resolve, reject) => {
 		setProd()
 		const config = getUmdConfig()
 

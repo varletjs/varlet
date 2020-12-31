@@ -9,10 +9,6 @@ export const isString = (val: unknown): val is string => typeof val === 'string'
 
 export const isBaseObject = (val: unknown) => Object.prototype.toString.call(val) === '[object Object]'
 
-export const isDef = (val: unknown): boolean => val !== null && val !== undefined
-
-export const isUndef = (val: unknown): boolean => val === null || val === undefined
-
 export const removeItem = (arr: Array<unknown>, item: unknown) => {
 	if (arr.length) {
 		const index: number = arr.indexOf(item)

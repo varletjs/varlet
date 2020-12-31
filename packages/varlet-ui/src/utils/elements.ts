@@ -1,5 +1,3 @@
-import { isUndef } from './shared'
-
 export function getTop(element: HTMLElement): number {
 	const { top } = element.getBoundingClientRect()
 
@@ -37,8 +35,8 @@ export function getParentScroller(el: HTMLElement, direction?: 'x' | 'y') {
 
 		const { overflow, overflowX, overflowY } = window.getComputedStyle(element)
 		const passOverflow = scrollRE.test(overflow)
-		const passOverflowX = (direction === 'x' || isUndef(direction)) && scrollRE.test(overflowX)
-		const passOverflowY = (direction === 'y' || isUndef(direction)) && scrollRE.test(overflowY)
+		const passOverflowX = (direction === 'x' || direction == null) && scrollRE.test(overflowX)
+		const passOverflowY = (direction === 'y' || direction == null) && scrollRE.test(overflowY)
 		if (passOverflow || passOverflowX || passOverflowY) {
 			return element
 		}

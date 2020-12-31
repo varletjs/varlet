@@ -1,0 +1,24 @@
+@tabs-width: 100%;
+@tabs-height: 44px;
+@tabs-radius: 2px;
+@tabs-indicator-height: 2px;
+@tabs-indicator-background-color: #fff;
+
+.var-tabs {
+  position: relative;
+  display: flex;
+  width: @tabs-width;
+  height: @tabs-height;
+  border-radius: @tabs-radius;
+  overflow-x: auto;
+
+  &__indicator {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: transform .3s;
+  }
+}

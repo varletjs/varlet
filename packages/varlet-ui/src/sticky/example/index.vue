@@ -30,7 +30,7 @@ export default defineComponent({
 	},
 	setup() {
 		return {
-			handleScroll(top, isFixed) {
+			handleScroll(top: number, isFixed: boolean) {
 				console.log(top)
 				console.log(isFixed)
 			},

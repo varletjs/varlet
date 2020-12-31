@@ -71,7 +71,6 @@
     "lint-staged": "^10.5.0",
     "prettier": "^2.1.2",
     "stylelint": "^13.7.2",
-    "typescript": "^4.0.5",
     "vue": "3.0.2"
   }
 }
