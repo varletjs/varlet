@@ -64,7 +64,7 @@ export const props = {
   textColor: {
     type: String
   },
-//图标样式
+//  图标样式
   iconName: pickProps(iconProps, 'name'),
 //  图标样式
 //   iconType:pickProps(iconProps,'type'),

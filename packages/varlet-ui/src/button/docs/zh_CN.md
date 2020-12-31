@@ -141,4 +141,4 @@ export default defineComponent({
 | 事件名 | 说明 | 回调参数 | 默认值 |
 | ---- | --- | ---- | -----  |
 | click | 点击按钮时触发, 但loading或disabled状态为true时不触发 | event: Event |
-| touchstart | 触摸手指压下按钮时触发, , 但loading或disabled状态为true时不触发 | event: TouchEvent |
+| touchstart | 触摸手指压下按钮时触发 , 但loading或disabled状态为true时不触发 | event: TouchEvent |

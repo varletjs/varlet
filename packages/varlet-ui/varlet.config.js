@@ -75,6 +75,13 @@ module.exports = {
 				},
 				doc: 'pull-refresh',
 			},
+      {
+        text: {
+          zh_CN: 'chip 标签',
+          en_US: 'chip',
+        },
+        doc: 'chip',
+      },
 		],
 		language: 'zh_CN',
 	},

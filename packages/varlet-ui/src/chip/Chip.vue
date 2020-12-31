@@ -16,16 +16,16 @@
 				plain ? `var-chip--plain` : `var-elevation--2`,
 			]"
       :style="{
-        color: textColor ? textColor : plain ? color : null,
-        background: plain ? '#fff' : color,
-        borderColor: plain ? color : color ? color : 'none',
+        color: fontColor,
+        background:background,
+        borderColor: borderColor,
         }"
     >
         <slot name="left"></slot>
 			<slot/>
 			<slot name="right"></slot>
 			<span v-if="closable " class="var-chip--close" @click="$props.onClose">
-        <var-icon :name="`${iconName?iconName:'close-circle'}`"></var-icon>
+        <var-icon :name="`${iconName ? iconName: 'close-circle'}`"></var-icon>
       </span>
 		</span>
   </transition>
@@ -33,7 +33,7 @@
 
 <script lang="ts">
 	import Ripple from '../ripple'
-	import { defineComponent } from 'vue'
+	import { defineComponent, Ref, ref } from 'vue'
 	import { props } from './props'
 	import Icon from '../icon'
 
@@ -45,7 +45,17 @@
 		directives: { Ripple },
 		props,
 		setup(props) {
-			console.log(props)
+			const fontColor: Ref<string|null> = ref(null)
+			const background: Ref<string|null> = ref(null)
+			const borderColor: Ref<string|null> = ref(null)
+			fontColor.value = props.plain ? props.textColor || props.color || null : props.color ? props.textColor || '#fff' : null
+			background.value = !props.plain ? props.color || null : null
+			borderColor.value = props.plain ? props.color || null : null
+			return {
+				fontColor,
+				background,
+				borderColor
+			}
 		}
 	})
 </script>
