@@ -1,9 +1,11 @@
 @import "../styles/elevation";
+@import "../styles/var";
 
 .var-pull-refresh {
-  height: 100%;
   overflow: hidden;
   position: relative;
+  user-select: none;
+
   &__control {
     display: flex;
     width: 40px;
@@ -15,5 +17,24 @@
     position: absolute;
     left: 50%;
     z-index: 90;
+    color: @color-primary;
+
+    .var-icon {
+      font-size: 25px;
+    }
+  }
+
+  &__animation {
+    transform: rotate(0deg);
+    animation: iconRotate .6s infinite linear;
+  }
+
+  @keyframes iconRotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 }

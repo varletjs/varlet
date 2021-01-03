@@ -1,57 +1,56 @@
 <template>
-  <i
-    class="var-icon"
-    :class="[`${namespace}--set`, `${namespace}-${nextName}`, tickTransition ? 'var-icon--hidden' : null]"
-    :style="{
-    color: color,
-		'font-size': size,
-			transition: `transform ${transition}ms`,}"
-    v-bind="$attrs"
-  />
+	<i
+		class="var-icon"
+		:class="[`${namespace}--set`, `${namespace}-${nextName}`, tickTransition ? 'var-icon--hidden' : null]"
+		:style="{
+			transition: `transform ${transition}ms`,
+		}"
+		v-bind="$attrs"
+	/>
 </template>
 
 <script lang="ts">
-	import { defineComponent, watch, ref, Ref, nextTick } from 'vue'
-	import { props } from './props'
+import { defineComponent, watch, ref, Ref, nextTick } from 'vue'
+import { props } from './props'
 
-	export default defineComponent({
-		name: 'VarIcon',
-		inheritAttrs: false,
-		props,
-		setup(props) {
-			const nextName: Ref<string | undefined> = ref('')
-			const tickTransition: Ref<boolean> = ref(false)
+export default defineComponent({
+	name: 'VarIcon',
+	inheritAttrs: false,
+	props,
+	setup(props) {
+		const nextName: Ref<string | undefined> = ref('')
+		const tickTransition: Ref<boolean> = ref(false)
 
-			watch(
-				() => props.name,
-				(newValue: string | undefined, oldValue: string | undefined) => {
-					if (oldValue === undefined) {
-						nextName.value = newValue
-					}
+		watch(
+			() => props.name,
+			(newValue: string | undefined, oldValue: string | undefined) => {
+				if (oldValue === undefined) {
+					nextName.value = newValue
+				}
 
-					tickTransition.value = true
+				tickTransition.value = true
 
-					nextTick().then(() => {
-						setTimeout(() => {
-							if (oldValue !== undefined) {
-								nextName.value = newValue
-							}
+				nextTick().then(() => {
+					setTimeout(() => {
+						if (oldValue !== undefined) {
+							nextName.value = newValue
+						}
 
-							tickTransition.value = false
-						}, props.transition)
-					})
-				},
-				{ immediate: true }
-			)
+						tickTransition.value = false
+					}, props.transition)
+				})
+			},
+			{ immediate: true }
+		)
 
-			return {
-				nextName,
-				tickTransition
-			}
+		return {
+			nextName,
+			tickTransition,
 		}
-	})
+	},
+})
 </script>
 
 <style lang="less">
-  @import './icon';
+@import './icon';
 </style>

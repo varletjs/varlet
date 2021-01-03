@@ -1,16 +1,17 @@
 <template>
-	<var-pull-refresh @refresh="refresh" v-model="isRefresh" success-duration="0">
-		<div>
-			<ul>
-				<li v-for="(item, index) in data" :key="index">{{ item }}</li>
-			</ul>
-		</div>
+	<var-pull-refresh @refresh="refresh" v-model="isRefresh" success-duration="2000">
+		<ul class="pull-refresh__example">
+			<li v-for="(item, index) in data" :key="index">{{ item + ' ' + (index + 1) }}</li>
+		</ul>
 	</var-pull-refresh>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import PullRefresh from '..'
+
+const data1 = Array(10).fill('List Item')
+const data2 = Array(10).fill('This is new List Item')
 
 export default defineComponent({
 	name: 'PullRefreshExample',
@@ -19,13 +20,12 @@ export default defineComponent({
 	},
 	setup() {
 		const isRefresh = ref(true)
-		const data1 = Array(10).fill(123)
-		const data2 = Array(10).fill(456)
 		const data = ref(data1)
+
 		const refresh = () => {
 			isRefresh.value = true
 			setTimeout(() => {
-				data.value = data.value[0] === 123 ? data2 : data1
+				data.value = data.value[0] === 'List Item' ? data2 : data1
 				isRefresh.value = false
 			}, 2000)
 		}
@@ -39,8 +39,21 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-.example {
-	background: antiquewhite;
+<style lang="less" scoped>
+.pull-refresh__example {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		min-height: 40px;
+		line-height: 40px;
+		padding: 0 16px;
+		border-bottom: 1px solid #ccc;
+
+		&:first-child {
+			border-top: 1px solid #ccc;
+		}
+	}
 }
 </style>

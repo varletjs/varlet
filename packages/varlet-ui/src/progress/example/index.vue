@@ -1,6 +1,6 @@
 <template>
 	<div class="progress-demo">
-		<h3>线性进度条</h3>
+		<h4>线性进度条</h4>
 		<div class="progress-demo__basic">
 			<app-type>基本使用</app-type>
 			<var-progress :value="20" />
@@ -26,7 +26,7 @@
 			<var-progress :value="60" show-action style="color: #72c140" />
 		</div>
 
-		<h3>环形进度条</h3>
+		<h4>环形进度条</h4>
 		<div>
 			<app-type>不同尺寸</app-type>
 			<div class="progress-demo__circle">
@@ -115,7 +115,7 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .progress-demo {
-	h3 {
+	h4 {
 		margin: 0;
 	}
 
