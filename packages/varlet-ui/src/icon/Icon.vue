@@ -3,8 +3,6 @@
 		class="var-icon"
 		:class="[`${namespace}--set`, `${namespace}-${nextName}`, tickTransition ? 'var-icon--hidden' : null]"
 		:style="{
-			color: color,
-			'font-size': size,
 			transition: `transform ${transition}ms`,
 		}"
 		v-bind="$attrs"

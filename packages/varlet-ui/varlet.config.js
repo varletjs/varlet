@@ -1,7 +1,7 @@
 module.exports = {
 	namespace: 'var',
 	title: 'varlet',
-	host: 'localhost',
+	host: '0.0.0.0',
 	port: 8080,
 	pc: {
 		title: 'Varlet 组件库示例',
@@ -74,6 +74,13 @@ module.exports = {
 					en_US: 'PullRefresh',
 				},
 				doc: 'pull-refresh',
+			},
+			{
+				text: {
+					zh_CN: 'chip 标签',
+					en_US: 'chip',
+				},
+				doc: 'chip',
 			},
 		],
 		language: 'zh_CN',

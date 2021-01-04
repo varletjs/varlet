@@ -4,11 +4,18 @@ export function getTop(element: HTMLElement): number {
 	return top + (document.body.scrollTop || document.documentElement.scrollTop)
 }
 
+export function getScrollTop(element: Element | Window): number {
+	const top = 'scrollTop' in element ? element.scrollTop : element.pageYOffset
+
+	// iOS scroll bounce cause minus scrollTop
+	return Math.max(top, 0)
+}
+
 export function getLeft(element: HTMLElement): number {
 	return element.getBoundingClientRect().left
 }
 
-export function inViewport(element: HTMLElement) {
+export function inViewport(element: HTMLElement): boolean {
 	const { top, bottom, left, right } = element.getBoundingClientRect()
 
 	const xInViewport = left < window.innerWidth && right > 0
@@ -17,7 +24,7 @@ export function inViewport(element: HTMLElement) {
 	return xInViewport && yInViewport
 }
 
-export function getParentScroller(el: HTMLElement, direction?: 'x' | 'y') {
+export function getParentScroller(el: HTMLElement, direction?: 'x' | 'y'): HTMLElement | Window {
 	let element = el
 
 	while (element) {
@@ -45,14 +52,14 @@ export function getParentScroller(el: HTMLElement, direction?: 'x' | 'y') {
 	return window
 }
 
-export function isPx(value: unknown) {
+export function isPx(value: unknown): boolean {
 	if (typeof value === 'number') {
 		return true
 	}
 	return typeof value === 'string' && value.endsWith('px')
 }
 
-export function isRem(value: unknown) {
+export function isRem(value: unknown): boolean {
 	if (typeof value === 'number') {
 		return false
 	}

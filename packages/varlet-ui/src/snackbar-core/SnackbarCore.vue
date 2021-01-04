@@ -1,11 +1,6 @@
 <template>
 	<div class="var-snackbar" :style="{ pointerEvents: forbidClick ? 'auto' : 'none' }" v-show="show">
-		<div
-			:class="`var-snackbar__wrapper var-snackbar__wrapper-${position} var-elevation--4 ${
-				vertical ? 'var-snackbar__vertical' : ''
-			}`"
-			:style="snackbarStyle"
-		>
+		<div :class="snackbarClass" :style="snackbarStyle">
 			<div :class="`var-snackbar__content${contentClass ? ` ${contentClass}` : ''}`">
 				<var-loading :type="loadingType" :size="loadingSize" v-if="type === 'loading'" />
 				<slot>
@@ -13,9 +8,10 @@
 				</slot>
 			</div>
 			<div class="var-snackbar__action">
-				<var-button type="primary" size="small" v-if="['success', 'error', 'info', 'warning'].includes(type)">
-					{{ type }}
-				</var-button>
+				<var-icon v-if="type === 'success'" name="checkbox-marked-circle"></var-icon>
+				<var-icon v-if="type === 'warning'" name="warning"></var-icon>
+				<var-icon v-if="type === 'info'" name="information"></var-icon>
+				<var-icon v-if="type === 'error'" name="error"></var-icon>
 				<slot name="action"></slot>
 			</div>
 		</div>
@@ -23,18 +19,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, watch, ref, Ref, onMounted } from 'vue'
+import { defineComponent, reactive, watch, ref, Ref, onMounted, computed } from 'vue'
 import Loading from '../loading'
 import Button from '../button'
+import Icon from '../icon'
 import { useZIndex } from '../context/zIndex'
 import { props } from './props'
 import { useLock } from '../context/lock'
+import { SNACKBAR_TYPE } from '../snackbar'
 
 export default defineComponent({
 	name: 'VarSnackbarCore',
 	components: {
 		[Loading.name]: Loading,
 		[Button.name]: Button,
+		[Icon.name]: Icon,
 	},
 	props,
 	setup(props) {
@@ -45,7 +44,13 @@ export default defineComponent({
 		const snackbarStyle = reactive({
 			zIndex,
 		})
-
+		const snackbarClass = computed(() => {
+			const { position, vertical, type } = props
+			const baseClass = `var-snackbar__wrapper var-snackbar__wrapper-${position} var-elevation--4`
+			const verticalClass = vertical ? ' var-snackbar__vertical' : ''
+			const typeClass = type && SNACKBAR_TYPE.includes(type) ? ` var-snackbar__wrapper-${type}` : ''
+			return `${baseClass}${verticalClass}${typeClass}`
+		})
 		watch(
 			() => props.show,
 			(show) => {
@@ -79,6 +84,7 @@ export default defineComponent({
 		})
 		return {
 			snackbarStyle,
+			snackbarClass,
 		}
 	},
 })

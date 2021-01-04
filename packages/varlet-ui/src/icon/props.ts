@@ -2,14 +2,14 @@ export const props = {
 	name: {
 		type: String,
 	},
-	color: {
-		type: String,
-		default: 'inherit',
-	},
-	size: {
-		type: String,
-		default: 'inherit',
-	},
+  color: {
+    type: String,
+    default: 'inherit',
+  },
+  size: {
+    type: String,
+    default: 'inherit',
+  },
 	namespace: {
 		type: String,
 		default: 'var-icon',

@@ -3,10 +3,10 @@
 @chip-border-radius: 2px;
 @chip-padding: 0px 4px;
 @chip-line-height: 32px;
-@chip-normal-padding: 4px 13px;
-@chip-large-padding: 5px 13px;
-@chip-small-padding: 3px 13px;
-@chip-mini-padding: 1px 13px;
+@chip-normal-padding: 8px 15px;
+@chip-large-padding: 11px 22px;
+@chip-small-padding: 5px 11px;
+@chip-mini-padding: 1px 9px;
 
 .var {
   &-fade-leave-to {
@@ -19,70 +19,80 @@
 }
 
 .var-chip {
-  font-family: Roboto,sans-serif;
-  border-width: 1px;
-  border-style: solid;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Roboto, sans-serif;
   border-radius: @chip-border-radius;
   cursor: default;
+  border: thin solid transparent;
   vertical-align: middle;
+  line-height: 1;
+
+  &--default {
+    color: inherit;
+    background: @color-background-base;
+  }
 
   &--primary {
-    border-color: @color-primary;
+    color: #fff;
     background-color: @color-primary;
   }
 
   &--info {
-    border-color: @color-info;
+    color: #fff;
     background-color: @color-info;
   }
 
   &--success {
-    border-color: @color-success;
+    color: #fff;
     background-color: @color-success;
   }
 
   &--warning {
-    border-color: @color-warning;
+    color: #fff;
     background-color: @color-warning;
   }
 
   &--danger {
-    border-color: @color-danger;
+    color: #fff;
     background-color: @color-danger;
   }
 
-  &--hollow&--primary {
-    background-color: #fff;
-    color: @color-primary;
-    border-color: @color-primary;
+  &--plain {
+    background-color: transparent;
+
+    &:active {
+      box-shadow: none;
+    }
   }
 
-  &--hollow&--plain {
-    background-color: #fff;
-    color: #999;
+  &--plain-default {
+    color: inherit;
     border-color: currentColor;
   }
 
-  &--hollow&--info {
-    background-color: #fff;
+  &--plain-primary {
+    color: @color-primary;
+    border-color: currentColor;
+  }
+
+  &--plain-info {
     color: @color-info;
     border-color: currentColor;
   }
 
-  &--hollow {
-    background-color: #fff;
+  &--plain-success {
     color: @color-success;
     border-color: currentColor;
   }
 
-  &--hollow&--warning {
-    background-color: #fff;
+  &--plain-warning {
     color: @color-warning;
     border-color: currentColor;
   }
 
-  &--hollow&--danger {
-    background-color: #fff;
+  &--plain-danger {
     color: @color-danger;
     border-color: currentColor;
   }
@@ -114,6 +124,12 @@
   &--close {
     margin-left: 4px;
     cursor: pointer;
+  }
+  &--left{
+    margin-right: 4px;
+  }
+  &--right{
+    margin-left: 4px;
   }
 
 }

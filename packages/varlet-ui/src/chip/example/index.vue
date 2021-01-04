@@ -1,87 +1,74 @@
 <template>
-  <div class="example">
-    <div>标签类型</div>
-    <div class="example-inner">
-      <var-chip>default chip</var-chip>
-      <var-chip type="primary">primary</var-chip>
-      <var-chip type="info">info</var-chip>
-      <var-chip type="success">success</var-chip>
-      <var-chip type="warning">warning</var-chip>
-      <var-chip type="danger">danger</var-chip>
-    </div>
-    <div>标签大小</div>
-    <div>
-      <var-chip type="primary" size="large">标签</var-chip>
-      <var-chip type="primary">标签</var-chip>
-      <var-chip type="primary" size="small">标签</var-chip>
-      <var-chip type="primary" size="mini">标签</var-chip>
-    </div>
-    <div>空心标签</div>
-    <div>
-      <var-chip hollow>标签</var-chip>
-      <var-chip type="primary" hollow>标签</var-chip>
-      <var-chip type="info" hollow>标签</var-chip>
-      <var-chip type="success" hollow>标签</var-chip>
-      <var-chip type="warning" hollow>标签</var-chip>
-      <var-chip type="danger" hollow>标签</var-chip>
-    </div>
-    <div>圆角标签</div>
-    <div>
-      <var-chip round>标签</var-chip>
-      <var-chip type="primary" round>标签</var-chip>
-      <var-chip type="info" round>标签</var-chip>
-      <var-chip type="warning" round>标签</var-chip>
-      <var-chip type="success" round>标签</var-chip>
-      <var-chip type="danger" round>标签</var-chip>
-    </div>
+  <app-type class="example">
+    <app-type>主题色标签</app-type>
+    <var-chip type="primary">主要标签</var-chip>
+    <var-chip type="success">成功标签</var-chip>
+    <var-chip type="danger">危险标签</var-chip>
+    <var-chip type="warning">警告标签</var-chip>
+    <var-chip type="info">信息标签</var-chip>
+    <var-chip>默认标签</var-chip>
+    <app-type>空心样式标签</app-type>
 
-    <div>可关闭标签</div>
-    <div>
-      <var-chip type="primary" paralyse v-if="show" @close="show=false">标签</var-chip>
-      <var-chip type="primary" hollow paralyse v-if="show1" @close="show1=false">标签</var-chip>
-      <var-chip type="primary" paralyse v-if="show2" @close="show2=false" round>标签</var-chip>
-      <var-chip type="primary" paralyse v-if="show4" @close="show4=false" close-icon="=">标签</var-chip>
-      <var-chip type="primary" paralyse size="mini" v-if="show3" @close="show3=false">标签</var-chip>
-    </div>
+    <var-chip plain type="primary">空心标签</var-chip>
 
-    <div>自定义颜色标签</div>
-    <div>
-      <var-chip color="#7232dd">标签</var-chip>
-      <var-chip color="#7232dd" hollow>标签</var-chip>
-      <var-chip color="#faecd8" textcolor="#e6a23c" hollow>标签</var-chip>
-      <var-chip color="#faecd8" textcolor="#e6a23c">标签</var-chip>
-      <var-chip color="#faecd8" textcolor="#e6a23c" paralyse v-if="show6" @close="show6=false">标签</var-chip>
-      <var-chip color="#faecd8" textcolor="#e6a23c" hollow paralyse v-if="show5" @close="show5=false"> 标签</var-chip>
+    <app-type>非圆角标签</app-type>
+    <var-chip :round="false" type="primary">非圆角标签</var-chip>
 
+    <app-type>标签尺寸</app-type>
+    <var-chip size="large">大标签</var-chip>
+    <var-chip>中等标签</var-chip>
+    <var-chip size="small">小标签</var-chip>
+    <var-chip size="mini">迷你标签</var-chip>
+    <app-type>块级标签</app-type>
+    <var-chip type="primary" block>块级标签</var-chip>
+    <var-chip type="primary">块级标签</var-chip>
 
-    </div>
-    <div>添加插槽</div>
-    <div>
-      <var-chip type="primary">
-        <template #left>
-          <span>+</span>
-        </template>
-        标签
-      </var-chip>
-      <var-chip type="primary">
-        <template #right>
-          <span>-</span>
-        </template>
-        标签
-      </var-chip>
-    </div>
-  </div>
+    <app-type>可关闭标签</app-type>
+    <var-chip closable v-if="show" @close="show = false">可关闭标签</var-chip>
+    <var-chip closable icon-name="delete" v-if="show1" @close="show1 = false">自定义关闭图标</var-chip>
+
+    <app-type>自定义颜色标签</app-type>
+    <var-chip color="#009688">标签</var-chip>
+    <var-chip color="#009688" plain>标签</var-chip>
+    <var-chip color="#faecd8" text-color="#e6a23c" plain>标签</var-chip>
+    <var-chip color="#faecd8" text-color="#e6a23c">标签</var-chip>
+    <app-type>添加左右插槽标签</app-type>
+    <var-chip type="primary" plain>
+      <template #left>
+        <var-icon name="star"></var-icon>
+      </template>
+      左侧插槽
+    </var-chip>
+    <var-chip type="primary" plain>
+      <template #right>
+        <var-icon name="fire"></var-icon>
+      </template>
+      右侧插槽
+    </var-chip>
+    <var-chip type="primary" plain>
+      <template #left>
+        <var-icon name="account-circle"></var-icon>
+      </template>
+      <template #right>
+        <var-icon name="cake-variant"></var-icon>
+      </template>
+      左右两侧插槽
+    </var-chip>
+  </app-type>
 
 </template>
 
 <script lang="ts">
 	import { defineComponent, Ref, ref } from 'vue'
 	import Chip from '..'
+	import Icon from '../../icon'
+	import Snackbar from '../../snackbar'
 
 	export default defineComponent({
 		name: 'ChipExample',
 		components: {
-			[Chip.name]: Chip
+			[Chip.name]: Chip,
+			[Icon.name]: Icon
 		},
 		setup() {
 			const show: Ref<boolean> = ref(true)
@@ -106,10 +93,11 @@
 
 <style scoped>
   .example {
+    padding: 20px;
   }
 
   .var-chip {
-    margin-right: 20px;
-    margin-bottom: 10px;
+    margin-right: 8px;
+    margin-bottom: 8px;
   }
 </style>

@@ -1,30 +1,23 @@
 <template>
 	<div
+		ref="freshNode"
 		class="var-pull-refresh"
 		@touchstart="touchStart"
 		@touchmove="touchMove"
 		@touchend="touchEnd"
-		@touchcancel="
-			{
-				touchEnd
-			}
-		"
+		@touchcancel="touchEnd"
 	>
-		<div
-			class="var-pull-refresh__control var-elevation--2"
-			:style="{
-				transform: `translate3d(0px, ${distance}px, 0px)`,
-				transition: isEnd ? `transform ${animationDuration}ms` : null,
-			}"
-		>
-			{{ textStatus }}
+		<div class="var-pull-refresh__control var-elevation--2" :style="controlStyle">
+			<var-icon :name="iconName" :transition="200" :class="iconClass" />
 		</div>
 		<slot></slot>
 	</div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, computed, watch } from 'vue'
+import { defineComponent, ref, Ref, computed, watch, onMounted } from 'vue'
+import Icon from '../icon'
+import { getParentScroller, getScrollTop } from '../utils/elements'
 import { props } from './props'
 
 type RefreshStatus = 'default' | 'pulling' | 'loosing' | 'loading' | 'success'
@@ -33,15 +26,23 @@ const MAX_DISTANCE = 100
 
 const CONTROL_POSITION = -50
 
+let scroller: HTMLElement | Window = window
+
 export default defineComponent({
 	name: 'VarPullRefresh',
+	components: {
+		[Icon.name]: Icon,
+	},
+	inheritAttrs: false,
 	props,
 	setup(props) {
+		const freshNode: Ref<HTMLElement | null> = ref(null)
+
 		const startPosition: Ref<number> = ref(0)
 
 		const distance: Ref<number> = ref(CONTROL_POSITION)
 
-		const textStatus: Ref<string> = ref('下')
+		const iconName: Ref<string> = ref('arrow-down')
 
 		const refreshStatus: Ref<RefreshStatus> = ref('default')
 
@@ -51,27 +52,42 @@ export default defineComponent({
 			() => refreshStatus.value !== 'loading' && refreshStatus.value !== 'success' && !props.disable
 		)
 
+		const iconClass = computed(() => ({
+			'var-pull-refresh__animation': refreshStatus.value === 'loading',
+		}))
+
+		const controlStyle = computed(() => ({
+			transform: `translate3d(0px, ${distance.value}px, 0px) translate(-50%, 0)`,
+			transition: isEnd.value ? `transform ${props.animationDuration}ms` : null,
+			background: refreshStatus.value === 'success' ? props.successBgColor : props.bgColor,
+			color: refreshStatus.value === 'success' ? props.successColor : props.color,
+		}))
+
 		const touchStart = (event: TouchEvent) => {
 			if (!isTouchable.value) return
 			refreshStatus.value = 'pulling'
 			startPosition.value = event.touches[0].clientY
 		}
 		const touchMove = (event: TouchEvent) => {
-			if (!isTouchable.value || distance.value >= MAX_DISTANCE) return
-			distance.value = (event.touches[0].clientY - startPosition.value) / 2 + CONTROL_POSITION
-			textStatus.value = distance.value >= MAX_DISTANCE * 0.2 ? '放' : '下'
+			const scrollTop = getScrollTop(scroller)
+			if (scrollTop > 0 || !isTouchable.value) return
+			if (scrollTop === 0 && distance.value !== CONTROL_POSITION) event.cancelable && event.preventDefault()
+
+			const moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + CONTROL_POSITION
+
+			distance.value = moveDistance >= MAX_DISTANCE ? MAX_DISTANCE : moveDistance
+			iconName.value = distance.value >= MAX_DISTANCE * 0.2 ? 'refresh' : 'arrow-down'
 		}
 		const touchEnd = () => {
 			if (!isTouchable.value) return
 			isEnd.value = true
 			if (distance.value >= MAX_DISTANCE * 0.2) {
 				refreshStatus.value = 'loading'
-				textStatus.value = '转'
 				distance.value = MAX_DISTANCE * 0.3
 				props.onRefresh?.()
 			} else {
 				refreshStatus.value = 'loosing'
-				textStatus.value = '下'
+				iconName.value = 'arrow-down'
 				distance.value = CONTROL_POSITION
 				setTimeout(() => {
 					isEnd.value = false
@@ -85,10 +101,10 @@ export default defineComponent({
 				if (newValue === false) {
 					isEnd.value = true
 					refreshStatus.value = 'success'
-					textStatus.value = 'ok'
+					iconName.value = 'checkbox-marked-circle'
 					setTimeout(() => {
 						refreshStatus.value = 'default'
-						textStatus.value = '下'
+						iconName.value = 'arrow-down'
 						distance.value = CONTROL_POSITION
 						setTimeout(() => {
 							isEnd.value = false
@@ -97,13 +113,19 @@ export default defineComponent({
 				}
 			}
 		)
+
+		onMounted(() => {
+			scroller = getParentScroller(freshNode.value as HTMLElement, 'y')
+		})
+
 		return {
+			freshNode,
 			touchStart,
 			touchMove,
 			touchEnd,
-			distance,
-			textStatus,
-			isEnd,
+			iconName,
+			iconClass,
+			controlStyle,
 		}
 	},
 })

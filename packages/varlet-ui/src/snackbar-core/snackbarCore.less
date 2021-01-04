@@ -1,5 +1,6 @@
 @import "../styles/elevation";
 @import "../styles/common";
+@import "../styles/var";
 
 .var-transition-group {
   position: fixed;
@@ -34,6 +35,23 @@
       align-items: center;
       border-color: currentColor;
       pointer-events: auto;
+
+      &-success {
+        background: @color-success;
+      }
+
+      &-info {
+        background: @color-info;
+      }
+
+      &-warning {
+        background: @color-warning;
+      }
+
+      &-error {
+        background: @color-danger;
+      }
+
     }
 
     &__content {
@@ -43,6 +61,7 @@
 
     &__action {
       margin-right: 8px;
+      display: flex;
     }
 
     &__vertical {
@@ -69,6 +88,7 @@
   &-snackbar-transition {
     top: 0;
     position: fixed;
+
     .var-snackbar__wrapper {
       position: relative;
 
