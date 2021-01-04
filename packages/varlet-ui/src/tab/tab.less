@@ -1,16 +1,43 @@
 @import "../styles/var";
 
 @tab-color: #fff;
-@tab-padding: 4px;
+@tab-horizontal-height: 44px;
+@tab-vertical-height: 66px;
+@tab-padding: 12px;
+
+@tab-active-color: @color-primary;
+@tab-inactive-color: #646566;
+@tab-disabled-color: #ddd;
 
 .var-tab {
-  height: 100%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1 0 auto;
   padding: 0 @tab-padding;
   font-size: @font-size-md;
-  background: @color-primary;
   color: @tab-color;
+
+  &--active {
+    color: @tab-active-color;
+  }
+
+  &--inactive {
+    color: @tab-inactive-color
+  }
+
+  &--disabled {
+    color: @tab-disabled-color
+  }
+
+  &--horizental {
+    flex-direction: row;
+    height: @tab-horizontal-height;
+  }
+
+  &--vertical {
+    flex-direction: column;
+    height: @tab-vertical-height;
+  }
 }

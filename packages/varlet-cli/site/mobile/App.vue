@@ -34,6 +34,7 @@ body {
 }
 
 ::-webkit-scrollbar {
+	display: none;
 	width: 0;
 	background: transparent;
 }

@@ -1,4 +1,4 @@
-import { Directive, Plugin, App } from 'vue'
+import { Directive, Plugin, App, nextTick } from 'vue'
 import { DirectiveBinding } from '@vue/runtime-core'
 import './ripple.less'
 import '../styles/common.less'
@@ -20,10 +20,7 @@ interface RippleHTMLElement extends HTMLElement {
 	_ripple?: RippleOptions
 }
 
-function computeRippleStyles(
-	element: RippleHTMLElement,
-	event: TouchEvent
-): RippleStyles {
+function computeRippleStyles(element: RippleHTMLElement, event: TouchEvent): RippleStyles {
 	const { top, left }: DOMRect = element.getBoundingClientRect()
 	const { clientWidth, clientHeight } = element
 
@@ -47,10 +44,7 @@ function createRipple(this: RippleHTMLElement, event: TouchEvent) {
 		return
 	}
 
-	const { x, y, centerX, centerY, size }: RippleStyles = computeRippleStyles(
-		this,
-		event
-	)
+	const { x, y, centerX, centerY, size }: RippleStyles = computeRippleStyles(this, event)
 
 	const ripple: RippleHTMLElement = document.createElement('div')
 	ripple.classList.add('var-ripple')
@@ -75,9 +69,7 @@ function createRipple(this: RippleHTMLElement, event: TouchEvent) {
 }
 
 function removeRipple(this: RippleHTMLElement) {
-	const ripples: NodeListOf<RippleHTMLElement> = this.querySelectorAll(
-		'.var-ripple'
-	)
+	const ripples: NodeListOf<RippleHTMLElement> = this.querySelectorAll('.var-ripple')
 	if (!ripples.length) {
 		return
 	}
@@ -89,9 +81,7 @@ function removeRipple(this: RippleHTMLElement) {
 		lastRipple.style.opacity = `0`
 
 		setTimeout(() => {
-			const ripples: NodeListOf<RippleHTMLElement> = this.querySelectorAll(
-				'.var-ripple'
-			)
+			const ripples: NodeListOf<RippleHTMLElement> = this.querySelectorAll('.var-ripple')
 			if (ripples.length === 1) {
 				this.classList.remove('var-ripple--flat')
 				this.classList.remove('var--relative')
@@ -102,10 +92,7 @@ function removeRipple(this: RippleHTMLElement) {
 	}, delay)
 }
 
-function mounted(
-	el: RippleHTMLElement,
-	binding: DirectiveBinding<RippleOptions>
-) {
+function mounted(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>) {
 	el._ripple = binding.value
 
 	el.addEventListener('touchstart', createRipple, { passive: true })
@@ -119,10 +106,7 @@ function unmounted(el: RippleHTMLElement) {
 	el.removeEventListener('touchcancel', removeRipple)
 }
 
-function updated(
-	el: RippleHTMLElement,
-	binding: DirectiveBinding<RippleOptions>
-) {
+function updated(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>) {
 	el._ripple = binding.value
 }
 

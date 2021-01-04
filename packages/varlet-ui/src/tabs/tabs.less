@@ -1,24 +1,48 @@
-@tabs-width: 100%;
-@tabs-height: 44px;
+@import "../styles/var";
+
+@tabs-horizontal-height: 44px;
+@tabs-vertical-height: 66px;
 @tabs-radius: 2px;
-@tabs-indicator-height: 2px;
-@tabs-indicator-background-color: #fff;
+@tabs-padding: 12px;
+
+@tabs-indicator-size: 2px;
+@tabs-indicator-background: @color-primary;
+
+@tabs-background: #fff;
 
 .var-tabs {
-  position: relative;
-  display: flex;
-  width: @tabs-width;
-  height: @tabs-height;
   border-radius: @tabs-radius;
-  overflow-x: auto;
+  background: @tabs-background;
+  padding: 0 @tabs-padding;
+  overflow: hidden;
+
+  &__tab-wrap {
+    position: relative;
+    display: flex;
+    height: 100%;
+  }
 
   &__indicator {
     position: absolute;
     z-index: 10;
     left: 0;
     bottom: 0;
-    height: 2px;
-    background-color: #fff;
-    transition: transform .3s;
+    height: @tabs-indicator-size;
+    background: @tabs-indicator-background;
+    transition-property: width, transform;
+    transition-duration: .3s;
+  }
+
+  &--scrollable {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  &--horizontal {
+    height: @tabs-horizontal-height
+  }
+
+  &--vertical {
+    height: @tabs-vertical-height;
   }
 }

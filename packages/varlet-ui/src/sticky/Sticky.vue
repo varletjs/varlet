@@ -9,8 +9,11 @@
 	>
 		<div
 			class="var-sticky__wrapper"
+			ref="wrapperEl"
 			:style="{
 				position: isFixed ? 'fixed' : null,
+				width: isFixed ? fixedWrapperWidth : null,
+				height: isFixed ? fixedWrapperHeight : null,
 				left: isFixed ? fixedLeft : null,
 				top: isFixed ? fixedTop : null,
 			}"
@@ -30,12 +33,15 @@ export default defineComponent({
 	props,
 	setup(props) {
 		const stickyEl: Ref<HTMLElement | null> = ref(null)
+		const wrapperEl: Ref<HTMLElement | null> = ref(null)
 
 		const isFixed: Ref<boolean> = ref(false)
 		const fixedTop: Ref<string> = ref('0px')
 		const fixedLeft: Ref<string> = ref('0px')
 		const fixedWidth: Ref<string> = ref('auto')
 		const fixedHeight: Ref<string> = ref('auto')
+		const fixedWrapperWidth: Ref<string> = ref('auto')
+		const fixedWrapperHeight: Ref<string> = ref('auto')
 
 		const offsetTop = computed(() => {
 			return isPx(props.offsetTop) ? formatPx(props.offsetTop) : remToPx(props.offsetTop)
@@ -59,6 +65,8 @@ export default defineComponent({
 				fixedHeight.value = `${(stickyEl.value as HTMLElement).offsetHeight}px`
 				fixedTop.value = `${scrollerTop + offsetTop.value}px`
 				fixedLeft.value = `${stickyLeft}px`
+				fixedWrapperWidth.value = `${(wrapperEl.value as HTMLElement).offsetWidth}px`
+				fixedWrapperHeight.value = `${(wrapperEl.value as HTMLElement).offsetHeight}px`
 				isFixed.value = true
 
 				props.onScroll?.(offsetTop.value, isFixed.value)
@@ -83,11 +91,14 @@ export default defineComponent({
 
 		return {
 			stickyEl,
+			wrapperEl,
 			isFixed,
 			fixedTop,
 			fixedLeft,
 			fixedWidth,
 			fixedHeight,
+			fixedWrapperWidth,
+			fixedWrapperHeight,
 		}
 	},
 })

@@ -2,8 +2,9 @@ export const props = {
 	name: {
 		type: [String, Number],
 	},
-	title: {
-		type: String,
+	disabled: {
+		type: Boolean,
+		default: false,
 	},
 	onClick: {
 		type: Function,
