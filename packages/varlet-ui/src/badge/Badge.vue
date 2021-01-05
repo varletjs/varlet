@@ -7,7 +7,8 @@
       `var-badge--${type}`,
       'var-badge__content',
       {'var-badge--dot':dot},
-      position?`var-badge--${position} var-badge--position`:null
+      position?`var-badge--${position} var-badge--position`:null,
+      dotPosition
       ]"
         :style="{background:color}"
       >
@@ -31,7 +32,10 @@
 		},
 		props,
 		setup(props) {
+			console.log(typeof props.value === 'number' && typeof props.maxValue === 'number')
+			console.log(props)
 			const values: Ref<number | string | null | undefined> = ref(null)
+			const dotPosition: Ref<string | null> = ref(null)
 			if (props.dot) {
 				values.value = null
 			} else if (typeof props.value === 'number' && typeof props.maxValue === 'number') {
@@ -39,8 +43,12 @@
 			} else {
 				values.value = props.value
 			}
+			if(props.position&&props.dot){
+				dotPosition.value = props.position.indexOf('right') !== -1 ? 'var-badge--dot-right' : props.position.indexOf('left') !== -1 ? 'var-badge--dot-left' : null
+			}
 			return {
-				values
+				values,
+        dotPosition
 			}
 		}
 	})

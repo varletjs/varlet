@@ -51,13 +51,6 @@
   &--danger {
     background: @color-danger;
   }
-
-  &--dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 8px;
-    padding: 0;
-  }
   &--right-top{
     position: absolute;
     top: 0;
@@ -84,5 +77,18 @@
   }
   &--position{
     border: 2px #ffffff solid;
+  }
+  &--dot {
+    box-sizing: content-box;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    padding: 0;
+  }
+  &--dot-right{
+    right: 6px;
+  }
+  &--dot-left{
+    left: 6px;
   }
 }
