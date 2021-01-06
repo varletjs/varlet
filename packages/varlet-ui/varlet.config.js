@@ -82,6 +82,13 @@ module.exports = {
 				},
 				doc: 'chip',
 			},
+      {
+        text: {
+          zh_CN: 'Badge 徽标',
+          en_US: 'Badge',
+        },
+        doc: 'badge',
+      },
 		],
 		language: 'zh_CN',
 	},

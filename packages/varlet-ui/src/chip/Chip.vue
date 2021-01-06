@@ -1,10 +1,5 @@
 <template>
   <transition name="var-fade">
-    <!--        :style="{-->
-    <!--        color: textcolor ? textcolor : hollow ? color : '',-->
-    <!--        background: hollow ? '#fff' : color,-->
-    <!--        borderColor: hollow ? color : color ? color : 'none',-->
-    <!--        }"-->
     <span
       v-ripple="{ disabled }"
       class="var-chip var--box"
