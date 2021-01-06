@@ -1,7 +1,7 @@
 import { PropType } from 'vue'
 import { pickProps } from '../utils/components'
 import { props as loadingProps } from '../loading/props'
-import { SNACKBAR_TYPE, SnackbarType } from '../snackbar'
+import { SNACKBAR_TYPE, SnackbarType } from './index'
 
 export function positionValidator(type: string): boolean {
 	const validPositions = ['top', 'center', 'bottom']

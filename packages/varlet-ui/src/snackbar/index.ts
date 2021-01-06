@@ -1,5 +1,5 @@
 import { h, reactive, TransitionGroup, App, RendererElement } from 'vue'
-import VarSnackbarCore from '../snackbar-core'
+import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
 import { mountInstance } from '../utils/components'
 import { isBaseObject } from '../utils/shared'
