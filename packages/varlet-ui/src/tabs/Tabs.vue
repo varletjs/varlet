@@ -1,10 +1,10 @@
 <template>
-	<component :is="sticky ? 'var-sticky' : 'div'" :offset-top="sticky ? offsetTop : null">
+	<component :is="sticky ? 'var-sticky' : Transition" :offset-top="sticky ? offsetTop : null">
 		<div
 			class="var-tabs var--box"
-			:class="[`var-tabs--${direction}`, `var-elevation--${elevation}`]"
+			:class="[`var-tabs--${direction}`, `var-elevation--${elevation}`, fixedBottom ? 'var-tabs--fixed-bottom' : null]"
 			:style="{
-				background,
+				background: color,
 			}"
 			v-bind="$attrs"
 		>
@@ -17,7 +17,7 @@
 						width: indicatorWidth,
 						height: indicatorSize,
 						transform: `translateX(${indicatorX})`,
-						background: indicatorBackground || activeColor,
+						background: indicatorColor || activeColor,
 					}"
 				></div>
 			</div>
@@ -26,11 +26,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, provide, onMounted, onUpdated, watch, ref, Ref, computed, ComputedRef } from 'vue'
-import { TabMessage, TABS_PROVIDER_KEY, TabsProvider, props, TAB_COUNTER_KEY } from './props'
-import { removeItem } from '../utils/shared'
-import { countChildren } from '../utils/components'
 import Sticky from '../sticky'
+import { defineComponent, onMounted, watch, ref, Ref, computed, Transition, ComputedRef, nextTick } from 'vue'
+import { props } from './props'
+import { TabsProvider, TABS_COUNT_TAB_KEY, TABS_BIND_TAB_KEY } from './provide'
+import { countChildren, useChildren } from '../utils/components'
+import { TabProvider } from '../tab/provide'
+import { isNumber } from '../utils/shared'
 
 export default defineComponent({
 	name: 'VarTabs',
@@ -40,38 +42,64 @@ export default defineComponent({
 	inheritAttrs: false,
 	props,
 	setup(props) {
-		const tabMessages: TabMessage[] = []
-
 		const indicatorWidth: Ref<string> = ref('0px')
 		const indicatorX: Ref<string> = ref('0px')
 		const scrollable: Ref<boolean> = ref(false)
 		const scrollerEl: Ref<HTMLElement | null> = ref(null)
-
 		const active: ComputedRef<number | string> = computed(() => props.active)
 		const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
 		const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
 		const disabledColor: ComputedRef<string | undefined> = computed(() => props.disabledColor)
 		const direction: ComputedRef<string> = computed(() => props.direction)
+		const { childProviders: tabProviders, bindChildren } = useChildren<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
+		const { length } = countChildren(TABS_COUNT_TAB_KEY)
 
-		const matchName = (): TabMessage | undefined => {
-			return tabMessages.find(({ name }: TabMessage) => props.active === name.value)
+		const onTabClick = (tabProvider: TabProvider) => {
+			const active = tabProvider.name.value ?? tabProvider.index.value
+
+			props['onUpdate:active']?.(active)
+			props.onClick?.(active)
+			active !== props.active && props.onChange?.(active)
 		}
-		const matchIndex = (): TabMessage | undefined => {
-			return tabMessages.find(({ index }: TabMessage) => props.active === index.value)
+
+		const matchName = (): TabProvider | undefined => {
+			return tabProviders.find(({ name }: TabProvider) => props.active === name.value)
 		}
+
+		const matchIndex = (): TabProvider | undefined => {
+			return tabProviders.find(({ index }: TabProvider) => props.active === index.value)
+		}
+
+		const matchBoundary = (): TabProvider | undefined => {
+			if (length.value === 0) {
+				return
+			}
+
+			isNumber(props.active)
+				? props.active > length.value - 1
+					? props['onUpdate:active']?.(length.value - 1)
+					: props['onUpdate:active']?.(0)
+				: null
+
+			return matchIndex()
+		}
+
 		const watchScrollable = () => {
-			scrollable.value = tabMessages.length >= 5
+			scrollable.value = tabProviders.length >= 5
 		}
-		const moveIndicator = ({ element }: TabMessage) => {
-			indicatorWidth.value = `${element?.offsetWidth}px`
-			indicatorX.value = `${element?.offsetLeft}px`
+
+		const moveIndicator = ({ element }: TabProvider) => {
+			indicatorWidth.value = `${element.value?.offsetWidth}px`
+			indicatorX.value = `${element.value?.offsetLeft}px`
 		}
-		const scrollToCenter = ({ element }: TabMessage) => {
+
+		const scrollToCenter = ({ element }: TabProvider) => {
 			if (!scrollable.value) {
 				return
 			}
+
 			const scroller: HTMLElement = scrollerEl.value as HTMLElement
-			const el = element as HTMLElement
+			const el = element.value as HTMLElement
 			const left: number = el.offsetLeft + el.offsetWidth / 2 - scroller.offsetWidth / 2
 			scroller.scrollTo({
 				left,
@@ -79,50 +107,45 @@ export default defineComponent({
 			})
 		}
 
-		const tabsEffect = () => {
-			const tabMessage = matchName() || matchIndex()
-			if (!tabMessage) {
-				throw new Error('Active not match to the <var-tab>')
+		const resize = () => {
+			const tabProvider: TabProvider | undefined = matchName() || matchIndex() || matchBoundary()
+			if (!tabProvider) {
+				return
 			}
 
 			watchScrollable()
-			moveIndicator(tabMessage)
-			scrollToCenter(tabMessage)
+			moveIndicator(tabProvider)
+			scrollToCenter(tabProvider)
 		}
 
-		onMounted(tabsEffect)
-		onUpdated(tabsEffect)
-
-		watch(() => props.active, tabsEffect)
-
-		countChildren(TAB_COUNTER_KEY)
-
-		provide<TabsProvider>(TABS_PROVIDER_KEY, {
+		const tabsProvider: TabsProvider = {
 			active,
 			activeColor,
 			inactiveColor,
 			disabledColor,
 			direction,
-			receiveTabMessage(tabMessage: TabMessage) {
-				tabMessages.push(tabMessage)
-			},
-			clearTabMessage(tabMessage: TabMessage) {
-				removeItem(tabMessages, tabMessage)
-			},
-			onTabClick(tabMessage: TabMessage) {
-				const active = tabMessage.name.value ?? tabMessage.index.value
+			resize,
+			onTabClick,
+		}
 
-				props['onUpdate:active']?.(active)
-				props.onClick?.(active)
-				active !== props.active && props.onChange?.(active)
-			},
-		})
+		bindChildren(tabsProvider)
+
+		watch(
+			() => length.value,
+			() => nextTick().then(resize)
+		)
+
+		watch(() => props.active, resize)
+
+		onMounted(resize)
 
 		return {
 			indicatorWidth,
 			indicatorX,
 			scrollable,
 			scrollerEl,
+			Transition,
+			resize,
 		}
 	},
 })

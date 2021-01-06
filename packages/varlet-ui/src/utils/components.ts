@@ -6,15 +6,15 @@ import {
 	inject,
 	onUnmounted,
 	computed,
+	ComputedRef,
 	provide,
 	reactive,
-	VNodeNormalizedChildren,
 	VNode,
 	isVNode,
 	ComponentInternalInstance,
-	ComputedRef,
-	onUpdated,
 	onMounted,
+	onBeforeUnmount,
+	watch,
 } from 'vue'
 import { removeItem } from './shared'
 
@@ -27,6 +27,11 @@ export interface ChildrenCounter {
 	collect(instance: ComponentInternalInstance): void
 	clear(instance: ComponentInternalInstance): void
 	instances: ComponentInternalInstance[]
+}
+
+export interface BaseParentProvider<C> {
+	collect(childProvider: C): void
+	clear(childProvider: C): void
 }
 
 export function pickProps(props: any, propsKey: string): any
@@ -75,28 +80,27 @@ export function mountInstance(
 	return { unmountInstance: unmount }
 }
 
-export function flatVNodes(children: VNodeNormalizedChildren) {
+export function flatVNodes(subTree: any) {
 	const vNodes: VNode[] = []
 
-	const flat = (children: VNodeNormalizedChildren) => {
-		if (Array.isArray(children)) {
-			children.forEach((child) => {
+	const flat = (subTree: any) => {
+		if (subTree?.component) {
+			flat(subTree?.component.subTree)
+			return
+		}
+
+		if (Array.isArray(subTree?.children)) {
+			subTree.children.forEach((child: any) => {
 				if (isVNode(child)) {
 					vNodes.push(child)
 
-					if (child.component?.subTree) {
-						flat(child.component.subTree.children)
-					}
-
-					if (child.children) {
-						flat(child.children)
-					}
+					flat(child)
 				}
 			})
 		}
 	}
 
-	flat(children)
+	flat(subTree)
 
 	return vNodes
 }
@@ -106,31 +110,37 @@ export function countChildren(key: symbol) {
 	const parentInstance: ComponentInternalInstance = getCurrentInstance() as ComponentInternalInstance
 
 	const sortInstances = () => {
-		const vNodes = flatVNodes(parentInstance.subTree?.children)
+		const vNodes: any[] = flatVNodes(parentInstance.subTree)
+
 		instances.sort((a, b) => {
 			return vNodes.indexOf(a.vnode) - vNodes.indexOf(b.vnode)
 		})
 	}
 
-	onMounted(() => {
+	const collect = (instance: ComponentInternalInstance) => {
+		instances.push(instance)
 		sortInstances()
-	})
-	onUpdated(() => {
-		sortInstances()
-	})
+	}
+
+	const clear = (instance: ComponentInternalInstance) => {
+		removeItem(instances, instance)
+	}
 
 	provide<ChildrenCounter>(key, {
-		collect(instance: ComponentInternalInstance) {
-			instances.push(instance)
-		},
-		clear(instance: ComponentInternalInstance) {
-			removeItem(instances, instance)
-		},
+		collect,
+		clear,
 		instances,
 	})
+
+	const length: ComputedRef<number> = computed(() => instances.length)
+
+	return {
+		sortChildren: sortInstances,
+		length,
+	}
 }
 
-export function useAtParentIndex(key: symbol): ComputedRef<number> | never {
+export function useAtParentIndex(key: symbol) {
 	const childrenCounter: ChildrenCounter | undefined = inject<ChildrenCounter>(key)
 	if (!childrenCounter) {
 		throw new Error('Children counter provider not found')
@@ -139,6 +149,7 @@ export function useAtParentIndex(key: symbol): ComputedRef<number> | never {
 	const { collect, clear, instances } = childrenCounter
 
 	const instance: ComponentInternalInstance = getCurrentInstance() as ComponentInternalInstance
+	const index = computed(() => instances.indexOf(instance))
 
 	collect(instance)
 
@@ -146,5 +157,50 @@ export function useAtParentIndex(key: symbol): ComputedRef<number> | never {
 		clear(instance)
 	})
 
-	return computed(() => instances.indexOf(instance))
+	return {
+		index,
+		instances,
+	}
+}
+
+export function useChildren<P, C>(key: symbol) {
+	const childProviders: C[] = []
+
+	const collect = (childProvider: C) => {
+		childProviders.push(childProvider)
+	}
+
+	const clear = (childProvider: C) => {
+		removeItem(childProviders, childProvider)
+	}
+
+	const bindChildren = (parentProvider: P) => {
+		provide<P & BaseParentProvider<C>>(key, {
+			collect,
+			clear,
+			...parentProvider,
+		})
+	}
+
+	return {
+		childProviders,
+		bindChildren,
+	}
+}
+
+export function useParent<P, C>(key: symbol) {
+	const { collect, clear, ...parentProvider } = inject<P & BaseParentProvider<C>>(key) as P & BaseParentProvider<C>
+	if (!collect || !clear) {
+		throw new Error('Parent not found')
+	}
+
+	const bindParent = (childProvider: C) => {
+		onMounted(() => collect(childProvider))
+		onBeforeUnmount(() => clear(childProvider))
+	}
+
+	return {
+		parentProvider,
+		bindParent,
+	}
 }

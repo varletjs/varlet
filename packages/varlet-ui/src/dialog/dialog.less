@@ -8,6 +8,8 @@
 @dialog-message-line-height: 24px;
 
 @dialog-button-margin-left: 6px;
+@dialog-confirm-button-color: #005CAF;
+@dialog-cancel-button-color: #005CAF;
 
 .var-dialog {
   width: @dialog-width;
@@ -43,5 +45,13 @@
     &:active {
       box-shadow: none;
     }
+  }
+
+  &__confirm-button {
+    color: @dialog-confirm-button-color;
+  }
+
+  &__cancel-button {
+    color: @dialog-cancel-button-color;
   }
 }

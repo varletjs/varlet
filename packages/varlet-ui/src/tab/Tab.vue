@@ -14,53 +14,46 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref, ref, inject, onMounted, onBeforeUnmount, ComputedRef, computed } from 'vue'
-import { TAB_COUNTER_KEY, TabMessage, TABS_PROVIDER_KEY, TabsProvider } from '../tabs/props'
-import { props } from './props'
 import Ripple from '../ripple'
-import { useAtParentIndex } from '../utils/components'
+import { defineComponent, Ref, ref, computed, ComputedRef, watch } from 'vue'
+import { props } from './props'
+import { TabsProvider, TABS_BIND_TAB_KEY, TABS_COUNT_TAB_KEY } from '../tabs/provide'
+import { useAtParentIndex, useParent } from '../utils/components'
+import { TabProvider } from './provide'
 
 export default defineComponent({
 	name: 'VarTab',
 	directives: { Ripple },
 	props,
 	setup(props) {
-		const tabsProvider = inject<TabsProvider>(TABS_PROVIDER_KEY)
-		if (!tabsProvider) {
-			throw new Error('<var-tabs> not found')
-		}
-
-		const {
-			receiveTabMessage,
-			clearTabMessage,
-			onTabClick,
-			active,
-			activeColor,
-			inactiveColor,
-			disabledColor,
-			direction,
-		} = tabsProvider
-
 		const tabEl: Ref<HTMLElement | null> = ref(null)
-		const index: ComputedRef<number> = useAtParentIndex(TAB_COUNTER_KEY)
 		const name: ComputedRef<string | number | undefined> = computed(() => props.name)
-		const tabMessage: TabMessage = {
+		const element: ComputedRef<HTMLElement | null> = computed(() => tabEl.value)
+		const { parentProvider: tabsProvider, bindParent } = useParent<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
+		const { index } = useAtParentIndex(TABS_COUNT_TAB_KEY)
+
+		const tabProvider: TabProvider = {
 			name,
 			index,
-			element: null,
+			element,
 		}
+
+		bindParent(tabProvider)
+
+		const { onTabClick, active, activeColor, inactiveColor, disabledColor, direction, resize } = tabsProvider
 
 		const computeColorStyle = () => {
 			return props.disabled
 				? disabledColor.value
-				: active.value === props.name || active.value === index.value
+				: active.value === props.name || active.value === tabProvider.index.value
 				? activeColor.value
 				: inactiveColor.value
 		}
+
 		const computeColorClass = () => {
 			return props.disabled
 				? 'var-tab--disabled'
-				: active.value === props.name || active.value === index.value
+				: active.value === props.name || active.value === tabProvider.index.value
 				? 'var-tab--active'
 				: 'var-tab--inactive'
 		}
@@ -70,23 +63,16 @@ export default defineComponent({
 				return
 			}
 
-			props.onClick?.(props.name ?? index.value, event)
-			onTabClick(tabMessage)
+			props.onClick?.(props.name ?? tabProvider.index.value, event)
+			onTabClick(tabProvider)
 		}
 
-		onMounted(() => {
-			tabMessage.element = tabEl.value
-			receiveTabMessage(tabMessage)
-		})
-
-		onBeforeUnmount(() => {
-			clearTabMessage(tabMessage)
-		})
+		watch(() => props.name, resize)
+		watch(() => props.disabled, resize)
 
 		return {
 			tabEl,
 			active,
-			index,
 			activeColor,
 			inactiveColor,
 			direction,

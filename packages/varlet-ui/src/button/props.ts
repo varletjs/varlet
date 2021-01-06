@@ -57,11 +57,11 @@ export const props = {
 		default: false,
 	},
 	// 按钮文字颜色
-	color: {
+	textColor: {
 		type: String,
 	},
 	// 按钮背景颜色
-	background: {
+	color: {
 		type: String,
 	},
 	// 点击回调

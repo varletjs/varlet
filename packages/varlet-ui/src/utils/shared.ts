@@ -1,11 +1,16 @@
 export interface CacheInstance<T> {
 	cache: T[]
+
 	has(key: T): boolean
+
 	add(key: T): void
+
 	remove(key: T): void
 }
 
 export const isString = (val: unknown): val is string => typeof val === 'string'
+
+export const isNumber = (val: unknown): val is number => typeof val === 'number'
 
 export const isBaseObject = (val: unknown) => Object.prototype.toString.call(val) === '[object Object]'
 
@@ -37,6 +42,16 @@ export const throttle = (method: any, mustRunDelay = 200): (() => void) => {
 				loop.apply(this, args)
 			}, 50)
 		}
+	}
+}
+
+export const debounce = (method: any, delay = 200) => {
+	let timer: number
+	return function (this: unknown, ...args: any[]) {
+		timer && window.clearTimeout(timer)
+		timer = window.setTimeout(() => {
+			method.apply(this, args)
+		}, delay)
 	}
 }
 

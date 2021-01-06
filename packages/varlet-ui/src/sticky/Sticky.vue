@@ -12,6 +12,7 @@
 			ref="wrapperEl"
 			:style="{
 				position: isFixed ? 'fixed' : null,
+				zIndex: isFixed ? zIndex : null,
 				width: isFixed ? fixedWrapperWidth : null,
 				height: isFixed ? fixedWrapperHeight : null,
 				left: isFixed ? fixedLeft : null,

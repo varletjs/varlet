@@ -12,8 +12,8 @@
 			outline ? 'var-button--outline' : null,
 		]"
 		:style="{
-			color: color,
-			background: background,
+			color: textColor,
+			background: color,
 		}"
 		:disabled="disabled"
 		@click="handleClick"

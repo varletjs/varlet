@@ -37,9 +37,9 @@
 		<var-button type="primary" block>块级按钮</var-button>
 
 		<app-type>自定义颜色</app-type>
-		<var-button color="#005caf">文字颜色</var-button>
-		<var-button background="#9c27b0" color="#fff">紫色按钮</var-button>
-		<var-button background="linear-gradient(to right, #f44336, #005caf)" color="#fff">渐变按钮</var-button>
+		<var-button text-color="#005caf">文字颜色</var-button>
+		<var-button color="#9c27b0" text-color="#fff">紫色按钮</var-button>
+		<var-button color="linear-gradient(to right, #f44336, #005caf)" text-color="#fff">渐变按钮</var-button>
 
 		<app-type>圆形按钮</app-type>
 		<var-button round>

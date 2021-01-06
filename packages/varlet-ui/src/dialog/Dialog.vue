@@ -29,7 +29,7 @@
 			</div>
 			<div class="var-dialog__actions">
 				<var-button
-					class="var-dialog__button"
+					class="var-dialog__button var-dialog__cancel-button"
 					:color="cancelButtonColor"
 					:background="cancelButtonBackground"
 					v-if="cancelButton"
@@ -38,7 +38,7 @@
 					{{ cancelButtonText }}
 				</var-button>
 				<var-button
-					class="var-dialog__button"
+					class="var-dialog__button var-dialog__confirm-button"
 					:color="confirmButtonColor"
 					:background="confirmButtonBackground"
 					v-if="confirmButton"

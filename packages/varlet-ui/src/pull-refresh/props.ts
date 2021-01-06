@@ -20,22 +20,22 @@ export const props = {
 	// control 的背景颜色
 	bgColor: {
 		type: String,
-		default: '#005CAF',
+		default: '#fff',
 	},
 	// 成功状态下 control 的背景颜色
 	successBgColor: {
 		type: String,
-		default: '#4CAF50',
+		default: '#fff',
 	},
 	// control 的颜色
 	color: {
 		type: String,
-		default: '#fff',
+		default: '#005CAF',
 	},
 	// 成功状态下 control 的颜色
 	successColor: {
 		type: String,
-		default: '#fff',
+		default: '#4CAF50',
 	},
 	onRefresh: {
 		type: Function,
