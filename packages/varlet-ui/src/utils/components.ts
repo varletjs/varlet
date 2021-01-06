@@ -14,7 +14,6 @@ import {
 	ComponentInternalInstance,
 	onMounted,
 	onBeforeUnmount,
-	watch,
 } from 'vue'
 import { removeItem } from './shared'
 
@@ -135,7 +134,6 @@ export function countChildren(key: symbol) {
 	const length: ComputedRef<number> = computed(() => instances.length)
 
 	return {
-		sortChildren: sortInstances,
 		length,
 	}
 }
@@ -149,17 +147,14 @@ export function useAtParentIndex(key: symbol) {
 	const { collect, clear, instances } = childrenCounter
 
 	const instance: ComponentInternalInstance = getCurrentInstance() as ComponentInternalInstance
+
+	onMounted(() => collect(instance))
+	onUnmounted(() => clear(instance))
+
 	const index = computed(() => instances.indexOf(instance))
-
-	collect(instance)
-
-	onUnmounted(() => {
-		clear(instance)
-	})
 
 	return {
 		index,
-		instances,
 	}
 }
 

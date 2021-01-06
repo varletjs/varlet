@@ -134,7 +134,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, reactive, nextTick } from 'vue'
+import { defineComponent, ref, Ref, reactive } from 'vue'
 import Tabs from '..'
 import Tab from '../../tab'
 import Icon from '../../icon'
@@ -172,20 +172,24 @@ export default defineComponent({
 			'测试9',
 		])
 
-		const list2 = reactive<any>([
-			{
-				id: 1,
-				name: '瓜瓜',
-			},
-			{
-				id: 2,
-				name: '咋咋',
-			},
-			{
-				id: 3,
-				name: '拉拉',
-			},
-		])
+		const list2 = reactive<any>([])
+
+		setTimeout(() => {
+			list2.push(
+				{
+					id: 1,
+					name: '瓜瓜',
+				},
+				{
+					id: 2,
+					name: '咋咋',
+				},
+				{
+					id: 3,
+					name: '拉拉',
+				}
+			)
+		}, 1000)
 
 		const handleChange = (...args: any[]) => {
 			console.log(...args)

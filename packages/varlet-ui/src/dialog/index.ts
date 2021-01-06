@@ -23,38 +23,30 @@ interface DialogOptions {
 	closeOnClickOverlay?: boolean
 }
 
-type DialogResolveState = 'confirm' | 'cancel' | 'close'
+type DialogResolvedState = 'confirm' | 'cancel' | 'close'
 
-function Dialog(options: DialogOptions | string): Promise<DialogResolveState> {
+function Dialog(options: DialogOptions | string): Promise<DialogResolvedState> {
 	return new Promise((resolve) => {
-		const dialogOptions: DialogOptions = isString(options)
-			? { message: options }
-			: options
-		const reactiveDialogOptions: DialogOptions = reactive<DialogOptions>(
-			dialogOptions
-		)
+		const dialogOptions: DialogOptions = isString(options) ? { message: options } : options
+		const reactiveDialogOptions: DialogOptions = reactive(dialogOptions)
 
-		const { unmountInstance } = mountInstance(
-			VarDialog,
-			reactiveDialogOptions,
-			{
-				onConfirm: () => {
-					resolve('confirm')
-				},
-				onCancel: () => {
-					resolve('cancel')
-				},
-				onClose: () => {
-					resolve('close')
-				},
-				onClosed: () => {
-					unmountInstance()
-				},
-				'onUpdate:show': (value: boolean) => {
-					reactiveDialogOptions.show = value
-				},
-			}
-		)
+		const { unmountInstance } = mountInstance(VarDialog, reactiveDialogOptions, {
+			onConfirm: () => {
+				resolve('confirm')
+			},
+			onCancel: () => {
+				resolve('cancel')
+			},
+			onClose: () => {
+				resolve('close')
+			},
+			onClosed: () => {
+				unmountInstance()
+			},
+			'onUpdate:show': (value: boolean) => {
+				reactiveDialogOptions.show = value
+			},
+		})
 
 		reactiveDialogOptions.show = true
 	})

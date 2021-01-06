@@ -137,8 +137,6 @@ export default defineComponent({
 
 		watch(() => props.active, resize)
 
-		onMounted(resize)
-
 		return {
 			indicatorWidth,
 			indicatorX,

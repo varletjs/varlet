@@ -61,9 +61,7 @@ export default defineComponent({
 		}
 
 		const resize = () => {
-			const tabItemProvider: TabItemProvider | undefined =
-				matchName(props.active) || matchIndex(props.active) || matchBoundary(props.active)
-
+			const tabItemProvider: TabItemProvider | undefined = matchActive(props.active)
 			if (!tabItemProvider) {
 				return
 			}
@@ -113,10 +111,9 @@ export default defineComponent({
 			() => nextTick().then(resize)
 		)
 
-		onMounted(resize)
-
 		return {
 			transitionHeight,
+			length,
 			resize,
 		}
 	},
