@@ -1,0 +1,94 @@
+@import "../styles/var";
+
+.var {
+  &-fade-leave-to {
+    opacity: 0;
+  }
+
+  &-fade-leave-active {
+    transition: opacity .3s;
+  }
+}
+
+.var-badge {
+  display: inline-block;
+  position: relative;
+  &__content {
+    color: #fff;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+    border-radius: 100px;
+    font-size: 12px;
+    padding: 2px 6px;
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+    //.v-icon{
+    //  font-size: 12px;
+    //  margin: 0 -2px;
+    //}
+  }
+
+  &--default {
+    background: @color-background-base;
+  }
+
+  &--primary {
+    background: @color-primary;
+  }
+
+  &--info {
+    background: @color-info;
+  }
+
+  &--warning {
+    background: @color-warning;
+  }
+
+  &--success {
+    background: @color-success;
+  }
+
+  &--danger {
+    background: @color-danger;
+  }
+  &--right-top{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    transform: translateY(-50%) translateX(100%);
+  }
+  &--left-top{
+    position: absolute;
+    top: 0;
+    left: 10px;
+    transform: translateY(-50%) translateX(-100%);
+  }
+  &--right-bottom{
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    transform: translateY(50%) translateX(100%);
+  }
+  &--left-bottom{
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    transform: translateY(50%) translateX(-100%);
+  }
+  &--position{
+    border: 2px #ffffff solid;
+  }
+  &--dot {
+    box-sizing: content-box;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    padding: 0;
+  }
+  &--dot-right{
+    right: 6px;
+  }
+  &--dot-left{
+    left: 6px;
+  }
+}

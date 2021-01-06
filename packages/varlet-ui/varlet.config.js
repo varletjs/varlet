@@ -77,8 +77,8 @@ module.exports = {
 			},
 			{
 				text: {
-					zh_CN: 'chip 标签',
-					en_US: 'chip',
+					zh_CN: 'Chip 标签',
+					en_US: 'Chip',
 				},
 				doc: 'chip',
 			},

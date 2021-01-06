@@ -11,7 +11,7 @@
       :class="[
 				`var-chip--${size}`,
 				block ? 'var--flex' : 'var--inline-flex',
-				round ? 'var-chip--round' : null,
+				{'var-chip--round':round},
 				plain ? `var-chip--plain-${type}` : `var-chip--${type}`,
 				plain ? `var-chip--plain` : `var-elevation--2`,
 			]"
