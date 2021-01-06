@@ -1,14 +1,7 @@
 <template>
 	<teleport :to="teleport" :disabled="disabled">
-		<transition
-			name="var-snackbar-fade"
-			@after-enter="onOpened"
-			@after-leave="onClosed"
-		>
-			<var-snackbar-core
-				v-bind="$props"
-				class="var--absolute var-snackbar-transition"
-			>
+		<transition name="var-snackbar-fade" @after-enter="onOpened" @after-leave="onClosed">
+			<var-snackbar-core v-bind="$props" class="var--absolute var-snackbar-transition">
 				<slot>
 					{{ content }}
 				</slot>
@@ -22,9 +15,9 @@
 
 <script>
 import { defineComponent } from 'vue'
-import SnackbarCore from '../snackbar-core'
+import SnackbarCore from './core'
 import { useTeleport } from '../utils/teleport'
-import { props } from '../snackbar-core/props'
+import { props } from './props'
 
 export default defineComponent({
 	name: 'VarSnackbar',

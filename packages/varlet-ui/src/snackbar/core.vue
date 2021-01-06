@@ -26,7 +26,7 @@ import Icon from '../icon'
 import { useZIndex } from '../context/zIndex'
 import { props } from './props'
 import { useLock } from '../context/lock'
-import { SNACKBAR_TYPE } from '../snackbar'
+import { SNACKBAR_TYPE } from './index'
 
 export default defineComponent({
 	name: 'VarSnackbarCore',
@@ -91,5 +91,5 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import 'snackbarCore';
+@import './core';
 </style>

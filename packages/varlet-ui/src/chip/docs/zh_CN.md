@@ -28,7 +28,7 @@ export default defineComponent({
 ```
 
 ### 空心样式标签
-通过使用`plain`属性把标签设置成空心样式
+通过设置`plain`属性把标签设置成空心样式
 
 ```html
 <var-chip plain type="primary">空心标签</var-chip>
@@ -64,11 +64,11 @@ export default defineComponent({
 ```js
 import {defineComponent,Ref,ref} from 'vue'
 export default defineComponent({
-setup(){
-const show: Ref<boolean> = ref(true);
-const show1: Ref<boolean> = ref(true);
-return {show,show1};
-}
+  setup(){
+    const show: Ref<boolean> = ref(true);
+    const show1: Ref<boolean> = ref(true);
+    return {show,show1};
+  }
 })
 ```
 ### 自定义颜色标签
@@ -122,10 +122,11 @@ return {show,show1};
 | text-color | 文本颜色，优先级高于`color`属性 | _string_ | _ |
 
 ### 插槽
-| name | 说明 |
-| ---- | ---- |
-| left | 插入至标签的左侧 |
-| right | 插入至标签的右侧 |
+| 名称 | 说明 | 参数 |
+| ---- | ---- | ----|
+| default | 默认插槽 | _ |
+| left | 插入至标签的左侧 | _ |
+| right | 插入至标签的右侧 | _ |
 
 ### 事件
 
