@@ -7,7 +7,10 @@
 		@touchend="touchEnd"
 		@touchcancel="touchEnd"
 	>
-		<div class="var-pull-refresh__control var-elevation--2" :style="controlStyle">
+		<div
+			:class="`var-pull-refresh__control var-elevation--2${isSuccess && ' var-pull-refresh__control-success'}`"
+			:style="controlStyle"
+		>
 			<var-icon :name="iconName" :transition="200" :class="iconClass" />
 		</div>
 		<slot></slot>
@@ -59,9 +62,11 @@ export default defineComponent({
 		const controlStyle = computed(() => ({
 			transform: `translate3d(0px, ${distance.value}px, 0px) translate(-50%, 0)`,
 			transition: isEnd.value ? `transform ${props.animationDuration}ms` : null,
-			background: refreshStatus.value === 'success' ? props.successBgColor : props.bgColor,
-			color: refreshStatus.value === 'success' ? props.successColor : props.color,
+			background: props.successBgColor || props.bgColor,
+			color: props.successColor || props.color,
 		}))
+
+		const isSuccess = computed(() => refreshStatus.value === 'success')
 
 		const touchStart = (event: TouchEvent) => {
 			if (!isTouchable.value) return
@@ -103,10 +108,10 @@ export default defineComponent({
 					refreshStatus.value = 'success'
 					iconName.value = 'checkbox-marked-circle'
 					setTimeout(() => {
-						refreshStatus.value = 'default'
-						iconName.value = 'arrow-down'
 						distance.value = CONTROL_POSITION
 						setTimeout(() => {
+							refreshStatus.value = 'default'
+							iconName.value = 'arrow-down'
 							isEnd.value = false
 						}, +props.animationDuration)
 					}, +props.successDuration)
@@ -126,6 +131,7 @@ export default defineComponent({
 			iconName,
 			iconClass,
 			controlStyle,
+			isSuccess,
 		}
 	},
 })
