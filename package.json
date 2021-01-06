@@ -27,7 +27,7 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx,js,vue,scss}": "prettier --write",
+    "*.{ts,tsx,js,vue,scss,less}": "prettier --write",
     "*.{ts,tsx,js,vue}": "eslint --fix",
     "*.{vue,css,scss}": "stylelint --fix"
   },
