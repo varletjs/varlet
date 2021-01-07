@@ -11,7 +11,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "bootstrap": "yarn || npm i",
+    "bootstrap": "yarn && node scripts/bootstrap.js",
     "commit": "git-cz",
     "publish": "lerna publish"
   },
@@ -66,6 +66,7 @@
     "commitizen": "^4.2.2",
     "cz-lerna-changelog": "^2.0.3",
     "eslint": "^7.12.1",
+    "execa": "^5.0.0",
     "husky": "^4.3.0",
     "lerna": "^3.22.1",
     "lint-staged": "^10.5.0",

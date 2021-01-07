@@ -187,9 +187,33 @@ export default defineComponent({
 				{
 					id: 3,
 					name: '拉拉',
+				},
+				{
+					id: 4,
+					name: '瓜瓜',
+				},
+				{
+					id: 5,
+					name: '咋咋',
+				},
+				{
+					id: 6,
+					name: '拉拉',
+				},
+				{
+					id: 7,
+					name: '瓜瓜',
+				},
+				{
+					id: 8,
+					name: '咋咋',
+				},
+				{
+					id: 9,
+					name: '拉拉',
 				}
 			)
-		}, 1000)
+		}, 2000)
 
 		const handleChange = (...args: any[]) => {
 			console.log(...args)

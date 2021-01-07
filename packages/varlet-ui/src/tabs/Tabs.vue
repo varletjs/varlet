@@ -27,10 +27,10 @@
 
 <script lang="ts">
 import Sticky from '../sticky'
-import { defineComponent, onMounted, watch, ref, Ref, computed, Transition, ComputedRef, nextTick } from 'vue'
+import { defineComponent, watch, ref, Ref, computed, Transition, ComputedRef, nextTick } from 'vue'
 import { props } from './props'
 import { TabsProvider, TABS_COUNT_TAB_KEY, TABS_BIND_TAB_KEY } from './provide'
-import { countChildren, useChildren } from '../utils/components'
+import { useAtChildrenCounter, useChildren } from '../utils/components'
 import { TabProvider } from '../tab/provide'
 import { isNumber } from '../utils/shared'
 
@@ -52,7 +52,7 @@ export default defineComponent({
 		const disabledColor: ComputedRef<string | undefined> = computed(() => props.disabledColor)
 		const direction: ComputedRef<string> = computed(() => props.direction)
 		const { childProviders: tabProviders, bindChildren } = useChildren<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
-		const { length } = countChildren(TABS_COUNT_TAB_KEY)
+		const { length } = useAtChildrenCounter(TABS_COUNT_TAB_KEY)
 
 		const onTabClick = (tabProvider: TabProvider) => {
 			const active = tabProvider.name.value ?? tabProvider.index.value

@@ -14,6 +14,7 @@ import {
 	ComponentInternalInstance,
 	onMounted,
 	onBeforeUnmount,
+	nextTick,
 } from 'vue'
 import { removeItem } from './shared'
 
@@ -104,7 +105,7 @@ export function flatVNodes(subTree: any) {
 	return vNodes
 }
 
-export function countChildren(key: symbol) {
+export function useAtChildrenCounter(key: symbol) {
 	const instances: ComponentInternalInstance[] = reactive([])
 	const parentInstance: ComponentInternalInstance = getCurrentInstance() as ComponentInternalInstance
 
@@ -148,7 +149,7 @@ export function useAtParentIndex(key: symbol) {
 
 	const instance: ComponentInternalInstance = getCurrentInstance() as ComponentInternalInstance
 
-	onMounted(() => collect(instance))
+	nextTick().then(() => collect(instance))
 	onUnmounted(() => clear(instance))
 
 	const index = computed(() => instances.indexOf(instance))

@@ -11,8 +11,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch, ref, Ref, nextTick, onMounted, ComputedRef } from 'vue'
-import { useChildren, countChildren } from '../utils/components'
+import { defineComponent, computed, watch, ref, Ref, nextTick, ComputedRef } from 'vue'
+import { useChildren, useAtChildrenCounter } from '../utils/components'
 import { TABS_ITEMS_BIND_TAB_ITEM_KEY, TabsItemsProvider, TABS_ITEMS_COUNT_TAB_ITEM_KEY } from './provide'
 import { props } from './props'
 import { TabItemProvider } from '../tab-item/provide'
@@ -28,7 +28,7 @@ export default defineComponent({
 		const { bindChildren, childProviders: tabItemProviders } = useChildren<TabsItemsProvider, TabItemProvider>(
 			TABS_ITEMS_BIND_TAB_ITEM_KEY
 		)
-		const { length } = countChildren(TABS_ITEMS_COUNT_TAB_ITEM_KEY)
+		const { length } = useAtChildrenCounter(TABS_ITEMS_COUNT_TAB_ITEM_KEY)
 
 		const resetTransitionHeight = debounce(() => {
 			transitionHeight.value = 'auto'
