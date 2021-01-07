@@ -45,6 +45,7 @@
     "chalk": "^4.1.0",
     "chokidar": "^3.4.3",
     "clean-webpack-plugin": "^3.0.0",
+    "clipboard": "^2.0.6",
     "commander": "^6.2.0",
     "css-loader": "^5.0.0",
     "fork-ts-checker-webpack-plugin": "^5.2.1",

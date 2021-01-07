@@ -2,6 +2,7 @@
   "name": "@varlet/icons",
   "version": "0.7.0",
   "description": "Icons of varlet",
+  "main": "dist/index.js",
   "bin": {
     "varlet-icons": "lib/index.js"
   },

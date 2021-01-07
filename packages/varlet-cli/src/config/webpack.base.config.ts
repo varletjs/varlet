@@ -10,7 +10,7 @@ import {
 import { createPostcssOptions } from './postcss.config'
 import { ForkTsCheckerWebpackPlugin } from 'fork-ts-checker-webpack-plugin/lib/ForkTsCheckerWebpackPlugin'
 import { VueLoaderPlugin } from 'vue-loader'
-import { pathExistsSync, writeFileSync } from 'fs-extra'
+import { pathExistsSync } from 'fs-extra'
 import { WebpackPluginInstance } from 'webpack'
 import { isDev } from '../shared/env'
 import { accessProperty } from '../shared/fsUtils'
@@ -175,7 +175,7 @@ export function createBaseConfig() {
 				{
 					test: /\.less$/,
 					use: [...createCSSLoaders(), 'less-loader'],
-				},
+				}
 			],
 		},
 	}

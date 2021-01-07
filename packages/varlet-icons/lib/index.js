@@ -29,7 +29,7 @@ async function build() {
 
 	await Promise.all([ensureDir(FONTS_DIR), ensureDir(CSS_DIR)])
 
-	const iconNames = readdirSync(SVG_DIR).map((svgName) => {
+	const icons = readdirSync(SVG_DIR).map((svgName) => {
 		const i = svgName.indexOf('-')
 		const extIndex = svgName.lastIndexOf('.')
 
@@ -58,7 +58,7 @@ async function build() {
   -webkit-font-smoothing: antialiased;
 }
 
-${iconNames
+${icons
 	.map((icon) => {
 		return `.${namespace}-${icon.name}::before {
   content: "\\${icon.pointCode}";
@@ -66,13 +66,23 @@ ${iconNames
 	})
 	.join('\n\n')}
 `
-	await Promise.all([
+
+  const iconNames = icons.map((iconName) => `  "${iconName.name}"`)
+
+  const indexTemplate = `\
+module.exports = [
+${iconNames.join(',\n')}
+]
+`
+
+  await Promise.all([
 		writeFile(resolve(FONTS_DIR, `${fileName}-webfont.ttf`), ttf),
 		writeFile(resolve(FONTS_DIR, `${fileName}-webfont.eot`), eot),
 		writeFile(resolve(FONTS_DIR, `${fileName}-webfont.woff`), woff),
 		writeFile(resolve(FONTS_DIR, `${fileName}-webfont.woff2`), woff2),
 		writeFile(resolve(CSS_DIR, `${fileName}.css`), cssTemplate),
 		writeFile(resolve(CSS_DIR, `${fileName}.less`), cssTemplate),
+    writeFile(resolve(DIST_DIR, 'index.js'), indexTemplate)
 	])
 
 	console.log('build success!')

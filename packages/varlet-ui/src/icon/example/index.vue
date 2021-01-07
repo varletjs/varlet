@@ -1,49 +1,85 @@
 <template>
-	<var-icon :name="name" :transition="transition" color="red" size="30px" />
+  <div class="example">
+    <app-type>icons列表</app-type>
+    <div class="example__icons">
+      <div
+        class="example__icon"
+        v-for="iconName in iconNames"
+        :key="iconName"
+        v-ripple
+        :data-clipboard-text="iconName"
+      >
+        <var-icon :name="iconName" />
+        <div class="example__icon-name">
+          {{ iconName }}
+        </div>
+      </div>
+    </div>
 
-	<div>
-		<var-button @click="toggle">toggle</var-button>
-		<var-button @click="toggleTransition">toggle transition</var-button>
-	</div>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref } from 'vue'
+import { defineComponent, reactive, onMounted } from 'vue'
 import Icon from '..'
 import Button from '../../button'
+import Ripple from '../../ripple'
+import Snackbar from '../../snackbar'
+
+const Clipboard = require('clipboard')
 
 export default defineComponent({
-	name: 'IconExample',
-	components: {
-		[Icon.name]: Icon,
-		[Button.name]: Button,
-	},
-	setup() {
-		const name: Ref<string> = ref('checkbox-marked-circle')
-		const show: Ref<boolean> = ref(true)
-		const transition: Ref<number> = ref(0)
+  name: 'IconExample',
+  components: {
+    [Icon.name]: Icon,
+    [Button.name]: Button
+  },
+  directives: { Ripple },
+  setup() {
+    const iconNames: string[] = reactive(require('@varlet/icons'))
 
-		return {
-			name,
-			show,
-			transition,
-			toggleTransition() {
-				transition.value = 300
+    onMounted(() => {
+      const clipboard = new Clipboard('.example__icon', {
+        text(trigger) {
+          const iconName = trigger.getAttribute('data-clipboard-text')
+          return `<var-icon name="${iconName}" />`
+        }
+      })
 
-				name.value = name.value === 'checkbox-marked-circle' ? 'information-outline' : 'checkbox-marked-circle'
-			},
-			toggle() {
-				transition.value = 0
+      clipboard.on('success', (e: any) => {
+        Snackbar.success(`成功完成复制${e.text}`)
+      })
+    })
 
-				name.value = name.value === 'checkbox-marked-circle' ? 'information-outline' : 'checkbox-marked-circle'
-			},
-		}
-	},
+    return {
+      iconNames
+    }
+  }
 })
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .example {
-	background: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__icons {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 33%;
+    padding: 10px;
+  }
+
+  &__icon-name {
+    font-size: 12px;
+    text-align: center;
+  }
 }
 </style>
