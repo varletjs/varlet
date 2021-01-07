@@ -13,7 +13,7 @@
 		>
 			<var-icon :name="iconName" :transition="200" :class="iconClass" />
 		</div>
-		<slot></slot>
+		<slot />
 	</div>
 </template>
 
@@ -36,7 +36,6 @@ export default defineComponent({
 	components: {
 		[Icon.name]: Icon,
 	},
-	inheritAttrs: false,
 	props,
 	setup(props) {
 		const freshNode: Ref<HTMLElement | null> = ref(null)
@@ -138,5 +137,5 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import './pull-refresh';
+@import './pullRefresh';
 </style>
