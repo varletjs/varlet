@@ -6,55 +6,56 @@
       :class="[
 				`var-chip--${size}`,
 				block ? 'var--flex' : 'var--inline-flex',
-				{'var-chip--round':round},
 				plain ? `var-chip--plain-${type}` : `var-chip--${type}`,
-				plain ? `var-chip--plain` : `var-elevation--2`,
+				{ 'var-chip--round' : round,
+				  'var-chip--plain' : plain }
 			]"
-      :style="{
-        color: fontColor,
-        background:background,
-        borderColor: borderColor,
-        }"
+      :style=controlStyle
+      v-bind="$attrs"
     >
-        <slot name="left"></slot>
+      <span :class="[{ 'var-chip--left' : isLeft }]"><slot name="left"></slot></span>
 			<slot/>
-			<slot name="right"></slot>
+      <span :class="[{ 'var-chip--right' : isRight }]"><slot name="right"></slot></span>
 			<span v-if="closable " class="var-chip--close" @click="$props.onClose">
-        <var-icon :name="`${iconName ? iconName: 'close-circle'}`"></var-icon>
+        <var-icon :name="`${iconName ? iconName : 'close-circle'}`"></var-icon>
       </span>
 		</span>
   </transition>
 </template>
 
 <script lang="ts">
-	import Ripple from '../ripple'
-	import { defineComponent, Ref, ref } from 'vue'
-	import { props } from './props'
-	import Icon from '../icon'
+import Ripple from '../ripple'
+import { defineComponent, Ref, ref, computed, ComputedRef } from 'vue'
+import { props } from './props'
+import Icon from '../icon'
 
-	export default defineComponent({
-		name: 'VarChip',
-		components: {
-			[Icon.name]: Icon
-		},
-		directives: { Ripple },
-		props,
-		setup(props) {
-			const fontColor: Ref<string|null> = ref(null)
-			const background: Ref<string|null> = ref(null)
-			const borderColor: Ref<string|null> = ref(null)
-			fontColor.value = props.plain ? props.textColor || props.color || null : props.color ? props.textColor || '#fff' : null
-			background.value = !props.plain ? props.color || null : null
-			borderColor.value = props.plain ? props.color || null : null
-			return {
-				fontColor,
-				background,
-				borderColor
-			}
-		}
-	})
+export default defineComponent({
+  name: 'VarChip',
+  components: {
+    [Icon.name]: Icon
+  },
+  directives: { Ripple },
+  inheritAttrs: false,
+  props,
+  setup(props, { slots }) {
+    const isRight: Ref<boolean> = ref(false)
+    const isLeft: Ref<boolean> = ref(false)
+    isRight.value = !!slots.right
+    isLeft.value = !!slots.left
+    const controlStyle = computed(() => ({
+      color: props.plain ? props.textColor || props.color || null : props.color ? props.textColor || '#fff' : null,
+      background: !props.plain ? props.color || null : null,
+      borderColor: props.plain ? props.color || null : null
+    }))
+    return {
+      controlStyle,
+      isRight,
+      isLeft
+    }
+  }
+})
 </script>
 
 <style lang="less">
-  @import './chip';
+@import './chip';
 </style>
