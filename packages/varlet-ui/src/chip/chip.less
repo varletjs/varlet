@@ -3,10 +3,10 @@
 @chip-border-radius: 2px;
 @chip-padding: 0px 4px;
 @chip-line-height: 32px;
-@chip-normal-padding: 8px 15px;
-@chip-large-padding: 11px 22px;
-@chip-small-padding: 5px 11px;
-@chip-mini-padding: 1px 9px;
+@chip-normal-padding: 8px 10px;
+@chip-large-padding: 11px 17px;
+@chip-small-padding: 5px 6px;
+@chip-mini-padding: 1px 4px;
 
 .var {
   &-fade-leave-to {
@@ -29,7 +29,7 @@
   line-height: 1;
 
   &--default {
-    color: inherit;
+    color: #676767;
     background: @color-background-base;
   }
 
@@ -121,17 +121,19 @@
   }
 
   &--close {
-    margin-left: 4px;
-    margin-right: -6px;
     cursor: pointer;
   }
-  &--left{
-    margin-left: -6px;
-    margin-right: 4px;
+
+  &--text-normal,&--text-large {
+    margin: 0 5px;
   }
-  &--right{
-    margin-left: 4px;
-    margin-right: -6px;
+
+  &--text-small {
+    margin: 0 3px;
+  }
+
+  &--text-mini {
+    margin: 0 2px;
   }
 
 }
