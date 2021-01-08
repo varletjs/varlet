@@ -1,5 +1,5 @@
 <template>
-	<transition :name="transitionName" @after-leave="resetTransitionHeight">
+	<transition :name="transitionName" @after-enter="resetTransitionHeight">
 		<div class="var-tab-item" ref="tabItemEl" v-show="show">
 			<slot />
 		</div>

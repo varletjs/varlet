@@ -1,7 +1,7 @@
 @import "../styles/var";
 
-@tabs-horizontal-height: 44px;
-@tabs-vertical-height: 66px;
+@tabs-item-horizontal-height: 44px;
+@tabs-item-vertical-height: 66px;
 @tabs-radius: 2px;
 @tabs-padding: 12px;
 
@@ -13,7 +13,6 @@
 .var-tabs {
   border-radius: @tabs-radius;
   background: @tabs-background;
-  padding: 0 @tabs-padding;
   overflow: hidden;
 
   &__tab-wrap {
@@ -25,25 +24,56 @@
   &__indicator {
     position: absolute;
     z-index: 10;
-    left: 0;
-    bottom: 0;
-    height: @tabs-indicator-size;
-    background: @tabs-indicator-background;
     transition-property: width, transform;
     transition-duration: .3s;
   }
 
-  &--scrollable {
-    overflow-x: auto;
-    overflow-y: hidden;
+  &--layout-horizontal {
+    flex-direction: row;
+
+    &-scrollable {
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    &-padding {
+      padding: 0 @tabs-padding;
+    }
+
+    &-indicator {
+      left: 0;
+      bottom: 0;
+      height: @tabs-indicator-size;
+      background: @tabs-indicator-background;
+    }
   }
 
-  &--horizontal {
-    height: @tabs-horizontal-height
+  &--layout-vertical {
+    flex-direction: column;
+
+    &-scrollable {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    &-padding {
+      padding: 0;
+    }
+
+    &-indicator {
+      left: 0;
+      top: 0;
+      width: @tabs-indicator-size;
+      background: @tabs-indicator-background;
+    }
   }
 
-  &--vertical {
-    height: @tabs-vertical-height;
+  &--item-horizontal {
+    height: @tabs-item-horizontal-height
+  }
+
+  &--item-vertical {
+    height: @tabs-item-vertical-height;
   }
 
   &--fixed-bottom {

@@ -40,7 +40,7 @@ export default defineComponent({
 
     onMounted(() => {
       const clipboard = new Clipboard('.example__icon', {
-        text(trigger) {
+        text(trigger: any) {
           const iconName = trigger.getAttribute('data-clipboard-text')
           return `<var-icon name="${iconName}" />`
         }

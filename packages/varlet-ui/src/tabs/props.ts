@@ -11,10 +11,15 @@ export const props = {
 		type: Function,
 	},
 	// 排列方向
-	direction: {
+	layoutDirection: {
 		type: String,
 		default: 'horizontal',
 	},
+  // 内容排列方向
+  itemDirection: {
+	  type: String,
+    default: 'horizontal'
+  },
 	// 底部固定
 	fixedBottom: {
 		type: Boolean,

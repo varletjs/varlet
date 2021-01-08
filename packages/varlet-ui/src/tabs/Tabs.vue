@@ -2,21 +2,33 @@
 	<component :is="sticky ? 'var-sticky' : Transition" :offset-top="sticky ? offsetTop : null">
 		<div
 			class="var-tabs var--box"
-			:class="[`var-tabs--${direction}`, `var-elevation--${elevation}`, fixedBottom ? 'var-tabs--fixed-bottom' : null]"
+			:class="[
+			  `var-tabs--item-${itemDirection}`,
+			  `var-elevation--${elevation}`,
+			  `var-tabs--layout-${layoutDirection}-padding`,
+			   fixedBottom ? 'var-tabs--fixed-bottom' : null
+			]"
 			:style="{
 				background: color,
 			}"
 			v-bind="$attrs"
 		>
-			<div class="var-tabs__tab-wrap" ref="scrollerEl" :class="[scrollable ? 'var-tabs--scrollable' : null]">
+			<div
+        class="var-tabs__tab-wrap"
+        ref="scrollerEl"
+        :class="[
+          scrollable ? `var-tabs--layout-${layoutDirection}-scrollable` : null,
+          `var-tabs--layout-${layoutDirection}`
+        ]">
 				<slot />
 
 				<div
 					class="var-tabs__indicator"
+          :class="[`var-tabs--layout-${layoutDirection}-indicator`]"
 					:style="{
-						width: indicatorWidth,
-						height: indicatorSize,
-						transform: `translateX(${indicatorX})`,
+						width: layoutDirection === 'horizontal' ? indicatorWidth : indicatorSize,
+						height: layoutDirection === 'horizontal' ? indicatorSize : indicatorHeight,
+						transform: layoutDirection === 'horizontal' ? `translateX(${indicatorX})` : `translateY(${indicatorY})`,
 						background: indicatorColor || activeColor,
 					}"
 				></div>
@@ -43,14 +55,18 @@ export default defineComponent({
 	props,
 	setup(props) {
 		const indicatorWidth: Ref<string> = ref('0px')
+		const indicatorHeight: Ref<string> = ref('0px')
 		const indicatorX: Ref<string> = ref('0px')
+		const indicatorY: Ref<string> = ref('0px')
+
 		const scrollable: Ref<boolean> = ref(false)
 		const scrollerEl: Ref<HTMLElement | null> = ref(null)
+
 		const active: ComputedRef<number | string> = computed(() => props.active)
 		const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
 		const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
 		const disabledColor: ComputedRef<string | undefined> = computed(() => props.disabledColor)
-		const direction: ComputedRef<string> = computed(() => props.direction)
+		const itemDirection: ComputedRef<string> = computed(() => props.itemDirection)
 		const { childProviders: tabProviders, bindChildren } = useChildren<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
 		const { length } = useAtChildrenCounter(TABS_COUNT_TAB_KEY)
 
@@ -89,8 +105,13 @@ export default defineComponent({
 		}
 
 		const moveIndicator = ({ element }: TabProvider) => {
-			indicatorWidth.value = `${element.value?.offsetWidth}px`
-			indicatorX.value = `${element.value?.offsetLeft}px`
+		  if (props.layoutDirection === 'horizontal') {
+        indicatorWidth.value = `${element.value?.offsetWidth}px`
+        indicatorX.value = `${element.value?.offsetLeft}px`
+      } else {
+        indicatorHeight.value = `${element.value?.offsetHeight}px`
+        indicatorY.value = `${element.value?.offsetTop}px`
+      }
 		}
 
 		const scrollToCenter = ({ element }: TabProvider) => {
@@ -100,11 +121,20 @@ export default defineComponent({
 
 			const scroller: HTMLElement = scrollerEl.value as HTMLElement
 			const el = element.value as HTMLElement
-			const left: number = el.offsetLeft + el.offsetWidth / 2 - scroller.offsetWidth / 2
-			scroller.scrollTo({
-				left,
-				behavior: 'smooth',
-			})
+
+      if (props.layoutDirection === 'horizontal') {
+        const left: number = el.offsetLeft + el.offsetWidth / 2 - scroller.offsetWidth / 2
+        scroller.scrollTo({
+          left,
+          behavior: 'smooth',
+        })
+      } else {
+        const top: number = el.offsetTop + el.offsetHeight / 2 - scroller.offsetHeight / 2
+        scroller.scrollTo({
+          top,
+          behavior: 'smooth',
+        })
+      }
 		}
 
 		const resize = () => {
@@ -123,7 +153,7 @@ export default defineComponent({
 			activeColor,
 			inactiveColor,
 			disabledColor,
-			direction,
+      itemDirection,
 			resize,
 			onTabClick,
 		}
@@ -139,7 +169,9 @@ export default defineComponent({
 
 		return {
 			indicatorWidth,
+      indicatorHeight,
 			indicatorX,
+      indicatorY,
 			scrollable,
 			scrollerEl,
 			Transition,

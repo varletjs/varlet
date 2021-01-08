@@ -16,7 +16,7 @@ import { useChildren, useAtChildrenCounter } from '../utils/components'
 import { TABS_ITEMS_BIND_TAB_ITEM_KEY, TabsItemsProvider, TABS_ITEMS_COUNT_TAB_ITEM_KEY } from './provide'
 import { props } from './props'
 import { TabItemProvider } from '../tab-item/provide'
-import { debounce, isNumber } from '../utils/shared'
+import { isNumber } from '../utils/shared'
 
 export default defineComponent({
 	name: 'VarTabsItems',
@@ -30,9 +30,9 @@ export default defineComponent({
 		)
 		const { length } = useAtChildrenCounter(TABS_ITEMS_COUNT_TAB_ITEM_KEY)
 
-		const resetTransitionHeight = debounce(() => {
-			transitionHeight.value = 'auto'
-		}, 1000)
+		const resetTransitionHeight = () => {
+      transitionHeight.value = 'auto'
+    }
 
 		const matchName = (active: number | string | undefined): TabItemProvider | undefined => {
 			return tabItemProviders.find(({ name }: TabItemProvider) => active === name.value)
@@ -92,16 +92,13 @@ export default defineComponent({
 					return
 				}
 
-				const { element: oldElement, index: oldIndex } = oldActiveTabItemProvider
-				const { element: newElement, index: newIndex } = newActiveTabItemProvider
+				const { index: oldIndex } = oldActiveTabItemProvider
+				const { element, index: newIndex } = newActiveTabItemProvider
 
 				tabItemProviders.forEach(({ transition }) => transition(newIndex.value, oldIndex.value))
 
 				nextTick().then(() => {
-					transitionHeight.value = `${Math.max(
-						(newElement.value as HTMLElement).offsetHeight,
-						(oldElement.value as HTMLElement).offsetHeight
-					)}px`
+					transitionHeight.value = `${(element.value as HTMLElement).offsetHeight}px`
 				})
 			}
 		)
