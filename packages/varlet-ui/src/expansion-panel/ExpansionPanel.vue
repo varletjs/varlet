@@ -68,7 +68,6 @@ export default defineComponent({
 		const name: ComputedRef<number | string | undefined> = computed(() => props.name)
 
 		const init = (accordion: boolean) => {
-			Array.prototype.slice()
 			if (!active.value || (accordion && isArray(active.value))) return
 			const isShow = isArray(active.value)
 				? (active.value as Array<number | string | undefined>).includes(props.name)

@@ -14,7 +14,7 @@ export default defineComponent({
 
 <style lang="less">
 .app-type {
-	padding: 20px 0;
+	padding: 12px 0;
 	color: #888;
 	font-size: 14px;
 }

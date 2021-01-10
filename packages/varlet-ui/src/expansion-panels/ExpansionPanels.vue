@@ -29,13 +29,16 @@ export default defineComponent({
 		const { length } = useAtChildrenCounter(EXPANSION_PANELS_COUNT_EXPANSION_PANEL_KEY)
 
 		const checkValue = () => {
-			if (!props.modelValue) return false
-			if (!props.accordion && isArray(props.modelValue)) return false
-			return !(props.accordion && isArray(props.modelValue))
+			if (!props.accordion && !isArray(props.modelValue)) {
+				console.warn('[Varlet] ExpansionPanels: type of prop "modelValue" should be Array')
+			}
+			if (props.accordion && isArray(props.modelValue)) {
+				console.warn('[Varlet] ExpansionPanels: type of prop "modelValue" should be String or Number')
+			}
 		}
 
 		const getValue = (value: number | string | undefined, isExpand: boolean) => {
-			if (!checkValue()) console.warn('[Varlet] ExpansionPanels: type of prop "modelValue" should be Array')
+			checkValue()
 			if (isExpand) return props.accordion ? value : [...(props.modelValue as Array<string | number>), value]
 			return props.accordion
 				? undefined
@@ -64,6 +67,7 @@ export default defineComponent({
 			() => length.value,
 			() =>
 				nextTick(() => {
+					checkValue()
 					ExpansionPanelProvider.forEach(({ init }) => init(props.accordion))
 				})
 		)

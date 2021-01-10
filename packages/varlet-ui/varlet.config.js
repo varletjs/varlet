@@ -82,13 +82,20 @@ module.exports = {
 				},
 				doc: 'chip',
 			},
-      {
-        text: {
-          zh_CN: 'Badge 徽标',
-          en_US: 'Badge',
-        },
-        doc: 'badge',
-      },
+			{
+				text: {
+					zh_CN: 'Badge 徽标',
+					en_US: 'Badge',
+				},
+				doc: 'badge',
+			},
+			{
+				text: {
+					zh_CN: 'Expansion panels 拓展面板',
+					en_US: 'Expansion panels',
+				},
+				doc: 'Expansion-panels',
+			},
 		],
 		language: 'zh_CN',
 	},
