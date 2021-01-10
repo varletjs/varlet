@@ -11,6 +11,10 @@ export const props = {
 	onChange: {
 		type: Function,
 	},
+	offset: {
+		type: Boolean,
+		default: true,
+	},
 	'onUpdate:modelValue': {
 		type: Function,
 	},

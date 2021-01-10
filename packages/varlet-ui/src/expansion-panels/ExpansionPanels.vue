@@ -21,6 +21,7 @@ export default defineComponent({
 	props,
 	setup(props) {
 		const active: ComputedRef<number | string | Array<number | string> | undefined> = computed(() => props.modelValue)
+		const offset: ComputedRef<boolean> = computed(() => props.offset)
 		const { bindChildren, childProviders: ExpansionPanelProvider } = useChildren<
 			ExpansionPanelsProvider,
 			ExpansionPanelProvider
@@ -53,6 +54,7 @@ export default defineComponent({
 		}
 		const expansionPanelsProvider: ExpansionPanelsProvider = {
 			active,
+			offset,
 			updateItem,
 		}
 

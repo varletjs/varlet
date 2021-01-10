@@ -2,6 +2,7 @@ import { ComputedRef } from 'vue'
 
 export interface ExpansionPanelsProvider {
 	active: ComputedRef<number | string | Array<number | string> | undefined>
+	offset: ComputedRef<boolean>
 	updateItem: (value: number | string | undefined, isExpand: boolean) => void
 }
 

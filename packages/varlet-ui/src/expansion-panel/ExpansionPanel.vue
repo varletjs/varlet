@@ -2,7 +2,7 @@
 	<div
 		:class="{
 			'var-expansion-panel': true,
-			'var-expansion-panel__active': isOpen,
+			'var-expansion-panel__active': offset && isOpen,
 			'var-expansion-panel__disable': disabled,
 		}"
 	>
@@ -63,7 +63,7 @@ export default defineComponent({
 		const show: Ref<boolean> = ref(false)
 		const isOpen: Ref<boolean> = ref(false)
 		const isLock: Ref<boolean> = ref(false)
-		const { active, updateItem } = ExpansionPanelsProvider
+		const { active, offset, updateItem } = ExpansionPanelsProvider
 
 		const name: ComputedRef<number | string | undefined> = computed(() => props.name)
 
@@ -125,6 +125,7 @@ export default defineComponent({
 		return {
 			show,
 			isOpen,
+			offset,
 			toggle,
 			contentEl,
 			closePanel,
