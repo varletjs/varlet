@@ -1,3 +1,7 @@
+import { inBrowser } from './shared'
+
+const root = (inBrowser ? window : global) as Window
+
 export function getTop(element: HTMLElement): number {
 	const { top } = element.getBoundingClientRect()
 
@@ -81,4 +85,8 @@ export function remToPx(rem: string | number): number {
 	const rootFontSize = window.getComputedStyle(document.documentElement).fontSize
 
 	return value * parseFloat(rootFontSize)
+}
+
+export function requestAnimationFrame(fn: FrameRequestCallback): number {
+	return root.requestAnimationFrame ? root.requestAnimationFrame(fn) : root.setTimeout(fn, 16)
 }
