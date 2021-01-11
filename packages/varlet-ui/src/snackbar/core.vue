@@ -5,10 +5,7 @@
 				<slot>{{ content }}</slot>
 			</div>
 			<div class="var-snackbar__action">
-				<var-icon v-if="type === 'success'" :transition="200" name="checkbox-marked-circle" />
-				<var-icon v-if="type === 'warning'" :transition="200" name="warning" />
-				<var-icon v-if="type === 'info'" :transition="200" name="information" />
-				<var-icon v-if="type === 'error'" :transition="200" name="error" />
+				<var-icon v-if="iconName" :transition="200" :name="iconName" />
 				<var-loading v-if="type === 'loading'" :type="loadingType" :size="loadingSize" />
 				<slot name="action" />
 			</div>
@@ -49,6 +46,22 @@ export default defineComponent({
 			const typeClass = type && SNACKBAR_TYPE.includes(type) ? ` var-snackbar__wrapper-${type}` : ''
 			return `${baseClass}${verticalClass}${typeClass}`
 		})
+
+		const iconName = computed(() => {
+			switch (props.type) {
+				case 'success':
+					return 'checkbox-marked-circle'
+				case 'warning':
+					return 'warning'
+				case 'info':
+					return 'information'
+				case 'error':
+					return 'error'
+				default:
+					return ''
+			}
+		})
+
 		watch(
 			() => props.show,
 			(show) => {
@@ -84,6 +97,7 @@ export default defineComponent({
 		return {
 			snackbarStyle,
 			snackbarClass,
+			iconName,
 		}
 	},
 })
