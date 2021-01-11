@@ -8,11 +8,15 @@ export interface CacheInstance<T> {
 	remove(key: T): void
 }
 
+export const inBrowser = typeof window !== 'undefined'
+
 export const isString = (val: unknown): val is string => typeof val === 'string'
 
 export const isNumber = (val: unknown): val is number => typeof val === 'number'
 
 export const isBaseObject = (val: unknown) => Object.prototype.toString.call(val) === '[object Object]'
+
+export const isArray = (val: unknown): val is Array<any> => Array.isArray(val)
 
 export const removeItem = (arr: Array<unknown>, item: unknown) => {
 	if (arr.length) {
