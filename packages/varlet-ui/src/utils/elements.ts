@@ -1,7 +1,3 @@
-import { inBrowser } from './shared'
-
-const root = (inBrowser ? window : global) as Window
-
 export function getTop(element: HTMLElement): number {
 	const { top } = element.getBoundingClientRect()
 
@@ -88,5 +84,5 @@ export function remToPx(rem: string | number): number {
 }
 
 export function requestAnimationFrame(fn: FrameRequestCallback): number {
-	return root.requestAnimationFrame ? root.requestAnimationFrame(fn) : root.setTimeout(fn, 16)
+	return window.requestAnimationFrame ? window.requestAnimationFrame(fn) : window.setTimeout(fn, 16)
 }
