@@ -11,12 +11,12 @@ export const props = {
 		type: Function,
 	},
 	// 排列方向
-	layoutDirection: {
+	tabsDirection: {
 		type: String,
 		default: 'horizontal',
 	},
   // 内容排列方向
-  itemDirection: {
+  tabDirection: {
 	  type: String,
     default: 'horizontal'
   },

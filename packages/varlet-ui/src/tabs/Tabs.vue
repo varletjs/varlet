@@ -3,9 +3,9 @@
 		<div
 			class="var-tabs var--box"
 			:class="[
-			  `var-tabs--item-${itemDirection}`,
+			  `var-tabs--item-${tabDirection}`,
 			  `var-elevation--${elevation}`,
-			  `var-tabs--layout-${layoutDirection}-padding`,
+			  `var-tabs--layout-${tabsDirection}-padding`,
 			   fixedBottom ? 'var-tabs--fixed-bottom' : null
 			]"
 			:style="{
@@ -17,18 +17,18 @@
         class="var-tabs__tab-wrap"
         ref="scrollerEl"
         :class="[
-          scrollable ? `var-tabs--layout-${layoutDirection}-scrollable` : null,
-          `var-tabs--layout-${layoutDirection}`
+          scrollable ? `var-tabs--layout-${tabsDirection}-scrollable` : null,
+          `var-tabs--layout-${tabsDirection}`
         ]">
 				<slot />
 
 				<div
 					class="var-tabs__indicator"
-          :class="[`var-tabs--layout-${layoutDirection}-indicator`]"
+          :class="[`var-tabs--layout-${tabsDirection}-indicator`]"
 					:style="{
-						width: layoutDirection === 'horizontal' ? indicatorWidth : indicatorSize,
-						height: layoutDirection === 'horizontal' ? indicatorSize : indicatorHeight,
-						transform: layoutDirection === 'horizontal' ? `translateX(${indicatorX})` : `translateY(${indicatorY})`,
+						width: tabsDirection === 'horizontal' ? indicatorWidth : indicatorSize,
+						height: tabsDirection === 'horizontal' ? indicatorSize : indicatorHeight,
+						transform: tabsDirection === 'horizontal' ? `translateX(${indicatorX})` : `translateY(${indicatorY})`,
 						background: indicatorColor || activeColor,
 					}"
 				></div>
@@ -66,7 +66,7 @@ export default defineComponent({
 		const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
 		const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
 		const disabledColor: ComputedRef<string | undefined> = computed(() => props.disabledColor)
-		const itemDirection: ComputedRef<string> = computed(() => props.itemDirection)
+		const tabDirection: ComputedRef<string> = computed(() => props.tabDirection)
 		const { childProviders: tabProviders, bindChildren } = useChildren<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
 		const { length } = useAtChildrenCounter(TABS_COUNT_TAB_KEY)
 
@@ -87,15 +87,13 @@ export default defineComponent({
 		}
 
 		const matchBoundary = (): TabProvider | undefined => {
-			if (length.value === 0) {
+			if (length.value === 0 || !isNumber(props.active)) {
 				return
 			}
 
-			isNumber(props.active)
-				? props.active > length.value - 1
-					? props['onUpdate:active']?.(length.value - 1)
-					: props['onUpdate:active']?.(0)
-				: null
+      const boundary: number = props.active > length.value - 1 ? length.value - 1 : 0
+      props['onUpdate:active']?.(boundary)
+      props.onChange?.(boundary)
 
 			return matchIndex()
 		}
@@ -105,7 +103,7 @@ export default defineComponent({
 		}
 
 		const moveIndicator = ({ element }: TabProvider) => {
-		  if (props.layoutDirection === 'horizontal') {
+		  if (props.tabsDirection === 'horizontal') {
         indicatorWidth.value = `${element.value?.offsetWidth}px`
         indicatorX.value = `${element.value?.offsetLeft}px`
       } else {
@@ -122,7 +120,7 @@ export default defineComponent({
 			const scroller: HTMLElement = scrollerEl.value as HTMLElement
 			const el = element.value as HTMLElement
 
-      if (props.layoutDirection === 'horizontal') {
+      if (props.tabsDirection === 'horizontal') {
         const left: number = el.offsetLeft + el.offsetWidth / 2 - scroller.offsetWidth / 2
         scroller.scrollTo({
           left,
@@ -153,7 +151,7 @@ export default defineComponent({
 			activeColor,
 			inactiveColor,
 			disabledColor,
-      itemDirection,
+      tabDirection,
 			resize,
 			onTabClick,
 		}

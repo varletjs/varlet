@@ -47,7 +47,7 @@
 		<app-type>垂直布局</app-type>
 		<var-tabs
 			style="width: 345px"
-      item-direction="vertical"
+      tab-direction="vertical"
 			color="rgb(98,0,234)"
 			active-color="#fff"
 			inactive-color="rgb(193,155,247)"
@@ -67,7 +67,7 @@
 			active-color="#fff"
 			inactive-color="rgb(193,155,247)"
 			indicator-size="0"
-			item-direction="vertical"
+			tab-direction="vertical"
 			fixed-bottom
 			:elevation="4"
 			v-model:active="activeBottom"
@@ -94,7 +94,7 @@
         color="rgb(98,0,234)"
         active-color="#fff"
         inactive-color="rgb(193,155,247)"
-        layout-direction="vertical"
+        tabs-direction="vertical"
         :elevation="2"
         v-model:active="activeRelation"
         @change="handleChange"

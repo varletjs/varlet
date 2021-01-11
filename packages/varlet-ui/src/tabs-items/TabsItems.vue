@@ -43,15 +43,13 @@ export default defineComponent({
 		}
 
 		const matchBoundary = (active: number | string | undefined): TabItemProvider | undefined => {
-			if (length.value === 0) {
+			if (length.value === 0 || !isNumber(active)) {
 				return
 			}
 
-			isNumber(active)
-				? active > length.value - 1
-					? props['onUpdate:active']?.(length.value - 1)
-					: props['onUpdate:active']?.(0)
-				: null
+      const boundary: number = active > length.value - 1 ? length.value - 1 : 0
+      props['onUpdate:active']?.(boundary)
+      props.onChange?.(boundary)
 
 			return matchIndex(props.active)
 		}

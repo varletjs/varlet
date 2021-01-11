@@ -1,8 +1,8 @@
 <template>
   <transition name="var-fade">
     <span
+      v-bind="$attrs"
       v-ripple="{ disabled }"
-      class="var-chip var--box"
       :class="[
 				`var-chip--${size}`,
 				block ? 'var--flex' : 'var--inline-flex',
@@ -10,12 +10,12 @@
 				{ 'var-chip--round' : round,
 				  'var-chip--plain' : plain }
 			]"
-      :style=controlStyle
-      v-bind="$attrs"
+      :style="controlStyle()"
+      class="var-chip var--box"
     >
       <slot name="left"></slot>
 			<span :class="[`var-chip--text-${size}`]">
-        <slot/>
+        <slot />
       </span>
       <slot name="right"></slot>
 			<span v-if="closable " class="var-chip--close" @click="$props.onClose">
@@ -40,11 +40,15 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const controlStyle = computed(() => ({
-      color: props.plain ? props.textColor || props.color || null : props.color ? props.textColor || '#fff' : null,
+    const controlStyle = () => ({
+      color: props.plain
+        ? props.textColor || props.color || null
+        : props.color
+          ? props.textColor || '#fff'
+          : props.textColor || null,
       background: !props.plain ? props.color || null : null,
       borderColor: props.plain ? props.color || null : null
-    }))
+    })
     return {
       controlStyle
     }

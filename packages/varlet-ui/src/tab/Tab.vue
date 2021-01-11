@@ -3,7 +3,7 @@
 		class="var-tab var--box"
 		ref="tabEl"
 		v-ripple="{ disabled }"
-		:class="[computeColorClass(), `var-tab--${itemDirection}`]"
+		:class="[computeColorClass(), `var-tab--${tabDirection}`]"
 		:style="{
 			color: computeColorStyle(),
 		}"
@@ -40,7 +40,7 @@ export default defineComponent({
 
 		bindParent(tabProvider)
 
-		const { onTabClick, active, activeColor, inactiveColor, disabledColor, itemDirection, resize } = tabsProvider
+		const { onTabClick, active, activeColor, inactiveColor, disabledColor, tabDirection, resize } = tabsProvider
 
 		const computeColorStyle = () => {
 			return props.disabled
@@ -75,7 +75,7 @@ export default defineComponent({
 			active,
 			activeColor,
 			inactiveColor,
-      itemDirection,
+      tabDirection,
 			computeColorStyle,
 			computeColorClass,
 			handleClick,
