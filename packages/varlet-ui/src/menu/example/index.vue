@@ -47,7 +47,6 @@ export default defineComponent({
 
 <style scoped lang="less">
 .list {
-  background: #fff;
 
   .item {
     width: 70vw;

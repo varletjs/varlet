@@ -28,6 +28,7 @@ export default defineComponent({
 	setup(props) {
 		const tabEl: Ref<HTMLElement | null> = ref(null)
 		const name: ComputedRef<string | number | undefined> = computed(() => props.name)
+		const disabled: ComputedRef<boolean> = computed(() => props.disabled)
 		const element: ComputedRef<HTMLElement | null> = computed(() => tabEl.value)
 		const { parentProvider: tabsProvider, bindParent } = useParent<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
 		const { index } = useAtParentIndex(TABS_COUNT_TAB_KEY)
@@ -35,6 +36,7 @@ export default defineComponent({
 		const tabProvider: TabProvider = {
 			name,
 			index,
+      disabled,
 			element,
 		}
 

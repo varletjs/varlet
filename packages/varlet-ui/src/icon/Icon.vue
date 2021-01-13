@@ -1,16 +1,29 @@
 <template>
+  <img
+    class="var-icon__image"
+    :class="[tickTransition ? 'var-icon--hidden' : null]"
+    :style="{
+			transition: `all ${transition}ms`,
+		}"
+    :src="nextName"
+    v-if="isURL(name)"
+    v-bind="$attrs"
+  >
+
 	<i
 		class="var-icon"
 		:class="[`${namespace}--set`, `${namespace}-${nextName}`, tickTransition ? 'var-icon--hidden' : null]"
 		:style="{
 			transition: `all ${transition}ms`,
 		}"
+    v-else
 		v-bind="$attrs"
 	/>
 </template>
 
 <script lang="ts">
 import { defineComponent, watch, ref, Ref, nextTick } from 'vue'
+import { isURL } from '../utils/shared'
 import { props } from './props'
 
 export default defineComponent({
@@ -44,6 +57,7 @@ export default defineComponent({
 		)
 
 		return {
+      isURL,
 			nextName,
 			tickTransition,
 		}

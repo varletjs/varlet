@@ -50,17 +50,7 @@ export function createBabelConfig() {
 	return {
 		loader: 'babel-loader',
 		options: {
-			presets: [
-				[
-					'@babel/preset-env',
-					{
-						targets: {
-							chrome: '58',
-							ie: '11',
-						},
-					},
-				],
-			],
+			presets: ['@babel/preset-env'],
 			plugins: ['@babel/plugin-transform-runtime'],
 		},
 	}

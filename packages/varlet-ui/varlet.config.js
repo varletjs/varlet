@@ -96,6 +96,62 @@ module.exports = {
 				},
 				doc: 'Expansion-panels',
 			},
+      {
+        text: {
+          zh_CN: 'Tabs 选项卡',
+          en_US: 'Tabs',
+        },
+        doc: 'tabs',
+      },
+      {
+        text: {
+          zh_CN: 'List 无限滚动列表',
+          en_US: 'List',
+        },
+        doc: 'list',
+      },
+      {
+        text: {
+          zh_CN: 'Sticky 粘性布局',
+          en_US: 'Sticky',
+        },
+        doc: 'sticky',
+      },
+      {
+        text: {
+          zh_CN: 'Menu 菜单',
+          en_US: 'Menu',
+        },
+        doc: 'menu',
+      },
+      {
+        text: {
+          zh_CN: 'Lazy 懒加载',
+          en_US: 'Lazy',
+        },
+        doc: 'lazy',
+      },
+      {
+        text: {
+          zh_CN: 'Dialog 对话框',
+          en_US: 'Dialog',
+        },
+        doc: 'dialog',
+      },
+      {
+        text: {
+          zh_CN: 'Image 图片',
+          en_US: 'Image',
+        },
+        doc: 'image',
+      },
+      {
+        text: {
+          zh_CN: 'Icon 图标',
+          en_US: 'Icon',
+        },
+        doc: 'icon',
+      },
 		],
 		language: 'zh_CN',
 	},
