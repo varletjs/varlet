@@ -1,22 +1,16 @@
 <template>
-  <img
-    class="var-icon__image"
-    :class="[tickTransition ? 'var-icon--hidden' : null]"
-    :style="{
-			transition: `all ${transition}ms`,
-		}"
-    :src="nextName"
-    v-if="isURL(name)"
-    v-bind="$attrs"
-  >
-
-	<i
+  <component
+    :is="isURL(name) ? 'img' : 'i'"
 		class="var-icon"
-		:class="[`${namespace}--set`, `${namespace}-${nextName}`, tickTransition ? 'var-icon--hidden' : null]"
+		:class="[
+		  `${namespace}--set`,
+		  isURL(name) ? 'var-icon__image' : `${namespace}-${nextName}`,
+		  tickTransition ? 'var-icon--hidden' : null
+		]"
+    :src="nextName"
 		:style="{
 			transition: `all ${transition}ms`,
 		}"
-    v-else
 		v-bind="$attrs"
 	/>
 </template>

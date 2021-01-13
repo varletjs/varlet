@@ -16,7 +16,6 @@ import { useChildren, useAtChildrenCounter } from '../utils/components'
 import { TABS_ITEMS_BIND_TAB_ITEM_KEY, TabsItemsProvider, TABS_ITEMS_COUNT_TAB_ITEM_KEY } from './provide'
 import { props } from './props'
 import { TabItemProvider } from '../tab-item/provide'
-import { isNumber } from '../utils/shared'
 
 export default defineComponent({
 	name: 'VarTabsItems',
