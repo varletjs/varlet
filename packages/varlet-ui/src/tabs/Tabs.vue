@@ -137,7 +137,7 @@ export default defineComponent({
 
 		const resize = () => {
 			const tabProvider: TabProvider | undefined = matchName() || matchIndex() || matchBoundary()
-			if (!tabProvider) {
+      if (!tabProvider || tabProvider.disabled.value) {
 				return
 			}
 

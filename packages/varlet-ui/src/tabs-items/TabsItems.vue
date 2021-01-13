@@ -42,20 +42,8 @@ export default defineComponent({
 			return tabItemProviders.find(({ index }: TabItemProvider) => active === index.value)
 		}
 
-		const matchBoundary = (active: number | string | undefined): TabItemProvider | undefined => {
-			if (length.value === 0 || !isNumber(active)) {
-				return
-			}
-
-      const boundary: number = active > length.value - 1 ? length.value - 1 : 0
-      props['onUpdate:active']?.(boundary)
-      props.onChange?.(boundary)
-
-			return matchIndex(props.active)
-		}
-
 		const matchActive = (active: number | string | undefined): TabItemProvider | undefined => {
-			return matchName(active) || matchIndex(active) || matchBoundary(active)
+			return matchName(active) || matchIndex(active)
 		}
 
 		const resize = () => {

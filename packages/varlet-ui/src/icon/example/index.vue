@@ -16,11 +16,12 @@
       </div>
     </div>
 
+    <var-icon :name="iconImageName" :transition="300" size="30px"/>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, onMounted } from 'vue'
+import { defineComponent, reactive, onMounted, ref, Ref } from 'vue'
 import Icon from '..'
 import Button from '../../button'
 import Ripple from '../../ripple'
@@ -37,6 +38,7 @@ export default defineComponent({
   directives: { Ripple },
   setup() {
     const iconNames: string[] = reactive(require('@varlet/icons'))
+    const iconImageName: Ref<string> = ref('https://cn.vuejs.org/images/logo.png')
 
     onMounted(() => {
       const clipboard = new Clipboard('.example__icon', {
@@ -51,8 +53,13 @@ export default defineComponent({
       })
     })
 
+    setTimeout(() => {
+      iconImageName.value = 'https://note.youdao.com/yws/api/image/normal/1565792881686?userId=qqC7BBADB97773D2540188750E1F63884B'
+    }, 1000)
+
     return {
-      iconNames
+      iconNames,
+      iconImageName
     }
   }
 })
