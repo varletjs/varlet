@@ -7,14 +7,14 @@
           'var-badge__content',
           `var-badge--${type}`,
           position ? `var-badge--${position} var-badge--position` : null,
-          dotPosition,
+          dotPosition(),
           { 'var-badge--dot' : dot },
         ]"
         :style="{background : color}"
         v-bind="$attrs"
       >
         <var-icon v-if="icon" :name="icon"></var-icon>
-        <span v-else>{{ values }}</span>
+        <span v-else>{{ values() }}</span>
       </span>
     </transition>
     <slot></slot>
@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref, ref, computed, ComputedRef } from 'vue'
+import { defineComponent} from 'vue'
 import { props } from './props'
 import Icon from '../icon'
 
@@ -34,21 +34,20 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const values: ComputedRef<number | string | null> = computed(() => {
+    const values = () => {
       if (props.dot) {
         return null
       }
-      if (typeof props.value === 'number' && typeof props.maxValue === 'number') {
+      if (typeof props.value === 'number' && props.maxValue) {
         return (props.value > props.maxValue ? `${props.maxValue}+` : props.value)
       }
       return props.value
-    })
-    const dotPosition: ComputedRef<string | null> = computed(() => {
+    }
+    const dotPosition = () => {
       if (props.position && props.dot) {
         return props.position.indexOf('right') !== -1 ? 'var-badge--dot-right' : props.position.indexOf('left') !== -1 ? 'var-badge--dot-left' : null
       }
-      return null
-    })
+    }
     return {
       values,
       dotPosition

@@ -150,7 +150,14 @@ module.exports = {
           zh_CN: 'Icon 图标',
           en_US: 'Icon',
         },
-        doc: 'icon',
+        doc: 'icon'
+      },
+      {
+        text: {
+          zh_CN: 'Rate 评分',
+          en_US: 'Rate',
+        },
+        doc: 'rate'
       },
 		],
 		language: 'zh_CN',

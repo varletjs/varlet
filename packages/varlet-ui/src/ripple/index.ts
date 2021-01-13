@@ -1,4 +1,4 @@
-import { Directive, Plugin, App } from 'vue'
+import { Directive, Plugin, App, nextTick } from 'vue'
 import { DirectiveBinding } from '@vue/runtime-core'
 import './ripple.less'
 import '../styles/common.less'
