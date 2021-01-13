@@ -1,12 +1,14 @@
 @import "../styles/var";
 
 @chip-border-radius: 2px;
-@chip-padding: 0px 4px;
-@chip-line-height: 32px;
-@chip-normal-padding: 8px 10px;
-@chip-large-padding: 11px 17px;
-@chip-small-padding: 5px 6px;
-@chip-mini-padding: 1px 4px;
+@chip-normal-height: 32px;
+@chip-large-height: 40px;
+@chip-small-height: 24px;
+@chip-mini-height: 16px;
+@chip-normal-padding: 0px 10px;
+@chip-large-padding: 0px 17px;
+@chip-small-padding: 0px 6px;
+@chip-mini-padding: 0px 4px;
 
 .var {
   &-fade-leave-to {
@@ -103,21 +105,28 @@
   &--normal {
     font-size: @font-size-md;
     padding: @chip-normal-padding;
+    height: @chip-normal-height;
   }
 
   &--large {
     padding: @chip-large-padding;
     font-size: @font-size-lg;
+    height: @chip-large-height;
+
   }
 
   &--small {
     padding: @chip-small-padding;
     font-size: @font-size-sm;
+    height: @chip-small-height;
+
   }
 
   &--mini {
     padding: @chip-mini-padding;
     font-size: @font-size-xs;
+    height: @chip-mini-height;
+
   }
 
   &--close {

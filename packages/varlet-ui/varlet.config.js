@@ -96,6 +96,13 @@ module.exports = {
 				},
 				doc: 'Expansion-panels',
 			},
+      {
+        text: {
+          zh_CN: 'Rate 评分',
+          en_US: 'Rate',
+        },
+        doc: 'rate',
+      },
 		],
 		language: 'zh_CN',
 	},

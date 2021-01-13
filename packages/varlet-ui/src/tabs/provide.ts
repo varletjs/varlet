@@ -6,7 +6,7 @@ export interface TabsProvider {
 	activeColor: ComputedRef<string | undefined>
 	inactiveColor: ComputedRef<string | undefined>
 	disabledColor: ComputedRef<string | undefined>
-  tabDirection: ComputedRef<string>
+  itemDirection: ComputedRef<string>
 	resize(): void
 	onTabClick(tabProvider: TabProvider): void
 }
