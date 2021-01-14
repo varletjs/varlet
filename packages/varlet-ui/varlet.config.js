@@ -89,6 +89,13 @@ module.exports = {
 				},
 				doc: 'badge',
 			},
+      {
+        text: {
+          zh_CN: 'Rate 评分',
+          en_US: 'Rate',
+        },
+        doc: 'rate',
+      },
 			{
 				text: {
 					zh_CN: 'Expansion panels 拓展面板',

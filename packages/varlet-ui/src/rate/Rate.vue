@@ -11,7 +11,7 @@
           fontSize,
           marginRight: ind + 1 !== count ? marginRight : 0}"
         @click="handleClick(val.score,$event)"
-      ></var-icon>
+      />
     </div>
   </div>
 </template>
@@ -22,6 +22,15 @@ import { defineComponent, ref, Ref, watch } from 'vue'
 import { props } from './props'
 import Icon from '../icon'
 
+<<<<<<< HEAD
+=======
+interface labelValue {
+  type: string,
+  score: number,
+  color: string
+}
+
+>>>>>>> dffc1ddb710d3630f866a4199aaee97fb2be630e
 export default defineComponent({
   name: 'VarRate',
   components: {
@@ -31,6 +40,7 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
+<<<<<<< HEAD
     console.log(props.modelValue)
 
     interface labelValue {
@@ -39,6 +49,8 @@ export default defineComponent({
       color: string
     }
 
+=======
+>>>>>>> dffc1ddb710d3630f866a4199aaee97fb2be630e
     const valueList: Ref<labelValue[]> = ref([])
     const transformValue = (index: number, score: number) => {
       if (index <= score) {
@@ -92,4 +104,8 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+<<<<<<< HEAD
+=======
+@import './rate';
+>>>>>>> dffc1ddb710d3630f866a4199aaee97fb2be630e
 </style>

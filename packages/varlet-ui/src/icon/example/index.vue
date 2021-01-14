@@ -17,6 +17,8 @@
     </div>
 
     <var-icon :name="iconImageName" :transition="300" size="30px"/>
+
+    <var-icon name="star-half" />
   </div>
 </template>
 

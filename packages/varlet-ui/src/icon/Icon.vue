@@ -7,7 +7,7 @@
 		  isURL(name) ? 'var-icon__image' : `${namespace}-${nextName}`,
 		  tickTransition ? 'var-icon--hidden' : null
 		]"
-    :src="nextName"
+    :src="isURL(name) ? nextName : null"
 		:style="{
 			transition: `all ${transition}ms`,
 		}"
