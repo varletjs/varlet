@@ -12,7 +12,8 @@ export const isString = (val: unknown): val is string => typeof val === 'string'
 
 export const isNumber = (val: unknown): val is number => typeof val === 'number'
 
-export const isBaseObject = (val: unknown) => Object.prototype.toString.call(val) === '[object Object]'
+export const isBaseObject = (val: unknown): val is Record<string, any> =>
+	Object.prototype.toString.call(val) === '[object Object]'
 
 export const isArray = (val: unknown): val is Array<any> => Array.isArray(val)
 
