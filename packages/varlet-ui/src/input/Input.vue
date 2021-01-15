@@ -8,12 +8,12 @@
     <div
       class="var-input__controller"
       :class="[
-        focus ? 'var-input--focus': null,
+        isFocus ? 'var-input--focus': null,
         errorMessage ? 'var-input--error': null,
         disabled ? 'var-input--disabled' : null
       ]"
       :style="{
-        color: focus ? activeColor : inactiveColor
+        color: isFocus ? activeColor : inactiveColor
       }"
     >
       <slot name="prepend-icon">
@@ -28,6 +28,7 @@
       <div class="var-input__wrap">
         <input
           class="var-input__input"
+          ref="input"
           :class="[disabled ? 'var-input--disabled' : null]"
           :style="{
               textAlign,
@@ -90,7 +91,7 @@
         <div
           class="var-input__dot"
           :class="[
-            focus ? 'var-input--spread' : null,
+            isFocus ? 'var-input--spread' : null,
             disabled ? 'var-input--line-disabled' : null,
             errorMessage ? 'var-input--line-error': null
           ]"
@@ -119,8 +120,9 @@ export default defineComponent({
   props,
   setup(props) {
     const inputId: Ref<string> = ref(`var-input-${getCurrentInstance()!.uid}`)
-    const focus: Ref<boolean> = ref(false)
+    const isFocus: Ref<boolean> = ref(false)
     const errorMessage: Ref<string> = ref('')
+    const inputEl: Ref<HTMLInputElement | null> = ref(null)
 
     const isNumberValue: ComputedRef<boolean> = computed(() => isNumber(props.modelValue))
     const maxlengthText: ComputedRef<string> = computed(() => {
@@ -141,7 +143,7 @@ export default defineComponent({
       if (!props.hint && !isEmpty(props.modelValue)) {
         return 'var-input--placeholder-hidden'
       }
-      if (props.hint && (!isEmpty(props.modelValue) || focus.value)) {
+      if (props.hint && (!isEmpty(props.modelValue) || isFocus.value)) {
         return 'var-input--placeholder-hint'
       }
 
@@ -154,14 +156,14 @@ export default defineComponent({
         : value
     }
 
-    const validate = (): boolean => {
+    const validate = async (): Promise<boolean> => {
       if (!isArray(props.rules)) {
         return false
       }
 
-      return !props.rules.some((rule) => {
-        const res = rule(props.modelValue)
+      const resArr = await Promise.all(props.rules.map(rule => rule(props.modelValue)))
 
+      return !resArr.some((res) => {
         if (res !== true) {
           errorMessage.value = res.toString()
           return true
@@ -175,12 +177,12 @@ export default defineComponent({
       errorMessage.value = ''
     }
 
-    const validateWithTrigger = (trigger: ValidateTriggers) => {
-      nextTick().then(() => {
-        if (props.validateTrigger.includes(trigger)) {
-          validate() && (errorMessage.value = '')
-        }
-      })
+    const validateWithTrigger = async (trigger: ValidateTriggers) => {
+      await nextTick()
+
+      if (props.validateTrigger.includes(trigger)) {
+        await validate() && (errorMessage.value = '')
+      }
     }
 
     const handleFocus = (e: Event) => {
@@ -188,7 +190,7 @@ export default defineComponent({
         return
       }
 
-      focus.value = true
+      isFocus.value = true
       props.onFocus?.(e)
 
       validateWithTrigger('onFocus')
@@ -199,7 +201,7 @@ export default defineComponent({
         return
       }
 
-      focus.value = false
+      isFocus.value = false
       props.onBlur?.(e)
 
       validateWithTrigger('onBlur')
@@ -257,9 +259,18 @@ export default defineComponent({
       props.onClickPrependIcon?.(e)
     }
 
+    const focus = () => {
+      (inputEl.value as HTMLInputElement).focus()
+    }
+
+    const blur = () => {
+      (inputEl.value as HTMLInputElement).blur()
+    }
+
     return {
+      inputEl,
       inputId,
-      focus,
+      isFocus,
       errorMessage,
       maxlengthText,
       computePlaceholderState,
@@ -272,7 +283,9 @@ export default defineComponent({
       handleClickAppendIcon,
       handleClickPrependIcon,
       validate,
-      resetValidation
+      resetValidation,
+      focus,
+      blur,
     }
   }
 })

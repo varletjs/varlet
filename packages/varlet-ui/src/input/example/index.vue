@@ -35,6 +35,18 @@
       ]"
       v-model="value3"
     />
+
+    <var-input
+      class="example__input"
+      prepend-icon="fire"
+      placeholder="请输入密码"
+      type="password"
+      clearable
+      :rules="[
+        asyncValidator
+      ]"
+      v-model="value3"
+    />
   </div>
 </template>
 
@@ -43,6 +55,7 @@ import { defineComponent, ref } from 'vue'
 import Input from '..'
 import Button from '../../button'
 import Icon from '../../icon'
+import Snackbar from '../../snackbar'
 
 export default defineComponent({
   name: 'InputExample',
@@ -58,7 +71,20 @@ export default defineComponent({
       value: ref(''),
       value2: ref(''),
       value3: ref(''),
-      value4
+      value4,
+      asyncValidator() {
+        return new Promise((resolve) => {
+          const ctx = Snackbar({
+            type: 'loading',
+            content: '正在异步校验'
+          })
+
+          setTimeout(() => {
+            ctx.clear()
+            resolve('反正就是失败了')
+          }, 4000)
+        })
+      }
     }
   }
 })
