@@ -157,7 +157,21 @@ module.exports = {
           zh_CN: 'Icon 图标',
           en_US: 'Icon',
         },
-        doc: 'icon',
+        doc: 'icon'
+      },
+      {
+        text: {
+          zh_CN: 'Rate 评分',
+          en_US: 'Rate',
+        },
+        doc: 'rate'
+      },
+      {
+        text: {
+          zh_CN: 'Input 输入框',
+          en_US: 'Input',
+        },
+        doc: 'input'
       },
 		],
 		language: 'zh_CN',

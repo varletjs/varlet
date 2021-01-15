@@ -1,6 +1,6 @@
 <template>
 	<div class="var--box var-skeleton">
-		<div class="var-skeleton__data" v-show="!loading">
+		<div class="var-skeleton__data" v-if="!loading">
 			<slot />
 		</div>
 

@@ -7,10 +7,13 @@
 		  isURL(name) ? 'var-icon__image' : `${namespace}-${nextName}`,
 		  tickTransition ? 'var-icon--hidden' : null
 		]"
-    :src="nextName"
+    :src="isURL(name) ? nextName : null"
 		:style="{
 			transition: `all ${transition}ms`,
+			color,
+			fontSize: size
 		}"
+    @click="handleClick"
 		v-bind="$attrs"
 	/>
 </template>
@@ -50,10 +53,15 @@ export default defineComponent({
 			{ immediate: true }
 		)
 
+    const handleClick = (e: Event) => {
+		  props.onClick?.(e)
+    }
+
 		return {
       isURL,
 			nextName,
 			tickTransition,
+      handleClick,
 		}
 	},
 })
