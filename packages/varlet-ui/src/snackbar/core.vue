@@ -2,17 +2,12 @@
 	<div class="var-snackbar" :style="{ pointerEvents: forbidClick ? 'auto' : 'none' }" v-show="show">
 		<div :class="snackbarClass" :style="snackbarStyle">
 			<div :class="`var-snackbar__content${contentClass ? ` ${contentClass}` : ''}`">
-				<var-loading :type="loadingType" :size="loadingSize" v-if="type === 'loading'" />
-				<slot>
-					{{ content }}
-				</slot>
+				<slot>{{ content }}</slot>
 			</div>
 			<div class="var-snackbar__action">
-				<var-icon v-if="type === 'success'" name="checkbox-marked-circle"></var-icon>
-				<var-icon v-if="type === 'warning'" name="warning"></var-icon>
-				<var-icon v-if="type === 'info'" name="information"></var-icon>
-				<var-icon v-if="type === 'error'" name="error"></var-icon>
-				<slot name="action"></slot>
+				<var-icon v-if="iconName" :transition="200" :name="iconName" />
+				<var-loading v-if="type === 'loading'" :type="loadingType" :size="loadingSize" />
+				<slot name="action" />
 			</div>
 		</div>
 	</div>
@@ -51,6 +46,22 @@ export default defineComponent({
 			const typeClass = type && SNACKBAR_TYPE.includes(type) ? ` var-snackbar__wrapper-${type}` : ''
 			return `${baseClass}${verticalClass}${typeClass}`
 		})
+
+		const iconName = computed(() => {
+			switch (props.type) {
+				case 'success':
+					return 'checkbox-marked-circle'
+				case 'warning':
+					return 'warning'
+				case 'info':
+					return 'information'
+				case 'error':
+					return 'error'
+				default:
+					return ''
+			}
+		})
+
 		watch(
 			() => props.show,
 			(show) => {
@@ -65,6 +76,7 @@ export default defineComponent({
 				}
 			}
 		)
+
 		watch(
 			() => props._update,
 			() => {
@@ -83,9 +95,11 @@ export default defineComponent({
 				}, props.duration)
 			}
 		})
+
 		return {
 			snackbarStyle,
 			snackbarClass,
+			iconName,
 		}
 	},
 })

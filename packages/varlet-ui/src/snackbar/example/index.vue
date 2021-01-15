@@ -3,89 +3,43 @@
 		<div class="snackbar-demo__basic">
 			<app-type>基本使用</app-type>
 			<div class="snackbar-demo__basic-block">
-				<var-button type="primary" size="small" @click="changeValue('show1')">
-					基本使用
-				</var-button>
-				<var-button type="primary" size="small" @click="changeValue('show2')">
-					自定义action
-				</var-button>
-				<var-button type="primary" size="small" @click="changeValue('show3')">
-					垂直排列
-				</var-button>
-				<var-button type="primary" size="small" @click="changeValue('show4')">
-					自定义关闭时间
-				</var-button>
-				<var-button type="primary" size="small" @click="changeMultiple()">
-					切换单例或多例
-				</var-button>
+				<var-button type="primary" size="small" @click="changeValue('show1')"> 基本使用 </var-button>
+				<var-button type="primary" size="small" @click="changeValue('show2')"> 自定义action </var-button>
+				<var-button type="primary" size="small" @click="changeValue('show3')"> 垂直排列 </var-button>
+				<var-button type="primary" size="small" @click="changeValue('show4')"> 自定义关闭时间 </var-button>
+				<var-button type="primary" size="small" @click="changeMultiple()"> 切换单例或多例 </var-button>
 			</div>
 		</div>
 		<div class="snackbar-demo__type">
 			<app-type>snackbar类型</app-type>
 			<div class="snackbar-demo__type-block">
-				<var-button type="primary" size="small" @click="changeValue('show7')">
-					success
-				</var-button>
-				<var-button type="primary" size="small" @click="create('warning')">
-					warning
-				</var-button>
-				<var-button type="primary" size="small" @click="create('info')">
-					info
-				</var-button>
-				<var-button type="primary" size="small" @click="createMethod('error')">
-					error
-				</var-button>
-				<var-button
-					type="primary"
-					size="small"
-					@click="createMethod('loading')"
-				>
-					loading
-				</var-button>
+				<var-button type="primary" size="small" @click="changeValue('show7')"> success </var-button>
+				<var-button type="primary" size="small" @click="create('warning')"> warning </var-button>
+				<var-button type="primary" size="small" @click="create('info')"> info </var-button>
+				<var-button type="primary" size="small" @click="createMethod('error')"> error </var-button>
+				<var-button type="primary" size="small" @click="createMethod('loading')"> loading </var-button>
 			</div>
 		</div>
 		<div class="snackbar-demo__position">
 			<app-type>snackbar位置</app-type>
 			<div class="snackbar-demo__position-block">
-				<var-button type="primary" size="small" @click="createPosition('top')">
-					top
-				</var-button>
-				<var-button
-					type="primary"
-					size="small"
-					@click="createPosition('center')"
-				>
-					center
-				</var-button>
-				<var-button
-					type="primary"
-					size="small"
-					@click="createPosition('bottom')"
-				>
-					bottom
-				</var-button>
+				<var-button type="primary" size="small" @click="createPosition('top')"> top </var-button>
+				<var-button type="primary" size="small" @click="createPosition('center')"> center </var-button>
+				<var-button type="primary" size="small" @click="createPosition('bottom')"> bottom </var-button>
 			</div>
 		</div>
 		<div class="snackbar-demo__others">
 			<app-type>其他配置</app-type>
 			<div class="snackbar-demo__others-block">
-				<var-button type="primary" size="small" @click="changeValue('show8')">
-					自定义内容class
-				</var-button>
-				<var-button type="primary" size="small" @click="changeValue('show9')">
-					不可穿透点击
-				</var-button>
-				<var-button type="primary" size="small" @click="changeValue('show10')">
-					可以穿透滑动
-				</var-button>
+				<var-button type="primary" size="small" @click="changeValue('show8')"> 自定义内容class </var-button>
+				<var-button type="primary" size="small" @click="changeValue('show9')"> 不可穿透点击 </var-button>
+				<var-button type="primary" size="small" @click="changeValue('show10')"> 可以穿透滑动 </var-button>
 			</div>
 		</div>
 		<div class="snackbar-demo__event">
 			<app-type>snackbar事件</app-type>
 			<div class="snackbar-demo__event-block">
-				<var-button type="primary" size="small" @click="changeValue('show11')">
-					打开与关闭回调
-				</var-button>
+				<var-button type="primary" size="small" @click="changeValue('show11')"> 打开与关闭回调 </var-button>
 				<var-button type="primary" size="small" @click="changeValue('show12')">
 					打开动画与关闭动画结束时回调
 				</var-button>
@@ -99,18 +53,14 @@
 		<var-snackbar v-model:show="show2">
 			{{ text }}
 			<template #action>
-				<var-button type="primary" size="small" @click="show2 = !show2">
-					close
-				</var-button>
+				<var-button type="primary" size="small" @click="show2 = !show2"> close </var-button>
 			</template>
 		</var-snackbar>
 
 		<var-snackbar v-model:show="show3" :vertical="true">
 			{{ text }}
 			<template #action>
-				<var-button type="primary" size="small" @click="show3 = !show3">
-					close
-				</var-button>
+				<var-button type="primary" size="small" @click="show3 = !show3"> close </var-button>
 			</template>
 		</var-snackbar>
 
@@ -151,7 +101,7 @@ export default defineComponent({
 		[Button.name]: Button,
 	},
 	setup() {
-		const text: Ref<string> = ref("Hello, I'm a snackbar-core")
+		const text: Ref<string> = ref("Hello, I'm a snackbar")
 		const isAllowMultiple: Ref<boolean> = ref(true)
 		const shows: any = reactive({
 			show1: false,
@@ -171,7 +121,7 @@ export default defineComponent({
 
 		const create = (type: any) => {
 			const snackbar: any = Snackbar({
-				content: "Hello, I'm a snackbar-core",
+				content: "Hello, I'm a snackbar",
 				type,
 			})
 			setTimeout(function () {
@@ -181,14 +131,14 @@ export default defineComponent({
 
 		const createMethod = (type: SnackbarType) => {
 			Snackbar[type]({
-				content: "Hello, I'm a snackbar-core",
+				content: "Hello, I'm a snackbar",
 				forbidClick: type === 'loading',
 			})
 		}
 
 		const createPosition = (position: 'top' | 'center' | 'bottom') => {
 			Snackbar({
-				content: "Hello, I'm a snackbar-core",
+				content: "Hello, I'm a snackbar",
 				position,
 			})
 			setTimeout(() => {
