@@ -149,6 +149,9 @@ export default defineComponent({
 				content: "Hello, I'm a snackbar",
 				position,
 			})
+			setTimeout(() => {
+				Snackbar.clear()
+			}, 2000)
 		}
 
 		const changeMultiple = () => {

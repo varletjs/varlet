@@ -42,15 +42,17 @@ interface Snackbar {
 
 	allowMultiple(bool: boolean): void
 
-	success(options: SnackbarOptions | string): void
+	success(options: SnackbarOptions | string): SnackbarHandel
 
-	warning(options: SnackbarOptions | string): void
+	warning(options: SnackbarOptions | string): SnackbarHandel
 
-	info(options: SnackbarOptions | string): void
+	info(options: SnackbarOptions | string): SnackbarHandel
 
-	error(options: SnackbarOptions | string): void
+	error(options: SnackbarOptions | string): SnackbarHandel
 
-	loading(options: SnackbarOptions | string): void
+	loading(options: SnackbarOptions | string): SnackbarHandel
+
+	clear(): void
 
 	isAllowMultiple: boolean
 	isMount: boolean | undefined
@@ -167,6 +169,12 @@ Snackbar.allowMultiple = function (bool = false) {
 		}
 		this.isAllowMultiple = !!bool
 	}
+}
+
+Snackbar.clear = function () {
+	Snackbar.uniqSnackbarOptions.forEach((snackbar: UniqSnackbarOptions) => {
+		snackbar.reactiveSnackOptions.show = false
+	})
 }
 
 Snackbar.isAllowMultiple = false
