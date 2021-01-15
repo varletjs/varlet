@@ -38,20 +38,20 @@ export default defineComponent({
 	directives: { Ripple },
 	props,
 	setup(props) {
-		const handleClick = (event: Event) => {
+		const handleClick = (e: Event) => {
 			if (props.loading || props.disabled) {
 				return
 			}
 
-			props.onClick?.(event)
+			props.onClick?.(e)
 		}
 
-		const handleTouchstart = (event: Event) => {
+		const handleTouchstart = (e: Event) => {
 			if (props.loading || props.disabled) {
 				return
 			}
 
-			props.onTouchstart?.(event)
+			props.onTouchstart?.(e)
 		}
 
 		return {

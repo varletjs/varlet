@@ -4,11 +4,9 @@ export const props = {
 	},
   color: {
     type: String,
-    default: 'inherit',
   },
   size: {
     type: String,
-    default: 'inherit',
   },
 	namespace: {
 		type: String,
@@ -18,4 +16,7 @@ export const props = {
 		type: Number,
 		default: 0,
 	},
+  onClick: {
+	  type: Function
+  }
 }

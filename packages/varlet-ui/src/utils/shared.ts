@@ -20,6 +20,8 @@ export const isArray = (val: unknown): val is Array<any> => Array.isArray(val)
 
 export const isURL = (val: string) => /^(http)|(\.*\/)/.test(val)
 
+export const isEmpty = (val: unknown) =>  val === undefined || val === null || val === ''
+
 export const removeItem = (arr: Array<unknown>, item: unknown) => {
 	if (arr.length) {
 		const index: number = arr.indexOf(item)

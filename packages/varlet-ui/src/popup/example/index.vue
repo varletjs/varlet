@@ -3,6 +3,7 @@
     <var-popup
       v-model:show="center"
       style="padding: 20px;"
+      class="ppp"
     >
       <div>测试文字测试文字测试</div>
       <div>测试文字测试文字测试</div>
@@ -186,6 +187,12 @@ export default defineComponent({
 .example__overlay {
   background-color: #001938;
 }
+
+.ppp {
+  background: #4fc08d;
+}
+
+
 </style>
 <style scoped lang="less">
 .example {
