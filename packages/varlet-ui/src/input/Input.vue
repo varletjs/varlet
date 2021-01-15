@@ -79,7 +79,8 @@
       <div
         class="var-input__line"
         :class="[
-          disabled ? 'var-input--line-disabled' : null
+          disabled ? 'var-input--line-disabled' : null,
+          errorMessage ? 'var-input--line-error': null
         ]"
         :style="{
           background: inactiveColor

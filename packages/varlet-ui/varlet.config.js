@@ -166,6 +166,13 @@ module.exports = {
         },
         doc: 'rate'
       },
+      {
+        text: {
+          zh_CN: 'Input 输入框',
+          en_US: 'Input',
+        },
+        doc: 'input'
+      },
 		],
 		language: 'zh_CN',
 	},
