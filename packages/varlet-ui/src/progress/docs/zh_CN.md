@@ -202,7 +202,7 @@ export default defineComponent({
 | value       | progress 的进度     | _number_             | `0`       |
 | line-width   | progress 的线宽     | _number_ ｜ _string_ | `4`       |
 | color       | progress 的颜色     | _string_             | `#005CAF` |
-| track-color  | progress 轨道的颜色 | _string_             | `#afd9ff` |
+| track-color  | progress 轨道的颜色 | _string_             | `#d8d8d8` |
 | ripple      | 水波纹加载效果      | _boolean_            | `false`   |
 | show-action | 是否显示 action     | _boolean_            | `false`   |
 

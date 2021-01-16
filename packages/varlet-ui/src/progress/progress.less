@@ -1,87 +1,86 @@
-@import "../styles/var";
+@import '../styles/var';
 
-@ripple-color: #fff;
+@ripple-color: #ffffff;
 
 .var-progress {
-  position: relative;
-  font-size: @font-size-sm;
+	position: relative;
+	font-size: @font-size-sm;
 
-  &-linear {
-    display: flex;
-    align-items: center;
+	&-linear {
+		display: flex;
+		align-items: center;
 
-    &__block {
-      flex: 1;
-      position: relative;
-      overflow: hidden;
-    }
+		&__block {
+			flex: 1;
+			position: relative;
+			overflow: hidden;
+		}
 
-    &__background, &__certain {
-      width: 100%;
-      height: 100%;
-      background-color: lighten(@color-primary, 50%);
-    }
+		&__background,
+		&__certain {
+			width: 100%;
+			height: 100%;
+		}
 
-    &__ripple {
-      &:after {
-        position: absolute;
-        width: 0;
-        background-color: @ripple-color;
-        height: 100%;
-        opacity: 0;
-        animation: ripple 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        content: "";
-      }
-    }
+		&__ripple {
+			&:after {
+				position: absolute;
+				width: 0;
+				background-color: @ripple-color;
+				height: 100%;
+				opacity: 0;
+				animation: ripple 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+				content: '';
+			}
+		}
 
-    &__certain {
-      position: absolute;
-      background-color: @color-primary;
-      top: 0;
-      left: 0;
-      transition: width .2s;
-    }
+		&__certain {
+			position: absolute;
+			background-color: @color-primary;
+			top: 0;
+			left: 0;
+			transition: width 0.2s;
+		}
 
-    &__action {
-      margin-left: 8px;
-      flex: 0;
-    }
+		&__action {
+			margin-left: 8px;
+			flex: 0;
+		}
 
-    @keyframes ripple {
-      0% {
-        width: 0;
-        opacity: 0.1;
-      }
-      20% {
-        width: 0;
-        opacity: 0.5;
-      }
-      80% {
-        width: 100%;
-        opacity: 0;
-      }
-    }
+		@keyframes ripple {
+			0% {
+				width: 0;
+				opacity: 0.1;
+			}
+			20% {
+				width: 0;
+				opacity: 0.5;
+			}
+			80% {
+				width: 100%;
+				opacity: 0;
+			}
+		}
+	}
 
-  }
+	&-circle {
+		position: relative;
 
-  &-circle {
-    position: relative;
+		&__background {
+			stroke: lighten(@color-primary, 50%);
+		}
 
-    &__background {
-      stroke: lighten(@color-primary, 50%);
-    }
+		&__certain {
+			transition: all 0.2s;
+			stroke: @color-primary;
+			position: absolute;
+		}
 
-    &__certain {
-      transition: all .2s;
-      stroke: @color-primary;
-      position: absolute;
-    }
-
-    &__action {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
+		&__action {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
 }

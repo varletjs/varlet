@@ -21,6 +21,7 @@ export const props = {
 	// progress 轨道颜色
 	trackColor: {
 		type: String,
+		default: '#d8d8d8',
 	},
 	// 是否添加水波纹效果
 	ripple: {
