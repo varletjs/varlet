@@ -202,7 +202,7 @@ Use `show-track` to hide Progress-Track.
 | value       | completion value                       | _number_             | `0`       |
 | line-width   | To set width of the progress bar       | _number_ ｜ _string_ | `4`       |
 | color       | To set color of the progress bar       | _string_             | `#005CAF` |
-| track-color  | To set color of the progress track     | _string_             | `#afd9ff` |
+| track-color  | To set color of the progress track     | _string_             | `#d8d8d8` |
 | ripple      | To set loading style for progress      | _boolean_            | `false`   |
 | show-action | Whether the `action` is visible or not | _boolean_            | `false`   |
 

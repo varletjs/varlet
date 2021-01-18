@@ -31,6 +31,7 @@ body {
 	background: white;
 	min-height: 100%;
 	font-family: '微软雅黑 Light', sans-serif;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 ::-webkit-scrollbar {

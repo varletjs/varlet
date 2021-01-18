@@ -1,5 +1,5 @@
 export function typeValidator(type: string): boolean {
-	return ['wave', 'cube', 'rect', 'disappear'].includes(type)
+	return ['circle', 'wave', 'cube', 'rect', 'disappear'].includes(type)
 }
 
 export function sizeValidator(size: string): boolean {
@@ -10,8 +10,12 @@ export const props = {
 	// loading类型
 	type: {
 		type: String,
-		default: 'wave',
+		default: 'circle',
 		validator: typeValidator,
+	},
+	radius: {
+		type: [String, Number],
+		default: 15,
 	},
 	// loading尺寸
 	size: {

@@ -89,90 +89,97 @@ module.exports = {
 				},
 				doc: 'badge',
 			},
-      {
-        text: {
-          zh_CN: 'Rate 评分',
-          en_US: 'Rate',
-        },
-        doc: 'rate',
-      },
 			{
 				text: {
-					zh_CN: 'Expansion panels 拓展面板',
-					en_US: 'Expansion panels',
+					zh_CN: 'Rate 评分',
+					en_US: 'Rate',
+				},
+				doc: 'rate',
+			},
+			{
+				text: {
+					zh_CN: 'ExpansionPanels 拓展面板',
+					en_US: 'ExpansionPanels',
 				},
 				doc: 'Expansion-panels',
 			},
-      {
-        text: {
-          zh_CN: 'Tabs 选项卡',
-          en_US: 'Tabs',
-        },
-        doc: 'tabs',
-      },
-      {
-        text: {
-          zh_CN: 'List 无限滚动列表',
-          en_US: 'List',
-        },
-        doc: 'list',
-      },
-      {
-        text: {
-          zh_CN: 'Sticky 粘性布局',
-          en_US: 'Sticky',
-        },
-        doc: 'sticky',
-      },
-      {
-        text: {
-          zh_CN: 'Menu 菜单',
-          en_US: 'Menu',
-        },
-        doc: 'menu',
-      },
-      {
-        text: {
-          zh_CN: 'Lazy 懒加载',
-          en_US: 'Lazy',
-        },
-        doc: 'lazy',
-      },
-      {
-        text: {
-          zh_CN: 'Dialog 对话框',
-          en_US: 'Dialog',
-        },
-        doc: 'dialog',
-      },
-      {
-        text: {
-          zh_CN: 'Image 图片',
-          en_US: 'Image',
-        },
-        doc: 'image',
-      },
-      {
-        text: {
-          zh_CN: 'Icon 图标',
-          en_US: 'Icon',
-        },
-        doc: 'icon'
-      },
-      {
-        text: {
-          zh_CN: 'Rate 评分',
-          en_US: 'Rate',
-        },
-        doc: 'rate'
-      },
-      {
-        text: {
-          zh_CN: 'Input 输入框',
-          en_US: 'Input',
-        },
-        doc: 'input'
-      },
+			{
+				text: {
+					zh_CN: 'Tabs 选项卡',
+					en_US: 'Tabs',
+				},
+				doc: 'tabs',
+			},
+			{
+				text: {
+					zh_CN: 'List 无限滚动列表',
+					en_US: 'List',
+				},
+				doc: 'list',
+			},
+			{
+				text: {
+					zh_CN: 'Sticky 粘性布局',
+					en_US: 'Sticky',
+				},
+				doc: 'sticky',
+			},
+			{
+				text: {
+					zh_CN: 'Menu 菜单',
+					en_US: 'Menu',
+				},
+				doc: 'menu',
+			},
+			{
+				text: {
+					zh_CN: 'Lazy 懒加载',
+					en_US: 'Lazy',
+				},
+				doc: 'lazy',
+			},
+			{
+				text: {
+					zh_CN: 'Dialog 对话框',
+					en_US: 'Dialog',
+				},
+				doc: 'dialog',
+			},
+			{
+				text: {
+					zh_CN: 'Image 图片',
+					en_US: 'Image',
+				},
+				doc: 'image',
+			},
+			{
+				text: {
+					zh_CN: 'Icon 图标',
+					en_US: 'Icon',
+				},
+				doc: 'icon',
+			},
+			{
+				text: {
+					zh_CN: 'Rate 评分',
+					en_US: 'Rate',
+				},
+				doc: 'rate',
+			},
+			{
+				text: {
+					zh_CN: 'Input 输入框',
+					en_US: 'Input',
+				},
+				doc: 'input',
+			},
+			{
+				text: {
+					zh_CN: 'IndexBar 索引栏',
+					en_US: 'IndexBar',
+				},
+				doc: 'index-bar',
+			},
 		],
 		language: 'zh_CN',
 	},
