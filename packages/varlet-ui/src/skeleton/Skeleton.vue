@@ -5,11 +5,7 @@
 		</div>
 
 		<div class="var-skeleton__content" v-if="loading">
-			<div
-				class="var-skeleton__card"
-				v-if="card"
-				:style="{ height: cardHeight }"
-			>
+			<div class="var-skeleton__card" v-if="card" :style="{ height: cardHeight }">
 				<div class="var-skeleton--animation"></div>
 			</div>
 			<div class="var-skeleton__article">
@@ -17,19 +13,10 @@
 					<div class="var-skeleton--animation"></div>
 				</div>
 				<div class="var-skeleton__section">
-					<div
-						class="var-skeleton__title"
-						:style="{ width: titleWidth }"
-						v-if="title"
-					>
+					<div class="var-skeleton__title" :style="{ width: titleWidth }" v-if="title">
 						<div class="var-skeleton--animation"></div>
 					</div>
-					<div
-						class="var-skeleton__row"
-						v-for="(r, index) in row"
-						:key="r"
-						:style="{ width: rowWidth[index] }"
-					>
+					<div class="var-skeleton__row" v-for="(r, index) in rows" :key="r" :style="{ width: rowsWidth[index] }">
 						<div class="var-skeleton--animation"></div>
 					</div>
 				</div>
@@ -48,7 +35,7 @@ import { props } from './props'
 
 export default defineComponent({
 	name: 'VarSkeleton',
-	props
+	props,
 })
 </script>
 

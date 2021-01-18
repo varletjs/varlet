@@ -101,7 +101,7 @@ function bindEvents(listenTarget: ListenTarget) {
 	listenTargets.push(listenTarget)
 
 	defaultLazyOptions.events?.forEach((event: string) => {
-		listenTarget.addEventListener(event, checkAllWithThrottle)
+		listenTarget.addEventListener(event, checkAllWithThrottle, { passive: true })
 	})
 }
 

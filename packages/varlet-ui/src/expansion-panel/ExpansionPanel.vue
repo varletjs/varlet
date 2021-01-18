@@ -59,6 +59,10 @@ export default defineComponent({
 		>(EXPANSION_PANELS_BIND_EXPANSION_PANEL_KEY)
 		const { index } = useAtParentIndex(EXPANSION_PANELS_COUNT_EXPANSION_PANEL_KEY)
 
+		if (!ExpansionPanelsProvider || !bindParent || !index) {
+			throw Error('<var-expansion-panel/> must in <var-expansion-panels>')
+		}
+
 		const contentEl: Ref<HTMLDivElement | null> = ref(null)
 		const show: Ref<boolean> = ref(false)
 		const isOpen: Ref<boolean> = ref(false)

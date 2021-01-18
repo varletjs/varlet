@@ -1,0 +1,37 @@
+@import '../styles/var';
+
+@checkbox-checked-color: @color-primary;
+@checkbox-unchecked-color: #555;
+@checkbox-disabled-color: #aaa;
+
+.var-checkbox {
+	display: inline-flex;
+	align-items: center;
+
+	&__action {
+		position: relative;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 7px;
+		border-radius: 50%;
+	}
+
+	&__icon {
+		display: block;
+		font-size: 24px;
+	}
+
+	&--checked {
+		color: @checkbox-checked-color;
+	}
+
+	&--unchecked {
+		color: @checkbox-unchecked-color;
+	}
+
+	&--disabled {
+		color: @checkbox-disabled-color;
+	}
+}

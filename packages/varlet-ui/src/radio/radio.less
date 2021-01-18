@@ -1,0 +1,37 @@
+@import '../styles/var';
+
+@radio-checked-color: @color-primary;
+@radio-unchecked-color: #555;
+@radio-disabled-color: #aaa;
+
+.var-radio {
+	display: inline-flex;
+	align-items: center;
+
+	&__action {
+		position: relative;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 7px;
+		border-radius: 50%;
+	}
+
+	&__icon {
+		display: block;
+		font-size: 24px;
+	}
+
+	&--checked {
+		color: @radio-checked-color;
+	}
+
+	&--unchecked {
+		color: @radio-unchecked-color;
+	}
+
+	&--disabled {
+		color: @radio-disabled-color;
+	}
+}

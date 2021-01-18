@@ -47,7 +47,7 @@
 		<app-type>垂直布局</app-type>
 		<var-tabs
 			style="width: 345px"
-      item-direction="vertical"
+			item-direction="vertical"
 			color="rgb(98,0,234)"
 			active-color="#fff"
 			inactive-color="rgb(193,155,247)"
@@ -87,28 +87,30 @@
 			</var-tab>
 		</var-tabs>
 
-    <app-type>视图联动</app-type>
-    <div class="container">
-      <var-tabs
-        style="height: 300px; flex-shrink: 0"
-        color="rgb(98,0,234)"
-        active-color="#fff"
-        inactive-color="rgb(193,155,247)"
-        layout-direction="vertical"
-        :elevation="2"
-        v-model:active="activeRelation"
-        @change="handleChange"
-      >
-        <var-tab v-for="i in list2" :key="i.id">
-          {{ i.name }}
-        </var-tab>
-        <var-tab :key="100">长文字</var-tab>
-      </var-tabs>
-      <var-tabs-items style="margin-left: 10px" v-model:active="activeRelation">
-        <var-tab-item v-for="i in list2" :key="i.id"> {{ i.name }}视图 </var-tab-item>
-        <var-tab-item :key="100">测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字</var-tab-item>
-      </var-tabs-items>
-    </div>
+		<app-type>视图联动</app-type>
+		<div class="container">
+			<var-tabs
+				style="height: 300px; flex-shrink: 0"
+				color="rgb(98,0,234)"
+				active-color="#fff"
+				inactive-color="rgb(193,155,247)"
+				layout-direction="vertical"
+				:elevation="2"
+				v-model:active="activeRelation"
+				@change="handleChange"
+			>
+				<var-tab v-for="i in list2" :key="i.id">
+					{{ i.name }}
+				</var-tab>
+				<var-tab :key="100">长文字</var-tab>
+			</var-tabs>
+			<var-tabs-items style="margin-left: 10px" v-model:active="activeRelation">
+				<var-tab-item v-for="i in list2" :key="i.id"> {{ i.name }}视图 </var-tab-item>
+				<var-tab-item :key="100"
+					>测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字</var-tab-item
+				>
+			</var-tabs-items>
+		</div>
 
 		<app-type>视图联动</app-type>
 		<var-tabs
@@ -123,18 +125,20 @@
 			<var-tab v-for="i in list2" :key="i.id">
 				{{ i.name }}
 			</var-tab>
-      <var-tab :key="100">长文字</var-tab>
+			<var-tab :key="100">长文字</var-tab>
 		</var-tabs>
 
 		<var-tabs-items style="margin-top: 10px" v-model:active="activeRelation">
 			<var-tab-item v-for="i in list2" :key="i.id"> {{ i.name }}视图 </var-tab-item>
-      <var-tab-item :key="100">测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字</var-tab-item>
+			<var-tab-item :key="100"
+				>测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字</var-tab-item
+			>
 		</var-tabs-items>
 
-<!--		<var-button @click="push" style="margin-bottom: 10px">push</var-button>-->
-<!--		<var-button @click="unshift" style="margin-bottom: 10px">unshift</var-button>-->
-<!--		<var-button @click="pop" style="margin-bottom: 10px">pop</var-button>-->
-<!--		<var-button @click="shift" style="margin-bottom: 10px">shift</var-button>-->
+		<!--		<var-button @click="push" style="margin-bottom: 10px">push</var-button>-->
+		<!--		<var-button @click="unshift" style="margin-bottom: 10px">unshift</var-button>-->
+		<!--		<var-button @click="pop" style="margin-bottom: 10px">pop</var-button>-->
+		<!--		<var-button @click="shift" style="margin-bottom: 10px">shift</var-button>-->
 
 		<app-type>开启粘性布局</app-type>
 		<var-tabs
@@ -178,6 +182,7 @@ export default defineComponent({
 	},
 	setup() {
 		const active: Ref<number> = ref(0)
+		const loading: Ref<boolean> = ref(true)
 		const s: Ref<any> = ref(null)
 		const s1: Ref<any> = ref(null)
 		const activeBottom: Ref<number> = ref(0)
@@ -197,50 +202,55 @@ export default defineComponent({
 		])
 
 		const list2 = reactive<any>([])
-    list2.push(
-      {
-        id: 1,
-        name: '瓜瓜',
-      },
-      {
-        id: 2,
-        name: '咋咋',
-      },
-      {
-        id: 3,
-        name: '拉拉',
-      },
-      {
-        id: 4,
-        name: '瓜瓜',
-      },
-      {
-        id: 5,
-        name: '咋咋',
-      },
-      {
-        id: 6,
-        name: '拉拉',
-      },
-      {
-        id: 7,
-        name: '瓜瓜',
-      },
-      {
-        id: 8,
-        name: '咋咋',
-      },
-      {
-        id: 9,
-        name: '拉拉',
-      }
-    )
+		list2.push(
+			{
+				id: 1,
+				name: '瓜瓜',
+			},
+			{
+				id: 2,
+				name: '咋咋',
+			},
+			{
+				id: 3,
+				name: '拉拉',
+			},
+			{
+				id: 4,
+				name: '瓜瓜',
+			},
+			{
+				id: 5,
+				name: '咋咋',
+			},
+			{
+				id: 6,
+				name: '拉拉',
+			},
+			{
+				id: 7,
+				name: '瓜瓜',
+			},
+			{
+				id: 8,
+				name: '咋咋',
+			},
+			{
+				id: 9,
+				name: '拉拉',
+			}
+		)
 
 		const handleChange = (...args: any[]) => {
 			console.log(...args)
 		}
 
+		setTimeout(() => {
+			loading.value = false
+		}, 2000)
+
 		return {
+			loading,
 			active,
 			activeBottom,
 			activeName,
@@ -285,10 +295,10 @@ export default defineComponent({
 		box-sizing: border-box;
 	}
 
-  .container {
-    display: flex;
-    width: 100%;
-    margin-top: 20px;
-  }
+	.container {
+		display: flex;
+		width: 100%;
+		margin-top: 20px;
+	}
 }
 </style>

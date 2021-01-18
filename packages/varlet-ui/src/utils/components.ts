@@ -142,15 +142,21 @@ export function useAtChildrenCounter(key: symbol) {
 export function useAtParentIndex(key: symbol) {
 	const childrenCounter: ChildrenCounter | undefined = inject<ChildrenCounter>(key)
 	if (!childrenCounter) {
-		throw new Error('Children counter provider not found')
+		return {
+			index: null,
+		}
 	}
 
 	const { collect, clear, instances } = childrenCounter
 
 	const instance: ComponentInternalInstance = getCurrentInstance() as ComponentInternalInstance
 
-	nextTick().then(() => collect(instance))
-	onUnmounted(() => clear(instance))
+	onMounted(() => {
+		nextTick().then(() => collect(instance))
+	})
+	onUnmounted(() => {
+		nextTick().then(() => clear(instance))
+	})
 
 	const index = computed(() => instances.indexOf(instance))
 
@@ -185,10 +191,16 @@ export function useChildren<P, C>(key: symbol) {
 }
 
 export function useParent<P, C>(key: symbol) {
-	const { collect, clear, ...parentProvider } = inject<P & BaseParentProvider<C>>(key) as P & BaseParentProvider<C>
-	if (!collect || !clear) {
-		throw new Error('Parent not found')
+	const rawParentProvider = inject<P & BaseParentProvider<C>>(key) as P & BaseParentProvider<C>
+
+	if (!rawParentProvider) {
+		return {
+			parentProvider: null,
+			bindParent: null,
+		}
 	}
+
+	const { collect, clear, ...parentProvider } = rawParentProvider
 
 	const bindParent = (childProvider: C) => {
 		onMounted(() => collect(childProvider))

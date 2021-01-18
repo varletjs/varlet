@@ -15,7 +15,7 @@ export default defineComponent({
 ### 基本使用
 
 ```html
-<var-skeleton v-model:loading="loading" title :row="3">
+<var-skeleton v-model:loading="loading" title :rows="3">
   加载的内容
 </var-skeleton>
 ```
@@ -26,8 +26,8 @@ export default defineComponent({
 <var-skeleton
   v-model:loading="loading"
   title
-  :row="3"
-  :row-width="['300px', '200px', '100px']"
+  :rows="3"
+  :rows-width="['300px', '200px', '100px']"
 >
   加载的内容
 </var-skeleton>
@@ -36,7 +36,7 @@ export default defineComponent({
 ### 显示头像
 
 ```html
-<var-skeleton v-model:loading="loading" avatar title :row="3">
+<var-skeleton v-model:loading="loading" avatar title :rows="3">
   加载的内容
 </var-skeleton>
 ```
@@ -44,7 +44,7 @@ export default defineComponent({
 ### 显示卡片
 
 ```html
-<var-skeleton v-model:loading="loading" card avatar title :row="3">
+<var-skeleton v-model:loading="loading" card avatar title :rows="3">
   加载的内容
 </var-skeleton>
 ```

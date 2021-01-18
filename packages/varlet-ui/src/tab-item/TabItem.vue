@@ -20,6 +20,11 @@ export default defineComponent({
 		const { parentProvider: tabsItemsProvider, bindParent } = useParent<TabsItemsProvider, TabItemProvider>(
 			TABS_ITEMS_BIND_TAB_ITEM_KEY
 		)
+		const { index } = useAtParentIndex(TABS_ITEMS_COUNT_TAB_ITEM_KEY)
+
+		if (!tabsItemsProvider || !bindParent || !index) {
+			throw Error('<var-tab-item/> must in <var-tabs-items/>')
+		}
 
 		const show: Ref<boolean> = ref(false)
 		const tabItemEl: Ref<null | HTMLElement> = ref(null)
@@ -27,7 +32,6 @@ export default defineComponent({
 		const name: ComputedRef<string | number | undefined> = computed(() => props.name)
 		const element: ComputedRef<HTMLElement | null> = computed(() => tabItemEl.value)
 		const { active, resize, resetTransitionHeight } = tabsItemsProvider
-		const { index } = useAtParentIndex(TABS_ITEMS_COUNT_TAB_ITEM_KEY)
 
 		const transition = (newIndex: number, oldIndex: number) => {
 			transitionName.value =

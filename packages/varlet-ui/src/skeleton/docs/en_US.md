@@ -20,19 +20,19 @@ export default defineComponent({
 ### Base
 
 ```html
-<var-skeleton v-model:loading="loading" title :row="3">
+<var-skeleton v-model:loading="loading" title :rows="3">
   load content
 </var-skeleton>
 ```
 
-### Set row width
+### Set rows width
 
 ```html
 <var-skeleton
   v-model:loading="loading"
   title
-  :row="3"
-  :row-width="['300px', '200px', '100px']"
+  :rows="3"
+  :rows-width="['300px', '200px', '100px']"
 >
   加载的内容
 </var-skeleton>
@@ -41,7 +41,7 @@ export default defineComponent({
 ### Display avatar
 
 ```html
-<var-skeleton v-model:loading="loading" avatar title :row="3">
+<var-skeleton v-model:loading="loading" avatar title :rows="3">
   load content
 </var-skeleton>
 ```
@@ -49,7 +49,7 @@ export default defineComponent({
 ### Display card
 
 ```html
-<var-skeleton v-model:loading="loading" card avatar title :row="3">
+<var-skeleton v-model:loading="loading" card avatar title :rows="3">
   load content
 </var-skeleton>
 ```

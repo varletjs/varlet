@@ -26,17 +26,22 @@ export default defineComponent({
 	directives: { Ripple },
 	props,
 	setup(props) {
+		const { parentProvider: tabsProvider, bindParent } = useParent<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
+		const { index } = useAtParentIndex(TABS_COUNT_TAB_KEY)
+
+		if (!tabsProvider || !bindParent || !index) {
+			throw Error('<var-tab/> must in <var-tabs/>')
+		}
+
 		const tabEl: Ref<HTMLElement | null> = ref(null)
 		const name: ComputedRef<string | number | undefined> = computed(() => props.name)
 		const disabled: ComputedRef<boolean> = computed(() => props.disabled)
 		const element: ComputedRef<HTMLElement | null> = computed(() => tabEl.value)
-		const { parentProvider: tabsProvider, bindParent } = useParent<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
-		const { index } = useAtParentIndex(TABS_COUNT_TAB_KEY)
 
 		const tabProvider: TabProvider = {
 			name,
 			index,
-      disabled,
+			disabled,
 			element,
 		}
 
@@ -47,7 +52,7 @@ export default defineComponent({
 		const computeColorStyle = () => {
 			return props.disabled
 				? disabledColor.value
-				: active.value === props.name || active.value === tabProvider.index.value
+				: active.value === props.name || active.value === index.value
 				? activeColor.value
 				: inactiveColor.value
 		}
@@ -55,7 +60,7 @@ export default defineComponent({
 		const computeColorClass = () => {
 			return props.disabled
 				? 'var-tab--disabled'
-				: active.value === props.name || active.value === tabProvider.index.value
+				: active.value === props.name || active.value === index.value
 				? 'var-tab--active'
 				: 'var-tab--inactive'
 		}
@@ -65,7 +70,7 @@ export default defineComponent({
 				return
 			}
 
-			props.onClick?.(props.name ?? tabProvider.index.value, event)
+			props.onClick?.(props.name ?? index.value, event)
 			onTabClick(tabProvider)
 		}
 
@@ -77,7 +82,7 @@ export default defineComponent({
 			active,
 			activeColor,
 			inactiveColor,
-      itemDirection,
+			itemDirection,
 			computeColorStyle,
 			computeColorClass,
 			handleClick,
