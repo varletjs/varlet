@@ -1,5 +1,19 @@
 <template>
 	<div class="var--box var-loading">
+		<div class="var-loading__circle" v-if="type === 'circle'">
+			<span
+				class="var-loading__circle-block"
+				:style="{
+					width: radius * 2 + 'px',
+					height: radius * 2 + 'px',
+				}"
+			>
+				<svg viewBox="25 25 50 50">
+					<circle cx="50" cy="50" r="20" fill="none"></circle>
+				</svg>
+			</span>
+		</div>
+
 		<div :class="`var-loading__wave var-loading__wave-${size}`" v-if="type === 'wave'">
 			<div :style="{ backgroundColor: color }" :class="`var-loading__wave-item var-loading__wave-item-${size}`"></div>
 			<div :style="{ backgroundColor: color }" :class="`var-loading__wave-item var-loading__wave-item-${size}`"></div>
