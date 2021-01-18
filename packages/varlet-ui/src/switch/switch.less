@@ -1,0 +1,49 @@
+@import '../styles/var';
+@import '../styles/elevation';
+
+@var-switch-normal-width: 40px;
+@var-switch-normal-height: 24px;
+
+.var-switch {
+	position: relative;
+	display: inline-flex;
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+
+	&__disable {
+		filter: opacity(0.6);
+		cursor: not-allowed;
+	}
+
+	&__track {
+		background: white;
+		filter: opacity(0.6);
+
+		&-active {
+			background-color: @color-primary;
+		}
+	}
+	&__ripple {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: @color-primary;
+		border-radius: 50%;
+		overflow: hidden;
+		transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+	}
+	&__handle {
+		border-radius: 50%;
+		background-color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+
+		&-active {
+			background-color: @color-primary;
+		}
+	}
+}
