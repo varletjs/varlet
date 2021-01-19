@@ -1,13 +1,18 @@
 <template>
-	<var-sticky :z-index="zIndex" ref="anchorEl" :offset-top="stickyOffsetTop">
+	<component
+		:is="sticky ? 'var-sticky' : Transition"
+		:offset-top="sticky ? stickyOffsetTop : null"
+		:z-index="sticky ? zIndex : null"
+		ref="anchorEl"
+	>
 		<div class="var-index-anchor" v-bind="$attrs">
 			<slot>{{ name }}</slot>
 		</div>
-	</var-sticky>
+	</component>
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, ref, Ref, RendererNode } from 'vue'
+import { computed, ComputedRef, defineComponent, ref, Ref, RendererNode, Transition } from 'vue'
 import Sticky from '../sticky'
 import { useParent, useAtParentIndex } from '../utils/components'
 import { IndexAnchorProvider } from './provide'
@@ -28,7 +33,7 @@ export default defineComponent({
 	setup(props) {
 		const ownTop: Ref<number> = ref(0)
 		const name: ComputedRef<number | string | undefined> = computed(() => props.index)
-		const anchorEl: Ref<RendererNode | null> = ref(null)
+		const anchorEl: Ref<HTMLDivElement | RendererNode | null> = ref(null)
 		const { parentProvider: IndexBarProvider, bindParent } = useParent<IndexBarProvider, IndexAnchorProvider>(
 			INDEX_BAR_BIND_INDEX_ANCHOR_KEY
 		)
@@ -42,7 +47,9 @@ export default defineComponent({
 		const { index } = useAtParentIndex(INDEX_BAR_COUNT_INDEX_ANCHOR_KEY)
 
 		const setOwnTop = () => {
-			ownTop.value = (anchorEl.value as RendererNode).$el.offsetTop
+			ownTop.value = (anchorEl.value as RendererNode).$el
+				? (anchorEl.value as RendererNode).$el.offsetTop
+				: (anchorEl.value as HTMLDivElement).offsetTop
 		}
 
 		const indexAnchorProvider: IndexAnchorProvider = {
@@ -61,6 +68,7 @@ export default defineComponent({
 			sticky,
 			zIndex,
 			stickyOffsetTop,
+			Transition,
 		}
 	},
 })
