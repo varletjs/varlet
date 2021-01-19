@@ -91,13 +91,6 @@ module.exports = {
 			},
 			{
 				text: {
-					zh_CN: 'Rate 评分',
-					en_US: 'Rate',
-				},
-				doc: 'rate',
-			},
-			{
-				text: {
 					zh_CN: 'ExpansionPanels 拓展面板',
 					en_US: 'ExpansionPanels',
 				},
@@ -179,6 +172,13 @@ module.exports = {
 					en_US: 'IndexBar',
 				},
 				doc: 'index-bar',
+			},
+			{
+				text: {
+					zh_CN: 'Switch 开关',
+					en_US: 'Switch',
+				},
+				doc: 'switch',
 			},
 		],
 		language: 'zh_CN',
