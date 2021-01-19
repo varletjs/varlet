@@ -3,6 +3,8 @@
 		class="var-sticky"
 		ref="stickyEl"
 		:style="{
+			zIndex,
+			top: !isFixed ? offsetTop : null,
 			width: isFixed ? fixedWidth : null,
 			height: isFixed ? fixedHeight : null,
 		}"
@@ -11,8 +13,8 @@
 			class="var-sticky__wrapper"
 			ref="wrapperEl"
 			:style="{
+				zIndex,
 				position: isFixed ? 'fixed' : null,
-				zIndex: isFixed ? zIndex : null,
 				width: isFixed ? fixedWrapperWidth : null,
 				height: isFixed ? fixedWrapperHeight : null,
 				left: isFixed ? fixedLeft : null,
@@ -36,6 +38,8 @@ export default defineComponent({
 		const stickyEl: Ref<HTMLElement | null> = ref(null)
 		const wrapperEl: Ref<HTMLElement | null> = ref(null)
 
+		let isSupportCSSSticky = false
+
 		const isFixed: Ref<boolean> = ref(false)
 		const fixedTop: Ref<string> = ref('0px')
 		const fixedLeft: Ref<string> = ref('0px')
@@ -58,29 +62,38 @@ export default defineComponent({
 				scrollerTop = top
 			}
 
-			const { top: stickyTop, left: stickyLeft } = (stickyEl.value as HTMLElement).getBoundingClientRect()
+			const sticky = stickyEl.value as HTMLElement
+			const wrapper = wrapperEl.value as HTMLElement
+
+			const { top: stickyTop, left: stickyLeft } = sticky.getBoundingClientRect()
 			const currentOffsetTop = stickyTop - scrollerTop
 
 			if (currentOffsetTop <= offsetTop.value) {
-				fixedWidth.value = `${(stickyEl.value as HTMLElement).offsetWidth}px`
-				fixedHeight.value = `${(stickyEl.value as HTMLElement).offsetHeight}px`
-				fixedTop.value = `${scrollerTop + offsetTop.value}px`
-				fixedLeft.value = `${stickyLeft}px`
-				fixedWrapperWidth.value = `${(wrapperEl.value as HTMLElement).offsetWidth}px`
-				fixedWrapperHeight.value = `${(wrapperEl.value as HTMLElement).offsetHeight}px`
-				isFixed.value = true
+				if (!isSupportCSSSticky) {
+					fixedWidth.value = `${sticky.offsetWidth}px`
+					fixedHeight.value = `${sticky.offsetHeight}px`
+					fixedTop.value = `${scrollerTop + offsetTop.value}px`
+					fixedLeft.value = `${stickyLeft}px`
+					fixedWrapperWidth.value = `${wrapper.offsetWidth}px`
+					fixedWrapperHeight.value = `${wrapper.offsetHeight}px`
+					isFixed.value = true
+				}
 
-				props.onScroll?.(offsetTop.value, isFixed.value)
+				props.onScroll?.(offsetTop.value, true)
 			} else {
 				isFixed.value = false
 
-				props.onScroll?.(currentOffsetTop, isFixed.value)
+				props.onScroll?.(currentOffsetTop, false)
 			}
 		}
 
 		onMounted(() => {
+			const sticky = stickyEl.value as HTMLInputElement
+
+			isSupportCSSSticky = ['sticky', '-webkit-sticky'].includes(window.getComputedStyle(sticky).position)
+
 			window.addEventListener('scroll', handleScroll)
-			scroller = getParentScroller(stickyEl.value as HTMLElement)
+			scroller = getParentScroller(sticky)
 			scroller !== window && scroller.addEventListener('scroll', handleScroll)
 
 			handleScroll()
@@ -104,3 +117,6 @@ export default defineComponent({
 	},
 })
 </script>
+<style lang="less">
+@import './sticky';
+</style>

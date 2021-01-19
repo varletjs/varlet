@@ -1,6 +1,6 @@
 <template>
 	<div class="example">
-		<var-sticky style="margin-top: 100px" offset-top="20px">
+		<var-sticky style="margin-top: 100px" offset-top="20px" @scroll="handleScroll">
 			<var-button>20px</var-button>
 		</var-sticky>
 
@@ -9,7 +9,7 @@
 		</var-sticky>
 
 		<div class="scroller">
-			<var-sticky style="margin-top: 100px" offset-top="50px" @scroll="handleScroll">
+			<var-sticky style="margin-top: 100px" offset-top="50px">
 				<var-button>50px</var-button>
 			</var-sticky>
 			<div class="i"></div>
