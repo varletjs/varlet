@@ -2,6 +2,7 @@ import { Directive, Plugin, App } from 'vue'
 import { DirectiveBinding } from '@vue/runtime-core'
 import './ripple.less'
 import '../styles/common.less'
+import { doc } from 'prettier'
 
 interface RippleStyles {
 	x: number
@@ -18,6 +19,44 @@ interface RippleOptions {
 
 interface RippleHTMLElement extends HTMLElement {
 	_ripple?: RippleOptions
+}
+
+function recordStyles(element: RippleHTMLElement) {
+	const { zIndex, position, overflow, overflowX, overflowY } = window.getComputedStyle(element)
+
+	if (zIndex === 'auto') {
+		element.style.zIndex = '1'
+		element.dataset.prevZIndex = zIndex
+	}
+
+	if (position === 'static') {
+		element.style.position = 'relative'
+		element.dataset.prevPosition = position
+	}
+
+	element.style.overflow = 'hidden'
+	element.style.overflowX = 'hidden'
+	element.style.overflowY = 'hidden'
+
+	element.dataset.prevOverflow = overflow
+	element.dataset.prevOverflowX = overflowX
+	element.dataset.prevOverflowY = overflowY
+}
+
+function resetStyles(element: RippleHTMLElement) {
+	if (element.dataset.prevZIndex) {
+		element.style.zIndex = element.dataset.prevZIndex
+		delete element.dataset.prevZIndex
+	}
+
+	if (element.dataset.prevPosition) {
+		element.style.position = element.dataset.prevPosition
+		delete element.dataset.prevPosition
+	}
+
+	element.style.overflow = element.dataset.prevOverflow
+	element.style.overflowX = element.dataset.prevOverflowX
+	element.style.overflowY = element.dataset.prevOverflowY
 }
 
 function computeRippleStyles(element: RippleHTMLElement, event: TouchEvent): RippleStyles {
@@ -55,11 +94,8 @@ function createRipple(this: RippleHTMLElement, event: TouchEvent) {
 	ripple.style.backgroundColor = this._ripple?.color ?? 'currentColor'
 	ripple.dataset.createdAt = String(performance.now())
 
-	const styles = window.getComputedStyle(this)
-	styles.zIndex === 'auto' && this.classList.add('var-ripple--flat')
-	styles.position === 'static' && this.classList.add('var--relative')
+	recordStyles(this)
 
-	this.classList.add('var--hidden')
 	this.appendChild(ripple)
 
 	setTimeout(() => {
@@ -82,11 +118,9 @@ function removeRipple(this: RippleHTMLElement) {
 
 		setTimeout(() => {
 			const ripples: NodeListOf<RippleHTMLElement> = this.querySelectorAll('.var-ripple')
-			if (ripples.length === 1) {
-				this.classList.remove('var-ripple--flat')
-				this.classList.remove('var--relative')
-				this.classList.remove('var--hidden')
-			}
+
+			ripples.length === 1 && resetStyles(this)
+
 			lastRipple.parentNode?.removeChild(lastRipple)
 		}, 300)
 	}, delay)

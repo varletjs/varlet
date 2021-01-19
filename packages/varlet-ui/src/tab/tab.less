@@ -1,4 +1,4 @@
-@import "../styles/var";
+@import '../styles/var';
 
 @tab-color: #fff;
 @tab-horizontal-height: 44px;
@@ -10,35 +10,33 @@
 @tab-disabled-color: #ddd;
 
 .var-tab {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1 0 auto;
-  padding: 0 @tab-padding;
-  font-size: @font-size-md;
-  color: @tab-color;
-  overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex: 1 0 auto;
+	padding: 0 @tab-padding;
+	font-size: @font-size-md;
+	color: @tab-color;
 
-  &--active {
-    color: @tab-active-color;
-  }
+	&--active {
+		color: @tab-active-color;
+	}
 
-  &--inactive {
-    color: @tab-inactive-color
-  }
+	&--inactive {
+		color: @tab-inactive-color;
+	}
 
-  &--disabled {
-    color: @tab-disabled-color
-  }
+	&--disabled {
+		color: @tab-disabled-color;
+	}
 
-  &--horizontal {
-    flex-direction: row;
-    height: @tab-horizontal-height;
-  }
+	&--horizontal {
+		flex-direction: row;
+		height: @tab-horizontal-height;
+	}
 
-  &--vertical {
-    flex-direction: column;
-    height: @tab-vertical-height;
-  }
+	&--vertical {
+		flex-direction: column;
+		height: @tab-vertical-height;
+	}
 }
