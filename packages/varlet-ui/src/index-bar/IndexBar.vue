@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, nextTick, ref, Ref, watch } from 'vue'
+import { computed, ComputedRef, defineComponent, nextTick, ref, Ref, watch, onMounted } from 'vue'
 import { useChildren, useAtChildrenCounter } from '../utils/components'
 import { isBaseObject } from '../utils/shared'
 import { IndexBarProvider, INDEX_BAR_BIND_INDEX_ANCHOR_KEY, INDEX_BAR_COUNT_INDEX_ANCHOR_KEY } from './provide'
@@ -50,9 +50,7 @@ export default defineComponent({
 		bindChildren(indexBarProvider)
 
 		const emitEvent = (anchor: IndexAnchorProvider | number | string) => {
-			// const anchorName = typeof anchor === 'object' ? anchor.name.value : anchor
 			const anchorName = isBaseObject(anchor) ? anchor.name.value : anchor
-			// console.log(typeof '233')
 			if (anchorName === props.active) return
 			props['onUpdate:active']?.(anchorName)
 			props.onChange?.(anchorName)
@@ -61,7 +59,7 @@ export default defineComponent({
 		const handleScroll = () => {
 			const { scrollTop } = barEl.value as HTMLDivElement
 			IndexAnchorProviders.forEach((anchor: IndexAnchorProvider, index: number) => {
-				const anchorTop = anchor.getTop()
+				const anchorTop = anchor.ownTop.value
 				const top = scrollTop - anchorTop + stickyOffsetTop.value
 
 				if (top >= 0 && top <= 10) {
@@ -72,11 +70,12 @@ export default defineComponent({
 				}
 			})
 		}
-		//
+
 		const anchorClick = (anchorName: string | number) => {
+			if (anchorName === active.value) return
 			const indexAnchor = IndexAnchorProviders.find(({ name }: IndexAnchorProvider) => anchorName === name.value)
 			if (!indexAnchor) return
-			const top = indexAnchor.getTop()
+			const top = indexAnchor.ownTop.value
 			const { scrollLeft } = barEl.value as HTMLDivElement
 			;(barEl.value as HTMLDivElement).scrollTo(scrollLeft, top)
 			emitEvent(anchorName)
@@ -91,6 +90,10 @@ export default defineComponent({
 					})
 				})
 		)
+
+		onMounted(() => {
+			IndexAnchorProviders.forEach(({ setOwnTop }) => setOwnTop())
+		})
 
 		return {
 			barEl,

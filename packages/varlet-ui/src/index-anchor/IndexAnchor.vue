@@ -1,16 +1,13 @@
 <template>
-	<var-sticky v-if="active === name && sticky" :z-index="zIndex" :offset-top="stickyOffsetTop">
-		<div class="var-index-anchor" ref="anchorEl" v-bind="$attrs">
+	<var-sticky :z-index="zIndex" ref="anchorEl" :offset-top="stickyOffsetTop">
+		<div class="var-index-anchor" v-bind="$attrs">
 			<slot>{{ name }}</slot>
 		</div>
 	</var-sticky>
-	<div class="var-index-anchor" ref="anchorEl" v-bind="$attrs" v-else :style="{ zIndex: zIndex + 1 }">
-		<slot>{{ name }}</slot>
-	</div>
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, ref, Ref } from 'vue'
+import { computed, ComputedRef, defineComponent, ref, Ref, RendererNode } from 'vue'
 import Sticky from '../sticky'
 import { useParent, useAtParentIndex } from '../utils/components'
 import { IndexAnchorProvider } from './provide'
@@ -29,21 +26,30 @@ export default defineComponent({
 	inheritAttrs: false,
 	props,
 	setup(props) {
+		const ownTop: Ref<number> = ref(0)
 		const name: ComputedRef<number | string | undefined> = computed(() => props.index)
-		const anchorEl: Ref<HTMLDivElement | null> = ref(null)
+		const anchorEl: Ref<RendererNode | null> = ref(null)
 		const { parentProvider: IndexBarProvider, bindParent } = useParent<IndexBarProvider, IndexAnchorProvider>(
 			INDEX_BAR_BIND_INDEX_ANCHOR_KEY
 		)
 
+		if (!IndexBarProvider || !bindParent) {
+			console.error('[Varlet] IndexAnchor: You should use this component in "IndexBar"')
+			return
+		}
+
 		const { active, sticky, stickyOffsetTop, zIndex } = IndexBarProvider
 		const { index } = useAtParentIndex(INDEX_BAR_COUNT_INDEX_ANCHOR_KEY)
 
-		const getTop = (): number => (anchorEl.value as HTMLDivElement).offsetTop
+		const setOwnTop = () => {
+			ownTop.value = (anchorEl.value as RendererNode).$el.offsetTop
+		}
 
 		const indexAnchorProvider: IndexAnchorProvider = {
 			index,
 			name,
-			getTop,
+			ownTop,
+			setOwnTop,
 		}
 
 		bindParent(indexAnchorProvider)

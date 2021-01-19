@@ -1,7 +1,8 @@
-import { ComputedRef } from 'vue'
+import { ComputedRef, Ref } from 'vue'
 
 export interface IndexAnchorProvider {
-	index: ComputedRef<number>
+	index: ComputedRef<number> | null
 	name: ComputedRef<string | number | undefined>
-	getTop: () => number
+	ownTop: Ref<number>
+	setOwnTop: () => void
 }
