@@ -4,7 +4,7 @@
 		ref="stickyEl"
 		:style="{
 			zIndex,
-			top: !isFixed ? offsetTop : null,
+			top: !isFixed ? `${offsetTop}px` : null,
 			width: isFixed ? fixedWidth : null,
 			height: isFixed ? fixedHeight : null,
 		}"
@@ -107,6 +107,7 @@ export default defineComponent({
 			stickyEl,
 			wrapperEl,
 			isFixed,
+			offsetTop,
 			fixedTop,
 			fixedLeft,
 			fixedWidth,
