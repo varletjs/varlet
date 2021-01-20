@@ -8,8 +8,10 @@
 			:style="{
 				color: transformValue(val + 1).color,
 				cursor: readonly ? 'default' : disabled ? 'not-allowed' : 'pointer',
-				fontSize,
 				marginRight: val !== count ? marginRight : 0,
+				width: fontSize,
+				height: fontSize,
+				borderRadius: '50%',
 			}"
 		>
 			<var-icon
@@ -21,6 +23,7 @@
 						? halfIcon
 						: emptyIcon
 				}`"
+				:style="{ fontSize }"
 				@click="handleClick(val + 1, $event)"
 			/>
 		</div>
