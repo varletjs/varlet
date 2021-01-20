@@ -51,7 +51,7 @@ test('test ${camelize(name)}', async () => {
   <${namespace}-${name}/>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 import ${bigCamelize(name)} from '..'
 

@@ -50,7 +50,7 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, ref } from 'vue'
 import ExpansionPanels from '..'
 import ExpansionPanel from '../../expansion-panel'
@@ -67,7 +67,7 @@ export default defineComponent({
 		const disabled = ref(false)
 		const value = ref(['1'])
 		const value1 = ref('1')
-		const changeHandle = (val: any) => {
+		const changeHandle = (val) => {
 			console.log({ val })
 			console.log(value.value)
 		}

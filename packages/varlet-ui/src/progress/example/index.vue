@@ -82,8 +82,8 @@
 	</div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, Ref, onMounted, onUnmounted } from 'vue'
+<script>
+import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
 import Progress from '..'
 
 export default defineComponent({
@@ -92,8 +92,8 @@ export default defineComponent({
 		[Progress.name]: Progress,
 	},
 	setup() {
-		const value: Ref<number> = ref(0)
-		const interval: Ref<number> = ref(0)
+		const value = ref(0)
+		const interval = ref(0)
 
 		onMounted(() => {
 			interval.value = window.setInterval(() => {

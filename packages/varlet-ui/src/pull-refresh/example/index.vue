@@ -6,7 +6,7 @@
 	</var-pull-refresh>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, ref } from 'vue'
 import PullRefresh from '..'
 

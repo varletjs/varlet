@@ -89,10 +89,10 @@
 	</div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, Ref, reactive, toRefs } from 'vue'
+<script>
+import { defineComponent, ref, reactive, toRefs } from 'vue'
 import Button from '../../button'
-import Snackbar, { SnackbarType } from '..'
+import Snackbar from '..'
 
 export default defineComponent({
 	name: 'SnackbarExample',
@@ -101,9 +101,9 @@ export default defineComponent({
 		[Button.name]: Button,
 	},
 	setup() {
-		const text: Ref<string> = ref("Hello, I'm a snackbar")
-		const isAllowMultiple: Ref<boolean> = ref(true)
-		const shows: any = reactive({
+		const text = ref("Hello, I'm a snackbar")
+		const isAllowMultiple = ref(true)
+		const shows = reactive({
 			show1: false,
 			show2: false,
 			show3: false,
@@ -115,12 +115,12 @@ export default defineComponent({
 			show11: false,
 			show12: false,
 		})
-		const changeValue = (type: string) => {
+		const changeValue = (type) => {
 			shows[type] = !shows[type]
 		}
 
-		const create = (type: any) => {
-			const snackbar: any = Snackbar({
+		const create = (type) => {
+			const snackbar = Snackbar({
 				content: "Hello, I'm a snackbar",
 				type,
 			})
@@ -129,14 +129,14 @@ export default defineComponent({
 			}, 1000)
 		}
 
-		const createMethod = (type: SnackbarType) => {
+		const createMethod = (type) => {
 			Snackbar[type]({
 				content: "Hello, I'm a snackbar",
 				forbidClick: type === 'loading',
 			})
 		}
 
-		const createPosition = (position: 'top' | 'center' | 'bottom') => {
+		const createPosition = (position) => {
 			Snackbar({
 				content: "Hello, I'm a snackbar",
 				position,
