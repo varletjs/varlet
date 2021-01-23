@@ -1,0 +1,31 @@
+@import '../select/select';
+
+@option-height: 38px;
+@option-padding: 0 12px;
+@option-selected-background: @select-active-color;
+
+.var-option {
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: @option-height;
+	padding: @option-padding;
+
+	&__cover {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		opacity: 0.2;
+		background: transparent;
+	}
+
+	&--selected-background {
+		background: @option-selected-background;
+	}
+
+	&--selected-color {
+		color: @option-selected-background;
+	}
+}

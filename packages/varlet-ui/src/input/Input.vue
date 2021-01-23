@@ -26,6 +26,7 @@
 				<component
 					class="var-input__input"
 					ref="input"
+					autocomplete="off"
 					:is="textarea ? 'textarea' : 'input'"
 					:class="[disabled ? 'var-input--disabled' : null, textarea ? 'var-input--textarea' : null]"
 					:style="{
@@ -132,8 +133,6 @@ export default defineComponent({
 			if (props.hint && (!isEmpty(props.modelValue) || isFocus.value)) {
 				return 'var-input--placeholder-hint'
 			}
-
-			return null
 		}
 
 		const normalizeValue = (value: string) => {
@@ -226,7 +225,7 @@ export default defineComponent({
 		}
 
 		const handleClick = (e: Event) => {
-			if (props.disabled || !props.clearable) {
+			if (props.disabled) {
 				return
 			}
 
@@ -236,10 +235,18 @@ export default defineComponent({
 		}
 
 		const handleClickAppendIcon = (e: Event) => {
+			if (props.disabled) {
+				return
+			}
+
 			props.onClickAppendIcon?.(e)
 		}
 
 		const handleClickPrependIcon = (e: Event) => {
+			if (props.disabled) {
+				return
+			}
+
 			props.onClickPrependIcon?.(e)
 		}
 

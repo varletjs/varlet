@@ -1,35 +1,31 @@
 @menu-background: #fff;
 
 .var {
-  &-menu-enter-from,
-  &-menu-leave-to {
-    transform: scale(.3);
-    opacity: 0;
-  }
-  &-menu-enter-active,
-  &-menu-leave-active {
-    transition-property: opacity, transform;
-    transition-duration: .3s;
-  }
+	&-menu-enter-from,
+	&-menu-leave-to {
+		transform: scale(0.3);
+		opacity: 0;
+	}
+	&-menu-enter-active,
+	&-menu-leave-active {
+		transition-property: opacity, transform;
+		transition-duration: 0.3s;
+	}
 }
 
 .var-menu {
-  display: inline-block;
-  background: @menu-background;
+	display: inline-block;
+	background: @menu-background;
 
-  &__host {
-    display: inline-block;
-  }
+	&__menu {
+		position: absolute;
+	}
 
-  &__menu {
-    position: absolute;
-  }
+	&--origin-top {
+		transform-origin: 0 0;
+	}
 
-  &--origin-top {
-    transform-origin: 0 0;
-  }
-
-  &--origin-bottom {
-    transform-origin: 0 100%;
-  }
+	&--origin-bottom {
+		transform-origin: 0 100%;
+	}
 }

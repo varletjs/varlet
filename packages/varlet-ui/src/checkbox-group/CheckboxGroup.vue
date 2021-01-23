@@ -77,17 +77,10 @@ export default defineComponent({
 			return changedModelValue
 		}
 
-		watch(
-			() => props.modelValue,
-			() => syncAllCheckbox(),
-			{ deep: true }
-		)
+		watch(() => props.modelValue, syncAllCheckbox, { deep: true })
 
 		// checkbox insert or remove
-		watch(
-			() => length.value,
-			() => syncAllCheckbox()
-		)
+		watch(() => length.value, syncAllCheckbox)
 
 		bindChildren({
 			checkedCount,

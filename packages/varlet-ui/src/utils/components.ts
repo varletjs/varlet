@@ -140,12 +140,11 @@ export function useAtChildrenCounter(key: symbol) {
 }
 
 export function useAtParentIndex(key: symbol) {
-	const childrenCounter: ChildrenCounter | undefined = inject<ChildrenCounter>(key)
-	if (!childrenCounter) {
-		return {
-			index: null,
-		}
+	if (!keyInProvides(key)) {
+		return { index: null }
 	}
+
+	const childrenCounter: ChildrenCounter = inject<ChildrenCounter>(key) as ChildrenCounter
 
 	const { collect, clear, instances } = childrenCounter
 
@@ -191,14 +190,14 @@ export function useChildren<P, C>(key: symbol) {
 }
 
 export function useParent<P, C>(key: symbol) {
-	const rawParentProvider = inject<P & BaseParentProvider<C>>(key) as P & BaseParentProvider<C>
-
-	if (!rawParentProvider) {
+	if (!keyInProvides(key)) {
 		return {
 			parentProvider: null,
 			bindParent: null,
 		}
 	}
+
+	const rawParentProvider = inject<P & BaseParentProvider<C>>(key) as P & BaseParentProvider<C>
 
 	const { collect, clear, ...parentProvider } = rawParentProvider
 
@@ -211,4 +210,10 @@ export function useParent<P, C>(key: symbol) {
 		parentProvider,
 		bindParent,
 	}
+}
+
+export function keyInProvides(key: symbol) {
+	const instance = getCurrentInstance() as any
+
+	return Object.prototype.hasOwnProperty.call(instance.provides, key)
 }

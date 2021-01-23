@@ -1,19 +1,19 @@
 <template>
-  <component
-    :is="isURL(name) ? 'img' : 'i'"
+	<component
+		:is="isURL(name) ? 'img' : 'i'"
 		class="var-icon"
 		:class="[
-		  `${namespace}--set`,
-		  isURL(name) ? 'var-icon__image' : `${namespace}-${nextName}`,
-		  tickTransition ? 'var-icon--hidden' : null
+			`${namespace}--set`,
+			isURL(name) ? 'var-icon__image' : `${namespace}-${nextName}`,
+			tickTransition ? 'var-icon--hidden' : null,
 		]"
-    :src="isURL(name) ? nextName : null"
+		:src="isURL(name) ? nextName : null"
 		:style="{
 			transition: `all ${transition}ms`,
 			color,
-			fontSize: size
+			fontSize: size,
 		}"
-    @click="handleClick"
+		@click="handleClick"
 		v-bind="$attrs"
 	/>
 </template>
@@ -34,8 +34,9 @@ export default defineComponent({
 		watch(
 			() => props.name,
 			(newValue: string | undefined, oldValue: string | undefined) => {
-				if (oldValue === undefined) {
+				if (oldValue === undefined || !props.transition) {
 					nextName.value = newValue
+					return
 				}
 
 				tickTransition.value = true
@@ -53,15 +54,15 @@ export default defineComponent({
 			{ immediate: true }
 		)
 
-    const handleClick = (e: Event) => {
-		  props.onClick?.(e)
-    }
+		const handleClick = (e: Event) => {
+			props.onClick?.(e)
+		}
 
 		return {
-      isURL,
+			isURL,
 			nextName,
 			tickTransition,
-      handleClick,
+			handleClick,
 		}
 	},
 })

@@ -28,13 +28,15 @@
 		</template>
 	</var-checkbox>
 
-	<app-type>checkbox 组 {{ v2 }}</app-type>
-	<var-checkbox-group v-model="v2" ref="g" :max="4" @change="log">
-		<var-checkbox :checked-value="1">1</var-checkbox>
-		<var-checkbox :checked-value="2">2</var-checkbox>
-		<var-checkbox :checked-value="3">3</var-checkbox>
-		<var-checkbox :checked-value="4">4</var-checkbox>
-		<var-checkbox v-for="l in list" :key="l" :checked-value="l">{{ l }}</var-checkbox>
+	<app-type>checkbox 组 {{ v2 }} {{ v3 }}</app-type>
+	<var-checkbox-group v-model="v3" ref="g" :max="4" @change="log">
+		<var-checkbox-group v-model="v2" ref="g" :max="4" @change="log">
+			<var-checkbox :checked-value="1">1</var-checkbox>
+			<var-checkbox :checked-value="2">2</var-checkbox>
+			<var-checkbox :checked-value="3">3</var-checkbox>
+			<var-checkbox :checked-value="4">4</var-checkbox>
+			<var-checkbox v-for="l in list" :key="l" :checked-value="l">{{ l }}</var-checkbox>
+		</var-checkbox-group>
 	</var-checkbox-group>
 
 	<var-button style="margin: 10px" @click="v2.push(4)">group 推4</var-button>
@@ -67,6 +69,7 @@ export default defineComponent({
 			v: ref(false),
 			v1: ref(0),
 			v2: ref([1, 3]),
+			v3: ref([2, 3]),
 			list: ref([]),
 			g: ref(null),
 			log(v: any) {

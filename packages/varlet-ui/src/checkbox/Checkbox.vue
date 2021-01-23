@@ -89,8 +89,10 @@ export default defineComponent({
 			}
 
 			// has parent check max
-			const forbidCheck = checkboxGroupProvider.checkedCount.value >= Number(checkboxGroupProvider.max.value)
-			if (checkboxGroupProvider && !checked.value && forbidCheck) {
+			const maximum = checkboxGroupProvider
+				? checkboxGroupProvider.checkedCount.value >= Number(checkboxGroupProvider.max.value)
+				: false
+			if (!checked.value && maximum) {
 				return
 			}
 

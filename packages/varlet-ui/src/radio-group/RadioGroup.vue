@@ -30,16 +30,10 @@ export default defineComponent({
 			props.onChange?.(changedValue)
 		}
 
-		watch(
-			() => props.modelValue,
-			() => syncAllRadio()
-		)
+		watch(() => props.modelValue, syncAllRadio)
 
 		// radio insert or remove
-		watch(
-			() => length.value,
-			() => syncAllRadio()
-		)
+		watch(() => length.value, syncAllRadio)
 
 		bindChildren({
 			onToggle,

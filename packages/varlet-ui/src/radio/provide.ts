@@ -1,3 +1,3 @@
 export interface RadioProvider {
-	sync(values: Array<any>): void
+	sync(value: any): void
 }

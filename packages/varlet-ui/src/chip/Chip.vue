@@ -1,16 +1,26 @@
 <template>
 	<transition name="var-fade">
 		<span
+			v-bind="$attrs"
 			v-ripple="{ disabled }"
-			class="var-chip var--box"
 			:class="[
 				`var-chip--${size}`,
 				block ? 'var--flex' : 'var--inline-flex',
 				plain ? `var-chip--plain-${type}` : `var-chip--${type}`,
 				{ 'var-chip--round': round, 'var-chip--plain': plain },
 			]"
-			:style="controlStyle()"
-			v-bind="$attrs"
+			:style="
+				plain
+					? {
+							color: textColor || color,
+							borderColor: color,
+					  }
+					: {
+							color: textColor,
+							background: color,
+					  }
+			"
+			class="var-chip var--box"
 		>
 			<slot name="left"></slot>
 			<span :class="[`var-chip--text-${size}`]">
@@ -26,7 +36,7 @@
 
 <script lang="ts">
 import Ripple from '../ripple'
-import { defineComponent, Ref, ref } from 'vue'
+import { defineComponent } from 'vue'
 import { props } from './props'
 import Icon from '../icon'
 
@@ -39,22 +49,17 @@ export default defineComponent({
 	inheritAttrs: false,
 	props,
 	setup(props) {
-		const color: Ref<string | null> = ref(null)
-		if (props.textColor) {
-			// eslint-disable-next-line vue/no-setup-props-destructure
-			color.value = props.textColor
-		} else if (props.plain) {
-			color.value = props.color || null
-		} else if (props.color) {
-			color.value = '#fff'
-		} else {
-			color.value = null
-		}
 		const controlStyle = () => {
+			if (props.plain) {
+				return {
+					color: props.textColor || props.color,
+					borderColor: props.color,
+				}
+			}
+
 			return {
-				color: color.value,
-				background: !props.plain ? props.color || null : null,
-				borderColor: props.plain ? props.color || null : null,
+				color: props.textColor,
+				background: props.color,
 			}
 		}
 		return {

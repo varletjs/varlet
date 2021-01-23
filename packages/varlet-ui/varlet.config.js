@@ -21,6 +21,12 @@ module.exports = {
 		menu: [
 			{
 				text: {
+					zh_CN: '快速开始',
+				},
+				isTitle: true,
+			},
+			{
+				text: {
 					zh_CN: 'Ripple 水波指令',
 					en_US: 'Ripple',
 				},
