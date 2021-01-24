@@ -2,7 +2,7 @@ export const props = {
 	modelValue: {
 		type: Boolean,
 	},
-	disable: {
+	disabled: {
 		type: Boolean,
 		default: false,
 	},

@@ -1,7 +1,7 @@
 <template>
 	<div
 		class="var-switch"
-		:class="`var-switch ${disable ? ' var-switch__disable' : ''}`"
+		:class="`var-switch ${disabled ? ' var-switch__disable' : ''}`"
 		@click="switchActive"
 		:style="styleComputed.switch"
 	>
@@ -13,7 +13,7 @@
 			class="var-switch__ripple"
 			:style="styleComputed.ripple"
 			v-ripple="{
-				disabled: !ripple || disable || loading,
+				disabled: !ripple || disabled || loading,
 			}"
 		>
 			<div
@@ -82,7 +82,7 @@ export default defineComponent({
 
 		const switchActive = () => {
 			props.onClick?.()
-			if (props.disable || props.loading) return
+			if (props.disabled || props.loading) return
 			props.onChange?.(!props.modelValue)
 			props['onUpdate:modelValue']?.(!props.modelValue)
 		}
