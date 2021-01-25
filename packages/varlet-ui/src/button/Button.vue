@@ -4,7 +4,7 @@
 		class="var--box var-button"
 		:class="[
 			`var-button--${size}`,
-			block ? 'var--flex' : null,
+			block ? 'var--flex' : 'var--inline-flex',
 			disabled ? 'var-button--disabled' : null,
 			plain ? `var-button--plain-${type}` : `var-button--${type}`,
 			plain ? 'var-button--plain' : 'var-elevation--2',

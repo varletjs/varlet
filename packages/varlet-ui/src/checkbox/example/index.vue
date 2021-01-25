@@ -1,6 +1,6 @@
 <template>
 	<app-type>基本用法</app-type>
-	<var-checkbox v-model="v">checkbox {{ v }}</var-checkbox>
+	<var-checkbox v-model="v" :rules="[(v) => !!v || '必须同意哥哥!']">checkbox {{ v }}</var-checkbox>
 
 	<app-type>改颜色</app-type>
 	<var-checkbox v-model="v" unchecked-color="gray" checked-color="red">checkbox {{ v }}</var-checkbox>
@@ -28,25 +28,21 @@
 		</template>
 	</var-checkbox>
 
-	<app-type>checkbox 组 {{ v2 }} {{ v3 }}</app-type>
-	<var-checkbox-group v-model="v3" ref="g" :max="4" @change="log">
-		<var-checkbox-group v-model="v2" ref="g" :max="4" @change="log">
-			<var-checkbox :checked-value="1">1</var-checkbox>
-			<var-checkbox :checked-value="2">2</var-checkbox>
-			<var-checkbox :checked-value="3">3</var-checkbox>
-			<var-checkbox :checked-value="4">4</var-checkbox>
-			<var-checkbox v-for="l in list" :key="l" :checked-value="l">{{ l }}</var-checkbox>
-		</var-checkbox-group>
+	<app-type>checkbox 组 {{ v2 }}</app-type>
+	<var-checkbox-group v-model="v2" ref="g" :max="4" @change="log" :rules="[(v) => v.length >= 3 || '哥哥至少选3个']">
+		<var-checkbox :checked-value="1">1</var-checkbox>
+		<var-checkbox :checked-value="2">2</var-checkbox>
+		<var-checkbox :checked-value="3">3</var-checkbox>
+		<var-checkbox :checked-value="4">4</var-checkbox>
+		<var-checkbox v-for="l in list" :key="l" :checked-value="l">{{ l }}</var-checkbox>
 	</var-checkbox-group>
 
-	<var-button style="margin: 10px" @click="v2.push(4)">group 推4</var-button>
-	<var-button style="margin: 10px" @click="v2.push(5, 6, 7)">group 推567</var-button>
-	<var-button style="margin: 10px" @click="v2.pop()">group 删</var-button>
-	<var-button style="margin: 10px" @click="list.push(5, 6, 7)">异步加载567checkbox</var-button>
-	<var-button style="margin: 10px" @click="list.pop()">异步删除最后一个checkbox</var-button>
 	<var-button style="margin: 10px" @click="g.checkAll()">全选</var-button>
 	<var-button style="margin: 10px" @click="g.uncheckAll()">清空</var-button>
 	<var-button style="margin: 10px" @click="g.inverseAll()">反选</var-button>
+	<var-button style="margin: 10px" @click="g.validate()">校验</var-button>
+	<var-button style="margin: 10px" @click="g.resetValidation()">清除校验</var-button>
+	<var-button style="margin: 10px" @click="g.reset()">重置</var-button>
 </template>
 
 <script lang="ts">
@@ -65,13 +61,13 @@ export default defineComponent({
 		[Button.name]: Button,
 	},
 	setup() {
+		const g: any = ref(null)
 		return {
 			v: ref(false),
 			v1: ref(0),
 			v2: ref([1, 3]),
-			v3: ref([2, 3]),
 			list: ref([]),
-			g: ref(null),
+			g,
 			log(v: any) {
 				console.log(v)
 			},

@@ -4,6 +4,7 @@
 			class="example__input"
 			prepend-icon="star"
 			placeholder="请输入账号"
+			:maxlength="100"
 			:rules="[
 				(v) => !!v || '不能为空不能为空不能为空不能为空不能为空不能为空不能为空不能为空不能为空',
 				(v) => (v && v.length > 6) || '必须大于6位',

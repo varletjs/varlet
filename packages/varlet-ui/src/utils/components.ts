@@ -15,8 +15,10 @@ import {
 	onMounted,
 	onBeforeUnmount,
 	nextTick,
+	Ref,
+	ref,
 } from 'vue'
-import { removeItem } from './shared'
+import { isArray, removeItem } from './shared'
 
 export interface MountInstance {
 	instance: any
@@ -215,5 +217,43 @@ export function useParent<P, C>(key: symbol) {
 export function keyInProvides(key: symbol) {
 	const instance = getCurrentInstance() as any
 
-	return Object.prototype.hasOwnProperty.call(instance.provides, key)
+	return key in instance.provides
+}
+
+export function useValidation() {
+	const errorMessage: Ref<string> = ref('')
+
+	const validate = async (rules: any, value: any): Promise<boolean> => {
+		if (!isArray(rules) || !rules.length) {
+			return true
+		}
+
+		const resArr = await Promise.all(rules.map((rule) => rule(value)))
+
+		return !resArr.some((res) => {
+			if (res !== true) {
+				errorMessage.value = res.toString()
+				return true
+			}
+
+			return false
+		})
+	}
+
+	const resetValidation = () => {
+		errorMessage.value = ''
+	}
+
+	const validateWithTrigger = async <T>(validateTrigger: T[], trigger: T, rules: any, value: any) => {
+		if (validateTrigger.includes(trigger)) {
+			;(await validate(rules, value)) && (errorMessage.value = '')
+		}
+	}
+
+	return {
+		errorMessage,
+		validate,
+		resetValidation,
+		validateWithTrigger,
+	}
 }

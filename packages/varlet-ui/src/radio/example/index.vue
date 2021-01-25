@@ -1,15 +1,13 @@
 <template>
 	<app-type>基本用法</app-type>
-	<var-radio v-model="v">radio {{ v }}</var-radio>
+	<var-radio v-model="v" :rules="[(v) => !!v || '必须选真']">radio {{ v }}</var-radio>
 
 	<app-type>组 {{ i }}</app-type>
-	<var-radio-group v-model="i">
+	<var-radio-group v-model="i" :rules="[(v) => v === 2 || '必须选2']">
 		<var-radio :checked-value="1">1</var-radio>
 		<var-radio :checked-value="2">2</var-radio>
 		<var-radio :checked-value="3">3</var-radio>
 	</var-radio-group>
-
-	<var-button @click="i = 3">i = 3</var-button>
 </template>
 
 <script lang="ts">
@@ -30,7 +28,7 @@ export default defineComponent({
 	setup() {
 		return {
 			v: ref(false),
-			i: ref(0),
+			i: ref(),
 		}
 	},
 })

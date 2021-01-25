@@ -1,7 +1,7 @@
 <template>
 	<div
 		class="var-select var--box"
-		:class="[disabled ? 'var-select--disabled' : null]"
+		:class="[formDisabled || disabled ? 'var-select--disabled' : null]"
 		@click="handleClick"
 		v-bind="$attrs"
 	>
@@ -10,7 +10,7 @@
 			:class="[
 				isFocus ? 'var-select--focus' : null,
 				errorMessage ? 'var-select--error' : null,
-				disabled ? 'var-select--disabled' : null,
+				formDisabled || disabled ? 'var-select--disabled' : null,
 			]"
 			:style="{
 				color: isFocus ? activeColor : inactiveColor,
@@ -26,7 +26,7 @@
 				<div class="var-select__wrap" ref="wrapEl" @click="handleFocus">
 					<div
 						class="var-select__select"
-						:class="[disabled ? 'var-select--disabled' : null]"
+						:class="[formDisabled || disabled ? 'var-select--disabled' : null]"
 						:style="{
 							textAlign,
 							color: textColor,
@@ -52,36 +52,38 @@
 						</div>
 
 						<span v-else>{{ findLabel(modelValue) }}</span>
+
+						<var-icon
+							class="var-select__arrow"
+							name="menu-down"
+							:transition="300"
+							:class="[isFocus ? 'var-select--arrow-rotate' : null]"
+						/>
 					</div>
 					<label class="var-select__placeholder" :class="[computePlaceholderState()]">
 						{{ placeholder }}
 					</label>
 					<div
 						class="var-select__line"
-						:class="[disabled ? 'var-select--line-disabled' : null, errorMessage ? 'var-select--line-error' : null]"
-						:style="{
-							background: inactiveColor,
-						}"
+						:class="[
+							formDisabled || disabled ? 'var-select--line-disabled' : null,
+							errorMessage ? 'var-select--line-error' : null,
+						]"
+						:style="{ background: inactiveColor }"
 						v-if="line"
 					>
 						<div
 							class="var-select__dot"
 							:class="[
 								isFocus ? 'var-select--spread' : null,
-								disabled ? 'var-select--line-disabled' : null,
+								formDisabled || disabled ? 'var-select--line-disabled' : null,
 								errorMessage ? 'var-select--line-error' : null,
 							]"
-							:style="{
-								background: activeColor,
-							}"
+							:style="{ background: activeColor }"
 						></div>
 					</div>
 
-					<transition name="var-select-footer-margin">
-						<div class="var-select__footer" v-if="errorMessage">
-							<div class="var-select__message">{{ errorMessage }}</div>
-						</div>
-					</transition>
+					<var-form-details :error-message="errorMessage" />
 				</div>
 
 				<template #menu>
@@ -106,15 +108,17 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, nextTick, ref, Ref, watch } from 'vue'
+import { computed, ComputedRef, defineComponent, ref, Ref, watch, nextTick } from 'vue'
 import { isArray, isEmpty } from '../utils/shared'
-import { ValidateTriggers, props } from './props'
-import { useAtChildrenCounter, useChildren } from '../utils/components'
+import { props, ValidateTriggers } from './props'
+import { useAtChildrenCounter, useChildren, useParent, useValidation } from '../utils/components'
 import { SELECT_BIND_OPTION_KEY, SELECT_COUNT_OPTION_KEY, SelectProvider } from './provide'
 import { OptionProvider } from '../option/provide'
 import Icon from '../icon'
 import Menu from '../menu'
 import Chip from '../chip'
+import FormDetails from '../form-details'
+import { FORM_BIND_FORM_ITEM_KEY, FormProvider } from '../form/provide'
 
 export default defineComponent({
 	name: 'VarSelect',
@@ -122,24 +126,33 @@ export default defineComponent({
 		[Icon.name]: Icon,
 		[Menu.name]: Menu,
 		[Chip.name]: Chip,
+		[FormDetails.name]: FormDetails,
 	},
 	inheritAttrs: false,
 	props,
 	setup(props) {
-		const { bindChildren, childProviders: optionProviders } = useChildren<SelectProvider, OptionProvider>(
+		const { bindChildren: bindOption, childProviders: optionProviders } = useChildren<SelectProvider, OptionProvider>(
 			SELECT_BIND_OPTION_KEY
+		)
+		const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, SelectProvider>(
+			FORM_BIND_FORM_ITEM_KEY
 		)
 		const { length } = useAtChildrenCounter(SELECT_COUNT_OPTION_KEY)
 
 		const wrapEl: Ref<HTMLElement | null> = ref(null)
 		const isFocus: Ref<boolean> = ref(false)
-		const errorMessage: Ref<string> = ref('')
-
 		const wrapWidth: ComputedRef<string> = computed(() => {
 			return (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).width) || '0px'
 		})
 		const multiple: ComputedRef<boolean> = computed(() => props.multiple)
 		const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
+
+		const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+
+		const validate = () => v(props.rules, props.modelValue)
+
+		const validateWithTrigger = (trigger: ValidateTriggers) =>
+			nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
 
 		const findValue = ({ value, label }: OptionProvider) => {
 			if (value.value != null) {
@@ -166,37 +179,8 @@ export default defineComponent({
 			}
 		}
 
-		const validate = async (): Promise<boolean> => {
-			if (!isArray(props.rules)) {
-				return false
-			}
-
-			const resArr = await Promise.all(props.rules.map((rule) => rule(props.modelValue)))
-
-			return !resArr.some((res) => {
-				if (res !== true) {
-					errorMessage.value = res.toString()
-					return true
-				}
-
-				return false
-			})
-		}
-
-		const resetValidation = () => {
-			errorMessage.value = ''
-		}
-
-		const validateWithTrigger = async (trigger: ValidateTriggers) => {
-			await nextTick()
-
-			if (props.validateTrigger.includes(trigger)) {
-				;(await validate()) && (errorMessage.value = '')
-			}
-		}
-
 		const handleFocus = (e: Event) => {
-			if (props.disabled || props.readonly) {
+			if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
 				return
 			}
 
@@ -207,7 +191,7 @@ export default defineComponent({
 		}
 
 		const handleBlur = (e: Event) => {
-			if (props.disabled) {
+			if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
 				return
 			}
 
@@ -217,7 +201,7 @@ export default defineComponent({
 		}
 
 		const handleChange = (optionProvider: OptionProvider) => {
-			if (props.disabled || props.readonly) {
+			if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
 				return
 			}
 
@@ -236,7 +220,13 @@ export default defineComponent({
 		}
 
 		const handleClear = () => {
-			if (props.disabled || !props.clearable) {
+			if (
+				formProvider?.disabled.value ||
+				formProvider?.readonly.value ||
+				props.disabled ||
+				props.readonly ||
+				!props.clearable
+			) {
 				return
 			}
 
@@ -249,7 +239,7 @@ export default defineComponent({
 		}
 
 		const handleClickAppendIcon = (e: Event) => {
-			if (props.disabled) {
+			if (formProvider?.disabled.value || props.disabled) {
 				return
 			}
 
@@ -257,7 +247,7 @@ export default defineComponent({
 		}
 
 		const handleClickPrependIcon = (e: Event) => {
-			if (props.disabled) {
+			if (formProvider?.disabled.value || props.disabled) {
 				return
 			}
 
@@ -265,7 +255,7 @@ export default defineComponent({
 		}
 
 		const handleClick = (e: Event) => {
-			if (props.disabled) {
+			if (formProvider?.disabled.value || props.disabled) {
 				return
 			}
 
@@ -275,10 +265,16 @@ export default defineComponent({
 		}
 
 		const handleClose = (targetValue: any) => {
-			const targetModelValue = (props.modelValue as any[]).filter((value) => value !== targetValue)
+			if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
+				return
+			}
+
+			const targetModelValue = ((props.modelValue as unknown) as any[]).filter((value) => value !== targetValue)
 
 			props['onUpdate:modelValue']?.(targetModelValue)
 			props.onClose?.(targetModelValue)
+
+			validateWithTrigger('onClose')
 		}
 
 		const focus = () => {
@@ -289,10 +285,15 @@ export default defineComponent({
 			isFocus.value = false
 		}
 
+		const reset = () => {
+			props['onUpdate:modelValue']?.(props.multiple ? [] : undefined)
+			resetValidation()
+		}
+
 		const syncAllOption = () => {
 			if (props.multiple) {
 				optionProviders.forEach(({ sync, ...rest }) => {
-					sync((props.modelValue as any[]).includes(findValue({ sync, ...rest })))
+					sync(((props.modelValue as unknown) as any[]).includes(findValue({ sync, ...rest })))
 				})
 			} else {
 				optionProviders.forEach(({ sync, ...rest }) => {
@@ -314,17 +315,24 @@ export default defineComponent({
 
 		watch(() => length.value, syncAllOption)
 
-		bindChildren({
+		const selectProvider: SelectProvider = {
 			wrapWidth,
 			multiple,
 			activeColor,
 			onSelect: handleChange,
-		})
+			reset,
+			validate,
+			resetValidation,
+		}
+
+		bindOption(selectProvider)
+		bindForm?.(selectProvider)
 
 		return {
 			wrapEl,
 			isFocus,
 			errorMessage,
+			formDisabled: formProvider?.disabled,
 			computePlaceholderState,
 			findLabel,
 			handleFocus,
@@ -335,6 +343,7 @@ export default defineComponent({
 			handleClose,
 			handleClickAppendIcon,
 			handleClickPrependIcon,
+			reset,
 			validate,
 			resetValidation,
 			focus,

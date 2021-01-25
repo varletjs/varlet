@@ -5,8 +5,6 @@
 @input-inactive-color: #888;
 @input-active-color: @color-primary;
 
-@input-footer-margin-top: 6px;
-@input-footer-font-size: 12px;
 @input-placeholder-size: 14px;
 @input-textarea-height: auto;
 @input-icon-padding: 18px 2px 0 0;
@@ -95,26 +93,8 @@
 		transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 	}
 
-	&__footer {
-		display: flex;
-		justify-content: space-between;
-		font-size: @input-footer-font-size;
-		margin-top: @input-footer-margin-top;
-	}
-
-	&__message {
-		flex-grow: 1;
-		color: @input-error-color;
-		margin-right: 4px;
-	}
-
 	&--textarea {
 		height: @input-textarea-height;
-	}
-
-	&__length {
-		flex-shrink: 0;
-		color: @input-inactive-color;
 	}
 
 	&--placeholder-hint {

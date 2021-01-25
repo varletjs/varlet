@@ -10,7 +10,7 @@
 			:class="[
 				isFocus ? 'var-input--focus' : null,
 				errorMessage ? 'var-input--error' : null,
-				disabled ? 'var-input--disabled' : null,
+				formDisabled || disabled ? 'var-input--disabled' : null,
 			]"
 			:style="{
 				color: isFocus ? activeColor : inactiveColor,
@@ -23,24 +23,45 @@
 			</slot>
 
 			<div class="var-input__wrap">
-				<component
+				<textarea
 					class="var-input__input"
 					ref="input"
 					autocomplete="off"
-					:is="textarea ? 'textarea' : 'input'"
-					:class="[disabled ? 'var-input--disabled' : null, textarea ? 'var-input--textarea' : null]"
+					:class="[formDisabled || disabled ? 'var-input--disabled' : null, 'var-input--textarea']"
 					:style="{
 						textAlign,
 						color: textColor,
 						resize: resize ? 'vertical' : 'none',
 					}"
 					:id="inputId"
-					:type="type"
-					:disabled="disabled"
-					:readonly="readonly"
+					:disabled="formDisabled || disabled"
+					:readonly="formReadonly || readonly"
 					:rows="rows"
 					:maxlength="maxlength"
 					:value="modelValue"
+					v-if="textarea"
+					@focus="handleFocus"
+					@blur="handleBlur"
+					@input="handleInput"
+					@change="handleChange"
+				>
+				</textarea>
+				<input
+					class="var-input__input"
+					ref="input"
+					autocomplete="off"
+					:class="[formDisabled || disabled ? 'var-input--disabled' : null]"
+					:style="{
+						textAlign,
+						color: textColor,
+					}"
+					:id="inputId"
+					:type="type"
+					:disabled="formDisabled || disabled"
+					:readonly="formReadonly || readonly"
+					:maxlength="maxlength"
+					:value="modelValue"
+					v-else
 					@focus="handleFocus"
 					@blur="handleBlur"
 					@input="handleInput"
@@ -51,31 +72,25 @@
 				</label>
 				<div
 					class="var-input__line"
-					:class="[disabled ? 'var-input--line-disabled' : null, errorMessage ? 'var-input--line-error' : null]"
-					:style="{
-						background: inactiveColor,
-					}"
+					:class="[
+						formDisabled || disabled ? 'var-input--line-disabled' : null,
+						errorMessage ? 'var-input--line-error' : null,
+					]"
+					:style="{ background: inactiveColor }"
 					v-if="line"
 				>
 					<div
 						class="var-input__dot"
 						:class="[
 							isFocus ? 'var-input--spread' : null,
-							disabled ? 'var-input--line-disabled' : null,
+							formDisabled || disabled ? 'var-input--line-disabled' : null,
 							errorMessage ? 'var-input--line-error' : null,
 						]"
-						:style="{
-							background: activeColor,
-						}"
+						:style="{ background: activeColor }"
 					></div>
 				</div>
 
-				<transition name="var-input-footer-margin">
-					<div class="var-input__footer" v-if="errorMessage || maxlength">
-						<div class="var-input__message">{{ errorMessage }}</div>
-						<div class="var-input__length">{{ maxlengthText }}</div>
-					</div>
-				</transition>
+				<var-form-details :error-message="errorMessage" :maxlength-text="maxlengthText" />
 			</div>
 
 			<slot name="append-icon">
@@ -95,20 +110,28 @@
 <script lang="ts">
 import { defineComponent, getCurrentInstance, ref, Ref, computed, ComputedRef, nextTick } from 'vue'
 import { props, ValidateTriggers } from './props'
-import { isArray, isEmpty, isNumber } from '../utils/shared'
+import { isEmpty, isNumber } from '../utils/shared'
+import { useParent, useValidation } from '../utils/components'
+import { FORM_BIND_FORM_ITEM_KEY, FormProvider } from '../form/provide'
+import { InputProvider } from './provide'
+import FormDetails from '../form-details'
 import Icon from '../icon'
 
 export default defineComponent({
 	name: 'VarInput',
 	components: {
 		[Icon.name]: Icon,
+		[FormDetails.name]: FormDetails,
 	},
 	inheritAttrs: false,
 	props,
 	setup(props) {
+		const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, InputProvider>(
+			FORM_BIND_FORM_ITEM_KEY
+		)
+
 		const inputId: Ref<string> = ref(`var-input-${getCurrentInstance()!.uid}`)
 		const isFocus: Ref<boolean> = ref(false)
-		const errorMessage: Ref<string> = ref('')
 		const inputEl: Ref<HTMLInputElement | null> = ref(null)
 
 		const isNumberValue: ComputedRef<boolean> = computed(() => isNumber(props.modelValue))
@@ -126,6 +149,13 @@ export default defineComponent({
 			return `${String(modelValue).length}/${maxlength}`
 		})
 
+		const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+
+		const validate = () => v(props.rules, props.modelValue)
+
+		const validateWithTrigger = (trigger: ValidateTriggers) =>
+			nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
+
 		const computePlaceholderState = () => {
 			if (!props.hint && !isEmpty(props.modelValue)) {
 				return 'var-input--placeholder-hidden'
@@ -139,40 +169,7 @@ export default defineComponent({
 			return isNumberValue.value ? parseFloat(value) : value
 		}
 
-		const validate = async (): Promise<boolean> => {
-			if (!isArray(props.rules)) {
-				return false
-			}
-
-			const resArr = await Promise.all(props.rules.map((rule) => rule(props.modelValue)))
-
-			return !resArr.some((res) => {
-				if (res !== true) {
-					errorMessage.value = res.toString()
-					return true
-				}
-
-				return false
-			})
-		}
-
-		const resetValidation = () => {
-			errorMessage.value = ''
-		}
-
-		const validateWithTrigger = async (trigger: ValidateTriggers) => {
-			await nextTick()
-
-			if (props.validateTrigger.includes(trigger)) {
-				;(await validate()) && (errorMessage.value = '')
-			}
-		}
-
 		const handleFocus = (e: Event) => {
-			if (props.disabled) {
-				return
-			}
-
 			isFocus.value = true
 			props.onFocus?.(e)
 
@@ -180,10 +177,6 @@ export default defineComponent({
 		}
 
 		const handleBlur = (e: Event) => {
-			if (props.disabled) {
-				return
-			}
-
 			isFocus.value = false
 			props.onBlur?.(e)
 
@@ -191,10 +184,6 @@ export default defineComponent({
 		}
 
 		const handleInput = (e: Event) => {
-			if (props.disabled) {
-				return
-			}
-
 			const { value } = e.target as HTMLInputElement
 
 			props['onUpdate:modelValue']?.(normalizeValue(value))
@@ -204,17 +193,19 @@ export default defineComponent({
 		}
 
 		const handleChange = (e: Event) => {
-			if (props.disabled) {
-				return
-			}
-
 			props.onChange?.(e)
 
 			validateWithTrigger('onChange')
 		}
 
 		const handleClear = () => {
-			if (props.disabled || !props.clearable) {
+			if (
+				formProvider?.disabled.value ||
+				formProvider?.readonly.value ||
+				props.disabled ||
+				props.readonly ||
+				!props.clearable
+			) {
 				return
 			}
 
@@ -225,7 +216,7 @@ export default defineComponent({
 		}
 
 		const handleClick = (e: Event) => {
-			if (props.disabled) {
+			if (formProvider?.disabled.value || props.disabled) {
 				return
 			}
 
@@ -235,7 +226,7 @@ export default defineComponent({
 		}
 
 		const handleClickAppendIcon = (e: Event) => {
-			if (props.disabled) {
+			if (formProvider?.disabled.value || props.disabled) {
 				return
 			}
 
@@ -243,7 +234,7 @@ export default defineComponent({
 		}
 
 		const handleClickPrependIcon = (e: Event) => {
-			if (props.disabled) {
+			if (formProvider?.disabled.value || props.disabled) {
 				return
 			}
 
@@ -258,12 +249,27 @@ export default defineComponent({
 			;(inputEl.value as HTMLInputElement).blur()
 		}
 
+		const reset = () => {
+			props['onUpdate:modelValue']?.(undefined)
+			resetValidation()
+		}
+
+		const inputProvider: InputProvider = {
+			reset,
+			validate,
+			resetValidation,
+		}
+
+		bindForm?.(inputProvider)
+
 		return {
 			inputEl,
 			inputId,
 			isFocus,
 			errorMessage,
 			maxlengthText,
+			formDisabled: formProvider?.disabled,
+			formReadonly: formProvider?.readonly,
 			computePlaceholderState,
 			handleFocus,
 			handleBlur,
@@ -275,6 +281,7 @@ export default defineComponent({
 			handleClickPrependIcon,
 			validate,
 			resetValidation,
+			reset,
 			focus,
 			blur,
 		}

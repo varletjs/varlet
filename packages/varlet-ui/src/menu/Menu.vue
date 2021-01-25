@@ -1,5 +1,5 @@
 <template>
-	<div class="var-menu" ref="host" v-bind="$attrs" @click.stop>
+	<div class="var-menu" ref="host" v-bind="$attrs" @click="handleClick">
 		<slot />
 
 		<teleport to="body">
@@ -34,20 +34,23 @@ export default defineComponent({
 	inheritAttrs: false,
 	props,
 	setup(props) {
-		// z-index
 		const { zIndex } = useZIndex(props, 'show', 1)
 
-		// element ref
 		const host: Ref<null | HTMLElement> = ref(null)
 		const menu: Ref<null | HTMLElement> = ref(null)
 
-		// menu positions
 		const top: Ref<number> = ref(0)
 		const left: Ref<number> = ref(0)
 		const computeTop = (alignment: string): number => {
 			return alignment === 'top'
 				? getTop(host.value as HTMLElement)
 				: getTop(host.value as HTMLElement) - (menu.value as HTMLElement).offsetHeight
+		}
+
+		const clickSelf: Ref<boolean> = ref(false)
+
+		const handleClick = () => {
+			clickSelf.value = true
 		}
 
 		// positions effect
@@ -69,6 +72,11 @@ export default defineComponent({
 
 		// menu hidden
 		const handleMenuBlur = () => {
+			if (clickSelf.value) {
+				clickSelf.value = false
+				return
+			}
+
 			props['onUpdate:show']?.(false)
 			props.onBlur?.()
 		}
@@ -89,6 +97,7 @@ export default defineComponent({
 			menu,
 			top,
 			left,
+			handleClick,
 		}
 	},
 })

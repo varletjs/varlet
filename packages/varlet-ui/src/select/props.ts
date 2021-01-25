@@ -4,11 +4,10 @@ export function textAlignValidator(textAlign: string) {
 	return ['left', 'right', 'center'].includes(textAlign)
 }
 
-export type ValidateTriggers = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear'
+export type ValidateTriggers = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
 
 export const props = {
 	modelValue: {
-		type: [String, Number, Boolean, Array] as PropType<string | number | boolean | undefined | Array<any>>,
 		default: undefined,
 	},
 	textColor: {
@@ -68,10 +67,10 @@ export const props = {
 	},
 	validateTrigger: {
 		type: Array as PropType<Array<ValidateTriggers>>,
-		default: ['onChange', 'onClear'],
+		default: ['onChange', 'onClear', 'onClose'],
 	},
 	rules: {
-		type: Array as PropType<Array<(v: string | number | boolean | Array<any> | undefined) => any>>,
+		type: Array as PropType<Array<(v: any) => any>>,
 	},
 	onFocus: {
 		type: Function,

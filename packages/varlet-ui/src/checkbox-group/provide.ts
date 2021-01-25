@@ -1,7 +1,9 @@
 import { ComputedRef } from 'vue'
+import { Validation } from '../form/provide'
 
-export interface CheckboxGroupProvider {
+export interface CheckboxGroupProvider extends Validation {
 	checkedCount: ComputedRef<number>
+	errorMessage: ComputedRef<string>
 	max: ComputedRef<number | string | undefined>
 	onChecked(value: any): void
 	onUnchecked(value: any): void

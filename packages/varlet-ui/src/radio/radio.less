@@ -3,10 +3,18 @@
 @radio-checked-color: @color-primary;
 @radio-unchecked-color: #555;
 @radio-disabled-color: #aaa;
+@radio-error-color: @color-danger;
+
+@checkbox-form-details-margin-left: 8px;
 
 .var-radio {
-	display: inline-flex;
+	display: flex;
 	align-items: center;
+
+	&__wrap {
+		display: inline-flex;
+		flex-direction: column;
+	}
 
 	&__action {
 		display: flex;
@@ -21,6 +29,10 @@
 		font-size: 24px;
 	}
 
+	&__form-details {
+		margin-left: @checkbox-form-details-margin-left;
+	}
+
 	&--checked {
 		color: @radio-checked-color;
 	}
@@ -31,5 +43,9 @@
 
 	&--disabled {
 		color: @radio-disabled-color;
+	}
+
+	&--error {
+		color: @radio-error-color;
 	}
 }
