@@ -1,16 +1,17 @@
 @import '../styles/var';
 
 .var-slider {
-	display: flex;
-	align-items: center;
-	position: relative;
-	flex: 1;
-	user-select: none;
-	min-height: 32px;
-	margin-left: 8px;
-	margin-right: 8px;
+	&-block {
+		display: flex;
+		align-items: center;
+		position: relative;
+		flex: 1;
+		user-select: none;
+		height: 36px;
+		margin: 0 6px;
+	}
 
-	&-disable {
+	&__disable {
 		filter: opacity(0.6);
 	}
 
@@ -37,8 +38,7 @@
 			width: 12px;
 			height: 12px;
 			border-radius: 50%;
-			left: -6px;
-			top: -6px;
+			transform: translate(-50%, -50%);
 			background-color: @color-primary;
 		}
 
@@ -85,8 +85,36 @@
 			}
 
 			&-active {
-				transform: translateY(-20%) translateY(-8px) translateX(-50%) rotate(45deg) scale(1);
+				transform: translateY(-50%) translateX(-50%) rotate(45deg) scale(1);
 			}
 		}
+	}
+
+	&__error {
+		.var-slider__track {
+			background: lighten(@color-danger, 25%) !important;
+
+			&-fill {
+				background-color: @color-danger !important;
+			}
+		}
+
+		.var-slider__thumb {
+			&-block {
+				background-color: @color-danger !important;
+			}
+
+			&-ripple {
+				background-color: @color-danger !important;
+			}
+
+			&-label {
+				background-color: @color-danger !important;
+			}
+		}
+	}
+
+	.var-form-details {
+		margin-left: 6px;
 	}
 }

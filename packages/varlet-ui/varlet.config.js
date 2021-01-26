@@ -186,6 +186,13 @@ module.exports = {
 				},
 				doc: 'switch',
 			},
+			{
+				text: {
+					zh_CN: 'Slider 滑块',
+					en_US: 'slider',
+				},
+				doc: 'slider',
+			},
 		],
 		language: 'zh_CN',
 	},

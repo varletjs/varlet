@@ -55,7 +55,7 @@
 			<span style="margin-right: 8px">透视锁头</span>
 			<var-switch class="mb" :rules="[(v) => !!v || '不开挂你怎么玩']" v-model="form.open" />
 		</p>
-
+		<var-slider class="mb" :rules="[(v) => v >= 35 || '前戏不好看！！']" v-model="form.slider" />
 		<var-button class="mt" block type="danger" @click="formEl.reset()">清空表单</var-button>
 		<var-button class="mt" block type="warning" @click="formEl.resetValidation()">清空验证</var-button>
 		<var-button class="mt" block type="success" @click="formEl.validate()">触发验证</var-button>
@@ -76,6 +76,7 @@ import RadioGroup from '../../radio-group'
 import Radio from '../../radio'
 import Button from '../../button'
 import Switch from '../../switch'
+import Slider from '../../slider'
 
 export default defineComponent({
 	name: 'FormExample',
@@ -89,6 +90,7 @@ export default defineComponent({
 		[Radio.name]: Radio,
 		[Option.name]: Option,
 		[Switch.name]: Switch,
+		[Slider.name]: Slider,
 		[Button.name]: Button,
 	},
 	setup() {
@@ -99,6 +101,7 @@ export default defineComponent({
 			gender: undefined,
 			confirm: false,
 			open: false,
+			slider: 10,
 			group: [],
 			skill: [],
 			like: [],

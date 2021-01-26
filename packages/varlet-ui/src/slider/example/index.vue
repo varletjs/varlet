@@ -20,6 +20,10 @@
 		<var-slider :step="1" v-model="value3" readonly />
 	</div>
 	<div>
+		<app-type>不同大小</app-type>
+		<var-slider v-model="value1" track-height="6" thumb-size="20" range />
+	</div>
+	<div>
 		<app-type>不同样式</app-type>
 		<var-slider
 			v-model="value4"
