@@ -5,11 +5,15 @@
 @var-switch-normal-height: 24px;
 
 .var-switch {
-	position: relative;
-	display: inline-flex;
-	cursor: pointer;
-	align-items: center;
-	justify-content: center;
+	display: inline-block;
+
+	&-block {
+		position: relative;
+		display: flex;
+		cursor: pointer;
+		align-items: center;
+		justify-content: center;
+	}
 
 	&__disable {
 		filter: opacity(0.6);
@@ -23,7 +27,12 @@
 		&-active {
 			background-color: @color-primary;
 		}
+
+		&-error {
+			background-color: @color-danger !important;
+		}
 	}
+
 	&__ripple {
 		position: absolute;
 		display: flex;
@@ -34,6 +43,7 @@
 		overflow: hidden;
 		transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 	}
+
 	&__handle {
 		border-radius: 50%;
 		background-color: white;
@@ -44,6 +54,10 @@
 
 		&-active {
 			background-color: @color-primary;
+		}
+
+		&-error {
+			background-color: @color-danger !important;
 		}
 	}
 }

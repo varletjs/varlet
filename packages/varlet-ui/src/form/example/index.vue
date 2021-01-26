@@ -3,14 +3,14 @@
 		<var-input
 			class="mb"
 			placeholder="请输入用户名"
-			:rules="[(v) => !!v || '用户名不能为空!', (v) => (v && v.length > 10) || '用户名不少于10个字!']"
+			:rules="[(v) => !!v || '用户名不能为空!', (v) => (v && v.length > 5) || '用户名不少于5个字!']"
 			v-model="form.username"
 		/>
 		<var-input
 			class="mb"
 			type="password"
 			placeholder="请输入密码"
-			:rules="[(v) => !!v || '密码不能为空!', (v) => (v && v.length > 10) || '密码不少于10个字!']"
+			:rules="[(v) => !!v || '密码不能为空!', (v) => (v && v.length > 5) || '密码不少于5个字!']"
 			v-model="form.password"
 		/>
 		<var-select class="mb" placeholder="请选择部门" v-model="form.department" :rules="[(v) => !!v || '必须选一个部门']">
@@ -51,6 +51,10 @@
 			<var-checkbox :checked-value="3">打游戏</var-checkbox>
 		</var-checkbox-group>
 		<var-radio class="mb" :rules="[(v) => !!v || '您必须确保同意才能提交!']" v-model="form.confirm"> 同意 </var-radio>
+		<p style="display: flex">
+			<span style="margin-right: 8px">透视锁头</span>
+			<var-switch class="mb" :rules="[(v) => !!v || '不开挂你怎么玩']" v-model="form.open" />
+		</p>
 
 		<var-button class="mt" block type="danger" @click="formEl.reset()">清空表单</var-button>
 		<var-button class="mt" block type="warning" @click="formEl.resetValidation()">清空验证</var-button>
@@ -71,6 +75,7 @@ import Checkbox from '../../checkbox'
 import RadioGroup from '../../radio-group'
 import Radio from '../../radio'
 import Button from '../../button'
+import Switch from '../../switch'
 
 export default defineComponent({
 	name: 'FormExample',
@@ -83,6 +88,7 @@ export default defineComponent({
 		[RadioGroup.name]: RadioGroup,
 		[Radio.name]: Radio,
 		[Option.name]: Option,
+		[Switch.name]: Switch,
 		[Button.name]: Button,
 	},
 	setup() {
@@ -92,6 +98,7 @@ export default defineComponent({
 			department: undefined,
 			gender: undefined,
 			confirm: false,
+			open: false,
 			group: [],
 			skill: [],
 			like: [],
