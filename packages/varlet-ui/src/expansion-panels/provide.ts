@@ -1,9 +1,9 @@
 import { ComputedRef } from 'vue'
 
 export interface ExpansionPanelsProvider {
-	active: ComputedRef<number | string | Array<number | string> | undefined>
-	offset: ComputedRef<boolean>
-	updateItem: (value: number | string | undefined, isExpand: boolean) => void
+  active: ComputedRef<number | string | Array<number | string> | undefined | null>
+  offset: ComputedRef<boolean>
+  updateItem: (value: number | string | undefined, isExpand: boolean) => void
 }
 
 export const EXPANSION_PANELS_BIND_EXPANSION_PANEL_KEY = Symbol('EXPANSION_PANELS_BIND_EXPANSION_PANEL_KEY')
