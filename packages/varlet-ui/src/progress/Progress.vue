@@ -62,41 +62,41 @@ import { defineComponent, computed } from 'vue'
 import { props } from './props'
 
 export default defineComponent({
-	name: 'VarProgress',
-	inheritAttrs: false,
-	props,
-	setup(props) {
-		const linearProps = computed(() => {
-			const width = isNaN(+props.value) ? 0 : props.value > 100 ? 100 : props.value
-			const roundValue = isNaN(+props.value) ? 0 : props.value > 100 ? 100 : Math.round(props.value)
+  name: 'VarProgress',
+  inheritAttrs: false,
+  props,
+  setup(props) {
+    const linearProps = computed(() => {
+      const width = isNaN(+props.value) ? 0 : props.value > 100 ? 100 : props.value
+      const roundValue = isNaN(+props.value) ? 0 : props.value > 100 ? 100 : Math.round(props.value)
 
-			return {
-				width: `${width}%`,
-				roundValue: `${roundValue}%`,
-			}
-		})
+      return {
+        width: `${width}%`,
+        roundValue: `${roundValue}%`,
+      }
+    })
 
-		const circleProps = computed(() => {
-			const { size, lineWidth, value } = props
-			const viewBox = `0 0 ${size} ${size}`
-			const roundValue = isNaN(+value) ? 0 : value > 100 ? 100 : Math.round(value)
-			const radius = (size - +lineWidth) / 2
-			const perimeter = 2 * Math.PI * radius
-			const strokeDasharray = `${(roundValue / 100) * perimeter}, ${perimeter}`
+    const circleProps = computed(() => {
+      const { size, lineWidth, value } = props
+      const viewBox = `0 0 ${size} ${size}`
+      const roundValue = isNaN(+value) ? 0 : value > 100 ? 100 : Math.round(value)
+      const radius = (size - +lineWidth) / 2
+      const perimeter = 2 * Math.PI * radius
+      const strokeDasharray = `${(roundValue / 100) * perimeter}, ${perimeter}`
 
-			return {
-				viewBox,
-				radius,
-				strokeDasharray,
-				perimeter,
-				roundValue: `${roundValue}%`,
-			}
-		})
-		return {
-			linearProps,
-			circleProps,
-		}
-	},
+      return {
+        viewBox,
+        radius,
+        strokeDasharray,
+        perimeter,
+        roundValue: `${roundValue}%`,
+      }
+    })
+    return {
+      linearProps,
+      circleProps,
+    }
+  },
 })
 </script>
 

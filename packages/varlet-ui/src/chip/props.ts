@@ -16,65 +16,65 @@ export const props = {
     default: 'default',
     validator: typeValidator
   },
-//  标签尺寸
+  //  标签尺寸
   size: {
     type: String,
     default: 'normal',
     validator: sizeValidator
   },
-//  是否使用水波纹
+  //  是否使用水波纹
   disabled: {
     type: Boolean,
     default: true
   },
-//  是否空心
+  //  是否空心
   plain: {
     type: Boolean,
     default: false
   },
-//  标签文字颜色
+  //  标签文字颜色
   color: {
     type: String
   },
-//  是否使用圆形标签
+  //  是否使用圆形标签
   round: {
     type: Boolean,
     default: true
   },
-//  是否是块级元素
+  //  是否是块级元素
   block: {
     type: Boolean,
     default: false
   },
-//  背景颜色
+  //  背景颜色
   background: {
     type: String
   },
-//  是否使用图标
+  //  是否使用图标
   icon: {
     type: Boolean,
     default: false
   },
-//  是否可关闭
+  //  是否可关闭
   closable: {
     type: Boolean,
     default: false
   },
-//  字体颜色
+  //  字体颜色
   textColor: {
     type: String
   },
-//  图标样式
+  //  图标样式
   iconName: pickProps(iconProps, 'name'),
-//  图标样式
-//   iconType:pickProps(iconProps,'type'),
-//  图标大小
-//   iconSize:pickProps(iconProps,'size'),
-//   closeIcon: {
-//     type: String,
-//     default: false
-//   },
-//  取消回调
+  //  图标样式
+  //   iconType:pickProps(iconProps,'type'),
+  //  图标大小
+  //   iconSize:pickProps(iconProps,'size'),
+  //   closeIcon: {
+  //     type: String,
+  //     default: false
+  //   },
+  //  取消回调
   onClose: {
     type: Function
   }

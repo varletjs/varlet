@@ -79,45 +79,45 @@ import Switch from '../../switch'
 import Slider from '../../slider'
 
 export default defineComponent({
-	name: 'FormExample',
-	components: {
-		[Form.name]: Form,
-		[Input.name]: Input,
-		[Select.name]: Select,
-		[CheckboxGroup.name]: CheckboxGroup,
-		[Checkbox.name]: Checkbox,
-		[RadioGroup.name]: RadioGroup,
-		[Radio.name]: Radio,
-		[Option.name]: Option,
-		[Switch.name]: Switch,
-		[Slider.name]: Slider,
-		[Button.name]: Button,
-	},
-	setup() {
-		const form: any = reactive({
-			username: undefined,
-			password: undefined,
-			department: undefined,
-			gender: undefined,
-			confirm: false,
-			open: false,
-			slider: 10,
-			group: [],
-			skill: [],
-			like: [],
-		})
+  name: 'FormExample',
+  components: {
+    [Form.name]: Form,
+    [Input.name]: Input,
+    [Select.name]: Select,
+    [CheckboxGroup.name]: CheckboxGroup,
+    [Checkbox.name]: Checkbox,
+    [RadioGroup.name]: RadioGroup,
+    [Radio.name]: Radio,
+    [Option.name]: Option,
+    [Switch.name]: Switch,
+    [Slider.name]: Slider,
+    [Button.name]: Button,
+  },
+  setup() {
+    const form: any = reactive({
+      username: undefined,
+      password: undefined,
+      department: undefined,
+      gender: undefined,
+      confirm: false,
+      open: false,
+      slider: 10,
+      group: [],
+      skill: [],
+      like: [],
+    })
 
-		const formEl: any = ref(null)
-		const disabled: any = ref(false)
-		const readonly: any = ref(false)
+    const formEl: any = ref(null)
+    const disabled: any = ref(false)
+    const readonly: any = ref(false)
 
-		return {
-			formEl,
-			form,
-			disabled,
-			readonly,
-		}
-	},
+    return {
+      formEl,
+      form,
+      disabled,
+      readonly,
+    }
+  },
 })
 </script>
 

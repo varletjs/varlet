@@ -8,12 +8,12 @@ import config from '@config'
 const defaultConfig = require('../../varlet.default.config.js')
 
 const mergeConfig = {
-	...defaultConfig,
-	...config,
+  ...defaultConfig,
+  ...config,
 }
 const router = createRouter({
-	history: createWebHashHistory(),
-	routes,
+  history: createWebHashHistory(),
+  routes,
 })
 
 const app = createApp(App as any)

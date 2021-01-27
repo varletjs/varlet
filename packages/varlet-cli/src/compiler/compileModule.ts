@@ -11,67 +11,67 @@ import webpack, { Stats } from 'webpack'
 import logger from '../shared/logger'
 
 export function compileUMD() {
-	return new Promise<void>((resolve, reject) => {
-		setProd()
-		const config = getUmdConfig()
+  return new Promise<void>((resolve, reject) => {
+    setProd()
+    const config = getUmdConfig()
 
-		webpack(config, (err, stats: Stats) => {
-			if (err) {
-				logger.error(err.toString())
-				reject()
-			}
-			if (stats?.hasErrors()) {
-				logger.error(stats)
-				reject()
-			}
-			if (!err && !stats?.hasErrors()) {
-				resolve()
-			}
-		})
-	})
+    webpack(config, (err, stats: Stats) => {
+      if (err) {
+        logger.error(err.toString())
+        reject()
+      }
+      if (stats?.hasErrors()) {
+        logger.error(stats)
+        reject()
+      }
+      if (!err && !stats?.hasErrors()) {
+        resolve()
+      }
+    })
+  })
 }
 
 export async function compileDir(dir: string, modules: string | boolean = false) {
-	const dirs = await readdir(dir)
+  const dirs = await readdir(dir)
 
-	await Promise.all(
-		dirs.map((filename) => {
-			const filePath = resolve(dir, filename)
+  await Promise.all(
+    dirs.map((filename) => {
+      const filePath = resolve(dir, filename)
 
-			;[TESTS_DIR_NAME, EXAMPLE_DIR_NAME, DOCS_DIR_NAME].includes(filename) && removeSync(filePath)
+      ;[TESTS_DIR_NAME, EXAMPLE_DIR_NAME, DOCS_DIR_NAME].includes(filename) && removeSync(filePath)
 
-			return compileFile(filePath, modules)
-		})
-	)
+      return compileFile(filePath, modules)
+    })
+  )
 }
 
 export async function compileFile(path: string, modules: string | boolean = false) {
-	isSFC(path) && (await compileSFC(path, modules))
-	isScript(path) && (await compileScriptFile(path, modules))
-	isLess(path) && (await compileLess(path))
-	isDir(path) && (await compileDir(path))
+  isSFC(path) && (await compileSFC(path, modules))
+  isScript(path) && (await compileScriptFile(path, modules))
+  isLess(path) && (await compileLess(path))
+  isDir(path) && (await compileDir(path))
 }
 
 export async function compileModule(modules: string | boolean = false) {
-	if (modules === 'umd') {
-		await compileUMD()
-		return
-	}
+  if (modules === 'umd') {
+    await compileUMD()
+    return
+  }
 
-	const MODULE_DIR: string = modules === 'cjs' ? CJS_DIR : ES_DIR
-	await copy(SRC_DIR, MODULE_DIR)
-	const moduleDir: string[] = await readdir(MODULE_DIR)
+  const MODULE_DIR: string = modules === 'cjs' ? CJS_DIR : ES_DIR
+  await copy(SRC_DIR, MODULE_DIR)
+  const moduleDir: string[] = await readdir(MODULE_DIR)
 
-	await Promise.all(
-		moduleDir.map((filename: string) => {
-			const path: string = resolve(MODULE_DIR, filename)
+  await Promise.all(
+    moduleDir.map((filename: string) => {
+      const path: string = resolve(MODULE_DIR, filename)
 
-			// cover babel-import-plugin
-			isDir(path) && ensureFileSync(resolve(path, './style/index.js'))
+      // cover babel-import-plugin
+      isDir(path) && ensureFileSync(resolve(path, './style/index.js'))
 
-			return isDir(path) ? compileDir(path, modules) : null
-		})
-	)
+      return isDir(path) ? compileDir(path, modules) : null
+    })
+  )
 
-	await compileLibraryEntry(MODULE_DIR, await getComponentNames(), await getExportDirNames(), modules)
+  await compileLibraryEntry(MODULE_DIR, await getComponentNames(), await getExportDirNames(), modules)
 }

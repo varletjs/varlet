@@ -24,87 +24,87 @@ import { useLock } from '../context/lock'
 import { SNACKBAR_TYPE } from './index'
 
 export default defineComponent({
-	name: 'VarSnackbarCore',
-	components: {
-		[Loading.name]: Loading,
-		[Button.name]: Button,
-		[Icon.name]: Icon,
-	},
-	props,
-	setup(props) {
-		const timer: Ref = ref(null)
-		const hasMounted: Ref<boolean> = ref(false)
-		const { zIndex } = useZIndex(props, 'show', 1)
-		useLock(props, 'show', 'lockScroll')
+  name: 'VarSnackbarCore',
+  components: {
+    [Loading.name]: Loading,
+    [Button.name]: Button,
+    [Icon.name]: Icon,
+  },
+  props,
+  setup(props) {
+    const timer: Ref = ref(null)
+    const hasMounted: Ref<boolean> = ref(false)
+    const { zIndex } = useZIndex(props, 'show', 1)
+    useLock(props, 'show', 'lockScroll')
 
-		const snackbarStyle = reactive({
-			zIndex,
-		})
-		const snackbarClass = computed(() => {
-			const { position, vertical, type } = props
-			const baseClass = `var-snackbar__wrapper var-snackbar__wrapper-${position} var-elevation--4`
-			const verticalClass = vertical ? ' var-snackbar__vertical' : ''
-			const typeClass = type && SNACKBAR_TYPE.includes(type) ? ` var-snackbar__wrapper-${type}` : ''
-			return `${baseClass}${verticalClass}${typeClass}`
-		})
+    const snackbarStyle = reactive({
+      zIndex,
+    })
+    const snackbarClass = computed(() => {
+      const { position, vertical, type } = props
+      const baseClass = `var-snackbar__wrapper var-snackbar__wrapper-${position} var-elevation--4`
+      const verticalClass = vertical ? ' var-snackbar__vertical' : ''
+      const typeClass = type && SNACKBAR_TYPE.includes(type) ? ` var-snackbar__wrapper-${type}` : ''
+      return `${baseClass}${verticalClass}${typeClass}`
+    })
 
-		const iconName = computed(() => {
-			switch (props.type) {
-				case 'success':
-					return 'checkbox-marked-circle'
-				case 'warning':
-					return 'warning'
-				case 'info':
-					return 'information'
-				case 'error':
-					return 'error'
-				default:
-					return ''
-			}
-		})
+    const iconName = computed(() => {
+      switch (props.type) {
+      case 'success':
+        return 'checkbox-marked-circle'
+      case 'warning':
+        return 'warning'
+      case 'info':
+        return 'information'
+      case 'error':
+        return 'error'
+      default:
+        return ''
+      }
+    })
 
-		watch(
-			() => props.show,
-			(show) => {
-				if (show) {
-					props.onOpen?.()
-					timer.value = setTimeout(() => {
-						props['onUpdate:show']?.(false)
-					}, props.duration)
-				} else if (show === false) {
-					clearTimeout(timer.value)
-					props.onClose?.()
-				}
-			}
-		)
+    watch(
+      () => props.show,
+      (show) => {
+        if (show) {
+          props.onOpen?.()
+          timer.value = setTimeout(() => {
+            props['onUpdate:show']?.(false)
+          }, props.duration)
+        } else if (show === false) {
+          clearTimeout(timer.value)
+          props.onClose?.()
+        }
+      }
+    )
 
-		watch(
-			() => props._update,
-			() => {
-				hasMounted.value = true
-				clearTimeout(timer.value)
-				timer.value = setTimeout(() => {
-					props['onUpdate:show']?.(false)
-				}, props.duration)
-			}
-		)
+    watch(
+      () => props._update,
+      () => {
+        hasMounted.value = true
+        clearTimeout(timer.value)
+        timer.value = setTimeout(() => {
+          props['onUpdate:show']?.(false)
+        }, props.duration)
+      }
+    )
 
-		onMounted(() => {
-			if (props.show) {
-				props.onOpen && props.onOpen()
-				timer.value = setTimeout(() => {
-					props['onUpdate:show']?.(false)
-				}, props.duration)
-			}
-		})
+    onMounted(() => {
+      if (props.show) {
+        props.onOpen && props.onOpen()
+        timer.value = setTimeout(() => {
+          props['onUpdate:show']?.(false)
+        }, props.duration)
+      }
+    })
 
-		return {
-			snackbarStyle,
-			snackbarClass,
-			iconName,
-			hasMounted,
-		}
-	},
+    return {
+      snackbarStyle,
+      snackbarClass,
+      iconName,
+      hasMounted,
+    }
+  },
 })
 </script>
 

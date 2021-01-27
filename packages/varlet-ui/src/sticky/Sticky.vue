@@ -32,90 +32,90 @@ import { props } from './props'
 import { getParentScroller, isPx, remToPx, formatPx } from '../utils/elements'
 
 export default defineComponent({
-	name: 'VarSticky',
-	props,
-	setup(props) {
-		const stickyEl: Ref<HTMLElement | null> = ref(null)
-		const wrapperEl: Ref<HTMLElement | null> = ref(null)
+  name: 'VarSticky',
+  props,
+  setup(props) {
+    const stickyEl: Ref<HTMLElement | null> = ref(null)
+    const wrapperEl: Ref<HTMLElement | null> = ref(null)
 
-		let isSupportCSSSticky = false
+    let isSupportCSSSticky = false
 
-		const isFixed: Ref<boolean> = ref(false)
-		const fixedTop: Ref<string> = ref('0px')
-		const fixedLeft: Ref<string> = ref('0px')
-		const fixedWidth: Ref<string> = ref('auto')
-		const fixedHeight: Ref<string> = ref('auto')
-		const fixedWrapperWidth: Ref<string> = ref('auto')
-		const fixedWrapperHeight: Ref<string> = ref('auto')
+    const isFixed: Ref<boolean> = ref(false)
+    const fixedTop: Ref<string> = ref('0px')
+    const fixedLeft: Ref<string> = ref('0px')
+    const fixedWidth: Ref<string> = ref('auto')
+    const fixedHeight: Ref<string> = ref('auto')
+    const fixedWrapperWidth: Ref<string> = ref('auto')
+    const fixedWrapperHeight: Ref<string> = ref('auto')
 
-		const offsetTop = computed(() => {
-			return isPx(props.offsetTop) ? formatPx(props.offsetTop) : remToPx(props.offsetTop)
-		})
+    const offsetTop = computed(() => {
+      return isPx(props.offsetTop) ? formatPx(props.offsetTop) : remToPx(props.offsetTop)
+    })
 
-		let scroller: HTMLElement | Window = window
+    let scroller: HTMLElement | Window = window
 
-		const handleScroll = () => {
-			let scrollerTop = 0
+    const handleScroll = () => {
+      let scrollerTop = 0
 
-			if (scroller !== window) {
-				const { top } = (scroller as HTMLElement).getBoundingClientRect()
-				scrollerTop = top
-			}
+      if (scroller !== window) {
+        const { top } = (scroller as HTMLElement).getBoundingClientRect()
+        scrollerTop = top
+      }
 
-			const sticky = stickyEl.value as HTMLElement
-			const wrapper = wrapperEl.value as HTMLElement
+      const sticky = stickyEl.value as HTMLElement
+      const wrapper = wrapperEl.value as HTMLElement
 
-			const { top: stickyTop, left: stickyLeft } = sticky.getBoundingClientRect()
-			const currentOffsetTop = stickyTop - scrollerTop
+      const { top: stickyTop, left: stickyLeft } = sticky.getBoundingClientRect()
+      const currentOffsetTop = stickyTop - scrollerTop
 
-			if (currentOffsetTop <= offsetTop.value) {
-				if (!isSupportCSSSticky) {
-					fixedWidth.value = `${sticky.offsetWidth}px`
-					fixedHeight.value = `${sticky.offsetHeight}px`
-					fixedTop.value = `${scrollerTop + offsetTop.value}px`
-					fixedLeft.value = `${stickyLeft}px`
-					fixedWrapperWidth.value = `${wrapper.offsetWidth}px`
-					fixedWrapperHeight.value = `${wrapper.offsetHeight}px`
-					isFixed.value = true
-				}
+      if (currentOffsetTop <= offsetTop.value) {
+        if (!isSupportCSSSticky) {
+          fixedWidth.value = `${sticky.offsetWidth}px`
+          fixedHeight.value = `${sticky.offsetHeight}px`
+          fixedTop.value = `${scrollerTop + offsetTop.value}px`
+          fixedLeft.value = `${stickyLeft}px`
+          fixedWrapperWidth.value = `${wrapper.offsetWidth}px`
+          fixedWrapperHeight.value = `${wrapper.offsetHeight}px`
+          isFixed.value = true
+        }
 
-				props.onScroll?.(offsetTop.value, true)
-			} else {
-				isFixed.value = false
+        props.onScroll?.(offsetTop.value, true)
+      } else {
+        isFixed.value = false
 
-				props.onScroll?.(currentOffsetTop, false)
-			}
-		}
+        props.onScroll?.(currentOffsetTop, false)
+      }
+    }
 
-		onMounted(() => {
-			const sticky = stickyEl.value as HTMLInputElement
+    onMounted(() => {
+      const sticky = stickyEl.value as HTMLInputElement
 
-			isSupportCSSSticky = ['sticky', '-webkit-sticky'].includes(window.getComputedStyle(sticky).position)
+      isSupportCSSSticky = ['sticky', '-webkit-sticky'].includes(window.getComputedStyle(sticky).position)
 
-			window.addEventListener('scroll', handleScroll)
-			scroller = getParentScroller(sticky)
-			scroller !== window && scroller.addEventListener('scroll', handleScroll)
+      window.addEventListener('scroll', handleScroll)
+      scroller = getParentScroller(sticky)
+      scroller !== window && scroller.addEventListener('scroll', handleScroll)
 
-			handleScroll()
-		})
-		onUnmounted(() => {
-			window.removeEventListener('scroll', handleScroll)
-			scroller !== window && scroller.removeEventListener('scroll', handleScroll)
-		})
+      handleScroll()
+    })
+    onUnmounted(() => {
+      window.removeEventListener('scroll', handleScroll)
+      scroller !== window && scroller.removeEventListener('scroll', handleScroll)
+    })
 
-		return {
-			stickyEl,
-			wrapperEl,
-			isFixed,
-			offsetTop,
-			fixedTop,
-			fixedLeft,
-			fixedWidth,
-			fixedHeight,
-			fixedWrapperWidth,
-			fixedWrapperHeight,
-		}
-	},
+    return {
+      stickyEl,
+      wrapperEl,
+      isFixed,
+      offsetTop,
+      fixedTop,
+      fixedLeft,
+      fixedWidth,
+      fixedHeight,
+      fixedWrapperWidth,
+      fixedWrapperHeight,
+    }
+  },
 })
 </script>
 <style lang="less">

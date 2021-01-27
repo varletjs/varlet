@@ -68,7 +68,6 @@ export default defineComponent({
 
     const matchIndex = (): Array<ExpansionPanelProvider> | ExpansionPanelProvider | undefined => {
       if (props.accordion) {
-        // console.log(expansionPanelProviders)
         return expansionPanelProviders.find(({ index, name }: ExpansionPanelProvider) =>
           name.value === undefined ? props.modelValue === index.value : false
         )

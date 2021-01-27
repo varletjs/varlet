@@ -48,22 +48,22 @@ import { defineComponent } from 'vue'
 import Image from '..'
 
 export default defineComponent({
-	name: 'ImageExample',
-	components: {
-		[Image.name]: Image,
-	},
-	setup() {
-		return {
-			handleLoad(e: Event, state: string) {
-				console.log(e)
-				console.log(state)
-			},
-			handleError(e: Event, state: string) {
-				console.log(e)
-				console.log(state)
-			},
-		}
-	},
+  name: 'ImageExample',
+  components: {
+    [Image.name]: Image,
+  },
+  setup() {
+    return {
+      handleLoad(e: Event, state: string) {
+        console.log(e)
+        console.log(state)
+      },
+      handleError(e: Event, state: string) {
+        console.log(e)
+        console.log(state)
+      },
+    }
+  },
 })
 </script>
 

@@ -18,19 +18,19 @@ import RadioGroup from '../../radio-group'
 import Button from '../../button'
 
 export default defineComponent({
-	name: 'RadioExample',
-	components: {
-		[Radio.name]: Radio,
-		[RadioGroup.name]: RadioGroup,
-		[Icon.name]: Icon,
-		[Button.name]: Button,
-	},
-	setup() {
-		return {
-			v: ref(false),
-			i: ref(),
-		}
-	},
+  name: 'RadioExample',
+  components: {
+    [Radio.name]: Radio,
+    [RadioGroup.name]: RadioGroup,
+    [Icon.name]: Icon,
+    [Button.name]: Button,
+  },
+  setup() {
+    return {
+      v: ref(false),
+      i: ref(),
+    }
+  },
 })
 </script>
 

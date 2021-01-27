@@ -17,118 +17,118 @@ import { FORM_BIND_FORM_ITEM_KEY, FormProvider } from '../form/provide'
 import FormDetails from '../form-details'
 
 export default defineComponent({
-	name: 'VarCheckboxGroup',
-	components: {
-		[FormDetails.name]: FormDetails,
-	},
-	inheritAttrs: false,
-	props,
-	setup(props) {
-		const { bindChildren: bindCheckbox, childProviders: checkboxProviders } = useChildren<
+  name: 'VarCheckboxGroup',
+  components: {
+    [FormDetails.name]: FormDetails,
+  },
+  inheritAttrs: false,
+  props,
+  setup(props) {
+    const { bindChildren: bindCheckbox, childProviders: checkboxProviders } = useChildren<
 			CheckboxGroupProvider,
 			CheckboxProvider
 		>(CHECKBOX_GROUP_BIND_CHECKBOX_KEY)
-		const { bindParent: bindForm } = useParent<FormProvider, CheckboxGroupProvider>(FORM_BIND_FORM_ITEM_KEY)
-		const { length } = useAtChildrenCounter(CHECKBOX_GROUP_COUNT_CHECKBOX_KEY)
+    const { bindParent: bindForm } = useParent<FormProvider, CheckboxGroupProvider>(FORM_BIND_FORM_ITEM_KEY)
+    const { length } = useAtChildrenCounter(CHECKBOX_GROUP_COUNT_CHECKBOX_KEY)
 
-		const checkedCount: ComputedRef<number> = computed(() => props.modelValue.length)
-		const max: ComputedRef<number | string | undefined> = computed(() => props.max)
+    const checkedCount: ComputedRef<number> = computed(() => props.modelValue.length)
+    const max: ComputedRef<number | string | undefined> = computed(() => props.max)
 
-		const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
-		const errorMessageComputed: ComputedRef<string> = computed(() => errorMessage.value)
+    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+    const errorMessageComputed: ComputedRef<string> = computed(() => errorMessage.value)
 
-		const validate = () => v(props.rules, props.modelValue)
+    const validate = () => v(props.rules, props.modelValue)
 
-		const validateWithTrigger = (trigger: ValidateTriggers) =>
-			nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
+    const validateWithTrigger = (trigger: ValidateTriggers) =>
+      nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
 
-		const change = (changedModelValue: any) => {
-			props['onUpdate:modelValue']?.(changedModelValue)
-			props.onChange?.(changedModelValue)
+    const change = (changedModelValue: any) => {
+      props['onUpdate:modelValue']?.(changedModelValue)
+      props.onChange?.(changedModelValue)
 
-			validateWithTrigger('onChange')
-		}
+      validateWithTrigger('onChange')
+    }
 
-		const onChecked = (changedValue: any) => {
-			if (!props.modelValue.includes(changedValue)) {
-				change([...props.modelValue, changedValue])
-			}
-		}
+    const onChecked = (changedValue: any) => {
+      if (!props.modelValue.includes(changedValue)) {
+        change([...props.modelValue, changedValue])
+      }
+    }
 
-		const onUnchecked = (changedValue: any) => {
-			if (!props.modelValue.includes(changedValue)) {
-				return
-			}
+    const onUnchecked = (changedValue: any) => {
+      if (!props.modelValue.includes(changedValue)) {
+        return
+      }
 
-			change(props.modelValue.filter((value) => value !== changedValue))
-		}
+      change(props.modelValue.filter((value) => value !== changedValue))
+    }
 
-		const syncAllCheckbox = () => {
-			checkboxProviders.forEach(({ sync }) => sync(props.modelValue))
-		}
+    const syncAllCheckbox = () => {
+      checkboxProviders.forEach(({ sync }) => sync(props.modelValue))
+    }
 
-		const checkAll = () => {
-			const checkedValues: any[] = checkboxProviders.map(({ checkedValue }) => checkedValue.value)
-			const changedModelValue: any[] = [...new Set(checkedValues)]
+    const checkAll = () => {
+      const checkedValues: any[] = checkboxProviders.map(({ checkedValue }) => checkedValue.value)
+      const changedModelValue: any[] = [...new Set(checkedValues)]
 
-			props['onUpdate:modelValue']?.(changedModelValue)
+      props['onUpdate:modelValue']?.(changedModelValue)
 
-			return changedModelValue
-		}
+      return changedModelValue
+    }
 
-		const uncheckAll = () => {
-			const changedModelValue: any[] = []
+    const uncheckAll = () => {
+      const changedModelValue: any[] = []
 
-			props['onUpdate:modelValue']?.(changedModelValue)
+      props['onUpdate:modelValue']?.(changedModelValue)
 
-			return changedModelValue
-		}
+      return changedModelValue
+    }
 
-		const inverseAll = () => {
-			const checkedValues: any[] = checkboxProviders
-				.filter(({ checked }) => !checked.value)
-				.map(({ checkedValue }) => checkedValue.value)
+    const inverseAll = () => {
+      const checkedValues: any[] = checkboxProviders
+        .filter(({ checked }) => !checked.value)
+        .map(({ checkedValue }) => checkedValue.value)
 
-			const changedModelValue: any[] = [...new Set(checkedValues)]
+      const changedModelValue: any[] = [...new Set(checkedValues)]
 
-			props['onUpdate:modelValue']?.(changedModelValue)
+      props['onUpdate:modelValue']?.(changedModelValue)
 
-			return changedModelValue
-		}
+      return changedModelValue
+    }
 
-		const reset = () => {
-			props['onUpdate:modelValue']?.([])
-			resetValidation()
-		}
+    const reset = () => {
+      props['onUpdate:modelValue']?.([])
+      resetValidation()
+    }
 
-		watch(() => props.modelValue, syncAllCheckbox, { deep: true })
+    watch(() => props.modelValue, syncAllCheckbox, { deep: true })
 
-		watch(() => length.value, syncAllCheckbox)
+    watch(() => length.value, syncAllCheckbox)
 
-		const checkboxGroupProvider: CheckboxGroupProvider = {
-			checkedCount,
-			max,
-			onChecked,
-			onUnchecked,
-			validate,
-			resetValidation,
-			reset,
-			errorMessage: errorMessageComputed,
-		}
+    const checkboxGroupProvider: CheckboxGroupProvider = {
+      checkedCount,
+      max,
+      onChecked,
+      onUnchecked,
+      validate,
+      resetValidation,
+      reset,
+      errorMessage: errorMessageComputed,
+    }
 
-		bindCheckbox(checkboxGroupProvider)
-		bindForm?.(checkboxGroupProvider)
+    bindCheckbox(checkboxGroupProvider)
+    bindForm?.(checkboxGroupProvider)
 
-		return {
-			errorMessage,
-			checkAll,
-			uncheckAll,
-			inverseAll,
-			reset,
-			validate,
-			resetValidation,
-		}
-	},
+    return {
+      errorMessage,
+      checkAll,
+      uncheckAll,
+      inverseAll,
+      reset,
+      validate,
+      resetValidation,
+    }
+  },
 })
 </script>
 

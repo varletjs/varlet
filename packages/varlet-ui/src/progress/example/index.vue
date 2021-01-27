@@ -87,29 +87,29 @@ import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
 import Progress from '..'
 
 export default defineComponent({
-	name: 'ProgressExample',
-	components: {
-		[Progress.name]: Progress,
-	},
-	setup() {
-		const value = ref(0)
-		const interval = ref(0)
+  name: 'ProgressExample',
+  components: {
+    [Progress.name]: Progress,
+  },
+  setup() {
+    const value = ref(0)
+    const interval = ref(0)
 
-		onMounted(() => {
-			interval.value = window.setInterval(() => {
-				if (value.value >= 100) value.value = 0
-				else value.value += 20
-			}, 1000)
-		})
+    onMounted(() => {
+      interval.value = window.setInterval(() => {
+        if (value.value >= 100) value.value = 0
+        else value.value += 20
+      }, 1000)
+    })
 
-		onUnmounted(() => {
-			window.clearInterval(interval.value)
-		})
+    onUnmounted(() => {
+      window.clearInterval(interval.value)
+    })
 
-		return {
-			value,
-		}
-	},
+    return {
+      value,
+    }
+  },
 })
 </script>
 

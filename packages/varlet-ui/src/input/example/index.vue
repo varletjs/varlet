@@ -54,29 +54,29 @@ import Button from '../../button'
 import Icon from '../../icon'
 
 export default defineComponent({
-	name: 'InputExample',
-	components: {
-		[Input.name]: Input,
-		[Button.name]: Button,
-		[Icon.name]: Icon,
-	},
-	setup() {
-		const value4: any = ref('')
+  name: 'InputExample',
+  components: {
+    [Input.name]: Input,
+    [Button.name]: Button,
+    [Icon.name]: Icon,
+  },
+  setup() {
+    const value4: any = ref('')
 
-		return {
-			value: ref(''),
-			value2: ref(''),
-			value3: ref(''),
-			value4,
-			asyncValidator() {
-				return new Promise((resolve) => {
-					setTimeout(() => {
-						resolve('反正就是失败了')
-					}, 1000)
-				})
-			},
-		}
-	},
+    return {
+      value: ref(''),
+      value2: ref(''),
+      value3: ref(''),
+      value4,
+      asyncValidator() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve('反正就是失败了')
+          }, 1000)
+        })
+      },
+    }
+  },
 })
 </script>
 

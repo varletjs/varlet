@@ -7,10 +7,10 @@ import { defineComponent } from 'vue'
 import Tab from '..'
 
 export default defineComponent({
-	name: 'TabExample',
-	components: {
-		[Tab.name]: Tab,
-	},
+  name: 'TabExample',
+  components: {
+    [Tab.name]: Tab,
+  },
 })
 </script>
 

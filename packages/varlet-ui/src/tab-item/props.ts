@@ -1,5 +1,5 @@
 export const props = {
-	name: {
-		type: [String, Number],
-	},
+  name: {
+    type: [String, Number],
+  },
 }

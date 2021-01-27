@@ -76,22 +76,22 @@ import Option from '../../option'
 import Button from '../../button'
 
 export default defineComponent({
-	name: 'SelectExample',
-	components: {
-		[Select.name]: Select,
-		[Option.name]: Option,
-		[Button.name]: Button,
-	},
-	setup() {
-		return {
-			v: ref([]),
-			v1: ref(),
-			v2: ref([]),
-			log(...rest: any[]) {
-				console.log(...rest)
-			},
-		}
-	},
+  name: 'SelectExample',
+  components: {
+    [Select.name]: Select,
+    [Option.name]: Option,
+    [Button.name]: Button,
+  },
+  setup() {
+    return {
+      v: ref([]),
+      v1: ref(),
+      v2: ref([]),
+      log(...rest: any[]) {
+        console.log(...rest)
+      },
+    }
+  },
 })
 </script>
 

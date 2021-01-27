@@ -32,32 +32,32 @@ import Ripple from '../ripple'
 import Lazy, { LazyHTMLElement } from '../lazy'
 
 export default defineComponent({
-	name: 'VarImage',
-	directives: {
-		Lazy,
-		Ripple,
-	},
-	inheritAttrs: false,
-	props,
-	setup(props) {
-		const handleLoad = (e: Event) => {
-			const el: LazyHTMLElement = e.currentTarget as LazyHTMLElement
+  name: 'VarImage',
+  directives: {
+    Lazy,
+    Ripple,
+  },
+  inheritAttrs: false,
+  props,
+  setup(props) {
+    const handleLoad = (e: Event) => {
+      const el: LazyHTMLElement = e.currentTarget as LazyHTMLElement
 
-			el._lazy.state === 'success' && props.onLoad?.(e, 'success')
-			el._lazy.state === 'error' && props.onError?.(e, 'error')
-		}
+      el._lazy.state === 'success' && props.onLoad?.(e, 'success')
+      el._lazy.state === 'error' && props.onError?.(e, 'error')
+    }
 
-		const handleError = (e: Event) => {
-			const el: LazyHTMLElement = e.currentTarget as LazyHTMLElement
+    const handleError = (e: Event) => {
+      const el: LazyHTMLElement = e.currentTarget as LazyHTMLElement
 
-			el._lazy.state !== 'pending' && props.onError?.(e, 'native-error')
-		}
+      el._lazy.state !== 'pending' && props.onError?.(e, 'native-error')
+    }
 
-		return {
-			handleLoad,
-			handleError,
-		}
-	},
+    return {
+      handleLoad,
+      handleError,
+    }
+  },
 })
 </script>
 

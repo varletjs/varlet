@@ -22,72 +22,72 @@ import { useAtParentIndex, useParent } from '../utils/components'
 import { TabProvider } from './provide'
 
 export default defineComponent({
-	name: 'VarTab',
-	directives: { Ripple },
-	props,
-	setup(props) {
-		const { parentProvider: tabsProvider, bindParent } = useParent<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
-		const { index } = useAtParentIndex(TABS_COUNT_TAB_KEY)
+  name: 'VarTab',
+  directives: { Ripple },
+  props,
+  setup(props) {
+    const { parentProvider: tabsProvider, bindParent } = useParent<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
+    const { index } = useAtParentIndex(TABS_COUNT_TAB_KEY)
 
-		if (!tabsProvider || !bindParent || !index) {
-			throw Error('<var-tab/> must in <var-tabs/>')
-		}
+    if (!tabsProvider || !bindParent || !index) {
+      throw Error('<var-tab/> must in <var-tabs/>')
+    }
 
-		const tabEl: Ref<HTMLElement | null> = ref(null)
-		const name: ComputedRef<string | number | undefined> = computed(() => props.name)
-		const disabled: ComputedRef<boolean> = computed(() => props.disabled)
-		const element: ComputedRef<HTMLElement | null> = computed(() => tabEl.value)
+    const tabEl: Ref<HTMLElement | null> = ref(null)
+    const name: ComputedRef<string | number | undefined> = computed(() => props.name)
+    const disabled: ComputedRef<boolean> = computed(() => props.disabled)
+    const element: ComputedRef<HTMLElement | null> = computed(() => tabEl.value)
 
-		const tabProvider: TabProvider = {
-			name,
-			index,
-			disabled,
-			element,
-		}
+    const tabProvider: TabProvider = {
+      name,
+      index,
+      disabled,
+      element,
+    }
 
-		bindParent(tabProvider)
+    bindParent(tabProvider)
 
-		const { onTabClick, active, activeColor, inactiveColor, disabledColor, itemDirection, resize } = tabsProvider
+    const { onTabClick, active, activeColor, inactiveColor, disabledColor, itemDirection, resize } = tabsProvider
 
-		const computeColorStyle = () => {
-			return props.disabled
-				? disabledColor.value
-				: active.value === props.name || active.value === index.value
-				? activeColor.value
-				: inactiveColor.value
-		}
+    const computeColorStyle = () => {
+      return props.disabled
+        ? disabledColor.value
+        : active.value === props.name || active.value === index.value
+          ? activeColor.value
+          : inactiveColor.value
+    }
 
-		const computeColorClass = () => {
-			return props.disabled
-				? 'var-tab--disabled'
-				: active.value === props.name || active.value === index.value
-				? 'var-tab--active'
-				: 'var-tab--inactive'
-		}
+    const computeColorClass = () => {
+      return props.disabled
+        ? 'var-tab--disabled'
+        : active.value === props.name || active.value === index.value
+          ? 'var-tab--active'
+          : 'var-tab--inactive'
+    }
 
-		const handleClick = (event: Event) => {
-			if (props.disabled) {
-				return
-			}
+    const handleClick = (event: Event) => {
+      if (props.disabled) {
+        return
+      }
 
-			props.onClick?.(props.name ?? index.value, event)
-			onTabClick(tabProvider)
-		}
+      props.onClick?.(props.name ?? index.value, event)
+      onTabClick(tabProvider)
+    }
 
-		watch(() => props.name, resize)
-		watch(() => props.disabled, resize)
+    watch(() => props.name, resize)
+    watch(() => props.disabled, resize)
 
-		return {
-			tabEl,
-			active,
-			activeColor,
-			inactiveColor,
-			itemDirection,
-			computeColorStyle,
-			computeColorClass,
-			handleClick,
-		}
-	},
+    return {
+      tabEl,
+      active,
+      activeColor,
+      inactiveColor,
+      itemDirection,
+      computeColorStyle,
+      computeColorClass,
+      handleClick,
+    }
+  },
 })
 </script>
 

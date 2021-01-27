@@ -171,115 +171,115 @@ import TabItem from '../../tab-item'
 import Button from '../../button'
 
 export default defineComponent({
-	name: 'TabsExample',
-	components: {
-		[Tabs.name]: Tabs,
-		[Tab.name]: Tab,
-		[TabsItems.name]: TabsItems,
-		[TabItem.name]: TabItem,
-		[Icon.name]: Icon,
-		[Button.name]: Button,
-	},
-	setup() {
-		const active: Ref<number> = ref(0)
-		const loading: Ref<boolean> = ref(true)
-		const s: Ref<any> = ref(null)
-		const s1: Ref<any> = ref(null)
-		const activeBottom: Ref<number> = ref(0)
-		const activeRelation: Ref<any> = ref(0)
-		const activeName: Ref<string> = ref('测试1')
-		const list = reactive<any>([
-			'测试1',
-			'测试2',
-			'测试3',
-			'测试4',
-			'长文字嘎嘎嘎嘎嘎',
-			'测试5',
-			'测试6',
-			'测试7',
-			'测试8',
-			'测试9',
-		])
+  name: 'TabsExample',
+  components: {
+    [Tabs.name]: Tabs,
+    [Tab.name]: Tab,
+    [TabsItems.name]: TabsItems,
+    [TabItem.name]: TabItem,
+    [Icon.name]: Icon,
+    [Button.name]: Button,
+  },
+  setup() {
+    const active: Ref<number> = ref(0)
+    const loading: Ref<boolean> = ref(true)
+    const s: Ref<any> = ref(null)
+    const s1: Ref<any> = ref(null)
+    const activeBottom: Ref<number> = ref(0)
+    const activeRelation: Ref<any> = ref(0)
+    const activeName: Ref<string> = ref('测试1')
+    const list = reactive<any>([
+      '测试1',
+      '测试2',
+      '测试3',
+      '测试4',
+      '长文字嘎嘎嘎嘎嘎',
+      '测试5',
+      '测试6',
+      '测试7',
+      '测试8',
+      '测试9',
+    ])
 
-		const list2 = reactive<any>([])
-		list2.push(
-			{
-				id: 1,
-				name: '瓜瓜',
-			},
-			{
-				id: 2,
-				name: '咋咋',
-			},
-			{
-				id: 3,
-				name: '拉拉',
-			},
-			{
-				id: 4,
-				name: '瓜瓜',
-			},
-			{
-				id: 5,
-				name: '咋咋',
-			},
-			{
-				id: 6,
-				name: '拉拉',
-			},
-			{
-				id: 7,
-				name: '瓜瓜',
-			},
-			{
-				id: 8,
-				name: '咋咋',
-			},
-			{
-				id: 9,
-				name: '拉拉',
-			}
-		)
+    const list2 = reactive<any>([])
+    list2.push(
+      {
+        id: 1,
+        name: '瓜瓜',
+      },
+      {
+        id: 2,
+        name: '咋咋',
+      },
+      {
+        id: 3,
+        name: '拉拉',
+      },
+      {
+        id: 4,
+        name: '瓜瓜',
+      },
+      {
+        id: 5,
+        name: '咋咋',
+      },
+      {
+        id: 6,
+        name: '拉拉',
+      },
+      {
+        id: 7,
+        name: '瓜瓜',
+      },
+      {
+        id: 8,
+        name: '咋咋',
+      },
+      {
+        id: 9,
+        name: '拉拉',
+      }
+    )
 
-		const handleChange = (...args: any[]) => {
-			console.log(...args)
-		}
+    const handleChange = (...args: any[]) => {
+      console.log(...args)
+    }
 
-		setTimeout(() => {
-			loading.value = false
-		}, 2000)
+    setTimeout(() => {
+      loading.value = false
+    }, 2000)
 
-		return {
-			loading,
-			active,
-			activeBottom,
-			activeName,
-			activeRelation,
-			list,
-			list2,
-			s,
-			s1,
-			handleChange,
-			push() {
-				list2.push({
-					id: Date.now(),
-					name: '尾插',
-				})
-			},
-			unshift() {
-				list2.unshift({
-					id: Date.now(),
-					name: '头插',
-				})
-			},
-			pop() {
-				list2.pop()
-			},
-			shift() {
-				list2.shift()
-			},
-		}
-	},
+    return {
+      loading,
+      active,
+      activeBottom,
+      activeName,
+      activeRelation,
+      list,
+      list2,
+      s,
+      s1,
+      handleChange,
+      push() {
+        list2.push({
+          id: Date.now(),
+          name: '尾插',
+        })
+      },
+      unshift() {
+        list2.unshift({
+          id: Date.now(),
+          name: '头插',
+        })
+      },
+      pop() {
+        list2.pop()
+      },
+      shift() {
+        list2.shift()
+      },
+    }
+  },
 })
 </script>
 

@@ -31,34 +31,34 @@ import { defineComponent } from 'vue'
 import { props } from './props'
 
 export default defineComponent({
-	name: 'VarButton',
-	components: {
-		[Loading.name]: Loading,
-	},
-	directives: { Ripple },
-	props,
-	setup(props) {
-		const handleClick = (e: Event) => {
-			if (props.loading || props.disabled) {
-				return
-			}
+  name: 'VarButton',
+  components: {
+    [Loading.name]: Loading,
+  },
+  directives: { Ripple },
+  props,
+  setup(props) {
+    const handleClick = (e: Event) => {
+      if (props.loading || props.disabled) {
+        return
+      }
 
-			props.onClick?.(e)
-		}
+      props.onClick?.(e)
+    }
 
-		const handleTouchstart = (e: Event) => {
-			if (props.loading || props.disabled) {
-				return
-			}
+    const handleTouchstart = (e: Event) => {
+      if (props.loading || props.disabled) {
+        return
+      }
 
-			props.onTouchstart?.(e)
-		}
+      props.onTouchstart?.(e)
+    }
 
-		return {
-			handleClick,
-			handleTouchstart,
-		}
-	},
+    return {
+      handleClick,
+      handleTouchstart,
+    }
+  },
 })
 </script>
 

@@ -10,42 +10,42 @@ import { SRC_DIR, VARLET_CONFIG } from '../shared/constant'
 import { ensureConfigFile } from '../shared/fsUtils'
 
 export function runDevServer(port: number, config: any) {
-	const { host } = config.devServer
-	config.devServer.port = port
-	const server = new WebpackDevServer(webpack(config), config.devServer)
+  const { host } = config.devServer
+  config.devServer.port = port
+  const server = new WebpackDevServer(webpack(config), config.devServer)
 
-	;(server as any).showStatus = function () {}
+  ;(server as any).showStatus = function () {}
 
-	server.listen(port, host, (err?: Error) => {
-		if (err) {
-			logger.error(err.toString())
-			return
-		}
+  server.listen(port, host, (err?: Error) => {
+    if (err) {
+      logger.error(err.toString())
+      return
+    }
 
-		logger.success(`Server running at http://${host}:${port}`)
-	})
+    logger.success(`Server running at http://${host}:${port}`)
+  })
 }
 
 export async function dev() {
-	setDev()
+  setDev()
 
-	ensureConfigFile(VARLET_CONFIG)
-	ensureDirSync(SRC_DIR)
+  ensureConfigFile(VARLET_CONFIG)
+  ensureDirSync(SRC_DIR)
 
-	await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
+  await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
 
-	const config = getDevConfig()
-	const { port } = config.devServer
-	getPort(
-		{
-			port,
-		},
-		(err: Error, port: number) => {
-			if (err) {
-				logger.error(err.toString())
-				return
-			}
-			runDevServer(port, config)
-		}
-	)
+  const config = getDevConfig()
+  const { port } = config.devServer
+  getPort(
+    {
+      port,
+    },
+    (err: Error, port: number) => {
+      if (err) {
+        logger.error(err.toString())
+        return
+      }
+      runDevServer(port, config)
+    }
+  )
 }

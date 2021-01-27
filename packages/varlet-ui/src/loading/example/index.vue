@@ -28,10 +28,10 @@ import { defineComponent } from 'vue'
 import Loading from '..'
 
 export default defineComponent({
-	name: 'LoadingExample',
-	components: {
-		[Loading.name]: Loading,
-	},
+  name: 'LoadingExample',
+  components: {
+    [Loading.name]: Loading,
+  },
 })
 </script>
 

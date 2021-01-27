@@ -51,90 +51,90 @@ type StyleProps = {
 }
 
 export default defineComponent({
-	name: 'VarSwitch',
-	components: {
-		[Loading.name]: Loading,
-		[FormDetails.name]: FormDetails,
-	},
-	directives: { Ripple },
-	props,
-	setup(props) {
-		const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, SwitchProvider>(
-			FORM_BIND_FORM_ITEM_KEY
-		)
-		const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+  name: 'VarSwitch',
+  components: {
+    [Loading.name]: Loading,
+    [FormDetails.name]: FormDetails,
+  },
+  directives: { Ripple },
+  props,
+  setup(props) {
+    const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, SwitchProvider>(
+      FORM_BIND_FORM_ITEM_KEY
+    )
+    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
 
-		const validate = () => v(props.rules, props.modelValue)
+    const validate = () => v(props.rules, props.modelValue)
 
-		const validateWithTrigger = () => nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
+    const validateWithTrigger = () => nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
 
-		const styleComputed: ComputedRef<Record<string, Partial<StyleProps>>> = computed(() => {
-			const switchWidth = +props.size * 2
-			const switchHeight = +props.size * 1.2
+    const styleComputed: ComputedRef<Record<string, Partial<StyleProps>>> = computed(() => {
+      const switchWidth = +props.size * 2
+      const switchHeight = +props.size * 1.2
 
-			return {
-				handle: {
-					width: `${props.size}px`,
-					height: `${props.size}px`,
-					backgroundColor: props.modelValue ? props.color || '' : props.closeColor || '',
-					color: props.loadingColor && props.loadingColor,
-				},
-				ripple: {
-					left: props.modelValue ? `${+props.size / 2}px` : `-${+props.size / 2}px`,
-					color: props.modelValue ? props.color || '' : props.closeColor || '#999',
-					width: `${+props.size * 2}px`,
-					height: `${+props.size * 2}px`,
-				},
-				track: {
-					height: `${switchHeight * 0.6}px`,
-					width: `${switchWidth - 2}px`,
-					borderRadius: `${switchWidth / 3}px`,
-					filter: props.modelValue || errorMessage?.value ? 'opacity(.6)' : 'brightness(.6)',
-					backgroundColor: props.modelValue ? props.color || '' : props.closeColor || '',
-				},
-				switch: {
-					height: `${switchHeight}px`,
-					width: `${switchWidth}px`,
-				},
-			}
-		})
+      return {
+        handle: {
+          width: `${props.size}px`,
+          height: `${props.size}px`,
+          backgroundColor: props.modelValue ? props.color || '' : props.closeColor || '',
+          color: props.loadingColor && props.loadingColor,
+        },
+        ripple: {
+          left: props.modelValue ? `${+props.size / 2}px` : `-${+props.size / 2}px`,
+          color: props.modelValue ? props.color || '' : props.closeColor || '#999',
+          width: `${+props.size * 2}px`,
+          height: `${+props.size * 2}px`,
+        },
+        track: {
+          height: `${switchHeight * 0.6}px`,
+          width: `${switchWidth - 2}px`,
+          borderRadius: `${switchWidth / 3}px`,
+          filter: props.modelValue || errorMessage?.value ? 'opacity(.6)' : 'brightness(.6)',
+          backgroundColor: props.modelValue ? props.color || '' : props.closeColor || '',
+        },
+        switch: {
+          height: `${switchHeight}px`,
+          width: `${switchWidth}px`,
+        },
+      }
+    })
 
-		const switchActive = () => {
-			props.onClick?.()
-			if (
-				props.disabled ||
+    const switchActive = () => {
+      props.onClick?.()
+      if (
+        props.disabled ||
 				props.loading ||
 				props.readonly ||
 				formProvider?.disabled.value ||
 				formProvider?.readonly.value
-			)
-				return
-			props.onChange?.(!props.modelValue)
-			props['onUpdate:modelValue']?.(!props.modelValue)
-			validateWithTrigger()
-		}
+      )
+        return
+      props.onChange?.(!props.modelValue)
+      props['onUpdate:modelValue']?.(!props.modelValue)
+      validateWithTrigger()
+    }
 
-		const reset = () => {
-			props['onUpdate:modelValue']?.(false)
-			resetValidation()
-		}
+    const reset = () => {
+      props['onUpdate:modelValue']?.(false)
+      resetValidation()
+    }
 
-		const switchProvider: SwitchProvider = {
-			reset,
-			validate,
-			resetValidation,
-		}
+    const switchProvider: SwitchProvider = {
+      reset,
+      validate,
+      resetValidation,
+    }
 
-		bindForm?.(switchProvider)
+    bindForm?.(switchProvider)
 
-		return {
-			switchActive,
-			styleComputed,
-			errorMessage,
-			formDisabled: formProvider?.disabled,
-			formReadonly: formProvider?.readonly,
-		}
-	},
+    return {
+      switchActive,
+      styleComputed,
+      errorMessage,
+      formDisabled: formProvider?.disabled,
+      formReadonly: formProvider?.readonly,
+    }
+  },
 })
 </script>
 

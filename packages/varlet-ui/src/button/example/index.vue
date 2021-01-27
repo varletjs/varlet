@@ -58,24 +58,24 @@ import Button from '..'
 import Snackbar from '../../snackbar'
 
 export default defineComponent({
-	name: 'ButtonExample',
-	components: {
-		[Button.name]: Button,
-	},
-	setup() {
-		const handleClick = () => {
-			Snackbar.success('click success!')
-		}
+  name: 'ButtonExample',
+  components: {
+    [Button.name]: Button,
+  },
+  setup() {
+    const handleClick = () => {
+      Snackbar.success('click success!')
+    }
 
-		const handleTouchstart = () => {
-			Snackbar.success('touchstart success!')
-		}
+    const handleTouchstart = () => {
+      Snackbar.success('touchstart success!')
+    }
 
-		return {
-			handleClick,
-			handleTouchstart,
-		}
-	},
+    return {
+      handleClick,
+      handleTouchstart,
+    }
+  },
 })
 </script>
 

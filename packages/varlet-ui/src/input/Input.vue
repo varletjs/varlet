@@ -118,174 +118,174 @@ import FormDetails from '../form-details'
 import Icon from '../icon'
 
 export default defineComponent({
-	name: 'VarInput',
-	components: {
-		[Icon.name]: Icon,
-		[FormDetails.name]: FormDetails,
-	},
-	inheritAttrs: false,
-	props,
-	setup(props) {
-		const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, InputProvider>(
-			FORM_BIND_FORM_ITEM_KEY
-		)
+  name: 'VarInput',
+  components: {
+    [Icon.name]: Icon,
+    [FormDetails.name]: FormDetails,
+  },
+  inheritAttrs: false,
+  props,
+  setup(props) {
+    const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, InputProvider>(
+      FORM_BIND_FORM_ITEM_KEY
+    )
 
-		const inputId: Ref<string> = ref(`var-input-${getCurrentInstance()!.uid}`)
-		const isFocus: Ref<boolean> = ref(false)
-		const inputEl: Ref<HTMLInputElement | null> = ref(null)
+    const inputId: Ref<string> = ref(`var-input-${getCurrentInstance()!.uid}`)
+    const isFocus: Ref<boolean> = ref(false)
+    const inputEl: Ref<HTMLInputElement | null> = ref(null)
 
-		const isNumberValue: ComputedRef<boolean> = computed(() => isNumber(props.modelValue))
-		const maxlengthText: ComputedRef<string> = computed(() => {
-			const { maxlength, modelValue } = props
+    const isNumberValue: ComputedRef<boolean> = computed(() => isNumber(props.modelValue))
+    const maxlengthText: ComputedRef<string> = computed(() => {
+      const { maxlength, modelValue } = props
 
-			if (!maxlength) {
-				return ''
-			}
+      if (!maxlength) {
+        return ''
+      }
 
-			if (isEmpty(modelValue)) {
-				return `0 / ${maxlength}`
-			}
+      if (isEmpty(modelValue)) {
+        return `0 / ${maxlength}`
+      }
 
-			return `${String(modelValue).length}/${maxlength}`
-		})
+      return `${String(modelValue).length}/${maxlength}`
+    })
 
-		const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
 
-		const validate = () => v(props.rules, props.modelValue)
+    const validate = () => v(props.rules, props.modelValue)
 
-		const validateWithTrigger = (trigger: ValidateTriggers) =>
-			nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
+    const validateWithTrigger = (trigger: ValidateTriggers) =>
+      nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
 
-		const computePlaceholderState = () => {
-			if (!props.hint && !isEmpty(props.modelValue)) {
-				return 'var-input--placeholder-hidden'
-			}
-			if (props.hint && (!isEmpty(props.modelValue) || isFocus.value)) {
-				return 'var-input--placeholder-hint'
-			}
-		}
+    const computePlaceholderState = () => {
+      if (!props.hint && !isEmpty(props.modelValue)) {
+        return 'var-input--placeholder-hidden'
+      }
+      if (props.hint && (!isEmpty(props.modelValue) || isFocus.value)) {
+        return 'var-input--placeholder-hint'
+      }
+    }
 
-		const normalizeValue = (value: string) => {
-			return isNumberValue.value ? parseFloat(value) : value
-		}
+    const normalizeValue = (value: string) => {
+      return isNumberValue.value ? parseFloat(value) : value
+    }
 
-		const handleFocus = (e: Event) => {
-			isFocus.value = true
-			props.onFocus?.(e)
+    const handleFocus = (e: Event) => {
+      isFocus.value = true
+      props.onFocus?.(e)
 
-			validateWithTrigger('onFocus')
-		}
+      validateWithTrigger('onFocus')
+    }
 
-		const handleBlur = (e: Event) => {
-			isFocus.value = false
-			props.onBlur?.(e)
+    const handleBlur = (e: Event) => {
+      isFocus.value = false
+      props.onBlur?.(e)
 
-			validateWithTrigger('onBlur')
-		}
+      validateWithTrigger('onBlur')
+    }
 
-		const handleInput = (e: Event) => {
-			const { value } = e.target as HTMLInputElement
+    const handleInput = (e: Event) => {
+      const { value } = e.target as HTMLInputElement
 
-			props['onUpdate:modelValue']?.(normalizeValue(value))
-			props.onInput?.(e)
+      props['onUpdate:modelValue']?.(normalizeValue(value))
+      props.onInput?.(e)
 
-			validateWithTrigger('onInput')
-		}
+      validateWithTrigger('onInput')
+    }
 
-		const handleChange = (e: Event) => {
-			props.onChange?.(e)
+    const handleChange = (e: Event) => {
+      props.onChange?.(e)
 
-			validateWithTrigger('onChange')
-		}
+      validateWithTrigger('onChange')
+    }
 
-		const handleClear = () => {
-			if (
-				formProvider?.disabled.value ||
+    const handleClear = () => {
+      if (
+        formProvider?.disabled.value ||
 				formProvider?.readonly.value ||
 				props.disabled ||
 				props.readonly ||
 				!props.clearable
-			) {
-				return
-			}
+      ) {
+        return
+      }
 
-			props['onUpdate:modelValue']?.(undefined)
-			props.onClear?.()
+      props['onUpdate:modelValue']?.(undefined)
+      props.onClear?.()
 
-			validateWithTrigger('onClear')
-		}
+      validateWithTrigger('onClear')
+    }
 
-		const handleClick = (e: Event) => {
-			if (formProvider?.disabled.value || props.disabled) {
-				return
-			}
+    const handleClick = (e: Event) => {
+      if (formProvider?.disabled.value || props.disabled) {
+        return
+      }
 
-			props.onClick?.(e)
+      props.onClick?.(e)
 
-			validateWithTrigger('onClick')
-		}
+      validateWithTrigger('onClick')
+    }
 
-		const handleClickAppendIcon = (e: Event) => {
-			if (formProvider?.disabled.value || props.disabled) {
-				return
-			}
+    const handleClickAppendIcon = (e: Event) => {
+      if (formProvider?.disabled.value || props.disabled) {
+        return
+      }
 
-			props.onClickAppendIcon?.(e)
-		}
+      props.onClickAppendIcon?.(e)
+    }
 
-		const handleClickPrependIcon = (e: Event) => {
-			if (formProvider?.disabled.value || props.disabled) {
-				return
-			}
+    const handleClickPrependIcon = (e: Event) => {
+      if (formProvider?.disabled.value || props.disabled) {
+        return
+      }
 
-			props.onClickPrependIcon?.(e)
-		}
+      props.onClickPrependIcon?.(e)
+    }
 
-		const focus = () => {
-			;(inputEl.value as HTMLInputElement).focus()
-		}
+    const focus = () => {
+      ;(inputEl.value as HTMLInputElement).focus()
+    }
 
-		const blur = () => {
-			;(inputEl.value as HTMLInputElement).blur()
-		}
+    const blur = () => {
+      ;(inputEl.value as HTMLInputElement).blur()
+    }
 
-		const reset = () => {
-			props['onUpdate:modelValue']?.(undefined)
-			resetValidation()
-		}
+    const reset = () => {
+      props['onUpdate:modelValue']?.(undefined)
+      resetValidation()
+    }
 
-		const inputProvider: InputProvider = {
-			reset,
-			validate,
-			resetValidation,
-		}
+    const inputProvider: InputProvider = {
+      reset,
+      validate,
+      resetValidation,
+    }
 
-		bindForm?.(inputProvider)
+    bindForm?.(inputProvider)
 
-		return {
-			inputEl,
-			inputId,
-			isFocus,
-			errorMessage,
-			maxlengthText,
-			formDisabled: formProvider?.disabled,
-			formReadonly: formProvider?.readonly,
-			computePlaceholderState,
-			handleFocus,
-			handleBlur,
-			handleInput,
-			handleChange,
-			handleClear,
-			handleClick,
-			handleClickAppendIcon,
-			handleClickPrependIcon,
-			validate,
-			resetValidation,
-			reset,
-			focus,
-			blur,
-		}
-	},
+    return {
+      inputEl,
+      inputId,
+      isFocus,
+      errorMessage,
+      maxlengthText,
+      formDisabled: formProvider?.disabled,
+      formReadonly: formProvider?.readonly,
+      computePlaceholderState,
+      handleFocus,
+      handleBlur,
+      handleInput,
+      handleChange,
+      handleClear,
+      handleClick,
+      handleClickAppendIcon,
+      handleClickPrependIcon,
+      validate,
+      resetValidation,
+      reset,
+      focus,
+      blur,
+    }
+  },
 })
 </script>
 

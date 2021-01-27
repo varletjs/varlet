@@ -56,35 +56,35 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, Ref, ref } from 'vue'
-	import Badge from '..'
-	import Button from '../../button'
-	import Chip from '../../chip'
+import { defineComponent, Ref, ref } from 'vue'
+import Badge from '..'
+import Button from '../../button'
+import Chip from '../../chip'
 
-	export default defineComponent({
-		name: 'BadgeExample',
-		components: {
-			[Badge.name]: Badge,
-			[Button.name]: Button,
-			[Chip.name]: Chip
-		},
-		setup() {
-			const value: Ref<number> = ref(88)
-			const value1: Ref<number> = ref(188)
-			const maxValue: Ref<number> = ref(99)
-			const hidden: Ref<boolean> = ref(false)
-			const handleChange = () => {
-				hidden.value = !hidden.value
-			}
-			return {
-				value,
-				value1,
-				maxValue,
-				hidden,
-				handleChange
-			}
-		}
-	})
+export default defineComponent({
+  name: 'BadgeExample',
+  components: {
+    [Badge.name]: Badge,
+    [Button.name]: Button,
+    [Chip.name]: Chip
+  },
+  setup() {
+    const value: Ref<number> = ref(88)
+    const value1: Ref<number> = ref(188)
+    const maxValue: Ref<number> = ref(99)
+    const hidden: Ref<boolean> = ref(false)
+    const handleChange = () => {
+      hidden.value = !hidden.value
+    }
+    return {
+      value,
+      value1,
+      maxValue,
+      hidden,
+      handleChange
+    }
+  }
+})
 </script>
 
 <style scoped>

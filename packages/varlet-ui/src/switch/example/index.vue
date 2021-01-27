@@ -49,23 +49,23 @@ import { defineComponent, ref } from 'vue'
 import Switch from '..'
 
 export default defineComponent({
-	name: 'SwitchExample',
-	components: {
-		[Switch.name]: Switch,
-	},
-	setup() {
-		const value = ref(true)
-		const value1 = ref(true)
-		const value2 = ref(false)
-		const value3 = ref(true)
+  name: 'SwitchExample',
+  components: {
+    [Switch.name]: Switch,
+  },
+  setup() {
+    const value = ref(true)
+    const value1 = ref(true)
+    const value2 = ref(false)
+    const value3 = ref(true)
 
-		return {
-			value,
-			value1,
-			value2,
-			value3,
-		}
-	},
+    return {
+      value,
+      value1,
+      value2,
+      value3,
+    }
+  },
 })
 </script>
 

@@ -27,9 +27,9 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx,js,vue,scss,less}": "prettier --write",
+    "*.{ts,tsx,js,vue,less}": "prettier --write",
     "*.{ts,tsx,js,vue}": "eslint --fix",
-    "*.{vue,css,scss}": "stylelint --fix"
+    "*.{vue,css}": "stylelint --fix"
   },
   "eslintConfig": {
     "root": true,

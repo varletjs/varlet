@@ -20,17 +20,17 @@ import { useTeleport } from '../utils/teleport'
 import { props } from './props'
 
 export default defineComponent({
-	name: 'VarSnackbar',
-	components: {
-		[SnackbarCore.name]: SnackbarCore,
-	},
-	props,
-	setup() {
-		const { disabled } = useTeleport()
+  name: 'VarSnackbar',
+  components: {
+    [SnackbarCore.name]: SnackbarCore,
+  },
+  props,
+  setup() {
+    const { disabled } = useTeleport()
 
-		return {
-			disabled,
-		}
-	},
+    return {
+      disabled,
+    }
+  },
 })
 </script>

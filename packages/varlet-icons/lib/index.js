@@ -15,31 +15,31 @@ const formats = ['ttf', 'eot', 'woff', 'woff2']
 const config = require(resolve(CWD, 'varlet-icons.config.js'))
 
 async function build() {
-	const { publicPath, namespace, fontName, fileName, fontWeight = 'normal', fontStyle = 'normal' } = config
+  const { publicPath, namespace, fontName, fileName, fontWeight = 'normal', fontStyle = 'normal' } = config
 
-	const { ttf, eot, woff, woff2 } = await webfont({
-		files: `${SVG_DIR}/*.svg`,
-		fontName,
-		formats,
-		fontHeight: 512,
-		descent: 64,
-	})
+  const { ttf, eot, woff, woff2 } = await webfont({
+    files: `${SVG_DIR}/*.svg`,
+    fontName,
+    formats,
+    fontHeight: 512,
+    descent: 64,
+  })
 
-	removeSync(DIST_DIR)
+  removeSync(DIST_DIR)
 
-	await Promise.all([ensureDir(FONTS_DIR), ensureDir(CSS_DIR)])
+  await Promise.all([ensureDir(FONTS_DIR), ensureDir(CSS_DIR)])
 
-	const icons = readdirSync(SVG_DIR).map((svgName) => {
-		const i = svgName.indexOf('-')
-		const extIndex = svgName.lastIndexOf('.')
+  const icons = readdirSync(SVG_DIR).map((svgName) => {
+    const i = svgName.indexOf('-')
+    const extIndex = svgName.lastIndexOf('.')
 
-		return {
-			name: svgName.slice(i + 1, extIndex),
-			pointCode: svgName.slice(1, i),
-		}
-	})
+    return {
+      name: svgName.slice(i + 1, extIndex),
+      pointCode: svgName.slice(1, i),
+    }
+  })
 
-	const cssTemplate = `\
+  const cssTemplate = `\
 @font-face {
   font-family: "${fontName}";
   src: url("${publicPath}${fileName}-webfont.eot");
@@ -59,12 +59,12 @@ async function build() {
 }
 
 ${icons
-	.map((icon) => {
-		return `.${namespace}-${icon.name}::before {
+    .map((icon) => {
+      return `.${namespace}-${icon.name}::before {
   content: "\\${icon.pointCode}";
 }`
-	})
-	.join('\n\n')}
+    })
+    .join('\n\n')}
 `
 
   const iconNames = icons.map((iconName) => `  "${iconName.name}"`)
@@ -76,16 +76,16 @@ ${iconNames.join(',\n')}
 `
 
   await Promise.all([
-		writeFile(resolve(FONTS_DIR, `${fileName}-webfont.ttf`), ttf),
-		writeFile(resolve(FONTS_DIR, `${fileName}-webfont.eot`), eot),
-		writeFile(resolve(FONTS_DIR, `${fileName}-webfont.woff`), woff),
-		writeFile(resolve(FONTS_DIR, `${fileName}-webfont.woff2`), woff2),
-		writeFile(resolve(CSS_DIR, `${fileName}.css`), cssTemplate),
-		writeFile(resolve(CSS_DIR, `${fileName}.less`), cssTemplate),
-    writeFile(resolve(DIST_DIR, 'index.js'), indexTemplate)
-	])
+    writeFile(resolve(FONTS_DIR, `${fileName}-webfont.ttf`), ttf),
+    writeFile(resolve(FONTS_DIR, `${fileName}-webfont.eot`), eot),
+    writeFile(resolve(FONTS_DIR, `${fileName}-webfont.woff`), woff),
+    writeFile(resolve(FONTS_DIR, `${fileName}-webfont.woff2`), woff2),
+    writeFile(resolve(CSS_DIR, `${fileName}.css`), cssTemplate),
+    writeFile(resolve(CSS_DIR, `${fileName}.less`), cssTemplate),
+    writeFile(resolve(DIST_DIR, 'index.js'), indexTemplate),
+  ])
 
-	console.log('build success!')
+  console.log('build success!')
 }
 
 commander.command('build').description('Build varlet icons from svg').action(build)
