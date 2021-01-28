@@ -9,15 +9,15 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue'
-	import Ripple from '..'
+import { defineComponent } from 'vue'
+import Ripple from '..'
 
-	export default defineComponent({
-		name: 'RippleExample',
-		directives: {
-			Ripple
-		}
-	})
+export default defineComponent({
+  name: 'RippleExample',
+  directives: {
+    Ripple
+  }
+})
 </script>
 
 <style scoped lang="less">

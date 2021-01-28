@@ -37,62 +37,62 @@ import Checkbox from '../checkbox'
 import Ripple from '../ripple'
 
 export default defineComponent({
-	name: 'VarOption',
-	directives: { Ripple },
-	components: {
-		[Checkbox.name]: Checkbox,
-	},
-	inheritAttrs: false,
-	props,
-	setup(props) {
-		const { bindParent, parentProvider: selectProvider } = useParent<SelectProvider, OptionProvider>(
-			SELECT_BIND_OPTION_KEY
-		)
-		useAtParentIndex(SELECT_COUNT_OPTION_KEY)
+  name: 'VarOption',
+  directives: { Ripple },
+  components: {
+    [Checkbox.name]: Checkbox,
+  },
+  inheritAttrs: false,
+  props,
+  setup(props) {
+    const { bindParent, parentProvider: selectProvider } = useParent<SelectProvider, OptionProvider>(
+      SELECT_BIND_OPTION_KEY
+    )
+    useAtParentIndex(SELECT_COUNT_OPTION_KEY)
 
-		if (!bindParent || !selectProvider) {
-			throw Error('<var-option/> must in <var-select/>')
-		}
+    if (!bindParent || !selectProvider) {
+      throw Error('<var-option/> must in <var-select/>')
+    }
 
-		const optionSelected: Ref<boolean> = ref(false)
+    const optionSelected: Ref<boolean> = ref(false)
 
-		const selected: ComputedRef<boolean> = computed(() => optionSelected.value)
-		const label: ComputedRef<string | undefined> = computed(() => props.label)
-		const value: ComputedRef<string | number | boolean | undefined> = computed(() => props.value)
+    const selected: ComputedRef<boolean> = computed(() => optionSelected.value)
+    const label: ComputedRef<string | undefined> = computed(() => props.label)
+    const value: ComputedRef<string | number | boolean | undefined> = computed(() => props.value)
 
-		const { wrapWidth, multiple, activeColor, onSelect } = selectProvider
+    const { wrapWidth, multiple, activeColor, onSelect } = selectProvider
 
-		const handleClick = () => {
-			optionSelected.value = !optionSelected.value
-			onSelect(optionProvider)
-		}
+    const handleClick = () => {
+      optionSelected.value = !optionSelected.value
+      onSelect(optionProvider)
+    }
 
-		const handleSelect = () => {
-			onSelect(optionProvider)
-		}
+    const handleSelect = () => {
+      onSelect(optionProvider)
+    }
 
-		const sync = (checked: boolean) => {
-			optionSelected.value = checked
-		}
+    const sync = (checked: boolean) => {
+      optionSelected.value = checked
+    }
 
-		const optionProvider: OptionProvider = {
-			label,
-			value,
-			selected,
-			sync,
-		}
+    const optionProvider: OptionProvider = {
+      label,
+      value,
+      selected,
+      sync,
+    }
 
-		bindParent(optionProvider)
+    bindParent(optionProvider)
 
-		return {
-			optionSelected,
-			wrapWidth,
-			multiple,
-			activeColor,
-			handleClick,
-			handleSelect,
-		}
-	},
+    return {
+      optionSelected,
+      wrapWidth,
+      multiple,
+      activeColor,
+      handleClick,
+      handleSelect,
+    }
+  },
 })
 </script>
 

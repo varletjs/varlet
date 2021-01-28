@@ -7,8 +7,8 @@ import AppType from './components/AppType.vue'
 import routes from './routes'
 
 const router = createRouter({
-	history: createWebHashHistory(),
-	routes,
+  history: createWebHashHistory(),
+  routes,
 })
 
 const app = createApp(App as any)

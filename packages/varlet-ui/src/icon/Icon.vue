@@ -24,47 +24,47 @@ import { isURL } from '../utils/shared'
 import { props } from './props'
 
 export default defineComponent({
-	name: 'VarIcon',
-	inheritAttrs: false,
-	props,
-	setup(props) {
-		const nextName: Ref<string | undefined> = ref('')
-		const tickTransition: Ref<boolean> = ref(false)
+  name: 'VarIcon',
+  inheritAttrs: false,
+  props,
+  setup(props) {
+    const nextName: Ref<string | undefined> = ref('')
+    const tickTransition: Ref<boolean> = ref(false)
 
-		watch(
-			() => props.name,
-			(newValue: string | undefined, oldValue: string | undefined) => {
-				if (oldValue === undefined || !props.transition) {
-					nextName.value = newValue
-					return
-				}
+    watch(
+      () => props.name,
+      (newValue: string | undefined, oldValue: string | undefined) => {
+        if (oldValue === undefined || !props.transition) {
+          nextName.value = newValue
+          return
+        }
 
-				tickTransition.value = true
+        tickTransition.value = true
 
-				nextTick().then(() => {
-					setTimeout(() => {
-						if (oldValue !== undefined) {
-							nextName.value = newValue
-						}
+        nextTick().then(() => {
+          setTimeout(() => {
+            if (oldValue !== undefined) {
+              nextName.value = newValue
+            }
 
-						tickTransition.value = false
-					}, props.transition)
-				})
-			},
-			{ immediate: true }
-		)
+            tickTransition.value = false
+          }, props.transition)
+        })
+      },
+      { immediate: true }
+    )
 
-		const handleClick = (e: Event) => {
-			props.onClick?.(e)
-		}
+    const handleClick = (e: Event) => {
+      props.onClick?.(e)
+    }
 
-		return {
-			isURL,
-			nextName,
-			tickTransition,
-			handleClick,
-		}
-	},
+    return {
+      isURL,
+      nextName,
+      tickTransition,
+      handleClick,
+    }
+  },
 })
 </script>
 

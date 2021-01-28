@@ -7,10 +7,10 @@ import { defineComponent } from 'vue'
 import Option from '..'
 
 export default defineComponent({
-	name: 'OptionExample',
-	components: {
-		[Option.name]: Option,
-	},
+  name: 'OptionExample',
+  components: {
+    [Option.name]: Option,
+  },
 })
 </script>
 

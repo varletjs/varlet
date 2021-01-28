@@ -4,7 +4,8 @@
 		<div class="var-switch__example-block">
 			<var-switch v-model="value" />
 			<var-switch v-model="value" :ripple="false" color="green" />
-			<var-switch v-model="value1" disable />
+			<var-switch v-model="value1" disabled />
+			<var-switch v-model="value3" readonly />
 		</div>
 	</div>
 	<div>
@@ -48,21 +49,23 @@ import { defineComponent, ref } from 'vue'
 import Switch from '..'
 
 export default defineComponent({
-	name: 'SwitchExample',
-	components: {
-		[Switch.name]: Switch,
-	},
-	setup() {
-		const value = ref(true)
-		const value1 = ref(true)
-		const value2 = ref(false)
+  name: 'SwitchExample',
+  components: {
+    [Switch.name]: Switch,
+  },
+  setup() {
+    const value = ref(true)
+    const value1 = ref(true)
+    const value2 = ref(false)
+    const value3 = ref(true)
 
-		return {
-			value,
-			value1,
-			value2,
-		}
-	},
+    return {
+      value,
+      value1,
+      value2,
+      value3,
+    }
+  },
 })
 </script>
 

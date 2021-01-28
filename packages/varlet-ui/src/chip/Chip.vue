@@ -41,31 +41,31 @@ import { props } from './props'
 import Icon from '../icon'
 
 export default defineComponent({
-	name: 'VarChip',
-	components: {
-		[Icon.name]: Icon,
-	},
-	directives: { Ripple },
-	inheritAttrs: false,
-	props,
-	setup(props) {
-		const controlStyle = () => {
-			if (props.plain) {
-				return {
-					color: props.textColor || props.color,
-					borderColor: props.color,
-				}
-			}
+  name: 'VarChip',
+  components: {
+    [Icon.name]: Icon,
+  },
+  directives: { Ripple },
+  inheritAttrs: false,
+  props,
+  setup(props) {
+    const controlStyle = () => {
+      if (props.plain) {
+        return {
+          color: props.textColor || props.color,
+          borderColor: props.color,
+        }
+      }
 
-			return {
-				color: props.textColor,
-				background: props.color,
-			}
-		}
-		return {
-			controlStyle,
-		}
-	},
+      return {
+        color: props.textColor,
+        background: props.color,
+      }
+    }
+    return {
+      controlStyle,
+    }
+  },
 })
 </script>
 

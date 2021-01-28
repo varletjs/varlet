@@ -63,29 +63,29 @@ import Chip from '..'
 import Icon from '../../icon'
 
 export default defineComponent({
-	name: 'ChipExample',
-	components: {
-		[Chip.name]: Chip,
-		[Icon.name]: Icon,
-	},
-	setup() {
-		const show: Ref<boolean> = ref(true)
-		const show1: Ref<boolean> = ref(true)
-		const show2: Ref<boolean> = ref(true)
-		const show3: Ref<boolean> = ref(true)
-		const show4: Ref<boolean> = ref(true)
-		const show5: Ref<boolean> = ref(true)
-		const show6: Ref<boolean> = ref(true)
-		return {
-			show,
-			show1,
-			show2,
-			show3,
-			show4,
-			show5,
-			show6,
-		}
-	},
+  name: 'ChipExample',
+  components: {
+    [Chip.name]: Chip,
+    [Icon.name]: Icon,
+  },
+  setup() {
+    const show: Ref<boolean> = ref(true)
+    const show1: Ref<boolean> = ref(true)
+    const show2: Ref<boolean> = ref(true)
+    const show3: Ref<boolean> = ref(true)
+    const show4: Ref<boolean> = ref(true)
+    const show5: Ref<boolean> = ref(true)
+    const show6: Ref<boolean> = ref(true)
+    return {
+      show,
+      show1,
+      show2,
+      show3,
+      show4,
+      show5,
+      show6,
+    }
+  },
 })
 </script>
 

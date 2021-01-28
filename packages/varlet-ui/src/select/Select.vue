@@ -121,235 +121,235 @@ import FormDetails from '../form-details'
 import { FORM_BIND_FORM_ITEM_KEY, FormProvider } from '../form/provide'
 
 export default defineComponent({
-	name: 'VarSelect',
-	components: {
-		[Icon.name]: Icon,
-		[Menu.name]: Menu,
-		[Chip.name]: Chip,
-		[FormDetails.name]: FormDetails,
-	},
-	inheritAttrs: false,
-	props,
-	setup(props) {
-		const { bindChildren: bindOption, childProviders: optionProviders } = useChildren<SelectProvider, OptionProvider>(
-			SELECT_BIND_OPTION_KEY
-		)
-		const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, SelectProvider>(
-			FORM_BIND_FORM_ITEM_KEY
-		)
-		const { length } = useAtChildrenCounter(SELECT_COUNT_OPTION_KEY)
+  name: 'VarSelect',
+  components: {
+    [Icon.name]: Icon,
+    [Menu.name]: Menu,
+    [Chip.name]: Chip,
+    [FormDetails.name]: FormDetails,
+  },
+  inheritAttrs: false,
+  props,
+  setup(props) {
+    const { bindChildren: bindOption, childProviders: optionProviders } = useChildren<SelectProvider, OptionProvider>(
+      SELECT_BIND_OPTION_KEY
+    )
+    const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, SelectProvider>(
+      FORM_BIND_FORM_ITEM_KEY
+    )
+    const { length } = useAtChildrenCounter(SELECT_COUNT_OPTION_KEY)
 
-		const wrapEl: Ref<HTMLElement | null> = ref(null)
-		const isFocus: Ref<boolean> = ref(false)
-		const wrapWidth: ComputedRef<string> = computed(() => {
-			return (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).width) || '0px'
-		})
-		const multiple: ComputedRef<boolean> = computed(() => props.multiple)
-		const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
+    const wrapEl: Ref<HTMLElement | null> = ref(null)
+    const isFocus: Ref<boolean> = ref(false)
+    const wrapWidth: ComputedRef<string> = computed(() => {
+      return (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).width) || '0px'
+    })
+    const multiple: ComputedRef<boolean> = computed(() => props.multiple)
+    const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
 
-		const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
 
-		const validate = () => v(props.rules, props.modelValue)
+    const validate = () => v(props.rules, props.modelValue)
 
-		const validateWithTrigger = (trigger: ValidateTriggers) =>
-			nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
+    const validateWithTrigger = (trigger: ValidateTriggers) =>
+      nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
 
-		const findValue = ({ value, label }: OptionProvider) => {
-			if (value.value != null) {
-				return value.value
-			}
+    const findValue = ({ value, label }: OptionProvider) => {
+      if (value.value != null) {
+        return value.value
+      }
 
-			return label.value
-		}
+      return label.value
+    }
 
-		const findLabel = (targetValue: any) => {
-			let targetProvider = optionProviders.find(({ value }) => value.value === targetValue)
+    const findLabel = (targetValue: any) => {
+      let targetProvider = optionProviders.find(({ value }) => value.value === targetValue)
 
-			!targetProvider && (targetProvider = optionProviders.find(({ label }) => label.value === targetValue))
+      !targetProvider && (targetProvider = optionProviders.find(({ label }) => label.value === targetValue))
 
-			return targetProvider?.label.value
-		}
+      return targetProvider?.label.value
+    }
 
-		const computePlaceholderState = () => {
-			if (!props.hint && !isEmpty(props.modelValue)) {
-				return 'var-select--placeholder-hidden'
-			}
-			if (props.hint && (!isEmpty(props.modelValue) || isFocus.value)) {
-				return 'var-select--placeholder-hint'
-			}
-		}
+    const computePlaceholderState = () => {
+      if (!props.hint && !isEmpty(props.modelValue)) {
+        return 'var-select--placeholder-hidden'
+      }
+      if (props.hint && (!isEmpty(props.modelValue) || isFocus.value)) {
+        return 'var-select--placeholder-hint'
+      }
+    }
 
-		const handleFocus = (e: Event) => {
-			if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
-				return
-			}
+    const handleFocus = (e: Event) => {
+      if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
+        return
+      }
 
-			isFocus.value = true
-			props.onFocus?.(e)
+      isFocus.value = true
+      props.onFocus?.(e)
 
-			validateWithTrigger('onFocus')
-		}
+      validateWithTrigger('onFocus')
+    }
 
-		const handleBlur = (e: Event) => {
-			if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
-				return
-			}
+    const handleBlur = (e: Event) => {
+      if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
+        return
+      }
 
-			props.onBlur?.(e)
+      props.onBlur?.(e)
 
-			validateWithTrigger('onBlur')
-		}
+      validateWithTrigger('onBlur')
+    }
 
-		const handleChange = (optionProvider: OptionProvider) => {
-			if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
-				return
-			}
+    const handleChange = (optionProvider: OptionProvider) => {
+      if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
+        return
+      }
 
-			let selectedValue: any = findValue(optionProvider)
+      let selectedValue: any = findValue(optionProvider)
 
-			if (props.multiple) {
-				selectedValue = optionProviders.filter(({ selected }) => selected.value).map(findValue)
-			}
+      if (props.multiple) {
+        selectedValue = optionProviders.filter(({ selected }) => selected.value).map(findValue)
+      }
 
-			props['onUpdate:modelValue']?.(selectedValue)
-			props.onChange?.(selectedValue)
+      props['onUpdate:modelValue']?.(selectedValue)
+      props.onChange?.(selectedValue)
 
-			validateWithTrigger('onChange')
+      validateWithTrigger('onChange')
 
-			!props.multiple && (isFocus.value = false)
-		}
+      !props.multiple && (isFocus.value = false)
+    }
 
-		const handleClear = () => {
-			if (
-				formProvider?.disabled.value ||
+    const handleClear = () => {
+      if (
+        formProvider?.disabled.value ||
 				formProvider?.readonly.value ||
 				props.disabled ||
 				props.readonly ||
 				!props.clearable
-			) {
-				return
-			}
+      ) {
+        return
+      }
 
-			const targetModelValue = props.multiple ? [] : undefined
+      const targetModelValue = props.multiple ? [] : undefined
 
-			props['onUpdate:modelValue']?.(targetModelValue)
-			props.onClear?.(targetModelValue)
+      props['onUpdate:modelValue']?.(targetModelValue)
+      props.onClear?.(targetModelValue)
 
-			validateWithTrigger('onClear')
-		}
+      validateWithTrigger('onClear')
+    }
 
-		const handleClickAppendIcon = (e: Event) => {
-			if (formProvider?.disabled.value || props.disabled) {
-				return
-			}
+    const handleClickAppendIcon = (e: Event) => {
+      if (formProvider?.disabled.value || props.disabled) {
+        return
+      }
 
-			props.onClickAppendIcon?.(e)
-		}
+      props.onClickAppendIcon?.(e)
+    }
 
-		const handleClickPrependIcon = (e: Event) => {
-			if (formProvider?.disabled.value || props.disabled) {
-				return
-			}
+    const handleClickPrependIcon = (e: Event) => {
+      if (formProvider?.disabled.value || props.disabled) {
+        return
+      }
 
-			props.onClickPrependIcon?.(e)
-		}
+      props.onClickPrependIcon?.(e)
+    }
 
-		const handleClick = (e: Event) => {
-			if (formProvider?.disabled.value || props.disabled) {
-				return
-			}
+    const handleClick = (e: Event) => {
+      if (formProvider?.disabled.value || props.disabled) {
+        return
+      }
 
-			props.onClick?.(e)
+      props.onClick?.(e)
 
-			validateWithTrigger('onClick')
-		}
+      validateWithTrigger('onClick')
+    }
 
-		const handleClose = (targetValue: any) => {
-			if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
-				return
-			}
+    const handleClose = (targetValue: any) => {
+      if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
+        return
+      }
 
-			const targetModelValue = ((props.modelValue as unknown) as any[]).filter((value) => value !== targetValue)
+      const targetModelValue = ((props.modelValue as unknown) as any[]).filter((value) => value !== targetValue)
 
-			props['onUpdate:modelValue']?.(targetModelValue)
-			props.onClose?.(targetModelValue)
+      props['onUpdate:modelValue']?.(targetModelValue)
+      props.onClose?.(targetModelValue)
 
-			validateWithTrigger('onClose')
-		}
+      validateWithTrigger('onClose')
+    }
 
-		const focus = () => {
-			isFocus.value = true
-		}
+    const focus = () => {
+      isFocus.value = true
+    }
 
-		const blur = () => {
-			isFocus.value = false
-		}
+    const blur = () => {
+      isFocus.value = false
+    }
 
-		const reset = () => {
-			props['onUpdate:modelValue']?.(props.multiple ? [] : undefined)
-			resetValidation()
-		}
+    const reset = () => {
+      props['onUpdate:modelValue']?.(props.multiple ? [] : undefined)
+      resetValidation()
+    }
 
-		const syncAllOption = () => {
-			if (props.multiple) {
-				optionProviders.forEach(({ sync, ...rest }) => {
-					sync(((props.modelValue as unknown) as any[]).includes(findValue({ sync, ...rest })))
-				})
-			} else {
-				optionProviders.forEach(({ sync, ...rest }) => {
-					sync(props.modelValue === findValue({ sync, ...rest }))
-				})
-			}
-		}
+    const syncAllOption = () => {
+      if (props.multiple) {
+        optionProviders.forEach(({ sync, ...rest }) => {
+          sync(((props.modelValue as unknown) as any[]).includes(findValue({ sync, ...rest })))
+        })
+      } else {
+        optionProviders.forEach(({ sync, ...rest }) => {
+          sync(props.modelValue === findValue({ sync, ...rest }))
+        })
+      }
+    }
 
-		watch(
-			() => props.multiple,
-			() => {
-				if (props.multiple && !isArray(props.modelValue)) {
-					throw Error('The modelValue must be an array when multiple is true')
-				}
-			}
-		)
+    watch(
+      () => props.multiple,
+      () => {
+        if (props.multiple && !isArray(props.modelValue)) {
+          throw Error('The modelValue must be an array when multiple is true')
+        }
+      }
+    )
 
-		watch(() => props.modelValue, syncAllOption, { deep: true })
+    watch(() => props.modelValue, syncAllOption, { deep: true })
 
-		watch(() => length.value, syncAllOption)
+    watch(() => length.value, syncAllOption)
 
-		const selectProvider: SelectProvider = {
-			wrapWidth,
-			multiple,
-			activeColor,
-			onSelect: handleChange,
-			reset,
-			validate,
-			resetValidation,
-		}
+    const selectProvider: SelectProvider = {
+      wrapWidth,
+      multiple,
+      activeColor,
+      onSelect: handleChange,
+      reset,
+      validate,
+      resetValidation,
+    }
 
-		bindOption(selectProvider)
-		bindForm?.(selectProvider)
+    bindOption(selectProvider)
+    bindForm?.(selectProvider)
 
-		return {
-			wrapEl,
-			isFocus,
-			errorMessage,
-			formDisabled: formProvider?.disabled,
-			computePlaceholderState,
-			findLabel,
-			handleFocus,
-			handleBlur,
-			handleChange,
-			handleClear,
-			handleClick,
-			handleClose,
-			handleClickAppendIcon,
-			handleClickPrependIcon,
-			reset,
-			validate,
-			resetValidation,
-			focus,
-			blur,
-		}
-	},
+    return {
+      wrapEl,
+      isFocus,
+      errorMessage,
+      formDisabled: formProvider?.disabled,
+      computePlaceholderState,
+      findLabel,
+      handleFocus,
+      handleBlur,
+      handleChange,
+      handleClear,
+      handleClick,
+      handleClose,
+      handleClickAppendIcon,
+      handleClickPrependIcon,
+      reset,
+      validate,
+      resetValidation,
+      focus,
+      blur,
+    }
+  },
 })
 </script>
 

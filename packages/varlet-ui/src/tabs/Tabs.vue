@@ -47,64 +47,64 @@ import { TabProvider } from '../tab/provide'
 import { isNumber } from '../utils/shared'
 
 export default defineComponent({
-	name: 'VarTabs',
-	components: {
-		[Sticky.name]: Sticky,
-	},
-	inheritAttrs: false,
-	props,
-	setup(props) {
-		const indicatorWidth: Ref<string> = ref('0px')
-		const indicatorHeight: Ref<string> = ref('0px')
-		const indicatorX: Ref<string> = ref('0px')
-		const indicatorY: Ref<string> = ref('0px')
+  name: 'VarTabs',
+  components: {
+    [Sticky.name]: Sticky,
+  },
+  inheritAttrs: false,
+  props,
+  setup(props) {
+    const indicatorWidth: Ref<string> = ref('0px')
+    const indicatorHeight: Ref<string> = ref('0px')
+    const indicatorX: Ref<string> = ref('0px')
+    const indicatorY: Ref<string> = ref('0px')
 
-		const scrollable: Ref<boolean> = ref(false)
-		const scrollerEl: Ref<HTMLElement | null> = ref(null)
+    const scrollable: Ref<boolean> = ref(false)
+    const scrollerEl: Ref<HTMLElement | null> = ref(null)
 
-		const active: ComputedRef<number | string> = computed(() => props.active)
-		const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
-		const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
-		const disabledColor: ComputedRef<string | undefined> = computed(() => props.disabledColor)
-		const itemDirection: ComputedRef<string> = computed(() => props.itemDirection)
-		const { childProviders: tabProviders, bindChildren } = useChildren<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
-		const { length } = useAtChildrenCounter(TABS_COUNT_TAB_KEY)
+    const active: ComputedRef<number | string> = computed(() => props.active)
+    const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
+    const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
+    const disabledColor: ComputedRef<string | undefined> = computed(() => props.disabledColor)
+    const itemDirection: ComputedRef<string> = computed(() => props.itemDirection)
+    const { childProviders: tabProviders, bindChildren } = useChildren<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
+    const { length } = useAtChildrenCounter(TABS_COUNT_TAB_KEY)
 
-		const onTabClick = (tabProvider: TabProvider) => {
-			const active = tabProvider.name.value ?? tabProvider.index.value
+    const onTabClick = (tabProvider: TabProvider) => {
+      const active = tabProvider.name.value ?? tabProvider.index.value
 
-			props['onUpdate:active']?.(active)
-			props.onClick?.(active)
-			active !== props.active && props.onChange?.(active)
-		}
+      props['onUpdate:active']?.(active)
+      props.onClick?.(active)
+      active !== props.active && props.onChange?.(active)
+    }
 
-		const matchName = (): TabProvider | undefined => {
-			return tabProviders.find(({ name }: TabProvider) => props.active === name.value)
-		}
+    const matchName = (): TabProvider | undefined => {
+      return tabProviders.find(({ name }: TabProvider) => props.active === name.value)
+    }
 
-		const matchIndex = (): TabProvider | undefined => {
-			return tabProviders.find(({ index }: TabProvider) => props.active === index.value)
-		}
+    const matchIndex = (): TabProvider | undefined => {
+      return tabProviders.find(({ index }: TabProvider) => props.active === index.value)
+    }
 
-		const matchBoundary = (): TabProvider | undefined => {
-			if (length.value === 0) {
-				return
-			}
+    const matchBoundary = (): TabProvider | undefined => {
+      if (length.value === 0) {
+        return
+      }
 
-			isNumber(props.active)
-				? props.active > length.value - 1
-					? props['onUpdate:active']?.(length.value - 1)
-					: props['onUpdate:active']?.(0)
-				: null
+      isNumber(props.active)
+        ? props.active > length.value - 1
+          ? props['onUpdate:active']?.(length.value - 1)
+          : props['onUpdate:active']?.(0)
+        : null
 
-			return matchIndex()
-		}
+      return matchIndex()
+    }
 
-		const watchScrollable = () => {
-			scrollable.value = tabProviders.length >= 5
-		}
+    const watchScrollable = () => {
+      scrollable.value = tabProviders.length >= 5
+    }
 
-		const moveIndicator = ({ element }: TabProvider) => {
+    const moveIndicator = ({ element }: TabProvider) => {
 		  if (props.layoutDirection === 'horizontal') {
         indicatorWidth.value = `${element.value?.offsetWidth}px`
         indicatorX.value = `${element.value?.offsetLeft}px`
@@ -112,15 +112,15 @@ export default defineComponent({
         indicatorHeight.value = `${element.value?.offsetHeight}px`
         indicatorY.value = `${element.value?.offsetTop}px`
       }
-		}
+    }
 
-		const scrollToCenter = ({ element }: TabProvider) => {
-			if (!scrollable.value) {
-				return
-			}
+    const scrollToCenter = ({ element }: TabProvider) => {
+      if (!scrollable.value) {
+        return
+      }
 
-			const scroller: HTMLElement = scrollerEl.value as HTMLElement
-			const el = element.value as HTMLElement
+      const scroller: HTMLElement = scrollerEl.value as HTMLElement
+      const el = element.value as HTMLElement
 
       if (props.layoutDirection === 'horizontal') {
         const left: number = el.offsetLeft + el.offsetWidth / 2 - scroller.offsetWidth / 2
@@ -135,49 +135,49 @@ export default defineComponent({
           behavior: 'smooth',
         })
       }
-		}
+    }
 
-		const resize = () => {
-			const tabProvider: TabProvider | undefined = matchName() || matchIndex() || matchBoundary()
+    const resize = () => {
+      const tabProvider: TabProvider | undefined = matchName() || matchIndex() || matchBoundary()
       if (!tabProvider || tabProvider.disabled.value) {
-				return
-			}
+        return
+      }
 
-			watchScrollable()
-			moveIndicator(tabProvider)
-			scrollToCenter(tabProvider)
-		}
+      watchScrollable()
+      moveIndicator(tabProvider)
+      scrollToCenter(tabProvider)
+    }
 
-		const tabsProvider: TabsProvider = {
-			active,
-			activeColor,
-			inactiveColor,
-			disabledColor,
+    const tabsProvider: TabsProvider = {
+      active,
+      activeColor,
+      inactiveColor,
+      disabledColor,
       itemDirection,
-			resize,
-			onTabClick,
-		}
+      resize,
+      onTabClick,
+    }
 
-		bindChildren(tabsProvider)
+    bindChildren(tabsProvider)
 
-		watch(
-			() => length.value,
-			() => nextTick().then(resize)
-		)
+    watch(
+      () => length.value,
+      () => nextTick().then(resize)
+    )
 
-		watch(() => props.active, resize)
+    watch(() => props.active, resize)
 
-		return {
-			indicatorWidth,
+    return {
+      indicatorWidth,
       indicatorHeight,
-			indicatorX,
+      indicatorX,
       indicatorY,
-			scrollable,
-			scrollerEl,
-			Transition,
-			resize,
-		}
-	},
+      scrollable,
+      scrollerEl,
+      Transition,
+      resize,
+    }
+  },
 })
 </script>
 

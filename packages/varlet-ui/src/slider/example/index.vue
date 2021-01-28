@@ -20,6 +20,10 @@
 		<var-slider :step="1" v-model="value3" readonly />
 	</div>
 	<div>
+		<app-type>不同大小</app-type>
+		<var-slider v-model="value1" track-height="6" thumb-size="20" range />
+	</div>
+	<div>
 		<app-type>不同样式</app-type>
 		<var-slider
 			v-model="value4"
@@ -42,42 +46,42 @@ import { defineComponent, ref } from 'vue'
 import Slider from '..'
 
 export default defineComponent({
-	name: 'SliderExample',
-	components: {
-		[Slider.name]: Slider,
-	},
-	setup() {
-		const value = ref(3)
-		const value1 = ref([3, 50])
-		const value2 = ref(25)
-		const value3 = ref(40)
-		const value4 = ref(20)
-		const value5 = ref(20)
-		const value6 = ref(70)
-		const value7 = ref(50)
-		const change = (v) => {
-			console.log(v)
-		}
-		const start = () => {
-			console.log('start')
-		}
-		const end = () => {
-			console.log('end')
-		}
-		return {
-			value,
-			value1,
-			value2,
-			value3,
-			value4,
-			value5,
-			value6,
-			value7,
-			change,
-			start,
-			end,
-		}
-	},
+  name: 'SliderExample',
+  components: {
+    [Slider.name]: Slider,
+  },
+  setup() {
+    const value = ref(3)
+    const value1 = ref([3, 50])
+    const value2 = ref(25)
+    const value3 = ref(40)
+    const value4 = ref(20)
+    const value5 = ref(20)
+    const value6 = ref(70)
+    const value7 = ref(50)
+    const change = (v) => {
+      console.log(v)
+    }
+    const start = () => {
+      console.log('start')
+    }
+    const end = () => {
+      console.log('end')
+    }
+    return {
+      value,
+      value1,
+      value2,
+      value3,
+      value4,
+      value5,
+      value6,
+      value7,
+      change,
+      start,
+      end,
+    }
+  },
 })
 </script>
 

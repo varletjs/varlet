@@ -53,26 +53,26 @@ import Icon from '../../icon'
 import Button from '../../button'
 
 export default defineComponent({
-	name: 'CheckboxExample',
-	components: {
-		[Checkbox.name]: Checkbox,
-		[CheckboxGroup.name]: CheckboxGroup,
-		[Icon.name]: Icon,
-		[Button.name]: Button,
-	},
-	setup() {
-		const g: any = ref(null)
-		return {
-			v: ref(false),
-			v1: ref(0),
-			v2: ref([1, 3]),
-			list: ref([]),
-			g,
-			log(v: any) {
-				console.log(v)
-			},
-		}
-	},
+  name: 'CheckboxExample',
+  components: {
+    [Checkbox.name]: Checkbox,
+    [CheckboxGroup.name]: CheckboxGroup,
+    [Icon.name]: Icon,
+    [Button.name]: Button,
+  },
+  setup() {
+    const g: any = ref(null)
+    return {
+      v: ref(false),
+      v1: ref(0),
+      v2: ref([1, 3]),
+      list: ref([]),
+      g,
+      log(v: any) {
+        console.log(v)
+      },
+    }
+  },
 })
 </script>
 

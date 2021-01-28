@@ -6,9 +6,9 @@ import { DOCS_DIR_NAME, EXAMPLE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from '../sha
 import { getVarletConfig } from '../config/varlet.config'
 
 export async function create(name: string) {
-	const varletConfig = getVarletConfig()
-	const namespace = accessProperty(varletConfig, 'namespace')
-	const vueTemplate = `\
+  const varletConfig = getVarletConfig()
+  const namespace = accessProperty(varletConfig, 'namespace')
+  const vueTemplate = `\
 <template>
   <div class="${namespace}-${name}"></div>
 </template>
@@ -27,7 +27,7 @@ export default defineComponent({
 }
 </style>
 `
-	const indexTemplate = `\
+  const indexTemplate = `\
 import { App } from 'vue'
 import ${bigCamelize(name)} from './${bigCamelize(name)}.vue'
 
@@ -37,7 +37,7 @@ ${bigCamelize(name)}.install = function(app: App) {
 
 export default ${bigCamelize(name)}
 `
-	const testsTemplate = `\
+  const testsTemplate = `\
 const ${bigCamelize(name)} = require('../../../cjs/${name}').default
 const { render } = require('@testing-library/vue')
 
@@ -46,7 +46,7 @@ test('test ${camelize(name)}', async () => {
   console.log(wrapper)
 })
 `
-	const exampleTemplate = `\
+  const exampleTemplate = `\
 <template>
   <${namespace}-${name}/>
 </template>
@@ -69,24 +69,24 @@ export default defineComponent({
 }
 </style>
 `
-	const componentDir = resolve(SRC_DIR, name)
-	const testsDir = resolve(SRC_DIR, name, TESTS_DIR_NAME)
-	const exampleDir = resolve(SRC_DIR, name, EXAMPLE_DIR_NAME)
-	const docsDir = resolve(SRC_DIR, name, DOCS_DIR_NAME)
+  const componentDir = resolve(SRC_DIR, name)
+  const testsDir = resolve(SRC_DIR, name, TESTS_DIR_NAME)
+  const exampleDir = resolve(SRC_DIR, name, EXAMPLE_DIR_NAME)
+  const docsDir = resolve(SRC_DIR, name, DOCS_DIR_NAME)
 
-	if (pathExistsSync(componentDir)) {
-		logger.error('component directory is existed')
-		return
-	}
-	await Promise.all([mkdirs(componentDir), mkdirs(testsDir), mkdirs(exampleDir), mkdirs(docsDir)])
-	await Promise.all([
-		writeFile(resolve(componentDir, `${bigCamelize(name)}.vue`), vueTemplate),
-		writeFile(resolve(componentDir, 'index.ts'), indexTemplate),
-		writeFile(resolve(testsDir, 'index.spec.js'), testsTemplate),
-		writeFile(resolve(exampleDir, 'index.vue'), exampleTemplate),
-		writeFile(resolve(docsDir, 'zh_CN.md'), ''),
-		writeFile(resolve(docsDir, 'en_US.md'), ''),
-	])
+  if (pathExistsSync(componentDir)) {
+    logger.error('component directory is existed')
+    return
+  }
+  await Promise.all([mkdirs(componentDir), mkdirs(testsDir), mkdirs(exampleDir), mkdirs(docsDir)])
+  await Promise.all([
+    writeFile(resolve(componentDir, `${bigCamelize(name)}.vue`), vueTemplate),
+    writeFile(resolve(componentDir, 'index.ts'), indexTemplate),
+    writeFile(resolve(testsDir, 'index.spec.js'), testsTemplate),
+    writeFile(resolve(exampleDir, 'index.vue'), exampleTemplate),
+    writeFile(resolve(docsDir, 'zh_CN.md'), ''),
+    writeFile(resolve(docsDir, 'en_US.md'), ''),
+  ])
 
-	logger.success('create success!')
+  logger.success('create success!')
 }

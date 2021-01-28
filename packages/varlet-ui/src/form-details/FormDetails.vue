@@ -12,8 +12,8 @@ import { defineComponent } from 'vue'
 import { props } from './props'
 
 export default defineComponent({
-	name: 'VarFormDetails',
-	props,
+  name: 'VarFormDetails',
+  props,
 })
 </script>
 

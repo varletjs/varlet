@@ -11,38 +11,38 @@ import { useChildren } from '../utils/components'
 import { FORM_BIND_FORM_ITEM_KEY, FormProvider, Validation } from './provide'
 
 export default defineComponent({
-	name: 'VarForm',
-	props,
-	setup(props) {
-		const { bindChildren: bindFormItem, childProviders: formItemProviders } = useChildren<FormProvider, Validation>(
-			FORM_BIND_FORM_ITEM_KEY
-		)
+  name: 'VarForm',
+  props,
+  setup(props) {
+    const { bindChildren: bindFormItem, childProviders: formItemProviders } = useChildren<FormProvider, Validation>(
+      FORM_BIND_FORM_ITEM_KEY
+    )
 
-		const disabled: ComputedRef<boolean> = computed(() => props.disabled)
-		const readonly: ComputedRef<boolean> = computed(() => props.readonly)
+    const disabled: ComputedRef<boolean> = computed(() => props.disabled)
+    const readonly: ComputedRef<boolean> = computed(() => props.readonly)
 
-		const validate = async () => {
-			const res = await Promise.all(formItemProviders.map(({ validate }) => validate()))
+    const validate = async () => {
+      const res = await Promise.all(formItemProviders.map(({ validate }) => validate()))
 
-			return res.every((r) => r === true)
-		}
+      return res.every((r) => r === true)
+    }
 
-		const reset = () => formItemProviders.forEach(({ reset }) => reset())
+    const reset = () => formItemProviders.forEach(({ reset }) => reset())
 
-		const resetValidation = () => formItemProviders.forEach(({ resetValidation }) => resetValidation())
+    const resetValidation = () => formItemProviders.forEach(({ resetValidation }) => resetValidation())
 
-		const formProvider: FormProvider = {
-			disabled,
-			readonly,
-		}
+    const formProvider: FormProvider = {
+      disabled,
+      readonly,
+    }
 
-		bindFormItem(formProvider)
+    bindFormItem(formProvider)
 
-		return {
-			validate,
-			reset,
-			resetValidation,
-		}
-	},
+    return {
+      validate,
+      reset,
+      resetValidation,
+    }
+  },
 })
 </script>

@@ -7,16 +7,16 @@ import { VARLET_CONFIG } from '../shared/constant'
 import { ensureConfigFile } from '../shared/fsUtils'
 
 export async function build() {
-	setProd()
+  setProd()
 
-	ensureConfigFile(VARLET_CONFIG)
+  ensureConfigFile(VARLET_CONFIG)
 
-	await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
+  await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
 
-	const config = getBuildConfig()
+  const config = getBuildConfig()
 
-	webpack(config, (err, stats: Stats) => {
-		err && logger.error(err.toString())
-		stats?.hasErrors() && logger.error(stats)
-	})
+  webpack(config, (err, stats: Stats) => {
+    err && logger.error(err.toString())
+    stats?.hasErrors() && logger.error(stats)
+  })
 }

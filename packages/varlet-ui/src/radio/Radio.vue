@@ -45,110 +45,110 @@ import Icon from '../icon'
 import FormDetails from '../form-details'
 
 export default defineComponent({
-	name: 'VarRadio',
-	directives: { Ripple },
-	components: {
-		[Icon.name]: Icon,
-		[FormDetails.name]: FormDetails,
-	},
-	inheritAttrs: false,
-	props,
-	setup(props) {
-		const { bindParent: bindRadioGroup, parentProvider: radioGroupProvider } = useParent<
+  name: 'VarRadio',
+  directives: { Ripple },
+  components: {
+    [Icon.name]: Icon,
+    [FormDetails.name]: FormDetails,
+  },
+  inheritAttrs: false,
+  props,
+  setup(props) {
+    const { bindParent: bindRadioGroup, parentProvider: radioGroupProvider } = useParent<
 			RadioGroupProvider,
 			RadioProvider
 		>(RADIO_GROUP_BIND_RADIO_KEY)
-		const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, RadioProvider>(
-			FORM_BIND_FORM_ITEM_KEY
-		)
-		useAtParentIndex(RADIO_GROUP_COUNT_RADIO_KEY)
+    const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, RadioProvider>(
+      FORM_BIND_FORM_ITEM_KEY
+    )
+    useAtParentIndex(RADIO_GROUP_COUNT_RADIO_KEY)
 
-		const value: Ref<any> = ref(false)
-		const checked: ComputedRef<boolean> = computed(() => value.value === props.checkedValue)
+    const value: Ref<any> = ref(false)
+    const checked: ComputedRef<boolean> = computed(() => value.value === props.checkedValue)
 
-		const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
 
-		const validate = () => v(props.rules, props.modelValue)
+    const validate = () => v(props.rules, props.modelValue)
 
-		const validateWithTrigger = (trigger: ValidateTriggers) =>
-			nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
+    const validateWithTrigger = (trigger: ValidateTriggers) =>
+      nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
 
-		const change = (changedValue: any) => {
-			if (radioGroupProvider && value.value === props.checkedValue) {
-				return
-			}
+    const change = (changedValue: any) => {
+      if (radioGroupProvider && value.value === props.checkedValue) {
+        return
+      }
 
-			value.value = changedValue
-			props['onUpdate:modelValue']?.(value.value)
-			props.onChange?.(value.value)
+      value.value = changedValue
+      props['onUpdate:modelValue']?.(value.value)
+      props.onChange?.(value.value)
 
-			validateWithTrigger('onChange')
+      validateWithTrigger('onChange')
 
-			radioGroupProvider?.onToggle(props.checkedValue)
-		}
+      radioGroupProvider?.onToggle(props.checkedValue)
+    }
 
-		const toggle = (changedValue?: any) => {
-			const isInvalidValue = changedValue !== props.uncheckedValue && changedValue !== props.checkedValue
-			if (changedValue != null && (isInvalidValue || changedValue === value.value)) {
-				return
-			}
+    const toggle = (changedValue?: any) => {
+      const isInvalidValue = changedValue !== props.uncheckedValue && changedValue !== props.checkedValue
+      if (changedValue != null && (isInvalidValue || changedValue === value.value)) {
+        return
+      }
 
-			if (changedValue == null) {
-				changedValue = checked.value ? props.uncheckedValue : props.checkedValue
-			}
+      if (changedValue == null) {
+        changedValue = checked.value ? props.uncheckedValue : props.checkedValue
+      }
 
-			change(changedValue)
-		}
+      change(changedValue)
+    }
 
-		const handleClick = (e: Event) => {
-			if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
-				return
-			}
+    const handleClick = (e: Event) => {
+      if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
+        return
+      }
 
-			props.onClick?.(e)
+      props.onClick?.(e)
 
-			change(checked.value ? props.uncheckedValue : props.checkedValue)
-		}
+      change(checked.value ? props.uncheckedValue : props.checkedValue)
+    }
 
-		const sync = (v: any) => {
-			value.value = v === props.checkedValue ? props.checkedValue : props.uncheckedValue
-		}
+    const sync = (v: any) => {
+      value.value = v === props.checkedValue ? props.checkedValue : props.uncheckedValue
+    }
 
-		const reset = () => {
-			props['onUpdate:modelValue']?.(props.uncheckedValue)
-			resetValidation()
-		}
+    const reset = () => {
+      props['onUpdate:modelValue']?.(props.uncheckedValue)
+      resetValidation()
+    }
 
-		watch(
-			() => props.modelValue,
-			(newValue) => {
-				value.value = newValue
-			},
-			{ immediate: true }
-		)
+    watch(
+      () => props.modelValue,
+      (newValue) => {
+        value.value = newValue
+      },
+      { immediate: true }
+    )
 
-		const radioProvider: RadioProvider = {
-			sync,
-			validate,
-			resetValidation,
-			reset,
-		}
+    const radioProvider: RadioProvider = {
+      sync,
+      validate,
+      resetValidation,
+      reset,
+    }
 
-		bindRadioGroup?.(radioProvider)
-		bindForm?.(radioProvider)
+    bindRadioGroup?.(radioProvider)
+    bindForm?.(radioProvider)
 
-		return {
-			checked,
-			errorMessage,
-			radioGroupErrorMessage: radioGroupProvider?.errorMessage,
-			formDisabled: formProvider?.disabled,
-			handleClick,
-			toggle,
-			reset,
-			validate,
-			resetValidation,
-		}
-	},
+    return {
+      checked,
+      errorMessage,
+      radioGroupErrorMessage: radioGroupProvider?.errorMessage,
+      formDisabled: formProvider?.disabled,
+      handleClick,
+      toggle,
+      reset,
+      validate,
+      resetValidation,
+    }
+  },
 })
 </script>
 

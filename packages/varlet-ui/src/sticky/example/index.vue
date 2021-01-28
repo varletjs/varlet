@@ -23,19 +23,19 @@ import Sticky from '..'
 import Button from '../../button'
 
 export default defineComponent({
-	name: 'StickyExample',
-	components: {
-		[Sticky.name]: Sticky,
-		[Button.name]: Button,
-	},
-	setup() {
-		return {
-			handleScroll(top: number, isFixed: boolean) {
-				console.log(top)
-				console.log(isFixed)
-			},
-		}
-	},
+  name: 'StickyExample',
+  components: {
+    [Sticky.name]: Sticky,
+    [Button.name]: Button,
+  },
+  setup() {
+    return {
+      handleScroll(top: number, isFixed: boolean) {
+        console.log(top)
+        console.log(isFixed)
+      },
+    }
+  },
 })
 </script>
 

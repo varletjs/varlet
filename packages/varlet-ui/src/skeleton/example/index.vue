@@ -21,15 +21,15 @@ import { defineComponent, ref, Ref } from 'vue'
 import Skeleton from '..'
 
 export default defineComponent({
-	name: 'SkeletonExample',
-	components: {
-		[Skeleton.name]: Skeleton,
-	},
-	setup() {
-		const loading: Ref<boolean> = ref(true)
+  name: 'SkeletonExample',
+  components: {
+    [Skeleton.name]: Skeleton,
+  },
+  setup() {
+    const loading: Ref<boolean> = ref(true)
 
-		return { loading }
-	},
+    return { loading }
+  },
 })
 </script>
 

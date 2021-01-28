@@ -1,64 +1,64 @@
 <template>
-	<button
-		v-ripple="{ disabled }"
-		class="var--box var-button"
-		:class="[
-			`var-button--${size}`,
-			block ? 'var--flex' : 'var--inline-flex',
-			disabled ? 'var-button--disabled' : null,
-			plain ? `var-button--plain-${type}` : `var-button--${type}`,
-			plain ? 'var-button--plain' : 'var-elevation--2',
-			round ? 'var-button--round' : null,
-			outline ? 'var-button--outline' : null,
-		]"
-		:style="{
-			color: textColor,
-			background: color,
-		}"
-		:disabled="disabled"
-		@click="handleClick"
-		@touchstart="handleTouchstart"
-	>
-		<var-loading :type="loadingType" :size="loadingSize" v-if="loading" />
-		<slot v-else />
-	</button>
+  <button
+    v-ripple="{ disabled }"
+    class="var--box var-button"
+    :class="[
+      `var-button--${size}`,
+      block ? 'var--flex' : 'var--inline-flex',
+      disabled ? 'var-button--disabled' : null,
+      plain ? `var-button--plain-${type}` : `var-button--${type}`,
+      plain ? 'var-button--plain' : 'var-elevation--2',
+      round ? 'var-button--round' : null,
+      outline ? 'var-button--outline' : null,
+    ]"
+    :style="{
+      color: textColor,
+      background: color,
+    }"
+    :disabled="disabled"
+    @click="handleClick"
+    @touchstart="handleTouchstart"
+  >
+    <var-loading :type="loadingType" :size="loadingSize" v-if="loading" />
+    <slot v-else />
+  </button>
 </template>
 
 <script lang="ts">
 import Ripple from '../ripple'
-import Loading from '../Loading'
+import Loading from '../loading'
 import { defineComponent } from 'vue'
 import { props } from './props'
 
 export default defineComponent({
-	name: 'VarButton',
-	components: {
-		[Loading.name]: Loading,
-	},
-	directives: { Ripple },
-	props,
-	setup(props) {
-		const handleClick = (e: Event) => {
-			if (props.loading || props.disabled) {
-				return
-			}
+  name: 'VarButton',
+  components: {
+    [Loading.name]: Loading,
+  },
+  directives: { Ripple },
+  props,
+  setup(props) {
+    const handleClick = (e: Event) => {
+      if (props.loading || props.disabled) {
+        return
+      }
 
-			props.onClick?.(e)
-		}
+      props.onClick?.(e)
+    }
 
-		const handleTouchstart = (e: Event) => {
-			if (props.loading || props.disabled) {
-				return
-			}
+    const handleTouchstart = (e: Event) => {
+      if (props.loading || props.disabled) {
+        return
+      }
 
-			props.onTouchstart?.(e)
-		}
+      props.onTouchstart?.(e)
+    }
 
-		return {
-			handleClick,
-			handleTouchstart,
-		}
-	},
+    return {
+      handleClick,
+      handleTouchstart,
+    }
+  },
 })
 </script>
 

@@ -7,10 +7,10 @@ import { defineComponent } from 'vue'
 import FormDetails from '..'
 
 export default defineComponent({
-	name: 'FormDetailsExample',
-	components: {
-		[FormDetails.name]: FormDetails,
-	},
+  name: 'FormDetailsExample',
+  components: {
+    [FormDetails.name]: FormDetails,
+  },
 })
 </script>
 

@@ -15,31 +15,31 @@ import IndexAnchor from '../../index-anchor/IndexAnchor.vue'
 import IndexBar from '..'
 
 export default defineComponent({
-	name: 'IndexBarExample',
-	components: {
-		[IndexBar.name]: IndexBar,
-		[IndexAnchor.name]: IndexAnchor,
-	},
-	setup() {
-		const active = ref('A')
-		const list = ref([])
+  name: 'IndexBarExample',
+  components: {
+    [IndexBar.name]: IndexBar,
+    [IndexAnchor.name]: IndexAnchor,
+  },
+  setup() {
+    const active = ref('A')
+    const list = ref([])
 
-		onBeforeMount(() => {
-			for (let i = 0; i < 26; i++) {
-				list.value.push(String.fromCharCode(65 + i))
-			}
-		})
+    onBeforeMount(() => {
+      for (let i = 0; i < 26; i++) {
+        list.value.push(String.fromCharCode(65 + i))
+      }
+    })
 
-		const change = (value) => {
-			console.log(value)
-		}
+    const change = (value) => {
+      console.log(value)
+    }
 
-		return {
-			active,
-			list,
-			change,
-		}
-	},
+    return {
+      active,
+      list,
+      change,
+    }
+  },
 })
 </script>
 

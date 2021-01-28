@@ -30,76 +30,76 @@ import { getLeft, getTop } from '../utils/elements'
 import { useZIndex } from '../context/zIndex'
 
 export default defineComponent({
-	name: 'VarMenu',
-	inheritAttrs: false,
-	props,
-	setup(props) {
-		const { zIndex } = useZIndex(props, 'show', 1)
+  name: 'VarMenu',
+  inheritAttrs: false,
+  props,
+  setup(props) {
+    const { zIndex } = useZIndex(props, 'show', 1)
 
-		const host: Ref<null | HTMLElement> = ref(null)
-		const menu: Ref<null | HTMLElement> = ref(null)
+    const host: Ref<null | HTMLElement> = ref(null)
+    const menu: Ref<null | HTMLElement> = ref(null)
 
-		const top: Ref<number> = ref(0)
-		const left: Ref<number> = ref(0)
-		const computeTop = (alignment: string): number => {
-			return alignment === 'top'
-				? getTop(host.value as HTMLElement)
-				: getTop(host.value as HTMLElement) - (menu.value as HTMLElement).offsetHeight
-		}
+    const top: Ref<number> = ref(0)
+    const left: Ref<number> = ref(0)
+    const computeTop = (alignment: string): number => {
+      return alignment === 'top'
+        ? getTop(host.value as HTMLElement)
+        : getTop(host.value as HTMLElement) - (menu.value as HTMLElement).offsetHeight
+    }
 
-		const clickSelf: Ref<boolean> = ref(false)
+    const clickSelf: Ref<boolean> = ref(false)
 
-		const handleClick = () => {
-			clickSelf.value = true
-		}
+    const handleClick = () => {
+      clickSelf.value = true
+    }
 
-		// positions effect
-		watch(
-			() => props.alignment,
-			(newValue: string) => {
-				props.show === true && (top.value = computeTop(newValue))
-			}
-		)
-		watch(
-			() => props.show,
-			async (newValue: boolean) => {
-				await nextTick()
+    // positions effect
+    watch(
+      () => props.alignment,
+      (newValue: string) => {
+        props.show === true && (top.value = computeTop(newValue))
+      }
+    )
+    watch(
+      () => props.show,
+      async (newValue: boolean) => {
+        await nextTick()
 
-				top.value = newValue === true ? computeTop(props.alignment) : top.value
-			},
-			{ immediate: true }
-		)
+        top.value = newValue === true ? computeTop(props.alignment) : top.value
+      },
+      { immediate: true }
+    )
 
-		// menu hidden
-		const handleMenuBlur = () => {
-			if (clickSelf.value) {
-				clickSelf.value = false
-				return
-			}
+    // menu hidden
+    const handleMenuBlur = () => {
+      if (clickSelf.value) {
+        clickSelf.value = false
+        return
+      }
 
-			props['onUpdate:show']?.(false)
-			props.onBlur?.()
-		}
+      props['onUpdate:show']?.(false)
+      props.onBlur?.()
+    }
 
-		onMounted(() => {
-			top.value = computeTop(props.alignment)
-			left.value = getLeft(host.value as HTMLElement)
+    onMounted(() => {
+      top.value = computeTop(props.alignment)
+      left.value = getLeft(host.value as HTMLElement)
 
-			document.addEventListener('click', handleMenuBlur)
-		})
-		onUnmounted(() => {
-			document.removeEventListener('click', handleMenuBlur)
-		})
+      document.addEventListener('click', handleMenuBlur)
+    })
+    onUnmounted(() => {
+      document.removeEventListener('click', handleMenuBlur)
+    })
 
-		return {
-			zIndex,
-			host,
-			menu,
-			top,
-			left,
-			handleClick,
-		}
-	},
+    return {
+      zIndex,
+      host,
+      menu,
+      top,
+      left,
+      handleClick,
+    }
+  },
 })
 </script>
 

@@ -62,8 +62,8 @@ import { defineComponent } from 'vue'
 import { props } from './props'
 
 export default defineComponent({
-	name: 'VarLoading',
-	props,
+  name: 'VarLoading',
+  props,
 })
 </script>
 

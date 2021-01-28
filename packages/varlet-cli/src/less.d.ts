@@ -1,6 +1,6 @@
 declare module 'less' {
-	declare const render: any
-	declare const FileManager: any
+  declare const render: any
+  declare const FileManager: any
 
-	export { render, FileManager }
+  export { render, FileManager }
 }

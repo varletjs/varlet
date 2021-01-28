@@ -26,34 +26,34 @@ interface DialogOptions {
 type DialogResolvedState = 'confirm' | 'cancel' | 'close'
 
 function Dialog(options: DialogOptions | string): Promise<DialogResolvedState> {
-	return new Promise((resolve) => {
-		const dialogOptions: DialogOptions = isString(options) ? { message: options } : options
-		const reactiveDialogOptions: DialogOptions = reactive(dialogOptions)
+  return new Promise((resolve) => {
+    const dialogOptions: DialogOptions = isString(options) ? { message: options } : options
+    const reactiveDialogOptions: DialogOptions = reactive(dialogOptions)
 
-		const { unmountInstance } = mountInstance(VarDialog, reactiveDialogOptions, {
-			onConfirm: () => {
-				resolve('confirm')
-			},
-			onCancel: () => {
-				resolve('cancel')
-			},
-			onClose: () => {
-				resolve('close')
-			},
-			onClosed: () => {
-				unmountInstance()
-			},
-			'onUpdate:show': (value: boolean) => {
-				reactiveDialogOptions.show = value
-			},
-		})
+    const { unmountInstance } = mountInstance(VarDialog, reactiveDialogOptions, {
+      onConfirm: () => {
+        resolve('confirm')
+      },
+      onCancel: () => {
+        resolve('cancel')
+      },
+      onClose: () => {
+        resolve('close')
+      },
+      onClosed: () => {
+        unmountInstance()
+      },
+      'onUpdate:show': (value: boolean) => {
+        reactiveDialogOptions.show = value
+      },
+    })
 
-		reactiveDialogOptions.show = true
-	})
+    reactiveDialogOptions.show = true
+  })
 }
 
 Dialog.install = function (app: App) {
-	app.component(VarDialog.name, VarDialog)
+  app.component(VarDialog.name, VarDialog)
 }
 
 Dialog.Component = VarDialog
