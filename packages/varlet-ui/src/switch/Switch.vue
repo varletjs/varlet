@@ -1,34 +1,34 @@
 <template>
-	<div class="var-switch">
-		<div
-			class="var-switch-block"
-			:class="[disabled || formDisabled ? 'var-switch__disable' : null]"
-			@click="switchActive"
-			:style="styleComputed.switch"
-		>
-			<div
-				:style="styleComputed.track"
-				class="var-switch__track"
-				:class="[modelValue ? 'var-switch__track-active' : null, errorMessage ? 'var-switch__track-error' : null]"
-			></div>
-			<div
-				class="var-switch__ripple"
-				:style="styleComputed.ripple"
-				v-ripple="{
-					disabled: !ripple || disabled || loading || formDisabled,
-				}"
-			>
-				<div
-					:style="styleComputed.handle"
-					class="var-switch__handle var-elevation--2"
-					:class="[modelValue ? 'var-switch__handle-active' : null, errorMessage ? 'var-switch__handle-error' : null]"
-				>
-					<var-loading v-if="loading" :radius="size / 2 - 2" />
-				</div>
-			</div>
-		</div>
-		<var-form-details :error-message="errorMessage" />
-	</div>
+  <div class="var-switch">
+    <div
+      class="var-switch-block"
+      :class="[disabled || formDisabled ? 'var-switch__disable' : null]"
+      @click="switchActive"
+      :style="styleComputed.switch"
+    >
+      <div
+        :style="styleComputed.track"
+        class="var-switch__track"
+        :class="[modelValue ? 'var-switch__track-active' : null, errorMessage ? 'var-switch__track-error' : null]"
+      ></div>
+      <div
+        class="var-switch__ripple"
+        :style="styleComputed.ripple"
+        v-ripple="{
+          disabled: !ripple || disabled || loading || formDisabled,
+        }"
+      >
+        <div
+          :style="styleComputed.handle"
+          class="var-switch__handle var-elevation--2"
+          :class="[modelValue ? 'var-switch__handle-active' : null, errorMessage ? 'var-switch__handle-error' : null]"
+        >
+          <var-loading v-if="loading" :radius="size / 2 - 2" />
+        </div>
+      </div>
+    </div>
+    <var-form-details :error-message="errorMessage" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -38,16 +38,16 @@ import { FORM_BIND_FORM_ITEM_KEY, FormProvider } from '../form/provide'
 import { SwitchProvider } from './provide'
 import { props } from './props'
 import FormDetails from '../form-details'
-import Loading from '../Loading'
+import Loading from '../loading'
 import Ripple from '../ripple'
 
 type StyleProps = {
-	width: string
-	height: string
-	left: string
-	borderRadius: string
-	backgroundColor: string
-	color: string
+  width: string
+  height: string
+  left: string
+  borderRadius: string
+  backgroundColor: string
+  color: string
 }
 
 export default defineComponent({
@@ -103,10 +103,10 @@ export default defineComponent({
       props.onClick?.()
       if (
         props.disabled ||
-				props.loading ||
-				props.readonly ||
-				formProvider?.disabled.value ||
-				formProvider?.readonly.value
+        props.loading ||
+        props.readonly ||
+        formProvider?.disabled.value ||
+        formProvider?.readonly.value
       )
         return
       props.onChange?.(!props.modelValue)
