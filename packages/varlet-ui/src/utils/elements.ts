@@ -86,3 +86,9 @@ export function remToPx(rem: string | number): number {
 export function requestAnimationFrame(fn: FrameRequestCallback): number {
 	return window.requestAnimationFrame ? window.requestAnimationFrame(fn) : window.setTimeout(fn, 16)
 }
+
+export function nextTickFrame(fn: FrameRequestCallback) {
+	requestAnimationFrame(() => {
+		requestAnimationFrame(fn)
+	})
+}
