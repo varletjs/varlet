@@ -298,23 +298,16 @@ export default defineComponent({
       props.onChange?.(index.value)
     }
 
-    watch(
-      () => length.value,
-      () => {
-        initialIndex()
-        startAutoplay()
-        trackSize.value = size.value * length.value
-      }
-    )
+    const resize = () => {
+      size.value = props.vertical
+        ? (swipeEl.value as HTMLElement).offsetHeight
+        : (swipeEl.value as HTMLElement).offsetWidth
+      trackSize.value = size.value * length.value
+      initialIndex()
+      startAutoplay()
+    }
 
-    watch(
-      () => swipeEl.value,
-      () => {
-        size.value = props.vertical
-          ? (swipeEl.value as HTMLElement).offsetHeight
-          : (swipeEl.value as HTMLElement).offsetWidth
-      }
-    )
+    watch(() => length.value, resize)
 
     onUnmounted(stopAutoplay)
 
@@ -338,6 +331,7 @@ export default defineComponent({
       next,
       prev,
       to,
+      resize,
     }
   },
 })

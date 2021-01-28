@@ -34,6 +34,7 @@ export default defineComponent({
   setup() {
     return {
       swipe: ref(null),
+      s: ref(false),
       log(index: number) {
         console.log(index)
       },
