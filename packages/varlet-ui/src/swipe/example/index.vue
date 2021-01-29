@@ -1,13 +1,13 @@
 <template>
   <app-type>横着的</app-type>
-  <var-swipe class="swipe" ref="swipe" :initial-index="2" @change="log" :autoplay="2000">
+  <var-swipe class="swipe" ref="swipe" :initial-index="2" :autoplay="2000">
     <var-swipe-item style="background: red">0</var-swipe-item>
     <var-swipe-item style="background: yellow">1</var-swipe-item>
     <var-swipe-item style="background: grey">2</var-swipe-item>
   </var-swipe>
 
   <app-type>竖着的</app-type>
-  <var-swipe class="swipe" ref="swipe" vertical indicator-color="rgb(33,150,243)">
+  <var-swipe class="swipe" ref="swipe" vertical indicator-color="rgb(33,150,243)" @change="log">
     <var-swipe-item style="background: red">0</var-swipe-item>
     <var-swipe-item style="background: yellow">1</var-swipe-item>
     <var-swipe-item style="background: grey">2</var-swipe-item>

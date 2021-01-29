@@ -66,7 +66,6 @@ export default defineComponent({
     const translate: Ref<number> = ref(0)
     const lockDuration: Ref<boolean> = ref(false)
     const index: Ref<number> = ref(0)
-    let initial = false
     let touching = false
     let timer = -1
     let startX: number
@@ -125,10 +124,10 @@ export default defineComponent({
 
     const boundaryIndex = (index: number) => {
       if (index < 0) {
-        return 0
+        return props.loop ? length.value - 1 : 0
       }
       if (index > length.value - 1) {
-        return length.value - 1
+        return props.loop ? 0 : length.value - 1
       }
 
       return index
@@ -156,31 +155,29 @@ export default defineComponent({
     }
 
     const initialIndex = () => {
-      if (!initial) {
-        lockDuration.value = true
-        index.value = boundaryIndex(props.initialIndex)
-        translate.value = index.value * -size.value
-        initial = true
-        nextTickFrame(() => {
-          lockDuration.value = false
-        })
-      }
+      lockDuration.value = true
+      index.value = boundaryIndex(props.initialIndex)
+      translate.value = index.value * -size.value
+      nextTickFrame(() => {
+        lockDuration.value = false
+      })
     }
 
     const next = () => {
       if (length.value <= 1) {
         return
       }
+      const currentIndex = index.value
+      index.value = boundaryIndex(currentIndex + 1)
 
       resetPosition(() => {
-        if (index.value === length.value - 1) {
-          if (props.loop) {
-            index.value = 0
-            findSwipeItemProvider(0).setTranslate(trackSize.value)
-            translate.value = length.value * -size.value
-          }
-        } else {
-          index.value++
+        if (currentIndex === length.value - 1 && props.loop) {
+          findSwipeItemProvider(0).setTranslate(trackSize.value)
+          translate.value = length.value * -size.value
+          return
+        }
+
+        if (currentIndex !== length.value - 1) {
           translate.value = index.value * -size.value
         }
 
@@ -193,15 +190,17 @@ export default defineComponent({
         return
       }
 
+      const currentIndex = index.value
+      index.value = boundaryIndex(currentIndex - 1)
+
       resetPosition(() => {
-        if (index.value === 0) {
-          if (props.loop) {
-            index.value = length.value - 1
-            findSwipeItemProvider(length.value - 1).setTranslate(-trackSize.value)
-            translate.value = size.value
-          }
-        } else {
-          index.value--
+        if (currentIndex === 0 && props.loop) {
+          findSwipeItemProvider(length.value - 1).setTranslate(-trackSize.value)
+          translate.value = size.value
+          return
+        }
+
+        if (currentIndex !== 0) {
           translate.value = index.value * -size.value
         }
 

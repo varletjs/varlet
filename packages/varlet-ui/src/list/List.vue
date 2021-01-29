@@ -1,11 +1,11 @@
 <template>
   <div class="var-list var--box" ref="listEl">
-    <slot/>
+    <slot />
 
     <slot name="loading" v-if="loading">
       <div class="var-list__loading">
         <div class="var-list__loading-text">{{ loadingText }}</div>
-        <var-loading type="cube"/>
+        <var-loading size="mini" :radius="10" />
       </div>
     </slot>
 
@@ -14,11 +14,7 @@
     </slot>
 
     <slot name="error" v-if="error">
-      <div
-        class="var-list__error"
-        v-ripple
-        @click="load"
-      >
+      <div class="var-list__error" v-ripple @click="load">
         {{ errorText }}
       </div>
     </slot>
@@ -39,7 +35,7 @@ export default defineComponent({
   name: 'VarList',
   directives: { Ripple },
   components: {
-    [Loading.name]: Loading
+    [Loading.name]: Loading,
   },
   props,
   setup(props) {
@@ -54,9 +50,8 @@ export default defineComponent({
     }
 
     const isReachBottom = () => {
-      const containerBottom = scroller === window
-        ? window.innerHeight
-        : (scroller as HTMLElement).getBoundingClientRect().bottom
+      const containerBottom =
+        scroller === window ? window.innerHeight : (scroller as HTMLElement).getBoundingClientRect().bottom
 
       const { bottom: detectorBottom } = (detectorEl.value as HTMLElement).getBoundingClientRect()
 
@@ -64,12 +59,7 @@ export default defineComponent({
     }
 
     const check = () => {
-      if (
-        !props.loading &&
-        !props.finished &&
-        !props.error &&
-        isReachBottom()
-      ) {
+      if (!props.loading && !props.finished && !props.error && isReachBottom()) {
         load()
       }
     }
@@ -91,12 +81,12 @@ export default defineComponent({
       detectorEl,
       isNumber,
       load,
-      check
+      check,
     }
-  }
+  },
 })
 </script>
 
 <style lang="less">
-@import "./list";
+@import './list';
 </style>

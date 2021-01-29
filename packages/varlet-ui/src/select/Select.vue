@@ -1,110 +1,113 @@
 <template>
-	<div
-		class="var-select var--box"
-		:class="[formDisabled || disabled ? 'var-select--disabled' : null]"
-		@click="handleClick"
-		v-bind="$attrs"
-	>
-		<div
-			class="var-select__controller"
-			:class="[
-				isFocus ? 'var-select--focus' : null,
-				errorMessage ? 'var-select--error' : null,
-				formDisabled || disabled ? 'var-select--disabled' : null,
-			]"
-			:style="{
-				color: isFocus ? activeColor : inactiveColor,
-			}"
-		>
-			<slot name="prepend-icon">
-				<div class="var-select__icon" @click="handleClickPrependIcon">
-					<var-icon :name="prependIcon" v-if="prependIcon" />
-				</div>
-			</slot>
+  <div
+    class="var-select var--box"
+    :class="[formDisabled || disabled ? 'var-select--disabled' : null]"
+    @click="handleClick"
+    v-bind="$attrs"
+  >
+    <div
+      class="var-select__controller"
+      :class="[
+        isFocus ? 'var-select--focus' : null,
+        errorMessage ? 'var-select--error' : null,
+        formDisabled || disabled ? 'var-select--disabled' : null,
+      ]"
+      :style="{
+        color: isFocus ? activeColor : inactiveColor,
+      }"
+    >
+      <slot name="prepend-icon">
+        <div class="var-select__icon" @click="handleClickPrependIcon">
+          <var-icon :name="prependIcon" v-if="prependIcon" />
+        </div>
+      </slot>
 
-			<var-menu class="var-select__menu" offset-y="24px" v-model:show="isFocus" @blur="handleBlur">
-				<div class="var-select__wrap" ref="wrapEl" @click="handleFocus">
-					<div
-						class="var-select__select"
-						:class="[formDisabled || disabled ? 'var-select--disabled' : null]"
-						:style="{
-							textAlign,
-							color: textColor,
-						}"
-						@click="handleClick"
-					>
-						<div v-if="multiple">
-							<div class="var-select__chips" v-if="chip">
-								<var-chip
-									class="var-select__chip"
-									closable
-									v-for="m in modelValue"
-									:key="m"
-									@click.stop
-									@close="() => handleClose(m)"
-								>
-									{{ findLabel(m) }}
-								</var-chip>
-							</div>
-							<div class="var-select__values" v-else>
-								{{ modelValue.map((m) => findLabel(m)).join(separator) }}
-							</div>
-						</div>
+      <var-menu class="var-select__menu" offset-y="24px" v-model:show="isFocus" @blur="handleBlur">
+        <div class="var-select__wrap" ref="wrapEl" @click="handleFocus">
+          <div
+            class="var-select__select"
+            :class="[
+              errorMessage ? 'var-select--error' : null,
+              formDisabled || disabled ? 'var-select--disabled' : null,
+            ]"
+            :style="{
+              textAlign,
+              color: textColor,
+            }"
+            @click="handleClick"
+          >
+            <div v-if="multiple">
+              <div class="var-select__chips" v-if="chip">
+                <var-chip
+                  class="var-select__chip"
+                  closable
+                  v-for="m in modelValue"
+                  :key="m"
+                  @click.stop
+                  @close="() => handleClose(m)"
+                >
+                  {{ findLabel(m) }}
+                </var-chip>
+              </div>
+              <div class="var-select__values" v-else>
+                {{ modelValue.map((m) => findLabel(m)).join(separator) }}
+              </div>
+            </div>
 
-						<span v-else>{{ findLabel(modelValue) }}</span>
+            <span v-else>{{ findLabel(modelValue) }}</span>
 
-						<var-icon
-							class="var-select__arrow"
-							name="menu-down"
-							:transition="300"
-							:class="[isFocus ? 'var-select--arrow-rotate' : null]"
-						/>
-					</div>
-					<label class="var-select__placeholder" :class="[computePlaceholderState()]">
-						{{ placeholder }}
-					</label>
-					<div
-						class="var-select__line"
-						:class="[
-							formDisabled || disabled ? 'var-select--line-disabled' : null,
-							errorMessage ? 'var-select--line-error' : null,
-						]"
-						:style="{ background: inactiveColor }"
-						v-if="line"
-					>
-						<div
-							class="var-select__dot"
-							:class="[
-								isFocus ? 'var-select--spread' : null,
-								formDisabled || disabled ? 'var-select--line-disabled' : null,
-								errorMessage ? 'var-select--line-error' : null,
-							]"
-							:style="{ background: activeColor }"
-						></div>
-					</div>
+            <var-icon
+              class="var-select__arrow"
+              name="menu-down"
+              :transition="300"
+              :class="[isFocus ? 'var-select--arrow-rotate' : null]"
+            />
+          </div>
+          <label class="var-select__placeholder" :class="[computePlaceholderState()]">
+            {{ placeholder }}
+          </label>
+          <div
+            class="var-select__line"
+            :class="[
+              formDisabled || disabled ? 'var-select--line-disabled' : null,
+              errorMessage ? 'var-select--line-error' : null,
+            ]"
+            :style="{ background: inactiveColor }"
+            v-if="line"
+          >
+            <div
+              class="var-select__dot"
+              :class="[
+                isFocus ? 'var-select--spread' : null,
+                formDisabled || disabled ? 'var-select--line-disabled' : null,
+                errorMessage ? 'var-select--line-error' : null,
+              ]"
+              :style="{ background: activeColor }"
+            ></div>
+          </div>
 
-					<var-form-details :error-message="errorMessage" />
-				</div>
+          <var-form-details :error-message="errorMessage" />
+        </div>
 
-				<template #menu>
-					<div class="var-select__scroller">
-						<slot />
-					</div>
-				</template>
-			</var-menu>
+        <template #menu>
+          <div class="var-select__scroller">
+            <slot />
+          </div>
+        </template>
+      </var-menu>
 
-			<slot name="append-icon">
-				<div class="var-select__icon" @click="handleClickAppendIcon">
-					<var-icon
-						:name="appendIcon || 'close-circle'"
-						:size="clearable ? '14px' : null"
-						v-if="appendIcon || clearable"
-						@click="handleClear"
-					/>
-				</div>
-			</slot>
-		</div>
-	</div>
+      <slot name="append-icon">
+        <div class="var-select__icon" @click="handleClickAppendIcon">
+          <var-icon
+            :name="appendIcon || 'close-circle'"
+            :size="clearable ? '14px' : null"
+            v-if="appendIcon || clearable"
+            @click="handleClear"
+          />
+        </div>
+      </slot>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -222,10 +225,10 @@ export default defineComponent({
     const handleClear = () => {
       if (
         formProvider?.disabled.value ||
-				formProvider?.readonly.value ||
-				props.disabled ||
-				props.readonly ||
-				!props.clearable
+        formProvider?.readonly.value ||
+        props.disabled ||
+        props.readonly ||
+        !props.clearable
       ) {
         return
       }

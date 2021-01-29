@@ -1,41 +1,41 @@
 export const props = {
   loading: {
     type: Boolean,
-    default: false
+    default: false,
   },
   immediateCheck: {
     type: Boolean,
-    default: true
+    default: true,
   },
   finished: {
     type: Boolean,
-    default: false
+    default: false,
   },
   error: {
     type: Boolean,
-    default: false
+    default: false,
   },
   offset: {
     type: Number,
-    default: 0
+    default: 0,
   },
   loadingText: {
     type: String,
-    default: '加载中'
+    default: '正在加载',
   },
   finishedText: {
-    type: String
+    type: String,
   },
   errorText: {
-    type: String
+    type: String,
   },
   onLoad: {
-    type: Function
+    type: Function,
   },
   'onUpdate:loading': {
-    type: Function
+    type: Function,
   },
   'onUpdate:error': {
-    type: Function
-  }
+    type: Function,
+  },
 }

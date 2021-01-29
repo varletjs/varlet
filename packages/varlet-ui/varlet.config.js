@@ -174,6 +174,27 @@ module.exports = {
       },
       {
         text: {
+          zh_CN: 'Select 选择框',
+          en_US: 'Select',
+        },
+        doc: 'select',
+      },
+      {
+        text: {
+          zh_CN: 'Radio 单选框',
+          en_US: 'Radio',
+        },
+        doc: 'radio',
+      },
+      {
+        text: {
+          zh_CN: 'Checkbox 复选框',
+          en_US: 'Checkbox',
+        },
+        doc: 'checkbox',
+      },
+      {
+        text: {
           zh_CN: 'IndexBar 索引栏',
           en_US: 'IndexBar',
         },
@@ -192,6 +213,13 @@ module.exports = {
           en_US: 'slider',
         },
         doc: 'slider',
+      },
+      {
+        text: {
+          zh_CN: 'Swipe 轮播',
+          en_US: 'Swipe',
+        },
+        doc: 'swipe',
       },
     ],
     language: 'zh_CN',
