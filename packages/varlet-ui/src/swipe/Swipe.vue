@@ -169,6 +169,7 @@ export default defineComponent({
       }
       const currentIndex = index.value
       index.value = boundaryIndex(currentIndex + 1)
+      props.onChange?.(index.value)
 
       resetPosition(() => {
         if (currentIndex === length.value - 1 && props.loop) {
@@ -180,8 +181,6 @@ export default defineComponent({
         if (currentIndex !== length.value - 1) {
           translate.value = index.value * -size.value
         }
-
-        props.onChange?.(index.value)
       })
     }
 
@@ -192,6 +191,7 @@ export default defineComponent({
 
       const currentIndex = index.value
       index.value = boundaryIndex(currentIndex - 1)
+      props.onChange?.(index.value)
 
       resetPosition(() => {
         if (currentIndex === 0 && props.loop) {
@@ -203,8 +203,6 @@ export default defineComponent({
         if (currentIndex !== 0) {
           translate.value = index.value * -size.value
         }
-
-        props.onChange?.(index.value)
       })
     }
 

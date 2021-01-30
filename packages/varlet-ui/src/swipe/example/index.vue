@@ -1,6 +1,6 @@
 <template>
   <app-type>横着的</app-type>
-  <var-swipe class="swipe" ref="swipe" :initial-index="2" :autoplay="2000">
+  <var-swipe class="swipe" ref="swipe" :initial-index="2" :autoplay="2000" :loop="false">
     <var-swipe-item style="background: red">0</var-swipe-item>
     <var-swipe-item style="background: yellow">1</var-swipe-item>
     <var-swipe-item style="background: grey">2</var-swipe-item>

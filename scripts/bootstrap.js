@@ -5,14 +5,14 @@ const CWD = process.cwd()
 const PKG_CLI = path.resolve(CWD, './packages/varlet-cli')
 const PKG_ICONS = path.resolve(CWD, './packages/varlet-icons')
 
-execa('yarn run build', {
-	cwd: PKG_CLI,
+execa('yarn', ['build'], {
+  cwd: PKG_CLI,
 }).then(() => {
-	console.log('@varlet/cli build success!')
+  console.log('@varlet/cli build success!')
 })
 
-execa('yarn run build', {
-	cwd: PKG_ICONS,
+execa('yarn', ['build'], {
+  cwd: PKG_ICONS,
 }).then(() => {
-	console.log('@varlet/icons build success!')
+  console.log('@varlet/icons build success!')
 })
