@@ -1,0 +1,38 @@
+@picker-background: #fff;
+@picker-picked-border: 1px solid #ddd;
+
+.var-picker {
+  width: 100%;
+  background: @picker-background;
+
+  &__columns {
+    position: relative;
+    display: flex;
+    width: 100%;
+  }
+
+  &__column {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+
+  &__scroller {
+    width: 100%;
+  }
+
+  &__option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__picked {
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    left: 0;
+    border-top: @picker-picked-border;
+    border-bottom: @picker-picked-border;
+  }
+}
