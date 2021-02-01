@@ -42,15 +42,14 @@ import { NormalColumn, props } from './props'
 
 interface ScrollColumn {
   touching: boolean
-  prevY: number | undefined
-  momentumPrevY: number | undefined
-  translate: number
   index: number
   scrollIndex: number
   fromIndex: number
-  duration: number
+  prevY: number | undefined
+  momentumPrevY: number | undefined
   momentumTime: number
-  doMomentum: boolean
+  translate: number
+  duration: number
   column: NormalColumn
 }
 
@@ -110,7 +109,6 @@ export default defineComponent({
     }
 
     const momentum = (scrollColumn: ScrollColumn, distance: number, duration: number) => {
-      scrollColumn.doMomentum = true
       scrollColumn.translate += (Math.abs(distance / duration) / 0.003) * (distance < 0 ? -1 : 1)
     }
 
@@ -147,11 +145,6 @@ export default defineComponent({
         const duration = performance.now() - scrollColumn.momentumTime
         const shouldMomentum = Math.abs(distance) >= MOMENTUM_ALLOW_DISTANCE && duration <= MOMENTUM_RECORD_TIME
 
-        if (!shouldMomentum && scrollColumn.doMomentum) {
-          scrollColumn.index = scrollColumn.scrollIndex
-          scrollColumn.doMomentum = false
-        }
-
         shouldMomentum && momentum(scrollColumn, distance, duration)
 
         scrollColumn.scrollIndex = getIndex(scrollColumn)
@@ -160,7 +153,6 @@ export default defineComponent({
     }
 
     const handleTransitionend = (scrollColumn: ScrollColumn) => {
-      scrollColumn.doMomentum = false
       scrollColumn.index = scrollColumn.scrollIndex
       change(scrollColumn)
     }
@@ -188,7 +180,6 @@ export default defineComponent({
             fromIndex: column.initialIndex ?? -1,
             duration: 0,
             momentumTime: 0,
-            doMomentum: false,
             column,
           }
           scrollTo(scrollColumn, scrollColumn.scrollIndex, 200)
