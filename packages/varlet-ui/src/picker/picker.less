@@ -1,5 +1,5 @@
 @picker-background: #fff;
-@picker-picked-border: 1px solid #ddd;
+@picker-picked-border: 1px solid #eee;
 
 .var-picker {
   width: 100%;
@@ -18,6 +18,7 @@
 
   &__scroller {
     width: 100%;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.68, 1);
   }
 
   &__option {
@@ -29,10 +30,24 @@
 
   &__picked {
     position: absolute;
+    z-index: 2;
     pointer-events: none;
     width: 100%;
     left: 0;
     border-top: @picker-picked-border;
     border-bottom: @picker-picked-border;
+  }
+
+  &__mask {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4)),
+      linear-gradient(0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4));
+    background-repeat: no-repeat;
+    background-position: top, bottom;
   }
 }

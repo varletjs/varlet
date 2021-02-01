@@ -17,7 +17,16 @@ export default defineComponent({
     return {
       columns: ref([
         {
-          texts: ['1', '2', '3'],
+          texts: Array.from({ length: 20 }).map((_, index) => index),
+          initialIndex: 0,
+        },
+        {
+          texts: Array.from({ length: 20 }).map((_, index) => index),
+          initialIndex: 1,
+        },
+        {
+          texts: Array.from({ length: 20 }).map((_, index) => index),
+          initialIndex: 2,
         },
       ]),
     }
