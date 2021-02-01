@@ -10,7 +10,7 @@
         transitionDuration: lockDuration ? `0ms` : `${duration}ms`,
       }"
       @touchstart="handleTouchstart"
-      @touchmove="handleTouchmove"
+      @touchmove.prevent="handleTouchmove"
       @touchend="handleTouchend"
     >
       <slot />

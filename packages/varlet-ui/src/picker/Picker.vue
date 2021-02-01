@@ -3,14 +3,15 @@
     <div class="var-picker__columns" :style="{ height: `${columnHeight}px` }">
       <div
         class="var-picker__column"
-        v-for="c in scrollColumns"
+        v-for="(c, index) in scrollColumns"
         :key="c"
-        @touchstart="handleTouchstart($event, c)"
-        @touchmove="handleTouchmove($event, c)"
+        @touchstart="handleTouchstart($event, c, index)"
+        @touchmove.prevent="handleTouchmove($event, c)"
         @touchend="handleTouchend($event, c)"
       >
         <div
           class="var-picker__scroller"
+          :ref="(el) => (scrollerEls[index] = el)"
           :style="{
             transform: `translateY(${c.translate}px)`,
             transitionDuration: `${c.duration}ms`,
@@ -61,11 +62,17 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
+    const scrollerEls: Ref<HTMLElement[]> = ref([])
     const scrollColumns: Ref<ScrollColumn[]> = ref([])
     const center: ComputedRef<number> = computed(
       () => (props.optionCount * props.optionHeight) / 2 - props.optionCount / 2
     )
     const columnHeight: ComputedRef<number> = computed(() => props.optionCount * props.optionHeight)
+
+    const getTranslate = (el: HTMLElement) => {
+      const { transform } = window.getComputedStyle(el)
+      return +transform.slice(transform.lastIndexOf(',') + 2, transform.length - 1)
+    }
 
     const limitTranslate = (scrollColumn: ScrollColumn) => {
       const { optionHeight } = props
@@ -107,9 +114,10 @@ export default defineComponent({
       scrollColumn.translate += (Math.abs(distance / duration) / 0.003) * (distance < 0 ? -1 : 1)
     }
 
-    const handleTouchstart = (event: TouchEvent, scrollColumn: ScrollColumn) => {
+    const handleTouchstart = (event: TouchEvent, scrollColumn: ScrollColumn, scrollerElIndex: number) => {
       scrollColumn.touching = true
       scrollColumn.duration = 0
+      scrollColumn.translate = getTranslate(scrollerEls.value[scrollerElIndex])
     }
 
     const handleTouchmove = (event: TouchEvent, scrollColumn: ScrollColumn) => {
@@ -142,7 +150,6 @@ export default defineComponent({
         if (!shouldMomentum && scrollColumn.doMomentum) {
           scrollColumn.index = scrollColumn.scrollIndex
           scrollColumn.doMomentum = false
-          change(scrollColumn)
         }
 
         shouldMomentum && momentum(scrollColumn, distance, duration)
@@ -195,6 +202,7 @@ export default defineComponent({
       scrollColumns,
       columnHeight,
       center,
+      scrollerEls,
       handleTouchstart,
       handleTouchmove,
       handleTouchend,
