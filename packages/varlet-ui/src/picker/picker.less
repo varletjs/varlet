@@ -1,5 +1,7 @@
 @picker-background: #fff;
 @picker-picked-border: 1px solid #eee;
+@picker-mask-background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4)),
+  linear-gradient(0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4));
 
 .var-picker {
   width: 100%;
@@ -45,8 +47,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4)),
-      linear-gradient(0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4));
+    background-image: @picker-mask-background-image;
     background-repeat: no-repeat;
     background-position: top, bottom;
   }

@@ -1,6 +1,7 @@
 <template>
   <div class="example">
-    <var-picker :columns="columns" />
+    <var-picker :columns="cascadeColumns" cascade @change="log" />
+    <var-picker style="margin-top: 20px" :columns="columns" @change="log" />
   </div>
 </template>
 
@@ -29,6 +30,42 @@ export default defineComponent({
           initialIndex: 2,
         },
       ]),
+      cascadeColumns: [
+        {
+          text: '四川省',
+          children: [
+            {
+              text: '成都市',
+              children: [
+                {
+                  text: '温江区',
+                },
+              ],
+            },
+            {
+              text: '乐山市',
+              children: [],
+            },
+          ],
+        },
+        {
+          text: '江苏省',
+          children: [
+            {
+              text: '无锡市',
+              children: [],
+            },
+            {
+              text: '常州市',
+              children: [],
+            },
+          ],
+        },
+      ],
+      log(texts, indexes) {
+        console.log(texts)
+        console.log(indexes)
+      },
     }
   },
 })

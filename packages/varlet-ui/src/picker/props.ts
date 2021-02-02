@@ -26,6 +26,10 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  cascade: {
+    type: Boolean,
+    default: false,
+  },
   optionHeight: {
     type: Number,
     default: 44,
@@ -41,5 +45,14 @@ export const props = {
   cancelButtonText: {
     type: String,
     default: '取消',
+  },
+  onChange: {
+    type: Function,
+  },
+  onConfirm: {
+    type: Function,
+  },
+  onCancel: {
+    type: Function,
   },
 }

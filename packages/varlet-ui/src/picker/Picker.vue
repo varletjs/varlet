@@ -38,12 +38,12 @@
 
 <script lang="ts">
 import { defineComponent, watch, ref, Ref, computed, ComputedRef } from 'vue'
-import { NormalColumn, props } from './props'
+import { CascadeColumn, NormalColumn, props } from './props'
+import { isArray } from '../utils/shared'
 
 interface ScrollColumn {
   touching: boolean
   index: number
-  scrollIndex: number
   fromIndex: number
   prevY: number | undefined
   momentumPrevY: number | undefined
@@ -51,6 +51,7 @@ interface ScrollColumn {
   translate: number
   duration: number
   column: NormalColumn
+  columns?: CascadeColumn[]
 }
 
 const MOMENTUM_RECORD_TIME = 300
@@ -103,8 +104,13 @@ export default defineComponent({
 
     const scrollTo = (scrollColumn: ScrollColumn, index: number, duration: number) => {
       const { optionHeight } = props
+      const translate = center.value - boundaryIndex(scrollColumn, index) * optionHeight
 
-      scrollColumn.translate = center.value - boundaryIndex(scrollColumn, index) * optionHeight
+      if (translate === scrollColumn.translate) {
+        change(scrollColumn)
+      }
+
+      scrollColumn.translate = translate
       scrollColumn.duration = duration
     }
 
@@ -147,14 +153,61 @@ export default defineComponent({
 
         shouldMomentum && momentum(scrollColumn, distance, duration)
 
-        scrollColumn.scrollIndex = getIndex(scrollColumn)
-        scrollTo(scrollColumn, scrollColumn.scrollIndex, shouldMomentum ? 1000 : 200)
+        scrollColumn.index = getIndex(scrollColumn)
+        scrollTo(scrollColumn, scrollColumn.index, shouldMomentum ? 1000 : 200)
       })
     }
 
     const handleTransitionend = (scrollColumn: ScrollColumn) => {
-      scrollColumn.index = scrollColumn.scrollIndex
       change(scrollColumn)
+    }
+
+    const normalizeNormalColumns = (normalColumns: NormalColumn[]) => {
+      return normalColumns.map((normalColumn) => {
+        const scrollColumn: ScrollColumn = {
+          prevY: undefined,
+          momentumPrevY: undefined,
+          touching: false,
+          translate: center.value,
+          index: normalColumn.initialIndex ?? 0,
+          fromIndex: normalColumn.initialIndex ?? 0,
+          duration: 0,
+          momentumTime: 0,
+          column: normalColumn,
+        }
+        scrollTo(scrollColumn, scrollColumn.index, 200)
+        return scrollColumn
+      })
+    }
+
+    const normalizeCascadeColumns = (cascadeColumns: CascadeColumn[]) => {
+      const scrollColumns = []
+
+      createChildren(scrollColumns, cascadeColumns)
+
+      return scrollColumns
+    }
+
+    const createChildren = (scrollColumns: ScrollColumn[], children: CascadeColumn[]) => {
+      if (isArray(children) && children.length) {
+        const scrollColumn: ScrollColumn = {
+          prevY: undefined,
+          momentumPrevY: undefined,
+          touching: false,
+          translate: center.value,
+          index: 0,
+          fromIndex: 0,
+          duration: 0,
+          momentumTime: 0,
+          column: {
+            texts: children.map((cascadeColumn) => cascadeColumn[props.textKey]),
+          },
+          columns: children,
+        }
+
+        scrollColumns.push(scrollColumn)
+        createChildren(scrollColumns, scrollColumn.columns[scrollColumn.index].children)
+      }
     }
 
     const change = (scrollColumn: ScrollColumn) => {
@@ -163,28 +216,22 @@ export default defineComponent({
       }
       scrollColumn.fromIndex = scrollColumn.index
 
-      console.log(scrollColumn.index)
+      if (props.cascade) {
+        scrollColumns.value.splice(scrollColumns.value.indexOf(scrollColumn) + 1)
+        createChildren(scrollColumns.value, scrollColumn.columns[scrollColumn.index].children)
+      }
+
+      const texts = scrollColumns.value.map((scrollColumn) => scrollColumn.column.texts[scrollColumn.index])
+      const indexes = scrollColumns.value.map((scrollColumn) => scrollColumn.index)
+      props.onChange?.(texts, indexes)
     }
 
     watch(
       () => props.columns,
       (newValue: any) => {
-        scrollColumns.value = newValue.map((column: NormalColumn) => {
-          const scrollColumn: ScrollColumn = {
-            prevY: undefined,
-            momentumPrevY: undefined,
-            touching: false,
-            translate: center.value,
-            index: column.initialIndex ?? 0,
-            scrollIndex: column.initialIndex ?? 0,
-            fromIndex: column.initialIndex ?? -1,
-            duration: 0,
-            momentumTime: 0,
-            column,
-          }
-          scrollTo(scrollColumn, scrollColumn.scrollIndex, 200)
-          return scrollColumn
-        })
+        scrollColumns.value = props.cascade
+          ? normalizeCascadeColumns(newValue as CascadeColumn[])
+          : normalizeNormalColumns(newValue as NormalColumn[])
       },
       { immediate: true }
     )
