@@ -1,26 +1,29 @@
 <template>
   <div class="example">
-    <var-picker :columns="cascadeColumns" cascade @change="log" />
-    <var-picker style="margin-top: 20px" :columns="columns" @change="log" />
+    <!--    <var-picker :columns="cascadeColumns" cascade @change="log" @confirm="log" @cancel="log" />-->
+    <!--    <var-picker style="margin-top: 20px" :columns="columns" @change="log" @confirm="log" @cancel="log" />-->
+
+    <var-button @click="picker">弹出</var-button>
   </div>
 </template>
 
 <script>
 import { defineComponent, ref } from 'vue'
 import Picker from '..'
+import Button from '../../button'
 
 export default defineComponent({
   name: 'PickerExample',
   components: {
-    [Picker.name]: Picker,
+    [Picker.Component.name]: Picker.Component,
+    [Button.name]: Button,
   },
   setup() {
     return {
       columns: ref([
-        {
-          texts: Array.from({ length: 20 }).map((_, index) => index),
-          initialIndex: 0,
-        },
+        Array.from({ length: 20 }).map((_, index) => index),
+        Array.from({ length: 20 }).map((_, index) => index),
+        Array.from({ length: 20 }).map((_, index) => index),
         {
           texts: Array.from({ length: 20 }).map((_, index) => index),
           initialIndex: 1,
@@ -65,6 +68,14 @@ export default defineComponent({
       log(texts, indexes) {
         console.log(texts)
         console.log(indexes)
+      },
+      async picker() {
+        const { state, texts, indexes } = await Picker([
+          Array.from({ length: 20 }).map((_, index) => index),
+          Array.from({ length: 20 }).map((_, index) => index),
+          Array.from({ length: 20 }).map((_, index) => index),
+        ])
+        console.log(state, texts, indexes)
       },
     }
   },

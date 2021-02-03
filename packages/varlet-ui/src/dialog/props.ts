@@ -88,5 +88,6 @@ export const props = {
     'onOpened',
     'onClosed',
     'onClickOverlay',
+    'onRouteChange',
   ]),
 }

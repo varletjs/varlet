@@ -1,4 +1,6 @@
 import { PropType } from 'vue'
+import { pickProps } from '../utils/components'
+import { props as popupProps } from '../popup/props'
 
 export interface NormalColumn {
   texts: any[]
@@ -46,6 +48,16 @@ export const props = {
     type: String,
     default: '取消',
   },
+  confirmButtonColor: {
+    type: String,
+  },
+  cancelButtonColor: {
+    type: String,
+  },
+  dynamic: {
+    type: Boolean,
+    default: false,
+  },
   onChange: {
     type: Function,
   },
@@ -55,4 +67,14 @@ export const props = {
   onCancel: {
     type: Function,
   },
+  ...pickProps(popupProps, [
+    'show',
+    'closeOnClickOverlay',
+    'teleport',
+    'onClose',
+    'onOpened',
+    'onClosed',
+    'onClickOverlay',
+    'onRouteChange',
+  ]),
 }

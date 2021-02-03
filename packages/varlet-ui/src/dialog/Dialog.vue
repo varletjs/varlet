@@ -1,54 +1,55 @@
 <template>
-	<var-popup
-		class="var-dialog__popup-radius"
-		v-model:show="popupShow"
-		:overlay="overlay"
-		:overlay-class="overlayClass"
-		:lock-scroll="lockScroll"
-		:close-on-click-overlay="popupCloseOnClickOverlay"
-		:teleport="teleport"
-		@open="$props.onOpen"
-		@close="$props.onClose"
-		@opened="$props.onOpened"
-		@closed="$props.onClosed"
-		@click-overlay="handleClickOverlay"
-	>
-		<div class="var--box var-dialog" v-bind="$attrs">
-			<div class="var-dialog__title">
-				<slot name="title">{{ title }}</slot>
-			</div>
-			<div
-				class="var-dialog__message"
-				:style="{
-					'text-align': messageAlign,
-				}"
-			>
-				<slot>
-					{{ message }}
-				</slot>
-			</div>
-			<div class="var-dialog__actions">
-				<var-button
-					class="var-dialog__button var-dialog__cancel-button"
-					:color="cancelButtonColor"
-					:background="cancelButtonBackground"
-					v-if="cancelButton"
-					@click="cancel"
-				>
-					{{ cancelButtonText }}
-				</var-button>
-				<var-button
-					class="var-dialog__button var-dialog__confirm-button"
-					:color="confirmButtonColor"
-					:background="confirmButtonBackground"
-					v-if="confirmButton"
-					@click="confirm"
-				>
-					{{ confirmButtonText }}
-				</var-button>
-			</div>
-		</div>
-	</var-popup>
+  <var-popup
+    class="var-dialog__popup-radius"
+    v-model:show="popupShow"
+    :overlay="overlay"
+    :overlay-class="overlayClass"
+    :lock-scroll="lockScroll"
+    :close-on-click-overlay="popupCloseOnClickOverlay"
+    :teleport="teleport"
+    @open="onOpen"
+    @close="onClose"
+    @closed="onClosed"
+    @opened="onOpened"
+    @route-change="onRouteChange"
+    @click-overlay="handleClickOverlay"
+  >
+    <div class="var--box var-dialog" v-bind="$attrs">
+      <div class="var-dialog__title">
+        <slot name="title">{{ title }}</slot>
+      </div>
+      <div
+        class="var-dialog__message"
+        :style="{
+          'text-align': messageAlign,
+        }"
+      >
+        <slot>
+          {{ message }}
+        </slot>
+      </div>
+      <div class="var-dialog__actions">
+        <var-button
+          class="var-dialog__button var-dialog__cancel-button"
+          :color="cancelButtonColor"
+          :background="cancelButtonBackground"
+          v-if="cancelButton"
+          @click="cancel"
+        >
+          {{ cancelButtonText }}
+        </var-button>
+        <var-button
+          class="var-dialog__button var-dialog__confirm-button"
+          :color="confirmButtonColor"
+          :background="confirmButtonBackground"
+          v-if="confirmButton"
+          @click="confirm"
+        >
+          {{ confirmButtonText }}
+        </var-button>
+      </div>
+    </div>
+  </var-popup>
 </template>
 
 <script lang="ts">

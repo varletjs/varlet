@@ -21,19 +21,19 @@ import {
 import { isArray, removeItem } from './shared'
 
 export interface MountInstance {
-	instance: any
-	unmount: () => void
+  instance: any
+  unmount: () => void
 }
 
 export interface ChildrenCounter {
-	collect(instance: ComponentInternalInstance): void
-	clear(instance: ComponentInternalInstance): void
-	instances: ComponentInternalInstance[]
+  collect(instance: ComponentInternalInstance): void
+  clear(instance: ComponentInternalInstance): void
+  instances: ComponentInternalInstance[]
 }
 
 export interface BaseParentProvider<C> {
-	collect(childProvider: C): void
-	clear(childProvider: C): void
+  collect(childProvider: C): void
+  clear(childProvider: C): void
 }
 
 export function pickProps(props: any, propsKey: string): any
@@ -41,9 +41,9 @@ export function pickProps(props: any, propsKey: string[]): any
 export function pickProps(props: any, propsKey: any): any {
   return Array.isArray(propsKey)
     ? propsKey.reduce((pickedProps: any, key) => {
-      pickedProps[key] = props[key]
-      return pickedProps
-		  }, {})
+        pickedProps[key] = props[key]
+        return pickedProps
+      }, {})
     : props[propsKey]
 }
 
@@ -66,7 +66,7 @@ export function mountInstance(
   props: Record<string, any> = {},
   eventListener: Record<string, any> = {}
 ): {
-	unmountInstance: () => void
+  unmountInstance: () => void
 } {
   const Host = {
     setup() {
@@ -256,4 +256,15 @@ export function useValidation() {
     resetValidation,
     validateWithTrigger,
   }
+}
+
+export function addRouteListener(cb: () => void) {
+  onMounted(() => {
+    window.addEventListener('hashchange', cb)
+    window.addEventListener('popstate', cb)
+  })
+  onUnmounted(() => {
+    window.removeEventListener('hashchange', cb)
+    window.removeEventListener('popstate', cb)
+  })
 }
