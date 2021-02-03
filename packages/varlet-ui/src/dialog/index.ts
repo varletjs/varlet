@@ -46,12 +46,15 @@ function Dialog(options: DialogOptions | string): Promise<DialogResolvedData> {
     const { unmountInstance } = mountInstance(VarDialog, reactiveDialogOptions, {
       onConfirm: () => {
         resolve({ state: 'confirm' })
+        singletonOptions === reactiveDialogOptions && (singletonOptions = null)
       },
       onCancel: () => {
         resolve({ state: 'cancel' })
+        singletonOptions === reactiveDialogOptions && (singletonOptions = null)
       },
       onClose: () => {
         resolve({ state: 'close' })
+        singletonOptions === reactiveDialogOptions && (singletonOptions = null)
       },
       onClosed: () => {
         unmountInstance()

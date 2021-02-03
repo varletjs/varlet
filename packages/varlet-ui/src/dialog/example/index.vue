@@ -41,21 +41,32 @@ export default defineComponent({
     const log = (message: string) => console.log(message)
 
     const create = async () => {
-      Dialog({
+      await Dialog({
         title: '测试',
         cancelButton: false,
         message: '测试文字测试文字测试文字测试文字测试文字测试文字测试文字',
       })
+      await Dialog({
+        title: '测试1',
+        cancelButton: false,
+        message: '测试文字测试文字测试文字测试文字测试文字测试文字测试文字',
+      })
+      // Dialog.close()
+      // Dialog({
+      //   title: '测试2',
+      //   cancelButton: false,
+      //   message: '测试文字测试文字测试文字测试文字测试文字测试文字测试文字',
+      // })
 
-      setTimeout(() => {
-        Dialog.close()
-
-        Dialog({
-          title: '测试123',
-          cancelButton: false,
-          message: '12312312',
-        })
-      }, 2000)
+      // setTimeout(() => {
+      //   Dialog.close()
+      //
+      //   Dialog({
+      //     title: '测试123',
+      //     cancelButton: false,
+      //     message: '12312312',
+      //   })
+      // }, 2000)
 
       // console.log(state)
     }

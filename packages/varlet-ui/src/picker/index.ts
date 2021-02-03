@@ -38,6 +38,7 @@ function Picker(options: PickerOptions | any[]): Promise<PickerResolvedData> {
       resolve({
         state: 'exist',
       })
+      return
     }
     const pickerOptions: PickerOptions = isArray(options) ? { columns: options } : options
     const reactivePickerOptions: PickerOptions = reactive(pickerOptions)
@@ -53,6 +54,7 @@ function Picker(options: PickerOptions | any[]): Promise<PickerResolvedData> {
           indexes,
         })
         reactivePickerOptions.show = false
+        singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },
       onCancel: (texts: any[], indexes: number[]) => {
         resolve({
@@ -61,11 +63,13 @@ function Picker(options: PickerOptions | any[]): Promise<PickerResolvedData> {
           indexes,
         })
         reactivePickerOptions.show = false
+        singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },
       onClose: () => {
         resolve({
           state: 'close',
         })
+        singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },
       onRouteChange: () => {
         unmountInstance()
