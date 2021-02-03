@@ -19,9 +19,7 @@ interface PickerOptions {
   cancelButtonColor?: string
   dynamic?: boolean
   onChange?: (texts: any[], indexes: number[]) => void
-  onConfirm?: (texts: any[], indexes: number[]) => void
-  onCancel?: (texts: any[], indexes: number[]) => void
-  onClose?: () => void
+  onClosed?: () => void
 }
 
 type PickerResolvedState = 'confirm' | 'cancel' | 'close'
@@ -64,6 +62,7 @@ function Picker(options: PickerOptions | any[]): Promise<PickerResolvedData> {
         unmountInstance()
       },
       onClosed: () => {
+        reactivePickerOptions.onClosed?.()
         unmountInstance()
       },
       'onUpdate:show': (value: boolean) => {

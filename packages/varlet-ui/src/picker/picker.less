@@ -5,6 +5,8 @@
 @picker-confirm-button-color: @color-primary;
 @picker-cancel-button-color: #888;
 @picker-picked-border: 1px solid #eee;
+@picker-title-font-size: 16px;
+@picker-toolbar-padding: 0 4px;
 @picker-mask-background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4)),
   linear-gradient(0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4));
 
@@ -63,6 +65,7 @@
     align-items: center;
     width: 100%;
     height: @picker-toolbar-height;
+    padding: @picker-toolbar-padding;
   }
 
   &__confirm-button {
@@ -71,5 +74,9 @@
 
   &__cancel-button {
     color: @picker-cancel-button-color;
+  }
+
+  &__title {
+    font-size: @picker-title-font-size;
   }
 }

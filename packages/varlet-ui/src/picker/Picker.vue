@@ -1,15 +1,22 @@
 <template>
   <component
-    position="bottom"
     :is="dynamic ? 'var-popup' : Transition"
-    :close-on-click-overlay="closeOnClickOverlay"
-    :teleport="teleport"
-    v-model:show="pickerShow"
-    @opened="onOpened"
-    @close="onClose"
-    @closed="onClosed"
-    @click-overlay="onClickOverlay"
-    @route-change="onRouteChange"
+    v-bind="
+      dynamic
+        ? {
+            onOpened,
+            onClose,
+            onClosed,
+            onClickOverlay,
+            onRouteChange,
+            closeOnClickOverlay,
+            teleport,
+            show,
+            'onUpdate:show': (value) => $props['onUpdate:show'] && $props['onUpdate:show'](value),
+            position: 'bottom',
+          }
+        : null
+    "
   >
     <div class="var-picker" v-bind="$attrs">
       <div class="var-picker__toolbar">
@@ -18,8 +25,8 @@
             {{ cancelButtonText }}
           </var-button>
         </slot>
-        <slot name="var-picker__title">
-          <div class="title">{{ title }}</div>
+        <slot name="title">
+          <div class="var-picker__title">{{ title }}</div>
         </slot>
         <slot name="confirm">
           <var-button class="var-picker__confirm-button" plain :text-color="confirmButtonColor" @click="confirm">
@@ -102,11 +109,10 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const pickerShow: Ref<boolean> = ref(false)
     const scrollerEls: Ref<HTMLElement[]> = ref([])
     const scrollColumns: Ref<ScrollColumn[]> = ref([])
     const center: ComputedRef<number> = computed(
-      () => (props.optionCount * props.optionHeight) / 2 - props.optionCount / 2
+      () => (props.optionCount * props.optionHeight) / 2 - props.optionHeight / 2
     )
     const columnHeight: ComputedRef<number> = computed(() => props.optionCount * props.optionHeight)
     let prevIndexes: number[] = []
@@ -322,21 +328,12 @@ export default defineComponent({
       { immediate: true }
     )
 
-    watch(
-      () => props.show,
-      (newValue) => {
-        pickerShow.value = newValue
-      },
-      { immediate: true }
-    )
-
     return {
       scrollColumns,
       columnHeight,
       center,
       scrollerEls,
       Transition,
-      pickerShow,
       handleTouchstart,
       handleTouchmove,
       handleTouchend,

@@ -19,6 +19,7 @@ export const props = {
   },
   title: {
     type: String,
+    default: '请选择',
   },
   textKey: {
     type: String,
@@ -69,6 +70,7 @@ export const props = {
   },
   ...pickProps(popupProps, [
     'show',
+    'onUpdate:show',
     'closeOnClickOverlay',
     'teleport',
     'onClose',

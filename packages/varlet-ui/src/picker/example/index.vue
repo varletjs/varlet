@@ -1,8 +1,7 @@
 <template>
   <div class="example">
-    <!--    <var-picker :columns="cascadeColumns" cascade @change="log" @confirm="log" @cancel="log" />-->
-    <!--    <var-picker style="margin-top: 20px" :columns="columns" @change="log" @confirm="log" @cancel="log" />-->
-
+    <var-picker :columns="cascadeColumns" cascade @change="log" @confirm="log" @cancel="log" />
+    <var-picker style="margin-top: 20px" :columns="columns" @change="log" @confirm="log" @cancel="log" />
     <var-button @click="picker">弹出</var-button>
   </div>
 </template>
@@ -70,11 +69,17 @@ export default defineComponent({
         console.log(indexes)
       },
       async picker() {
-        const { state, texts, indexes } = await Picker([
+        const columns = [
           Array.from({ length: 20 }).map((_, index) => index),
           Array.from({ length: 20 }).map((_, index) => index),
           Array.from({ length: 20 }).map((_, index) => index),
-        ])
+        ]
+        const { state, texts, indexes } = await Picker({
+          columns,
+          onChange(texts, indexes) {
+            console.log(texts, indexes)
+          },
+        })
         console.log(state, texts, indexes)
       },
     }
