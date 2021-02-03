@@ -1,4 +1,4 @@
-import { reactive, App } from 'vue'
+import { reactive, App, nextTick } from 'vue'
 import VarDialog from './Dialog.vue'
 import { isString } from '../utils/shared'
 import { mountInstance } from '../utils/components'
@@ -79,7 +79,10 @@ Dialog.install = function (app: App) {
 
 Dialog.close = () => {
   if (singletonOptions) {
-    singletonOptions.show = false
+    const options = singletonOptions
+    nextTick().then(() => {
+      options.show = false
+    })
     singletonOptions = null
   }
 }

@@ -1,4 +1,4 @@
-import { App, reactive } from 'vue'
+import { App, nextTick, reactive } from 'vue'
 import VarPicker from './Picker.vue'
 import { NormalColumn, CascadeColumn } from './props'
 import { isArray } from '../utils/shared'
@@ -97,7 +97,10 @@ Picker.install = function (app: App) {
 
 Picker.close = () => {
   if (singletonOptions) {
-    singletonOptions.show = false
+    const options = singletonOptions
+    nextTick().then(() => {
+      options.show = false
+    })
     singletonOptions = null
   }
 }

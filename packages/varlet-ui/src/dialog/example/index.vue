@@ -47,16 +47,10 @@ export default defineComponent({
         message: '测试文字测试文字测试文字测试文字测试文字测试文字测试文字',
       })
       await Dialog({
-        title: '测试1',
+        title: '测试2',
         cancelButton: false,
         message: '测试文字测试文字测试文字测试文字测试文字测试文字测试文字',
       })
-      // Dialog.close()
-      // Dialog({
-      //   title: '测试2',
-      //   cancelButton: false,
-      //   message: '测试文字测试文字测试文字测试文字测试文字测试文字测试文字',
-      // })
 
       // setTimeout(() => {
       //   Dialog.close()
