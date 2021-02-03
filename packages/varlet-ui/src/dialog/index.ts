@@ -36,6 +36,7 @@ function Dialog(options: DialogOptions | string): Promise<DialogResolvedData> {
       resolve({
         state: 'exist',
       })
+      return
     }
     const dialogOptions: DialogOptions = isString(options) ? { message: options } : options
     const reactiveDialogOptions: DialogOptions = reactive(dialogOptions)
@@ -54,11 +55,11 @@ function Dialog(options: DialogOptions | string): Promise<DialogResolvedData> {
       },
       onClosed: () => {
         unmountInstance()
-        singletonOptions = null
+        singletonOptions === reactiveDialogOptions && (singletonOptions = null)
       },
       onRouteChange: () => {
         unmountInstance()
-        singletonOptions = null
+        singletonOptions === reactiveDialogOptions && (singletonOptions = null)
       },
       'onUpdate:show': (value: boolean) => {
         reactiveDialogOptions.show = value
@@ -74,7 +75,10 @@ Dialog.install = function (app: App) {
 }
 
 Dialog.close = () => {
-  singletonOptions && (singletonOptions.show = false)
+  if (singletonOptions) {
+    singletonOptions.show = false
+    singletonOptions = null
+  }
 }
 
 Dialog.Component = VarDialog

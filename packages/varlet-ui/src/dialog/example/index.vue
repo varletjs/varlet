@@ -49,6 +49,12 @@ export default defineComponent({
 
       setTimeout(() => {
         Dialog.close()
+
+        Dialog({
+          title: '测试123',
+          cancelButton: false,
+          message: '12312312',
+        })
       }, 2000)
 
       // console.log(state)

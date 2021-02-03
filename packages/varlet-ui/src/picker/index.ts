@@ -43,6 +43,8 @@ function Picker(options: PickerOptions | any[]): Promise<PickerResolvedData> {
     const reactivePickerOptions: PickerOptions = reactive(pickerOptions)
     reactivePickerOptions.dynamic = true
 
+    singletonOptions = reactivePickerOptions
+
     const { unmountInstance } = mountInstance(VarPicker, reactivePickerOptions, {
       onConfirm: (texts: any[], indexes: number[]) => {
         resolve({
@@ -67,12 +69,12 @@ function Picker(options: PickerOptions | any[]): Promise<PickerResolvedData> {
       },
       onRouteChange: () => {
         unmountInstance()
-        singletonOptions = null
+        singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },
       onClosed: () => {
         reactivePickerOptions.onClosed?.()
         unmountInstance()
-        singletonOptions = null
+        singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },
       'onUpdate:show': (value: boolean) => {
         reactivePickerOptions.show = value
@@ -90,7 +92,10 @@ Picker.install = function (app: App) {
 }
 
 Picker.close = () => {
-  singletonOptions && (singletonOptions.show = false)
+  if (singletonOptions) {
+    singletonOptions.show = false
+    singletonOptions = null
+  }
 }
 
 export default Picker
