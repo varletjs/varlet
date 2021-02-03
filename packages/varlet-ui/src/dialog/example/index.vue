@@ -41,13 +41,17 @@ export default defineComponent({
     const log = (message: string) => console.log(message)
 
     const create = async () => {
-      const { state } = await Dialog({
+      Dialog({
         title: '测试',
         cancelButton: false,
         message: '测试文字测试文字测试文字测试文字测试文字测试文字测试文字',
       })
 
-      console.log(state)
+      setTimeout(() => {
+        Dialog.close()
+      }, 2000)
+
+      // console.log(state)
     }
 
     return {

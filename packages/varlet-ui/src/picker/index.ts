@@ -1,4 +1,4 @@
-import { App, reactive, h } from 'vue'
+import { App, reactive } from 'vue'
 import VarPicker from './Picker.vue'
 import { NormalColumn, CascadeColumn } from './props'
 import { isArray } from '../utils/shared'
@@ -22,7 +22,7 @@ interface PickerOptions {
   onClosed?: () => void
 }
 
-type PickerResolvedState = 'confirm' | 'cancel' | 'close'
+type PickerResolvedState = 'confirm' | 'cancel' | 'close' | 'exist'
 
 interface PickerResolvedData {
   state: PickerResolvedState
@@ -30,8 +30,15 @@ interface PickerResolvedData {
   indexes?: number[]
 }
 
+let singletonOptions: PickerOptions | null
+
 function Picker(options: PickerOptions | any[]): Promise<PickerResolvedData> {
   return new Promise((resolve) => {
+    if (singletonOptions) {
+      resolve({
+        state: 'exist',
+      })
+    }
     const pickerOptions: PickerOptions = isArray(options) ? { columns: options } : options
     const reactivePickerOptions: PickerOptions = reactive(pickerOptions)
     reactivePickerOptions.dynamic = true
@@ -60,10 +67,12 @@ function Picker(options: PickerOptions | any[]): Promise<PickerResolvedData> {
       },
       onRouteChange: () => {
         unmountInstance()
+        singletonOptions = null
       },
       onClosed: () => {
         reactivePickerOptions.onClosed?.()
         unmountInstance()
+        singletonOptions = null
       },
       'onUpdate:show': (value: boolean) => {
         reactivePickerOptions.show = value
@@ -78,6 +87,10 @@ Picker.Component = VarPicker
 
 Picker.install = function (app: App) {
   app.component(VarPicker.name, VarPicker)
+}
+
+Picker.close = () => {
+  singletonOptions && (singletonOptions.show = false)
 }
 
 export default Picker

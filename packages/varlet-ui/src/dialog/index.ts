@@ -23,15 +23,24 @@ interface DialogOptions {
   closeOnClickOverlay?: boolean
 }
 
-type DialogResolvedState = 'confirm' | 'cancel' | 'close'
+type DialogResolvedState = 'confirm' | 'cancel' | 'close' | 'exist'
 interface DialogResolvedData {
   state: DialogResolvedState
 }
 
+let singletonOptions: DialogOptions | null
+
 function Dialog(options: DialogOptions | string): Promise<DialogResolvedData> {
   return new Promise((resolve) => {
+    if (singletonOptions) {
+      resolve({
+        state: 'exist',
+      })
+    }
     const dialogOptions: DialogOptions = isString(options) ? { message: options } : options
     const reactiveDialogOptions: DialogOptions = reactive(dialogOptions)
+
+    singletonOptions = reactiveDialogOptions
 
     const { unmountInstance } = mountInstance(VarDialog, reactiveDialogOptions, {
       onConfirm: () => {
@@ -45,9 +54,11 @@ function Dialog(options: DialogOptions | string): Promise<DialogResolvedData> {
       },
       onClosed: () => {
         unmountInstance()
+        singletonOptions = null
       },
       onRouteChange: () => {
         unmountInstance()
+        singletonOptions = null
       },
       'onUpdate:show': (value: boolean) => {
         reactiveDialogOptions.show = value
@@ -60,6 +71,10 @@ function Dialog(options: DialogOptions | string): Promise<DialogResolvedData> {
 
 Dialog.install = function (app: App) {
   app.component(VarDialog.name, VarDialog)
+}
+
+Dialog.close = () => {
+  singletonOptions && (singletonOptions.show = false)
 }
 
 Dialog.Component = VarDialog
