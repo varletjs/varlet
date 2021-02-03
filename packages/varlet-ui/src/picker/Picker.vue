@@ -1,5 +1,6 @@
 <template>
   <div class="var-picker" v-bind="$attrs">
+    <div class="var-picker__toolbar"></div>
     <div class="var-picker__columns" :style="{ height: `${columnHeight}px` }">
       <div
         class="var-picker__column"
@@ -40,6 +41,7 @@
 import { defineComponent, watch, ref, Ref, computed, ComputedRef } from 'vue'
 import { CascadeColumn, NormalColumn, props } from './props'
 import { isArray } from '../utils/shared'
+import Button from '../button'
 
 interface ScrollColumn {
   touching: boolean
@@ -59,6 +61,9 @@ const MOMENTUM_ALLOW_DISTANCE = 15
 
 export default defineComponent({
   name: 'VarPicker',
+  components: {
+    [Button.name]: Button,
+  },
   inheritAttrs: false,
   props,
   setup(props) {
@@ -181,7 +186,7 @@ export default defineComponent({
     }
 
     const normalizeCascadeColumns = (cascadeColumns: CascadeColumn[]) => {
-      const scrollColumns = []
+      const scrollColumns: ScrollColumn[] = []
 
       createChildren(scrollColumns, cascadeColumns)
 
