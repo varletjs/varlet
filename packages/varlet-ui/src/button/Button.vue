@@ -1,6 +1,6 @@
 <template>
   <button
-    v-ripple="{ disabled }"
+    v-ripple="{ disabled: disabled || forbidRipple }"
     class="var--box var-button"
     :class="[
       `var-button--${size}`,

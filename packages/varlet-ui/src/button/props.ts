@@ -56,6 +56,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  forbidRipple: {
+    type: Boolean,
+    default: false,
+  },
   // 按钮文字颜色
   textColor: {
     type: String,
