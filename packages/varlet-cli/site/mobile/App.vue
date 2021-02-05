@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 body {
   margin: 0;
   padding: 0;
@@ -41,15 +41,14 @@ body {
 }
 
 header {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 56px;
-	background-color: #fff;
-	font-weight: 500;
-	font-size: 18px;
-  margin-top: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  font-weight: 500;
+  font-size: 18px;
+  margin-top: 52px;
 }
 
 .router-view__block {

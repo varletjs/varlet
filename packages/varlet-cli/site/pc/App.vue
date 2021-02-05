@@ -1,18 +1,14 @@
 <template>
-  <div class='varlet-site'>
-    <div class='varlet-site-header'>
-			<span class='varlet-site-header__logo'>
-				<img :src='header.logo' alt='' />
-				<span>{{ title }}</span>
-			</span>
-      <span class='varlet-site-header__nav'>
-				<a
-          target='_blank'
-          href='https://github.com/haoziqaq/varlet'
-          class='varlet-site-header__link'
-        >
-					<img src='https://b.yzcdn.cn/vant/logo/github.svg' />
-				</a>
+  <div class="varlet-site">
+    <div class="varlet-site-header">
+      <span class="varlet-site-header__logo">
+        <img :src="header.logo" alt="" />
+        <span>{{ title }}</span>
+      </span>
+      <span class="varlet-site-header__nav">
+        <a target="_blank" href="https://github.com/haoziqaq/varlet" class="varlet-site-header__link">
+          <img src="https://b.yzcdn.cn/vant/logo/github.svg" />
+        </a>
         <!--				<span-->
         <!--          class='varlet-site-header__version varlet-site-header__cube'-->
         <!--          @click='isHideVersion = !isHideVersion'-->
@@ -35,31 +31,29 @@
         <!--				<button @click='switchLanguage' class='varlet-site-header__cube'>-->
         <!--					{{ header.i18nButton[language] }}-->
         <!--				</button>-->
-			</span>
+      </span>
     </div>
-    <div class='varlet-site-content'>
-      <div class='varlet-site-nav'>
-        <p v-for='item in menu' class='varlet-site-nav__item' v-ripple>
-          <span v-if='item.isTitle'>{{ item.text[language] }}</span>
-          <router-link :to="'/' + language + '/' + item.doc" v-else>
-            {{ item.text[language] }}
-          </router-link>
+    <div class="varlet-site-content">
+      <div class="varlet-site-nav">
+        <p v-for="item in menu" class="varlet-site-nav__item" v-ripple @click="changeRoute(item)">
+          <span v-if="item.isTitle">{{ item.text[language] }}</span>
+          <a v-else>{{ item.text[language] }}</a>
         </p>
       </div>
       <router-view />
-      <div class='varlet-site-mobile'>
-        <div class='varlet-site-mobile-content'>
-          <iframe :src='`./mobile.html#/${componentName}`'></iframe>
+      <div class="varlet-site-mobile">
+        <div class="varlet-site-mobile-content">
+          <iframe :src="`./mobile.html#/${componentName}`"></iframe>
         </div>
-        <div class='varlet-site-mobile-image'>
-          <img src='./assets/images/mobile.png' />
+        <div class="varlet-site-mobile-image">
+          <img src="./assets/images/mobile.png" />
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import { defineComponent } from 'vue'
 import Ripple from '../../../varlet-ui/src/ripple'
 
@@ -74,7 +68,7 @@ export default defineComponent({
       componentName: 'button',
       title: '',
       versionList: ['2.10.14', '1.x', '3.x'],
-      isHideVersion: true
+      isHideVersion: true,
     }
   },
   methods: {
@@ -83,7 +77,10 @@ export default defineComponent({
       const pathArr = this.$route.fullPath.split('/')
       const componentName = pathArr[pathArr.length - 1]
       this.$router.push(`/${this.language}/${componentName}`)
-    }
+    },
+    changeRoute(item) {
+      this.$router.push(`/${this.language}/${item.doc}`)
+    },
   },
   created() {
     const _this: any = this
@@ -99,13 +96,15 @@ export default defineComponent({
       // todo 还需拿取对应组件名的数组进行判断
       const index = to.path.lastIndexOf('/')
       this.componentName = to.path.slice(index + 1)
-    }
-  }
+    },
+  },
 })
 </script>
 
-<style lang='less'>
-body, html, #app {
+<style lang="less">
+body,
+html,
+#app {
   width: 100%;
   height: 100%;
   overflow-y: hidden;
@@ -128,6 +127,35 @@ iframe {
   &-site {
     width: 100%;
     height: 100%;
+
+    &-mobile {
+      flex: 0 0 360px;
+      transform: scale(0.8);
+      position: relative;
+      height: 720px;
+      align-self: center;
+
+      &-content {
+        height: 99%;
+        position: absolute;
+        z-index: -1;
+        top: 0.5%;
+        width: calc(100% - 40px);
+        margin-left: 20px;
+      }
+
+      &-image {
+        width: 100%;
+        pointer-events: none;
+        height: 100%;
+        top: 0;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
 
     &-header {
       display: flex;
@@ -247,7 +275,6 @@ iframe {
 
     &-doc {
       flex: 1;
-      margin: 30px 0;
       padding: 0 30px;
       overflow-y: auto;
 
@@ -392,7 +419,6 @@ iframe {
       padding: 10px 0;
       flex: 0 0 220px;
       position: sticky;
-      height: 100vh;
       top: 0;
       left: 0;
       z-index: 1;
@@ -406,6 +432,7 @@ iframe {
 
       &__item {
         margin: 0;
+        cursor: pointer;
 
         a,
         span {
@@ -436,39 +463,6 @@ iframe {
         }
       }
     }
-
-    &-mobile {
-      //background: url("./assets/images/mobile.png") no-repeat;
-      //background-size: 100% 100%;
-      margin: 30px 30px 0 0;
-      width: 40vh;
-      top: 30px;
-      height: 82vh;
-      position: relative;
-
-      &-content {
-        position: absolute;
-        height: 77.2vh;
-        top: 2.46vh;
-        left: 2.65vh;
-        width: 34.66vh;
-        border-radius: 3.5vh;
-      }
-
-      &-image {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        pointer-events: none;
-
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-
-    }
-
   }
 }
 </style>
