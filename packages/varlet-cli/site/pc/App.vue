@@ -1,54 +1,71 @@
 <template>
-  <div class="varlet-site">
-    <div class="varlet-site-header">
-      <span class="varlet-site-header__logo">
-        <img :src="header.logo" alt="" />
-        <span>{{ title }}</span>
-      </span>
-      <span class="varlet-site-header__nav">
-        <a target="_blank" href="https://github.com/haoziqaq/varlet" class="varlet-site-header__link">
-          <img src="https://b.yzcdn.cn/vant/logo/github.svg" />
-        </a>
-        <span class="varlet-site-header__version varlet-site-header__cube" @click="isHideVersion = !isHideVersion">
-          3.6.12
-          <span
-            :class="{
-              'varlet-site-header__version-pop': true,
-              'varlet-site-header__version-pop-hidden': isHideVersion,
-            }"
-          >
-            <span class="varlet-site-header__version-pop-item" v-for="version in versionList">
-              {{ version }}
-            </span>
-          </span>
-        </span>
-        <button @click="switchLanguage" class="varlet-site-header__cube">
-          {{ header.i18nButton[language] }}
-        </button>
-      </span>
+  <div class='varlet-site'>
+    <div class='varlet-site-header'>
+			<span class='varlet-site-header__logo'>
+				<img :src='header.logo' alt='' />
+				<span>{{ title }}</span>
+			</span>
+      <span class='varlet-site-header__nav'>
+				<a
+          target='_blank'
+          href='https://github.com/haoziqaq/varlet'
+          class='varlet-site-header__link'
+        >
+					<img src='https://b.yzcdn.cn/vant/logo/github.svg' />
+				</a>
+        <!--				<span-->
+        <!--          class='varlet-site-header__version varlet-site-header__cube'-->
+        <!--          @click='isHideVersion = !isHideVersion'-->
+        <!--        >-->
+        <!--					3.6.12-->
+        <!--					<span-->
+        <!--            :class="{-->
+        <!--							'varlet-site-header__version-pop': true,-->
+        <!--							'varlet-site-header__version-pop-hidden': isHideVersion,-->
+        <!--						}"-->
+        <!--          >-->
+        <!--						<span-->
+        <!--              class='varlet-site-header__version-pop-item'-->
+        <!--              v-for='version in versionList'-->
+        <!--            >-->
+        <!--							{{ version }}-->
+        <!--						</span>-->
+        <!--					</span>-->
+        <!--				</span>-->
+        <!--				<button @click='switchLanguage' class='varlet-site-header__cube'>-->
+        <!--					{{ header.i18nButton[language] }}-->
+        <!--				</button>-->
+			</span>
     </div>
-    <div class="varlet-site-content">
-      <div class="varlet-site-nav">
-        <p v-for="item in menu" class="varlet-site-nav__item">
-          <span v-if="item.isTitle">{{ item.text[language] }}</span>
+    <div class='varlet-site-content'>
+      <div class='varlet-site-nav'>
+        <p v-for='item in menu' class='varlet-site-nav__item' v-ripple>
+          <span v-if='item.isTitle'>{{ item.text[language] }}</span>
           <router-link :to="'/' + language + '/' + item.doc" v-else>
             {{ item.text[language] }}
           </router-link>
         </p>
       </div>
       <router-view />
-      <div class="varlet-site-mobile">
-        <iframe :src="`./mobile.html#/${componentName}`"></iframe>
+      <div class='varlet-site-mobile'>
+        <div class='varlet-site-mobile-content'>
+          <iframe :src='`./mobile.html#/${componentName}`'></iframe>
+        </div>
+        <div class='varlet-site-mobile-image'>
+          <img src='./assets/images/mobile.png' />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script lang='ts'>
 import { defineComponent } from 'vue'
+import Ripple from '../../../varlet-ui/src/ripple'
 
 export default defineComponent({
   computed: {},
+  directives: { Ripple },
   data() {
     return {
       menu: [],
@@ -57,7 +74,7 @@ export default defineComponent({
       componentName: 'button',
       title: '',
       versionList: ['2.10.14', '1.x', '3.x'],
-      isHideVersion: true,
+      isHideVersion: true
     }
   },
   methods: {
@@ -66,7 +83,7 @@ export default defineComponent({
       const pathArr = this.$route.fullPath.split('/')
       const componentName = pathArr[pathArr.length - 1]
       this.$router.push(`/${this.language}/${componentName}`)
-    },
+    }
   },
   created() {
     const _this: any = this
@@ -82,12 +99,18 @@ export default defineComponent({
       // todo 还需拿取对应组件名的数组进行判断
       const index = to.path.lastIndexOf('/')
       this.componentName = to.path.slice(index + 1)
-    },
-  },
+    }
+  }
 })
 </script>
 
-<style lang="less">
+<style lang='less'>
+body, html, #app {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -98,10 +121,14 @@ iframe {
   width: 100%;
   height: 100%;
   border: none;
+  border-radius: 3.5vh;
 }
 
 .varlet {
   &-site {
+    width: 100%;
+    height: 100%;
+
     &-header {
       display: flex;
       align-items: center;
@@ -212,13 +239,21 @@ iframe {
     }
 
     &-content {
+      height: calc(100% - 60px);
+      overflow-y: hidden;
       display: flex;
-      background-color: #f7f8fa;
+      background-color: #fff;
     }
 
     &-doc {
       flex: 1;
-      margin: 30px;
+      margin: 30px 0;
+      padding: 0 30px;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
 
       a {
         margin: 0 1px;
@@ -276,8 +311,9 @@ iframe {
         line-height: 26px;
         white-space: pre-wrap;
         word-wrap: break-word;
-        background-color: #fafafa;
-        border-radius: 16px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 2px 2px 6px #999;
       }
 
       p code,
@@ -346,9 +382,9 @@ iframe {
       .card {
         margin-bottom: 24px;
         padding: 24px;
-        background-color: #fff;
-        border-radius: 12px;
-        box-shadow: 0 8px 12px #ebedf0;
+        background-color: #f5f5f5;
+        border-radius: 8px;
+        //box-shadow: 0 8px 12px #ebedf0;
       }
     }
 
@@ -363,6 +399,10 @@ iframe {
       overflow-y: scroll;
       background-color: #fff;
       box-shadow: 0 8px 12px #ebedf0;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
 
       &__item {
         margin: 0;
@@ -398,19 +438,37 @@ iframe {
     }
 
     &-mobile {
-      flex: 0 0 360px;
+      //background: url("./assets/images/mobile.png") no-repeat;
+      //background-size: 100% 100%;
+      margin: 30px 30px 0 0;
+      width: 40vh;
       top: 30px;
-      position: sticky;
-      margin-top: 30px;
-      margin-right: 30px;
-      height: 85vh;
-      z-index: 1;
-      box-sizing: border-box;
-      overflow: hidden;
-      background: #fafafa;
-      border-radius: 12px;
-      box-shadow: #ebedf0 0 4px 12px;
+      height: 82vh;
+      position: relative;
+
+      &-content {
+        position: absolute;
+        height: 77.2vh;
+        top: 2.46vh;
+        left: 2.65vh;
+        width: 34.66vh;
+        border-radius: 3.5vh;
+      }
+
+      &-image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        pointer-events: none;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
     }
+
   }
 }
 </style>

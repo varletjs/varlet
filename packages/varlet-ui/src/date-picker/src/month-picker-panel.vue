@@ -34,7 +34,7 @@ import * as dayjsAll from 'dayjs'
 import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import * as isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import { MONTH_LIST, Choose, Month, Preview, ComponentProps, PanelBtnDisabled } from '../props'
-import PanelHeader from './panel-header'
+import PanelHeader from './panel-header.vue'
 import Button from '../../button'
 
 const dayjs = dayjsAll.default
@@ -100,7 +100,7 @@ export default defineComponent({
       const {
         choose: { chooseMonths, chooseDays, chooseRangeMonth },
         componentProps: { type, range },
-      }: { choose: Choose; preview: Preview; componentProps: ComponentProps } = props
+      }: { choose: Choose; componentProps: ComponentProps } = props
       if (!chooseRangeMonth.length) return false
       if (range) {
         const isBeforeMax = dayjs(val).isSameOrBefore(dayjs(chooseRangeMonth[1]), 'month')
@@ -121,10 +121,10 @@ export default defineComponent({
         componentProps: { allowedDates, color, multiple, range },
       }: { choose: Choose; preview: Preview; componentProps: ComponentProps } = props
       const val = `${previewYear}-${month.index}`
+      const shouldChooseResult = shouldChoose(val)
       const rangeOrMultiple = range || multiple
 
       const disabled = inRange(month) ? (allowedDates ? !allowedDates(val) : false) : true
-      const shouldChooseResult = shouldChoose(val)
       const plain = disabled
         ? true
         : rangeOrMultiple

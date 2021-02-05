@@ -41,14 +41,15 @@ body {
 }
 
 header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 56px;
-  background-color: #fff;
-  font-weight: 500;
-  font-size: 18px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 56px;
+	background-color: #fff;
+	font-weight: 500;
+	font-size: 18px;
+  margin-top: 20px;
 }
 
 .router-view__block {

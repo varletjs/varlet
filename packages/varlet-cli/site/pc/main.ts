@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
+import '@varlet/touch-emulator'
 import routes from './routes'
 // @ts-ignore
 import config from '@config'

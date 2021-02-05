@@ -14,9 +14,9 @@
   <div>
     <app-type>选择范围</app-type>
     <var-date-picker type="date" v-model="date3" range>
-      <template #range="{ choose }">
-        <span v-for="item in choose" :key="item">{{ item }}</span>
-      </template>
+      <!--      <template #range="{ choose }">-->
+      <!--        <span v-for="item in choose" :key="item">{{ item }}</span>-->
+      <!--      </template>-->
     </var-date-picker>
   </div>
   <div>
