@@ -293,7 +293,7 @@ export default defineComponent({
     }
 
     const multipleInit = (value: Array<string>, type: string) => {
-      const rangeDate = type === 'month' ? chooseRangeMonth : chooseRangeDay
+      const rangeDate = type === 'month' ? chooseMonths : chooseDays
       const formatType = type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
       rangeDate.value = [...new Set(value.map((choose) => dayjs(choose).format(formatType)))]
     }
