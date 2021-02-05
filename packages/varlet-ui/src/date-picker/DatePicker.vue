@@ -4,7 +4,7 @@
       <div
         class="var-date-picker-title__year"
         :class="[isYearPanel ? 'var-date-picker-title__year--active' : null]"
-        @click="clickYear"
+        @click="clickEl('year')"
       >
         <slot name="year" :year="previewYear">
           {{ previewYear }}
@@ -17,7 +17,7 @@
           !isYearPanel ? 'var-date-picker-title__date--active' : null,
           range ? 'var-date-picker-title__date--range' : null,
         ]"
-        @click="clickDate"
+        @click="clickEl('date')"
       >
         <transition
           :name="multiple ? '' : reverse ? 'var-date-picker-reverse-translatey' : 'var-date-picker-translatey'"
@@ -59,7 +59,7 @@
           :current="currentDate"
           :choose="getChoose"
           :preview="getPreview"
-          :click-year="clickYear"
+          :click-year="() => clickEl('year')"
           :component-props="componentProps"
           @choose-month="getChooseMonth"
           @check-preview="checkPreview"
@@ -70,7 +70,7 @@
           :choose="getChoose"
           :preview="getPreview"
           :component-props="componentProps"
-          :click-month="clickMonth"
+          :click-month="() => clickEl('month')"
           @choose-day="getChooseDay"
           @check-preview="checkPreview"
           v-else-if="!isYearPanel && !isMonthPanel && type === 'date'"
@@ -179,39 +179,39 @@ export default defineComponent({
     const isSameYear: ComputedRef<boolean> = computed(() => chooseYear.value === previewYear.value)
     const isSameMonth: ComputedRef<boolean> = computed(() => chooseMonth.value.index === previewMonth.value.index)
 
-    const clickYear = () => {
-      isYearPanel.value = true
+    const clickEl = (type: string) => {
+      if (type === 'year') isYearPanel.value = true
+      else if (type === 'month') isMonthPanel.value = true
+      else {
+        isYearPanel.value = false
+        isMonthPanel.value = false
+      }
     }
 
-    const clickMonth = () => {
-      isMonthPanel.value = true
-    }
-
-    const clickDate = () => {
-      isYearPanel.value = false
-      isMonthPanel.value = false
-    }
-
-    const updateRangeDay = (date: string) => {
-      chooseRangeDay.value = rangeDone.value ? [date, date] : [chooseRangeDay.value[0], date]
+    const updateRange = (date: string, type: string) => {
+      const rangeDate = type === 'month' ? chooseRangeMonth : chooseRangeDay
+      rangeDate.value = rangeDone.value ? [date, date] : [rangeDate.value[0], date]
       rangeDone.value = !rangeDone.value
       if (rangeDone.value) {
-        let date = [...chooseRangeDay.value]
-        if (dayjs(chooseRangeDay.value[0]).isAfter(chooseRangeDay.value[1])) {
-          date = [chooseRangeDay.value[1], chooseRangeDay.value[0]]
+        let date = [...rangeDate.value]
+        if (dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])) {
+          date = [rangeDate.value[1], rangeDate.value[0]]
         }
         props['onUpdate:modelValue']?.(date)
         props.onChange?.(date)
       }
     }
 
-    const updateDays = (date: string) => {
-      const formatDate = chooseDays.value.map((chooseDay) => dayjs(chooseDay).format('YYYY-MM-DD'))
-      const index = formatDate.findIndex((choose) => choose === date)
-      if (index === -1) formatDate.push(date)
-      else formatDate.splice(index, 1)
-      props['onUpdate:modelValue']?.(formatDate)
-      props.onChange?.(formatDate)
+    const updateMultiple = (date: string, type: string) => {
+      const multipleDates = type === 'month' ? chooseMonths : chooseDays
+      const formatType = type === 'month' ? 'YYYY-MM' : 'YYYY-MM-DD'
+      const formatDates = multipleDates.value.map((date) => dayjs(date).format(formatType))
+
+      const index = formatDates.findIndex((choose) => choose === date)
+      if (index === -1) formatDates.push(date)
+      else formatDates.splice(index, 1)
+      props['onUpdate:modelValue']?.(formatDates)
+      props.onChange?.(formatDates)
     }
 
     const getChooseDay = (day: number) => {
@@ -224,41 +224,20 @@ export default defineComponent({
 
       const date = dayjs(`${previewYear.value}-${previewMonth.value.index}-${day}`).format('YYYY-MM-DD')
 
-      if (props.range) updateRangeDay(date)
-      else if (props.multiple) updateDays(date)
+      if (props.range) updateRange(date, 'day')
+      else if (props.multiple) updateMultiple(date, 'day')
       else {
         props['onUpdate:modelValue']?.(date)
         props.onChange?.(date)
       }
     }
 
-    const updateRangeMonth = (date: string) => {
-      chooseRangeMonth.value = rangeDone.value ? [date, date] : [chooseRangeMonth.value[0], date]
-      rangeDone.value = !rangeDone.value
-      if (rangeDone.value) {
-        let date = [...chooseRangeMonth.value]
-        if (dayjs(chooseRangeMonth.value[0]).isAfter(chooseRangeMonth.value[1])) {
-          date = [chooseRangeMonth.value[1], chooseRangeMonth.value[0]]
-        }
-        props['onUpdate:modelValue']?.(date)
-        props.onChange?.(date)
-      }
-    }
-
-    const updateMonths = (date: string) => {
-      const index = chooseMonths.value.findIndex((choose) => choose === date)
-      if (index === -1) chooseMonths.value.push(date)
-      else chooseMonths.value.splice(index, 1)
-      props['onUpdate:modelValue']?.([...chooseMonths.value])
-      props.onChange?.([...chooseMonths.value])
-    }
-
     const getChooseMonth = (month: Month) => {
       reverse.value = isSameYear.value ? month.index < chooseMonth.value.index : chooseYear.value > previewYear.value
       if (props.type === 'month' && !props.readonly) {
         const date = `${previewYear.value}-${month.index}`
-        if (props.range) updateRangeMonth(date)
-        else if (props.multiple) updateMonths(date)
+        if (props.range) updateRange(date, 'month')
+        else if (props.multiple) updateMultiple(date, 'month')
         else {
           props['onUpdate:modelValue']?.(date)
           props.onChange?.(date)
@@ -304,6 +283,32 @@ export default defineComponent({
       return true
     }
 
+    const rangeInit = (value: Array<string>, type: string) => {
+      const rangeDate = type === 'month' ? chooseRangeMonth : chooseRangeDay
+      const formatType = type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
+      rangeDate.value = value.map((choose) => dayjs(choose).format(formatType)).slice(0, 2)
+      if (rangeDate.value.length === 2 && dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])) {
+        rangeDate.value = [rangeDate.value[1], rangeDate.value[0]]
+      }
+    }
+
+    const multipleInit = (value: Array<string>, type: string) => {
+      const rangeDate = type === 'month' ? chooseRangeMonth : chooseRangeDay
+      const formatType = type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
+      rangeDate.value = [...new Set(value.map((choose) => dayjs(choose).format(formatType)))]
+    }
+
+    const dateInit = (value: string) => {
+      const formatDate = dayjs(value).format('YYYY-MM-D')
+      const [yearValue, monthValue, dayValue] = formatDate.split('-')
+      const mapMonth: Array<Month> = MONTH_LIST.filter((month) => month.index === monthValue)
+      chooseMonth.value = mapMonth[0]
+      chooseYear.value = yearValue
+      chooseDay.value = dayValue
+      previewMonth.value = mapMonth[0]
+      previewYear.value = yearValue
+    }
+
     watch(
       () => props.modelValue,
       (value) => {
@@ -311,34 +316,12 @@ export default defineComponent({
         if (props.range) {
           if (!isArray(value)) return
           rangeDone.value = value.length !== 1
-          if (props.type === 'month') {
-            chooseRangeMonth.value = value.map((choose) => dayjs(choose).format('YYYY-MM')).slice(0, 2)
-            if (
-              chooseRangeMonth.value.length === 2 &&
-              dayjs(chooseRangeMonth.value[0]).isAfter(chooseRangeMonth.value[1])
-            ) {
-              chooseRangeMonth.value = [chooseRangeMonth.value[1], chooseRangeMonth.value[0]]
-            }
-          } else {
-            chooseRangeDay.value = value.map((choose) => dayjs(choose).format('YYYY-MM-D')).slice(0, 2)
-            if (chooseRangeDay.value.length === 2 && dayjs(chooseRangeDay.value[0]).isAfter(chooseRangeDay.value[1])) {
-              chooseRangeDay.value = [chooseRangeDay.value[1], chooseRangeDay.value[0]]
-            }
-          }
+          rangeInit(value, props.type)
         } else if (props.multiple) {
           if (!isArray(value)) return
-          if (props.type === 'month')
-            chooseMonths.value = [...new Set(value.map((choose) => dayjs(choose).format('YYYY-MM')))]
-          else chooseDays.value = [...new Set(value.map((choose) => dayjs(choose).format('YYYY-MM-D')))]
+          multipleInit(value, props.type)
         } else {
-          const formatDate: string = dayjs(value as string).format('YYYY-MM-D')
-          const [yearValue, monthValue, dayValue] = formatDate.split('-')
-          const mapMonth: Array<Month> = MONTH_LIST.filter((month) => month.index === monthValue)
-          chooseMonth.value = mapMonth[0]
-          chooseYear.value = yearValue
-          chooseDay.value = dayValue
-          previewMonth.value = mapMonth[0]
-          previewYear.value = yearValue
+          dateInit(value as string)
         }
       },
       { immediate: true }
@@ -360,9 +343,7 @@ export default defineComponent({
       componentProps,
       slotProps,
       formatRange,
-      clickDate,
-      clickYear,
-      clickMonth,
+      clickEl,
       getChooseDay,
       getChooseMonth,
       getChooseYear,

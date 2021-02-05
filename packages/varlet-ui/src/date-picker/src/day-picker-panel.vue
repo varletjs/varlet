@@ -39,7 +39,7 @@ import { defineComponent, Ref, ref, PropType, computed, ComputedRef, watch, onMo
 import * as dayjsAll from 'dayjs'
 import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import * as isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
-import PanelHeader from './panel-header'
+import PanelHeader from './panel-header.vue'
 import Button from '../../button'
 import { WEEK_HEADER, Choose, Preview, ComponentProps, Week, PanelBtnDisabled } from '../props'
 
@@ -116,14 +116,15 @@ export default defineComponent({
     const initHeader = () => {
       const {
         preview: { previewYear, previewMonth },
+        componentProps: { max, min },
       }: { preview: Preview; componentProps: ComponentProps } = props
-      if (props.componentProps.max) {
+      if (max) {
         const date = `${previewYear}-${+previewMonth.index + 1}`
-        panelBtnDisabled.right = !dayjs(date).isSameOrBefore(dayjs(props.componentProps.max), 'month')
+        panelBtnDisabled.right = !dayjs(date).isSameOrBefore(dayjs(max), 'month')
       }
-      if (props.componentProps.min) {
+      if (min) {
         const date = `${previewYear}-${+previewMonth.index - 1}`
-        panelBtnDisabled.left = !dayjs(date).isSameOrAfter(dayjs(props.componentProps.min), 'month')
+        panelBtnDisabled.left = !dayjs(date).isSameOrAfter(dayjs(min), 'month')
       }
     }
 
@@ -146,7 +147,7 @@ export default defineComponent({
       const {
         choose: { chooseDays, chooseRangeDay },
         componentProps: { range },
-      }: { choose: Choose; preview: Preview; componentProps: ComponentProps } = props
+      }: { choose: Choose; componentProps: ComponentProps } = props
       if (!chooseRangeDay.length) return false
       if (range) {
         const isBeforeMax = dayjs(val).isSameOrBefore(dayjs(chooseRangeDay[1]), 'day')
@@ -172,12 +173,11 @@ export default defineComponent({
         componentProps: { allowedDates, color, multiple, range },
       }: { choose: Choose; preview: Preview; componentProps: ComponentProps } = props
       const val = `${previewYear}-${previewMonth.index}-${day}`
+      const shouldChooseResult = shouldChoose(val)
       const rangeOrMultiple = range || multiple
 
       const disabled = inRange(day) ? (allowedDates ? !allowedDates(val) : false) : true
-      const shouldChooseResult = shouldChoose(val)
       const plain = disabled ? true : rangeOrMultiple ? !shouldChooseResult : !isSame.value || +chooseDay !== day
-
       const bgColor = !plain ? color : ''
       const dayExist = rangeOrMultiple ? shouldChooseResult : +chooseDay === day && isSame.value
 
@@ -188,6 +188,7 @@ export default defineComponent({
         : outline
 
       const textColor = disabled ? '' : outline ? color : dayExist ? '' : 'rgba(0,0,0,.87)'
+
       return {
         disabled,
         plain,
