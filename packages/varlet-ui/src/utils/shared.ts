@@ -1,11 +1,11 @@
 export interface CacheInstance<T> {
-	cache: T[]
+  cache: T[]
 
-	has(key: T): boolean
+  has(key: T): boolean
 
-	add(key: T): void
+  add(key: T): void
 
-	remove(key: T): void
+  remove(key: T): void
 }
 
 export const isString = (val: unknown): val is string => typeof val === 'string'
@@ -96,3 +96,8 @@ export const createCache = <T>(max: number): CacheInstance<T> => {
     },
   }
 }
+
+export const cubic = (value: number): number => value ** 3
+
+export const easeInOutCubic = (value: number): number =>
+  value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2

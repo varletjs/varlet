@@ -11,229 +11,243 @@ module.exports = {
       logo: 'https://cn.vuejs.org/images/logo.png',
       search: {
         zh_CN: '搜索文档...',
-        en_US: 'Search...'
+        en_US: 'Search...',
       },
       i18nButton: {
         zh_CN: 'En',
-        en_US: '中文'
-      }
+        en_US: '中文',
+      },
     },
     menu: [
       {
         text: {
-          zh_CN: '快速开始'
+          zh_CN: '快速开始',
         },
-        isTitle: true
+        isTitle: true,
       },
 
       {
         text: {
-          zh_CN: '组件'
+          zh_CN: '组件',
         },
-        isTitle: true
+        isTitle: true,
       },
       {
         text: {
           zh_CN: 'Ripple 水波指令',
-          en_US: 'Ripple'
+          en_US: 'Ripple',
         },
-        doc: 'ripple'
+        doc: 'ripple',
       },
       {
         text: {
           zh_CN: 'Skeleton 骨架屏',
-          en_US: 'Skeleton'
+          en_US: 'Skeleton',
         },
-        doc: 'skeleton'
+        doc: 'skeleton',
       },
       {
         text: {
           zh_CN: 'Loading 加载',
-          en_US: 'Loading'
+          en_US: 'Loading',
         },
-        doc: 'loading'
+        doc: 'loading',
       },
       {
         text: {
           zh_CN: 'Button 按钮',
-          en_US: 'Button'
+          en_US: 'Button',
         },
-        doc: 'button'
+        doc: 'button',
       },
       {
         text: {
           zh_CN: 'Popup 弹出层',
-          en_US: 'Popup'
+          en_US: 'Popup',
         },
-        doc: 'popup'
+        doc: 'popup',
       },
       {
         text: {
           zh_CN: 'Snackbar 消息条',
-          en_US: 'Snackbar'
+          en_US: 'Snackbar',
         },
-        doc: 'snackbar'
+        doc: 'snackbar',
       },
       {
         text: {
           zh_CN: 'Progress 进度条',
-          en_US: 'Progress'
+          en_US: 'Progress',
         },
-        doc: 'progress'
+        doc: 'progress',
       },
       {
         text: {
           zh_CN: 'PullRefresh 下拉刷新',
-          en_US: 'PullRefresh'
+          en_US: 'PullRefresh',
         },
-        doc: 'pull-refresh'
+        doc: 'pull-refresh',
       },
       {
         text: {
           zh_CN: 'Chip 标签',
-          en_US: 'Chip'
+          en_US: 'Chip',
         },
-        doc: 'chip'
+        doc: 'chip',
       },
       {
         text: {
           zh_CN: 'Badge 徽标',
-          en_US: 'Badge'
+          en_US: 'Badge',
         },
-        doc: 'badge'
+        doc: 'badge',
       },
       {
         text: {
           zh_CN: 'ExpansionPanels 拓展面板',
-          en_US: 'ExpansionPanels'
+          en_US: 'ExpansionPanels',
         },
-        doc: 'Expansion-panels'
+        doc: 'Expansion-panels',
       },
       {
         text: {
           zh_CN: 'Tabs 选项卡',
-          en_US: 'Tabs'
+          en_US: 'Tabs',
         },
-        doc: 'tabs'
+        doc: 'tabs',
       },
       {
         text: {
           zh_CN: 'List 无限滚动列表',
-          en_US: 'List'
+          en_US: 'List',
         },
-        doc: 'list'
+        doc: 'list',
       },
       {
         text: {
           zh_CN: 'Sticky 粘性布局',
-          en_US: 'Sticky'
+          en_US: 'Sticky',
         },
-        doc: 'sticky'
+        doc: 'sticky',
       },
       {
         text: {
           zh_CN: 'Menu 菜单',
-          en_US: 'Menu'
+          en_US: 'Menu',
         },
-        doc: 'menu'
+        doc: 'menu',
       },
       {
         text: {
           zh_CN: 'Lazy 懒加载',
-          en_US: 'Lazy'
+          en_US: 'Lazy',
         },
-        doc: 'lazy'
+        doc: 'lazy',
       },
       {
         text: {
           zh_CN: 'Dialog 对话框',
-          en_US: 'Dialog'
+          en_US: 'Dialog',
         },
-        doc: 'dialog'
+        doc: 'dialog',
       },
       {
         text: {
           zh_CN: 'Image 图片',
-          en_US: 'Image'
+          en_US: 'Image',
         },
-        doc: 'image'
+        doc: 'image',
       },
       {
         text: {
           zh_CN: 'Icon 图标',
-          en_US: 'Icon'
+          en_US: 'Icon',
         },
-        doc: 'icon'
+        doc: 'icon',
       },
       {
         text: {
           zh_CN: 'Rate 评分',
-          en_US: 'Rate'
+          en_US: 'Rate',
         },
-        doc: 'rate'
+        doc: 'rate',
       },
       {
         text: {
           zh_CN: 'Input 输入框',
-          en_US: 'Input'
+          en_US: 'Input',
         },
-        doc: 'input'
+        doc: 'input',
       },
       {
         text: {
           zh_CN: 'Select 选择框',
-          en_US: 'Select'
+          en_US: 'Select',
         },
-        doc: 'select'
+        doc: 'select',
       },
       {
         text: {
           zh_CN: 'Radio 单选框',
-          en_US: 'Radio'
+          en_US: 'Radio',
         },
-        doc: 'radio'
+        doc: 'radio',
       },
       {
         text: {
           zh_CN: 'Checkbox 复选框',
-          en_US: 'Checkbox'
+          en_US: 'Checkbox',
         },
-        doc: 'checkbox'
+        doc: 'checkbox',
       },
       {
         text: {
           zh_CN: 'IndexBar 索引栏',
-          en_US: 'IndexBar'
+          en_US: 'IndexBar',
         },
-        doc: 'index-bar'
+        doc: 'index-bar',
       },
       {
         text: {
           zh_CN: 'Switch 开关',
-          en_US: 'Switch'
+          en_US: 'Switch',
         },
-        doc: 'switch'
+        doc: 'switch',
       },
       {
         text: {
           zh_CN: 'Slider 滑块',
-          en_US: 'slider'
+          en_US: 'slider',
         },
-        doc: 'slider'
+        doc: 'slider',
       },
       {
         text: {
           zh_CN: 'Swipe 轮播',
-          en_US: 'Swipe'
+          en_US: 'Swipe',
         },
-        doc: 'swipe'
-      }
+        doc: 'swipe',
+      },
+      {
+        text: {
+          zh_CN: 'DatePicker 日期选择器',
+          en_US: 'DatePicker',
+        },
+        doc: 'date-picker',
+      },
+      {
+        text: {
+          zh_CN: 'BackTop 回到顶部',
+          en_US: 'BackTop',
+        },
+        doc: 'back-top',
+      },
     ],
-    language: 'zh_CN'
+    language: 'zh_CN',
   },
   mobile: {
     title: 'Varlet 组件库示例',
     description: 'Varlet 组件库示例',
-    logo: 'https://cn.vuejs.org/images/logo.png'
-  }
+    logo: 'https://cn.vuejs.org/images/logo.png',
+  },
 }
