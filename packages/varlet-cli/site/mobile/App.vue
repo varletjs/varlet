@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="position: relative">
     <header>{{ componentName }}</header>
     <div class="router-view__block">
       <router-view />
@@ -41,18 +41,20 @@ body {
 }
 
 header {
-  position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   background-color: #fff;
   font-weight: 500;
   font-size: 18px;
-  margin-top: 52px;
+  height: 80px;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
 }
 
 .router-view__block {
-  padding: 0 15px 30px;
+  padding: 80px 15px 30px;
 }
 
 * {

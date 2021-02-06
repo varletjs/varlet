@@ -78,7 +78,7 @@ export default defineComponent({
       const componentName = pathArr[pathArr.length - 1]
       this.$router.push(`/${this.language}/${componentName}`)
     },
-    changeRoute(item) {
+    changeRoute(item: any) {
       this.$router.push(`/${this.language}/${item.doc}`)
     },
   },
