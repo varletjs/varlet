@@ -242,6 +242,13 @@ module.exports = {
         },
         doc: 'back-top',
       },
+      {
+        text: {
+          zh_CN: 'Cell 单元格',
+          en_US: 'Cell',
+        },
+        doc: 'cell',
+      },
     ],
     language: 'zh_CN',
   },

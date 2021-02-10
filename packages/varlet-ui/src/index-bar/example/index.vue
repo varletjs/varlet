@@ -1,24 +1,26 @@
 <template>
-	<var-index-bar v-model:active="active" :sticky-offset-top="35" @change="change">
-		<div v-for="item in list" :key="item">
-			<var-index-anchor :index="item" style="background: #a7d1e5"> 标题{{ item }} </var-index-anchor>
-			<span>{{ item }}文本</span><br />
-			<span>{{ item }}文本</span><br />
-			<span>{{ item }}文本</span><br />
-		</div>
-	</var-index-bar>
+  <var-index-bar v-model:active="active" @change="change">
+    <div v-for="item in list" :key="item">
+      <var-index-anchor :index="item" class="var-index-anchor__example"> Title {{ item }} </var-index-anchor>
+      <var-cell>{{ item }} text</var-cell>
+      <var-cell>{{ item }} text</var-cell>
+      <var-cell>{{ item }} text</var-cell>
+    </div>
+  </var-index-bar>
 </template>
 
 <script>
 import { defineComponent, ref, onBeforeMount } from 'vue'
 import IndexAnchor from '../../index-anchor/IndexAnchor.vue'
 import IndexBar from '..'
+import Cell from '../../cell'
 
 export default defineComponent({
   name: 'IndexBarExample',
   components: {
     [IndexBar.name]: IndexBar,
     [IndexAnchor.name]: IndexAnchor,
+    [Cell.name]: Cell,
   },
   setup() {
     const active = ref('A')
@@ -43,8 +45,13 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-.example {
-	background: antiquewhite;
+<style lang="less">
+.var-index-anchor__example {
+  background: #e7edf7;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  color: #2e67ba;
 }
 </style>

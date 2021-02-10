@@ -1,0 +1,50 @@
+@import '../styles/var';
+
+.var-cell {
+  align-items: center;
+  display: flex;
+  min-height: 40px;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  font-size: @font-size-md;
+  &--border {
+    &:after {
+      position: absolute;
+      box-sizing: border-box;
+      content: ' ';
+      pointer-events: none;
+      right: 16px;
+      bottom: 0;
+      left: 16px;
+      border-bottom: 1px solid #bcc2cb;
+      transform: scaleY(0.5);
+    }
+  }
+
+  &__icon {
+    margin-right: 12px;
+    flex: 0;
+  }
+
+  &__content {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  &__title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__label {
+    font-size: @font-size-sm;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  &__extra {
+    flex: 0;
+    margin-left: 12px;
+  }
+}
