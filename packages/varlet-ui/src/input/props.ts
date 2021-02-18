@@ -1,9 +1,5 @@
 import { PropType } from 'vue'
 
-export function textAlignValidator(textAlign: string) {
-  return ['left', 'right', 'center'].includes(textAlign)
-}
-
 export function typeValidator(type: string) {
   return ['text', 'password'].includes(type)
 }
@@ -54,11 +50,6 @@ export const props = {
   rows: {
     type: [String, Number],
     default: 8,
-  },
-  textAlign: {
-    type: String,
-    default: 'left',
-    validator: textAlignValidator,
   },
   placeholder: {
     type: String,

@@ -25,6 +25,13 @@ module.exports = {
         },
         isTitle: true,
       },
+
+      {
+        text: {
+          zh_CN: '组件',
+        },
+        isTitle: true,
+      },
       {
         text: {
           zh_CN: 'Ripple 水波指令',
@@ -220,6 +227,20 @@ module.exports = {
           en_US: 'Swipe',
         },
         doc: 'swipe',
+      },
+      {
+        text: {
+          zh_CN: 'DatePicker 日期选择器',
+          en_US: 'DatePicker',
+        },
+        doc: 'date-picker',
+      },
+      {
+        text: {
+          zh_CN: 'BackTop 回到顶部',
+          en_US: 'BackTop',
+        },
+        doc: 'back-top',
       },
     ],
     language: 'zh_CN',

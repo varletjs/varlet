@@ -59,12 +59,12 @@ async function build() {
 }
 
 ${icons
-    .map((icon) => {
-      return `.${namespace}-${icon.name}::before {
+  .map((icon) => {
+    return `.${namespace}-${icon.name}::before {
   content: "\\${icon.pointCode}";
 }`
-    })
-    .join('\n\n')}
+  })
+  .join('\n\n')}
 `
 
   const iconNames = icons.map((iconName) => `  "${iconName.name}"`)

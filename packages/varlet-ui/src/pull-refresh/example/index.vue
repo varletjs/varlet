@@ -1,9 +1,9 @@
 <template>
-	<var-pull-refresh @refresh="refresh" v-model="isRefresh" success-duration="2000">
-		<ul class="pull-refresh__example">
-			<li v-for="(item, index) in data" :key="index">{{ item + ' ' + (index + 1) }}</li>
-		</ul>
-	</var-pull-refresh>
+  <var-pull-refresh @refresh="refresh" v-model="isRefresh" success-duration="2000">
+    <ul class="pull-refresh__example">
+      <li v-for="(item, index) in data" :key="index">{{ item + ' ' + (index + 1) }}</li>
+    </ul>
+  </var-pull-refresh>
 </template>
 
 <script>
@@ -40,20 +40,24 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
+.var-pull-refresh {
+  margin-top: 18px;
+}
+
 .pull-refresh__example {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
-	li {
-		min-height: 40px;
-		line-height: 40px;
-		padding: 0 16px;
-		border-bottom: 1px solid #ccc;
+  li {
+    min-height: 40px;
+    line-height: 40px;
+    padding: 0 16px;
+    border-bottom: 1px solid #ccc;
 
-		&:first-child {
-			border-top: 1px solid #ccc;
-		}
-	}
+    &:first-child {
+      border-top: 1px solid #ccc;
+    }
+  }
 }
 </style>

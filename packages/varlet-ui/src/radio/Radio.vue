@@ -1,36 +1,36 @@
 <template>
-	<div class="var-radio__wrap">
-		<div class="var-radio" @click="handleClick" v-bind="$attrs">
-			<div
-				class="var-radio__action"
-				v-ripple="{ disabled: formDisabled || disabled || !ripple }"
-				:class="[
-					checked ? 'var-radio--checked' : 'var-radio--unchecked',
-					errorMessage || radioGroupErrorMessage ? 'var-radio--error' : null,
-					formDisabled || disabled ? 'var-radio--disabled' : null,
-				]"
-				:style="{ color: checked ? checkedColor : uncheckedColor }"
-			>
-				<slot name="checked-icon" v-if="checked">
-					<var-icon class="var-radio__icon" name="radio-marked" :style="{ fontSize: iconSize }" />
-				</slot>
-				<slot name="unchecked-icon" v-else>
-					<var-icon class="var-radio__icon" name="radio-blank" :style="{ fontSize: iconSize }" />
-				</slot>
-			</div>
-			<div
-				class="var-radio__text"
-				:class="[
-					errorMessage || radioGroupErrorMessage ? 'var-radio--error' : null,
-					formDisabled || disabled ? 'var-radio--disabled' : null,
-				]"
-			>
-				<slot />
-			</div>
-		</div>
+  <div class="var-radio__wrap">
+    <div class="var-radio" @click="handleClick" v-bind="$attrs">
+      <div
+        class="var-radio__action"
+        v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
+        :class="[
+          checked ? 'var-radio--checked' : 'var-radio--unchecked',
+          errorMessage || radioGroupErrorMessage ? 'var-radio--error' : null,
+          formDisabled || disabled ? 'var-radio--disabled' : null,
+        ]"
+        :style="{ color: checked ? checkedColor : uncheckedColor }"
+      >
+        <slot name="checked-icon" v-if="checked">
+          <var-icon class="var-radio__icon" name="radio-marked" :style="{ fontSize: iconSize }" />
+        </slot>
+        <slot name="unchecked-icon" v-else>
+          <var-icon class="var-radio__icon" name="radio-blank" :style="{ fontSize: iconSize }" />
+        </slot>
+      </div>
+      <div
+        class="var-radio__text"
+        :class="[
+          errorMessage || radioGroupErrorMessage ? 'var-radio--error' : null,
+          formDisabled || disabled ? 'var-radio--disabled' : null,
+        ]"
+      >
+        <slot />
+      </div>
+    </div>
 
-		<var-form-details class="var-radio__form-details" :error-message="errorMessage" />
-	</div>
+    <var-form-details class="var-radio__form-details" :error-message="errorMessage" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -55,9 +55,9 @@ export default defineComponent({
   props,
   setup(props) {
     const { bindParent: bindRadioGroup, parentProvider: radioGroupProvider } = useParent<
-			RadioGroupProvider,
-			RadioProvider
-		>(RADIO_GROUP_BIND_RADIO_KEY)
+      RadioGroupProvider,
+      RadioProvider
+    >(RADIO_GROUP_BIND_RADIO_KEY)
     const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, RadioProvider>(
       FORM_BIND_FORM_ITEM_KEY
     )
@@ -142,6 +142,7 @@ export default defineComponent({
       errorMessage,
       radioGroupErrorMessage: radioGroupProvider?.errorMessage,
       formDisabled: formProvider?.disabled,
+      formReadonly: formProvider?.readonly,
       handleClick,
       toggle,
       reset,

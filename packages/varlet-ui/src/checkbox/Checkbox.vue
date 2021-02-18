@@ -1,36 +1,36 @@
 <template>
-	<div class="var-checkbox__wrap" @click="handleClick" v-bind="$attrs">
-		<div class="var-checkbox">
-			<div
-				class="var-checkbox__action"
-				v-ripple="{ disabled: formDisabled || disabled || !ripple }"
-				:class="[
-					checked ? 'var-checkbox--checked' : 'var-checkbox--unchecked',
-					errorMessage || checkboxGroupErrorMessage ? 'var-checkbox--error' : null,
-					formDisabled || disabled ? 'var-checkbox--disabled' : null,
-				]"
-				:style="{ color: checked ? checkedColor : uncheckedColor }"
-			>
-				<slot name="checked-icon" v-if="checked">
-					<var-icon class="var-checkbox__icon" name="checkbox-marked" :style="{ fontSize: iconSize }" />
-				</slot>
-				<slot name="unchecked-icon" v-else>
-					<var-icon class="var-checkbox__icon" name="checkbox-blank-outline" :style="{ fontSize: iconSize }" />
-				</slot>
-			</div>
-			<div
-				class="var-checkbox__text"
-				:class="[
-					errorMessage || checkboxGroupErrorMessage ? 'var-checkbox--error' : null,
-					formDisabled || disabled ? 'var-checkbox--disabled' : null,
-				]"
-			>
-				<slot />
-			</div>
-		</div>
+  <div class="var-checkbox__wrap" @click="handleClick" v-bind="$attrs">
+    <div class="var-checkbox">
+      <div
+        class="var-checkbox__action"
+        v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
+        :class="[
+          checked ? 'var-checkbox--checked' : 'var-checkbox--unchecked',
+          errorMessage || checkboxGroupErrorMessage ? 'var-checkbox--error' : null,
+          formDisabled || disabled ? 'var-checkbox--disabled' : null,
+        ]"
+        :style="{ color: checked ? checkedColor : uncheckedColor }"
+      >
+        <slot name="checked-icon" v-if="checked">
+          <var-icon class="var-checkbox__icon" name="checkbox-marked" :style="{ fontSize: iconSize }" />
+        </slot>
+        <slot name="unchecked-icon" v-else>
+          <var-icon class="var-checkbox__icon" name="checkbox-blank-outline" :style="{ fontSize: iconSize }" />
+        </slot>
+      </div>
+      <div
+        class="var-checkbox__text"
+        :class="[
+          errorMessage || checkboxGroupErrorMessage ? 'var-checkbox--error' : null,
+          formDisabled || disabled ? 'var-checkbox--disabled' : null,
+        ]"
+      >
+        <slot />
+      </div>
+    </div>
 
-		<var-form-details class="var-checkbox__form-details" :error-message="errorMessage" />
-	</div>
+    <var-form-details class="var-checkbox__form-details" :error-message="errorMessage" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -59,9 +59,9 @@ export default defineComponent({
   props,
   setup(props) {
     const { bindParent: bindCheckboxGroup, parentProvider: checkboxGroupProvider } = useParent<
-			CheckboxGroupProvider,
-			CheckboxProvider
-		>(CHECKBOX_GROUP_BIND_CHECKBOX_KEY)
+      CheckboxGroupProvider,
+      CheckboxProvider
+    >(CHECKBOX_GROUP_BIND_CHECKBOX_KEY)
     const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, CheckboxProvider>(
       FORM_BIND_FORM_ITEM_KEY
     )
@@ -155,6 +155,7 @@ export default defineComponent({
       errorMessage,
       checkboxGroupErrorMessage: checkboxGroupProvider?.errorMessage,
       formDisabled: formProvider?.disabled,
+      formReadonly: formProvider?.readonly,
       handleClick,
       toggle,
       reset,

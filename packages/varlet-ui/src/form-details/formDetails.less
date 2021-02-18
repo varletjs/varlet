@@ -8,32 +8,34 @@
 @form-details-message-margin-right: 4px;
 
 .var {
-	&-form-details-enter-from,
-	&-form-details-leave-to {
-		opacity: 0;
-		margin-top: 2px !important;
-	}
+  &-form-details-enter-from,
+  &-form-details-leave-to {
+    opacity: 0;
+    margin-top: 2px !important;
+  }
 
-	&-form-details-enter-active,
-	&-form-details-leave-active {
-		transition: 0.2s all cubic-bezier(0.25, 0.8, 0.5, 1);
-	}
+  &-form-details-enter-active,
+  &-form-details-leave-active {
+    transition: 0.2s all cubic-bezier(0.25, 0.8, 0.5, 1);
+  }
 }
 
 .var-form-details {
-	display: flex;
-	justify-content: space-between;
-	font-size: @form-details-font-size;
-	margin-top: @form-details-margin-top;
+  display: flex;
+  justify-content: space-between;
+  font-size: @form-details-font-size;
+  margin-top: @form-details-margin-top;
 
-	&__message {
-		flex-grow: 1;
-		color: @form-details-error-color;
-		margin-right: @form-details-message-margin-right;
-	}
+  &__message {
+    flex-grow: 1;
+    color: @form-details-error-color;
+    margin-right: @form-details-message-margin-right;
+    user-select: none;
+  }
 
-	&__length {
-		flex-shrink: 0;
-		color: @form-details-length-color;
-	}
+  &__length {
+    flex-shrink: 0;
+    color: @form-details-length-color;
+    user-select: none;
+  }
 }

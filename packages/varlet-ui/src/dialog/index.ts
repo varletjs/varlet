@@ -32,12 +32,8 @@ let singletonOptions: DialogOptions | null
 
 function Dialog(options: DialogOptions | string): Promise<DialogResolvedData> {
   return new Promise((resolve) => {
-    if (singletonOptions) {
-      resolve({
-        state: 'exist',
-      })
-      return
-    }
+    Dialog.close()
+
     const dialogOptions: DialogOptions = isString(options) ? { message: options } : options
     const reactiveDialogOptions: DialogOptions = reactive(dialogOptions)
 

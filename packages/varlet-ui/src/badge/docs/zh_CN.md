@@ -19,12 +19,11 @@ export default defineComponent({
 通过设置`type`属性控制徽标的颜色
 
  ```html
-
-<var-badge type="primary"></var-badge>
-<var-badge type="info"></var-badge>
-<var-badge type="success"></var-badge>
-<var-badge type="warning"></var-badge>
-<var-badge type="danger"></var-badge>
+<var-badge type='primary'></var-badge>
+<var-badge type='info'></var-badge>
+<var-badge type='success'></var-badge>
+<var-badge type='warning'></var-badge>
+<var-badge type='danger'></var-badge>
 <var-badge></var-badge>
 ```
 
@@ -33,8 +32,7 @@ export default defineComponent({
 通过设置`dot` 属性把徽标设置成圆点
 
 ```html
-
-<var-badge type="danger" dot></var-badge>
+<var-badge type='danger' dot></var-badge>
 ```
 
 ### 自定义内容徽标
@@ -42,10 +40,9 @@ export default defineComponent({
 通过设置`value`的值定义徽标的内容
 
 ```html
-
-<var-badge type="danger" value="badge"></var-badge>
-<var-badge type="danger" value="hot"></var-badge>
-<var-badge type="danger" :value="66"></var-badge>
+<var-badge type='danger' value='badge'></var-badge>
+<var-badge type='danger' value='hot'></var-badge>
+<var-badge type='danger' :value='66'></var-badge>
 ```
 
 ### 最大值
@@ -53,9 +50,8 @@ export default defineComponent({
 通过设置`value`,`max-value`控制徽标显示内容的样式（当`value`与`max-value`都为数字时生效）
 
 ```html
-
-<var-badge type="danger" :value="value" :max-value="maxValue"></var-badge>
-<var-badge type="danger" :value="value1" :max-value="maxValue"></var-badge>
+<var-badge type='danger' :value='value' :max-value='maxValue'></var-badge>
+<var-badge type='danger' :value='value1' :max-value='maxValue'></var-badge>
 ```
 
 ```js
@@ -76,18 +72,17 @@ export default defineComponent({
 通过设置`position`的值定义徽标的位置
 
 ```html
-
-<var-badge type="danger" position="right-top">
-	<var-chip plain :round="false" color="#009688">右上</var-chip>
+<var-badge type='danger' position='right-top'>
+	<var-chip plain :round='false' color='#009688'>右上</var-chip>
 </var-badge>
-<var-badge type="danger" position="right-bottom">
-	<var-chip plain :round="false" color="#009688">右下</var-chip>
+<var-badge type='danger' position='right-bottom'>
+	<var-chip plain :round='false' color='#009688'>右下</var-chip>
 </var-badge>
-<var-badge type="danger" position="left-top">
-	<var-chip plain :round="false" color="#009688">左上</var-chip>
+<var-badge type='danger' position='left-top'>
+	<var-chip plain :round='false' color='#009688'>左上</var-chip>
 </var-badge>
-<var-badge type="danger" position="left-bottom">
-	<var-chip plain :round="false" color="#009688">左下</var-chip>
+<var-badge type='danger' position='left-bottom'>
+	<var-chip plain :round='false' color='#009688'>左下</var-chip>
 </var-badge>
 ```
 
@@ -96,10 +91,9 @@ export default defineComponent({
 通过设置`hidden`的值定义徽标是否显示
 
 ```html
-
-<var-button @click="handleChange">点击改变状态</var-button>
-<var-badge type="danger" position="right-top" :hidden="hidden">
-	<var-chip plain :round="false" color="#009688">徽标</var-chip>
+<var-button @click='handleChange'>点击改变状态</var-button>
+<var-badge type='danger' position='right-top' :hidden='hidden'>
+	<var-chip plain :round='false' color='#009688'>徽标</var-chip>
 </var-badge>
 ```
 
@@ -122,9 +116,8 @@ export default defineComponent({
 通过设置`color`的值自定义徽标颜色
 
 ```html
-
-<var-badge color="#6200ea" position="right-top">
-	<var-chip plain :round="false" color="#009688">徽标</var-chip>
+<var-badge color='#6200ea' position='right-top'>
+	<var-chip plain :round='false' color='#009688'>徽标</var-chip>
 </var-badge>
 ```
 
@@ -133,9 +126,8 @@ export default defineComponent({
 通过设置`icon`的值设置徽标图标
 
 ```html
-
-<var-badge color="#6200ea" position="right-top" icon="account-circle">
-	<var-chip plain :round="false" color="#009688">徽标</var-chip>
+<var-badge color='#6200ea' position='right-top' icon='account-circle'>
+	<var-chip plain :round='false' color='#009688'>徽标</var-chip>
 </var-badge>
 ```
 

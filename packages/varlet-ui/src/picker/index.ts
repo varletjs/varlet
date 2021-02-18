@@ -34,12 +34,8 @@ let singletonOptions: PickerOptions | null
 
 function Picker(options: PickerOptions | any[]): Promise<PickerResolvedData> {
   return new Promise((resolve) => {
-    if (singletonOptions) {
-      resolve({
-        state: 'exist',
-      })
-      return
-    }
+    Picker.close()
+
     const pickerOptions: PickerOptions = isArray(options) ? { columns: options } : options
     const reactivePickerOptions: PickerOptions = reactive(pickerOptions)
     reactivePickerOptions.dynamic = true

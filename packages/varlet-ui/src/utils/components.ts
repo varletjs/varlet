@@ -223,12 +223,12 @@ export function keyInProvides(key: symbol) {
 export function useValidation() {
   const errorMessage: Ref<string> = ref('')
 
-  const validate = async (rules: any, value: any): Promise<boolean> => {
+  const validate = async (rules: any, value: any, apis?: any): Promise<boolean> => {
     if (!isArray(rules) || !rules.length) {
       return true
     }
 
-    const resArr = await Promise.all(rules.map((rule) => rule(value)))
+    const resArr = await Promise.all(rules.map((rule) => rule(value, apis)))
 
     return !resArr.some((res) => {
       if (res !== true) {
@@ -244,9 +244,9 @@ export function useValidation() {
     errorMessage.value = ''
   }
 
-  const validateWithTrigger = async <T>(validateTrigger: T[], trigger: T, rules: any, value: any) => {
+  const validateWithTrigger = async <T>(validateTrigger: T[], trigger: T, rules: any, value: any, apis?: any) => {
     if (validateTrigger.includes(trigger)) {
-      ;(await validate(rules, value)) && (errorMessage.value = '')
+      ;(await validate(rules, value, apis)) && (errorMessage.value = '')
     }
   }
 

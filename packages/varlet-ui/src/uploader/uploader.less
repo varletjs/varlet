@@ -1,0 +1,211 @@
+@import '../styles/var';
+
+@uploader-action-background: #f7f8fa;
+@uploader-action-icon-color: #888;
+@uploader-action-icon-size: 24px;
+
+@uploader-action-margin: 0 0 10px;
+
+@uploader-file-size: 80px;
+@uploader-file-margin: 0 10px 10px 0;
+
+@uploader-file-name-background: #f7f8fa;
+@uploader-file-name-color: #888;
+@uploader-file-name-font-size: 12px;
+@uploader-file-name-padding: 10px;
+@uploader-file-text-align: center;
+
+@uploader-file-close-background: rgba(0, 0, 0, 0.6);
+@uploader-file-close-size: 24px;
+@uploader-file-close-icon-font-size: 14px;
+@uploader-file-close-icon-color: #fff;
+
+@uploader-file-cover-fit: cover;
+@uploader-file-cover-background: #f7f8fa;
+
+@uploader-preview-image-width: 100%;
+@uploader-preview-image-height: 100%;
+@uploader-preview-image-fit: contain;
+
+@uploader-preview-video-width: 100vw;
+@uploader-preview-video-height: 100vw;
+@uploader-preview-video-background: #fff;
+
+@uploader-preview-audio-width: 100vw;
+@uploader-preview-audio-height: 100vw;
+@uploader-preview-audio-background: #fff;
+
+@uploader-file-indicator-height: 4px;
+@uploader-file-indicator-primary-color: @color-primary;
+@uploader-file-indicator-success-color: @color-success;
+@uploader-file-indicator-error-color: @color-danger;
+@uploader-disabled-color: #ddd;
+
+@uploader-loading-background: linear-gradient(
+  90deg,
+  hsla(0, 0%, 100%, 0),
+  hsla(0, 0%, 100%, 0.3),
+  hsla(0, 0%, 100%, 0)
+);
+
+@keyframes var-uploader-loading-animation {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.var-uploader {
+  width: 100%;
+
+  &__file-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__file {
+    position: relative;
+    width: @uploader-file-size;
+    height: @uploader-file-size;
+    margin: @uploader-file-margin;
+    overflow: hidden;
+  }
+
+  &__file-name {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: @uploader-file-size - @uploader-file-name-padding * 2;
+    font-size: @uploader-file-name-font-size;
+    z-index: 0;
+    background: @uploader-file-name-background;
+    padding: @uploader-file-name-padding;
+    color: @uploader-file-name-color;
+    text-align: @uploader-file-text-align;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  &__file-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: @uploader-file-cover-background;
+    object-fit: @uploader-file-cover-fit;
+    pointer-events: none;
+  }
+
+  &__file-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    border-top: @uploader-file-close-size solid @uploader-file-close-background;
+    border-left: @uploader-file-close-size solid transparent;
+  }
+
+  &__file-close-icon {
+    position: absolute;
+    top: -@uploader-file-close-size;
+    right: 0;
+    font-size: @uploader-file-close-icon-font-size;
+    color: @uploader-file-close-icon-color;
+  }
+
+  &__file-indicator {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 100%;
+    height: @uploader-file-indicator-height;
+    transition: all 0.3s;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background: @uploader-file-indicator-primary-color;
+  }
+
+  &__action {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: @uploader-action-icon-color;
+    width: @uploader-file-size;
+    height: @uploader-file-size;
+    background: @uploader-action-background;
+    margin: @uploader-action-margin;
+  }
+
+  &__action-icon {
+    font-size: @uploader-action-icon-size;
+  }
+
+  &__action-input {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  &__preview {
+    background: #000;
+    box-shadow: none;
+  }
+
+  &__preview-image {
+    width: @uploader-preview-image-width;
+    height: @uploader-preview-image-height;
+    object-fit: @uploader-preview-image-fit;
+  }
+
+  &__preview-video {
+    width: @uploader-preview-video-width;
+    height: @uploader-preview-video-height;
+    background: @uploader-preview-video-background;
+  }
+
+  &__preview-audio {
+    width: @uploader-preview-audio-width;
+    background: @uploader-preview-audio-background;
+  }
+
+  &--loading {
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      animation: var-uploader-loading-animation 0.6s infinite;
+      background: @uploader-loading-background;
+    }
+  }
+
+  &--success {
+    background: @uploader-file-indicator-success-color;
+  }
+
+  &--error {
+    background: @uploader-file-indicator-error-color;
+  }
+
+  &--disabled {
+    background: @uploader-disabled-color;
+  }
+}

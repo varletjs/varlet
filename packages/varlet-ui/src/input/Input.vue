@@ -1,110 +1,108 @@
 <template>
-	<div
-		class="var-input var--box"
-		:class="[disabled ? 'var-input--disabled' : null]"
-		@click="handleClick"
-		v-bind="$attrs"
-	>
-		<div
-			class="var-input__controller"
-			:class="[
-				isFocus ? 'var-input--focus' : null,
-				errorMessage ? 'var-input--error' : null,
-				formDisabled || disabled ? 'var-input--disabled' : null,
-			]"
-			:style="{
-				color: isFocus ? activeColor : inactiveColor,
-			}"
-		>
-			<slot name="prepend-icon">
-				<div class="var-input__icon" @click="handleClickPrependIcon">
-					<var-icon :name="prependIcon" v-if="prependIcon" />
-				</div>
-			</slot>
+  <div
+    class="var-input var--box"
+    :class="[disabled ? 'var-input--disabled' : null]"
+    @click="handleClick"
+    v-bind="$attrs"
+  >
+    <div
+      class="var-input__controller"
+      :class="[
+        isFocus ? 'var-input--focus' : null,
+        errorMessage ? 'var-input--error' : null,
+        formDisabled || disabled ? 'var-input--disabled' : null,
+      ]"
+      :style="{
+        color: isFocus ? activeColor : inactiveColor,
+      }"
+    >
+      <slot name="prepend-icon">
+        <div class="var-input__icon" @click="handleClickPrependIcon">
+          <var-icon :name="prependIcon" v-if="prependIcon" />
+        </div>
+      </slot>
 
-			<div class="var-input__wrap">
-				<textarea
-					class="var-input__input"
-					ref="input"
-					autocomplete="off"
-					:class="[formDisabled || disabled ? 'var-input--disabled' : null, 'var-input--textarea']"
-					:style="{
-						textAlign,
-						color: textColor,
-						resize: resize ? 'vertical' : 'none',
-					}"
-					:id="inputId"
-					:disabled="formDisabled || disabled"
-					:readonly="formReadonly || readonly"
-					:rows="rows"
-					:maxlength="maxlength"
-					:value="modelValue"
-					v-if="textarea"
-					@focus="handleFocus"
-					@blur="handleBlur"
-					@input="handleInput"
-					@change="handleChange"
-				>
-				</textarea>
-				<input
-					class="var-input__input"
-					ref="input"
-					autocomplete="off"
-					:class="[formDisabled || disabled ? 'var-input--disabled' : null]"
-					:style="{
-						textAlign,
-						color: textColor,
-					}"
-					:id="inputId"
-					:type="type"
-					:disabled="formDisabled || disabled"
-					:readonly="formReadonly || readonly"
-					:maxlength="maxlength"
-					:value="modelValue"
-					v-else
-					@focus="handleFocus"
-					@blur="handleBlur"
-					@input="handleInput"
-					@change="handleChange"
-				/>
-				<label class="var-input__placeholder" :class="[computePlaceholderState()]" :for="inputId">
-					{{ placeholder }}
-				</label>
-				<div
-					class="var-input__line"
-					:class="[
-						formDisabled || disabled ? 'var-input--line-disabled' : null,
-						errorMessage ? 'var-input--line-error' : null,
-					]"
-					:style="{ background: inactiveColor }"
-					v-if="line"
-				>
-					<div
-						class="var-input__dot"
-						:class="[
-							isFocus ? 'var-input--spread' : null,
-							formDisabled || disabled ? 'var-input--line-disabled' : null,
-							errorMessage ? 'var-input--line-error' : null,
-						]"
-						:style="{ background: activeColor }"
-					></div>
-				</div>
+      <div class="var-input__wrap">
+        <textarea
+          class="var-input__input"
+          ref="input"
+          autocomplete="off"
+          :class="[formDisabled || disabled ? 'var-input--disabled' : null, 'var-input--textarea']"
+          :style="{
+            color: textColor,
+            resize: resize ? 'vertical' : 'none',
+          }"
+          :id="inputId"
+          :disabled="formDisabled || disabled"
+          :readonly="formReadonly || readonly"
+          :rows="rows"
+          :maxlength="maxlength"
+          :value="modelValue"
+          v-if="textarea"
+          @focus="handleFocus"
+          @blur="handleBlur"
+          @input="handleInput"
+          @change="handleChange"
+        >
+        </textarea>
+        <input
+          class="var-input__input"
+          ref="input"
+          autocomplete="off"
+          :class="[formDisabled || disabled ? 'var-input--disabled' : null]"
+          :style="{
+            color: textColor,
+          }"
+          :id="inputId"
+          :type="type"
+          :disabled="formDisabled || disabled"
+          :readonly="formReadonly || readonly"
+          :maxlength="maxlength"
+          :value="modelValue"
+          v-else
+          @focus="handleFocus"
+          @blur="handleBlur"
+          @input="handleInput"
+          @change="handleChange"
+        />
+        <label class="var-input__placeholder" :class="[computePlaceholderState()]" :for="inputId">
+          {{ placeholder }}
+        </label>
+        <div
+          class="var-input__line"
+          :class="[
+            formDisabled || disabled ? 'var-input--line-disabled' : null,
+            errorMessage ? 'var-input--line-error' : null,
+          ]"
+          :style="{ background: inactiveColor }"
+          v-if="line"
+        >
+          <div
+            class="var-input__dot"
+            :class="[
+              isFocus ? 'var-input--spread' : null,
+              formDisabled || disabled ? 'var-input--line-disabled' : null,
+              errorMessage ? 'var-input--line-error' : null,
+            ]"
+            :style="{ background: activeColor }"
+          ></div>
+        </div>
 
-				<var-form-details :error-message="errorMessage" :maxlength-text="maxlengthText" />
-			</div>
+        <var-form-details :error-message="errorMessage" :maxlength-text="maxlengthText" />
+      </div>
 
-			<slot name="append-icon">
-				<div class="var-input__icon" @click="handleClickAppendIcon">
-					<var-icon
-						:name="appendIcon || 'close-circle'"
-						:size="clearable ? '14px' : null"
-						v-if="appendIcon || clearable"
-						@click="handleClear"
-					/>
-				</div>
-			</slot>
-		</div>
-	</div>
+      <slot name="append-icon">
+        <div class="var-input__icon" @click="handleClickAppendIcon">
+          <var-icon
+            :name="appendIcon || 'close-circle'"
+            :size="clearable ? '14px' : null"
+            v-if="appendIcon || clearable"
+            @click="handleClear"
+          />
+        </div>
+      </slot>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -201,10 +199,10 @@ export default defineComponent({
     const handleClear = () => {
       if (
         formProvider?.disabled.value ||
-				formProvider?.readonly.value ||
-				props.disabled ||
-				props.readonly ||
-				!props.clearable
+        formProvider?.readonly.value ||
+        props.disabled ||
+        props.readonly ||
+        !props.clearable
       ) {
         return
       }

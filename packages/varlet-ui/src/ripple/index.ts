@@ -4,31 +4,21 @@ import './ripple.less'
 import '../styles/common.less'
 
 interface RippleStyles {
-	x: number
-	y: number
-	centerX: number
-	centerY: number
-	size: number
+  x: number
+  y: number
+  centerX: number
+  centerY: number
+  size: number
 }
 
 interface RippleOptions {
-	color?: string
-	disabled?: boolean
-	tasker?: number | null
+  color?: string
+  disabled?: boolean
+  tasker?: number | null
 }
 
 interface RippleHTMLElement extends HTMLElement {
-	_ripple?: RippleOptions
-}
-
-function recordStyles(element: RippleHTMLElement) {
-  const { zIndex, position, overflow, overflowX, overflowY } = window.getComputedStyle(element)
-
-  zIndex === 'auto' && (element.dataset.prevZIndex = zIndex)
-  position === 'static' && (element.dataset.prevPosition = position)
-  element.dataset.prevOverflow = overflow
-  element.dataset.prevOverflowX = overflowX
-  element.dataset.prevOverflowY = overflowY
+  _ripple?: RippleOptions
 }
 
 function setStyles(element: RippleHTMLElement) {
@@ -39,15 +29,6 @@ function setStyles(element: RippleHTMLElement) {
   element.style.overflowY = 'hidden'
   position === 'static' && (element.style.position = 'relative')
   zIndex === 'auto' && (element.style.zIndex = '1')
-}
-
-function resetStyles(element: RippleHTMLElement) {
-  element.dataset.prevZIndex && (element.style.zIndex = element.dataset.prevZIndex)
-  element.dataset.prevPosition && (element.style.position = element.dataset.prevPosition)
-
-  element.style.overflow = element.dataset.prevOverflow as string
-  element.style.overflowX = element.dataset.prevOverflowX as string
-  element.style.overflowY = element.dataset.prevOverflowY as string
 }
 
 function computeRippleStyles(element: RippleHTMLElement, event: TouchEvent): RippleStyles {
@@ -71,7 +52,7 @@ function computeRippleStyles(element: RippleHTMLElement, event: TouchEvent): Rip
 
 function createRipple(this: RippleHTMLElement, event: TouchEvent) {
   const _ripple = this._ripple as RippleOptions
-  if (_ripple.disabled) {
+  if (_ripple.disabled || _ripple.tasker) {
     return
   }
 
@@ -116,17 +97,12 @@ function removeRipple(this: RippleHTMLElement) {
     setTimeout(() => {
       lastRipple.style.opacity = `0`
 
-      setTimeout(() => {
-        const ripples: NodeListOf<RippleHTMLElement> = this.querySelectorAll('.var-ripple')
-
-        ripples.length === 1 && resetStyles(this)
-
-        lastRipple.parentNode?.removeChild(lastRipple)
-      }, 300)
+      setTimeout(() => lastRipple.parentNode?.removeChild(lastRipple), 300)
     }, delay)
   }
 
   _ripple.tasker ? setTimeout(task, 60) : task()
+  task()
 }
 
 function forbidRippleTask(this: RippleHTMLElement) {
@@ -140,12 +116,11 @@ function mounted(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>
   el._ripple = binding.value ?? {}
   el._ripple.tasker = null
 
-  recordStyles(el)
-
   el.addEventListener('touchstart', createRipple, { passive: true })
   el.addEventListener('touchend', removeRipple, { passive: true })
   el.addEventListener('touchcancel', removeRipple, { passive: true })
   el.addEventListener('touchmove', forbidRippleTask, { passive: true })
+  el.addEventListener('dragstart', removeRipple, { passive: true })
 }
 
 function unmounted(el: RippleHTMLElement) {
@@ -153,13 +128,12 @@ function unmounted(el: RippleHTMLElement) {
   el.removeEventListener('touchend', removeRipple)
   el.removeEventListener('touchcancel', removeRipple)
   el.removeEventListener('touchmove', forbidRippleTask)
+  el.removeEventListener('dragstart', removeRipple)
 }
 
 function updated(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>) {
   el._ripple = binding.value ?? {}
   el._ripple.tasker = null
-
-  recordStyles(el)
 }
 
 const Ripple: Directive & Plugin = {

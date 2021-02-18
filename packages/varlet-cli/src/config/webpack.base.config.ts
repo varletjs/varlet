@@ -140,14 +140,14 @@ export function createBaseConfig() {
           },
         },
         {
-          test: /\.(mp3|wav|ogg)$/,
+          test: /\.(mp3|wav|ogg|acc)$/,
           use: {
             loader: 'url-loader',
             options: createURLLoaderOptions('audio'),
           },
         },
         {
-          test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)$/,
+          test: /\.(mp4|webm)$/,
           use: {
             loader: 'url-loader',
             options: createURLLoaderOptions('video'),

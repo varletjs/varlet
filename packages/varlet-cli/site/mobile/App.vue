@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="position: relative">
     <header>{{ componentName }}</header>
     <div class="router-view__block">
       <router-view />
@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 body {
   margin: 0;
   padding: 0;
@@ -41,18 +41,20 @@ body {
 }
 
 header {
-  position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  height: 56px;
   background-color: #fff;
   font-weight: 500;
   font-size: 18px;
+  height: 80px;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
 }
 
 .router-view__block {
-  padding: 0 15px 30px;
+  padding: 80px 15px 30px;
 }
 
 * {
