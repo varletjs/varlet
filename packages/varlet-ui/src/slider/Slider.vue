@@ -1,109 +1,109 @@
 <template>
-	<div class="var-slider">
-		<div
-			class="var-slider-block"
-			:class="[disabled || formDisabled ? 'var-slider__disable' : null, errorMessage ? 'var-slider__error' : null]"
-			:style="{
-				height: `${3 * thumbSize}px`,
-				margin: `0 ${thumbSize / 2}px`,
-			}"
-			ref="sliderEl"
-			@click="click"
-		>
-			<div
-				class="var-slider__track"
-				:style="{
-					background: trackColor,
-					height: trackHeight + 'px',
-				}"
-			>
-				<div class="var-slider__track-fill" :style="getFillStyle"></div>
-			</div>
-			<div
-				class="var-slider__thumb"
-				:style="{
-					left: `${range ? modelValue[0] : modelValue}%`,
-				}"
-				@touchstart="start($event, 1)"
-				@touchmove="move($event, 1)"
-				@touchend="end(1)"
-				@touchcancel="end(1)"
-			>
-				<div
-					class="var-slider__thumb-block"
-					:style="{
-						background: thumbColor,
-						height: thumbSize + 'px',
-						width: thumbSize + 'px',
-					}"
-				></div>
-				<div
-					class="var-slider__thumb-ripple"
-					:class="[thumbProps1.active ? 'var-slider__thumb-ripple-active' : null]"
-					:style="{
-						background: thumbColor,
-						height: thumbSize ? (thumbProps1.active ? 3 * thumbSize + 'px' : '0px') : null,
-						width: thumbSize ? (thumbProps1.active ? 3 * thumbSize + 'px' : '0px') : null,
-					}"
-				></div>
-				<div
-					class="var-slider__thumb-label"
-					:class="[showLabel1 ? 'var-slider__thumb-label-active' : null]"
-					:style="{
-						background: labelColor,
-						color: labelTextColor,
-						height: 2 * thumbSize + 'px',
-						width: 2 * thumbSize + 'px',
-					}"
-				>
-					<span>{{ range ? modelValue[0] : modelValue }}</span>
-				</div>
-			</div>
+  <div class="var-slider">
+    <div
+      class="var-slider-block"
+      :class="[disabled || formDisabled ? 'var-slider__disable' : null, errorMessage ? 'var-slider__error' : null]"
+      :style="{
+        height: `${3 * thumbSize}px`,
+        margin: `0 ${thumbSize / 2}px`,
+      }"
+      ref="sliderEl"
+      @click="click"
+    >
+      <div
+        class="var-slider__track"
+        :style="{
+          background: trackColor,
+          height: trackHeight + 'px',
+        }"
+      >
+        <div class="var-slider__track-fill" :style="getFillStyle"></div>
+      </div>
+      <div
+        class="var-slider__thumb"
+        :style="{
+          left: `${range ? modelValue[0] : modelValue}%`,
+        }"
+        @touchstart="start($event, 1)"
+        @touchmove="move($event, 1)"
+        @touchend="end(1)"
+        @touchcancel="end(1)"
+      >
+        <div
+          class="var-slider__thumb-block"
+          :style="{
+            background: thumbColor,
+            height: thumbSize + 'px',
+            width: thumbSize + 'px',
+          }"
+        ></div>
+        <div
+          class="var-slider__thumb-ripple"
+          :class="[thumbProps1.active ? 'var-slider__thumb-ripple-active' : null]"
+          :style="{
+            background: thumbColor,
+            height: thumbSize ? (thumbProps1.active ? 3 * thumbSize + 'px' : '0px') : null,
+            width: thumbSize ? (thumbProps1.active ? 3 * thumbSize + 'px' : '0px') : null,
+          }"
+        ></div>
+        <div
+          class="var-slider__thumb-label"
+          :class="[showLabel1 ? 'var-slider__thumb-label-active' : null]"
+          :style="{
+            background: labelColor,
+            color: labelTextColor,
+            height: 2 * thumbSize + 'px',
+            width: 2 * thumbSize + 'px',
+          }"
+        >
+          <span>{{ range ? modelValue[0] : modelValue }}</span>
+        </div>
+      </div>
 
-			<div
-				class="var-slider__thumb"
-				v-if="range"
-				:style="{
-					left: `${range && modelValue[1]}%`,
-				}"
-				@touchstart="start($event, 2)"
-				@touchmove="move($event, 2)"
-				@touchend="end(2)"
-				@touchcancel="end(2)"
-			>
-				<div
-					class="var-slider__thumb-block"
-					:style="{
-						background: thumbColor,
-						height: thumbSize + 'px',
-						width: thumbSize + 'px',
-					}"
-				></div>
-				<div
-					class="var-slider__thumb-ripple"
-					:class="[thumbProps2.active ? 'var-slider__thumb-ripple-active' : null]"
-					:style="{
-						background: thumbColor,
-						height: thumbSize ? (thumbProps2.active ? 3 * thumbSize + 'px' : '0px') : null,
-						width: thumbSize ? (thumbProps2.active ? 3 * thumbSize + 'px' : '0px') : null,
-					}"
-				></div>
-				<div
-					class="var-slider__thumb-label"
-					:class="[showLabel2 ? 'var-slider__thumb-label-active' : null]"
-					:style="{
-						background: labelColor,
-						color: labelTextColor,
-						height: 2 * thumbSize + 'px',
-						width: 2 * thumbSize + 'px',
-					}"
-				>
-					<span>{{ range && modelValue[1] }}</span>
-				</div>
-			</div>
-		</div>
-		<var-form-details :error-message="errorMessage" :style="{ marginLeft: thumbSize / 2 + 'px', marginTop: 0 }" />
-	</div>
+      <div
+        class="var-slider__thumb"
+        v-if="range"
+        :style="{
+          left: `${range && modelValue[1]}%`,
+        }"
+        @touchstart="start($event, 2)"
+        @touchmove="move($event, 2)"
+        @touchend="end(2)"
+        @touchcancel="end(2)"
+      >
+        <div
+          class="var-slider__thumb-block"
+          :style="{
+            background: thumbColor,
+            height: thumbSize + 'px',
+            width: thumbSize + 'px',
+          }"
+        ></div>
+        <div
+          class="var-slider__thumb-ripple"
+          :class="[thumbProps2.active ? 'var-slider__thumb-ripple-active' : null]"
+          :style="{
+            background: thumbColor,
+            height: thumbSize ? (thumbProps2.active ? 3 * thumbSize + 'px' : '0px') : null,
+            width: thumbSize ? (thumbProps2.active ? 3 * thumbSize + 'px' : '0px') : null,
+          }"
+        ></div>
+        <div
+          class="var-slider__thumb-label"
+          :class="[showLabel2 ? 'var-slider__thumb-label-active' : null]"
+          :style="{
+            background: labelColor,
+            color: labelTextColor,
+            height: 2 * thumbSize + 'px',
+            width: 2 * thumbSize + 'px',
+          }"
+        >
+          <span>{{ range && modelValue[1] }}</span>
+        </div>
+      </div>
+    </div>
+    <var-form-details :error-message="errorMessage" :style="{ marginLeft: thumbSize / 2 + 'px', marginTop: 0 }" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -117,10 +117,10 @@ import { SliderProvider } from './provide'
 import FormDetails from '../form-details'
 
 type ThumbProps = {
-	startPosition: number
-	currentLeft: number
-	percentValue: number
-	active: boolean
+  startPosition: number
+  currentLeft: number
+  percentValue: number
+  active: boolean
 }
 
 export default defineComponent({
@@ -171,9 +171,9 @@ export default defineComponent({
 
     const getFillStyle: ComputedRef<Record<string, string | undefined>> = computed(() => {
       const width =
-				props.range && isArray(props.modelValue)
-				  ? Math.abs(props.modelValue[0] - props.modelValue[1])
-				  : props.modelValue
+        props.range && isArray(props.modelValue)
+          ? Math.abs(props.modelValue[0] - props.modelValue[1])
+          : props.modelValue
 
       const left = props.range && isArray(props.modelValue) ? Math.min(props.modelValue[0], props.modelValue[1]) : 0
 
@@ -236,10 +236,10 @@ export default defineComponent({
     const move = (event: TouchEvent, type: number) => {
       if (
         props.disabled ||
-				props.readonly ||
-				formProvider?.disabled.value ||
-				formProvider?.readonly.value ||
-				!isScroll.value
+        props.readonly ||
+        formProvider?.disabled.value ||
+        formProvider?.readonly.value ||
+        !isScroll.value
       )
         return
       let moveDistance: number
@@ -258,19 +258,14 @@ export default defineComponent({
 
     const end = (type: number) => {
       if (props.disabled || props.readonly || formProvider?.disabled.value || formProvider?.readonly.value) return
-      let curValue: number
       let rangeValue: Array<number> = []
-      if (type === 1) {
-        thumbProps1.currentLeft = thumbProps1.percentValue * unitWidth.value
-        thumbProps1.active = false
-        curValue = thumbProps1.percentValue
-        if (props.range && isArray(props.modelValue)) rangeValue = [curValue, props.modelValue[1]]
-      } else {
-        thumbProps2.currentLeft = thumbProps2.percentValue * unitWidth.value
-        thumbProps2.active = false
-        curValue = thumbProps2.percentValue
-        if (props.range && isArray(props.modelValue)) rangeValue = [props.modelValue[0], curValue]
-      }
+      const thumbProps = type === 1 ? thumbProps1 : thumbProps2
+
+      thumbProps.currentLeft = thumbProps.percentValue * unitWidth.value
+      thumbProps.active = false
+      const curValue: number = thumbProps.percentValue
+      if (props.range && isArray(props.modelValue))
+        rangeValue = type === 1 ? [curValue, props.modelValue[1]] : [props.modelValue[0], curValue]
 
       if (props.range) {
         props.onChange?.(rangeValue)

@@ -167,7 +167,7 @@ Snackbar.allowMultiple = function (bool = false) {
     for (let i = 0; i < Snackbar.uniqSnackbarOptions.length; i++) {
       Snackbar.uniqSnackbarOptions[i].reactiveSnackOptions.show = false
     }
-    this.isAllowMultiple = !!bool
+    this.isAllowMultiple = bool
   }
 }
 
