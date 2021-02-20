@@ -1,167 +1,117 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { resolve } from 'path'
 import { EXTENSIONS, POSTCSS_CONFIG, TS_CONFIG, VARLET_CONFIG } from '../shared/constant'
-import { createPostcssOptions } from './postcss.config'
 import { ForkTsCheckerWebpackPlugin } from 'fork-ts-checker-webpack-plugin/lib/ForkTsCheckerWebpackPlugin'
 import { VueLoaderPlugin } from 'vue-loader'
 import { pathExistsSync } from 'fs-extra'
 import { WebpackPluginInstance } from 'webpack'
-import { isDev } from '../shared/env'
-import { accessProperty } from '../shared/fsUtils'
-import { getVarletConfig } from './varlet.config'
+import { createPostcssOptions } from './postcss.config'
 
-export type URLLoaderType = 'image' | 'video' | 'audio' | 'font'
-
-export const commonTemplateOption = {
-  minify: {
-    removeAttributeQuotes: true,
-    collapseWhitespace: true,
+export const CSS_LOADERS = [
+  'style-loader',
+  'css-loader',
+  {
+    loader: 'postcss-loader',
+    options: { postcssOptions: createPostcssOptions(POSTCSS_CONFIG) },
   },
-  hash: true,
-}
-
-export function createURLLoaderOptions(type: URLLoaderType) {
-  return {
-    name: '[name].[hash:7].[ext]',
-    limit: 8 * 1024,
-    outputPath: `${type}s/`,
-    esModule: false,
-  }
-}
-
-export function createCSSLoaders() {
-  return [
-    isDev() ? 'style-loader' : MiniCssExtractPlugin.loader,
-    'css-loader',
-    {
-      loader: 'postcss-loader',
-      options: createPostcssOptions(POSTCSS_CONFIG),
-    },
-  ]
-}
-
-export function createBabelConfig() {
-  return {
-    loader: 'babel-loader',
-    options: {
-      presets: ['@babel/preset-env'],
-      plugins: ['@babel/plugin-transform-runtime'],
-    },
-  }
-}
+]
 
 export function createBasePlugins(): WebpackPluginInstance[] {
-  const varletConfig = getVarletConfig()
+  const plugins: WebpackPluginInstance[] = [new VueLoaderPlugin()]
 
-  const plugins: WebpackPluginInstance[] = [
-    new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      template: resolve(__dirname, '../../site/pc/index.html'),
-      filename: 'index.html',
-      chunks: ['pc'],
-      title: accessProperty(varletConfig, 'pc.title'),
-      logo: accessProperty(varletConfig, 'pc.logo'),
-      description: accessProperty(varletConfig, 'pc.description'),
-      ...commonTemplateOption,
-    }),
-    new HtmlWebpackPlugin({
-      template: resolve(__dirname, '../../site/mobile/mobile.html'),
-      filename: 'mobile.html',
-      chunks: ['mobile'],
-      title: accessProperty(varletConfig, 'mobile.title'),
-      logo: accessProperty(varletConfig, 'mobile.logo'),
-      description: accessProperty(varletConfig, 'mobile.description'),
-      ...commonTemplateOption,
-    }),
-  ]
-
-  pathExistsSync(TS_CONFIG) && plugins.push(new ForkTsCheckerWebpackPlugin())
+  pathExistsSync(TS_CONFIG) && plugins.push(new ForkTsCheckerWebpackPlugin({
+    typescript: {
+      mode: 'write-references',
+      extensions: {
+        vue: {
+          enabled: true,
+          compiler: '@vue/compiler-sfc',
+        },
+      },
+    },
+    logger: {
+      issues: 'console'
+    },
+  }))
 
   return plugins
 }
 
-export function createBaseConfig() {
-  return {
-    entry: {
-      pc: resolve(__dirname, '../../site/pc/main.ts'),
-      mobile: resolve(__dirname, '../../site/mobile/main.ts'),
-    },
-    resolve: {
-      extensions: EXTENSIONS,
-      alias: {
-        '@config': VARLET_CONFIG,
+export const BASE_CONFIG = {
+  entry: {
+    pc: resolve(__dirname, '../../site/pc/main.ts'),
+    mobile: resolve(__dirname, '../../site/mobile/main.ts')
+  },
+  resolve: {
+    extensions: EXTENSIONS,
+    alias: {
+      '@config': VARLET_CONFIG
+    }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        use: ['vue-loader']
       },
-    },
-    module: {
-      rules: [
-        {
-          test: /\.vue$/,
-          use: ['cache-loader', 'vue-loader'],
-        },
-        {
-          test: /\.js$/,
-          use: ['cache-loader', createBabelConfig()],
-          exclude: /node_modules/,
-        },
-        {
-          test: /\.ts$/,
-          use: [
-            'cache-loader',
-            createBabelConfig(),
-            {
-              loader: 'ts-loader',
-              options: {
-                appendTsSuffixTo: [/\.vue$/],
-                allowTsInNodeModules: true,
-                compilerOptions: {
-                  declaration: false,
-                },
-              },
-            },
-          ],
-        },
-        {
-          test: /\.md$/,
-          use: ['vue-loader', '@varlet/markdown-loader'],
-        },
-        {
-          test: /\.(png|jpg|gif|jpeg|svg)$/,
-          use: {
-            loader: 'url-loader',
-            options: createURLLoaderOptions('image'),
-          },
-        },
-        {
-          test: /\.(eot|ttf|woff|woff2)$/,
-          use: {
-            loader: 'url-loader',
-            options: createURLLoaderOptions('font'),
-          },
-        },
-        {
-          test: /\.(mp3|wav|ogg|acc)$/,
-          use: {
-            loader: 'url-loader',
-            options: createURLLoaderOptions('audio'),
-          },
-        },
-        {
-          test: /\.(mp4|webm)$/,
-          use: {
-            loader: 'url-loader',
-            options: createURLLoaderOptions('video'),
-          },
-        },
-        {
-          test: /\.css$/,
-          use: createCSSLoaders(),
-        },
-        {
-          test: /\.less$/,
-          use: [...createCSSLoaders(), 'less-loader'],
-        },
-      ],
-    },
-  }
+      {
+        test: /\.(js|ts)$/,
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-typescript'],
+            plugins: ['@babel/plugin-transform-runtime', '@babel/plugin-transform-typescript']
+          }
+        }],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.md$/,
+        use: ['vue-loader', '@varlet/markdown-loader']
+      },
+      {
+        test: /\.(png|jpg|gif|jpeg|svg)$/,
+        type: 'asset',
+        generator: {
+          filename: 'images/[hash][ext][query]'
+        }
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        type: 'asset',
+        generator: {
+          filename: 'fonts/[hash][ext][query]'
+        }
+      },
+      {
+        test: /\.(mp3|wav|ogg|acc)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'audio/[hash][ext][query]'
+        }
+      },
+      {
+        test: /\.(mp4|webm)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'video/[hash][ext][query]'
+        }
+      },
+      {
+        test: /\.css$/,
+        use: CSS_LOADERS
+      },
+      {
+        test: /\.less$/,
+        use: [...CSS_LOADERS, 'less-loader']
+      }
+    ]
+  },
+  cache: {
+    type: 'filesystem',
+    buildDependencies: {
+      config: [__filename]
+    }
+  },
+  plugins: createBasePlugins()
 }
+

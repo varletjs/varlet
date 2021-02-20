@@ -1,30 +1,29 @@
 import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import { createBaseConfig, createBasePlugins } from './webpack.base.config'
-import { OUTPUT_SITE_PATH } from '../shared/constant'
+import { BASE_CONFIG } from './webpack.base.config'
+import { OUTPUT_SITE_PATH, PRIMARY_COLOR } from '../shared/constant'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import { HTML_WEBPACK_PLUGINS } from './webpack.dev.config'
+
+const CompressionPlugin = require('compression-webpack-plugin')
 
 export function getBuildConfig() {
-  return merge(createBaseConfig() as any, {
+  return merge(BASE_CONFIG as any, {
     mode: 'production',
     output: {
       publicPath: './',
       path: OUTPUT_SITE_PATH,
-      filename: '[name].[hash:8].js',
-      chunkFilename: 'js/[name].[chunkhash:8].js',
+      filename: 'js/[name].[contenthash:8].js',
+      chunkFilename: 'js/[name].[contenthash:8].js'
     },
     plugins: [
       new WebpackBarPlugin({
         name: 'Site production building',
-        color: '#15DD6A'
-      }),
-      new MiniCssExtractPlugin({
-        filename: 'css/[name].[hash:8].css',
-        chunkFilename: 'css/[id].[chunkhash:8].css'
+        color: PRIMARY_COLOR
       }),
       new CleanWebpackPlugin(),
-      ...createBasePlugins()
+      new CompressionPlugin(),
+      ...HTML_WEBPACK_PLUGINS
     ]
   })
 }

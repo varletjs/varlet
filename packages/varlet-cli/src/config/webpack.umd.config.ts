@@ -1,17 +1,15 @@
 import merge from 'webpack-merge'
 import { resolve } from 'path'
-import { createBaseConfig } from './webpack.base.config'
+import { BASE_CONFIG } from './webpack.base.config'
 import { ES_DIR, UMD_DIR } from '../shared/constant'
 import { getVarletConfig } from './varlet.config'
 import { accessProperty, bigCamelize } from '../shared/fsUtils'
-import { VueLoaderPlugin } from 'vue-loader'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 export function getUmdConfig() {
   const varletConfig = getVarletConfig()
   const namespace = accessProperty(varletConfig, 'namespace')
 
-  return merge(createBaseConfig() as any, {
+  return merge(BASE_CONFIG as any, {
     mode: 'production',
     entry: resolve(ES_DIR, 'umdIndex.js'),
     output: {
@@ -28,12 +26,6 @@ export function getUmdConfig() {
         commonjs2: 'vue',
         amd: 'vue',
       },
-    },
-    plugins: [
-      new VueLoaderPlugin(),
-      new MiniCssExtractPlugin({
-        filename: `${namespace}.css`,
-      }),
-    ],
+    }
   })
 }

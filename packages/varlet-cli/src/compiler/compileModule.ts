@@ -5,17 +5,15 @@ import { compileSFC } from './compileSFC'
 import { resolve } from 'path'
 import { compileLibraryEntry, compileScriptFile } from './compileScript'
 import { compileLess } from './compileStyle'
-import { setProd } from '../shared/env'
 import { getUmdConfig } from '../config/webpack.umd.config'
-import webpack, { Stats } from 'webpack'
+import webpack from 'webpack'
 import logger from '../shared/logger'
 
 export function compileUMD() {
   return new Promise<void>((resolve, reject) => {
-    setProd()
     const config = getUmdConfig()
 
-    webpack(config, (err, stats: Stats) => {
+    webpack(config, (err, stats: any) => {
       if (err) {
         logger.error(err.toString())
         reject()

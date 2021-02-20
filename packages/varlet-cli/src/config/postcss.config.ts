@@ -1,18 +1,12 @@
 import { pathExistsSync } from 'fs-extra'
 
 export function createPostcssOptions(path: string) {
-  const defaultConfig = {
-    postcssOptions: {
-      plugins: ['autoprefixer']
-    }
-  }
+  const rawOptions = pathExistsSync(path) && require(path) || {}
 
-  return pathExistsSync(path)
-    ? {
-      postcssOptions: {
-        config: path,
-        plugins: ['autoprefixer']
-      }
-    }
-    : defaultConfig
+  const rawPlugins = Array.isArray(rawOptions.plugins) ? rawOptions.plugins : []
+
+  return {
+    ...rawOptions,
+    plugins: [require('autoprefixer'), ...rawPlugins]
+  }
 }

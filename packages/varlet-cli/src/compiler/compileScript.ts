@@ -28,15 +28,15 @@ export async function compileScript(script: string, path: string, modules: strin
     filename: replaceExt(path, '.ts'),
     presets: [
       [
-        require('@babel/preset-env'),
+        '@babel/preset-env',
         {
           loose: true,
           modules,
         },
       ],
-      require('@babel/preset-typescript'),
+      '@babel/preset-typescript',
     ],
-    plugins: [require('@babel/plugin-transform-runtime')],
+    plugins: ['@babel/plugin-transform-runtime'],
   })) as BabelFileResult
   code = replaceStyleExt(code as string)
   code = replaceVueExt(code as string)

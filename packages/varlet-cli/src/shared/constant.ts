@@ -16,6 +16,7 @@ export const DOCS_DIR_NAME = 'docs'
 export const EXAMPLE_DIR_INDEX = 'index.vue'
 export const TESTS_DIR_NAME = '__tests__'
 export const EXTENSIONS = ['.vue', '.ts', '.js', '.less', '.css']
+export const PRIMARY_COLOR = '#4f87f7'
 
 export const JEST_CONFIG = resolve(__dirname, '../config/jest.config.js')
 export const JEST_MEDIA_MOCK = resolve(__dirname, '../config/jest.media.mock.js')

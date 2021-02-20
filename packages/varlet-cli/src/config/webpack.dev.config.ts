@@ -1,17 +1,45 @@
 import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
-import { createBaseConfig, createBasePlugins } from './webpack.base.config'
+import { BASE_CONFIG } from './webpack.base.config'
 import { getVarletConfig } from './varlet.config'
 import { accessProperty } from '../shared/fsUtils'
+import { PRIMARY_COLOR } from '../shared/constant'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import { resolve } from 'path'
+
+const varletConfig = getVarletConfig()
+
+export function createHtmlPluginOptions(type: 'pc' | 'mobile') {
+  return {
+    minify: {
+      removeAttributeQuotes: true,
+      collapseWhitespace: true
+    },
+    hash: true,
+    chunks: [type],
+    title: accessProperty(varletConfig, `${type}.title`),
+    logo: accessProperty(varletConfig, `${type}.logo`),
+    description: accessProperty(varletConfig, `${type}.description`)
+  }
+}
+
+export const HTML_WEBPACK_PLUGINS = [
+  new HtmlWebpackPlugin({
+    template: resolve(__dirname, '../../site/pc/index.html'),
+    filename: 'index.html',
+    ...createHtmlPluginOptions('pc')
+  }),
+  new HtmlWebpackPlugin({
+    template: resolve(__dirname, '../../site/mobile/mobile.html'),
+    filename: 'mobile.html',
+    ...createHtmlPluginOptions('mobile')
+  })
+]
 
 export function getDevConfig() {
-  const varletConfig = getVarletConfig()
-  return merge(createBaseConfig() as any, {
+  return merge(BASE_CONFIG as any, {
     mode: 'development',
     devtool: 'source-map',
-    output: {
-      chunkFilename: 'js/[name].[chunkhash:8].js',
-    },
     devServer: {
       port: accessProperty(varletConfig, 'port'),
       host: accessProperty(varletConfig, 'host'),
@@ -35,9 +63,9 @@ export function getDevConfig() {
     plugins: [
       new WebpackBarPlugin({
         name: 'Site development building',
-        color: '#15DD6A',
+        color: PRIMARY_COLOR
       }),
-      ...createBasePlugins(),
+      ...HTML_WEBPACK_PLUGINS
     ],
   })
 }

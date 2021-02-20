@@ -249,6 +249,20 @@ module.exports = {
         },
         doc: 'cell',
       },
+      {
+        text: {
+          zh_CN: 'Uploader 文件上传',
+          en_US: 'Uploader',
+        },
+        doc: 'uploader',
+      },
+      {
+        text: {
+          zh_CN: 'Picker 多列选择器',
+          en_US: 'Picker',
+        },
+        doc: 'picker',
+      },
     ],
     language: 'zh_CN',
   },

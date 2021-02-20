@@ -4,7 +4,6 @@ import logger from '../shared/logger'
 import { getDevConfig } from '../config/webpack.dev.config'
 import { getPort } from 'portfinder'
 import { buildMobileSiteRoutes, buildPcSiteRoutes } from '../compiler/compileRoutes'
-import { setDev } from '../shared/env'
 import { ensureDirSync } from 'fs-extra'
 import { SRC_DIR, VARLET_CONFIG } from '../shared/constant'
 import { ensureConfigFile } from '../shared/fsUtils'
@@ -27,8 +26,6 @@ export function runDevServer(port: number, config: any) {
 }
 
 export async function dev() {
-  setDev()
-
   ensureConfigFile(VARLET_CONFIG)
   ensureDirSync(SRC_DIR)
 

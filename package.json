@@ -57,9 +57,6 @@
       "packages/varlet-ui/site/**"
     ]
   },
-  "publishConfig": {
-    "access": "publish"
-  },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",

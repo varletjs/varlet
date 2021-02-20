@@ -1,5 +1,4 @@
 import chalk from 'chalk'
-import { Stats } from 'webpack'
 
 export default {
   info(text: string) {
@@ -11,7 +10,7 @@ export default {
   warning(text: string) {
     console.log(chalk.hex('#DDBF69')(text))
   },
-  error(text: string | Stats) {
+  error(text: string | any) {
     console.log(chalk.hex('#AE4434')(text))
   }
 }
