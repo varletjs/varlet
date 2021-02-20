@@ -5,7 +5,7 @@
   </div>
   <div>
     <app-type>日期选择器</app-type>
-    <var-date-picker type="date" v-model="date1" />
+    <var-date-picker type="date" v-model="date1" shadow />
   </div>
   <div>
     <app-type>选择多个日期</app-type>

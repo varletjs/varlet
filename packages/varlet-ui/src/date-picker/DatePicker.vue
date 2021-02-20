@@ -82,14 +82,12 @@
 
 <script lang="ts">
 import { defineComponent, Ref, ref, computed, ComputedRef, reactive, UnwrapRef, watch } from 'vue'
-import * as dayjsAll from 'dayjs'
+import * as dayjs from 'dayjs'
 import MonthPickerPanel from './src/month-picker-panel.vue'
 import YearPickerPanel from './src/year-picker-panel.vue'
 import DayPickerPanel from './src/day-picker-panel.vue'
 import { props, Month, MONTH_LIST, Choose, Preview, WEEK_HEADER, Week, ComponentProps } from './props'
 import { isArray } from '../utils/shared'
-
-const dayjs = dayjsAll.default
 
 export default defineComponent({
   name: 'VarDatePicker',
@@ -295,7 +293,7 @@ export default defineComponent({
     const multipleInit = (value: Array<string>, type: string) => {
       const rangeDate = type === 'month' ? chooseMonths : chooseDays
       const formatType = type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
-      rangeDate.value = [...new Set(value.map((choose) => dayjs(choose).format(formatType)))]
+      rangeDate.value = Array.from(new Set(value.map((choose) => dayjs(choose).format(formatType))))
     }
 
     const dateInit = (value: string) => {

@@ -14,10 +14,8 @@
 
 <script lang="ts">
 import { defineComponent, computed, ComputedRef, onMounted, PropType } from 'vue'
-import * as dayjsAll from 'dayjs'
+import * as dayjs from 'dayjs'
 import { ComponentProps } from '../props'
-
-const dayjs = dayjsAll.default
 
 export default defineComponent({
   name: 'YearPickerPanel',

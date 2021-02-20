@@ -30,16 +30,15 @@
 
 <script lang="ts">
 import { defineComponent, Ref, ref, PropType, computed, ComputedRef, reactive, watch, UnwrapRef } from 'vue'
-import * as dayjsAll from 'dayjs'
+import * as dayjs from 'dayjs'
 import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import * as isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import { MONTH_LIST, Choose, Month, Preview, ComponentProps, PanelBtnDisabled } from '../props'
 import PanelHeader from './panel-header.vue'
 import Button from '../../button'
 
-const dayjs = dayjsAll.default
-dayjs.extend(isSameOrBefore.default)
-dayjs.extend(isSameOrAfter.default)
+dayjs.extend(isSameOrBefore)
+dayjs.extend(isSameOrAfter)
 
 export default defineComponent({
   name: 'MonthPickerPanel',
@@ -109,7 +108,7 @@ export default defineComponent({
       }
 
       const choose: Array<string> =
-        type === 'month' ? chooseMonths : [...new Set(chooseDays.map((value) => value.slice(0, 7)))]
+        type === 'month' ? chooseMonths : Array.from(new Set(chooseDays.map((value) => value.slice(0, 7))))
       return choose.includes(val)
     }
 

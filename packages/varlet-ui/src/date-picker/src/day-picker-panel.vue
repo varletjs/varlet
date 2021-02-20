@@ -36,16 +36,15 @@
 
 <script lang="ts">
 import { defineComponent, Ref, ref, PropType, computed, ComputedRef, watch, onMounted, UnwrapRef, reactive } from 'vue'
-import * as dayjsAll from 'dayjs'
+import * as dayjs from 'dayjs'
 import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import * as isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import PanelHeader from './panel-header.vue'
 import Button from '../../button'
 import { WEEK_HEADER, Choose, Preview, ComponentProps, Week, PanelBtnDisabled } from '../props'
 
-const dayjs = dayjsAll.default
-dayjs.extend(isSameOrBefore.default)
-dayjs.extend(isSameOrAfter.default)
+dayjs.extend(isSameOrBefore)
+dayjs.extend(isSameOrAfter)
 
 export default defineComponent({
   name: 'DayPickerPanel',
@@ -110,7 +109,7 @@ export default defineComponent({
       const monthNum = dayjs(`${previewYear}-${previewMonth.index}`).daysInMonth()
       const firstDayToWeek = dayjs(`${previewYear}-${previewMonth.index}-01`).day()
       const index = sortWeekList.value.findIndex((week: Week) => week.index === firstDayToWeek)
-      days.value = [...Array(index).fill(-1), ...Array(monthNum + 1).keys()].filter((value) => value)
+      days.value = [...Array(index).fill(-1), ...Array.from(Array(monthNum + 1).keys())].filter((value) => value)
     }
 
     const initHeader = () => {
