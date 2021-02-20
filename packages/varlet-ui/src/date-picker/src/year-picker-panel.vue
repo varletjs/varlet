@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, ComputedRef, onMounted, PropType } from 'vue'
-import * as dayjs from 'dayjs'
+import dayjs from 'dayjs'
 import { ComponentProps } from '../props'
 
 export default defineComponent({

@@ -30,9 +30,9 @@
 
 <script lang="ts">
 import { defineComponent, Ref, ref, PropType, computed, ComputedRef, reactive, watch, UnwrapRef } from 'vue'
-import * as dayjs from 'dayjs'
-import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
-import * as isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
+import dayjs from 'dayjs'
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import { MONTH_LIST, Choose, Month, Preview, ComponentProps, PanelBtnDisabled } from '../props'
 import PanelHeader from './panel-header.vue'
 import Button from '../../button'
