@@ -35,13 +35,19 @@
     </div>
     <div class="varlet-site-content">
       <div class="varlet-site-nav">
-        <p v-for="item in menu" class="varlet-site-nav__item" v-ripple @click="changeRoute(item)">
-          <span v-if="item.isTitle">{{ item.text[language] }}</span>
-          <a v-else>{{ item.text[language] }}</a>
-        </p>
+        <var-cell v-for="item in menu" class="varlet-site-nav__item" v-ripple @click="changeRoute(item)">
+          <span v-if="item.isTitle" class="varlet-site-nav__item--title">{{ item.text[language] }}</span>
+          <span
+            v-else
+            class="varlet-site-nav__item--link"
+            :class="`${item.doc === componentName ? 'varlet-site-nav__item--active' : ''}`"
+            >{{ item.text[language] }}</span
+          >
+        </var-cell>
       </div>
       <router-view />
       <div class="varlet-site-mobile">
+        <div class="varlet-site-empty"></div>
         <div class="varlet-site-mobile-content">
           <iframe :src="`./mobile.html#/${componentName}`"></iframe>
         </div>
@@ -54,54 +60,85 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, Ref, getCurrentInstance, watch } from 'vue'
 import Ripple from '../../../varlet-ui/src/ripple'
+import { useRoute, useRouter } from 'vue-router'
+import Cell from '../../../varlet-ui/src/cell'
 
 export default defineComponent({
-  computed: {},
   directives: { Ripple },
-  data() {
-    return {
-      menu: [],
-      language: '',
-      header: {},
-      componentName: 'button',
-      title: '',
-      versionList: ['2.10.14', '1.x', '3.x'],
-      isHideVersion: true,
+  components: {
+    [Cell.name]: Cell,
+  },
+  setup() {
+    type Menu = {
+      isTitle: boolean
+      doc: string
+      text: Record<string, string>
     }
-  },
-  methods: {
-    switchLanguage() {
-      this.language = this.language === 'zh_CN' ? 'en_US' : 'zh_CN'
-      const pathArr = this.$route.fullPath.split('/')
+    type Header = {
+      i18nButton: Record<string, string>
+      logo: string
+      search: Record<string, string>
+    }
+    const menu: Ref<Menu[]> = ref([])
+    const language: Ref<string> = ref('')
+    const header: Ref<Header> = ref({ i18nButton: {}, logo: '', search: {} })
+    const componentName = ref('button')
+    const title: Ref<string> = ref('')
+    const versionList: Ref<string[]> = ref()[('2.10.14', '1.x', '3.x')]
+    const isHideVersion: Ref<boolean> = ref(true)
+    const config = getCurrentInstance().appContext.config.globalProperties.$config
+    const { pc = {}, title: configTitle } = config
+    const {
+      header: configHeader = { i18nButton: {}, logo: '', search: {} },
+      menu: configMenu = [],
+      language: configLanguage,
+    } = pc
+    menu.value = configMenu
+    language.value = configLanguage
+    header.value = configHeader
+    title.value = configTitle
+    const route = useRoute()
+    const router = useRouter()
+    const switchLanguage = () => {
+      language.value = language.value === 'zh_CN' ? 'en_US' : 'zh_CN'
+      const pathArr = route.fullPath.split('/')
       const componentName = pathArr[pathArr.length - 1]
-      this.$router.push(`/${this.language}/${componentName}`)
-    },
-    changeRoute(item: any) {
-      this.$router.push(`/${this.language}/${item.doc}`)
-    },
-  },
-  created() {
-    const _this: any = this
-    const { pc = {}, title } = _this.$config
-    const { description, header = {}, logo, menu = [], language } = pc
-    this.menu = menu
-    this.language = language
-    this.header = header
-    this.title = title
-  },
-  watch: {
-    $route(to, from) {
-      // todo 还需拿取对应组件名的数组进行判断
-      const index = to.path.lastIndexOf('/')
-      this.componentName = to.path.slice(index + 1)
-    },
+      router.push(`/${language.value}/${componentName}`)
+    }
+    const changeRoute = (item) => {
+      if (item.isTitle) {
+        return false
+      }
+      router.push(`/${language.value}/${item.doc}`)
+    }
+    console.log(header.value)
+    watch(
+      () => route.path,
+      (to: string) => {
+        const index = to.lastIndexOf('/')
+        componentName.value = to.slice(index + 1)
+      }
+    )
+    return {
+      menu,
+      language,
+      header,
+      componentName,
+      title,
+      versionList,
+      isHideVersion,
+      switchLanguage,
+      changeRoute,
+    }
   },
 })
 </script>
 
 <style lang="less">
+@import '../varlet-ui/src/styles/var';
+
 body,
 html,
 #app {
@@ -120,7 +157,6 @@ iframe {
   width: 100%;
   height: 100%;
   border: none;
-  border-radius: 3.5vh;
 }
 
 .varlet {
@@ -136,10 +172,10 @@ iframe {
       align-self: center;
 
       &-content {
-        height: 99%;
+        height: 660px;
         position: absolute;
-        z-index: -1;
-        top: 0.5%;
+        z-index: -2;
+        top: 47px;
         width: calc(100% - 40px);
         margin-left: 20px;
       }
@@ -157,10 +193,20 @@ iframe {
       }
     }
 
+    &-empty {
+      height: 27px;
+      width: calc(100% - 40px);
+      margin-left: 20px;
+      background-color: @color-primary;
+      position: absolute;
+      top: 21px;
+      z-index: -1;
+    }
+
     &-header {
+      background-color: @color-primary;
       display: flex;
       align-items: center;
-      background-color: #001938;
       color: white;
       height: 60px;
       padding: 0 30px;
@@ -300,13 +346,14 @@ iframe {
       }
 
       h1 {
-        margin: 0 0 30px;
+        //margin: 0 0 30px;
+        line-height: 40px;
         font-size: 30px;
         cursor: default;
       }
 
       h2 {
-        margin: 45px 0 20px;
+        margin: 30px 0 20px;
         font-size: 25px;
       }
 
@@ -434,32 +481,23 @@ iframe {
         margin: 0;
         cursor: pointer;
 
-        a,
-        span {
-          display: inline-block;
-          margin: 0;
-          padding: 8px 0 8px 30px;
-          line-height: 28px;
-        }
-
-        span {
+        &--title {
           font-weight: 700;
           font-size: 16px;
         }
 
-        a {
-          text-decoration: none;
+        &--link {
           font-size: 14px;
           color: #455a64;
           transition: color 0.2s;
 
           &:hover {
-            color: blueviolet;
+            color: @color-primary;
           }
         }
 
-        .router-link-active {
-          color: blueviolet;
+        &--active {
+          color: @color-primary;
         }
       }
     }

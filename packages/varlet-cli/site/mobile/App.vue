@@ -8,23 +8,31 @@
 </template>
 
 <script lang="ts">
-export default {
-  data() {
+import { defineComponent, ref, Ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
+
+export default defineComponent({
+  setup() {
+    const componentName: Ref<string> = ref('')
+    const route = useRoute()
+    watch(
+      () => route.path,
+      (to: string) => {
+        const index = to.lastIndexOf('/')
+        const componentNameInner = to.slice(index + 1).replace(/-([a-z])/g, (all: string, i: string) => i.toUpperCase())
+        componentName.value = componentNameInner[0]?.toUpperCase() + componentNameInner.slice(1)
+      }
+    )
     return {
-      componentName: '',
+      componentName,
     }
   },
-  watch: {
-    $route(this: any, to: any) {
-      const index = to.path.lastIndexOf('/')
-      const componentName = to.path.slice(index + 1).replace(/-([a-z])/g, (all: string, i: string) => i.toUpperCase())
-      this.componentName = componentName[0]?.toUpperCase() + componentName.slice(1)
-    },
-  },
-}
+})
 </script>
 
 <style lang="less">
+@import '../varlet-ui/src/styles/var';
+
 body {
   margin: 0;
   padding: 0;
@@ -44,17 +52,19 @@ header {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  background-color: #fff;
-  font-weight: 500;
+  background-color: @color-primary;
+  color: #fff;
   font-size: 18px;
-  height: 80px;
+  line-height: 40px;
+  height: 40px;
   position: fixed;
   z-index: 1;
   width: 100%;
+  font-weight: bold;
 }
 
 .router-view__block {
-  padding: 80px 15px 30px;
+  padding: 45px 15px 30px;
 }
 
 * {

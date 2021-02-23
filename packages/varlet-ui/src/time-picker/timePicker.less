@@ -1,0 +1,156 @@
+@import '../styles/elevation';
+@import '../styles/var';
+
+.var-time-picker {
+  border-radius: 4px;
+  contain: layout style;
+  display: flex;
+  flex-direction: column;
+  font-size: @font-size-md;
+  position: relative;
+  min-width: 290px;
+  height: 385px;
+  overflow: hidden;
+
+  &-title {
+    padding: 16px;
+    color: white;
+    background: @color-primary;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    &__time {
+      display: flex;
+      justify-content: flex-end;
+
+      .var-time-picker-title__btn {
+        font-size: 50px;
+        align-items: center;
+        margin: 0 5px;
+      }
+
+      span {
+        font-size: 50px;
+      }
+    }
+
+    &__btn {
+      opacity: 0.6;
+      cursor: pointer;
+      transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+      white-space: nowrap;
+
+      &--active {
+        opacity: 1;
+      }
+    }
+
+    &__ampm {
+      margin-left: 5px;
+    }
+  }
+
+  &-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-clock {
+    position: absolute;
+    bottom: 27px;
+    left: 27px;
+    right: 27px;
+    top: 27px;
+
+    &__container {
+      width: 270px;
+      height: 270px;
+      background: #e0e0e0;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    &__hand {
+      height: calc(50% - 4px);
+      width: 2px;
+      bottom: 50%;
+      left: calc(50% - 1px);
+      transform-origin: center bottom;
+      position: absolute;
+      will-change: transform;
+      z-index: 1;
+      background-color: @color-primary;
+      border-color: @color-primary;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        border-radius: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &::before {
+        background: transparent;
+        border: 2px solid;
+        border-color: inherit;
+        width: 10px;
+        height: 10px;
+        top: -5px;
+      }
+
+      &::after {
+        height: 4px;
+        width: 4px;
+        top: 100%;
+        border-style: solid;
+        border-color: inherit;
+        background-color: inherit;
+      }
+    }
+
+    &__item {
+      align-items: center;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      height: 32px;
+      position: absolute;
+      width: 32px;
+      user-select: none;
+      transform: translate(-50%, -50%);
+
+      &--active {
+        background: @color-primary;
+        z-index: 2;
+        color: #fff;
+      }
+
+      &--disable {
+        color: rgba(0, 0, 0, 0.26);
+      }
+    }
+
+    &__inner {
+      position: absolute;
+      bottom: 36px;
+      left: 36px;
+      right: 36px;
+      top: 36px;
+    }
+  }
+
+  &-panel-fade-enter-from,
+  &-panel-fade-leave-to {
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    opacity: 0;
+  }
+
+  &-panel-fade-leave-active {
+    position: absolute;
+  }
+}
