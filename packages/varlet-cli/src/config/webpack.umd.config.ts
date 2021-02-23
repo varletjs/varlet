@@ -2,12 +2,12 @@ import merge from 'webpack-merge'
 import { resolve } from 'path'
 import { BASE_CONFIG } from './webpack.base.config'
 import { ES_DIR, UMD_DIR } from '../shared/constant'
-import { getVarletConfig } from './varlet.config'
-import { accessProperty, bigCamelize } from '../shared/fsUtils'
+import { varletConfig } from './varlet.config'
+import { bigCamelize } from '../shared/fsUtils'
+import { get } from 'lodash'
 
 export function getUmdConfig() {
-  const varletConfig = getVarletConfig()
-  const namespace = accessProperty(varletConfig, 'namespace')
+  const namespace = get(varletConfig, 'namespace')
 
   return merge(BASE_CONFIG as any, {
     mode: 'production',
@@ -26,6 +26,6 @@ export function getUmdConfig() {
         commonjs2: 'vue',
         amd: 'vue',
       },
-    }
+    },
   })
 }

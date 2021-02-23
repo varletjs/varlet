@@ -1,13 +1,13 @@
 import logger from '../shared/logger'
-import { accessProperty, bigCamelize, camelize } from '../shared/fsUtils'
+import { bigCamelize, camelize } from '../shared/fsUtils'
 import { mkdirs, pathExistsSync, writeFile } from 'fs-extra'
 import { resolve } from 'path'
 import { DOCS_DIR_NAME, EXAMPLE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from '../shared/constant'
-import { getVarletConfig } from '../config/varlet.config'
+import { varletConfig } from '../config/varlet.config'
+import { get } from 'lodash'
 
 export async function create(name: string) {
-  const varletConfig = getVarletConfig()
-  const namespace = accessProperty(varletConfig, 'namespace')
+  const namespace = get(varletConfig, 'namespace')
   const vueTemplate = `\
 <template>
   <div class="${namespace}-${name}"></div>
@@ -38,11 +38,11 @@ ${bigCamelize(name)}.install = function(app: App) {
 export default ${bigCamelize(name)}
 `
   const testsTemplate = `\
-const ${bigCamelize(name)} = require('../../../cjs/${name}').default
-const { render } = require('@testing-library/vue')
+import example from '../example'
+import { render } from '@testing-library/vue'
 
-test('test ${camelize(name)}', async () => {
-  const wrapper = render(${bigCamelize(name)})
+test('test ${camelize(name)} example', async () => {
+  const wrapper = render(example)
   console.log(wrapper)
 })
 `

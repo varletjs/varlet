@@ -1,25 +1,23 @@
 import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
 import { BASE_CONFIG } from './webpack.base.config'
-import { getVarletConfig } from './varlet.config'
-import { accessProperty } from '../shared/fsUtils'
+import { varletConfig } from './varlet.config'
 import { PRIMARY_COLOR } from '../shared/constant'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { resolve } from 'path'
-
-const varletConfig = getVarletConfig()
+import { get } from 'lodash'
 
 export function createHtmlPluginOptions(type: 'pc' | 'mobile') {
   return {
     minify: {
       removeAttributeQuotes: true,
-      collapseWhitespace: true
+      collapseWhitespace: true,
     },
     hash: true,
     chunks: [type],
-    title: accessProperty(varletConfig, `${type}.title`),
-    logo: accessProperty(varletConfig, `${type}.logo`),
-    description: accessProperty(varletConfig, `${type}.description`)
+    title: get(varletConfig, `${type}.title`),
+    logo: get(varletConfig, `${type}.logo`),
+    description: get(varletConfig, `${type}.description`),
   }
 }
 
@@ -27,13 +25,13 @@ export const HTML_WEBPACK_PLUGINS = [
   new HtmlWebpackPlugin({
     template: resolve(__dirname, '../../site/pc/index.html'),
     filename: 'index.html',
-    ...createHtmlPluginOptions('pc')
+    ...createHtmlPluginOptions('pc'),
   }),
   new HtmlWebpackPlugin({
     template: resolve(__dirname, '../../site/mobile/mobile.html'),
     filename: 'mobile.html',
-    ...createHtmlPluginOptions('mobile')
-  })
+    ...createHtmlPluginOptions('mobile'),
+  }),
 ]
 
 export function getDevConfig() {
@@ -41,8 +39,8 @@ export function getDevConfig() {
     mode: 'development',
     devtool: 'source-map',
     devServer: {
-      port: accessProperty(varletConfig, 'port'),
-      host: accessProperty(varletConfig, 'host'),
+      port: get(varletConfig, 'port'),
+      host: get(varletConfig, 'host'),
       publicPath: '/',
       stats: 'errors-only',
       disableHostCheck: true,
@@ -63,9 +61,9 @@ export function getDevConfig() {
     plugins: [
       new WebpackBarPlugin({
         name: 'Site development building',
-        color: PRIMARY_COLOR
+        color: PRIMARY_COLOR,
       }),
-      ...HTML_WEBPACK_PLUGINS
+      ...HTML_WEBPACK_PLUGINS,
     ],
   })
 }

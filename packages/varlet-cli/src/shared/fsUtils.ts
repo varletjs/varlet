@@ -1,23 +1,6 @@
 import { parse, extname, resolve } from 'path'
-import { ensureFileSync, lstatSync, pathExistsSync, readdir, readdirSync, writeFileSync } from 'fs-extra'
+import { lstatSync, pathExistsSync, readdir, readdirSync } from 'fs-extra'
 import { EXAMPLE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from './constant'
-
-export function ensureConfigFile(path: string) {
-  if (!pathExistsSync(path)) {
-    ensureFileSync(path)
-    writeFileSync(path, 'module.exports = {}')
-  }
-}
-
-export function accessProperty(target: any, operator: string) {
-  const keys: string[] = operator.split('.')
-  return keys.reduce((value: any, key: string) => {
-    if (value === null || value === undefined) {
-      return null
-    }
-    return value[key] || []
-  }, target)
-}
 
 export async function getComponentNames(): Promise<string[]> {
   const srcDir: string[] = await readdir(SRC_DIR)
@@ -27,6 +10,10 @@ export async function getComponentNames(): Promise<string[]> {
 export async function getExportDirNames(): Promise<string[]> {
   const srcDir: string[] = await readdir(SRC_DIR)
   return srcDir.filter((filename: string) => isExportDir(resolve(SRC_DIR, filename)))
+}
+
+export function isMD(path: string): boolean {
+  return pathExistsSync(path) && extname(path) === '.md'
 }
 
 export function isDir(path: string): boolean {

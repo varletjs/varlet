@@ -2,16 +2,11 @@ import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
 import '@varlet/touch-emulator'
-import routes from './routes'
+// @ts-ignore
+import routes from '@pc-routes'
 // @ts-ignore
 import config from '@config'
 
-const defaultConfig = require('../../varlet.default.config.js')
-
-const mergeConfig = {
-  ...defaultConfig,
-  ...config,
-}
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
@@ -19,5 +14,5 @@ const router = createRouter({
 
 const app = createApp(App as any)
 
-app.config.globalProperties.$config = mergeConfig
+app.config.globalProperties.$config = config
 app.use(router).mount('#app')

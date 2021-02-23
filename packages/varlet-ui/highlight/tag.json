@@ -1,0 +1,189 @@
+{
+  "back-top": {
+    "attributes": []
+  },
+  "badge": {
+    "attributes": [
+      "type",
+      "dot",
+      "value",
+      "max-value",
+      "position",
+      "color",
+      "icon"
+    ]
+  },
+  "button": {
+    "attributes": [
+      "type",
+      "size",
+      "loading",
+      "loading-type",
+      "loading-size",
+      "round",
+      "block",
+      "plain",
+      "outline",
+      "disabled",
+      "color",
+      "background"
+    ]
+  },
+  "cell": {
+    "attributes": []
+  },
+  "checkbox": {
+    "attributes": []
+  },
+  "checkbox-group": {
+    "attributes": []
+  },
+  "chip": {
+    "attributes": [
+      "type",
+      "size",
+      "plain",
+      "round",
+      "block",
+      "closeable",
+      "close-name",
+      "color",
+      "text-color"
+    ]
+  },
+  "date-picker": {
+    "attributes": []
+  },
+  "dialog": {
+    "attributes": []
+  },
+  "expansion-panels": {
+    "attributes": []
+  },
+  "form": {
+    "attributes": []
+  },
+  "form-details": {
+    "attributes": []
+  },
+  "icon": {
+    "attributes": []
+  },
+  "image": {
+    "attributes": []
+  },
+  "index-bar": {
+    "attributes": []
+  },
+  "input": {
+    "attributes": []
+  },
+  "lazy": {
+    "attributes": []
+  },
+  "list": {
+    "attributes": []
+  },
+  "loading": {
+    "attributes": [
+      "color",
+      "type",
+      "size"
+    ]
+  },
+  "menu": {
+    "attributes": []
+  },
+  "option": {
+    "attributes": []
+  },
+  "picker": {
+    "attributes": []
+  },
+  "popup": {
+    "attributes": []
+  },
+  "progress": {
+    "attributes": [
+      "mode"
+    ]
+  },
+  "pull-refresh": {
+    "attributes": [
+      "v-model",
+      "disabled",
+      "animation-duration",
+      "success-duration",
+      "bgColor",
+      "color",
+      "successBgColor",
+      "successColor"
+    ]
+  },
+  "radio": {
+    "attributes": []
+  },
+  "radio-group": {
+    "attributes": []
+  },
+  "rate": {
+    "attributes": [
+      "v-model",
+      "count",
+      "color",
+      "icon",
+      "empty-color",
+      "empty-icon",
+      "size",
+      "margin-right",
+      "half",
+      "half-icon",
+      "disabled",
+      "disabled-color",
+      "readonly",
+      "ripple"
+    ]
+  },
+  "ripple": {
+    "attributes": []
+  },
+  "select": {
+    "attributes": []
+  },
+  "skeleton": {
+    "attributes": []
+  },
+  "slider": {
+    "attributes": []
+  },
+  "snackbar": {
+    "attributes": []
+  },
+  "sticky": {
+    "attributes": []
+  },
+  "swipe": {
+    "attributes": []
+  },
+  "swipe-item": {
+    "attributes": []
+  },
+  "switch": {
+    "attributes": []
+  },
+  "tab": {
+    "attributes": []
+  },
+  "tab-item": {
+    "attributes": []
+  },
+  "tabs": {
+    "attributes": []
+  },
+  "tabs-items": {
+    "attributes": []
+  },
+  "uploader": {
+    "attributes": []
+  }
+}

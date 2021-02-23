@@ -7,6 +7,7 @@ import { getComponentNames, getExportDirNames, isExampleDir, isTestsDir } from '
 import { compileModule, compileFile, compileDir } from '../compiler/compileModule'
 import { parse } from 'path'
 import { compileLibraryEntry } from '../compiler/compileScript'
+import { compileTemplateHighlight } from '../compiler/compileTemplateHighlight'
 
 export function removeDir() {
   return Promise.all([remove(ES_DIR), remove(CJS_DIR), remove(UMD_DIR)])
@@ -51,10 +52,12 @@ export function handleFilesChange() {
 }
 
 export async function compile(cmd: { watch: boolean }) {
-  const s = ora('Compile start for ES & CJS & UMD').start()
+  const s = ora().start('Compile start for ES & CJS & UMD & Template Highlight')
 
   await removeDir()
-  await Promise.all([compileModule(), compileModule('cjs')])
+
+  await Promise.all([compileTemplateHighlight(), compileModule(), compileModule('cjs')])
+
   await compileModule('umd')
 
   s.succeed('Compile success!')

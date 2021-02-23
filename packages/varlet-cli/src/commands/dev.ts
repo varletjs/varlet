@@ -5,8 +5,7 @@ import { getDevConfig } from '../config/webpack.dev.config'
 import { getPort } from 'portfinder'
 import { buildMobileSiteRoutes, buildPcSiteRoutes } from '../compiler/compileRoutes'
 import { ensureDirSync } from 'fs-extra'
-import { SRC_DIR, VARLET_CONFIG } from '../shared/constant'
-import { ensureConfigFile } from '../shared/fsUtils'
+import { SRC_DIR } from '../shared/constant'
 
 export function runDevServer(port: number, config: any) {
   const { host } = config.devServer
@@ -26,7 +25,6 @@ export function runDevServer(port: number, config: any) {
 }
 
 export async function dev() {
-  ensureConfigFile(VARLET_CONFIG)
   ensureDirSync(SRC_DIR)
 
   await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])

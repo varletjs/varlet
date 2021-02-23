@@ -10,7 +10,7 @@ export default {
   warning(text: string) {
     console.log(chalk.hex('#DDBF69')(text))
   },
-  error(text: string | any) {
+  error(text: string) {
     console.log(chalk.hex('#AE4434')(text))
-  }
+  },
 }

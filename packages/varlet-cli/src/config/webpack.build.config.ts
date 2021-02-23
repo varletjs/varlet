@@ -1,7 +1,7 @@
 import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
 import { BASE_CONFIG } from './webpack.base.config'
-import { OUTPUT_SITE_PATH, PRIMARY_COLOR } from '../shared/constant'
+import { SITE_OUTPUT_PATH, PRIMARY_COLOR } from '../shared/constant'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { HTML_WEBPACK_PLUGINS } from './webpack.dev.config'
 
@@ -12,18 +12,18 @@ export function getBuildConfig() {
     mode: 'production',
     output: {
       publicPath: './',
-      path: OUTPUT_SITE_PATH,
+      path: SITE_OUTPUT_PATH,
       filename: 'js/[name].[contenthash:8].js',
-      chunkFilename: 'js/[name].[contenthash:8].js'
+      chunkFilename: 'js/[name].[contenthash:8].js',
     },
     plugins: [
       new WebpackBarPlugin({
         name: 'Site production building',
-        color: PRIMARY_COLOR
+        color: PRIMARY_COLOR,
       }),
       new CleanWebpackPlugin(),
       new CompressionPlugin(),
-      ...HTML_WEBPACK_PLUGINS
-    ]
+      ...HTML_WEBPACK_PLUGINS,
+    ],
   })
 }

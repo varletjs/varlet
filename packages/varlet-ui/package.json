@@ -30,7 +30,8 @@
     "compile": "varlet-cli compile",
     "compile:watch": "varlet-cli compile --watch",
     "create": "varlet-cli create",
-    "jest": "varlet-cli jest"
+    "jest": "varlet-cli jest",
+    "jest:watch": "varlet-cli jest -w"
   },
   "peerDependencies": {
     "vue": ">=3.0.2"

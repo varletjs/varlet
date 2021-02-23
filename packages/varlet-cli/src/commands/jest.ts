@@ -1,13 +1,12 @@
 import { runCLI } from 'jest'
-import { resolve } from 'path'
-import { CWD, JEST_CONFIG, SRC_DIR } from '../shared/constant'
+import { CWD, JEST_CONFIG } from '../shared/constant'
 
-export async function jest(cmd: { component?: string }) {
-  const rootDir = cmd.component ? resolve(SRC_DIR, cmd.component) : CWD
-
+export async function jest(cmd: { watch: boolean }) {
   const config = {
-    rootDir,
+    rootDir: CWD,
+    watch: cmd.watch,
     config: JEST_CONFIG,
   }
+
   await runCLI(config as any, [CWD])
 }

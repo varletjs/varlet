@@ -56,11 +56,13 @@
 import { defineComponent } from 'vue'
 import Button from '..'
 import Snackbar from '../../snackbar'
+import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
 
 export default defineComponent({
   name: 'ButtonExample',
   components: {
     [Button.name]: Button,
+    [AppType.name]: AppType,
   },
   setup() {
     const handleClick = () => {

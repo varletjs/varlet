@@ -121,24 +121,30 @@ export default defineComponent({
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ---- | --- | ---- | ----- |
+| 参数 | 说明 | 类型 | 默认值 | 
+| --- | --- | --- | --- | 
 | type | 类型, 可选值为 `default`, `primary`, `info`, `success`, `warning`, `danger` | _string_ | `default` |
 | size | 尺寸, 可选值为 `normal`, `mini`, `small`, `large` | _string_ | `normal` |
-| loading | 加载状态 | _boolean_ | `false` |
+| loading | 加载状态 | _boolean_ | `false` |  
 | loading-type | 加载动画类型, 可选值同[Loading组件的type属性](#/zh-CN/loading) | _string_ | `wave` |
 | loading-size | 加载动画尺寸, 可选值同[Loading组件的size属性](#/zh-CN/loading) | _string_ | `normal` |
-| round | 圆形按钮 | _boolean_ | `false` |
-| block | 块级元素 | _boolean_ | `false` |
+| round | 圆形按钮 | _boolean_ | `false` | 
+| block | 块级元素 | _boolean_ | `false` | 
 | plain | 朴素按钮 | _boolean_ | `false` |
 | outline | 外边框 | _boolean_ | `false` |
-| disabled | 禁用状态 | __boolean | `false` |
+| disabled | 禁用状态 | _boolean_ | `false` |
 | color | 文字颜色 | _string_ | `-` |
 | background | 背景 | _string_ | `-` |
 
 ### 事件
 
-| 事件名 | 说明 | 回调参数 | 默认值 |
+| 事件名 | 说明 | 参数 | 默认值 |
 | ---- | --- | ---- | -----  |
 | click | 点击按钮时触发, 但loading或disabled状态为true时不触发 | event: Event |
 | touchstart | 触摸手指压下按钮时触发 , 但loading或disabled状态为true时不触发 | event: TouchEvent |
+
+### 插槽
+
+| 插槽名 | 说明 | 参数 |
+| ---- | ---- | ---- |
+| default | 按钮文本 | - |

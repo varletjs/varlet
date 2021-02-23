@@ -1,5 +1,13 @@
-import { resolve } from 'path'
-import { EXTENSIONS, POSTCSS_CONFIG, TS_CONFIG, VARLET_CONFIG } from '../shared/constant'
+import {
+  EXTENSIONS,
+  POSTCSS_CONFIG,
+  SITE_CONFIG,
+  SITE_MOBILE_MAIN,
+  SITE_MOBILE_ROUTES,
+  SITE_PC_MAIN,
+  SITE_PC_ROUTES,
+  TS_CONFIG,
+} from '../shared/constant'
 import { ForkTsCheckerWebpackPlugin } from 'fork-ts-checker-webpack-plugin/lib/ForkTsCheckerWebpackPlugin'
 import { VueLoaderPlugin } from 'vue-loader'
 import { pathExistsSync } from 'fs-extra'
@@ -18,100 +26,106 @@ export const CSS_LOADERS = [
 export function createBasePlugins(): WebpackPluginInstance[] {
   const plugins: WebpackPluginInstance[] = [new VueLoaderPlugin()]
 
-  pathExistsSync(TS_CONFIG) && plugins.push(new ForkTsCheckerWebpackPlugin({
-    typescript: {
-      mode: 'write-references',
-      extensions: {
-        vue: {
-          enabled: true,
-          compiler: '@vue/compiler-sfc',
+  pathExistsSync(TS_CONFIG) &&
+    plugins.push(
+      new ForkTsCheckerWebpackPlugin({
+        typescript: {
+          mode: 'write-references',
+          extensions: {
+            vue: {
+              enabled: true,
+              compiler: '@vue/compiler-sfc',
+            },
+          },
         },
-      },
-    },
-    logger: {
-      issues: 'console'
-    },
-  }))
+        logger: {
+          issues: 'console',
+        },
+      })
+    )
 
   return plugins
 }
 
 export const BASE_CONFIG = {
   entry: {
-    pc: resolve(__dirname, '../../site/pc/main.ts'),
-    mobile: resolve(__dirname, '../../site/mobile/main.ts')
+    pc: SITE_PC_MAIN,
+    mobile: SITE_MOBILE_MAIN,
   },
   resolve: {
     extensions: EXTENSIONS,
     alias: {
-      '@config': VARLET_CONFIG
-    }
+      '@config': SITE_CONFIG,
+      '@pc-routes': SITE_PC_ROUTES,
+      '@mobile-routes': SITE_MOBILE_ROUTES,
+    },
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        use: ['vue-loader']
+        use: ['vue-loader'],
       },
       {
         test: /\.(js|ts)$/,
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-typescript'],
-            plugins: ['@babel/plugin-transform-runtime', '@babel/plugin-transform-typescript']
-          }
-        }],
-        exclude: /node_modules/
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env', '@babel/preset-typescript'],
+              plugins: ['@babel/plugin-transform-runtime', '@babel/plugin-transform-typescript'],
+            },
+          },
+        ],
+        exclude: /node_modules/,
       },
       {
         test: /\.md$/,
-        use: ['vue-loader', '@varlet/markdown-loader']
+        use: ['vue-loader', '@varlet/markdown-loader'],
       },
       {
         test: /\.(png|jpg|gif|jpeg|svg)$/,
         type: 'asset',
         generator: {
-          filename: 'images/[hash][ext][query]'
-        }
+          filename: 'images/[hash][ext][query]',
+        },
       },
       {
         test: /\.(eot|ttf|woff|woff2)$/,
         type: 'asset',
         generator: {
-          filename: 'fonts/[hash][ext][query]'
-        }
+          filename: 'fonts/[hash][ext][query]',
+        },
       },
       {
         test: /\.(mp3|wav|ogg|acc)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'audio/[hash][ext][query]'
-        }
+          filename: 'audio/[hash][ext][query]',
+        },
       },
       {
         test: /\.(mp4|webm)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'video/[hash][ext][query]'
-        }
+          filename: 'video/[hash][ext][query]',
+        },
       },
       {
         test: /\.css$/,
-        use: CSS_LOADERS
+        use: CSS_LOADERS,
       },
       {
         test: /\.less$/,
-        use: [...CSS_LOADERS, 'less-loader']
-      }
-    ]
+        use: [...CSS_LOADERS, 'less-loader'],
+      },
+    ],
   },
   cache: {
     type: 'filesystem',
     buildDependencies: {
-      config: [__filename]
-    }
+      config: [__filename],
+    },
   },
-  plugins: createBasePlugins()
+  plugins: createBasePlugins(),
 }
-

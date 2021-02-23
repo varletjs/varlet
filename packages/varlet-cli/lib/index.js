@@ -7,21 +7,15 @@ var build_1 = require("./commands/build");
 var compile_1 = require("./commands/compile");
 var create_1 = require("./commands/create");
 var jest_1 = require("./commands/jest");
-commander_1.command('dev')
-    .description('Run varlet development environment')
-    .action(dev_1.dev);
-commander_1.command('build')
-    .description('Build varlet site for production')
-    .action(build_1.build);
+commander_1.command('dev').description('Run varlet development environment').action(dev_1.dev);
+commander_1.command('build').description('Build varlet site for production').action(build_1.build);
 commander_1.command('compile')
     .description('Compile varlet components library code')
     .option('-w, --watch', 'Watch files change auto compile')
     .action(compile_1.compile);
-commander_1.command('create <name>')
-    .description('Create a component directory')
-    .action(create_1.create);
+commander_1.command('create <name>').description('Create a component directory').action(create_1.create);
 commander_1.command('jest')
-    .option('-c, --component [componentName]', 'Run Jest in component directory')
     .description('Run Jest in work directory')
+    .option('-w, --watch', 'Watch files change auto jest')
     .action(jest_1.jest);
 commander_1.parse();
