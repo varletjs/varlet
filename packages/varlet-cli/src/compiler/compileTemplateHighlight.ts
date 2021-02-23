@@ -69,7 +69,7 @@ export function compileAttributes(table: Record<string, any>, attributes: Record
     const attrNamespace = `${get(varletConfig, 'namespace')}-${componentName}/${row[0]}`
     attributes[attrNamespace] = {
       type: row[2],
-      description: row[1],
+      description: `${row[1]} 默认值：${row[3]}`,
     }
   })
 }
@@ -80,6 +80,7 @@ export function compileWebTypes(table: Record<string, any>, webTypes: Record<str
   const attributes = attributesTable.map((row: any) => ({
     name: row[0],
     description: row[1],
+    default: row[3],
     value: {
       type: row[2],
       kind: 'expression',

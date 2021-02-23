@@ -18,6 +18,7 @@
             {
               "name": "type",
               "description": "类型, 可选值为 `default`, `primary`, `info`, `success`, `warning`, `danger`",
+              "default": "`default`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -26,6 +27,7 @@
             {
               "name": "dot",
               "description": "是否为小圆点",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -34,6 +36,7 @@
             {
               "name": "value",
               "description": "徽标中显示的值（当`dot`为`false`时生效）",
+              "default": "`0`",
               "value": {
                 "type": "_string_,_number_",
                 "kind": "expression"
@@ -42,6 +45,7 @@
             {
               "name": "max-value",
               "description": "徽标中显示的最大值，当`value`大于`max-value`时会显示`max-value+`(当`value`与`max-value`都为数字时生效)",
+              "default": "_",
               "value": {
                 "type": "_number_",
                 "kind": "expression"
@@ -50,6 +54,7 @@
             {
               "name": "position",
               "description": "徽标标签中有其他标签时定义徽标在其他标签上的位置，可选值`right-top`,`top-bottom`,`left-top`,`left-bottom`",
+              "default": "_",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -58,6 +63,7 @@
             {
               "name": "color",
               "description": "自定义徽标的颜色",
+              "default": "_",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -66,6 +72,7 @@
             {
               "name": "icon",
               "description": "自定义徽标中图标的内容（优先级高于`value`）",
+              "default": "_",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -86,6 +93,7 @@
             {
               "name": "type",
               "description": "类型, 可选值为 `default`, `primary`, `info`, `success`, `warning`, `danger`",
+              "default": "`default`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -94,6 +102,7 @@
             {
               "name": "size",
               "description": "尺寸, 可选值为 `normal`, `mini`, `small`, `large`",
+              "default": "`normal`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -102,6 +111,7 @@
             {
               "name": "loading",
               "description": "加载状态",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -110,6 +120,7 @@
             {
               "name": "loading-type",
               "description": "加载动画类型, 可选值同[Loading组件的type属性](#/zh-CN/loading)",
+              "default": "`wave`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -118,6 +129,7 @@
             {
               "name": "loading-size",
               "description": "加载动画尺寸, 可选值同[Loading组件的size属性](#/zh-CN/loading)",
+              "default": "`normal`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -126,6 +138,7 @@
             {
               "name": "round",
               "description": "圆形按钮",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -134,6 +147,7 @@
             {
               "name": "block",
               "description": "块级元素",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -142,6 +156,7 @@
             {
               "name": "plain",
               "description": "朴素按钮",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -150,6 +165,7 @@
             {
               "name": "outline",
               "description": "外边框",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -158,6 +174,7 @@
             {
               "name": "disabled",
               "description": "禁用状态",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -166,6 +183,7 @@
             {
               "name": "color",
               "description": "文字颜色",
+              "default": "`-`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -174,6 +192,7 @@
             {
               "name": "background",
               "description": "背景",
+              "default": "`-`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -221,6 +240,7 @@
             {
               "name": "type",
               "description": "类型, 可选值为 `default`, `primary`, `info`, `success`, `warning`, `danger`",
+              "default": "`default`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -229,6 +249,7 @@
             {
               "name": "size",
               "description": "尺寸, 可选值为 `normal`, `mini`, `small`, `large`",
+              "default": "`normal`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -237,6 +258,7 @@
             {
               "name": "plain",
               "description": "是否为空心样式",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -245,6 +267,7 @@
             {
               "name": "round",
               "description": "是否为圆角样式",
+              "default": "`true`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -253,6 +276,7 @@
             {
               "name": "block",
               "description": "块级元素",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -261,6 +285,7 @@
             {
               "name": "closeable",
               "description": "是否为可关闭标签",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -269,6 +294,7 @@
             {
               "name": "close-name",
               "description": "自定义可关闭标签的图标，必须在closeable为true的条件下才能用",
+              "default": "_",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -277,6 +303,7 @@
             {
               "name": "color",
               "description": "标签颜色",
+              "default": "_",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -285,6 +312,7 @@
             {
               "name": "text-color",
               "description": "文本颜色，优先级高于`color`属性",
+              "default": "_",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -384,6 +412,7 @@
             {
               "name": "color",
               "description": "loading 的颜色",
+              "default": "`currentColor`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -392,6 +421,7 @@
             {
               "name": "type",
               "description": "loading 的类型，可选值为 `wave` `cube` `rect` `disappear`",
+              "default": "`wave`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -400,6 +430,7 @@
             {
               "name": "size",
               "description": "loading 的大小，可选值位 `large` `normal` `small` `mini`",
+              "default": "`normal`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -439,6 +470,7 @@
             {
               "name": "mode",
               "description": "progress 的模式",
+              "default": "`linear`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -454,6 +486,7 @@
             {
               "name": "v-model",
               "description": "是否处于加载中状态",
+              "default": "-",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -462,6 +495,7 @@
             {
               "name": "disabled",
               "description": "是否禁用下拉刷新",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -470,6 +504,7 @@
             {
               "name": "animation-duration",
               "description": "动画时长(ms)",
+              "default": "`300`",
               "value": {
                 "type": "_number_ ｜ _string_",
                 "kind": "expression"
@@ -478,6 +513,7 @@
             {
               "name": "success-duration",
               "description": "成功提示展示时长(ms)",
+              "default": "`2000`",
               "value": {
                 "type": "_number_ ｜ _string_",
                 "kind": "expression"
@@ -486,6 +522,7 @@
             {
               "name": "bgColor",
               "description": "control的背景颜色",
+              "default": "`#005CAF`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -494,6 +531,7 @@
             {
               "name": "color",
               "description": "control 的颜色",
+              "default": "`#ffffff`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -502,6 +540,7 @@
             {
               "name": "successBgColor",
               "description": "成功状态下control的背景颜色",
+              "default": "`#4CAF50`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -510,6 +549,7 @@
             {
               "name": "successColor",
               "description": "成功状态下control的颜色",
+              "default": "`ffffff`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -547,6 +587,7 @@
             {
               "name": "v-model",
               "description": "当前分数",
+              "default": "_",
               "value": {
                 "type": "_number_",
                 "kind": "expression"
@@ -555,6 +596,7 @@
             {
               "name": "count",
               "description": "评分总数",
+              "default": "`5`",
               "value": {
                 "type": "_number_",
                 "kind": "expression"
@@ -563,6 +605,7 @@
             {
               "name": "color",
               "description": "选中时图标的颜色",
+              "default": "`#ff9800`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -571,6 +614,7 @@
             {
               "name": "icon",
               "description": "选中整个图标时的图标样式",
+              "default": "`star`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -579,6 +623,7 @@
             {
               "name": "empty-color",
               "description": "未选中时图标的颜色",
+              "default": "`#bdbdbd`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -587,6 +632,7 @@
             {
               "name": "empty-icon",
               "description": "未选中时图标的样式",
+              "default": "`star-outline`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -595,6 +641,7 @@
             {
               "name": "size",
               "description": "图标大小，默认单位为`px`",
+              "default": "`20`",
               "value": {
                 "type": "_number_,_string_",
                 "kind": "expression"
@@ -603,6 +650,7 @@
             {
               "name": "margin-right",
               "description": "图标间隔，默认单位为`px`",
+              "default": "`4`",
               "value": {
                 "type": "_number_,_string_",
                 "kind": "expression"
@@ -611,6 +659,7 @@
             {
               "name": "half",
               "description": "是否允许半选",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -619,6 +668,7 @@
             {
               "name": "half-icon",
               "description": "半选时图标的样式，只有在`half`为`true`时才有效",
+              "default": "`star-half-full`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -627,6 +677,7 @@
             {
               "name": "disabled",
               "description": "是否禁止评分",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -635,6 +686,7 @@
             {
               "name": "disabled-color",
               "description": "禁止评分时图标的颜色，只有在`disabled`为`true`时才有效，优先级高于`color`、`empty-color`",
+              "default": "`#bdbdbd`",
               "value": {
                 "type": "_string_",
                 "kind": "expression"
@@ -643,6 +695,7 @@
             {
               "name": "readonly",
               "description": "是否使用评分只读",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
@@ -651,6 +704,7 @@
             {
               "name": "ripple",
               "description": "是否使用水波纹",
+              "default": "`false`",
               "value": {
                 "type": "_boolean_",
                 "kind": "expression"
