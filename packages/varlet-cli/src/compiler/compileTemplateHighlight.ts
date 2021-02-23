@@ -113,9 +113,10 @@ export function compileMD(
   if (!path.endsWith(HL_MD)) {
     return
   }
+
   const md = readFileSync(path, 'utf-8')
 
-  const [_, componentName] = path.match(HL_COMPONENT_NAME_RE)!
+  const componentName = path.match(HL_COMPONENT_NAME_RE)![2]
 
   const attributesTable = parseTable(compileTable(md, HL_TITLE_ATTRIBUTES_RE))
   const eventsTable = parseTable(compileTable(md, HL_TITLE_EVENTS_RE))

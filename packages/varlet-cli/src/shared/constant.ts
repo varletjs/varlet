@@ -24,7 +24,7 @@ export const SITE_CONFIG = resolve(__dirname, '../../site/site.config.json')
 export const SITE_OUTPUT_PATH = resolve(CWD, 'site')
 
 // template highlight
-export const HL_COMPONENT_NAME_RE = /.*\/(.+)\/docs\//
+export const HL_COMPONENT_NAME_RE = /.*(\/|\\)(.+)(\/|\\)docs(\/|\\)/
 export const HL_API_RE = /##\s*API\n+/
 export const HL_TITLE_ATTRIBUTES_RE = /###\s*属性\s*\n+/
 export const HL_TITLE_EVENTS_RE = /###\s*事件\s*\n+/

@@ -744,6 +744,12 @@
           "slots": []
         },
         {
+          "name": "var-time-picker",
+          "attributes": [],
+          "events": [],
+          "slots": []
+        },
+        {
           "name": "var-uploader",
           "attributes": [],
           "events": [],
