@@ -35,7 +35,12 @@
     </div>
     <div class="varlet-site-content">
       <div class="varlet-site-nav">
-        <var-cell v-for="item in menu" class="varlet-site-nav__item" v-ripple @click="changeRoute(item)">
+        <var-cell
+          v-for="item in menu"
+          class="varlet-site-nav__item"
+          v-ripple="{ touchmoveForbid: true }"
+          @click="changeRoute(item)"
+        >
           <span v-if="item.isTitle" class="varlet-site-nav__item--title">{{ item.text[language] }}</span>
           <span
             v-else

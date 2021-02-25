@@ -14,6 +14,7 @@ interface RippleStyles {
 interface RippleOptions {
   color?: string
   disabled?: boolean
+  touchmoveForbid?: boolean
   tasker?: number | null
 }
 
@@ -107,6 +108,9 @@ function removeRipple(this: RippleHTMLElement) {
 
 function forbidRippleTask(this: RippleHTMLElement) {
   const _ripple = this._ripple as RippleOptions
+  if (_ripple.touchmoveForbid) {
+    return
+  }
 
   _ripple.tasker && window.clearTimeout(_ripple.tasker)
   _ripple.tasker = null
