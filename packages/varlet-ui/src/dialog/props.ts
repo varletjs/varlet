@@ -17,7 +17,6 @@ export const props = {
   // 标题
   title: {
     type: String,
-    default: '提示',
   },
   // 信息
   message: {
@@ -42,12 +41,10 @@ export const props = {
   // 确认按钮文案
   confirmButtonText: {
     type: String,
-    default: '确定',
   },
   // 取消按钮文案
   cancelButtonText: {
     type: String,
-    default: '取消',
   },
   // 确认按钮文字颜色
   confirmButtonColor: {

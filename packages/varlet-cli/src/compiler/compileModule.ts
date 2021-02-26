@@ -1,3 +1,5 @@
+import webpack from 'webpack'
+import logger from '../shared/logger'
 import { EXAMPLE_DIR_NAME, TESTS_DIR_NAME, DOCS_DIR_NAME, SRC_DIR, CJS_DIR, ES_DIR } from '../shared/constant'
 import { copy, ensureFileSync, readdir, removeSync } from 'fs-extra'
 import { getComponentNames, getExportDirNames, isDir, isLess, isScript, isSFC } from '../shared/fsUtils'
@@ -6,8 +8,6 @@ import { resolve } from 'path'
 import { compileLibraryEntry, compileScriptFile } from './compileScript'
 import { compileLess } from './compileStyle'
 import { getUmdConfig } from '../config/webpack.umd.config'
-import webpack from 'webpack'
-import logger from '../shared/logger'
 
 export function compileUMD() {
   return new Promise<void>((resolve, reject) => {

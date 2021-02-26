@@ -10,265 +10,268 @@ module.exports = {
     header: {
       logo: 'https://cn.vuejs.org/images/logo.png',
       search: {
-        zh_CN: '搜索文档...',
-        en_US: 'Search...',
+        'zh-CN': '搜索文档...',
+        'en-US': 'Search...',
       },
       i18nButton: {
-        zh_CN: 'En',
-        en_US: '中文',
+        'zh-CN': 'En',
+        'en-US': '中文',
       },
     },
     menu: [
       {
         text: {
-          zh_CN: '快速开始',
-        },
-        isTitle: true,
-      },
-
-      {
-        text: {
-          zh_CN: '组件',
+          'zh-CN': '快速开始',
         },
         isTitle: true,
       },
       {
         text: {
-          zh_CN: 'Ripple 水波指令',
-          en_US: 'Ripple',
+          'zh-CN': '组件',
+        },
+        isTitle: true,
+      },
+      {
+        text: {
+          'zh-CN': 'Ripple 水波指令',
+          'en-US': 'Ripple',
         },
         doc: 'ripple',
       },
       {
         text: {
-          zh_CN: 'Skeleton 骨架屏',
-          en_US: 'Skeleton',
+          'zh-CN': 'Skeleton 骨架屏',
+          'en-US': 'Skeleton',
         },
         doc: 'skeleton',
       },
       {
         text: {
-          zh_CN: 'Loading 加载',
-          en_US: 'Loading',
+          'zh-CN': 'Loading 加载',
+          'en-US': 'Loading',
         },
         doc: 'loading',
       },
       {
         text: {
-          zh_CN: 'Button 按钮',
-          en_US: 'Button',
+          'zh-CN': 'Button 按钮',
+          'en-US': 'Button',
         },
         doc: 'button',
       },
       {
         text: {
-          zh_CN: 'Popup 弹出层',
-          en_US: 'Popup',
+          'zh-CN': 'Popup 弹出层',
+          'en-US': 'Popup',
         },
         doc: 'popup',
       },
       {
         text: {
-          zh_CN: 'Snackbar 消息条',
-          en_US: 'Snackbar',
+          'zh-CN': 'Snackbar 消息条',
+          'en-US': 'Snackbar',
         },
         doc: 'snackbar',
       },
       {
         text: {
-          zh_CN: 'Progress 进度条',
-          en_US: 'Progress',
+          'zh-CN': 'Progress 进度条',
+          'en-US': 'Progress',
         },
         doc: 'progress',
       },
       {
         text: {
-          zh_CN: 'PullRefresh 下拉刷新',
-          en_US: 'PullRefresh',
+          'zh-CN': 'PullRefresh 下拉刷新',
+          'en-US': 'PullRefresh',
         },
         doc: 'pull-refresh',
       },
       {
         text: {
-          zh_CN: 'Chip 标签',
-          en_US: 'Chip',
+          'zh-CN': 'Chip 标签',
+          'en-US': 'Chip',
         },
         doc: 'chip',
       },
       {
         text: {
-          zh_CN: 'Badge 徽标',
-          en_US: 'Badge',
+          'zh-CN': 'Badge 徽标',
+          'en-US': 'Badge',
         },
         doc: 'badge',
       },
       {
         text: {
-          zh_CN: 'ExpansionPanels 拓展面板',
-          en_US: 'ExpansionPanels',
+          'zh-CN': 'ExpansionPanels 拓展面板',
+          'en-US': 'ExpansionPanels',
         },
         doc: 'Expansion-panels',
       },
       {
         text: {
-          zh_CN: 'Tabs 选项卡',
-          en_US: 'Tabs',
+          'zh-CN': 'Tabs 选项卡',
+          'en-US': 'Tabs',
         },
         doc: 'tabs',
       },
       {
         text: {
-          zh_CN: 'List 无限滚动列表',
-          en_US: 'List',
+          'zh-CN': 'List 无限滚动列表',
+          'en-US': 'List',
         },
         doc: 'list',
       },
       {
         text: {
-          zh_CN: 'Sticky 粘性布局',
-          en_US: 'Sticky',
+          'zh-CN': 'Sticky 粘性布局',
+          'en-US': 'Sticky',
         },
         doc: 'sticky',
       },
       {
         text: {
-          zh_CN: 'Menu 菜单',
-          en_US: 'Menu',
+          'zh-CN': 'Menu 菜单',
+          'en-US': 'Menu',
         },
         doc: 'menu',
       },
       {
         text: {
-          zh_CN: 'Lazy 懒加载',
-          en_US: 'Lazy',
+          'zh-CN': 'Lazy 懒加载',
+          'en-US': 'Lazy',
         },
         doc: 'lazy',
       },
       {
         text: {
-          zh_CN: 'Dialog 对话框',
-          en_US: 'Dialog',
+          'zh-CN': 'Dialog 对话框',
+          'en-US': 'Dialog',
         },
         doc: 'dialog',
       },
       {
         text: {
-          zh_CN: 'Image 图片',
-          en_US: 'Image',
+          'zh-CN': 'Image 图片',
+          'en-US': 'Image',
         },
         doc: 'image',
       },
       {
         text: {
-          zh_CN: 'Icon 图标',
-          en_US: 'Icon',
+          'zh-CN': 'Icon 图标',
+          'en-US': 'Icon',
         },
         doc: 'icon',
       },
       {
         text: {
-          zh_CN: 'Rate 评分',
-          en_US: 'Rate',
+          'zh-CN': 'Rate 评分',
+          'en-US': 'Rate',
         },
         doc: 'rate',
       },
       {
         text: {
-          zh_CN: 'Input 输入框',
-          en_US: 'Input',
+          'zh-CN': 'Input 输入框',
+          'en-US': 'Input',
         },
         doc: 'input',
       },
       {
         text: {
-          zh_CN: 'Select 选择框',
-          en_US: 'Select',
+          'zh-CN': 'Select 选择框',
+          'en-US': 'Select',
         },
         doc: 'select',
       },
       {
         text: {
-          zh_CN: 'Radio 单选框',
-          en_US: 'Radio',
+          'zh-CN': 'Radio 单选框',
+          'en-US': 'Radio',
         },
         doc: 'radio',
       },
       {
         text: {
-          zh_CN: 'Checkbox 复选框',
-          en_US: 'Checkbox',
+          'zh-CN': 'Checkbox 复选框',
+          'en-US': 'Checkbox',
         },
         doc: 'checkbox',
       },
       {
         text: {
-          zh_CN: 'IndexBar 索引栏',
-          en_US: 'IndexBar',
+          'zh-CN': 'IndexBar 索引栏',
+          'en-US': 'IndexBar',
         },
         doc: 'index-bar',
       },
       {
         text: {
-          zh_CN: 'Switch 开关',
-          en_US: 'Switch',
+          'zh-CN': 'Switch 开关',
+          'en-US': 'Switch',
         },
         doc: 'switch',
       },
       {
         text: {
-          zh_CN: 'Slider 滑块',
-          en_US: 'slider',
+          'zh-CN': 'Slider 滑块',
+          'en-US': 'slider',
         },
         doc: 'slider',
       },
       {
         text: {
-          zh_CN: 'Swipe 轮播',
-          en_US: 'Swipe',
+          'zh-CN': 'Swipe 轮播',
+          'en-US': 'Swipe',
         },
         doc: 'swipe',
       },
       {
         text: {
-          zh_CN: 'DatePicker 日期选择器',
-          en_US: 'DatePicker',
+          'zh-CN': 'DatePicker 日期选择器',
+          'en-US': 'DatePicker',
         },
         doc: 'date-picker',
       },
       {
         text: {
-          zh_CN: 'BackTop 回到顶部',
-          en_US: 'BackTop',
+          'zh-CN': 'BackTop 回到顶部',
+          'en-US': 'BackTop',
         },
         doc: 'back-top',
       },
       {
         text: {
-          zh_CN: 'Cell 单元格',
-          en_US: 'Cell',
+          'zh-CN': 'Cell 单元格',
+          'en-US': 'Cell',
         },
         doc: 'cell',
       },
       {
         text: {
-          zh_CN: 'Uploader 文件上传',
-          en_US: 'Uploader',
+          'zh-CN': 'Uploader 文件上传',
+          'en-US': 'Uploader',
         },
         doc: 'uploader',
       },
       {
         text: {
-          zh_CN: 'Picker 多列选择器',
-          en_US: 'Picker',
+          'zh-CN': 'Picker 多列选择器',
+          'en-US': 'Picker',
         },
         doc: 'picker',
       },
     ],
-    language: 'zh_CN',
   },
   mobile: {
     title: 'Varlet 组件库示例',
     description: 'Varlet 组件库示例',
     logo: 'https://cn.vuejs.org/images/logo.png',
   },
+  language: 'zh-CN',
+  languages: [
+    'zh-CN',
+    'en-US'
+  ]
 }

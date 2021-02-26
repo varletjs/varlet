@@ -19,4 +19,8 @@ module.exports = {
     description: 'Varlet 组件库示例',
     logo: 'https://cn.vuejs.org/images/logo.png',
   },
+  languages: [
+    'zh-CN',
+    'en-US'
+  ]
 }

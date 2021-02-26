@@ -16,7 +16,9 @@ interface I18MDPath {
 }
 
 export function resolveMobileSiteRoutePath(exampleComponentPath: string): string {
-  const componentName: string = exampleComponentPath.replace(`/${EXAMPLE_DIR_NAME}/index.vue`, '').replace(/.*\//g, '')
+  const componentName: string = exampleComponentPath
+    .replace(`/${EXAMPLE_DIR_NAME}/index.vue`, '')
+    .replace(/.*\//g, '')
 
   return `/${componentName}`
 }

@@ -65,10 +65,26 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, getCurrentInstance, watch } from 'vue'
-import Ripple from '../../../varlet-ui/src/ripple'
+// @ts-ignore
+import config from '@config'
+import Ripple from '@varlet/ui/es/ripple'
+import '@varlet/ui/es/ripple/style'
+import Cell from '@varlet/ui/es/cell'
+import '@varlet/ui/es/cell/style'
+import { defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import Cell from '../../../varlet-ui/src/cell'
+
+type Menu = {
+  isTitle: boolean
+  doc: string
+  text: Record<string, string>
+}
+
+type Header = {
+  i18nButton: Record<string, string>
+  logo: string
+  search: Record<string, string>
+}
 
 export default defineComponent({
   directives: { Ripple },
@@ -76,16 +92,6 @@ export default defineComponent({
     [Cell.name]: Cell,
   },
   setup() {
-    type Menu = {
-      isTitle: boolean
-      doc: string
-      text: Record<string, string>
-    }
-    type Header = {
-      i18nButton: Record<string, string>
-      logo: string
-      search: Record<string, string>
-    }
     const menu: Ref<Menu[]> = ref([])
     const language: Ref<string> = ref('')
     const header: Ref<Header> = ref({ i18nButton: {}, logo: '', search: {} })
@@ -93,38 +99,36 @@ export default defineComponent({
     const title: Ref<string> = ref('')
     const versionList: Ref<string[]> = ref()[('2.10.14', '1.x', '3.x')]
     const isHideVersion: Ref<boolean> = ref(true)
-    const config = getCurrentInstance().appContext.config.globalProperties.$config
-    const { pc = {}, title: configTitle } = config
+    const { pc = {}, title: configTitle, language: configLanguage } = config
     const {
       header: configHeader = { i18nButton: {}, logo: '', search: {} },
       menu: configMenu = [],
-      language: configLanguage,
     } = pc
     menu.value = configMenu
     language.value = configLanguage
     header.value = configHeader
     title.value = configTitle
+
     const route = useRoute()
     const router = useRouter()
+
     const switchLanguage = () => {
-      language.value = language.value === 'zh_CN' ? 'en_US' : 'zh_CN'
+      language.value = language.value === 'zh-CN' ? 'en-US' : 'zh-CN'
       const pathArr = route.fullPath.split('/')
       const componentName = pathArr[pathArr.length - 1]
       router.push(`/${language.value}/${componentName}`)
     }
+
     const changeRoute = (item) => {
       if (item.isTitle) {
         return false
       }
       router.push(`/${language.value}/${item.doc}`)
     }
-    console.log(header.value)
+
     watch(
       () => route.path,
-      (to: string) => {
-        const index = to.lastIndexOf('/')
-        componentName.value = to.slice(index + 1)
-      }
+      (to: string) => componentName.value = to.slice(to.lastIndexOf('/') + 1)
     )
     return {
       menu,

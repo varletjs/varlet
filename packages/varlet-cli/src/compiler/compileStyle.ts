@@ -22,9 +22,7 @@ const TildeResolverPlugin = {
 }
 
 export function replaceStyleExt(script: string) {
-  const replacer = (_: any, p1: string, p2: string): string => {
-    return `${p1}css${p2}`
-  }
+  const replacer = (_: any, p1: string, p2: string): string => `${p1}css${p2}`
   return script.replace(IMPORT_LESS_PATH_RE, replacer).replace(REQUIRE_LESS_PATH_RE, replacer)
 }
 

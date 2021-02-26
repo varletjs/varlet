@@ -12,7 +12,6 @@ command('build').description('Build varlet site for production').action(build)
 
 command('compile')
   .description('Compile varlet components library code')
-  .option('-w, --watch', 'Watch files change auto compile')
   .action(compile)
 
 command('create <name>').description('Create a component directory').action(create)

@@ -1,9 +1,9 @@
 import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { BASE_CONFIG } from './webpack.base.config'
 import { varletConfig } from './varlet.config'
 import { PRIMARY_COLOR } from '../shared/constant'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { resolve } from 'path'
 import { get } from 'lodash'
 

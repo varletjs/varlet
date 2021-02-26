@@ -268,3 +268,20 @@ export function addRouteListener(cb: () => void) {
     window.removeEventListener('popstate', cb)
   })
 }
+
+export function watchLang(cb: (lang: string) => void) {
+  const handleHashchange = () => {
+    const { href } = window.location
+    const langs = require('../../varlet.config').languages
+
+    let lang = new URLSearchParams(href.slice(href.indexOf('?'))).get('lang')
+    lang = langs.includes(lang) ? lang as string : 'zh-CN'
+
+    cb(lang)
+  }
+
+  window.addEventListener('hashchange', handleHashchange)
+  onUnmounted(() => window.removeEventListener('hashchange', handleHashchange))
+
+  handleHashchange()
+}

@@ -10,7 +10,11 @@ module.exports = {
     '\\.(js|ts)$': 'babel-jest',
   },
   collectCoverage: true,
-  collectCoverageFrom: ['src/**/*.{js,ts,vue}', `!**/${DOCS_DIR_NAME}/**`, `!**/${TESTS_DIR_NAME}/**`],
+  collectCoverageFrom: [
+    'src/**/*.{js,ts,vue}',
+    `!**/${DOCS_DIR_NAME}/**`,
+    `!**/${TESTS_DIR_NAME}/**`
+  ],
   moduleFileExtensions: ['js', 'vue', 'ts'],
   transformIgnorePatterns: ['/node_modules/'],
 }

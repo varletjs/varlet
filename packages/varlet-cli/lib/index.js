@@ -11,7 +11,6 @@ commander_1.command('dev').description('Run varlet development environment').act
 commander_1.command('build').description('Build varlet site for production').action(build_1.build);
 commander_1.command('compile')
     .description('Compile varlet components library code')
-    .option('-w, --watch', 'Watch files change auto compile')
     .action(compile_1.compile);
 commander_1.command('create <name>').description('Create a component directory').action(create_1.create);
 commander_1.command('jest')

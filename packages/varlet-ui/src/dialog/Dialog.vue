@@ -16,7 +16,7 @@
   >
     <div class="var--box var-dialog" v-bind="$attrs">
       <div class="var-dialog__title">
-        <slot name="title">{{ title }}</slot>
+        <slot name="title">{{ getText(title, pack.dialogTitle) }}</slot>
       </div>
       <div
         class="var-dialog__message"
@@ -31,21 +31,23 @@
       <div class="var-dialog__actions">
         <var-button
           class="var-dialog__button var-dialog__cancel-button"
+          plain
           :color="cancelButtonColor"
           :background="cancelButtonBackground"
           v-if="cancelButton"
           @click="cancel"
         >
-          {{ cancelButtonText }}
+          {{ getText(cancelButtonText, pack.dialogCancelButton) }}
         </var-button>
         <var-button
           class="var-dialog__button var-dialog__confirm-button"
+          plain
           :color="confirmButtonColor"
           :background="confirmButtonBackground"
           v-if="confirmButton"
           @click="confirm"
         >
-          {{ confirmButtonText }}
+          {{ getText(confirmButtonText, pack.dialogConfirmButton) }}
         </var-button>
       </div>
     </div>
@@ -57,6 +59,8 @@ import Popup from '../popup'
 import Button from '../button'
 import { props } from './props'
 import { defineComponent, ref, Ref, watch } from 'vue'
+import { getText } from '../utils/shared'
+import { pack } from '../locale'
 
 export default defineComponent({
   name: 'VarDialog',
@@ -127,6 +131,8 @@ export default defineComponent({
     return {
       popupShow,
       popupCloseOnClickOverlay,
+      pack,
+      getText,
       handleClickOverlay,
       confirm,
       cancel,

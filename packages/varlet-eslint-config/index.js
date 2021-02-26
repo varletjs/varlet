@@ -37,21 +37,18 @@ module.exports = {
     'class-methods-use-this': 'off',
     'global-require': 'off',
     'prefer-destructuring': ['error', { object: true, array: false }],
-    // eslint-plugin-import
     'import/order': 'off',
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/no-dynamic-require': 'off',
-    // eslint-plugin-vue
     'vue/comment-directive': 'off',
     'vue/no-v-html': 'off',
     'vue/attributes-order': 'off',
     'vue/require-default-prop': 'off',
     'vue/no-unused-components': 'off',
     'vue/require-explicit-emits': 'off',
-    // typescript-eslint
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/no-var-requires': 'off',

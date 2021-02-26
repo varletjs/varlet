@@ -24,6 +24,10 @@ export function isSFC(path: string): boolean {
   return pathExistsSync(path) && extname(path) === '.vue'
 }
 
+export function isIndexTS(path: string): boolean {
+  return pathExistsSync(path) && path.endsWith('index.ts')
+}
+
 export function hasSFC(path: string): boolean {
   const dir = readdirSync(path)
   return dir.some((filename) => isSFC(resolve(path, filename)))

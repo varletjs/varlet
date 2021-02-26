@@ -4,7 +4,12 @@
   "description": "A material like components library",
   "module": "es/index.js",
   "main": "cjs/index.js",
-  "style": "umd/varlet.css",
+  "typings": "types/index.d.ts",
+  "vetur": {
+    "tags": "highlight/tags.json",
+    "attributes": "highlight/attributes.json"
+  },
+  "web-types": "highlight/web-types.json",
   "keywords": [
     "Vue",
     "Material",
@@ -13,7 +18,10 @@
   "files": [
     "es",
     "cjs",
-    "umd"
+    "umd",
+    "highlight",
+    "types",
+    "CHANGELOG.md"
   ],
   "author": "haoziqaq <357229046@qq.com>",
   "license": "MIT",
@@ -28,7 +36,6 @@
     "dev": "varlet-cli dev",
     "build": "varlet-cli build",
     "compile": "varlet-cli compile",
-    "compile:watch": "varlet-cli compile --watch",
     "create": "varlet-cli create",
     "jest": "varlet-cli jest",
     "jest:watch": "varlet-cli jest -w"

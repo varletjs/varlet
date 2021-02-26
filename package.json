@@ -39,7 +39,8 @@
       "packages/varlet-ui/es/**",
       "packages/varlet-ui/cjs/**",
       "packages/varlet-ui/umd/**",
-      "packages/varlet-ui/src/*/__tests__/**"
+      "packages/varlet-ui/src/*/__tests__/**",
+      "packages/varlet"
     ],
     "extends": [
       "@varlet"
