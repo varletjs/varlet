@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/haoziqaq/varlet/compare/v0.7.0...v0.8.0) (2021-02-26)
+
+
+### Bug Fixes
+
+* **all package.json:** 修订版本 ([c6fc097](https://github.com/haoziqaq/varlet/commit/c6fc09740cda2fb121485e41d01caab082633e2e))
+
+
+
+
+
 # [0.7.0](https://github.com/haoziqaq/varlet/compare/v0.5.13...v0.7.0) (2020-12-25)
 
 **Note:** Version bump only for package @varlet/stylelint-config

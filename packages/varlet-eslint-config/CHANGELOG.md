@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/haoziqaq/varlet/compare/v0.7.0...v0.8.0) (2021-02-26)
+
+
+### Bug Fixes
+
+* **all package.json:** 修订版本 ([c6fc097](https://github.com/haoziqaq/varlet/commit/c6fc09740cda2fb121485e41d01caab082633e2e))
+* **cli,ui:** 支持组件库,文档i18n ([b76e664](https://github.com/haoziqaq/varlet/commit/b76e66474ae48fffe0722650c4d03499b127aab5))
+
+
+### Features
+
+* expansion-panels ([61c2694](https://github.com/haoziqaq/varlet/commit/61c26946785be0ea40151ae29c62a7dc888ed317))
+
+
+
+
+
 # [0.7.0](https://github.com/haoziqaq/varlet/compare/v0.5.13...v0.7.0) (2020-12-25)
 
 

@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/haoziqaq/varlet/compare/v0.7.0...v0.8.0) (2021-02-26)
+
+
+### Bug Fixes
+
+* **all package.json:** 修订版本 ([c6fc097](https://github.com/haoziqaq/varlet/commit/c6fc09740cda2fb121485e41d01caab082633e2e))
+* **cli:** webpack4.x -> 5.x ([967b63a](https://github.com/haoziqaq/varlet/commit/967b63a7294058e91dabe0eb27e132c0a3a33baf))
+* **cli:** 修复windows template highlight 编译异常 ([babb72d](https://github.com/haoziqaq/varlet/commit/babb72d8169d8918bdd09c289227a60b3659f415))
+* **cli:** 增加模版高亮 默认值描述 ([847ae41](https://github.com/haoziqaq/varlet/commit/847ae4173634cac959783d4d27c4d4a3b4a6908b))
+* **cli ui/tabs ui/tab:** cli修订依赖版本 tabs tab通信完成 切换效果完成 ([44c9495](https://github.com/haoziqaq/varlet/commit/44c9495469b99d49343f0a20ecf30d406d76e844))
+* **cli,ui:** 支持组件库,文档i18n ([b76e664](https://github.com/haoziqaq/varlet/commit/b76e66474ae48fffe0722650c4d03499b127aab5))
+* **merge:** merge ([af975e7](https://github.com/haoziqaq/varlet/commit/af975e772c1d85ce4b220e1911934f37bf709d41))
+* **root:** 移除了ui/coverage,hightlight的版本控制 ([0c5893d](https://github.com/haoziqaq/varlet/commit/0c5893d9f04fe35e105167a31540c9d1408ec596))
+* **ui:** 增加单元测试命令 测试覆盖率统计 ide高亮支持 优化cli代码可读性 ([91882c6](https://github.com/haoziqaq/varlet/commit/91882c65349b83140598612fef650330bbf57d56))
+* **ui/icon:** 增加复制icon功能 ([5282655](https://github.com/haoziqaq/varlet/commit/52826554b46d7121a1209a471be9e6242c8c1167))
+* **ui/uploader:** uploader原型完成 ([0299500](https://github.com/haoziqaq/varlet/commit/02995005b83b93ee18bd5b4d3bbd2921f783ea61))
+* modify some style ([ee7be71](https://github.com/haoziqaq/varlet/commit/ee7be710ad1ff0b3d8b9fe349726b5c271e2d21d))
+* modify style ([72d28b3](https://github.com/haoziqaq/varlet/commit/72d28b35ecbd1b8bfa2d1a2406e566e1b346d1ea))
+* modify ts to js of example ([d6d269f](https://github.com/haoziqaq/varlet/commit/d6d269f4d159c3cb6bea7605424ab8baf52db6a5))
+* **ui:** ui/input,checkbox,checkbox-group,radio,radio-group原型完成 优化父子组件通信 ([3af4a62](https://github.com/haoziqaq/varlet/commit/3af4a6205b8a4c1a2f77decdfe4382f0fc9dc24d))
+* **ui/icon:** icon name支持图片地址 ([a5bcb49](https://github.com/haoziqaq/varlet/commit/a5bcb49d51c7acebf2fe4f515215cc1376fc66f4))
+* **ui/icon ui/image ui/lazy:** 增加lazy的处理状态 icon原型完成 增加image的load error监听 ([661b111](https://github.com/haoziqaq/varlet/commit/661b111d75061d434d480256b6977908a6dc8ca2))
+* **ui/tabs ui/tab:** tabs tab原型完成 ([01d6330](https://github.com/haoziqaq/varlet/commit/01d633031a56f4d593a85613a680ed244f49fb2c))
+* add url-loader and build icons ([c4c219a](https://github.com/haoziqaq/varlet/commit/c4c219a246722cde4d4f60f58b45b223977eba1f))
+* modify componentName ([206a3c0](https://github.com/haoziqaq/varlet/commit/206a3c04938cd3f21c7f495989e9c8bb7aa118b0))
+
+
+### Features
+
+* **expansion-panels:** add example ([8ef77ac](https://github.com/haoziqaq/varlet/commit/8ef77ac9d687bb46a897deca6e497660e75538f4))
+* pullRefresh ([8669e0b](https://github.com/haoziqaq/varlet/commit/8669e0bf76395db657d50acf059fba39faac4e4b))
+
+
+### Performance Improvements
+
+* **cli:** 优化compiler编译速度 ([20df4e1](https://github.com/haoziqaq/varlet/commit/20df4e18819cc43010cbb3223b980dc140eb5585))
+
+
+
+
+
 # [0.7.0](https://github.com/haoziqaq/varlet/compare/v0.5.13...v0.7.0) (2020-12-25)
 
 
