@@ -15,6 +15,7 @@ export default defineComponent({
   setup() {
     const componentName: Ref<string> = ref('')
     const route = useRoute()
+
     watch(
       () => route.path,
       (to: string) => {
@@ -23,6 +24,7 @@ export default defineComponent({
         componentName.value = componentNameInner[0]?.toUpperCase() + componentNameInner.slice(1)
       }
     )
+
     return {
       componentName,
     }
@@ -31,7 +33,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '../varlet-ui/src/styles/var';
+@import '~@varlet/ui/es/styles/var';
 
 body {
   margin: 0;

@@ -46,15 +46,16 @@
             v-else
             class="varlet-site-nav__item--link"
             :class="`${item.doc === componentName ? 'varlet-site-nav__item--active' : ''}`"
-            >{{ item.text[language] }}</span
           >
+            {{ item.text[language] }}
+          </span>
         </var-cell>
       </div>
       <router-view />
       <div class="varlet-site-mobile">
         <div class="varlet-site-empty"></div>
         <div class="varlet-site-mobile-content">
-          <iframe :src="`./mobile.html#/${componentName}`"></iframe>
+          <iframe :src="`./mobile.html#/${componentName}?language=${language}`"></iframe>
         </div>
         <div class="varlet-site-mobile-image">
           <img src="./assets/images/mobile.png" />
@@ -68,8 +69,8 @@
 // @ts-ignore
 import config from '@config'
 import Ripple from '@varlet/ui/es/ripple'
-import '@varlet/ui/es/ripple/style'
 import Cell from '@varlet/ui/es/cell'
+import '@varlet/ui/es/ripple/style'
 import '@varlet/ui/es/cell/style'
 import { defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -97,15 +98,11 @@ export default defineComponent({
     const header: Ref<Header> = ref({ i18nButton: {}, logo: '', search: {} })
     const componentName = ref('button')
     const title: Ref<string> = ref('')
-    const versionList: Ref<string[]> = ref()[('2.10.14', '1.x', '3.x')]
+    const versionList: Ref<string[]> = ref(['2.10.14', '1.x', '3.x'])
     const isHideVersion: Ref<boolean> = ref(true)
-    const { pc = {}, title: configTitle, language: configLanguage } = config
-    const {
-      header: configHeader = { i18nButton: {}, logo: '', search: {} },
-      menu: configMenu = [],
-    } = pc
+    const { pc = {}, title: configTitle } = config
+    const { header: configHeader = { i18nButton: {}, logo: '', search: {} }, menu: configMenu = [] } = pc
     menu.value = configMenu
-    language.value = configLanguage
     header.value = configHeader
     title.value = configTitle
 
@@ -128,8 +125,13 @@ export default defineComponent({
 
     watch(
       () => route.path,
-      (to: string) => componentName.value = to.slice(to.lastIndexOf('/') + 1)
+      (to: string) => {
+        componentName.value = to.slice(to.lastIndexOf('/') + 1)
+        language.value = to.slice(to.indexOf('#/') + 2, to.lastIndexOf('/'))
+      },
+      { immediate: true }
     )
+
     return {
       menu,
       language,
@@ -146,7 +148,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '../varlet-ui/src/styles/var';
+@import '~@varlet/ui/es/styles/var';
 
 body,
 html,

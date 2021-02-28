@@ -1,20 +1,10 @@
 import zhCN from './zh-CN'
 import enUS from './en-US'
-import { ref, Ref } from 'vue'
+import { useLocale } from '../../../locale'
 
-export const packs: Record<string, any> = {
-  'zh-CN': zhCN,
-  'en-US': enUS
-}
+const { add, use, pack, packs, merge } = useLocale()
 
-export const pack: Ref<Record<string, any>> = ref({})
+export { add, use, pack, packs, merge }
 
-export function use(lang: string) {
-  if (!packs[lang]) {
-    return
-  }
-
-  pack.value = packs[lang]
-}
-
-use('zh-CN')
+add('zh-CN', zhCN)
+add('en-US', enUS)

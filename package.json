@@ -13,7 +13,7 @@
   "scripts": {
     "bootstrap": "yarn && node scripts/bootstrap.js",
     "commit": "git-cz",
-    "publish": "lerna publish"
+    "publish": "yarn bootstrap && lerna publish"
   },
   "config": {
     "commitizen": {

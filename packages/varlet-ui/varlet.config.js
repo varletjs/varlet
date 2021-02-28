@@ -7,6 +7,7 @@ module.exports = {
     title: 'Varlet 组件库示例',
     description: 'Varlet 组件库示例',
     logo: 'https://cn.vuejs.org/images/logo.png',
+    redirect: '/zh-CN/home',
     header: {
       logo: 'https://cn.vuejs.org/images/logo.png',
       search: {
@@ -21,13 +22,22 @@ module.exports = {
     menu: [
       {
         text: {
-          'zh-CN': '快速开始',
+          'zh-CN': '基本介绍',
+          'en-US': 'Basic introduction',
         },
         isTitle: true,
       },
       {
         text: {
+          'zh-CN': '快速开始',
+          'en-US': 'Quickstart',
+        },
+        doc: 'quickstart',
+      },
+      {
+        text: {
           'zh-CN': '组件',
+          'en-US': 'Components',
         },
         isTitle: true,
       },
@@ -268,10 +278,6 @@ module.exports = {
     title: 'Varlet 组件库示例',
     description: 'Varlet 组件库示例',
     logo: 'https://cn.vuejs.org/images/logo.png',
+    redirect: '/home',
   },
-  language: 'zh-CN',
-  languages: [
-    'zh-CN',
-    'en-US'
-  ]
 }

@@ -19,6 +19,7 @@ import {
   ref,
 } from 'vue'
 import { isArray, removeItem } from './shared'
+import { packs, use } from '../locale'
 
 export interface MountInstance {
   instance: any
@@ -272,12 +273,10 @@ export function addRouteListener(cb: () => void) {
 export function watchLang(cb: (lang: string) => void) {
   const handleHashchange = () => {
     const { href } = window.location
-    const langs = require('../../varlet.config').languages
 
-    let lang = new URLSearchParams(href.slice(href.indexOf('?'))).get('lang')
-    lang = langs.includes(lang) ? lang as string : 'zh-CN'
+    const language = new URLSearchParams(href.slice(href.indexOf('?'))).get('language') ?? 'zh-CN'
 
-    cb(lang)
+    cb(language)
   }
 
   window.addEventListener('hashchange', handleHashchange)

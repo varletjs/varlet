@@ -7,6 +7,7 @@ module.exports = {
     title: 'Varlet 组件库文档',
     description: 'Varlet 组件库文档',
     logo: 'https://cn.vuejs.org/images/logo.png',
+    redirect: undefined,
     header: {
       i18nButton: {
         zh_CN: 'En',
@@ -18,9 +19,6 @@ module.exports = {
     title: 'Varlet 组件库示例',
     description: 'Varlet 组件库示例',
     logo: 'https://cn.vuejs.org/images/logo.png',
+    redirect: undefined,
   },
-  languages: [
-    'zh-CN',
-    'en-US'
-  ]
 }

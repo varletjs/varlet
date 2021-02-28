@@ -3,57 +3,89 @@ import {
   DOCS_DIR_NAME,
   EXAMPLE_DIR_INDEX,
   EXAMPLE_DIR_NAME,
+  ROOT_DOCS_DIR,
   SITE_MOBILE_ROUTES,
   SITE_PC_ROUTES,
   SRC_DIR,
 } from '../shared/constant'
 import { pathExistsSync, readdir, readdirSync, writeFile } from 'fs-extra'
 import { resolve } from 'path'
-import { isDir } from '../shared/fsUtils'
+import { isMD } from '../shared/fsUtils'
 
-interface I18MDPath {
-  [key: string]: string[]
+export function getExampleRoutePath(examplePath: string): string {
+  return '/' + examplePath.replace(`/${EXAMPLE_DIR_NAME}/index.vue`, '').replace(/.*\//g, '')
 }
 
-export function resolveMobileSiteRoutePath(exampleComponentPath: string): string {
-  const componentName: string = exampleComponentPath
-    .replace(`/${EXAMPLE_DIR_NAME}/index.vue`, '')
-    .replace(/.*\//g, '')
+export function getComponentDocsRoutePath(componentDocsPath: string): string {
+  const slashPart = componentDocsPath.split('/')
+  const mdName = slashPart.slice(-1)?.[0] ?? ''
+  const language = mdName.split('.')?.[0]
+  const routePath = slashPart.slice(-3)?.[0]
 
-  return `/${componentName}`
+  return `/${language}/${routePath}`
 }
 
-export function resolvePcSiteRoutePath(mdPath: string, componentName: string): string {
-  const language = mdPath.split('/').slice(-1)[0].split('.')[0]
-  return `/${language}/${componentName}`
+export function getRootDocsRoutePath(rootDocsPath: string): string {
+  const mdName = rootDocsPath.split('/').slice(-1)?.[0]
+  const slashPart = mdName.split('.')
+  const [routePath, language] = slashPart
+
+  return `/${language}/${routePath}`
 }
 
-export async function findExampleComponentPaths(): Promise<string[]> {
-  const srcDir: string[] = await readdir(SRC_DIR)
-  return srcDir
-    .filter((filename: string) => pathExistsSync(resolve(SRC_DIR, filename, EXAMPLE_DIR_NAME, EXAMPLE_DIR_INDEX)))
-    .map((validFilename: string) => slash(resolve(SRC_DIR, validFilename, EXAMPLE_DIR_NAME, EXAMPLE_DIR_INDEX)))
+export async function findExamplePaths(): Promise<string[]> {
+  const dir: string[] = await readdir(SRC_DIR)
+
+  const buildPath = (filename: string) => resolve(SRC_DIR, filename, EXAMPLE_DIR_NAME, EXAMPLE_DIR_INDEX)
+
+  const existPath = (filename: string) => pathExistsSync(buildPath(filename))
+
+  const slashPath = (filename: string) => slash(buildPath(filename))
+
+  return dir.filter(existPath).map(slashPath)
 }
 
-export async function findDocsMDPaths(): Promise<I18MDPath> {
-  const srcDir: string[] = await readdir(SRC_DIR)
-  return srcDir
-    .filter((filename: string) => isDir(resolve(SRC_DIR, filename)))
-    .reduce((i18MdPath: I18MDPath, componentName: string) => {
-      const docsPath = resolve(SRC_DIR, componentName, DOCS_DIR_NAME)
-      isDir(docsPath) &&
-        (i18MdPath[componentName] = readdirSync(docsPath).map((filename: string) => slash(resolve(docsPath, filename))))
-      return i18MdPath
-    }, {})
+export async function findComponentDocsPaths(): Promise<string[]> {
+  const dir: string[] = await readdir(SRC_DIR)
+
+  const buildPath = (filename: string) => resolve(SRC_DIR, filename, DOCS_DIR_NAME)
+
+  const existPath = (filename: string) => pathExistsSync(buildPath(filename))
+
+  const collectRoutePath = (routePaths: string[], filename: string) => {
+    const dirPath = buildPath(filename)
+
+    readdirSync(dirPath).forEach((mdName: string) => {
+      const path = resolve(dirPath, mdName)
+      isMD(path) && routePaths.push(slash(path))
+    })
+
+    return routePaths
+  }
+
+  return dir.filter(existPath).reduce(collectRoutePath, [])
+}
+
+export async function findRootDocsPaths(): Promise<string[]> {
+  const dir: string[] = await readdir(ROOT_DOCS_DIR)
+
+  const buildPath = (filename: string) => resolve(ROOT_DOCS_DIR, filename)
+
+  const existPath = (filename: string) => isMD(buildPath(filename))
+
+  const slashPath = (filename: string) => slash(buildPath(filename))
+
+  return dir.filter(existPath).map(slashPath)
 }
 
 export async function buildMobileSiteRoutes() {
-  const exampleComponentPaths: string[] = await findExampleComponentPaths()
-  const routes = exampleComponentPaths.map(
-    (exampleComponentPath: string) => `
+  const examplePaths: string[] = await findExamplePaths()
+
+  const routes = examplePaths.map(
+    (examplePath) => `
   {
-    path: '${resolveMobileSiteRoutePath(exampleComponentPath)}',
-    component: () => import('${exampleComponentPath}')
+    path: '${getExampleRoutePath(examplePath)}',
+    component: () => import('${examplePath}')
   }\
 `
   )
@@ -67,23 +99,32 @@ export async function buildMobileSiteRoutes() {
 }
 
 export async function buildPcSiteRoutes() {
-  const i18MdPath: I18MDPath = await findDocsMDPaths()
+  const [componentDocsPaths, rootDocsPaths] = await Promise.all([findComponentDocsPaths(), findRootDocsPaths()])
 
-  const routes = Object.entries(i18MdPath).map(([componentName, mdPaths]) => {
-    return mdPaths.map((mdPath) => {
-      return `
+  const componentDocsRoutes = componentDocsPaths.map(
+    (componentDocsPath) => `
   {
-    path: '${resolvePcSiteRoutePath(mdPath, componentName)}',
-    component: () => import('${mdPath}')
+    path: '${getComponentDocsRoutePath(componentDocsPath)}',
+    // @ts-ignore
+    component: () => import('${componentDocsPath}')
   }\
 `
-    })
-  })
+  )
+
+  const rootDocsRoutes = rootDocsPaths.map(
+    (rootDocsPath) => `
+  {
+    path: '${getRootDocsRoutePath(rootDocsPath)}',
+    // @ts-ignore
+    component: () => import('${rootDocsPath}')
+  }\
+`
+  )
 
   await writeFile(
     SITE_PC_ROUTES,
     `export default [\
-  ${routes.join(',')}
+  ${[...componentDocsRoutes, rootDocsRoutes].join(',')}
 ]`
   )
 }
