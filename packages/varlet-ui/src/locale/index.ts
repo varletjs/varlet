@@ -12,7 +12,7 @@ export function useLocale() {
   const use = (lang: string) => {
     if (!packs[lang]) {
       console.warn(`The ${lang} does not exist. You can mount a language package using the add method`)
-      return
+      return {}
     }
 
     pack.value = packs[lang]
