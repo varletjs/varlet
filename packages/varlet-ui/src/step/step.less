@@ -1,0 +1,116 @@
+@import '../styles/var';
+
+.var-step {
+  display: flex;
+  position: relative;
+  flex: 1;
+
+  &-horizontal {
+    display: flex;
+    width: 100%;
+
+    &__main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-basis: 100%;
+    }
+
+    &__tag {
+      width: 20px;
+      height: 20px;
+      background: #9e9e9e;
+      display: flex;
+      font-size: 14px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      margin: 4px 0;
+      transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+
+      &--active {
+        background: @color-primary;
+      }
+
+      .var-icon {
+        font-size: 16px;
+      }
+    }
+
+    &__content {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.38);
+      transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+
+      &--active {
+        color: #000;
+      }
+    }
+
+    &__line {
+      position: relative;
+      width: 20px;
+      top: 14px;
+      flex: 1;
+      height: 1px;
+      transform: scaleY(0.5);
+      background: black;
+    }
+  }
+
+  &-vertical {
+    width: 100%;
+
+    &__main {
+      display: flex;
+      align-items: flex-start;
+      min-height: 30px;
+    }
+
+    &__tag {
+      width: 20px;
+      height: 20px;
+      background: #9e9e9e;
+      display: flex;
+      font-size: 14px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      margin: 0 4px;
+      transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+
+      &--active {
+        background: @color-primary;
+      }
+
+      .var-icon {
+        font-size: 16px;
+      }
+    }
+
+    &__content {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.38);
+      transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+
+      &--active {
+        color: #000;
+      }
+    }
+
+    &__line {
+      position: relative;
+      height: calc(100% - 30px);
+      left: 14px;
+      top: calc(-100% + 45px);
+      min-height: 20px;
+      width: 1px;
+      transform: scaleX(0.5);
+      background: black;
+    }
+  }
+}

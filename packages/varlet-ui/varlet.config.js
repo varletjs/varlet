@@ -272,6 +272,20 @@ module.exports = {
         },
         doc: 'picker',
       },
+      {
+        text: {
+          'zh-CN': 'TimePicker 时间选择器',
+          'en-US': 'TimePicker',
+        },
+        doc: 'time-picker',
+      },
+      {
+        text: {
+          'zh-CN': 'Steps 步骤条',
+          'en-US': 'Steps',
+        },
+        doc: 'steps',
+      },
     ],
   },
   mobile: {

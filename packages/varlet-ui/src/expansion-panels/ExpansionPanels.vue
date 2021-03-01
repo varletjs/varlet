@@ -1,6 +1,6 @@
 <template>
   <div class="var-expansion-panels">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
