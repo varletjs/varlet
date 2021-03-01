@@ -12,7 +12,7 @@ import { pathExistsSync, readdir, readdirSync, writeFile } from 'fs-extra'
 import { resolve } from 'path'
 import { isMD } from '../shared/fsUtils'
 
-const EXAMPLE_COMPONENT_NAME_RE = /\/([-\w]+)\/example\//
+const EXAMPLE_COMPONENT_NAME_RE = /\/([-\w]+)\/example\/index.vue/
 const COMPONENT_DOCS_RE = /\/([-\w]+)\/docs\/([-\w]+)\.md/
 const ROOT_DOCS_RE = /\/docs\/([-\w]+)\.([-\w]+)\.md/
 
