@@ -12,7 +12,7 @@ const redirect = get(config, 'pc.redirect')
 redirect &&
   routes.push({
     path: '/:pathMatch(.*)*',
-    redirect: get(config, 'pc.redirect') ?? '/',
+    redirect,
   })
 
 const router = createRouter({
