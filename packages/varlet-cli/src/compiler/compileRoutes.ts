@@ -12,23 +12,22 @@ import { pathExistsSync, readdir, readdirSync, writeFile } from 'fs-extra'
 import { resolve } from 'path'
 import { isMD } from '../shared/fsUtils'
 
+const EXAMPLE_COMPONENT_NAME_RE = /\/([-\w]+)\/example\//
+const COMPONENT_DOCS_RE = /\/([-\w]+)\/docs\/([-\w]+)\.md/
+const ROOT_DOCS_RE = /\/docs\/([-\w]+)\.([-\w]+)\.md/
+
 export function getExampleRoutePath(examplePath: string): string {
-  return '/' + examplePath.replace(`/${EXAMPLE_DIR_NAME}/index.vue`, '').replace(/.*\//g, '')
+  return '/' + examplePath.match(EXAMPLE_COMPONENT_NAME_RE)?.[1]
 }
 
 export function getComponentDocsRoutePath(componentDocsPath: string): string {
-  const slashPart = componentDocsPath.split('/')
-  const mdName = slashPart.slice(-1)?.[0] ?? ''
-  const language = mdName.split('.')?.[0]
-  const routePath = slashPart.slice(-3)?.[0]
+  const [_, routePath, language] = componentDocsPath.match(COMPONENT_DOCS_RE) ?? []
 
   return `/${language}/${routePath}`
 }
 
 export function getRootDocsRoutePath(rootDocsPath: string): string {
-  const mdName = rootDocsPath.split('/').slice(-1)?.[0]
-  const slashPart = mdName.split('.')
-  const [routePath, language] = slashPart
+  const [_, routePath, language] = rootDocsPath.match(ROOT_DOCS_RE) ?? []
 
   return `/${language}/${routePath}`
 }
