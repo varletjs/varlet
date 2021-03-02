@@ -4,7 +4,7 @@ export const props = {
     default: undefined,
   },
   label: {
-    type: [String],
-    required: true,
+    type: [String, Number],
+    default: 0,
   },
 }

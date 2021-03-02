@@ -1,30 +1,30 @@
 <template>
-	<div
-		class="var-option"
-		:class="[optionSelected ? 'var-option--selected-color' : null]"
-		:style="{
-			width: wrapWidth,
-			color: optionSelected ? activeColor : null,
-		}"
-		v-ripple
-		v-bind="$attrs"
-		@click="handleClick"
-	>
-		<div
-			class="var-option__cover"
-			:class="[optionSelected ? 'var-option--selected-background' : null]"
-			:style="{
-				background: optionSelected ? activeColor : null,
-			}"
-		></div>
-		<var-checkbox ref="checkbox" v-if="multiple" v-model="optionSelected" @click.stop @change="handleSelect" />
+  <div
+    class="var-option"
+    :class="[optionSelected ? 'var-option--selected-color' : null]"
+    :style="{
+      width: wrapWidth,
+      color: optionSelected ? activeColor : null,
+    }"
+    v-ripple
+    v-bind="$attrs"
+    @click="handleClick"
+  >
+    <div
+      class="var-option__cover"
+      :class="[optionSelected ? 'var-option--selected-background' : null]"
+      :style="{
+        background: optionSelected ? activeColor : null,
+      }"
+    ></div>
+    <var-checkbox ref="checkbox" v-if="multiple" v-model="optionSelected" @click.stop @change="handleSelect" />
 
-		<div class="var-option__text">
-			<slot>
-				{{ label }}
-			</slot>
-		</div>
-	</div>
+    <div class="var-option__text">
+      <slot>
+        {{ label }}
+      </slot>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -57,7 +57,7 @@ export default defineComponent({
     const optionSelected: Ref<boolean> = ref(false)
 
     const selected: ComputedRef<boolean> = computed(() => optionSelected.value)
-    const label: ComputedRef<string | undefined> = computed(() => props.label)
+    const label: ComputedRef<string | number> = computed(() => props.label)
     const value: ComputedRef<string | number | boolean | undefined> = computed(() => props.value)
 
     const { wrapWidth, multiple, activeColor, onSelect } = selectProvider

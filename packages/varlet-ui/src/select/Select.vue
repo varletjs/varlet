@@ -41,20 +41,20 @@
                 <var-chip
                   class="var-select__chip"
                   closable
-                  v-for="m in modelValue"
-                  :key="m"
+                  v-for="l in labels"
+                  :key="l"
                   @click.stop
                   @close="() => handleClose(m)"
                 >
-                  {{ findLabel(m) }}
+                  {{ l }}
                 </var-chip>
               </div>
               <div class="var-select__values" v-else>
-                {{ modelValue.map((m) => findLabel(m)).join(separator) }}
+                {{ labels.join(separator) }}
               </div>
             </div>
 
-            <span v-else>{{ findLabel(modelValue) }}</span>
+            <span v-else>{{ label }}</span>
 
             <var-icon
               class="var-select__arrow"
@@ -141,7 +141,7 @@ export default defineComponent({
       FORM_BIND_FORM_ITEM_KEY
     )
     const { length } = useAtChildrenCounter(SELECT_COUNT_OPTION_KEY)
-
+    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const wrapEl: Ref<HTMLElement | null> = ref(null)
     const isFocus: Ref<boolean> = ref(false)
     const wrapWidth: ComputedRef<string> = computed(() => {
@@ -149,8 +149,19 @@ export default defineComponent({
     })
     const multiple: ComputedRef<boolean> = computed(() => props.multiple)
     const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
+    const label: Ref<string | number> = ref('')
+    const labels: Ref<(string | number)[]> = ref([])
 
-    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+    const computeLabel = () => {
+      const { multiple, modelValue } = props
+
+      if (multiple && isArray(modelValue)) {
+        labels.value = ((modelValue as unknown) as (string | number)[]).map(findLabel)
+      }
+      if (!multiple && !isEmpty(modelValue)) {
+        label.value = findLabel(modelValue)
+      }
+    }
 
     const validate = () => v(props.rules, props.modelValue)
 
@@ -170,7 +181,7 @@ export default defineComponent({
 
       !targetProvider && (targetProvider = optionProviders.find(({ label }) => label.value === targetValue))
 
-      return targetProvider?.label.value
+      return targetProvider!.label.value
     }
 
     const computePlaceholderState = () => {
@@ -303,6 +314,8 @@ export default defineComponent({
           sync(props.modelValue === findValue({ sync, ...rest }))
         })
       }
+
+      computeLabel()
     }
 
     watch(
@@ -336,6 +349,8 @@ export default defineComponent({
       isFocus,
       errorMessage,
       formDisabled: formProvider?.disabled,
+      label,
+      labels,
       computePlaceholderState,
       findLabel,
       handleFocus,

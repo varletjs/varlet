@@ -19,6 +19,15 @@
     </var-steps>
   </div>
   <div>
+    <app-type>动态步骤</app-type>
+    <var-select placeholder="请选择分类" :rules="[(v) => !!v || '不能为空']" v-model="count" style="margin-top: 20px">
+      <var-option v-for="item in list" :key="item" :label="item" :value="item" />
+    </var-select>
+    <var-steps>
+      <var-step>第一步</var-step>
+    </var-steps>
+  </div>
+  <div>
     <app-type>垂直模式</app-type>
     <var-steps direction="vertical" :active="5">
       <var-step active-icon="notebook">
@@ -47,6 +56,8 @@
 import { defineComponent, ref } from 'vue'
 import Steps from '..'
 import Step from '../../step'
+import Select from '../../select'
+import Option from '../../option'
 import Button from '../../button'
 
 export default defineComponent({
@@ -54,10 +65,14 @@ export default defineComponent({
   components: {
     [Steps.name]: Steps,
     [Step.name]: Step,
+    [Select.name]: Select,
+    [Option.name]: Option,
     [Button.name]: Button,
   },
   setup() {
     const active = ref(0)
+    const list = ref([2, 3, 4, 5])
+    const count = ref(2)
     const next = () => {
       active.value = active.value === 3 ? 0 : active.value + 1
     }
@@ -65,6 +80,8 @@ export default defineComponent({
       active.value = index
     }
     return {
+      list,
+      count,
       next,
       change,
       active,
