@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, onMounted, ref, Ref, watch } from 'vue'
+import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useAtParentIndex, useParent } from '../utils/components'
 import { props } from './props'
 import { StepProvider } from './provide'
@@ -63,7 +63,7 @@ export default defineComponent({
     [Icon.name]: Icon,
   },
   props,
-  setup(props) {
+  setup() {
     const main: Ref<HTMLDivElement | null> = ref(null)
     const lineMargin: Ref<string> = ref('')
 

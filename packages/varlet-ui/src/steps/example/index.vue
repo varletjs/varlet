@@ -20,11 +20,11 @@
   </div>
   <div>
     <app-type>动态步骤</app-type>
-    <var-select placeholder="请选择分类" :rules="[(v) => !!v || '不能为空']" v-model="count" style="margin-top: 20px">
+    <var-select placeholder="请选择分类" v-model="count" style="margin-bottom: 20px">
       <var-option v-for="item in list" :key="item" :label="item" :value="item" />
     </var-select>
     <var-steps>
-      <var-step>第一步</var-step>
+      <var-step v-for="i in count" :key="i">第{{ i }}步</var-step>
     </var-steps>
   </div>
   <div>
