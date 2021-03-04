@@ -1,3 +1,5 @@
+export type RefreshStatus = 'default' | 'pulling' | 'loosing' | 'loading' | 'success'
+
 export const props = {
   modelValue: {
     type: Boolean,
