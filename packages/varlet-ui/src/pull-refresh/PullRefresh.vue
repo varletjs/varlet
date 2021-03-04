@@ -1,29 +1,28 @@
 <template>
-	<div
-		ref="freshNode"
-		class="var-pull-refresh"
-		@touchstart="touchStart"
-		@touchmove="touchMove"
-		@touchend="touchEnd"
-		@touchcancel="touchEnd"
-	>
-		<div
-			:class="`var-pull-refresh__control var-elevation--2${isSuccess && ' var-pull-refresh__control-success'}`"
-			:style="controlStyle"
-		>
-			<var-icon :name="iconName" :transition="200" :class="iconClass" />
-		</div>
-		<slot />
-	</div>
+  <div
+    ref="freshNode"
+    class="var-pull-refresh"
+    @touchstart="touchStart"
+    @touchmove="touchMove"
+    @touchend="touchEnd"
+    @touchcancel="touchEnd"
+  >
+    <div
+      class="var-pull-refresh__control var-elevation--2"
+      :class="[isSuccess ? 'var-pull-refresh__control-success' : null]"
+      :style="controlStyle"
+    >
+      <var-icon :name="iconName" :transition="200" :class="iconClass" />
+    </div>
+    <slot />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, Ref, computed, watch, onMounted } from 'vue'
 import Icon from '../icon'
 import { getParentScroller, getScrollTop } from '../utils/elements'
-import { props } from './props'
-
-type RefreshStatus = 'default' | 'pulling' | 'loosing' | 'loading' | 'success'
+import { props, RefreshStatus } from './props'
 
 const MAX_DISTANCE = 100
 
