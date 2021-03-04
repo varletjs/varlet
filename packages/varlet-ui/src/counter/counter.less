@@ -1,0 +1,69 @@
+@import "../styles/var";
+
+@counter-padding: 0 4px;
+@counter-font-color: #fff;
+@counter-background: @color-primary;
+@counter-input-width: 28px;
+@counter-input-margin: 0 4px;
+@counter-input-font-size: 14px;
+@counter-button-size: 28px;
+@counter-button-icon-size: 100%;
+@counter-disabled-color: #aaa;
+@input-error-color: @color-danger;
+
+.var-counter {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &__controller {
+    display: flex;
+    align-items: center;
+    color: @counter-font-color;
+    border-radius: @counter-button-size;
+    padding: @counter-padding;
+    background: @counter-background;
+  }
+
+  &__decrement-button {
+    width: @counter-button-size;
+    height: @counter-button-size;
+    font-size: @counter-button-icon-size;
+    border-radius: 50%;
+  }
+
+  &__input {
+    width: @counter-input-width;
+    font-size: @counter-input-font-size;
+    outline: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    text-align: center;
+    color: @counter-font-color;
+    margin: @counter-input-margin;
+
+    &[disabled] {
+      background: transparent;
+    }
+  }
+
+  &__increment-button {
+    width: @counter-button-size;
+    height: @counter-button-size;
+    font-size: @counter-button-icon-size;
+    border-radius: 50%;
+  }
+
+  &--disabled {
+    background: @counter-disabled-color;
+  }
+
+  &--hidden {
+    opacity: 0;
+  }
+
+  &--error {
+    background: @color-danger;
+  }
+}

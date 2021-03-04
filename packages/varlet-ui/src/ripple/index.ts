@@ -12,6 +12,7 @@ interface RippleStyles {
 }
 
 interface RippleOptions {
+  removeRipple: any
   color?: string
   disabled?: boolean
   touchmoveForbid?: boolean
@@ -53,6 +54,8 @@ function computeRippleStyles(element: RippleHTMLElement, event: TouchEvent): Rip
 
 function createRipple(this: RippleHTMLElement, event: TouchEvent) {
   const _ripple = this._ripple as RippleOptions
+  _ripple.removeRipple()
+
   if (_ripple.disabled || _ripple.tasker) {
     return
   }
@@ -117,26 +120,29 @@ function forbidRippleTask(this: RippleHTMLElement) {
 }
 
 function mounted(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>) {
-  el._ripple = binding.value ?? {}
-  el._ripple.tasker = null
+  el._ripple = {
+    tasker: null,
+    ...binding.value ?? {},
+    removeRipple: removeRipple.bind(el),
+  }
 
   el.addEventListener('touchstart', createRipple, { passive: true })
-  el.addEventListener('touchend', removeRipple, { passive: true })
-  el.addEventListener('touchcancel', removeRipple, { passive: true })
   el.addEventListener('touchmove', forbidRippleTask, { passive: true })
   el.addEventListener('dragstart', removeRipple, { passive: true })
+  document.addEventListener('touchend', el._ripple.removeRipple, { passive: true })
+  document.addEventListener('touchcancel', el._ripple.removeRipple, { passive: true })
 }
 
 function unmounted(el: RippleHTMLElement) {
   el.removeEventListener('touchstart', createRipple)
-  el.removeEventListener('touchend', removeRipple)
-  el.removeEventListener('touchcancel', removeRipple)
   el.removeEventListener('touchmove', forbidRippleTask)
   el.removeEventListener('dragstart', removeRipple)
+  document.removeEventListener('touchend', el._ripple!.removeRipple)
+  document.removeEventListener('touchcancel', el._ripple!.removeRipple)
 }
 
 function updated(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>) {
-  el._ripple = binding.value ?? {}
+  el._ripple = { ...el._ripple, ...binding.value ?? {} }
   el._ripple.tasker = null
 }
 

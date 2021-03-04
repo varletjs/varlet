@@ -19,7 +19,6 @@ import {
   ref,
 } from 'vue'
 import { isArray, removeItem } from './shared'
-import { packs, use } from '../locale'
 
 export interface MountInstance {
   instance: any

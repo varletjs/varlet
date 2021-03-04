@@ -8,6 +8,16 @@ export interface CacheInstance<T> {
   remove(key: T): void
 }
 
+export const toNumber = (val: number | string): number => {
+  if (isString(val)) {
+    val = parseFloat(val)
+    val = Number.isNaN(val) ? 0 : val
+    return val
+  }
+
+  return val
+}
+
 export const isHTMLSupportImage = (val: string) => val.startsWith('data:image') || /\.(png|jpg|gif|jpeg|svg)$/.test(val)
 
 export const isHTMLSupportVideo = (val: string) => val.startsWith('data:video') || /\.(mp4|webm)$/.test(val)

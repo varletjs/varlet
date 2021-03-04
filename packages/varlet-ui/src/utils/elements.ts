@@ -1,3 +1,5 @@
+import { isNumber, isString } from './shared'
+
 export function getTop(element: HTMLElement): number {
   const { top } = element.getBoundingClientRect()
 
@@ -52,36 +54,34 @@ export function getParentScroller(el: HTMLElement, direction?: 'x' | 'y'): HTMLE
   return window
 }
 
-export function isPx(value: unknown): boolean {
-  if (typeof value === 'number') {
-    return true
-  }
-  return typeof value === 'string' && value.endsWith('px')
-}
+// example 1rem
+export const isRem = (value: unknown) => isString(value) && value.endsWith('rem')
 
-export function isRem(value: unknown): boolean {
-  if (typeof value === 'number') {
-    return false
-  }
+// example 1 || 1px
+export const isPx = (value: unknown) => isString(value) && value.endsWith('px') || isNumber(value)
 
-  return typeof value === 'string' && value.endsWith('rem')
-}
-
-export function formatPx(value: string | number) {
-  return typeof value === 'number' ? value : +value.replace('px', '')
-}
-
-export function remToPx(rem: string | number): number {
-  if (typeof rem === 'number') {
-    return rem
+// example return 1
+export const toPxNum = (value: unknown): number => {
+  if (isNumber(value)) {
+    return value
   }
 
-  const value = +rem.replace('rem', '')
+  if (isPx(value)) {
+    return +(value as string).replace('px', '')
+  }
 
-  const rootFontSize = window.getComputedStyle(document.documentElement).fontSize
+  if (isRem(value)) {
+    const num = +(value as string).replace('rem', '')
+    const rootFontSize = window.getComputedStyle(document.documentElement).fontSize
 
-  return value * parseFloat(rootFontSize)
+    return num * parseFloat(rootFontSize)
+  }
+
+  return 0
 }
+
+// example return 1px
+export const toPx = (value: unknown) => `${toPxNum(value)}px`
 
 export function requestAnimationFrame(fn: FrameRequestCallback): number {
   return window.requestAnimationFrame ? window.requestAnimationFrame(fn) : window.setTimeout(fn, 16)

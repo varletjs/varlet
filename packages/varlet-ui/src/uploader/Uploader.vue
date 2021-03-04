@@ -176,7 +176,7 @@ export default defineComponent({
     const getBeforeReaders = (varFiles: VarFile[]): Promise<ValidationVarFile>[] => {
       return varFiles.map((varFile) => {
         return new Promise((resolve) => {
-          const valid = props.onBeforeRead?.(reactive(varFile), props.name) ?? true
+          const valid = props.onBeforeRead?.(reactive(varFile)) ?? true
 
           Promise.resolve(valid).then((valid) =>
             resolve({
@@ -193,13 +193,12 @@ export default defineComponent({
       const { files: fileList } = el
       const files: File[] = Array.from<File>(fileList as ArrayLike<File>)
       let varFiles: VarFile[] = files.map((file) => createVarFile(file))
+      const { maxsize, maxlength, modelValue: { length } } = props
 
-      if (isNumber(props.maxsize)) {
-        const { maxsize, name } = props
-
+      if (isNumber(maxsize)) {
         varFiles = varFiles.filter((varFile) => {
           if (varFile.file!.size > (maxsize as number)) {
-            props.onOversize?.(reactive(varFile), name)
+            props.onOversize?.(reactive(varFile))
             return false
           }
 
@@ -207,11 +206,7 @@ export default defineComponent({
         })
       }
 
-      if (isNumber(props.maxlength)) {
-        const {
-          maxlength,
-          modelValue: { length },
-        } = props
+      if (isNumber(maxlength)) {
         const limit = Math.min(varFiles.length, maxlength - length)
         varFiles = varFiles.slice(0, limit)
       }
@@ -225,7 +220,7 @@ export default defineComponent({
       props['onUpdate:modelValue']?.([...props.modelValue, ...validVarFiles])
       el.value = ''
 
-      validVarFiles.forEach((varFile) => props.onAfterRead?.(reactive(varFile), props.name))
+      validVarFiles.forEach((varFile) => props.onAfterRead?.(reactive(varFile)))
     }
 
     const handleRemove = (removedVarFile: VarFile) => {

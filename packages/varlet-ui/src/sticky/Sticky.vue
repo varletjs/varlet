@@ -29,7 +29,7 @@
 <script lang="ts">
 import { defineComponent, ref, Ref, onMounted, onUnmounted, computed } from 'vue'
 import { props } from './props'
-import { getParentScroller, isPx, remToPx, formatPx } from '../utils/elements'
+import { getParentScroller, toPxNum } from '../utils/elements'
 
 export default defineComponent({
   name: 'VarSticky',
@@ -48,9 +48,7 @@ export default defineComponent({
     const fixedWrapperWidth: Ref<string> = ref('auto')
     const fixedWrapperHeight: Ref<string> = ref('auto')
 
-    const offsetTop = computed(() => {
-      return isPx(props.offsetTop) ? formatPx(props.offsetTop) : remToPx(props.offsetTop)
-    })
+    const offsetTop = computed(() => toPxNum(props.offsetTop))
 
     let scroller: HTMLElement | Window = window
 

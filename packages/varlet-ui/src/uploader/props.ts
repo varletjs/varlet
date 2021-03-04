@@ -16,9 +16,6 @@ export const props = {
     type: Array as PropType<VarFile[]>,
     default: [],
   },
-  name: {
-    type: String,
-  },
   accept: {
     type: String,
     default: 'image/*',
@@ -67,12 +64,12 @@ export const props = {
     type: Function,
   },
   onBeforeRead: {
-    type: Function as PropType<(file: VarFile, name: string | undefined) => Promise<boolean> | boolean>,
+    type: Function as PropType<(file: VarFile) => Promise<boolean> | boolean>,
   },
   onAfterRead: {
-    type: Function as PropType<(file: VarFile, name: string | undefined) => any>,
+    type: Function as PropType<(file: VarFile) => any>,
   },
   onOversize: {
-    type: Function as PropType<(file: VarFile, name: string | undefined) => any>,
+    type: Function as PropType<(file: VarFile) => any>,
   },
 }

@@ -56,6 +56,35 @@
       <span style="margin-right: 8px">透视锁头</span>
       <var-switch class="mb" :rules="[(v) => !!v || '不开挂你怎么玩']" v-model="form.open" />
     </p>
+    <p style="display: flex;">
+      <span style="margin-right: 8px; margin-top: 2px">你JJ多少厘米</span>
+      <var-counter
+        :min="0"
+        :max="18"
+        :step="0.1"
+        v-model="form.count"
+        :decimal-length="1"
+        :rules="[
+          v => form.gender === 1 && v > 0 || '必须选择男性并且长度必须大于0'
+        ]"
+      />
+    </p>
+    <p style="display: flex;">
+      <span style="margin-right: 8px; margin-top: 2px">延迟校验</span>
+      <var-counter
+        :min="0"
+        :max="18"
+        :step="0.1"
+        v-model="form.count"
+        lazy-change
+        @before-change="handleBeforeChange"
+        :decimal-length="1"
+        :rules="[
+          v => form.gender === 1 && v > 0 || '必须选择男性并且长度必须大于0'
+        ]"
+      />
+    </p>
+
     <var-slider class="mb" :rules="[(v) => v >= 35 || '前戏不好看！！']" v-model="form.slider" />
     <var-button class="mt" block type="danger" @click="formEl.reset()">清空表单</var-button>
     <var-button class="mt" block type="warning" @click="formEl.resetValidation()">清空验证</var-button>
@@ -79,6 +108,8 @@ import Button from '../../button'
 import Switch from '../../switch'
 import Slider from '../../slider'
 import Uploader from '../../uploader'
+import Counter from '../../counter'
+import Snackbar from '../../snackbar'
 
 export default defineComponent({
   name: 'FormExample',
@@ -95,6 +126,7 @@ export default defineComponent({
     [Slider.name]: Slider,
     [Button.name]: Button,
     [Uploader.name]: Uploader,
+    [Counter.name]: Counter
   },
   setup() {
     const form: any = reactive({
@@ -105,6 +137,7 @@ export default defineComponent({
       confirm: false,
       open: false,
       slider: 10,
+      count: 0,
       group: [],
       skill: [],
       like: [],
@@ -120,6 +153,13 @@ export default defineComponent({
       form,
       disabled,
       readonly,
+      handleBeforeChange(value: any, change: any) {
+        Snackbar.loading('lazy change')
+        setTimeout(() => {
+          change(value)
+          Snackbar.clear()
+        }, 1000)
+      }
     }
   },
 })
