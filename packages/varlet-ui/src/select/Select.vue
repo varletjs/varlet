@@ -44,7 +44,7 @@
                   v-for="l in labels"
                   :key="l"
                   @click.stop
-                  @close="() => handleClose(m)"
+                  @close="(e) => handleClose(l)"
                 >
                   {{ l }}
                 </var-chip>
@@ -152,14 +152,14 @@ export default defineComponent({
     const label: Ref<string | number> = ref('')
     const labels: Ref<(string | number)[]> = ref([])
 
-    const computeLabel = () => {
+    const computeText = () => {
       const { multiple, modelValue } = props
 
       if (multiple && isArray(modelValue)) {
         labels.value = ((modelValue as unknown) as (string | number)[]).map(findLabel)
       }
       if (!multiple && !isEmpty(modelValue)) {
-        label.value = findLabel(modelValue)
+        label.value = findLabel(modelValue as unknown as string | number)
       }
     }
 
@@ -176,10 +176,12 @@ export default defineComponent({
       return label.value
     }
 
-    const findLabel = (targetValue: any) => {
-      let targetProvider = optionProviders.find(({ value }) => value.value === targetValue)
+    const findLabel = (modelValue: string | number | (string | number)[]) => {
+      let targetProvider = optionProviders.find(({ value }) => value.value === modelValue)
 
-      !targetProvider && (targetProvider = optionProviders.find(({ label }) => label.value === targetValue))
+      if (!targetProvider) {
+        targetProvider = optionProviders.find(({ label }) => label.value === modelValue)
+      }
 
       return targetProvider!.label.value
     }
@@ -278,12 +280,16 @@ export default defineComponent({
       validateWithTrigger('onClick')
     }
 
-    const handleClose = (targetValue: any) => {
+    const handleClose = (text: string | number) => {
       if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
         return
       }
+      console.log(text)
+      const targetProvider = optionProviders.find(({ label }) => label.value === text)
 
-      const targetModelValue = ((props.modelValue as unknown) as any[]).filter((value) => value !== targetValue)
+      const targetModelValue = ((props.modelValue as unknown) as any[]).filter((value) => {
+        return value !== targetProvider!.value.value ?? targetProvider!.label.value
+      })
 
       props['onUpdate:modelValue']?.(targetModelValue)
       props.onClose?.(targetModelValue)
@@ -315,7 +321,7 @@ export default defineComponent({
         })
       }
 
-      computeLabel()
+      computeText()
     }
 
     watch(
@@ -352,7 +358,6 @@ export default defineComponent({
       label,
       labels,
       computePlaceholderState,
-      findLabel,
       handleFocus,
       handleBlur,
       handleChange,
