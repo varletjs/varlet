@@ -10,14 +10,20 @@ const DEFINE_EXPORT_START_RE = /export\s+default\s+defineComponent\s*\(\s*{/
 
 export function injectRender(script: string, render: string): string {
   if (DEFINE_EXPORT_START_RE.test(script.trim())) {
-    return script.trim().replace(DEFINE_EXPORT_START_RE, `${render}\nexport default defineComponent({
+    return script.trim().replace(
+      DEFINE_EXPORT_START_RE,
+      `${render}\nexport default defineComponent({
   render,\
-    `)
+    `
+    )
   }
   if (NORMAL_EXPORT_START_RE.test(script.trim())) {
-    return script.trim().replace(NORMAL_EXPORT_START_RE, `${render}\nexport default {
+    return script.trim().replace(
+      NORMAL_EXPORT_START_RE,
+      `${render}\nexport default {
   render,\
-    `)
+    `
+    )
   }
   return script
 }
@@ -27,17 +33,21 @@ export async function compileSFC(path: string, modules: string | boolean = false
   const { descriptor } = parse(sources, { sourceMap: false })
   const { script, template, styles } = descriptor
   // scoped
-  const hasScope = styles.some(style => style.scoped)
-  const scopeId = hasScope ? `data-v-${hash(sources)}` : ''
+  const hasScope = styles.some((style) => style.scoped)
+  const id = hash(sources)
+  const scopeId = hasScope ? `data-v-${id}` : ''
   if (script) {
     // template
-    const render = template && compileTemplate({
-      source: template.content,
-      filename: path,
-      compilerOptions: {
-        scopeId
-      }
-    })
+    const render =
+      template &&
+      compileTemplate({
+        id,
+        source: template.content,
+        filename: path,
+        compilerOptions: {
+          scopeId,
+        },
+      })
     let { content } = script
     if (render) {
       const { code } = render
@@ -52,7 +62,7 @@ export async function compileSFC(path: string, modules: string | boolean = false
           source: style.content,
           filename: stylePath,
           id: scopeId,
-          scoped: style.scoped
+          scoped: style.scoped,
         })
         // less
         writeFileSync(stylePath, clearEmptyLine(code), 'utf-8')

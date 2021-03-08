@@ -37,8 +37,8 @@
       <div class="varlet-site-nav">
         <var-cell
           v-for="item in menu"
+          v-ripple="{ touchmoveForbid: false }"
           class="varlet-site-nav__item"
-          v-ripple="{ touchmoveForbid: true }"
           @click="changeRoute(item)"
         >
           <span v-if="item.isTitle" class="varlet-site-nav__item--title">{{ item.text[language] }}</span>
@@ -55,7 +55,7 @@
       <div class="varlet-site-mobile">
         <div class="varlet-site-empty"></div>
         <div class="varlet-site-mobile-content">
-          <iframe :src="`./mobile.html#/${componentName}?language=${language}`"></iframe>
+          <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc`"></iframe>
         </div>
         <div class="varlet-site-mobile-image">
           <img src="./assets/images/mobile.png" />
@@ -491,6 +491,7 @@ iframe {
       &__item {
         margin: 0;
         cursor: pointer;
+        user-select: none;
 
         &--title {
           font-weight: 700;

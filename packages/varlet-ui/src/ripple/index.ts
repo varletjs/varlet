@@ -1,7 +1,8 @@
-import { Directive, Plugin, App } from 'vue'
-import { DirectiveBinding } from '@vue/runtime-core'
+import context from '../context'
 import './ripple.less'
 import '../styles/common.less'
+import { Directive, Plugin, App } from 'vue'
+import { DirectiveBinding } from '@vue/runtime-core'
 
 interface RippleStyles {
   x: number
@@ -13,15 +14,17 @@ interface RippleStyles {
 
 interface RippleOptions {
   removeRipple: any
+  touchmoveForbid: boolean
   color?: string
   disabled?: boolean
-  touchmoveForbid?: boolean
   tasker?: number | null
 }
 
 interface RippleHTMLElement extends HTMLElement {
   _ripple?: RippleOptions
 }
+
+const ANIMATION_DURATION = 300
 
 function setStyles(element: RippleHTMLElement) {
   const { zIndex, position } = window.getComputedStyle(element)
@@ -96,12 +99,12 @@ function removeRipple(this: RippleHTMLElement) {
     }
 
     const lastRipple: RippleHTMLElement = ripples[ripples.length - 1]
-    const delay: number = 300 - performance.now() + Number(lastRipple.dataset.createdAt)
+    const delay: number = ANIMATION_DURATION - performance.now() + Number(lastRipple.dataset.createdAt)
 
     setTimeout(() => {
       lastRipple.style.opacity = `0`
 
-      setTimeout(() => lastRipple.parentNode?.removeChild(lastRipple), 300)
+      setTimeout(() => lastRipple.parentNode?.removeChild(lastRipple), ANIMATION_DURATION)
     }, delay)
   }
 
@@ -111,7 +114,7 @@ function removeRipple(this: RippleHTMLElement) {
 
 function forbidRippleTask(this: RippleHTMLElement) {
   const _ripple = this._ripple as RippleOptions
-  if (_ripple.touchmoveForbid) {
+  if (!_ripple.touchmoveForbid) {
     return
   }
 
@@ -122,7 +125,8 @@ function forbidRippleTask(this: RippleHTMLElement) {
 function mounted(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>) {
   el._ripple = {
     tasker: null,
-    ...binding.value ?? {},
+    ...(binding.value ?? {}),
+    touchmoveForbid: binding.value?.touchmoveForbid ?? context.touchmoveForbid,
     removeRipple: removeRipple.bind(el),
   }
 
@@ -142,8 +146,12 @@ function unmounted(el: RippleHTMLElement) {
 }
 
 function updated(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>) {
-  el._ripple = { ...el._ripple, ...binding.value ?? {} }
-  el._ripple.tasker = null
+  el._ripple = {
+    ...el._ripple,
+    ...(binding.value ?? {}),
+    touchmoveForbid: binding.value?.touchmoveForbid ?? context.touchmoveForbid,
+    tasker: null,
+  }
 }
 
 const Ripple: Directive & Plugin = {

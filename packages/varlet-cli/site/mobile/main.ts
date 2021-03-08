@@ -22,4 +22,4 @@ const router = createRouter({
 })
 
 const app = createApp(App as any)
-app.component(AppType.name, AppType).use(router).mount('#app')
+app.use(router).mount('#app')

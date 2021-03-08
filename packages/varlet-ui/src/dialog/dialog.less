@@ -1,8 +1,9 @@
-@import "../styles/var";
+@import '../styles/var';
 
 @dialog-width: 280px;
 @dialog-padding: 20px;
 @dialog-border-radius: 2px;
+@dialog-message-color: #888;
 
 @dialog-message-padding: 12px 0;
 @dialog-message-line-height: 24px;
@@ -17,7 +18,7 @@
   border-radius: 3px;
 
   &__popup-radius {
-    border-radius: @dialog-border-radius
+    border-radius: @dialog-border-radius;
   }
 
   &__title {
@@ -27,7 +28,7 @@
 
   &__message {
     padding: @dialog-message-padding;
-    color: @color-font-md;
+    color: @dialog-message-color;
     line-height: @dialog-message-line-height;
     font-size: @font-size-md;
   }

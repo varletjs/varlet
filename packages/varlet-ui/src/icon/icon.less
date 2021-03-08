@@ -1,20 +1,21 @@
 @import '~@varlet/icons/dist/css/varlet-icons.less';
-@import '../styles/var';
+
+@icon-size: 20px;
 
 .var-icon {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-	font-size: @icon-size-md;
-	color: inherit;
+  font-size: @icon-size;
+  color: inherit;
 
-	&--hidden {
-		transform: scale(0);
-	}
+  &--hidden {
+    transform: scale(0);
+  }
 
   &__image {
-    width: @icon-size-md;
-    height: @icon-size-md;
+    width: @icon-size;
+    height: @icon-size;
     object-fit: cover;
   }
 }

@@ -1,40 +1,58 @@
 <template>
-  <div class="example">
-    <app-type>基本使用</app-type>
-    <div class="example__button" v-ripple>基本使用</div>
+  <app-type>{{ pack.basicUse }}</app-type>
+  <div class="block var-elevation--2" v-ripple>{{ pack.click }}</div>
 
-    <app-type>修改颜色</app-type>
-    <div class="example__button" v-ripple="{ color: 'red' }">修改颜色</div>
-  </div>
+  <app-type>{{ pack.customColor }}</app-type>
+  <div class="block var-elevation--2" v-ripple="{ color: '#2979ff' }">{{ pack.click }}</div>
+
+  <app-type>{{ pack.disabledStatus }}</app-type>
+  <div class="block var-elevation--2" v-ripple="{ disabled: true }">{{ pack.click }}</div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
 import Ripple from '..'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import context from '../../context'
+import { onUnmounted } from 'vue'
+import { watchPlatform, watchLang } from '../../utils/components'
+import { pack, use } from './locale'
 
-export default defineComponent({
+export default {
   name: 'RippleExample',
-  directives: {
-    Ripple
-  }
-})
+  components: { AppType },
+  directives: { Ripple },
+  setup() {
+    const prevTouchmoveForbid = context.touchmoveForbid
+
+    watchPlatform((platform) => {
+      if (platform === 'pc') {
+        context.touchmoveForbid = false
+      }
+    })
+
+    watchLang(use)
+
+    onUnmounted(() => {
+      context.touchmoveForbid = prevTouchmoveForbid
+    })
+
+    return {
+      pack,
+    }
+  },
+}
 </script>
 
 <style scoped lang="less">
-  .example {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 0;
+@import '../../styles/elevation';
 
-    &__button {
-      width: 200px;
-      height: 70px;
-      box-shadow: 0 0 3px 3px #ddd;
-      text-align: center;
-      line-height: 70px;
-      box-sizing: border-box;
-      margin-bottom: 20px;
-    }
-  }
+.block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  color: #888;
+  user-select: none;
+  cursor: pointer;
+}
 </style>

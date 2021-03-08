@@ -9,137 +9,138 @@
 @chip-large-padding: 0px 17px;
 @chip-small-padding: 0px 6px;
 @chip-mini-padding: 0px 4px;
+@chip-default-color: #f5f5f5;
 
 .var {
-	&-fade-leave-to {
-		opacity: 0;
-	}
+  &-fade-leave-to {
+    opacity: 0;
+  }
 
-	&-fade-leave-active {
-		transition: opacity 0.3s;
-	}
+  &-fade-leave-active {
+    transition: opacity 0.3s;
+  }
 }
 
 .var-chip {
-	justify-content: center;
-	align-items: center;
-	font-family: Roboto, sans-serif;
-	border-radius: @chip-border-radius;
-	cursor: default;
-	border: thin solid transparent;
-	vertical-align: middle;
-	line-height: 1;
+  justify-content: center;
+  align-items: center;
+  font-family: Roboto, sans-serif;
+  border-radius: @chip-border-radius;
+  cursor: default;
+  border: thin solid transparent;
+  vertical-align: middle;
+  line-height: 1;
 
-	&--default {
-		color: #676767;
-		background: @color-background-base;
-	}
+  &--default {
+    color: #676767;
+    background: @chip-default-color;
+  }
 
-	&--primary {
-		color: #fff;
-		background-color: @color-primary;
-	}
+  &--primary {
+    color: #fff;
+    background-color: @color-primary;
+  }
 
-	&--info {
-		color: #fff;
-		background-color: @color-info;
-	}
+  &--info {
+    color: #fff;
+    background-color: @color-info;
+  }
 
-	&--success {
-		color: #fff;
-		background-color: @color-success;
-	}
+  &--success {
+    color: #fff;
+    background-color: @color-success;
+  }
 
-	&--warning {
-		color: #fff;
-		background-color: @color-warning;
-	}
+  &--warning {
+    color: #fff;
+    background-color: @color-warning;
+  }
 
-	&--danger {
-		color: #fff;
-		background-color: @color-danger;
-	}
+  &--danger {
+    color: #fff;
+    background-color: @color-danger;
+  }
 
-	&--plain {
-		background-color: transparent;
+  &--plain {
+    background-color: transparent;
 
-		&:active {
-			box-shadow: none;
-		}
-	}
+    &:active {
+      box-shadow: none;
+    }
+  }
 
-	&--plain-default {
-		color: inherit;
-		border-color: currentColor;
-	}
+  &--plain-default {
+    color: inherit;
+    border-color: currentColor;
+  }
 
-	&--plain-primary {
-		color: @color-primary;
-		border-color: currentColor;
-	}
+  &--plain-primary {
+    color: @color-primary;
+    border-color: currentColor;
+  }
 
-	&--plain-info {
-		color: @color-info;
-		border-color: currentColor;
-	}
+  &--plain-info {
+    color: @color-info;
+    border-color: currentColor;
+  }
 
-	&--plain-success {
-		color: @color-success;
-		border-color: currentColor;
-	}
+  &--plain-success {
+    color: @color-success;
+    border-color: currentColor;
+  }
 
-	&--plain-warning {
-		color: @color-warning;
-		border-color: currentColor;
-	}
+  &--plain-warning {
+    color: @color-warning;
+    border-color: currentColor;
+  }
 
-	&--plain-danger {
-		color: @color-danger;
-		border-color: currentColor;
-	}
+  &--plain-danger {
+    color: @color-danger;
+    border-color: currentColor;
+  }
 
-	&--round {
-		border-radius: 100px;
-	}
+  &--round {
+    border-radius: 100px;
+  }
 
-	&--normal {
-		font-size: @font-size-md;
-		padding: @chip-normal-padding;
-		height: @chip-normal-height;
-	}
+  &--normal {
+    font-size: @font-size-md;
+    padding: @chip-normal-padding;
+    height: @chip-normal-height;
+  }
 
-	&--large {
-		padding: @chip-large-padding;
-		font-size: @font-size-lg;
-		height: @chip-large-height;
-	}
+  &--large {
+    padding: @chip-large-padding;
+    font-size: @font-size-lg;
+    height: @chip-large-height;
+  }
 
-	&--small {
-		padding: @chip-small-padding;
-		font-size: @font-size-sm;
-		height: @chip-small-height;
-	}
+  &--small {
+    padding: @chip-small-padding;
+    font-size: @font-size-sm;
+    height: @chip-small-height;
+  }
 
-	&--mini {
-		padding: @chip-mini-padding;
-		font-size: @font-size-xs;
-		height: @chip-mini-height;
-	}
+  &--mini {
+    padding: @chip-mini-padding;
+    font-size: @font-size-xs;
+    height: @chip-mini-height;
+  }
 
-	&--close {
-		cursor: pointer;
-	}
+  &--close {
+    cursor: pointer;
+  }
 
-	&--text-normal,
-	&--text-large {
-		margin: 0 5px;
-	}
+  &--text-normal,
+  &--text-large {
+    margin: 0 5px;
+  }
 
-	&--text-small {
-		margin: 0 3px;
-	}
+  &--text-small {
+    margin: 0 3px;
+  }
 
-	&--text-mini {
-		margin: 0 2px;
-	}
+  &--text-mini {
+    margin: 0 2px;
+  }
 }

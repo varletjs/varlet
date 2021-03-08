@@ -55,7 +55,7 @@ export function mount(component: Component): MountInstance {
   return {
     instance: app.mount(host),
     unmount() {
-      app.unmount(host)
+      app.unmount()
       document.body.removeChild(host)
     },
   }
@@ -269,17 +269,31 @@ export function addRouteListener(cb: () => void) {
   })
 }
 
+export function getHashSearch() {
+  const { href } = window.location
+  const hashSearch = href.slice(href.indexOf('?'))
+
+  return new URLSearchParams(hashSearch)
+}
+
 export function watchLang(cb: (lang: string) => void) {
   const handleHashchange = () => {
-    const { href } = window.location
-
-    const language = new URLSearchParams(href.slice(href.indexOf('?'))).get('language') ?? 'zh-CN'
-
+    const language = getHashSearch().get('language') ?? 'zh-CN'
     cb(language)
   }
 
-  window.addEventListener('hashchange', handleHashchange)
-  onUnmounted(() => window.removeEventListener('hashchange', handleHashchange))
+  addRouteListener(handleHashchange)
+
+  handleHashchange()
+}
+
+export function watchPlatform(cb: (platform: string) => void) {
+  const handleHashchange = () => {
+    const platform = getHashSearch().get('platform') ?? 'mobile'
+    cb(platform)
+  }
+
+  addRouteListener(handleHashchange)
 
   handleHashchange()
 }

@@ -15,7 +15,7 @@ export const EXAMPLE_DIR_NAME = 'example'
 export const DOCS_DIR_NAME = 'docs'
 export const EXAMPLE_DIR_INDEX = 'index.vue'
 export const TESTS_DIR_NAME = '__tests__'
-export const PRIMARY_COLOR = '#4f87f7'
+export const PRIMARY_COLOR = '#2979ff'
 
 // site
 export const SITE_MOBILE_MAIN = resolve(__dirname, '../../site/mobile/main.ts')

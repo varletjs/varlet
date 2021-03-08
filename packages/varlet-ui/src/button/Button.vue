@@ -1,26 +1,36 @@
 <template>
   <button
-    v-ripple="{ disabled: disabled || forbidRipple }"
-    class="var--box var-button"
+    v-ripple="{ disabled: disabled || !ripple }"
+    class="var-button var--box"
     :class="[
       `var-button--${size}`,
       block ? 'var--flex' : 'var--inline-flex',
       disabled ? 'var-button--disabled' : null,
-      plain ? `var-button--plain-${type}` : `var-button--${type}`,
-      plain ? 'var-button--plain' : 'var-elevation--2',
+      text ? `var-button--text-${type}` : `var-button--${type}`,
+      text ? 'var-button--text' : 'var-elevation--1',
+      text && disabled ? 'var-button--text-disabled' : null,
       round ? 'var-button--round' : null,
       outline ? 'var-button--outline' : null,
     ]"
     :style="{
       color: textColor,
       background: color,
+      width: block ? '100%' : null,
     }"
     :disabled="disabled"
     @click="handleClick"
     @touchstart="handleTouchstart"
   >
-    <var-loading :type="loadingType" :size="loadingSize" v-if="loading" />
-    <slot v-else />
+    <var-loading
+      class="var-button__loading"
+      :type="loadingType"
+      :size="loadingSize"
+      :radius="loadingRadius"
+      v-if="loading"
+    />
+    <div class="var-button__content" :class="[loading ? 'var-button--hidden' : null]">
+      <slot />
+    </div>
   </button>
 </template>
 
@@ -39,19 +49,23 @@ export default defineComponent({
   props,
   setup(props) {
     const handleClick = (e: Event) => {
-      if (props.loading || props.disabled) {
+      const { loading, disabled, onClick } = props
+
+      if (loading || disabled) {
         return
       }
 
-      props.onClick?.(e)
+      onClick?.(e)
     }
 
     const handleTouchstart = (e: Event) => {
-      if (props.loading || props.disabled) {
+      const { loading, disabled, onTouchstart } = props
+
+      if (loading || disabled) {
         return
       }
 
-      props.onTouchstart?.(e)
+      onTouchstart?.(e)
     }
 
     return {

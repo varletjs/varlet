@@ -58,7 +58,7 @@ export function getParentScroller(el: HTMLElement, direction?: 'x' | 'y'): HTMLE
 export const isRem = (value: unknown) => isString(value) && value.endsWith('rem')
 
 // example 1 || 1px
-export const isPx = (value: unknown) => isString(value) && value.endsWith('px') || isNumber(value)
+export const isPx = (value: unknown) => (isString(value) && value.endsWith('px')) || isNumber(value)
 
 // example return 1
 export const toPxNum = (value: unknown): number => {
@@ -81,14 +81,14 @@ export const toPxNum = (value: unknown): number => {
 }
 
 // example return 1px
-export const toPx = (value: unknown) => `${toPxNum(value)}px`
+export const toPx = (value: unknown) => (value != null ? `${toPxNum(value)}px` : null)
 
 export function requestAnimationFrame(fn: FrameRequestCallback): number {
   return window.requestAnimationFrame ? window.requestAnimationFrame(fn) : window.setTimeout(fn, 16)
 }
 
 export function nextTickFrame(fn: FrameRequestCallback) {
-	requestAnimationFrame(() => {
-		requestAnimationFrame(fn)
-	})
+  requestAnimationFrame(() => {
+    requestAnimationFrame(fn)
+  })
 }

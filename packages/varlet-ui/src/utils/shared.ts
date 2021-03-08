@@ -50,14 +50,18 @@ export const removeItem = (arr: Array<unknown>, item: unknown) => {
 export const throttle = (method: any, mustRunDelay = 200): (() => void) => {
   let timer: number
   let start: number
+
   return function loop(this: unknown, ...args) {
     const now = Date.now()
+
     if (!start) {
       start = now
     }
+
     if (timer) {
       window.clearTimeout(timer)
     }
+
     if (now - start >= mustRunDelay) {
       method.apply(this, args)
       start = now
@@ -71,6 +75,7 @@ export const throttle = (method: any, mustRunDelay = 200): (() => void) => {
 
 export const debounce = (method: any, delay = 200) => {
   let timer: number
+
   return function (this: unknown, ...args: any[]) {
     timer && window.clearTimeout(timer)
     timer = window.setTimeout(() => {
@@ -96,9 +101,11 @@ export const createCache = <T>(max: number): CacheInstance<T> => {
 
   return {
     cache,
+
     has(key: T) {
       return cache.includes(key)
     },
+
     add(key: T) {
       if (this.has(key)) {
         return
@@ -107,6 +114,7 @@ export const createCache = <T>(max: number): CacheInstance<T> => {
       this.cache.length === max && cache.shift()
       this.cache.push(key)
     },
+
     remove(key: T) {
       this.has(key) && removeItem(this.cache, key)
     },

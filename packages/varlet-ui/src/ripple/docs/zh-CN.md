@@ -1,23 +1,38 @@
 # 水波指令
 
 ### 引入
-```js
-import { Ripple } from '@varlet/ui'
 
-export default defineComponent({
-  directives: {
-    Ripple
-  }
-})
+```js
+import { createApp } from 'vue';
+import { Ripple } from '@varlet/ui';
+
+createApp().use(Ripple)
 ```
 
 ### 基本使用
+
 ```html
-<div v-ripple class="example__button">基本使用</div>
+<div class="block var-elevation--2" v-ripple>点击</div>
 ```
 
 ### 修改颜色
+
 ```html
-<div v-ripple="{ color: 'red' }">修改颜色</div>
+<div class="block var-elevation--2" v-ripple="{ color: '#2979ff' }">点击</div>
 ```
+
+### 禁用水波
+
+```html
+<div class="block var-elevation--2" v-ripple="{ disabled: true }">点击</div>
+```
+
+## API
+
+### 属性
+
+| 参数 | 说明 | 类型 | 默认值 | 
+| --- | --- | --- | --- | 
+| `color` | 水波纹的颜色 | _string_ | `currentColor` |
+| `disabled` | 禁用状态 | _boolean_ | `false` |
 

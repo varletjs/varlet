@@ -26,7 +26,7 @@ export function parseTable(table: string) {
     const cols = row.split('|')
     cols.shift()
     cols.pop()
-    return cols.map((col) => col.trim())
+    return cols.map((col) => col.replace(/__varlet_axis__/, '|').trim())
   })
 }
 
@@ -55,7 +55,7 @@ export function compileTable(md: string, titleRe: RegExp): string {
   }
   md = md.slice(0, (tableFootMatched.index as number) + tableFootMatched[0].length)
 
-  return md.trim()
+  return md.replace(/\\\|/g, '__varlet_axis__').trim()
 }
 
 export function compileTags(table: Record<string, any>, tags: Record<string, any>, componentName: string) {
@@ -68,7 +68,7 @@ export function compileAttributes(table: Record<string, any>, attributes: Record
   table.attributesTable.forEach((row: any) => {
     const attrNamespace = `${get(varletConfig, 'namespace')}-${componentName}/${row[0]}`
     attributes[attrNamespace] = {
-      type: row[2],
+      type: row[2].replace(/_/g, ''),
       description: `${row[1]} 默认值：${row[3]}`,
     }
   })
@@ -82,7 +82,7 @@ export function compileWebTypes(table: Record<string, any>, webTypes: Record<str
     description: row[1],
     default: row[3],
     value: {
-      type: row[2],
+      type: row[2].replace(/_/g, ''),
       kind: 'expression',
     },
   }))
@@ -159,7 +159,7 @@ export async function compileTemplateHighlight() {
   const webTypes: Record<string, any> = {
     $schema: 'https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json',
     framework: 'vue',
-    version: '0.0.0',
+    version: '1.0.0',
     name: get(varletConfig, 'title'),
     contributions: {
       html: {

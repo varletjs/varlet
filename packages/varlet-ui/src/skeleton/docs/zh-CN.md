@@ -3,48 +3,166 @@
 ### 引入
 
 ```js
-import { Skeleton } from '@varlet/ui'
+import { createApp } from 'vue';
+import { Skeleton } from '@varlet/ui';
 
-export default defineComponent({
-  components: { 
-    [Skeleton.name]: Skeleton,
-  }
-})
+createApp().use(Skeleton)
 ```
 
 ### 基本使用
 
 ```html
-<var-skeleton v-model:loading="loading" title :rows="3">
-  加载的内容
-</var-skeleton>
+<var-skeleton :loading="loading">加载的数据</var-skeleton>
+```
+
+```js
+export default {
+  setup() {
+    const loading = ref(true)
+
+    return { loading }
+  },
+}
+```
+
+### 显示标题
+
+```html
+ <var-skeleton title :loading="loading">加载的数据</var-skeleton>
+```
+
+```js
+export default {
+  setup() {
+    const loading = ref(true)
+
+    return { loading }
+  },
+}
 ```
 
 ### 自定义段落高度
 
 ```html
 <var-skeleton
-  v-model:loading="loading"
   title
   :rows="3"
-  :rows-width="['300px', '200px', '100px']"
+  :loading="loading"
+  :rows-width="['200px', '100px', '50px']"
 >
-  加载的内容
+  加载的数据
 </var-skeleton>
+```
+
+```js
+export default {
+  setup() {
+    const loading = ref(true)
+
+    return { loading }
+  },
+}
 ```
 
 ### 显示头像
 
 ```html
-<var-skeleton v-model:loading="loading" avatar title :rows="3">
-  加载的内容
+<var-skeleton
+  title
+  avatar
+  :rows="3"
+  :loading="loading"
+>
+  加载的数据
 </var-skeleton>
+```
+
+```js
+export default {
+  setup() {
+    const loading = ref(true)
+
+    return { loading }
+  },
+}
 ```
 
 ### 显示卡片
 
 ```html
-<var-skeleton v-model:loading="loading" card avatar title :rows="3">
-  加载的内容
+<var-skeleton
+  title
+  avatar
+  card
+  :rows="3"
+  :loading="loading"
+>
+  加载的数据
 </var-skeleton>
 ```
+
+```js
+export default {
+  setup() {
+    const loading = ref(true)
+
+    return { loading }
+  },
+}
+```
+
+### 全屏模式
+
+```html
+<var-button type="danger" @click="loading = !loading">
+  切换全屏模式
+</var-button>
+<var-skeleton fullscreen :loading="loading" />
+```
+
+```js
+export default {
+  setup() {
+    const loading = ref(true)
+
+    return { loading }
+  },
+}
+```
+
+## API
+
+### 属性
+
+| 参数 | 说明 | 类型 | 默认值 | 
+| --- | --- | --- | --- | 
+| `loading` | 加载状态 设置为 `true` 开启骨架屏 | _boolean_ | `true` |
+| `title` | 是否显示标题 | _boolean_ | `true` |
+| `card` | 是否显示卡片 | _boolean_ | `true` |
+| `avatar` | 是否显示头像 | _boolean_ | `true` |
+| `fullscreen` | 是否开启全屏模式 | _boolean_ | `true` |
+| `title-width` | 标题宽度 | _number \| string_ | `50%` |
+| `card-height` | 卡片高度 | _number \| string_ | `160px` |
+| `avatar-size` | 头像尺寸 | _number \| string_ | `34px` |
+| `rows` | 段落行数 | _number \| string_ | `3` |
+| `rows-width` | 段落每一行的宽度 | _number \| string_ | `['12px', '12px', '12px']` |
+
+### 主题变量
+#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+| 变量名 | 默认值 |
+| --- | --- |
+| `@skeleton-content-padding` | `16px` |
+| `@skeleton-card-height` | `160px` |
+| `@skeleton-card-border-radius` | `4px` |
+| `@skeleton-card-margin-bottom` | `16px` |
+| `@skeleton-card-background-color` | `rgba(0, 0, 0, 0.12)` |
+| `@skeleton-animation-background` | `linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0))` |
+| `@skeleton-avatar-size` | `34px` |
+| `@skeleton-avatar-margin-right` | `16px` |
+| `@skeleton-avatar-background-color` | `rgba(0, 0, 0, 0.12)` |
+| `@skeleton-title-width` | `50%` |
+| `@skeleton-title-border-radius` | `10px` |
+| `@skeleton-title-background-color` | `rgba(0, 0, 0, 0.12)` |
+| `@skeleton-row-height` | `12px` |
+| `@skeleton-row-border-radius` | `10px` |
+| `@skeleton-row-margin-top` | `10px` |

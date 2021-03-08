@@ -1,43 +1,66 @@
 <template>
-	<div class="example">
-		<app-type>基本使用</app-type>
-		<var-skeleton v-model:loading="loading" title :rows="36"> 加载的内容 </var-skeleton>
+  <app-type>{{ pack.basicUse }}</app-type>
+  <var-skeleton :loading="loading">{{ pack.loadingData }}</var-skeleton>
 
-		<app-type>自定义段落高度</app-type>
-		<var-skeleton v-model:loading="loading" title :rows="3" :rows-width="['300px', '200px', '100px']">
-			加载的内容
-		</var-skeleton>
+  <app-type>{{ pack.displayTitle }}</app-type>
+  <var-skeleton title :loading="loading">{{ pack.loadingData }}</var-skeleton>
 
-		<app-type>显示头像</app-type>
-		<var-skeleton v-model:loading="loading" avatar title :rows="3"> 加载的内容 </var-skeleton>
+  <app-type>{{ pack.customRowsHeight }}</app-type>
+  <var-skeleton title :rows="3" :loading="loading" :rows-width="['200px', '100px', '50px']">
+    {{ pack.loadingData }}
+  </var-skeleton>
 
-		<app-type>显示卡片</app-type>
-		<var-skeleton v-model:loading="loading" card avatar title :rows="3"> 加载的内容 </var-skeleton>
-	</div>
+  <app-type>{{ pack.displayAvatar }}</app-type>
+  <var-skeleton title avatar :rows="3" :loading="loading">
+    {{ pack.loadingData }}
+  </var-skeleton>
+
+  <app-type>{{ pack.displayCard }}</app-type>
+  <var-skeleton title avatar card :rows="3" :loading="loading">
+    {{ pack.loadingData }}
+  </var-skeleton>
+
+  <app-type>{{ pack.fullscreenMode }}</app-type>
+  <var-button type="danger" class="button" @click="fullscreenLoading = !fullscreenLoading">
+    {{ pack.toggleFullscreenMode }}
+  </var-button>
+  <var-skeleton fullscreen :loading="fullscreenLoading" />
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, Ref } from 'vue'
+<script>
 import Skeleton from '..'
+import Button from '../../button'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { ref } from 'vue'
+import { watchLang } from '../../utils/components'
+import { use, pack } from './locale'
 
-export default defineComponent({
+export default {
   name: 'SkeletonExample',
   components: {
     [Skeleton.name]: Skeleton,
+    [Button.name]: Button,
+    AppType,
   },
   setup() {
-    const loading: Ref<boolean> = ref(true)
+    const loading = ref(true)
+    const fullscreenLoading = ref(false)
 
-    return { loading }
+    watchLang(use)
+
+    return {
+      pack,
+      loading,
+      fullscreenLoading,
+    }
   },
-})
+}
 </script>
 
 <style scoped lang="less">
-.example {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 10px 0;
+.var-button {
+  position: relative;
+  z-index: 10;
+  margin-bottom: 10px;
 }
 </style>

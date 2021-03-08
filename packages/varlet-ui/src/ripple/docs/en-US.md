@@ -1,23 +1,38 @@
-# Ripple directive
+# Ripple Directive
 
 ### Install
+
 ```js
-import { Ripple } from '@varlet/ui'
+import { createApp } from 'vue';
+import { Ripple } from '@varlet/ui';
 
-export default defineComponent({
-  directives: {
-    Ripple
-  }
-})
+createApp().use(Ripple)
 ```
 
-### Base
+### Basic Use
+
 ```html
-<div v-ripple>Base</div>
+<div class="block var-elevation--2" v-ripple>click</div>
 ```
 
-### Set color
+### Custom Color
+
 ```html
-<div v-ripple="{ color: 'red' }">Set color</div>
+<div class="block var-elevation--2" v-ripple="{ color: '#2979ff' }">click</div>
 ```
+
+### Disabled Status
+
+```html
+<div class="block var-elevation--2" v-ripple="{ disabled: true }">click</div>
+```
+
+## API
+
+### Props
+
+| Prop | Description | Type | Default | 
+| --- | --- | --- | --- | 
+| `color` | Ripple color | _string_ | `currentColor` |
+| `disabled` | Whether to disable ripple | _boolean_ | `false` |
 

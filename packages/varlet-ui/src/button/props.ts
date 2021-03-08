@@ -1,5 +1,6 @@
 import { props as loadingProps } from '../loading/props'
 import { pickProps } from '../utils/components'
+import { PropType } from 'vue'
 
 function typeValidator(type: string): boolean {
   return ['default', 'primary', 'info', 'success', 'warning', 'danger'].includes(type)
@@ -10,70 +11,60 @@ function sizeValidator(size: string): boolean {
 }
 
 export const props = {
-  // 按钮类型
   type: {
     type: String,
     default: 'default',
     validator: typeValidator,
   },
-  // 按钮尺寸
   size: {
     type: String,
     default: 'normal',
     validator: sizeValidator,
   },
-  // 加载状态
   loading: {
     type: Boolean,
     default: false,
   },
-  // 加载动画类型
-  loadingType: pickProps(loadingProps, 'type'),
-  // 加载动画尺寸
-  loadingSize: pickProps(loadingProps, 'size'),
-  // 圆型按钮
   round: {
     type: Boolean,
     default: false,
   },
-  // 块级元素
   block: {
     type: Boolean,
     default: false,
   },
-  // 朴素按钮
-  plain: {
+  text: {
     type: Boolean,
     default: false,
   },
-  // 开启外边框
   outline: {
     type: Boolean,
     default: false,
   },
-  // 禁用按钮
   disabled: {
     type: Boolean,
     default: false,
   },
-  forbidRipple: {
+  ripple: {
     type: Boolean,
-    default: false,
+    default: true,
   },
-  // 按钮文字颜色
-  textColor: {
-    type: String,
-  },
-  // 按钮背景颜色
   color: {
     type: String,
   },
-  // 点击回调
-  onClick: {
-    type: Function,
+  textColor: {
+    type: String,
   },
-  // 触摸回调
+  loadingRadius: {
+    type: [Number, String],
+    default: 12,
+  },
+  loadingType: pickProps(loadingProps, 'type'),
+  loadingSize: pickProps(loadingProps, 'size'),
+  onClick: {
+    type: Function as PropType<(e: Event) => void>,
+  },
   onTouchstart: {
-    type: Function,
+    type: Function as PropType<(e: Event) => void>,
   },
 }
