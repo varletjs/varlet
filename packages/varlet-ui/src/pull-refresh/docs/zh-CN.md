@@ -10,49 +10,54 @@
 import { PullRefresh } from '@varlet/ui'
 
 export default defineComponent({
-  components: {
-    [PullRefresh.name]: PullRefresh,
-  },
+	components: {
+		[PullRefresh.name]: PullRefresh,
+	},
 })
 ```
+
 ### 基本使用
+
 下拉到刷新位置时松开会触发`refresh`事件, 在事件开始时将`v-model`设置为`true`表示正在加载，完成后将`v-model`设置为`false`表示加载结束
+
 ```html
+
 <var-pull-refresh v-model="isRefresh" @refresh="refresh">
-  <ul class="pull-refresh__example">
-    <li v-for="(item, index) in data" :key="index">{{ item + ' ' + (index + 1) }}</li>
-  </ul>
+	<ul class="pull-refresh__example">
+		<li v-for="(item, index) in data" :key="index">{{ item + ' ' + (index + 1) }}</li>
+	</ul>
 </var-pull-refresh>
 ```
+
 ```javascript
 import { defineComponent, ref } from 'vue'
-import PullRefresh from '@varlet/ui'
+import { PullRefresh } from '@varlet/ui'
 
 const data1 = Array(10).fill('List Item')
 const data2 = Array(10).fill('This is new List Item')
 
 export default defineComponent({
-  components: {
-    [PullRefresh.name]: PullRefresh
-  },
-  setup() {
-    const isRefresh = ref(true)
-    const data = ref(data1)
-		
-    const refresh = () => {
-      isRefresh.value = true
-      setTimeout(() => {
-        data.value = data.value[0] === 'List Item' ? data2 : data1
-        isRefresh.value = false
-      }, 2000)
-    }
+	components: {
+		[PullRefresh.name]: PullRefresh
+	},
+	setup() {
+		const isRefresh = ref(true)
+		const data = ref(data1)
 
-    return {
-      refresh,
-      isRefresh,
-      data
-    }
-  }
+		const refresh = () => {
+			isRefresh.value = true
+			setTimeout(() => {
+				data.value = data.value[0] === 'List Item' ? data2 : data1
+				isRefresh.value = false
+			}, 2000)
+		}
+
+		return {
+			refresh,
+			isRefresh,
+			data
+		}
+	}
 })
 ```
 
