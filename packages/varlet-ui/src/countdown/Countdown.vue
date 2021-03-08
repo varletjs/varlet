@@ -80,8 +80,6 @@ export default defineComponent({
 
       let newFormat = props.format.replaceAll(type, roundTime)
       newFormat = formatMilliseconds(millis, newFormat)
-      if (!isSameTime(durationTime, newFormat)) props.onChange?.()
-
       timeData.value = {
         days: duration.days(),
         hours: duration.hours(),
@@ -89,6 +87,8 @@ export default defineComponent({
         seconds: duration.seconds(),
         milliseconds: duration.milliseconds(),
       }
+      if (!isSameTime(durationTime, newFormat)) props.onChange?.(timeData.value)
+
       showTime.value = duration.format(newFormat)
     }
 

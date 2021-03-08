@@ -26,7 +26,7 @@
   <div>
     <app-type>手动控制</app-type>
     <var-countdown :time="time" ref="countdown" :auto-start="false" format="ss : SSS" @end="end" @change="change" />
-    <div style="display: flex; justify-content: space-between; margin-top: 10px">
+    <div class="btn-container">
       <var-button type="primary" @click="$refs.countdown.start()">开始</var-button>
       <var-button @click="$refs.countdown.pause()">暂停</var-button>
       <var-button @click="$refs.countdown.reset()">重置</var-button>
@@ -68,6 +68,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
 .block {
   background: #2e67ba;
   color: white;
