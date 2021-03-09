@@ -7,7 +7,6 @@
         <div
           class="var-menu__menu var-elevation--3"
           ref="menu"
-          :class="[alignment === 'top' ? 'var-menu--origin-top' : 'var-menu--origin-bottom']"
           :style="{
             top: `calc(${top}px + ${toPx(offsetY)})`,
             left: `calc(${left}px + ${toPx(offsetX)})`,
