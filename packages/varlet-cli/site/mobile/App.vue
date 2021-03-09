@@ -76,7 +76,7 @@ header {
   line-height: 40px;
   height: 40px;
   position: fixed;
-  z-index: 10;
+  z-index: 99;
   width: 100%;
   font-weight: bold;
 
