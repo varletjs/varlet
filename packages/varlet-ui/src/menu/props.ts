@@ -1,3 +1,5 @@
+import { PropType } from 'vue'
+
 function alignmentValidator(alignment: string) {
   return ['top', 'bottom'].includes(alignment)
 }
@@ -7,23 +9,23 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  'onUpdate:show': {
-    type: Function,
-  },
   alignment: {
     type: String,
     default: 'top',
     validator: alignmentValidator,
   },
   offsetX: {
-    type: String,
-    default: '0px',
+    type: [Number, String],
+    default: 0,
   },
   offsetY: {
-    type: String,
-    default: '0px',
+    type: [Number, String],
+    default: 0,
   },
   onBlur: {
-    type: Function,
+    type: Function as PropType<() => void>,
+  },
+  'onUpdate:show': {
+    type: Function as PropType<(show: boolean) => void>,
   },
 }

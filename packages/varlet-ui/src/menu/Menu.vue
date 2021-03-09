@@ -1,32 +1,32 @@
 <template>
-	<div class="var-menu" ref="host" v-bind="$attrs" @click="handleClick">
-		<slot />
+  <div class="var-menu" ref="host" v-bind="$attrs" @click="handleClick">
+    <slot />
 
-		<teleport to="body">
-			<transition name="var-menu">
-				<div
-					class="var-menu__menu var-elevation--3"
-					ref="menu"
-					:class="[alignment === 'top' ? 'var-menu--origin-top' : 'var-menu--origin-bottom']"
-					:style="{
-						top: `calc(${top}px + ${offsetY})`,
-						left: `calc(${left}px + ${offsetX})`,
-						'z-index': zIndex,
-					}"
-					v-show="show"
-					@click.stop
-				>
-					<slot name="menu" />
-				</div>
-			</transition>
-		</teleport>
-	</div>
+    <teleport to="body">
+      <transition name="var-menu">
+        <div
+          class="var-menu__menu var-elevation--3"
+          ref="menu"
+          :class="[alignment === 'top' ? 'var-menu--origin-top' : 'var-menu--origin-bottom']"
+          :style="{
+            top: `calc(${top}px + ${toPx(offsetY)})`,
+            left: `calc(${left}px + ${toPx(offsetX)})`,
+            zIndex,
+          }"
+          v-show="show"
+          @click.stop
+        >
+          <slot name="menu" />
+        </div>
+      </transition>
+    </teleport>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, Ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { props } from './props'
-import { getLeft, getTop } from '../utils/elements'
+import { getLeft, getTop, toPx } from '../utils/elements'
 import { useZIndex } from '../context/zIndex'
 
 export default defineComponent({
@@ -47,13 +47,12 @@ export default defineComponent({
         : getTop(host.value as HTMLElement) - (menu.value as HTMLElement).offsetHeight
     }
 
-    const clickSelf: Ref<boolean> = ref(false)
+    let clickSelf = false
 
     const handleClick = () => {
-      clickSelf.value = true
+      clickSelf = true
     }
 
-    // positions effect
     watch(
       () => props.alignment,
       (newValue: string) => {
@@ -65,15 +64,14 @@ export default defineComponent({
       async (newValue: boolean) => {
         await nextTick()
 
-        top.value = newValue === true ? computeTop(props.alignment) : top.value
+        top.value = newValue ? computeTop(props.alignment) : top.value
       },
       { immediate: true }
     )
 
-    // menu hidden
     const handleMenuBlur = () => {
-      if (clickSelf.value) {
-        clickSelf.value = false
+      if (clickSelf) {
+        clickSelf = false
         return
       }
 
@@ -97,6 +95,7 @@ export default defineComponent({
       menu,
       top,
       left,
+      toPx,
       handleClick,
     }
   },

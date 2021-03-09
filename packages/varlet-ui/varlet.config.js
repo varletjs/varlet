@@ -57,13 +57,6 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'Loading 加载',
-          'en-US': 'Loading',
-        },
-        doc: 'loading',
-      },
-      {
-        text: {
           'zh-CN': 'Button 按钮',
           'en-US': 'Button',
         },
@@ -75,6 +68,13 @@ module.exports = {
           'en-US': 'Popup',
         },
         doc: 'popup',
+      },
+      {
+        text: {
+          'zh-CN': 'Loading 加载',
+          'en-US': 'Loading',
+        },
+        doc: 'loading',
       },
       {
         text: {
@@ -292,6 +292,13 @@ module.exports = {
           'en-US': 'Countdown',
         },
         doc: 'countdown',
+      },
+      {
+        text: {
+          'zh-CN': 'Form 表单',
+          'en-US': 'Form',
+        },
+        doc: 'form',
       },
     ],
   },

@@ -9,28 +9,6 @@
         <a target="_blank" href="https://github.com/haoziqaq/varlet" class="varlet-site-header__link">
           <img src="https://b.yzcdn.cn/vant/logo/github.svg" />
         </a>
-        <!--				<span-->
-        <!--          class='varlet-site-header__version varlet-site-header__cube'-->
-        <!--          @click='isHideVersion = !isHideVersion'-->
-        <!--        >-->
-        <!--					3.6.12-->
-        <!--					<span-->
-        <!--            :class="{-->
-        <!--							'varlet-site-header__version-pop': true,-->
-        <!--							'varlet-site-header__version-pop-hidden': isHideVersion,-->
-        <!--						}"-->
-        <!--          >-->
-        <!--						<span-->
-        <!--              class='varlet-site-header__version-pop-item'-->
-        <!--              v-for='version in versionList'-->
-        <!--            >-->
-        <!--							{{ version }}-->
-        <!--						</span>-->
-        <!--					</span>-->
-        <!--				</span>-->
-        <!--				<button @click='switchLanguage' class='varlet-site-header__cube'>-->
-        <!--					{{ header.i18nButton[language] }}-->
-        <!--				</button>-->
       </span>
     </div>
     <div class="varlet-site-content">
@@ -38,16 +16,12 @@
         <var-cell
           v-for="item in menu"
           class="varlet-site-nav__item"
+          :class="`${item.doc === componentName ? 'varlet-site-nav__item--active' : ''}`"
           v-ripple="{ touchmoveForbid: false, disabled: !!item.isTitle }"
           @click="changeRoute(item)"
         >
-          <!--          :ref='(el) => setCellRef(el, item)'-->
           <span v-if="item.isTitle" class="varlet-site-nav__item--title">{{ item.text[language] }}</span>
-          <span
-            v-else
-            class="varlet-site-nav__item--link"
-            :class="`${item.doc === componentName ? 'varlet-site-nav__item--active' : ''}`"
-          >
+          <span v-else class="varlet-site-nav__item--link">
             {{ item.text[language] }}
           </span>
         </var-cell>
@@ -73,7 +47,7 @@ import Ripple from '@varlet/ui/es/ripple'
 import Cell from '@varlet/ui/es/cell'
 import '@varlet/ui/es/ripple/style'
 import '@varlet/ui/es/cell/style'
-import { defineComponent, ref, Ref, watch, onMounted, nextTick } from 'vue'
+import { defineComponent, ref, Ref, watch, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 type Menu = {
@@ -101,29 +75,20 @@ export default defineComponent({
     const title: Ref<string> = ref('')
     const versionList: Ref<string[]> = ref(['2.10.14', '1.x', '3.x'])
     const isHideVersion: Ref<boolean> = ref(true)
-    const cellRefs: Ref<HTMLElement[]> = ref([])
     let urlValue = window.location.hash.split('/')[2]
     let refs: HTMLElement = ref(null)
+    const route = useRoute()
+    const router = useRouter()
+    const { pc = {}, title: configTitle } = config
+    const { header: configHeader = { i18nButton: {}, logo: '', search: {} }, menu: configMenu = [] } = pc
 
     const nav = (element: HTMLElement) => {
       refs = element
     }
-    onMounted(async () => {
-      let childrenElement = refs.getElementsByClassName('var-cell')
-      let index = menu.value.findIndex((item) => item.doc === urlValue)
-      childrenElement[index].scrollIntoView({
-        block: 'center',
-        inline: 'center',
-      })
-    })
-    const { pc = {}, title: configTitle } = config
-    const { header: configHeader = { i18nButton: {}, logo: '', search: {} }, menu: configMenu = [] } = pc
+
     menu.value = configMenu
     header.value = configHeader
     title.value = configTitle
-
-    const route = useRoute()
-    const router = useRouter()
 
     const switchLanguage = () => {
       language.value = language.value === 'zh-CN' ? 'en-US' : 'zh-CN'
@@ -138,6 +103,16 @@ export default defineComponent({
       }
       router.push(`/${language.value}/${item.doc}`)
     }
+
+    onMounted(async () => {
+      let childrenElement = refs.getElementsByClassName('var-cell')
+      let index = menu.value.findIndex((item) => item.doc === urlValue)
+      childrenElement[index].scrollIntoView({
+        block: 'center',
+        inline: 'center',
+      })
+    })
+
     watch(
       () => route.path,
       (to: string) => {
@@ -242,7 +217,7 @@ iframe {
       justify-content: space-between;
       user-select: none;
       position: relative;
-      box-shadow: 0 8px 12px #888;
+      box-shadow: 0 6px 8px #ddd;
       z-index: 2;
 
       &__logo {
@@ -420,7 +395,7 @@ iframe {
         word-wrap: break-word;
         background-color: #fff;
         border-radius: 8px;
-        box-shadow: 2px 2px 6px #999;
+        box-shadow: 2px 2px 5px #eee;
       }
 
       p code,
@@ -488,10 +463,7 @@ iframe {
 
       .card {
         margin-bottom: 24px;
-        padding: 24px;
-        background-color: #f5f5f5;
         border-radius: 8px;
-        //box-shadow: 0 8px 12px #ebedf0;
       }
     }
 
@@ -531,7 +503,20 @@ iframe {
         }
 
         &--active {
-          color: @color-primary;
+          position: relative;
+          span {
+            color: @color-primary;
+          }
+
+          &::before {
+            display: block;
+            content: '';
+            background: @color-primary;
+            width: 2px;
+            height: 40px;
+            position: absolute;
+            left: 0;
+          }
         }
       }
     }

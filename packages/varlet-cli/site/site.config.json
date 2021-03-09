@@ -59,13 +59,6 @@
       },
       {
         "text": {
-          "zh-CN": "Loading 加载",
-          "en-US": "Loading"
-        },
-        "doc": "loading"
-      },
-      {
-        "text": {
           "zh-CN": "Button 按钮",
           "en-US": "Button"
         },
@@ -77,6 +70,13 @@
           "en-US": "Popup"
         },
         "doc": "popup"
+      },
+      {
+        "text": {
+          "zh-CN": "Loading 加载",
+          "en-US": "Loading"
+        },
+        "doc": "loading"
       },
       {
         "text": {
@@ -294,6 +294,13 @@
           "en-US": "Countdown"
         },
         "doc": "countdown"
+      },
+      {
+        "text": {
+          "zh-CN": "Form 表单",
+          "en-US": "Form"
+        },
+        "doc": "form"
       }
     ]
   },

@@ -12,61 +12,12 @@
           v-if="overlay"
           @click="hidePopup"
         ></div>
-
-        <transition name="var-pop-center">
+        <transition :name="`var-pop-${position}`">
           <div
-            class="var-popup__center var-elevation--3"
+            class="var-popup__content var-elevation--3"
+            :class="[`var-popup--${position}`]"
             :style="{ zIndex }"
             v-bind="$attrs"
-            v-if="position === 'center'"
-            v-show="show"
-          >
-            <slot />
-          </div>
-        </transition>
-
-        <transition name="var-pop-up">
-          <div
-            class="var-popup__bottom var-elevation--3"
-            :style="{ zIndex }"
-            v-bind="$attrs"
-            v-if="position === 'bottom'"
-            v-show="show"
-          >
-            <slot />
-          </div>
-        </transition>
-
-        <transition name="var-pop-down">
-          <div
-            class="var-popup__top var-elevation--3"
-            :style="{ zIndex }"
-            v-bind="$attrs"
-            v-if="position === 'top'"
-            v-show="show"
-          >
-            <slot />
-          </div>
-        </transition>
-
-        <transition name="var-pop-right">
-          <div
-            class="var-popup__left var-elevation--3"
-            :style="{ zIndex }"
-            v-bind="$attrs"
-            v-if="position === 'left'"
-            v-show="show"
-          >
-            <slot />
-          </div>
-        </transition>
-
-        <transition name="var-pop-left">
-          <div
-            class="var-popup__right var-elevation--3"
-            :style="{ zIndex }"
-            v-bind="$attrs"
-            v-if="position === 'right'"
             v-show="show"
           >
             <slot />

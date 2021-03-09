@@ -1,54 +1,43 @@
 <template>
-  <var-button class="mt-10" block @click="center = true">居中弹出</var-button>
+  <app-type>{{ pack.popupPosition }}</app-type>
+  <var-button class="mt-10" block @click="center = true">{{ pack.centerPopup }}</var-button>
+  <var-button class="mt-10" block @click="bottom = true">{{ pack.belowPopup }}</var-button>
+  <var-button class="mt-10" block @click="top = true">{{ pack.abovePopup }}</var-button>
+  <var-button class="mt-10" block @click="left = true">{{ pack.leftPopup }}</var-button>
+  <var-button class="mt-10" block @click="right = true">{{ pack.rightPopup }}</var-button>
   <var-popup v-model:show="center">
-    <div class="block">
-      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
-    </div>
+    <div class="block">{{ pack.text }}</div>
   </var-popup>
-
-  <var-button class="mt-10" block @click="bottom = true">下方弹出</var-button>
   <var-popup position="bottom" v-model:show="bottom">
-    <div class="block">
-      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
-    </div>
+    <div class="block">{{ pack.text }}</div>
   </var-popup>
-
-  <var-button class="mt-10" block @click="top = true">上方弹出</var-button>
   <var-popup position="top" v-model:show="top">
-    <div class="block">
-      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
-    </div>
+    <div class="block">{{ pack.text }}</div>
   </var-popup>
-
-  <var-button class="mt-10" block @click="left = true">左侧弹出</var-button>
   <var-popup position="left" v-model:show="left">
-    <div class="block">
-      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
-    </div>
+    <div class="block">{{ pack.text }}</div>
   </var-popup>
-
-  <var-button class="mt-10" block @click="right = true">右侧弹出</var-button>
   <var-popup position="right" v-model:show="right">
-    <div class="block">
-      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
-    </div>
+    <div class="block">{{ pack.text }}</div>
   </var-popup>
 
-  <var-button class="mt-10" block @click="overlayClass = true">遮罩层class</var-button>
+  <app-type>{{ pack.overlayStyle }}</app-type>
+  <var-button class="mt-10" block @click="overlayClass = true">{{ pack.overlayClass }}</var-button>
   <var-popup overlay-class="custom-overlay" v-model:show="overlayClass">
-    <div class="block">
-      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
-    </div>
+    <div class="block">{{ pack.text }}</div>
+  </var-popup>
+  <var-button class="mt-10" block @click="overlayStyle = true">{{ pack.overlayStyles }}</var-button>
+  <var-popup
+    :overlay-style="{
+      backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    }"
+    v-model:show="overlayStyle"
+  >
+    <div class="block">{{ pack.text }}</div>
   </var-popup>
 
-  <var-button class="mt-10" block @click="overlayStyle = true">遮罩层style</var-button>
-  <var-popup :overlay-style="{ 'background-color': 'rgba(0, 0, 0, 0.3)' }" v-model:show="overlayStyle">
-    <div class="block">
-      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
-    </div>
-  </var-popup>
-
-  <var-button class="mt-10" block @click="event = true">事件监听</var-button>
+  <app-type>{{ pack.event }}</app-type>
+  <var-button class="mt-10" block @click="event = true">{{ pack.event }}</var-button>
   <var-popup
     v-model:show="event"
     @open="() => Snackbar.info('open')"
@@ -56,9 +45,7 @@
     @close="() => Snackbar.warning('close')"
     @closed="() => Snackbar.error('closed')"
   >
-    <div class="block">
-      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
-    </div>
+    <div class="block">{{ pack.text }}</div>
   </var-popup>
 </template>
 
@@ -66,13 +53,17 @@
 import Popup from '..'
 import Button from '../../button'
 import Snackbar from '../../snackbar'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { watchLang } from '../../utils/components'
 import { ref } from 'vue'
+import { pack, use } from './locale'
 
 export default {
   name: 'PopupExample',
   components: {
     [Popup.name]: Popup,
     [Button.name]: Button,
+    AppType,
   },
   setup() {
     const center = ref(false)
@@ -84,7 +75,10 @@ export default {
     const overlayStyle = ref(false)
     const event = ref(false)
 
+    watchLang(use)
+
     return {
+      pack,
       center,
       top,
       bottom,
@@ -112,6 +106,6 @@ export default {
 
 .block {
   padding: 20px 24px;
-  width: 70vw;
+  width: 250px;
 }
 </style>

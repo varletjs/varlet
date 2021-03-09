@@ -1,3 +1,5 @@
+import { PropType } from 'vue'
+
 function positionValidator(position: string): boolean {
   return ['top', 'bottom', 'right', 'left', 'center'].includes(position)
 }
@@ -34,24 +36,24 @@ export const props = {
     default: 'body',
   },
   onOpen: {
-    type: Function,
-  },
-  onClose: {
-    type: Function,
+    type: Function as PropType<() => void>,
   },
   onOpened: {
-    type: Function,
+    type: Function as PropType<() => void>,
+  },
+  onClose: {
+    type: Function as PropType<() => void>,
   },
   onClosed: {
-    type: Function,
+    type: Function as PropType<() => void>,
   },
   onClickOverlay: {
-    type: Function,
+    type: Function as PropType<() => void>,
   },
   onRouteChange: {
-    type: Function,
+    type: Function as PropType<() => void>,
   },
   'onUpdate:show': {
-    type: Function,
+    type: Function as PropType<(show: boolean) => void>,
   },
 }

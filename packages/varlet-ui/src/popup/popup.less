@@ -1,65 +1,59 @@
-@popup-overlay-background-color: rgba(0, 0, 0, .6);
-
-@popup-center-background-color: #fff;
-@popup-bottom-background-color: #fff;
-@popup-top-background-color: #fff;
-@popup-left-background-color: #fff;
-@popup-right-background-color: #fff;
+@popup-overlay-background-color: rgba(0, 0, 0, 0.6);
+@popup-content-background-color: #fff;
 
 .var {
-
   &-fade-enter-from,
   &-fade-leave-to {
     opacity: 0;
   }
   &-fade-enter-active,
   &-fade-leave-active {
-    transition: opacity .3s;
+    transition: opacity 0.3s;
   }
 
   &-pop-center-enter-from,
   &-pop-center-leave-to {
-    transform: scale(.3);
+    transform: scale(0.3);
   }
   &-pop-center-enter-active,
   &-pop-center-leave-active {
-    transition: all .3s;
+    transition: all 0.3s;
   }
 
-  &-pop-up-enter-from,
-  &-pop-up-leave-to {
+  &-pop-bottom-enter-from,
+  &-pop-bottom-leave-to {
     transform: translateY(100%);
   }
-  &-pop-up-enter-active,
-  &-pop-up-leave-active {
-    transition: all .3s;
+  &-pop-bottom-enter-active,
+  &-pop-bottom-leave-active {
+    transition: all 0.3s;
   }
 
-  &-pop-down-enter-from,
-  &-pop-down-leave-to {
+  &-pop-top-enter-from,
+  &-pop-top-leave-to {
     transform: translateY(-100%);
   }
-  &-pop-down-enter-active,
-  &-pop-down-leave-active {
-    transition: all .3s;
-  }
-
-  &-pop-right-enter-from,
-  &-pop-right-leave-to {
-    transform: translateX(-100%);
-  }
-  &-pop-right-enter-active,
-  &-pop-right-leave-active {
-    transition: all .3s;
+  &-pop-top-enter-active,
+  &-pop-top-leave-active {
+    transition: all 0.3s;
   }
 
   &-pop-left-enter-from,
   &-pop-left-leave-to {
-    transform: translateX(100%);
+    transform: translateX(-100%);
   }
   &-pop-left-enter-active,
   &-pop-left-leave-active {
-    transition: all .3s;
+    transition: all 0.3s;
+  }
+
+  &-pop-right-enter-from,
+  &-pop-right-leave-to {
+    transform: translateX(100%);
+  }
+  &-pop-right-enter-active,
+  &-pop-right-leave-active {
+    transition: all 0.3s;
   }
 }
 
@@ -85,44 +79,40 @@
     background-color: @popup-overlay-background-color;
   }
 
-  &__center {
-    position: relative;
-    background-color: @popup-center-background-color;
+  &__content {
+    overflow: auto;
+    background-color: @popup-content-background-color;
   }
 
-  &__bottom {
+  &--center {
+    position: relative;
+  }
+
+  &--bottom {
+    min-width: 100%;
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 100%;
-    overflow: auto;
-    background-color: @popup-bottom-background-color;
   }
 
-  &__top {
+  &--top {
+    min-width: 100%;
     position: absolute;
     left: 0;
     top: 0;
-    width: 100%;
-    overflow: auto;
-    background-color: @popup-top-background-color;
   }
 
-  &__left {
+  &--left {
+    min-height: 100%;
     position: absolute;
     left: 0;
     top: 0;
-    height: 100%;
-    overflow: auto;
-    background-color: @popup-left-background-color;
   }
 
-  &__right {
+  &--right {
+    min-height: 100%;
     position: absolute;
     right: 0;
     top: 0;
-    height: 100%;
-    overflow: auto;
-    background-color: @popup-right-background-color;
   }
 }
