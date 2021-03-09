@@ -37,8 +37,9 @@ export default defineComponent({
 
 <style scoped>
 .var-back-top__example {
-  height: calc(100vh - 130px);
+  height: calc(100vh - 60px);
   overflow: auto;
-  margin-top: 18px;
+
+  /* margin-top: 18px; */
 }
 </style>

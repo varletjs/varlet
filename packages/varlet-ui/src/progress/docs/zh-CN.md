@@ -11,8 +11,8 @@ import { Progress } from '@varlet/ui'
 
 export default defineComponent({
   components: {
-    [Progress.name]: Progress,
-  },
+    [Progress.name]: Progress
+  }
 })
 ```
 

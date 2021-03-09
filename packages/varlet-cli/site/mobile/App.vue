@@ -1,6 +1,11 @@
 <template>
   <div style="position: relative">
-    <header>{{ componentName }}</header>
+    <header>
+      <div class="mobile-header--return" v-if="isIphone" @click="toHome">
+        <var-icon name="chevron-left" size="30px" color="#ffffff"></var-icon>
+      </div>
+      {{ componentName }}
+    </header>
     <div class="router-view__block">
       <router-view />
     </div>
@@ -10,12 +15,21 @@
 <script lang="ts">
 import { defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import Icon from '@varlet/ui/es/icon'
 
 export default defineComponent({
+  components: {
+    [Icon.name]: Icon,
+  },
   setup() {
     const componentName: Ref<string> = ref('')
     const route = useRoute()
-
+    const isIphone: Ref<boolean> = ref(false)
+    isIphone.value = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+    const toHome = () => {
+      // todo 返回首页
+      alert('返回首页')
+    }
     watch(
       () => route.path,
       (to: string) => {
@@ -27,6 +41,8 @@ export default defineComponent({
 
     return {
       componentName,
+      isIphone,
+      toHome,
     }
   },
 })
@@ -40,7 +56,7 @@ body {
   padding: 0;
   background: white;
   min-height: 100%;
-  font-family: '微软雅黑 Light', sans-serif;
+  font-family: 'Roboto', 'Noto Sans SC', serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -63,6 +79,21 @@ header {
   z-index: 1;
   width: 100%;
   font-weight: bold;
+
+  .mobile-header--return {
+    position: absolute;
+    height: 40px;
+    line-height: 40px;
+    width: 40px;
+    text-align: center;
+    top: 0;
+    left: 4px;
+
+    i {
+      height: 40px;
+      line-height: 40px;
+    }
+  }
 }
 
 .router-view__block {

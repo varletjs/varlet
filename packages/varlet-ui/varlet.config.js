@@ -286,6 +286,13 @@ module.exports = {
         },
         doc: 'steps',
       },
+      {
+        text: {
+          'zh-CN': 'Countdown 倒计时',
+          'en-US': 'Countdown',
+        },
+        doc: 'countdown',
+      },
     ],
   },
   mobile: {

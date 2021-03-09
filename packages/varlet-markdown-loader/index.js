@@ -22,7 +22,7 @@ function markLoader(source) {
   })
   const html = cardWrapper(md.render(source))
 
-  return `<template>\n<div class="varlet-site-doc">${html}</div>\n</template>\n`
+  return `<template>\n<div class="varlet-site-doc" v-pre>${html}</div>\n</template>\n`
 }
 
 module.exports = markLoader

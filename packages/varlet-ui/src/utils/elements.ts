@@ -87,6 +87,10 @@ export function requestAnimationFrame(fn: FrameRequestCallback): number {
   return window.requestAnimationFrame ? window.requestAnimationFrame(fn) : window.setTimeout(fn, 16)
 }
 
+export function cancelAnimationFrame(handle: number): void {
+  window.cancelAnimationFrame ? window.cancelAnimationFrame(handle) : window.clearTimeout(handle)
+}
+
 export function nextTickFrame(fn: FrameRequestCallback) {
   requestAnimationFrame(() => {
     requestAnimationFrame(fn)

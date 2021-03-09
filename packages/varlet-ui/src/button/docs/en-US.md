@@ -38,11 +38,21 @@ createApp().use(Button)
 ### Loading Status
 
 ```html
-<var-button loading type="primary">LoadingStatus</var-button>
-<var-button loading type="info" loading-type="rect">LoadingStatus</var-button>
-<var-button loading type="success" loading-type="disappear">LoadingStatus</var-button>
-<var-button loading type="danger" loading-type="cube">LoadingStatus</var-button>
-<var-button loading type="warning" loading-type="wave">LoadingStatus</var-button>
+<var-button loading type="primary">
+  LoadingStatus
+</var-button>
+<var-button loading type="info" loading-type="rect">
+  LoadingStatus
+</var-button>
+<var-button loading type="success" loading-type="disappear">
+  LoadingStatus
+</var-button>
+<var-button loading type="danger" loading-type="cube">
+  LoadingStatus
+</var-button>
+<var-button loading type="warning" loading-type="wave">
+  LoadingStatus
+</var-button>
 ```
 
 ### Button Size
@@ -157,7 +167,7 @@ export default {
 | `@button-disabled-color` | `@color-disabled` |
 | `@button-disabled-text-color` | `#bdbdbd` |
 | `@button-border-radius` | `4px` |
-| `@button-mini-padding:` | `0 9px` |
+| `@button-mini-padding` | `0 9px` |
 | `@button-small-padding` | `0 11px` |
 | `@button-normal-padding` | `0 15px` |
 | `@button-large-padding` | `0 22px` |

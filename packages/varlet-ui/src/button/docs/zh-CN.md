@@ -38,11 +38,21 @@ createApp().use(Button)
 ### 加载状态
 
 ```html
-<var-button loading type="primary">加载状态</var-button>
-<var-button loading type="info" loading-type="rect">加载状态</var-button>
-<var-button loading type="success" loading-type="disappear">加载状态</var-button>
-<var-button loading type="danger" loading-type="cube">加载状态</var-button>
-<var-button loading type="warning" loading-type="wave">加载状态</var-button>
+<var-button loading type="primary">
+  加载状态
+</var-button>
+<var-button loading type="info" loading-type="rect">
+  加载状态
+</var-button>
+<var-button loading type="success" loading-type="disappear">
+  加载状态
+</var-button>
+<var-button loading type="danger" loading-type="cube">
+  加载状态
+</var-button>
+<var-button loading type="warning" loading-type="wave">
+  加载状态
+</var-button>
 ```
 
 ### 按钮尺寸
@@ -157,7 +167,7 @@ export default {
 | `@button-disabled-color` | `@color-disabled`|
 | `@button-disabled-text-color` | `#bdbdbd` |
 | `@button-border-radius` | `4px` |
-| `@button-mini-padding:` | `0 9px` |
+| `@button-mini-padding` | `0 9px` |
 | `@button-small-padding` | `0 11px` |
 | `@button-normal-padding` | `0 15px` |
 | `@button-large-padding` | `0 22px` |
