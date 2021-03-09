@@ -512,7 +512,7 @@ iframe {
             display: block;
             content: '';
             background: @color-primary;
-            width: 2px;
+            width: 4px;
             height: 40px;
             position: absolute;
             left: 0;

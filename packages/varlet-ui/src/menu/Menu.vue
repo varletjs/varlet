@@ -34,40 +34,22 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const { zIndex } = useZIndex(props, 'show', 1)
-
     const host: Ref<null | HTMLElement> = ref(null)
     const menu: Ref<null | HTMLElement> = ref(null)
-
     const top: Ref<number> = ref(0)
     const left: Ref<number> = ref(0)
+    const { zIndex } = useZIndex(props, 'show', 1)
+    let clickSelf = false
+
     const computeTop = (alignment: string): number => {
       return alignment === 'top'
         ? getTop(host.value as HTMLElement)
         : getTop(host.value as HTMLElement) - (menu.value as HTMLElement).offsetHeight
     }
 
-    let clickSelf = false
-
     const handleClick = () => {
       clickSelf = true
     }
-
-    watch(
-      () => props.alignment,
-      (newValue: string) => {
-        props.show === true && (top.value = computeTop(newValue))
-      }
-    )
-    watch(
-      () => props.show,
-      async (newValue: boolean) => {
-        await nextTick()
-
-        top.value = newValue ? computeTop(props.alignment) : top.value
-      },
-      { immediate: true }
-    )
 
     const handleMenuBlur = () => {
       if (clickSelf) {
@@ -79,12 +61,30 @@ export default defineComponent({
       props.onBlur?.()
     }
 
+    watch(
+      () => props.alignment,
+      (newValue: string) => {
+        props.show === true && (top.value = computeTop(newValue))
+      }
+    )
+
+    watch(
+      () => props.show,
+      async (newValue: boolean) => {
+        await nextTick()
+
+        top.value = newValue ? computeTop(props.alignment) : top.value
+      },
+      { immediate: true }
+    )
+
     onMounted(() => {
       top.value = computeTop(props.alignment)
       left.value = getLeft(host.value as HTMLElement)
 
       document.addEventListener('click', handleMenuBlur)
     })
+
     onUnmounted(() => {
       document.removeEventListener('click', handleMenuBlur)
     })
