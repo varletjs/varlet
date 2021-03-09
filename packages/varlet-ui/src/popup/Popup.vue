@@ -1,18 +1,12 @@
 <template>
   <teleport :to="teleport" :disabled="disabled">
     <transition name="var-fade" @after-enter="onOpened" @after-leave="onClosed">
-      <div
-        class="var--box var-popup"
-        :style="{
-          'z-index': zIndex,
-        }"
-        v-show="show"
-      >
+      <div class="var--box var-popup" :style="{ zIndex: zIndex - 2 }" v-show="show">
         <div
           class="var-popup__overlay"
           :class="[overlayClass]"
           :style="{
-            'z-index': zIndex + 1,
+            zIndex: zIndex - 1,
             ...overlayStyle,
           }"
           v-if="overlay"
@@ -22,9 +16,7 @@
         <transition name="var-pop-center">
           <div
             class="var-popup__center var-elevation--3"
-            :style="{
-              'z-index': zIndex + 2,
-            }"
+            :style="{ zIndex }"
             v-bind="$attrs"
             v-if="position === 'center'"
             v-show="show"
@@ -36,9 +28,7 @@
         <transition name="var-pop-up">
           <div
             class="var-popup__bottom var-elevation--3"
-            :style="{
-              'z-index': zIndex + 2,
-            }"
+            :style="{ zIndex }"
             v-bind="$attrs"
             v-if="position === 'bottom'"
             v-show="show"
@@ -50,9 +40,7 @@
         <transition name="var-pop-down">
           <div
             class="var-popup__top var-elevation--3"
-            :style="{
-              'z-index': zIndex + 2,
-            }"
+            :style="{ zIndex }"
             v-bind="$attrs"
             v-if="position === 'top'"
             v-show="show"
@@ -64,9 +52,7 @@
         <transition name="var-pop-right">
           <div
             class="var-popup__left var-elevation--3"
-            :style="{
-              'z-index': zIndex + 2,
-            }"
+            :style="{ zIndex }"
             v-bind="$attrs"
             v-if="position === 'left'"
             v-show="show"
@@ -78,9 +64,7 @@
         <transition name="var-pop-left">
           <div
             class="var-popup__right var-elevation--3"
-            :style="{
-              'z-index': zIndex + 2,
-            }"
+            :style="{ zIndex }"
             v-bind="$attrs"
             v-if="position === 'right'"
             v-show="show"
@@ -97,38 +81,40 @@
 import { defineComponent, watch } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
-import { useTeleport } from '../utils/teleport'
 import { useZIndex } from '../context/zIndex'
-import { addRouteListener } from '../utils/components'
+import { addRouteListener, useTeleport } from '../utils/components'
 
 export default defineComponent({
   name: 'VarPopup',
   inheritAttrs: false,
   props,
   setup(props) {
-    // context
-    const { disabled } = useTeleport()
     const { zIndex } = useZIndex(props, 'show', 3)
-    useLock(props, 'show', 'lockScroll')
-    // events open close
-    watch(
-      () => props.show,
-      (newValue: boolean) => {
-        newValue ? props.onOpen?.() : props.onClose?.()
-      }
-    )
+    const { disabled } = useTeleport()
 
     const hidePopup = () => {
-      props.onClickOverlay?.()
-      if (props.closeOnClickOverlay === false) {
+      const { closeOnClickOverlay, onClickOverlay } = props
+
+      onClickOverlay?.()
+
+      if (!closeOnClickOverlay) {
         return
       }
+
       props['onUpdate:show']?.(false)
     }
 
-    addRouteListener(() => {
-      props.onRouteChange?.()
-    })
+    useLock(props, 'show', 'lockScroll')
+
+    watch(
+      () => props.show,
+      (newValue: boolean) => {
+        const { onOpen, onClose } = props
+        newValue ? onOpen?.() : onClose?.()
+      }
+    )
+
+    addRouteListener(() => props.onRouteChange?.())
 
     return {
       zIndex,

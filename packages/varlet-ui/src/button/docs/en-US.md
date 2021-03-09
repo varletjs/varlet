@@ -156,7 +156,7 @@ export default {
 ### Theme Variables
 #### The following LESS variables can be overridden at build time to modify the theme style
 
-| 变量名 | 默认值 |
+| Variable | Default |
 | --- | --- |
 | `@button-default-color` | `#f5f5f5` |
 | `@button-primary-color` | `@color-primary` |

@@ -17,6 +17,8 @@ import {
   nextTick,
   Ref,
   ref,
+  onActivated,
+  onDeactivated,
 } from 'vue'
 import { isArray, removeItem } from './shared'
 
@@ -296,4 +298,20 @@ export function watchPlatform(cb: (platform: string) => void) {
   addRouteListener(handleHashchange)
 
   handleHashchange()
+}
+
+export function useTeleport() {
+  const disabled: Ref<boolean> = ref(false)
+
+  onActivated(() => {
+    disabled.value = false
+  })
+
+  onDeactivated(() => {
+    disabled.value = true
+  })
+
+  return {
+    disabled,
+  }
 }

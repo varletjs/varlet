@@ -60,7 +60,7 @@ export function compileTable(md: string, titleRe: RegExp): string {
 
 export function compileTags(table: Record<string, any>, tags: Record<string, any>, componentName: string) {
   tags[componentName] = {
-    attributes: table.attributesTable.map((row: any) => row[0]),
+    attributes: table.attributesTable.map((row: any) => row[0].replace(/`/g, '')),
   }
 }
 
@@ -69,7 +69,7 @@ export function compileAttributes(table: Record<string, any>, attributes: Record
     const attrNamespace = `${get(varletConfig, 'namespace')}-${componentName}/${row[0]}`
     attributes[attrNamespace] = {
       type: row[2].replace(/_/g, ''),
-      description: `${row[1]} 默认值：${row[3]}`,
+      description: `${row[1]} 默认值：${row[3].replace(/`/g, '')}`,
     }
   })
 }
@@ -78,9 +78,9 @@ export function compileWebTypes(table: Record<string, any>, webTypes: Record<str
   const { attributesTable, eventsTable, slotsTable } = table
 
   const attributes = attributesTable.map((row: any) => ({
-    name: row[0],
+    name: row[0].replace(/`/g, ''),
     description: row[1],
-    default: row[3],
+    default: row[3].replace(/`/g, ''),
     value: {
       type: row[2].replace(/_/g, ''),
       kind: 'expression',
@@ -88,12 +88,12 @@ export function compileWebTypes(table: Record<string, any>, webTypes: Record<str
   }))
 
   const events = eventsTable.map((row: any) => ({
-    name: row[0],
+    name: row[0].replace(/`/g, ''),
     description: row[1],
   }))
 
   const slots = slotsTable.map((row: any) => ({
-    name: row[0],
+    name: row[0].replace(/`/g, ''),
     description: row[1],
   }))
 

@@ -1,5 +1,8 @@
 # Skeleton
 
+### Intro
+#### Display some placeholder elements with transition effects to optimize your loading process
+
 ### Install
 
 ```js
@@ -132,9 +135,9 @@ export default {
 
 ## API
 
-### 属性
+### Props
 
-| 参数 | 说明 | 类型 | 默认值 | 
+| Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
 | `loading` | Loading Status Set to `true` to turn on the skeleton | _boolean_ | `true` |
 | `title` | Whether to display the title | _boolean_ | `true` |
@@ -147,10 +150,16 @@ export default {
 | `rows` | The paragraph number of rows | _number \| string_ | `3` |
 | `rows-width` | The width of each line of a paragraph | _number \| string_ | `['12px', '12px', '12px']` |
 
+### Slots
+
+| Slot | Description | Params |
+| --- | --- | --- |
+| `default` | 加载成功后显示的内容 | `-` |
+
 ### Theme Variables
 #### The following LESS variables can be overridden at build time to modify the theme style
 
-| 变量名 | 默认值 |
+| Variable | Default |
 | --- | --- |
 | `@skeleton-content-padding` | `16px` |
 | `@skeleton-card-height` | `160px` |

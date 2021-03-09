@@ -1,166 +1,88 @@
 <template>
-  <div class="example">
-    <var-popup
-      v-model:show="center"
-      style="padding: 20px;"
-      class="ppp"
-    >
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-    </var-popup>
+  <var-button class="mt-10" block @click="center = true">居中弹出</var-button>
+  <var-popup v-model:show="center">
+    <div class="block">
+      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
 
-    <var-popup
-      v-model:show="bottom"
-      position="bottom"
-      style="padding: 20px;"
-    >
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-    </var-popup>
+  <var-button class="mt-10" block @click="bottom = true">下方弹出</var-button>
+  <var-popup position="bottom" v-model:show="bottom">
+    <div class="block">
+      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
 
-    <var-popup
-      v-model:show="top"
-      position="top"
-      style="padding: 20px;"
-    >
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-    </var-popup>
+  <var-button class="mt-10" block @click="top = true">上方弹出</var-button>
+  <var-popup position="top" v-model:show="top">
+    <div class="block">
+      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
 
-    <var-popup
-      v-model:show="left"
-      position="left"
-      style="padding: 20px;"
-    >
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-    </var-popup>
+  <var-button class="mt-10" block @click="left = true">左侧弹出</var-button>
+  <var-popup position="left" v-model:show="left">
+    <div class="block">
+      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
 
-    <var-popup
-      v-model:show="right"
-      position="right"
-      style="padding: 20px;"
-    >
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-    </var-popup>
+  <var-button class="mt-10" block @click="right = true">右侧弹出</var-button>
+  <var-popup position="right" v-model:show="right">
+    <div class="block">
+      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
 
-    <var-popup
-      v-model:show="overlay"
-      position="center"
-      style="padding: 20px; font-size: 20px;"
-      :overlay="false"
-    >
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-    </var-popup>
+  <var-button class="mt-10" block @click="overlayClass = true">遮罩层class</var-button>
+  <var-popup overlay-class="custom-overlay" v-model:show="overlayClass">
+    <div class="block">
+      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
 
-    <var-popup
-      v-model:show="overlayClass"
-      position="center"
-      style="padding: 20px;"
-      overlay-class="example__overlay"
-    >
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-    </var-popup>
+  <var-button class="mt-10" block @click="overlayStyle = true">遮罩层style</var-button>
+  <var-popup :overlay-style="{ 'background-color': 'rgba(0, 0, 0, 0.3)' }" v-model:show="overlayStyle">
+    <div class="block">
+      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
 
-    <var-popup
-      v-model:show="overlayStyle"
-      position="center"
-      style="padding: 20px;"
-      :overlay-style="{'background-color': '#000'}"
-    >
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-    </var-popup>
-
-    <var-popup
-      v-model:show="showLockScroll"
-      position="center"
-      :lock-scroll="lockScroll"
-      style="padding: 20px;"
-    >
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-      <var-button type="warning" size="large" style="margin-top: 10px; margin-right: 10px;" @click="lockScroll = !lockScroll">切换锁</var-button>
-
-      <var-button type="danger" size="large" style="margin-top: 10px" @click="center = !center">开启嵌套</var-button>
-    </var-popup>
-
-    <var-popup
-      v-model:show="closeOnClickOverlay"
-      :close-on-click-overlay="false"
-      position="center"
-      style="padding: 20px;"
-    >
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-
-      <var-button type="success" size="large" style="margin-top: 10px" @click="closeOnClickOverlay = false">关闭</var-button>
-    </var-popup>
-
-    <var-popup
-      v-model:show="event"
-      style="padding: 20px;"
-      @open="() => log('open')"
-      @opened="() => log('opened')"
-      @close="() => log('close')"
-      @closed="() => log('closed')"
-    >
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-      <div>测试文字测试文字测试</div>
-    </var-popup>
-
-    <var-button type="primary" size="large" style="margin: 10px;" @click="center = true">居中弹出</var-button>
-    <var-button type="primary" size="large" style="margin: 10px;" @click="bottom = true">下方弹出</var-button>
-    <var-button type="primary" size="large" style="margin: 10px;" @click="top = true">上方弹出</var-button>
-    <var-button type="primary" size="large" style="margin: 10px;" @click="left = true">左侧弹出</var-button>
-    <var-button type="primary" size="large" style="margin: 10px;" @click="right = true">右侧弹出</var-button>
-    <var-button type="primary" size="large" style="margin: 10px;" @click="overlay = true">取消遮罩</var-button>
-    <var-button type="primary" size="large" style="margin: 10px;" @click="overlayClass = true">遮罩层class</var-button>
-    <var-button type="primary" size="large" style="margin: 10px;" @click="overlayStyle = true">遮罩层style</var-button>
-    <var-button type="primary" size="large" style="margin: 10px;" @click="showLockScroll = true">允许滚动穿透</var-button>
-    <var-button type="primary" size="large" style="margin: 10px;" @click="closeOnClickOverlay = true">禁止点击遮罩关闭</var-button>
-    <var-button type="primary" size="large" style="margin: 10px;" @click="event = true">事件监听</var-button>
-  </div>
+  <var-button class="mt-10" block @click="event = true">事件监听</var-button>
+  <var-popup
+    v-model:show="event"
+    @open="() => Snackbar.info('open')"
+    @opened="() => Snackbar.success('opened')"
+    @close="() => Snackbar.warning('close')"
+    @closed="() => Snackbar.error('closed')"
+  >
+    <div class="block">
+      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, Ref } from 'vue'
+<script>
 import Popup from '..'
 import Button from '../../button'
+import Snackbar from '../../snackbar'
+import { ref } from 'vue'
 
-export default defineComponent({
+export default {
   name: 'PopupExample',
   components: {
     [Popup.name]: Popup,
-    [Button.name]: Button
+    [Button.name]: Button,
   },
   setup() {
-    const center: Ref<boolean> = ref(false)
-    const top: Ref<boolean> = ref(false)
-    const bottom: Ref<boolean> = ref(false)
-    const left: Ref<boolean> = ref(false)
-    const right: Ref<boolean> = ref(false)
-    const overlay: Ref<boolean> = ref(false)
-    const overlayClass: Ref<boolean> = ref(false)
-    const overlayStyle: Ref<boolean> = ref(false)
-    const lockScroll: Ref<boolean> = ref(false)
-    const showLockScroll: Ref<boolean> = ref(false)
-    const closeOnClickOverlay: Ref<boolean> = ref(false)
-    const event: Ref<boolean> = ref(true)
+    const center = ref(false)
+    const top = ref(false)
+    const bottom = ref(false)
+    const left = ref(false)
+    const right = ref(false)
+    const overlayClass = ref(false)
+    const overlayStyle = ref(false)
+    const event = ref(false)
 
     return {
       center,
@@ -168,34 +90,28 @@ export default defineComponent({
       bottom,
       left,
       right,
-      overlay,
       overlayClass,
       overlayStyle,
-      lockScroll,
-      showLockScroll,
-      closeOnClickOverlay,
       event,
-      log(message: string) {
-        console.log(message)
-      }
+      Snackbar,
     }
-  }
-})
+  },
+}
 </script>
 
 <style>
-.example__overlay {
-  background-color: #001938;
+.custom-overlay {
+  background: rgba(0, 0, 0, 0.3);
 }
-
-.ppp {
-  background: #4fc08d;
-}
-
-
 </style>
+
 <style scoped lang="less">
-.example {
-  height: 2000px;
+.mt-10 {
+  margin-top: 10px;
+}
+
+.block {
+  padding: 20px 24px;
+  width: 70vw;
 }
 </style>
