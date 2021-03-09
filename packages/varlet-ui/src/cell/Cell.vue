@@ -5,7 +5,7 @@
         <var-icon :name="icon" />
       </slot>
     </div>
-    <div class="var-cell__content" v-bind="$attrs">
+    <div class="var-cell__content">
       <div class="var-cell__title" :class="[titleClass ? titleClass : null]">
         <slot>{{ title }}</slot>
       </div>
@@ -31,7 +31,6 @@ export default defineComponent({
   components: {
     [Icon.name]: Icon,
   },
-  inheritAttrs: false,
   props,
 })
 </script>
