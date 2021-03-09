@@ -34,13 +34,14 @@
       </span>
     </div>
     <div class="varlet-site-content">
-      <div class="varlet-site-nav">
+      <div class="varlet-site-nav" :ref="nav">
         <var-cell
           v-for="item in menu"
           class="varlet-site-nav__item"
-          v-ripple="{ touchmoveForbid: true }"
+          v-ripple="{ touchmoveForbid: true, disabled: !!item.isTitle }"
           @click="changeRoute(item)"
         >
+          <!--          :ref='(el) => setCellRef(el, item)'-->
           <span v-if="item.isTitle" class="varlet-site-nav__item--title">{{ item.text[language] }}</span>
           <span
             v-else
@@ -72,7 +73,7 @@ import Ripple from '@varlet/ui/es/ripple'
 import Cell from '@varlet/ui/es/cell'
 import '@varlet/ui/es/ripple/style'
 import '@varlet/ui/es/cell/style'
-import { defineComponent, ref, Ref, watch } from 'vue'
+import { defineComponent, ref, Ref, watch, onMounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 type Menu = {
@@ -100,6 +101,21 @@ export default defineComponent({
     const title: Ref<string> = ref('')
     const versionList: Ref<string[]> = ref(['2.10.14', '1.x', '3.x'])
     const isHideVersion: Ref<boolean> = ref(true)
+    const cellRefs: Ref<HTMLElement[]> = ref([])
+    let urlValue = window.location.hash.split('/')[2]
+    let refs: HTMLElement = ref(null)
+
+    const nav = (element: HTMLElement) => {
+      refs = element
+    }
+    onMounted(async () => {
+      let childrenElement = refs.getElementsByClassName('var-cell')
+      let index = menu.value.findIndex((item) => item.doc === urlValue)
+      childrenElement[index].scrollIntoView({
+        block: 'center',
+        inline: 'center',
+      })
+    })
     const { pc = {}, title: configTitle } = config
     const { header: configHeader = { i18nButton: {}, logo: '', search: {} }, menu: configMenu = [] } = pc
     menu.value = configMenu
@@ -122,7 +138,6 @@ export default defineComponent({
       }
       router.push(`/${language.value}/${item.doc}`)
     }
-
     watch(
       () => route.path,
       (to: string) => {
@@ -140,6 +155,7 @@ export default defineComponent({
       title,
       versionList,
       isHideVersion,
+      nav,
       switchLanguage,
       changeRoute,
     }
@@ -161,6 +177,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Roboto', 'Noto Sans SC', serif;
 }
 
 iframe {
@@ -172,6 +189,7 @@ iframe {
 
 .varlet {
   &-site {
+    min-width: auto;
     width: 100%;
     height: 100%;
 
@@ -223,6 +241,9 @@ iframe {
       padding: 0 30px;
       justify-content: space-between;
       user-select: none;
+      position: relative;
+      box-shadow: 0 8px 12px #888;
+      z-index: 2;
 
       &__logo {
         display: flex;
@@ -327,10 +348,11 @@ iframe {
       height: calc(100% - 60px);
       overflow-y: hidden;
       display: flex;
-      background-color: #fff;
+      background: #fff;
     }
 
     &-doc {
+      min-width: 300px;
       flex: 1;
       padding: 0 30px;
       overflow-y: auto;
@@ -481,8 +503,8 @@ iframe {
       left: 0;
       z-index: 1;
       overflow-y: scroll;
-      background-color: #fff;
       box-shadow: 0 8px 12px #ebedf0;
+      background: #fff;
 
       &::-webkit-scrollbar {
         display: none;
