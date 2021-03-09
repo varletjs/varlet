@@ -71,6 +71,13 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Menu 菜单',
+          'en-US': 'Menu',
+        },
+        doc: 'menu',
+      },
+      {
+        text: {
           'zh-CN': 'Loading 加载',
           'en-US': 'Loading',
         },
@@ -138,13 +145,6 @@ module.exports = {
           'en-US': 'Sticky',
         },
         doc: 'sticky',
-      },
-      {
-        text: {
-          'zh-CN': 'Menu 菜单',
-          'en-US': 'Menu',
-        },
-        doc: 'menu',
       },
       {
         text: {

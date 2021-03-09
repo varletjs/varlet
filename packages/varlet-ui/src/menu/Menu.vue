@@ -57,14 +57,20 @@ export default defineComponent({
         return
       }
 
+      const { show, onBlur } = props
+
+      if (!show) {
+        return
+      }
+
       props['onUpdate:show']?.(false)
-      props.onBlur?.()
+      onBlur?.()
     }
 
     watch(
       () => props.alignment,
       (newValue: string) => {
-        props.show === true && (top.value = computeTop(newValue))
+        props.show && (top.value = computeTop(newValue))
       }
     )
 
@@ -103,6 +109,5 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '../styles/elevation';
 @import './menu';
 </style>

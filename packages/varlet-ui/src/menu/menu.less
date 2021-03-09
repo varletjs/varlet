@@ -1,31 +1,25 @@
+@import '../styles/common';
+@import '../styles/elevation';
+
 @menu-background: #fff;
 
 .var {
-	&-menu-enter-from,
-	&-menu-leave-to {
-		transform: scale(0.3);
-		opacity: 0;
-	}
-	&-menu-enter-active,
-	&-menu-leave-active {
-		transition-property: opacity, transform;
-		transition-duration: 0.3s;
-	}
+  &-menu-enter-from,
+  &-menu-leave-to {
+    opacity: 0;
+  }
+  &-menu-enter-active,
+  &-menu-leave-active {
+    transition-property: opacity;
+    transition-duration: 0.3s;
+  }
 }
 
 .var-menu {
-	display: inline-block;
-	background: @menu-background;
+  display: inline-block;
+  background: @menu-background;
 
-	&__menu {
-		position: absolute;
-	}
-
-	&--origin-top {
-		transform-origin: 0 0;
-	}
-
-	&--origin-bottom {
-		transform-origin: 0 100%;
-	}
+  &__menu {
+    position: absolute;
+  }
 }
