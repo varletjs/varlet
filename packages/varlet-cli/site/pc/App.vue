@@ -16,8 +16,11 @@
         <var-cell
           v-for="item in menu"
           class="varlet-site-nav__item"
-          :class="`${item.doc === componentName ? 'varlet-site-nav__item--active' : ''}`"
-          v-ripple="{ touchmoveForbid: false, disabled: !!item.isTitle }"
+          :class="{
+            'varlet-site-nav__item--active': item.doc === componentName,
+            'varlet-site-nav__link': !item.isTitle,
+          }"
+          v-ripple="{ touchmoveForbid: false, disabled: !!item.isTitle, color: '#2979ff' }"
           @click="changeRoute(item)"
         >
           <span v-if="item.isTitle" class="varlet-site-nav__item--title">{{ item.text[language] }}</span>
@@ -108,8 +111,8 @@ export default defineComponent({
       let childrenElement = refs.getElementsByClassName('var-cell')
       let index = menu.value.findIndex((item) => item.doc === urlValue)
       childrenElement[index].scrollIntoView({
-        block: 'center',
-        inline: 'center',
+        block: 'nearest',
+        inline: 'start',
       })
     })
 
@@ -367,7 +370,6 @@ iframe {
 
       h3 {
         margin-bottom: 16px;
-        font-weight: 600;
         font-size: 18px;
       }
 
@@ -484,11 +486,10 @@ iframe {
 
       &__item {
         margin: 0;
-        cursor: pointer;
         user-select: none;
 
         &--title {
-          font-weight: 700;
+          font-weight: 500;
           font-size: 16px;
         }
 
@@ -504,6 +505,8 @@ iframe {
 
         &--active {
           position: relative;
+          background: #2b79fc21;
+
           span {
             color: @color-primary;
           }
@@ -518,6 +521,10 @@ iframe {
             left: 0;
           }
         }
+      }
+
+      &__link {
+        cursor: pointer;
       }
     }
   }
