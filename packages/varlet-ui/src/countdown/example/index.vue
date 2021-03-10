@@ -1,18 +1,18 @@
 <template>
   <div>
-    <app-type>基本使用</app-type>
+    <app-type>{{ pack.basicUsage }}</app-type>
     <var-countdown time="108000000" />
   </div>
   <div>
-    <app-type>自定义格式</app-type>
-    <var-countdown time="108000000" format="DD 天 HH 时 mm 分 ss 秒" />
+    <app-type>{{ pack.customFormat }}</app-type>
+    <var-countdown time="108000000" :format="pack.format" />
   </div>
   <div>
-    <app-type>显示毫秒</app-type>
+    <app-type>{{ pack.showMillisecond }}</app-type>
     <var-countdown time="108000000" format="HH : mm : ss : SS" />
   </div>
   <div>
-    <app-type>自定义样式</app-type>
+    <app-type>{{ pack.customStyle }}</app-type>
     <var-countdown time="108000000">
       <template #default="timeData">
         <span class="block">{{ timeData.hours }}</span>
@@ -24,27 +24,31 @@
     </var-countdown>
   </div>
   <div>
-    <app-type>手动控制</app-type>
+    <app-type>{{ pack.manualControl }}</app-type>
     <var-countdown :time="time" ref="countdown" :auto-start="false" format="ss : SSS" @end="end" @change="change" />
     <div class="btn-container">
-      <var-button type="primary" @click="$refs.countdown.start()">开始</var-button>
-      <var-button @click="$refs.countdown.pause()">暂停</var-button>
-      <var-button @click="$refs.countdown.reset()">重置</var-button>
+      <var-button type="primary" @click="$refs.countdown.start()">{{ pack.startText }}</var-button>
+      <var-button @click="$refs.countdown.pause()">{{ pack.pauseText }}</var-button>
+      <var-button @click="$refs.countdown.reset()">{{ pack.resetText }}</var-button>
     </div>
   </div>
 </template>
 
 <script>
 import { defineComponent, ref } from 'vue'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Countdown from '..'
 import Snackbar from '../../snackbar'
 import Button from '../../button'
+import { pack, use } from './locale'
+import { watchLang } from '../../utils/components'
 
 export default defineComponent({
   name: 'CountdownExample',
   components: {
     [Countdown.name]: Countdown,
     [Button.name]: Button,
+    AppType,
   },
   setup() {
     const countdown = ref(null)
@@ -57,8 +61,11 @@ export default defineComponent({
       console.log('change')
     }
 
+    watchLang(use)
+
     return {
       time,
+      pack,
       end,
       countdown,
       change,
