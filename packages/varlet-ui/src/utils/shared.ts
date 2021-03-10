@@ -76,7 +76,7 @@ export const throttle = (method: any, mustRunDelay = 200): (() => void) => {
 export const debounce = (method: any, delay = 200) => {
   let timer: number
 
-  return function (this: unknown, ...args: any[]) {
+  return function(this: unknown, ...args: any[]) {
     timer && window.clearTimeout(timer)
     timer = window.setTimeout(() => {
       method.apply(this, args)
@@ -117,7 +117,7 @@ export const createCache = <T>(max: number): CacheInstance<T> => {
 
     remove(key: T) {
       this.has(key) && removeItem(this.cache, key)
-    },
+    }
   }
 }
 
@@ -125,5 +125,41 @@ export const cubic = (value: number): number => value ** 3
 
 export const easeInOutCubic = (value: number): number =>
   value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2
+
+export function parseFormat(format: string, time: {
+  days: string
+  hours: string
+  minutes: string
+  seconds: string
+  milliseconds: string
+}): string {
+  const { days, hours, minutes, seconds, milliseconds } = time
+
+  const scannedTimes: number[] = [days, hours, minutes, seconds, milliseconds].map(toNumber)
+  const scannedFormats = ['DD', 'HH', 'mm', 'ss']
+  const padValues = [24, 60, 60, 1000]
+
+  scannedFormats.forEach((scannedFormat, index) => {
+    if (!format.includes(scannedFormat)) {
+      scannedTimes[index + 1] += scannedTimes[index] * padValues[index]
+    } else {
+      format = format.replace(scannedFormat, String(scannedTimes[index]).padStart(2, '0'))
+    }
+  })
+
+  if (format.includes('S')) {
+    const ms = String(scannedTimes[scannedTimes.length - 1]).padStart(3, '0')
+
+    if (format.includes('SSS')) {
+      format = format.replace('SSS', ms)
+    } else if (format.includes('SS')) {
+      format = format.replace('SS', ms.slice(0, 2))
+    } else {
+      format = format.replace('S', ms.slice(0, 1))
+    }
+  }
+
+  return format
+}
 
 export const dt = (value: unknown, defaultText: string) => (value == null ? defaultText : value)

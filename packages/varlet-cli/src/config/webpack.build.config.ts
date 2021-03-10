@@ -5,8 +5,6 @@ import { SITE_OUTPUT_PATH, PRIMARY_COLOR } from '../shared/constant'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { HTML_WEBPACK_PLUGINS } from './webpack.dev.config'
 
-const CompressionPlugin = require('compression-webpack-plugin')
-
 export function getBuildConfig() {
   return merge(BASE_CONFIG as any, {
     mode: 'production',
@@ -22,7 +20,6 @@ export function getBuildConfig() {
         color: PRIMARY_COLOR,
       }),
       new CleanWebpackPlugin(),
-      new CompressionPlugin(),
       ...HTML_WEBPACK_PLUGINS,
     ],
   })

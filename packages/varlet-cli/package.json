@@ -47,7 +47,6 @@
     "clean-webpack-plugin": "^3.0.0",
     "clipboard": "^2.0.6",
     "commander": "^6.2.0",
-    "compression-webpack-plugin": "^7.1.2",
     "css-loader": "^5.0.0",
     "execa": "^5.0.0",
     "file-loader": "^6.2.0",
