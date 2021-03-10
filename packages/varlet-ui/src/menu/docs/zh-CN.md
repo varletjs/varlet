@@ -1,101 +1,194 @@
 # 按钮
 
+### 介绍
+```html
+使元素点击时显示一个菜单,通过控制菜单的对齐方式和偏移量自由的控制菜单的显示位置。
+```
+
 ### 引入
 
 ```js
 import { createApp } from 'vue';
-import { Button } from '@varlet/ui';
+import { Menu } from '@varlet/ui';
 
-createApp().use(Button)
+createApp().use(Menu)
 ```
 
-### 主题色按钮
-
+### 注意
 ```html
-<var-button>默认按钮</var-button>
-<var-button type="primary">主要按钮</var-button>
-<var-button type="info">信息按钮</var-button>
-<var-button type="success">成功按钮</var-button>
-<var-button type="warning">警告按钮</var-button>
-<var-button type="danger">危险按钮</var-button>
+1.Menu是一个inline-block元素,通过默认插槽点击时显示菜单,如果希望Menu独占一行推荐包裹一个block元素。
+2.Menu在点击组件范围以外的区域自动关闭,所以不可以使用同一个状态绑定多个Menu的v-model:show。否则在触发显示时也同时触发了其他Menu对v-model:show的修改,导致Menu无法显示。
 ```
 
-### 文字按钮
 
+### 对齐方式
 ```html
-<var-button text outline type="primary">外边框按钮</var-button>
-<var-button text type="primary">纯文字按钮</var-button>
+<div class="block">
+  <var-menu v-model:show="top">
+    <var-button @click="top = true">顶部对齐</var-button>
+
+    <template #menu>
+      <div class="cell-list">
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+      </div>
+    </template>
+  </var-menu>
+</div>
+
+<div class="block-mt">
+  <var-menu alignment="bottom" v-model:show="bottom">
+    <var-button @click="bottom = true">底部对齐</var-button>
+
+    <template #menu>
+      <div class="cell-list">
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+      </div>
+    </template>
+  </var-menu>
+</div>
 ```
 
-### 禁用状态
+```js
+export default {
+  setup() {
+    const top = ref(false)
+    const bottom = ref(false)
 
-```html
-<var-button disabled>禁用状态</var-button>
-<var-button disabled text outline>禁用状态</var-button>
-<var-button disabled text>禁用状态</var-button>
+    return { 
+      top,
+      bottom
+    }
+  },
+}
 ```
 
-### 加载状态
+```css
+.block {
+  display: flex;
+  justify-content: space-between;
+}
 
-```html
-<var-button loading type="primary">
-  加载状态
-</var-button>
-<var-button loading type="info" loading-type="rect">
-  加载状态
-</var-button>
-<var-button loading type="success" loading-type="disappear">
-  加载状态
-</var-button>
-<var-button loading type="danger" loading-type="cube">
-  加载状态
-</var-button>
-<var-button loading type="warning" loading-type="wave">
-  加载状态
-</var-button>
+.block-mt {
+  margin-top: 130px;
+}
+
+.cell-list {
+  background: #fff;
+}
 ```
 
-### 按钮尺寸
+### 偏移量
 
 ```html
-<var-button type="primary">常规按钮</var-button>
-<var-button type="success" size="small">小型按钮</var-button>
-<var-button type="warning" size="mini">迷你按钮</var-button>
-<var-button type="danger" size="large">大型按钮</var-button>
+<div class="block-1">
+  <var-menu :offset-x="72" v-model:show="offsetX">
+    <var-button @click="offsetX = true">右偏移</var-button>
+
+    <template #menu>
+      <div class="cell-list">
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+      </div>
+    </template>
+  </var-menu>
+
+  <var-menu :offset-x="-72" v-model:show="offsetX1">
+    <var-button @click="offsetX1 = true">左偏移</var-button>
+
+    <template #menu>
+      <div class="cell-list">
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+      </div>
+    </template>
+  </var-menu>
+</div>
+
+<div class="block-2">
+  <var-menu :offset-y="36" v-model:show="offsetY">
+    <var-button @click="offsetY = true">下偏移</var-button>
+
+    <template #menu>
+      <div class="cell-list">
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+      </div>
+    </template>
+  </var-menu>
+
+  <var-menu :offset-y="-36" v-model:show="offsetY1">
+    <var-button @click="offsetY1 = true">上偏移</var-button>
+
+    <template #menu>
+      <div class="cell-list">
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+      </div>
+    </template>
+  </var-menu>
+</div>
 ```
 
-### 块级按钮
 
-```html
-<var-button block type="primary">块级按钮</var-button>
+```js
+export default {
+  setup() {
+    const offsetX = ref(false)
+    const offsetX1 = ref(false)
+    const offsetY = ref(false)
+    const offsetY1 = ref(false)
+
+    return {
+      offsetX,
+      offsetX1,
+      offsetY,
+      offsetY1,
+    }
+  },
+}
 ```
 
-### 自定义颜色
+```css
+.block-1 {
+  display: flex;
+  justify-content: space-between;
+}
 
-```html
-<var-button text-color="#e91e63">文字颜色</var-button>
-<var-button color="#e91e63" text-color="#fff">背景颜色</var-button>
-<var-button 
-  color="linear-gradient(to right, #e91e63, #880e4f)"
-  text-color="#fff"
->
-  渐变颜色
-</var-button>
-```
-
-### 圆形按钮
-
-```html
-<var-button round>
-  <var-icon name="plus"/>
-</var-button>
+.block-2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 130px;
+}
 ```
 
 ### 注册事件
 
 ```html
-<var-button type="danger" @click="handleClick">点击</var-button>
-<var-button type="danger" @touchstart="handleTouchstart">触摸</var-button>
+<var-menu
+  v-model:show="event"
+  @open="() => Snackbar.info('open')"
+  @opened="() => Snackbar.success('opened')"
+  @close="() => Snackbar.warning('close')"
+  @closed="() => Snackbar.error('closed')"
+>
+  <var-button @click="event = true">注册事件</var-button>
+
+  <template #menu>
+    <div class="cell-list">
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+    </div>
+  </template>
+</var-menu>
 ```
 
 ```js
@@ -103,19 +196,19 @@ import { Snackbar } from '@varlet/ui'
 
 export default {
   setup() {
-    const handleClick = () => {
-      Snackbar.success('点击成功')
-    }
-
-    const handleTouchstart = () => {
-      Snackbar.success('触摸成功')
-    }
+    const event = ref(false)
 
     return {
-      handleClick,
-      handleTouchstart
+      event,
+      Snackbar,
     }
-  }
+  },
+}
+```
+
+```css
+.cell-list {
+  background: #fff;
 }
 ```
 
@@ -125,54 +218,35 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
-| `type` | 类型, 可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
-| `size` | 尺寸, 可选值为 `normal` `mini` `small` `large` | _string_ | `normal` |
-| `loading` | 加载状态 | _boolean_ | `false` |  
-| `loading-radius` | loading的半径, 只作用于 `loading-type="circle"` 时 | _number \| string_ | `12` |
-| `loading-type` | loading的类型，可选值为 `circle` `wave` `cube` `rect` `disappear` | _string_ | `circle` |
-| `loading-size` | loading的尺寸，可选值为 `large` `normal` `small` `mini` 不作用于 `loading-type="circle"` 时 | _string_ | `normal` |
-| `round` | 是否是圆形按钮 | _boolean_ | `false` | 
-| `block` | 是否是块级元素 | _boolean_ | `false` | 
-| `text` | 是否是文字按钮 | _boolean_ | `false` |
-| `outline` | 是否使用外边框 | _boolean_ | `false` |
-| `disabled` | 禁用状态 | _boolean_ | `false` |
-| `ripple` | 是否使用水波纹 | _boolean_ | `true` |
-| `text-color` | 文字颜色 | _string_ | `-` |
-| `color` | 背景颜色 | _string_ | `-` |
+| `v-model:show` | 是否显示菜单 | _string_ | `default` |
+| `alignment` | 菜单的对齐方式, 可选值为 `top` `bottom`, 源点为默认插槽的左上角,top为菜单顶部对齐源点,bottom为菜单底部对齐 | _string_ | `top` |
+| `offset-x` | x轴偏移量, 相对于菜单对齐后的位置 | _number \| string_ | `0` |  
+| `offset-y` | y轴偏移量, 相对于菜单对齐后的位置 | _number \| string_ | `0` |
+
+### 方法
+| 方法名 | 说明 | 参数 | 返回值 |
+| --- | --- | --- | --- |
+| `resize` | Menu默认插槽元素产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
 
 ### 事件
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `click` | 点击按钮时触发, 在 `loading` 或 `disabled` 状态为 `true` 时不触发 | `event: Event` |
-| `touchstart` | 触摸手指压下按钮时触发, 在 `loading` 或 `disabled` 状态为 `true` 时不触发 | `event: Event` |
+| `open` | 打开菜单时触发 | `-` |
+| `opened` | 打开菜单动画结束时触发 | `-` |
+| `close` | 关闭菜单时触发 | `-` |
+| `closed` | 关闭菜单动画结束时触发 | `-` |
 
 ### 插槽
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `default` | 按钮内容 | `-` |
+| `default` | 菜单关联的触发元素 | `-` |
+| `menu` | 菜单内容 | `-` |
 
 ### 主题变量
 #### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@button-default-color` | `#f5f5f5` |
-| `@button-primary-color` | `@color-primary`|
-| `@button-danger-color` |  `@color-danger`|
-| `@button-success-color` | `@color-success`|
-| `@button-warning-color` |  `@color-warning`|
-| `@button-info-color` | `@color-info`|
-| `@button-disabled-color` | `@color-disabled`|
-| `@button-disabled-text-color` | `#bdbdbd` |
-| `@button-border-radius` | `4px` |
-| `@button-mini-padding` | `0 9px` |
-| `@button-small-padding` | `0 11px` |
-| `@button-normal-padding` | `0 15px` |
-| `@button-large-padding` | `0 22px` |
-| `@button-round-padding` | `6px` |
-| `@button-mini-height` | `20px` |
-| `@button-small-height` | `28px` |
-| `@button-normal-height` | `36px` |
-| `@button-large-height:` | `44px` |
+| `@menu-background` | `#fff` |

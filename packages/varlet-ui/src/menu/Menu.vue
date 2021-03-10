@@ -3,7 +3,11 @@
     <slot />
 
     <teleport to="body">
-      <transition name="var-menu">
+      <transition
+        name="var-menu"
+        @after-enter="onOpened"
+        @after-leave="onClosed"
+      >
         <div
           class="var-menu__menu var-elevation--3"
           ref="menu"
@@ -50,48 +54,47 @@ export default defineComponent({
       clickSelf = true
     }
 
-    const handleMenuBlur = () => {
+    const handleMenuClose = () => {
       if (clickSelf) {
         clickSelf = false
         return
       }
 
-      const { show, onBlur } = props
-
-      if (!show) {
+      if (!props.show) {
         return
       }
 
       props['onUpdate:show']?.(false)
-      onBlur?.()
     }
 
-    watch(
-      () => props.alignment,
-      (newValue: string) => {
-        props.show && (top.value = computeTop(newValue))
-      }
-    )
+    // expose
+    const resize = () => {
+      top.value = computeTop(props.alignment)
+      left.value = getLeft(host.value as HTMLElement)
+    }
+
+    watch(() => props.alignment, resize)
 
     watch(
       () => props.show,
       async (newValue: boolean) => {
-        await nextTick()
+        const { onOpen, onClose } = props
 
-        top.value = newValue ? computeTop(props.alignment) : top.value
-      },
-      { immediate: true }
+        await nextTick()
+        resize()
+
+        newValue ? onOpen?.() : onClose?.()
+      }
     )
 
     onMounted(() => {
-      top.value = computeTop(props.alignment)
-      left.value = getLeft(host.value as HTMLElement)
+      resize()
 
-      document.addEventListener('click', handleMenuBlur)
+      document.addEventListener('click', handleMenuClose)
     })
 
     onUnmounted(() => {
-      document.removeEventListener('click', handleMenuBlur)
+      document.removeEventListener('click', handleMenuClose)
     })
 
     return {
@@ -102,6 +105,7 @@ export default defineComponent({
       left,
       toPx,
       handleClick,
+      resize,
     }
   },
 })

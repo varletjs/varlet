@@ -1,7 +1,9 @@
 # Skeleton
 
 ### Intro
-#### Display some placeholder elements with transition effects to optimize your loading process
+```html
+Display some placeholder elements with transition effects to optimize your loading process
+```
 
 ### Install
 
@@ -152,7 +154,7 @@ export default {
 
 ### Slots
 
-| Slot | Description | Params |
+| Slot | Description | Arguments |
 | --- | --- | --- |
 | `default` | 加载成功后显示的内容 | `-` |
 

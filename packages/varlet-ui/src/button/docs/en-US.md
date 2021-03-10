@@ -142,14 +142,14 @@ export default {
 
 ### Events
 
-| Event | Description | Params |
+| Event | Description | Arguments |
 | --- | --- | --- |
 | `click` | Triggered when the button is clicked. Not triggered when `loading` or `disabled` status is `true` | `event: Event` |
 | `touchstart` | Triggered when the button is touchstart, Not triggered when `loading` or `disabled` status is `true` | `event: Event` |
 
 ### Slots
 
-| Slot | Description | Params |
+| Slot | Description | Arguments |
 | --- | --- | --- |
 | `default` | Button content | `-` |
 

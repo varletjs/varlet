@@ -1,7 +1,9 @@
 # 弹出层
 
 ### 介绍
-#### 创建一个可以从上,下,左,右,中心,弹出的容器, 用于展示信息。默认使用teleport插入到body尾部
+```html
+创建一个可以从上,下,左,右,中心,弹出的容器, 用于展示信息。默认使用teleport插入到body尾部
+```
 
 ### 引入
 
@@ -259,7 +261,7 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
-| `show` | 是否显示弹出层 | _boolean_ | `false` |
+| `v-model:show` | 是否显示弹出层 | _boolean_ | `false` |
 | `position` | 弹出位置, 可选值为 `top` `bottom` `right` `left` `center` | _string_ | `center` |
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
 | `overlay-class` | 自定义遮罩层的class | _string_ | `-` |
