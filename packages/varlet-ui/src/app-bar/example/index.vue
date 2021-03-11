@@ -1,5 +1,5 @@
 <template>
-  <var-app-bar />
+  <var-app-bar :title="'标题'"> </var-app-bar>
 </template>
 
 <script>

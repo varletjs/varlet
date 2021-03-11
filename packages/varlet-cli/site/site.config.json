@@ -11,14 +11,16 @@
     "header": {
       "i18nButton": {
         "zh_CN": "En",
-        "en_US": "中文",
-        "zh-CN": "En",
-        "en-US": "中文"
+        "en_US": "中文"
       },
       "logo": "https://cn.vuejs.org/images/logo.png",
       "search": {
         "zh-CN": "搜索文档...",
         "en-US": "Search..."
+      },
+      "language": {
+        "zh-CN": "中文",
+        "en-US": "English"
       }
     },
     "menu": [
@@ -56,6 +58,13 @@
           "en-US": "Skeleton"
         },
         "doc": "skeleton"
+      },
+      {
+        "text": {
+          "zh-CN": "AppBar 导航栏",
+          "en-US": "AppBar"
+        },
+        "doc": "app-bar"
       },
       {
         "text": {

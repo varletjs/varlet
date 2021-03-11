@@ -1,7 +1,7 @@
 <template>
   <div style="position: relative">
     <header>
-      <div class="mobile-header--return" v-if="isIphone" @click="toHome">
+      <div class="mobile-header__return" v-if="isIphone" @click="toHome">
         <var-icon name="chevron-left" size="30px" color="#ffffff"></var-icon>
       </div>
       {{ componentName }}
@@ -56,7 +56,7 @@ body {
   padding: 0;
   background: white;
   min-height: 100%;
-  font-family: 'Roboto', 'Noto Sans SC', serif;
+  font-family: 'Roboto', 'Noto Sans SC', sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -80,7 +80,7 @@ header {
   width: 100%;
   font-weight: bold;
 
-  .mobile-header--return {
+  .mobile-header__return {
     position: absolute;
     height: 40px;
     line-height: 40px;

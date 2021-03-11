@@ -6,6 +6,21 @@
         <span>{{ title }}</span>
       </span>
       <span class="varlet-site-header__nav">
+        <var-menu :offset-y="36" v-model:show="offsetY">
+          <var-icon name="translate" size="26px" color="#ffffff" @click="offsetY = true"></var-icon>
+          <template #menu>
+            <div class="language-list">
+              <var-cell
+                v-for="(value, key) in languageList"
+                :key="key"
+                :class="{ 'language-list__active': language === key }"
+                @click="changeLanguage(key)"
+              >
+                {{ value }}
+              </var-cell>
+            </div>
+          </template>
+        </var-menu>
         <a target="_blank" href="https://github.com/haoziqaq/varlet" class="varlet-site-header__link">
           <img src="https://b.yzcdn.cn/vant/logo/github.svg" />
         </a>
@@ -48,8 +63,12 @@
 import config from '@config'
 import Ripple from '@varlet/ui/es/ripple'
 import Cell from '@varlet/ui/es/cell'
+import Icon from '@varlet/ui/es/icon'
+import Menu from '@varlet/ui/es/menu'
 import '@varlet/ui/es/ripple/style'
 import '@varlet/ui/es/cell/style'
+import '@varlet/ui/es/icon/style'
+import '@varlet/ui/es/menu/style'
 import { defineComponent, ref, Ref, watch, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -65,10 +84,14 @@ type Header = {
   search: Record<string, string>
 }
 
+type Language = Record<string, string>
+
 export default defineComponent({
   directives: { Ripple },
   components: {
     [Cell.name]: Cell,
+    [Icon.name]: Icon,
+    [Menu.name]: Menu,
   },
   setup() {
     const menu: Ref<Menu[]> = ref([])
@@ -84,6 +107,10 @@ export default defineComponent({
     const router = useRouter()
     const { pc = {}, title: configTitle } = config
     const { header: configHeader = { i18nButton: {}, logo: '', search: {} }, menu: configMenu = [] } = pc
+    const languageList: Ref<Language> = ref({})
+    const offsetY: Ref<boolean> = ref(false)
+
+    languageList.value = config.pc.header.language
 
     const nav = (element: HTMLElement) => {
       refs = element
@@ -93,18 +120,19 @@ export default defineComponent({
     header.value = configHeader
     title.value = configTitle
 
-    const switchLanguage = () => {
-      language.value = language.value === 'zh-CN' ? 'en-US' : 'zh-CN'
-      const pathArr = route.fullPath.split('/')
-      const componentName = pathArr[pathArr.length - 1]
-      router.push(`/${language.value}/${componentName}`)
-    }
-
     const changeRoute = (item) => {
       if (item.isTitle) {
         return false
       }
       router.push(`/${language.value}/${item.doc}`)
+    }
+
+    const changeLanguage = (key) => {
+      language.value = key
+      const pathArr = route.fullPath.split('/')
+      const componentName = pathArr[pathArr.length - 1]
+      offsetY.value = false
+      router.push(`/${language.value}/${componentName}`)
     }
 
     onMounted(async () => {
@@ -133,9 +161,11 @@ export default defineComponent({
       title,
       versionList,
       isHideVersion,
+      languageList,
+      offsetY,
       nav,
-      switchLanguage,
       changeRoute,
+      changeLanguage,
     }
   },
 })
@@ -239,6 +269,17 @@ iframe {
 
       &__nav {
         display: flex;
+        align-items: center;
+
+        .var-menu {
+          background: transparent;
+          margin-right: 20px;
+          cursor: pointer;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
       }
 
       &__link {
@@ -526,6 +567,25 @@ iframe {
       &__link {
         cursor: pointer;
       }
+    }
+  }
+}
+
+.language-list {
+  background: #fff;
+  cursor: pointer;
+  color: #666;
+  border-radius: 2px;
+
+  &__active {
+    background: #2b79fc21;
+    color: @color-primary;
+  }
+
+  .var-cell {
+    &:hover {
+      background: #2b79fc21;
+      color: @color-primary;
     }
   }
 }
