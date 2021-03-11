@@ -185,7 +185,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', 'Noto Sans SC', serif;
+  font-family: 'Roboto', 'Noto Sans SC', sans-serif;
 }
 
 iframe {
