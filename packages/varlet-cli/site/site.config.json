@@ -80,6 +80,13 @@
       },
       {
         "text": {
+          "zh-CN": "Dialog 对话框",
+          "en-US": "Dialog"
+        },
+        "doc": "dialog"
+      },
+      {
+        "text": {
           "zh-CN": "Loading 加载",
           "en-US": "Loading"
         },
@@ -154,13 +161,6 @@
           "en-US": "Lazy"
         },
         "doc": "lazy"
-      },
-      {
-        "text": {
-          "zh-CN": "Dialog 对话框",
-          "en-US": "Dialog"
-        },
-        "doc": "dialog"
       },
       {
         "text": {

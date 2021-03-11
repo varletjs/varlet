@@ -91,10 +91,12 @@ export default defineComponent({
       resize()
 
       document.addEventListener('click', handleMenuClose)
+      window.addEventListener('resize', resize)
     })
 
     onUnmounted(() => {
       document.removeEventListener('click', handleMenuClose)
+      window.removeEventListener('resize', resize)
     })
 
     return {

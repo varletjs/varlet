@@ -65,6 +65,7 @@ export default defineComponent({
       }
     )
 
+    // internal for Dialog
     addRouteListener(() => props.onRouteChange?.())
 
     return {

@@ -78,6 +78,13 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Dialog 对话框',
+          'en-US': 'Dialog',
+        },
+        doc: 'dialog',
+      },
+      {
+        text: {
           'zh-CN': 'Loading 加载',
           'en-US': 'Loading',
         },
@@ -152,13 +159,6 @@ module.exports = {
           'en-US': 'Lazy',
         },
         doc: 'lazy',
-      },
-      {
-        text: {
-          'zh-CN': 'Dialog 对话框',
-          'en-US': 'Dialog',
-        },
-        doc: 'dialog',
       },
       {
         text: {

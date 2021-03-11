@@ -12,47 +12,52 @@ interface DialogOptions {
   cancelButton?: boolean
   confirmButtonText?: string
   cancelButtonText?: string
+  confirmButtonTextColor?: string
+  cancelButtonTextColor?: string
   confirmButtonColor?: string
   cancelButtonColor?: string
-  confirmButtonBackground?: string
-  cancelButtonBackground?: string
-  beforeClose?: (done: () => void) => void
   overlay?: boolean
   overlayClass?: string
+  overlayStyle?: Record<string, any>
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
+  onOpen?: () => void
+  onOpened?: () => void
+  onBeforeClose?: (done: () => void) => void
+  onClose?: () => void
+  onClosed?: () => void
+  onConfirm?: () => void
+  onCancel?: () => void
+  onClickOverlay?: () => void
 }
 
-type DialogResolvedState = 'confirm' | 'cancel' | 'close' | 'exist'
-interface DialogResolvedData {
-  state: DialogResolvedState
-}
+type DialogActions = 'confirm' | 'cancel' | 'close'
 
 let singletonOptions: DialogOptions | null
 
-function Dialog(options: DialogOptions | string): Promise<DialogResolvedData> {
+function Dialog(options: DialogOptions | string): Promise<DialogActions> {
   return new Promise((resolve) => {
     Dialog.close()
 
     const dialogOptions: DialogOptions = isString(options) ? { message: options } : options
     const reactiveDialogOptions: DialogOptions = reactive(dialogOptions)
-
     singletonOptions = reactiveDialogOptions
 
     const { unmountInstance } = mountInstance(VarDialog, reactiveDialogOptions, {
       onConfirm: () => {
-        resolve({ state: 'confirm' })
-        singletonOptions === reactiveDialogOptions && (singletonOptions = null)
+        reactiveDialogOptions.onConfirm?.()
+        resolve('confirm')
       },
       onCancel: () => {
-        resolve({ state: 'cancel' })
-        singletonOptions === reactiveDialogOptions && (singletonOptions = null)
+        reactiveDialogOptions.onCancel?.()
+        resolve( 'cancel')
       },
       onClose: () => {
-        resolve({ state: 'close' })
-        singletonOptions === reactiveDialogOptions && (singletonOptions = null)
+        reactiveDialogOptions.onClose?.()
+        resolve('close')
       },
       onClosed: () => {
+        reactiveDialogOptions.onClosed?.()
         unmountInstance()
         singletonOptions === reactiveDialogOptions && (singletonOptions = null)
       },
@@ -69,17 +74,22 @@ function Dialog(options: DialogOptions | string): Promise<DialogResolvedData> {
   })
 }
 
+VarDialog.install = function(app: App) {
+  app.component(VarDialog.name, VarDialog)
+}
+
 Dialog.install = function (app: App) {
   app.component(VarDialog.name, VarDialog)
 }
 
 Dialog.close = () => {
-  if (singletonOptions) {
-    const options = singletonOptions
-    nextTick().then(() => {
-      options.show = false
-    })
+  if (singletonOptions != null) {
+    const prevSingletonOptions = singletonOptions
     singletonOptions = null
+
+    nextTick().then(() => {
+      prevSingletonOptions.show = false
+    })
   }
 }
 

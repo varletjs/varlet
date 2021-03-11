@@ -74,6 +74,7 @@ function install(app) {
 `
   const esExports = `\
 export {
+  install,
   ${exportDirNames.map((exportDirName: string) => `${bigCamelize(exportDirName)}`).join(',\n  ')}
 }
 

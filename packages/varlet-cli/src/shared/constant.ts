@@ -33,7 +33,7 @@ export const HL_TITLE_EVENTS_RE = /###\s*事件\s*\n+/
 export const HL_TITLE_SLOTS_RE = /###\s*插槽\s*\n+/
 export const HL_MD = 'zh-CN.md'
 export const HL_DIR = resolve(CWD, 'highlight')
-export const HL_TAGS_JSON = resolve(HL_DIR, 'tag.json')
+export const HL_TAGS_JSON = resolve(HL_DIR, 'tags.json')
 export const HL_ATTRIBUTES_JSON = resolve(HL_DIR, 'attributes.json')
 export const HL_WEB_TYPES_JSON = resolve(HL_DIR, 'web-types.json')
 
