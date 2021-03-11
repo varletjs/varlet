@@ -1,54 +1,56 @@
 <template>
-	<div>
-		<app-type>基本使用</app-type>
-		<var-slider v-model="value" @start="start" @end="end" />
-	</div>
-	<div>
-		<app-type>不同步长</app-type>
-		<var-slider v-model="value2" :step="10" />
-	</div>
-	<div>
-		<app-type>双滑块</app-type>
-		<var-slider :step="1" v-model="value1" range />
-	</div>
-	<div>
-		<app-type>禁用</app-type>
-		<var-slider :step="1" v-model="value3" disabled />
-	</div>
-	<div>
-		<app-type>只读</app-type>
-		<var-slider :step="1" v-model="value3" readonly />
-	</div>
-	<div>
-		<app-type>不同大小</app-type>
-		<var-slider v-model="value1" track-height="6" thumb-size="20" range />
-	</div>
-	<div>
-		<app-type>不同样式</app-type>
-		<var-slider
-			v-model="value4"
-			label-color="purple"
-			active-color="#e0732c"
-			track-color="#3a68b4"
-			thumb-color="#e25241"
-		/>
-	</div>
-	<div>
-		<app-type>显示标签</app-type>
-		<var-slider v-model="value5" label-visible="never" />
-		<var-slider v-model="value6" />
-		<var-slider v-model="value7" label-visible="always" />
-	</div>
+  <div>
+    <app-type>基本使用</app-type>
+    <var-slider v-model="value" @start="start" @end="end" />
+  </div>
+  <div>
+    <app-type>不同步长</app-type>
+    <var-slider v-model="value2" :step="10" />
+  </div>
+  <div>
+    <app-type>双滑块</app-type>
+    <var-slider :step="1" v-model="value1" range />
+  </div>
+  <div>
+    <app-type>禁用</app-type>
+    <var-slider :step="1" v-model="value3" disabled />
+  </div>
+  <div>
+    <app-type>只读</app-type>
+    <var-slider :step="1" v-model="value3" readonly />
+  </div>
+  <div>
+    <app-type>不同大小</app-type>
+    <var-slider v-model="value1" track-height="6" thumb-size="20" range />
+  </div>
+  <div>
+    <app-type>不同样式</app-type>
+    <var-slider
+      v-model="value4"
+      label-color="purple"
+      active-color="#e0732c"
+      track-color="#3a68b4"
+      thumb-color="#e25241"
+    />
+  </div>
+  <div>
+    <app-type>显示标签</app-type>
+    <var-slider v-model="value5" label-visible="never" />
+    <var-slider v-model="value6" />
+    <var-slider v-model="value7" label-visible="always" />
+  </div>
 </template>
 
 <script>
 import { defineComponent, ref } from 'vue'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Slider from '..'
 
 export default defineComponent({
   name: 'SliderExample',
   components: {
     [Slider.name]: Slider,
+    AppType,
   },
   setup() {
     const value = ref(3)
@@ -87,6 +89,6 @@ export default defineComponent({
 
 <style scoped>
 .example {
-	background: antiquewhite;
+  background: antiquewhite;
 }
 </style>

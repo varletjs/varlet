@@ -14,9 +14,9 @@ module.exports = {
         'zh-CN': '搜索文档...',
         'en-US': 'Search...',
       },
-      i18nButton: {
-        'zh-CN': 'En',
-        'en-US': '中文',
+      language: {
+        'zh-CN': '中文',
+        'en-US': 'English',
       },
     },
     menu: [
@@ -54,6 +54,13 @@ module.exports = {
           'en-US': 'Skeleton',
         },
         doc: 'skeleton',
+      },
+      {
+        text: {
+          'zh-CN': 'AppBar 导航栏',
+          'en-US': 'AppBar',
+        },
+        doc: 'app-bar',
       },
       {
         text: {
