@@ -223,6 +223,8 @@ export default defineComponent({
     }
 
     const start = (event: TouchEvent, type: number) => {
+      if (!maxWidth.value) maxWidth.value = (sliderEl.value as HTMLDivElement).offsetWidth
+
       if (props.disabled || props.readonly || formProvider?.disabled.value || formProvider?.readonly.value) return
       props.onStart?.()
       isScroll.value = true
