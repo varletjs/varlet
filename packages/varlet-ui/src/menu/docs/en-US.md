@@ -229,7 +229,7 @@ export default {
 ### Methods
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
-| `resize` | Menu默认插槽元素产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
+| `resize` | You can call this method to redraw when a default slot element changes position size | `-` | `-` |
 
 ### Events
 

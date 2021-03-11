@@ -55,7 +55,7 @@ export default {
   :loading="loading"
   :rows-width="['200px', '100px', '50px']"
 >
-	Loading Data
+  Loading Data
 </var-skeleton>
 ```
 

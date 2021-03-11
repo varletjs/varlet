@@ -12,74 +12,74 @@ createApp().use(Button)
 ### Theme Color Button
 
 ```html
-<var-button>DefaultButton</var-button>
-<var-button type="primary">PrimaryButton</var-button>
-<var-button type="info">InfoButton</var-button>
-<var-button type="success">SuccessButton</var-button>
-<var-button type="warning">WarningButton</var-button>
-<var-button type="danger">DangerButton</var-button>
+<var-button>Default Button</var-button>
+<var-button type="primary">Primary Button</var-button>
+<var-button type="info">Info Button</var-button>
+<var-button type="success">Success Button</var-button>
+<var-button type="warning">Warning Button</var-button>
+<var-button type="danger">Danger Button</var-button>
 ```
 
 ### Text Button
 
 ```html
-<var-button text outline type="primary">OutlineButton</var-button>
-<var-button text type="primary">PlainTextButton</var-button>
+<var-button text outline type="primary">Outline Button</var-button>
+<var-button text type="primary">Plain Text Button</var-button>
 ```
 
 ### Disabled Status
 
 ```html
-<var-button disabled>DisabledStatus</var-button>
-<var-button disabled text outline>DisabledStatus</var-button>
-<var-button disabled text>DisabledStatus</var-button>
+<var-button disabled>Disabled Status</var-button>
+<var-button disabled text outline>Disabled Status</var-button>
+<var-button disabled text>Disabled Status</var-button>
 ```
 
 ### Loading Status
 
 ```html
 <var-button loading type="primary">
-  LoadingStatus
+  Loading Status
 </var-button>
 <var-button loading type="info" loading-type="rect">
-  LoadingStatus
+  Loading Status
 </var-button>
 <var-button loading type="success" loading-type="disappear">
-  LoadingStatus
+  Loading Status
 </var-button>
 <var-button loading type="danger" loading-type="cube">
-  LoadingStatus
+  Loading Status
 </var-button>
 <var-button loading type="warning" loading-type="wave">
-  LoadingStatus
+  Loading Status
 </var-button>
 ```
 
 ### Button Size
 
 ```html
-<var-button type="primary">NormalButton</var-button>
-<var-button type="success" size="small">SmallButton</var-button>
-<var-button type="warning" size="mini">MiniButton</var-button>
-<var-button type="danger" size="large">LargeButton</var-button>
+<var-button type="primary">Normal Button</var-button>
+<var-button type="success" size="small">Small Button</var-button>
+<var-button type="warning" size="mini">Mini Button</var-button>
+<var-button type="danger" size="large">Large Button</var-button>
 ```
 
 ### Block Button
 
 ```html
-<var-button block type="primary">BlockButton</var-button>
+<var-button block type="primary">Block Button</var-button>
 ```
 
 ### Custom Color
 
 ```html
-<var-button text-color="#e91e63">TextColor</var-button>
-<var-button color="#e91e63" text-color="#fff">BackgroundColor</var-button>
+<var-button text-color="#e91e63">Text Color</var-button>
+<var-button color="#e91e63" text-color="#fff">Background Color</var-button>
 <var-button
   color="linear-gradient(to right, #e91e63, #880e4f)"
   text-color="#fff"
 >
-  LinearGradientColor
+  Linear Gradient Color
 </var-button>
 ```
 
