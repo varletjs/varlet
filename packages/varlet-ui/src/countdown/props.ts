@@ -5,7 +5,7 @@ export const props = {
   },
   format: {
     type: String,
-    default: 'HH:mm:ss',
+    default: 'HH : mm : ss',
   },
   autoStart: {
     type: Boolean,

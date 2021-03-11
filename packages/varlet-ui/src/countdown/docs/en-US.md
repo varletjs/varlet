@@ -48,7 +48,7 @@ Use `time` to set countdown time(ms).
 Use `format` to set time text.
 
 ```html
-<var-countdown :time="time" format="DD 天 HH 时 mm 分 ss 秒" />
+<var-countdown :time="time" format="DD Day, HH:mm:ss" />
 ```
 
 ### Show Millisecond

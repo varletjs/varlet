@@ -5,11 +5,7 @@
 ```js
 import { Loading } from '@varlet/ui'
 
-export default defineComponent({
-  components: { 
-    [Loading.name]: Loading,
-  },
-})
+createApp().use(Loading)
 ```
 
 ### Loading 类型

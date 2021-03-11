@@ -1,3 +1,11 @@
+export type Time = {
+  days: number
+  hours: number
+  minutes: number
+  seconds: number
+  milliseconds: number
+}
+
 export interface CacheInstance<T> {
   cache: T[]
 
@@ -76,7 +84,7 @@ export const throttle = (method: any, mustRunDelay = 200): (() => void) => {
 export const debounce = (method: any, delay = 200) => {
   let timer: number
 
-  return function(this: unknown, ...args: any[]) {
+  return function (this: unknown, ...args: any[]) {
     timer && window.clearTimeout(timer)
     timer = window.setTimeout(() => {
       method.apply(this, args)
@@ -117,7 +125,7 @@ export const createCache = <T>(max: number): CacheInstance<T> => {
 
     remove(key: T) {
       this.has(key) && removeItem(this.cache, key)
-    }
+    },
   }
 }
 
@@ -126,16 +134,8 @@ export const cubic = (value: number): number => value ** 3
 export const easeInOutCubic = (value: number): number =>
   value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2
 
-export function parseFormat(format: string, time: {
-  days: string
-  hours: string
-  minutes: string
-  seconds: string
-  milliseconds: string
-}): string {
-  const { days, hours, minutes, seconds, milliseconds } = time
-
-  const scannedTimes: number[] = [days, hours, minutes, seconds, milliseconds].map(toNumber)
+export function parseFormat(format: string, time: Time): string {
+  const scannedTimes = Object.values(time)
   const scannedFormats = ['DD', 'HH', 'mm', 'ss']
   const padValues = [24, 60, 60, 1000]
 
