@@ -120,22 +120,22 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| model-value / v-model | 当前进度值 | _number_ ｜ _[number, number]_ | `0` |
-| step | 步长，取值为`1 ~ 100`间的整数 | _number_ ｜ _string_ | `1` |
-| range | 是否启用双滑块 | _boolean_ | `false` |
-| label-visible | 是否显示标签。值为`always, normal, never`之一 | _string_ | `normal` |
-| label-text-color | 标签文字颜色 | _string_ | `#fff` |
-| track-height | slider的高度 | _number_ ｜ _string_ | `2` |
-| thumb-size | 滑块的大小 | _number_ ｜ _string_ | `12` |
-| disabled | 是否禁用 | _boolean_  | `false` |
-| readonly | 是否只读 | _boolean_  | `false` |
-| rules | 校验规则 | _array_  | - |
+| `model-value / v-model` | 当前进度值 | _number_ ｜ _[number, number]_ | `0` |
+| `step`| 步长，取值为`1 ~ 100`间的整数 | _number_ ｜ _string_ | `1` |
+| `range`| 是否启用双滑块 | _boolean_ | `false` |
+| `label-visible` | 是否显示标签。值为`always, normal, never`之一 | _string_ | `normal` |
+| `label-text-color` | 标签文字颜色 | _string_ | `#fff` |
+| `track-height` | slider的高度 | _number_ ｜ _string_ | `2` |
+| `thumb-size` | 滑块的大小 | _number_ ｜ _string_ | `12` |
+| `disabled`| 是否禁用 | _boolean_  | `false` |
+| `readonly`| 是否只读 | _boolean_  | `false` |
+| `rules`| 校验规则 | _array_  | - |
 
 
 ### 事件
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------- | -------- |
-| change | 	值改变时触发| value: 当前进度|
-| start | 开始拖动时触发 | - |
-| end | 结束拖动时触发 | value: 当前进度 |
+| `change` | 	值改变时触发| value: 当前进度|
+| `start` | 开始拖动时触发 | - |
+| `end` | 结束拖动时触发 | value: 当前进度 |

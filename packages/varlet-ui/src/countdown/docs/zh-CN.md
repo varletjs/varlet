@@ -117,43 +117,43 @@ createApp().use(Countdown)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| time | 倒计时时长(ms)| _number_ ｜ _string_ | `0` |
-| format | 时间格式 | _string_ | `HH:mm:ss` |
-| auto-start | 是否自动开始倒计时 | _number_ ｜ _boolean_ | `true` |
+| `time` | 倒计时时长(ms)| _number_ ｜ _string_ | `0` |
+| `format` | 时间格式 | _string_ | `HH:mm:ss` |
+| `auto-start` | 是否自动开始倒计时 | _number_ ｜ _boolean_ | `true` |
 
 ### format 格式
 | 格式 | 说明 | 
 | -- | --- |
-| DD | 天数 |
-| HH | 小时 |
-| mm | 分钟 |
-| ss | 秒数 |
-| S | 毫秒（1位） |
-| SS | 毫秒（2位） |
-| SSS | 毫秒（3位） |
+| `DD` | 天数 |
+| `HH` | 小时 |
+| `mm` | 分钟 |
+| `ss` | 秒数 |
+| `S` | 毫秒（1位） |
+| `SS` | 毫秒（2位） |
+| `SSS` | 毫秒（3位） |
 
 ### 事件
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------------- | -------- |
-| end | 倒计时结束时触发| - |
-| change | 倒计时变化时触发| `timeData: TimeData` |
+| `end` | 倒计时结束时触发| - |
+| `change` | 倒计时变化时触发| `timeData: TimeData` |
 
 ### 插槽
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
-| default | 自定义内容 | `timeData: TimeData` |
+| `default` | 自定义内容 | `timeData: TimeData` |
 
 ### TimeData 格式
 
 | 名称 | 说明 | 类型 |
 | ---- | ------- | -------- |
-| days | 剩余天数 | `number` |
-| hours | 剩余小时 | `number` |
-| minutes | 剩余分钟 | `number` |
-| seconds | 剩余秒数 | `number` |
-| milliseconds | 剩余毫秒 | `number` |
+| `days` | 剩余天数 | `number` |
+| `hours` | 剩余小时 | `number` |
+| `minutes` | 剩余分钟 | `number` |
+| `seconds` | 剩余秒数 | `number` |
+| `milliseconds` | 剩余毫秒 | `number` |
 
 
 ### 方法
@@ -161,6 +161,6 @@ createApp().use(Countdown)
 
 | 方法名 | 说明 | 参数 |
 | ---- | ------- | -------- |
-| start | 开始倒计时	 | - |
-| pause | 暂停倒计时	 | - |
-| reset | 重设倒计时，若 `auto-start` 为 `true`，重设后会自动开始倒计时 | - |
+| `start` | 开始倒计时	 | - |
+| `pause` | 暂停倒计时	 | - |
+| `reset` | 重设倒计时，若 `auto-start` 为 `true`，重设后会自动开始倒计时 | - |
