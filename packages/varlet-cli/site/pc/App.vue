@@ -1,6 +1,6 @@
 <template>
   <div class="varlet-site">
-    <div class="varlet-site-header var-elevation--2">
+    <div class="varlet-site-header var-elevation--1">
       <span class="varlet-site-header__logo">
         <img :src="header.logo" alt="" />
         <span>{{ title }}</span>

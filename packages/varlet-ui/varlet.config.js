@@ -85,6 +85,13 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Icon 图标',
+          'en-US': 'Icon',
+        },
+        doc: 'icon',
+      },
+      {
+        text: {
           'zh-CN': 'Loading 加载',
           'en-US': 'Loading',
         },
@@ -166,13 +173,6 @@ module.exports = {
           'en-US': 'Image',
         },
         doc: 'image',
-      },
-      {
-        text: {
-          'zh-CN': 'Icon 图标',
-          'en-US': 'Icon',
-        },
-        doc: 'icon',
       },
       {
         text: {

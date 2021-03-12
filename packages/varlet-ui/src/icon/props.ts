@@ -1,11 +1,13 @@
+import { PropType } from 'vue'
+
 export const props = {
   name: {
     type: String,
   },
-  color: {
-    type: String,
-  },
   size: {
+    type: [Number, String],
+  },
+  color: {
     type: String,
   },
   namespace: {
@@ -13,10 +15,10 @@ export const props = {
     default: 'var-icon',
   },
   transition: {
-    type: Number,
+    type: [Number, String],
     default: 0,
   },
   onClick: {
-	  type: Function
-  }
+    type: Function as PropType<(event: Event) => void>,
+  },
 }
