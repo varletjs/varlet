@@ -1,7 +1,5 @@
 import { PropType } from 'vue'
 
-export type ValidateTriggers = 'onChange' | 'onInput'
-
 function labelValidator(label: string) {
   return ['always', 'normal', 'never'].includes(label)
 }
@@ -71,16 +69,7 @@ export const props = {
     type: Array as PropType<Array<(v: any) => any>>,
   },
 
-  validateTrigger: {
-    type: Array as PropType<Array<ValidateTriggers>>,
-    default: ['onInput'],
-  },
-
   onChange: {
-    type: Function,
-  },
-
-  onInput: {
     type: Function,
   },
 

@@ -1,19 +1,15 @@
 # Countdown
 
-### Introduce
+### Intro
 
 For real-time display of countdown values, support millisecond precision.
 
-### install
+### Install
 
 ```js
 import { Countdown } from '@varlet/ui'
 
-export default defineComponent({
-  components: {
-    [Countdown.name]: Countdown
-  }
-})
+createApp().use(Countdown)
 ```
 
 ### Basic Usage
@@ -21,18 +17,10 @@ export default defineComponent({
 Use `time` to set countdown time(ms).
 
 ```html
-<tempalte>
   <var-countdown :time="time" />
-</tempalte>
-
-<script>
-  import { defineComponent, ref } from 'vue'
-  import { Countdown } from '@varlet/ui'
-
-  export default defineComponent({
-    components: {
-      [Countdown.name]: Countdown
-    },
+```
+```javascript
+  export default {
     setup() {
       const time = ref(30 * 60 * 60 * 1000)
 
@@ -40,8 +28,7 @@ Use `time` to set countdown time(ms).
         time
       }
     }
-  })
-</script>
+  }
 ```
 ### Custom Format
 
@@ -80,7 +67,6 @@ Use `slot` to set custom countdown style.
 Use `ref` to get countdown instance, you can call the `start`, `pause`, and `reset` methods.
 
 ```html
-<template>
   <var-countdown
     time="3000"
     ref="countdown"
@@ -94,17 +80,9 @@ Use `ref` to get countdown instance, you can call the `start`, `pause`, and `res
     <var-button @click="$refs.countdown.pause()">pause</var-button>
     <var-button @click="$refs.countdown.reset()">reset</var-button>
   </div>
-</template>
-
-<script>
-  import { defineComponent, ref } from 'vue'
-  import { Countdown, Snackbar, Button } from '@varlet/ui'
-
-  export default defineComponent({
-    components: {
-      [Countdown.name]: Countdown,
-      [Button.name]: Button,
-    },
+```
+```javascript
+  export default {
     setup() {
       const countdown = ref(null)
 
@@ -121,24 +99,23 @@ Use `ref` to get countdown instance, you can call the `start`, `pause`, and `res
         end,
         change,
       }
-    },
-  })
-</script>
-<style scoped>
+    }
+  }
+```
+```css
   .btn-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 10px;
   }
-</style>
 ```
 
 ## API
 
 ### Props
 
-| Attribute | Description | Type | Default |
+| prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | time | Total time(ms)| _number_ ｜ _string_ | `0` |
 | format | Time format | _string_ | `HH:mm:ss` |
@@ -157,10 +134,10 @@ Use `ref` to get countdown instance, you can call the `start`, `pause`, and `res
 
 ### Events
 
-| Event | Description | Parameters |
+| Event | Description | arguments |
 | ----- | -------------- | -------- |
-| end | Emitted after countdown end | - |
-| change | Emitted after countdown change | `timeData: TimeData` |
+| end | Emitted after countdown ended | - |
+| change | Emitted after countdown changed | `timeData: TimeData` |
 
 ### Slots
 
@@ -182,7 +159,7 @@ Use `ref` to get countdown instance, you can call the `start`, `pause`, and `res
 ### Methods
 Use ref to get CountDown instance and call instance methods.
 
-| Name | Description	 | Attribute |
+| Name | Description	 | arguments |
 | ---- | ------- | -------- |
 | start | Start countdown	 | - |
 | pause | Pause countdown	 | - |
