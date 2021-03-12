@@ -14,7 +14,8 @@ export function getScrollTop(element: Element | Window): number {
 }
 
 export function getLeft(element: HTMLElement): number {
-  return element.getBoundingClientRect().left
+  const { left } = element.getBoundingClientRect()
+  return left + (document.body.scrollLeft || document.documentElement.scrollLeft)
 }
 
 export function inViewport(element: HTMLElement): boolean {

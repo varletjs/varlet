@@ -18,12 +18,7 @@
   />
 
   <var-button block @click="show1 = true">异步关闭</var-button>
-  <var-dialog
-    v-model:show="show1"
-    title="兰亭序"
-    message="兰亭临帖 行书如行云流水"
-    @before-close="onBeforeClose"
-  />
+  <var-dialog v-model:show="show1" title="兰亭序" message="兰亭临帖 行书如行云流水" @before-close="onBeforeClose" />
 
   <var-button block @click="show2 = true">自定义插槽</var-button>
   <var-dialog v-model:show="show2">
@@ -67,13 +62,9 @@ export default {
       close: () => Snackbar.info('close'),
     }
 
-    const createBasic = () => {
-      Dialog('兰亭临帖 行书如行云流水')
-    }
+    const createBasic = () => Dialog('兰亭临帖 行书如行云流水')
 
-    const createAction = async () => {
-      actions[await Dialog('兰亭临帖 行书如行云流水')]()
-    }
+    const createAction = async () => actions[await Dialog('兰亭临帖 行书如行云流水')]()
 
     const modifyTitle = () => {
       Dialog({
@@ -102,7 +93,7 @@ export default {
     const asyncClose = () => {
       Dialog({
         message: '兰亭临帖 行书如行云流水',
-        onBeforeClose
+        onBeforeClose,
       })
     }
 
@@ -117,7 +108,7 @@ export default {
       modifyTitle,
       hideButton,
       onBeforeClose,
-      Snackbar
+      Snackbar,
     }
   },
 }

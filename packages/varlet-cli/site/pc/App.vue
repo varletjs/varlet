@@ -174,15 +174,8 @@ export default defineComponent({
 <style lang="less">
 @import '~@varlet/ui/es/styles/var';
 
-body,
-html,
-#app {
-  width: 100%;
-  height: 100%;
-  overflow-y: hidden;
-}
-
 body {
+  min-width: 1200px;
   margin: 0;
   padding: 0;
   font-family: 'Roboto', 'Noto Sans SC', serif;
@@ -197,10 +190,6 @@ iframe {
 
 .varlet {
   &-site {
-    min-width: 1200px;
-    width: 100%;
-    height: 100%;
-
     &-mobile {
       flex: 0 0 360px;
       transform: scale(0.8);
@@ -364,15 +353,14 @@ iframe {
     }
 
     &-content {
-      height: calc(100% - 60px);
+      height: calc(100vh - 60px);
       overflow-y: hidden;
       display: flex;
       background: #fff;
     }
 
     &-doc {
-      min-width: 300px;
-      flex: 1;
+      min-width: 500px;
       padding: 0 30px;
       overflow-y: auto;
 
@@ -512,9 +500,10 @@ iframe {
 
     &-nav {
       padding: 10px 0;
-      flex: 0 0 220px;
       position: sticky;
+      flex: 0 0 220px;
       top: 0;
+      bottom: 0;
       left: 0;
       z-index: 1;
       overflow-y: scroll;
