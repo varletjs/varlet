@@ -1,7 +1,9 @@
 # Popup
 
 ### Intro
-#### Create a container that displays information from top, bottom, left, right, center, and Popup. Teleport inserts into the end of the body by default
+```html
+Create a container that displays information from top, bottom, left, right, center, and Popup. Teleport inserts into the end of the body by default
+```
 
 ### Install
 
@@ -259,7 +261,7 @@ export default {
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| `show` | Whether to display the Popup | _boolean_ | `false` |
+| `v-model:show` | Whether to display the Popup | _boolean_ | `false` |
 | `position` | Popup position with optional value of `top` `bottom` `right` `left` `center` | _string_ | `center` |
 | `overlay` | Whether to display the overlay | _boolean_ | `true` |  
 | `overlay-class` | Custom overlay class | _string_ | `-` |
@@ -270,7 +272,7 @@ export default {
 
 ### Events
 
-| Event | Description | Params |
+| Event | Description | Arguments |
 | --- | --- | --- |
 | `open` | Triggered when the Popup is open | `-` |
 | `opened` | Triggered when the Popup open-animation ends | `-` |
@@ -280,7 +282,7 @@ export default {
 
 ### Slots
 
-| Slot | Description | Params |
+| Slot | Description | Arguments |
 | --- | --- | --- |
 | `default` | Popup content | `-` |
 

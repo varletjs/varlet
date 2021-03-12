@@ -20,6 +20,14 @@ import { varletConfig } from '../config/varlet.config'
 const TABLE_HEAD_RE = /\s*\|.*\|\s*\n\s*\|.*---+\s*\|\s*\n+/
 const TABLE_FOOT_RE = /(\|\s*$)|(\|\s*\n(?!\s*\|))/
 
+export function replaceDot(str: string) {
+  return str.replace(/`/g, '')
+}
+
+export function replaceUnderline(str: string) {
+  return str.replace(/_/g, '')
+}
+
 export function parseTable(table: string) {
   const rows = table.split('\n').filter(Boolean)
   return rows.map((row) => {
@@ -59,17 +67,17 @@ export function compileTable(md: string, titleRe: RegExp): string {
 }
 
 export function compileTags(table: Record<string, any>, tags: Record<string, any>, componentName: string) {
-  tags[componentName] = {
-    attributes: table.attributesTable.map((row: any) => row[0].replace(/`/g, '')),
+  tags[`${get(varletConfig, 'namespace')}-${componentName}`] = {
+    attributes: table.attributesTable.map((row: any) => replaceDot(row[0])),
   }
 }
 
 export function compileAttributes(table: Record<string, any>, attributes: Record<string, any>, componentName: string) {
   table.attributesTable.forEach((row: any) => {
-    const attrNamespace = `${get(varletConfig, 'namespace')}-${componentName}/${row[0]}`
+    const attrNamespace = `${get(varletConfig, 'namespace')}-${componentName}/${replaceDot(row[0])}`
     attributes[attrNamespace] = {
-      type: row[2].replace(/_/g, ''),
-      description: `${row[1]} 默认值：${row[3].replace(/`/g, '')}`,
+      type: replaceUnderline(row[2]),
+      description: `${row[1]} 默认值：${replaceDot(row[3])}`,
     }
   })
 }
@@ -78,22 +86,22 @@ export function compileWebTypes(table: Record<string, any>, webTypes: Record<str
   const { attributesTable, eventsTable, slotsTable } = table
 
   const attributes = attributesTable.map((row: any) => ({
-    name: row[0].replace(/`/g, ''),
+    name: replaceDot(row[0]),
     description: row[1],
-    default: row[3].replace(/`/g, ''),
+    default: replaceDot(row[3]),
     value: {
-      type: row[2].replace(/_/g, ''),
+      type: replaceUnderline(row[2]),
       kind: 'expression',
     },
   }))
 
   const events = eventsTable.map((row: any) => ({
-    name: row[0].replace(/`/g, ''),
+    name: replaceDot(row[0]),
     description: row[1],
   }))
 
   const slots = slotsTable.map((row: any) => ({
-    name: row[0].replace(/`/g, ''),
+    name: replaceDot(row[0]),
     description: row[1],
   }))
 

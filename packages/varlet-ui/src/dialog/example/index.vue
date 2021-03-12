@@ -1,82 +1,126 @@
 <template>
-  <app-type>声明式调用</app-type>
-  <!--  <var-dialog-->
-  <!--    v-model:show="show"-->
-  <!--    title="哈哈哈"-->
-  <!--    message="测试声明式调用测试声明式调用测试声明式调用测试声明式调用测试声明式调用测试声明式调用测试声明式调用"-->
-  <!--    @confirm="() => log('confirm')"-->
-  <!--    @cancel="() => log('cancel')"-->
-  <!--    @open="() => log('open')"-->
-  <!--    @close="() => log('close')"-->
-  <!--    @opened="() => log('opened')"-->
-  <!--    @closed="() => log('closed')"-->
-  <!--    @click-overlay="() => log('click-overlay')"-->
-  <!--  />-->
+  <app-type>{{ pack.functionCall }}</app-type>
+  <var-button block @click="createBasic">{{ pack.basicUse }}</var-button>
+  <var-button block @click="modifyTitle">{{ pack.modifyTitle }}</var-button>
+  <var-button block @click="hideButton">{{ pack.hideButton }}</var-button>
+  <var-button block @click="createAction">{{ pack.handleUserBehavior }}</var-button>
+  <var-button block @click="asyncClose">{{ pack.asyncClose }}</var-button>
 
-  <!--  <var-button type="success" size="large" @click="show = true">开启</var-button>-->
-  <var-button type="success" size="large" @click="create">命令开启</var-button>
+  <app-type>{{ pack.componentCall }}</app-type>
+  <var-button block @click="show = true">{{ pack.basicUse }}</var-button>
+  <var-dialog
+    v-model:show="show"
+    :title="pack.title"
+    :message="pack.message"
+    @confirm="() => Snackbar.success('confirm')"
+    @cancel="() => Snackbar.error('cancel')"
+    @closed="() => Snackbar.info('closed')"
+  />
+
+  <var-button block @click="show1 = true">{{ pack.asyncClose }}</var-button>
+  <var-dialog v-model:show="show1" :title="pack.title" :message="pack.message" @before-close="onBeforeClose" />
+
+  <var-button block @click="show2 = true">{{ pack.customSlots }}</var-button>
+  <var-dialog v-model:show="show2">
+    <template #title>
+      <var-icon name="information" color="#2979ff" />
+    </template>
+
+    <var-cell>{{ pack.message }}</var-cell>
+    <var-cell>{{ pack.message }}</var-cell>
+    <var-cell>{{ pack.message }}</var-cell>
+  </var-dialog>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, Ref } from 'vue'
+<script>
 import Dialog from '..'
 import Button from '../../button'
+import Icon from '../../icon'
+import Snackbar from '../../snackbar'
+import Cell from '../../cell'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { ref } from 'vue'
+import { pack, use } from './locale'
+import { watchLang } from '../../utils/components'
 
-export default defineComponent({
+export default {
   name: 'DialogExample',
   components: {
     [Dialog.Component.name]: Dialog.Component,
     [Button.name]: Button,
+    [Icon.name]: Icon,
+    [Cell.name]: Cell,
+    AppType,
   },
   setup() {
-    const show: Ref<boolean> = ref(false)
+    const show = ref(false)
+    const show1 = ref(false)
+    const show2 = ref(false)
+    const value = ref('')
 
-    const handleBeforeClose = (done: () => void) => {
-      console.log('2秒关闭...')
+    const actions = {
+      confirm: () => Snackbar.success('confirm'),
+      cancel: () => Snackbar.error('cancel'),
+      close: () => Snackbar.info('close'),
+    }
+
+    const createBasic = () => Dialog(pack.value.message)
+
+    const createAction = async () => actions[await Dialog(pack.value.message)]()
+
+    const modifyTitle = () => {
+      Dialog({
+        title: pack.value.title,
+        message: pack.value.message,
+      })
+    }
+
+    const hideButton = () => {
+      Dialog({
+        message: pack.value.message,
+        confirmButton: false,
+        cancelButton: false,
+      })
+    }
+
+    const onBeforeClose = (action, done) => {
+      Snackbar.loading(pack.value.asyncCloseProgress)
+
       setTimeout(() => {
+        actions[action]()
         done()
-      }, 2000)
+      }, 1000)
     }
 
-    const log = (message: string) => console.log(message)
-
-    const create = async () => {
-      await Dialog({
-        title: '测试',
-        cancelButton: false,
-        message: '测试文字测试文字测试文字测试文字测试文字测试文字测试文字',
+    const asyncClose = () => {
+      Dialog({
+        message: pack.value.message,
+        onBeforeClose,
       })
-      await Dialog({
-        title: '测试2',
-        cancelButton: false,
-        message: '测试文字测试文字测试文字测试文字测试文字测试文字测试文字',
-      })
-
-      // setTimeout(() => {
-      //   Dialog.close()
-      //
-      //   Dialog({
-      //     title: '测试123',
-      //     cancelButton: false,
-      //     message: '12312312',
-      //   })
-      // }, 2000)
-
-      // console.log(state)
     }
+
+    watchLang(use)
 
     return {
+      pack,
       show,
-      log,
-      handleBeforeClose,
-      create,
+      show1,
+      show2,
+      value,
+      asyncClose,
+      createBasic,
+      createAction,
+      modifyTitle,
+      hideButton,
+      onBeforeClose,
+      Snackbar,
     }
   },
-})
+}
 </script>
 
-<style scoped>
-.example {
-  background: antiquewhite;
+<style scoped lang="less">
+.var-button {
+  margin-top: 10px;
 }
 </style>

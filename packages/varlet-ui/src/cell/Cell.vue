@@ -2,7 +2,7 @@
   <div class="var-cell" :class="[border ? 'var-cell--border' : null]">
     <div class="var-cell__icon" :class="[iconClass ? iconClass : null]" v-if="$slots.icon || icon">
       <slot name="icon">
-        <var-icon :name="icon" />
+        <var-icon class="var--flex" :name="icon" />
       </slot>
     </div>
     <div class="var-cell__content">

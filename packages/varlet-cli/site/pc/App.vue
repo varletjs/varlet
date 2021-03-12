@@ -1,12 +1,12 @@
 <template>
   <div class="varlet-site">
-    <div class="varlet-site-header">
+    <div class="varlet-site-header var-elevation--2">
       <span class="varlet-site-header__logo">
         <img :src="header.logo" alt="" />
         <span>{{ title }}</span>
       </span>
       <span class="varlet-site-header__nav">
-        <var-menu :offset-y="36" v-model:show="offsetY">
+        <var-menu :offset-y="38" :offset-x="-20" v-model:show="offsetY">
           <var-icon name="translate" size="26px" color="#ffffff" @click="offsetY = true"></var-icon>
           <template #menu>
             <div class="language-list">
@@ -173,16 +173,10 @@ export default defineComponent({
 
 <style lang="less">
 @import '~@varlet/ui/es/styles/var';
-
-body,
-html,
-#app {
-  width: 100%;
-  height: 100%;
-  overflow-y: hidden;
-}
+@import '~@varlet/ui/es/styles/elevation';
 
 body {
+  min-width: 1200px;
   margin: 0;
   padding: 0;
   font-family: 'Roboto', 'Noto Sans SC', sans-serif;
@@ -197,10 +191,6 @@ iframe {
 
 .varlet {
   &-site {
-    min-width: 1200px;
-    width: 100%;
-    height: 100%;
-
     &-mobile {
       flex: 0 0 360px;
       transform: scale(0.8);
@@ -250,7 +240,6 @@ iframe {
       justify-content: space-between;
       user-select: none;
       position: relative;
-      box-shadow: 0 6px 8px #ddd;
       z-index: 2;
 
       &__logo {
@@ -364,15 +353,15 @@ iframe {
     }
 
     &-content {
-      height: calc(100% - 60px);
+      height: calc(100vh - 60px);
       overflow-y: hidden;
       display: flex;
       background: #fff;
     }
 
     &-doc {
-      min-width: 300px;
-      flex: 1;
+      flex: 1 0 0;
+      min-width: 500px;
       padding: 0 30px;
       overflow-y: auto;
 
@@ -512,9 +501,10 @@ iframe {
 
     &-nav {
       padding: 10px 0;
-      flex: 0 0 220px;
       position: sticky;
+      flex: 0 0 220px;
       top: 0;
+      bottom: 0;
       left: 0;
       z-index: 1;
       overflow-y: scroll;

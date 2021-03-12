@@ -50,6 +50,7 @@ export const props = {
   onClickOverlay: {
     type: Function as PropType<() => void>,
   },
+  // internal for Dialog
   onRouteChange: {
     type: Function as PropType<() => void>,
   },

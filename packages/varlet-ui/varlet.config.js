@@ -57,13 +57,6 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'AppBar 导航栏',
-          'en-US': 'AppBar',
-        },
-        doc: 'app-bar',
-      },
-      {
-        text: {
           'zh-CN': 'Button 按钮',
           'en-US': 'Button',
         },
@@ -82,6 +75,13 @@ module.exports = {
           'en-US': 'Menu',
         },
         doc: 'menu',
+      },
+      {
+        text: {
+          'zh-CN': 'Dialog 对话框',
+          'en-US': 'Dialog',
+        },
+        doc: 'dialog',
       },
       {
         text: {
@@ -159,13 +159,6 @@ module.exports = {
           'en-US': 'Lazy',
         },
         doc: 'lazy',
-      },
-      {
-        text: {
-          'zh-CN': 'Dialog 对话框',
-          'en-US': 'Dialog',
-        },
-        doc: 'dialog',
       },
       {
         text: {
@@ -306,6 +299,13 @@ module.exports = {
           'en-US': 'Form',
         },
         doc: 'form',
+      },
+      {
+        text: {
+          'zh-CN': 'AppBar 导航栏',
+          'en-US': 'AppBar',
+        },
+        doc: 'app-bar',
       },
     ],
   },
