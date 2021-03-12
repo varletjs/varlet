@@ -1,7 +1,7 @@
 <template>
   <div style="position: relative">
     <header>
-      <div class="mobile-header__return" v-if="isIphone" @click="toHome">
+      <div class="mobile-header__return" v-if="isPhone" @click="toHome">
         <var-icon name="chevron-left" size="30px" color="#ffffff"></var-icon>
       </div>
       {{ componentName }}
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, watch } from 'vue'
+import { defineComponent, onMounted, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import Icon from '@varlet/ui/es/icon'
 
@@ -24,12 +24,27 @@ export default defineComponent({
   setup() {
     const componentName: Ref<string> = ref('')
     const route = useRoute()
-    const isIphone: Ref<boolean> = ref(false)
-    isIphone.value = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+
+    const isPhone: Ref<boolean> = ref(false)
+    isPhone.value = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
     const toHome = () => {
       // todo 返回首页
       alert('返回首页')
     }
+
+    const judgmentType = () => {
+      let hashValue = window.location.hash.split('/')[1].split('?')
+      let componentValue = hashValue[0]
+      let languageValue = hashValue[1].split('=')[1].split('&')[0]
+      if (!isPhone.value && window.self === window.top) {
+        window.location.href = `/#/${languageValue}/${componentValue}`
+      }
+    }
+
+    onMounted(() => {
+      judgmentType()
+    })
+
     watch(
       () => route.path,
       (to: string) => {
@@ -41,7 +56,7 @@ export default defineComponent({
 
     return {
       componentName,
-      isIphone,
+      isPhone,
       toHome,
     }
   },
