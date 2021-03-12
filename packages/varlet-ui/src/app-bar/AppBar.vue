@@ -1,11 +1,14 @@
 <template>
   <div class="var-app-bar" :style="appBarStyle()">
-    <slot name="left"> </slot>
+    <div class="var-app-bar__left" v-if="$slots.left">
+      <slot name="left"></slot>
+    </div>
     <div class="var-app-bar__title">
       <slot>{{ title }}</slot>
     </div>
-
-    <slot name="right"></slot>
+    <div class="var-app-bar__right" v-if="$slots.right">
+      <slot name="right"></slot>
+    </div>
   </div>
 </template>
 

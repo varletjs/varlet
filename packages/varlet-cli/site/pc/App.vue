@@ -178,7 +178,7 @@ body {
   min-width: 1200px;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', 'Noto Sans SC', serif;
+  font-family: 'Roboto', 'Noto Sans SC', sans-serif;
 }
 
 iframe {
