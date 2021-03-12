@@ -1,12 +1,12 @@
 <template>
   <div class="varlet-site">
-    <div class="varlet-site-header">
+    <div class="varlet-site-header var-elevation--2">
       <span class="varlet-site-header__logo">
         <img :src="header.logo" alt="" />
         <span>{{ title }}</span>
       </span>
       <span class="varlet-site-header__nav">
-        <var-menu :offset-y="36" v-model:show="offsetY">
+        <var-menu :offset-y="38" :offset-x="-20" v-model:show="offsetY">
           <var-icon name="translate" size="26px" color="#ffffff" @click="offsetY = true"></var-icon>
           <template #menu>
             <div class="language-list">
@@ -173,6 +173,7 @@ export default defineComponent({
 
 <style lang="less">
 @import '~@varlet/ui/es/styles/var';
+@import '~@varlet/ui/es/styles/elevation';
 
 body {
   min-width: 1200px;
@@ -239,7 +240,6 @@ iframe {
       justify-content: space-between;
       user-select: none;
       position: relative;
-      box-shadow: 0 6px 8px #ddd;
       z-index: 2;
 
       &__logo {
@@ -360,6 +360,7 @@ iframe {
     }
 
     &-doc {
+      flex: 1 0 0;
       min-width: 500px;
       padding: 0 30px;
       overflow-y: auto;

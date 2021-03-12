@@ -1,34 +1,34 @@
 <template>
-  <app-type>函数调用</app-type>
-  <var-button block @click="createBasic">基本使用</var-button>
-  <var-button block @click="modifyTitle">修改标题</var-button>
-  <var-button block @click="hideButton">隐藏按钮</var-button>
-  <var-button block @click="createAction">处理用户行为</var-button>
-  <var-button block @click="asyncClose">异步关闭</var-button>
+  <app-type>{{ pack.functionCall }}</app-type>
+  <var-button block @click="createBasic">{{ pack.basicUse }}</var-button>
+  <var-button block @click="modifyTitle">{{ pack.modifyTitle }}</var-button>
+  <var-button block @click="hideButton">{{ pack.hideButton }}</var-button>
+  <var-button block @click="createAction">{{ pack.handleUserBehavior }}</var-button>
+  <var-button block @click="asyncClose">{{ pack.asyncClose }}</var-button>
 
-  <app-type>组件调用</app-type>
-  <var-button block @click="show = true">基本使用</var-button>
+  <app-type>{{ pack.componentCall }}</app-type>
+  <var-button block @click="show = true">{{ pack.basicUse }}</var-button>
   <var-dialog
     v-model:show="show"
-    title="兰亭序"
-    message="兰亭临帖 行书如行云流水"
+    :title="pack.title"
+    :message="pack.message"
     @confirm="() => Snackbar.success('confirm')"
     @cancel="() => Snackbar.error('cancel')"
     @closed="() => Snackbar.info('closed')"
   />
 
-  <var-button block @click="show1 = true">异步关闭</var-button>
-  <var-dialog v-model:show="show1" title="兰亭序" message="兰亭临帖 行书如行云流水" @before-close="onBeforeClose" />
+  <var-button block @click="show1 = true">{{ pack.asyncClose }}</var-button>
+  <var-dialog v-model:show="show1" :title="pack.title" :message="pack.message" @before-close="onBeforeClose" />
 
-  <var-button block @click="show2 = true">自定义插槽</var-button>
+  <var-button block @click="show2 = true">{{ pack.customSlots }}</var-button>
   <var-dialog v-model:show="show2">
     <template #title>
       <var-icon name="information" color="#2979ff" />
     </template>
 
-    <var-cell>兰亭临帖 行书如行云流水</var-cell>
-    <var-cell>兰亭临帖 行书如行云流水</var-cell>
-    <var-cell>兰亭临帖 行书如行云流水</var-cell>
+    <var-cell>{{ pack.message }}</var-cell>
+    <var-cell>{{ pack.message }}</var-cell>
+    <var-cell>{{ pack.message }}</var-cell>
   </var-dialog>
 </template>
 
@@ -40,6 +40,8 @@ import Snackbar from '../../snackbar'
 import Cell from '../../cell'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { ref } from 'vue'
+import { pack, use } from './locale'
+import { watchLang } from '../../utils/components'
 
 export default {
   name: 'DialogExample',
@@ -62,27 +64,27 @@ export default {
       close: () => Snackbar.info('close'),
     }
 
-    const createBasic = () => Dialog('兰亭临帖 行书如行云流水')
+    const createBasic = () => Dialog(pack.value.message)
 
-    const createAction = async () => actions[await Dialog('兰亭临帖 行书如行云流水')]()
+    const createAction = async () => actions[await Dialog(pack.value.message)]()
 
     const modifyTitle = () => {
       Dialog({
-        title: '兰亭序',
-        message: '兰亭临帖 行书如行云流水',
+        title: pack.value.title,
+        message: pack.value.message,
       })
     }
 
     const hideButton = () => {
       Dialog({
-        message: '兰亭临帖 行书如行云流水',
+        message: pack.value.message,
         confirmButton: false,
         cancelButton: false,
       })
     }
 
     const onBeforeClose = (action, done) => {
-      Snackbar.loading('正在异步关闭')
+      Snackbar.loading(pack.value.asyncCloseProgress)
 
       setTimeout(() => {
         actions[action]()
@@ -92,12 +94,15 @@ export default {
 
     const asyncClose = () => {
       Dialog({
-        message: '兰亭临帖 行书如行云流水',
+        message: pack.value.message,
         onBeforeClose,
       })
     }
 
+    watchLang(use)
+
     return {
+      pack,
       show,
       show1,
       show2,

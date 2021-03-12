@@ -3,11 +3,7 @@
     <slot />
 
     <teleport to="body">
-      <transition
-        name="var-menu"
-        @after-enter="onOpened"
-        @after-leave="onClosed"
-      >
+      <transition name="var-menu" @after-enter="onOpened" @after-leave="onClosed">
         <div
           class="var-menu__menu var-elevation--3"
           ref="menu"
@@ -81,7 +77,7 @@ export default defineComponent({
         const { onOpen, onClose } = props
 
         await nextTick()
-        resize()
+        newValue && resize()
 
         newValue ? onOpen?.() : onClose?.()
       }
