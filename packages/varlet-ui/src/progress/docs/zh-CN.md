@@ -9,11 +9,7 @@
 ```js
 import { Progress } from '@varlet/ui'
 
-export default defineComponent({
-  components: {
-    [Progress.name]: Progress
-  }
-})
+createApp().use(Progress)
 ```
 
 ## 线性进度条
@@ -49,9 +45,7 @@ export default defineComponent({
 ```html
 <var-progress :value="30" show-action />
 <var-progress :value="value" show-action />
-<var-progress :value="100" show-action>
-  success
-</var-progress>
+<var-progress :value="100" show-action> success </var-progress>
 ```
 
 ### 自定义样式
@@ -191,32 +185,21 @@ export default defineComponent({
 
 ### 属性
 
-| 参数 | 说明            | 类型     | 默认值   |
-| ---- | --------------- | -------- | -------- |
-| mode | progress 的模式 | _string_ | `linear` |
+| 参数  |   说明  | 类型     | 默认值   |
+| ----  | --------------- | -------- | -------- |
+| `mode`  | progress 的模式 | _string_ | `linear` |
+| `value` | progress 的进度 | _number_ ｜ _string_ |  `0`  |
+| `line-width` | progress 的线宽 | _number_ ｜ _string_ | `4` |
+| `color` | progress 的颜色 | _string_  | `#005CAF` |
+| `track-color`  | progress 轨道的颜色 | _string_   | `#d8d8d8` |
+| `show-action` | 是否显示 action | _boolean_ | `false` |
+| `ripple`(仅支持线性进度条) | 水波纹加载效果 | _boolean_ | `false` |
+| `size`（仅支持环形进度条） | progress 的尺寸 | _number_ ｜ _string_ | `40` |
+| `rotate`（仅支持环形进度条） | progress 的原点 | _number_ | `0` |
+| `show-track`（仅支持环形进度条） | 是否显示 progress 的轨道 | _boolean_ | `true` |
 
-### 线性进度条
+### 插槽
 
-| 参数        | 说明                | 类型                 | 默认值    |
-| ----------- | ------------------- | -------------------- | --------- |
-| value       | progress 的进度     | _number_             | `0`       |
-| line-width   | progress 的线宽     | _number_ ｜ _string_ | `4`       |
-| color       | progress 的颜色     | _string_             | `#005CAF` |
-| track-color  | progress 轨道的颜色 | _string_             | `#d8d8d8` |
-| ripple      | 水波纹加载效果      | _boolean_            | `false`   |
-| show-action | 是否显示 action     | _boolean_            | `false`   |
-
-### 环形进度条
-
-**_注：环形进度条不支持`ripple`属性_**
-
-| 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | ---------- |
-| value | progress 的进度 | _number_ | `0` |
-| line-width | progress 的线宽 | _number_ ｜ _string_ | `4` |
-| color | progress 的颜色 | _string_ | `#005CAF` |
-| track-color | progress 轨道的颜色 | _string_ | `#afd9ff` |
-| show-action | 是否显示 action | _boolean_ | `false` |
-| size | progress 的尺寸 | _number_ ｜ _string_ | `40` |
-| rotate | progress 的原点 | _number_ | `0` |
-| show-track | 是否显示 progress 的轨道 | _boolean_ | `true` |
+| 名称 | 说明 | 参数 |
+| ----- | -------------- | -------- |
+| `default` | 自定义 action | - |
