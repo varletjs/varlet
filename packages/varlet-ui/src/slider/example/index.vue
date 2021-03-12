@@ -1,43 +1,48 @@
 <template>
   <div>
-    <app-type>基本使用</app-type>
-    <var-slider v-model="value" @start="start" @end="end" />
+    <app-type>{{ pack.basicUsage }}</app-type>
+    <var-slider v-model="value" />
   </div>
   <div>
-    <app-type>不同步长</app-type>
-    <var-slider v-model="value2" :step="10" />
+    <app-type>{{ pack.stepSize }}</app-type>
+    <var-slider v-model="value2" step="10" />
   </div>
   <div>
-    <app-type>双滑块</app-type>
-    <var-slider :step="1" v-model="value1" range />
+    <app-type>{{ pack.dualThumb }}</app-type>
+    <var-slider v-model="value1" range @change="handleChange" />
   </div>
   <div>
-    <app-type>禁用</app-type>
-    <var-slider :step="1" v-model="value3" disabled />
+    <app-type>{{ pack.disable }}</app-type>
+    <var-slider v-model="value3" disabled />
   </div>
   <div>
-    <app-type>只读</app-type>
-    <var-slider :step="1" v-model="value3" readonly />
+    <app-type>{{ pack.readonly }}</app-type>
+    <var-slider v-model="value3" readonly />
   </div>
   <div>
-    <app-type>不同大小</app-type>
+    <app-type>{{ pack.sliderSize }}</app-type>
     <var-slider v-model="value1" track-height="6" thumb-size="20" range />
   </div>
   <div>
-    <app-type>不同样式</app-type>
+    <app-type>{{ pack.customStyle }}</app-type>
     <var-slider
       v-model="value4"
       label-color="purple"
       active-color="#e0732c"
       track-color="#3a68b4"
       thumb-color="#e25241"
+      label-text-color="#ededed"
     />
   </div>
   <div>
-    <app-type>显示标签</app-type>
+    <app-type>{{ pack.showLabel }}</app-type>
     <var-slider v-model="value5" label-visible="never" />
     <var-slider v-model="value6" />
     <var-slider v-model="value7" label-visible="always" />
+  </div>
+  <div>
+    <app-type>{{ pack.validateValue }}</app-type>
+    <var-slider v-model="value8" :rules="[(v) => v > 35 || 'error message']" />
   </div>
 </template>
 
@@ -45,6 +50,8 @@
 import { defineComponent, ref } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Slider from '..'
+import { pack, use } from './locale'
+import { watchLang } from '../../utils/components'
 
 export default defineComponent({
   name: 'SliderExample',
@@ -61,15 +68,13 @@ export default defineComponent({
     const value5 = ref(20)
     const value6 = ref(70)
     const value7 = ref(50)
-    const change = (v) => {
+    const value8 = ref(20)
+    const handleChange = (v) => {
       console.log(v)
     }
-    const start = () => {
-      console.log('start')
-    }
-    const end = () => {
-      console.log('end')
-    }
+
+    watchLang(use)
+
     return {
       value,
       value1,
@@ -79,16 +84,10 @@ export default defineComponent({
       value5,
       value6,
       value7,
-      change,
-      start,
-      end,
+      value8,
+      pack,
+      handleChange,
     }
   },
 })
 </script>
-
-<style scoped>
-.example {
-  background: antiquewhite;
-}
-</style>

@@ -9,11 +9,7 @@
 ```js
 import { Countdown } from '@varlet/ui'
 
-export default defineComponent({
-  components: {
-    [Countdown.name]: Countdown
-  }
-})
+createApp().use(Countdown)
 ```
 
 ### 基本使用
@@ -21,18 +17,10 @@ export default defineComponent({
 `time` 属性表示倒计时总时长，单位为毫秒。
 
 ```html
-<tempalte>
   <var-countdown :time="time" />
-</tempalte>
-
-<script>
-  import { defineComponent, ref } from 'vue'
-  import { Countdown } from '@varlet/ui'
-
-  export default defineComponent({
-    components: {
-      [Countdown.name]: Countdown
-    },
+```
+```javascript
+  export default {
     setup() {
       const time = ref(30 * 60 * 60 * 1000)
 
@@ -40,8 +28,7 @@ export default defineComponent({
         time
       }
     }
-  })
-</script>
+  }
 ```
 ### 自定义格式
 
@@ -80,7 +67,6 @@ export default defineComponent({
 通过 ref 获取到组件实例后，可以调用 `start`、`pause`、`reset` 方法。
 
 ```html
-<template>
   <var-countdown
     time="3000"
     ref="countdown"
@@ -90,21 +76,13 @@ export default defineComponent({
     @change="change"
   />
   <div class="btn-container">
-    <var-button type="primary" @click="$refs.countdown.start()">开始</var-button>
-    <var-button @click="$refs.countdown.pause()">暂停</var-button>
-    <var-button @click="$refs.countdown.reset()">重置</var-button>
+    <var-button type="primary" @click="$refs.countdown.start()">start</var-button>
+    <var-button @click="$refs.countdown.pause()">pause</var-button>
+    <var-button @click="$refs.countdown.reset()">reset</var-button>
   </div>
-</template>
-
-<script>
-  import { defineComponent, ref } from 'vue'
-  import { Countdown, Snackbar, Button } from '@varlet/ui'
-
-  export default defineComponent({
-    components: {
-      [Countdown.name]: Countdown,
-      [Button.name]: Button,
-    },
+```
+```javascript
+  export default {
     setup() {
       const countdown = ref(null)
 
@@ -121,17 +99,16 @@ export default defineComponent({
         end,
         change,
       }
-    },
-  })
-</script>
-<style scoped>
+    }
+  }
+```
+```css
   .btn-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 10px;
   }
-</style>
 ```
 
 ## API

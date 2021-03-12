@@ -30,7 +30,7 @@ createApp().use(Loading)
 
 ### Props
 
-| Attribute | Description                                    | Type     | Default        |
+| prop | Description                                    | Type     | Default        |
 | --------- | ---------------------------------------------- | -------- | -------------- |
 | color     | Loading color                                  | _string_ | `currentColor` |
 | type      | Can be set to `wave` `cube` `rect` `disappear` | _string_ | `wave`         |

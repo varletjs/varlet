@@ -111,8 +111,8 @@ import { defineComponent, Ref, ref, onMounted, computed, ComputedRef, reactive, 
 import { useParent, useValidation } from '../utils/components'
 import { FORM_BIND_FORM_ITEM_KEY, FormProvider } from '../form/provide'
 import { getLeft } from '../utils/elements'
-import { isArray, isNumber } from '../utils/shared'
-import { props, ValidateTriggers } from './props'
+import { isArray, isNumber, toNumber } from '../utils/shared'
+import { props } from './props'
 import { SliderProvider } from './provide'
 import FormDetails from '../form-details'
 
@@ -136,8 +136,8 @@ export default defineComponent({
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
 
     const validate = () => v(props.rules, props.modelValue)
-    const validateWithTrigger = (trigger: ValidateTriggers) =>
-      nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
+
+    const validateWithTrigger = () => nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
 
     const sliderEl: Ref<HTMLDivElement | null> = ref(null)
     const maxWidth: Ref<number> = ref(0)
@@ -155,7 +155,7 @@ export default defineComponent({
       percentValue: 0,
     })
 
-    const unitWidth: ComputedRef<number> = computed(() => (maxWidth.value / 100) * +props.step)
+    const unitWidth: ComputedRef<number> = computed(() => (maxWidth.value / 100) * toNumber(props.step))
 
     const showLabel1: ComputedRef<boolean> = computed(() => {
       if (props.labelVisible === 'always') return true
@@ -170,45 +170,46 @@ export default defineComponent({
     })
 
     const getFillStyle: ComputedRef<Record<string, string | undefined>> = computed(() => {
-      const width =
-        props.range && isArray(props.modelValue)
-          ? Math.abs(props.modelValue[0] - props.modelValue[1])
-          : props.modelValue
+      const { activeColor, range, modelValue } = props
 
-      const left = props.range && isArray(props.modelValue) ? Math.min(props.modelValue[0], props.modelValue[1]) : 0
+      const width = range && isArray(modelValue) ? Math.abs(modelValue[0] - modelValue[1]) : modelValue
+
+      const left = range && isArray(modelValue) ? Math.min(modelValue[0], modelValue[1]) : 0
 
       return {
         width: `${width}%`,
         left: `${left}%`,
-        background: props.activeColor,
+        background: activeColor,
       }
     })
 
     const setPercent = (moveDistance: number, type: number) => {
       let prevValue: number
       let rangeValue: Array<number> = []
+      const { step, range, modelValue, onChange } = props
+      const stepNumber = toNumber(step)
       const roundDistance = Math.round(moveDistance / unitWidth.value)
-      const curValue: number = roundDistance * +props.step
+      const curValue: number = roundDistance * stepNumber
 
       if (type === 1) {
         prevValue = thumbProps1.percentValue
-        thumbProps1.percentValue = curValue / +props.step
-        if (props.range && isArray(props.modelValue)) rangeValue = [curValue, props.modelValue[1]]
+        thumbProps1.percentValue = curValue / stepNumber
+        if (range && isArray(modelValue)) rangeValue = [curValue, modelValue[1]]
       } else {
         prevValue = thumbProps2.percentValue
-        thumbProps2.percentValue = curValue / +props.step
-        if (props.range && isArray(props.modelValue)) rangeValue = [props.modelValue[0], curValue]
+        thumbProps2.percentValue = curValue / stepNumber
+        if (range && isArray(modelValue)) rangeValue = [modelValue[0], curValue]
       }
 
       if (prevValue !== curValue) {
-        if (props.range) {
-          props.onInput?.(rangeValue)
+        if (range) {
+          onChange?.(rangeValue)
           props['onUpdate:modelValue']?.(rangeValue)
         } else {
-          props.onInput?.(curValue)
+          onChange?.(curValue)
           props['onUpdate:modelValue']?.(curValue)
         }
-        validateWithTrigger('onInput')
+        validateWithTrigger()
       }
     }
 
@@ -224,9 +225,9 @@ export default defineComponent({
 
     const start = (event: TouchEvent, type: number) => {
       if (!maxWidth.value) maxWidth.value = (sliderEl.value as HTMLDivElement).offsetWidth
-
-      if (props.disabled || props.readonly || formProvider?.disabled.value || formProvider?.readonly.value) return
-      props.onStart?.()
+      const { disabled, readonly, onStart } = props
+      if (disabled || readonly || formProvider?.disabled.value || formProvider?.readonly.value) return
+      onStart?.()
       isScroll.value = true
       if (type === 1) {
         thumbProps1.startPosition = event.touches[0].clientX
@@ -259,24 +260,22 @@ export default defineComponent({
     }
 
     const end = (type: number) => {
-      if (props.disabled || props.readonly || formProvider?.disabled.value || formProvider?.readonly.value) return
+      const { disabled, readonly, range, modelValue, onEnd } = props
+      if (disabled || readonly || formProvider?.disabled.value || formProvider?.readonly.value) return
       let rangeValue: Array<number> = []
       const thumbProps = type === 1 ? thumbProps1 : thumbProps2
 
       thumbProps.currentLeft = thumbProps.percentValue * unitWidth.value
       thumbProps.active = false
       const curValue: number = thumbProps.percentValue
-      if (props.range && isArray(props.modelValue))
-        rangeValue = type === 1 ? [curValue, props.modelValue[1]] : [props.modelValue[0], curValue]
+      if (range && isArray(modelValue)) rangeValue = type === 1 ? [curValue, modelValue[1]] : [modelValue[0], curValue]
 
-      if (props.range) {
-        props.onChange?.(rangeValue)
+      if (range) {
+        onEnd?.(rangeValue)
       } else {
-        props.onChange?.(curValue)
+        onEnd?.(curValue)
       }
-      validateWithTrigger('onChange')
       isScroll.value = false
-      props.onEnd?.()
     }
 
     const click = (event: MouseEvent) => {
@@ -289,15 +288,16 @@ export default defineComponent({
     }
 
     const stepValidator = () => {
-      if (isNaN(+props.step)) {
+      const stepNumber = toNumber(props.step)
+      if (isNaN(stepNumber)) {
         console.warn('[Varlet] Slider: type of prop "step" should be Number')
         return false
       }
-      if (+props.step < 1 || +props.step > 100) {
+      if (stepNumber < 1 || stepNumber > 100) {
         console.warn('[Varlet] Slider: "step" should be >= 0 and <= 100')
         return false
       }
-      if (parseInt(`${props.step}`, 10) !== +props.step) {
+      if (parseInt(`${props.step}`, 10) !== stepNumber) {
         console.warn('[Varlet] Slider: "step" should be an Integer')
         return false
       }
@@ -305,42 +305,44 @@ export default defineComponent({
     }
 
     const valueValidator = () => {
-      if (props.range && !isArray(props.modelValue)) {
+      const { range, modelValue } = props
+      if (range && !isArray(modelValue)) {
         console.error('[Varlet] Slider: "modelValue" should be an Array')
         return false
       }
-      if (!props.range && isArray(props.modelValue)) {
+      if (!range && isArray(modelValue)) {
         console.error('[Varlet] Slider: "modelValue" should be a Number')
         return false
       }
-      if (props.range && isArray(props.modelValue) && props.modelValue.length < 2) {
+      if (range && isArray(modelValue) && modelValue.length < 2) {
         console.error('[Varlet] Slider: "modelValue" should have two value')
         return false
       }
       return true
     }
 
-    const setProps = (modelValue = props.modelValue, step = props.step) => {
+    const setProps = (modelValue = props.modelValue, step = toNumber(props.step)) => {
       if (props.range && isArray(modelValue)) {
-        thumbProps1.percentValue = modelValue[0] / +step
-        thumbProps2.percentValue = modelValue[1] / +step
+        thumbProps1.percentValue = modelValue[0] / step
+        thumbProps2.percentValue = modelValue[1] / step
         thumbProps1.currentLeft = thumbProps1.percentValue * unitWidth.value
         thumbProps2.currentLeft = thumbProps2.percentValue * unitWidth.value
       } else if (isNumber(modelValue)) {
-        thumbProps1.currentLeft = (modelValue / +step) * unitWidth.value
+        thumbProps1.currentLeft = (modelValue / step) * unitWidth.value
       }
     }
 
     watch([() => props.modelValue, () => props.step], ([modelValue, step]) => {
       if (!stepValidator() || !valueValidator() || isScroll.value) return
-      setProps(modelValue as number | number[], step as string | number)
+      setProps(modelValue as number | number[], toNumber(step))
     })
+
+    watch(maxWidth, () => setProps())
 
     onMounted(() => {
       if (!stepValidator() || !valueValidator()) return
 
       maxWidth.value = (sliderEl.value as HTMLDivElement).offsetWidth
-      setProps()
     })
 
     const reset = () => {
