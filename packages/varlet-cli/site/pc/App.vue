@@ -101,7 +101,6 @@ export default defineComponent({
     const title: Ref<string> = ref('')
     const versionList: Ref<string[]> = ref(['2.10.14', '1.x', '3.x'])
     const isHideVersion: Ref<boolean> = ref(true)
-    let urlValue = window.location.hash.split('/')[2]
     let refs: HTMLElement = ref(null)
     const route = useRoute()
     const router = useRouter()
@@ -110,10 +109,30 @@ export default defineComponent({
     const languageList: Ref<Language> = ref({})
     const offsetY: Ref<boolean> = ref(false)
 
+    const isPhone: Ref<boolean> = ref(false)
+    isPhone.value = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+
     languageList.value = config.pc.header.language
 
     const nav = (element: HTMLElement) => {
       refs = element
+    }
+
+    const judgmentType = () => {
+      let componentValue = ''
+      let languageValue = ''
+      componentValue = window.location.hash.split('/')[2]
+      languageValue = window.location.hash.split('/')[1]
+      if (isPhone.value) {
+        window.location.href = `/mobile.html#/${componentValue}?language=${languageValue}&platform=pc`
+      }
+
+      let childrenElement = refs.getElementsByClassName('var-cell')
+      let index = menu.value.findIndex((item) => item.doc === componentValue)
+      childrenElement[index].scrollIntoView({
+        block: 'nearest',
+        inline: 'start',
+      })
     }
 
     menu.value = configMenu
@@ -135,13 +154,8 @@ export default defineComponent({
       router.push(`/${language.value}/${componentName}`)
     }
 
-    onMounted(async () => {
-      let childrenElement = refs.getElementsByClassName('var-cell')
-      let index = menu.value.findIndex((item) => item.doc === urlValue)
-      childrenElement[index].scrollIntoView({
-        block: 'nearest',
-        inline: 'start',
-      })
+    onMounted(() => {
+      judgmentType()
     })
 
     watch(

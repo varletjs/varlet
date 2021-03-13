@@ -117,43 +117,43 @@ Use `ref` to get countdown instance, you can call the `start`, `pause`, and `res
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| time | Total time(ms)| _number_ ｜ _string_ | `0` |
-| format | Time format | _string_ | `HH:mm:ss` |
-| auto-start | Whether to auto start count down | _number_ ｜ _boolean_ | `true` |
+| `time` | Total time(ms)| _number_ ｜ _string_ | `0` |
+| `format` | Time format | _string_ | `HH:mm:ss` |
+| `auto-start` | Whether to auto start count down | _number_ ｜ _boolean_ | `true` |
 
 ### Available formats
 | Format | Description |
 | -- | --- |
-| DD | Day |
-| HH | Hour |
-| mm | Minute |
-| ss | Second |
-| S | Millisecond, 1-digit |
-| SS | Millisecond, 2-digit |
-| SSS | Millisecond, 3-digit |
+| `DD` | Day |
+| `HH` | Hour |
+| `mm` | Minute |
+| `ss` | Second |
+| `S` | Millisecond, 1-digit |
+| `SS` | Millisecond, 2-digit |
+| `SSS` | Millisecond, 3-digit |
 
 ### Events
 
 | Event | Description | arguments |
 | ----- | -------------- | -------- |
-| end | Emitted after countdown ended | - |
-| change | Emitted after countdown changed | `timeData: TimeData` |
+| `end` | Emitted after countdown ended | - |
+| `change` | Emitted after countdown changed | `timeData: TimeData` |
 
 ### Slots
 
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
-| default | Custom content | `timeData: TimeData` |
+| `default` | Custom content | `timeData: TimeData` |
 
 ### TimeData Structure
 
 | Name | Description | Type |
 | ---- | ------- | -------- |
-| days | Remain days | `number` |
-| hours | Remain hours | `number` |
-| minutes | Remain minutes | `number` |
-| seconds | Remain seconds	 | `number` |
-| milliseconds | Remain milliseconds | `number` |
+| `days` | Remain days | `number` |
+| `hours` | Remain hours | `number` |
+| `minutes` | Remain minutes | `number` |
+| `seconds` | Remain seconds	 | `number` |
+| `milliseconds` | Remain milliseconds | `number` |
 
 
 ### Methods
@@ -161,6 +161,6 @@ Use ref to get CountDown instance and call instance methods.
 
 | Name | Description	 | arguments |
 | ---- | ------- | -------- |
-| start | Start countdown	 | - |
-| pause | Pause countdown	 | - |
-| reset | Reset countdown | - |
+| `start` | Start countdown	 | - |
+| `pause` | Pause countdown	 | - |
+| `reset` | Reset countdown | - |

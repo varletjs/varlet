@@ -1,14 +1,13 @@
 <template>
   <var-pull-refresh @refresh="refresh" v-model="isRefresh" success-duration="2000">
-    <ul class="pull-refresh__example">
-      <li v-for="(item, index) in data" :key="index">{{ item + ' ' + (index + 1) }}</li>
-    </ul>
+    <var-cell v-for="(item, index) in data" :key="index" border>{{ item + ' ' + (index + 1) }}</var-cell>
   </var-pull-refresh>
 </template>
 
 <script>
 import { defineComponent, ref } from 'vue'
 import PullRefresh from '..'
+import Cell from '../../cell'
 
 const data1 = Array(10).fill('List Item')
 const data2 = Array(10).fill('This is new List Item')
@@ -17,6 +16,7 @@ export default defineComponent({
   name: 'PullRefreshExample',
   components: {
     [PullRefresh.name]: PullRefresh,
+    [Cell.name]: Cell,
   },
   setup() {
     const isRefresh = ref(true)

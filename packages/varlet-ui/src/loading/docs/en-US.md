@@ -32,6 +32,6 @@ createApp().use(Loading)
 
 | prop | Description                                    | Type     | Default        |
 | --------- | ---------------------------------------------- | -------- | -------------- |
-| color     | Loading color                                  | _string_ | `currentColor` |
-| type      | Can be set to `wave` `cube` `rect` `disappear` | _string_ | `wave`         |
-| size      | Can be set to `large` `normal` `small` `mini`  | _string_ | `normal`       |
+| `color`     | Loading color                                  | _string_ | `currentColor` |
+| `type`      | Can be set to `wave` `cube` `rect` `disappear` | _string_ | `wave`         |
+| `size`      | Can be set to `large` `normal` `small` `mini`  | _string_ | `normal`       |

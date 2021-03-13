@@ -1,6 +1,6 @@
 # Progress
 
-### Introduce
+### Intro
 
 Display the current progress of an operation flow.
 
@@ -9,11 +9,7 @@ Display the current progress of an operation flow.
 ```js
 import { Progress } from '@varlet/ui'
 
-export default defineComponent({
-  components: {
-    [Progress.name]: Progress,
-  },
-})
+createApp().use(Progress)
 ```
 
 ## Progress linear
@@ -49,9 +45,7 @@ Use `show-action` to show `action`. The default value for `action` is the percen
 ```html
 <var-progress :value="30" show-action />
 <var-progress :value="value" show-action />
-<var-progress :value="100" show-action>
-  success
-</var-progress>
+<var-progress :value="100" show-action> success </var-progress>
 ```
 
 ### Custom style
@@ -191,32 +185,21 @@ Use `show-track` to hide Progress-Track.
 
 ### Props
 
-| Attribute | Description      | Type     | Default  |
+| prop | Description      | Type     | Default  |
 | --------- | ---------------- | -------- | -------- |
-| mode      | mode of Progress | _string_ | `linear` |
+| `mode` | mode of Progress | _string_ | `linear` |
+| `value` | completion value   | _number_ ｜ _string_ |  `0`  |
+| `line-width` | width of the progress bar  | _number_ ｜ _string_ | `4` |
+| `color` | color of the progress bar  | _string_  | `#005CAF` |
+| `track-color`  | color of the progress track | _string_   | `#d8d8d8` |
+| `show-action` | Whether the action is visible or not | _boolean_ | `false` |
+| `ripple`(only supports linear progress) | loading style for progress | _boolean_ | `false` |
+| `size`(only supports circle progress) | size of progress | _number_ ｜ _string_ | `40` |
+| `rotate`(only supports circle progress) | origin of progress | _number_ | `0` |
+| `show-track`(only supports circle progress) | Whether the progress track is visible or not | _boolean_ | `true` |
 
-### Progress linear
+### Slots
 
-| Attribute   | Description                            | Type                 | Default   |
-| ----------- | -------------------------------------- | -------------------- | --------- |
-| value       | completion value                       | _number_             | `0`       |
-| line-width   | To set width of the progress bar       | _number_ ｜ _string_ | `4`       |
-| color       | To set color of the progress bar       | _string_             | `#005CAF` |
-| track-color  | To set color of the progress track     | _string_             | `#d8d8d8` |
-| ripple      | To set loading style for progress      | _boolean_            | `false`   |
-| show-action | Whether the `action` is visible or not | _boolean_            | `false`   |
-
-### Progress circle
-
-**_Note：Progress circle not support the `ripple` attribute_**
-
-| Attribute | Description | Type | Default |
-| ----- | ----------------------------- | -------- | -------------- |
-| value | completion value | _number_ | `0` |
-| line-width | To set width of the progress bar | _number_ ｜ _string_ | `4` |
-| color | To set color of the progress bar | _string_ | `#005CAF` |
-| track-color | To set color of the progress track | _string_ | `#afd9ff` |
-| show-action | Whether the `action` is visible or not | _boolean_ | `false` |
-| size | To set size of progress | _number_ ｜ _string_ | `40` |
-| rotate | To set origin of progress | _number_ | `0` |
-| show-track | Whether the progress track is visible or not | _boolean_ | `true` |
+| Name | Description | SlotProps |
+| ----- | -------------- | -------- |
+| `default` | Custom action | - |

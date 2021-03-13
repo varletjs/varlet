@@ -123,22 +123,22 @@ Use `rules` to validate the value
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| model-value / v-model | The value of slider | _number_ ｜ _[number, number]_ | `0` |
-| step | Step size. The value is an integer between `1 ~ 100` | _number_ ｜ _string_ | `1` |
-| range | Whether open the dual thumb mode | _boolean_ | `false` |
-| label-visible | Whether show the label. The value is one of `always, normal, never` | _string_ | `normal` |
-| label-text-color | Color of label text | _string_ | `#fff` |
-| track-height | Height of slider | _number_ ｜ _string_ | `2` |
-| thumb-size | Size of thumb | _number_ ｜ _string_ | `12` |
-| disabled | 	Whether to disable slider  | _boolean_  | `false` |
-| readonly | 	Whether to readonly slider | _boolean_  | `false` |
-| rules | Validation rules | _array_  | - |
+| `model-value / v-model` | The value of slider | _number_ ｜ _[number, number]_ | `0` |
+| `step`| Step size. The value is an integer between `1 ~ 100` | _number_ ｜ _string_ | `1` |
+| `range`| Whether open the dual thumb mode | _boolean_ | `false` |
+| `label-visible` | Whether show the label. The value is one of `always, normal, never` | _string_ | `normal` |
+| `label-text-color` | Color of label text | _string_ | `#fff` |
+| `track-height` | Height of slider | _number_ ｜ _string_ | `2` |
+| `thumb-size` | Size of thumb | _number_ ｜ _string_ | `12` |
+| `disabled`| 	Whether to disable slider  | _boolean_  | `false` |
+| `readonly`| 	Whether to readonly slider | _boolean_  | `false` |
+| `rules`| Validation rules | _array_  | - |
 
 
 ### Events
 
 | Event | Description | arguments |
 | ----- | -------- | -------- |
-| change | 	Emitted after slider changed | value: current value |
-| start | Emitted when start dragged | - |
-| end | Emitted when end dragged | value: current value |
+| `change` | 	Emitted after slider changed | value: current value |
+| `start` | Emitted when start dragged | - |
+| `end` | Emitted when end dragged | value: current value |

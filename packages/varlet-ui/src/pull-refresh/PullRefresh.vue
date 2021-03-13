@@ -23,9 +23,9 @@ import { defineComponent, ref, Ref, computed, watch, onMounted } from 'vue'
 import Icon from '../icon'
 import { getParentScroller, getScrollTop } from '../utils/elements'
 import { props, RefreshStatus } from './props'
+import { toNumber } from '../utils/shared'
 
 const MAX_DISTANCE = 100
-
 const CONTROL_POSITION = -50
 
 let scroller: HTMLElement | Window = window
@@ -38,15 +38,10 @@ export default defineComponent({
   props,
   setup(props) {
     const freshNode: Ref<HTMLElement | null> = ref(null)
-
     const startPosition: Ref<number> = ref(0)
-
     const distance: Ref<number> = ref(CONTROL_POSITION)
-
     const iconName: Ref<string> = ref('arrow-down')
-
     const refreshStatus: Ref<RefreshStatus> = ref('default')
-
     const isEnd: Ref<boolean> = ref(false)
 
     const isTouchable = computed(
@@ -71,6 +66,7 @@ export default defineComponent({
       refreshStatus.value = 'pulling'
       startPosition.value = event.touches[0].clientY
     }
+
     const touchMove = (event: TouchEvent) => {
       const scrollTop = getScrollTop(scroller)
       if (scrollTop > 0 || !isTouchable.value) return
@@ -81,6 +77,7 @@ export default defineComponent({
       distance.value = moveDistance >= MAX_DISTANCE ? MAX_DISTANCE : moveDistance
       iconName.value = distance.value >= MAX_DISTANCE * 0.2 ? 'refresh' : 'arrow-down'
     }
+
     const touchEnd = () => {
       if (!isTouchable.value) return
       isEnd.value = true
@@ -94,8 +91,16 @@ export default defineComponent({
         distance.value = CONTROL_POSITION
         setTimeout(() => {
           isEnd.value = false
-        }, +props.animationDuration)
+        }, toNumber(props.animationDuration))
       }
+    }
+
+    const reset = () => {
+      setTimeout(() => {
+        refreshStatus.value = 'default'
+        iconName.value = 'arrow-down'
+        isEnd.value = false
+      }, toNumber(props.animationDuration))
     }
 
     watch(
@@ -107,12 +112,8 @@ export default defineComponent({
           iconName.value = 'checkbox-marked-circle'
           setTimeout(() => {
             distance.value = CONTROL_POSITION
-            setTimeout(() => {
-              refreshStatus.value = 'default'
-              iconName.value = 'arrow-down'
-              isEnd.value = false
-            }, +props.animationDuration)
-          }, +props.successDuration)
+            reset()
+          }, toNumber(props.successDuration))
         }
       }
     )
