@@ -1,0 +1,17 @@
+.var-col {
+  transition: all .3s
+}
+
+.create-col(@count, @i) when (@i =< @count) {
+  .var-col--span-@{i} {
+    flex: 0 0 @i * (100% / 24);
+  }
+
+  .var-col--offset-@{i} {
+    margin-left: @i * (100% / 24);
+  }
+
+  .create-col(@count, @i + 1);
+}
+
+.create-col(24, 1);

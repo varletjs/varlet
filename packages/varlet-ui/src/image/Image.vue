@@ -44,13 +44,13 @@ export default defineComponent({
       const el: LazyHTMLElement = e.currentTarget as LazyHTMLElement
 
       el._lazy.state === 'success' && props.onLoad?.(e, 'success')
-      el._lazy.state === 'error' && props.onError?.(e, 'error')
+      el._lazy.state === 'error' && props.onError?.(e, 'attempt-over')
     }
 
     const handleError = (e: Event) => {
       const el: LazyHTMLElement = e.currentTarget as LazyHTMLElement
 
-      el._lazy.state !== 'pending' && props.onError?.(e, 'native-error')
+      el._lazy.state !== 'pending' && props.onError?.(e, 'error')
     }
 
     return {

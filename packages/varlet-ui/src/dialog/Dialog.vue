@@ -57,7 +57,7 @@
 import Popup from '../popup'
 import Button from '../button'
 import { props } from './props'
-import { defineComponent, ref, Ref, watch } from 'vue'
+import { defineComponent, ref, Ref, watch, onMounted } from 'vue'
 import { dt } from '../utils/shared'
 import { pack } from '../locale'
 
@@ -120,7 +120,7 @@ export default defineComponent({
 
     watch(
       () => props.show,
-      (newValue) => { popupShow.value = newValue} ,
+      (newValue) => { popupShow.value = newValue } ,
       { immediate: true }
     )
 

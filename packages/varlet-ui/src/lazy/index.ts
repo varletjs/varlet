@@ -115,8 +115,8 @@ function unbindEvents() {
   listenTargets = []
 }
 
-function updateLazyOptions(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
-  const lazyInnerOptions: LazyOptions = {
+function createLazy(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
+  const lazyOptions: LazyOptions = {
     loading: el.getAttribute(LAZY_LOADING) ?? defaultLazyOptions.loading,
     error: el.getAttribute(LAZY_ERROR) ?? defaultLazyOptions.error,
     attempt: el.getAttribute(LAZY_ATTEMPT) ? Number(el.getAttribute(LAZY_ATTEMPT)) : defaultLazyOptions.attempt,
@@ -128,7 +128,7 @@ function updateLazyOptions(el: LazyHTMLElement, binding: DirectiveBinding<string
     currentAttempt: 0,
     state: 'pending',
     attemptLock: false,
-    ...lazyInnerOptions,
+    ...lazyOptions,
   }
 
   defaultLazyOptions.filter?.(el._lazy)
@@ -150,7 +150,7 @@ function createImage(el: LazyHTMLElement, attemptSRC: string) {
 }
 
 function attemptLoad(el: LazyHTMLElement) {
-  if (el._lazy.attemptLock === true) {
+  if (el._lazy.attemptLock) {
     return
   }
   el._lazy.attemptLock = true
@@ -176,6 +176,17 @@ function checkAll() {
   lazyElements.forEach((el: LazyHTMLElement) => check(el))
 }
 
+function add(el: LazyHTMLElement) {
+  if (useIntersectionObserverAPI) {
+    observe(el)
+  } else {
+    !lazyElements.includes(el) && lazyElements.push(el)
+    bindEvents(window)
+    bindEvents(getParentScroller(el))
+    check(el)
+  }
+}
+
 function clear(el: LazyHTMLElement) {
   if (useIntersectionObserverAPI) {
     observer?.unobserve(el)
@@ -196,6 +207,7 @@ function observe(el: LazyHTMLElement) {
 
 function diff(el: LazyHTMLElement, binding: DirectiveBinding<string>): boolean {
   const { src, arg, attempt, loading, error } = el._lazy
+
   return (
     src !== binding.value ||
 		arg !== binding.arg ||
@@ -208,43 +220,36 @@ function diff(el: LazyHTMLElement, binding: DirectiveBinding<string>): boolean {
 function mounted(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
   !el.getAttribute('src') && el.setAttribute('src', PIXEL)
 
-  updateLazyOptions(el, binding)
+  createLazy(el, binding)
 
-  if (useIntersectionObserverAPI) {
-    observe(el)
-  } else {
-    bindEvents(window)
-    bindEvents(getParentScroller(el))
-    check(el)
-  }
-}
-
-function unmounted(el: LazyHTMLElement) {
-  clear(el)
+  add(el)
 }
 
 function updated(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
-  diff(el, binding)
-    ? mounted(el, binding)
-    : !useIntersectionObserverAPI
-      ? lazyElements.includes(el)
-        ? check(el)
-        : null
-      : null
+  if (!diff(el, binding)) {
+    if (!useIntersectionObserverAPI && lazyElements.includes(el)) {
+      check(el)
+    }
+    return
+  }
+
+  mounted(el, binding)
 }
 
 function mergeLazyOptions(lazyOptions: LazyOptions) {
-  defaultLazyOptions.events = lazyOptions.events ?? defaultLazyOptions.events
-  defaultLazyOptions.loading = lazyOptions.loading ?? defaultLazyOptions.loading
-  defaultLazyOptions.error = lazyOptions.error ?? defaultLazyOptions.error
-  defaultLazyOptions.attempt = lazyOptions.attempt ?? defaultLazyOptions.attempt
-  defaultLazyOptions.throttleWait = lazyOptions.throttleWait ?? defaultLazyOptions.throttleWait
-  defaultLazyOptions.filter = lazyOptions.filter
+  const { events, loading, error, attempt, throttleWait, filter } = lazyOptions
+
+  defaultLazyOptions.events = events ?? defaultLazyOptions.events
+  defaultLazyOptions.loading = loading ?? defaultLazyOptions.loading
+  defaultLazyOptions.error = error ?? defaultLazyOptions.error
+  defaultLazyOptions.attempt = attempt ?? defaultLazyOptions.attempt
+  defaultLazyOptions.throttleWait = throttleWait ?? defaultLazyOptions.throttleWait
+  defaultLazyOptions.filter = filter
 }
 
 const Lazy: Directive & Plugin = {
   mounted,
-  unmounted,
+  unmounted: clear,
   updated,
   install(app: App, lazyOptions: LazyOptions) {
     mergeLazyOptions(lazyOptions)

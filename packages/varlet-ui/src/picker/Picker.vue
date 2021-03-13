@@ -21,7 +21,7 @@
     <div class="var-picker" v-bind="$attrs">
       <div class="var-picker__toolbar">
         <slot name="cancel">
-          <var-button class="var-picker__cancel-button" plain :text-color="cancelButtonColor" @click="cancel">
+          <var-button class="var-picker__cancel-button" text :text-color="cancelButtonColor" @click="cancel">
             {{ cancelButtonText }}
           </var-button>
         </slot>
@@ -29,7 +29,7 @@
           <div class="var-picker__title">{{ title }}</div>
         </slot>
         <slot name="confirm">
-          <var-button class="var-picker__confirm-button" plain :text-color="confirmButtonColor" @click="confirm">
+          <var-button class="var-picker__confirm-button" text :text-color="confirmButtonColor" @click="confirm">
             {{ confirmButtonText }}
           </var-button>
         </slot>

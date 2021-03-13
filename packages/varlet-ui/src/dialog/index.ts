@@ -1,6 +1,6 @@
 import { reactive, App, nextTick } from 'vue'
 import VarDialog from './Dialog.vue'
-import { isString } from '../utils/shared'
+import { inBrowser, isString } from '../utils/shared'
 import { mountInstance } from '../utils/components'
 
 interface DialogOptions {
@@ -35,7 +35,11 @@ type DialogActions = 'confirm' | 'cancel' | 'close'
 
 let singletonOptions: DialogOptions | null
 
-function Dialog(options: DialogOptions | string): Promise<DialogActions> {
+function Dialog(options: DialogOptions | string): Promise<DialogActions | void> {
+  if (!inBrowser) {
+    return Promise.resolve()
+  }
+
   return new Promise((resolve) => {
     Dialog.close()
 
