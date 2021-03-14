@@ -1,0 +1,55 @@
+# BackTop 回到顶部
+
+### 介绍
+
+返回页面顶部的操作按钮。
+
+### 引入
+
+```js
+import { BackTop } from '@varlet/ui'
+
+createApp().use(BackTop)
+```
+
+### 基本使用
+
+```html
+<div class="var-back-top__example">
+  <var-cell v-for="list in lists" :key="list">Scroll to bottom {{ list }}</var-cell>
+  <var-back-top target=".var-back-top__example" :duration="300" />
+</div>
+```
+```javascript
+const lists = [...Array(100).keys()]
+
+export default {
+  setup() {
+    return {
+      lists
+    }
+  }
+}
+```
+
+## API
+
+### 属性
+
+| 参数 | 说明 | 类型 | 默认值 |
+| ----- | -------------- | -------- | ---------- |
+| `target	` | 触发滚动的对象	| _string_ | - |
+| `visibility-height` | 滚动高度达到此参数值才出现| _number_ ｜ _string_ | `200` |
+| `duration` | 回到顶部所需时间（ms） | _number_ | `300` |
+
+### 事件
+
+| 事件名 | 说明 | 回调参数 |
+| ----- | -------------- | -------- |
+| `click` | 点击按钮触发的事件 | - |
+
+### 插槽
+
+| 名称 | 说明 | 参数 |
+| ----- | -------------- | -------- |
+| `default` | 自定义按钮内容 | - |
