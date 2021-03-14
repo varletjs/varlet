@@ -37,7 +37,7 @@ export default defineComponent({
     const menu: Ref<null | HTMLElement> = ref(null)
     const top: Ref<number> = ref(0)
     const left: Ref<number> = ref(0)
-    const { zIndex } = useZIndex(props, 'show', 1)
+    const { zIndex } = useZIndex(() => props.show, 1)
     let clickSelf = false
 
     const computeTop = (alignment: string): number => {

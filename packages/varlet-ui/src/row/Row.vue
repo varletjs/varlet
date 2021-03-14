@@ -6,6 +6,7 @@
       alignItems: align
     }"
     v-bind="$attrs"
+    @click="onClick"
   >
     <slot />
   </div>

@@ -92,6 +92,13 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Layout 布局',
+          'en-US': 'Layout'
+        },
+        doc: 'row'
+      },
+      {
+        text: {
           'zh-CN': 'Loading 加载',
           'en-US': 'Loading',
         },

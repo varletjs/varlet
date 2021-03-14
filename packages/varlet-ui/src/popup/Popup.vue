@@ -40,7 +40,7 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const { zIndex } = useZIndex(props, 'show', 3)
+    const { zIndex } = useZIndex(() => props.show, 3)
     const { disabled } = useTeleport()
 
     const hidePopup = () => {

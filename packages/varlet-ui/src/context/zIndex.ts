@@ -1,11 +1,11 @@
 import context from './index'
 import { watch, ref, Ref } from 'vue'
 
-export function useZIndex(props: any, state: string, count: number) {
+export function useZIndex(source: any, count: number) {
   const zIndex: Ref<number> = ref(context.zIndex)
 
-  watch(() => props[state], (newValue) => {
-    if (newValue === true) {
+  watch(source, (newValue) => {
+    if (newValue) {
       context.zIndex += count
       zIndex.value = context.zIndex
     }

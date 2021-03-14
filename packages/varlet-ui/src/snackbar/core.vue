@@ -34,7 +34,7 @@ export default defineComponent({
   setup(props) {
     const timer: Ref = ref(null)
     const hasMounted: Ref<boolean> = ref(false)
-    const { zIndex } = useZIndex(props, 'show', 1)
+    const { zIndex } = useZIndex(() => props.show, 1)
     useLock(props, 'show', 'lockScroll')
 
     const snackbarStyle = reactive({

@@ -10,6 +10,7 @@
       paddingRight: toPx(padding.right)
     }"
     v-bind="$attrs"
+    @click="onClick"
   >
     <slot />
   </div>
