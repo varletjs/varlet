@@ -5,7 +5,7 @@ export const props = {
   icon: {
     type: String,
   },
-  label: {
+  desc: {
     type: String,
   },
   border: {
@@ -18,7 +18,7 @@ export const props = {
   titleClass: {
     type: String,
   },
-  labelClass: {
+  descClass: {
     type: String,
   },
   extraClass: {

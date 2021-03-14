@@ -9,9 +9,9 @@
       <div class="var-cell__title" :class="[titleClass ? titleClass : null]">
         <slot>{{ title }}</slot>
       </div>
-      <div class="var-cell__label" :class="[labelClass ? labelClass : null]" v-if="$slots.label || label">
-        <slot name="label">
-          {{ label }}
+      <div class="var-cell__desc" :class="[descClass ? descClass : null]" v-if="$slots.desc || desc">
+        <slot name="desc">
+          {{ desc }}
         </slot>
       </div>
     </div>
