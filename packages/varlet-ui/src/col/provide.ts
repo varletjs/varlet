@@ -9,6 +9,7 @@ export interface ColPadding {
 
 export interface ColProvider {
   span: ComputedRef<number>
+  offset: ComputedRef<number>
   setPadding: (padding: ColPadding) => void
 }
 

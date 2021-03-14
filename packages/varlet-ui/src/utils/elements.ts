@@ -1,4 +1,4 @@
-import { isNumber, isString } from './shared'
+import { isNumber, isString, toNumber } from './shared'
 
 export function getTop(element: HTMLElement): number {
   const { top } = element.getBoundingClientRect()
@@ -76,6 +76,10 @@ export const toPxNum = (value: unknown): number => {
     const rootFontSize = window.getComputedStyle(document.documentElement).fontSize
 
     return num * parseFloat(rootFontSize)
+  }
+
+  if (isString(value)) {
+    return toNumber(value)
   }
 
   return 0

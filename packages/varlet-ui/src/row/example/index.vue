@@ -11,10 +11,10 @@
   <app-type>偏移</app-type>
   <var-row>
     <var-col class="col" :span="8">span: 8</var-col>
-    <var-col class="col" :span="6" :offset="2">span: 6</var-col>
-    <var-col class="col" :span="8">span: 8</var-col>
-    <var-col class="col" :span="8">span: 8</var-col>
     <var-col class="col" :span="8" :offset="8">span: 8</var-col>
+    <var-col class="col" :span="8">span: 8</var-col>
+    <var-col class="col" :span="8">span: 8</var-col>
+    <var-col class="col" :span="8">span: 8</var-col>
   </var-row>
 
   <app-type>对齐</app-type>
@@ -63,7 +63,7 @@
   <var-button @click="toggleSpan">toggle span</var-button>
 
   <app-type>测试一下异步推数据</app-type>
-  <var-row :gutter="gutter">
+  <var-row :gutter="20">
     <var-col class="col" v-for="c in cols" :key="c.id" :span="8">{{ c.text }}</var-col>
   </var-row>
 
