@@ -10,6 +10,16 @@
         <var-loading type="disappear" />
       </div>
     </div>
+    <div class="loading-demo__type">
+      <app-type>{{ pack.color }}</app-type>
+      <div class="loading-demo__type-block">
+        <var-loading type="circle" style="color: #2979ff" />
+        <var-loading type="cube" style="color: #2979ff" />
+        <var-loading type="wave" style="color: #2979ff" />
+        <var-loading type="rect" style="color: #2979ff" />
+        <var-loading type="disappear" style="color: #2979ff" />
+      </div>
+    </div>
     <div class="loading-demo__size">
       <app-type>{{ pack.size }}</app-type>
       <div class="loading-demo__size-block">

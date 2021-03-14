@@ -11,15 +11,26 @@ createApp().use(Loading)
 ### Loading 类型
 
 ```html
+<var-loading type="circle" />
 <var-loading type="cube" />
 <var-loading type="wave" />
 <var-loading type="rect" />
 <var-loading type="disappear" />
 ```
 
+### Loading 颜色
+```html
+<var-loading type="circle" style="color: #2979ff" />
+<var-loading type="cube"  style="color: #2979ff"/>
+<var-loading type="wave" style="color: #2979ff" />
+<var-loading type="rect" style="color: #2979ff" />
+<var-loading type="disappear" style="color: #2979ff" />
+```
+
 ### Loading 大小
 
 ```html
+<var-loading type="circle" size="small" />
 <var-loading type="cube" size="small" />
 <var-loading type="wave" size="small" />
 <var-loading type="rect" size="small" />
