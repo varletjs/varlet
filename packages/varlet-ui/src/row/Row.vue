@@ -30,14 +30,15 @@ export default defineComponent({
       let span = 0
 
       cols.forEach((col) => {
-        const nextSpan = span + col.span.value
+        const colSpan = col.span.value + col.offset.value
+        const nextSpan = span + colSpan
 
         if (nextSpan > 24) {
           groups.push([col])
-          span = col.span.value
+          span = colSpan
         } else {
           groups[groups.length - 1].push(col)
-          span += col.span.value
+          span += colSpan
         }
       })
 

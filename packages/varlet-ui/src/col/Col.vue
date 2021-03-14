@@ -29,18 +29,19 @@ export default defineComponent({
   setup(props) {
     const padding: Ref<ColPadding> = ref({ left: 0, right: 0 })
     const span: ComputedRef<number> = computed(() => toNumber(props.span))
+    const offset: ComputedRef<number> = computed(() => toNumber(props.offset))
 
     const { row, bindRow } = useRow()
 
     const colProvider: ColProvider = {
       span,
-      setPadding(pad: ColPadding){
-        console.log(pad)
+      offset,
+      setPadding(pad: ColPadding) {
         padding.value = pad
       }
     }
 
-    watch(() => props.span, () => {
+    watch([() => props.span, () => props.offset], () => {
       row?.computePadding()
     })
 
