@@ -1,69 +1,79 @@
 <template>
-	<div>
-		<app-type>基本使用</app-type>
-		<div class="var-switch__example-block">
-			<var-switch v-model="value" />
-			<var-switch v-model="value" :ripple="false" color="green" />
-			<var-switch v-model="value1" disabled />
-			<var-switch v-model="value3" readonly />
-		</div>
-	</div>
-	<div>
-		<app-type>不同颜色</app-type>
-		<div class="var-switch__example-block">
-			<var-switch v-model="value" :ripple="false" />
-			<var-switch v-model="value" color="indigo" :ripple="false" />
-			<var-switch v-model="value" color="red" />
-			<var-switch v-model="value" color="orange" />
-		</div>
-	</div>
+  <div>
+    <app-type>{{ pack.basicUsage }}</app-type>
+    <div class="var-switch__example-block">
+      <var-switch v-model="value" />
+      <var-switch v-model="value1" disabled />
+      <var-switch v-model="value1" readonly />
+    </div>
+  </div>
+  <div>
+    <app-type>{{ pack.customColor }}</app-type>
+    <div class="var-switch__example-block">
+      <var-switch v-model="value2" :ripple="false" />
+      <var-switch v-model="value2" color="indigo" close-color="#89ddff" />
+      <var-switch v-model="value2" color="orange" close-color="#2772f5" />
+    </div>
+  </div>
 
-	<div>
-		<app-type>不同大小</app-type>
-		<div class="var-switch__example-block">
-			<var-switch v-model="value" size="15" />
-			<var-switch v-model="value" />
-			<var-switch v-model="value" size="25" />
-		</div>
-	</div>
-	<div>
-		<app-type>加载状态</app-type>
-		<div class="var-switch__example-block">
-			<var-switch v-model="value" loading />
-			<var-switch v-model="value" size="25" loading />
-			<var-switch v-model="value" size="25" loading loading-color="#89ddff" />
-		</div>
-	</div>
-	<div>
-		<app-type>关闭状态</app-type>
-		<div class="var-switch__example-block">
-			<var-switch v-model="value2" size="25" />
-			<var-switch v-model="value2" size="25" close-color="#89ddff" />
-			<var-switch v-model="value2" size="25" close-color="#2772f5" />
-		</div>
-	</div>
+  <div>
+    <app-type>{{ pack.size }}</app-type>
+    <div class="var-switch__example-block">
+      <var-switch v-model="value3" size="15" />
+      <var-switch v-model="value3" />
+      <var-switch v-model="value3" size="25" />
+    </div>
+  </div>
+  <div>
+    <app-type>{{ pack.loading }}</app-type>
+    <div class="var-switch__example-block">
+      <var-switch :model-value="true" loading />
+      <var-switch :model-value="true" size="25" loading />
+      <var-switch :model-value="true" size="25" loading loading-color="#000" />
+    </div>
+  </div>
+  <div>
+    <app-type>{{ pack.validateValue }}</app-type>
+    <var-cell>
+      <div>{{ pack.text }}</div>
+      <template #extra>
+        <var-switch v-model="value4" :rules="[(v) => v === true || pack.state]" />
+      </template>
+    </var-cell>
+  </div>
 </template>
 
 <script>
 import { defineComponent, ref } from 'vue'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Switch from '..'
+import Cell from '../../cell'
+import { pack, use } from './locale'
+import { watchLang } from '../../utils/components'
 
 export default defineComponent({
   name: 'SwitchExample',
   components: {
     [Switch.name]: Switch,
+    [Cell.name]: Cell,
+    AppType,
   },
   setup() {
     const value = ref(true)
     const value1 = ref(true)
     const value2 = ref(false)
     const value3 = ref(true)
+    const value4 = ref(true)
+
+    watchLang(use)
 
     return {
       value,
       value1,
       value2,
       value3,
+      value4,
+      pack,
     }
   },
 })
@@ -71,7 +81,7 @@ export default defineComponent({
 
 <style scoped>
 .var-switch__example-block {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 </style>

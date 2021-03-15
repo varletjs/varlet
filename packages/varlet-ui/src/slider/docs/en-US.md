@@ -108,7 +108,7 @@ Use `label-visible` to set the visible of label.
 
 Use `rules` to validate the value
 
-<span style="font-size: 12px">`rules` is an array that accepts `functions`, `Boolean`, and `string`. Functions pass an input value as an argument and must return either `true` / `false` or a `string` containing an error message. The input field will enter an error state if a function returns (or any value in the array contains) `false` or is a `string`.</span>
+<span style="font-size: 12px">`rules` is an array that accepts `functions`, `boolean`, and `string`. Functions pass an input value as an argument and must return either `true` / `false` or a `string` containing an error message. The input field will enter an error state if a function returns (or any value in the array contains) `false` or is a `string`.</span>
 
 ```html
 <var-slider 
