@@ -1,14 +1,33 @@
+@import '../styles/elevation';
+
 .var-app-bar {
   height: 50px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  padding: 0 10px;
 
   &__title {
     flex: 1;
-    padding: 0 10px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    line-height: 50px;
+    padding: 0 10px;
+  }
+
+  &__left,
+  &__right {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__left {
+    margin-right: 10px;
+  }
+
+  &_right {
+    margin-left: 10px;
   }
 }

@@ -70,7 +70,7 @@ import '@varlet/ui/es/cell/style'
 import '@varlet/ui/es/icon/style'
 import '@varlet/ui/es/menu/style'
 import { defineComponent, ref, Ref, watch, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 
 type Menu = {
   isTitle: boolean
@@ -97,13 +97,12 @@ export default defineComponent({
     const menu: Ref<Menu[]> = ref([])
     const language: Ref<string> = ref('')
     const header: Ref<Header> = ref({ i18nButton: {}, logo: '', search: {} })
-    const componentName = ref('button')
+    const componentName: Ref<null | string> = ref(null)
     const title: Ref<string> = ref('')
     const versionList: Ref<string[]> = ref(['2.10.14', '1.x', '3.x'])
     const isHideVersion: Ref<boolean> = ref(true)
     let refs: HTMLElement = ref(null)
     const route = useRoute()
-    const router = useRouter()
     const { pc = {}, title: configTitle } = config
     const { header: configHeader = { i18nButton: {}, logo: '', search: {} }, menu: configMenu = [] } = pc
     const languageList: Ref<Language> = ref({})
@@ -129,12 +128,13 @@ export default defineComponent({
 
       let childrenElement = refs.getElementsByClassName('var-cell')
       let index = menu.value.findIndex((item) => item.doc === componentValue)
-      childrenElement[index].scrollIntoView({
-        block: 'nearest',
-        inline: 'start',
-      })
+      if (index !== -1) {
+        childrenElement[index].scrollIntoView({
+          block: 'nearest',
+          inline: 'start',
+        })
+      }
     }
-
     menu.value = configMenu
     header.value = configHeader
     title.value = configTitle
@@ -143,15 +143,14 @@ export default defineComponent({
       if (item.isTitle) {
         return false
       }
-      router.push(`/${language.value}/${item.doc}`)
+      componentName.value = item.doc
     }
 
     const changeLanguage = (key) => {
       language.value = key
       const pathArr = route.fullPath.split('/')
-      const componentName = pathArr[pathArr.length - 1]
+      componentName.value = pathArr[pathArr.length - 1]
       offsetY.value = false
-      router.push(`/${language.value}/${componentName}`)
     }
 
     onMounted(() => {
@@ -206,19 +205,19 @@ iframe {
 .varlet {
   &-site {
     &-mobile {
-      flex: 0 0 360px;
-      transform: scale(0.8);
+      flex: 0 0 432px;
+      transform: scale(0.65);
       position: relative;
-      height: 720px;
+      height: 863px;
       align-self: center;
 
       &-content {
-        height: 660px;
+        height: 780px;
         position: absolute;
         z-index: -2;
-        top: 47px;
-        width: calc(100% - 40px);
-        margin-left: 20px;
+        top: 57px;
+        width: calc(100% - 57px);
+        margin-left: 28px;
       }
 
       &-image {
@@ -235,12 +234,12 @@ iframe {
     }
 
     &-empty {
-      height: 27px;
+      height: 32px;
       width: calc(100% - 40px);
       margin-left: 20px;
       background-color: @color-primary;
       position: absolute;
-      top: 21px;
+      top: 26px;
       z-index: -1;
     }
 

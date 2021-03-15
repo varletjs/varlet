@@ -14,9 +14,16 @@ export const props = {
     type: String,
     default: '标题',
   },
-  //  是否固定在顶部
-  // fixed: {
-  //   type: Boolean,
-  //   default: true
-  // }
+
+  //  中间标题的位置
+  titlePosition: {
+    type: String,
+    default: 'left',
+  },
+
+  //  使用阴影层级
+  shadow: {
+    type: [Number, String],
+    default: 3,
+  },
 }

@@ -21,5 +21,9 @@ const router = createRouter({
   routes,
 })
 
+router.afterEach((to) => {
+  window.top['router'].replace(`/${to.query.language}${to.path}`)
+})
+
 const app = createApp(App as any)
 app.use(router).mount('#app')

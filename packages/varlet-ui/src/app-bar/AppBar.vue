@@ -1,9 +1,9 @@
 <template>
-  <div class="var-app-bar" :style="appBarStyle()">
+  <div class="var-app-bar" :style="appBarStyle()" :class="`var-elevation--${shadow}`">
     <div class="var-app-bar__left" v-if="$slots.left">
-      <slot name="left"></slot>
+      <slot name="left"> </slot>
     </div>
-    <div class="var-app-bar__title">
+    <div class="var-app-bar__title" :style="{ textAlign: titlePosition }">
       <slot>{{ title }}</slot>
     </div>
     <div class="var-app-bar__right" v-if="$slots.right">

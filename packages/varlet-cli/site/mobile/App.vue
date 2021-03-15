@@ -34,10 +34,15 @@ export default defineComponent({
 
     const judgmentType = () => {
       let hashValue = window.location.hash.split('/')[1].split('?')
-      let componentValue = hashValue[0]
-      let languageValue = hashValue[1].split('=')[1].split('&')[0]
-      if (!isPhone.value && window.self === window.top) {
-        window.location.href = `/#/${languageValue}/${componentValue}`
+      let componentValue = ''
+      componentValue = hashValue[0]
+      if (hashValue.length < 2) {
+        window.location.href = `/#/zh-CN/${componentValue}`
+      } else {
+        let languageValue = hashValue[1].split('=')[1].split('&')[0]
+        if (!isPhone.value && window.self === window.top) {
+          window.location.href = `/#/${languageValue}/${componentValue}`
+        }
       }
     }
 
