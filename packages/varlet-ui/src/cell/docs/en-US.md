@@ -43,7 +43,7 @@ createApp().use(Cell)
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `title	` | Title	| _string_ ｜ _number_ | - |
+| `title` | Title	| _string_ ｜ _number_ | - |
 | `icon` | Icon name | _string_ | - |
 | `desc` | Description | _string_ | - |
 | `border` | Whether to show border | _boolean_ | `false` |
