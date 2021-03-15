@@ -146,11 +146,11 @@ export default {
 | `card` | Whether to display the card | _boolean_ | `true` |
 | `avatar` | Whether to display the avatar | _boolean_ | `true` |
 | `fullscreen` | Whether to enable fullscreen mode | _boolean_ | `true` |
-| `title-width` | Title Width | _number \| string_ | `50%` |
-| `card-height` | Card Height | _number \| string_ | `160px` |
-| `avatar-size` | Avatar size | _number \| string_ | `34px` |
+| `title-width` | Title Width(px, rem, %)  | _number \| string_ | `50%` |
+| `card-height` | Card Height(px, rem, %)  | _number \| string_ | `160px` |
+| `avatar-size` | Avatar size(px, rem, %)  | _number \| string_ | `34px` |
 | `rows` | The paragraph number of rows | _number \| string_ | `3` |
-| `rows-width` | The width of each line of a paragraph | _number \| string_ | `['12px', '12px', '12px']` |
+| `rows-width` | The width of each line of a paragraph | _(number \| string)[]_ | `['12px', '12px', '12px']` |
 
 ### Slots
 

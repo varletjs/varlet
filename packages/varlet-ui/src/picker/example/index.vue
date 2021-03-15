@@ -66,7 +66,7 @@ export default defineComponent({
       ],
       log(texts, indexes) {
         console.log(texts)
-        console.log(indexes)
+        // console.log(indexes)
       },
       async picker() {
         const columns = [
@@ -80,7 +80,7 @@ export default defineComponent({
             console.log(texts, indexes)
           },
         })
-        console.log(state, texts, indexes)
+        // console.log(state, texts, indexes)
       },
     }
   },

@@ -1,4 +1,5 @@
 import { isPx, isRem } from '../utils/elements'
+import { PropType } from 'vue'
 
 function offsetTopValidator(offsetTop: string | number): boolean {
   return isPx(offsetTop) || isRem(offsetTop)
@@ -11,10 +12,10 @@ export const props = {
     default: 0,
   },
   zIndex: {
-    type: Number,
+    type: [String, Number],
     default: 10,
   },
   onScroll: {
-    type: Function,
+    type: Function as PropType<(offsetTop: number, isFixed: boolean) => void>
   },
 }

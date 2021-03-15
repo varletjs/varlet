@@ -109,7 +109,6 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const scrollerEls: Ref<HTMLElement[]> = ref([])
     const scrollColumns: Ref<ScrollColumn[]> = ref([])
     const center: ComputedRef<number> = computed(
       () => (props.optionCount * props.optionHeight) / 2 - props.optionHeight / 2
@@ -160,13 +159,13 @@ export default defineComponent({
       }
     }
 
-    const scrollTo = (scrollColumn: ScrollColumn, index: number, duration: number) => {
+    const scrollTo = (scrollColumn: ScrollColumn, index: number, duration: number, noChange = false) => {
       const { optionHeight } = props
       const translate = center.value - boundaryIndex(scrollColumn, index) * optionHeight
 
       if (translate === scrollColumn.translate) {
         scrollColumn.scrolling = false
-        change(scrollColumn)
+        !noChange && change(scrollColumn)
       }
 
       scrollColumn.translate = translate
@@ -273,11 +272,13 @@ export default defineComponent({
       }
     }
 
+    const rebuildChildren = (scrollColumn: ScrollColumn) => {
+      scrollColumns.value.splice(scrollColumns.value.indexOf(scrollColumn) + 1)
+      createChildren(scrollColumns.value, (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children)
+    }
+
     const change = (scrollColumn: ScrollColumn) => {
-      if (props.cascade) {
-        scrollColumns.value.splice(scrollColumns.value.indexOf(scrollColumn) + 1)
-        createChildren(scrollColumns.value, (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children)
-      }
+      props.cascade && rebuildChildren(scrollColumn)
 
       if (scrollColumns.value.some((scrollColumn) => scrollColumn.scrolling)) {
         return
@@ -294,17 +295,26 @@ export default defineComponent({
     }
 
     const stopScroll = () => {
-      scrollColumns.value.forEach((scrollColumn) => {
-        scrollColumn.duration = 0
-        scrollColumn.translate = getTranslate(scrollColumn.scrollEl as HTMLElement)
-        scrollColumn.index = getIndex(scrollColumn)
-        scrollTo(scrollColumn, scrollColumn.index, 0)
-      })
+      if (props.cascade) {
+        const scrollColumn = scrollColumns.value.find((scrollColumn) => scrollColumn.scrolling)
+        if (scrollColumn) {
+          scrollColumn.translate = getTranslate(scrollColumn.scrollEl as HTMLElement)
+          scrollColumn.index = getIndex(scrollColumn)
+          scrollTo(scrollColumn, scrollColumn.index, 0, true)
+          scrollColumn.scrolling = false
+          rebuildChildren(scrollColumn)
+        }
+      } else {
+        scrollColumns.value.forEach((scrollColumn) => {
+          scrollColumn.translate = getTranslate(scrollColumn.scrollEl as HTMLElement)
+          scrollColumn.index = getIndex(scrollColumn)
+          scrollTo(scrollColumn, scrollColumn.index, 0)
+        })
+      }
     }
 
     const confirm = () => {
       stopScroll()
-
       const { texts, indexes } = getPicked()
       prevIndexes = [...indexes]
       props.onConfirm?.(texts, indexes)
@@ -332,7 +342,6 @@ export default defineComponent({
       scrollColumns,
       columnHeight,
       center,
-      scrollerEls,
       Transition,
       handleTouchstart,
       handleTouchmove,

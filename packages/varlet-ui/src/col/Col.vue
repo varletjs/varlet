@@ -6,8 +6,8 @@
       offset ? `var-col--offset-${toNumber(offset)}` : null
     ]"
     :style="{
-      paddingLeft: toPx(padding.left),
-      paddingRight: toPx(padding.right)
+      paddingLeft: toSizeUnit(padding.left),
+      paddingRight: toSizeUnit(padding.right)
     }"
     v-bind="$attrs"
     @click="onClick"
@@ -21,7 +21,7 @@ import { defineComponent, ref, Ref, computed, ComputedRef, watch } from 'vue'
 import { toNumber } from '../utils/shared'
 import { props } from './props'
 import { ColPadding, ColProvider, useRow } from './provide'
-import { toPx } from '../utils/elements'
+import { toSizeUnit } from '../utils/elements'
 
 export default defineComponent({
   name: 'VarCol',
@@ -51,7 +51,7 @@ export default defineComponent({
     return {
       padding,
       toNumber,
-      toPx,
+      toSizeUnit,
     }
   }
 })

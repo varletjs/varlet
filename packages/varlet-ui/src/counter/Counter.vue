@@ -14,8 +14,8 @@
         name="minus"
         :class="[!decrementButton ? 'var-counter--hidden' : null]"
         :style="{
-        width: buttonSize ? toPx(buttonSize) : null,
-        height: buttonSize ? toPx(buttonSize): null
+        width: buttonSize ? toSizeUnit(buttonSize) : null,
+        height: buttonSize ? toSizeUnit(buttonSize): null
       }"
         v-ripple="{
         disabled: !ripple ||
@@ -31,7 +31,7 @@
       />
       <input
         class="var-counter__input"
-        :style="{ width: inputWidth ? toPx(inputWidth) : null }"
+        :style="{ width: inputWidth ? toSizeUnit(inputWidth) : null }"
         :inputmode="toNumber(decimalLength) === 0 ? 'numeric' : 'decimal'"
         :readonly="readonly || formReadonly"
         :disabled="disabled || formDisabled || disableInput"
@@ -43,8 +43,8 @@
         name="plus"
         :class="[!incrementButton ? 'var-counter--hidden' : null]"
         :style="{
-          width: buttonSize ? toPx(buttonSize) : null,
-          height: buttonSize ? toPx(buttonSize): null
+          width: buttonSize ? toSizeUnit(buttonSize) : null,
+          height: buttonSize ? toSizeUnit(buttonSize): null
         }"
         v-ripple="{
           disabled: !ripple ||
@@ -71,7 +71,7 @@ import FormDetails from '../form-details'
 import { defineComponent, ref, Ref, watch, computed, ComputedRef, nextTick } from 'vue'
 import { props, ValidateTriggers } from './props'
 import { toNumber } from '../utils/shared'
-import { toPx } from '../utils/elements'
+import { toSizeUnit } from '../utils/elements'
 import { Decimal } from 'decimal.js'
 import { CounterProvider, useForm } from './provide'
 import { useValidation } from '../utils/components'
@@ -310,7 +310,7 @@ export default defineComponent({
       pressIncrement,
       releaseDecrement,
       releaseIncrement,
-      toPx,
+      toSizeUnit,
       toNumber
     }
   }

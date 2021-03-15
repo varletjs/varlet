@@ -146,11 +146,11 @@ export default {
 | `card` | 是否显示卡片 | _boolean_ | `true` |
 | `avatar` | 是否显示头像 | _boolean_ | `true` |
 | `fullscreen` | 是否开启全屏模式 | _boolean_ | `true` |
-| `title-width` | 标题宽度 | _number \| string_ | `50%` |
-| `card-height` | 卡片高度 | _number \| string_ | `160px` |
-| `avatar-size` | 头像尺寸 | _number \| string_ | `34px` |
+| `title-width` | 标题宽度(px, rem, %) | _number \| string_ | `50%` |
+| `card-height` | 卡片高度(px, rem, %) | _number \| string_ | `160px` |
+| `avatar-size` | 头像尺寸(px, rem, %) | _number \| string_ | `34px` |
 | `rows` | 段落行数 | _number \| string_ | `3` |
-| `rows-width` | 段落每一行的宽度 | _number \| string_ | `['12px', '12px', '12px']` |
+| `rows-width` | 段落每一行的宽度 | _(number \| string)[]_ | `['12px', '12px', '12px']` |
 
 ### 插槽
 

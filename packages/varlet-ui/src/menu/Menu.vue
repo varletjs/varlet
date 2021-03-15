@@ -8,8 +8,8 @@
           class="var-menu__menu var-elevation--3"
           ref="menu"
           :style="{
-            top: `calc(${top}px + ${toPx(offsetY)})`,
-            left: `calc(${left}px + ${toPx(offsetX)})`,
+            top: `calc(${top}px + ${toSizeUnit(offsetY)})`,
+            left: `calc(${left}px + ${toSizeUnit(offsetX)})`,
             zIndex,
           }"
           v-show="show"
@@ -25,7 +25,7 @@
 <script lang="ts">
 import { defineComponent, ref, Ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { props } from './props'
-import { getLeft, getTop, toPx } from '../utils/elements'
+import { getLeft, getTop, toSizeUnit } from '../utils/elements'
 import { useZIndex } from '../context/zIndex'
 
 export default defineComponent({
@@ -101,7 +101,7 @@ export default defineComponent({
       menu,
       top,
       left,
-      toPx,
+      toSizeUnit,
       handleClick,
       resize,
     }

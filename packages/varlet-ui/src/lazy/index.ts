@@ -19,12 +19,14 @@ interface LazyOptions {
 	events?: string[]
 }
 
+type LazyState = 'pending' | 'success' | 'error'
+
 type Lazy = LazyOptions & {
 	src: string
 	arg: string | undefined
 	currentAttempt: number
 	attemptLock: boolean
-	state: 'pending' | 'success' | 'error'
+	state: LazyState
 }
 
 export type LazyHTMLElement = HTMLElement & { _lazy: Lazy }
@@ -58,25 +60,22 @@ let observer: IntersectionObserver | null = null
 
 const useIntersectionObserverAPI: boolean = checkIntersectionObserverAPI()
 
+function setSRC(el: LazyHTMLElement, src: string) {
+  if (el._lazy.arg === BACKGROUND_IMAGE_ARG_NAME) {
+    el.style.backgroundImage = `url(${src})`
+  } else {
+    el.setAttribute('src', src)
+  }
+}
+
 function setLoading(el: LazyHTMLElement) {
-  el._lazy.loading
-    ? el._lazy.arg === BACKGROUND_IMAGE_ARG_NAME
-      ? (el.style.backgroundImage = `url(${el._lazy.loading})`)
-      : el.setAttribute('src', el._lazy.loading)
-    : null
+  el._lazy.loading && setSRC(el, el._lazy.loading)
 
   !useIntersectionObserverAPI && checkAll()
 }
 
 function setError(el: LazyHTMLElement) {
-  if (el._lazy.error) {
-    if (el._lazy.arg === BACKGROUND_IMAGE_ARG_NAME) {
-      el.style.backgroundImage = `url(${el._lazy.error})`
-    } else {
-      el.setAttribute('src', el._lazy.error)
-    }
-  }
-
+  el._lazy.error && setSRC(el, el._lazy.error)
   el._lazy.state = 'error'
 
   clear(el)
@@ -84,10 +83,7 @@ function setError(el: LazyHTMLElement) {
 }
 
 function setSuccess(el: LazyHTMLElement, attemptSRC: string) {
-  el._lazy.arg === BACKGROUND_IMAGE_ARG_NAME
-    ? (el.style.backgroundImage = `url(${attemptSRC})`)
-    : el.setAttribute('src', attemptSRC)
-
+  setSRC(el, attemptSRC)
   el._lazy.state = 'success'
 
   clear(el)
@@ -130,6 +126,8 @@ function createLazy(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
     attemptLock: false,
     ...lazyOptions,
   }
+
+  setSRC(el, PIXEL)
 
   defaultLazyOptions.filter?.(el._lazy)
 }
@@ -218,10 +216,7 @@ function diff(el: LazyHTMLElement, binding: DirectiveBinding<string>): boolean {
 }
 
 function mounted(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
-  !el.getAttribute('src') && el.setAttribute('src', PIXEL)
-
   createLazy(el, binding)
-
   add(el)
 }
 

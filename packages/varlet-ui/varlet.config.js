@@ -50,6 +50,13 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Lazy 懒加载',
+          'en-US': 'Lazy',
+        },
+        doc: 'lazy',
+      },
+      {
+        text: {
           'zh-CN': 'Skeleton 骨架屏',
           'en-US': 'Skeleton',
         },
@@ -99,6 +106,20 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Image 图片',
+          'en-US': 'Image',
+        },
+        doc: 'image',
+      },
+      {
+        text: {
+          'zh-CN': 'Sticky 粘性布局',
+          'en-US': 'Sticky',
+        },
+        doc: 'sticky',
+      },
+      {
+        text: {
           'zh-CN': 'Loading 加载',
           'en-US': 'Loading',
         },
@@ -106,10 +127,31 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'Snackbar 消息条',
-          'en-US': 'Snackbar',
+          'zh-CN': 'Cell 单元格',
+          'en-US': 'Cell',
         },
-        doc: 'snackbar',
+        doc: 'cell',
+      },
+      {
+        text: {
+          'zh-CN': 'Countdown 倒计时',
+          'en-US': 'Countdown',
+        },
+        doc: 'countdown',
+      },
+      {
+        text: {
+          'zh-CN': 'BackTop 回到顶部',
+          'en-US': 'BackTop',
+        },
+        doc: 'back-top',
+      },
+      {
+        text: {
+          'zh-CN': 'PullRefresh 下拉刷新',
+          'en-US': 'PullRefresh',
+        },
+        doc: 'pull-refresh',
       },
       {
         text: {
@@ -120,10 +162,10 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'PullRefresh 下拉刷新',
-          'en-US': 'PullRefresh',
+          'zh-CN': 'Snackbar 消息条',
+          'en-US': 'Snackbar',
         },
-        doc: 'pull-refresh',
+        doc: 'snackbar',
       },
       {
         text: {
@@ -159,27 +201,6 @@ module.exports = {
           'en-US': 'List',
         },
         doc: 'list',
-      },
-      {
-        text: {
-          'zh-CN': 'Sticky 粘性布局',
-          'en-US': 'Sticky',
-        },
-        doc: 'sticky',
-      },
-      {
-        text: {
-          'zh-CN': 'Lazy 懒加载',
-          'en-US': 'Lazy',
-        },
-        doc: 'lazy',
-      },
-      {
-        text: {
-          'zh-CN': 'Image 图片',
-          'en-US': 'Image',
-        },
-        doc: 'image',
       },
       {
         text: {
@@ -253,20 +274,6 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'BackTop 回到顶部',
-          'en-US': 'BackTop',
-        },
-        doc: 'back-top',
-      },
-      {
-        text: {
-          'zh-CN': 'Cell 单元格',
-          'en-US': 'Cell',
-        },
-        doc: 'cell',
-      },
-      {
-        text: {
           'zh-CN': 'Uploader 文件上传',
           'en-US': 'Uploader',
         },
@@ -292,13 +299,6 @@ module.exports = {
           'en-US': 'Steps',
         },
         doc: 'steps',
-      },
-      {
-        text: {
-          'zh-CN': 'Countdown 倒计时',
-          'en-US': 'Countdown',
-        },
-        doc: 'countdown',
       },
       {
         text: {

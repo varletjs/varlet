@@ -61,6 +61,9 @@ export const isRem = (value: unknown) => isString(value) && value.endsWith('rem'
 // example 1 || 1px
 export const isPx = (value: unknown) => (isString(value) && value.endsWith('px')) || isNumber(value)
 
+// example 1%
+export const isPercent = (value: unknown) => isString(value) && value.endsWith('%')
+
 // example return 1
 export const toPxNum = (value: unknown): number => {
   if (isNumber(value)) {
@@ -85,8 +88,18 @@ export const toPxNum = (value: unknown): number => {
   return 0
 }
 
-// example return 1px
-export const toPx = (value: unknown) => (value != null ? `${toPxNum(value)}px` : null)
+// example return 1px | 1%
+export const toSizeUnit = (value: unknown) => {
+  if (value == null) {
+    return null
+  }
+
+  if (isPercent(value)) {
+    return value
+  }
+
+  return `${toPxNum(value)}px`
+}
 
 export function requestAnimationFrame(fn: FrameRequestCallback): number {
   return window.requestAnimationFrame ? window.requestAnimationFrame(fn) : window.setTimeout(fn, 16)

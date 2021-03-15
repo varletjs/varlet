@@ -1,3 +1,5 @@
+import { PropType } from 'vue'
+
 function fitValidator(fit: string) {
   return ['fill', 'contain', 'cover', 'none', 'scale-down'].includes(fit)
 }
@@ -15,20 +17,24 @@ export const props = {
     type: String,
   },
   width: {
-    type: String,
+    type: [String, Number],
   },
   height: {
-    type: String,
+    type: [String, Number],
   },
   radius: {
+    type: [String, Number],
+    default: 0,
+  },
+  loading: {
     type: String,
-    default: '0',
   },
   error: {
     type: String,
   },
-  loading: {
-    type: String,
+  lazy: {
+    type: Boolean,
+    default: false
   },
   ripple: {
     type: Boolean,
@@ -38,10 +44,13 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  onClick: {
+    type: Function as PropType<(e: Event) => void>,
+  },
   onLoad: {
-    type: Function,
+    type: Function as PropType<(e: Event) => void>,
   },
   onError: {
-    type: Function,
+    type: Function as PropType<(e: Event) => void>,
   },
 }

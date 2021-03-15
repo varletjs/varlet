@@ -3,7 +3,7 @@
 		class="var-sticky"
 		ref="stickyEl"
 		:style="{
-			zIndex,
+			zIndex: toNumber(zIndex),
 			top: !isFixed ? `${offsetTop}px` : null,
 			width: isFixed ? fixedWidth : null,
 			height: isFixed ? fixedHeight : null,
@@ -13,7 +13,7 @@
 			class="var-sticky__wrapper"
 			ref="wrapperEl"
 			:style="{
-				zIndex,
+				zIndex: toNumber(zIndex),
 				position: isFixed ? 'fixed' : null,
 				width: isFixed ? fixedWrapperWidth : null,
 				height: isFixed ? fixedWrapperHeight : null,
@@ -27,9 +27,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, onMounted, onUnmounted, computed } from 'vue'
+import { defineComponent, ref, Ref, onMounted, onUnmounted, computed, ComputedRef } from 'vue'
 import { props } from './props'
 import { getParentScroller, toPxNum } from '../utils/elements'
+import { toNumber } from '../utils/shared'
 
 export default defineComponent({
   name: 'VarSticky',
@@ -48,7 +49,7 @@ export default defineComponent({
     const fixedWrapperWidth: Ref<string> = ref('auto')
     const fixedWrapperHeight: Ref<string> = ref('auto')
 
-    const offsetTop = computed(() => toPxNum(props.offsetTop))
+    const offsetTop: ComputedRef<number> = computed(() => toPxNum(props.offsetTop))
 
     let scroller: HTMLElement | Window = window
 
@@ -65,6 +66,7 @@ export default defineComponent({
 
       const { top: stickyTop, left: stickyLeft } = sticky.getBoundingClientRect()
       const currentOffsetTop = stickyTop - scrollerTop
+      const { onScroll } = props
 
       if (currentOffsetTop <= offsetTop.value) {
         if (!isSupportCSSSticky) {
@@ -77,11 +79,11 @@ export default defineComponent({
           isFixed.value = true
         }
 
-        props.onScroll?.(offsetTop.value, true)
+        onScroll?.(offsetTop.value, true)
       } else {
         isFixed.value = false
 
-        props.onScroll?.(currentOffsetTop, false)
+        onScroll?.(currentOffsetTop, false)
       }
     }
 
@@ -112,6 +114,7 @@ export default defineComponent({
       fixedHeight,
       fixedWrapperWidth,
       fixedWrapperHeight,
+      toNumber
     }
   },
 })

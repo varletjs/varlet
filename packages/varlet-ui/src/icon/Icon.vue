@@ -10,9 +10,9 @@
     :style="{
       color,
       transition: `all ${toNumber(transition)}ms`,
-      width: isURL(name) ? toPx(size) : null,
-      height: isURL(name) ? toPx(size) : null,
-      fontSize: toPx(size),
+      width: isURL(name) ? toSizeUnit(size) : null,
+      height: isURL(name) ? toSizeUnit(size) : null,
+      fontSize: toSizeUnit(size),
     }"
     :src="isURL(name) ? nextName : null"
     v-bind="$attrs"
@@ -24,7 +24,7 @@
 import { defineComponent, watch, ref, Ref, nextTick } from 'vue'
 import { isURL, toNumber } from '../utils/shared'
 import { props } from './props'
-import { toPx } from '../utils/elements'
+import { toSizeUnit } from '../utils/elements'
 
 export default defineComponent({
   name: 'VarIcon',
@@ -60,7 +60,7 @@ export default defineComponent({
       shrinking,
       isURL,
       toNumber,
-      toPx,
+      toSizeUnit,
     }
   },
 })

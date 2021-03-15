@@ -1,63 +1,59 @@
 <template>
-	<div class="example">
-		<var-sticky style="margin-top: 100px" offset-top="20px" @scroll="handleScroll">
-			<var-button>20px</var-button>
-		</var-sticky>
+  <div class="example">
+    <app-type>{{ pack.basicUse }}</app-type>
+    <var-sticky :offset-top="50">
+      <var-button type="primary">{{ pack.basicUse }}</var-button>
+    </var-sticky>
 
-		<var-sticky style="margin-top: 100px" offset-top="6rem">
-			<var-button>6rem</var-button>
-		</var-sticky>
-
-		<div class="scroller">
-			<var-sticky style="margin-top: 100px" offset-top="50px">
-				<var-button>50px</var-button>
-			</var-sticky>
-			<div class="i"></div>
-		</div>
-	</div>
+    <app-type>{{ pack.localSticky }}</app-type>
+    <div class="scroller">
+      <var-sticky>
+        <var-button type="success">{{ pack.localSticky }}</var-button>
+      </var-sticky>
+      <div class="block"></div>
+    </div>
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
 import Sticky from '..'
 import Button from '../../button'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { watchLang } from '../../utils/components'
+import { use, pack } from './locale'
 
-export default defineComponent({
+export default {
   name: 'StickyExample',
   components: {
     [Sticky.name]: Sticky,
     [Button.name]: Button,
+    AppType
   },
   setup() {
-    return {
-      handleScroll(top: number, isFixed: boolean) {
-        console.log(top)
-        console.log(isFixed)
-      },
-    }
+    watchLang(use)
+
+    return { pack }
   },
-})
+}
 </script>
 
 <style scoped lang="less">
+@import "../../styles/var";
+
 .example {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	height: 200vh;
+  min-height: 200vh;
 
-	.scroller {
-		width: 100%;
-		height: 400px;
-		overflow: auto;
-		background: #000;
-		margin-top: 20px;
+  .scroller {
+    height: 200px;
+    overflow: auto;
+    background: @color-primary;
 
-		.i {
-			width: 100%;
-			height: 500px;
-			background: yellow;
-		}
-	}
+    .block {
+      width: 100%;
+      height: 600px;
+      background: @color-info;
+      opacity: .5;
+    }
+  }
 }
 </style>

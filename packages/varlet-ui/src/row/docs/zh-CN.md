@@ -23,12 +23,12 @@ createApp().use(Row).use(Col)
 
 ```html
 <var-row>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 ```
 
@@ -36,10 +36,10 @@ createApp().use(Row).use(Col)
 
 ```html
 <var-row>
-  <var-col class="col" :span="16" :offset="8">offset: 8 span: 16</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="16" :offset="8">offset: 8 span: 16</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 ```
 
@@ -51,24 +51,24 @@ createApp().use(Row).use(Col)
 
 ```html
  <var-row>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 <var-row justify="center">
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 <var-row justify="flex-end">
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 <var-row justify="space-around">
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 <var-row justify="space-between">
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 ```
 
@@ -76,12 +76,12 @@ createApp().use(Row).use(Col)
 
 ```html
 <var-row :gutter="10">
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 ```
 
@@ -93,7 +93,7 @@ createApp().use(Row).use(Col)
 
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
-| `gutter` | 列间距 支持`px` `rem` | _number \| string_ | `0` |
+| `gutter` | 列间距(px, rem) | _number \| string_ | `0` |
 | `justify` | 主轴对齐方式, 可选值为 `flex-start` `flex-end` `center` `space-between` `space-around` | _string_ | `flex-start` |
 | `align` | 交叉轴对齐方式, 可选值为 `flex-start` `flex-end` `center` | _string_ | `flex-start` |
 

@@ -3,7 +3,8 @@
 ### Intro
 
 ```html
-The component library provides two auxiliary layout components, <var-row/> and <var-col/>, 
+The component library provides two auxiliary layout components,
+<var-row/> and <var-col/>, 
 so that you can layout more efficiently.
 ```
 
@@ -20,17 +21,17 @@ createApp().use(Row).use(Col)
 
 ```html
 The <var-row/> component divides a row into an average grid of 24 columns (24 pieces). 
-The <var-col/>> provides the span property to set the number of pieces in the column and the offset property to set the number of pieces offset in the column.
+The <var-col/> provides the span property to set the number of pieces in the column and the offset property to set the number of pieces offset in the column.
 ```
 
 ```html
 <var-row>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 ```
 
@@ -38,10 +39,10 @@ The <var-col/>> provides the span property to set the number of pieces in the co
 
 ```html
 <var-row>
-  <var-col class="col" :span="16" :offset="8">offset: 8 span: 16</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="16" :offset="8">offset: 8 span: 16</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 ```
 
@@ -54,24 +55,24 @@ using the <var-row/> justify and align properties to set the alignment of the ma
 
 ```html
  <var-row>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 <var-row justify="center">
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 <var-row justify="flex-end">
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 <var-row justify="space-around">
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 <var-row justify="space-between">
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 ```
 
@@ -79,12 +80,12 @@ using the <var-row/> justify and align properties to set the alignment of the ma
 
 ```html
 <var-row :gutter="10">
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
-  <var-col class="col" :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
 </var-row>
 ```
 
@@ -96,7 +97,7 @@ using the <var-row/> justify and align properties to set the alignment of the ma
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| `gutter` | Col gutter, support `px` `rem` | _number \| string_ | `0` |
+| `gutter` | Col gutter(px, rem) | _number \| string_ | `0` |
 | `justify` | Spindle alignment, optional value is `flex-start` `flex-end` `center` `space-between` `space-around` | _string_ | `flex-start` |
 | `align` | Cross axis alignment, optional value is `flex-start` `flex-end` `center` | _string_ | `flex-start` |
 

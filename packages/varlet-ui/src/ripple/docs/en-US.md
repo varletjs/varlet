@@ -34,9 +34,9 @@ createApp().use(Ripple)
 
 ## API
 
-### Props
+### Options
 
-| Prop | Description | Type | Default | 
+| Option | Description | Type | Default | 
 | --- | --- | --- | --- | 
 | `color` | Ripple color | _string_ | `currentColor` |
 | `disabled` | Whether to disable ripple | _boolean_ | `false` |
