@@ -33,8 +33,8 @@
 
 <script lang="ts">
 import { defineComponent, ComputedRef, computed, nextTick } from 'vue'
-import { useParent, useValidation } from '../utils/components'
-import { FORM_BIND_FORM_ITEM_KEY, FormProvider } from '../form/provide'
+import { useValidation, useForm } from '../utils/components'
+import { toNumber } from '../utils/shared'
 import { SwitchProvider } from './provide'
 import { props } from './props'
 import FormDetails from '../form-details'
@@ -59,9 +59,7 @@ export default defineComponent({
   directives: { Ripple },
   props,
   setup(props) {
-    const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, SwitchProvider>(
-      FORM_BIND_FORM_ITEM_KEY
-    )
+    const { bindForm, formProvider } = useForm<SwitchProvider>()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
 
     const validate = () => v(props.rules, props.modelValue)
@@ -69,8 +67,9 @@ export default defineComponent({
     const validateWithTrigger = () => nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
 
     const styleComputed: ComputedRef<Record<string, Partial<StyleProps>>> = computed(() => {
-      const switchWidth = +props.size * 2
-      const switchHeight = +props.size * 1.2
+      const sizeNum = toNumber(props.size)
+      const switchWidth = sizeNum * 2
+      const switchHeight = sizeNum * 1.2
 
       return {
         handle: {
@@ -80,10 +79,10 @@ export default defineComponent({
           color: props.loadingColor && props.loadingColor,
         },
         ripple: {
-          left: props.modelValue ? `${+props.size / 2}px` : `-${+props.size / 2}px`,
+          left: props.modelValue ? `${sizeNum / 2}px` : `-${sizeNum / 2}px`,
           color: props.modelValue ? props.color || '' : props.closeColor || '#999',
-          width: `${+props.size * 2}px`,
-          height: `${+props.size * 2}px`,
+          width: `${sizeNum * 2}px`,
+          height: `${sizeNum * 2}px`,
         },
         track: {
           height: `${switchHeight * 0.6}px`,

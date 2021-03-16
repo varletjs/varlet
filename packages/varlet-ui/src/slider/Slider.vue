@@ -108,13 +108,13 @@
 
 <script lang="ts">
 import { defineComponent, Ref, ref, onMounted, computed, ComputedRef, reactive, UnwrapRef, nextTick, watch } from 'vue'
-import { useParent, useValidation } from '../utils/components'
-import { FORM_BIND_FORM_ITEM_KEY, FormProvider } from '../form/provide'
+import { useForm, useValidation } from '../utils/components'
 import { getLeft } from '../utils/elements'
 import { isArray, isNumber, toNumber } from '../utils/shared'
 import { props } from './props'
 import { SliderProvider } from './provide'
 import FormDetails from '../form-details'
+import { SwitchProvider } from '../switch/provide'
 
 type ThumbProps = {
   startPosition: number
@@ -130,9 +130,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, SliderProvider>(
-      FORM_BIND_FORM_ITEM_KEY
-    )
+    const { bindForm, formProvider } = useForm<SwitchProvider>()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
 
     const validate = () => v(props.rules, props.modelValue)

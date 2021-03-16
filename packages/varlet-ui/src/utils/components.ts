@@ -21,6 +21,7 @@ import {
   onDeactivated,
 } from 'vue'
 import { isArray, removeItem } from './shared'
+import { FORM_BIND_FORM_ITEM_KEY, FormProvider } from '../form/provide'
 
 export interface MountInstance {
   instance: any
@@ -213,6 +214,15 @@ export function useParent<P, C>(key: symbol) {
   return {
     parentProvider,
     bindParent,
+  }
+}
+
+export function useForm<C>() {
+  const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, C>(FORM_BIND_FORM_ITEM_KEY)
+
+  return {
+    bindForm,
+    formProvider,
   }
 }
 
