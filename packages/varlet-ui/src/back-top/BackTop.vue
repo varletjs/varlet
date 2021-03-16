@@ -12,7 +12,7 @@ import { defineComponent, ref, Ref, onMounted, onBeforeUnmount } from 'vue'
 import Button from '../button'
 import Icon from '../icon'
 import { props } from './props'
-import { isString, easeInOutCubic, throttle } from '../utils/shared'
+import { isString, easeInOutCubic, throttle, toNumber } from '../utils/shared'
 import { getScrollTop, requestAnimationFrame } from '../utils/elements'
 
 export default defineComponent({
@@ -44,7 +44,7 @@ export default defineComponent({
     }
 
     const scroll = () => {
-      show.value = getScrollTop(element.value as Element) >= +props.visibilityHeight
+      show.value = getScrollTop(element.value as Element) >= toNumber(props.visibilityHeight)
     }
 
     const throttleScroll = throttle(scroll, 200)

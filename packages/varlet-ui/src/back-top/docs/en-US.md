@@ -46,7 +46,7 @@ export default {
 
 | Event | Description | arguments |
 | ----- | -------------- | -------- |
-| `click` | Triggers when click | - |
+| `click` | Triggers when click | `event: Event` |
 
 ### 插槽
 
