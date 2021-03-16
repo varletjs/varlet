@@ -16,9 +16,11 @@ export const props = {
   },
   highlightColor: {
     type: String,
-    default: '#ee0a24',
   },
   'onUpdate:active': {
+    type: Function,
+  },
+  onClick: {
     type: Function,
   },
   onChange: {
