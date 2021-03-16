@@ -100,9 +100,9 @@ module.exports = {
       {
         text: {
           'zh-CN': 'Layout 布局',
-          'en-US': 'Layout'
+          'en-US': 'Layout',
         },
-        doc: 'row'
+        doc: 'row',
       },
       {
         text: {
@@ -159,6 +159,27 @@ module.exports = {
           'en-US': 'Progress',
         },
         doc: 'progress',
+      },
+      {
+        text: {
+          'zh-CN': 'Switch 开关',
+          'en-US': 'Switch',
+        },
+        doc: 'switch',
+      },
+      {
+        text: {
+          'zh-CN': 'Slider 滑块',
+          'en-US': 'slider',
+        },
+        doc: 'slider',
+      },
+      {
+        text: {
+          'zh-CN': 'IndexBar 索引栏',
+          'en-US': 'IndexBar',
+        },
+        doc: 'index-bar',
       },
       {
         text: {
@@ -236,27 +257,6 @@ module.exports = {
           'en-US': 'Checkbox',
         },
         doc: 'checkbox',
-      },
-      {
-        text: {
-          'zh-CN': 'IndexBar 索引栏',
-          'en-US': 'IndexBar',
-        },
-        doc: 'index-bar',
-      },
-      {
-        text: {
-          'zh-CN': 'Switch 开关',
-          'en-US': 'Switch',
-        },
-        doc: 'switch',
-      },
-      {
-        text: {
-          'zh-CN': 'Slider 滑块',
-          'en-US': 'slider',
-        },
-        doc: 'slider',
       },
       {
         text: {

@@ -1,10 +1,10 @@
 <template>
   <var-index-bar v-model:active="active" @change="change">
     <div v-for="item in list" :key="item">
-      <var-index-anchor :index="item" class="var-index-anchor__example"> Title {{ item }} </var-index-anchor>
-      <var-cell>{{ item }} text</var-cell>
-      <var-cell>{{ item }} text</var-cell>
-      <var-cell>{{ item }} text</var-cell>
+      <var-index-anchor :index="item" class="var-index-anchor__example"> {{ pack.title }} {{ item }} </var-index-anchor>
+      <var-cell>{{ item }} {{ pack.text }}</var-cell>
+      <var-cell>{{ item }} {{ pack.text }}</var-cell>
+      <var-cell>{{ item }} {{ pack.text }}</var-cell>
     </div>
   </var-index-bar>
 </template>
@@ -14,6 +14,8 @@ import { defineComponent, ref, onBeforeMount } from 'vue'
 import IndexAnchor from '../../index-anchor/IndexAnchor.vue'
 import IndexBar from '..'
 import Cell from '../../cell'
+import { pack, use } from './locale'
+import { watchLang } from '../../utils/components'
 
 export default defineComponent({
   name: 'IndexBarExample',
@@ -36,9 +38,12 @@ export default defineComponent({
       console.log(value)
     }
 
+    watchLang(use)
+
     return {
       active,
       list,
+      pack,
       change,
     }
   },
