@@ -1,10 +1,13 @@
 <template>
   <div style="position: relative">
     <header>
-      <div class="mobile-header__return" v-if="isPhone" @click="toHome">
-        <var-icon name="chevron-left" size="30px" color="#ffffff"></var-icon>
-      </div>
-      {{ componentName }}
+      <var-app-bar :title="componentName" title-text-align="center">
+        <template #left>
+          <var-button round @click="toHome" color="transparent" text-color="#ffffff" text>
+            <var-icon name="chevron-left" :size="28" />
+          </var-button>
+        </template>
+      </var-app-bar>
     </header>
     <div class="router-view__block">
       <router-view />
@@ -13,13 +16,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, Ref, watch } from 'vue'
+import { defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import Icon from '@varlet/ui/es/icon'
+import AppBar from '@varlet/ui/es/app-bar'
+import '@varlet/ui/es/icon/style'
+import '@varlet/ui/es/app-bar/style'
 
 export default defineComponent({
   components: {
     [Icon.name]: Icon,
+    [AppBar.name]: AppBar,
   },
   setup() {
     const componentName: Ref<string> = ref('')
@@ -27,28 +34,11 @@ export default defineComponent({
 
     const isPhone: Ref<boolean> = ref(false)
     isPhone.value = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+
     const toHome = () => {
       // todo 返回首页
       alert('返回首页')
     }
-
-    const judgmentType = () => {
-      let hashValue = window.location.hash.split('/')[1].split('?')
-      let componentValue = ''
-      componentValue = hashValue[0]
-      if (hashValue.length < 2) {
-        window.location.href = `/#/zh-CN/${componentValue}`
-      } else {
-        let languageValue = hashValue[1].split('=')[1].split('&')[0]
-        if (!isPhone.value && window.self === window.top) {
-          window.location.href = `/#/${languageValue}/${componentValue}`
-        }
-      }
-    }
-
-    onMounted(() => {
-      judgmentType()
-    })
 
     watch(
       () => route.path,
@@ -87,37 +77,14 @@ body {
 }
 
 header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  background-color: @color-primary;
-  color: #fff;
-  font-size: 18px;
-  line-height: 40px;
-  height: 40px;
   position: fixed;
   z-index: 99;
   width: 100%;
   font-weight: bold;
-
-  .mobile-header__return {
-    position: absolute;
-    height: 40px;
-    line-height: 40px;
-    width: 40px;
-    text-align: center;
-    top: 0;
-    left: 4px;
-
-    i {
-      height: 40px;
-      line-height: 40px;
-    }
-  }
 }
 
 .router-view__block {
-  padding: 45px 15px 30px;
+  padding: 50px 15px 0;
 }
 
 * {

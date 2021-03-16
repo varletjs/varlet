@@ -1,36 +1,41 @@
 <template>
   <app-type>基础导航栏</app-type>
-  <var-app-bar :title="'标题'"></var-app-bar>
+  <var-app-bar title="标题"></var-app-bar>
 
   <app-type>自定义样式导航栏</app-type>
-  <var-app-bar :title="'标题'" :title-position="'center'" :color="'#ff9800'"></var-app-bar>
+  <var-app-bar title="标题" title-text-align="center" color="#ff9800" :is-shadow="false"></var-app-bar>
+
+  <app-type>添加标题处插槽</app-type>
+  <var-app-bar>从插槽处添加标题</var-app-bar>
 
   <app-type>添加左侧插槽导航栏</app-type>
-  <var-app-bar>
+  <var-app-bar title="标题">
     <template #left>
-      <var-button round @click="goBack" :color="'transparent'" :text-color="'#ffffff'" text>
+      <var-button round @click="goBack" color="transparent" text-color="#ffffff" text>
         <var-icon name="chevron-left" :size="24" />
       </var-button>
     </template>
   </var-app-bar>
 
   <app-type>添加右侧插槽导航栏</app-type>
-  <var-app-bar>
+  <var-app-bar title="标题">
     <template #right>
-      <var-button round @click="searchData" :color="'transparent'" :text-color="'#ffffff'" text>
+      <var-button round @click="searchData" color="transparent" text-color="#ffffff" text>
         <var-icon name="magnify" :size="24" />
       </var-button>
     </template>
   </var-app-bar>
 
   <app-type>添加左右两侧插槽导航栏</app-type>
-  <var-app-bar>
+  <var-app-bar title="标题">
     <template #left>
-      <span @click="goBack">返回</span>
+      <var-button round @click="goBack" color="transparent" text-color="#ffffff" text>
+        <var-icon name="chevron-left" :size="24" />
+      </var-button>
     </template>
     <template #right>
       <var-menu :offset-y="38" :offset-x="-20" v-model:show="offsetY">
-        <var-button round @click="offsetY = true" :color="'transparent'" :text-color="'#ffffff'" text>
+        <var-button round @click="offsetY = true" color="transparent" text-color="#ffffff" text>
           <var-icon name="menu" :size="24" />
         </var-button>
         <template #menu>

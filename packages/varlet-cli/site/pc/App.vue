@@ -22,7 +22,7 @@
           </template>
         </var-menu>
         <a target="_blank" href="https://github.com/haoziqaq/varlet" class="varlet-site-header__link">
-          <img src="https://b.yzcdn.cn/vant/logo/github.svg" />
+          <var-icon name="github" color="#ffffff" :size="28"></var-icon>
         </a>
       </span>
     </div>
@@ -48,7 +48,7 @@
       <div class="varlet-site-mobile">
         <div class="varlet-site-empty"></div>
         <div class="varlet-site-mobile-content">
-          <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc`"></iframe>
+          <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&path=${path}`"></iframe>
         </div>
         <div class="varlet-site-mobile-image">
           <img src="./assets/images/mobile.png" />
@@ -107,6 +107,7 @@ export default defineComponent({
     const { header: configHeader = { i18nButton: {}, logo: '', search: {} }, menu: configMenu = [] } = pc
     const languageList: Ref<Language> = ref({})
     const offsetY: Ref<boolean> = ref(false)
+    const path: Ref<string | null> = ref(null)
 
     const isPhone: Ref<boolean> = ref(false)
     isPhone.value = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
@@ -123,14 +124,14 @@ export default defineComponent({
       componentValue = window.location.hash.split('/')[2]
       languageValue = window.location.hash.split('/')[1]
       if (isPhone.value) {
-        window.location.href = `/mobile.html#/${componentValue}?language=${languageValue}&platform=pc`
+        window.location.href = `/mobile.html#/${componentValue}?language=${languageValue}&platform=pc&path=${componentValue}`
       }
-
       let childrenElement = refs.getElementsByClassName('var-cell')
       let index = menu.value.findIndex((item) => item.doc === componentValue)
+      path.value = componentValue
       if (index !== -1) {
         childrenElement[index].scrollIntoView({
-          block: 'nearest',
+          block: 'center',
           inline: 'start',
         })
       }
@@ -143,7 +144,8 @@ export default defineComponent({
       if (item.isTitle) {
         return false
       }
-      componentName.value = item.doc
+      componentName.value = item.nonComponent ? 'home' : item.doc
+      path.value = item.nonComponent ? item.doc : null
     }
 
     const changeLanguage = (key) => {
@@ -176,6 +178,7 @@ export default defineComponent({
       isHideVersion,
       languageList,
       offsetY,
+      path,
       nav,
       changeRoute,
       changeLanguage,
@@ -285,7 +288,7 @@ iframe {
       }
 
       &__link {
-        img {
+        i {
           display: block;
           width: 26px;
           height: 26px;
@@ -367,7 +370,7 @@ iframe {
 
     &-content {
       height: calc(100vh - 60px);
-      overflow-y: hidden;
+      //overflow-y: hidden;
       display: flex;
       background: #fff;
     }

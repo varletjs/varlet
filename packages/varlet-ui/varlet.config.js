@@ -33,6 +33,7 @@ module.exports = {
           'en-US': 'Quickstart',
         },
         doc: 'quickstart',
+        nonComponent: true,
       },
       {
         text: {

@@ -36,7 +36,8 @@
           "zh-CN": "快速开始",
           "en-US": "Quickstart"
         },
-        "doc": "quickstart"
+        "doc": "quickstart",
+        "nonComponent": true
       },
       {
         "text": {

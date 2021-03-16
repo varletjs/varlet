@@ -5,13 +5,10 @@
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { Chip } from '@varlet/ui'
 
-export default defineComponent({
-	components: {
-		[Chip.name]: Chip
-	}
-})
+createApp().use(Chip)
 ```
 
 ### 主题色标签
@@ -20,11 +17,11 @@ export default defineComponent({
 
 ```html
 
-<var-chip type="primary">主要标签</var-chip>
-<var-chip type="success">成功标签</var-chip>
-<var-chip type="danger">危险标签</var-chip>
-<var-chip type="warning">警告标签</var-chip>
-<var-chip type="info">信息标签</var-chip>
+<var-chip type='primary'>主要标签</var-chip>
+<var-chip type='success'>成功标签</var-chip>
+<var-chip type='danger'>危险标签</var-chip>
+<var-chip type='warning'>警告标签</var-chip>
+<var-chip type='info'>信息标签</var-chip>
 <var-chip>默认标签</var-chip>
 ```
 
@@ -34,7 +31,7 @@ export default defineComponent({
 
 ```html
 
-<var-chip plain type="primary">空心标签</var-chip>
+<var-chip plain type='primary'>空心标签</var-chip>
 ```
 
 ### 非圆角标签
@@ -43,7 +40,7 @@ export default defineComponent({
 
 ```html
 
-<var-chip :round="false" type="primary">非圆角标签</var-chip>
+<var-chip :round='false' type='primary'>非圆角标签</var-chip>
 ```
 
 ### 标签尺寸
@@ -52,18 +49,18 @@ export default defineComponent({
 
  ```html
 
-<var-chip size="large">大标签</var-chip>
+<var-chip size='large'>大标签</var-chip>
 <var-chip>中等标签</var-chip>
-<var-chip size="small">小标签</var-chip>
-<var-chip size="mini">迷你标签</var-chip>
+<var-chip size='small'>小标签</var-chip>
+<var-chip size='mini'>迷你标签</var-chip>
 ```
 
 ### 块级flex
 
 ```html
 
-<var-chip type="primary" block>块级标签</var-chip>
-<var-chip type="primary">块级标签</var-chip>
+<var-chip type='primary' block>块级标签</var-chip>
+<var-chip type='primary'>块级标签</var-chip>
 ```
 
 ### 可关闭标签
@@ -72,19 +69,19 @@ export default defineComponent({
 
 ```html
 
-<var-chip closable v-if="show" @close="show = false">可关闭标签</var-chip>
-<var-chip closable icon-name="delete" v-if="show1" @close="show1 = false">自定义关闭图标</var-chip>
+<var-chip closable v-if='show' @close='show = false'>可关闭标签</var-chip>
+<var-chip closable icon-name='delete' v-if='show1' @close='show1 = false'>自定义关闭图标</var-chip>
 ```
 
 ```js
 import { defineComponent, Ref, ref } from 'vue'
 
 export default defineComponent({
-	setup() {
-		const show: Ref<boolean> = ref(true);
-		const show1: Ref<boolean> = ref(true);
-		return { show, show1 };
-	}
+  setup() {
+    const show: Ref<boolean> = ref(true);
+    const show1: Ref<boolean> = ref(true);
+    return { show, show1 };
+  }
 })
 ```
 
@@ -94,10 +91,10 @@ export default defineComponent({
 
 ```html
 
-<var-chip color="#009688">标签</var-chip>
-<var-chip color="#009688" plain>标签</var-chip>
-<var-chip color="#faecd8" text-color="#e6a23c" plain>标签</var-chip>
-<var-chip color="#faecd8" text-color="#e6a23c">标签</var-chip>
+<var-chip color='#009688'>标签</var-chip>
+<var-chip color='#009688' plain>标签</var-chip>
+<var-chip color='#faecd8' text-color='#e6a23c' plain>标签</var-chip>
+<var-chip color='#faecd8' text-color='#e6a23c'>标签</var-chip>
 ```
 
 ### 添加左右插槽标签
@@ -106,26 +103,26 @@ export default defineComponent({
 
 ```html
 
-<var-chip type="primary" plain>
-	<template #left>
-		<var-icon name="star"></var-icon>
-	</template>
-	左侧插槽
+<var-chip type='primary' plain>
+  <template #left>
+    <var-icon name='star'></var-icon>
+  </template>
+  左侧插槽
 </var-chip>
-<var-chip type="primary" plain>
-	<template #right>
-		<var-icon name="fire"></var-icon>
-	</template>
-	右侧插槽
+<var-chip type='primary' plain>
+  <template #right>
+    <var-icon name='fire'></var-icon>
+  </template>
+  右侧插槽
 </var-chip>
-<var-chip type="primary" plain>
-	<template #left>
-		<var-icon name="account-circle"></var-icon>
-	</template>
-	<template #right>
-		<var-icon name="cake-variant"></var-icon>
-	</template>
-	左右两侧插槽
+<var-chip type='primary' plain>
+  <template #left>
+    <var-icon name='account-circle'></var-icon>
+  </template>
+  <template #right>
+    <var-icon name='cake-variant'></var-icon>
+  </template>
+  左右两侧插槽
 </var-chip>
 ```
 
