@@ -204,10 +204,10 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'ExpansionPanels 拓展面板',
-          'en-US': 'ExpansionPanels',
+          'zh-CN': 'Collapse 拓展面板',
+          'en-US': 'Collapse',
         },
-        doc: 'Expansion-panels',
+        doc: 'Collapse',
       },
       {
         text: {
