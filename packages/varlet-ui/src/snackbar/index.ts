@@ -2,7 +2,7 @@ import { h, reactive, TransitionGroup, App, RendererElement } from 'vue'
 import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
 import { mountInstance } from '../utils/components'
-import { isBaseObject } from '../utils/shared'
+import { isPlainObject } from '../utils/shared'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
@@ -112,7 +112,7 @@ const TransitionGroupHost = {
 }
 
 const Snackbar: Snackbar = <Snackbar>function (options: SnackbarOptions = {}): SnackbarHandel {
-  const snackOptions: SnackbarOptions = isBaseObject(options) ? options : {}
+  const snackOptions: SnackbarOptions = isPlainObject(options) ? options : {}
   const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>(snackOptions)
   reactiveSnackOptions.show = true
 
