@@ -61,7 +61,7 @@ createApp().use(IndexAnchor)
 
 ### 属性
 
-### IndexBar Props
+### IndexBar 属性
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
@@ -71,13 +71,15 @@ createApp().use(IndexAnchor)
 | `z-index` | z-index 层级 | _number_ ｜ _string_ | `1` |
 | `highlight-color` | 索引字符高亮颜色 | _string_ | `#ee0a24` |
 
-### IndexAnchor Props
+### IndexAnchor 属性
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
 | `index` | 索引字符 | _number_ ｜ _string_ | - |
 
-### IndexBar Events
+### 事件
+
+### IndexBar 事件
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------------- | -------- |
@@ -86,7 +88,7 @@ createApp().use(IndexAnchor)
 
 ### 插槽
 
-### IndexAnchor Slots
+### IndexAnchor 插槽
 
 | 名称 | 说明 | 参数 |
 | --- | --- | --- |

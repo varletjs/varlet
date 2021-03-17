@@ -1,49 +1,48 @@
 <template>
   <div class="collapse-demo">
     <div>
-      <app-type>基本使用</app-type>
+      <app-type>{{ pack.basicUsage }}</app-type>
       <var-collapse v-model="value" @change="changeHandle">
-        <var-collapse-item title="Item" name="1">hello world</var-collapse-item>
-        <var-collapse-item title="Item" name="2">hello world</var-collapse-item>
+        <var-collapse-item :title="pack.title" name="1">{{ pack.text }}</var-collapse-item>
+        <var-collapse-item :title="pack.title" name="2">{{ pack.text }}</var-collapse-item>
       </var-collapse>
     </div>
 
     <div>
-      <app-type>隐藏边距</app-type>
+      <app-type>{{ pack.hideMargin }}</app-type>
       <var-collapse v-model="value" :offset="false">
-        <var-collapse-item title="Item" name="1">hello world</var-collapse-item>
-        <var-collapse-item title="Item" name="2">hello world</var-collapse-item>
+        <var-collapse-item :title="pack.title" name="1">{{ pack.text }}</var-collapse-item>
+        <var-collapse-item :title="pack.title" name="2">{{ pack.text }}</var-collapse-item>
       </var-collapse>
     </div>
 
     <div>
-      <app-type>手风琴模式</app-type>
-      <var-collapse v-model="value1" accordion :offset="false" @change="changeHandle">
-        <var-collapse-item title="Item" name="1">hello world</var-collapse-item>
-        <var-collapse-item title="Item" name="2">hello world</var-collapse-item>
+      <app-type>{{ pack.accordionMode }}</app-type>
+      <var-collapse v-model="value1" accordion :offset="false">
+        <var-collapse-item :title="pack.title" name="1">{{ pack.text }}</var-collapse-item>
+        <var-collapse-item :title="pack.title" name="2">{{ pack.text }}</var-collapse-item>
       </var-collapse>
     </div>
 
     <div>
-      <app-type>禁用</app-type>
+      <app-type>{{ pack.disabled }}</app-type>
       <var-button @click="disabled = !disabled" style="margin-bottom: 8px">
-        {{ disabled ? '恢复' : '禁用' }}
+        {{ disabled ? pack.enable : pack.disabled }}
       </var-button>
-      <var-collapse v-model="value1" accordion @change="changeHandle">
-        <var-collapse-item title="Item" :name="1" :disabled="disabled">hello world</var-collapse-item>
-        <var-collapse-item title="Item" :disabled="disabled">hello world</var-collapse-item>
+      <var-collapse v-model="value2">
+        <var-collapse-item :title="pack.title" :name="1" :disabled="disabled">{{ pack.text }}</var-collapse-item>
+        <var-collapse-item :title="pack.title" :name="2">{{ pack.text }}</var-collapse-item>
       </var-collapse>
     </div>
 
     <div>
-      <app-type>自定义标题</app-type>
-      <var-collapse v-model="value1" accordion>
-        <var-collapse-item title="Collapse Item" name="1" icon="account-circle">hello world</var-collapse-item>
-        <var-collapse-item>
-          <template #title>Title Slot</template>
-          <template #icon>Icon Slot</template>
-
-          hello world
+      <app-type>{{ pack.customContent }}</app-type>
+      <var-collapse v-model="value3">
+        <var-collapse-item :title="pack.slotTitle" name="1" icon="account-circle">{{ pack.text }}</var-collapse-item>
+        <var-collapse-item name="2">
+          <template #title>{{ pack.slotTitle }}</template>
+          <template #icon>^_^</template>
+          {{ pack.slotContent }}
         </var-collapse-item>
       </var-collapse>
     </div>
@@ -71,6 +70,8 @@ export default defineComponent({
     const disabled = ref(false)
     const value = ref(['1'])
     const value1 = ref('')
+    const value2 = ref([1])
+    const value3 = ref(['1'])
     const changeHandle = (val) => {
       console.log(val)
     }
@@ -81,6 +82,8 @@ export default defineComponent({
       disabled,
       value,
       value1,
+      value2,
+      value3,
       pack,
       changeHandle,
     }

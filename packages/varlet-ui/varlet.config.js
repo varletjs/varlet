@@ -183,6 +183,13 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Collapse 拓展面板',
+          'en-US': 'Collapse',
+        },
+        doc: 'Collapse',
+      },
+      {
+        text: {
           'zh-CN': 'Snackbar 消息条',
           'en-US': 'Snackbar',
         },
@@ -201,13 +208,6 @@ module.exports = {
           'en-US': 'Badge',
         },
         doc: 'badge',
-      },
-      {
-        text: {
-          'zh-CN': 'Collapse 拓展面板',
-          'en-US': 'Collapse',
-        },
-        doc: 'Collapse',
       },
       {
         text: {

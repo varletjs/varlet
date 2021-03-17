@@ -77,6 +77,8 @@ When you click the index bar, it will automatically jump to the corresponding `I
 | ----- | -------------- | -------- | ---------- |
 | `index` | Index | _number_ ｜ _string_ | - |
 
+### Events
+
 ### IndexBar Events
 
 | Event | Description | arguments |
