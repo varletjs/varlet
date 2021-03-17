@@ -8,12 +8,12 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  onChange: {
-    type: Function,
-  },
   offset: {
     type: Boolean,
     default: true,
+  },
+  onChange: {
+    type: Function,
   },
   'onUpdate:modelValue': {
     type: Function,

@@ -1,31 +1,31 @@
 <template>
   <div
     :class="{
-      'var-expansion-panel': true,
-      'var-expansion-panel__active': offset && isShow,
-      'var-expansion-panel__disable': disabled,
+      'var-collapse-item': true,
+      'var-collapse-item__active': offset && isShow,
+      'var-collapse-item__disable': disabled,
     }"
   >
-    <div class="var-expansion-panel-header" @click="toggle()">
-      <div class="var-expansion-panel-header__title">
+    <div class="var-collapse-item-header" @click="toggle()">
+      <div class="var-collapse-item-header__title">
         <slot name="title">{{ title }}</slot>
       </div>
-      <div class="var-expansion-panel-header__icon">
+      <div class="var-collapse-item-header__icon">
         <slot name="icon">
           <var-icon
             :name="icon"
             :transition="400"
             :class="{
-              'var-expansion-panel-header__icon': true,
-              'var-expansion-panel-header__open': isShow && icon === 'chevron-down',
-              'var-expansion-panel-header__disable': disabled,
+              'var-collapse-item-header__icon': true,
+              'var-collapse-item-header__open': isShow && icon === 'chevron-down',
+              'var-collapse-item-header__disable': disabled,
             }"
           />
         </slot>
       </div>
     </div>
-    <div class="var-expansion-panel-content" v-show="show" ref="contentEl" @transitionend="transitionend">
-      <div class="var-expansion-panel__wrap">
+    <div class="var-collapse-item-content" v-show="show" ref="contentEl" @transitionend="transitionend">
+      <div class="var-collapse-item__wrap">
         <slot></slot>
       </div>
     </div>
@@ -36,37 +36,27 @@
 import { defineComponent, ref, Ref, nextTick, watch, ComputedRef, computed } from 'vue'
 import { requestAnimationFrame } from '../utils/elements'
 import { isArray } from '../utils/shared'
-import { useParent, useAtParentIndex } from '../utils/components'
-import {
-  EXPANSION_PANELS_BIND_EXPANSION_PANEL_KEY,
-  EXPANSION_PANELS_COUNT_EXPANSION_PANEL_KEY,
-  ExpansionPanelsProvider,
-} from '../expansion-panels/provide'
-import { ExpansionPanelProvider } from './provide'
+import { CollapseItemProvider, useCollapse } from './provide'
 import { props } from './props'
 import Icon from '../icon'
 
 export default defineComponent({
-  name: 'VarExpansionPanel',
+  name: 'VarCollapseItem',
   components: {
     [Icon.name]: Icon,
   },
   props,
   setup(props) {
-    const { parentProvider: ExpansionPanelsProvider, bindParent } = useParent<
-      ExpansionPanelsProvider,
-      ExpansionPanelProvider
-    >(EXPANSION_PANELS_BIND_EXPANSION_PANEL_KEY)
-    const { index } = useAtParentIndex(EXPANSION_PANELS_COUNT_EXPANSION_PANEL_KEY)
+    const { index, collapse, bindCollapse } = useCollapse()
 
-    if (!ExpansionPanelsProvider || !bindParent || !index) {
-      throw Error('<var-expansion-panel/> must in <var-expansion-panels>')
+    if (!collapse || !bindCollapse || !index) {
+      throw Error('<var-collapse-item/> must in <var-collapse>')
     }
 
     const contentEl: Ref<HTMLDivElement | null> = ref(null)
     const show: Ref<boolean> = ref(false)
     const isShow: Ref<boolean> = ref(false)
-    const { active, offset, updateItem } = ExpansionPanelsProvider
+    const { active, offset, updateItem } = collapse
 
     const name: ComputedRef<number | string | undefined> = computed(() => props.name)
 
@@ -108,13 +98,13 @@ export default defineComponent({
       }
     }
 
-    const expansionPanelProvider: ExpansionPanelProvider = {
+    const collapseItemProvider: CollapseItemProvider = {
       index,
       name,
       init,
     }
 
-    bindParent(expansionPanelProvider)
+    bindCollapse(collapseItemProvider)
 
     watch(isShow, (value) => {
       if (value) openPanel()
@@ -134,5 +124,5 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import './expansionPanel';
+@import './collapseItem';
 </style>

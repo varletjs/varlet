@@ -119,7 +119,7 @@ Use `ref` to get countdown instance, you can call the `start`, `pause`, and `res
 | ----- | -------------- | -------- | ---------- |
 | `time` | Total time(ms)| _number_ ｜ _string_ | `0` |
 | `format` | Time format | _string_ | `HH:mm:ss` |
-| `auto-start` | Whether to auto start count down | _number_ ｜ _boolean_ | `true` |
+| `auto-start` | Whether to auto start count down | _boolean_ | `true` |
 
 ### Available formats
 | Format | Description |

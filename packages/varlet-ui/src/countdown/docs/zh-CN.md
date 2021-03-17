@@ -119,7 +119,7 @@ createApp().use(Countdown)
 | ----- | -------------- | -------- | ---------- |
 | `time` | 倒计时时长(ms)| _number_ ｜ _string_ | `0` |
 | `format` | 时间格式 | _string_ | `HH:mm:ss` |
-| `auto-start` | 是否自动开始倒计时 | _number_ ｜ _boolean_ | `true` |
+| `auto-start` | 是否自动开始倒计时 | _boolean_ | `true` |
 
 ### format 格式
 | 格式 | 说明 | 
