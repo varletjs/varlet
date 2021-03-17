@@ -5,7 +5,7 @@
 ```html
 懒加载默认使用IntersectionObserver API检测图片的可见性。
 在不支持该API的浏览器中会自动降级成传统的滚动事件监听。
-为了更好的性能体验，推荐使用polyfill的方式打补丁兼容该API
+为了更好的性能体验，推荐使用polyfill的方式打补丁兼容该API。
 ```
 
 ```html
@@ -78,7 +78,8 @@ createApp().use(Lazy, {
     'touchmove'
   ],
   filter(lazy) {
-    // 可以访问lazy上下文的所有属性,执行一些属性拦截, 比如简单修改所有的图片地址http -> https
+    // 可以访问lazy上下文的所有属性,执行一些属性拦截, 
+    // 比如简单修改所有的图片地址http -> https
     lazy.src.replace('http://', 'https://')
   }
 })

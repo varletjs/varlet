@@ -1,8 +1,6 @@
 @import '../styles/var';
 
 @tab-color: #fff;
-@tab-horizontal-height: 44px;
-@tab-vertical-height: 66px;
 @tab-padding: 12px;
 
 @tab-active-color: @color-primary;
@@ -17,6 +15,8 @@
 	padding: 0 @tab-padding;
 	font-size: @font-size-md;
 	color: @tab-color;
+  cursor: pointer;
+  user-select: none;
 
 	&--active {
 		color: @tab-active-color;
@@ -28,15 +28,14 @@
 
 	&--disabled {
 		color: @tab-disabled-color;
+    cursor: not-allowed;
 	}
 
 	&--horizontal {
 		flex-direction: row;
-		height: @tab-horizontal-height;
 	}
 
 	&--vertical {
 		flex-direction: column;
-		height: @tab-vertical-height;
 	}
 }

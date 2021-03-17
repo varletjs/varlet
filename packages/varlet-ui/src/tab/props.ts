@@ -1,3 +1,5 @@
+import { PropType } from 'vue'
+
 export const props = {
   name: {
     type: [String, Number],
@@ -7,6 +9,6 @@ export const props = {
     default: false,
   },
   onClick: {
-    type: Function,
+    type: Function as PropType<(active: string | number, e: Event) => void>,
   },
 }

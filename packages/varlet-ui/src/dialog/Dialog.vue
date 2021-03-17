@@ -36,7 +36,7 @@
           v-if="cancelButton"
           @click="cancel"
         >
-          {{ dt(cancelButtonText, pack.dialogCancelButton) }}
+          {{ dt(cancelButtonText, pack.dialogCancelButtonText) }}
         </var-button>
         <var-button
           class="var-dialog__button var-dialog__confirm-button"
@@ -46,7 +46,7 @@
           v-if="confirmButton"
           @click="confirm"
         >
-          {{ dt(confirmButtonText, pack.dialogConfirmButton) }}
+          {{ dt(confirmButtonText, pack.dialogConfirmButtonText) }}
         </var-button>
       </div>
     </div>

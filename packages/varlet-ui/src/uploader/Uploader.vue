@@ -69,6 +69,11 @@
       />
       <video
         class="var-uploader__preview-video"
+        playsinline="true"
+        webkit-playsinline="true"
+        x5-playsinline="true"
+        x5-video-player-type="h5"
+        x5-video-player-fullscreen="false"
         controls
         :src="currentPreview.url"
         v-if="currentPreview && isHTMLSupportVideo(currentPreview.url)"

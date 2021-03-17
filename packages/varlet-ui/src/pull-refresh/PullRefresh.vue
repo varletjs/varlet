@@ -119,7 +119,7 @@ export default defineComponent({
     )
 
     onMounted(() => {
-      scroller = getParentScroller(freshNode.value as HTMLElement, 'y')
+      scroller = getParentScroller(freshNode.value as HTMLElement)
     })
 
     return {

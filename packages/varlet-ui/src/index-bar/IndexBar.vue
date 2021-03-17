@@ -17,7 +17,7 @@
 <script lang="ts">
 import { computed, ComputedRef, defineComponent, nextTick, ref, Ref, watch, onMounted } from 'vue'
 import { useChildren, useAtChildrenCounter } from '../utils/components'
-import { isBaseObject } from '../utils/shared'
+import { isPlainObject } from '../utils/shared'
 import { IndexBarProvider, INDEX_BAR_BIND_INDEX_ANCHOR_KEY, INDEX_BAR_COUNT_INDEX_ANCHOR_KEY } from './provide'
 import { IndexAnchorProvider } from '../index-anchor/provide'
 import { props } from './props'
@@ -50,7 +50,7 @@ export default defineComponent({
     bindChildren(indexBarProvider)
 
     const emitEvent = (anchor: IndexAnchorProvider | number | string) => {
-      const anchorName = isBaseObject(anchor) ? anchor.name.value : anchor
+      const anchorName = isPlainObject(anchor) ? anchor.name.value : anchor
       if (anchorName === props.active) return
       props['onUpdate:active']?.(anchorName)
       props.onChange?.(anchorName)

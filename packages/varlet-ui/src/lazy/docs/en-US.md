@@ -5,7 +5,7 @@
 ```html
 By default, lazy loading uses the IntersectionObserver API to detect image visibility.
 This automatically degrades to traditional scrolling event listening in browsers that do not support the API.
-For better performance experience, it is recommended to use polyfill to patch the API
+For better performance experience, it is recommended to use polyfill to patch the API.
 ```
 
 ```html

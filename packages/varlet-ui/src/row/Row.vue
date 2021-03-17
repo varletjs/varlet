@@ -15,7 +15,7 @@
 <script lang="ts">
 import { defineComponent, watch } from 'vue'
 import { props } from './props'
-import { RowProvider, useCols } from './provode'
+import { RowProvider, useCols } from './provide'
 import { ColProvider } from '../col/provide'
 import { toPxNum } from '../utils/elements'
 

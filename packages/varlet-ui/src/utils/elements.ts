@@ -27,7 +27,13 @@ export function inViewport(element: HTMLElement): boolean {
   return xInViewport && yInViewport
 }
 
-export function getParentScroller(el: HTMLElement, direction?: 'x' | 'y'): HTMLElement | Window {
+export function isHidden(el: HTMLElement) {
+  const { width, height } = el.getBoundingClientRect()
+
+  return width === 0 && height === 0
+}
+
+export function getParentScroller(el: HTMLElement): HTMLElement | Window {
   let element = el
 
   while (element) {
@@ -42,12 +48,9 @@ export function getParentScroller(el: HTMLElement, direction?: 'x' | 'y'): HTMLE
     }
 
     const scrollRE = /(scroll|auto)/
+    const { overflowY } = window.getComputedStyle(element)
 
-    const { overflow, overflowX, overflowY } = window.getComputedStyle(element)
-    const passOverflow = scrollRE.test(overflow)
-    const passOverflowX = (direction === 'x' || direction == null) && scrollRE.test(overflowX)
-    const passOverflowY = (direction === 'y' || direction == null) && scrollRE.test(overflowY)
-    if (passOverflow || passOverflowX || passOverflowY) {
+    if (scrollRE.test(overflowY)) {
       return element
     }
   }
