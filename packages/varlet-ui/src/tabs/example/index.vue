@@ -1,176 +1,149 @@
 <template>
-	<div class="example">
-		<app-type>基本使用</app-type>
-		<var-tabs style="width: 345px" v-model:active="active" @change="handleChange">
-			<var-tab v-for="i in list" :key="i">{{ i }}</var-tab>
-		</var-tabs>
+  <app-type>{{ pack.basicUsage }}</app-type>
+  <var-tabs v-model:active="active">
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab>{{ pack.option }}3</var-tab>
+  </var-tabs>
 
-		<app-type>修改颜色</app-type>
-		<var-tabs
-			style="width: 345px"
-			color="rgb(98,0,234)"
-			active-color="#fff"
-			inactive-color="rgb(193,155,247)"
-			v-model:active="active"
-			@change="handleChange"
-		>
-			<var-tab v-for="i in list" :key="i">{{ i }}</var-tab>
-		</var-tabs>
+  <app-type>{{ pack.modifyStyle }}</app-type>
+  <var-tabs
+    elevation
+    color="#2979ff"
+    active-color="#fff"
+    inactive-color="hsla(0, 0%, 100%, .6)"
+    v-model:active="active2"
+  >
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab>{{ pack.option }}3</var-tab>
+  </var-tabs>
 
-		<app-type>开启阴影</app-type>
-		<var-tabs
-			style="width: 345px"
-			color="rgb(98,0,234)"
-			active-color="#fff"
-			inactive-color="rgb(193,155,247)"
-			:elevation="4"
-			v-model:active="active"
-			@change="handleChange"
-		>
-			<var-tab v-for="i in list" :key="i">{{ i }}</var-tab>
-		</var-tabs>
+  <app-type>{{ pack.disabled }}</app-type>
+  <var-tabs
+    elevation
+    color="#2979ff"
+    active-color="#fff"
+    inactive-color="hsla(0, 0%, 100%, .6)"
+    v-model:active="active3"
+  >
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab disabled>{{ pack.disabled }}</var-tab>
+  </var-tabs>
 
-		<app-type>禁用标签</app-type>
-		<var-tabs
-			style="width: 345px"
-			color="rgb(98,0,234)"
-			active-color="#fff"
-			inactive-color="rgb(193,155,247)"
-			:elevation="4"
-			v-model:active="active"
-			@change="handleChange"
-		>
-			<var-tab disabled>禁用项</var-tab>
-			<var-tab v-for="i in list" :key="i">{{ i }}</var-tab>
-		</var-tabs>
+  <app-type>{{  pack.enableScroll }}</app-type>
+  <var-tabs
+    elevation
+    color="#2979ff"
+    active-color="#fff"
+    inactive-color="hsla(0, 0%, 100%, .6)"
+    v-model:active="active4"
+  >
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab>{{ pack.option }}3</var-tab>
+    <var-tab>{{ pack.option }}4</var-tab>
+    <var-tab>{{ pack.option }}5</var-tab>
+    <var-tab>{{ pack.option }}6</var-tab>
+    <var-tab>{{ pack.option }}7</var-tab>
+    <var-tab>{{ pack.option }}8</var-tab>
+  </var-tabs>
 
-		<app-type>垂直布局</app-type>
-		<var-tabs
-			style="width: 345px"
-			item-direction="vertical"
-			color="rgb(98,0,234)"
-			active-color="#fff"
-			inactive-color="rgb(193,155,247)"
-			:elevation="4"
-			v-model:active="active"
-			@change="handleChange"
-		>
-			<var-tab v-for="i in list" :key="i">
-				<var-icon name="checkbox-marked-circle" style="margin-bottom: 5px" size="20px" />
-				<div>{{ i }}</div>
-			</var-tab>
-		</var-tabs>
+  <app-type>{{ pack.tabVerticalLayout }}</app-type>
+  <var-tabs
+    elevation
+    item-direction="vertical"
+    color="#2979ff"
+    active-color="#fff"
+    inactive-color="hsla(0, 0%, 100%, .6)"
+    v-model:active="active5"
+  >
+    <var-tab>
+      <var-icon class="icon" name="information" />
+      <div>{{ pack.option }}1</div>
+    </var-tab>
+    <var-tab>
+      <var-icon class="icon" name="warning" />
+      <div>{{ pack.option }}2</div>
+    </var-tab>
+    <var-tab>
+      <var-icon class="icon" name="error" />
+      <div>{{ pack.option }}3</div>
+    </var-tab>
+  </var-tabs>
 
-		<var-tabs
-			style="width: 100%"
-			color="rgb(98,0,234)"
-			active-color="#fff"
-			inactive-color="rgb(193,155,247)"
-			indicator-size="0"
-			item-direction="vertical"
-			fixed-bottom
-			:elevation="4"
-			v-model:active="activeBottom"
-			@change="handleChange"
-		>
-			<var-tab>
-				<var-icon name="checkbox-marked-circle" style="margin-bottom: 5px" />
-				<div>第一个</div>
-			</var-tab>
-			<var-tab>
-				<var-icon name="checkbox-marked-circle" style="margin-bottom: 5px" />
-				<div>第二个</div>
-			</var-tab>
-			<var-tab>
-				<var-icon name="checkbox-marked-circle" style="margin-bottom: 5px" />
-				<div>第三个</div>
-			</var-tab>
-		</var-tabs>
+  <app-type>{{ pack.tabsVerticalLayout }}</app-type>
+  <var-tabs
+    class="vertical-tabs"
+    elevation
+    layout-direction="vertical"
+    color="#2979ff"
+    active-color="#fff"
+    inactive-color="hsla(0, 0%, 100%, .6)"
+    v-model:active="active6"
+  >
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab>{{ pack.option }}3</var-tab>
+  </var-tabs>
 
-		<app-type>视图联动</app-type>
-		<div class="container">
-			<var-tabs
-				style="height: 300px; flex-shrink: 0"
-				color="rgb(98,0,234)"
-				active-color="#fff"
-				inactive-color="rgb(193,155,247)"
-				layout-direction="vertical"
-				:elevation="2"
-				v-model:active="activeRelation"
-				@change="handleChange"
-			>
-				<var-tab v-for="i in list2" :key="i.id">
-					{{ i.name }}
-				</var-tab>
-				<var-tab :key="100">长文字</var-tab>
-			</var-tabs>
-			<var-tabs-items style="margin-left: 10px" v-model:active="activeRelation">
-				<var-tab-item v-for="i in list2" :key="i.id"> {{ i.name }}视图 </var-tab-item>
-				<var-tab-item :key="100"
-					>测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字</var-tab-item
-				>
-			</var-tabs-items>
-		</div>
+  <app-type>{{ pack.viewRelation }}</app-type>
+  <var-tabs
+    elevation
+    color="#2979ff"
+    active-color="#fff"
+    inactive-color="hsla(0, 0%, 100%, .6)"
+    v-model:active="activeRelation"
+  >
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab>{{ pack.option }}3</var-tab>
+  </var-tabs>
 
-		<app-type>视图联动</app-type>
-		<var-tabs
-			style="width: 345px"
-			color="rgb(98,0,234)"
-			active-color="#fff"
-			inactive-color="rgb(193,155,247)"
-			:elevation="2"
-			v-model:active="activeRelation"
-			@change="handleChange"
-		>
-			<var-tab v-for="i in list2" :key="i.id">
-				{{ i.name }}
-			</var-tab>
-			<var-tab :key="100">长文字</var-tab>
-		</var-tabs>
+  <var-tabs-items v-model:active="activeRelation">
+    <var-tab-item style="padding: 8px 5px">
+      {{ pack.text }}
+    </var-tab-item>
+    <var-tab-item style="padding: 8px 5px">
+      {{ pack.text2 }}
+    </var-tab-item>
+    <var-tab-item style="padding: 8px 5px">
+      {{ pack.text3 }}
+    </var-tab-item>
+  </var-tabs-items>
 
-		<var-tabs-items style="margin-top: 10px" v-model:active="activeRelation">
-			<var-tab-item v-for="i in list2" :key="i.id"> {{ i.name }}视图 </var-tab-item>
-			<var-tab-item :key="100"
-				>测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字测试长文字</var-tab-item
-			>
-		</var-tabs-items>
+  <app-type>{{ pack.stickyLayout }}</app-type>
+  <var-tabs
+    sticky
+    elevation
+    color="#2979ff"
+    active-color="#fff"
+    inactive-color="hsla(0, 0%, 100%, .6)"
+    :offset-top="50"
+    v-model:active="active7"
+  >
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab>{{ pack.option }}3</var-tab>
+  </var-tabs>
 
-		<!--		<var-button @click="push" style="margin-bottom: 10px">push</var-button>-->
-		<!--		<var-button @click="unshift" style="margin-bottom: 10px">unshift</var-button>-->
-		<!--		<var-button @click="pop" style="margin-bottom: 10px">pop</var-button>-->
-		<!--		<var-button @click="shift" style="margin-bottom: 10px">shift</var-button>-->
-
-		<app-type>开启粘性布局</app-type>
-		<var-tabs
-			style="width: 345px"
-			color="rgb(98,0,234)"
-			active-color="#fff"
-			inactive-color="rgb(193,155,247)"
-			indicator-size="0px"
-			sticky
-			offset-top="20px"
-			:elevation="4"
-			v-model:active="active"
-			@change="handleChange"
-		>
-			<var-tab v-for="i in list" :key="i">
-				<var-icon name="checkbox-marked-circle" style="margin-right: 5px" />
-				<div>{{ i }}</div>
-			</var-tab>
-		</var-tabs>
-	</div>
+  <div style="height: 120vh"></div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, Ref, reactive } from 'vue'
+<script>
+import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Tabs from '..'
 import Tab from '../../tab'
 import Icon from '../../icon'
 import TabsItems from '../../tabs-items'
 import TabItem from '../../tab-item'
-import Button from '../../button'
+import context from '../../context'
+import { use, pack } from './locale'
+import { onUnmounted, ref } from 'vue'
+import { watchPlatform, watchLang } from '../../utils/components'
 
-export default defineComponent({
+export default {
   name: 'TabsExample',
   components: {
     [Tabs.name]: Tabs,
@@ -178,127 +151,56 @@ export default defineComponent({
     [TabsItems.name]: TabsItems,
     [TabItem.name]: TabItem,
     [Icon.name]: Icon,
-    [Button.name]: Button,
+    AppType
   },
   setup() {
-    const active: Ref<number> = ref(0)
-    const loading: Ref<boolean> = ref(true)
-    const s: Ref<any> = ref(null)
-    const s1: Ref<any> = ref(null)
-    const activeBottom: Ref<number> = ref(0)
-    const activeRelation: Ref<any> = ref(0)
-    const activeName: Ref<string> = ref('测试1')
-    const list = reactive<any>([
-      '测试1',
-      '测试2',
-      '测试3',
-      '测试4',
-      '长文字嘎嘎嘎嘎嘎',
-      '测试5',
-      '测试6',
-      '测试7',
-      '测试8',
-      '测试9',
-    ])
+    const active = ref(0)
+    const active2 = ref(0)
+    const active3 = ref(0)
+    const active4 = ref(0)
+    const active5 = ref(0)
+    const active6 = ref(0)
+    const active7 = ref(0)
+    const activeRelation = ref(0)
 
-    const list2 = reactive<any>([])
-    list2.push(
-      {
-        id: 1,
-        name: '瓜瓜',
-      },
-      {
-        id: 2,
-        name: '咋咋',
-      },
-      {
-        id: 3,
-        name: '拉拉',
-      },
-      {
-        id: 4,
-        name: '瓜瓜',
-      },
-      {
-        id: 5,
-        name: '咋咋',
-      },
-      {
-        id: 6,
-        name: '拉拉',
-      },
-      {
-        id: 7,
-        name: '瓜瓜',
-      },
-      {
-        id: 8,
-        name: '咋咋',
-      },
-      {
-        id: 9,
-        name: '拉拉',
+    watchLang(use)
+
+    const prevTouchmoveForbid = context.touchmoveForbid
+    watchPlatform((platform) => {
+      if (platform === 'pc') {
+        context.touchmoveForbid = false
       }
-    )
-
-    const handleChange = (...args: any[]) => {
-      console.log(...args)
-    }
-
-    setTimeout(() => {
-      loading.value = false
-    }, 2000)
+    })
+    onUnmounted(() => {
+      context.touchmoveForbid = prevTouchmoveForbid
+    })
 
     return {
-      loading,
+      pack,
       active,
-      activeBottom,
-      activeName,
+      active2,
+      active3,
+      active4,
+      active5,
+      active6,
+      active7,
       activeRelation,
-      list,
-      list2,
-      s,
-      s1,
-      handleChange,
-      push() {
-        list2.push({
-          id: Date.now(),
-          name: '尾插',
-        })
-      },
-      unshift() {
-        list2.unshift({
-          id: Date.now(),
-          name: '头插',
-        })
-      },
-      pop() {
-        list2.pop()
-      },
-      shift() {
-        list2.shift()
-      },
     }
   },
-})
+}
 </script>
 
 <style lang="less" scoped>
-.example {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-	height: 300vh;
+.vertical-tabs {
+  width: 80px;
+  height: 120px;
+}
 
-	* {
-		box-sizing: border-box;
-	}
+.icon {
+  margin-bottom: 5px;
+}
 
-	.container {
-		display: flex;
-		width: 100%;
-		margin-top: 20px;
-	}
+.var-tab-item {
+  color: #888
 }
 </style>

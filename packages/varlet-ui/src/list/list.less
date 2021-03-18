@@ -3,7 +3,9 @@
 @list-loading-height: 50px;
 @list-finished-height: 50px;
 @list-error-height: 50px;
-
+@list-loading-color: #888;
+@list-finished-color: #888;
+@list-error-color: #888;
 @list-loading-font-size: @font-size-md;
 @list-finished-font-size: @font-size-md;
 @list-error-font-size: @font-size-md;
@@ -21,6 +23,7 @@
     width: 100%;
     height: @list-loading-height;
     font-size: @list-loading-font-size;
+    color: @list-loading-color;
   }
 
   &__loading-text {
@@ -34,6 +37,7 @@
     width: 100%;
     height: @list-finished-height;
     font-size: @list-finished-font-size;
+    color: @list-finished-color;
   }
 
   &__error {
@@ -43,5 +47,7 @@
     width: 100%;
     height: @list-error-height;
     font-size: @list-error-font-size;
+    color: @list-error-color;
+    cursor: pointer;
   }
 }

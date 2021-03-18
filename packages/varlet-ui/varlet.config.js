@@ -121,6 +121,20 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Tabs 选项卡',
+          'en-US': 'Tabs',
+        },
+        doc: 'tabs',
+      },
+      {
+        text: {
+          'zh-CN': 'List 无限滚动列表',
+          'en-US': 'List',
+        },
+        doc: 'list',
+      },
+      {
+        text: {
           'zh-CN': 'Loading 加载',
           'en-US': 'Loading',
         },
@@ -209,20 +223,6 @@ module.exports = {
           'en-US': 'Badge',
         },
         doc: 'badge',
-      },
-      {
-        text: {
-          'zh-CN': 'Tabs 选项卡',
-          'en-US': 'Tabs',
-        },
-        doc: 'tabs',
-      },
-      {
-        text: {
-          'zh-CN': 'List 无限滚动列表',
-          'en-US': 'List',
-        },
-        doc: 'list',
       },
       {
         text: {

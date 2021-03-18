@@ -4,18 +4,18 @@
 
     <slot name="loading" v-if="loading">
       <div class="var-list__loading">
-        <div class="var-list__loading-text">{{ loadingText }}</div>
+        <div class="var-list__loading-text">{{ dt(loadingText, pack.listLoadingText) }}</div>
         <var-loading size="mini" :radius="10" />
       </div>
     </slot>
 
     <slot name="finished" v-if="finished">
-      <div class="var-list__finished">{{ finishedText }}</div>
+      <div class="var-list__finished">{{ dt(finishedText, pack.listFinishedText) }}</div>
     </slot>
 
     <slot name="error" v-if="error">
       <div class="var-list__error" v-ripple @click="load">
-        {{ errorText }}
+        {{ dt(errorText, pack.listErrorText) }}
       </div>
     </slot>
 
@@ -24,12 +24,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted, ref, Ref } from 'vue'
-import { getParentScroller } from '../utils/elements'
-import { props } from './props'
-import { isNumber } from '../utils/shared'
 import Ripple from '../ripple'
 import Loading from '../loading'
+import { defineComponent, onMounted, onUnmounted, ref, Ref, nextTick } from 'vue'
+import { getParentScroller, isHidden, toPxNum } from '../utils/elements'
+import { props } from './props'
+import { isNumber, dt } from '../utils/shared'
+import { pack } from '../locale'
 
 export default defineComponent({
   name: 'VarList',
@@ -50,22 +51,34 @@ export default defineComponent({
     }
 
     const isReachBottom = () => {
-      const containerBottom =
-        scroller === window ? window.innerHeight : (scroller as HTMLElement).getBoundingClientRect().bottom
+      const containerBottom = scroller === window
+        ? window.innerHeight
+        : (scroller as HTMLElement).getBoundingClientRect().bottom
 
       const { bottom: detectorBottom } = (detectorEl.value as HTMLElement).getBoundingClientRect()
 
-      return detectorBottom - props.offset <= containerBottom
+      return detectorBottom - toPxNum(props.offset) <= containerBottom
     }
 
-    const check = () => {
-      if (!props.loading && !props.finished && !props.error && isReachBottom()) {
+    // expose
+    const check = async () => {
+      await nextTick()
+
+      if (isHidden(listEl.value as HTMLElement)) {
+        return
+      }
+
+      const { loading, finished, error } = props
+
+      if (!loading && !finished && !error && isReachBottom()) {
         load()
       }
     }
 
     onMounted(() => {
-      scroller = getParentScroller(listEl.value as HTMLElement, 'y')
+      scroller = getParentScroller(listEl.value as HTMLElement)
+
+      console.log(scroller)
 
       props.immediateCheck && check()
 
@@ -77,8 +90,10 @@ export default defineComponent({
     })
 
     return {
+      pack,
       listEl,
       detectorEl,
+      dt,
       isNumber,
       load,
       check,

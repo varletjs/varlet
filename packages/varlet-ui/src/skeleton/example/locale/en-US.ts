@@ -1,5 +1,5 @@
 export default {
-  basicUse: 'Basic Use',
+  basicUsage: 'Basic Usage',
   displayTitle: 'Display Title',
   customRowsHeight: 'Custom Row Heights',
   displayAvatar: 'Display Avatar',

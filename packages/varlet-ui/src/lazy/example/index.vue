@@ -1,5 +1,5 @@
 <template>
-  <app-type>{{ pack.basicUse }}</app-type>
+  <app-type>{{ pack.basicUsage }}</app-type>
   <img class="cat" v-lazy="'https://varlet-ui.github.io/cat.jpg'">
   <img class="cat" v-lazy="'https://varlet-ui.github.io/cat.jpg'">
   <img class="cat" v-lazy="'https://varlet-ui.github.io/cat.jpg'">
@@ -9,6 +9,7 @@
   <app-type>{{ pack.backgroundImageLazyLoad }}</app-type>
   <div class="cat" v-lazy:background-image="'https://varlet-ui.github.io/cat.jpg'"></div>
 </template>
+
 <script>
 import Lazy from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'

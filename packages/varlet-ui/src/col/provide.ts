@@ -1,6 +1,6 @@
 import { ComputedRef } from 'vue'
 import { useAtParentIndex, useParent } from '../utils/components'
-import { ROW_BIND_COL_KEY, ROW_COUNT_COL_KEY, RowProvider } from '../row/provode'
+import { ROW_BIND_COL_KEY, ROW_COUNT_COL_KEY, RowProvider } from '../row/provide'
 
 export interface ColPadding {
   left: number

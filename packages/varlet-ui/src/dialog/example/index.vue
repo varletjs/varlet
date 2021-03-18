@@ -1,13 +1,13 @@
 <template>
   <app-type>{{ pack.functionCall }}</app-type>
-  <var-button block @click="createBasic">{{ pack.basicUse }}</var-button>
+  <var-button block @click="createBasic">{{ pack.basicUsage }}</var-button>
   <var-button block @click="modifyTitle">{{ pack.modifyTitle }}</var-button>
   <var-button block @click="hideButton">{{ pack.hideButton }}</var-button>
   <var-button block @click="createAction">{{ pack.handleUserBehavior }}</var-button>
   <var-button block @click="asyncClose">{{ pack.asyncClose }}</var-button>
 
   <app-type>{{ pack.componentCall }}</app-type>
-  <var-button block @click="show = true">{{ pack.basicUse }}</var-button>
+  <var-button block @click="show = true">{{ pack.basicUsage }}</var-button>
   <var-dialog
     v-model:show="show"
     :title="pack.title"

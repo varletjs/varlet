@@ -1,22 +1,18 @@
 <template>
   <component
     :is="dynamic ? 'var-popup' : Transition"
-    v-bind="
-      dynamic
-        ? {
-            onOpened,
-            onClose,
-            onClosed,
-            onClickOverlay,
-            onRouteChange,
-            closeOnClickOverlay,
-            teleport,
-            show,
-            'onUpdate:show': (value) => $props['onUpdate:show'] && $props['onUpdate:show'](value),
-            position: 'bottom',
-          }
-        : null
-    "
+    v-bind="dynamic ? {
+      onOpened,
+      onClose,
+      onClosed,
+      onClickOverlay,
+      onRouteChange,
+      closeOnClickOverlay,
+      teleport,
+      show,
+      'onUpdate:show': (value) => $props['onUpdate:show'] && $props['onUpdate:show'](value),
+      position: 'bottom',
+    }: null"
   >
     <div class="var-picker" v-bind="$attrs">
       <div class="var-picker__toolbar">

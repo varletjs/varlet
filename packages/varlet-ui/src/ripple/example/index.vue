@@ -1,5 +1,5 @@
 <template>
-  <app-type>{{ pack.basicUse }}</app-type>
+  <app-type>{{ pack.basicUsage }}</app-type>
   <div class="block var-elevation--2" v-ripple>{{ pack.click }}</div>
 
   <app-type>{{ pack.customColor }}</app-type>

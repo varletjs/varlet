@@ -12,8 +12,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, watch, ref, Ref, nextTick, ComputedRef } from 'vue'
-import { useChildren, useAtChildrenCounter } from '../utils/components'
-import { TABS_ITEMS_BIND_TAB_ITEM_KEY, TabsItemsProvider, TABS_ITEMS_COUNT_TAB_ITEM_KEY } from './provide'
+import { TabsItemsProvider, useTabItem } from './provide'
 import { props } from './props'
 import { TabItemProvider } from '../tab-item/provide'
 
@@ -24,21 +23,18 @@ export default defineComponent({
   setup(props) {
     const transitionHeight: Ref<string> = ref('auto')
     const active: ComputedRef<number | string> = computed(() => props.active)
-    const { bindChildren, childProviders: tabItemProviders } = useChildren<TabsItemsProvider, TabItemProvider>(
-      TABS_ITEMS_BIND_TAB_ITEM_KEY
-    )
-    const { length } = useAtChildrenCounter(TABS_ITEMS_COUNT_TAB_ITEM_KEY)
+    const { tabItemList, bindTabItem, length } = useTabItem()
 
     const resetTransitionHeight = () => {
       transitionHeight.value = 'auto'
     }
 
     const matchName = (active: number | string | undefined): TabItemProvider | undefined => {
-      return tabItemProviders.find(({ name }: TabItemProvider) => active === name.value)
+      return tabItemList.find(({ name }: TabItemProvider) => active === name.value)
     }
 
     const matchIndex = (active: number | string | undefined): TabItemProvider | undefined => {
-      return tabItemProviders.find(({ index }: TabItemProvider) => active === index.value)
+      return tabItemList.find(({ index }: TabItemProvider) => active === index.value)
     }
 
     const matchActive = (active: number | string | undefined): TabItemProvider | undefined => {
@@ -46,14 +42,15 @@ export default defineComponent({
     }
 
     const resize = () => {
-      const tabItemProvider: TabItemProvider | undefined = matchActive(props.active)
-      if (!tabItemProvider) {
+      const tabItem: TabItemProvider | undefined = matchActive(props.active)
+
+      if (!tabItem) {
         return
       }
 
-      const { element } = tabItemProvider
+      const { element } = tabItem
 
-      tabItemProviders.forEach(({ transition }) => transition(tabItemProvider.index.value, -1))
+      tabItemList.forEach(({ transition }) => transition(tabItem.index.value, -1))
 
       nextTick().then(() => {
         transitionHeight.value = `${(element.value as HTMLElement).offsetHeight}px`
@@ -66,7 +63,7 @@ export default defineComponent({
       resetTransitionHeight,
     }
 
-    bindChildren(tabsItemsProvider)
+    bindTabItem(tabsItemsProvider)
 
     watch(
       () => props.active,
@@ -77,13 +74,15 @@ export default defineComponent({
           return
         }
 
-        const { index: oldIndex } = oldActiveTabItemProvider
-        const { element, index: newIndex } = newActiveTabItemProvider
+        const { element: oldElement, index: oldIndex } = oldActiveTabItemProvider
+        const { element: newElement, index: newIndex } = newActiveTabItemProvider
+        const oldEl = oldElement.value as HTMLElement
+        const newEl = newElement.value as HTMLElement
 
-        tabItemProviders.forEach(({ transition }) => transition(newIndex.value, oldIndex.value))
+        tabItemList.forEach(({ transition }) => transition(newIndex.value, oldIndex.value))
 
         nextTick().then(() => {
-          transitionHeight.value = `${(element.value as HTMLElement).offsetHeight}px`
+          transitionHeight.value = `${Math.max(newEl.offsetHeight, oldEl.offsetHeight)}px`
         })
       }
     )

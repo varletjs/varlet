@@ -1,5 +1,5 @@
 <template>
-  <app-type>{{ pack.basicUse }}</app-type>
+  <app-type>{{ pack.basicUsage }}</app-type>
 	<var-image src="https://varlet-ui.github.io/cat.jpg" />
 
   <app-type>{{ pack.fitMode }}</app-type>

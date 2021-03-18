@@ -1,3 +1,5 @@
+import { PropType } from 'vue'
+
 export const props = {
   loading: {
     type: Boolean,
@@ -16,12 +18,11 @@ export const props = {
     default: false,
   },
   offset: {
-    type: Number,
+    type: [String, Number],
     default: 0,
   },
   loadingText: {
     type: String,
-    default: '正在加载',
   },
   finishedText: {
     type: String,
@@ -30,12 +31,12 @@ export const props = {
     type: String,
   },
   onLoad: {
-    type: Function,
+    type: Function as PropType<() => void>,
   },
   'onUpdate:loading': {
-    type: Function,
+    type: Function as PropType<(loading: boolean) => void>,
   },
   'onUpdate:error': {
-    type: Function,
+    type: Function as PropType<(error: boolean) => void>,
   },
 }

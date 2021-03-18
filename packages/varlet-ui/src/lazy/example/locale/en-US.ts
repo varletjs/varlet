@@ -1,4 +1,4 @@
 export default {
-  basicUse: 'Basic Use',
+  basicUsage: 'Basic Usage',
   backgroundImageLazyLoad: 'Background Image Lazy Load'
 }
