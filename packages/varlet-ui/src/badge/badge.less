@@ -1,6 +1,11 @@
 @import '../styles/var';
 
 @badge-default-color: #f5f5f5;
+@chip-primary-color: @color-primary;
+@chip-danger-color: @color-danger;
+@chip-success-color: @color-success;
+@chip-warning-color: @color-warning;
+@chip-info-color: @color-info;
 
 .var {
   &-fade-leave-to {
@@ -25,10 +30,6 @@
     vertical-align: middle;
     text-align: center;
     display: inline-block;
-    //.v-icon{
-    //  font-size: 12px;
-    //  margin: 0 -2px;
-    //}
   }
 
   &--default {
@@ -36,23 +37,23 @@
   }
 
   &--primary {
-    background: @color-primary;
+    background: @chip-primary-color;
   }
 
   &--info {
-    background: @color-info;
+    background: @chip-info-color;
   }
 
   &--warning {
-    background: @color-warning;
+    background: @chip-warning-color;
   }
 
   &--success {
-    background: @color-success;
+    background: @chip-success-color;
   }
 
   &--danger {
-    background: @color-danger;
+    background: @chip-danger-color;
   }
 
   &--right-top {

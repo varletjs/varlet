@@ -20,13 +20,16 @@ import { defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import Icon from '@varlet/ui/es/icon'
 import AppBar from '@varlet/ui/es/app-bar'
+import Button from '@varlet/ui/es/button'
 import '@varlet/ui/es/icon/style'
 import '@varlet/ui/es/app-bar/style'
+import '@varlet/ui/es/button/style'
 
 export default defineComponent({
   components: {
     [Icon.name]: Icon,
     [AppBar.name]: AppBar,
+    [Button.name]: Button,
   },
   setup() {
     const componentName: Ref<string> = ref('')

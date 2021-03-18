@@ -1,7 +1,5 @@
 # 导航栏
 
-## 使用演示
-
 ### 引入
 
 ```js
@@ -46,20 +44,22 @@ createApp().use(AppBar)
 ```
 
 ```js
-import { defineComponent } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default defineComponent({
+export default {
   setup() {
     const goBack = () => {
-      Snackbar.info('返回')
+      Snackbar({
+        content: '返回',
+        position: 'top'
+      })
     }
 
     return {
       goBack
     }
   }
-})
+}
 ```
 
 ### 添加右侧插槽导航栏
@@ -76,20 +76,22 @@ export default defineComponent({
 ```
 
 ```js
-import { defineComponent } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default defineComponent({
+export default {
   setup() {
     const searchData = () => {
-      Snackbar.info('搜索')
+      Snackbar({
+        content: '搜索',
+        position: 'top'
+      })
     }
 
     return {
       searchData
     }
   }
-})
+}
 ```
 
 ### 添加左右两侧插槽导航栏
@@ -120,24 +122,22 @@ export default defineComponent({
 ```
 
 ```js
-import { defineComponent, Ref, ref } from 'vue'
+import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-type MenuRules = {
-  label: string,
-  value: string,
-}
-
-export default defineComponent({
+export default {
   setup() {
-    const offsetY: Ref<boolean> = ref(false)
-    const menuList: Ref<MenuRules[]> = ref([
+    const offsetY = ref(false)
+    const menuList = ref([
       { label: '选项一', value: 'menu1' },
       { label: '选项二', value: 'menu2' }
     ])
 
     const goBack = () => {
-      Snackbar.info('返回')
+      Snackbar({
+        content: '返回',
+        position: 'top'
+      })
     }
 
     return {
@@ -146,7 +146,7 @@ export default defineComponent({
       goBack
     }
   }
-})
+}
 ```
 
 ```css
@@ -168,17 +168,17 @@ export default defineComponent({
 
 |参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ---- |
-| color | 背景颜色 | _string_ | `#2979ff` |
-| text-color | 文字颜色 | _string_ | `#ffffff` |
-| title | 标题 | _string_ | `''` |
-| title-text-align | 标题位置 | _string_ | `left` |
-| is-shadow | 是否使用阴影 | _boolean_ | `true` |
+| `color` | 背景颜色 | _string_ | `#2979ff` |
+| `text-color` | 文字颜色 | _string_ | `#ffffff` |
+| `title` | 标题 | _string_ | `_` |
+| `title-text-align` | 标题位置 | _string_ | `left` |
+| `is-shadow` | 是否使用阴影 | _boolean_ | `true` |
 
 ### 插槽
 
 | 名称 | 说明 | 参数 |
 | ---- | ---- | ----|
-| default | 默认插槽，自定义标题,会覆盖`title`内容 | _ |
-| left | 插入至导航栏的左侧，自定义左侧内容 | _ |
-| right | 插入至导航栏的右侧，自定义右侧内容 | _ |
+| `default` | 自定义标题内容,会覆盖`title`的内容 | `_` |
+| `left` | 插入至导航栏左侧的内容 | `_` |
+| `right` | 插入至导航栏右侧的内容 | `_` |
 

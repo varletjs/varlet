@@ -1,15 +1,15 @@
 <template>
-  <app-type>基础导航栏</app-type>
-  <var-app-bar title="标题"></var-app-bar>
+  <app-type>{{ pack.basicAppBar }}</app-type>
+  <var-app-bar :title="pack.title"></var-app-bar>
 
-  <app-type>自定义样式导航栏</app-type>
-  <var-app-bar title="标题" title-text-align="center" color="#ff9800" :is-shadow="false"></var-app-bar>
+  <app-type>{{ pack.customStyleAppBar }}</app-type>
+  <var-app-bar :title="pack.title" title-text-align="center" color="#ff9800" :is-shadow="false"></var-app-bar>
 
-  <app-type>添加标题处插槽</app-type>
-  <var-app-bar>从插槽处添加标题</var-app-bar>
+  <app-type>{{ pack.addSlotsAtTitle }}</app-type>
+  <var-app-bar>{{ pack.addTheTitleFromTheSlot }}</var-app-bar>
 
-  <app-type>添加左侧插槽导航栏</app-type>
-  <var-app-bar title="标题">
+  <app-type>{{ pack.addLeftSlotAppBar }}</app-type>
+  <var-app-bar :title="pack.title">
     <template #left>
       <var-button round @click="goBack" color="transparent" text-color="#ffffff" text>
         <var-icon name="chevron-left" :size="24" />
@@ -17,8 +17,8 @@
     </template>
   </var-app-bar>
 
-  <app-type>添加右侧插槽导航栏</app-type>
-  <var-app-bar title="标题">
+  <app-type>{{ pack.addRightSlotAppBar }}</app-type>
+  <var-app-bar :title="pack.title">
     <template #right>
       <var-button round @click="searchData" color="transparent" text-color="#ffffff" text>
         <var-icon name="magnify" :size="24" />
@@ -26,8 +26,8 @@
     </template>
   </var-app-bar>
 
-  <app-type>添加左右两侧插槽导航栏</app-type>
-  <var-app-bar title="标题">
+  <app-type>{{ pack.addLeftAndRightSlotAppBar }}</app-type>
+  <var-app-bar :title="pack.title">
     <template #left>
       <var-button round @click="goBack" color="transparent" text-color="#ffffff" text>
         <var-icon name="chevron-left" :size="24" />
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, Ref } from 'vue'
+import { ref } from 'vue'
 import AppBar from '..'
 import Icon from '../../icon/Icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
@@ -59,13 +59,10 @@ import Ripple from '../../ripple'
 import Snackbar from '../../snackbar'
 import Menu from '../../menu/Menu'
 import Button from '../../button/Button'
+import { pack, use } from './locale'
+import { watchLang } from '../../utils/components'
 
-type MenuRules = {
-  label: string,
-  value: string,
-}
-
-export default defineComponent({
+export default {
   name: 'AppBarExample',
   directives: { Ripple },
   components: {
@@ -76,28 +73,39 @@ export default defineComponent({
     AppType,
   },
   setup() {
-    const offsetY: Ref<boolean> = ref(false)
-    const menuList: Ref<MenuRules[]> = ref([
+    const offsetY = ref(false)
+    const menuList = ref([
       { label: '选项一', value: 'menu1' },
       { label: '选项二', value: 'menu2' },
     ])
 
     const searchData = () => {
-      Snackbar.info('搜索')
+      Snackbar({
+        // content: pack.value.search,
+        content: '搜索',
+        position: 'top',
+      })
     }
 
     const goBack = () => {
-      Snackbar.info('返回')
+      Snackbar({
+        // content: pack.value.goBack,
+        content: '返回',
+        position: 'top',
+      })
     }
+
+    watchLang(use)
 
     return {
       offsetY,
       menuList,
+      pack,
       searchData,
       goBack,
     }
   },
-})
+}
 </script>
 
 <style scoped>

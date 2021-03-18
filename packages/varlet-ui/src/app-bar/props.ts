@@ -12,7 +12,6 @@ export const props = {
   //  标题
   title: {
     type: String,
-    default: '',
   },
 
   //  标题的位置

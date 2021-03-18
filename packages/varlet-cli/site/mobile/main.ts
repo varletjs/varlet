@@ -21,7 +21,6 @@ const router = createRouter({
   routes,
 })
 router.beforeEach((to) => {
-  console.log(1)
   let isPhone = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
   if (!isPhone && window.self === window.top) {
     window.location.href = `/#/${to.query.language}/${to.query.path}`
@@ -29,7 +28,6 @@ router.beforeEach((to) => {
 })
 
 router.afterEach((to) => {
-  console.log(to)
   if (to.path === '/home' && to.query.path) {
     console.log(to.path, to.query.path)
     window.top['router'].replace(`/${to.query.language}/${to.query.path}`)

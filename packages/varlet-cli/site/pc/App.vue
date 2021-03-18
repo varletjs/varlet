@@ -209,7 +209,7 @@ iframe {
   &-site {
     &-mobile {
       flex: 0 0 432px;
-      transform: scale(0.65);
+      transform: scale(0.66);
       position: relative;
       height: 863px;
       align-self: center;
@@ -378,7 +378,7 @@ iframe {
     &-doc {
       flex: 1 0 0;
       min-width: 500px;
-      padding: 0 30px;
+      padding-left: 30px;
       overflow-y: auto;
 
       &::-webkit-scrollbar {
