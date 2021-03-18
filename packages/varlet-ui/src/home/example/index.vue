@@ -1,9 +1,7 @@
 <template>
   <div class="space"></div>
-  <var-cell
-    v-for="component in components"
-    :key="component.text"
-  >
+
+  <var-cell v-for="component in components" :key="component.text">
     <template #extra>
       <var-icon name="chevron-right" size="14" />
     </template>
@@ -11,6 +9,7 @@
       {{ component.text['zh-CN'] }}
     </template>
   </var-cell>
+
   <div class="space"></div>
 </template>
 
