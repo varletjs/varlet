@@ -1,5 +1,5 @@
 export default {
-  basicUse: '基本使用',
+  basicUsage: '基本使用',
   displayTitle: '显示标题',
   customRowsHeight: '自定义段落高度',
   displayAvatar: '显示头像',

@@ -125,8 +125,8 @@ export default {
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| `type` | Button type. Can be set to   `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
-| `size` | Button size. Can be set to   `normal` `mini` `small` `large` | _string_ | `normal` |
+| `type` | Button type. Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `size` | Button size. Can be set to `normal` `mini` `small` `large` | _string_ | `normal` |
 | `loading` | Loading status | _boolean_ | `false` |  
 | `loading-radius` | Loading radius. Can only be used when `loading-type="circle"` | _number \| string_ | `12` |
 | `loading-type` | Loading type. Can be set to `circle` `wave` `cube` `rect` `disappear` | _string_ | `circle` |

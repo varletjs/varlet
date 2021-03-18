@@ -1,6 +1,6 @@
 <template>
   <var-tabs v-model:active="current" style="margin-bottom: 10px;">
-    <var-tab>{{ pack.basicUse }}</var-tab>
+    <var-tab>{{ pack.basicUsage }}</var-tab>
     <var-tab>{{ pack.loadFail }}</var-tab>
     <var-tab>{{ pack.tipText }}</var-tab>
   </var-tabs>

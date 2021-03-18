@@ -1,6 +1,6 @@
 export default {
   click: 'Click',
-  basicUse: 'Basic Use',
+  basicUsage: 'Basic Usage',
   customColor: 'Custom Color',
   disabledStatus: 'Disabled Status',
 }

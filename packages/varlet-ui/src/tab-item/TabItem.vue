@@ -25,8 +25,11 @@ export default defineComponent({
     const { active, resize, resetTransitionHeight } = tabsItems
 
     const transition = (newIndex: number, oldIndex: number) => {
-      transitionName.value =
-				oldIndex === -1 ? 'var-tab-item-right' : newIndex > oldIndex ? 'var-tab-item-right' : 'var-tab-item-left'
+      transitionName.value = oldIndex === -1
+        ? 'var-tab-item-right'
+        : newIndex > oldIndex
+          ? 'var-tab-item-right'
+          : 'var-tab-item-left'
       show.value = active.value === props.name || active.value === index.value
     }
 

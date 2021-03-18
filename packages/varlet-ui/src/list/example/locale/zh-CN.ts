@@ -1,5 +1,5 @@
 export default {
-  basicUse: '基本使用',
+  basicUsage: '基本使用',
   loadFail: '加载失败',
   tipText: '提示文字',
   loadingText: '正在努力输出',

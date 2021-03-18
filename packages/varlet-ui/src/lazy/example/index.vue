@@ -1,5 +1,5 @@
 <template>
-  <app-type>{{ pack.basicUse }}</app-type>
+  <app-type>{{ pack.basicUsage }}</app-type>
   <img class="cat" v-lazy="'https://varlet-ui.github.io/cat.jpg'">
   <img class="cat" v-lazy="'https://varlet-ui.github.io/cat.jpg'">
   <img class="cat" v-lazy="'https://varlet-ui.github.io/cat.jpg'">

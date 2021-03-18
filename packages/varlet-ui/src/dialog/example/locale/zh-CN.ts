@@ -1,6 +1,6 @@
 export default {
   functionCall: '函数调用',
-  basicUse: '基本使用',
+  basicUsage: '基本使用',
   modifyTitle: '修改标题',
   hideButton: '隐藏按钮',
   handleUserBehavior: '处理用户行为',

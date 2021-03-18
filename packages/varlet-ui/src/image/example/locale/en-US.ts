@@ -1,5 +1,5 @@
 export default {
-  basicUse: 'Basic Use',
+  basicUsage: 'Basic Usage',
   fitMode: 'Fit Mode',
   setRadius: 'Set Radius',
   useRipple: 'Use Ripple',

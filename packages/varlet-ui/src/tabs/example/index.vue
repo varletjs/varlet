@@ -1,12 +1,12 @@
 <template>
-  <app-type>基本使用</app-type>
+  <app-type>{{ pack.basicUsage }}</app-type>
   <var-tabs v-model:active="active">
-    <var-tab>选项1</var-tab>
-    <var-tab>选项2</var-tab>
-    <var-tab>选项3</var-tab>
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab>{{ pack.option }}3</var-tab>
   </var-tabs>
 
-  <app-type>修改样式</app-type>
+  <app-type>{{ pack.modifyStyle }}</app-type>
   <var-tabs
     elevation
     color="#2979ff"
@@ -14,12 +14,12 @@
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="active2"
   >
-    <var-tab>选项1</var-tab>
-    <var-tab>选项2</var-tab>
-    <var-tab>选项3</var-tab>
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab>{{ pack.option }}3</var-tab>
   </var-tabs>
 
-  <app-type>禁用标签</app-type>
+  <app-type>{{ pack.disabled }}</app-type>
   <var-tabs
     elevation
     color="#2979ff"
@@ -27,12 +27,12 @@
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="active3"
   >
-    <var-tab>选项1</var-tab>
-    <var-tab>选项2</var-tab>
-    <var-tab disabled>禁用选项</var-tab>
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab disabled>{{ pack.disabled }}</var-tab>
   </var-tabs>
 
-  <app-type>自动滚动</app-type>
+  <app-type>{{  pack.enableScroll }}</app-type>
   <var-tabs
     elevation
     color="#2979ff"
@@ -40,17 +40,17 @@
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="active4"
   >
-    <var-tab>选项1</var-tab>
-    <var-tab>选项2</var-tab>
-    <var-tab>选项3</var-tab>
-    <var-tab>选项4</var-tab>
-    <var-tab>选项5</var-tab>
-    <var-tab>选项7</var-tab>
-    <var-tab>选项8</var-tab>
-    <var-tab>选项9</var-tab>
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab>{{ pack.option }}3</var-tab>
+    <var-tab>{{ pack.option }}4</var-tab>
+    <var-tab>{{ pack.option }}5</var-tab>
+    <var-tab>{{ pack.option }}6</var-tab>
+    <var-tab>{{ pack.option }}7</var-tab>
+    <var-tab>{{ pack.option }}8</var-tab>
   </var-tabs>
 
-  <app-type>选项垂直布局</app-type>
+  <app-type>{{ pack.tabVerticalLayout }}</app-type>
   <var-tabs
     elevation
     item-direction="vertical"
@@ -61,19 +61,19 @@
   >
     <var-tab>
       <var-icon class="icon" name="information" />
-      <div>选项1</div>
+      <div>{{ pack.option }}1</div>
     </var-tab>
     <var-tab>
       <var-icon class="icon" name="warning" />
-      <div>选项2</div>
+      <div>{{ pack.option }}2</div>
     </var-tab>
     <var-tab>
       <var-icon class="icon" name="error" />
-      <div>选项3</div>
+      <div>{{ pack.option }}3</div>
     </var-tab>
   </var-tabs>
 
-  <app-type>容器垂直布局</app-type>
+  <app-type>{{ pack.tabsVerticalLayout }}</app-type>
   <var-tabs
     class="vertical-tabs"
     elevation
@@ -83,12 +83,12 @@
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="active6"
   >
-    <var-tab>选项1</var-tab>
-    <var-tab>选项2</var-tab>
-    <var-tab>选项3</var-tab>
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab>{{ pack.option }}3</var-tab>
   </var-tabs>
 
-  <app-type>视图联动</app-type>
+  <app-type>{{ pack.viewRelation }}</app-type>
   <var-tabs
     elevation
     color="#2979ff"
@@ -96,37 +96,24 @@
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="activeRelation"
   >
-    <var-tab>选项1</var-tab>
-    <var-tab>选项2</var-tab>
-    <var-tab>选项3</var-tab>
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab>{{ pack.option }}3</var-tab>
   </var-tabs>
 
   <var-tabs-items v-model:active="activeRelation">
-    <var-tab-item style="padding: 10px 5px">
-      呜啦啦啦火车笛，随着奔腾的马蹄。
-      小妹妹吹着口琴，夕阳下美了剪影。
-      我用子弹写日记，介绍完了风景。
-      接下来换介绍我自己。
-      我虽然是个牛仔，在酒吧只点牛奶。
-      为什么不喝啤酒，因为啤酒伤身体。
+    <var-tab-item style="padding: 8px 5px">
+      {{ pack.text }}
     </var-tab-item>
-    <var-tab-item style="padding: 10px 5px">
-      很多人不长眼睛，嚣张都靠武器。
-      赤手空拳就缩成蚂蚁。
-      不用麻烦了，不用麻烦了。
-      不用麻烦，不用麻烦了，不用麻烦了。
+    <var-tab-item style="padding: 8px 5px">
+      {{ pack.text2 }}
     </var-tab-item>
-    <var-tab-item style="padding: 10px 5px">
-      你们一起上，我在赶时间。
-      每天决斗观众都累了，英雄也累了。
-      不用麻烦了，不用麻烦了。
-      副歌不长你们有几个，一起上好了。
-      正义呼唤我，美女需要我。
-      牛仔很忙的。
+    <var-tab-item style="padding: 8px 5px">
+      {{ pack.text3 }}
     </var-tab-item>
   </var-tabs-items>
 
-  <app-type>开启粘性布局</app-type>
+  <app-type>{{ pack.stickyLayout }}</app-type>
   <var-tabs
     sticky
     elevation
@@ -136,9 +123,9 @@
     :offset-top="50"
     v-model:active="active7"
   >
-    <var-tab>选项1</var-tab>
-    <var-tab>选项2</var-tab>
-    <var-tab>选项3</var-tab>
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab>{{ pack.option }}3</var-tab>
   </var-tabs>
 
   <div style="height: 120vh"></div>
@@ -152,8 +139,9 @@ import Icon from '../../icon'
 import TabsItems from '../../tabs-items'
 import TabItem from '../../tab-item'
 import context from '../../context'
+import { use, pack } from './locale'
 import { onUnmounted, ref } from 'vue'
-import { watchPlatform } from '../../utils/components'
+import { watchPlatform, watchLang } from '../../utils/components'
 
 export default {
   name: 'TabsExample',
@@ -175,6 +163,8 @@ export default {
     const active7 = ref(0)
     const activeRelation = ref(0)
 
+    watchLang(use)
+
     const prevTouchmoveForbid = context.touchmoveForbid
     watchPlatform((platform) => {
       if (platform === 'pc') {
@@ -186,6 +176,7 @@ export default {
     })
 
     return {
+      pack,
       active,
       active2,
       active3,
@@ -207,5 +198,9 @@ export default {
 
 .icon {
   margin-bottom: 5px;
+}
+
+.var-tab-item {
+  color: #888
 }
 </style>

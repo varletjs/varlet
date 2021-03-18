@@ -1,8 +1,8 @@
 <template>
   <div class="example">
-    <app-type>{{ pack.basicUse }}</app-type>
+    <app-type>{{ pack.basicUsage }}</app-type>
     <var-sticky :offset-top="50">
-      <var-button type="primary">{{ pack.basicUse }}</var-button>
+      <var-button type="primary">{{ pack.basicUsage }}</var-button>
     </var-sticky>
 
     <app-type>{{ pack.localSticky }}</app-type>

@@ -1,5 +1,5 @@
 export default {
-  basicUse: 'Basic Use',
+  basicUsage: 'Basic Usage',
   loadFail: 'Load Fail',
   tipText: 'Tip Text',
   loadingText: 'loading QAQ',

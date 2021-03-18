@@ -1,5 +1,5 @@
 <template>
-  <app-type>{{ pack.basicUse }}</app-type>
+  <app-type>{{ pack.basicUsage }}</app-type>
   <var-skeleton :loading="loading">{{ pack.loadingData }}</var-skeleton>
 
   <app-type>{{ pack.displayTitle }}</app-type>

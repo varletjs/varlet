@@ -8,6 +8,10 @@ import { Popup } from './Popup'
 import { Ripple } from './Ripple'
 import { Row } from './Row'
 import { Sticky } from './Sticky'
+import { Tab } from './Tab'
+import { TabItem } from './TabItem'
+import { Tabs } from './Tabs'
+import { TabsItems } from './TabsItems'
 import { VarComponent } from './VarComponent'
 import { VarDirective } from './VarDirective'
 import { App } from 'vue'
@@ -25,6 +29,10 @@ export {
   Ripple,
   Row,
   Sticky,
+  Tab,
+  TabItem,
+  Tabs,
+  TabsItems,
   VarComponent,
   VarDirective,
 }
