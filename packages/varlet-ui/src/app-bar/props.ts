@@ -9,21 +9,20 @@ export const props = {
     type: String,
     default: '#ffffff',
   },
-  //  中间内容
+  //  标题
   title: {
     type: String,
-    default: '标题',
   },
 
-  //  中间标题的位置
-  titlePosition: {
+  //  标题的位置
+  titleTextAlign: {
     type: String,
     default: 'left',
   },
 
-  //  使用阴影层级
-  shadow: {
-    type: [Number, String],
-    default: 3,
+  //  是否使用阴影
+  isShadow: {
+    type: Boolean,
+    default: true,
   },
 }

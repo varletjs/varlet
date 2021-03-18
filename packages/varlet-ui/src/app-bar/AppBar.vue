@@ -1,9 +1,16 @@
 <template>
-  <div class="var-app-bar" :style="appBarStyle()" :class="`var-elevation--${shadow}`">
+  <div class="var-app-bar" :style="appBarStyle()" :class="{ 'var-elevation--3': isShadow }">
     <div class="var-app-bar__left" v-if="$slots.left">
-      <slot name="left"> </slot>
+      <slot name="left"></slot>
     </div>
-    <div class="var-app-bar__title" :style="{ textAlign: titlePosition }">
+    <div
+      class="var-app-bar__title"
+      :style="{
+        textAlign: titleTextAlign,
+        paddingLeft: $slots.left ? '30px' : '10px',
+        paddingRight: $slots.right ? '30px' : '10px',
+      }"
+    >
       <slot>{{ title }}</slot>
     </div>
     <div class="var-app-bar__right" v-if="$slots.right">

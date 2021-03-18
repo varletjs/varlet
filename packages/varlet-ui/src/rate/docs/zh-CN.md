@@ -1,17 +1,12 @@
 # 评分
 
-## 使用演示
-
 ### 引入
 
 ```js
+import { createApp } from 'vue';
 import { Rate } from '@varlet/ui'
 
-export default defineComponent({
-	components: {
-		[Rate.name]: Rate
-	}
-})
+createApp().use(Rate)
 ```
 
 ### 基础评分
@@ -19,7 +14,6 @@ export default defineComponent({
 默认显示样式
 
 ```html
-
 <var-rate v-model="score"/>
 ```
 
@@ -39,19 +33,19 @@ export default defineComponent({
 通过设置`count`属性自定义评分总数
 
 ```html
-
 <var-rate v-model="score" :count="8"/>
 ```
 
 ```js
-import { defineComponent, Ref, ref } from 'vue'
+import { ref } from 'vue'
 
-export default defineComponent({
-	setup() {
-		const score: Ref<number> = ref(3)
-		return { score };
-	}
-})
+export default {
+  setup() {
+    const score = ref(3)
+
+    return { score }
+  }
+}
 ```
 
 ### 自定义评分图标颜色
@@ -59,7 +53,6 @@ export default defineComponent({
 通过设置`color`、`empty-color`属性来自定义选中是的颜色和未选中时的颜色
 
 ```html
-
 <var-rate v-model="score" color="#9c27b0" empty-color="#d199da"/>
 <var-rate v-model="score" color="#e91e63" empty-color="#f48fb1"/>
 <var-rate v-model="score" color="#4caf50" empty-color="#a5d6a7"/>
@@ -67,14 +60,15 @@ export default defineComponent({
 ```
 
 ```js
-import { defineComponent, Ref, ref } from 'vue'
+import { ref } from 'vue'
 
-export default defineComponent({
-	setup() {
-		const score: Ref<number> = ref(3)
-		return { score };
-	}
-})
+export default {
+  setup() {
+    const score = ref(3)
+
+    return { score }
+  }
+}
 ```
 
 ### 自定义评分图标样式
@@ -82,19 +76,19 @@ export default defineComponent({
 通过设置`icon`、`empty-icon`属性来自定义选中和未选的图标样式
 
 ```html
-
 <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red"></var-rate>
 ```
 
 ```js
-import { defineComponent, Ref, ref } from 'vue'
+import { ref } from 'vue'
 
-export default defineComponent({
-	setup() {
-		const score: Ref<number> = ref(3)
-		return { score };
-	}
-})
+export default {
+  setup() {
+    const score = ref(3)
+
+    return { score }
+  }
+}
 ```
 
 ### 自定义评分图标尺寸
@@ -102,7 +96,6 @@ export default defineComponent({
 通过设置`size`属性来自定义评分图标的大小
 
 ```html
-
 <var-rate v-model="score" :size="14"/>
 <var-rate v-model="score" :size="16"/>
 <var-rate v-model="score" :size="18"/>
@@ -110,14 +103,15 @@ export default defineComponent({
 ```
 
 ```js
-import { defineComponent, Ref, ref } from 'vue'
+import { ref } from 'vue'
 
-export default defineComponent({
-	setup() {
-		const score: Ref<number> = ref(3)
-		return { score };
-	}
-})
+export default {
+  setup() {
+    const score = ref(3)
+
+    return { score }
+  }
+}
 ```
 
 ### 自定义图标间隔
@@ -125,7 +119,6 @@ export default defineComponent({
 通过设置`paddingRight`属性来自定义评分之间的间隔
 
 ```html
-
 <var-rate v-model="score" :margin-right="2"/>
 <var-rate v-model="score"/>
 <var-rate v-model="score" :margin-right="6"/>
@@ -133,14 +126,15 @@ export default defineComponent({
 ```
 
 ```js
-import { defineComponent, Ref, ref } from 'vue'
+import { ref } from 'vue'
 
-export default defineComponent({
-	setup() {
-		const score: Ref<number> = ref(3)
-		return { score };
-	}
-})
+export default {
+  setup() {
+    const score = ref(3)
+
+    return { score }
+  }
+}
 ```
 
 ### 允许半图标
@@ -148,21 +142,20 @@ export default defineComponent({
 通过设置`half`属性允许评分半选，使用`half-icon`自定义图标半选时的样式
 
 ```html
-
 <var-rate v-model="score" :count="8" half/>
-<var-rate v-model="score" :count="8" icon="heart" half-icon="heart-half-full" empty-icon="heart-outline" color="red"
-					half></var-rate>
+<var-rate v-model="score" :count="8" icon="heart" half-icon="heart-half-full" empty-icon="heart-outline" color="red" half></var-rate>
 ```
 
 ```js
-import { defineComponent, Ref, ref } from 'vue'
+import { ref } from 'vue'
 
-export default defineComponent({
-	setup() {
-		const score: Ref<number> = ref(3.5)
-		return { score };
-	}
-})
+export default {
+  setup() {
+    const score = ref(3.5)
+
+    return { score }
+  }
+}
 ```
 
 ### 禁用评分
@@ -170,19 +163,19 @@ export default defineComponent({
 通过设置`disabled`属性让评分处于禁止点击状态，使用`disabled-color`自定义禁用时图标的颜色
 
 ```html
-
 <var-rate v-model="score" disabled disabled-color="#bbbbbb"/>
 ```
 
 ```js
-import { defineComponent, Ref, ref } from 'vue'
+import { ref } from 'vue'
 
-export default defineComponent({
-	setup() {
-		const score: Ref<number> = ref(3)
-		return { score };
-	}
-})
+export default {
+  setup() {
+    const score = ref(3)
+
+    return { score }
+  }
+}
 ```
 
 ### 只读评分
@@ -190,19 +183,19 @@ export default defineComponent({
 通过设置`readonly`属性让评分处于只读状态
 
 ```html
-
 <var-rate v-model="score" readonly/>
 ```
 
 ```js
-import { defineComponent, Ref, ref } from 'vue'
+import { ref } from 'vue'
 
-export default defineComponent({
-	setup() {
-		const score: Ref<number> = ref(3)
-		return { score };
-	}
-})
+export default {
+  setup() {
+    const score = ref(3)
+
+    return { score }
+  }
+}
 ```
 
 ### 使用水波纹
@@ -210,19 +203,19 @@ export default defineComponent({
 通过设置`ripple`属性让评分时出现水波纹样式
 
 ```html
-
 <var-rate v-model="score" ripple/>
 ```
 
 ```js
-import { defineComponent, Ref, ref } from 'vue'
+import { ref } from 'vue'
 
-export default defineComponent({
-	setup() {
-		const score: Ref<number> = ref(3)
-		return { score };
-	}
-})
+export default {
+  setup() {
+    const score = ref(3)
+
+    return { score }
+  }
+}
 ```
 
 ### 监听change事件
@@ -230,25 +223,26 @@ export default defineComponent({
 通过调用`change`事件完成其他交互逻辑
 
 ```html
-
 <var-rate v-model="score" @change="handleChange"/>
 ```
 
 ```js
-import { defineComponent, Ref, ref } from 'vue'
+import { ref } from 'vue'
 
-export default defineComponent({
+export default {
 	setup() {
-		const score: Ref<number> = ref(3)
-		const handleChange = (score: number) => {
+		const score = ref(3)
+    
+		const handleChange = (score) => {
 			Snackbar({
 				content: `click ${score}`,
 				position: 'top'
 			})
 		}
-		return { score, handleChange };
+		
+		return { score, handleChange }
 	}
-})
+}
 ```
 
 ## API

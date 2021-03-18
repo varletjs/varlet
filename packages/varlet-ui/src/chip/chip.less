@@ -1,15 +1,25 @@
 @import '../styles/var';
 
+@chip-default-color: #f5f5f5;
+@chip-primary-color: @color-primary;
+@chip-danger-color: @color-danger;
+@chip-success-color: @color-success;
+@chip-warning-color: @color-warning;
+@chip-info-color: @color-info;
 @chip-border-radius: 2px;
 @chip-normal-height: 32px;
 @chip-large-height: 40px;
 @chip-small-height: 24px;
 @chip-mini-height: 16px;
+@chip-round-radius: 100px;
 @chip-normal-padding: 0px 10px;
 @chip-large-padding: 0px 17px;
 @chip-small-padding: 0px 6px;
 @chip-mini-padding: 0px 4px;
-@chip-default-color: #f5f5f5;
+@chip-text-normal-margin: 0 5px;
+@chip-text-large-margin: 0 5px;
+@chip-text-small-margin: 0 3px;
+@chip-text-mini-margin: 0 2px;
 
 .var {
   &-fade-leave-to {
@@ -38,27 +48,27 @@
 
   &--primary {
     color: #fff;
-    background-color: @color-primary;
+    background-color: @chip-primary-color;
   }
 
   &--info {
     color: #fff;
-    background-color: @color-info;
+    background-color: @chip-info-color;
   }
 
   &--success {
     color: #fff;
-    background-color: @color-success;
+    background-color: @chip-success-color;
   }
 
   &--warning {
     color: #fff;
-    background-color: @color-warning;
+    background-color: @chip-warning-color;
   }
 
   &--danger {
     color: #fff;
-    background-color: @color-danger;
+    background-color: @chip-danger-color;
   }
 
   &--plain {
@@ -75,32 +85,32 @@
   }
 
   &--plain-primary {
-    color: @color-primary;
+    color: @chip-primary-color;
     border-color: currentColor;
   }
 
   &--plain-info {
-    color: @color-info;
+    color: @chip-info-color;
     border-color: currentColor;
   }
 
   &--plain-success {
-    color: @color-success;
+    color: @chip-success-color;
     border-color: currentColor;
   }
 
   &--plain-warning {
-    color: @color-warning;
+    color: @chip-warning-color;
     border-color: currentColor;
   }
 
   &--plain-danger {
-    color: @color-danger;
+    color: @chip-danger-color;
     border-color: currentColor;
   }
 
   &--round {
-    border-radius: 100px;
+    border-radius: @chip-round-radius;
   }
 
   &--normal {
@@ -131,16 +141,19 @@
     cursor: pointer;
   }
 
-  &--text-normal,
   &--text-large {
-    margin: 0 5px;
+    margin: @chip-text-large-margin;
+  }
+
+  &--text-normal {
+    margin: @chip-text-normal-margin;
   }
 
   &--text-small {
-    margin: 0 3px;
+    margin: @chip-text-small-margin;
   }
 
   &--text-mini {
-    margin: 0 2px;
+    margin: @chip-text-mini-margin;
   }
 }

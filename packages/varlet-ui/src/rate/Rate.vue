@@ -6,7 +6,7 @@
       :key="val"
       v-ripple="{ disabled: readonly || disabled ? true : !ripple }"
       :style="{
-        color: transformValue(val + 1).color,
+        color: transformValue(val).color,
         cursor: readonly ? 'default' : disabled ? 'not-allowed' : 'pointer',
         marginRight: val !== count ? marginRight : 0,
         width: fontSize,
@@ -17,14 +17,10 @@
       <var-icon
         :transition="1"
         :name="`${
-          transformValue(val + 1).type === 'full'
-            ? icon
-            : transformValue(val + 1).type === 'half'
-            ? halfIcon
-            : emptyIcon
+          transformValue(val).type === 'full' ? icon : transformValue(val).type === 'half' ? halfIcon : emptyIcon
         }`"
         :style="{ fontSize }"
-        @click="handleClick(val + 1, $event)"
+        @click="handleClick(val, $event)"
       />
     </div>
   </div>
@@ -54,6 +50,7 @@ export default defineComponent({
       }
       return { type: 'empty', score: index, color: props.disabled ? props.disabledColor : props.emptyColor }
     }
+
     const changeValue = (score: number, event: MouseEvent) => {
       if (props.half) {
         const { offsetWidth } = event.target as HTMLDivElement
@@ -63,6 +60,7 @@ export default defineComponent({
       }
       props['onUpdate:modelValue']?.(score)
     }
+
     const handleClick = (score: number, event: MouseEvent) => {
       if (props.readonly || props.disabled) {
         return
@@ -70,10 +68,13 @@ export default defineComponent({
       changeValue(score, event)
       props.onChange?.(score)
     }
+
     const fontSize: Ref<number | string> = ref(0)
     fontSize.value = !isNaN(Number(props.size)) ? `${props.size}px` : props.size
+
     const marginRight: Ref<number | string> = ref(0)
     marginRight.value = !isNaN(Number(props.marginRight)) ? `${props.marginRight}px` : props.marginRight
+
     return {
       transformValue,
       handleClick,
