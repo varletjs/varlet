@@ -1,12 +1,16 @@
 <template>
-  <var-index-bar v-model:active="active" @change="change">
-    <div v-for="item in list" :key="item">
-      <var-index-anchor :index="item" class="var-index-anchor__example"> {{ pack.title }} {{ item }} </var-index-anchor>
-      <var-cell>{{ item }} {{ pack.text }}</var-cell>
-      <var-cell>{{ item }} {{ pack.text }}</var-cell>
-      <var-cell>{{ item }} {{ pack.text }}</var-cell>
-    </div>
-  </var-index-bar>
+  <div class="var-index-bar__example">
+    <var-index-bar v-model:active="active" @change="change">
+      <div v-for="item in list" :key="item">
+        <var-index-anchor :index="item" class="var-index-anchor__example">
+          {{ pack.title }} {{ item }}
+        </var-index-anchor>
+        <var-cell>{{ item }} {{ pack.text }}</var-cell>
+        <var-cell>{{ item }} {{ pack.text }}</var-cell>
+        <var-cell>{{ item }} {{ pack.text }}</var-cell>
+      </div>
+    </var-index-bar>
+  </div>
 </template>
 
 <script>
@@ -51,6 +55,10 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+.var-index-bar__example {
+  overflow: auto;
+  height: calc(100vh - 50px);
+}
 .var-index-anchor__example {
   background: #e7edf7;
   height: 42px;

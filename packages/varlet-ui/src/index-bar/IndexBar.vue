@@ -1,6 +1,6 @@
 <template>
-  <div class="var-index-bar" ref="barEl" @scroll="handleScroll">
-    <slot></slot>
+  <div class="var-index-bar" ref="barEl">
+    <slot />
     <ul class="var-index-bar__anchor-list" :style="{ zIndex: zIndex + 2 }">
       <li
         v-for="anchorName in anchorNameList"
@@ -16,8 +16,9 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, nextTick, ref, Ref, watch, onMounted } from 'vue'
+import { computed, ComputedRef, defineComponent, nextTick, ref, Ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { isPlainObject } from '../utils/shared'
+import { getParentScroller } from '../utils/elements'
 import { IndexBarProvider, useIndexAnchors } from './provide'
 import { IndexAnchorProvider } from '../index-anchor/provide'
 import { props } from './props'
@@ -28,6 +29,8 @@ export default defineComponent({
   setup(props) {
     const { length, indexAnchors, bindIndexAnchors } = useIndexAnchors()
 
+    const scrollEl: Ref<HTMLElement | null> = ref(null)
+    const scroller: Ref<HTMLElement | Window | null> = ref(null)
     const barEl: Ref<HTMLDivElement | null> = ref(null)
     const anchorNameList: Ref<Array<number | string>> = ref([])
 
@@ -53,7 +56,7 @@ export default defineComponent({
     }
 
     const handleScroll = () => {
-      const { scrollTop } = barEl.value as HTMLDivElement
+      const { scrollTop } = scrollEl.value as HTMLElement
       indexAnchors.forEach((anchor: IndexAnchorProvider, index: number) => {
         const anchorTop = anchor.ownTop.value
         const top = scrollTop - anchorTop + stickyOffsetTop.value
@@ -73,8 +76,8 @@ export default defineComponent({
       const indexAnchor = indexAnchors.find(({ name }: IndexAnchorProvider) => anchorName === name.value)
       if (!indexAnchor) return
       const top = indexAnchor.ownTop.value
-      const { scrollLeft } = barEl.value as HTMLDivElement
-      ;(barEl.value as HTMLDivElement).scrollTo(scrollLeft, top)
+      const { scrollLeft } = scrollEl.value as HTMLDivElement
+      ;(scrollEl.value as HTMLElement).scrollTo(scrollLeft, top)
       emitEvent(anchorName)
     }
 
@@ -94,7 +97,17 @@ export default defineComponent({
     )
 
     onMounted(() => {
+      scroller.value = getParentScroller(barEl.value as HTMLDivElement)
+      scrollEl.value =
+        scroller.value === window
+          ? (scroller.value as Window).document.documentElement
+          : (scroller.value as HTMLElement)
+      scroller.value?.addEventListener('scroll', handleScroll)
       indexAnchors.forEach(({ setOwnTop }) => setOwnTop())
+    })
+
+    onBeforeUnmount(() => {
+      scroller.value?.removeEventListener('scroll', handleScroll)
     })
 
     return {
@@ -102,7 +115,6 @@ export default defineComponent({
       anchorNameList,
       scrollTo,
       anchorClick,
-      handleScroll,
     }
   },
 })
