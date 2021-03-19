@@ -9,7 +9,7 @@
   </div>
   <div>
     <app-type>{{ pack.dualThumb }}</app-type>
-    <var-slider v-model="value1" range @change="handleChange" />
+    <var-slider v-model="value1" range @change="handleChange" label-visible="always" />
   </div>
   <div>
     <app-type>{{ pack.disable }}</app-type>

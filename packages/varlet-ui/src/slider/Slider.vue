@@ -2,7 +2,7 @@
   <div class="var-slider">
     <div
       class="var-slider-block"
-      :class="[disabled || formDisabled ? 'var-slider__disable' : null, errorMessage ? 'var-slider__error' : null]"
+      :class="[isDisabled ? 'var-slider__disable' : null, errorMessage ? 'var-slider__error' : null]"
       :style="{
         height: `${3 * thumbSize}px`,
         margin: `0 ${thumbSize / 2}px`,
@@ -23,6 +23,7 @@
         class="var-slider__thumb"
         :style="{
           left: `${range ? modelValue[0] : modelValue}%`,
+          zIndex: thumbProps1.active ? 1 : null,
         }"
         @touchstart="start($event, 1)"
         @touchmove="move($event, 1)"
@@ -65,6 +66,7 @@
         v-if="range"
         :style="{
           left: `${range && modelValue[1]}%`,
+          zIndex: thumbProps2.active ? 1 : null,
         }"
         @touchstart="start($event, 2)"
         @touchmove="move($event, 2)"
@@ -181,6 +183,10 @@ export default defineComponent({
       }
     })
 
+    const isDisabled: ComputedRef<boolean | undefined> = computed(() => props.disabled || formProvider?.disabled.value)
+
+    const isReadonly: ComputedRef<boolean | undefined> = computed(() => props.readonly || formProvider?.readonly.value)
+
     const setPercent = (moveDistance: number, type: number) => {
       let prevValue: number
       let rangeValue: Array<number> = []
@@ -223,9 +229,8 @@ export default defineComponent({
 
     const start = (event: TouchEvent, type: number) => {
       if (!maxWidth.value) maxWidth.value = (sliderEl.value as HTMLDivElement).offsetWidth
-      const { disabled, readonly, onStart } = props
-      if (disabled || readonly || formProvider?.disabled.value || formProvider?.readonly.value) return
-      onStart?.()
+      if (isDisabled.value || isReadonly.value) return
+      props.onStart?.()
       isScroll.value = true
       if (type === 1) {
         thumbProps1.startPosition = event.touches[0].clientX
@@ -235,14 +240,7 @@ export default defineComponent({
     }
 
     const move = (event: TouchEvent, type: number) => {
-      if (
-        props.disabled ||
-        props.readonly ||
-        formProvider?.disabled.value ||
-        formProvider?.readonly.value ||
-        !isScroll.value
-      )
-        return
+      if (isDisabled.value || isReadonly.value || !isScroll.value) return
       let moveDistance: number
 
       if (type === 1) {
@@ -252,14 +250,15 @@ export default defineComponent({
         thumbProps2.active = true
         moveDistance = event.touches[0].clientX - thumbProps2.startPosition + thumbProps2.currentLeft
       }
+
       if (moveDistance <= 0) moveDistance = 0
       else if (moveDistance >= maxWidth.value) moveDistance = maxWidth.value
       setPercent(moveDistance, type)
     }
 
     const end = (type: number) => {
-      const { disabled, readonly, range, modelValue, onEnd } = props
-      if (disabled || readonly || formProvider?.disabled.value || formProvider?.readonly.value) return
+      const { range, modelValue, onEnd } = props
+      if (isDisabled.value || isReadonly.value) return
       let rangeValue: Array<number> = []
       const thumbProps = type === 1 ? thumbProps1 : thumbProps2
 
@@ -277,7 +276,7 @@ export default defineComponent({
     }
 
     const click = (event: MouseEvent) => {
-      if (props.disabled || props.readonly || formProvider?.disabled.value || formProvider?.readonly.value) return
+      if (isDisabled.value || isReadonly.value) return
       if ((event.target as HTMLDivElement).closest('.var-slider__thumb')) return
       const offset = event.clientX - getLeft(event.currentTarget as HTMLDivElement)
       const type = getType(offset)
@@ -364,8 +363,7 @@ export default defineComponent({
       showLabel1,
       showLabel2,
       getFillStyle,
-      formDisabled: formProvider?.disabled,
-      formReadonly: formProvider?.readonly,
+      isDisabled,
       errorMessage,
       start,
       move,
