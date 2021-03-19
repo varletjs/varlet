@@ -79,7 +79,7 @@ export default {
     const score9 = ref(3)
     const score10 = ref(3)
 
-    const handleChange = (score: number) => {
+    const handleChange = (score) => {
       Snackbar({
         content: `click ${score}`,
         position: 'top',

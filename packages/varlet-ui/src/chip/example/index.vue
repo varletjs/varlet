@@ -67,7 +67,7 @@ import Chip from '..'
 import Icon from '../../icon'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
-import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
 
 export default {
   name: 'ChipExample',

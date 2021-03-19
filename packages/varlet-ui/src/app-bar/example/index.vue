@@ -55,12 +55,12 @@
 <script>
 import { ref } from 'vue'
 import AppBar from '..'
-import Icon from '../../icon/Icon'
-import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
+import Icon from '../../icon'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Ripple from '../../ripple'
 import Snackbar from '../../snackbar'
-import Menu from '../../menu/Menu'
-import Button from '../../button/Button'
+import Menu from '../../menu'
+import Button from '../../button'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 

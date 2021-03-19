@@ -61,7 +61,7 @@ import Button from '../../button'
 import Chip from '../../chip'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
-import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
 
 export default {
   name: 'BadgeExample',
