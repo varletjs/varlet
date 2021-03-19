@@ -7,7 +7,8 @@ export default {
   title: 'Title',
   addRightSlotAppBar: 'Add Right Slot AppBar',
   addLeftAndRightSlotAppBar: 'Add Left And Right Slot AppBar',
-  options: ['options1', 'options2'],
+  options1: 'options1',
+  options2: 'options2',
   search: 'search',
   goBack: 'Go Back',
 }

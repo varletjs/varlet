@@ -14,11 +14,11 @@ createApp().use(Chip)
 通过设置`type`属性定义标签的颜色
 
 ```html
-<var-chip type='primary'>主要标签</var-chip>
-<var-chip type='success'>成功标签</var-chip>
-<var-chip type='danger'>危险标签</var-chip>
-<var-chip type='warning'>警告标签</var-chip>
-<var-chip type='info'>信息标签</var-chip>
+<var-chip type="primary">主要标签</var-chip>
+<var-chip type="success">成功标签</var-chip>
+<var-chip type="danger">危险标签</var-chip>
+<var-chip type="warning">警告标签</var-chip>
+<var-chip type="info">信息标签</var-chip>
 <var-chip>默认标签</var-chip>
 ```
 
@@ -27,7 +27,7 @@ createApp().use(Chip)
 通过设置`plain`属性把标签设置成空心样式
 
 ```html
-<var-chip plain type='primary'>空心标签</var-chip>
+<var-chip plain type="primary">空心标签</var-chip>
 ```
 
 ### 非圆角标签
@@ -35,24 +35,24 @@ createApp().use(Chip)
 通过设置`round`属性为`false`来取消标签的圆角样式
 
 ```html
-<var-chip :round='false' type='primary'>非圆角标签</var-chip>
+<var-chip :round="false" type="primary">非圆角标签</var-chip>
 ```
 
 ### 标签尺寸
 
 通过设置`size`属性定义标签的大小
 
- ```html
-<var-chip size='large'>大标签</var-chip>
+```html
+<var-chip size="large">大标签</var-chip>
 <var-chip>常规标签</var-chip>
-<var-chip size='small'>小标签</var-chip>
-<var-chip size='mini'>迷你标签</var-chip>
+<var-chip size="small">小标签</var-chip>
+<var-chip size="mini">迷你标签</var-chip>
 ```
 
 ### 块级标签
 
 ```html
-<var-chip type='primary' block>块级标签</var-chip>
+<var-chip type="primary" block>块级标签</var-chip>
 ```
 
 ### 可关闭标签
@@ -60,8 +60,13 @@ createApp().use(Chip)
 通过使用`closable`属性显示标签的关闭图标，使用`close-name`属性自定义关闭图标的样式（`close-name`必须在使用了`closeable`的情况下使用）
 
 ```html
-<var-chip closable v-if='show' @close='show = false'>可关闭标签</var-chip>
-<var-chip closable icon-name='delete' v-if='show1' @close='show1 = false'>自定义关闭图标</var-chip>
+<var-chip closable v-if="show" @close="show = false">可关闭标签</var-chip>
+<var-chip
+  closable
+  icon-name="delete"
+  v-if="show1"
+  @close="show1 = false">
+  自定义关闭图标</var-chip>
 ```
 
 ```js
@@ -71,8 +76,11 @@ export default {
   setup() {
     const show = ref(true)
     const show1= ref(true)
-    
-    return { show, show1 }
+
+    return { 
+      show, 
+      show1 
+    }
   }
 }
 ```
@@ -82,10 +90,10 @@ export default {
 通过设置`color`和`text-color`属性自定义标签颜色
 
 ```html
-<var-chip color='#009688'>标签</var-chip>
-<var-chip color='#009688' plain>标签</var-chip>
-<var-chip color='#faecd8' text-color='#e6a23c' plain>标签</var-chip>
-<var-chip color='#faecd8' text-color='#e6a23c'>标签</var-chip>
+<var-chip color="#009688">标签</var-chip>
+<var-chip color="#009688" plain>标签</var-chip>
+<var-chip color="#faecd8" text-color="#e6a23c" plain>标签</var-chip>
+<var-chip color="#faecd8" text-color="#e6a23c">标签</var-chip>
 ```
 
 ### 添加左右插槽标签
@@ -93,26 +101,30 @@ export default {
 自定义标签两侧插槽
 
 ```html
-<var-chip type='primary' plain>
-  <template #left>
-    <var-icon name='star'></var-icon>
-  </template>
+<var-chip type="primary" plain>
   左侧插槽
-</var-chip>
-<var-chip type='primary' plain>
-  <template #right>
-    <var-icon name='fire'></var-icon>
-  </template>
-  右侧插槽
-</var-chip>
-<var-chip type='primary' plain>
+
   <template #left>
-    <var-icon name='account-circle'></var-icon>
+    <var-icon name="star" />
   </template>
+</var-chip>
+<var-chip type="primary" plain>
+  右侧插槽
+
   <template #right>
-    <var-icon name='cake-variant'></var-icon>
+    <var-icon name="fire" />
   </template>
+</var-chip>
+<var-chip type="primary" plain>
   左右两侧插槽
+  
+  <template #left>
+    <var-icon name="account-circle" />
+  </template>
+
+  <template #right>
+    <var-icon name="cake-variant" />
+  </template>
 </var-chip>
 ```
 

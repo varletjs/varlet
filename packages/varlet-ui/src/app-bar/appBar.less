@@ -14,6 +14,19 @@
     text-overflow: ellipsis;
     overflow: hidden;
     line-height: 50px;
+    display: flex;
+  }
+
+  &__title-center {
+    justify-content: center;
+  }
+
+  &__title-left {
+    justify-content: flex-start;
+  }
+
+  &__title-right {
+    justify-content: flex-end;
   }
 
   &__left,
@@ -22,6 +35,7 @@
     justify-content: flex-start;
     align-items: center;
     height: 100%;
+    z-index: 2;
   }
 
   &__left {

@@ -6,8 +6,11 @@
         <span>{{ title }}</span>
       </span>
       <span class="varlet-site-header__nav">
-        <var-menu :offset-y="38" :offset-x="-20" v-model:show="offsetY">
-          <var-icon name="translate" size="26px" color="#ffffff" @click="offsetY = true"></var-icon>
+        <var-menu :offset-y="40" v-model:show="offsetY">
+          <div class="varlet-site-header__nav-style" @click="offsetY = true">
+            <var-icon name="translate" size="26px" color="#ffffff" />
+            <var-icon name="chevron-down" color="#ffffff"></var-icon>
+          </div>
           <template #menu>
             <div class="language-list">
               <var-cell
@@ -21,9 +24,11 @@
             </div>
           </template>
         </var-menu>
-        <a target="_blank" href="https://github.com/haoziqaq/varlet" class="varlet-site-header__link">
-          <var-icon name="github" color="#ffffff" :size="28"></var-icon>
-        </a>
+        <div class="varlet-site-header__nav-link">
+          <a target="_blank" href="https://github.com/haoziqaq/varlet" class="varlet-site-header__link">
+            <var-icon name="github" color="#ffffff" :size="28"></var-icon>
+          </a>
+        </div>
       </span>
     </div>
     <div class="varlet-site-content">
@@ -280,23 +285,34 @@ iframe {
           background: transparent;
           margin-right: 20px;
           cursor: pointer;
+        }
+
+        &-style {
+          border-radius: 3px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          padding: 0 10px;
 
           &:hover {
-            transform: scale(1.2);
+            background: rgba(255, 255, 255, 0.2);
           }
         }
-      }
 
-      &__link {
-        i {
-          display: block;
-          width: 26px;
-          height: 26px;
-          margin-right: 24px;
-          transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        &-link {
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          a {
+            text-decoration: none;
+          }
 
           &:hover {
-            transform: scale(1.2);
+            background: rgba(255, 255, 255, 0.2);
           }
         }
       }

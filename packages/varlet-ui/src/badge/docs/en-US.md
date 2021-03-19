@@ -12,13 +12,13 @@ createApp().use(Badge)
 
 Define the color of the badge by setting the `type` attribute
 
- ```html
-<var-badge type='primary'></var-badge>
-<var-badge type='info'></var-badge>
-<var-badge type='success'></var-badge>
-<var-badge type='warning'></var-badge>
-<var-badge type='danger'></var-badge>
-<var-badge></var-badge>
+```html
+<var-badge type="primary" />
+<var-badge type="info" />
+<var-badge type="success" />
+<var-badge type="warning" />
+<var-badge type="danger" />
+<var-badge />
 ```
 
 ### Dot Badge
@@ -26,37 +26,41 @@ Define the color of the badge by setting the `type` attribute
 Set the logo as a dot by setting the `dot` property
 
 ```html
-<var-badge type='danger' dot></var-badge>
+<var-badge type="danger" dot />
 ```
 ### Customize Badge Content
 
 Define the content of the logo by setting the value of `value`
 
 ```html
-<var-badge type='danger' value='badge'></var-badge>
-<var-badge type='danger' value='hot'></var-badge>
-<var-badge type='danger' :value='66'></var-badge>
+<var-badge type="danger" value="badge" />
+<var-badge type="danger" value="hot" />
+<var-badge type="danger" :value="66" />
 ```
 ### Maximum
 
 By setting `value`, `max-value` controls how the content of the logo should be displayed (in effect when `value` and `max-value` are both numbers).
 
 ```html
-<var-badge type='danger' :value='value' :max-value='maxValue'></var-badge>
-<var-badge type='danger' :value='value1' :max-value='maxValue'></var-badge>
+<var-badge type="danger" :value="value" :max-value="maxValue" />
+<var-badge type="danger" :value="value1" :max-value="maxValue" />
 ```
 
 ```js
 import { ref } from 'vue'
 
 export default {
-	setup() {
-		const value = ref(88);
-		const value1 = ref(188);
-		const maxValue = ref(99);
-		
-		return { value, value1, maxValue }
-	}
+  setup() {
+    const value = ref(88);
+    const value1 = ref(188);
+    const maxValue = ref(99);
+
+    return { 
+      value, 
+      value1,
+      maxValue 
+    }
+  }
 }
 ```
 ### Different Positioning Badges
@@ -64,17 +68,17 @@ export default {
 Define the position of the logo by setting the value of `position`
 
 ```html
-<var-badge type='danger' position='right-top'>
-	<var-chip plain :round='false' color='#009688'>右上</var-chip>
+<var-badge type="danger" position="right-top">
+<var-chip plain :round="false" color="#009688">右上</var-chip>
 </var-badge>
-<var-badge type='danger' position='right-bottom'>
-	<var-chip plain :round='false' color='#009688'>右下</var-chip>
+<var-badge type="danger" position="right-bottom">
+<var-chip plain :round="false" color="#009688">右下</var-chip>
 </var-badge>
-<var-badge type='danger' position='left-top'>
-	<var-chip plain :round='false' color='#009688'>左上</var-chip>
+<var-badge type="danger" position="left-top">
+<var-chip plain :round="false" color="#009688">左上</var-chip>
 </var-badge>
-<var-badge type='danger' position='left-bottom'>
-	<var-chip plain :round='false' color='#009688'>左下</var-chip>
+<var-badge type="danger" position="left-bottom">
+<var-chip plain :round="false" color="#009688">左下</var-chip>
 </var-badge>
 ```
 
@@ -83,9 +87,9 @@ Define the position of the logo by setting the value of `position`
 Define whether the logo should be displayed by setting the value of `hidden`
 
 ```html
-<var-button @click='handleChange'>Click To Change The State</var-button>
-<var-badge type='danger' position='right-top' :hidden='hidden'>
-	<var-chip plain :round='false' color='#009688'>Badge</var-chip>
+<var-button @click="handleChange">Click To Change The State</var-button>
+<var-badge type="danger" position="right-top" :hidden="hidden">
+<var-chip plain :round="false" color="#009688">Badge</var-chip>
 </var-badge>
 ```
 
@@ -93,15 +97,18 @@ Define whether the logo should be displayed by setting the value of `hidden`
 import { ref } from 'vue'
 
 export default {
-	setup() {
-		const hidden = ref(false);
-		
-		const handleChange = () => {
-			hidden.value = !hidden.value
-		}
-		
-		return { hidden, handleChange }
-	}
+  setup() {
+    const hidden = ref(false);
+
+    const handleChange = () => {
+      hidden.value = !hidden.value
+    }
+
+    return { 
+      hidden, 
+      handleChange 
+    }
+  }
 }
 ```
 
@@ -110,8 +117,8 @@ export default {
 Customize the logo color by setting the value `color`
 
 ```html
-<var-badge color='#6200ea' position='right-top'>
-	<var-chip plain :round='false' color='#009688'>Badge</var-chip>
+<var-badge color="#6200ea" position="right-top">
+<var-chip plain :round="false" color="#009688">Badge</var-chip>
 </var-badge>
 ```
 
@@ -120,8 +127,8 @@ Customize the logo color by setting the value `color`
 Set the badge icon by setting the value of `icon`
 
 ```html
-<var-badge color='#6200ea' position='right-top' icon='account-circle'>
-	<var-chip plain :round='false' color='#009688'>Badge</var-chip>
+<var-badge color="#6200ea" position="right-top" icon="account-circle">
+<var-chip plain :round="false" color="#009688">Badge</var-chip>
 </var-badge>
 ```
 
@@ -129,7 +136,7 @@ Set the badge icon by setting the value of `icon`
 
 ### props
 
-| Prop | Description | Type | Default | 
+| Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `type` | Badge type. Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `dot` | Whether the badge is a dot | _boolean_ | `false`|

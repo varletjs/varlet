@@ -15,7 +15,7 @@ export const props = {
   },
 
   //  标题的位置
-  titleTextAlign: {
+  titlePosition: {
     type: String,
     default: 'left',
   },

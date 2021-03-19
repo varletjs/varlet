@@ -1,7 +1,7 @@
 <template>
   <div style="position: relative">
     <header>
-      <var-app-bar :title="componentName" title-text-align="center">
+      <var-app-bar :title="componentName" title-position="center">
         <template #left>
           <var-button round @click="toHome" color="transparent" text-color="#ffffff" text>
             <var-icon name="chevron-left" :size="28" />

@@ -2,6 +2,7 @@
   <div class="var-badge">
     <transition name="var-fade">
       <span
+        v-bind="$attrs"
         v-show="!hidden"
         :class="[
           'var-badge__content',
@@ -11,9 +12,9 @@
           { 'var-badge--dot': dot },
         ]"
         :style="{ background: color }"
-        v-bind="$attrs"
       >
         <var-icon v-if="icon" :name="icon"></var-icon>
+
         <span v-else>{{ values() }}</span>
       </span>
     </transition>

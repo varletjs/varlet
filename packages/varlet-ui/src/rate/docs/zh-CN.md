@@ -18,14 +18,17 @@ createApp().use(Rate)
 ```
 
 ```js
-import { defineComponent, Ref, ref } from 'vue'
+import { ref } from 'vue'
 
-export default defineComponent({
-	setup() {
-		const score: Ref<number> = ref(3)
-		return { score };
-	}
-})
+export default {
+  setup() {
+    const score = ref(3)
+
+    return {
+      score
+    }
+  }
+}
 ```
 
 ### 自定义评分总数
@@ -34,18 +37,6 @@ export default defineComponent({
 
 ```html
 <var-rate v-model="score" :count="8"/>
-```
-
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const score = ref(3)
-
-    return { score }
-  }
-}
 ```
 
 ### 自定义评分图标颜色
@@ -59,36 +50,12 @@ export default {
 <var-rate v-model="score" color="#3f51b5" empty-color="#9fa8da"/>
 ```
 
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const score = ref(3)
-
-    return { score }
-  }
-}
-```
-
 ### 自定义评分图标样式
 
 通过设置`icon`、`empty-icon`属性来自定义选中和未选的图标样式
 
 ```html
 <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red"></var-rate>
-```
-
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const score = ref(3)
-
-    return { score }
-  }
-}
 ```
 
 ### 自定义评分图标尺寸
@@ -102,18 +69,6 @@ export default {
 <var-rate v-model="score" :size="20"/>
 ```
 
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const score = ref(3)
-
-    return { score }
-  }
-}
-```
-
 ### 自定义图标间隔
 
 通过设置`paddingRight`属性来自定义评分之间的间隔
@@ -123,18 +78,6 @@ export default {
 <var-rate v-model="score"/>
 <var-rate v-model="score" :margin-right="6"/>
 <var-rate v-model="score" :margin-right="8"/>
-```
-
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const score = ref(3)
-
-    return { score }
-  }
-}
 ```
 
 ### 允许半图标
@@ -166,18 +109,6 @@ export default {
 <var-rate v-model="score" disabled disabled-color="#bbbbbb"/>
 ```
 
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const score = ref(3)
-
-    return { score }
-  }
-}
-```
-
 ### 只读评分
 
 通过设置`readonly`属性让评分处于只读状态
@@ -186,36 +117,12 @@ export default {
 <var-rate v-model="score" readonly/>
 ```
 
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const score = ref(3)
-
-    return { score }
-  }
-}
-```
-
 ### 使用水波纹
 
 通过设置`ripple`属性让评分时出现水波纹样式
 
 ```html
 <var-rate v-model="score" ripple/>
-```
-
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const score = ref(3)
-
-    return { score }
-  }
-}
 ```
 
 ### 监听change事件
@@ -230,18 +137,18 @@ export default {
 import { ref } from 'vue'
 
 export default {
-	setup() {
-		const score = ref(3)
-    
-		const handleChange = (score) => {
-			Snackbar({
-				content: `click ${score}`,
-				position: 'top'
-			})
-		}
-		
-		return { score, handleChange }
-	}
+  setup() {
+    const handleChange = (score) => {
+      Snackbar({
+        content: `click ${score}`,
+        position: 'top'
+      })
+    }
+
+    return {
+      handleChange
+    }
+  }
 }
 ```
 

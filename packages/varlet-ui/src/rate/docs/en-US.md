@@ -21,11 +21,13 @@ Default display style
 import { ref } from 'vue'
 
 export default {
-	setup() {
-		const score = ref(3)
+  setup() {
+    const score = ref(3)
     
-		return { score }
-	}
+    return { 
+      score 
+    }
+  }
 }
 ```
 
@@ -33,32 +35,19 @@ export default {
 
 Customize the total number of rating by setting the `count` property
 
-```js
-import { ref } from 'vue'
-
-export default {
-	setup() {
-		const score = ref(3)
-    
-		return { score }
-	}
-}
+```html
+<var-rate v-model="score" :count="8"/>
 ```
 
 ### Customize the rating icon color
 
 Customize the selected color and the unselected color by setting the `color` and `empty-color` properties
 
-```js
-import { ref } from 'vue'
-
-export default {
-	setup() {
-		const score = ref(3)
-    
-		return { score }
-	}
-}
+```html
+<var-rate v-model="score" color="#9c27b0" empty-color="#d199da"/>
+<var-rate v-model="score" color="#e91e63" empty-color="#f48fb1"/>
+<var-rate v-model="score" color="#4caf50" empty-color="#a5d6a7"/>
+<var-rate v-model="score" color="#3f51b5" empty-color="#9fa8da"/>
 ```
 
 ### Customize the rating icon style
@@ -67,18 +56,6 @@ Customize the selected and unselected icon styles by setting the `icon` and `emp
 
 ```html
 <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red"></var-rate>
-```
-
-```js
-import { ref } from 'vue'
-
-export default {
-	setup() {
-		const score = ref(3)
-    
-		return { score }
-	}
-}
 ```
 
 ### Customize the rating icon size
@@ -92,18 +69,6 @@ Customize the size of the rating icon by setting the `size` property
 <var-rate v-model="score" :size="20"/>
 ```
 
-```js
-import { ref } from 'vue'
-
-export default {
-	setup() {
-		const score = ref(3)
-    
-		return { score }
-	}
-}
-```
-
 ### Custom Icon Interval
 
 Customize the spacing between scores by setting the `paddingRight` property
@@ -113,18 +78,6 @@ Customize the spacing between scores by setting the `paddingRight` property
 <var-rate v-model="score"/>
 <var-rate v-model="score" :margin-right="6"/>
 <var-rate v-model="score" :margin-right="8"/>
-```
-
-```js
-import { ref } from 'vue'
-
-export default {
-	setup() {
-		const score = ref(3)
-    
-		return { score }
-	}
-}
 ```
 
 ### allows half ICONS
@@ -156,18 +109,6 @@ Make the score in the disabled state by setting the `disabled` property, and use
 <var-rate v-model="score" disabled disabled-color="#bbbbbb"/>
 ```
 
-```js
-import { ref } from 'vue'
-
-export default {
-	setup() {
-		const score = ref(3)
-    
-		return { score }
-	}
-}
-```
-
 ### Read only rating
 
 Make the score read-only by setting the `readonly` property
@@ -176,36 +117,12 @@ Make the score read-only by setting the `readonly` property
 <var-rate v-model="score" readonly/>
 ```
 
-```js
-import { ref } from 'vue'
-
-export default {
-	setup() {
-		const score = ref(3)
-    
-		return { score };
-	}
-}
-```
-
 ### Use water ripples
 
 Set the `ripple` attribute to make the water ripple style appear when scoring
 
 ```html
 <var-rate v-model="score" ripple/>
-```
-
-```js
-import { ref } from 'vue'
-
-export default {
-	setup() {
-		const score = ref(3)
-    
-		return { score }
-	}
-}
 ```
 
 ### listens for the change event
@@ -219,19 +136,19 @@ Other interaction logic is completed by calling the `change` event
 ```js
 import { ref } from 'vue'
 
-export default {
-	setup() {
-		const score = ref(3)
-    
-		const handleChange = (score) => {
-			Snackbar({
-				content: `click ${score}`,
-				position: 'top'
-			})
-		}
-		
-		return { score, handleChange }
-	}
+export default { 
+  setup() {
+    const handleChange = (score) => {
+      Snackbar({
+        content: `click ${score}`,
+        position: 'top'
+      })
+    }
+
+    return { 
+      handleChange 
+    }
+  }
 }
 ```
 

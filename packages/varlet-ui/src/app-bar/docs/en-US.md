@@ -12,13 +12,17 @@ createApp().use(AppBar)
 ### Basic AppBar
 
 ```html
-<var-app-bar title='title'></var-app-bar>
+<var-app-bar title="title" />
 ```
 
 ### Custom Style AppBar
 
 ```html
-<var-app-bar title='title' title-text-align='center' color='#ff9800' :is-shadow='false'></var-app-bar>
+<var-app-bar 
+  title="title" 
+  title-position="center" 
+  color="#ff9800" 
+  :is-shadow="false" />
 ```
 
 ### Add Slots At Title
@@ -30,12 +34,17 @@ createApp().use(AppBar)
 ### Add Left Slot AppBar
 
 ```html
-<var-app-bar title='title'>
-  <template #left>
-    <var-button round @click='goBack' color='transparent' text-color='#ffffff' text>
-      <var-icon name='chevron-left' :size='24' />
-    </var-button>
-  </template>
+<var-app-bar title="title">
+<template #left>
+  <var-button 
+    round 
+    text 
+    color="transparent" 
+    text-color="#ffffff" 
+    @click="goBack">
+    <var-icon name="chevron-left" :size="24" />
+  </var-button>
+</template>
 </var-app-bar>
 ```
 
@@ -61,13 +70,17 @@ export default {
 ### Add Right Slot AppBar
 
 ```html
-
-<var-app-bar title='title'>
-  <template #right>
-    <var-button round @click='searchData' color='transparent' text-color='#ffffff' text>
-      <var-icon name='magnify' :size='24' />
-    </var-button>
-  </template>
+<var-app-bar title="title">
+<template #right>
+  <var-button 
+    round 
+    text 
+    color="transparent" 
+    text-color="#ffffff" 
+    @click="searchData">
+    <var-icon name="magnify" :size="24" />
+  </var-button>
+</template>
 </var-app-bar>
 ```
 
@@ -93,20 +106,36 @@ export default {
 ### Add Left And Right Slot AppBar
 
 ```html
-<var-app-bar title='title'>
+<var-app-bar title="title">
   <template #left>
-    <var-button round @click='goBack' color='transparent' text-color='#ffffff' text>
-      <var-icon name='chevron-left' :size='24' />
+    <var-button 
+      round 
+      text 
+      color="transparent" 
+      text-color="#ffffff" 
+      @click="goBack">
+      <var-icon name="chevron-left" :size="24" />
     </var-button>
   </template>
+    
   <template #right>
-    <var-menu :offset-y='38' :offset-x='-20' v-model:show='offsetY'>
-      <var-button round @click='offsetY = true' color='transparent' text-color='#ffffff' text>
-        <var-icon name='menu' :size='24' />
+    <var-menu :offset-y="38" :offset-x="-20" v-model:show="offsetY">
+      <var-button 
+        round 
+        text
+        color="transparent" 
+        text-color="#ffffff"
+        @click="offsetY = true">
+        <var-icon name="menu" :size="24" />
       </var-button>
+      
       <template #menu>
-        <div class='menu-list'>
-          <var-cell v-for='value in menuList' :key='value.value' class='menu-cell' v-ripple>
+        <div class="menu-list">
+          <var-cell
+            class="menu-cell"
+            v-for="value in menuList" 
+            :key="value.value"  
+            v-ripple>
             {{ value.label }}
           </var-cell>
         </div>
@@ -120,7 +149,7 @@ export default {
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default defineComponent({
+export default {
   setup() {
     const offsetY = ref(false)
     const menuList = ref([
@@ -141,7 +170,7 @@ export default defineComponent({
       goBack
     }
   }
-})
+}
 ```
 
 ```css
@@ -161,12 +190,12 @@ export default defineComponent({
 
 ### props
 
-| Prop | Description | Type | Default | 
-| --- | --- | --- | --- | 
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
 | `color` | Background | _string_ | `#2979ff` |
 | `text-color` | Text color  | _string_ | `#ffffff` |
 | `title` | Title | _string_ | `''` |
-| `title-text-align` | Title location | _string_ | `left` |
+| `title-position` | Title location,Can be set to `left`,`center`,`right` | _string_ | `left` |
 | `is-shadow` | Whether to use shadows or not | _boolean_ | `true` |
 
 ### slots
@@ -176,4 +205,3 @@ export default defineComponent({
 | `default` | Customize the title content to override the `title` content | `-` |
 | `left` | Insert the content to the left of the AppBar | `-` |
 | `right` | Insert the content to the right of the AppBar | `-` |
- 
