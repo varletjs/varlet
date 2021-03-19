@@ -7,7 +7,8 @@ export default {
   title: '标题',
   addRightSlotAppBar: '添加右侧插槽导航栏',
   addLeftAndRightSlotAppBar: '添加左右两侧插槽导航栏',
-  options: ['选项一', '选项二'],
+  options1: '选项一',
+  options2: '选项二',
   search: '搜索',
   goBack: '返回',
 }

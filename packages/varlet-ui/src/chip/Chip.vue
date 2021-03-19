@@ -3,30 +3,23 @@
     <span
       v-bind="$attrs"
       v-ripple="{ disabled }"
+      class="var-chip var--box"
       :class="[
         `var-chip--${size}`,
         block ? 'var--flex' : 'var--inline-flex',
         plain ? `var-chip--plain-${type}` : `var-chip--${type}`,
         { 'var-chip--round': round, 'var-chip--plain': plain },
       ]"
-      :style="
-        plain
-          ? {
-              color: textColor || color,
-              borderColor: color,
-            }
-          : {
-              color: textColor,
-              background: color,
-            }
-      "
-      class="var-chip var--box"
+      :style="controlStyle()"
     >
       <slot name="left"></slot>
+
       <span :class="[`var-chip--text-${size}`]">
         <slot />
       </span>
+
       <slot name="right"></slot>
+
       <span v-if="closable" class="var-chip--close" @click="$props.onClose">
         <var-icon :name="`${iconName ? iconName : 'close-circle'}`"></var-icon>
       </span>

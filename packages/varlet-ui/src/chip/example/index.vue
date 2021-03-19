@@ -24,34 +24,39 @@
 
     <app-type>{{ pack.canCloseChip }}</app-type>
     <var-chip closable v-if="show" @close="show = false">{{ pack.canCloseChip }}</var-chip>
-    <var-chip closable icon-name="delete" v-if="show1" @close="show1 = false">{{ pack.customCloseIcon }}</var-chip>
+    <var-chip closable icon-name="delete" v-if="show1" @close="show1 = false"> {{ pack.customCloseIcon }}</var-chip>
 
     <app-type>{{ pack.cusromColorChip }}</app-type>
     <var-chip color="#009688" text-color="#fff">{{ pack.chip }}</var-chip>
     <var-chip color="#009688" plain>{{ pack.chip }}</var-chip>
     <var-chip color="#faecd8" text-color="#e6a23c" plain>{{ pack.chip }}</var-chip>
     <var-chip color="#faecd8" text-color="#e6a23c">{{ pack.chip }}</var-chip>
+
     <app-type>{{ pack.addLeftAndRightSlotChips }}</app-type>
     <var-chip type="primary" plain>
+      {{ pack.leftSlot }}
+
       <template #left>
         <var-icon name="star"></var-icon>
       </template>
-      {{ pack.leftSlot }}
     </var-chip>
     <var-chip type="primary" plain>
+      {{ pack.rightSlot }}
+
       <template #right>
         <var-icon name="fire"></var-icon>
       </template>
-      {{ pack.rightSlot }}
     </var-chip>
     <var-chip type="primary" plain>
+      {{ pack.leftAndRightSlot }}
+
       <template #left>
         <var-icon name="account-circle"></var-icon>
       </template>
+
       <template #right>
         <var-icon name="cake-variant"></var-icon>
       </template>
-      {{ pack.leftAndRightSlot }}
     </var-chip>
   </div>
 </template>

@@ -14,11 +14,11 @@ createApp().use(Chip)
 Define the color of the label by setting the `type` attribute
 
 ```html
-<var-chip type='primary'>Primary Chip</var-chip>
-<var-chip type='success'>Success Chip</var-chip>
-<var-chip type='danger'>Danger Chip</var-chip>
-<var-chip type='warning'>Waring Chip</var-chip>
-<var-chip type='info'>Info Chip</var-chip>
+<var-chip type="primary">Primary Chip</var-chip>
+<var-chip type="success">Success Chip</var-chip>
+<var-chip type="danger">Danger Chip</var-chip>
+<var-chip type="warning">Waring Chip</var-chip>
+<var-chip type="info">Info Chip</var-chip>
 <var-chip>Default Chip</var-chip>
 ```
 
@@ -27,7 +27,7 @@ Define the color of the label by setting the `type` attribute
 Set the label to a hollow style by setting the `plain` attribute
 
 ```html
-<var-chip plain type='primary'>Plain Chip</var-chip>
+<var-chip plain type="primary">Plain Chip</var-chip>
 ```
 
 ### Non Round Chip
@@ -35,24 +35,24 @@ Set the label to a hollow style by setting the `plain` attribute
 Cancel the fillet style of the label by setting the `round` property to `false`
 
 ```html
-<var-chip :round='false' type='primary'>Non Round Chip</var-chip>
+<var-chip :round="false" type="primary">Non Round Chip</var-chip>
 ```
 
 ### Chip Size
 
 Define the size of the label by setting the `size` attribute
 
- ```html
-<var-chip size='large'>Large Chip</var-chip>
+```html
+<var-chip size="large">Large Chip</var-chip>
 <var-chip>Normal Chip</var-chip>
-<var-chip size='small'>Small Chip</var-chip>
-<var-chip size='mini'>Mini Chip</var-chip>
+<var-chip size="small">Small Chip</var-chip>
+<var-chip size="mini">Mini Chip</var-chip>
 ```
 
 ### Block Flex
 
 ```html
-<var-chip type='primary' block>Block Chip</var-chip>
+<var-chip type="primary" block>Block Chip</var-chip>
 ```
 
 ### Can Close Chip
@@ -61,8 +61,13 @@ Use the `closeable` attribute to display the closing icon of the label, and use 
 the style of the closing icon (`close-name` must be used when `closeable` is used)
 
 ```html
-<var-chip closable v-if='show' @close='show = false'>Can Close Chip</var-chip>
-<var-chip closable icon-name='delete' v-if='show1' @close='show1 = false'>Custom Close Icon</var-chip>
+<var-chip closable v-if="show" @close="show = false">Can Close Chip</var-chip>
+<var-chip 
+  closable 
+  icon-name="delete" 
+  v-if="show1" 
+  @close="show1 = false">
+  Custom Close Icon</var-chip>
 ```
 
 ```js
@@ -71,9 +76,12 @@ import { ref } from 'vue'
 export default {
   setup() {
     const show = ref(true)
-    const show1 = ref(true)
-    
-    return { show, show1 }
+    const show1= ref(true)
+
+    return {
+      show,
+      show1
+    }
   }
 }
 ```
@@ -83,10 +91,10 @@ export default {
 Customize the label color by setting the `color` and `text-color` properties
 
 ```html
-<var-chip color='#009688'>Chip</var-chip>
-<var-chip color='#009688' plain>Chip</var-chip>
-<var-chip color='#faecd8' text-color='#e6a23c' plain>Chip</var-chip>
-<var-chip color='#faecd8' text-color='#e6a23c'>Chip</var-chip>
+<var-chip color="#009688">Chip</var-chip>
+<var-chip color="#009688" plain>Chip</var-chip>
+<var-chip color="#faecd8" text-color="#e6a23c" plain>Chip</var-chip>
+<var-chip color="#faecd8" text-color="#e6a23c">Chip</var-chip>
 ```
 
 ### Add Left And Right Slot Chips
@@ -94,26 +102,30 @@ Customize the label color by setting the `color` and `text-color` properties
 Custom label side slots
 
 ```html
-<var-chip type='primary' plain>
-  <template #left>
-    <var-icon name='star'></var-icon>
-  </template>
+<var-chip type="primary" plain>
   Left Slot
-</var-chip>
-<var-chip type='primary' plain>
-  <template #right>
-    <var-icon name='fire'></var-icon>
-  </template>
-  Right Slot
-</var-chip>
-<var-chip type='primary' plain>
+  
   <template #left>
-    <var-icon name='account-circle'></var-icon>
+    <var-icon name="star" />
   </template>
+</var-chip>
+<var-chip type="primary" plain>
+  Right Slot
+  
   <template #right>
-    <var-icon name='cake-variant'></var-icon>
+    <var-icon name="fire" />
   </template>
+</var-chip>
+<var-chip type="primary" plain>
   Left And Right Slots
+  
+  <template #left>
+    <var-icon name="account-circle" />
+  </template>
+  
+  <template #right>
+    <var-icon name="cake-variant" />
+  </template>
 </var-chip>
 ```
 
@@ -121,7 +133,7 @@ Custom label side slots
 
 ### Props
 
-| Prop | Description | Type | Default | 
+| Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `type` | Chip type. Can be set to   `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `size` | Chip size. Can be set to   `normal` `mini` `small` `large` | _string_ | `normal` |

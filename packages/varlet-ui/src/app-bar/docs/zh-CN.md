@@ -12,32 +12,37 @@ createApp().use(AppBar)
 ### 基础导航栏
 
 ```html
-
-<var-app-bar title='标题'></var-app-bar>
+<var-app-bar title="标题"></var-app-bar>
 ```
 
 ### 自定义样式导航栏
 
 ```html
-
-<var-app-bar title='标题' title-text-align='center' color='#ff9800' :is-shadow='false'></var-app-bar>
+<var-app-bar 
+  title="标题" 
+  title-position="center" 
+  color="#ff9800" 
+  :is-shadow="false" />
 ```
 
 ### 添加标题处插槽
 
 ```html
-
 <var-app-bar>从插槽处添加标题</var-app-bar>
 ```
 
 ### 添加左侧插槽导航栏
 
 ```html
-
-<var-app-bar title='标题'>
+<var-app-bar title="title">
   <template #left>
-    <var-button round @click='goBack' color='transparent' text-color='#ffffff' text>
-      <var-icon name='chevron-left' :size='24' />
+    <var-button
+      round
+      text
+      color="transparent"
+      text-color="#ffffff"
+      @click="goBack">
+      <var-icon name="chevron-left" :size="24" />
     </var-button>
   </template>
 </var-app-bar>
@@ -65,11 +70,15 @@ export default {
 ### 添加右侧插槽导航栏
 
 ```html
-
-<var-app-bar title='标题'>
+<var-app-bar title="标题">
   <template #right>
-    <var-button round @click='searchData' color='transparent' text-color='#ffffff' text>
-      <var-icon name='magnify' :size='24' />
+    <var-button
+      round
+      text
+      color="transparent"
+      text-color="#ffffff"
+      @click="searchData">
+      <var-icon name="magnify" :size="24" />
     </var-button>
   </template>
 </var-app-bar>
@@ -97,21 +106,36 @@ export default {
 ### 添加左右两侧插槽导航栏
 
 ```html
-
-<var-app-bar title='标题'>
+<var-app-bar title="标题">
   <template #left>
-    <var-button round @click='goBack' color='transparent' text-color='#ffffff' text>
-      <var-icon name='chevron-left' :size='24' />
+    <var-button
+      round
+      text
+      color="transparent"
+      text-color="#ffffff"
+      @click="goBack">
+      <var-icon name="chevron-left" :size="24" />
     </var-button>
   </template>
+
   <template #right>
-    <var-menu :offset-y='38' :offset-x='-20' v-model:show='offsetY'>
-      <var-button round @click='offsetY = true' color='transparent' text-color='#ffffff' text>
-        <var-icon name='menu' :size='24' />
+    <var-menu :offset-y="38" :offset-x="-20" v-model:show="offsetY">
+      <var-button
+        round
+        text
+        color="transparent"
+        text-color="#ffffff"
+        @click="offsetY = true">
+        <var-icon name="menu" :size="24" />
       </var-button>
+
       <template #menu>
-        <div class='menu-list'>
-          <var-cell v-for='value in menuList' :key='value.value' class='menu-cell' v-ripple>
+        <div class="menu-list">
+          <var-cell
+            class="menu-cell"
+            v-for="value in menuList"
+            :key="value.value"
+            v-ripple>
             {{ value.label }}
           </var-cell>
         </div>
@@ -171,7 +195,7 @@ export default {
 | `color` | 背景颜色 | _string_ | `#2979ff` |
 | `text-color` | 文字颜色 | _string_ | `#ffffff` |
 | `title` | 标题 | _string_ | `_` |
-| `title-text-align` | 标题位置 | _string_ | `left` |
+| `title-position` | 标题位置,可选值为 `left`,`center`,`right` | _string_ | `left` |
 | `is-shadow` | 是否使用阴影 | _boolean_ | `true` |
 
 ### 插槽

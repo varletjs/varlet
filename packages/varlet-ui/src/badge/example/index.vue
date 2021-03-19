@@ -1,24 +1,24 @@
 <template>
   <div class="example">
     <app-type>{{ pack.themeColorBadge }}</app-type>
-    <var-badge type="primary"></var-badge>
-    <var-badge type="info"></var-badge>
-    <var-badge type="warning"></var-badge>
-    <var-badge type="success"></var-badge>
-    <var-badge type="danger"></var-badge>
-    <var-badge></var-badge>
+    <var-badge type="primary" />
+    <var-badge type="info" />
+    <var-badge type="warning" />
+    <var-badge type="success" />
+    <var-badge type="danger" />
+    <var-badge />
 
     <app-type>{{ pack.dotBadge }}</app-type>
-    <var-badge dot type="danger"></var-badge>
+    <var-badge dot type="danger" />
 
     <app-type>{{ pack.customContentBadge }}</app-type>
-    <var-badge type="danger" value="badge"></var-badge>
-    <var-badge type="danger" value="hot"></var-badge>
-    <var-badge type="danger" :value="66"></var-badge>
+    <var-badge type="danger" value="badge" />
+    <var-badge type="danger" value="hot" />
+    <var-badge type="danger" :value="66" />
 
     <app-type>{{ pack.maximum }}</app-type>
-    <var-badge type="danger" :value="value" :max-value="maxValue"></var-badge>
-    <var-badge type="danger" :value="value1" :max-value="maxValue"></var-badge>
+    <var-badge type="danger" :value="value" :max-value="maxValue" />
+    <var-badge type="danger" :value="value1" :max-value="maxValue" />
 
     <app-type>{{ pack.differentPositioningBadges }}</app-type>
     <var-badge type="danger" position="right-top">

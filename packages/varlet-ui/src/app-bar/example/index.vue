@@ -1,17 +1,17 @@
 <template>
   <app-type>{{ pack.basicAppBar }}</app-type>
-  <var-app-bar :title="pack.title"></var-app-bar>
+  <var-app-bar :title="pack.title" />
 
   <app-type>{{ pack.customStyleAppBar }}</app-type>
-  <var-app-bar :title="pack.title" title-text-align="center" color="#ff9800" :is-shadow="false"></var-app-bar>
+  <var-app-bar :title="pack.title" title-position="center" color="#ff9800" :is-shadow="false" />
 
   <app-type>{{ pack.addSlotsAtTitle }}</app-type>
   <var-app-bar>{{ pack.addTheTitleFromTheSlot }}</var-app-bar>
 
   <app-type>{{ pack.addLeftSlotAppBar }}</app-type>
-  <var-app-bar :title="pack.title">
+  <var-app-bar :title="pack.title" title-position="center">
     <template #left>
-      <var-button round @click="goBack" color="transparent" text-color="#ffffff" text>
+      <var-button round text color="transparent" text-color="#ffffff" @click="goBack">
         <var-icon name="chevron-left" :size="24" />
       </var-button>
     </template>
@@ -20,7 +20,7 @@
   <app-type>{{ pack.addRightSlotAppBar }}</app-type>
   <var-app-bar :title="pack.title">
     <template #right>
-      <var-button round @click="searchData" color="transparent" text-color="#ffffff" text>
+      <var-button round text color="transparent" text-color="#ffffff" @click="searchData">
         <var-icon name="magnify" :size="24" />
       </var-button>
     </template>
@@ -29,18 +29,20 @@
   <app-type>{{ pack.addLeftAndRightSlotAppBar }}</app-type>
   <var-app-bar :title="pack.title">
     <template #left>
-      <var-button round @click="goBack" color="transparent" text-color="#ffffff" text>
+      <var-button round text color="transparent" text-color="#ffffff" @click="goBack">
         <var-icon name="chevron-left" :size="24" />
       </var-button>
     </template>
+
     <template #right>
       <var-menu :offset-y="38" :offset-x="-20" v-model:show="offsetY">
-        <var-button round @click="offsetY = true" color="transparent" text-color="#ffffff" text>
+        <var-button round text color="transparent" text-color="#ffffff" @click="offsetY = true">
           <var-icon name="menu" :size="24" />
         </var-button>
+
         <template #menu>
           <div class="menu-list">
-            <var-cell v-for="value in menuList" :key="value.value" class="menu-cell" v-ripple>
+            <var-cell class="menu-cell" v-for="value in menuList" :key="value.value" v-ripple>
               {{ value.label }}
             </var-cell>
           </div>
@@ -75,22 +77,20 @@ export default {
   setup() {
     const offsetY = ref(false)
     const menuList = ref([
-      { label: '选项一', value: 'menu1' },
-      { label: '选项二', value: 'menu2' },
+      { label: pack.value.options1, value: 'menu1' },
+      { label: pack.value.options2, value: 'menu2' },
     ])
 
     const searchData = () => {
       Snackbar({
-        // content: pack.value.search,
-        content: '搜索',
+        content: pack.value.search,
         position: 'top',
       })
     }
 
     const goBack = () => {
       Snackbar({
-        // content: pack.value.goBack,
-        content: '返回',
+        content: pack.value.goBack,
         position: 'top',
       })
     }
