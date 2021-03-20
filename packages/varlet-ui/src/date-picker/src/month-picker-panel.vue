@@ -36,6 +36,7 @@ import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import { MONTH_LIST, Choose, Month, Preview, ComponentProps, PanelBtnDisabled } from '../props'
 import PanelHeader from './panel-header.vue'
 import Button from '../../button'
+import { toNumber } from '../../utils/shared'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -44,7 +45,7 @@ export default defineComponent({
   name: 'MonthPickerPanel',
   components: {
     [Button.name]: Button,
-    [PanelHeader.name]: PanelHeader,
+    PanelHeader,
   },
   props: {
     choose: {
@@ -124,12 +125,12 @@ export default defineComponent({
       const rangeOrMultiple = range || multiple
 
       const disabled = inRange(month) ? (allowedDates ? !allowedDates(val) : false) : true
-      const plain = disabled
+      const text = disabled
         ? true
         : rangeOrMultiple
         ? !shouldChooseResult
         : !isSameYear.value || chooseMonth.index !== month.index
-      const bgColor = !plain ? color : ''
+      const bgColor = !text ? color : ''
       const monthExist = rangeOrMultiple ? shouldChooseResult : chooseMonth.index === month.index && isSameYear.value
 
       outline = rangeOrMultiple
@@ -143,7 +144,7 @@ export default defineComponent({
       return {
         disabled,
         outline,
-        plain,
+        text,
         color: bgColor,
         textColor,
       }
@@ -163,9 +164,12 @@ export default defineComponent({
       () => props.preview.previewYear,
       (year) => {
         if (props.componentProps.max)
-          panelBtnDisabled.right = !dayjs(`${+year + 1}`).isSameOrBefore(dayjs(props.componentProps.max), 'year')
+          panelBtnDisabled.right = !dayjs(`${toNumber(year) + 1}`).isSameOrBefore(
+            dayjs(props.componentProps.max),
+            'year'
+          )
         if (props.componentProps.min)
-          panelBtnDisabled.left = !dayjs(`${+year - 1}`).isSameOrAfter(dayjs(props.componentProps.min), 'year')
+          panelBtnDisabled.left = !dayjs(`${toNumber(year) - 1}`).isSameOrAfter(dayjs(props.componentProps.min), 'year')
       },
       { immediate: true }
     )

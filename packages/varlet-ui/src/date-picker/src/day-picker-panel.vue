@@ -42,6 +42,7 @@ import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import PanelHeader from './panel-header.vue'
 import Button from '../../button'
 import { WEEK_HEADER, Choose, Preview, ComponentProps, Week, PanelBtnDisabled } from '../props'
+import { toNumber } from '../../utils/shared'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -50,7 +51,7 @@ export default defineComponent({
   name: 'DayPickerPanel',
   components: {
     [Button.name]: Button,
-    [PanelHeader.name]: PanelHeader,
+    PanelHeader,
   },
   props: {
     choose: {
@@ -95,7 +96,7 @@ export default defineComponent({
     )
 
     const sortWeekList: ComputedRef<Array<Week>> = computed(() => {
-      const index = WEEK_HEADER.findIndex((week: Week) => week.index === +props.componentProps.firstDayOfWeek)
+      const index = WEEK_HEADER.findIndex((week: Week) => week.index === toNumber(props.componentProps.firstDayOfWeek))
       if (index === -1 || index === 0) return WEEK_HEADER
       return WEEK_HEADER.slice(index).concat(WEEK_HEADER.slice(0, index))
     })
@@ -118,11 +119,11 @@ export default defineComponent({
         componentProps: { max, min },
       }: { preview: Preview; componentProps: ComponentProps } = props
       if (max) {
-        const date = `${previewYear}-${+previewMonth.index + 1}`
+        const date = `${previewYear}-${toNumber(previewMonth.index) + 1}`
         panelBtnDisabled.right = !dayjs(date).isSameOrBefore(dayjs(max), 'month')
       }
       if (min) {
-        const date = `${previewYear}-${+previewMonth.index - 1}`
+        const date = `${previewYear}-${toNumber(previewMonth.index) - 1}`
         panelBtnDisabled.left = !dayjs(date).isSameOrAfter(dayjs(min), 'month')
       }
     }
@@ -160,12 +161,12 @@ export default defineComponent({
     const buttonProps = (day: number) => {
       if (day < 0) {
         return {
-          plain: true,
+          text: true,
           outline: false,
           textColor: '',
         }
       }
-      let outline = isCurrent.value && +currentDay === day && props.componentProps.showCurrent
+      let outline = isCurrent.value && toNumber(currentDay) === day && props.componentProps.showCurrent
       const {
         choose: { chooseDay },
         preview: { previewYear, previewMonth },
@@ -176,9 +177,13 @@ export default defineComponent({
       const rangeOrMultiple = range || multiple
 
       const disabled = inRange(day) ? (allowedDates ? !allowedDates(val) : false) : true
-      const plain = disabled ? true : rangeOrMultiple ? !shouldChooseResult : !isSame.value || +chooseDay !== day
-      const bgColor = !plain ? color : ''
-      const dayExist = rangeOrMultiple ? shouldChooseResult : +chooseDay === day && isSame.value
+      const text = disabled
+        ? true
+        : rangeOrMultiple
+        ? !shouldChooseResult
+        : !isSame.value || toNumber(chooseDay) !== day
+      const bgColor = !text ? color : ''
+      const dayExist = rangeOrMultiple ? shouldChooseResult : toNumber(chooseDay) === day && isSame.value
 
       outline = rangeOrMultiple
         ? outline && (disabled ? true : !shouldChooseResult)
@@ -190,7 +195,7 @@ export default defineComponent({
 
       return {
         disabled,
-        plain,
+        text,
         outline,
         color: bgColor,
         textColor,

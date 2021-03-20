@@ -3,8 +3,8 @@
     <li
       v-for="year in yearList"
       :key="year"
-      :class="[year === +preview ? 'var-year-picker__panel--active' : null]"
-      :style="{ color: year === +preview ? componentProps.color : '' }"
+      :class="[year === toNumber(preview) ? 'var-year-picker__panel--active' : null]"
+      :style="{ color: year === toNumber(preview) ? componentProps.color : '' }"
       @click="chooseYear(year)"
     >
       {{ year }}
@@ -16,6 +16,7 @@
 import { defineComponent, computed, ComputedRef, onMounted, PropType } from 'vue'
 import dayjs from 'dayjs'
 import { ComponentProps } from '../props'
+import { toNumber } from '../../utils/shared'
 
 export default defineComponent({
   name: 'YearPickerPanel',
@@ -32,7 +33,7 @@ export default defineComponent({
     const yearList: ComputedRef<Array<number>> = computed(() => {
       const list: Array<number> = []
       if (!props.preview) return list
-      let yearRange = [+props.preview + 100, +props.preview - 100]
+      let yearRange = [toNumber(props.preview) + 100, toNumber(props.preview) - 100]
 
       if (props.componentProps.max) {
         const formatMax = dayjs(props.componentProps.max).format('YYYY-MM-D')
@@ -68,6 +69,7 @@ export default defineComponent({
     return {
       yearList,
       chooseYear,
+      toNumber,
     }
   },
 })

@@ -87,14 +87,14 @@ import MonthPickerPanel from './src/month-picker-panel.vue'
 import YearPickerPanel from './src/year-picker-panel.vue'
 import DayPickerPanel from './src/day-picker-panel.vue'
 import { props, Month, MONTH_LIST, Choose, Preview, WEEK_HEADER, Week, ComponentProps } from './props'
-import { isArray } from '../utils/shared'
+import { isArray, toNumber } from '../utils/shared'
 
 export default defineComponent({
   name: 'VarDatePicker',
   components: {
-    [MonthPickerPanel.name]: MonthPickerPanel,
-    [YearPickerPanel.name]: YearPickerPanel,
-    [DayPickerPanel.name]: DayPickerPanel,
+    MonthPickerPanel,
+    YearPickerPanel,
+    DayPickerPanel,
   },
   props,
   setup(props) {
@@ -165,7 +165,7 @@ export default defineComponent({
       return {
         week: weekIndex,
         year: chooseYear.value,
-        month: +chooseMonth.value.index,
+        month: toNumber(chooseMonth.value.index),
         date: chooseDay.value,
       }
     })
@@ -216,7 +216,7 @@ export default defineComponent({
       if (day < 0 || props.readonly) return
       reverse.value = isSameYear.value
         ? isSameMonth.value
-          ? day < +chooseDay.value
+          ? day < toNumber(chooseDay.value)
           : chooseMonth.value.index > previewMonth.value.index
         : chooseYear.value > previewYear.value
 
@@ -255,17 +255,17 @@ export default defineComponent({
     const checkPreview = (type: string, checkType: string) => {
       const changeValue = checkType === 'prev' ? -1 : 1
       if (type === 'year') {
-        previewYear.value = `${+previewYear.value + changeValue}`
+        previewYear.value = `${toNumber(previewYear.value) + changeValue}`
       } else {
-        let checkIndex = +previewMonth.value.index + changeValue
+        let checkIndex = toNumber(previewMonth.value.index) + changeValue
         previewYear.value =
           checkIndex < 1
-            ? `${+previewYear.value - 1}`
+            ? `${toNumber(previewYear.value) - 1}`
             : checkIndex > 12
-            ? `${+previewYear.value + 1}`
+            ? `${toNumber(previewYear.value) + 1}`
             : previewYear.value
         checkIndex = checkIndex < 1 ? 12 : checkIndex > 12 ? 1 : checkIndex
-        previewMonth.value = MONTH_LIST.filter((month) => +month.index === checkIndex)[0]
+        previewMonth.value = MONTH_LIST.filter((month) => toNumber(month.index) === checkIndex)[0]
       }
     }
 

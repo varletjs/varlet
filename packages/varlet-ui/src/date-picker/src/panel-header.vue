@@ -2,7 +2,7 @@
   <div class="var-picker-header">
     <var-button
       round
-      plain
+      text
       :text-color="disabled.left ? '' : 'rgba(0, 0, 0, .54)'"
       :disabled="disabled.left"
       @click="checkDate('prev')"
@@ -16,7 +16,7 @@
     </div>
     <var-button
       round
-      plain
+      text
       :text-color="disabled.right ? '' : 'rgba(0, 0, 0, .54)'"
       :disabled="disabled.right"
       @click="checkDate('next')"
@@ -31,6 +31,7 @@ import { defineComponent, Ref, ref, computed, ComputedRef, watch, PropType } fro
 import Button from '../../button'
 import Icon from '../../icon'
 import { Preview, PanelBtnDisabled } from '../props'
+import { toNumber } from '../../utils/shared'
 
 export default defineComponent({
   name: 'PanelHeader',
@@ -59,7 +60,7 @@ export default defineComponent({
     const showDate: ComputedRef<number | string> = computed(() => {
       const { date, type } = props
       const { previewMonth, previewYear }: Preview = date
-      if (type === 'month') return +previewYear + forwardOrBackNum.value
+      if (type === 'month') return toNumber(previewYear) + forwardOrBackNum.value
       return `${previewMonth.name} ${previewYear}`
     })
 

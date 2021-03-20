@@ -72,11 +72,13 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
 import DatePicker from '..'
 
 export default defineComponent({
   name: 'DatePickerExample',
   components: {
+    AppType,
     [DatePicker.name]: DatePicker,
   },
   setup() {
