@@ -111,8 +111,8 @@ const TransitionGroupHost = {
   },
 }
 
-const Snackbar: Snackbar = <Snackbar>function (options: SnackbarOptions = {}): SnackbarHandel {
-  const snackOptions: SnackbarOptions = isPlainObject(options) ? options : {}
+const Snackbar: Snackbar = <Snackbar>function (options: SnackbarOptions | string): SnackbarHandel {
+  const snackOptions: SnackbarOptions = isPlainObject(options) ? options : { content: options }
   const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>(snackOptions)
   reactiveSnackOptions.show = true
 
