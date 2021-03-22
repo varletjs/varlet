@@ -35,8 +35,8 @@
     </template>
 
     <template #right>
-      <var-menu :offset-y="38" :offset-x="-20" v-model:show="offsetY">
-        <var-button round text color="transparent" text-color="#ffffff" @click="offsetY = true">
+      <var-menu :offset-y="38" :offset-x="-45" v-model:show="offsetY">
+        <var-button round text color="transparent" text-color="#ffffff" @click="changeOffset">
           <var-icon name="menu" :size="24" />
         </var-button>
 
@@ -76,10 +76,7 @@ export default {
   },
   setup() {
     const offsetY = ref(false)
-    const menuList = ref([
-      { label: pack.value.options1, value: 'menu1' },
-      { label: pack.value.options2, value: 'menu2' },
-    ])
+    const menuList = ref([])
 
     const searchData = () => {
       Snackbar({
@@ -95,6 +92,14 @@ export default {
       })
     }
 
+    const changeOffset = () => {
+      menuList.value = [
+        { label: pack.value.options1, value: 'menu1' },
+        { label: pack.value.options2, value: 'menu2' },
+      ]
+      offsetY.value = true
+    }
+
     watchLang(use)
 
     return {
@@ -103,6 +108,7 @@ export default {
       pack,
       searchData,
       goBack,
+      changeOffset,
     }
   },
 }

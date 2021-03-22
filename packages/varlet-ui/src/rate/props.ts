@@ -40,7 +40,7 @@ export const props = {
   // 图标间隔
   marginRight: {
     type: [String, Number],
-    default: '4',
+    default: '2',
   },
 
   //  是否使用半评分

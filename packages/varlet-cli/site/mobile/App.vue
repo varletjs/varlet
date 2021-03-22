@@ -2,7 +2,7 @@
   <div style="position: relative">
     <header>
       <var-app-bar :title="componentName" title-position="center">
-        <template #left>
+        <template #left v-if="isReturnIcon">
           <var-button round @click="toHome" color="transparent" text-color="#ffffff" text>
             <var-icon name="chevron-left" :size="28" />
           </var-button>
@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, Ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import Icon from '@varlet/ui/es/icon'
 import AppBar from '@varlet/ui/es/app-bar'
 import Button from '@varlet/ui/es/button'
@@ -34,13 +34,14 @@ export default defineComponent({
   setup() {
     const componentName: Ref<string> = ref('')
     const route = useRoute()
+    const isReturnIcon: Ref<boolean> = ref(false)
+    const router = useRouter()
 
     const isPhone: Ref<boolean> = ref(false)
     isPhone.value = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
 
     const toHome = () => {
-      // todo 返回首页
-      alert('返回首页')
+      router.go(-1)
     }
 
     watch(
@@ -49,12 +50,14 @@ export default defineComponent({
         const index = to.lastIndexOf('/')
         const componentNameInner = to.slice(index + 1).replace(/-([a-z])/g, (all: string, i: string) => i.toUpperCase())
         componentName.value = componentNameInner[0]?.toUpperCase() + componentNameInner.slice(1)
+        isReturnIcon.value = !(componentName.value.toLowerCase() === 'home')
       }
     )
 
     return {
       componentName,
       isPhone,
+      isReturnIcon,
       toHome,
     }
   },

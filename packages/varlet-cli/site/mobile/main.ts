@@ -20,6 +20,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 })
+
 router.beforeEach((to) => {
   let isPhone = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
   if (!isPhone && window.self === window.top) {
@@ -28,11 +29,13 @@ router.beforeEach((to) => {
 })
 
 router.afterEach((to) => {
-  if (to.path === '/home' && to.query.path) {
-    console.log(to.path, to.query.path)
-    window.top['router'].replace(`/${to.query.language}/${to.query.path}`)
-  } else {
-    window.top['router'].replace(`/${to.query.language}${to.path}`)
+  let isPhone = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+  if (!isPhone) {
+    if (to.path === '/home' && to.query.path) {
+      window.top['router'].replace(`/${to.query.language}/${to.query.path}`)
+    } else {
+      window.top['router'].replace(`/${to.query.language}${to.path}`)
+    }
   }
 })
 

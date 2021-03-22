@@ -5,14 +5,14 @@
         <img :src="header.logo" alt="" />
         <span>{{ title }}</span>
       </span>
-      <span class="varlet-site-header__nav">
-        <var-menu :offset-y="40" v-model:show="offsetY">
-          <div class="varlet-site-header__nav-style" @click="offsetY = true">
-            <var-icon name="translate" size="26px" color="#ffffff" />
-            <var-icon name="chevron-down" color="#ffffff"></var-icon>
-          </div>
-          <template #menu>
-            <div class="language-list">
+      <div class="varlet-site-header__nav">
+        <div class="varlet-site-header__nav-style" @mouseenter="isOpenMenu = true" @mouseleave="isOpenMenu = false">
+          <var-icon name="translate" size="26px" color="#ffffff" />
+
+          <var-icon name="chevron-down" color="#ffffff" />
+
+          <transition name="fade">
+            <div class="language-list" v-if="isOpenMenu">
               <var-cell
                 v-for="(value, key) in languageList"
                 :key="key"
@@ -22,14 +22,14 @@
                 {{ value }}
               </var-cell>
             </div>
-          </template>
-        </var-menu>
+          </transition>
+        </div>
         <div class="varlet-site-header__nav-link">
           <a target="_blank" href="https://github.com/haoziqaq/varlet" class="varlet-site-header__link">
             <var-icon name="github" color="#ffffff" :size="28"></var-icon>
           </a>
         </div>
-      </span>
+      </div>
     </div>
     <div class="varlet-site-content">
       <div class="varlet-site-nav" :ref="nav">
@@ -51,12 +51,14 @@
       </div>
       <router-view />
       <div class="varlet-site-mobile">
-        <div class="varlet-site-empty"></div>
-        <div class="varlet-site-mobile-content">
-          <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&path=${path}`"></iframe>
-        </div>
-        <div class="varlet-site-mobile-image">
-          <img src="./assets/images/mobile.png" />
+        <div class="varlet-site-mobile-frame">
+          <div class="varlet-site-empty"></div>
+          <div class="varlet-site-mobile-content">
+            <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&path=${path}`"></iframe>
+          </div>
+          <div class="varlet-site-mobile-image">
+            <img src="./assets/images/mobile.png" />
+          </div>
         </div>
       </div>
     </div>
@@ -111,7 +113,7 @@ export default defineComponent({
     const { pc = {}, title: configTitle } = config
     const { header: configHeader = { i18nButton: {}, logo: '', search: {} }, menu: configMenu = [] } = pc
     const languageList: Ref<Language> = ref({})
-    const offsetY: Ref<boolean> = ref(false)
+    const isOpenMenu: Ref<boolean> = ref(false)
     const path: Ref<string | null> = ref(null)
 
     const isPhone: Ref<boolean> = ref(false)
@@ -157,7 +159,7 @@ export default defineComponent({
       language.value = key
       const pathArr = route.fullPath.split('/')
       componentName.value = pathArr[pathArr.length - 1]
-      offsetY.value = false
+      isOpenMenu.value = false
     }
 
     onMounted(() => {
@@ -182,7 +184,7 @@ export default defineComponent({
       versionList,
       isHideVersion,
       languageList,
-      offsetY,
+      isOpenMenu,
       path,
       nav,
       changeRoute,
@@ -201,6 +203,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+  overflow-y: hidden;
 }
 
 iframe {
@@ -213,19 +216,23 @@ iframe {
 .varlet {
   &-site {
     &-mobile {
-      flex: 0 0 432px;
-      transform: scale(0.66);
-      position: relative;
-      height: 863px;
-      align-self: center;
+      padding: 20px 30px;
+      overflow-y: auto;
+
+      &-frame {
+        width: 369px;
+        transform: scale(1);
+        position: relative;
+        height: 731px;
+      }
 
       &-content {
-        height: 780px;
+        height: 665px;
         position: absolute;
         z-index: -2;
-        top: 57px;
-        width: calc(100% - 57px);
-        margin-left: 28px;
+        top: 44px;
+        width: calc(100% - 49px);
+        margin-left: 24px;
       }
 
       &-image {
@@ -242,12 +249,12 @@ iframe {
     }
 
     &-empty {
-      height: 32px;
-      width: calc(100% - 40px);
-      margin-left: 20px;
-      background-color: @color-primary;
+      height: 25px;
+      width: calc(100% - 49px);
+      margin-left: 24px;
+      background-color: #2979ff;
       position: absolute;
-      top: 26px;
+      top: 19px;
       z-index: -1;
     }
 
@@ -293,6 +300,8 @@ iframe {
           display: flex;
           align-items: center;
           padding: 0 10px;
+          position: relative;
+          cursor: pointer;
 
           &:hover {
             background: rgba(255, 255, 255, 0.2);
@@ -598,6 +607,9 @@ iframe {
   cursor: pointer;
   color: #666;
   border-radius: 2px;
+  position: absolute;
+  top: 40px;
+  left: 0;
 
   &__active {
     background: #2b79fc21;
@@ -609,6 +621,38 @@ iframe {
       background: #2b79fc21;
       color: @color-primary;
     }
+  }
+}
+
+.fade-enter-active {
+  animation-name: fade-in;
+  animation-duration: 0.5s;
+}
+
+.fade-leave-active {
+  animation-name: fade-leave;
+  animation-duration: 0.5s;
+}
+
+@keyframes fade-in {
+  0% {
+    top: 30px;
+    opacity: 0;
+  }
+  100% {
+    top: 40px;
+    opacity: 1;
+  }
+}
+
+@keyframes fade-leave {
+  0% {
+    top: 40px;
+    opacity: 1;
+  }
+  100% {
+    top: 30px;
+    opacity: 0;
   }
 }
 </style>

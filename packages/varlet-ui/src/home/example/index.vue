@@ -1,12 +1,12 @@
 <template>
   <div class="space"></div>
 
-  <var-cell v-for="component in components" :key="component.text">
+  <var-cell v-for="component in components" :key="component.text" @click="toComponent(component)">
     <template #extra>
       <var-icon name="chevron-right" size="14" />
     </template>
     <template #default>
-      {{ component.text['zh-CN'] }}
+      {{ component.text[lang] }}
     </template>
   </var-cell>
 
@@ -17,6 +17,7 @@
 import Cell from '../../cell'
 import Icon from '../../icon'
 import Ripple from '../../ripple'
+import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
 import { watchLang, watchPlatform } from '../../utils/components'
 
@@ -34,25 +35,34 @@ export default {
     const components = reactive(configComponents)
     const lang = ref('zh-CN')
     const platform = ref('mobile')
+    const router = useRouter()
 
     watchLang((newValue) => {
       lang.value = newValue
-
-      console.log(lang.value)
     })
 
     watchPlatform((newValue) => {
       platform.value = newValue
-
-      console.log(platform.value)
     })
+
+    const toComponent = (component) => {
+      router.push({
+        path: `/${component.doc}`,
+        query: {
+          language: lang.value,
+          platform: platform.value,
+          path: component.doc,
+        },
+      })
+    }
 
     return {
       components,
       platform,
       lang,
+      toComponent,
     }
-  }
+  },
 }
 </script>
 
@@ -63,5 +73,9 @@ export default {
 
 .var-cell {
   cursor: pointer;
+
+  &:hover {
+    background: #eee;
+  }
 }
 </style>
