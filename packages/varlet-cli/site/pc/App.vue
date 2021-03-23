@@ -203,7 +203,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', 'Noto Sans SC', sans-serif;
-  overflow-y: hidden;
 }
 
 iframe {
@@ -216,15 +215,14 @@ iframe {
 .varlet {
   &-site {
     &-mobile {
-      height: 100%;
       display: flex;
-      align-items: center;
-      padding: 0 30px;
+      padding: 16px 30px 0;
+
       &-frame {
-        width: 369px;
+        width: 355px;
         transform: scale(1);
         position: relative;
-        height: 731px;
+        height: 640px;
       }
 
       &-empty {
@@ -238,54 +236,12 @@ iframe {
       }
 
       &-content {
-        height: 665px;
+        height: 590px;
         position: absolute;
         z-index: -2;
         top: 44px;
-        width: calc(100% - 49px);
-        margin-left: 24px;
-      }
-
-      @media screen and (max-width: 1280px) {
-        &-frame {
-          width: 280px;
-          height: 550px;
-        }
-
-        &-content {
-          width: calc(100% - 37px);
-          margin-left: 18px;
-          height: 497px;
-          top: 35px;
-        }
-
-        &-empty {
-          height: 20px;
-          width: calc(100% - 37px);
-          margin-left: 18px;
-          top: 16px;
-        }
-      }
-
-      @media screen and (min-width: 1281px) and (max-width: 1430px) {
-        &-frame {
-          width: 305px;
-          height: 610px;
-        }
-
-        &-content {
-          width: calc(100% - 41px);
-          margin-left: 20px;
-          height: 553px;
-          top: 39px;
-        }
-
-        &-empty {
-          height: 22px;
-          width: calc(100% - 41px);
-          margin-left: 20px;
-          top: 18px;
-        }
+        width: 310px;
+        margin-left: 22px;
       }
 
       &-image {
@@ -438,9 +394,10 @@ iframe {
 
     &-content {
       height: calc(100vh - 60px);
-      //overflow-y: hidden;
+      min-height: 670px;
       display: flex;
       background: #fff;
+      overflow: hidden;
     }
 
     &-doc {

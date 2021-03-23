@@ -5,9 +5,9 @@
   <var-button style="margin-bottom: 10px" block @click="picker3">{{ pack.cascadePicker }}</var-button>
 
   <app-type>{{ pack.componentCall }}</app-type>
-  <var-picker :columns="columns" />
-  <var-picker :columns="columns2" />
-  <var-picker cascade :columns="columns3" />
+  <var-picker style="margin-bottom: 14px" :columns="columns" />
+  <var-picker style="margin-bottom: 14px" :columns="columns2" />
+  <var-picker style="margin-bottom: 14px" cascade :columns="columns3" />
 </template>
 
 <script>

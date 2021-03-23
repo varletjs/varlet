@@ -90,8 +90,8 @@ header {
 }
 
 .router-view__block {
-  padding: 50px 15px 0;
-  background: #f9f1e28f;
+  padding: 50px 12px 0;
+  background: #f7f8fa;
 }
 
 * {
