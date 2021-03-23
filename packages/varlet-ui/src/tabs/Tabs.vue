@@ -1,38 +1,39 @@
 <template>
-	<component :is="sticky ? 'var-sticky' : Transition" :offset-top="sticky ? offsetTop : null">
-		<div
-			class="var-tabs var--box"
-			:class="[
-			  `var-tabs--item-${itemDirection}`,
-			  `var-tabs--layout-${layoutDirection}-padding`,
-			  elevation ? `var-elevation--4` : null,
-			  fixedBottom ? 'var-tabs--fixed-bottom' : null
-			]"
-			:style="{ background: color }"
-			v-bind="$attrs"
-		>
-			<div
+  <component :is="sticky ? 'var-sticky' : Transition" :offset-top="sticky ? offsetTop : null">
+    <div
+      class="var-tabs var--box"
+      :class="[
+        `var-tabs--item-${itemDirection}`,
+        `var-tabs--layout-${layoutDirection}-padding`,
+        elevation ? `var-elevation--4` : null,
+        fixedBottom ? 'var-tabs--fixed-bottom' : null,
+      ]"
+      :style="{ background: color }"
+      v-bind="$attrs"
+    >
+      <div
         class="var-tabs__tab-wrap"
         ref="scrollerEl"
         :class="[
           scrollable ? `var-tabs--layout-${layoutDirection}-scrollable` : null,
-          `var-tabs--layout-${layoutDirection}`
-        ]">
-				<slot />
+          `var-tabs--layout-${layoutDirection}`,
+        ]"
+      >
+        <slot />
 
-				<div
-					class="var-tabs__indicator"
+        <div
+          class="var-tabs__indicator"
           :class="[`var-tabs--layout-${layoutDirection}-indicator`]"
-					:style="{
-						width: layoutDirection === 'horizontal' ? indicatorWidth : toSizeUnit(indicatorSize),
-						height: layoutDirection === 'horizontal' ? toSizeUnit(indicatorSize) : indicatorHeight,
-						transform: layoutDirection === 'horizontal' ? `translateX(${indicatorX})` : `translateY(${indicatorY})`,
-						background: indicatorColor || activeColor,
-					}"
-				></div>
-			</div>
-		</div>
-	</component>
+          :style="{
+            width: layoutDirection === 'horizontal' ? indicatorWidth : toSizeUnit(indicatorSize),
+            height: layoutDirection === 'horizontal' ? toSizeUnit(indicatorSize) : indicatorHeight,
+            transform: layoutDirection === 'horizontal' ? `translateX(${indicatorX})` : `translateY(${indicatorY})`,
+            background: indicatorColor || activeColor,
+          }"
+        ></div>
+      </div>
+    </div>
+  </component>
 </template>
 
 <script lang="ts">
@@ -63,7 +64,7 @@ export default defineComponent({
     const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
     const disabledColor: ComputedRef<string | undefined> = computed(() => props.disabledColor)
     const itemDirection: ComputedRef<string> = computed(() => props.itemDirection)
-    const { tabList, bindTab, length } = useTabChildren()
+    const { tabList, bindTabList, length } = useTabChildren()
 
     const onTabClick = (tab: TabProvider) => {
       const currentActive = tab.name.value ?? tab.index.value
@@ -126,13 +127,13 @@ export default defineComponent({
         const left: number = el.offsetLeft + el.offsetWidth / 2 - scroller.offsetWidth / 2
         scroller.scrollTo({
           left,
-          behavior: 'smooth'
+          behavior: 'smooth',
         })
       } else {
         const top: number = el.offsetTop + el.offsetHeight / 2 - scroller.offsetHeight / 2
         scroller.scrollTo({
           top,
-          behavior: 'smooth'
+          behavior: 'smooth',
         })
       }
     }
@@ -156,10 +157,10 @@ export default defineComponent({
       disabledColor,
       itemDirection,
       resize,
-      onTabClick
+      onTabClick,
     }
 
-    bindTab(tabsProvider)
+    bindTabList(tabsProvider)
 
     watch(
       () => length.value,
@@ -177,9 +178,9 @@ export default defineComponent({
       scrollerEl,
       Transition,
       toSizeUnit,
-      resize
+      resize,
     }
-  }
+  },
 })
 </script>
 

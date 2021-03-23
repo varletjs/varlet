@@ -135,6 +135,20 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Swipe 轮播',
+          'en-US': 'Swipe',
+        },
+        doc: 'swipe',
+      },
+      {
+        text: {
+          'zh-CN': 'Picker 多列选择器',
+          'en-US': 'Picker',
+        },
+        doc: 'picker',
+      },
+      {
+        text: {
           'zh-CN': 'Loading 加载',
           'en-US': 'Loading',
         },
@@ -261,13 +275,6 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'Swipe 轮播',
-          'en-US': 'Swipe',
-        },
-        doc: 'swipe',
-      },
-      {
-        text: {
           'zh-CN': 'DatePicker 日期选择器',
           'en-US': 'DatePicker',
         },
@@ -279,13 +286,6 @@ module.exports = {
           'en-US': 'Uploader',
         },
         doc: 'uploader',
-      },
-      {
-        text: {
-          'zh-CN': 'Picker 多列选择器',
-          'en-US': 'Picker',
-        },
-        doc: 'picker',
       },
       {
         text: {

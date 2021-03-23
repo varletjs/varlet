@@ -1,97 +1,68 @@
 <template>
-  <div class="example">
-    <var-picker :columns="cascadeColumns" cascade @change="log" @confirm="log" @cancel="log" />
-    <var-picker style="margin-top: 20px" :columns="columns" @change="log" @confirm="log" @cancel="log" />
-    <var-button @click="picker">弹出</var-button>
-  </div>
+  <app-type>{{ pack.functionCall }}</app-type>
+  <var-button style="margin-bottom: 10px" block @click="picker">{{ pack.singlePicker }}</var-button>
+  <var-button style="margin-bottom: 10px" block @click="picker2">{{ pack.multiplePicker }}</var-button>
+  <var-button style="margin-bottom: 10px" block @click="picker3">{{ pack.cascadePicker }}</var-button>
+
+  <app-type>{{ pack.componentCall }}</app-type>
+  <var-picker :columns="columns" />
+  <var-picker :columns="columns2" />
+  <var-picker cascade :columns="columns3" />
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
 import Picker from '..'
 import Button from '../../button'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import area from '../../../json/area.json'
+import { ref } from 'vue'
+import { use, pack } from './locale'
+import { watchLang } from '../../utils/components'
 
-export default defineComponent({
+export default {
   name: 'PickerExample',
   components: {
     [Picker.Component.name]: Picker.Component,
     [Button.name]: Button,
+    AppType,
   },
   setup() {
+    const columns = ref([Array.from({ length: 20 }).map((_, index) => index)])
+
+    const columns2 = ref([
+      Array.from({ length: 20 }).map((_, index) => index),
+      Array.from({ length: 20 }).map((_, index) => index),
+      Array.from({ length: 20 }).map((_, index) => index),
+    ])
+
+    const columns3 = ref(area)
+
+    const picker = async () => {
+      const { state, texts, indexes } = await Picker(columns.value)
+    }
+
+    const picker2 = async () => {
+      const { state, texts, indexes } = await Picker(columns2.value)
+    }
+
+    const picker3 = async () => {
+      const { state, texts, indexes } = await Picker({
+        cascade: true,
+        columns: columns3.value,
+      })
+    }
+
+    watchLang(use)
+
     return {
-      columns: ref([
-        Array.from({ length: 20 }).map((_, index) => index),
-        Array.from({ length: 20 }).map((_, index) => index),
-        Array.from({ length: 20 }).map((_, index) => index),
-        {
-          texts: Array.from({ length: 20 }).map((_, index) => index),
-          initialIndex: 1,
-        },
-        {
-          texts: Array.from({ length: 20 }).map((_, index) => index),
-          initialIndex: 2,
-        },
-      ]),
-      cascadeColumns: [
-        {
-          text: '四川省',
-          children: [
-            {
-              text: '成都市',
-              children: [
-                {
-                  text: '温江区',
-                },
-              ],
-            },
-            {
-              text: '乐山市',
-              children: [],
-            },
-          ],
-        },
-        {
-          text: '江苏省',
-          children: [
-            {
-              text: '无锡市',
-              children: [],
-            },
-            {
-              text: '常州市',
-              children: [],
-            },
-          ],
-        },
-      ],
-      log(texts, indexes) {
-        console.log(texts)
-        // console.log(indexes)
-      },
-      async picker() {
-        const columns = [
-          Array.from({ length: 20 }).map((_, index) => index),
-          Array.from({ length: 20 }).map((_, index) => index),
-          Array.from({ length: 20 }).map((_, index) => index),
-        ]
-        const { state, texts, indexes } = await Picker({
-          columns,
-          onChange(texts, indexes) {
-            console.log(texts, indexes)
-          },
-        })
-        // console.log(state, texts, indexes)
-      },
+      pack,
+      columns,
+      columns2,
+      columns3,
+      picker,
+      picker2,
+      picker3,
     }
   },
-})
-</script>
-
-<style scoped>
-.example {
-  background: #ddd;
-  width: 100%;
-  min-height: 80vh;
-  padding-top: 50px;
 }
-</style>
+</script>

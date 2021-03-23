@@ -16,6 +16,7 @@
     "UI"
   ],
   "files": [
+    "json",
     "es",
     "cjs",
     "umd",

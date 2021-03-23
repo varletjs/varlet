@@ -16,6 +16,7 @@ import { IndexBar } from './IndexBar'
 import { Lazy } from './Lazy'
 import { Loading } from './Loading'
 import { Menu } from './Menu'
+import { Picker } from './Picker'
 import { Popup } from './Popup'
 import { Progress } from './Progress'
 import { PullRefresh } from './PullRefresh'
@@ -24,6 +25,8 @@ import { Ripple } from './Ripple'
 import { Row } from './Row'
 import { Slider } from './Slider'
 import { Sticky } from './Sticky'
+import { Swipe } from './Swipe'
+import { SwipeItem } from './SwipeItem'
 import { Switch } from './Switch'
 import { Tab } from './Tab'
 import { TabItem } from './TabItem'
@@ -54,6 +57,7 @@ export {
   Lazy,
   Loading,
   Menu,
+  Picker,
   Popup,
   Progress,
   PullRefresh,
@@ -62,6 +66,8 @@ export {
   Row,
   Slider,
   Sticky,
+  Swipe,
+  SwipeItem,
   Switch,
   Tab,
   TabItem,

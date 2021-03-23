@@ -1,9 +1,10 @@
 import { PropType } from 'vue'
 import { pickProps } from '../utils/components'
 import { props as popupProps } from '../popup/props'
+import { Texts } from '.'
 
 export interface NormalColumn {
-  texts: any[]
+  texts: Texts
   initialIndex?: number
 }
 
@@ -14,12 +15,11 @@ export interface CascadeColumn {
 
 export const props = {
   columns: {
-    type: Array as PropType<NormalColumn[] | CascadeColumn[]>,
+    type: Array as PropType<NormalColumn[] | CascadeColumn[] | Texts>,
     default: [],
   },
   title: {
     type: String,
-    default: '请选择',
   },
   textKey: {
     type: String,
@@ -34,40 +34,40 @@ export const props = {
     default: false,
   },
   optionHeight: {
-    type: Number,
+    type: [Number, String],
     default: 44,
   },
   optionCount: {
-    type: Number,
+    type: [Number, String],
     default: 6,
   },
   confirmButtonText: {
     type: String,
-    default: '确认',
   },
   cancelButtonText: {
     type: String,
-    default: '取消',
   },
-  confirmButtonColor: {
+  confirmButtonTextColor: {
     type: String,
   },
-  cancelButtonColor: {
+  cancelButtonTextColor: {
     type: String,
   },
+  // dynamic internal
   dynamic: {
     type: Boolean,
     default: false,
   },
   onChange: {
-    type: Function,
+    type: Function as PropType<(texts: Texts, indexes: number[]) => void>,
   },
   onConfirm: {
-    type: Function,
+    type: Function as PropType<(texts: Texts, indexes: number[]) => void>,
   },
   onCancel: {
-    type: Function,
+    type: Function as PropType<(texts: Texts, indexes: number[]) => void>,
   },
+  // dynamic internal
   ...pickProps(popupProps, [
     'show',
     'onUpdate:show',

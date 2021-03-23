@@ -1,38 +1,40 @@
-import { App, nextTick, reactive } from 'vue'
 import VarPicker from './Picker.vue'
+import { App, nextTick, reactive } from 'vue'
 import { NormalColumn, CascadeColumn } from './props'
 import { isArray } from '../utils/shared'
 import { mountInstance } from '../utils/components'
 
+export type Texts = any[]
+
 interface PickerOptions {
-  columns: NormalColumn | CascadeColumn | any[]
+  columns: NormalColumn | CascadeColumn | Texts
   show?: boolean
   title?: string
   textKey?: string
   toolbar?: boolean
   cascade?: boolean
-  optionHeight?: number
-  optionCount?: number
+  optionHeight?: number | string
+  optionCount?: number | string
   confirmButtonText?: string
   cancelButtonText?: string
-  confirmButtonColor?: string
-  cancelButtonColor?: string
+  confirmButtonTextColor?: string
+  cancelButtonTextColor?: string
   dynamic?: boolean
-  onChange?: (texts: any[], indexes: number[]) => void
+  onChange?: (texts: Texts, indexes: number[]) => void
   onClosed?: () => void
 }
 
-type PickerResolvedState = 'confirm' | 'cancel' | 'close' | 'exist'
+type PickerResolvedState = 'confirm' | 'cancel' | 'close'
 
 interface PickerResolvedData {
   state: PickerResolvedState
-  texts?: any[]
+  texts?: Texts
   indexes?: number[]
 }
 
 let singletonOptions: PickerOptions | null
 
-function Picker(options: PickerOptions | any[]): Promise<PickerResolvedData> {
+function Picker(options: PickerOptions | Texts): Promise<PickerResolvedData> {
   return new Promise((resolve) => {
     Picker.close()
 
@@ -43,7 +45,7 @@ function Picker(options: PickerOptions | any[]): Promise<PickerResolvedData> {
     singletonOptions = reactivePickerOptions
 
     const { unmountInstance } = mountInstance(VarPicker, reactivePickerOptions, {
-      onConfirm: (texts: any[], indexes: number[]) => {
+      onConfirm: (texts: Texts, indexes: number[]) => {
         resolve({
           state: 'confirm',
           texts,
@@ -52,7 +54,7 @@ function Picker(options: PickerOptions | any[]): Promise<PickerResolvedData> {
         reactivePickerOptions.show = false
         singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },
-      onCancel: (texts: any[], indexes: number[]) => {
+      onCancel: (texts: Texts, indexes: number[]) => {
         resolve({
           state: 'cancel',
           texts,
@@ -92,12 +94,13 @@ Picker.install = function (app: App) {
 }
 
 Picker.close = () => {
-  if (singletonOptions) {
-    const options = singletonOptions
-    nextTick().then(() => {
-      options.show = false
-    })
+  if (singletonOptions != null) {
+    const prevSingletonOptions = singletonOptions
     singletonOptions = null
+
+    nextTick().then(() => {
+      prevSingletonOptions.show = false
+    })
   }
 }
 

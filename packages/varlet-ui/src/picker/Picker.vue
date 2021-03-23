@@ -1,32 +1,37 @@
 <template>
   <component
     :is="dynamic ? 'var-popup' : Transition"
-    v-bind="dynamic ? {
-      onOpened,
-      onClose,
-      onClosed,
-      onClickOverlay,
-      onRouteChange,
-      closeOnClickOverlay,
-      teleport,
-      show,
-      'onUpdate:show': (value) => $props['onUpdate:show'] && $props['onUpdate:show'](value),
-      position: 'bottom',
-    }: null"
+    v-bind="
+      dynamic
+        ? {
+            onOpened,
+            onClose,
+            onClosed,
+            onClickOverlay,
+            onRouteChange,
+            closeOnClickOverlay,
+            teleport,
+            show,
+            'onUpdate:show': (value) => $props['onUpdate:show'] && $props['onUpdate:show'](value),
+            position: 'bottom',
+            class: 'var-picker__popup',
+          }
+        : null
+    "
   >
     <div class="var-picker" v-bind="$attrs">
       <div class="var-picker__toolbar">
         <slot name="cancel">
-          <var-button class="var-picker__cancel-button" text :text-color="cancelButtonColor" @click="cancel">
-            {{ cancelButtonText }}
+          <var-button class="var-picker__cancel-button" text :text-color="cancelButtonTextColor" @click="cancel">
+            {{ dt(cancelButtonText, pack.pickerCancelButtonText) }}
           </var-button>
         </slot>
         <slot name="title">
-          <div class="var-picker__title">{{ title }}</div>
+          <div class="var-picker__title">{{ dt(title, pack.pickerTitle) }}</div>
         </slot>
         <slot name="confirm">
-          <var-button class="var-picker__confirm-button" text :text-color="confirmButtonColor" @click="confirm">
-            {{ confirmButtonText }}
+          <var-button class="var-picker__confirm-button" text :text-color="confirmButtonTextColor" @click="confirm">
+            {{ dt(confirmButtonText, pack.pickerConfirmButtonText) }}
           </var-button>
         </slot>
       </div>
@@ -55,7 +60,7 @@
               v-for="t in c.column.texts"
               :key="t"
             >
-              {{ t }}
+              <div class="var-picker__text">{{ t }}</div>
             </div>
           </div>
         </div>
@@ -73,11 +78,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref, Ref, computed, ComputedRef, Transition, toRaw } from 'vue'
-import { CascadeColumn, NormalColumn, props } from './props'
-import { isArray } from '../utils/shared'
 import Button from '../button'
 import Popup from '../popup'
+import { defineComponent, watch, ref, Ref, computed, ComputedRef, Transition, toRaw } from 'vue'
+import { CascadeColumn, NormalColumn, props } from './props'
+import { isArray, dt } from '../utils/shared'
+import { toPxNum } from '../utils/elements'
+import { pack } from '../locale'
+import { Texts } from './index'
 
 interface ScrollColumn {
   touching: boolean
@@ -106,10 +114,12 @@ export default defineComponent({
   props,
   setup(props) {
     const scrollColumns: Ref<ScrollColumn[]> = ref([])
+    const optionHeight: ComputedRef<number> = computed(() => toPxNum(props.optionHeight))
+    const optionCount: ComputedRef<number> = computed(() => toPxNum(props.optionCount))
     const center: ComputedRef<number> = computed(
-      () => (props.optionCount * props.optionHeight) / 2 - props.optionHeight / 2
+      () => (optionCount.value * optionHeight.value) / 2 - optionHeight.value / 2
     )
-    const columnHeight: ComputedRef<number> = computed(() => props.optionCount * props.optionHeight)
+    const columnHeight: ComputedRef<number> = computed(() => optionCount.value * optionHeight.value)
     let prevIndexes: number[] = []
 
     const getTranslate = (el: HTMLElement) => {
@@ -118,9 +128,8 @@ export default defineComponent({
     }
 
     const limitTranslate = (scrollColumn: ScrollColumn) => {
-      const { optionHeight } = props
-      const START_LIMIT = optionHeight + center.value
-      const END_LIMIT = center.value - scrollColumn.column.texts.length * optionHeight
+      const START_LIMIT = optionHeight.value + center.value
+      const END_LIMIT = center.value - scrollColumn.column.texts.length * optionHeight.value
 
       if (scrollColumn.translate >= START_LIMIT) {
         scrollColumn.translate = START_LIMIT
@@ -140,7 +149,7 @@ export default defineComponent({
     }
 
     const getIndex = (scrollColumn: ScrollColumn) => {
-      const index = Math.round((center.value - scrollColumn.translate) / props.optionHeight)
+      const index = Math.round((center.value - scrollColumn.translate) / optionHeight.value)
 
       return boundaryIndex(scrollColumn, index)
     }
@@ -155,13 +164,12 @@ export default defineComponent({
       }
     }
 
-    const scrollTo = (scrollColumn: ScrollColumn, index: number, duration: number, noChange = false) => {
-      const { optionHeight } = props
-      const translate = center.value - boundaryIndex(scrollColumn, index) * optionHeight
+    const scrollTo = (scrollColumn: ScrollColumn, index: number, duration: number, noEmit = false) => {
+      const translate = center.value - boundaryIndex(scrollColumn, index) * optionHeight.value
 
       if (translate === scrollColumn.translate) {
         scrollColumn.scrolling = false
-        !noChange && change(scrollColumn)
+        !noEmit && change(scrollColumn)
       }
 
       scrollColumn.translate = translate
@@ -274,31 +282,34 @@ export default defineComponent({
     }
 
     const change = (scrollColumn: ScrollColumn) => {
-      props.cascade && rebuildChildren(scrollColumn)
+      const { cascade, onChange } = props
+      cascade && rebuildChildren(scrollColumn)
 
-      if (scrollColumns.value.some((scrollColumn) => scrollColumn.scrolling)) {
+      const hasScrolling = scrollColumns.value.some((scrollColumn) => scrollColumn.scrolling)
+      if (hasScrolling) {
         return
       }
 
       const { texts, indexes } = getPicked()
 
-      const noChange = indexes.every((index, idx) => index === prevIndexes[idx])
-      if (noChange) {
+      const samePicked = indexes.every((index, idx) => index === prevIndexes[idx])
+      if (samePicked) {
         return
       }
+
       prevIndexes = [...indexes]
-      props.onChange?.(texts, indexes)
+      onChange?.(texts, indexes)
     }
 
     const stopScroll = () => {
       if (props.cascade) {
-        const scrollColumn = scrollColumns.value.find((scrollColumn) => scrollColumn.scrolling)
-        if (scrollColumn) {
-          scrollColumn.translate = getTranslate(scrollColumn.scrollEl as HTMLElement)
-          scrollColumn.index = getIndex(scrollColumn)
-          scrollTo(scrollColumn, scrollColumn.index, 0, true)
-          scrollColumn.scrolling = false
-          rebuildChildren(scrollColumn)
+        const currentScrollColumn = scrollColumns.value.find((scrollColumn) => scrollColumn.scrolling)
+        if (currentScrollColumn) {
+          currentScrollColumn.translate = getTranslate(currentScrollColumn.scrollEl as HTMLElement)
+          currentScrollColumn.index = getIndex(currentScrollColumn)
+          scrollTo(currentScrollColumn, currentScrollColumn.index, 0, true)
+          currentScrollColumn.scrolling = false
+          rebuildChildren(currentScrollColumn)
         }
       } else {
         scrollColumns.value.forEach((scrollColumn) => {
@@ -309,13 +320,16 @@ export default defineComponent({
       }
     }
 
+    // expose
     const confirm = () => {
       stopScroll()
+
       const { texts, indexes } = getPicked()
       prevIndexes = [...indexes]
       props.onConfirm?.(texts, indexes)
     }
 
+    // expose
     const cancel = () => {
       stopScroll()
 
@@ -329,12 +343,15 @@ export default defineComponent({
       (newValue: any) => {
         scrollColumns.value = props.cascade
           ? normalizeCascadeColumns(toRaw(newValue) as CascadeColumn[])
-          : normalizeNormalColumns(toRaw(newValue) as NormalColumn[] | any[])
+          : normalizeNormalColumns(toRaw(newValue) as NormalColumn[] | Texts)
       },
       { immediate: true }
     )
 
     return {
+      pack,
+      optionHeight,
+      optionCount,
       scrollColumns,
       columnHeight,
       center,
@@ -345,6 +362,7 @@ export default defineComponent({
       handleTransitionend,
       confirm,
       cancel,
+      dt,
     }
   },
 })

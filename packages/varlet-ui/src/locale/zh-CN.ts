@@ -6,5 +6,9 @@ export default {
   // List
   listLoadingText: '加载中',
   listFinishedText: '没有更多了',
-  listErrorText: '加载失败'
+  listErrorText: '加载失败',
+  // Picker
+  pickerTitle: '请选择',
+  pickerConfirmButtonText: '确认',
+  pickerCancelButtonText: '取消',
 }

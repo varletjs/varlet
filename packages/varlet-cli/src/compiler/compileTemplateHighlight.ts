@@ -34,7 +34,7 @@ export function parseTable(table: string) {
     const cols = row.split('|')
     cols.shift()
     cols.pop()
-    return cols.map((col) => col.replace(/__varlet_axis__/, '|').trim())
+    return cols.map((col) => col.replace(/__varlet_axis__/g, '|').trim())
   })
 }
 

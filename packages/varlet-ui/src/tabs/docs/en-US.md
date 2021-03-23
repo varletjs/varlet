@@ -281,6 +281,12 @@ Click the Tab to scroll automatically to the center of the viewport
 | --- | --- | --- | --- | 
 | `name` | view's name | _string \| number_ | `index` |
 
+### Methods
+
+| Method | Description | Arguments | Return |
+| --- | --- | --- | --- |
+| `resize` | You can call this method to redraw when a tabs changes position size | `-` | `-` |
+
 ### Events
 
 ### Tabs Events

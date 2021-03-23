@@ -263,6 +263,7 @@ export default {
 | `sticky` | 是否启用粘性布局 | _boolean_ | `false` |
 | `offset-top` | 吸顶距离(px, rem) | _string \| number_ | `0` |
 
+
 ### Tab Props
 
 | 参数 | 说明 | 类型 | 默认值 | 
@@ -281,6 +282,12 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
 | `name` | 视图的名字 | _string \| number_ | `index` |
+
+### 方法
+
+| 方法名 | 说明 | 参数 | 返回值 |
+| --- | --- | --- | --- |
+| `resize` | 产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
 
 ### 事件
 
