@@ -32,19 +32,27 @@ export default defineComponent({
   setup(props, { emit }) {
     const yearList: ComputedRef<Array<number>> = computed(() => {
       const list: Array<number> = []
-      if (!props.preview) return list
-      let yearRange = [toNumber(props.preview) + 100, toNumber(props.preview) - 100]
+      const {
+        preview,
+        componentProps: { max, min },
+      } = props
 
-      if (props.componentProps.max) {
-        const formatMax = dayjs(props.componentProps.max).format('YYYY-MM-D')
-        const year = parseInt(formatMax.split('-')[0], 10)
+      if (!preview) return list
+
+      let yearRange = [toNumber(preview) + 100, toNumber(preview) - 100]
+
+      if (max) {
+        const formatMax = dayjs(max).format('YYYY-MM-D')
+        const year = toNumber(formatMax.split('-')[0])
+
         if (year < yearRange[0] && year > yearRange[1]) yearRange = [year, yearRange[1]]
         if (year <= yearRange[1]) return [year]
       }
 
-      if (props.componentProps.min) {
-        const formatMin = dayjs(props.componentProps.min).format('YYYY-MM-D')
-        const year = parseInt(formatMin.split('-')[0], 10)
+      if (min) {
+        const formatMin = dayjs(min).format('YYYY-MM-D')
+        const year = toNumber(formatMin.split('-')[0])
+
         if (year < yearRange[0] && year > yearRange[1]) yearRange = [yearRange[0], year]
         if (year >= yearRange[0]) return [year]
       }

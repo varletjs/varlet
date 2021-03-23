@@ -32,6 +32,7 @@ import Button from '../../button'
 import Icon from '../../icon'
 import { Preview, PanelBtnDisabled } from '../props'
 import { toNumber } from '../../utils/shared'
+import { pack } from '../../locale'
 
 export default defineComponent({
   name: 'PanelHeader',
@@ -60,8 +61,11 @@ export default defineComponent({
     const showDate: ComputedRef<number | string> = computed(() => {
       const { date, type } = props
       const { previewMonth, previewYear }: Preview = date
+
       if (type === 'month') return toNumber(previewYear) + forwardOrBackNum.value
-      return `${previewMonth.name} ${previewYear}`
+
+      const monthName = pack.value.monthDictionary[previewMonth.index].name
+      return pack.value.lang === 'zh-CN' ? `${previewYear} ${monthName}` : `${monthName} ${previewYear}`
     })
 
     const checkDate = (checkType: string) => {

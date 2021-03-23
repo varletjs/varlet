@@ -11,7 +11,7 @@
       <transition :name="reverse ? 'var-date-picker-reverse-translatex' : 'var-date-picker-translatex'">
         <div :key="panelKey">
           <ul class="var-day-picker__head">
-            <li v-for="week in sortWeekList" :key="week.index">{{ week.abbr }}</li>
+            <li v-for="week in sortWeekList" :key="week.index">{{ getDayAbbr(week.index) }}</li>
           </ul>
           <ul class="var-day-picker__body">
             <li v-for="(day, index) in days" :key="index">
@@ -43,6 +43,7 @@ import PanelHeader from './panel-header.vue'
 import Button from '../../button'
 import { WEEK_HEADER, Choose, Preview, ComponentProps, Week, PanelBtnDisabled } from '../props'
 import { toNumber } from '../../utils/shared'
+import { pack } from '../../locale'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -101,12 +102,15 @@ export default defineComponent({
       return WEEK_HEADER.slice(index).concat(WEEK_HEADER.slice(0, index))
     })
 
+    const getDayAbbr = (key: number): number => pack.value.weekDictionary[key].abbr
+
     const filterDay = (day: number): number | string => (day > 0 ? day : '')
 
     const initDate = () => {
       const {
         preview: { previewMonth, previewYear },
       }: { preview: Preview } = props
+
       const monthNum = dayjs(`${previewYear}-${previewMonth.index}`).daysInMonth()
       const firstDayToWeek = dayjs(`${previewYear}-${previewMonth.index}-01`).day()
       const index = sortWeekList.value.findIndex((week: Week) => week.index === firstDayToWeek)
@@ -118,10 +122,12 @@ export default defineComponent({
         preview: { previewYear, previewMonth },
         componentProps: { max, min },
       }: { preview: Preview; componentProps: ComponentProps } = props
+
       if (max) {
         const date = `${previewYear}-${toNumber(previewMonth.index) + 1}`
         panelBtnDisabled.right = !dayjs(date).isSameOrBefore(dayjs(max), 'month')
       }
+
       if (min) {
         const date = `${previewYear}-${toNumber(previewMonth.index) - 1}`
         panelBtnDisabled.left = !dayjs(date).isSameOrAfter(dayjs(min), 'month')
@@ -133,6 +139,7 @@ export default defineComponent({
         preview: { previewYear, previewMonth },
         componentProps: { min, max },
       }: { preview: Preview; componentProps: ComponentProps } = props
+
       let isBeforeMax = true
       let isAfterMin = true
       const previewDate = `${previewYear}-${previewMonth.index}-${day}`
@@ -148,7 +155,9 @@ export default defineComponent({
         choose: { chooseDays, chooseRangeDay },
         componentProps: { range },
       }: { choose: Choose; componentProps: ComponentProps } = props
+
       if (!chooseRangeDay.length) return false
+
       if (range) {
         const isBeforeMax = dayjs(val).isSameOrBefore(dayjs(chooseRangeDay[1]), 'day')
         const isAfterMin = dayjs(val).isSameOrAfter(dayjs(chooseRangeDay[0]), 'day')
@@ -175,6 +184,7 @@ export default defineComponent({
       const val = `${previewYear}-${previewMonth.index}-${day}`
       const shouldChooseResult = shouldChoose(val)
       const rangeOrMultiple = range || multiple
+      const dayExist = rangeOrMultiple ? shouldChooseResult : toNumber(chooseDay) === day && isSame.value
 
       const disabled = inRange(day) ? (allowedDates ? !allowedDates(val) : false) : true
       const text = disabled
@@ -183,7 +193,6 @@ export default defineComponent({
         ? !shouldChooseResult
         : !isSame.value || toNumber(chooseDay) !== day
       const bgColor = !text ? color : ''
-      const dayExist = rangeOrMultiple ? shouldChooseResult : toNumber(chooseDay) === day && isSame.value
 
       outline = rangeOrMultiple
         ? outline && (disabled ? true : !shouldChooseResult)
@@ -191,7 +200,7 @@ export default defineComponent({
         ? outline && (chooseDay !== currentDay || disabled)
         : outline
 
-      const textColor = disabled ? '' : outline ? color : dayExist ? '' : 'rgba(0,0,0,.87)'
+      const textColor = disabled ? '' : outline ? color : dayExist ? '' : 'rgba(0, 0, 0, .87)'
 
       return {
         disabled,
@@ -232,6 +241,7 @@ export default defineComponent({
       sortWeekList,
       panelBtnDisabled,
       filterDay,
+      getDayAbbr,
       checkDate,
       chooseDay,
       buttonProps,

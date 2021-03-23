@@ -74,6 +74,8 @@
 import { defineComponent, ref } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import DatePicker from '..'
+import { pack, use } from './locale'
+import { watchLang } from '../../utils/components'
 
 export default defineComponent({
   name: 'DatePickerExample',
@@ -94,6 +96,9 @@ export default defineComponent({
     const change = (date) => {
       console.log(date)
     }
+
+    watchLang(use)
+
     return {
       date,
       date1,
@@ -107,9 +112,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style scoped>
-.example {
-  background: antiquewhite;
-}
-</style>

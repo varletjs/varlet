@@ -88,6 +88,7 @@ import YearPickerPanel from './src/year-picker-panel.vue'
 import DayPickerPanel from './src/day-picker-panel.vue'
 import { props, Month, MONTH_LIST, Choose, Preview, WEEK_HEADER, Week, ComponentProps } from './props'
 import { isArray, toNumber } from '../utils/shared'
+import { pack } from '../locale'
 
 export default defineComponent({
   name: 'VarDatePicker',
@@ -100,14 +101,14 @@ export default defineComponent({
   setup(props) {
     const currentDate: string = dayjs().format('YYYY-MM-D')
     const [currentYear, currentMonth, currentDay] = currentDate.split('-')
-    const mapMonth: Array<Month> = MONTH_LIST.filter((month) => month.index === currentMonth)
+    const monthDes: Month = MONTH_LIST.find((month) => month.index === currentMonth) as Month
     const isYearPanel: Ref<boolean> = ref(false)
     const isMonthPanel: Ref<boolean> = ref(false)
     const rangeDone: Ref<boolean> = ref(true)
-    const chooseMonth: Ref<Month> = ref(mapMonth[0])
+    const chooseMonth: Ref<Month> = ref(monthDes)
     const chooseYear: Ref<string> = ref(currentYear)
     const chooseDay: Ref<string> = ref(currentDay)
-    const previewMonth: Ref<Month> = ref(mapMonth[0])
+    const previewMonth: Ref<Month> = ref(monthDes)
     const previewYear: Ref<string> = ref(currentYear)
     const reverse: Ref<boolean> = ref(false)
     const chooseMonths: Ref<Array<string>> = ref([`${currentYear}-${currentMonth}`])
@@ -144,24 +145,37 @@ export default defineComponent({
 
     const getMonthTitle: ComputedRef<string> = computed(() => {
       const { multiple, range } = props
+
       if (range) return `${chooseRangeMonth.value[0]} ~ ${chooseRangeMonth.value[1]}`
-      return multiple ? `已选择${chooseMonths.value.length}个` : chooseMonth.value.name
+
+      const monthName = pack.value.monthDictionary[chooseMonth.value.index].name
+      return multiple ? `${chooseMonths.value.length}${pack.value.selected}` : monthName
     })
 
     const getDateTitle: ComputedRef<string> = computed(() => {
       const { multiple, range } = props
+
       if (range) {
         chooseRangeDay.value = chooseRangeDay.value.map((date) => dayjs(date).format('YYYY-MM-DD'))
         return `${chooseRangeDay.value[0]} ~ ${chooseRangeDay.value[1]}`
       }
-      if (multiple) return `已选择${chooseDays.value.length}个`
+
+      if (multiple) return `${chooseDays.value.length}${pack.value.selected}`
+
       const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value.index}-${chooseDay.value}`).day()
-      const week: Week = WEEK_HEADER.filter((value) => value.index === weekIndex)[0]
-      return `${week.name.slice(0, 3)}, ${chooseMonth.value.name.slice(0, 3)} ${chooseDay.value}`
+      const week: Week = WEEK_HEADER.find((value) => value.index === weekIndex) as Week
+      const weekName = pack.value.weekDictionary[week.index].name
+
+      const monthName = pack.value.monthDictionary[chooseMonth.value.index].name
+      const showDay = chooseDay.value.padStart(2, '0')
+
+      if (pack.value.lang === 'zh-CN') return `${chooseMonth.value.index}-${showDay} ${weekName.slice(0, 3)}`
+      return `${weekName.slice(0, 3)}, ${monthName.slice(0, 3)} ${chooseDay.value}`
     })
 
     const slotProps: ComputedRef<Record<string, string | number>> = computed(() => {
       const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value.index}-${chooseDay.value}`).day()
+
       return {
         week: weekIndex,
         year: chooseYear.value,
@@ -190,11 +204,11 @@ export default defineComponent({
       const rangeDate = type === 'month' ? chooseRangeMonth : chooseRangeDay
       rangeDate.value = rangeDone.value ? [date, date] : [rangeDate.value[0], date]
       rangeDone.value = !rangeDone.value
+
       if (rangeDone.value) {
-        let date = [...rangeDate.value]
-        if (dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])) {
-          date = [rangeDate.value[1], rangeDate.value[0]]
-        }
+        const isChangeOrder = dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])
+        const date = isChangeOrder ? [rangeDate.value[1], rangeDate.value[0]] : [...rangeDate.value]
+
         props['onUpdate:modelValue']?.(date)
         props.onChange?.(date)
       }
@@ -206,43 +220,58 @@ export default defineComponent({
       const formatDates = multipleDates.value.map((date) => dayjs(date).format(formatType))
 
       const index = formatDates.findIndex((choose) => choose === date)
+
       if (index === -1) formatDates.push(date)
       else formatDates.splice(index, 1)
+
       props['onUpdate:modelValue']?.(formatDates)
       props.onChange?.(formatDates)
     }
 
+    const getReverse = (dateType: string, date: Month | number) => {
+      if (!isSameYear.value) return chooseYear.value > previewYear.value
+
+      if (dateType === 'month') return (date as Month).index < chooseMonth.value.index
+
+      return isSameMonth.value
+        ? (date as number) < toNumber(chooseDay.value)
+        : chooseMonth.value.index > previewMonth.value.index
+    }
+
     const getChooseDay = (day: number) => {
-      if (day < 0 || props.readonly) return
-      reverse.value = isSameYear.value
-        ? isSameMonth.value
-          ? day < toNumber(chooseDay.value)
-          : chooseMonth.value.index > previewMonth.value.index
-        : chooseYear.value > previewYear.value
+      const { readonly, range, multiple, onChange, 'onUpdate:modelValue': updateModelValue } = props
+      if (day < 0 || readonly) return
 
-      const date = dayjs(`${previewYear.value}-${previewMonth.value.index}-${day}`).format('YYYY-MM-DD')
+      reverse.value = getReverse('day', day)
 
-      if (props.range) updateRange(date, 'day')
-      else if (props.multiple) updateMultiple(date, 'day')
+      const date = `${previewYear.value}-${previewMonth.value.index}-${day}`
+      const formatDate = dayjs(date).format('YYYY-MM-DD')
+
+      if (range) updateRange(formatDate, 'day')
+      else if (multiple) updateMultiple(formatDate, 'day')
       else {
-        props['onUpdate:modelValue']?.(date)
-        props.onChange?.(date)
+        updateModelValue?.(formatDate)
+        onChange?.(formatDate)
       }
     }
 
     const getChooseMonth = (month: Month) => {
-      reverse.value = isSameYear.value ? month.index < chooseMonth.value.index : chooseYear.value > previewYear.value
-      if (props.type === 'month' && !props.readonly) {
+      const { type, readonly, range, multiple, onChange, 'onUpdate:modelValue': updateModelValue } = props
+      reverse.value = getReverse('month', month)
+
+      if (type === 'month' && !readonly) {
         const date = `${previewYear.value}-${month.index}`
-        if (props.range) updateRange(date, 'month')
-        else if (props.multiple) updateMultiple(date, 'month')
+
+        if (range) updateRange(date, 'month')
+        else if (multiple) updateMultiple(date, 'month')
         else {
-          props['onUpdate:modelValue']?.(date)
-          props.onChange?.(date)
+          updateModelValue?.(date)
+          onChange?.(date)
         }
       } else {
         previewMonth.value = month
       }
+
       isMonthPanel.value = false
     }
 
@@ -254,18 +283,23 @@ export default defineComponent({
 
     const checkPreview = (type: string, checkType: string) => {
       const changeValue = checkType === 'prev' ? -1 : 1
+
       if (type === 'year') {
         previewYear.value = `${toNumber(previewYear.value) + changeValue}`
       } else {
         let checkIndex = toNumber(previewMonth.value.index) + changeValue
-        previewYear.value =
-          checkIndex < 1
-            ? `${toNumber(previewYear.value) - 1}`
-            : checkIndex > 12
-            ? `${toNumber(previewYear.value) + 1}`
-            : previewYear.value
-        checkIndex = checkIndex < 1 ? 12 : checkIndex > 12 ? 1 : checkIndex
-        previewMonth.value = MONTH_LIST.filter((month) => toNumber(month.index) === checkIndex)[0]
+
+        if (checkIndex < 1) {
+          previewYear.value = `${toNumber(previewYear.value) - 1}`
+          checkIndex = 12
+        }
+
+        if (checkIndex > 12) {
+          previewYear.value = `${toNumber(previewYear.value) + 1}`
+          checkIndex = 1
+        }
+
+        previewMonth.value = MONTH_LIST.find((month) => toNumber(month.index) === checkIndex) as Month
       }
     }
 
@@ -284,8 +318,10 @@ export default defineComponent({
     const rangeInit = (value: Array<string>, type: string) => {
       const rangeDate = type === 'month' ? chooseRangeMonth : chooseRangeDay
       const formatType = type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
+      const isChangeOrder = dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])
+
       rangeDate.value = value.map((choose) => dayjs(choose).format(formatType)).slice(0, 2)
-      if (rangeDate.value.length === 2 && dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])) {
+      if (rangeDate.value.length === 2 && isChangeOrder) {
         rangeDate.value = [rangeDate.value[1], rangeDate.value[0]]
       }
     }
@@ -299,11 +335,13 @@ export default defineComponent({
     const dateInit = (value: string) => {
       const formatDate = dayjs(value).format('YYYY-MM-D')
       const [yearValue, monthValue, dayValue] = formatDate.split('-')
-      const mapMonth: Array<Month> = MONTH_LIST.filter((month) => month.index === monthValue)
-      chooseMonth.value = mapMonth[0]
+
+      const monthDes: Month = MONTH_LIST.find((month) => month.index === monthValue) as Month
+
+      chooseMonth.value = monthDes
       chooseYear.value = yearValue
       chooseDay.value = dayValue
-      previewMonth.value = mapMonth[0]
+      previewMonth.value = monthDes
       previewYear.value = yearValue
     }
 
@@ -311,12 +349,15 @@ export default defineComponent({
       () => props.modelValue,
       (value) => {
         if (!checkValue() || value === undefined) return
+
         if (props.range) {
           if (!isArray(value)) return
+
           rangeDone.value = value.length !== 1
           rangeInit(value, props.type)
         } else if (props.multiple) {
           if (!isArray(value)) return
+
           multipleInit(value, props.type)
         } else {
           dateInit(value as string)

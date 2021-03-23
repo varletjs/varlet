@@ -10,16 +10,16 @@
       />
       <transition :name="reverse ? 'var-date-picker-reverse-translatex' : 'var-date-picker-translatex'">
         <ul :key="panelKey">
-          <li v-for="month in MONTH_LIST" :key="month">
+          <li v-for="month in MONTH_LIST" :key="month.index">
             <var-button
               type="primary"
               forbid-ripple
               v-bind="{
-                ...buttonProps(month),
+                ...buttonProps(month.index),
               }"
               @click="chooseMonth(month)"
             >
-              {{ month.abbr }}
+              {{ getMonthAbbr(month.index) }}
             </var-button>
           </li>
         </ul>
@@ -37,6 +37,7 @@ import { MONTH_LIST, Choose, Month, Preview, ComponentProps, PanelBtnDisabled } 
 import PanelHeader from './panel-header.vue'
 import Button from '../../button'
 import { toNumber } from '../../utils/shared'
+import { pack } from '../../locale'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -79,16 +80,19 @@ export default defineComponent({
 
     const isSameYear: ComputedRef<boolean> = computed(() => props.choose.chooseYear === props.preview.previewYear)
 
-    const isCurrent: ComputedRef<boolean> = computed(() => props.preview.previewYear === currentYear)
+    const isCurrentYear: ComputedRef<boolean> = computed(() => props.preview.previewYear === currentYear)
 
-    const inRange = (month: Month): boolean => {
+    const getMonthAbbr = (key: string): string => pack.value.monthDictionary[key].abbr
+
+    const inRange = (key: string): boolean => {
       const {
         preview: { previewYear },
         componentProps: { min, max },
       }: { preview: Preview; componentProps: ComponentProps } = props
+
       let isBeforeMax = true
       let isAfterMin = true
-      const previewDate = `${previewYear}-${month.index}`
+      const previewDate = `${previewYear}-${key}`
 
       if (max) isBeforeMax = dayjs(previewDate).isSameOrBefore(dayjs(max), 'month')
       if (min) isAfterMin = dayjs(previewDate).isSameOrAfter(dayjs(min), 'month')
@@ -101,37 +105,41 @@ export default defineComponent({
         choose: { chooseMonths, chooseDays, chooseRangeMonth },
         componentProps: { type, range },
       }: { choose: Choose; componentProps: ComponentProps } = props
+
       if (!chooseRangeMonth.length) return false
+
       if (range) {
         const isBeforeMax = dayjs(val).isSameOrBefore(dayjs(chooseRangeMonth[1]), 'month')
         const isAfterMin = dayjs(val).isSameOrAfter(dayjs(chooseRangeMonth[0]), 'month')
+
         return isBeforeMax && isAfterMin
       }
 
-      const choose: Array<string> =
-        type === 'month' ? chooseMonths : Array.from(new Set(chooseDays.map((value) => value.slice(0, 7))))
-      return choose.includes(val)
+      if (type === 'month') return chooseMonths.includes(val)
+      return chooseDays.some((value) => value.includes(val))
     }
 
-    const buttonProps = (month: Month) => {
-      let outline = isCurrent.value && currentMonth === month.index && props.componentProps.showCurrent
+    const buttonProps = (key: string) => {
+      let outline = isCurrentYear.value && currentMonth === key && props.componentProps.showCurrent
+
       const {
         choose: { chooseMonth },
         preview: { previewYear },
         componentProps: { allowedDates, color, multiple, range },
       }: { choose: Choose; preview: Preview; componentProps: ComponentProps } = props
-      const val = `${previewYear}-${month.index}`
+
+      const val = `${previewYear}-${key}`
       const shouldChooseResult = shouldChoose(val)
       const rangeOrMultiple = range || multiple
+      const monthExist = rangeOrMultiple ? shouldChooseResult : chooseMonth.index === key && isSameYear.value
 
-      const disabled = inRange(month) ? (allowedDates ? !allowedDates(val) : false) : true
+      const disabled = inRange(key) ? (allowedDates ? !allowedDates(val) : false) : true
       const text = disabled
         ? true
         : rangeOrMultiple
         ? !shouldChooseResult
-        : !isSameYear.value || chooseMonth.index !== month.index
+        : !isSameYear.value || chooseMonth.index !== key
       const bgColor = !text ? color : ''
-      const monthExist = rangeOrMultiple ? shouldChooseResult : chooseMonth.index === month.index && isSameYear.value
 
       outline = rangeOrMultiple
         ? outline && (disabled ? true : !shouldChooseResult)
@@ -139,7 +147,7 @@ export default defineComponent({
         ? outline && (chooseMonth.index !== currentMonth || disabled)
         : outline
 
-      const textColor = disabled ? '' : outline ? color : monthExist ? '' : 'rgba(0,0,0,.87)'
+      const textColor = disabled ? '' : outline ? color : monthExist ? '' : 'rgba(0, 0, 0, .87)'
 
       return {
         disabled,
@@ -163,23 +171,24 @@ export default defineComponent({
     watch(
       () => props.preview.previewYear,
       (year) => {
-        if (props.componentProps.max)
-          panelBtnDisabled.right = !dayjs(`${toNumber(year) + 1}`).isSameOrBefore(
-            dayjs(props.componentProps.max),
-            'year'
-          )
-        if (props.componentProps.min)
-          panelBtnDisabled.left = !dayjs(`${toNumber(year) - 1}`).isSameOrAfter(dayjs(props.componentProps.min), 'year')
+        const {
+          componentProps: { min, max },
+        } = props
+
+        if (max) panelBtnDisabled.right = !dayjs(`${toNumber(year) + 1}`).isSameOrBefore(dayjs(max), 'year')
+        if (min) panelBtnDisabled.left = !dayjs(`${toNumber(year) - 1}`).isSameOrAfter(dayjs(min), 'year')
       },
       { immediate: true }
     )
 
     return {
+      pack,
       MONTH_LIST,
       reverse,
       panelKey,
       panelBtnDisabled,
       buttonProps,
+      getMonthAbbr,
       chooseMonth,
       checkDate,
     }
