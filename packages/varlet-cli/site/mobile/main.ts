@@ -29,6 +29,7 @@ router.beforeEach((to) => {
 })
 
 router.afterEach((to) => {
+  console.log(to.path, to.query.path)
   let isPhone = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
   if (!isPhone) {
     if (to.path === '/home' && to.query.path) {

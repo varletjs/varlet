@@ -1,6 +1,6 @@
 module.exports = {
   namespace: 'var',
-  title: 'varlet',
+  title: 'Varlet',
   host: '0.0.0.0',
   port: 8080,
   pc: {

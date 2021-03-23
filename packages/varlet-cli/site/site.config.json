@@ -1,7 +1,7 @@
 {
   "namespace": "var",
   "host": "0.0.0.0",
-  "title": "varlet",
+  "title": "Varlet",
   "port": 8080,
   "pc": {
     "title": "Varlet 组件库示例",

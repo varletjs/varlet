@@ -52,7 +52,7 @@
       <router-view />
       <div class="varlet-site-mobile">
         <div class="varlet-site-mobile-frame">
-          <div class="varlet-site-empty"></div>
+          <div class="varlet-site-mobile-empty"></div>
           <div class="varlet-site-mobile-content">
             <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&path=${path}`"></iframe>
           </div>
@@ -216,14 +216,25 @@ iframe {
 .varlet {
   &-site {
     &-mobile {
-      padding: 20px 30px;
-      overflow-y: auto;
-
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 30px;
       &-frame {
         width: 369px;
         transform: scale(1);
         position: relative;
         height: 731px;
+      }
+
+      &-empty {
+        height: 25px;
+        width: calc(100% - 49px);
+        margin-left: 24px;
+        background-color: #2979ff;
+        position: absolute;
+        top: 19px;
+        z-index: -1;
       }
 
       &-content {
@@ -233,6 +244,48 @@ iframe {
         top: 44px;
         width: calc(100% - 49px);
         margin-left: 24px;
+      }
+
+      @media screen and (max-width: 1280px) {
+        &-frame {
+          width: 280px;
+          height: 550px;
+        }
+
+        &-content {
+          width: calc(100% - 37px);
+          margin-left: 18px;
+          height: 497px;
+          top: 35px;
+        }
+
+        &-empty {
+          height: 20px;
+          width: calc(100% - 37px);
+          margin-left: 18px;
+          top: 16px;
+        }
+      }
+
+      @media screen and (min-width: 1281px) and (max-width: 1430px) {
+        &-frame {
+          width: 305px;
+          height: 610px;
+        }
+
+        &-content {
+          width: calc(100% - 41px);
+          margin-left: 20px;
+          height: 553px;
+          top: 39px;
+        }
+
+        &-empty {
+          height: 22px;
+          width: calc(100% - 41px);
+          margin-left: 20px;
+          top: 18px;
+        }
       }
 
       &-image {
@@ -246,16 +299,6 @@ iframe {
           height: 100%;
         }
       }
-    }
-
-    &-empty {
-      height: 25px;
-      width: calc(100% - 49px);
-      margin-left: 24px;
-      background-color: #2979ff;
-      position: absolute;
-      top: 19px;
-      z-index: -1;
     }
 
     &-header {
