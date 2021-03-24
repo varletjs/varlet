@@ -51,14 +51,12 @@
       </div>
       <router-view />
       <div class="varlet-site-mobile">
-        <div class="varlet-site-mobile-frame">
-          <div class="varlet-site-mobile-empty"></div>
-          <div class="varlet-site-mobile-content">
-            <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&path=${path}`"></iframe>
-          </div>
-          <div class="varlet-site-mobile-image">
-            <img src="./assets/images/mobile.png" />
-          </div>
+        <div class="varlet-site-empty"></div>
+        <div class="varlet-site-mobile-content">
+          <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&path=${path}`"></iframe>
+        </div>
+        <div class="varlet-site-mobile-image">
+          <img src="./assets/images/mobile.png" />
         </div>
       </div>
     </div>
@@ -215,33 +213,19 @@ iframe {
 .varlet {
   &-site {
     &-mobile {
-      display: flex;
-      padding: 16px 30px 0;
-
-      &-frame {
-        width: 355px;
-        transform: scale(1);
-        position: relative;
-        height: 640px;
-      }
-
-      &-empty {
-        height: 25px;
-        width: calc(100% - 49px);
-        margin-left: 24px;
-        background-color: #2979ff;
-        position: absolute;
-        top: 19px;
-        z-index: -1;
-      }
+      flex: 0 0 432px;
+      transform: scale(0.88);
+      position: relative;
+      height: 863px;
+      align-self: center;
 
       &-content {
-        height: 590px;
+        height: 780px;
         position: absolute;
         z-index: -2;
-        top: 44px;
-        width: 310px;
-        margin-left: 22px;
+        top: 57px;
+        width: calc(100% - 57px);
+        margin-left: 28px;
       }
 
       &-image {
@@ -255,6 +239,28 @@ iframe {
           height: 100%;
         }
       }
+    }
+
+    @media screen and (max-width: 1280px) {
+      &-mobile {
+        transform: scale(0.66);
+      }
+    }
+
+    @media screen and (min-width: 1281px) and (max-width: 1600px) {
+      &-mobile {
+        transform: scale(0.75);
+      }
+    }
+
+    &-empty {
+      height: 32px;
+      width: calc(100% - 40px);
+      margin-left: 20px;
+      background-color: @color-primary;
+      position: absolute;
+      top: 26px;
+      z-index: -1;
     }
 
     &-header {
@@ -394,10 +400,9 @@ iframe {
 
     &-content {
       height: calc(100vh - 60px);
-      min-height: 670px;
       display: flex;
       background: #fff;
-      overflow: hidden;
+      //overflow: hidden;
     }
 
     &-doc {
