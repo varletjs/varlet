@@ -249,7 +249,7 @@ iframe {
 
     @media screen and (min-width: 1281px) and (max-width: 1600px) {
       &-mobile {
-        transform: scale(0.75);
+        transform: scale(0.7);
       }
     }
 
