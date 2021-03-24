@@ -16,12 +16,14 @@ export interface CacheInstance<T> {
   remove(key: T): void
 }
 
-export const toNumber = (val: number | string): number => {
+export const toNumber = (val: number | string | boolean): number => {
   if (isString(val)) {
     val = parseFloat(val)
     val = Number.isNaN(val) ? 0 : val
     return val
   }
+
+  if (isBool(val)) return Number(val)
 
   return val
 }
@@ -33,6 +35,8 @@ export const isHTMLSupportVideo = (val: string) => val.startsWith('data:video') 
 export const isHTMLSupportAudio = (val: string) => val.startsWith('data:audio') || /\.(mp3|wav|ogg|acc)$/.test(val)
 
 export const isString = (val: unknown): val is string => typeof val === 'string'
+
+export const isBool = (val: unknown): val is boolean => typeof val === 'boolean'
 
 export const isNumber = (val: unknown): val is number => typeof val === 'number'
 
