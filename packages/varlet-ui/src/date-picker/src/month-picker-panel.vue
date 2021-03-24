@@ -120,8 +120,6 @@ export default defineComponent({
     }
 
     const buttonProps = (key: string) => {
-      let outline = isCurrentYear.value && currentMonth === key && props.componentProps.showCurrent
-
       const {
         choose: { chooseMonth },
         preview: { previewYear },
@@ -129,32 +127,54 @@ export default defineComponent({
       }: { choose: Choose; preview: Preview; componentProps: ComponentProps } = props
 
       const val = `${previewYear}-${key}`
-      const shouldChooseResult = shouldChoose(val)
-      const rangeOrMultiple = range || multiple
-      const monthExist = rangeOrMultiple ? shouldChooseResult : chooseMonth.index === key && isSameYear.value
 
-      const disabled = inRange(key) ? (allowedDates ? !allowedDates(val) : false) : true
-      const text = disabled
-        ? true
-        : rangeOrMultiple
-        ? !shouldChooseResult
-        : !isSameYear.value || chooseMonth.index !== key
-      const bgColor = !text ? color : ''
+      const monthExist = (): boolean => {
+        if (range || multiple) return shouldChoose(val)
+        return chooseMonth.index === key && isSameYear.value
+      }
 
-      outline = rangeOrMultiple
-        ? outline && (disabled ? true : !shouldChooseResult)
-        : isSameYear.value
-        ? outline && (chooseMonth.index !== currentMonth || disabled)
-        : outline
+      const computeDisabled = (): boolean => {
+        if (!inRange(key)) return true
+        if (!allowedDates) return false
+        return !allowedDates(val)
+      }
+      const disabled = computeDisabled()
 
-      const textColor = disabled ? '' : outline ? color : monthExist ? '' : 'rgba(0, 0, 0, .87)'
+      const computeText = (): boolean => {
+        if (disabled) return true
+        if (range || multiple) return !shouldChoose(val)
+        return !isSameYear.value || chooseMonth.index !== key
+      }
+
+      const computeOutline = (): boolean => {
+        // 不满足基本条件， 基本条件为当前年、当前月并且 showCurrent 为true的情况
+        if (!(isCurrentYear.value && currentMonth === key && props.componentProps.showCurrent)) return false
+
+        // 存在着 disabled
+        if ((range || multiple || isSameYear.value) && disabled) return true
+
+        // 在选择范围之外
+        if (range || multiple) return !shouldChoose(val)
+
+        // 同一年但是未被选择的情况
+        if (isSameYear.value) return chooseMonth.index !== currentMonth
+
+        return true
+      }
+
+      const computeTextColor = (): string | undefined => {
+        if (disabled) return ''
+        if (computeOutline()) return color
+        if (monthExist()) return ''
+        return 'rgba(0, 0, 0, .87)'
+      }
 
       return {
         disabled,
-        outline,
-        text,
-        color: bgColor,
-        textColor,
+        outline: computeOutline(),
+        text: computeText(),
+        color: !computeText() ? color : '',
+        textColor: computeTextColor(),
       }
     }
 

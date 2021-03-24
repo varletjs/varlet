@@ -2,6 +2,8 @@ import { PropType } from 'vue'
 
 type AllowedDates = (val: string) => boolean
 
+type DatePickerType = 'date' | 'month'
+
 export type ComponentProps = {
   type: string
   allowedDates: AllowedDates | undefined
@@ -110,7 +112,7 @@ export const props = {
     type: [String, Array] as PropType<string | Array<string>>,
   },
   type: {
-    type: String,
+    type: String as PropType<DatePickerType>,
     default: 'date',
   },
   allowedDates: {

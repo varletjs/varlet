@@ -29,7 +29,7 @@
             <slot name="multiple" :choose="getChoose.chooseMonths" v-else-if="multiple">
               {{ getMonthTitle }}
             </slot>
-            <slot name="month" :month="+chooseMonth.index" :year="chooseYear" v-else>
+            <slot name="month" :month="chooseMonth.index" :year="chooseYear" v-else>
               {{ getMonthTitle }}
             </slot>
           </div>
@@ -179,7 +179,7 @@ export default defineComponent({
       return {
         week: weekIndex,
         year: chooseYear.value,
-        month: toNumber(chooseMonth.value.index),
+        month: chooseMonth.value.index,
         date: chooseDay.value,
       }
     })
@@ -318,9 +318,10 @@ export default defineComponent({
     const rangeInit = (value: Array<string>, type: string) => {
       const rangeDate = type === 'month' ? chooseRangeMonth : chooseRangeDay
       const formatType = type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
-      const isChangeOrder = dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])
 
       rangeDate.value = value.map((choose) => dayjs(choose).format(formatType)).slice(0, 2)
+      const isChangeOrder = dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])
+
       if (rangeDate.value.length === 2 && isChangeOrder) {
         rangeDate.value = [rangeDate.value[1], rangeDate.value[0]]
       }

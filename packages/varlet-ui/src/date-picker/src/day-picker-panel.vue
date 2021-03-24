@@ -175,39 +175,62 @@ export default defineComponent({
           textColor: '',
         }
       }
-      let outline = isCurrent.value && toNumber(currentDay) === day && props.componentProps.showCurrent
+
       const {
         choose: { chooseDay },
         preview: { previewYear, previewMonth },
         componentProps: { allowedDates, color, multiple, range },
       }: { choose: Choose; preview: Preview; componentProps: ComponentProps } = props
+
       const val = `${previewYear}-${previewMonth.index}-${day}`
-      const shouldChooseResult = shouldChoose(val)
-      const rangeOrMultiple = range || multiple
-      const dayExist = rangeOrMultiple ? shouldChooseResult : toNumber(chooseDay) === day && isSame.value
 
-      const disabled = inRange(day) ? (allowedDates ? !allowedDates(val) : false) : true
-      const text = disabled
-        ? true
-        : rangeOrMultiple
-        ? !shouldChooseResult
-        : !isSame.value || toNumber(chooseDay) !== day
-      const bgColor = !text ? color : ''
+      const dayExist = (): boolean => {
+        if (range || multiple) return shouldChoose(val)
+        return toNumber(chooseDay) === day && isSame.value
+      }
 
-      outline = rangeOrMultiple
-        ? outline && (disabled ? true : !shouldChooseResult)
-        : isSame.value
-        ? outline && (chooseDay !== currentDay || disabled)
-        : outline
+      const computeDisabled = (): boolean => {
+        if (!inRange(day)) return true
+        if (!allowedDates) return false
+        return !allowedDates(val)
+      }
+      const disabled = computeDisabled()
 
-      const textColor = disabled ? '' : outline ? color : dayExist ? '' : 'rgba(0, 0, 0, .87)'
+      const computeText = (): boolean => {
+        if (disabled) return true
+        if (range || multiple) return !shouldChoose(val)
+        return !isSame.value || toNumber(chooseDay) !== day
+      }
+
+      const computeOutline = (): boolean => {
+        // 不满足基本条件， 基本条件为当前年、当前月、当前日并且 showCurrent 为true的情况
+        if (!(isCurrent.value && toNumber(currentDay) === day && props.componentProps.showCurrent)) return false
+
+        // 存在着 disabled
+        if ((range || multiple || isSame.value) && disabled) return true
+
+        // 在选择范围之外
+        if (range || multiple) return !shouldChoose(val)
+
+        // 同一年但是未被选择的情况
+        if (isSame.value) return chooseDay !== currentDay
+
+        return true
+      }
+
+      const computeTextColor = (): string | undefined => {
+        if (disabled) return ''
+        if (computeOutline()) return color
+        if (dayExist()) return ''
+        return 'rgba(0, 0, 0, .87)'
+      }
 
       return {
         disabled,
-        text,
-        outline,
-        color: bgColor,
-        textColor,
+        text: computeText(),
+        outline: computeOutline(),
+        color: !computeText() ? color : '',
+        textColor: computeTextColor(),
       }
     }
 
