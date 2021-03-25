@@ -170,6 +170,7 @@ export default defineComponent({
       () => route.path,
       (to: string) => {
         currentMenuName.value = to.slice(to.lastIndexOf('/') + 1)
+        language.value = to.slice(to.indexOf('#/') + 2, to.lastIndexOf('/'))
 
         if (!window['enableWatchURL']) {
           window['enableWatchURL'] = true
@@ -178,7 +179,6 @@ export default defineComponent({
 
         const currentNonComponent = menu.value.find((c) => c.doc === currentMenuName.value)?.nonComponent ?? false
         componentName.value = currentNonComponent ? 'home' : currentMenuName.value
-        language.value = to.slice(to.indexOf('#/') + 2, to.lastIndexOf('/'))
       },
       { immediate: true }
     )
