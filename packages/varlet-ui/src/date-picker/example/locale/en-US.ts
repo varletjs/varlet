@@ -1,8 +1,11 @@
 export default {
   basicUsage: 'Basic Usage',
-  showIcon: 'Show Icon',
-  showDesc: 'Show Description',
-  showBorder: 'Show Border',
-  content: 'This is Cell',
-  description: 'Description',
+  monthPicker: 'Month Picker',
+  multiple: 'Multiple',
+  range: 'Range',
+  dateLimit: 'Date Limit',
+  custom: 'Custom',
+  year: '',
+  month: '',
+  divider: '-',
 }
