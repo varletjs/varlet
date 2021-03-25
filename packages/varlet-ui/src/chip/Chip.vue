@@ -10,7 +10,7 @@
         plain ? `var-chip--plain-${type}` : `var-chip--${type}`,
         { 'var-chip--round': round, 'var-chip--plain': plain },
       ]"
-      :style="controlStyle()"
+      :style="plain ? { color: textColor || color, borderColor: color } : { color: textColor, background: color }"
     >
       <slot name="left"></slot>
 
