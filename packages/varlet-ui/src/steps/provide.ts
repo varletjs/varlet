@@ -1,4 +1,6 @@
 import { ComputedRef } from 'vue'
+import { useAtChildrenCounter, useChildren } from '../utils/components'
+import { StepProvider } from '../step/provide'
 
 export interface StepsProvider {
   active: ComputedRef<number | string>
@@ -11,3 +13,14 @@ export interface StepsProvider {
 
 export const STEPS_BIND_STEP_KEY = Symbol('STEPS_BIND_STEP_KEY')
 export const STEPS_COUNT_STEP_KEY = Symbol('STEPS_COUNT_STEP_KEY')
+
+export function useStep() {
+  const { bindChildren, childProviders } = useChildren<StepsProvider, StepProvider>(STEPS_BIND_STEP_KEY)
+  const { length } = useAtChildrenCounter(STEPS_COUNT_STEP_KEY)
+
+  return {
+    length,
+    step: childProviders,
+    bindStep: bindChildren,
+  }
+}

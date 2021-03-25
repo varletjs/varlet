@@ -20,7 +20,7 @@
   </div>
   <div>
     <app-type>动态步骤</app-type>
-    <var-select placeholder="请选择分类" v-model="count" style="margin-bottom: 20px">
+    <var-select placeholder="改变step的数量" v-model="count" style="margin-bottom: 20px">
       <var-option v-for="item in list" :key="item" :label="item" :value="item" />
     </var-select>
     <var-steps>
@@ -54,11 +54,14 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Steps from '..'
 import Step from '../../step'
 import Select from '../../select'
 import Option from '../../option'
 import Button from '../../button'
+import { pack, use } from './locale'
+import { watchLang } from '../../utils/components'
 
 export default defineComponent({
   name: 'StepsExample',
@@ -68,6 +71,7 @@ export default defineComponent({
     [Select.name]: Select,
     [Option.name]: Option,
     [Button.name]: Button,
+    AppType,
   },
   setup() {
     const active = ref(0)
@@ -79,7 +83,11 @@ export default defineComponent({
     const change = (index) => {
       active.value = index
     }
+
+    watchLang(use)
+
     return {
+      pack,
       list,
       count,
       next,
@@ -89,9 +97,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style scoped>
-.example {
-  background: antiquewhite;
-}
-</style>

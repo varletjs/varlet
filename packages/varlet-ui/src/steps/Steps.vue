@@ -5,10 +5,8 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, watch } from 'vue'
-import { useChildren, useAtChildrenCounter } from '../utils/components'
-import { StepsProvider, STEPS_BIND_STEP_KEY, STEPS_COUNT_STEP_KEY } from './provide'
-import { StepProvider } from '../step/provide'
+import { computed, ComputedRef, defineComponent } from 'vue'
+import { StepsProvider, useStep } from './provide'
 import { props } from './props'
 
 export default defineComponent({
@@ -19,14 +17,13 @@ export default defineComponent({
     const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
     const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
     const direction: ComputedRef<string> = computed(() => props.direction)
-    const { bindChildren, childProviders: stepProviders } = useChildren<StepsProvider, StepProvider>(
-      STEPS_BIND_STEP_KEY
-    )
-    const { length } = useAtChildrenCounter(STEPS_COUNT_STEP_KEY)
+
+    const { length, bindStep } = useStep()
 
     const changeStep = (index: number) => {
       props.onChange?.(index)
     }
+
     const stepsProvider: StepsProvider = {
       active,
       length,
@@ -36,16 +33,15 @@ export default defineComponent({
       changeStep,
     }
 
-    bindChildren(stepsProvider)
-
-    watch(
-      () => length.value,
-      (value) => {}
-    )
+    bindStep(stepsProvider)
   },
 })
 </script>
 
 <style lang="less">
-@import './steps';
+.var-steps {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
 </style>

@@ -51,10 +51,8 @@
 
 <script lang="ts">
 import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
-import { useAtParentIndex, useParent } from '../utils/components'
 import { props } from './props'
-import { StepProvider } from './provide'
-import { StepsProvider, STEPS_BIND_STEP_KEY, STEPS_COUNT_STEP_KEY } from '../steps/provide'
+import { StepProvider, useSteps } from './provide'
 import Icon from '../icon'
 
 export default defineComponent({
@@ -66,14 +64,15 @@ export default defineComponent({
   setup() {
     const main: Ref<HTMLDivElement | null> = ref(null)
     const lineMargin: Ref<string> = ref('')
-
     const isLastChild: Ref<boolean> = ref(false)
-    const { parentProvider: StepsProvider, bindParent } = useParent<StepsProvider, StepProvider>(STEPS_BIND_STEP_KEY)
-    const { index } = useAtParentIndex(STEPS_COUNT_STEP_KEY)
-    if (!StepsProvider || !bindParent || !index) {
+
+    const { index, steps, bindSteps } = useSteps()
+
+    if (!steps || !bindSteps || !index) {
       throw Error('<step/> must in <steps>')
     }
-    const { active, length, activeColor, inactiveColor, direction, changeStep } = StepsProvider
+
+    const { active, length, activeColor, inactiveColor, direction, changeStep } = steps
 
     const isCurrent: ComputedRef<boolean> = computed(() => active.value === index.value)
     const isActive: ComputedRef<boolean> = computed(() => index.value !== -1 && active.value > index.value)
@@ -84,7 +83,8 @@ export default defineComponent({
 
     const click = () => changeStep(index.value)
 
-    bindParent(stepProvider)
+    bindSteps(stepProvider)
+
     watch(length, (newLength) => {
       isLastChild.value = newLength - 1 === index.value
       if (main.value) {
