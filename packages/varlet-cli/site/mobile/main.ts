@@ -3,7 +3,6 @@ import routes from '@mobile-routes'
 // @ts-ignore
 import config from '@config'
 import App from './App.vue'
-import AppType from './components/AppType.vue'
 import '@varlet/touch-emulator'
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
@@ -12,8 +11,9 @@ import { get } from 'lodash'
 const redirect = get(config, 'mobile.redirect')
 redirect &&
   routes.push({
-    path: '/:pathMatch(.*)*',
+    path: '/:pathMatch(.*)',
     redirect,
+    component: routes.find((c) => c.path === redirect).component,
   })
 
 const router = createRouter({
@@ -21,22 +21,22 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((to) => {
-  let isPhone = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
-  if (!isPhone && window.self === window.top) {
-    window.location.href = `/#/${to.query.language}/${to.query.path}`
-  }
-})
+router.beforeEach((to, from) => {
+  const isPhone = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
 
-router.afterEach((to) => {
-  let isPhone = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
   if (!isPhone) {
-    if (to.path === '/home' && to.query.path) {
-      window.top['router'].replace(`/${to.query.language}/${to.query.path}`)
-    } else {
-      window.top['router'].replace(`/${to.query.language}${to.path}`)
-    }
+    const pcPath =
+      to.path === '/home' && to.query.path
+        ? `/${to.query.language}/${to.query.path}`
+        : `/${to.query.language}${to.path}`
+
+    window.top['enableWatchURL'] = false
+    window.top['router'].replace(pcPath)
   }
+
+  // if (!isPhone && window.self === window.top) {
+  //   window.location.href = `/#/${to.query.language}/${to.query.path}`
+  // }
 })
 
 const app = createApp(App as any)

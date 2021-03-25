@@ -37,7 +37,7 @@
           v-for="item in menu"
           class="varlet-site-nav__item"
           :class="{
-            'varlet-site-nav__item--active': item.doc === componentName,
+            'varlet-site-nav__item--active': item.doc === currentMenuName,
             'varlet-site-nav__link': !item.isTitle,
           }"
           v-ripple="{ touchmoveForbid: false, disabled: !!item.isTitle, color: '#2979ff' }"
@@ -79,6 +79,7 @@ import { useRoute } from 'vue-router'
 
 type Menu = {
   isTitle: boolean
+  nonComponent: boolean
   doc: string
   text: Record<string, string>
 }
@@ -104,6 +105,7 @@ export default defineComponent({
     const header: Ref<Header> = ref({ i18nButton: {}, logo: '', search: {} })
     const componentName: Ref<null | string> = ref(null)
     const title: Ref<string> = ref('')
+    const currentMenuName: Ref<string> = ref('')
     const versionList: Ref<string[]> = ref(['2.10.14', '1.x', '3.x'])
     const isHideVersion: Ref<boolean> = ref(true)
     let refs: HTMLElement = ref(null)
@@ -167,7 +169,15 @@ export default defineComponent({
     watch(
       () => route.path,
       (to: string) => {
-        componentName.value = to.slice(to.lastIndexOf('/') + 1)
+        currentMenuName.value = to.slice(to.lastIndexOf('/') + 1)
+
+        if (!window['enableWatchURL']) {
+          window['enableWatchURL'] = true
+          return
+        }
+
+        const currentNonComponent = menu.value.find((c) => c.doc === currentMenuName.value)?.nonComponent ?? false
+        componentName.value = currentNonComponent ? 'home' : currentMenuName.value
         language.value = to.slice(to.indexOf('#/') + 2, to.lastIndexOf('/'))
       },
       { immediate: true }
@@ -178,6 +188,7 @@ export default defineComponent({
       language,
       header,
       componentName,
+      currentMenuName,
       title,
       versionList,
       isHideVersion,
@@ -214,7 +225,7 @@ iframe {
   &-site {
     &-mobile {
       flex: 0 0 432px;
-      transform: scale(0.88);
+      transform: scale(0.88) translateZ(0);
       position: relative;
       height: 863px;
       align-self: center;
@@ -243,13 +254,13 @@ iframe {
 
     @media screen and (max-width: 1280px) {
       &-mobile {
-        transform: scale(0.66);
+        transform: scale(0.66) translateZ(0);
       }
     }
 
     @media screen and (min-width: 1281px) and (max-width: 1600px) {
       &-mobile {
-        transform: scale(0.7);
+        transform: scale(0.7) translateZ(0);
       }
     }
 
