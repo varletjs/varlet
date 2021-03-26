@@ -219,13 +219,6 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'Snackbar 消息条',
-          'en-US': 'Snackbar',
-        },
-        doc: 'snackbar',
-      },
-      {
-        text: {
           'zh-CN': 'Chip 标签',
           'en-US': 'Chip',
         },
@@ -244,6 +237,20 @@ module.exports = {
           'en-US': 'Rate',
         },
         doc: 'rate',
+      },
+      {
+        text: {
+          'zh-CN': 'DatePicker 日期选择器',
+          'en-US': 'DatePicker',
+        },
+        doc: 'date-picker',
+      },
+      {
+        text: {
+          'zh-CN': 'Steps 步骤条',
+          'en-US': 'Steps',
+        },
+        doc: 'steps',
       },
       {
         text: {
@@ -275,13 +282,6 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'DatePicker 日期选择器',
-          'en-US': 'DatePicker',
-        },
-        doc: 'date-picker',
-      },
-      {
-        text: {
           'zh-CN': 'Uploader 文件上传',
           'en-US': 'Uploader',
         },
@@ -296,13 +296,6 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'Steps 步骤条',
-          'en-US': 'Steps',
-        },
-        doc: 'steps',
-      },
-      {
-        text: {
           'zh-CN': 'Form 表单',
           'en-US': 'Form',
         },
@@ -314,6 +307,13 @@ module.exports = {
           'en-US': 'AppBar',
         },
         doc: 'app-bar',
+      },
+      {
+        text: {
+          'zh-CN': 'Snackbar 消息条',
+          'en-US': 'Snackbar',
+        },
+        doc: 'snackbar',
       },
     ],
   },

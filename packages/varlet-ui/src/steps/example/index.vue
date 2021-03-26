@@ -1,52 +1,52 @@
 <template>
   <div>
-    <app-type>基本使用</app-type>
+    <app-type>{{ pack.basicUsage }}</app-type>
     <var-steps :active="active">
-      <var-step>第一步</var-step>
-      <var-step>第二步</var-step>
-      <var-step>第三步</var-step>
-      <var-step>第四步</var-step>
+      <var-step>{{ pack.first }}</var-step>
+      <var-step>{{ pack.second }}</var-step>
+      <var-step>{{ pack.third }}</var-step>
+      <var-step>{{ pack.fourth }}</var-step>
     </var-steps>
-    <var-button type="primary" @click="next">next</var-button>
+    <div style="padding: 15px 25px">
+      <var-button type="primary" @click="next">{{ pack.next }}</var-button>
+    </div>
   </div>
   <div>
-    <app-type>自定义样式</app-type>
-    <var-steps :active="active" @change="change" active-color="purple" inactive-color="#afcf7f">
-      <var-step active-icon="fire" current-icon="heart" in-active-icon="delete">第一步</var-step>
-      <var-step active-icon="fire" current-icon="heart" in-active-icon="delete">第二步</var-step>
-      <var-step active-icon="fire" current-icon="heart" in-active-icon="delete">第三步</var-step>
-      <var-step active-icon="fire" current-icon="heart" in-active-icon="delete">第四步</var-step>
+    <app-type>{{ pack.customStyle }}</app-type>
+    <var-steps :active="active" @click-step="click" active-color="purple" inactive-color="#afcf7f">
+      <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">{{ pack.first }}</var-step>
+      <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">{{ pack.second }}</var-step>
+      <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">{{ pack.third }}</var-step>
+      <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">{{ pack.fourth }}</var-step>
     </var-steps>
   </div>
   <div>
-    <app-type>动态步骤</app-type>
-    <var-select placeholder="改变step的数量" v-model="count" style="margin-bottom: 20px">
+    <app-type>{{ pack.dynamicSteps }}</app-type>
+    <var-select :placeholder="pack.placeholder" v-model="count" style="margin-bottom: 20px">
       <var-option v-for="item in list" :key="item" :label="item" :value="item" />
     </var-select>
     <var-steps>
-      <var-step v-for="i in count" :key="i">第{{ i }}步</var-step>
+      <var-step v-for="i in count" :key="i">{{ pack.step }}{{ i }}</var-step>
     </var-steps>
   </div>
   <div>
-    <app-type>垂直模式</app-type>
+    <app-type>{{ pack.vertical }}</app-type>
     <var-steps direction="vertical" :active="5">
       <var-step active-icon="notebook">
-        <div>
-          <h3 style="margin: 0">2021-02-13</h3>
-          <span>do something...</span>
-        </div>
+        <h3 style="margin: 0">2021-02-13</h3>
+        <span>{{ pack.text }}</span>
       </var-step>
       <var-step active-icon="notebook">
         <h3 style="margin: 0">2021-02-14</h3>
-        <span>do something...</span>
+        <span>{{ pack.text }}</span>
       </var-step>
       <var-step active-icon="notebook">
         <h3 style="margin: 0">2021-02-15</h3>
-        <span>do something...</span>
+        <span>{{ pack.text }}</span>
       </var-step>
       <var-step active-icon="notebook">
         <h3 style="margin: 0">2021-02-16</h3>
-        <span>do something...</span>
+        <span>{{ pack.text }}</span>
       </var-step>
     </var-steps>
   </div>
@@ -78,9 +78,9 @@ export default defineComponent({
     const list = ref([2, 3, 4, 5])
     const count = ref(2)
     const next = () => {
-      active.value = active.value === 3 ? 0 : active.value + 1
+      active.value = active.value === 4 ? 0 : active.value + 1
     }
-    const change = (index) => {
+    const click = (index) => {
       active.value = index
     }
 
@@ -91,7 +91,7 @@ export default defineComponent({
       list,
       count,
       next,
-      change,
+      click,
       active,
     }
   },

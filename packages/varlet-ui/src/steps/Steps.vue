@@ -20,8 +20,8 @@ export default defineComponent({
 
     const { length, bindStep } = useStep()
 
-    const changeStep = (index: number) => {
-      props.onChange?.(index)
+    const clickStep = (index: number) => {
+      props.onClickStep?.(index)
     }
 
     const stepsProvider: StepsProvider = {
@@ -30,7 +30,7 @@ export default defineComponent({
       direction,
       activeColor,
       inactiveColor,
-      changeStep,
+      clickStep,
     }
 
     bindStep(stepsProvider)

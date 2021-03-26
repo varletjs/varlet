@@ -10,7 +10,7 @@
         >
           <var-icon :name="activeIcon || 'check'" v-if="isActive" />
           <var-icon :name="currentIcon" v-else-if="isCurrent && currentIcon" />
-          <var-icon :name="inActiveIcon" v-else-if="inActiveIcon" />
+          <var-icon :name="inactiveIcon" v-else-if="inactiveIcon" />
           <span v-else>{{ index + 1 }}</span>
         </div>
         <div
@@ -31,9 +31,9 @@
           :style="{ backgroundColor: isActive || isCurrent ? activeColor : inactiveColor }"
           @click="click"
         >
-          <var-icon :name="activeIcon || 'check'" v-if="isActive" />
+          <var-icon :name="activeIcon" v-if="isActive" />
           <var-icon :name="currentIcon" v-else-if="isCurrent && currentIcon" />
-          <var-icon :name="inActiveIcon" v-else-if="inActiveIcon" />
+          <var-icon :name="inactiveIcon" v-else-if="inactiveIcon" />
           <span v-else>{{ index + 1 }}</span>
         </div>
         <div
@@ -72,7 +72,7 @@ export default defineComponent({
       throw Error('<step/> must in <steps>')
     }
 
-    const { active, length, activeColor, inactiveColor, direction, changeStep } = steps
+    const { active, length, activeColor, inactiveColor, direction, clickStep } = steps
 
     const isCurrent: ComputedRef<boolean> = computed(() => active.value === index.value)
     const isActive: ComputedRef<boolean> = computed(() => index.value !== -1 && active.value > index.value)
@@ -81,7 +81,7 @@ export default defineComponent({
       index,
     }
 
-    const click = () => changeStep(index.value)
+    const click = () => clickStep(index.value)
 
     bindSteps(stepProvider)
 

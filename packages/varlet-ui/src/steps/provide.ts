@@ -8,7 +8,7 @@ export interface StepsProvider {
   inactiveColor: ComputedRef<string | undefined>
   length: ComputedRef<number>
   direction: ComputedRef<string>
-  changeStep: (index: number) => void
+  clickStep: (index: number) => void
 }
 
 export const STEPS_BIND_STEP_KEY = Symbol('STEPS_BIND_STEP_KEY')

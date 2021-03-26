@@ -17,7 +17,7 @@ export const props = {
   inactiveColor: {
     type: String,
   },
-  onChange: {
+  onClickStep: {
     type: Function,
   },
 }
