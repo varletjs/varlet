@@ -90,7 +90,8 @@ import {
 import dayjs from 'dayjs'
 import Clock from './clock.vue'
 import { props, Time, AmPm, hoursAmpm, hours24 } from './props'
-import { convertHour } from './utils'
+import { toNumber } from '../utils/shared'
+import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
 
 export default defineComponent({
   name: 'VarTimePicker',
@@ -121,7 +122,6 @@ export default defineComponent({
     })
 
     const time: ComputedRef<Time> = computed(() => {
-      const hourFormat = props.format === '24hr' ? 'HH' : 'hh'
       if (!props.modelValue) {
         return {
           hour: '00',
@@ -129,23 +129,21 @@ export default defineComponent({
           second: '00',
         }
       }
-      const [hour, minute, second] = props.modelValue.split(':')
+
+      const hourFormat = props.format === '24hr' ? 'HH' : 'hh'
+      const { hour, minute, second } = getNumberTime(props.modelValue)
+
       return {
-        hour: dayjs()
-          .hour(+hour)
-          .format(hourFormat),
-        minute: dayjs()
-          .minute(+minute)
-          .format('mm'),
-        second: dayjs()
-          .second(+second)
-          .format('ss'),
+        hour: dayjs().hour(hour).format(hourFormat),
+        minute: dayjs().minute(minute).format('mm'),
+        second: dayjs().second(second).format('ss'),
       }
     })
 
     const getRad: ComputedRef<number> = computed(() => {
       if (type.value === 'hour') return hourRad.value
       if (type.value === 'minute') return minuteRad.value
+
       return secondRad.value
     })
 
@@ -168,12 +166,30 @@ export default defineComponent({
     const getInner = (clientX: number, clientY: number): boolean => {
       const xIsInRange = clientX >= innerRange.x[0] && clientX <= innerRange.x[1]
       const yIsInRange = clientY >= innerRange.y[0] && clientY <= innerRange.y[1]
+
       return xIsInRange && yIsInRange
     }
 
     const getHourIndex = (rad: number): number => {
       const value = rad / 30
       return value >= 0 ? value : value + 12
+    }
+
+    const getRangeSize = () => {
+      const { width: innerWidth, height: innerHeight } = (inner.value as DefineComponent).getSize()
+
+      const rangeXMin = center.x - innerWidth / 2 - 8
+      const rangeXMax = center.x + innerWidth / 2 + 8
+
+      const rangeYMin = center.y - innerHeight / 2 - 8
+      const rangeYMax = center.y + innerHeight / 2 + 8
+
+      return {
+        rangeXMin,
+        rangeXMax,
+        rangeYMin,
+        rangeYMax,
+      }
     }
 
     const setHourRad = (clientX: number, clientY: number, roundDeg: number) => {
@@ -198,72 +214,44 @@ export default defineComponent({
       const { disableHour } = inner.value as DefineComponent
       const rad = Math.round(roundDeg / 6) * 6 + 90
       const radToMin = rad / 6 >= 0 ? rad / 6 : rad / 6 + 60
-      const hour = convertHour(props.format, ampm.value, time.value.hour)
-      if (disableHour.includes(hour)) return true
 
-      if (props.max && !props.min) {
-        const [maxHour, maxMinute] = props.max.split(':')
-        if (+maxHour === +hour && radToMin > +maxMinute) {
-          isDisableMinute.value = true
-          return
-        }
-      } else if (!props.max && props.min) {
-        const [minHour, minMinute] = props.min.split(':')
-        if (+minHour === +hour && radToMin < +minMinute) {
-          isDisableMinute.value = true
-          return
-        }
-      } else if (props.max && props.min) {
-        const [maxHour, maxMinute] = props.max.split(':')
-        const [minHour, minMinute] = props.min.split(':')
-        if ((+minHour === +hour && radToMin < +minMinute) || (+maxHour === +hour && radToMin > +maxMinute)) {
-          isDisableMinute.value = true
-          return
-        }
+      const values = {
+        time: radToMin,
+        format: props.format,
+        ampm: ampm.value,
+        hour: time.value.hour,
+        max: props.max,
+        min: props.min,
+        disableHour,
       }
-      isDisableMinute.value = false
-      minuteRad.value = rad
+      isDisableMinute.value = getIsDisableMinute(values)
+
+      if (!isDisableMinute.value) minuteRad.value = rad
     }
 
     const setSecondRad = (roundDeg: number) => {
       const { disableHour } = inner.value as DefineComponent
       const rad = Math.round(roundDeg / 6) * 6 + 90
       const radToSec = rad / 6 >= 0 ? rad / 6 : rad / 6 + 60
-      const hour = convertHour(props.format, ampm.value, time.value.hour)
-      if (disableHour.includes(hour)) return true
 
-      if (props.max && !props.min) {
-        const [maxHour, maxMinute, maxSecond] = props.max.split(':')
-        if (
-          (+maxHour === +hour && +maxMinute < +time.value.minute) ||
-          (+maxHour === +hour && +maxMinute === +time.value.minute && radToSec > +maxSecond)
-        )
-          return
-      } else if (!props.max && props.min) {
-        const [minHour, minMinute, minSecond] = props.min.split(':')
-        if (
-          (+minHour === +hour && +minMinute > +time.value.minute) ||
-          (+minHour === +hour && +minMinute === +time.value.minute && radToSec > +minSecond)
-        )
-          return
-      } else if (props.max && props.min) {
-        const [maxHour, maxMinute, maxSecond] = props.max.split(':')
-        const [minHour, minMinute, minSecond] = props.min.split(':')
-
-        if (
-          (+maxHour === +hour && +maxMinute < +time.value.minute) ||
-          (+minHour === +hour && +minMinute > +time.value.minute) ||
-          (+maxHour === +hour && +maxMinute === +time.value.minute && radToSec > +maxSecond) ||
-          (+minHour === +hour && +minMinute === +time.value.minute && radToSec < +minSecond)
-        )
-          return
+      const values = {
+        time: radToSec,
+        format: props.format,
+        ampm: ampm.value,
+        hour: time.value.hour,
+        minute: toNumber(time.value.minute),
+        max: props.max,
+        min: props.min,
+        disableHour,
       }
-      secondRad.value = rad
+
+      if (!getIsDisableSecond(values)) secondRad.value = rad
     }
 
     const moveHand = (event: TouchEvent) => {
       event.preventDefault()
       if (props.readonly) return
+
       const { clientX, clientY } = event.touches[0]
       const x = clientX - center.x
       const y = clientY - center.y
@@ -290,10 +278,12 @@ export default defineComponent({
 
       center.x = left + width / 2
       center.y = top + height / 2
+
       if (props.format === '24hr') {
-        const { width: innerWidth, height: innerHeight } = (inner.value as DefineComponent).getSize()
-        innerRange.x = [center.x - innerWidth / 2 - 8, center.x + innerWidth / 2 + 8]
-        innerRange.y = [center.y - innerHeight / 2 - 8, center.y + innerHeight / 2 + 8]
+        const { rangeXMin, rangeXMax, rangeYMin, rangeYMax } = getRangeSize()
+
+        innerRange.x = [rangeXMin, rangeXMax]
+        innerRange.y = [rangeYMin, rangeYMax]
       }
     })
 
@@ -301,26 +291,18 @@ export default defineComponent({
       () => props.modelValue,
       (value) => {
         if (value) {
-          const [hour, minute, second] = value.split(':')
-          const formatHour = dayjs()
-            .hour(+hour)
-            .format('hh')
-          const formatMinute = dayjs()
-            .minute(+minute)
-            .format('mm')
-          const formatSecond = dayjs()
-            .second(+second)
-            .format('ss')
-          hourRad.value = (formatHour === '12' ? 0 : +formatHour) * 30
-          minuteRad.value = +formatMinute * 6
-          secondRad.value = +formatSecond * 6
-          isInner.value =
-            props.format === '24hr' &&
-            hours24.includes(
-              dayjs()
-                .hour(+hour)
-                .format('HH')
-            )
+          const { hour, minute, second } = getNumberTime(value)
+
+          const formatHour12 = dayjs().hour(hour).format('hh')
+          const formatHour24 = dayjs().hour(hour).format('HH')
+          const formatMinute = dayjs().minute(minute).format('mm')
+          const formatSecond = dayjs().second(second).format('ss')
+
+          hourRad.value = (formatHour12 === '12' ? 0 : toNumber(formatHour12)) * 30
+          minuteRad.value = toNumber(formatMinute) * 6
+          secondRad.value = toNumber(formatSecond) * 6
+
+          isInner.value = props.format === '24hr' && hours24.includes(formatHour24)
         }
       },
       { immediate: true }
@@ -328,17 +310,20 @@ export default defineComponent({
 
     watch(ampm, (newAmpm) => {
       let newTime
+
       if (newAmpm === 'pm') {
-        const index = hoursAmpm.findIndex((hour) => +hour === +time.value.hour)
+        const index = hoursAmpm.findIndex((hour) => toNumber(hour) === toNumber(time.value.hour))
         const pmHour = hours24[index]
         const second = props.useSeconds ? `:${time.value.second}` : ''
+
         newTime = `${pmHour}:${time.value.minute}${second}`
       } else {
         const second = props.useSeconds ? `:${time.value.second}` : ''
+
         newTime = `${time.value.hour}:${time.value.minute}${second}`
       }
-      props['onUpdate:modelValue']?.(newTime)
-      props.onChange?.(newTime)
+
+      update(newTime)
     })
 
     return {

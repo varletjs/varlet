@@ -16,7 +16,9 @@ export interface CacheInstance<T> {
   remove(key: T): void
 }
 
-export const toNumber = (val: number | string | boolean): number => {
+export const toNumber = (val: number | string | boolean | undefined | null): number => {
+  if (val === undefined || val === null) return 0
+
   if (isString(val)) {
     val = parseFloat(val)
     val = Number.isNaN(val) ? 0 : val

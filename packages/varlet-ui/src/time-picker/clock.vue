@@ -34,7 +34,8 @@
 import { computed, ComputedRef, defineComponent, PropType, ref, Ref, watch } from 'vue'
 import dayjs from 'dayjs'
 import { hoursAmpm, hours24, minSec, Time, AmPm, Format } from './props'
-import { notConvert, convertHour } from './utils'
+import { notConvert, convertHour, getIsDisableMinute, getIsDisableSecond, getNumberTime } from './utils'
+import { toNumber } from '../utils/shared'
 
 export default defineComponent({
   name: 'Clock',
@@ -93,71 +94,53 @@ export default defineComponent({
       return value >= 0 ? value : value + 12
     })
 
-    const isActive: ComputedRef<(index: number, inner: boolean) => boolean> = computed(() => {
-      return (index, inner) => {
-        if (inner) return activeItemIndex.value === index && props.isInner
-        return activeItemIndex.value === index && (!props.isInner || props.type !== 'hour')
-      }
-    })
-
     const timeList: ComputedRef<Array<string>> = computed(() => {
       if (props.type === 'hour') return hoursAmpm
+
       return minSec
     })
+
+    const isActive = (index: number, inner: boolean): boolean => {
+      if (inner) return activeItemIndex.value === index && props.isInner
+
+      return activeItemIndex.value === index && (!props.isInner || props.type !== 'hour')
+    }
 
     const isDisable = (time: string) => {
       if (props.type === 'hour') {
         if (notConvert(props.format, props.ampm)) return disableHour.value.includes(time)
+
         const timeIndex = hoursAmpm.findIndex((hour) => hour === time)
         return disable24HourIndex.value.includes(timeIndex)
       }
-      if (props.type === 'minute') {
-        const hour = convertHour(props.format, props.ampm, props.time.hour)
-        if (disableHour.value.includes(hour)) return true
-        if (props.max && !props.min) {
-          const [maxHour, maxMinute] = props.max.split(':')
-          return +maxHour === +hour && +time > +maxMinute
-        }
-        if (!props.max && props.min) {
-          const [minHour, minMinute] = props.min.split(':')
-          return +minHour === +hour && +time < +minMinute
-        }
-        if (props.max && props.min) {
-          const [maxHour, maxMinute] = props.max.split(':')
-          const [minHour, minMinute] = props.min.split(':')
-          return (+minHour === +hour && +time < +minMinute) || (+maxHour === +hour && +time > +maxMinute)
-        }
-        return false
-      }
-      if (props.type === 'second') {
-        const hour = convertHour(props.format, props.ampm, props.time.hour)
-        if (disableHour.value.includes(hour)) return true
-        if (props.max && !props.min) {
-          const [maxHour, maxMinute, maxSecond] = props.max.split(':')
-          return (
-            (+maxHour === +hour && +maxMinute < +props.time.minute) ||
-            (+maxMinute === +props.time.minute && +time > +maxSecond)
-          )
-        }
-        if (!props.max && props.min) {
-          const [minHour, minMinute, minSecond] = props.min.split(':')
-          return (
-            (+minHour === +hour && +minMinute > +props.time.minute) ||
-            (+minMinute === +props.time.minute && +time > +minSecond)
-          )
-        }
-        if (props.max && props.min) {
-          const [maxHour, maxMinute, maxSecond] = props.max.split(':')
-          const [minHour, minMinute, minSecond] = props.min.split(':')
 
-          return (
-            (+maxHour === +hour && +maxMinute < +props.time.minute) ||
-            (+minHour === +hour && +minMinute > +props.time.minute) ||
-            (+maxHour === +hour && +maxMinute === +props.time.minute && +time > +maxSecond) ||
-            (+minHour === +hour && +minMinute === +props.time.minute && +time < +minSecond)
-          )
+      if (props.type === 'minute') {
+        const values = {
+          time: toNumber(time),
+          format: props.format,
+          ampm: props.ampm,
+          hour: props.time.hour,
+          max: props.max,
+          min: props.min,
+          disableHour: disableHour.value,
         }
-        return false
+
+        return getIsDisableMinute(values)
+      }
+
+      if (props.type === 'second') {
+        const values = {
+          time: toNumber(time),
+          format: props.format,
+          ampm: props.ampm,
+          hour: props.time.hour,
+          minute: toNumber(props.time.minute),
+          max: props.max,
+          min: props.min,
+          disableHour: disableHour.value,
+        }
+
+        return getIsDisableSecond(values)
       }
     }
 
@@ -169,7 +152,7 @@ export default defineComponent({
       return {
         left: `${left}%`,
         top: `${top}%`,
-        backgroundColor: isActive.value(index, inner) ? props.color : null,
+        backgroundColor: isActive(index, inner) ? props.color : null,
       }
     }
 
@@ -183,18 +166,22 @@ export default defineComponent({
     }
 
     const getHour = (): string => {
-      if (props.ampm === 'am')
-        return dayjs()
-          .hour(+hoursAmpm[activeItemIndex.value])
-          .format('hh')
+      if (props.ampm === 'am') {
+        const hour = toNumber(hoursAmpm[activeItemIndex.value])
+        return dayjs().hour(hour).format('hh')
+      }
+
       return hours24[activeItemIndex.value]
     }
 
     watch([activeItemIndex, () => props.isInner], ([index, inner], [oldIndex, oldInner]) => {
-      if ((index === oldIndex && inner === oldInner) || props.type !== 'hour') return
+      const isSame = index === oldIndex && inner === oldInner
+      if (isSame || props.type !== 'hour') return
+
       const newHour = inner ? hours24[activeItemIndex.value] : getHour()
       const second = props.useSeconds ? `:${props.time.second}` : ''
       const newTime = `${newHour}:${props.time.minute}${second}`
+
       emit('update', newTime)
     })
 
@@ -202,22 +189,28 @@ export default defineComponent({
       () => props.rad,
       (rad, oldRad) => {
         if (props.type === 'hour') return
+
         const radToMinSec = rad / 6 >= 0 ? rad / 6 : rad / 6 + 60
         const oldRadToMinSec = oldRad / 6 >= 0 ? oldRad / 6 : oldRad / 6 + 60
+
         if (radToMinSec === oldRadToMinSec) return
 
         if (props.type === 'minute') {
-          const hour = convertHour(props.format, props.ampm, props.time.hour)
+          const { hourStr } = convertHour(props.format, props.ampm, props.time.hour)
           const newMinute = dayjs().minute(radToMinSec).format('mm')
           const second = props.useSeconds ? `:${props.time.second}` : ''
-          const newTime = `${hour}:${newMinute}${second}`
+
+          const newTime = `${hourStr}:${newMinute}${second}`
+
           emit('update', newTime)
         }
+
         if (props.type === 'second') {
-          const hour = convertHour(props.format, props.ampm, props.time.hour)
+          const { hourStr } = convertHour(props.format, props.ampm, props.time.hour)
           const newSecond = dayjs().second(radToMinSec).format('ss')
           const second = props.useSeconds ? `:${newSecond}` : ''
-          const newTime = `${hour}:${props.time.minute}${second}`
+
+          const newTime = `${hourStr}:${props.time.minute}${second}`
           emit('update', newTime)
         }
       }
@@ -228,26 +221,32 @@ export default defineComponent({
       ([max, min]) => {
         disableHour.value = []
         if (max && !min) {
-          const [maxHour] = max.split(':')
-          const disableAmpmHours = hoursAmpm.filter((hour) => +hour > +maxHour)
-          const disable24Hours = hours24.filter((hour) => +hour > +maxHour)
+          const { hour: maxHour } = getNumberTime(max)
+
+          const disableAmpmHours = hoursAmpm.filter((hour) => toNumber(hour) > maxHour)
+          const disable24Hours = hours24.filter((hour) => toNumber(hour) > maxHour)
           disableHour.value = [...disableAmpmHours, ...disable24Hours]
           return
         }
+
         if (!max && min) {
-          const [minHour] = min.split(':')
-          const disableAmpmHours = hoursAmpm.filter((hour) => +hour < +minHour)
-          const disable24Hours = hours24.filter((hour) => +hour < +minHour)
+          const { hour: minHour } = getNumberTime(min)
+
+          const disableAmpmHours = hoursAmpm.filter((hour) => toNumber(hour) < minHour)
+          const disable24Hours = hours24.filter((hour) => toNumber(hour) < minHour)
           disableHour.value = [...disableAmpmHours, ...disable24Hours]
           return
         }
+
         if (max && min) {
-          const [maxHour] = max.split(':')
-          const [minHour] = min.split(':')
-          const disableAmpmHours = hoursAmpm.filter((hour) => +hour < +minHour || +hour > +maxHour)
-          const disable24Hours = hours24.filter((hour) => +hour < +minHour || +hour > +maxHour)
+          const { hour: maxHour } = getNumberTime(max)
+          const { hour: minHour } = getNumberTime(max)
+
+          const disableAmpmHours = hoursAmpm.filter((hour) => toNumber(hour) < minHour || toNumber(hour) > maxHour)
+          const disable24Hours = hours24.filter((hour) => toNumber(hour) < minHour || toNumber(hour) > maxHour)
           disableHour.value = [...disableAmpmHours, ...disable24Hours]
         }
+
         disable24HourIndex.value = disableHour.value
           .map((hour) => hours24.findIndex((hour24) => hour === hour24))
           .filter((hour) => hour >= 0)
