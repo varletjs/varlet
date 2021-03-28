@@ -217,15 +217,6 @@ export function useParent<P, C>(key: symbol) {
   }
 }
 
-export function useForm<C>() {
-  const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, C>(FORM_BIND_FORM_ITEM_KEY)
-
-  return {
-    bindForm,
-    formProvider,
-  }
-}
-
 export function keyInProvides(key: symbol) {
   const instance = getCurrentInstance() as any
 

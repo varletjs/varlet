@@ -33,9 +33,10 @@
 
 <script lang="ts">
 import { defineComponent, ComputedRef, computed, nextTick } from 'vue'
-import { useValidation, useForm } from '../utils/components'
+import { useValidation } from '../utils/components'
 import { toNumber } from '../utils/shared'
 import { SwitchProvider } from './provide'
+import { useForm } from '../form/provide'
 import { props } from './props'
 import FormDetails from '../form-details'
 import Loading from '../loading'
@@ -59,7 +60,7 @@ export default defineComponent({
   directives: { Ripple },
   props,
   setup(props) {
-    const { bindForm, formProvider } = useForm<SwitchProvider>()
+    const { bindForm, form } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
 
     const validate = () => v(props.rules, props.modelValue)
@@ -100,14 +101,7 @@ export default defineComponent({
 
     const switchActive = () => {
       props.onClick?.()
-      if (
-        props.disabled ||
-        props.loading ||
-        props.readonly ||
-        formProvider?.disabled.value ||
-        formProvider?.readonly.value
-      )
-        return
+      if (props.disabled || props.loading || props.readonly || form?.disabled.value || form?.readonly.value) return
       props.onChange?.(!props.modelValue)
       props['onUpdate:modelValue']?.(!props.modelValue)
       validateWithTrigger()
@@ -130,8 +124,8 @@ export default defineComponent({
       switchActive,
       styleComputed,
       errorMessage,
-      formDisabled: formProvider?.disabled,
-      formReadonly: formProvider?.readonly,
+      formDisabled: form?.disabled,
+      formReadonly: form?.readonly,
     }
   },
 })

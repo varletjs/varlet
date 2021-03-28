@@ -324,7 +324,7 @@ Click the Tab to scroll automatically to the center of the viewport
 
 ### TabItem Slots
 
-| 插槽名 | 说明 | 参数 |
+| Slot | Description | Arguments |
 | --- | --- | --- |
 | `default` | tabItem's content | `-` |
 

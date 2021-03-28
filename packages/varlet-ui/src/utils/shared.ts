@@ -30,7 +30,7 @@ export const toNumber = (val: number | string | boolean): number => {
 
 export const isHTMLSupportImage = (val: string) => val.startsWith('data:image') || /\.(png|jpg|gif|jpeg|svg)$/.test(val)
 
-export const isHTMLSupportVideo = (val: string) => val.startsWith('data:video') || /\.(mp4|webm)$/.test(val)
+export const isHTMLSupportVideo = (val: string) => val.startsWith('data:video') || /\.(mp4|webm|ogg)$/.test(val)
 
 export const isHTMLSupportAudio = (val: string) => val.startsWith('data:audio') || /\.(mp3|wav|ogg|acc)$/.test(val)
 

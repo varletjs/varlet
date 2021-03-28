@@ -15,7 +15,7 @@ export interface TabsProvider {
 export const TABS_BIND_TAB_KEY = Symbol('TABS_BIND_TAB_KEY')
 export const TABS_COUNT_TAB_KEY = Symbol('TABS_COUNT_TAB_KEY')
 
-export function useTabChildren() {
+export function useTabList() {
   const { childProviders, bindChildren } = useChildren<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
   const { length } = useAtChildrenCounter(TABS_COUNT_TAB_KEY)
 

@@ -110,13 +110,13 @@
 
 <script lang="ts">
 import { defineComponent, Ref, ref, onMounted, computed, ComputedRef, reactive, UnwrapRef, nextTick, watch } from 'vue'
-import { useForm, useValidation } from '../utils/components'
+import { useValidation } from '../utils/components'
+import { useForm } from '../form/provide'
 import { getLeft } from '../utils/elements'
 import { isArray, isNumber, toNumber } from '../utils/shared'
 import { props } from './props'
 import { SliderProvider } from './provide'
 import FormDetails from '../form-details'
-import { SwitchProvider } from '../switch/provide'
 
 type ThumbProps = {
   startPosition: number
@@ -132,7 +132,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const { bindForm, formProvider } = useForm<SwitchProvider>()
+    const { bindForm, form } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
 
     const validate = () => v(props.rules, props.modelValue)
@@ -183,9 +183,9 @@ export default defineComponent({
       }
     })
 
-    const isDisabled: ComputedRef<boolean | undefined> = computed(() => props.disabled || formProvider?.disabled.value)
+    const isDisabled: ComputedRef<boolean | undefined> = computed(() => props.disabled || form?.disabled.value)
 
-    const isReadonly: ComputedRef<boolean | undefined> = computed(() => props.readonly || formProvider?.readonly.value)
+    const isReadonly: ComputedRef<boolean | undefined> = computed(() => props.readonly || form?.readonly.value)
 
     const setPercent = (moveDistance: number, type: number) => {
       let prevValue: number

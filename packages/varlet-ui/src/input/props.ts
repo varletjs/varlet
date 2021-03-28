@@ -10,19 +10,38 @@ export const props = {
   modelValue: {
     type: [String, Number],
   },
-  textColor: {
-    type: String,
-  },
-  inactiveColor: {
-    type: String,
-  },
-  activeColor: {
-    type: String,
-  },
   type: {
     type: String,
     default: 'text',
     validator: typeValidator,
+  },
+  textarea: {
+    type: Boolean,
+    default: false,
+  },
+  rows: {
+    type: [String, Number],
+    default: 8,
+  },
+  placeholder: {
+    type: String,
+  },
+  line: {
+    type: Boolean,
+    default: true,
+  },
+  hint: {
+    type: Boolean,
+    default: true,
+  },
+  textColor: {
+    type: String,
+  },
+  focusColor: {
+    type: String,
+  },
+  blurColor: {
+    type: String,
   },
   maxlength: {
     type: [String, Number],
@@ -39,67 +58,36 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  textarea: {
-    type: Boolean,
-    default: false,
-  },
   resize: {
     type: Boolean,
     default: false,
   },
-  rows: {
-    type: [String, Number],
-    default: 8,
-  },
-  placeholder: {
-    type: String,
-  },
-  prependIcon: {
-    type: String,
-  },
-  appendIcon: {
-    type: String,
-  },
-  line: {
-    type: Boolean,
-    default: true,
-  },
-  hint: {
-    type: Boolean,
-    default: true,
-  },
   validateTrigger: {
-    type: Array as PropType<Array<ValidateTriggers>>,
+    type: Array as PropType<ValidateTriggers[]>,
     default: ['onInput', 'onClear'],
   },
   rules: {
-    type: Array as PropType<Array<(v: string | number | undefined) => any>>,
+    type: Array as PropType<Array<(v: string | number) => any>>,
   },
   onFocus: {
-    type: Function,
+    type: Function as PropType<(e: Event) => void>,
   },
   onBlur: {
-    type: Function,
-  },
-  onInput: {
-    type: Function,
-  },
-  onChange: {
-    type: Function,
+    type: Function as PropType<(e: Event) => void>,
   },
   onClick: {
-    type: Function,
+    type: Function as PropType<(e: Event) => void>,
   },
   onClear: {
-    type: Function,
+    type: Function as PropType<(e: Event) => void>,
   },
-  onClickAppendIcon: {
-    type: Function,
+  onInput: {
+    type: Function as PropType<(value: string | number, e: Event) => void>,
   },
-  onClickPrependIcon: {
-    type: Function,
+  onChange: {
+    type: Function as PropType<(value: string | number, e: Event) => void>,
   },
   'onUpdate:modelValue': {
-    type: Function,
+    type: Function as PropType<(value: string | number) => void>,
   },
 }

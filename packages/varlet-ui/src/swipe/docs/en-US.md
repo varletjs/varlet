@@ -169,6 +169,15 @@ export default {
 | `vertical` | Whether to enable vertical swipe | _boolean_ | `false` |
 | `touchable` |  Whether to enable touch | _boolean_ | `true` |
 
+### Methods
+
+| Method | Description | Arguments | Return |
+| --- | --- | --- | --- |
+| `resize` | You can call this method to redraw when a tabs changes position size | `-` | `-` |
+| `prev` | Previous page  | `-` | `-` |
+| `next` | Next page | `-` | `-` |
+| `to` | To index page | `index: number` | `-` |
+
 ### Events
 
 | Event | Description | Arguments |

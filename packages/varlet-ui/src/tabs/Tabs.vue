@@ -40,7 +40,7 @@
 import Sticky from '../sticky'
 import { defineComponent, watch, ref, Ref, computed, Transition, ComputedRef, nextTick } from 'vue'
 import { props } from './props'
-import { TabsProvider, useTabChildren } from './provide'
+import { TabsProvider, useTabList } from './provide'
 import { TabProvider } from '../tab/provide'
 import { isNumber } from '../utils/shared'
 import { toSizeUnit } from '../utils/elements'
@@ -64,7 +64,7 @@ export default defineComponent({
     const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
     const disabledColor: ComputedRef<string | undefined> = computed(() => props.disabledColor)
     const itemDirection: ComputedRef<string> = computed(() => props.itemDirection)
-    const { tabList, bindTabList, length } = useTabChildren()
+    const { tabList, bindTabList, length } = useTabList()
 
     const onTabClick = (tab: TabProvider) => {
       const currentActive = tab.name.value ?? tab.index.value

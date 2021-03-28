@@ -2,10 +2,7 @@
   <div class="var-counter var--box">
     <div
       class="var-counter__controller var-elevation--2"
-      :class="[
-        disabled || formDisabled ? 'var-counter--disabled': null,
-        errorMessage ? 'var-counter--error' : null,
-      ]"
+      :class="[disabled || formDisabled ? 'var-counter--disabled' : null, errorMessage ? 'var-counter--error' : null]"
       :style="{ background: color ? color : null }"
       v-bind="$attrs"
     >
@@ -14,17 +11,12 @@
         name="minus"
         :class="[!decrementButton ? 'var-counter--hidden' : null]"
         :style="{
-        width: buttonSize ? toSizeUnit(buttonSize) : null,
-        height: buttonSize ? toSizeUnit(buttonSize): null
-      }"
+          width: buttonSize ? toSizeUnit(buttonSize) : null,
+          height: buttonSize ? toSizeUnit(buttonSize) : null,
+        }"
         v-ripple="{
-        disabled: !ripple ||
-          disabled ||
-          readonly ||
-          disableDecrement ||
-          !decrementButton ||
-          isMin
-      }"
+          disabled: !ripple || disabled || readonly || disableDecrement || !decrementButton || isMin,
+        }"
         @click="decrement"
         @touchstart="pressDecrement"
         @touchend="releaseDecrement"
@@ -37,22 +29,17 @@
         :disabled="disabled || formDisabled || disableInput"
         v-model="inputValue"
         @change="handleChange"
-      >
+      />
       <var-icon
         class="var-counter__increment-button"
         name="plus"
         :class="[!incrementButton ? 'var-counter--hidden' : null]"
         :style="{
           width: buttonSize ? toSizeUnit(buttonSize) : null,
-          height: buttonSize ? toSizeUnit(buttonSize): null
+          height: buttonSize ? toSizeUnit(buttonSize) : null,
         }"
         v-ripple="{
-          disabled: !ripple ||
-            disabled ||
-            readonly ||
-            disableIncrement ||
-            !incrementButton ||
-            isMax
+          disabled: !ripple || disabled || readonly || disableIncrement || !incrementButton || isMax,
         }"
         @click="increment"
         @touchstart="pressIncrement"
@@ -73,7 +60,8 @@ import { props, ValidateTriggers } from './props'
 import { toNumber } from '../utils/shared'
 import { toSizeUnit } from '../utils/elements'
 import { Decimal } from 'decimal.js'
-import { CounterProvider, useForm } from './provide'
+import { CounterProvider } from './provide'
+import { useForm } from '../form/provide'
 import { useValidation } from '../utils/components'
 
 const SPEED = 100
@@ -83,7 +71,7 @@ export default defineComponent({
   name: 'VarCounter',
   components: {
     [Icon.name]: Icon,
-    [FormDetails.name]: FormDetails
+    [FormDetails.name]: FormDetails,
   },
   directives: { Ripple },
   inheritAttrs: false,
@@ -94,9 +82,9 @@ export default defineComponent({
     let decrementTimer: number
     let incrementDelayTimer: number
     let decrementDelayTimer: number
-    const { bindForm, formProvider } = useForm()
+    const { bindForm, form } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
-    const { readonly: formReadonly, disabled: formDisabled } = formProvider ?? {}
+    const { readonly: formReadonly, disabled: formDisabled } = form ?? {}
 
     const validate = () => v(props.rules, props.modelValue)
 
@@ -150,9 +138,7 @@ export default defineComponent({
       const { value } = event.target as HTMLInputElement
       const normalizedValue = normalizeValue(value)
 
-      lazyChange
-        ? onBeforeChange?.(toNumber(normalizedValue), change)
-        : setNormalizedValue(normalizedValue)
+      lazyChange ? onBeforeChange?.(toNumber(normalizedValue), change) : setNormalizedValue(normalizedValue)
 
       validateWithTrigger('onInputChange')
     }
@@ -167,7 +153,7 @@ export default defineComponent({
         step,
         modelValue,
         onDecrement,
-        onBeforeChange
+        onBeforeChange,
       } = props
 
       if (formDisabled?.value || formReadonly?.value || disabled || readonly || disableDecrement || !decrementButton) {
@@ -202,7 +188,7 @@ export default defineComponent({
         step,
         modelValue,
         onIncrement,
-        onBeforeChange
+        onBeforeChange,
       } = props
 
       if (formDisabled?.value || formReadonly?.value || disabled || readonly || disableIncrement || !incrementButton) {
@@ -289,10 +275,13 @@ export default defineComponent({
 
     bindForm?.(counterProvider)
 
-    watch(() => props.modelValue, (newValue) => {
-      setNormalizedValue(normalizeValue(String(newValue)))
-      props.onChange?.(newValue)
-    })
+    watch(
+      () => props.modelValue,
+      (newValue) => {
+        setNormalizedValue(normalizeValue(String(newValue)))
+        props.onChange?.(newValue)
+      }
+    )
 
     setNormalizedValue(normalizeValue(String(props.modelValue)))
 
@@ -311,13 +300,13 @@ export default defineComponent({
       releaseDecrement,
       releaseIncrement,
       toSizeUnit,
-      toNumber
+      toNumber,
     }
-  }
+  },
 })
 </script>
 
 <style lang="less">
-@import "../styles/elevation";
-@import "./counter";
+@import '../styles/elevation';
+@import './counter';
 </style>

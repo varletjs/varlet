@@ -13,59 +13,42 @@
         formDisabled || disabled ? 'var-input--disabled' : null,
       ]"
       :style="{
-        color: isFocus ? activeColor : inactiveColor,
+        color: isFocus ? focusColor : blurColor,
       }"
     >
-      <slot name="prepend-icon">
-        <div class="var-input__icon" @click="handleClickPrependIcon">
-          <var-icon :name="prependIcon" v-if="prependIcon" />
-        </div>
-      </slot>
+      <div class="var-input__icon" :class="[!hint ? 'var-input--non-hint' : null]">
+        <slot name="prepend-icon" />
+      </div>
 
-      <div class="var-input__wrap">
-        <textarea
+      <div class="var-input__wrap" :class="[!hint ? 'var-input--non-hint' : null]">
+        <component
           class="var-input__input"
-          ref="input"
+          ref="el"
           autocomplete="off"
-          :class="[formDisabled || disabled ? 'var-input--disabled' : null, 'var-input--textarea']"
+          :is="textarea ? 'textarea' : 'input'"
+          :id="id"
+          :disabled="formDisabled || disabled"
+          :readonly="formReadonly || readonly"
+          :type="type"
+          :value="modelValue"
+          :maxlength="maxlength"
+          :rows="rows"
+          :class="[formDisabled || disabled ? 'var-input--disabled' : null, textarea ? 'var-input--textarea' : null]"
           :style="{
             color: textColor,
+            caretColor: focusColor,
             resize: resize ? 'vertical' : 'none',
           }"
-          :id="inputId"
-          :disabled="formDisabled || disabled"
-          :readonly="formReadonly || readonly"
-          :rows="rows"
-          :maxlength="maxlength"
-          :value="modelValue"
-          v-if="textarea"
-          @focus="handleFocus"
-          @blur="handleBlur"
-          @input="handleInput"
-          @change="handleChange"
-        >
-        </textarea>
-        <input
-          class="var-input__input"
-          ref="input"
-          autocomplete="off"
-          :class="[formDisabled || disabled ? 'var-input--disabled' : null]"
-          :style="{
-            color: textColor,
-          }"
-          :id="inputId"
-          :type="type"
-          :disabled="formDisabled || disabled"
-          :readonly="formReadonly || readonly"
-          :maxlength="maxlength"
-          :value="modelValue"
-          v-else
           @focus="handleFocus"
           @blur="handleBlur"
           @input="handleInput"
           @change="handleChange"
         />
-        <label class="var-input__placeholder" :class="[computePlaceholderState()]" :for="inputId">
+        <label
+          class="var-input__placeholder"
+          :class="[computePlaceholderState(), !hint ? 'var-input--placeholder-non-hint' : null]"
+          :for="id"
+        >
           {{ placeholder }}
         </label>
         <div
@@ -74,7 +57,7 @@
             formDisabled || disabled ? 'var-input--line-disabled' : null,
             errorMessage ? 'var-input--line-error' : null,
           ]"
-          :style="{ background: inactiveColor }"
+          :style="{ background: blurColor }"
           v-if="line"
         >
           <div
@@ -84,36 +67,37 @@
               formDisabled || disabled ? 'var-input--line-disabled' : null,
               errorMessage ? 'var-input--line-error' : null,
             ]"
-            :style="{ background: activeColor }"
+            :style="{ background: focusColor }"
           ></div>
         </div>
 
         <var-form-details :error-message="errorMessage" :maxlength-text="maxlengthText" />
       </div>
 
-      <slot name="append-icon">
-        <div class="var-input__icon" @click="handleClickAppendIcon">
+      <div class="var-input__icon" :class="[!hint ? 'var-input--non-hint' : null]">
+        <slot name="append-icon">
           <var-icon
-            :name="appendIcon || 'close-circle'"
-            :size="clearable ? '14px' : null"
-            v-if="appendIcon || clearable"
+            class="var-input__clear-icon"
+            name="close-circle"
+            size="14px"
+            v-if="clearable"
             @click="handleClear"
           />
-        </div>
-      </slot>
+        </slot>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, getCurrentInstance, ref, Ref, computed, ComputedRef, nextTick } from 'vue'
-import { props, ValidateTriggers } from './props'
-import { isEmpty, isNumber } from '../utils/shared'
-import { useParent, useValidation } from '../utils/components'
-import { FORM_BIND_FORM_ITEM_KEY, FormProvider } from '../form/provide'
-import { InputProvider } from './provide'
 import FormDetails from '../form-details'
 import Icon from '../icon'
+import { defineComponent, getCurrentInstance, ref, Ref, computed, ComputedRef, nextTick } from 'vue'
+import { props, ValidateTriggers } from './props'
+import { isEmpty, isNumber, toNumber } from '../utils/shared'
+import { useValidation } from '../utils/components'
+import { useForm } from '../form/provide'
+import { InputProvider } from './provide'
 
 export default defineComponent({
   name: 'VarInput',
@@ -124,14 +108,9 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, InputProvider>(
-      FORM_BIND_FORM_ITEM_KEY
-    )
-
-    const inputId: Ref<string> = ref(`var-input-${getCurrentInstance()!.uid}`)
+    const id: Ref<string> = ref(`var-input-${getCurrentInstance()!.uid}`)
+    const el: Ref<HTMLInputElement | null> = ref(null)
     const isFocus: Ref<boolean> = ref(false)
-    const inputEl: Ref<HTMLInputElement | null> = ref(null)
-
     const isNumberValue: ComputedRef<boolean> = computed(() => isNumber(props.modelValue))
     const maxlengthText: ComputedRef<string> = computed(() => {
       const { maxlength, modelValue } = props
@@ -146,110 +125,105 @@ export default defineComponent({
 
       return `${String(modelValue).length}/${maxlength}`
     })
+    const { bindForm, form } = useForm()
+    const {
+      errorMessage,
+      validateWithTrigger: vt,
+      validate: v,
+      // expose
+      resetValidation,
+    } = useValidation()
 
-    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
-
-    const validate = () => v(props.rules, props.modelValue)
-
-    const validateWithTrigger = (trigger: ValidateTriggers) =>
-      nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
+    const validateWithTrigger = (trigger: ValidateTriggers) => {
+      const { validateTrigger, rules, modelValue } = props
+      nextTick(() => vt(validateTrigger, trigger, rules, modelValue))
+    }
 
     const computePlaceholderState = () => {
-      if (!props.hint && !isEmpty(props.modelValue)) {
+      const { hint, modelValue } = props
+
+      if (!hint && !isEmpty(modelValue)) {
         return 'var-input--placeholder-hidden'
       }
-      if (props.hint && (!isEmpty(props.modelValue) || isFocus.value)) {
+      if (hint && (!isEmpty(modelValue) || isFocus.value)) {
         return 'var-input--placeholder-hint'
       }
     }
 
-    const normalizeValue = (value: string) => {
-      return isNumberValue.value ? parseFloat(value) : value
-    }
+    const normalizeValue = (value: string) => (isNumberValue.value ? toNumber(value) : value)
 
     const handleFocus = (e: Event) => {
       isFocus.value = true
-      props.onFocus?.(e)
 
+      props.onFocus?.(e)
       validateWithTrigger('onFocus')
     }
 
     const handleBlur = (e: Event) => {
       isFocus.value = false
-      props.onBlur?.(e)
 
+      props.onBlur?.(e)
       validateWithTrigger('onBlur')
     }
 
     const handleInput = (e: Event) => {
       const { value } = e.target as HTMLInputElement
+      const normalizedValue = normalizeValue(value)
 
-      props['onUpdate:modelValue']?.(normalizeValue(value))
-      props.onInput?.(e)
-
+      props['onUpdate:modelValue']?.(normalizedValue)
+      props.onInput?.(normalizedValue, e)
       validateWithTrigger('onInput')
     }
 
     const handleChange = (e: Event) => {
-      props.onChange?.(e)
+      const { value } = e.target as HTMLInputElement
 
+      props.onChange?.(normalizeValue(value), e)
       validateWithTrigger('onChange')
     }
 
-    const handleClear = () => {
-      if (
-        formProvider?.disabled.value ||
-        formProvider?.readonly.value ||
-        props.disabled ||
-        props.readonly ||
-        !props.clearable
-      ) {
+    const handleClear = (e: Event) => {
+      const { disabled, readonly, clearable, onClear } = props
+
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly || !clearable) {
         return
       }
 
-      props['onUpdate:modelValue']?.(undefined)
-      props.onClear?.()
+      props['onUpdate:modelValue']?.(isNumberValue.value ? 0 : '')
+      onClear?.(e)
 
       validateWithTrigger('onClear')
     }
 
     const handleClick = (e: Event) => {
-      if (formProvider?.disabled.value || props.disabled) {
+      const { disabled, onClick } = props
+
+      if (form?.disabled.value || disabled) {
         return
       }
 
-      props.onClick?.(e)
+      onClick?.(e)
 
       validateWithTrigger('onClick')
     }
 
-    const handleClickAppendIcon = (e: Event) => {
-      if (formProvider?.disabled.value || props.disabled) {
-        return
-      }
-
-      props.onClickAppendIcon?.(e)
-    }
-
-    const handleClickPrependIcon = (e: Event) => {
-      if (formProvider?.disabled.value || props.disabled) {
-        return
-      }
-
-      props.onClickPrependIcon?.(e)
-    }
-
-    const focus = () => {
-      ;(inputEl.value as HTMLInputElement).focus()
-    }
-
-    const blur = () => {
-      ;(inputEl.value as HTMLInputElement).blur()
-    }
-
+    // expose
     const reset = () => {
-      props['onUpdate:modelValue']?.(undefined)
+      props['onUpdate:modelValue']?.(isNumberValue.value ? 0 : '')
       resetValidation()
+    }
+
+    // expose
+    const validate = () => v(props.rules, props.modelValue)
+
+    // expose
+    const focus = () => {
+      ;(el.value as HTMLInputElement).focus()
+    }
+
+    // expose
+    const blur = () => {
+      ;(el.value as HTMLInputElement).blur()
     }
 
     const inputProvider: InputProvider = {
@@ -261,13 +235,13 @@ export default defineComponent({
     bindForm?.(inputProvider)
 
     return {
-      inputEl,
-      inputId,
+      el,
+      id,
       isFocus,
       errorMessage,
       maxlengthText,
-      formDisabled: formProvider?.disabled,
-      formReadonly: formProvider?.readonly,
+      formDisabled: form?.disabled,
+      formReadonly: form?.readonly,
       computePlaceholderState,
       handleFocus,
       handleBlur,
@@ -275,8 +249,6 @@ export default defineComponent({
       handleChange,
       handleClear,
       handleClick,
-      handleClickAppendIcon,
-      handleClickPrependIcon,
       validate,
       resetValidation,
       reset,
