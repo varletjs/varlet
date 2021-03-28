@@ -5,6 +5,7 @@
     header-color="purple"
     color="#7bb872"
     min="2:28:38"
+    format="24hr"
     max="19:40:22"
     @change="change"
   />
