@@ -41,7 +41,7 @@ import Input from '..'
 import Button from '../../button'
 import Icon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { use, pack } from './locale'
 import { watchLang } from '../../utils/components'
 
@@ -57,14 +57,18 @@ export default {
     const value = ref('')
     const value2 = ref('')
     const value3 = ref('')
-    const value4 = ref('这段话无法被用户修改')
-    const value5 = ref('这段话可以被直接清除')
+    const value4 = ref('')
+    const value5 = ref('')
     const value6 = ref('')
     const value7 = ref('')
     const value8 = ref('')
     const value9 = ref('')
 
-    watchLang(use)
+    watchLang((lang) => {
+      use(lang)
+      value4.value = pack.value.readonlyText
+      value5.value = pack.value.clearableText
+    })
 
     return {
       pack,
