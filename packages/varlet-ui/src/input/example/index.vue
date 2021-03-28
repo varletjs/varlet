@@ -31,7 +31,7 @@
   </var-input>
 
   <app-type>{{ pack.validate }}</app-type>
-  <var-input :placeholder="pack.placeholder" :rules="[(v) => v > 6 || pack.maxMessage]" v-model="value9" />
+  <var-input :placeholder="pack.placeholder" :rules="[(v) => v.length > 6 || pack.maxMessage]" v-model="value9" />
 
   <div style="height: 40px"></div>
 </template>

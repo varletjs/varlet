@@ -135,8 +135,10 @@ export default defineComponent({
     } = useValidation()
 
     const validateWithTrigger = (trigger: ValidateTriggers) => {
-      const { validateTrigger, rules, modelValue } = props
-      nextTick(() => vt(validateTrigger, trigger, rules, modelValue))
+      nextTick(() => {
+        const { validateTrigger, rules, modelValue } = props
+        vt(validateTrigger, trigger, rules, modelValue)
+      })
     }
 
     const computePlaceholderState = () => {

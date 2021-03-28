@@ -235,7 +235,7 @@ export function useValidation() {
 
     return !resArr.some((res) => {
       if (res !== true) {
-        errorMessage.value = res.toString()
+        errorMessage.value = String(res)
         return true
       }
 
