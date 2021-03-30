@@ -41,7 +41,7 @@ import Input from '..'
 import Button from '../../button'
 import Icon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { use, pack } from './locale'
 import { watchLang } from '../../utils/components'
 
@@ -66,7 +66,6 @@ export default {
 
     watchLang((lang) => {
       use(lang)
-      value4.value = pack.value.readonlyText
       value5.value = pack.value.clearableText
     })
 
@@ -96,6 +95,6 @@ export default {
 }
 
 .pb {
-  padding-bottom: 0;
+  padding-bottom: 10px;
 }
 </style>

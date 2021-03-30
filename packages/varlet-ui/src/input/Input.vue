@@ -27,8 +27,7 @@
           autocomplete="off"
           :is="textarea ? 'textarea' : 'input'"
           :id="id"
-          :disabled="formDisabled || disabled"
-          :readonly="formReadonly || readonly"
+          :disabled="formDisabled || disabled || formReadonly || readonly"
           :type="type"
           :value="modelValue"
           :maxlength="maxlength"
@@ -70,8 +69,6 @@
             :style="{ background: focusColor }"
           ></div>
         </div>
-
-        <var-form-details :error-message="errorMessage" :maxlength-text="maxlengthText" />
       </div>
 
       <div class="var-input__icon" :class="[!hint ? 'var-input--non-hint' : null]">
@@ -86,6 +83,8 @@
         </slot>
       </div>
     </div>
+
+    <var-form-details :error-message="errorMessage" :maxlength-text="maxlengthText" />
   </div>
 </template>
 

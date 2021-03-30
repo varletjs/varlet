@@ -10,15 +10,6 @@ export const props = {
   modelValue: {
     default: undefined,
   },
-  textColor: {
-    type: String,
-  },
-  activeColor: {
-    type: String,
-  },
-  inactiveColor: {
-    type: String,
-  },
   multiple: {
     type: Boolean,
     default: false,
@@ -26,10 +17,6 @@ export const props = {
   chip: {
     type: Boolean,
     default: false,
-  },
-  separator: {
-    type: String,
-    default: ',',
   },
   disabled: {
     type: Boolean,
@@ -43,18 +30,25 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  textColor: {
+    type: String,
+  },
+  focusColor: {
+    type: String,
+  },
+  blurColor: {
+    type: String,
+  },
+  separator: {
+    type: String,
+    default: ',',
+  },
   textAlign: {
     type: String,
     default: 'left',
     validator: textAlignValidator,
   },
   placeholder: {
-    type: String,
-  },
-  prependIcon: {
-    type: String,
-  },
-  appendIcon: {
     type: String,
   },
   line: {
@@ -73,30 +67,24 @@ export const props = {
     type: Array as PropType<Array<(v: any) => any>>,
   },
   onFocus: {
-    type: Function,
+    type: Function as PropType<(e: Event) => void>,
   },
   onBlur: {
-    type: Function,
-  },
-  onChange: {
-    type: Function,
+    type: Function as PropType<(e: Event) => void>,
   },
   onClick: {
-    type: Function,
+    type: Function as PropType<(e: Event) => void>,
   },
   onClear: {
-    type: Function,
+    type: Function as PropType<(value: any) => void>,
   },
   onClose: {
-    type: Function,
+    type: Function as PropType<(value: any) => void>,
   },
-  onClickAppendIcon: {
-    type: Function,
-  },
-  onClickPrependIcon: {
-    type: Function,
+  onChange: {
+    type: Function as PropType<(value: any) => void>,
   },
   'onUpdate:modelValue': {
-    type: Function,
+    type: Function as PropType<(value: any) => void>,
   },
 }

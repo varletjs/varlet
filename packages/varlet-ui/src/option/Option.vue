@@ -4,7 +4,7 @@
     :class="[optionSelected ? 'var-option--selected-color' : null]"
     :style="{
       width: wrapWidth,
-      color: optionSelected ? activeColor : null,
+      color: optionSelected ? focusColor : null,
     }"
     v-ripple
     v-bind="$attrs"
@@ -14,10 +14,17 @@
       class="var-option__cover"
       :class="[optionSelected ? 'var-option--selected-background' : null]"
       :style="{
-        background: optionSelected ? activeColor : null,
+        background: optionSelected ? focusColor : null,
       }"
     ></div>
-    <var-checkbox ref="checkbox" v-if="multiple" v-model="optionSelected" @click.stop @change="handleSelect" />
+    <var-checkbox
+      ref="checkbox"
+      :checked-color="focusColor"
+      v-if="multiple"
+      v-model="optionSelected"
+      @click.stop
+      @change="handleSelect"
+    />
 
     <div class="var-option__text">
       <slot>
@@ -28,13 +35,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ComputedRef, ref, Ref } from 'vue'
-import { useAtParentIndex, useParent } from '../utils/components'
-import { SELECT_BIND_OPTION_KEY, SELECT_COUNT_OPTION_KEY, SelectProvider } from '../select/provide'
-import { OptionProvider } from './provide'
-import { props } from './props'
 import Checkbox from '../checkbox'
 import Ripple from '../ripple'
+import { defineComponent, computed, ComputedRef, ref, Ref } from 'vue'
+import { OptionProvider, useSelect } from './provide'
+import { props } from './props'
 
 export default defineComponent({
   name: 'VarOption',
@@ -45,31 +50,19 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const { bindParent, parentProvider: selectProvider } = useParent<SelectProvider, OptionProvider>(
-      SELECT_BIND_OPTION_KEY
-    )
-    useAtParentIndex(SELECT_COUNT_OPTION_KEY)
-
-    if (!bindParent || !selectProvider) {
-      throw Error('<var-option/> must in <var-select/>')
-    }
-
     const optionSelected: Ref<boolean> = ref(false)
-
     const selected: ComputedRef<boolean> = computed(() => optionSelected.value)
-    const label: ComputedRef<string | number> = computed(() => props.label)
-    const value: ComputedRef<string | number | boolean | undefined> = computed(() => props.value)
-
-    const { wrapWidth, multiple, activeColor, onSelect } = selectProvider
+    const label: ComputedRef<any> = computed(() => props.label)
+    const value: ComputedRef<any> = computed(() => props.value)
+    const { select, bindSelect } = useSelect()
+    const { wrapWidth, multiple, focusColor, onSelect } = select
 
     const handleClick = () => {
       optionSelected.value = !optionSelected.value
       onSelect(optionProvider)
     }
 
-    const handleSelect = () => {
-      onSelect(optionProvider)
-    }
+    const handleSelect = () => onSelect(optionProvider)
 
     const sync = (checked: boolean) => {
       optionSelected.value = checked
@@ -82,13 +75,13 @@ export default defineComponent({
       sync,
     }
 
-    bindParent(optionProvider)
+    bindSelect(optionProvider)
 
     return {
       optionSelected,
       wrapWidth,
       multiple,
-      activeColor,
+      focusColor,
       handleClick,
       handleSelect,
     }

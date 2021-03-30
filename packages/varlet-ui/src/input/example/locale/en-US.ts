@@ -10,6 +10,5 @@ export default {
   validate: 'Validate',
   placeholder: 'Please enter text',
   maxMessage: 'Text length must be greater than 6',
-  readonlyText: 'Readonly Text',
   clearableText: 'Clearable Text',
 }

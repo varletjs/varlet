@@ -1,102 +1,127 @@
 <template>
-	<var-select
-		placeholder="请选择分类"
-		chip
-		:rules="[(v) => !!v || '不能为空']"
-		v-model="v1"
-		clearable
-		style="margin-top: 20px"
-		active-color="rgb(98,0,234)"
-	>
-		<var-option label="选项1" :value="1">插槽选项1</var-option>
-		<var-option label="选项2" :value="2" />
-		<var-option label="选项3" :value="3" />
-		<var-option label="选项4" :value="4" />
-		<var-option label="选项5" :value="5" />
-		<var-option label="选项6" :value="6" />
-		<var-option label="选项7" :value="7" />
-		<var-option label="选项8" :value="8" />
-		<var-option label="选项9" :value="9" />
-		<var-option label="选项10" :value="10" />
-	</var-select>
+  <app-type>基本使用</app-type>
+  <var-select placeholder="请选择一个选项" v-model="value">
+    <var-option label="吃饭" />
+    <var-option label="睡觉" />
+  </var-select>
 
-	<var-select
-		placeholder="请选择分类"
-		multiple
-		separator="/"
-		:rules="[(v) => v.length >= 3 || '请至少选3个']"
-		v-model="v2"
-		clearable
-		style="margin-top: 20px"
-	>
-		<var-option label="选项1" :value="1">插槽选项1</var-option>
-		<var-option label="选项2" :value="2" />
-		<var-option label="选项3" :value="3" />
-		<var-option label="选项4" :value="4" />
-		<var-option label="选项5" :value="5" />
-		<var-option label="选项6" :value="6" />
-		<var-option label="选项7" :value="7" />
-		<var-option label="选项8" :value="8" />
-		<var-option label="选项9" :value="9" />
-		<var-option label="选项10" :value="10" />
-	</var-select>
+  <app-type>朴素模式</app-type>
+  <var-select :hint="false" :line="false" placeholder="请选择一个选项" v-model="value2">
+    <var-option label="吃饭" />
+    <var-option label="睡觉" />
+  </var-select>
 
-	<var-select
-		placeholder="请选择分类"
-		multiple
-		chip
-		:rules="[(v) => v.length >= 3 || '请至少选3个']"
-		v-model="v"
-		clearable
-		style="margin-top: 20px"
-		@close="log"
-		@clear="log"
-	>
-		<var-option label="选项1" :value="1">插槽选项1</var-option>
-		<var-option label="选项2" :value="2" />
-		<var-option label="选项3" :value="3" />
-		<var-option label="选项4" :value="4" />
-		<var-option label="选项5" :value="5" />
-		<var-option label="选项6" :value="6" />
-		<var-option label="选项7" :value="7" />
-		<var-option label="选项8" :value="8" />
-		<var-option label="选项9" :value="9" />
-		<var-option label="选项10" :value="10" />
-	</var-select>
+  <app-type>显示文本关联值</app-type>
+  <var-select placeholder="请选择一个选项" v-model="value6">
+    <var-option label="吃饭" :value="1" />
+    <var-option label="睡觉" :value="2" />
+  </var-select>
+  <div class="relation">当前选择的是: {{ value6 }}</div>
 
-	<div style="margin-top: 20px">
-		<var-button @click="v.push(9, 10)">动态选择9, 10</var-button>
-	</div>
+  <app-type>禁用</app-type>
+  <var-select placeholder="请选择一个选项" disabled v-model="value4">
+    <var-option label="吃饭" />
+    <var-option label="睡觉" />
+  </var-select>
+
+  <app-type>只读</app-type>
+  <var-select placeholder="请选择一个选项" readonly v-model="value3">
+    <var-option label="吃饭" />
+    <var-option label="睡觉" />
+  </var-select>
+
+  <app-type>可清除</app-type>
+  <var-select placeholder="请选择一个选项" clearable v-model="value8">
+    <var-option label="吃饭" />
+    <var-option label="睡觉" />
+  </var-select>
+
+  <app-type>多选</app-type>
+  <var-select placeholder="请选择多个选项" multiple v-model="value5">
+    <var-option label="吃饭" />
+    <var-option label="睡觉" />
+    <var-option label="打游戏" />
+    <var-option label="写代码" />
+  </var-select>
+
+  <app-type>纸片风格的多选</app-type>
+  <var-select placeholder="请选择多个选项" chip multiple v-model="value7">
+    <var-option label="吃饭" />
+    <var-option label="睡觉" />
+    <var-option label="打游戏" />
+    <var-option label="写代码" />
+  </var-select>
+
+  <app-type>单选值校验</app-type>
+  <var-select placeholder="请选择一个选项" :rules="[(v) => v === '摸鱼' || '您一定得选择摸鱼']" v-model="value9">
+    <var-option label="吃饭" />
+    <var-option label="睡觉" />
+    <var-option label="摸鱼" />
+  </var-select>
+
+  <app-type>多选值校验</app-type>
+  <var-select
+    placeholder="请选择多个选项"
+    multiple
+    :rules="[(v) => v.length >= 2 || '您至少选择两个选项']"
+    v-model="value10"
+  >
+    <var-option label="吃饭" />
+    <var-option label="睡觉" />
+    <var-option label="打游戏" />
+    <var-option label="写代码" />
+  </var-select>
+
+  <div class="space"></div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
+<script>
 import Select from '..'
 import Option from '../../option'
-import Button from '../../button'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { ref } from 'vue'
 
-export default defineComponent({
+export default {
   name: 'SelectExample',
   components: {
     [Select.name]: Select,
     [Option.name]: Option,
-    [Button.name]: Button,
+    AppType,
   },
   setup() {
+    const value = ref()
+    const value2 = ref()
+    const value3 = ref()
+    const value4 = ref()
+    const value6 = ref()
+    const value5 = ref([])
+    const value7 = ref([])
+    const value8 = ref()
+    const value9 = ref()
+    const value10 = ref([])
+
     return {
-      v: ref([]),
-      v1: ref(),
-      v2: ref([]),
-      log(...rest: any[]) {
-        console.log(...rest)
-      },
+      value,
+      value2,
+      value3,
+      value4,
+      value5,
+      value6,
+      value7,
+      value8,
+      value9,
+      value10,
     }
   },
-})
+}
 </script>
 
-<style scoped>
-.example {
-	background: antiquewhite;
+<style scoped lang="less">
+.relation {
+  margin: 10px 0;
+}
+
+.space {
+  height: 160px;
 }
 </style>

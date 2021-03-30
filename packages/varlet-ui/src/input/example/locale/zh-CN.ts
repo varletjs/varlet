@@ -10,6 +10,5 @@ export default {
   validate: '字段校验',
   placeholder: '请输入文本',
   maxMessage: '文本长度必须大于6',
-  readonlyText: '只读文本',
   clearableText: '可清除文本',
 }

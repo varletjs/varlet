@@ -13,17 +13,20 @@
         formDisabled || disabled ? 'var-select--disabled' : null,
       ]"
       :style="{
-        color: isFocus ? activeColor : inactiveColor,
+        color: isFocus ? focusColor : blurColor,
       }"
     >
-      <slot name="prepend-icon">
-        <div class="var-select__icon" @click="handleClickPrependIcon">
-          <var-icon :name="prependIcon" v-if="prependIcon" />
-        </div>
-      </slot>
+      <div class="var-select__icon" :class="[!hint ? 'var-select--non-hint' : null]">
+        <slot name="prepend-icon" />
+      </div>
 
-      <var-menu class="var-select__menu" offset-y="24px" v-model:show="isFocus" @blur="handleBlur">
-        <div class="var-select__wrap" ref="wrapEl" @click="handleFocus">
+      <var-menu class="var-select__menu" :offset-y="offsetY" v-model:show="isFocus" @blur="handleBlur">
+        <div
+          class="var-select__wrap"
+          :class="[!hint ? 'var-select--non-hint' : null]"
+          ref="wrapEl"
+          @click="handleFocus"
+        >
           <div
             class="var-select__select"
             :class="[
@@ -41,6 +44,7 @@
                 <var-chip
                   class="var-select__chip"
                   closable
+                  :type="errorMessage ? 'danger' : null"
                   v-for="l in labels"
                   :key="l"
                   @click.stop
@@ -63,7 +67,10 @@
               :class="[isFocus ? 'var-select--arrow-rotate' : null]"
             />
           </div>
-          <label class="var-select__placeholder" :class="[computePlaceholderState()]">
+          <label
+            class="var-select__placeholder"
+            :class="[computePlaceholderState(), !hint ? 'var-select--placeholder-non-hint' : null]"
+          >
             {{ placeholder }}
           </label>
           <div
@@ -72,7 +79,7 @@
               formDisabled || disabled ? 'var-select--line-disabled' : null,
               errorMessage ? 'var-select--line-error' : null,
             ]"
-            :style="{ background: inactiveColor }"
+            :style="{ background: blurColor }"
             v-if="line"
           >
             <div
@@ -82,11 +89,9 @@
                 formDisabled || disabled ? 'var-select--line-disabled' : null,
                 errorMessage ? 'var-select--line-error' : null,
               ]"
-              :style="{ background: activeColor }"
+              :style="{ background: focusColor }"
             ></div>
           </div>
-
-          <var-form-details :error-message="errorMessage" />
         </div>
 
         <template #menu>
@@ -96,32 +101,30 @@
         </template>
       </var-menu>
 
-      <slot name="append-icon">
-        <div class="var-select__icon" @click="handleClickAppendIcon">
-          <var-icon
-            :name="appendIcon || 'close-circle'"
-            :size="clearable ? '14px' : null"
-            v-if="appendIcon || clearable"
-            @click="handleClear"
-          />
-        </div>
-      </slot>
+      <div class="var-select__icon" :class="[!hint ? 'var-select--non-hint' : null]">
+        <slot name="append-icon">
+          <var-icon name="close-circle" size="14px" v-if="clearable" @click="handleClear" />
+        </slot>
+      </div>
     </div>
+
+    <var-form-details :error-message="errorMessage" />
   </div>
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, ref, Ref, watch, nextTick } from 'vue'
-import { isArray, isEmpty } from '../utils/shared'
-import { props, ValidateTriggers } from './props'
-import { useAtChildrenCounter, useChildren, useParent, useValidation } from '../utils/components'
-import { SELECT_BIND_OPTION_KEY, SELECT_COUNT_OPTION_KEY, SelectProvider } from './provide'
-import { OptionProvider } from '../option/provide'
 import Icon from '../icon'
 import Menu from '../menu'
 import Chip from '../chip'
 import FormDetails from '../form-details'
-import { FORM_BIND_FORM_ITEM_KEY, FormProvider } from '../form/provide'
+import { computed, ComputedRef, defineComponent, ref, Ref, watch, nextTick } from 'vue'
+import { isArray, isEmpty } from '../utils/shared'
+import { props, ValidateTriggers } from './props'
+import { useValidation } from '../utils/components'
+import { SelectProvider, useOptions } from './provide'
+import { OptionProvider } from '../option/provide'
+import { useForm } from '../form/provide'
+import { toPxNum } from '../utils/elements'
 
 export default defineComponent({
   name: 'VarSelect',
@@ -134,41 +137,48 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const { bindChildren: bindOption, childProviders: optionProviders } = useChildren<SelectProvider, OptionProvider>(
-      SELECT_BIND_OPTION_KEY
-    )
-    const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, SelectProvider>(
-      FORM_BIND_FORM_ITEM_KEY
-    )
-    const { length } = useAtChildrenCounter(SELECT_COUNT_OPTION_KEY)
-    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const wrapEl: Ref<HTMLElement | null> = ref(null)
     const isFocus: Ref<boolean> = ref(false)
+    const multiple: ComputedRef<boolean> = computed(() => props.multiple)
+    const focusColor: ComputedRef<string | undefined> = computed(() => props.focusColor)
+    const label: Ref<string | number> = ref('')
+    const labels: Ref<(string | number)[]> = ref([])
     const wrapWidth: ComputedRef<string> = computed(() => {
       return (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).width) || '0px'
     })
-    const multiple: ComputedRef<boolean> = computed(() => props.multiple)
-    const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
-    const label: Ref<string | number> = ref('')
-    const labels: Ref<(string | number)[]> = ref([])
+    const offsetY: ComputedRef<number> = computed(() => {
+      const paddingTop = (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).paddingTop) || '0px'
+      return toPxNum(paddingTop) * 1.5
+    })
+    const { bindForm, form } = useForm()
+    const { length, options, bindOptions } = useOptions()
+    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
 
-    const computeText = () => {
+    const computeLabel = () => {
       const { multiple, modelValue } = props
 
-      if (multiple && isArray(modelValue)) {
-        labels.value = ((modelValue as unknown) as (string | number)[]).map(findLabel)
+      if (multiple) {
+        const rawModelValue = (modelValue as unknown) as any[]
+        labels.value = rawModelValue.map(findLabel)
       }
       if (!multiple && !isEmpty(modelValue)) {
-        label.value = findLabel(modelValue as unknown as string | number)
+        label.value = findLabel(modelValue as any)
+      }
+      if (!multiple && isEmpty(modelValue)) {
+        label.value = ''
       }
     }
 
     const validate = () => v(props.rules, props.modelValue)
 
-    const validateWithTrigger = (trigger: ValidateTriggers) =>
-      nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
+    const validateWithTrigger = (trigger: ValidateTriggers) => {
+      nextTick(() => {
+        const { validateTrigger, rules, modelValue } = props
+        vt(validateTrigger, trigger, rules, modelValue)
+      })
+    }
 
-    const findValue = ({ value, label }: OptionProvider) => {
+    const findValueOrLabel = ({ value, label }: OptionProvider) => {
       if (value.value != null) {
         return value.value
       }
@@ -176,124 +186,107 @@ export default defineComponent({
       return label.value
     }
 
-    const findLabel = (modelValue: string | number | (string | number)[]) => {
-      let targetProvider = optionProviders.find(({ value }) => value.value === modelValue)
+    const findLabel = (modelValue: string | number | any[]) => {
+      let option = options.find(({ value }) => value.value === modelValue)
 
-      if (!targetProvider) {
-        targetProvider = optionProviders.find(({ label }) => label.value === modelValue)
+      if (!option) {
+        option = options.find(({ label }) => label.value === modelValue)
       }
 
-      return targetProvider!.label.value
+      return option!.label.value
     }
 
     const computePlaceholderState = () => {
-      if (!props.hint && !isEmpty(props.modelValue)) {
+      const { hint, modelValue } = props
+
+      if (!hint && !isEmpty(modelValue)) {
         return 'var-select--placeholder-hidden'
       }
-      if (props.hint && (!isEmpty(props.modelValue) || isFocus.value)) {
+      if (hint && (!isEmpty(modelValue) || isFocus.value)) {
         return 'var-select--placeholder-hint'
       }
     }
 
     const handleFocus = (e: Event) => {
-      if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
+      const { disabled, readonly, onFocus } = props
+
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
 
       isFocus.value = true
-      props.onFocus?.(e)
 
+      onFocus?.(e)
       validateWithTrigger('onFocus')
     }
 
     const handleBlur = (e: Event) => {
-      if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
+      const { disabled, readonly, onBlur } = props
+
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
 
-      props.onBlur?.(e)
-
+      onBlur?.(e)
       validateWithTrigger('onBlur')
     }
 
-    const handleChange = (optionProvider: OptionProvider) => {
-      if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
+    const onSelect = (option: OptionProvider) => {
+      const { disabled, readonly, multiple, onChange } = props
+
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
 
-      let selectedValue: any = findValue(optionProvider)
-
-      if (props.multiple) {
-        selectedValue = optionProviders.filter(({ selected }) => selected.value).map(findValue)
-      }
+      const selectedValue: any = multiple
+        ? options.filter(({ selected }) => selected.value).map(findValueOrLabel)
+        : findValueOrLabel(option)
 
       props['onUpdate:modelValue']?.(selectedValue)
-      props.onChange?.(selectedValue)
-
+      onChange?.(selectedValue)
       validateWithTrigger('onChange')
 
-      !props.multiple && (isFocus.value = false)
+      !multiple && (isFocus.value = false)
     }
 
     const handleClear = () => {
-      if (
-        formProvider?.disabled.value ||
-        formProvider?.readonly.value ||
-        props.disabled ||
-        props.readonly ||
-        !props.clearable
-      ) {
+      const { disabled, readonly, multiple, clearable, onClear } = props
+
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly || !clearable) {
         return
       }
 
-      const targetModelValue = props.multiple ? [] : undefined
+      const changedModelValue = multiple ? [] : undefined
 
-      props['onUpdate:modelValue']?.(targetModelValue)
-      props.onClear?.(targetModelValue)
-
+      props['onUpdate:modelValue']?.(changedModelValue)
+      onClear?.(changedModelValue)
       validateWithTrigger('onClear')
     }
 
-    const handleClickAppendIcon = (e: Event) => {
-      if (formProvider?.disabled.value || props.disabled) {
-        return
-      }
-
-      props.onClickAppendIcon?.(e)
-    }
-
-    const handleClickPrependIcon = (e: Event) => {
-      if (formProvider?.disabled.value || props.disabled) {
-        return
-      }
-
-      props.onClickPrependIcon?.(e)
-    }
-
     const handleClick = (e: Event) => {
-      if (formProvider?.disabled.value || props.disabled) {
+      const { disabled, onClick } = props
+
+      if (form?.disabled.value || disabled) {
         return
       }
 
-      props.onClick?.(e)
-
+      onClick?.(e)
       validateWithTrigger('onClick')
     }
 
-    const handleClose = (text: string | number) => {
-      if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
+    const handleClose = (text: any) => {
+      const { disabled, readonly, modelValue, onClose } = props
+
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
-      console.log(text)
-      const targetProvider = optionProviders.find(({ label }) => label.value === text)
 
-      const targetModelValue = ((props.modelValue as unknown) as any[]).filter((value) => {
-        return value !== targetProvider!.value.value ?? targetProvider!.label.value
-      })
+      const rawModelValue = (modelValue as unknown) as any[]
+      const option = options.find(({ label }) => label.value === text)
+      const currentModelValue = rawModelValue.filter((value) => value !== (option!.value.value ?? option!.label.value))
 
-      props['onUpdate:modelValue']?.(targetModelValue)
-      props.onClose?.(targetModelValue)
-
+      props['onUpdate:modelValue']?.(currentModelValue)
+      onClose?.(currentModelValue)
       validateWithTrigger('onClose')
     }
 
@@ -311,23 +304,23 @@ export default defineComponent({
     }
 
     const syncAllOption = () => {
-      if (props.multiple) {
-        optionProviders.forEach(({ sync, ...rest }) => {
-          sync(((props.modelValue as unknown) as any[]).includes(findValue({ sync, ...rest })))
-        })
+      const { multiple, modelValue } = props
+
+      if (multiple) {
+        const rawModelValue = (modelValue as unknown) as any[]
+        options.forEach((option) => option.sync(rawModelValue.includes(findValueOrLabel(option))))
       } else {
-        optionProviders.forEach(({ sync, ...rest }) => {
-          sync(props.modelValue === findValue({ sync, ...rest }))
-        })
+        options.forEach((option) => option.sync(modelValue === findValueOrLabel(option)))
       }
 
-      computeText()
+      computeLabel()
     }
 
     watch(
       () => props.multiple,
       () => {
-        if (props.multiple && !isArray(props.modelValue)) {
+        const { multiple, modelValue } = props
+        if (multiple && !isArray(modelValue)) {
           throw Error('The modelValue must be an array when multiple is true')
         }
       }
@@ -340,32 +333,30 @@ export default defineComponent({
     const selectProvider: SelectProvider = {
       wrapWidth,
       multiple,
-      activeColor,
-      onSelect: handleChange,
+      focusColor,
+      onSelect,
       reset,
       validate,
       resetValidation,
     }
 
-    bindOption(selectProvider)
+    bindOptions(selectProvider)
     bindForm?.(selectProvider)
 
     return {
       wrapEl,
+      offsetY,
       isFocus,
       errorMessage,
-      formDisabled: formProvider?.disabled,
+      formDisabled: form?.disabled,
       label,
       labels,
       computePlaceholderState,
       handleFocus,
       handleBlur,
-      handleChange,
       handleClear,
       handleClick,
       handleClose,
-      handleClickAppendIcon,
-      handleClickPrependIcon,
       reset,
       validate,
       resetValidation,
