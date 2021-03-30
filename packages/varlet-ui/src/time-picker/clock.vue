@@ -5,13 +5,13 @@
       class="var-time-picker-clock__item"
       :class="[
         isActive(index, false) ? 'var-time-picker-clock__item--active' : null,
-        isDisable(time) ? 'var-time-picker-clock__item--disable' : null,
+        isDisable(timeScale) ? 'var-time-picker-clock__item--disable' : null,
       ]"
-      v-for="(time, index) in timeList"
-      :key="time"
-      :style="getStyle(index, false)"
+      v-for="(timeScale, index) in timeScales"
+      :key="timeScale"
+      :style="getStyle(index, timeScale, false)"
     >
-      {{ time }}
+      {{ timeScale }}
     </div>
     <div class="var-time-picker-clock__inner" ref="inner" v-if="format === '24hr' && type === 'hour'">
       <div
@@ -22,7 +22,7 @@
         ]"
         v-for="(hour, index) in hours24"
         :key="hour"
-        :style="getStyle(index, true)"
+        :style="getStyle(index, hour, true)"
       >
         {{ hour }}
       </div>
@@ -46,7 +46,6 @@ export default defineComponent({
     },
     rad: {
       type: Number,
-      required: true,
     },
     format: {
       type: String as PropType<Format>,
@@ -66,6 +65,7 @@ export default defineComponent({
     },
     ampm: {
       type: String as PropType<AmPm>,
+      default: 'am',
     },
     color: {
       type: String,
@@ -79,26 +79,34 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const inner: Ref<HTMLDivElement | null> = ref(null)
+    const isPreventNextUpdate: Ref<boolean> = ref(false)
     const disableHour: Ref<Array<string>> = ref([])
     const disable24HourIndex: Ref<Array<number>> = ref([])
 
     const handStyle = computed(() => ({
-      transform: `rotate(${props.rad}deg)`,
+      transform: `rotate(${toNumber(props.rad)}deg)`,
       height: props.isInner && props.type === 'hour' ? 'calc(50% - 40px)' : 'calc(50% - 4px)',
-      backgroundColor: props.color,
-      borderColor: props.color,
+      backgroundColor: getHandleColor(),
+      borderColor: getHandleColor(),
     }))
 
-    const activeItemIndex: ComputedRef<number> = computed(() => {
+    const activeItemIndex: ComputedRef<number | undefined> = computed(() => {
+      if (props.rad === undefined) return
       const value = props.rad / 30
       return value >= 0 ? value : value + 12
     })
 
-    const timeList: ComputedRef<Array<string>> = computed(() => {
+    const timeScales: ComputedRef<Array<string>> = computed(() => {
       if (props.type === 'hour') return hoursAmpm
 
       return minSec
     })
+
+    const getHandleColor = () => {
+      if (activeItemIndex.value === undefined) return props.color
+      const time = props.isInner ? hours24[activeItemIndex.value] : timeScales.value[activeItemIndex.value]
+      return isDisable(time) ? '#bdbdbd' : props.color
+    }
 
     const isActive = (index: number, inner: boolean): boolean => {
       if (inner) return activeItemIndex.value === index && props.isInner
@@ -144,75 +152,122 @@ export default defineComponent({
       }
     }
 
-    const getStyle = (index: number, inner: boolean) => {
+    const getStyle = (index: number, hour: string, inner: boolean) => {
       const rad = ((2 * Math.PI) / 12) * index - Math.PI / 2
       const left = 50 * (1 + Math.cos(rad))
       const top = 50 * (1 + Math.sin(rad))
 
+      const computedColor = () => {
+        if (!isActive(index, inner)) {
+          return {
+            backgroundColor: null,
+            color: null,
+          }
+        }
+        if (isDisable(hour)) {
+          return {
+            backgroundColor: '#bdbdbd',
+            color: '#fff',
+          }
+        }
+
+        return {
+          backgroundColor: props.color,
+          color: null,
+        }
+      }
+
+      const { backgroundColor, color } = computedColor()
+
       return {
         left: `${left}%`,
         top: `${top}%`,
-        backgroundColor: isActive(index, inner) ? props.color : null,
+        backgroundColor,
+        color,
       }
     }
 
     const getSize = () => {
       const { width, height } = (inner.value as HTMLDivElement).getBoundingClientRect()
+
       return {
         width,
         height,
-        handStyle,
       }
     }
 
-    const getHour = (): string => {
-      if (props.ampm === 'am') {
-        const hour = toNumber(hoursAmpm[activeItemIndex.value])
-        return dayjs().hour(hour).format('hh')
-      }
+    const getHour = (): string | undefined => {
+      if (activeItemIndex.value === undefined) return undefined
+      const hours = props.ampm === 'am' ? hoursAmpm : hours24
 
-      return hours24[activeItemIndex.value]
+      return hours[activeItemIndex.value].padStart(2, '0')
     }
+
+    const findAvailableHour = (ampm: string): string | undefined => {
+      const index = hoursAmpm.findIndex((hour) => toNumber(hour) === toNumber(props.time.hour))
+      const hours = ampm === 'am' ? hoursAmpm : hours24
+      const realignmentHours = [...hours.slice(index), ...hours.slice(0, index)]
+
+      return realignmentHours.find((hour, index) => {
+        isPreventNextUpdate.value = index !== 0
+
+        return !disableHour.value.includes(hour)
+      })
+    }
+
+    watch(
+      () => props.ampm,
+      (ampm) => {
+        const newHour = findAvailableHour(ampm)
+        if (!newHour) return
+
+        const second = props.useSeconds ? `:${props.time.second}` : ''
+        const newTime = `${newHour.padStart(2, '0')}:${props.time.minute}${second}`
+        emit('update', newTime)
+      }
+    )
 
     watch([activeItemIndex, () => props.isInner], ([index, inner], [oldIndex, oldInner]) => {
       const isSame = index === oldIndex && inner === oldInner
-      if (isSame || props.type !== 'hour') return
+      if (isSame || props.type !== 'hour' || activeItemIndex.value === undefined) return
 
       const newHour = inner ? hours24[activeItemIndex.value] : getHour()
       const second = props.useSeconds ? `:${props.time.second}` : ''
       const newTime = `${newHour}:${props.time.minute}${second}`
 
-      emit('update', newTime)
+      if (!isPreventNextUpdate.value) emit('update', newTime)
+
+      isPreventNextUpdate.value = false
     })
 
     watch(
       () => props.rad,
       (rad, oldRad) => {
-        if (props.type === 'hour') return
+        if (props.type === 'hour' || rad === undefined || oldRad === undefined) return
 
         const radToMinSec = rad / 6 >= 0 ? rad / 6 : rad / 6 + 60
         const oldRadToMinSec = oldRad / 6 >= 0 ? oldRad / 6 : oldRad / 6 + 60
 
         if (radToMinSec === oldRadToMinSec) return
 
+        let newTime
+        const { hourStr } = convertHour(props.format, props.ampm, props.time.hour)
+
         if (props.type === 'minute') {
-          const { hourStr } = convertHour(props.format, props.ampm, props.time.hour)
           const newMinute = dayjs().minute(radToMinSec).format('mm')
           const second = props.useSeconds ? `:${props.time.second}` : ''
 
-          const newTime = `${hourStr}:${newMinute}${second}`
-
-          emit('update', newTime)
+          newTime = `${hourStr}:${newMinute}${second}`
         }
 
         if (props.type === 'second') {
-          const { hourStr } = convertHour(props.format, props.ampm, props.time.hour)
           const newSecond = dayjs().second(radToMinSec).format('ss')
           const second = props.useSeconds ? `:${newSecond}` : ''
 
-          const newTime = `${hourStr}:${props.time.minute}${second}`
-          emit('update', newTime)
+          newTime = `${hourStr}:${props.time.minute}${second}`
         }
+
+        emit('update', newTime)
       }
     )
 
@@ -226,7 +281,6 @@ export default defineComponent({
           const disableAmpmHours = hoursAmpm.filter((hour) => toNumber(hour) > maxHour)
           const disable24Hours = hours24.filter((hour) => toNumber(hour) > maxHour)
           disableHour.value = [...disableAmpmHours, ...disable24Hours]
-          return
         }
 
         if (!max && min) {
@@ -235,12 +289,11 @@ export default defineComponent({
           const disableAmpmHours = hoursAmpm.filter((hour) => toNumber(hour) < minHour)
           const disable24Hours = hours24.filter((hour) => toNumber(hour) < minHour)
           disableHour.value = [...disableAmpmHours, ...disable24Hours]
-          return
         }
 
         if (max && min) {
           const { hour: maxHour } = getNumberTime(max)
-          const { hour: minHour } = getNumberTime(max)
+          const { hour: minHour } = getNumberTime(min)
 
           const disableAmpmHours = hoursAmpm.filter((hour) => toNumber(hour) < minHour || toNumber(hour) > maxHour)
           const disable24Hours = hours24.filter((hour) => toNumber(hour) < minHour || toNumber(hour) > maxHour)
@@ -256,7 +309,7 @@ export default defineComponent({
 
     return {
       hours24,
-      timeList,
+      timeScales,
       inner,
       handStyle,
       disableHour,

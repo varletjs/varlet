@@ -5,14 +5,13 @@
     header-color="purple"
     color="#7bb872"
     min="2:28:38"
-    format="24hr"
     max="19:40:22"
     @change="change"
   />
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
 import TimePicker from '..'
 
 export default defineComponent({
@@ -25,6 +24,11 @@ export default defineComponent({
     const change = (time) => {
       console.log(time)
     }
+    // onMounted(() => {
+    //   setTimeout(() => {
+    //     date.value = '18:01:11'
+    //   }, 2000)
+    // })
     return {
       date,
       change,
