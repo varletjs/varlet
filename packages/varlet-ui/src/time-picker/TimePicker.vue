@@ -91,6 +91,7 @@ import dayjs from 'dayjs'
 import Clock from './clock.vue'
 import { props, Time, AmPm, hoursAmpm, hours24 } from './props'
 import { toNumber } from '../utils/shared'
+import { nextTickFrame } from '../utils/elements'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
 
 export default defineComponent({
@@ -104,13 +105,20 @@ export default defineComponent({
     const inner: Ref<DefineComponent | null> = ref(null)
     const isInner: Ref<boolean> = ref(false)
     const isActualInner: Ref<boolean> = ref(false)
-    const hourRad: Ref<number> = ref(0)
+    const isChosenUsableHour: Ref<boolean> = ref(false)
+    const isChosenUsableMinute: Ref<boolean> = ref(false)
+    const hourRad: Ref<number | undefined> = ref(undefined)
     const minuteRad: Ref<number> = ref(0)
     const secondRad: Ref<number> = ref(0)
     const type: Ref<keyof Time> = ref('hour')
     const ampm: Ref<AmPm> = ref('am')
     const isDisableHour: Ref<boolean> = ref(false)
     const isDisableMinute: Ref<boolean> = ref(false)
+    const time: Ref<Time> = ref({
+      hour: '00',
+      minute: '00',
+      second: '00',
+    })
 
     const center: UnwrapRef<Record<string, number>> = reactive({
       x: 0,
@@ -121,26 +129,7 @@ export default defineComponent({
       y: [],
     })
 
-    const time: ComputedRef<Time> = computed(() => {
-      if (!props.modelValue) {
-        return {
-          hour: '00',
-          minute: '00',
-          second: '00',
-        }
-      }
-
-      const hourFormat = props.format === '24hr' ? 'HH' : 'hh'
-      const { hour, minute, second } = getNumberTime(props.modelValue)
-
-      return {
-        hour: dayjs().hour(hour).format(hourFormat),
-        minute: dayjs().minute(minute).format('mm'),
-        second: dayjs().second(second).format('ss'),
-      }
-    })
-
-    const getRad: ComputedRef<number> = computed(() => {
+    const getRad: ComputedRef<number | undefined> = computed(() => {
       if (type.value === 'hour') return hourRad.value
       if (type.value === 'minute') return minuteRad.value
 
@@ -157,6 +146,8 @@ export default defineComponent({
     }
 
     const checkPanel = (panelType: keyof Time) => {
+      isChosenUsableHour.value = false
+      isDisableMinute.value = false
       type.value = panelType
     }
     const checkAmpm = (ampmType: AmPm) => {
@@ -168,6 +159,17 @@ export default defineComponent({
       const yIsInRange = clientY >= innerRange.y[0] && clientY <= innerRange.y[1]
 
       return xIsInRange && yIsInRange
+    }
+
+    const getTime = (value: string): Time => {
+      const hourFormat = props.format === '24hr' ? 'HH' : 'hh'
+      const { hour, minute, second } = getNumberTime(value)
+
+      return {
+        hour: dayjs().hour(hour).format(hourFormat),
+        minute: dayjs().minute(minute).format('mm'),
+        second: dayjs().second(second).format('ss'),
+      }
     }
 
     const getHourIndex = (rad: number): number => {
@@ -208,6 +210,7 @@ export default defineComponent({
       isDisableHour.value = disableHour.includes(newHour)
       if (isDisableHour.value) return
       hourRad.value = rad
+      isChosenUsableHour.value = true
     }
 
     const setMinuteRad = (roundDeg: number) => {
@@ -226,7 +229,9 @@ export default defineComponent({
       }
       isDisableMinute.value = getIsDisableMinute(values)
 
-      if (!isDisableMinute.value) minuteRad.value = rad
+      if (isDisableMinute.value) return
+      minuteRad.value = rad
+      isChosenUsableMinute.value = true
     }
 
     const setSecondRad = (roundDeg: number) => {
@@ -265,12 +270,14 @@ export default defineComponent({
     const end = () => {
       if (props.readonly) return
 
-      if (type.value === 'hour') {
-        if (isDisableHour.value || isInner.value !== isActualInner.value) return
+      if (type.value === 'hour' && isChosenUsableHour.value) {
         type.value = 'minute'
         return
       }
-      if (type.value === 'minute' && props.useSeconds && !isDisableMinute.value) type.value = 'second'
+
+      if (type.value === 'minute' && props.useSeconds && isChosenUsableMinute.value) {
+        type.value = 'second'
+      }
     }
 
     onMounted(() => {
@@ -302,29 +309,20 @@ export default defineComponent({
           minuteRad.value = toNumber(formatMinute) * 6
           secondRad.value = toNumber(formatSecond) * 6
 
+          // nextTickFrame(() => {
+          time.value = getTime(value)
+          // console.log(time.value)
+          // })
+
+          if (props.format !== '24hr') {
+            ampm.value = `${hour}`.padStart(2, '0') === formatHour24 && hours24.includes(formatHour24) ? 'pm' : 'am'
+          }
+
           isInner.value = props.format === '24hr' && hours24.includes(formatHour24)
         }
       },
       { immediate: true }
     )
-
-    watch(ampm, (newAmpm) => {
-      let newTime
-
-      if (newAmpm === 'pm') {
-        const index = hoursAmpm.findIndex((hour) => toNumber(hour) === toNumber(time.value.hour))
-        const pmHour = hours24[index]
-        const second = props.useSeconds ? `:${time.value.second}` : ''
-
-        newTime = `${pmHour}:${time.value.minute}${second}`
-      } else {
-        const second = props.useSeconds ? `:${time.value.second}` : ''
-
-        newTime = `${time.value.hour}:${time.value.minute}${second}`
-      }
-
-      update(newTime)
-    })
 
     return {
       getRad,

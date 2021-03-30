@@ -12,7 +12,7 @@ type DisableProps = {
   disableHour: Array<string>
 }
 
-export const notConvert = (format: string, ampm: AmPm | undefined) => format === '24hr' || ampm === 'am'
+export const notConvert = (format: string, ampm: AmPm | undefined): boolean => format === '24hr' || ampm === 'am'
 
 export const convertHour = (format: string, ampm: AmPm | undefined, hour: string) => {
   const index = hoursAmpm.findIndex((hourAmpm) => toNumber(hourAmpm) === toNumber(hour))
@@ -34,7 +34,7 @@ export const getNumberTime = (time: string) => {
   }
 }
 
-export const getIsDisableMinute = (values: Omit<DisableProps, 'minute'>) => {
+export const getIsDisableMinute = (values: Omit<DisableProps, 'minute'>): boolean => {
   const { time, format, ampm, hour, max, min, disableHour } = values
   const { hourStr, hourNum } = convertHour(format, ampm, hour)
 
@@ -60,7 +60,7 @@ export const getIsDisableMinute = (values: Omit<DisableProps, 'minute'>) => {
   return false
 }
 
-export const getIsDisableSecond = (values: DisableProps) => {
+export const getIsDisableSecond = (values: DisableProps): boolean => {
   const { time, format, ampm, hour, minute, max, min, disableHour } = values
   const { hourStr, hourNum } = convertHour(format, ampm, hour)
 
