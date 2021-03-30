@@ -20,7 +20,7 @@ export default defineComponent({
     [TimePicker.name]: TimePicker,
   },
   setup() {
-    const date = ref('')
+    const date = ref('23:46:25')
     const change = (time) => {
       console.log(time)
     }

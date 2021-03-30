@@ -63,10 +63,12 @@
             :format="format"
             :rad="getRad"
             :time="time"
+            :prevent-next-update="isPreventNextUpdate"
             :use-seconds="useSeconds"
             :max="max"
             :min="min"
             @update="update"
+            @change-prevent-update="changePreventUpdate"
           />
         </transition>
       </div>
@@ -91,19 +93,19 @@ import dayjs from 'dayjs'
 import Clock from './clock.vue'
 import { props, Time, AmPm, hoursAmpm, hours24 } from './props'
 import { toNumber } from '../utils/shared'
-import { nextTickFrame } from '../utils/elements'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
 
 export default defineComponent({
   name: 'VarTimePicker',
   components: {
-    [Clock.name]: Clock,
+    Clock,
   },
   props,
   setup(props) {
     const container: Ref<HTMLDivElement | null> = ref(null)
     const inner: Ref<DefineComponent | null> = ref(null)
     const isInner: Ref<boolean> = ref(false)
+    const isPreventNextUpdate: Ref<boolean> = ref(false)
     const isActualInner: Ref<boolean> = ref(false)
     const isChosenUsableHour: Ref<boolean> = ref(false)
     const isChosenUsableMinute: Ref<boolean> = ref(false)
@@ -150,8 +152,30 @@ export default defineComponent({
       isDisableMinute.value = false
       type.value = panelType
     }
+
+    const findAvailableHour = (ampm: string): string | undefined => {
+      const { disableHour } = inner.value as DefineComponent
+
+      const index = hoursAmpm.findIndex((hour) => toNumber(hour) === toNumber(time.value.hour))
+      const hours = ampm === 'am' ? hoursAmpm : hours24
+      const realignmentHours = [...hours.slice(index), ...hours.slice(0, index)]
+
+      return realignmentHours.find((hour, index) => {
+        isPreventNextUpdate.value = index !== 0
+
+        return !disableHour.includes(hour)
+      })
+    }
+
     const checkAmpm = (ampmType: AmPm) => {
       ampm.value = ampmType
+      const newHour = findAvailableHour(ampmType)
+      if (!newHour) return
+
+      const second = props.useSeconds ? `:${time.value.second}` : ''
+      const newTime = `${newHour.padStart(2, '0')}:${time.value.minute}${second}`
+
+      update(newTime)
     }
 
     const getInner = (clientX: number, clientY: number): boolean => {
@@ -294,6 +318,10 @@ export default defineComponent({
       }
     })
 
+    const changePreventUpdate = () => {
+      isPreventNextUpdate.value = false
+    }
+
     watch(
       () => props.modelValue,
       (value) => {
@@ -309,10 +337,7 @@ export default defineComponent({
           minuteRad.value = toNumber(formatMinute) * 6
           secondRad.value = toNumber(formatSecond) * 6
 
-          // nextTickFrame(() => {
           time.value = getTime(value)
-          // console.log(time.value)
-          // })
 
           if (props.format !== '24hr') {
             ampm.value = `${hour}`.padStart(2, '0') === formatHour24 && hours24.includes(formatHour24) ? 'pm' : 'am'
@@ -332,11 +357,13 @@ export default defineComponent({
       isInner,
       type,
       ampm,
+      isPreventNextUpdate,
       moveHand,
       checkPanel,
       checkAmpm,
       end,
       update,
+      changePreventUpdate,
     }
   },
 })
