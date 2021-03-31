@@ -106,7 +106,6 @@ export default defineComponent({
     const componentName: Ref<null | string> = ref(null)
     const title: Ref<string> = ref('')
     const currentMenuName: Ref<string> = ref('')
-    const versionList: Ref<string[]> = ref(['2.10.14', '1.x', '3.x'])
     const isHideVersion: Ref<boolean> = ref(true)
     let refs: HTMLElement = ref(null)
     const route = useRoute()
@@ -115,27 +114,30 @@ export default defineComponent({
     const languageList: Ref<Language> = ref({})
     const isOpenMenu: Ref<boolean> = ref(false)
     const path: Ref<string | null> = ref(null)
-
+    const isBack: Ref<boolean> = ref(false)
     const isPhone: Ref<boolean> = ref(false)
-    isPhone.value = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
 
+    isPhone.value = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
     languageList.value = config.pc.header.language
 
     const nav = (element: HTMLElement) => {
       refs = element
     }
 
-    const judgmentType = () => {
-      let componentValue = ''
-      let languageValue = ''
-      componentValue = window.location.hash.split('/')[2]
-      languageValue = window.location.hash.split('/')[1]
-      if (isPhone.value) {
-        window.location.href = `/mobile.html#/${componentValue}?language=${languageValue}&platform=pc&path=${componentValue}`
+    const judgmentType = (type) => {
+      let [, languageValue, componentValue] = window.location.hash.split('/')
+
+      if (type) {
+        path.value = componentValue
+
+        if (isPhone.value) {
+          window.location.href = `/mobile.html#/${componentValue}?language=${languageValue}&platform=pc&path=${componentValue}`
+        }
       }
+
       let childrenElement = refs.getElementsByClassName('var-cell')
       let index = menu.value.findIndex((item) => item.doc === componentValue)
-      path.value = componentValue
+
       if (index !== -1) {
         childrenElement[index].scrollIntoView({
           block: 'center',
@@ -143,6 +145,7 @@ export default defineComponent({
         })
       }
     }
+
     menu.value = configMenu
     header.value = configHeader
     title.value = configTitle
@@ -151,26 +154,28 @@ export default defineComponent({
       if (item.isTitle) {
         return false
       }
+      isBack.value = false
       componentName.value = item.nonComponent ? 'home' : item.doc
       path.value = item.nonComponent ? item.doc : null
     }
 
     const changeLanguage = (key) => {
       language.value = key
-      const pathArr = route.fullPath.split('/')
-      componentName.value = pathArr[pathArr.length - 1]
+      componentName.value = route.fullPath.split('/')[0]
       isOpenMenu.value = false
     }
 
     onMounted(() => {
-      judgmentType()
+      judgmentType('mounted')
     })
 
     watch(
       () => route.path,
       (to: string) => {
-        currentMenuName.value = to.slice(to.lastIndexOf('/') + 1)
-        language.value = to.slice(to.indexOf('#/') + 2, to.lastIndexOf('/'))
+        let [, languageValue = '', name = ''] = to.split('/')
+        currentMenuName.value = name
+
+        isBack.value ? judgmentType('') : (isBack.value = true)
 
         if (!window['enableWatchURL']) {
           window['enableWatchURL'] = true
@@ -178,6 +183,7 @@ export default defineComponent({
         }
 
         const currentNonComponent = menu.value.find((c) => c.doc === currentMenuName.value)?.nonComponent ?? false
+        language.value = languageValue
         componentName.value = currentNonComponent ? 'home' : currentMenuName.value
       },
       { immediate: true }
@@ -190,7 +196,6 @@ export default defineComponent({
       componentName,
       currentMenuName,
       title,
-      versionList,
       isHideVersion,
       languageList,
       isOpenMenu,

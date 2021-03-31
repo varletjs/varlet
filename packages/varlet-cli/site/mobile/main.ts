@@ -21,8 +21,11 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((to, from) => {
+router.beforeEach((to) => {
   const isPhone = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+  if (!isPhone && window.self === window.top) {
+    window.location.href = `/#/${to.query.language}/${to.query.path}`
+  }
 
   if (!isPhone) {
     const pcPath =
@@ -33,10 +36,6 @@ router.beforeEach((to, from) => {
     window.top['enableWatchURL'] = false
     window.top['router'].replace(pcPath)
   }
-
-  // if (!isPhone && window.self === window.top) {
-  //   window.location.href = `/#/${to.query.language}/${to.query.path}`
-  // }
 })
 
 const app = createApp(App as any)

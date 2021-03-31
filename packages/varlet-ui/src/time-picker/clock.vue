@@ -59,6 +59,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    preventNextUpdate: {
+      type: Boolean,
+      default: false,
+    },
     type: {
       type: String as PropType<keyof Time>,
       default: 'hour',
@@ -79,7 +83,6 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const inner: Ref<HTMLDivElement | null> = ref(null)
-    const isPreventNextUpdate: Ref<boolean> = ref(false)
     const disableHour: Ref<Array<string>> = ref([])
     const disable24HourIndex: Ref<Array<number>> = ref([])
 
@@ -203,30 +206,6 @@ export default defineComponent({
       return hours[activeItemIndex.value].padStart(2, '0')
     }
 
-    const findAvailableHour = (ampm: string): string | undefined => {
-      const index = hoursAmpm.findIndex((hour) => toNumber(hour) === toNumber(props.time.hour))
-      const hours = ampm === 'am' ? hoursAmpm : hours24
-      const realignmentHours = [...hours.slice(index), ...hours.slice(0, index)]
-
-      return realignmentHours.find((hour, index) => {
-        isPreventNextUpdate.value = index !== 0
-
-        return !disableHour.value.includes(hour)
-      })
-    }
-
-    watch(
-      () => props.ampm,
-      (ampm) => {
-        const newHour = findAvailableHour(ampm)
-        if (!newHour) return
-
-        const second = props.useSeconds ? `:${props.time.second}` : ''
-        const newTime = `${newHour.padStart(2, '0')}:${props.time.minute}${second}`
-        emit('update', newTime)
-      }
-    )
-
     watch([activeItemIndex, () => props.isInner], ([index, inner], [oldIndex, oldInner]) => {
       const isSame = index === oldIndex && inner === oldInner
       if (isSame || props.type !== 'hour' || activeItemIndex.value === undefined) return
@@ -235,9 +214,9 @@ export default defineComponent({
       const second = props.useSeconds ? `:${props.time.second}` : ''
       const newTime = `${newHour}:${props.time.minute}${second}`
 
-      if (!isPreventNextUpdate.value) emit('update', newTime)
+      if (!props.preventNextUpdate) emit('update', newTime)
 
-      isPreventNextUpdate.value = false
+      emit('change-prevent-update')
     })
 
     watch(

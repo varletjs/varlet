@@ -94,7 +94,7 @@ header {
 }
 
 .router-view__block {
-  padding: 50px 12px 0;
+  padding: 50px 12px 10px;
 }
 
 * {
