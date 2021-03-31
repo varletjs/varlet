@@ -22,8 +22,8 @@ import 'intersection-observer'
 ### 引入
 
 ```js
-import { createApp } from 'vue';
-import { Lazy } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Lazy } from '@varlet/ui'
 
 createApp().use(Lazy)
 ```
@@ -60,8 +60,8 @@ Lazy提供了在插件注册时传入的选项，可以设置默认的懒加载�
 ```
 
 ```js
-import { createApp } from 'vue';
-import { Lazy } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Lazy } from '@varlet/ui'
 
 createApp().use(Lazy, {
   loading: 'https://xxx.cn/loading.png',

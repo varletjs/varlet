@@ -8,8 +8,8 @@
 ### 引入
 
 ```js
-import { createApp } from 'vue';
-import { Skeleton } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Skeleton } from '@varlet/ui'
 
 createApp().use(Skeleton)
 ```

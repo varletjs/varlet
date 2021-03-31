@@ -9,8 +9,8 @@ Browsers that do not support this property automatically revert to the tradition
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Sticky } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Sticky } from '@varlet/ui'
 
 createApp().use(Sticky)
 ```

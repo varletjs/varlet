@@ -10,8 +10,8 @@ Use TabsItems, TabItem to achieve view linkage with Tabs。
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Tabs, Tab, TabsItems, TabItem } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Tabs, Tab, TabsItems, TabItem } from '@varlet/ui'
 
 createApp()
   .use(Tabs)

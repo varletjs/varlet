@@ -8,8 +8,8 @@ Create a container that displays information from top, bottom, left, right, cent
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Popup } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Popup } from '@varlet/ui'
 
 createApp().use(Popup)
 ```

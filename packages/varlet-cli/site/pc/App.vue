@@ -161,7 +161,7 @@ export default defineComponent({
 
     const changeLanguage = (key) => {
       language.value = key
-      componentName.value = route.fullPath.split('/')[0]
+      componentName.value = route.fullPath.split('/')[2]
       isOpenMenu.value = false
     }
 

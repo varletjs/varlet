@@ -8,8 +8,8 @@ Provides two kinds of function and component call mode support cascading mode at
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Picker } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Picker } from '@varlet/ui'
 
 createApp().use(Picker)
 ```

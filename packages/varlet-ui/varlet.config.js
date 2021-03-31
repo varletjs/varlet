@@ -170,6 +170,13 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Checkbox 复选框',
+          'en-US': 'Checkbox',
+        },
+        doc: 'checkbox-group',
+      },
+      {
+        text: {
           'zh-CN': 'Loading 加载',
           'en-US': 'Loading',
         },
@@ -279,13 +286,6 @@ module.exports = {
           'en-US': 'Radio',
         },
         doc: 'radio',
-      },
-      {
-        text: {
-          'zh-CN': 'Checkbox 复选框',
-          'en-US': 'Checkbox',
-        },
-        doc: 'checkbox',
       },
       {
         text: {

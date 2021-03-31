@@ -9,8 +9,8 @@ Support custom loading state, error state, data loading completed state.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { List } from '@varlet/ui';
+import { createApp } from 'vue'
+import { List } from '@varlet/ui'
 
 createApp().use(List)
 ```

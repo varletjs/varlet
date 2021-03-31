@@ -8,8 +8,8 @@ Causes the element to generate a ripple spread effect when clicked
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Ripple } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Ripple } from '@varlet/ui'
 
 createApp().use(Ripple)
 ```

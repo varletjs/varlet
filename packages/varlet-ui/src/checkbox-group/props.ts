@@ -23,12 +23,12 @@ export const props = {
     default: ['onChange'],
   },
   rules: {
-    type: Array as PropType<Array<(v: any) => any>>,
+    type: Array as PropType<Array<(value: any) => any>>,
   },
   onChange: {
-    type: Function,
+    type: Function as PropType<(value: Array<any>) => void>,
   },
   'onUpdate:modelValue': {
-    type: Function,
+    type: Function as PropType<(value: Array<any>) => void>,
   },
 }

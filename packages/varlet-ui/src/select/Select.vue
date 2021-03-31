@@ -294,7 +294,7 @@ export default defineComponent({
       validateWithTrigger('onClose')
     }
 
-    const syncAllOption = () => {
+    const syncOptions = () => {
       const { multiple, modelValue } = props
 
       if (multiple) {
@@ -336,9 +336,9 @@ export default defineComponent({
       }
     )
 
-    watch(() => props.modelValue, syncAllOption, { deep: true })
+    watch(() => props.modelValue, syncOptions, { deep: true })
 
-    watch(() => length.value, syncAllOption)
+    watch(() => length.value, syncOptions)
 
     const selectProvider: SelectProvider = {
       wrapWidth,

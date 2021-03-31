@@ -3,8 +3,8 @@
 ### 引入
 
 ```js
-import { createApp } from 'vue';
-import { Input } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Input } from '@varlet/ui'
 
 createApp().use(Input)
 ```

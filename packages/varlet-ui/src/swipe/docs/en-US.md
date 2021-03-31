@@ -3,8 +3,8 @@
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Swipe, SwipeItem } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Swipe, SwipeItem } from '@varlet/ui'
 
 createApp().use(Swipe).use(SwipeItem)
 ```

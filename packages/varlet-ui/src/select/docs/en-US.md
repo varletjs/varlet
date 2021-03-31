@@ -3,8 +3,8 @@
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Select, Option } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Select, Option } from '@varlet/ui'
 
 createApp().use(Select).use(Option)
 ```

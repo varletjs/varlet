@@ -11,8 +11,8 @@ so that you can layout more efficiently.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Row, Col } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Row, Col } from '@varlet/ui'
 
 createApp().use(Row).use(Col)
 ```

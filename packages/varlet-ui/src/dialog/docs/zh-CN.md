@@ -9,8 +9,8 @@ Dialog提供了函数式和组件式两种使用方式, 两种使用效果和参
 ### 引入
 
 ```js
-import { createApp } from 'vue';
-import { Dialog } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Dialog } from '@varlet/ui'
 
 createApp().use(Dialog)
 ```

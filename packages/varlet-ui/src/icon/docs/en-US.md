@@ -9,8 +9,8 @@ Font icons are from [Material Design Icon](https://materialdesignicons.com/)
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Icon } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Icon } from '@varlet/ui'
 
 createApp().use(Icon)
 ```

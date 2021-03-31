@@ -11,8 +11,8 @@ Supports Lazy loading,loading images, error images, and default Settings for app
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Image } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Image } from '@varlet/ui'
 
 createApp().use(Image)
 ```

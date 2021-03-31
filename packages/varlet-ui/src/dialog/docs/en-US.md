@@ -9,8 +9,8 @@ Dialog have provided functional and component usage, and there is no essential d
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Dialog } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Dialog } from '@varlet/ui'
 
 createApp().use(Dialog)
 ```

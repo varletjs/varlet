@@ -1,0 +1,17 @@
+export default {
+  basicUsage: 'Basic Usage',
+  currentValue: 'Current value:',
+  setState: 'Set State value',
+  setStyle: 'Modify the icon and color',
+  disabled: 'Disabled',
+  readonly: 'Readonly',
+  eat: 'Eat',
+  sleep: 'Sleep',
+  action: 'Checkbox Actions',
+  checkAll: 'Check All',
+  inverseAll: 'Inverse All',
+  checkboxValidate: 'Checkbox validation',
+  checkboxGroupValidate: 'CheckboxGroup validate',
+  checkboxValidateMessage: 'Please check your choices',
+  checkboxGroupValidateMessage: 'Please check all',
+}

@@ -3,8 +3,8 @@
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Rate } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Rate } from '@varlet/ui'
 
 createApp().use(Rate)
 ```

@@ -8,8 +8,8 @@ Enable elements to display a menu when clicked, freely control the display posit
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Menu } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Menu } from '@varlet/ui'
 
 createApp().use(Menu)
 ```

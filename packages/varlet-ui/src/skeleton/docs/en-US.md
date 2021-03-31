@@ -8,8 +8,8 @@ Display some placeholder elements with transition effects to optimize your loadi
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Skeleton } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Skeleton } from '@varlet/ui'
 
 createApp().use(Skeleton)
 ```

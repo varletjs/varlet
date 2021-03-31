@@ -171,3 +171,5 @@ export function parseFormat(format: string, time: Time): string {
 export const dt = (value: unknown, defaultText: string) => (value == null ? defaultText : value)
 
 export const inBrowser = typeof window !== 'undefined'
+
+export const uniq = (arr: Array<any>) => [...new Set(arr)]

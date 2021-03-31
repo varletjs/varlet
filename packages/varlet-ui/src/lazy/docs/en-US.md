@@ -22,8 +22,8 @@ import 'intersection-observer'
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Lazy } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Lazy } from '@varlet/ui'
 
 createApp().use(Lazy)
 ```
@@ -60,8 +60,8 @@ The option to set the default lazy load option is provided, which is passed in a
 ```
 
 ```js
-import { createApp } from 'vue';
-import { Lazy } from '@varlet/ui';
+import { createApp } from 'vue'
+import { Lazy } from '@varlet/ui'
 
 createApp().use(Lazy, {
   loading: 'https://xxx.cn/loading.png',
