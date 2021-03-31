@@ -13,6 +13,7 @@ import { Icon } from './Icon'
 import { Image } from './Image'
 import { IndexAnchor } from './IndexAnchor'
 import { IndexBar } from './IndexBar'
+import { Input } from './Input'
 import { Lazy } from './Lazy'
 import { Loading } from './Loading'
 import { Menu } from './Menu'
@@ -54,6 +55,7 @@ export {
   Image,
   IndexAnchor,
   IndexBar,
+  Input,
   Lazy,
   Loading,
   Menu,

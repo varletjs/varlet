@@ -19,6 +19,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 })
+
 window['enableWatchURL'] = true
 window.top['router'] = router
 
