@@ -107,8 +107,28 @@ export default defineComponent({
 
     const getHandleColor = () => {
       if (activeItemIndex.value === undefined) return props.color
-      const time = props.isInner ? hours24[activeItemIndex.value] : timeScales.value[activeItemIndex.value]
-      return isDisable(time) ? '#bdbdbd' : props.color
+      const hour = props.isInner ? hours24[activeItemIndex.value] : timeScales.value[activeItemIndex.value]
+
+      if (timeScales.value === minSec) {
+        const time = props.type === 'minute' ? toNumber(props.time.minute) : toNumber(props.time.second)
+
+        const disableMethod = props.type === 'minute' ? getIsDisableMinute : getIsDisableSecond
+
+        const values = {
+          time,
+          format: props.format,
+          ampm: props.ampm,
+          minute: toNumber(props.time.minute),
+          hour: props.time.hour,
+          max: props.max,
+          min: props.min,
+          disableHour: disableHour.value,
+        }
+
+        return disableMethod(values) ? '#bdbdbd' : props.color
+      }
+
+      return isDisable(hour) ? '#bdbdbd' : props.color
     }
 
     const isActive = (index: number, inner: boolean): boolean => {
