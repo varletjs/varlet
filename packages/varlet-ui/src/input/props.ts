@@ -79,7 +79,7 @@ export const props = {
     type: Function as PropType<(e: Event) => void>,
   },
   onClear: {
-    type: Function as PropType<(e: Event) => void>,
+    type: Function as PropType<(value: string | number) => void>,
   },
   onInput: {
     type: Function as PropType<(value: string | number, e: Event) => void>,

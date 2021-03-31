@@ -152,7 +152,13 @@ export default defineComponent({
     })
     const { bindForm, form } = useForm()
     const { length, options, bindOptions } = useOptions()
-    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+    const {
+      errorMessage,
+      validateWithTrigger: vt,
+      validate: v,
+      // expose
+      resetValidation,
+    } = useValidation()
 
     const computeLabel = () => {
       const { multiple, modelValue } = props
@@ -168,8 +174,6 @@ export default defineComponent({
         label.value = ''
       }
     }
-
-    const validate = () => v(props.rules, props.modelValue)
 
     const validateWithTrigger = (trigger: ValidateTriggers) => {
       nextTick(() => {
@@ -290,19 +294,6 @@ export default defineComponent({
       validateWithTrigger('onClose')
     }
 
-    const focus = () => {
-      isFocus.value = true
-    }
-
-    const blur = () => {
-      isFocus.value = false
-    }
-
-    const reset = () => {
-      props['onUpdate:modelValue']?.(props.multiple ? [] : undefined)
-      resetValidation()
-    }
-
     const syncAllOption = () => {
       const { multiple, modelValue } = props
 
@@ -314,6 +305,25 @@ export default defineComponent({
       }
 
       computeLabel()
+    }
+
+    // expose
+    const focus = () => {
+      isFocus.value = true
+    }
+
+    // expose
+    const blur = () => {
+      isFocus.value = false
+    }
+
+    // expose
+    const validate = () => v(props.rules, props.modelValue)
+
+    // expose
+    const reset = () => {
+      props['onUpdate:modelValue']?.(props.multiple ? [] : undefined)
+      resetValidation()
     }
 
     watch(

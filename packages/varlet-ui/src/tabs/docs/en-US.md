@@ -183,10 +183,6 @@ Click the Tab to scroll automatically to the center of the viewport
 ### View Relation
 
 ```html
-
-```
-
-```html
 <var-tabs
   elevation
   color="#2979ff"

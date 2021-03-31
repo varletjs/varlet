@@ -101,7 +101,7 @@ createApp().use(Icon)
 ```
 
 ```html
- <var-input
+<var-input
   placeholder="请输入文本"
   :rules="[v => v > 6 || '文本长度必须大于6']"
   v-model="value"
@@ -130,7 +130,7 @@ createApp().use(Icon)
 | `clearable` | 是否可清除 | _boolean_ | `false` |
 | `resize` | 文本域是否可以拖动调整尺寸 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机， 可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
-| `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string | number) => any>_ | `['onInput', 'onClear']` |
+| `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string | number) => any>_ | `-` |
 
 ### 方法
 
@@ -149,9 +149,9 @@ createApp().use(Icon)
 | `focus` | 聚焦时触发 | `event: Event` |
 | `blur` | 失焦时触发 | `event: Event` |
 | `click` | 点击时触发 | `event: Event` |
-| `clear` | 清除时触发 | `event: Event` |
-| `input` | 输入时触发 | `value: string | number` `event: Event` |
-| `change` | 更新时触发 | `value: string | number` `event: Event` |
+| `clear` | 清除时触发 | `value: string \| number` |
+| `input` | 输入时触发 | `value: string \| number` `event: Event` |
+| `change` | 更新时触发 | `value: string \| number` `event: Event` |
 
 ### 插槽
 

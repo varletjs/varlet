@@ -33,7 +33,7 @@ export default {
 ### Plain Mode
 
 ```html
-如果只需要组件的基本功能，可以通过属性去除部分样式。
+If you only need the basic functionality of the component, you can remove some of the styles through attributes.
 ```
 
 ```html
@@ -102,7 +102,7 @@ Other values are converted to text as a user prompt。
 ```
 
 ```html
- <var-input
+<var-input
   placeholder="Please enter text"
   :rules="[v => v > 6 || 'Text length must be greater than 6']"
   v-model="value"
@@ -131,14 +131,14 @@ Other values are converted to text as a user prompt。
 | `clearable` | Whether the clearable | _boolean_ | `false` |
 | `resize` | Whether textarea can be dragged to resize | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation， The optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
-| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: string | number) => any>_ | `['onInput', 'onClear']` |
+| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: string | number) => any>_ | `-` |
 
 ### Methods
 
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
-| `focus` | focus | `-` | `-` |
-| `blur` | blur | `-` | `-` |
+| `focus` | Focus | `-` | `-` |
+| `blur` | Blur | `-` | `-` |
 | `validate` | Trigger validate | `-` | `-` |
 | `resetValidation` | Clearing validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding(The string type is set to `''`,The number type is set to `0`) and validate messages | `-` | `-` |
@@ -150,7 +150,7 @@ Other values are converted to text as a user prompt。
 | `focus` | Trigger while focusing | `event: Event` |
 | `blur` | Triggered when out of focus | `event: Event` |
 | `click` | Triggered on Click | `event: Event` |
-| `clear` | Triggered on Clearance | `event: Event` |
+| `clear` | Triggered on Clearance | `value: string | number` |
 | `input` | Trigger on input | `value: string | number` `event: Event` |
 | `change` | Trigger on change | `value: string | number` `event: Event` |
 

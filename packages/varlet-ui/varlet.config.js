@@ -149,6 +149,27 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Input 输入框',
+          'en-US': 'Input',
+        },
+        doc: 'input',
+      },
+      {
+        text: {
+          'zh-CN': 'Select 选择框',
+          'en-US': 'Select',
+        },
+        doc: 'select',
+      },
+      {
+        text: {
+          'zh-CN': 'Counter 计数器',
+          'en-US': 'Counter',
+        },
+        doc: 'counter',
+      },
+      {
+        text: {
           'zh-CN': 'Loading 加载',
           'en-US': 'Loading',
         },
@@ -251,20 +272,6 @@ module.exports = {
           'en-US': 'Steps',
         },
         doc: 'steps',
-      },
-      {
-        text: {
-          'zh-CN': 'Input 输入框',
-          'en-US': 'Input',
-        },
-        doc: 'input',
-      },
-      {
-        text: {
-          'zh-CN': 'Select 选择框',
-          'en-US': 'Select',
-        },
-        doc: 'select',
       },
       {
         text: {

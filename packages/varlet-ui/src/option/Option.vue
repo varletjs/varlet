@@ -37,7 +37,7 @@
 <script lang="ts">
 import Checkbox from '../checkbox'
 import Ripple from '../ripple'
-import { defineComponent, computed, ComputedRef, ref, Ref } from 'vue'
+import { defineComponent, computed, ComputedRef, ref, Ref, watch } from 'vue'
 import { OptionProvider, useSelect } from './provide'
 import { props } from './props'
 
@@ -74,6 +74,16 @@ export default defineComponent({
       selected,
       sync,
     }
+
+    watch(
+      [() => props.label, () => props.value],
+      () => {
+        if (props.label == null && props.value === null) {
+          throw Error("Props label and value can't both be undefined\n")
+        }
+      },
+      { immediate: true }
+    )
 
     bindSelect(optionProvider)
 

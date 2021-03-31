@@ -10,6 +10,9 @@ export const props = {
   modelValue: {
     default: undefined,
   },
+  placeholder: {
+    type: String,
+  },
   multiple: {
     type: Boolean,
     default: false,
@@ -17,6 +20,23 @@ export const props = {
   chip: {
     type: Boolean,
     default: false,
+  },
+  line: {
+    type: Boolean,
+    default: true,
+  },
+  hint: {
+    type: Boolean,
+    default: true,
+  },
+  textColor: {
+    type: String,
+  },
+  focusColor: {
+    type: String,
+  },
+  blurColor: {
+    type: String,
   },
   disabled: {
     type: Boolean,
@@ -30,15 +50,6 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  textColor: {
-    type: String,
-  },
-  focusColor: {
-    type: String,
-  },
-  blurColor: {
-    type: String,
-  },
   separator: {
     type: String,
     default: ',',
@@ -47,17 +58,6 @@ export const props = {
     type: String,
     default: 'left',
     validator: textAlignValidator,
-  },
-  placeholder: {
-    type: String,
-  },
-  line: {
-    type: Boolean,
-    default: true,
-  },
-  hint: {
-    type: Boolean,
-    default: true,
   },
   validateTrigger: {
     type: Array as PropType<Array<ValidateTriggers>>,

@@ -1,75 +1,89 @@
 <template>
-  <app-type>基本使用</app-type>
-  <var-select placeholder="请选择一个选项" v-model="value">
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
+  <app-type>{{ pack.basicUsage }}</app-type>
+  <var-select :placeholder="pack.placeholder" v-model="value">
+    <var-option :label="pack.eat" />
+    <var-option :label="pack.sleep" />
   </var-select>
 
-  <app-type>朴素模式</app-type>
-  <var-select :hint="false" :line="false" placeholder="请选择一个选项" v-model="value2">
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
+  <app-type>{{ pack.plainMode }}</app-type>
+  <var-select :hint="false" :line="false" :placeholder="pack.placeholder" v-model="value2">
+    <var-option :label="pack.eat" />
+    <var-option :label="pack.sleep" />
   </var-select>
 
-  <app-type>显示文本关联值</app-type>
-  <var-select placeholder="请选择一个选项" v-model="value6">
-    <var-option label="吃饭" :value="1" />
-    <var-option label="睡觉" :value="2" />
+  <app-type>{{ pack.relation }}</app-type>
+  <var-select :placeholder="pack.placeholder" v-model="value6">
+    <var-option :label="pack.eat" :value="1" />
+    <var-option :label="pack.sleep" :value="2" />
   </var-select>
-  <div class="relation">当前选择的是: {{ value6 }}</div>
+  <div class="relation">{{ pack.currentSelect }} {{ value6 }}</div>
 
-  <app-type>禁用</app-type>
-  <var-select placeholder="请选择一个选项" disabled v-model="value4">
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
-  </var-select>
-
-  <app-type>只读</app-type>
-  <var-select placeholder="请选择一个选项" readonly v-model="value3">
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
+  <app-type>{{ pack.disabled }}</app-type>
+  <var-select :placeholder="pack.placeholder" disabled v-model="value4">
+    <var-option :label="pack.eat" />
+    <var-option :label="pack.sleep" />
   </var-select>
 
-  <app-type>可清除</app-type>
-  <var-select placeholder="请选择一个选项" clearable v-model="value8">
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
+  <app-type>{{ pack.readonly }}</app-type>
+  <var-select :placeholder="pack.placeholder" readonly v-model="value3">
+    <var-option :label="pack.eat" />
+    <var-option :label="pack.sleep" />
   </var-select>
 
-  <app-type>多选</app-type>
-  <var-select placeholder="请选择多个选项" multiple v-model="value5">
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
-    <var-option label="打游戏" />
-    <var-option label="写代码" />
+  <app-type>{{ pack.clearable }}</app-type>
+  <var-select :placeholder="pack.placeholder" clearable v-model="value8">
+    <var-option :label="pack.eat" />
+    <var-option :label="pack.sleep" />
   </var-select>
 
-  <app-type>纸片风格的多选</app-type>
-  <var-select placeholder="请选择多个选项" chip multiple v-model="value7">
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
-    <var-option label="打游戏" />
-    <var-option label="写代码" />
+  <app-type>{{ pack.displayIcon }}</app-type>
+  <var-select :placeholder="pack.placeholder" v-model="value11">
+    <template #prepend-icon>
+      <var-icon class="prepend-icon" name="plus" />
+    </template>
+    <template #append-icon>
+      <var-icon class="append-icon" name="minus" />
+    </template>
+    <template #default>
+      <var-option :label="pack.eat" />
+      <var-option :label="pack.sleep" />
+    </template>
   </var-select>
 
-  <app-type>单选值校验</app-type>
-  <var-select placeholder="请选择一个选项" :rules="[(v) => v === '摸鱼' || '您一定得选择摸鱼']" v-model="value9">
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
-    <var-option label="摸鱼" />
+  <app-type>{{ pack.multiple }}</app-type>
+  <var-select :placeholder="pack.multiplePlaceholder" multiple v-model="value5">
+    <var-option :label="pack.eat" />
+    <var-option :label="pack.sleep" />
+    <var-option :label="pack.play" />
+    <var-option :label="pack.coding" />
   </var-select>
 
-  <app-type>多选值校验</app-type>
+  <app-type>{{ pack.chipMultiple }}</app-type>
+  <var-select :placeholder="pack.multiplePlaceholder" chip multiple v-model="value7">
+    <var-option :label="pack.eat" />
+    <var-option :label="pack.sleep" />
+    <var-option :label="pack.play" />
+    <var-option :label="pack.coding" />
+  </var-select>
+
+  <app-type>{{ pack.validate }}</app-type>
+  <var-select :placeholder="pack.placeholder" :rules="[(v) => v === pack.rest || pack.mustSelectRest]" v-model="value9">
+    <var-option :label="pack.eat" />
+    <var-option :label="pack.sleep" />
+    <var-option :label="pack.rest" />
+  </var-select>
+
+  <app-type>{{ pack.multipleValidate }}</app-type>
   <var-select
-    placeholder="请选择多个选项"
+    :placeholder="pack.multiplePlaceholder"
     multiple
-    :rules="[(v) => v.length >= 2 || '您至少选择两个选项']"
+    :rules="[(v) => v.length >= 2 || pack.mustSelectMoreThan]"
     v-model="value10"
   >
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
-    <var-option label="打游戏" />
-    <var-option label="写代码" />
+    <var-option :label="pack.eat" />
+    <var-option :label="pack.sleep" />
+    <var-option :label="pack.play" />
+    <var-option :label="pack.coding" />
   </var-select>
 
   <div class="space"></div>
@@ -78,14 +92,18 @@
 <script>
 import Select from '..'
 import Option from '../../option'
+import Icon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { ref } from 'vue'
+import { watchLang } from '../../utils/components'
+import { use, pack } from './locale'
 
 export default {
   name: 'SelectExample',
   components: {
     [Select.name]: Select,
     [Option.name]: Option,
+    [Icon.name]: Icon,
     AppType,
   },
   setup() {
@@ -99,8 +117,25 @@ export default {
     const value8 = ref()
     const value9 = ref()
     const value10 = ref([])
+    const value11 = ref()
+
+    watchLang((lang) => {
+      use(lang)
+      value.value = undefined
+      value2.value = undefined
+      value3.value = undefined
+      value4.value = undefined
+      value6.value = undefined
+      value5.value = []
+      value7.value = []
+      value8.value = undefined
+      value9.value = undefined
+      value10.value = []
+      value11.value = undefined
+    })
 
     return {
+      pack,
       value,
       value2,
       value3,
@@ -111,6 +146,7 @@ export default {
       value8,
       value9,
       value10,
+      value11,
     }
   },
 }
@@ -123,5 +159,13 @@ export default {
 
 .space {
   height: 160px;
+}
+
+.prepend-icon {
+  margin-right: 2px;
+}
+
+.append-icon {
+  margin-left: 2px;
 }
 </style>

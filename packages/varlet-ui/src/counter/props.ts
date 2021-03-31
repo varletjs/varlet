@@ -5,22 +5,25 @@ export type ValidateTriggers = 'onIncrement' | 'onDecrement' | 'onInputChange' |
 export const props = {
   modelValue: {
     type: [String, Number],
-    default: 0
+    default: 0,
   },
   min: {
     type: [String, Number],
   },
   max: {
-    type: [String, Number]
+    type: [String, Number],
   },
   step: {
     type: [String, Number],
-    default: 1
+    default: 1,
   },
   color: {
-    type: String
+    type: String,
   },
   inputWidth: {
+    type: [String, Number],
+  },
+  inputTextSize: {
     type: [String, Number],
   },
   buttonSize: {
@@ -31,64 +34,64 @@ export const props = {
   },
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   readonly: {
     type: Boolean,
-    default: false
+    default: false,
   },
   disableIncrement: {
     type: Boolean,
-    default: false
+    default: false,
   },
   disableDecrement: {
     type: Boolean,
-    default: false
+    default: false,
   },
   disableInput: {
     type: Boolean,
-    default: false
+    default: false,
   },
   lazyChange: {
     type: Boolean,
-    default: false
+    default: false,
   },
   incrementButton: {
     type: Boolean,
-    default: true
+    default: true,
   },
   decrementButton: {
     type: Boolean,
-    default: true
+    default: true,
   },
   press: {
     type: Boolean,
-    default: true
+    default: true,
   },
   ripple: {
     type: Boolean,
-    default: true
+    default: true,
   },
   validateTrigger: {
     type: Array as PropType<Array<ValidateTriggers>>,
     default: ['onInputChange', 'onLazyChange', 'onIncrement', 'onDecrement'],
   },
   rules: {
-    type: Array as PropType<Array<(v: string | number) => boolean | string>>,
+    type: Array as PropType<Array<(v: number) => any>>,
   },
   onBeforeChange: {
-    type: Function
+    type: Function as PropType<(value: number, change: (value: string | number) => void) => void>,
   },
   onChange: {
-    type: Function
+    type: Function as PropType<(value: number) => void>,
   },
   onIncrement: {
-    type: Function
+    type: Function as PropType<(value: number) => void>,
   },
   onDecrement: {
-    type: Function
+    type: Function as PropType<(value: number) => void>,
   },
   'onUpdate:modelValue': {
-    type: Function,
+    type: Function as PropType<(value: number) => void>,
   },
 }

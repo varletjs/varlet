@@ -1,3 +1,3 @@
 import { VarComponent } from './varComponent'
 
-export class Popup extends VarComponent {}
+export class Option extends VarComponent {}

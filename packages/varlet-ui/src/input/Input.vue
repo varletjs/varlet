@@ -190,8 +190,9 @@ export default defineComponent({
         return
       }
 
-      props['onUpdate:modelValue']?.(isNumberValue.value ? 0 : '')
-      onClear?.(e)
+      const value = isNumberValue.value ? 0 : ''
+      props['onUpdate:modelValue']?.(value)
+      onClear?.(value)
 
       validateWithTrigger('onClear')
     }

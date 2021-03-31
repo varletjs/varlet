@@ -1,0 +1,175 @@
+# 计数器
+
+### 引入
+
+```js
+import { createApp } from 'vue';
+import { Counter } from '@varlet/ui';
+
+createApp().use(Counter)
+```
+
+### 基本使用
+
+```js
+export default {
+  setup() {
+    const value = ref(0)
+
+    return { value }
+  },
+}
+```
+
+```html
+<var-counter v-model="value"/>
+```
+
+### 设置取值范围
+
+```html
+<var-counter :min="0" :max="5" v-model="value"/>
+```
+
+### 设置步长
+
+```html
+<var-counter :step="10" v-model="value"/>
+```
+
+### 保留小数
+
+```html
+<var-counter :decimal-length="1" v-model="value" />
+```
+
+### 设置尺寸
+
+```html
+<var-counter
+  input-text-size="18px"
+  input-width="50px"
+  button-size="36px"
+  v-model="value"
+/>
+```
+
+### 禁用
+
+```html
+<var-counter disabled v-model="value"/>
+```
+
+### 只读
+
+```html
+<var-counter readonly v-model="value"/>
+```
+
+### 异步变更
+
+```html
+在某些场景下需要等待服务器返回成功之后再执行变更。
+设置lazy-change后会阻止组件本身的绑定值更新操作。
+并注册before-change事件进行手动更新。
+```
+
+```html
+<var-counter
+  lazy-change
+  v-model="value"
+  @before-change="handleBeforeChange"
+/>
+```
+
+```js
+export default {
+  setup() {
+    const value = ref(0)
+
+    const handleBeforeChange = (value, change) => {
+      setTimeout(() => change(value), 500)
+    }
+
+    return {
+      value,
+      handleBeforeChange
+    }
+  }
+}
+```
+
+### 字段校验
+
+```html
+通过传入一个校验器数组可以对值进行校验，校验器返回true则为校验通过。
+以外的值将转换为文本作为用户提示。
+```
+
+```html
+<var-counter
+  :rules="[v => v > 5 || '请选择大于5的值']"
+  v-model="value"
+/>
+```
+
+## API
+
+### 属性
+
+| 参数 | 说明 | 类型 | 默认值 | 
+| --- | --- | --- | --- | 
+| `v-model` | 绑定的值 | _string \| number_ | `0` |
+| `min` | 最小值 | _string \| number_ | `-` |
+| `max` | 最大值 | _string \| number_ | `-` |
+| `step` | 步长 | _string \| number_ | `-` |
+| `decimal-length` | 保留小数位数 | _string \| number_ | `-` |
+| `color` | 背景颜色 | _string_ | `-` |  
+| `input-width` | 输入框的宽度 | _string \| number_ | `-` |  
+| `input-text-size` | 输入框的文字大小 | _string \| number_ | `-` |
+| `button-size` | 按钮大小 | _string_ | `true` |
+| `readonly` | 是否只读 | _boolean_ | `false` |
+| `disabled` | 是否禁用 | _boolean_ | `false` |
+| `disable-increment` | 是否禁用增加 | _boolean_ | `false` |
+| `disable-decrement` | 是否禁用减少 | _boolean_ | `false` |
+| `disable-input` | 是否禁用输入 | _boolean_ | `false` |
+| `increment-button` | 是否显示增加按钮 | _boolean_ | `true` |
+| `decrement-button` | 是否显示减少按钮 | _boolean_ | `true` |
+| `press` | 是否开启按钮长按 | _boolean_ | `true` |
+| `ripple` | 是否开启水波纹 | _boolean_ | `true` |
+| `validate-trigger` | 触发验证的时机， 可选值为 `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _ValidateTriggers[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
+| `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: number) => any>_ | `-` |
+
+### 方法
+
+| 方法名 | 说明 | 参数 | 返回值 |
+| --- | --- | --- | --- |
+| `validate` | 触发校验 | `-` | `-` |
+| `resetValidation` | 清空校验信息 | `-` | `-` |
+| `reset` | 清空绑定的值(设置为`min \|\| 0`)和校验信息 | `-` | `-` |
+
+### 事件
+
+| 事件名 | 说明 | 参数 |
+| --- | --- | --- |
+| `before-change` | 变更之前(仅限lazy-change模式)触发 | `value: number, change: (value: string \| number) => void` |
+| `change` | 变更时触发 | `value: number` |
+| `increment` | 增加时触发 | `value: number` |
+| `decrement` | 减少时触发 | `value: number` |
+
+
+### 主题变量
+#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `@counter-padding` | `0 4px` |
+| `@counter-font-color` | `#fff` |
+| `@counter-background` | `@color-primary` |
+| `@counter-input-width` | `28px` |
+| `@counter-input-margin` | `0 4px` |
+| `@counter-input-font-size` | `14px` |
+| `@counter-button-size` | `28px` |
+| `@counter-button-icon-size` | `100%` |
+| `@counter-disabled-color` | `#aaa` |
+| `@input-error-color` | `@color-danger` |

@@ -23,7 +23,10 @@
       />
       <input
         class="var-counter__input"
-        :style="{ width: inputWidth ? toSizeUnit(inputWidth) : null }"
+        :style="{
+          width: inputWidth ? toSizeUnit(inputWidth) : null,
+          fontSize: inputTextSize ? toSizeUnit(inputTextSize) : null,
+        }"
         :inputmode="toNumber(decimalLength) === 0 ? 'numeric' : 'decimal'"
         :readonly="readonly || formReadonly"
         :disabled="disabled || formDisabled || disableInput"
@@ -56,10 +59,10 @@ import Icon from '../icon'
 import Ripple from '../ripple'
 import FormDetails from '../form-details'
 import { defineComponent, ref, Ref, watch, computed, ComputedRef, nextTick } from 'vue'
+import { Decimal } from 'decimal.js'
 import { props, ValidateTriggers } from './props'
 import { toNumber } from '../utils/shared'
 import { toSizeUnit } from '../utils/elements'
-import { Decimal } from 'decimal.js'
 import { CounterProvider } from './provide'
 import { useForm } from '../form/provide'
 import { useValidation } from '../utils/components'
@@ -83,16 +86,30 @@ export default defineComponent({
     let incrementDelayTimer: number
     let decrementDelayTimer: number
     const { bindForm, form } = useForm()
-    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+    const {
+      errorMessage,
+      validateWithTrigger: vt,
+      validate: v,
+      // expose
+      resetValidation,
+    } = useValidation()
     const { readonly: formReadonly, disabled: formDisabled } = form ?? {}
 
+    // expose
     const validate = () => v(props.rules, props.modelValue)
 
-    const validateWithTrigger = (trigger: ValidateTriggers) =>
-      nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
+    const validateWithTrigger = (trigger: ValidateTriggers) => {
+      nextTick(() => {
+        const { validateTrigger, rules, modelValue } = props
+        vt(validateTrigger, trigger, rules, modelValue)
+      })
+    }
 
+    // expose
     const reset = () => {
-      props['onUpdate:modelValue']?.(props.min != null ? toNumber(props.min) : 0)
+      const { min } = props
+
+      props['onUpdate:modelValue']?.(min != null ? toNumber(min) : 0)
       resetValidation()
     }
 
@@ -263,6 +280,7 @@ export default defineComponent({
 
     const setNormalizedValue = (normalizedValue: string) => {
       inputValue.value = normalizedValue
+
       const normalizedValueNum = toNumber(normalizedValue)
 
       props['onUpdate:modelValue']?.(normalizedValueNum)
@@ -279,7 +297,7 @@ export default defineComponent({
       () => props.modelValue,
       (newValue) => {
         setNormalizedValue(normalizeValue(String(newValue)))
-        props.onChange?.(newValue)
+        props.onChange?.(toNumber(newValue))
       }
     )
 

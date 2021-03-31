@@ -181,10 +181,6 @@ export default {
 ### 视图联动
 
 ```html
-
-```
-
-```html
 <var-tabs
   elevation
   color="#2979ff"
