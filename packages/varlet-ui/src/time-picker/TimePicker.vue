@@ -77,23 +77,11 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  ComputedRef,
-  defineComponent,
-  onMounted,
-  reactive,
-  ref,
-  Ref,
-  watch,
-  DefineComponent,
-  UnwrapRef,
-} from 'vue'
+import { computed, ComputedRef, defineComponent, reactive, ref, Ref, watch, DefineComponent, UnwrapRef } from 'vue'
 import dayjs from 'dayjs'
 import Clock from './clock.vue'
 import { props, Time, AmPm, hoursAmpm, hours24 } from './props'
 import { toNumber } from '../utils/shared'
-import { getParentScroller } from '../utils/elements'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
 
 export default defineComponent({
@@ -105,7 +93,6 @@ export default defineComponent({
   setup(props) {
     const container: Ref<HTMLDivElement | null> = ref(null)
     const picker: Ref<HTMLElement | null> = ref(null)
-    const scrollEl: Ref<HTMLElement | null> = ref(null)
     const inner: Ref<DefineComponent | null> = ref(null)
     const isInner: Ref<boolean> = ref(false)
     const isPreventNextUpdate: Ref<boolean> = ref(false)
@@ -282,18 +269,33 @@ export default defineComponent({
       if (!getIsDisableSecond(values)) secondRad.value = rad
     }
 
+    const setCenterAndRange = () => {
+      const { left, top, width, height } = (container.value as HTMLDivElement).getBoundingClientRect()
+
+      center.x = left + width / 2
+      center.y = top + height / 2
+
+      if (type.value === 'hour' && props.format === '24hr') {
+        const { rangeXMin, rangeXMax, rangeYMin, rangeYMax } = getRangeSize()
+
+        innerRange.x = [rangeXMin, rangeXMax]
+        innerRange.y = [rangeYMin, rangeYMax]
+      }
+    }
+
     const moveHand = (event: TouchEvent) => {
       event.preventDefault()
       if (props.readonly) return
 
-      const { clientX, clientY } = event.touches[0]
-      const { scrollLeft, scrollTop } = scrollEl.value as HTMLElement
+      setCenterAndRange()
 
-      const x = clientX + scrollLeft - center.x
-      const y = clientY + scrollTop - center.y
+      const { clientX, clientY } = event.touches[0]
+
+      const x = clientX - center.x
+      const y = clientY - center.y
       const roundDeg = Math.round(rad2deg(Math.atan2(y, x)))
 
-      if (type.value === 'hour') setHourRad(clientX + scrollLeft, clientY + scrollTop, roundDeg)
+      if (type.value === 'hour') setHourRad(clientX, clientY, roundDeg)
       else if (type.value === 'minute') setMinuteRad(roundDeg)
       else setSecondRad(roundDeg)
     }
@@ -310,23 +312,6 @@ export default defineComponent({
         type.value = 'second'
       }
     }
-
-    onMounted(() => {
-      const { left, top, width, height } = (container.value as HTMLDivElement).getBoundingClientRect()
-      const scroller = getParentScroller(picker.value as HTMLElement)
-
-      scrollEl.value = scroller === window ? (scroller as Window).document.documentElement : (scroller as HTMLElement)
-
-      center.x = left + width / 2
-      center.y = top + height / 2
-
-      if (props.format === '24hr') {
-        const { rangeXMin, rangeXMax, rangeYMin, rangeYMax } = getRangeSize()
-
-        innerRange.x = [rangeXMin, rangeXMax]
-        innerRange.y = [rangeYMin, rangeYMax]
-      }
-    })
 
     const changePreventUpdate = () => {
       isPreventNextUpdate.value = false
