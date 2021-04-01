@@ -19,40 +19,40 @@ createApp().use(Image)
 ### 基本使用
 
 ```html
-<var-image src="https://varlet-ui.github.io/cat.jpg" />
+<var-image src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
 ```
 
 ### 填充模式
 
 ```html
-<var-image width="85px" height="85px" src="https://varlet-ui.github.io/cat.jpg" />
+<var-image width="85px" height="85px" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
 
 <var-image 
   width="85px" 
   height="85px"
   fit="cover" 
-  src="https://varlet-ui.github.io/cat.jpg" 
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
 />
 
 <var-image 
   width="85px"
   height="85px" 
   fit="contain"
-  src="https://varlet-ui.github.io/cat.jpg" 
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
 />
 
 <var-image 
   width="85px"
   height="85px"
   fit="none"
-  src="https://varlet-ui.github.io/cat.jpg"
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
 />
 
 <var-image 
   width="85px"
   height="85px" 
   fit="scale-down"
-  src="https://varlet-ui.github.io/cat.jpg" 
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
 />
 ```
 
@@ -64,7 +64,7 @@ createApp().use(Image)
   height="85px"
   fit="cover"
   :radius="10"
-  src="https://varlet-ui.github.io/cat.jpg"
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
 />
 
 <var-image
@@ -72,20 +72,20 @@ createApp().use(Image)
   height="85px"
   fit="cover"
   radius="50%"
-  src="https://varlet-ui.github.io/cat.jpg"
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
 />
 ```
 
 ### 开启水波
 
 ```html
-<var-image ripple src="https://varlet-ui.github.io/cat.jpg"/>
+<var-image ripple src="https://varlet.gitee.io/varlet-ui/cat.jpg"/>
 ```
 
 ### 开启懒加载
 
 ```html
-<var-image lazy src="https://varlet-ui.github.io/cat.jpg" />
+<var-image lazy src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
 ```
 
 ### 设置懒加载状态图片
@@ -95,7 +95,7 @@ createApp().use(Image)
   lazy
   loading="https://xxx.xxx/loading.png"
   error="https://xxx.xxx/error.png"
-  src="https://varlet-ui.github.io/cat.jpg"
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
 />
 ```
 

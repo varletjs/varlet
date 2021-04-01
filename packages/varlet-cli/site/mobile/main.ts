@@ -24,7 +24,7 @@ const router = createRouter({
 router.beforeEach((to) => {
   const isPhone = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
   if (!isPhone && window.self === window.top) {
-    window.location.href = `/#/${to.query.language}/${to.query.path}`
+    window.location.href = `./#/${to.query.language}/${to.query.path}`
   }
 
   if (!isPhone) {

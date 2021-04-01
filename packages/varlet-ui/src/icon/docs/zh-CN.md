@@ -35,7 +35,7 @@ createApp().use(Icon)
 ```
 
 ```html
-<var-icon name="https://varlet-ui.github.io/cat.jpg" :size="32" />
+<var-icon name="https://varlet.gitee.io/varlet-ui/cat.jpg" :size="32" />
 ```
 
 ### 注册事件

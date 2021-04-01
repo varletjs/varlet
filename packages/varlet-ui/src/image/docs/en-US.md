@@ -20,40 +20,40 @@ createApp().use(Image)
 ### Basic Use
 
 ```html
-<var-image src="https://varlet-ui.github.io/cat.jpg" />
+<var-image src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
 ```
 
 ### Fit Mode
 
 ```html
-<var-image width="85px" height="85px" src="https://varlet-ui.github.io/cat.jpg" />
+<var-image width="85px" height="85px" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
 
 <var-image 
   width="85px" 
   height="85px"
   fit="cover" 
-  src="https://varlet-ui.github.io/cat.jpg" 
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
 />
 
 <var-image 
   width="85px"
   height="85px" 
   fit="contain"
-  src="https://varlet-ui.github.io/cat.jpg" 
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
 />
 
 <var-image 
   width="85px"
   height="85px"
   fit="none"
-  src="https://varlet-ui.github.io/cat.jpg"
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
 />
 
 <var-image 
   width="85px"
   height="85px" 
   fit="scale-down"
-  src="https://varlet-ui.github.io/cat.jpg" 
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
 />
 ```
 
@@ -65,7 +65,7 @@ createApp().use(Image)
   height="85px"
   fit="cover"
   :radius="10"
-  src="https://varlet-ui.github.io/cat.jpg"
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
 />
 
 <var-image
@@ -73,20 +73,20 @@ createApp().use(Image)
   height="85px"
   fit="cover"
   radius="50%"
-  src="https://varlet-ui.github.io/cat.jpg"
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
 />
 ```
 
 ### Use Ripple
 
 ```html
-<var-image ripple src="https://varlet-ui.github.io/cat.jpg"/>
+<var-image ripple src="https://varlet.gitee.io/varlet-ui/cat.jpg"/>
 ```
 
 ### Use LazyLoad
 
 ```html
-<var-image lazy src="https://varlet-ui.github.io/cat.jpg" />
+<var-image lazy src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
 ```
 
 ### Set the lazy loading state
@@ -96,7 +96,7 @@ createApp().use(Image)
   lazy
   loading="https://xxx.xxx/loading.png"
   error="https://xxx.xxx/error.png"
-  src="https://varlet-ui.github.io/cat.jpg"
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
 />
 ```
 

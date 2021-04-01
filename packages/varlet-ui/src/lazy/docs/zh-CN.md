@@ -31,12 +31,12 @@ createApp().use(Lazy)
 ### 基本用法
 
 ```html
-<img v-lazy="'https://varlet-ui.github.io/cat.jpg'">
+<img v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'">
 ```
 
 ### 背景图懒加载
 ```html
-<div v-lazy:background-image="'https://varlet-ui.github.io/cat.jpg'"></div>
+<div v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
 ```
 
 ### 内联属性
@@ -46,7 +46,7 @@ createApp().use(Lazy)
 
 ```html
 <img 
-  v-lazy="'https://varlet-ui.github.io/cat.jpg'"
+  v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'"
   lazy-loading="https://xxx.cn/loading.png"
   lazy-error="https://xxx.cn/error.png"
   lazy-attempt="3"

@@ -53,28 +53,28 @@ export default {
     const files = ref([])
     const files2 = ref([
       {
-        url: 'https://varlet-ui.github.io/cat.jpg',
-        cover: 'https://varlet-ui.github.io/cat.jpg',
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
       },
       {
         url: 'https://www.runoob.com/try/demo_source/mov_bbb.mp4',
-        cover: 'https://varlet-ui.github.io/cover.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cover.jpg',
       },
     ])
     const files3 = ref([
       {
-        url: 'https://varlet-ui.github.io/cat.jpg',
-        cover: 'https://varlet-ui.github.io/cat.jpg',
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
         state: 'loading',
       },
       {
-        url: 'https://varlet-ui.github.io/cat.jpg',
-        cover: 'https://varlet-ui.github.io/cat.jpg',
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
         state: 'success',
       },
       {
-        url: 'https://varlet-ui.github.io/cat.jpg',
-        cover: 'https://varlet-ui.github.io/cat.jpg',
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
         state: 'error',
       },
     ])
@@ -86,8 +86,8 @@ export default {
     const files9 = ref([])
     const files10 = ref([
       {
-        url: 'https://varlet-ui.github.io/cat.jpg',
-        cover: 'https://varlet-ui.github.io/cat.jpg',
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
         state: 'error',
       },
     ])

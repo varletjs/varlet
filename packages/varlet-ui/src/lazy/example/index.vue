@@ -1,13 +1,13 @@
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <img class="cat" v-lazy="'https://varlet-ui.github.io/cat.jpg'">
-  <img class="cat" v-lazy="'https://varlet-ui.github.io/cat.jpg'">
-  <img class="cat" v-lazy="'https://varlet-ui.github.io/cat.jpg'">
-  <img class="cat" v-lazy="'https://varlet-ui.github.io/cat.jpg'">
-  <img class="cat" v-lazy="'https://varlet-ui.github.io/cat.jpg'">
+  <img class="cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
+  <img class="cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
+  <img class="cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
+  <img class="cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
+  <img class="cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
 
   <app-type>{{ pack.backgroundImageLazyLoad }}</app-type>
-  <div class="cat" v-lazy:background-image="'https://varlet-ui.github.io/cat.jpg'"></div>
+  <div class="cat" v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
 </template>
 
 <script>
@@ -24,7 +24,7 @@ export default {
     watchLang(use)
 
     return { pack }
-  }
+  },
 }
 </script>
 

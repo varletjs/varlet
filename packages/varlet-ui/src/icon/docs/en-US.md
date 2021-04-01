@@ -37,7 +37,7 @@ Size is the width and height of the image.
 ```
 
 ```html
-<var-icon name="https://varlet-ui.github.io/cat.jpg" :size="32" />
+<var-icon name="https://varlet.gitee.io/varlet-ui/cat.jpg" :size="32" />
 ```
 
 ### Events

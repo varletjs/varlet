@@ -131,7 +131,7 @@ export default defineComponent({
         path.value = componentValue
 
         if (isPhone.value) {
-          window.location.href = `/mobile.html#/${componentValue}?language=${languageValue}&platform=pc&path=${componentValue}`
+          window.location.href = `./mobile.html#/${componentValue}?language=${languageValue}&platform=pc&path=${componentValue}`
         }
       }
 

@@ -31,12 +31,12 @@ createApp().use(Lazy)
 ### Basic Use
 
 ```html
-<img v-lazy="'https://varlet-ui.github.io/cat.jpg'">
+<img v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'">
 ```
 
 ### Background Image Lazy Load
 ```html
-<div v-lazy:background-image="'https://varlet-ui.github.io/cat.jpg'"></div>
+<div v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
 ```
 
 ### Inline Attributes
@@ -46,7 +46,7 @@ You can modify the loading, error image, and reload attempts by using inline pro
 
 ```html
 <img 
-  v-lazy="'https://varlet-ui.github.io/cat.jpg'"
+  v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'"
   lazy-loading="https://xxx.cn/loading.png"
   lazy-error="https://xxx.cn/error.png"
   lazy-attempt="3"
