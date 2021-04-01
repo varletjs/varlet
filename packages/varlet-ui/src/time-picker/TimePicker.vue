@@ -1,5 +1,5 @@
 <template>
-  <div class="var-time-picker" :class="[shadow ? 'var-elevation--2' : null]">
+  <div class="var-time-picker" ref="picker" :class="[shadow ? 'var-elevation--2' : null]">
     <div class="var-time-picker-title" :style="{ background: headerColor || color }">
       <div class="var-time-picker-title__time">
         <div
@@ -93,6 +93,7 @@ import dayjs from 'dayjs'
 import Clock from './clock.vue'
 import { props, Time, AmPm, hoursAmpm, hours24 } from './props'
 import { toNumber } from '../utils/shared'
+import { getParentScroller } from '../utils/elements'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
 
 export default defineComponent({
@@ -103,6 +104,8 @@ export default defineComponent({
   props,
   setup(props) {
     const container: Ref<HTMLDivElement | null> = ref(null)
+    const picker: Ref<HTMLElement | null> = ref(null)
+    const scrollEl: Ref<HTMLElement | null> = ref(null)
     const inner: Ref<DefineComponent | null> = ref(null)
     const isInner: Ref<boolean> = ref(false)
     const isPreventNextUpdate: Ref<boolean> = ref(false)
@@ -168,6 +171,8 @@ export default defineComponent({
     }
 
     const checkAmpm = (ampmType: AmPm) => {
+      if (props.readonly) return
+
       ampm.value = ampmType
       const newHour = findAvailableHour(ampmType)
       if (!newHour) return
@@ -282,11 +287,13 @@ export default defineComponent({
       if (props.readonly) return
 
       const { clientX, clientY } = event.touches[0]
-      const x = clientX - center.x
-      const y = clientY - center.y
+      const { scrollLeft, scrollTop } = scrollEl.value as HTMLElement
+
+      const x = clientX + scrollLeft - center.x
+      const y = clientY + scrollTop - center.y
       const roundDeg = Math.round(rad2deg(Math.atan2(y, x)))
 
-      if (type.value === 'hour') setHourRad(clientX, clientY, roundDeg)
+      if (type.value === 'hour') setHourRad(clientX + scrollLeft, clientY + scrollTop, roundDeg)
       else if (type.value === 'minute') setMinuteRad(roundDeg)
       else setSecondRad(roundDeg)
     }
@@ -306,6 +313,9 @@ export default defineComponent({
 
     onMounted(() => {
       const { left, top, width, height } = (container.value as HTMLDivElement).getBoundingClientRect()
+      const scroller = getParentScroller(picker.value as HTMLElement)
+
+      scrollEl.value = scroller === window ? (scroller as Window).document.documentElement : (scroller as HTMLElement)
 
       center.x = left + width / 2
       center.y = top + height / 2
@@ -354,6 +364,7 @@ export default defineComponent({
       time,
       container,
       inner,
+      picker,
       isInner,
       type,
       ampm,

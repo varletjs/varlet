@@ -56,7 +56,7 @@ Use `range` prop to select date range, at this time, `date` is `[startDate, endD
 
 ### Date Limit
 
-Use `min` and `max` prop to allow the maximum and minimum date, use `allowed-dates` prop to limit the dates that can be selected.
+Use `min` and `max` prop to allow the maximum and minimum date, and use `allowed-dates` prop to limit the dates that can be selected.
 
 ```html
 <var-date-picker 
@@ -138,7 +138,7 @@ export default {
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `v-model / model-value` | Selected date（ISO 8601 format, YYYY-MM-DD or YYYY-MM）| _string[]_ ｜ _string_ | `-` |
+| `v-model / model-value` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）| _string[]_ ｜ _string_ | `-` |
 | `type` | Picker type, optional values `date｜month` | _string_ | `date` |
 | `allowed-dates` | Restricts which dates can be selected | _function_ | `-` |
 | `color` | Picker color | _string_ | `#2979ff` |
