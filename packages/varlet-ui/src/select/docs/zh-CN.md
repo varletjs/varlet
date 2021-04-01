@@ -229,7 +229,7 @@ export default {
 | --- | --- | --- | --- |
 | `focus` | 聚焦 | `-` | `-` |
 | `blur` | 失焦 | `-` | `-` |
-| `validate` | 触发校验 | `-` | `-` |
+| `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
 | `reset` | 清空绑定的值(单选设置为`undefined`,多选设置为`[]`)和校验信息 | `-` | `-` |
 

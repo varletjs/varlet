@@ -231,7 +231,7 @@ export default {
 | --- | --- | --- | --- |
 | `focus` | Focus | `-` | `-` |
 | `blur` | Blur | `-` | `-` |
-| `validate` | Trigger validate | `-` | `-` |
+| `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clearing validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding (single set to 'undefined', multiple set to '[]') and the validation messages | `-` | `-` |
 

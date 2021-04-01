@@ -150,7 +150,7 @@ export default {
 
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
-| `validate` | Trigger validation for all form components | `-` | `-` |
+| `validate` | Trigger validation for all form components | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clear the validation messages for all form components | `-` | `-` |
 | `reset` | Clears all form component bindings of values and validation messages | `-` | `-` |
 

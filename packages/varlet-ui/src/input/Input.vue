@@ -183,7 +183,7 @@ export default defineComponent({
       validateWithTrigger('onChange')
     }
 
-    const handleClear = (e: Event) => {
+    const handleClear = () => {
       const { disabled, readonly, clearable, onClear } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly || !clearable) {

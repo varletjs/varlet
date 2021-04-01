@@ -150,7 +150,7 @@ export default {
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
-| `validate` | 触发所有表单组件的校验 | `-` | `-` |
+| `validate` | 触发所有表单组件的校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空所有表单组件的校验信息 | `-` | `-` |
 | `reset` | 清空所有表单组件绑定的值和校验信息 | `-` | `-` |
 

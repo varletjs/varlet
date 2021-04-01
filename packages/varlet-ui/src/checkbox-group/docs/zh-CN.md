@@ -170,7 +170,7 @@ export default {
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
-| `validate` | 触发校验 | `-` | `-` |
+| `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
 | `reset` | 清空绑定的值(设置为`[]`)和校验信息 | `-` | `-` |
 | `checkAll` | 全选 | `-` | `value: any` |
@@ -180,7 +180,7 @@ export default {
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
-| `validate` | 触发校验 | `-` | `-` |
+| `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
 | `reset` | 清空绑定的值(设置为`unchecked-value`)和校验信息 | `-` | `-` |
 | `toggle` | 切换选中状态，传`checked-value`为选中，`unchecked-value`为取消选中，不传或其他情况为取反 | `value: any` | `-` |

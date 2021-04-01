@@ -138,7 +138,7 @@ createApp().use(Icon)
 | --- | --- | --- | --- |
 | `focus` | 聚焦 | `-` | `-` |
 | `blur` | 失焦 | `-` | `-` |
-| `validate` | 触发校验 | `-` | `-` |
+| `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
 | `reset` | 清空绑定的值(字符类型设置为`''`,数字类型设置为`0`)和校验信息 | `-` | `-` |
 

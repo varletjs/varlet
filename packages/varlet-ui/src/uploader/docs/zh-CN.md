@@ -249,7 +249,7 @@ export default {
 | `getLoading` | 获取`state`等于`loading`的文件集合| `VarFile[]` | `VarFile[]` |
 | `getSuccess` | 获取`state`等于`success`的文件集合| `VarFile[]` | `VarFile[]` |
 | `getError` |  获取`state`等于`error`的文件集合 | `VarFile[]` | `VarFile[]` |
-| `validate` | 触发校验 | `-` | `-` |
+| `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
 | `reset` | 清空绑定的值(设置为`[]`)和校验信息 | `-` | `-` |
 

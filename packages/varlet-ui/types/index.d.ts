@@ -3,6 +3,8 @@ import { BackTop } from './BackTop'
 import { Badge } from './Badge'
 import { Button } from './Button'
 import { Cell } from './Cell'
+import { Checkbox } from './Checkbox'
+import { CheckboxGroup } from './CheckboxGroup'
 import { Chip } from './Chip'
 import { Col } from './Col'
 import { Collapse } from './Collapse'
@@ -10,6 +12,7 @@ import { CollapseItem } from './CollapseItem'
 import { Countdown } from './Countdown'
 import { Counter } from './Counter'
 import { Dialog } from './Dialog'
+import { Form } from './Form'
 import { Icon } from './Icon'
 import { Image } from './Image'
 import { IndexAnchor } from './IndexAnchor'
@@ -23,6 +26,8 @@ import { Picker } from './Picker'
 import { Popup } from './Popup'
 import { Progress } from './Progress'
 import { PullRefresh } from './PullRefresh'
+import { Radio } from './Radio'
+import { RadioGroup } from './RadioGroup'
 import { Rate } from './Rate'
 import { Ripple } from './Ripple'
 import { Row } from './Row'
@@ -36,6 +41,7 @@ import { Tab } from './Tab'
 import { TabItem } from './TabItem'
 import { Tabs } from './Tabs'
 import { TabsItems } from './TabsItems'
+import { Uploader } from './Uploader'
 import { VarComponent } from './VarComponent'
 import { VarDirective } from './VarDirective'
 import { App } from 'vue'
@@ -48,6 +54,8 @@ export {
   Badge,
   Button,
   Cell,
+  Checkbox,
+  CheckboxGroup,
   Chip,
   Col,
   Collapse,
@@ -55,6 +63,7 @@ export {
   Countdown,
   Counter,
   Dialog,
+  Form,
   Icon,
   Image,
   IndexAnchor,
@@ -68,6 +77,8 @@ export {
   Popup,
   Progress,
   PullRefresh,
+  Radio,
+  RadioGroup,
   Rate,
   Ripple,
   Row,
@@ -81,6 +92,7 @@ export {
   TabItem,
   Tabs,
   TabsItems,
+  Uploader,
   VarComponent,
   VarDirective,
 }

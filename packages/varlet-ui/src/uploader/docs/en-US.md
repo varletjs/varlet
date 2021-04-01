@@ -251,7 +251,7 @@ The second argument is a collection of utility functions that can quickly get a 
 | `getLoading` | Gets a collection of files for `state` is `loading` | `VarFile[]` | `VarFile[]` |
 | `getSuccess` | Gets a collection of files for `state` is `success` | `VarFile[]` | `VarFile[]` |
 | `getError` |  Gets a collection of files for `state` is `error` | `VarFile[]` | `VarFile[]` |
-| `validate` | Trigger validate | `-` | `-` |
+| `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clearing validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding(set to `[]`)and validate messages | `-` | `-` |
 

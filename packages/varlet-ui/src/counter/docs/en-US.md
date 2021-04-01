@@ -144,7 +144,7 @@ Other values are converted to text as a user prompt。
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
-| `validate` | Trigger validate | `-` | `-` |
+| `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clearing validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding(set to `min \|\| 0`)and validate messages | `-` | `-` |
 
