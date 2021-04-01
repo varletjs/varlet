@@ -5,12 +5,13 @@
 @checkbox-disabled-color: #aaa;
 @checkbox-error-color: @color-danger;
 @checkbox-action-padding: 6px;
-@checkbox-action-size: 24px;
+@checkbox-icon-size: 24px;
 
 .var-checkbox {
   display: flex;
   align-items: center;
   transform: translateX(-@checkbox-action-padding);
+  cursor: pointer;
 
   &__wrap {
     display: inline-flex;
@@ -23,12 +24,11 @@
     align-items: center;
     padding: @checkbox-action-padding;
     border-radius: 50%;
-    cursor: pointer;
   }
 
   &__icon {
     display: block;
-    font-size: @checkbox-action-size;
+    font-size: @checkbox-icon-size;
   }
 
   &--checked {

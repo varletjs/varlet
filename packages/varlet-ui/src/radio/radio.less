@@ -4,48 +4,46 @@
 @radio-unchecked-color: #555;
 @radio-disabled-color: #aaa;
 @radio-error-color: @color-danger;
-
-@checkbox-form-details-margin-left: 2px;
+@radio-icon-size: 24px;
+@radio-action-padding: 6px;
 
 .var-radio {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
+  transform: translateX(-@radio-action-padding);
+  cursor: pointer;
 
-	&__wrap {
-		display: inline-flex;
-		flex-direction: column;
-	}
+  &__wrap {
+    display: inline-flex;
+    flex-direction: column;
+  }
 
-	&__action {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 6px;
-		border-radius: 50%;
-	}
+  &__action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: @radio-action-padding;
+    border-radius: 50%;
+  }
 
-	&__icon {
-		display: block;
-		font-size: 24px;
-	}
+  &__icon {
+    display: block;
+    font-size: @radio-icon-size;
+  }
 
-	&__form-details {
-		margin-left: @checkbox-form-details-margin-left;
-	}
+  &--checked {
+    color: @radio-checked-color;
+  }
 
-	&--checked {
-		color: @radio-checked-color;
-	}
+  &--unchecked {
+    color: @radio-unchecked-color;
+  }
 
-	&--unchecked {
-		color: @radio-unchecked-color;
-	}
+  &--disabled {
+    color: @radio-disabled-color;
+  }
 
-	&--disabled {
-		color: @radio-disabled-color;
-	}
-
-	&--error {
-		color: @radio-error-color;
-	}
+  &--error {
+    color: @radio-error-color;
+  }
 }

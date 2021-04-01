@@ -1,101 +1,70 @@
 <template>
-  <var-form ref="formEl" :disabled="disabled" :readonly="readonly">
+  <app-type>{{ pack.example }}</app-type>
+  <var-form ref="form" :disabled="disabled" :readonly="readonly">
     <var-input
       class="mb"
-      placeholder="请输入用户名"
-      :rules="[(v) => !!v || '用户名不能为空!', (v) => (v && v.length > 5) || '用户名不少于5个字!']"
-      v-model="form.username"
+      :placeholder="pack.username"
+      :rules="[(v) => !!v || pack.usernameMessage]"
+      v-model="formData.username"
     />
     <var-input
       class="mb"
       type="password"
-      placeholder="请输入密码"
-      :rules="[(v) => !!v || '密码不能为空!', (v) => (v && v.length > 5) || '密码不少于5个字!']"
-      v-model="form.password"
+      :placeholder="pack.password"
+      :rules="[(v) => !!v || pack.passwordMessage]"
+      v-model="formData.password"
     />
-    <var-select class="mb" placeholder="请选择部门" v-model="form.department" :rules="[(v) => !!v || '必须选一个部门']">
-      <var-option label="吃饭部" :value="1" />
-      <var-option label="睡觉部" :value="2" />
-      <var-option label="打游戏部" :value="3" />
+    <var-select
+      class="mb"
+      :placeholder="pack.department"
+      :rules="[(v) => !!v || pack.departmentMessage]"
+      v-model="formData.department"
+    >
+      <var-option :label="`${pack.eat}${pack.departmentUnit}`" />
+      <var-option :label="`${pack.sleep}${pack.departmentUnit}`" />
+      <var-option :label="`${pack.play}${pack.departmentUnit}`" />
     </var-select>
     <var-select
       class="mb"
-      placeholder="请选择组织"
       multiple
-      :rules="[(v) => (v && v.length > 0) || '至少选择一个组织!']"
-      v-model="form.group"
+      :placeholder="pack.group"
+      :rules="[(v) => v.length >= 1 || pack.groupMessage]"
+      v-model="formData.group"
     >
-      <var-option label="晓" :value="1" />
-      <var-option label="木叶村" :value="2" />
-      <var-option label="大筒木" :value="3" />
+      <var-option :label="`${pack.eat}${pack.groupUnit}`" />
+      <var-option :label="`${pack.sleep}${pack.groupUnit}`" />
+      <var-option :label="`${pack.play}${pack.groupUnit}`" />
     </var-select>
-    <var-select
-      class="mb"
-      placeholder="请选择特长"
-      multiple
-      chip
-      :rules="[(v) => (v && v.length > 0) || '至少选择一个特长!']"
-      v-model="form.skill"
-    >
-      <var-option label="火遁" :value="1" />
-      <var-option label="水遁" :value="2" />
-      <var-option label="嘴遁" :value="3" />
-    </var-select>
-    <var-radio-group class="mb" :rules="[(v) => !!v || '至少选择一个性别!']" v-model="form.gender">
-      <var-radio :checked-value="1">男</var-radio>
-      <var-radio :checked-value="2">女</var-radio>
+    <var-radio-group class="mb" :rules="[(v) => !!v || pack.genderMessage]" v-model="formData.gender">
+      <var-radio :checked-value="1">{{ pack.male }}</var-radio>
+      <var-radio :checked-value="2">{{ pack.female }}</var-radio>
     </var-radio-group>
-    <var-checkbox-group class="mb" :rules="[(v) => (v && v.length > 0) || '至少选择一个爱好!']" v-model="form.like">
-      <var-checkbox :checked-value="1">吃饭</var-checkbox>
-      <var-checkbox :checked-value="2">睡觉</var-checkbox>
-      <var-checkbox :checked-value="3">打游戏</var-checkbox>
+    <var-checkbox-group class="mb" :rules="[(v) => v.length > 0 || pack.likeMessage]" v-model="formData.like">
+      <var-checkbox :checked-value="1">{{ pack.eat }}</var-checkbox>
+      <var-checkbox :checked-value="2">{{ pack.sleep }}</var-checkbox>
+      <var-checkbox :checked-value="3">{{ pack.play }}</var-checkbox>
     </var-checkbox-group>
-    <var-radio class="mb" :rules="[(v) => !!v || '您必须确保同意才能提交!']" v-model="form.confirm"> 同意 </var-radio>
-    <var-uploader class="mt" :rules="[(v) => v.length >= 3 || '至少来三个']" v-model="form.files" />
-    <p style="display: flex">
-      <span style="margin-right: 8px">透视锁头</span>
-      <var-switch class="mb" :rules="[(v) => !!v || '不开挂你怎么玩']" v-model="form.open" />
-    </p>
-    <p style="display: flex;">
-      <span style="margin-right: 8px; margin-top: 2px">你JJ多少厘米</span>
-      <var-counter
-        :min="0"
-        :max="18"
-        :step="0.1"
-        v-model="form.count"
-        :decimal-length="1"
-        :rules="[
-          v => form.gender === 1 && v > 0 || '必须选择男性并且长度必须大于0'
-        ]"
-      />
-    </p>
-    <p style="display: flex;">
-      <span style="margin-right: 8px; margin-top: 2px">延迟校验</span>
-      <var-counter
-        :min="0"
-        :max="18"
-        :step="0.1"
-        v-model="form.count"
-        lazy-change
-        @before-change="handleBeforeChange"
-        :decimal-length="1"
-        :rules="[
-          v => form.gender === 1 && v > 0 || '必须选择男性并且长度必须大于0'
-        ]"
-      />
-    </p>
-
-    <var-slider class="mb" :rules="[(v) => v >= 35 || '前戏不好看！！']" v-model="form.slider" />
-    <var-button class="mt" block type="danger" @click="formEl.reset()">清空表单</var-button>
-    <var-button class="mt" block type="warning" @click="formEl.resetValidation()">清空验证</var-button>
-    <var-button class="mt" block type="success" @click="formEl.validate()">触发验证</var-button>
-    <var-button class="mt" block type="info" @click="disabled = !disabled">表单禁用</var-button>
-    <var-button class="mt" block type="primary" @click="readonly = !readonly">表单只读</var-button>
+    <div class="row mb">
+      <var-switch :rules="[(v) => !!v || pack.licenseMessage]" v-model="formData.license" />
+    </div>
+    <div class="row mb">
+      <var-counter :rules="[(v) => v > 10 || pack.countMessage]" v-model="formData.count" />
+    </div>
+    <var-slider class="mb" :rules="[(v) => v > 10 || pack.rangeMessage]" v-model="formData.range" />
+    <var-uploader class="mb" :rules="[(v) => v.length >= 1 || pack.filesMessage]" v-model="formData.files" />
   </var-form>
+
+  <app-type>{{ pack.controller }}</app-type>
+  <var-button class="mt" block type="danger" @click="form.reset()">{{ pack.reset }}</var-button>
+  <var-button class="mt" block type="warning" @click="form.resetValidation()">{{ pack.resetValidation }}</var-button>
+  <var-button class="mt" block type="success" @click="form.validate()">{{ pack.validate }}</var-button>
+  <var-button class="mt" block type="info" @click="disabled = !disabled">{{ pack.disabled }}</var-button>
+  <var-button class="mt" block type="primary" @click="readonly = !readonly">{{ pack.readonly }}</var-button>
+
+  <div class="space"></div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive, ref } from 'vue'
+<script>
 import Form from '..'
 import Input from '../../input'
 import Select from '../../select'
@@ -109,9 +78,12 @@ import Switch from '../../switch'
 import Slider from '../../slider'
 import Uploader from '../../uploader'
 import Counter from '../../counter'
-import Snackbar from '../../snackbar'
+import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
+import { reactive, ref } from 'vue'
+import { watchLang } from '../../utils/components'
+import { use, pack } from './locale'
 
-export default defineComponent({
+export default {
   name: 'FormExample',
   components: {
     [Form.name]: Form,
@@ -126,51 +98,63 @@ export default defineComponent({
     [Slider.name]: Slider,
     [Button.name]: Button,
     [Uploader.name]: Uploader,
-    [Counter.name]: Counter
+    [Counter.name]: Counter,
+    AppType,
   },
   setup() {
-    const form: any = reactive({
-      username: undefined,
-      password: undefined,
-      department: undefined,
+    const formData = reactive({
+      username: '',
+      password: '',
+      department: '',
       gender: undefined,
-      confirm: false,
-      open: false,
-      slider: 10,
+      license: false,
+      range: 10,
       count: 0,
       group: [],
-      skill: [],
       like: [],
       files: [],
     })
 
-    const formEl: any = ref(null)
-    const disabled: any = ref(false)
-    const readonly: any = ref(false)
+    const form = ref(null)
+    const disabled = ref(false)
+    const readonly = ref(false)
+
+    watchLang((lang) => {
+      use(lang)
+      form.value?.reset()
+    })
 
     return {
-      formEl,
+      pack,
       form,
+      formData,
       disabled,
       readonly,
-      handleBeforeChange(value: any, change: any) {
-        Snackbar.loading('lazy change')
-        setTimeout(() => {
-          change(value)
-          Snackbar.clear()
-        }, 1000)
-      }
     }
   },
-})
+}
 </script>
 
 <style scoped lang="less">
+.row {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.label {
+  margin-right: 10px;
+}
+
 .mb {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .mt {
   margin-top: 20px;
+}
+
+.space {
+  height: 40px;
 }
 </style>

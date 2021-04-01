@@ -6,18 +6,18 @@ export const props = {
   modelValue: {
     default: false,
   },
+  checkedValue: {
+    default: true,
+  },
+  uncheckedValue: {
+    default: false,
+  },
   disabled: {
     type: Boolean,
     default: false,
   },
   readonly: {
     type: Boolean,
-    default: false,
-  },
-  checkedValue: {
-    default: true,
-  },
-  uncheckedValue: {
     default: false,
   },
   checkedColor: {
@@ -27,7 +27,7 @@ export const props = {
     type: String,
   },
   iconSize: {
-    type: String,
+    type: [String, Number],
   },
   ripple: {
     type: Boolean,
@@ -38,15 +38,15 @@ export const props = {
     default: ['onChange'],
   },
   rules: {
-    type: Array as PropType<Array<(v: any) => any>>,
-  },
-  'onUpdate:modelValue': {
-    type: Function,
-  },
-  onChange: {
-    type: Function,
+    type: Array as PropType<Array<(value: any) => any>>,
   },
   onClick: {
-    type: Function,
+    type: Function as PropType<(e: Event) => void>,
+  },
+  onChange: {
+    type: Function as PropType<(value: any) => void>,
+  },
+  'onUpdate:modelValue': {
+    type: Function as PropType<(value: any) => void>,
   },
 }

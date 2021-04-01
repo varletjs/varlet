@@ -12,10 +12,10 @@
         :style="{ color: checked ? checkedColor : uncheckedColor }"
       >
         <slot name="checked-icon" v-if="checked">
-          <var-icon class="var-radio__icon" name="radio-marked" :style="{ fontSize: iconSize }" />
+          <var-icon class="var-radio__icon" name="radio-marked" :size="iconSize" />
         </slot>
         <slot name="unchecked-icon" v-else>
-          <var-icon class="var-radio__icon" name="radio-blank" :style="{ fontSize: iconSize }" />
+          <var-icon class="var-radio__icon" name="radio-blank" :size="iconSize" />
         </slot>
       </div>
       <div
@@ -29,20 +29,19 @@
       </div>
     </div>
 
-    <var-form-details class="var-radio__form-details" :error-message="errorMessage" />
+    <var-form-details :error-message="errorMessage" />
   </div>
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, nextTick, ref, Ref, watch } from 'vue'
-import { props, ValidateTriggers } from './props'
-import { useAtParentIndex, useParent, useValidation } from '../utils/components'
-import { RadioGroupProvider, RADIO_GROUP_COUNT_RADIO_KEY, RADIO_GROUP_BIND_RADIO_KEY } from '../radio-group/provide'
-import { RadioProvider } from './provide'
-import { FORM_BIND_FORM_ITEM_KEY, FormProvider } from '../form/provide'
 import Ripple from '../ripple'
 import Icon from '../icon'
 import FormDetails from '../form-details'
+import { computed, ComputedRef, defineComponent, nextTick, ref, Ref, watch } from 'vue'
+import { props, ValidateTriggers } from './props'
+import { useValidation } from '../utils/components'
+import { RadioProvider, useRadioGroup } from './provide'
+import { useForm } from '../form/provide'
 
 export default defineComponent({
   name: 'VarRadio',
@@ -54,69 +53,75 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const { bindParent: bindRadioGroup, parentProvider: radioGroupProvider } = useParent<
-      RadioGroupProvider,
-      RadioProvider
-    >(RADIO_GROUP_BIND_RADIO_KEY)
-    const { bindParent: bindForm, parentProvider: formProvider } = useParent<FormProvider, RadioProvider>(
-      FORM_BIND_FORM_ITEM_KEY
-    )
-    useAtParentIndex(RADIO_GROUP_COUNT_RADIO_KEY)
-
     const value: Ref<any> = ref(false)
     const checked: ComputedRef<boolean> = computed(() => value.value === props.checkedValue)
+    const { radioGroup, bindRadioGroup } = useRadioGroup()
+    const { form, bindForm } = useForm()
+    const {
+      errorMessage,
+      validateWithTrigger: vt,
+      validate: v,
+      // expose
+      resetValidation,
+    } = useValidation()
 
-    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
-
-    const validate = () => v(props.rules, props.modelValue)
-
-    const validateWithTrigger = (trigger: ValidateTriggers) =>
-      nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
+    const validateWithTrigger = (trigger: ValidateTriggers) => {
+      nextTick(() => {
+        const { validateTrigger, rules, modelValue } = props
+        vt(validateTrigger, trigger, rules, modelValue)
+      })
+    }
 
     const change = (changedValue: any) => {
-      if (radioGroupProvider && value.value === props.checkedValue) {
+      const { checkedValue, onChange } = props
+
+      if (radioGroup && value.value === checkedValue) {
         return
       }
 
       value.value = changedValue
+
       props['onUpdate:modelValue']?.(value.value)
-      props.onChange?.(value.value)
-
+      onChange?.(value.value)
+      radioGroup?.onToggle(checkedValue)
       validateWithTrigger('onChange')
-
-      radioGroupProvider?.onToggle(props.checkedValue)
-    }
-
-    const toggle = (changedValue?: any) => {
-      const isInvalidValue = changedValue !== props.uncheckedValue && changedValue !== props.checkedValue
-      if (changedValue != null && (isInvalidValue || changedValue === value.value)) {
-        return
-      }
-
-      if (changedValue == null) {
-        changedValue = checked.value ? props.uncheckedValue : props.checkedValue
-      }
-
-      change(changedValue)
     }
 
     const handleClick = (e: Event) => {
-      if (formProvider?.disabled.value || formProvider?.readonly.value || props.disabled || props.readonly) {
+      const { disabled, readonly, uncheckedValue, checkedValue, onClick } = props
+
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
 
-      props.onClick?.(e)
-
-      change(checked.value ? props.uncheckedValue : props.checkedValue)
+      onClick?.(e)
+      change(checked.value ? uncheckedValue : checkedValue)
     }
 
     const sync = (v: any) => {
-      value.value = v === props.checkedValue ? props.checkedValue : props.uncheckedValue
+      const { checkedValue, uncheckedValue } = props
+      value.value = v === checkedValue ? checkedValue : uncheckedValue
     }
 
+    // expose
     const reset = () => {
       props['onUpdate:modelValue']?.(props.uncheckedValue)
       resetValidation()
+    }
+
+    // expose
+    const validate = () => v(props.rules, props.modelValue)
+
+    // expose
+    const toggle = (changedValue?: any) => {
+      const { uncheckedValue, checkedValue } = props
+
+      const shouldReverse = ![uncheckedValue, checkedValue].includes(changedValue)
+      if (shouldReverse) {
+        changedValue = checked.value ? uncheckedValue : checkedValue
+      }
+
+      change(changedValue)
     }
 
     watch(
@@ -140,9 +145,9 @@ export default defineComponent({
     return {
       checked,
       errorMessage,
-      radioGroupErrorMessage: radioGroupProvider?.errorMessage,
-      formDisabled: formProvider?.disabled,
-      formReadonly: formProvider?.readonly,
+      radioGroupErrorMessage: radioGroup?.errorMessage,
+      formDisabled: form?.disabled,
+      formReadonly: form?.readonly,
       handleClick,
       toggle,
       reset,

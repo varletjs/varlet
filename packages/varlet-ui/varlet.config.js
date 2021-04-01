@@ -170,6 +170,13 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Radio 单选框',
+          'en-US': 'Radio',
+        },
+        doc: 'radio-group',
+      },
+      {
+        text: {
           'zh-CN': 'Checkbox 复选框',
           'en-US': 'Checkbox',
         },
@@ -279,13 +286,6 @@ module.exports = {
           'en-US': 'Steps',
         },
         doc: 'steps',
-      },
-      {
-        text: {
-          'zh-CN': 'Radio 单选框',
-          'en-US': 'Radio',
-        },
-        doc: 'radio',
       },
       {
         text: {

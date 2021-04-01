@@ -68,6 +68,7 @@ export default {
   <template #default>
     Current value: {{ value }}
   </template>
+</var-checkbox>
 ```
 
 ### Disabled
@@ -227,4 +228,4 @@ export default {
 | `@checkbox-disabled-color` | `#aaa` |
 | `@checkbox-error-color` | `@color-danger` |
 | `@checkbox-action-padding` | `6px` |
-| `@checkbox-action-size` | `24px` |
+| `@checkbox-icon-size` | `24px` |

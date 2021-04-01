@@ -68,6 +68,7 @@ export default {
   <template #default>
     当前的值: {{ value }}
   </template>
+</var-checkbox>
 ```
 
 ### 禁用
@@ -146,7 +147,7 @@ export default {
 | `v-model` | 绑定的值 | _any[]_ | `[]` |
 | `max` | 最大选择的数量 | _string \| number_ | `-` |
 | `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string \| number_ | `horizontal` |
-| `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _string \| number_ | `horizontal` |
+| `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any[]) => any>_ | `horizontal` |
 
 ### Checkbox Props
 
@@ -157,7 +158,7 @@ export default {
 | `unchecked-value` | 未选中状态的值 | _any_ | `false` |
 | `checked-color` | 选中状态的颜色 | _any_ | `-` |
 | `unchecked-color` | 未选中状态的颜色 | _any_ | `-` |
-| `icon-size` | 图标尺寸 | _string |\ number_ | `-` |
+| `icon-size` | 图标尺寸 | _string \| number_ | `-` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
@@ -227,4 +228,4 @@ export default {
 | `@checkbox-disabled-color` | `#aaa` |
 | `@checkbox-error-color` | `@color-danger` |
 | `@checkbox-action-padding` | `6px` |
-| `@checkbox-action-size` | `24px` |
+| `@checkbox-icon-size` | `24px` |

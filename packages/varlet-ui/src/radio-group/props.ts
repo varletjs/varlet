@@ -8,7 +8,7 @@ export function directionValidator(direction: string) {
 
 export const props = {
   modelValue: {
-    default: false,
+    default: undefined,
   },
   direction: {
     type: String,
@@ -19,12 +19,12 @@ export const props = {
     default: ['onChange'],
   },
   rules: {
-    type: Array as PropType<Array<(v: any) => any>>,
+    type: Array as PropType<Array<(value: any) => any>>,
   },
   onChange: {
-    type: Function,
+    type: Function as PropType<(value: any) => void>,
   },
   'onUpdate:modelValue': {
-    type: Function,
+    type: Function as PropType<(value: any) => void>,
   },
 }

@@ -34,8 +34,6 @@ export const isHTMLSupportImage = (val: string) => val.startsWith('data:image') 
 
 export const isHTMLSupportVideo = (val: string) => val.startsWith('data:video') || /\.(mp4|webm|ogg)$/.test(val)
 
-export const isHTMLSupportAudio = (val: string) => val.startsWith('data:audio') || /\.(mp3|wav|ogg|acc)$/.test(val)
-
 export const isString = (val: unknown): val is string => typeof val === 'string'
 
 export const isBool = (val: unknown): val is boolean => typeof val === 'boolean'

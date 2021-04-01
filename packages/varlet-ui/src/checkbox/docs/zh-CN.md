@@ -9,7 +9,7 @@
 | `unchecked-value` | 未选中状态的值 | _any_ | `false` |
 | `checked-color` | 选中状态的颜色 | _any_ | `-` |
 | `unchecked-color` | 未选中状态的颜色 | _any_ | `-` |
-| `icon-size` | 图标尺寸 | _string |\ number_ | `-` |
+| `icon-size` | 图标尺寸 | _string \| number_ | `-` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |

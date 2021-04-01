@@ -40,10 +40,10 @@ export const props = {
     default: true,
   },
   maxlength: {
-    type: Number,
+    type: [Number, String],
   },
   maxsize: {
-    type: Number,
+    type: [Number, String],
   },
   previewed: {
     type: Boolean,
@@ -60,9 +60,6 @@ export const props = {
   rules: {
     type: Array as PropType<Array<(v: VarFile) => any>>,
   },
-  'onUpdate:modelValue': {
-    type: Function,
-  },
   onBeforeRead: {
     type: Function as PropType<(file: VarFile) => Promise<boolean> | boolean>,
   },
@@ -71,5 +68,11 @@ export const props = {
   },
   onOversize: {
     type: Function as PropType<(file: VarFile) => any>,
+  },
+  onRemove: {
+    type: Function as PropType<(file: VarFile) => any>,
+  },
+  'onUpdate:modelValue': {
+    type: Function as PropType<(files: VarFile[]) => any>,
   },
 }

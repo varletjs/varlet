@@ -1,21 +1,20 @@
 <template>
-	<div class="var-radio-group__wrap">
-		<div class="var-radio-group" :class="[`var-radio-group--${direction}`]" v-bind="$attrs">
-			<slot />
-		</div>
+  <div class="var-radio-group__wrap" v-bind="$attrs">
+    <div class="var-radio-group" :class="[`var-radio-group--${direction}`]">
+      <slot />
+    </div>
 
-		<var-form-details class="var-radio-group__form-details" :error-message="errorMessage" />
-	</div>
+    <var-form-details :error-message="errorMessage" />
+  </div>
 </template>
 
 <script lang="ts">
+import FormDetails from '../form-details'
 import { computed, ComputedRef, defineComponent, nextTick, watch } from 'vue'
 import { props, ValidateTriggers } from './props'
-import { useAtChildrenCounter, useChildren, useParent, useValidation } from '../utils/components'
-import { RadioGroupProvider, RADIO_GROUP_BIND_RADIO_KEY, RADIO_GROUP_COUNT_RADIO_KEY } from './provide'
-import { RadioProvider } from '../radio/provide'
-import FormDetails from '../form-details'
-import { FORM_BIND_FORM_ITEM_KEY, FormProvider } from '../form/provide'
+import { useValidation } from '../utils/components'
+import { RadioGroupProvider, useRadios } from './provide'
+import { useForm } from '../form/provide'
 
 export default defineComponent({
   name: 'VarRadioGroup',
@@ -25,50 +24,55 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const { bindChildren: bindRadio, childProviders: radioProviders } = useChildren<RadioGroupProvider, RadioProvider>(
-      RADIO_GROUP_BIND_RADIO_KEY
-    )
-    const { bindParent: bindForm } = useParent<FormProvider, RadioGroupProvider>(FORM_BIND_FORM_ITEM_KEY)
-    const { length } = useAtChildrenCounter(RADIO_GROUP_COUNT_RADIO_KEY)
+    const { length, radios, bindRadios } = useRadios()
+    const { bindForm } = useForm()
+    const {
+      errorMessage,
+      validateWithTrigger: vt,
+      validate: v,
+      // expose
+      resetValidation,
+    } = useValidation()
+    const radioGroupErrorMessage: ComputedRef<string> = computed(() => errorMessage.value)
 
-    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
-    const errorMessageComputed: ComputedRef<string> = computed(() => errorMessage.value)
-
-    const validate = () => v(props.rules, props.modelValue)
-
-    const validateWithTrigger = (trigger: ValidateTriggers) =>
-      nextTick(() => vt(props.validateTrigger, trigger, props.rules, props.modelValue))
-
-    const syncAllRadio = () => {
-      radioProviders.forEach(({ sync }) => sync(props.modelValue))
+    const validateWithTrigger = (trigger: ValidateTriggers) => {
+      nextTick(() => {
+        const { validateTrigger, rules, modelValue } = props
+        vt(validateTrigger, trigger, rules, modelValue)
+      })
     }
+
+    const syncRadios = () => radios.forEach(({ sync }) => sync(props.modelValue))
 
     const onToggle = (changedValue: any) => {
       props['onUpdate:modelValue']?.(changedValue)
       props.onChange?.(changedValue)
-
       validateWithTrigger('onChange')
     }
 
+    // expose
+    const validate = () => v(props.rules, props.modelValue)
+
+    // expose
     const reset = () => {
       props['onUpdate:modelValue']?.(undefined)
       resetValidation()
     }
 
-    watch(() => props.modelValue, syncAllRadio)
+    watch(() => props.modelValue, syncRadios)
 
-    watch(() => length.value, syncAllRadio)
+    watch(() => length.value, syncRadios)
 
     const radioGroupProvider: RadioGroupProvider = {
       onToggle,
       validate,
       reset,
       resetValidation,
-      errorMessage: errorMessageComputed,
+      errorMessage: radioGroupErrorMessage,
     }
 
-    bindRadio(radioGroupProvider)
     bindForm?.(radioGroupProvider)
+    bindRadios(radioGroupProvider)
 
     return {
       errorMessage,

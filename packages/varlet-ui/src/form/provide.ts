@@ -1,5 +1,5 @@
 import { ComputedRef } from 'vue'
-import { useParent } from '../utils/components'
+import { useChildren, useParent } from '../utils/components'
 
 export interface Validation {
   validate(): Promise<boolean>
@@ -20,5 +20,14 @@ export function useForm<C = Validation>() {
   return {
     bindForm: bindParent,
     form: parentProvider,
+  }
+}
+
+export function useFormItems() {
+  const { bindChildren, childProviders } = useChildren<FormProvider, Validation>(FORM_BIND_FORM_ITEM_KEY)
+
+  return {
+    formItems: childProviders,
+    bindFormItems: bindChildren,
   }
 }

@@ -1,6 +1,6 @@
 <template>
-  <div class="var-checkbox-group__wrap">
-    <div class="var-checkbox-group" :class="[`var-checkbox-group--${direction}`]" v-bind="$attrs">
+  <div class="var-checkbox-group__wrap" v-bind="$attrs">
+    <div class="var-checkbox-group" :class="[`var-checkbox-group--${direction}`]">
       <slot />
     </div>
     <var-form-details :error-message="errorMessage" />
