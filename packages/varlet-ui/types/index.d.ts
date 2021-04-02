@@ -11,6 +11,7 @@ import { Collapse } from './Collapse'
 import { CollapseItem } from './CollapseItem'
 import { Countdown } from './Countdown'
 import { Counter } from './Counter'
+import { DatePicker } from './DatePicker'
 import { Dialog } from './Dialog'
 import { Form } from './Form'
 import { Icon } from './Icon'
@@ -33,6 +34,8 @@ import { Ripple } from './Ripple'
 import { Row } from './Row'
 import { Select } from './Select'
 import { Slider } from './Slider'
+import { Step } from './Step'
+import { Steps } from './Steps'
 import { Sticky } from './Sticky'
 import { Swipe } from './Swipe'
 import { SwipeItem } from './SwipeItem'
@@ -41,6 +44,7 @@ import { Tab } from './Tab'
 import { TabItem } from './TabItem'
 import { Tabs } from './Tabs'
 import { TabsItems } from './TabsItems'
+import { TimePicker } from './TimePicker'
 import { Uploader } from './Uploader'
 import { VarComponent } from './VarComponent'
 import { VarDirective } from './VarDirective'
@@ -62,6 +66,7 @@ export {
   CollapseItem,
   Countdown,
   Counter,
+  DatePicker,
   Dialog,
   Form,
   Icon,
@@ -84,6 +89,8 @@ export {
   Row,
   Select,
   Slider,
+  Step,
+  Steps,
   Sticky,
   Swipe,
   SwipeItem,
@@ -92,6 +99,7 @@ export {
   TabItem,
   Tabs,
   TabsItems,
+  TimePicker,
   Uploader,
   VarComponent,
   VarDirective,

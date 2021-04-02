@@ -1,4 +1,5 @@
-y  "compilerOptions": {
+{
+  "compilerOptions": {
     "outDir": "./lib",
     "target": "es5",
     "module": "commonjs",
