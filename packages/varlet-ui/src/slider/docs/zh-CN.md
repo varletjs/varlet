@@ -139,3 +139,16 @@ export default {
 | `change` | 	值改变时触发| value: 当前进度|
 | `start` | 开始拖动时触发 | - |
 | `end` | 结束拖动时触发 | value: 当前进度 |
+
+### 主题变量
+#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `@slider-error-color` | `#f44336` |
+| `@slider-track-background` | `#bdbdbd` |
+| `@slider-track-fill-background` | `#2979ff` |
+| `@slider-thumb-block-background` | `#2979ff` |
+| `@slider-thumb-ripple-background` | `#2979ff` |
+| `@slider-thumb-label-background` | `#2979ff` |
+| `@slider-thumb-label-font-size` | `12px` |

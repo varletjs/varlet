@@ -175,4 +175,4 @@ export default {
 | `@button-mini-height` | `20px` |
 | `@button-small-height` | `28px` |
 | `@button-normal-height` | `36px` |
-| `@button-large-height:` | `44px` |
+| `@button-large-height` | `44px` |

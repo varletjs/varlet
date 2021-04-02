@@ -100,3 +100,14 @@ Use ref to get IndexBar instance and call instance methods.
 | Name | Description	 | arguments |
 | ---- | ------- | -------- |
 | `scrollTo` | scroll to target element	 | `index: number ｜ string` |
+
+### Theme Variables
+#### The following LESS variables can be overridden at build time to modify the theme style
+
+| Variable | Default |
+| --- | --- |
+| `@index-bar-list-item-font-size` | `10px` |
+| `@index-bar-list-item-color` | `#2979ff` |
+| `@index-bar-list-item-active-color` | `#ee0a24` |
+| `@index-bar-list-item-height` | `14px` |
+| `@index-bar-list-item-padding` | `0 10px` |

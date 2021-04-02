@@ -1,0 +1,20 @@
+@back-top-right: 40px;
+@back-top-bottom: 40px;
+@back-top-button-size: 40px;
+
+.var-back-top {
+  position: fixed;
+  right: @back-top-right;
+  bottom: @back-top-bottom;
+  transform: scale(0);
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+
+  &__button {
+    width: @back-top-button-size;
+    height: @back-top-button-size;
+  }
+
+  &--active {
+    transform: scale(1);
+  }
+}

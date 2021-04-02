@@ -142,3 +142,16 @@ Use `rules` to validate the value
 | `change` | 	Emitted after slider changed | value: current value |
 | `start` | Emitted when start dragged | - |
 | `end` | Emitted when end dragged | value: current value |
+
+### Theme Variables
+#### The following LESS variables can be overridden at build time to modify the theme style
+
+| Variable | Default |
+| --- | --- |
+| `@slider-error-color` | `#f44336` |
+| `@slider-track-background` | `#bdbdbd` |
+| `@slider-track-fill-background` | `#2979ff` |
+| `@slider-thumb-block-background` | `#2979ff` |
+| `@slider-thumb-ripple-background` | `#2979ff` |
+| `@slider-thumb-label-background` | `#2979ff` |
+| `@slider-thumb-label-font-size` | `12px` |

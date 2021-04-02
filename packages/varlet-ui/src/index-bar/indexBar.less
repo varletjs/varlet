@@ -1,5 +1,11 @@
 @import '../styles/var';
 
+@index-bar-list-item-font-size: @font-size-xs;
+@index-bar-list-item-color: @color-primary;
+@index-bar-list-item-active-color: #ee0a24;
+@index-bar-list-item-height: 14px;
+@index-bar-list-item-padding: 0 10px;
+
 .var-index-bar {
   position: relative;
   height: 100%;
@@ -12,20 +18,20 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: @font-size-xs;
   }
 
   &__anchor-item {
+    font-size: @index-bar-list-item-font-size;
     display: flex;
     align-items: center;
-    height: 14px;
+    height: @index-bar-list-item-height;
     justify-content: center;
-    padding: 0 10px;
-    color: @color-primary;
+    padding: @index-bar-list-item-padding;
+    color: @index-bar-list-item-color;
     cursor: pointer;
 
     &--active {
-      color: #ee0a24;
+      color: @index-bar-list-item-active-color;
     }
   }
 }

@@ -1,44 +1,50 @@
 @import '../styles/elevation';
 @import '../styles/var';
 
+@pull-refresh-size: 40px;
+@pull-refresh-background: #fff;
+@pull-refresh-color: @color-primary;
+@pull-refresh-success-color: @color-success;
+@pull-refresh-icon-size: 25px;
+
 .var-pull-refresh {
-	overflow: hidden;
-	position: relative;
-	user-select: none;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
 
-	&__control {
-		display: flex;
-		width: 40px;
-		height: 40px;
-		align-items: center;
-		justify-content: center;
-		background-color: #fff;
-		border-radius: 50%;
-		position: absolute;
-		left: 50%;
-		z-index: 90;
-		color: @color-primary;
+  &__control {
+    display: flex;
+    width: @pull-refresh-size;
+    height: @pull-refresh-size;
+    align-items: center;
+    justify-content: center;
+    background-color: @pull-refresh-background;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    z-index: 90;
+    color: @pull-refresh-color;
 
-		&-success {
-			color: @color-success;
-		}
+    &-success {
+      color: @pull-refresh-success-color;
+    }
 
-		.var-icon {
-			font-size: 25px;
-		}
-	}
+    .var-icon {
+      font-size: @pull-refresh-icon-size;
+    }
+  }
 
-	&__animation {
-		transform: rotate(0deg);
-		animation: iconRotate 0.6s infinite linear;
-	}
+  &__animation {
+    transform: rotate(0deg);
+    animation: iconRotate 0.6s infinite linear;
+  }
 
-	@keyframes iconRotate {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
+  @keyframes iconRotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }

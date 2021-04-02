@@ -81,3 +81,15 @@ export default {
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- | 
 | `default` | Default slot | - |
+
+
+### Theme Variables
+#### The following LESS variables can be overridden at build time to modify the theme style
+
+| Variable | Default |
+| --- | --- |
+| `@pull-refresh-size` | `40px` |
+| `@pull-refresh-background` | `#fff` |
+| `@pull-refresh-color` | `#2979ff` |
+| `@pull-refresh-success-color` | `#4caf50` |
+| `@pull-refresh-icon-size` | `25px` |

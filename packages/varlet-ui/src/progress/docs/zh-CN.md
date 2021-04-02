@@ -203,3 +203,12 @@ createApp().use(Progress)
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
 | `default` | 自定义 action | - |
+
+### 主题变量
+#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `@progress-font-size` | `12px` |
+| `@progress-ripple-color` | `#fff` |
+| `@progress-background` | `#2979ff` |

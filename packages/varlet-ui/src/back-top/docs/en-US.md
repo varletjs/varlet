@@ -53,3 +53,12 @@ export default {
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
 | `default` | Custom the content | - |
+
+### Theme Variables
+#### The following LESS variables can be overridden at build time to modify the theme style
+
+| Variable | Default |
+| --- | --- |
+| `@back-top-right` | `40px` |
+| `@back-top-bottom` | `40px` |
+| `@back-top-button-size` | `40px` |

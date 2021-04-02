@@ -1,120 +1,128 @@
 @import '../styles/var';
 
+@slider-error-color: @color-danger;
+@slider-track-background: #bdbdbd;
+@slider-track-fill-background: @color-primary;
+@slider-thumb-block-background: @color-primary;
+@slider-thumb-ripple-background: @color-primary;
+@slider-thumb-label-background: @color-primary;
+@slider-thumb-label-font-size: @font-size-sm;
+
 .var-slider {
-	&-block {
-		display: flex;
-		align-items: center;
-		position: relative;
-		flex: 1;
-		user-select: none;
-		height: 36px;
-		margin: 0 6px;
-	}
+  &-block {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex: 1;
+    user-select: none;
+    height: 36px;
+    margin: 0 6px;
+  }
 
-	&__disable {
-		filter: opacity(0.6);
-	}
+  &__disable {
+    filter: opacity(0.6);
+  }
 
-	&__track {
-		width: 100%;
-		height: 2px;
-		align-items: center;
-		position: relative;
-		background: #bdbdbd;
+  &__track {
+    width: 100%;
+    height: 2px;
+    align-items: center;
+    position: relative;
+    background: @slider-track-background;
 
-		&-fill {
-			position: absolute;
-			height: 100%;
-			left: 0;
-			background-color: @color-primary;
-		}
-	}
+    &-fill {
+      position: absolute;
+      height: 100%;
+      left: 0;
+      background-color: @slider-track-fill-background;
+    }
+  }
 
-	&__thumb {
-		position: absolute;
+  &__thumb {
+    position: absolute;
 
-		&-block {
-			position: absolute;
-			width: 12px;
-			height: 12px;
-			border-radius: 50%;
-			transform: translate(-50%, -50%);
-			background-color: @color-primary;
-		}
+    &-block {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background-color: @slider-thumb-block-background;
+    }
 
-		&-ripple {
-			position: absolute;
-			width: 0;
-			z-index: -1;
-			height: 0;
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%);
-			border-radius: 50%;
-			opacity: 0.3;
-			background: @color-primary;
-			transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    &-ripple {
+      position: absolute;
+      width: 0;
+      z-index: -1;
+      height: 0;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      opacity: 0.3;
+      background: @slider-thumb-ripple-background;
+      transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 
-			&-active {
-				width: 36px;
-				height: 36px;
-			}
-		}
+      &-active {
+        width: 36px;
+        height: 36px;
+      }
+    }
 
-		&-label {
-			height: 24px;
-			width: 24px;
-			background-color: @color-primary;
-			display: flex;
-			align-items: center;
-			border: none;
-			justify-content: center;
-			color: #fff;
-			border-radius: 50% 50% 0;
-			bottom: 60%;
-			user-select: none;
-			position: absolute;
-			left: 45%;
-			transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-			font-size: @font-size-sm;
-			overflow: hidden;
-			transform: translateY(0) translateY(0) translateX(-50%) rotate(45deg) scale(0);
+    &-label {
+      height: 24px;
+      width: 24px;
+      background-color: @slider-thumb-label-background;
+      display: flex;
+      align-items: center;
+      border: none;
+      justify-content: center;
+      color: #fff;
+      border-radius: 50% 50% 0;
+      bottom: 60%;
+      user-select: none;
+      position: absolute;
+      left: 45%;
+      transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      font-size: @slider-thumb-label-font-size;
+      overflow: hidden;
+      transform: translateY(0) translateY(0) translateX(-50%) rotate(45deg) scale(0);
 
-			span {
-				transform: rotate(-45deg);
-			}
+      span {
+        transform: rotate(-45deg);
+      }
 
-			&-active {
-				transform: translateY(-50%) translateX(-50%) rotate(45deg) scale(1);
-			}
-		}
-	}
+      &-active {
+        transform: translateY(-50%) translateX(-50%) rotate(45deg) scale(1);
+      }
+    }
+  }
 
-	&__error {
-		.var-slider__track {
-			background: lighten(@color-danger, 25%) !important;
+  &__error {
+    .var-slider__track {
+      background: lighten(@slider-error-color, 25%) !important;
 
-			&-fill {
-				background-color: @color-danger !important;
-			}
-		}
+      &-fill {
+        background-color: @slider-error-color !important;
+      }
+    }
 
-		.var-slider__thumb {
-			&-block {
-				background-color: @color-danger !important;
-			}
+    .var-slider__thumb {
+      &-block {
+        background-color: @slider-error-color !important;
+      }
 
-			&-ripple {
-				background-color: @color-danger !important;
-			}
+      &-ripple {
+        background-color: @slider-error-color !important;
+      }
 
-			&-label {
-				background-color: @color-danger !important;
-			}
-		}
-	}
+      &-label {
+        background-color: @slider-error-color !important;
+      }
+    }
+  }
 
-	.var-form-details {
-		margin-left: 6px;
-	}
+  .var-form-details {
+    margin-left: 6px;
+  }
 }

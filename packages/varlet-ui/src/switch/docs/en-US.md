@@ -96,3 +96,17 @@ Use `rules` to validate the value
 | ----- | -------------- | -------- |
 | `click` | Emitted when component is clicked | `event: Event` |
 | `change` | Emitted when check status changed | `value: boolean` |
+
+### Theme Variables
+#### The following LESS variables can be overridden at build time to modify the theme style
+
+| Variable | Default |
+| --- | --- |
+| `@switch-track-background` | `#fff` |
+| `@switch-track-active-background` | `#2979ff` |
+| `@switch-track-error-background` | `#f44336` |
+| `@switch-ripple-color` | `#2979ff` |
+| `@switch-handle-background` | `#fff` |
+| `@switch-handle-color` | `#fff` |
+| `@switch-handle-active-background` | `#2979ff` |
+| `@switch-handle-error-background` | `#f44336` |

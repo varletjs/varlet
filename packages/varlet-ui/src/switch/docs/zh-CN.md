@@ -96,3 +96,18 @@ export default {
 | ----- | -------------- | -------- |
 | `click` | 点击时触发 | `event: Event` |
 | `change` | 开关状态切换时触发 | `value: boolean` |
+
+### 主题变量
+#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `@switch-track-background` | `#fff` |
+| `@switch-track-active-background` | `#2979ff` |
+| `@switch-track-error-background` | `#f44336` |
+| `@switch-ripple-color` | `#2979ff` |
+| `@switch-handle-background` | `#fff` |
+| `@switch-handle-color` | `#fff` |
+| `@switch-handle-active-background` | `#2979ff` |
+| `@switch-handle-error-background` | `#f44336` |
+

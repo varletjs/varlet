@@ -100,3 +100,14 @@ createApp().use(IndexAnchor)
 | 方法名 | 说明 | 参数 |
 | ---- | ------- | -------- |
 | `scrollTo` | 滚动到指定锚点	 | `index: number ｜ string` |
+
+### 主题变量
+#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `@index-bar-list-item-font-size` | `10px` |
+| `@index-bar-list-item-color` | `#2979ff` |
+| `@index-bar-list-item-active-color` | `#ee0a24` |
+| `@index-bar-list-item-height` | `14px` |
+| `@index-bar-list-item-padding` | `0 10px` |

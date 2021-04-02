@@ -51,9 +51,8 @@ export default defineComponent({
     }
 
     const isReachBottom = () => {
-      const containerBottom = scroller === window
-        ? window.innerHeight
-        : (scroller as HTMLElement).getBoundingClientRect().bottom
+      const containerBottom =
+        scroller === window ? window.innerHeight : (scroller as HTMLElement).getBoundingClientRect().bottom
 
       const { bottom: detectorBottom } = (detectorEl.value as HTMLElement).getBoundingClientRect()
 
@@ -77,8 +76,6 @@ export default defineComponent({
 
     onMounted(() => {
       scroller = getParentScroller(listEl.value as HTMLElement)
-
-      console.log(scroller)
 
       props.immediateCheck && check()
 

@@ -203,3 +203,12 @@ Use `show-track` to hide Progress-Track.
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
 | `default` | Custom action | - |
+
+### Theme Variables
+#### The following LESS variables can be overridden at build time to modify the theme style
+
+| Variable | Default |
+| --- | --- |
+| `@progress-font-size` | `12px` |
+| `@progress-ripple-color` | `#fff` |
+| `@progress-background` | `#2979ff` |

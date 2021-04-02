@@ -60,3 +60,19 @@ createApp().use(Cell)
 | `icon` | Icon of cell | - |
 | `desc` | Description of cell | - |
 | `extra` | Extra of cell | - |
+
+### Theme Variables
+#### The following LESS variables can be overridden at build time to modify the theme style
+
+| Variable | Default |
+| --- | --- |
+| `@cell-font-size` | `14px` |
+| `@cell-desc-font-size` | `12px` |
+| `@cell-desc-color` | `rgba(0, 0, 0, 0.6)` |
+| `@cell-padding` | `10px 12px` |
+| `@cell-min-height` | `40px` |
+| `@cell-border-color` | `#bcc2cb` |
+| `@cell-border-left` | `12px` |
+| `@cell-border-right` | `12px` |
+| `@cell-icon-right` | `8px` |
+| `@cell-extra-left` | `8px` |

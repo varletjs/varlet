@@ -80,3 +80,14 @@ export default {
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
 | `default` | 默认插槽 | - |
+
+### 主题变量
+#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `@pull-refresh-size` | `40px` |
+| `@pull-refresh-background` | `#fff` |
+| `@pull-refresh-color` | `#2979ff` |
+| `@pull-refresh-success-color` | `#4caf50` |
+| `@pull-refresh-icon-size` | `25px` |

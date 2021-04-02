@@ -1,63 +1,69 @@
 @import '../styles/var';
 @import '../styles/elevation';
 
-@var-switch-normal-width: 40px;
-@var-switch-normal-height: 24px;
+@switch-track-background: #fff;
+@switch-track-active-background: @color-primary;
+@switch-track-error-background: @color-danger;
+@switch-ripple-color: @color-primary;
+@switch-handle-background: #fff;
+@switch-handle-color: #fff;
+@switch-handle-active-background: @color-primary;
+@switch-handle-error-background: @color-danger;
 
 .var-switch {
-	display: inline-block;
+  display: inline-block;
 
-	&-block {
-		position: relative;
-		display: flex;
-		cursor: pointer;
-		align-items: center;
-		justify-content: center;
-	}
+  &-block {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
 
-	&__disable {
-		filter: opacity(0.6);
-		cursor: not-allowed;
-	}
+  &__disable {
+    filter: opacity(0.6);
+    cursor: not-allowed;
+  }
 
-	&__track {
-		background: white;
-		filter: opacity(0.6);
+  &__track {
+    background: @switch-track-background;
+    filter: opacity(0.6);
 
-		&-active {
-			background-color: @color-primary;
-		}
+    &-active {
+      background-color: @switch-track-active-background;
+    }
 
-		&-error {
-			background-color: @color-danger !important;
-		}
-	}
+    &-error {
+      background-color: @switch-track-error-background !important;
+    }
+  }
 
-	&__ripple {
-		position: absolute;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: @color-primary;
-		border-radius: 50%;
-		overflow: hidden;
-		transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-	}
+  &__ripple {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: @switch-ripple-color;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+  }
 
-	&__handle {
-		border-radius: 50%;
-		background-color: white;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: white;
+  &__handle {
+    border-radius: 50%;
+    background-color: @switch-handle-background;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: @switch-handle-color;
 
-		&-active {
-			background-color: @color-primary;
-		}
+    &-active {
+      background-color: @switch-handle-active-background;
+    }
 
-		&-error {
-			background-color: @color-danger !important;
-		}
-	}
+    &-error {
+      background-color: @switch-handle-error-background !important;
+    }
+  }
 }

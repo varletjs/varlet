@@ -76,22 +76,5 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-.var {
-  &-back-top {
-    position: fixed;
-    right: 40px;
-    bottom: 40px;
-    transform: scale(0);
-    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-
-    &__button {
-      width: 40px;
-      height: 40px;
-    }
-
-    &--active {
-      transform: scale(1);
-    }
-  }
-}
+@import './backTop';
 </style>
