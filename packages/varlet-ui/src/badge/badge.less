@@ -7,16 +7,6 @@
 @chip-warning-color: @color-warning;
 @chip-info-color: @color-info;
 
-.var {
-  &-fade-leave-to {
-    opacity: 0;
-  }
-
-  &-fade-leave-active {
-    transition: opacity 0.3s;
-  }
-}
-
 .var-badge {
   display: inline-block;
   position: relative;
@@ -30,6 +20,10 @@
     vertical-align: middle;
     text-align: center;
     display: inline-block;
+  }
+
+  &__position {
+    border: 2px #ffffff solid;
   }
 
   &--default {
@@ -84,11 +78,7 @@
     transform: translateY(50%) translateX(-100%);
   }
 
-  &--position {
-    border: 2px #ffffff solid;
-  }
-
-  &--dot {
+  &__dot {
     box-sizing: content-box;
     width: 8px;
     height: 8px;
@@ -96,11 +86,21 @@
     padding: 0;
   }
 
-  &--dot-right {
+  &__dot--right {
     right: 6px;
   }
 
-  &--dot-left {
+  &__dot--left {
     left: 6px;
+  }
+
+  &-fade-enter-active,
+  &-fade-leave-active {
+    transition: opacity 0.15s cubic-bezier(0.25, 0.8, 0.5, 1);
+  }
+
+  &-fade-enter-from,
+  &-fade-leave-to {
+    opacity: 0;
   }
 }

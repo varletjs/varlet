@@ -7,42 +7,42 @@ function positionValidator(position: string): boolean {
 }
 
 export const props = {
-//  徽标类型
+  // 徽标类型
   type: {
     type: String,
     default: 'default',
-    validator: typeValidator
+    validator: typeValidator,
   },
-  //  是否隐藏徽标
+  // 是否隐藏徽标
   hidden: {
     type: Boolean,
-    default: false
+    default: false,
   },
-  //  是否是小圆点
+  // 是否是小圆点
   dot: {
     type: Boolean,
-    default: false
+    default: false,
   },
-  //  显示的值
+  // 显示的值
   value: {
     type: [String, Number],
-    default: 0
+    default: 0,
   },
   // 显示最大值
   maxValue: {
-    type: [String, Number]
+    type: [String, Number],
   },
-  //  自定义徽标颜色
+  // 自定义徽标颜色
   color: {
-    type: String
+    type: String,
   },
-  //  定位位置
+  // 定位位置
   position: {
     type: String,
-    validator: positionValidator
+    validator: positionValidator,
   },
-  //  图标
-  icon:{
-    type:String
-  }
+  // 图标
+  icon: {
+    type: String,
+  },
 }
