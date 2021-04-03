@@ -145,10 +145,10 @@ export default {
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@slider-error-color` | `#f44336` |
+| `@slider-error-color` | `@color-danger` |
 | `@slider-track-background` | `#bdbdbd` |
-| `@slider-track-fill-background` | `#2979ff` |
-| `@slider-thumb-block-background` | `#2979ff` |
-| `@slider-thumb-ripple-background` | `#2979ff` |
-| `@slider-thumb-label-background` | `#2979ff` |
-| `@slider-thumb-label-font-size` | `12px` |
+| `@slider-track-fill-background` | `@color-primary` |
+| `@slider-thumb-block-background` | `@color-primary` |
+| `@slider-thumb-ripple-background` | `@color-primary` |
+| `@slider-thumb-label-background` | `@color-primary` |
+| `@slider-thumb-label-font-size` | `@font-size-sm` |

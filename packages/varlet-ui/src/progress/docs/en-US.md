@@ -209,6 +209,6 @@ Use `show-track` to hide Progress-Track.
 
 | Variable | Default |
 | --- | --- |
-| `@progress-font-size` | `12px` |
+| `@progress-font-size` | `@font-size-sm` |
 | `@progress-ripple-color` | `#fff` |
-| `@progress-background` | `#2979ff` |
+| `@progress-background` | `@color-primary` |

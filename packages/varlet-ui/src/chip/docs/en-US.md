@@ -174,8 +174,8 @@ Custom label side slots
 | `@chip-mini-height` | `16px` |
 | `@chip-small-height` | `24px` |
 | `@chip-normal-height` | `32px` |
-| `@chip-large-height:` | `40px` |
-| `@chip-round-radius:` | `100px` |
+| `@chip-large-height` | `40px` |
+| `@chip-round-radius` | `100px` |
 | `@chip-mini-padding` | `0 4px` |
 | `@chip-small-padding` | `0 6px` |
 | `@chip-normal-padding` | `0 10px` |

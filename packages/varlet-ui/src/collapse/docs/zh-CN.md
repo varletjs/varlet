@@ -9,8 +9,7 @@
 ```js
 import { Collapse, CollapseItem } from '@varlet/ui'
 
-createApp().use(Collapse)
-createApp().use(CollapseItem)
+createApp().use(Collapse).use(CollapseItem)
 ```
 
 ### 基本使用
@@ -155,3 +154,17 @@ export default {
 | `default` | 面板的内容 | - |
 | `title` | 面板的标题 | - |
 | `icon` | 自定义右侧icon | - |
+
+### 主题变量
+#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `@collapse-background` | `#fff` |
+| `@collapse-color` | `#232222` |
+| `@collapse-header-font-size` | `@font-size-lg` |
+| `@collapse-header-padding` | `10px 16px` |
+| `@collapse-content-font-size` | `@font-size-md` |
+| `@collapse-content-font-size` | `14px` |
+| `@collapse-item-margin-top` | `16px` |
+| `@collapse-disable-color` | `#bdbdbd` |

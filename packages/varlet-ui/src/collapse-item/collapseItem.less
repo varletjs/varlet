@@ -1,11 +1,20 @@
 @import '../styles/var';
 
+@collapse-background: #fff;
+@collapse-color: #232222;
+@collapse-header-font-size: @font-size-lg;
+@collapse-header-padding: 10px 16px;
+@collapse-content-font-size: @font-size-md;
+@collapse-content-padding: 0 16px 10px;
+@collapse-item-margin-top: 16px;
+@collapse-disable-color: #bdbdbd;
+
 .var-collapse-item {
   box-sizing: border-box;
   position: relative;
   margin-top: 0;
-  background: #fff;
-  color: rgba(0, 0, 0, 0.87);
+  background: @collapse-background;
+  color: @collapse-color;
   transition: margin-top 0.25s, color 0.25s;
 
   &:before {
@@ -31,9 +40,9 @@
   &-header {
     align-items: center;
     display: flex;
-    font-size: @font-size-md;
+    font-size: @collapse-header-font-size;
     outline: none;
-    padding: 10px 16px;
+    padding: @collapse-header-padding;
     justify-content: space-between;
     position: relative;
     width: 100%;
@@ -55,21 +64,23 @@
   &-content {
     transition: height 0.25s;
     display: flex;
+    font-size: @collapse-content-font-size;
     overflow: hidden;
   }
 
   &__wrap {
-    padding: 0 16px 10px;
+    padding: @collapse-content-padding;
     word-break: break-all;
     flex: 1;
   }
 
   &__active + &,
   &__active:not(:first-child) {
-    margin-top: 16px;
+    margin-top: @collapse-item-margin-top;
   }
 
   &__disable {
-    color: rgba(0, 0, 0, 0.38);
+    color: @collapse-disable-color;
+    cursor: not-allowed;
   }
 }

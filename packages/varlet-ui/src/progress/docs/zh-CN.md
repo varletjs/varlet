@@ -209,6 +209,6 @@ createApp().use(Progress)
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@progress-font-size` | `12px` |
+| `@progress-font-size` | `@font-size-sm` |
 | `@progress-ripple-color` | `#fff` |
-| `@progress-background` | `#2979ff` |
+| `@progress-background` | `@color-primary` |

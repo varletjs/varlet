@@ -170,7 +170,7 @@ Other values are converted to text as a user prompt。
 | `@input-error-color` | `@color-danger` |
 | `@input-blur-color` | `#888` |
 | `@input-focus-color` | `@color-primary` |
-| `@input-placeholder-size:` | `6px` |
+| `@input-placeholder-size` | `6px` |
 | `@input-placeholder-offset-top` | `4px` |
 | `@input-textarea-height` | `auto` |
 | `@input-textarea-padding-top` | `8px` |

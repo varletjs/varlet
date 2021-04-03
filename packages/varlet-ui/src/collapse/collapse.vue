@@ -111,5 +111,9 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import 'collapse';
+@import '../styles/elevation';
+
+.var-collapse {
+  position: relative;
+}
 </style>

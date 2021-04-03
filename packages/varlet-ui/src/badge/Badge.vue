@@ -12,7 +12,7 @@
         <span v-else>{{ values }}</span>
       </span>
     </transition>
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

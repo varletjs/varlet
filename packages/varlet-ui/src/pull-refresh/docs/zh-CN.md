@@ -88,6 +88,6 @@ export default {
 | --- | --- |
 | `@pull-refresh-size` | `40px` |
 | `@pull-refresh-background` | `#fff` |
-| `@pull-refresh-color` | `#2979ff` |
-| `@pull-refresh-success-color` | `#4caf50` |
+| `@pull-refresh-color` | `@color-primary` |
+| `@pull-refresh-success-color` | `@color-success` |
 | `@pull-refresh-icon-size` | `25px` |

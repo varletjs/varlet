@@ -9,8 +9,7 @@
 ```js
 import { Steps, Step } from '@varlet/ui'
 
-createApp().use(Steps)
-createApp().use(Step)
+createApp().use(Steps).use(Step)
 ```
 
 ### 基本使用
@@ -195,3 +194,24 @@ export default {
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
 | `default` | step的内容 | - |
+
+### 主题变量
+#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `@step-tag-size` | `20px` |
+| `@step-tag-background` | `#9e9e9e` |
+| `@step-tag-font-size` | `@font-size-md` |
+| `@step-tag-color` | `#fff` |
+| `@step-tag-active-color` | `@color-primary` |
+| `@step-tag-margin` | `4px 0` |
+| `@step-tag-icon-size` | `@font-size-lg` |
+| `@step-content-font-size` | `@font-size-md` |
+| `@step-content-color` | `rgba(0, 0, 0, 0.38)` |
+| `@step-content-active-color` | `#000` |
+| `@step-line-background` | `#000` |
+| `@step-vertical-min-height` | `30px` |
+| `@step-vertical-tag-margin` | `0 4px` |
+| `@step-vertical-line-height` | `calc(100% - 30px)` |
+| `@step-vertical-line-min-height` | `20px` |

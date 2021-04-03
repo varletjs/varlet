@@ -28,7 +28,7 @@
 
   &-select-footer-margin-enter-active,
   &-select-footer-margin-leave-active {
-    transition: 0.2s all cubic-bezier(0.25, 0.8, 0.5, 1);
+    transition: 0.2s all @cubic-bezier;
   }
 }
 
@@ -113,7 +113,7 @@
     background: @select-focus-color;
     transform: scaleX(0);
     transform-origin: center;
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    transition: transform 0.3s @cubic-bezier;
   }
 
   &--placeholder-hint {

@@ -9,8 +9,7 @@ Hyperlinks to scroll on one page.
 ```js
 import { IndexBar, IndexAnchor } from '@varlet/ui'
 
-createApp().use(IndexBar)
-createApp().use(IndexAnchor)
+createApp().use(IndexBar).use(IndexAnchor)
 ```
 
 ### Basic Usage
@@ -106,8 +105,8 @@ Use ref to get IndexBar instance and call instance methods.
 
 | Variable | Default |
 | --- | --- |
-| `@index-bar-list-item-font-size` | `10px` |
-| `@index-bar-list-item-color` | `#2979ff` |
-| `@index-bar-list-item-active-color` | `#ee0a24` |
+| `@index-bar-list-item-font-size` | `@font-size-xs` |
+| `@index-bar-list-item-color` | `@color-primary` |
+| `@index-bar-list-item-active-color` | `@color-danger` |
 | `@index-bar-list-item-height` | `14px` |
 | `@index-bar-list-item-padding` | `0 10px` |

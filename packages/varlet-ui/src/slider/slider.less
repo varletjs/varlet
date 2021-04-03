@@ -61,7 +61,7 @@
       border-radius: 50%;
       opacity: 0.3;
       background: @slider-thumb-ripple-background;
-      transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+      transition: 0.3s @cubic-bezier;
 
       &-active {
         width: 36px;
@@ -83,7 +83,7 @@
       user-select: none;
       position: absolute;
       left: 45%;
-      transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transition: 0.3s @cubic-bezier;
       font-size: @slider-thumb-label-font-size;
       overflow: hidden;
       transform: translateY(0) translateY(0) translateX(-50%) rotate(45deg) scale(0);

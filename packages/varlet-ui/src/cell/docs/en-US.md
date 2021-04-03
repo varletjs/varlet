@@ -66,8 +66,8 @@ createApp().use(Cell)
 
 | Variable | Default |
 | --- | --- |
-| `@cell-font-size` | `14px` |
-| `@cell-desc-font-size` | `12px` |
+| `@cell-font-size` | `@font-size-md` |
+| `@cell-desc-font-size` | `@font-size-sm` |
 | `@cell-desc-color` | `rgba(0, 0, 0, 0.6)` |
 | `@cell-padding` | `10px 12px` |
 | `@cell-min-height` | `40px` |

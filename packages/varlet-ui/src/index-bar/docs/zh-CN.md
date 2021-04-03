@@ -9,8 +9,7 @@
 ```js
 import { IndexBar, IndexAnchor } from '@varlet/ui'
 
-createApp().use(IndexBar)
-createApp().use(IndexAnchor)
+createApp().use(IndexBar).use(IndexAnchor)
 ```
 
 ### 基本使用
@@ -106,8 +105,8 @@ createApp().use(IndexAnchor)
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@index-bar-list-item-font-size` | `10px` |
-| `@index-bar-list-item-color` | `#2979ff` |
-| `@index-bar-list-item-active-color` | `#ee0a24` |
+| `@index-bar-list-item-font-size` | `@font-size-xs` |
+| `@index-bar-list-item-color` | `@color-primary` |
+| `@index-bar-list-item-active-color` | `@color-danger` |
 | `@index-bar-list-item-height` | `14px` |
 | `@index-bar-list-item-padding` | `0 10px` |

@@ -103,10 +103,10 @@ Use `rules` to validate the value
 | Variable | Default |
 | --- | --- |
 | `@switch-track-background` | `#fff` |
-| `@switch-track-active-background` | `#2979ff` |
-| `@switch-track-error-background` | `#f44336` |
-| `@switch-ripple-color` | `#2979ff` |
+| `@switch-track-active-background` | `@color-primary` |
+| `@switch-track-error-background` | `@color-danger` |
+| `@switch-ripple-color` | `@color-primary` |
 | `@switch-handle-background` | `#fff` |
 | `@switch-handle-color` | `#fff` |
-| `@switch-handle-active-background` | `#2979ff` |
-| `@switch-handle-error-background` | `#f44336` |
+| `@switch-handle-active-background` | `@color-primary` |
+| `@switch-handle-error-background` | `@color-danger` |

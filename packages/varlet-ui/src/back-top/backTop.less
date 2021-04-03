@@ -1,3 +1,5 @@
+@import '../styles/var';
+
 @back-top-right: 40px;
 @back-top-bottom: 40px;
 @back-top-button-size: 40px;
@@ -7,7 +9,7 @@
   right: @back-top-right;
   bottom: @back-top-bottom;
   transform: scale(0);
-  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+  transition: 0.3s @cubic-bezier;
 
   &__button {
     width: @back-top-button-size;

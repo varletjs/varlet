@@ -35,7 +35,7 @@
       font-size: 14px;
       font-weight: 500;
       margin-bottom: 8px;
-      transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+      transition: 0.3s @cubic-bezier;
 
       &--active {
         opacity: 1;
@@ -53,7 +53,7 @@
       display: flex;
       align-items: center;
       opacity: 0.6;
-      transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+      transition: 0.3s @cubic-bezier;
 
       &--active {
         opacity: 1;
@@ -188,13 +188,13 @@
 
   &-translatey-enter-active,
   &-reverse-translatey-enter-active {
-    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    transition: 0.3s @cubic-bezier;
   }
 
   &-translatey-leave-active,
   &-reverse-translatey-leave-active {
     position: absolute;
-    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    transition: 0.3s @cubic-bezier;
   }
 
   &-translatey-leave-to {
@@ -214,7 +214,7 @@
 
   &-panel-fade-enter-from,
   &-panel-fade-leave-to {
-    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    transition: 0.3s @cubic-bezier;
     opacity: 0;
   }
 
@@ -234,13 +234,13 @@
 
   &-translatex-enter-active,
   &-reverse-translatex-enter-active {
-    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    transition: 0.3s @cubic-bezier;
   }
 
   &-translatex-leave-active,
   &-reverse-translatex-leave-active {
     position: absolute;
-    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    transition: 0.3s @cubic-bezier;
   }
 
   &-translatex-leave-to {

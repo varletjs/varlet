@@ -9,8 +9,7 @@ A content area which can be collapsed and expanded.
 ```js
 import { Collapse, CollapseItem } from '@varlet/ui'
 
-createApp().use(Collapse)
-createApp().use(CollapseItem)
+createApp().use(Collapse).use(CollapseItem)
 ```
 
 ### Basic Usage
@@ -155,3 +154,17 @@ export default {
 | `default` | Content | - |
 | `title` | Title | - |
 | `icon` | Custom right icon | - |
+
+### Theme Variables
+#### The following LESS variables can be overridden at build time to modify the theme style
+
+| Variable | Default |
+| --- | --- |
+| `@collapse-background` | `#fff` |
+| `@collapse-color` | `#232222` |
+| `@collapse-header-font-size` | `@font-size-lg` |
+| `@collapse-header-padding` | `10px 16px` |
+| `@collapse-content-font-size` | `@font-size-md` |
+| `@collapse-content-font-size` | `14px` |
+| `@collapse-item-margin-top` | `16px` |
+| `@collapse-disable-color` | `#bdbdbd` |
