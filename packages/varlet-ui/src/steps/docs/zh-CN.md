@@ -166,7 +166,7 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `active` | 当前步骤 | _number_ ｜ _string_ | `0` |
+| `active` | 当前步骤 | _number_ \| _string_ | `0` |
 | `direction` | 显示方向，可选值为 `vertical` | _string_ | `horizontal` |
 | `active-color` | 激活状态颜色 | _string_ | `#2979ff` |
 | `inactive-color` | 未激活状态颜色 | _string_ | `#9e9e9e` |

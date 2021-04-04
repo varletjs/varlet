@@ -39,7 +39,7 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
 | `target` | 触发滚动的对象	| _string_ | - |
-| `visibility-height` | 滚动高度达到此参数值才出现| _number_ ｜ _string_ | `200` |
+| `visibility-height` | 滚动高度达到此参数值才出现| _number_ \| _string_ | `200` |
 | `duration` | 回到顶部所需时间（ms） | _number_ | `300` |
 
 ### 事件

@@ -39,7 +39,7 @@ export default {
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `target` | The target to trigger scroll	| _string_ | - |
-| `visibility-height` | The button will not show until the scroll height reaches this value | _number_ ｜ _string_ | `200` |
+| `visibility-height` | The button will not show until the scroll height reaches this value | _number_ \| _string_ | `200` |
 | `duration` | Time to return to top（ms） | _number_ | `300` |
 
 ### Events

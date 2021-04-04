@@ -124,7 +124,7 @@ export default {
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `model-value / v-model` | Names of current active panels | accordion mode： _number_ ｜ _string_ <br> non-accordion mode：_number[]_ ｜ _string[]_ | - |
+| `model-value / v-model` | Names of current active panels | accordion mode： _number_ \| _string_ <br> non-accordion mode：_number[]_ \| _string[]_ | - |
 | `accordion` | Whether to be accordion mode | _boolean_ | `false` |
 | `offset` | Whether to show margin | _boolean_ | `true` |
 
@@ -132,8 +132,8 @@ export default {
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `name` | Name | _number_ ｜ _string_ | `index` |
-| `title` | Title | _number_ ｜ _string_ | - |
+| `name` | Name | _number_ \| _string_ | `index` |
+| `title` | Title | _number_ \| _string_ | - |
 | `icon` | Icon name | _string_ | `chevron-down` |
 | `disabled` | Whether to disabled collapse	 | _boolean_ | `false` |
 

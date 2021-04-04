@@ -139,13 +139,13 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `v-model / model-value` | 被选择的日期（ISO 8601 格式，`YYYY-MM-DD` 或 `YYYY-MM`）| _string[]_ ｜ _string_ | `-` |
-| `type` | 选择器类型，可选值为`date｜month` | _string_ | `date` |
+| `v-model / model-value` | 被选择的日期（ISO 8601 格式，`YYYY-MM-DD` 或 `YYYY-MM`）| _string[]_ \| _string_ | `-` |
+| `type` | 选择器类型，可选值为`date\|month` | _string_ | `date` |
 | `allowed-dates` | 限制可以选择的日期 | _function_ | `-` |
 | `color` | 选择器的颜色 | _string_ | `#2979ff` |
 | `header-color` | 标题背景色。如果未指定，将使用由 color 属性或默认颜色。 | _string_ | `#2979ff` |
 | `shadow` | 是否添加阴影 | _boolean_ | `false` |
-| `first-day-of-week` | 设置一周的第一天，从周日的 0 开始。 | _string_ ｜ _number_ | `0` |
+| `first-day-of-week` | 设置一周的第一天，从周日的 0 开始。 | _string_ \| _number_ | `0` |
 | `min` | 允许的最小日期/月份（ISO 8601格式） | _string_ | `-` |
 | `max` | 允许的最大日期/月份（ISO 8601格式） | _string_ | `-` |
 | `show-current` | 是否显示当前日期 | _boolean_ | `true` |
@@ -157,7 +157,7 @@ export default {
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------------- | -------- |
-| `change` | 日期变化时触发 | `value: string ｜ string[]` |
+| `change` | 日期变化时触发 | `value: string \| string[]` |
 
 ### 插槽
 `weekIndex` 表示一周的第n天，从周末的`0`开始
@@ -168,5 +168,5 @@ export default {
 | `month` | 自定义标题中的月 | `year: YYYY`<br>`month: MM` |
 | `date` | 自定义标题中的日期 | `year: YYYY`<br>`month: MM`<br>`date: DD`<br>`week: weekIndex` |
 | `range` | 自定义标题中的范围 | `choose: [startData, endDate]` |
-| `multiple` | 自定义标题中的多选 | `choose: ['YYYY-MM-DD' ｜ 'YYYY-MM']` |
+| `multiple` | 自定义标题中的多选 | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
 

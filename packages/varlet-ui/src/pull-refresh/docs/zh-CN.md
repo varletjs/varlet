@@ -62,8 +62,8 @@ export default {
 | ----- | -------------- | -------- | ---------- |
 | `model-value / v-model` | 是否处于加载中状态| _boolean_ | - |
 | `disabled` | 是否禁用下拉刷新 | _boolean_ | `false` |
-| `animation-duration` | 动画时长(ms) | _number_ ｜ _string_ | `300` |
-| `success-duration` | 成功提示展示时长(ms) | _number_ ｜ _string_ | `2000` |
+| `animation-duration` | 动画时长(ms) | _number_ \| _string_ | `300` |
+| `success-duration` | 成功提示展示时长(ms) | _number_ \| _string_ | `2000` |
 | `bgColor` | control的背景颜色 | _string_ | `#005CAF` |
 | `color` | control 的颜色 | _string_ | `#ffffff` |
 | `successBgColor` | 成功状态下control的背景颜色 | _string_ | `#4CAF50` |

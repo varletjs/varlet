@@ -138,13 +138,13 @@ export default {
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `v-model / model-value` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）| _string[]_ ｜ _string_ | `-` |
-| `type` | Picker type, optional values `date｜month` | _string_ | `date` |
+| `v-model / model-value` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）| _string[]_ \| _string_ | `-` |
+| `type` | Picker type, optional values `date\|month` | _string_ | `date` |
 | `allowed-dates` | Restricts which dates can be selected | _function_ | `-` |
 | `color` | Picker color | _string_ | `#2979ff` |
 | `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
 | `shadow` | Whether to add a shadow | _boolean_ | `false` |
-| `first-day-of-week` | Sets the first day of the week, starting with 0 for Sunday. | _string_ ｜ _number_ | `0` |
+| `first-day-of-week` | Sets the first day of the week, starting with 0 for Sunday. | _string_ \| _number_ | `0` |
 | `min` | Minimum allowed date/month (ISO 8601 format) | _string_ | `-` |
 | `max` | Maximum allowed date/month (ISO 8601 format) | _string_ | `-` |
 | `show-current` | Whether to display the current date | _boolean_ | `true` |
@@ -156,7 +156,7 @@ export default {
 
 | Event | Description | arguments |
 | ----- | -------------- | -------- |
-| `change` | Emitted after date changed | `value: string ｜ string[]` |
+| `change` | Emitted after date changed | `value: string \| string[]` |
 
 ### Slots
 
@@ -168,5 +168,5 @@ export default {
 | `month` | Custom the month in the title | `year: YYYY`<br>`month: MM` |
 | `date` | Custom the date in the title | `year: YYYY`<br>`month: MM`<br>`date: DD`<br>`week: weekIndex` |
 | `range` | Custom the range in the title | `choose: [startData, endDate]` |
-| `multiple` | Custom the multiple in the title  | `choose: ['YYYY-MM-DD' ｜ 'YYYY-MM']` |
+| `multiple` | Custom the multiple in the title  | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
 

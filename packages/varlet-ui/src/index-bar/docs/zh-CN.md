@@ -64,17 +64,17 @@ createApp().use(IndexBar).use(IndexAnchor)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `v-model:active` | 当前激活的索引 | _number_ ｜ _string_ | - |
+| `v-model:active` | 当前激活的索引 | _number_ \| _string_ | - |
 | `sticky` | 是否开启锚点吸顶 | _boolean_ | `true` |
 | `sticky-offset-top` | 锚点吸顶时与顶部的距离 | _number_ | `0` |
-| `z-index` | z-index 层级 | _number_ ｜ _string_ | `1` |
+| `z-index` | z-index 层级 | _number_ \| _string_ | `1` |
 | `highlight-color` | 索引字符高亮颜色 | _string_ | `#ee0a24` |
 
 ### IndexAnchor 属性
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `index` | 索引字符 | _number_ ｜ _string_ | - |
+| `index` | 索引字符 | _number_ \| _string_ | - |
 
 ### 事件
 
@@ -82,8 +82,8 @@ createApp().use(IndexBar).use(IndexAnchor)
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------------- | -------- |
-| `click` | 点击索引栏的字符时触发 | `index: number ｜ string` |
-| `change` | 当前高亮的索引字符变化时触发| `index: number ｜ string` |
+| `click` | 点击索引栏的字符时触发 | `index: number \| string` |
+| `change` | 当前高亮的索引字符变化时触发| `index: number \| string` |
 
 ### 插槽
 
@@ -98,7 +98,7 @@ createApp().use(IndexBar).use(IndexAnchor)
 
 | 方法名 | 说明 | 参数 |
 | ---- | ------- | -------- |
-| `scrollTo` | 滚动到指定锚点	 | `index: number ｜ string` |
+| `scrollTo` | 滚动到指定锚点	 | `index: number \| string` |
 
 ### 主题变量
 #### 以下less变量可通过构建时进行变量覆盖从而修改主题样式

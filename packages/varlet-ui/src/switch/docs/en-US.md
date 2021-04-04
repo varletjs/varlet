@@ -87,7 +87,7 @@ Use `rules` to validate the value
 | `color` | Background color when open | _string_ | `#2979ff` |
 | `close-color` | Background color when close | _string_ | `#fff` |
 | `loading-color` | Color of loading icon | _string_ | `#fff` |
-| `size` | Size of switch | _string_ ｜ _number_ | `20` |
+| `size` | Size of switch | _string_ \| _number_ | `20` |
 | `rules`| Validation rules | _array_  | - |
 
 ### Events

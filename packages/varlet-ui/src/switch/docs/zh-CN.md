@@ -87,7 +87,7 @@ export default {
 | `color` | 打开状态下的颜色 | _string_ | `#2979ff` |
 | `loading-color` | 加载图标的颜色 | _string_ | `#fff` |
 | `close-color` | 关闭状态下的颜色 | _string_ | `#fff` |
-| `size` | switch的大小 | _string_ ｜ _number_ | `20` |
+| `size` | switch的大小 | _string_ \| _number_ | `20` |
 | `rules`| 校验规则 | _array_  | - |
 
 ### 事件

@@ -188,13 +188,13 @@ Use `show-track` to hide Progress-Track.
 | prop | Description      | Type     | Default  |
 | --------- | ---------------- | -------- | -------- |
 | `mode` | mode of Progress | _string_ | `linear` |
-| `value` | completion value   | _number_ ｜ _string_ |  `0`  |
-| `line-width` | width of the progress bar  | _number_ ｜ _string_ | `4` |
+| `value` | completion value   | _number_ \| _string_ |  `0`  |
+| `line-width` | width of the progress bar  | _number_ \| _string_ | `4` |
 | `color` | color of the progress bar  | _string_  | `#005CAF` |
 | `track-color`  | color of the progress track | _string_   | `#d8d8d8` |
 | `show-action` | Whether the action is visible or not | _boolean_ | `false` |
 | `ripple`(only supports linear progress) | loading style for progress | _boolean_ | `false` |
-| `size`(only supports circle progress) | size of progress | _number_ ｜ _string_ | `40` |
+| `size`(only supports circle progress) | size of progress | _number_ \| _string_ | `40` |
 | `rotate`(only supports circle progress) | origin of progress | _number_ | `0` |
 | `show-track`(only supports circle progress) | Whether the progress track is visible or not | _boolean_ | `true` |
 

@@ -166,7 +166,7 @@ Use `direction` prop to change mode of steps.
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `active` | Active step | _number_ ｜ _string_ | `0` |
+| `active` | Active step | _number_ \| _string_ | `0` |
 | `direction` | Mode of steps, Can be set to `vertical` | _string_ | `horizontal` |
 | `active-color` | Active step color | _string_ | `#2979ff` |
 | `inactive-color` | Inactive step color | _string_ | `#9e9e9e` |

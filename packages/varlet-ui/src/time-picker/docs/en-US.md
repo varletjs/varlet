@@ -90,7 +90,7 @@ export default {
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `v-model / model-value` | Selected time（ISO 8601 format, `HH:mm` or `HH:mm:ss`）| _string_ | `-` |
-| `format` | Picker type, optional values `ampm｜24hr` | _string_ | `ampm` |
+| `format` | Picker type, optional values `ampm\|24hr` | _string_ | `ampm` |
 | `color` | Picker color | _string_ | `#2979ff` |
 | `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
 | `shadow` | Whether to add a shadow | _boolean_ | `false` |
