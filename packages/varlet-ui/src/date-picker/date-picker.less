@@ -1,15 +1,54 @@
 @import '../styles/var';
 @import '../styles/elevation';
 
+@date-picker-border-radius: 4px;
+@date-picker-font-size: @font-size-md;
+@date-picker-min-width: 290px;
+@date-picker-height: 385px;
+@date-picker-title-padding: 16px;
+@date-picker-title-background: @color-primary;
+@date-picker-title-color: #fff;
+@date-picker-title-year-font-size: @font-size-md;
+@date-picker-title-year-font-weight: 500;
+@date-picker-title-year-margin-bottom: 8px;
+@date-picker-title-date-height: 48px;
+@date-picker-title-date-font-size: 34px;
+@date-picker-title-date-font-weight: 500;
+@date-picker-title-date-range-font-size: 20px;
+
+@picker-header-padding: 4px 16px;
+
+@month-picker-padding: 0 12px;
+@month-picker-item-width: 33%;
+@month-picker-item-height: 56px;
+@month-picker-item-button-max-width: 140px;
+
+@year-picker-font-weight: 400;
+@year-picker-item-padding: 8px 0;
+@year-picker-item-active-font-size: 26px;
+@year-picker-item-active-font-weight: 500;
+@year-picker-item-active-font-padding: 10px 0;
+@year-picker-item-active-color: @color-primary;
+
+@day-picker-content-item-width: 14.28%;
+@day-picker-content-item-font-size: @font-size-sm;
+@day-picker-content-item-padding: 2px 0;
+@day-picker-content-item-button-width: 32px;
+@day-picker-content-item-button-height: 32px;
+@day-picker-content-item-button-font-size: @font-size-sm;
+@day-picker-head-item-color: rgba(0, 0, 0, 0.38);
+@day-picker-head-item-padding: 8px 0;
+@day-picker-head-item-font-weight: 600;
+
 .var-date-picker {
-  border-radius: 4px;
+  border-radius: @date-picker-border-radius;
   contain: layout style;
   display: flex;
   flex-direction: column;
-  font-size: @font-size-md;
+  font-size: @date-picker-font-size;
   position: relative;
-  min-width: 290px;
-  height: 385px;
+  min-width: @date-picker-min-width;
+  height: @date-picker-height;
   overflow: hidden;
 
   ul {
@@ -19,9 +58,9 @@
   }
 
   &-title {
-    padding: 16px;
-    color: white;
-    background: @color-primary;
+    padding: @date-picker-title-padding;
+    color: @date-picker-title-color;
+    background: @date-picker-title-background;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -32,9 +71,9 @@
       cursor: pointer;
       align-items: center;
       display: inline-flex;
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 8px;
+      font-size: @date-picker-title-year-font-size;
+      font-weight: @date-picker-title-year-font-weight;
+      margin-bottom: @date-picker-title-year-margin-bottom;
       transition: 0.3s @cubic-bezier;
 
       &--active {
@@ -43,11 +82,11 @@
     }
 
     &__date {
-      height: 48px;
+      height: @date-picker-title-date-height;
       overflow: hidden;
-      font-size: 34px;
+      font-size: @date-picker-title-date-font-size;
       text-align: left;
-      font-weight: 500;
+      font-weight: @date-picker-title-date-font-weight;
       position: relative;
       cursor: pointer;
       display: flex;
@@ -60,7 +99,7 @@
       }
 
       &--range {
-        font-size: 20px;
+        font-size: @date-picker-title-date-range-font-size;
       }
     }
   }
@@ -72,7 +111,7 @@
   }
 
   .var-picker-header {
-    padding: 4px 16px;
+    padding: @picker-header-padding;
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -92,11 +131,8 @@
   }
 
   .var-month-picker {
-    &__panel {
-    }
-
     &__content {
-      padding: 0 12px;
+      padding: @month-picker-padding;
 
       ul {
         display: flex;
@@ -104,15 +140,15 @@
         justify-content: space-between;
 
         li {
-          width: 33%;
+          width: @month-picker-item-width;
           display: flex;
-          height: 56px;
+          height: @month-picker-item-height;
           align-items: center;
           justify-content: center;
 
           .var-button {
             width: 100%;
-            max-width: 140px;
+            max-width: @month-picker-item-button-max-width;
           }
         }
       }
@@ -123,7 +159,7 @@
     &__panel {
       width: 100%;
       height: 100%;
-      font-weight: 400;
+      font-weight: @year-picker-font-weight;
       padding: 0;
       margin: 0;
       list-style-type: none;
@@ -131,23 +167,20 @@
       text-align: center;
 
       li {
-        padding: 8px 0;
+        padding: @year-picker-item-padding;
         cursor: pointer;
       }
 
       &--active {
-        font-size: 26px;
-        font-weight: 500;
-        padding: 10px 0;
-        color: @color-primary;
+        font-size: @year-picker-item-active-font-size;
+        font-weight: @year-picker-item-active-font-weight;
+        padding: @year-picker-item-active-font-padding;
+        color: @year-picker-item-active-color;
       }
     }
   }
 
   .var-day-picker {
-    &__panel {
-    }
-
     &__content {
       ul {
         display: flex;
@@ -157,26 +190,26 @@
           position: relative;
           display: flex;
           justify-content: center;
-          width: 14.28%;
-          font-size: @font-size-sm;
-          padding: 2px 0;
+          width: @day-picker-content-item-width;
+          font-size: @day-picker-content-item-font-size;
+          padding: @day-picker-content-item-padding;
         }
       }
     }
 
     &__head {
       li {
-        color: rgba(0, 0, 0, 0.38);
-        padding: 8px 0;
-        font-weight: 600;
+        color: @day-picker-head-item-color;
+        padding: @day-picker-head-item-padding;
+        font-weight: @day-picker-head-item-font-weight;
       }
     }
 
     &__body {
       .var-button {
-        width: 32px;
-        height: 32px;
-        font-size: @font-size-sm;
+        width: @day-picker-content-item-button-width;
+        height: @day-picker-content-item-button-height;
+        font-size: @day-picker-content-item-button-font-size;
       }
     }
   }

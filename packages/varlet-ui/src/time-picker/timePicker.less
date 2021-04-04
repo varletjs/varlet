@@ -1,21 +1,68 @@
 @import '../styles/elevation';
 @import '../styles/var';
 
+@time-picker-border-radius: 4px;
+@time-picker-font-size: @font-size-md;
+@time-picker-min-width: 290px;
+@time-picker-height: 385px;
+@time-picker-title-padding: 16px;
+@time-picker-title-color: #fff;
+@time-picker-title-background: @color-primary;
+@time-picker-title-time-font-size: 50px;
+@time-picker-title-time-margin: 0 5px;
+@time-picker-title-ampm-margin-left: 5px;
+@time-picker-clock-left: 27px;
+@time-picker-clock-right: 27px;
+@time-picker-clock-top: 27px;
+@time-picker-clock-bottom: 27px;
+@time-picker-clock-container-width: 270px;
+@time-picker-clock-container-height: 270px;
+@time-picker-clock-container-background: #e0e0e0;
+@time-picker-clock-hand-height: calc(50% - 4px);
+@time-picker-clock-hand-width: 2px;
+@time-picker-clock-hand-bottom: 50%;
+@time-picker-clock-hand-left: calc(50% - 1px);
+@time-picker-clock-hand-background: @color-primary;
+@time-picker-clock-hand-border-color: @color-primary;
+@time-picker-clock-hand-before-width: 10px;
+@time-picker-clock-hand-before-height: 10px;
+@time-picker-clock-hand-before-border-width: 2px;
+@time-picker-clock-hand-after-width: 4px;
+@time-picker-clock-hand-after-height: 4px;
+@time-picker-clock-item-height: 32px;
+@time-picker-clock-item-width: 32px;
+@time-picker-clock-item-active-background: @color-primary;
+@time-picker-clock-item-active-color: #fff;
+@time-picker-clock-item-disable-color: rgba(0, 0, 0, 0.26);
+@time-picker-inner-left: 36px;
+@time-picker-inner-right: 36px;
+@time-picker-inner-top: 36px;
+@time-picker-inner-bottom: 36px;
+
+.after-before-basic {
+  content: '';
+  position: absolute;
+  border-radius: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-color: inherit;
+}
+
 .var-time-picker {
-  border-radius: 4px;
+  border-radius: @time-picker-border-radius;
   contain: layout style;
   display: flex;
   flex-direction: column;
-  font-size: @font-size-md;
+  font-size: @time-picker-font-size;
   position: relative;
-  min-width: 290px;
-  height: 385px;
+  min-width: @time-picker-min-width;
+  height: @time-picker-height;
   overflow: hidden;
 
   &-title {
-    padding: 16px;
-    color: white;
-    background: @color-primary;
+    padding: @time-picker-title-padding;
+    color: @time-picker-title-color;
+    background: @time-picker-title-background;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
@@ -23,15 +70,11 @@
     &__time {
       display: flex;
       justify-content: flex-end;
+      font-size: @time-picker-title-time-font-size;
 
       .var-time-picker-title__btn {
-        font-size: 50px;
         align-items: center;
-        margin: 0 5px;
-      }
-
-      span {
-        font-size: 50px;
+        margin: @time-picker-title-time-margin;
       }
     }
 
@@ -47,7 +90,7 @@
     }
 
     &__ampm {
-      margin-left: 5px;
+      margin-left: @time-picker-title-ampm-margin-left;
     }
   }
 
@@ -60,55 +103,46 @@
 
   &-clock {
     position: absolute;
-    bottom: 27px;
-    left: 27px;
-    right: 27px;
-    top: 27px;
+    bottom: @time-picker-clock-bottom;
+    left: @time-picker-clock-left;
+    right: @time-picker-clock-right;
+    top: @time-picker-clock-top;
 
     &__container {
-      width: 270px;
-      height: 270px;
-      background: #e0e0e0;
+      width: @time-picker-clock-container-width;
+      height: @time-picker-clock-container-height;
+      background: @time-picker-clock-container-background;
       border-radius: 50%;
       position: relative;
     }
 
     &__hand {
-      height: calc(50% - 4px);
-      width: 2px;
-      bottom: 50%;
-      left: calc(50% - 1px);
+      height: @time-picker-clock-hand-height;
+      width: @time-picker-clock-hand-width;
+      bottom: @time-picker-clock-hand-bottom;
+      left: @time-picker-clock-hand-left;
       transform-origin: center bottom;
       position: absolute;
       will-change: transform;
       z-index: 1;
-      background-color: @color-primary;
-      border-color: @color-primary;
-
-      &::before,
-      &::after {
-        content: '';
-        position: absolute;
-        border-radius: 100%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
+      background-color: @time-picker-clock-hand-background;
+      border-color: @time-picker-clock-hand-border-color;
 
       &::before {
+        .after-before-basic();
         background: transparent;
-        border: 2px solid;
-        border-color: inherit;
-        width: 10px;
-        height: 10px;
+        border: @time-picker-clock-hand-before-border-width solid;
+        width: @time-picker-clock-hand-before-width;
+        height: @time-picker-clock-hand-before-height;
         top: -5px;
       }
 
       &::after {
-        height: 4px;
-        width: 4px;
+        .after-before-basic();
+        height: @time-picker-clock-hand-after-height;
+        width: @time-picker-clock-hand-after-width;
         top: 100%;
         border-style: solid;
-        border-color: inherit;
         background-color: inherit;
       }
     }
@@ -118,29 +152,29 @@
       border-radius: 100%;
       display: flex;
       justify-content: center;
-      height: 32px;
+      height: @time-picker-clock-item-height;
       position: absolute;
-      width: 32px;
+      width: @time-picker-clock-item-width;
       user-select: none;
       transform: translate(-50%, -50%);
 
       &--active {
-        background: @color-primary;
+        background: @time-picker-clock-item-active-background;
         z-index: 2;
-        color: #fff;
+        color: @time-picker-clock-item-active-color;
       }
 
       &--disable {
-        color: rgba(0, 0, 0, 0.26);
+        color: @time-picker-clock-item-disable-color;
       }
     }
 
     &__inner {
       position: absolute;
-      bottom: 36px;
-      left: 36px;
-      right: 36px;
-      top: 36px;
+      bottom: @time-picker-inner-bottom;
+      left: @time-picker-inner-left;
+      right: @time-picker-inner-right;
+      top: @time-picker-inner-top;
     }
   }
 

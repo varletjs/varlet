@@ -8,6 +8,10 @@
     <var-time-picker v-model="date1" format="24hr" shadow />
   </div>
   <div>
+    <app-type>{{ pack.showSecond }}</app-type>
+    <var-time-picker v-model="date5" format="24hr" use-seconds />
+  </div>
+  <div>
     <app-type>{{ pack.readonly }}</app-type>
     <var-time-picker v-model="date2" readonly shadow />
   </div>
@@ -48,6 +52,7 @@ export default defineComponent({
     const date2 = ref('07:10')
     const date3 = ref('07:10')
     const date4 = ref('05:10')
+    const date5 = ref('17:36:22')
 
     const change = (time) => {
       console.log(time)
@@ -61,6 +66,7 @@ export default defineComponent({
       date2,
       date3,
       date4,
+      date5,
       change,
       pack,
     }
