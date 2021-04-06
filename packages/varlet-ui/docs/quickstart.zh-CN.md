@@ -32,6 +32,9 @@ yarn add @varlet/ui
 
 ```js
 import Vue from 'vue'
+import App from './App.vue'
 import Varlet from '@varlet/ui'
+import '@varlet/ui/es/style'
 
+createApp(App).use(Varlet).mount('#app')
 ```

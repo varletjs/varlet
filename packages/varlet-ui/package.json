@@ -46,6 +46,7 @@
   },
   "gitHead": "04cbbd571a061f5d5651515132a8ef079de5673e",
   "dependencies": {
+    "@babel/runtime": "^7.13.10",
     "@varlet/icons": "^0.9.0",
     "dayjs": "^1.10.4",
     "decimal.js": "^10.2.1"
