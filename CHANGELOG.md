@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/haoziqaq/varlet/compare/v0.10.0...v0.10.1) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/*:** 解决组件依赖组件less路径错误问题 ([a081d67](https://github.com/haoziqaq/varlet/commit/a081d67c8cb7e388c1f5a10a2c3078d9e7363a8a))
+
+
+
+
+
 # [0.10.0](https://github.com/haoziqaq/varlet/compare/v0.9.6...v0.10.0) (2021-04-06)
 
 
