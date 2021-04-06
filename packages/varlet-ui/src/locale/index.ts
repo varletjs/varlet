@@ -43,3 +43,11 @@ add('zh-CN', zhCN)
 use('zh-CN')
 
 export { packs, pack, add, use, merge }
+
+export default {
+  packs,
+  pack,
+  add,
+  use,
+  merge,
+}
