@@ -36,3 +36,5 @@ export interface Picker {
   close(): void
   Component: PickerComponent
 }
+
+export const Picker: Picker

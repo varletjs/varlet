@@ -38,3 +38,5 @@ export interface Dialog {
   close(): void
   Component: DialogComponent
 }
+
+export const Dialog: Dialog

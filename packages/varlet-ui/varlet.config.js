@@ -38,6 +38,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': '按需引入',
+          'en-US': 'Import on demand',
+        },
+        doc: 'importOnDemand',
+        nonComponent: true,
+      },
+      {
+        text: {
           'zh-CN': '组件',
           'en-US': 'Components',
         },
