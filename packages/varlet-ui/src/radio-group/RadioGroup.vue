@@ -85,5 +85,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../form-details/formDetails';
 @import './radioGroup';
 </style>

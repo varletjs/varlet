@@ -133,6 +133,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '../form-details';
+@import '../form-details/formDetails';
 @import './checkboxGroup';
 </style>

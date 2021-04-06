@@ -100,5 +100,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../ripple/ripple';
+@import '../checkbox/checkbox';
 @import './option';
 </style>

@@ -369,5 +369,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../button/button';
+@import '../popup/popup';
 @import './picker';
 </style>

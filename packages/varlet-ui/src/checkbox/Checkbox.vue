@@ -167,7 +167,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '../form-details';
-@import '../icon';
+@import '../form-details/formDetails';
+@import '../icon/icon';
 @import './checkbox';
 </style>

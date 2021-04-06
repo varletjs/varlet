@@ -1,13 +1,13 @@
 <template>
-	<div
-		class="var-tabs-items"
-		:style="{
-			height: transitionHeight,
-		}"
-		v-bind="$attrs"
-	>
-		<slot></slot>
-	</div>
+  <div
+    class="var-tabs-items"
+    :style="{
+      height: transitionHeight,
+    }"
+    v-bind="$attrs"
+  >
+    <slot></slot>
+  </div>
 </template>
 
 <script lang="ts">

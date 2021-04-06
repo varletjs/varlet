@@ -80,6 +80,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '../ripple';
+@import '../ripple/ripple';
 @import './image';
 </style>

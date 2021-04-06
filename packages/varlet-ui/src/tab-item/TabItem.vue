@@ -1,9 +1,9 @@
 <template>
-	<transition :name="transitionName" @after-enter="resetTransitionHeight">
-		<div class="var-tab-item" ref="tabItemEl" v-show="show">
-			<slot v-if="initSlot" />
-		</div>
-	</transition>
+  <transition :name="transitionName" @after-enter="resetTransitionHeight">
+    <div class="var-tab-item" ref="tabItemEl" v-show="show">
+      <slot v-if="initSlot" />
+    </div>
+  </transition>
 </template>
 
 <script lang="ts">
@@ -25,11 +25,8 @@ export default defineComponent({
     const { active, resize, resetTransitionHeight } = tabsItems
 
     const transition = (newIndex: number, oldIndex: number) => {
-      transitionName.value = oldIndex === -1
-        ? 'var-tab-item-right'
-        : newIndex > oldIndex
-          ? 'var-tab-item-right'
-          : 'var-tab-item-left'
+      transitionName.value =
+        oldIndex === -1 ? 'var-tab-item-right' : newIndex > oldIndex ? 'var-tab-item-right' : 'var-tab-item-left'
       show.value = active.value === props.name || active.value === index.value
     }
 
@@ -43,11 +40,15 @@ export default defineComponent({
     bindTabsItems(tabItemProvider)
 
     watch(() => props.name, resize)
-    watch(() => show.value, (newValue) => {
-      if (newValue) {
-        initSlot.value = true
-      }
-    }, { immediate: true })
+    watch(
+      () => show.value,
+      (newValue) => {
+        if (newValue) {
+          initSlot.value = true
+        }
+      },
+      { immediate: true }
+    )
 
     return {
       tabItemEl,

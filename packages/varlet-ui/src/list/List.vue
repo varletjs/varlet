@@ -100,7 +100,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '../ripple';
-@import '../loading';
+@import '../ripple/ripple';
+@import '../loading/loading';
 @import './list';
 </style>

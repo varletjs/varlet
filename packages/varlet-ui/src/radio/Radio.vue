@@ -159,5 +159,8 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../ripple/ripple';
+@import '../icon/icon';
+@import '../form-details/formDetails';
 @import './radio';
 </style>

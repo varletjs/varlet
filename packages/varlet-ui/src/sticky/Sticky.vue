@@ -1,29 +1,29 @@
 <template>
-	<div
-		class="var-sticky"
-		ref="stickyEl"
-		:style="{
-			zIndex: toNumber(zIndex),
-			top: !isFixed ? `${offsetTop}px` : null,
-			width: isFixed ? fixedWidth : null,
-			height: isFixed ? fixedHeight : null,
-		}"
-	>
-		<div
-			class="var-sticky__wrapper"
-			ref="wrapperEl"
-			:style="{
-				zIndex: toNumber(zIndex),
-				position: isFixed ? 'fixed' : null,
-				width: isFixed ? fixedWrapperWidth : null,
-				height: isFixed ? fixedWrapperHeight : null,
-				left: isFixed ? fixedLeft : null,
-				top: isFixed ? fixedTop : null,
-			}"
-		>
-			<slot />
-		</div>
-	</div>
+  <div
+    class="var-sticky"
+    ref="stickyEl"
+    :style="{
+      zIndex: toNumber(zIndex),
+      top: !isFixed ? `${offsetTop}px` : null,
+      width: isFixed ? fixedWidth : null,
+      height: isFixed ? fixedHeight : null,
+    }"
+  >
+    <div
+      class="var-sticky__wrapper"
+      ref="wrapperEl"
+      :style="{
+        zIndex: toNumber(zIndex),
+        position: isFixed ? 'fixed' : null,
+        width: isFixed ? fixedWrapperWidth : null,
+        height: isFixed ? fixedWrapperHeight : null,
+        left: isFixed ? fixedLeft : null,
+        top: isFixed ? fixedTop : null,
+      }"
+    >
+      <slot />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -114,7 +114,7 @@ export default defineComponent({
       fixedHeight,
       fixedWrapperWidth,
       fixedWrapperHeight,
-      toNumber
+      toNumber,
     }
   },
 })
