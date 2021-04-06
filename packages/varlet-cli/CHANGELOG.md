@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/haoziqaq/varlet/compare/v0.8.0...v0.9.0) (2021-04-06)
+
+
+### Bug Fixes
+
+* **cli:** 优化compileRoutes正则 ([b9223c2](https://github.com/haoziqaq/varlet/commit/b9223c2e63c4f767b319b24c159a4a949a8a4204))
+* **cli:** 优化compileRoutes的正则匹配 ([2a500dc](https://github.com/haoziqaq/varlet/commit/2a500dce3e22f5c725b9660c8ec01180717fc363))
+* **cli:** 优化site routes ([8f11570](https://github.com/haoziqaq/varlet/commit/8f1157057a73fe4dbbcd4b818da3d8c661c7a293))
+* **cli:** 修改了文档站点的样式 ([ac28f9f](https://github.com/haoziqaq/varlet/commit/ac28f9ff6094ee198bca3b2f1d46bc9548de378e))
+* **cli:** 合并代码 ([9c0a3d5](https://github.com/haoziqaq/varlet/commit/9c0a3d50732399b8c0ed0363c8c52fb30c1784de))
+* **cli,ui:** icon 文档和重构 ([84fac70](https://github.com/haoziqaq/varlet/commit/84fac70fc627c9e15620000cf34fac69ce6da628))
+* **cli,ui:** 修改pc站点布局, 修改menu left获取问题 ([87d6041](https://github.com/haoziqaq/varlet/commit/87d6041aba6e579973da67a2d63c144b4d4aa95d))
+* **cli,ui:** 完成组件库 pc文档 mobile文档的i18n设计 ([cbcd297](https://github.com/haoziqaq/varlet/commit/cbcd2978731f3b7f8850da702beb744fe8e77831))
+* **cli/site:** 优化路由联动 ([d7bbef3](https://github.com/haoziqaq/varlet/commit/d7bbef370d2feb1c6298eb29b942dbbe241f7dbe))
+* **cli/site:** 修复语言不同步的问题 ([3271d06](https://github.com/haoziqaq/varlet/commit/3271d06e37faa73e98a68b5986433d27d8be591f))
+* **cli/site:** 修改手机缩放比例 ([777a38c](https://github.com/haoziqaq/varlet/commit/777a38c46268cf5f394d467eddb149faddc63997))
+* **site:** return to the previous step and display the left active menu in the visual box ([5ed5313](https://github.com/haoziqaq/varlet/commit/5ed53133de4763dbf360d192324d35674a4e5c52))
+* **site:** solve the problem of incorrect display of mobile phone ([2a549e8](https://github.com/haoziqaq/varlet/commit/2a549e8eb134e94cc9196908d59b488b059ac70e))
+* **ui:** merge code ([6565c0b](https://github.com/haoziqaq/varlet/commit/6565c0b94a04ddbe1f33334504634a6153954f58))
+* **ui:** 增加parse时间格式的工具函数 ([5851cbb](https://github.com/haoziqaq/varlet/commit/5851cbb02e9ff8455f07db42a0f47b61110f2fa4))
+* **ui:** 重构dialog 完善文档 ([0ba2eb1](https://github.com/haoziqaq/varlet/commit/0ba2eb11081babfc4d48539b6661de3610c1fe77))
+* **ui:** 重构menu 重写menu example ([edacc76](https://github.com/haoziqaq/varlet/commit/edacc762427eaf1c77614209f636f18bde5b33b8))
+* **ui/popup:** 重写example ([dd4efa8](https://github.com/haoziqaq/varlet/commit/dd4efa8cfdca28e2ac39a82ad02d2123b34a2518))
+* **ui/skeleton,button,ripple:** 完成skeleton button ripple的文档编写 ([846ffe9](https://github.com/haoziqaq/varlet/commit/846ffe990b8c755d033843bea3c30ccb8da7e491))
+* **varlet-ui:** error report in modification ([f8b9020](https://github.com/haoziqaq/varlet/commit/f8b90205837ea059df2f626f4fe9fe2c25e994a7))
+* **varlet-ui:** modify phone size ([9e92861](https://github.com/haoziqaq/varlet/commit/9e92861d4fbfd562edbdaf67dd14154e6092b01e))
+
+
+### Features
+
+* countdown ([f3fd177](https://github.com/haoziqaq/varlet/commit/f3fd17770fe367cdfeb41023928f90dc27a3983d))
+* steps ([4a70c31](https://github.com/haoziqaq/varlet/commit/4a70c31c694ee5c2365b5038df72ca5831ca31df))
+
+
+### Reverts
+
+* press wrong ([bfe9ee8](https://github.com/haoziqaq/varlet/commit/bfe9ee8ae7d618c7baec0ddf2c120c6b8e2eae93))
+
+
+
+
+
 # [0.8.0](https://github.com/haoziqaq/varlet/compare/v0.7.0...v0.8.0) (2021-02-26)
 
 

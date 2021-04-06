@@ -3,6 +3,74 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/haoziqaq/varlet/compare/v0.8.0...v0.9.0) (2021-04-06)
+
+
+### Bug Fixes
+
+* **back-top:** modify some errors ([fbde4f2](https://github.com/haoziqaq/varlet/commit/fbde4f21f094e2e8add2df0798c562a408a5cf87))
+* **cell:** change attr container ([a86a370](https://github.com/haoziqaq/varlet/commit/a86a370b1cbb644d7f69f37d3f960faf5fa1f0e5))
+* **cli:** work in progress ([ed362c7](https://github.com/haoziqaq/varlet/commit/ed362c785ab6f7ab52c61c8ccb19a4eec0b1f217))
+* **cli:** 优化compileRoutes的正则匹配 ([2a500dc](https://github.com/haoziqaq/varlet/commit/2a500dce3e22f5c725b9660c8ec01180717fc363))
+* **cli:** 修改了文档站点的样式 ([ac28f9f](https://github.com/haoziqaq/varlet/commit/ac28f9ff6094ee198bca3b2f1d46bc9548de378e))
+* **cli:** 合并代码 ([9c0a3d5](https://github.com/haoziqaq/varlet/commit/9c0a3d50732399b8c0ed0363c8c52fb30c1784de))
+* **cli, ui:** 重构了 mobile和组件库的i18n设计 ([bf6c870](https://github.com/haoziqaq/varlet/commit/bf6c870a82c4d309f10ae555b48a13d1810e66fa))
+* **cli,ui:** icon 文档和重构 ([84fac70](https://github.com/haoziqaq/varlet/commit/84fac70fc627c9e15620000cf34fac69ce6da628))
+* **cli,ui:** 修改pc站点布局, 修改menu left获取问题 ([87d6041](https://github.com/haoziqaq/varlet/commit/87d6041aba6e579973da67a2d63c144b4d4aa95d))
+* **cli,ui:** 完成组件库 pc文档 mobile文档的i18n设计 ([cbcd297](https://github.com/haoziqaq/varlet/commit/cbcd2978731f3b7f8850da702beb744fe8e77831))
+* **index-bar:** modify scroll container ([8c70cb8](https://github.com/haoziqaq/varlet/commit/8c70cb8bade2c27772d3a541b6291c18acc2da3a))
+* **pull-refresh:** fix error classname ([fedeff0](https://github.com/haoziqaq/varlet/commit/fedeff03c87656e3713f32f0f30e85a3bfd02008))
+* **site:** return to the previous step and display the left active menu in the visual box ([5ed5313](https://github.com/haoziqaq/varlet/commit/5ed53133de4763dbf360d192324d35674a4e5c52))
+* **slider:** make sure maxWidth exist ([052bb70](https://github.com/haoziqaq/varlet/commit/052bb70c58c738529610a3ae8caa251d33a85a47))
+* **slider:** modify z-index when draged ([7433719](https://github.com/haoziqaq/varlet/commit/7433719c5f749eccbc50b9e015049f025623ab21))
+* **time-picker:** duplicate calls update ([2605384](https://github.com/haoziqaq/varlet/commit/26053841c2e120881847903f83e9f945e918090a))
+* **time-picker:** fix bug of irremovability ([b359852](https://github.com/haoziqaq/varlet/commit/b3598522a85a684312e07a9168dfdec5c01be034))
+* **time-picker:** fix some bugs ([96d45e3](https://github.com/haoziqaq/varlet/commit/96d45e39c3e7fb5f8a28d3fe24a52ecc03217dce))
+* **time-picker:** fix the bug of touchmove and wrong handleStyle ([7383396](https://github.com/haoziqaq/varlet/commit/7383396ed318e9e3be4fc3e703f4333d50a442a1))
+* **ui:** counter原型完成 ([d7f5a52](https://github.com/haoziqaq/varlet/commit/d7f5a526ff44cc49323f498836d192a75a08745c))
+* **ui:** menu重构完成 文档编写完成 ([6bd43ca](https://github.com/haoziqaq/varlet/commit/6bd43cad39129c82ad3bbafdcda8165dc11dc7be))
+* **ui:** merge code ([6565c0b](https://github.com/haoziqaq/varlet/commit/6565c0b94a04ddbe1f33334504634a6153954f58))
+* **ui:** 修复select 在multiple chips模式下 无法关闭chip的bug ([8015120](https://github.com/haoziqaq/varlet/commit/80151200c30ab3dc70289c78d2ca6687916f7836))
+* **ui:** 修订文档 ([9827ca8](https://github.com/haoziqaq/varlet/commit/9827ca884333f8f3bfd8024106e65cbcead70ac8))
+* **ui:** 增加parse时间格式的工具函数 ([5851cbb](https://github.com/haoziqaq/varlet/commit/5851cbb02e9ff8455f07db42a0f47b61110f2fa4))
+* **ui:** 移除menu缩放动画 ([1566535](https://github.com/haoziqaq/varlet/commit/1566535a3ceb97dcb9f5fc3efdc258252e547833))
+* **ui:** 重构dialog 完善文档 ([0ba2eb1](https://github.com/haoziqaq/varlet/commit/0ba2eb11081babfc4d48539b6661de3610c1fe77))
+* **ui/row col:** 修复offset偏移问题 ([ebd3986](https://github.com/haoziqaq/varlet/commit/ebd39863f771e928390d71108eec360a24df935d))
+* **varlet-ui:** error report in modification ([f8b9020](https://github.com/haoziqaq/varlet/commit/f8b90205837ea059df2f626f4fe9fe2c25e994a7))
+* add boolean check of toNumber method ([f5c5193](https://github.com/haoziqaq/varlet/commit/f5c5193866a07938fe14ebf0144f6f6e84b3e47c))
+* **ui:** 重构menu 重写menu example ([edacc76](https://github.com/haoziqaq/varlet/commit/edacc762427eaf1c77614209f636f18bde5b33b8))
+* **ui/popup:** 重写example ([dd4efa8](https://github.com/haoziqaq/varlet/commit/dd4efa8cfdca28e2ac39a82ad02d2123b34a2518))
+* **ui/select,option:** 修复了v-model失效的问题 ([bf72234](https://github.com/haoziqaq/varlet/commit/bf72234847446816e2a7075f89a6b1f8f8b1227f))
+* **ui/skeleton,button,ripple:** 完成skeleton button ripple的文档编写 ([846ffe9](https://github.com/haoziqaq/varlet/commit/846ffe990b8c755d033843bea3c30ccb8da7e491))
+* **varlet-ui:** modify phone size ([9e92861](https://github.com/haoziqaq/varlet/commit/9e92861d4fbfd562edbdaf67dd14154e6092b01e))
+* remove unnecessary code and add example ([0505305](https://github.com/haoziqaq/varlet/commit/0505305540ff748beaeb1185d3f07bcc1adfc736))
+
+
+### Features
+
+* add declaration files ([a20cddb](https://github.com/haoziqaq/varlet/commit/a20cddb6fe173493f28f26093578cba5fb21e79b))
+* add declaration files ([6eeb1a3](https://github.com/haoziqaq/varlet/commit/6eeb1a343b3c8bea5ced8361b454fb6e45cb7de7))
+* add less variable of time-picker, date-picker ([28f6131](https://github.com/haoziqaq/varlet/commit/28f6131924c13c38fbfe2b97ded4254b51735247))
+* add less variables of cell, back-top, pull-refresh, progress, switch, slider, index-bar ([ef9750d](https://github.com/haoziqaq/varlet/commit/ef9750d717a37b6b7c9ca9476a39561775c37dfd))
+* add less variables of step, collapse and define cubic func ([2a8be2d](https://github.com/haoziqaq/varlet/commit/2a8be2d822ff137f1dd49661f76f63c4ecd68256))
+* **countdown:** i18n and refactor the way of formatting ([7be2461](https://github.com/haoziqaq/varlet/commit/7be2461b6692e285c4975fd1880c145d35907e5c))
+* **loading:** i18n ([9c2240d](https://github.com/haoziqaq/varlet/commit/9c2240d419c1c1c63379eef579426560b2be2d45))
+* **slider:** docs and i18n ([3aab17b](https://github.com/haoziqaq/varlet/commit/3aab17b3e2163477944159d515e13be68b799dcf))
+* **snackbar:** call the snackbar function directly ([7f486c8](https://github.com/haoziqaq/varlet/commit/7f486c8ed622346e9cd9bec0d8c57f36f2a077ef))
+* **ui/row ui/col:** 新增row col组件 ([8b0ee5f](https://github.com/haoziqaq/varlet/commit/8b0ee5fde3d5db33f69c9ad532e660b4293bdad5))
+* countdown ([f3fd177](https://github.com/haoziqaq/varlet/commit/f3fd17770fe367cdfeb41023928f90dc27a3983d))
+* steps ([4a70c31](https://github.com/haoziqaq/varlet/commit/4a70c31c694ee5c2365b5038df72ca5831ca31df))
+
+
+### Reverts
+
+* press wrong ([bfe9ee8](https://github.com/haoziqaq/varlet/commit/bfe9ee8ae7d618c7baec0ddf2c120c6b8e2eae93))
+* **cell:** revert attr position ([01b690f](https://github.com/haoziqaq/varlet/commit/01b690f21eb2823e9ec52f81ac69c35f3fb642f9))
+
+
+
+
+
 # [0.8.0](https://github.com/haoziqaq/varlet/compare/v0.7.0...v0.8.0) (2021-02-26)
 
 

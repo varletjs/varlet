@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/haoziqaq/varlet/compare/v0.8.0...v0.9.0) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui:** counter原型完成 ([d7f5a52](https://github.com/haoziqaq/varlet/commit/d7f5a526ff44cc49323f498836d192a75a08745c))
+* **varlet-icons:** add icon ([6d5f8f2](https://github.com/haoziqaq/varlet/commit/6d5f8f222d5e7b7a279aa2b0c0e797b03dbcea35))
+
+
+### Features
+
+* steps ([4a70c31](https://github.com/haoziqaq/varlet/commit/4a70c31c694ee5c2365b5038df72ca5831ca31df))
+
+
+
+
+
 # [0.8.0](https://github.com/haoziqaq/varlet/compare/v0.7.0...v0.8.0) (2021-02-26)
 
 
