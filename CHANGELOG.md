@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.4](https://github.com/haoziqaq/varlet/compare/v0.9.3...v0.9.4) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/collapse:** 重命名组件名 ([c418cc0](https://github.com/haoziqaq/varlet/commit/c418cc055129197c632585c4bacfb6f842bd83cc))
+
+
+
+
+
 ## [0.9.3](https://github.com/haoziqaq/varlet/compare/v0.9.2...v0.9.3) (2021-04-06)
 
 
