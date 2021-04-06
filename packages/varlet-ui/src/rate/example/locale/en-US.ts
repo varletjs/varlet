@@ -10,4 +10,6 @@ export default {
   readonlyRating: 'Readonly Rating',
   useWaterRipples: 'Use Water Ripples',
   listeningForClickEvents: 'Listening For Click Events',
+  validate: 'Validate',
+  rateMessage: 'It has to be greater than 2',
 }

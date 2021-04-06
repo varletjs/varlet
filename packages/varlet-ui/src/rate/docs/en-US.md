@@ -152,6 +152,17 @@ export default {
 }
 ```
 
+### Validate
+
+```html
+The values are validated by passing in an array of validators，If the validator returns true, the validation passes。
+Other values are converted to text as a user prompt。
+```
+
+```html
+<var-rate :rules="[(v) => v >= 3 || 'It has to be greater than 2']" v-model='score' />
+```
+
 ## API
 
 ### props
@@ -172,9 +183,21 @@ export default {
 | `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `#bdbdbd`|
 | `readonly` | Whether to use rating read-only | _boolean_ | `false`|
 | `ripple` | Whether to use water ripple | _boolean_ | `false`|
+| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: string | number) => any>_ | `-` |
 
 ### Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
 | `change` | Triggered when the rating changes | The rating of the current click |
+
+### Theme Variables
+#### The following LESS variables can be overridden at build time to modify the theme style
+
+### Rate Variables
+
+| Variable | Default |
+| --- | --- |
+| `@rate-disabled-color` | `#aaa` |
+| `@rate-error-color` | `@color-danger` |
+| `@rate-action-padding` | `4px` |

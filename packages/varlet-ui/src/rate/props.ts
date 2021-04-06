@@ -1,15 +1,19 @@
+import { PropType } from 'vue'
+
+export type ValidateTriggers = 'onChange'
+
 export const props = {
   //  当前分数
   modelValue: {
-    type: Number,
-    default: 3,
+    type: [String, Number],
+    default: 0,
   },
   'onUpdate:modelValue': {
     type: Function,
   },
   // 图标总数
   count: {
-    type: Number,
+    type: [String, Number],
     default: 5,
   },
   //  选中时的颜色
@@ -25,7 +29,7 @@ export const props = {
   //  未选中的图标的颜色
   emptyColor: {
     type: String,
-    default: '#bdbdbd',
+    default: '#555555',
   },
   //  未选中时图标样式
   emptyIcon: {
@@ -73,8 +77,15 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  validateTrigger: {
+    type: Array as PropType<Array<ValidateTriggers>>,
+    default: ['onChange'],
+  },
+  rules: {
+    type: Array as PropType<Array<(value: any) => any>>,
+  },
   //  点击回调
   onChange: {
-    type: Function,
+    type: Function as PropType<(value: any) => void>,
   },
 }

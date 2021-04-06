@@ -1,5 +1,5 @@
 <template>
-  <div class="varlet-site">
+  <div class="varlet-site" v-if="!isLoading">
     <div class="varlet-site-header var-elevation--1">
       <span class="varlet-site-header__logo">
         <img :src="header.logo" alt="" />
@@ -61,6 +61,7 @@
       </div>
     </div>
   </div>
+  <var-loading class="varlet-pc__loading" style="color: #2979ff" v-else />
 </template>
 
 <script lang="ts">
@@ -70,11 +71,13 @@ import Ripple from '@varlet/ui/es/ripple'
 import Cell from '@varlet/ui/es/cell'
 import Icon from '@varlet/ui/es/icon'
 import Menu from '@varlet/ui/es/menu'
+import Loading from '@varlet/ui/es/loading'
 import '@varlet/ui/es/ripple/style'
 import '@varlet/ui/es/cell/style'
 import '@varlet/ui/es/icon/style'
 import '@varlet/ui/es/menu/style'
-import { defineComponent, ref, Ref, watch, onMounted } from 'vue'
+import '@varlet/ui/es/loading/style'
+import { defineComponent, ref, Ref, watch, onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 
 type Menu = {
@@ -98,6 +101,7 @@ export default defineComponent({
     [Cell.name]: Cell,
     [Icon.name]: Icon,
     [Menu.name]: Menu,
+    [Loading.name]: Loading,
   },
   setup() {
     const menu: Ref<Menu[]> = ref([])
@@ -116,6 +120,7 @@ export default defineComponent({
     const path: Ref<string | null> = ref(null)
     const isBack: Ref<boolean> = ref(false)
     const isPhone: Ref<boolean> = ref(false)
+    const isLoading: Ref<boolean> = ref(true)
 
     isPhone.value = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
     languageList.value = config.pc.header.language
@@ -127,6 +132,8 @@ export default defineComponent({
     const judgmentType = (type) => {
       let [, languageValue, componentValue] = window.location.hash.split('/')
 
+      isLoading.value = false
+
       if (type) {
         path.value = componentValue
 
@@ -137,15 +144,17 @@ export default defineComponent({
         }
       }
 
-      let childrenElement = refs.getElementsByClassName('var-cell')
-      let index = menu.value.findIndex((item) => item.doc === componentValue)
+      nextTick(() => {
+        let childrenElement = refs.getElementsByClassName('var-cell')
+        let index = menu.value.findIndex((item) => item.doc === componentValue)
 
-      if (index !== -1) {
-        childrenElement[index].scrollIntoView({
-          block: 'center',
-          inline: 'start',
-        })
-      }
+        if (index !== -1) {
+          childrenElement[index].scrollIntoView({
+            block: 'center',
+            inline: 'start',
+          })
+        }
+      })
     }
 
     menu.value = configMenu
@@ -174,8 +183,9 @@ export default defineComponent({
     watch(
       () => route.path,
       (to: string) => {
-        let [, languageValue = '', name = ''] = to.split('/')
+        let [, languageValue, name] = to.split('/')
         currentMenuName.value = name
+        language.value = languageValue
 
         isBack.value ? judgmentType('') : (isBack.value = true)
 
@@ -185,7 +195,6 @@ export default defineComponent({
         }
 
         const currentNonComponent = menu.value.find((c) => c.doc === currentMenuName.value)?.nonComponent ?? false
-        language.value = languageValue
         componentName.value = currentNonComponent ? 'home' : currentMenuName.value
       },
       { immediate: true }
@@ -201,6 +210,7 @@ export default defineComponent({
       isHideVersion,
       languageList,
       isOpenMenu,
+      isLoading,
       path,
       nav,
       changeRoute,
@@ -229,6 +239,14 @@ iframe {
 }
 
 .varlet {
+  &-pc__loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
   &-site {
     &-mobile {
       flex: 0 0 432px;

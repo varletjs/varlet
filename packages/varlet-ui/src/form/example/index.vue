@@ -44,6 +44,7 @@
       <var-checkbox :checked-value="2">{{ pack.sleep }}</var-checkbox>
       <var-checkbox :checked-value="3">{{ pack.play }}</var-checkbox>
     </var-checkbox-group>
+    <var-rate :rules="[(v) => v >= 3 || pack.rateMessage]" v-model="formData.score" />
     <div class="row mb">
       <var-switch :rules="[(v) => !!v || pack.licenseMessage]" v-model="formData.license" />
     </div>
@@ -78,6 +79,7 @@ import Switch from '../../switch'
 import Slider from '../../slider'
 import Uploader from '../../uploader'
 import Counter from '../../counter'
+import Rate from '../../rate'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
 import { reactive, ref } from 'vue'
 import { watchLang } from '../../utils/components'
@@ -99,6 +101,7 @@ export default {
     [Button.name]: Button,
     [Uploader.name]: Uploader,
     [Counter.name]: Counter,
+    [Rate.name]: Rate,
     AppType,
   },
   setup() {
@@ -108,9 +111,10 @@ export default {
       department: '',
       gender: undefined,
       license: false,
-      range: 10,
+      range: 0,
       count: 0,
       group: [],
+      score: 0,
       like: [],
       files: [],
     })

@@ -67,14 +67,9 @@ export default defineComponent({
 <style lang="less">
 @import '~@varlet/ui/es/styles/var';
 
-html {
-  background: #f7f8fa;
-}
-
 body {
   margin: 0;
   padding: 0;
-  background: #f7f8fa;
   min-height: 100%;
   font-family: 'Roboto', 'Noto Sans SC', sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -94,7 +89,7 @@ header {
 }
 
 .router-view__block {
-  padding: 50px 12px 10px;
+  padding: 50px 12px 15px;
 }
 
 * {

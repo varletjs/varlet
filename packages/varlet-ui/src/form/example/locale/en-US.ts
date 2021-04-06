@@ -16,6 +16,7 @@ export default {
   genderMessage: 'The gender cannot be empty',
   male: 'Male',
   female: 'Female',
+  rateMessage: 'It has to be greater than 2',
   likeMessage: 'The select cannot be empty',
   licenseMessage: 'You must turn on',
   countMessage: 'It has to be greater than 10',
