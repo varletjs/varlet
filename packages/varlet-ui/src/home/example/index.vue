@@ -73,6 +73,7 @@ export default {
 
 .var-cell {
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   &:hover {
     background: #eee;

@@ -7,34 +7,35 @@
 @tab-disabled-color: @color-disabled;
 
 .var-tab {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex: 1 0 auto;
-	padding: 0 @tab-padding;
-	font-size: @font-size-md;
-	color: @tab-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 auto;
+  padding: 0 @tab-padding;
+  font-size: @font-size-md;
+  color: @tab-color;
   cursor: pointer;
   user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-	&--active {
-		color: @tab-active-color;
-	}
+  &--active {
+    color: @tab-active-color;
+  }
 
-	&--inactive {
-		color: @tab-inactive-color;
-	}
+  &--inactive {
+    color: @tab-inactive-color;
+  }
 
-	&--disabled {
-		color: @tab-disabled-color;
+  &--disabled {
+    color: @tab-disabled-color;
     cursor: not-allowed;
-	}
+  }
 
-	&--horizontal {
-		flex-direction: row;
-	}
+  &--horizontal {
+    flex-direction: row;
+  }
 
-	&--vertical {
-		flex-direction: column;
-	}
+  &--vertical {
+    flex-direction: column;
+  }
 }

@@ -54,5 +54,6 @@ export default {
   color: #888;
   user-select: none;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 </style>

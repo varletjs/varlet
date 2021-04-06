@@ -134,6 +134,7 @@ export default {
     padding: 6% 5%;
     margin: 0 2% 4%;
     cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     user-select: none;
     border-bottom: 2px solid @color-primary;
   }
