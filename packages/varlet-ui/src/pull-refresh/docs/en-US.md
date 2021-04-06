@@ -61,10 +61,10 @@ export default {
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `model-value / v-model` | Loading status | _boolean_ | - |
+| `v-model` | Loading status | _boolean_ | - |
 | `disabled` | Whether to disable pull refresh | _boolean_ | `false` |
-| `animation-duration` | Animation duration(ms) | _number_ \| _string_ | `300` |
-| `success-duration` | Success text display duration(ms) | _number_ \| _string_ | `2000` |
+| `animation-duration` | Animation duration(ms) | _number \| string_ | `300` |
+| `success-duration` | Success text display duration(ms) | _number \| string_ | `2000` |
 | `bgColor` | BackgroundColor of control | _string_ | `#005CAF` |
 | `color` | color of control | _string_ | `#ffffff` |
 | `successBgColor` | BackgroundColor of control when the status is success | _string_ | `#4CAF50` |

@@ -64,17 +64,17 @@ When you click the index bar, it will automatically jump to the corresponding `I
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `v-model:active` | The currently active anchor | _number_ \| _string_ | - |
+| `v-model:active` | The currently active anchor | _number \| string_ | - |
 | `sticky` | Whether to enable anchor sticky top | _boolean_ | `true` |
 | `sticky-offset-top` | Anchor offset top when sticky | _number_ | `0` |
-| `z-index` | z-index | _number_ \| _string_ | `1` |
+| `z-index` | z-index | _number \| string_ | `1` |
 | `highlight-color` | Index character highlight color | _string_ | `#ee0a24` |
 
 ### IndexAnchor Props
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `index` | Index | _number_ \| _string_ | - |
+| `index` | Index | _number \| string_ | - |
 
 ### Events
 

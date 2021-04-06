@@ -124,7 +124,7 @@ export default {
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `model-value / v-model` | Names of current active panels | accordion mode： _number_ \| _string_ <br> non-accordion mode：_number[]_ \| _string[]_ | - |
+| `v-model` | Names of current active panels | accordion mode： _number_ \| _string_ <br> non-accordion mode：_number[]_ \| _string[]_ | - |
 | `accordion` | Whether to be accordion mode | _boolean_ | `false` |
 | `offset` | Whether to show margin | _boolean_ | `true` |
 

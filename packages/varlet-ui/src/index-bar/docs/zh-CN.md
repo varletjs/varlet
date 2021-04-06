@@ -64,17 +64,17 @@ createApp().use(IndexBar).use(IndexAnchor)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `v-model:active` | 当前激活的索引 | _number_ \| _string_ | - |
+| `v-model:active` | 当前激活的索引 | _number \| string_ | - |
 | `sticky` | 是否开启锚点吸顶 | _boolean_ | `true` |
 | `sticky-offset-top` | 锚点吸顶时与顶部的距离 | _number_ | `0` |
-| `z-index` | z-index 层级 | _number_ \| _string_ | `1` |
+| `z-index` | z-index 层级 | _number \| string_ | `1` |
 | `highlight-color` | 索引字符高亮颜色 | _string_ | `#ee0a24` |
 
 ### IndexAnchor 属性
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `index` | 索引字符 | _number_ \| _string_ | - |
+| `index` | 索引字符 | _number \| string_ | - |
 
 ### 事件
 

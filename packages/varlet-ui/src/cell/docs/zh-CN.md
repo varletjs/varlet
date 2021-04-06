@@ -43,7 +43,7 @@ createApp().use(Cell)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `title` | 单元格标题	| _string_ \| _number_ | - |
+| `title` | 单元格标题	| _string \| number_ | - |
 | `icon` | 左侧图标名称 | _string_ | - |
 | `desc` | 单元格描述 | _string_ | - |
 | `border` | 是否显示边框 | _boolean_ | `false` |
