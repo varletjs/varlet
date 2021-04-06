@@ -36,7 +36,7 @@
     justify-content: flex-end;
   }
 
-  &__button {
+  &__button[var-dialog-cover] {
     margin-left: @dialog-button-margin-left;
     background-color: transparent;
     box-shadow: none;
@@ -46,11 +46,11 @@
     }
   }
 
-  &__confirm-button {
+  &__confirm-button[var-dialog-cover] {
     color: @dialog-confirm-button-color;
   }
 
-  &__cancel-button {
+  &__cancel-button[var-dialog-cover] {
     color: @dialog-cancel-button-color;
   }
 }

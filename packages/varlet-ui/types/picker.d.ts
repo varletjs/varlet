@@ -31,7 +31,7 @@ interface PickerOptions {
 }
 
 export interface Picker {
-  (options: PickerOptions): Promise<PickerResolvedData>
+  (options: PickerOptions | Texts): Promise<PickerResolvedData>
   install(app: App): void
   close(): void
   Component: PickerComponent

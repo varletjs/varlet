@@ -33,7 +33,7 @@ export interface DialogOptions {
 }
 
 export interface Dialog {
-  (options: DialogOptions): Promise<DialogActions>
+  (options: DialogOptions | string): Promise<DialogActions>
   install(app: App): void
   close(): void
   Component: DialogComponent

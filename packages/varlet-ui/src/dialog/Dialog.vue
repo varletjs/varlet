@@ -27,6 +27,7 @@
       <div class="var-dialog__actions">
         <var-button
           class="var-dialog__button var-dialog__cancel-button"
+          var-dialog-cover
           text
           :text-color="cancelButtonTextColor"
           :color="cancelButtonColor"
@@ -37,6 +38,7 @@
         </var-button>
         <var-button
           class="var-dialog__button var-dialog__confirm-button"
+          var-dialog-cover
           text
           :text-color="confirmButtonTextColor"
           :color="confirmButtonColor"

@@ -64,7 +64,10 @@ export default {
       close: () => Snackbar.info('close'),
     }
 
-    const createBasic = () => Dialog(pack.value.message)
+    const createBasic = () =>
+      Dialog({
+        message: pack.value.message,
+      })
 
     const createAction = async () => actions[await Dialog(pack.value.message)]()
 
