@@ -394,5 +394,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import 'date-picker';
+@import '../button/button';
+@import './date-picker';
 </style>

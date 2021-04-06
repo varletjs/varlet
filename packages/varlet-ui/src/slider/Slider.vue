@@ -104,7 +104,12 @@
         </div>
       </div>
     </div>
-    <var-form-details :error-message="errorMessage" :style="{ marginLeft: thumbSize / 2 + 'px', marginTop: 0 }" />
+    <var-form-details
+      :error-message="errorMessage"
+      :style="{ marginLeft: thumbSize / 2 + 'px' }"
+      class="var-slider__form"
+      var-slider-cover
+    />
   </div>
 </template>
 
@@ -375,5 +380,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../form-details/formDetails';
 @import './slider';
 </style>

@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="var-cell__extra" :class="[extraClass ? extraClass : null]" v-if="$slots.extra">
-      <slot name="extra"></slot>
+      <slot name="extra" />
     </div>
   </div>
 </template>
@@ -36,5 +36,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../icon/icon';
 @import './cell';
 </style>

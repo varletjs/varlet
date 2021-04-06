@@ -9,6 +9,8 @@
 @slider-thumb-label-font-size: @font-size-sm;
 
 .var-slider {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
   &-block {
     display: flex;
     align-items: center;
@@ -122,7 +124,7 @@
     }
   }
 
-  .var-form-details {
-    margin-left: 6px;
+  &__form[var-slider-cover] {
+    margin: 0 0 0 6px;
   }
 }

@@ -17,6 +17,8 @@
             <li v-for="(day, index) in days" :key="index">
               <var-button
                 type="primary"
+                class="var-day-picker__button"
+                var-day-picker-cover
                 round
                 forbid-ripple
                 v-bind="{

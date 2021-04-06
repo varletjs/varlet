@@ -132,5 +132,8 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../ripple/ripple';
+@import '../loading/loading';
+@import '../form-details/formDetails';
 @import './switch';
 </style>

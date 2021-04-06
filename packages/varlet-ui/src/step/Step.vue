@@ -8,9 +8,9 @@
           :style="{ backgroundColor: isActive || isCurrent ? activeColor : inactiveColor }"
           @click="click"
         >
-          <var-icon :name="activeIcon || 'check'" v-if="isActive" />
-          <var-icon :name="currentIcon" v-else-if="isCurrent && currentIcon" />
-          <var-icon :name="inactiveIcon" v-else-if="inactiveIcon" />
+          <var-icon class="var-step__icon" var-step-cover :name="activeIcon || 'check'" v-if="isActive" />
+          <var-icon class="var-step__icon" var-step-cover :name="currentIcon" v-else-if="isCurrent && currentIcon" />
+          <var-icon class="var-step__icon" var-step-cover :name="inactiveIcon" v-else-if="inactiveIcon" />
           <span v-else>{{ index + 1 }}</span>
         </div>
         <div
@@ -31,9 +31,9 @@
           :style="{ backgroundColor: isActive || isCurrent ? activeColor : inactiveColor }"
           @click="click"
         >
-          <var-icon :name="activeIcon" v-if="isActive" />
-          <var-icon :name="currentIcon" v-else-if="isCurrent && currentIcon" />
-          <var-icon :name="inactiveIcon" v-else-if="inactiveIcon" />
+          <var-icon class="var-step__icon" var-step-cover :name="activeIcon" v-if="isActive" />
+          <var-icon class="var-step__icon" var-step-cover :name="currentIcon" v-else-if="isCurrent && currentIcon" />
+          <var-icon class="var-step__icon" var-step-cover :name="inactiveIcon" v-else-if="inactiveIcon" />
           <span v-else>{{ index + 1 }}</span>
         </div>
         <div
@@ -110,5 +110,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../icon/icon';
 @import './step';
 </style>
