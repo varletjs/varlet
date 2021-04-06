@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.6](https://github.com/haoziqaq/varlet/compare/v0.9.5...v0.9.6) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/types:** 修改函数式组件类型声明 ([0309fdc](https://github.com/haoziqaq/varlet/commit/0309fdc180e43bdd8788214ffff68637b7450faa))
+
+
+
+
+
 ## [0.9.5](https://github.com/haoziqaq/varlet/compare/v0.9.4...v0.9.5) (2021-04-06)
 
 **Note:** Version bump only for package @varlet/cli
