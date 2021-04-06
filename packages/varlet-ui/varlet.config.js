@@ -1,4 +1,5 @@
 module.exports = {
+  name: 'Varlet',
   namespace: 'var',
   title: 'Varlet',
   host: '0.0.0.0',
