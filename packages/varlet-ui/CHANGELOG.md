@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/haoziqaq/varlet/compare/v0.9.6...v0.10.0) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/*:** 解决组件依赖组件时 被依赖组件样式没有加载的问题 ([b2b18ae](https://github.com/haoziqaq/varlet/commit/b2b18aed2d3783dbb82904a7d31389f866825fb4))
+
+
+### Features
+
+* **varlet-ui:** write rate to form ([4a64a7e](https://github.com/haoziqaq/varlet/commit/4a64a7e93f9ecf58f470c2a1bccb34cec06da189))
+
+
+
+
+
 ## [0.9.6](https://github.com/haoziqaq/varlet/compare/v0.9.5...v0.9.6) (2021-04-06)
 
 

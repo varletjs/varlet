@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "0.9.6",
+  "version": "0.10.0",
   "description": "A material like components library",
   "module": "es/index.js",
   "main": "cjs/index.js",
@@ -47,7 +47,7 @@
   "gitHead": "04cbbd571a061f5d5651515132a8ef079de5673e",
   "dependencies": {
     "@babel/runtime": "^7.13.10",
-    "@varlet/icons": "^0.9.0",
+    "@varlet/icons": "^0.10.0",
     "dayjs": "^1.10.4",
     "decimal.js": "^10.2.1"
   }
