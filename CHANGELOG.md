@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.2](https://github.com/haoziqaq/varlet/compare/v0.10.1...v0.10.2) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/dialog:** 修复类型声明 ([29639b8](https://github.com/haoziqaq/varlet/commit/29639b86c7edf7b93169f2ac8eec36febc9d2189))
+
+
+
+
+
 ## [0.10.1](https://github.com/haoziqaq/varlet/compare/v0.10.0...v0.10.1) (2021-04-06)
 
 
