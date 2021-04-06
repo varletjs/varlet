@@ -11,22 +11,22 @@ import {
 } from '../utils/shared'
 
 interface LazyOptions {
-	loading?: string
-	error?: string
-	attempt?: number
-	throttleWait?: number
-	filter?: (lazy: Lazy) => void
-	events?: string[]
+  loading?: string
+  error?: string
+  attempt?: number
+  throttleWait?: number
+  filter?: (lazy: Lazy) => void
+  events?: string[]
 }
 
 type LazyState = 'pending' | 'success' | 'error'
 
 type Lazy = LazyOptions & {
-	src: string
-	arg: string | undefined
-	currentAttempt: number
-	attemptLock: boolean
-	state: LazyState
+  src: string
+  arg: string | undefined
+  currentAttempt: number
+  attemptLock: boolean
+  state: LazyState
 }
 
 export type LazyHTMLElement = HTMLElement & { _lazy: Lazy }
@@ -208,10 +208,10 @@ function diff(el: LazyHTMLElement, binding: DirectiveBinding<string>): boolean {
 
   return (
     src !== binding.value ||
-		arg !== binding.arg ||
-		attempt !== Number(el.getAttribute(LAZY_ATTEMPT)) ||
-		loading !== el.getAttribute(LAZY_LOADING) ||
-		error !== el.getAttribute(LAZY_ERROR)
+    arg !== binding.arg ||
+    attempt !== Number(el.getAttribute(LAZY_ATTEMPT)) ||
+    loading !== el.getAttribute(LAZY_LOADING) ||
+    error !== el.getAttribute(LAZY_ERROR)
   )
 }
 
@@ -231,7 +231,7 @@ function updated(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
   mounted(el, binding)
 }
 
-function mergeLazyOptions(lazyOptions: LazyOptions) {
+function mergeLazyOptions(lazyOptions: LazyOptions = {}) {
   const { events, loading, error, attempt, throttleWait, filter } = lazyOptions
 
   defaultLazyOptions.events = events ?? defaultLazyOptions.events
