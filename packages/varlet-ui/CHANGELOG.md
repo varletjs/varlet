@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.5](https://github.com/haoziqaq/varlet/compare/v0.9.4...v0.9.5) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/package.json:** 增加@babel/runtime依赖 ([d6948b8](https://github.com/haoziqaq/varlet/commit/d6948b865fcdf61cc7b79bd50765f3c4b3abccf7))
+
+
+
+
+
 ## [0.9.4](https://github.com/haoziqaq/varlet/compare/v0.9.3...v0.9.4) (2021-04-06)
 
 
