@@ -1,54 +1,76 @@
 <template>
-  <div class="var-rate" ref="rate">
-    <div
-      class="var-rate--content"
-      v-for="val in count"
-      :key="val"
-      v-ripple="{ disabled: readonly || disabled ? true : !ripple }"
-      :style="{
-        color: transformValue(val).color,
-        cursor: readonly ? 'default' : disabled ? 'not-allowed' : 'pointer',
-        marginRight: val !== count ? marginRight : 0,
-        width: fontSize,
-        height: fontSize,
-        borderRadius: '50%',
-      }"
-    >
-      <var-icon
-        :transition="1"
-        :name="`${
-          transformValue(val).type === 'full' ? icon : transformValue(val).type === 'half' ? halfIcon : emptyIcon
-        }`"
-        :style="{ fontSize }"
-        @click="handleClick(val, $event)"
-      />
+  <div class="var-rate__warp">
+    <div class="var-rate" ref="rate">
+      <div
+        class="var-rate__content"
+        v-for="val in toNumber(count)"
+        :key="val"
+        v-ripple="{ disabled: formReadonly || formDisabled || readonly || disabled || !ripple }"
+        :style="{
+          color: transformValue(val).color,
+          marginRight: val !== toNumber(count) ? toSizeUnit(marginRight) : 0,
+          width: toSizeUnit(size),
+          height: toSizeUnit(size),
+          borderRadius: '50%',
+        }"
+        :class="{ 'var-rate--disabled': formDisabled, 'var-rate--error': errorMessage }"
+      >
+        <var-icon
+          :transition="0"
+          :name="`${
+            transformValue(val).type === 'full' ? icon : transformValue(val).type === 'half' ? halfIcon : emptyIcon
+          }`"
+          :style="{ fontSize: toSizeUnit(size) }"
+          @click="handleClick(val, $event)"
+        />
+      </div>
     </div>
+    <var-form-details :error-message="errorMessage" />
   </div>
 </template>
 
 <script lang="ts">
 import Ripple from '../ripple'
-import { defineComponent, ref, Ref } from 'vue'
-import { props } from './props'
+import { defineComponent, nextTick } from 'vue'
+import { props, ValidateTriggers } from './props'
+import { useValidation } from '../utils/components'
+import { useForm } from '../form/provide'
+import { RateProvider } from './provide'
 import Icon from '../icon'
+import FormDetails from '../form-details/FormDetails.vue'
+import { toSizeUnit } from '../utils/elements'
+import { toNumber } from '../utils/shared'
 
 export default defineComponent({
   name: 'VarRate',
   components: {
     [Icon.name]: Icon,
+    [FormDetails.name]: FormDetails,
   },
   directives: { Ripple },
   inheritAttrs: false,
   props,
   setup(props) {
+    const { form, bindForm } = useForm()
+    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+
     const transformValue = (index: number) => {
-      if (index <= props.modelValue) {
-        return { type: 'full', score: index, color: props.disabled ? props.disabledColor : props.color }
+      const { modelValue, disabled, disabledColor, color, half, emptyColor } = props
+
+      if (index <= toNumber(modelValue)) {
+        return { type: 'full', score: index, color: disabled ? disabledColor : color }
       }
-      if (props.half && index <= props.modelValue + 0.5) {
-        return { type: 'half', score: index, color: props.disabled ? props.disabledColor : props.color }
+      if (half && index <= toNumber(modelValue) + 0.5) {
+        return { type: 'half', score: index, color: disabled ? disabledColor : color }
       }
-      return { type: 'empty', score: index, color: props.disabled ? props.disabledColor : props.emptyColor }
+      return { type: 'empty', score: index, color: disabled ? disabledColor : emptyColor }
+    }
+
+    const validateWithTrigger = (trigger: ValidateTriggers) => {
+      nextTick(() => {
+        const { validateTrigger, rules, modelValue } = props
+        vt(validateTrigger, trigger, rules, toNumber(modelValue))
+      })
     }
 
     const changeValue = (score: number, event: MouseEvent) => {
@@ -58,28 +80,45 @@ export default defineComponent({
           score -= 0.5
         }
       }
+
       props['onUpdate:modelValue']?.(score)
     }
 
     const handleClick = (score: number, event: MouseEvent) => {
-      if (props.readonly || props.disabled) {
+      const { readonly, disabled, onChange } = props
+
+      if (readonly || disabled) {
         return
       }
+
       changeValue(score, event)
-      props.onChange?.(score)
+      onChange?.(score)
+      validateWithTrigger('onChange')
     }
 
-    const fontSize: Ref<number | string> = ref(0)
-    fontSize.value = !isNaN(Number(props.size)) ? `${props.size}px` : props.size
+    const reset = () => {
+      props['onUpdate:modelValue']?.(0)
+      resetValidation()
+    }
 
-    const marginRight: Ref<number | string> = ref(0)
-    marginRight.value = !isNaN(Number(props.marginRight)) ? `${props.marginRight}px` : props.marginRight
+    const validate = () => v(props.rules, toNumber(props.modelValue))
+
+    const rateProvider: RateProvider = {
+      reset,
+      validate,
+      resetValidation,
+    }
+
+    bindForm?.(rateProvider)
 
     return {
+      formDisabled: form?.disabled,
+      formReadonly: form?.readonly,
+      toSizeUnit,
+      toNumber,
+      errorMessage,
       transformValue,
       handleClick,
-      fontSize,
-      marginRight,
     }
   },
 })

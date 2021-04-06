@@ -97,10 +97,15 @@ export default {
         { label: pack.value.options1, value: 'menu1' },
         { label: pack.value.options2, value: 'menu2' },
       ]
+
       offsetY.value = true
     }
 
-    watchLang(use)
+    watchLang((lang) => {
+      use(lang)
+
+      offsetY.value = false
+    })
 
     return {
       offsetY,

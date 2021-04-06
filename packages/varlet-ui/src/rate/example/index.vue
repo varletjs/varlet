@@ -49,6 +49,9 @@
 
   <app-type>{{ pack.listeningForClickEvents }}</app-type>
   <var-rate v-model="score10" @change="handleChange" />
+
+  <app-type>{{ pack.validate }}</app-type>
+  <var-rate :rules="[(v) => v >= 3 || pack.rateMessage]" v-model="score11" />
 </template>
 
 <script>
@@ -78,6 +81,7 @@ export default {
     const score8 = ref(3)
     const score9 = ref(3)
     const score10 = ref(3)
+    const score11 = ref(3)
 
     const handleChange = (score) => {
       Snackbar({
@@ -102,6 +106,7 @@ export default {
       score8,
       score9,
       score10,
+      score11,
     }
   },
 }

@@ -1,5 +1,12 @@
 <template>
-  <div class="var-app-bar" :class="{ 'var-elevation--3': isShadow }" :style="appBarStyle()">
+  <div
+    class="var-app-bar"
+    :class="{ 'var-elevation--3': isShadow }"
+    :style="{
+      background: color,
+      color: textColor,
+    }"
+  >
     <div class="var-app-bar__left" v-if="$slots.left">
       <slot name="left"></slot>
     </div>
@@ -32,18 +39,7 @@ export default defineComponent({
     [Icon.name]: Icon,
   },
   props,
-  setup(props) {
-    const appBarStyle = () => {
-      return {
-        background: props.color,
-        color: props.textColor,
-      }
-    }
-
-    return {
-      appBarStyle,
-    }
-  },
+  setup() {},
 })
 </script>
 

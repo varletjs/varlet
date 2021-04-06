@@ -16,6 +16,7 @@ export default {
   genderMessage: '必须选择一个性别',
   male: '男',
   female: '女',
+  rateMessage: '必须大于2',
   likeMessage: '至少选择一个爱好',
   licenseMessage: '您必须开启',
   countMessage: '必须大于10',

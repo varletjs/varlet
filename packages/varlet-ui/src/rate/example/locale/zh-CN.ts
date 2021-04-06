@@ -10,4 +10,6 @@ export default {
   readonlyRating: '只读评分',
   useWaterRipples: '使用水波纹',
   listeningForClickEvents: '监听点击事件',
+  validate: '字段校验',
+  rateMessage: '必须大于2',
 }
