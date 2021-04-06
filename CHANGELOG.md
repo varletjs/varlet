@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/haoziqaq/varlet/compare/v0.9.0...v0.9.1) (2021-04-06)
+
+
+### Bug Fixes
+
+* **cli/site:** 修改生成umd文件名和库的全局变量名称 ([ac39eb0](https://github.com/haoziqaq/varlet/commit/ac39eb0bdee2e3767ec928a119af5f284d7e7649))
+
+
+
+
+
 # [0.9.0](https://github.com/haoziqaq/varlet/compare/v0.8.0...v0.9.0) (2021-04-06)
 
 
