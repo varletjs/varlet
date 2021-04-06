@@ -77,5 +77,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../ripple';
+@import '../loading';
 @import './button';
 </style>

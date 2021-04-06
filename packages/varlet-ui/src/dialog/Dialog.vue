@@ -19,10 +19,7 @@
       <div class="var-dialog__title">
         <slot name="title">{{ dt(title, pack.dialogTitle) }}</slot>
       </div>
-      <div
-        class="var-dialog__message"
-        :style="{ textAlign: messageAlign }"
-      >
+      <div class="var-dialog__message" :style="{ textAlign: messageAlign }">
         <slot>
           {{ message }}
         </slot>
@@ -57,7 +54,7 @@
 import Popup from '../popup'
 import Button from '../button'
 import { props } from './props'
-import { defineComponent, ref, Ref, watch, onMounted } from 'vue'
+import { defineComponent, ref, Ref, watch } from 'vue'
 import { dt } from '../utils/shared'
 import { pack } from '../locale'
 
@@ -120,7 +117,9 @@ export default defineComponent({
 
     watch(
       () => props.show,
-      (newValue) => { popupShow.value = newValue } ,
+      (newValue) => {
+        popupShow.value = newValue
+      },
       { immediate: true }
     )
 
@@ -151,5 +150,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../popup';
+@import '../button';
 @import './dialog';
 </style>

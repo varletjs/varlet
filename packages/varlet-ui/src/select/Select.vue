@@ -378,5 +378,9 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../icon';
+@import '../menu';
+@import '../form-details';
+@import '../chip';
 @import './select';
 </style>

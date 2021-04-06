@@ -262,5 +262,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../icon';
+@import '../form-details';
 @import './input';
 </style>

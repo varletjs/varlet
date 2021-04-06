@@ -1,16 +1,16 @@
 <template>
-	<div
-		class="var-tab var--box"
-		ref="tabEl"
-		v-ripple="{ disabled }"
-		:class="[computeColorClass(), `var-tab--${itemDirection}`]"
-		:style="{
-			color: computeColorStyle(),
-		}"
-		@click="handleClick"
-	>
-		<slot />
-	</div>
+  <div
+    class="var-tab var--box"
+    ref="tabEl"
+    v-ripple="{ disabled }"
+    :class="[computeColorClass(), `var-tab--${itemDirection}`]"
+    :style="{
+      color: computeColorStyle(),
+    }"
+    @click="handleClick"
+  >
+    <slot />
+  </div>
 </template>
 
 <script lang="ts">
@@ -46,8 +46,8 @@ export default defineComponent({
       return disabled
         ? disabledColor.value
         : active.value === name || active.value === index?.value
-          ? activeColor.value
-          : inactiveColor.value
+        ? activeColor.value
+        : inactiveColor.value
     }
 
     const computeColorClass = () => {
@@ -56,8 +56,8 @@ export default defineComponent({
       return disabled
         ? 'var-tab--disabled'
         : active.value === name || active.value === index?.value
-          ? 'var-tab--active'
-          : 'var-tab--inactive'
+        ? 'var-tab--active'
+        : 'var-tab--inactive'
     }
 
     const handleClick = (event: Event) => {
@@ -89,5 +89,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../ripple';
 @import './tab';
 </style>

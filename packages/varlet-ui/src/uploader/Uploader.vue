@@ -325,6 +325,8 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '../styles/elevation';
+@import '../form-details';
+@import '../icon';
+@import '../popup';
 @import './uploader';
 </style>

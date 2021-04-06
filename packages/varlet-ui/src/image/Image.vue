@@ -1,27 +1,27 @@
 <template>
-	<div
-		class="var-image var--box"
-		:style="{
-			width: toSizeUnit(width),
-			height: toSizeUnit(height),
-			'border-radius': toSizeUnit(radius),
-		}"
-		:class="[!block ? 'var--inline-block' : null]"
+  <div
+    class="var-image var--box"
+    :style="{
+      width: toSizeUnit(width),
+      height: toSizeUnit(height),
+      'border-radius': toSizeUnit(radius),
+    }"
+    :class="[!block ? 'var--inline-block' : null]"
     v-ripple="{ disabled: !ripple }"
     v-bind="$attrs"
   >
-		<img
-			class="var-image__image"
-			:alt="alt"
-			:lazy-error="error"
-			:lazy-loading="loading"
-			:style="{ objectFit: fit }"
+    <img
+      class="var-image__image"
+      :alt="alt"
+      :lazy-error="error"
+      :lazy-loading="loading"
+      :style="{ objectFit: fit }"
       v-if="lazy"
-			v-lazy="src"
+      v-lazy="src"
       @load="handleLoad"
       @error="handleError"
       @click="onClick"
-		/>
+    />
 
     <img
       class="var-image__image"
@@ -33,7 +33,7 @@
       @error="handleError"
       @click="onClick"
     />
-	</div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -80,5 +80,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../ripple';
 @import './image';
 </style>
