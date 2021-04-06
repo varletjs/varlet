@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.2](https://github.com/haoziqaq/varlet/compare/v0.9.1...v0.9.2) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/*:** 所有组件阻止ios默认的点击高亮 ([78cce5f](https://github.com/haoziqaq/varlet/commit/78cce5f93ff4a039272e8c825b0ed78f324b6fe7))
+* **ui/lazy:** 修复install报错 ([187b822](https://github.com/haoziqaq/varlet/commit/187b8221d186f64eb990b829e96d46e4ae55330a))
+
+
+
+
+
 ## [0.9.1](https://github.com/haoziqaq/varlet/compare/v0.9.0...v0.9.1) (2021-04-06)
 
 
