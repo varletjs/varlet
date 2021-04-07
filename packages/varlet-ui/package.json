@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "A material like components library",
   "module": "es/index.js",
   "main": "cjs/index.js",
