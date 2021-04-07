@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.5](https://github.com/haoziqaq/varlet/compare/v0.10.4...v0.10.5) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ui/types:** 修复Locale类型声明 ([3e2f9f1](https://github.com/haoziqaq/varlet/commit/3e2f9f19cf5f9a8c8fe9133db5c1d18550856a9f))
+
+
+
+
+
 ## [0.10.4](https://github.com/haoziqaq/varlet/compare/v0.10.3...v0.10.4) (2021-04-07)
 
 **Note:** Version bump only for package @varlet/ui
