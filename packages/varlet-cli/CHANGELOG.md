@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/haoziqaq/varlet/compare/v0.10.7...v0.11.0) (2021-04-07)
+
+
+### Features
+
+* **site:** add Baidu statistics ([db2879b](https://github.com/haoziqaq/varlet/commit/db2879b4ee92fafec54e0e5e3d1dca3a78de4b20))
+
+
+
+
+
 ## [0.10.7](https://github.com/haoziqaq/varlet/compare/v0.10.6...v0.10.7) (2021-04-07)
 
 

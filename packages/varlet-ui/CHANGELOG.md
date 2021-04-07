@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/haoziqaq/varlet/compare/v0.10.7...v0.11.0) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ui/locale:** 修复英文语言包字段名错误的问题 ([e26e24d](https://github.com/haoziqaq/varlet/commit/e26e24d9f806dbc78150d4a294fd6ed2af63f0f6))
+
+
+### Features
+
+* **site:** add Baidu statistics ([db2879b](https://github.com/haoziqaq/varlet/commit/db2879b4ee92fafec54e0e5e3d1dca3a78de4b20))
+
+
+
+
+
 ## [0.10.6](https://github.com/haoziqaq/varlet/compare/v0.10.5...v0.10.6) (2021-04-07)
 
 
