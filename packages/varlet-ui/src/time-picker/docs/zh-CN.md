@@ -98,7 +98,7 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `v-model / model-value` | 被选择的时间（ISO 8601 格式，`HH:mm` 或 `HH:mm:ss`）| _string_ | `-` |
+| `v-model` | 被选择的时间（ISO 8601 格式，`HH:mm` 或 `HH:mm:ss`）| _string_ | `-` |
 | `format` | 选择器时间格式，可选值为`ampm\|24hr` | _string_ | `ampm` |
 | `color` | 选择器的颜色 | _string_ | `#2979ff` |
 | `header-color` | 标题背景色。如果未指定，将使用由 color 属性或默认颜色。 | _string_ | `#2979ff` |

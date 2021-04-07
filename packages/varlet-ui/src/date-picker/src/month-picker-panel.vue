@@ -13,6 +13,8 @@
           <li v-for="month in MONTH_LIST" :key="month.index">
             <var-button
               type="primary"
+              class="var-month-picker__button"
+              var-month-picker-cover
               forbid-ripple
               v-bind="{
                 ...buttonProps(month.index),

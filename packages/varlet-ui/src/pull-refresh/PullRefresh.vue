@@ -12,7 +12,7 @@
       :class="[isSuccess ? 'var-pull-refresh__control-success' : null]"
       :style="controlStyle"
     >
-      <var-icon :name="iconName" :transition="200" :class="iconClass" />
+      <var-icon :name="iconName" :transition="200" :class="iconClass" var-pull-refresh-cover />
     </div>
     <slot />
   </div>
@@ -49,6 +49,7 @@ export default defineComponent({
     )
 
     const iconClass = computed(() => ({
+      'var-pull-refresh__icon': true,
       'var-pull-refresh__animation': refreshStatus.value === 'loading',
     }))
 
@@ -137,5 +138,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../icon/icon';
 @import './pullRefresh';
 </style>

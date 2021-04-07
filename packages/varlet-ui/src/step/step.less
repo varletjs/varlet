@@ -45,6 +45,7 @@
   display: flex;
   position: relative;
   flex: 1;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   &-horizontal {
     display: flex;
@@ -63,10 +64,6 @@
 
       &--active {
         background: @step-tag-active-color;
-      }
-
-      .var-icon {
-        font-size: @step-tag-icon-size;
       }
     }
 
@@ -104,10 +101,6 @@
       &--active {
         background: @step-tag-active-color;
       }
-
-      .var-icon {
-        font-size: @step-tag-icon-size;
-      }
     }
 
     &__content {
@@ -128,5 +121,9 @@
       transform: scaleX(0.5);
       background: @step-line-background;
     }
+  }
+
+  &__icon[var-step-cover] {
+    font-size: @step-tag-icon-size;
   }
 }

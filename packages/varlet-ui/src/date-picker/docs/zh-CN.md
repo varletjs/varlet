@@ -139,7 +139,7 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `v-model / model-value` | 被选择的日期（ISO 8601 格式，`YYYY-MM-DD` 或 `YYYY-MM`）| _string[]_ \| _string_ | `-` |
+| `v-model` | 被选择的日期（ISO 8601 格式，`YYYY-MM-DD` 或 `YYYY-MM`）| _string[]_ \| _string_ | `-` |
 | `type` | 选择器类型，可选值为`date\|month` | _string_ | `date` |
 | `allowed-dates` | 限制可以选择的日期 | _function_ | `-` |
 | `color` | 选择器的颜色 | _string_ | `#2979ff` |

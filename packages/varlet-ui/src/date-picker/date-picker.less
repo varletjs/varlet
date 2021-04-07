@@ -41,6 +41,7 @@
 @day-picker-head-item-font-weight: 600;
 
 .var-date-picker {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   border-radius: @date-picker-border-radius;
   contain: layout style;
   display: flex;
@@ -147,13 +148,13 @@
           height: @month-picker-item-height;
           align-items: center;
           justify-content: center;
-
-          .var-button {
-            width: 100%;
-            max-width: @month-picker-item-button-max-width;
-          }
         }
       }
+    }
+
+    &__button[var-month-picker-cover] {
+      width: 100%;
+      max-width: @month-picker-item-button-max-width;
     }
   }
 
@@ -208,12 +209,10 @@
       }
     }
 
-    &__body {
-      .var-button {
-        width: @day-picker-content-item-button-width;
-        height: @day-picker-content-item-button-height;
-        font-size: @day-picker-content-item-button-font-size;
-      }
+    &__button[var-day-picker-cover] {
+      width: @day-picker-content-item-button-width;
+      height: @day-picker-content-item-button-height;
+      font-size: @day-picker-content-item-button-font-size;
     }
   }
 
