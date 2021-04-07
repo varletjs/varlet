@@ -24,7 +24,7 @@ createApp().use(Chip)
 
 ### 空心样式标签
 
-通过设置`plain`属性把标签设置成空心样式
+通过添加`plain`属性把标签设置成空心样式
 
 ```html
 <var-chip plain type="primary">空心标签</var-chip>
@@ -57,7 +57,7 @@ createApp().use(Chip)
 
 ### 可关闭标签
 
-通过使用`closable`属性显示标签的关闭图标，使用`close-name`属性自定义关闭图标的样式（`close-name`必须在使用了`closeable`的情况下使用）
+通过添加`closable`属性显示标签的关闭图标，使用`close-name`属性自定义关闭图标的样式（`close-name`必须在使用了`closeable`的情况下使用）
 
 ```html
 <var-chip closable v-if="show" @close="show = false">可关闭标签</var-chip>

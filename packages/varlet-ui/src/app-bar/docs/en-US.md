@@ -11,11 +11,15 @@ createApp().use(AppBar)
 
 ### Basic AppBar
 
+Customize the navigation bar title by setting the `title` attribute
+
 ```html
 <var-app-bar title="title" />
 ```
 
 ### Custom Style AppBar
+
+Set the `title-position` attribute to define the position of the title, set the `color` attribute to define the color of the navigation bar, and set the `is-shadow` attribute to define whether the navigation bar displays shadows
 
 ```html
 <var-app-bar 

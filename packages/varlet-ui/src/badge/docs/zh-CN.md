@@ -24,7 +24,7 @@ createApp().use(Badge)
 
 ### 圆点徽标
 
-通过设置`dot`属性把徽标设置成圆点
+通过添加`dot`属性把徽标设置成圆点
 
 ```html
 <var-badge type="danger" dot />
@@ -128,7 +128,7 @@ export default {
 
 ### 自定义徽标图标
 
-通过设置`icon`的值设置徽标图标
+通过设置`icon`的值定义徽标图标
 
 ```html
 <var-badge color="#6200ea" position="right-top" icon="account-circle">

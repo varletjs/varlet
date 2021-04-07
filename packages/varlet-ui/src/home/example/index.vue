@@ -67,6 +67,7 @@ export default {
 </script>
 
 <style scoped lang="less">
+@import '../../styles/var';
 .space {
   height: 5px;
 }
@@ -76,7 +77,8 @@ export default {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   &:hover {
-    background: #eee;
+    background: #2b79fc21;
+    color: @color-primary;
   }
 }
 </style>

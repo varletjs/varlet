@@ -8,7 +8,7 @@ export default {
   useHalfAStar: 'Use Half A Star',
   disableTheRating: 'Disable The Rating',
   readonlyRating: 'Readonly Rating',
-  useWaterRipples: 'Use Water Ripples',
+  waterRippleIsProhibited: 'Water ripple is prohibited',
   listeningForClickEvents: 'Listening For Click Events',
   validate: 'Validate',
   rateMessage: 'It has to be greater than 2',
