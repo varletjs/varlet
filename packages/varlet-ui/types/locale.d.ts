@@ -8,4 +8,4 @@ interface Locale {
   merge(lang: string, pack: Record<string, any>): void
 }
 
-export const locale: Locale
+export const Locale: Locale
