@@ -1,8 +1,8 @@
 export default {
   // Dialog
   dialogTitle: 'Hint',
-  dialogConfirmButton: 'Confirm',
-  dialogCancelButton: 'Cancel',
+  dialogConfirmButtonText: 'Confirm',
+  dialogCancelButtonText: 'Cancel',
   // List
   listLoadingText: 'Loading',
   listFinishedText: 'No more',
