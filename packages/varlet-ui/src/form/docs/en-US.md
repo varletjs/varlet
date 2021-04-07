@@ -93,7 +93,10 @@ export default {
     <var-checkbox :checked-value="2">Sleep</var-checkbox>
     <var-checkbox :checked-value="3">Play game</var-checkbox>
   </var-checkbox-group>
-  <var-rate :rules="[(v) => v >= 3 || pack.rateMessage]" v-model='formData.score' />
+  <var-rate
+    :rules="[v => v >= 3 || It has to be greater than 2]"
+    v-model="formData.score"
+  />
   <div>
     <var-switch
       :rules="[v => !!v || 'You must turn on']"

@@ -220,6 +220,15 @@ export default defineComponent({
 })
 </script>
 
+<style>
+.hljs {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 4px;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}
+</style>
+
 <style lang="less">
 @import '~@varlet/ui/es/styles/var';
 @import '~@varlet/ui/es/styles/elevation';
@@ -486,9 +495,14 @@ iframe {
       }
 
       p {
-        color: #34495e;
+        color: #888;
         font-size: 15px;
         line-height: 26px;
+        padding: 16px;
+        border-left: 4px solid #1d92e9;
+        border-radius: 4px;
+        background: #fff;
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
       }
 
       pre {
@@ -508,8 +522,6 @@ iframe {
         white-space: pre-wrap;
         word-wrap: break-word;
         background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 2px 2px 5px #eee;
       }
 
       p code,
@@ -521,8 +533,7 @@ iframe {
         font-size: 14px;
         font-family: inherit;
         word-break: keep-all;
-        background-color: #f7f8fa;
-        border-radius: 4px;
+        color: @color-primary;
         -webkit-font-smoothing: antialiased;
       }
 
@@ -577,7 +588,7 @@ iframe {
 
       .card {
         margin-bottom: 24px;
-        border-radius: 8px;
+        padding: 0 4px;
       }
     }
 

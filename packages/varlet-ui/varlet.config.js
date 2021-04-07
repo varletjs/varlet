@@ -46,8 +46,8 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': '展示组件',
-          'en-US': 'Display Components',
+          'zh-CN': '基础组件',
+          'en-US': 'Basic Components',
         },
         isTitle: true,
       },
@@ -99,6 +99,13 @@ module.exports = {
           'en-US': 'Badge',
         },
         doc: 'badge',
+      },
+      {
+        text: {
+          'zh-CN': '展示组件',
+          'en-US': 'Display Components',
+        },
+        isTitle: true,
       },
       {
         text: {

@@ -93,7 +93,10 @@ export default {
     <var-checkbox :checked-value="2">睡觉</var-checkbox>
     <var-checkbox :checked-value="3">打游戏</var-checkbox>
   </var-checkbox-group>
-  <var-rate :rules="[(v) => v >= 3 || pack.rateMessage]" v-model='formData.score' />
+  <var-rate 
+    :rules="[v => v >= 3 || 必须大于2]"
+    v-model="formData.score" 
+  />
   <div>
     <var-switch
       :rules="[v => !!v || '您必须开启']"
