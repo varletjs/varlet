@@ -65,7 +65,10 @@ export async function compileModule(modules: string | boolean = false) {
       const path: string = resolve(MODULE_DIR, filename)
 
       // cover babel-import-plugin
-      isDir(path) && ensureFileSync(resolve(path, './style/index.js'))
+      if (isDir(path)) {
+        ensureFileSync(resolve(path, './style/index.js'))
+        ensureFileSync(resolve(path, './style/less.js'))
+      }
 
       return isDir(path) ? compileDir(path, modules) : null
     })
