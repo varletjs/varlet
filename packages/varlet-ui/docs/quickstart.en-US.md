@@ -1,10 +1,10 @@
 # Quickstart
 
-## Intro
+### Intro
 
 Here are the most basic ways to access component libraries in common development patterns.
 
-## Install
+### Install
 
 ### CDN
 `varlet.js` contain all the styles and logic of the component library, and you can import them.
