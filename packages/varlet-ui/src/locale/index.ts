@@ -6,6 +6,7 @@ export function useLocale() {
   const pack: Ref<Record<string, any>> = ref({})
 
   const add = (lang: string, pack: Record<string, any>) => {
+    pack.lang = lang
     packs[lang] = pack
   }
 

@@ -1,5 +1,4 @@
 export default {
-  lang: 'en-US',
   // Dialog
   dialogTitle: 'Hint',
   dialogConfirmButton: 'Confirm',

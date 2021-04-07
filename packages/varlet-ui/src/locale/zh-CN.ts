@@ -1,5 +1,4 @@
 export default {
-  lang: 'zh-CN',
   // Dialog
   dialogTitle: '提示',
   dialogConfirmButtonText: '确认',
