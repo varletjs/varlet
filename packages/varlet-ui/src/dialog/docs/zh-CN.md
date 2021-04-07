@@ -265,9 +265,11 @@ export default {
 | `@dialog-width` | `280px` |
 | `@dialog-padding` | `20px` |
 | `@dialog-border-radius` | `2px` |
+| `@dialog-title-font-size` | `@font-size-lg` |
 | `@dialog-message-color` | `#888` |
 | `@dialog-message-padding` | `12px 0` |
 | `@dialog-message-line-height` | `24px` |
+| `@dialog-message-font-size` | `@font-size-md` |
 | `@dialog-button-margin-left` | `6px` |
 | `@dialog-confirm-button-color` | `@color-primary` |
 | `@dialog-cancel-button-color` | `@color-primary` |

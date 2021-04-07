@@ -2,9 +2,9 @@
 
 ### 介绍
 The on-demand import avoids the full import of components and can effectively reduce the size of the distribution package.
-It is recommended to use `Plugin Based Introduction` or `ES module based manual introduction`
+It is recommended to use `Plugin Based Import` or `ES module based manual Import`
 
-### Plugin based introduction
+### Plugin based import
 
 ### Webpack
 ```shell
@@ -71,7 +71,7 @@ the plugin will automatically import the corresponding style file for the compon
 import { Button } from '@varlet/ui'
 ```
 
-### ES module based manual introduction
+### ES module based manual import
 
 The ES module is very tree-shaking friendly,
 and you can manually import the required component logic and style files directly to implement on-demand introduction.

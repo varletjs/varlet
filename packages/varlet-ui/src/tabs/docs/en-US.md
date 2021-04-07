@@ -344,3 +344,4 @@ Click the Tab to scroll automatically to the center of the viewport
 | `@tab-active-color` | `@color-primary` |
 | `@tab-inactive-color` | `#646566` |
 | `@tab-disabled-color` | `@color-disabled` |
+| `@tab-font-size` | `@font-size-md` |

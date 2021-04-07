@@ -6,6 +6,8 @@
 @dialog-message-color: #888;
 @dialog-message-padding: 12px 0;
 @dialog-message-line-height: 24px;
+@dialog-message-font-size: @font-size-md;
+@dialog-title-font-size: @font-size-lg;
 @dialog-button-margin-left: 6px;
 @dialog-confirm-button-color: @color-primary;
 @dialog-cancel-button-color: @color-primary;
@@ -20,7 +22,7 @@
   }
 
   &__title {
-    font-size: @font-size-lg;
+    font-size: @dialog-title-font-size;
     font-weight: 400;
   }
 
@@ -28,7 +30,7 @@
     padding: @dialog-message-padding;
     color: @dialog-message-color;
     line-height: @dialog-message-line-height;
-    font-size: @font-size-md;
+    font-size: @dialog-message-font-size;
   }
 
   &__actions {

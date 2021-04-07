@@ -21,6 +21,7 @@ import { IndexBar } from './IndexBar'
 import { Input } from './Input'
 import { Lazy } from './Lazy'
 import { Loading } from './Loading'
+import { Locale } from './Locale'
 import { Menu } from './Menu'
 import { Option } from './Option'
 import { Picker } from './Picker'
@@ -76,6 +77,7 @@ export {
   Input,
   Lazy,
   Loading,
+  Locale,
   Menu,
   Option,
   Picker,

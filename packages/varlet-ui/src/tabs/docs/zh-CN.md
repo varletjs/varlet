@@ -344,3 +344,4 @@ export default {
 | `@tab-active-color` | `@color-primary` |
 | `@tab-inactive-color` | `#646566` |
 | `@tab-disabled-color` | `@color-disabled` |
+| `@tab-font-size` | `@font-size-md` |
