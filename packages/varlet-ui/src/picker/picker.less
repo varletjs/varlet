@@ -15,7 +15,7 @@
   background: @picker-background;
   user-select: none;
 
-  &__popup {
+  &__popup[var-picker-cover] {
     width: 100%;
   }
 
@@ -81,11 +81,11 @@
     padding: @picker-toolbar-padding;
   }
 
-  &__confirm-button {
+  &__confirm-button[var-picker-cover] {
     color: @picker-confirm-button-text-color;
   }
 
-  &__cancel-button {
+  &__cancel-button[var-picker-cover] {
     color: @picker-cancel-button-text-color;
   }
 

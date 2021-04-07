@@ -68,11 +68,9 @@ export default {
 
 ### 异步变更
 
-```html
 在某些场景下需要等待服务器返回成功之后再执行变更。
-设置lazy-change后会阻止组件本身的绑定值更新操作。
-并注册before-change事件进行手动更新。
-```
+设置`lazy-change`后会阻止组件本身的绑定值更新操作。
+并注册`before-change`事件进行手动更新。
 
 ```html
 <var-counter
@@ -101,10 +99,8 @@ export default {
 
 ### 字段校验
 
-```html
-通过传入一个校验器数组可以对值进行校验，校验器返回true则为校验通过。
+通过传入一个校验器数组可以对值进行校验，校验器返回`true`则为校验通过。
 以外的值将转换为文本作为用户提示。
-```
 
 ```html
 <var-counter

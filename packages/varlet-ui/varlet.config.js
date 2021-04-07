@@ -23,8 +23,8 @@ module.exports = {
     menu: [
       {
         text: {
-          'zh-CN': '基本介绍',
-          'en-US': 'Basic introduction',
+          'zh-CN': '开发指南',
+          'en-US': 'Developer guide',
         },
         isTitle: true,
       },
@@ -46,8 +46,148 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': '组件',
-          'en-US': 'Components',
+          'zh-CN': '展示组件',
+          'en-US': 'Display Components',
+        },
+        isTitle: true,
+      },
+      {
+        text: {
+          'zh-CN': 'Button 按钮',
+          'en-US': 'Button',
+        },
+        doc: 'button',
+      },
+      {
+        text: {
+          'zh-CN': 'Cell 单元格',
+          'en-US': 'Cell',
+        },
+        doc: 'cell',
+      },
+      {
+        text: {
+          'zh-CN': 'Icon 图标',
+          'en-US': 'Icon',
+        },
+        doc: 'icon',
+      },
+      {
+        text: {
+          'zh-CN': 'Image 图片',
+          'en-US': 'Image',
+        },
+        doc: 'image',
+      },
+      {
+        text: {
+          'zh-CN': 'Loading 加载',
+          'en-US': 'Loading',
+        },
+        doc: 'loading',
+      },
+      {
+        text: {
+          'zh-CN': 'Chip 标签',
+          'en-US': 'Chip',
+        },
+        doc: 'chip',
+      },
+      {
+        text: {
+          'zh-CN': 'Badge 徽标',
+          'en-US': 'Badge',
+        },
+        doc: 'badge',
+      },
+      {
+        text: {
+          'zh-CN': 'Skeleton 骨架屏',
+          'en-US': 'Skeleton',
+        },
+        doc: 'skeleton',
+      },
+      {
+        text: {
+          'zh-CN': 'Collapse 拓展面板',
+          'en-US': 'Collapse',
+        },
+        doc: 'Collapse',
+      },
+      {
+        text: {
+          'zh-CN': 'Layout 布局',
+          'en-US': 'Layout',
+        },
+        doc: 'row',
+      },
+      {
+        text: {
+          'zh-CN': 'Sticky 粘性布局',
+          'en-US': 'Sticky',
+        },
+        doc: 'sticky',
+      },
+      {
+        text: {
+          'zh-CN': 'Progress 进度条',
+          'en-US': 'Progress',
+        },
+        doc: 'progress',
+      },
+      {
+        text: {
+          'zh-CN': 'List 无限滚动列表',
+          'en-US': 'List',
+        },
+        doc: 'list',
+      },
+      {
+        text: {
+          'zh-CN': 'Swipe 轮播',
+          'en-US': 'Swipe',
+        },
+        doc: 'swipe',
+      },
+      {
+        text: {
+          'zh-CN': 'Steps 步骤条',
+          'en-US': 'Steps',
+        },
+        doc: 'steps',
+      },
+      {
+        text: {
+          'zh-CN': '导航组件',
+          'en-US': 'Navigation Components',
+        },
+        isTitle: true,
+      },
+      {
+        text: {
+          'zh-CN': 'Tabs 选项卡',
+          'en-US': 'Tabs',
+        },
+        doc: 'tabs',
+      },
+      {
+        text: {
+          'zh-CN': 'IndexBar 索引栏',
+          'en-US': 'IndexBar',
+        },
+        doc: 'index-bar',
+      },
+      {
+        text: {
+          'zh-CN': 'AppBar 导航栏',
+          'en-US': 'AppBar',
+        },
+        doc: 'app-bar',
+      },
+      {
+        text: {
+          'zh-CN': '功能指令',
+          'en-US': 'Functional Directives',
         },
         isTitle: true,
       },
@@ -67,17 +207,31 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'Skeleton 骨架屏',
-          'en-US': 'Skeleton',
+          'zh-CN': '反馈组件',
+          'en-US': 'Action Components',
         },
-        doc: 'skeleton',
+        isTitle: true,
       },
       {
         text: {
-          'zh-CN': 'Button 按钮',
-          'en-US': 'Button',
+          'zh-CN': 'Snackbar 消息条',
+          'en-US': 'Snackbar',
         },
-        doc: 'button',
+        doc: 'snackbar',
+      },
+      {
+        text: {
+          'zh-CN': 'Dialog 对话框',
+          'en-US': 'Dialog',
+        },
+        doc: 'dialog',
+      },
+      {
+        text: {
+          'zh-CN': 'PullRefresh 下拉刷新',
+          'en-US': 'PullRefresh',
+        },
+        doc: 'pull-refresh',
       },
       {
         text: {
@@ -95,59 +249,17 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'Dialog 对话框',
-          'en-US': 'Dialog',
+          'zh-CN': 'BackTop 回到顶部',
+          'en-US': 'BackTop',
         },
-        doc: 'dialog',
+        doc: 'back-top',
       },
       {
         text: {
-          'zh-CN': 'Icon 图标',
-          'en-US': 'Icon',
+          'zh-CN': 'Countdown 倒计时',
+          'en-US': 'Countdown',
         },
-        doc: 'icon',
-      },
-      {
-        text: {
-          'zh-CN': 'Layout 布局',
-          'en-US': 'Layout',
-        },
-        doc: 'row',
-      },
-      {
-        text: {
-          'zh-CN': 'Image 图片',
-          'en-US': 'Image',
-        },
-        doc: 'image',
-      },
-      {
-        text: {
-          'zh-CN': 'Sticky 粘性布局',
-          'en-US': 'Sticky',
-        },
-        doc: 'sticky',
-      },
-      {
-        text: {
-          'zh-CN': 'Tabs 选项卡',
-          'en-US': 'Tabs',
-        },
-        doc: 'tabs',
-      },
-      {
-        text: {
-          'zh-CN': 'List 无限滚动列表',
-          'en-US': 'List',
-        },
-        doc: 'list',
-      },
-      {
-        text: {
-          'zh-CN': 'Swipe 轮播',
-          'en-US': 'Swipe',
-        },
-        doc: 'swipe',
+        doc: 'countdown',
       },
       {
         text: {
@@ -155,6 +267,34 @@ module.exports = {
           'en-US': 'Picker',
         },
         doc: 'picker',
+      },
+      {
+        text: {
+          'zh-CN': 'DatePicker 日期选择器',
+          'en-US': 'DatePicker',
+        },
+        doc: 'date-picker',
+      },
+      {
+        text: {
+          'zh-CN': 'TimePicker 时间选择器',
+          'en-US': 'TimePicker',
+        },
+        doc: 'time-picker',
+      },
+      {
+        text: {
+          'zh-CN': '表单组件',
+          'en-US': 'Form Components',
+        },
+        isTitle: true,
+      },
+      {
+        text: {
+          'zh-CN': 'Form 表单',
+          'en-US': 'Form',
+        },
+        doc: 'form',
       },
       {
         text: {
@@ -172,13 +312,6 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'Counter 计数器',
-          'en-US': 'Counter',
-        },
-        doc: 'counter',
-      },
-      {
-        text: {
           'zh-CN': 'Radio 单选框',
           'en-US': 'Radio',
         },
@@ -193,45 +326,10 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'Loading 加载',
-          'en-US': 'Loading',
+          'zh-CN': 'Counter 计数器',
+          'en-US': 'Counter',
         },
-        doc: 'loading',
-      },
-      {
-        text: {
-          'zh-CN': 'Cell 单元格',
-          'en-US': 'Cell',
-        },
-        doc: 'cell',
-      },
-      {
-        text: {
-          'zh-CN': 'Countdown 倒计时',
-          'en-US': 'Countdown',
-        },
-        doc: 'countdown',
-      },
-      {
-        text: {
-          'zh-CN': 'BackTop 回到顶部',
-          'en-US': 'BackTop',
-        },
-        doc: 'back-top',
-      },
-      {
-        text: {
-          'zh-CN': 'PullRefresh 下拉刷新',
-          'en-US': 'PullRefresh',
-        },
-        doc: 'pull-refresh',
-      },
-      {
-        text: {
-          'zh-CN': 'Progress 进度条',
-          'en-US': 'Progress',
-        },
-        doc: 'progress',
+        doc: 'counter',
       },
       {
         text: {
@@ -249,34 +347,6 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'IndexBar 索引栏',
-          'en-US': 'IndexBar',
-        },
-        doc: 'index-bar',
-      },
-      {
-        text: {
-          'zh-CN': 'Collapse 拓展面板',
-          'en-US': 'Collapse',
-        },
-        doc: 'Collapse',
-      },
-      {
-        text: {
-          'zh-CN': 'Chip 标签',
-          'en-US': 'Chip',
-        },
-        doc: 'chip',
-      },
-      {
-        text: {
-          'zh-CN': 'Badge 徽标',
-          'en-US': 'Badge',
-        },
-        doc: 'badge',
-      },
-      {
-        text: {
           'zh-CN': 'Rate 评分',
           'en-US': 'Rate',
         },
@@ -284,52 +354,10 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'DatePicker 日期选择器',
-          'en-US': 'DatePicker',
-        },
-        doc: 'date-picker',
-      },
-      {
-        text: {
-          'zh-CN': 'Steps 步骤条',
-          'en-US': 'Steps',
-        },
-        doc: 'steps',
-      },
-      {
-        text: {
           'zh-CN': 'Uploader 文件上传',
           'en-US': 'Uploader',
         },
         doc: 'uploader',
-      },
-      {
-        text: {
-          'zh-CN': 'TimePicker 时间选择器',
-          'en-US': 'TimePicker',
-        },
-        doc: 'time-picker',
-      },
-      {
-        text: {
-          'zh-CN': 'Form 表单',
-          'en-US': 'Form',
-        },
-        doc: 'form',
-      },
-      {
-        text: {
-          'zh-CN': 'AppBar 导航栏',
-          'en-US': 'AppBar',
-        },
-        doc: 'app-bar',
-      },
-      {
-        text: {
-          'zh-CN': 'Snackbar 消息条',
-          'en-US': 'Snackbar',
-        },
-        doc: 'snackbar',
       },
     ],
   },

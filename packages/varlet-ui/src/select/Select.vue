@@ -20,7 +20,7 @@
         <slot name="prepend-icon" />
       </div>
 
-      <var-menu class="var-select__menu" :offset-y="offsetY" v-model:show="isFocus" @blur="handleBlur">
+      <var-menu class="var-select__menu" var-select-cover :offset-y="offsetY" v-model:show="isFocus" @blur="handleBlur">
         <div
           class="var-select__wrap"
           :class="[!hint ? 'var-select--non-hint' : null]"
@@ -43,6 +43,7 @@
               <div class="var-select__chips" v-if="chip">
                 <var-chip
                   class="var-select__chip"
+                  var-select-cover
                   closable
                   :type="errorMessage ? 'danger' : null"
                   v-for="l in labels"
@@ -62,6 +63,7 @@
 
             <var-icon
               class="var-select__arrow"
+              var-select-cover
               name="menu-down"
               :transition="300"
               :class="[isFocus ? 'var-select--arrow-rotate' : null]"

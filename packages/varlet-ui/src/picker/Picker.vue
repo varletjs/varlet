@@ -18,11 +18,18 @@
           }
         : null
     "
+    var-picker-cover
   >
     <div class="var-picker" v-bind="$attrs">
       <div class="var-picker__toolbar">
         <slot name="cancel">
-          <var-button class="var-picker__cancel-button" text :text-color="cancelButtonTextColor" @click="cancel">
+          <var-button
+            class="var-picker__cancel-button"
+            var-picker-cover
+            text
+            :text-color="cancelButtonTextColor"
+            @click="cancel"
+          >
             {{ dt(cancelButtonText, pack.pickerCancelButtonText) }}
           </var-button>
         </slot>
@@ -30,7 +37,13 @@
           <div class="var-picker__title">{{ dt(title, pack.pickerTitle) }}</div>
         </slot>
         <slot name="confirm">
-          <var-button class="var-picker__confirm-button" text :text-color="confirmButtonTextColor" @click="confirm">
+          <var-button
+            class="var-picker__confirm-button"
+            text
+            var-picker-cover
+            :text-color="confirmButtonTextColor"
+            @click="confirm"
+          >
             {{ dt(confirmButtonText, pack.pickerConfirmButtonText) }}
           </var-button>
         </slot>

@@ -1,9 +1,7 @@
 # Skeleton
 
 ### Intro
-```html
 Display some placeholder elements with transition effects to optimize your loading process
-```
 
 ### Install
 

@@ -1,10 +1,8 @@
 # Sticky
 
 ### Intro
-```html
-Sticky layout is implemented by default using position: sticky,
-Browsers that do not support this property automatically revert to the traditional way of listening for scroll events.
-```
+A sticky layout is implemented by default using `position: sticky`,
+Browsers that do not support this property automatically revert to the traditional way of listening for `scroll` events.
 
 ### Install
 

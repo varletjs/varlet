@@ -8,6 +8,7 @@
     >
       <var-icon
         class="var-counter__decrement-button"
+        var-counter-cover
         name="minus"
         :class="[!decrementButton ? 'var-counter--hidden' : null]"
         :style="{
@@ -35,6 +36,7 @@
       />
       <var-icon
         class="var-counter__increment-button"
+        var-counter-cover
         name="plus"
         :class="[!incrementButton ? 'var-counter--hidden' : null]"
         :style="{

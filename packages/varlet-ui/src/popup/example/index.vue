@@ -1,10 +1,10 @@
 <template>
   <app-type>{{ pack.popupPosition }}</app-type>
-  <var-button class="mt-10" block @click="center = true">{{ pack.centerPopup }}</var-button>
-  <var-button class="mt-10" block @click="bottom = true">{{ pack.belowPopup }}</var-button>
-  <var-button class="mt-10" block @click="top = true">{{ pack.abovePopup }}</var-button>
-  <var-button class="mt-10" block @click="left = true">{{ pack.leftPopup }}</var-button>
-  <var-button class="mt-10" block @click="right = true">{{ pack.rightPopup }}</var-button>
+  <var-button class="mt-10" type="primary" block @click="center = true">{{ pack.centerPopup }}</var-button>
+  <var-button class="mt-10" type="primary" block @click="bottom = true">{{ pack.belowPopup }}</var-button>
+  <var-button class="mt-10" type="primary" block @click="top = true">{{ pack.abovePopup }}</var-button>
+  <var-button class="mt-10" type="primary" block @click="left = true">{{ pack.leftPopup }}</var-button>
+  <var-button class="mt-10" type="primary" block @click="right = true">{{ pack.rightPopup }}</var-button>
   <var-popup v-model:show="center">
     <div class="block">{{ pack.text }}</div>
   </var-popup>
@@ -22,11 +22,11 @@
   </var-popup>
 
   <app-type>{{ pack.overlayStyle }}</app-type>
-  <var-button class="mt-10" block @click="overlayClass = true">{{ pack.overlayClass }}</var-button>
+  <var-button class="mt-10" type="primary" block @click="overlayClass = true">{{ pack.overlayClass }}</var-button>
   <var-popup overlay-class="custom-overlay" v-model:show="overlayClass">
     <div class="block">{{ pack.text }}</div>
   </var-popup>
-  <var-button class="mt-10" block @click="overlayStyle = true">{{ pack.overlayStyles }}</var-button>
+  <var-button class="mt-10" type="primary" block @click="overlayStyle = true">{{ pack.overlayStyles }}</var-button>
   <var-popup
     :overlay-style="{
       backgroundColor: 'rgba(0, 0, 0, 0.3)',
@@ -37,7 +37,7 @@
   </var-popup>
 
   <app-type>{{ pack.event }}</app-type>
-  <var-button class="mt-10" block @click="event = true">{{ pack.event }}</var-button>
+  <var-button class="mt-10" type="primary" block @click="event = true">{{ pack.event }}</var-button>
   <var-popup
     v-model:show="event"
     @open="() => Snackbar.info('open')"

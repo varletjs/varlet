@@ -2,11 +2,9 @@
 
 ### Intro
 
-```html
-By default, lazy loading uses the IntersectionObserver API to detect image visibility.
+By default, lazy loading uses the `IntersectionObserver API` to detect image visibility.
 This automatically degrades to traditional scrolling event listening in browsers that do not support the API.
-For better performance experience, it is recommended to use polyfill to patch the API.
-```
+For better performance experience, it is recommended to use `polyfill` to patch the API.
 
 ```html
 npm i intersection-observer
@@ -40,9 +38,7 @@ createApp().use(Lazy)
 ```
 
 ### Inline Attributes
-```html
-You can modify the loading, error image, and reload attempts by using inline properties.
-```
+You can modify the `loading`, `error` image, and `reload attempts` by using inline properties.
 
 ```html
 <img 
@@ -55,9 +51,7 @@ You can modify the loading, error image, and reload attempts by using inline pro
 
 ### Plugin
 
-```html
 The option to set the default lazy load option is provided, which is passed in at plugin registration
-```
 
 ```js
 import { createApp } from 'vue'

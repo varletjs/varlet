@@ -2,11 +2,9 @@
 
 ### Intro
 
-```html
 The component library provides two auxiliary layout components,
-<var-row/> and <var-col/>, 
+`<var-row/>` and `<var-col/>`,
 so that you can layout more efficiently.
-```
 
 ### Install
 
@@ -20,8 +18,8 @@ createApp().use(Row).use(Col)
 ### Gird System
 
 ```html
-The <var-row/> component divides a row into an average grid of 24 columns (24 pieces). 
-The <var-col/> provides the span property to set the number of pieces in the column and the offset property to set the number of pieces offset in the column.
+The `<var-row/>` component divides a row into an average grid of 24 columns (24 pieces). 
+The `<var-col/>` provides the span property to set the number of pieces in the column and the `offset` property to set the number of pieces `offset` in the column.
 ```
 
 ```html
@@ -48,10 +46,8 @@ The <var-col/> provides the span property to set the number of pieces in the col
 
 ### Alignment
 
-```html
-The layout component is laid out in Flex by default, 
-using the <var-row/> justify and align properties to set the alignment of the main and cross axes.
-```
+The layout component is laid out in `flex` by default,
+using the `<var-row/>` `justify` and `align` properties to set the alignment of the main and cross axes.
 
 ```html
  <var-row>

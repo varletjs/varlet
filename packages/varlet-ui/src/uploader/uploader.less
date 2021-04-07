@@ -102,7 +102,7 @@
     border-left: @uploader-file-close-size solid transparent;
   }
 
-  &__file-close-icon {
+  &__file-close-icon[var-uploader-cover] {
     position: absolute;
     top: -@uploader-file-close-size;
     right: 0;
@@ -136,7 +136,7 @@
     margin: @uploader-action-margin;
   }
 
-  &__action-icon {
+  &__action-icon[var-uploader-cover] {
     font-size: @uploader-action-icon-size;
   }
 
@@ -152,7 +152,7 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
-  &__preview {
+  &__preview[var-uploader-cover] {
     background: #000;
     box-shadow: none;
   }

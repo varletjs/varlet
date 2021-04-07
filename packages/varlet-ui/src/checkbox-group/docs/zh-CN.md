@@ -85,10 +85,8 @@ export default {
 
 ### 复选框组/复选框操作
 
-```html
-在复选框组中, 必须给checkbox设置checked-value用来标识，
+在复选框组中, 必须给`checkbox`设置`checked-value`用来标识，
 复选框组会收集所有选择的标识。
-```
 
 ```html
 <var-checkbox-group ref="group" v-model="value">

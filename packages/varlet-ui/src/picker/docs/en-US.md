@@ -1,9 +1,7 @@
 # Picker
 
 ### Intro
-```html
 Provides two kinds of function and component call mode support cascading mode at the same time, can handle multilevel linkage.
-```
 
 ### Install
 
@@ -18,10 +16,8 @@ createApp().use(Picker)
 
 ### Multi-column Picker
 
-```html
 A two-dimensional array is passed in, and each entry of the array is the contents of each column.
 Returns the user triggered status, selected text, and selected index.
-```
 
 ```js
 const columns = [
@@ -34,10 +30,8 @@ const { state, texts, indexes } = await Picker(columns)
 
 ### Cascade Picker
 
-```html
-Passing in a cascade attribute starts cascading.
-Built-in component library provides a three-level linkage between provinces and municipalities, import area.json。
-```
+Passing in a `cascade` attribute starts cascading.
+Built-in component library provides a three-level linkage between provinces and municipalities, import `area.json`。
 
 ```js
 import columns from '@varlet/ui/json/area.json'
@@ -104,9 +98,7 @@ export default {
 ```
 
 ### The three-level linkage between the provincial and municipal levels
-```html
 The component library provides complete provincial information and can be used directly.
-```
 
 ```js
 import area from '@varlet/ui/json/area.json'

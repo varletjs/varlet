@@ -1,9 +1,7 @@
 # 弹出层
 
 ### 介绍
-```html
-创建一个可以从上,下,左,右,中心,弹出的容器, 用于展示信息。默认使用teleport插入到body尾部
-```
+创建一个可以从上,下,左,右,中心,弹出的容器, 用于展示信息。默认使用`teleport`插入到`body`尾部
 
 ### 引入
 
@@ -19,6 +17,7 @@ createApp().use(Popup)
 ```html
 <var-button 
   class="mt-10"
+  type="primary"
   block
   @click="center = true"
 >
@@ -26,6 +25,7 @@ createApp().use(Popup)
 </var-button>
 <var-button
   class="mt-10"
+  type="primary"
   block
   @click="bottom = true"
 >
@@ -33,6 +33,7 @@ createApp().use(Popup)
 </var-button>
 <var-button
   class="mt-10"
+  type="primary"
   block 
   @click="top = true"
 >
@@ -40,6 +41,7 @@ createApp().use(Popup)
 </var-button>
 <var-button 
   class="mt-10" 
+  type="primary"
   block
   @click="left = true"
 >
@@ -47,6 +49,7 @@ createApp().use(Popup)
 </var-button>
 <var-button 
   class="mt-10" 
+  type="primary"
   block 
   @click="right = true"
 >
@@ -140,6 +143,7 @@ export default {
 ```html
 <var-button
   class="mt-10"
+  type="primary"
   block 
   @click="overlayClass = true"
 >
@@ -147,6 +151,7 @@ export default {
 </var-button>
 <var-button 
   class="mt-10"
+  type="primary"
   block 
   @click="overlayStyle = true"
 >
@@ -218,6 +223,7 @@ export default {
 ```html
 <var-button
   class="mt-10"
+  type="primary"
   block
   @click="event = true"
 >

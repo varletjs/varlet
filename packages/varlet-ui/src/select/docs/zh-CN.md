@@ -11,10 +11,8 @@ createApp().use(Select).use(Option)
 
 ### 基本使用
 
-```html
-组件会使用option的label作为显示的文本。
-组件会优先使用option的value作为选项的值,其次使用label。
-```
+组件会使用option的`label`作为显示的文本。
+组件会优先使用option的`value`作为选项的值,其次使用`label`。
 
 ```js
 export default {
@@ -35,9 +33,7 @@ export default {
 
 ### 朴素模式
 
-```html
 如果只需要组件的基本功能，可以通过属性去除部分样式。
-```
 
 ```html
 <var-select 

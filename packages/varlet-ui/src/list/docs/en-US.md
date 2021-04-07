@@ -1,10 +1,8 @@
 # List
 
 ### Intro
-```html
 Unlimited scroll load list, touch bottom load, support manual check position load.
 Support custom loading state, error state, data loading completed state.
-```
 
 ### Install
 
@@ -17,10 +15,8 @@ createApp().use(List)
 
 ### Basic Use
 
-```html
-The Load event is emitted when a scroll container is detected scrolling to the bottom，and will be set loading to true，
-you need to manually set loading to false at the end of loading，that's the end of the load.
-```
+The `load` event is emitted when a scroll container is detected scrolling to the bottom，and will be set `loading` to `true`，
+you need to manually set `loading` to `false` at the end of loading，that's the end of the load.
 
 ```html
 <var-list
@@ -67,10 +63,8 @@ export default {
 
 ### Load Fail
 
-```html
-You can manually set the error status using v-model:error，an error message is displayed.
-Clicking on the error message will help you set the error to false and trigger the load event again.
-```
+You can manually set the error status using `v-model:error`，an error message is displayed.
+Clicking on the error message will help you set the `error` to `false` and trigger the `load` event again.
 
 ```html
  <var-list
@@ -166,12 +160,10 @@ export default {
 ```
 
 ### 注意
-```html
 We detect bottoming by listening for the scroll event of the scroll container and perform the load.
-A scroll container is the nearest element that overflow-y='auto' or 'scroll'
-When you set an element's overflow-x to a value other than visible，The browser will fix your overflow-y to auto in order to maintain a BFC structure.
+A scroll container is the nearest element that `overflow-y='auto'` or `scroll`
+When you set an element's `overflow-x` to a value other than `visible`，The browser will fix your `overflow-y` to `auto` in order to maintain a `BFC` structure.
 This can be mistaken for a scroll container, so avoid it.
-```
 
 ## API
 

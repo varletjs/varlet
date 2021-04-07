@@ -12,10 +12,10 @@
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
       >
         <slot name="checked-icon" v-if="checked">
-          <var-icon class="var-checkbox__icon" name="checkbox-marked" :size="iconSize" />
+          <var-icon class="var-checkbox__icon" name="checkbox-marked" :size="iconSize" var-checkbox-cover />
         </slot>
         <slot name="unchecked-icon" v-else>
-          <var-icon class="var-checkbox__icon" name="checkbox-blank-outline" :size="iconSize" />
+          <var-icon class="var-checkbox__icon" name="checkbox-blank-outline" :size="iconSize" var-checkbox-cover />
         </slot>
       </div>
 

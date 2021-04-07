@@ -2,11 +2,9 @@
 
 ### 介绍
 
-```html
-懒加载默认使用IntersectionObserver API检测图片的可见性。
+懒加载默认使用`IntersectionObserver API`检测图片的可见性。
 在不支持该API的浏览器中会自动降级成传统的滚动事件监听。
-为了更好的性能体验，推荐使用polyfill的方式打补丁兼容该API。
-```
+为了更好的性能体验，推荐使用`polyfill`的方式打补丁兼容该API。
 
 ```html
 npm i intersection-observer
@@ -40,9 +38,7 @@ createApp().use(Lazy)
 ```
 
 ### 内联属性
-```html
-可以通过内联属性修改loading, error图片和加载失败时尝试重新加载的次数.
-```
+可以通过内联属性修改`loading`, `error`图片和`加载失败时尝试重新加载的次数`.
 
 ```html
 <img 
@@ -55,9 +51,7 @@ createApp().use(Lazy)
 
 ### 插件
 
-```html
 Lazy提供了在插件注册时传入的选项，可以设置默认的懒加载选项。
-```
 
 ```js
 import { createApp } from 'vue'

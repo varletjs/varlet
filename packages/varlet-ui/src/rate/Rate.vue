@@ -1,5 +1,5 @@
 <template>
-  <div class="var-rate__warp">
+  <div class="var-rate__warp" v-bind="$attrs">
     <div class="var-rate" ref="rate">
       <div
         class="var-rate__content"

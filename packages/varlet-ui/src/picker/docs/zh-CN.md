@@ -1,9 +1,7 @@
 # 多列选择器
 
 ### 介绍
-```html
 提供了函数和组件两种调用方式。同时支持级联模式，可以处理多级联动。
-```
 
 ### 引入
 
@@ -18,10 +16,8 @@ createApp().use(Picker)
 
 ### 多列滚动
 
-```html
-Picker传入一个二维数组columns, columns的每一项就是每一列的内容。
+Picker传入一个二维数组`columns`, `columns`的每一项就是每一列的内容。
 Picker返回用户触发状态, 选择的文本, 选择的下标。
-```
 
 ```js
 const columns = [
@@ -34,10 +30,8 @@ const { state, texts, indexes } = await Picker(columns)
 
 ### 级联滚动
 
-```html
-Picker传入一个cascade属性开启级联滚动。
-组件库内置提供了省市区三级联动, 引入area.json。
-```
+Picker传入一个`cascade`属性开启级联滚动。
+组件库内置提供了省市区三级联动, 引入`area.json`。
 
 ```js
 import columns from '@varlet/ui/json/area.json'
@@ -104,9 +98,8 @@ export default {
 ```
 
 ### 省市区三级联动
-```html
+
 组件库提供了完整的省市区信息，可以直接使用。
-```
 
 ```js
 import area from '@varlet/ui/json/area.json'

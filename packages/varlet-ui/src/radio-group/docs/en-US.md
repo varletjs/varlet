@@ -85,10 +85,8 @@ export default {
 
 ### RadioGroup
 
-```html
-In the radio group, you must set the checked-value to identify the radio,
+In the radio group, you must set the `checked-value` to identify the `radio`,
 The radio group bind group checked identifiers.
-```
 
 ```html
 <var-radio-group v-model="value">

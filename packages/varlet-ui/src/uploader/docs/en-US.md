@@ -1,10 +1,8 @@
 # Uploader
 
 ### Intro
-```html
 It provides the ability to read files and preview pictures and videos.
-Get the file upload server by listening for after-read events.
-```
+Get the file upload server by listening for `after-read` events.
 
 ### Install
 
@@ -38,9 +36,7 @@ export default {
 
 ### File Preview
 
-```html
 By analyzing the file URL suffix name to determine the file type, support image and video preview.
-```
 
 ```html
 <var-uploader v-model="files"/>
@@ -67,9 +63,7 @@ export default {
 
 ### Upload State
 
-```html
-Three uploading states, loading, success and error, are provided, and tool functions are provided to quickly obtain files with corresponding states.
-```
+Three uploading states, `loading`, `success` and `error`, are provided, and tool functions are provided to quickly obtain files with corresponding states.
 
 ```html
 <var-uploader v-model="files" @after-read="handleAfterRead"/>
@@ -120,9 +114,7 @@ export default {
 
 ### File Size Limit
 
-```html
-If the limit is exceeded, the file will be blocked. You can get the file by listening for the oversize event.
-```
+If the limit is exceeded, the file will be blocked. You can get the file by listening for the `oversize` event.
 
 ```html
 <var-uploader v-model="files" :maxsize="1024" @oversize="handleOversize" />
@@ -145,9 +137,7 @@ export default {
 
 ### Upload Preprocessing
 
-```html
-Operate on a file by registering a before-read event that returns a false value to prevent the file from being read.
-```
+Operate on a file by registering a `before-read` event that returns a false value to prevent the file from being read.
 
 ```html
 <var-uploader v-model="files" @before-read="handleBeforeRead"/>
@@ -182,11 +172,9 @@ export default {
 
 ### Validate
 
-```html
-The values are validated by passing in an array of validators，If the validator returns true, the validation passes.
+The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes.
 Other values are converted to text as a user prompt.
 The second argument is a collection of utility functions that can quickly get a collection of files that match the state.
-```
 
 ```html
 <var-uploader

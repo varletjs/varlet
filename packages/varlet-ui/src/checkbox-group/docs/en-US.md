@@ -85,10 +85,8 @@ export default {
 
 ### CheckboxGroup/Actions
 
-```html
-In the checkbox group, you must set the checked-value to identify the checkbox,
+In the checkbox group, you must set the `checked-value` to identify the `checkbox`,
 The checkbox group collects all checked identifiers.
-```
 
 ```html
 <var-checkbox-group ref="group" v-model="value">

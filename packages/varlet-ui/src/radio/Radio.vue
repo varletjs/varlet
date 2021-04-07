@@ -12,10 +12,10 @@
         :style="{ color: checked ? checkedColor : uncheckedColor }"
       >
         <slot name="checked-icon" v-if="checked">
-          <var-icon class="var-radio__icon" name="radio-marked" :size="iconSize" />
+          <var-icon class="var-radio__icon" var-radio-cover name="radio-marked" :size="iconSize" />
         </slot>
         <slot name="unchecked-icon" v-else>
-          <var-icon class="var-radio__icon" name="radio-blank" :size="iconSize" />
+          <var-icon class="var-radio__icon" var-radio-cover name="radio-blank" :size="iconSize" />
         </slot>
       </div>
       <div

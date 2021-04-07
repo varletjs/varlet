@@ -1,9 +1,7 @@
 # 无限滚动列表
 
 ### 介绍
-```html
 无限滚动加载列表，触底加载，支持手动检查位置并记载。支持自定义加载状态，错误状态，数据加载完成状态。
-```
 
 ### 引入
 
@@ -16,9 +14,7 @@ createApp().use(List)
 
 ### 基本使用
 
-```html
-当检测到滚动容器滚动到底部底部时会触发load事件，并会设置loading为true，在加载结束时您需要手动设置loading为false，表示加载结束。
-```
+当检测到滚动容器滚动到底部底部时会触发`load`事件，并会设置`loading`为`true`，在加载结束时您需要手动设置`loading`为`false`，表示加载结束。
 
 ```html
 <var-list
@@ -65,9 +61,7 @@ export default {
 
 ### 加载失败
 
-```html
-您可以使用v-model:error手动设置错误状态，会展示错误提示，点击错误提示会帮您把error设置成false并再次触发load事件。
-```
+您可以使用`v-model:error`手动设置错误状态，会展示错误提示，点击错误提示会帮您把`error`设置成`false`并再次触发`load`事件。
 
 ```html
  <var-list
@@ -163,12 +157,10 @@ export default {
 ```
 
 ### 注意
-```html
-我们是通过监听滚动容器的scroll事件检测是否触底并执行加载。
-滚动容器是指最近的一个overflow-y为auto或者scroll的元素。
-当您设置一个元素的overflow-x为除了visible以外的值时，浏览器为了维护一个bfc的结构会使您的overflow-y修正为auto。
+我们是通过监听滚动容器的`scroll`事件检测是否触底并执行加载。
+滚动容器是指最近的一个`overflow-y`为`auto`或者`scroll`的元素。
+当您设置一个元素的`overflow-x`为除了`visible`以外的值时，浏览器为了维护一个`bfc`的结构会使您的`overflow-y`修正为`auto`。
 这时我们就会误认为这个元素也是一个滚动容器，注意规避。
-```
 
 ## API
 

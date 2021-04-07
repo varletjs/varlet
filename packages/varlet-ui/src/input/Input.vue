@@ -75,6 +75,7 @@
         <slot name="append-icon">
           <var-icon
             class="var-input__clear-icon"
+            var-input-cover
             name="close-circle"
             size="14px"
             v-if="clearable"

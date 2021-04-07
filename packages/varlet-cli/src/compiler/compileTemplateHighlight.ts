@@ -172,6 +172,7 @@ export async function compileTemplateHighlight() {
     contributions: {
       html: {
         tags: [],
+        'types-syntax': 'typescript',
       },
     },
   }

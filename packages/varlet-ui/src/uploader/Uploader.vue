@@ -13,7 +13,7 @@
           {{ f.name || f.url }}
         </div>
         <div class="var-uploader__file-close" v-if="removable" @click.stop="handleRemove(f)">
-          <var-icon class="var-uploader__file-close-icon" name="delete" />
+          <var-icon class="var-uploader__file-close-icon" var-uploader-cover name="delete" />
         </div>
         <img
           class="var-uploader__file-cover"
@@ -50,7 +50,7 @@
           @change="handleChange"
         />
         <slot>
-          <var-icon class="var-uploader__action-icon" name="plus" />
+          <var-icon class="var-uploader__action-icon" var-uploader-cover name="plus" />
         </slot>
       </div>
     </div>
@@ -59,6 +59,7 @@
 
     <var-popup
       class="var-uploader__preview"
+      var-uploader-cover
       position="center"
       v-model:show="showPreview"
       @closed="currentPreview = null"

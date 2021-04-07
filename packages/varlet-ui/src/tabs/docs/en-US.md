@@ -42,10 +42,8 @@ export default {
 
 ### Named TAB
 
-```html
-The Tabs decides which tab is activated by default by matching the active to the Tab's index
-You can also name a Tab by setting the name to the Tab, in which case the Tabs will match the name first
-```
+The Tabs decide which tab is activated by default by matching the `active` to the Tab's `index`
+You can also name a Tab by setting the `name` to the Tab, in which case the Tabs will match the name first.
 
 ```html
 <var-tabs v-model:active="active">
@@ -99,10 +97,8 @@ export default {
 
 ### Enable Scroll
 
-```html
-Start scrolling automatically when the number of tabs is more than four.
+Start scrolling automatically when the number of tabs is `more than four`.
 Click the Tab to scroll automatically to the center of the viewport
-```
 
 ```html
 <var-tabs

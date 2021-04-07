@@ -68,11 +68,9 @@ export default {
 
 ### Asynchronous change
 
-```html
 In some scenarios, you may need to wait for the server to return successfully before making changes.
-Lazy-change prevents binding value updates on the component itself.
-Register before-change events for manual updates.
-```
+`lazy-change` prevents binding value updates on the component itself.
+Register `before-change` events for manual updates.
 
 ```html
 <var-counter
@@ -101,10 +99,8 @@ export default {
 
 ### Validate
 
-```html
-The values are validated by passing in an array of validators，If the validator returns true, the validation passes。
-Other values are converted to text as a user prompt。
-```
+The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes。
+Other values are converted to text as a user prompt.
 
 ```html
 <var-counter

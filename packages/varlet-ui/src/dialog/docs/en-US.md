@@ -1,10 +1,8 @@
 # Dialog
 
 ### Intro
-```html
 A dialog pops up to display the content and handle the user interaction
-Dialog have provided functional and component usage, and there is no essential difference between the two usage effects and parameters
-```
+`Dialog` have provided functional and component usage, and there is no essential difference between the two usage effects and parameters
 
 ### Install
 
@@ -43,10 +41,8 @@ Dialog({
 
 #### Handling user behavior
 
-```html
-You can get user behavior from the method's return value, which is a Promise.
-Includes confirm, cancel, and close(click the overlay to trigger closure).
-```
+You can get user behavior from the method's return value, which is a `Promise`.
+Includes `confirm`, `cancel`, and `close(click the overlay to trigger closure)`.
 
 ```js
 import { Snackbar } from '@varlet/ui'
@@ -62,9 +58,7 @@ actions[await Dialog('Don\'t Wanna See No Blood, Don\'t Be A Macho Man')]()
 
 ### Asynchronous closing
 
-```html
-You can use onBeforeClose to intercept before closing, and you can get the user behavior from the parameters and the callback function that triggers the shutdown
-```
+You can use `onBeforeClose` to intercept before closing, and you can get the user behavior from the parameters, and the callback function that triggers the shutdown
 
 ```js
 import { Snackbar } from '@varlet/ui'
@@ -95,7 +89,7 @@ Dialog({
 #### Basic Use
 
 ```html
-<var-button block @click="show = true">Basic Use</var-button>
+<var-button type="primary" block @click="show = true">Basic Use</var-button>
 <var-dialog
   title="Beat It"
   message="Don't Wanna See No Blood, Don't Be A Macho Man"
@@ -124,7 +118,7 @@ export default {
 #### Asynchronous closing
 
 ```html
-<var-button block @click="show = true">Asynchronous closing</var-button>
+<var-button type="primary" block @click="show = true">Asynchronous closing</var-button>
 <var-dialog
   title="Beat It"
   message="Don't Wanna See No Blood, Don't Be A Macho Man"
@@ -167,7 +161,7 @@ export default {
 #### Custom Slots
 
 ```html
-<var-button block @click="show = true">Custom Slots</var-button>
+<var-button type="primary" block @click="show = true">Custom Slots</var-button>
 <var-dialog v-model:show="show">
   <template #title>
     <var-icon name="information" color="#2979ff" />

@@ -11,10 +11,8 @@ createApp().use(Select).use(Option)
 
 ### Basic Usage
 
-```html
-The component uses the option's label as the displayed text.
-The component uses the value of the option first as the value of the option, followed by the label.
-```
+The component uses the option's `label` as the displayed text.
+The component uses the `value` of the option first as the value of the option, followed by the `label`.
 
 ```js
 export default {
@@ -35,9 +33,7 @@ export default {
 
 ### Plain Mode
 
-```html
-If you only need the basic functionality of the component, you can remove some of the styles through attributes.
-```
+If you only need the basic functionality of the component, you can remove some styles through attributes.
 
 ```html
 <var-select 

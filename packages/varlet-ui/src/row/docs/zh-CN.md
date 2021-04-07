@@ -2,9 +2,7 @@
 
 ### 介绍
 
-```html
-组件库提供了<var-row/>和<var-col/>两个辅助布局的组件,使您更有效率的进行布局。
-```
+组件库提供了`<var-row/>`和`<var-col/>`两个辅助布局的组件,使您更有效率的进行布局。
 
 ### 引入
 
@@ -17,9 +15,7 @@ createApp().use(Row).use(Col)
 
 ### 栅格系统
 
-```html
-<var-row/>组件把一行平均划分为24列栅格(24份),<var-col/>提供span属性设置这一列所占的份数，offset属性设置这一列偏移的份数。
-```
+`<var-row/>`组件把一行平均划分为24列栅格(24份),`<var-col/>`提供`span`属性设置这一列所占的份数，`offset`属性设置这一列偏移的份数。
 
 ```html
 <var-row>
@@ -45,9 +41,7 @@ createApp().use(Row).use(Col)
 
 ### 对齐
 
-```html
-布局组件默认使用flex布局，通过<var-row/>的justify和align属性设置主轴和交叉轴的对齐方式。
-```
+布局组件默认使用`flex`布局，通过`<var-row/>`的`justify`和`align`属性设置主轴和交叉轴的对齐方式。
 
 ```html
  <var-row>

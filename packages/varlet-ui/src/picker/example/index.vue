@@ -1,8 +1,8 @@
 <template>
   <app-type>{{ pack.functionCall }}</app-type>
-  <var-button style="margin-bottom: 10px" block @click="picker">{{ pack.singlePicker }}</var-button>
-  <var-button style="margin-bottom: 10px" block @click="picker2">{{ pack.multiplePicker }}</var-button>
-  <var-button style="margin-bottom: 10px" block @click="picker3">{{ pack.cascadePicker }}</var-button>
+  <var-button type="primary" style="margin-bottom: 10px" block @click="picker">{{ pack.singlePicker }}</var-button>
+  <var-button type="primary" style="margin-bottom: 10px" block @click="picker2">{{ pack.multiplePicker }}</var-button>
+  <var-button type="primary" style="margin-bottom: 10px" block @click="picker3">{{ pack.cascadePicker }}</var-button>
 
   <app-type>{{ pack.componentCall }}</app-type>
   <var-picker style="margin-bottom: 14px" :columns="columns" />

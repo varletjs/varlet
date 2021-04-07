@@ -1,10 +1,9 @@
 # 图标
 
 ### 介绍
-```html
 基于字体的图标库, 也支持网络图片。
-```
 字体图标来自 [Material Design Icon](https://materialdesignicons.com/)
+
 ### 引入
 
 ```js
@@ -30,9 +29,7 @@ createApp().use(Icon)
 
 ### 使用图片
 
-```html
-当传入的name是一个网络地址时,将会使用img标签以cover模式显示。size为图片的宽高。
-```
+当传入的`name`是一个网络地址时,将会使用`img`标签以`cover`模式显示。`size`为图片的宽高。
 
 ```html
 <var-icon name="https://varlet.gitee.io/varlet-ui/cat.jpg" :size="32" />
@@ -60,9 +57,7 @@ export default {
 
 ### 图标切换动画
 
-```html
-当设置了transition(ms)并通过图标的name切换图标时, 可以触发切换动画。
-```
+当设置了`transition(ms)`并通过图标的`name`切换图标时, 可以触发切换动画。
 
 ```html
 <var-icon 
@@ -94,10 +89,8 @@ export default {
 ```
 
 ### 自定义图标库
-```html
 首先您需要设置您自己的字体，并引入到您的项目。
-这里假设扩展一个名为my-icons的字体。
-```
+这里假设扩展一个名为`my-icons`的字体。
 
 ```css
 /* 设置字体 */
@@ -129,8 +122,9 @@ export default {
 }
 ```
 
+到这里你就成功的扩展了自己的图标库，`my-icon`就是你的字体`命名空间(namespace)`，您可以这样使用
+
 ```html
-到这里你就成功的扩展了自己的图标库，my-icon就是你的字体命名空间(namespace)，您可以这样使用
 <var-icon namespace="my-icon" name="hot" />
 ```
 

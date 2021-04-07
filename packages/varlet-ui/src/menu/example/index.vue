@@ -2,7 +2,7 @@
   <app-type>{{ pack.alignmentMethods }}</app-type>
   <div class="block-1">
     <var-menu v-model:show="top">
-      <var-button @click="top = true">{{ pack.topAlignment }}</var-button>
+      <var-button type="primary" @click="top = true">{{ pack.topAlignment }}</var-button>
 
       <template #menu>
         <div class="cell-list">
@@ -16,7 +16,7 @@
 
   <div class="block">
     <var-menu alignment="bottom" v-model:show="bottom">
-      <var-button @click="bottom = true">{{ pack.bottomAlignment }}</var-button>
+      <var-button type="primary" @click="bottom = true">{{ pack.bottomAlignment }}</var-button>
 
       <template #menu>
         <div class="cell-list">
@@ -32,7 +32,7 @@
 
   <div class="block-1">
     <var-menu :offset-x="72" v-model:show="offsetX">
-      <var-button @click="offsetX = true">{{ pack.offsetRight }}</var-button>
+      <var-button type="primary" @click="offsetX = true">{{ pack.offsetRight }}</var-button>
 
       <template #menu>
         <div class="cell-list">
@@ -44,7 +44,7 @@
     </var-menu>
 
     <var-menu :offset-x="-72" v-model:show="offsetX1">
-      <var-button @click="offsetX1 = true">{{ pack.offsetLeft }}</var-button>
+      <var-button type="primary" @click="offsetX1 = true">{{ pack.offsetLeft }}</var-button>
 
       <template #menu>
         <div class="cell-list">
@@ -58,7 +58,7 @@
 
   <div class="block-2">
     <var-menu :offset-y="36" v-model:show="offsetY">
-      <var-button @click="offsetY = true">{{ pack.offsetBottom }}</var-button>
+      <var-button type="primary" @click="offsetY = true">{{ pack.offsetBottom }}</var-button>
 
       <template #menu>
         <div class="cell-list">
@@ -70,7 +70,7 @@
     </var-menu>
 
     <var-menu :offset-y="-36" v-model:show="offsetY1">
-      <var-button @click="offsetY1 = true">{{ pack.offsetTop }}</var-button>
+      <var-button type="primary" @click="offsetY1 = true">{{ pack.offsetTop }}</var-button>
 
       <template #menu>
         <div class="cell-list">
@@ -90,7 +90,7 @@
     @close="() => Snackbar.warning('close')"
     @closed="() => Snackbar.error('closed')"
   >
-    <var-button @click="event = true">{{ pack.events }}</var-button>
+    <var-button type="primary" @click="event = true">{{ pack.events }}</var-button>
 
     <template #menu>
       <div class="cell-list">
@@ -101,7 +101,7 @@
     </template>
   </var-menu>
 
-  <div style="margin-bottom: 100px;"></div>
+  <div style="margin-bottom: 100px"></div>
 </template>
 
 <script>

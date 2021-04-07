@@ -1,10 +1,8 @@
 # 对话框
 
 ### 介绍
-```html
 弹出一个对话框展示内容并处理用户交互。
-Dialog提供了函数式和组件式两种使用方式, 两种使用效果和参数并没有本质区别。
-```
+`Dialog`提供了函数式和组件式两种使用方式, 两种使用效果和参数并没有本质区别。
 
 ### 引入
 
@@ -43,10 +41,8 @@ Dialog({
 
 #### 处理用户行为
 
-```html
-可以通过Dialog方法的返回值获取用户行为, 返回值是一个promise。
-包含confirm(确认), cancel(取消), close(通过点击遮罩层触发关闭)三种状态。
-```
+可以通过`Dialog`方法的返回值获取用户行为, 返回值是一个`promise`。
+包含`confirm(确认)`, `cancel(取消)`, `close(通过点击遮罩层触发关闭)`三种状态。
 
 ```js
 import { Snackbar } from '@varlet/ui'
@@ -62,9 +58,7 @@ actions[await Dialog('兰亭临帖 行书如行云流水')]()
 
 ### 异步关闭
 
-```html
-Dialog可以通过onBeforeClose进行关闭前的拦截, 可以从参数中得到用户行为和触发关闭的回调函数。
-```
+`Dialog`可以通过`onBeforeClose`进行关闭前的拦截, 可以从参数中得到用户行为和触发关闭的回调函数。
 
 ```js
 import { Snackbar } from '@varlet/ui'
@@ -95,7 +89,7 @@ Dialog({
 #### 基本使用
 
 ```html
-<var-button block @click="show = true">基本使用</var-button>
+<var-button type="primary" block @click="show = true">基本使用</var-button>
 <var-dialog
   title="兰亭序"
   message="兰亭临帖 行书如行云流水"
@@ -124,7 +118,7 @@ export default {
 #### 异步关闭
 
 ```html
-<var-button block @click="show = true">异步关闭</var-button>
+<var-button type="primary" block @click="show = true">异步关闭</var-button>
 <var-dialog
   title="兰亭序"
   message="兰亭临帖 行书如行云流水"
@@ -167,7 +161,7 @@ export default {
 #### 自定义插槽
 
 ```html
-<var-button block @click="show = true">自定义插槽</var-button>
+<var-button type="primary" block @click="show = true">自定义插槽</var-button>
 <var-dialog v-model:show="show">
   <template #title>
     <var-icon name="information" color="#2979ff" />

@@ -11,10 +11,8 @@ createApp().use(Input)
 
 ### Basic Usage
 
-```html
 The component automatically analyzes whether the value passed in is a string or a number，
 The same type is returned。
-```
 
 ```js
 export default {
@@ -32,9 +30,7 @@ export default {
 
 ### Plain Mode
 
-```html
-If you only need the basic functionality of the component, you can remove some of the styles through attributes.
-```
+If you only need the basic functionality of the component, you can remove some styles through attributes.
 
 ```html
 <var-input 
@@ -96,10 +92,8 @@ createApp().use(Icon)
 
 ### Validate
 
-```html
-The values are validated by passing in an array of validators，If the validator returns true, the validation passes。
-Other values are converted to text as a user prompt。
-```
+The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes。
+Other values are converted to text as a user prompt.
 
 ```html
 <var-input

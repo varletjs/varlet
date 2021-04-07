@@ -1,9 +1,8 @@
 # Menu
 
 ### Intro
-```html
+
 Enable elements to display a menu when clicked, freely control the display position of the menu by controlling the alignment and offset of the menu
-```
 
 ### Install
 
@@ -15,20 +14,19 @@ createApp().use(Menu)
 ```
 
 ### Attention
-```html
-1.Menu is an inline block element. When you click through the default slot, the menu will be displayed.
-If you want menu to monopolize a line, it is recommended to package a block element
-2.Menu is automatically closed in the area beyond the scope of the component, 
-so you can't use the same state to bind v-model:show . Otherwise, when the display is triggered, 
-other menu pairs are also triggered Menu cannot be displayed due to the modification of v-model:show.
-```
+
+Menu is an `inline block` element. When you click through the default slot, the menu will be displayed.
+If you want menu to monopolize a line, it is recommended to package a `block` element
+Menu is automatically closed in the area beyond the scope of the component,
+so you can't use the same state to bind `v-model:show`. Otherwise, when the display is triggered,
+other menu pairs are also triggered Menu cannot be displayed due to the modification of `v-model:show`.
 
 
 ### Alignment Methods
 ```html
 <div class="block">
   <var-menu v-model:show="top">
-    <var-button @click="top = true">Top Alignment</var-button>
+    <var-button type="primary" @click="top = true">Top Alignment</var-button>
 
     <template #menu>
       <div class="cell-list">
@@ -42,7 +40,7 @@ other menu pairs are also triggered Menu cannot be displayed due to the modifica
 
 <div class="block-mt">
   <var-menu alignment="bottom" v-model:show="bottom">
-    <var-button @click="bottom = true">Bottom Alignment</var-button>
+    <var-button type="primary" @click="bottom = true">Bottom Alignment</var-button>
 
     <template #menu>
       <div class="cell-list">
@@ -89,7 +87,7 @@ export default {
 ```html
 <div class="block-1">
   <var-menu :offset-x="72" v-model:show="offsetX">
-    <var-button @click="offsetX = true">Offset Right</var-button>
+    <var-button type="primary" @click="offsetX = true">Offset Right</var-button>
 
     <template #menu>
       <div class="cell-list">
@@ -101,7 +99,7 @@ export default {
   </var-menu>
 
   <var-menu :offset-x="-72" v-model:show="offsetX1">
-    <var-button @click="offsetX1 = true">Offset Left</var-button>
+    <var-button type="primary" @click="offsetX1 = true">Offset Left</var-button>
 
     <template #menu>
       <div class="cell-list">
@@ -115,7 +113,7 @@ export default {
 
 <div class="block-2">
   <var-menu :offset-y="36" v-model:show="offsetY">
-    <var-button @click="offsetY = true">Offset Bottom</var-button>
+    <var-button type="primary" @click="offsetY = true">Offset Bottom</var-button>
 
     <template #menu>
       <div class="cell-list">
@@ -127,7 +125,7 @@ export default {
   </var-menu>
 
   <var-menu :offset-y="-36" v-model:show="offsetY1">
-    <var-button @click="offsetY1 = true">Offset Top</var-button>
+    <var-button type="primary" @click="offsetY1 = true">Offset Top</var-button>
 
     <template #menu>
       <div class="cell-list">
@@ -182,7 +180,7 @@ export default {
   @close="() => Snackbar.warning('close')"
   @closed="() => Snackbar.error('closed')"
 >
-  <var-button @click="event = true">Events</var-button>
+  <var-button type="primary" @click="event = true">Events</var-button>
 
   <template #menu>
     <div class="cell-list">

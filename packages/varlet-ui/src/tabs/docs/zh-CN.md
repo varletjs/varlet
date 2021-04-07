@@ -2,9 +2,7 @@
 
 ### 介绍
 
-```html
-使用Tabs, Tab实现选项卡组的切换。使用TabsItems, TabItem实现和选项卡组的视图联动。
-```
+使用`Tabs`, `Tab`实现选项卡组的切换。使用`TabsItems`, `TabItem`实现和选项卡组的视图联动。
 
 ### 引入
 
@@ -41,10 +39,8 @@ export default {
 
 ### 具名选项卡
 
-```html
-Tabs默认通过active去匹配Tab的index来决定哪个选项卡被激活。
-您也可以通过给Tab设置name来命名选项卡，这时Tabs会优先匹配name。
-```
+Tabs默认通过`active`去匹配Tab的`index`来决定哪个选项卡被激活。
+您也可以通过给Tab设置`name`来命名选项卡，这时Tabs会优先匹配`name`。
 
 ```html
 <var-tabs v-model:active="active">
@@ -98,9 +94,7 @@ export default {
 
 ### 开启滚动
 
-```html
-在选项卡数量在四个以上时自动开启滚动，点击选项卡自动滚动到视口中央。
-```
+在选项卡数量在`四个以上`时自动开启滚动，点击选项卡自动滚动到视口中央。
 
 ```html
 <var-tabs

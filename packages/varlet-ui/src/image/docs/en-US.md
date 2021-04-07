@@ -2,11 +2,9 @@
 
 ### Intro
 
-```html
-Components provide more convenient size, fill mode, rounded corner Settings, 
+Components provide more convenient size, fill mode, rounded corner Settings,
 ripple effect enhanced picture click interactive experience.
-Supports Lazy loading,loading images, error images, and default Settings for applying Lazy instructions.
-```
+Supports `Lazy load`, `loading images`, `error images`, and default Settings for applying Lazy instructions.
 
 ### Install
 

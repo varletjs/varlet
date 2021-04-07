@@ -1,9 +1,7 @@
 # Popup
 
 ### Intro
-```html
-Create a container that displays information from top, bottom, left, right, center, and Popup. Teleport inserts into the end of the body by default
-```
+Create a container that displays information from top, bottom, left, right, center, and Popup. `teleport` inserts into the end of the `body` by default
 
 ### Install
 
@@ -19,6 +17,7 @@ createApp().use(Popup)
 ```html
 <var-button 
   class="mt-10"
+  type="primary"
   block
   @click="center = true"
 >
@@ -26,6 +25,7 @@ createApp().use(Popup)
 </var-button>
 <var-button
   class="mt-10"
+  type="primary"
   block
   @click="bottom = true"
 >
@@ -33,6 +33,7 @@ createApp().use(Popup)
 </var-button>
 <var-button
   class="mt-10"
+  type="primary"
   block 
   @click="top = true"
 >
@@ -40,6 +41,7 @@ createApp().use(Popup)
 </var-button>
 <var-button 
   class="mt-10" 
+  type="primary"
   block
   @click="left = true"
 >
@@ -47,6 +49,7 @@ createApp().use(Popup)
 </var-button>
 <var-button 
   class="mt-10" 
+  type="primary"
   block 
   @click="right = true"
 >
@@ -140,6 +143,7 @@ export default {
 ```html
 <var-button
   class="mt-10"
+  type="primary"
   block 
   @click="overlayClass = true"
 >
@@ -147,6 +151,7 @@ export default {
 </var-button>
 <var-button 
   class="mt-10"
+  type="primary"
   block 
   @click="overlayStyle = true"
 >
@@ -218,6 +223,7 @@ export default {
 ```html
 <var-button
   class="mt-10"
+  type="primary"
   block
   @click="event = true"
 >

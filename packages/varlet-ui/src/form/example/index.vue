@@ -44,7 +44,7 @@
       <var-checkbox :checked-value="2">{{ pack.sleep }}</var-checkbox>
       <var-checkbox :checked-value="3">{{ pack.play }}</var-checkbox>
     </var-checkbox-group>
-    <var-rate :rules="[(v) => v >= 3 || pack.rateMessage]" v-model="formData.score" />
+    <var-rate class="mb" :rules="[(v) => v >= 3 || pack.rateMessage]" v-model="formData.score" />
     <div class="row mb">
       <var-switch :rules="[(v) => !!v || pack.licenseMessage]" v-model="formData.license" />
     </div>

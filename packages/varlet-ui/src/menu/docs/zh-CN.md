@@ -1,9 +1,7 @@
 # 按钮
 
 ### 介绍
-```html
 使元素点击时显示一个菜单,通过控制菜单的对齐方式和偏移量自由的控制菜单的显示位置。
-```
 
 ### 引入
 
@@ -15,17 +13,14 @@ createApp().use(Menu)
 ```
 
 ### 注意
-```html
-1.Menu是一个inline-block元素,通过默认插槽点击时显示菜单,如果希望Menu独占一行推荐包裹一个block元素。
-2.Menu在点击组件范围以外的区域自动关闭,所以不可以使用同一个状态绑定多个Menu的v-model:show。否则在触发显示时也同时触发了其他Menu对v-model:show的修改,导致Menu无法显示。
-```
-
+Menu是一个`inline-block`元素,通过默认插槽点击时显示菜单,如果希望Menu独占一行推荐包裹一个`block`元素。
+Menu在点击组件范围以外的区域自动关闭,所以不可以使用同一个状态绑定多个Menu的`v-model:show`。否则在触发显示时也同时触发了其他Menu对`v-model:show`的修改,导致Menu无法显示。
 
 ### 对齐方式
 ```html
 <div class="block">
   <var-menu v-model:show="top">
-    <var-button @click="top = true">顶部对齐</var-button>
+    <var-button type="primary" @click="top = true">顶部对齐</var-button>
 
     <template #menu>
       <div class="cell-list">
@@ -39,7 +34,7 @@ createApp().use(Menu)
 
 <div class="block-mt">
   <var-menu alignment="bottom" v-model:show="bottom">
-    <var-button @click="bottom = true">底部对齐</var-button>
+    <var-button type="primary" @click="bottom = true">底部对齐</var-button>
 
     <template #menu>
       <div class="cell-list">
@@ -86,7 +81,7 @@ export default {
 ```html
 <div class="block-1">
   <var-menu :offset-x="72" v-model:show="offsetX">
-    <var-button @click="offsetX = true">右偏移</var-button>
+    <var-button type="primary" @click="offsetX = true">右偏移</var-button>
 
     <template #menu>
       <div class="cell-list">
@@ -98,7 +93,7 @@ export default {
   </var-menu>
 
   <var-menu :offset-x="-72" v-model:show="offsetX1">
-    <var-button @click="offsetX1 = true">左偏移</var-button>
+    <var-button type="primary" @click="offsetX1 = true">左偏移</var-button>
 
     <template #menu>
       <div class="cell-list">
@@ -112,7 +107,7 @@ export default {
 
 <div class="block-2">
   <var-menu :offset-y="36" v-model:show="offsetY">
-    <var-button @click="offsetY = true">下偏移</var-button>
+    <var-button type="primary" @click="offsetY = true">下偏移</var-button>
 
     <template #menu>
       <div class="cell-list">
@@ -124,7 +119,7 @@ export default {
   </var-menu>
 
   <var-menu :offset-y="-36" v-model:show="offsetY1">
-    <var-button @click="offsetY1 = true">上偏移</var-button>
+    <var-button type="primary" @click="offsetY1 = true">上偏移</var-button>
 
     <template #menu>
       <div class="cell-list">
@@ -179,7 +174,7 @@ export default {
   @close="() => Snackbar.warning('close')"
   @closed="() => Snackbar.error('closed')"
 >
-  <var-button @click="event = true">注册事件</var-button>
+  <var-button type="primary" @click="event = true">注册事件</var-button>
 
   <template #menu>
     <div class="cell-list">

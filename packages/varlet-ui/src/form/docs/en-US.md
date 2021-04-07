@@ -2,9 +2,7 @@
 
 ### Intro
 
-```html
 Provides the ability to control all form components.
-```
 
 ### Install
 
