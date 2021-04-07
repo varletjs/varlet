@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.3](https://github.com/haoziqaq/varlet/compare/v0.10.2...v0.10.3) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ui/*:** 解决组件依赖css优先级问题 优化所有组件文档排版 ([3791438](https://github.com/haoziqaq/varlet/commit/3791438b9d77e381488047a0a4d74f67f4526c59))
+
+
+
+
+
 ## [0.10.2](https://github.com/haoziqaq/varlet/compare/v0.10.1...v0.10.2) (2021-04-06)
 
 **Note:** Version bump only for package @varlet/cli
