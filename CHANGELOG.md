@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.7](https://github.com/haoziqaq/varlet/compare/v0.10.6...v0.10.7) (2021-04-07)
+
+
+### Bug Fixes
+
+* **cli/compiler:** 编译时创建less.js cover babel-import-plugin ([3b75185](https://github.com/haoziqaq/varlet/commit/3b75185a6e3b25d27da7b95f0778cf70c12268f7))
+
+
+
+
+
 ## [0.10.6](https://github.com/haoziqaq/varlet/compare/v0.10.5...v0.10.6) (2021-04-07)
 
 
