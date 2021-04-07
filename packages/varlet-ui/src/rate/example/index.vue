@@ -21,10 +21,10 @@
   <var-rate v-model="score4" :size="20" />
 
   <app-type>{{ pack.customIconSpacing }}</app-type>
-  <var-rate v-model="score5" :margin-right="2" />
+  <var-rate v-model="score5" :gap="2" />
   <var-rate v-model="score5" />
-  <var-rate v-model="score5" :margin-right="6" />
-  <var-rate v-model="score5" :margin-right="8" />
+  <var-rate v-model="score5" :gap="6" />
+  <var-rate v-model="score5" :gap="8" />
 
   <app-type>{{ pack.useHalfAStar }}</app-type>
   <var-rate v-model="score6" :count="8" half />
@@ -44,8 +44,8 @@
   <app-type>{{ pack.readonlyRating }}</app-type>
   <var-rate v-model="score8" readonly />
 
-  <app-type>{{ pack.useWaterRipples }}</app-type>
-  <var-rate v-model="score9" ripple />
+  <app-type>{{ pack.waterRippleIsProhibited }}</app-type>
+  <var-rate v-model="score9" :ripple="false" />
 
   <app-type>{{ pack.listeningForClickEvents }}</app-type>
   <var-rate v-model="score10" @change="handleChange" />

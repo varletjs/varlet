@@ -71,13 +71,13 @@ Customize the size of the rating icon by setting the `size` property
 
 ### Custom Icon Interval
 
-Customize the spacing between scores by setting the `paddingRight` property
+Customize the spacing between scores by setting the `gap` property
 
 ```html
-<var-rate v-model="score" :margin-right="2"/>
+<var-rate v-model="score" :gap="2"/>
 <var-rate v-model="score"/>
-<var-rate v-model="score" :margin-right="6"/>
-<var-rate v-model="score" :margin-right="8"/>
+<var-rate v-model="score" :gap="6"/>
+<var-rate v-model="score" :gap="8"/>
 ```
 
 ### allows half ICONS
@@ -103,7 +103,7 @@ export default {
 
 ### Disables rating
 
-Make the score in the disabled state by setting the `disabled` property, and use `disabled-color` to customize the color of the icon when disabled
+Make the score in the disabled state by adding the `disabled` property, and use `disabled-color` to customize the color of the icon when disabled
 
 ```html
 <var-rate v-model="score" disabled disabled-color="#bbbbbb"/>
@@ -111,7 +111,7 @@ Make the score in the disabled state by setting the `disabled` property, and use
 
 ### Read only rating
 
-Make the score read-only by setting the `readonly` property
+Make the score read-only by adding the `readonly` property
 
 ```html
 <var-rate v-model="score" readonly/>
@@ -119,10 +119,10 @@ Make the score read-only by setting the `readonly` property
 
 ### Use water ripples
 
-Set the `ripple` attribute to make the water ripple style appear when scoring
+Set the `ripple` attribute to `false` to prohibit the use of water ripples
 
 ```html
-<var-rate v-model="score" ripple/>
+<var-rate v-model="score" :ripple="false"/>
 ```
 
 ### listens for the change event
@@ -169,20 +169,20 @@ Other values are converted to text as a user prompt。
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| `v-model` | The current rating  | _number_ | `_` |
-| `count` | total rating  | _number_ | `5` |
+| `v-model` | The current rating  | _number_,_string_ | `0` |
+| `count` | total rating  | _number_,_string_ | `5` |
 | `color` | The color of the icon when selected  | _string_ | `#ff9800` |
 | `icon` | The icon style when the entire icon is selected  | _string_ | `star` |
 | `empty-color` | The color of the icon when unchecked | _string_ | `#bdbdbd` |
 | `empty-icon` | Style of the icon when unchecked | _string_ | `star-outline` |
 | `size` | Icon size, default unit is `px` | _number_,_string_ | `20` |
-| `margin-right` | Icon spacing, default unit is `px` | _number_,_string_ | `4` |
+| `gap` | Icon spacing, default unit is `px` | _number_,_string_ | `4` |
 | `half` | Whether half selection is allowed | _boolean_ | `false` |
 | `half-icon` | The half-selected icon style only works if `half` is `true` | _string_ | `star-half-full`|
 | `disabled` | Whether or not rating is prohibited | _boolean_ | `false`|
 | `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `#bdbdbd`|
 | `readonly` | Whether to use rating read-only | _boolean_ | `false`|
-| `ripple` | Whether to use water ripple | _boolean_ | `false`|
+| `ripple` | Whether to use water ripple | _boolean_ | `true`|
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: string | number) => any>_ | `-` |
 
 ### Events

@@ -11,11 +11,15 @@ createApp().use(AppBar)
 
 ### 基础导航栏
 
+通过设置`title`属性自定义导航栏标题
+
 ```html
 <var-app-bar title="标题"></var-app-bar>
 ```
 
 ### 自定义样式导航栏
+
+通过设置`title-position`属性自定义标题所处位置，设置`color`属性自定义导航栏颜色，设置`is-shasow`属性定义导航栏是否显示阴影
 
 ```html
 <var-app-bar 

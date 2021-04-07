@@ -23,7 +23,7 @@ Define the color of the badge by setting the `type` attribute
 
 ### Dot Badge
 
-Set the logo as a dot by setting the `dot` property
+Set the logo as a dot by adding the `dot` attribute
 
 ```html
 <var-badge type="danger" dot />
@@ -124,7 +124,7 @@ Customize the logo color by setting the value `color`
 
 ### Custom Badge Icon
 
-Set the badge icon by setting the value of `icon`
+Define the logo icon by setting the value of `icon`
 
 ```html
 <var-badge color="#6200ea" position="right-top" icon="account-circle">

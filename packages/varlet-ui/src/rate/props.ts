@@ -42,7 +42,7 @@ export const props = {
     default: '20',
   },
   // 图标间隔
-  marginRight: {
+  gap: {
     type: [String, Number],
     default: '2',
   },
@@ -75,7 +75,7 @@ export const props = {
   //  点击时是否有水波纹样式
   ripple: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   validateTrigger: {
     type: Array as PropType<Array<ValidateTriggers>>,

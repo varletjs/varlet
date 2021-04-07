@@ -130,6 +130,10 @@ export default defineComponent({
     }
 
     const judgmentType = (type) => {
+      if (window.location.hash === '#/') {
+        return
+      }
+
       let [, languageValue, componentValue] = window.location.hash.split('/')
 
       isLoading.value = false
@@ -165,6 +169,7 @@ export default defineComponent({
       if (item.isTitle) {
         return false
       }
+
       isBack.value = false
       componentName.value = item.nonComponent ? 'home' : item.doc
       path.value = item.nonComponent ? item.doc : null
@@ -183,6 +188,10 @@ export default defineComponent({
     watch(
       () => route.path,
       (to: string) => {
+        if (to === '/') {
+          return
+        }
+
         let [, languageValue, name] = to.split('/')
         currentMenuName.value = name
         language.value = languageValue
@@ -299,7 +308,7 @@ iframe {
     }
 
     &-empty {
-      height: 32px;
+      height: 33px;
       width: calc(100% - 40px);
       margin-left: 20px;
       background-color: @color-primary;
@@ -455,6 +464,7 @@ iframe {
       min-width: 500px;
       padding-left: 30px;
       overflow-y: auto;
+      overflow-x: hidden;
 
       &::-webkit-scrollbar {
         display: none;

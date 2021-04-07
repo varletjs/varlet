@@ -8,7 +8,7 @@
         v-ripple="{ disabled: formReadonly || formDisabled || readonly || disabled || !ripple }"
         :style="{
           color: transformValue(val).color,
-          marginRight: val !== toNumber(count) ? toSizeUnit(marginRight) : 0,
+          marginRight: val !== toNumber(count) ? toSizeUnit(gap) : 0,
           width: toSizeUnit(size),
           height: toSizeUnit(size),
           borderRadius: '50%',
@@ -58,12 +58,12 @@ export default defineComponent({
       const { modelValue, disabled, disabledColor, color, half, emptyColor } = props
 
       if (index <= toNumber(modelValue)) {
-        return { type: 'full', score: index, color: disabled ? disabledColor : color }
+        return { type: 'full', score: index, color: disabled || form?.disabled.value ? disabledColor : color }
       }
       if (half && index <= toNumber(modelValue) + 0.5) {
-        return { type: 'half', score: index, color: disabled ? disabledColor : color }
+        return { type: 'half', score: index, color: disabled || form?.disabled.value ? disabledColor : color }
       }
-      return { type: 'empty', score: index, color: disabled ? disabledColor : emptyColor }
+      return { type: 'empty', score: index, color: disabled || form?.disabled.value ? disabledColor : emptyColor }
     }
 
     const validateWithTrigger = (trigger: ValidateTriggers) => {
@@ -87,7 +87,7 @@ export default defineComponent({
     const handleClick = (score: number, event: MouseEvent) => {
       const { readonly, disabled, onChange } = props
 
-      if (readonly || disabled) {
+      if (readonly || disabled || form?.disabled.value || form?.readonly.value) {
         return
       }
 

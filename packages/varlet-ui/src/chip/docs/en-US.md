@@ -24,7 +24,7 @@ Define the color of the label by setting the `type` attribute
 
 ### Plain style Chip
 
-Set the label to a hollow style by setting the `plain` attribute
+Set the label to a hollow style by adding the `plain` attribute
 
 ```html
 <var-chip plain type="primary">Plain Chip</var-chip>
@@ -57,7 +57,7 @@ Define the size of the label by setting the `size` attribute
 
 ### Can Close Chip
 
-Use the `closeable` attribute to display the closing icon of the label, and use the `close-name` attribute to customize
+Add the `closeable` attribute to display the closing icon of the label, and use the `close-name` attribute to customize
 the style of the closing icon (`close-name` must be used when `closeable` is used)
 
 ```html
