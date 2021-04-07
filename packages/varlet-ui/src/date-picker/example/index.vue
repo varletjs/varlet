@@ -58,9 +58,9 @@ export default defineComponent({
   },
   setup() {
     const date = ref('2021-01')
-    const date1 = ref()
-    const date2 = ref(['2021-02-02', ' 2021-02-07'])
-    const date3 = ref(['2021-02-01', ' 2021-02-15'])
+    const date1 = ref('2021-04-08')
+    const date2 = ref(['', ''])
+    const date3 = ref(['2021-02-01', '2021-02-15'])
     const date4 = ref('2020-11-11')
     const date5 = ref('2021-02')
     const allowedDates = (val) => {

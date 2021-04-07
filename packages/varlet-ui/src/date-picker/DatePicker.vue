@@ -22,18 +22,18 @@
         <transition
           :name="multiple ? '' : reverse ? 'var-date-picker-reverse-translatey' : 'var-date-picker-translatey'"
         >
-          <div :key="range || multiple || chooseYear + chooseMonth.index" v-if="type === 'month'">
+          <div :key="range || multiple || chooseYear + chooseMonth?.index" v-if="type === 'month'">
             <slot name="range" :choose="getChoose.chooseRangeMonth" v-if="range">
               {{ getMonthTitle }}
             </slot>
             <slot name="multiple" :choose="getChoose.chooseMonths" v-else-if="multiple">
               {{ getMonthTitle }}
             </slot>
-            <slot name="month" :month="chooseMonth.index" :year="chooseYear" v-else>
+            <slot name="month" :month="chooseMonth?.index" :year="chooseYear" v-else>
               {{ getMonthTitle }}
             </slot>
           </div>
-          <div :key="chooseYear + chooseMonth.index + chooseDay" v-else>
+          <div :key="chooseYear + chooseMonth?.index + chooseDay" v-else>
             <slot name="range" :choose="formatRange" v-if="range">
               {{ getDateTitle }}
             </slot>
@@ -315,11 +315,27 @@ export default defineComponent({
       return true
     }
 
+    const invalidFormatDate = (date: string | Array<string> | undefined): boolean => {
+      if (isArray(date)) return false
+
+      if (date === undefined || date === 'Invalid Date') {
+        console.error('[Varlet] DatePicker: "modelValue" is an Invalid Date')
+        return true
+      }
+
+      return false
+    }
+
     const rangeInit = (value: Array<string>, type: string) => {
       const rangeDate = type === 'month' ? chooseRangeMonth : chooseRangeDay
       const formatType = type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
+      const formatDateList = value.map((choose) => dayjs(choose).format(formatType)).slice(0, 2)
 
-      rangeDate.value = value.map((choose) => dayjs(choose).format(formatType)).slice(0, 2)
+      const isValid = rangeDate.value.some((date) => invalidFormatDate(date))
+      if (isValid) return
+
+      rangeDate.value = formatDateList
+
       const isChangeOrder = dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])
 
       if (rangeDate.value.length === 2 && isChangeOrder) {
@@ -330,11 +346,17 @@ export default defineComponent({
     const multipleInit = (value: Array<string>, type: string) => {
       const rangeDate = type === 'month' ? chooseMonths : chooseDays
       const formatType = type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
-      rangeDate.value = Array.from(new Set(value.map((choose) => dayjs(choose).format(formatType))))
+
+      // 需要去重
+      const formatDateList = Array.from(new Set(value.map((choose) => dayjs(choose).format(formatType))))
+      rangeDate.value = formatDateList.filter((date) => date !== 'Invalid Date')
     }
 
     const dateInit = (value: string) => {
       const formatDate = dayjs(value).format('YYYY-MM-D')
+
+      if (invalidFormatDate(formatDate)) return
+
       const [yearValue, monthValue, dayValue] = formatDate.split('-')
 
       const monthDes: Month = MONTH_LIST.find((month) => month.index === monthValue) as Month
@@ -349,7 +371,7 @@ export default defineComponent({
     watch(
       () => props.modelValue,
       (value) => {
-        if (!checkValue() || value === undefined) return
+        if (!checkValue() || invalidFormatDate(value)) return
 
         if (props.range) {
           if (!isArray(value)) return
