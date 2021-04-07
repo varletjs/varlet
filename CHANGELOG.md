@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.6](https://github.com/haoziqaq/varlet/compare/v0.10.5...v0.10.6) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ui/locale:** 将自定义的语言包名加入语言包内 ([5544b30](https://github.com/haoziqaq/varlet/commit/5544b30a2725a35c11034f49e524dbd567155af6))
+
+
+
+
+
 ## [0.10.5](https://github.com/haoziqaq/varlet/compare/v0.10.4...v0.10.5) (2021-04-07)
 
 
