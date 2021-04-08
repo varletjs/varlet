@@ -126,6 +126,13 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Elevation 海拔效果',
+          'en-US': 'Elevation',
+        },
+        doc: 'styles',
+      },
+      {
+        text: {
           'zh-CN': '展示组件',
           'en-US': 'Display Components',
         },

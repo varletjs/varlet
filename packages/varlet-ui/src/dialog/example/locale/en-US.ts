@@ -1,6 +1,6 @@
 export default {
   functionCall: 'Function Call',
-  basicUse: 'Basic Usage',
+  basicUsage: 'Basic Usage',
   modifyTitle: 'Modify Title',
   hideButton: 'Hide Button',
   handleUserBehavior: 'Handle User Behavior',
