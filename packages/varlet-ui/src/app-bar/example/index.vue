@@ -61,6 +61,7 @@ import Ripple from '../../ripple'
 import Snackbar from '../../snackbar'
 import Menu from '../../menu'
 import Button from '../../button'
+import Cell from '../../cell'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 
@@ -72,6 +73,7 @@ export default {
     [Icon.name]: Icon,
     [Menu.name]: Menu,
     [Button.name]: Button,
+    [Cell.name]: Cell,
     AppType,
   },
   setup() {

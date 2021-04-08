@@ -21,7 +21,6 @@ import {
   onDeactivated,
 } from 'vue'
 import { isArray, removeItem } from './shared'
-import { FORM_BIND_FORM_ITEM_KEY, FormProvider } from '../form/provide'
 
 export interface MountInstance {
   instance: any
