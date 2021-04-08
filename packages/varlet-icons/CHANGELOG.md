@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/haoziqaq/varlet/compare/v0.11.0...v0.11.1) (2021-04-08)
+
+
+### Bug Fixes
+
+* **icon/config:** 修改打包的icon css url ([23b87b7](https://github.com/haoziqaq/varlet/commit/23b87b73737ed7da7f560ff98d610fbcc03c7d9a))
+
+
+
+
+
 # [0.11.0](https://github.com/haoziqaq/varlet/compare/v0.10.7...v0.11.0) (2021-04-07)
 
 **Note:** Version bump only for package @varlet/icons

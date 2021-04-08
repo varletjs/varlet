@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/haoziqaq/varlet/compare/v0.11.0...v0.11.1) (2021-04-08)
+
+
+### Bug Fixes
+
+* **date-picker:** check value ([d57b163](https://github.com/haoziqaq/varlet/commit/d57b163138d1c3ec3999c4c4c5c997bbf0a662f3))
+* **icon/config:** 修改打包的icon css url ([23b87b7](https://github.com/haoziqaq/varlet/commit/23b87b73737ed7da7f560ff98d610fbcc03c7d9a))
+* **time-picker:** wrong style ([4dd6d49](https://github.com/haoziqaq/varlet/commit/4dd6d493d6ead6e034aa13f84a3409192e147569))
+
+
+
+
+
 # [0.11.0](https://github.com/haoziqaq/varlet/compare/v0.10.7...v0.11.0) (2021-04-07)
 
 
