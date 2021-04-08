@@ -46,7 +46,6 @@
   border-radius: 100%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-color: inherit;
 }
 
 .var-time-picker {
@@ -138,10 +137,12 @@
         width: @time-picker-clock-hand-before-width;
         height: @time-picker-clock-hand-before-height;
         top: -5px;
+        border-color: inherit;
       }
 
       &::after {
         .after-before-basic();
+        border-color: inherit;
         height: @time-picker-clock-hand-after-height;
         width: @time-picker-clock-hand-after-width;
         top: 100%;
