@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.2](https://github.com/haoziqaq/varlet/compare/v0.11.1...v0.11.2) (2021-04-08)
+
+
+### Bug Fixes
+
+* **icon/config:** 修改config url ([e063fbf](https://github.com/haoziqaq/varlet/commit/e063fbfa1c4f75932e68c82a7e01c4a30ccb71b4))
+
+
+
+
+
 ## [0.11.1](https://github.com/haoziqaq/varlet/compare/v0.11.0...v0.11.1) (2021-04-08)
 
 
