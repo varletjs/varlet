@@ -1,7 +1,7 @@
 <template>
   <div class="list">
-    <div class="list__item" :class="`var-elevation--${deep}`" v-for="deep in deeps" :key="deep">
-      {{ deep }}
+    <div class="list__item" :class="`var-elevation--${e}`" v-for="e in elevations" :key="e">
+      {{ e }}
     </div>
   </div>
 </template>
@@ -13,10 +13,10 @@ export default {
   name: 'RippleExample',
   components: { AppType },
   setup() {
-    const deeps = Array.from({ length: 25 }).map((_, index) => index)
+    const elevations = Array.from({ length: 25 }).map((_, index) => index)
 
     return {
-      deeps,
+      elevations,
     }
   },
 }

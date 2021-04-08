@@ -107,5 +107,6 @@ export default {
 .block {
   padding: 20px 24px;
   width: 250px;
+  color: #555;
 }
 </style>
