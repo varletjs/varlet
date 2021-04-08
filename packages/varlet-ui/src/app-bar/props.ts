@@ -21,7 +21,7 @@ export const props = {
   },
 
   //  是否使用阴影
-  isShadow: {
+  elevation: {
     type: Boolean,
     default: true,
   },

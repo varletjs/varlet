@@ -2,13 +2,13 @@
   <app-type>{{ pack.basicAppBar }}</app-type>
   <var-app-bar :title="pack.title" />
 
-  <app-type>{{ pack.customStyleAppBar }}</app-type>
-  <var-app-bar :title="pack.title" title-position="center" color="#ff9800" :is-shadow="false" />
+  <app-type>{{ pack.customStyle }}</app-type>
+  <var-app-bar :title="pack.title" title-position="center" color="#ff9800" :elevation="false" />
 
   <app-type>{{ pack.addSlotsAtTitle }}</app-type>
   <var-app-bar>{{ pack.addTheTitleFromTheSlot }}</var-app-bar>
 
-  <app-type>{{ pack.addLeftSlotAppBar }}</app-type>
+  <app-type>{{ pack.addLeftSlot }}</app-type>
   <var-app-bar :title="pack.title" title-position="center">
     <template #left>
       <var-button round text color="transparent" text-color="#ffffff" @click="goBack">
@@ -17,7 +17,7 @@
     </template>
   </var-app-bar>
 
-  <app-type>{{ pack.addRightSlotAppBar }}</app-type>
+  <app-type>{{ pack.addRightSlot }}</app-type>
   <var-app-bar :title="pack.title">
     <template #right>
       <var-button round text color="transparent" text-color="#ffffff" @click="searchData">
@@ -26,7 +26,7 @@
     </template>
   </var-app-bar>
 
-  <app-type>{{ pack.addLeftAndRightSlotAppBar }}</app-type>
+  <app-type>{{ pack.addLeftAndRightSlot }}</app-type>
   <var-app-bar :title="pack.title">
     <template #left>
       <var-button round text color="transparent" text-color="#ffffff" @click="goBack">

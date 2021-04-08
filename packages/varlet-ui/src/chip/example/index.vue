@@ -1,6 +1,6 @@
 <template>
   <div class="example">
-    <app-type>{{ pack.themeColorChip }}</app-type>
+    <app-type>{{ pack.chipType }}</app-type>
     <var-chip type="primary">{{ pack.primaryChip }}</var-chip>
     <var-chip type="success">{{ pack.successChip }}</var-chip>
     <var-chip type="danger">{{ pack.dangerChip }}</var-chip>
@@ -8,8 +8,8 @@
     <var-chip type="info">{{ pack.infoChip }}</var-chip>
     <var-chip>{{ pack.defaultChip }}</var-chip>
 
-    <app-type>{{ pack.plainStyleChip }}</app-type>
-    <var-chip plain type="primary">{{ pack.plainChip }}</var-chip>
+    <app-type>{{ pack.simpleChip }}</app-type>
+    <var-chip plain type="primary">{{ pack.simpleChip }}</var-chip>
 
     <app-type>{{ pack.nonRoundChip }}</app-type>
     <var-chip :round="false" type="primary">{{ pack.nonRoundChip }}</var-chip>
@@ -26,13 +26,13 @@
     <var-chip closable v-if="show" @close="show = false">{{ pack.canCloseChip }}</var-chip>
     <var-chip closable icon-name="delete" v-if="show1" @close="show1 = false"> {{ pack.customCloseIcon }}</var-chip>
 
-    <app-type>{{ pack.cusromColorChip }}</app-type>
+    <app-type>{{ pack.customColor }}</app-type>
     <var-chip color="#009688" text-color="#fff">{{ pack.chip }}</var-chip>
     <var-chip color="#009688" plain>{{ pack.chip }}</var-chip>
     <var-chip color="#faecd8" text-color="#e6a23c" plain>{{ pack.chip }}</var-chip>
     <var-chip color="#faecd8" text-color="#e6a23c">{{ pack.chip }}</var-chip>
 
-    <app-type>{{ pack.addLeftAndRightSlotChips }}</app-type>
+    <app-type>{{ pack.addLeftAndRightSlot }}</app-type>
     <var-chip type="primary" plain>
       {{ pack.leftSlot }}
 

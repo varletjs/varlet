@@ -1,4 +1,4 @@
-# 标签
+# 纸片
 
 ### 引入
 
@@ -9,58 +9,60 @@ import { Chip } from '@varlet/ui'
 createApp().use(Chip)
 ```
 
-### 主题色标签
+### 纸片类型
 
-通过设置`type`属性定义标签的颜色
+通过`type`属性设置纸片的类型
 
 ```html
-<var-chip type="primary">主要标签</var-chip>
-<var-chip type="success">成功标签</var-chip>
-<var-chip type="danger">危险标签</var-chip>
-<var-chip type="warning">警告标签</var-chip>
-<var-chip type="info">信息标签</var-chip>
-<var-chip>默认标签</var-chip>
+<var-chip type="primary">主要纸片</var-chip>
+<var-chip type="success">成功纸片</var-chip>
+<var-chip type="danger">危险纸片</var-chip>
+<var-chip type="warning">警告纸片</var-chip>
+<var-chip type="info">信息纸片</var-chip>
+<var-chip>默认纸片</var-chip>
 ```
 
-### 空心样式标签
+### 简单纸片
 
-通过添加`plain`属性把标签设置成空心样式
+通过`plain`属性将纸片设置成简单纸片
 
 ```html
-<var-chip plain type="primary">空心标签</var-chip>
+<var-chip plain type="primary">简单纸片</var-chip>
 ```
 
-### 非圆角标签
+### 非圆角纸片
 
-通过设置`round`属性为`false`来取消标签的圆角样式
+通过把`round`属性设置为`false`来取消纸片的圆角样式
 
 ```html
-<var-chip :round="false" type="primary">非圆角标签</var-chip>
+<var-chip :round="false" type="primary">非圆角纸片</var-chip>
 ```
 
-### 标签尺寸
+### 纸片尺寸
 
-通过设置`size`属性定义标签的大小
+通过`size`属性设置纸片的尺寸
 
 ```html
-<var-chip size="large">大标签</var-chip>
-<var-chip>常规标签</var-chip>
-<var-chip size="small">小标签</var-chip>
-<var-chip size="mini">迷你标签</var-chip>
+<var-chip size="large">大纸片</var-chip>
+<var-chip>常规纸片</var-chip>
+<var-chip size="small">小纸片</var-chip>
+<var-chip size="mini">迷你纸片</var-chip>
 ```
 
-### 块级标签
+### 块级纸片
+
+通过`block`属性将纸片设置成块级纸片
 
 ```html
-<var-chip type="primary" block>块级标签</var-chip>
+<var-chip type="primary" block>块级纸片</var-chip>
 ```
 
-### 可关闭标签
+### 可关闭纸片
 
-通过添加`closable`属性显示标签的关闭图标，使用`close-name`属性自定义关闭图标的样式（`close-name`必须在使用了`closeable`的情况下使用）
+通过`closable`属性设置为可关闭纸片，使用`close-name`属性自定义可关闭纸片的图标样式（在使用了`closeable`的情况下使用）
 
 ```html
-<var-chip closable v-if="show" @close="show = false">可关闭标签</var-chip>
+<var-chip closable v-if="show" @close="show = false">可关闭纸片</var-chip>
 <var-chip
   closable
   icon-name="delete"
@@ -85,39 +87,34 @@ export default {
 }
 ```
 
-### 自定义颜色标签
+### 自定义颜色
 
-通过设置`color`和`text-color`属性自定义标签颜色
+通过`color`和`text-color`属性设置纸片颜色
 
 ```html
-<var-chip color="#009688">标签</var-chip>
-<var-chip color="#009688" plain>标签</var-chip>
-<var-chip color="#faecd8" text-color="#e6a23c" plain>标签</var-chip>
-<var-chip color="#faecd8" text-color="#e6a23c">标签</var-chip>
+<var-chip color="#009688">纸片</var-chip>
+<var-chip color="#009688" plain>纸片</var-chip>
+<var-chip color="#faecd8" text-color="#e6a23c" plain>纸片</var-chip>
+<var-chip color="#faecd8" text-color="#e6a23c">纸片</var-chip>
 ```
 
-### 添加左右插槽标签
-
-自定义标签两侧插槽
+### 添加插槽
 
 ```html
 <var-chip type="primary" plain>
   左侧插槽
-
   <template #left>
     <var-icon name="star" />
   </template>
 </var-chip>
 <var-chip type="primary" plain>
   右侧插槽
-
   <template #right>
     <var-icon name="fire" />
   </template>
 </var-chip>
 <var-chip type="primary" plain>
   左右两侧插槽
-  
   <template #left>
     <var-icon name="account-circle" />
   </template>
@@ -139,18 +136,18 @@ export default {
 | `plain` | 是否为空心样式 | _boolean_ | `false` |
 | `round` | 是否为圆角样式 | _boolean_ | `true` |
 | `block` | 是否为块级样式 | _boolean_ | `false` |
-| `closeable` | 是否为可关闭标签 | _boolean_ | `false` |
-| `close-name` | 自定义可关闭标签的图标，必须在`closeable`为`true`的条件下才能用 | _string_ | `_` |
-| `color` | 标签颜色 | _string_ | `_` |
+| `closeable` | 是否为可关闭纸片 | _boolean_ | `false` |
+| `close-name` | 自定义可关闭纸片的图标，必须在`closeable`为`true`的条件下才能用 | _string_ | `_` |
+| `color` | 纸片颜色 | _string_ | `_` |
 | `text-color` | 文本颜色，优先级高于`color`属性 | _string_ | `_` |
 
 ### 插槽
 
 | 名称 | 说明 | 参数 |
 | ---- | ---- | ----|
-| `default` | 标签内容 | `_` |
-| `left` | 插入至标签左侧的内容 | `_` |
-| `right` | 插入至标签右侧的内容 | `_` |
+| `default` | 纸片内容 | `_` |
+| `left` | 插入至纸片左侧的内容 | `_` |
+| `right` | 插入至纸片右侧的内容 | `_` |
 
 ### 事件
 

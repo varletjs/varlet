@@ -130,16 +130,12 @@ export default defineComponent({
     }
 
     const judgmentType = (type) => {
-      if (window.location.hash === '#/') {
-        return
-      }
-
       let [, languageValue, componentValue] = window.location.hash.split('/')
 
       isLoading.value = false
 
       if (type) {
-        path.value = componentValue
+        path.value = componentValue || 'home'
 
         if (isPhone.value) {
           window.location.href = `./mobile.html#/${componentValue || 'home'}?language=${
@@ -246,7 +242,7 @@ body {
   min-width: 1200px;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 iframe {
@@ -527,7 +523,7 @@ iframe {
         color: #58727e;
         font-weight: 400;
         font-size: 14px;
-        font-family: 'Source Code Pro', 'Monaco', 'Inconsolata', monospace;
+        font-family: 'Roboto', sans-serif;
         line-height: 26px;
         white-space: pre-wrap;
         word-wrap: break-word;
@@ -591,7 +587,7 @@ iframe {
         em {
           color: #4fc08d;
           font-size: 14px;
-          font-family: 'Source Code Pro', 'Monaco', 'Inconsolata', monospace;
+          font-family: 'Roboto', sans-serif;
           font-style: normal;
         }
       }

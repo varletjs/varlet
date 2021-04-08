@@ -1,7 +1,7 @@
 <template>
   <div
     class="var-app-bar"
-    :class="{ 'var-elevation--3': isShadow }"
+    :class="{ 'var-elevation--3': elevation }"
     :style="{
       background: color,
       color: textColor,

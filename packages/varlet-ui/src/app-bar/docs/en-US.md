@@ -11,22 +11,22 @@ createApp().use(AppBar)
 
 ### Basic AppBar
 
-Customize the navigation bar title by setting the `title` attribute
+Set the navigation bar title through the `title` attribute
 
 ```html
 <var-app-bar title="title" />
 ```
 
-### Custom Style AppBar
+### Custom Style
 
-Set the `title-position` attribute to define the position of the title, set the `color` attribute to define the color of the navigation bar, and set the `is-shadow` attribute to define whether the navigation bar displays shadows
+Set the position of the title and the color of the navigation bar through the `title-position` and `color` attributes, and cancel the altitude style of the navigation bar by setting the `elevation` attribute to `false`
 
 ```html
 <var-app-bar 
   title="title" 
   title-position="center" 
   color="#ff9800" 
-  :is-shadow="false" />
+  :elevation="false" />
 ```
 
 ### Add Slots At Title
@@ -35,7 +35,7 @@ Set the `title-position` attribute to define the position of the title, set the 
 <var-app-bar>Add the title from the slot</var-app-bar>
 ```
 
-### Add Left Slot AppBar
+### Add Left Slot 
 
 ```html
 <var-app-bar title="title">
@@ -71,7 +71,7 @@ export default {
 }
 ```
 
-### Add Right Slot AppBar
+### Add Right Slot
 
 ```html
 <var-app-bar title="title">
@@ -107,7 +107,7 @@ export default {
 }
 ```
 
-### Add Left And Right Slot AppBar
+### Add Left And Right Slot
 
 ```html
 <var-app-bar title="title">
@@ -200,7 +200,7 @@ export default {
 | `text-color` | Text color  | _string_ | `#ffffff` |
 | `title` | Title | _string_ | `''` |
 | `title-position` | Title location,Can be set to `left`,`center`,`right` | _string_ | `left` |
-| `is-shadow` | Whether to use shadows or not | _boolean_ | `true` |
+| `elevation` | Set altitude for navigation bar | _boolean_ | `true` |
 
 ### slots
 

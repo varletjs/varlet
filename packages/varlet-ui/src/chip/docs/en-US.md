@@ -9,9 +9,9 @@ import { Chip } from '@varlet/ui'
 createApp().use(Chip)
 ```
 
-### Theme Color Chip
+### Chip Type
 
-Define the color of the label by setting the `type` attribute
+Set the type of the chip with the 'type' attribute
 
 ```html
 <var-chip type="primary">Primary Chip</var-chip>
@@ -22,17 +22,17 @@ Define the color of the label by setting the `type` attribute
 <var-chip>Default Chip</var-chip>
 ```
 
-### Plain style Chip
+### Simple Chip
 
-Set the label to a hollow style by adding the `plain` attribute
+Use the `plain` property to make the chip simple
 
 ```html
-<var-chip plain type="primary">Plain Chip</var-chip>
+<var-chip plain type="primary">Simple Chip</var-chip>
 ```
 
 ### Non Round Chip
 
-Cancel the fillet style of the label by setting the `round` property to `false`
+To cancel fillet style of chip by setting the `round` attribute to `false`
 
 ```html
 <var-chip :round="false" type="primary">Non Round Chip</var-chip>
@@ -40,7 +40,7 @@ Cancel the fillet style of the label by setting the `round` property to `false`
 
 ### Chip Size
 
-Define the size of the label by setting the `size` attribute
+Set the chip size through the `size` attribute
 
 ```html
 <var-chip size="large">Large Chip</var-chip>
@@ -51,14 +51,15 @@ Define the size of the label by setting the `size` attribute
 
 ### Block Flex
 
+Set the chip to block level through the `block` attribute
+
 ```html
 <var-chip type="primary" block>Block Chip</var-chip>
 ```
 
 ### Can Close Chip
 
-Add the `closeable` attribute to display the closing icon of the label, and use the `close-name` attribute to customize
-the style of the closing icon (`close-name` must be used when `closeable` is used)
+Set the `closeable` attribute to the chip that can be closed, and use the `close-name` attribute to customize the icon style of the chip that can be closed (used when `closeable` is used)
 
 ```html
 <var-chip closable v-if="show" @close="show = false">Can Close Chip</var-chip>
@@ -86,9 +87,9 @@ export default {
 }
 ```
 
-### Custom Color Chip
+### Custom Color
 
-Customize the label color by setting the `color` and `text-color` properties
+Set the chip color through the `color` and `text-color` attributes
 
 ```html
 <var-chip color="#009688">Chip</var-chip>
@@ -97,28 +98,23 @@ Customize the label color by setting the `color` and `text-color` properties
 <var-chip color="#faecd8" text-color="#e6a23c">Chip</var-chip>
 ```
 
-### Add Left And Right Slot Chips
-
-Custom label side slots
+### Add Slot
 
 ```html
 <var-chip type="primary" plain>
   Left Slot
-  
   <template #left>
     <var-icon name="star" />
   </template>
 </var-chip>
 <var-chip type="primary" plain>
   Right Slot
-  
   <template #right>
     <var-icon name="fire" />
   </template>
 </var-chip>
 <var-chip type="primary" plain>
   Left And Right Slots
-  
   <template #left>
     <var-icon name="account-circle" />
   </template>

@@ -11,22 +11,22 @@ createApp().use(AppBar)
 
 ### 基础导航栏
 
-通过设置`title`属性自定义导航栏标题
+通过`title`属性设置导航栏标题
 
 ```html
 <var-app-bar title="标题"></var-app-bar>
 ```
 
-### 自定义样式导航栏
+### 自定义样式
 
-通过设置`title-position`属性自定义标题所处位置，设置`color`属性自定义导航栏颜色，设置`is-shasow`属性定义导航栏是否显示阴影
+通过`title-position`、`color`属性设置标题所处位置、导航栏颜色，通过把`elevation`属性设置为`false`取消导航栏海拔样式
 
 ```html
 <var-app-bar 
   title="标题" 
   title-position="center" 
   color="#ff9800" 
-  :is-shadow="false" />
+  :elevation="false" />
 ```
 
 ### 添加标题处插槽
@@ -35,7 +35,7 @@ createApp().use(AppBar)
 <var-app-bar>从插槽处添加标题</var-app-bar>
 ```
 
-### 添加左侧插槽导航栏
+### 添加左侧插槽
 
 ```html
 <var-app-bar title="title">
@@ -71,7 +71,7 @@ export default {
 }
 ```
 
-### 添加右侧插槽导航栏
+### 添加右侧插槽
 
 ```html
 <var-app-bar title="标题">
@@ -107,7 +107,7 @@ export default {
 }
 ```
 
-### 添加左右两侧插槽导航栏
+### 添加左右插槽
 
 ```html
 <var-app-bar title="标题">
@@ -200,7 +200,7 @@ export default {
 | `text-color` | 文字颜色 | _string_ | `#ffffff` |
 | `title` | 标题 | _string_ | `_` |
 | `title-position` | 标题位置,可选值为 `left`,`center`,`right` | _string_ | `left` |
-| `is-shadow` | 是否使用阴影 | _boolean_ | `true` |
+| `elevation` | 是否给导航栏设置海拔 | _boolean_ | `true` |
 
 ### 插槽
 

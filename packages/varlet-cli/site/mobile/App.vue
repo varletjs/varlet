@@ -71,7 +71,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 

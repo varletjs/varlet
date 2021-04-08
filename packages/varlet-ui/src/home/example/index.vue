@@ -1,6 +1,5 @@
 <template>
   <div class="space"></div>
-
   <var-cell v-for="component in components" :key="component.text" @click="toComponent(component)">
     <template #extra>
       <var-icon name="chevron-right" size="14" />
