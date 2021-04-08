@@ -71,7 +71,6 @@ import '@varlet/ui/es/button/style/less'
 使用`less`提供的`modifyVars`进行构建时的变量替换，以下是不同场景下的配置。
 
 ### Webpack
-
 这里使用`less-loader`的版本`< 6`
 
 ```js
@@ -112,6 +111,7 @@ module.exports = {
 ```
 
 ### Vite
+Vite不支持`~`语法，需要对`~`进行覆盖。
 
 ```js
 // vite.config.js
@@ -126,6 +126,11 @@ export default defineConfig({
         }
       }
     }
+  },
+  resolve: {
+    alias: [
+      { find: /^~/, replacement: '' }
+    ],
   }
 })
 ```

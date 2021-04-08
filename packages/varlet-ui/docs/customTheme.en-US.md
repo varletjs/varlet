@@ -116,6 +116,7 @@ module.exports = {
 ```
 
 ### Vite
+Vite do not support `~` syntax and need to override `~`
 
 ```js
 // vite.config.js
@@ -130,6 +131,11 @@ export default defineConfig({
         }
       }
     }
+  },
+  resolve: {
+    alias: [
+      { find: /^~/, replacement: '' }
+    ],
   }
 })
 ```
