@@ -1,6 +1,6 @@
 module.exports = {
   namespace: 'var-icon',
-  publicPath: 'https://varlet.gitee.io/varlet-ui/fonts/',
+  publicPath: '~@varlet/icons/dist/fonts/',
   fileName: 'varlet-icons',
   fontName: 'varlet-icons',
 }
