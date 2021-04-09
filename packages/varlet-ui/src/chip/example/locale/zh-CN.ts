@@ -18,7 +18,7 @@ export default {
   customCloseIcon: '自定义关闭图标',
   customColor: '自定义颜色',
   chip: '纸片',
-  addLeftAndRightSlot: '添加左右插槽',
+  addSlot: '添加插槽',
   leftSlot: '左侧插槽',
   rightSlot: '右侧插槽',
   leftAndRightSlot: '左右两侧插槽',

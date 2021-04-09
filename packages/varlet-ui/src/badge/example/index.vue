@@ -14,7 +14,7 @@
     <app-type>{{ pack.customContentBadge }}</app-type>
     <var-badge type="danger" value="badge" />
     <var-badge type="danger" value="hot" />
-    <var-badge type="danger" :value="66" />
+    <var-badge type="danger" value="66" />
 
     <app-type>{{ pack.maximum }}</app-type>
     <var-badge type="danger" :value="value" :max-value="maxValue" />
@@ -48,7 +48,7 @@
     </var-badge>
 
     <app-type>{{ pack.customBadgeIcons }}</app-type>
-    <var-badge color="#6200ea" position="right-top" icon="account-circle">
+    <var-badge color="#6200ea" position="right-top" icon="notebook">
       <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
     </var-badge>
   </div>

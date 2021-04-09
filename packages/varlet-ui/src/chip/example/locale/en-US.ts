@@ -18,7 +18,7 @@ export default {
   customCloseIcon: 'Custom Close Icon',
   customColor: 'Custom Color',
   chip: 'Chip',
-  addLeftAndRightSlot: 'Add Left And Right Slot',
+  addSlot: 'Add Slot',
   leftSlot: 'Left Slot',
   rightSlot: 'Right Slot',
   leftAndRightSlot: 'Left And Right Slot',

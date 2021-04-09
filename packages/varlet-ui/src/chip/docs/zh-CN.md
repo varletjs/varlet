@@ -24,7 +24,7 @@ createApp().use(Chip)
 
 ### 简单纸片
 
-通过`plain`属性将纸片设置成简单纸片
+通过`plain`属性将纸片设置为简单纸片
 
 ```html
 <var-chip plain type="primary">简单纸片</var-chip>
@@ -51,7 +51,7 @@ createApp().use(Chip)
 
 ### 块级纸片
 
-通过`block`属性将纸片设置成块级纸片
+通过`block`属性将纸片设置为块级纸片
 
 ```html
 <var-chip type="primary" block>块级纸片</var-chip>

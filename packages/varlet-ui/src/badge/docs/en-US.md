@@ -8,9 +8,9 @@ import { Badge } from '@varlet/ui'
 createApp().use(Badge)
 ```
 
-### Theme Color Badge
+### Badge Type
 
-Define the color of the badge by setting the `type` attribute
+Set the badge type through the `type` attribute
 
 ```html
 <var-badge type="primary" />
@@ -23,23 +23,23 @@ Define the color of the badge by setting the `type` attribute
 
 ### Dot Badge
 
-Set the logo as a dot by adding the `dot` attribute
+Set the badge as a dot through the `dot` attribute
 
 ```html
 <var-badge type="danger" dot />
 ```
 ### Customize Badge Content
 
-Define the content of the logo by setting the value of `value`
+Set the content of the badge through the `value` attribute
 
 ```html
 <var-badge type="danger" value="badge" />
 <var-badge type="danger" value="hot" />
-<var-badge type="danger" :value="66" />
+<var-badge type="danger" value="66" />
 ```
 ### Maximum
 
-By setting `value`, `max-value` controls how the content of the logo should be displayed (in effect when `value` and `max-value` are both numbers).
+Control the range of badge display values through `value` and `max-value` (effective when both `value` and `max-value` exist)
 
 ```html
 <var-badge type="danger" :value="value" :max-value="maxValue" />
@@ -65,7 +65,7 @@ export default {
 ```
 ### Different Positioning Badges
 
-Define the position of the logo by setting the value of `position`
+Set the position of the badge through the `position` property
 
 ```html
 <var-badge type="danger" position="right-top">
@@ -84,7 +84,7 @@ Define the position of the logo by setting the value of `position`
 
 ### Whether To Display The Badge
 
-Define whether the logo should be displayed by setting the value of `hidden`
+Set whether the badge is displayed through the `hidden` attribute
 
 ```html
 <var-button @click="handleChange">Click To Change The State</var-button>
@@ -114,7 +114,7 @@ export default {
 
 ### Custom Badge Colors
 
-Customize the logo color by setting the value `color`
+Set the color of the badge through the `color` property
 
 ```html
 <var-badge color="#6200ea" position="right-top">
@@ -124,10 +124,10 @@ Customize the logo color by setting the value `color`
 
 ### Custom Badge Icon
 
-Define the logo icon by setting the value of `icon`
+Set Badge Icon through `icon` property
 
 ```html
-<var-badge color="#6200ea" position="right-top" icon="account-circle">
+<var-badge color="#6200ea" position="right-top" icon="notebook">
 <var-chip plain :round="false" color="#009688">Badge</var-chip>
 </var-badge>
 ```
@@ -141,7 +141,7 @@ Define the logo icon by setting the value of `icon`
 | `type` | Badge type. Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `dot` | Whether the badge is a dot | _boolean_ | `false`|
 | `value` |The value shown in the badge (takes effect when `dot` is `false`) | _string_,_number_| `0`|
-| `max-value`|The maximum value shown in the logo, when `value` is greater than `max-value`, displays `max-value+` (takes effect when `value` and `max-value` are both numbers)| _number_| `_`|
+| `max-value`|The maximum value shown in the logo, when `value` is greater than `max-value`, displays `max-value+` (effective when both `value` and `max-value` exist)| _number_| `_`|
 | `position` |Define the position of the logo on other labels when there are other labels in the logo tag. Optional values are `right-top`, `top-bottom`, `left-top`, `left-bottom`| _string_ | _ |
 | `color` | Custom badge colors | _string_ | `_` |
 | `icon` |  Customize the content of the icon in the logo (priority is higher than `value`) | _string_ | `_` |

@@ -15,10 +15,10 @@
   <var-rate v-model="score3" icon="heart" empty-icon="heart-outline" color="red"></var-rate>
 
   <app-type>{{ pack.customizeRatingIconSize }}</app-type>
-  <var-rate v-model="score4" :size="14" />
   <var-rate v-model="score4" :size="16" />
   <var-rate v-model="score4" :size="18" />
   <var-rate v-model="score4" :size="20" />
+  <var-rate v-model="score4" />
 
   <app-type>{{ pack.customIconSpacing }}</app-type>
   <var-rate v-model="score5" :gap="2" />

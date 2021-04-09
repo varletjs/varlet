@@ -5,10 +5,10 @@
         v-bind="$attrs"
         v-show="!hidden"
         class="var-badge__content"
-        :class="contentClass"
+        :class="[contentClass, { 'var-badge__icon': icon }]"
         :style="{ background: color }"
       >
-        <var-icon v-if="icon" :name="icon" />
+        <var-icon v-if="icon" :name="icon" size="10px" />
         <span v-else>{{ values }}</span>
       </span>
     </transition>
@@ -20,7 +20,7 @@
 import { computed, ComputedRef, defineComponent } from 'vue'
 import { props } from './props'
 import Icon from '../icon'
-import { isNumber } from '../utils/shared'
+import { toNumber } from '../utils/shared'
 
 export default defineComponent({
   name: 'VarBadge',
@@ -45,7 +45,7 @@ export default defineComponent({
 
       if (dot) return ''
 
-      if (isNumber(value) && maxValue) return value > maxValue ? `${maxValue}+` : value
+      if (value !== undefined && maxValue !== undefined && toNumber(value) > maxValue) return `${maxValue}+`
 
       return value
     })

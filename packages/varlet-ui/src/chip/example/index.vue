@@ -32,7 +32,7 @@
     <var-chip color="#faecd8" text-color="#e6a23c" plain>{{ pack.chip }}</var-chip>
     <var-chip color="#faecd8" text-color="#e6a23c">{{ pack.chip }}</var-chip>
 
-    <app-type>{{ pack.addLeftAndRightSlot }}</app-type>
+    <app-type>{{ pack.addSlot }}</app-type>
     <var-chip type="primary" plain>
       {{ pack.leftSlot }}
 

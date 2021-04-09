@@ -33,7 +33,7 @@ export default {
 
 ### Customize the total rating
 
-Customize the total number of rating by setting the `count` property
+Set the total rating through the `count` attribute
 
 ```html
 <var-rate v-model="score" :count="8"/>
@@ -41,7 +41,7 @@ Customize the total number of rating by setting the `count` property
 
 ### Customize the rating icon color
 
-Customize the selected color and the unselected color by setting the `color` and `empty-color` properties
+Set the colors of selected and unselected through the `color` and `empty-color` properties
 
 ```html
 <var-rate v-model="score" color="#9c27b0" empty-color="#d199da"/>
@@ -52,7 +52,7 @@ Customize the selected color and the unselected color by setting the `color` and
 
 ### Customize the rating icon style
 
-Customize the selected and unselected icon styles by setting the `icon` and `empty-icon` properties
+Set the icon style when it is selected or not through the `icon` and `empty-icon` attributes
 
 ```html
 <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red"></var-rate>
@@ -60,7 +60,7 @@ Customize the selected and unselected icon styles by setting the `icon` and `emp
 
 ### Customize the rating icon size
 
-Customize the size of the rating icon by setting the `size` property
+Set the size of the rating icon through the `size` attribute
 
 ```html
 <var-rate v-model="score" :size="14"/>
@@ -71,7 +71,7 @@ Customize the size of the rating icon by setting the `size` property
 
 ### Custom Icon Interval
 
-Customize the spacing between scores by setting the `gap` property
+Set the interval between ratings by the `gap` attribute
 
 ```html
 <var-rate v-model="score" :gap="2"/>
@@ -82,7 +82,7 @@ Customize the spacing between scores by setting the `gap` property
 
 ### allows half ICONS
 
-Allow half-selection by setting the `half` property, and use `half-icon` to customize the style of the half-selection icon
+The `half` attribute is used to set the rating to semi selective, and the `half-icon` attribute is used to set the style of semi selective
 
 ```html
 <var-rate v-model="score" :count="8" half/>
@@ -103,7 +103,7 @@ export default {
 
 ### Disables rating
 
-Make the score in the disabled state by adding the `disabled` property, and use `disabled-color` to customize the color of the icon when disabled
+The `disabled` attribute is used to set the rating to the status of no clicking, and the `disabled-color` is used to set the color of the icon when it is disabled
 
 ```html
 <var-rate v-model="score" disabled disabled-color="#bbbbbb"/>
@@ -111,7 +111,7 @@ Make the score in the disabled state by adding the `disabled` property, and use 
 
 ### Read only rating
 
-Make the score read-only by adding the `readonly` property
+Set the rating to read-only status through the `readonly` attribute
 
 ```html
 <var-rate v-model="score" readonly/>

@@ -39,7 +39,7 @@ export const props = {
   // 图标大小
   size: {
     type: [String, Number],
-    default: '20',
+    default: '24',
   },
   // 图标间隔
   gap: {

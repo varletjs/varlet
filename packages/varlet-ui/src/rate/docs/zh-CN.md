@@ -33,7 +33,7 @@ export default {
 
 ### 自定义评分总数
 
-通过设置`count`属性自定义评分总数
+通过`count`属性设置评分总数
 
 ```html
 <var-rate v-model="score" :count="8"/>
@@ -41,7 +41,7 @@ export default {
 
 ### 自定义评分图标颜色
 
-通过设置`color`、`empty-color`属性来自定义选中是的颜色和未选中时的颜色
+通过`color`和`empty-color`属性设置选中和未选中时的颜色
 
 ```html
 <var-rate v-model="score" color="#9c27b0" empty-color="#d199da"/>
@@ -52,7 +52,7 @@ export default {
 
 ### 自定义评分图标样式
 
-通过设置`icon`、`empty-icon`属性来自定义选中和未选的图标样式
+通过`icon`和`empty-icon`属性设置选中和未选时的图标样式
 
 ```html
 <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red"></var-rate>
@@ -60,7 +60,7 @@ export default {
 
 ### 自定义评分图标尺寸
 
-通过设置`size`属性来自定义评分图标的大小
+通过`size`属性设置评分图标的尺寸
 
 ```html
 <var-rate v-model="score" :size="14"/>
@@ -71,7 +71,7 @@ export default {
 
 ### 自定义图标间隔
 
-通过设置`gap`属性来自定义评分之间的间隔
+通过`gap`属性设置评分之间的间隔
 
 ```html
 <var-rate v-model="score" :gap="2"/>
@@ -82,7 +82,7 @@ export default {
 
 ### 允许半图标
 
-通过设置`half`属性允许评分半选，使用`half-icon`自定义图标半选时的样式
+通过`half`属性将评分设置为可半选，`half-icon`属性设置半选时的样式
 
 ```html
 <var-rate v-model="score" :count="8" half/>
@@ -103,7 +103,7 @@ export default {
 
 ### 禁用评分
 
-通过添加`disabled`属性让评分处于禁止点击状态，使用`disabled-color`自定义禁用时图标的颜色
+通过`disabled`属性将评分设置为禁止点击状态，`disabled-color`设置禁用时图标的颜色
 
 ```html
 <var-rate v-model="score" disabled disabled-color="#bbbbbb"/>
@@ -111,7 +111,7 @@ export default {
 
 ### 只读评分
 
-通过添加`readonly`属性让评分处于只读状态
+通过`readonly`属性将评分设置为只读状态
 
 ```html
 <var-rate v-model="score" readonly/>
@@ -119,7 +119,7 @@ export default {
 
 ### 禁止使用水波纹
 
-通过设置`ripple`属性为`false`来禁止使用水波纹
+通过把`ripple`属性设置为`false`来禁止使用水波纹
 
 ```html
 <var-rate v-model="score" :ripple="false"/>

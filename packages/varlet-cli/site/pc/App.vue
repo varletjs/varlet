@@ -49,7 +49,9 @@
           </span>
         </var-cell>
       </div>
-      <router-view />
+      <div class="varlet-site-code">
+        <router-view />
+      </div>
       <div class="varlet-site-mobile">
         <div class="varlet-site-empty"></div>
         <div class="varlet-site-mobile-content">
@@ -452,20 +454,9 @@ iframe {
       height: calc(100vh - 60px);
       display: flex;
       background: #fff;
-      //overflow: hidden;
     }
 
     &-doc {
-      flex: 1 0 0;
-      min-width: 500px;
-      padding-left: 30px;
-      overflow-y: auto;
-      overflow-x: hidden;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-
       a {
         margin: 0 1px;
         color: #1989fa;
@@ -655,6 +646,18 @@ iframe {
 
       &__link {
         cursor: pointer;
+      }
+    }
+
+    &-code {
+      flex: 1 0 0;
+      overflow-y: auto;
+      min-width: 500px;
+      padding-left: 30px;
+      overflow-x: hidden;
+
+      &::-webkit-scrollbar {
+        display: none;
       }
     }
   }
