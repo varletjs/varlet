@@ -1,4 +1,4 @@
-# Vue3-based UI component library
+# Varlet
 
 ### Quickstart
 
