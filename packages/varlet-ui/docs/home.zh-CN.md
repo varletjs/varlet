@@ -18,7 +18,7 @@ Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥
 - 7.支持webstorm，vscode组件属性高亮
 - 8.支持SSR
 
-### PR & Issue 
+### PR & Issue
 使用过程中出现的问题可以到[github](https://github.com/haoziqaq/varlet)来给我们提[issue](https://github.com/haoziqaq/varlet/issues)，
 我们会在第一时间处理问题。也可以给我们提[PR](https://github.com/haoziqaq/varlet/pulls)，十分欢迎小伙伴们来找茬。
 
