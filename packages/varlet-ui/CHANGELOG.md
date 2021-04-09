@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.3](https://github.com/haoziqaq/varlet/compare/v0.11.2...v0.11.3) (2021-04-09)
+
+
+### Bug Fixes
+
+* remove useless code ([7215df0](https://github.com/haoziqaq/varlet/commit/7215df0ab2374f9108f0642ab8211b5b518e564d))
+* remove useless code and import cell component ([090da6f](https://github.com/haoziqaq/varlet/commit/090da6f23b8cb9e8ab31334c617ffcd30a6c9989))
+
+
+
+
+
 ## [0.11.2](https://github.com/haoziqaq/varlet/compare/v0.11.1...v0.11.2) (2021-04-08)
 
 **Note:** Version bump only for package @varlet/ui
