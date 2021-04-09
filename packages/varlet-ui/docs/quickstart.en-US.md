@@ -15,7 +15,7 @@ Here are the most basic ways to access component libraries in common development
 <script src="https://cdn.jsdelivr.net/npm/@varlet/ui/umd/varlet.js"></script>
 <script>
   const app = Vue.createApp({
-    template: '<var-button>按钮</var-button>'
+    template: '<var-button>Button</var-button>'
   })
   app.use(Varlet).mount('#app')
 </script>
