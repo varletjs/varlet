@@ -19,11 +19,10 @@ export default defineComponent({
     [Cell.name]: Cell,
   },
   setup() {
-    const isRefresh = ref(true)
+    const isRefresh = ref(false)
     const data = ref(data1)
 
     const refresh = () => {
-      isRefresh.value = true
       setTimeout(() => {
         data.value = data.value[0] === 'List Item' ? data2 : data1
         isRefresh.value = false

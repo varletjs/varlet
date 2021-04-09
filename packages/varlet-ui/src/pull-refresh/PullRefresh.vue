@@ -85,6 +85,7 @@ export default defineComponent({
       if (distance.value >= MAX_DISTANCE * 0.2) {
         refreshStatus.value = 'loading'
         distance.value = MAX_DISTANCE * 0.3
+        props['onUpdate:modelValue']?.(true)
         props.onRefresh?.()
       } else {
         refreshStatus.value = 'loosing'

@@ -38,4 +38,7 @@ export const props = {
   onRefresh: {
     type: Function,
   },
+  'onUpdate:modelValue': {
+    type: Function,
+  },
 }

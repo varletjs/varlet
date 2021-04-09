@@ -34,11 +34,10 @@ const data2 = Array(10).fill('This is new List Item')
 
 export default {
   setup() {
-    const isRefresh = ref(true)
+    const isRefresh = ref(false)
     const data = ref(data1)
 
     const refresh = () => {
-      isRefresh.value = true
       setTimeout(() => {
         data.value = data.value[0] === 'List Item' ? data2 : data1
         isRefresh.value = false
@@ -62,7 +61,7 @@ export default {
 | ----- | -------------- | -------- | ---------- |
 | `v-model` | 是否处于加载中状态| _boolean_ | - |
 | `disabled` | 是否禁用下拉刷新 | _boolean_ | `false` |
-| `animation-duration` | 动画时长(ms) | _number \| string_ | `300` |
+| `animation-duration` | 加载结束后回到初始位置的动画时长(ms) | _number \| string_ | `300` |
 | `success-duration` | 成功提示展示时长(ms) | _number \| string_ | `2000` |
 | `bgColor` | control的背景颜色 | _string_ | `#005CAF` |
 | `color` | control 的颜色 | _string_ | `#ffffff` |
