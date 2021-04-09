@@ -113,10 +113,6 @@ export default {
 </script>
 
 <style scoped>
-.example {
-  background: antiquewhite;
-}
-
 .var-rate {
   margin-bottom: 10px;
 }
