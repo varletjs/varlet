@@ -39,7 +39,6 @@ export default defineComponent({
     [Icon.name]: Icon,
   },
   props,
-  setup() {},
 })
 </script>
 
