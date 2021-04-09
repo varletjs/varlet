@@ -234,6 +234,20 @@ export default defineComponent({
   border-radius: 4px;
   box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 }
+
+@keyframes scale-animation {
+  0% {
+    transform: scale(0.9);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.9);
+  }
+}
 </style>
 
 <style lang="less">
@@ -255,6 +269,34 @@ iframe {
 }
 
 .varlet {
+  &-introduce {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 52px 4px 20px;
+    padding: 40px;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    border-top: 8px solid #1d92e9;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
+    &__image {
+      width: 200px;
+    }
+
+    &__name {
+      color: @color-primary;
+      font-size: 32px;
+      margin-top: 10px;
+    }
+
+    &__des {
+      color: #888;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  }
+
   &-pc__loading {
     position: absolute;
     top: 0;
@@ -458,9 +500,11 @@ iframe {
 
     &-doc {
       a {
-        margin: 0 1px;
-        color: #1989fa;
+        display: inline-block;
+        margin: 0 4px;
+        color: @color-warning;
         text-decoration: none;
+        animation: scale-animation 1.2s infinite linear;
       }
 
       h1,
@@ -491,7 +535,8 @@ iframe {
         font-size: 18px;
       }
 
-      p {
+      p,
+      ul {
         color: #888;
         font-size: 15px;
         line-height: 26px;
@@ -500,6 +545,7 @@ iframe {
         border-radius: 4px;
         background: #fff;
         box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+        list-style: none;
       }
 
       pre {

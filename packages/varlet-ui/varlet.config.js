@@ -30,6 +30,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': '基本介绍',
+          'en-US': 'Basic Introduce',
+        },
+        doc: 'home',
+        nonComponent: true,
+      },
+      {
+        text: {
           'zh-CN': '快速开始',
           'en-US': 'Quickstart',
         },
