@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.4](https://github.com/haoziqaq/varlet/compare/v0.11.3...v0.11.4) (2021-04-11)
+
+
+### Bug Fixes
+
+* **icon/lib:** 增加base64构建模式 ([ae682cc](https://github.com/haoziqaq/varlet/commit/ae682cc632465642a08fe003ce44b70c9b9e30b6))
+* merge code ([4c4eb24](https://github.com/haoziqaq/varlet/commit/4c4eb249dd00728fe80d10eb5d43c00f3b64aa6d))
+* **pull-refresh:** update modelValue when loading ([b6f892e](https://github.com/haoziqaq/varlet/commit/b6f892e2f9096dcee84bd556e8d0b20aaaaeac84))
+* **rate:** remove useless code ([f1a4900](https://github.com/haoziqaq/varlet/commit/f1a4900e1bcdee096f9b0bb6b45b1b9ed1e3e267))
+* **ui/docs:** 完善基本介绍中文文档 ([e92111d](https://github.com/haoziqaq/varlet/commit/e92111d5d628cecb2da6d3101f06c5a438e7c049))
+
+
+
+
+
 ## [0.11.3](https://github.com/haoziqaq/varlet/compare/v0.11.2...v0.11.3) (2021-04-09)
 
 
