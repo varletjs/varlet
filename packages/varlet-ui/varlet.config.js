@@ -78,6 +78,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'IDE语法高亮',
+          'en-US': 'IDE Code Highlight',
+        },
+        doc: 'highlight',
+        nonComponent: true,
+      },
+      {
+        text: {
           'zh-CN': '基础组件',
           'en-US': 'Basic Components',
         },

@@ -17,6 +17,7 @@ Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥
 - 6.支持国际化
 - 7.支持webstorm，vscode组件属性高亮
 - 8.支持SSR
+- 9.支持Typescript
 
 ### PR & Issue
 使用过程中出现的问题可以到[github](https://github.com/haoziqaq/varlet)来给我们提[issue](https://github.com/haoziqaq/varlet/issues)，
@@ -31,4 +32,4 @@ Material Design，中文名：材料设计语言，是由Google推出的全新�
 ### 为什么选择Material
 在早期的移动端设备中，大色块以及强烈对比色，对显示设备要求很高，同时非线性动画和水波纹对GPU有一定要求。
 导致Material风格并没有在移动端浏览器环境下有很好的体验，更多选择更扁平朴素的风格投入产品。
-`但随着现代设备和新的js框架运行时处理的效率的逐步提升，浏览器有了更多的空闲时间和能力去处理动画效果，Material Design将会给应用带来更好的体验。`
+但随着现代设备和新的js框架运行时处理的效率的逐步提升，浏览器有了更多的空闲时间和能力去处理动画效果，Material Design将会给应用带来更好的体验。
