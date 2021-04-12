@@ -12,8 +12,6 @@ export function typeValidator(type: SnackbarType): boolean {
   return SNACKBAR_TYPE.includes(type)
 }
 
-export const getPositionDefault = () => 'top'
-
 export const props = {
   type: {
     type: String as PropType<SnackbarType>,
@@ -22,7 +20,7 @@ export const props = {
   // snackbar显示的位置
   position: {
     type: String,
-    default: getPositionDefault,
+    default: 'top',
     validator: positionValidator,
   },
   // content内容
@@ -65,6 +63,11 @@ export const props = {
   forbidClick: {
     type: Boolean,
     default: false,
+  },
+  // 是否开启icon切换动画
+  iconTransition: {
+    type: Boolean,
+    default: true,
   },
   // 打开时的回调函数
   onOpen: {

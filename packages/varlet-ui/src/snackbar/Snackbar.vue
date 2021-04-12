@@ -15,14 +15,14 @@
 
 <script>
 import { defineComponent } from 'vue'
-import SnackbarCore from './core'
+import VarSnackbarCore from './core'
 import { useTeleport } from '../utils/components'
 import { props } from './props'
 
 export default defineComponent({
   name: 'VarSnackbar',
   components: {
-    [SnackbarCore.name]: SnackbarCore,
+    VarSnackbarCore,
   },
   props,
   setup() {

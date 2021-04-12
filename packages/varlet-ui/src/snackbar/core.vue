@@ -1,16 +1,16 @@
 <template>
-	<div class="var-snackbar" :style="{ pointerEvents: forbidClick ? 'auto' : 'none' }" v-show="show">
-		<div :class="snackbarClass" :style="snackbarStyle">
-			<div :class="`var-snackbar__content${contentClass ? ` ${contentClass}` : ''}`">
-				<slot>{{ content }}</slot>
-			</div>
-			<div class="var-snackbar__action">
-				<var-icon v-if="iconName" :transition="hasMounted ? 200 : 0" :name="iconName" />
-				<var-loading v-if="type === 'loading'" :type="loadingType" :size="loadingSize" />
-				<slot name="action" />
-			</div>
-		</div>
-	</div>
+  <div class="var-snackbar" :style="{ pointerEvents: forbidClick ? 'auto' : 'none' }" v-show="show">
+    <div :class="snackbarClass" :style="{ zIndex }">
+      <div class="var-snackbar__content" :class="[contentClass]">
+        <slot>{{ content }}</slot>
+      </div>
+      <div class="var-snackbar__action">
+        <var-icon v-if="iconName" :transition="hasMounted && iconTransition ? 200 : 0" :name="iconName" />
+        <var-loading v-if="type === 'loading'" :type="loadingType" :size="loadingSize" />
+        <slot name="action" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -21,7 +21,15 @@ import Icon from '../icon'
 import { useZIndex } from '../context/zIndex'
 import { props } from './props'
 import { useLock } from '../context/lock'
-import { SNACKBAR_TYPE } from './index'
+import { SNACKBAR_TYPE, SnackbarType } from './index'
+
+const ICON_TYPE_DICT = {
+  success: 'checkbox-marked-circle',
+  warning: 'warning',
+  info: 'information',
+  error: 'error',
+  loading: '',
+}
 
 export default defineComponent({
   name: 'VarSnackbarCore',
@@ -35,33 +43,20 @@ export default defineComponent({
     const timer: Ref = ref(null)
     const hasMounted: Ref<boolean> = ref(false)
     const { zIndex } = useZIndex(() => props.show, 1)
+
     useLock(props, 'show', 'lockScroll')
 
-    const snackbarStyle = reactive({
-      zIndex,
-    })
     const snackbarClass = computed(() => {
       const { position, vertical, type } = props
+
       const baseClass = `var-snackbar__wrapper var-snackbar__wrapper-${position} var-elevation--4`
       const verticalClass = vertical ? ' var-snackbar__vertical' : ''
       const typeClass = type && SNACKBAR_TYPE.includes(type) ? ` var-snackbar__wrapper-${type}` : ''
+
       return `${baseClass}${verticalClass}${typeClass}`
     })
 
-    const iconName = computed(() => {
-      switch (props.type) {
-      case 'success':
-        return 'checkbox-marked-circle'
-      case 'warning':
-        return 'warning'
-      case 'info':
-        return 'information'
-      case 'error':
-        return 'error'
-      default:
-        return ''
-      }
-    })
+    const iconName = computed(() => ICON_TYPE_DICT[props.type as SnackbarType] || '')
 
     watch(
       () => props.show,
@@ -91,7 +86,7 @@ export default defineComponent({
 
     onMounted(() => {
       if (props.show) {
-        props.onOpen && props.onOpen()
+        props.onOpen?.()
         timer.value = setTimeout(() => {
           props['onUpdate:show']?.(false)
         }, props.duration)
@@ -99,7 +94,7 @@ export default defineComponent({
     })
 
     return {
-      snackbarStyle,
+      zIndex,
       snackbarClass,
       iconName,
       hasMounted,
@@ -109,5 +104,5 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import './core';
+@import './snackbar';
 </style>

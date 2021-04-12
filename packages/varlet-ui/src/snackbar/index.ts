@@ -2,11 +2,14 @@ import { h, reactive, TransitionGroup, App, RendererElement } from 'vue'
 import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
 import { mountInstance } from '../utils/components'
-import { isPlainObject } from '../utils/shared'
+import { isPlainObject, toNumber } from '../utils/shared'
+import context from '../context'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
-type SnackbarHandel = {
+export const SNACKBAR_TYPE: Array<SnackbarType> = ['loading', 'success', 'warning', 'info', 'error']
+
+interface SnackbarHandel {
   clear: () => void
 }
 
@@ -33,6 +36,7 @@ interface UniqSnackbarOptions {
   id: number
   reactiveSnackOptions: SnackbarOptions
   _update?: string
+  animationEnd?: boolean
 }
 
 interface Snackbar {
@@ -55,12 +59,14 @@ interface Snackbar {
   clear(): void
 
   isAllowMultiple: boolean
-  isMount: boolean | undefined
-  uniqSnackbarOptions: UniqSnackbarOptions[]
+
   Component: RendererElement
 }
 
-export const SNACKBAR_TYPE: Array<SnackbarType> = ['loading', 'success', 'warning', 'info', 'error']
+let sid = 0
+let isMount = false
+let unmount: () => void
+let uniqSnackbarOptions: Array<UniqSnackbarOptions> = reactive<UniqSnackbarOptions[]>([])
 
 const transitionGroupProps: any = {
   name: 'var-snackbar-fade',
@@ -73,35 +79,43 @@ const transitionGroupProps: any = {
 const TransitionGroupHost = {
   setup() {
     return () => {
-      const snackbarList = Snackbar.uniqSnackbarOptions.map(
-        ({ id, reactiveSnackOptions, _update }: UniqSnackbarOptions) => {
-          if (reactiveSnackOptions.forbidClick) {
-            const transitionGroupEl = document.querySelector('.var-transition-group')
-            ;(transitionGroupEl as HTMLElement).classList.add('var-pointer-auto')
-          }
-          if (Snackbar.isAllowMultiple) reactiveSnackOptions.position = 'top'
-          return h(VarSnackbarCore, {
-            ...reactiveSnackOptions,
-            ...{
-              key: id,
-              'data-id': id,
-              style: {
-                position: 'relative',
-                top: getTop(reactiveSnackOptions.position),
-              },
-              _update,
-              'onUpdate:show': (value: boolean) => {
-                reactiveSnackOptions.show = value
-              },
-            },
-          })
+      const getOption = ({ id, reactiveSnackOptions, _update }: UniqSnackbarOptions) => ({
+        ...reactiveSnackOptions,
+        ...{
+          key: id,
+          'data-id': id,
+          style: {
+            position: 'relative',
+            top: getTop(reactiveSnackOptions.position),
+          },
+          _update,
+          'onUpdate:show': (value: boolean) => {
+            reactiveSnackOptions.show = value
+          },
+        },
+      })
+
+      const snackbarList = uniqSnackbarOptions.map((option: UniqSnackbarOptions) => {
+        if (option.reactiveSnackOptions.forbidClick) {
+          const transitionGroupEl = document.querySelector('.var-transition-group')
+          ;(transitionGroupEl as HTMLElement).classList.add('var-pointer-auto')
         }
-      )
+
+        if (Snackbar.isAllowMultiple) option.reactiveSnackOptions.position = 'top'
+
+        return h(VarSnackbarCore, getOption(option))
+      })
 
       return h(
         TransitionGroup,
         {
           ...transitionGroupProps,
+          ...{
+            style: {
+              zIndex: context.zIndex,
+            },
+          },
+          onAfterEnter: opened,
           onAfterLeave: removeUniqOption,
         },
         // remove [Vue warn]: Non-function value encountered for default slot. Prefer function slots for better performance
@@ -116,30 +130,31 @@ const Snackbar: Snackbar = <Snackbar>function (options: SnackbarOptions | string
   const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>(snackOptions)
   reactiveSnackOptions.show = true
 
-  if (!Snackbar.isMount) {
-    Snackbar.isMount = true
-    mountInstance(TransitionGroupHost)
+  if (!isMount) {
+    isMount = true
+    unmount = mountInstance(TransitionGroupHost).unmountInstance
   }
 
-  const id = Date.now()
-  const { length } = Snackbar.uniqSnackbarOptions
+  const { length } = uniqSnackbarOptions
   const uniqSnackbarOptionItem: UniqSnackbarOptions = {
-    id,
+    id: sid++,
     reactiveSnackOptions,
   }
 
   if (length === 0 || Snackbar.isAllowMultiple) {
     addUniqOption(uniqSnackbarOptionItem)
   } else {
-    const _update = `update-${id}`
+    const _update = `update-${sid}`
     updateUniqOption(reactiveSnackOptions, _update)
   }
 
   return {
     clear() {
-      if (!Snackbar.isAllowMultiple && Snackbar.uniqSnackbarOptions.length)
-        Snackbar.uniqSnackbarOptions[0].reactiveSnackOptions.show = false
-      else reactiveSnackOptions.show = false
+      if (!Snackbar.isAllowMultiple && uniqSnackbarOptions.length) {
+        uniqSnackbarOptions[0].reactiveSnackOptions.show = false
+      } else {
+        reactiveSnackOptions.show = false
+      }
     },
   }
 }
@@ -164,50 +179,69 @@ Snackbar.install = function (app: App) {
 
 Snackbar.allowMultiple = function (bool = false) {
   if (bool !== Snackbar.isAllowMultiple) {
-    for (let i = 0; i < Snackbar.uniqSnackbarOptions.length; i++) {
-      Snackbar.uniqSnackbarOptions[i].reactiveSnackOptions.show = false
-    }
+    uniqSnackbarOptions.forEach((option: UniqSnackbarOptions) => {
+      option.reactiveSnackOptions.show = false
+    })
+
     this.isAllowMultiple = bool
   }
 }
 
 Snackbar.clear = function () {
-  Snackbar.uniqSnackbarOptions.forEach((snackbar: UniqSnackbarOptions) => {
-    snackbar.reactiveSnackOptions.show = false
+  uniqSnackbarOptions.forEach((option: UniqSnackbarOptions) => {
+    option.reactiveSnackOptions.show = false
   })
 }
 
 Snackbar.isAllowMultiple = false
 
-Snackbar.isMount = false
-
-Snackbar.uniqSnackbarOptions = reactive<UniqSnackbarOptions[]>([])
-
 Snackbar.Component = VarSnackbar
+
+function opened(element: HTMLElement): void {
+  const id = element.getAttribute('data-id')
+  const option = uniqSnackbarOptions.find((option) => option.id === toNumber(id))
+  if (option) option.reactiveSnackOptions.onOpened?.()
+}
 
 function removeUniqOption(element: HTMLElement): void {
   element.parentElement && element.parentElement.classList.remove('var-pointer-auto')
   const id = element.getAttribute('data-id')
-  for (let i = 0; i < Snackbar.uniqSnackbarOptions.length; i++) {
-    if (Snackbar.uniqSnackbarOptions[i].id === +(id as string)) Snackbar.uniqSnackbarOptions.splice(i, 1)
+
+  const option = uniqSnackbarOptions.find((option) => option.id === toNumber(id))
+  if (option) {
+    option.animationEnd = true
+    option.reactiveSnackOptions.onClosed?.()
+  }
+
+  const isAllAnimationEnd = uniqSnackbarOptions.every((option) => option.animationEnd)
+
+  if (isAllAnimationEnd) {
+    unmount?.()
+    uniqSnackbarOptions = reactive<UniqSnackbarOptions[]>([])
+    isMount = false
   }
 }
 
 function addUniqOption(uniqSnackbarOptionItem: UniqSnackbarOptions) {
-  Snackbar.uniqSnackbarOptions.push(uniqSnackbarOptionItem)
+  uniqSnackbarOptions.push(uniqSnackbarOptionItem)
 }
 
 function updateUniqOption(reactiveSnackOptions: SnackbarOptions, _update: string) {
-  Snackbar.uniqSnackbarOptions[0].reactiveSnackOptions = {
-    ...Snackbar.uniqSnackbarOptions[0].reactiveSnackOptions,
+  const [firstOption] = uniqSnackbarOptions
+
+  firstOption.reactiveSnackOptions = {
+    ...firstOption.reactiveSnackOptions,
     ...reactiveSnackOptions,
   }
-  Snackbar.uniqSnackbarOptions[0]._update = _update
+
+  firstOption._update = _update
 }
 
 function getTop(position = 'top'): string {
   if (position === 'center') return '45%'
+
   if (position === 'bottom') return '85%'
+
   return '5%'
 }
 
