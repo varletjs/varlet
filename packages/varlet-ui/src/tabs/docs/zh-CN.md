@@ -2,7 +2,7 @@
 
 ### 介绍
 
-使用`Tabs`, `Tab`实现选项卡组的切换。使用`TabsItems`, `TabItem`实现和选项卡组的视图联动。
+使用`Tabs`、`Tab`实现选项卡组的切换。使用`TabsItems`、`TabItem`实现和选项卡组的视图联动。
 
 ### 引入
 
@@ -33,7 +33,7 @@ export default {
     const active = ref(0)
 
     return { active }
-  },
+  }
 }
 ```
 
@@ -56,7 +56,7 @@ export default {
     const active = ref('选项1')
 
     return { active }
-  },
+  }
 }
 ```
 

@@ -49,7 +49,7 @@
           </span>
         </var-cell>
       </div>
-      <div class="varlet-site-code">
+      <div class="varlet-site-code" :ref="code">
         <router-view />
       </div>
       <div class="varlet-site-mobile">
@@ -114,6 +114,7 @@ export default defineComponent({
     const currentMenuName: Ref<string> = ref('')
     const isHideVersion: Ref<boolean> = ref(true)
     let refs: HTMLElement = ref(null)
+    let codeRefs: HTMLElement = ref(null)
     const route = useRoute()
     const { pc = {}, title: configTitle } = config
     const { header: configHeader = { i18nButton: {}, logo: '', search: {} }, menu: configMenu = [] } = pc
@@ -129,6 +130,10 @@ export default defineComponent({
 
     const nav = (element: HTMLElement) => {
       refs = element
+    }
+
+    const code = (element: HTMLElement) => {
+      codeRefs = element
     }
 
     const judgmentType = (type) => {
@@ -164,10 +169,12 @@ export default defineComponent({
     title.value = configTitle
 
     const changeRoute = (item) => {
-      if (item.isTitle) {
+      let [, , componentValue] = window.location.hash.split('/')
+      if (item.isTitle || componentValue === item.doc) {
         return false
       }
 
+      codeRefs.scrollTop = 0
       isBack.value = false
       componentName.value = item.nonComponent ? 'home' : item.doc
       path.value = item.nonComponent ? item.doc : null
@@ -220,6 +227,7 @@ export default defineComponent({
       isLoading,
       path,
       nav,
+      code,
       changeRoute,
       changeLanguage,
     }
@@ -348,12 +356,12 @@ iframe {
     }
 
     &-empty {
-      height: 33px;
+      height: 34px;
       width: calc(100% - 40px);
       margin-left: 20px;
       background-color: @color-primary;
       position: absolute;
-      top: 26px;
+      top: 25px;
       z-index: -1;
     }
 

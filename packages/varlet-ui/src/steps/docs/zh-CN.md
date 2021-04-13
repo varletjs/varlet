@@ -135,7 +135,7 @@ export default {
 
 ### 垂直模式
 
-使用 `direction` 属性改变步骤条的显示方向。
+通过 `direction` 属性改变步骤条的显示方向。
 
 ```html
 <var-steps direction="vertical" :active="5">
@@ -166,7 +166,7 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `active` | 当前步骤 | _number_ \| _string_ | `0` |
+| `active` | 当前步骤 | _string \| number_ | `0` |
 | `direction` | 显示方向，可选值为 `vertical` | _string_ | `horizontal` |
 | `active-color` | 激活状态颜色 | _string_ | `#2979ff` |
 | `inactive-color` | 未激活状态颜色 | _string_ | `#9e9e9e` |
@@ -176,8 +176,8 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
 | `active-icon` | 激活状态图标  | _string_ | `check` |
-| `current-icon` | 当前步骤时的图标 | _string_ | - |
-| `inactive-icon` | 未激活状态图标 | _string_ | - |
+| `current-icon` | 当前步骤时的图标 | _string_ | `-` |
+| `inactive-icon` | 未激活状态图标 | _string_ | `-` |
 
 ### 事件
 
@@ -193,7 +193,7 @@ export default {
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
-| `default` | step的内容 | - |
+| `default` | step的内容 | `-` |
 
 ### 主题变量
 #### 以下less变量可通过构建时进行变量覆盖从而修改主题样式

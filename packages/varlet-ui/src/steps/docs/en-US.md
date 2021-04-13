@@ -135,7 +135,7 @@ export default {
 
 ### Vertical Mode
 
-Use `direction` prop to change mode of steps.
+Change the display direction of the step bar through the `direction` attribute.
 
 ```html
 <var-steps direction="vertical" :active="5">
@@ -166,7 +166,7 @@ Use `direction` prop to change mode of steps.
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `active` | Active step | _number_ \| _string_ | `0` |
+| `active` | Active step | _string \| number_ | `0` |
 | `direction` | Mode of steps, Can be set to `vertical` | _string_ | `horizontal` |
 | `active-color` | Active step color | _string_ | `#2979ff` |
 | `inactive-color` | Inactive step color | _string_ | `#9e9e9e` |
@@ -176,8 +176,8 @@ Use `direction` prop to change mode of steps.
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `active-icon` | Active icon name  | _string_ | `check` |
-| `current-icon` | Icon name of current ste	 | _string_ | - |
-| `inactive-icon` | Inactive icon name	 | _string_ | - |
+| `current-icon` | Icon name of current ste	 | _string_ | `-`|
+| `inactive-icon` | Inactive icon name	 | _string_ | `-`|
 
 ### Events
 
@@ -193,7 +193,7 @@ Use `direction` prop to change mode of steps.
 
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
-| `default` | Content of step | - |
+| `default` | Content of step | `-`|
 
 ### Theme Variables
 #### The following LESS variables can be overridden at build time to modify the theme style

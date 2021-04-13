@@ -59,7 +59,7 @@ createApp().use(Chip)
 
 ### 可关闭纸片
 
-通过`closable`属性设置为可关闭纸片，使用`close-name`属性自定义可关闭纸片的图标样式（在使用了`closeable`的情况下使用）
+通过`closable`属性将纸片设置为可关闭纸片，使用`close-name`属性设置纸片的关闭图标样式（必须在`closeable`为`true`的条件下才能使用）
 
 ```html
 <var-chip closable v-if="show" @close="show = false">可关闭纸片</var-chip>
@@ -131,8 +131,8 @@ export default {
 
 |参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ---- |
-| `type` | 类型, 可选值为 `default`, `primary`, `info`, `success`, `warning`, `danger` | _string_ | `default` |
-| `size` | 尺寸, 可选值为 `normal`, `mini`, `small`, `large` | _string_ | `normal` |
+| `type` | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `size` | 尺寸， 可选值为 `normal` `mini` `small` `large` | _string_ | `normal` |
 | `plain` | 是否为空心样式 | _boolean_ | `false` |
 | `round` | 是否为圆角样式 | _boolean_ | `true` |
 | `block` | 是否为块级样式 | _boolean_ | `false` |

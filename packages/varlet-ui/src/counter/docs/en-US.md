@@ -17,7 +17,7 @@ export default {
     const value = ref(0)
 
     return { value }
-  },
+  }
 }
 ```
 

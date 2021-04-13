@@ -85,7 +85,7 @@ export default {
 
 ### 单选框组
 
-在单选框组中, 需要给`radio`设置`checked-value`用来标识，
+在单选框组中，需要给`radio`设置`checked-value`用来标识，
 单选框组会绑定选择的标识。
 
 ```html

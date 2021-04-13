@@ -93,7 +93,7 @@ using the `<var-row/>` `justify` and `align` properties to set the alignment of 
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| `gutter` | Col gutter(px, rem) | _number \| string_ | `0` |
+| `gutter` | Col gutter(px, rem) | _string \| number_ | `0` |
 | `justify` | Spindle alignment, optional value is `flex-start` `flex-end` `center` `space-between` `space-around` | _string_ | `flex-start` |
 | `align` | Cross axis alignment, optional value is `flex-start` `flex-end` `center` | _string_ | `flex-start` |
 
@@ -101,8 +101,8 @@ using the `<var-row/>` `justify` and `align` properties to set the alignment of 
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| `span` | Number of grids occupied by columns | _number \| string_ | `24` |
-| `offset` | Number of grids for column offsets | _number \| string_ | `0` |
+| `span` | Number of grids occupied by columns | _string \| number_ | `24` |
+| `offset` | Number of grids for column offsets | _string \| number_ | `0` |
 
 ### Events
 

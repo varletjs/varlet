@@ -29,7 +29,7 @@ export default {
       group: [],
       score:0,
       like: [],
-      files: [],
+      files: []
     })
 
     const form = ref(null)
@@ -40,9 +40,9 @@ export default {
       form,
       formData,
       disabled,
-      readonly,
+      readonly
     }
-  },
+  }
 }
 ```
 

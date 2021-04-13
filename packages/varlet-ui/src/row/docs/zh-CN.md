@@ -2,7 +2,7 @@
 
 ### 介绍
 
-组件库提供了`<var-row/>`和`<var-col/>`两个辅助布局的组件,使您更有效率的进行布局。
+组件库提供了`<var-row/>`和`<var-col/>`两个辅助布局的组件，使您更有效率的进行布局。
 
 ### 引入
 
@@ -15,7 +15,7 @@ createApp().use(Row).use(Col)
 
 ### 栅格系统
 
-`<var-row/>`组件把一行平均划分为24列栅格(24份),`<var-col/>`提供`span`属性设置这一列所占的份数，`offset`属性设置这一列偏移的份数。
+`<var-row/>`组件把一行平均划分为24列栅格(24份)，`<var-col/>`提供`span`属性设置这一列所占的份数，`offset`属性设置这一列偏移的份数。
 
 ```html
 <var-row>
@@ -87,15 +87,15 @@ createApp().use(Row).use(Col)
 
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
-| `gutter` | 列间距(px, rem) | _number \| string_ | `0` |
+| `gutter` | 列间距(px, rem) | _string \| number_ | `0` |
 | `justify` | 主轴对齐方式, 可选值为 `flex-start` `flex-end` `center` `space-between` `space-around` | _string_ | `flex-start` |
 | `align` | 交叉轴对齐方式, 可选值为 `flex-start` `flex-end` `center` | _string_ | `flex-start` |
 
 ### Col Props
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
-| `span` | 列占据的栅格数 | _number \| string_ | `24` |
-| `offset` | 列偏移的栅格数 | _number \| string_ | `0` |
+| `span` | 列占据的栅格数 | _string \| number_ | `24` |
+| `offset` | 列偏移的栅格数 | _string \| number_ | `0` |
 
 ### 事件
 

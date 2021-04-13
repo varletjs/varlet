@@ -228,7 +228,7 @@ export default {
 | --- | --- | --- | --- | 
 | `title` | Dialog title | _string_ | `Hint` |
 | `message` | Dialog message content | _string_ | `-` |
-| `messageAlign` | Dialog message content text alignment, optional values `center`, `left`, `right` | _string_ | `left` |
+| `messageAlign` | Dialog message content text alignment, optional values `center` `left` `right` | _string_ | `left` |
 | `confirmButton` | Whether to display the confirm button | _boolean_ | `true` |
 | `cancelButton` | Whether to display the cancel button | _boolean_ | `true` |
 | `confirmButtonText` | Confirm button text | _string_ | `确认` |

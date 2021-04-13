@@ -2,7 +2,7 @@
 
 ### 介绍
 弹出一个对话框展示内容并处理用户交互。
-`Dialog`提供了函数式和组件式两种使用方式, 两种使用效果和参数并没有本质区别。
+`Dialog`提供了函数式和组件式两种使用方式，两种使用效果和参数并没有本质区别。
 
 ### 引入
 
@@ -42,7 +42,7 @@ Dialog({
 #### 处理用户行为
 
 可以通过`Dialog`方法的返回值获取用户行为, 返回值是一个`promise`。
-包含`confirm(确认)`, `cancel(取消)`, `close(通过点击遮罩层触发关闭)`三种状态。
+包含`confirm(确认)`、`cancel(取消)`、`close(通过点击遮罩层触发关闭)`三种状态。
 
 ```js
 import { Snackbar } from '@varlet/ui'
@@ -58,7 +58,7 @@ actions[await Dialog('兰亭临帖 行书如行云流水')]()
 
 ### 异步关闭
 
-`Dialog`可以通过`onBeforeClose`进行关闭前的拦截, 可以从参数中得到用户行为和触发关闭的回调函数。
+`Dialog`可以通过`onBeforeClose`进行关闭前的拦截，可以从参数中得到用户行为和触发关闭的回调函数。
 
 ```js
 import { Snackbar } from '@varlet/ui'
@@ -192,7 +192,7 @@ export default {
 | `v-model:show` | 是否显示对话框 | _boolean_ | `false` |
 | `title` | 对话框标题 | _string_ | `提示` |
 | `message` | 对话框内容 | _string_ | `-` |
-| `message-align` | 对话框内容文字对齐方式, 可选值 `center`, `left`, `right` | _string_ | `left` |
+| `message-align` | 对话框内容文字对齐方式，可选值 `center`, `left`, `right` | _string_ | `left` |
 | `confirm-button` | 是否显示确认按钮 | _boolean_ | `true` |
 | `cancel-button` | 是否显示取消按钮 | _boolean_ | `true` |
 | `confirm-button-text` | 确认按钮文字 | _string_ | `确认` |
@@ -204,7 +204,7 @@ export default {
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
 | `overlay-class` | 自定义遮罩层的class | _string_ | `-` |
 | `overlay-style` | 自定义遮罩层的style | _string_ | `-` |
-| `lock-scroll` | 是否禁止滚动穿透, 禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
+| `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` | 
 | `teleport` | 弹出层挂载的位置 | _string_ | `body` |
 
@@ -214,7 +214,7 @@ export default {
 | --- | --- | --- |
 | `open` | 打开对话框时触发 | `-` |
 | `opened` | 打开对话框动画结束时触发 | `-` |
-| `before-close` | 对话框关闭前触发 会阻止关闭 | `action: confirm \| cancel \| close, done: Function` |
+| `before-close` | 对话框关闭前触发，会阻止关闭 | `action: confirm \| cancel \| close, done: Function` |
 | `close` | 关闭对话框时触发 | `-` |
 | `closed` | 关闭对话框动画结束时触发 | `-` |
 | `confirm` | 确认时触发 | `-` |
@@ -227,7 +227,7 @@ export default {
 | --- | --- | --- | --- | 
 | `title` | 对话框标题 | _string_ | `提示` |
 | `message` | 对话框内容 | _string_ | `-` |
-| `messageAlign` | 对话框内容文字对齐方式, 可选值 `center`, `left`, `right` | _string_ | `left` |
+| `messageAlign` | 对话框内容文字对齐方式，可选值 `center` `left` `right` | _string_ | `left` |
 | `confirmButton` | 是否显示确认按钮 | _boolean_ | `true` |
 | `cancelButton` | 是否显示取消按钮 | _boolean_ | `true` |
 | `confirmButtonText` | 确认按钮文字 | _string_ | `确认` |
@@ -239,11 +239,11 @@ export default {
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
 | `overlayClass` | 自定义遮罩层的class | _string_ | `-` |
 | `overlayStyle` | 自定义遮罩层的style | _string_ | `-` |
-| `lockScroll` | 是否禁止滚动穿透, 禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
+| `lockScroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
 | `closeOnClickOverlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
 | `onOpen` | 对话框开启回调 | _() => void_ | `-` |
 | `onOpened` | 对话框开启动画结束回调 | _() => void_ | `-` |
-| `onBeforeClose` | 对话框关闭前回调 会阻止关闭 | _(action: confirm \| cancel \| close, done: Function) => void_ | `-` |
+| `onBeforeClose` | 对话框关闭前回调，会阻止关闭 | _(action: confirm \| cancel \| close, done: Function) => void_ | `-` |
 | `onClose` | 对话框关闭回调 | _() => void_ | `-` |
 | `onClosed` | 对话框关闭动画结束回调 | _() => void_ | `-` |
 | `onConfirm` | 确认回调 | _() => void_ | `-` |

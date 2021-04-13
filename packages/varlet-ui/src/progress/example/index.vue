@@ -1,5 +1,6 @@
 <template>
   <div class="progress-demo">
+    <div class="space"></div>
     <h4>{{ pack.linear }}</h4>
     <div class="progress-demo__basic">
       <app-type>{{ pack.basicUsage }}</app-type>
@@ -124,6 +125,10 @@ export default defineComponent({
 .progress-demo {
   h4 {
     margin: 0;
+  }
+
+  .space {
+    height: 10px;
   }
 
   .progress-demo__basic,

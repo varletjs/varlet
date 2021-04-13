@@ -1,7 +1,7 @@
 # 骨架屏
 
 ### 介绍
-显示一些带过渡效果的占位元素，优化您的加载过程。
+显示一些带过渡效果的占位元素，优化加载过程。
 
 ### 引入
 
@@ -24,7 +24,7 @@ export default {
     const loading = ref(true)
 
     return { loading }
-  },
+  }
 }
 ```
 
@@ -40,7 +40,7 @@ export default {
     const loading = ref(true)
 
     return { loading }
-  },
+  }
 }
 ```
 
@@ -63,7 +63,7 @@ export default {
     const loading = ref(true)
 
     return { loading }
-  },
+  }
 }
 ```
 
@@ -86,7 +86,7 @@ export default {
     const loading = ref(true)
 
     return { loading }
-  },
+  }
 }
 ```
 
@@ -110,7 +110,7 @@ export default {
     const loading = ref(true)
 
     return { loading }
-  },
+  }
 }
 ```
 
@@ -129,7 +129,7 @@ export default {
     const loading = ref(true)
 
     return { loading }
-  },
+  }
 }
 ```
 
@@ -139,16 +139,16 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
-| `loading` | 加载状态 设置为 `true` 开启骨架屏 | _boolean_ | `true` |
-| `title` | 是否显示标题 | _boolean_ | `true` |
-| `card` | 是否显示卡片 | _boolean_ | `true` |
-| `avatar` | 是否显示头像 | _boolean_ | `true` |
-| `fullscreen` | 是否开启全屏模式 | _boolean_ | `true` |
-| `title-width` | 标题宽度(px, rem, %) | _number \| string_ | `50%` |
-| `card-height` | 卡片高度(px, rem, %) | _number \| string_ | `160px` |
-| `avatar-size` | 头像尺寸(px, rem, %) | _number \| string_ | `34px` |
-| `rows` | 段落行数 | _number \| string_ | `3` |
-| `rows-width` | 段落每一行的宽度 | _(number \| string)[]_ | `['12px', '12px', '12px']` |
+| `loading` | 加载状态，设置为 `true` 开启骨架屏 | _boolean_ | `true` |
+| `title` | 是否显示标题 | _boolean_ | `false` |
+| `card` | 是否显示卡片 | _boolean_ | `false` |
+| `avatar` | 是否显示头像 | _boolean_ | `false` |
+| `fullscreen` | 是否开启全屏模式 | _boolean_ | `false` |
+| `title-width` | 标题宽度(px, rem, %) | _string \| number_ | `50%` |
+| `card-height` | 卡片高度(px, rem, %) | _string \| number_ | `160px` |
+| `avatar-size` | 头像尺寸(px, rem, %) | _string \| number_ | `34px` |
+| `rows` | 段落行数 | _string \| number_ | `3` |
+| `rows-width` | 段落每一行的宽度 | _number[] \| string[]_ | `['12px', '12px', '12px']` |
 
 ### 插槽
 

@@ -16,7 +16,7 @@ createApp().use(Progress)
 
 ### Basic Usage
 
-Use `value` to set completion value.
+Set the current progress through the `value` attribute
 
 ```html
 <var-progress :value="20" />
@@ -25,7 +25,7 @@ Use `value` to set completion value.
 
 ### Style
 
-Use `line-width` to set width of Progress bar. Use `color` to set color of Progress. Use `track-color` to set color of Progress-Track. Use `ripple` to set loading style.
+Set the line width, progress bar color, track color and ripple loading effect through the attributes of `line-width`, `color`, `track-color` and `ripple`
 
 ```html
 <var-progress :value="30" line-width="8" />
@@ -40,7 +40,7 @@ Use `line-width` to set width of Progress bar. Use `color` to set color of Progr
 
 ### Action
 
-Use `show-action` to show `action`. The default value for `action` is the percentage of current progress, and you can use slot to insert custom content.
+The action is displayed through the `show-action` attribute. The action is the percentage of progress by default. You can use the slot to insert custom content
 
 ```html
 <var-progress :value="30" show-action />
@@ -50,7 +50,7 @@ Use `show-action` to show `action`. The default value for `action` is the percen
 
 ### Custom style
 
-Use the `style` to customize the style.
+Customize styles through the `style` attribute
 
 ```html
 <var-progress :value="30" line-width="10" style="border-radius: 4px" />
@@ -61,7 +61,7 @@ Use the `style` to customize the style.
 
 ### Size
 
-Use `size` to change size of Progress.
+Change the size of the progress bar through the `size` attribute
 
 ```html
 <var-progress :value="30" line-width="3" mode="circle" />
@@ -81,8 +81,6 @@ Use `size` to change size of Progress.
 
 ### Style
 
-Use `line-width` to set width of Progress bar. Use `color` to set color of Progress. Use `track-color` to set color of Progress-Track. Use `ripple` to set loading style.
-
 ```html
 <var-progress :value="30" line-width="8" />
 <var-progress 
@@ -95,8 +93,6 @@ Use `line-width` to set width of Progress bar. Use `color` to set color of Progr
 ```
 
 ### Action
-
-Use `show-action` to show `action`. The default value for `action` is the percentage of current progress, and you can use slot to insert custom content.
 
 ```html
 <var-progress 
@@ -126,7 +122,7 @@ Use `show-action` to show `action`. The default value for `action` is the percen
 
 ### Origin
 
-Use `rotate` to change origin.
+Set the origin of the ring progress bar through the `rotate` attribute
 
 ```html
 <var-progress 
@@ -153,7 +149,7 @@ Use `rotate` to change origin.
 
 ### Hide Progress-Track
 
-Use `show-track` to hide Progress-Track.
+Hide tracks by using the `show-track` attribute
 
 ```html
 <var-progress 
@@ -188,13 +184,13 @@ Use `show-track` to hide Progress-Track.
 | prop | Description      | Type     | Default  |
 | --------- | ---------------- | -------- | -------- |
 | `mode` | mode of Progress | _string_ | `linear` |
-| `value` | completion value   | _number \| string_ |  `0`  |
-| `line-width` | width of the progress bar  | _number \| string_ | `4` |
+| `value` | completion value   | _string \| number_ |  `0`  |
+| `line-width` | width of the progress bar  | _string \| number_ | `4` |
 | `color` | color of the progress bar  | _string_  | `#005CAF` |
 | `track-color`  | color of the progress track | _string_   | `#d8d8d8` |
 | `show-action` | Whether the action is visible or not | _boolean_ | `false` |
 | `ripple`(only supports linear progress) | loading style for progress | _boolean_ | `false` |
-| `size`(only supports circle progress) | size of progress | _number \| string_ | `40` |
+| `size`(only supports circle progress) | size of progress | _string \| number_ | `40` |
 | `rotate`(only supports circle progress) | origin of progress | _number_ | `0` |
 | `show-track`(only supports circle progress) | Whether the progress track is visible or not | _boolean_ | `true` |
 
@@ -202,7 +198,7 @@ Use `show-track` to hide Progress-Track.
 
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
-| `default` | Custom action | - |
+| `default` | Custom action | `-` |
 
 ### Theme Variables
 #### The following LESS variables can be overridden at build time to modify the theme style

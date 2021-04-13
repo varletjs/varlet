@@ -97,7 +97,7 @@ Use `ref` to get countdown instance, you can call the `start`, `pause`, and `res
       return {
         countdown,
         end,
-        change,
+        change
       }
     }
   }
@@ -117,7 +117,7 @@ Use `ref` to get countdown instance, you can call the `start`, `pause`, and `res
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `time` | Total time(ms)| _number \| string_ | `0` |
+| `time` | Total time(ms)| _string \| number_ | `0` |
 | `format` | Time format | _string_ | `HH:mm:ss` |
 | `auto-start` | Whether to auto start count down | _boolean_ | `true` |
 
@@ -136,7 +136,7 @@ Use `ref` to get countdown instance, you can call the `start`, `pause`, and `res
 
 | Event | Description | arguments |
 | ----- | -------------- | -------- |
-| `end` | Emitted after countdown ended | - |
+| `end` | Emitted after countdown ended | `-` |
 | `change` | Emitted after countdown changed | `timeData: TimeData` |
 
 ### Slots
@@ -161,6 +161,6 @@ Use ref to get CountDown instance and call instance methods.
 
 | Name | Description	 | arguments |
 | ---- | ------- | -------- |
-| `start` | Start countdown	 | - |
-| `pause` | Pause countdown	 | - |
-| `reset` | Reset countdown | - |
+| `start` | Start countdown	 | `-` |
+| `pause` | Pause countdown	 | `-` |
+| `reset` | Reset countdown | `-` |

@@ -79,7 +79,7 @@ export default {
       name,
       toggle
     }
-  },
+  }
 }
 ```
 

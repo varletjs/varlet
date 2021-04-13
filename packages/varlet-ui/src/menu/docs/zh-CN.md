@@ -1,7 +1,7 @@
-# 按钮
+# 菜单
 
 ### 介绍
-使元素点击时显示一个菜单,通过控制菜单的对齐方式和偏移量自由的控制菜单的显示位置。
+使元素点击时显示一个菜单，通过控制菜单的对齐方式和偏移量自由的控制菜单的显示位置。
 
 ### 引入
 
@@ -13,8 +13,8 @@ createApp().use(Menu)
 ```
 
 ### 注意
-Menu是一个`inline-block`元素,通过默认插槽点击时显示菜单,如果希望Menu独占一行推荐包裹一个`block`元素。
-Menu在点击组件范围以外的区域自动关闭,所以不可以使用同一个状态绑定多个Menu的`v-model:show`。否则在触发显示时也同时触发了其他Menu对`v-model:show`的修改,导致Menu无法显示。
+Menu是一个`inline-block`元素，通过默认插槽点击时显示菜单，如果希望Menu独占一行推荐包裹一个`block`元素。
+Menu在点击组件范围以外的区域自动关闭，所以不可以使用同一个状态绑定多个Menu的`v-model:show`，否则在触发显示时也同时触发了其他Menu对`v-model:show`的修改，导致Menu无法显示。
 
 ### 对齐方式
 ```html
@@ -57,7 +57,7 @@ export default {
       top,
       bottom
     }
-  },
+  }
 }
 ```
 
@@ -145,9 +145,9 @@ export default {
       offsetX,
       offsetX1,
       offsetY,
-      offsetY1,
+      offsetY1
     }
-  },
+  }
 }
 ```
 
@@ -195,9 +195,9 @@ export default {
 
     return {
       event,
-      Snackbar,
+      Snackbar
     }
-  },
+  }
 }
 ```
 
@@ -214,9 +214,9 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
 | `v-model:show` | 是否显示菜单 | _string_ | `default` |
-| `alignment` | 菜单的对齐方式, 可选值为 `top` `bottom`, 源点为默认插槽的左上角,top为菜单顶部对齐源点,bottom为菜单底部对齐 | _string_ | `top` |
-| `offset-x` | x轴偏移量(px, rem, %), 相对于菜单对齐后的位置 | _number \| string_ | `0` |  
-| `offset-y` | y轴偏移量(px, rem, %), 相对于菜单对齐后的位置 | _number \| string_ | `0` |
+| `alignment` | 菜单的对齐方式， 可选值为 `top` `bottom`， 源点为默认插槽的左上角，top为菜单顶部对齐源点，bottom为菜单底部对齐 | _string_ | `top` |
+| `offset-x` | x轴偏移量(px, rem, %)， 相对于菜单对齐后的位置 | _number \| string_ | `0` |  
+| `offset-y` | y轴偏移量(px, rem, %)， 相对于菜单对齐后的位置 | _number \| string_ | `0` |
 
 ### 方法
 | 方法名 | 说明 | 参数 | 返回值 |

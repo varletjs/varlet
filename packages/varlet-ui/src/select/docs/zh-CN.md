@@ -12,7 +12,7 @@ createApp().use(Select).use(Option)
 ### 基本使用
 
 组件会使用option的`label`作为显示的文本。
-组件会优先使用option的`value`作为选项的值,其次使用`label`。
+组件会优先使用option的`value`作为选项的值，其次使用`label`。
 
 ```js
 export default {
@@ -20,7 +20,7 @@ export default {
     const value = ref('')
 
     return { value }
-  },
+  }
 }
 ```
 
@@ -126,7 +126,7 @@ export default {
     const value = ref([])
 
     return { value }
-  },
+  }
 }
 ```
 

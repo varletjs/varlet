@@ -1,7 +1,7 @@
 # Popup
 
 ### Intro
-Create a container that displays information from top, bottom, left, right, center, and Popup. `teleport` inserts into the end of the `body` by default
+Create a container that can pop up from top, bottom, left, right and center. `teleport` inserts into the end of the `body` by default
 
 ### Install
 
@@ -121,9 +121,9 @@ export default {
       top,
       bottom,
       left,
-      right,
+      right
     }
-  },
+  }
 }
 ```
 
@@ -195,9 +195,9 @@ export default {
 
     return {
       overlayClass,
-      overlayStyle,
+      overlayStyle
     }
-  },
+  }
 }
 ```
 
@@ -255,9 +255,9 @@ export default {
 
     return {
       event,
-      Snackbar,
+      Snackbar
     }
-  },
+  }
 }
 ```
 

@@ -125,12 +125,12 @@ export default {
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| `type` | Button type. Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
-| `size` | Button size. Can be set to `normal` `mini` `small` `large` | _string_ | `normal` |
+| `type` | Button type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `size` | Button size, Can be set to `normal` `mini` `small` `large` | _string_ | `normal` |
 | `loading` | Loading status | _boolean_ | `false` |  
-| `loading-radius` | Loading radius. Can only be used when `loading-type="circle"` | _number \| string_ | `12` |
-| `loading-type` | Loading type. Can be set to `circle` `wave` `cube` `rect` `disappear` | _string_ | `circle` |
-| `loading-size` | Loading size. Can be set to `large` `normal` `small` `mini` don't work on `loading-type="circle"` | _string_ | `normal` |
+| `loading-radius` | Loading radius, Can only be used when `loading-type="circle"` | _string \| number_ | `12` |
+| `loading-type` | Loading type, Can be set to `circle` `wave` `cube` `rect` `disappear` | _string_ | `circle` |
+| `loading-size` | Loading size, Can be set to `large` `normal` `small` `mini` don't work on `loading-type="circle"` | _string_ | `normal` |
 | `round` | Whether to be round button | _boolean_ | `false` | 
 | `block` | Whether to be block button | _boolean_ | `false` | 
 | `text` | Whether to be text button | _boolean_ | `false` |

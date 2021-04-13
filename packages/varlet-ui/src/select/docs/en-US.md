@@ -20,7 +20,7 @@ export default {
     const value = ref('')
 
     return { value }
-  },
+  }
 }
 ```
 
@@ -126,7 +126,7 @@ export default {
     const value = ref([])
 
     return { value }
-  },
+  }
 }
 ```
 

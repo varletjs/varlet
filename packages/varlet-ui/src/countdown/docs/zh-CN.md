@@ -97,7 +97,7 @@ createApp().use(Countdown)
       return {
         countdown,
         end,
-        change,
+        change
       }
     }
   }
@@ -117,7 +117,7 @@ createApp().use(Countdown)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `time` | 倒计时时长(ms)| _number \| string_ | `0` |
+| `time` | 倒计时时长(ms)| _string \| number_ | `0` |
 | `format` | 时间格式 | _string_ | `HH:mm:ss` |
 | `auto-start` | 是否自动开始倒计时 | _boolean_ | `true` |
 
@@ -136,7 +136,7 @@ createApp().use(Countdown)
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------------- | -------- |
-| `end` | 倒计时结束时触发| - |
+| `end` | 倒计时结束时触发| `-` |
 | `change` | 倒计时变化时触发| `timeData: TimeData` |
 
 ### 插槽
@@ -161,6 +161,6 @@ createApp().use(Countdown)
 
 | 方法名 | 说明 | 参数 |
 | ---- | ------- | -------- |
-| `start` | 开始倒计时	 | - |
-| `pause` | 暂停倒计时	 | - |
-| `reset` | 重设倒计时，若 `auto-start` 为 `true`，重设后会自动开始倒计时 | - |
+| `start` | 开始倒计时	 | `-` |
+| `pause` | 暂停倒计时	 | `-` |
+| `reset` | 重设倒计时，若 `auto-start` 为 `true`，重设后会自动开始倒计时 | `-` |

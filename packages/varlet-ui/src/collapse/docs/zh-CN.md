@@ -66,7 +66,7 @@ export default {
     const value = ref('')
     
     return {
-      value,
+      value
     }
   }
 }
@@ -124,7 +124,7 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `v-model` | 当前展开面板的 name | 手风琴模式： _number_ \| _string_ <br> 非手风琴模式：_number[]_ \| _string[]_ | - |
+| `v-model` | 当前展开面板的 name | 手风琴模式： _string \| number_<br> 非手风琴模式：_string[] \| number[]_ | `-` |
 | `accordion` | 是否开启手风琴模式 | _boolean_ | `false` |
 | `offset` | 是否显示边距 | _boolean_ | `true` |
 
@@ -132,8 +132,8 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `name` | 唯一标识符，默认为索引值 | _number_ \| _string_ | `index` |
-| `title` | 面板标题 | _number_ \| _string_ | - |
+| `name` | 唯一标识符，默认为索引值 | _string \| number_| `index` |
+| `title` | 面板标题 | _string \| number_| `-` |
 | `icon` | icon的名称 | _string_ | `chevron-down` |
 | `disabled` | 是否禁用面板 | _boolean_ | `false` |
 
@@ -151,9 +151,9 @@ export default {
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
-| `default` | 面板的内容 | - |
-| `title` | 面板的标题 | - |
-| `icon` | 自定义右侧icon | - |
+| `default` | 面板的内容 | `-` |
+| `title` | 面板的标题 | `-` |
+| `icon` | 自定义右侧icon | `-` |
 
 ### 主题变量
 #### 以下less变量可通过构建时进行变量覆盖从而修改主题样式

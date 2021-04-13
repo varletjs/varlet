@@ -66,7 +66,7 @@ export default {
     const value = ref('')
     
     return {
-      value,
+      value
     }
   }
 }
@@ -124,7 +124,7 @@ export default {
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `v-model` | Names of current active panels | accordion mode： _number_ \| _string_ <br> non-accordion mode：_number[]_ \| _string[]_ | - |
+| `v-model` | Names of current active panels | accordion mode： _string \| number_ <br> non-accordion mode：_string[] \| number[]_ | `-` |
 | `accordion` | Whether to be accordion mode | _boolean_ | `false` |
 | `offset` | Whether to show margin | _boolean_ | `true` |
 
@@ -132,8 +132,8 @@ export default {
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `name` | Name | _number_ \| _string_ | `index` |
-| `title` | Title | _number_ \| _string_ | - |
+| `name` | Name | _string \| number_ | `index` |
+| `title` | Title | _string \| number_ | `-` |
 | `icon` | Icon name | _string_ | `chevron-down` |
 | `disabled` | Whether to disabled collapse	 | _boolean_ | `false` |
 
@@ -151,9 +151,9 @@ export default {
 
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
-| `default` | Content | - |
-| `title` | Title | - |
-| `icon` | Custom right icon | - |
+| `default` | Content | `-` |
+| `title` | Title | `-` |
+| `icon` | Custom right icon | `-` |
 
 ### Theme Variables
 #### The following LESS variables can be overridden at build time to modify the theme style

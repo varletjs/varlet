@@ -1,6 +1,6 @@
 # Chip
 
-## Install
+### Install
 
 ```js
 import { createApp } from 'vue'
@@ -59,7 +59,7 @@ Set the chip to block level through the `block` attribute
 
 ### Can Close Chip
 
-Set the `closeable` attribute to the chip that can be closed, and use the `close-name` attribute to customize the icon style of the chip that can be closed (used when `closeable` is used)
+Set the paper to be closable through the `closable` attribute, and use the `close-name` attribute to set the closing icon style of the paper (It can only be used when `closeable` is `true`)
 
 ```html
 <var-chip closable v-if="show" @close="show = false">Can Close Chip</var-chip>
@@ -131,13 +131,13 @@ Set the chip color through the `color` and `text-color` attributes
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
-| `type` | Chip type. Can be set to   `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
-| `size` | Chip size. Can be set to   `normal` `mini` `small` `large` | _string_ | `normal` |
+| `type` | Chip type, Can be set to   `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `size` | Chip size, Can be set to   `normal` `mini` `small` `large` | _string_ | `normal` |
 | `plain` | Whether to be hollow label | _boolean_ | `false` |
 | `round` | Whether to be round label | _boolean_ | `true` |
 | `block` | Whether to be block label | _boolean_ | `false` |
 | `closeable` | Whether to be closed label | _boolean_ | `false`|
-| `close-name` | Custom Closeable TAB icon must be used when `Closeable` is `True`| _string_ | _ |
+| `close-name` | Custom Closeable TAB icon must be used when `Closeable` is `true`| _string_ | _ |
 | `color` | The label color | _string_ | `_` |
 | `text-color` | The text color takes precedence over the `color` attribute | _string_ | `_` |
 

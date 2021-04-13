@@ -60,10 +60,10 @@ export default {
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `v-model` | Loading status | _boolean_ | - |
+| `v-model` | Loading status | _boolean_ | `-` |
 | `disabled` | Whether to disable pull refresh | _boolean_ | `false` |
-| `animation-duration` | The duration of the animation to return to the initial position after loading(ms) | _number \| string_ | `300` |
-| `success-duration` | Success text display duration(ms) | _number \| string_ | `2000` |
+| `animation-duration` | The duration of the animation to return to the initial position after loading(ms) | _string \| number_ | `300` |
+| `success-duration` | Success text display duration(ms) | _string \| number_ | `2000` |
 | `bgColor` | BackgroundColor of control | _string_ | `#005CAF` |
 | `color` | color of control | _string_ | `#ffffff` |
 | `successBgColor` | BackgroundColor of control when the status is success | _string_ | `#4CAF50` |
@@ -73,13 +73,13 @@ export default {
 
 | Event | Description | arguments |
 | ----- | -------------- | -------- | 
-| `refresh` | Emitted after pulling refresh | - |
+| `refresh` | Emitted after pulling refresh | `-` |
 
 ### Slots
 
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- | 
-| `default` | Default slot | - |
+| `default` | Default slot | `-` |
 
 
 ### Theme Variables

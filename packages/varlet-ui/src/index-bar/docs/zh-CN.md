@@ -64,7 +64,7 @@ createApp().use(IndexBar).use(IndexAnchor)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `v-model:active` | 当前激活的索引 | _number \| string_ | - |
+| `v-model:active` | 当前激活的索引 | _number \| string_ |`-` |
 | `sticky` | 是否开启锚点吸顶 | _boolean_ | `true` |
 | `sticky-offset-top` | 锚点吸顶时与顶部的距离 | _number_ | `0` |
 | `z-index` | z-index 层级 | _number \| string_ | `1` |
@@ -74,7 +74,7 @@ createApp().use(IndexBar).use(IndexAnchor)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `index` | 索引字符 | _number \| string_ | - |
+| `index` | 索引字符 | _number \| string_ |`-` |
 
 ### 事件
 
@@ -91,7 +91,7 @@ createApp().use(IndexBar).use(IndexAnchor)
 
 | 名称 | 说明 | 参数 |
 | --- | --- | --- |
-| `default` | 自定义索引字符 | - |
+| `default` | 自定义索引字符 |`-` |
 
 ### 方法
 通过 ref 可以获取到 IndexBar 实例并调用实例方法

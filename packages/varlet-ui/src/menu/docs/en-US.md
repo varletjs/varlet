@@ -63,7 +63,7 @@ export default {
       top,
       bottom
     }
-  },
+  }
 }
 ```
 
@@ -151,9 +151,9 @@ export default {
       offsetX,
       offsetX1,
       offsetY,
-      offsetY1,
+      offsetY1
     }
-  },
+  }
 }
 ```
 
@@ -201,9 +201,9 @@ export default {
 
     return {
       event,
-      Snackbar,
+      Snackbar
     }
-  },
+  }
 }
 ```
 
