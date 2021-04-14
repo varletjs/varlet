@@ -7,6 +7,7 @@ Hyperlinks to scroll on one page.
 ### Install
 
 ```js
+import { createApp } from 'vue'
 import { IndexBar, IndexAnchor } from '@varlet/ui'
 
 createApp().use(IndexBar).use(IndexAnchor)
@@ -32,6 +33,8 @@ When you click the index bar, it will automatically jump to the corresponding `I
 </var-index-bar>
 ```
 ```javascript
+import { ref } from 'vue'
+
   export default {
     setup() {
       const active = ref('A')

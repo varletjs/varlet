@@ -7,6 +7,7 @@
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { Progress } from '@varlet/ui'
 
 createApp().use(Progress)

@@ -7,6 +7,7 @@
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { TimePicker } from '@varlet/ui'
 
 createApp().use(TimePicker)

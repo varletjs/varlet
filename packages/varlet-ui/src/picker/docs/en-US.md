@@ -51,6 +51,8 @@ const { state, texts, indexes } = await Picker({
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const columns = ref([
@@ -71,6 +73,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const columns = ref([
@@ -101,6 +105,7 @@ export default {
 The component library provides complete provincial information and can be used directly.
 
 ```js
+import { ref } from 'vue'
 import area from '@varlet/ui/json/area.json'
 
 export default {

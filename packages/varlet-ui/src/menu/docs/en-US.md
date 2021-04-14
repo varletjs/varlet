@@ -54,6 +54,8 @@ other menu pairs are also triggered Menu cannot be displayed due to the modifica
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const top = ref(false)
@@ -140,6 +142,8 @@ export default {
 
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const offsetX = ref(false)
@@ -193,6 +197,7 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 export default {

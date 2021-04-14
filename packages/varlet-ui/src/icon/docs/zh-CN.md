@@ -51,7 +51,7 @@ import { Snackbar } from '@varlet/ui'
 export default {
   setup() {
     return { Snackbar }
-  },
+  }
 }
 ```
 

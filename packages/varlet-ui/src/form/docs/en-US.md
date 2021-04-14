@@ -16,6 +16,8 @@ createApp().use(Form)
 ### Form Example
 
 ```js
+import { reactive, ref } from 'vue'
+
 export default {
   setup() {
     const formData = reactive({

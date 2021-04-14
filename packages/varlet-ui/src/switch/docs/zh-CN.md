@@ -7,6 +7,7 @@
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { Switch } from '@varlet/ui'
 
 createApp().use(Switch)
@@ -19,8 +20,9 @@ createApp().use(Switch)
 <var-switch v-model="value1" disabled />
 <var-switch v-model="value1" readonly />
 ```
-```javascript
 
+```javascript
+import { ref } from 'vue'
 export default {
   setup() {
     const value = ref(true)

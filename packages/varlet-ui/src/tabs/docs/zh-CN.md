@@ -28,6 +28,8 @@ createApp()
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const active = ref(0)
@@ -51,6 +53,8 @@ Tabs默认通过`active`去匹配Tab的`index`来决定哪个选项卡被激活�
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const active = ref('选项1')

@@ -7,6 +7,7 @@
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { BackTop } from '@varlet/ui'
 
 createApp().use(BackTop)

@@ -16,6 +16,8 @@ createApp().use(RadioGroup).use(Radio)
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref(false)
@@ -40,6 +42,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref(0)
@@ -96,6 +100,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref(0)

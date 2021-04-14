@@ -31,6 +31,8 @@ you need to manually set `loading` to `false` at the end of loading，that's the
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const loading = ref(false)
@@ -79,6 +81,8 @@ Clicking on the error message will help you set the `error` to `false` and trigg
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const loading = ref(false)
@@ -129,6 +133,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const loading = ref(false)

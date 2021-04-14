@@ -7,6 +7,7 @@ A content area which can be collapsed and expanded.
 ### Install
 
 ```js
+import { createApp } from 'vue'
 import { Collapse, CollapseItem } from '@varlet/ui'
 
 createApp().use(Collapse).use(CollapseItem)
@@ -23,6 +24,8 @@ Use `v-model` to control the name of active panels. `value` is an Array
 </var-collapse>
 ```
 ```javascript
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref(['1'])
@@ -61,6 +64,8 @@ Use `accordion` prop to open accordion mode, In this case `value` is a String.
 </var-collapse>
 ```
 ```javascript
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref('')
@@ -88,6 +93,8 @@ Use the `disabled` prop to disable CollapseItem.
 </var-collapse>
 ```
 ```javascript
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref([1])

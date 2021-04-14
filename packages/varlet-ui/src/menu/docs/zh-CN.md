@@ -48,6 +48,8 @@ Menu在点击组件范围以外的区域自动关闭，所以不可以使用同�
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const top = ref(false)
@@ -134,6 +136,8 @@ export default {
 
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const offsetX = ref(false)
@@ -187,6 +191,7 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 export default {

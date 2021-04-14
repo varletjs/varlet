@@ -15,6 +15,8 @@ The component automatically analyzes whether the value passed in is a string or 
 The same type is returned。
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref('')

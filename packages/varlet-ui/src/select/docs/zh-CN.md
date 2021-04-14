@@ -15,6 +15,8 @@ createApp().use(Select).use(Option)
 组件会优先使用option的`value`作为选项的值，其次使用`label`。
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref('')
@@ -121,6 +123,8 @@ createApp().use(Icon)
 ### 多选
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref([])

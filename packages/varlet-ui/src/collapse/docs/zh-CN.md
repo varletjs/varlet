@@ -7,6 +7,7 @@
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { Collapse, CollapseItem } from '@varlet/ui'
 
 createApp().use(Collapse).use(CollapseItem)
@@ -23,6 +24,8 @@ createApp().use(Collapse).use(CollapseItem)
 </var-collapse>
 ```
 ```javascript
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref(['1'])
@@ -61,6 +64,8 @@ export default {
 </var-collapse>
 ```
 ```javascript
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref('')
@@ -88,6 +93,8 @@ export default {
 </var-collapse>
 ```
 ```javascript
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref([1])

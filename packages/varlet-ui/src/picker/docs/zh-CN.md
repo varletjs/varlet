@@ -51,12 +51,14 @@ const { state, texts, indexes } = await Picker({
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const columns = ref([
       Array.from({ length: 20 }).map((_, index) => index),
       Array.from({ length: 20 }).map((_, index) => index),
-      Array.from({ length: 20 }).map((_, index) => index),
+      Array.from({ length: 20 }).map((_, index) => index)
     ])
 
     return { columns }
@@ -71,6 +73,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const columns = ref([
@@ -102,6 +106,7 @@ export default {
 组件库提供了完整的省市区信息，可以直接使用。
 
 ```js
+import { ref } from 'vue'
 import area from '@varlet/ui/json/area.json'
 
 export default {

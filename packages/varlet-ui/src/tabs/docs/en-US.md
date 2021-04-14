@@ -31,6 +31,8 @@ createApp()
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const active = ref(0)
@@ -54,6 +56,8 @@ You can also name a Tab by setting the `name` to the Tab, in which case the Tabs
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const active = ref('Option1')

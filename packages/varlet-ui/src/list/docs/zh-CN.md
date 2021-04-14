@@ -29,6 +29,8 @@ createApp().use(List)
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const loading = ref(false)
@@ -76,6 +78,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const loading = ref(false)
@@ -126,6 +130,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const loading = ref(false)

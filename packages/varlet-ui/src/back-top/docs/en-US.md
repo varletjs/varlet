@@ -7,6 +7,7 @@ A button to back to top
 ### Install
 
 ```js
+import { createApp } from 'vue'
 import { BackTop } from '@varlet/ui'
 
 createApp().use(BackTop)

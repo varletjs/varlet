@@ -12,6 +12,8 @@ createApp().use(Counter)
 ### 基本使用
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref(0)
@@ -81,6 +83,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref(0)

@@ -108,6 +108,8 @@ createApp().use(Popup)
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const center = ref(false)
@@ -188,6 +190,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const overlayClass = ref(false)
@@ -247,6 +251,7 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 export default {

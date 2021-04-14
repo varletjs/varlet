@@ -7,6 +7,7 @@
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { Slider } from '@varlet/ui'
 
 createApp().use(Slider)
@@ -19,6 +20,8 @@ createApp().use(Slider)
 ```
 
 ```javascript
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref(3)
@@ -47,6 +50,8 @@ export default {
 ```
 
 ```javascript
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref([3, 50])

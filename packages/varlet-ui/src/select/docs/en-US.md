@@ -15,6 +15,8 @@ The component uses the option's `label` as the displayed text.
 The component uses the `value` of the option first as the value of the option, followed by the `label`.
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref('')
@@ -121,6 +123,8 @@ createApp().use(Icon)
 ### Multiple Selection
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref([])

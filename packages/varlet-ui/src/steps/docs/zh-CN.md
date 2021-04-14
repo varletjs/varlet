@@ -7,6 +7,7 @@
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { Steps, Step } from '@varlet/ui'
 
 createApp().use(Steps).use(Step)

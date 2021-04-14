@@ -20,6 +20,8 @@ createApp().use(Skeleton)
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const loading = ref(true)
@@ -35,16 +37,6 @@ export default {
  <var-skeleton title :loading="loading">Loading Data</var-skeleton>
 ```
 
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  }
-}
-```
-
 ### Custom Rows Height
 
 ```html
@@ -58,16 +50,6 @@ export default {
 </var-skeleton>
 ```
 
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  }
-}
-```
-
 ### Display Avatar
 
 ```html
@@ -79,16 +61,6 @@ export default {
 >
 	Loading Data
 </var-skeleton>
-```
-
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  }
-}
 ```
 
 ### Display Card
@@ -105,16 +77,6 @@ export default {
 </var-skeleton>
 ```
 
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  }
-}
-```
-
 ### Fullscreen Mode
 
 ```html
@@ -122,16 +84,6 @@ export default {
 	Toggle Fullscreen Mode
 </var-button>
 <var-skeleton fullscreen :loading="loading" />
-```
-
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  }
-}
 ```
 
 ## API

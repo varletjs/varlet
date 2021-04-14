@@ -101,6 +101,7 @@ Dialog({
 ```
 
 ```js
+import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 export default {
@@ -128,6 +129,7 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const actions = {
@@ -174,6 +176,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const show = ref(false)

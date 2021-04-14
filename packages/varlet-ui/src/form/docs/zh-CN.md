@@ -16,6 +16,8 @@ createApp().use(Form)
 ### 表单示例
 
 ```js
+import { reactive, ref } from 'vue'
+
 export default {
   setup() {
     const formData = reactive({

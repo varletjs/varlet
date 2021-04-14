@@ -7,6 +7,7 @@
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { Countdown } from '@varlet/ui'
 
 createApp().use(Countdown)
@@ -20,6 +21,8 @@ createApp().use(Countdown)
   <var-countdown :time="time" />
 ```
 ```javascript
+import { ref } from 'vue'
+
   export default {
     setup() {
       const time = ref(30 * 60 * 60 * 1000)
@@ -82,6 +85,8 @@ createApp().use(Countdown)
   </div>
 ```
 ```javascript
+import { ref } from 'vue'
+
   export default {
     setup() {
       const countdown = ref(null)

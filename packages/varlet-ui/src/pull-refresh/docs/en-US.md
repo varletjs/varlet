@@ -7,6 +7,7 @@ Provides a drop-down refresh interaction
 ### install
 
   ```js
+import { createApp } from 'vue'
 import { PullRefresh } from '@varlet/ui'
 
 createApp().use(PullRefresh)
@@ -30,6 +31,8 @@ indicates that loading is under way, and setting `v-model` to `false` after comp
 ```
 
 ```javascript
+import { ref } from 'vue'
+
 const data1 = Array(10).fill('List Item')
 const data2 = Array(10).fill('This is new List Item')
 

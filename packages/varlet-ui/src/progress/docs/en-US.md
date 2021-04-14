@@ -7,6 +7,7 @@ Display the current progress of an operation flow.
 ### Install
 
 ```js
+import { createApp } from 'vue'
 import { Progress } from '@varlet/ui'
 
 createApp().use(Progress)

@@ -7,6 +7,7 @@ The cell is a single display item in the list.
 ### Install
 
 ```js
+import { createApp } from 'vue'
 import { Cell } from '@varlet/ui'
 
 createApp().use(Cell)

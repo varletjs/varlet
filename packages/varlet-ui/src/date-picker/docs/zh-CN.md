@@ -7,6 +7,7 @@
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { DatePicker } from '@varlet/ui'
 
 createApp().use(DatePicker)
@@ -127,7 +128,7 @@ export default {
     return {
       date,
       change,
-      allowedDates,
+      allowedDates
     }
   }
 }

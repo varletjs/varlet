@@ -20,6 +20,8 @@ createApp().use(Uploader)
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([])
@@ -43,6 +45,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([
@@ -70,6 +74,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([
@@ -121,6 +127,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([])
@@ -144,6 +152,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([])

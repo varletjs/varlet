@@ -7,6 +7,7 @@
 ### 引入
 
   ```js
+import { createApp } from 'vue'
 import { PullRefresh } from '@varlet/ui'
 
 createApp().use(PullRefresh)
@@ -29,6 +30,8 @@ createApp().use(PullRefresh)
 ```
 
 ```javascript
+import { ref } from 'vue'
+
 const data1 = Array(10).fill('List Item')
 const data2 = Array(10).fill('This is new List Item')
 

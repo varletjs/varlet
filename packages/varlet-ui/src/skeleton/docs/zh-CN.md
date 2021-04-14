@@ -19,6 +19,8 @@ createApp().use(Skeleton)
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const loading = ref(true)
@@ -34,16 +36,6 @@ export default {
  <var-skeleton title :loading="loading">加载的数据</var-skeleton>
 ```
 
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  }
-}
-```
-
 ### 自定义段落高度
 
 ```html
@@ -57,16 +49,6 @@ export default {
 </var-skeleton>
 ```
 
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  }
-}
-```
-
 ### 显示头像
 
 ```html
@@ -78,16 +60,6 @@ export default {
 >
   加载的数据
 </var-skeleton>
-```
-
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  }
-}
 ```
 
 ### 显示卡片
@@ -104,16 +76,6 @@ export default {
 </var-skeleton>
 ```
 
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  }
-}
-```
-
 ### 全屏模式
 
 ```html
@@ -121,16 +83,6 @@ export default {
   切换全屏模式
 </var-button>
 <var-skeleton fullscreen :loading="loading" />
-```
-
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  }
-}
 ```
 
 ## API

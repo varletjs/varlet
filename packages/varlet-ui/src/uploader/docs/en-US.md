@@ -20,6 +20,8 @@ createApp().use(Uploader)
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([])
@@ -43,6 +45,8 @@ By analyzing the file URL suffix name to determine the file type, support image 
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([
@@ -70,6 +74,8 @@ Three uploading states, `loading`, `success` and `error`, are provided, and tool
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([
@@ -121,6 +127,8 @@ If the limit is exceeded, the file will be blocked. You can get the file by list
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([])
@@ -144,6 +152,8 @@ Operate on a file by registering a `before-read` event that returns a false valu
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([])

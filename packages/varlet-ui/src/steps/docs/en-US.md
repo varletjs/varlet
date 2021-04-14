@@ -7,6 +7,7 @@ Steps is a navigation bar that guides users through the steps of a task.
 ### Install
 
 ```js
+import { createApp } from 'vue'
 import { Steps, Step } from '@varlet/ui'
 
 createApp().use(Steps).use(Step)

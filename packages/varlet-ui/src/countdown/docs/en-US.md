@@ -7,6 +7,7 @@ For real-time display of countdown values, support millisecond precision.
 ### Install
 
 ```js
+import { createApp } from 'vue'
 import { Countdown } from '@varlet/ui'
 
 createApp().use(Countdown)
@@ -20,6 +21,8 @@ Use `time` to set countdown time(ms).
   <var-countdown :time="time" />
 ```
 ```javascript
+import { ref } from 'vue'
+
   export default {
     setup() {
       const time = ref(30 * 60 * 60 * 1000)
@@ -82,6 +85,8 @@ Use `ref` to get countdown instance, you can call the `start`, `pause`, and `res
   </div>
 ```
 ```javascript
+import { ref } from 'vue'
+
   export default {
     setup() {
       const countdown = ref(null)

@@ -14,6 +14,8 @@ createApp().use(Input)
 组件会自动分析传入的值是字符串还是数字，会返回相同的类型。
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref('')
