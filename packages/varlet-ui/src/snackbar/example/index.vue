@@ -1,90 +1,56 @@
 <template>
   <div class="snackbar-demo">
-    <div class="snackbar-demo__basic">
-      <app-type>基本使用</app-type>
-      <div class="snackbar-demo__basic-block">
-        <var-button type="primary" size="small" @click="changeValue('show1')"> 基本使用</var-button>
-        <var-button type="primary" size="small" @click="changeValue('show2')"> 自定义action</var-button>
-        <var-button type="primary" size="small" @click="changeValue('show3')"> 垂直排列</var-button>
-        <var-button type="primary" size="small" @click="changeValue('show4')"> 自定义关闭时间</var-button>
-        <var-button type="primary" size="small" @click="changeMultiple()"> 切换单例或多例</var-button>
-      </div>
-    </div>
-    <div class="snackbar-demo__type">
-      <app-type>snackbar类型</app-type>
-      <div class="snackbar-demo__type-block">
-        <var-button type="primary" size="small" @click="changeValue('show7')"> success</var-button>
-        <var-button type="primary" size="small" @click="create('warning')"> warning</var-button>
-        <var-button type="primary" size="small" @click="create('info')"> info</var-button>
-        <var-button type="primary" size="small" @click="createMethod('error')"> error</var-button>
-        <var-button type="primary" size="small" @click="createMethod('loading')"> loading</var-button>
-      </div>
-    </div>
-    <div class="snackbar-demo__position">
-      <app-type>snackbar位置</app-type>
-      <div class="snackbar-demo__position-block">
-        <var-button type="primary" size="small" @click="createPosition('top')"> top</var-button>
-        <var-button type="primary" size="small" @click="createPosition('center')"> center</var-button>
-        <var-button type="primary" size="small" @click="createPosition('bottom')"> bottom</var-button>
-      </div>
-    </div>
-    <div class="snackbar-demo__others">
-      <app-type>其他配置</app-type>
-      <div class="snackbar-demo__others-block">
-        <var-button type="primary" size="small" @click="changeValue('show8')"> 自定义内容class</var-button>
-        <var-button type="primary" size="small" @click="changeValue('show9')"> 不可穿透点击</var-button>
-        <var-button type="primary" size="small" @click="changeValue('show10')"> 可以穿透滑动</var-button>
-      </div>
-    </div>
-    <div class="snackbar-demo__event">
-      <app-type>snackbar事件</app-type>
-      <div class="snackbar-demo__event-block">
-        <var-button type="primary" size="small" @click="changeValue('show11')"> 打开与关闭回调</var-button>
-        <var-button type="primary" size="small" @click="changeValue('show12')">
-          打开动画与关闭动画结束时回调
-        </var-button>
-      </div>
-    </div>
+    <app-type>{{ pack.componentCall }}</app-type>
+    <var-button type="primary" block @click="changeValue('show1')">{{ pack.basicUsage }}</var-button>
+    <var-button type="primary" block @click="changeValue('show3')">{{ pack.multiLine }}</var-button>
+    <var-button type="primary" block @click="changeValue('show2')">{{ pack.bottomDisplay }}</var-button>
+    <var-button type="primary" block @click="changeValue('show4')">{{ pack.hiddenTime }}</var-button>
+    <var-button type="primary" block @click="changeValue('show9')">{{ pack.forbidClick }}</var-button>
+  </div>
 
-    <var-snackbar v-model:show="show1" position="bottom">
-      {{ text }}
+  <div class="snackbar-demo">
+    <app-type>{{ pack.functionCall }}</app-type>
+    <var-button type="primary" block @click="createSnackbar()">{{ pack.basicUsage }}</var-button>
+    <var-button type="primary" block @click="createSnackbar('time')">{{ pack.hiddenTime }}</var-button>
+    <var-button type="primary" block @click="createSnackbar('position')">{{ pack.bottomDisplay }}</var-button>
+  </div>
+
+  <div class="snackbar-demo">
+    <app-type>{{ pack.type }}</app-type>
+    <div class="snackbar-demo__type-block">
+      <var-button type="primary" block @click="create('success')">{{ pack.success }}</var-button>
+      <var-button type="primary" block @click="create('warning')">{{ pack.warning }}</var-button>
+      <var-button type="primary" block @click="create('info')">{{ pack.info }}</var-button>
+      <var-button type="primary" block @click="create('error')">{{ pack.error }}</var-button>
+      <var-button type="primary" block @click="create('loading')">{{ pack.loading }}</var-button>
+    </div>
+  </div>
+
+  <div class="snackbar-demo">
+    <var-snackbar v-model:show="show1">
+      {{ pack.text }}
     </var-snackbar>
 
-    <var-snackbar v-model:show="show2">
-      {{ text }}
+    <var-snackbar v-model:show="show2" position="bottom">
+      {{ pack.text }}
       <template #action>
-        <var-button type="primary" size="small" @click="show2 = !show2"> close</var-button>
+        <var-button type="primary" @click="show2 = false">{{ pack.close }}</var-button>
       </template>
     </var-snackbar>
 
     <var-snackbar v-model:show="show3" :vertical="true">
-      {{ text }}
+      {{ pack.text }}
       <template #action>
-        <var-button type="primary" size="small" @click="show3 = !show3"> close</var-button>
+        <var-button type="primary" @click="show3 = false">{{ pack.close }}</var-button>
       </template>
     </var-snackbar>
 
-    <var-snackbar v-model:show="show4" :duration="500">
-      {{ text }}
+    <var-snackbar v-model:show="show4" :duration="1000">
+      {{ pack.text }}
     </var-snackbar>
 
-    <var-snackbar v-model:show="show7" type="success">
-      {{ text }}
-    </var-snackbar>
-    <var-snackbar v-model:show="show8">
-      {{ text }}
-    </var-snackbar>
     <var-snackbar v-model:show="show9" :forbid-click="true">
-      {{ text }}
-    </var-snackbar>
-    <var-snackbar v-model:show="show10" :lock-scroll="false">
-      {{ text }}
-    </var-snackbar>
-    <var-snackbar v-model:show="show11" @open="open" @close="close">
-      {{ text }}
-    </var-snackbar>
-    <var-snackbar v-model:show="show12" @opened="opened" @closed="closed">
-      {{ text }}
+      {{ pack.text }}
     </var-snackbar>
   </div>
 </template>
@@ -93,91 +59,64 @@
 import { defineComponent, ref, reactive, toRefs } from 'vue'
 import Button from '../../button'
 import Snackbar from '..'
+import { pack, use } from './locale'
+import { watchLang } from '../../utils/components'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
 
 export default defineComponent({
   name: 'SnackbarExample',
   components: {
     [Snackbar.Component.name]: Snackbar.Component,
     [Button.name]: Button,
+    AppType,
   },
   setup() {
-    const text = ref("Hello, I'm a snackbar")
     const isAllowMultiple = ref(true)
     const shows = reactive({
       show1: false,
       show2: false,
       show3: false,
       show4: false,
-      show7: false,
-      show8: false,
       show9: false,
-      show10: false,
-      show11: false,
-      show12: false,
     })
+
     const changeValue = (type) => {
       shows[type] = !shows[type]
     }
 
     const create = (type) => {
-      const snackbar = Snackbar({
-        content: "Hello, I'm a snackbar",
-        type,
-      })
-      setTimeout(function () {
-        snackbar.clear()
-      }, 1000)
+      Snackbar[type](pack.value.text)
     }
 
-    const createMethod = (type) => {
-      Snackbar[type]({
-        content: "Hello, I'm a snackbar",
-        forbidClick: type === 'loading',
-      })
+    const createSnackbar = (type) => {
+      if (type === 'time') {
+        Snackbar({
+          content: pack.value.text,
+          duration: 1000,
+        })
+      }
+
+      if (type === 'position') {
+        Snackbar({
+          content: pack.value.text,
+          position: 'bottom',
+        })
+      }
+
+      if (!type) {
+        Snackbar(pack.value.text)
+      }
     }
 
-    const createPosition = (position) => {
-      Snackbar({
-        content: "Hello, I'm a snackbar",
-        position,
-      })
-      setTimeout(() => {
-        Snackbar.clear()
-      }, 2000)
-    }
-
-    const changeMultiple = () => {
-      Snackbar.allowMultiple(isAllowMultiple.value)
-      isAllowMultiple.value = !isAllowMultiple.value
-    }
-
-    const open = () => {
-      console.log('open!')
-    }
-    const close = () => {
-      console.log('close!')
-    }
-
-    const opened = () => {
-      console.log('opened!')
-    }
-
-    const closed = () => {
-      console.log('closed!')
-    }
+    watchLang(use)
 
     return {
       ...toRefs(shows),
-      text,
+      pack,
+      createSnackbar,
+
       changeValue,
       create,
-      createMethod,
-      createPosition,
-      open,
-      opened,
-      closed,
-      close,
-      changeMultiple,
     }
   },
 })
@@ -185,32 +124,8 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .snackbar-demo {
-  &__basic-block,
-  &__type-block,
-  &__position-block,
-  &__others-block,
-  &__event-block {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    button {
-      margin: 5px 0;
-    }
+  .var-button {
+    margin-top: 10px;
   }
-}
-
-.list-complete-item {
-  transition: all 0.8s ease;
-}
-
-.list-complete-enter-from,
-.list-complete-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.list-complete-leave-active {
-  position: absolute;
 }
 </style>

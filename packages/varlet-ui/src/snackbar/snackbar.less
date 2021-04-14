@@ -2,6 +2,20 @@
 @import '../styles/common';
 @import '../styles/var';
 
+@snackbar-width: 256px;
+@snackbar-color: rgba(255, 255, 255, 0.87);
+@snackbar-border-radius: 4px;
+@snackbar-background: #333;
+@snackbar-font-size: @font-size-md;
+@snackbar-margin: 6px 24px;
+@snackbar-border-color: currentColor;
+@snackbar-success-background: @color-success;
+@snackbar-info-background: @color-info;
+@snackbar-error-background: @color-danger;
+@snackbar-warning-background: @color-warning;
+@snackbar-content-padding: 14px 16px;
+@snackbar-action-margin: 0 16px 0 0;
+
 .var-transition-group {
   position: fixed;
   left: 0;
@@ -9,7 +23,6 @@
   top: 0;
   bottom: 0;
   pointer-events: none;
-  z-index: 10;
 }
 
 .var-pointer-auto {
@@ -24,45 +37,45 @@
     left: 0;
     right: 0;
     bottom: 0;
-    transition: all 0.15s cubic-bezier(0, 0, 0.2, 1);
+    transition: all 0.15s @cubic-bezier;
     z-index: 10;
 
     &__wrapper {
-      width: 256px;
+      width: @snackbar-width;
       display: flex;
-      border-radius: 4px;
-      color: hsla(0, 0%, 100%, 0.87);
-      background: #333;
-      font-size: 14px;
-      margin: 6px 24px;
+      border-radius: @snackbar-border-radius;
+      color: @snackbar-color;
+      background: @snackbar-background;
+      font-size: @snackbar-font-size;
+      margin: @snackbar-margin;
       align-items: center;
-      border-color: currentColor;
+      border-color: @snackbar-border-color;
       pointer-events: auto;
 
       &-success {
-        background: @color-success;
+        background: @snackbar-success-background;
       }
 
       &-info {
-        background: @color-info;
+        background: @snackbar-info-background;
       }
 
       &-warning {
-        background: @color-warning;
+        background: @snackbar-warning-background;
       }
 
       &-error {
-        background: @color-danger;
+        background: @snackbar-error-background;
       }
     }
 
     &__content {
       flex-grow: 1;
-      padding: 14px 16px;
+      padding: @snackbar-content-padding;
     }
 
     &__action {
-      margin-right: 16px;
+      margin: @snackbar-action-margin;
       display: flex;
     }
 
@@ -103,7 +116,7 @@
       }
 
       &-bottom {
-        top: 85%;
+        top: 90%;
       }
     }
   }

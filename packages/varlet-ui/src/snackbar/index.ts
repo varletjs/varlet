@@ -240,7 +240,7 @@ function updateUniqOption(reactiveSnackOptions: SnackbarOptions, _update: string
 function getTop(position = 'top'): string {
   if (position === 'center') return '45%'
 
-  if (position === 'bottom') return '85%'
+  if (position === 'bottom') return '90%'
 
   return '5%'
 }

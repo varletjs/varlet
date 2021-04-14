@@ -1,0 +1,17 @@
+export default {
+  functionCall: '函数调用',
+  componentCall: '组件调用',
+  type: 'Snackbar 类型',
+  success: '成功',
+  info: '消息',
+  warning: '警告',
+  error: '错误',
+  loading: '加载',
+  text: '这是一个消息条！！',
+  close: '关闭',
+  basicUsage: '基本使用',
+  multiLine: '垂直排列',
+  bottomDisplay: '底部显示',
+  hiddenTime: '显示时长',
+  forbidClick: '禁止穿透点击',
+}

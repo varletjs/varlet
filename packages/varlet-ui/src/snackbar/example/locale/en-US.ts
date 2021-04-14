@@ -1,0 +1,17 @@
+export default {
+  functionCall: 'Function Call',
+  componentCall: 'Component Call',
+  type: 'Snackbar Type',
+  success: 'Success',
+  warning: 'Warning',
+  info: 'Info',
+  error: 'Error',
+  loading: 'Loading',
+  text: "Hello, I'm a snackbar",
+  close: 'Close',
+  basicUsage: 'Basic Usage',
+  multiLine: 'Multi-Line',
+  bottomDisplay: 'Bottom Display',
+  hiddenTime: 'Display Duration',
+  forbidClick: 'Forbid Click',
+}

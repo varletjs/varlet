@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, watch, ref, Ref, onMounted, computed } from 'vue'
+import { defineComponent, watch, ref, Ref, onMounted, computed } from 'vue'
 import Loading from '../loading'
 import Button from '../button'
 import Icon from '../icon'
@@ -104,5 +104,8 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../loading/loading';
+@import '../button/button';
+@import '../icon/icon';
 @import './snackbar';
 </style>
