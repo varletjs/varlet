@@ -1,6 +1,6 @@
 {
   "name": "@varlet/markdown-loader",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "markdown loader of varlet",
   "keywords": [
     "loader",

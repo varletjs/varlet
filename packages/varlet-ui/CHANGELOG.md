@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/haoziqaq/varlet/compare/v0.11.4...v0.12.0) (2021-04-14)
+
+
+### Bug Fixes
+
+* merge code ([189053c](https://github.com/haoziqaq/varlet/commit/189053c8361e290807dc1cc9fceb7028f92946b9))
+
+
+### Features
+
+* **snackbar:** add types ([cdd48dc](https://github.com/haoziqaq/varlet/commit/cdd48dcc8d9cbc4fdb1b820d57e638d5a68878f2))
+
+
+
+
+
 ## [0.11.4](https://github.com/haoziqaq/varlet/compare/v0.11.3...v0.11.4) (2021-04-11)
 
 
