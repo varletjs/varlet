@@ -9,7 +9,7 @@ Provides two kinds of function and component call mode support cascading mode at
 import { createApp } from 'vue'
 import { Picker } from '@varlet/ui'
 
-createApp().use(Picker)
+createApp().use(Picker.Component)
 ```
 
 ### Function Call

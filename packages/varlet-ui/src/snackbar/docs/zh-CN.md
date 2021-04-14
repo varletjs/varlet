@@ -10,7 +10,7 @@
 import { createApp } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-createApp().use(Snackbar)
+createApp().use(Snackbar.Component)
 ```
 
 ### 组件调用

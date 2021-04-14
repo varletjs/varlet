@@ -35,6 +35,7 @@ import { Ripple } from './Ripple'
 import { Row } from './Row'
 import { Select } from './Select'
 import { Slider } from './Slider'
+import { Snackbar } from './Snackbar'
 import { Step } from './Step'
 import { Steps } from './Steps'
 import { Sticky } from './Sticky'
@@ -91,6 +92,7 @@ export {
   Row,
   Select,
   Slider,
+  Snackbar,
   Step,
   Steps,
   Sticky,

@@ -10,7 +10,7 @@
 import { createApp } from 'vue'
 import { Dialog } from '@varlet/ui'
 
-createApp().use(Dialog)
+createApp().use(Dialog.Component)
 ```
 
 ### 函数调用

@@ -10,7 +10,7 @@ A dialog pops up to display the content and handle the user interaction
 import { createApp } from 'vue'
 import { Dialog } from '@varlet/ui'
 
-createApp().use(Dialog)
+createApp().use(Dialog.Component)
 ```
 
 ### Functional

@@ -9,7 +9,7 @@
 import { createApp } from 'vue'
 import { Picker } from '@varlet/ui'
 
-createApp().use(Picker)
+createApp().use(Picker.Component)
 ```
 
 ### 函数调用
