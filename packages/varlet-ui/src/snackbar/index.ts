@@ -1,4 +1,4 @@
-import { h, reactive, TransitionGroup, App, RendererElement } from 'vue'
+import { h, reactive, TransitionGroup, App, Component } from 'vue'
 import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
 import { mountInstance } from '../utils/components'
@@ -60,7 +60,7 @@ interface Snackbar {
 
   isAllowMultiple: boolean
 
-  Component: RendererElement
+  Component: Component
 }
 
 let sid = 0

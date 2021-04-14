@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, reactive, toRefs } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import Button from '../../button'
 import Snackbar from '..'
 import { pack, use } from './locale'
@@ -71,7 +71,6 @@ export default defineComponent({
     AppType,
   },
   setup() {
-    const isAllowMultiple = ref(true)
     const shows = reactive({
       show1: false,
       show2: false,
