@@ -30,11 +30,11 @@ interface PickerOptions {
   onClosed?: () => void
 }
 
-export interface Picker {
+export interface IPicker {
   (options: PickerOptions | Texts): Promise<PickerResolvedData>
   install(app: App): void
   close(): void
   Component: PickerComponent
 }
 
-export const Picker: Picker
+export const Picker: IPicker

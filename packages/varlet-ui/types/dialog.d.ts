@@ -32,11 +32,11 @@ export interface DialogOptions {
   onClickOverlay?: () => void
 }
 
-export interface Dialog {
+export interface IDialog {
   (options: DialogOptions | string): Promise<DialogActions>
   install(app: App): void
   close(): void
   Component: DialogComponent
 }
 
-export const Dialog: Dialog
+export const Dialog: IDialog

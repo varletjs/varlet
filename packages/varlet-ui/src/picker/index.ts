@@ -1,5 +1,5 @@
 import VarPicker from './Picker.vue'
-import { App, nextTick, reactive } from 'vue'
+import { App, Component, nextTick, reactive } from 'vue'
 import { NormalColumn, CascadeColumn } from './props'
 import { isArray } from '../utils/shared'
 import { mountInstance } from '../utils/components'
@@ -87,7 +87,7 @@ function Picker(options: PickerOptions | Texts): Promise<PickerResolvedData> {
   })
 }
 
-Picker.Component = VarPicker
+Picker.Component = VarPicker as Component
 
 Picker.install = function (app: App) {
   app.component(VarPicker.name, VarPicker)
