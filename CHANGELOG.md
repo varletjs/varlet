@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/haoziqaq/varlet/compare/v0.12.0...v0.12.1) (2021-04-14)
+
+
+### Bug Fixes
+
+* **ui/types:** 修复dialog picker类型声明 ([53090e0](https://github.com/haoziqaq/varlet/commit/53090e063eaf1f61a80416f9a4fec5fb5aa99f1b))
+
+
+
+
+
 # [0.12.0](https://github.com/haoziqaq/varlet/compare/v0.11.4...v0.12.0) (2021-04-14)
 
 
