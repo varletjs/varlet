@@ -20,6 +20,8 @@ createApp().use(Uploader)
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([])
@@ -28,9 +30,9 @@ export default {
 
     return {
       files,
-      handleAfterRead,
+      handleAfterRead
     }
-  },
+  }
 }
 ```
 
@@ -43,6 +45,8 @@ By analyzing the file URL suffix name to determine the file type, support image 
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([
@@ -57,7 +61,7 @@ export default {
     ])
 
     return { files }
-  },
+  }
 }
 ```
 
@@ -70,6 +74,8 @@ Three uploading states, `loading`, `success` and `error`, are provided, and tool
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([
@@ -102,7 +108,7 @@ export default {
       files,
       handleAfterRead
     }
-  },
+  }
 }
 ```
 
@@ -121,6 +127,8 @@ If the limit is exceeded, the file will be blocked. You can get the file by list
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([])
@@ -131,7 +139,7 @@ export default {
       files,
       handleAfterRead
     }
-  },
+  }
 }
 ```
 
@@ -144,6 +152,8 @@ Operate on a file by registering a `before-read` event that returns a false valu
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([])
@@ -154,7 +164,7 @@ export default {
       files,
       handleAfterRead
     }
-  },
+  }
 }
 ```
 
@@ -172,7 +182,7 @@ export default {
 
 ### Validate
 
-The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes.
+The values are validated by passing in an array of validator, If the validator returns `true`, the validation passes.
 Other values are converted to text as a user prompt.
 The second argument is a collection of utility functions that can quickly get a collection of files that match the state.
 
@@ -206,8 +216,8 @@ The second argument is a collection of utility functions that can quickly get a 
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
 | `removable` | Whether the removable | _boolean_ | `false` |
-| `maxlength` | Maximum number of files | _number \| string_ | `-` |
-| `maxsize` | Maximum file size | _number \| string_ | `-` |
+| `maxlength` | Maximum number of files | _string \| number_ | `-` |
+| `maxsize` | Maximum file size | _string \| number_ | `-` |
 | `previewed` | Whether to allow preview | _boolean_ | `true` |
 | `ripple` | Whether to open ripple | _boolean_ | `true` |
 | `validate-trigger` | Timing to trigger validation， The optional value is `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |

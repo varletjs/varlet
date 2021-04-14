@@ -7,6 +7,7 @@
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { BackTop } from '@varlet/ui'
 
 createApp().use(BackTop)
@@ -38,8 +39,8 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `target` | 触发滚动的对象	| _string_ | - |
-| `visibility-height` | 滚动高度达到此参数值才出现| _number \| string_ | `200` |
+| `target` | 触发滚动的对象	| _string_ | `-` |
+| `visibility-height` | 滚动高度达到此参数值才出现| _string \| number_ | `200` |
 | `duration` | 回到顶部所需时间（ms） | _number_ | `300` |
 
 ### 事件
@@ -52,7 +53,7 @@ export default {
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
-| `default` | 自定义按钮内容 | - |
+| `default` | 自定义按钮内容 | `-` |
 
 ### 主题变量
 #### 以下less变量可通过构建时进行变量覆盖从而修改主题样式

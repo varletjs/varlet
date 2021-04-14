@@ -1,7 +1,7 @@
 # 弹出层
 
 ### 介绍
-创建一个可以从上,下,左,右,中心,弹出的容器, 用于展示信息。默认使用`teleport`插入到`body`尾部
+创建一个可以从上、下、左、右、中心弹出的容器， 用于展示信息。默认使用`teleport`插入到`body`尾部
 
 ### 引入
 
@@ -108,6 +108,8 @@ createApp().use(Popup)
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const center = ref(false)
@@ -121,9 +123,9 @@ export default {
       top,
       bottom,
       left,
-      right,
+      right
     }
-  },
+  }
 }
 ```
 
@@ -188,6 +190,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const overlayClass = ref(false)
@@ -195,9 +199,9 @@ export default {
 
     return {
       overlayClass,
-      overlayStyle,
+      overlayStyle
     }
-  },
+  }
 }
 ```
 
@@ -247,6 +251,7 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 export default {
@@ -255,9 +260,9 @@ export default {
 
     return {
       event,
-      Snackbar,
+      Snackbar
     }
-  },
+  }
 }
 ```
 
@@ -268,11 +273,11 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
 | `v-model:show` | 是否显示弹出层 | _boolean_ | `false` |
-| `position` | 弹出位置, 可选值为 `top` `bottom` `right` `left` `center` | _string_ | `center` |
+| `position` | 弹出位置，可选值为 `top` `bottom` `right` `left` `center` | _string_ | `center` |
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
 | `overlay-class` | 自定义遮罩层的class | _string_ | `-` |
 | `overlay-style` | 自定义遮罩层的style | _string_ | `-` |
-| `lock-scroll` | 是否禁止滚动穿透, 禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
+| `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` | 
 | `teleport` | 弹出层挂载的位置 | _string_ | `body` |
 

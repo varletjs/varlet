@@ -7,6 +7,7 @@ A button to back to top
 ### Install
 
 ```js
+import { createApp } from 'vue'
 import { BackTop } from '@varlet/ui'
 
 createApp().use(BackTop)
@@ -38,8 +39,8 @@ export default {
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `target` | The target to trigger scroll	| _string_ | - |
-| `visibility-height` | The button will not show until the scroll height reaches this value | _number \| string_ | `200` |
+| `target` | The target to trigger scroll	| _string_ | `-` |
+| `visibility-height` | The button will not show until the scroll height reaches this value | _string \| number_ | `200` |
 | `duration` | Time to return to top（ms） | _number_ | `300` |
 
 ### Events
@@ -52,7 +53,7 @@ export default {
 
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
-| `default` | Custom the content | - |
+| `default` | Custom the content | `-` |
 
 ### Theme Variables
 #### The following LESS variables can be overridden at build time to modify the theme style

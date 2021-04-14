@@ -6,6 +6,7 @@ Used to select a date or date range.
 ### Install
 
 ```js
+import { createApp } from 'vue'
 import { DatePicker } from '@varlet/ui'
 
 createApp().use(DatePicker)
@@ -126,7 +127,7 @@ export default {
     return {
       date,
       change,
-      allowedDates,
+      allowedDates
     }
   }
 }

@@ -2,11 +2,12 @@
 
 ### 介绍
 
-用于选择一个时间。
+用于选择时间。
 
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { TimePicker } from '@varlet/ui'
 
 createApp().use(TimePicker)

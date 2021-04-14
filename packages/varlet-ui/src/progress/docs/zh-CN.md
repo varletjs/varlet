@@ -7,6 +7,7 @@
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { Progress } from '@varlet/ui'
 
 createApp().use(Progress)
@@ -16,7 +17,7 @@ createApp().use(Progress)
 
 ### 基本使用
 
-使用 `value` 属性设置当前进度
+通过 `value` 属性设置当前进度
 
 ```html
 <var-progress :value="20" />
@@ -25,7 +26,7 @@ createApp().use(Progress)
 
 ### 不同样式
 
-可以适用 `line-width` 属性设置线宽、`color` 属性设置进度条颜色、 `track-color` 属性设置轨道颜色、 `ripple` 属性设置水波纹加载效果
+通过`line-width`、`color`、`track-color`、`ripple` 属性设置线宽、进度条颜色、轨道颜色、水波纹加载效果
 
 ```html
 <var-progress :value="30" line-width="8" />
@@ -40,7 +41,7 @@ createApp().use(Progress)
 
 ### 显示标签
 
-使用 `show-action` 显示 action，action 默认为进度的百分比，可以使用插槽插入自定义内容
+通过 `show-action`属性将action显示，action 默认为进度的百分比，可以使用插槽插入自定义内容
 
 ```html
 <var-progress :value="30" show-action />
@@ -50,7 +51,7 @@ createApp().use(Progress)
 
 ### 自定义样式
 
-传入`style`属性自定义控制样式
+通过`style`属性自定义样式
 
 ```html
 <var-progress :value="30" line-width="10" style="border-radius: 4px" />
@@ -61,7 +62,7 @@ createApp().use(Progress)
 
 ### 不同尺寸
 
-通过`size`属性改变大小
+通过`size`属性改变进度条大小
 
 ```html
 <var-progress :value="30" line-width="3" mode="circle" />
@@ -81,8 +82,6 @@ createApp().use(Progress)
 
 ### 不同样式
 
-同样使用 `line-width` 属性设置线宽、`color` 属性设置进度条颜色、 `track-color` 属性设置轨道颜色
-
 ```html
 <var-progress :value="30" line-width="8" />
 <var-progress 
@@ -95,8 +94,6 @@ createApp().use(Progress)
 ```
 
 ### 显示标签
-
-同样使用 `show-action` 显示 action，action 默认为进度的百分比，可以使用插槽插入自定义内容
 
 ```html
 <var-progress 
@@ -126,7 +123,7 @@ createApp().use(Progress)
 
 ### 不同原点
 
-使用 `rotate` 改变环形进度条的原点
+通过 `rotate` 属性设置环形进度条的原点
 
 ```html
 <var-progress 
@@ -153,7 +150,7 @@ createApp().use(Progress)
 
 ### 隐藏轨道
 
-使用 `show-track` 隐藏轨道
+通过 `show-track`属性将轨道隐藏
 
 ```html
 <var-progress 
@@ -188,13 +185,13 @@ createApp().use(Progress)
 | 参数  |   说明  | 类型     | 默认值   |
 | ----  | --------------- | -------- | -------- |
 | `mode`  | progress 的模式 | _string_ | `linear` |
-| `value` | progress 的进度 | _number \| string_ |  `0`  |
-| `line-width` | progress 的线宽 | _number \| string_ | `4` |
+| `value` | progress 的进度 | _string \| number_ |  `0`  |
+| `line-width` | progress 的线宽 | _string \| number_ | `4` |
 | `color` | progress 的颜色 | _string_  | `#005CAF` |
 | `track-color`  | progress 轨道的颜色 | _string_   | `#d8d8d8` |
 | `show-action` | 是否显示 action | _boolean_ | `false` |
 | `ripple`(仅支持线性进度条) | 水波纹加载效果 | _boolean_ | `false` |
-| `size`（仅支持环形进度条） | progress 的尺寸 | _number \| string_ | `40` |
+| `size`（仅支持环形进度条） | progress 的尺寸 | _string \| number_ | `40` |
 | `rotate`（仅支持环形进度条） | progress 的原点 | _number_ | `0` |
 | `show-track`（仅支持环形进度条） | 是否显示 progress 的轨道 | _boolean_ | `true` |
 
@@ -202,7 +199,7 @@ createApp().use(Progress)
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
-| `default` | 自定义 action | - |
+| `default` | 自定义 action | `-` |
 
 ### 主题变量
 #### 以下less变量可通过构建时进行变量覆盖从而修改主题样式

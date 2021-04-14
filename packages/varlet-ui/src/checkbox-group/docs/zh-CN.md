@@ -16,6 +16,8 @@ createApp().use(CheckboxGroup).use(Checkbox)
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref(false)
@@ -40,6 +42,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref(0)
@@ -85,7 +89,7 @@ export default {
 
 ### 复选框组/复选框操作
 
-在复选框组中, 必须给`checkbox`设置`checked-value`用来标识，
+在复选框组中，必须给`checkbox`设置`checked-value`用来标识，
 复选框组会收集所有选择的标识。
 
 ```html
@@ -99,6 +103,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref([])

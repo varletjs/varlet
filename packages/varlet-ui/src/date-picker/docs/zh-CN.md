@@ -2,11 +2,12 @@
 
 ### 介绍
 
-用于选择一个日期或日期范围。
+用于选择日期或日期范围。
 
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { DatePicker } from '@varlet/ui'
 
 createApp().use(DatePicker)
@@ -127,7 +128,7 @@ export default {
     return {
       date,
       change,
-      allowedDates,
+      allowedDates
     }
   }
 }

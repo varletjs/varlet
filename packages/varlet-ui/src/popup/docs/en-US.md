@@ -1,7 +1,7 @@
 # Popup
 
 ### Intro
-Create a container that displays information from top, bottom, left, right, center, and Popup. `teleport` inserts into the end of the `body` by default
+Create a container that can pop up from top, bottom, left, right and center. `teleport` inserts into the end of the `body` by default
 
 ### Install
 
@@ -108,6 +108,8 @@ createApp().use(Popup)
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const center = ref(false)
@@ -121,9 +123,9 @@ export default {
       top,
       bottom,
       left,
-      right,
+      right
     }
-  },
+  }
 }
 ```
 
@@ -188,6 +190,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const overlayClass = ref(false)
@@ -195,9 +199,9 @@ export default {
 
     return {
       overlayClass,
-      overlayStyle,
+      overlayStyle
     }
-  },
+  }
 }
 ```
 
@@ -247,6 +251,7 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 export default {
@@ -255,9 +260,9 @@ export default {
 
     return {
       event,
-      Snackbar,
+      Snackbar
     }
-  },
+  }
 }
 ```
 

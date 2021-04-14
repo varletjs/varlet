@@ -2,7 +2,7 @@ export default {
   popupPosition: '弹出位置',
   centerPopup: '居中弹出',
   belowPopup: '下方弹出',
-  abovePopup: '下方弹出',
+  abovePopup: '上方弹出',
   leftPopup: '左侧弹出',
   rightPopup: '右侧弹出',
   overlayStyle: '遮罩层样式',

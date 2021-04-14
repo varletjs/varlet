@@ -12,12 +12,14 @@ createApp().use(Counter)
 ### 基本使用
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref(0)
 
     return { value }
-  },
+  }
 }
 ```
 
@@ -69,7 +71,7 @@ export default {
 ### 异步变更
 
 在某些场景下需要等待服务器返回成功之后再执行变更。
-设置`lazy-change`后会阻止组件本身的绑定值更新操作。
+设置`lazy-change`后会阻止组件本身的绑定值更新操作，
 并注册`before-change`事件进行手动更新。
 
 ```html
@@ -81,6 +83,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref(0)

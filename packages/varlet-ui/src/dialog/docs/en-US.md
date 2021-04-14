@@ -101,6 +101,7 @@ Dialog({
 ```
 
 ```js
+import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 export default {
@@ -128,6 +129,7 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const actions = {
@@ -174,6 +176,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const show = ref(false)
@@ -228,7 +232,7 @@ export default {
 | --- | --- | --- | --- | 
 | `title` | Dialog title | _string_ | `Hint` |
 | `message` | Dialog message content | _string_ | `-` |
-| `messageAlign` | Dialog message content text alignment, optional values `center`, `left`, `right` | _string_ | `left` |
+| `messageAlign` | Dialog message content text alignment, optional values `center` `left` `right` | _string_ | `left` |
 | `confirmButton` | Whether to display the confirm button | _boolean_ | `true` |
 | `cancelButton` | Whether to display the cancel button | _boolean_ | `true` |
 | `confirmButtonText` | Confirm button text | _string_ | `确认` |

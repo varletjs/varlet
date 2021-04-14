@@ -38,7 +38,7 @@ createApp().use(Lazy)
 ```
 
 ### 内联属性
-可以通过内联属性修改`loading`, `error`图片和`加载失败时尝试重新加载的次数`.
+可以通过内联属性修改`loading`、`error`图片和`加载失败时尝试重新加载的次数`。
 
 ```html
 <img 
@@ -51,7 +51,7 @@ createApp().use(Lazy)
 
 ### 插件
 
-Lazy提供了在插件注册时传入的选项，可以设置默认的懒加载选项。
+`Lazy`提供了在插件注册时传入的选项，可以设置默认的懒加载选项。
 
 ```js
 import { createApp } from 'vue'
@@ -85,9 +85,9 @@ createApp().use(Lazy, {
 
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
-| `loading` | 加载中的图片, 尽可能选择加载速度很快的图片 | _string_ | `1像素透明图片` |
+| `loading` | 加载中的图片，尽可能选择加载速度很快的图片 | _string_ | `1像素透明图片` |
 | `error` | 加载失败显示的图片 | _string_ | `1像素透明图片` |
 | `attempt` | 加载失败时尝试重新加载的次数 | _number_ | `3` |  
-| `throttleWait` | 节流时间, 数值越大事件触发频率越低 | _number_ | `300` |
+| `throttleWait` | 节流时间，数值越大事件触发频率越低 | _number_ | `300` |
 | `events` | 触发可见性检测注册的事件列表 | _string[]_ | `['scroll'...]` |
 | `filter` | 属性拦截函数 | _(lazy: Lazy) => void_ | `() => void` |

@@ -13,7 +13,11 @@
           height: toSizeUnit(size),
           borderRadius: '50%',
         }"
-        :class="{ 'var-rate--disabled': formDisabled, 'var-rate--error': errorMessage }"
+        :class="{
+          'var-rate--disabled': formDisabled,
+          'var-rate--error': errorMessage,
+          'var-rate--primary': type !== 'empty' && !transformValue(val).color,
+        }"
       >
         <var-icon
           :transition="0"
@@ -56,12 +60,19 @@ export default defineComponent({
 
     const transformValue = (index: number) => {
       const { modelValue, disabled, disabledColor, color, half, emptyColor } = props
+      let iconColor = null
+
+      if (disabled || form?.disabled.value) {
+        iconColor = disabledColor
+      } else if (color) {
+        iconColor = color
+      }
 
       if (index <= toNumber(modelValue)) {
-        return { type: 'full', score: index, color: disabled || form?.disabled.value ? disabledColor : color }
+        return { type: 'full', score: index, color: iconColor }
       }
       if (half && index <= toNumber(modelValue) + 0.5) {
-        return { type: 'half', score: index, color: disabled || form?.disabled.value ? disabledColor : color }
+        return { type: 'half', score: index, color: iconColor }
       }
       return { type: 'empty', score: index, color: disabled || form?.disabled.value ? disabledColor : emptyColor }
     }

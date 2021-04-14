@@ -16,6 +16,8 @@ createApp().use(Form)
 ### 表单示例
 
 ```js
+import { reactive, ref } from 'vue'
+
 export default {
   setup() {
     const formData = reactive({
@@ -29,7 +31,7 @@ export default {
       group: [],
       score:0,
       like: [],
-      files: [],
+      files: []
     })
 
     const form = ref(null)
@@ -40,9 +42,9 @@ export default {
       form,
       formData,
       disabled,
-      readonly,
+      readonly
     }
-  },
+  }
 }
 ```
 

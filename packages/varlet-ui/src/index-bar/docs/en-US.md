@@ -7,6 +7,7 @@ Hyperlinks to scroll on one page.
 ### Install
 
 ```js
+import { createApp } from 'vue'
 import { IndexBar, IndexAnchor } from '@varlet/ui'
 
 createApp().use(IndexBar).use(IndexAnchor)
@@ -32,6 +33,8 @@ When you click the index bar, it will automatically jump to the corresponding `I
 </var-index-bar>
 ```
 ```javascript
+import { ref } from 'vue'
+
   export default {
     setup() {
       const active = ref('A')
@@ -64,17 +67,17 @@ When you click the index bar, it will automatically jump to the corresponding `I
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `v-model:active` | The currently active anchor | _number \| string_ | - |
+| `v-model:active` | The currently active anchor | _string \| number_ | `-` |
 | `sticky` | Whether to enable anchor sticky top | _boolean_ | `true` |
 | `sticky-offset-top` | Anchor offset top when sticky | _number_ | `0` |
-| `z-index` | z-index | _number \| string_ | `1` |
+| `z-index` | z-index | _string \| number_ | `1` |
 | `highlight-color` | Index character highlight color | _string_ | `#ee0a24` |
 
 ### IndexAnchor Props
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `index` | Index | _number \| string_ | - |
+| `index` | Index | _string \| number_ | `-` |
 
 ### Events
 
@@ -91,7 +94,7 @@ When you click the index bar, it will automatically jump to the corresponding `I
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
-| `default` | Custom index character | - |
+| `default` | Custom index character | `-` |
 
 ### Methods
 Use ref to get IndexBar instance and call instance methods.

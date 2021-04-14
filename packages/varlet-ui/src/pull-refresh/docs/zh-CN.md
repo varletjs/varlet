@@ -7,6 +7,7 @@
 ### 引入
 
   ```js
+import { createApp } from 'vue'
 import { PullRefresh } from '@varlet/ui'
 
 createApp().use(PullRefresh)
@@ -29,6 +30,8 @@ createApp().use(PullRefresh)
 ```
 
 ```javascript
+import { ref } from 'vue'
+
 const data1 = Array(10).fill('List Item')
 const data2 = Array(10).fill('This is new List Item')
 
@@ -59,10 +62,10 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `v-model` | 是否处于加载中状态| _boolean_ | - |
+| `v-model` | 是否处于加载中状态| _boolean_ | `-` |
 | `disabled` | 是否禁用下拉刷新 | _boolean_ | `false` |
-| `animation-duration` | 加载结束后回到初始位置的动画时长(ms) | _number \| string_ | `300` |
-| `success-duration` | 成功提示展示时长(ms) | _number \| string_ | `2000` |
+| `animation-duration` | 加载结束后回到初始位置的动画时长(ms) | _string \| number_ | `300` |
+| `success-duration` | 成功提示展示时长(ms) | _string \| number_ | `2000` |
 | `bgColor` | control的背景颜色 | _string_ | `#005CAF` |
 | `color` | control 的颜色 | _string_ | `#ffffff` |
 | `successBgColor` | 成功状态下control的背景颜色 | _string_ | `#4CAF50` |
@@ -72,13 +75,13 @@ export default {
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------------- | -------- |
-| `refresh` | 下拉刷新时触发| - |
+| `refresh` | 下拉刷新时触发| `-` |
 
 ### 插槽
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
-| `default` | 默认插槽 | - |
+| `default` | 默认插槽 | `-` |
 
 ### 主题变量
 #### 以下less变量可通过构建时进行变量覆盖从而修改主题样式

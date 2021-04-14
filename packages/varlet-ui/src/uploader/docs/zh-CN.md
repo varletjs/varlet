@@ -1,7 +1,7 @@
 # 文件上传
 
 ### 介绍
-提供了文件读取, 图片/视频预览能力。
+提供了文件读取、图片/视频预览能力。
 通过监听`after-read`事件获取文件上传服务器。
 
 ### 引入
@@ -20,6 +20,8 @@ createApp().use(Uploader)
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([])
@@ -28,9 +30,9 @@ export default {
 
     return {
       files,
-      handleAfterRead,
+      handleAfterRead
     }
-  },
+  }
 }
 ```
 
@@ -43,6 +45,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([
@@ -57,19 +61,21 @@ export default {
     ])
 
     return { files }
-  },
+  }
 }
 ```
 
 ### 上传状态
 
-提供了`loading`, `success`, `error`三种上传状态, 并提供了工具函数快速获取对应状态的文件。
+提供了`loading`、 `success`、`error`三种上传状态，并提供了工具函数快速获取对应状态的文件。
 
 ```html
 <var-uploader v-model="files" @after-read="handleAfterRead"/>
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([
@@ -102,7 +108,7 @@ export default {
       files,
       handleAfterRead
     }
-  },
+  }
 }
 ```
 
@@ -114,13 +120,15 @@ export default {
 
 ### 文件大小限制
 
-超过限制会被阻止读取, 可以通过监听`oversize`事件获取文件。
+超过限制会被阻止读取，可以通过监听`oversize`事件获取文件。
 
 ```html
 <var-uploader v-model="files" :maxsize="1024" @oversize="handleOversize" />
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([])
@@ -137,13 +145,15 @@ export default {
 
 ### 上传预处理
 
-通过注册`before-read`事件对文件进行操作, 返回假值阻止文件读取。
+通过注册`before-read`事件对文件进行操作，返回假值阻止文件读取。
 
 ```html
 <var-uploader v-model="files" @before-read="handleBeforeRead"/>
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const files = ref([])
@@ -154,7 +164,7 @@ export default {
       files,
       handleAfterRead
     }
-  },
+  }
 }
 ```
 
@@ -174,7 +184,7 @@ export default {
 
 通过传入一个校验器数组可以对值进行校验，校验器返回`true`则为校验通过。
 以外的值将转换为文本作为用户提示。
-第二个参数是一个工具函数集合, 可以快速获取符合状态的文件集合。
+第二个参数是一个工具函数集合，可以快速获取符合状态的文件集合。
 
 ```html
 <var-uploader
@@ -198,14 +208,14 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
 | `v-model` | 文件列表 | _VarFile[]_ | `[]` |
-| `accept` | 接受的文件类型, 与原生属性一致 | _string_ | `image/*` |
-| `capture` | 获取文件方式, 与原生属性一致 | _string_ | `-` |
+| `accept` | 接受的文件类型，与原生属性一致 | _string_ | `image/*` |
+| `capture` | 获取文件方式，与原生属性一致 | _string_ | `-` |
 | `multiple` | 是否多选文件 | _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `removable` | 是否可以删除 | _boolean_ | `false` |
-| `maxlength` | 最大文件个数 | _number \| string_ | `-` |
-| `maxsize` | 最大文件大小 | _number \| string_ | `-` |
+| `maxlength` | 最大文件个数 | _string \| number_ | `-` |
+| `maxsize` | 最大文件大小 | _string \| number_ | `-` |
 | `previewed` | 是否允许预览 | _boolean_ | `true` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
 | `validate-trigger` | 触发验证的时机， 可选值为 `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
@@ -219,8 +229,8 @@ export default {
 | `name` | 文件名 | _string_ | `-` |
 | `url` | 文件地址 | _string_ | `-` |
 | `cover` | 封面图 | _string_ | `-` |
-| `fit` | 封面图填充模式 可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_ | `-` |
-| `state` | 文件上传状态 可选值为 `loading` `success` `error` | _string_ | `-` |
+| `fit` | 封面图填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_ | `-` |
+| `state` | 文件上传状态，可选值为 `loading` `success` `error` | _string_ | `-` |
 
 ### VarFileUtils
 
@@ -245,7 +255,7 @@ export default {
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `before-read` | 文件读取前触发 返回假值阻止文件读取(支持promise) | `file: VarFile` |
+| `before-read` | 文件读取前触发，返回假值阻止文件读取(支持promise) | `file: VarFile` |
 | `after-read` | 文件读取后触发 | `file: VarFile` |
 | `oversize` | 文件超过限制大小时触发 | `file: VarFile` |
 | `remove` | 文件删除时触发 | `file: VarFile` |

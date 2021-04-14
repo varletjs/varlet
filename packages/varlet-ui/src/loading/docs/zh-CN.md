@@ -3,6 +3,7 @@
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { Loading } from '@varlet/ui'
 
 createApp().use(Loading)

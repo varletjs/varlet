@@ -7,6 +7,7 @@
 ### 引入
 
 ```js
+import { createApp } from 'vue'
 import { Switch } from '@varlet/ui'
 
 createApp().use(Switch)
@@ -19,8 +20,9 @@ createApp().use(Switch)
 <var-switch v-model="value1" disabled />
 <var-switch v-model="value1" readonly />
 ```
-```javascript
 
+```javascript
+import { ref } from 'vue'
 export default {
   setup() {
     const value = ref(true)
@@ -60,9 +62,9 @@ export default {
 
 ### 值的校验
 
-使用`rules`属性对值进行校验。
+通过`rules`属性对值进行校验。
 
-<span style="font-size: 12px">`rules`是一个可以接受 `function`，`boolean` 和 `string` 的数组。 函数传递输入值作为参数，必须返回 `true` / `false` 或包含错误消息的 `string` 。 如果函数返回 (或数组包含的任何值) `false`或`string`，输入字段将输入错误状态。</span>
+<span style="font-size: 12px">`rules`是一个可以接受 `function`、`boolean` 和 `string` 的数组。 函数传递输入值作为参数，必须返回 `true` / `false` 或包含错误消息的 `string` ， 如果函数返回 (或数组包含的任何值) `false`或`string`，输入字段将输入错误状态。</span>
 
 ```html
 <var-cell>

@@ -1,7 +1,8 @@
 # Skeleton
 
 ### Intro
-Display some placeholder elements with transition effects to optimize your loading process
+
+Display some space occupying elements with transition effect to optimize the loading process.
 
 ### Install
 
@@ -19,12 +20,14 @@ createApp().use(Skeleton)
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const loading = ref(true)
 
     return { loading }
-  },
+  }
 }
 ```
 
@@ -32,16 +35,6 @@ export default {
 
 ```html
  <var-skeleton title :loading="loading">Loading Data</var-skeleton>
-```
-
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  },
-}
 ```
 
 ### Custom Rows Height
@@ -57,16 +50,6 @@ export default {
 </var-skeleton>
 ```
 
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  },
-}
-```
-
 ### Display Avatar
 
 ```html
@@ -78,16 +61,6 @@ export default {
 >
 	Loading Data
 </var-skeleton>
-```
-
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  },
-}
 ```
 
 ### Display Card
@@ -104,16 +77,6 @@ export default {
 </var-skeleton>
 ```
 
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  },
-}
-```
-
 ### Fullscreen Mode
 
 ```html
@@ -123,16 +86,6 @@ export default {
 <var-skeleton fullscreen :loading="loading" />
 ```
 
-```js
-export default {
-  setup() {
-    const loading = ref(true)
-
-    return { loading }
-  },
-}
-```
-
 ## API
 
 ### Props
@@ -140,15 +93,15 @@ export default {
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
 | `loading` | Loading Status Set to `true` to turn on the skeleton | _boolean_ | `true` |
-| `title` | Whether to display the title | _boolean_ | `true` |
-| `card` | Whether to display the card | _boolean_ | `true` |
-| `avatar` | Whether to display the avatar | _boolean_ | `true` |
-| `fullscreen` | Whether to enable fullscreen mode | _boolean_ | `true` |
-| `title-width` | Title Width(px, rem, %)  | _number \| string_ | `50%` |
-| `card-height` | Card Height(px, rem, %)  | _number \| string_ | `160px` |
-| `avatar-size` | Avatar size(px, rem, %)  | _number \| string_ | `34px` |
-| `rows` | The paragraph number of rows | _number \| string_ | `3` |
-| `rows-width` | The width of each line of a paragraph | _(number \| string)[]_ | `['12px', '12px', '12px']` |
+| `title` | Whether to display the title | _boolean_ | `false` |
+| `card` | Whether to display the card | _boolean_ | `false` |
+| `avatar` | Whether to display the avatar | _boolean_ | `false` |
+| `fullscreen` | Whether to enable fullscreen mode | _boolean_ | `false` |
+| `title-width` | Title Width(px, rem, %)  | _string \| number_ | `50%` |
+| `card-height` | Card Height(px, rem, %)  | _string \| number_ | `160px` |
+| `avatar-size` | Avatar size(px, rem, %)  | _string \| number_ | `34px` |
+| `rows` | The paragraph number of rows | _string \| number_ | `3` |
+| `rows-width` | The width of each line of a paragraph | _number[] \| string[]_ | `['12px', '12px', '12px']` |
 
 ### Slots
 

@@ -51,6 +51,8 @@ const { state, texts, indexes } = await Picker({
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const columns = ref([
@@ -60,7 +62,7 @@ export default {
     ])
 
     return { columns }
-  },
+  }
 }
 ```
 
@@ -71,6 +73,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const columns = ref([
@@ -89,7 +93,7 @@ export default {
             text: '石家庄市'
           }
         ]
-      },
+      }
     ])
 
     return { columns }
@@ -101,6 +105,7 @@ export default {
 The component library provides complete provincial information and can be used directly.
 
 ```js
+import { ref } from 'vue'
 import area from '@varlet/ui/json/area.json'
 
 export default {
@@ -108,7 +113,7 @@ export default {
     const columns = ref(area)
 
     return { columns }
-  },
+  }
 }
 ```
 
@@ -125,8 +130,8 @@ export default {
 | `text-key` | The attribute key of the text | _string_ | `text` |
 | `toolbar` | Whether to display the top toolbar | _string_ | `true` |
 | `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
-| `option-height` | Option height(px rem) | _number \| string_ | `44` |
-| `option-count` | Number of options visible | _number \| string_ | `6` |
+| `option-height` | Option height(px rem) | _string \| number_ | `44` |
+| `option-count` | Number of options visible | _string \| number_ | `6` |
 | `confirm-button-text` | Confirm button text | _string_ | `Confirm` |
 | `cancel-button-text` | Cancel button text | _string_ | `Cancel` |
 | `confirm-button-text-color` | Confirm the button text color | _string_ | `-` |
@@ -141,8 +146,8 @@ export default {
 | `textKey` | The attribute key of the text | _string_ | `text` |
 | `toolbar` | Whether to display the top toolbar | _string_ | `true` |
 | `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
-| `optionHeight` | Option height(px, rem) | _number \| string_ | `44` |
-| `optionCount` | Number of options visible | _number \| string_ | `6` |
+| `optionHeight` | Option height(px, rem) | _string \| number_ | `44` |
+| `optionCount` | Number of options visible | _string \| number_ | `6` |
 | `confirmButtonText` | Confirm button text | _string_ | `Confirm` |
 | `cancelButtonText` | Cancel button text | _string_ | `Cancel` |
 | `confirmButtonTextColor` | Confirm the button text color | _string_ | `-` |

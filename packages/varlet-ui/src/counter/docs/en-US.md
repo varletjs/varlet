@@ -12,12 +12,14 @@ createApp().use(Counter)
 ### Basic Usage
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref(0)
 
     return { value }
-  },
+  }
 }
 ```
 
@@ -81,6 +83,8 @@ Register `before-change` events for manual updates.
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const value = ref(0)

@@ -1,7 +1,7 @@
 # 无限滚动列表
 
 ### 介绍
-无限滚动加载列表，触底加载，支持手动检查位置并记载。支持自定义加载状态，错误状态，数据加载完成状态。
+无限滚动加载列表、触底加载，支持手动检查位置并加载。支持自定义加载状态、错误状态、数据加载完成状态。
 
 ### 引入
 
@@ -29,6 +29,8 @@ createApp().use(List)
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const loading = ref(false)
@@ -53,7 +55,7 @@ export default {
       list,
       loading,
       finished,
-      load,
+      load
     }
   }
 }
@@ -76,6 +78,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const loading = ref(false)
@@ -102,7 +106,7 @@ export default {
       list,
       loading,
       error,
-      load,
+      load
     }
   }
 }
@@ -126,6 +130,8 @@ export default {
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const loading = ref(false)
@@ -150,7 +156,7 @@ export default {
       list,
       loading,
       finished,
-      load,
+      load
     }
   }
 }
@@ -172,7 +178,7 @@ export default {
 | `v-model:error` | 错误状态 | _boolean_ | `false` |
 | `immediate-check` | 是否在组件初始化时立刻检测位置 | _boolean_ | `true` |
 | `finished` | 是否加载完毕 | _boolean_ | `false` |
-| `offset` | 距离底部的触发距离(px, rem) | _number \| string_ | `0` |
+| `offset` | 距离底部的触发距离(px, rem) | _string \| number_ | `0` |
 | `loading-text` | 加载状态文字 | _string_ | `加载中` |
 | `finished-text` | 加载完毕文字 | _string_ | `没有更多了` |
 | `error-text` | 加载失败文字 | _string_ | `加载失败` |

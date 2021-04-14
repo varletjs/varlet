@@ -3,7 +3,7 @@
 ### 介绍
 
 组件提供了更方便的尺寸，填充模式，圆角的设置方式，水波效果增强图片点击交互体验。
-支持`懒加载`，`loading图片`, `error图片`, 应用`Lazy`指令的默认设置。
+支持`懒加载`、`loading图片`、 `error图片`、应用`Lazy`指令的默认设置。
 
 ### 引入
 
@@ -112,7 +112,7 @@ createApp().use(Image)
 | `lazy` | 是否开启懒加载 | _boolean_ | `false` |
 | `loading` | 当开启懒加载时, 加载中显示的图片 | _string_ | `-` |
 | `error` | 当开启懒加载时, 加载失败显示的图片 | _string_ | `-` |
-| `ripple` | 是否开启水波 | _string_ | `-` |
+| `ripple` | 是否开启水波 | _string_ | `false` |
 | `block` | 是否是块级元素 | _boolean_ | `true` |
 
 ### 事件

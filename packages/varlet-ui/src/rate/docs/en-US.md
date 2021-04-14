@@ -169,27 +169,27 @@ Other values are converted to text as a user prompt。
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| `v-model` | The current rating  | _number_,_string_ | `0` |
-| `count` | total rating  | _number_,_string_ | `5` |
-| `color` | The color of the icon when selected  | _string_ | `#ff9800` |
+| `v-model` | The current rating  | _number \| string_ | `0` |
+| `count` | total rating  | _number \| string_ | `5` |
+| `color` | The color of the icon when selected  | _string_ | `Primary Color` |
 | `icon` | The icon style when the entire icon is selected  | _string_ | `star` |
 | `empty-color` | The color of the icon when unchecked | _string_ | `#bdbdbd` |
 | `empty-icon` | Style of the icon when unchecked | _string_ | `star-outline` |
-| `size` | Icon size, default unit is `px` | _number_,_string_ | `20` |
-| `gap` | Icon spacing, default unit is `px` | _number_,_string_ | `4` |
+| `size` | Icon size, default unit is `px` | _number \| string_ | `20` |
+| `gap` | Icon spacing, default unit is `px` | _number \| string_ | `4` |
 | `half` | Whether half selection is allowed | _boolean_ | `false` |
 | `half-icon` | The half-selected icon style only works if `half` is `true` | _string_ | `star-half-full`|
 | `disabled` | Whether or not rating is prohibited | _boolean_ | `false`|
 | `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `#bdbdbd`|
 | `readonly` | Whether to use rating read-only | _boolean_ | `false`|
 | `ripple` | Whether to use water ripple | _boolean_ | `true`|
-| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: string | number) => any>_ | `-` |
+| `rules` | The validation rules，Returns `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string \| number) => any>_ | `-` |
 
 ### Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `change` | Triggered when the rating changes | The rating of the current click |
+| `change` | Triggered when the rating changes | `value: string \| number` |
 
 ### Theme Variables
 #### The following LESS variables can be overridden at build time to modify the theme style
@@ -198,6 +198,7 @@ Other values are converted to text as a user prompt。
 
 | Variable | Default |
 | --- | --- |
+| `@rate-primary-color` | `@color-primary` |
 | `@rate-disabled-color` | `#aaa` |
 | `@rate-error-color` | `@color-danger` |
 | `@rate-action-padding` | `4px` |

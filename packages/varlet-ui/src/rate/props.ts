@@ -19,7 +19,6 @@ export const props = {
   //  选中时的颜色
   color: {
     type: String,
-    default: '#ff9800',
   },
   // 选中时图标样式
   icon: {

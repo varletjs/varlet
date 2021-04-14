@@ -2,7 +2,7 @@
 
 ### 介绍
 
-使用`Tabs`, `Tab`实现选项卡组的切换。使用`TabsItems`, `TabItem`实现和选项卡组的视图联动。
+使用`Tabs`、`Tab`实现选项卡组的切换。使用`TabsItems`、`TabItem`实现和选项卡组的视图联动。
 
 ### 引入
 
@@ -28,12 +28,14 @@ createApp()
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const active = ref(0)
 
     return { active }
-  },
+  }
 }
 ```
 
@@ -51,12 +53,14 @@ Tabs默认通过`active`去匹配Tab的`index`来决定哪个选项卡被激活�
 ```
 
 ```js
+import { ref } from 'vue'
+
 export default {
   setup() {
     const active = ref('选项1')
 
     return { active }
-  },
+  }
 }
 ```
 
