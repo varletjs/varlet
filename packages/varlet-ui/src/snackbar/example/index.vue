@@ -56,12 +56,12 @@
 </template>
 
 <script>
-import { defineComponent, reactive, toRefs } from 'vue'
+import Snackbar from '../index'
 import Button from '../../button'
-import Snackbar from '..'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { defineComponent, reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
 
 export default defineComponent({
   name: 'SnackbarExample',

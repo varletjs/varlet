@@ -1,3 +1,3 @@
 import { VarComponent } from './varComponent'
 
-export class Steps extends VarComponent {}
+export class Step extends VarComponent {}

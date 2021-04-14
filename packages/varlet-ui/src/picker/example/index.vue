@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Picker from '..'
+import Picker from '../index'
 import Button from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import area from '../../../json/area.json'

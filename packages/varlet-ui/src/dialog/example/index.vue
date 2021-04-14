@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import Dialog from '..'
+import Dialog from '../index'
 import Button from '../../button'
 import Icon from '../../icon'
 import Snackbar from '../../snackbar'
