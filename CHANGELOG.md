@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.2](https://github.com/haoziqaq/varlet/compare/v0.12.1...v0.12.2) (2021-04-14)
+
+
+### Bug Fixes
+
+* **ui/types:** 修复checkboxGroup steps step类型声明问题 ([706632c](https://github.com/haoziqaq/varlet/commit/706632ce69a04595298ae60b9024882158fdb913))
+
+
+
+
+
 ## [0.12.1](https://github.com/haoziqaq/varlet/compare/v0.12.0...v0.12.1) (2021-04-14)
 
 
