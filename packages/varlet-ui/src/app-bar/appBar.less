@@ -1,11 +1,15 @@
 @import '../styles/elevation';
 
+@app-bar-height: 50px;
+@app-bar-padding: 0 10px;
+@app-bar-title-line-height: 50px;
+
 .var-app-bar {
-  height: 50px;
+  height: @app-bar-height;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 10px;
+  padding: @app-bar-padding;
   position: relative;
 
   &__title {
@@ -13,7 +17,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    line-height: 50px;
+    line-height: @app-bar-title-line-height;
     display: flex;
   }
 

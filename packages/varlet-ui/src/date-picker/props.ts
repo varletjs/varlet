@@ -4,8 +4,8 @@ type AllowedDates = (val: string) => boolean
 
 type DatePickerType = 'date' | 'month'
 
-function typeValidator(mode: string): boolean {
-  return ['date', 'month'].includes(mode)
+function typeValidator(type: string): boolean {
+  return ['date', 'month'].includes(type)
 }
 
 export type ComponentProps = {

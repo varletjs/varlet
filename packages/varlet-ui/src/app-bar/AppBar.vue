@@ -23,7 +23,7 @@
     </div>
 
     <div class="var-app-bar__right" v-if="$slots.right">
-      <slot name="right"></slot>
+      <slot name="right" />
     </div>
   </div>
 </template>

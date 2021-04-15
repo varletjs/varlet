@@ -73,16 +73,16 @@ export default {
 
 ```html
 <var-badge type="danger" position="right-top">
-<var-chip plain :round="false" color="#009688">右上</var-chip>
+  <var-chip plain :round="false" color="#009688">右上</var-chip>
 </var-badge>
 <var-badge type="danger" position="right-bottom">
-<var-chip plain :round="false" color="#009688">右下</var-chip>
+  <var-chip plain :round="false" color="#009688">右下</var-chip>
 </var-badge>
 <var-badge type="danger" position="left-top">
-<var-chip plain :round="false" color="#009688">左上</var-chip>
+  <var-chip plain :round="false" color="#009688">左上</var-chip>
 </var-badge>
 <var-badge type="danger" position="left-bottom">
-<var-chip plain :round="false" color="#009688">左下</var-chip>
+  <var-chip plain :round="false" color="#009688">左下</var-chip>
 </var-badge>
 ```
 
@@ -93,7 +93,7 @@ export default {
 ```html
 <var-button @click="handleChange">点击改变状态</var-button>
 <var-badge type="danger" position="right-top" :hidden="hidden">
-<var-chip plain :round="false" color="#009688">徽标</var-chip>
+  <var-chip plain :round="false" color="#009688">徽标</var-chip>
 </var-badge>
 ```
 
@@ -122,7 +122,7 @@ export default {
 
 ```html
 <var-badge color="#6200ea" position="right-top">
-<var-chip plain :round="false" color="#009688">徽标</var-chip>
+  <var-chip plain :round="false" color="#009688">徽标</var-chip>
 </var-badge>
 ```
 

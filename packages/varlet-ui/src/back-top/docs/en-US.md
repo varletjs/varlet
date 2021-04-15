@@ -49,7 +49,7 @@ export default {
 | ----- | -------------- | -------- |
 | `click` | Triggers when click | `event: Event` |
 
-### 插槽
+### Slots
 
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |

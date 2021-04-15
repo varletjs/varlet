@@ -3,7 +3,7 @@ import { PropType } from 'vue'
 export type ValidateTriggers = 'onChange'
 
 export const props = {
-  //  当前分数
+  // 当前分数
   modelValue: {
     type: [String, Number],
     default: 0,
@@ -16,7 +16,7 @@ export const props = {
     type: [String, Number],
     default: 5,
   },
-  //  选中时的颜色
+  // 选中时的颜色
   color: {
     type: String,
   },
@@ -25,12 +25,12 @@ export const props = {
     type: String,
     default: 'star',
   },
-  //  未选中的图标的颜色
+  // 未选中的图标的颜色
   emptyColor: {
     type: String,
     default: '#555555',
   },
-  //  未选中时图标样式
+  // 未选中时图标样式
   emptyIcon: {
     type: String,
     default: 'star-outline',
@@ -46,7 +46,7 @@ export const props = {
     default: '2',
   },
 
-  //  是否使用半评分
+  // 是否使用半评分
   half: {
     type: Boolean,
     default: false,
@@ -56,7 +56,7 @@ export const props = {
     type: String,
     default: 'star-half-full',
   },
-  //  是否禁用
+  // 是否禁用
   disabled: {
     type: Boolean,
     default: false,
@@ -66,12 +66,12 @@ export const props = {
     type: String,
     default: '#bdbdbd',
   },
-  //  是否只读
+  // 是否只读
   readonly: {
     type: Boolean,
     default: false,
   },
-  //  点击时是否有水波纹样式
+  // 点击时是否有水波纹样式
   ripple: {
     type: Boolean,
     default: true,
@@ -83,7 +83,7 @@ export const props = {
   rules: {
     type: Array as PropType<Array<(value: any) => any>>,
   },
-  //  点击回调
+  // 点击回调
   onChange: {
     type: Function as PropType<(value: any) => void>,
   },

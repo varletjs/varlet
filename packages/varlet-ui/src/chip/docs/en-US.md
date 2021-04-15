@@ -68,7 +68,8 @@ Set the paper to be closable through the `closable` attribute, and use the `clos
   icon-name="delete" 
   v-if="show1" 
   @close="show1 = false">
-  Custom Close Icon</var-chip>
+  Custom Close Icon
+</var-chip>
 ```
 
 ```js

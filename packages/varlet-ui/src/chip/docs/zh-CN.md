@@ -68,7 +68,8 @@ createApp().use(Chip)
   icon-name="delete"
   v-if="show1"
   @close="show1 = false">
-  自定义关闭图标</var-chip>
+  自定义关闭图标
+</var-chip>
 ```
 
 ```js

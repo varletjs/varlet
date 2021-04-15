@@ -198,7 +198,7 @@ export default {
 | ---- | ---- | ---- | ---- |
 | `color` | 背景颜色 | _string_ | `#2979ff` |
 | `text-color` | 文字颜色 | _string_ | `#ffffff` |
-| `title` | 标题 | _string_ | `_` |
+| `title` | 标题 | _string_ | - |
 | `title-position` | 标题位置,可选值为 `left`,`center`,`right` | _string_ | `left` |
 | `elevation` | 是否给导航栏设置海拔 | _boolean_ | `true` |
 
@@ -206,7 +206,16 @@ export default {
 
 | 名称 | 说明 | 参数 |
 | ---- | ---- | ----|
-| `default` | 自定义标题内容,会覆盖`title`的内容 | `_` |
-| `left` | 插入至导航栏左侧的内容 | `_` |
-| `right` | 插入至导航栏右侧的内容 | `_` |
+| `default` | 自定义标题内容,会覆盖`title`的内容 | - |
+| `left` | 插入至导航栏左侧的内容 | - |
+| `right` | 插入至导航栏右侧的内容 | - |
+
+### 主题变量
+#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `@app-bar-height` | `50px` |
+| `@app-bar-padding` | `0 10px` |
+| `@app-bar-title-line-height` | `50px` |
 

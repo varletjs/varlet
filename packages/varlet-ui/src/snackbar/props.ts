@@ -3,9 +3,9 @@ import { pickProps } from '../utils/components'
 import { props as loadingProps } from '../loading/props'
 import { SNACKBAR_TYPE, SnackbarType } from './index'
 
-export function positionValidator(type: string): boolean {
+export function positionValidator(position: string): boolean {
   const validPositions = ['top', 'center', 'bottom']
-  return validPositions.includes(type)
+  return validPositions.includes(position)
 }
 
 export function typeValidator(type: SnackbarType): boolean {

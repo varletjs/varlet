@@ -100,9 +100,4 @@ export default {
   margin-right: 20px;
   margin-bottom: 8px;
 }
-
-.example-span {
-  font-size: 14px;
-  margin-right: 10px;
-}
 </style>
