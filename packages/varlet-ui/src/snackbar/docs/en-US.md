@@ -145,7 +145,6 @@ snackbar1.clear();
 | `loading-size` | Loading size (see `Loading` component) | _string_ | `normal` |
 | `lock-scroll`| Whether to disable rolling penetration | _boolean_  | `false` |
 | `forbid-click`| whether to penetrating clicks are forbidden | _boolean_  | `false` |
-| `icon-transition`| Whether to enable icon toggle animation | _boolean_  | `true` |
 | `teleport`| The location of the Snackbar to mount | _string_  | `body` |
 
 ### Events
@@ -196,7 +195,6 @@ The `clear` method on the instance can close the current instance, and the `clea
 | `loadingSize` | Loading size (see `Loading` component) | _string_ | `normal` |
 | `lockScroll`| Whether to disable rolling penetration | _boolean_  | `false` |
 | `forbidClick`| whether to penetrating clicks are forbidden | _boolean_  | `false` |
-| `iconTransition`| Whether to enable icon toggle animation | _boolean_  | `true` |
 | `onOpen` | Triggered when the `Snackbar` is open | - |
 | `onOpened` | Triggered when the `Snackbar` open-animation ends | - |
 | `onClose` |	Triggered when the `Snackbar` is close | - |

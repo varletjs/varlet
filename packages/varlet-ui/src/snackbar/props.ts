@@ -34,7 +34,7 @@ export const props = {
   // snackbar 持续时间
   duration: {
     type: Number,
-    default: 3000,
+    default: 3000000,
   },
   // 是否将消息条内容堆叠在操作（按钮）之上
   vertical: {
@@ -63,11 +63,6 @@ export const props = {
   forbidClick: {
     type: Boolean,
     default: false,
-  },
-  // 是否开启icon切换动画
-  iconTransition: {
-    type: Boolean,
-    default: true,
   },
   // 打开时的回调函数
   onOpen: {

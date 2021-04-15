@@ -5,7 +5,7 @@
         <slot>{{ content }}</slot>
       </div>
       <div class="var-snackbar__action">
-        <var-icon v-if="iconName" :transition="hasMounted && iconTransition ? 200 : 0" :name="iconName" />
+        <var-icon v-if="iconName" :name="iconName" />
         <var-loading v-if="type === 'loading'" :type="loadingType" :size="loadingSize" />
         <slot name="action" />
       </div>
@@ -41,7 +41,6 @@ export default defineComponent({
   props,
   setup(props) {
     const timer: Ref = ref(null)
-    const hasMounted: Ref<boolean> = ref(false)
     const { zIndex } = useZIndex(() => props.show, 1)
 
     useLock(props, 'show', 'lockScroll')
@@ -76,7 +75,6 @@ export default defineComponent({
     watch(
       () => props._update,
       () => {
-        hasMounted.value = true
         clearTimeout(timer.value)
         timer.value = setTimeout(() => {
           props['onUpdate:show']?.(false)
@@ -97,7 +95,6 @@ export default defineComponent({
       zIndex,
       snackbarClass,
       iconName,
-      hasMounted,
     }
   },
 })

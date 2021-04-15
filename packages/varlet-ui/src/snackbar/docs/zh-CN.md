@@ -144,7 +144,6 @@ snackbar1.clear();
 | `loading-size` | 加载动画大小(见`Loading`组件) | _string_ | `normal` |
 | `lock-scroll`| 是否禁止滚动穿透 | _boolean_  | `false` |
 | `forbid-click`| 是否禁止穿透点击 | _boolean_  | `false` |
-| `icon-transition`| 是否开启icon切换动画 | _boolean_  | `true` |
 | `teleport`| 弹出层挂载的位置 | _string_  | `body` |
 
 ### 事件
@@ -195,7 +194,6 @@ snackbar1.clear();
 | `loadingSize` | 加载动画大小(见`Loading`组件) | _string_ | `normal` |
 | `lockScroll`| 是否禁止滚动穿透 | _boolean_  | `false` |
 | `forbidClick`| 是否禁止穿透点击 | _boolean_  | `false` |
-| `iconTransition`| 是否开启icon切换动画 | _boolean_  | `true` |
 | `onOpen` | 	打开`Snackbar`时触发 | - |
 | `onOpened` | 	打开`Snackbar`动画结束时触发 | - |
 | `onClose` | 	关闭`Snackbar`时触发 | - |

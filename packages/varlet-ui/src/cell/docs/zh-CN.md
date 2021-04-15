@@ -16,12 +16,12 @@ createApp().use(Cell)
 ### 基本使用
 
 ```html
-<var-cell> This is Cell </var-cell>
+<var-cell> 这是单元格 </var-cell>
 ```
 
-### 显示Icon
+### 显示图标
 ```html
-<var-cell icon="fire" title="This is Cell">
+<var-cell icon="fire" title="这是单元格">
   <template #extra>
     <var-icon name="information" />
   </template>
@@ -30,12 +30,12 @@ createApp().use(Cell)
 
 ### 显示描述
 ```html
-<var-cell title="This is Cell" desc="description" />
+<var-cell title="这是单元格" desc="描述" />
 ```
 
 ### 显示边框
 ```html
-<var-cell border> This is Cell </var-cell>
+<var-cell border> 这是单元格 </var-cell>
 ```
 
 ## API
