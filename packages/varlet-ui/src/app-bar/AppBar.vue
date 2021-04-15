@@ -8,7 +8,7 @@
     }"
   >
     <div class="var-app-bar__left" v-if="$slots.left">
-      <slot name="left"></slot>
+      <slot name="left" />
     </div>
 
     <div
