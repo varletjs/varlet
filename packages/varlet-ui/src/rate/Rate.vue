@@ -16,7 +16,7 @@
         :class="{
           'var-rate--disabled': formDisabled,
           'var-rate--error': errorMessage,
-          'var-rate--primary': type !== 'empty' && !transformValue(val).color,
+          'var-rate--primary': transformValue(val).type !== 'empty' && !transformValue(val).color,
         }"
       >
         <var-icon
