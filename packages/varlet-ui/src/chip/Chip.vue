@@ -10,7 +10,7 @@
       <slot name="right" />
 
       <span v-if="closable" class="var-chip--close" @click="onClose">
-        <var-icon :name="`${iconName ? iconName : 'close-circle'}`"></var-icon>
+        <var-icon :name="`${iconName ? iconName : 'close-circle'}`" />
       </span>
     </span>
   </transition>
@@ -48,9 +48,9 @@ export default defineComponent({
     const contentClass: ComputedRef<Array<string | false | undefined>> = computed(() => {
       const { size, block, type, plain, round } = props
 
-      const blockClass = block ? `var--flex` : 'var--inline-flex'
+      const blockClass = block ? 'var--flex' : 'var--inline-flex'
       const plainTypeClass = plain ? `var-chip--plain var-chip--plain-${type}` : `var-chip--${type}`
-      const roundClass = round && `var-chip--round`
+      const roundClass = round && 'var-chip--round'
 
       return [`var-chip--${size}`, blockClass, plainTypeClass, roundClass]
     })
@@ -64,5 +64,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../icon/icon';
 @import './chip';
 </style>
