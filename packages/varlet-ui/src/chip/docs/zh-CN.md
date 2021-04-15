@@ -129,7 +129,7 @@ export default {
 
 ### 属性
 
-|参数 | 说明 | 类型 | 默认值 |
+| 参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ---- |
 | `type` | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `size` | 尺寸， 可选值为 `normal` `mini` `small` `large` | _string_ | `normal` |
@@ -153,7 +153,7 @@ export default {
 
 | 事件名 | 说明 | 回调参数 |
 | ---- | ---- | ---- |
-| `close` | 点击关闭按钮时触发，只有在显示关闭按钮的时候才能使用| `event: Event`  |
+| `close` | 点击关闭按钮时触发，只有在显示关闭按钮的时候才能使用 | `event: Event`  |
 
 ### 主题变量
 

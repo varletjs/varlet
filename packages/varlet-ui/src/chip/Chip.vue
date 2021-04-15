@@ -1,15 +1,15 @@
 <template>
   <transition name="var-fade">
-    <span v-bind="$attrs" v-ripple="{ disabled }" class="var-chip var--box" :class="contentClass" :style="controlStyle">
-      <slot name="left"></slot>
+    <span class="var-chip var--box" :class="contentClass" :style="chipStyles" v-bind="$attrs">
+      <slot name="left" />
 
       <span :class="[`var-chip--text-${size}`]">
         <slot />
       </span>
 
-      <slot name="right"></slot>
+      <slot name="right" />
 
-      <span v-if="closable" class="var-chip--close" @click="$props.onClose">
+      <span v-if="closable" class="var-chip--close" @click="onClose">
         <var-icon :name="`${iconName ? iconName : 'close-circle'}`"></var-icon>
       </span>
     </span>
@@ -17,47 +17,46 @@
 </template>
 
 <script lang="ts">
-import Ripple from '../ripple'
+import Icon from '../icon'
 import { defineComponent, computed, ComputedRef } from 'vue'
 import { props } from './props'
-import Icon from '../icon'
 
 export default defineComponent({
   name: 'VarChip',
   components: {
     [Icon.name]: Icon,
   },
-  directives: { Ripple },
   inheritAttrs: false,
   props,
   setup(props) {
-    const controlStyle = computed(() => {
-      if (props.plain) {
+    const chipStyles = computed(() => {
+      const { plain, textColor, color } = props
+
+      if (plain) {
         return {
-          color: props.textColor || props.color,
-          borderColor: props.color,
+          color: textColor || color,
+          borderColor: color,
         }
       }
 
       return {
-        color: props.textColor,
-        background: props.color,
+        color: textColor,
+        background: color,
       }
     })
 
     const contentClass: ComputedRef<Array<string | false | undefined>> = computed(() => {
       const { size, block, type, plain, round } = props
 
-      const blockClass = block ? 'var--flex' : 'var--inline-flex'
-      const plainTypeClass = plain ? `var-chip--plain-${type}` : `var-chip--${type}`
-      const plainClass = plain && `var-chip--plain`
+      const blockClass = block ? `var--flex` : 'var--inline-flex'
+      const plainTypeClass = plain ? `var-chip--plain var-chip--plain-${type}` : `var-chip--${type}`
       const roundClass = round && `var-chip--round`
 
-      return [`var-chip--${size}`, blockClass, plainTypeClass, plainClass, roundClass]
+      return [`var-chip--${size}`, blockClass, plainTypeClass, roundClass]
     })
 
     return {
-      controlStyle,
+      chipStyles,
       contentClass,
     }
   },
