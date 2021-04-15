@@ -58,13 +58,15 @@ export default defineComponent({
 .var-index-bar__example {
   overflow: auto;
   height: calc(100vh - 50px);
-}
-.var-index-anchor__example {
-  background: #e7edf7;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-  color: #2e67ba;
+  margin-bottom: -20px;
+
+  .var-index-anchor__example {
+    background: #e7edf7;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    color: #2e67ba;
+  }
 }
 </style>

@@ -113,7 +113,6 @@ export default defineComponent({
       ...toRefs(shows),
       pack,
       createSnackbar,
-
       changeValue,
       create,
     }

@@ -34,7 +34,7 @@ export const props = {
   // snackbar 持续时间
   duration: {
     type: Number,
-    default: 3000000,
+    default: 3000,
   },
   // 是否将消息条内容堆叠在操作（按钮）之上
   vertical: {
