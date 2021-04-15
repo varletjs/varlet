@@ -98,6 +98,33 @@ createApp().use(Image)
 />
 ```
 
+### Use local paths
+In the file `.vue`,
+the `Vue component` will not be automatically processed by the build tool like the native img module, 
+so you need to import the image resources manually.
+Here's how the different build tools are used.
+
+#### Webpack
+
+```html
+<var-image :src="require('../../assets/logo.png')"/>
+```
+
+#### Vite
+```html
+<var-image :src="logo"/>
+```
+
+```js
+import logo from '../../assets/logo.png'
+
+export default {
+  setup() {
+    return { logo }
+  }
+}
+```
+
 ## API
 
 ### Props

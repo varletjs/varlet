@@ -97,6 +97,32 @@ createApp().use(Image)
 />
 ```
 
+### 使用本地路径
+在`.vue`文件中,`Vue组件`不会如同原生img一样被构建工具自动处理模块请求，所以需要手动导入图片资源。
+下面是不同构建工具的使用方式。
+
+
+#### Webpack
+
+```html
+<var-image :src="require('../../assets/logo.png')"/>
+```
+
+#### Vite
+```html
+<var-image :src="logo"/>
+```
+
+```js
+import logo from '../../assets/logo.png'
+
+export default {
+  setup() {
+    return { logo }
+  }
+}
+```
+
 ## API
 
 ### 属性

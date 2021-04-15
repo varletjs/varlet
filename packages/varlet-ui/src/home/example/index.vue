@@ -68,15 +68,17 @@ export default {
 <style scoped lang="less">
 @import '../../styles/var';
 .space {
-  height: 5px;
+  height: 10px;
 }
 
 .var-cell {
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: all 0.3s;
+  color: #555;
 
   &:hover {
-    background: #2b79fc21;
+    background: #edf5ff;
     color: @color-primary;
   }
 }

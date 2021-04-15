@@ -1,18 +1,18 @@
 <template>
   <div class="varlet-site" v-if="!isLoading">
-    <div class="varlet-site-header var-elevation--1">
+    <div class="varlet-site-header">
       <span class="varlet-site-header__logo">
         <img :src="header.logo" alt="" />
         <span>{{ title }}</span>
       </span>
       <div class="varlet-site-header__nav">
         <div class="varlet-site-header__nav-style" @mouseenter="isOpenMenu = true" @mouseleave="isOpenMenu = false">
-          <var-icon name="translate" size="26px" color="#ffffff" />
+          <var-icon name="translate" size="26px" color="#666" />
 
-          <var-icon name="chevron-down" color="#ffffff" />
+          <var-icon name="chevron-down" color="#666" />
 
           <transition name="fade">
-            <div class="language-list" v-if="isOpenMenu">
+            <div class="language-list var-elevation--5" v-if="isOpenMenu">
               <var-cell
                 v-for="(value, key) in languageList"
                 :key="key"
@@ -26,19 +26,20 @@
         </div>
         <div class="varlet-site-header__nav-link">
           <a target="_blank" href="https://github.com/haoziqaq/varlet" class="varlet-site-header__link">
-            <var-icon name="github" color="#ffffff" :size="28"></var-icon>
+            <var-icon name="github" color="#666" :size="28"></var-icon>
           </a>
         </div>
       </div>
     </div>
     <div class="varlet-site-content">
-      <div class="varlet-site-nav" :ref="nav">
+      <div class="varlet-site-nav var-elevation--3" :ref="nav">
         <var-cell
           v-for="item in menu"
           class="varlet-site-nav__item"
           :class="{
             'varlet-site-nav__item--active': item.doc === currentMenuName,
             'varlet-site-nav__link': !item.isTitle,
+            'varlet-site-nav__title': item.isTitle,
           }"
           v-ripple="{ touchmoveForbid: false, disabled: !!item.isTitle, color: '#2979ff' }"
           @click="changeRoute(item)"
@@ -366,16 +367,16 @@ iframe {
     }
 
     &-header {
-      background-color: @color-primary;
       display: flex;
       align-items: center;
-      color: white;
+      color: #555;
       height: 60px;
       padding: 0 30px;
       justify-content: space-between;
       user-select: none;
       position: relative;
       z-index: 2;
+      box-shadow: 0 4px 4px #ebedf0;
 
       &__logo {
         display: flex;
@@ -409,9 +410,10 @@ iframe {
           padding: 0 10px;
           position: relative;
           cursor: pointer;
+          transition: background-color 0.3s;
 
           &:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.08);
           }
         }
 
@@ -422,13 +424,14 @@ iframe {
           display: flex;
           justify-content: center;
           align-items: center;
+          transition: background-color 0.3s;
 
           a {
             text-decoration: none;
           }
 
           &:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.08);
           }
         }
       }
@@ -566,9 +569,8 @@ iframe {
         padding: 16px;
         overflow-x: auto;
         color: #58727e;
-        font-weight: 400;
-        font-size: 14px;
-        font-family: 'Roboto', sans-serif;
+        font-size: 13px;
+        font-family: Consolas, Monaco, monospace;
         line-height: 26px;
         white-space: pre-wrap;
         word-wrap: break-word;
@@ -644,7 +646,7 @@ iframe {
     }
 
     &-nav {
-      padding: 10px 0;
+      padding: 5px 0 15px;
       position: sticky;
       flex: 0 0 220px;
       top: 0;
@@ -662,9 +664,9 @@ iframe {
       &__item {
         margin: 0;
         user-select: none;
+        padding: 10px 14px;
 
         &--title {
-          font-weight: 500;
           font-size: 16px;
         }
 
@@ -701,6 +703,10 @@ iframe {
       &__link {
         cursor: pointer;
       }
+
+      &__title {
+        margin-top: 10px;
+      }
     }
 
     &-code {
@@ -724,16 +730,18 @@ iframe {
   border-radius: 2px;
   position: absolute;
   top: 40px;
-  left: 0;
+  left: -20px;
 
   &__active {
-    background: #2b79fc21;
+    background: #edf5ff;
     color: @color-primary;
   }
 
   .var-cell {
+    width: 100px;
+
     &:hover {
-      background: #2b79fc21;
+      background: #edf5ff;
       color: @color-primary;
     }
   }
@@ -741,12 +749,12 @@ iframe {
 
 .fade-enter-active {
   animation-name: fade-in;
-  animation-duration: 0.5s;
+  animation-duration: 0.3s;
 }
 
 .fade-leave-active {
   animation-name: fade-leave;
-  animation-duration: 0.5s;
+  animation-duration: 0.3s;
 }
 
 @keyframes fade-in {
