@@ -62,12 +62,14 @@ export default defineComponent({
 
     const init = (accordion: boolean, show: boolean) => {
       if (active.value === undefined || (accordion && isArray(active.value)) || show === isShow.value) return
+
       isShow.value = show
       toggle(true)
     }
 
     const toggle = (initOrAccordion?: boolean) => {
       if (props.disabled) return
+
       if (!initOrAccordion) {
         updateItem(props.name || index.value, !isShow.value)
       }
@@ -77,9 +79,11 @@ export default defineComponent({
       if (!contentEl.value) return
       ;(contentEl.value as HTMLDivElement).style.height = ''
       show.value = true
+
       nextTick(() => {
         const { offsetHeight } = contentEl.value as HTMLDivElement
         ;(contentEl.value as HTMLDivElement).style.height = 0 + 'px'
+
         requestAnimationFrame(() => {
           ;(contentEl.value as HTMLDivElement).style.height = offsetHeight + 'px'
         })

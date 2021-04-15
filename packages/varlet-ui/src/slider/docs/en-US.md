@@ -131,7 +131,7 @@ Verify the value through the `rules` attribute.
 | `v-model` | The value of slider | _number \| [number, number]_ | `0` |
 | `step`| Step size. The value is an integer between `1 ~ 100` | _string \| number_ | `1` |
 | `range`| Whether open the dual thumb mode | _boolean_ | `false` |
-| `label-visible` | Whether to display labels, the optional value is `always` `normal` `never` | _string_ | `normal` |
+| `label-visible` | Whether to display labels, the optional value is `always, normal, never` | _string_ | `normal` |
 | `label-text-color` | Color of label text | _string_ | `#fff` |
 | `track-height` | Height of slider | _string \| number_ | `2` |
 | `thumb-size` | Size of thumb | _string \| number_ | `12` |

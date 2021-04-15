@@ -10,7 +10,7 @@
 
     <div>
       <app-type>{{ pack.hideMargin }}</app-type>
-      <var-collapse v-model="value" :offset="false">
+      <var-collapse v-model="value4" :offset="false">
         <var-collapse-item :title="pack.title" name="1">{{ pack.text }}</var-collapse-item>
         <var-collapse-item :title="pack.title" name="2">{{ pack.text }}</var-collapse-item>
       </var-collapse>
@@ -31,7 +31,7 @@
       </var-button>
       <var-collapse v-model="value2">
         <var-collapse-item :title="pack.title" :name="1" :disabled="disabled">{{ pack.text }}</var-collapse-item>
-        <var-collapse-item :title="pack.title" :name="2">{{ pack.text }}</var-collapse-item>
+        <var-collapse-item :title="pack.title" :name="2" :disabled="disabled">{{ pack.text }}</var-collapse-item>
       </var-collapse>
     </div>
 
@@ -72,6 +72,8 @@ export default defineComponent({
     const value1 = ref('')
     const value2 = ref([1])
     const value3 = ref(['1'])
+    const value4 = ref(['2'])
+
     const changeHandle = (val) => {
       console.log(val)
     }
@@ -84,15 +86,10 @@ export default defineComponent({
       value1,
       value2,
       value3,
+      value4,
       pack,
       changeHandle,
     }
   },
 })
 </script>
-
-<style scoped>
-.example {
-  background: antiquewhite;
-}
-</style>

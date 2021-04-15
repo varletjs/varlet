@@ -89,7 +89,9 @@ export default {
   <var-collapse-item title="标题" :name="1" :disabled="disabled">
     内容
   </var-collapse-item>
-  <var-collapse-item title="标题" :name="2">内容</var-collapse-item>
+  <var-collapse-item title="标题" :name="2" :disabled="disabled">
+    内容
+  </var-collapse-item>
 </var-collapse>
 ```
 ```javascript

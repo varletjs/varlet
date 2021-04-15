@@ -123,7 +123,7 @@ import { ref } from 'vue'
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `time` | Total time(ms)| _string \| number_ | `0` |
-| `format` | Time format | _string_ | `HH:mm:ss` |
+| `format` | Time format | _string_ | `HH : mm : ss` |
 | `auto-start` | Whether to auto start count down | _boolean_ | `true` |
 
 ### Available formats

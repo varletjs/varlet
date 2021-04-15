@@ -40,6 +40,7 @@ export default defineComponent({
     bindTabsItems(tabItemProvider)
 
     watch(() => props.name, resize)
+
     watch(
       () => show.value,
       (newValue) => {

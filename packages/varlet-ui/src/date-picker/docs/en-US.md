@@ -139,13 +139,13 @@ export default {
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `v-model` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）| _string[]_ \| _string_ | `-` |
-| `type` | Picker type, optional values `date\|month` | _string_ | `date` |
+| `v-model` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）| _string[] \| string_ | `-` |
+| `type` | Picker type, optional values`date, month` | _string_ | `date` |
 | `allowed-dates` | Restricts which dates can be selected | _function_ | `-` |
 | `color` | Picker color | _string_ | `#2979ff` |
 | `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
 | `shadow` | Whether to add a shadow | _boolean_ | `false` |
-| `first-day-of-week` | Sets the first day of the week, starting with 0 for Sunday. | _string_ \| _number_ | `0` |
+| `first-day-of-week` | Sets the first day of the week, starting with 0 for Sunday. | _string \| number_ | `0` |
 | `min` | Minimum allowed date/month (ISO 8601 format) | _string_ | `-` |
 | `max` | Maximum allowed date/month (ISO 8601 format) | _string_ | `-` |
 | `show-current` | Whether to display the current date | _boolean_ | `true` |

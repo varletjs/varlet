@@ -184,16 +184,16 @@ createApp().use(Progress)
 
 | 参数  |   说明  | 类型     | 默认值   |
 | ----  | --------------- | -------- | -------- |
-| `mode`  | progress 的模式 | _string_ | `linear` |
-| `value` | progress 的进度 | _string \| number_ |  `0`  |
-| `line-width` | progress 的线宽 | _string \| number_ | `4` |
-| `color` | progress 的颜色 | _string_  | `#005CAF` |
-| `track-color`  | progress 轨道的颜色 | _string_   | `#d8d8d8` |
+| `mode`  | `progress` 的模式，可选值为`linear, circle` | _string_ | `linear` |
+| `value` | `progress` 的进度 | _string \| number_ |  `0`  |
+| `line-width` | `progress` 的线宽 | _string \| number_ | `4` |
+| `color` | `progress` 的颜色 | _string_  | `#005CAF` |
+| `track-color`  | `progress` 轨道的颜色 | _string_   | `#d8d8d8` |
 | `show-action` | 是否显示 action | _boolean_ | `false` |
 | `ripple`(仅支持线性进度条) | 水波纹加载效果 | _boolean_ | `false` |
-| `size`（仅支持环形进度条） | progress 的尺寸 | _string \| number_ | `40` |
-| `rotate`（仅支持环形进度条） | progress 的原点 | _number_ | `0` |
-| `show-track`（仅支持环形进度条） | 是否显示 progress 的轨道 | _boolean_ | `true` |
+| `size`（仅支持环形进度条） | `progress` 的尺寸 | _string \| number_ | `40` |
+| `rotate`（仅支持环形进度条） | `progress` 的原点 | _number_ | `0` |
+| `show-track`（仅支持环形进度条） | 是否显示 `progress` 的轨道 | _boolean_ | `true` |
 
 ### 插槽
 

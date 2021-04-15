@@ -43,6 +43,7 @@ export default defineComponent({
         milliseconds,
       }
       timeData.value = time
+
       props.onChange?.(timeData.value)
       showTime.value = parseFormat(props.format, time)
     }
@@ -50,7 +51,9 @@ export default defineComponent({
     const countdown = () => {
       const { time, onEnd, autoStart } = props
       const now = Date.now()
+
       if (!endTime.value) endTime.value = now + toNumber(time)
+
       let durationTime = endTime.value - now
       if (durationTime < 0) durationTime = 0
       pauseTime.value = durationTime
@@ -61,12 +64,14 @@ export default defineComponent({
         onEnd?.()
         return
       }
+
       if (autoStart || isStart.value) handle.value = requestAnimationFrame(countdown)
     }
 
     // expose
     const start = () => {
       if (isStart.value) return
+
       isStart.value = true
       endTime.value = Date.now() + (pauseTime.value || toNumber(props.time))
       countdown()

@@ -128,7 +128,7 @@ export default {
 | `v-model` | 当前进度值 | _number \| [number, number]_ | `0` |
 | `step`| 步长，取值为`1 ~ 100`间的整数 | _string \| number_ | `1` |
 | `range`| 是否启用双滑块 | _boolean_ | `false` |
-| `label-visible` | 是否显示标签，可选值为`always` `normal` `never` | _string_ | `normal` |
+| `label-visible` | 是否显示标签，可选值为`always, normal, never` | _string_ | `normal` |
 | `label-text-color` | 标签文字颜色 | _string_ | `#fff` |
 | `track-height` | slider的高度 | _string \| number_ | `2` |
 | `thumb-size` | 滑块的大小 | _string \| number_ | `12` |

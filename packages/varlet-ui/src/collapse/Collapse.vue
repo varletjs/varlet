@@ -27,6 +27,7 @@ export default defineComponent({
         console.error('[Varlet] Collapse: type of prop "modelValue" should be an Array')
         return false
       }
+
       if (props.accordion && isArray(props.modelValue)) {
         console.error('[Varlet] Collapse: type of prop "modelValue" should be a String or Number')
         return false
@@ -37,6 +38,7 @@ export default defineComponent({
     const getValue = (value: number | string | undefined, isExpand: boolean) => {
       if (!checkValue()) return
       if (isExpand) return props.accordion ? value : [...(props.modelValue as Array<string | number>), value]
+
       return props.accordion
         ? null
         : (props.modelValue as Array<string | number>).filter((name: string | number) => name !== value)
@@ -44,6 +46,7 @@ export default defineComponent({
 
     const updateItem = (value: number | string | undefined, isExpand: boolean) => {
       const modelValue = getValue(value, isExpand)
+
       props['onUpdate:modelValue']?.(modelValue)
       props.onChange?.(modelValue)
     }
@@ -52,8 +55,10 @@ export default defineComponent({
       if (props.accordion) {
         return collapseItem.find(({ name }: CollapseItemProvider) => props.modelValue === name.value)
       }
+
       return collapseItem.filter(({ name }: CollapseItemProvider) => {
         if (name.value === undefined) return false
+
         return (props.modelValue as Array<string | number>).includes(name.value)
       })
     }
@@ -71,7 +76,9 @@ export default defineComponent({
 
     const resize = () => {
       if (!checkValue()) return
+
       const matchProviders: Array<CollapseItemProvider> | CollapseItemProvider | undefined = matchName() || matchIndex()
+
       if (
         (props.accordion && !matchProviders) ||
         (!props.accordion && !(matchProviders as Array<CollapseItemProvider>).length)
@@ -81,10 +88,12 @@ export default defineComponent({
         })
         return
       }
+
       collapseItem.forEach((provider) => {
         const isShow = props.accordion
           ? matchProviders === provider
           : (matchProviders as Array<CollapseItemProvider>).includes(provider)
+
         provider.init(props.accordion, isShow)
       })
     }

@@ -185,5 +185,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../sticky/sticky';
 @import './tabs';
 </style>

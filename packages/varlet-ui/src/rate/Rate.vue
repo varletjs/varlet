@@ -136,5 +136,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../icon/icon';
+@import '../form-details/formDetails';
 @import './rate';
 </style>

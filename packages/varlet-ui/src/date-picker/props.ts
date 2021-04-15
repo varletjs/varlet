@@ -4,6 +4,10 @@ type AllowedDates = (val: string) => boolean
 
 type DatePickerType = 'date' | 'month'
 
+function typeValidator(mode: string): boolean {
+  return ['date', 'month'].includes(mode)
+}
+
 export type ComponentProps = {
   type: string
   allowedDates: AllowedDates | undefined
@@ -114,6 +118,7 @@ export const props = {
   type: {
     type: String as PropType<DatePickerType>,
     default: 'date',
+    validator: typeValidator,
   },
   allowedDates: {
     type: Function as PropType<AllowedDates>,

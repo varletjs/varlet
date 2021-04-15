@@ -89,7 +89,9 @@ Use the `disabled` prop to disable CollapseItem.
   <var-collapse-item title="Title" :name="1" :disabled="disabled">
     Hello World
   </var-collapse-item>
-  <var-collapse-item title="Title" :name="2">Hello World</var-collapse-item>
+  <var-collapse-item title="Title" :name="2" :disabled="disabled">
+    Hello World
+  </var-collapse-item>
 </var-collapse>
 ```
 ```javascript

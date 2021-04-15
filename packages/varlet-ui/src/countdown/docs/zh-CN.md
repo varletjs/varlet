@@ -123,7 +123,7 @@ import { ref } from 'vue'
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
 | `time` | 倒计时时长(ms)| _string \| number_ | `0` |
-| `format` | 时间格式 | _string_ | `HH:mm:ss` |
+| `format` | 时间格式 | _string_ | `HH : mm : ss` |
 | `auto-start` | 是否自动开始倒计时 | _boolean_ | `true` |
 
 ### format 格式
