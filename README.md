@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://cn.vuejs.org/images/logo.png" width="200" style="display: block; margin-bottom: 10px;">
+    <img src="https://varlet.gitee.io/varlet-ui/varlet_block.png" width="200" style="display: block; margin-bottom: 10px;">
     <div style="color: #2979ff; font-size: 32px; margin-top: 10px; text-align: center">VARLET</div>
     <div style="color: #888; font-size: 14px; margin-top: 10px; text-align: center">
       Material design mobile component library for Vue3

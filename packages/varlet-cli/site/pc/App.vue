@@ -1,10 +1,10 @@
 <template>
   <div class="varlet-site" v-if="!isLoading">
     <div class="varlet-site-header">
-      <span class="varlet-site-header__logo">
+      <div class="varlet-site-header__logo">
         <img :src="header.logo" alt="" />
         <span>{{ title }}</span>
-      </span>
+      </div>
       <div class="varlet-site-header__nav">
         <div class="varlet-site-header__nav-style" @mouseenter="isOpenMenu = true" @mouseleave="isOpenMenu = false">
           <var-icon name="translate" size="26px" color="#666" />
@@ -288,12 +288,13 @@ iframe {
     border-top-right-radius: 8px;
 
     &__image {
-      width: 200px;
+      width: 240px;
+      margin-left: 92px;
     }
 
     &__name {
       font-size: 32px;
-      margin-top: 10px;
+      margin-top: 22px;
     }
 
     &__des {
@@ -380,8 +381,9 @@ iframe {
         align-items: center;
 
         img {
-          width: 24px;
-          margin-right: 10px;
+          width: 52px;
+          margin-right: 5px;
+          flex-shrink: 0;
         }
 
         span {
