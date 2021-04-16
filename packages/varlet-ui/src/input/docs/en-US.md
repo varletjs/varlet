@@ -100,7 +100,7 @@ Other values are converted to text as a user prompt.
 ```html
 <var-input
   placeholder="Please enter text"
-  :rules="[v => v > 6 || 'Text length must be greater than 6']"
+  :rules="[v => v.length > 6 || 'Text length must be greater than 6']"
   v-model="value"
 />
 ```

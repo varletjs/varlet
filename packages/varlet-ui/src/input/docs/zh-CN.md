@@ -99,7 +99,7 @@ createApp().use(Icon)
 ```html
 <var-input
   placeholder="请输入文本"
-  :rules="[v => v > 6 || '文本长度必须大于6']"
+  :rules="[v => v.length > 6 || '文本长度必须大于6']"
   v-model="value"
 />
 ```

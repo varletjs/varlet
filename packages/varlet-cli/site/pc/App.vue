@@ -665,7 +665,7 @@ iframe {
       &__item {
         margin: 0;
         user-select: none;
-        padding: 10px 14px;
+        padding: 10px 28px;
 
         &--title {
           font-size: 16px;

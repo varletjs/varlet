@@ -283,7 +283,7 @@ export default {
 | `@select-icon-padding` | `@select-placeholder-size 0 0` |
 | `@select-icon-size` | `20px` |
 | `@select-select-text-color` | `#555` |
-| `@select-chip-margin` | `5px 5px 5px 0` |
+| `@select-chip-margin` | `5px 5px 0` |
 | `@select-line-size` | `1px` |
 | `@select-line-spread-size` | `2px` |
 | `@select-arrow-size` | `20px` |

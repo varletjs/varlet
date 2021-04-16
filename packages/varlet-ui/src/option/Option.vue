@@ -1,6 +1,6 @@
 <template>
   <div
-    class="var-option"
+    class="var-option var--box"
     :class="[optionSelected ? 'var-option--selected-color' : null]"
     :style="{
       width: wrapWidth,

@@ -9,7 +9,14 @@
         <div class="var-skeleton--animation"></div>
       </div>
       <div class="var-skeleton__article">
-        <div class="var-skeleton__avatar" v-if="avatar">
+        <div
+          class="var-skeleton__avatar"
+          :style="{
+            width: toSizeUnit(avatarSize),
+            height: toSizeUnit(avatarSize),
+          }"
+          v-if="avatar"
+        >
           <div class="var-skeleton--animation"></div>
         </div>
         <div class="var-skeleton__section">
