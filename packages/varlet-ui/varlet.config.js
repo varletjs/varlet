@@ -1,12 +1,12 @@
 module.exports = {
   name: 'Varlet',
   namespace: 'var',
-  title: 'Varlet',
+  title: 'VARLET',
   host: '0.0.0.0',
   port: 8080,
   pc: {
-    title: 'Varlet 组件库示例',
-    description: 'Varlet 组件库示例',
+    title: 'Varlet 面向Vue3的Material风格移动端组件库',
+    description: 'Varlet 面向Vue3的Material风格移动端组件库',
     logo: 'https://cn.vuejs.org/images/logo.png',
     redirect: '/zh-CN/home',
     header: {
@@ -416,8 +416,8 @@ module.exports = {
     ],
   },
   mobile: {
-    title: 'Varlet 组件库示例',
-    description: 'Varlet 组件库示例',
+    title: 'Varlet 面向Vue3的Material风格移动端组件库',
+    description: 'Varlet 面向Vue3的Material风格移动端组件库',
     logo: 'https://cn.vuejs.org/images/logo.png',
     redirect: '/home',
   },

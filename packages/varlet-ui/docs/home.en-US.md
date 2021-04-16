@@ -1,6 +1,6 @@
 <div class="varlet-introduce">
   <img class="varlet-introduce__image" src="https://cn.vuejs.org/images/logo.png" />
-  <div class="varlet-introduce__name">Varlet</div>  
+  <div class="varlet-introduce__name">VARLET</div>  
   <div class="varlet-introduce__des">Material design mobile component library for Vue3</div>
 </div>
 

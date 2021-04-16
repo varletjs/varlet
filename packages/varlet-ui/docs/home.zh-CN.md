@@ -1,6 +1,6 @@
 <div class="varlet-introduce">
   <img class="varlet-introduce__image" src="https://cn.vuejs.org/images/logo.png" />
-  <div class="varlet-introduce__name">Varlet</div>  
+  <div class="varlet-introduce__name">VARLET</div>  
   <div class="varlet-introduce__des">面向Vue3的Material风格移动端组件库</div>
 </div>
 
