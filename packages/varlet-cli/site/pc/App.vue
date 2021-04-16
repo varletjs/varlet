@@ -24,11 +24,9 @@
             </div>
           </transition>
         </div>
-        <div class="varlet-site-header__nav-link">
-          <a target="_blank" href="https://github.com/haoziqaq/varlet" class="varlet-site-header__link">
-            <var-icon name="github" color="#666" :size="28"></var-icon>
-          </a>
-        </div>
+        <a target="_blank" href="https://github.com/haoziqaq/varlet" class="varlet-site-header__nav-link">
+          <var-icon name="github" color="#666" :size="28" />
+        </a>
       </div>
     </div>
     <div class="varlet-site-content">
@@ -375,7 +373,7 @@ iframe {
       user-select: none;
       position: relative;
       z-index: 2;
-      box-shadow: 0 4px 4px #ebedf0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
       &__logo {
         display: flex;
@@ -418,12 +416,14 @@ iframe {
 
         &-link {
           border-radius: 50%;
-          width: 40px;
-          height: 40px;
+          width: 48px;
+          height: 48px;
           display: flex;
           justify-content: center;
           align-items: center;
           transition: background-color 0.3s;
+          cursor: pointer;
+          text-decoration: none;
 
           a {
             text-decoration: none;

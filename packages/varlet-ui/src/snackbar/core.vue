@@ -1,5 +1,5 @@
 <template>
-  <div class="var-snackbar" :style="{ pointerEvents: forbidClick ? 'auto' : 'none' }" v-show="show">
+  <div class="var-snackbar" :style="{ pointerEvents: forbidClick ? 'auto' : 'none', zIndex }" v-show="show">
     <div :class="snackbarClass" :style="{ zIndex }">
       <div class="var-snackbar__content" :class="[contentClass]">
         <slot>{{ content }}</slot>

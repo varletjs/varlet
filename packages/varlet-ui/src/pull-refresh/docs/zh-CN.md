@@ -18,10 +18,10 @@ createApp().use(PullRefresh)
 下拉到刷新位置时松开会触发`refresh`事件， 在事件开始时将`v-model`设置为`true`表示正在加载，完成后将`v-model`设置为`false`表示加载结束。
 
 ```html
-<var-pull-refresh v-model='isRefresh' @refresh='refresh'>
-  <var-cell 
-    v-for="(item, index) in data" 
-    :key="index" 
+<var-pull-refresh v-model="isRefresh" @refresh="refresh">
+  <var-cell
+    v-for="(item, index) in data"
+    :key="index"
     border
   >
     {{ item + ' ' + (index + 1) }}
@@ -84,6 +84,7 @@ export default {
 | `default` | 默认插槽 | `-` |
 
 ### 主题变量
+
 #### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
 
 | 变量名 | 默认值 |

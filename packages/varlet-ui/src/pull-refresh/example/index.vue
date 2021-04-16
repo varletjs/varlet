@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, onMounted, ref, onBeforeUnmount } from 'vue'
 import PullRefresh from '..'
 import Cell from '../../cell'
 
@@ -28,6 +28,18 @@ export default defineComponent({
         isRefresh.value = false
       }, 2000)
     }
+
+    const prevent = (event) => {
+      event.preventDefault()
+    }
+
+    onMounted(() => {
+      document.body.addEventListener('touchmove', prevent, { passive: false })
+    })
+
+    onBeforeUnmount(() => {
+      document.body.removeEventListener('touchmove', prevent)
+    })
 
     return {
       refresh,

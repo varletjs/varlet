@@ -19,7 +19,7 @@ The refresh event will be Emitted when pull refresh, you should set `v-model` to
 indicates that loading is under way, and setting `v-model` to `false` after completion indicates that loading is over.
 
 ```html
-<var-pull-refresh v-model='isRefresh' @refresh='refresh'>
+<var-pull-refresh v-model="isRefresh" @refresh="refresh">
   <var-cell
     v-for="(item, index) in data"
     :key="index"
@@ -84,8 +84,8 @@ export default {
 | ----- | -------------- | -------- | 
 | `default` | Default slot | `-` |
 
-
 ### Theme Variables
+
 #### The following LESS variables can be overridden at build time to modify the theme style
 
 | Variable | Default |
