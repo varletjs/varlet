@@ -57,32 +57,16 @@ export default {
   inactive-color="#afcf7f"
   @click-step="click"
 >
-  <var-step 
-    active-icon="fire" 
-    current-icon="heart" 
-    inactive-icon="delete"
-  >
+  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
     步骤1
   </var-step>
-  <var-step 
-    active-icon="fire" 
-    current-icon="heart" 
-    inactive-icon="delete"
-  >
+  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
     步骤2
   </var-step>
-  <var-step 
-    active-icon="fire" 
-    current-icon="heart" 
-    inactive-icon="delete"
-  >
+  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
     步骤3
   </var-step>
-  <var-step 
-    active-icon="fire" 
-    current-icon="heart" 
-    inactive-icon="delete"
-  >
+  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
     步骤4
   </var-step>
 </var-steps>
@@ -124,7 +108,7 @@ import { ref } from 'vue'
 export default {
   setup() {
     const list = ref([2, 3, 4, 5])
-    const count = ref(2)
+    const count = ref(4)
     
     return {
       list,

@@ -22,33 +22,37 @@
   </div>
   <div>
     <app-type>{{ pack.dynamicSteps }}</app-type>
-    <var-select :placeholder="pack.placeholder" v-model="count" style="margin-bottom: 20px">
-      <var-option v-for="item in list" :key="item" :label="item" :value="item" />
-    </var-select>
+    <div style="padding: 0 25px">
+      <var-select :placeholder="pack.placeholder" v-model="count" style="margin-bottom: 20px">
+        <var-option v-for="item in list" :key="item" :label="item" :value="item" />
+      </var-select>
+    </div>
     <var-steps>
       <var-step v-for="i in count" :key="i">{{ pack.step }}{{ i }}</var-step>
     </var-steps>
   </div>
   <div>
     <app-type>{{ pack.vertical }}</app-type>
-    <var-steps direction="vertical" :active="5">
-      <var-step active-icon="notebook">
-        <h3 style="margin: 0">2021-02-13</h3>
-        <span>{{ pack.text }}</span>
-      </var-step>
-      <var-step active-icon="notebook">
-        <h3 style="margin: 0">2021-02-14</h3>
-        <span>{{ pack.text }}</span>
-      </var-step>
-      <var-step active-icon="notebook">
-        <h3 style="margin: 0">2021-02-15</h3>
-        <span>{{ pack.text }}</span>
-      </var-step>
-      <var-step active-icon="notebook">
-        <h3 style="margin: 0">2021-02-16</h3>
-        <span>{{ pack.text }}</span>
-      </var-step>
-    </var-steps>
+    <div style="margin: 0 20px">
+      <var-steps direction="vertical" :active="5">
+        <var-step active-icon="notebook">
+          <h3 style="margin: 0">2021-02-13</h3>
+          <span>{{ pack.text }}</span>
+        </var-step>
+        <var-step active-icon="notebook">
+          <h3 style="margin: 0">2021-02-14</h3>
+          <span>{{ pack.text }}</span>
+        </var-step>
+        <var-step active-icon="notebook">
+          <h3 style="margin: 0">2021-02-15</h3>
+          <span>{{ pack.text }}</span>
+        </var-step>
+        <var-step active-icon="notebook">
+          <h3 style="margin: 0">2021-02-16</h3>
+          <span>{{ pack.text }}</span>
+        </var-step>
+      </var-steps>
+    </div>
   </div>
 </template>
 
@@ -76,7 +80,7 @@ export default defineComponent({
   setup() {
     const active = ref(0)
     const list = ref([2, 3, 4, 5])
-    const count = ref(2)
+    const count = ref(4)
     const next = () => {
       active.value = active.value === 4 ? 0 : active.value + 1
     }

@@ -57,32 +57,16 @@ Clicking on `step` will trigger the `click-step` event.
   inactive-color="#afcf7f"
   @click-step="click"
 >
-  <var-step 
-    active-icon="fire" 
-    current-icon="heart" 
-    inactive-icon="delete"
-  >
+  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
     Step1
   </var-step>
-  <var-step 
-    active-icon="fire" 
-    current-icon="heart" 
-    inactive-icon="delete"
-  >
+  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
     Step2
   </var-step>
-  <var-step 
-    active-icon="fire" 
-    current-icon="heart" 
-    inactive-icon="delete"
-  >
+  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
     Step3
   </var-step>
-  <var-step 
-    active-icon="fire" 
-    current-icon="heart" 
-    inactive-icon="delete"
-  >
+  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
     Step4
   </var-step>
 </var-steps>
@@ -124,7 +108,7 @@ import { ref } from 'vue'
 export default {
   setup() {
     const list = ref([2, 3, 4, 5])
-    const count = ref(2)
+    const count = ref(4)
     
     return {
       list,

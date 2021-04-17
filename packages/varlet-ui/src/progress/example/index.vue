@@ -11,7 +11,7 @@
       <app-type>{{ pack.style }}</app-type>
       <var-progress :value="30" line-width="8" />
       <var-progress :value="60" line-width="10" color="purple" track-color="#dec3e6" />
-      <var-progress :value="80" line-width="10" ripple />
+      <var-progress :value="80" line-width="10" ripple style="border-radius: 4px" />
     </div>
 
     <div class="progress-demo__action">
@@ -19,12 +19,6 @@
       <var-progress :value="30" show-action />
       <var-progress :value="value" show-action />
       <var-progress :value="100" show-action> success </var-progress>
-    </div>
-
-    <div class="progress-demo__custom">
-      <app-type>{{ pack.customStyle }}</app-type>
-      <var-progress :value="30" line-width="10" style="border-radius: 4px" />
-      <var-progress :value="60" show-action style="color: #72c140" />
     </div>
 
     <h4>{{ pack.circle }}</h4>
@@ -40,44 +34,9 @@
     <div>
       <app-type>{{ pack.style }}</app-type>
       <div class="progress-demo__circle">
-        <var-progress :value="30" line-width="5" :size="56" mode="circle" />
-        <var-progress :value="50" line-width="12" :size="56" mode="circle" />
-        <var-progress :value="70" line-width="8" :size="56" mode="circle" color="purple" track-color="#dec3e6" />
-      </div>
-    </div>
-
-    <div>
-      <app-type>{{ pack.showLabel }}</app-type>
-      <div class="progress-demo__circle">
-        <var-progress :value="30" line-width="5" :size="56" mode="circle" show-action />
-        <var-progress :value="value" line-width="5" :size="56" mode="circle" show-action />
-        <var-progress :value="100" line-width="5" :size="56" mode="circle" show-action> success </var-progress>
-      </div>
-    </div>
-
-    <div>
-      <app-type>{{ pack.rotate }}</app-type>
-      <div class="progress-demo__circle">
-        <var-progress :value="value" line-width="5" :size="56" mode="circle" />
-        <var-progress :value="value" line-width="5" :size="56" mode="circle" :rotate="90" />
-        <var-progress :value="value" line-width="5" :size="56" mode="circle" :rotate="180" />
-      </div>
-    </div>
-
-    <div>
-      <app-type>{{ pack.showTrack }}</app-type>
-      <div class="progress-demo__circle">
-        <var-progress :value="30" line-width="3" mode="circle" :show-track="false" />
-        <var-progress :value="50" line-width="5" :size="56" mode="circle" :show-track="false" show-action />
-        <var-progress
-          :value="value"
-          line-width="8"
-          :size="72"
-          mode="circle"
-          :show-track="false"
-          show-action
-          :rotate="90"
-        />
+        <var-progress :value="30" line-width="5" :size="56" mode="circle" color="purple" track-color="#dec3e6" />
+        <var-progress :value="value" line-width="5" :size="56" mode="circle" :rotate="90" show-action />
+        <var-progress :value="50" line-width="12" :size="56" mode="circle" :show-track="false" />
       </div>
     </div>
   </div>

@@ -34,7 +34,7 @@
   </div>
   <div>
     <app-type>{{ pack.validateValue }}</app-type>
-    <var-cell>
+    <var-cell style="padding: 0; align-items: flex-start">
       <div>{{ pack.text }}</div>
       <template #extra>
         <var-switch v-model="value4" :rules="[(v) => v === true || pack.state]" />

@@ -24,22 +24,17 @@ Set the current progress through the `value` attribute
 <var-progress :value="value" />
 ```
 
-### Style
+### Custom Style
 
 Set the line width, progress bar color, track color and ripple loading effect through the attributes of `line-width`, `color`, `track-color` and `ripple`
 
 ```html
 <var-progress :value="30" line-width="8" />
-<var-progress 
-  :value="60" 
-  line-width="10" 
-  color="purple" 
-  track-color="#dec3e6" 
-/>
-<var-progress :value="80" line-width="10" ripple />
+<var-progress :value="60" line-width="10" color="purple" track-color="#dec3e6" />
+<var-progress :value="80" line-width="10" style="border-radius: 4px" ripple />
 ```
 
-### Action
+### Show Action
 
 The action is displayed through the `show-action` attribute. The action is the percentage of progress by default. You can use the slot to insert custom content
 
@@ -47,15 +42,6 @@ The action is displayed through the `show-action` attribute. The action is the p
 <var-progress :value="30" show-action />
 <var-progress :value="value" show-action />
 <var-progress :value="100" show-action> success </var-progress>
-```
-
-### Custom style
-
-Customize styles through the `style` attribute
-
-```html
-<var-progress :value="30" line-width="10" style="border-radius: 4px" />
-<var-progress :value="60" show-action style="color: #72c140" />
 ```
 
 ## Progress circle
@@ -66,115 +52,35 @@ Change the size of the progress bar through the `size` attribute
 
 ```html
 <var-progress :value="30" line-width="3" mode="circle" />
-<var-progress 
-  :value="50" 
-  line-width="3" 
-  size="56" 
-  mode="circle" 
-/>
-<var-progress 
-  :value="70" 
-  line-width="3" 
-  size="72" 
-  mode="circle" 
-/>
+<var-progress :value="50" line-width="3" size="56" mode="circle" />
+<var-progress :value="70" line-width="3" size="72" mode="circle" />
 ```
 
-### Style
+### Custom Style
 
 ```html
-<var-progress :value="30" line-width="8" />
-<var-progress 
-  :value="60" 
-  line-width="10" 
-  color="purple" 
-  track-color="#dec3e6" 
-/>
-<var-progress :value="80" line-width="10" ripple />
-```
-
-### Action
-
-```html
-<var-progress 
-  :value="30" 
-  line-width="5" 
-  size="56" 
-  mode="circle" 
-  show-action 
-/>
-<var-progress 
-  :value="value" 
-  line-width="5" 
-  size="56" 
-  mode="circle" 
-  show-action 
-/>
-<var-progress 
-  :value="100" 
+<var-progress
+  :value="30"
   line-width="5"
-  size="56" 
-  mode="circle" 
-  show-action
->
-  success
-</var-progress>
-```
-
-### Origin
-
-Set the origin of the ring progress bar through the `rotate` attribute
-
-```html
-<var-progress 
-  :value="value" 
-  line-width="5" 
-  size="56" 
-  mode="circle" 
+  :size="56"
+  mode="circle"
+  color="purple"
+  track-color="#dec3e6"
 />
 <var-progress
   :value="value"
   line-width="5"
-  size="56"
+  :size="56"
   mode="circle"
   :rotate="90"
-/>
-<var-progress
-  :value="value"
-  line-width="5"
-  size="56"
-  mode="circle"
-  :rotate="180"
-/>
-```
-
-### Hide Progress-Track
-
-Hide tracks by using the `show-track` attribute
-
-```html
-<var-progress 
-  :value="30" 
-  line-width="3" 
-  mode="circle" 
-  :show-track="false" 
+  show-action
 />
 <var-progress
   :value="50"
-  line-width="5"
-  size="56"
+  line-width="12"
+  :size="56"
   mode="circle"
   :show-track="false"
-  show-action
-/>
-<var-progress
-  :value="value"
-  line-width="8"
-  size="72"
-  mode="circle"
-  :show-track="false"
-  show-action
-  :rotate="90"
 />
 ```
 
@@ -190,10 +96,10 @@ Hide tracks by using the `show-track` attribute
 | `color` | Color of the progress bar  | _string_  | `#005CAF` |
 | `track-color`  | Color of the progress track | _string_   | `#d8d8d8` |
 | `show-action` | Whether the action is visible or not | _boolean_ | `false` |
-| `ripple`(only supports linear progress) | Loading style for progress | _boolean_ | `false` |
-| `size`(only supports circle progress) | Size of progress | _string \| number_ | `40` |
-| `rotate`(only supports circle progress) | Origin of progress | _number_ | `0` |
-| `show-track`(only supports circle progress) | Whether the progress track is visible or not | _boolean_ | `true` |
+| `ripple` | Loading style for progress (only supports linear progress) | _boolean_ | `false` |
+| `size` | Size of progress (only supports circle progress) | _string \| number_ | `40` |
+| `rotate` | Origin of progress (only supports circle progress) | _number_ | `0` |
+| `show-track` | Whether the progress track is visible or not (only supports circle progress) | _boolean_ | `true` |
 
 ### Slots
 

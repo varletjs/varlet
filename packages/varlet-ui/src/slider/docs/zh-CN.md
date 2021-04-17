@@ -54,7 +54,7 @@ import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref([3, 50])
+    const value = ref([24, 50])
 
     const handleChange = (value) => {
       console.log(value)
@@ -84,7 +84,7 @@ export default {
 通过`track-height` 和 `thumb-size` 控制slider的大小
 
 ```html
-<var-slider v-model="value" track-height="6" thumb-size="20" range />
+<var-slider v-model="value" track-height="4" thumb-size="8" range />
 ```
 
 ### 自定义样式

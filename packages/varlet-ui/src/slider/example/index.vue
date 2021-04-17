@@ -21,7 +21,7 @@
   </div>
   <div>
     <app-type>{{ pack.sliderSize }}</app-type>
-    <var-slider v-model="value1" track-height="6" thumb-size="20" range />
+    <var-slider v-model="value1" track-height="4" thumb-size="8" range />
   </div>
   <div>
     <app-type>{{ pack.customStyle }}</app-type>
@@ -61,7 +61,7 @@ export default defineComponent({
   },
   setup() {
     const value = ref(3)
-    const value1 = ref([3, 50])
+    const value1 = ref([24, 50])
     const value2 = ref(25)
     const value3 = ref(40)
     const value4 = ref(20)

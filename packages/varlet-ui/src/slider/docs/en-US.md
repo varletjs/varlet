@@ -84,7 +84,7 @@ export default {
 Control the size of slider through `track-height` and `thumb-size`.
 
 ```html
-<var-slider v-model="value" track-height="6" thumb-size="20" range />
+<var-slider v-model="value" track-height="4" thumb-size="8" range />
 ```
 
 ### Custom style

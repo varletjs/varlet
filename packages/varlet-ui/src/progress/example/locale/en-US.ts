@@ -2,10 +2,7 @@ export default {
   linear: 'Linear Progress',
   circle: 'Circle Progress',
   basicUsage: 'Basic Usage',
-  style: 'Style',
-  showLabel: 'Show Label',
-  customStyle: 'Custom Style',
+  style: 'Custom Style',
+  showLabel: 'Show Action',
   size: 'Size',
-  rotate: 'Rotate',
-  showTrack: 'Hide Track',
 }
