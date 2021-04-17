@@ -8,8 +8,6 @@
       {{ component.text[lang] }}
     </template>
   </var-cell>
-
-  <div class="space"></div>
 </template>
 
 <script>

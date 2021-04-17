@@ -52,7 +52,6 @@
         <router-view />
       </div>
       <div class="varlet-site-mobile var-elevation--3">
-        <div class="varlet-site-empty"></div>
         <div class="varlet-site-mobile-content">
           <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&path=${path}`"></iframe>
         </div>
@@ -277,7 +276,7 @@ iframe {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 52px 4px 20px;
+    margin: 20px 4px 20px;
     padding: 40px;
     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
     border-top: 8px solid #1d92e9;
@@ -336,16 +335,6 @@ iframe {
           height: 100%;
         }
       }
-    }
-
-    &-empty {
-      height: 34px;
-      width: calc(100% - 40px);
-      margin-left: 20px;
-      background-color: @color-primary;
-      position: absolute;
-      top: 25px;
-      z-index: -1;
     }
 
     &-header {
