@@ -3,7 +3,7 @@
   <var-app-bar :title="pack.title" />
 
   <app-type>{{ pack.customStyle }}</app-type>
-  <var-app-bar :title="pack.title" title-position="center" color="#ff9800" :elevation="false" />
+  <var-app-bar :title="pack.title" title-position="center" color="#ff9800" />
 
   <app-type>{{ pack.addSlotsAtTitle }}</app-type>
   <var-app-bar>{{ pack.addTheTitleFromTheSlot }}</var-app-bar>
@@ -50,6 +50,8 @@
       </var-menu>
     </template>
   </var-app-bar>
+
+  <div class="space"></div>
 </template>
 
 <script>
@@ -133,5 +135,9 @@ export default {
 .menu-list .menu-cell {
   display: block;
   padding: 10px;
+}
+
+.space {
+  height: 80px;
 }
 </style>

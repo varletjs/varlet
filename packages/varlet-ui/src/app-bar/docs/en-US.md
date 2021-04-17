@@ -26,7 +26,7 @@ Set the position of the title and the color of the navigation bar through the `t
   title="title" 
   title-position="center" 
   color="#ff9800" 
-  :elevation="false" />
+/>
 ```
 
 ### Add Slots At Title
@@ -45,7 +45,8 @@ Set the position of the title and the color of the navigation bar through the `t
     text 
     color="transparent" 
     text-color="#ffffff" 
-    @click="goBack">
+    @click="goBack"
+  >
     <var-icon name="chevron-left" :size="24" />
   </var-button>
 </template>
@@ -81,7 +82,8 @@ export default {
     text 
     color="transparent" 
     text-color="#ffffff" 
-    @click="searchData">
+    @click="searchData"
+  >
     <var-icon name="magnify" :size="24" />
   </var-button>
 </template>
@@ -117,7 +119,8 @@ export default {
       text 
       color="transparent" 
       text-color="#ffffff" 
-      @click="goBack">
+      @click="goBack"
+    >
       <var-icon name="chevron-left" :size="24" />
     </var-button>
   </template>
@@ -129,7 +132,8 @@ export default {
         text
         color="transparent" 
         text-color="#ffffff"
-        @click="offsetY = true">
+        @click="offsetY = true"
+      >
         <var-icon name="menu" :size="24" />
       </var-button>
       
@@ -139,7 +143,8 @@ export default {
             class="menu-cell"
             v-for="value in menuList" 
             :key="value.value"  
-            v-ripple>
+            v-ripple
+          >
             {{ value.label }}
           </var-cell>
         </div>

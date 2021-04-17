@@ -14,7 +14,7 @@ createApp().use(AppBar)
 通过`title`属性设置导航栏标题
 
 ```html
-<var-app-bar title="标题"></var-app-bar>
+<var-app-bar title="标题" />
 ```
 
 ### 自定义样式
@@ -26,7 +26,7 @@ createApp().use(AppBar)
   title="标题" 
   title-position="center" 
   color="#ff9800" 
-  :elevation="false" />
+/>
 ```
 
 ### 添加标题处插槽
@@ -45,7 +45,8 @@ createApp().use(AppBar)
       text
       color="transparent"
       text-color="#ffffff"
-      @click="goBack">
+      @click="goBack"
+    >
       <var-icon name="chevron-left" :size="24" />
     </var-button>
   </template>
@@ -81,7 +82,8 @@ export default {
       text
       color="transparent"
       text-color="#ffffff"
-      @click="searchData">
+      @click="searchData"
+    >
       <var-icon name="magnify" :size="24" />
     </var-button>
   </template>
@@ -117,7 +119,8 @@ export default {
       text
       color="transparent"
       text-color="#ffffff"
-      @click="goBack">
+      @click="goBack"
+    >
       <var-icon name="chevron-left" :size="24" />
     </var-button>
   </template>
@@ -129,7 +132,8 @@ export default {
         text
         color="transparent"
         text-color="#ffffff"
-        @click="offsetY = true">
+        @click="offsetY = true"
+      >
         <var-icon name="menu" :size="24" />
       </var-button>
 
@@ -139,7 +143,8 @@ export default {
             class="menu-cell"
             v-for="value in menuList"
             :key="value.value"
-            v-ripple>
+            v-ripple
+          >
             {{ value.label }}
           </var-cell>
         </div>

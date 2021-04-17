@@ -32,10 +32,14 @@
           :value="modelValue"
           :maxlength="maxlength"
           :rows="rows"
-          :class="[formDisabled || disabled ? 'var-input--disabled' : null, textarea ? 'var-input--textarea' : null]"
+          :class="[
+            formDisabled || disabled ? 'var-input--disabled' : null,
+            textarea ? 'var-input--textarea' : null,
+            errorMessage ? 'var-input--caret-error' : null,
+          ]"
           :style="{
             color: textColor,
-            caretColor: focusColor,
+            caretColor: !errorMessage ? focusColor : null,
             resize: resize ? 'vertical' : 'none',
           }"
           @focus="handleFocus"
