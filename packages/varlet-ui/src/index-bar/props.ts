@@ -1,7 +1,4 @@
 export const props = {
-  active: {
-    type: [Number, String],
-  },
   sticky: {
     type: Boolean,
     default: true,

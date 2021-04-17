@@ -18,7 +18,7 @@
 <script lang="ts">
 import { computed, ComputedRef, defineComponent, nextTick, ref, Ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { isPlainObject } from '../utils/shared'
-import { getParentScroller } from '../utils/elements'
+import { getParentScroller, requestAnimationFrame } from '../utils/elements'
 import { IndexBarProvider, useIndexAnchors } from './provide'
 import { IndexAnchorProvider } from '../index-anchor/provide'
 import { props } from './props'
@@ -33,8 +33,8 @@ export default defineComponent({
     const scroller: Ref<HTMLElement | Window | null> = ref(null)
     const barEl: Ref<HTMLDivElement | null> = ref(null)
     const anchorNameList: Ref<Array<number | string>> = ref([])
+    const active: Ref<number | string | undefined> = ref()
 
-    const active: ComputedRef<number | string | undefined> = computed(() => props.active)
     const sticky: ComputedRef<boolean> = computed(() => props.sticky)
     const stickyOffsetTop: ComputedRef<number> = computed(() => props.stickyOffsetTop)
     const zIndex: ComputedRef<number | string> = computed(() => props.zIndex)
@@ -50,8 +50,9 @@ export default defineComponent({
 
     const emitEvent = (anchor: IndexAnchorProvider | number | string) => {
       const anchorName = isPlainObject(anchor) ? anchor.name.value : anchor
-      if (anchorName === props.active) return
-      props['onUpdate:active']?.(anchorName)
+      if (anchorName === active.value) return
+
+      active.value = anchorName
       props.onChange?.(anchorName)
     }
 
@@ -83,15 +84,16 @@ export default defineComponent({
 
     // expose
     const scrollTo = (index: number | string) => {
-      anchorClick(index)
+      requestAnimationFrame(() => anchorClick(index))
     }
 
     watch(
       () => length.value,
       () =>
         nextTick(() => {
-          indexAnchors.forEach(({ name }) => {
+          indexAnchors.forEach(({ name, setOwnTop }) => {
             if (name.value) anchorNameList.value.push(name.value)
+            setOwnTop()
           })
         })
     )
@@ -103,7 +105,6 @@ export default defineComponent({
           ? (scroller.value as Window).document.documentElement
           : (scroller.value as HTMLElement)
       scroller.value?.addEventListener('scroll', handleScroll)
-      indexAnchors.forEach(({ setOwnTop }) => setOwnTop())
     })
 
     onBeforeUnmount(() => {
@@ -112,6 +113,7 @@ export default defineComponent({
 
     return {
       barEl,
+      active,
       anchorNameList,
       scrollTo,
       anchorClick,

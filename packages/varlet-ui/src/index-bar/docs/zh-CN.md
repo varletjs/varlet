@@ -18,7 +18,7 @@ createApp().use(IndexBar).use(IndexAnchor)
 点击索引栏时，会自动跳转到对应的 `IndexAnchor` 锚点位置。
 
 ```html
-<var-index-bar v-model:active="active" @change="change">
+<var-index-bar @change="change">
   <div v-for="item in list" :key="item">
     <var-index-anchor 
       :index="item" 
@@ -33,14 +33,13 @@ createApp().use(IndexBar).use(IndexAnchor)
 </var-index-bar>
 ```
 ```javascript
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
   export default {
     setup() {
-      const active = ref('A')
       const list = ref([])
 
-      onBeforeMount(() => {
+      onMounted(() => {
         for (let i = 0; i < 26; i++) {
           list.value.push(String.fromCharCode(65 + i))
         }
@@ -51,7 +50,6 @@ import { ref } from 'vue'
       }
 
       return {
-        active,
         list,
         change
       }
@@ -67,7 +65,6 @@ import { ref } from 'vue'
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `v-model:active` | 当前激活的索引 | _number \| string_ |`-` |
 | `sticky` | 是否开启锚点吸顶 | _boolean_ | `true` |
 | `sticky-offset-top` | 锚点吸顶时与顶部的距离 | _number_ | `0` |
 | `z-index` | z-index 层级 | _number \| string_ | `1` |

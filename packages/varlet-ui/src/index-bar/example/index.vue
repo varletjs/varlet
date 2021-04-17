@@ -1,6 +1,6 @@
 <template>
   <div class="var-index-bar__example">
-    <var-index-bar v-model:active="active" @change="change">
+    <var-index-bar @change="change">
       <div v-for="item in list" :key="item">
         <var-index-anchor :index="item" class="var-index-anchor__example">
           {{ pack.title }} {{ item }}
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, onBeforeMount } from 'vue'
+import { defineComponent, ref, onMounted } from 'vue'
 import IndexAnchor from '../../index-anchor/IndexAnchor.vue'
 import IndexBar from '..'
 import Cell from '../../cell'
@@ -29,10 +29,9 @@ export default defineComponent({
     [Cell.name]: Cell,
   },
   setup() {
-    const active = ref('A')
     const list = ref([])
 
-    onBeforeMount(() => {
+    onMounted(() => {
       for (let i = 0; i < 26; i++) {
         list.value.push(String.fromCharCode(65 + i))
       }
@@ -45,7 +44,6 @@ export default defineComponent({
     watchLang(use)
 
     return {
-      active,
       list,
       pack,
       change,

@@ -18,7 +18,7 @@ createApp().use(IndexBar).use(IndexAnchor)
 When you click the index bar, it will automatically jump to the corresponding `IndexAnchor` anchor position.
 
 ```html
-<var-index-bar v-model:active="active" @change="change">
+<var-index-bar @change="change">
   <div v-for="item in list" :key="item">
     <var-index-anchor 
       :index="item" 
@@ -33,14 +33,13 @@ When you click the index bar, it will automatically jump to the corresponding `I
 </var-index-bar>
 ```
 ```javascript
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
   export default {
     setup() {
-      const active = ref('A')
       const list = ref([])
 
-      onBeforeMount(() => {
+      onMounted(() => {
         for (let i = 0; i < 26; i++) {
           list.value.push(String.fromCharCode(65 + i))
         }
@@ -51,7 +50,6 @@ import { ref } from 'vue'
       }
 
       return {
-        active,
         list,
         change
       }
@@ -67,7 +65,6 @@ import { ref } from 'vue'
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `v-model:active` | The currently active anchor | _string \| number_ | `-` |
 | `sticky` | Whether to enable anchor sticky top | _boolean_ | `true` |
 | `sticky-offset-top` | Anchor offset top when sticky | _number_ | `0` |
 | `z-index` | z-index | _string \| number_ | `1` |

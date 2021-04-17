@@ -1,9 +1,9 @@
-import { ComputedRef } from 'vue'
+import { ComputedRef, Ref } from 'vue'
 import { useAtChildrenCounter, useChildren } from '../utils/components'
 import { IndexAnchorProvider } from '../index-anchor/provide'
 
 export interface IndexBarProvider {
-  active: ComputedRef<number | string | undefined>
+  active: Ref<number | string | undefined>
   sticky: ComputedRef<boolean>
   stickyOffsetTop: ComputedRef<number>
   zIndex: ComputedRef<number | string>
