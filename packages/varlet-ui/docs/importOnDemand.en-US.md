@@ -67,7 +67,7 @@ export default defineConfig({
 After the configuration is complete, and the component is imported as follows, 
 the plugin will automatically import the corresponding style file for the component
 
-```html
+```javascript
 import { Button } from '@varlet/ui'
 ```
 
@@ -76,7 +76,7 @@ import { Button } from '@varlet/ui'
 The ES module is very tree-shaking friendly,
 and you can manually import the required component logic and style files directly to implement on-demand introduction.
 
-```html
+```javascript
 import { Button } from '@varlet/ui'
 import '@varlet/ui/es/button/style'
 ```

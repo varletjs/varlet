@@ -66,7 +66,7 @@ export default defineConfig({
 
 完成配置之后，如下引入组件，插件会自动引入组件对应的样式文件。
 
-```html
+```javascript
 import { Button } from '@varlet/ui'
 ```
 
@@ -74,7 +74,7 @@ import { Button } from '@varlet/ui'
 
 es模块对于tree-shaking十分友好，您也可以直接手动引入需要的组件逻辑和样式文件来实现按需引入。
 
-```html
+```javascript
 import { Button } from '@varlet/ui'
 import '@varlet/ui/es/button/style'
 ```
