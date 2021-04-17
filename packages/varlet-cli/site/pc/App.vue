@@ -51,13 +51,10 @@
       <div class="varlet-site-code" :ref="code">
         <router-view />
       </div>
-      <div class="varlet-site-mobile">
+      <div class="varlet-site-mobile var-elevation--3">
         <div class="varlet-site-empty"></div>
         <div class="varlet-site-mobile-content">
           <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&path=${path}`"></iframe>
-        </div>
-        <div class="varlet-site-mobile-image">
-          <img src="./assets/images/mobile.png" />
         </div>
       </div>
     </div>
@@ -314,19 +311,18 @@ iframe {
 
   &-site {
     &-mobile {
-      flex: 0 0 432px;
-      transform: scale(0.88) translateZ(0);
+      flex: 0 0 325px;
       position: relative;
-      height: 863px;
+      height: calc(100vh - 100px);
       align-self: center;
+      margin-left: 30px;
+      margin-right: 38px;
+      overflow: hidden;
+      border-radius: 8px;
 
       &-content {
-        height: 780px;
-        position: absolute;
-        z-index: -2;
-        top: 57px;
-        width: calc(100% - 57px);
-        margin-left: 28px;
+        width: 100%;
+        height: 100%;
       }
 
       &-image {
@@ -339,18 +335,6 @@ iframe {
           width: 100%;
           height: 100%;
         }
-      }
-    }
-
-    @media screen and (max-width: 1280px) {
-      &-mobile {
-        transform: scale(0.66) translateZ(0);
-      }
-    }
-
-    @media screen and (min-width: 1281px) and (max-width: 1600px) {
-      &-mobile {
-        transform: scale(0.7) translateZ(0);
       }
     }
 

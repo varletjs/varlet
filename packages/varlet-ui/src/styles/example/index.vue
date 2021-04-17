@@ -28,16 +28,16 @@ export default {
 .list {
   display: flex;
   flex-wrap: wrap;
-  padding: 6px;
+  padding: 2vw;
 
   &__item {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: 100px;
+    width: 25vw;
+    height: 25vw;
     color: #888;
-    margin: 6px;
+    margin: 2vw;
   }
 }
 </style>
