@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/haoziqaq/varlet/compare/v0.12.2...v0.13.0) (2021-04-17)
+
+
+### Bug Fixes
+
+* fix wrong z-index of snackbar and prevent touchmove event of pull-refresh example ([3be0b22](https://github.com/haoziqaq/varlet/commit/3be0b226291d87bba5b660d4e9ea6e2b5f3c3ca9))
+
+
+### Features
+
+* **cli/site:** 修改手机样式 自适应高度 ([37029e2](https://github.com/haoziqaq/varlet/commit/37029e2a76fbf6a2995fc4e634c81defe0633fc3))
+* **cli/site markdown-loader/:** 修改文档整体风格 ([288a1f8](https://github.com/haoziqaq/varlet/commit/288a1f8e5a6e81e21accd1b2f18082ac2ee4b74e))
+
+
+
+
+
 ## [0.12.2](https://github.com/haoziqaq/varlet/compare/v0.12.1...v0.12.2) (2021-04-14)
 
 **Note:** Version bump only for package @varlet/cli

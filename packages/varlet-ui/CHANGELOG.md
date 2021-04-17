@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/haoziqaq/varlet/compare/v0.12.2...v0.13.0) (2021-04-17)
+
+
+### Bug Fixes
+
+* **collapse:** fix wrong style ([6e778f4](https://github.com/haoziqaq/varlet/commit/6e778f47bf470be29c7e0bf3649b9b13e2f20ca5))
+* **index-bar:** fix mount error and remove active prop ([0dcb98f](https://github.com/haoziqaq/varlet/commit/0dcb98fbe9284c8242db8b384e8047651b4913eb))
+* fix some wrong style and docs error ([71cd483](https://github.com/haoziqaq/varlet/commit/71cd4836c2fa6c773ef999000b41bb4c4905451d))
+* fix wrong z-index of snackbar and prevent touchmove event of pull-refresh example ([3be0b22](https://github.com/haoziqaq/varlet/commit/3be0b226291d87bba5b660d4e9ea6e2b5f3c3ca9))
+* **rate:** add validator and import component style ([9b76d36](https://github.com/haoziqaq/varlet/commit/9b76d361399119431c910607592a44df837b632e))
+* **rate:** fix error data ([e135560](https://github.com/haoziqaq/varlet/commit/e135560b55b30ce9a6363cfb019cd1f961e75745))
+* **snackbar:** modify the way of transition ([eb8aada](https://github.com/haoziqaq/varlet/commit/eb8aadaa493b9af4b993f012d8b9874b2d6d2906))
+* **ui/chip:** 修复chip样式引入问题 ([1e85fa4](https://github.com/haoziqaq/varlet/commit/1e85fa442e47de81021c782b4c286e4fd1f737c3))
+
+
+### Features
+
+* **cli/site:** 修改手机样式 自适应高度 ([37029e2](https://github.com/haoziqaq/varlet/commit/37029e2a76fbf6a2995fc4e634c81defe0633fc3))
+* **cli/site markdown-loader/:** 修改文档整体风格 ([288a1f8](https://github.com/haoziqaq/varlet/commit/288a1f8e5a6e81e21accd1b2f18082ac2ee4b74e))
+
+
+
+
+
 ## [0.12.2](https://github.com/haoziqaq/varlet/compare/v0.12.1...v0.12.2) (2021-04-14)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/haoziqaq/varlet/compare/v0.12.2...v0.13.0) (2021-04-17)
+
+
+### Features
+
+* **cli/site markdown-loader/:** 修改文档整体风格 ([288a1f8](https://github.com/haoziqaq/varlet/commit/288a1f8e5a6e81e21accd1b2f18082ac2ee4b74e))
+
+
+
+
+
 # [0.12.0](https://github.com/haoziqaq/varlet/compare/v0.11.4...v0.12.0) (2021-04-14)
 
 **Note:** Version bump only for package @varlet/markdown-loader
