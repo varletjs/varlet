@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/haoziqaq/varlet/compare/v0.13.0...v0.13.1) (2021-04-19)
+
+
+### Bug Fixes
+
+* **site:** change logo and back url of mobile ([2709c6c](https://github.com/haoziqaq/varlet/commit/2709c6ca8d084e0360d9014bcadecb074ae2b453))
+* **site:** fix the bug of mouseenter trigger ([d2e4b6d](https://github.com/haoziqaq/varlet/commit/d2e4b6d5a98f04986a05296a0c272d2e6706de8d))
+
+
+
+
+
 # [0.13.0](https://github.com/haoziqaq/varlet/compare/v0.12.2...v0.13.0) (2021-04-17)
 
 

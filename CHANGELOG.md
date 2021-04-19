@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/haoziqaq/varlet/compare/v0.13.0...v0.13.1) (2021-04-19)
+
+
+### Bug Fixes
+
+* **site:** change logo and back url of mobile ([2709c6c](https://github.com/haoziqaq/varlet/commit/2709c6ca8d084e0360d9014bcadecb074ae2b453))
+* **site:** fix the bug of mouseenter trigger ([d2e4b6d](https://github.com/haoziqaq/varlet/commit/d2e4b6d5a98f04986a05296a0c272d2e6706de8d))
+* **ui/counter ui/input ui/select:** 修复counter移动端长按touchend失效的问题，修复input select颜色显示的问题 ([a0e6f6a](https://github.com/haoziqaq/varlet/commit/a0e6f6af9889b50aa2a3ea19d6bb9b0ba28da386))
+* **ui/input:** 修复验证错误时光标颜色问题 ([03fc188](https://github.com/haoziqaq/varlet/commit/03fc188bb93c714862cc5531e26a2c23db58ca5e))
+* **ui/input ui/select:** 修改input select样式 ([56cc7bf](https://github.com/haoziqaq/varlet/commit/56cc7bfb62fd60475a612872a4049a9308dcddcc))
+
+
+
+
+
 # [0.13.0](https://github.com/haoziqaq/varlet/compare/v0.12.2...v0.13.0) (2021-04-17)
 
 
