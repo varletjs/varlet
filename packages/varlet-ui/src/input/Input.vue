@@ -54,25 +54,6 @@
         >
           {{ placeholder }}
         </label>
-        <div
-          class="var-input__line"
-          :class="[
-            formDisabled || disabled ? 'var-input--line-disabled' : null,
-            errorMessage ? 'var-input--line-error' : null,
-          ]"
-          :style="{ background: !errorMessage ? blurColor : null }"
-          v-if="line"
-        >
-          <div
-            class="var-input__dot"
-            :class="[
-              isFocus ? 'var-input--spread' : null,
-              formDisabled || disabled ? 'var-input--line-disabled' : null,
-              errorMessage ? 'var-input--line-error' : null,
-            ]"
-            :style="{ background: !errorMessage ? focusColor : null }"
-          ></div>
-        </div>
       </div>
 
       <div class="var-input__icon" :class="[!hint ? 'var-input--non-hint' : null]">
@@ -87,6 +68,26 @@
           />
         </slot>
       </div>
+    </div>
+
+    <div
+      class="var-input__line"
+      :class="[
+        formDisabled || disabled ? 'var-input--line-disabled' : null,
+        errorMessage ? 'var-input--line-error' : null,
+      ]"
+      :style="{ background: !errorMessage ? blurColor : null }"
+      v-if="line"
+    >
+      <div
+        class="var-input__dot"
+        :class="[
+          isFocus ? 'var-input--spread' : null,
+          formDisabled || disabled ? 'var-input--line-disabled' : null,
+          errorMessage ? 'var-input--line-error' : null,
+        ]"
+        :style="{ background: !errorMessage ? focusColor : null }"
+      ></div>
     </div>
 
     <var-form-details :error-message="errorMessage" :maxlength-text="maxlengthText" />

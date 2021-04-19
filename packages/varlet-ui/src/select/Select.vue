@@ -75,25 +75,6 @@
           >
             {{ placeholder }}
           </label>
-          <div
-            class="var-select__line"
-            :class="[
-              formDisabled || disabled ? 'var-select--line-disabled' : null,
-              errorMessage ? 'var-select--line-error' : null,
-            ]"
-            :style="{ background: !errorMessage ? blurColor : null }"
-            v-if="line"
-          >
-            <div
-              class="var-select__dot"
-              :class="[
-                isFocus ? 'var-select--spread' : null,
-                formDisabled || disabled ? 'var-select--line-disabled' : null,
-                errorMessage ? 'var-select--line-error' : null,
-              ]"
-              :style="{ background: !errorMessage ? focusColor : null }"
-            ></div>
-          </div>
         </div>
 
         <template #menu>
@@ -108,6 +89,26 @@
           <var-icon name="close-circle" size="14px" v-if="clearable" @click="handleClear" />
         </slot>
       </div>
+    </div>
+
+    <div
+      class="var-select__line"
+      :class="[
+        formDisabled || disabled ? 'var-select--line-disabled' : null,
+        errorMessage ? 'var-select--line-error' : null,
+      ]"
+      :style="{ background: !errorMessage ? blurColor : null }"
+      v-if="line"
+    >
+      <div
+        class="var-select__dot"
+        :class="[
+          isFocus ? 'var-select--spread' : null,
+          formDisabled || disabled ? 'var-select--line-disabled' : null,
+          errorMessage ? 'var-select--line-error' : null,
+        ]"
+        :style="{ background: !errorMessage ? focusColor : null }"
+      ></div>
     </div>
 
     <var-form-details :error-message="errorMessage" />
