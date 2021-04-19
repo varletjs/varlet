@@ -41,7 +41,7 @@ export default defineComponent({
     isPhone.value = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
 
     const toHome = () => {
-      router.go(-1)
+      router.push('/home')
     }
 
     watch(

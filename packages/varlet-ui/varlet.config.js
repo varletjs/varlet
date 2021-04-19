@@ -418,7 +418,7 @@ module.exports = {
   mobile: {
     title: 'Varlet 面向Vue3的Material风格移动端组件库',
     description: 'Varlet 面向Vue3的Material风格移动端组件库',
-    logo: 'https://cn.vuejs.org/images/logo.png',
+    logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
     redirect: '/home',
   },
 }
