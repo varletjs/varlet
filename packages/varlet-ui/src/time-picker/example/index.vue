@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import TimePicker from '..'
 import { pack, use } from './locale'
@@ -47,12 +47,14 @@ export default defineComponent({
     AppType,
   },
   setup() {
-    const date = ref('11:20')
-    const date1 = ref('15:10')
-    const date2 = ref('07:10')
-    const date3 = ref('07:10')
-    const date4 = ref('05:10')
-    const date5 = ref('17:36:22')
+    const dates = reactive({
+      date: '11:20',
+      date1: '15:10',
+      date2: '07:10',
+      date3: '07:10',
+      date4: '05:10',
+      date5: '17:36:22',
+    })
 
     const change = (time) => {
       console.log(time)
@@ -61,12 +63,7 @@ export default defineComponent({
     watchLang(use)
 
     return {
-      date,
-      date1,
-      date2,
-      date3,
-      date4,
-      date5,
+      ...toRefs(dates),
       change,
       pack,
     }

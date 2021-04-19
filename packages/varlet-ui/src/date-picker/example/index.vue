@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import DatePicker from '..'
 import { pack, use } from './locale'
@@ -57,12 +57,15 @@ export default defineComponent({
     [DatePicker.name]: DatePicker,
   },
   setup() {
-    const date = ref('2021-01')
-    const date1 = ref('2021-04-08')
-    const date2 = ref(['', ''])
-    const date3 = ref(['2021-02-01', '2021-02-15'])
-    const date4 = ref('2020-11-11')
-    const date5 = ref('2021-02')
+    const dates = reactive({
+      date: '2021-01',
+      date1: '2021-04-08',
+      date2: ['', ''],
+      date3: ['2021-02-01', '2021-02-15'],
+      date4: '2020-11-11',
+      date5: '2021-02',
+    })
+
     const allowedDates = (val) => {
       return parseInt(val.split('-')[1], 10) % 2 === 1
     }
@@ -76,13 +79,8 @@ export default defineComponent({
     watchLang(use)
 
     return {
+      ...toRefs(dates),
       pack,
-      date,
-      date1,
-      date2,
-      date3,
-      date4,
-      date5,
       change,
       allowedDates,
       allowedDates1,

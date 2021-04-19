@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Switch from '..'
 import Cell from '../../cell'
@@ -63,20 +63,18 @@ export default defineComponent({
     AppType,
   },
   setup() {
-    const value = ref(true)
-    const value1 = ref(true)
-    const value2 = ref(false)
-    const value3 = ref(true)
-    const value4 = ref(true)
+    const values = reactive({
+      value: true,
+      value1: true,
+      value2: false,
+      value3: true,
+      value4: true,
+    })
 
     watchLang(use)
 
     return {
-      value,
-      value1,
-      value2,
-      value3,
-      value4,
+      ...toRefs(values),
       pack,
     }
   },

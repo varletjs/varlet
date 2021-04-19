@@ -41,7 +41,7 @@ import Input from '..'
 import Button from '../../button'
 import Icon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { ref } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { use, pack } from './locale'
 import { watchLang } from '../../utils/components'
 
@@ -54,32 +54,26 @@ export default {
     AppType,
   },
   setup() {
-    const value = ref('')
-    const value2 = ref('')
-    const value3 = ref('')
-    const value4 = ref('')
-    const value5 = ref('')
-    const value6 = ref('')
-    const value7 = ref('')
-    const value8 = ref('')
-    const value9 = ref('')
+    const values = reactive({
+      value: '',
+      value2: '',
+      value3: '',
+      value4: '',
+      value5: '',
+      value6: '',
+      value7: '',
+      value8: '',
+      value9: '',
+    })
 
     watchLang((lang) => {
       use(lang)
-      value5.value = pack.value.clearableText
+      values.value5 = pack.value.clearableText
     })
 
     return {
       pack,
-      value,
-      value2,
-      value3,
-      value4,
-      value5,
-      value6,
-      value7,
-      value8,
-      value9,
+      ...toRefs(values)
     }
   },
 }

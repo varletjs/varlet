@@ -55,7 +55,7 @@ import Button from '../../button'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { watchLang } from '../../utils/components'
-import { ref } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 
 export default {
@@ -66,27 +66,22 @@ export default {
     AppType,
   },
   setup() {
-    const center = ref(false)
-    const top = ref(false)
-    const bottom = ref(false)
-    const left = ref(false)
-    const right = ref(false)
-    const overlayClass = ref(false)
-    const overlayStyle = ref(false)
-    const event = ref(false)
+    const values = reactive({
+      center: false,
+      top: false,
+      bottom: false,
+      left: false,
+      right: false,
+      overlayClass: false,
+      overlayStyle: false,
+      event: false,
+    })
 
     watchLang(use)
 
     return {
       pack,
-      center,
-      top,
-      bottom,
-      left,
-      right,
-      overlayClass,
-      overlayStyle,
-      event,
+      ...toRefs(values),
       Snackbar,
     }
   },

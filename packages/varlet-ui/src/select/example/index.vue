@@ -94,7 +94,7 @@ import Select from '..'
 import Option from '../../option'
 import Icon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { ref } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { watchLang } from '../../utils/components'
 import { use, pack } from './locale'
 
@@ -107,46 +107,38 @@ export default {
     AppType,
   },
   setup() {
-    const value = ref()
-    const value2 = ref()
-    const value3 = ref()
-    const value4 = ref()
-    const value6 = ref()
-    const value5 = ref([])
-    const value7 = ref([])
-    const value8 = ref()
-    const value9 = ref()
-    const value10 = ref([])
-    const value11 = ref()
+    const values = reactive({
+      value: undefined,
+      value2: undefined,
+      value3: undefined,
+      value4: undefined,
+      value5: [],
+      value6: undefined,
+      value7: [],
+      value8: undefined,
+      value9: undefined,
+      value10: [],
+      value11: undefined,
+    })
 
     watchLang((lang) => {
       use(lang)
-      value.value = undefined
-      value2.value = undefined
-      value3.value = undefined
-      value4.value = undefined
-      value6.value = undefined
-      value5.value = []
-      value7.value = []
-      value8.value = undefined
-      value9.value = undefined
-      value10.value = []
-      value11.value = undefined
+      values.value = undefined
+      values.value2 = undefined
+      values.value3 = undefined
+      values.value4 = undefined
+      values.value6 = undefined
+      values.value5 = []
+      values.value7 = []
+      values.value8 = undefined
+      values.value9 = undefined
+      values.value10 = []
+      values.value11 = undefined
     })
 
     return {
       pack,
-      value,
-      value2,
-      value3,
-      value4,
-      value5,
-      value6,
-      value7,
-      value8,
-      value9,
-      value10,
-      value11,
+      ...toRefs(values),
     }
   },
 }

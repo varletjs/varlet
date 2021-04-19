@@ -39,7 +39,7 @@ import Icon from '../../icon'
 import Snackbar from '../../snackbar'
 import Cell from '../../cell'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { ref } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 
@@ -53,10 +53,12 @@ export default {
     AppType,
   },
   setup() {
-    const show = ref(false)
-    const show1 = ref(false)
-    const show2 = ref(false)
-    const value = ref('')
+    const values = reactive({
+      show: false,
+      show1: false,
+      show2: false,
+      value: ''
+    })
 
     const actions = {
       confirm: () => Snackbar.success('confirm'),
@@ -106,10 +108,7 @@ export default {
 
     return {
       pack,
-      show,
-      show1,
-      show2,
-      value,
+      ...toRefs(values),
       asyncClose,
       createBasic,
       createAction,

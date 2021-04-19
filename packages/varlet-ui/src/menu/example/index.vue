@@ -111,7 +111,7 @@ import Cell from '../../cell'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
-import { onUnmounted, ref } from 'vue'
+import { onUnmounted, reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchPlatform } from '../../utils/components'
 
@@ -124,13 +124,15 @@ export default {
     AppType,
   },
   setup() {
-    const top = ref(false)
-    const bottom = ref(false)
-    const offsetX = ref(false)
-    const offsetX1 = ref(false)
-    const offsetY = ref(false)
-    const offsetY1 = ref(false)
-    const event = ref(false)
+    const values = reactive({
+      top: false,
+      bottom: false,
+      offsetX: false,
+      offsetX1: false,
+      offsetY: false,
+      offsetY1: false,
+      event: false,
+    })
 
     watchLang(use)
 
@@ -146,13 +148,7 @@ export default {
 
     return {
       pack,
-      top,
-      bottom,
-      offsetX,
-      offsetX1,
-      offsetY,
-      offsetY1,
-      event,
+      ...toRefs(values),
       Snackbar,
     }
   },

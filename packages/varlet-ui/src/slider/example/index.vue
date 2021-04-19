@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Slider from '..'
 import { pack, use } from './locale'
@@ -60,15 +60,18 @@ export default defineComponent({
     AppType,
   },
   setup() {
-    const value = ref(3)
-    const value1 = ref([24, 50])
-    const value2 = ref(25)
-    const value3 = ref(40)
-    const value4 = ref(20)
-    const value5 = ref(20)
-    const value6 = ref(70)
-    const value7 = ref(50)
-    const value8 = ref(20)
+    const values = reactive({
+      value: 3,
+      value1: [24, 50],
+      value2: 25,
+      value3: 40,
+      value4: 20,
+      value5: 20,
+      value6: 70,
+      value7: 50,
+      value8: 20,
+    })
+
     const handleChange = (v) => {
       console.log(v)
     }
@@ -76,15 +79,7 @@ export default defineComponent({
     watchLang(use)
 
     return {
-      value,
-      value1,
-      value2,
-      value3,
-      value4,
-      value5,
-      value6,
-      value7,
-      value8,
+      ...toRefs(values),
       pack,
       handleChange,
     }

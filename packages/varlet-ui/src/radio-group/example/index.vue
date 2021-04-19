@@ -51,7 +51,7 @@ import Icon from '../../icon'
 import Button from '../../button'
 import Row from '../../row'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
-import { ref } from 'vue'
+import { toRefs, reactive } from 'vue'
 import { watchLang } from '../../utils/components'
 import { use, pack } from './locale'
 
@@ -66,27 +66,22 @@ export default {
     AppType,
   },
   setup() {
-    const value = ref(false)
-    const value2 = ref(0)
-    const value3 = ref(false)
-    const value4 = ref(false)
-    const value5 = ref(false)
-    const value6 = ref(0)
-    const value7 = ref(false)
-    const value8 = ref(0)
+    const values = reactive({
+      value: false,
+      value2: 0,
+      value3: false,
+      value4: false,
+      value5: false,
+      value6: 0,
+      value7: false,
+      value8: 0,
+    })
 
     watchLang(use)
 
     return {
       pack,
-      value,
-      value2,
-      value3,
-      value4,
-      value5,
-      value6,
-      value7,
-      value8,
+      ...toRefs(values)
     }
   },
 }

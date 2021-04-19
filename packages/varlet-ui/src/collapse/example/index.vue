@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Collapse from '..'
 import CollapseItem from '../../collapse-item'
@@ -67,12 +67,14 @@ export default defineComponent({
     AppType,
   },
   setup() {
-    const disabled = ref(false)
-    const value = ref(['1'])
-    const value1 = ref('')
-    const value2 = ref([1])
-    const value3 = ref(['1'])
-    const value4 = ref(['2'])
+    const values = reactive({
+      disabled: false,
+      value: ['1'],
+      value1: '',
+      value2: [1],
+      value3: ['1'],
+      value4: ['2'],
+    })
 
     const changeHandle = (val) => {
       console.log(val)
@@ -81,12 +83,7 @@ export default defineComponent({
     watchLang(use)
 
     return {
-      disabled,
-      value,
-      value1,
-      value2,
-      value3,
-      value4,
+      ...toRefs(values),
       pack,
       changeHandle,
     }

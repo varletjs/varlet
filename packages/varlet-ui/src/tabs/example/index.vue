@@ -140,7 +140,7 @@ import TabsItems from '../../tabs-items'
 import TabItem from '../../tab-item'
 import context from '../../context'
 import { use, pack } from './locale'
-import { onUnmounted, ref } from 'vue'
+import { onUnmounted, reactive, toRefs } from 'vue'
 import { watchPlatform, watchLang } from '../../utils/components'
 
 export default {
@@ -154,14 +154,16 @@ export default {
     AppType
   },
   setup() {
-    const active = ref(0)
-    const active2 = ref(0)
-    const active3 = ref(0)
-    const active4 = ref(0)
-    const active5 = ref(0)
-    const active6 = ref(0)
-    const active7 = ref(0)
-    const activeRelation = ref(0)
+    const actives = reactive({
+      active: 0,
+      active2: 0,
+      active3: 0,
+      active4: 0,
+      active5: 0,
+      active6: 0,
+      active7: 0,
+      activeRelation: 0,
+    })
 
     watchLang(use)
 
@@ -177,14 +179,7 @@ export default {
 
     return {
       pack,
-      active,
-      active2,
-      active3,
-      active4,
-      active5,
-      active6,
-      active7,
-      activeRelation,
+      ...toRefs(actives),
     }
   },
 }

@@ -38,7 +38,7 @@
 import Uploader from '..'
 import Button from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { ref } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { watchLang } from '../../utils/components'
 import { use, pack } from './locale'
 
@@ -50,47 +50,49 @@ export default {
     AppType,
   },
   setup() {
-    const files = ref([])
-    const files2 = ref([
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      },
-      {
-        url: 'https://www.runoob.com/try/demo_source/mov_bbb.mp4',
-        cover: 'https://varlet.gitee.io/varlet-ui/cover.jpg',
-      },
-    ])
-    const files3 = ref([
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        state: 'loading',
-      },
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        state: 'success',
-      },
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        state: 'error',
-      },
-    ])
-    const files4 = ref([])
-    const files5 = ref([])
-    const files6 = ref([])
-    const files7 = ref([])
-    const files8 = ref([])
-    const files9 = ref([])
-    const files10 = ref([
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        state: 'error',
-      },
-    ])
+    const values = reactive({
+      files: [],
+      files2: [
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        },
+        {
+          url: 'https://www.runoob.com/try/demo_source/mov_bbb.mp4',
+          cover: 'https://varlet.gitee.io/varlet-ui/cover.jpg',
+        },
+      ],
+      files3: [
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          state: 'loading',
+        },
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          state: 'success',
+        },
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          state: 'error',
+        },
+      ],
+      files4: [],
+      files5: [],
+      files6: [],
+      files7: [],
+      files8: [],
+      files9: [],
+      files10: [
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          state: 'error',
+        },
+      ],
+    })
 
     const handleAfterRead = (file) => console.log(file)
 
@@ -110,16 +112,7 @@ export default {
 
     return {
       pack,
-      files,
-      files2,
-      files3,
-      files4,
-      files5,
-      files6,
-      files7,
-      files8,
-      files9,
-      files10,
+      ...toRefs(values),
       handleAfterRead,
       handleAfterRead2,
       handleOversize,

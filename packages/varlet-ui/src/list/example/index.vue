@@ -38,7 +38,7 @@ import Tabs from '../../tabs'
 import Tab from '../../tab'
 import TabsItems from '../../tabs-items'
 import TabItem from '../../tab-item'
-import { ref, reactive } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { watchLang } from '../../utils/components'
 import { use, pack } from './locale'
 
@@ -53,72 +53,63 @@ export default {
     [TabItem.name]: TabItem,
   },
   setup() {
-    const loading = ref(false)
-    const loading2 = ref(false)
-    const loading3 = ref(false)
-    const finished = ref(false)
-    const finished2 = ref(false)
-    const finished3 = ref(false)
-    const error = ref(false)
-    const list = reactive([])
-    const list2 = reactive([])
-    const list3 = reactive([])
-
-    const current = ref(0)
+    const values = reactive({
+      loading: false,
+      loading2: false,
+      loading3: false,
+      finished: false,
+      finished2: false,
+      finished3: false,
+      error: false,
+      list: [],
+      list2: [],
+      list3: [],
+      current: 0
+    })
 
     watchLang(use)
 
     return {
       pack,
-      current,
-      error,
-      list,
-      list2,
-      list3,
-      loading,
-      loading2,
-      loading3,
-      finished,
-      finished2,
-      finished3,
+      ...toRefs(values),
       load() {
         setTimeout(() => {
           for (let i = 0; i < 20; i++) {
-            list.push(list.length + 1)
+            values.list.push(values.list.length + 1)
           }
 
-          loading.value = false
+          values.loading = false
 
-          if (list.length >= 60) {
-            finished.value = true
+          if (values.list.length >= 60) {
+            values.finished = true
           }
         }, 1000)
       },
       load2() {
         setTimeout(() => {
-          if (list2.length === 40) {
-            error.value = true
-            loading2.value = false
+          if (values.list2.length === 40) {
+            values.error = true
+            values.loading2 = false
             return
           }
 
           for (let i = 0; i < 20; i++) {
-            list2.push(list2.length + 1)
+            values.list2.push(values.list2.length + 1)
           }
 
-          loading2.value = false
+          values.loading2 = false
         }, 1000)
       },
       load3() {
         setTimeout(() => {
           for (let i = 0; i < 20; i++) {
-            list3.push(list3.length + 1)
+            values.list3.push(values.list3.length + 1)
           }
 
-          loading3.value = false
+          values.loading3 = false
 
-          if (list3.length >= 60) {
-            finished3.value = true
+          if (values.list3.length >= 60) {
+            values.finished3 = true
           }
         }, 1000)
       },

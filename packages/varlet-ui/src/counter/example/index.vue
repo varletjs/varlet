@@ -32,7 +32,7 @@
 <script>
 import Counter from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { ref } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { watchLang } from '../../utils/components'
 import { use, pack } from './locale'
 
@@ -43,15 +43,17 @@ export default {
     AppType,
   },
   setup() {
-    const value = ref(0)
-    const value2 = ref(0)
-    const value3 = ref(0)
-    const value4 = ref(0)
-    const value5 = ref(0)
-    const value6 = ref(0)
-    const value7 = ref(0)
-    const value8 = ref(0)
-    const value9 = ref(0)
+    const values = reactive({
+      value: 0,
+      value2: 0,
+      value3: 0,
+      value4: 0,
+      value5: 0,
+      value6: 0,
+      value7: 0,
+      value8: 0,
+      value9: 0,
+    })
 
     const handleBeforeChange = (value, change) => {
       setTimeout(() => {
@@ -63,15 +65,7 @@ export default {
 
     return {
       pack,
-      value,
-      value2,
-      value3,
-      value4,
-      value5,
-      value6,
-      value7,
-      value8,
-      value9,
+      ...toRefs(values),
       handleBeforeChange,
     }
   },
