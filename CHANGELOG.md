@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.2](https://github.com/haoziqaq/varlet/compare/v0.13.1...v0.13.2) (2021-04-19)
+
+
+### Bug Fixes
+
+* **badge:** fix wrong classname ([11d90b5](https://github.com/haoziqaq/varlet/commit/11d90b5082d800ba9baab9837a243da2faba347e))
+* **ui/uploader:** 修改默认状态指示器的颜色 ([c259acd](https://github.com/haoziqaq/varlet/commit/c259acd73fff916a082f7985b9f53741b75e7e03))
+
+
+
+
+
 ## [0.13.1](https://github.com/haoziqaq/varlet/compare/v0.13.0...v0.13.1) (2021-04-19)
 
 
