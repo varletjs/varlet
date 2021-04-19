@@ -146,7 +146,7 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
 | `v-model` | 绑定的值 | _any_ | `-` |
-| `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string \| number_ | `horizontal` |
+| `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
 | `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any) => any>_ | `-` |
 
 ### Radio Props

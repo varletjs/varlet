@@ -17,8 +17,6 @@ createApp().use(Switch)
 
 ```html
 <var-switch v-model="value" />
-<var-switch v-model="value1" disabled />
-<var-switch v-model="value1" readonly />
 ```
 
 ```javascript
@@ -27,14 +25,19 @@ import { ref } from 'vue'
 export default {
   setup() {
     const value = ref(true)
-    const value1 = ref(true)
 
     return {
-      value,
-      value1
+      value
     }
   }
 }
+```
+
+### Not Available
+
+```html
+<var-switch v-model="value1" disabled />
+<var-switch v-model="value1" readonly />
 ```
 
 ### Custom color
@@ -47,6 +50,8 @@ export default {
 
 ### Size
 
+Use `size` prop to change size of Switch.
+
 ```html
 <var-switch v-model="value" size="15" />
 <var-switch v-model="value" />
@@ -58,7 +63,7 @@ export default {
 ```html
 <var-switch :model-value="true" loading />
 <var-switch :model-value="true" size="25" loading />
-<var-switch :model-value="true" size="25" loading loading-color="#000" />
+<var-switch :model-value="true" size="25" loading loading-color="#ff9800" />
 ```
 
 ### Validate value

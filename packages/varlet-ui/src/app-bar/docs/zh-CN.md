@@ -25,12 +25,8 @@ createApp().use(AppBar)
 <var-app-bar 
   title="标题" 
   title-position="center" 
-<<<<<<< Updated upstream
   color="#ff9800" 
 />
-=======
-  color="#ff9800" />
->>>>>>> Stashed changes
 ```
 
 ### 添加标题处插槽

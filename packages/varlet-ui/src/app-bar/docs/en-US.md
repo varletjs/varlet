@@ -25,12 +25,8 @@ Set the position of the title and the color of the navigation bar through the `t
 <var-app-bar 
   title="title" 
   title-position="center" 
-<<<<<<< Updated upstream
   color="#ff9800" 
 />
-=======
-  color="#ff9800" />
->>>>>>> Stashed changes
 ```
 
 ### Add Slots At Title

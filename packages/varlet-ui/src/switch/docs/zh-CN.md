@@ -17,8 +17,6 @@ createApp().use(Switch)
 
 ```html
 <var-switch v-model="value" />
-<var-switch v-model="value1" disabled />
-<var-switch v-model="value1" readonly />
 ```
 
 ```javascript
@@ -26,14 +24,19 @@ import { ref } from 'vue'
 export default {
   setup() {
     const value = ref(true)
-    const value1 = ref(true)
 
     return {
-      value,
-      value1
+      value
     }
   }
 }
+```
+
+### 不可用
+
+```html
+<var-switch v-model="value1" disabled />
+<var-switch v-model="value1" readonly />
 ```
 
 ### 自定义颜色
@@ -46,6 +49,8 @@ export default {
 
 ### 不同大小
 
+通过`size`属性改变Switch大小。
+
 ```html
 <var-switch v-model="value" size="15" />
 <var-switch v-model="value" />
@@ -57,7 +62,7 @@ export default {
 ```html
 <var-switch :model-value="true" loading />
 <var-switch :model-value="true" size="25" loading />
-<var-switch :model-value="true" size="25" loading loading-color="#000" />
+<var-switch :model-value="true" size="25" loading loading-color="#ff9800" />
 ```
 
 ### 值的校验

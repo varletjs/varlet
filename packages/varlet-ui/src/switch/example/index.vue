@@ -3,6 +3,11 @@
     <app-type>{{ pack.basicUsage }}</app-type>
     <div class="var-switch__example-block">
       <var-switch v-model="value" />
+    </div>
+  </div>
+  <div>
+    <app-type>{{ pack.notAvailable }}</app-type>
+    <div class="var-switch__example-block">
       <var-switch v-model="value1" disabled />
       <var-switch v-model="value1" readonly />
     </div>
@@ -15,7 +20,6 @@
       <var-switch v-model="value2" color="orange" close-color="#2772f5" />
     </div>
   </div>
-
   <div>
     <app-type>{{ pack.size }}</app-type>
     <div class="var-switch__example-block">
@@ -29,7 +33,7 @@
     <div class="var-switch__example-block">
       <var-switch :model-value="true" loading />
       <var-switch :model-value="true" size="25" loading />
-      <var-switch :model-value="true" size="25" loading loading-color="#000" />
+      <var-switch :model-value="true" size="25" loading loading-color="#ff9800" />
     </div>
   </div>
   <div>
