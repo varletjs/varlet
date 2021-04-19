@@ -12,7 +12,11 @@
           <var-icon name="chevron-down" color="#666" />
 
           <transition name="fade">
-            <div class="language-list var-elevation--5" v-if="isOpenMenu">
+            <div
+              class="language-list var-elevation--5"
+              v-show="isOpenMenu"
+              :style="{ pointerEvents: isOpenMenu ? 'auto' : 'none' }"
+            >
               <var-cell
                 v-for="(value, key) in languageList"
                 :key="key"
@@ -98,7 +102,7 @@ export default defineComponent({
     [Cell.name]: Cell,
     [Icon.name]: Icon,
     [Menu.name]: Menu,
-    [Loading.name]: Loading,
+    [Loading.name]: Loading
   },
   setup() {
     const menu: Ref<Menu[]> = ref([])
@@ -153,7 +157,7 @@ export default defineComponent({
         if (index !== -1) {
           childrenElement[index].scrollIntoView({
             block: 'center',
-            inline: 'start',
+            inline: 'start'
           })
         }
       })
@@ -224,9 +228,9 @@ export default defineComponent({
       nav,
       code,
       changeRoute,
-      changeLanguage,
+      changeLanguage
     }
-  },
+  }
 })
 </script>
 
