@@ -284,8 +284,7 @@ iframe {
     border-top-right-radius: 8px;
 
     &__image {
-      width: 240px;
-      margin-left: 92px;
+      width: 180px;
     }
 
     &__name {
@@ -354,8 +353,8 @@ iframe {
         align-items: center;
 
         img {
-          width: 52px;
-          margin-right: 5px;
+          width: 32px;
+          margin-right: 12px;
           flex-shrink: 0;
         }
 

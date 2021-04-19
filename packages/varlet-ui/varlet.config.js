@@ -7,10 +7,10 @@ module.exports = {
   pc: {
     title: 'Varlet 面向Vue3的Material风格移动端组件库',
     description: 'Varlet 面向Vue3的Material风格移动端组件库',
-    logo: 'https://varlet.gitee.io/varlet-ui/varlet_block.png',
+    logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
     redirect: '/zh-CN/home',
     header: {
-      logo: 'https://varlet.gitee.io/varlet-ui/varlet_whole.png',
+      logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
       search: {
         'zh-CN': '搜索文档...',
         'en-US': 'Search...',
