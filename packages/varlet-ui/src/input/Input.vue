@@ -13,7 +13,7 @@
         formDisabled || disabled ? 'var-input--disabled' : null,
       ]"
       :style="{
-        color: isFocus ? focusColor : blurColor,
+        color: !errorMessage ? (isFocus ? focusColor : blurColor) : null,
       }"
     >
       <div class="var-input__icon" :class="[!hint ? 'var-input--non-hint' : null]">
@@ -60,7 +60,7 @@
             formDisabled || disabled ? 'var-input--line-disabled' : null,
             errorMessage ? 'var-input--line-error' : null,
           ]"
-          :style="{ background: blurColor }"
+          :style="{ background: !errorMessage ? blurColor : null }"
           v-if="line"
         >
           <div
@@ -70,7 +70,7 @@
               formDisabled || disabled ? 'var-input--line-disabled' : null,
               errorMessage ? 'var-input--line-error' : null,
             ]"
-            :style="{ background: focusColor }"
+            :style="{ background: !errorMessage ? focusColor : null }"
           ></div>
         </div>
       </div>

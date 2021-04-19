@@ -21,6 +21,7 @@
         @click="decrement"
         @touchstart="pressDecrement"
         @touchend="releaseDecrement"
+        @touchcancel="releaseDecrement"
       />
       <input
         class="var-counter__input"
@@ -49,6 +50,7 @@
         @click="increment"
         @touchstart="pressIncrement"
         @touchend="releaseIncrement"
+        @touchcancel="releaseIncrement"
       />
     </div>
 
@@ -70,7 +72,7 @@ import { useForm } from '../form/provide'
 import { useValidation } from '../utils/components'
 
 const SPEED = 100
-const DELAY = 400
+const DELAY = 600
 
 export default defineComponent({
   name: 'VarCounter',

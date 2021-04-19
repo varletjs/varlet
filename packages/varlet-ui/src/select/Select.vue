@@ -13,7 +13,7 @@
         formDisabled || disabled ? 'var-select--disabled' : null,
       ]"
       :style="{
-        color: isFocus ? focusColor : blurColor,
+        color: !errorMessage ? (isFocus ? focusColor : blurColor) : null,
       }"
     >
       <div class="var-select__icon" :class="[!hint ? 'var-select--non-hint' : null]">
@@ -81,7 +81,7 @@
               formDisabled || disabled ? 'var-select--line-disabled' : null,
               errorMessage ? 'var-select--line-error' : null,
             ]"
-            :style="{ background: blurColor }"
+            :style="{ background: !errorMessage ? blurColor : null }"
             v-if="line"
           >
             <div
@@ -91,7 +91,7 @@
                 formDisabled || disabled ? 'var-select--line-disabled' : null,
                 errorMessage ? 'var-select--line-error' : null,
               ]"
-              :style="{ background: focusColor }"
+              :style="{ background: !errorMessage ? focusColor : null }"
             ></div>
           </div>
         </div>
