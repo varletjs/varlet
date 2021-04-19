@@ -5,7 +5,7 @@
         v-bind="$attrs"
         v-show="!hidden"
         class="var-badge__content"
-        :class="[contentClass, { 'var-badge__icon': icon }]"
+        :class="contentClass"
         :style="{ background: color }"
       >
         <var-icon v-if="icon" :name="icon" size="10px" />
@@ -29,15 +29,16 @@ export default defineComponent({
   },
   inheritAttrs: false,
   props,
-  setup(props) {
+  setup(props, { slots }) {
     const contentClass: ComputedRef<Array<string | false | undefined>> = computed(() => {
-      const { type, position, dot } = props
+      const { type, position, dot, icon } = props
 
-      const positionBasic = position && `var-badge__position var-badge--${position}`
+      const positionBasic = slots.default?.() && `var-badge__position var-badge--${position}`
       const dotClass = dot && 'var-badge__dot'
       const positionClass = getPositionClass()
+      const iconClass = icon && 'var-badge__icon'
 
-      return [`var-badge--${type}`, positionBasic, dotClass, positionClass]
+      return [`var-badge--${type}`, positionBasic, dotClass, positionClass, iconClass]
     })
 
     const values: ComputedRef<string | number> = computed(() => {

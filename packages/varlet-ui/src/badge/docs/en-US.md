@@ -141,16 +141,16 @@ Set Badge Icon through `icon` property
 | `type` | Badge type. Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `dot` | Whether the badge is a dot | _boolean_ | `false`|
 | `value` |The value shown in the badge (takes effect when `dot` is `false`) | _string \| number_ | `0`|
-| `max-value`|The maximum value shown in the logo, when `value` is greater than `max-value`, displays `max-value+` (effective when both `value` and `max-value` exist)| _number_| `_`|
-| `position` |Define the position of the logo on other labels when there are other labels in the logo tag. Optional values are `right-top` `top-bottom` `left-top` `left-bottom`| _string_ | _ |
-| `color` | Custom badge colors | _string_ | `_` |
-| `icon` |  Customize the content of the icon in the logo (priority is higher than `value`) | _string_ | `_` |
+| `max-value`|The maximum value shown in the logo, when `value` is greater than `max-value`, displays `max-value+` (effective when both `value` and `max-value` exist)| _number_| - |
+| `position` |Define the position of the logo on other labels when there are other labels in the logo tag. Optional values are `right-top` `top-bottom` `left-top` `left-bottom`| _string_ | `right-top` |
+| `color` | Custom badge colors | _string_ | - |
+| `icon` |  Customize the content of the icon in the logo (priority is higher than `value`) | _string_ | - |
 
 ### Slots
 
 | Slot | Description | Arguments |
 | --- | --- | --- |
-| `default` |  Badge content | `-` |
+| `default` |  Badge content | - |
 
 ### Theme Variables
 #### The following LESS variables can be overridden at build time to modify the theme style
