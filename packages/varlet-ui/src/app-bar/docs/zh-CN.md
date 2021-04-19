@@ -19,14 +19,18 @@ createApp().use(AppBar)
 
 ### 自定义样式
 
-通过`title-position`、`color`属性设置标题所处位置、导航栏颜色，通过把`elevation`属性设置为`false`取消导航栏海拔样式
+通过`title-position`、`color`属性设置标题所处位置、导航栏颜色。
 
 ```html
 <var-app-bar 
   title="标题" 
   title-position="center" 
+<<<<<<< Updated upstream
   color="#ff9800" 
 />
+=======
+  color="#ff9800" />
+>>>>>>> Stashed changes
 ```
 
 ### 添加标题处插槽

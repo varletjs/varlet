@@ -39,6 +39,7 @@ export const props = {
   // 定位位置
   position: {
     type: String,
+    default: 'right-top',
     validator: positionValidator,
   },
   // 图标

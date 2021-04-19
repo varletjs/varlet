@@ -18,6 +18,7 @@
           'var-rate--error': errorMessage,
           'var-rate--primary': transformValue(val).type !== 'empty' && !transformValue(val).color,
         }"
+        @click="handleClick(val, $event)"
       >
         <var-icon
           :transition="0"
@@ -25,7 +26,6 @@
             transformValue(val).type === 'full' ? icon : transformValue(val).type === 'half' ? halfIcon : emptyIcon
           }`"
           :style="{ fontSize: toSizeUnit(size) }"
-          @click="handleClick(val, $event)"
         />
       </div>
     </div>

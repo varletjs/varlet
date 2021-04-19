@@ -19,14 +19,18 @@ Set the navigation bar title through the `title` attribute
 
 ### Custom Style
 
-Set the position of the title and the color of the navigation bar through the `title-position` and `color` attributes, and cancel the altitude style of the navigation bar by setting the `elevation` attribute to `false`
+Set the position of the title and the color of the navigation bar through the `title-position` and `color` attributes.
 
 ```html
 <var-app-bar 
   title="title" 
   title-position="center" 
+<<<<<<< Updated upstream
   color="#ff9800" 
 />
+=======
+  color="#ff9800" />
+>>>>>>> Stashed changes
 ```
 
 ### Add Slots At Title

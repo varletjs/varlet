@@ -69,16 +69,16 @@ Set the position of the badge through the `position` property
 
 ```html
 <var-badge type="danger" position="right-top">
-  <var-chip plain :round="false" color="#009688">右上</var-chip>
+  <var-chip plain :round="false" color="#009688">The Upper Right</var-chip>
 </var-badge>
 <var-badge type="danger" position="right-bottom">
-  <var-chip plain :round="false" color="#009688">右下</var-chip>
+  <var-chip plain :round="false" color="#009688">The Lower Right</var-chip>
 </var-badge>
 <var-badge type="danger" position="left-top">
-  <var-chip plain :round="false" color="#009688">左上</var-chip>
+  <var-chip plain :round="false" color="#009688">The Upper Left</var-chip>
 </var-badge>
 <var-badge type="danger" position="left-bottom">
-  <var-chip plain :round="false" color="#009688">左下</var-chip>
+  <var-chip plain :round="false" color="#009688">The Lower Left</var-chip>
 </var-badge>
 ```
 
