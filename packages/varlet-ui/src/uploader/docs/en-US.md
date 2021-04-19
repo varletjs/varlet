@@ -296,7 +296,7 @@ The second argument is a collection of utility functions that can quickly get a 
 | `@uploader-preview-video-width` | `100vw` |
 | `@uploader-preview-video-height` | `100vw` |
 | `@uploader-file-indicator-height` | `4px` |
-| `@uploader-file-indicator-primary-color` | `@color-primary` |
+| `@uploader-file-indicator-normal-color` | `@color-disabled` |
 | `@uploader-file-indicator-success-color` | `@color-success` |
 | `@uploader-file-indicator-error-color` | `@color-danger` |
 | `@uploader-disabled-color` | `#ddd` |

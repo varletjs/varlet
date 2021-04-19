@@ -79,5 +79,9 @@ export default {
   text-align: center;
   margin-right: 11px;
   margin-bottom: 11px;
+
+  div {
+    margin-bottom: 5px;
+  }
 }
 </style>

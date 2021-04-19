@@ -23,6 +23,7 @@ Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥
 - 6.支持国际化
 - 7.支持webstorm，vscode组件属性高亮
 - 8.支持SSR
+- 9.支持Typescript
 
 ### 安装
 
