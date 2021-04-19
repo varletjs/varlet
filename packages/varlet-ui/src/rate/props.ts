@@ -1,15 +1,10 @@
 import { PropType } from 'vue'
 
-export type ValidateTriggers = 'onChange'
-
 export const props = {
   // 当前分数
   modelValue: {
     type: [String, Number],
     default: 0,
-  },
-  'onUpdate:modelValue': {
-    type: Function,
   },
   // 图标总数
   count: {
@@ -76,15 +71,14 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  validateTrigger: {
-    type: Array as PropType<Array<ValidateTriggers>>,
-    default: ['onChange'],
-  },
   rules: {
     type: Array as PropType<Array<(value: any) => any>>,
   },
   // 点击回调
   onChange: {
-    type: Function as PropType<(value: any) => void>,
+    type: Function,
+  },
+  'onUpdate:modelValue': {
+    type: Function,
   },
 }

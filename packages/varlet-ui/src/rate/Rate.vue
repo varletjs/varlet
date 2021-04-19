@@ -1,32 +1,15 @@
 <template>
-  <div class="var-rate__warp" v-bind="$attrs">
-    <div class="var-rate" ref="rate">
+  <div class="var-rate__warp">
+    <div class="var-rate">
       <div
-        class="var-rate__content"
-        v-for="val in toNumber(count)"
         :key="val"
-        v-ripple="{ disabled: formReadonly || formDisabled || readonly || disabled || !ripple }"
-        :style="{
-          color: transformValue(val).color,
-          marginRight: val !== toNumber(count) ? toSizeUnit(gap) : 0,
-          width: toSizeUnit(size),
-          height: toSizeUnit(size),
-          borderRadius: '50%',
-        }"
-        :class="{
-          'var-rate--disabled': formDisabled,
-          'var-rate--error': errorMessage,
-          'var-rate--primary': transformValue(val).type !== 'empty' && !transformValue(val).color,
-        }"
+        v-for="val in toNumber(count)"
+        v-ripple="{ disabled: rippleDisable }"
+        :style="getStyle(val)"
+        :class="getClass(val)"
         @click="handleClick(val, $event)"
       >
-        <var-icon
-          :transition="0"
-          :name="`${
-            transformValue(val).type === 'full' ? icon : transformValue(val).type === 'half' ? halfIcon : emptyIcon
-          }`"
-          :style="{ fontSize: toSizeUnit(size) }"
-        />
+        <var-icon :transition="0" :name="getIconName(val)" :style="{ fontSize: toSizeUnit(size) }" />
       </div>
     </div>
     <var-form-details :error-message="errorMessage" />
@@ -34,66 +17,98 @@
 </template>
 
 <script lang="ts">
-import Ripple from '../ripple'
-import { defineComponent, nextTick } from 'vue'
-import { props, ValidateTriggers } from './props'
-import { useValidation } from '../utils/components'
+import { computed, ComputedRef, defineComponent, nextTick } from 'vue'
 import { useForm } from '../form/provide'
-import { RateProvider } from './provide'
-import Icon from '../icon'
-import FormDetails from '../form-details/FormDetails.vue'
+import { useValidation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { toNumber } from '../utils/shared'
+import { RateProvider } from './provide'
+import { props } from './props'
+import Ripple from '../ripple'
+import Icon from '../icon'
+import FormDetails from '../form-details'
+
 
 export default defineComponent({
   name: 'VarRate',
   components: {
     [Icon.name]: Icon,
-    [FormDetails.name]: FormDetails,
+    [FormDetails.name]: FormDetails
   },
   directives: { Ripple },
-  inheritAttrs: false,
   props,
   setup(props) {
     const { form, bindForm } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
 
+    const rippleDisable: ComputedRef<boolean> = computed(() => {
+      const { ripple, readonly, disabled } = props
+
+      return form?.readonly.value || form?.disabled.value || readonly || disabled || !ripple
+    })
+
+    const getStyle = (val: number) => {
+      const { count, size, gap } = props
+
+      return {
+        color: transformValue(val).color,
+        marginRight: val !== toNumber(count) ? toSizeUnit(gap) : 0,
+        width: toSizeUnit(size),
+        height: toSizeUnit(size),
+        borderRadius: '50%'
+      }
+    }
+
+    const getClass = (val: number) => {
+      const { type, color } = transformValue(val)
+
+      return {
+        'var-rate__content': true,
+        'var-rate--disabled': form?.disabled.value,
+        'var-rate--error': errorMessage.value,
+        'var-rate--primary': type !== 'empty' && !color
+      }
+    }
+
+    const getIconName = (val: number) => {
+      const { type } = transformValue(val)
+      const { icon, halfIcon, emptyIcon } = props
+
+      return type === 'full' ? icon : type === 'half' ? halfIcon : emptyIcon
+    }
+
     const transformValue = (index: number) => {
       const { modelValue, disabled, disabledColor, color, half, emptyColor } = props
       let iconColor = null
 
-      if (disabled || form?.disabled.value) {
-        iconColor = disabledColor
-      } else if (color) {
-        iconColor = color
-      }
+      if (disabled || form?.disabled.value) iconColor = disabledColor
+
+      else if (color) iconColor = color
 
       if (index <= toNumber(modelValue)) {
         return { type: 'full', score: index, color: iconColor }
       }
+
       if (half && index <= toNumber(modelValue) + 0.5) {
         return { type: 'half', score: index, color: iconColor }
       }
-      return { type: 'empty', score: index, color: disabled || form?.disabled.value ? disabledColor : emptyColor }
-    }
 
-    const validateWithTrigger = (trigger: ValidateTriggers) => {
-      nextTick(() => {
-        const { validateTrigger, rules, modelValue } = props
-        vt(validateTrigger, trigger, rules, toNumber(modelValue))
-      })
+      return { type: 'empty', score: index, color: disabled || form?.disabled.value ? disabledColor : emptyColor }
     }
 
     const changeValue = (score: number, event: MouseEvent) => {
       if (props.half) {
         const { offsetWidth } = event.target as HTMLDivElement
-        if (event.offsetX <= Math.floor(offsetWidth / 2)) {
-          score -= 0.5
-        }
+
+        if (event.offsetX <= Math.floor(offsetWidth / 2)) score -= 0.5
       }
 
       props['onUpdate:modelValue']?.(score)
     }
+
+    const validate = () => v(props.rules, toNumber(props.modelValue))
+
+    const validateWithTrigger = () => nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
 
     const handleClick = (score: number, event: MouseEvent) => {
       const { readonly, disabled, onChange } = props
@@ -104,7 +119,7 @@ export default defineComponent({
 
       changeValue(score, event)
       onChange?.(score)
-      validateWithTrigger('onChange')
+      validateWithTrigger()
     }
 
     const reset = () => {
@@ -112,30 +127,30 @@ export default defineComponent({
       resetValidation()
     }
 
-    const validate = () => v(props.rules, toNumber(props.modelValue))
-
     const rateProvider: RateProvider = {
       reset,
       validate,
-      resetValidation,
+      resetValidation
     }
 
     bindForm?.(rateProvider)
 
     return {
-      formDisabled: form?.disabled,
-      formReadonly: form?.readonly,
-      toSizeUnit,
-      toNumber,
       errorMessage,
-      transformValue,
+      rippleDisable,
+      getStyle,
+      getClass,
+      getIconName,
       handleClick,
+      toSizeUnit,
+      toNumber
     }
-  },
+  }
 })
 </script>
 
 <style lang="less">
+@import "../ripple/ripple";
 @import '../icon/icon';
 @import '../form-details/formDetails';
 @import './rate';

@@ -152,12 +152,12 @@ export default {
 }
 ```
 
-### Validate
+### Validate Value
 
-```html
-The values are validated by passing in an array of validators，If the validator returns true, the validation passes。
-Other values are converted to text as a user prompt。
-```
+Verify the value through the `rules` attribute.
+
+<span style="font-size: 12px">`rules` is an array that accepts `functions`, `boolean`, and `string`. Functions pass an input value as an argument and must return either `true` / `false` or a `string` containing an error message. The input field will enter an error state if a function returns (or any value in the array contains) `false` or is a `string`.</span>
+
 
 ```html
 <var-rate :rules="[(v) => v >= 3 || 'It has to be greater than 2']" v-model='score' />
@@ -171,18 +171,18 @@ Other values are converted to text as a user prompt。
 | --- | --- | --- | --- | 
 | `v-model` | The current rating  | _number \| string_ | `0` |
 | `count` | total rating  | _number \| string_ | `5` |
-| `color` | The color of the icon when selected  | _string_ | `Primary Color` |
+| `color` | The color of the icon when selected  | _string_ | `@color-primary` |
 | `icon` | The icon style when the entire icon is selected  | _string_ | `star` |
 | `empty-color` | The color of the icon when unchecked | _string_ | `#bdbdbd` |
 | `empty-icon` | Style of the icon when unchecked | _string_ | `star-outline` |
 | `size` | Icon size, default unit is `px` | _number \| string_ | `20` |
 | `gap` | Icon spacing, default unit is `px` | _number \| string_ | `4` |
 | `half` | Whether half selection is allowed | _boolean_ | `false` |
-| `half-icon` | The half-selected icon style only works if `half` is `true` | _string_ | `star-half-full`|
-| `disabled` | Whether or not rating is prohibited | _boolean_ | `false`|
-| `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `#bdbdbd`|
-| `readonly` | Whether to use rating read-only | _boolean_ | `false`|
-| `ripple` | Whether to use water ripple | _boolean_ | `true`|
+| `half-icon` | The half-selected icon style only works if `half` is `true` | _string_ | `star-half-full` |
+| `disabled` | Whether or not rating is prohibited | _boolean_ | `false` |
+| `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `#bdbdbd` |
+| `readonly` | Whether to use rating read-only | _boolean_ | `false` |
+| `ripple` | Whether to use water ripple | _boolean_ | `true` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string \| number) => any>_ | `-` |
 
 ### Events

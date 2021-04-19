@@ -154,8 +154,10 @@ export default {
 
 ### 字段校验
 
-通过传入一个校验器数组可以对值进行校验，校验器返回true则为校验通过。
-以外的值将转换为文本作为用户提示。
+通过`rules`属性对值进行校验。
+
+<span style="font-size: 12px">`rules`是一个可以接受 `function`、`boolean` 和 `string` 的数组。 函数传递输入值作为参数，必须返回 `true` / `false` 或包含错误消息的 `string` ， 如果函数返回 (或数组包含的任何值) `false`或`string`，输入字段将输入错误状态。</span>
+
 
 ```html
 <var-rate :rules="[(v) => v >= 3 || '必须大于2']" v-model='score' />
@@ -169,25 +171,25 @@ export default {
 | ---- | ---- | ---- | ---- |
 | `v-model` | 当前分数 | _number \| string_ | `0` |
 | `count` | 评分总数 | _number \| string_ | `5` |
-| `color` | 选中时图标的颜色 | _string_ | `主题颜色`|
+| `color` | 选中时图标的颜色 | _string_ | `@color-primary` |
 | `icon` | 选中整个图标时的图标样式 | _string_ | `star`|
-| `empty-color` | 未选中时图标的颜色 | _string_ | `#bdbdbd`|
-| `empty-icon` | 未选中时图标的样式 | _string_ | `star-outline`|
+| `empty-color` | 未选中时图标的颜色 | _string_ | `#bdbdbd` |
+| `empty-icon` | 未选中时图标的样式 | _string_ | `star-outline` |
 | `size` | 图标大小，默认单位为`px` | _number \| string_ | `20`|
-| `gap` | 图标间隔，默认单位为`px` | _number \| string_ | `4`|
-| `half` | 是否允许半选 | _boolean_ | `false`|
-| `half-icon` | 半选时图标的样式，只有在`half`为`true`时才有效| _string_ | `star-half-full`|
+| `gap` | 图标间隔，默认单位为`px` | _number \| string_ | `4` |
+| `half` | 是否允许半选 | _boolean_ | `false` |
+| `half-icon` | 半选时图标的样式，只有在`half`为`true`时才有效| _string_ | `star-half-full` |
 | `disabled` | 是否禁止评分 | _boolean_ | `false`|
-| `disabled-color` | 禁止评分时图标的颜色，只有在`disabled`为`true`时才有效，优先级高于`color`、`empty-color`| _string_ | `#bdbdbd`|
-| `readonly` | 是否使用评分只读 | _boolean_ | `false`|
-| `ripple` | 是否使用水波纹 | _boolean_ | `true`|
+| `disabled-color` | 禁止评分时图标的颜色，只有在`disabled`为`true`时才有效，优先级高于`color`、`empty-color`| _string_ | `#bdbdbd` |
+| `readonly` | 是否使用评分只读 | _boolean_ | `false` |
+| `ripple` | 是否使用水波纹 | _boolean_ | `true` |
 | `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string \| number) => any>_ | `-` |
 
 ### 事件
 
 | 事件名 | 说明 | 回调参数 |
 | ---- | ---- | ---- |
-| change | 评分改变时触发| `value: string \| number` |
+| change | 评分改变时触发 | `value: string \| number` |
 
 ### 主题变量
 #### 以下less变量可通过构建时进行变量覆盖从而修改主题样式

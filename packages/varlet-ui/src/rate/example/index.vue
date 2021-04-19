@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { reactive, toRefs } from 'vue'
 import Rate from '..'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
@@ -70,18 +70,20 @@ export default {
     AppType,
   },
   setup() {
-    const score = ref(3)
-    const score1 = ref(3)
-    const score2 = ref(3)
-    const score3 = ref(3)
-    const score4 = ref(3)
-    const score5 = ref(3)
-    const score7 = ref(3)
-    const score6 = ref(3.5)
-    const score8 = ref(3)
-    const score9 = ref(3)
-    const score10 = ref(3)
-    const score11 = ref(3)
+    const scores = reactive({
+      score: 3,
+      score1: 3,
+      score2: 3,
+      score3: 3,
+      score4: 3,
+      score5: 3,
+      score6: 3.5,
+      score7: 3,
+      score8: 3,
+      score9: 3,
+      score10: 3,
+      score11: 3,
+    })
 
     const handleChange = (score) => {
       Snackbar({
@@ -95,18 +97,7 @@ export default {
     return {
       handleChange,
       pack,
-      score,
-      score1,
-      score2,
-      score3,
-      score4,
-      score5,
-      score6,
-      score7,
-      score8,
-      score9,
-      score10,
-      score11,
+      ...toRefs(scores)
     }
   },
 }
