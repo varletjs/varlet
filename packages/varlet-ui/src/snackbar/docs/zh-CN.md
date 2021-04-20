@@ -10,7 +10,20 @@
 import { createApp } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-createApp().use(Snackbar.Component)
+createApp().use(Snackbar)
+```
+
+### 局部引入
+
+```js
+
+import { Snackbar } from '@varlet/ui'
+
+export default {
+  components: {
+    [Snackbar.Component.name]: Snackbar
+  }
+}
 ```
 
 ### 组件调用

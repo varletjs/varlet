@@ -10,7 +10,20 @@
 import { createApp } from 'vue'
 import { Dialog } from '@varlet/ui'
 
-createApp().use(Dialog.Component)
+createApp().use(Dialog)
+```
+
+### 局部引入
+
+```js
+
+import { Dialog } from '@varlet/ui'
+
+export default {
+  components: {
+    [Dialog.Component.name]: Dialog
+  }
+}
 ```
 
 ### 函数调用

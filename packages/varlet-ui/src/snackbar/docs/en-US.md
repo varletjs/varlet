@@ -10,7 +10,20 @@ Used to display a quick message to a user.
 import { createApp } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-createApp().use(Snackbar.Component)
+createApp().use(Snackbar)
+```
+
+### Scoped Install
+
+```js
+
+import { Snackbar } from '@varlet/ui'
+
+export default {
+  components: {
+    [Snackbar.Component.name]: Snackbar
+  }
+}
 ```
 
 ### Component Call

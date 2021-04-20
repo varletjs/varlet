@@ -10,7 +10,20 @@ A dialog pops up to display the content and handle the user interaction
 import { createApp } from 'vue'
 import { Dialog } from '@varlet/ui'
 
-createApp().use(Dialog.Component)
+createApp().use(Dialog)
+```
+
+### Scoped Install
+
+```js
+
+import { Dialog } from '@varlet/ui'
+
+export default {
+  components: {
+    [Dialog.Component.name]: Dialog
+  }
+}
 ```
 
 ### Functional

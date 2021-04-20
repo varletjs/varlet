@@ -9,7 +9,19 @@
 import { createApp } from 'vue'
 import { Picker } from '@varlet/ui'
 
-createApp().use(Picker.Component)
+createApp().use(Picker)
+```
+### 局部引入
+
+```js
+
+import { Picker } from '@varlet/ui'
+
+export default {
+  components: {
+    [Picker.Component.name]: Picker
+  }
+}
 ```
 
 ### 函数调用
