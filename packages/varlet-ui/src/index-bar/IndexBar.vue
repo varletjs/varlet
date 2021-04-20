@@ -57,17 +57,16 @@ export default defineComponent({
     }
 
     const handleScroll = () => {
-      const { scrollTop } = scrollEl.value as HTMLElement
+      const { scrollTop, scrollHeight } = scrollEl.value as HTMLElement
       indexAnchors.forEach((anchor: IndexAnchorProvider, index: number) => {
         const anchorTop = anchor.ownTop.value
         const top = scrollTop - anchorTop + stickyOffsetTop.value
 
-        if (top >= 0 && top <= 10) {
-          emitEvent(anchor)
-        } else if (top < 0 && top >= -10) {
-          const preAnchor = indexAnchors[index - 1]
-          emitEvent(preAnchor)
-        }
+        const distance = index === indexAnchors.length - 1
+          ? scrollHeight
+          : indexAnchors[index + 1].ownTop.value - anchor.ownTop.value
+
+        if (top >= 0 && top <= distance) emitEvent(anchor)
       })
     }
 
@@ -114,6 +113,7 @@ export default defineComponent({
     return {
       barEl,
       active,
+      zIndex,
       anchorNameList,
       scrollTo,
       anchorClick,
