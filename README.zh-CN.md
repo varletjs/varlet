@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://varlet.gitee.io/varlet-ui/">
-   <img src="https://varlet.gitee.io/varlet-ui/varlet_icon.png" width="200" style="display: block; margin-bottom: 10px;">
+   <img src="https://varlet.gitee.io/varlet-ui/varlet_icon.png" width="201" style="display: block; margin-bottom: 10px;">
   </a>
   <div style="font-size: 32px; margin-top: 10px; text-align: center">VARLET</div>
   <div style="color: #888; font-size: 14px; margin-top: 10px; text-align: center">
