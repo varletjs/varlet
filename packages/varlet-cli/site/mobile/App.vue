@@ -73,6 +73,7 @@ body {
   min-height: 100%;
   font-family: 'Roboto', sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: #333;
 }
 
 ::-webkit-scrollbar {
