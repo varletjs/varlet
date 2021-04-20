@@ -1,8 +1,10 @@
-import { App } from 'vue'
+import { App, Component } from 'vue'
 import { VarComponent } from './varComponent'
 import { CascadeColumn, NormalColumn } from '../src/picker/props'
 
-export class PickerComponent extends VarComponent {}
+export class PickerComponent extends VarComponent {
+  static Component: Component
+}
 
 type Texts = any[]
 

@@ -1,7 +1,9 @@
-import { App } from 'vue'
+import { App, Component } from 'vue'
 import { VarComponent } from './varComponent'
 
-export class DialogComponent extends VarComponent {}
+export class DialogComponent extends VarComponent {
+  static Component: Component
+}
 
 export type DialogActions = 'confirm' | 'cancel' | 'close'
 
