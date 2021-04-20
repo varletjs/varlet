@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.3](https://github.com/haoziqaq/varlet/compare/v0.13.2...v0.13.3) (2021-04-20)
+
+
+### Bug Fixes
+
+* **index-bar:** fix bug of scroll ([872bc14](https://github.com/haoziqaq/varlet/commit/872bc144c146293719a6f98483ed7d92a8dfc988))
+
+
+
+
+
 ## [0.13.2](https://github.com/haoziqaq/varlet/compare/v0.13.1...v0.13.2) (2021-04-19)
 
 

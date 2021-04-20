@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.3](https://github.com/haoziqaq/varlet/compare/v0.13.2...v0.13.3) (2021-04-20)
+
+
+### Bug Fixes
+
+* **cli/site:** 修改mobile全局字体颜色 ([3155bf6](https://github.com/haoziqaq/varlet/commit/3155bf65b86dfb5ca0244eb9b2b57fa75870c69e))
+
+
+
+
+
 ## [0.13.2](https://github.com/haoziqaq/varlet/compare/v0.13.1...v0.13.2) (2021-04-19)
 
 **Note:** Version bump only for package @varlet/cli
