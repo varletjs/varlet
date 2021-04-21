@@ -11,8 +11,8 @@ createApp().use(Input)
 
 ### Basic Usage
 
-The component automatically analyzes whether the value passed in is a string or a number，
-The same type is returned。
+The component automatically analyzes whether the value passed in is a string or a number,
+The same type is returned.
 
 ```js
 import { ref } from 'vue'
@@ -94,7 +94,7 @@ createApp().use(Icon)
 
 ### Validate
 
-The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes。
+The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes.
 Other values are converted to text as a user prompt.
 
 ```html

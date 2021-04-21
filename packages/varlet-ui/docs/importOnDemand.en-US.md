@@ -2,7 +2,7 @@
 
 ### 介绍
 The on-demand import avoids the full import of components and can effectively reduce the size of the distribution package.
-It is recommended to use `Plugin Based Import` or `ES module based manual Import`
+It is recommended to use `Plugin Based Import` or `ES module based manual Import`.
 
 ### Plugin based import
 
@@ -65,7 +65,7 @@ export default defineConfig({
 ```
 
 After the configuration is complete, and the component is imported as follows, 
-the plugin will automatically import the corresponding style file for the component
+the plugin will automatically import the corresponding style file for the component.
 
 ```javascript
 import { Button } from '@varlet/ui'

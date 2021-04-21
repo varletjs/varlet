@@ -2,8 +2,8 @@
 
 ### Intro
 The component library provides mobile and desktop adaptations,
-Scheme `varlet-touch-emulator` is used for mobile terminal adaptation,
-Scheme `varlet-touch-emulator` is used for mobile terminal adaptation.
+scheme `varlet-touch-emulator` is used for mobile terminal adaptation,
+scheme `varlet-touch-emulator` is used for mobile terminal adaptation.
 
 ### Mobile Adaptation
 
@@ -34,7 +34,7 @@ module.exports = {
 
 ### Desktop Adaptation
 Because component library interaction events are developed using `touch` events, `mouse` events on the desktop side are not supported.
-It is recommended to use `@varlet/touch-emulator` to set `touch -> mouse` for desktop adaptation
+It is recommended to use `@varlet/touch-emulator` to set `touch -> mouse` for desktop adaptation.
 
 ```shell
 # npm

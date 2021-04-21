@@ -36,7 +36,7 @@ Each component has its own set of variables to replace.
 ### Custom methods
 
 First, make sure your build tools support `less`, different ways of introducing components require different customizations,
-The customization methods of `Full import`，`Plugin based import`，`ES module based manual import` are described below.
+the customization methods of `Full import`, `Plugin based import`, `ES module based manual import` are described below.
 
 ### Full import
 
@@ -76,7 +76,7 @@ The following is the configuration for different scenarios.
 
 ### Webpack
 
-Here `less-loader` is used for version `< 6`
+Here `less-loader` is used for version `< 6`.
 
 ```js
 // webpack.config.js
@@ -116,7 +116,7 @@ module.exports = {
 ```
 
 ### Vite
-Vite do not support `~` syntax and need to override `~`
+Vite do not support `~` syntax and need to override `~`.
 
 ```js
 // vite.config.js

@@ -11,7 +11,7 @@ createApp().use(Chip)
 
 ### 纸片类型
 
-通过`type`属性设置纸片的类型
+通过`type`属性设置纸片的类型。
 
 ```html
 <var-chip type="primary">主要纸片</var-chip>
@@ -24,7 +24,7 @@ createApp().use(Chip)
 
 ### 简单纸片
 
-通过`plain`属性将纸片设置为简单纸片
+通过`plain`属性将纸片设置为简单纸片。
 
 ```html
 <var-chip plain type="primary">简单纸片</var-chip>
@@ -32,7 +32,7 @@ createApp().use(Chip)
 
 ### 非圆角纸片
 
-通过把`round`属性设置为`false`来取消纸片的圆角样式
+通过把`round`属性设置为`false`来取消纸片的圆角样式。
 
 ```html
 <var-chip :round="false" type="primary">非圆角纸片</var-chip>
@@ -40,7 +40,7 @@ createApp().use(Chip)
 
 ### 纸片尺寸
 
-通过`size`属性设置纸片的尺寸
+通过`size`属性设置纸片的尺寸。
 
 ```html
 <var-chip size="large">大纸片</var-chip>
@@ -51,7 +51,7 @@ createApp().use(Chip)
 
 ### 块级纸片
 
-通过`block`属性将纸片设置为块级纸片
+通过`block`属性将纸片设置为块级纸片。
 
 ```html
 <var-chip type="primary" block>块级纸片</var-chip>
@@ -59,7 +59,7 @@ createApp().use(Chip)
 
 ### 可关闭纸片
 
-通过`closable`属性将纸片设置为可关闭纸片，使用`close-name`属性设置纸片的关闭图标样式（必须在`closeable`为`true`的条件下才能使用）
+通过`closable`属性将纸片设置为可关闭纸片，使用`close-name`属性设置纸片的关闭图标样式（必须在`closeable`为`true`的条件下才能使用）。
 
 ```html
 <var-chip closable v-if="show" @close="show = false">可关闭纸片</var-chip>
@@ -90,7 +90,7 @@ export default {
 
 ### 自定义颜色
 
-通过`color`和`text-color`属性设置纸片颜色
+通过`color`和`text-color`属性设置纸片颜色。
 
 ```html
 <var-chip color="#009688">纸片</var-chip>

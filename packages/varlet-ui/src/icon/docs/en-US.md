@@ -2,7 +2,7 @@
 
 ### Intro
 Font based icon library, also support web images.
-Font icons are from [Material Design Icon](https://materialdesignicons.com/)
+Font icons are from [Material Design Icon](https://materialdesignicons.com/).
 
 ### Install
 
@@ -58,7 +58,7 @@ export default {
 
 ### Icon Animation
 
-When `transition (ms)` is set, and the icon is toggled by its `name`, trigger a toggle animation。
+When `transition (ms)` is set, and the icon is toggled by its `name`, trigger a toggle animation.
 
 ```html
 <var-icon color="#2979ff" :name="name" :transition="300" :size="30" />

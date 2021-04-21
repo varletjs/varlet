@@ -2,7 +2,7 @@
 
 ### Intro
 The component library provides the ability to highlight the component syntax for `webstorm` and `vscode`. 
-The `Syntax highlight`,`Code completion`,`Documentation popup`, can be obtained through plugins and Settings.
+the `Syntax highlight`,`Code completion`,`Documentation popup`, can be obtained through plugins and Settings.
 
 ### Webstorm
 Open the library properties documentation by setting 'editor-> general-> Code Completion->Show the documentation popup in ___ ms'.

@@ -2,7 +2,7 @@
 
 ### Intro
 
-A button to back to top
+A button to back to top.
 
 ### Install
 

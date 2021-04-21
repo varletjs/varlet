@@ -51,7 +51,7 @@ You can modify the `loading`, `error` image, and `reload attempts` by using inli
 
 ### Plugin
 
-The option to set the default `Lazy` load option is provided, which is passed in at plugin registration
+The option to set the default `Lazy` load option is provided, which is passed in at plugin registration.
 
 ```js
 import { createApp } from 'vue'

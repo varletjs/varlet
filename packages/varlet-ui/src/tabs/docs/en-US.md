@@ -2,10 +2,7 @@
 
 ### Intro
 
-```html
-Use Tabs, Tab to switch between tabbed groups。
-Use TabsItems, TabItem to achieve view linkage with Tabs。
-```
+Use `Tabs, Tab` to switch between tabbed groups and Use `TabsItems`, `TabItem` to achieve view linkage with Tabs.
 
 ### Install
 
@@ -102,7 +99,7 @@ export default {
 ### Enable Scroll
 
 Start scrolling automatically when the number of tabs is `more than four`.
-Click the Tab to scroll automatically to the center of the viewport
+Click the Tab to scroll automatically to the center of the viewport.
 
 ```html
 <var-tabs

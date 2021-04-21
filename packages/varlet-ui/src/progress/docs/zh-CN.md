@@ -2,7 +2,7 @@
 
 ### 介绍
 
-展示操作的当前进度
+展示操作的当前进度。
 
 ### 引入
 
@@ -17,7 +17,7 @@ createApp().use(Progress)
 
 ### 基本使用
 
-通过 `value` 属性设置当前进度
+通过 `value` 属性设置当前进度。
 
 ```html
 <var-progress :value="20" />
@@ -26,7 +26,7 @@ createApp().use(Progress)
 
 ### 自定义样式
 
-通过`line-width`、`color`、`track-color`、`ripple` 属性设置线宽、进度条颜色、轨道颜色、水波纹加载效果
+通过`line-width`、`color`、`track-color`、`ripple` 属性设置线宽、进度条颜色、轨道颜色、水波纹加载效果。
 
 ```html
 <var-progress :value="30" line-width="8" />
@@ -36,7 +36,7 @@ createApp().use(Progress)
 
 ### 显示标签
 
-通过 `show-action`属性将action显示，action 默认为进度的百分比，可以使用插槽插入自定义内容
+通过 `show-action`属性将action显示，action 默认为进度的百分比，可以使用插槽插入自定义内容。
 
 ```html
 <var-progress :value="30" show-action />
@@ -48,7 +48,7 @@ createApp().use(Progress)
 
 ### 不同尺寸
 
-通过`size`属性改变进度条大小
+通过`size`属性改变进度条大小。
 
 ```html
 <var-progress :value="30" line-width="3" mode="circle" />

@@ -11,7 +11,7 @@ createApp().use(Rate)
 
 ### Base Rate
 
-Default display style
+Default display style.
 
 ```html
 <var-rate v-model="score"/>
@@ -33,7 +33,7 @@ export default {
 
 ### Customize the total rating
 
-Set the total rating through the `count` attribute
+Set the total rating through the `count` attribute.
 
 ```html
 <var-rate v-model="score" :count="8"/>
@@ -41,7 +41,7 @@ Set the total rating through the `count` attribute
 
 ### Customize the rating icon color
 
-Set the colors of selected and unselected through the `color` and `empty-color` properties
+Set the colors of selected and unselected through the `color` and `empty-color` properties.
 
 ```html
 <var-rate v-model="score" color="#9c27b0" empty-color="#d199da"/>
@@ -52,7 +52,7 @@ Set the colors of selected and unselected through the `color` and `empty-color` 
 
 ### Customize the rating icon style
 
-Set the icon style when it is selected or not through the `icon` and `empty-icon` attributes
+Set the icon style when it is selected or not through the `icon` and `empty-icon` attributes.
 
 ```html
 <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red"></var-rate>
@@ -60,7 +60,7 @@ Set the icon style when it is selected or not through the `icon` and `empty-icon
 
 ### Customize the rating icon size
 
-Set the size of the rating icon through the `size` attribute
+Set the size of the rating icon through the `size` attribute.
 
 ```html
 <var-rate v-model="score" :size="14"/>
@@ -71,7 +71,7 @@ Set the size of the rating icon through the `size` attribute
 
 ### Custom Icon Interval
 
-Set the interval between ratings by the `gap` attribute
+Set the interval between ratings by the `gap` attribute.
 
 ```html
 <var-rate v-model="score" :gap="2"/>
@@ -82,7 +82,7 @@ Set the interval between ratings by the `gap` attribute
 
 ### allows half ICONS
 
-The `half` attribute is used to set the rating to semi selective, and the `half-icon` attribute is used to set the style of semi selective
+The `half` attribute is used to set the rating to semi selective, and the `half-icon` attribute is used to set the style of semi selective.
 
 ```html
 <var-rate v-model="score" :count="8" half/>
@@ -103,7 +103,7 @@ export default {
 
 ### Disables rating
 
-The `disabled` attribute is used to set the rating to the status of no clicking, and the `disabled-color` is used to set the color of the icon when it is disabled
+The `disabled` attribute is used to set the rating to the status of no clicking, and the `disabled-color` is used to set the color of the icon when it is disabled.
 
 ```html
 <var-rate v-model="score" disabled disabled-color="#bbbbbb"/>
@@ -111,7 +111,7 @@ The `disabled` attribute is used to set the rating to the status of no clicking,
 
 ### Read only rating
 
-Set the rating to read-only status through the `readonly` attribute
+Set the rating to read-only status through the `readonly` attribute.
 
 ```html
 <var-rate v-model="score" readonly/>
@@ -119,7 +119,7 @@ Set the rating to read-only status through the `readonly` attribute
 
 ### Use water ripples
 
-Set the `ripple` attribute to `false` to prohibit the use of water ripples
+Set the `ripple` attribute to `false` to prohibit the use of water ripples.
 
 ```html
 <var-rate v-model="score" :ripple="false"/>
@@ -127,7 +127,7 @@ Set the `ripple` attribute to `false` to prohibit the use of water ripples
 
 ### listens for the change event
 
-Other interaction logic is completed by calling the `change` event
+Other interaction logic is completed by calling the `change` event.
 
 ```html
 <var-rate v-model="score" @change="handleChange"/>

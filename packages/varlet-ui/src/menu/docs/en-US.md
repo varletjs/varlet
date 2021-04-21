@@ -2,7 +2,7 @@
 
 ### Intro
 
-Enable elements to display a menu when clicked, freely control the display position of the menu by controlling the alignment and offset of the menu
+Enable elements to display a menu when clicked, freely control the display position of the menu by controlling the alignment and offset of the menu.
 
 ### Install
 

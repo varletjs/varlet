@@ -2,7 +2,7 @@
 
 ### Intro
 
-Provides a drop-down refresh interaction
+Provides a drop-down refresh interaction.
 
 ### install
 

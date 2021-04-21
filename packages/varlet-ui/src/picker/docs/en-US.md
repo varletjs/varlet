@@ -44,7 +44,7 @@ const { state, texts, indexes } = await Picker(columns)
 ### Cascade Picker
 
 Passing in a `cascade` attribute starts cascading.
-Built-in component library provides a three-level linkage between provinces and municipalities, import `area.json`。
+Built-in component library provides a three-level linkage between provinces and municipalities, import `area.json`.
 
 ```js
 import columns from '@varlet/ui/json/area.json'

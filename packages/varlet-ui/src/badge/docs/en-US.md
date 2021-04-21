@@ -10,7 +10,7 @@ createApp().use(Badge)
 
 ### Badge Type
 
-Set the badge type through the `type` attribute
+Set the badge type through the `type` attribute.
 
 ```html
 <var-badge type="primary" />
@@ -23,14 +23,14 @@ Set the badge type through the `type` attribute
 
 ### Dot Badge
 
-Set the badge as a dot through the `dot` attribute
+Set the badge as a dot through the `dot` attribute.
 
 ```html
 <var-badge type="danger" dot />
 ```
 ### Customize Badge Content
 
-Set the content of the badge through the `value` attribute
+Set the content of the badge through the `value` attribute.
 
 ```html
 <var-badge type="danger" value="badge" />
@@ -39,7 +39,7 @@ Set the content of the badge through the `value` attribute
 ```
 ### Maximum
 
-Control the range of badge display values through `value` and `max-value` (effective when both `value` and `max-value` exist)
+Control the range of badge display values through `value` and `max-value` (effective when both `value` and `max-value` exist).
 
 ```html
 <var-badge type="danger" :value="value" :max-value="maxValue" />
@@ -65,7 +65,7 @@ export default {
 ```
 ### Different Positioning Badges
 
-Set the position of the badge through the `position` property
+Set the position of the badge through the `position` property.
 
 ```html
 <var-badge type="danger" position="right-top">
@@ -84,7 +84,7 @@ Set the position of the badge through the `position` property
 
 ### Whether To Display The Badge
 
-Set whether the badge is displayed through the `hidden` attribute
+Set whether the badge is displayed through the `hidden` attribute.
 
 ```html
 <var-button @click="handleChange">Click To Change The State</var-button>
@@ -114,7 +114,7 @@ export default {
 
 ### Custom Badge Colors
 
-Set the color of the badge through the `color` property
+Set the color of the badge through the `color` property.
 
 ```html
 <var-badge color="#6200ea" position="right-top">
@@ -124,7 +124,7 @@ Set the color of the badge through the `color` property
 
 ### Custom Badge Icon
 
-Set Badge Icon through `icon` property
+Set Badge Icon through `icon` property.
 
 ```html
 <var-badge color="#6200ea" position="right-top" icon="notebook">

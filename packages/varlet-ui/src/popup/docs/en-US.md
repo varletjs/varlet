@@ -1,7 +1,7 @@
 # Popup
 
 ### Intro
-Create a container that can pop up from top, bottom, left, right and center. `teleport` inserts into the end of the `body` by default
+Create a container that can pop up from top, bottom, left, right and center. `teleport` inserts into the end of the `body` by default.
 
 ### Install
 

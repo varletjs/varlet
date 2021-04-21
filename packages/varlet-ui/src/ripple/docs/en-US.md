@@ -1,7 +1,7 @@
 # Ripple Directive
 
 ### Intro
-Causes the element to generate a ripple spread effect when clicked
+Causes the element to generate a ripple spread effect when clicked.
 
 ### Install
 

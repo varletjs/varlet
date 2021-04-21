@@ -17,7 +17,7 @@ createApp().use(Progress)
 
 ### Basic Usage
 
-Set the current progress through the `value` attribute
+Set the current progress through the `value` attribute.
 
 ```html
 <var-progress :value="20" />
@@ -26,7 +26,7 @@ Set the current progress through the `value` attribute
 
 ### Custom Style
 
-Set the line width, progress bar color, track color and ripple loading effect through the attributes of `line-width`, `color`, `track-color` and `ripple`
+Set the line width, progress bar color, track color and ripple loading effect through the attributes of `line-width`, `color`, `track-color` and `ripple`.
 
 ```html
 <var-progress :value="30" line-width="8" />
@@ -36,7 +36,7 @@ Set the line width, progress bar color, track color and ripple loading effect th
 
 ### Show Action
 
-The action is displayed through the `show-action` attribute. The action is the percentage of progress by default. You can use the slot to insert custom content
+The action is displayed through the `show-action` attribute. The action is the percentage of progress by default. You can use the slot to insert custom content.
 
 ```html
 <var-progress :value="30" show-action />
@@ -48,7 +48,7 @@ The action is displayed through the `show-action` attribute. The action is the p
 
 ### Size
 
-Change the size of the progress bar through the `size` attribute
+Change the size of the progress bar through the `size` attribute.
 
 ```html
 <var-progress :value="30" line-width="3" mode="circle" />

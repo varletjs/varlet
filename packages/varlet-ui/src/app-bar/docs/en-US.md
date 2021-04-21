@@ -11,7 +11,7 @@ createApp().use(AppBar)
 
 ### Basic AppBar
 
-Set the navigation bar title through the `title` attribute
+Set the navigation bar title through the `title` attribute.
 
 ```html
 <var-app-bar title="title" />

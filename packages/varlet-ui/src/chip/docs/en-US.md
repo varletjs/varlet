@@ -11,7 +11,7 @@ createApp().use(Chip)
 
 ### Chip Type
 
-Set the type of the chip with the 'type' attribute
+Set the type of the chip with the 'type' attribute.
 
 ```html
 <var-chip type="primary">Primary Chip</var-chip>
@@ -24,7 +24,7 @@ Set the type of the chip with the 'type' attribute
 
 ### Simple Chip
 
-Use the `plain` property to make the chip simple
+Use the `plain` property to make the chip simple.
 
 ```html
 <var-chip plain type="primary">Simple Chip</var-chip>
@@ -32,7 +32,7 @@ Use the `plain` property to make the chip simple
 
 ### Non Round Chip
 
-To cancel fillet style of chip by setting the `round` attribute to `false`
+To cancel fillet style of chip by setting the `round` attribute to `false`.
 
 ```html
 <var-chip :round="false" type="primary">Non Round Chip</var-chip>
@@ -40,7 +40,7 @@ To cancel fillet style of chip by setting the `round` attribute to `false`
 
 ### Chip Size
 
-Set the chip size through the `size` attribute
+Set the chip size through the `size` attribute.
 
 ```html
 <var-chip size="large">Large Chip</var-chip>
@@ -51,7 +51,7 @@ Set the chip size through the `size` attribute
 
 ### Block Flex
 
-Set the chip to block level through the `block` attribute
+Set the chip to block level through the `block` attribute.
 
 ```html
 <var-chip type="primary" block>Block Chip</var-chip>
@@ -59,7 +59,7 @@ Set the chip to block level through the `block` attribute
 
 ### Can Close Chip
 
-Set the paper to be closable through the `closable` attribute, and use the `close-name` attribute to set the closing icon style of the paper (It can only be used when `closeable` is `true`)
+Set the paper to be closable through the `closable` attribute, and use the `close-name` attribute to set the closing icon style of the paper (It can only be used when `closeable` is `true`).
 
 ```html
 <var-chip closable v-if="show" @close="show = false">Can Close Chip</var-chip>
@@ -90,7 +90,7 @@ export default {
 
 ### Custom Color
 
-Set the chip color through the `color` and `text-color` attributes
+Set the chip color through the `color` and `text-color` attributes.
 
 ```html
 <var-chip color="#009688">Chip</var-chip>

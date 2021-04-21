@@ -6,7 +6,7 @@
 
 ### Intro
 
-Varlet is a Material design mobile component library developed based on `Vue3`，Developed and maintained by partners in the community。
+Varlet is a Material design mobile component library developed based on `Vue3`, developed and maintained by partners in the community.
 
 ### Features
 - 1.Provide more than 40 high quality general purpose components
@@ -21,7 +21,7 @@ Varlet is a Material design mobile component library developed based on `Vue3`�
 
 ### PR & Issue
 If you have any problems during use, you can [issue](https://github.com/haoziqaq/varlet/issues) them to us on [github](https://github.com/haoziqaq/varlet),
-We will deal with it as soon as possible. You can also give us [PR](https://github.com/haoziqaq/varlet/pulls)。
+we will deal with it as soon as possible. You can also give us [PR](https://github.com/haoziqaq/varlet/pulls).
 
 ### Open source licenses
 Component library based on `MIT` licenses.

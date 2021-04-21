@@ -34,7 +34,7 @@ export default {
 
 ### 24小时格式
 
-使用 `format` 属性切换选择器的时间格式，`format` 默认值为 `ampm`
+使用 `format` 属性切换选择器的时间格式，`format` 默认值为 `ampm`。
 
 ```html
 <var-time-picker v-model="date" format="24hr" shadow />

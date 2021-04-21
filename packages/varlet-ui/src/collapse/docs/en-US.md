@@ -15,7 +15,7 @@ createApp().use(Collapse).use(CollapseItem)
 
 ### Basic Usage
 
-Use `v-model` to control the name of active panels. `value` is an Array
+Use `v-model` to control the name of active panels. `value` is an Array.
 
 ```html
 <var-collapse v-model="value" @change="changeHandle">

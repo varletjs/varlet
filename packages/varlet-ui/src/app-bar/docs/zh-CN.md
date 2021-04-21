@@ -11,7 +11,7 @@ createApp().use(AppBar)
 
 ### 基础导航栏
 
-通过`title`属性设置导航栏标题
+通过`title`属性设置导航栏标题。
 
 ```html
 <var-app-bar title="标题" />

@@ -2,7 +2,7 @@
 
 ### Intro
 A dialog pops up to display the content and handle the user interaction
-`Dialog` have provided functional and component usage, and there is no essential difference between the two usage effects and parameters
+`Dialog` have provided functional and component usage, and there is no essential difference between the two usage effects and parameters.
 
 ### Install
 
@@ -71,7 +71,7 @@ actions[await Dialog('Don\'t Wanna See No Blood, Don\'t Be A Macho Man')]()
 
 ### Asynchronous closing
 
-You can use `onBeforeClose` to intercept before closing, and you can get the user behavior from the parameters, and the callback function that triggers the shutdown
+You can use `onBeforeClose` to intercept before closing, and you can get the user behavior from the parameters, and the callback function that triggers the shutdown.
 
 ```js
 import { Snackbar } from '@varlet/ui'

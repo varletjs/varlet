@@ -2,7 +2,7 @@
 
 ### 介绍
 
-用于在给定范围内取值
+用于在给定范围内取值。
 
 ### 引入
 
@@ -35,7 +35,7 @@ export default {
 
 ### 指定步长
 
-通过`step`属性来设置步进增量
+通过`step`属性来设置步进增量。
 
 ```html
 <var-slider v-model="value" step="10" />
@@ -81,7 +81,7 @@ export default {
 
 ### 不同大小
 
-通过`track-height` 和 `thumb-size` 控制slider的大小
+通过`track-height` 和 `thumb-size` 控制slider的大小。
 
 ```html
 <var-slider v-model="value" track-height="4" thumb-size="8" range />
@@ -101,7 +101,7 @@ export default {
 ```
 
 ### 显示标签
-通过 `label-visible` 属性控制标签的显示
+通过 `label-visible` 属性控制标签的显示。
 
 ```html
 <var-slider v-model="value" label-visible="never" />
