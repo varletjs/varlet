@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/haoziqaq/varlet/compare/v0.13.3...v1.0.0) (2021-04-21)
+
+**Note:** Version bump only for package @varlet/cli
+
+
+
+
+
 ## [0.13.3](https://github.com/haoziqaq/varlet/compare/v0.13.2...v0.13.3) (2021-04-20)
 
 
