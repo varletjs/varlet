@@ -7,7 +7,6 @@ export default {
   readonly: 'Readonly',
   eat: 'Eat',
   sleep: 'Sleep',
-  action: 'Checkbox Actions',
   checkAll: 'Check All',
   inverseAll: 'Inverse All',
   checkboxGroup: 'CheckboxGroup',

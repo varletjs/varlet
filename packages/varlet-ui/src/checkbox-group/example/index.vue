@@ -28,14 +28,10 @@
   <var-checkbox-group ref="group" v-model="value6">
     <var-checkbox :checked-value="0">{{ pack.eat }}</var-checkbox>
     <var-checkbox :checked-value="1">{{ pack.sleep }}</var-checkbox>
-  </var-checkbox-group>
-  <div class="relation">{{ pack.currentValue }} {{ value6 }}</div>
-
-  <app-type>{{ pack.action }}</app-type>
-  <var-row>
     <var-button class="button" type="primary" @click="$refs['group'].checkAll()">{{ pack.checkAll }}</var-button>
     <var-button class="button" type="primary" @click="$refs['group'].inverseAll()">{{ pack.inverseAll }}</var-button>
-  </var-row>
+  </var-checkbox-group>
+  <div class="relation">{{ pack.currentValue }} {{ value6 }}</div>
 
   <app-type>{{ pack.checkboxValidate }}</app-type>
   <var-checkbox v-model="value7" :rules="[(v) => v || pack.checkboxValidateMessage]">
@@ -83,14 +79,14 @@ export default {
       value6: [],
       value7: false,
       value8: [],
-      group: null
+      group: null,
     })
 
     watchLang(use)
 
     return {
       pack,
-      ...toRefs(values)
+      ...toRefs(values),
     }
   },
 }
@@ -102,7 +98,7 @@ export default {
 }
 
 .button {
-  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .space {

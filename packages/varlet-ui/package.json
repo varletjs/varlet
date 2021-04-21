@@ -22,7 +22,9 @@
     "umd",
     "highlight",
     "types",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "README.md",
+    "README.zh-CN.md"
   ],
   "author": "haoziqaq <357229046@qq.com>",
   "license": "MIT",

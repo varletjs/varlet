@@ -7,7 +7,6 @@ export default {
   readonly: '只读',
   eat: '吃饭',
   sleep: '睡觉',
-  action: '复选框操作',
   checkAll: '全选',
   inverseAll: '反选',
   checkboxGroup: '复选框组',
