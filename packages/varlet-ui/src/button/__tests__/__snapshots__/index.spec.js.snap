@@ -1,0 +1,388 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test button color & textColor 1`] = `
+VueWrapper {
+  "__app": Object {
+    "_component": Object {
+      "__emits": Object {},
+      "__props": Array [
+        Object {},
+        Array [],
+      ],
+      "name": "VTU_ROOT",
+      "render": [Function],
+    },
+    "_container": <div
+      data-v-app=""
+    >
+      <button
+        class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1"
+        style="color: rgb(0, 0, 0); background: rgb(0, 0, 0);"
+      >
+        <!--v-if-->
+        <div
+          class="var-button__content"
+        >
+          
+          
+        </div>
+      </button>
+    </div>,
+    "_context": Object {
+      "app": [Circular],
+      "components": Object {
+        "transition": Object {
+          "name": "transition",
+          "props": undefined,
+          "render": [Function],
+        },
+        "transition-group": Object {
+          "name": "transition-group",
+          "props": undefined,
+          "render": [Function],
+        },
+      },
+      "config": Object {
+        "errorHandler": undefined,
+        "globalProperties": Object {},
+        "isCustomElement": [Function],
+        "isNativeTag": [Function],
+        "optionMergeStrategies": Object {},
+        "performance": false,
+        "warnHandler": undefined,
+      },
+      "directives": Object {},
+      "mixins": Array [
+        Object {
+          "__emits": null,
+          "__props": Array [],
+          "beforeCreate": [Function],
+        },
+      ],
+      "provides": Object {},
+      "reload": [Function],
+    },
+    "_props": null,
+    "_uid": 6,
+    "component": [Function],
+    "config": Object {
+      "errorHandler": undefined,
+      "globalProperties": Object {},
+      "isCustomElement": [Function],
+      "isNativeTag": [Function],
+      "optionMergeStrategies": Object {},
+      "performance": false,
+      "warnHandler": undefined,
+    },
+    "directive": [Function],
+    "mixin": [Function],
+    "mount": [Function],
+    "provide": [Function],
+    "unmount": [Function],
+    "use": [Function],
+    "version": "3.0.7",
+  },
+  "__setProps": [Function],
+  "componentVM": Object {
+    "block": false,
+    "color": "#000",
+    "disabled": false,
+    "handleClick": [Function],
+    "handleTouchstart": [Function],
+    "hasOwnProperty": [Function],
+    "loading": false,
+    "loadingRadius": 12,
+    "loadingSize": "normal",
+    "loadingType": "circle",
+    "onClick": undefined,
+    "onTouchstart": undefined,
+    "outline": false,
+    "ripple": true,
+    "round": false,
+    "size": "normal",
+    "text": false,
+    "textColor": "#000",
+    "type": "default",
+  },
+  "rootVM": Object {},
+  "wrapperElement": <button
+    class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1"
+    style="color: rgb(0, 0, 0); background: rgb(0, 0, 0);"
+  >
+    <!--v-if-->
+    <div
+      class="var-button__content"
+    >
+      
+      
+    </div>
+  </button>,
+}
+`;
+
+exports[`test button example 1`] = `
+"<div class=\\"app-type\\">主题色按钮</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">默认按钮</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">主要按钮</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--info var-elevation--1\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">信息按钮</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--1\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">成功按钮</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--warning var-elevation--1\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">警告按钮</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--1\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">危险按钮</div>
+</button>
+<div class=\\"app-type\\">文字按钮</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-primary var-button--text var-button--outline\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">外边框按钮</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-primary var-button--text\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">纯文字按钮</div>
+</button>
+<div class=\\"app-type\\">禁用状态</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--disabled var-button--default var-elevation--1\\" disabled=\\"\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">禁用状态</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--disabled var-button--text-default var-button--text var-button--text-disabled var-button--outline\\" disabled=\\"\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">禁用状态</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--disabled var-button--text-default var-button--text var-button--text-disabled\\" disabled=\\"\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">禁用状态</div>
+</button>
+<div class=\\"app-type\\">加载状态</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1\\">
+  <div class=\\"var--box var-loading var-button__loading\\">
+    <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 24px; height: 24px;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--info var-elevation--1\\">
+  <div class=\\"var--box var-loading var-button__loading\\">
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+    <div class=\\"var-loading__rect var-loading__rect-normal\\">
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+    </div>
+    <!--v-if-->
+  </div>
+  <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--1\\">
+  <div class=\\"var--box var-loading var-button__loading\\">
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+    <div class=\\"var-loading__disappear var-loading__disappear-normal\\">
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
+    </div>
+  </div>
+  <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--1\\">
+  <div class=\\"var--box var-loading var-button__loading\\">
+    <!--v-if-->
+    <!--v-if-->
+    <div class=\\"var-loading__cube var-loading__cube-normal\\">
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
+    </div>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--warning var-elevation--1\\">
+  <div class=\\"var--box var-loading var-button__loading\\">
+    <!--v-if-->
+    <div class=\\"var-loading__wave var-loading__wave-normal\\">
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
+      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
+    </div>
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
+</button>
+<div class=\\"app-type\\">按钮尺寸</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">常规按钮</div>
+</button><button class=\\"var-button var--box var-button--small var--inline-flex var-button--success var-elevation--1\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">小型按钮</div>
+</button><button class=\\"var-button var--box var-button--mini var--inline-flex var-button--warning var-elevation--1\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">迷你按钮</div>
+</button><button class=\\"var-button var--box var-button--large var--inline-flex var-button--danger var-elevation--1\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">大型按钮</div>
+</button>
+<div class=\\"app-type\\">块级按钮</div><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">块级按钮</div>
+</button>
+<div class=\\"app-type\\">自定义颜色</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\" style=\\"color: rgb(233, 30, 99);\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">文字颜色</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\" style=\\"color: rgb(255, 255, 255); background: rgb(233, 30, 99);\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">背景颜色</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\" style=\\"color: rgb(255, 255, 255);\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">渐变颜色</div>
+</button>
+<div class=\\"app-type\\">圆形按钮</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1 var-button--round\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition: all 0ms;\\"></i></div>
+</button>
+<div class=\\"app-type\\">注册事件</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--1\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">点击</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--1\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">触摸</div>
+</button>"
+`;
+
+exports[`test button size & text & block & round 1`] = `
+VueWrapper {
+  "__app": Object {
+    "_component": Object {
+      "__emits": Object {},
+      "__props": Array [
+        Object {},
+        Array [],
+      ],
+      "name": "VTU_ROOT",
+      "render": [Function],
+    },
+    "_container": <div
+      data-v-app=""
+    >
+      <button
+        class="var-button var--box var-button--large var--flex var-button--text-default var-button--text var-button--round"
+        style="width: 100%;"
+      >
+        <!--v-if-->
+        <div
+          class="var-button__content"
+        >
+          
+          
+        </div>
+      </button>
+    </div>,
+    "_context": Object {
+      "app": [Circular],
+      "components": Object {
+        "transition": Object {
+          "name": "transition",
+          "props": undefined,
+          "render": [Function],
+        },
+        "transition-group": Object {
+          "name": "transition-group",
+          "props": undefined,
+          "render": [Function],
+        },
+      },
+      "config": Object {
+        "errorHandler": undefined,
+        "globalProperties": Object {},
+        "isCustomElement": [Function],
+        "isNativeTag": [Function],
+        "optionMergeStrategies": Object {},
+        "performance": false,
+        "warnHandler": undefined,
+      },
+      "directives": Object {},
+      "mixins": Array [
+        Object {
+          "__emits": null,
+          "__props": Array [],
+          "beforeCreate": [Function],
+        },
+      ],
+      "provides": Object {},
+      "reload": [Function],
+    },
+    "_props": null,
+    "_uid": 7,
+    "component": [Function],
+    "config": Object {
+      "errorHandler": undefined,
+      "globalProperties": Object {},
+      "isCustomElement": [Function],
+      "isNativeTag": [Function],
+      "optionMergeStrategies": Object {},
+      "performance": false,
+      "warnHandler": undefined,
+    },
+    "directive": [Function],
+    "mixin": [Function],
+    "mount": [Function],
+    "provide": [Function],
+    "unmount": [Function],
+    "use": [Function],
+    "version": "3.0.7",
+  },
+  "__setProps": [Function],
+  "componentVM": Object {
+    "block": true,
+    "color": undefined,
+    "disabled": false,
+    "handleClick": [Function],
+    "handleTouchstart": [Function],
+    "hasOwnProperty": [Function],
+    "loading": false,
+    "loadingRadius": 12,
+    "loadingSize": "normal",
+    "loadingType": "circle",
+    "onClick": undefined,
+    "onTouchstart": undefined,
+    "outline": false,
+    "ripple": true,
+    "round": true,
+    "size": "large",
+    "text": true,
+    "textColor": undefined,
+    "type": "default",
+  },
+  "rootVM": Object {},
+  "wrapperElement": <button
+    class="var-button var--box var-button--large var--flex var-button--text-default var-button--text var-button--round"
+    style="width: 100%;"
+  >
+    <!--v-if-->
+    <div
+      class="var-button__content"
+    >
+      
+      
+    </div>
+  </button>,
+}
+`;
