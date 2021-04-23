@@ -9,7 +9,7 @@
   "author": "BeADre <beadre_wang@163.com>",
   "homepage": "https://github.com/haoziqaq/varlet#readme",
   "license": "MIT",
-  "main": "index.ts",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/haoziqaq/varlet.git"
