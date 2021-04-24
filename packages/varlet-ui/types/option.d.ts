@@ -1,3 +1,10 @@
 import { VarComponent } from './varComponent'
 
-export class Option extends VarComponent {}
+interface OptionProps {
+  label?: any
+  value?: any
+}
+
+export class Option extends VarComponent {
+  $props: OptionProps
+}

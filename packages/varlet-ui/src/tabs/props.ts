@@ -14,12 +14,12 @@ export const props = {
   layoutDirection: {
     type: String,
     default: 'horizontal',
-    validator: directionValidator
+    validator: directionValidator,
   },
   itemDirection: {
-	  type: String,
+    type: String,
     default: 'horizontal',
-    validator: directionValidator
+    validator: directionValidator,
   },
   fixedBottom: {
     type: Boolean,
@@ -55,7 +55,6 @@ export const props = {
   onClick: {
     type: Function as PropType<(active: string | number) => void>,
   },
-  // 激活标签切换事件
   onChange: {
     type: Function as PropType<(active: string | number) => void>,
   },

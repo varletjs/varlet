@@ -1,3 +1,9 @@
-import { VarComponent } from './varComponent';
+import { VarComponent } from './varComponent'
 
-export class TabItem extends VarComponent {}
+interface TabItemProps {
+  name?: string | number
+}
+
+export class TabItem extends VarComponent {
+  $props: TabItemProps
+}

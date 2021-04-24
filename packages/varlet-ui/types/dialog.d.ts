@@ -1,8 +1,38 @@
 import { App, Component } from 'vue'
 import { VarComponent } from './varComponent'
 
+interface DialogProps {
+  show?: boolean
+  title?: string
+  message?: string
+  messageAlign?: 'left' | 'center' | 'right'
+  confirmButton?: boolean
+  cancelButton?: boolean
+  confirmButtonText?: string
+  cancelButtonText?: string
+  confirmButtonTextColor?: string
+  cancelButtonTextColor?: string
+  confirmButtonColor?: string
+  cancelButtonColor?: string
+  overlay?: boolean
+  overlayClass?: string
+  overlayStyle?: Record<string, any>
+  lockScroll?: boolean
+  closeOnClickOverlay?: boolean
+  teleport?: boolean
+  onOpen?: () => void
+  onOpened?: () => void
+  onBeforeClose?: (action: DialogActions, done: () => void) => void
+  onClose?: () => void
+  onClosed?: () => void
+  onConfirm?: () => void
+  onCancel?: () => void
+  onClickOverlay?: () => void
+  'onUpdate:show': (show: boolean) => void
+}
+
 export class DialogComponent extends VarComponent {
-  static Component: Component
+  $props: DialogProps
 }
 
 export type DialogActions = 'confirm' | 'cancel' | 'close'
@@ -10,7 +40,7 @@ export type DialogActions = 'confirm' | 'cancel' | 'close'
 export interface DialogOptions {
   title?: string
   message?: string
-  messageAlign?: string
+  messageAlign?: 'left' | 'center' | 'right'
   confirmButton?: boolean
   cancelButton?: boolean
   confirmButtonText?: string
@@ -26,7 +56,7 @@ export interface DialogOptions {
   closeOnClickOverlay?: boolean
   onOpen?: () => void
   onOpened?: () => void
-  onBeforeClose?: (done: () => void) => void
+  onBeforeClose?: (action: DialogActions, done: () => void) => void
   onClose?: () => void
   onClosed?: () => void
   onConfirm?: () => void
@@ -36,9 +66,11 @@ export interface DialogOptions {
 
 export interface IDialog {
   (options: DialogOptions | string): Promise<DialogActions>
-  install(app: App): void
+  Component: typeof DialogComponent
+
   close(): void
-  Component: DialogComponent
+
+  install(app: App): void
 }
 
 export const Dialog: IDialog

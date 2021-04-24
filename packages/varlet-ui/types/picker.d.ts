@@ -1,12 +1,42 @@
-import { App, Component } from 'vue'
+import { App } from 'vue'
 import { VarComponent } from './varComponent'
-import { CascadeColumn, NormalColumn } from '../src/picker/props'
 
-export class PickerComponent extends VarComponent {
-  static Component: Component
+interface NormalColumn {
+  texts: Texts
+  initialIndex?: number
+}
+
+interface CascadeColumn {
+  [textKey: string]: any
+  children: CascadeColumn[]
 }
 
 type Texts = any[]
+
+interface PickerProps {
+  columns?: NormalColumn[] | CascadeColumn[] | Texts
+  title?: string
+  textKey?: string
+  toolbar?: boolean
+  cascade?: boolean
+  optionHeight?: string | number
+  optionCount?: string | number
+  confirmButtonText?: string
+  cancelButtonText?: string
+  confirmButtonTextColor?: string
+  cancelButtonTextColor?: string
+  onChange?: (texts: Texts, indexes: number[]) => void
+  onConfirm?: (texts: Texts, indexes: number[]) => void
+  onCancel?: (texts: Texts, indexes: number[]) => void
+}
+
+export class PickerComponent extends VarComponent {
+  $props: PickerProps
+
+  confirm(): void
+
+  cancel(): void
+}
 
 export type PickerActions = 'confirm' | 'cancel' | 'close'
 
@@ -34,9 +64,11 @@ interface PickerOptions {
 
 export interface IPicker {
   (options: PickerOptions | Texts): Promise<PickerResolvedData>
+  Component: typeof PickerComponent
+
   install(app: App): void
+
   close(): void
-  Component: PickerComponent
 }
 
 export const Picker: IPicker

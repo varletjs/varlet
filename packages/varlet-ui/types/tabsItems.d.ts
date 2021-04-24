@@ -1,3 +1,10 @@
-import { VarComponent } from './varComponent';
+import { VarComponent } from './varComponent'
 
-export class TabsItems extends VarComponent {}
+interface TabsItemsProps {
+  active?: string | number
+  'onUpdate:active'?: (active: string | number) => void
+}
+
+export class TabsItems extends VarComponent {
+  $props: TabsItemsProps
+}

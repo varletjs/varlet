@@ -1,9 +1,7 @@
-import { App, Component } from 'vue'
+import { App } from 'vue'
 import { VarComponent } from './varComponent'
 
-export class SnackbarComponent extends VarComponent {
-  static Component: Component
-}
+export class SnackbarComponent extends VarComponent {}
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
@@ -32,6 +30,7 @@ export interface SnackbarOptions {
 
 export interface ISnackbar {
   (options: SnackbarOptions): SnackbarHandel
+  Component: typeof SnackbarComponent
 
   install(app: App): void
 
@@ -48,8 +47,6 @@ export interface ISnackbar {
   loading(options: SnackbarOptions | string): SnackbarHandel
 
   clear(): void
-
-  Component: SnackbarComponent
 }
 
 export const Snackbar: ISnackbar
