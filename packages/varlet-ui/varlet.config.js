@@ -86,6 +86,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Todo',
+          'en-US': 'Todo',
+        },
+        doc: 'todo',
+        nonComponent: true,
+      },
+      {
+        text: {
           'zh-CN': '基础组件',
           'en-US': 'Basic Components',
         },
