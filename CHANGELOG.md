@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/haoziqaq/varlet/compare/v1.0.0...v1.0.1) (2021-04-24)
+
+
+### Bug Fixes
+
+* **package/varlet-touch-emulator:** package resolve entry point ([7a846e9](https://github.com/haoziqaq/varlet/commit/7a846e9f8422619f80c9a1849e584b19aad87066))
+
+
+
+
+
 # [1.0.0](https://github.com/haoziqaq/varlet/compare/v0.13.3...v1.0.0) (2021-04-21)
 
 **Note:** Version bump only for package root
