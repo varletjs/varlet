@@ -4,12 +4,12 @@ import VarButton from '../Button'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 
-test('test button example',() => {
+test('test button example', () => {
   const wrapper = mount(example)
   expect(wrapper.html()).toMatchSnapshot()
 })
 
-test('test button plugin',() => {
+test('test button plugin', () => {
   const app = createApp({}).use(Button)
   expect(app.component('VarButton')).toBeTruthy()
 })
@@ -20,15 +20,15 @@ test('test button click & touchstart', () => {
   wrapper.trigger('touchstart')
 })
 
-test('test button onClick & onTouchstart',() => {
+test('test button onClick & onTouchstart', () => {
   const onClick = jest.fn()
   const onTouchstart = jest.fn()
 
   const wrapper = mount(VarButton, {
     props: {
       onClick,
-      onTouchstart
-    }
+      onTouchstart,
+    },
   })
 
   wrapper.trigger('click')
@@ -45,8 +45,8 @@ test('test button disabled', () => {
     props: {
       disabled: true,
       onClick,
-      onTouchstart
-    }
+      onTouchstart,
+    },
   })
 
   wrapper.trigger('click')
@@ -61,8 +61,8 @@ test('test button loading', () => {
 
   const wrapper = mount(VarButton, {
     props: {
-      loading: true
-    }
+      loading: true,
+    },
   })
 
   wrapper.trigger('click')
@@ -76,10 +76,10 @@ test('test button color & textColor', () => {
     props: {
       color: '#000',
       textColor: '#000',
-    }
+    },
   })
 
-  expect(wrapper).toMatchSnapshot()
+  expect(wrapper.html()).toMatchSnapshot()
 })
 
 test('test button size & text & block & round', () => {
@@ -89,8 +89,8 @@ test('test button size & text & block & round', () => {
       round: true,
       text: true,
       block: true,
-    }
+    },
   })
 
-  expect(wrapper).toMatchSnapshot()
+  expect(wrapper.html()).toMatchSnapshot()
 })
