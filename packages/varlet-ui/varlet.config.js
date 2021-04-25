@@ -86,10 +86,10 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'Todo',
-          'en-US': 'Todo',
+          'zh-CN': '开发指南',
+          'en-US': 'Developer Guide',
         },
-        doc: 'todo',
+        doc: 'developerGuide',
         nonComponent: true,
       },
       {
