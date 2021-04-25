@@ -10,7 +10,7 @@ export const props = {
     default: false,
   },
   alignment: {
-    type: String,
+    type: String as PropType<'top' | 'bottom'>,
     default: 'top',
     validator: alignmentValidator,
   },

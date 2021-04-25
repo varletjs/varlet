@@ -12,12 +12,12 @@ function sizeValidator(size: string): boolean {
 
 export const props = {
   type: {
-    type: String,
+    type: String as PropType<'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'>,
     default: 'default',
     validator: typeValidator,
   },
   size: {
-    type: String,
+    type: String as PropType<'normal' | 'mini' | 'small' | 'large'>,
     default: 'normal',
     validator: sizeValidator,
   },

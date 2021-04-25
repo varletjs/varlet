@@ -55,7 +55,7 @@ export const props = {
     default: ',',
   },
   textAlign: {
-    type: String,
+    type: String as PropType<'left' | 'right' | 'center'>,
     default: 'left',
     validator: textAlignValidator,
   },

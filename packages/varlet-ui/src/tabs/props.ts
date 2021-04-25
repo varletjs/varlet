@@ -12,12 +12,12 @@ export const props = {
     default: 0,
   },
   layoutDirection: {
-    type: String,
+    type: String as PropType<'horizontal' | 'vertical'>,
     default: 'horizontal',
     validator: directionValidator,
   },
   itemDirection: {
-    type: String,
+    type: String as PropType<'horizontal' | 'vertical'>,
     default: 'horizontal',
     validator: directionValidator,
   },

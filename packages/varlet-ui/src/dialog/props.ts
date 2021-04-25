@@ -19,7 +19,7 @@ export const props = {
     type: String,
   },
   messageAlign: {
-    type: String,
+    type: String as PropType<'left' | 'center' | 'right'>,
     default: 'left',
     validator: messageAlignValidator,
   },

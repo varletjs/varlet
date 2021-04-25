@@ -10,7 +10,7 @@ export const props = {
     default: false,
   },
   position: {
-    type: String,
+    type: String as PropType<'top' | 'bottom' | 'right' | 'left' | 'center'>,
     default: 'center',
     validator: positionValidator,
   },

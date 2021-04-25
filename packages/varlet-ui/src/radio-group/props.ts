@@ -11,7 +11,7 @@ export const props = {
     default: undefined,
   },
   direction: {
-    type: String,
+    type: String as PropType<'horizontal' | 'vertical'>,
     default: 'horizontal',
   },
   validateTrigger: {

@@ -9,7 +9,7 @@ export const props = {
     type: String,
   },
   fit: {
-    type: String,
+    type: String as PropType<'fill' | 'contain' | 'cover' | 'none' | 'scale-down'>,
     validator: fitValidator,
     default: 'fill',
   },
@@ -34,7 +34,7 @@ export const props = {
   },
   lazy: {
     type: Boolean,
-    default: false
+    default: false,
   },
   ripple: {
     type: Boolean,
