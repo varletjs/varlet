@@ -1,3 +1,9 @@
+import { PropType } from 'vue'
+
+type LoadingType = 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'
+
+type LoadingSize = 'normal' | 'mini' | 'small' | 'large'
+
 export function typeValidator(type: string): boolean {
   return ['circle', 'wave', 'cube', 'rect', 'disappear'].includes(type)
 }
@@ -9,7 +15,7 @@ export function sizeValidator(size: string): boolean {
 export const props = {
   // loading类型
   type: {
-    type: String,
+    type: String as PropType<LoadingType>,
     default: 'circle',
     validator: typeValidator,
   },
@@ -19,7 +25,7 @@ export const props = {
   },
   // loading尺寸
   size: {
-    type: String,
+    type: String as PropType<LoadingSize>,
     default: 'normal',
     validator: sizeValidator,
   },

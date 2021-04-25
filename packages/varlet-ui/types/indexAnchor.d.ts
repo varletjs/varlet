@@ -1,3 +1,9 @@
 import { VarComponent } from './varComponent'
 
-export class IndexAnchor extends VarComponent {}
+interface IndexAnchorProps {
+  index: string | number
+}
+
+export class IndexAnchor extends VarComponent {
+  $props: IndexAnchorProps
+}

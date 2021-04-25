@@ -1,3 +1,11 @@
 import { VarComponent } from './varComponent'
 
-export class Step extends VarComponent {}
+interface StepProps {
+  activeIcon?: string
+  currentIcon?: string
+  inactiveIcon?: string
+}
+
+export class Step extends VarComponent {
+  $props: StepProps
+}
