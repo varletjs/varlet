@@ -14,7 +14,7 @@ yarn dev
 ```
 
 ### Todo list
-- 1.Provides `jsx`、`tsx` syntax highlighting support.
+- 1.Provides `jsx`,`tsx` syntax highlighting support.
 - 2.Improve the document reading experience and fix problems.
 - 3.Unit test all components and issue test report.
 - 4.Full component style detail optimization, animation curve optimization.
