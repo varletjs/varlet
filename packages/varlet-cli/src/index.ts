@@ -10,15 +10,14 @@ command('dev').description('Run varlet development environment').action(dev)
 
 command('build').description('Build varlet site for production').action(build)
 
-command('compile')
-  .description('Compile varlet components library code')
-  .action(compile)
+command('compile').description('Compile varlet components library code').action(compile)
 
 command('create <name>').description('Create a component directory').action(create)
 
 command('jest')
   .description('Run Jest in work directory')
   .option('-w, --watch', 'Watch files change auto jest')
+  .option('-c, --component <componentName>', 'Test a specific component')
   .action(jest)
 
 parse()
