@@ -106,7 +106,6 @@
     </div>
     <var-form-details
       :error-message="errorMessage"
-      :style="{ marginLeft: thumbSize / 2 + 'px' }"
       class="var-slider__form"
       var-slider-cover
     />

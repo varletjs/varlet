@@ -23,20 +23,16 @@
 
     <h4>{{ pack.circle }}</h4>
     <div>
-      <app-type>{{ pack.size }}</app-type>
+      <app-type>{{ pack.style }}</app-type>
       <div class="progress-demo__circle">
-        <var-progress :value="30" line-width="3" mode="circle" />
-        <var-progress :value="50" line-width="3" :size="56" mode="circle" />
-        <var-progress :value="70" line-width="3" :size="72" mode="circle" />
+        <var-progress :value="30" line-width="5" :size="56" mode="circle" color="purple" track-color="#dec3e6" />
       </div>
     </div>
 
     <div>
-      <app-type>{{ pack.style }}</app-type>
+      <app-type>{{ pack.hideTrack }}</app-type>
       <div class="progress-demo__circle">
-        <var-progress :value="30" line-width="5" :size="56" mode="circle" color="purple" track-color="#dec3e6" />
-        <var-progress :value="value" line-width="5" :size="56" mode="circle" :rotate="90" show-action />
-        <var-progress :value="50" line-width="12" :size="56" mode="circle" :show-track="false" />
+        <var-progress :value="50" :size="56" mode="circle" :show-track="false" />
       </div>
     </div>
   </div>

@@ -46,16 +46,6 @@ createApp().use(Progress)
 
 ## 环形进度条
 
-### 不同尺寸
-
-通过`size`属性改变进度条大小。
-
-```html
-<var-progress :value="30" line-width="3" mode="circle" />
-<var-progress :value="50" line-width="3" size="56" mode="circle" />
-<var-progress :value="70" line-width="3" size="72" mode="circle" />
-```
-
 ### 自定义样式
 
 ```html
@@ -67,23 +57,16 @@ createApp().use(Progress)
   color="purple" 
   track-color="#dec3e6" 
 />
-<var-progress 
-  :value="value" 
-  line-width="5" 
-  :size="56"
-  mode="circle" 
-  :rotate="90" 
-  show-action 
-/>
-<var-progress 
-  :value="50" 
-  line-width="12" 
-  :size="56" 
-  mode="circle" 
-  :show-track="false" 
-/>
 ```
 
+
+### 隐藏轨道
+
+通过`show-track`属性隐藏 track。
+
+```html
+<var-progress :value="50" :size="56" mode="circle" :show-track="false" />
+```
 ## API
 
 ### 属性

@@ -46,16 +46,6 @@ The action is displayed through the `show-action` attribute. The action is the p
 
 ## Progress circle
 
-### Size
-
-Change the size of the progress bar through the `size` attribute.
-
-```html
-<var-progress :value="30" line-width="3" mode="circle" />
-<var-progress :value="50" line-width="3" size="56" mode="circle" />
-<var-progress :value="70" line-width="3" size="72" mode="circle" />
-```
-
 ### Custom Style
 
 ```html
@@ -67,23 +57,15 @@ Change the size of the progress bar through the `size` attribute.
   color="purple"
   track-color="#dec3e6"
 />
-<var-progress
-  :value="value"
-  line-width="5"
-  :size="56"
-  mode="circle"
-  :rotate="90"
-  show-action
-/>
-<var-progress
-  :value="50"
-  line-width="12"
-  :size="56"
-  mode="circle"
-  :show-track="false"
-/>
 ```
 
+### Hide Track
+
+Use `show-track` prop to hide track.
+
+```html
+<var-progress :value="50" :size="56" mode="circle" :show-track="false" />
+```
 ## API
 
 ### Props

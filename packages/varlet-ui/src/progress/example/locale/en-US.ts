@@ -4,5 +4,5 @@ export default {
   basicUsage: 'Basic Usage',
   style: 'Custom Style',
   showLabel: 'Show Action',
-  size: 'Size',
+  hideTrack: 'Hide Track',
 }

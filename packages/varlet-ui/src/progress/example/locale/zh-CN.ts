@@ -4,5 +4,5 @@ export default {
   basicUsage: '基本使用',
   style: '自定义样式',
   showLabel: '显示标签',
-  size: '不同尺寸',
+  hideTrack: '隐藏轨道',
 }
