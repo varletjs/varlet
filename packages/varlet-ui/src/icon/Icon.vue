@@ -45,10 +45,7 @@ export default defineComponent({
       shrinking.value = true
       await nextTick()
       setTimeout(() => {
-        if (oldName != null) {
-          nextName.value = newName
-        }
-
+        oldName != null && (nextName.value = newName)
         shrinking.value = false
       }, toNumber(transition))
     }

@@ -1,0 +1,316 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test icon example 1`] = `
+"<div class=\\"app-type\\">图标尺寸</div><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle example__animation-icon\\" style=\\"transition: all 0ms;\\"></i><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle example__animation-icon\\" style=\\"transition: all 0ms; font-size: 26px;\\"></i>
+<div class=\\"app-type\\">图标颜色</div><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle example__animation-icon\\" style=\\"color: rgb(41, 121, 255); transition: all 0ms;\\"></i><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle example__animation-icon\\" style=\\"color: rgb(41, 121, 255); transition: all 0ms; font-size: 26px;\\"></i>
+<div class=\\"app-type\\">使用图片</div><img class=\\"var-icon var-icon--set var-icon__image example__animation-icon\\" style=\\"transition: all 0ms; width: 32px; height: 32px; font-size: 32px;\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+<div class=\\"app-type\\">注册事件</div><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle example__animation-icon\\" style=\\"color: rgb(41, 121, 255); transition: all 0ms;\\"></i>
+<div class=\\"app-type\\">图标切换动画 (点击切换)</div><i class=\\"var-icon var-icon--set var-icon-information example__animation-icon\\" style=\\"color: rgb(41, 121, 255); transition: all 300ms; font-size: 30px;\\"></i>
+<div class=\\"app-type\\">图标列表 (点击复制)</div>
+<div class=\\"example__icons\\">
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"checkbox-marked-circle\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">checkbox-marked-circle</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"check-circle-outline\\"><i class=\\"var-icon var-icon--set var-icon-check-circle-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">check-circle-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"information\\"><i class=\\"var-icon var-icon--set var-icon-information\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">information</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"information-outline\\"><i class=\\"var-icon var-icon--set var-icon-information-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">information-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"warning\\"><i class=\\"var-icon var-icon--set var-icon-warning\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">warning</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"alert-outline\\"><i class=\\"var-icon var-icon--set var-icon-alert-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">alert-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"error\\"><i class=\\"var-icon var-icon--set var-icon-error\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">error</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"alert-circle-outline\\"><i class=\\"var-icon var-icon--set var-icon-alert-circle-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">alert-circle-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"checkbox-marked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-marked\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">checkbox-marked</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"checkbox-marked-outline\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">checkbox-marked-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"checkbox-blank-outline\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">checkbox-blank-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"radio-marked\\"><i class=\\"var-icon var-icon--set var-icon-radio-marked\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">radio-marked</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"checkbox-marked-circle-outline\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">checkbox-marked-circle-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"radio-blank\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">radio-blank</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"close-circle\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">close-circle</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"close-circle-outline\\"><i class=\\"var-icon var-icon--set var-icon-close-circle-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">close-circle-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"close-box\\"><i class=\\"var-icon var-icon--set var-icon-close-box\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">close-box</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"close-box-outline\\"><i class=\\"var-icon var-icon--set var-icon-close-box-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">close-box-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"minus-circle\\"><i class=\\"var-icon var-icon--set var-icon-minus-circle\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">minus-circle</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"minus-circle-outline\\"><i class=\\"var-icon var-icon--set var-icon-minus-circle-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">minus-circle-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"star\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">star</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"star-half-full\\"><i class=\\"var-icon var-icon--set var-icon-star-half-full\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">star-half-full</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"star-outline\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">star-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"heart\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">heart</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"heart-half-full\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">heart-half-full</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"heart-outline\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">heart-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"delete\\"><i class=\\"var-icon var-icon--set var-icon-delete\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">delete</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"trash-can\\"><i class=\\"var-icon var-icon--set var-icon-trash-can\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">trash-can</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"trash-can-outline\\"><i class=\\"var-icon var-icon--set var-icon-trash-can-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">trash-can-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"minus-box\\"><i class=\\"var-icon var-icon--set var-icon-minus-box\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">minus-box</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"minus-box-outline\\"><i class=\\"var-icon var-icon--set var-icon-minus-box-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">minus-box-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"account-circle\\"><i class=\\"var-icon var-icon--set var-icon-account-circle\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">account-circle</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"account-circle-outline\\"><i class=\\"var-icon var-icon--set var-icon-account-circle-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">account-circle-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"cog\\"><i class=\\"var-icon var-icon--set var-icon-cog\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">cog</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"cog-outline\\"><i class=\\"var-icon var-icon--set var-icon-cog-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">cog-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"map-marker-radius\\"><i class=\\"var-icon var-icon--set var-icon-map-marker-radius\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">map-marker-radius</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"map-marker-radius-outline\\"><i class=\\"var-icon var-icon--set var-icon-map-marker-radius-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">map-marker-radius-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"camera\\"><i class=\\"var-icon var-icon--set var-icon-camera\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">camera</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"camera-outline\\"><i class=\\"var-icon var-icon--set var-icon-camera-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">camera-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"cart\\"><i class=\\"var-icon var-icon--set var-icon-cart\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">cart</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"cart-outline\\"><i class=\\"var-icon var-icon--set var-icon-cart-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">cart-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"phone\\"><i class=\\"var-icon var-icon--set var-icon-phone\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">phone</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"phone-outline\\"><i class=\\"var-icon var-icon--set var-icon-phone-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">phone-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"image\\"><i class=\\"var-icon var-icon--set var-icon-image\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">image</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"image-outline\\"><i class=\\"var-icon var-icon--set var-icon-image-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">image-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"bell\\"><i class=\\"var-icon var-icon--set var-icon-bell\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">bell</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"bell-outline\\"><i class=\\"var-icon var-icon--set var-icon-bell-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">bell-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"home\\"><i class=\\"var-icon var-icon--set var-icon-home\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">home</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"home-outline\\"><i class=\\"var-icon var-icon--set var-icon-home-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">home-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"map-marker\\"><i class=\\"var-icon var-icon--set var-icon-map-marker\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">map-marker</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"map-marker-outline\\"><i class=\\"var-icon var-icon--set var-icon-map-marker-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">map-marker-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"magnify-plus\\"><i class=\\"var-icon var-icon--set var-icon-magnify-plus\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">magnify-plus</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"magnify-plus-outline\\"><i class=\\"var-icon var-icon--set var-icon-magnify-plus-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">magnify-plus-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"magnify-minus\\"><i class=\\"var-icon var-icon--set var-icon-magnify-minus\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">magnify-minus</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"magnify-minus-outline\\"><i class=\\"var-icon var-icon--set var-icon-magnify-minus-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">magnify-minus-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"play-circle\\"><i class=\\"var-icon var-icon--set var-icon-play-circle\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">play-circle</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"play-circle-outline\\"><i class=\\"var-icon var-icon--set var-icon-play-circle-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">play-circle-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"help-circle\\"><i class=\\"var-icon var-icon--set var-icon-help-circle\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">help-circle</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"help-circle-outline\\"><i class=\\"var-icon var-icon--set var-icon-help-circle-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">help-circle-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"plus-circle\\"><i class=\\"var-icon var-icon--set var-icon-plus-circle\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">plus-circle</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"plus-circle-outline\\"><i class=\\"var-icon var-icon--set var-icon-plus-circle-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">plus-circle-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"check\\"><i class=\\"var-icon var-icon--set var-icon-check\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">check</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"window-close\\"><i class=\\"var-icon var-icon--set var-icon-window-close\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">window-close</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"plus\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">plus</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"minus\\"><i class=\\"var-icon var-icon--set var-icon-minus\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">minus</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"chevron-up\\"><i class=\\"var-icon var-icon--set var-icon-chevron-up\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">chevron-up</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"chevron-down\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">chevron-down</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"chevron-left\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">chevron-left</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"chevron-right\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">chevron-right</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"menu-up\\"><i class=\\"var-icon var-icon--set var-icon-menu-up\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">menu-up</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"menu-down\\"><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">menu-down</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"menu-left\\"><i class=\\"var-icon var-icon--set var-icon-menu-left\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">menu-left</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"menu-right\\"><i class=\\"var-icon var-icon--set var-icon-menu-right\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">menu-right</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"upload\\"><i class=\\"var-icon var-icon--set var-icon-upload\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">upload</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"download\\"><i class=\\"var-icon var-icon--set var-icon-download\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">download</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"format-list-checkbox\\"><i class=\\"var-icon var-icon--set var-icon-format-list-checkbox\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">format-list-checkbox</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"menu\\"><i class=\\"var-icon var-icon--set var-icon-menu\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">menu</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"menu-open\\"><i class=\\"var-icon var-icon--set var-icon-menu-open\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">menu-open</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"dots-vertical\\"><i class=\\"var-icon var-icon--set var-icon-dots-vertical\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">dots-vertical</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"message-text-outline\\"><i class=\\"var-icon var-icon--set var-icon-message-text-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">message-text-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"message-processing-outline\\"><i class=\\"var-icon var-icon--set var-icon-message-processing-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">message-processing-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"white-balance-sunny\\"><i class=\\"var-icon var-icon--set var-icon-white-balance-sunny\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">white-balance-sunny</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"weather-cloudy\\"><i class=\\"var-icon var-icon--set var-icon-weather-cloudy\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">weather-cloudy</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"weather-lightning\\"><i class=\\"var-icon var-icon--set var-icon-weather-lightning\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">weather-lightning</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"weather-pouring\\"><i class=\\"var-icon var-icon--set var-icon-weather-pouring\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">weather-pouring</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"weather-snowy\\"><i class=\\"var-icon var-icon--set var-icon-weather-snowy\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">weather-snowy</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"weather-rainy\\"><i class=\\"var-icon var-icon--set var-icon-weather-rainy\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">weather-rainy</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"translate\\"><i class=\\"var-icon var-icon--set var-icon-translate\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">translate</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"magnify\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">magnify</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"github\\"><i class=\\"var-icon var-icon--set var-icon-github\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">github</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"refresh\\"><i class=\\"var-icon var-icon--set var-icon-refresh\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">refresh</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"arrow-down\\"><i class=\\"var-icon var-icon--set var-icon-arrow-down\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">arrow-down</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"power\\"><i class=\\"var-icon var-icon--set var-icon-power\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">power</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"file-document-outline\\"><i class=\\"var-icon var-icon--set var-icon-file-document-outline\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">file-document-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"fire\\"><i class=\\"var-icon var-icon--set var-icon-fire\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">fire</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"wifi\\"><i class=\\"var-icon var-icon--set var-icon-wifi\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">wifi</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"wrench\\"><i class=\\"var-icon var-icon--set var-icon-wrench\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">wrench</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"cake-variant\\"><i class=\\"var-icon var-icon--set var-icon-cake-variant\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">cake-variant</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"notebook\\"><i class=\\"var-icon var-icon--set var-icon-notebook\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">notebook</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" data-clipboard-text=\\"cellphone\\"><i class=\\"var-icon var-icon--set var-icon-cellphone\\" style=\\"transition: all 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">cellphone</div>
+  </div>
+</div>"
+`;
+
+exports[`test icon namespace 1`] = `"<i class=\\"var-icon custom-icon--set custom-icon-check\\" style=\\"transition: all 0ms;\\"></i>"`;
+
+exports[`test icon styles 1`] = `"<i class=\\"var-icon var-icon--set var-icon-check\\" style=\\"color: rgb(0, 0, 0); transition: all 0ms; font-size: 36px;\\"></i>"`;
