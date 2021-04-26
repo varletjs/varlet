@@ -1,17 +1,12 @@
 <template>
   <div class="progress-demo">
     <div class="space"></div>
+
     <div class="progress-demo__basic">
       <app-type>{{ pack.basicUsage }}</app-type>
       <var-progress :value="20" />
       <var-progress :value="value" />
       <var-progress :value="100" />
-    </div>
-    <div class="progress-demo__style">
-      <app-type>{{ pack.style }}</app-type>
-      <var-progress :value="30" line-width="8" color="#ff9800" />
-      <var-progress :value="60" line-width="8" color="#ff9800" track-color="#f5cb90" />
-      <var-progress :value="80" ripple line-width="8" color="#ff9800" track-color="#f5cb90" />
     </div>
 
     <div class="progress-demo__label">
@@ -19,6 +14,13 @@
       <var-progress :value="30" label />
       <var-progress :value="value" label />
       <var-progress :value="100" label>success</var-progress>
+    </div>
+
+    <div class="progress-demo__style">
+      <app-type>{{ pack.style }}</app-type>
+      <var-progress :value="30" line-width="8" color="#ff9800" />
+      <var-progress :value="60" line-width="8" color="#ff9800" track-color="#f5cb90" />
+      <var-progress :value="80" ripple line-width="8" color="#ff9800" track-color="#f5cb90" />
     </div>
 
     <app-type>{{ pack.circle }}</app-type>
@@ -29,6 +31,7 @@
       <div class="space"></div>
       <var-progress mode="circle" label :value="100" line-width="5" :size="56" />
     </div>
+
     <app-type>{{ pack.hideTrack }}</app-type>
     <div class="progress-demo__circle">
       <var-progress mode="circle" :value="50" :size="56" :track="false" />
@@ -89,11 +92,11 @@ export default defineComponent({
   .progress-demo__label,
   .progress-demo__custom {
     .var-progress {
+      margin: 12px 0;
+
       &:nth-child(2) {
         margin-top: 0;
       }
-
-      margin: 12px 0;
     }
   }
 

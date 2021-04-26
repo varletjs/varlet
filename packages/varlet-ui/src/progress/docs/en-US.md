@@ -23,16 +23,6 @@ Set the current progress through the `value` attribute.
 <var-progress :value="100" />
 ```
 
-### Custom Style
-
-Set the line width, progress bar color, track color and ripple loading effect through the attributes of `line-width`, `color`, `track-color` and `ripple`.
-
-```html
-<var-progress :value="30" line-width="8" color="#ff9800" />
-<var-progress :value="60" line-width="8" color="#ff9800" track-color="#f5cb90" />
-<var-progress :value="80" ripple line-width="8" color="#ff9800" track-color="#f5cb90" />
-```
-
 ### Show Label
 
 The label is displayed through the `label` attribute. The label is the percentage of progress by default. You can use the slot to insert custom content.
@@ -41,6 +31,16 @@ The label is displayed through the `label` attribute. The label is the percentag
 <var-progress label :value="30" />
 <var-progress label :value="value" />
 <var-progress label :value="100">success</var-progress>
+```
+
+### Custom Style
+
+Set the line width, progress bar color, track color and ripple loading effect through the attributes of `line-width`, `color`, `track-color` and `ripple`.
+
+```html
+<var-progress :value="30" line-width="8" color="#ff9800" />
+<var-progress :value="60" line-width="8" color="#ff9800" track-color="#f5cb90" />
+<var-progress :value="80" ripple line-width="8" color="#ff9800" track-color="#f5cb90" />
 ```
 
 ### Progress circle
