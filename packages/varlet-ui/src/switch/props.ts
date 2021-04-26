@@ -2,7 +2,13 @@ import { PropType } from 'vue'
 
 export const props = {
   modelValue: {
-    type: Boolean,
+    default: false,
+  },
+  activeValue: {
+    default: true,
+  },
+  inactiveValue: {
+    default: false,
   },
   disabled: {
     type: Boolean,

@@ -1,7 +1,9 @@
 import { VarComponent } from './varComponent'
 
 interface SwitchProps {
-  modelValue?: boolean
+  modelValue?: any
+  activeValue?: any
+  inactiveValue?: any
   disabled?: boolean
   readonly?: boolean
   loading?: boolean

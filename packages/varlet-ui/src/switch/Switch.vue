@@ -9,7 +9,7 @@
       <div
         :style="styleComputed.track"
         class="var-switch__track"
-        :class="[modelValue ? 'var-switch__track-active' : null, errorMessage ? 'var-switch__track-error' : null]"
+        :class="[modelValue === activeValue ? 'var-switch__track-active' : null, errorMessage ? 'var-switch__track-error' : null]"
       ></div>
       <div
         class="var-switch__ripple"
@@ -21,7 +21,7 @@
         <div
           :style="styleComputed.handle"
           class="var-switch__handle var-elevation--2"
-          :class="[modelValue ? 'var-switch__handle-active' : null, errorMessage ? 'var-switch__handle-error' : null]"
+          :class="[modelValue === activeValue ? 'var-switch__handle-active' : null, errorMessage ? 'var-switch__handle-error' : null]"
         >
           <var-loading v-if="loading" :radius="size / 2 - 2" />
         </div>
@@ -55,7 +55,7 @@ export default defineComponent({
   name: 'VarSwitch',
   components: {
     [Loading.name]: Loading,
-    [FormDetails.name]: FormDetails,
+    [FormDetails.name]: FormDetails
   },
   directives: { Ripple },
   props,
@@ -68,54 +68,70 @@ export default defineComponent({
     const validateWithTrigger = () => nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
 
     const styleComputed: ComputedRef<Record<string, Partial<StyleProps>>> = computed(() => {
-      const sizeNum = toNumber(props.size)
+      const { size, modelValue, color, closeColor, loadingColor, activeValue } = props
+
+      const sizeNum = toNumber(size)
       const switchWidth = sizeNum * 2
       const switchHeight = sizeNum * 1.2
 
       return {
         handle: {
-          width: `${props.size}px`,
-          height: `${props.size}px`,
-          backgroundColor: props.modelValue ? props.color || '' : props.closeColor || '',
-          color: props.loadingColor && props.loadingColor,
+          width: `${size}px`,
+          height: `${size}px`,
+          backgroundColor: modelValue === activeValue ? color || '' : closeColor || '',
+          color: loadingColor && loadingColor
         },
         ripple: {
-          left: props.modelValue ? `${sizeNum / 2}px` : `-${sizeNum / 2}px`,
-          color: props.modelValue ? props.color || '' : props.closeColor || '#999',
+          left: modelValue === activeValue ? `${sizeNum / 2}px` : `-${sizeNum / 2}px`,
+          color: modelValue === activeValue ? color || '' : closeColor || '#999',
           width: `${sizeNum * 2}px`,
-          height: `${sizeNum * 2}px`,
+          height: `${sizeNum * 2}px`
         },
         track: {
           height: `${switchHeight * 0.6}px`,
           width: `${switchWidth - 2}px`,
           borderRadius: `${switchWidth / 3}px`,
-          filter: props.modelValue || errorMessage?.value ? 'opacity(.6)' : 'brightness(.6)',
-          backgroundColor: props.modelValue ? props.color || '' : props.closeColor || '',
+          filter: modelValue === activeValue || errorMessage?.value ? 'opacity(.6)' : 'brightness(.6)',
+          backgroundColor: modelValue === activeValue ? color || '' : closeColor || ''
         },
         switch: {
           height: `${switchHeight}px`,
-          width: `${switchWidth}px`,
-        },
+          width: `${switchWidth}px`
+        }
       }
     })
 
     const switchActive = () => {
-      props.onClick?.()
-      if (props.disabled || props.loading || props.readonly || form?.disabled.value || form?.readonly.value) return
-      props.onChange?.(!props.modelValue)
-      props['onUpdate:modelValue']?.(!props.modelValue)
+      const {
+        onClick,
+        onChange,
+        disabled,
+        loading,
+        readonly,
+        modelValue,
+        activeValue,
+        inactiveValue,
+        'onUpdate:modelValue': updateModelValue
+      } = props
+
+      onClick?.()
+      if (disabled || loading || readonly || form?.disabled.value || form?.readonly.value) return
+
+      const newValue = modelValue === activeValue ? inactiveValue : activeValue
+      onChange?.(newValue)
+      updateModelValue?.(newValue)
       validateWithTrigger()
     }
 
     const reset = () => {
-      props['onUpdate:modelValue']?.(false)
+      props['onUpdate:modelValue']?.(props.inactiveValue)
       resetValidation()
     }
 
     const switchProvider: SwitchProvider = {
       reset,
       validate,
-      resetValidation,
+      resetValidation
     }
 
     bindForm?.(switchProvider)
@@ -125,9 +141,9 @@ export default defineComponent({
       styleComputed,
       errorMessage,
       formDisabled: form?.disabled,
-      formReadonly: form?.readonly,
+      formReadonly: form?.readonly
     }
-  },
+  }
 })
 </script>
 

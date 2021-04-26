@@ -36,8 +36,8 @@ export default {
 ### Not Available
 
 ```html
-<var-switch v-model="value1" disabled />
-<var-switch v-model="value1" readonly />
+<var-switch v-model="value" disabled />
+<var-switch v-model="value" readonly />
 ```
 
 ### Custom color
@@ -87,7 +87,9 @@ Verify the value by the `rules` attribute.
 
 | prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `mv-model` | Check status of Switch	| _boolean_ | - |
+| `v-model` | Check status of Switch	| _any_ | `false` |
+| `active-value` | The value when the switch is turned on	| _any_ | `true` |
+| `inactive-value` | The value when the switch is turned off	| _any_ | `false` |
 | `disabled` | Whether to disable switch| _boolean_ | `false` |
 | `readonly` | Whether to readonly switch | _boolean_ | `false` |
 | `loading` | Whether to show loading icon | _boolean_ | `false` |
@@ -103,7 +105,7 @@ Verify the value by the `rules` attribute.
 | Event | Description | arguments |
 | ----- | -------------- | -------- |
 | `click` | Emitted when component is clicked | `event: Event` |
-| `change` | Emitted when check status changed | `value: boolean` |
+| `change` | Emitted when check status changed | `value: any` |
 
 ### Theme Variables
 #### The following LESS variables can be overridden at build time to modify the theme style

@@ -35,8 +35,8 @@ export default {
 ### 不可用
 
 ```html
-<var-switch v-model="value1" disabled />
-<var-switch v-model="value1" readonly />
+<var-switch v-model="value" disabled />
+<var-switch v-model="value" readonly />
 ```
 
 ### 自定义颜色
@@ -86,7 +86,9 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `v-model` | 开关选中状态	| _boolean_ | - |
+| `v-model` | 开关选中状态	| _any_ | `false` |
+| `active-value` | 开关打开时的值	| _any_ | `true` |
+| `inactive-value` | 开关关闭时的值	| _any_ | `false` |
 | `disabled` | 是否禁用| _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `loading` | 是否为加载状态 | _boolean_ | `false` |
@@ -102,7 +104,7 @@ export default {
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------------- | -------- |
 | `click` | 点击时触发 | `event: Event` |
-| `change` | 开关状态切换时触发 | `value: boolean` |
+| `change` | 开关状态切换时触发 | `value: any` |
 
 ### 主题变量
 #### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
