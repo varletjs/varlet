@@ -11,7 +11,7 @@ test('test button example', () => {
 
 test('test button plugin', () => {
   const app = createApp({}).use(Button)
-  expect(app.component('VarButton')).toBeTruthy()
+  expect(app.component(Button.name)).toBeTruthy()
 })
 
 test('test button click & touchstart', () => {
