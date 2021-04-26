@@ -1,3 +1,13 @@
 import { VarComponent } from './varComponent'
 
-export class AppBar extends VarComponent {}
+interface AppBarProps {
+  color?: string
+  textColor?: string
+  title?: string
+  titlePosition?: 'left' | 'center' | 'right'
+  elevation?: boolean
+}
+
+export class AppBar extends VarComponent {
+  $props: AppBarProps
+}
