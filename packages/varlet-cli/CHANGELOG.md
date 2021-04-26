@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/haoziqaq/varlet/compare/v1.0.1...v1.1.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* **ui/progress:** 优化progress文档, 重命名props show-active -> label, show-track -> track ([7d82141](https://github.com/haoziqaq/varlet/commit/7d82141aef288e03b580b6ffabc0844f8f889ba3))
+
+
+
+
+
 ## [1.0.1](https://github.com/haoziqaq/varlet/compare/v1.0.0...v1.0.1) (2021-04-24)
 
 **Note:** Version bump only for package @varlet/cli

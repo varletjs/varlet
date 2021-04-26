@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/haoziqaq/varlet/compare/v1.0.1...v1.1.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* **ui/progress:** 优化progress文档, 重命名props show-active -> label, show-track -> track ([7d82141](https://github.com/haoziqaq/varlet/commit/7d82141aef288e03b580b6ffabc0844f8f889ba3))
+
+
+### Features
+
+* **ui/types:** uploader提供jsx,tsx类型支持 ([b156587](https://github.com/haoziqaq/varlet/commit/b15658715a3c64cada1c9be4d80c0ffc1df701fd))
+* **ui/types:** 完善row组件jsx,tsx类型推断 ([4630be3](https://github.com/haoziqaq/varlet/commit/4630be3dd3678d35e8f5e9d194de84c6043797dd))
+* **ui/types:** 提供jsx,tsx支持.完成以下组件button,checkbox,checkboxGroup,col,counter,dialog,form,icon,image,i ([8818998](https://github.com/haoziqaq/varlet/commit/8818998748945eea3acd88f88eff8d9387a9e86c))
+
+
+
+
+
 ## [1.0.1](https://github.com/haoziqaq/varlet/compare/v1.0.0...v1.0.1) (2021-04-24)
 
 **Note:** Version bump only for package @varlet/ui
