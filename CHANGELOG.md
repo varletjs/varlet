@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/haoziqaq/varlet/compare/v1.1.0...v1.2.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* **cli/site:** 添加禁止站点强缓存meta标签 ([761b991](https://github.com/haoziqaq/varlet/commit/761b991dd4b95ee8a3ed543e9b41a1294e1bd944))
+
+
+### Features
+
+* **switch:** add activeValue prop and inactiveValue prop ([7e56ea7](https://github.com/haoziqaq/varlet/commit/7e56ea71d2a61b9263a132e4d441004040715c8c))
+
+
+
+
+
 # [1.1.0](https://github.com/haoziqaq/varlet/compare/v1.0.1...v1.1.0) (2021-04-26)
 
 
