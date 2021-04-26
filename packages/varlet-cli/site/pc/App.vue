@@ -102,7 +102,7 @@ export default defineComponent({
     [Cell.name]: Cell,
     [Icon.name]: Icon,
     [Menu.name]: Menu,
-    [Loading.name]: Loading
+    [Loading.name]: Loading,
   },
   setup() {
     const menu: Ref<Menu[]> = ref([])
@@ -157,7 +157,7 @@ export default defineComponent({
         if (index !== -1) {
           childrenElement[index].scrollIntoView({
             block: 'center',
-            inline: 'start'
+            inline: 'start',
           })
         }
       })
@@ -228,9 +228,9 @@ export default defineComponent({
       nav,
       code,
       changeRoute,
-      changeLanguage
+      changeLanguage,
     }
-  }
+  },
 })
 </script>
 
@@ -351,6 +351,7 @@ iframe {
       position: relative;
       z-index: 2;
       border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      box-sizing: border-box;
 
       &__logo {
         display: flex;

@@ -33,8 +33,8 @@ export const props = {
     type: [Number, String],
     default: 0,
   },
-  // 是否显示action
-  showAction: {
+  // 是否显示label
+  label: {
     type: Boolean,
     default: false,
   },
@@ -49,7 +49,7 @@ export const props = {
     default: 0,
   },
   // 是否显示 circle 轨道
-  showTrack: {
+  track: {
     type: Boolean,
     default: true,
   },

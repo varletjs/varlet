@@ -8,7 +8,7 @@
           :style="{ background: color, width: linearProps.width }"
         ></div>
       </div>
-      <div class="var-progress-linear__action" v-bind="$attrs" v-if="showAction">
+      <div class="var-progress-linear__label" v-bind="$attrs" v-if="label">
         <slot>
           {{ linearProps.roundValue }}
         </slot>
@@ -22,7 +22,7 @@
         :viewBox="circleProps.viewBox"
       >
         <circle
-          v-if="showTrack"
+          v-if="track"
           class="var-progress-circle__background"
           :cx="size / 2"
           :cy="size / 2"
@@ -48,7 +48,7 @@
         ></circle>
       </svg>
 
-      <div class="var-progress-circle__action" v-if="showAction" v-bind="$attrs">
+      <div class="var-progress-circle__label" v-if="label" v-bind="$attrs">
         <slot>
           {{ circleProps.roundValue }}
         </slot>

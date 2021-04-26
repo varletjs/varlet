@@ -1,49 +1,47 @@
 <template>
   <div class="progress-demo">
     <div class="space"></div>
-    <h4>{{ pack.linear }}</h4>
     <div class="progress-demo__basic">
       <app-type>{{ pack.basicUsage }}</app-type>
       <var-progress :value="20" />
       <var-progress :value="value" />
+      <var-progress :value="100" />
     </div>
     <div class="progress-demo__style">
       <app-type>{{ pack.style }}</app-type>
-      <var-progress :value="30" line-width="8" />
-      <var-progress :value="60" line-width="10" color="purple" track-color="#dec3e6" />
-      <var-progress :value="80" line-width="10" ripple style="border-radius: 4px" />
+      <var-progress :value="30" line-width="8" color="#ff9800" />
+      <var-progress :value="60" line-width="8" color="#ff9800" track-color="#f5cb90" />
+      <var-progress :value="80" ripple line-width="8" color="#ff9800" track-color="#f5cb90" />
     </div>
 
-    <div class="progress-demo__action">
+    <div class="progress-demo__label">
       <app-type>{{ pack.showLabel }}</app-type>
-      <var-progress :value="30" show-action />
-      <var-progress :value="value" show-action />
-      <var-progress :value="100" show-action> success </var-progress>
+      <var-progress :value="30" label />
+      <var-progress :value="value" label />
+      <var-progress :value="100" label>success</var-progress>
     </div>
 
-    <h4>{{ pack.circle }}</h4>
-    <div>
-      <app-type>{{ pack.style }}</app-type>
-      <div class="progress-demo__circle">
-        <var-progress :value="30" line-width="5" :size="56" mode="circle" color="purple" track-color="#dec3e6" />
-      </div>
+    <app-type>{{ pack.circle }}</app-type>
+    <div class="progress-demo__circle">
+      <var-progress mode="circle" :value="30" line-width="5" :size="56" />
+      <div class="space"></div>
+      <var-progress mode="circle" label :value="value" line-width="5" :size="56" />
+      <div class="space"></div>
+      <var-progress mode="circle" label :value="100" line-width="5" :size="56" />
     </div>
-
-    <div>
-      <app-type>{{ pack.hideTrack }}</app-type>
-      <div class="progress-demo__circle">
-        <var-progress :value="50" :size="56" mode="circle" :show-track="false" />
-      </div>
+    <app-type>{{ pack.hideTrack }}</app-type>
+    <div class="progress-demo__circle">
+      <var-progress mode="circle" :value="50" :size="56" :track="false" />
     </div>
   </div>
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
+import Progress from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
-import Progress from '..'
 
 export default defineComponent({
   name: 'ProgressExample',
@@ -88,7 +86,7 @@ export default defineComponent({
 
   .progress-demo__basic,
   .progress-demo__style,
-  .progress-demo__action,
+  .progress-demo__label,
   .progress-demo__custom {
     .var-progress {
       &:nth-child(2) {
@@ -101,8 +99,11 @@ export default defineComponent({
 
   .progress-demo__circle {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+
+    .space {
+      width: 20px;
+    }
   }
 }
 </style>

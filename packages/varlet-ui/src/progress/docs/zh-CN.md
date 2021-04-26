@@ -13,8 +13,6 @@ import { Progress } from '@varlet/ui'
 createApp().use(Progress)
 ```
 
-## 线性进度条
-
 ### 基本使用
 
 通过 `value` 属性设置当前进度。
@@ -22,6 +20,7 @@ createApp().use(Progress)
 ```html
 <var-progress :value="20" />
 <var-progress :value="value" />
+<var-progress :value="100" />
 ```
 
 ### 自定义样式
@@ -29,43 +28,36 @@ createApp().use(Progress)
 通过`line-width`、`color`、`track-color`、`ripple` 属性设置线宽、进度条颜色、轨道颜色、水波纹加载效果。
 
 ```html
-<var-progress :value="30" line-width="8" />
-<var-progress :value="60" line-width="10" color="purple" track-color="#dec3e6" />
-<var-progress :value="80" line-width="10" style="border-radius: 4px" ripple />
+<var-progress :value="30" line-width="8" color="#ff9800" />
+<var-progress :value="60" line-width="8" color="#ff9800" track-color="#f5cb90" />
+<var-progress :value="80" ripple line-width="8" color="#ff9800" track-color="#f5cb90" />
 ```
 
 ### 显示标签
 
-通过 `show-action`属性将action显示，action 默认为进度的百分比，可以使用插槽插入自定义内容。
+通过`label`属性将label显示，label默认为进度的百分比，可以使用插槽插入自定义内容。
 
 ```html
-<var-progress :value="30" show-action />
-<var-progress :value="value" show-action />
-<var-progress :value="100" show-action> success </var-progress>
+<var-progress label :value="30" />
+<var-progress label :value="value" />
+<var-progress label :value="100">success</var-progress>
 ```
 
-## 环形进度条
-
-### 自定义样式
+### 环形进度条
 
 ```html
-<var-progress 
-  :value="30" 
-  line-width="5" 
-  :size="56" 
-  mode="circle" 
-  color="purple" 
-  track-color="#dec3e6" 
-/>
+<var-progress mode="circle" :value="30" line-width="5" :size="56" />
+<var-progress mode="circle" label :value="value" line-width="5" :size="56" />
+<var-progress mode="circle" label :value="100" line-width="5" :size="56" />
 ```
 
 
 ### 隐藏轨道
 
-通过`show-track`属性隐藏 track。
+通过`track`属性隐藏 track。
 
 ```html
-<var-progress :value="50" :size="56" mode="circle" :show-track="false" />
+<var-progress mode="circle" :value="50" :size="56" :track="false" />
 ```
 ## API
 
@@ -78,17 +70,17 @@ createApp().use(Progress)
 | `line-width` | `progress` 的线宽 | _string \| number_ | `4` |
 | `color` | `progress` 的颜色 | _string_  | `#005CAF` |
 | `track-color`  | `progress` 轨道的颜色 | _string_   | `#d8d8d8` |
-| `show-action` | 是否显示 action | _boolean_ | `false` |
+| `label` | 是否显示 label | _boolean_ | `false` |
 | `ripple` | 水波纹加载效果（仅支持线性进度条） | _boolean_ | `false` |
 | `size` | `progress` 的尺寸（仅支持环形进度条） | _string \| number_ | `40` |
 | `rotate` | `progress` 的原点（仅支持环形进度条） | _number_ | `0` |
-| `show-track` | 是否显示 `progress` 的轨道（仅支持环形进度条） | _boolean_ | `true` |
+| `track` | 是否显示 `progress` 的轨道（仅支持环形进度条） | _boolean_ | `true` |
 
 ### 插槽
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
-| `default` | 自定义 action | `-` |
+| `default` | 自定义 label | `-` |
 
 ### 主题变量
 #### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
