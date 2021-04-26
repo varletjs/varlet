@@ -24,7 +24,7 @@ createApp().use(Steps).use(Step)
   <var-step>步骤3</var-step>
   <var-step>步骤4</var-step>
 </var-steps>
-<var-button type="primary" @click="next">下一步</var-button>
+<var-button type="primary" block @click="next">下一步</var-button>
 ```
 
 ```javascript
@@ -35,11 +35,11 @@ export default {
     const active = ref(0)
 
     const next = () => {
-      active.value = active.value === 4 ? 0 : active.value + 1
+      active.value = (active.value + 1) % 4
     }
     
     return {
-      value,
+      active,
       next
     }
   }
@@ -48,74 +48,25 @@ export default {
 
 ### 自定义样式
 
-点击 `step` 会触发`click-step` 事件。
-
 ```html
  <var-steps 
   :active="active"  
-  active-color="purple" 
-  inactive-color="#afcf7f"
-  @click-step="click"
+  active-color="#f44336" 
+  inactive-color="#e99eb4"
 >
-  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
+  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
     步骤1
   </var-step>
-  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
+  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
     步骤2
   </var-step>
-  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
+  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
     步骤3
   </var-step>
-  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
+  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
     步骤4
   </var-step>
 </var-steps>
-```
-```javascript
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const active = ref(0)
-
-    const click = (index) => {
-      active.value = index
-    }
-    
-    return {
-      value,
-      click
-    }
-  }
-}
-```
-
-### 动态步骤
-
-步骤条可以动态地添加或移除他们的步骤。
-
-```html
-<var-select placeholder="改变step的数量" v-model="count">
-  <var-option v-for="item in list" :key="item" :label="item" :value="item" />
-</var-select>
-<var-steps>
-  <var-step v-for="i in count" :key="i">步骤{{ i }}</var-step>
-</var-steps>
-```
-```javascript
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const list = ref([2, 3, 4, 5])
-    const count = ref(4)
-    
-    return {
-      list,
-      count
-    }
-  }
-}
 ```
 
 ### 垂直模式
@@ -123,23 +74,11 @@ export default {
 通过 `direction` 属性改变步骤条的显示方向。
 
 ```html
-<var-steps direction="vertical" :active="5">
-  <var-step active-icon="notebook">
-    <h3 style="margin: 0">2021-02-13</h3>
-    <span>接下来...</span>
-  </var-step>
-  <var-step active-icon="notebook">
-    <h3 style="margin: 0">2021-02-14</h3>
-    <span>接下来...</span>
-  </var-step>
-  <var-step active-icon="notebook">
-    <h3 style="margin: 0">2021-02-15</h3>
-    <span>接下来...</span>
-  </var-step>
-  <var-step active-icon="notebook">
-    <h3 style="margin: 0">2021-02-16</h3>
-    <span>接下来...</span>
-  </var-step>
+<var-steps direction="vertical" :active="active">
+  <var-step>步骤1</var-step>
+  <var-step>步骤2</var-step>
+  <var-step>步骤3</var-step>
+  <var-step>步骤4</var-step>
 </var-steps>
 ```
 

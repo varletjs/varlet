@@ -24,7 +24,7 @@ Use `active` prop to control the progress of step, value is index of step and is
   <var-step>Step3</var-step>
   <var-step>Step4</var-step>
 </var-steps>
-<var-button type="primary" @click="next">next</var-button>
+<var-button type="primary" block @click="next">next</var-button>
 ```
 
 ```javascript
@@ -35,11 +35,11 @@ export default {
     const active = ref(0)
 
     const next = () => {
-      active.value = active.value === 4 ? 0 : active.value + 1
+      active.value = (active.value + 1) % 4
     }
     
     return {
-      value,
+      active,
       next
     }
   }
@@ -48,74 +48,25 @@ export default {
 
 ### Custom Style
 
-Clicking on `step` will trigger the `click-step` event.
-
 ```html
  <var-steps 
-  :active="active"  
-  active-color="purple" 
-  inactive-color="#afcf7f"
-  @click-step="click"
+  :active="active"
+  active-color="#f44336"
+  inactive-color="#e99eb4"
 >
-  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
+  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
     Step1
   </var-step>
-  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
+  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
     Step2
   </var-step>
-  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
+  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
     Step3
   </var-step>
-  <var-step active-icon="fire" current-icon="heart" inactive-icon="delete">
+  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
     Step4
   </var-step>
 </var-steps>
-```
-```javascript
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const active = ref(0)
-
-    const click = (index) => {
-      active.value = index
-    }
-    
-    return {
-      value,
-      click
-    }
-  }
-}
-```
-
-### Dynamic steps
-
-Steppers can have their steps dynamically added or removed.
-
-```html
-<var-select placeholder="Change the number of steps" v-model="count">
-  <var-option v-for="item in list" :key="item" :label="item" :value="item" />
-</var-select>
-<var-steps>
-  <var-step v-for="i in count" :key="i">Step{{ i }}</var-step>
-</var-steps>
-```
-```javascript
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const list = ref([2, 3, 4, 5])
-    const count = ref(4)
-    
-    return {
-      list,
-      count
-    }
-  }
-}
 ```
 
 ### Vertical Mode
@@ -123,23 +74,11 @@ export default {
 Change the display direction of the step bar through the `direction` attribute.
 
 ```html
-<var-steps direction="vertical" :active="5">
-  <var-step active-icon="notebook">
-    <h3 style="margin: 0">2021-02-13</h3>
-    <span>do something...</span>
-  </var-step>
-  <var-step active-icon="notebook">
-    <h3 style="margin: 0">2021-02-14</h3>
-    <span>do something...</span>
-  </var-step>
-  <var-step active-icon="notebook">
-    <h3 style="margin: 0">2021-02-15</h3>
-    <span>do something...</span>
-  </var-step>
-  <var-step active-icon="notebook">
-    <h3 style="margin: 0">2021-02-16</h3>
-    <span>do something...</span>
-  </var-step>
+<var-steps direction="vertical" :active="active">
+  <var-step>Step1</var-step>
+  <var-step>Step2</var-step>
+  <var-step>Step3</var-step>
+  <var-step>Step4</var-step>
 </var-steps>
 ```
 
