@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/haoziqaq/varlet/compare/v1.2.0...v1.2.1) (2021-04-29)
+
+
+### Bug Fixes
+
+* **ui/input select:** 修复了input select的label居中问题 完成layout skeleton的单元测试 ([b9502f9](https://github.com/haoziqaq/varlet/commit/b9502f9052594398c12397798070589a86e5d879))
+
+
+
+
+
 # [1.2.0](https://github.com/haoziqaq/varlet/compare/v1.1.0...v1.2.0) (2021-04-26)
 
 
