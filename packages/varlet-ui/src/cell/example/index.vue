@@ -34,14 +34,13 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Icon from '../../icon'
 import Cell from '..'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 
-export default defineComponent({
+export default {
   name: 'CellExample',
   components: {
     [Cell.name]: Cell,
@@ -55,5 +54,5 @@ export default defineComponent({
       pack,
     }
   },
-})
+}
 </script>

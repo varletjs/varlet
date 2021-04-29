@@ -34,13 +34,12 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Loading from '..'
 
-export default defineComponent({
+export default {
   name: 'LoadingExample',
   components: {
     [Loading.name]: Loading,
@@ -53,7 +52,7 @@ export default defineComponent({
       pack,
     }
   },
-})
+}
 </script>
 
 <style lang="less" scoped>
