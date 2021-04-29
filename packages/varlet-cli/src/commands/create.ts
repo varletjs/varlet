@@ -40,11 +40,18 @@ export default ${bigCamelize(name)}
 
   const testsTemplate = `\
 import example from '../example'
-import { render } from '@testing-library/vue'
+import ${bigCamelize(name)} from '..'
+import { mount } from '@vue/test-utils'
+import { createApp } from 'vue'
 
-test('test ${camelize(name)} example', async () => {
-  const wrapper = render(example)
-  console.log(wrapper)
+test('test ${camelize(name)} example', () => {
+  const wrapper = mount(example)
+  expect(wrapper.html()).toMatchSnapshot()
+})
+
+test('test ${camelize(name)} plugin', () => {
+  const app = createApp({}).use(${bigCamelize(name)})
+  expect(app.component(${bigCamelize(name)}.name)).toBeTruthy()
 })
 `
 

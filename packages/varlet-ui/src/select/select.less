@@ -9,7 +9,6 @@
 @select-scroller-padding: 6px 0;
 @select-scroller-max-height: 278px;
 @select-placeholder-size: 16px;
-@select-placeholder-offset-top: 4px;
 @select-icon-padding: @select-placeholder-size 0 0;
 @select-icon-size: 20px;
 @select-select-text-color: #555;
@@ -74,11 +73,12 @@
 
   &__placeholder {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
     transform-origin: left;
-    transition: transform 0.3s;
-    transform: translate(0, @select-placeholder-offset-top + @select-placeholder-size) scale(1);
+    transition-property: top, transform;
+    transition-duration: 0.3s;
+    transform: translate(0, calc(-50% + @select-placeholder-size / 2)) scale(1);
     font-size: @select-placeholder-size;
   }
 
@@ -122,7 +122,8 @@
   }
 
   &--placeholder-non-hint {
-    transform: translate(0, @select-placeholder-offset-top) scale(1);
+    top: 50%;
+    transform: translate(0, -50%) scale(1);
   }
 
   &--non-hint {

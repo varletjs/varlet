@@ -14,7 +14,7 @@ test('test button plugin', () => {
   expect(app.component(Button.name)).toBeTruthy()
 })
 
-test('test button click & touchstart', () => {
+test('test button onClick & onTouchstart null callback', () => {
   const wrapper = mount(VarButton)
   wrapper.trigger('click')
   wrapper.trigger('touchstart')
@@ -82,13 +82,16 @@ test('test button color & textColor', () => {
   expect(wrapper.html()).toMatchSnapshot()
 })
 
-test('test button size & text & block & round', () => {
+test('test button styles', () => {
   const wrapper = mount(VarButton, {
     props: {
       size: 'large',
       round: true,
       text: true,
       block: true,
+    },
+    slots: {
+      default: () => 'button text',
     },
   })
 

@@ -166,7 +166,6 @@ createApp().use(Icon)
 | `@input-blur-color` | `#888` |
 | `@input-focus-color` | `@color-primary` |
 | `@input-placeholder-size` | `6px` |
-| `@input-placeholder-offset-top` | `4px` |
 | `@input-textarea-height` | `auto` |
 | `@input-textarea-padding-top` | `8px` |
 | `@input-icon-padding` | `@input-placeholder-size 0 0` |

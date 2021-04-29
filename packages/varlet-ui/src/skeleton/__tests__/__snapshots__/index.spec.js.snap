@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test skeleton example 1`] = `
+"<div class=\\"app-type\\">基本使用</div>
+<div class=\\"var--box var-skeleton\\">
+  <!--v-if-->
+  <div class=\\"var-skeleton__content\\">
+    <!--v-if-->
+    <div class=\\"var-skeleton__article\\">
+      <!--v-if-->
+      <div class=\\"var-skeleton__section\\">
+        <!--v-if-->
+        <div class=\\"var-skeleton__row\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--v-if-->
+</div>
+<div class=\\"app-type\\">显示标题</div>
+<div class=\\"var--box var-skeleton\\">
+  <!--v-if-->
+  <div class=\\"var-skeleton__content\\">
+    <!--v-if-->
+    <div class=\\"var-skeleton__article\\">
+      <!--v-if-->
+      <div class=\\"var-skeleton__section\\">
+        <div class=\\"var-skeleton__title\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--v-if-->
+</div>
+<div class=\\"app-type\\">自定义段落高度</div>
+<div class=\\"var--box var-skeleton\\">
+  <!--v-if-->
+  <div class=\\"var-skeleton__content\\">
+    <!--v-if-->
+    <div class=\\"var-skeleton__article\\">
+      <!--v-if-->
+      <div class=\\"var-skeleton__section\\">
+        <div class=\\"var-skeleton__title\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\" style=\\"width: 200px;\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\" style=\\"width: 100px;\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\" style=\\"width: 50px;\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--v-if-->
+</div>
+<div class=\\"app-type\\">显示头像</div>
+<div class=\\"var--box var-skeleton\\">
+  <!--v-if-->
+  <div class=\\"var-skeleton__content\\">
+    <!--v-if-->
+    <div class=\\"var-skeleton__article\\">
+      <div class=\\"var-skeleton__avatar\\">
+        <div class=\\"var-skeleton--animation\\"></div>
+      </div>
+      <div class=\\"var-skeleton__section\\">
+        <div class=\\"var-skeleton__title\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--v-if-->
+</div>
+<div class=\\"app-type\\">显示卡片</div>
+<div class=\\"var--box var-skeleton\\">
+  <!--v-if-->
+  <div class=\\"var-skeleton__content\\">
+    <div class=\\"var-skeleton__card\\">
+      <div class=\\"var-skeleton--animation\\"></div>
+    </div>
+    <div class=\\"var-skeleton__article\\">
+      <div class=\\"var-skeleton__avatar\\">
+        <div class=\\"var-skeleton--animation\\"></div>
+      </div>
+      <div class=\\"var-skeleton__section\\">
+        <div class=\\"var-skeleton__title\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--v-if-->
+</div>
+<div class=\\"app-type\\">全屏模式</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--1 button\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">切换全屏模式</div>
+</button>
+<div class=\\"var--box var-skeleton\\">
+  <div class=\\"var-skeleton__data\\"></div>
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;
+
+exports[`test skeleton styles 1`] = `
+"<div class=\\"var--box var-skeleton\\">
+  <!--v-if-->
+  <div class=\\"var-skeleton__content\\">
+    <div class=\\"var-skeleton__card\\" style=\\"height: 100px;\\">
+      <div class=\\"var-skeleton--animation\\"></div>
+    </div>
+    <div class=\\"var-skeleton__article\\">
+      <div class=\\"var-skeleton__avatar\\" style=\\"width: 100px; height: 100px;\\">
+        <div class=\\"var-skeleton--animation\\"></div>
+      </div>
+      <div class=\\"var-skeleton__section\\">
+        <div class=\\"var-skeleton__title\\" style=\\"width: 100px;\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\" style=\\"width: 600px;\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+        <div class=\\"var-skeleton__row\\" style=\\"width: 500px;\\">
+          <div class=\\"var-skeleton--animation\\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--v-if-->
+</div>"
+`;

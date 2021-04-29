@@ -5,7 +5,6 @@
 @input-blur-color: #888;
 @input-focus-color: @color-primary;
 @input-placeholder-size: 16px;
-@input-placeholder-offset-top: 4px;
 @input-textarea-height: auto;
 @input-textarea-padding-top: 8px;
 @input-icon-padding: @input-placeholder-size 0 0;
@@ -55,11 +54,22 @@
 
   &__placeholder {
     position: absolute;
+    top: 50%;
+    left: 0;
+    transform-origin: left;
+    transition-property: top, transform;
+    transition-duration: 0.3s;
+    transform: translate(0, calc(-50% + @input-placeholder-size / 2)) scale(1);
+    font-size: @input-placeholder-size;
+  }
+
+  &__textarea-placeholder {
+    position: absolute;
     top: 0;
     left: 0;
     transform-origin: left;
     transition: transform 0.3s;
-    transform: translate(0, @input-placeholder-offset-top + @input-placeholder-size) scale(1);
+    transform: translate(0, @input-textarea-padding-top + @input-placeholder-size) scale(1);
     font-size: @input-placeholder-size;
   }
 
@@ -106,7 +116,8 @@
   }
 
   &--placeholder-non-hint {
-    transform: translate(0, @input-placeholder-offset-top) scale(1);
+    top: 50%;
+    transform: translate(0, -50%) scale(1);
   }
 
   &--non-hint {

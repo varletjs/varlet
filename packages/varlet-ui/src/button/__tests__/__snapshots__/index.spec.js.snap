@@ -154,9 +154,9 @@ exports[`test button example 1`] = `
 </button>"
 `;
 
-exports[`test button size & text & block & round 1`] = `
+exports[`test button styles 1`] = `
 "<button class=\\"var-button var--box var-button--large var--flex var-button--text-default var-button--text var-button--round\\" style=\\"width: 100%;\\">
   <!--v-if-->
-  <div class=\\"var-button__content\\"></div>
+  <div class=\\"var-button__content\\">button text</div>
 </button>"
 `;

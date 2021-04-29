@@ -48,8 +48,11 @@
           @change="handleChange"
         />
         <label
-          class="var-input__placeholder"
-          :class="[computePlaceholderState(), !hint ? 'var-input--placeholder-non-hint' : null]"
+          :class="[
+            textarea ? 'var-input__textarea-placeholder' : 'var-input__placeholder',
+            computePlaceholderState(),
+            !hint ? 'var-input--placeholder-non-hint' : null,
+          ]"
           :for="id"
         >
           {{ placeholder }}

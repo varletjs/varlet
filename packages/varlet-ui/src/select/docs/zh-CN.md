@@ -277,7 +277,6 @@ export default {
 | `@select-scroller-padding` | `6px 0` |
 | `@select-scroller-max-height` | `278px` |
 | `@select-placeholder-size` | `16px` |
-| `@select-placeholder-offset-top` | `4px` |
 | `@select-icon-padding` | `@select-placeholder-size 0 0` |
 | `@select-icon-size` | `20px` |
 | `@select-select-text-color` | `#555` |
