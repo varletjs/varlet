@@ -18,14 +18,12 @@ export const props = {
   title: {
     type: String,
   },
-
   // 标题的位置
   titlePosition: {
     type: String,
     default: 'left',
     validator: positionValidator,
   },
-
   // 是否使用阴影
   elevation: {
     type: Boolean,

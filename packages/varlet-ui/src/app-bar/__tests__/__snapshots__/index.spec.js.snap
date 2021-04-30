@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test appBar example 1`] = `
+"<div class=\\"app-type\\">基础导航栏</div>
+<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(41, 121, 255); color: rgb(255, 255, 255);\\">
+  <!--v-if-->
+  <div class=\\"var-app-bar__title var-app-bar__title-left\\" style=\\"padding-left: 10px; padding-right: 10px;\\">标题</div>
+  <!--v-if-->
+</div>
+<div class=\\"app-type\\">自定义样式</div>
+<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(255, 152, 0); color: rgb(255, 255, 255);\\">
+  <!--v-if-->
+  <div class=\\"var-app-bar__title var-app-bar__title-center\\" style=\\"padding-left: 10px; padding-right: 10px;\\">标题</div>
+  <!--v-if-->
+</div>
+<div class=\\"app-type\\">添加标题处插槽</div>
+<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(41, 121, 255); color: rgb(255, 255, 255);\\">
+  <!--v-if-->
+  <div class=\\"var-app-bar__title var-app-bar__title-left\\" style=\\"padding-left: 10px; padding-right: 10px;\\">从插槽处添加标题</div>
+  <!--v-if-->
+</div>
+<div class=\\"app-type\\">添加左侧插槽</div>
+<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(41, 121, 255); color: rgb(255, 255, 255);\\">
+  <div class=\\"var-app-bar__left\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    </button></div>
+  <div class=\\"var-app-bar__title var-app-bar__title-center\\" style=\\"padding-left: 10px; padding-right: 10px;\\">标题</div>
+  <!--v-if-->
+</div>
+<div class=\\"app-type\\">添加右侧插槽</div>
+<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(41, 121, 255); color: rgb(255, 255, 255);\\">
+  <!--v-if-->
+  <div class=\\"var-app-bar__title var-app-bar__title-left\\" style=\\"padding-left: 10px; padding-right: 30px;\\">标题</div>
+  <div class=\\"var-app-bar__right\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    </button></div>
+</div>
+<div class=\\"app-type\\">添加左右插槽</div>
+<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(41, 121, 255); color: rgb(255, 255, 255);\\">
+  <div class=\\"var-app-bar__left\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    </button></div>
+  <div class=\\"var-app-bar__title var-app-bar__title-left\\" style=\\"padding-left: 30px; padding-right: 30px;\\">标题</div>
+  <div class=\\"var-app-bar__right\\">
+    <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-menu\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+      </button>
+      <!--teleport start-->
+      <!--teleport end-->
+    </div>
+  </div>
+</div>
+<div class=\\"space\\"></div>"
+`;
+
+exports[`test appBar props 1`] = `
+"<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(163, 185, 219); color: rgb(0, 0, 0);\\">
+  <div class=\\"var-app-bar__left\\">leftSlot</div>
+  <div class=\\"var-app-bar__title var-app-bar__title-center\\" style=\\"padding-left: 10px; padding-right: 10px;\\">test title</div>
+  <div class=\\"var-app-bar__right\\">rightSlot</div>
+</div>"
+`;
