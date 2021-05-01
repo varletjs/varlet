@@ -54,6 +54,9 @@ export default defineComponent({
     let scroller: HTMLElement | Window = window
 
     const handleScroll = () => {
+      const sticky = stickyEl.value as HTMLElement
+      isSupportCSSSticky = ['sticky', '-webkit-sticky'].includes(window.getComputedStyle(sticky).position)
+
       let scrollerTop = 0
 
       if (scroller !== window) {
@@ -61,7 +64,6 @@ export default defineComponent({
         scrollerTop = top
       }
 
-      const sticky = stickyEl.value as HTMLElement
       const wrapper = wrapperEl.value as HTMLElement
 
       const { top: stickyTop, left: stickyLeft } = sticky.getBoundingClientRect()
@@ -88,12 +90,8 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      const sticky = stickyEl.value as HTMLInputElement
-
-      isSupportCSSSticky = ['sticky', '-webkit-sticky'].includes(window.getComputedStyle(sticky).position)
-
       window.addEventListener('scroll', handleScroll)
-      scroller = getParentScroller(sticky)
+      scroller = getParentScroller(stickyEl.value as HTMLElement)
       scroller !== window && scroller.addEventListener('scroll', handleScroll)
 
       handleScroll()
