@@ -8,7 +8,7 @@
         :class="contentClass"
         :style="{ background: color }"
       >
-        <var-icon v-if="icon" :name="icon" size="10px" />
+        <var-icon v-if="icon && !dot" :name="icon" size="10px" />
         <span v-else>{{ values }}</span>
       </span>
     </transition>
@@ -51,16 +51,12 @@ export default defineComponent({
       return value
     })
 
-    const getPositionClass = (): string => {
+    const getPositionClass = (): string | undefined => {
       const { position, dot } = props
 
-      if (!position || !dot) return ''
+      if (dot && position.includes('right')) return 'var-badge__dot--right'
 
-      if (position.includes('right')) return 'var-badge__dot--right'
-
-      if (position.includes('left')) return 'var-badge__dot--left'
-
-      return ''
+      if (dot && position.includes('left')) return 'var-badge__dot--left'
     }
 
     return {
