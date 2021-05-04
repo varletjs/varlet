@@ -6,7 +6,7 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 
 test('test sticky example', () => {
-  const wrapper = mount(example)
+  const wrapper = mount(example, { attachTo: document.body })
   expect(wrapper.html()).toMatchSnapshot()
 })
 
@@ -20,6 +20,7 @@ test('test sticky z-index', () => {
     props: {
       zIndex: 100,
     },
+    attachTo: document.body,
   })
 
   expect(wrapper.element.style.zIndex).toBe('100')
@@ -36,6 +37,7 @@ test('test sticky onScroll', async () => {
     slots: {
       default: () => 'sticky content',
     },
+    attachTo: document.body,
   })
 
   expect(onScroll).toHaveBeenCalledTimes(1)
@@ -51,6 +53,7 @@ test('test sticky scrolling with css sticky position', async () => {
     slots: {
       default: () => 'sticky content',
     },
+    attachTo: document.body,
   })
 
   jest.spyOn(window, 'getComputedStyle').mockReturnValue({ position: 'sticky' })
@@ -76,6 +79,7 @@ test('test sticky scrolling without css sticky position', async () => {
     slots: {
       default: () => 'sticky content',
     },
+    attachTo: document.body,
   })
 
   jest.spyOn(window, 'getComputedStyle').mockReturnValue({ position: 'relative' })
