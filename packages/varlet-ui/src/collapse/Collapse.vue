@@ -56,11 +56,13 @@ export default defineComponent({
         return collapseItem.find(({ name }: CollapseItemProvider) => props.modelValue === name.value)
       }
 
-      return collapseItem.filter(({ name }: CollapseItemProvider) => {
+      const filterItem = collapseItem.filter(({ name }: CollapseItemProvider) => {
         if (name.value === undefined) return false
 
         return (props.modelValue as Array<string | number>).includes(name.value)
       })
+
+      return filterItem.length ? filterItem : undefined
     }
 
     const matchIndex = (): Array<CollapseItemProvider> | CollapseItemProvider | undefined => {

@@ -26,7 +26,7 @@
     </div>
     <div class="var-collapse-item-content" v-show="show" ref="contentEl" @transitionend="transitionend">
       <div class="var-collapse-item__wrap">
-        <slot></slot>
+        <slot />
       </div>
     </div>
   </div>
@@ -50,7 +50,8 @@ export default defineComponent({
     const { index, collapse, bindCollapse } = useCollapse()
 
     if (!collapse || !bindCollapse || !index) {
-      throw Error('<var-collapse-item/> must in <var-collapse>')
+      console.error('[Varlet] Collapse: <var-collapse-item/> must in <var-collapse>')
+      return
     }
 
     const contentEl: Ref<HTMLDivElement | null> = ref(null)

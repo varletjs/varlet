@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, toRefs } from 'vue'
+import { reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Collapse from '..'
 import CollapseItem from '../../collapse-item'
@@ -58,7 +58,7 @@ import Button from '../../button'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 
-export default defineComponent({
+export default {
   name: 'CollapseExample',
   components: {
     [Collapse.name]: Collapse,
@@ -88,5 +88,5 @@ export default defineComponent({
       changeHandle,
     }
   },
-})
+}
 </script>
