@@ -46,6 +46,8 @@ test('test click error text reload', async () => {
 
   const wrapper = mount(VarList, {
     props: {
+      loading: false,
+      loadingText: '正在加载',
       error: true,
       errorText: '点击重试',
       onLoad,
@@ -72,6 +74,7 @@ test('test click error text reload', async () => {
   expect(onLoad).toHaveBeenCalledTimes(1)
 
   await delay(16)
+  expect(wrapper.find('.var-list__loading-text').text()).toBe('正在加载')
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })

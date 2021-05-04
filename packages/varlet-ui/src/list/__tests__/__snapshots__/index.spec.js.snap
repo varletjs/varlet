@@ -12,7 +12,7 @@ exports[`test click error text reload 1`] = `
 exports[`test click error text reload 2`] = `
 "<div class=\\"var-list var--box\\">
   <div class=\\"var-list__loading\\">
-    <div class=\\"var-list__loading-text\\">加载中</div>
+    <div class=\\"var-list__loading-text\\">正在加载</div>
     <div class=\\"var--box var-loading\\">
       <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 20px; height: 20px;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
       <!--v-if-->
