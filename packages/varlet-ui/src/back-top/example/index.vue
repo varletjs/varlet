@@ -6,13 +6,12 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
 import BackTop from '..'
 import Cell from '../../cell'
 
 const lists = [...Array(100).keys()]
 
-export default defineComponent({
+export default {
   name: 'BackTopExample',
   components: {
     [BackTop.name]: BackTop,
@@ -23,7 +22,7 @@ export default defineComponent({
       lists,
     }
   },
-})
+}
 </script>
 
 <style scoped>
