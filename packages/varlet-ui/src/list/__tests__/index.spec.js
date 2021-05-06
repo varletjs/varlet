@@ -92,4 +92,5 @@ test('test list finished', async () => {
 
   expect(wrapper.find('.var-list__finished').text()).toBe('暂无更多')
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })

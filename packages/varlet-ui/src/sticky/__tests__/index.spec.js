@@ -8,6 +8,7 @@ import { createApp } from 'vue'
 test('test sticky example', () => {
   const wrapper = mount(example, { attachTo: document.body })
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test sticky plugin', () => {
@@ -25,12 +26,13 @@ test('test sticky z-index', () => {
 
   expect(wrapper.element.style.zIndex).toBe('100')
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test sticky onScroll', async () => {
   const onScroll = jest.fn()
 
-  mount(VarSticky, {
+  const wrapper = mount(VarSticky, {
     props: {
       onScroll,
     },
@@ -43,6 +45,7 @@ test('test sticky onScroll', async () => {
   expect(onScroll).toHaveBeenCalledTimes(1)
   await trigger(window, 'scroll')
   expect(onScroll).toHaveBeenCalledTimes(2)
+  wrapper.unmount()
 })
 
 test('test sticky scrolling with css sticky position', async () => {

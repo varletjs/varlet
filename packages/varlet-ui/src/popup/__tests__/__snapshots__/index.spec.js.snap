@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test popup show 1`] = `
+"<div class=\\"container\\">
+  <!--teleport start-->
+  <!--teleport end-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+      <transition-stub>
+        <div class=\\"var-popup__content var-elevation--3 var-popup--center\\" style=\\"z-index: 2000; display: none;\\"> default slot content </div>
+      </transition-stub>
+    </div>
+  </transition-stub>
+</div>"
+`;
+
+exports[`test popup show 2`] = `
+"<div class=\\"container\\">
+  <!--teleport start-->
+  <!--teleport end-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 2001;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
+      <transition-stub>
+        <div class=\\"var-popup__content var-elevation--3 var-popup--center\\" style=\\"z-index: 2003;\\"> default slot content </div>
+      </transition-stub>
+    </div>
+  </transition-stub>
+</div>"
+`;
+
+exports[`test popup show 3`] = `
+"<div class=\\"container\\">
+  <!--teleport start-->
+  <!--teleport end-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 2001; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
+      <transition-stub>
+        <div class=\\"var-popup__content var-elevation--3 var-popup--center\\" style=\\"z-index: 2003; display: none;\\"> default slot content </div>
+      </transition-stub>
+    </div>
+  </transition-stub>
+</div>"
+`;
