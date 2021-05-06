@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/haoziqaq/varlet/compare/v1.2.1...v1.2.2) (2021-05-06)
+
+
+### Bug Fixes
+
+* **badge:** optimize code and hide icon when dot prop is true ([7246fd3](https://github.com/haoziqaq/varlet/commit/7246fd369e379437c29c6be5c77fdfca113f6799))
+* **types:** vite build typescript error ([cd1a402](https://github.com/haoziqaq/varlet/commit/cd1a4028900ab91bc3aa0692d1f0653ea8f0bdd5))
+* fix test example warning ([fb16f71](https://github.com/haoziqaq/varlet/commit/fb16f71f324920b6b40c7281d56062b28205d4e5))
+
+
+
+
+
 ## [1.2.1](https://github.com/haoziqaq/varlet/compare/v1.2.0...v1.2.1) (2021-04-29)
 
 
