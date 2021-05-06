@@ -241,10 +241,11 @@ export default defineComponent({
       prevY = undefined
 
       translate.value = swipeIndex * -size.value
+      const prevIndex = index.value
       index.value = swipeIndexToIndex(swipeIndex)
       startAutoplay()
 
-      onChange?.(index.value)
+      prevIndex !== index.value && onChange?.(index.value)
     }
 
     // expose

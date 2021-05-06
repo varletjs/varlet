@@ -56,9 +56,8 @@ test('test sticky scrolling with css sticky position', async () => {
     attachTo: document.body,
   })
 
-  jest.spyOn(window, 'getComputedStyle').mockReturnValue({ position: 'sticky' })
-
-  jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ top: 200 })
+  const mockGetComputedStyle = jest.spyOn(window, 'getComputedStyle').mockReturnValue({ position: 'sticky' })
+  const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ top: 200 })
   await trigger(window, 'scroll')
   expect(wrapper.html()).toMatchSnapshot()
 
@@ -68,6 +67,8 @@ test('test sticky scrolling with css sticky position', async () => {
   await trigger(window, 'scroll')
   expect(wrapper.html()).toMatchSnapshot()
 
+  mockGetComputedStyle.mockRestore()
+  mockGetBoundingClientRect.mockRestore()
   wrapper.unmount()
 })
 
@@ -82,9 +83,8 @@ test('test sticky scrolling without css sticky position', async () => {
     attachTo: document.body,
   })
 
-  jest.spyOn(window, 'getComputedStyle').mockReturnValue({ position: 'relative' })
-
-  jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({
+  const mockGetComputedStyle = jest.spyOn(window, 'getComputedStyle').mockReturnValue({ position: 'relative' })
+  const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({
     top: 200,
   })
   await trigger(window, 'scroll')
@@ -96,5 +96,7 @@ test('test sticky scrolling without css sticky position', async () => {
   await trigger(window, 'scroll')
   expect(wrapper.html()).toMatchSnapshot()
 
+  mockGetComputedStyle.mockRestore()
+  mockGetBoundingClientRect.mockRestore()
   wrapper.unmount()
 })

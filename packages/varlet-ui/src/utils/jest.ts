@@ -25,7 +25,7 @@ export function trigger(
   y = 0
 ) {
   const el = 'element' in wrapper ? wrapper.element : wrapper
-  const touchList = getTouch(el, x, y)
+  const touchList = [getTouch(el, x, y)]
 
   const event = document.createEvent('CustomEvent')
   event.initCustomEvent(eventName, true, true, {})
@@ -46,4 +46,47 @@ export function trigger(
 export function scrollTo(top: number) {
   Object.defineProperty(window, 'scrollTop', { value: top, writable: true })
   return trigger(window, 'scroll')
+}
+
+export function mockOffset() {
+  Object.defineProperties(HTMLElement.prototype, {
+    offsetWidth: {
+      get() {
+        return parseFloat(window.getComputedStyle(this).width) || 0
+      },
+    },
+    offsetHeight: {
+      get() {
+        return parseFloat(window.getComputedStyle(this).height) || 0
+      },
+    },
+    offsetLeft: {
+      get() {
+        return parseFloat(window.getComputedStyle(this).marginLeft) || 0
+      },
+    },
+    offsetTop: {
+      get() {
+        return parseFloat(window.getComputedStyle(this).marginTop) || 0
+      },
+    },
+    offsetParent: {
+      get() {
+        return this.parentNode ?? {}
+      },
+    },
+  })
+}
+
+export async function triggerDrag(
+  el: VueWrapper<ComponentPublicInstance<any, any, any>> | DOMWrapper<Element> | HTMLElement,
+  x = 0,
+  y = 0
+) {
+  await trigger(el, 'touchstart', 0, 0)
+  await trigger(el, 'touchmove', x / 4, y / 4)
+  await trigger(el, 'touchmove', x / 3, y / 3)
+  await trigger(el, 'touchmove', x / 2, y / 2)
+  await trigger(el, 'touchmove', x, y)
+  await trigger(el, 'touchend', x, y)
 }

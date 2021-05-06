@@ -27,7 +27,7 @@ test('test list immediate check', async () => {
     attachTo: document.body,
   })
 
-  jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({
+  const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({
     width: 100,
     height: 100,
   })
@@ -37,6 +37,7 @@ test('test list immediate check', async () => {
   expect(onUpdateLoading).toHaveBeenCalledTimes(1)
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
+  mockGetBoundingClientRect.mockRestore()
 })
 
 test('test click error text reload', async () => {
@@ -57,7 +58,7 @@ test('test click error text reload', async () => {
     attachTo: document.body,
   })
 
-  jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({
+  const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({
     width: 100,
     height: 100,
   })
@@ -68,15 +69,14 @@ test('test click error text reload', async () => {
   expect(wrapper.find('.var-list__error').text()).toBe('点击重试')
   expect(wrapper.html()).toMatchSnapshot()
 
-  wrapper.find('.var-list__error').trigger('click')
+  await wrapper.find('.var-list__error').trigger('click')
   expect(onUpdateLoading).toHaveBeenCalledTimes(1)
   expect(onUpdateError).toHaveBeenCalledTimes(1)
   expect(onLoad).toHaveBeenCalledTimes(1)
-
-  await delay(16)
   expect(wrapper.find('.var-list__loading-text').text()).toBe('正在加载')
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
+  mockGetBoundingClientRect.mockRestore()
 })
 
 test('test list finished', async () => {

@@ -11,13 +11,9 @@ test('test row example', () => {
   expect(wrapper.html()).toMatchSnapshot()
 })
 
-test('test row plugin', () => {
-  const app = createApp({}).use(Row)
+test('test row & col plugin', () => {
+  const app = createApp({}).use(Row).use(Col)
   expect(app.component(Row.name)).toBeTruthy()
-})
-
-test('test col plugin', () => {
-  const app = createApp({}).use(Col)
   expect(app.component(Col.name)).toBeTruthy()
 })
 

@@ -1,6 +1,6 @@
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-swipe class="swipe">
+  <var-swipe class="swipe" ref="swipe">
     <var-swipe-item>
       <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
     </var-swipe-item>
