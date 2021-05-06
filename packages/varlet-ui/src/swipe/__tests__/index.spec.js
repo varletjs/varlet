@@ -29,9 +29,9 @@ const Wrapper = {
   props: ['onChange', 'initialIndex'],
   template: `
     <var-swipe ref="swipe" style="width: 100px; height: 100px" v-bind="$props">
-    <var-swipe-item>1</var-swipe-item>
-    <var-swipe-item>2</var-swipe-item>
-    <var-swipe-item>3</var-swipe-item>
+      <var-swipe-item>1</var-swipe-item>
+      <var-swipe-item>2</var-swipe-item>
+      <var-swipe-item>3</var-swipe-item>
     </var-swipe>
   `,
 }
