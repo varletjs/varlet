@@ -24,7 +24,6 @@ test('test circle props', async () => {
     }
   })
 
-
   expect(wrapper.html()).toMatchSnapshot()
 })
 
@@ -36,7 +35,6 @@ test('test wave props', async () => {
       size: 'small',
     }
   })
-
 
   expect(wrapper.html()).toMatchSnapshot()
 })
@@ -50,7 +48,6 @@ test('test cube props', async () => {
     }
   })
 
-
   expect(wrapper.html()).toMatchSnapshot()
 })
 
@@ -63,7 +60,6 @@ test('test rect props', async () => {
     }
   })
 
-
   expect(wrapper.html()).toMatchSnapshot()
 })
 
@@ -75,7 +71,6 @@ test('test disappear props', async () => {
       size: 'small',
     }
   })
-
 
   expect(wrapper.html()).toMatchSnapshot()
 })
