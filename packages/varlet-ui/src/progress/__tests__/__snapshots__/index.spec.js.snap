@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test circle progress prop 1`] = `
+"<div class=\\"var-progress\\">
+  <!--v-if-->
+  <div class=\\"var-progress-circle\\" style=\\"width: 50px; height: 50px;\\"><svg class=\\"var-progress-circle__svg\\" style=\\"transform: rotate(-80deg);\\" viewBox=\\"0 0 50 50\\">
+      <circle class=\\"var-progress-circle__background\\" cx=\\"25\\" cy=\\"25\\" r=\\"21\\" fill=\\"transparent\\" stroke-width=\\"8\\" style=\\"stroke-dasharray: 131.94689145077132; stroke: #f5cb90;\\"></circle>
+      <circle class=\\"var-progress-circle__certain\\" cx=\\"25\\" cy=\\"25\\" r=\\"21\\" fill=\\"transparent\\" stroke-width=\\"8\\" style=\\"stroke-dasharray: 39.5840674352314, 131.94689145077132; stroke: #ff9800;\\"></circle>
+    </svg>
+    <div class=\\"var-progress-circle__label\\">30%</div>
+  </div>
+</div>"
+`;
+
+exports[`test linear progress prop 1`] = `
+"<div class=\\"var-progress\\">
+  <div class=\\"var-progress-linear\\">
+    <div class=\\"var-progress-linear__block\\" style=\\"height: 8px;\\">
+      <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(245, 203, 144);\\"></div>
+      <div class=\\"var-progress-linear__certain var-progress-linear__ripple\\" style=\\"background: rgb(255, 152, 0); width: 30%;\\"></div>
+    </div>
+    <div class=\\"var-progress-linear__label\\">success</div>
+  </div>
+  <!--v-if-->
+</div>"
+`;
+
+exports[`test progress example 1`] = `
+"<div class=\\"progress-demo\\">
+  <div class=\\"space\\"></div>
+  <div class=\\"progress-demo__basic\\">
+    <div class=\\"app-type\\">基本使用</div>
+    <div class=\\"var-progress\\">
+      <div class=\\"var-progress-linear\\">
+        <div class=\\"var-progress-linear__block\\" style=\\"height: 4px;\\">
+          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
+          <div class=\\"var-progress-linear__certain\\" style=\\"width: 20%;\\"></div>
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-progress\\">
+      <div class=\\"var-progress-linear\\">
+        <div class=\\"var-progress-linear__block\\" style=\\"height: 4px;\\">
+          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
+          <div class=\\"var-progress-linear__certain\\" style=\\"width: 0%;\\"></div>
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-progress\\">
+      <div class=\\"var-progress-linear\\">
+        <div class=\\"var-progress-linear__block\\" style=\\"height: 4px;\\">
+          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
+          <div class=\\"var-progress-linear__certain\\" style=\\"width: 100%;\\"></div>
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"progress-demo__label\\">
+    <div class=\\"app-type\\">显示标签</div>
+    <div class=\\"var-progress\\">
+      <div class=\\"var-progress-linear\\">
+        <div class=\\"var-progress-linear__block\\" style=\\"height: 4px;\\">
+          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
+          <div class=\\"var-progress-linear__certain\\" style=\\"width: 30%;\\"></div>
+        </div>
+        <div class=\\"var-progress-linear__label\\">30%</div>
+      </div>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-progress\\">
+      <div class=\\"var-progress-linear\\">
+        <div class=\\"var-progress-linear__block\\" style=\\"height: 4px;\\">
+          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
+          <div class=\\"var-progress-linear__certain\\" style=\\"width: 0%;\\"></div>
+        </div>
+        <div class=\\"var-progress-linear__label\\">0%</div>
+      </div>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-progress\\">
+      <div class=\\"var-progress-linear\\">
+        <div class=\\"var-progress-linear__block\\" style=\\"height: 4px;\\">
+          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
+          <div class=\\"var-progress-linear__certain\\" style=\\"width: 100%;\\"></div>
+        </div>
+        <div class=\\"var-progress-linear__label\\">success</div>
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"progress-demo__style\\">
+    <div class=\\"app-type\\">自定义样式</div>
+    <div class=\\"var-progress\\">
+      <div class=\\"var-progress-linear\\">
+        <div class=\\"var-progress-linear__block\\" style=\\"height: 8px;\\">
+          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
+          <div class=\\"var-progress-linear__certain\\" style=\\"background: rgb(255, 152, 0); width: 30%;\\"></div>
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-progress\\">
+      <div class=\\"var-progress-linear\\">
+        <div class=\\"var-progress-linear__block\\" style=\\"height: 8px;\\">
+          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(245, 203, 144);\\"></div>
+          <div class=\\"var-progress-linear__certain\\" style=\\"background: rgb(255, 152, 0); width: 60%;\\"></div>
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-progress\\">
+      <div class=\\"var-progress-linear\\">
+        <div class=\\"var-progress-linear__block\\" style=\\"height: 8px;\\">
+          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(245, 203, 144);\\"></div>
+          <div class=\\"var-progress-linear__certain var-progress-linear__ripple\\" style=\\"background: rgb(255, 152, 0); width: 80%;\\"></div>
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"app-type\\">环形进度条</div>
+  <div class=\\"progress-demo__circle\\">
+    <div class=\\"var-progress\\">
+      <!--v-if-->
+      <div class=\\"var-progress-circle\\" style=\\"width: 56px; height: 56px;\\"><svg class=\\"var-progress-circle__svg\\" style=\\"transform: rotate(-90deg);\\" viewBox=\\"0 0 56 56\\">
+          <circle class=\\"var-progress-circle__background\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 160.22122533307945; stroke: #d8d8d8;\\"></circle>
+          <circle class=\\"var-progress-circle__certain\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 48.06636759992383, 160.22122533307945;\\"></circle>
+        </svg>
+        <!--v-if-->
+      </div>
+    </div>
+    <div class=\\"space\\"></div>
+    <div class=\\"var-progress\\">
+      <!--v-if-->
+      <div class=\\"var-progress-circle\\" style=\\"width: 56px; height: 56px;\\"><svg class=\\"var-progress-circle__svg\\" style=\\"transform: rotate(-90deg);\\" viewBox=\\"0 0 56 56\\">
+          <circle class=\\"var-progress-circle__background\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 160.22122533307945; stroke: #d8d8d8;\\"></circle>
+          <circle class=\\"var-progress-circle__certain\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 0, 160.22122533307945;\\"></circle>
+        </svg>
+        <div class=\\"var-progress-circle__label\\">0%</div>
+      </div>
+    </div>
+    <div class=\\"space\\"></div>
+    <div class=\\"var-progress\\">
+      <!--v-if-->
+      <div class=\\"var-progress-circle\\" style=\\"width: 56px; height: 56px;\\"><svg class=\\"var-progress-circle__svg\\" style=\\"transform: rotate(-90deg);\\" viewBox=\\"0 0 56 56\\">
+          <circle class=\\"var-progress-circle__background\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 160.22122533307945; stroke: #d8d8d8;\\"></circle>
+          <circle class=\\"var-progress-circle__certain\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 160.22122533307945, 160.22122533307945;\\"></circle>
+        </svg>
+        <div class=\\"var-progress-circle__label\\">100%</div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"app-type\\">隐藏轨道</div>
+  <div class=\\"progress-demo__circle\\">
+    <div class=\\"var-progress\\">
+      <!--v-if-->
+      <div class=\\"var-progress-circle\\" style=\\"width: 56px; height: 56px;\\"><svg class=\\"var-progress-circle__svg\\" style=\\"transform: rotate(-90deg);\\" viewBox=\\"0 0 56 56\\">
+          <!--v-if-->
+          <circle class=\\"var-progress-circle__certain\\" cx=\\"28\\" cy=\\"28\\" r=\\"26\\" fill=\\"transparent\\" stroke-width=\\"4\\" style=\\"stroke-dasharray: 81.68140899333463, 163.36281798666926;\\"></circle>
+        </svg>
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+</div>"
+`;

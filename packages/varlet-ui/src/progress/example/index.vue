@@ -46,7 +46,7 @@ import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 
-export default defineComponent({
+export default {
   name: 'ProgressExample',
   components: {
     [Progress.name]: Progress,
@@ -74,7 +74,7 @@ export default defineComponent({
       pack,
     }
   },
-})
+}
 </script>
 
 <style lang="less" scoped>
