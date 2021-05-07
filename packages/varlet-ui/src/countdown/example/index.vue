@@ -57,8 +57,9 @@ export default {
     const end = () => {
       Snackbar.info('end!')
     }
+
     const change = () => {
-      console.log('change')
+      // console.log('change')
     }
 
     watchLang(use)

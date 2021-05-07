@@ -22,6 +22,9 @@ export const props = {
     type: [Number, String],
     default: 0,
   },
+  teleport: {
+    default: 'body',
+  },
   onOpen: {
     type: Function as PropType<() => void>,
   },

@@ -2,7 +2,7 @@
   <div class="var-menu" ref="host" v-bind="$attrs" @click="handleClick">
     <slot />
 
-    <teleport to="body">
+    <teleport :to="teleport">
       <transition name="var-menu" @after-enter="onOpened" @after-leave="onClosed">
         <div
           class="var-menu__menu var-elevation--3"

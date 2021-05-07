@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test appBar example 1`] = `
+exports[`test app bar example 1`] = `
 "<div class=\\"app-type\\">基础导航栏</div>
 <div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(41, 121, 255); color: rgb(255, 255, 255);\\">
   <!--v-if-->
@@ -57,8 +57,8 @@ exports[`test appBar example 1`] = `
 <div class=\\"space\\"></div>"
 `;
 
-exports[`test appBar props 1`] = `
-"<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(163, 185, 219); color: rgb(0, 0, 0);\\">
+exports[`test app bar props 1`] = `
+"<div class=\\"var-app-bar\\" style=\\"background: rgb(163, 185, 219); color: rgb(0, 0, 0);\\">
   <div class=\\"var-app-bar__left\\">leftSlot</div>
   <div class=\\"var-app-bar__title var-app-bar__title-center\\" style=\\"padding-left: 10px; padding-right: 10px;\\">test title</div>
   <div class=\\"var-app-bar__right\\">rightSlot</div>
