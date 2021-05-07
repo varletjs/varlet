@@ -39,6 +39,7 @@ export default defineComponent({
     const { active, sticky, stickyOffsetTop, zIndex } = indexBar
 
     const setOwnTop = () => {
+      if (!anchorEl.value) return
       ownTop.value = (anchorEl.value as RendererNode).$el
         ? (anchorEl.value as RendererNode).$el.offsetTop
         : (anchorEl.value as HTMLDivElement).offsetTop
