@@ -14,14 +14,14 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import IndexAnchor from '../../index-anchor/IndexAnchor.vue'
 import IndexBar from '..'
 import Cell from '../../cell'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 
-export default defineComponent({
+export default {
   name: 'IndexBarExample',
   components: {
     [IndexBar.name]: IndexBar,
@@ -49,7 +49,7 @@ export default defineComponent({
       change,
     }
   },
-})
+}
 </script>
 
 <style lang="less">
