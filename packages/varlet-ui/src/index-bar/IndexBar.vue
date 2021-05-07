@@ -7,6 +7,7 @@
         :key="anchorName"
         class="var-index-bar__anchor-item"
         :class="{ 'var-index-bar__anchor-item--active': active === anchorName }"
+        :style="{ color: active === anchorName && highlightColor ?  highlightColor : '' }"
         @click="anchorClick(anchorName)"
       >
         {{ anchorName }}
