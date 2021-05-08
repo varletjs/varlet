@@ -60,6 +60,16 @@ export function mockOffset() {
         return parseFloat(window.getComputedStyle(this).height) || 0
       },
     },
+    clientWidth: {
+      get() {
+        return parseFloat(window.getComputedStyle(this).width) || 0
+      },
+    },
+    clientHeight: {
+      get() {
+        return parseFloat(window.getComputedStyle(this).height) || 0
+      },
+    },
     offsetLeft: {
       get() {
         return parseFloat(window.getComputedStyle(this).marginLeft) || 0

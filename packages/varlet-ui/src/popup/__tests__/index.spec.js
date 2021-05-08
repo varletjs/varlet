@@ -1,7 +1,14 @@
+import example from '../example'
 import Popup from '..'
 import VarPopup from '../Popup'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+
+test('test popup example', () => {
+  const wrapper = mount(example)
+  expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
 
 test('test popup plugin', () => {
   const app = createApp({}).use(Popup)

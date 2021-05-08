@@ -1,5 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`test popup example 1`] = `
+"<div class=\\"app-type\\">弹出位置</div><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1 mt-10\\" style=\\"width: 100%;\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">居中弹出</div>
+</button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1 mt-10\\" style=\\"width: 100%;\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">下方弹出</div>
+</button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1 mt-10\\" style=\\"width: 100%;\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">上方弹出</div>
+</button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1 mt-10\\" style=\\"width: 100%;\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">左侧弹出</div>
+</button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1 mt-10\\" style=\\"width: 100%;\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">右侧弹出</div>
+</button>
+<!--teleport start-->
+<!--teleport end-->
+<!--teleport start-->
+<!--teleport end-->
+<!--teleport start-->
+<!--teleport end-->
+<!--teleport start-->
+<!--teleport end-->
+<!--teleport start-->
+<!--teleport end-->
+<div class=\\"app-type\\">遮罩层样式</div><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1 mt-10\\" style=\\"width: 100%;\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">遮罩层class</div>
+</button>
+<!--teleport start-->
+<!--teleport end--><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1 mt-10\\" style=\\"width: 100%;\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">遮罩层style</div>
+</button>
+<!--teleport start-->
+<!--teleport end-->
+<div class=\\"app-type\\">注册事件</div><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1 mt-10\\" style=\\"width: 100%;\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">注册事件</div>
+</button>
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
 exports[`test popup show 1`] = `
 "<div class=\\"container\\">
   <!--teleport start-->
