@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/haoziqaq/varlet/compare/v1.2.3...v1.3.0) (2021-05-08)
+
+
+### Bug Fixes
+
+* **index-bar:** remove useless prop and dont trigger click after call scrollTo method ([bba5152](https://github.com/haoziqaq/varlet/commit/bba5152dd4db1bacb1f6c62b28b8705d3c504a3a))
+* fix typo ([ffc0ba8](https://github.com/haoziqaq/varlet/commit/ffc0ba85f1f15f8c919c411e81e41e5375500dc9))
+
+
+### Features
+
+* **index-bar:** add highlight-color prop ([b4d38f4](https://github.com/haoziqaq/varlet/commit/b4d38f41f21be4a73218b9076f69c8a1e0b94332))
+
+
+
+
+
 ## [1.2.3](https://github.com/haoziqaq/varlet/compare/v1.2.2...v1.2.3) (2021-05-07)
 
 **Note:** Version bump only for package @varlet/ui
