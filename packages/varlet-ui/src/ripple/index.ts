@@ -109,7 +109,6 @@ function removeRipple(this: RippleHTMLElement) {
   }
 
   _ripple.tasker ? setTimeout(task, 60) : task()
-  task()
 }
 
 function forbidRippleTask(this: RippleHTMLElement) {

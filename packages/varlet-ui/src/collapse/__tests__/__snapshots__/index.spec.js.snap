@@ -23,7 +23,7 @@ exports[`tes collapse offset and collapse icon 1`] = `
 </div>"
 `;
 
-exports[`test collapseItem example 1`] = `
+exports[`test collapse example 1`] = `
 "<div class=\\"collapse-demo\\">
   <div>
     <div class=\\"app-type\\">基本使用</div>
