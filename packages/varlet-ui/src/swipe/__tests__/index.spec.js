@@ -13,6 +13,7 @@ test('test swipe example', async () => {
   const wrapper = mount(example)
   await delay(16)
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test swipe & swipe-item plugin', () => {
@@ -79,6 +80,8 @@ test('test swipe next & prev & to method', async () => {
   expect(onChange).toHaveBeenLastCalledWith(2)
   await delay(100)
   expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test render initial index', async () => {
@@ -89,6 +92,7 @@ test('test render initial index', async () => {
   })
   await delay(16)
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test touch with loop', async () => {
@@ -115,6 +119,8 @@ test('test touch with loop', async () => {
   expect(onChange).toHaveBeenLastCalledWith(1)
   await triggerDrag(track, 100, 0)
   expect(onChange).toHaveBeenLastCalledWith(0)
+
+  wrapper.unmount()
 })
 
 test('test touch without loop', async () => {
@@ -138,12 +144,14 @@ test('test touch without loop', async () => {
   expect(onChange).toHaveBeenLastCalledWith(2)
   await triggerDrag(track, -100, 0)
   expect(onChange).toHaveBeenLastCalledWith(2)
+
+  wrapper.unmount()
 })
 
 test('test autoplay', async () => {
   const onChange = jest.fn()
 
-  mount(Wrapper, {
+  const wrapper = mount(Wrapper, {
     props: {
       autoplay: 100,
       onChange,
@@ -154,4 +162,5 @@ test('test autoplay', async () => {
   expect(onChange).toHaveBeenLastCalledWith(1)
   await delay(100)
   expect(onChange).toHaveBeenLastCalledWith(2)
+  wrapper.unmount()
 })

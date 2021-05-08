@@ -8,6 +8,7 @@ import { delay } from '../../utils/jest'
 test('test menu example', () => {
   const wrapper = mount(example)
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test menu plugin', () => {

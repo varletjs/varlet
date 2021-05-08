@@ -9,6 +9,7 @@ import { createApp, h } from 'vue'
 test('test row example', () => {
   const wrapper = mount(example)
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test row & col plugin', () => {
@@ -43,11 +44,14 @@ test('test row flex', async () => {
 
   await wrapper.setProps({ align: 'flex-end' })
   expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test row onClick null callback', () => {
   const wrapper = mount(VarRow)
   wrapper.trigger('click')
+  wrapper.unmount()
 })
 
 test('test row onClick', () => {
@@ -60,6 +64,7 @@ test('test row onClick', () => {
   })
   wrapper.trigger('click')
   expect(onClick).toHaveBeenCalledTimes(1)
+  wrapper.unmount()
 })
 
 test('test col in row', async () => {
@@ -85,4 +90,5 @@ test('test col in row', async () => {
     offset: 0,
   })
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })

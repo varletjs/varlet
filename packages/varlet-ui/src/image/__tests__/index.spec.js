@@ -10,6 +10,7 @@ test('test image example', () => {
   const wrapper = mount(example)
 
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test image src', () => {
@@ -21,6 +22,7 @@ test('test image src', () => {
 
   expect(wrapper.find('img').element.src).toEqual(SRC)
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test image plugin', () => {
@@ -45,6 +47,7 @@ test('test image onLoad & onError', () => {
   img.trigger('error')
   expect(onLoad).toHaveBeenCalledTimes(1)
   expect(onError).toHaveBeenCalledTimes(1)
+  wrapper.unmount()
 })
 
 test('test image onLoad & onError in lazy mode', () => {
@@ -68,6 +71,8 @@ test('test image onLoad & onError in lazy mode', () => {
   img.element._lazy.state = 'error'
   img.trigger('load')
   expect(onError).toHaveBeenCalledTimes(1)
+
+  wrapper.unmount()
 })
 
 test('test image onLoad & onError null callback', async () => {
@@ -84,6 +89,7 @@ test('test image onLoad & onError null callback', async () => {
   lazyImage.trigger('load')
   lazyImage.element._lazy.state = 'error'
   lazyImage.trigger('load')
+  wrapper.unmount()
 })
 
 test('test image styles', () => {
@@ -100,6 +106,7 @@ test('test image styles', () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test image fit', async () => {
@@ -119,4 +126,5 @@ test('test image fit', async () => {
 
   await wrapper.setProps({ fit: 'contain' })
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })

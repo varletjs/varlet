@@ -7,6 +7,7 @@ import { createApp, h } from 'vue'
 test('test skeleton example', () => {
   const wrapper = mount(example)
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test skeleton plugin', () => {
@@ -28,6 +29,8 @@ test('test skeleton loading', async () => {
 
   await wrapper.setProps({ loading: false })
   expect(wrapper.find('.skeleton-default-slot').exists()).toBeTruthy()
+
+  wrapper.unmount()
 })
 
 test('test skeleton styles', () => {
@@ -45,4 +48,5 @@ test('test skeleton styles', () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
