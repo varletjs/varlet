@@ -7,7 +7,7 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/jest'
 
-test('test collapseItem example', () => {
+test('test collapse example', () => {
   const wrapper = mount(example)
 
   expect(wrapper.html()).toMatchSnapshot()

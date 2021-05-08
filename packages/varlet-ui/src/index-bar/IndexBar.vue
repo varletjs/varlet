@@ -7,6 +7,7 @@
         :key="anchorName"
         class="var-index-bar__anchor-item"
         :class="{ 'var-index-bar__anchor-item--active': active === anchorName }"
+        :style="{ color: active === anchorName && highlightColor ?  highlightColor : '' }"
         @click="anchorClick(anchorName)"
       >
         {{ anchorName }}
@@ -70,8 +71,8 @@ export default defineComponent({
       })
     }
 
-    const anchorClick = (anchorName: string | number) => {
-      props.onClick?.(anchorName)
+    const anchorClick = (anchorName: string | number, manualCall?: boolean) => {
+      if (manualCall) props.onClick?.(anchorName)
       if (anchorName === active.value) return
       const indexAnchor = indexAnchors.find(({ name }: IndexAnchorProvider) => anchorName === name.value)
       if (!indexAnchor) return
@@ -83,7 +84,7 @@ export default defineComponent({
 
     // expose
     const scrollTo = (index: number | string) => {
-      requestAnimationFrame(() => anchorClick(index))
+      requestAnimationFrame(() => anchorClick(index, true))
     }
 
     watch(
