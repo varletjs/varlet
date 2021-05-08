@@ -9,6 +9,7 @@ test('test icon example', () => {
   const wrapper = mount(example)
 
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test icon plugin', () => {
@@ -27,6 +28,7 @@ test('test icon onClick', () => {
 
   wrapper.trigger('click')
   expect(onClick).toHaveBeenCalledTimes(1)
+  wrapper.unmount()
 })
 
 test('test icon transition name', async () => {
@@ -49,6 +51,7 @@ test('test icon transition name', async () => {
 
   expect(wrapper.find('.var-icon-error').exists()).toBeTruthy()
   expect(wrapper.element.style.transition).toEqual('all 300ms')
+  wrapper.unmount()
 })
 
 test('test icon namespace', () => {
@@ -60,6 +63,7 @@ test('test icon namespace', () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test icon styles', () => {
@@ -73,4 +77,5 @@ test('test icon styles', () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })

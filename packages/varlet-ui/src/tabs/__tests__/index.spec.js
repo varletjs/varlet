@@ -30,6 +30,7 @@ test('test tabs example', async () => {
   await delay(16)
 
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test tabs & tab & tabsItems & tabItem plugin', () => {
@@ -70,6 +71,7 @@ test('test tabs active', async () => {
   const wrapper = mount(Wrapper)
   await delay(16)
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test tabs match index', async () => {
@@ -88,6 +90,7 @@ test('test tabs match index', async () => {
   await tab.trigger('click')
   expect(onClick).toHaveBeenLastCalledWith(0)
   expect(onChange).toHaveBeenLastCalledWith(0)
+  wrapper.unmount()
 })
 
 test('test tabs match name', async () => {
@@ -124,6 +127,7 @@ test('test tabs match name', async () => {
   await tab.trigger('click')
   expect(onClick).toHaveBeenLastCalledWith('选项1')
   expect(onChange).toHaveBeenLastCalledWith('选项1')
+  wrapper.unmount()
 })
 
 test('test tabs match boundary', async () => {
@@ -137,6 +141,7 @@ test('test tabs match boundary', async () => {
   await wrapper.setData({ active: -1 })
   expect(onChange).toHaveBeenCalledTimes(0)
   expect(wrapper.vm.active).toBe(0)
+  wrapper.unmount()
 })
 
 test('test tabs disabled', async () => {
@@ -167,6 +172,7 @@ test('test tabs disabled', async () => {
   await tab.trigger('click')
   expect(onClick).toHaveBeenCalledTimes(0)
   expect(onChange).toHaveBeenCalledTimes(0)
+  wrapper.unmount()
 })
 
 test('test tabs relation tabsItems', async () => {
@@ -178,4 +184,5 @@ test('test tabs relation tabsItems', async () => {
   await wrapper.setData({ active: 1 })
   await delay(16)
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })

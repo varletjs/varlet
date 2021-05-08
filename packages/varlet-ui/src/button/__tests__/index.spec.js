@@ -7,6 +7,7 @@ import { createApp } from 'vue'
 test('test button example', () => {
   const wrapper = mount(example)
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test button plugin', () => {
@@ -18,6 +19,7 @@ test('test button onClick & onTouchstart null callback', () => {
   const wrapper = mount(VarButton)
   wrapper.trigger('click')
   wrapper.trigger('touchstart')
+  wrapper.unmount()
 })
 
 test('test button onClick & onTouchstart', () => {
@@ -35,6 +37,7 @@ test('test button onClick & onTouchstart', () => {
   wrapper.trigger('touchstart')
   expect(onClick).toHaveBeenCalledTimes(1)
   expect(onTouchstart).toHaveBeenCalledTimes(1)
+  wrapper.unmount()
 })
 
 test('test button disabled', () => {
@@ -53,6 +56,7 @@ test('test button disabled', () => {
   wrapper.trigger('touchstart')
   expect(onClick).toHaveBeenCalledTimes(0)
   expect(onTouchstart).toHaveBeenCalledTimes(0)
+  wrapper.unmount()
 })
 
 test('test button loading', () => {
@@ -69,6 +73,7 @@ test('test button loading', () => {
   wrapper.trigger('touchstart')
   expect(onClick).toHaveBeenCalledTimes(0)
   expect(onTouchstart).toHaveBeenCalledTimes(0)
+  wrapper.unmount()
 })
 
 test('test button color & textColor', () => {
@@ -80,6 +85,7 @@ test('test button color & textColor', () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test button styles', () => {
@@ -96,4 +102,5 @@ test('test button styles', () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
