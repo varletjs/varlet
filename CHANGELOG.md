@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/haoziqaq/varlet/compare/v1.3.0...v1.3.1) (2021-05-08)
+
+
+### Bug Fixes
+
+* **ui/ripple:** fix ripple repeat call remove ripple task, ripple unit test complete ([9c6b3c1](https://github.com/haoziqaq/varlet/commit/9c6b3c1970679248494b9928e430df26aed2ae82))
+
+
+
+
+
 # [1.3.0](https://github.com/haoziqaq/varlet/compare/v1.2.3...v1.3.0) (2021-05-08)
 
 
