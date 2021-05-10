@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import { defineComponent, onMounted, ref, onBeforeUnmount } from 'vue'
+import { onMounted, ref, onBeforeUnmount } from 'vue'
 import PullRefresh from '..'
 import Cell from '../../cell'
 
 const data1 = Array(10).fill('List Item')
 const data2 = Array(10).fill('This is new List Item')
 
-export default defineComponent({
+export default {
   name: 'PullRefreshExample',
   components: {
     [PullRefresh.name]: PullRefresh,
@@ -47,7 +47,7 @@ export default defineComponent({
       data,
     }
   },
-})
+}
 </script>
 
 <style lang="less" scoped>
