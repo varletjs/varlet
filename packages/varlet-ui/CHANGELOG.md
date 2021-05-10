@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://github.com/haoziqaq/varlet/compare/v1.3.1...v1.3.2) (2021-05-10)
+
+
+### Bug Fixes
+
+* **pull-refresh:** fix the bug of touchmove ([88aa3af](https://github.com/haoziqaq/varlet/commit/88aa3afc9d7e939e96e0ed00d572a63771fcc58d))
+* **ui/tabs:** fix indicator size error on window resize ([576caf1](https://github.com/haoziqaq/varlet/commit/576caf1d706deee98f503a47c1e25f62d6788dfd))
+
+
+
+
+
 ## [1.3.1](https://github.com/haoziqaq/varlet/compare/v1.3.0...v1.3.1) (2021-05-08)
 
 
