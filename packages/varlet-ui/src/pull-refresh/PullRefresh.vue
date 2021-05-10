@@ -45,7 +45,7 @@ export default defineComponent({
     const isEnd: Ref<boolean> = ref(false)
 
     const isTouchable = computed(
-      () => refreshStatus.value !== 'loading' && refreshStatus.value !== 'success' && !props.disable
+      () => refreshStatus.value !== 'loading' && refreshStatus.value !== 'success' && !props.disabled
     )
 
     const iconClass = computed(() => ({
