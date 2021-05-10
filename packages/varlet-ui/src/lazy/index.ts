@@ -27,6 +27,7 @@ type Lazy = LazyOptions & {
   currentAttempt: number
   attemptLock: boolean
   state: LazyState
+  preloadImage?: HTMLImageElement
 }
 
 export type LazyHTMLElement = HTMLElement & { _lazy: Lazy }
@@ -44,7 +45,7 @@ const lazyElements: LazyHTMLElement[] = []
 
 let listenTargets: ListenTarget[] = []
 
-const imageCache: CacheInstance<string> = createCache<string>(100)
+export const imageCache: CacheInstance<string> = createCache<string>(100)
 
 export const defaultLazyOptions: LazyOptions = {
   loading: PIXEL,
@@ -58,8 +59,6 @@ let checkAllWithThrottle = throttle(checkAll, defaultLazyOptions.throttleWait)
 
 let observer: IntersectionObserver | null = null
 
-const useIntersectionObserverAPI: boolean = checkIntersectionObserverAPI()
-
 function setSRC(el: LazyHTMLElement, src: string) {
   if (el._lazy.arg === BACKGROUND_IMAGE_ARG_NAME) {
     el.style.backgroundImage = `url(${src})`
@@ -71,7 +70,7 @@ function setSRC(el: LazyHTMLElement, src: string) {
 function setLoading(el: LazyHTMLElement) {
   el._lazy.loading && setSRC(el, el._lazy.loading)
 
-  !useIntersectionObserverAPI && checkAll()
+  !checkIntersectionObserverAPI() && checkAll()
 }
 
 function setError(el: LazyHTMLElement) {
@@ -79,7 +78,7 @@ function setError(el: LazyHTMLElement) {
   el._lazy.state = 'error'
 
   clear(el)
-  !useIntersectionObserverAPI && checkAll()
+  !checkIntersectionObserverAPI() && checkAll()
 }
 
 function setSuccess(el: LazyHTMLElement, attemptSRC: string) {
@@ -87,7 +86,7 @@ function setSuccess(el: LazyHTMLElement, attemptSRC: string) {
   el._lazy.state = 'success'
 
   clear(el)
-  !useIntersectionObserverAPI && checkAll()
+  !checkIntersectionObserverAPI() && checkAll()
 }
 
 function bindEvents(listenTarget: ListenTarget) {
@@ -135,6 +134,8 @@ function createLazy(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
 function createImage(el: LazyHTMLElement, attemptSRC: string) {
   const image: HTMLImageElement = new Image()
   image.src = attemptSRC
+  el._lazy.preloadImage = image
+
   image.addEventListener('load', () => {
     el._lazy.attemptLock = false
 
@@ -175,7 +176,7 @@ function checkAll() {
 }
 
 function add(el: LazyHTMLElement) {
-  if (useIntersectionObserverAPI) {
+  if (checkIntersectionObserverAPI()) {
     observe(el)
   } else {
     !lazyElements.includes(el) && lazyElements.push(el)
@@ -186,7 +187,7 @@ function add(el: LazyHTMLElement) {
 }
 
 function clear(el: LazyHTMLElement) {
-  if (useIntersectionObserverAPI) {
+  if (checkIntersectionObserverAPI()) {
     observer?.unobserve(el)
   } else {
     removeItem(lazyElements, el)
@@ -222,7 +223,7 @@ function mounted(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
 
 function updated(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
   if (!diff(el, binding)) {
-    if (!useIntersectionObserverAPI && lazyElements.includes(el)) {
+    if (!checkIntersectionObserverAPI() && lazyElements.includes(el)) {
       check(el)
     }
     return
