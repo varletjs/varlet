@@ -14,6 +14,8 @@ export interface CacheInstance<T> {
   add(key: T): void
 
   remove(key: T): void
+
+  clear(): void
 }
 
 export const toNumber = (val: number | string | boolean | undefined | null): number => {
@@ -115,7 +117,7 @@ export const createCache = <T>(max: number): CacheInstance<T> => {
     cache,
 
     has(key: T) {
-      return cache.includes(key)
+      return this.cache.includes(key)
     },
 
     add(key: T) {
@@ -129,6 +131,10 @@ export const createCache = <T>(max: number): CacheInstance<T> => {
 
     remove(key: T) {
       this.has(key) && removeItem(this.cache, key)
+    },
+
+    clear() {
+      this.cache.length = 0
     },
   }
 }

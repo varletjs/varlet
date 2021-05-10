@@ -45,7 +45,7 @@ export default defineComponent({
     const isEnd: Ref<boolean> = ref(false)
 
     const isTouchable = computed(
-      () => refreshStatus.value !== 'loading' && refreshStatus.value !== 'success' && !props.disable
+      () => refreshStatus.value !== 'loading' && refreshStatus.value !== 'success' && !props.disabled
     )
 
     const iconClass = computed(() => ({
@@ -71,7 +71,7 @@ export default defineComponent({
     const touchMove = (event: TouchEvent) => {
       const scrollTop = getScrollTop(scroller)
       if (scrollTop > 0 || !isTouchable.value) return
-      if (scrollTop === 0 && distance.value !== CONTROL_POSITION) event.cancelable && event.preventDefault()
+      if (scrollTop === 0 && distance.value > CONTROL_POSITION) event.cancelable && event.preventDefault()
 
       const moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + CONTROL_POSITION
 

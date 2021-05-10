@@ -1,5 +1,6 @@
 import { ComponentPublicInstance, nextTick } from 'vue'
 import { VueWrapper, DOMWrapper } from '@vue/test-utils'
+import { imageCache } from '../lazy'
 
 export const delay = (time: number) => new Promise((resolve) => setTimeout(resolve, time))
 
@@ -86,6 +87,50 @@ export function mockOffset() {
       },
     },
   })
+}
+
+interface Entry {
+  intersectionRatio: number
+  target: null | HTMLElement
+}
+
+const entry: Entry = {
+  intersectionRatio: 0,
+  target: null,
+}
+
+let callback: any
+
+export function mockIntersectionObserver() {
+  const originMethod = window.IntersectionObserver
+
+  const IntersectionObserver = function (cb: any) {
+    callback = cb
+  }
+  IntersectionObserver.prototype.observe = (el: HTMLElement) => {
+    entry.target = el
+  }
+  IntersectionObserver.prototype.unobserve = (el: HTMLElement) => {
+    entry.target = null
+  }
+
+  Object.assign(window, {
+    IntersectionObserver,
+  })
+
+  return {
+    mockRestore() {
+      entry.intersectionRatio = 0
+      entry.target = null
+      imageCache.clear()
+      window.IntersectionObserver = originMethod
+    },
+    trigger(intersectionRatio: number) {
+      entry.intersectionRatio = intersectionRatio
+      callback?.([entry])
+      return entry.target
+    },
+  }
 }
 
 export async function triggerDrag(

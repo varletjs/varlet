@@ -38,7 +38,18 @@
 
 <script lang="ts">
 import Sticky from '../sticky'
-import { defineComponent, watch, ref, Ref, computed, Transition, ComputedRef, nextTick } from 'vue'
+import {
+  defineComponent,
+  watch,
+  ref,
+  Ref,
+  computed,
+  Transition,
+  ComputedRef,
+  nextTick,
+  onMounted,
+  onUnmounted,
+} from 'vue'
 import { props } from './props'
 import { TabsProvider, useTabList } from './provide'
 import { TabProvider } from '../tab/provide'
@@ -168,6 +179,9 @@ export default defineComponent({
     )
 
     watch(() => props.active, resize)
+
+    onMounted(() => window.addEventListener('resize', resize))
+    onUnmounted(() => window.removeEventListener('resize', resize))
 
     return {
       indicatorWidth,

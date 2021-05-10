@@ -2,7 +2,7 @@ import { VarComponent } from './varComponent'
 
 interface PullRefreshProps {
   modelValue?: boolean
-  disable?: boolean
+  disabled?: boolean
   animationDuration?: number | string
   successDuration?: number | string
   bgColor?: string

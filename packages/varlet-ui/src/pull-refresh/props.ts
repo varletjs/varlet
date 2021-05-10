@@ -5,7 +5,7 @@ export const props = {
     type: Boolean,
   },
   // 是否禁用下拉刷新
-  disable: {
+  disabled: {
     type: Boolean,
     default: false,
   },
