@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.3](https://github.com/haoziqaq/varlet/compare/v1.3.2...v1.3.3) (2021-05-11)
+
+
+### Bug Fixes
+
+* **ui/picker:** 修复picker onChange事件在组件初始化结束后 选择当前选项也会触发一次事件 ([3f6458d](https://github.com/haoziqaq/varlet/commit/3f6458da70ffcce581a4440b350b2fed1764d8b6))
+
+
+
+
+
 ## [1.3.2](https://github.com/haoziqaq/varlet/compare/v1.3.1...v1.3.2) (2021-05-10)
 
 

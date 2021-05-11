@@ -1,6 +1,5 @@
 import { ComponentPublicInstance, nextTick } from 'vue'
 import { VueWrapper, DOMWrapper } from '@vue/test-utils'
-import { imageCache } from '../lazy'
 
 export const delay = (time: number) => new Promise((resolve) => setTimeout(resolve, time))
 
@@ -122,7 +121,6 @@ export function mockIntersectionObserver() {
     mockRestore() {
       entry.intersectionRatio = 0
       entry.target = null
-      imageCache.clear()
       window.IntersectionObserver = originMethod
     },
     trigger(intersectionRatio: number) {
@@ -144,4 +142,27 @@ export async function triggerDrag(
   await trigger(el, 'touchmove', x / 2, y / 2)
   await trigger(el, 'touchmove', x, y)
   await trigger(el, 'touchend', x, y)
+}
+
+export function mockTranslate() {
+  const originMethod = window.getComputedStyle
+
+  const XRE = /translateX\((\d+)px\)/
+  const YRE = /translateY\((\d+)px\)/
+
+  Object.assign(window, {
+    getComputedStyle: (el: HTMLElement) => {
+      const styles = originMethod.call(window, el)
+      const x = styles.transform.match(XRE)?.[1] ?? 0
+      const y = styles.transform.match(YRE)?.[1] ?? 0
+      styles.transform = `matrix(1, 0, 0, 1, ${x}, ${y})`
+      return styles
+    },
+  })
+
+  return {
+    mockRestore() {
+      window.getComputedStyle = originMethod
+    },
+  }
 }

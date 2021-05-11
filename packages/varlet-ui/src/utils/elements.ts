@@ -27,6 +27,11 @@ export function inViewport(element: HTMLElement): boolean {
   return xInViewport && yInViewport
 }
 
+export function getTranslate(el: HTMLElement) {
+  const { transform } = window.getComputedStyle(el)
+  return +transform.slice(transform.lastIndexOf(',') + 2, transform.length - 1)
+}
+
 export function isHidden(el: HTMLElement) {
   const { width, height } = el.getBoundingClientRect()
 

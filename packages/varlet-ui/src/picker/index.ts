@@ -20,8 +20,13 @@ interface PickerOptions {
   confirmButtonTextColor?: string
   cancelButtonTextColor?: string
   dynamic?: boolean
-  onChange?: (texts: Texts, indexes: number[]) => void
+  onOpen?: () => void
+  onOpened?: () => void
+  onClose?: () => void
   onClosed?: () => void
+  onChange?: (texts: Texts, indexes: number[]) => void
+  onConfirm?: (texts: Texts, indexes: number[]) => void
+  onCancel?: (texts: Texts, indexes: number[]) => void
 }
 
 type PickerResolvedState = 'confirm' | 'cancel' | 'close'
@@ -46,6 +51,7 @@ function Picker(options: PickerOptions | Texts): Promise<PickerResolvedData> {
 
     const { unmountInstance } = mountInstance(VarPicker, reactivePickerOptions, {
       onConfirm: (texts: Texts, indexes: number[]) => {
+        reactivePickerOptions.onConfirm?.(texts, indexes)
         resolve({
           state: 'confirm',
           texts,
@@ -55,6 +61,7 @@ function Picker(options: PickerOptions | Texts): Promise<PickerResolvedData> {
         singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },
       onCancel: (texts: Texts, indexes: number[]) => {
+        reactivePickerOptions.onCancel?.(texts, indexes)
         resolve({
           state: 'cancel',
           texts,
@@ -64,17 +71,18 @@ function Picker(options: PickerOptions | Texts): Promise<PickerResolvedData> {
         singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },
       onClose: () => {
+        reactivePickerOptions.onClose?.()
         resolve({
           state: 'close',
         })
         singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },
-      onRouteChange: () => {
+      onClosed: () => {
+        reactivePickerOptions.onClosed?.()
         unmountInstance()
         singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },
-      onClosed: () => {
-        reactivePickerOptions.onClosed?.()
+      onRouteChange: () => {
         unmountInstance()
         singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },
@@ -85,6 +93,10 @@ function Picker(options: PickerOptions | Texts): Promise<PickerResolvedData> {
 
     reactivePickerOptions.show = true
   })
+}
+
+VarPicker.install = function (app: App) {
+  app.component(VarPicker.name, VarPicker)
 }
 
 Picker.Component = VarPicker as Component

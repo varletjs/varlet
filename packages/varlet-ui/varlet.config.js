@@ -136,7 +136,7 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'Chip 标签',
+          'zh-CN': 'Chip 纸片',
           'en-US': 'Chip',
         },
         doc: 'chip',

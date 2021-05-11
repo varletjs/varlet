@@ -73,6 +73,7 @@ export const props = {
     'onUpdate:show',
     'closeOnClickOverlay',
     'teleport',
+    'onOpen',
     'onClose',
     'onOpened',
     'onClosed',

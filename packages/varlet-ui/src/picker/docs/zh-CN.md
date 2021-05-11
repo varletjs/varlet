@@ -165,8 +165,13 @@ export default {
 | `cancelButtonText` | 取消按钮文字 | _string_ | `取消` |
 | `confirmButtonTextColor` | 确认按钮文字颜色 | _string_ | `-` |
 | `cancelButtonTextColor` | 取消按钮文字颜色 | _string_ | `-` |
-| `onChange` | 选择内容变化时回调 | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `onOpen` | 弹出层开启回调 | _() => void_ | `-` |
+| `onOpened` | 弹出层开启动画结束回调 | _() => void_ | `-` |
+| `onClose` | 弹出层关闭回调 | _() => void_ | `-` |
 | `onClosed` | 关闭弹出层动画结束时回调 | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `onChange` | 选择内容变化时回调 | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `onConfirm` | 点击确认按钮时触发 | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `onCancel` | 点击取消按钮时触发 | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
 
 ### Picker NormalColumn
 

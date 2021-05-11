@@ -1,0 +1,659 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test cascade mode 1`] = `
+"<transition-stub>
+  <div class=\\"var-picker\\">
+    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">取消</div>
+      </button>
+      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__confirm-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">确认</div>
+      </button>
+    </div>
+    <div class=\\"var-picker__columns\\" style=\\"height: 264px;\\">
+      <div class=\\"var-picker__column\\">
+        <div class=\\"var-picker__scroller\\" style=\\"transform: translateY(110px); transition-duration: 0ms; transition-property: none;\\">
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">成都市</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">无锡市</div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"var-picker__column\\">
+        <div class=\\"var-picker__scroller\\" style=\\"transform: translateY(110px); transition-duration: 0ms; transition-property: none;\\">
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">温江区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">金牛区</div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"var-picker__picked\\" style=\\"top: 110px; height: 44px;\\"></div>
+      <div class=\\"var-picker__mask\\" style=\\"background-size: 100% 110px;\\"></div>
+    </div>
+  </div>
+</transition-stub>"
+`;
+
+exports[`test picker example 1`] = `
+"<div class=\\"app-type\\">函数调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%; margin-bottom: 10px;\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">单列选择</div>
+</button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%; margin-bottom: 10px;\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">多列选择</div>
+</button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%; margin-bottom: 10px;\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">级联选择</div>
+</button>
+<div class=\\"app-type\\">组件调用</div>
+<transition-stub>
+  <div class=\\"var-picker\\" style=\\"margin-bottom: 14px;\\">
+    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">取消</div>
+      </button>
+      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__confirm-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">确认</div>
+      </button>
+    </div>
+    <div class=\\"var-picker__columns\\" style=\\"height: 264px;\\">
+      <div class=\\"var-picker__column\\">
+        <div class=\\"var-picker__scroller\\" style=\\"transform: translateY(110px); transition-duration: 200ms; transition-property: transform;\\">
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">0</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">1</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">2</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">3</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">4</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">5</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">6</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">7</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">8</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">9</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">10</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">11</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">12</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">13</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">14</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">15</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">16</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">17</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">18</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">19</div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"var-picker__picked\\" style=\\"top: 110px; height: 44px;\\"></div>
+      <div class=\\"var-picker__mask\\" style=\\"background-size: 100% 110px;\\"></div>
+    </div>
+  </div>
+</transition-stub>
+<transition-stub>
+  <div class=\\"var-picker\\" style=\\"margin-bottom: 14px;\\">
+    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">取消</div>
+      </button>
+      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__confirm-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">确认</div>
+      </button>
+    </div>
+    <div class=\\"var-picker__columns\\" style=\\"height: 264px;\\">
+      <div class=\\"var-picker__column\\">
+        <div class=\\"var-picker__scroller\\" style=\\"transform: translateY(110px); transition-duration: 200ms; transition-property: transform;\\">
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">0</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">1</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">2</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">3</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">4</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">5</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">6</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">7</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">8</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">9</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">10</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">11</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">12</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">13</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">14</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">15</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">16</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">17</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">18</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">19</div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"var-picker__column\\">
+        <div class=\\"var-picker__scroller\\" style=\\"transform: translateY(110px); transition-duration: 200ms; transition-property: transform;\\">
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">0</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">1</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">2</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">3</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">4</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">5</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">6</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">7</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">8</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">9</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">10</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">11</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">12</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">13</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">14</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">15</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">16</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">17</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">18</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">19</div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"var-picker__column\\">
+        <div class=\\"var-picker__scroller\\" style=\\"transform: translateY(110px); transition-duration: 200ms; transition-property: transform;\\">
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">0</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">1</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">2</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">3</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">4</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">5</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">6</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">7</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">8</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">9</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">10</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">11</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">12</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">13</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">14</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">15</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">16</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">17</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">18</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">19</div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"var-picker__picked\\" style=\\"top: 110px; height: 44px;\\"></div>
+      <div class=\\"var-picker__mask\\" style=\\"background-size: 100% 110px;\\"></div>
+    </div>
+  </div>
+</transition-stub>
+<transition-stub>
+  <div class=\\"var-picker\\" style=\\"margin-bottom: 14px;\\">
+    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">取消</div>
+      </button>
+      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__confirm-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">确认</div>
+      </button>
+    </div>
+    <div class=\\"var-picker__columns\\" style=\\"height: 264px;\\">
+      <div class=\\"var-picker__column\\">
+        <div class=\\"var-picker__scroller\\" style=\\"transform: translateY(110px); transition-duration: 0ms; transition-property: none;\\">
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">北京市</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">天津市</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">河北省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">山西省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">内蒙古自治区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">辽宁省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">吉林省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">黑龙江省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">上海市</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">江苏省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">浙江省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">安徽省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">福建省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">江西省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">山东省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">河南省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">湖北省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">湖南省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">广东省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">广西壮族自治区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">海南省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">重庆市</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">四川省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">贵州省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">云南省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">西藏自治区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">陕西省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">甘肃省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">青海省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">宁夏回族自治区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">新疆维吾尔自治区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">台湾省</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">香港特别行政区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">澳门特别行政区</div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"var-picker__column\\">
+        <div class=\\"var-picker__scroller\\" style=\\"transform: translateY(110px); transition-duration: 0ms; transition-property: none;\\">
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">市辖区</div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"var-picker__column\\">
+        <div class=\\"var-picker__scroller\\" style=\\"transform: translateY(110px); transition-duration: 0ms; transition-property: none;\\">
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">东城区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">西城区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">朝阳区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">丰台区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">石景山区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">海淀区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">门头沟区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">房山区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">通州区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">顺义区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">昌平区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">大兴区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">怀柔区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">平谷区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">密云区</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">延庆区</div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"var-picker__picked\\" style=\\"top: 110px; height: 44px;\\"></div>
+      <div class=\\"var-picker__mask\\" style=\\"background-size: 100% 110px;\\"></div>
+    </div>
+  </div>
+</transition-stub>"
+`;
+
+exports[`test scroll down & onCancel 1`] = `
+"<transition-stub>
+  <div class=\\"var-picker\\">
+    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">取消</div>
+      </button>
+      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__confirm-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">确认</div>
+      </button>
+    </div>
+    <div class=\\"var-picker__columns\\" style=\\"height: 264px;\\">
+      <div class=\\"var-picker__column\\">
+        <div class=\\"var-picker__scroller\\" style=\\"transform: translateY(110px); transition-duration: 200ms; transition-property: transform;\\">
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">A</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">B</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">C</div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"var-picker__picked\\" style=\\"top: 110px; height: 44px;\\"></div>
+      <div class=\\"var-picker__mask\\" style=\\"background-size: 100% 110px;\\"></div>
+    </div>
+  </div>
+</transition-stub>"
+`;
+
+exports[`test scroll down & onCancel 2`] = `
+"<transition-stub>
+  <div class=\\"var-picker\\">
+    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">取消</div>
+      </button>
+      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__confirm-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">确认</div>
+      </button>
+    </div>
+    <div class=\\"var-picker__columns\\" style=\\"height: 264px;\\">
+      <div class=\\"var-picker__column\\">
+        <div class=\\"var-picker__scroller\\" style=\\"transform: translateY(110px); transition-duration: 200ms; transition-property: transform;\\">
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">A</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">B</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">C</div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"var-picker__picked\\" style=\\"top: 110px; height: 44px;\\"></div>
+      <div class=\\"var-picker__mask\\" style=\\"background-size: 100% 110px;\\"></div>
+    </div>
+  </div>
+</transition-stub>"
+`;
+
+exports[`test scroll up & onConfirm 1`] = `
+"<transition-stub>
+  <div class=\\"var-picker\\">
+    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">取消</div>
+      </button>
+      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__confirm-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">确认</div>
+      </button>
+    </div>
+    <div class=\\"var-picker__columns\\" style=\\"height: 264px;\\">
+      <div class=\\"var-picker__column\\">
+        <div class=\\"var-picker__scroller\\" style=\\"transform: translateY(110px); transition-duration: 200ms; transition-property: transform;\\">
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">A</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">B</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">C</div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"var-picker__picked\\" style=\\"top: 110px; height: 44px;\\"></div>
+      <div class=\\"var-picker__mask\\" style=\\"background-size: 100% 110px;\\"></div>
+    </div>
+  </div>
+</transition-stub>"
+`;
+
+exports[`test scroll up & onConfirm 2`] = `
+"<transition-stub>
+  <div class=\\"var-picker\\">
+    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">取消</div>
+      </button>
+      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__confirm-button\\" var-picker-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">确认</div>
+      </button>
+    </div>
+    <div class=\\"var-picker__columns\\" style=\\"height: 264px;\\">
+      <div class=\\"var-picker__column\\">
+        <div class=\\"var-picker__scroller\\" style=\\"transform: translateY(22px); transition-duration: 200ms; transition-property: transform;\\">
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">A</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">B</div>
+          </div>
+          <div class=\\"var-picker__option\\" style=\\"height: 44px;\\">
+            <div class=\\"var-picker__text\\">C</div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"var-picker__picked\\" style=\\"top: 110px; height: 44px;\\"></div>
+      <div class=\\"var-picker__mask\\" style=\\"background-size: 100% 110px;\\"></div>
+    </div>
+  </div>
+</transition-stub>"
+`;

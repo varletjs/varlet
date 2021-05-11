@@ -165,8 +165,13 @@ export default {
 | `cancelButtonText` | Cancel button text | _string_ | `Cancel` |
 | `confirmButtonTextColor` | Confirm the button text color | _string_ | `-` |
 | `cancelButtonTextColor` | Cancel button text color | _string_ | `-` |
-| `onChange` | Pick callbacks when content changes | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `onOpen` | Popup open callback | _() => void_ | `-` |
+| `onOpened` | Popup open-animation ends callback  | _() => void_ | `-` |
+| `onClose` | Popup close callback | _() => void_ | `-` |
 | `onClosed` | Close pop-up layer callback when animation ends | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `onChange` | Pick callbacks when content changes | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `onConfirm` | Pick callbacks when confirm | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `onCancel` | Pick callbacks when cancel | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
 
 ### Picker NormalColumn
 
