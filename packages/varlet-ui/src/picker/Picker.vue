@@ -4,6 +4,7 @@
     v-bind="
       dynamic
         ? {
+            onOpen,
             onOpened,
             onClose,
             onClosed,
@@ -96,7 +97,7 @@ import Popup from '../popup'
 import { defineComponent, watch, ref, Ref, computed, ComputedRef, Transition, toRaw } from 'vue'
 import { CascadeColumn, NormalColumn, props } from './props'
 import { isArray, dt } from '../utils/shared'
-import { toPxNum } from '../utils/elements'
+import { toPxNum, getTranslate } from '../utils/elements'
 import { pack } from '../locale'
 import { Texts } from './index'
 
@@ -134,11 +135,6 @@ export default defineComponent({
     )
     const columnHeight: ComputedRef<number> = computed(() => optionCount.value * optionHeight.value)
     let prevIndexes: number[] = []
-
-    const getTranslate = (el: HTMLElement) => {
-      const { transform } = window.getComputedStyle(el)
-      return +transform.slice(transform.lastIndexOf(',') + 2, transform.length - 1)
-    }
 
     const limitTranslate = (scrollColumn: ScrollColumn) => {
       const START_LIMIT = optionHeight.value + center.value
@@ -357,6 +353,9 @@ export default defineComponent({
         scrollColumns.value = props.cascade
           ? normalizeCascadeColumns(toRaw(newValue) as CascadeColumn[])
           : normalizeNormalColumns(toRaw(newValue) as NormalColumn[] | Texts)
+
+        const { indexes } = getPicked()
+        prevIndexes = [...indexes]
       },
       { immediate: true }
     )

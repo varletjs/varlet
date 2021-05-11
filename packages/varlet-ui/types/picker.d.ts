@@ -58,8 +58,13 @@ interface PickerOptions {
   cancelButtonText?: string
   confirmButtonTextColor?: string
   cancelButtonTextColor?: string
-  onChange?: (texts: Texts, indexes: number[]) => void
+  onOpen?: () => void
+  onOpened?: () => void
+  onClose?: () => void
   onClosed?: () => void
+  onChange?: (texts: Texts, indexes: number[]) => void
+  onConfirm?: (texts: Texts, indexes: number[]) => void
+  onCancel?: (texts: Texts, indexes: number[]) => void
 }
 
 export interface IPicker {

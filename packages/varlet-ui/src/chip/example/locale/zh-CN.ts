@@ -1,5 +1,5 @@
 export default {
-  chipType: '制片类型',
+  chipType: '纸片类型',
   defaultChip: '默认纸片',
   primaryChip: '主要纸片',
   infoChip: '信息纸片',

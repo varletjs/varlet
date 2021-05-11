@@ -1,7 +1,14 @@
 import Dialog from '..'
 import VarDialog from '../Dialog'
+import example from '../example'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+
+test('test dialog example', () => {
+  const wrapper = mount(example)
+  expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
 
 test('test dialog component plugin', () => {
   const app = createApp({}).use(Dialog.Component)

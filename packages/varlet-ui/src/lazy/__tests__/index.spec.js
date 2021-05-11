@@ -1,5 +1,5 @@
 import example from '../example'
-import Lazy from '..'
+import Lazy, { imageCache } from '..'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { mockIntersectionObserver, trigger } from '../../utils/jest'
@@ -39,6 +39,7 @@ test('test lazy load use io', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.unmount()
+  imageCache.clear()
   mockRestore()
 })
 
@@ -54,6 +55,7 @@ test('test lazy error use io', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.unmount()
+  imageCache.clear()
   mockRestore()
 })
 
@@ -72,6 +74,7 @@ test('test lazy updated use io', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.unmount()
+  imageCache.clear()
   mockRestore()
 })
 
@@ -90,5 +93,6 @@ test('test lazy background-image load use io', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.unmount()
+  imageCache.clear()
   mockRestore()
 })
