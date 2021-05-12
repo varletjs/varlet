@@ -69,7 +69,8 @@ export default defineComponent({
     const { index, steps, bindSteps } = useSteps()
 
     if (!steps || !bindSteps || !index) {
-      throw Error('<step/> must in <steps>')
+      console.error('[Varlet] Steps: <step/> must in <steps>')
+      return
     }
 
     const { active, length, activeColor, inactiveColor, direction, clickStep } = steps

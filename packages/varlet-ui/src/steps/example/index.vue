@@ -31,11 +31,11 @@ import Select from '../../select'
 import Option from '../../option'
 import Button from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { defineComponent, ref } from 'vue'
+import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 
-export default defineComponent({
+export default {
   name: 'StepsExample',
   components: {
     [Steps.name]: Steps,
@@ -59,5 +59,5 @@ export default defineComponent({
       active,
     }
   },
-})
+}
 </script>

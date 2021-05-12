@@ -8,7 +8,7 @@ exports[`test chip color & textColor 1`] = `
 
 exports[`test chip example 1`] = `
 "<div class=\\"example\\">
-  <div class=\\"app-type\\">制片类型</div>
+  <div class=\\"app-type\\">纸片类型</div>
   <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--primary var-chip--round\\"><span class=\\"var-chip--text-normal\\">主要纸片</span>
     <!--v-if--></span>
   </transition-stub>
