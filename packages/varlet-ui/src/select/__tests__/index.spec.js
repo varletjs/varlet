@@ -309,9 +309,11 @@ test('test select focus & blur methods', async () => {
   const { select } = wrapper.vm.$refs
 
   select.focus()
+  await delay(16)
   expect(wrapper.html()).toMatchSnapshot()
 
   select.blur()
+  await delay(16)
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.unmount()

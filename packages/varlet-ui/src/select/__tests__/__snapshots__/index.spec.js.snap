@@ -255,11 +255,11 @@ exports[`test select example 1`] = `
 
 exports[`test select focus & blur methods 1`] = `
 "<div class=\\"var-select var--box\\">
-  <div class=\\"var-select__controller\\">
+  <div class=\\"var-select__controller var-select--focus\\">
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\"></label>
+        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var-select--placeholder-hint\\"></label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
@@ -269,7 +269,7 @@ exports[`test select focus & blur methods 1`] = `
     </div>
   </div>
   <div class=\\"var-select__line\\">
-    <div class=\\"var-select__dot\\"></div>
+    <div class=\\"var-select__dot var-select--spread\\"></div>
   </div>
   <transition-stub>
     <!--v-if-->
