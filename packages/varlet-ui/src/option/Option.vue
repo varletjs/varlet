@@ -78,7 +78,7 @@ export default defineComponent({
     watch(
       [() => props.label, () => props.value],
       () => {
-        if (props.label == null && props.value === null) {
+        if (props.label == null && props.value == null) {
           throw Error("Props label and value can't both be undefined\n")
         }
       },

@@ -20,7 +20,13 @@
         <slot name="prepend-icon" />
       </div>
 
-      <var-menu class="var-select__menu" var-select-cover :offset-y="offsetY" v-model:show="isFocus" @blur="handleBlur">
+      <var-menu
+        class="var-select__menu"
+        var-select-cover
+        :offset-y="offsetY"
+        v-model:show="isFocus"
+        @close="handleBlur"
+      >
         <div
           class="var-select__wrap"
           :class="[!hint ? 'var-select--non-hint' : null]"

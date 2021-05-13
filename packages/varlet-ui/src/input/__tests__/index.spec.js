@@ -34,6 +34,8 @@ test('test input focus & blur', async () => {
   wrapper.vm.blur()
   await wrapper.find('.var-input__input').trigger('blur')
   expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test input onInput & onChange & onClick', async () => {
@@ -64,6 +66,8 @@ test('test input onInput & onChange & onClick', async () => {
 
   await wrapper.find('.var-input__input').trigger('change')
   expect(onChange).lastCalledWith('t', new Event('input'))
+
+  wrapper.unmount()
 })
 
 test('test input maxlength', () => {
@@ -87,6 +91,8 @@ test('test input hint to be false', () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test input clear', async () => {
@@ -108,6 +114,8 @@ test('test input clear', async () => {
   expect(onUpdateModelValue).lastCalledWith('')
   expect(onClear).lastCalledWith('')
   expect(wrapper.props('modelValue')).toBe('')
+
+  wrapper.unmount()
 })
 
 test('test input disabled', async () => {
@@ -140,6 +148,8 @@ test('test input disabled', async () => {
   expect(onClick).toHaveBeenCalledTimes(0)
   expect(onChange).toHaveBeenCalledTimes(0)
   expect(onUpdateModelValue).toHaveBeenCalledTimes(0)
+
+  wrapper.unmount()
 })
 
 test('test input validation', async () => {
@@ -169,6 +179,8 @@ test('test input validation', async () => {
   await delay(16)
   expect(wrapper.find('.var-form-details__message').exists()).toBeFalsy()
   expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test input number value', async () => {
@@ -186,4 +198,6 @@ test('test input number value', async () => {
 
   expect(onUpdateModelValue).lastCalledWith(1)
   expect(wrapper.props('modelValue')).toBe(1)
+
+  wrapper.unmount()
 })
