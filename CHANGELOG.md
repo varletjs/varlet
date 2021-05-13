@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.4](https://github.com/haoziqaq/varlet/compare/v1.3.3...v1.3.4) (2021-05-13)
+
+
+### Bug Fixes
+
+* **ui/select:** fix bug of select blur event can't trigger ([b9918fc](https://github.com/haoziqaq/varlet/commit/b9918fcd08a6805408b18a7e0765213974bde235))
+* **ui/select ui/radio:** fix bug of select click event repeat trigger, radio unit test complete ([21e6fcb](https://github.com/haoziqaq/varlet/commit/21e6fcbf9335358022080d0221ad57a76b00a1a2))
+
+
+
+
+
 ## [1.3.3](https://github.com/haoziqaq/varlet/compare/v1.3.2...v1.3.3) (2021-05-11)
 
 
