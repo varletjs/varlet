@@ -48,14 +48,14 @@
 </template>
 
 <script>
-import { defineComponent, reactive, toRefs } from 'vue'
+import { reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Switch from '..'
 import Cell from '../../cell'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 
-export default defineComponent({
+export default {
   name: 'SwitchExample',
   components: {
     [Switch.name]: Switch,
@@ -78,7 +78,7 @@ export default defineComponent({
       pack,
     }
   },
-})
+}
 </script>
 
 <style scoped>
