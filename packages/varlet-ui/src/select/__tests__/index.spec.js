@@ -177,6 +177,59 @@ test('test select disabled', async () => {
   wrapper.unmount()
 })
 
+test('test select readonly', async () => {
+  const onFocus = jest.fn()
+  const onBlur = jest.fn()
+
+  const wrapper = mount(
+    {
+      ...Wrapper,
+      data: () => ({
+        readonly: true,
+        value: '睡觉',
+      }),
+      methods: {
+        onFocus,
+        onBlur,
+      },
+      template: `
+      <div class="container"></div>
+      <var-select
+        clearable
+        :readonly="readonly"
+        v-model="value"
+        @focus="onFocus"
+        @blur="onBlur"
+      >
+        <var-option label="吃饭" />
+        <var-option label="睡觉" />
+      </var-select>
+    `,
+    },
+    { attachTo: document.body }
+  )
+
+  await wrapper.find('.var-select__wrap').trigger('click')
+  expect(onFocus).toHaveBeenCalledTimes(0)
+
+  await wrapper.setData({ readonly: false })
+  await wrapper.find('.var-select__wrap').trigger('click')
+  await wrapper.setData({ readonly: true })
+  await wrapper.find('.container').trigger('click')
+  expect(onBlur).toHaveBeenCalledTimes(0)
+
+  await wrapper.setData({ readonly: false })
+  await wrapper.find('.var-select__wrap').trigger('click')
+  await wrapper.setData({ readonly: true })
+  await trigger(document.querySelector('.var-option'), 'click')
+  expect(wrapper.vm.value).toBe('睡觉')
+
+  await wrapper.find('.var-icon-close-circle').trigger('click')
+  expect(wrapper.vm.value).toBe('睡觉')
+
+  wrapper.unmount()
+})
+
 test('test select clear', async () => {
   const wrapper = mount(
     {

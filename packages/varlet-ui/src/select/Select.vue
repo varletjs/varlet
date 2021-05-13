@@ -43,7 +43,6 @@
               textAlign,
               color: textColor,
             }"
-            @click="handleClick"
           >
             <div v-if="multiple">
               <div class="var-select__chips" v-if="chip">

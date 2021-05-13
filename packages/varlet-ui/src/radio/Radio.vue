@@ -90,11 +90,16 @@ export default defineComponent({
     const handleClick = (e: Event) => {
       const { disabled, readonly, uncheckedValue, checkedValue, onClick } = props
 
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
+      if (form?.disabled.value || disabled) {
         return
       }
 
       onClick?.(e)
+
+      if (form?.readonly.value || readonly) {
+        return
+      }
+
       change(checked.value ? uncheckedValue : checkedValue)
     }
 

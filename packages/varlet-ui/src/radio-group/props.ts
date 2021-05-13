@@ -13,6 +13,7 @@ export const props = {
   direction: {
     type: String as PropType<'horizontal' | 'vertical'>,
     default: 'horizontal',
+    validator: directionValidator,
   },
   validateTrigger: {
     type: Array as PropType<Array<ValidateTriggers>>,

@@ -118,6 +118,13 @@ test('test input clear', async () => {
   wrapper.unmount()
 })
 
+const triggerEvents = async (wrapper) => {
+  await wrapper.find('.var-input__input').trigger('input')
+  await wrapper.find('.var-input__input').trigger('change')
+  await wrapper.find('.var-input__clear-icon').trigger('click')
+  await wrapper.trigger('click')
+}
+
 test('test input disabled', async () => {
   const onClear = jest.fn()
   const onClick = jest.fn()
@@ -138,14 +145,42 @@ test('test input disabled', async () => {
     },
   })
 
-  await wrapper.find('.var-input__input').trigger('input')
-  await wrapper.find('.var-input__input').trigger('change')
-  await wrapper.find('.var-input__clear-icon').trigger('click')
-  await wrapper.trigger('click')
+  await triggerEvents(wrapper)
 
   expect(onInput).toHaveBeenCalledTimes(0)
   expect(onClear).toHaveBeenCalledTimes(0)
   expect(onClick).toHaveBeenCalledTimes(0)
+  expect(onChange).toHaveBeenCalledTimes(0)
+  expect(onUpdateModelValue).toHaveBeenCalledTimes(0)
+
+  wrapper.unmount()
+})
+
+test('test input readonly', async () => {
+  const onClear = jest.fn()
+  const onClick = jest.fn()
+  const onInput = jest.fn()
+  const onChange = jest.fn()
+  const onUpdateModelValue = jest.fn()
+
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: '',
+      clearable: true,
+      readonly: true,
+      onInput,
+      onClear,
+      onClick,
+      onChange,
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await triggerEvents(wrapper)
+
+  expect(onInput).toHaveBeenCalledTimes(0)
+  expect(onClear).toHaveBeenCalledTimes(0)
+  expect(onClick).toHaveBeenCalledTimes(2)
   expect(onChange).toHaveBeenCalledTimes(0)
   expect(onUpdateModelValue).toHaveBeenCalledTimes(0)
 
