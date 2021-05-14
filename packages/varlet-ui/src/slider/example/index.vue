@@ -47,13 +47,13 @@
 </template>
 
 <script>
-import { defineComponent, reactive, toRefs } from 'vue'
+import { reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Slider from '..'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 
-export default defineComponent({
+export default {
   name: 'SliderExample',
   components: {
     [Slider.name]: Slider,
@@ -84,5 +84,5 @@ export default defineComponent({
       handleChange,
     }
   },
-})
+}
 </script>
