@@ -256,7 +256,7 @@ test('test slider events', async () => {
 
 })
 test('test slider rules prop', async () => {
-  const template = `<var-slider v-model="value" :rules="[(v) => !Array.isNaN(v) || 'error message']" />`
+  const template = `<var-slider v-model="value" :rules="[(v) => !Number.isNaN(v) || 'error message']" />`
   const wrapper = mount({
     components: {
       [VarSlider.name]: VarSlider
