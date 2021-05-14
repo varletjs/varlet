@@ -166,3 +166,31 @@ export function mockTranslate() {
     },
   }
 }
+
+interface MockFileReaderCtx {
+  result: string
+  onload: () => void
+  readAsDataURL: () => void
+}
+
+export function mockFileReader(url: string) {
+  const originMethod = window.FileReader
+
+  Object.assign(window, {
+    FileReader(this: MockFileReaderCtx) {
+      this.onload = function () {}
+      this.result = ''
+
+      this.readAsDataURL = function () {
+        this.result = url
+        this.onload()
+      }
+    },
+  })
+
+  return {
+    mockRestore() {
+      window.FileReader = originMethod
+    },
+  }
+}

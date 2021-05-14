@@ -89,11 +89,15 @@ export default defineComponent({
     const handleClick = (e: Event) => {
       const { disabled, readonly, checkedValue, uncheckedValue, onClick } = props
 
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
+      if (form?.disabled.value || disabled) {
         return
       }
 
       onClick?.(e)
+
+      if (form?.readonly.value || readonly) {
+        return
+      }
 
       const maximum = checkboxGroup ? checkboxGroup.checkedCount.value >= Number(checkboxGroup.max.value) : false
 

@@ -1,0 +1,234 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test uploader disabled 1`] = `
+"<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;
+
+exports[`test uploader disabled 2`] = `
+"<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var-uploader__file var-elevation--2\\">
+      <div class=\\"var-uploader__file-name\\">cat.png</div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+      <!--v-if-->
+      <div class=\\"var-uploader__file-indicator\\"></div>
+    </div>
+    <div class=\\"var--relative var-uploader__action var-elevation--2 var-uploader--disabled\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;
+
+exports[`test uploader example 1`] = `
+"<div class=\\"app-type\\">基本使用</div>
+<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>
+<div class=\\"app-type\\">文件预览</div>
+<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var-uploader__file var-elevation--2\\">
+      <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-indicator\\"></div>
+    </div>
+    <div class=\\"var-uploader__file var-elevation--2\\">
+      <div class=\\"var-uploader__file-name\\">https://www.runoob.com/try/demo_source/mov_bbb.mp4</div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cover.jpg\\">
+      <div class=\\"var-uploader__file-indicator\\"></div>
+    </div>
+    <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>
+<div class=\\"app-type\\">上传状态</div>
+<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var-uploader__file var-elevation--2 var-uploader--loading\\">
+      <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-indicator\\"></div>
+    </div>
+    <div class=\\"var-uploader__file var-elevation--2\\">
+      <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-indicator var-uploader--success\\"></div>
+    </div>
+    <div class=\\"var-uploader__file var-elevation--2\\">
+      <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-indicator var-uploader--error\\"></div>
+    </div>
+    <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>
+<div class=\\"app-type\\">文件数量限制</div>
+<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <div class=\\"var-form-details\\">
+      <div class=\\"var-form-details__message\\"></div>
+      <div class=\\"var-form-details__length\\">0 / 1</div>
+    </div>
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>
+<div class=\\"app-type\\">文件大小限制</div>
+<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>
+<div class=\\"app-type\\">上传预处理</div>
+<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>
+<div class=\\"app-type\\">禁用</div>
+<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var--relative var-uploader__action var-elevation--2 var-uploader--disabled\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>
+<div class=\\"app-type\\">只读</div>
+<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>
+<div class=\\"app-type\\">字段校验</div>
+<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var-uploader__file var-elevation--2\\">
+      <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-indicator var-uploader--error\\"></div>
+    </div>
+    <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>
+<div class=\\"app-type\\">自定义上传样式</div>
+<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var--relative\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\">上传</div>
+      </button></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>
+<div class=\\"space\\"></div>"
+`;
+
+exports[`test uploader length over maxlength in multiple mode 1`] = `
+"<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <div class=\\"var-form-details\\">
+      <div class=\\"var-form-details__message\\"></div>
+      <div class=\\"var-form-details__length\\">0 / 1</div>
+    </div>
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;
+
+exports[`test uploader validation 1`] = `
+"<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <div class=\\"var-form-details\\">
+      <div class=\\"var-form-details__message\\">您至少上传一个</div>
+      <div class=\\"var-form-details__length\\"></div>
+    </div>
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;
+
+exports[`test uploader validation 2`] = `
+"<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var-uploader__file var-elevation--2\\">
+      <div class=\\"var-uploader__file-name\\">cat.png</div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+      <!--v-if-->
+      <div class=\\"var-uploader__file-indicator\\"></div>
+    </div>
+    <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: all 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;
