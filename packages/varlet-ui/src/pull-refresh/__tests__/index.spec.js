@@ -3,7 +3,7 @@ import PullRefresh from '..'
 import VarPullRefresh from '../PullRefresh'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger, triggerDrag } from '../../utils/jest'
+import { delay, trigger } from '../../utils/jest'
 
 test('test pullRefresh plugin', () => {
   const app = createApp({}).use(PullRefresh)
