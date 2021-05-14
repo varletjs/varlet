@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.5](https://github.com/haoziqaq/varlet/compare/v1.3.4...v1.3.5) (2021-05-14)
+
+
+### Bug Fixes
+
+* **ui/counter:** fix bug of counter no validation function exposed ([247b4c5](https://github.com/haoziqaq/varlet/commit/247b4c5e2b77104c532d4832b34e47831240d6b7))
+
+
+
+
+
 ## [1.3.4](https://github.com/haoziqaq/varlet/compare/v1.3.3...v1.3.4) (2021-05-13)
 
 
