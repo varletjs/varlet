@@ -40,7 +40,7 @@ interface UniqSnackbarOptions {
 }
 
 interface Snackbar {
-  (options: SnackbarOptions): SnackbarHandel
+  (options: SnackbarOptions | string): SnackbarHandel
 
   install(app: App): void
 
