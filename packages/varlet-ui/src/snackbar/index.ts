@@ -245,4 +245,8 @@ function getTop(position = 'top'): string {
   return '5%'
 }
 
+VarSnackbar.install = function(app: App) {
+  app.component(VarSnackbar.name, VarSnackbar)
+}
+
 export default Snackbar
