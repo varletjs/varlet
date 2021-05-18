@@ -59,11 +59,11 @@
 import Snackbar from '../index'
 import Button from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { defineComponent, reactive, toRefs } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 
-export default defineComponent({
+export default {
   name: 'SnackbarExample',
   components: {
     [Snackbar.Component.name]: Snackbar.Component,
@@ -117,7 +117,7 @@ export default defineComponent({
       create,
     }
   },
-})
+}
 </script>
 
 <style lang="less" scoped>

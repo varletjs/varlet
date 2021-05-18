@@ -72,8 +72,6 @@ const transitionGroupProps: any = {
   name: 'var-snackbar-fade',
   tag: 'div',
   class: 'var-transition-group',
-  afterEnter: 'onOpened',
-  afterLeave: 'onClosed',
 }
 
 const TransitionGroupHost = {

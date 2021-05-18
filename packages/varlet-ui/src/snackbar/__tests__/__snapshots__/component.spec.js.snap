@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test snackbar example 1`] = `
+"<div class=\\"snackbar-demo\\">
+  <div class=\\"app-type\\">组件调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+    <!--v-if-->
+    <div class=\\"var-button__content\\">基本使用</div>
+  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+    <!--v-if-->
+    <div class=\\"var-button__content\\">垂直排列</div>
+  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+    <!--v-if-->
+    <div class=\\"var-button__content\\">底部显示</div>
+  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+    <!--v-if-->
+    <div class=\\"var-button__content\\">显示时长</div>
+  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+    <!--v-if-->
+    <div class=\\"var-button__content\\">禁止穿透点击</div>
+  </button>
+</div>
+<div class=\\"snackbar-demo\\">
+  <div class=\\"app-type\\">函数调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+    <!--v-if-->
+    <div class=\\"var-button__content\\">基本使用</div>
+  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+    <!--v-if-->
+    <div class=\\"var-button__content\\">显示时长</div>
+  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+    <!--v-if-->
+    <div class=\\"var-button__content\\">底部显示</div>
+  </button>
+</div>
+<div class=\\"snackbar-demo\\">
+  <div class=\\"app-type\\">Snackbar 类型</div>
+  <div class=\\"snackbar-demo__type-block\\"><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">成功</div>
+    </button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">警告</div>
+    </button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">消息</div>
+    </button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">错误</div>
+    </button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">加载</div>
+    </button></div>
+</div>
+<div class=\\"snackbar-demo\\">
+  <!--teleport start-->
+  <!--teleport end-->
+  <!--teleport start-->
+  <!--teleport end-->
+  <!--teleport start-->
+  <!--teleport end-->
+  <!--teleport start-->
+  <!--teleport end-->
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;
+
+exports[`test snackbar style 1`] = `"<transition-stub><div class=\\"var-snackbar var-snackbar-transition\\" style=\\"pointer-events: auto; z-index: 2001;\\"><div class=\\"var-snackbar__wrapper var-snackbar__wrapper-center var-elevation--4 var-snackbar__vertical var-snackbar__wrapper-loading\\" style=\\"z-index: 2001;\\"><div class=\\"var-snackbar__content test-snackbar\\">test snackbar</div><div class=\\"var-snackbar__action\\"><!--v-if--><div class=\\"var--box var-loading\\"><!--v-if--><div class=\\"var-loading__wave var-loading__wave-large\\"><div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-large\\"></div><div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-large\\"></div><div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-large\\"></div><div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-large\\"></div><div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-large\\"></div></div><!--v-if--><!--v-if--><!--v-if--></div></div></div></div></transition-stub>"`;
