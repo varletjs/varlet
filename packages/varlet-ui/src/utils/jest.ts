@@ -1,5 +1,5 @@
 import { ComponentPublicInstance, nextTick } from 'vue'
-import { VueWrapper, DOMWrapper } from '@vue/test-utils'
+import { VueWrapper, DOMWrapper, config } from '@vue/test-utils'
 
 export const delay = (time: number) => new Promise((resolve) => setTimeout(resolve, time))
 
@@ -191,6 +191,18 @@ export function mockFileReader(url: string) {
   return {
     mockRestore() {
       window.FileReader = originMethod
+    },
+  }
+}
+
+export function mockStubs() {
+  const originStubs = config.global.stubs
+
+  config.global.stubs = {}
+
+  return {
+    mockRestore() {
+      config.global.stubs = originStubs
     },
   }
 }
