@@ -29,7 +29,8 @@ export interface SnackbarOptions {
 }
 
 export interface ISnackbar {
-  (options: SnackbarOptions): SnackbarHandel
+  (options: SnackbarOptions | string): SnackbarHandel
+
   Component: typeof SnackbarComponent
 
   install(app: App): void
