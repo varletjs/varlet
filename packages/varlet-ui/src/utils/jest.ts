@@ -22,7 +22,9 @@ export function trigger(
   wrapper: VueWrapper<ComponentPublicInstance<any, any, any>> | DOMWrapper<Element> | Element | Window,
   eventName: string,
   x = 0,
-  y = 0
+  y = 0,
+  offsetX = 0,
+  offsetY = 0
 ) {
   const el = 'element' in wrapper ? wrapper.element : wrapper
   const touchList = [getTouch(el, x, y)]
@@ -33,6 +35,8 @@ export function trigger(
   Object.assign(event, {
     clientX: x,
     clientY: y,
+    offsetX,
+    offsetY,
     touches: touchList,
     targetTouches: touchList,
     changedTouches: touchList,
@@ -203,6 +207,18 @@ export function mockStubs() {
   return {
     mockRestore() {
       config.global.stubs = originStubs
+    },
+  }
+}
+
+export function mockWarn() {
+  const originWarn = console.warn
+
+  console.warn = () => {}
+
+  return {
+    mockRestore() {
+      console.warn = originWarn
     },
   }
 }

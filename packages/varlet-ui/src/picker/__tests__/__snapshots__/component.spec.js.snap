@@ -41,13 +41,13 @@ exports[`test cascade mode 1`] = `
 `;
 
 exports[`test picker example 1`] = `
-"<div class=\\"app-type\\">函数调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%; margin-bottom: 10px;\\">
+"<div class=\\"app-type\\">函数调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\" style=\\"margin-bottom: 10px;\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">单列选择</div>
-</button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%; margin-bottom: 10px;\\">
+</button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\" style=\\"margin-bottom: 10px;\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">多列选择</div>
-</button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%; margin-bottom: 10px;\\">
+</button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\" style=\\"margin-bottom: 10px;\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">级联选择</div>
 </button>

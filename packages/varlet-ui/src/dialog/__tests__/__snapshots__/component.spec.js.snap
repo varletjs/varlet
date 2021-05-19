@@ -1,33 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test dialog example 1`] = `
-"<div class=\\"app-type\\">函数调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+"<div class=\\"app-type\\">函数调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">基本使用</div>
-</button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+</button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">修改标题</div>
-</button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+</button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">隐藏按钮</div>
-</button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+</button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">处理用户行为</div>
-</button><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+</button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">异步关闭</div>
 </button>
-<div class=\\"app-type\\">组件调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+<div class=\\"app-type\\">组件调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">基本使用</div>
 </button>
 <!--teleport start-->
-<!--teleport end--><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+<!--teleport end--><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">异步关闭</div>
 </button>
 <!--teleport start-->
-<!--teleport end--><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+<!--teleport end--><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">自定义插槽</div>
 </button>

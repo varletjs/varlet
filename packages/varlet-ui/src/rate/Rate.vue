@@ -4,7 +4,7 @@
       <div
         :key="val"
         v-for="val in toNumber(count)"
-        v-ripple="{ disabled: rippleDisable }"
+        v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
         :style="getStyle(val)"
         :class="getClass(val)"
         @click="handleClick(val, $event)"
@@ -17,35 +17,28 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, nextTick } from 'vue'
+import Ripple from '../ripple'
+import Icon from '../icon'
+import FormDetails from '../form-details'
+import { defineComponent, nextTick } from 'vue'
 import { useForm } from '../form/provide'
 import { useValidation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { toNumber } from '../utils/shared'
 import { RateProvider } from './provide'
 import { props } from './props'
-import Ripple from '../ripple'
-import Icon from '../icon'
-import FormDetails from '../form-details'
-
 
 export default defineComponent({
   name: 'VarRate',
   components: {
     [Icon.name]: Icon,
-    [FormDetails.name]: FormDetails
+    [FormDetails.name]: FormDetails,
   },
   directives: { Ripple },
   props,
   setup(props) {
     const { form, bindForm } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
-
-    const rippleDisable: ComputedRef<boolean> = computed(() => {
-      const { ripple, readonly, disabled } = props
-
-      return form?.readonly.value || form?.disabled.value || readonly || disabled || !ripple
-    })
 
     const getStyle = (val: number) => {
       const { count, size, gap } = props
@@ -55,7 +48,7 @@ export default defineComponent({
         marginRight: val !== toNumber(count) ? toSizeUnit(gap) : 0,
         width: toSizeUnit(size),
         height: toSizeUnit(size),
-        borderRadius: '50%'
+        borderRadius: '50%',
       }
     }
 
@@ -66,7 +59,7 @@ export default defineComponent({
         'var-rate__content': true,
         'var-rate--disabled': form?.disabled.value,
         'var-rate--error': errorMessage.value,
-        'var-rate--primary': type !== 'empty' && !color
+        'var-rate--primary': type !== 'empty' && !color,
       }
     }
 
@@ -82,7 +75,6 @@ export default defineComponent({
       let iconColor = null
 
       if (disabled || form?.disabled.value) iconColor = disabledColor
-
       else if (color) iconColor = color
 
       if (index <= toNumber(modelValue)) {
@@ -130,27 +122,31 @@ export default defineComponent({
     const rateProvider: RateProvider = {
       reset,
       validate,
-      resetValidation
+      resetValidation,
     }
 
     bindForm?.(rateProvider)
 
     return {
       errorMessage,
-      rippleDisable,
+      formDisabled: form?.disabled,
+      formReadonly: form?.readonly,
       getStyle,
       getClass,
       getIconName,
       handleClick,
+      reset,
+      validate,
+      resetValidation,
       toSizeUnit,
-      toNumber
+      toNumber,
     }
-  }
+  },
 })
 </script>
 
 <style lang="less">
-@import "../ripple/ripple";
+@import '../ripple/ripple';
 @import '../icon/icon';
 @import '../form-details/formDetails';
 @import './rate';
