@@ -127,7 +127,7 @@ exports[`test button example 1`] = `
   <!--v-if-->
   <div class=\\"var-button__content\\">大型按钮</div>
 </button>
-<div class=\\"app-type\\">块级按钮</div><button class=\\"var-button var--box var-button--normal var--flex var-button--primary var-elevation--1\\" style=\\"width: 100%;\\">
+<div class=\\"app-type\\">块级按钮</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">块级按钮</div>
 </button>
@@ -155,7 +155,7 @@ exports[`test button example 1`] = `
 `;
 
 exports[`test button styles 1`] = `
-"<button class=\\"var-button var--box var-button--large var--flex var-button--text-default var-button--text var-button--round\\" style=\\"width: 100%;\\">
+"<button class=\\"var-button var--box var-button--large var--flex var-button--block var-button--text-default var-button--text var-button--round\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">button text</div>
 </button>"

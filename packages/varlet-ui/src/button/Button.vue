@@ -4,7 +4,7 @@
     class="var-button var--box"
     :class="[
       `var-button--${size}`,
-      block ? 'var--flex' : 'var--inline-flex',
+      block ? 'var--flex var-button--block' : 'var--inline-flex',
       disabled ? 'var-button--disabled' : null,
       text ? `var-button--text-${type}` : `var-button--${type}`,
       text ? 'var-button--text' : 'var-elevation--1',
@@ -15,7 +15,6 @@
     :style="{
       color: textColor,
       background: color,
-      width: block ? '100%' : null,
     }"
     :disabled="disabled"
     @click="handleClick"
