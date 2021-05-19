@@ -15,7 +15,7 @@
               type="primary"
               class="var-month-picker__button"
               var-month-picker-cover
-              forbid-ripple
+              :ripple="false"
               v-bind="{
                 ...buttonProps(month.index),
               }"
@@ -71,6 +71,8 @@ export default defineComponent({
       required: true,
     },
   },
+  emits: ['check-preview', 'choose-month'],
+
   setup(props, { emit }) {
     const [currentYear, currentMonth] = props.current.split('-')
     const reverse: Ref<boolean> = ref(false)

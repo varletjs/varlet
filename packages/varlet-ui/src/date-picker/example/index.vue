@@ -44,13 +44,13 @@
 </template>
 
 <script>
-import { defineComponent, reactive, toRefs } from 'vue'
+import { reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import DatePicker from '..'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 
-export default defineComponent({
+export default {
   name: 'DatePickerExample',
   components: {
     AppType,
@@ -86,5 +86,5 @@ export default defineComponent({
       allowedDates1,
     }
   },
-})
+}
 </script>

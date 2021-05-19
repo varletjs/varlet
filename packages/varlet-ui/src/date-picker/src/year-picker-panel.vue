@@ -29,6 +29,8 @@ export default defineComponent({
       required: true,
     },
   },
+  emits: ['choose-year'],
+
   setup(props, { emit }) {
     const yearList: ComputedRef<Array<number>> = computed(() => {
       const list: Array<number> = []

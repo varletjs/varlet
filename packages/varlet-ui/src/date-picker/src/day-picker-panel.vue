@@ -18,9 +18,12 @@
               <var-button
                 type="primary"
                 class="var-day-picker__button"
+                :class="{
+                  'var-day-picker__button--usable': day > 0
+                }"
                 var-day-picker-cover
                 round
-                forbid-ripple
+                :ripple="false"
                 v-bind="{
                   ...buttonProps(day),
                 }"
@@ -77,6 +80,7 @@ export default defineComponent({
       required: true,
     },
   },
+  emits: ['check-preview', 'choose-day'],
 
   setup(props, { emit }) {
     const [currentYear, currentMonth, currentDay] = props.current.split('-')

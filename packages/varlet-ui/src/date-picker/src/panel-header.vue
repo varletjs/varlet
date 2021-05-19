@@ -54,6 +54,8 @@ export default defineComponent({
       required: true,
     },
   },
+  emits: ['check-panel', 'check-date'],
+
   setup(props, { emit }) {
     const reverse: Ref<boolean> = ref(false)
     const forwardOrBackNum: Ref<number> = ref(0)
