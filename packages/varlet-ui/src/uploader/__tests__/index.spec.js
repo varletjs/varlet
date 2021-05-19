@@ -155,11 +155,13 @@ test('test uploader disabled', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
   const onRemove = jest.fn()
+  const onAfterRead = jest.fn()
 
   const wrapper = mount(VarUploader, {
     props: {
       disabled: false,
       modelValue: [],
+      onAfterRead,
       onRemove,
       'onUpdate:modelValue': onUpdateModelValue,
     },
@@ -167,6 +169,7 @@ test('test uploader disabled', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
   await wrapper.vm.handleChange(createEvent('cat.png'))
+  expect(onAfterRead).toHaveBeenCalledTimes(1)
 
   await wrapper.setProps({ disabled: true })
   expect(wrapper.html()).toMatchSnapshot()

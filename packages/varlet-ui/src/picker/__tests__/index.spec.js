@@ -28,11 +28,16 @@ test('test picker functional show & close', async () => {
   expect(onOpen).toHaveBeenCalledTimes(1)
   expect(document.querySelector('.var-popup').style.display).toBe('')
 
+  await delay(300)
+  expect(onOpened).toHaveBeenCalledTimes(1)
+
   Picker.close()
+  await delay(16)
+  expect(onClose).toHaveBeenCalledTimes(1)
 
   await delay(300)
-  expect(onClose).toHaveBeenCalledTimes(1)
   expect(document.querySelector('.var-popup')).toBeFalsy()
+  expect(onClosed).toHaveBeenCalledTimes(1)
 })
 
 test('test picker functional confirm', async () => {
