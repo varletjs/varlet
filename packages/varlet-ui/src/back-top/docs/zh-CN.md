@@ -16,9 +16,9 @@ createApp().use(BackTop)
 ### 基本使用
 
 ```html
-<div class="var-back-top__example">
+<div>
   <var-cell v-for="list in lists" :key="list">Scroll to bottom {{ list }}</var-cell>
-  <var-back-top target=".var-back-top__example" :duration="300" />
+  <var-back-top :duration="300" />
 </div>
 ```
 ```javascript

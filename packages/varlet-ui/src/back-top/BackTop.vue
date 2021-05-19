@@ -23,7 +23,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const element: Ref<Element | null> = ref(null)
+    const element: Ref<Element | Window> = ref(window)
     const show: Ref<boolean> = ref(false)
 
     const click = () => {
@@ -57,13 +57,11 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      element.value = getElement()
-      if (!element.value) return
+      if (props.target) element.value = getElement()
       element.value.addEventListener('scroll', throttleScroll)
     })
 
     onBeforeUnmount(() => {
-      if (!element.value) return
       element.value.removeEventListener('scroll', throttleScroll)
     })
 

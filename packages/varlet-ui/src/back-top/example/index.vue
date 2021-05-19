@@ -1,7 +1,7 @@
 <template>
-  <div class="var-back-top__example">
+  <div>
     <var-cell v-for="list in lists" :key="list">Scroll to bottom {{ list }}</var-cell>
-    <var-back-top target=".var-back-top__example" :duration="300" />
+    <var-back-top :duration="300" />
   </div>
 </template>
 
@@ -24,10 +24,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.var-back-top__example {
-  height: calc(100vh - 40px);
-  overflow: auto;
-}
-</style>
