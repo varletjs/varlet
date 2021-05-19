@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/haoziqaq/varlet/compare/v1.3.5...v1.4.0) (2021-05-19)
+
+
+### Bug Fixes
+
+* **slider:** fix error method ([6e1774f](https://github.com/haoziqaq/varlet/commit/6e1774fa57f805027603b2b2c3ed5be08067ea91))
+* **snackbar:** add install method of snackbar component ([0b403cc](https://github.com/haoziqaq/varlet/commit/0b403cccfb53685488c45ecf86aedd58b96f1553))
+* **type:** fix error type of snackbar ([430e382](https://github.com/haoziqaq/varlet/commit/430e3828a68e595f049599231a36b379dfa81a37))
+* **types:** fix snackbar option type ([a04588e](https://github.com/haoziqaq/varlet/commit/a04588e7f1c181670681024ede8e038471185f1f))
+* **ui/button:** fix button block style to class ([433633c](https://github.com/haoziqaq/varlet/commit/433633cf82e1adccb542b69e04ad7a458884a313))
+
+
+### Features
+
+* 添加form组件单元测试 ([93420c1](https://github.com/haoziqaq/varlet/commit/93420c1d344e906d5a7f5ec7a91bc4ece82d40f5))
+
+
+
+
+
 ## [1.3.5](https://github.com/haoziqaq/varlet/compare/v1.3.4...v1.3.5) (2021-05-14)
 
 
