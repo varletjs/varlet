@@ -211,14 +211,14 @@ export function mockStubs() {
   }
 }
 
-export function mockWarn() {
-  const originWarn = console.warn
+export function mockConsole(method: keyof Console) {
+  const originMethod = console[method]
 
-  console.warn = () => {}
+  console[method] = () => {}
 
   return {
     mockRestore() {
-      console.warn = originWarn
+      console[method] = originMethod
     },
   }
 }

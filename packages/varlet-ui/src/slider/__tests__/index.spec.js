@@ -2,9 +2,8 @@ import example from '../example'
 import Slider from '..'
 import VarSlider from '../Slider'
 import { mount } from '@vue/test-utils'
-import { createApp, warn } from 'vue'
-import { delay, trigger } from '../../utils/jest'
-import VarSwitch from '../../switch/Switch'
+import { createApp } from 'vue'
+import { delay, trigger, mockConsole } from '../../utils/jest'
 
 
 test('test slider example', () => {
@@ -117,7 +116,8 @@ test('test slider labelVisible prop', async () => {
 })
 
 test('test step prop', async () => {
-  const template = ` <var-slider v-model="value" :step="step"/> `
+  const { mockRestore } = mockConsole('warn')
+  const template = `<var-slider v-model="value" :step="step"/> `
 
   const wrapper = mount({
     components: {
@@ -143,6 +143,31 @@ test('test step prop', async () => {
   await trigger(el, 'touchend', 50, 0)
 
   expect(wrapper.vm.value).not.toBe(0)
+  mockRestore()
+})
+
+test('test slider value legal', async () => {
+  const { mockRestore } = mockConsole('error')
+  const template = `<var-slider v-model="value" :range="range" /> `
+
+  const wrapper = mount({
+    components: {
+      [VarSlider.name]: VarSlider
+    },
+    data() {
+      return {
+        value: 0,
+        range: true
+      }
+    },
+    template
+  })
+
+  await delay(0)
+  await wrapper.setData({ value: [] })
+  await wrapper.setData({ range: false, value: [] })
+
+  mockRestore()
 })
 
 test('test slider not available', async () => {
