@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/haoziqaq/varlet/compare/v1.4.0...v1.4.1) (2021-05-19)
+
+
+### Bug Fixes
+
+* **back-top:** add window as default value of target ([f293a94](https://github.com/haoziqaq/varlet/commit/f293a94c82c6dca108158cc7348cbd4ba9ed7526))
+* **ui/uploader:** add disabled and readonly case to the handleChange method ([da82ae2](https://github.com/haoziqaq/varlet/commit/da82ae2cf2dab9a6801dbe695f2c65e8e4673aed))
+
+
+
+
+
 # [1.4.0](https://github.com/haoziqaq/varlet/compare/v1.3.5...v1.4.0) (2021-05-19)
 
 
