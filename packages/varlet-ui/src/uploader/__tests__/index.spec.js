@@ -167,6 +167,7 @@ test('test uploader disabled', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
   await wrapper.vm.handleChange(createEvent('cat.png'))
+
   await wrapper.setProps({ disabled: true })
   expect(wrapper.html()).toMatchSnapshot()
   expect(wrapper.find('.var-uploader__action-input[disabled]').exists()).toBeTruthy()

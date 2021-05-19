@@ -91,7 +91,13 @@
 
       <div class="var-select__icon" :class="[!hint ? 'var-select--non-hint' : null]">
         <slot name="append-icon">
-          <var-icon name="close-circle" size="14px" v-if="clearable" @click="handleClear" />
+          <var-icon
+            class="var-select__clear-icon"
+            name="close-circle"
+            size="14px"
+            v-if="clearable"
+            @click="handleClear"
+          />
         </slot>
       </div>
     </div>

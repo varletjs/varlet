@@ -205,7 +205,11 @@ export default defineComponent({
     }
 
     const handleChange = async (event: Event) => {
-      const { maxsize, maxlength, modelValue, onOversize, onAfterRead } = props
+      const { maxsize, maxlength, modelValue, onOversize, onAfterRead, readonly, disabled } = props
+
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
+        return
+      }
 
       const getValidSizeVarFile = (varFiles: VarFile[]): VarFile[] => {
         return varFiles.filter((varFile) => {

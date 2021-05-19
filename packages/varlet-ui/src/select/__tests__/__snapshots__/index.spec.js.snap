@@ -121,7 +121,7 @@ exports[`test select example 1`] = `
       <!--teleport start-->
       <!--teleport end-->
     </div>
-    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: all 0ms; font-size: 14px;\\"></i></div>
+    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition: all 0ms; font-size: 14px;\\"></i></div>
   </div>
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
