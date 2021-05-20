@@ -24,7 +24,7 @@ interface RippleHTMLElement extends HTMLElement {
   _ripple?: RippleOptions
 }
 
-const ANIMATION_DURATION = 300
+const ANIMATION_DURATION = 250
 
 function setStyles(element: RippleHTMLElement) {
   const { zIndex, position } = window.getComputedStyle(element)
