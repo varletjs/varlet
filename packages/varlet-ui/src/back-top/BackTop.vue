@@ -23,13 +23,13 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const element: Ref<Element | Window> = ref(window)
+    let element: Element | Window = window
     const show: Ref<boolean> = ref(false)
 
     const click = () => {
       props.onClick?.()
-      const top = getScrollTop(element.value as Element)
-      const left = getScrollLeft(element.value as Element)
+      const top = getScrollTop(element as Element)
+      const left = getScrollLeft(element as Element)
 
       const startTime = Date.now()
 
@@ -38,35 +38,37 @@ export default defineComponent({
         if (progress < 1) {
           const nextTop = top * (1 - easeInOutCubic(progress))
 
-          ;(element.value as Element).scrollTo(left, nextTop)
+          ;(element as Element).scrollTo(left, nextTop)
           requestAnimationFrame(frameFunc)
         } else {
-          ;(element.value as Element).scrollTo(left, 0)
+          ;(element as Element).scrollTo(left, 0)
         }
       }
       requestAnimationFrame(frameFunc)
     }
 
     const scroll = () => {
-      show.value = getScrollTop(element.value as Element) >= toNumber(props.visibilityHeight)
+      show.value = getScrollTop(element as Element) >= toNumber(props.visibilityHeight)
     }
 
     const throttleScroll = throttle(scroll, 200)
 
     const getElement = () => {
       if (!isString(props.target)) throw Error('[Varlet] BackTop: type of prop "target" should be a string')
+      
       const el = document.querySelector(props.target)
       if (!el) throw Error('[Varlet] BackTop: "target" should be a selector')
+
       return el
     }
 
     onMounted(() => {
-      if (props.target) element.value = getElement()
-      element.value.addEventListener('scroll', throttleScroll)
+      if (props.target) element = getElement()
+      element.addEventListener('scroll', throttleScroll)
     })
 
     onBeforeUnmount(() => {
-      element.value.removeEventListener('scroll', throttleScroll)
+      element.removeEventListener('scroll', throttleScroll)
     })
 
     return {
