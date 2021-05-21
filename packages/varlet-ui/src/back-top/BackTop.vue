@@ -37,7 +37,7 @@ export default defineComponent({
         const progress = (Date.now() - startTime) / props.duration
         if (progress < 1) {
           const nextTop = top * (1 - easeInOutCubic(progress))
-            
+
           ;(element.value as Element).scrollTo(left, nextTop)
           requestAnimationFrame(frameFunc)
         } else {

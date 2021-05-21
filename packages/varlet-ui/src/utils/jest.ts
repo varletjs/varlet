@@ -1,5 +1,6 @@
 import { ComponentPublicInstance, nextTick } from 'vue'
 import { VueWrapper, DOMWrapper, config } from '@vue/test-utils'
+import { isPlainObject } from './shared'
 
 export const delay = (time: number) => new Promise((resolve) => setTimeout(resolve, time))
 
@@ -220,5 +221,17 @@ export function mockConsole(method: keyof Console) {
     mockRestore() {
       console[method] = originMethod
     },
+  }
+}
+
+export function mockScrollTo(Element: any) {
+  Element.prototype.scrollTo = function(x: ScrollToOptions | number, y?: number) {
+    if (isPlainObject(x)) {
+      this.scrollLeft = x.left;
+      this.scrollTop = x.top
+    } else {
+      this.scrollLeft = x;
+      this.scrollTop = y
+    }
   }
 }

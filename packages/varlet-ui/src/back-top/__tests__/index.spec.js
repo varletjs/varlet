@@ -3,7 +3,7 @@ import BackTop from '..'
 import VarBackTop from '../BackTop'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { delay, mockScrollTo } from '../../utils/jest'
 
 test('test backTop plugin', () => {
   const app = createApp({}).use(BackTop)
@@ -17,6 +17,8 @@ test('test backTop example', () => {
 })
 
 test('test backTop props', async () => {
+  mockScrollTo(HTMLDivElement)
+
   const template = `
     <div class="back-top__test" style="height: 300px; overflow: auto">
       <div style="height: 5000px"></div>

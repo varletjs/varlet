@@ -5,7 +5,7 @@ import VarIndexBar from '../IndexBar'
 import VarIndexAnchor from '../../index-anchor/IndexAnchor'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { delay, mockScrollTo } from '../../utils/jest'
 
 test('test indexBar example', async () => {
   const wrapper = mount(example)
@@ -60,10 +60,7 @@ test('test stickyOffsetTop and z-index prop', () => {
 })
 
 test('test indexBar event', async () => {
-  HTMLHtmlElement.prototype.scrollTo = function(left, top) {
-    this.scrollLeft = left;
-    this.scrollTop = top
-  }
+  mockScrollTo(HTMLHtmlElement)
 
   const template = `
     <div style="height: 50px; overflow: auto">
