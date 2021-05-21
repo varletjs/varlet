@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.5](https://github.com/haoziqaq/varlet/compare/v1.4.4...v1.4.5) (2021-05-21)
+
+
+### Bug Fixes
+
+* use ScrollTo method to replace back-top animation ([88b6577](https://github.com/haoziqaq/varlet/commit/88b65773a13eff1b1764a6751fc9d7109ef95e61))
+* **ui/tabs:** fix bug of tabs scrolling fail in the safari ([3e96046](https://github.com/haoziqaq/varlet/commit/3e960460069c67a95945819fa238508b218342b1))
+
+
+
+
+
 ## [1.4.4](https://github.com/haoziqaq/varlet/compare/v1.4.3...v1.4.4) (2021-05-21)
 
 
