@@ -48,11 +48,6 @@ export function trigger(
   return nextTick()
 }
 
-export function scrollTo(top: number) {
-  Object.defineProperty(window, 'scrollTop', { value: top, writable: true })
-  return trigger(window, 'scroll')
-}
-
 export function mockOffset() {
   Object.defineProperties(HTMLElement.prototype, {
     offsetWidth: {

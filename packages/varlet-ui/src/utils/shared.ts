@@ -139,6 +139,8 @@ export const createCache = <T>(max: number): CacheInstance<T> => {
   }
 }
 
+export const linear = (value: number): number => value
+
 export const cubic = (value: number): number => value ** 3
 
 export const easeInOutCubic = (value: number): number =>

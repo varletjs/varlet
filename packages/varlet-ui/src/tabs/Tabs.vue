@@ -53,8 +53,8 @@ import {
 import { props } from './props'
 import { TabsProvider, useTabList } from './provide'
 import { TabProvider } from '../tab/provide'
-import { isNumber } from '../utils/shared'
-import { toSizeUnit } from '../utils/elements'
+import { easeInOutCubic, isNumber, linear } from '../utils/shared'
+import { toSizeUnit, scrollTo } from '../utils/elements'
 
 export default defineComponent({
   name: 'VarTabs',
@@ -136,15 +136,15 @@ export default defineComponent({
 
       if (props.layoutDirection === 'horizontal') {
         const left: number = el.offsetLeft + el.offsetWidth / 2 - scroller.offsetWidth / 2
-        scroller.scrollTo({
+        scrollTo(scroller, {
           left,
-          behavior: 'smooth',
+          animation: linear,
         })
       } else {
         const top: number = el.offsetTop + el.offsetHeight / 2 - scroller.offsetHeight / 2
-        scroller.scrollTo({
+        scrollTo(scroller, {
           top,
-          behavior: 'smooth',
+          animation: linear,
         })
       }
     }

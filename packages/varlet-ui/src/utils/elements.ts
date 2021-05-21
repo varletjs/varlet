@@ -1,4 +1,4 @@
-import { isNumber, isString, toNumber } from './shared'
+import { easeInOutCubic, isNumber, isString, toNumber } from './shared'
 
 export function getTop(element: HTMLElement): number {
   const { top } = element.getBoundingClientRect()
@@ -127,4 +127,32 @@ export function nextTickFrame(fn: FrameRequestCallback) {
   requestAnimationFrame(() => {
     requestAnimationFrame(fn)
   })
+}
+
+interface ScrollToOptions {
+  top?: number
+  left?: number
+  duration?: number
+  animation: (progress: number) => number
+}
+
+export function scrollTo(element: HTMLElement, { top = 0, left = 0, duration = 300, animation }: ScrollToOptions) {
+  const startTime = Date.now()
+  const { scrollTop, scrollLeft } = element
+
+  const frame = () => {
+    const progress = (Date.now() - startTime) / duration
+
+    if (progress < 1) {
+      const nextTop = scrollTop + (top - scrollTop) * animation(progress)
+      const nextLeft = scrollLeft + (left - scrollLeft) * animation(progress)
+
+      element.scrollTo(nextLeft, nextTop)
+      requestAnimationFrame(frame)
+    } else {
+      element.scrollTo(left, top)
+    }
+  }
+
+  requestAnimationFrame(frame)
 }
