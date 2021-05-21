@@ -1,20 +1,20 @@
 @import '../styles/var';
 
 @dialog-width: 280px;
-@dialog-padding: 20px;
 @dialog-border-radius: 2px;
+@dialog-title-padding: 20px 20px 0;
 @dialog-message-color: #888;
-@dialog-message-padding: 12px 0;
+@dialog-message-padding: 12px 20px;
 @dialog-message-line-height: 24px;
 @dialog-message-font-size: @font-size-md;
 @dialog-title-font-size: @font-size-lg;
+@dialog-actions-padding: 0 12px 12px;
 @dialog-button-margin-left: 6px;
 @dialog-confirm-button-color: @color-primary;
 @dialog-cancel-button-color: @color-primary;
 
 .var-dialog {
   width: @dialog-width;
-  padding: @dialog-padding;
   border-radius: 3px;
 
   &__popup-radius {
@@ -24,6 +24,7 @@
   &__title {
     font-size: @dialog-title-font-size;
     font-weight: 400;
+    padding: @dialog-title-padding;
   }
 
   &__message {
@@ -36,6 +37,7 @@
   &__actions {
     display: flex;
     justify-content: flex-end;
+    padding: @dialog-actions-padding;
   }
 
   &__button[var-dialog-cover] {
