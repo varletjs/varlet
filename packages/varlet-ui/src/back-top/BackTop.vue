@@ -13,7 +13,7 @@ import Button from '../button'
 import Icon from '../icon'
 import { props } from './props'
 import { isString, easeInOutCubic, throttle, toNumber } from '../utils/shared'
-import { getScrollTop, getScrollLeft, requestAnimationFrame } from '../utils/elements'
+import { getScrollTop, getScrollLeft, scrollTo } from '../utils/elements'
 
 export default defineComponent({
   name: 'VarBackTop',
@@ -23,47 +23,37 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    let element: Element | Window = window
+    let element: HTMLElement | Window = window
     const show: Ref<boolean> = ref(false)
 
     const click = () => {
       props.onClick?.()
-      const top = getScrollTop(element as Element)
-      const left = getScrollLeft(element as Element)
+      const left = getScrollLeft(element as HTMLElement)
 
-      const startTime = Date.now()
-
-      const frameFunc = () => {
-        const progress = (Date.now() - startTime) / props.duration
-        if (progress < 1) {
-          const nextTop = top * (1 - easeInOutCubic(progress))
-
-          ;(element as Element).scrollTo(left, nextTop)
-          requestAnimationFrame(frameFunc)
-        } else {
-          ;(element as Element).scrollTo(left, 0)
-        }
-      }
-      requestAnimationFrame(frameFunc)
+      scrollTo(element, {
+        left,
+        duration: props.duration,
+        animation: easeInOutCubic
+      })
     }
 
     const scroll = () => {
-      show.value = getScrollTop(element as Element) >= toNumber(props.visibilityHeight)
+      show.value = getScrollTop(element as HTMLElement) >= toNumber(props.visibilityHeight)
     }
 
     const throttleScroll = throttle(scroll, 200)
 
-    const getElement = () => {
+    const getHTMLElement = () => {
       if (!isString(props.target)) throw Error('[Varlet] BackTop: type of prop "target" should be a string')
-      
+
       const el = document.querySelector(props.target)
       if (!el) throw Error('[Varlet] BackTop: "target" should be a selector')
 
-      return el
+      return el as HTMLElement
     }
 
     onMounted(() => {
-      if (props.target) element = getElement()
+      if (props.target) element = getHTMLElement()
       element.addEventListener('scroll', throttleScroll)
     })
 

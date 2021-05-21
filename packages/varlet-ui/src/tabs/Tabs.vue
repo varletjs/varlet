@@ -53,7 +53,7 @@ import {
 import { props } from './props'
 import { TabsProvider, useTabList } from './provide'
 import { TabProvider } from '../tab/provide'
-import { easeInOutCubic, isNumber, linear } from '../utils/shared'
+import { isNumber, linear } from '../utils/shared'
 import { toSizeUnit, scrollTo } from '../utils/elements'
 
 export default defineComponent({

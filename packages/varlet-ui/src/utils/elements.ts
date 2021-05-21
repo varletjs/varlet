@@ -1,4 +1,4 @@
-import { easeInOutCubic, isNumber, isString, toNumber } from './shared'
+import { isNumber, isString, toNumber } from './shared'
 
 export function getTop(element: HTMLElement): number {
   const { top } = element.getBoundingClientRect()
@@ -136,9 +136,11 @@ interface ScrollToOptions {
   animation: (progress: number) => number
 }
 
-export function scrollTo(element: HTMLElement, { top = 0, left = 0, duration = 300, animation }: ScrollToOptions) {
+export function scrollTo(element: HTMLElement | Window, { top = 0, left = 0, duration = 300, animation }: ScrollToOptions) {
   const startTime = Date.now()
-  const { scrollTop, scrollLeft } = element
+
+  const scrollTop = getScrollTop(element)
+  const scrollLeft = getScrollLeft(element)
 
   const frame = () => {
     const progress = (Date.now() - startTime) / duration
