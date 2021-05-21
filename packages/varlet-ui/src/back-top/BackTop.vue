@@ -13,7 +13,7 @@ import Button from '../button'
 import Icon from '../icon'
 import { props } from './props'
 import { isString, easeInOutCubic, throttle, toNumber } from '../utils/shared'
-import { getScrollTop, requestAnimationFrame } from '../utils/elements'
+import { getScrollTop, getScrollLeft, requestAnimationFrame } from '../utils/elements'
 
 export default defineComponent({
   name: 'VarBackTop',
@@ -29,15 +29,19 @@ export default defineComponent({
     const click = () => {
       props.onClick?.()
       const top = getScrollTop(element.value as Element)
+      const left = getScrollLeft(element.value as Element)
+
       const startTime = Date.now()
 
       const frameFunc = () => {
         const progress = (Date.now() - startTime) / props.duration
         if (progress < 1) {
-          ;(element.value as Element).scrollTop = top * (1 - easeInOutCubic(progress))
+          const nextTop = top * (1 - easeInOutCubic(progress))
+            
+          ;(element.value as Element).scrollTo(left, nextTop)
           requestAnimationFrame(frameFunc)
         } else {
-          ;(element.value as Element).scrollTop = 0
+          ;(element.value as Element).scrollTo(left, 0)
         }
       }
       requestAnimationFrame(frameFunc)

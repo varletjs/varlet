@@ -13,6 +13,12 @@ export function getScrollTop(element: Element | Window): number {
   return Math.max(top, 0)
 }
 
+export function getScrollLeft(element: Element | Window): number {
+  const left = 'scrollLeft' in element ? element.scrollLeft : element.pageXOffset
+
+  return Math.max(left, 0)
+}
+
 export function getLeft(element: HTMLElement): number {
   const { left } = element.getBoundingClientRect()
   return left + (document.body.scrollLeft || document.documentElement.scrollLeft)
