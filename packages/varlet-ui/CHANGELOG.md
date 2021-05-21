@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.4](https://github.com/haoziqaq/varlet/compare/v1.4.3...v1.4.4) (2021-05-21)
+
+
+### Bug Fixes
+
+* **back-top:** replace scrollTop to scrollTo ([776803f](https://github.com/haoziqaq/varlet/commit/776803fe5df175f276d388be5b8be049962b018a))
+
+
+
+
+
 ## [1.4.3](https://github.com/haoziqaq/varlet/compare/v1.4.2...v1.4.3) (2021-05-20)
 
 **Note:** Version bump only for package @varlet/ui
