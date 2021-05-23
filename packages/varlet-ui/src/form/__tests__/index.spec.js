@@ -8,6 +8,7 @@ import VarCheckbox from '../../checkbox/Checkbox'
 import VarCounter from '../../counter/Counter'
 import VarRate from '../../rate/Rate'
 import VarUploader from '../../uploader/Uploader'
+import VarSwitch from '../../switch/Switch'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/jest'
@@ -42,6 +43,7 @@ const Wrapper = {
     [VarCounter.name]: VarCounter,
     [VarRate.name]: VarRate,
     [VarUploader.name]: VarUploader,
+    [VarSwitch.name]: VarSwitch,
   },
 }
 
@@ -420,6 +422,55 @@ test('test form with uploader', async () => {
   const { form } = wrapper.vm.$refs
   await expectValidate(form, wrapper, '至少上传一个')
   await expectReset(form, wrapper)
+
+  wrapper.unmount()
+})
+
+test('test form with switch', async () => {
+  const onChange = jest.fn()
+
+  const wrapper = mount({
+    ...Wrapper,
+    data: () => ({
+      disabled: true,
+      readonly: false,
+      value: false,
+    }),
+    methods: {
+      onChange,
+    },
+    template: `
+      <var-form ref="form" :disabled="disabled" :readonly="readonly">
+        <var-switch
+          :rules="[v => v === true || '您必须开启']"
+          v-model="value"
+          @change="onChange"
+        />
+      </var-form>
+    `,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.find('.var-switch-block').trigger('click')
+  expect(wrapper.vm.value).toBe(false)
+  expect(onChange).toHaveBeenCalledTimes(0)
+
+  await wrapper.setData({ disabled: false, readonly: true })
+
+  await wrapper.find('.var-switch-block').trigger('click')
+  expect(wrapper.vm.value).toBe(false)
+  expect(onChange).toHaveBeenCalledTimes(0)
+
+  const { form } = wrapper.vm.$refs
+  await expectValidate(form, wrapper, '您必须开启')
+  await expectReset(form, wrapper)
+
+  await wrapper.setData({ disabled: false, readonly: false })
+
+  await wrapper.find('.var-switch-block').trigger('click')
+  expect(wrapper.vm.value).toBe(true)
+  expect(onChange).toHaveBeenCalledTimes(1)
 
   wrapper.unmount()
 })
