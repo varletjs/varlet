@@ -81,6 +81,7 @@ export default defineComponent({
       type: String,
     },
   },
+  emits: ['update', 'change-prevent-update'],
   setup(props, { emit }) {
     const inner: Ref<HTMLDivElement | null> = ref(null)
     const disableHour: Ref<Array<string>> = ref([])
