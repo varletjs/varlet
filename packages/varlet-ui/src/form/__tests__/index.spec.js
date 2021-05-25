@@ -9,9 +9,10 @@ import VarCounter from '../../counter/Counter'
 import VarRate from '../../rate/Rate'
 import VarUploader from '../../uploader/Uploader'
 import VarSwitch from '../../switch/Switch'
+import VarSlider from '../../slider/Slider'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { delay, trigger } from '../../utils/jest'
 
 test('test form plugin', () => {
   const app = createApp({}).use(Form)
@@ -44,6 +45,7 @@ const Wrapper = {
     [VarRate.name]: VarRate,
     [VarUploader.name]: VarUploader,
     [VarSwitch.name]: VarSwitch,
+    [VarSlider.name]: VarSlider,
   },
 }
 
@@ -473,4 +475,68 @@ test('test form with switch', async () => {
   expect(onChange).toHaveBeenCalledTimes(1)
 
   wrapper.unmount()
+})
+
+
+test('test form with slider', async () => {
+  const onChange = jest.fn()
+  const onStart = jest.fn()
+  const onEnd = jest.fn()
+
+  const wrapper = mount({
+    ...Wrapper,
+    data: () => ({
+      disabled: true,
+      readonly: false,
+      value: 5,
+    }),
+    methods: {
+      onChange,
+      onStart,
+      onEnd
+    },
+    template: `
+      <var-form ref="form" :disabled="disabled" :readonly="readonly">
+        <var-slider
+          v-model="value"
+          :rules="[(v) => v > 10 || '必须大于10']"
+          @change="onChange"
+          @start="onStart"
+          @end="onEnd"
+        />
+      </var-form>
+    `,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  const el = wrapper.find('.var-slider__thumb-label')
+  await trigger(el, 'touchstart', 0, 0)
+  await trigger(el, 'touchmove', 20, 0)
+  await trigger(el, 'touchend', 40, 0)
+  expect(wrapper.vm.value).toBe(5)
+
+  await wrapper.setData({ disabled: false, readonly: true })
+  await trigger(el, 'touchstart', 20, 0)
+  await trigger(el, 'touchmove', 10, 0)
+  await trigger(el, 'touchend', 70, 0)
+  expect(wrapper.vm.value).toBe(5)
+
+  expect(onChange).toHaveBeenCalledTimes(0)
+  expect(onStart).toHaveBeenCalledTimes(0)
+  expect(onEnd).toHaveBeenCalledTimes(0)
+
+  const { form } = wrapper.vm.$refs
+  await expectValidate(form, wrapper, '必须大于10')
+  await expectReset(form, wrapper)
+
+  await wrapper.setData({ disabled: false, readonly: false })
+  await trigger(el, 'touchstart', 20, 0)
+  await trigger(el, 'touchmove', 10, 0)
+  await trigger(el, 'touchend', 70, 0)
+  expect(wrapper.vm.value).not.toBe(5)
+
+  expect(onChange).toHaveBeenCalled()
+  expect(onStart).toHaveBeenCalledTimes(1)
+  expect(onEnd).toHaveBeenCalledTimes(1)
 })

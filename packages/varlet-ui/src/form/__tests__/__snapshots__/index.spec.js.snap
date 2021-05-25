@@ -415,6 +415,72 @@ exports[`test form with select 4`] = `
 </div>"
 `;
 
+exports[`test form with slider 1`] = `
+"<div class=\\"var-form\\">
+  <div class=\\"var-slider\\">
+    <div class=\\"var-slider-block var-slider__disable\\">
+      <div class=\\"var-slider__track\\">
+        <div class=\\"var-slider__track-fill\\" style=\\"width: 5%; left: 0%;\\"></div>
+      </div>
+      <div class=\\"var-slider__thumb\\" style=\\"left: 5%;\\">
+        <div class=\\"var-slider__thumb-block\\"></div>
+        <div class=\\"var-slider__thumb-ripple\\"></div>
+        <div class=\\"var-slider__thumb-label\\"><span>5</span></div>
+      </div>
+      <!--v-if-->
+    </div>
+    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`test form with slider 2`] = `
+"<div class=\\"var-form\\">
+  <div class=\\"var-slider\\">
+    <div class=\\"var-slider-block var-slider__error\\">
+      <div class=\\"var-slider__track\\">
+        <div class=\\"var-slider__track-fill\\" style=\\"width: 5%; left: 0%;\\"></div>
+      </div>
+      <div class=\\"var-slider__thumb\\" style=\\"left: 5%;\\">
+        <div class=\\"var-slider__thumb-block\\"></div>
+        <div class=\\"var-slider__thumb-ripple\\"></div>
+        <div class=\\"var-slider__thumb-label\\"><span>5</span></div>
+      </div>
+      <!--v-if-->
+    </div>
+    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+      <div class=\\"var-form-details\\">
+        <div class=\\"var-form-details__message\\">必须大于10</div>
+        <div class=\\"var-form-details__length\\"></div>
+      </div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`test form with slider 3`] = `
+"<div class=\\"var-form\\">
+  <div class=\\"var-slider\\">
+    <div class=\\"var-slider-block\\">
+      <div class=\\"var-slider__track\\">
+        <div class=\\"var-slider__track-fill\\" style=\\"width: 0%; left: 0%;\\"></div>
+      </div>
+      <div class=\\"var-slider__thumb\\" style=\\"left: 0%;\\">
+        <div class=\\"var-slider__thumb-block\\"></div>
+        <div class=\\"var-slider__thumb-ripple\\"></div>
+        <div class=\\"var-slider__thumb-label\\"><span>0</span></div>
+      </div>
+      <!--v-if-->
+    </div>
+    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</div>"
+`;
+
 exports[`test form with switch 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-switch\\">
