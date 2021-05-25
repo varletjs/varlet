@@ -8,7 +8,6 @@
     }"
     :class="[!block ? 'var--inline-block' : null]"
     v-ripple="{ disabled: !ripple }"
-    v-bind="$attrs"
   >
     <img
       class="var-image__image"
@@ -49,7 +48,6 @@ export default defineComponent({
     Lazy,
     Ripple,
   },
-  inheritAttrs: false,
   props,
   setup(props) {
     const handleLoad = (e: Event) => {
