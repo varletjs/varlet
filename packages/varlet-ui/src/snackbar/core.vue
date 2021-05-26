@@ -23,7 +23,7 @@ import { props } from './props'
 import { useLock } from '../context/lock'
 import { SNACKBAR_TYPE, SnackbarType } from './index'
 
-const ICON_TYPE_DICT = {
+const ICON_TYPE_DICT: Record<SnackbarType, string> = {
   success: 'checkbox-marked-circle',
   warning: 'warning',
   info: 'information',
@@ -55,16 +55,24 @@ export default defineComponent({
       return `${baseClass}${verticalClass}${typeClass}`
     })
 
-    const iconName = computed(() => ICON_TYPE_DICT[props.type as SnackbarType] || '')
+    const iconName = computed(() => {
+      if (!props.type) return ''
+
+      return ICON_TYPE_DICT[props.type]
+    })
+
+    const updateAfterDuration = () => {
+      timer.value = setTimeout(() => {
+        props.type !== 'loading' && props['onUpdate:show']?.(false)
+      }, props.duration)
+    }
 
     watch(
       () => props.show,
       (show) => {
         if (show) {
           props.onOpen?.()
-          timer.value = setTimeout(() => {
-            props['onUpdate:show']?.(false)
-          }, props.duration)
+          updateAfterDuration()
         } else if (show === false) {
           clearTimeout(timer.value)
           props.onClose?.()
@@ -76,18 +84,14 @@ export default defineComponent({
       () => props._update,
       () => {
         clearTimeout(timer.value)
-        timer.value = setTimeout(() => {
-          props['onUpdate:show']?.(false)
-        }, props.duration)
+        updateAfterDuration()
       }
     )
 
     onMounted(() => {
       if (props.show) {
         props.onOpen?.()
-        timer.value = setTimeout(() => {
-          props['onUpdate:show']?.(false)
-        }, props.duration)
+        updateAfterDuration()
       }
     })
 
