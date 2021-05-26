@@ -20,7 +20,7 @@ test('test snackbar style', async () => {
   const template = `
      <var-snackbar
       v-model:show="show"
-      type="loading"
+      type="error"
       position="center"
       content-class="test-snackbar"
       vertical
