@@ -24,7 +24,7 @@ test('test datePicker style and type', async () => {
       shadow
       header-color="purple"
       color="#7bb872"
-      show-current
+      :show-current="false"
     />
   `
   const wrapper = mount({
@@ -98,7 +98,7 @@ test('test max and min', async () => {
   expect(wrapper.find('.var-year-picker__panel').findAll('li').length).toBe(1)
 })
 
-test('test date-picker v-model', async () => {
+test('test datePicker v-model', async () => {
   const template = `<var-date-picker :type="type" v-model="date" />`
 
   const wrapper = mount({
@@ -134,7 +134,7 @@ test('test date-picker v-model', async () => {
   expect(wrapper.vm.date).toBe('2021-04-01')
 })
 
-test('test date-picker multiple prop', async () => {
+test('test datePicker multiple prop', async () => {
   const template = `<var-date-picker multiple v-model="date" />`
 
   const wrapper = mount({
@@ -161,7 +161,9 @@ test('test date-picker multiple prop', async () => {
   expect(wrapper.vm.date).toEqual(['2021-05-19', '2021-05-02', '2021-05-03'])
 })
 
-test('test date-picker range prop', async () => {
+test('test datePicker range prop', async () => {
+  const { mockRestore } = mockConsole('error')
+
   const template = `<var-date-picker range :type="type" v-model="date" />`
 
   const wrapper = mount({
@@ -192,6 +194,8 @@ test('test date-picker range prop', async () => {
   await lis[0].find('button').trigger('click')
   await lis[2].find('button').trigger('click')
   expect(wrapper.vm.date).toEqual(['2021-01', '2021-03'])
+
+  mockRestore()
 })
 
 test('click html after picker header', async () => {
@@ -228,7 +232,7 @@ test('click html after picker header', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 })
 
-test('test date-picker readonly', async () => {
+test('test datePicker readonly', async () => {
   const template = `<var-date-picker v-model="date" readonly :type="type" />`
 
   const wrapper = mount({

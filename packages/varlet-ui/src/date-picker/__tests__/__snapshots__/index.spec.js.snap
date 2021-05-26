@@ -1048,7 +1048,7 @@ exports[`test datePicker style and type 2`] = `
                     <!--v-if-->
                     <div class=\\"var-button__content\\">23</div>
                   </button></li>
-                <li><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-primary var-button--text var-button--round var-button--outline var-day-picker__button var-day-picker__button--usable\\" style=\\"color: rgb(123, 184, 114);\\" var-day-picker-cover=\\"\\">
+                <li><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-primary var-button--text var-button--round var-day-picker__button var-day-picker__button--usable\\" style=\\"color: rgba(0, 0, 0, 0.87);\\" var-day-picker-cover=\\"\\">
                     <!--v-if-->
                     <div class=\\"var-button__content\\">24</div>
                   </button></li>
@@ -1056,7 +1056,7 @@ exports[`test datePicker style and type 2`] = `
                     <!--v-if-->
                     <div class=\\"var-button__content\\">25</div>
                   </button></li>
-                <li><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-primary var-button--text var-button--round var-day-picker__button var-day-picker__button--usable\\" style=\\"color: rgba(0, 0, 0, 0.87);\\" var-day-picker-cover=\\"\\">
+                <li><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-primary var-button--text var-button--round var-button--outline var-day-picker__button var-day-picker__button--usable\\" style=\\"color: rgb(123, 184, 114);\\" var-day-picker-cover=\\"\\">
                     <!--v-if-->
                     <div class=\\"var-button__content\\">26</div>
                   </button></li>
