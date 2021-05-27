@@ -1,5 +1,11 @@
 <template>
-  <div class="space"></div>
+  <div class="logo">
+    <h1 class="varlet-home__title">
+      <img class="varlet-home__image" src="https://varlet.gitee.io/varlet-ui/varlet_icon.png" />
+      <span>VARLET</span>
+    </h1>
+    <h2 class="varlet-home__desc">{{ pack.title }}</h2>
+  </div>
   <var-cell v-for="component in components" :key="component.text" @click="toComponent(component)">
     <template #extra>
       <var-icon name="chevron-right" size="14" />
@@ -17,6 +23,7 @@ import Ripple from '../../ripple'
 import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
 import { watchLang, watchPlatform } from '../../utils/components'
+import { use, pack } from './locale'
 
 const varletConfig = require('../../../varlet.config')
 
@@ -35,6 +42,7 @@ export default {
     const router = useRouter()
 
     watchLang((newValue) => {
+      use(newValue)
       lang.value = newValue
     })
 
@@ -58,6 +66,7 @@ export default {
       platform,
       lang,
       toComponent,
+      pack,
     }
   },
 }
@@ -65,8 +74,44 @@ export default {
 
 <style scoped lang="less">
 @import '../../styles/var';
-.space {
-  height: 10px;
+.logo {
+  height: 100px;
+  padding-top: 30px;
+  margin-bottom: 20px;
+}
+
+.varlet-home__title {
+  margin: 0 0 16px;
+  font-size: 32px;
+}
+
+.varlet-home__title,
+.varlet-home__desc {
+  padding-left: 16px;
+  font-weight: normal;
+  line-height: 1;
+  user-select: none;
+}
+
+.varlet-home__desc {
+  margin: 0 0 40px;
+  color: rgba(69, 90, 100, 0.6);
+  font-size: 14px;
+}
+
+.varlet-home__image {
+  width: 32px;
+  height: 32px;
+}
+
+.varlet-home__image,
+.varlet-home__title span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.varlet-home__title span {
+  margin-left: 16px;
 }
 
 .var-cell {
