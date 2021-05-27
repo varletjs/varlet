@@ -46,6 +46,8 @@ test('test datePicker style and type', async () => {
 
   await wrapper.setData({ type: 'date', date: '2021-05-19' })
 
+  await delay(200)
+
   expect(wrapper.html()).toMatchSnapshot()
 })
 
