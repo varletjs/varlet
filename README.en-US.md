@@ -5,7 +5,7 @@
   <h2>VARLET</h2>
   <p>Material design mobile component library for Vue3</p>
   <p>
-    <a href="https://varlet.gitee.io/varlet-ui/">开发文档</a>
+    <a href="https://varlet.gitee.io/varlet-ui/">Documentation</a>
   </p>
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
@@ -16,26 +16,26 @@
 
 ---
 
-### 介绍
+### Intro
 
-Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥抱`Vue3`生态，由社区几个不知天高地厚的小伙伴开发和维护。
+Varlet is a Material design mobile component library developed based on `Vue3`, developed and maintained by partners in the community.
 
-### 特性
-1. 提供40多个高质量通用组件
-2. 组件十分轻量
-3. 由国人开发，完善的中英文文档和后勤保障
-4. 支持按需引入
-5. 支持主题定制
-6. 支持国际化
-7. 支持webstorm，vscode组件属性高亮
-8. 支持SSR
-9. 支持Typescript
-10. 90%以上单元测试覆盖率，提供稳定性保证
+### Features
+ 1. Provide more than 40 high quality general purpose components
+ 2. Components are very lightweight
+ 3. Developed by Chinese, complete Chinese and English documentation and logistics support
+ 4. Support on-demand introduction
+ 5. Support theme customization
+ 6. Support internationalization
+ 7. Support WebStorm, VS Code component syntax highlighting
+ 8. Support the SSR
+ 9. Support the Typescript
+ 10. More than 90 percent unit test coverage, providing stability assurance
 
-### 安装
+### Install
 
 ### CDN
-`varlet.js`包含组件库的所有样式和逻辑，引入即可。
+`varlet.js` contain all the styles and logic of the component library, and you can import them.
 
 ```html
 <div id="app"></div>
@@ -43,7 +43,7 @@ Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥
 <script src="https://cdn.jsdelivr.net/npm/@varlet/ui/umd/varlet.js"></script>
 <script>
   const app = Vue.createApp({
-    template: '<var-button>按钮</var-button>'
+    template: '<var-button>Button</var-button>'
   })
   app.use(Varlet).mount('#app')
 </script>
@@ -51,7 +51,7 @@ Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥
 
 ### Webpack/Vite
 ```shell
-# 通过npm或yarn安装
+# Install with npm or yarn
 # npm
 npm i @varlet/ui -S
 # yarn
@@ -66,4 +66,3 @@ import '@varlet/ui/es/style'
 
 createApp(App).use(Varlet).mount('#app')
 ```
-
