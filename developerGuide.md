@@ -1,11 +1,11 @@
-# Developer Guide
+# 开发指南
 
-### Intro
-First, thank you for your interest in joining our development. Here are some considerations.
+### 介绍
+首先感谢您有兴趣加入我们的开发，以下介绍一些注意事项。
 
-### Quickstart
-The project is based on the `workspace` feature of yarn and `lerna` as the basic architecture of Monorepo. 
-The first fork of the repository is based on the dev branch, which is in the project root directory.
+### 快速开始
+项目基于yarn的`workspace`特性和`lerna`作为monorepo的基本架构。
+首先fork仓库，基于dev分支进行开发，在项目根目录下。
 
 ```shell
 yarn bootstrap
@@ -14,7 +14,7 @@ yarn dev
 ```
 
 ### Todo list
-1. Provides `jsx`,`tsx` syntax highlighting support(Complete).
-2. Improve the document reading experience and fix problems.
-3. Unit test all components and issue test report.
-4. Full component style detail optimization, animation curve optimization.
+1. 提供`jsx`、`tsx`语法高亮支持(完成)。
+2. 完善文档阅读体验，修复存在的问题。
+3. 全组件单元测试，并出测试报告。
+4. 全组件样式细节优化，动画曲线优化。
