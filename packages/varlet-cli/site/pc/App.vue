@@ -79,7 +79,7 @@ import '@varlet/ui/es/cell/style'
 import '@varlet/ui/es/icon/style'
 import '@varlet/ui/es/menu/style'
 import '@varlet/ui/es/loading/style'
-import { defineComponent, ref, Ref, watch, onMounted, nextTick, reactive } from 'vue'
+import { defineComponent, ref, Ref, watch, onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 
 type Menu = {
