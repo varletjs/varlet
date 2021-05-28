@@ -3,13 +3,15 @@
     <img src="https://varlet.gitee.io/varlet-ui/varlet_icon.png" width="201">
   </a>
   <h2>VARLET</h2>
-  <div>面向Vue3的Material风格移动端组件库</div>
-  <a style="display: block; margin-top: 5px" href="https://varlet.gitee.io/varlet-ui/">开发文档</a>
-  <div style="margin-top: 10px">
+  <p>Material design mobile component library for Vue3</p>
+  <p>
+    <a href="https://varlet.gitee.io/varlet-ui/">开发文档</a>
+  </p>
+  <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
     <img src="https://img.shields.io/codecov/c/github/haoziqaq/varlet" alt="coverage">
-    <img src="https://img.shields.io/npm/dm/@varlet/ui?style=flat-square&color=#4fc08d" alt="downloads" />
-  </div>
+    <img src="https://img.shields.io/npm/dm/@varlet/ui?style=flat-square" alt="downloads" />
+  </p>
 </div>
 
 ---
