@@ -647,6 +647,10 @@ iframe {
 
         &--title {
           font-size: 16px;
+          font-weight: 600;
+          color: #394950;
+          line-height: 28px;
+          padding: 8px 0 8px;
         }
 
         &--link {
