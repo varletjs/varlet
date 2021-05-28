@@ -29,7 +29,10 @@ module.exports = {
     },
   },
   mobile: {
-    title: 'Varlet 面向Vue3的Material风格移动端组件库',
+    title: {
+      'zh-CN': 'Varlet 面向Vue3的Material风格移动端组件库',
+      'en-US': 'Material design mobile components built for Vue3',
+    },
     description: 'Varlet 面向Vue3的Material风格移动端组件库',
     logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
     redirect: '/home',
