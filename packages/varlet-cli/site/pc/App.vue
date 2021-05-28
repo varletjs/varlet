@@ -36,7 +36,7 @@
     <div class="varlet-site-content">
       <div class="varlet-site-nav var-elevation--3" :ref="nav">
         <var-cell
-          v-for="item in menu"
+          v-for="(item, index) in menu"
           class="varlet-site-nav__item"
           :class="{
             'varlet-site-nav__item--active': item.doc === currentMenuName,
@@ -45,6 +45,7 @@
           }"
           v-ripple="{ touchmoveForbid: false, disabled: !!item.isTitle, color: '#2979ff' }"
           @click="changeRoute(item)"
+          :key="index"
         >
           <span v-if="item.isTitle" class="varlet-site-nav__item--title">{{ item.text[language] }}</span>
           <span v-else class="varlet-site-nav__item--link">
@@ -78,8 +79,8 @@ import '@varlet/ui/es/cell/style'
 import '@varlet/ui/es/icon/style'
 import '@varlet/ui/es/menu/style'
 import '@varlet/ui/es/loading/style'
-import { defineComponent, ref, Ref, watch, onMounted, nextTick } from 'vue'
-import { useRoute } from 'vue-router'
+import { defineComponent, ref, Ref, watch, onMounted, nextTick, reactive } from 'vue'
+import { useRoute, createWebHashHistory } from 'vue-router'
 
 type Menu = {
   isTitle: boolean
@@ -104,6 +105,7 @@ export default defineComponent({
     [Menu.name]: Menu,
     [Loading.name]: Loading,
   },
+
   setup() {
     const menu: Ref<Menu[]> = ref([])
     const language: Ref<string> = ref('')
