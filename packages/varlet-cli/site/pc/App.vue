@@ -80,7 +80,7 @@ import '@varlet/ui/es/icon/style'
 import '@varlet/ui/es/menu/style'
 import '@varlet/ui/es/loading/style'
 import { defineComponent, ref, Ref, watch, onMounted, nextTick, reactive } from 'vue'
-import { useRoute, createWebHashHistory } from 'vue-router'
+import { useRoute } from 'vue-router'
 
 type Menu = {
   isTitle: boolean
