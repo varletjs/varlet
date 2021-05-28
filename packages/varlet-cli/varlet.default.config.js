@@ -13,6 +13,10 @@ module.exports = {
     logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
     redirect: '/zh-CN/home',
     header: {
+      i18nButton: {
+        zh_CN: 'En',
+        en_US: '中文',
+      },
       logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
       search: {
         'zh-CN': '搜索文档...',
