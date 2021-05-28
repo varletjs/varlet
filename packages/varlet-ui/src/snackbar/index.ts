@@ -94,7 +94,7 @@ const TransitionGroupHost = {
       })
 
       const snackbarList = uniqSnackbarOptions.map((option: UniqSnackbarOptions) => {
-        if (option.reactiveSnackOptions.forbidClick) {
+        if (option.reactiveSnackOptions.forbidClick || option.reactiveSnackOptions.type === 'loading') {
           const transitionGroupEl = document.querySelector('.var-transition-group')
           ;(transitionGroupEl as HTMLElement).classList.add('var-pointer-auto')
         }
