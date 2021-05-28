@@ -25,7 +25,7 @@ import { reactive, ref } from 'vue'
 import { watchLang, watchPlatform } from '../../utils/components'
 import { use, pack } from './locale'
 
-const varletConfig = require('../../../../varlet-cli/site/site.config.json')
+const varletConfig = require('@varlet/cli/site/site.config.json')
 
 export default {
   name: 'HomeExample',
