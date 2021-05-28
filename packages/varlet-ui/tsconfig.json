@@ -5,7 +5,11 @@
     "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
+    "allowJs": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
     "allowSyntheticDefaultImports": true
   }
 }

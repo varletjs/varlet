@@ -165,6 +165,7 @@ export default defineComponent({
 
     menu.value = configMenu
     header.value = configHeader
+
     title.value = configTitle
 
     const changeRoute = (item) => {
@@ -199,7 +200,7 @@ export default defineComponent({
         let [, languageValue, name] = to.split('/')
         currentMenuName.value = name
         language.value = languageValue
-
+        document.title = config.pc.title[languageValue]
         isBack.value ? judgmentType('') : (isBack.value = true)
 
         if (!window['enableWatchURL']) {
