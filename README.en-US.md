@@ -4,6 +4,12 @@
   </a>
   <h2>VARLET</h2>
   <div>Material design mobile component library for Vue3</div>
+  <a style="display: block; margin-top: 5px" href="https://varlet.gitee.io/varlet-ui/">Documentation</a>
+  <div style="margin-top: 10px">
+    <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
+    <img src="https://img.shields.io/codecov/c/github/haoziqaq/varlet" alt="coverage">
+    <img src="https://img.shields.io/npm/dm/@varlet/ui?style=flat-square&color=#4fc08d" alt="downloads" />
+  </div>
 </div>
 
 ---
@@ -22,6 +28,7 @@ Varlet is a Material design mobile component library developed based on `Vue3`, 
  7. Support WebStorm, VS Code component syntax highlighting
  8. Support the SSR
  9. Support the Typescript
+ 10. More than 90 percent unit test coverage, providing stability assurance
 
 ### Install
 

@@ -4,6 +4,12 @@
   </a>
   <h2>VARLET</h2>
   <div>面向Vue3的Material风格移动端组件库</div>
+  <a style="display: block; margin-top: 5px" href="https://varlet.gitee.io/varlet-ui/">开发文档</a>
+  <div style="margin-top: 10px">
+    <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
+    <img src="https://img.shields.io/codecov/c/github/haoziqaq/varlet" alt="coverage">
+    <img src="https://img.shields.io/npm/dm/@varlet/ui?style=flat-square&color=#4fc08d" alt="downloads" />
+  </div>
 </div>
 
 ---
@@ -22,6 +28,7 @@ Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥
 7. 支持webstorm，vscode组件属性高亮
 8. 支持SSR
 9. 支持Typescript
+10. 90%以上单元测试覆盖率，提供稳定性保证
 
 ### 安装
 
