@@ -1,25 +1,7 @@
 module.exports = {
-  name: 'Varlet',
-  namespace: 'var',
-  title: 'VARLET',
   host: '0.0.0.0',
   port: 8080,
   pc: {
-    title: 'Varlet 面向Vue3的Material风格移动端组件库',
-    description: 'Varlet 面向Vue3的Material风格移动端组件库',
-    logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
-    redirect: '/zh-CN/home',
-    header: {
-      logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
-      search: {
-        'zh-CN': '搜索文档...',
-        'en-US': 'Search...',
-      },
-      language: {
-        'zh-CN': '中文',
-        'en-US': 'English',
-      },
-    },
     menu: [
       {
         text: {
@@ -423,10 +405,5 @@ module.exports = {
       },
     ],
   },
-  mobile: {
-    title: 'Varlet 面向Vue3的Material风格移动端组件库',
-    description: 'Varlet 面向Vue3的Material风格移动端组件库',
-    logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
-    redirect: '/home',
-  },
+  mobile: {},
 }
