@@ -199,14 +199,14 @@ snackbar1.clear();
 | `show` | 是否显示`Snackbar` | _boolean_ | `false` |
 | `type`| `Snackbar`类型，可选值为`success, warning, info, error, loading`之一 | _string_ | - |
 | `position`| `Snackbar`位置，可选值为`top, center, bottom`之一 | _string_ | `top` |
-| `duration`| 显示时长 | _number_ | `3000` |
+| `duration`| 显示时长(当`type`属性为`loading`时，需要手动关闭) | _number_ | `3000` |
 | `content` | 自定义内容 | _string_ | - |
 | `contentClass` | 自定义内容的类名 | _string_ | `-` |
 | `vertical` | 是否启用竖直排列方式 | _boolean_ | `false` |
 | `loadingType` | 加载动画类型(见`Loading`组件) | _string_ | `circle` |
 | `loadingSize` | 加载动画大小(见`Loading`组件) | _string_ | `normal` |
 | `lockScroll`| 是否禁止滚动穿透 | _boolean_  | `false` |
-| `forbidClick`| 是否禁止穿透点击 | _boolean_  | `false` |
+| `forbidClick`| 是否禁止穿透点击(当`type`属性为`loading`时，默认为`true`) | _boolean_  | `false` |
 | `onOpen` | 	打开`Snackbar`时触发 | - |
 | `onOpened` | 	打开`Snackbar`动画结束时触发 | - |
 | `onClose` | 	关闭`Snackbar`时触发 | - |

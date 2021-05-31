@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.7](https://github.com/haoziqaq/varlet/compare/v1.4.6...v1.4.7) (2021-05-31)
+
+
+### Bug Fixes
+
+* **cle/site/pc:**  Make the left menu ([2585504](https://github.com/haoziqaq/varlet/commit/258550493deffc79f32bd2a60c88e7055596c6ff))
+* **cli/config:**  repair header configuration ([a91cd25](https://github.com/haoziqaq/varlet/commit/a91cd258aed834b161f5e789b627d6cfd3595a94))
+* **cli/config/dev:**  Fixed the title ([fe54e48](https://github.com/haoziqaq/varlet/commit/fe54e486478247864ae8edf7507e6c2337d11512))
+* **cli/site/pc:**  remove unused import ([260358b](https://github.com/haoziqaq/varlet/commit/260358bc8d3c4d3bf5128eaf509d813c39bc6a19))
+* **cli/site/pc:**  remove unused import ([c61eb4c](https://github.com/haoziqaq/varlet/commit/c61eb4cc7f6d71f1dabc1ff85be4596a199ea5b0))
+* **cli/site/pc:**  repair where the var-cell ([dbb63f8](https://github.com/haoziqaq/varlet/commit/dbb63f84ece63e7f3a48a7c89bf0a8170822caa4))
+* **cli/site/pc:**  repair where the var-cell ([bf91f0e](https://github.com/haoziqaq/varlet/commit/bf91f0e3f256dfc5f282f4f6eca9ad2fc95630ad))
+* **cli/site/pc:** add browser title toggle both ([28c9745](https://github.com/haoziqaq/varlet/commit/28c97453752b96618ca8289cb4af5c4ceba0b25c))
+* **cli/site/pc:** remove unused import reactive ([07fdd24](https://github.com/haoziqaq/varlet/commit/07fdd241adf3c5cf1e8c532d7151aae01986c1dc))
+* **cli/site/pc:** remove unused import reactive ([14e1fa8](https://github.com/haoziqaq/varlet/commit/14e1fa89904ba8082eda8198e2b1b8843ff36311))
+* **varlet.default.config:**  Now ([fea3daa](https://github.com/haoziqaq/varlet/commit/fea3daa6fc5610a0a567668549d8c92a36c6300d))
+
+
+
+
+
 ## [1.4.6](https://github.com/haoziqaq/varlet/compare/v1.4.5...v1.4.6) (2021-05-25)
 
 **Note:** Version bump only for package @varlet/cli
