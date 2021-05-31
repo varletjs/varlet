@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.7](https://github.com/haoziqaq/varlet/compare/v1.4.6...v1.4.7) (2021-05-31)
+
+
+### Bug Fixes
+
+* **cle/site/pc:**  Make the left menu ([2585504](https://github.com/haoziqaq/varlet/commit/258550493deffc79f32bd2a60c88e7055596c6ff))
+* **cli/config:**  repair header configuration ([a91cd25](https://github.com/haoziqaq/varlet/commit/a91cd258aed834b161f5e789b627d6cfd3595a94))
+* **cli/config/dev:**  Fixed the title ([fe54e48](https://github.com/haoziqaq/varlet/commit/fe54e486478247864ae8edf7507e6c2337d11512))
+* **cli/site/pc:**  remove unused import ([260358b](https://github.com/haoziqaq/varlet/commit/260358bc8d3c4d3bf5128eaf509d813c39bc6a19))
+* **cli/site/pc:**  remove unused import ([c61eb4c](https://github.com/haoziqaq/varlet/commit/c61eb4cc7f6d71f1dabc1ff85be4596a199ea5b0))
+* **cli/site/pc:**  repair where the var-cell ([dbb63f8](https://github.com/haoziqaq/varlet/commit/dbb63f84ece63e7f3a48a7c89bf0a8170822caa4))
+* **cli/site/pc:**  repair where the var-cell ([bf91f0e](https://github.com/haoziqaq/varlet/commit/bf91f0e3f256dfc5f282f4f6eca9ad2fc95630ad))
+* **cli/site/pc:** add browser title toggle both ([28c9745](https://github.com/haoziqaq/varlet/commit/28c97453752b96618ca8289cb4af5c4ceba0b25c))
+* **cli/site/pc:** remove unused import reactive ([07fdd24](https://github.com/haoziqaq/varlet/commit/07fdd241adf3c5cf1e8c532d7151aae01986c1dc))
+* **cli/site/pc:** remove unused import reactive ([14e1fa8](https://github.com/haoziqaq/varlet/commit/14e1fa89904ba8082eda8198e2b1b8843ff36311))
+* **date-picker:** fix autoupdate of snapshot ([9ce63b7](https://github.com/haoziqaq/varlet/commit/9ce63b7651231b95f0a65f446a3186cb2d0e72a4))
+* **home:** add headerLogo  description ([74fd8d4](https://github.com/haoziqaq/varlet/commit/74fd8d4693d54bdf7d50747ac9bcc88e4ce792e1))
+* **home:** add headerLogo  description ([022b5a0](https://github.com/haoziqaq/varlet/commit/022b5a08a4ba72df2995e89e52dac286fff124e9))
+* **home:** add locale ([e0b7155](https://github.com/haoziqaq/varlet/commit/e0b7155392fb44a01484860297c374282bb16669))
+* **home:** add locale ([7e6fac9](https://github.com/haoziqaq/varlet/commit/7e6fac94ba0e8cef4c1d0237b5e71ade8ee2978f))
+* **snackbar:** add defaultOption for snackbar ([7e05d9c](https://github.com/haoziqaq/varlet/commit/7e05d9ceae7e2a1c03535ea85625f600275e0b61))
+* **snackbar:** close autooff when the type prop is loading ([95f7d2a](https://github.com/haoziqaq/varlet/commit/95f7d2a130384acbc145f6edcecc6c2b9aec9b10))
+* **snackbar:** forbid click when type of snackbar is loading ([b324cfb](https://github.com/haoziqaq/varlet/commit/b324cfbcc02978d65e77860cabd2ca5e77b22175))
+* **ui/home:**  change varletConfig import path ([298d5ba](https://github.com/haoziqaq/varlet/commit/298d5bab395fc4a8d87035fa75c132b6c90fb3b1))
+* **ui/home:**  change varletConfig import url ([5346d3b](https://github.com/haoziqaq/varlet/commit/5346d3bff357c71b6da23736f9d5bb7e6b175fb6))
+* **ui/home:** change varletConfig import url ([73b9f84](https://github.com/haoziqaq/varlet/commit/73b9f841ce5aac64284381a12dbb14e98e721244))
+* **ui/tsconfig:**  add allowJs option ([c5bf05e](https://github.com/haoziqaq/varlet/commit/c5bf05ea04c802093acc95267f7c11aad8ed2e37))
+* **varlet.default.config:**  Now ([fea3daa](https://github.com/haoziqaq/varlet/commit/fea3daa6fc5610a0a567668549d8c92a36c6300d))
+* **varletconfig:**  Extract the public ([2fbc4b0](https://github.com/haoziqaq/varlet/commit/2fbc4b0d71d135d744ba635f306da6a44aa49449))
+
+
+
+
+
 ## [1.4.6](https://github.com/haoziqaq/varlet/compare/v1.4.5...v1.4.6) (2021-05-25)
 
 

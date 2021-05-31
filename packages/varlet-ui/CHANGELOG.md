@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.7](https://github.com/haoziqaq/varlet/compare/v1.4.6...v1.4.7) (2021-05-31)
+
+
+### Bug Fixes
+
+* **date-picker:** fix autoupdate of snapshot ([9ce63b7](https://github.com/haoziqaq/varlet/commit/9ce63b7651231b95f0a65f446a3186cb2d0e72a4))
+* **home:** add headerLogo  description ([74fd8d4](https://github.com/haoziqaq/varlet/commit/74fd8d4693d54bdf7d50747ac9bcc88e4ce792e1))
+* **home:** add locale ([e0b7155](https://github.com/haoziqaq/varlet/commit/e0b7155392fb44a01484860297c374282bb16669))
+* **snackbar:** add defaultOption for snackbar ([7e05d9c](https://github.com/haoziqaq/varlet/commit/7e05d9ceae7e2a1c03535ea85625f600275e0b61))
+* **snackbar:** close autooff when the type prop is loading ([95f7d2a](https://github.com/haoziqaq/varlet/commit/95f7d2a130384acbc145f6edcecc6c2b9aec9b10))
+* **snackbar:** forbid click when type of snackbar is loading ([b324cfb](https://github.com/haoziqaq/varlet/commit/b324cfbcc02978d65e77860cabd2ca5e77b22175))
+* **ui/home:**  change varletConfig import path ([298d5ba](https://github.com/haoziqaq/varlet/commit/298d5bab395fc4a8d87035fa75c132b6c90fb3b1))
+* **ui/home:**  change varletConfig import url ([5346d3b](https://github.com/haoziqaq/varlet/commit/5346d3bff357c71b6da23736f9d5bb7e6b175fb6))
+* **ui/tsconfig:**  add allowJs option ([c5bf05e](https://github.com/haoziqaq/varlet/commit/c5bf05ea04c802093acc95267f7c11aad8ed2e37))
+* **varletconfig:**  Extract the public ([2fbc4b0](https://github.com/haoziqaq/varlet/commit/2fbc4b0d71d135d744ba635f306da6a44aa49449))
+
+
+
+
+
 ## [1.4.6](https://github.com/haoziqaq/varlet/compare/v1.4.5...v1.4.6) (2021-05-25)
 
 
