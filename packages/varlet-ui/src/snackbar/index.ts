@@ -68,6 +68,21 @@ let isMount = false
 let unmount: () => void
 let uniqSnackbarOptions: Array<UniqSnackbarOptions> = reactive<UniqSnackbarOptions[]>([])
 
+const defaultOption: Partial<Record<keyof SnackbarOptions, any>> = {
+  position: 'top',
+  duration: 3000,
+  vertical: false,
+  loadingType: 'circle',
+  loadingSize: 'normal',
+  lockScroll: false,
+  teleport: 'body',
+  forbidClick: false,
+  onOpen: () => {},
+  onOpened: () => {},
+  onClose: () => {},
+  onClosed: () => {},
+}
+
 const transitionGroupProps: any = {
   name: 'var-snackbar-fade',
   tag: 'div',
@@ -125,7 +140,10 @@ const TransitionGroupHost = {
 
 const Snackbar: Snackbar = <Snackbar>function (options: SnackbarOptions | string): SnackbarHandel {
   const snackOptions: SnackbarOptions = isPlainObject(options) ? options : { content: options }
-  const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>(snackOptions)
+  const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>({
+    ...defaultOption,
+    ...snackOptions
+  })
   reactiveSnackOptions.show = true
 
   if (!isMount) {
