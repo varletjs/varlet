@@ -37,15 +37,15 @@ export interface ISnackbar {
 
   allowMultiple(bool: boolean): void
 
-  success(options: SnackbarOptions | string): SnackbarHandel
+  success(any): SnackbarHandel
 
-  warning(options: SnackbarOptions | string): SnackbarHandel
+  warning(any): SnackbarHandel
 
-  info(options: SnackbarOptions | string): SnackbarHandel
+  info(any): SnackbarHandel
 
-  error(options: SnackbarOptions | string): SnackbarHandel
+  error(any): SnackbarHandel
 
-  loading(options: SnackbarOptions | string): SnackbarHandel
+  loading(any): SnackbarHandel
 
   clear(): void
 }
