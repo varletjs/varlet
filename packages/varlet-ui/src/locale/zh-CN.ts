@@ -3,6 +3,8 @@ export default {
   dialogTitle: '提示',
   dialogConfirmButtonText: '确认',
   dialogCancelButtonText: '取消',
+  // ActionSheet
+  actionSheetTitle: '请选择',
   // List
   listLoadingText: '加载中',
   listFinishedText: '没有更多了',

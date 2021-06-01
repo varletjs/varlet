@@ -265,6 +265,13 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'ActionSheet 动作面板',
+          'en-US': 'ActionSheet',
+        },
+        doc: 'action-sheet',
+      },
+      {
+        text: {
           'zh-CN': 'Dialog 对话框',
           'en-US': 'Dialog',
         },

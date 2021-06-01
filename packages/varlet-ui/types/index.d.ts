@@ -1,3 +1,4 @@
+import { ActionSheet } from './ActionSheet'
 import { AppBar } from './AppBar'
 import { BackTop } from './BackTop'
 import { Badge } from './Badge'
@@ -55,6 +56,7 @@ import { App } from 'vue'
 export const install: (app: App) => void
 
 export {
+  ActionSheet,
   AppBar,
   BackTop,
   Badge,

@@ -31,7 +31,7 @@ interface DialogOptions {
   onClickOverlay?: () => void
 }
 
-type DialogActions = 'confirm' | 'cancel' | 'close'
+export type DialogActions = 'confirm' | 'cancel' | 'close'
 
 let singletonOptions: DialogOptions | null
 
@@ -54,7 +54,7 @@ function Dialog(options: DialogOptions | string): Promise<DialogActions | void> 
       },
       onCancel: () => {
         reactiveDialogOptions.onCancel?.()
-        resolve( 'cancel')
+        resolve('cancel')
       },
       onClose: () => {
         reactiveDialogOptions.onClose?.()
@@ -78,7 +78,7 @@ function Dialog(options: DialogOptions | string): Promise<DialogActions | void> 
   })
 }
 
-VarDialog.install = function(app: App) {
+VarDialog.install = function (app: App) {
   app.component(VarDialog.name, VarDialog)
 }
 
