@@ -8,6 +8,8 @@ export default {
   error: '错误',
   loading: '加载',
   text: '这是一个消息条！！',
+  loaded: '加载成功！！',
+  wait: '等待中...',
   close: '关闭',
   basicUsage: '基本使用',
   multiLine: '垂直排列',

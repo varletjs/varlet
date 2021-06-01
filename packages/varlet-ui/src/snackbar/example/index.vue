@@ -59,7 +59,7 @@
 import Snackbar from '../index'
 import Button from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { reactive, toRefs } from 'vue'
+import { reactive, ref, toRefs } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 
@@ -84,7 +84,14 @@ export default {
     }
 
     const create = (type) => {
-      Snackbar[type](pack.value.text)
+      const text = type === 'loading' ? pack.value.wait : pack.value.wait
+      Snackbar[type](text)
+
+      if (type === 'loading') {
+        setTimeout(() => {
+          Snackbar.success(pack.value.loaded)
+        }, 2000)
+      }
     }
 
     const createSnackbar = (type) => {
