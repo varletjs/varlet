@@ -84,7 +84,7 @@ export default {
     }
 
     const create = (type) => {
-      const text = type === 'loading' ? pack.value.wait : pack.value.wait
+      const text = type === 'loading' ? pack.value.wait : pack.value.text
       Snackbar[type](text)
 
       if (type === 'loading') {

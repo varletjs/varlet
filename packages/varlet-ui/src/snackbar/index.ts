@@ -109,9 +109,11 @@ const TransitionGroupHost = {
       })
 
       const snackbarList = uniqSnackbarOptions.map((option: UniqSnackbarOptions) => {
+        const transitionGroupEl = document.querySelector('.var-transition-group')
         if (option.reactiveSnackOptions.forbidClick || option.reactiveSnackOptions.type === 'loading') {
-          const transitionGroupEl = document.querySelector('.var-transition-group')
           ;(transitionGroupEl as HTMLElement).classList.add('var-pointer-auto')
+        } else {
+          ;(transitionGroupEl as HTMLElement).classList.remove('var-pointer-auto')
         }
 
         if (Snackbar.isAllowMultiple) option.reactiveSnackOptions.position = 'top'
