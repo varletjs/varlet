@@ -1,6 +1,7 @@
 {
   "packages": [
-    "packages/*"
+    "packages/*",
+    "!packages/varlet-vscode-extension"
   ],
   "useWorkspaces": true,
   "npmClient": "yarn",
