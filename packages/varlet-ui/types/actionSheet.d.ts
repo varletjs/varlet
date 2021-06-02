@@ -1,6 +1,5 @@
 import { App } from 'vue'
 import { VarComponent } from './varComponent'
-import { ActionItem } from '../src/action-sheet'
 
 interface ActionSheetProps {
   actions?: ActionItem[]
@@ -64,4 +63,4 @@ export interface IActionSheet {
   install(app: App): void
 }
 
-export const Dialog: IActionSheet
+export const ActionSheet: IActionSheet
