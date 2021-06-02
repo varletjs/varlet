@@ -10,7 +10,7 @@ export const props = {
   },
   actions: {
     type: Array as PropType<ActionItem[]>,
-    default: [],
+    default: () => [],
   },
   title: {
     type: String,

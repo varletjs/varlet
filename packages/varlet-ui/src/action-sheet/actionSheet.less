@@ -3,10 +3,13 @@
 @action-sheet-border-radius: 2px;
 @action-sheet-title-color: #888;
 @action-sheet-title-padding: 10px 16px;
+@action-sheet-title-font-size: 14px;
 @action-sheet-action-item-height: 48px;
 @action-sheet-action-item-padding: 0px 18px;
 @action-sheet-action-item-color: #333;
 @action-sheet-action-item-disabled-color: @color-disabled;
+@action-sheet-icon-margin: 0 20px 0 0;
+@action-sheet-icon-size: 24px;
 
 .var-action-sheet {
   padding: 10px 0;
@@ -19,7 +22,7 @@
   &__title {
     padding: @action-sheet-title-padding;
     color: @action-sheet-title-color;
-    font-size: 14px;
+    font-size: @action-sheet-title-font-size;
   }
 
   &__action-item {
@@ -36,11 +39,11 @@
     max-height: @action-sheet-action-item-height;
   }
 
-  &__action-icon {
-    margin-right: 20px;
-    width: 24px;
-    height: 24px;
-    font-size: 24px;
+  &__action-icon[var-action-sheet-cover] {
+    margin: @action-sheet-icon-margin;
+    width: @action-sheet-icon-size;
+    height: @action-sheet-icon-size;
+    font-size: @action-sheet-icon-size;
   }
 
   &--disabled {

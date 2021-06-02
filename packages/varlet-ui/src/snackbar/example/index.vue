@@ -59,7 +59,7 @@
 import Snackbar from '../index'
 import Button from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { reactive, ref, toRefs } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 

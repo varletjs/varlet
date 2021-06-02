@@ -102,7 +102,7 @@ Dialog({
 #### Basic Use
 
 ```html
-<var-button type="primary" block @click="show = true">Basic Use</var-button>
+<var-button type="warning" block @click="show = true">Basic Use</var-button>
 <var-dialog
   title="Beat It"
   message="Don't Wanna See No Blood, Don't Be A Macho Man"
@@ -132,7 +132,7 @@ export default {
 #### Asynchronous closing
 
 ```html
-<var-button type="primary" block @click="show = true">Asynchronous closing</var-button>
+<var-button type="warning" block @click="show = true">Asynchronous closing</var-button>
 <var-dialog
   title="Beat It"
   message="Don't Wanna See No Blood, Don't Be A Macho Man"
@@ -176,7 +176,7 @@ export default {
 #### Custom Slots
 
 ```html
-<var-button type="primary" block @click="show = true">Custom Slots</var-button>
+<var-button type="warning" block @click="show = true">Custom Slots</var-button>
 <var-dialog v-model:show="show">
   <template #title>
     <var-icon name="information" color="#2979ff" />

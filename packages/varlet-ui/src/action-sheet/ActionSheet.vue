@@ -35,6 +35,7 @@
         >
           <var-icon
             class="var-action-sheet__action-icon"
+            var-action-sheet-cover
             :name="action.icon"
             :size="action.iconSize"
             v-if="action.icon"
