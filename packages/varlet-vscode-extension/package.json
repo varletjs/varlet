@@ -1,11 +1,11 @@
 {
 	"name": "varlet-vscode-extension",
-  "private": true,
+	"private": true,
 	"displayName": "varlet-vscode-extension",
-  "icon": "src/icon.png",
+	"icon": "src/icon.png",
 	"description": "varlet extension for vscode",
-  "publisher": "haoziqaq",
-	"version": "0.0.2",
+	"publisher": "haoziqaq",
+	"version": "1.6.0",
 	"engines": {
 		"vscode": "^1.56.0"
 	},
@@ -16,19 +16,19 @@
 		"onLanguage:vue"
 	],
 	"main": "./dist/extension.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/haoziqaq/varlet.git"
-  },
-  "bugs": {
-    "url": "https://github.com/haoziqaq/varlet/issues"
-  },
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/haoziqaq/varlet.git"
+	},
+	"bugs": {
+		"url": "https://github.com/haoziqaq/varlet/issues"
+	},
 	"scripts": {
 		"compile": "webpack",
 		"watch": "webpack --watch",
 		"package": "webpack --mode production --devtool hidden-source-map",
-    "build": "vsce package",
-    "publish": "yarn build & vsce publish"
+		"build": "vsce package",
+		"publish": "yarn build & vsce publish"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.3",
@@ -40,5 +40,5 @@
 		"vsce": "^1.91.0",
 		"webpack": "^5.19.0",
 		"webpack-cli": "^4.4.0"
-  }
+	}
 }
