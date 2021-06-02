@@ -17,7 +17,6 @@ createApp().use(ActionSheet)
 ### 局部引入
 
 ```js
-
 import { ActionSheet } from '@varlet/ui'
 
 export default {

@@ -18,7 +18,6 @@ createApp().use(ActionSheet)
 ### Scoped Install
 
 ```js
-
 import { ActionSheet } from '@varlet/ui'
 
 export default {
