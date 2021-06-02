@@ -4,6 +4,7 @@ node_modules
 .vscode
 *.log
 .DS_Store
+.vsix
 
 packages/varlet-cli/lib/commands
 packages/varlet-cli/lib/compiler
@@ -22,3 +23,5 @@ packages/varlet-ui/coverage
 packages/varlet-ui/highlight
 
 packages/varlet-icons/dist
+
+packages/varlet-vscode-extension/dist
