@@ -6,6 +6,6 @@ export default {
   yourSelected: 'Your selected is:',
   customTitle: 'Choose whichever you like',
   disableCloseOnClickAction: 'Disable close on click action',
-  disabled: 'action disabled',
-  customActionStyles: 'custom action styles',
+  disabled: 'Action Disabled',
+  customActionStyles: 'Custom Action Styles',
 }

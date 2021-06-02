@@ -185,7 +185,7 @@ export default {
   <var-cell>兰亭临帖 行书如行云流水</var-cell>
   <var-cell>兰亭临帖 行书如行云流水</var-cell>
   <var-cell>兰亭临帖 行书如行云流水</var-cell>
-</var-dialog>
+</var-dialog>________
 ```
 
 ```js
