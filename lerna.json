@@ -1,7 +1,12 @@
 {
   "packages": [
-    "packages/*",
-    "!packages/varlet-vscode-extension"
+    "packages/varlet-cli",
+    "packages/varlet-eslint-config",
+    "packages/varlet-icons",
+    "packages/varlet-markdown-loader",
+    "packages/varlet-stylelint-config",
+    "packages/varlet-touch-emulator",
+    "packages/varlet-ui"
   ],
   "useWorkspaces": true,
   "npmClient": "yarn",
