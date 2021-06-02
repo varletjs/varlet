@@ -3,7 +3,7 @@ import { VarComponent } from './varComponent'
 import { ActionItem } from '../src/action-sheet'
 
 interface ActionSheetProps {
-  actions: ActionItem[]
+  actions?: ActionItem[]
   show?: boolean
   title?: string
   overlay?: boolean

@@ -9,7 +9,7 @@ export function directionValidator(direction: string) {
 export const props = {
   modelValue: {
     type: Array as PropType<Array<any>>,
-    default: [],
+    default: () => [],
   },
   max: {
     type: [String, Number],
@@ -17,6 +17,7 @@ export const props = {
   direction: {
     type: String as PropType<'horizontal' | 'vertical'>,
     default: 'horizontal',
+    validator: directionValidator,
   },
   validateTrigger: {
     type: Array as PropType<Array<ValidateTriggers>>,

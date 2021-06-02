@@ -15,7 +15,7 @@ export interface ActionItem {
 }
 
 interface ActionSheetOptions {
-  actions: ActionItem[]
+  actions?: ActionItem[]
   show?: boolean
   title?: string
   overlay?: boolean
@@ -72,11 +72,9 @@ function ActionSheet(options: ActionSheetOptions): Promise<ActionSheetActions | 
   })
 }
 
-VarActionSheet.install = function (app: App) {
-  app.component(VarActionSheet.name, VarActionSheet)
-}
+ActionSheet.Component = VarActionSheet
 
-ActionSheet.install = function (app: App) {
+VarActionSheet.install = function (app: App) {
   app.component(VarActionSheet.name, VarActionSheet)
 }
 
@@ -91,10 +89,8 @@ ActionSheet.close = () => {
   }
 }
 
-ActionSheet.Component = VarActionSheet
-
 ActionSheet.install = function (app: App) {
-  app.component(ActionSheet.name, ActionSheet)
+  app.component(VarActionSheet.name, VarActionSheet)
 }
 
 export default ActionSheet

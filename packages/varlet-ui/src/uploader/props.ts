@@ -14,7 +14,7 @@ export type ValidateTriggers = 'onChange' | 'onRemove'
 export const props = {
   modelValue: {
     type: Array as PropType<VarFile[]>,
-    default: [],
+    default: () => [],
   },
   accept: {
     type: String,
@@ -55,7 +55,7 @@ export const props = {
   },
   validateTrigger: {
     type: Array as PropType<Array<ValidateTriggers>>,
-    default: ['onChange', 'onRemove'],
+    default: () => ['onChange', 'onRemove'],
   },
   rules: {
     type: Array as PropType<Array<(v: VarFile) => any>>,

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test actionSheet example 1`] = `
+exports[`test action-sheet example 1`] = `
 "<div class=\\"app-type\\">函数调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">基本使用</div>
@@ -43,4 +43,29 @@ exports[`test actionSheet example 1`] = `
 </button>
 <!--teleport start-->
 <!--teleport end-->"
+`;
+
+exports[`test action-sheet styles 1`] = `
+"<div class=\\"container\\">
+  <!--teleport start-->
+  <!--teleport end-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+      <transition-stub>
+        <div class=\\"var-popup__content var-elevation--3 var-popup--bottom var-action-sheet__popup-radius\\" style=\\"z-index: 2000; display: none;\\">
+          <div class=\\"var-action-sheet var--box\\">
+            <div class=\\"var-action-sheet__title\\">请选择</div>
+            <div class=\\"var-action-sheet__action-item customClass\\" style=\\"color: rgb(76, 175, 80);\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-action-sheet__action-icon\\" style=\\"transition: all 0ms; font-size: 30px;\\" var-action-sheet-cover=\\"\\"></i>
+              <div class=\\"var-action-sheet__action-name\\">Item 01</div>
+            </div>
+            <div class=\\"var-action-sheet__action-item var-action-sheet--disabled\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-action-sheet__action-icon\\" style=\\"transition: all 0ms;\\" var-action-sheet-cover=\\"\\"></i>
+              <div class=\\"var-action-sheet__action-name\\">Item 02</div>
+            </div>
+          </div>
+        </div>
+      </transition-stub>
+    </div>
+  </transition-stub>
+</div>"
 `;
