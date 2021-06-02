@@ -455,6 +455,7 @@ export default {
 | Variable | Default |
 | --- | --- |
 | `@action-sheet-border-radius` | `2px` |
+| `@action-sheet-background` | `#fff` |
 | `@action-sheet-title-color` | `#888` |
 | `@action-sheet-title-padding` | `10px 16px` |
 | `@action-sheet-title-font-size` | `14px` |

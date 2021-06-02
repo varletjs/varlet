@@ -281,6 +281,7 @@ export default {
 | Variable | Default |
 | --- | --- |
 | `@dialog-width` | `280px` |
+| `@dialog-background` | `#fff` |
 | `@dialog-border-radius` | `2px` |
 | `@dialog-title-padding` | `20px 20px 0` |
 | `@dialog-title-font-size` | `@font-size-lg` |
