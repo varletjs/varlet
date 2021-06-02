@@ -2,9 +2,10 @@
 	"name": "varlet-vscode-extension",
   "private": true,
 	"displayName": "varlet-vscode-extension",
+  "icon": "src/icon.png",
 	"description": "varlet extension for vscode",
   "publisher": "haoziqaq",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.56.0"
 	},
