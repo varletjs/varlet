@@ -156,7 +156,7 @@ module.exports = {
           'zh-CN': 'Collapse 拓展面板',
           'en-US': 'Collapse',
         },
-        doc: 'Collapse',
+        doc: 'collapse',
       },
       {
         text: {
