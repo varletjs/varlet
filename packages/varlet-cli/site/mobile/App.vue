@@ -20,7 +20,7 @@
                   v-for="(value, key) in languageList"
                   :key="key"
                   v-ripple
-                  :style="{ color: language === key ? '#2979ff' : '#666' }"
+                  :style="{ color: language === key ? '#2979ff' : '#666', cursor: 'pointer' }"
                   @click="changeLanguage(key)"
                 >
                   {{ value }}
@@ -94,7 +94,15 @@ export default defineComponent({
     }
 
     const getCName = (name: string) => {
-      const noComponentList = ['Quickstart', 'ImportOnDemand', 'BrowserAdaptation', 'CustomTheme', 'Locale', 'Highlight', 'DeveloperGuide']
+      const noComponentList = [
+        'Quickstart',
+        'ImportOnDemand',
+        'BrowserAdaptation',
+        'CustomTheme',
+        'Locale',
+        'Highlight',
+        'DeveloperGuide',
+      ]
       if (noComponentList.includes(name)) return 'Home'
 
       return name
@@ -120,7 +128,7 @@ export default defineComponent({
       showMenu,
       languageList,
       language,
-      changeLanguage
+      changeLanguage,
     }
   },
 })
