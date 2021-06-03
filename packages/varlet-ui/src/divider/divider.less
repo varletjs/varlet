@@ -1,0 +1,46 @@
+@import '../styles/var';
+
+@divider-color: #bcc2cb;
+@divider-text-color: #888;
+@divider-text-margin: 8px;
+
+.var-divider {
+  width: 100%;
+  height: 1px;
+  margin: @divider-text-margin 0;
+  background-color: @divider-color;
+  position: relative;
+  font-size: @font-size-md;
+  color: #888;
+
+  &--vertical {
+    width: 1px;
+    height: 80%;
+    margin: auto @divider-text-margin;
+    padding: @divider-text-margin 0;
+  }
+
+  &__text {
+    display: inline-block;
+    padding: 0 @divider-text-margin;
+  }
+
+  &--with-text {
+    background-color: transparent;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before,
+    &::after {
+      display: inline-block;
+      content: '';
+      position: relative;
+      // width: 50%;
+      flex: 1;
+      height: 1px;
+      background-color: @divider-color;
+    }
+  }
+}
