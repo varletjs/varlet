@@ -202,6 +202,13 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Divider 分割线',
+          'en-US': 'Divider',
+        },
+        doc: 'divider',
+      },
+      {
+        text: {
           'zh-CN': '导航组件',
           'en-US': 'Navigation Components',
         },
