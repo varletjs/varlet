@@ -1,10 +1,10 @@
 <template>
   <div class="logo">
     <h1 class="varlet-home__title">
-      <img class="varlet-home__image" src="https://varlet.gitee.io/varlet-ui/varlet_icon.png" />
-      <span>VARLET</span>
+      <img class="varlet-home__image" :src="logo" />
+      <span>{{ title }}</span>
     </h1>
-    <h2 class="varlet-home__desc">{{ pack.title }}</h2>
+    <h2 class="varlet-home__desc">{{ desc[lang] }}</h2>
   </div>
   <var-cell v-for="component in components" :key="component.text" @click="toComponent(component)">
     <template #extra>
@@ -23,7 +23,6 @@ import Ripple from '../../ripple'
 import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
 import { watchLang, watchPlatform } from '../../utils/components'
-import { use, pack } from './locale'
 
 const varletConfig = require('@varlet/cli/site/site.config.json')
 
@@ -35,14 +34,14 @@ export default {
     [Icon.name]: Icon,
   },
   setup() {
-    const configComponents = varletConfig.pc.menu.filter((item) => !item.isTitle && !item.nonComponent)
+    const { title, pc: { menu, logo, title: desc } } = varletConfig
+    const configComponents = menu.filter((item) => !item.isTitle && !item.nonComponent)
     const components = reactive(configComponents)
     const lang = ref('zh-CN')
     const platform = ref('mobile')
     const router = useRouter()
 
     watchLang((newValue) => {
-      use(newValue)
       lang.value = newValue
     })
 
@@ -63,10 +62,11 @@ export default {
 
     return {
       components,
-      platform,
       lang,
       toComponent,
-      pack,
+      logo,
+      title,
+      desc
     }
   },
 }
