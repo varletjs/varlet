@@ -57,9 +57,7 @@ export default {
 ### 自定义
 ```js
 <var-divider>
-  <p :style="{ fontSize: '16px', padding: '0 18px', color: 'red' }">
-    自定义内容与样式
-  </p>
+  <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
 </var-divider>
 ```
 
@@ -68,7 +66,7 @@ export default {
 ### 属性
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
-| inset | 设置缩进距离，数字正负号可控制缩进方向。当传递`true`时默认缩进为`72px` | _boolean/number_ | `false` |
+| inset | 设置缩进距离，数字正负号可控制缩进方向。当传递`true`时默认缩进为`72px` | _boolean \| number_ | `false` |
 | vertical | 是否垂直 | _boolean_ | `false` |
 | description | 分割线的文字描述 | _string_ | `-` |
 | margin | 设置分割线样式的`margin`属性 | _string_ | `-` |

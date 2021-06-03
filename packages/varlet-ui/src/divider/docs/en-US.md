@@ -41,7 +41,7 @@ export default {
 <var-divider :inset="-36" />
 ```
 
-### The vertical divider
+### Vertical Divider
 ```js
 <var-button text disabled>Text</var-button>
 <var-divider vertical />
@@ -52,7 +52,7 @@ export default {
 </var-button>
 ```
 
-### The divider with description
+### The Divider with description
 ```js
 <var-divider description="Description" />
 ```
@@ -60,9 +60,7 @@ export default {
 ### Custom
 ```js
 <var-divider>
-  <span :style="{ fontSize: '16px', padding: '0 18px', color: 'red' }">
-    Custom content and styles
-  </span>
+  <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
 </var-divider>
 ```
 
@@ -72,7 +70,7 @@ export default {
 ### Props
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| inset | Set the indentation distance, and the number plus or minus sign controls the direction of indentation. The default indentation is `72px` when `true` is passed | _boolean/number_ | `false` |
+| inset | Set the indentation distance, and the number plus or minus sign controls the direction of indentation. The default indentation is `72px` when `true` is passed | _boolean \| number_ | `false` |
 | vertical | Whether to set divider to display vertically | _boolean_ | `false` |
 | description | The text description of divider | _string_ | `-` |
 | margin | Set `margin` of divider | _string_ | `-` |

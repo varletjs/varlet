@@ -34,7 +34,7 @@
   <div>
     <app-type>{{ pack.custom }}</app-type>
     <var-divider>
-      <span :style="{ fontSize: '16px', padding: '0 18px', color: 'red' }">{{ pack.customContent }}</span>
+      <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255)" />
     </var-divider>
   </div>
 </template>
@@ -60,13 +60,8 @@ export default {
   setup() {
     watchLang(use)
 
-    const handleClick = () => {
-      window.open('https://github.com/haoziqaq/varlet')
-    }
-
     return {
       pack,
-      handleClick,
     }
   },
 }
