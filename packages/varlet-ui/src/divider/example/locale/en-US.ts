@@ -10,5 +10,4 @@ export default {
   withDesc: 'The Divider with description',
   withDescText: 'Description',
   custom: 'Custom',
-  customContent: 'Custom content and styles',
 }
