@@ -60,10 +60,10 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'IDE语法高亮',
-          'en-US': 'IDE Code Highlight',
+          'zh-CN': '开发工具支持',
+          'en-US': 'IDE Code Support',
         },
-        doc: 'highlight',
+        doc: 'ide',
         nonComponent: true,
       },
       {
