@@ -20,7 +20,7 @@ export const props = {
     type: String,
   },
   title: {
-    type: [Number, String],
+    type: String,
   },
   subtitle: {
     type: String,
