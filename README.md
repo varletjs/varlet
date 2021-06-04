@@ -5,7 +5,7 @@
   <h2>VARLET</h2>
   <p>基于Vue3的Material design风格移动端组件库</p>
   <p>
-    <a href="https://varlet.gitee.io/varlet-ui/">开发文档</a>
+    <a href="https://varlet.gitee.io/varlet-ui/">开发文档</a> | <a href="https://github.com/haoziqaq/varlet/blob/dev/README.en-US.md">English</a>
   </p>
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
