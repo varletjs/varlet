@@ -78,6 +78,12 @@ export const isPx = (value: unknown) => (isString(value) && value.endsWith('px')
 // example 1%
 export const isPercent = (value: unknown) => isString(value) && value.endsWith('%')
 
+// example 1vw
+export const isVw = (value: unknown) => isString(value) && value.endsWith('vw')
+
+// example 1vh
+export const isVh = (value: unknown) => isString(value) && value.endsWith('vh')
+
 // example return 1
 export const toPxNum = (value: unknown): number => {
   if (isNumber(value)) {
@@ -86,6 +92,14 @@ export const toPxNum = (value: unknown): number => {
 
   if (isPx(value)) {
     return +(value as string).replace('px', '')
+  }
+
+  if (isVw(value)) {
+    return (+(value as string).replace('vw', '') * window.innerWidth) / 100
+  }
+
+  if (isVh(value)) {
+    return (+(value as string).replace('vh', '') * window.innerHeight) / 100
   }
 
   if (isRem(value)) {
@@ -99,16 +113,17 @@ export const toPxNum = (value: unknown): number => {
     return toNumber(value)
   }
 
+  // % and other
   return 0
 }
 
-// example return 1px | 1%
+// example return 1px 1% 1vw 1vh 1rem null
 export const toSizeUnit = (value: unknown) => {
   if (value == null) {
     return null
   }
 
-  if (isPercent(value)) {
+  if (isPercent(value) || isVw(value) || isVh(value) || isRem(value)) {
     return value
   }
 
@@ -136,7 +151,10 @@ interface ScrollToOptions {
   animation: (progress: number) => number
 }
 
-export function scrollTo(element: HTMLElement | Window, { top = 0, left = 0, duration = 300, animation }: ScrollToOptions) {
+export function scrollTo(
+  element: HTMLElement | Window,
+  { top = 0, left = 0, duration = 300, animation }: ScrollToOptions
+) {
   const startTime = Date.now()
 
   const scrollTop = getScrollTop(element)

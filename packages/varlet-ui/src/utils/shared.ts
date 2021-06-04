@@ -19,7 +19,7 @@ export interface CacheInstance<T> {
 }
 
 export const toNumber = (val: number | string | boolean | undefined | null): number => {
-  if (val === undefined || val === null) return 0
+  if (val == null) return 0
 
   if (isString(val)) {
     val = parseFloat(val)
