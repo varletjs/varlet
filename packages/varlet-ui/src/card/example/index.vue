@@ -2,18 +2,20 @@
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-card :title="pack.title" :desc="pack.description" />
   <app-type>{{ pack.showSubtitle }}</app-type>
-  <var-card :title="pack.title" :subtitle="pack.subtitle" :desc="pack.description" />
+  <var-card :title="pack.title" :subtitle="pack.subtitle" :description="pack.description" />
   <app-type>{{ pack.showImage }}</app-type>
   <var-card :title="pack.title" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
   <app-type>{{ pack.useSlot }}</app-type>
   <var-card
+    ripple
     :title="pack.title"
     :subtitle="pack.subtitle"
-    :desc="pack.description"
+    :description="pack.description"
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   >
     <template #extra>
-      <var-button text outline type="primary">{{ pack.button }}</var-button>
+      <var-button type="primary" style="margin-right: 10px">{{ pack.button }}</var-button>
+      <var-button type="warning">{{ pack.button }}</var-button>
     </template>
   </var-card>
 </template>
