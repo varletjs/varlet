@@ -102,7 +102,7 @@ Dialog({
 #### 基本使用
 
 ```html
-<var-button type="primary" block @click="show = true">基本使用</var-button>
+<var-button type="warning" block @click="show = true">基本使用</var-button>
 <var-dialog
   title="兰亭序"
   message="兰亭临帖 行书如行云流水"
@@ -132,7 +132,7 @@ export default {
 #### 异步关闭
 
 ```html
-<var-button type="primary" block @click="show = true">异步关闭</var-button>
+<var-button type="warning" block @click="show = true">异步关闭</var-button>
 <var-dialog
   title="兰亭序"
   message="兰亭临帖 行书如行云流水"
@@ -176,7 +176,7 @@ export default {
 #### 自定义插槽
 
 ```html
-<var-button type="primary" block @click="show = true">自定义插槽</var-button>
+<var-button type="warning" block @click="show = true">自定义插槽</var-button>
 <var-dialog v-model:show="show">
   <template #title>
     <var-icon name="information" color="#2979ff" />
@@ -185,7 +185,7 @@ export default {
   <var-cell>兰亭临帖 行书如行云流水</var-cell>
   <var-cell>兰亭临帖 行书如行云流水</var-cell>
   <var-cell>兰亭临帖 行书如行云流水</var-cell>
-</var-dialog>
+</var-dialog>________
 ```
 
 ```js
@@ -280,6 +280,7 @@ export default {
 | 变量名 | 默认值 |
 | --- | --- |
 | `@dialog-width` | `280px` |
+| `@dialog-background` | `#fff` |
 | `@dialog-border-radius` | `2px` |
 | `@dialog-title-padding` | `20px 20px 0` |
 | `@dialog-title-font-size` | `@font-size-lg` |

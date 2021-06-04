@@ -1,5 +1,5 @@
 <template>
-  <div class="var-snackbar" :style="{ pointerEvents: forbidClick ? 'auto' : 'none', zIndex }" v-show="show">
+  <div class="var-snackbar" :style="{ pointerEvents: isForbidClick ? 'auto' : 'none', zIndex }" v-show="show">
     <div :class="snackbarClass" :style="{ zIndex }">
       <div class="var-snackbar__content" :class="[contentClass]">
         <slot>{{ content }}</slot>
@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref, Ref, onMounted, computed } from 'vue'
+import { defineComponent, watch, ref, Ref, onMounted, computed, ComputedRef } from 'vue'
 import Loading from '../loading'
 import Button from '../button'
 import Icon from '../icon'
@@ -45,7 +45,7 @@ export default defineComponent({
 
     useLock(props, 'show', 'lockScroll')
 
-    const snackbarClass = computed(() => {
+    const snackbarClass: ComputedRef<string> = computed(() => {
       const { position, vertical, type } = props
 
       const baseClass = `var-snackbar__wrapper var-snackbar__wrapper-${position} var-elevation--4`
@@ -55,7 +55,9 @@ export default defineComponent({
       return `${baseClass}${verticalClass}${typeClass}`
     })
 
-    const iconName = computed(() => {
+    const isForbidClick: ComputedRef<boolean> = computed(() => props.type === 'loading' || props.forbidClick)
+
+    const iconName: ComputedRef<string> = computed(() => {
       if (!props.type) return ''
 
       return ICON_TYPE_DICT[props.type]
@@ -99,6 +101,7 @@ export default defineComponent({
       zIndex,
       snackbarClass,
       iconName,
+      isForbidClick
     }
   },
 })

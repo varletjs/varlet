@@ -1,15 +1,11 @@
-import example from '../example'
 import DatePicker from '..'
 import VarDatePicker from '../DatePicker'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockConsole } from '../../utils/jest'
+import dayjs from 'dayjs'
 
-test('test datePicker example', () => {
-  const wrapper = mount(example)
-
-  expect(wrapper.html()).toMatchSnapshot()
-})
+const [currentYear ,currentMonth] = dayjs().format('YYYY-MM').split('-')
 
 test('test datePicker plugin', () => {
   const app = createApp({}).use(DatePicker)
@@ -45,6 +41,8 @@ test('test datePicker style and type', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setData({ type: 'date', date: '2021-05-19' })
+
+  await delay(200)
 
   expect(wrapper.html()).toMatchSnapshot()
 })
@@ -155,10 +153,10 @@ test('test datePicker multiple prop', async () => {
   await elements[1].trigger('click')
   await elements[2].trigger('click')
 
-  expect(wrapper.vm.date).toEqual(['2021-05-19', '2021-05-01', '2021-05-02', '2021-05-03'])
+  expect(wrapper.vm.date).toEqual(['2021-05-19', `${currentYear}-${currentMonth}-01`, `${currentYear}-${currentMonth}-02`, `${currentYear}-${currentMonth}-03`])
 
   await elements[0].trigger('click')
-  expect(wrapper.vm.date).toEqual(['2021-05-19', '2021-05-02', '2021-05-03'])
+  expect(wrapper.vm.date).toEqual(['2021-05-19', `${currentYear}-${currentMonth}-02`, `${currentYear}-${currentMonth}-03`])
 })
 
 test('test datePicker range prop', async () => {
@@ -184,7 +182,7 @@ test('test datePicker range prop', async () => {
   await elements[0].trigger('click')
   await elements[2].trigger('click')
 
-  expect(wrapper.vm.date).toEqual(['2021-05-01', '2021-05-03'])
+  expect(wrapper.vm.date).toEqual([`${currentYear}-${currentMonth}-01`, `${currentYear}-${currentMonth}-03`])
 
   await wrapper.setData({ type: 'month', date: null })
   await wrapper.setData({ type: 'month', date: ['2021-05', '2021-06'] })
@@ -193,43 +191,9 @@ test('test datePicker range prop', async () => {
   const lis = wrapper.find('.var-month-picker__content').find('ul').findAll('li').slice(0, 3)
   await lis[0].find('button').trigger('click')
   await lis[2].find('button').trigger('click')
-  expect(wrapper.vm.date).toEqual(['2021-01', '2021-03'])
+  expect(wrapper.vm.date).toEqual([`${currentYear}-01`, `${currentYear}-03`])
 
   mockRestore()
-})
-
-test('click html after picker header', async () => {
-  const template = `<var-date-picker v-model="date" :type="type" />`
-
-  const wrapper = mount({
-    components: {
-      [VarDatePicker.name]: VarDatePicker
-    },
-    data() {
-      return {
-        type: 'date',
-        date: '2021-05-19'
-      }
-    },
-    template
-  })
-
-  await delay(0)
-  await wrapper.find('.var-picker-header__value').trigger('click')
-  await delay(200)
-
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setData({ type: 'month' })
-  await wrapper.find('.var-picker-header__value').trigger('click')
-  await delay(200)
-
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.find('.var-date-picker-title__date').trigger('click')
-  await delay(200)
-
-  expect(wrapper.html()).toMatchSnapshot()
 })
 
 test('test datePicker readonly', async () => {

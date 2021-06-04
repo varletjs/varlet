@@ -64,7 +64,7 @@ export const props = {
   },
   validateTrigger: {
     type: Array as PropType<ValidateTriggers[]>,
-    default: ['onInput', 'onClear'],
+    default: () => ['onInput', 'onClear'],
   },
   rules: {
     type: Array as PropType<Array<(v: string | number) => any>>,

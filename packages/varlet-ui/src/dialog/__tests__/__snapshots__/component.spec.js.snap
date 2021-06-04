@@ -17,17 +17,17 @@ exports[`test dialog example 1`] = `
   <!--v-if-->
   <div class=\\"var-button__content\\">异步关闭</div>
 </button>
-<div class=\\"app-type\\">组件调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
+<div class=\\"app-type\\">组件调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--warning var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">基本使用</div>
 </button>
 <!--teleport start-->
-<!--teleport end--><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
+<!--teleport end--><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--warning var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">异步关闭</div>
 </button>
 <!--teleport start-->
-<!--teleport end--><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
+<!--teleport end--><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--warning var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">自定义插槽</div>
 </button>

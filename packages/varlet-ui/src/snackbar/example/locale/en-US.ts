@@ -8,6 +8,8 @@ export default {
   error: 'Error',
   loading: 'Loading',
   text: "Hello, I'm a snackbar",
+  loaded: 'Loaded',
+  wait: 'waiting...',
   close: 'Close',
   basicUsage: 'Basic Usage',
   multiLine: 'Multi-Line',

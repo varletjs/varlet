@@ -34,9 +34,9 @@
       </div>
     </div>
     <div class="varlet-site-content">
-      <div class="varlet-site-nav var-elevation--3" :ref="nav">
+      <div class="varlet-site-nav var-elevation--3" ref="refs">
         <var-cell
-          v-for="item in menu"
+          v-for="(item, index) in menu"
           class="varlet-site-nav__item"
           :class="{
             'varlet-site-nav__item--active': item.doc === currentMenuName,
@@ -45,6 +45,7 @@
           }"
           v-ripple="{ touchmoveForbid: false, disabled: !!item.isTitle, color: '#2979ff' }"
           @click="changeRoute(item)"
+          :key="index"
         >
           <span v-if="item.isTitle" class="varlet-site-nav__item--title">{{ item.text[language] }}</span>
           <span v-else class="varlet-site-nav__item--link">
@@ -52,7 +53,7 @@
           </span>
         </var-cell>
       </div>
-      <div class="varlet-site-code" :ref="code">
+      <div class="varlet-site-code" ref="codeRefs">
         <router-view />
       </div>
       <div class="varlet-site-mobile var-elevation--3">
@@ -104,20 +105,20 @@ export default defineComponent({
     [Menu.name]: Menu,
     [Loading.name]: Loading,
   },
+
   setup() {
-    const menu: Ref<Menu[]> = ref([])
-    const language: Ref<string> = ref('')
-    const header: Ref<Header> = ref({ i18nButton: {}, logo: '', search: {} })
-    const componentName: Ref<null | string> = ref(null)
-    const title: Ref<string> = ref('')
-    const currentMenuName: Ref<string> = ref('')
-    const isHideVersion: Ref<boolean> = ref(true)
-    let refs: HTMLElement = ref(null)
-    let codeRefs: HTMLElement = ref(null)
-    const route = useRoute()
     const { pc = {}, title: configTitle } = config
     const { header: configHeader = { i18nButton: {}, logo: '', search: {} }, menu: configMenu = [] } = pc
-    const languageList: Ref<Language> = ref({})
+    const menu: Ref<Menu[]> = ref(configMenu)
+    const language: Ref<string> = ref('')
+    const header: Ref<Header> = ref(configHeader)
+    const componentName: Ref<null | string> = ref(null)
+    const title: Ref<string> = ref(configTitle)
+    const currentMenuName: Ref<string> = ref('')
+    const refs: Ref<HTMLElement | null>  = ref(null)
+    const codeRefs: Ref<HTMLElement | null> = ref(null)
+    const route = useRoute()
+    const languageList: Ref<Language> = ref(config.pc.header.language)
     const isOpenMenu: Ref<boolean> = ref(false)
     const path: Ref<string | null> = ref(null)
     const isBack: Ref<boolean> = ref(false)
@@ -125,34 +126,23 @@ export default defineComponent({
     const isLoading: Ref<boolean> = ref(true)
 
     isPhone.value = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
-    languageList.value = config.pc.header.language
 
-    const nav = (element: HTMLElement) => {
-      refs = element
-    }
-
-    const code = (element: HTMLElement) => {
-      codeRefs = element
-    }
-
-    const judgmentType = (type) => {
-      let [, languageValue, componentValue] = window.location.hash.split('/')
+    const judgmentType = (type: string) => {
+      const [, languageValue, componentValue] = window.location.hash.split('/')
 
       isLoading.value = false
 
-      if (type) {
-        path.value = componentValue || 'home'
+      path.value = componentValue || 'home'
 
-        if (isPhone.value) {
-          window.location.href = `./mobile.html#/${componentValue || 'home'}?language=${
-            languageValue || 'zh-CN'
-          }&platform=mobile&path=${componentValue || 'home'}`
-        }
+      if (type && isPhone.value) {
+        window.location.href = `./mobile.html#/${path.value}?language=${
+          languageValue || 'zh-CN'
+        }&platform=mobile&path=${path.value}`
       }
 
       nextTick(() => {
-        let childrenElement = refs.getElementsByClassName('var-cell')
-        let index = menu.value.findIndex((item) => item.doc === componentValue)
+        const childrenElement = refs.value.getElementsByClassName('var-cell')
+        const index = menu.value.findIndex((item) => item.doc === componentValue)
 
         if (index !== -1) {
           childrenElement[index].scrollIntoView({
@@ -163,20 +153,16 @@ export default defineComponent({
       })
     }
 
-    menu.value = configMenu
-    header.value = configHeader
-    title.value = configTitle
-
     const changeRoute = (item) => {
-      let [, , componentValue] = window.location.hash.split('/')
+      const [, , componentValue] = window.location.hash.split('/')
       if (item.isTitle || componentValue === item.doc) {
         return false
       }
 
-      codeRefs.scrollTop = 0
+      codeRefs.value.scrollTop = 0
       isBack.value = false
-      componentName.value = item.nonComponent ? 'home' : item.doc
-      path.value = item.nonComponent ? item.doc : null
+      componentName.value = item.doc
+      path.value =  item.doc
     }
 
     const changeLanguage = (key) => {
@@ -192,23 +178,17 @@ export default defineComponent({
     watch(
       () => route.path,
       (to: string) => {
-        if (to === '/') {
-          return
-        }
+        if (to === '/') return
 
-        let [, languageValue, name] = to.split('/')
+        const [, languageValue, name] = to.split('/')
         currentMenuName.value = name
         language.value = languageValue
-
-        isBack.value ? judgmentType('') : (isBack.value = true)
-
-        if (!window['enableWatchURL']) {
-          window['enableWatchURL'] = true
-          return
-        }
+        document.title = config.pc.title[languageValue]
 
         const currentNonComponent = menu.value.find((c) => c.doc === currentMenuName.value)?.nonComponent ?? false
         componentName.value = currentNonComponent ? 'home' : currentMenuName.value
+
+        isBack.value ? judgmentType('') : (isBack.value = true)
       },
       { immediate: true }
     )
@@ -220,13 +200,12 @@ export default defineComponent({
       componentName,
       currentMenuName,
       title,
-      isHideVersion,
       languageList,
       isOpenMenu,
       isLoading,
       path,
-      nav,
-      code,
+      codeRefs,
+      refs,
       changeRoute,
       changeLanguage,
     }
@@ -646,6 +625,10 @@ iframe {
 
         &--title {
           font-size: 16px;
+          font-weight: 600;
+          color: #394950;
+          line-height: 28px;
+          padding: 8px 0 8px;
         }
 
         &--link {

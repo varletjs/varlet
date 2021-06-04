@@ -7,7 +7,7 @@
   <var-button type="primary" block @click="asyncClose">{{ pack.asyncClose }}</var-button>
 
   <app-type>{{ pack.componentCall }}</app-type>
-  <var-button type="primary" block @click="show = true">{{ pack.basicUsage }}</var-button>
+  <var-button type="warning" block @click="show = true">{{ pack.basicUsage }}</var-button>
   <var-dialog
     v-model:show="show"
     :title="pack.title"
@@ -17,10 +17,10 @@
     @closed="() => Snackbar.info('closed')"
   />
 
-  <var-button type="primary" block @click="show1 = true">{{ pack.asyncClose }}</var-button>
+  <var-button type="warning" block @click="show1 = true">{{ pack.asyncClose }}</var-button>
   <var-dialog v-model:show="show1" :title="pack.title" :message="pack.message" @before-close="onBeforeClose" />
 
-  <var-button type="primary" block @click="show2 = true">{{ pack.customSlots }}</var-button>
+  <var-button type="warning" block @click="show2 = true">{{ pack.customSlots }}</var-button>
   <var-dialog v-model:show="show2">
     <template #title>
       <var-icon name="information" color="#2979ff" />
@@ -57,7 +57,7 @@ export default {
       show: false,
       show1: false,
       show2: false,
-      value: ''
+      value: '',
     })
 
     const actions = {

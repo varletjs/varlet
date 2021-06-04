@@ -3,6 +3,8 @@ export default {
   dialogTitle: 'Hint',
   dialogConfirmButtonText: 'Confirm',
   dialogCancelButtonText: 'Cancel',
+  // ActionSheet
+  actionSheetTitle: 'Select One',
   // List
   listLoadingText: 'Loading',
   listFinishedText: 'No more',

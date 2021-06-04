@@ -1,25 +1,7 @@
 module.exports = {
-  name: 'Varlet',
-  namespace: 'var',
-  title: 'VARLET',
   host: '0.0.0.0',
   port: 8080,
   pc: {
-    title: 'Varlet 面向Vue3的Material风格移动端组件库',
-    description: 'Varlet 面向Vue3的Material风格移动端组件库',
-    logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
-    redirect: '/zh-CN/home',
-    header: {
-      logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
-      search: {
-        'zh-CN': '搜索文档...',
-        'en-US': 'Search...',
-      },
-      language: {
-        'zh-CN': '中文',
-        'en-US': 'English',
-      },
-    },
     menu: [
       {
         text: {
@@ -78,10 +60,10 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'IDE语法高亮',
-          'en-US': 'IDE Code Highlight',
+          'zh-CN': '开发工具支持',
+          'en-US': 'IDE Code Support',
         },
-        doc: 'highlight',
+        doc: 'ide',
         nonComponent: true,
       },
       {
@@ -174,7 +156,7 @@ module.exports = {
           'zh-CN': 'Collapse 拓展面板',
           'en-US': 'Collapse',
         },
-        doc: 'Collapse',
+        doc: 'collapse',
       },
       {
         text: {
@@ -287,6 +269,13 @@ module.exports = {
           'en-US': 'Snackbar',
         },
         doc: 'snackbar',
+      },
+      {
+        text: {
+          'zh-CN': 'ActionSheet 动作面板',
+          'en-US': 'ActionSheet',
+        },
+        doc: 'action-sheet',
       },
       {
         text: {
@@ -430,10 +419,5 @@ module.exports = {
       },
     ],
   },
-  mobile: {
-    title: 'Varlet 面向Vue3的Material风格移动端组件库',
-    description: 'Varlet 面向Vue3的Material风格移动端组件库',
-    logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
-    redirect: '/home',
-  },
+  mobile: {},
 }

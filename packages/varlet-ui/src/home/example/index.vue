@@ -1,5 +1,11 @@
 <template>
-  <div class="space"></div>
+  <div class="logo">
+    <h1 class="varlet-home__title">
+      <img class="varlet-home__image" :src="logo" />
+      <span>{{ title }}</span>
+    </h1>
+    <h2 class="varlet-home__desc">{{ desc[lang] }}</h2>
+  </div>
   <var-cell v-for="component in components" :key="component.text" @click="toComponent(component)">
     <template #extra>
       <var-icon name="chevron-right" size="14" />
@@ -18,7 +24,7 @@ import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
 import { watchLang, watchPlatform } from '../../utils/components'
 
-const varletConfig = require('../../../varlet.config')
+const varletConfig = require('@varlet/cli/site/site.config.json')
 
 export default {
   name: 'HomeExample',
@@ -28,7 +34,8 @@ export default {
     [Icon.name]: Icon,
   },
   setup() {
-    const configComponents = varletConfig.pc.menu.filter((item) => !item.isTitle && !item.nonComponent)
+    const { title, pc: { menu, logo, title: desc } } = varletConfig
+    const configComponents = menu.filter((item) => !item.isTitle && !item.nonComponent)
     const components = reactive(configComponents)
     const lang = ref('zh-CN')
     const platform = ref('mobile')
@@ -55,9 +62,11 @@ export default {
 
     return {
       components,
-      platform,
       lang,
       toComponent,
+      logo,
+      title,
+      desc
     }
   },
 }
@@ -65,8 +74,44 @@ export default {
 
 <style scoped lang="less">
 @import '../../styles/var';
-.space {
-  height: 10px;
+.logo {
+  height: 100px;
+  padding-top: 30px;
+  margin-bottom: 20px;
+}
+
+.varlet-home__title {
+  margin: 0 0 16px;
+  font-size: 32px;
+}
+
+.varlet-home__title,
+.varlet-home__desc {
+  padding-left: 16px;
+  font-weight: normal;
+  line-height: 1;
+  user-select: none;
+}
+
+.varlet-home__desc {
+  margin: 0 0 40px;
+  color: rgba(69, 90, 100, 0.6);
+  font-size: 14px;
+}
+
+.varlet-home__image {
+  width: 32px;
+  height: 32px;
+}
+
+.varlet-home__image,
+.varlet-home__title span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.varlet-home__title span {
+  margin-left: 16px;
 }
 
 .var-cell {

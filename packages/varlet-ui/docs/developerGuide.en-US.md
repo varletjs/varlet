@@ -16,5 +16,6 @@ yarn dev
 ### Todo list
 - 1.Provides `jsx`,`tsx` syntax highlighting support(Complete).
 - 2.Improve the document reading experience and fix problems.
-- 3.Unit test all components and issue test report.
+- 3.Unit test all components and issue test report(Complete).
 - 4.Full component style detail optimization, animation curve optimization.
+- 5.The plan is compatible with Vue2.7
