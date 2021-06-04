@@ -52,7 +52,7 @@ createApp().use(Sticky)
 
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
-| `offset-top` | 吸顶距离(px, rem) | _string \| number_ | `0` |
+| `offset-top` | 吸顶距离 | _string \| number_ | `0` |
 | `z-index` | 吸顶时的层级 | _string \| number_ | `0` |
 
 ### 事件

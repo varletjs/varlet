@@ -133,7 +133,7 @@ You can use it this way:
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
 | `name` | icon name | _string_ | `-` |
-| `size` | icon size(px, rem, %) | _string \| number_ | `-` |
+| `size` | icon size | _string \| number_ | `-` |
 | `color` | icon color, Only applies to font icons | _string_ | `-` |  
 | `namespace` | Icon namespace, extensible custom icon library |  _string_ | `var-icon` |
 | `transition` | Transition animation time(ms) |  _string \| number_ | `0` |
