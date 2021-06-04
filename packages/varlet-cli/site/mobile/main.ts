@@ -39,7 +39,6 @@ router.beforeEach((to) => {
         ? `/${to.query.language}/${to.query.path}`
         : `/${to.query.language}${to.path}`
 
-    window.top['enableWatchURL'] = false
     window.top['router'].replace(pcPath)
   }
 })
