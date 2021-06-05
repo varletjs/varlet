@@ -97,9 +97,9 @@ export default {
 | `card` | Whether to display the card | _boolean_ | `false` |
 | `avatar` | Whether to display the avatar | _boolean_ | `false` |
 | `fullscreen` | Whether to enable fullscreen mode | _boolean_ | `false` |
-| `title-width` | Title Width(px, rem, %)  | _string \| number_ | `50%` |
-| `card-height` | Card Height(px, rem, %)  | _string \| number_ | `160px` |
-| `avatar-size` | Avatar size(px, rem, %)  | _string \| number_ | `34px` |
+| `title-width` | Title Width  | _string \| number_ | `50%` |
+| `card-height` | Card Height  | _string \| number_ | `160px` |
+| `avatar-size` | Avatar size  | _string \| number_ | `34px` |
 | `rows` | The paragraph number of rows | _string \| number_ | `3` |
 | `rows-width` | The width of each line of a paragraph | _number[] \| string[]_ | `['12px', '12px', '12px']` |
 

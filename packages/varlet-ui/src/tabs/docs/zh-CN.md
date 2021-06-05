@@ -252,10 +252,10 @@ export default {
 | `inactive-color` | 选项卡未激活的主要颜色 | _string_ | `#646566` |
 | `disabled-color` | 选项卡禁用时的主要颜色 | _string_ | `#e0e0e0` |
 | `indicator-color` | 选项卡激活指示器的颜色 | _string_ | `#2979ff` |
-| `indicator-size` | 选项卡激活指示器的尺寸(px, %, rem) | _string \| number_ | `2px` |
+| `indicator-size` | 选项卡激活指示器的尺寸 | _string \| number_ | `2px` |
 | `elevation` | 是否启用阴影 | _boolean_ | `false` |
 | `sticky` | 是否启用粘性布局 | _boolean_ | `false` |
-| `offset-top` | 吸顶距离(px, rem) | _string \| number_ | `0` |
+| `offset-top` | 吸顶距离 | _string \| number_ | `0` |
 
 
 ### Tab Props

@@ -250,10 +250,10 @@ Click the Tab to scroll automatically to the center of the viewport.
 | `inactive-color` | The primary color that the tab is not activated | _string_ | `#646566` |
 | `disabled-color` | The primary color that the tab is disabled | _string_ | `#e0e0e0` |
 | `indicator-color` | The tab activates the color of the indicator | _string_ | `#2979ff` |
-| `indicator-size` | Tab activates the size of the indicator(px, %, rem) | _string \| number_ | `2px` |
+| `indicator-size` | Tab activates the size of the indicator | _string \| number_ | `2px` |
 | `elevation` | Whether to enable shadows | _boolean_ | `false` |
 | `sticky` | Whether to enable sticky layouts | _boolean_ | `false` |
-| `offset-top` | Distance offset top(px, rem) | _string \| number_ | `0` |
+| `offset-top` | Distance offset top | _string \| number_ | `0` |
 
 ### Tab Props
 

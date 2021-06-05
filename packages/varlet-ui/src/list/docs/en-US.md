@@ -181,7 +181,7 @@ This can be mistaken for a scroll container, so avoid it.
 | `v-model:error` | error state | _boolean_ | `false` |
 | `immediate-check` | Whether the location is detected immediately when the List is initialized | _boolean_ | `true` |
 | `finished` | Whether the load is complete | _boolean_ | `false` |
-| `offset` | Trigger distance from the bottom(px, rem) | _string \| number_ | `0` |
+| `offset` | Trigger distance from the bottom | _string \| number_ | `0` |
 | `loading-text` | Loading text | _string_ | `Loading` |
 | `finished-text` | Finished text | _string_ | `No more` |
 | `error-text` | Error text | _string_ | `Load fail` |

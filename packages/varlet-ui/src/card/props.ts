@@ -20,15 +20,22 @@ export const props = {
     type: String,
   },
   title: {
-    type: [Number, String],
+    type: String,
   },
   subtitle: {
     type: String,
   },
-  desc: {
+  description: {
     type: String,
   },
   elevation: {
     type: [Number, String],
+  },
+  ripple: {
+    type: Boolean,
+    default: false,
+  },
+  onClick: {
+    type: Function as PropType<(e: Event) => void>,
   },
 }

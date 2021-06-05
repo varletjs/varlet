@@ -159,7 +159,7 @@ export default {
 | `textKey` | The attribute key of the text | _string_ | `text` |
 | `toolbar` | Whether to display the top toolbar | _string_ | `true` |
 | `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
-| `optionHeight` | Option height(px, rem) | _string \| number_ | `44` |
+| `optionHeight` | Option height | _string \| number_ | `44` |
 | `optionCount` | Number of options visible | _string \| number_ | `6` |
 | `confirmButtonText` | Confirm button text | _string_ | `Confirm` |
 | `cancelButtonText` | Cancel button text | _string_ | `Cancel` |

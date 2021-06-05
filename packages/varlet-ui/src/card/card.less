@@ -1,55 +1,62 @@
 @import '../styles/var';
 @import '../styles/elevation';
 
-@card-title-font-size: 20px;
-@card-title-font-weight: 700;
-@card-subtitle-font-size: 14px;
-@card-subtitle-font-weight: normal;
-@card-desc-font-size: 16px;
-@card-subtitle-color: rgba(0, 0, 0, 0.6);
-@card-desc-color: #333;
-@card-padding: 10px 12px;
-@card-row-spacing: 10px;
-@card-border-color: #f0f0f0;
-@card-border-left: 12px;
-@card-border-right: 12px;
+@card-padding: 0 0 10px 0;
 @card-border-radius: 4px;
-@card-line-height: 30px;
 @card-image-width: 100%;
-@card-image-height-default: 200px;
-@card-padding-bottom: 10px;
+@card-image-height: 200px;
+@card-title-color: #333;
+@card-title-font-size: 20px;
+@card-title-padding: 0 12px;
+@card-title-margin: 10px 0 0 0;
+@card-subtitle-color: rgba(0, 0, 0, 0.6);
+@card-subtitle-font-size: 14px;
+@card-subtitle-padding: 0 13px;
+@card-subtitle-margin: 10px 0 0 0;
+@card-description-color: rgba(0, 0, 0, 0.6);
+@card-description-font-size: 14px;
+@card-description-margin: 20px 0 0 0;
+@card-description-padding: 0 13px;
+@card-footer-padding: 0 12px;
+@card-footer-margin: 30px 0 0px 0;
+
+@card-line-height: 22px;
+
 .var-card {
-  border: 1px solid @card-border-color;
   border-radius: @card-border-radius;
   overflow: hidden;
-  padding-bottom: @card-padding-bottom;
+  padding: @card-padding;
+  line-height: @card-line-height;
+
   &__image {
     width: @card-image-width;
-    height: @card-image-height-default;
+    height: @card-image-height;
     display: block;
   }
-  &__content {
-    display: flex;
-    flex-direction: column;
-    padding: @card-padding;
-  }
+
   &__title {
-    position: relative;
     font-size: @card-title-font-size;
-    font-weight: @card-title-font-weight;
+    padding: @card-title-padding;
+    margin: @card-title-margin;
+    color: @card-title-color;
   }
+
   &__subtitle {
     font-size: @card-subtitle-font-size;
-    font-weight: @card-subtitle-font-weight;
     color: @card-subtitle-color;
-    margin: @card-row-spacing 0;
+    padding: @card-subtitle-padding;
+    margin: @card-subtitle-margin;
   }
-  &__desc {
-    font-size: @card-desc-font-size;
-    color: @card-desc-color;
-    margin-top: @card-row-spacing;
+
+  &__description {
+    font-size: @card-description-font-size;
+    color: @card-description-color;
+    margin: @card-description-margin;
+    padding: @card-description-padding;
   }
+
   &__footer {
-    padding: @card-padding;
+    padding: @card-footer-padding;
+    margin: @card-footer-margin;
   }
 }
