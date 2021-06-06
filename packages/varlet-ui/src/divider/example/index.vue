@@ -1,9 +1,15 @@
 <template>
   <div>
     <app-type>{{ pack.basicUsage }}</app-type>
+    <p>{{ pack.basicTextUp }}</p>
     <var-divider />
+    <p>{{ pack.basicTextDown }}</p>
+  </div>
+  <div>
+    <app-type>{{ pack.inset }}</app-type>
     <var-divider inset />
-    <var-divider :inset="24" />
+    <var-divider :inset="36" margin="36px 0" />
+    <var-divider :inset="-36" />
   </div>
   <div>
     <app-type>{{ pack.verticalDivider }}</app-type>
@@ -22,8 +28,14 @@
     </div>
   </div>
   <div>
-    <app-type>{{ pack.dividerWithDesc }}</app-type>
-    <var-divider>{{ pack.dividerWithDescText }}</var-divider>
+    <app-type>{{ pack.withDesc }}</app-type>
+    <var-divider :description="pack.withDescText" />
+  </div>
+  <div>
+    <app-type>{{ pack.custom }}</app-type>
+    <var-divider>
+      <span :style="{ fontSize: '16px', padding: '0 18px', color: 'red' }">{{ pack.customContent }}</span>
+    </var-divider>
   </div>
 </template>
 
@@ -40,7 +52,6 @@ export default {
   name: 'DividerExample',
   components: {
     [Icon.name]: Icon,
-    [Image.name]: Image,
     [AppBar.name]: AppBar,
     [Button.name]: Button,
     [Divider.name]: Divider,
@@ -65,5 +76,6 @@ export default {
 .vertical-divider-wrapper {
   display: flex;
   justify-content: center;
+  color: #333;
 }
 </style>
