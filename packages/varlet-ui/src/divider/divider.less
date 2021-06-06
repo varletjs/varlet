@@ -3,6 +3,8 @@
 @divider-color: #bcc2cb;
 @divider-text-color: #888;
 @divider-text-margin: 8px;
+@divider-inset: 72px;
+@divider-vertical-inset: 16px;
 
 .var-divider {
   width: 100%;
@@ -18,6 +20,15 @@
     height: 80%;
     margin: auto @divider-text-margin;
     padding: @divider-text-margin 0;
+  }
+
+  &--inset {
+    width: calc(100% - @divider-inset);
+    left: @divider-inset;
+  }
+
+  &--vertical&--inset {
+    height: 80% - @divider-vertical-inset;
   }
 
   &__text {
@@ -37,7 +48,6 @@
       display: inline-block;
       content: '';
       position: relative;
-      // width: 50%;
       flex: 1;
       height: 1px;
       background-color: @divider-color;

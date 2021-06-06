@@ -1,18 +1,23 @@
 <template>
   <div
     class="var-divider"
-    :class="[vertical ? 'var-divider--vertical' : null, withText ? 'var-divider--with-text' : null]"
+    :class="[
+      vertical ? 'var-divider--vertical' : null,
+      withText ? 'var-divider--with-text' : null,
+      isInset ? 'var-divider--inset' : null,
+    ]"
     :style="style"
   >
-    <span class="var-divider__text">
-      <slot></slot>
-    </span>
+    <slot>
+      <span class="var-divider__text" v-if="!!description">{{ description }}</span>
+    </slot>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed, reactive, onMounted, toRefs } from 'vue'
-import { isBool, isNumber } from '../utils/shared'
+import { toSizeUnit } from '../utils/elements'
+import { isBool } from '../utils/shared'
 import { props } from './props'
 
 export default defineComponent({
@@ -21,30 +26,37 @@ export default defineComponent({
   setup(props, { slots }) {
     const state = reactive({ withText: false })
 
-    const style = computed(() => {
-      const { inset, vertical } = props
+    const isInset = computed(() => (isBool(props.inset) ? props.inset : true))
 
-      if ((isBool(inset) && inset) || (isNumber(inset) && inset > 0)) {
-        return vertical
-          ? {
-              height: `calc(80% - ${isBool(inset) ? 16 : inset}px)`,
-            }
-          : {
-              width: `calc(100% - ${isBool(inset) ? 72 : inset}px)`,
-              left: `${isBool(inset) ? 72 : inset}px`,
-            }
+    const style = computed(() => {
+      const { inset, vertical, margin } = props
+      const baseStyle = {
+        margin,
       }
 
-      return {}
+      if (isBool(inset) || inset === 0) return { ...baseStyle }
+
+      const absInset = Math.abs(inset)
+      return vertical
+        ? {
+            ...baseStyle,
+            height: `calc(80% - ${toSizeUnit(absInset)})`,
+          }
+        : {
+            ...baseStyle,
+            width: `calc(100% - ${toSizeUnit(absInset)})`,
+            left: inset > 0 ? toSizeUnit(inset) : toSizeUnit(0),
+          }
     })
 
     onMounted(() => {
-      state.withText = Boolean(slots.default?.().length)
+      state.withText = Boolean(slots.default?.().length) || Boolean(props.description)
     })
 
     return {
       ...toRefs(state),
       style,
+      isInset,
     }
   },
 })
