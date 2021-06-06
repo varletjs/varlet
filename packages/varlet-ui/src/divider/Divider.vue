@@ -1,6 +1,6 @@
 <template>
   <div
-    class="var-divider"
+    class="var-divider var--box"
     :class="[
       vertical ? 'var-divider--vertical' : null,
       withText ? 'var-divider--with-text' : null,
@@ -63,5 +63,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../styles/common';
 @import './divider';
 </style>

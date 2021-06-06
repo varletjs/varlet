@@ -4,7 +4,7 @@
 @divider-text-color: #888;
 @divider-text-margin: 8px;
 @divider-inset: 72px;
-@divider-vertical-inset: 16px;
+@divider-vertical-inset: 8px;
 
 .var-divider {
   width: 100%;
@@ -28,7 +28,9 @@
   }
 
   &--vertical&--inset {
-    height: 80% - @divider-vertical-inset;
+    width: 1px;
+    left: unset;
+    height: calc(80% - @divider-vertical-inset);
   }
 
   &__text {
