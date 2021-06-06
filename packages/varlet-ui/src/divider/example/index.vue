@@ -13,7 +13,7 @@
   </div>
   <div>
     <app-type>{{ pack.verticalDivider }}</app-type>
-    <div class="vertical-divider-wrapper">
+    <div class="vertical-divider-wrapper" :style="{ height: '32px' }">
       <var-button text disabled>
         {{ pack.btnText }}
       </var-button>
@@ -75,6 +75,7 @@ export default {
 <style lang="less" scoped>
 .vertical-divider-wrapper {
   display: flex;
+  align-items: center;
   justify-content: center;
   color: #333;
 }

@@ -91,4 +91,4 @@ export default {
 | `@divider-text-color` | `#888`|
 | `@divider-text-margin` | `8px`|
 | `@divider-inset` |  `72px`|
-| `@divider-vertical-inset` | `16px`|
+| `@divider-vertical-inset` | `8px`|
