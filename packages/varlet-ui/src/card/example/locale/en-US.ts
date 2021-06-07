@@ -8,4 +8,5 @@ export default {
   showImage: 'Show Image',
   useSlot: 'Use Slot',
   button: 'Use Button',
+  showRipple: 'Ripple Effect',
 }
