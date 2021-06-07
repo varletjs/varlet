@@ -25,8 +25,10 @@
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Button from '../../button'
 import Card from '..'
+import context from '../../context'
 import { pack, use } from './locale'
-import { watchLang } from '../../utils/components'
+import { watchLang, watchPlatform } from '../../utils/components'
+import { onUnmounted } from 'vue'
 
 export default {
   name: 'CardExample',
@@ -37,6 +39,17 @@ export default {
   },
   setup() {
     watchLang(use)
+
+    const prevTouchmoveForbid = context.touchmoveForbid
+    watchPlatform((platform) => {
+      if (platform === 'pc') {
+        context.touchmoveForbid = false
+      }
+    })
+    onUnmounted(() => {
+      context.touchmoveForbid = prevTouchmoveForbid
+    })
+
     return {
       pack,
     }

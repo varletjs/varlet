@@ -3,6 +3,7 @@ import { AppBar } from './AppBar'
 import { BackTop } from './BackTop'
 import { Badge } from './Badge'
 import { Button } from './Button'
+import { Card } from './Card'
 import { Cell } from './Cell'
 import { Checkbox } from './Checkbox'
 import { CheckboxGroup } from './CheckboxGroup'
@@ -61,6 +62,7 @@ export {
   BackTop,
   Badge,
   Button,
+  Card,
   Cell,
   Checkbox,
   CheckboxGroup,
