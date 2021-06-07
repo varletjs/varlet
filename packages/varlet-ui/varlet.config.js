@@ -202,6 +202,13 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Card 卡片',
+          'en-US': 'Card',
+        },
+        doc: 'card',
+      },
+      {
+        text: {
           'zh-CN': 'Divider 分割线',
           'en-US': 'Divider',
         },
