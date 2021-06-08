@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface DatePickerProps {
+export interface DatePickerProps {
   modelValue: string | Array<string>
   type?: 'date' | 'month'
   allowedDates?: (val: string) => boolean
@@ -16,7 +16,6 @@ interface DatePickerProps {
   range?: boolean
   onChange?: (value: string | string[]) => void
   'onUpdate:modelValue'?: (value: string | string[]) => void
-
 }
 
 export class DatePicker extends VarComponent {

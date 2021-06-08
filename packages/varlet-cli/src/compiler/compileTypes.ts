@@ -8,27 +8,22 @@ export async function compileTypes() {
 
   const dir = await readdir(TYPES_DIR)
 
-  const ignoreEntryDir = dir.filter(filename => filename !== 'index.d.ts')
+  const ignoreEntryDir = dir.filter((filename) => filename !== 'index.d.ts')
 
-  const imports: string[] = []
   const exports: string[] = []
 
-  ignoreEntryDir.forEach(filename => {
+  ignoreEntryDir.forEach((filename) => {
     const componentName = bigCamelize(filename.slice(0, filename.indexOf('.d.ts')))
 
-    exports.push(componentName)
-    imports.push(`import { ${componentName} } from './${camelize(componentName)}'`)
+    exports.push(`export * from './${camelize(componentName)}'`)
   })
 
   const template = `\
-${imports.join('\n')}
 import { App } from 'vue'
 
 export const install: (app: App) => void
 
-export {
-  ${exports.join(',\n  ')},
-}
+${exports.join('\n')}
 `
 
   await writeFile(resolve(TYPES_DIR, 'index.d.ts'), template)

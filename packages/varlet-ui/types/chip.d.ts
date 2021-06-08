@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface ChipProps {
+export interface ChipProps {
   type?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
   size?: 'normal' | 'mini' | 'small' | 'large'
   color?: string

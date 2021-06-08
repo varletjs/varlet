@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface CollapseItemProps {
+export interface CollapseItemProps {
   name?: string | number
   title?: string
   icon?: string

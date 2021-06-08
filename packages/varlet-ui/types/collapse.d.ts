@@ -1,13 +1,13 @@
 import { VarComponent } from './varComponent'
 
-type ModelValue = null | string | number | Array<string | number>
+export type CollapseModelValue = null | string | number | Array<string | number>
 
-interface CollapseProps {
-  modelValue?: ModelValue
+export interface CollapseProps {
+  modelValue?: CollapseModelValue
   accordion?: boolean
   offset?: boolean
-  onChange?: (value: ModelValue) => void
-  'onUpdate:modelValue'?: (value: ModelValue) => void
+  onChange?: (value: CollapseModelValue) => void
+  'onUpdate:modelValue'?: (value: CollapseModelValue) => void
 }
 
 export class Collapse extends VarComponent {

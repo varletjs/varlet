@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface IndexBarProps {
+export interface IndexBarProps {
   sticky?: boolean
   stickyOffsetTop?: number
   zIndex?: number | string

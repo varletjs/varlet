@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface CellProps {
+export interface CellProps {
   title?: string | number
   icon?: string
   desc?: string

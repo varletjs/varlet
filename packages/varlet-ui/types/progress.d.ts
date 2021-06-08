@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface ProgressProps {
+export interface ProgressProps {
   mode?: 'linear' | 'circle'
   lineWidth?: string | number
   color?: string

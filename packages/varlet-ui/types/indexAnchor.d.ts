@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface IndexAnchorProps {
+export interface IndexAnchorProps {
   index: string | number
 }
 

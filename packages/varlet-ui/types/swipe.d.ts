@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface SwipeProps {
+export interface SwipeProps {
   loop?: boolean
   autoplay?: string | number
   duration?: string | number

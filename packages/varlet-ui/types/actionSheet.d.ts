@@ -1,7 +1,7 @@
 import { App } from 'vue'
 import { VarComponent } from './varComponent'
 
-interface ActionSheetProps {
+export interface ActionSheetProps {
   actions?: ActionItem[]
   show?: boolean
   title?: string
@@ -30,7 +30,7 @@ export interface ActionItem {
   disabled: boolean
 }
 
-interface ActionSheetOptions {
+export interface ActionSheetOptions {
   actions: ActionItem[]
   show?: boolean
   title?: string

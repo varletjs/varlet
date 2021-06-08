@@ -1,114 +1,58 @@
-import { ActionSheet } from './ActionSheet'
-import { AppBar } from './AppBar'
-import { BackTop } from './BackTop'
-import { Badge } from './Badge'
-import { Button } from './Button'
-import { Card } from './Card'
-import { Cell } from './Cell'
-import { Checkbox } from './Checkbox'
-import { CheckboxGroup } from './CheckboxGroup'
-import { Chip } from './Chip'
-import { Col } from './Col'
-import { Collapse } from './Collapse'
-import { CollapseItem } from './CollapseItem'
-import { Countdown } from './Countdown'
-import { Counter } from './Counter'
-import { DatePicker } from './DatePicker'
-import { Dialog } from './Dialog'
-import { Form } from './Form'
-import { Icon } from './Icon'
-import { Image } from './Image'
-import { IndexAnchor } from './IndexAnchor'
-import { IndexBar } from './IndexBar'
-import { Input } from './Input'
-import { Lazy } from './Lazy'
-import { Loading } from './Loading'
-import { Locale } from './Locale'
-import { Menu } from './Menu'
-import { Option } from './Option'
-import { Picker } from './Picker'
-import { Popup } from './Popup'
-import { Progress } from './Progress'
-import { PullRefresh } from './PullRefresh'
-import { Radio } from './Radio'
-import { RadioGroup } from './RadioGroup'
-import { Rate } from './Rate'
-import { Ripple } from './Ripple'
-import { Row } from './Row'
-import { Select } from './Select'
-import { Slider } from './Slider'
-import { Snackbar } from './Snackbar'
-import { Step } from './Step'
-import { Steps } from './Steps'
-import { Sticky } from './Sticky'
-import { Swipe } from './Swipe'
-import { SwipeItem } from './SwipeItem'
-import { Switch } from './Switch'
-import { Tab } from './Tab'
-import { TabItem } from './TabItem'
-import { Tabs } from './Tabs'
-import { TabsItems } from './TabsItems'
-import { TimePicker } from './TimePicker'
-import { Uploader } from './Uploader'
-import { VarComponent } from './VarComponent'
-import { VarDirective } from './VarDirective'
 import { App } from 'vue'
 
 export const install: (app: App) => void
 
-export {
-  ActionSheet,
-  AppBar,
-  BackTop,
-  Badge,
-  Button,
-  Card,
-  Cell,
-  Checkbox,
-  CheckboxGroup,
-  Chip,
-  Col,
-  Collapse,
-  CollapseItem,
-  Countdown,
-  Counter,
-  DatePicker,
-  Dialog,
-  Form,
-  Icon,
-  Image,
-  IndexAnchor,
-  IndexBar,
-  Input,
-  Lazy,
-  Loading,
-  Locale,
-  Menu,
-  Option,
-  Picker,
-  Popup,
-  Progress,
-  PullRefresh,
-  Radio,
-  RadioGroup,
-  Rate,
-  Ripple,
-  Row,
-  Select,
-  Slider,
-  Snackbar,
-  Step,
-  Steps,
-  Sticky,
-  Swipe,
-  SwipeItem,
-  Switch,
-  Tab,
-  TabItem,
-  Tabs,
-  TabsItems,
-  TimePicker,
-  Uploader,
-  VarComponent,
-  VarDirective,
-}
+export * from './ActionSheet'
+export * from './AppBar'
+export * from './BackTop'
+export * from './Badge'
+export * from './Button'
+export * from './Card'
+export * from './Cell'
+export * from './Checkbox'
+export * from './CheckboxGroup'
+export * from './Chip'
+export * from './Col'
+export * from './Collapse'
+export * from './CollapseItem'
+export * from './Countdown'
+export * from './Counter'
+export * from './DatePicker'
+export * from './Dialog'
+export * from './Form'
+export * from './Icon'
+export * from './Image'
+export * from './IndexAnchor'
+export * from './IndexBar'
+export * from './Input'
+export * from './Lazy'
+export * from './Loading'
+export * from './Locale'
+export * from './Menu'
+export * from './Option'
+export * from './Picker'
+export * from './Popup'
+export * from './Progress'
+export * from './PullRefresh'
+export * from './Radio'
+export * from './RadioGroup'
+export * from './Rate'
+export * from './Ripple'
+export * from './Row'
+export * from './Select'
+export * from './Slider'
+export * from './Snackbar'
+export * from './Step'
+export * from './Steps'
+export * from './Sticky'
+export * from './Swipe'
+export * from './SwipeItem'
+export * from './Switch'
+export * from './Tab'
+export * from './TabItem'
+export * from './Tabs'
+export * from './TabsItems'
+export * from './TimePicker'
+export * from './Uploader'
+export * from './VarComponent'
+export * from './VarDirective'

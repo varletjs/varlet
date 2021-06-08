@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface IconProps {
+export interface IconProps {
   name?: string
   size?: string | number
   color?: string

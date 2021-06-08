@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface CardProps {
+export interface CardProps {
   src?: string
   fit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
   height?: string | number

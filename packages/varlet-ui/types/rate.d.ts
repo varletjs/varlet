@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface RateProps {
+export interface RateProps {
   modelValue?: string | number
   count?: string | number
   color?: string

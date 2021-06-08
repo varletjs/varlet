@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface StepsProps {
+export interface StepsProps {
   active?: string | number
   direction?: 'horizontal' | 'vertical'
   activeColor?: string

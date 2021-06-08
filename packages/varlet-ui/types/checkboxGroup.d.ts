@@ -1,12 +1,12 @@
 import { VarComponent } from './varComponent'
 
-export type ValidateTriggers = 'onChange'
+export type CheckboxGroupValidateTriggers = 'onChange'
 
-interface CheckboxGroupProps {
+export interface CheckboxGroupProps {
   modelValue?: any[]
   max?: string | number
   direction?: 'horizontal' | 'vertical'
-  validateTrigger?: Array<ValidateTriggers>
+  validateTrigger?: Array<CheckboxGroupValidateTriggers>
   rules?: Array<(value: any) => any>
   onChange?: (value: Array<any>) => void
   'onUpdate:modelValue'?: (value: Array<any>) => void

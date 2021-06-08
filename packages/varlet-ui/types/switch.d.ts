@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface SwitchProps {
+export interface SwitchProps {
   modelValue?: any
   activeValue?: any
   inactiveValue?: any

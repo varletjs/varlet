@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface TimePickerProps {
+export interface TimePickerProps {
   modelValue?: string
   shadow?: boolean
   color?: string

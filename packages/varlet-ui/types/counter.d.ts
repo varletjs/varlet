@@ -1,8 +1,8 @@
 import { VarComponent } from './varComponent'
 
-export type ValidateTriggers = 'onIncrement' | 'onDecrement' | 'onInputChange' | 'onLazyChange'
+export type CounterValidateTriggers = 'onIncrement' | 'onDecrement' | 'onInputChange' | 'onLazyChange'
 
-interface CounterProps {
+export interface CounterProps {
   modelValue?: string | number
   min?: string | number
   max?: string | number
@@ -22,7 +22,7 @@ interface CounterProps {
   decrementButton?: boolean
   press?: boolean
   ripple?: boolean
-  validateTrigger?: Array<ValidateTriggers>
+  validateTrigger?: Array<CounterValidateTriggers>
   rules?: Array<(v: number) => any>
   onBeforeChange?: (value: number, change: (value: string | number) => void) => void
   onChange?: (value: number) => void
