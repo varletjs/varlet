@@ -57,11 +57,13 @@ GIF is recorded in chinese environment
 </script>
 ```
 
-### Webpack/Vite
+### Webpack / Vite
 ```shell
 # Install with npm or yarn
+
 # npm
 npm i @varlet/ui -S
+
 # yarn
 yarn add @varlet/ui
 ```
