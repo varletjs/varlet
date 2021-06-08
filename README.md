@@ -18,7 +18,7 @@
 
 ### 介绍
 
-Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥抱`Vue3`生态，由社区几个不知天高地厚的小伙伴开发和维护。
+Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥抱`Vue3`生态，由社区建立起来的组件库团队进行维护。
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/24223652/121148788-a8e0d300-c874-11eb-8ad9-57de2c31e440.gif">
