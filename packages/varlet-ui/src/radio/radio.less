@@ -7,6 +7,23 @@
 @radio-icon-size: 24px;
 @radio-action-padding: 6px;
 
+@keyframes var-vibrate-animation {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .var-radio {
   display: flex;
   align-items: center;
@@ -30,6 +47,7 @@
   &__icon[var-radio-cover] {
     display: block;
     font-size: @radio-icon-size;
+    animation: var-vibrate-animation 0.25s;
   }
 
   &--checked {
