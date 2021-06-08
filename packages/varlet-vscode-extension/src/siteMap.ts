@@ -4,6 +4,7 @@ export default {
   icon: '/icon',
   image: '/image',
   'back-top': '/back-top',
+  'app-bar': '/app-bar',
   loading: '/loading',
   chip: '/chip',
   badge: '/badge',
