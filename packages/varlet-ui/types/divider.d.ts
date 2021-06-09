@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface DividerProps {
+export interface DividerProps {
   inset?: boolean | number
   vertical?: boolean
   description?: string
