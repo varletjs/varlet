@@ -583,7 +583,6 @@ iframe {
               font-weight: 600;
               letter-spacing: 1px;
               font-size: 11px;
-              // background-color: rgba(25, 137, 250, 0.1);
               border-radius: 20px;
             }
           }
