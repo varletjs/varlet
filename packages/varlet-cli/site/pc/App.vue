@@ -115,7 +115,7 @@ export default defineComponent({
     const componentName: Ref<null | string> = ref(null)
     const title: Ref<string> = ref(configTitle)
     const currentMenuName: Ref<string> = ref('')
-    const refs: Ref<HTMLElement | null>  = ref(null)
+    const refs: Ref<HTMLElement | null> = ref(null)
     const codeRefs: Ref<HTMLElement | null> = ref(null)
     const route = useRoute()
     const languageList: Ref<Language> = ref(config.pc.header.language)
@@ -162,7 +162,7 @@ export default defineComponent({
       codeRefs.value.scrollTop = 0
       isBack.value = false
       componentName.value = item.doc
-      path.value =  item.doc
+      path.value = item.doc
     }
 
     const changeLanguage = (key) => {
@@ -581,8 +581,9 @@ iframe {
               padding: 2px 6px;
               color: #1989fa;
               font-weight: 600;
+              letter-spacing: 1px;
               font-size: 11px;
-              background-color: rgba(25, 137, 250, 0.1);
+              // background-color: rgba(25, 137, 250, 0.1);
               border-radius: 20px;
             }
           }
