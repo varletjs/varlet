@@ -1,9 +1,11 @@
 <template>
   <div>
     <app-type>{{ pack.basicUsage }}</app-type>
-    <p>{{ pack.basicTextUp }}</p>
     <var-divider />
-    <p>{{ pack.basicTextDown }}</p>
+  </div>
+  <div>
+    <app-type>{{ pack.dashed }}</app-type>
+    <var-divider dashed />
   </div>
   <div>
     <app-type>{{ pack.inset }}</app-type>
@@ -12,19 +14,13 @@
     <var-divider :inset="-36" />
   </div>
   <div>
-    <app-type>{{ pack.verticalDivider }}</app-type>
-    <div class="vertical-divider-wrapper" :style="{ height: '32px' }">
-      <var-button text disabled>
-        {{ pack.btnText }}
-      </var-button>
+    <app-type>{{ pack.vertical }}</app-type>
+    <div class="vertical-divider-wrapper">
+      <span>{{ pack.text }}</span>
       <var-divider vertical />
-      <var-button text type="primary">
-        {{ pack.btnLinkText }}
-      </var-button>
+      <span>{{ pack.text }}</span>
       <var-divider vertical />
-      <var-button text>
-        <var-icon name="github" />
-      </var-button>
+      <span>{{ pack.text }}</span>
     </div>
   </div>
   <div>
@@ -46,14 +42,12 @@ import { watchLang } from '../../utils/components'
 import Divider from '..'
 import AppBar from '../../app-bar'
 import Icon from '../../icon'
-import Button from '../../button'
 
 export default {
   name: 'DividerExample',
   components: {
     [Icon.name]: Icon,
     [AppBar.name]: AppBar,
-    [Button.name]: Button,
     [Divider.name]: Divider,
     AppType,
   },
@@ -70,8 +64,9 @@ export default {
 <style lang="less" scoped>
 .vertical-divider-wrapper {
   display: flex;
-  align-items: center;
   justify-content: center;
   color: #333;
+  height: 36px;
+  line-height: 36px;
 }
 </style>

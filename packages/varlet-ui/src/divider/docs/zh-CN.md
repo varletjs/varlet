@@ -26,9 +26,12 @@ export default {
 
 ### 基本使用
 ```js
-<p>落霞与孤鹜齐飞，秋水共长天一色。</p>
 <var-divider />
-<p>固知一死生为虚诞，齐彭殇为妄作。</p>
+```
+
+### 虚线
+```js
+<var-divider dashed />
 ```
 
 ### 缩进
@@ -40,13 +43,11 @@ export default {
 
 ### 垂直分割线
 ```js
-<var-button text disabled>文字</var-button>
+<span>文字</span>
 <var-divider vertical />
-<var-button text type="primary">链接</var-button>
+<span>文字</span>
 <var-divider vertical />
-<var-button text>
-  <var-icon name="github" />
-</var-button>
+<span>文字</span>
 ```
 
 ### 带有文字描述的分割线
@@ -68,6 +69,7 @@ export default {
 | --- | --- | --- | --- | 
 | inset | 设置缩进距离，数字正负号可控制缩进方向。当传递`true`时默认缩进为`72px` | _boolean \| number_ | `false` |
 | vertical | 是否垂直 | _boolean_ | `false` |
+| dashed | 虚线 | _boolean_ | `false` |
 | description | 分割线的文字描述 | _string_ | `-` |
 | margin | 设置分割线样式的`margin`属性 | _string_ | `-` |
 

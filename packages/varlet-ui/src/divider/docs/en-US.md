@@ -27,11 +27,12 @@ export default {
 
 ### Basic Usage
 ```js
-<p>Whatever is worth doing is worth doing well.</p>
 <var-divider />
-<p>
-  In delay there lies no plenty, Then come kiss me, sweet and twenty, Youth’s a stuff that will not endure.
-</p>
+```
+
+### Dashed Divider
+```js
+<var-divider dashed />
 ```
 
 ### Inset Divider
@@ -43,13 +44,11 @@ export default {
 
 ### Vertical Divider
 ```js
-<var-button text disabled>Text</var-button>
+<span>Text</span>
 <var-divider vertical />
-<var-button text type="primary">Link</var-button>
+<span>Text</span>
 <var-divider vertical />
-<var-button text>
-  <var-icon name="github" />
-</var-button>
+<span>Text</span>
 ```
 
 ### The Divider with description
@@ -72,6 +71,7 @@ export default {
 | --- | --- | --- | --- | 
 | inset | Set the indentation distance, and the number plus or minus sign controls the direction of indentation. The default indentation is `72px` when `true` is passed | _boolean \| number_ | `false` |
 | vertical | Whether to set divider to display vertically | _boolean_ | `false` |
+| dashed | Whether divider is dashed | _boolean_ | `false` |
 | description | The text description of divider | _string_ | `-` |
 | margin | Set `margin` of divider | _string_ | `-` |
 
