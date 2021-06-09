@@ -4,7 +4,12 @@
   <app-type>{{ pack.showSubtitle }}</app-type>
   <var-card :title="pack.title" :subtitle="pack.subtitle" :description="pack.description" />
   <app-type>{{ pack.showImage }}</app-type>
-  <var-card :title="pack.title" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+  <var-card
+    :title="pack.title"
+    :subtitle="pack.subtitle"
+    :description="pack.description"
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+  />
   <app-type>{{ pack.useSlot }}</app-type>
   <var-card
     :title="pack.title"
@@ -18,7 +23,7 @@
     </template>
   </var-card>
   <app-type>{{ pack.showRipple }}</app-type>
-  <var-card :title="pack.title" ripple />
+  <var-card :title="pack.title" :subtitle="pack.subtitle" :description="pack.description" ripple />
 </template>
 
 <script>
