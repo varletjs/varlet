@@ -13,4 +13,8 @@ export const props = {
   margin: {
     type: String,
   },
+  dashed: {
+    type: Boolean,
+    default: false,
+  },
 }

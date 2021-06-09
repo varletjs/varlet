@@ -7,19 +7,22 @@
 @divider-vertical-inset: 8px;
 
 .var-divider {
-  width: 100%;
-  height: 1px;
-  margin: @divider-text-margin 0;
-  background-color: @divider-color;
   position: relative;
+  width: 100%;
+  height: 0;
+  border: none;
+  border-top: 1px solid @divider-color;
+  margin: @divider-text-margin 0;
   font-size: @font-size-md;
   color: #888;
 
   &--vertical {
-    width: 1px;
+    width: 0;
     height: 80%;
     margin: auto @divider-text-margin;
     padding: @divider-text-margin 0;
+    border-top: none;
+    border-left: 1px solid @divider-color;
   }
 
   &--inset {
@@ -28,7 +31,7 @@
   }
 
   &--vertical&--inset {
-    width: 1px;
+    width: 0;
     left: unset;
     height: calc(80% - @divider-vertical-inset);
   }
@@ -44,15 +47,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
 
     &::before,
     &::after {
       display: inline-block;
       content: '';
-      position: relative;
       flex: 1;
-      height: 1px;
-      background-color: @divider-color;
+      height: 0;
+      border-top: 1px solid @divider-color;
     }
+  }
+
+  &--dashed {
+    border-top-style: dashed;
+  }
+
+  &--dashed&--vertical {
+    border-top: none;
+    border-left-style: dashed;
   }
 }
