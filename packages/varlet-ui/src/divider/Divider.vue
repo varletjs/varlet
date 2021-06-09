@@ -5,6 +5,7 @@
       vertical ? 'var-divider--vertical' : null,
       withText ? 'var-divider--with-text' : null,
       isInset ? 'var-divider--inset' : null,
+      dashed ? 'var-divider--dashed' : null,
     ]"
     :style="style"
   >
