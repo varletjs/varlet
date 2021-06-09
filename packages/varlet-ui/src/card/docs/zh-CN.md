@@ -48,8 +48,8 @@ createApp().use(Card)
   src="https://varlet.gitee.io/varlet-ui/cat.jpg"
 >
   <template #extra>
-    <var-button type="primary" style="margin-right: 10px">添加按钮</var-button>
-    <var-button type="warning">添加按钮</var-button>
+    <var-button type="primary" style="margin-right: 10px">extra button</var-button>
+    <var-button type="warning">another extra button</var-button>
   </template>
 </var-card>
 ```
