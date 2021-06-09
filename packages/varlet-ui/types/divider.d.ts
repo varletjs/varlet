@@ -5,6 +5,7 @@ export interface DividerProps {
   vertical?: boolean
   description?: string
   margin?: string
+  dashed?: boolean
 }
 
 export class Divider extends VarComponent {
