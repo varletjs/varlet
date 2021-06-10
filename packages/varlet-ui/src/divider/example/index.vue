@@ -37,11 +37,11 @@
 
 <script>
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { pack, use } from './locale'
-import { watchLang } from '../../utils/components'
 import Divider from '..'
 import AppBar from '../../app-bar'
 import Icon from '../../icon'
+import { pack, use } from './locale'
+import { watchLang } from '../../utils/components'
 
 export default {
   name: 'DividerExample',
@@ -68,5 +68,10 @@ export default {
   color: #333;
   height: 36px;
   line-height: 36px;
+
+  span {
+    font-size: 14px;
+    color: #888;
+  }
 }
 </style>
