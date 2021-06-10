@@ -1,6 +1,12 @@
 import VarDivider from '../Divider'
 import example from '../example'
 import { mount } from '@vue/test-utils'
+import { createApp } from 'vue'
+
+test('test divider plugin', () => {
+  const app = createApp({}).use(VarDivider)
+  expect(app.component(VarDivider.name)).toBeTruthy()
+})
 
 test('test divider example', () => {
   const wrapper = mount(example)
