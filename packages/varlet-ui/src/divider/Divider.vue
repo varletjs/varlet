@@ -10,7 +10,7 @@
     :style="style"
   >
     <slot>
-      <span class="var-divider__text" v-if="!!description">{{ description }}</span>
+      <span class="var-divider__text" v-if="description">{{ description }}</span>
     </slot>
   </div>
 </template>
