@@ -2,14 +2,18 @@
 
 exports[`test divider description prop 1`] = `"<div class=\\"var-divider var--box var-divider--vertical var-divider--inset\\" style=\\"height: calc(80% - 36px);\\"><span class=\\"var-divider__text\\">文字描述</span></div>"`;
 
-exports[`test divider examlple 1`] = `
+exports[`test divider example 1`] = `
 "<div>
   <div class=\\"app-type\\">基本使用</div>
-  <p>落霞与孤鹜齐飞，秋水共长天一色。</p>
   <div class=\\"var-divider var--box\\">
     <!--v-if-->
   </div>
-  <p>固知一死生为虚诞，齐彭殇为妄作。</p>
+</div>
+<div>
+  <div class=\\"app-type\\">虚线</div>
+  <div class=\\"var-divider var--box var-divider--dashed\\">
+    <!--v-if-->
+  </div>
 </div>
 <div>
   <div class=\\"app-type\\">缩进</div>
@@ -25,22 +29,13 @@ exports[`test divider examlple 1`] = `
 </div>
 <div>
   <div class=\\"app-type\\">垂直分割线</div>
-  <div class=\\"vertical-divider-wrapper\\" style=\\"height: 32px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--disabled var-button--text-default var-button--text var-button--text-disabled\\" disabled=\\"\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">文字</div>
-    </button>
+  <div class=\\"vertical-divider-wrapper\\"><span>文字</span>
     <div class=\\"var-divider var--box var-divider--vertical\\">
       <!--v-if-->
-    </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-primary var-button--text\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">链接</div>
-    </button>
+    </div><span>文字</span>
     <div class=\\"var-divider var--box var-divider--vertical\\">
       <!--v-if-->
-    </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-github\\" style=\\"transition: all 0ms;\\"></i></div>
-    </button>
+    </div><span>文字</span>
   </div>
 </div>
 <div>
