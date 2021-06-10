@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface SliderProps {
+export interface SliderProps {
   modelValue?: number | Array<number>
   step?: number | string
   range?: boolean

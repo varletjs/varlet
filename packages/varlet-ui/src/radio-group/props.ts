@@ -17,7 +17,7 @@ export const props = {
   },
   validateTrigger: {
     type: Array as PropType<Array<ValidateTriggers>>,
-    default: ['onChange'],
+    default: () => ['onChange'],
   },
   rules: {
     type: Array as PropType<Array<(value: any) => any>>,

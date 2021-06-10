@@ -1,8 +1,8 @@
 import { VarComponent } from './varComponent'
 
-type ValidateTriggers = 'onChange'
+export type CheckboxValidateTriggers = 'onChange'
 
-interface CheckboxProps {
+export interface CheckboxProps {
   modelValue?: any
   checkedValue?: any
   uncheckedValue?: any
@@ -12,7 +12,7 @@ interface CheckboxProps {
   readonly?: boolean
   iconSize?: string | number
   ripple?: boolean
-  validateTrigger?: Array<ValidateTriggers>
+  validateTrigger?: Array<CheckboxValidateTriggers>
   rules?: Array<(value: any) => any>
   onClick?: (e: Event) => void
   onChange?: (value: any) => void

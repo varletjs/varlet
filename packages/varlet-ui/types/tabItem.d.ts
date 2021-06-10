@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface TabItemProps {
+export interface TabItemProps {
   name?: string | number
 }
 

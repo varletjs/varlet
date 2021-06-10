@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface MenuProps {
+export interface MenuProps {
   show?: boolean
   alignment?: 'top' | 'bottom'
   offsetX?: string | number

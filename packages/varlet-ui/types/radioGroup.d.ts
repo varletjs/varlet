@@ -1,10 +1,11 @@
 import { VarComponent } from './varComponent'
-import { ValidateTriggers } from './checkboxGroup'
 
-interface RadioGroupProps {
+export type RadioGroupValidateTriggers = 'onChange'
+
+export interface RadioGroupProps {
   modelValue?: any[]
   direction?: 'horizontal' | 'vertical'
-  validateTrigger?: Array<ValidateTriggers>
+  validateTrigger?: Array<RadioGroupValidateTriggers>
   rules?: Array<(value: any) => any>
   onChange?: (value: Array<any>) => void
   'onUpdate:modelValue'?: (value: Array<any>) => void

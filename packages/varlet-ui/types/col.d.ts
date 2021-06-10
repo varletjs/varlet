@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface ColProps {
+export interface ColProps {
   span?: string | number
   offset?: string | number
   onClick?: (e: Event) => void

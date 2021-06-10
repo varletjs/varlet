@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-type TimeData = {
+export type TimeData = {
   days: number
   hours: number
   minutes: number
@@ -8,7 +8,7 @@ type TimeData = {
   milliseconds: number
 }
 
-interface CountdownProps {
+export interface CountdownProps {
   time?: string | number
   format?: string
   autoStart?: boolean

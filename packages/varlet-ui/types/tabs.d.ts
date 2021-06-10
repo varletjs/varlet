@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface TabsProps {
+export interface TabsProps {
   active?: string | number
   layoutDirection?: 'horizontal' | 'vertical'
   itemDirection?: 'horizontal' | 'vertical'

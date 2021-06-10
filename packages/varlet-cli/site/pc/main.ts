@@ -20,7 +20,6 @@ const router = createRouter({
   routes,
 })
 
-window['enableWatchURL'] = true
 window.top['router'] = router
 
 const app = createApp(App as any)

@@ -96,9 +96,9 @@ export default {
 | `card` | 是否显示卡片 | _boolean_ | `false` |
 | `avatar` | 是否显示头像 | _boolean_ | `false` |
 | `fullscreen` | 是否开启全屏模式 | _boolean_ | `false` |
-| `title-width` | 标题宽度(px, rem, %) | _string \| number_ | `50%` |
-| `card-height` | 卡片高度(px, rem, %) | _string \| number_ | `160px` |
-| `avatar-size` | 头像尺寸(px, rem, %) | _string \| number_ | `34px` |
+| `title-width` | 标题宽度 | _string \| number_ | `50%` |
+| `card-height` | 卡片高度 | _string \| number_ | `160px` |
+| `avatar-size` | 头像尺寸 | _string \| number_ | `34px` |
 | `rows` | 段落行数 | _string \| number_ | `3` |
 | `rows-width` | 段落每一行的宽度 | _number[] \| string[]_ | `['12px', '12px', '12px']` |
 

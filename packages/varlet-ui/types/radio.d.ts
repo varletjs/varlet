@@ -1,8 +1,8 @@
 import { VarComponent } from './varComponent'
 
-type ValidateTriggers = 'onChange'
+export type RadioValidateTriggers = 'onChange'
 
-interface RadioProps {
+export interface RadioProps {
   modelValue?: any
   checkedValue?: any
   uncheckedValue?: any
@@ -12,7 +12,7 @@ interface RadioProps {
   readonly?: boolean
   iconSize?: string | number
   ripple?: boolean
-  validateTrigger?: Array<ValidateTriggers>
+  validateTrigger?: Array<RadioValidateTriggers>
   rules?: Array<(value: any) => any>
   onClick?: (e: Event) => void
   onChange?: (value: any) => void

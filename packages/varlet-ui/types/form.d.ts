@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface FormProps {
+export interface FormProps {
   disabled?: boolean
   readonly?: boolean
 }

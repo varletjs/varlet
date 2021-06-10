@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface PullRefreshProps {
+export interface PullRefreshProps {
   modelValue?: boolean
   disabled?: boolean
   animationDuration?: number | string

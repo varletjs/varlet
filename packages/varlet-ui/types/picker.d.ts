@@ -1,19 +1,19 @@
 import { App } from 'vue'
 import { VarComponent } from './varComponent'
 
-interface NormalColumn {
+export interface NormalColumn {
   texts: Texts
   initialIndex?: number
 }
 
-interface CascadeColumn {
+export interface CascadeColumn {
   [textKey: string]: any
   children: CascadeColumn[]
 }
 
-type Texts = any[]
+export type Texts = any[]
 
-interface PickerProps {
+export interface PickerProps {
   columns?: NormalColumn[] | CascadeColumn[] | Texts
   title?: string
   textKey?: string
@@ -46,7 +46,7 @@ export interface PickerResolvedData {
   indexes?: number[]
 }
 
-interface PickerOptions {
+export interface PickerOptions {
   columns: NormalColumn | CascadeColumn | Texts
   title?: string
   textKey?: string

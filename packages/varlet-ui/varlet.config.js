@@ -60,10 +60,10 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': 'IDE语法高亮',
-          'en-US': 'IDE Code Highlight',
+          'zh-CN': '开发工具支持',
+          'en-US': 'IDE Code Support',
         },
-        doc: 'highlight',
+        doc: 'ide',
         nonComponent: true,
       },
       {
@@ -156,7 +156,7 @@ module.exports = {
           'zh-CN': 'Collapse 拓展面板',
           'en-US': 'Collapse',
         },
-        doc: 'Collapse',
+        doc: 'collapse',
       },
       {
         text: {
@@ -199,6 +199,20 @@ module.exports = {
           'en-US': 'Steps',
         },
         doc: 'steps',
+      },
+      {
+        text: {
+          'zh-CN': 'Card 卡片',
+          'en-US': 'Card',
+        },
+        doc: 'card',
+      },
+      {
+        text: {
+          'zh-CN': 'Divider 分割线',
+          'en-US': 'Divider',
+        },
+        doc: 'divider',
       },
       {
         text: {
@@ -262,6 +276,13 @@ module.exports = {
           'en-US': 'Snackbar',
         },
         doc: 'snackbar',
+      },
+      {
+        text: {
+          'zh-CN': 'ActionSheet 动作面板',
+          'en-US': 'ActionSheet',
+        },
+        doc: 'action-sheet',
       },
       {
         text: {

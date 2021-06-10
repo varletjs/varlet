@@ -1,0 +1,62 @@
+@import '../styles/var';
+@import '../styles/elevation';
+
+@card-padding: 0 0 10px 0;
+@card-border-radius: 4px;
+@card-image-width: 100%;
+@card-image-height: 200px;
+@card-title-color: #333;
+@card-title-font-size: 20px;
+@card-title-padding: 0 12px;
+@card-title-margin: 10px 0 0 0;
+@card-subtitle-color: rgba(0, 0, 0, 0.6);
+@card-subtitle-font-size: 14px;
+@card-subtitle-padding: 0 13px;
+@card-subtitle-margin: 10px 0 0 0;
+@card-description-color: rgba(0, 0, 0, 0.6);
+@card-description-font-size: 14px;
+@card-description-margin: 20px 0 0 0;
+@card-description-padding: 0 13px;
+@card-footer-padding: 0 12px;
+@card-footer-margin: 30px 0 0px 0;
+
+@card-line-height: 22px;
+
+.var-card {
+  border-radius: @card-border-radius;
+  overflow: hidden;
+  padding: @card-padding;
+  line-height: @card-line-height;
+
+  &__image {
+    width: @card-image-width;
+    height: @card-image-height;
+    display: block;
+  }
+
+  &__title {
+    font-size: @card-title-font-size;
+    padding: @card-title-padding;
+    margin: @card-title-margin;
+    color: @card-title-color;
+  }
+
+  &__subtitle {
+    font-size: @card-subtitle-font-size;
+    color: @card-subtitle-color;
+    padding: @card-subtitle-padding;
+    margin: @card-subtitle-margin;
+  }
+
+  &__description {
+    font-size: @card-description-font-size;
+    color: @card-description-color;
+    margin: @card-description-margin;
+    padding: @card-description-padding;
+  }
+
+  &__footer {
+    padding: @card-footer-padding;
+    margin: @card-footer-margin;
+  }
+}

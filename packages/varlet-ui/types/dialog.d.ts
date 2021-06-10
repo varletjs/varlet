@@ -1,7 +1,7 @@
 import { App } from 'vue'
 import { VarComponent } from './varComponent'
 
-interface DialogProps {
+export interface DialogProps {
   show?: boolean
   title?: string
   message?: string

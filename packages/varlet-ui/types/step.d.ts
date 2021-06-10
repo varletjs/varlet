@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface StepProps {
+export interface StepProps {
   activeIcon?: string
   currentIcon?: string
   inactiveIcon?: string

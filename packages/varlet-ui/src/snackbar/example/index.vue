@@ -10,18 +10,18 @@
 
   <div class="snackbar-demo">
     <app-type>{{ pack.functionCall }}</app-type>
-    <var-button type="primary" block @click="createSnackbar()">{{ pack.basicUsage }}</var-button>
-    <var-button type="primary" block @click="createSnackbar('time')">{{ pack.hiddenTime }}</var-button>
-    <var-button type="primary" block @click="createSnackbar('position')">{{ pack.bottomDisplay }}</var-button>
+    <var-button type="warning" block @click="createSnackbar()">{{ pack.basicUsage }}</var-button>
+    <var-button type="warning" block @click="createSnackbar('time')">{{ pack.hiddenTime }}</var-button>
+    <var-button type="warning" block @click="createSnackbar('position')">{{ pack.bottomDisplay }}</var-button>
   </div>
 
   <div class="snackbar-demo">
     <app-type>{{ pack.type }}</app-type>
     <div class="snackbar-demo__type-block">
-      <var-button type="primary" block @click="create('success')">{{ pack.success }}</var-button>
-      <var-button type="primary" block @click="create('warning')">{{ pack.warning }}</var-button>
-      <var-button type="primary" block @click="create('info')">{{ pack.info }}</var-button>
-      <var-button type="primary" block @click="create('error')">{{ pack.error }}</var-button>
+      <var-button type="success" block @click="create('success')">{{ pack.success }}</var-button>
+      <var-button type="warning" block @click="create('warning')">{{ pack.warning }}</var-button>
+      <var-button type="info" block @click="create('info')">{{ pack.info }}</var-button>
+      <var-button type="danger" block @click="create('error')">{{ pack.error }}</var-button>
       <var-button type="primary" block @click="create('loading')">{{ pack.loading }}</var-button>
     </div>
   </div>
@@ -84,7 +84,14 @@ export default {
     }
 
     const create = (type) => {
-      Snackbar[type](pack.value.text)
+      const text = type === 'loading' ? pack.value.wait : pack.value.text
+      Snackbar[type](text)
+
+      if (type === 'loading') {
+        setTimeout(() => {
+          Snackbar.success(pack.value.loaded)
+        }, 2000)
+      }
     }
 
     const createSnackbar = (type) => {

@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface PopupProps {
+export interface PopupProps {
   show?: boolean
   position?: 'top' | 'bottom' | 'right' | 'left' | 'center'
   overlay?: boolean

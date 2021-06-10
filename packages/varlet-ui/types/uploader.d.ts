@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface VarFile {
+export interface VarFile {
   file?: File
   name?: string
   url?: string
@@ -9,7 +9,7 @@ interface VarFile {
   state?: 'loading' | 'success' | 'error'
 }
 
-type ValidateTriggers = 'onChange' | 'onRemove'
+export type UploaderValidateTriggers = 'onChange' | 'onRemove'
 
 interface UploaderProps {
   modelValue?: VarFile[]
@@ -23,7 +23,7 @@ interface UploaderProps {
   maxsize?: string | number
   previewed?: boolean
   ripple?: boolean
-  validateTrigger?: Array<ValidateTriggers>
+  validateTrigger?: Array<UploaderValidateTriggers>
   rules?: Array<(v: VarFile) => any>
   onBeforeRead?: (file: VarFile) => Promise<boolean> | boolean
   onAfterRead?: (file: VarFile) => any

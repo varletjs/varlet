@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface ImageProps {
+export interface ImageProps {
   src?: string
   fit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
   alt?: string

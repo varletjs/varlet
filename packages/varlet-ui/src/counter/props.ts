@@ -74,7 +74,7 @@ export const props = {
   },
   validateTrigger: {
     type: Array as PropType<Array<ValidateTriggers>>,
-    default: ['onInputChange', 'onLazyChange', 'onIncrement', 'onDecrement'],
+    default: () => ['onInputChange', 'onLazyChange', 'onIncrement', 'onDecrement'],
   },
   rules: {
     type: Array as PropType<Array<(v: number) => any>>,

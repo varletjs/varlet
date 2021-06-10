@@ -1,0 +1,72 @@
+<template>
+  <div>
+    <app-type>{{ pack.basicUsage }}</app-type>
+    <var-divider />
+  </div>
+  <div>
+    <app-type>{{ pack.dashed }}</app-type>
+    <var-divider dashed />
+  </div>
+  <div>
+    <app-type>{{ pack.inset }}</app-type>
+    <var-divider inset />
+    <var-divider :inset="36" margin="36px 0" />
+    <var-divider :inset="-36" />
+  </div>
+  <div>
+    <app-type>{{ pack.vertical }}</app-type>
+    <div class="vertical-divider-wrapper">
+      <span>{{ pack.text }}</span>
+      <var-divider vertical />
+      <span>{{ pack.text }}</span>
+      <var-divider vertical />
+      <span>{{ pack.text }}</span>
+    </div>
+  </div>
+  <div>
+    <app-type>{{ pack.withDesc }}</app-type>
+    <var-divider :description="pack.withDescText" />
+  </div>
+  <div>
+    <app-type>{{ pack.custom }}</app-type>
+    <var-divider>
+      <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255)" />
+    </var-divider>
+  </div>
+</template>
+
+<script>
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { pack, use } from './locale'
+import { watchLang } from '../../utils/components'
+import Divider from '..'
+import AppBar from '../../app-bar'
+import Icon from '../../icon'
+
+export default {
+  name: 'DividerExample',
+  components: {
+    [Icon.name]: Icon,
+    [AppBar.name]: AppBar,
+    [Divider.name]: Divider,
+    AppType,
+  },
+  setup() {
+    watchLang(use)
+
+    return {
+      pack,
+    }
+  },
+}
+</script>
+
+<style lang="less" scoped>
+.vertical-divider-wrapper {
+  display: flex;
+  justify-content: center;
+  color: #333;
+  height: 36px;
+  line-height: 36px;
+}
+</style>

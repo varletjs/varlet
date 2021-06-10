@@ -12,8 +12,8 @@
         name="minus"
         :class="[!decrementButton ? 'var-counter--hidden' : null]"
         :style="{
-          width: buttonSize ? toSizeUnit(buttonSize) : null,
-          height: buttonSize ? toSizeUnit(buttonSize) : null,
+          width: toSizeUnit(buttonSize),
+          height: toSizeUnit(buttonSize),
         }"
         v-ripple="{
           disabled: !ripple || disabled || readonly || disableDecrement || !decrementButton || isMin,
@@ -26,8 +26,8 @@
       <input
         class="var-counter__input"
         :style="{
-          width: inputWidth ? toSizeUnit(inputWidth) : null,
-          fontSize: inputTextSize ? toSizeUnit(inputTextSize) : null,
+          width: toSizeUnit(inputWidth),
+          fontSize: toSizeUnit(inputTextSize),
         }"
         :inputmode="toNumber(decimalLength) === 0 ? 'numeric' : 'decimal'"
         :readonly="readonly || formReadonly"
@@ -41,8 +41,8 @@
         name="plus"
         :class="[!incrementButton ? 'var-counter--hidden' : null]"
         :style="{
-          width: buttonSize ? toSizeUnit(buttonSize) : null,
-          height: buttonSize ? toSizeUnit(buttonSize) : null,
+          width: toSizeUnit(buttonSize),
+          height: toSizeUnit(buttonSize),
         }"
         v-ripple="{
           disabled: !ripple || disabled || readonly || disableIncrement || !incrementButton || isMax,

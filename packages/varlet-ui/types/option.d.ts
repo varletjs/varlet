@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface OptionProps {
+export interface OptionProps {
   label?: any
   value?: any
 }

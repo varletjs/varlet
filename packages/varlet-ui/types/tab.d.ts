@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface TabProps {
+export interface TabProps {
   name?: string | number
   disabled?: boolean
   onClick?: (active: string | number, e: Event) => void

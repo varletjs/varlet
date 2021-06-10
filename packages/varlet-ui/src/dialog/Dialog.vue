@@ -1,7 +1,7 @@
 <template>
   <var-popup
     class="var-dialog__popup-radius"
-    v-model:show="popupShow"
+    :show="popupShow"
     :overlay="overlay"
     :overlay-class="overlayClass"
     :overlay-style="overlayStyle"

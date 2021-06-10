@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface TabsItemsProps {
+export interface TabsItemsProps {
   active?: string | number
   'onUpdate:active'?: (active: string | number) => void
 }

@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface ButtonProps {
+export interface ButtonProps {
   type?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
   size?: 'normal' | 'mini' | 'small' | 'large'
   loading?: boolean

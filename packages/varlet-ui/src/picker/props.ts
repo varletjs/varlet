@@ -16,7 +16,7 @@ export interface CascadeColumn {
 export const props = {
   columns: {
     type: Array as PropType<NormalColumn[] | CascadeColumn[] | Texts>,
-    default: [],
+    default: () => [],
   },
   title: {
     type: String,

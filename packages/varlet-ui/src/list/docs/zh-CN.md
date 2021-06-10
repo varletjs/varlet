@@ -178,7 +178,7 @@ export default {
 | `v-model:error` | 错误状态 | _boolean_ | `false` |
 | `immediate-check` | 是否在组件初始化时立刻检测位置 | _boolean_ | `true` |
 | `finished` | 是否加载完毕 | _boolean_ | `false` |
-| `offset` | 距离底部的触发距离(px, rem) | _string \| number_ | `0` |
+| `offset` | 距离底部的触发距离 | _string \| number_ | `0` |
 | `loading-text` | 加载状态文字 | _string_ | `加载中` |
 | `finished-text` | 加载完毕文字 | _string_ | `没有更多了` |
 | `error-text` | 加载失败文字 | _string_ | `加载失败` |

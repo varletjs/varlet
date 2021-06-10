@@ -87,7 +87,7 @@ createApp().use(Row).use(Col)
 
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
-| `gutter` | 列间距(px, rem) | _string \| number_ | `0` |
+| `gutter` | 列间距 | _string \| number_ | `0` |
 | `justify` | 主轴对齐方式, 可选值为 `flex-start` `flex-end` `center` `space-between` `space-around` | _string_ | `flex-start` |
 | `align` | 交叉轴对齐方式, 可选值为 `flex-start` `flex-end` `center` | _string_ | `flex-start` |
 

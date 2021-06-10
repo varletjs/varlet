@@ -1,8 +1,8 @@
 import { VarComponent } from './varComponent'
 
-export type ValidateTriggers = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
+export type SelectValidateTriggers = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
 
-interface SelectProps {
+export interface SelectProps {
   modelValue?: any
   placeholder?: string
   multiple?: boolean
@@ -17,7 +17,7 @@ interface SelectProps {
   clearable?: boolean
   separator?: string
   textAlign?: 'left' | 'right' | 'center'
-  validateTrigger?: Array<ValidateTriggers>
+  validateTrigger?: Array<SelectValidateTriggers>
   rules?: Array<(v: any) => any>
   onFocus?: (e: Event) => void
   onBlur?: (e: Event) => void

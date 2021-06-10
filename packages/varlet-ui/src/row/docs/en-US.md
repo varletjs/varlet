@@ -93,7 +93,7 @@ using the `<var-row/>` `justify` and `align` properties to set the alignment of 
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| `gutter` | Col gutter(px, rem) | _string \| number_ | `0` |
+| `gutter` | Col gutter | _string \| number_ | `0` |
 | `justify` | Spindle alignment, optional value is `flex-start` `flex-end` `center` `space-between` `space-around` | _string_ | `flex-start` |
 | `align` | Cross axis alignment, optional value is `flex-start` `flex-end` `center` | _string_ | `flex-start` |
 

@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface AppBarProps {
+export interface AppBarProps {
   color?: string
   textColor?: string
   title?: string

@@ -6,12 +6,13 @@
 .var {
   &-menu-enter-from,
   &-menu-leave-to {
+    transform: scale(0.8);
     opacity: 0;
   }
   &-menu-enter-active,
   &-menu-leave-active {
-    transition-property: opacity;
-    transition-duration: 0.3s;
+    transition-property: opacity, transform;
+    transition-duration: 0.25s;
   }
 }
 

@@ -3,9 +3,9 @@
     <img src="https://varlet.gitee.io/varlet-ui/varlet_icon.png" width="201">
   </a>
   <h2>VARLET</h2>
-  <p>Material design mobile component library for Vue3</p>
+  <p>基于Vue3的Material design风格移动端组件库</p>
   <p>
-    <a href="https://varlet.gitee.io/varlet-ui/">开发文档</a>
+    <a href="https://varlet.gitee.io/varlet-ui/">开发文档</a> | <a href="https://github.com/haoziqaq/varlet/blob/dev/README.en-US.md">English</a>
   </p>
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
@@ -18,7 +18,13 @@
 
 ### 介绍
 
-Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥抱`Vue3`生态，由社区几个不知天高地厚的小伙伴开发和维护。
+Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥抱`Vue3`生态，由社区建立起来的组件库团队进行维护。
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/24223652/121148788-a8e0d300-c874-11eb-8ad9-57de2c31e440.gif">
+  <img src="https://user-images.githubusercontent.com/24223652/121148919-c6ae3800-c874-11eb-830a-62a655cbc27c.gif">
+  <img src="https://user-images.githubusercontent.com/24223652/121148563-77680780-c874-11eb-84eb-eb1641413bc2.gif">
+</p>
 
 ### 特性
 1. 提供40多个高质量通用组件
@@ -49,11 +55,13 @@ Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥
 </script>
 ```
 
-### Webpack/Vite
+### Webpack / Vite
 ```shell
 # 通过npm或yarn安装
+
 # npm
 npm i @varlet/ui -S
+
 # yarn
 yarn add @varlet/ui
 ```

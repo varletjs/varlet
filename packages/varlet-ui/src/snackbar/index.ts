@@ -40,21 +40,21 @@ interface UniqSnackbarOptions {
 }
 
 interface Snackbar {
-  (options: SnackbarOptions | string): SnackbarHandel
+  (options: any): SnackbarHandel
 
   install(app: App): void
 
   allowMultiple(bool: boolean): void
 
-  success(options: SnackbarOptions | string): SnackbarHandel
+  success(options: any): SnackbarHandel
 
-  warning(options: SnackbarOptions | string): SnackbarHandel
+  warning(options: any): SnackbarHandel
 
-  info(options: SnackbarOptions | string): SnackbarHandel
+  info(options: any): SnackbarHandel
 
-  error(options: SnackbarOptions | string): SnackbarHandel
+  error(options: any): SnackbarHandel
 
-  loading(options: SnackbarOptions | string): SnackbarHandel
+  loading(options: any): SnackbarHandel
 
   clear(): void
 
@@ -109,9 +109,11 @@ const TransitionGroupHost = {
       })
 
       const snackbarList = uniqSnackbarOptions.map((option: UniqSnackbarOptions) => {
+        const transitionGroupEl = document.querySelector('.var-transition-group')
         if (option.reactiveSnackOptions.forbidClick || option.reactiveSnackOptions.type === 'loading') {
-          const transitionGroupEl = document.querySelector('.var-transition-group')
           ;(transitionGroupEl as HTMLElement).classList.add('var-pointer-auto')
+        } else {
+          ;(transitionGroupEl as HTMLElement).classList.remove('var-pointer-auto')
         }
 
         if (Snackbar.isAllowMultiple) option.reactiveSnackOptions.position = 'top'
@@ -138,8 +140,8 @@ const TransitionGroupHost = {
   },
 }
 
-const Snackbar: Snackbar = <Snackbar>function (options: SnackbarOptions | string): SnackbarHandel {
-  const snackOptions: SnackbarOptions = isPlainObject(options) ? options : { content: options }
+const Snackbar: Snackbar = <Snackbar>function (options: any): SnackbarHandel {
+  const snackOptions: SnackbarOptions = isPlainObject(options) ? options : { content: String(options) }
   const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>({
     ...defaultOption,
     ...snackOptions
@@ -176,14 +178,14 @@ const Snackbar: Snackbar = <Snackbar>function (options: SnackbarOptions | string
 }
 
 SNACKBAR_TYPE.forEach((type) => {
-  Snackbar[type] = (options: SnackbarOptions | string): SnackbarHandel => {
-    if (typeof options === 'string') {
+  Snackbar[type] = (options: any): SnackbarHandel => {
+    if (isPlainObject(options)) {
+      options.type = type
+    } else {
       options = {
-        content: options,
+        content: String(options),
         type,
       }
-    } else {
-      options.type = type
     }
     return Snackbar(options)
   }

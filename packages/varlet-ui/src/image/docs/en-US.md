@@ -134,9 +134,9 @@ export default {
 | `src` | Image src | _string_ | `-` |
 | `fit` | Image fit mode, optional value is `fill` `contain` `cover` `none` `scale-down` | _string_ | `fill` |
 | `alt` | Image alt text | _string_ | `-` |
-| `width` | Image width(px, %, rem) | _string \| number_ | `-` |
-| `height` | Image height(px, %, rem) | _string \| number_ | `-` |
-| `radius` | Image radius(px, %, rem) | _string \| number_ | `-` |
+| `width` | Image width | _string \| number_ | `-` |
+| `height` | Image height | _string \| number_ | `-` |
+| `radius` | Image radius | _string \| number_ | `-` |
 | `lazy` | Whether to enable lazy loading | _boolean_ | `false` |
 | `loading` | When lazy loading is enabled, the image displayed in loading | _string_ | `-` |
 | `error` | When lazy loading is enabled, the image displayed in error | _string_ | `-` |

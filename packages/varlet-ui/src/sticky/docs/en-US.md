@@ -53,7 +53,7 @@ createApp().use(Sticky)
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| `offset-top` | Sticky offset top (px, rem) | _string \| number_ | `0` |
+| `offset-top` | Sticky offset top | _string \| number_ | `0` |
 | `z-index` | Sticky z-index | _string \| number_ | `0` |
 
 ### Events

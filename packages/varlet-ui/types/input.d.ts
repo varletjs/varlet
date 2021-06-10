@@ -1,8 +1,8 @@
 import { VarComponent } from './varComponent'
 
-type ValidateTriggers = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
+export type InputValidateTriggers = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
 
-interface InputProps {
+export interface InputProps {
   modelValue?: string | number
   type?: 'text' | 'password'
   textarea?: boolean
@@ -17,7 +17,7 @@ interface InputProps {
   readonly?: boolean
   clearable?: boolean
   resize?: boolean
-  validateTrigger?: ValidateTriggers[]
+  validateTrigger?: InputValidateTriggers[]
   rules?: Array<(v: string | number) => any>
   onFocus?: (e: Event) => void
   onBlur?: (e: Event) => void

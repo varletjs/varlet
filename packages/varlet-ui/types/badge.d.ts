@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-interface BadgeProps {
+export interface BadgeProps {
   type?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
   hidden?: boolean
   dot?: boolean

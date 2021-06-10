@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/haoziqaq/varlet/compare/v1.5.0...v1.6.0) (2021-06-02)
+
+
+### Bug Fixes
+
+* **root:** fix lerna.json ([ea32067](https://github.com/haoziqaq/varlet/commit/ea320675ef03f4f7700969a200bfa69451de8820))
+* **root:** fix lerna.json ([3597037](https://github.com/haoziqaq/varlet/commit/35970379d3eb4509420d011eb10863a143ecd9c4))
+
+
+### Features
+
+* **extension:** add varlet-code-extension package ([b276e06](https://github.com/haoziqaq/varlet/commit/b276e064e1cb410a17c5f51c5eae2de55e58e88c))
+
+
+
+
+
+# [1.5.0](https://github.com/haoziqaq/varlet/compare/v1.4.9...v1.5.0) (2021-06-02)
+
+
+### Bug Fixes
+
+* remove error classname ([675a8da](https://github.com/haoziqaq/varlet/commit/675a8da866811e38c2c04398a4b8a2b761ce3c80))
+* **snackbar:** modify option type ([b30e6b0](https://github.com/haoziqaq/varlet/commit/b30e6b082ce410270811fbbdcf137e6c364562a8))
+
+
+### Features
+
+* **ui/action-sheet:** add new component action-sheet, basic feature complete ([22f54dc](https://github.com/haoziqaq/varlet/commit/22f54dccd016eaee141802eaa5f5dff5b036aeab))
+
+
+
+
+
+## [1.4.9](https://github.com/haoziqaq/varlet/compare/v1.4.8...v1.4.9) (2021-05-31)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [1.4.8](https://github.com/haoziqaq/varlet/compare/v1.4.7...v1.4.8) (2021-05-31)
+
+**Note:** Version bump only for package root
+
+
+
+
+
 ## [1.4.7](https://github.com/haoziqaq/varlet/compare/v1.4.6...v1.4.7) (2021-05-31)
 
 
