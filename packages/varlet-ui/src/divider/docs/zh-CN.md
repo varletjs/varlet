@@ -12,18 +12,6 @@ import { Divider } from '@varlet/ui'
 createApp().use(Divider)
 ```
 
-### 局部引入
-
-```js
-import { Divider } from '@varlet/ui'
-
-export default {
-  components: {
-    [Divider.Component.name]: Divider,
-  }
-}
-```
-
 ### 基本使用
 ```js
 <var-divider />
