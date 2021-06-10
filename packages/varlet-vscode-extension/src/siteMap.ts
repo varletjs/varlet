@@ -49,4 +49,6 @@ export default {
   slider: '/slider',
   snackbar: '/snackbar',
   uploader: '/uploader',
+  card: '/card',
+  divider: '/divider',
 } as Record<string, string>
