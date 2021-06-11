@@ -21,11 +21,20 @@ const router = createRouter({
   routes,
 })
 
+let isEnd = true
 const { start, end } = useProgress()
 
-router.beforeEach(() => start())
+router.beforeEach(() => {
+  isEnd = false
+  setTimeout(() => {
+    if (!isEnd) start()
+  }, 200)
+})
 
-router.afterEach(() => end())
+router.afterEach(() => {
+  isEnd = true
+  end()
+})
 
 window.top['router'] = router
 

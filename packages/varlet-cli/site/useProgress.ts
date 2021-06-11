@@ -13,7 +13,7 @@ export function useProgress() {
     },
     trackColor: '#fff',
     color: '#3594d9',
-    lineWidth: 2,
+    lineWidth: 3,
     value: 0
   })
 
