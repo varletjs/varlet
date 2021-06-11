@@ -12,7 +12,7 @@ export function useProgress() {
       zIndex: 10086,
     },
     trackColor: '#fff',
-    color: '#3594d9',
+    color: '#659fff',
     lineWidth: 3,
     value: 0,
   })
