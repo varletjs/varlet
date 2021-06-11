@@ -19,7 +19,7 @@ export default {
   blockButton: 'Block Button',
   customColor: 'Custom Color',
   textColor: 'Text Color',
-  backgroundColor: 'Background Color',
+  backgroundTextColor: 'Background/Text Color',
   linearGradientColor: 'LinearGradient Color',
   roundButton: 'Round Button',
   event: 'Event',

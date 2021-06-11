@@ -73,7 +73,7 @@ export default defineComponent({
       {
         name: 'Item 01',
         icon: 'account-circle',
-        color: '#4caf50',
+        color: '#10ca93',
       },
       {
         name: 'Item 02',
@@ -83,7 +83,7 @@ export default defineComponent({
       {
         name: 'Item 03',
         icon: 'wifi',
-        color: '#00bcd4',
+        color: '#00afef',
       },
     ]
     const actions = reactive(rawActions)

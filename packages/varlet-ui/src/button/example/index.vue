@@ -33,20 +33,31 @@
   <var-button block type="primary">{{ pack.blockButton }}</var-button>
 
   <app-type>{{ pack.customColor }}</app-type>
-  <var-button text-color="#e91e63">{{ pack.textColor }}</var-button>
-  <var-button color="#e91e63" text-color="#fff">{{ pack.backgroundColor }}</var-button>
-  <var-button color="linear-gradient(to right, #e91e63, #880e4f)" text-color="#fff">{{
-    pack.linearGradientColor
-  }}</var-button>
+  <var-button color="#69dbaa" text-color="#eee">{{ pack.backgroundTextColor }}</var-button>
+  <var-button color="linear-gradient(to right, #69dbaa, #10ca93)" text-color="#fff">
+    {{ pack.linearGradientColor }}
+  </var-button>
 
   <app-type>{{ pack.roundButton }}</app-type>
-  <var-button round>
+  <var-button type="primary" round>
     <var-icon name="plus" />
+  </var-button>
+  <var-button type="info" round>
+    <var-icon name="information" />
+  </var-button>
+  <var-button type="success" round>
+    <var-icon name="check" />
+  </var-button>
+  <var-button type="warning" round>
+    <var-icon name="warning" />
+  </var-button>
+  <var-button type="danger" round>
+    <var-icon name="window-close" />
   </var-button>
 
   <app-type>{{ pack.event }}</app-type>
-  <var-button type="danger" @click="handleClick">{{ pack.click }}</var-button>
-  <var-button type="danger" @touchstart="handleTouchstart">{{ pack.touchstart }}</var-button>
+  <var-button type="success" @click="handleClick">{{ pack.click }}</var-button>
+  <var-button type="success" @touchstart="handleTouchstart">{{ pack.touchstart }}</var-button>
 </template>
 
 <script>

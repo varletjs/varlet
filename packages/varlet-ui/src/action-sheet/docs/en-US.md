@@ -138,7 +138,7 @@ ActionSheet({
     {
       name: 'Item 01',
       icon: 'account-circle',
-      color: '#4caf50',
+      color: '#10ca93',
     },
     {
       name: 'Item 02',
@@ -148,7 +148,7 @@ ActionSheet({
     {
       name: 'Item 03',
       icon: 'wifi',
-      color: '#00bcd4',
+      color: '#00afef',
     },
   ]
 })
@@ -358,7 +358,7 @@ export default {
       {
         name: 'Item 01',
         icon: 'account-circle',
-        color: '#4caf50',
+        color: '#10ca93',
       },
       {
         name: 'Item 02',
@@ -368,7 +368,7 @@ export default {
       {
         name: 'Item 03',
         icon: 'wifi',
-        color: '#00bcd4',
+        color: '#00afef',
       },
     ])
 

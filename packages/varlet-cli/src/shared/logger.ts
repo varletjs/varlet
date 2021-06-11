@@ -2,15 +2,15 @@ import chalk from 'chalk'
 
 export default {
   info(text: string) {
-    console.log(chalk.hex('#60AEDF')(text))
+    console.log(chalk.hex('#00afef')(text))
   },
   success(text: string) {
-    console.log(chalk.hex('#15DD6A')(text))
+    console.log(chalk.hex('#10ca93')(text))
   },
   warning(text: string) {
-    console.log(chalk.hex('#DDBF69')(text))
+    console.log(chalk.hex('#ff9800')(text))
   },
   error(text: string) {
-    console.log(chalk.hex('#AE4434')(text))
+    console.log(chalk.hex('#f44336')(text))
   },
 }

@@ -131,24 +131,33 @@ exports[`test button example 1`] = `
   <!--v-if-->
   <div class=\\"var-button__content\\">块级按钮</div>
 </button>
-<div class=\\"app-type\\">自定义颜色</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\" style=\\"color: rgb(233, 30, 99);\\">
+<div class=\\"app-type\\">自定义颜色</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\" style=\\"color: rgb(238, 238, 238); background: rgb(105, 219, 170);\\">
   <!--v-if-->
-  <div class=\\"var-button__content\\">文字颜色</div>
-</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\" style=\\"color: rgb(255, 255, 255); background: rgb(233, 30, 99);\\">
-  <!--v-if-->
-  <div class=\\"var-button__content\\">背景颜色</div>
+  <div class=\\"var-button__content\\">背景/文字</div>
 </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\" style=\\"color: rgb(255, 255, 255);\\">
   <!--v-if-->
-  <div class=\\"var-button__content\\">渐变颜色</div>
+  <div class=\\"var-button__content\\">使用渐变</div>
 </button>
-<div class=\\"app-type\\">圆形按钮</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1 var-button--round\\">
+<div class=\\"app-type\\">圆形按钮</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1 var-button--round\\">
   <!--v-if-->
   <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition: all 0ms;\\"></i></div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--info var-elevation--1 var-button--round\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-information\\" style=\\"transition: all 0ms;\\"></i></div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--1 var-button--round\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-check\\" style=\\"transition: all 0ms;\\"></i></div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--warning var-elevation--1 var-button--round\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-warning\\" style=\\"transition: all 0ms;\\"></i></div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--1 var-button--round\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-window-close\\" style=\\"transition: all 0ms;\\"></i></div>
 </button>
-<div class=\\"app-type\\">注册事件</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--1\\">
+<div class=\\"app-type\\">注册事件</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">点击</div>
-</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--1\\">
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">触摸</div>
 </button>"

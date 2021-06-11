@@ -73,29 +73,40 @@ createApp().use(Button)
 ### 自定义颜色
 
 ```html
-<var-button text-color="#e91e63">文字颜色</var-button>
-<var-button color="#e91e63" text-color="#fff">背景颜色</var-button>
-<var-button 
-  color="linear-gradient(to right, #e91e63, #880e4f)"
+<var-button color="#69dbaa" text-color="#eee">背景/文字</var-button>
+<var-button
+  color="linear-gradient(to right, #69dbaa, #10ca93)"
   text-color="#fff"
 >
-  渐变颜色
+  使用渐变
 </var-button>
 ```
 
 ### 圆形按钮
 
 ```html
-<var-button round>
-  <var-icon name="plus"/>
+<var-button type="primary" round>
+  <var-icon name="plus" />
+</var-button>
+<var-button type="info" round>
+  <var-icon name="information" />
+</var-button>
+<var-button type="success" round>
+  <var-icon name="check" />
+</var-button>
+<var-button type="warning" round>
+  <var-icon name="warning" />
+</var-button>
+<var-button type="danger" round>
+  <var-icon name="window-close" />
 </var-button>
 ```
 
 ### 注册事件
 
 ```html
-<var-button type="danger" @click="handleClick">点击</var-button>
-<var-button type="danger" @touchstart="handleTouchstart">触摸</var-button>
+<var-button type="success" @click="handleClick">点击</var-button>
+<var-button type="success" @touchstart="handleTouchstart">触摸</var-button>
 ```
 
 ```js

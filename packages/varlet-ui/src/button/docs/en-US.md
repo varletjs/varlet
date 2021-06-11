@@ -73,10 +73,9 @@ createApp().use(Button)
 ### Custom Color
 
 ```html
-<var-button text-color="#e91e63">Text Color</var-button>
-<var-button color="#e91e63" text-color="#fff">Background Color</var-button>
+<var-button color="#e91e63" text-color="#fff">Background/Text Color</var-button>
 <var-button
-  color="linear-gradient(to right, #e91e63, #880e4f)"
+  color="linear-gradient(to right, #69dbaa, #10ca93)"
   text-color="#fff"
 >
   Linear Gradient Color
@@ -86,16 +85,28 @@ createApp().use(Button)
 ### Round Button
 
 ```html
-<var-button round>
-  <var-icon name="plus"/>
+<var-button type="primary" round>
+  <var-icon name="plus" />
+</var-button>
+<var-button type="info" round>
+  <var-icon name="information" />
+</var-button>
+<var-button type="success" round>
+  <var-icon name="check" />
+</var-button>
+<var-button type="warning" round>
+  <var-icon name="warning" />
+</var-button>
+<var-button type="danger" round>
+  <var-icon name="window-close" />
 </var-button>
 ```
 
 ### Events
 
 ```html
-<var-button type="danger" @click="handleClick">Click</var-button>
-<var-button type="danger" @touchstart="handleTouchstart">Touchstart</var-button>
+<var-button type="success" @click="handleClick">Click</var-button>
+<var-button type="success" @touchstart="handleTouchstart">Touchstart</var-button>
 ```
 
 ```js
