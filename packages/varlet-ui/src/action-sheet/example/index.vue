@@ -73,7 +73,7 @@ export default defineComponent({
       {
         name: 'Item 01',
         icon: 'account-circle',
-        color: '#10ca93',
+        color: '#00c48f',
       },
       {
         name: 'Item 02',

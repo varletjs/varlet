@@ -5,7 +5,7 @@ export default {
     console.log(chalk.hex('#00afef')(text))
   },
   success(text: string) {
-    console.log(chalk.hex('#10ca93')(text))
+    console.log(chalk.hex('#00c48f')(text))
   },
   warning(text: string) {
     console.log(chalk.hex('#ff9800')(text))
