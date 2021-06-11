@@ -34,7 +34,7 @@
 
   <app-type>{{ pack.customColor }}</app-type>
   <var-button color="#69dbaa" text-color="#eee">{{ pack.backgroundTextColor }}</var-button>
-  <var-button color="linear-gradient(to right, #69dbaa, #10ca93)" text-color="#fff">
+  <var-button color="linear-gradient(to right, #69dbaa, #3a7afe)" text-color="#fff">
     {{ pack.linearGradientColor }}
   </var-button>
 

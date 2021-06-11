@@ -75,7 +75,7 @@ createApp().use(Button)
 ```html
 <var-button color="#e91e63" text-color="#fff">Background/Text Color</var-button>
 <var-button
-  color="linear-gradient(to right, #69dbaa, #10ca93)"
+  color="linear-gradient(to right, #69dbaa, #3a7afe)"
   text-color="#fff"
 >
   Linear Gradient Color
