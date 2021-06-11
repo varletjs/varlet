@@ -9,12 +9,12 @@ export function useProgress() {
       width: '100%',
       left: 0,
       top: 0,
-      zIndex: 10086
+      zIndex: 10086,
     },
     trackColor: '#fff',
     color: '#3594d9',
     lineWidth: 3,
-    value: 0
+    value: 0,
   })
 
   let timer: number
@@ -24,7 +24,7 @@ export function useProgress() {
       if (props.value >= 95) return
       let num = Math.random()
 
-      if(props.value < 70) num = Math.round(5 * Math.random())
+      if (props.value < 70) num = Math.round(5 * Math.random())
 
       props.value += num
       changeValue()
@@ -32,14 +32,14 @@ export function useProgress() {
   }
 
   const start = () => {
-    props.value = 0;
-    setTimeout(() => props.color = '#3594d9', 200)
+    props.value = 0
+    setTimeout(() => (props.color = '#3594d9'), 200)
     changeValue()
   }
 
   const end = () => {
-    props.value = 100;
-    setTimeout(() => props.color = '#fff', 200)
+    props.value = 100
+    setTimeout(() => (props.color = '#fff'), 300)
     window.clearTimeout(timer)
   }
 
@@ -47,6 +47,6 @@ export function useProgress() {
 
   return {
     start,
-    end
+    end,
   }
 }
