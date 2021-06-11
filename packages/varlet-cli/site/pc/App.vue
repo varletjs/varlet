@@ -238,6 +238,7 @@ export default defineComponent({
 
 <style lang="less">
 @import '~@varlet/ui/es/styles/var';
+@import '~@varlet/ui/es/progress/progress';
 @import '~@varlet/ui/es/styles/elevation';
 
 body {

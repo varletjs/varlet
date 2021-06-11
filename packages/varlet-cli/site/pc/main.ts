@@ -7,6 +7,7 @@ import config from '@config'
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { get } from 'lodash'
+import { useProgress } from '../useProgress'
 
 const redirect = get(config, 'pc.redirect')
 redirect &&
@@ -18,6 +19,16 @@ redirect &&
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+})
+
+const { open, close } = useProgress()
+
+router.beforeEach(() => {
+  open()
+})
+
+router.afterEach(() => {
+  close()
 })
 
 window.top['router'] = router
