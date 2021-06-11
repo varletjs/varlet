@@ -31,22 +31,22 @@ export function useProgress() {
     }, 200)
   }
 
-  const open = () => {
+  const start = () => {
     props.value = 0;
     setTimeout(() => props.color = '#3594d9', 200)
     changeValue()
   }
 
-  const close = () => {
+  const end = () => {
     props.value = 100;
     setTimeout(() => props.color = '#fff', 200)
     window.clearTimeout(timer)
   }
 
-  mountInstance(Progress, props).unmountInstance
+  mountInstance(Progress, props)
 
   return {
-    open,
-    close
+    start,
+    end
   }
 }

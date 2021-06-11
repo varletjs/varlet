@@ -21,15 +21,11 @@ const router = createRouter({
   routes,
 })
 
-const { open, close } = useProgress()
+const { start, end } = useProgress()
 
-router.beforeEach(() => {
-  open()
-})
+router.beforeEach(() => start())
 
-router.afterEach(() => {
-  close()
-})
+router.afterEach(() => end())
 
 window.top['router'] = router
 
