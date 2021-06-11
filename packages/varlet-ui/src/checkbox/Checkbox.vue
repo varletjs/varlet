@@ -12,10 +12,22 @@
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
       >
         <slot name="checked-icon" v-if="checked">
-          <var-icon class="var-checkbox__icon" name="checkbox-marked" :size="iconSize" var-checkbox-cover />
+          <var-icon
+            class="var-checkbox__icon"
+            name="checkbox-marked"
+            :class="[withAnimation ? 'var-checkbox--with-animation' : null]"
+            :size="iconSize"
+            var-checkbox-cover
+          />
         </slot>
         <slot name="unchecked-icon" v-else>
-          <var-icon class="var-checkbox__icon" name="checkbox-blank-outline" :size="iconSize" var-checkbox-cover />
+          <var-icon
+            class="var-checkbox__icon"
+            name="checkbox-blank-outline"
+            :class="[withAnimation ? 'var-checkbox--with-animation' : null]"
+            :size="iconSize"
+            var-checkbox-cover
+          />
         </slot>
       </div>
 
@@ -57,6 +69,7 @@ export default defineComponent({
     const value: Ref<any> = ref(false)
     const checked: ComputedRef<boolean> = computed(() => value.value === props.checkedValue)
     const checkedValue: ComputedRef<boolean> = computed(() => props.checkedValue)
+    const withAnimation: Ref<boolean> = ref(false)
     const { checkboxGroup, bindCheckboxGroup } = useCheckboxGroup()
     const { form, bindForm } = useForm()
     const {
@@ -99,6 +112,7 @@ export default defineComponent({
         return
       }
 
+      withAnimation.value = true
       const maximum = checkboxGroup ? checkboxGroup.checkedCount.value >= Number(checkboxGroup.max.value) : false
 
       if (!checked.value && maximum) {
@@ -155,6 +169,7 @@ export default defineComponent({
     bindForm?.(checkboxProvider)
 
     return {
+      withAnimation,
       checked,
       errorMessage,
       checkboxGroupErrorMessage: checkboxGroup?.errorMessage,

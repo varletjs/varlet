@@ -12,10 +12,22 @@
         :style="{ color: checked ? checkedColor : uncheckedColor }"
       >
         <slot name="checked-icon" v-if="checked">
-          <var-icon class="var-radio__icon" var-radio-cover name="radio-marked" :size="iconSize" />
+          <var-icon
+            class="var-radio__icon"
+            var-radio-cover
+            name="radio-marked"
+            :class="[withAnimation ? 'var-radio--with-animation' : null]"
+            :size="iconSize"
+          />
         </slot>
         <slot name="unchecked-icon" v-else>
-          <var-icon class="var-radio__icon" var-radio-cover name="radio-blank" :size="iconSize" />
+          <var-icon
+            class="var-radio__icon"
+            var-radio-cover
+            name="radio-blank"
+            :class="[withAnimation ? 'var-radio--with-animation' : null]"
+            :size="iconSize"
+          />
         </slot>
       </div>
       <div
@@ -55,6 +67,7 @@ export default defineComponent({
   setup(props) {
     const value: Ref<any> = ref(false)
     const checked: ComputedRef<boolean> = computed(() => value.value === props.checkedValue)
+    const withAnimation: Ref<boolean> = ref(false)
     const { radioGroup, bindRadioGroup } = useRadioGroup()
     const { form, bindForm } = useForm()
     const {
@@ -100,6 +113,7 @@ export default defineComponent({
         return
       }
 
+      withAnimation.value = true
       change(checked.value ? uncheckedValue : checkedValue)
     }
 
@@ -148,6 +162,7 @@ export default defineComponent({
     bindForm?.(radioProvider)
 
     return {
+      withAnimation,
       checked,
       errorMessage,
       radioGroupErrorMessage: radioGroup?.errorMessage,
