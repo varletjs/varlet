@@ -18,23 +18,25 @@
 
 ### 介绍
 
-Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥抱`Vue3`生态，由社区几个不知天高地厚的小伙伴开发和维护。
+Varlet 是一个基于`Vue3`开发的 Material 风格移动端组件库，全面拥抱`Vue3`生态，由社区几个不知天高地厚的小伙伴开发和维护。
 
 ### 特性
-1. 提供40多个高质量通用组件
+
+1. 提供 40 多个高质量通用组件
 2. 组件十分轻量
 3. 由国人开发，完善的中英文文档和后勤保障
 4. 支持按需引入
 5. 支持主题定制
 6. 支持国际化
-7. 支持webstorm，vscode组件属性高亮
-8. 支持SSR
-9. 支持Typescript
+7. 支持 webstorm，vscode 组件属性高亮
+8. 支持 SSR
+9. 支持 Typescript
 10. 90%以上单元测试覆盖率，提供稳定性保证
 
 ### 安装
 
 ### CDN
+
 `varlet.js`包含组件库的所有样式和逻辑，引入即可。
 
 ```html
@@ -43,13 +45,14 @@ Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥
 <script src="https://cdn.jsdelivr.net/npm/@varlet/ui/umd/varlet.js"></script>
 <script>
   const app = Vue.createApp({
-    template: '<var-button>按钮</var-button>'
+    template: '<var-button>按钮</var-button>',
   })
   app.use(Varlet).mount('#app')
 </script>
 ```
 
 ### Webpack/Vite
+
 ```shell
 # 通过npm或yarn安装
 # npm
@@ -66,4 +69,3 @@ import '@varlet/ui/es/style'
 
 createApp(App).use(Varlet).mount('#app')
 ```
-
