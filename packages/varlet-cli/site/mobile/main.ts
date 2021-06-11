@@ -18,30 +18,27 @@ redirect &&
 
 const router = createRouter({
   history: createWebHashHistory(),
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    }
-    return { left: 0, top: 0 }
-  },
+  scrollBehavior: (to, from, savedPosition) => savedPosition || { left: 0, top: 0 },
   routes,
 })
 
 router.beforeEach((to) => {
+  const { query: { language, path }, path: toPath } = to
   const isPhone = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+
   if (!isPhone && window.self === window.top) {
-    window.location.href = `./#/${to.query.language}/${to.query.path}`
+    window.location.href = `./#/${language}/${path}`
   }
 
   if (!isPhone) {
     const pcPath =
-      to.path === '/home' && to.query.path
-        ? `/${to.query.language}/${to.query.path}`
-        : `/${to.query.language}${to.path}`
+      toPath === '/home' && path
+        ? `/${language}/${path}`
+        : `/${language}${toPath}`
 
     window.top['router'].replace(pcPath)
   }
 })
 
-const app = createApp(App as any)
+const app = createApp(App)
 app.use(router).mount('#app')

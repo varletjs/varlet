@@ -22,6 +22,6 @@ const router = createRouter({
 
 window.top['router'] = router
 
-const app = createApp(App as any)
+const app = createApp(App)
 
 app.use(router).mount('#app')

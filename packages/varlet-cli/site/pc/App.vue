@@ -103,7 +103,7 @@ export default defineComponent({
     [Cell.name]: Cell,
     [Icon.name]: Icon,
     [Menu.name]: Menu,
-    [Loading.name]: Loading,
+    [Loading.name]: Loading
   },
 
   setup() {
@@ -147,7 +147,7 @@ export default defineComponent({
         if (index !== -1) {
           childrenElement[index].scrollIntoView({
             block: 'center',
-            inline: 'start',
+            inline: 'start'
           })
         }
       })
@@ -207,9 +207,9 @@ export default defineComponent({
       codeRefs,
       refs,
       changeRoute,
-      changeLanguage,
+      changeLanguage
     }
-  },
+  }
 })
 </script>
 

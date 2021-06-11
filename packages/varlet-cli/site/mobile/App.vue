@@ -103,9 +103,8 @@ export default defineComponent({
         'Highlight',
         'DeveloperGuide',
       ]
-      if (noComponentList.includes(name)) return 'Home'
 
-      return name
+      return noComponentList.includes(name) ? 'Home' : name
     }
 
     watch(
