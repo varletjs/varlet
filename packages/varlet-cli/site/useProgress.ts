@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 import { Progress } from '@varlet/ui'
-import { mountInstance } from '@varlet/ui/src/utils/components'
+import { mountInstance } from '@varlet/ui/es/utils/components'
 
 export function useProgress() {
   const props = reactive({
