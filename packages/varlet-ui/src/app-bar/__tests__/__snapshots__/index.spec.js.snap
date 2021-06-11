@@ -8,7 +8,7 @@ exports[`test app bar example 1`] = `
   <!--v-if-->
 </div>
 <div class=\\"app-type\\">自定义样式</div>
-<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(255, 152, 0); color: rgb(255, 255, 255);\\">
+<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(255, 159, 0); color: rgb(255, 255, 255);\\">
   <!--v-if-->
   <div class=\\"var-app-bar__title var-app-bar__title-center\\" style=\\"padding-left: 10px; padding-right: 10px;\\">标题</div>
   <!--v-if-->
