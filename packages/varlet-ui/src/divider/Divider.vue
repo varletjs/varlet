@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, onMounted, toRefs } from 'vue'
+import { defineComponent, computed, reactive, onMounted, onUpdated, toRefs } from 'vue'
 import { toSizeUnit } from '../utils/elements'
 import { isBool, toNumber } from '../utils/shared'
 import { props } from './props'
@@ -53,8 +53,16 @@ export default defineComponent({
           }
     })
 
-    onMounted(() => {
+    const checkHasText = () => {
       state.withText = Boolean(slots.default?.().length) || Boolean(props.description)
+    }
+
+    onMounted(() => {
+      checkHasText()
+    })
+
+    onUpdated(() => {
+      checkHasText()
     })
 
     return {
