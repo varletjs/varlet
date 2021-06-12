@@ -1,6 +1,6 @@
 export const props = {
   inset: {
-    type: [Boolean, Number],
+    type: [Boolean, Number, String],
     default: false,
   },
   vertical: {

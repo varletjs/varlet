@@ -18,7 +18,7 @@
 <script lang="ts">
 import { defineComponent, computed, reactive, onMounted, toRefs } from 'vue'
 import { toSizeUnit } from '../utils/elements'
-import { isBool } from '../utils/shared'
+import { isBool, toNumber } from '../utils/shared'
 import { props } from './props'
 
 export default defineComponent({
@@ -37,16 +37,19 @@ export default defineComponent({
 
       if (isBool(inset) || inset === 0) return { ...baseStyle }
 
-      const absInset = Math.abs(inset)
+      // -18px -> -18
+      const _inset = toNumber(inset)
+      // -18px -> 18px
+      const absInsetWithUnit = Math.abs(_inset) + (inset + '').replace(_inset + '', '')
       return vertical
         ? {
             ...baseStyle,
-            height: `calc(80% - ${toSizeUnit(absInset)})`,
+            height: `calc(80% - ${toSizeUnit(absInsetWithUnit)})`,
           }
         : {
             ...baseStyle,
-            width: `calc(100% - ${toSizeUnit(absInset)})`,
-            left: inset > 0 ? toSizeUnit(inset) : toSizeUnit(0),
+            width: `calc(100% - ${toSizeUnit(absInsetWithUnit)})`,
+            left: _inset > 0 ? toSizeUnit(absInsetWithUnit) : toSizeUnit(0),
           }
     })
 
