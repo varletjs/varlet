@@ -14,15 +14,72 @@ test('test divider example', () => {
   wrapper.unmount()
 })
 
-test('test divider description prop', () => {
-  const text = '文字描述'
+test('test divider inset and vertical prop', async () => {
   const wrapper = mount(VarDivider, {
     props: {
-      inset: 36,
-      vertical: true,
-      description: text,
-      margin: '10',
+      inset: true,
     },
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setProps({
+    inset: 36,
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setProps({
+    inset: '-36px',
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setProps({
+    inset: '-36px',
+    vertical: true,
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
+
+test('test divider dashed and margin prop', async () => {
+  const wrapper = mount(VarDivider)
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setProps({
+    dashed: true,
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setProps({
+    dashed: false,
+    margin: '36px 0',
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
+
+test('test divider description prop', () => {
+  const desc = 'description'
+  const wrapper = mount(VarDivider, {
+    props: {
+      description: desc,
+    },
+  })
+  expect(wrapper.text()).toBe(desc)
+  wrapper.unmount()
+})
+
+test('test default slot of divider', () => {
+  const wrapper = mount({
+    components: {
+      [VarDivider.name]: VarDivider,
+    },
+    template: `
+      <var-divider>
+        <span>description</span>
+      </var-divider>
+    `,
   })
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
