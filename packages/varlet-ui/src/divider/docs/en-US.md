@@ -27,7 +27,7 @@ createApp().use(Divider)
 ```js
 <var-divider inset />
 <var-divider :inset="36" margin="36px 0" />
-<var-divider :inset="-36" />
+<var-divider inset="-36px" />
 ```
 
 ### Vertical Divider
@@ -57,7 +57,7 @@ createApp().use(Divider)
 ### Props
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| inset | Set the indentation distance, and the number plus or minus sign controls the direction of indentation. The default indentation is `72px` when `true` is passed | _boolean \| number_ | `false` |
+| inset | Set the indentation distance, and the number plus or minus sign controls the direction of indentation. The default indentation is `72px` when `true` is passed | _boolean \| number \| string_ | `false` |
 | vertical | Whether to set divider to display vertically | _boolean_ | `false` |
 | dashed | Whether divider is dashed | _boolean_ | `false` |
 | description | The text description of divider | _string_ | `-` |

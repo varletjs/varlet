@@ -26,7 +26,7 @@ createApp().use(Divider)
 ```js
 <var-divider inset />
 <var-divider :inset="36" margin="36px 0" />
-<var-divider :inset="-36" />
+<var-divider inset="-36px" />
 ```
 
 ### 垂直分割线
@@ -55,7 +55,7 @@ createApp().use(Divider)
 ### 属性
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
-| inset | 设置缩进距离，数字正负号可控制缩进方向。当传递`true`时默认缩进为`72px` | _boolean \| number_ | `false` |
+| inset | 设置缩进距离，正负号可控制缩进方向。当传递`true`时默认缩进为`72px` | _boolean \| number \| string_ | `false` |
 | vertical | 是否垂直 | _boolean_ | `false` |
 | dashed | 虚线 | _boolean_ | `false` |
 | description | 分割线的文字描述 | _string_ | `-` |
