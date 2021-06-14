@@ -11,7 +11,7 @@
     <app-type>{{ pack.inset }}</app-type>
     <var-divider inset />
     <var-divider :inset="36" margin="36px 0" />
-    <var-divider :inset="-36" />
+    <var-divider inset="-36px" />
   </div>
   <div>
     <app-type>{{ pack.vertical }}</app-type>
