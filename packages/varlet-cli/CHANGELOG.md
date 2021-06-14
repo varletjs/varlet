@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/haoziqaq/varlet/compare/v1.6.0...v1.7.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* fix import path and progress style ([81d1651](https://github.com/haoziqaq/varlet/commit/81d1651ca2a036174c29e98d2aedeb963d17c31d))
+* **cli/site:** add hover for lang button ([5ce2822](https://github.com/haoziqaq/varlet/commit/5ce2822d8e1c8c8bd0981cb55d534387e51f6403))
+
+
+### Features
+
+* **site:** add progress bar ([e4590ec](https://github.com/haoziqaq/varlet/commit/e4590ecee5043da051593672bc23073de77b414a))
+* **site:** add switch language for mobile ([60aff96](https://github.com/haoziqaq/varlet/commit/60aff9631a85633fb523b12757d36a2bf986adbd))
+
+
+### Performance Improvements
+
+* optimize progress bar ([0b349db](https://github.com/haoziqaq/varlet/commit/0b349dbfd02c20599a106dce2e0bcef7153cc1cd))
+
+
+
+
+
 # [1.5.0](https://github.com/haoziqaq/varlet/compare/v1.4.9...v1.5.0) (2021-06-02)
 
 **Note:** Version bump only for package @varlet/cli

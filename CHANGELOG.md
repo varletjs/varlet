@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/haoziqaq/varlet/compare/v1.6.0...v1.7.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* **ui/divider:** fix dynamic description ([5a47460](https://github.com/haoziqaq/varlet/commit/5a474608096acedbe8120368d8a3e7c9ea27890c))
+* **ui/divider:** support passing string inset with unit to divider ([5cbd457](https://github.com/haoziqaq/varlet/commit/5cbd45743435c3e1fcd2b1dcbd0662b92ff4240b))
+* fix import path and progress style ([81d1651](https://github.com/haoziqaq/varlet/commit/81d1651ca2a036174c29e98d2aedeb963d17c31d))
+* **cli/site:** add hover for lang button ([5ce2822](https://github.com/haoziqaq/varlet/commit/5ce2822d8e1c8c8bd0981cb55d534387e51f6403))
+* **date-picker:** add hover style ([a6b4e42](https://github.com/haoziqaq/varlet/commit/a6b4e42bfeb0a93c8d43063ddf6efecfe2048ace))
+* **divider/types:** export divider interface ([e01d452](https://github.com/haoziqaq/varlet/commit/e01d452f13767c732fa39ca85b2f264d15de185a))
+* **ui/divider:** fix type declaration ([b8ff9ac](https://github.com/haoziqaq/varlet/commit/b8ff9ac452117e41964bda1d78d4b9a9c5d57a2f))
+* **ui/divider:** fix vertical divider ([1aee499](https://github.com/haoziqaq/varlet/commit/1aee499556d5ad80e28a9130ca40f9ec0401db4b))
+* **ui/divider:** remove unnecessary type conversion ([792a8aa](https://github.com/haoziqaq/varlet/commit/792a8aa8eacaa1f98e141fad5792eec2f57ccf55))
+* **ui/utils:** support vw vh ([b444ed0](https://github.com/haoziqaq/varlet/commit/b444ed0775fd2b2fea6f250b6f8698c92300b5d1))
+* **vscode-extension:** add appbar to siteMap ([9595981](https://github.com/haoziqaq/varlet/commit/9595981e33f0554ee78b60a980a5583180ef472a))
+
+
+### Features
+
+* **site:** add progress bar ([e4590ec](https://github.com/haoziqaq/varlet/commit/e4590ecee5043da051593672bc23073de77b414a))
+* **site:** add switch language for mobile ([60aff96](https://github.com/haoziqaq/varlet/commit/60aff9631a85633fb523b12757d36a2bf986adbd))
+* **ui/card:** add Card component ([90b0a14](https://github.com/haoziqaq/varlet/commit/90b0a145f0f27ed1d5ecd278a15cd96863a9731a))
+* **ui/divider:** add dashed divider ([9c6724e](https://github.com/haoziqaq/varlet/commit/9c6724ef4f2bb7bb6ecba432ed9070f1c7c716b2))
+* **ui/divider:** add divider component ([3a7ed64](https://github.com/haoziqaq/varlet/commit/3a7ed648b21329a15748558391f9de8729fd9e1e))
+
+
+### Performance Improvements
+
+* optimize progress bar ([0b349db](https://github.com/haoziqaq/varlet/commit/0b349dbfd02c20599a106dce2e0bcef7153cc1cd))
+
+
+
+
+
 # [1.6.0](https://github.com/haoziqaq/varlet/compare/v1.5.0...v1.6.0) (2021-06-02)
 
 
