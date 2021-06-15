@@ -43,7 +43,7 @@ export default {
 
 ```html
 <var-switch v-model="value" :ripple="false" />
-<var-switch v-model="value" color="indigo" close-color="#89ddff" />
+<var-switch v-model="value" color="#52d869" close-color="#89ddff" />
 <var-switch v-model="value" color="orange" close-color="#2772f5" />
 ```
 
