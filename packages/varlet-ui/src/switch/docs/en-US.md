@@ -44,8 +44,7 @@ export default {
 
 ```html
 <var-switch v-model="value" :ripple="false" />
-<var-switch v-model="value" color="#52d869" close-color="#89ddff" />
-<var-switch v-model="value" color="orange" close-color="#2772f5" />
+<var-switch v-model="value" color="#ff9f00" close-color="#f5cb90" />
 ```
 
 ### Size
@@ -62,8 +61,7 @@ Use `size` prop to change size of Switch.
 
 ```html
 <var-switch :model-value="true" loading />
-<var-switch :model-value="true" size="25" loading />
-<var-switch :model-value="true" size="25" loading loading-color="#ff9800" />
+<var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
 ```
 
 ### Validate value
@@ -73,12 +71,7 @@ Verify the value by the `rules` attribute.
 <span style="font-size: 12px">`rules` is an array that accepts `functions`, `boolean`, and `string`. Functions pass an input value as an argument and must return either `true` / `false` or a `string` containing an error message. The input field will enter an error state if a function returns (or any value in the array contains) `false` or is a `string`.</span>
 
 ```html
-<var-cell>
-  <div>Whether to open the switch</div>
-  <template #extra>
-    <var-switch v-model="value" :rules="[(v) => v === true || 'Error！']"/>
-  </template>
-</var-cell>
+<var-switch v-model="value" :rules="[(v) => v === true || 'Error！']"/>
 ```
 
 ## API
