@@ -84,7 +84,7 @@ export default {
 }
 
 .block {
-  background: #2e67ba;
+  background: #ff9f00;
   color: white;
   width: 30px;
   height: 30px;
