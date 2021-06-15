@@ -16,7 +16,7 @@
     <app-type>{{ pack.customColor }}</app-type>
     <div class="var-switch__example-block">
       <var-switch v-model="value2" :ripple="false" />
-      <var-switch v-model="value2" color="indigo" close-color="#89ddff" />
+      <var-switch v-model="value2" color="#52d869" close-color="#89ddff" />
       <var-switch v-model="value2" color="orange" close-color="#2772f5" />
     </div>
   </div>
@@ -66,7 +66,7 @@ export default {
     const values = reactive({
       value: true,
       value1: true,
-      value2: false,
+      value2: true,
       value3: true,
       value4: true,
     })

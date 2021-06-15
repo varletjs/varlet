@@ -87,9 +87,9 @@ exports[`test switch example 1`] = `
   <div class=\\"var-switch__example-block\\">
     <div class=\\"var-switch\\">
       <div class=\\"var-switch-block\\" style=\\"height: 24px; width: 40px;\\">
-        <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: brightness(.6);\\" class=\\"var-switch__track\\"></div>
-        <div class=\\"var-switch__ripple\\" style=\\"left: -10px; color: rgb(153, 153, 153); width: 40px; height: 40px;\\">
-          <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2\\">
+        <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
+        <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
+          <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
             <!--v-if-->
           </div>
         </div>
@@ -100,9 +100,9 @@ exports[`test switch example 1`] = `
     </div>
     <div class=\\"var-switch\\">
       <div class=\\"var-switch-block\\" style=\\"height: 24px; width: 40px;\\">
-        <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: brightness(.6); background-color: rgb(137, 221, 255);\\" class=\\"var-switch__track\\"></div>
-        <div class=\\"var-switch__ripple\\" style=\\"left: -10px; color: rgb(137, 221, 255); width: 40px; height: 40px;\\">
-          <div style=\\"width: 20px; height: 20px; background-color: rgb(137, 221, 255);\\" class=\\"var-switch__handle var-elevation--2\\">
+        <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6); background-color: rgb(82, 216, 105);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
+        <div class=\\"var-switch__ripple\\" style=\\"left: 10px; color: rgb(82, 216, 105); width: 40px; height: 40px;\\">
+          <div style=\\"width: 20px; height: 20px; background-color: rgb(82, 216, 105);\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
             <!--v-if-->
           </div>
         </div>
@@ -113,9 +113,9 @@ exports[`test switch example 1`] = `
     </div>
     <div class=\\"var-switch\\">
       <div class=\\"var-switch-block\\" style=\\"height: 24px; width: 40px;\\">
-        <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: brightness(.6); background-color: rgb(39, 114, 245);\\" class=\\"var-switch__track\\"></div>
-        <div class=\\"var-switch__ripple\\" style=\\"left: -10px; color: rgb(39, 114, 245); width: 40px; height: 40px;\\">
-          <div style=\\"width: 20px; height: 20px; background-color: rgb(39, 114, 245);\\" class=\\"var-switch__handle var-elevation--2\\">
+        <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6); background-color: orange;\\" class=\\"var-switch__track var-switch__track-active\\"></div>
+        <div class=\\"var-switch__ripple\\" style=\\"left: 10px; color: orange; width: 40px; height: 40px;\\">
+          <div style=\\"width: 20px; height: 20px; background-color: orange;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
             <!--v-if-->
           </div>
         </div>
