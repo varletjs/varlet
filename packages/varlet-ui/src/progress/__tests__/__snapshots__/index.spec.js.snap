@@ -100,7 +100,7 @@ exports[`test progress example 1`] = `
       <div class=\\"var-progress-linear\\">
         <div class=\\"var-progress-linear__block\\" style=\\"height: 8px;\\">
           <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
-          <div class=\\"var-progress-linear__certain\\" style=\\"background: rgb(255, 152, 0); width: 30%;\\"></div>
+          <div class=\\"var-progress-linear__certain\\" style=\\"background: rgb(255, 159, 0); width: 30%;\\"></div>
         </div>
         <!--v-if-->
       </div>
@@ -110,7 +110,7 @@ exports[`test progress example 1`] = `
       <div class=\\"var-progress-linear\\">
         <div class=\\"var-progress-linear__block\\" style=\\"height: 8px;\\">
           <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(245, 203, 144);\\"></div>
-          <div class=\\"var-progress-linear__certain\\" style=\\"background: rgb(255, 152, 0); width: 60%;\\"></div>
+          <div class=\\"var-progress-linear__certain\\" style=\\"background: rgb(255, 159, 0); width: 60%;\\"></div>
         </div>
         <!--v-if-->
       </div>
@@ -120,7 +120,7 @@ exports[`test progress example 1`] = `
       <div class=\\"var-progress-linear\\">
         <div class=\\"var-progress-linear__block\\" style=\\"height: 8px;\\">
           <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(245, 203, 144);\\"></div>
-          <div class=\\"var-progress-linear__certain var-progress-linear__ripple\\" style=\\"background: rgb(255, 152, 0); width: 80%;\\"></div>
+          <div class=\\"var-progress-linear__certain var-progress-linear__ripple\\" style=\\"background: rgb(255, 159, 0); width: 80%;\\"></div>
         </div>
         <!--v-if-->
       </div>

@@ -38,9 +38,9 @@ createApp().use(Progress)
 通过`line-width`、`color`、`track-color`、`ripple` 属性设置线宽、进度条颜色、轨道颜色、水波纹加载效果。
 
 ```html
-<var-progress :value="30" line-width="8" color="#ff9800" />
-<var-progress :value="60" line-width="8" color="#ff9800" track-color="#f5cb90" />
-<var-progress :value="80" ripple line-width="8" color="#ff9800" track-color="#f5cb90" />
+<var-progress :value="30" line-width="8" color="#ff9f00" />
+<var-progress :value="60" line-width="8" color="#ff9f00" track-color="#f5cb90" />
+<var-progress :value="80" ripple line-width="8" color="#ff9f00" track-color="#f5cb90" />
 ```
 
 ### 环形进度条

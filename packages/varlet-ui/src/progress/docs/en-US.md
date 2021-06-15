@@ -38,9 +38,9 @@ The label is displayed through the `label` attribute. The label is the percentag
 Set the line width, progress bar color, track color and ripple loading effect through the attributes of `line-width`, `color`, `track-color` and `ripple`.
 
 ```html
-<var-progress :value="30" line-width="8" color="#ff9800" />
-<var-progress :value="60" line-width="8" color="#ff9800" track-color="#f5cb90" />
-<var-progress :value="80" ripple line-width="8" color="#ff9800" track-color="#f5cb90" />
+<var-progress :value="30" line-width="8" color="#ff9f00" />
+<var-progress :value="60" line-width="8" color="#ff9f00" track-color="#f5cb90" />
+<var-progress :value="80" ripple line-width="8" color="#ff9f00" track-color="#f5cb90" />
 ```
 
 ### Progress circle

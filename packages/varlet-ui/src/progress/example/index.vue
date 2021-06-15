@@ -18,9 +18,9 @@
 
     <div class="progress-demo__style">
       <app-type>{{ pack.style }}</app-type>
-      <var-progress :value="30" line-width="8" color="#ff9800" />
-      <var-progress :value="60" line-width="8" color="#ff9800" track-color="#f5cb90" />
-      <var-progress :value="80" ripple line-width="8" color="#ff9800" track-color="#f5cb90" />
+      <var-progress :value="30" line-width="8" color="#ff9f00" />
+      <var-progress :value="60" line-width="8" color="#ff9f00" track-color="#f5cb90" />
+      <var-progress :value="80" ripple line-width="8" color="#ff9f00" track-color="#f5cb90" />
     </div>
 
     <app-type>{{ pack.circle }}</app-type>
