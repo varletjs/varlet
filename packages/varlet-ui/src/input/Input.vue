@@ -66,7 +66,7 @@
             var-input-cover
             name="close-circle"
             size="14px"
-            v-if="clearable"
+            v-if="clearable&&modelValue"
             @click="handleClear"
           />
         </slot>
