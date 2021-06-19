@@ -50,7 +50,6 @@ const Wrapper = {
 }
 
 test('test form with input', async () => {
-  const onClear = jest.fn()
   const onClick = jest.fn()
   const onInput = jest.fn()
   const onChange = jest.fn()
@@ -63,7 +62,6 @@ test('test form with input', async () => {
       value: undefined,
     }),
     methods: {
-      onClear,
       onClick,
       onInput,
       onChange,
@@ -75,7 +73,6 @@ test('test form with input', async () => {
           :rules="[v => !!v || '不能为空']"
           v-model="value"
           @click="onClick"
-          @clear="onClear"
           @input="onInput"
           @change="onChange"
         />
@@ -86,7 +83,6 @@ test('test form with input', async () => {
   const triggerEvents = async () => {
     await wrapper.find('.var-input__input').trigger('input')
     await wrapper.find('.var-input__input').trigger('change')
-    await wrapper.find('.var-input__clear-icon').trigger('click')
     await wrapper.find('.var-input').trigger('click')
   }
 
@@ -94,7 +90,6 @@ test('test form with input', async () => {
 
   await triggerEvents()
   expect(onInput).toHaveBeenCalledTimes(0)
-  expect(onClear).toHaveBeenCalledTimes(0)
   expect(onClick).toHaveBeenCalledTimes(0)
   expect(onChange).toHaveBeenCalledTimes(0)
 
@@ -103,8 +98,7 @@ test('test form with input', async () => {
 
   await triggerEvents()
   expect(onInput).toHaveBeenCalledTimes(0)
-  expect(onClear).toHaveBeenCalledTimes(0)
-  expect(onClick).toHaveBeenCalledTimes(2)
+  expect(onClick).toHaveBeenCalledTimes(1)
   expect(onChange).toHaveBeenCalledTimes(0)
 
   const { form } = wrapper.vm.$refs
@@ -477,7 +471,6 @@ test('test form with switch', async () => {
   wrapper.unmount()
 })
 
-
 test('test form with slider', async () => {
   const onChange = jest.fn()
   const onStart = jest.fn()
@@ -493,7 +486,7 @@ test('test form with slider', async () => {
     methods: {
       onChange,
       onStart,
-      onEnd
+      onEnd,
     },
     template: `
       <var-form ref="form" :disabled="disabled" :readonly="readonly">

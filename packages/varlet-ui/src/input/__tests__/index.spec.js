@@ -134,7 +134,7 @@ test('test input disabled', async () => {
 
   const wrapper = mount(VarInput, {
     props: {
-      modelValue: '',
+      modelValue: 'hello',
       clearable: true,
       disabled: true,
       onInput,
@@ -165,7 +165,7 @@ test('test input readonly', async () => {
 
   const wrapper = mount(VarInput, {
     props: {
-      modelValue: '',
+      modelValue: 'hello',
       clearable: true,
       readonly: true,
       onInput,
