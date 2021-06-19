@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://github.com/haoziqaq/varlet/compare/v1.7.0...v1.7.1) (2021-06-19)
+
+
+### Bug Fixes
+
+* **countdown:** modify style of example ([5dcf584](https://github.com/haoziqaq/varlet/commit/5dcf5849245817463f8fcd85d74c80abd20fbe78))
+* **progress:** modify style of example ([f2469a6](https://github.com/haoziqaq/varlet/commit/f2469a6915c6ef4d2a264672971bfffe29adedff))
+* **switch:** modify style of example ([b790736](https://github.com/haoziqaq/varlet/commit/b79073635295227180e79501068887c4c776c06c))
+
+
+
+
+
 # [1.7.0](https://github.com/haoziqaq/varlet/compare/v1.6.0...v1.7.0) (2021-06-14)
 
 
