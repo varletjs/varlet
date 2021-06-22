@@ -3,7 +3,6 @@ import VarActionSheet from '../ActionSheet'
 import example from '../example'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
 
 test('test action-sheet example', () => {
   const wrapper = mount(example)

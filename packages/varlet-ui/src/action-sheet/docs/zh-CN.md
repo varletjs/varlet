@@ -76,7 +76,7 @@ ActionSheet({
 
 #### 禁用选项
 
-选项传入`disabled`可以使选项处于禁用状态
+选项传入`disabled`可以使选项处于禁用状态。
 
 ```js
 ActionSheet({
@@ -128,7 +128,7 @@ ActionSheet({
 
 ### 自定义选项样式
 
-选项提供了可以配置样式的参数，具体选项的参数可选项见`Action的数据结构`
+选项提供了可以配置样式的参数，具体选项的参数可选项见`Action的数据结构`。
 
 ```js
 import { Snackbar } from '@varlet/ui'
