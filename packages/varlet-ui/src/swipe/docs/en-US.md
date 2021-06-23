@@ -189,7 +189,7 @@ export default {
 | Slot | Description | Arguments |
 | --- | --- | --- |
 | `default` | Swipe content | `-` |
-| `indicators` | Swipe indicator content | `-` |
+| `indicator` | Swipe indicator content | `-` |
 
 ### Theme Variables
 #### The following LESS variables can be overridden at build time to modify the theme style

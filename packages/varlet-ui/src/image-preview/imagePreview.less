@@ -1,0 +1,33 @@
+@image-preview-swipe-indicators-text-color: #ddd;
+
+.var-image-preview {
+  &__popup[var-image-preview-cover] {
+    background: transparent;
+  }
+
+  &__swipe[var-image-preview-cover] {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  &__swipe-item[var-image-preview-cover] {
+    overflow: hidden;
+  }
+
+  &__indicators {
+    color: @image-preview-swipe-indicators-text-color;
+  }
+
+  &__image {
+    width: 100vw;
+  }
+
+  &__zoom-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    transition: transform 0.2s;
+  }
+}

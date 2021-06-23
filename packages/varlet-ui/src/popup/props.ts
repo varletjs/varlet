@@ -14,6 +14,9 @@ export const props = {
     default: 'center',
     validator: positionValidator,
   },
+  transition: {
+    type: String,
+  },
   overlay: {
     type: Boolean,
     default: true,

@@ -277,6 +277,7 @@ export default {
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
 | `overlay-class` | 自定义遮罩层的class | _string_ | `-` |
 | `overlay-style` | 自定义遮罩层的style | _string_ | `-` |
+| `transition` | 过度动画的名称 | _string_ | `-` |
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` | 
 | `teleport` | 弹出层挂载的位置 | _string_ | `body` |

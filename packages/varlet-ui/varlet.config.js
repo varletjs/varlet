@@ -202,6 +202,13 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'ImagePreview 图片预览',
+          'en-US': 'ImagePreview',
+        },
+        doc: 'image-preview',
+      },
+      {
+        text: {
           'zh-CN': 'Card 卡片',
           'en-US': 'Card',
         },
