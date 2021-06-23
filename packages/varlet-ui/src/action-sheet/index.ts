@@ -24,6 +24,7 @@ interface ActionSheetOptions {
   lockScroll?: boolean
   closeOnClickAction?: boolean
   closeOnClickOverlay?: boolean
+  teleport?: string
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void
@@ -43,6 +44,7 @@ function ActionSheet(options: ActionSheetOptions): Promise<ActionSheetActions | 
     ActionSheet.close()
 
     const reactiveActionSheetOptions: ActionSheetOptions = reactive(options)
+    reactiveActionSheetOptions.teleport = 'body'
     singletonOptions = reactiveActionSheetOptions
 
     const { unmountInstance } = mountInstance(VarActionSheet, reactiveActionSheetOptions, {

@@ -1,14 +1,7 @@
-import example from '../example'
 import Popup from '..'
 import VarPopup from '../Popup'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-
-test('test popup example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test popup plugin', () => {
   const app = createApp({}).use(Popup)
@@ -21,27 +14,17 @@ const Wrapper = {
   },
   props: ['closeOnClickOverlay', 'onOpen', 'onClose', 'onClickOverlay'],
   data: () => ({
-    mounted: false,
     show: false,
   }),
   template: `
-    <div class="container">
-      <var-popup
-        teleport=".container"
-        v-model:show="show"
-        v-if="mounted"
-        v-bind="$props"
-      >
-        default slot content
-      </var-popup>
-    </div>
+    <var-popup v-model:show="show" v-bind="$props">
+      default slot content
+    </var-popup>
   `,
 }
 
 test('test popup show', async () => {
-  const wrapper = mount(Wrapper, { attachTo: document.body })
-
-  await wrapper.setData({ mounted: true })
+  const wrapper = mount(Wrapper)
   expect(wrapper.find('.var-popup').isVisible()).toBeFalsy()
   expect(wrapper.html()).toMatchSnapshot()
 
@@ -65,9 +48,7 @@ test('test popup onOpen & onClose', async () => {
       onOpen,
       onClose,
     },
-    attachTo: document.body,
   })
-  await wrapper.setData({ mounted: true })
   await wrapper.setData({ show: true })
   expect(onOpen).toHaveBeenCalledTimes(1)
 
@@ -86,10 +67,8 @@ test('test popup close on clickOverlay', async () => {
       onClose,
       onClickOverlay,
     },
-    attachTo: document.body,
   })
 
-  await wrapper.setData({ mounted: true })
   await wrapper.setData({ show: true })
 
   await wrapper.find('.var-popup__overlay').trigger('click')
@@ -106,9 +85,8 @@ test('test popup close on clickOverlay', async () => {
 })
 
 test('test popup z-index', async () => {
-  const wrapper = mount(Wrapper, { attachTo: document.body })
+  const wrapper = mount(Wrapper)
 
-  await wrapper.setData({ mounted: true })
   await wrapper.setData({ show: true })
 
   const prevPopupZIndex = window.getComputedStyle(wrapper.find('.var-popup').element).zIndex

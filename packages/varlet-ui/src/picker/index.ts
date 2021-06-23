@@ -19,6 +19,7 @@ interface PickerOptions {
   cancelButtonText?: string
   confirmButtonTextColor?: string
   cancelButtonTextColor?: string
+  teleport?: string
   dynamic?: boolean
   onOpen?: () => void
   onOpened?: () => void
@@ -46,6 +47,7 @@ function Picker(options: PickerOptions | Texts): Promise<PickerResolvedData> {
     const pickerOptions: PickerOptions = isArray(options) ? { columns: options } : options
     const reactivePickerOptions: PickerOptions = reactive(pickerOptions)
     reactivePickerOptions.dynamic = true
+    reactivePickerOptions.teleport = 'body'
 
     singletonOptions = reactivePickerOptions
 

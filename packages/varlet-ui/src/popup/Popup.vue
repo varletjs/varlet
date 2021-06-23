@@ -1,5 +1,5 @@
 <template>
-  <teleport :to="teleport" :disabled="disabled">
+  <teleport :to="teleport" :disabled="!teleport || disabled">
     <transition name="var-fade" @after-enter="onOpened" @after-leave="onClosed">
       <div class="var--box var-popup" :style="{ zIndex: zIndex - 2 }" v-show="show">
         <div

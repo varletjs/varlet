@@ -1,14 +1,7 @@
 import Dialog from '..'
 import VarDialog from '../Dialog'
-import example from '../example'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-
-test('test dialog example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test dialog component plugin', () => {
   const app = createApp({}).use(Dialog.Component)
@@ -21,18 +14,10 @@ const Wrapper = {
   },
   props: ['closeOnClickOverlay', 'onBeforeClose', 'onClickOverlay'],
   data: () => ({
-    mounted: false,
     show: false,
   }),
   template: `
-    <div class="container">
-      <var-dialog
-        teleport=".container"
-        v-if="mounted"
-        v-model:show="show"
-        v-bind="$props"
-      />
-    </div>
+    <var-dialog v-model:show="show" v-bind="$props" />
   `,
 }
 
@@ -44,9 +29,7 @@ test('test dialog component click overlay', async () => {
       onClickOverlay,
       closeOnClickOverlay: false,
     },
-    attachTo: document.body,
   })
-  await wrapper.setData({ mounted: true })
   await wrapper.setData({ show: true })
 
   await wrapper.find('.var-popup__overlay').trigger('click')
@@ -68,9 +51,7 @@ test('test dialog component onBeforeClose', async () => {
     props: {
       onBeforeClose,
     },
-    attachTo: document.body,
   })
-  await wrapper.setData({ mounted: true })
   await wrapper.setData({ show: true })
 
   await wrapper.find('.var-popup__overlay').trigger('click')

@@ -10,5 +10,5 @@ test('test imagePreview example', () => {
 
 test('test imagePreview plugin', () => {
   const app = createApp({}).use(ImagePreview)
-  expect(app.component(ImagePreview.name)).toBeTruthy()
+  expect(app.component(ImagePreview.Component.name)).toBeTruthy()
 })

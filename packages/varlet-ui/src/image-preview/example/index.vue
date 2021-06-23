@@ -4,7 +4,7 @@
 
   <app-type>组件调用</app-type>
   <var-button type="warning" @click="show = true">预览</var-button>
-  <var-image-preview :images="images" v-model:show="show" />
+  <var-image-preview :images="images" v-model:show="show" :indicator="false" />
 </template>
 
 <script>

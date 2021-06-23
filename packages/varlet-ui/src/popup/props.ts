@@ -35,9 +35,7 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  teleport: {
-    default: 'body',
-  },
+  teleport: {},
   onOpen: {
     type: Function as PropType<() => void>,
   },

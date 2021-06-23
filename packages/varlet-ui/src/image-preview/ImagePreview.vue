@@ -4,6 +4,7 @@
     var-image-preview-cover
     transition="var-fade"
     :show="popupShow"
+    :overlay="false"
     :close-on-click-overlay="false"
     :lock-scroll="lockScroll"
     :teleport="teleport"
@@ -17,6 +18,7 @@
       class="var-image-preview__swipe"
       var-image-preview-cover
       :touchable="canSwipe"
+      :indicator="indicator && images.length > 1"
       :initial-index="initialIndex"
       :loop="loop"
       @change="onChange"
@@ -47,16 +49,23 @@
 
       <template #indicator="{ index, length }">
         <slot name="indicator" :index="index" :length="length">
-          <div class="var-image-preview__indicators" v-show="indicator">{{ index + 1 }} / {{ length }}</div>
+          <div class="var-image-preview__indicators" v-if="indicator && images.length > 1">
+            {{ index + 1 }} / {{ length }}
+          </div>
         </slot>
       </template>
     </var-swipe>
+
+    <slot name="close-icon">
+      <var-icon class="var-image-preview__close-icon" name="close-circle" var-image-preview-cover v-if="closeable" />
+    </slot>
   </var-popup>
 </template>
 
 <script lang="ts">
 import Swipe from '../swipe'
 import SwipeItem from '../swipe-item'
+import Icon from '../icon'
 import Popup from '../popup'
 import { defineComponent, ref, computed, Ref, ComputedRef, watch } from 'vue'
 import { props } from './props'
@@ -79,6 +88,7 @@ export default defineComponent({
     [Swipe.name]: Swipe,
     [SwipeItem.name]: SwipeItem,
     [Popup.name]: Popup,
+    [Icon.name]: Icon,
   },
   inheritAttrs: false,
   props,
@@ -254,6 +264,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../icon/icon';
 @import '../swipe/swipe';
 @import '../swipe-item/swipeItem';
 @import '../popup/popup';

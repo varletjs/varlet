@@ -556,6 +556,14 @@ exports[`test form with uploader 1`] = `
       <!--v-if-->
     </transition-stub>
     <!--teleport start-->
+    <transition-stub>
+      <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+        <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div>
+    </transition-stub>
     <!--teleport end-->
   </div>
 </div>"
@@ -571,6 +579,14 @@ exports[`test form with uploader 2`] = `
       <!--v-if-->
     </transition-stub>
     <!--teleport start-->
+    <transition-stub>
+      <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+        <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div>
+    </transition-stub>
     <!--teleport end-->
   </div>
 </div>"
@@ -589,6 +605,14 @@ exports[`test form with uploader 3`] = `
       </div>
     </transition-stub>
     <!--teleport start-->
+    <transition-stub>
+      <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+        <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div>
+    </transition-stub>
     <!--teleport end-->
   </div>
 </div>"
@@ -604,6 +628,14 @@ exports[`test form with uploader 4`] = `
       <!--v-if-->
     </transition-stub>
     <!--teleport start-->
+    <transition-stub>
+      <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+        <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div>
+    </transition-stub>
     <!--teleport end-->
   </div>
 </div>"

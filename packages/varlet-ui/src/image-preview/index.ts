@@ -1,6 +1,6 @@
 import VarImagePreview from './ImagePreview.vue'
 import { App, nextTick, reactive } from 'vue'
-import { inBrowser, isArray } from '../utils/shared'
+import { inBrowser, isArray, isString } from '../utils/shared'
 import { mountInstance } from '../utils/components'
 
 interface ImagePreviewOptions {
@@ -10,6 +10,8 @@ interface ImagePreviewOptions {
   zoom?: string | number
   lockScroll?: boolean
   indicator?: boolean
+  closeable?: boolean
+  teleport?: string
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void
@@ -19,15 +21,20 @@ interface ImagePreviewOptions {
 
 let singletonOptions: ImagePreviewOptions | null
 
-function ImagePreview(options: ImagePreviewOptions | string[]) {
+function ImagePreview(options: string | string[] | ImagePreviewOptions) {
   if (!inBrowser) {
     return
   }
 
   ImagePreview.close()
 
-  const imagePreviewOptions: ImagePreviewOptions = isArray(options) ? { images: options } : options
+  const imagePreviewOptions: ImagePreviewOptions = isString(options)
+    ? { images: [options] }
+    : isArray(options)
+    ? { images: options }
+    : options
   const reactiveImagePreviewOptions: ImagePreviewOptions = reactive(imagePreviewOptions)
+  reactiveImagePreviewOptions.teleport = 'body'
   singletonOptions = reactiveImagePreviewOptions
 
   const { unmountInstance } = mountInstance(VarImagePreview, reactiveImagePreviewOptions, {

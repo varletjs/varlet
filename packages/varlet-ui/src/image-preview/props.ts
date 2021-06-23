@@ -19,6 +19,10 @@ export const props = {
     type: [String, Number],
     default: 2,
   },
+  closeable: {
+    type: Boolean,
+    default: false,
+  },
   'onUpdate:show': {
     type: Function as PropType<(show: boolean) => void>,
   },
