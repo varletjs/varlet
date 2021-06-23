@@ -61,39 +61,6 @@ module.exports = {
 }
 ```
 
-### 基于es模块的手动引入方式
-
-```js
-import '@varlet/ui/es/button/style/less'
-```
-
-### 修改变量
-使用`less`提供的`modifyVars`进行构建时的变量替换，以下是不同场景下的配置。
-
-### Webpack
-这里使用`less-loader`的版本`< 6`
-
-```js
-// webpack.config.js
-module.exports = {
-  rules: [
-    {
-      test: /\.less$/,
-      use: [
-        {
-          loader: 'less-loader',
-          options: {
-            modifyVars: {
-              'color-primary': '#009688',
-            }
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-
 ### Vue cli
 ```js
 // vue.config.js
