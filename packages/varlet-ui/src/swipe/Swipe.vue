@@ -204,7 +204,7 @@ export default defineComponent({
     }
 
     const handleTouchmove = (event: TouchEvent) => {
-      if (!touching) {
+      if (!touching || !props.touchable) {
         return
       }
 
