@@ -1,24 +1,24 @@
 import { defineComponent, h, PropType } from 'vue'
 import { kebabCase } from '../utils/shared'
 
+type StyleVars = Record<string, string>
+
 export default defineComponent({
   name: 'VarStyleProvider',
   props: {
     styleVars: {
-      type: Object as PropType<Partial<Record<string, string | number>>>,
-      default: () => {}
-    }
+      type: Object as PropType<StyleVars>,
+      default: () => {},
+    },
   },
   setup(props, { slots }) {
     return () => {
-      const styles: Record<string, string | number> = Object.entries(props.styleVars).reduce((styles, style) => {
-        const cssVar = `--${kebabCase(style[0])}`
-        styles[cssVar] = style[1] as string | number
-
+      const styles: StyleVars = Object.entries(props.styleVars).reduce((styles, [key, value]) => {
+        styles[`--${kebabCase(key)}`] = value
         return styles
-      }, {} as Record<string, string | number>)
+      }, {} as StyleVars)
 
       return h('div', { style: styles }, slots.default?.())
     }
-  }
+  },
 })
