@@ -13,7 +13,7 @@
             closeOnClickOverlay,
             teleport,
             show,
-            'onUpdate:show': (value) => $props['onUpdate:show'] && $props['onUpdate:show'](value),
+            'onUpdate:show': (value) => $props['onUpdate:show']?.(value),
             position: 'bottom',
             class: 'var-picker__popup',
           }
