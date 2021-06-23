@@ -1,5 +1,5 @@
 <template>
-  <var-style-provider :theme-vars="styles">
+  <var-style-provider :style-vars="styles">
     <var-cell border> test </var-cell>
     <var-cell border> test </var-cell>
   </var-style-provider>
