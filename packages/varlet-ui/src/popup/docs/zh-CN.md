@@ -280,7 +280,7 @@ export default {
 | `transition` | 过度动画的名称 | _string_ | `-` |
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` | 
-| `teleport` | 弹出层挂载的位置 | _string_ | `body` |
+| `teleport` | 弹出层挂载的位置 | _string_ | `-` |
 
 ### 事件
 

@@ -280,7 +280,7 @@ export default {
 | `transition` | Transition animation name | _string_ | `-` |
 | `lock-scroll` | Whether to disable scrolling penetration, scrolling the Popup when disabled will not cause the body to scroll | _boolean_ | `true` |
 | `close-on-click-overlay` | Whether to click the overlay to close the Popup | _boolean_ | `true` | 
-| `teleport` | The location of the Popup to mount | _string_ | `body` |
+| `teleport` | The location of the Popup to mount | _string_ | `-` |
 
 ### Events
 
