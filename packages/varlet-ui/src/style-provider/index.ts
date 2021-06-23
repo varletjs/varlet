@@ -4,13 +4,13 @@ import { kebabCase } from '../utils/shared'
 export default defineComponent({
   name: 'VarStyleProvider',
   props: {
-    themeVars: {
+    styleVars: {
       type: Object as PropType<Partial<Record<string, string | number>>>,
       default: () => {}
     }
   },
   setup(props, { slots }) {
-    const styles: Record<string, string | number> = Object.entries(props.themeVars).reduce((styles, style) => {
+    const styles: Record<string, string | number> = Object.entries(props.styleVars).reduce((styles, style) => {
       const cssVar = `--${kebabCase(style[0])}`
       styles[cssVar] = style[1] as string | number
 
