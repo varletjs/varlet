@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { onMounted, ref } from 'vue'
 import Cell from '../../cell'
 import StyleProvider from '../index'
 
@@ -16,10 +17,16 @@ export default {
     [StyleProvider.name]: StyleProvider,
   },
   setup() {
-    const styles = {
-      cellFontSize: '30px',
-      cellBorderColor: 'red'
-    }
+    const styles = ref({})
+
+    onMounted(() => {
+      setTimeout(() => {
+        styles.value = {
+          cellFontSize: '30px',
+          cellBorderColor: 'red'
+        }
+      }, 1500)
+    })
 
     return {
       styles

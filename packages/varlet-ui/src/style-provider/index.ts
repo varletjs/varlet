@@ -10,13 +10,15 @@ export default defineComponent({
     }
   },
   setup(props, { slots }) {
-    const styles: Record<string, string | number> = Object.entries(props.styleVars).reduce((styles, style) => {
-      const cssVar = `--${kebabCase(style[0])}`
-      styles[cssVar] = style[1] as string | number
+    return () => {
+      const styles: Record<string, string | number> = Object.entries(props.styleVars).reduce((styles, style) => {
+        const cssVar = `--${kebabCase(style[0])}`
+        styles[cssVar] = style[1] as string | number
 
-      return styles
-    }, {} as Record<string, string | number>)
+        return styles
+      }, {} as Record<string, string | number>)
 
-    return () => h('div', { style: styles }, slots.default?.())
+      return h('div', { style: styles }, slots.default?.())
+    }
   }
 })
