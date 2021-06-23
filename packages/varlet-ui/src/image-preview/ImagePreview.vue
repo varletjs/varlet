@@ -69,8 +69,9 @@ type VarTouch = {
   target: HTMLElement
 }
 
-const DISTANCE_OFFSET = 4
+const DISTANCE_OFFSET = 12
 const EVENT_DELAY = 200
+const ANIMATION_DURATION = 200
 
 export default defineComponent({
   name: 'VarImagePreview',
@@ -121,7 +122,7 @@ export default defineComponent({
       window.setTimeout(() => {
         transitionTimingFunction.value = 'linear'
         transitionDuration.value = '0s'
-      }, 200)
+      }, ANIMATION_DURATION)
     }
 
     const zoomOut = () => {
@@ -141,7 +142,7 @@ export default defineComponent({
 
       return (
         getDistance(prevTouch, currentTouch) <= DISTANCE_OFFSET &&
-        currentTouch.timestamp - prevTouch.timestamp < EVENT_DELAY &&
+        currentTouch.timestamp - prevTouch.timestamp <= EVENT_DELAY &&
         prevTouch.target === currentTouch.target
       )
     }
@@ -155,12 +156,11 @@ export default defineComponent({
     }
 
     const handleTouchend = (event: Event) => {
-      checker && window.clearTimeout(checker)
       checker = window.setTimeout(() => {
         if (isTapTouch(event.target as HTMLElement)) {
           if (scale.value > 1) {
             zoomOut()
-            setTimeout(() => props['onUpdate:show']?.(false), 200)
+            setTimeout(() => props['onUpdate:show']?.(false), ANIMATION_DURATION)
             return
           }
 
@@ -171,6 +171,7 @@ export default defineComponent({
     }
 
     const handleTouchstart = (event: TouchEvent) => {
+      checker && window.clearTimeout(checker)
       const { touches } = event
       const currentTouch: VarTouch = createVarTouch(touches[0], event.currentTarget as HTMLElement)
       startTouch = currentTouch
@@ -187,6 +188,7 @@ export default defineComponent({
       if (!prevTouch) {
         return
       }
+
       const target = event.currentTarget as HTMLElement
       const { touches } = event
       const currentTouch: VarTouch = createVarTouch(touches[0], target)
