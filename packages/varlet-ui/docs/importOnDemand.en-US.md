@@ -1,10 +1,9 @@
 # Import On Demand
 
-### 介绍
+### Intro
 The on-demand import avoids the full import of components and can effectively reduce the size of the distribution package.
-It is recommended to use `Plugin Based Import` or `ES module based manual Import`.
+Best practices based on `Webpack` and `Vite` build tools are recommended here
 
-### Plugin based import
 
 ### Webpack
 ```shell
@@ -32,51 +31,52 @@ module.exports = {
 };
 ```
 
+After the configuration is complete, 
+the plugin automatically loads the style files required for the component when it is introduced, 
+using the following method
+
+```html
+<var-button>Default Button</var-button>
+```
+
+```js
+import { createApp } from 'vue'
+import { Button } from '@varlet/ui'
+
+createApp().use(Button)
+```
+
 ### Vite
 
 ```shell
 # Install plugin
 # npm
-npm i vite-plugin-style-import -D 
+npm i vite-plugin-components -D
 # yarn
-yarn add vite-plugin-style-import -D
+yarn add i vite-plugin-components -D
 ```
 
 ```js
 // vite.config.js
 import vue from '@vitejs/plugin-vue'
-import styleImport from 'vite-plugin-style-import'
+import ViteComponents, { VarletUIResolver } from 'vite-plugin-components'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [
     vue(),
-    styleImport({
-      libs: [
-        {
-          libraryName: '@varlet/ui',
-          esModule: true,
-          resolveStyle: name => `@varlet/ui/es/${name}/style/index`,
-        },
-      ]
+    ViteComponents({
+      globalComponentsDeclaration: true,
+      customComponentResolvers: [VarletUIResolver()]
     })
   ]
 })
 ```
 
-After the configuration is complete, and the component is imported as follows, 
-the plugin will automatically import the corresponding style file for the component.
+After the configuration is complete, 
+the component is used directly as follows, and the plugin automatically introduces component-related dependencies
 
-```javascript
-import { Button } from '@varlet/ui'
+```html
+<var-button>Default Button</var-button>
 ```
 
-### ES module based manual import
-
-The ES module is very tree-shaking friendly,
-and you can manually import the required component logic and style files directly to implement on-demand introduction.
-
-```javascript
-import { Button } from '@varlet/ui'
-import '@varlet/ui/es/button/style'
-```
