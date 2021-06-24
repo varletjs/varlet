@@ -20,12 +20,6 @@
 
 Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥抱`Vue3`生态，由社区建立起来的组件库团队进行维护。
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/24223652/122013948-439b5d80-cdf1-11eb-82d1-25a146563890.gif">
-  <img src="https://user-images.githubusercontent.com/24223652/122014796-18fdd480-cdf2-11eb-86e5-c3d81ef35a00.gif">
-  <img src="https://user-images.githubusercontent.com/24223652/122013881-32eae780-cdf1-11eb-8d7f-c8695ade6d7b.gif">
-</p>
-
 ### 特性
 1. 提供40多个高质量通用组件
 2. 组件十分轻量
