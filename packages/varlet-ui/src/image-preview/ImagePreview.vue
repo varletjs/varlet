@@ -57,7 +57,13 @@
     </var-swipe>
 
     <slot name="close-icon">
-      <var-icon class="var-image-preview__close-icon" name="close-circle" var-image-preview-cover v-if="closeable" />
+      <var-icon
+        class="var-image-preview__close-icon"
+        name="close-circle"
+        var-image-preview-cover
+        v-if="closeable"
+        @click="handleCloseClick"
+      />
     </slot>
   </var-popup>
 </template>
@@ -233,6 +239,11 @@ export default defineComponent({
       prevTouch = currentTouch
     }
 
+    const handleCloseClick = () => {
+      zoomOut()
+      setTimeout(() => props['onUpdate:show']?.(false), ANIMATION_DURATION)
+    }
+
     watch(
       () => props.current,
       () => swipe.value?.resize()
@@ -258,6 +269,7 @@ export default defineComponent({
       handleTouchstart,
       handleTouchmove,
       handleTouchend,
+      handleCloseClick,
     }
   },
 })
