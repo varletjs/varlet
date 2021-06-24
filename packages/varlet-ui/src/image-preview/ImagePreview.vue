@@ -240,7 +240,9 @@ export default defineComponent({
     }
 
     const handleCloseClick = () => {
-      zoomOut()
+      if (scale.value > 1) {
+        zoomOut()
+      }
       setTimeout(() => props['onUpdate:show']?.(false), ANIMATION_DURATION)
     }
 
