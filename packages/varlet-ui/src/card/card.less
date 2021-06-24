@@ -22,41 +22,64 @@
 
 @card-line-height: 22px;
 
+:root {
+  --card-padding: @card-padding;
+  --card-border-radius: @card-border-radius;
+  --card-image-width: @card-image-width;
+  --card-image-height: @card-image-height;
+  --card-title-color: @card-title-color;
+  --card-title-font-size: @card-title-font-size;
+  --card-title-padding: @card-title-padding;
+  --card-title-margin: @card-title-margin;
+  --card-subtitle-color: @card-subtitle-color;
+  --card-subtitle-font-size: @card-subtitle-font-size;
+  --card-subtitle-padding: @card-subtitle-padding;
+  --card-subtitle-margin: @card-subtitle-margin;
+  --card-description-color: @card-description-color;
+  --card-description-font-size: @card-description-font-size;
+  --card-description-margin: @card-description-margin;
+  --card-description-padding: @card-description-padding;
+  --card-footer-padding: @card-footer-padding;
+  --card-footer-margin: @card-footer-margin;
+
+  --card-line-height: @card-line-height;
+}
+
 .var-card {
-  border-radius: @card-border-radius;
+  border-radius: var(--card-border-radius);
   overflow: hidden;
-  padding: @card-padding;
-  line-height: @card-line-height;
+  padding: var(--card-padding);
+  line-height: var(--card-line-height);
 
   &__image {
-    width: @card-image-width;
-    height: @card-image-height;
+    width: var(--card-image-width);
+    height: var(--card-image-height);
     display: block;
   }
 
   &__title {
-    font-size: @card-title-font-size;
-    padding: @card-title-padding;
-    margin: @card-title-margin;
-    color: @card-title-color;
+    font-size: var(--card-title-font-size);
+    padding: var(--card-title-padding);
+    margin: var(--card-title-margin);
+    color: var(--card-title-color);
   }
 
   &__subtitle {
-    font-size: @card-subtitle-font-size;
-    color: @card-subtitle-color;
-    padding: @card-subtitle-padding;
-    margin: @card-subtitle-margin;
+    font-size: var(--card-subtitle-font-size);
+    color: var(--card-subtitle-color);
+    padding: var(--card-subtitle-padding);
+    margin: var(--card-subtitle-margin);
   }
 
   &__description {
-    font-size: @card-description-font-size;
-    color: @card-description-color;
-    margin: @card-description-margin;
-    padding: @card-description-padding;
+    font-size: var(--card-description-font-size);
+    color: var(--card-description-color);
+    margin: var(--card-description-margin);
+    padding: var(--card-description-padding);
   }
 
   &__footer {
-    padding: @card-footer-padding;
-    margin: @card-footer-margin;
+    padding: var(--card-footer-padding);
+    margin: var(--card-footer-margin);
   }
 }
