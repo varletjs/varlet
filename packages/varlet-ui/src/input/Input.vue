@@ -66,7 +66,7 @@
             var-input-cover
             name="close-circle"
             size="14px"
-            v-if="clearable"
+            v-if="clearable && !isEmpty(modelValue)"
             @click="handleClear"
           />
         </slot>
@@ -253,6 +253,7 @@ export default defineComponent({
       maxlengthText,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      isEmpty,
       computePlaceholderState,
       handleFocus,
       handleBlur,

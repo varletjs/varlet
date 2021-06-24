@@ -10,7 +10,7 @@
     :teleport="teleport"
     :show="popupShow"
     v-bind="{
-      'onUpdate:show': (value) => $props['onUpdate:show'] && $props['onUpdate:show'](value),
+      'onUpdate:show': (value) => $props['onUpdate:show']?.(value),
     }"
     @open="onOpen"
     @close="onClose"

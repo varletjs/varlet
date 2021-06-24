@@ -76,7 +76,7 @@ ActionSheet({
 
 #### 禁用选项
 
-选项传入`disabled`可以使选项处于禁用状态
+选项传入`disabled`可以使选项处于禁用状态。
 
 ```js
 ActionSheet({
@@ -128,7 +128,7 @@ ActionSheet({
 
 ### 自定义选项样式
 
-选项提供了可以配置样式的参数，具体选项的参数可选项见`Action的数据结构`
+选项提供了可以配置样式的参数，具体选项的参数可选项见`Action的数据结构`。
 
 ```js
 import { Snackbar } from '@varlet/ui'
@@ -399,7 +399,7 @@ export default {
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
 | `close-on-click-action` | 是否点击选项时关闭动作面板 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭动作面板 | _boolean_ | `true` | 
-| `teleport` | 动作面板挂载的位置 | _string_ | `body` |
+| `teleport` | 动作面板挂载的位置 | _string_ | `-` |
 
 ### 事件
 

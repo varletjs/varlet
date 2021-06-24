@@ -147,10 +147,14 @@ export default {
 }
 
 .indicators {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 4px 0;
   color: #fff;
-  padding: 2px 8px;
-  background: rgba(0, 0, 0, 0.6);
   font-size: 14px;
+  background: rgba(0, 0, 0, 0.6);
 }
 ```
 
@@ -189,7 +193,7 @@ export default {
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 轮播内容 | `-` |
-| `indicators` | 指示器内容 | `-` |
+| `indicator` | 指示器内容 | `-` |
 
 ### 主题变量
 #### 以下less变量可通过构建时进行变量覆盖从而修改主题样式

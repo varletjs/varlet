@@ -28,11 +28,11 @@ import ActionSheet from '../index'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Button from '../../button'
 import Snackbar from '../../snackbar'
-import { defineComponent, ref, reactive } from 'vue'
+import { ref, reactive } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 
-export default defineComponent({
+export default {
   name: 'ActionSheetExample',
   components: {
     [ActionSheet.Component.name]: ActionSheet.Component,
@@ -171,7 +171,7 @@ export default defineComponent({
       disableCloseOnClickAction,
     }
   },
-})
+}
 </script>
 
 <style scoped lang="less">

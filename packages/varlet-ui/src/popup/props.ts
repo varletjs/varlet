@@ -14,6 +14,9 @@ export const props = {
     default: 'center',
     validator: positionValidator,
   },
+  transition: {
+    type: String,
+  },
   overlay: {
     type: Boolean,
     default: true,
@@ -32,9 +35,7 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  teleport: {
-    default: 'body',
-  },
+  teleport: {},
   onOpen: {
     type: Function as PropType<() => void>,
   },

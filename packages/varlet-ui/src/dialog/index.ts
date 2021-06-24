@@ -21,6 +21,7 @@ interface DialogOptions {
   overlayStyle?: Record<string, any>
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
+  teleport?: string
   onOpen?: () => void
   onOpened?: () => void
   onBeforeClose?: (done: () => void) => void
@@ -45,6 +46,7 @@ function Dialog(options: DialogOptions | string): Promise<DialogActions | void> 
 
     const dialogOptions: DialogOptions = isString(options) ? { message: options } : options
     const reactiveDialogOptions: DialogOptions = reactive(dialogOptions)
+    reactiveDialogOptions.teleport = 'body'
     singletonOptions = reactiveDialogOptions
 
     const { unmountInstance } = mountInstance(VarDialog, reactiveDialogOptions, {

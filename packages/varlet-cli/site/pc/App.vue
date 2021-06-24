@@ -103,7 +103,7 @@ export default defineComponent({
     [Cell.name]: Cell,
     [Icon.name]: Icon,
     [Menu.name]: Menu,
-    [Loading.name]: Loading
+    [Loading.name]: Loading,
   },
 
   setup() {
@@ -147,7 +147,7 @@ export default defineComponent({
         if (index !== -1) {
           childrenElement[index].scrollIntoView({
             block: 'center',
-            inline: 'start'
+            inline: 'start',
           })
         }
       })
@@ -207,9 +207,9 @@ export default defineComponent({
       codeRefs,
       refs,
       changeRoute,
-      changeLanguage
+      changeLanguage,
     }
-  }
+  },
 })
 </script>
 
@@ -223,7 +223,7 @@ export default defineComponent({
 
 @keyframes scale-animation {
   0% {
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
 
   50% {
@@ -231,7 +231,7 @@ export default defineComponent({
   }
 
   100% {
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
 }
 </style>
@@ -473,7 +473,7 @@ iframe {
         margin: 0 4px;
         color: @color-warning;
         text-decoration: none;
-        animation: scale-animation 1.2s infinite linear;
+        animation: scale-animation 2s infinite linear;
       }
 
       h1,
@@ -540,12 +540,15 @@ iframe {
       table code {
         display: inline;
         margin: 0 2px;
-        padding: 2px 5px;
-        font-size: 14px;
+        padding: 2px 7px;
+        font-size: 12px;
         font-family: inherit;
         word-break: keep-all;
-        color: @color-primary;
+        color: #fff;
+        background: @color-primary;
         -webkit-font-smoothing: antialiased;
+        border-radius: 20px;
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
       }
 
       table {
@@ -579,21 +582,27 @@ iframe {
 
             code {
               margin: 0;
-              padding: 2px 6px;
-              color: #1989fa;
-              font-weight: 600;
+              padding: 2px 7px;
+              color: #fff;
               letter-spacing: 1px;
-              font-size: 11px;
+              font-size: 12px;
               border-radius: 20px;
+              background: @color-primary;
             }
           }
         }
 
         em {
-          color: #4fc08d;
-          font-size: 14px;
+          color: #fff;
+          background: @color-success;
+          font-size: 12px;
           font-family: 'Roboto', sans-serif;
           font-style: normal;
+          padding: 2px 7px;
+          border-radius: 20px;
+          box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+            0 1px 3px 0 rgba(0, 0, 0, 0.12);
+          white-space: nowrap;
         }
       }
 

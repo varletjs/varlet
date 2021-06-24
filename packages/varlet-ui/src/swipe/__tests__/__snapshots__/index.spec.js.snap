@@ -88,9 +88,7 @@ exports[`test swipe example 1`] = `
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat2.jpg\\" alt=\\"\\"></div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat3.jpg\\" alt=\\"\\"></div>
   </div>
-  <div class=\\"var-swipe__indicators\\">
-    <div class=\\"indicators\\">1 / 3</div>
-  </div>
+  <div class=\\"indicators\\">1 / 3</div>
 </div>
 <div class=\\"space\\"></div>"
 `;

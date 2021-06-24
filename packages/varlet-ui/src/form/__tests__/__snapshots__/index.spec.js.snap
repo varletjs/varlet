@@ -112,7 +112,9 @@ exports[`test form with input 1`] = `
     <div class=\\"var-input__controller var-input--disabled\\">
       <div class=\\"var-input__icon\\"></div>
       <div class=\\"var-input__wrap\\"><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"off\\" id=\\"var-input-3\\" disabled=\\"\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-3\\"></label></div>
-      <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input__clear-icon\\" style=\\"transition: all 0ms; font-size: 14px;\\" var-input-cover=\\"\\"></i></div>
+      <div class=\\"var-input__icon\\">
+        <!--v-if-->
+      </div>
     </div>
     <div class=\\"var-input__line var-input--line-disabled\\">
       <div class=\\"var-input__dot var-input--line-disabled\\"></div>
@@ -130,7 +132,9 @@ exports[`test form with input 2`] = `
     <div class=\\"var-input__controller\\">
       <div class=\\"var-input__icon\\"></div>
       <div class=\\"var-input__wrap\\"><input class=\\"var-input__input\\" autocomplete=\\"off\\" id=\\"var-input-3\\" disabled=\\"\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-3\\"></label></div>
-      <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input__clear-icon\\" style=\\"transition: all 0ms; font-size: 14px;\\" var-input-cover=\\"\\"></i></div>
+      <div class=\\"var-input__icon\\">
+        <!--v-if-->
+      </div>
     </div>
     <div class=\\"var-input__line\\">
       <div class=\\"var-input__dot\\"></div>
@@ -148,7 +152,9 @@ exports[`test form with input 3`] = `
     <div class=\\"var-input__controller var-input--error\\">
       <div class=\\"var-input__icon\\"></div>
       <div class=\\"var-input__wrap\\"><input class=\\"var-input__input var-input--caret-error\\" autocomplete=\\"off\\" id=\\"var-input-3\\" disabled=\\"\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-3\\"></label></div>
-      <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input__clear-icon\\" style=\\"transition: all 0ms; font-size: 14px;\\" var-input-cover=\\"\\"></i></div>
+      <div class=\\"var-input__icon\\">
+        <!--v-if-->
+      </div>
     </div>
     <div class=\\"var-input__line var-input--line-error\\">
       <div class=\\"var-input__dot var-input--line-error\\"></div>
@@ -169,7 +175,9 @@ exports[`test form with input 4`] = `
     <div class=\\"var-input__controller\\">
       <div class=\\"var-input__icon\\"></div>
       <div class=\\"var-input__wrap\\"><input class=\\"var-input__input\\" autocomplete=\\"off\\" id=\\"var-input-3\\" disabled=\\"\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-3\\"></label></div>
-      <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input__clear-icon\\" style=\\"transition: all 0ms; font-size: 14px;\\" var-input-cover=\\"\\"></i></div>
+      <div class=\\"var-input__icon\\">
+        <!--v-if-->
+      </div>
     </div>
     <div class=\\"var-input__line\\">
       <div class=\\"var-input__dot\\"></div>
@@ -548,6 +556,14 @@ exports[`test form with uploader 1`] = `
       <!--v-if-->
     </transition-stub>
     <!--teleport start-->
+    <transition-stub>
+      <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+        <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div>
+    </transition-stub>
     <!--teleport end-->
   </div>
 </div>"
@@ -563,6 +579,14 @@ exports[`test form with uploader 2`] = `
       <!--v-if-->
     </transition-stub>
     <!--teleport start-->
+    <transition-stub>
+      <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+        <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div>
+    </transition-stub>
     <!--teleport end-->
   </div>
 </div>"
@@ -581,6 +605,14 @@ exports[`test form with uploader 3`] = `
       </div>
     </transition-stub>
     <!--teleport start-->
+    <transition-stub>
+      <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+        <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div>
+    </transition-stub>
     <!--teleport end-->
   </div>
 </div>"
@@ -596,6 +628,14 @@ exports[`test form with uploader 4`] = `
       <!--v-if-->
     </transition-stub>
     <!--teleport start-->
+    <transition-stub>
+      <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+        <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div>
+    </transition-stub>
     <!--teleport end-->
   </div>
 </div>"

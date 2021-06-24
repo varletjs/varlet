@@ -1,15 +1,8 @@
 import Picker from '..'
 import VarPicker from '../Picker'
-import example from '../example'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay, mockTranslate, trigger } from '../../utils/jest'
-
-test('test picker example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test picker component plugin', () => {
   const app = createApp({}).use(Picker.Component)

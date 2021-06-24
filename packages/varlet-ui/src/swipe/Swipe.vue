@@ -15,12 +15,13 @@
     >
       <slot />
     </div>
-    <div
-      class="var-swipe__indicators"
-      :class="[vertical ? 'var-swipe--indicators-vertical' : null]"
-      v-if="indicator || length"
-    >
-      <slot name="indicator" :index="index" :length="length">
+
+    <slot name="indicator" :index="index" :length="length">
+      <div
+        class="var-swipe__indicators"
+        :class="[vertical ? 'var-swipe--indicators-vertical' : null]"
+        v-if="indicator && length"
+      >
         <div
           class="var-swipe__indicator"
           :class="[
@@ -32,8 +33,8 @@
           v-for="(l, idx) in length"
           @click="to(idx)"
         ></div>
-      </slot>
-    </div>
+      </div>
+    </slot>
   </div>
 </template>
 
@@ -204,7 +205,7 @@ export default defineComponent({
     }
 
     const handleTouchmove = (event: TouchEvent) => {
-      if (!touching) {
+      if (!touching || !props.touchable) {
         return
       }
 

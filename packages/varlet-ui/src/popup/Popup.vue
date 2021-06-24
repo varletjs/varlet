@@ -1,5 +1,5 @@
 <template>
-  <teleport :to="teleport" :disabled="disabled">
+  <teleport :to="teleport" :disabled="!teleport || disabled">
     <transition name="var-fade" @after-enter="onOpened" @after-leave="onClosed">
       <div class="var--box var-popup" :style="{ zIndex: zIndex - 2 }" v-show="show">
         <div
@@ -12,13 +12,13 @@
           v-if="overlay"
           @click="hidePopup"
         ></div>
-        <transition :name="`var-pop-${position}`">
+        <transition :name="transition ? transition : `var-pop-${position}`">
           <div
             class="var-popup__content var-elevation--3"
             :class="[`var-popup--${position}`]"
             :style="{ zIndex }"
             v-bind="$attrs"
-            v-show="show"
+            v-if="show"
           >
             <slot />
           </div>

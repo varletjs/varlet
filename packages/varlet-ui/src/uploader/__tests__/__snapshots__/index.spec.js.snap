@@ -9,6 +9,14 @@ exports[`test uploader disabled 1`] = `
     <!--v-if-->
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 2001; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>"
 `;
@@ -28,6 +36,14 @@ exports[`test uploader disabled 2`] = `
     <!--v-if-->
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 2001; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>"
 `;
@@ -42,6 +58,14 @@ exports[`test uploader example 1`] = `
     <!--v-if-->
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>
 <div class=\\"app-type\\">文件预览</div>
@@ -63,6 +87,14 @@ exports[`test uploader example 1`] = `
     <!--v-if-->
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>
 <div class=\\"app-type\\">上传状态</div>
@@ -89,6 +121,14 @@ exports[`test uploader example 1`] = `
     <!--v-if-->
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>
 <div class=\\"app-type\\">文件数量限制</div>
@@ -103,6 +143,14 @@ exports[`test uploader example 1`] = `
     </div>
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>
 <div class=\\"app-type\\">文件大小限制</div>
@@ -114,6 +162,14 @@ exports[`test uploader example 1`] = `
     <!--v-if-->
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>
 <div class=\\"app-type\\">上传预处理</div>
@@ -125,6 +181,14 @@ exports[`test uploader example 1`] = `
     <!--v-if-->
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>
 <div class=\\"app-type\\">禁用</div>
@@ -136,6 +200,14 @@ exports[`test uploader example 1`] = `
     <!--v-if-->
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>
 <div class=\\"app-type\\">只读</div>
@@ -147,6 +219,14 @@ exports[`test uploader example 1`] = `
     <!--v-if-->
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>
 <div class=\\"app-type\\">字段校验</div>
@@ -163,6 +243,14 @@ exports[`test uploader example 1`] = `
     <!--v-if-->
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>
 <div class=\\"app-type\\">自定义上传样式</div>
@@ -177,6 +265,14 @@ exports[`test uploader example 1`] = `
     <!--v-if-->
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>
 <div class=\\"space\\"></div>"
@@ -194,6 +290,14 @@ exports[`test uploader length over maxlength in multiple mode 1`] = `
     </div>
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 2001; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>"
 `;
@@ -210,6 +314,14 @@ exports[`test uploader validation 1`] = `
     </div>
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 2001; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>"
 `;
@@ -229,6 +341,14 @@ exports[`test uploader validation 2`] = `
     <!--v-if-->
   </transition-stub>
   <!--teleport start-->
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 2001; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </transition-stub>
   <!--teleport end-->
 </div>"
 `;

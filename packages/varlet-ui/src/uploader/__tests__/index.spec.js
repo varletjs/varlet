@@ -73,7 +73,7 @@ test('test uploader preview', async () => {
   await wrapper.find('.var-uploader__file').trigger('click')
   await delay(16)
 
-  expect(document.querySelector('.var-popup').style.display).toBe('')
+  expect(wrapper.find('.var-popup').isVisible()).toBe(true)
 
   wrapper.unmount()
   mockRestore()
