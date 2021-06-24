@@ -48,31 +48,33 @@ export async function compileSFC(path: string, modules: string | boolean = false
           scopeId,
         },
       })
+
     let { content } = script
     if (render) {
       const { code } = render
       content = injectRender(content, code)
-      // script
-      await compileScript(content, path, modules)
-
-      // style
-      styles.forEach((style: SFCStyleBlock, index: number) => {
-        const stylePath = replaceExt(path, `Sfc${index === 0 ? '' : index}.${style.lang}`)
-        const { code } = compileStyle({
-          source: style.content,
-          filename: stylePath,
-          id: scopeId,
-          scoped: style.scoped,
-        })
-        // less
-        writeFileSync(stylePath, clearEmptyLine(code), 'utf-8')
-        emitStyleEntry(stylePath, modules)
-        // less -> css
-        if (style.lang === 'less') {
-          compileLess(stylePath).then(() => emitStyleEntry(replaceExt(stylePath, '.css'), modules))
-        }
-      })
     }
+
+    // script
+    await compileScript(content, path, modules)
+
+    // style
+    styles.forEach((style: SFCStyleBlock, index: number) => {
+      const stylePath = replaceExt(path, `Sfc${index === 0 ? '' : index}.${style.lang}`)
+      const { code } = compileStyle({
+        source: style.content,
+        filename: stylePath,
+        id: scopeId,
+        scoped: style.scoped,
+      })
+      // less
+      writeFileSync(stylePath, clearEmptyLine(code), 'utf-8')
+      emitStyleEntry(stylePath, modules)
+      // less -> css
+      if (style.lang === 'less') {
+        compileLess(stylePath).then(() => emitStyleEntry(replaceExt(stylePath, '.css'), modules))
+      }
+    })
 
     await remove(path)
   }

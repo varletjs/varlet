@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import ImagePreview from '..'
+import ImagePreview from '../index'
 import Button from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { defineComponent, ref } from 'vue'

@@ -1,4 +1,5 @@
-import { isNumber, isString, toNumber } from './shared'
+import { isNumber, isString, kebabCase, toNumber } from './shared'
+import { StyleVars } from '../style-provider'
 
 export function getTop(element: HTMLElement): number {
   const { top } = element.getBoundingClientRect()
@@ -175,4 +176,11 @@ export function scrollTo(
   }
 
   requestAnimationFrame(frame)
+}
+
+export function formatStyleVars(styleVars: StyleVars) {
+  return Object.entries(styleVars).reduce((styles, [key, value]) => {
+    styles[`--${kebabCase(key)}`] = value
+    return styles
+  }, {} as StyleVars)
 }

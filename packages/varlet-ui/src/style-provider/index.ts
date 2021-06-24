@@ -1,24 +1,22 @@
-import { defineComponent, h, PropType } from 'vue'
-import { kebabCase } from '../utils/shared'
+import VarStyleProvider from './StyleProvider.vue'
+import { App } from 'vue'
+import { formatStyleVars } from '../utils/elements'
 
-type StyleVars = Record<string, string>
+export type StyleVars = Record<string, string>
 
-export default defineComponent({
-  name: 'VarStyleProvider',
-  props: {
-    styleVars: {
-      type: Object as PropType<StyleVars>,
-      default: () => {},
-    },
-  },
-  setup(props, { slots }) {
-    return () => {
-      const styles: StyleVars = Object.entries(props.styleVars).reduce((styles, [key, value]) => {
-        styles[`--${kebabCase(key)}`] = value
-        return styles
-      }, {} as StyleVars)
+function StyleProvider(styleVars: StyleVars = {}) {
+  const styles: StyleVars = formatStyleVars(styleVars)
+  Object.entries(styles).forEach(([key, value]) => document.documentElement.style.setProperty(key, value))
+}
 
-      return h('div', { style: styles }, slots.default?.())
-    }
-  },
-})
+StyleProvider.Component = VarStyleProvider
+
+VarStyleProvider.install = function (app: App) {
+  app.component(VarStyleProvider.name, VarStyleProvider)
+}
+
+StyleProvider.install = function (app: App) {
+  app.component(VarStyleProvider.name, VarStyleProvider)
+}
+
+export default StyleProvider

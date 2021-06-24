@@ -1,11 +1,8 @@
 <template>
-  <app-type>单元格样式定制</app-type>
+  <app-type>例子</app-type>
   <var-style-provider :style-vars="styles">
     <var-cell border> test </var-cell>
     <var-cell border> test </var-cell>
-  </var-style-provider>
-  <app-type>卡片样式定制</app-type>
-  <var-style-provider :style-vars="cardStyles">
     <var-card
       title="风景"
       subtitle="公园里的风景"
@@ -17,17 +14,17 @@
 
 <script>
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { onMounted, ref } from 'vue'
 import Cell from '../../cell'
 import Card from '../../card'
 import StyleProvider from '../index'
+import { onMounted, ref } from 'vue'
 
 export default {
   name: 'StyleProviderExample',
   components: {
     [Cell.name]: Cell,
-    [StyleProvider.name]: StyleProvider,
     [Card.name]: Card,
+    [StyleProvider.Component.name]: StyleProvider.Component,
     AppType,
   },
   setup() {
@@ -36,13 +33,9 @@ export default {
 
     onMounted(() => {
       setTimeout(() => {
-        styles.value = {
+        cardStyles.value = {
           cellFontSize: '30px',
           cellBorderColor: 'red',
-        }
-      }, 1500)
-      setTimeout(() => {
-        cardStyles.value = {
           cardTitleColor: 'blue',
           cardSubtitleColor: 'black',
           cardDescriptionFontSize: '16px',
@@ -53,7 +46,6 @@ export default {
 
     return {
       styles,
-      cardStyles,
     }
   },
 }
