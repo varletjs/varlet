@@ -6,9 +6,21 @@
 @list-loading-color: #888;
 @list-finished-color: #888;
 @list-error-color: #888;
-@list-loading-font-size: @font-size-md;
-@list-finished-font-size: @font-size-md;
-@list-error-font-size: @font-size-md;
+@list-loading-font-size: var(--font-size-md);
+@list-finished-font-size: var(--font-size-md);
+@list-error-font-size: var(--font-size-md);
+
+:root {
+  --list-loading-height: @list-loading-height;
+  --list-finished-height: @list-finished-height;
+  --list-error-height: @list-error-height;
+  --list-loading-color: @list-loading-color;
+  --list-finished-color: @list-finished-color;
+  --list-error-color: @list-error-color;
+  --list-loading-font-size: @list-loading-font-size;
+  --list-finished-font-size: @list-finished-font-size;
+  --list-error-font-size: @list-error-font-size;
+}
 
 .var-list {
   &__detector {
@@ -20,9 +32,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: @list-loading-height;
-    font-size: @list-loading-font-size;
-    color: @list-loading-color;
+    height: var(--list-loading-height);
+    font-size: var(--list-loading-font-size);
+    color: var(--list-loading-color);
   }
 
   &__loading-text {
@@ -34,9 +46,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: @list-finished-height;
-    font-size: @list-finished-font-size;
-    color: @list-finished-color;
+    height: var(--list-finished-height);
+    font-size: var(--list-finished-font-size);
+    color: var(--list-finished-color);
   }
 
   &__error {
@@ -44,9 +56,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: @list-error-height;
-    font-size: @list-error-font-size;
-    color: @list-error-color;
+    height: var(--list-error-height);
+    font-size: var(--list-error-font-size);
+    color: var(--list-error-color);
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }

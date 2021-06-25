@@ -207,17 +207,17 @@ This can be mistaken for a scroll container, so avoid it.
 | `error` | Error content | `-` |
 | `finished` | Finished content | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@list-loading-height` | `50px` |
-| `@list-finished-height` | `50px` |
-| `@list-error-height` | `50px` |
-| `@list-loading-color` | `#888` |
-| `@list-finished-color` | `#888` |
-| `@list-error-color` | `#888` |
-| `@list-loading-font-size` | `@font-size-md` |
-| `@list-finished-font-size` | `@font-size-md` |
-| `@list-error-font-size` | `@font-size-md` |
+| `--list-loading-height` | `50px` |
+| `--list-finished-height` | `50px` |
+| `--list-error-height` | `50px` |
+| `--list-loading-color` | `#888` |
+| `--list-finished-color` | `#888` |
+| `--list-error-color` | `#888` |
+| `--list-loading-font-size` | `var(--font-size-md)` |
+| `--list-finished-font-size` | `var(--font-size-md)` |
+| `--list-error-font-size` | `var(--font-size-md)` |

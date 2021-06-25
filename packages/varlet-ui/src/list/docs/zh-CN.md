@@ -204,17 +204,17 @@ export default {
 | `error` | 加载失败内容 | `-` |
 | `finished` | 加载完毕内容 | `-` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@list-loading-height` | `50px` |
-| `@list-finished-height` | `50px` |
-| `@list-error-height` | `50px` |
-| `@list-loading-color` | `#888` |
-| `@list-finished-color` | `#888` |
-| `@list-error-color` | `#888` |
-| `@list-loading-font-size` | `@font-size-md` |
-| `@list-finished-font-size` | `@font-size-md` |
-| `@list-error-font-size` | `@font-size-md` |
+| `--list-loading-height` | `50px` |
+| `--list-finished-height` | `50px` |
+| `--list-error-height` | `50px` |
+| `--list-loading-color` | `#888` |
+| `--list-finished-color` | `#888` |
+| `--list-error-color` | `#888` |
+| `--list-loading-font-size` | `var(--font-size-md)` |
+| `--list-finished-font-size` | `var(--font-size-md)` |
+| `--list-error-font-size` | `var(--font-size-md)` |
