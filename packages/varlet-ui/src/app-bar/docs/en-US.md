@@ -201,8 +201,8 @@ export default {
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
-| `color` | Background | _string_ | `#2979ff` |
-| `text-color` | Text color  | _string_ | `#ffffff` |
+| `color` | Background | _string_ | `-` |
+| `text-color` | Text color  | _string_ | `-` |
 | `title` | Title | _string_ | - |
 | `title-position` | Title location,Can be set to `left`,`center`,`right` | _string_ | `left` |
 | `elevation` | Set altitude for navigation bar | _boolean_ | `true` |
@@ -215,11 +215,13 @@ export default {
 | `left` | Insert the content to the left of the AppBar | - |
 | `right` | Insert the content to the right of the AppBar | - |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@app-bar-height` | `50px` |
-| `@app-bar-padding` | `0 10px` |
-| `@app-bar-title-line-height` | `50px` |
+| `--app-bar-color` | `var(--color-primary)` |
+| `--app-bar-text-color` | `#fff` |
+| `--app-bar-height` | `50px` |
+| `--app-bar-padding` | `0 10px` |
+| `--app-bar-title-line-height` | `50px` |

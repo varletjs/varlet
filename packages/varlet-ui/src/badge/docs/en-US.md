@@ -150,16 +150,17 @@ Set Badge Icon through `icon` property.
 
 | Slot | Description | Arguments |
 | --- | --- | --- |
-| `default` |  Badge content | - |
+| `default` |  Badge content | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@chip-default-color` | `#f5f5f5` |
-| `@chip-primary-color` | `@color-primary`|
-| `@chip-danger-color` |  `@color-danger`|
-| `@chip-success-color` | `@color-success`|
-| `@chip-warning-color` |  `@color-warning`|
-| `@chip-info-color` | `@color-info`|
+| `--badge-content-padding` | `2px 6px` |
+| `--badge-default-color` | `#f5f5f5` |
+| `--badge-primary-color` | `var(--color-primary)`|
+| `--badge-danger-color` |  `var(--color-danger)`|
+| `--badge-success-color` | `var(--color-success)`|
+| `--badge-warning-color` |  `var(--color-warning)`|
+| `--badge-info-color` | `var(--color-info)`|

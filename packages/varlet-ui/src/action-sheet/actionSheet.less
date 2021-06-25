@@ -7,49 +7,63 @@
 @action-sheet-action-item-height: 48px;
 @action-sheet-action-item-padding: 0px 18px;
 @action-sheet-action-item-color: #333;
-@action-sheet-action-item-disabled-color: @color-disabled;
+@action-sheet-action-item-disabled-color: var(--color-disabled);
 @action-sheet-icon-margin: 0 20px 0 0;
 @action-sheet-icon-size: 24px;
 @action-sheet-background: #fff;
 
+:root {
+  --action-sheet-border-radius: @action-sheet-border-radius;
+  --action-sheet-title-color: @action-sheet-title-color;
+  --action-sheet-title-padding: @action-sheet-title-padding;
+  --action-sheet-title-font-size: @action-sheet-title-font-size;
+  --action-sheet-action-item-height: @action-sheet-action-item-height;
+  --action-sheet-action-item-padding: @action-sheet-action-item-padding;
+  --action-sheet-action-item-color: @action-sheet-action-item-color;
+  --action-sheet-action-item-disabled-color: @action-sheet-action-item-disabled-color;
+  --action-sheet-icon-margin: @action-sheet-icon-margin;
+  --action-sheet-icon-size: @action-sheet-icon-size;
+  --action-sheet-background: @action-sheet-background;
+}
+
 .var-action-sheet {
   padding: 10px 0;
   max-height: 80%;
-  background: @action-sheet-background;
+  background: var(--action-sheet-background);
 
   &__popup-radius {
-    border-radius: @action-sheet-border-radius;
+    border-radius: var(--action-sheet-border-radius);
   }
 
   &__title {
-    padding: @action-sheet-title-padding;
-    color: @action-sheet-title-color;
-    font-size: @action-sheet-title-font-size;
+    padding: var(--action-sheet-title-padding);
+    color: var(--action-sheet-title-color);
+    font-size: var(--action-sheet-title-font-size);
   }
 
   &__action-item {
     display: flex;
     align-items: center;
-    height: @action-sheet-action-item-height;
-    padding: @action-sheet-action-item-padding;
-    color: @action-sheet-action-item-color;
+    height: var(--action-sheet-action-item-height);
+    padding: var(--action-sheet-action-item-padding);
+    color: var(--action-sheet-action-item-color);
     cursor: pointer;
   }
 
   &__action-name {
     overflow: auto;
-    max-height: @action-sheet-action-item-height;
+    max-height: var(--action-sheet-action-item-height);
   }
 
   &__action-icon[var-action-sheet-cover] {
-    margin: @action-sheet-icon-margin;
-    width: @action-sheet-icon-size;
-    height: @action-sheet-icon-size;
-    font-size: @action-sheet-icon-size;
+    margin: var(--action-sheet-icon-margin);
+    width: var(--action-sheet-icon-size);
+    height: var(--action-sheet-icon-size);
+    font-size: var(--action-sheet-icon-size);
   }
 
   &--disabled {
-    color: @action-sheet-action-item-disabled-color !important;
+    color: var(--action-sheet-action-item-disabled-color) !important;
     cursor: not-allowed;
   }
 }

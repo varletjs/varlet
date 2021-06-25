@@ -62,18 +62,18 @@ createApp().use(Cell)
 | `desc` | 描述的内容 | `-` |
 | `extra` | 自定义右侧区域内容 | `-` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@cell-font-size` | `@font-size-md` |
-| `@cell-desc-font-size` | `@font-size-sm` |
-| `@cell-desc-color` | `rgba(0, 0, 0, 0.6)` |
-| `@cell-padding` | `10px 12px` |
-| `@cell-min-height` | `40px` |
-| `@cell-border-color` | `#bcc2cb` |
-| `@cell-border-left` | `12px` |
-| `@cell-border-right` | `12px` |
-| `@cell-icon-right` | `8px` |
-| `@cell-extra-left` | `8px` |
+| `--cell-font-size` | `var(--font-size-md)` |
+| `--cell-desc-font-size` | `var(--font-size-sm)` |
+| `--cell-desc-color` | `rgba(0, 0, 0, 0.6)` |
+| `--cell-padding` | `10px 12px` |
+| `--cell-min-height` | `40px` |
+| `--cell-border-color` | `#bcc2cb` |
+| `--cell-border-left` | `12px` |
+| `--cell-border-right` | `12px` |
+| `--cell-icon-right` | `8px` |
+| `--cell-extra-left` | `8px` |

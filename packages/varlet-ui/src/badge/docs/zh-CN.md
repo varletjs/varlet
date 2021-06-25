@@ -154,18 +154,18 @@ export default {
 
 | 名称 | 说明 | 参数 |
 | ---- | ---- | ----|
-| default |  徽标内容 | - |
+| `default` |  徽标内容 | `-` |
 
-### 主题变量
-
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@chip-default-color` | `#f5f5f5` |
-| `@chip-primary-color` | `@color-primary`|
-| `@chip-danger-color` |  `@color-danger`|
-| `@chip-success-color` | `@color-success`|
-| `@chip-warning-color` |  `@color-warning`|
-| `@chip-info-color` | `@color-info`|
+| `--badge-content-padding` | `2px 6px` |
+| `--badge-default-color` | `#f5f5f5` |
+| `--badge-primary-color` | `var(--color-primary)`|
+| `--badge-danger-color` |  `var(--color-danger)`|
+| `--badge-success-color` | `var(--color-success)`|
+| `--badge-warning-color` |  `var(--color-warning)`|
+| `--badge-info-color` | `var(--color-info)`|
 

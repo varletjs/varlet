@@ -62,18 +62,19 @@ createApp().use(Cell)
 | `desc` | Description of cell | `-` |
 | `extra` | Extra of cell | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@cell-font-size` | `@font-size-md` |
-| `@cell-desc-font-size` | `@font-size-sm` |
-| `@cell-desc-color` | `rgba(0, 0, 0, 0.6)` |
-| `@cell-padding` | `10px 12px` |
-| `@cell-min-height` | `40px` |
-| `@cell-border-color` | `#bcc2cb` |
-| `@cell-border-left` | `12px` |
-| `@cell-border-right` | `12px` |
-| `@cell-icon-right` | `8px` |
-| `@cell-extra-left` | `8px` |
+| `--cell-font-size` | `var(--font-size-md)` |
+| `--cell-desc-font-size` | `var(--font-size-sm)` |
+| `--cell-desc-color` | `rgba(0, 0, 0, 0.6)` |
+| `--cell-padding` | `10px 12px` |
+| `--cell-min-height` | `40px` |
+| `--cell-border-color` | `#bcc2cb` |
+| `--cell-border-left` | `12px` |
+| `--cell-border-right` | `12px` |
+| `--cell-icon-right` | `8px` |
+| `--cell-extra-left` | `8px` |
+

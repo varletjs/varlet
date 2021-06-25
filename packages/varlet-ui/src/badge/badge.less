@@ -1,11 +1,22 @@
 @import '../styles/var';
 
+@badge-content-padding: 2px 6px;
 @badge-default-color: #f5f5f5;
-@chip-primary-color: @color-primary;
-@chip-danger-color: @color-danger;
-@chip-success-color: @color-success;
-@chip-warning-color: @color-warning;
-@chip-info-color: @color-info;
+@badge-primary-color: var(--color-primary);
+@badge-danger-color: var(--color-danger);
+@badge-success-color: var(--color-success);
+@badge-warning-color: var(--color-warning);
+@badge-info-color: var(--color-info);
+
+:root {
+  --badge-content-padding: @badge-content-padding;
+  --badge-default-color: @badge-default-color;
+  --badge-primary-color: @badge-primary-color;
+  --badge-danger-color: @badge-danger-color;
+  --badge-success-color: @badge-success-color;
+  --badge-warning-color: @badge-warning-color;
+  --badge-info-color: @badge-info-color;
+}
 
 .var-badge {
   display: inline-block;
@@ -30,27 +41,27 @@
   }
 
   &--default {
-    background: @badge-default-color;
+    background: var(--badge-default-color);
   }
 
   &--primary {
-    background: @chip-primary-color;
+    background: var(--badge-primary-color);
   }
 
   &--info {
-    background: @chip-info-color;
+    background: var(--badge-info-color);
   }
 
   &--warning {
-    background: @chip-warning-color;
+    background: var(--badge-warning-color);
   }
 
   &--success {
-    background: @chip-success-color;
+    background: var(--badge-success-color);
   }
 
   &--danger {
-    background: @chip-danger-color;
+    background: var(--badge-danger-color);
   }
 
   &--right-top {
@@ -99,7 +110,7 @@
 
   &-fade-enter-active,
   &-fade-leave-active {
-    transition: opacity 0.15s @cubic-bezier;
+    transition: opacity 0.15s var(--cubic-bezier);
   }
 
   &-fade-enter-from,

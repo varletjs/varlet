@@ -201,8 +201,8 @@ export default {
 
 |参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ---- |
-| `color` | 背景颜色 | _string_ | `#2979ff` |
-| `text-color` | 文字颜色 | _string_ | `#ffffff` |
+| `color` | 背景颜色 | _string_ | `-` |
+| `text-color` | 文字颜色 | _string_ | `-` |
 | `title` | 标题 | _string_ | - |
 | `title-position` | 标题位置,可选值为 `left`,`center`,`right` | _string_ | `left` |
 | `elevation` | 是否给导航栏设置海拔 | _boolean_ | `true` |
@@ -215,12 +215,14 @@ export default {
 | `left` | 插入至导航栏左侧的内容 | - |
 | `right` | 插入至导航栏右侧的内容 | - |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@app-bar-height` | `50px` |
-| `@app-bar-padding` | `0 10px` |
-| `@app-bar-title-line-height` | `50px` |
+| `--app-bar-color` | `var(--color-primary)` |
+| `--app-bar-text-color` | `#fff` |
+| `--app-bar-height` | `50px` |
+| `--app-bar-padding` | `0 10px` |
+| `--app-bar-title-line-height` | `50px` |
 
