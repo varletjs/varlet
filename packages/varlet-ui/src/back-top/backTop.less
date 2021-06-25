@@ -4,17 +4,23 @@
 @back-top-bottom: 40px;
 @back-top-button-size: 40px;
 
+:root {
+  --back-top-right: @back-top-right;
+  --back-top-bottom: @back-top-bottom;
+  --back-top-button-size: @back-top-button-size;
+}
+
 .var-back-top {
   position: fixed;
-  right: @back-top-right;
-  bottom: @back-top-bottom;
+  right: var(--back-top-right);
+  bottom: var(--back-top-bottom);
   transform: scale(0);
-  transition: 0.3s @cubic-bezier;
+  transition: 0.3s var(--cubic-bezier);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   &__button {
-    width: @back-top-button-size;
-    height: @back-top-button-size;
+    width: var(--back-top-button-size);
+    height: var(--back-top-button-size);
   }
 
   &--active {

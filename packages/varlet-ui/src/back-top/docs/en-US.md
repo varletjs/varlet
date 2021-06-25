@@ -55,11 +55,11 @@ export default {
 | ----- | -------------- | -------- |
 | `default` | Custom the content | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@back-top-right` | `40px` |
-| `@back-top-bottom` | `40px` |
-| `@back-top-button-size` | `40px` |
+| `--back-top-right` | `40px` |
+| `--back-top-bottom` | `40px` |
+| `--back-top-button-size` | `40px` |

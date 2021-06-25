@@ -156,32 +156,31 @@ export default {
 | ---- | ---- | ---- |
 | `close` | 点击关闭按钮时触发，只有在显示关闭按钮的时候才能使用 | `event: Event`  |
 
-### 主题变量
-
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@chip-default-color` | `#f5f5f5` |
-| `@chip-primary-color` | `@color-primary`|
-| `@chip-danger-color` |  `@color-danger`|
-| `@chip-success-color` | `@color-success`|
-| `@chip-warning-color` |  `@color-warning`|
-| `@chip-info-color` | `@color-info`|
-| `@chip-border-radius` | `2px` |
-| `@chip-mini-height` | `16px` |
-| `@chip-small-height` | `24px` |
-| `@chip-normal-height` | `32px` |
-| `@chip-large-height` | `40px` |
-| `@chip-round-radius` | `100px` |
-| `@chip-mini-padding` | `0 4px` |
-| `@chip-small-padding` | `0 6px` |
-| `@chip-normal-padding` | `0 10px` |
-| `@chip-large-padding` | `0 17px` |
-| `@chip-text-large-margin` | `0 5px` |
-| `@chip-text-normal-margin` | `0 5px` |
-| `@chip-text-small-margin` | `0 3px` |
-| `@chip-text-mini-margin` | `0 2px` |
+| `--chip-default-color` | `#f5f5f5` |
+| `--chip-primary-color` | `var(--color-primary)`|
+| `--chip-danger-color` |  `var(--color-danger)`|
+| `--chip-success-color` | `var(--color-success)`|
+| `--chip-warning-color` |  `var(--color-warning)`|
+| `--chip-info-color` | `var(--color-info)`|
+| `--chip-border-radius` | `2px` |
+| `--chip-mini-height` | `16px` |
+| `--chip-small-height` | `24px` |
+| `--chip-normal-height` | `32px` |
+| `--chip-large-height` | `40px` |
+| `--chip-round-radius` | `100px` |
+| `--chip-mini-padding` | `0 4px` |
+| `--chip-small-padding` | `0 6px` |
+| `--chip-normal-padding` | `0 10px` |
+| `--chip-large-padding` | `0 17px` |
+| `--chip-text-large-margin` | `0 5px` |
+| `--chip-text-normal-margin` | `0 5px` |
+| `--chip-text-small-margin` | `0 3px` |
+| `--chip-text-mini-margin` | `0 2px` |
 
 
 

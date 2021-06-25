@@ -156,28 +156,28 @@ Set the chip color through the `color` and `text-color` attributes.
 | --- | --- | --- |
 | `close` | Triggered when the Close button is clicked and can only be used when the Close button is displayed | `event: Event` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@chip-default-color` | `#f5f5f5` |
-| `@chip-primary-color` | `@color-primary`|
-| `@chip-danger-color` |  `@color-danger`|
-| `@chip-success-color` | `@color-success`|
-| `@chip-warning-color` |  `@color-warning`|
-| `@chip-info-color` | `@color-info`|
-| `@chip-border-radius` | `2px` |
-| `@chip-mini-height` | `16px` |
-| `@chip-small-height` | `24px` |
-| `@chip-normal-height` | `32px` |
-| `@chip-large-height` | `40px` |
-| `@chip-round-radius` | `100px` |
-| `@chip-mini-padding` | `0 4px` |
-| `@chip-small-padding` | `0 6px` |
-| `@chip-normal-padding` | `0 10px` |
-| `@chip-large-padding` | `0 17px` |
-| `@chip-text-large-margin` | `0 5px` |
-| `@chip-text-normal-margin` | `0 5px` |
-| `@chip-text-small-margin` | `0 3px` |
-| `@chip-text-mini-margin` | `0 2px` |
+| `--chip-default-color` | `#f5f5f5` |
+| `--chip-primary-color` | `var(--color-primary)`|
+| `--chip-danger-color` |  `var(--color-danger)`|
+| `--chip-success-color` | `var(--color-success)`|
+| `--chip-warning-color` |  `var(--color-warning)`|
+| `--chip-info-color` | `var(--color-info)`|
+| `--chip-border-radius` | `2px` |
+| `--chip-mini-height` | `16px` |
+| `--chip-small-height` | `24px` |
+| `--chip-normal-height` | `32px` |
+| `--chip-large-height` | `40px` |
+| `--chip-round-radius` | `100px` |
+| `--chip-mini-padding` | `0 4px` |
+| `--chip-small-padding` | `0 6px` |
+| `--chip-normal-padding` | `0 10px` |
+| `--chip-large-padding` | `0 17px` |
+| `--chip-text-large-margin` | `0 5px` |
+| `--chip-text-normal-margin` | `0 5px` |
+| `--chip-text-small-margin` | `0 3px` |
+| `--chip-text-mini-margin` | `0 2px` |
