@@ -2,13 +2,24 @@
 @import '../styles/elevation';
 
 @switch-track-background: #fff;
-@switch-track-active-background: @color-primary;
-@switch-track-error-background: @color-danger;
-@switch-ripple-color: @color-primary;
+@switch-track-active-background: var(--color-primary);
+@switch-track-error-background: var(--color-danger);
+@switch-ripple-color: var(--color-primary);
 @switch-handle-background: #fff;
 @switch-handle-color: #fff;
-@switch-handle-active-background: @color-primary;
-@switch-handle-error-background: @color-danger;
+@switch-handle-active-background: var(--color-primary);
+@switch-handle-error-background: var(--color-danger);
+
+:root {
+  --switch-track-background: @switch-track-background;
+  --switch-track-active-background: @switch-track-active-background;
+  --switch-track-error-background: @switch-track-error-background;
+  --switch-ripple-color: @switch-ripple-color;
+  --switch-handle-background: @switch-handle-background;
+  --switch-handle-color: @switch-handle-color;
+  --switch-handle-active-background: @switch-handle-active-background;
+  --switch-handle-error-background: @switch-handle-error-background;
+}
 
 .var-switch {
   display: inline-block;
@@ -28,15 +39,15 @@
   }
 
   &__track {
-    background: @switch-track-background;
+    background: var(--switch-track-background);
     filter: opacity(0.6);
 
     &-active {
-      background-color: @switch-track-active-background;
+      background-color: var(--switch-track-active-background);
     }
 
     &-error {
-      background-color: @switch-track-error-background !important;
+      background-color: var(--switch-track-error-background) !important;
     }
   }
 
@@ -45,7 +56,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: @switch-ripple-color;
+    color: var(--switch-ripple-color);
     border-radius: 50%;
     overflow: hidden;
     transition: 0.3s @cubic-bezier;
@@ -53,18 +64,18 @@
 
   &__handle {
     border-radius: 50%;
-    background-color: @switch-handle-background;
+    background-color: var(--switch-handle-background);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: @switch-handle-color;
+    color: var(--switch-handle-color);
 
     &-active {
-      background-color: @switch-handle-active-background;
+      background-color: var(--switch-handle-active-background);
     }
 
     &-error {
-      background-color: @switch-handle-error-background !important;
+      background-color: var(--switch-handle-error-background) !important;
     }
   }
 }

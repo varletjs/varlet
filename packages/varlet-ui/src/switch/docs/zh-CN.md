@@ -99,17 +99,18 @@ export default {
 | `click` | 点击时触发 | `event: Event` |
 | `change` | 开关状态切换时触发 | `value: any` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+
+以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@switch-track-background` | `#fff` |
-| `@switch-track-active-background` | `@color-primary` |
-| `@switch-track-error-background` | `@color-danger` |
-| `@switch-ripple-color` | `@color-primary` |
-| `@switch-handle-background` | `#fff` |
-| `@switch-handle-color` | `#fff` |
-| `@switch-handle-active-background` | `@color-primary` |
-| `@switch-handle-error-background` | `@color-danger` |
+| `--switch-track-background` | `#fff` |
+| `--switch-track-active-background` | `var(--color-primary)` |
+| `--switch-track-error-background` | `var(--color-danger)` |
+| `--switch-ripple-color` | `var(--color-primary)` |
+| `--switch-handle-background` | `#fff` |
+| `--switch-handle-color` | `#fff` |
+| `--switch-handle-active-background` | `var(--color-primary)` |
+| `--switch-handle-error-background` | `var(--color-danger)` |
 
