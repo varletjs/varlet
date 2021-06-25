@@ -2,6 +2,7 @@
   <div class="image-preview-demo">
     <app-type>{{ pack.functionCall }} </app-type>
     <var-button type="primary" block @click="preview"> {{ pack.preview }} </var-button>
+    <var-button type="primary" block @click="previewCallback"> {{ pack.callBack }} </var-button>
   </div>
 
   <div class="image-preview-demo">
@@ -9,17 +10,17 @@
     <var-button type="warning" block @click="show = true">{{ pack.basicUse }} </var-button>
     <var-image-preview :images="image" v-model:show="show" />
 
-    <var-button type="info" block @click="currentShow = true">{{ pack.specifyInitialPosition }} </var-button>
+    <var-button type="warning" block @click="currentShow = true">{{ pack.specifyInitialPosition }} </var-button>
     <var-image-preview
       :images="images"
       v-model:show="currentShow"
       current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
     />
 
-    <var-button type="success" block @click="closeShow = true">{{ pack.displayCloseButton }} </var-button>
+    <var-button type="warning" block @click="closeShow = true">{{ pack.displayCloseButton }} </var-button>
     <var-image-preview :images="images" v-model:show="closeShow" :closeable="true" />
 
-    <var-button block @click="closeEventShow = true">{{ pack.listenCloseEvents }} </var-button>
+    <var-button type="warning" block @click="closeEventShow = true">{{ pack.listenCloseEvents }} </var-button>
     <var-image-preview :images="images" v-model:show="closeEventShow" @close="handleCloseEvent" />
   </div>
 </template>
@@ -56,6 +57,14 @@ export default defineComponent({
     return {
       preview() {
         ImagePreview(image)
+      },
+      previewCallback() {
+        ImagePreview({
+          images,
+          onChange: (index) => {
+            console.log('index', index)
+          },
+        })
       },
       pack,
       show: ref(false),

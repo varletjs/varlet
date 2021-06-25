@@ -13,6 +13,12 @@ import { ImagePreview } from '@varlet/ui'
 // 全局注册
 createApp().use(ImagePreview)
 
+```
+
+### 局部引入
+```js
+import { ImagePreview } from '@varlet/ui'
+
 // 局部注册
 export default {
   components: {
@@ -20,6 +26,28 @@ export default {
   },
 }
 ```
+
+### 函数调用
+
+### 基本使用
+
+```js
+const image = 'https://varlet.gitee.io/varlet-ui/cat.jpg'
+ImagePreview(image)
+```
+
+### 处理回调函数
+```js
+const images = ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg']
+
+  ImagePreview({
+    images,
+    onChange: (index)=> {
+      console.log('index' ,index)
+    }
+  })
+```
+
 
 ## 组件使用
 
@@ -69,56 +97,54 @@ export default {
 }
 ```
 
-### 函数调用
-
-```html
-<var-button type="primary" block @click="preview"> 预览 </var-button>
-```
-
-```js
-import { ImagePreview } from '@varlet/ui'
-
-export default {
-  setup() {
-    const image = ['https://varlet.gitee.io/varlet-ui/cat.jpg']
-    return {
-      preview() {
-        ImagePreview(image)
-      },
-    }
-  },
-}
-```
 
 ## API
 
 ### 属性
 
-### ImagePreview 属性
+### ImagePreview组件支持传入的属性
 
 | 参数         | 说明                                                                                                       | 类型                            | 默认值                                        |
 | ------------ | ---------------------------------------------------------------------------------------------------------- | ------------------------------- | --------------------------------------------- |
 | `show`       | 是否显示                                                                                                   | _boolean_                       | `false`                                       |
-| `images`     | 需要预览的图片 URL 数组， 或者单个图片，在函数调用中传入 URL 数组和单个图片 URL 都可以，组件只支持数组格式                | _string[] \| string(函数独有)_ | `[]`                                          |
+| `images`     | 需要预览的图片 URL数组             | _string[]_ | `[]`                                          |
 | `current`    | 图片预览起始的 URL                                                                                         | _string_                        | `'https://varlet.gitee.io/varlet-ui/cat.jpg'` |
 | `zoom`       | 双击放大倍数                                                                                               | _string \| number_             | `2`                                           |
 | `closeable`  | 是否显示关闭按钮                                                                                           | _boolean_                       | `false`                                       |
 | `loop`       | 是否开启循环播放                                                                                           | _boolean_                       | `true`                                        |
 | `indicator`  | 是否显示分页                                                                                               | _boolean_                       | `true`                                        |
-| `lockScroll` | 锁定滚动                                                                                                   | _boolean_                       | `true`                                        |
+| `lock-scroll` | 锁定滚动                                                                                                   | _boolean_                       | `true`                                        |
 | `teleport`   | 弹出层挂载的位置                                                                                           | _string_                        | `-`                                           |
 
 ### 事件
 
-### ImagePreview 事件
-
 | 事件名     | 说明                                     | 回调参数                   |
 | ---------- | ---------------------------------------- | -------------------------- |
-| `onChange` | 切换图片时的回调函数，回调参数为当前索引 | ` index: number(轮播索引)` |
-| `onOpen`   | 打开时候的回调                           | `-`                        |
-| `onOpened` | 打开以后的回调                           | `-`                        |
-| `onClose`  | 关闭时候的回调                           | `-`                        |
-| `onClosed` | 关闭以后的回调                           | `-`                        |
+| `change` | 切换图片时的回调函数，回调参数为当前索引 | ` index: number(轮播索引)` |
+| `open`   | 打开image-preview时触发                           | `-`                        |
+| `opened` | 打开image-preview动画结束时触发                          | `-`                        |
+| `close`  | 关闭image-preview时触发                           | `-`                        |
+| `closed` | 关闭image-preview动画结束时触发                           | `-`                        |
+
+### ImagePreview Option
+
+### 函数式调用时候支持传入的选项
+
+| 参数         | 说明                                                                                                       | 类型                            | 默认值                                        |
+| ------------ | ---------------------------------------------------------------------------------------------------------- | ------------------------------- | --------------------------------------------- |
+| `images`     | 需要预览的图片URL数组或者单个图片的url      | _string[] \| string_     |    `[]`                                          |
+| `current`    | 图片预览起始的 URL                       | _string_                 |   `'https://varlet.gitee.io/varlet-ui/cat.jpg'` |
+| `zoom`       | 双击放大倍数                            | _string \| number_        |   `2`                                           |
+| `closeable`  | 是否显示关闭按钮                         | _boolean_                 | `false`                                       |
+| `loop`       | 是否开启循环播放                         | _boolean_                 | `true`                                        |
+| `indicator`  | 是否显示分页                            | _boolean_                 | `true`                                        |
+| `lockScroll` | 锁定滚动                               | _boolean_                  | `true`                                        |
+| `teleport`   | 弹出层挂载的位置                         | _string_                  | `-`                                           |
+| `onChange`   | 切换图片时的回调函数，回调参数为当前索引     | _(index: number) => void_  |  `-` |
+| `onOpen`   | image-preview开启时候的回调               |  _() => void_              | `-`                        |
+| `onOpened` | image-preview动画结束时候的回调            |   _() => void_             | `-`                        |
+| `onClose`  | image-preview时关闭时候的回调              |  _() => void_              |  `-`                        |
+| `onClosed` | image-preview关闭动画结束时候的回调         |  _() => void_               | `-`                        |
 
 ### 样式变量
 以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
