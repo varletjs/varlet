@@ -6,6 +6,16 @@
 @image-preview-close-icon-size: 22px;
 @image-preview-close-icon-color: #fff;
 
+:root {
+  --image-preview-swipe-indicators-text-color: @image-preview-swipe-indicators-text-color;
+  --image-preview-swipe-indicators-padding: @image-preview-swipe-indicators-padding;
+  --image-preview-zoom-container-background: @image-preview-zoom-container-background;
+  --image-preview-close-icon-top: @image-preview-close-icon-top;
+  --image-preview-close-icon-right: @image-preview-close-icon-right;
+  --image-preview-close-icon-size: @image-preview-close-icon-size;
+  --image-preview-close-icon-color: @image-preview-close-icon-color;
+}
+
 .var-image-preview {
   &__popup[var-image-preview-cover] {
     background: transparent;
@@ -22,18 +32,18 @@
 
   &__close-icon[var-image-preview-cover] {
     position: absolute;
-    top: @image-preview-close-icon-top;
-    right: @image-preview-close-icon-right;
-    color: @image-preview-close-icon-color;
-    font-size: @image-preview-close-icon-size;
+    top: var(--image-preview-close-icon-top);
+    right: var(--image-preview-close-icon-right);
+    color: var(--image-preview-close-icon-color);
+    font-size: var(--image-preview-close-icon-size);
   }
 
   &__indicators {
     position: absolute;
     top: 0;
     width: 100%;
-    padding: @image-preview-swipe-indicators-padding;
-    color: @image-preview-swipe-indicators-text-color;
+    padding: var(--image-preview-swipe-indicators-padding);
+    color: var(--image-preview-swipe-indicators-text-color);
     text-align: center;
   }
 
@@ -48,6 +58,6 @@
     width: 100vw;
     height: 100vh;
     transition: transform 0.2s;
-    background: @image-preview-zoom-container-background;
+    background: var(--image-preview-zoom-container-background);
   }
 }

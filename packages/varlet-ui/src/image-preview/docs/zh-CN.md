@@ -120,16 +120,15 @@ export default {
 | `onClose`  | 关闭时候的回调                           | `-`                        |
 | `onClosed` | 关闭以后的回调                           | `-`                        |
 
-### 主题变量
-
-#### 以下 less 变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名                                       | 默认值   |
 | -------------------------------------------- | -------- |
-| `@image-preview-swipe-indicators-text-color` | ` #ddd`  |
-| `@image-preview-swipe-indicators-padding`    | `16px 0` |
-| `@image-preview-zoom-container-background`   | ` #000`  |
-| `@image-preview-close-icon-top`              | `13px`   |
-| `@image-preview-close-icon-right`            | ` 14px`  |
-| `@image-preview-close-icon-size`             | `22px`   |
-| `@image-preview-close-icon-color`            | `#fff`   |
+| `--image-preview-swipe-indicators-text-color` | ` #ddd`  |
+| `--image-preview-swipe-indicators-padding`    | `16px 0` |
+| `--image-preview-zoom-container-background`   | ` #000`  |
+| `--image-preview-close-icon-top`              | `13px`   |
+| `--image-preview-close-icon-right`            | ` 14px`  |
+| `--image-preview-close-icon-size`             | `22px`   |
+| `--image-preview-close-icon-color`            | `#fff`   |
