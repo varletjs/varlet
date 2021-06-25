@@ -164,16 +164,16 @@ export default {
 | `title` | 面板的标题 | `-` |
 | `icon` | 自定义右侧icon | `-` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@collapse-background` | `#fff` |
-| `@collapse-color` | `#232222` |
-| `@collapse-header-font-size` | `@font-size-lg` |
-| `@collapse-header-padding` | `10px 16px` |
-| `@collapse-content-font-size` | `@font-size-md` |
-| `@collapse-content-font-size` | `14px` |
-| `@collapse-item-margin-top` | `16px` |
-| `@collapse-disable-color` | `#bdbdbd` |
+| `--collapse-background` | `#fff` |
+| `--collapse-text-color` | `#232222` |
+| `--collapse-header-font-size` | `var(--font-size-lg)` |
+| `--collapse-header-padding` | `10px 16px` |
+| `--collapse-content-font-size` | `var(--font-size-md)` |
+| `--collapse-content-font-size` | `14px` |
+| `--collapse-item-margin-top` | `16px` |
+| `--collapse-disable-color` | `#bdbdbd` |

@@ -1,21 +1,32 @@
 @import '../styles/var';
 
 @collapse-background: #fff;
-@collapse-color: #232222;
-@collapse-header-font-size: @font-size-lg;
+@collapse-text-color: #232222;
+@collapse-header-font-size: var(--font-size-lg);
 @collapse-header-padding: 10px 16px;
-@collapse-content-font-size: @font-size-md;
+@collapse-content-font-size: var(--font-size-md);
 @collapse-content-padding: 0 16px 10px;
 @collapse-item-margin-top: 16px;
 @collapse-disable-color: #bdbdbd;
+
+:root {
+  --collapse-background: @collapse-background;
+  --collapse-text-color: @collapse-text-color;
+  --collapse-header-font-size: @collapse-header-font-size;
+  --collapse-header-padding: @collapse-header-padding;
+  --collapse-content-font-size: @collapse-content-font-size;
+  --collapse-content-padding: @collapse-content-padding;
+  --collapse-item-margin-top: @collapse-item-margin-top;
+  --collapse-disable-color: @collapse-disable-color;
+}
 
 .var-collapse-item {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   box-sizing: border-box;
   position: relative;
   margin-top: 0;
-  background: @collapse-background;
-  color: @collapse-color;
+  background: var(--collapse-background);
+  color: var(--collapse-text-color);
   transition: margin-top 0.25s, color 0.25s;
 
   &:before {
@@ -41,9 +52,9 @@
   &-header {
     align-items: center;
     display: flex;
-    font-size: @collapse-header-font-size;
+    font-size: var(--collapse-header-font-size);
     outline: none;
-    padding: @collapse-header-padding;
+    padding: var(--collapse-header-padding);
     justify-content: space-between;
     position: relative;
 
@@ -64,23 +75,23 @@
   &-content {
     transition: height 0.25s;
     display: flex;
-    font-size: @collapse-content-font-size;
+    font-size: var(--collapse-content-font-size);
     overflow: hidden;
   }
 
   &__wrap {
-    padding: @collapse-content-padding;
+    padding: var(--collapse-content-padding);
     word-break: break-all;
     flex: 1;
   }
 
   &__active + &,
   &__active:not(:first-child) {
-    margin-top: @collapse-item-margin-top;
+    margin-top: var(--collapse-item-margin-top);
   }
 
   &__disable {
-    color: @collapse-disable-color;
+    color: var(--collapse-disable-color);
     cursor: not-allowed;
   }
 }
