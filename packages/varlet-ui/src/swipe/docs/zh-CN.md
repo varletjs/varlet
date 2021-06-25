@@ -195,11 +195,12 @@ export default {
 | `default` | 轮播内容 | `-` |
 | `indicator` | 指示器内容 | `index: number(轮播索引), length: number(轮播总数)` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+
+以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@swipe-indicator-color` | `#fff` |
-| `@swipe-indicators-offset` | `10px` |
-| `@swipe-indicator-offset` | `4px` |
+| `--swipe-indicator-color` | `#fff` |
+| `--swipe-indicators-offset` | `10px` |
+| `--swipe-indicator-offset` | `4px` |

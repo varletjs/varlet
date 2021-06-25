@@ -195,11 +195,12 @@ export default {
 | `default` | Swipe content | `-` |
 | `indicator` | Swipe indicator content | `index: number, length: number` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@swipe-indicator-color` | `#fff` |
-| `@swipe-indicators-offset` | `10px` |
-| `@swipe-indicator-offset` | `4px` |
+| `--swipe-indicator-color` | `#fff` |
+| `--swipe-indicators-offset` | `10px` |
+| `--swipe-indicator-offset` | `4px` |
