@@ -24,9 +24,9 @@
 @uploader-preview-video-width: 100vw;
 @uploader-preview-video-height: 100vw;
 @uploader-file-indicator-height: 4px;
-@uploader-file-indicator-normal-color: @color-disabled;
-@uploader-file-indicator-success-color: @color-success;
-@uploader-file-indicator-error-color: @color-danger;
+@uploader-file-indicator-normal-color: var(--color-disabled);
+@uploader-file-indicator-success-color: var(--color-success);
+@uploader-file-indicator-error-color: var(--color-danger);
 @uploader-disabled-color: #ddd;
 @uploader-loading-background: linear-gradient(
   90deg,
@@ -34,6 +34,37 @@
   hsla(0, 0%, 100%, 0.3),
   hsla(0, 0%, 100%, 0)
 );
+
+:root {
+  --uploader-action-background: @uploader-action-background;
+  --uploader-action-icon-color: @uploader-action-icon-color;
+  --uploader-action-icon-size: @uploader-action-icon-size;
+  --uploader-action-margin: @uploader-action-margin;
+  --uploader-file-size: @uploader-file-size;
+  --uploader-file-margin: @uploader-file-margin;
+  --uploader-file-name-background: @uploader-file-name-background;
+  --uploader-file-name-color: @uploader-file-name-color;
+  --uploader-file-name-font-size: @uploader-file-name-font-size;
+  --uploader-file-name-padding: @uploader-file-name-padding;
+  --uploader-file-text-align: @uploader-file-text-align;
+  --uploader-file-close-background: @uploader-file-close-background;
+  --uploader-file-close-size: @uploader-file-close-size;
+  --uploader-file-close-icon-font-size: @uploader-file-close-icon-font-size;
+  --uploader-file-close-icon-color: @uploader-file-close-icon-color;
+  --uploader-file-cover-fit: @uploader-file-cover-fit;
+  --uploader-file-cover-background: @uploader-file-cover-background;
+  --uploader-preview-image-width: @uploader-preview-image-width;
+  --uploader-preview-image-height: @uploader-preview-image-height;
+  --uploader-preview-image-fit: @uploader-preview-image-fit;
+  --uploader-preview-video-width: @uploader-preview-video-width;
+  --uploader-preview-video-height: @uploader-preview-video-height;
+  --uploader-file-indicator-height: @uploader-file-indicator-height;
+  --uploader-file-indicator-normal-color: @uploader-file-indicator-normal-color;
+  --uploader-file-indicator-success-color: @uploader-file-indicator-success-color;
+  --uploader-file-indicator-error-color: @uploader-file-indicator-error-color;
+  --uploader-disabled-color: @uploader-disabled-color;
+  --uploader-loading-background: @uploader-loading-background;
+}
 
 @keyframes var-uploader-loading-animation {
   from {
