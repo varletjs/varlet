@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import type { PropType } from 'vue'
 
 function labelValidator(label: string) {
   return ['always', 'normal', 'never'].includes(label)

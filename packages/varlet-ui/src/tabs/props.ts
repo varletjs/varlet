@@ -1,6 +1,6 @@
 import { pickProps } from '../utils/components'
 import { props as stickyProps } from '../sticky/props'
-import { PropType } from 'vue'
+import type { PropType } from 'vue'
 
 function directionValidator(direction: string) {
   return ['horizontal', 'vertical'].includes(direction)

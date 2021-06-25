@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Option from './Option.vue'
 
 Option.install = function (app: App) {

@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import CheckboxGroup from './CheckboxGroup.vue'
 
 CheckboxGroup.install = function (app: App) {

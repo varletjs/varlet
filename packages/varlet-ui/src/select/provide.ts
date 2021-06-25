@@ -1,6 +1,6 @@
-import { ComputedRef } from 'vue'
-import { OptionProvider } from '../option/provide'
-import { Validation } from '../form/provide'
+import type { ComputedRef } from 'vue'
+import type { OptionProvider } from '../option/provide'
+import type { Validation } from '../form/provide'
 import { useAtChildrenCounter, useChildren } from '../utils/components'
 
 export const SELECT_BIND_OPTION_KEY = Symbol('SELECT_BIND_OPTION_KEY')

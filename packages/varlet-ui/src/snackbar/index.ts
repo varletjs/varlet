@@ -1,4 +1,5 @@
-import { h, reactive, TransitionGroup, App, Component } from 'vue'
+import { h, reactive, TransitionGroup } from 'vue'
+import type { App, Component } from 'vue'
 import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
 import { mountInstance } from '../utils/components'
@@ -144,7 +145,7 @@ const Snackbar: Snackbar = <Snackbar>function (options: any): SnackbarHandel {
   const snackOptions: SnackbarOptions = isPlainObject(options) ? options : { content: String(options) }
   const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>({
     ...defaultOption,
-    ...snackOptions
+    ...snackOptions,
   })
   reactiveSnackOptions.show = true
 
@@ -263,7 +264,7 @@ function getTop(position = 'top'): string {
   return '5%'
 }
 
-VarSnackbar.install = function(app: App) {
+VarSnackbar.install = function (app: App) {
   app.component(VarSnackbar.name, VarSnackbar)
 }
 

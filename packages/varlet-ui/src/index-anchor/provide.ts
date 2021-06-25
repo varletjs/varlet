@@ -1,4 +1,4 @@
-import { ComputedRef, Ref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
 import { useAtParentIndex, useParent } from '../utils/components'
 import {
   INDEX_BAR_BIND_INDEX_ANCHOR_KEY,

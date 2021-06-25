@@ -1,5 +1,5 @@
 import { useAtChildrenCounter, useChildren } from '../utils/components'
-import { ColProvider } from '../col/provide'
+import type { ColProvider } from '../col/provide'
 
 export interface RowProvider {
   computePadding: () => void
@@ -15,6 +15,6 @@ export function useCols() {
   return {
     length,
     cols: childProviders,
-    bindCols: bindChildren
+    bindCols: bindChildren,
   }
 }

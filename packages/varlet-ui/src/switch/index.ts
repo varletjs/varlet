@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Switch from './Switch.vue'
 
 Switch.install = function (app: App) {

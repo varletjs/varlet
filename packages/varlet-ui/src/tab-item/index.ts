@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import TabItem from './TabItem.vue'
 
 TabItem.install = function (app: App) {

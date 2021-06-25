@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import type { PropType } from 'vue'
 
 export function textAlignValidator(textAlign: string) {
   return ['left', 'right', 'center'].includes(textAlign)

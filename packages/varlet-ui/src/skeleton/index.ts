@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Skeleton from './Skeleton.vue'
 
 Skeleton.install = function (app: App) {

@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Progress from './Progress.vue'
 
 Progress.install = function (app: App) {

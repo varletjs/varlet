@@ -1,5 +1,6 @@
 import VarImagePreview from './ImagePreview.vue'
-import { App, nextTick, reactive } from 'vue'
+import { nextTick, reactive } from 'vue'
+import type { App } from 'vue'
 import { inBrowser, isArray, isString } from '../utils/shared'
 import { mountInstance } from '../utils/components'
 

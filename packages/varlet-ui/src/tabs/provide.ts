@@ -1,5 +1,5 @@
-import { ComputedRef } from 'vue'
-import { TabProvider } from '../tab/provide'
+import type { ComputedRef } from 'vue'
+import type { TabProvider } from '../tab/provide'
 import { useAtChildrenCounter, useChildren } from '../utils/components'
 
 export interface TabsProvider {

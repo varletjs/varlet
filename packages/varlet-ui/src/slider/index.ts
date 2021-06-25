@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Slider from './Slider.vue'
 
 Slider.install = function (app: App) {

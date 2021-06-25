@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import FormDetails from './FormDetails.vue'
 
 FormDetails.install = function (app: App) {

@@ -1,4 +1,5 @@
-import { hours24, hoursAmpm, AmPm } from './props'
+import { hours24, hoursAmpm } from './props'
+import type { AmPm } from './props'
 import { toNumber } from '../utils/shared'
 
 type DisableProps = {

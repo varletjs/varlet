@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import type { PropType } from 'vue'
 
 function justifyValidator(justify: string) {
   return ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'].includes(justify)

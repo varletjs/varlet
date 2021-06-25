@@ -1,4 +1,4 @@
-import { ComputedRef } from 'vue'
+import type { ComputedRef } from 'vue'
 import { Validation } from '../form/provide'
 import { useAtChildrenCounter, useChildren } from '../utils/components'
 import { CheckboxProvider } from '../checkbox/provide'

@@ -1,4 +1,4 @@
-import { ComputedRef } from 'vue'
+import type { ComputedRef } from 'vue'
 import { useAtParentIndex, useParent } from '../utils/components'
 import { SWIPE_BIND_SWIPE_ITEM_KEY, SWIPE_COUNT_SWIPE_ITEM_KEY, SwipeProvider } from '../swipe/provide'
 

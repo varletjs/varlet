@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Chip from './Chip.vue'
 
 Chip.install = function (app: App) {

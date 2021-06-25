@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import DatePicker from './DatePicker.vue'
 
 DatePicker.install = function (app: App) {

@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Card from './Card.vue'
 
 Card.install = function (app: App) {

@@ -28,7 +28,7 @@ export default defineComponent({
 </style>
 `
   const indexTemplate = `\
-import { App } from 'vue'
+import type { App } from 'vue'
 import ${bigCamelize(name)} from './${bigCamelize(name)}.vue'
 
 ${bigCamelize(name)}.install = function(app: App) {

@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import { DirectiveBinding } from '@vue/runtime-core'
 
 export class VarDirective {

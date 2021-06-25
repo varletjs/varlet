@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import type { PropType } from 'vue'
 
 function alignmentValidator(alignment: string) {
   return ['top', 'bottom'].includes(alignment)

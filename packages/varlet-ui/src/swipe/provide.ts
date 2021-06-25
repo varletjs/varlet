@@ -1,6 +1,6 @@
-import { ComputedRef, Ref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
 import { useAtChildrenCounter, useChildren } from '../utils/components'
-import { SwipeItemProvider } from '../swipe-item/provide'
+import type { SwipeItemProvider } from '../swipe-item/provide'
 
 export interface SwipeProvider {
   size: Ref<number>

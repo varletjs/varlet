@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import type { PropType } from 'vue'
 import { pickProps } from '../utils/components'
 import { props as popupProps } from '../popup/props'
 import { Texts } from '.'
