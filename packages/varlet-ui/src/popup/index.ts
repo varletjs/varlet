@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Popup from './Popup.vue'
 
 Popup.install = function (app: App) {

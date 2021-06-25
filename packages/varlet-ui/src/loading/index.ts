@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Loading from './Loading.vue'
 
 Loading.install = function (app: App) {

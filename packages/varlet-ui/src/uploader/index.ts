@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Uploader from './Uploader.vue'
 
 Uploader.install = function (app: App) {

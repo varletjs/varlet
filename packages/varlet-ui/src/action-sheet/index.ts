@@ -1,5 +1,6 @@
 import VarActionSheet from './ActionSheet.vue'
-import { App, nextTick, reactive } from 'vue'
+import { nextTick, reactive } from 'vue'
+import type { App } from 'vue'
 import { inBrowser } from '../utils/shared'
 import { mountInstance } from '../utils/components'
 

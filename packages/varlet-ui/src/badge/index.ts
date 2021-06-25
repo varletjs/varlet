@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Badge from './Badge.vue'
 
 Badge.install = function (app: App) {

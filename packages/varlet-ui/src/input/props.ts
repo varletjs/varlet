@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import type { PropType } from 'vue'
 
 export function typeValidator(type: string) {
   return ['text', 'password'].includes(type)

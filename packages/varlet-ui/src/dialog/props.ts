@@ -1,6 +1,6 @@
 import { pickProps } from '../utils/components'
 import { props as popupProps } from '../popup/props'
-import { PropType } from 'vue'
+import type { PropType } from 'vue'
 import { DialogActions } from './index'
 
 function messageAlignValidator(messageAlign: string): boolean {

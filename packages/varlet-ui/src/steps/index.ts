@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Steps from './Steps.vue'
 
 Steps.install = function (app: App) {

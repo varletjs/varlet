@@ -1,6 +1,6 @@
-import { ComputedRef } from 'vue'
+import type { ComputedRef } from 'vue'
 import { useAtChildrenCounter, useChildren } from '../utils/components'
-import { StepProvider } from '../step/provide'
+import type { StepProvider } from '../step/provide'
 
 export interface StepsProvider {
   active: ComputedRef<number | string>

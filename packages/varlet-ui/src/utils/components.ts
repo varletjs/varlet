@@ -1,25 +1,21 @@
 import {
   createApp,
-  Component,
   h,
   getCurrentInstance,
   inject,
   onUnmounted,
   computed,
-  ComputedRef,
   provide,
   reactive,
-  VNode,
   isVNode,
-  ComponentInternalInstance,
   onMounted,
   onBeforeUnmount,
   nextTick,
-  Ref,
   ref,
   onActivated,
   onDeactivated,
 } from 'vue'
+import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref } from 'vue'
 import { isArray, removeItem } from './shared'
 
 export interface MountInstance {

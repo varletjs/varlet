@@ -1,4 +1,4 @@
-import { ComputedRef } from 'vue'
+import type { ComputedRef } from 'vue'
 import { useChildren, useParent } from '../utils/components'
 
 export interface Validation {

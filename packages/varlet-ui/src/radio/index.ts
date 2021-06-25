@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Radio from './Radio.vue'
 
 Radio.install = function (app: App) {

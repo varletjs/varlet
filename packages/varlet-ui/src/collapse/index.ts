@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Collapse from './Collapse.vue'
 
 Collapse.install = function (app: App) {

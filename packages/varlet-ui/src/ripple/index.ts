@@ -1,8 +1,8 @@
 import context from '../context'
 import './ripple.less'
 import '../styles/common.less'
-import { Directive, Plugin, App } from 'vue'
-import { DirectiveBinding } from '@vue/runtime-core'
+import type { Directive, Plugin, App } from 'vue'
+import type { DirectiveBinding } from '@vue/runtime-core'
 
 interface RippleStyles {
   x: number

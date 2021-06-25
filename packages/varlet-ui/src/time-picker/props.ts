@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import type { PropType } from 'vue'
 
 export type Format = 'ampm' | '24hr'
 export type AmPm = 'am' | 'pm'

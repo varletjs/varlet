@@ -1,4 +1,4 @@
-import { App, Directive, Plugin } from 'vue'
+import type { App, Directive, Plugin } from 'vue'
 import { DirectiveBinding } from '@vue/runtime-core'
 import { getParentScroller, inViewport } from '../utils/elements'
 import {

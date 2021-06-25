@@ -1,4 +1,4 @@
-import { ComputedRef } from 'vue'
+import type { ComputedRef } from 'vue'
 import { useAtParentIndex, useParent } from '../utils/components'
 import { ROW_BIND_COL_KEY, ROW_COUNT_COL_KEY, RowProvider } from '../row/provide'
 
@@ -24,6 +24,6 @@ export function useRow() {
   return {
     index,
     row: parentProvider,
-    bindRow: bindParent
+    bindRow: bindParent,
   }
 }

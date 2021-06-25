@@ -1,4 +1,4 @@
-import { ComputedRef } from 'vue'
+import type { ComputedRef } from 'vue'
 import { useAtParentIndex, useParent } from '../utils/components'
 import {
   COLLAPSE_BIND_COLLAPSE_ITEM_KEY,

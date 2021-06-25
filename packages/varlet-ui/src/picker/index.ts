@@ -1,5 +1,6 @@
 import VarPicker from './Picker.vue'
-import { App, Component, nextTick, reactive } from 'vue'
+import { nextTick, reactive } from 'vue'
+import type { App, Component } from 'vue'
 import { NormalColumn, CascadeColumn } from './props'
 import { isArray } from '../utils/shared'
 import { mountInstance } from '../utils/components'

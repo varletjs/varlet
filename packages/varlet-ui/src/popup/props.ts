@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import type { PropType } from 'vue'
 
 function positionValidator(position: string): boolean {
   return ['top', 'bottom', 'right', 'left', 'center'].includes(position)

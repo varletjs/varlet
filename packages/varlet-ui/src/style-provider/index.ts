@@ -1,5 +1,5 @@
 import VarStyleProvider from './StyleProvider.vue'
-import { App } from 'vue'
+import type { App } from 'vue'
 import { formatStyleVars } from '../utils/elements'
 
 export type StyleVars = Record<string, string>

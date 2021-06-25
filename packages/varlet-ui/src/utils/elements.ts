@@ -1,5 +1,5 @@
 import { isNumber, isString, kebabCase, toNumber } from './shared'
-import { StyleVars } from '../style-provider'
+import type { StyleVars } from '../style-provider'
 
 export function getTop(element: HTMLElement): number {
   const { top } = element.getBoundingClientRect()

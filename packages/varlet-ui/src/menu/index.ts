@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Menu from './Menu.vue'
 
 Menu.install = function (app: App) {

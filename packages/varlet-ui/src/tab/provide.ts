@@ -1,12 +1,12 @@
-import { ComputedRef } from 'vue'
+import type { ComputedRef } from 'vue'
 import { useAtParentIndex, useParent } from '../utils/components'
 import { TABS_BIND_TAB_KEY, TABS_COUNT_TAB_KEY, TabsProvider } from '../tabs/provide'
 
 export interface TabProvider {
-	name: ComputedRef<number | string | undefined>
-	index: ComputedRef<number>
+  name: ComputedRef<number | string | undefined>
+  index: ComputedRef<number>
   disabled: ComputedRef<boolean>
-	element: ComputedRef<HTMLElement | null>
+  element: ComputedRef<HTMLElement | null>
 }
 
 export function useTabs() {
@@ -20,6 +20,6 @@ export function useTabs() {
   return {
     index,
     tabs: parentProvider,
-    bindTabs: bindParent
+    bindTabs: bindParent,
   }
 }

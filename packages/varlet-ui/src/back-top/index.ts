@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import BackTop from './BackTop.vue'
 
 BackTop.install = function (app: App) {

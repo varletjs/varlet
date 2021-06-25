@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Select from './Select.vue'
 
 Select.install = function (app: App) {

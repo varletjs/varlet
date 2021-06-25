@@ -1,4 +1,4 @@
-import { ComputedRef, Ref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
 import { useAtChildrenCounter, useChildren } from '../utils/components'
 import { IndexAnchorProvider } from '../index-anchor/provide'
 

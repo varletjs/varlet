@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Button from './Button.vue'
 
 Button.install = function (app: App) {

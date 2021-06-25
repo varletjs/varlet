@@ -1,4 +1,4 @@
-import { ComputedRef } from 'vue'
+import type { ComputedRef } from 'vue'
 import { useAtParentIndex, useParent } from '../utils/components'
 import { StepsProvider, STEPS_BIND_STEP_KEY, STEPS_COUNT_STEP_KEY } from '../steps/provide'
 
