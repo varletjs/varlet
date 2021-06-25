@@ -220,16 +220,14 @@ export default {
 | `unchecked-icon` | Unchecked icon | `-` |
 | `default` | Displayed text | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
-
-### Checkbox Variables
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@checkbox-checked-color` | `@color-primary` |
-| `@checkbox-unchecked-color` | `#555` |
-| `@checkbox-disabled-color` | `#aaa` |
-| `@checkbox-error-color` | `@color-danger` |
-| `@checkbox-action-padding` | `6px` |
-| `@checkbox-icon-size` | `24px` |
+| `--checkbox-checked-color` | `var(--color-primary)` |
+| `--checkbox-unchecked-color` | `#555` |
+| `--checkbox-disabled-color` | `#aaa` |
+| `--checkbox-error-color` | `var(--color-danger)` |
+| `--checkbox-action-padding` | `6px` |
+| `--checkbox-icon-size` | `24px` |

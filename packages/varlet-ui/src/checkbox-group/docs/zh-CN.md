@@ -220,16 +220,14 @@ export default {
 | `unchecked-icon` | 未选中图标 | `-` |
 | `default` | 显示的文本 | `-` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
-
-### Checkbox Variables
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@checkbox-checked-color` | `@color-primary` |
-| `@checkbox-unchecked-color` | `#555` |
-| `@checkbox-disabled-color` | `#aaa` |
-| `@checkbox-error-color` | `@color-danger` |
-| `@checkbox-action-padding` | `6px` |
-| `@checkbox-icon-size` | `24px` |
+| `--checkbox-checked-color` | `var(--color-primary)` |
+| `--checkbox-unchecked-color` | `#555` |
+| `--checkbox-disabled-color` | `#aaa` |
+| `--checkbox-error-color` | `var(--color-danger)` |
+| `--checkbox-action-padding` | `6px` |
+| `--checkbox-icon-size` | `24px` |
