@@ -20,13 +20,6 @@
 
 Varlet is a Material design mobile component library developed based on `Vue3`, developed and maintained by partners in the community.
 
-GIF is recorded in chinese environment
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/24223652/122013948-439b5d80-cdf1-11eb-82d1-25a146563890.gif">
-  <img src="https://user-images.githubusercontent.com/24223652/122014796-18fdd480-cdf2-11eb-86e5-c3d81ef35a00.gif">
-  <img src="https://user-images.githubusercontent.com/24223652/122013881-32eae780-cdf1-11eb-8d7f-c8695ade6d7b.gif">
-</p>
 
 ### Features
  1. Provide more than 40 high quality general purpose components
