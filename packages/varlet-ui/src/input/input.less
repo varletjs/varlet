@@ -1,18 +1,32 @@
 @import '../styles/var';
 
 @input-input-text-color: #555;
-@input-error-color: @color-danger;
+@input-error-color: var(--color-danger);
 @input-blur-color: #888;
-@input-focus-color: @color-primary;
+@input-focus-color: var(--color-primary);
 @input-placeholder-size: 16px;
 @input-textarea-height: auto;
 @input-textarea-padding-top: 8px;
-@input-icon-padding: @input-placeholder-size 0 0;
+@input-icon-padding: 16px 0 0;
 @input-icon-size: 20px;
-@input-input-text-color: #555;
 @input-line-size: 1px;
 @input-line-spread-size: 2px;
 @input-disabled-color: #aaa;
+
+:root {
+  --input-input-text-color: @input-input-text-color;
+  --input-error-color: @input-error-color;
+  --input-blur-color: @input-blur-color;
+  --input-focus-color: @input-focus-color;
+  --input-placeholder-size: @input-placeholder-size;
+  --input-textarea-height: @input-textarea-height;
+  --input-textarea-padding-top: @input-textarea-padding-top;
+  --input-icon-padding: @input-icon-padding;
+  --input-icon-size: @input-icon-size;
+  --input-line-size: @input-line-size;
+  --input-line-spread-size: @input-line-spread-size;
+  --input-disabled-color: @input-disabled-color;
+}
 
 .var {
   &-input-footer-margin-enter-from,
@@ -23,13 +37,13 @@
 
   &-input-footer-margin-enter-active,
   &-input-footer-margin-leave-active {
-    transition: 0.2s all @cubic-bezier;
+    transition: 0.2s all var(--cubic-bezier);
   }
 }
 
 .var-input {
   width: 100%;
-  color: @input-input-text-color;
+  color: var(--input-input-text-color);
 
   &__controller {
     width: 100%;
@@ -42,13 +56,13 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    padding-top: @input-placeholder-size;
+    padding-top: var(--input-placeholder-size);
   }
 
   &__icon {
     display: flex;
     align-items: center;
-    padding: @input-icon-padding;
+    padding: var(--input-icon-padding);
     font-size: 20px;
   }
 
@@ -59,8 +73,8 @@
     transform-origin: left;
     transition-property: top, transform;
     transition-duration: 0.3s;
-    transform: translate(0, calc(-50% + @input-placeholder-size / 2)) scale(1);
-    font-size: @input-placeholder-size;
+    transform: translate(0, calc(-50% + var(--input-placeholder-size) / 2)) scale(1);
+    font-size: var(--input-placeholder-size);
   }
 
   &__textarea-placeholder {
@@ -69,8 +83,8 @@
     left: 0;
     transform-origin: left;
     transition: transform 0.3s;
-    transform: translate(0, @input-textarea-padding-top + @input-placeholder-size) scale(1);
-    font-size: @input-placeholder-size;
+    transform: translate(0, calc(var(--input-textarea-padding-top) + var(--input-placeholder-size))) scale(1);
+    font-size: var(--input-placeholder-size);
   }
 
   &__input {
@@ -81,23 +95,23 @@
     border: none;
     font-size: inherit;
     background: transparent;
-    color: @input-input-text-color;
-    caret-color: @input-focus-color;
+    color: var(--input-input-text-color);
+    caret-color: var(--input-focus-color);
   }
 
   &__line {
     width: 100%;
-    height: @input-line-size;
-    background: @input-blur-color;
+    height: var(--input-line-size);
+    background: var(--input-blur-color);
   }
 
   &__dot {
     width: 100%;
-    height: @input-line-spread-size;
-    background: @input-focus-color;
+    height: var(--input-line-spread-size);
+    background: var(--input-focus-color);
     transform: scaleX(0);
     transform-origin: center;
-    transition: transform 0.3s @cubic-bezier;
+    transition: transform 0.3s var(--cubic-bezier);
   }
 
   &__clear-icon[var-input-cover] {
@@ -106,8 +120,8 @@
   }
 
   &--textarea {
-    padding-top: @input-textarea-padding-top;
-    height: @input-textarea-height;
+    padding-top: var(--input-textarea-padding-top);
+    height: var(--input-textarea-height);
   }
 
   &--placeholder-hint {
@@ -129,7 +143,7 @@
   }
 
   &--focus {
-    color: @input-focus-color;
+    color: var(--input-focus-color);
   }
 
   &--spread {
@@ -137,22 +151,22 @@
   }
 
   &--disabled {
-    color: @input-disabled-color;
+    color: var(--input-disabled-color);
   }
 
   &--error {
-    color: @input-error-color;
+    color: var(--input-error-color);
   }
 
   &--line-disabled {
-    background: @input-disabled-color;
+    background: var(--input-disabled-color);
   }
 
   &--line-error {
-    background: @input-error-color;
+    background: var(--input-error-color);
   }
 
   &--caret-error {
-    caret-color: @input-error-color;
+    caret-color: var(--input-error-color);
   }
 }

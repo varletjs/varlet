@@ -156,21 +156,21 @@ createApp().use(Icon)
 | `prepend-icon` | 前置图标 | `-` |
 | `append-icon` | 后置图标 | `-` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@input-input-text-color` | `#555` |
-| `@input-error-color` | `@color-danger` |
-| `@input-blur-color` | `#888` |
-| `@input-focus-color` | `@color-primary` |
-| `@input-placeholder-size` | `6px` |
-| `@input-textarea-height` | `auto` |
-| `@input-textarea-padding-top` | `8px` |
-| `@input-icon-padding` | `@input-placeholder-size 0 0` |
-| `@input-icon-size` | `20px` |
-| `@input-input-text-color` | `#555` |
-| `@input-line-size` | `1px` |
-| `@input-line-spread-size` | `2px` |
-| `@input-disabled-color` | `#aaa` |
+| `--input-input-text-color` | `#555` |
+| `--input-error-color` | `var(--color-danger)` |
+| `--input-blur-color` | `#888` |
+| `--input-focus-color` | `var(--color-primary)` |
+| `--input-placeholder-size` | `16px` |
+| `--input-textarea-height` | `auto` |
+| `--input-textarea-padding-top` | `8px` |
+| `--input-icon-padding` | `16px 0 0` |
+| `--input-icon-size` | `20px` |
+| `--input-input-text-color` | `#555` |
+| `--input-line-size` | `1px` |
+| `--input-line-spread-size` | `2px` |
+| `--input-disabled-color` | `#aaa` |

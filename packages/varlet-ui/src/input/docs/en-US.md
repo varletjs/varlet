@@ -157,21 +157,21 @@ Other values are converted to text as a user prompt.
 | `prepend-icon` | Prepend Icon | `-` |
 | `append-icon` | Append Icon | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@input-input-text-color` | `#555` |
-| `@input-error-color` | `@color-danger` |
-| `@input-blur-color` | `#888` |
-| `@input-focus-color` | `@color-primary` |
-| `@input-placeholder-size` | `6px` |
-| `@input-textarea-height` | `auto` |
-| `@input-textarea-padding-top` | `8px` |
-| `@input-icon-padding` | `@input-placeholder-size 0 0` |
-| `@input-icon-size` | `20px` |
-| `@input-input-text-color` | `#555` |
-| `@input-line-size` | `1px` |
-| `@input-line-spread-size` | `2px` |
-| `@input-disabled-color` | `#aaa` |
+| `--input-input-text-color` | `#555` |
+| `--input-error-color` | `var(--color-danger)` |
+| `--input-blur-color` | `#888` |
+| `--input-focus-color` | `var(--color-primary)` |
+| `--input-placeholder-size` | `16px` |
+| `--input-textarea-height` | `auto` |
+| `--input-textarea-padding-top` | `8px` |
+| `--input-icon-padding` | `16px 0 0` |
+| `--input-icon-size` | `20px` |
+| `--input-input-text-color` | `#555` |
+| `--input-line-size` | `1px` |
+| `--input-line-spread-size` | `2px` |
+| `--input-disabled-color` | `#aaa` |
