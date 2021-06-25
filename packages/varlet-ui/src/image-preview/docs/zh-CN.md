@@ -32,20 +32,22 @@ export default {
 ### 基本使用
 
 ```js
-const image = 'https://varlet.gitee.io/varlet-ui/cat.jpg'
-ImagePreview(image)
+ImagePreview('https://varlet.gitee.io/varlet-ui/cat.jpg')
 ```
 
 ### 处理回调函数
 ```js
-const images = ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg']
+const images = [
+  'https://varlet.gitee.io/varlet-ui/cat.jpg',
+  'https://varlet.gitee.io/varlet-ui/cat2.jpg'
+]
 
-  ImagePreview({
-    images,
-    onChange: (index)=> {
-      console.log('index' ,index)
-    }
-  })
+ImagePreview({
+  images,
+  onChange: (index)=> {
+    console.log('index' ,index)
+  }
+})
 ```
 
 
@@ -108,7 +110,7 @@ export default {
 | ------------ | ---------------------------------------------------------------------------------------------------------- | ------------------------------- | --------------------------------------------- |
 | `show`       | 是否显示                                                                                                   | _boolean_                       | `false`                                       |
 | `images`     | 需要预览的图片 URL数组             | _string[]_ | `[]`                                          |
-| `current`    | 图片预览起始的 URL                                                                                         | _string_                        | `'https://varlet.gitee.io/varlet-ui/cat.jpg'` |
+| `current`    | 图片预览起始的 URL                                                                                         | _string_                        | `-` |
 | `zoom`       | 双击放大倍数                                                                                               | _string \| number_             | `2`                                           |
 | `closeable`  | 是否显示关闭按钮                                                                                           | _boolean_                       | `false`                                       |
 | `loop`       | 是否开启循环播放                                                                                           | _boolean_                       | `true`                                        |
@@ -133,13 +135,12 @@ export default {
 | 参数         | 说明                                                                                                       | 类型                            | 默认值                                        |
 | ------------ | ---------------------------------------------------------------------------------------------------------- | ------------------------------- | --------------------------------------------- |
 | `images`     | 需要预览的图片URL数组或者单个图片的url      | _string[] \| string_     |    `[]`                                          |
-| `current`    | 图片预览起始的 URL                       | _string_                 |   `'https://varlet.gitee.io/varlet-ui/cat.jpg'` |
+| `current`    | 图片预览起始的 URL                       | _string_                 |   `-` |
 | `zoom`       | 双击放大倍数                            | _string \| number_        |   `2`                                           |
 | `closeable`  | 是否显示关闭按钮                         | _boolean_                 | `false`                                       |
 | `loop`       | 是否开启循环播放                         | _boolean_                 | `true`                                        |
 | `indicator`  | 是否显示分页                            | _boolean_                 | `true`                                        |
 | `lockScroll` | 锁定滚动                               | _boolean_                  | `true`                                        |
-| `teleport`   | 弹出层挂载的位置                         | _string_                  | `-`                                           |
 | `onChange`   | 切换图片时的回调函数，回调参数为当前索引     | _(index: number) => void_  |  `-` |
 | `onOpen`   | image-preview开启时候的回调               |  _() => void_              | `-`                        |
 | `onOpened` | image-preview动画结束时候的回调            |   _() => void_             | `-`                        |
