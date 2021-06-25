@@ -100,16 +100,17 @@ Verify the value by the `rules` attribute.
 | `click` | Emitted when component is clicked | `event: Event` |
 | `change` | Emitted when check status changed | `value: any` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@switch-track-background` | `#fff` |
-| `@switch-track-active-background` | `@color-primary` |
-| `@switch-track-error-background` | `@color-danger` |
-| `@switch-ripple-color` | `@color-primary` |
-| `@switch-handle-background` | `#fff` |
-| `@switch-handle-color` | `#fff` |
-| `@switch-handle-active-background` | `@color-primary` |
-| `@switch-handle-error-background` | `@color-danger` |
+| `--switch-track-background` | `#fff` |
+| `--switch-track-active-background` | `var(--color-primary)` |
+| `--switch-track-error-background` | `var(--color-danger)` |
+| `--switch-ripple-color` | `var(--color-primary)` |
+| `--switch-handle-background` | `#fff` |
+| `--switch-handle-color` | `#fff` |
+| `--switch-handle-active-background` | `var(--color-primary)` |
+| `--switch-handle-error-background` | `var(--color-danger)` |
