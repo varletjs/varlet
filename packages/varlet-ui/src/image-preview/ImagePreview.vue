@@ -100,7 +100,6 @@ export default defineComponent({
   props,
   setup(props) {
     const popupShow: Ref<boolean> = ref(false)
-    const swipe: Ref<typeof Swipe | null> = ref(null)
     const initialIndex: ComputedRef<number> = computed(() => {
       const { images, current } = props
       const index = images.findIndex((image: string) => image === current)
@@ -245,11 +244,6 @@ export default defineComponent({
       }
       setTimeout(() => props['onUpdate:show']?.(false), ANIMATION_DURATION)
     }
-
-    watch(
-      () => props.current,
-      () => swipe.value?.resize()
-    )
 
     watch(
       () => props.show,
