@@ -52,20 +52,23 @@ export default defineComponent({
         duration: 1000,
       })
     }
+
+    const previewCallback = () => {
+      ImagePreview({
+        images,
+        onChange: (index) => {
+          console.log('index', index)
+        },
+      })
+    }
+
     watchLang(use)
 
     return {
       preview() {
         ImagePreview(image)
       },
-      previewCallback() {
-        ImagePreview({
-          images,
-          onChange: (index) => {
-            console.log('index', index)
-          },
-        })
-      },
+      previewCallback,
       pack,
       show: ref(false),
       currentShow: ref(false),
