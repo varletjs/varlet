@@ -20,8 +20,8 @@
 }
 
 .var-tabs {
-  border-radius: @tabs-radius;
-  background: @tabs-background;
+  border-radius: var(--tabs-radius);
+  background: var(--tabs-background);
   overflow: hidden;
 
   &__tab-wrap {
@@ -46,14 +46,14 @@
     }
 
     &-padding {
-      padding: 0 @tabs-padding;
+      padding: 0 var(--tabs-padding);
     }
 
     &-indicator {
       left: 0;
       bottom: 0;
-      height: @tabs-indicator-size;
-      background: @tabs-indicator-background;
+      height: var(--tabs-indicator-size);
+      background: var(--tabs-indicator-background);
     }
   }
 
@@ -72,17 +72,17 @@
     &-indicator {
       left: 0;
       top: 0;
-      width: @tabs-indicator-size;
-      background: @tabs-indicator-background;
+      width: var(--tabs-indicator-size);
+      background: var(--tabs-indicator-background);
     }
   }
 
   &--item-horizontal {
-    height: @tabs-item-horizontal-height;
+    height: var(--tabs-item-horizontal-height);
   }
 
   &--item-vertical {
-    height: @tabs-item-vertical-height;
+    height: var(--tabs-item-vertical-height);
   }
 
   &--fixed-bottom {
