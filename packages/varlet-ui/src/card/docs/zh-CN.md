@@ -98,28 +98,28 @@ createApp().use(Card)
 | ------- | -------------- | -------------- |
 | `click` | 点击卡片时触发 | `event: Event` |
 
-### 主题变量
+### 样式变量
 
-#### 以下 less 变量可通过构建时进行变量覆盖从而修改主题样式
+以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
-| 变量名                        | 默认值               |
-| ----------------------------- | -------------------- |
-| `@card-padding`               | `0 0 10px 0`         |
-| `@card-border-radius`         | `4px`                |
-| `@card-image-width`           | `100%`               |
-| `@card-image-height`          | `200px`              |
-| `@card-title-color`           | `#333`               |
-| `@card-title-font-size`       | `20px`               |
-| `@card-title-padding`         | `0 12px`             |
-| `@card-title-margin`          | `10px 0 0 0`         |
-| `@card-subtitle-color`        | `rgba(0, 0, 0, 0.6)` |
-| `@card-subtitle-font-size`    | `14px`               |
-| `@card-subtitle-padding`      | `0 13px`             |
-| `@card-subtitle-margin`       | `10px 0 0 0`         |
-| `@card-description-color`     | `rgba(0, 0, 0, 0.6)` |
-| `@card-description-font-size` | `14px`               |
-| `@card-description-margin`    | `20px 0 0 0`         |
-| `@card-description-padding`   | `0 13px`             |
-| `@card-footer-padding`        | `0 12px`             |
-| `@card-footer-margin`         | `30px 0 0px 0`       |
-| `@card-line-height`           | `22px`               |
+| 变量名                         | 默认值               |
+| ------------------------------ | -------------------- |
+| `--card-padding`               | `0 0 10px 0`         |
+| `--card-border-radius`         | `4px`                |
+| `--card-image-width`           | `100%`               |
+| `--card-image-height`          | `200px`              |
+| `--card-title-color`           | `#333`               |
+| `--card-title-font-size`       | `20px`               |
+| `--card-title-padding`         | `0 12px`             |
+| `--card-title-margin`          | `10px 0 0 0`         |
+| `--card-subtitle-color`        | `rgba(0, 0, 0, 0.6)` |
+| `--card-subtitle-font-size`    | `14px`               |
+| `--card-subtitle-padding`      | `0 13px`             |
+| `--card-subtitle-margin`       | `10px 0 0 0`         |
+| `--card-description-color`     | `rgba(0, 0, 0, 0.6)` |
+| `--card-description-font-size` | `14px`               |
+| `--card-description-margin`    | `20px 0 0 0`         |
+| `--card-description-padding`   | `0 13px`             |
+| `--card-footer-padding`        | `0 12px`             |
+| `--card-footer-margin`         | `30px 0 0px 0`       |
+| `--card-line-height`           | `22px`               |
