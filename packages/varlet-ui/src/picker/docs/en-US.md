@@ -210,16 +210,17 @@ export default {
 | `title` | title content | `-` |
 | `confirm` | confirm button content | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@picker-background` | `#fff` |
-| `@picker-toolbar-height` | `44px` |
-| `@picker-confirm-button-text-color` | `@color-primary` |
-| `@picker-cancel-button-text-color` | `#888` |
-| `@picker-picked-border` | `1px solid #eee` |
-| `@picker-title-font-size` | `16px` |
-| `@picker-toolbar-padding` | `0 4px` |
-| `@picker-mask-background-image` | `linear-gradient(180deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4)),linear-gradient(0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4))` |
+| `--picker-background` | `#fff` |
+| `--picker-toolbar-height` | `44px` |
+| `--picker-confirm-button-text-color` | `var(--color-primary)` |
+| `--picker-cancel-button-text-color` | `#888` |
+| `--picker-picked-border` | `1px solid #eee` |
+| `--picker-title-font-size` | `16px` |
+| `--picker-toolbar-padding` | `0 4px` |
+| `--picker-mask-background-image` | `linear-gradient(180deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4)),linear-gradient(0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4))` |

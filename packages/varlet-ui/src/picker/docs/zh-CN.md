@@ -210,16 +210,17 @@ export default {
 | `title` | 标题内容 | `-` |
 | `confirm` | 确认按钮内容 | `-` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+
+以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@picker-background` | `#fff` |
-| `@picker-toolbar-height` | `44px` |
-| `@picker-confirm-button-text-color` | `@color-primary` |
-| `@picker-cancel-button-text-color` | `#888` |
-| `@picker-picked-border` | `1px solid #eee` |
-| `@picker-title-font-size` | `16px` |
-| `@picker-toolbar-padding` | `0 4px` |
-| `@picker-mask-background-image` | `linear-gradient(180deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4)),linear-gradient(0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4))` |
+| `--picker-background` | `#fff` |
+| `--picker-toolbar-height` | `44px` |
+| `--picker-confirm-button-text-color` | `var(--color-primary)` |
+| `--picker-cancel-button-text-color` | `#888` |
+| `--picker-picked-border` | `1px solid #eee` |
+| `--picker-title-font-size` | `16px` |
+| `--picker-toolbar-padding` | `0 4px` |
+| `--picker-mask-background-image` | `linear-gradient(180deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4)),linear-gradient(0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4))` |

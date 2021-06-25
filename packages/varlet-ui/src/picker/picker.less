@@ -2,7 +2,7 @@
 
 @picker-background: #fff;
 @picker-toolbar-height: 44px;
-@picker-confirm-button-text-color: @color-primary;
+@picker-confirm-button-text-color: var(--color-primary);
 @picker-cancel-button-text-color: #888;
 @picker-picked-border: 1px solid #eee;
 @picker-title-font-size: 16px;
@@ -10,9 +10,20 @@
 @picker-mask-background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4)),
   linear-gradient(0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4));
 
+:root {
+  --picker-background: @picker-background;
+  --picker-toolbar-height: @picker-toolbar-height;
+  --picker-confirm-button-text-color: @picker-confirm-button-text-color;
+  --picker-cancel-button-text-color: @picker-cancel-button-text-color;
+  --picker-picked-border: @picker-picked-border;
+  --picker-title-font-size: @picker-title-font-size;
+  --picker-toolbar-padding: @picker-toolbar-padding;
+  --picker-mask-background-image: @picker-mask-background-image;
+}
+
 .var-picker {
   width: 100%;
-  background: @picker-background;
+  background: var(--picker-background);
   user-select: none;
 
   &__popup[var-picker-cover] {
@@ -56,8 +67,8 @@
     pointer-events: none;
     width: 100%;
     left: 0;
-    border-top: @picker-picked-border;
-    border-bottom: @picker-picked-border;
+    border-top: var(--picker-picked-border);
+    border-bottom: var(--picker-picked-border);
   }
 
   &__mask {
@@ -67,7 +78,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: @picker-mask-background-image;
+    background-image: var(--picker-mask-background-image);
     background-repeat: no-repeat;
     background-position: top, bottom;
   }
@@ -77,19 +88,19 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: @picker-toolbar-height;
-    padding: @picker-toolbar-padding;
+    height: var(--picker-toolbar-height);
+    padding: var(--picker-toolbar-padding);
   }
 
   &__confirm-button[var-picker-cover] {
-    color: @picker-confirm-button-text-color;
+    color: var(--picker-confirm-button-text-color);
   }
 
   &__cancel-button[var-picker-cover] {
-    color: @picker-cancel-button-text-color;
+    color: var(--picker-cancel-button-text-color);
   }
 
   &__title {
-    font-size: @picker-title-font-size;
+    font-size: var(--picker-title-font-size);
   }
 }
