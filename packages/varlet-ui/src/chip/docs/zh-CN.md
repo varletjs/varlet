@@ -138,17 +138,17 @@ export default {
 | `round` | 是否为圆角样式 | _boolean_ | `true` |
 | `block` | 是否为块级样式 | _boolean_ | `false` |
 | `closeable` | 是否为可关闭纸片 | _boolean_ | `false` |
-| `close-name` | 自定义可关闭纸片的图标，必须在`closeable`为`true`的条件下才能用 | _string_ | `_` |
+| `close-name` | 自定义可关闭纸片的图标，必须在`closeable`为`true`的条件下才能用 | _string_ | `-` |
 | `color` | 纸片颜色 | _string_ | `_` |
-| `text-color` | 文本颜色，优先级高于`color`属性 | _string_ | `_` |
+| `text-color` | 文本颜色，优先级高于`color`属性 | _string_ | `-` |
 
 ### 插槽
 
 | 名称 | 说明 | 参数 |
 | ---- | ---- | ----|
-| `default` | 纸片内容 | `_` |
-| `left` | 插入至纸片左侧的内容 | `_` |
-| `right` | 插入至纸片右侧的内容 | `_` |
+| `default` | 纸片内容 | `-` |
+| `left` | 插入至纸片左侧的内容 | `-` |
+| `right` | 插入至纸片右侧的内容 | `-` |
 
 ### 事件
 
