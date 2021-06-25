@@ -220,20 +220,6 @@ export default defineComponent({
   border-radius: 4px;
   box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 }
-
-@keyframes scale-animation {
-  0% {
-    transform: scale(0.95);
-  }
-
-  50% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(0.95);
-  }
-}
 </style>
 
 <style lang="less">
@@ -469,11 +455,18 @@ iframe {
 
     &-doc {
       a {
-        display: inline-block;
+        display: inline;
         margin: 0 4px;
-        color: @color-warning;
-        text-decoration: none;
-        animation: scale-animation 2s infinite linear;
+        padding: 3px 10px;
+        font-size: 14px;
+        font-family: inherit;
+        word-break: keep-all;
+        white-space: nowrap;
+        color: #fff;
+        background: @color-success;
+        -webkit-font-smoothing: antialiased;
+        border-radius: 25px;
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
       }
 
       h1,
@@ -539,15 +532,16 @@ iframe {
       li code,
       table code {
         display: inline;
-        margin: 0 2px;
-        padding: 2px 7px;
-        font-size: 12px;
+        margin: 0 4px;
+        padding: 3px 10px;
+        font-size: 14px;
         font-family: inherit;
         word-break: keep-all;
+        white-space: nowrap;
         color: #fff;
-        background: @color-primary;
+        background: #1d92e9;
         -webkit-font-smoothing: antialiased;
-        border-radius: 20px;
+        border-radius: 25px;
         box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
       }
 
@@ -556,7 +550,7 @@ iframe {
         margin-top: 12px;
         color: #34495e;
         font-size: 14px;
-        line-height: 1.5;
+        line-height: 28px;
         border-collapse: collapse;
 
         th {
@@ -582,12 +576,11 @@ iframe {
 
             code {
               margin: 0;
-              padding: 2px 7px;
+              padding: 3px 10px;
               color: #fff;
-              letter-spacing: 1px;
-              font-size: 12px;
-              border-radius: 20px;
-              background: @color-primary;
+              font-size: 14px;
+              border-radius: 25px;
+              background: #1d92e9;
             }
           }
         }
@@ -595,11 +588,11 @@ iframe {
         em {
           color: #fff;
           background: @color-success;
-          font-size: 12px;
+          font-size: 14px;
           font-family: 'Roboto', sans-serif;
           font-style: normal;
-          padding: 2px 7px;
-          border-radius: 20px;
+          padding: 3px 10px;
+          border-radius: 25px;
           box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
             0 1px 3px 0 rgba(0, 0, 0, 0.12);
           white-space: nowrap;

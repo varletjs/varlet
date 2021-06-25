@@ -41,11 +41,7 @@ export default defineComponent({
     [AppType.name]: AppType,
   },
   setup() {
-    const images = [
-      'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      'https://varlet.gitee.io/varlet-ui/cat2.jpg',
-      'https://img01.yzcdn.cn/vant/apple-4.jpg',
-    ]
+    const images = ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg']
 
     const image = ['https://varlet.gitee.io/varlet-ui/cat.jpg']
 
@@ -74,11 +70,13 @@ export default defineComponent({
 })
 </script>
 
-<style lang="less" scoped>
+<style>
 .var-image-preview__image {
   pointer-events: none;
 }
+</style>
 
+<style lang="less" scoped>
 .image-preview-demo {
   .var-button {
     margin-top: 10px;
