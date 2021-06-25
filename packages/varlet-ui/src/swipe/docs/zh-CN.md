@@ -193,7 +193,7 @@ export default {
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 轮播内容 | `-` |
-| `indicator` | 指示器内容 | `-` |
+| `indicator` | 指示器内容 | `index: number(轮播索引), length: number(轮播总数)` |
 
 ### 主题变量
 #### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
