@@ -1,11 +1,20 @@
 @import '../styles/var';
 
-@checkbox-checked-color: @color-primary;
+@checkbox-checked-color: var(--color-primary);
 @checkbox-unchecked-color: #555;
 @checkbox-disabled-color: #aaa;
-@checkbox-error-color: @color-danger;
+@checkbox-error-color: var(--color-danger);
 @checkbox-action-padding: 6px;
 @checkbox-icon-size: 24px;
+
+:root {
+  --checkbox-checked-color: @checkbox-checked-color;
+  --checkbox-unchecked-color: @checkbox-unchecked-color;
+  --checkbox-disabled-color: @checkbox-disabled-color;
+  --checkbox-error-color: @checkbox-error-color;
+  --checkbox-action-padding: @checkbox-action-padding;
+  --checkbox-icon-size: @checkbox-icon-size;
+}
 
 @keyframes var-vibrate-animation {
   0% {
@@ -40,13 +49,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: @checkbox-action-padding;
+    padding: var(--checkbox-action-padding);
     border-radius: 50%;
   }
 
   &__icon[var-checkbox-cover] {
     display: block;
-    font-size: @checkbox-icon-size;
+    font-size: var(--checkbox-icon-size);
   }
 
   &--with-animation {
@@ -54,18 +63,18 @@
   }
 
   &--checked {
-    color: @checkbox-checked-color;
+    color: var(--checkbox-checked-color);
   }
 
   &--unchecked {
-    color: @checkbox-unchecked-color;
+    color: var(--checkbox-unchecked-color);
   }
 
   &--disabled {
-    color: @checkbox-disabled-color;
+    color: var(--checkbox-disabled-color);
   }
 
   &--error {
-    color: @checkbox-error-color;
+    color: var(--checkbox-error-color);
   }
 }
