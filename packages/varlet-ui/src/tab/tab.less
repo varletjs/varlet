@@ -2,33 +2,42 @@
 
 @tab-color: #fff;
 @tab-padding: 12px;
-@tab-active-color: @color-primary;
+@tab-active-color: var(--color-primary);
 @tab-inactive-color: #646566;
-@tab-disabled-color: @color-disabled;
-@tab-font-size: @font-size-md;
+@tab-disabled-color: var(--color-disabled);
+@tab-font-size: var(--font-size-md);
+
+:root {
+  --tab-color: @tab-color;
+  --tab-padding: @tab-padding;
+  --tab-active-color: @tab-active-color;
+  --tab-inactive-color: @tab-inactive-color;
+  --tab-disabled-color: @tab-disabled-color;
+  --tab-font-size: @tab-font-size;
+}
 
 .var-tab {
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1 0 auto;
-  padding: 0 @tab-padding;
-  font-size: @tab-font-size;
-  color: @tab-color;
+  padding: 0 var(--tab-padding);
+  font-size: var(--tab-font-size);
+  color: var(--tab-color);
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   &--active {
-    color: @tab-active-color;
+    color: var(--tab-active-color);
   }
 
   &--inactive {
-    color: @tab-inactive-color;
+    color: var(--tab-inactive-color);
   }
 
   &--disabled {
-    color: @tab-disabled-color;
+    color: var(--tab-disabled-color);
     cursor: not-allowed;
   }
 
