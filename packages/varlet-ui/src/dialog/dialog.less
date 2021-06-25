@@ -6,44 +6,60 @@
 @dialog-message-color: #888;
 @dialog-message-padding: 12px 20px;
 @dialog-message-line-height: 24px;
-@dialog-message-font-size: @font-size-md;
-@dialog-title-font-size: @font-size-lg;
+@dialog-message-font-size: var(--font-size-md);
+@dialog-title-font-size: var(--font-size-lg);
 @dialog-actions-padding: 0 12px 12px;
 @dialog-button-margin-left: 6px;
-@dialog-confirm-button-color: @color-primary;
-@dialog-cancel-button-color: @color-primary;
+@dialog-confirm-button-color: var(--color-primary);
+@dialog-cancel-button-color: var(--color-primary);
 @dialog-background: #fff;
 
+:root {
+  --dialog-width: @dialog-width;
+  --dialog-border-radius: @dialog-border-radius;
+  --dialog-title-padding: @dialog-title-padding;
+  --dialog-message-color: @dialog-message-color;
+  --dialog-message-padding: @dialog-message-padding;
+  --dialog-message-line-height: @dialog-message-line-height;
+  --dialog-message-font-size: @dialog-message-font-size;
+  --dialog-title-font-size: @dialog-title-font-size;
+  --dialog-actions-padding: @dialog-actions-padding;
+  --dialog-button-margin-left: @dialog-button-margin-left;
+  --dialog-confirm-button-color: @dialog-confirm-button-color;
+  --dialog-cancel-button-color: @dialog-cancel-button-color;
+  --dialog-background: @dialog-background;
+}
+
 .var-dialog {
-  width: @dialog-width;
+  width: var(--dialog-width);
   border-radius: 3px;
-  background: @dialog-background;
+  background: var(--dialog-background);
 
   &__popup-radius[var-dialog-cover] {
-    border-radius: @dialog-border-radius;
+    border-radius: var(--dialog-border-radius);
   }
 
   &__title {
-    font-size: @dialog-title-font-size;
+    font-size: var(--dialog-title-font-size);
     font-weight: 400;
-    padding: @dialog-title-padding;
+    padding: var(--dialog-title-padding);
   }
 
   &__message {
-    padding: @dialog-message-padding;
-    color: @dialog-message-color;
-    line-height: @dialog-message-line-height;
-    font-size: @dialog-message-font-size;
+    padding: var(--dialog-message-padding);
+    color: var(--dialog-message-color);
+    line-height: var(--dialog-message-line-height);
+    font-size: var(--dialog-message-font-size);
   }
 
   &__actions {
     display: flex;
     justify-content: flex-end;
-    padding: @dialog-actions-padding;
+    padding: var(--dialog-actions-padding);
   }
 
   &__button[var-dialog-cover] {
-    margin-left: @dialog-button-margin-left;
+    margin-left: var(--dialog-button-margin-left);
     background-color: transparent;
     box-shadow: none;
 
@@ -53,10 +69,10 @@
   }
 
   &__confirm-button[var-dialog-cover] {
-    color: @dialog-confirm-button-color;
+    color: var(--dialog-confirm-button-color);
   }
 
   &__cancel-button[var-dialog-cover] {
-    color: @dialog-cancel-button-color;
+    color: var(--dialog-cancel-button-color);
   }
 }

@@ -158,18 +158,18 @@ export default {
 | `decrement` | 减少时触发 | `value: number` |
 
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@counter-padding` | `0 4px` |
-| `@counter-font-color` | `#fff` |
-| `@counter-background` | `@color-primary` |
-| `@counter-input-width` | `28px` |
-| `@counter-input-margin` | `0 4px` |
-| `@counter-input-font-size` | `14px` |
-| `@counter-button-size` | `28px` |
-| `@counter-button-icon-size` | `100%` |
-| `@counter-disabled-color` | `#aaa` |
-| `@input-error-color` | `@color-danger` |
+| `--counter-padding` | `0 4px` |
+| `--counter-font-color` | `#fff` |
+| `--counter-background` | `var(--color-primary)` |
+| `--counter-input-width` | `28px` |
+| `--counter-input-margin` | `0 4px` |
+| `--counter-input-font-size` | `14px` |
+| `--counter-button-size` | `28px` |
+| `--counter-button-icon-size` | `100%` |
+| `--counter-disabled-color` | `#aaa` |
+| `--input-error-color` | `var(--color-danger`) |

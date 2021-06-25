@@ -158,18 +158,18 @@ Other values are converted to text as a user prompt.
 | `decrement` | Triggered on decrement | `value: number` |
 
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@counter-padding` | `0 4px` |
-| `@counter-font-color` | `#fff` |
-| `@counter-background` | `@color-primary` |
-| `@counter-input-width` | `28px` |
-| `@counter-input-margin` | `0 4px` |
-| `@counter-input-font-size` | `14px` |
-| `@counter-button-size` | `28px` |
-| `@counter-button-icon-size` | `100%` |
-| `@counter-disabled-color` | `#aaa` |
-| `@input-error-color` | `@color-danger` |
+| `--counter-padding` | `0 4px` |
+| `--counter-font-color` | `#fff` |
+| `--counter-background` | `var(--color-primary)` |
+| `--counter-input-width` | `28px` |
+| `--counter-input-margin` | `0 4px` |
+| `--counter-input-font-size` | `14px` |
+| `--counter-button-size` | `28px` |
+| `--counter-button-icon-size` | `100%` |
+| `--counter-disabled-color` | `#aaa` |
+| `--input-error-color` | `var(--color-danger`) |

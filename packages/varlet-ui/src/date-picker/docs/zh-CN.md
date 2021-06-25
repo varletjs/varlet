@@ -166,70 +166,49 @@ export default {
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
 | `year` | 自定义标题中的年 | `year: YYYY` |
-| `month` | 自定义标题中的月 | `year: YYYY`<br>`month: MM` |
-| `date` | 自定义标题中的日期 | `year: YYYY`<br>`month: MM`<br>`date: DD`<br>`week: weekIndex` |
+| `month` | 自定义标题中的月 | `year: YYYY` `month: MM` |
+| `date` | 自定义标题中的日期 | `year: YYYY` `month: MM` `date: DD` `week: weekIndex` |
 | `range` | 自定义标题中的范围 | `choose: [startData, endDate]` |
 | `multiple` | 自定义标题中的多选 | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
-
-**date-picker**
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@date-picker-border-radius` | `4px` |
-| `@date-picker-font-size` | `@font-size-md` |
-| `@date-picker-min-width` | `290px` |
-| `@date-picker-height` | `385px` |
-| `@date-picker-title-padding` | `16px` |
-| `@date-picker-title-background` | `@color-primary` |
-| `@date-picker-title-color` | `#fff` |
-| `@date-picker-title-year-font-size` | `@font-size-md` |
-| `@date-picker-title-year-font-weight` | `500` |
-| `@date-picker-title-year-margin-bottom` | `8px` |
-| `@date-picker-title-date-height` | `48px` |
-| `@date-picker-title-date-font-size` | `34px` |
-| `@date-picker-title-date-font-weight` | `500` |
-| `@date-picker-title-date-range-font-size` | `20px` |
-
-**picker-header**
-
-| 变量名 | 默认值 |
-| --- | --- |
-| `@picker-header-padding` | `4px 16px` |
-
-**month-picker**
-
-| 变量名 | 默认值 |
-| --- | --- |
-| `@month-picker-padding` | `0 12px` |
-| `@month-picker-item-width` | `33%` |
-| `@month-picker-item-height` | `56px` |
-| `@month-picker-item-button-max-width` | `140px` |
-
-**year-picker**
-
-| 变量名 | 默认值 |
-| --- | --- |
-| `@year-picker-font-weight` | `400` |
-| `@year-picker-item-padding` | `8px 0` |
-| `@year-picker-item-active-font-size` | `26px` |
-| `@year-picker-item-active-font-weight` | `500` |
-| `@year-picker-item-active-font-padding` | `10px 0` |
-| `@year-picker-item-active-color` | `@color-primary` |
-
-**day-picker**
-
-| 变量名 | 默认值 |
-| --- | --- |
-| `@day-picker-content-item-width` | `14.28%` |
-| `@day-picker-content-item-font-size` | `@font-size-sm` |
-| `@day-picker-content-item-padding` | `2px 0` |
-| `@day-picker-content-item-button-width` | `32px` |
-| `@day-picker-content-item-button-height` | `32px` |
-| `@day-picker-content-item-button-font-size` | `@font-size-sm` |
-| `@day-picker-head-item-color` | `rgba(0, 0, 0, 0.38)` |
-| `@day-picker-head-item-padding` | `8px 0` |
-| `@day-picker-head-item-font-weight` | `600` |
+| `--date-picker-border-radius` | `4px` |
+| `--date-picker-font-size` | `var(--font-size-md)` |
+| `--date-picker-min-width` | `290px` |
+| `--date-picker-height` | `385px` |
+| `--date-picker-title-padding` | `16px` |
+| `--date-picker-title-background` | `var(--color-primary)` |
+| `--date-picker-title-color` | `#fff` |
+| `--date-picker-title-year-font-size` | `var(--font-size-md)` |
+| `--date-picker-title-year-font-weight` | `500` |
+| `--date-picker-title-year-margin-bottom` | `8px` |
+| `--date-picker-title-date-height` | `48px` |
+| `--date-picker-title-date-font-size` | `34px` |
+| `--date-picker-title-date-font-weight` | `500` |
+| `--date-picker-title-date-range-font-size` | `20px` |
+| `--picker-header-padding` | `4px 16px` |
+| `--picker-header-padding` | `4px 16px` |
+| `--month-picker-padding` | `0 12px` |
+| `--month-picker-item-width` | `33%` |
+| `--month-picker-item-height` | `56px` |
+| `--month-picker-item-button-max-width` | `140px` |
+| `--year-picker-font-weight` | `400` |
+| `--year-picker-item-padding` | `8px 0` |
+| `--year-picker-item-active-font-size` | `26px` |
+| `--year-picker-item-active-font-weight` | `500` |
+| `--year-picker-item-active-font-padding` | `10px 0` |
+| `--year-picker-item-active-color` | `var(--color-primary)` |
+| `--day-picker-content-item-width` | `14.28%` |
+| `--day-picker-content-item-font-size` | `var(--font-size-sm)` |
+| `--day-picker-content-item-padding` | `2px 0` |
+| `--day-picker-content-item-button-width` | `32px` |
+| `--day-picker-content-item-button-height` | `32px` |
+| `--day-picker-content-item-button-font-size` | `var(--font-size-sm)` |
+| `--day-picker-head-item-color` | `rgba(0, 0, 0, 0.38)` |
+| `--day-picker-head-item-padding` | `8px 0` |
+| `--day-picker-head-item-font-weight` | `600` |
 

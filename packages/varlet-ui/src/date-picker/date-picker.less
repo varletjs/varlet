@@ -2,54 +2,87 @@
 @import '../styles/elevation';
 
 @date-picker-border-radius: 4px;
-@date-picker-font-size: @font-size-md;
+@date-picker-font-size: var(--font-size-md);
 @date-picker-min-width: 290px;
 @date-picker-height: 385px;
 @date-picker-title-padding: 16px;
-@date-picker-title-background: @color-primary;
+@date-picker-title-background: var(--color-primary);
 @date-picker-title-color: #fff;
-@date-picker-title-year-font-size: @font-size-md;
+@date-picker-title-year-font-size: var(--font-size-md);
 @date-picker-title-year-font-weight: 500;
 @date-picker-title-year-margin-bottom: 8px;
 @date-picker-title-date-height: 48px;
 @date-picker-title-date-font-size: 34px;
 @date-picker-title-date-font-weight: 500;
 @date-picker-title-date-range-font-size: 20px;
-
 @picker-header-padding: 4px 16px;
-
 @month-picker-padding: 0 12px;
 @month-picker-item-width: 33%;
 @month-picker-item-height: 56px;
 @month-picker-item-button-max-width: 140px;
-
 @year-picker-font-weight: 400;
 @year-picker-item-padding: 8px 0;
 @year-picker-item-active-font-size: 26px;
 @year-picker-item-active-font-weight: 500;
 @year-picker-item-active-font-padding: 10px 0;
-@year-picker-item-active-color: @color-primary;
-
+@year-picker-item-active-color: var(--color-primary);
 @day-picker-content-item-width: 14.28%;
-@day-picker-content-item-font-size: @font-size-sm;
+@day-picker-content-item-font-size: var(--font-size-sm);
 @day-picker-content-item-padding: 2px 0;
 @day-picker-content-item-button-width: 32px;
 @day-picker-content-item-button-height: 32px;
-@day-picker-content-item-button-font-size: @font-size-sm;
+@day-picker-content-item-button-font-size: var(--font-size-sm);
 @day-picker-head-item-color: rgba(0, 0, 0, 0.38);
 @day-picker-head-item-padding: 8px 0;
 @day-picker-head-item-font-weight: 600;
 
+:root {
+  --date-picker-border-radius: @date-picker-border-radius;
+  --date-picker-font-size: @date-picker-font-size;
+  --date-picker-min-width: @date-picker-min-width;
+  --date-picker-height: @date-picker-height;
+  --date-picker-title-padding: @date-picker-title-padding;
+  --date-picker-title-background: @date-picker-title-background;
+  --date-picker-title-color: @date-picker-title-color;
+  --date-picker-title-year-font-size: @date-picker-title-year-font-size;
+  --date-picker-title-year-font-weight: @date-picker-title-year-font-weight;
+  --date-picker-title-year-margin-bottom: @date-picker-title-year-margin-bottom;
+  --date-picker-title-date-height: @date-picker-title-date-height;
+  --date-picker-title-date-font-size: @date-picker-title-date-font-size;
+  --date-picker-title-date-font-weight: @date-picker-title-date-font-weight;
+  --date-picker-title-date-range-font-size: @date-picker-title-date-range-font-size;
+  --picker-header-padding: @picker-header-padding;
+  --month-picker-padding: @month-picker-padding;
+  --month-picker-item-width: @month-picker-item-width;
+  --month-picker-item-height: @month-picker-item-height;
+  --month-picker-item-button-max-width: @month-picker-item-button-max-width;
+  --year-picker-font-weight: @year-picker-font-weight;
+  --year-picker-item-padding: @year-picker-item-padding;
+  --year-picker-item-active-font-size: @year-picker-item-active-font-size;
+  --year-picker-item-active-font-weight: @year-picker-item-active-font-weight;
+  --year-picker-item-active-font-padding: @year-picker-item-active-font-padding;
+  --year-picker-item-active-color: @year-picker-item-active-color;
+  --day-picker-content-item-width: @day-picker-content-item-width;
+  --day-picker-content-item-font-size: @day-picker-content-item-font-size;
+  --day-picker-content-item-padding: @day-picker-content-item-padding;
+  --day-picker-content-item-button-width: @day-picker-content-item-button-width;
+  --day-picker-content-item-button-height: @day-picker-content-item-button-height;
+  --day-picker-content-item-button-font-size: @day-picker-content-item-button-font-size;
+  --day-picker-head-item-color: @day-picker-head-item-color;
+  --day-picker-head-item-padding: @day-picker-head-item-padding;
+  --day-picker-head-item-font-weight: @day-picker-head-item-font-weight;
+}
+
 .var-date-picker {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  border-radius: @date-picker-border-radius;
+  border-radius: var(--date-picker-border-radius);
   contain: layout style;
   display: flex;
   flex-direction: column;
-  font-size: @date-picker-font-size;
+  font-size: var(--date-picker-font-size);
   position: relative;
-  min-width: @date-picker-min-width;
-  height: @date-picker-height;
+  min-width: var(--date-picker-min-width);
+  height: var(--date-picker-height);
   overflow: hidden;
 
   ul {
@@ -59,9 +92,9 @@
   }
 
   &-title {
-    padding: @date-picker-title-padding;
-    color: @date-picker-title-color;
-    background: @date-picker-title-background;
+    padding: var(--date-picker-title-padding);
+    color: var(--date-picker-title-color);
+    background: var(--date-picker-title-background);
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -73,10 +106,10 @@
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       align-items: center;
       display: inline-flex;
-      font-size: @date-picker-title-year-font-size;
-      font-weight: @date-picker-title-year-font-weight;
-      margin-bottom: @date-picker-title-year-margin-bottom;
-      transition: 0.3s @cubic-bezier;
+      font-size: var(--date-picker-title-year-font-size);
+      font-weight: var(--date-picker-title-year-font-weight);
+      margin-bottom: var(--date-picker-title-year-margin-bottom);
+      transition: 0.3s var(--cubic-bezier);
 
       &--active {
         opacity: 1;
@@ -84,25 +117,25 @@
     }
 
     &__date {
-      height: @date-picker-title-date-height;
+      height: var(--date-picker-title-date-height);
       overflow: hidden;
-      font-size: @date-picker-title-date-font-size;
+      font-size: var(--date-picker-title-date-font-size);
       text-align: left;
-      font-weight: @date-picker-title-date-font-weight;
+      font-weight: var(--date-picker-title-date-font-weight);
       position: relative;
       cursor: pointer;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       display: flex;
       align-items: center;
       opacity: 0.6;
-      transition: 0.3s @cubic-bezier;
+      transition: 0.3s var(--cubic-bezier);
 
       &--active {
         opacity: 1;
       }
 
       &--range {
-        font-size: @date-picker-title-date-range-font-size;
+        font-size: var(--date-picker-title-date-range-font-size);
       }
     }
   }
@@ -114,7 +147,7 @@
   }
 
   .var-picker-header {
-    padding: @picker-header-padding;
+    padding: var(--picker-header-padding);
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -136,7 +169,7 @@
 
   .var-month-picker {
     &__content {
-      padding: @month-picker-padding;
+      padding: var(--month-picker-padding);
 
       ul {
         display: flex;
@@ -144,9 +177,9 @@
         justify-content: space-between;
 
         li {
-          width: @month-picker-item-width;
+          width: var(--month-picker-item-width);
           display: flex;
-          height: @month-picker-item-height;
+          height: var(--month-picker-item-height);
           align-items: center;
           justify-content: center;
         }
@@ -155,7 +188,7 @@
 
     &__button[var-month-picker-cover] {
       width: 100%;
-      max-width: @month-picker-item-button-max-width;
+      max-width: var(--month-picker-item-button-max-width);
     }
   }
 
@@ -163,7 +196,7 @@
     &__panel {
       width: 100%;
       height: 100%;
-      font-weight: @year-picker-font-weight;
+      font-weight: var(--year-picker-font-weight);
       padding: 0;
       margin: 0;
       list-style-type: none;
@@ -171,16 +204,16 @@
       text-align: center;
 
       li {
-        padding: @year-picker-item-padding;
+        padding: var(--year-picker-item-padding);
         cursor: pointer;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       }
 
       &--active {
-        font-size: @year-picker-item-active-font-size;
-        font-weight: @year-picker-item-active-font-weight;
-        padding: @year-picker-item-active-font-padding;
-        color: @year-picker-item-active-color;
+        font-size: var(--year-picker-item-active-font-size);
+        font-weight: var(--year-picker-item-active-font-weight);
+        padding: var(--year-picker-item-active-font-padding);
+        color: var(--year-picker-item-active-color);
       }
     }
   }
@@ -195,25 +228,25 @@
           position: relative;
           display: flex;
           justify-content: center;
-          width: @day-picker-content-item-width;
-          font-size: @day-picker-content-item-font-size;
-          padding: @day-picker-content-item-padding;
+          width: var(--day-picker-content-item-width);
+          font-size: var(--day-picker-content-item-font-size);
+          padding: var(--day-picker-content-item-padding);
         }
       }
     }
 
     &__head {
       li {
-        color: @day-picker-head-item-color;
-        padding: @day-picker-head-item-padding;
-        font-weight: @day-picker-head-item-font-weight;
+        color: var(--day-picker-head-item-color);
+        padding: var(--day-picker-head-item-padding);
+        font-weight: var(--day-picker-head-item-font-weight);
       }
     }
 
     &__button[var-day-picker-cover] {
-      width: @day-picker-content-item-button-width;
-      height: @day-picker-content-item-button-height;
-      font-size: @day-picker-content-item-button-font-size;
+      width: var(--day-picker-content-item-button-width);
+      height: var(--day-picker-content-item-button-height);
+      font-size: var(--day-picker-content-item-button-font-size);
     }
   }
 
@@ -224,13 +257,13 @@
 
   &-translatey-enter-active,
   &-reverse-translatey-enter-active {
-    transition: 0.3s @cubic-bezier;
+    transition: 0.3s var(--cubic-bezier);
   }
 
   &-translatey-leave-active,
   &-reverse-translatey-leave-active {
     position: absolute;
-    transition: 0.3s @cubic-bezier;
+    transition: 0.3s var(--cubic-bezier);
   }
 
   &-translatey-leave-to {
@@ -250,7 +283,7 @@
 
   &-panel-fade-enter-from,
   &-panel-fade-leave-to {
-    transition: 0.3s @cubic-bezier;
+    transition: 0.3s var(--cubic-bezier);
     opacity: 0;
   }
 
@@ -270,13 +303,13 @@
 
   &-translatex-enter-active,
   &-reverse-translatex-enter-active {
-    transition: 0.3s @cubic-bezier;
+    transition: 0.3s var(--cubic-bezier);
   }
 
   &-translatex-leave-active,
   &-reverse-translatex-leave-active {
     position: absolute;
-    transition: 0.3s @cubic-bezier;
+    transition: 0.3s var(--cubic-bezier);
   }
 
   &-translatex-leave-to {

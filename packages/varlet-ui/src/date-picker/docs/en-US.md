@@ -166,69 +166,48 @@ export default {
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
 | `year` | Custom the year in the title | `year: YYYY` |
-| `month` | Custom the month in the title | `year: YYYY`<br>`month: MM` |
-| `date` | Custom the date in the title | `year: YYYY`<br>`month: MM`<br>`date: DD`<br>`week: weekIndex` |
+| `month` | Custom the month in the title | `year: YYYY` `month: MM` |
+| `date` | Custom the date in the title | `year: YYYY` `month: MM` `date: DD` `week: weekIndex` |
 | `range` | Custom the range in the title | `choose: [startData, endDate]` |
 | `multiple` | Custom the multiple in the title  | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
-
-**date-picker**
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@date-picker-border-radius` | `4px` |
-| `@date-picker-font-size` | `@font-size-md` |
-| `@date-picker-min-width` | `290px` |
-| `@date-picker-height` | `385px` |
-| `@date-picker-title-padding` | `16px` |
-| `@date-picker-title-background` | `@color-primary` |
-| `@date-picker-title-color` | `#fff` |
-| `@date-picker-title-year-font-size` | `@font-size-md` |
-| `@date-picker-title-year-font-weight` | `500` |
-| `@date-picker-title-year-margin-bottom` | `8px` |
-| `@date-picker-title-date-height` | `48px` |
-| `@date-picker-title-date-font-size` | `34px` |
-| `@date-picker-title-date-font-weight` | `500` |
-| `@date-picker-title-date-range-font-size` | `20px` |
-
-**picker-header**
-
-| Variable | Default |
-| --- | --- |
-| `@picker-header-padding` | `4px 16px` |
-
-**month-picker**
-
-| Variable | Default |
-| --- | --- |
-| `@month-picker-padding` | `0 12px` |
-| `@month-picker-item-width` | `33%` |
-| `@month-picker-item-height` | `56px` |
-| `@month-picker-item-button-max-width` | `140px` |
-
-**year-picker**
-
-| Variable | Default |
-| --- | --- |
-| `@year-picker-font-weight` | `400` |
-| `@year-picker-item-padding` | `8px 0` |
-| `@year-picker-item-active-font-size` | `26px` |
-| `@year-picker-item-active-font-weight` | `500` |
-| `@year-picker-item-active-font-padding` | `10px 0` |
-| `@year-picker-item-active-color` | `@color-primary` |
-
-**day-picker**
-
-| Variable | Default |
-| --- | --- |
-| `@day-picker-content-item-width` | `14.28%` |
-| `@day-picker-content-item-font-size` | `@font-size-sm` |
-| `@day-picker-content-item-padding` | `2px 0` |
-| `@day-picker-content-item-button-width` | `32px` |
-| `@day-picker-content-item-button-height` | `32px` |
-| `@day-picker-content-item-button-font-size` | `@font-size-sm` |
-| `@day-picker-head-item-color` | `rgba(0, 0, 0, 0.38)` |
-| `@day-picker-head-item-padding` | `8px 0` |
-| `@day-picker-head-item-font-weight` | `600` |
+| `--date-picker-border-radius` | `4px` |
+| `--date-picker-font-size` | `var(--font-size-md)` |
+| `--date-picker-min-width` | `290px` |
+| `--date-picker-height` | `385px` |
+| `--date-picker-title-padding` | `16px` |
+| `--date-picker-title-background` | `var(--color-primary)` |
+| `--date-picker-title-color` | `#fff` |
+| `--date-picker-title-year-font-size` | `var(--font-size-md)` |
+| `--date-picker-title-year-font-weight` | `500` |
+| `--date-picker-title-year-margin-bottom` | `8px` |
+| `--date-picker-title-date-height` | `48px` |
+| `--date-picker-title-date-font-size` | `34px` |
+| `--date-picker-title-date-font-weight` | `500` |
+| `--date-picker-title-date-range-font-size` | `20px` |
+| `--picker-header-padding` | `4px 16px` |
+| `--picker-header-padding` | `4px 16px` |
+| `--month-picker-padding` | `0 12px` |
+| `--month-picker-item-width` | `33%` |
+| `--month-picker-item-height` | `56px` |
+| `--month-picker-item-button-max-width` | `140px` |
+| `--year-picker-font-weight` | `400` |
+| `--year-picker-item-padding` | `8px 0` |
+| `--year-picker-item-active-font-size` | `26px` |
+| `--year-picker-item-active-font-weight` | `500` |
+| `--year-picker-item-active-font-padding` | `10px 0` |
+| `--year-picker-item-active-color` | `var(--color-primary)` |
+| `--day-picker-content-item-width` | `14.28%` |
+| `--day-picker-content-item-font-size` | `var(--font-size-sm)` |
+| `--day-picker-content-item-padding` | `2px 0` |
+| `--day-picker-content-item-button-width` | `32px` |
+| `--day-picker-content-item-button-height` | `32px` |
+| `--day-picker-content-item-button-font-size` | `var(--font-size-sm)` |
+| `--day-picker-head-item-color` | `rgba(0, 0, 0, 0.38)` |
+| `--day-picker-head-item-padding` | `8px 0` |
+| `--day-picker-head-item-font-weight` | `600` |

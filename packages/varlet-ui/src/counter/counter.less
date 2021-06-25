@@ -3,14 +3,27 @@
 
 @counter-padding: 0 4px;
 @counter-font-color: #fff;
-@counter-background: @color-primary;
+@counter-background: var(--color-primary);
 @counter-input-width: 28px;
 @counter-input-margin: 0 4px;
 @counter-input-font-size: 14px;
 @counter-button-size: 28px;
 @counter-button-icon-size: 100%;
 @counter-disabled-color: #aaa;
-@input-error-color: @color-danger;
+@input-error-color: var(--color-danger);
+
+:root {
+  --counter-padding: @counter-padding;
+  --counter-font-color: @counter-font-color;
+  --counter-background: @counter-background;
+  --counter-input-width: @counter-input-width;
+  --counter-input-margin: @counter-input-margin;
+  --counter-input-font-size: @counter-input-font-size;
+  --counter-button-size: @counter-button-size;
+  --counter-button-icon-size: @counter-button-icon-size;
+  --counter-disabled-color: @counter-disabled-color;
+  --input-error-color: @input-error-color;
+}
 
 .var-counter {
   display: inline-flex;
@@ -20,31 +33,31 @@
   &__controller {
     display: flex;
     align-items: center;
-    color: @counter-font-color;
-    border-radius: @counter-button-size;
-    padding: @counter-padding;
-    background: @counter-background;
+    color: var(--counter-font-color);
+    border-radius: var(--counter-button-size);
+    padding: var(--counter-padding);
+    background: var(--counter-background);
   }
 
   &__decrement-button[var-counter-cover] {
-    width: @counter-button-size;
-    height: @counter-button-size;
-    font-size: @counter-button-icon-size;
+    width: var(--counter-button-size);
+    height: var(--counter-button-size);
+    font-size: var(--counter-button-icon-size);
     border-radius: 50%;
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
   &__input {
-    width: @counter-input-width;
-    font-size: @counter-input-font-size;
+    width: var(--counter-input-width);
+    font-size: var(--counter-input-font-size);
     outline: none;
     border: none;
     background: transparent;
     padding: 0;
     text-align: center;
-    color: @counter-font-color;
-    margin: @counter-input-margin;
+    color: var(--counter-font-color);
+    margin: var(--counter-input-margin);
 
     &[disabled] {
       background: transparent;
@@ -52,16 +65,16 @@
   }
 
   &__increment-button[var-counter-cover] {
-    width: @counter-button-size;
-    height: @counter-button-size;
-    font-size: @counter-button-icon-size;
+    width: var(--counter-button-size);
+    height: var(--counter-button-size);
+    font-size: var(--counter-button-icon-size);
     border-radius: 50%;
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
   &--disabled {
-    background: @counter-disabled-color;
+    background: var(--counter-disabled-color);
   }
 
   &--hidden {
@@ -69,6 +82,6 @@
   }
 
   &--error {
-    background: @color-danger;
+    background: var(--color-danger);
   }
 }

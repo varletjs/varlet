@@ -274,21 +274,21 @@ export default {
 | `default` | 对话框主要内容 | `-` |
 | `title` | 对话框标题 | `-` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@dialog-width` | `280px` |
-| `@dialog-background` | `#fff` |
-| `@dialog-border-radius` | `2px` |
-| `@dialog-title-padding` | `20px 20px 0` |
-| `@dialog-title-font-size` | `@font-size-lg` |
-| `@dialog-message-color` | `#888` |
-| `@dialog-message-padding` | `12px 20px` |
-| `@dialog-message-line-height` | `24px` |
-| `@dialog-message-font-size` | `@font-size-md` |
-| `@dialog-actions-padding` | `0 12px 12px` |
-| `@dialog-button-margin-left` | `6px` |
-| `@dialog-confirm-button-color` | `@color-primary` |
-| `@dialog-cancel-button-color` | `@color-primary` |
+| `--dialog-width` | `280px` |
+| `--dialog-background` | `#fff` |
+| `--dialog-border-radius` | `2px` |
+| `--dialog-title-padding` | `20px 20px 0` |
+| `--dialog-title-font-size` | `var(--font-size-lg)` |
+| `--dialog-message-color` | `#888` |
+| `--dialog-message-padding` | `12px 20px` |
+| `--dialog-message-line-height` | `24px` |
+| `--dialog-message-font-size` | `var(--font-size-md)` |
+| `--dialog-actions-padding` | `0 12px 12px` |
+| `--dialog-button-margin-left` | `6px` |
+| `--dialog-confirm-button-color` | `var(--color-primary)` |
+| `--dialog-cancel-button-color` | `var(--color-primary)` |
