@@ -321,28 +321,29 @@ Click the Tab to scroll automatically to the center of the viewport.
 | --- | --- | --- |
 | `default` | tabItem's content | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 ### Tabs Variables
 
 | Variable | Default |
 | --- | --- |
-| `@tabs-item-horizontal-height` | `44px` |
-| `@tabs-item-vertical-height` | `66px` |
-| `@tabs-radius` | `2px` |
-| `@tabs-padding` | `12px` |
-| `@tabs-indicator-size` | `2px` |
-| `@tabs-indicator-background` | `@color-primary` |
-| `@tabs-background` | `#fff` |
+| `--tabs-item-horizontal-height` | `44px` |
+| `--tabs-item-vertical-height` | `66px` |
+| `--tabs-radius` | `2px` |
+| `--tabs-padding` | `12px` |
+| `--tabs-indicator-size` | `2px` |
+| `--tabs-indicator-background` | `var(--color-primary)` |
+| `--tabs-background` | `#fff` |
 
 ### Tab Variables
 
 | Variable | Default |
 | --- | --- |
-| `@tab-color` | `#fff` |
-| `@tab-padding` | `12px` |
-| `@tab-active-color` | `@color-primary` |
-| `@tab-inactive-color` | `#646566` |
-| `@tab-disabled-color` | `@color-disabled` |
-| `@tab-font-size` | `@font-size-md` |
+| `--tab-color` | `#fff` |
+| `--tab-padding` | `12px` |
+| `--tab-active-color` | `var(--color-primary)` |
+| `--tab-inactive-color` | `#646566` |
+| `--tab-disabled-color` | `var(--color-disabled)` |
+| `--tab-font-size` | `var(--font-size-md)` |
