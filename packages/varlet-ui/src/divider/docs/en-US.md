@@ -68,13 +68,14 @@ createApp().use(Divider)
 | --- | --- | --- |
 | `default` | Custom content of divider | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@divider-color` | `#bcc2cb` |
-| `@divider-text-color` | `#888`|
-| `@divider-text-margin` | `8px`|
-| `@divider-inset` |  `72px`|
-| `@divider-vertical-inset` | `8px`|
+| `--divider-color` | `#bcc2cb` |
+| `--divider-text-color` | `#888`|
+| `--divider-text-margin` | `8px 0`|
+| `--divider-text-padding` | `0 8px`|
+| `--divider-inset` |  `72px`|
+| `--divider-vertical-inset` | `8px`|

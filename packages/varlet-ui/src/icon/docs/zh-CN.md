@@ -146,9 +146,9 @@ export default {
 | --- | --- | --- |
 | `click` | 点击图标时触发 | `event: Event` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@icon-size` | `20px` |
+| `--@icon-size` | `20px` |

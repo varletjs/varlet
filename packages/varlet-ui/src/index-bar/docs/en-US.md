@@ -100,13 +100,13 @@ Use ref to get IndexBar instance and call instance methods.
 | ---- | ------- | -------- |
 | `scrollTo` | scroll to target element	 | `index: number \| string` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@index-bar-list-item-font-size` | `@font-size-xs` |
-| `@index-bar-list-item-color` | `@color-primary` |
-| `@index-bar-list-item-active-color` | `@color-danger` |
-| `@index-bar-list-item-height` | `14px` |
-| `@index-bar-list-item-padding` | `0 10px` |
+| `--index-bar-list-item-font-size` | `var(--font-size-xs)` |
+| `--index-bar-list-item-color` | `var(--color-primary)` |
+| `--index-bar-list-item-active-color` | `var(--color-danger)` |
+| `--index-bar-list-item-height` | `14px` |
+| `--index-bar-list-item-padding` | `0 10px` |

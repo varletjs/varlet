@@ -144,9 +144,9 @@ You can use it this way:
 | --- | --- | --- |
 | `click` | Triggered when you click on the icon | `event: Event` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@icon-size` | `20px` |
+| `--icon-size` | `20px` |

@@ -66,14 +66,14 @@ createApp().use(Divider)
 | --- | --- | --- |
 | `default` | 自定义分割线文字描述内容 | `-` |
 
-### 主题变量
-
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@divider-color` | `#bcc2cb` |
-| `@divider-text-color` | `#888`|
-| `@divider-text-margin` | `8px`|
-| `@divider-inset` |  `72px`|
-| `@divider-vertical-inset` | `8px`|
+| `--divider-color` | `#bcc2cb` |
+| `--divider-text-color` | `#888`|
+| `--divider-text-margin` | `8px 0`|
+| `--divider-text-padding` | `0 8px`|
+| `--divider-inset` |  `72px`|
+| `--divider-vertical-inset` | `8px`|

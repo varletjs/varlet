@@ -2,11 +2,15 @@
 
 @icon-size: 20px;
 
+:root {
+  --icon-size: @icon-size;
+}
+
 .var-icon {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-size: @icon-size;
+  font-size: var(--icon-size);
   color: inherit;
 
   &--shrinking {
@@ -14,8 +18,8 @@
   }
 
   &__image {
-    width: @icon-size;
-    height: @icon-size;
+    width: var(--icon-size);
+    height: var(--icon-size);
     object-fit: cover;
   }
 }

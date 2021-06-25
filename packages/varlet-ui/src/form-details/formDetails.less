@@ -1,11 +1,18 @@
 @import '../styles/var';
 
-@form-details-error-color: @color-danger;
+@form-details-error-color: var(--color-danger);
 @form-details-length-color: #888;
-
 @form-details-margin-top: 6px;
 @form-details-font-size: 12px;
 @form-details-message-margin-right: 4px;
+
+:root {
+  --form-details-error-color: @form-details-error-color;
+  --form-details-length-color: @form-details-length-color;
+  --form-details-margin-top: @form-details-margin-top;
+  --form-details-font-size: @form-details-font-size;
+  --form-details-message-margin-right: @form-details-message-margin-right;
+}
 
 .var {
   &-form-details-enter-from,
@@ -16,27 +23,27 @@
 
   &-form-details-enter-active,
   &-form-details-leave-active {
-    transition: 0.2s all @cubic-bezier;
+    transition: 0.2s all var(--cubic-bezier);
   }
 }
 
 .var-form-details {
   display: flex;
   justify-content: space-between;
-  font-size: @form-details-font-size;
-  margin-top: @form-details-margin-top;
+  font-size: var(--form-details-font-size);
+  margin-top: var(--form-details-margin-top);
 
   &__message {
     flex-grow: 1;
-    color: @form-details-error-color;
-    margin-right: @form-details-message-margin-right;
+    color: var(--form-details-error-color);
+    margin-right: var(--form-details-message-margin-right);
     user-select: none;
     text-align: left;
   }
 
   &__length {
     flex-shrink: 0;
-    color: @form-details-length-color;
+    color: var(--form-details-length-color);
     user-select: none;
     text-align: right;
   }

@@ -164,3 +164,14 @@ export default {
 | Slot | Description | Arguments |
 | --- | --- | --- |
 | `default` | Form content | `-` |
+
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+
+| Variable | Default |
+| --- | --- |
+| `--form-details-error-color` | `var(--color-danger)` |
+| `--form-details-length-color` | `#888` |
+| `--form-details-margin-top` | `6px` |
+| `--form-details-font-size` | `12px` |
+| `--form-details-message-margin-right` | `4px` |

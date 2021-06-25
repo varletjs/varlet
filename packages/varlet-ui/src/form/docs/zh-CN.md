@@ -164,3 +164,14 @@ export default {
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 表单内容 | `-` |
+
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `--form-details-error-color` | `var(--color-danger)` |
+| `--form-details-length-color` | `#888` |
+| `--form-details-margin-top` | `6px` |
+| `--form-details-font-size` | `12px` |
+| `--form-details-message-margin-right` | `4px` |

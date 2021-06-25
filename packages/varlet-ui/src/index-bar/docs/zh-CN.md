@@ -100,13 +100,13 @@ import { ref, onMounted } from 'vue'
 | ---- | ------- | -------- |
 | `scrollTo` | 滚动到指定锚点	 | `index: number \| string` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@index-bar-list-item-font-size` | `@font-size-xs` |
-| `@index-bar-list-item-color` | `@color-primary` |
-| `@index-bar-list-item-active-color` | `@color-danger` |
-| `@index-bar-list-item-height` | `14px` |
-| `@index-bar-list-item-padding` | `0 10px` |
+| `--index-bar-list-item-font-size` | `var(--font-size-xs)` |
+| `--index-bar-list-item-color` | `var(--color-primary)` |
+| `--index-bar-list-item-active-color` | `var(--color-danger)` |
+| `--index-bar-list-item-height` | `14px` |
+| `--index-bar-list-item-padding` | `0 10px` |

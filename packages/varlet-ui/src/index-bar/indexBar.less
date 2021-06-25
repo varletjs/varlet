@@ -1,10 +1,18 @@
 @import '../styles/var';
 
-@index-bar-list-item-font-size: @font-size-xs;
-@index-bar-list-item-color: @color-primary;
-@index-bar-list-item-active-color: @color-danger;
+@index-bar-list-item-font-size: var(--font-size-xs);
+@index-bar-list-item-color: var(--color-primary);
+@index-bar-list-item-active-color: var(--color-danger);
 @index-bar-list-item-height: 14px;
 @index-bar-list-item-padding: 0 10px;
+
+:root {
+  --index-bar-list-item-font-size: @index-bar-list-item-font-size;
+  --index-bar-list-item-color: @index-bar-list-item-color;
+  --index-bar-list-item-active-color: @index-bar-list-item-active-color;
+  --index-bar-list-item-height: @index-bar-list-item-height;
+  --index-bar-list-item-padding: @index-bar-list-item-padding;
+}
 
 .var-index-bar {
   position: relative;
@@ -21,18 +29,18 @@
   }
 
   &__anchor-item {
-    font-size: @index-bar-list-item-font-size;
+    font-size: var(--index-bar-list-item-font-size);
     display: flex;
     align-items: center;
-    height: @index-bar-list-item-height;
+    height: var(--index-bar-list-item-height);
     justify-content: center;
-    padding: @index-bar-list-item-padding;
-    color: @index-bar-list-item-color;
+    padding: var(--index-bar-list-item-padding);
+    color: var(--index-bar-list-item-color);
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
     &--active {
-      color: @index-bar-list-item-active-color;
+      color: var(--index-bar-list-item-active-color);
     }
   }
 }

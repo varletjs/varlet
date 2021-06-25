@@ -2,43 +2,53 @@
 
 @divider-color: #bcc2cb;
 @divider-text-color: #888;
-@divider-text-margin: 8px;
+@divider-text-margin: 8px 0;
+@divider-text-padding: 0 8px;
 @divider-inset: 72px;
 @divider-vertical-inset: 8px;
+
+:root {
+  --divider-color: @divider-color;
+  --divider-text-color: @divider-text-color;
+  --divider-text-margin: @divider-text-margin;
+  --divider-text-padding: @divider-text-padding;
+  --divider-inset: @divider-inset;
+  --divider-vertical-inset: @divider-vertical-inset;
+}
 
 .var-divider {
   position: relative;
   width: 100%;
   height: 0;
   border: none;
-  border-top: 1px solid @divider-color;
-  margin: @divider-text-margin 0;
-  font-size: @font-size-md;
+  border-top: 1px solid var(--divider-color);
+  margin: var(--divider-text-margin);
+  font-size: var(--font-size-md);
   color: #888;
 
   &--vertical {
     width: 0;
     height: 80%;
-    margin: auto @divider-text-margin;
-    padding: @divider-text-margin 0;
+    margin: auto var(--divider-text-margin);
+    padding: var(--divider-text-margin);
     border-top: none;
-    border-left: 1px solid @divider-color;
+    border-left: 1px solid var(--divider-color);
   }
 
   &--inset {
-    width: calc(100% - @divider-inset);
-    left: @divider-inset;
+    width: calc(100% - var(--divider-inset));
+    left: var(--divider-inset);
   }
 
   &--vertical&--inset {
     width: 0;
     left: unset;
-    height: calc(80% - @divider-vertical-inset);
+    height: calc(80% - var(--divider-vertical-inset));
   }
 
   &__text {
     display: inline-block;
-    padding: 0 @divider-text-margin;
+    padding: var(--divider-text-padding);
   }
 
   &--with-text {
@@ -55,7 +65,7 @@
       content: '';
       flex: 1;
       height: 0;
-      border-top: 1px solid @divider-color;
+      border-top: 1px solid var(--divider-color);
     }
   }
 
