@@ -3,6 +3,10 @@
 
 @menu-background: #fff;
 
+:root {
+  --menu-background: @menu-background;
+}
+
 .var {
   &-menu-enter-from,
   &-menu-leave-to {
@@ -18,7 +22,7 @@
 
 .var-menu {
   display: inline-block;
-  background: @menu-background;
+  background: var(--menu-background);
 
   &__menu {
     position: absolute;
