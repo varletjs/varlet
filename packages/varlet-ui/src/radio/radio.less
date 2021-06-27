@@ -1,11 +1,20 @@
 @import '../styles/var';
 
-@radio-checked-color: @color-primary;
+@radio-checked-color: var(--color-primary);
 @radio-unchecked-color: #555;
 @radio-disabled-color: #aaa;
-@radio-error-color: @color-danger;
+@radio-error-color: var(--color-danger);
 @radio-icon-size: 24px;
 @radio-action-padding: 6px;
+
+:root {
+  --radio-checked-color: @radio-checked-color;
+  --radio-unchecked-color: @radio-unchecked-color;
+  --radio-disabled-color: @radio-disabled-color;
+  --radio-error-color: @radio-error-color;
+  --radio-icon-size: @radio-icon-size;
+  --radio-action-padding: @radio-action-padding;
+}
 
 @keyframes var-vibrate-animation {
   0% {
@@ -27,7 +36,7 @@
 .var-radio {
   display: flex;
   align-items: center;
-  transform: translateX(-@radio-action-padding);
+  transform: translateX(-var(--radio-action-padding));
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
@@ -40,13 +49,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: @radio-action-padding;
+    padding: var(--radio-action-padding);
     border-radius: 50%;
   }
 
   &__icon[var-radio-cover] {
     display: block;
-    font-size: @radio-icon-size;
+    font-size: var(--radio-icon-size);
   }
 
   &--with-animation[var-radio-cover] {
@@ -54,18 +63,18 @@
   }
 
   &--checked {
-    color: @radio-checked-color;
+    color: var(--radio-checked-color);
   }
 
   &--unchecked {
-    color: @radio-unchecked-color;
+    color: var(--radio-unchecked-color);
   }
 
   &--disabled {
-    color: @radio-disabled-color;
+    color: var(--radio-disabled-color);
   }
 
   &--error {
-    color: @radio-error-color;
+    color: var(--radio-error-color);
   }
 }

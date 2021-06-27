@@ -214,16 +214,16 @@ export default {
 | `unchecked-icon` | 未选中图标 | `-` |
 | `default` | 显示的文本 | `-` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 ### Radio Variables
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@radio-checked-color` | `@color-primary` |
-| `@radio-unchecked-color` | `#555` |
-| `@radio-disabled-color` | `#aaa` |
-| `@radio-error-color` | `@color-danger` |
-| `@radio-action-padding` | `6px` |
-| `@radio-icon-size` | `24px` |
+| `--radio-checked-color` | `var(--color-primary)` |
+| `--radio-unchecked-color` | `#555` |
+| `--radio-disabled-color` | `#aaa` |
+| `--radio-error-color` | `var(color-danger)` |
+| `--radio-action-padding` | `6px` |
+| `--radio-icon-size` | `24px` |
