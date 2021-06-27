@@ -261,35 +261,35 @@ export default {
 | --- | --- | --- |
 | `default` | 选项显示的内容 | `-` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 ### Select Variables
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@select-select-text-color` | `#555` |
-| `@select-select-padding` | `5px 0` |
-| `@select-error-color` | `@color-danger` |
-| `@select-blur-color` | `#888` |
-| `@select-focus-color` | `@color-primary` |
-| `@select-scroller-background` | `#fff` |
-| `@select-scroller-padding` | `6px 0` |
-| `@select-scroller-max-height` | `278px` |
-| `@select-placeholder-size` | `16px` |
-| `@select-icon-padding` | `@select-placeholder-size 0 0` |
-| `@select-icon-size` | `20px` |
-| `@select-select-text-color` | `#555` |
-| `@select-chip-margin` | `5px 5px 0` |
-| `@select-line-size` | `1px` |
-| `@select-line-spread-size` | `2px` |
-| `@select-arrow-size` | `20px` |
-| `@select-disabled-color` | `#aaa` |
+| `--select-select-text-color` | `#555` |
+| `--select-select-padding` | `5px 0` |
+| `--select-error-color` | `var(--color-danger)` |
+| `--select-blur-color` | `#888` |
+| `--select-focus-color` | `var(--color-primary)` |
+| `--select-scroller-background` | `#fff` |
+| `--select-scroller-padding` | `6px 0` |
+| `--select-scroller-max-height` | `278px` |
+| `--select-placeholder-size` | `16px` |
+| `--select-icon-padding` | `var(--select-placeholder-size) 0 0` |
+| `--select-icon-size` | `20px` |
+| `--select-select-text-color` | `#555` |
+| `--select-chip-margin` | `5px 5px 0` |
+| `--select-line-size` | `1px` |
+| `--select-line-spread-size` | `2px` |
+| `--select-arrow-size` | `20px` |
+| `--select-disabled-color` | `#aaa` |
 
 ### Option Variables
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@option-height` | `38px` |
-| `@option-padding` | `0 12px` |
-| `@option-selected-background` | `@select-focus-color` |
+| `--option-height` | `38px` |
+| `--option-padding` | `0 12px` |
+| `--option-selected-background` | `var(--select-focus-color)` |
