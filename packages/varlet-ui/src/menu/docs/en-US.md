@@ -251,9 +251,9 @@ export default {
 | `default` | The trigger element associated with the menu | `-` |
 | `menu` | Menu content | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@menu-background` | `#fff` |
+| `--menu-background` | `#fff` |
