@@ -214,16 +214,16 @@ export default {
 | `unchecked-icon` | Unchecked icon | `-` |
 | `default` | Displayed text | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 ### Radio Variables
 
 | Variable | Default |
 | --- | --- |
-| `@radio-checked-color` | `@color-primary` |
-| `@radio-unchecked-color` | `#555` |
-| `@radio-disabled-color` | `#aaa` |
-| `@radio-error-color` | `@color-danger` |
-| `@radio-action-padding` | `6px` |
-| `@radio-icon-size` | `24px` |
+| `--radio-checked-color` | `var(--color-primary)` |
+| `--radio-unchecked-color` | `#555` |
+| `--radio-disabled-color` | `#aaa` |
+| `--radio-error-color` | `var(--color-danger)` |
+| `--radio-action-padding` | `6px` |
+| `--radio-icon-size` | `24px` |
