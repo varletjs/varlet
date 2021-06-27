@@ -2,14 +2,20 @@
 
 @option-height: 38px;
 @option-padding: 0 12px;
-@option-selected-background: @select-focus-color;
+@option-selected-background: var(--select-focus-color);
+
+:root {
+  --option-height: @option-height;
+  --option-padding: @option-padding;
+  --option-selected-background: @option-selected-background;
+}
 
 .var-option {
   position: relative;
   display: flex;
   align-items: center;
-  height: @option-height;
-  padding: @option-padding;
+  height: var(--option-height);
+  padding: var(--option-padding);
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
@@ -24,10 +30,10 @@
   }
 
   &--selected-background {
-    background: @option-selected-background;
+    background: var(--option-selected-background);
   }
 
   &--selected-color {
-    color: @option-selected-background;
+    color: var(--option-selected-background);
   }
 }

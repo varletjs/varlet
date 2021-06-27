@@ -263,35 +263,35 @@ export default {
 | --- | --- | --- |
 | `default` | Options to display the content | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 ### Select Variables
 
 | Variable | Default |
 | --- | --- |
-| `@select-select-text-color` | `#555` |
-| `@select-select-padding` | `5px 0` |
-| `@select-error-color` | `@color-danger` |
-| `@select-blur-color` | `#888` |
-| `@select-focus-color` | `@color-primary` |
-| `@select-scroller-background` | `#fff` |
-| `@select-scroller-padding` | `6px 0` |
-| `@select-scroller-max-height` | `278px` |
-| `@select-placeholder-size` | `16px` |
-| `@select-icon-padding` | `@select-placeholder-size 0 0` |
-| `@select-icon-size` | `20px` |
-| `@select-select-text-color` | `#555` |
-| `@select-chip-margin` | `5px 5px 0` |
-| `@select-line-size` | `1px` |
-| `@select-line-spread-size` | `2px` |
-| `@select-arrow-size` | `20px` |
-| `@select-disabled-color` | `#aaa` |
+| `--select-select-text-color` | `#555` |
+| `--select-select-padding` | `5px 0` |
+| `--select-error-color` | `var(--color-danger)` |
+| `--select-blur-color` | `#888` |
+| `--select-focus-color` | `var(--color-primary)` |
+| `--select-scroller-background` | `#fff` |
+| `--select-scroller-padding` | `6px 0` |
+| `--select-scroller-max-height` | `278px` |
+| `--select-placeholder-size` | `16px` |
+| `--select-icon-padding` | `var(--select-placeholder-size) 0 0` |
+| `--select-icon-size` | `20px` |
+| `--select-select-text-color` | `#555` |
+| `--select-chip-margin` | `5px 5px 0` |
+| `--select-line-size` | `1px` |
+| `--select-line-spread-size` | `2px` |
+| `--select-arrow-size` | `20px` |
+| `--select-disabled-color` | `#aaa` |
 
 ### Option Variables
 
 | Variable | Default |
 | --- | --- |
-| `@option-height` | `38px` |
-| `@option-padding` | `0 12px` |
-| `@option-selected-background` | `@select-focus-color` |
+| `--option-height` | `38px` |
+| `--option-padding` | `0 12px` |
+| `--option-selected-background` | `car(--select-focus-color)` |
