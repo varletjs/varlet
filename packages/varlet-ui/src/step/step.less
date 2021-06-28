@@ -2,12 +2,12 @@
 
 @step-tag-size: 20px;
 @step-tag-background: #9e9e9e;
-@step-tag-font-size: @font-size-md;
+@step-tag-font-size: var(--font-size-md);
 @step-tag-color: #fff;
-@step-tag-active-color: @color-primary;
+@step-tag-active-color: var(--color-primary);
 @step-tag-margin: 4px 0;
-@step-tag-icon-size: @font-size-lg;
-@step-content-font-size: @font-size-md;
+@step-tag-icon-size: var(--font-size-lg);
+@step-content-font-size: var(--font-size-md);
 @step-content-color: rgba(0, 0, 0, 0.38);
 @step-content-active-color: #000;
 @step-line-background: #000;
@@ -16,17 +16,35 @@
 @step-vertical-line-height: calc(100% - 30px);
 @step-vertical-line-min-height: 20px;
 
+:root {
+  --step-tag-size: @step-tag-size;
+  --step-tag-background: @step-tag-background;
+  --step-tag-font-size: @step-tag-font-size;
+  --step-tag-color: @step-tag-color;
+  --step-tag-active-color: @step-tag-active-color;
+  --step-tag-margin: @step-tag-margin;
+  --step-tag-icon-size: @step-tag-icon-size;
+  --step-content-font-size: @step-content-font-size;
+  --step-content-color: @step-content-color;
+  --step-content-active-color: @step-content-active-color;
+  --step-line-background: @step-line-background;
+  --step-vertical-min-height: @step-vertical-min-height;
+  --step-vertical-tag-margin: @step-vertical-tag-margin;
+  --step-vertical-line-height: @step-vertical-line-height;
+  --step-vertical-line-min-height: @step-vertical-line-min-height;
+}
+
 // Mixins
 .tag {
-  width: @step-tag-size;
-  height: @step-tag-size;
-  background: @step-tag-background;
+  width: var(--step-tag-size);
+  height: var(--step-tag-size);
+  background: var(--step-tag-background);
   display: flex;
-  font-size: @step-tag-font-size;
+  font-size: var(--step-tag-font-size);
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  color: @step-tag-color;
+  color: var(--step-tag-color);
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: 0.3s @cubic-bezier;
@@ -34,8 +52,8 @@
 
 // Mixins
 .content {
-  font-size: @step-content-font-size;
-  color: @step-content-color;
+  font-size: var(--step-content-font-size);
+  color: var(--step-content-color);
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: 0.3s @cubic-bezier;
@@ -59,11 +77,11 @@
     }
 
     &__tag {
-      margin: @step-tag-margin;
+      margin: var(--step-tag-margin);
       .tag();
 
       &--active {
-        background: @step-tag-active-color;
+        background: var(--step-tag-active-color);
       }
     }
 
@@ -71,7 +89,7 @@
       .content();
 
       &--active {
-        color: @step-content-active-color;
+        color: var(--step-content-active-color);
       }
     }
 
@@ -81,7 +99,7 @@
       flex: 1;
       height: 1px;
       transform: scaleY(0.5);
-      background: @step-line-background;
+      background: var(--step-line-background);
     }
   }
 
@@ -91,15 +109,15 @@
     &__main {
       display: flex;
       align-items: flex-start;
-      min-height: @step-vertical-min-height;
+      min-height: var(--step-vertical-min-height);
     }
 
     &__tag {
-      margin: @step-vertical-tag-margin;
+      margin: var(--step-vertical-tag-margin);
       .tag();
 
       &--active {
-        background: @step-tag-active-color;
+        background: var(--step-tag-active-color);
       }
     }
 
@@ -107,23 +125,23 @@
       .content();
 
       &--active {
-        color: @step-content-active-color;
+        color: var(--step-content-active-color);
       }
     }
 
     &__line {
       position: relative;
-      height: @step-vertical-line-height;
+      height: var(--step-vertical-line-height);
       left: 14px;
       top: calc(-100% + 45px);
-      min-height: @step-vertical-line-min-height;
+      min-height: var(--step-vertical-line-min-height);
       width: 1px;
       transform: scaleX(0.5);
-      background: @step-line-background;
+      background: var(--step-line-background);
     }
   }
 
   &__icon[var-step-cover] {
-    font-size: @step-tag-icon-size;
+    font-size: var(--step-tag-icon-size);
   }
 }
