@@ -64,7 +64,7 @@ ImagePreview({
 <var-image-preview :images="images" v-model:show="show" />
 
 <var-button 
-  type="info" 
+  type="warning" 
   block
   @click="currentShow = true"
 >
@@ -77,19 +77,25 @@ ImagePreview({
 />
 
 <var-button 
-  type="success" 
+  type="warning" 
   block 
   @click="closeShow = true"
 >
   展示关闭按钮
 </var-button>
-<var-image-preview 
+<var-image-preview
+  closeable
   :images="images"
-  :closeable="true"
   v-model:show="closeShow" 
 />
 
-<var-button block @click="closeEventShow = true">监听关闭事件</var-button>
+<var-button
+  block
+  type="warning"
+  @click="closeEventShow = true"
+>
+  监听关闭事件
+</var-button>
 <var-image-preview 
   :images="images"
   v-model:show="closeEventShow"
