@@ -10,13 +10,14 @@
       ref="sliderEl"
       @click="click"
     >
-      <div
-        class="var-slider__track"
-        :style="{
-          background: trackColor,
-          height: trackHeight + 'px',
-        }"
-      >
+      <div class="var-slider__track">
+        <div
+          class="var-slider__track-background"
+          :style="{
+            background: trackColor,
+            height: trackHeight + 'px',
+          }"
+        ></div>
         <div class="var-slider__track-fill" :style="getFillStyle"></div>
       </div>
       <div
@@ -132,7 +133,7 @@ type ThumbProps = {
 export default defineComponent({
   name: 'VarSlider',
   components: {
-    [FormDetails.name]: FormDetails,
+    [FormDetails.name]: FormDetails
   },
   props,
   setup(props) {
@@ -150,13 +151,13 @@ export default defineComponent({
       startPosition: 0,
       currentLeft: 0,
       active: false,
-      percentValue: 0,
+      percentValue: 0
     })
     const thumbProps2: UnwrapRef<ThumbProps> = reactive({
       startPosition: 0,
       currentLeft: 0,
       active: false,
-      percentValue: 0,
+      percentValue: 0
     })
 
     const unitWidth: ComputedRef<number> = computed(() => (maxWidth.value / 100) * toNumber(props.step))
@@ -183,7 +184,7 @@ export default defineComponent({
       return {
         width: `${width}%`,
         left: `${left}%`,
-        background: activeColor,
+        background: activeColor
       }
     })
 
@@ -355,7 +356,7 @@ export default defineComponent({
     const sliderProvider: SliderProvider = {
       reset,
       validate,
-      resetValidation,
+      resetValidation
     }
 
     bindForm?.(sliderProvider)
@@ -372,9 +373,9 @@ export default defineComponent({
       start,
       move,
       end,
-      click,
+      click
     }
-  },
+  }
 })
 </script>
 

@@ -1,7 +1,6 @@
 @import '../styles/var';
 
-// @slider-error-color: var(--color-danger);
-@slider-error-color: @color-danger;
+@slider-error-color: var(--color-danger);
 @slider-track-background: #bdbdbd;
 @slider-track-fill-background: var(--color-primary);
 @slider-thumb-block-background: var(--color-primary);
@@ -38,15 +37,20 @@
 
   &__track {
     width: 100%;
-    height: 2px;
     align-items: center;
     position: relative;
-    background: var(--slider-track-background);
+
+    &-background {
+      width: 100%;
+      height: 2px;
+      background: var(--slider-track-background);
+    }
 
     &-fill {
       position: absolute;
       height: 100%;
       left: 0;
+      top: 0;
       background-color: var(--slider-track-fill-background);
     }
   }
@@ -113,9 +117,10 @@
 
   &__error {
     .var-slider__track {
-      background: lighten(@slider-error-color, 25%) !important;
-      // background: var(--slider-error-color) !important;
-      // opacity: 0.1;
+      &-background {
+        background-color: var(--slider-error-color) !important;
+        filter: opacity(.25);
+      }
 
       &-fill {
         background-color: var(--slider-error-color) !important;
