@@ -66,9 +66,8 @@ Use `size` prop to change size of Switch.
 
 ### Validate value
 
-Verify the value by the `rules` attribute.
-
-<span style="font-size: 12px">`rules` is an array that accepts `functions`, `boolean`, and `string`. Functions pass an input value as an argument and must return either `true` / `false` or a `string` containing an error message. The input field will enter an error state if a function returns (or any value in the array contains) `false` or is a `string`.</span>
+The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes.
+Other values are converted to text as a user prompt.
 
 ```html
 <var-switch v-model="value" :rules="[(v) => v === true || 'Error！']"/>
