@@ -428,6 +428,7 @@ exports[`test form with slider 1`] = `
   <div class=\\"var-slider\\">
     <div class=\\"var-slider-block var-slider__disable\\">
       <div class=\\"var-slider__track\\">
+        <div class=\\"var-slider__track-background\\"></div>
         <div class=\\"var-slider__track-fill\\" style=\\"width: 5%; left: 0%;\\"></div>
       </div>
       <div class=\\"var-slider__thumb\\" style=\\"left: 5%;\\">
@@ -449,6 +450,7 @@ exports[`test form with slider 2`] = `
   <div class=\\"var-slider\\">
     <div class=\\"var-slider-block var-slider__error\\">
       <div class=\\"var-slider__track\\">
+        <div class=\\"var-slider__track-background\\"></div>
         <div class=\\"var-slider__track-fill\\" style=\\"width: 5%; left: 0%;\\"></div>
       </div>
       <div class=\\"var-slider__thumb\\" style=\\"left: 5%;\\">
@@ -473,6 +475,7 @@ exports[`test form with slider 3`] = `
   <div class=\\"var-slider\\">
     <div class=\\"var-slider-block\\">
       <div class=\\"var-slider__track\\">
+        <div class=\\"var-slider__track-background\\"></div>
         <div class=\\"var-slider__track-fill\\" style=\\"width: 0%; left: 0%;\\"></div>
       </div>
       <div class=\\"var-slider__thumb\\" style=\\"left: 0%;\\">
