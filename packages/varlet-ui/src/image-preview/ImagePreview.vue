@@ -62,7 +62,7 @@
         name="close-circle"
         var-image-preview-cover
         v-if="closeable"
-        @click="handleCloseClick"
+        @click="close"
       />
     </slot>
   </var-popup>
@@ -172,15 +172,7 @@ export default defineComponent({
 
     const handleTouchend = (event: Event) => {
       checker = window.setTimeout(() => {
-        if (isTapTouch(event.target as HTMLElement)) {
-          if (scale.value > 1) {
-            zoomOut()
-            setTimeout(() => props['onUpdate:show']?.(false), ANIMATION_DURATION)
-            return
-          }
-
-          props['onUpdate:show']?.(false)
-        }
+        isTapTouch(event.target as HTMLElement) && close()
         startTouch = null
       }, EVENT_DELAY)
     }
@@ -199,6 +191,48 @@ export default defineComponent({
       prevTouch = currentTouch
     }
 
+    const getZoom = (target: HTMLElement) => {
+      const { offsetWidth, offsetHeight } = target
+      const { naturalWidth, naturalHeight } = target.querySelector('.var-image-preview__image') as HTMLImageElement
+
+      return {
+        width: offsetWidth,
+        height: offsetHeight,
+        imageRadio: naturalHeight / naturalWidth,
+        zoom: toNumber(props.zoom),
+      }
+    }
+
+    const getLimitX = (target: HTMLElement) => {
+      const { zoom, imageRadio, width, height } = getZoom(target)
+      if (!imageRadio) {
+        return 0
+      }
+      const displayWidth = imageRadio > 1 ? height / imageRadio : width
+      return Math.max(0, (zoom * displayWidth - width) / 2) / zoom
+    }
+
+    const getLimitY = (target: HTMLElement) => {
+      const { zoom, imageRadio, width, height } = getZoom(target)
+      if (!imageRadio) {
+        return 0
+      }
+      const displayHeight = imageRadio > 1 ? height : width * imageRadio
+      return Math.max(0, (zoom * displayHeight - height) / 2) / zoom
+    }
+
+    const getMoveTranslate = (current: number, move: number, limit: number): number => {
+      if (current + move >= limit) {
+        return limit
+      }
+
+      if (current + move <= -limit) {
+        return -limit
+      }
+
+      return current + move
+    }
+
     const handleTouchmove = (event: TouchEvent) => {
       if (!prevTouch) {
         return
@@ -208,41 +242,28 @@ export default defineComponent({
       const { touches } = event
       const currentTouch: VarTouch = createVarTouch(touches[0], target)
 
-      if (scale.value !== 1) {
+      if (scale.value > 1) {
         const moveX = currentTouch.clientX - prevTouch.clientX
         const moveY = currentTouch.clientY - prevTouch.clientY
-        const zoom = toNumber(props.zoom)
 
-        const { offsetWidth: zoomContainerOffsetWidth, offsetHeight: zoomContainerOffsetHeight } = target
-        const { offsetWidth, offsetHeight } = target.querySelector('.var-image-preview__image') as HTMLElement
-        const limitX = Math.abs(offsetWidth * zoom - zoomContainerOffsetWidth) / (2 * zoom)
-        const limitY = Math.abs(zoomContainerOffsetHeight - offsetHeight * zoom) / (2 * zoom)
+        const limitX = getLimitX(target as HTMLElement)
+        const limitY = getLimitY(target as HTMLElement)
 
-        if (translateX.value + moveX >= limitX) {
-          translateX.value = limitX
-        } else if (translateX.value + moveX <= -limitX) {
-          translateX.value = -limitX
-        } else {
-          translateX.value += moveX
-        }
-
-        if (translateY.value + moveY >= limitY) {
-          translateY.value = limitY
-        } else if (translateY.value + moveY <= -limitY) {
-          translateY.value = -limitY
-        } else {
-          translateY.value += moveY
-        }
+        translateX.value = getMoveTranslate(translateX.value, moveX, limitX)
+        translateY.value = getMoveTranslate(translateY.value, moveY, limitY)
       }
 
       prevTouch = currentTouch
     }
 
-    const handleCloseClick = () => {
+    const close = () => {
       if (scale.value > 1) {
         zoomOut()
+        setTimeout(() => props['onUpdate:show']?.(false), ANIMATION_DURATION)
+        return
       }
-      setTimeout(() => props['onUpdate:show']?.(false), ANIMATION_DURATION)
+
+      props['onUpdate:show']?.(false)
     }
 
     watch(
@@ -265,7 +286,7 @@ export default defineComponent({
       handleTouchstart,
       handleTouchmove,
       handleTouchend,
-      handleCloseClick,
+      close,
     }
   },
 })

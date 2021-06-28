@@ -54,9 +54,10 @@ import Popup from '..'
 import Button from '../../button'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { watchLang } from '../../utils/components'
-import { reactive, toRefs } from 'vue'
+import { watchLang, watchPlatform } from '../../utils/components'
+import { onUnmounted, reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
+import context from '../../context'
 
 export default {
   name: 'PopupExample',
@@ -78,6 +79,16 @@ export default {
     })
 
     watchLang(use)
+
+    const prevTouchmoveForbid = context.touchmoveForbid
+    watchPlatform((platform) => {
+      if (platform === 'pc') {
+        context.touchmoveForbid = false
+      }
+    })
+    onUnmounted(() => {
+      context.touchmoveForbid = prevTouchmoveForbid
+    })
 
     return {
       pack,

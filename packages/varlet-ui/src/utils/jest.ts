@@ -50,41 +50,70 @@ export function trigger(
   return nextTick()
 }
 
-export function mockOffset() {
+export function mockOffset({
+  offsetWidth,
+  offsetHeight,
+  clientWidth,
+  clientHeight,
+  offsetLeft,
+  offsetTop,
+}: {
+  offsetWidth?: number
+  offsetHeight?: number
+  clientWidth?: number
+  clientHeight?: number
+  offsetLeft?: number
+  offsetTop?: number
+} = {}) {
   Object.defineProperties(HTMLElement.prototype, {
     offsetWidth: {
       get() {
-        return parseFloat(window.getComputedStyle(this).width) || 0
+        return offsetWidth ?? (parseFloat(window.getComputedStyle(this).width) || 0)
       },
     },
     offsetHeight: {
       get() {
-        return parseFloat(window.getComputedStyle(this).height) || 0
+        return offsetHeight ?? (parseFloat(window.getComputedStyle(this).height) || 0)
       },
     },
     clientWidth: {
       get() {
-        return parseFloat(window.getComputedStyle(this).width) || 0
+        return clientWidth ?? (parseFloat(window.getComputedStyle(this).width) || 0)
       },
     },
     clientHeight: {
       get() {
-        return parseFloat(window.getComputedStyle(this).height) || 0
+        return clientHeight ?? (parseFloat(window.getComputedStyle(this).height) || 0)
       },
     },
     offsetLeft: {
       get() {
-        return parseFloat(window.getComputedStyle(this).marginLeft) || 0
+        return offsetLeft ?? (parseFloat(window.getComputedStyle(this).marginLeft) || 0)
       },
     },
     offsetTop: {
       get() {
-        return parseFloat(window.getComputedStyle(this).marginTop) || 0
+        return offsetTop ?? (parseFloat(window.getComputedStyle(this).marginTop) || 0)
       },
     },
     offsetParent: {
       get() {
         return this.parentNode ?? {}
+      },
+    },
+  })
+}
+
+export function mockImageNaturalSize(naturalWidth: number, naturalHeight: number) {
+  Object.defineProperties(HTMLImageElement.prototype, {
+    naturalWidth: {
+      get() {
+        return naturalWidth
+      },
+    },
+    naturalHeight: {
+      get() {
+        return naturalHeight
       },
     },
   })

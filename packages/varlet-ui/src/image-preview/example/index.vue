@@ -30,9 +30,10 @@ import ImagePreview from '../index'
 import Button from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Snackbar from '../../snackbar'
-import { defineComponent, ref } from 'vue'
+import { defineComponent, onUnmounted, ref } from 'vue'
 import { pack, use } from './locale'
-import { watchLang } from '../../utils/components'
+import { watchLang, watchPlatform } from '../../utils/components'
+import context from '../../context'
 
 export default defineComponent({
   name: 'ImagePreviewExample',
@@ -63,6 +64,16 @@ export default defineComponent({
     }
 
     watchLang(use)
+
+    const prevTouchmoveForbid = context.touchmoveForbid
+    watchPlatform((platform) => {
+      if (platform === 'pc') {
+        context.touchmoveForbid = false
+      }
+    })
+    onUnmounted(() => {
+      context.touchmoveForbid = prevTouchmoveForbid
+    })
 
     return {
       preview() {

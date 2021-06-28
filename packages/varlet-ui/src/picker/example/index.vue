@@ -15,9 +15,10 @@ import Picker from '../index'
 import Button from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import area from '../../../json/area.json'
-import { ref } from 'vue'
+import { onUnmounted, ref } from 'vue'
 import { use, pack } from './locale'
-import { watchLang } from '../../utils/components'
+import { watchLang, watchPlatform } from '../../utils/components'
+import context from '../../context'
 
 export default {
   name: 'PickerExample',
@@ -53,6 +54,16 @@ export default {
     }
 
     watchLang(use)
+
+    const prevTouchmoveForbid = context.touchmoveForbid
+    watchPlatform((platform) => {
+      if (platform === 'pc') {
+        context.touchmoveForbid = false
+      }
+    })
+    onUnmounted(() => {
+      context.touchmoveForbid = prevTouchmoveForbid
+    })
 
     return {
       pack,

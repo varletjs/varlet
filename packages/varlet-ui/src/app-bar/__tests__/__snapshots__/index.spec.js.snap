@@ -2,25 +2,25 @@
 
 exports[`test app bar example 1`] = `
 "<div class=\\"app-type\\">基础导航栏</div>
-<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(41, 121, 255); color: rgb(255, 255, 255);\\">
+<div class=\\"var-app-bar var-elevation--3\\">
   <!--v-if-->
   <div class=\\"var-app-bar__title var-app-bar__title-left\\" style=\\"padding-left: 10px; padding-right: 10px;\\">标题</div>
   <!--v-if-->
 </div>
 <div class=\\"app-type\\">自定义样式</div>
-<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(255, 159, 0); color: rgb(255, 255, 255);\\">
+<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(255, 159, 0);\\">
   <!--v-if-->
   <div class=\\"var-app-bar__title var-app-bar__title-center\\" style=\\"padding-left: 10px; padding-right: 10px;\\">标题</div>
   <!--v-if-->
 </div>
 <div class=\\"app-type\\">添加标题处插槽</div>
-<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(41, 121, 255); color: rgb(255, 255, 255);\\">
+<div class=\\"var-app-bar var-elevation--3\\">
   <!--v-if-->
   <div class=\\"var-app-bar__title var-app-bar__title-left\\" style=\\"padding-left: 10px; padding-right: 10px;\\">从插槽处添加标题</div>
   <!--v-if-->
 </div>
 <div class=\\"app-type\\">添加左侧插槽</div>
-<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(41, 121, 255); color: rgb(255, 255, 255);\\">
+<div class=\\"var-app-bar var-elevation--3\\">
   <div class=\\"var-app-bar__left\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
       <!--v-if-->
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
@@ -29,7 +29,7 @@ exports[`test app bar example 1`] = `
   <!--v-if-->
 </div>
 <div class=\\"app-type\\">添加右侧插槽</div>
-<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(41, 121, 255); color: rgb(255, 255, 255);\\">
+<div class=\\"var-app-bar var-elevation--3\\">
   <!--v-if-->
   <div class=\\"var-app-bar__title var-app-bar__title-left\\" style=\\"padding-left: 10px; padding-right: 30px;\\">标题</div>
   <div class=\\"var-app-bar__right\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
@@ -38,7 +38,7 @@ exports[`test app bar example 1`] = `
     </button></div>
 </div>
 <div class=\\"app-type\\">添加左右插槽</div>
-<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(41, 121, 255); color: rgb(255, 255, 255);\\">
+<div class=\\"var-app-bar var-elevation--3\\">
   <div class=\\"var-app-bar__left\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
       <!--v-if-->
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
