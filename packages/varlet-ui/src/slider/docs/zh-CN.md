@@ -145,15 +145,16 @@ export default {
 | `start` | 开始拖动时触发 | `-` |
 | `end` | 结束拖动时触发 | value: 当前进度 |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+
+以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@slider-error-color` | `@color-danger` |
-| `@slider-track-background` | `#bdbdbd` |
-| `@slider-track-fill-background` | `@color-primary` |
-| `@slider-thumb-block-background` | `@color-primary` |
-| `@slider-thumb-ripple-background` | `@color-primary` |
-| `@slider-thumb-label-background` | `@color-primary` |
-| `@slider-thumb-label-font-size` | `@font-size-sm` |
+| `--slider-error-color` | `var(--color-danger)` |
+| `--slider-track-background` | `#bdbdbd` |
+| `--slider-track-fill-background` | `var(--color-primary)` |
+| `--slider-thumb-block-background` | `var(--color-primary)` |
+| `--slider-thumb-ripple-background` | `var(--color-primary)` |
+| `--slider-thumb-label-background` | `var(--color-primary)` |
+| `--slider-thumb-label-font-size` | `var(--font-size-sm)` |
