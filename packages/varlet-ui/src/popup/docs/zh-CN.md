@@ -298,10 +298,10 @@ export default {
 | --- | --- | --- |
 | `default` | 弹出层内容 | `-` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@popup-overlay-background-color` | `rgba(0, 0, 0, .6)` |
-| `@popup-content-background-color` | `#fff` |
+| `--popup-overlay-background-color` | `rgba(0, 0, 0, .6)` |
+| `--popup-content-background-color` | `#fff` |

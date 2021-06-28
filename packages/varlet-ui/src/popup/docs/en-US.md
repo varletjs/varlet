@@ -298,10 +298,10 @@ export default {
 | --- | --- | --- |
 | `default` | Popup content | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@popup-overlay-background-color` | `rgba(0, 0, 0, .6)` |
-| `@popup-content-background-color` | `#fff` |
+| `--popup-overlay-background-color` | `rgba(0, 0, 0, .6)` |
+| `--popup-content-background-color` | `#fff` |

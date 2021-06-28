@@ -191,14 +191,12 @@ Verify the value through the `rules` attribute.
 | --- | --- | --- |
 | `change` | Triggered when the rating changes | `value: string \| number` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
-
-### Rate Variables
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@rate-primary-color` | `@color-primary` |
-| `@rate-disabled-color` | `#aaa` |
-| `@rate-error-color` | `@color-danger` |
-| `@rate-action-padding` | `4px` |
+| `--rate-primary-color` | `var(--color-primary)` |
+| `--rate-disabled-color` | `#aaa` |
+| `--rate-error-color` | `var(--color-danger)` |
+| `--rate-action-padding` | `4px` |

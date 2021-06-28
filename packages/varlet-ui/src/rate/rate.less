@@ -1,30 +1,37 @@
 @import '../styles/var';
 
 @rate-disabled-color: #aaa;
-@rate-error-color: @color-danger;
+@rate-error-color: var(--color-danger);
 @rate-action-padding: 4px;
-@rate-primary-color: @color-primary;
+@rate-primary-color: var(--color-primary);
+
+:root {
+  --rate-disabled-color: @rate-disabled-color;
+  --rate-error-color: @rate-error-color;
+  --rate-action-padding: @rate-action-padding;
+  --rate-primary-color: @rate-primary-color;
+}
 
 .var-rate {
   display: flex;
-  transform: translateX(-@rate-action-padding);
+  transform: translateX(calc(-1 * var(--rate-action-padding)));
 
   &__content {
-    padding: @rate-action-padding;
+    padding: var(--rate-action-padding);
     box-sizing: unset;
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
   &--disabled {
-    color: @rate-disabled-color !important;
+    color: var(--rate-disabled-color) !important;
   }
 
   &--error {
-    color: @rate-error-color !important;
+    color: var(--rate-error-color) !important;
   }
 
   &--primary {
-    color: @rate-primary-color;
+    color: var(--rate-primary-color);
   }
 }
