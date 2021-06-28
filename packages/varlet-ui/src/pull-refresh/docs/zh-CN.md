@@ -83,14 +83,13 @@ export default {
 | ----- | -------------- | -------- |
 | `default` | 默认插槽 | `-` |
 
-### 主题变量
-
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@pull-refresh-size` | `40px` |
-| `@pull-refresh-background` | `#fff` |
-| `@pull-refresh-color` | `@color-primary` |
-| `@pull-refresh-success-color` | `@color-success` |
-| `@pull-refresh-icon-size` | `25px` |
+| `--pull-refresh-size` | `40px` |
+| `--pull-refresh-background` | `#fff` |
+| `--pull-refresh-color` | `var(--color-primary)` |
+| `--pull-refresh-success-color` | `var(--color-success)` |
+| `--pull-refresh-icon-size` | `25px` |

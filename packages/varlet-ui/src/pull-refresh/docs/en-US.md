@@ -84,14 +84,13 @@ export default {
 | ----- | -------------- | -------- | 
 | `default` | Default slot | `-` |
 
-### Theme Variables
-
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@pull-refresh-size` | `40px` |
-| `@pull-refresh-background` | `#fff` |
-| `@pull-refresh-color` | `@color-primary` |
-| `@pull-refresh-success-color` | `@color-success` |
-| `@pull-refresh-icon-size` | `25px` |
+| `--pull-refresh-size` | `40px` |
+| `--pull-refresh-background` | `#fff` |
+| `--pull-refresh-color` | `var(--color-primary)` |
+| `--pull-refresh-success-color` | `var(--color-success)` |
+| `--pull-refresh-icon-size` | `25px` |

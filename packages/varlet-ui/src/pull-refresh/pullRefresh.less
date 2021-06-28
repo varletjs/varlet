@@ -3,9 +3,17 @@
 
 @pull-refresh-size: 40px;
 @pull-refresh-background: #fff;
-@pull-refresh-color: @color-primary;
-@pull-refresh-success-color: @color-success;
+@pull-refresh-color: var(--color-primary);
+@pull-refresh-success-color: var(--color-success);
 @pull-refresh-icon-size: 25px;
+
+:root {
+  --pull-refresh-size: 40px;
+  --pull-refresh-background: #fff;
+  --pull-refresh-color: @pull-refresh-color;
+  --pull-refresh-success-color: @pull-refresh-success-color;
+  --pull-refresh-icon-size: 25px
+}
 
 .var-pull-refresh {
   overflow: hidden;
@@ -14,24 +22,24 @@
 
   &__control {
     display: flex;
-    width: @pull-refresh-size;
-    height: @pull-refresh-size;
+    width: var(--pull-refresh-size);
+    height: var(--pull-refresh-size);
     align-items: center;
     justify-content: center;
-    background-color: @pull-refresh-background;
+    background-color: var(--pull-refresh-background);
     border-radius: 50%;
     position: absolute;
     left: 50%;
     z-index: 90;
-    color: @pull-refresh-color;
+    color: var(--pull-refresh-color);
 
     &-success {
-      color: @pull-refresh-success-color;
+      color: var(--pull-refresh-success-color);
     }
   }
 
   &__icon[var-pull-refresh-cover] {
-    font-size: @pull-refresh-icon-size;
+    font-size: var(--pull-refresh-icon-size);
   }
 
   &__animation {
