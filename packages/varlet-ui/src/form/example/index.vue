@@ -81,9 +81,10 @@ import Uploader from '../../uploader'
 import Counter from '../../counter'
 import Rate from '../../rate'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
-import { reactive, ref } from 'vue'
-import { watchLang } from '../../utils/components'
+import { onUnmounted, reactive, ref } from 'vue'
+import { watchLang, watchPlatform } from '../../utils/components'
 import { use, pack } from './locale'
+import context from '../../context'
 
 export default {
   name: 'FormExample',
@@ -122,6 +123,16 @@ export default {
     const form = ref(null)
     const disabled = ref(false)
     const readonly = ref(false)
+
+    const prevTouchmoveForbid = context.touchmoveForbid
+    watchPlatform((platform) => {
+      if (platform === 'pc') {
+        context.touchmoveForbid = false
+      }
+    })
+    onUnmounted(() => {
+      context.touchmoveForbid = prevTouchmoveForbid
+    })
 
     watchLang((lang) => {
       use(lang)
