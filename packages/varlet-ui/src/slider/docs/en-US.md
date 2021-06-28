@@ -148,15 +148,16 @@ Verify the value through the `rules` attribute.
 | `start` | Emitted when start dragged | `-` |
 | `end` | Emitted when end dragged | value: current value |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@slider-error-color` | `@color-danger` |
-| `@slider-track-background` | `#bdbdbd` |
-| `@slider-track-fill-background` | `@color-primary` |
-| `@slider-thumb-block-background` | `@color-primary` |
-| `@slider-thumb-ripple-background` | `@color-primary` |
-| `@slider-thumb-label-background` | `@color-primary` |
-| `@slider-thumb-label-font-size` | `@font-size-sm` |
+| `--slider-error-color` | `var(--color-danger)` |
+| `--slider-track-background` | `#bdbdbd` |
+| `--slider-track-fill-background` | `var(--color-primary)` |
+| `--slider-thumb-block-background` | `var(--color-primary)` |
+| `--slider-thumb-ripple-background` | `var(--color-primary)` |
+| `--slider-thumb-label-background` | `var(--color-primary)` |
+| `--slider-thumb-label-font-size` | `var(--font-size-sm)` |
