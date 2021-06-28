@@ -93,12 +93,6 @@ export default defineComponent({
 })
 </script>
 
-<style>
-.var-image-preview__image {
-  pointer-events: none;
-}
-</style>
-
 <style lang="less" scoped>
 .image-preview-demo {
   .var-button {

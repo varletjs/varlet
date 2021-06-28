@@ -291,9 +291,6 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--uploader-file-close-icon-color`        | `#fff`                                                                                       |
 | `--uploader-file-cover-fit`               | `cover`                                                                                      |
 | `--uploader-file-cover-background`        | `#f7f8fa`                                                                                    |
-| `--uploader-preview-image-width`          | `100%`                                                                                       |
-| `--uploader-preview-image-height`         | `100%`                                                                                       |
-| `--uploader-preview-image-fit`            | `contain`                                                                                    |
 | `--uploader-preview-video-width`          | `100vw`                                                                                      |
 | `--uploader-preview-video-height`         | `100vw`                                                                                      |
 | `--uploader-file-indicator-height`        | `4px`                                                                                        |

@@ -18,9 +18,6 @@
 @uploader-file-close-icon-color: #fff;
 @uploader-file-cover-fit: cover;
 @uploader-file-cover-background: #f7f8fa;
-@uploader-preview-image-width: 100%;
-@uploader-preview-image-height: 100%;
-@uploader-preview-image-fit: contain;
 @uploader-preview-video-width: 100vw;
 @uploader-preview-video-height: 100vw;
 @uploader-file-indicator-height: 4px;
@@ -53,9 +50,6 @@
   --uploader-file-close-icon-color: @uploader-file-close-icon-color;
   --uploader-file-cover-fit: @uploader-file-cover-fit;
   --uploader-file-cover-background: @uploader-file-cover-background;
-  --uploader-preview-image-width: @uploader-preview-image-width;
-  --uploader-preview-image-height: @uploader-preview-image-height;
-  --uploader-preview-image-fit: @uploader-preview-image-fit;
   --uploader-preview-video-width: @uploader-preview-video-width;
   --uploader-preview-video-height: @uploader-preview-video-height;
   --uploader-file-indicator-height: @uploader-file-indicator-height;
@@ -135,7 +129,7 @@
 
   &__file-close-icon[var-uploader-cover] {
     position: absolute;
-    top: var(--uploader-file-close-size);
+    top: calc(-1 * var(--uploader-file-close-size));
     right: 0;
     font-size: var(--uploader-file-close-icon-font-size);
     color: var(--uploader-file-close-icon-color);
@@ -186,12 +180,6 @@
   &__preview[var-uploader-cover] {
     background: #000;
     box-shadow: none;
-  }
-
-  &__preview-image {
-    width: var(--uploader-preview-image-width);
-    height: var(--uploader-preview-image-height);
-    object-fit: var(--uploader-preview-image-fit);
   }
 
   &__preview-video {

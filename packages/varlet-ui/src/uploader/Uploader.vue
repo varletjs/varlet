@@ -64,13 +64,6 @@
       v-model:show="showPreview"
       @closed="currentPreview = null"
     >
-      <img
-        class="var-uploader__preview-image"
-        :src="currentPreview.url"
-        :alt="currentPreview.name"
-        v-if="currentPreview && isHTMLSupportImage(currentPreview.url)"
-        @click="showPreview = false"
-      />
       <video
         class="var-uploader__preview-video"
         playsinline="true"
@@ -91,6 +84,7 @@ import FormDetails from '../form-details'
 import Ripple from '../ripple'
 import Icon from '../icon'
 import Popup from '../popup'
+import ImagePreview from '../image-preview'
 import { defineComponent, nextTick, reactive, computed, ComputedRef, watch, ref, Ref } from 'vue'
 import { props, VarFile, ValidateTriggers } from './props'
 import { isNumber, isHTMLSupportImage, isHTMLSupportVideo, toNumber, isString } from '../utils/shared'
@@ -108,6 +102,8 @@ interface VarFileUtils {
   getSuccess(varFiles: VarFile[]): VarFile[]
   getError(varFiles: VarFile[]): VarFile[]
 }
+
+let imagePreviewInstance = null
 
 export default defineComponent({
   name: 'VarUploader',
@@ -148,7 +144,12 @@ export default defineComponent({
 
       const { url } = varFile
 
-      if (isString(url) && (isHTMLSupportImage(url) || isHTMLSupportVideo(url))) {
+      if (isString(url) && isHTMLSupportImage(url)) {
+        imagePreviewInstance = ImagePreview(url)
+        return
+      }
+
+      if (isString(url) && isHTMLSupportVideo(url)) {
         currentPreview.value = varFile
         showPreview.value = true
       }
@@ -333,5 +334,6 @@ export default defineComponent({
 @import '../form-details/formDetails';
 @import '../icon/icon';
 @import '../popup/popup';
+@import '../image-preview/imagePreview';
 @import './uploader';
 </style>

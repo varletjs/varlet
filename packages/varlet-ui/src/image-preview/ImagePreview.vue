@@ -199,25 +199,26 @@ export default defineComponent({
         width: offsetWidth,
         height: offsetHeight,
         imageRadio: naturalHeight / naturalWidth,
+        rootRadio: offsetHeight / offsetWidth,
         zoom: toNumber(props.zoom),
       }
     }
 
     const getLimitX = (target: HTMLElement) => {
-      const { zoom, imageRadio, width, height } = getZoom(target)
+      const { zoom, imageRadio, rootRadio, width, height } = getZoom(target)
       if (!imageRadio) {
         return 0
       }
-      const displayWidth = imageRadio > 1 ? height / imageRadio : width
+      const displayWidth = imageRadio > rootRadio ? height / imageRadio : width
       return Math.max(0, (zoom * displayWidth - width) / 2) / zoom
     }
 
     const getLimitY = (target: HTMLElement) => {
-      const { zoom, imageRadio, width, height } = getZoom(target)
+      const { zoom, imageRadio, rootRadio, width, height } = getZoom(target)
       if (!imageRadio) {
         return 0
       }
-      const displayHeight = imageRadio > 1 ? height : width * imageRadio
+      const displayHeight = imageRadio > rootRadio ? height : width * imageRadio
       return Math.max(0, (zoom * displayHeight - height) / 2) / zoom
     }
 

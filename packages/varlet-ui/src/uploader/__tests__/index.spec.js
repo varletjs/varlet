@@ -1,9 +1,10 @@
 import example from '../example'
 import Uploader from '..'
 import VarUploader from '../Uploader'
+import ImagePreview from '../../image-preview'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockFileReader } from '../../utils/jest'
+import { delay, mockFileReader, mockStubs } from '../../utils/jest'
 
 const createEvent = (filename) => {
   return {
@@ -60,6 +61,7 @@ test('test uploader onBeforeRead', async () => {
 
 test('test uploader preview', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
+  const { mockRestore: mockRestoreStubs } = mockStubs()
   const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarUploader, {
@@ -73,8 +75,11 @@ test('test uploader preview', async () => {
   await wrapper.find('.var-uploader__file').trigger('click')
   await delay(16)
 
-  expect(wrapper.find('.var-popup').isVisible()).toBe(true)
+  expect(document.querySelector('.var-popup').style.display).toBe('')
+  ImagePreview.close()
+  await delay(300)
 
+  mockRestoreStubs()
   wrapper.unmount()
   mockRestore()
 })
