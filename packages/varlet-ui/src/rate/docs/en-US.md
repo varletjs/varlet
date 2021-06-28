@@ -171,7 +171,7 @@ Verify the value through the `rules` attribute.
 | --- | --- | --- | --- | 
 | `v-model` | The current rating  | _number \| string_ | `0` |
 | `count` | total rating  | _number \| string_ | `5` |
-| `color` | The color of the icon when selected  | _string_ | `@color-primary` |
+| `color` | The color of the icon when selected  | _string_ | `-` |
 | `icon` | The icon style when the entire icon is selected  | _string_ | `star` |
 | `empty-color` | The color of the icon when unchecked | _string_ | `#bdbdbd` |
 | `empty-icon` | Style of the icon when unchecked | _string_ | `star-outline` |

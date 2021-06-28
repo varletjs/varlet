@@ -3,16 +3,16 @@
 exports[`test rate count 1`] = `
 "<div class=\\"var-rate__warp\\">
   <div class=\\"var-rate\\">
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -23,11 +23,11 @@ exports[`test rate count 1`] = `
 exports[`test rate disabled & readonly 1`] = `
 "<div class=\\"var-rate__warp\\">
   <div class=\\"var-rate\\">
-    <div style=\\"color: rgb(189, 189, 189); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(189, 189, 189); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(189, 189, 189); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(189, 189, 189); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(189, 189, 189); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -38,11 +38,11 @@ exports[`test rate disabled & readonly 1`] = `
 exports[`test rate disabled & readonly 2`] = `
 "<div class=\\"var-rate__warp\\">
   <div class=\\"var-rate\\">
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -57,8 +57,8 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -70,11 +70,11 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -135,8 +135,8 @@ exports[`test rate example 1`] = `
     <div style=\\"color: red; margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"color: red; margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"color: red; margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -148,8 +148,8 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 2px; width: 16px; height: 16px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 16px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 16px; height: 16px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 16px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 16px; height: 16px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 16px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 16px; height: 16px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 16px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 16px; height: 16px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 16px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 16px; height: 16px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 16px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 16px; height: 16px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 16px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -160,8 +160,8 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 2px; width: 18px; height: 18px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 18px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 18px; height: 18px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 18px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 18px; height: 18px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 18px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 18px; height: 18px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 18px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 18px; height: 18px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 18px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 18px; height: 18px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 18px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 18px; height: 18px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 18px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -172,8 +172,8 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 2px; width: 20px; height: 20px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 20px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 20px; height: 20px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 20px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 20px; height: 20px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 20px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 20px; height: 20px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 20px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 20px; height: 20px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 20px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 20px; height: 20px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 20px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 20px; height: 20px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 20px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -184,8 +184,8 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -197,8 +197,8 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -209,8 +209,8 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -221,8 +221,8 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 6px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 6px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 6px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 6px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 6px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -233,8 +233,8 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 8px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 8px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 8px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 8px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 8px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -247,10 +247,10 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star-half-full\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -262,10 +262,10 @@ exports[`test rate example 1`] = `
     <div style=\\"color: red; margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"color: red; margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"color: red; margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -290,8 +290,8 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -303,8 +303,8 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -316,8 +316,8 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -329,8 +329,8 @@ exports[`test rate example 1`] = `
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -341,11 +341,11 @@ exports[`test rate example 1`] = `
 exports[`test rate gap 1`] = `
 "<div class=\\"var-rate__warp\\">
   <div class=\\"var-rate\\">
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 10px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 10px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 10px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 10px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 10px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 10px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 10px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 10px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -356,11 +356,11 @@ exports[`test rate gap 1`] = `
 exports[`test rate validation 1`] = `
 "<div class=\\"var-rate__warp\\">
   <div class=\\"var-rate\\">
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <div class=\\"var-form-details\\">
@@ -375,10 +375,10 @@ exports[`test rate validation 2`] = `
 "<div class=\\"var-rate__warp\\">
   <div class=\\"var-rate\\">
     <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--primary\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
-    <div style=\\"color: rgb(85, 85, 85); margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
+    <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: all 0ms; font-size: 24px;\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->

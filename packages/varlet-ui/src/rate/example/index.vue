@@ -55,12 +55,13 @@
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue'
+import { onUnmounted, reactive, toRefs } from 'vue'
 import Rate from '..'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
 import { pack, use } from './locale'
-import { watchLang } from '../../utils/components'
+import { watchLang, watchPlatform } from '../../utils/components'
+import context from '../../context'
 
 export default {
   name: 'RateExample',
@@ -92,12 +93,22 @@ export default {
       })
     }
 
+    const prevTouchmoveForbid = context.touchmoveForbid
+    watchPlatform((platform) => {
+      if (platform === 'pc') {
+        context.touchmoveForbid = false
+      }
+    })
+    onUnmounted(() => {
+      context.touchmoveForbid = prevTouchmoveForbid
+    })
+
     watchLang(use)
 
     return {
       handleChange,
       pack,
-      ...toRefs(scores)
+      ...toRefs(scores),
     }
   },
 }

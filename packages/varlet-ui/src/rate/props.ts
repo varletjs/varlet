@@ -18,7 +18,6 @@ export const props = {
   },
   emptyColor: {
     type: String,
-    default: '#555555',
   },
   emptyIcon: {
     type: String,
@@ -46,7 +45,6 @@ export const props = {
   },
   disabledColor: {
     type: String,
-    default: '#bdbdbd',
   },
   readonly: {
     type: Boolean,
