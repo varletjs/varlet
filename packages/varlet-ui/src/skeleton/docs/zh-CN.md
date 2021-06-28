@@ -108,22 +108,24 @@ export default {
 | --- | --- | --- |
 | `default` | 加载成功后显示的内容 | `-` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+
+以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+
 | 变量名 | 默认值 |
 | --- | --- |
-| `@skeleton-content-padding` | `16px` |
-| `@skeleton-card-height` | `160px` |
-| `@skeleton-card-border-radius` | `4px` |
-| `@skeleton-card-margin-bottom` | `16px` |
-| `@skeleton-card-background-color` | `rgba(0, 0, 0, 0.12)` |
-| `@skeleton-animation-background` | `linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0))` |
-| `@skeleton-avatar-size` | `34px` |
-| `@skeleton-avatar-margin-right` | `16px` |
-| `@skeleton-avatar-background-color` | `rgba(0, 0, 0, 0.12)` |
-| `@skeleton-title-width` | `50%` |
-| `@skeleton-title-border-radius` | `10px` |
-| `@skeleton-title-background-color` | `rgba(0, 0, 0, 0.12)` |
-| `@skeleton-row-height` | `12px` |
-| `@skeleton-row-border-radius` | `10px` |
-| `@skeleton-row-margin-top` | `10px` |
+| `--skeleton-content-padding` | `16px` |
+| `--skeleton-card-height` | `160px` |
+| `--skeleton-card-border-radius` | `4px` |
+| `--skeleton-card-margin-bottom` | `16px` |
+| `--skeleton-card-background-color` | `rgba(0, 0, 0, 0.12)` |
+| `--skeleton-animation-background` | `linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0))` |
+| `--skeleton-avatar-size` | `34px` |
+| `--skeleton-avatar-margin-right` | `16px` |
+| `--skeleton-avatar-background-color` | `rgba(0, 0, 0, 0.12)` |
+| `--skeleton-title-width` | `50%` |
+| `--skeleton-title-border-radius` | `10px` |
+| `--skeleton-title-background-color` | `rgba(0, 0, 0, 0.12)` |
+| `--skeleton-row-height` | `12px` |
+| `--skeleton-row-border-radius` | `10px` |
+| `--skeleton-row-margin-top` | `10px` |

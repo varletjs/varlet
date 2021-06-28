@@ -109,23 +109,24 @@ export default {
 | --- | --- | --- |
 | `default` | 加载成功后显示的内容 | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@skeleton-content-padding` | `16px` |
-| `@skeleton-card-height` | `160px` |
-| `@skeleton-card-border-radius` | `4px` |
-| `@skeleton-card-margin-bottom` | `16px` |
-| `@skeleton-card-background-color` | `rgba(0, 0, 0, 0.12)` |
-| `@skeleton-animation-background` | `linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0))` |
-| `@skeleton-avatar-size` | `34px` |
-| `@skeleton-avatar-margin-right` | `16px` |
-| `@skeleton-avatar-background-color` | `rgba(0, 0, 0, 0.12)` |
-| `@skeleton-title-width` | `50%` |
-| `@skeleton-title-border-radius` | `10px` |
-| `@skeleton-title-background-color` | `rgba(0, 0, 0, 0.12)` |
-| `@skeleton-row-height` | `12px` |
-| `@skeleton-row-border-radius` | `10px` |
-| `@skeleton-row-margin-top` | `10px` |
+| `--skeleton-content-padding` | `16px` |
+| `--skeleton-card-height` | `160px` |
+| `--skeleton-card-border-radius` | `4px` |
+| `--skeleton-card-margin-bottom` | `16px` |
+| `--skeleton-card-background-color` | `rgba(0, 0, 0, 0.12)` |
+| `--skeleton-animation-background` | `linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0))` |
+| `--skeleton-avatar-size` | `34px` |
+| `--skeleton-avatar-margin-right` | `16px` |
+| `--skeleton-avatar-background-color` | `rgba(0, 0, 0, 0.12)` |
+| `--skeleton-title-width` | `50%` |
+| `--skeleton-title-border-radius` | `10px` |
+| `--skeleton-title-background-color` | `rgba(0, 0, 0, 0.12)` |
+| `--skeleton-row-height` | `12px` |
+| `--skeleton-row-border-radius` | `10px` |
+| `--skeleton-row-margin-top` | `10px` |

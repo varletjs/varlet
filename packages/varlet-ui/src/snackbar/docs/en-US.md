@@ -213,21 +213,22 @@ The `clear` method on the instance can close the current instance, and the `clea
 | `onClose` |	Triggered when the `Snackbar` is close | - |
 | `onClosed` | 	Triggered when the `Snackbar` close-animation ends | - |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@snackbar-width` | `256px` |
-| `@snackbar-color` | `rgba(255, 255, 255, .87)` |
-| `@snackbar-border-radius` | `4px` |
-| `@snackbar-background` | `#333` |
-| `@snackbar-font-size` | `@font-size-md` |
-| `@snackbar-margin` | `6px 24px` |
-| `@snackbar-border-color` | `currentColor` |
-| `@snackbar-success-background` | `@color-success` |
-| `@snackbar-info-background` | `@color-info` |
-| `@snackbar-error-background` | `@color-danger` |
-| `@snackbar-warning-background` | `@color-warning` |
-| `@snackbar-content-padding` | `14px 16px` |
-| `@snackbar-action-margin` | `0 16px 0 0` |
+| `--snackbar-width` | `256px` |
+| `--snackbar-color` | `rgba(255, 255, 255, .87)` |
+| `--snackbar-border-radius` | `4px` |
+| `--snackbar-background` | `#333` |
+| `--snackbar-font-size` | `var(--font-size-md)` |
+| `--snackbar-margin` | `6px 24px` |
+| `--snackbar-border-color` | `currentColor` |
+| `--snackbar-success-background` | `var(--color-success)` |
+| `--snackbar-info-background` | `var(--color-info)` |
+| `--snackbar-error-background` | `var(--color-danger)` |
+| `--snackbar-warning-background` | `var(--color-warning)` |
+| `--snackbar-content-padding` | `14px 16px` |
+| `--snackbar-action-margin` | `0 16px 0 0` |

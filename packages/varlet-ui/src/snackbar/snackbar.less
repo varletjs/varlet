@@ -6,15 +6,31 @@
 @snackbar-color: rgba(255, 255, 255, 0.87);
 @snackbar-border-radius: 4px;
 @snackbar-background: #333;
-@snackbar-font-size: @font-size-md;
+@snackbar-font-size: var(--font-size-md);
 @snackbar-margin: 6px 24px;
 @snackbar-border-color: currentColor;
-@snackbar-success-background: @color-success;
-@snackbar-info-background: @color-info;
-@snackbar-error-background: @color-danger;
-@snackbar-warning-background: @color-warning;
+@snackbar-success-background: var(--color-success);
+@snackbar-info-background: var(--color-info);
+@snackbar-error-background: var(--color-danger);
+@snackbar-warning-background: var(--color-warning);
 @snackbar-content-padding: 14px 16px;
 @snackbar-action-margin: 0 16px 0 0;
+
+:root {
+  --snackbar-width: @snackbar-width;
+  --snackbar-color: @snackbar-color;
+  --snackbar-border-radius: @snackbar-border-radius;
+  --snackbar-background: @snackbar-background;
+  --snackbar-font-size: @snackbar-font-size;
+  --snackbar-margin: @snackbar-margin;
+  --snackbar-border-color: @snackbar-border-color;
+  --snackbar-success-background: @snackbar-success-background;
+  --snackbar-info-background: @snackbar-info-background;
+  --snackbar-error-background: @snackbar-error-background;
+  --snackbar-warning-background: @snackbar-warning-background;
+  --snackbar-content-padding: @snackbar-content-padding;
+  --snackbar-action-margin: @snackbar-action-margin;
+}
 
 .var-transition-group {
   position: fixed;
@@ -37,45 +53,45 @@
     left: 0;
     right: 0;
     bottom: 0;
-    transition: all 0.15s @cubic-bezier;
+    transition: all 0.15s var(--cubic-bezier);
 
     &__wrapper {
-      width: @snackbar-width;
+      width: var(--snackbar-width);
       display: flex;
-      border-radius: @snackbar-border-radius;
-      color: @snackbar-color;
-      background: @snackbar-background;
-      font-size: @snackbar-font-size;
-      margin: @snackbar-margin;
+      border-radius: var(--snackbar-border-radius);
+      color: var(--snackbar-color);
+      background: var(--snackbar-background);
+      font-size: var(--snackbar-font-size);
+      margin: var(--snackbar-margin);
       align-items: center;
-      border-color: @snackbar-border-color;
+      border-color: var(--snackbar-border-color);
       pointer-events: auto;
-      transition: 0.3s @cubic-bezier;
+      transition: 0.3s var(--cubic-bezier);
 
       &-success {
-        background: @snackbar-success-background;
+        background: var(--snackbar-success-background);
       }
 
       &-info {
-        background: @snackbar-info-background;
+        background: var(--snackbar-info-background);
       }
 
       &-warning {
-        background: @snackbar-warning-background;
+        background: var(--snackbar-warning-background);
       }
 
       &-error {
-        background: @snackbar-error-background;
+        background: var(--snackbar-error-background);
       }
     }
 
     &__content {
       flex-grow: 1;
-      padding: @snackbar-content-padding;
+      padding: var(--snackbar-content-padding);
     }
 
     &__action {
-      margin: @snackbar-action-margin;
+      margin: var(--snackbar-action-margin);
       display: flex;
     }
 

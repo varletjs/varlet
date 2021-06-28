@@ -1,117 +1,130 @@
 @skeleton-content-padding: 16px;
-
 @skeleton-card-height: 160px;
 @skeleton-card-border-radius: 4px;
 @skeleton-card-margin-bottom: 16px;
 @skeleton-card-background-color: rgba(0, 0, 0, 0.12);
-
 @skeleton-animation-background: linear-gradient(
-	90deg,
-	hsla(0, 0%, 100%, 0),
-	hsla(0, 0%, 100%, 0.3),
-	hsla(0, 0%, 100%, 0)
+  90deg,
+  hsla(0, 0%, 100%, 0),
+  hsla(0, 0%, 100%, 0.3),
+  hsla(0, 0%, 100%, 0)
 );
-
 @skeleton-avatar-size: 34px;
 @skeleton-avatar-margin-right: 16px;
 @skeleton-avatar-background-color: rgba(0, 0, 0, 0.12);
-
 @skeleton-title-width: 50%;
 @skeleton-title-border-radius: 10px;
 @skeleton-title-background-color: rgba(0, 0, 0, 0.12);
-
 @skeleton-row-height: 12px;
 @skeleton-row-border-radius: 10px;
 @skeleton-row-margin-top: 10px;
 
-@keyframes var-skeleton-animation {
-	from {
-		transform: translateX(-100%);
-	}
+:root {
+  --skeleton-content-padding: @skeleton-content-padding;
+  --skeleton-card-height: @skeleton-card-height;
+  --skeleton-card-border-radius: @skeleton-card-border-radius;
+  --skeleton-card-margin-bottom: @skeleton-card-margin-bottom;
+  --skeleton-card-background-color: @skeleton-card-background-color;
+  --skeleton-animation-background: @skeleton-animation-background;
+  --skeleton-avatar-size: @skeleton-avatar-size;
+  --skeleton-avatar-margin-right: @skeleton-avatar-margin-right;
+  --skeleton-avatar-background-color: @skeleton-avatar-background-color;
+  --skeleton-title-width: @skeleton-title-width;
+  --skeleton-title-border-radius: @skeleton-title-border-radius;
+  --skeleton-title-background-color: @skeleton-title-background-color;
+  --skeleton-row-height: @skeleton-row-height;
+  --skeleton-row-border-radius: @skeleton-row-border-radius;
+  --skeleton-row-margin-top: @skeleton-row-margin-top;
+}
 
-	to {
-		transform: translateX(100%);
-	}
+@keyframes var-skeleton-animation {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
 }
 
 .var-skeleton {
-	width: 100%;
+  width: 100%;
 
-	&__content {
-		padding: @skeleton-content-padding;
-	}
+  &__content {
+    padding: var(--skeleton-content-padding);
+  }
 
-	&__card {
-		position: relative;
-		overflow: hidden;
-		width: 100%;
-		height: @skeleton-card-height;
-		background-color: @skeleton-card-background-color;
-		margin-bottom: @skeleton-card-margin-bottom;
-		border-radius: @skeleton-card-border-radius;
-	}
+  &__card {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: var(--skeleton-card-height);
+    background-color: var(--skeleton-card-background-color);
+    margin-bottom: var(--skeleton-card-margin-bottom);
+    border-radius: var(--skeleton-card-border-radius);
+  }
 
-	&__article {
-		display: flex;
-		width: 100%;
-	}
+  &__article {
+    display: flex;
+    width: 100%;
+  }
 
-	&__avatar {
-		position: relative;
-		overflow: hidden;
-		flex-shrink: 0;
-		width: @skeleton-avatar-size;
-		height: @skeleton-avatar-size;
-		border-radius: 50%;
-		background-color: @skeleton-avatar-background-color;
-		margin-right: @skeleton-avatar-margin-right;
-	}
+  &__avatar {
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    width: var(--skeleton-avatar-size);
+    height: var(--skeleton-avatar-size);
+    border-radius: 50%;
+    background-color: var(--skeleton-avatar-background-color);
+    margin-right: var(--skeleton-avatar-margin-right);
+  }
 
-	&__section {
-		width: 100%;
-		padding-top: 8px;
-	}
+  &__section {
+    width: 100%;
+    padding-top: 8px;
+  }
 
-	&__title {
-		position: relative;
-		overflow: hidden;
-		width: @skeleton-title-width;
-		height: @skeleton-row-height;
-		background-color: @skeleton-title-background-color;
-		border-radius: @skeleton-title-border-radius;
-	}
+  &__title {
+    position: relative;
+    overflow: hidden;
+    width: var(--skeleton-title-width);
+    height: var(--skeleton-row-height);
+    background-color: var(--skeleton-title-background-color);
+    border-radius: var(--skeleton-title-border-radius);
+  }
 
-	&__row {
-		position: relative;
-		overflow: hidden;
-		width: 100%;
-		height: @skeleton-row-height;
-		background-color: @skeleton-title-background-color;
-		margin-top: @skeleton-row-margin-top;
-		border-radius: @skeleton-row-border-radius;
-	}
+  &__row {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: var(--skeleton-row-height);
+    background-color: var(--skeleton-title-background-color);
+    margin-top: var(--skeleton-row-margin-top);
+    border-radius: var(--skeleton-row-border-radius);
+  }
 
-	&__fullscreen {
-		position: fixed;
-		overflow: hidden;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		right: 0;
-		background-color: @skeleton-title-background-color;
-	}
+  &__fullscreen {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--skeleton-title-background-color);
+  }
 
-	&--animation {
-		&:after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			z-index: 1;
-			animation: var-skeleton-animation 1s infinite;
-			background: @skeleton-animation-background;
-		}
-	}
+  &--animation {
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      animation: var-skeleton-animation 1s infinite;
+      background: var(--skeleton-animation-background);
+    }
+  }
 }
