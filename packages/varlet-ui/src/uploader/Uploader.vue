@@ -103,8 +103,6 @@ interface VarFileUtils {
   getError(varFiles: VarFile[]): VarFile[]
 }
 
-let imagePreviewInstance = null
-
 export default defineComponent({
   name: 'VarUploader',
   directives: { Ripple },
@@ -145,7 +143,7 @@ export default defineComponent({
       const { url } = varFile
 
       if (isString(url) && isHTMLSupportImage(url)) {
-        imagePreviewInstance = ImagePreview(url)
+        ImagePreview(url)
         return
       }
 
