@@ -18,7 +18,7 @@ export interface ActionSheetProps {
   onClosed?: () => void
   onSelect?: (action: ActionItem) => void
   onClickOverlay?: () => void
-  'onUpdate:show': (show: boolean) => void
+  'onUpdate:show'?: (show: boolean) => void
 }
 
 export interface ActionItem {

@@ -28,7 +28,7 @@ export interface DialogProps {
   onConfirm?: () => void
   onCancel?: () => void
   onClickOverlay?: () => void
-  'onUpdate:show': (show: boolean) => void
+  'onUpdate:show'?: (show: boolean) => void
 }
 
 export class DialogComponent extends VarComponent {

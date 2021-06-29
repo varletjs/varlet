@@ -9,7 +9,7 @@ export interface MenuProps {
   onOpened?: () => void
   onClose?: () => void
   onClosed?: () => void
-  'onUpdate:show': (show: boolean) => void
+  'onUpdate:show'?: (show: boolean) => void
 }
 
 export class Menu extends VarComponent {

@@ -25,7 +25,7 @@ export interface InputProps {
   onClear?: (value: string | number) => void
   onInput?: (value: string | number, e: Event) => void
   onChange?: (value: string | number, e: Event) => void
-  'onUpdate:modelValue': (value: string | number) => void
+  'onUpdate:modelValue'?: (value: string | number) => void
 }
 
 export class Input extends VarComponent {

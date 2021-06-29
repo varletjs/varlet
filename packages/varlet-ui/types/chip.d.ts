@@ -10,7 +10,7 @@ export interface ChipProps {
   round?: boolean
   block?: boolean
   closable?: boolean
-  onClose: (e: Event) => void
+  onClose?: (e: Event) => void
 }
 
 export class Chip extends VarComponent {

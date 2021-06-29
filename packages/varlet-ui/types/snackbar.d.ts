@@ -18,7 +18,7 @@ export interface SnackbarProps {
   onClose?: () => void
   onOpened?: () => void
   onClosed?: () => void
-  'onUpdate:show': (show: boolean) => void
+  'onUpdate:show'?: (show: boolean) => void
 }
 
 export class SnackbarComponent extends VarComponent {

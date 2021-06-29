@@ -10,7 +10,7 @@ export interface PullRefreshProps {
   color?: string
   successColor?: string
   onRefresh: () => void
-  'onUpdate:modelValue': (value: boolean) => void
+  'onUpdate:modelValue'?: (value: boolean) => void
 }
 
 export class PullRefresh extends VarComponent {

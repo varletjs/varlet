@@ -15,7 +15,7 @@ export interface ImagePreviewProps {
   onClose?: () => void
   onClosed?: () => void
   onChange?: (index: number) => void
-  'onUpdate:show': (show: boolean) => void
+  'onUpdate:show'?: (show: boolean) => void
 }
 
 export interface ImagePreviewOptions {
