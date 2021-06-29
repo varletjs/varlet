@@ -19,4 +19,6 @@ StyleProvider.install = function (app: App) {
   app.component(VarStyleProvider.name, VarStyleProvider)
 }
 
+export const _StyleProviderComponent = VarStyleProvider
+
 export default StyleProvider

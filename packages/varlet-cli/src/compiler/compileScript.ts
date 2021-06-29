@@ -58,7 +58,10 @@ export async function compileLibraryEntry(
   modules: string | boolean = false
 ) {
   const imports = exportDirNames
-    .map((exportDirNames: string) => `import ${bigCamelize(exportDirNames)} from './${exportDirNames}'`)
+    .map(
+      (exportDirNames: string) =>
+        `import ${bigCamelize(exportDirNames)}, { _${bigCamelize(exportDirNames)}Component } from './${exportDirNames}'`
+    )
     .join('\n')
 
   const requires = exportDirNames
@@ -75,7 +78,9 @@ function install(app) {
   const esExports = `\
 export {
   install,
-  ${exportDirNames.map((exportDirName: string) => `${bigCamelize(exportDirName)}`).join(',\n  ')}
+  ${exportDirNames
+    .map((exportDirName: string) => `${bigCamelize(exportDirName)},\n  _${bigCamelize(exportDirName)}Component`)
+    .join(',\n  ')}
 }
 
 export default {
