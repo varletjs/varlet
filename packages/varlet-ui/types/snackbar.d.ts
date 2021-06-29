@@ -1,7 +1,29 @@
 import type { App } from 'vue'
 import { VarComponent } from './varComponent'
 
-export class SnackbarComponent extends VarComponent {}
+export interface SnackbarProps {
+  type?: SnackbarType
+  content?: string
+  position?: 'top' | 'center' | 'bottom'
+  loadingType?: string
+  loadingSize?: string
+  teleport?: string
+  lockScroll?: boolean
+  contentClass?: string
+  duration?: number
+  vertical?: boolean
+  show?: boolean
+  forbidClick?: boolean
+  onOpen?: () => void
+  onClose?: () => void
+  onOpened?: () => void
+  onClosed?: () => void
+  'onUpdate:show': (show: boolean) => void
+}
+
+export class SnackbarComponent extends VarComponent {
+  $props: SnackbarProps
+}
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
@@ -37,15 +59,15 @@ export interface ISnackbar {
 
   allowMultiple(bool: boolean): void
 
-  success(any): SnackbarHandel
+  success(options: SnackbarOptions | string): SnackbarHandel
 
-  warning(any): SnackbarHandel
+  warning(options: SnackbarOptions | string): SnackbarHandel
 
-  info(any): SnackbarHandel
+  info(options: SnackbarOptions | string): SnackbarHandel
 
-  error(any): SnackbarHandel
+  error(options: SnackbarOptions | string): SnackbarHandel
 
-  loading(any): SnackbarHandel
+  loading(options: SnackbarOptions | string): SnackbarHandel
 
   clear(): void
 }

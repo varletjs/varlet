@@ -41,25 +41,23 @@ interface UniqSnackbarOptions {
 }
 
 interface Snackbar {
-  (options: any): SnackbarHandel
+  (options: SnackbarOptions | string): SnackbarHandel
 
   install(app: App): void
 
   allowMultiple(bool: boolean): void
 
-  success(options: any): SnackbarHandel
+  success(options: SnackbarOptions | string): SnackbarHandel
 
-  warning(options: any): SnackbarHandel
+  warning(options: SnackbarOptions | string): SnackbarHandel
 
-  info(options: any): SnackbarHandel
+  info(options: SnackbarOptions | string): SnackbarHandel
 
-  error(options: any): SnackbarHandel
+  error(options: SnackbarOptions | string): SnackbarHandel
 
-  loading(options: any): SnackbarHandel
+  loading(options: SnackbarOptions | string): SnackbarHandel
 
   clear(): void
-
-  isAllowMultiple: boolean
 
   Component: Component
 }
@@ -67,6 +65,7 @@ interface Snackbar {
 let sid = 0
 let isMount = false
 let unmount: () => void
+let isAllowMultiple = false
 let uniqSnackbarOptions: Array<UniqSnackbarOptions> = reactive<UniqSnackbarOptions[]>([])
 
 const defaultOption: Partial<Record<keyof SnackbarOptions, any>> = {
@@ -117,7 +116,7 @@ const TransitionGroupHost = {
           ;(transitionGroupEl as HTMLElement).classList.remove('var-pointer-auto')
         }
 
-        if (Snackbar.isAllowMultiple) option.reactiveSnackOptions.position = 'top'
+        if (isAllowMultiple) option.reactiveSnackOptions.position = 'top'
 
         return h(VarSnackbarCore, getOption(option))
       })
@@ -141,8 +140,8 @@ const TransitionGroupHost = {
   },
 }
 
-const Snackbar: Snackbar = <Snackbar>function (options: any): SnackbarHandel {
-  const snackOptions: SnackbarOptions = isPlainObject(options) ? options : { content: String(options) }
+const Snackbar: Snackbar = <Snackbar>function (options: SnackbarOptions | string): SnackbarHandel {
+  const snackOptions: SnackbarOptions = isPlainObject(options) ? options : { content: options }
   const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>({
     ...defaultOption,
     ...snackOptions,
@@ -160,7 +159,7 @@ const Snackbar: Snackbar = <Snackbar>function (options: any): SnackbarHandel {
     reactiveSnackOptions,
   }
 
-  if (length === 0 || Snackbar.isAllowMultiple) {
+  if (length === 0 || isAllowMultiple) {
     addUniqOption(uniqSnackbarOptionItem)
   } else {
     const _update = `update-${sid}`
@@ -169,7 +168,7 @@ const Snackbar: Snackbar = <Snackbar>function (options: any): SnackbarHandel {
 
   return {
     clear() {
-      if (!Snackbar.isAllowMultiple && uniqSnackbarOptions.length) {
+      if (!isAllowMultiple && uniqSnackbarOptions.length) {
         uniqSnackbarOptions[0].reactiveSnackOptions.show = false
       } else {
         reactiveSnackOptions.show = false
@@ -179,12 +178,12 @@ const Snackbar: Snackbar = <Snackbar>function (options: any): SnackbarHandel {
 }
 
 SNACKBAR_TYPE.forEach((type) => {
-  Snackbar[type] = (options: any): SnackbarHandel => {
+  Snackbar[type] = (options: SnackbarOptions | string): SnackbarHandel => {
     if (isPlainObject(options)) {
       options.type = type
     } else {
       options = {
-        content: String(options),
+        content: options,
         type,
       }
     }
@@ -197,12 +196,12 @@ Snackbar.install = function (app: App) {
 }
 
 Snackbar.allowMultiple = function (bool = false) {
-  if (bool !== Snackbar.isAllowMultiple) {
+  if (bool !== isAllowMultiple) {
     uniqSnackbarOptions.forEach((option: UniqSnackbarOptions) => {
       option.reactiveSnackOptions.show = false
     })
 
-    this.isAllowMultiple = bool
+    isAllowMultiple = bool
   }
 }
 
@@ -211,8 +210,6 @@ Snackbar.clear = function () {
     option.reactiveSnackOptions.show = false
   })
 }
-
-Snackbar.isAllowMultiple = false
 
 Snackbar.Component = VarSnackbar
 
