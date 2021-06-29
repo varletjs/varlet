@@ -35,6 +35,8 @@ ${bigCamelize(name)}.install = function(app: App) {
   app.component(${bigCamelize(name)}.name, ${bigCamelize(name)})
 }
 
+export const _${bigCamelize(name)}Component = ${bigCamelize(name)}
+
 export default ${bigCamelize(name)}
 `
 
