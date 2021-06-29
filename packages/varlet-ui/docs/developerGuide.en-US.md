@@ -13,9 +13,8 @@ cd packages/varlet-ui
 yarn dev
 ```
 
-### Todo list
-- 1.Provides `jsx`,`tsx` syntax highlighting support(Complete).
-- 2.Improve the document reading experience and fix problems.
-- 3.Unit test all components and issue test report(Complete).
-- 4.Full component style detail optimization, animation curve optimization.
-- 5.The plan is compatible with Vue2.7
+### Join us
+
+If you want to participate in the development and maintenance of the component library,
+You can leave your email address in [issue](https://github.com/haoziqaq/varlet/issues),
+We will send you an invitation email.

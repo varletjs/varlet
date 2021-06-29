@@ -179,7 +179,6 @@ export function scrollTo(
 }
 
 export function formatStyleVars(styleVars: StyleVars) {
-  console.log(styleVars)
   return Object.entries(styleVars).reduce((styles, [key, value]) => {
     const cssVar = key.startsWith('--') ? key : `--${kebabCase(key)}`
     styles[cssVar] = value

@@ -16,7 +16,6 @@ createApp().use(Dialog)
 ### Scoped Install
 
 ```js
-
 import { Dialog } from '@varlet/ui'
 
 export default {

@@ -2833,6 +2833,16 @@
     "@typescript-eslint/types" "4.6.0"
     eslint-visitor-keys "^2.0.0"
 
+"@varlet/ui@^1.8.0-alpha.81":
+  version "1.8.0-alpha.81"
+  resolved "https://registry.yarnpkg.com/@varlet/ui/-/ui-1.8.0-alpha.81.tgz#b01e78336328e2e7d23b4f781fc6421235332ab9"
+  integrity sha512-2CYez/NBIAv1NKy4ztZceU51HJleEjZVeS1U8/lpPO6HSj8uE9PnoQ+935xvwQBn/hThS0/Z70PcVVGZ9QPgTQ==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@varlet/icons" "^1.0.0"
+    dayjs "^1.10.4"
+    decimal.js "^10.2.1"
+
 "@vue/compiler-core@3.0.7":
   version "3.0.7"
   resolved "https://registry.yarnpkg.com/@vue/compiler-core/-/compiler-core-3.0.7.tgz#421782a4c67cc3f2b7c30457ef446d74f8524f74"

@@ -1,13 +1,13 @@
 <template>
-  <app-type>组件调用</app-type>
+  <app-type>{{ pack.componentCall }}</app-type>
   <var-style-provider :style-vars="styleVars">
     <var-rate v-model="state.score" />
     <var-switch v-model="state.license" />
-    <var-button style="margin-top: 10px" type="primary" block @click="toggleTheme"> 切换样式 </var-button>
+    <var-button style="margin-top: 10px" type="primary" block @click="toggleTheme">{{ pack.toggleTheme }}</var-button>
   </var-style-provider>
 
-  <app-type>函数调用</app-type>
-  <var-button type="primary" block @click="toggleRootTheme"> 切换根节点样式 </var-button>
+  <app-type>{{ pack.functionCall }}</app-type>
+  <var-button type="primary" block @click="toggleRootTheme">{{ pack.toggleRootTheme }}</var-button>
 </template>
 
 <script>
@@ -16,7 +16,10 @@ import Rate from '../../rate'
 import Switch from '../../switch'
 import Button from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
+import context from '../../context'
 import { ref, reactive, onUnmounted } from 'vue'
+import { watchLang, watchPlatform } from '../../utils/components'
+import { use, pack } from './locale'
 
 export default {
   name: 'StyleProviderExample',
@@ -53,11 +56,23 @@ export default {
     }
 
     const toggleRootTheme = () => {
-      const color = document.documentElement.style.getPropertyValue('--color-primary')
+      const color = window.getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim()
       StyleProvider({
         '--color-primary': color === '#3a7afe' ? '#000' : '#3a7afe',
       })
     }
+
+    watchLang(use)
+
+    const prevTouchmoveForbid = context.touchmoveForbid
+    watchPlatform((platform) => {
+      if (platform === 'pc') {
+        context.touchmoveForbid = false
+      }
+    })
+    onUnmounted(() => {
+      context.touchmoveForbid = prevTouchmoveForbid
+    })
 
     onUnmounted(() => {
       StyleProvider({
@@ -66,6 +81,7 @@ export default {
     })
 
     return {
+      pack,
       state,
       styleVars,
       toggleTheme,

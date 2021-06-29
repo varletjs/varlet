@@ -16,7 +16,6 @@ createApp().use(Dialog)
 ### 局部引入
 
 ```js
-
 import { Dialog } from '@varlet/ui'
 
 export default {

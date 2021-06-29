@@ -1,7 +1,7 @@
-import { createApp } from 'vue'
-import { mount } from '@vue/test-utils'
 import StyleProvider from '../index'
 import VarStyleProvider from '../StyleProvider'
+import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
 import { delay } from '../../utils/jest'
 
 test('test styleProvider component plugin', () => {
@@ -16,7 +16,7 @@ test('test styleProvider plugin', () => {
 
 test('test styleProvider functional', async () => {
   StyleProvider({
-    'cell-font-size': '30px'
+    'cell-font-size': '30px',
   })
 
   await delay(0)
@@ -31,8 +31,8 @@ test('test styleProvider component', async () => {
 
   await wrapper.setProps({
     styleVars: {
-      'cell-font-size': '30px'
-    }
+      'cell-font-size': '30px',
+    },
   })
   expect(el.attributes('style')).toBe('--cell-font-size: 30px;')
 })

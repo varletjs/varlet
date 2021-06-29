@@ -44,14 +44,6 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': '主题定制',
-          'en-US': 'Custom Theme',
-        },
-        doc: 'customTheme',
-        nonComponent: true,
-      },
-      {
-        text: {
           'zh-CN': '国际化',
           'en-US': 'Locale',
         },

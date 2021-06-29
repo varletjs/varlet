@@ -13,9 +13,7 @@ cd packages/varlet-ui
 yarn dev
 ```
 
-### Todo list
-- 1.提供`jsx`、`tsx`语法高亮支持(完成)。
-- 2.完善文档阅读体验，修复存在的问题。
-- 3.全组件单元测试，并出测试报告(完成)。
-- 4.全组件样式细节优化，动画曲线优化。
-- 5.计划兼容Vue2.7
+### 加入我们
+
+如果您想参与组件库的开发和维护，可以在[issue](https://github.com/haoziqaq/varlet/issues)中留下您的邮箱，
+我们会给您发送邀请邮件。
