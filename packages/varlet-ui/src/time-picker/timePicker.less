@@ -2,12 +2,12 @@
 @import '../styles/var';
 
 @time-picker-border-radius: 4px;
-@time-picker-font-size: @font-size-md;
+@time-picker-font-size: var(--font-size-md);
 @time-picker-min-width: 290px;
 @time-picker-height: 385px;
 @time-picker-title-padding: 16px;
 @time-picker-title-color: #fff;
-@time-picker-title-background: @color-primary;
+@time-picker-title-background: var(--color-primary);
 @time-picker-title-time-font-size: 50px;
 @time-picker-title-time-margin: 0 5px;
 @time-picker-title-ampm-margin-left: 5px;
@@ -22,8 +22,8 @@
 @time-picker-clock-hand-width: 2px;
 @time-picker-clock-hand-bottom: 50%;
 @time-picker-clock-hand-left: calc(50% - 1px);
-@time-picker-clock-hand-background: @color-primary;
-@time-picker-clock-hand-border-color: @color-primary;
+@time-picker-clock-hand-background: var(--color-primary);
+@time-picker-clock-hand-border-color: var(--color-primary);
 @time-picker-clock-hand-before-width: 10px;
 @time-picker-clock-hand-before-height: 10px;
 @time-picker-clock-hand-before-border-width: 2px;
@@ -31,13 +31,53 @@
 @time-picker-clock-hand-after-height: 4px;
 @time-picker-clock-item-height: 32px;
 @time-picker-clock-item-width: 32px;
-@time-picker-clock-item-active-background: @color-primary;
+@time-picker-clock-item-active-background: var(--color-primary);
 @time-picker-clock-item-active-color: #fff;
 @time-picker-clock-item-disable-color: rgba(0, 0, 0, 0.26);
 @time-picker-inner-left: 36px;
 @time-picker-inner-right: 36px;
 @time-picker-inner-top: 36px;
 @time-picker-inner-bottom: 36px;
+
+:root {
+  --time-picker-border-radius: @time-picker-border-radius;
+  --time-picker-font-size: @time-picker-font-size;
+  --time-picker-min-width: @time-picker-min-width;
+  --time-picker-height: @time-picker-height;
+  --time-picker-title-padding: @time-picker-title-padding;
+  --time-picker-title-color: @time-picker-title-color;
+  --time-picker-title-background: @time-picker-title-background;
+  --time-picker-title-time-font-size: @time-picker-title-time-font-size;
+  --time-picker-title-time-margin: @time-picker-title-time-margin;
+  --time-picker-title-ampm-margin-left: @time-picker-title-ampm-margin-left;
+  --time-picker-clock-left: @time-picker-clock-left;
+  --time-picker-clock-right: @time-picker-clock-right;
+  --time-picker-clock-top: @time-picker-clock-top;
+  --time-picker-clock-bottom: @time-picker-clock-bottom;
+  --time-picker-clock-container-width: @time-picker-clock-container-width;
+  --time-picker-clock-container-height: @time-picker-clock-container-height;
+  --time-picker-clock-container-background: @time-picker-clock-container-background;
+  --time-picker-clock-hand-height: @time-picker-clock-hand-height;
+  --time-picker-clock-hand-width: @time-picker-clock-hand-width;
+  --time-picker-clock-hand-bottom: @time-picker-clock-hand-bottom;
+  --time-picker-clock-hand-left: @time-picker-clock-hand-left;
+  --time-picker-clock-hand-background: @time-picker-clock-hand-background;
+  --time-picker-clock-hand-border-color: @time-picker-clock-hand-border-color;
+  --time-picker-clock-hand-before-width: @time-picker-clock-hand-before-width;
+  --time-picker-clock-hand-before-height: @time-picker-clock-hand-before-height;
+  --time-picker-clock-hand-before-border-width: @time-picker-clock-hand-before-border-width;
+  --time-picker-clock-hand-after-width: @time-picker-clock-hand-after-width;
+  --time-picker-clock-hand-after-height: @time-picker-clock-hand-after-height;
+  --time-picker-clock-item-height: @time-picker-clock-item-height;
+  --time-picker-clock-item-width: @time-picker-clock-item-width;
+  --time-picker-clock-item-active-background: @time-picker-clock-item-active-background;
+  --time-picker-clock-item-active-color: @time-picker-clock-item-active-color;
+  --time-picker-clock-item-disable-color: @time-picker-clock-item-disable-color;
+  --time-picker-inner-left: @time-picker-inner-left;
+  --time-picker-inner-right: @time-picker-inner-right;
+  --time-picker-inner-top: @time-picker-inner-top;
+  --time-picker-inner-bottom: @time-picker-inner-bottom;
+}
 
 // Mixins
 .after-before-basic {
@@ -49,21 +89,21 @@
 }
 
 .var-time-picker {
-  border-radius: @time-picker-border-radius;
+  border-radius: var(--time-picker-border-radius);
   contain: layout style;
   display: flex;
   flex-direction: column;
-  font-size: @time-picker-font-size;
+  font-size: var(--time-picker-font-size);
   position: relative;
-  min-width: @time-picker-min-width;
-  height: @time-picker-height;
+  min-width: var(--time-picker-min-width);
+  height: var(--time-picker-height);
   overflow: hidden;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   &-title {
-    padding: @time-picker-title-padding;
-    color: @time-picker-title-color;
-    background: @time-picker-title-background;
+    padding: var(--time-picker-title-padding);
+    color: var(--time-picker-title-color);
+    background: var(--time-picker-title-background);
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
@@ -71,11 +111,11 @@
     &__time {
       display: flex;
       justify-content: flex-end;
-      font-size: @time-picker-title-time-font-size;
+      font-size: var(--time-picker-title-time-font-size);
 
       .var-time-picker-title__btn {
         align-items: center;
-        margin: @time-picker-title-time-margin;
+        margin: var(--time-picker-title-time-margin);
       }
     }
 
@@ -83,7 +123,7 @@
       opacity: 0.6;
       cursor: pointer;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      transition: 0.3s @cubic-bezier;
+      transition: 0.3s var(--cubic-bezier);
       white-space: nowrap;
 
       &--active {
@@ -92,7 +132,7 @@
     }
 
     &__ampm {
-      margin-left: @time-picker-title-ampm-margin-left;
+      margin-left: var(--time-picker-title-ampm-margin-left);
     }
   }
 
@@ -105,37 +145,37 @@
 
   &-clock {
     position: absolute;
-    bottom: @time-picker-clock-bottom;
-    left: @time-picker-clock-left;
-    right: @time-picker-clock-right;
-    top: @time-picker-clock-top;
+    bottom: var(--time-picker-clock-bottom);
+    left: var(--time-picker-clock-left);
+    right: var(--time-picker-clock-right);
+    top: var(--time-picker-clock-top);
 
     &__container {
-      width: @time-picker-clock-container-width;
-      height: @time-picker-clock-container-height;
-      background: @time-picker-clock-container-background;
+      width: var(--time-picker-clock-container-width);
+      height: var(--time-picker-clock-container-height);
+      background: var(--time-picker-clock-container-background);
       border-radius: 50%;
       position: relative;
     }
 
     &__hand {
-      height: @time-picker-clock-hand-height;
-      width: @time-picker-clock-hand-width;
-      bottom: @time-picker-clock-hand-bottom;
-      left: @time-picker-clock-hand-left;
+      height: var(--time-picker-clock-hand-height);
+      width: var(--time-picker-clock-hand-width);
+      bottom: var(--time-picker-clock-hand-bottom);
+      left: var(--time-picker-clock-hand-left);
       transform-origin: center bottom;
       position: absolute;
       will-change: transform;
       z-index: 1;
-      background-color: @time-picker-clock-hand-background;
-      border-color: @time-picker-clock-hand-border-color;
+      background-color: var(--time-picker-clock-hand-background);
+      border-color: var(--time-picker-clock-hand-border-color);
 
       &::before {
         .after-before-basic();
         background: transparent;
-        border: @time-picker-clock-hand-before-border-width solid;
-        width: @time-picker-clock-hand-before-width;
-        height: @time-picker-clock-hand-before-height;
+        border: var(--time-picker-clock-hand-before-border-width) solid;
+        width: var(--time-picker-clock-hand-before-width);
+        height: var(--time-picker-clock-hand-before-height);
         top: -5px;
         border-color: inherit;
       }
@@ -143,8 +183,8 @@
       &::after {
         .after-before-basic();
         border-color: inherit;
-        height: @time-picker-clock-hand-after-height;
-        width: @time-picker-clock-hand-after-width;
+        height: var(--time-picker-clock-hand-after-height);
+        width: var(--time-picker-clock-hand-after-width);
         top: 100%;
         border-style: solid;
         background-color: inherit;
@@ -156,35 +196,35 @@
       border-radius: 100%;
       display: flex;
       justify-content: center;
-      height: @time-picker-clock-item-height;
+      height: var(--time-picker-clock-item-height);
       position: absolute;
-      width: @time-picker-clock-item-width;
+      width: var(--time-picker-clock-item-width);
       user-select: none;
       transform: translate(-50%, -50%);
 
       &--active {
-        background: @time-picker-clock-item-active-background;
+        background: var(--time-picker-clock-item-active-background);
         z-index: 2;
-        color: @time-picker-clock-item-active-color;
+        color: var(--time-picker-clock-item-active-color);
       }
 
       &--disable {
-        color: @time-picker-clock-item-disable-color;
+        color: var(--time-picker-clock-item-disable-color);
       }
     }
 
     &__inner {
       position: absolute;
-      bottom: @time-picker-inner-bottom;
-      left: @time-picker-inner-left;
-      right: @time-picker-inner-right;
-      top: @time-picker-inner-top;
+      bottom: var(--time-picker-inner-bottom);
+      left: var(--time-picker-inner-left);
+      right: var(--time-picker-inner-right);
+      top: var(--time-picker-inner-top);
     }
   }
 
   &-panel-fade-enter-from,
   &-panel-fade-leave-to {
-    transition: 0.3s @cubic-bezier;
+    transition: 0.3s var(--cubic-bezier);
     opacity: 0;
   }
 
