@@ -5,4 +5,6 @@ Radio.install = function (app: App) {
   app.component(Radio.name, Radio)
 }
 
+export const _RadioComponent = Radio
+
 export default Radio

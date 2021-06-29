@@ -5,4 +5,6 @@ Tabs.install = function (app: App) {
   app.component(Tabs.name, Tabs)
 }
 
+export const _TabsComponent = Tabs
+
 export default Tabs

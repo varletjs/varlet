@@ -5,4 +5,6 @@ Chip.install = function (app: App) {
   app.component(Chip.name, Chip)
 }
 
+export const _ChipComponent = Chip
+
 export default Chip

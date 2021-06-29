@@ -5,4 +5,6 @@ SwipeItem.install = function (app: App) {
   app.component(SwipeItem.name, SwipeItem)
 }
 
+export const _SwipeItemComponent = SwipeItem
+
 export default SwipeItem

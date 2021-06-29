@@ -119,4 +119,6 @@ Picker.close = () => {
   }
 }
 
+export const _PickerComponent = VarPicker
+
 export default Picker

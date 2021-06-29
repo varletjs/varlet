@@ -5,4 +5,6 @@ Cell.install = function (app: App) {
   app.component(Cell.name, Cell)
 }
 
+export const _CellComponent = Cell
+
 export default Cell

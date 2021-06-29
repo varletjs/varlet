@@ -162,4 +162,6 @@ const Ripple: Directive & Plugin = {
   },
 }
 
+export const _RippleComponent = Ripple
+
 export default Ripple

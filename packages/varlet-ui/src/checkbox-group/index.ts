@@ -5,4 +5,6 @@ CheckboxGroup.install = function (app: App) {
   app.component(CheckboxGroup.name, CheckboxGroup)
 }
 
+export const _CheckboxGroupComponent = CheckboxGroup
+
 export default CheckboxGroup

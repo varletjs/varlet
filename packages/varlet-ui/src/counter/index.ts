@@ -5,4 +5,6 @@ Counter.install = function (app: App) {
   app.component(Counter.name, Counter)
 }
 
+export const _CounterComponent = Counter
+
 export default Counter

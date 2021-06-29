@@ -96,4 +96,6 @@ ActionSheet.install = function (app: App) {
   app.component(VarActionSheet.name, VarActionSheet)
 }
 
+export const _ActionSheetComponent = VarActionSheet
+
 export default ActionSheet

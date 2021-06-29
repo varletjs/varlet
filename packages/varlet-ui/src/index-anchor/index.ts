@@ -5,4 +5,6 @@ IndexAnchor.install = function (app: App) {
   app.component(IndexAnchor.name, IndexAnchor)
 }
 
+export const _IndexAnchorComponent = IndexAnchor
+
 export default IndexAnchor

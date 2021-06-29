@@ -78,4 +78,6 @@ ImagePreview.install = function (app: App) {
 
 ImagePreview.Component = VarImagePreview
 
+export const _ImagePreviewComponent = VarImagePreview
+
 export default ImagePreview

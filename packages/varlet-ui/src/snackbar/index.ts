@@ -1,10 +1,10 @@
-import { h, reactive, TransitionGroup } from 'vue'
 import type { App, Component } from 'vue'
 import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
+import context from '../context'
+import { h, reactive, TransitionGroup } from 'vue'
 import { mountInstance } from '../utils/components'
 import { isPlainObject, toNumber } from '../utils/shared'
-import context from '../context'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
@@ -264,5 +264,7 @@ function getTop(position = 'top'): string {
 VarSnackbar.install = function (app: App) {
   app.component(VarSnackbar.name, VarSnackbar)
 }
+
+export const _SnackbarComponent = VarSnackbar
 
 export default Snackbar

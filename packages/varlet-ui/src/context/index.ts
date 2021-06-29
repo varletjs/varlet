@@ -12,4 +12,6 @@ const context: Context = {
   touchmoveForbid: true,
 }
 
+export const _ContextComponent = reactive<Context>(context)
+
 export default reactive<Context>(context)

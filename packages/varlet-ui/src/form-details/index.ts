@@ -5,4 +5,6 @@ FormDetails.install = function (app: App) {
   app.component(FormDetails.name, FormDetails)
 }
 
+export const _FormDetailsComponent = FormDetails
+
 export default FormDetails

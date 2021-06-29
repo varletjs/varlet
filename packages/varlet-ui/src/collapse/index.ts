@@ -5,4 +5,6 @@ Collapse.install = function (app: App) {
   app.component(Collapse.name, Collapse)
 }
 
+export const _CollapseComponent = Collapse
+
 export default Collapse

@@ -5,4 +5,6 @@ IndexBar.install = function (app: App) {
   app.component(IndexBar.name, IndexBar)
 }
 
+export const _IndexBarComponent = IndexBar
+
 export default IndexBar

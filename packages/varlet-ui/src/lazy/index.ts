@@ -256,4 +256,6 @@ const Lazy: Directive & Plugin = {
   },
 }
 
+export const _LazyComponent = Lazy
+
 export default Lazy

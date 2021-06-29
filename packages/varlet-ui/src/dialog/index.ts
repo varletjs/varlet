@@ -1,5 +1,5 @@
-import { reactive, App, nextTick } from 'vue'
 import VarDialog from './Dialog.vue'
+import { reactive, App, nextTick } from 'vue'
 import { inBrowser, isString } from '../utils/shared'
 import { mountInstance } from '../utils/components'
 
@@ -100,5 +100,7 @@ Dialog.close = () => {
 }
 
 Dialog.Component = VarDialog
+
+export const _DialogComponent = VarDialog
 
 export default Dialog
