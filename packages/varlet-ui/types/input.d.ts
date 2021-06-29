@@ -41,3 +41,5 @@ export class Input extends VarComponent {
 
   reset(): void
 }
+
+export class _InputComponent extends Input {}

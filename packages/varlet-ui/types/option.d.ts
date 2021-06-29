@@ -8,3 +8,5 @@ export interface OptionProps {
 export class Option extends VarComponent {
   $props: OptionProps
 }
+
+export class _OptionComponent extends Option {}

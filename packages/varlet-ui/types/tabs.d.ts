@@ -24,3 +24,5 @@ export class Tabs extends VarComponent {
 
   resize(): void
 }
+
+export class _TabsComponent extends Tabs {}

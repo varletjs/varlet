@@ -15,3 +15,5 @@ export class IndexBar extends VarComponent {
 
   scrollTo: (index: number | string) => void
 }
+
+export class _IndexBarComponent extends IndexBar {}

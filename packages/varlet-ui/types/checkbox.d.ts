@@ -30,3 +30,5 @@ export class Checkbox extends VarComponent {
 
   toggle(value: any): void
 }
+
+export class _CheckboxComponent extends Checkbox {}

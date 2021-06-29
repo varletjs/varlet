@@ -21,3 +21,5 @@ export interface SwitchProps {
 export class Switch extends VarComponent {
   $props: SwitchProps
 }
+
+export class _SwitchComponent extends Switch {}

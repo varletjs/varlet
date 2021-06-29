@@ -16,3 +16,5 @@ export interface ProgressProps {
 export class Progress extends VarComponent {
   $props: ProgressProps
 }
+
+export class _ProgressComponent extends Progress {}

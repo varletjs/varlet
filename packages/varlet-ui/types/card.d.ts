@@ -16,3 +16,5 @@ export interface CardProps {
 export class Card extends VarComponent {
   $props: CardProps
 }
+
+export class _CardComponent extends Card {}

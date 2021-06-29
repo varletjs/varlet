@@ -13,3 +13,5 @@ export interface CollapseProps {
 export class Collapse extends VarComponent {
   $props: CollapseProps
 }
+
+export class _CollapseComponent extends Collapse {}

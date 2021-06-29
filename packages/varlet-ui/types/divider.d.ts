@@ -11,3 +11,5 @@ export interface DividerProps {
 export class Divider extends VarComponent {
   $props: DividerProps
 }
+
+export class _DividerComponent extends Divider {}

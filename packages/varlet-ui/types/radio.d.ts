@@ -30,3 +30,5 @@ export class Radio extends VarComponent {
 
   toggle(value: any): void
 }
+
+export class _RadioComponent extends Radio {}

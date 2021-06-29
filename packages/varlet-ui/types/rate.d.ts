@@ -23,3 +23,5 @@ export interface RateProps {
 export class Rate extends VarComponent {
   $props: RateProps
 }
+
+export class _RateComponent extends Rate {}

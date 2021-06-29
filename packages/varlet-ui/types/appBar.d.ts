@@ -11,3 +11,5 @@ export interface AppBarProps {
 export class AppBar extends VarComponent {
   $props: AppBarProps
 }
+
+export class _AppBarComponent extends AppBar {}

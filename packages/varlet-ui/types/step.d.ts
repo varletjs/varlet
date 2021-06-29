@@ -9,3 +9,5 @@ export interface StepProps {
 export class Step extends VarComponent {
   $props: StepProps
 }
+
+export class _StepComponent extends Step {}

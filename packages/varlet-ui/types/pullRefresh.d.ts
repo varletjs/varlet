@@ -16,3 +16,5 @@ export interface PullRefreshProps {
 export class PullRefresh extends VarComponent {
   $props: PullRefreshProps
 }
+
+export class _PullRefreshComponent extends PullRefresh {}

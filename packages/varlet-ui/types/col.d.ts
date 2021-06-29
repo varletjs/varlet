@@ -9,3 +9,5 @@ export interface ColProps {
 export class Col extends VarComponent {
   $props: ColProps
 }
+
+export class _ColComponent extends Col {}

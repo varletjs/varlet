@@ -74,3 +74,5 @@ export interface IDialog {
 }
 
 export const Dialog: IDialog
+
+export class _DialogComponent extends DialogComponent {}

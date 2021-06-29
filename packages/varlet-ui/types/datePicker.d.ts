@@ -21,3 +21,5 @@ export interface DatePickerProps {
 export class DatePicker extends VarComponent {
   $props: DatePickerProps
 }
+
+export class _DatePickerComponent extends DatePicker {}

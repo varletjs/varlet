@@ -41,3 +41,5 @@ export class Select extends VarComponent {
 
   reset(): void
 }
+
+export class _SelectComponent extends Select {}

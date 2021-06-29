@@ -25,3 +25,5 @@ export class CheckboxGroup extends VarComponent {
 
   inverseAll(): any
 }
+
+export class _CheckboxGroupComponent extends CheckboxGroup {}

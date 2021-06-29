@@ -9,3 +9,5 @@ export interface TabProps {
 export class Tab extends VarComponent {
   $props: TabProps
 }
+
+export class _TabComponent extends Tab {}

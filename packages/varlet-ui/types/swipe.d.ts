@@ -23,3 +23,5 @@ export class Swipe extends VarComponent {
 
   to(index: number): void
 }
+
+export class _SwipeComponent extends Swipe {}

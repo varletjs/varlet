@@ -10,3 +10,5 @@ export interface LoadingProps {
 export class Loading extends VarComponent {
   $props: LoadingProps
 }
+
+export class _LoadingComponent extends Loading {}

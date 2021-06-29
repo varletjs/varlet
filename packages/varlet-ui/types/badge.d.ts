@@ -14,3 +14,5 @@ export interface BadgeProps {
 export class Badge extends VarComponent {
   $props: BadgeProps
 }
+
+export class _BadgeComponent extends Badge {}

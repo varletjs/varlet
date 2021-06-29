@@ -47,3 +47,5 @@ export interface IImagePreview {
 }
 
 export const ImagePreview: IImagePreview
+
+export class _ImagePreviewComponent extends ImagePreviewComponent {}

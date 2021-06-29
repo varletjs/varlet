@@ -25,3 +25,5 @@ export class Countdown extends VarComponent {
 
   reset(): void
 }
+
+export class _CountdownComponent extends Countdown {}

@@ -22,3 +22,5 @@ export interface ButtonProps {
 export class Button extends VarComponent {
   $props: ButtonProps
 }
+
+export class _ButtonComponent extends Button {}

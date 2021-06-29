@@ -16,3 +16,5 @@ export interface ChipProps {
 export class Chip extends VarComponent {
   $props: ChipProps
 }
+
+export class _ChipComponent extends Chip {}

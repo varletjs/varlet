@@ -20,3 +20,5 @@ export interface PopupProps {
 export class Popup extends VarComponent {
   $props: PopupProps
 }
+
+export class _PopupComponent extends Popup {}

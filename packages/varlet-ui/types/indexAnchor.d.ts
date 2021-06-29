@@ -7,3 +7,5 @@ export interface IndexAnchorProps {
 export class IndexAnchor extends VarComponent {
   $props: IndexAnchorProps
 }
+
+export class _IndexAnchorComponent extends IndexAnchor {}

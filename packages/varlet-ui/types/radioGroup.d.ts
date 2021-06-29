@@ -20,3 +20,5 @@ export class RadioGroup extends VarComponent {
 
   reset(): void
 }
+
+export class _RadioGroupComponent extends RadioGroup {}

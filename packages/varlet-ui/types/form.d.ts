@@ -14,3 +14,5 @@ export class Form extends VarComponent {
 
   reset(): void
 }
+
+export class _FormComponent extends Form {}

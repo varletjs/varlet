@@ -17,3 +17,5 @@ export interface TimePickerProps {
 export class TimePicker extends VarComponent {
   $props: TimePickerProps
 }
+
+export class _TimePickerComponent extends TimePicker {}

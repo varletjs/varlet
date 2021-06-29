@@ -12,3 +12,5 @@ export interface IconProps {
 export class Icon extends VarComponent {
   $props: IconProps
 }
+
+export class _IconComponent extends Icon {}

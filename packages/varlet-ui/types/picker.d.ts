@@ -77,3 +77,5 @@ export interface IPicker {
 }
 
 export const Picker: IPicker
+
+export class _PickerComponent extends PickerComponent {}

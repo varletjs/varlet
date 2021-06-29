@@ -17,3 +17,5 @@ export class Menu extends VarComponent {
 
   resize(): void
 }
+
+export class _MenuComponent extends Menu {}

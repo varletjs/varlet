@@ -40,3 +40,5 @@ export class Counter extends VarComponent {
 
   reset(): void
 }
+
+export class _CounterComponent extends Counter {}

@@ -47,3 +47,5 @@ export class Uploader extends VarComponent {
 
   reset(): void
 }
+
+export class _UploaderComponent extends Uploader {}

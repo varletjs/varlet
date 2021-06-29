@@ -73,3 +73,5 @@ export interface ISnackbar {
 }
 
 export const Snackbar: ISnackbar
+
+export class _SnackbarComponent extends SnackbarComponent {}

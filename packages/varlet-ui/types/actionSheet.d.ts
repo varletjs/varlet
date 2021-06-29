@@ -63,4 +63,6 @@ export interface IActionSheet {
   install(app: App): void
 }
 
+export class _ActionSheetComponent extends ActionSheetComponent {}
+
 export const ActionSheet: IActionSheet

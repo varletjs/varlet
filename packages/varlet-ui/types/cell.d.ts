@@ -14,3 +14,5 @@ export interface CellProps {
 export class Cell extends VarComponent {
   $props: CellProps
 }
+
+export class _CellComponent extends Cell {}

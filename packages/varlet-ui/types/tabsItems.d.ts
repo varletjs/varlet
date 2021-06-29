@@ -8,3 +8,5 @@ export interface TabsItemsProps {
 export class TabsItems extends VarComponent {
   $props: TabsItemsProps
 }
+
+export class _TabsItemsComponent extends TabsItems {}

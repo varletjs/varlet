@@ -19,6 +19,7 @@ module.exports = {
     browser: true,
   },
   rules: {
+    'max-classes-per-file': 'off',
     'no-new': 'off',
     'no-shadow': 'off',
     'no-bitwise': 'off',

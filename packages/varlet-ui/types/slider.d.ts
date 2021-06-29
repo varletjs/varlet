@@ -23,3 +23,5 @@ export interface SliderProps {
 export class Slider extends VarComponent {
   $props: SliderProps
 }
+
+export class _SliderComponent extends Slider {}

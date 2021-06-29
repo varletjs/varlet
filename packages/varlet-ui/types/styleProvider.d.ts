@@ -19,3 +19,5 @@ export interface IStyleProvider {
 }
 
 export const StyleProvider: IStyleProvider
+
+export class _StyleProviderComponent extends StyleProviderComponent {}

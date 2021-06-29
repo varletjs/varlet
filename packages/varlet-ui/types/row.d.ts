@@ -10,3 +10,5 @@ export interface RowProps {
 export class Row extends VarComponent {
   $props: RowProps
 }
+
+export class _RowComponent extends Row {}

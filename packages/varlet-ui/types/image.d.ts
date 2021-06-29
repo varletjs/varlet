@@ -17,4 +17,8 @@ export interface ImageProps {
   onError?: (e: Event) => void
 }
 
-export class Image extends VarComponent {}
+export class Image extends VarComponent {
+  $props: ImageProps
+}
+
+export class _ImageComponent extends Image {}

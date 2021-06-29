@@ -10,3 +10,5 @@ export interface BackTopProps {
 export class BackTop extends VarComponent {
   $props: BackTopProps
 }
+
+export class _BackTopComponent extends BackTop {}

@@ -9,3 +9,5 @@ export interface StickyProps {
 export class Sticky extends VarComponent {
   $props: StickyProps
 }
+
+export class _StickyComponent extends Sticky {}
