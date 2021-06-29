@@ -33,7 +33,7 @@ exports[`test progress example 1`] = `
     <div class=\\"var-progress\\">
       <div class=\\"var-progress-linear\\">
         <div class=\\"var-progress-linear__block\\" style=\\"height: 4px;\\">
-          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
+          <!--v-if-->
           <div class=\\"var-progress-linear__certain\\" style=\\"width: 20%;\\"></div>
         </div>
         <!--v-if-->
@@ -43,7 +43,7 @@ exports[`test progress example 1`] = `
     <div class=\\"var-progress\\">
       <div class=\\"var-progress-linear\\">
         <div class=\\"var-progress-linear__block\\" style=\\"height: 4px;\\">
-          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
+          <!--v-if-->
           <div class=\\"var-progress-linear__certain\\" style=\\"width: 0%;\\"></div>
         </div>
         <!--v-if-->
@@ -53,7 +53,7 @@ exports[`test progress example 1`] = `
     <div class=\\"var-progress\\">
       <div class=\\"var-progress-linear\\">
         <div class=\\"var-progress-linear__block\\" style=\\"height: 4px;\\">
-          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
+          <!--v-if-->
           <div class=\\"var-progress-linear__certain\\" style=\\"width: 100%;\\"></div>
         </div>
         <!--v-if-->
@@ -66,7 +66,7 @@ exports[`test progress example 1`] = `
     <div class=\\"var-progress\\">
       <div class=\\"var-progress-linear\\">
         <div class=\\"var-progress-linear__block\\" style=\\"height: 4px;\\">
-          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
+          <div class=\\"var-progress-linear__background\\"></div>
           <div class=\\"var-progress-linear__certain\\" style=\\"width: 30%;\\"></div>
         </div>
         <div class=\\"var-progress-linear__label\\">30%</div>
@@ -76,7 +76,7 @@ exports[`test progress example 1`] = `
     <div class=\\"var-progress\\">
       <div class=\\"var-progress-linear\\">
         <div class=\\"var-progress-linear__block\\" style=\\"height: 4px;\\">
-          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
+          <div class=\\"var-progress-linear__background\\"></div>
           <div class=\\"var-progress-linear__certain\\" style=\\"width: 0%;\\"></div>
         </div>
         <div class=\\"var-progress-linear__label\\">0%</div>
@@ -86,7 +86,7 @@ exports[`test progress example 1`] = `
     <div class=\\"var-progress\\">
       <div class=\\"var-progress-linear\\">
         <div class=\\"var-progress-linear__block\\" style=\\"height: 4px;\\">
-          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
+          <div class=\\"var-progress-linear__background\\"></div>
           <div class=\\"var-progress-linear__certain\\" style=\\"width: 100%;\\"></div>
         </div>
         <div class=\\"var-progress-linear__label\\">success</div>
@@ -99,7 +99,7 @@ exports[`test progress example 1`] = `
     <div class=\\"var-progress\\">
       <div class=\\"var-progress-linear\\">
         <div class=\\"var-progress-linear__block\\" style=\\"height: 8px;\\">
-          <div class=\\"var-progress-linear__background\\" style=\\"background: rgb(216, 216, 216);\\"></div>
+          <div class=\\"var-progress-linear__background\\"></div>
           <div class=\\"var-progress-linear__certain\\" style=\\"background: rgb(255, 159, 0); width: 30%;\\"></div>
         </div>
         <!--v-if-->
@@ -132,7 +132,7 @@ exports[`test progress example 1`] = `
     <div class=\\"var-progress\\">
       <!--v-if-->
       <div class=\\"var-progress-circle\\" style=\\"width: 56px; height: 56px;\\"><svg class=\\"var-progress-circle__svg\\" style=\\"transform: rotate(-90deg);\\" viewBox=\\"0 0 56 56\\">
-          <circle class=\\"var-progress-circle__background\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 160.22122533307945; stroke: #d8d8d8;\\"></circle>
+          <circle class=\\"var-progress-circle__background\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 160.22122533307945;\\"></circle>
           <circle class=\\"var-progress-circle__certain\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 48.06636759992383, 160.22122533307945;\\"></circle>
         </svg>
         <!--v-if-->
@@ -142,7 +142,7 @@ exports[`test progress example 1`] = `
     <div class=\\"var-progress\\">
       <!--v-if-->
       <div class=\\"var-progress-circle\\" style=\\"width: 56px; height: 56px;\\"><svg class=\\"var-progress-circle__svg\\" style=\\"transform: rotate(-90deg);\\" viewBox=\\"0 0 56 56\\">
-          <circle class=\\"var-progress-circle__background\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 160.22122533307945; stroke: #d8d8d8;\\"></circle>
+          <circle class=\\"var-progress-circle__background\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 160.22122533307945;\\"></circle>
           <circle class=\\"var-progress-circle__certain\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 0, 160.22122533307945;\\"></circle>
         </svg>
         <div class=\\"var-progress-circle__label\\">0%</div>
@@ -152,7 +152,7 @@ exports[`test progress example 1`] = `
     <div class=\\"var-progress\\">
       <!--v-if-->
       <div class=\\"var-progress-circle\\" style=\\"width: 56px; height: 56px;\\"><svg class=\\"var-progress-circle__svg\\" style=\\"transform: rotate(-90deg);\\" viewBox=\\"0 0 56 56\\">
-          <circle class=\\"var-progress-circle__background\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 160.22122533307945; stroke: #d8d8d8;\\"></circle>
+          <circle class=\\"var-progress-circle__background\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 160.22122533307945;\\"></circle>
           <circle class=\\"var-progress-circle__certain\\" cx=\\"28\\" cy=\\"28\\" r=\\"25.5\\" fill=\\"transparent\\" stroke-width=\\"5\\" style=\\"stroke-dasharray: 160.22122533307945, 160.22122533307945;\\"></circle>
         </svg>
         <div class=\\"var-progress-circle__label\\">100%</div>

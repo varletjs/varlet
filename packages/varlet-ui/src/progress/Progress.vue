@@ -2,7 +2,7 @@
   <div class="var-progress">
     <div class="var-progress-linear" v-if="mode === 'linear'">
       <div class="var-progress-linear__block" :style="{ height: `${lineWidth}px` }" v-bind="$attrs">
-        <div class="var-progress-linear__background" :style="{ background: trackColor }"></div>
+        <div class="var-progress-linear__background" v-if="track" :style="{ background: trackColor }"></div>
         <div
           :class="`var-progress-linear__certain${ripple ? ' var-progress-linear__ripple' : ''}`"
           :style="{ background: color, width: linearProps.width }"

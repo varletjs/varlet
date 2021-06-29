@@ -18,9 +18,9 @@ createApp().use(Progress)
 通过 `value` 属性设置当前进度。
 
 ```html
-<var-progress :value="20" />
-<var-progress :value="value" />
-<var-progress :value="100" />
+<var-progress :value="20" :track="false" />
+<var-progress :value="value" :track="false" />
+<var-progress :value="100" :track="false" />
 ```
 
 ### 显示标签
@@ -71,10 +71,10 @@ createApp().use(Progress)
 | `color` | `progress` 的颜色 | _string_  | `#005CAF` |
 | `track-color`  | `progress` 轨道的颜色 | _string_   | `#d8d8d8` |
 | `label` | 是否显示 label | _boolean_ | `false` |
+| `track` | 是否显示 `progress` 的轨道 | _boolean_ | `true` |
 | `ripple` | 水波纹加载效果（仅支持线性进度条） | _boolean_ | `false` |
 | `size` | `progress` 的尺寸（仅支持环形进度条） | _string \| number_ | `40` |
 | `rotate` | `progress` 的原点（仅支持环形进度条） | _number_ | `0` |
-| `track` | 是否显示 `progress` 的轨道（仅支持环形进度条） | _boolean_ | `true` |
 
 ### 插槽
 
@@ -82,11 +82,12 @@ createApp().use(Progress)
 | ----- | -------------- | -------- |
 | `default` | 自定义 label | `-` |
 
-### 主题变量
-#### 以下less变量可通过构建时进行变量覆盖从而修改主题样式
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `@progress-font-size` | `@font-size-sm` |
-| `@progress-ripple-color` | `#fff` |
-| `@progress-background` | `@color-primary` |
+| `--progress-font-size` | `var(--font-size-sm)` |
+| `--progress-ripple-color` | `#fff` |
+| `--progress-track-color` | `#d8d8d8` |
+| `--progress-background` | `var(--color-primary)` |

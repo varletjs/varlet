@@ -18,9 +18,9 @@ createApp().use(Progress)
 Set the current progress through the `value` attribute.
 
 ```html
-<var-progress :value="20" />
-<var-progress :value="value" />
-<var-progress :value="100" />
+<var-progress :value="20" :track="false" />
+<var-progress :value="value" :track="false" />
+<var-progress :value="100" :track="false" />
 ```
 
 ### Show Label
@@ -70,10 +70,10 @@ Use `track` prop to hide track.
 | `color` | Color of the progress bar  | _string_  | `#005CAF` |
 | `track-color`  | Color of the progress track | _string_   | `#d8d8d8` |
 | `label` | Whether the label is visible or not | _boolean_ | `false` |
+| `track` | Whether the progress track is visible or not | _boolean_ | `true` |
 | `ripple` | Loading style for progress (only supports linear progress) | _boolean_ | `false` |
 | `size` | Size of progress (only supports circle progress) | _string \| number_ | `40` |
 | `rotate` | Origin of progress (only supports circle progress) | _number_ | `0` |
-| `track` | Whether the progress track is visible or not (only supports circle progress) | _boolean_ | `true` |
 
 ### Slots
 
@@ -81,11 +81,12 @@ Use `track` prop to hide track.
 | ----- | -------------- | -------- |
 | `default` | Custom label | `-` |
 
-### Theme Variables
-#### The following LESS variables can be overridden at build time to modify the theme style
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `@progress-font-size` | `@font-size-sm` |
-| `@progress-ripple-color` | `#fff` |
-| `@progress-background` | `@color-primary` |
+| `--progress-font-size` | `var(--font-size-sm)` |
+| `--progress-ripple-color` | `#fff` |
+| `--progress-track-color` | `#d8d8d8` |
+| `--progress-background` | `var(--color-primary)` |

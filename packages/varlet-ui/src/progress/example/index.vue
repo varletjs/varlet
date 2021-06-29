@@ -4,9 +4,9 @@
 
     <div class="progress-demo__basic">
       <app-type>{{ pack.basicUsage }}</app-type>
-      <var-progress :value="20" />
-      <var-progress :value="value" />
-      <var-progress :value="100" />
+      <var-progress :value="20" :track="false" />
+      <var-progress :value="value" :track="false" />
+      <var-progress :value="100" :track="false" />
     </div>
 
     <div class="progress-demo__label">

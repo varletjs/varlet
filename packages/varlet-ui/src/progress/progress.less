@@ -1,12 +1,20 @@
 @import '../styles/var';
 
-@progress-font-size: @font-size-sm;
+@progress-font-size: var(--font-size-sm);
 @progress-ripple-color: #fff;
-@progress-background: @color-primary;
+@progress-track-color: #d8d8d8;
+@progress-background: var(--color-primary);
+
+:root {
+  --progress-font-size: @progress-font-size;
+  --progress-ripple-color: @progress-ripple-color;
+  --progress-track-color: @progress-track-color;
+  --progress-background: @progress-background;
+}
 
 .var-progress {
   position: relative;
-  font-size: @progress-font-size;
+  font-size: var(--progress-font-size);
 
   &-linear {
     display: flex;
@@ -28,7 +36,7 @@
       &:after {
         position: absolute;
         width: 0;
-        background-color: @progress-ripple-color;
+        background-color: var(--progress-ripple-color);
         height: 100%;
         opacity: 0;
         animation: ripple 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
@@ -36,9 +44,13 @@
       }
     }
 
+    &__background {
+      background-color: var(--progress-track-color);
+    }
+
     &__certain {
       position: absolute;
-      background-color: @progress-background;
+      background-color: var(--progress-background);
       top: 0;
       left: 0;
       transition: all 0.2s, background-color 0.8s;
@@ -69,12 +81,12 @@
     position: relative;
 
     &__background {
-      stroke: lighten(@progress-background, 50%);
+      stroke: var(--progress-track-color);
     }
 
     &__certain {
       transition: all 0.2s;
-      stroke: @progress-background;
+      stroke: var(--progress-background);
       position: absolute;
     }
 
