@@ -83,6 +83,13 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'StyleProvider 样式定制',
+          'en-US': 'StyleProvider',
+        },
+        doc: 'style-provider',
+      },
+      {
+        text: {
           'zh-CN': 'Button 按钮',
           'en-US': 'Button',
         },
