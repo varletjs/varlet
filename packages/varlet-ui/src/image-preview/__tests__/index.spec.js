@@ -1,5 +1,7 @@
-import ImagePreview from '../index'
-import VarImagePreview from '../ImagePreview.vue'
+import example from '../example'
+import ImagePreview from '../ImagePreview.vue'
+import varSwipeItem from '../../swipe-item/SwipeItem.vue'
+import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger, triggerDrag } from '../../utils/jest'
 
