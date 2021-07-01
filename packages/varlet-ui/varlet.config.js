@@ -1,5 +1,5 @@
 module.exports = {
-  host: '192.168.10.148',
+  host: '0.0.0.0',
   port: 8080,
   pc: {
     menu: [
