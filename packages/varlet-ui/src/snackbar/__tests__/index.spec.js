@@ -77,7 +77,7 @@ test('test snackbar event', async () => {
   expect(closed).toHaveBeenCalledTimes(1)
 })
 
-test('test snackbar allowMultiple and clear', async () => {
+test('test snackbar and clear', async () => {
   Snackbar.success('test snackbar')
   await delay(200)
   expect(document.body.querySelector('.var-snackbar__wrapper-success')).toBeTruthy()
@@ -88,7 +88,6 @@ test('test snackbar allowMultiple and clear', async () => {
 
   Snackbar.allowMultiple(true)
   await delay(0)
-  expect(Snackbar.isAllowMultiple).toBe(true)
 
   const { clear } = Snackbar.info('test snackbar')
   await delay(200)
