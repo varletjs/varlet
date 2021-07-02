@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/haoziqaq/varlet/compare/v1.7.1...v1.8.0) (2021-07-02)
+
+
+### Bug Fixes
+
+* support styleVars keyName ([fa2d4b5](https://github.com/haoziqaq/varlet/commit/fa2d4b58e2cbaec585ccca81c3721a04ffd3ae25))
+* **ui/rate:** fix rate default color of props ([5bca5ea](https://github.com/haoziqaq/varlet/commit/5bca5ea41402960fad1e6f62f4ec42f2053e8580))
+* fix the bug of style-provider when update ([0640b4e](https://github.com/haoziqaq/varlet/commit/0640b4e00282edbf9495af8ebadb2a64873d4ea5))
+* fix the prop name of style-provider ([36dd315](https://github.com/haoziqaq/varlet/commit/36dd3159581df3a98d78dd6761ed96c418dacda7))
+* 更新类型引入 ([b1636f3](https://github.com/haoziqaq/varlet/commit/b1636f3b94fd5461a4c3f150fbc39a3de0842b0d))
+* **ui/swipe:** fix touchable bug ([1c16e5d](https://github.com/haoziqaq/varlet/commit/1c16e5d28803bc397a7a4d892ed057f3173078c2))
+* remove useless code and warning ([9674482](https://github.com/haoziqaq/varlet/commit/96744820a53dba35ef89a79e0d9c79ac7444a04a))
+
+
+### Features
+
+* **ui/card:** add style provider for card ([a47e7c9](https://github.com/haoziqaq/varlet/commit/a47e7c90ce1f7a18a1d1cd299118240d289192cd))
+* **ui/image-preview:**  Add a click event to the close-icon button ([2ee89a2](https://github.com/haoziqaq/varlet/commit/2ee89a2ccf414321bc634f0d85cbe9330dab5534))
+* **ui/image-preview:**  Add an action to determine Scale in handleCloseClick function ([c0f159b](https://github.com/haoziqaq/varlet/commit/c0f159b2d7f6c08915d7ad230a7906416eb97397))
+* add style-provider ([d4008ea](https://github.com/haoziqaq/varlet/commit/d4008ea8679e827f954d0dfe4aa6ec559b39f8af))
+* **ui/image-preview:** add new component image-preview prototype ([25a8907](https://github.com/haoziqaq/varlet/commit/25a8907c2173218dc011088bd5d93b8abe581e1b))
+
+
+
+
+
 ## [1.7.1](https://github.com/haoziqaq/varlet/compare/v1.7.0...v1.7.1) (2021-06-19)
 
 
