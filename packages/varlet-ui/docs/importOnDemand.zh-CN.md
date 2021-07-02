@@ -8,7 +8,7 @@
 ```js
 import { createApp } from 'vue'
 import { Button } from '@varlet/ui'
-import '@varlet/ui/es/button/style'
+import '@varlet/ui/es/button/style/index.js'
 
 createApp().use(Button)
 ```
@@ -90,7 +90,7 @@ export default defineConfig({
 ```js
 import { createApp } from 'vue'
 import { ImagePreview } from '@varlet/ui'
-import '@varlet/ui/es/image-preview/style'
+import '@varlet/ui/es/image-preview/style/index.js'
 
 createApp().use(ImagePreview)
 ```

@@ -9,7 +9,7 @@ The on-demand import avoids the full import of components and can effectively re
 ```js
 import { createApp } from 'vue'
 import { Button } from '@varlet/ui'
-import '@varlet/ui/es/button/style'
+import '@varlet/ui/es/button/style/index.js'
 
 createApp().use(Button)
 ```
@@ -93,7 +93,7 @@ like `ImagePreview`
 ```js
 import { createApp } from 'vue'
 import { ImagePreview } from '@varlet/ui'
-import '@varlet/ui/es/image-preview/style'
+import '@varlet/ui/es/image-preview/style/index.js'
 
 createApp().use(ImagePreview)
 ```
