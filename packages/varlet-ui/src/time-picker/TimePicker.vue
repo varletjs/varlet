@@ -77,12 +77,14 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, reactive, ref, Ref, watch, DefineComponent, UnwrapRef } from 'vue'
+import { computed, defineComponent, reactive, ref, watch } from 'vue'
 import dayjs from 'dayjs'
 import Clock from './clock.vue'
-import { props, Time, AmPm, hoursAmpm, hours24 } from './props'
+import { props, hoursAmpm, hours24 } from './props'
 import { toNumber } from '../utils/shared'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
+import type { ComputedRef, Ref, DefineComponent, UnwrapRef } from 'vue'
+import type { Time, AmPm } from './props'
 
 export default defineComponent({
   name: 'VarTimePicker',

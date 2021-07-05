@@ -3,7 +3,6 @@
     class="var-input var--box"
     :class="[disabled ? 'var-input--disabled' : null]"
     @click="handleClick"
-    v-bind="$attrs"
   >
     <div
       class="var-input__controller"
@@ -100,12 +99,14 @@
 <script lang="ts">
 import FormDetails from '../form-details'
 import Icon from '../icon'
-import { defineComponent, getCurrentInstance, ref, Ref, computed, ComputedRef, nextTick } from 'vue'
-import { props, ValidateTriggers } from './props'
+import { defineComponent, getCurrentInstance, ref, computed, nextTick } from 'vue'
+import { props } from './props'
 import { isEmpty, isNumber, toNumber } from '../utils/shared'
 import { useValidation } from '../utils/components'
 import { useForm } from '../form/provide'
-import { InputProvider } from './provide'
+import type { Ref, ComputedRef } from 'vue'
+import type { ValidateTriggers } from './props'
+import type { InputProvider } from './provide'
 
 export default defineComponent({
   name: 'VarInput',
@@ -113,7 +114,6 @@ export default defineComponent({
     [Icon.name]: Icon,
     [FormDetails.name]: FormDetails,
   },
-  inheritAttrs: false,
   props,
   setup(props) {
     const id: Ref<string> = ref(`var-input-${getCurrentInstance()!.uid}`)

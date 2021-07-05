@@ -33,12 +33,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, nextTick, watch, ComputedRef, computed } from 'vue'
+import { defineComponent, ref, nextTick, watch, computed } from 'vue'
 import { requestAnimationFrame } from '../utils/elements'
 import { isArray } from '../utils/shared'
-import { CollapseItemProvider, useCollapse } from './provide'
+import { useCollapse } from './provide'
 import { props } from './props'
 import Icon from '../icon'
+import type { Ref, ComputedRef } from 'vue'
+import type { CollapseItemProvider } from './provide'
 
 export default defineComponent({
   name: 'VarCollapseItem',

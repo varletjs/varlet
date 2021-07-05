@@ -31,15 +31,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref, ref, PropType, computed, ComputedRef, reactive, watch, UnwrapRef } from 'vue'
+import { defineComponent, ref, computed, reactive, watch } from 'vue'
 import dayjs from 'dayjs'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
-import { MONTH_LIST, Choose, Month, Preview, ComponentProps, PanelBtnDisabled } from '../props'
+import { MONTH_LIST } from '../props'
 import PanelHeader from './panel-header.vue'
 import Button from '../../button'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
+import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
+import type { Choose, Preview, ComponentProps, Month, PanelBtnDisabled } from '../props'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)

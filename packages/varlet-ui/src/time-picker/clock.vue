@@ -31,11 +31,13 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, PropType, ref, Ref, watch } from 'vue'
+import { computed, defineComponent, ref, watch } from 'vue'
 import dayjs from 'dayjs'
-import { hoursAmpm, hours24, minSec, Time, AmPm, Format } from './props'
+import { hoursAmpm, hours24, minSec } from './props'
 import { notConvert, convertHour, getIsDisableMinute, getIsDisableSecond, getNumberTime } from './utils'
 import { toNumber } from '../utils/shared'
+import type { ComputedRef, Ref, PropType } from 'vue'
+import type { Time, AmPm, Format } from './props'
 
 export default defineComponent({
   name: 'Clock',

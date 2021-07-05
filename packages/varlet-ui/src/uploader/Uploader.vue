@@ -1,5 +1,5 @@
 <template>
-  <div class="var-uploader var--box" v-bind="$attrs">
+  <div class="var-uploader var--box">
     <div class="var-uploader__file-list">
       <div
         class="var-uploader__file var-elevation--2"
@@ -85,12 +85,14 @@ import Ripple from '../ripple'
 import Icon from '../icon'
 import Popup from '../popup'
 import ImagePreview from '../image-preview'
-import { defineComponent, nextTick, reactive, computed, ComputedRef, watch, ref, Ref } from 'vue'
-import { props, VarFile, ValidateTriggers } from './props'
+import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
+import { props } from './props'
 import { isNumber, isHTMLSupportImage, isHTMLSupportVideo, toNumber, isString } from '../utils/shared'
 import { useValidation } from '../utils/components'
 import { useForm } from '../form/provide'
-import { UploaderProvider } from './provide'
+import type { ComputedRef, Ref } from 'vue'
+import type { UploaderProvider } from './provide'
+import type { VarFile, ValidateTriggers } from './props'
 
 interface ValidationVarFile {
   valid: boolean
@@ -111,7 +113,6 @@ export default defineComponent({
     [Popup.name]: Popup,
     [FormDetails.name]: FormDetails,
   },
-  inheritAttrs: false,
   props,
   setup(props) {
     const showPreview: Ref<boolean> = ref(false)

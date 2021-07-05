@@ -3,7 +3,6 @@
     class="var-select var--box"
     :class="[formDisabled || disabled ? 'var-select--disabled' : null]"
     @click="handleClick"
-    v-bind="$attrs"
   >
     <div
       class="var-select__controller"
@@ -131,14 +130,17 @@ import Icon from '../icon'
 import Menu from '../menu'
 import Chip from '../chip'
 import FormDetails from '../form-details'
-import { computed, ComputedRef, defineComponent, ref, Ref, watch, nextTick } from 'vue'
+import { computed, defineComponent, ref, watch, nextTick } from 'vue'
 import { isArray, isEmpty } from '../utils/shared'
-import { props, ValidateTriggers } from './props'
+import { props } from './props'
 import { useValidation } from '../utils/components'
-import { SelectProvider, useOptions } from './provide'
-import { OptionProvider } from '../option/provide'
+import { useOptions } from './provide'
 import { useForm } from '../form/provide'
 import { toPxNum } from '../utils/elements'
+import type { Ref, ComputedRef } from 'vue'
+import type { ValidateTriggers } from './props'
+import type { SelectProvider } from './provide'
+import type { OptionProvider } from '../option/provide'
 
 export default defineComponent({
   name: 'VarSelect',
@@ -148,7 +150,6 @@ export default defineComponent({
     [Chip.name]: Chip,
     [FormDetails.name]: FormDetails,
   },
-  inheritAttrs: false,
   props,
   setup(props) {
     const wrapEl: Ref<HTMLElement | null> = ref(null)

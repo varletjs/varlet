@@ -27,10 +27,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, onMounted, onUnmounted, computed, ComputedRef } from 'vue'
+import { defineComponent, ref, onMounted, onUnmounted, computed } from 'vue'
 import { props } from './props'
 import { getParentScroller, toPxNum } from '../utils/elements'
 import { toNumber } from '../utils/shared'
+import type { Ref, ComputedRef } from 'vue'
 
 export default defineComponent({
   name: 'VarSticky',

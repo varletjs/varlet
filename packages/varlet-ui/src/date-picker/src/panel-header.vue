@@ -27,12 +27,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref, ref, computed, ComputedRef, watch, PropType } from 'vue'
+import { defineComponent, ref, computed, watch } from 'vue'
 import Button from '../../button'
 import Icon from '../../icon'
-import { Preview, PanelBtnDisabled } from '../props'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
+import type { Ref, ComputedRef, PropType } from 'vue'
+import type { Preview, PanelBtnDisabled } from '../props'
 
 export default defineComponent({
   name: 'PanelHeader',

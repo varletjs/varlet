@@ -51,11 +51,12 @@
 import Ripple from '../ripple'
 import Popup from '../popup'
 import Icon from '../icon'
-import { defineComponent, ref, Ref, watch } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
 import { props } from './props'
 import { dt } from '../utils/shared'
 import { pack } from '../locale'
-import { ActionItem } from './index'
+import type { Ref } from 'vue'
+import type { ActionItem } from './index'
 
 export default defineComponent({
   name: 'VarActionSheet',

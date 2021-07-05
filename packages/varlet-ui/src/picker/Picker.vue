@@ -94,12 +94,14 @@
 <script lang="ts">
 import Button from '../button'
 import Popup from '../popup'
-import { defineComponent, watch, ref, Ref, computed, ComputedRef, Transition, toRaw } from 'vue'
-import { CascadeColumn, NormalColumn, props } from './props'
+import { defineComponent, watch, ref, computed, Transition, toRaw } from 'vue'
+import { props } from './props'
 import { isArray, dt } from '../utils/shared'
 import { toPxNum, getTranslate } from '../utils/elements'
 import { pack } from '../locale'
-import { Texts } from './index'
+import type { Ref, ComputedRef } from 'vue'
+import type { CascadeColumn, NormalColumn } from './props'
+import type { Texts } from './index'
 
 interface ScrollColumn {
   touching: boolean

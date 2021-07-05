@@ -5,9 +5,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ComputedRef } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { props } from './props'
-import { FormProvider, useFormItems } from './provide'
+import { useFormItems } from './provide'
+import type { ComputedRef } from 'vue'
+import type { FormProvider } from './provide'
 
 export default defineComponent({
   name: 'VarForm',

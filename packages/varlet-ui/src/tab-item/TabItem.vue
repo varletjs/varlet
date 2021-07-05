@@ -7,9 +7,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, computed, ComputedRef, watch } from 'vue'
-import { TabItemProvider, useTabsItems } from './provide'
+import { defineComponent, ref, computed, watch } from 'vue'
+import { useTabsItems } from './provide'
 import { props } from './props'
+import type { Ref, ComputedRef } from 'vue'
+import type { TabItemProvider } from './provide'
 
 export default defineComponent({
   name: 'VarTabItem',

@@ -14,10 +14,12 @@
 </template>
 
 <script lang="ts">
-import Ripple from '../ripple'
-import { defineComponent, Ref, ref, computed, ComputedRef, watch } from 'vue'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
-import { TabProvider, useTabs } from './provide'
+import Ripple from '../ripple'
+import { useTabs } from './provide'
+import type { Ref, ComputedRef } from 'vue'
+import type { TabProvider } from './provide'
 
 export default defineComponent({
   name: 'VarTab',

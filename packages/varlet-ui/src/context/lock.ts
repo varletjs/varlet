@@ -4,9 +4,9 @@ import {
   onUnmounted,
   onDeactivated,
   onActivated,
-  getCurrentInstance,
-  ComponentInternalInstance
+  getCurrentInstance
 } from 'vue'
+import type { ComponentInternalInstance } from 'vue'
 import context from '.'
 
 export function resolveLock() {

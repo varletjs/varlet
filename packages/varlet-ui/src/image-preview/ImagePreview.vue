@@ -73,9 +73,10 @@ import Swipe from '../swipe'
 import SwipeItem from '../swipe-item'
 import Icon from '../icon'
 import Popup from '../popup'
-import { defineComponent, ref, computed, Ref, ComputedRef, watch } from 'vue'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
 import { toNumber } from '../utils/shared'
+import type { Ref, ComputedRef } from 'vue'
 
 type VarTouch = {
   clientX: number

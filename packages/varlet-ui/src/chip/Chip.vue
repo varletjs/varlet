@@ -18,8 +18,9 @@
 
 <script lang="ts">
 import Icon from '../icon'
-import { defineComponent, computed, ComputedRef } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { props } from './props'
+import type { ComputedRef } from 'vue'
 
 export default defineComponent({
   name: 'VarChip',

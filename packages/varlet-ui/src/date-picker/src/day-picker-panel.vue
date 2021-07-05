@@ -40,15 +40,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref, ref, PropType, computed, ComputedRef, watch, onMounted, UnwrapRef, reactive } from 'vue'
+import { defineComponent, ref, computed, watch, onMounted, reactive } from 'vue'
 import dayjs from 'dayjs'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import PanelHeader from './panel-header.vue'
 import Button from '../../button'
-import { WEEK_HEADER, Choose, Preview, ComponentProps, Week, PanelBtnDisabled } from '../props'
+import { WEEK_HEADER } from '../props'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
+import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
+import type { Choose, Preview, ComponentProps, Week, PanelBtnDisabled } from '../props'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)

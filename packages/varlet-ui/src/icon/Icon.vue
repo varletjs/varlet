@@ -21,10 +21,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref, Ref, nextTick } from 'vue'
+import { defineComponent, watch, ref, nextTick } from 'vue'
 import { isURL, toNumber } from '../utils/shared'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
+import type { Ref } from 'vue'
 
 export default defineComponent({
   name: 'VarIcon',

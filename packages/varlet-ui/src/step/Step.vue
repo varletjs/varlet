@@ -50,10 +50,12 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
+import { computed, defineComponent, ref, watch } from 'vue'
 import { props } from './props'
-import { StepProvider, useSteps } from './provide'
+import { useSteps } from './provide'
 import Icon from '../icon'
+import type { Ref, ComputedRef } from 'vue'
+import type { StepProvider } from './provide'
 
 export default defineComponent({
   name: 'VarStep',

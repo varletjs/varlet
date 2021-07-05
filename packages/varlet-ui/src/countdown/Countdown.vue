@@ -7,10 +7,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref, ref, watch } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
 import { props } from './props'
 import { requestAnimationFrame, cancelAnimationFrame } from '../utils/elements'
-import { toNumber, parseFormat, Time } from '../utils/shared'
+import { toNumber, parseFormat } from '../utils/shared'
+import type { Ref } from 'vue'
+import type { Time } from '../utils/shared'
 
 const SECOND = 1000
 const MINUTE = 60 * SECOND

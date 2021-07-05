@@ -4,21 +4,21 @@
     :style="{
       height: transitionHeight,
     }"
-    v-bind="$attrs"
   >
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch, ref, Ref, nextTick, ComputedRef } from 'vue'
-import { TabsItemsProvider, useTabItem } from './provide'
+import { defineComponent, computed, watch, ref, nextTick } from 'vue'
+import { useTabItem } from './provide'
 import { props } from './props'
-import { TabItemProvider } from '../tab-item/provide'
+import type { Ref, ComputedRef } from 'vue'
+import type { TabsItemsProvider } from './provide'
+import type { TabItemProvider } from '../tab-item/provide'
 
 export default defineComponent({
   name: 'VarTabsItems',
-  inheritAttrs: false,
   props,
   setup(props) {
     const transitionHeight: Ref<string> = ref('auto')

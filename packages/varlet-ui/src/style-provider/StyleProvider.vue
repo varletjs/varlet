@@ -1,7 +1,8 @@
 <script lang="ts">
-import { defineComponent, h, PropType } from 'vue'
-import { StyleVars } from './index'
+import { defineComponent, h } from 'vue'
 import { formatStyleVars } from '../utils/elements'
+import type { PropType } from 'vue'
+import type { StyleVars } from './index'
 
 export default defineComponent({
   name: 'VarStyleProvider',

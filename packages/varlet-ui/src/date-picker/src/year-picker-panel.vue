@@ -13,10 +13,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ComputedRef, onMounted, PropType } from 'vue'
+import { defineComponent, computed, onMounted } from 'vue'
 import dayjs from 'dayjs'
-import { ComponentProps } from '../props'
 import { toNumber } from '../../utils/shared'
+import type { ComputedRef, PropType } from 'vue'
+import type { ComponentProps } from '../props'
 
 export default defineComponent({
   name: 'YearPickerPanel',

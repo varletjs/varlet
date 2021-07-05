@@ -19,11 +19,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, computed, watch, onMounted } from 'vue'
+import { defineComponent, ref, computed, watch, onMounted } from 'vue'
 import Icon from '../icon'
 import { getParentScroller, getScrollTop } from '../utils/elements'
-import { props, RefreshStatus } from './props'
+import { props } from './props'
 import { toNumber } from '../utils/shared'
+import type { Ref } from 'vue'
+import type { RefreshStatus } from './props'
 
 const MAX_DISTANCE = 100
 const CONTROL_POSITION = -50

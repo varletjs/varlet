@@ -1,5 +1,5 @@
 <template>
-  <div class="var-swipe" ref="swipeEl" v-bind="$attrs">
+  <div class="var-swipe" ref="swipeEl">
     <div
       class="var-swipe__track"
       :class="[vertical ? 'var-swipe--vertical' : null]"
@@ -39,19 +39,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, computed, ComputedRef, watch, onUnmounted } from 'vue'
-import { SwipeProvider, useSwipeItems } from './provide'
+import { defineComponent, ref, computed, watch, onUnmounted } from 'vue'
+import { useSwipeItems } from './provide'
 import { nextTickFrame } from '../utils/elements'
-import { SwipeItemProvider } from '../swipe-item/provide'
 import { props } from './props'
 import { isNumber, toNumber } from '../utils/shared'
+import type { Ref, ComputedRef } from 'vue'
+import type { SwipeProvider } from './provide'
+import type { SwipeItemProvider } from '../swipe-item/provide'
 
 const SWIPE_DELAY = 250
 const SWIPE_DISTANCE = 20
 
 export default defineComponent({
   name: 'VarSwipe',
-  inheritAttrs: false,
   props,
   setup(props) {
     const swipeEl: Ref<HTMLElement | null> = ref(null)

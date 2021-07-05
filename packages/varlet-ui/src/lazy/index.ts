@@ -1,14 +1,13 @@
-import type { App, Directive, Plugin } from 'vue'
-import { DirectiveBinding } from '@vue/runtime-core'
 import { getParentScroller, inViewport } from '../utils/elements'
 import {
-  CacheInstance,
   checkIntersectionObserverAPI,
   createCache,
   createInViewportObserver,
   removeItem,
   throttle,
 } from '../utils/shared'
+import type { App, Directive, Plugin, DirectiveBinding } from 'vue'
+import type { CacheInstance } from '../utils/shared'
 
 interface LazyOptions {
   loading?: string

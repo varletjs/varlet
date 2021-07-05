@@ -15,9 +15,10 @@
 <script lang="ts">
 import { defineComponent, watch } from 'vue'
 import { props } from './props'
-import { RowProvider, useCols } from './provide'
-import { ColProvider } from '../col/provide'
+import { useCols } from './provide'
 import { toPxNum } from '../utils/elements'
+import type { ColProvider } from '../col/provide'
+import type { RowProvider } from './provide'
 
 export default defineComponent({
   name: 'VarRow',

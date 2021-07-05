@@ -1,5 +1,5 @@
 <template>
-  <div class="var-radio-group__wrap" v-bind="$attrs">
+  <div class="var-radio-group__wrap">
     <div class="var-radio-group" :class="[`var-radio-group--${direction}`]">
       <slot />
     </div>
@@ -10,18 +10,20 @@
 
 <script lang="ts">
 import FormDetails from '../form-details'
-import { computed, ComputedRef, defineComponent, nextTick, watch } from 'vue'
-import { props, ValidateTriggers } from './props'
+import { computed, defineComponent, nextTick, watch } from 'vue'
+import { props } from './props'
 import { useValidation } from '../utils/components'
-import { RadioGroupProvider, useRadios } from './provide'
+import { useRadios } from './provide'
 import { useForm } from '../form/provide'
+import type { ComputedRef } from 'vue'
+import type { ValidateTriggers } from './props'
+import type { RadioGroupProvider } from './provide'
 
 export default defineComponent({
   name: 'VarRadioGroup',
   components: {
     [FormDetails.name]: FormDetails,
   },
-  inheritAttrs: false,
   props,
   setup(props) {
     const { length, radios, bindRadios } = useRadios()

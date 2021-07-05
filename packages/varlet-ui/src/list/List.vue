@@ -26,11 +26,12 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import Loading from '../loading'
-import { defineComponent, onMounted, onUnmounted, ref, Ref, nextTick } from 'vue'
+import { defineComponent, onMounted, onUnmounted, ref, nextTick } from 'vue'
 import { getParentScroller, isHidden, toPxNum } from '../utils/elements'
 import { props } from './props'
 import { isNumber, dt } from '../utils/shared'
 import { pack } from '../locale'
+import type { Ref } from 'vue'
 
 export default defineComponent({
   name: 'VarList',

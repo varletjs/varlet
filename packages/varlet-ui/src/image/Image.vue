@@ -37,10 +37,11 @@
 
 <script lang="ts">
 import Ripple from '../ripple'
-import Lazy, { LazyHTMLElement } from '../lazy'
+import Lazy from '../lazy'
 import { defineComponent } from 'vue'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
+import type { LazyHTMLElement } from '../lazy'
 
 export default defineComponent({
   name: 'VarImage',

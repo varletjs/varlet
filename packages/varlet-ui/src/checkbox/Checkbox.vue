@@ -1,5 +1,5 @@
 <template>
-  <div class="var-checkbox__wrap" @click="handleClick" v-bind="$attrs">
+  <div class="var-checkbox__wrap" @click="handleClick">
     <div class="var-checkbox">
       <div
         class="var-checkbox__action"
@@ -50,11 +50,14 @@
 import Icon from '../icon'
 import Ripple from '../ripple'
 import FormDetails from '../form-details'
-import { defineComponent, ref, Ref, computed, ComputedRef, watch, nextTick } from 'vue'
-import { props, ValidateTriggers } from './props'
+import { defineComponent, ref, computed, watch, nextTick } from 'vue'
+import { props } from './props'
 import { useValidation } from '../utils/components'
-import { CheckboxProvider, useCheckboxGroup } from './provide'
+import { useCheckboxGroup } from './provide'
 import { useForm } from '../form/provide'
+import type { Ref, ComputedRef } from 'vue'
+import type { ValidateTriggers } from './props'
+import type { CheckboxProvider } from './provide'
 
 export default defineComponent({
   name: 'VarCheckbox',
@@ -63,7 +66,6 @@ export default defineComponent({
     [Icon.name]: Icon,
     [FormDetails.name]: FormDetails,
   },
-  inheritAttrs: false,
   props,
   setup(props) {
     const value: Ref<any> = ref(false)

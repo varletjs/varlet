@@ -6,19 +6,19 @@
       height: vertical ? `${size}px` : null,
       transform: `translate${vertical ? 'Y' : 'X'}(${translate}px)`,
     }"
-    v-bind="$attrs"
   >
     <slot />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref } from 'vue'
-import { SwipeItemProvider, useSwipe } from './provide'
+import { defineComponent, ref } from 'vue'
+import { useSwipe } from './provide'
+import type { Ref } from 'vue'
+import type { SwipeItemProvider } from './provide'
 
 export default defineComponent({
   name: 'VarSwipeItem',
-  inheritAttrs: false,
   setup() {
     const translate: Ref<number> = ref(0)
     const { swipe, bindSwipe, index } = useSwipe()

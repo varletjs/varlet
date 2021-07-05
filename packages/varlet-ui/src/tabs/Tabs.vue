@@ -42,19 +42,19 @@ import {
   defineComponent,
   watch,
   ref,
-  Ref,
   computed,
   Transition,
-  ComputedRef,
   nextTick,
   onMounted,
   onUnmounted,
 } from 'vue'
 import { props } from './props'
-import { TabsProvider, useTabList } from './provide'
-import { TabProvider } from '../tab/provide'
+import { useTabList } from './provide'
 import { isNumber, linear } from '../utils/shared'
 import { toSizeUnit, scrollTo } from '../utils/elements'
+import type { Ref, ComputedRef } from 'vue'
+import type { TabsProvider } from './provide'
+import type { TabProvider } from '../tab/provide'
 
 export default defineComponent({
   name: 'VarTabs',

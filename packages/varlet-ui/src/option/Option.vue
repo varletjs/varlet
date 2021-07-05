@@ -7,7 +7,6 @@
       color: optionSelected ? focusColor : null,
     }"
     v-ripple
-    v-bind="$attrs"
     @click="handleClick"
   >
     <div
@@ -37,9 +36,11 @@
 <script lang="ts">
 import Checkbox from '../checkbox'
 import Ripple from '../ripple'
-import { defineComponent, computed, ComputedRef, ref, Ref, watch } from 'vue'
-import { OptionProvider, useSelect } from './provide'
+import { defineComponent, computed, ref, watch } from 'vue'
+import { useSelect } from './provide'
 import { props } from './props'
+import type { Ref, ComputedRef } from 'vue'
+import type { OptionProvider } from './provide'
 
 export default defineComponent({
   name: 'VarOption',
@@ -47,7 +48,6 @@ export default defineComponent({
   components: {
     [Checkbox.name]: Checkbox,
   },
-  inheritAttrs: false,
   props,
   setup(props) {
     const optionSelected: Ref<boolean> = ref(false)

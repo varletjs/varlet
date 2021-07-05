@@ -17,10 +17,11 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { props } from './props'
 import Icon from '../icon'
 import { toNumber } from '../utils/shared'
+import type { ComputedRef } from 'vue'
 
 export default defineComponent({
   name: 'VarBadge',

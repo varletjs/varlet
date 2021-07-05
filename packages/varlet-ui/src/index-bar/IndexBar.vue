@@ -17,12 +17,14 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, nextTick, ref, Ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { computed, defineComponent, nextTick, ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { isPlainObject } from '../utils/shared'
 import { getParentScroller, requestAnimationFrame } from '../utils/elements'
-import { IndexBarProvider, useIndexAnchors } from './provide'
-import { IndexAnchorProvider } from '../index-anchor/provide'
+import { useIndexAnchors } from './provide'
 import { props } from './props'
+import type { Ref, ComputedRef } from 'vue'
+import type { IndexBarProvider } from './provide'
+import type { IndexAnchorProvider } from '../index-anchor/provide'
 
 export default defineComponent({
   name: 'VarIndexBar',

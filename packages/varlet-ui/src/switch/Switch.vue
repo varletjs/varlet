@@ -32,15 +32,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ComputedRef, computed, nextTick } from 'vue'
+import { defineComponent, computed, nextTick } from 'vue'
 import { useValidation } from '../utils/components'
 import { toNumber } from '../utils/shared'
-import { SwitchProvider } from './provide'
 import { useForm } from '../form/provide'
 import { props } from './props'
 import FormDetails from '../form-details'
 import Loading from '../loading'
 import Ripple from '../ripple'
+import type { ComputedRef } from 'vue'
+import type { SwitchProvider } from './provide'
 
 type StyleProps = {
   width: string

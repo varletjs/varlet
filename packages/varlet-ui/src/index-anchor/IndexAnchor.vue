@@ -12,10 +12,12 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, ref, Ref, RendererNode, Transition } from 'vue'
+import { computed, defineComponent, ref, RendererNode, Transition } from 'vue'
 import Sticky from '../sticky'
-import { IndexAnchorProvider, useIndexBar } from './provide'
+import { useIndexBar } from './provide'
 import { props } from './props'
+import type { Ref, ComputedRef } from 'vue'
+import type { IndexAnchorProvider } from './provide'
 
 export default defineComponent({
   name: 'VarIndexAnchor',

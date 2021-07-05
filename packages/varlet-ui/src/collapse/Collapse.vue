@@ -5,11 +5,13 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, nextTick, watch } from 'vue'
-import { CollapseProvider, useCollapseItem } from './provide'
-import { CollapseItemProvider } from '../collapse-item/provide'
+import { computed, defineComponent, nextTick, watch } from 'vue'
+import { useCollapseItem } from './provide'
 import { props } from './props'
 import { isArray } from '../utils/shared'
+import type { ComputedRef } from 'vue'
+import type { CollapseItemProvider } from '../collapse-item/provide'
+import type { CollapseProvider } from './provide'
 
 export default defineComponent({
   name: 'VarCollapse',

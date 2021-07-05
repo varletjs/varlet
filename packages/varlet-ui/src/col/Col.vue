@@ -9,7 +9,6 @@
       paddingLeft: toSizeUnit(padding.left),
       paddingRight: toSizeUnit(padding.right)
     }"
-    v-bind="$attrs"
     @click="onClick"
   >
     <slot />
@@ -17,15 +16,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, computed, ComputedRef, watch } from 'vue'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { toNumber } from '../utils/shared'
 import { props } from './props'
-import { ColPadding, ColProvider, useRow } from './provide'
+import { useRow } from './provide'
 import { toSizeUnit } from '../utils/elements'
+import type { Ref, ComputedRef } from 'vue'
+import type { ColPadding, ColProvider } from './provide'
 
 export default defineComponent({
   name: 'VarCol',
-  inheritAttrs: false,
   props,
   setup(props) {
     const padding: Ref<ColPadding> = ref({ left: 0, right: 0 })
@@ -51,7 +51,7 @@ export default defineComponent({
     return {
       padding,
       toNumber,
-      toSizeUnit,
+      toSizeUnit
     }
   }
 })

@@ -1,5 +1,5 @@
 <template>
-  <div class="var-menu" ref="host" v-bind="$attrs" @click="handleClick">
+  <div class="var-menu" ref="host" @click="handleClick">
     <slot />
 
     <teleport :to="teleport">
@@ -23,14 +23,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import { defineComponent, ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { props } from './props'
 import { getLeft, getTop, toSizeUnit } from '../utils/elements'
 import { useZIndex } from '../context/zIndex'
+import type { Ref } from 'vue'
 
 export default defineComponent({
   name: 'VarMenu',
-  inheritAttrs: false,
   props,
   setup(props) {
     const host: Ref<null | HTMLElement> = ref(null)

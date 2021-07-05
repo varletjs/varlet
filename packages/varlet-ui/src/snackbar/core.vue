@@ -14,14 +14,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref, Ref, onMounted, computed, ComputedRef } from 'vue'
+import { defineComponent, watch, ref, onMounted, computed } from 'vue'
 import Loading from '../loading'
 import Button from '../button'
 import Icon from '../icon'
 import { useZIndex } from '../context/zIndex'
 import { props } from './props'
 import { useLock } from '../context/lock'
-import { SNACKBAR_TYPE, SnackbarType } from './index'
+import { SNACKBAR_TYPE } from './index'
+import type { Ref, ComputedRef } from 'vue'
+import type { SnackbarType } from './index'
 
 const ICON_TYPE_DICT: Record<SnackbarType, string> = {
   success: 'checkbox-marked-circle',

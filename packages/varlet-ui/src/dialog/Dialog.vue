@@ -57,9 +57,10 @@
 import Popup from '../popup'
 import Button from '../button'
 import { props } from './props'
-import { defineComponent, ref, Ref, watch } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
 import { dt } from '../utils/shared'
 import { pack } from '../locale'
+import type { Ref } from 'vue'
 
 export default defineComponent({
   name: 'VarDialog',

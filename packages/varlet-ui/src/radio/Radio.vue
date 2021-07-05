@@ -49,11 +49,14 @@
 import Ripple from '../ripple'
 import Icon from '../icon'
 import FormDetails from '../form-details'
-import { computed, ComputedRef, defineComponent, nextTick, ref, Ref, watch } from 'vue'
-import { props, ValidateTriggers } from './props'
+import { computed, defineComponent, nextTick, ref, watch } from 'vue'
+import { props } from './props'
 import { useValidation } from '../utils/components'
-import { RadioProvider, useRadioGroup } from './provide'
+import { useRadioGroup } from './provide'
 import { useForm } from '../form/provide'
+import type { Ref, ComputedRef } from 'vue'
+import type { ValidateTriggers } from './props'
+import type { RadioProvider } from './provide'
 
 export default defineComponent({
   name: 'VarRadio',

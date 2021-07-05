@@ -5,9 +5,11 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent } from 'vue'
-import { StepsProvider, useStep } from './provide'
+import { computed, defineComponent } from 'vue'
+import { useStep } from './provide'
 import { props } from './props'
+import type { ComputedRef } from 'vue'
+import type { StepsProvider } from './provide'
 
 export default defineComponent({
   name: 'VarSteps',

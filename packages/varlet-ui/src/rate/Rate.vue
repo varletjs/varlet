@@ -25,8 +25,8 @@ import { useForm } from '../form/provide'
 import { useValidation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { toNumber } from '../utils/shared'
-import { RateProvider } from './provide'
 import { props } from './props'
+import type { RateProvider } from './provide'
 
 export default defineComponent({
   name: 'VarRate',

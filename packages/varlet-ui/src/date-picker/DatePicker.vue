@@ -81,14 +81,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref, ref, computed, ComputedRef, reactive, UnwrapRef, watch } from 'vue'
+import { defineComponent, ref, computed, reactive, watch } from 'vue'
 import dayjs from 'dayjs'
 import MonthPickerPanel from './src/month-picker-panel.vue'
 import YearPickerPanel from './src/year-picker-panel.vue'
 import DayPickerPanel from './src/day-picker-panel.vue'
-import { props, Month, MONTH_LIST, Choose, Preview, WEEK_HEADER, Week, ComponentProps } from './props'
+import { props, MONTH_LIST, WEEK_HEADER } from './props'
 import { isArray, toNumber } from '../utils/shared'
 import { pack } from '../locale'
+import type { Ref, ComputedRef, UnwrapRef } from 'vue'
+import type { Month, Choose, Preview, Week, ComponentProps } from './props'
 
 export default defineComponent({
   name: 'VarDatePicker',

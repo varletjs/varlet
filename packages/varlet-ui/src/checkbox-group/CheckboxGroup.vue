@@ -9,12 +9,15 @@
 
 <script lang="ts">
 import FormDetails from '../form-details'
-import { defineComponent, computed, ComputedRef, watch, nextTick } from 'vue'
-import { props, ValidateTriggers } from './props'
+import { defineComponent, computed, watch, nextTick } from 'vue'
+import { props } from './props'
 import { useValidation } from '../utils/components'
-import { CheckboxGroupProvider, useCheckboxes } from './provide'
+import { useCheckboxes } from './provide'
 import { useForm } from '../form/provide'
 import { uniq } from '../utils/shared'
+import type { ComputedRef } from 'vue'
+import type { ValidateTriggers } from './props'
+import type { CheckboxGroupProvider } from './provide'
 
 export default defineComponent({
   name: 'VarCheckboxGroup',

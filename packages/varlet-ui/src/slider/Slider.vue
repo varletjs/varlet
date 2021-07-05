@@ -114,14 +114,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref, ref, onMounted, computed, ComputedRef, reactive, UnwrapRef, nextTick, watch } from 'vue'
+import { defineComponent, ref, onMounted, computed, reactive, nextTick, watch } from 'vue'
 import { useValidation } from '../utils/components'
 import { useForm } from '../form/provide'
 import { getLeft } from '../utils/elements'
 import { isArray, isNumber, toNumber } from '../utils/shared'
 import { props } from './props'
-import { SliderProvider } from './provide'
 import FormDetails from '../form-details'
+import type { Ref, ComputedRef, UnwrapRef } from 'vue'
+import type { SliderProvider } from './provide'
 
 type ThumbProps = {
   startPosition: number

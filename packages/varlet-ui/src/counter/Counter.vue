@@ -62,14 +62,16 @@
 import Icon from '../icon'
 import Ripple from '../ripple'
 import FormDetails from '../form-details'
-import { defineComponent, ref, Ref, watch, computed, ComputedRef, nextTick } from 'vue'
+import { defineComponent, ref, watch, computed, nextTick } from 'vue'
 import { Decimal } from 'decimal.js'
-import { props, ValidateTriggers } from './props'
+import { props } from './props'
 import { toNumber } from '../utils/shared'
 import { toSizeUnit } from '../utils/elements'
-import { CounterProvider } from './provide'
 import { useForm } from '../form/provide'
 import { useValidation } from '../utils/components'
+import type { Ref, ComputedRef } from 'vue'
+import type { ValidateTriggers } from './props'
+import type { CounterProvider } from './provide'
 
 const SPEED = 100
 const DELAY = 600
