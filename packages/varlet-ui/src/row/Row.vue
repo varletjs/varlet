@@ -5,7 +5,6 @@
       justifyContent: justify,
       alignItems: align
     }"
-    v-bind="$attrs"
     @click="onClick"
   >
     <slot />
@@ -22,7 +21,6 @@ import type { RowProvider } from './provide'
 
 export default defineComponent({
   name: 'VarRow',
-  inheritAttrs: false,
   props,
   setup(props) {
     const { cols, bindCols, length } = useCols()

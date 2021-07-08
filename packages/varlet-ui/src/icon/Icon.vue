@@ -15,7 +15,6 @@
       fontSize: toSizeUnit(size),
     }"
     :src="isURL(name) ? nextName : null"
-    v-bind="$attrs"
     @click="onClick"
   />
 </template>
@@ -29,7 +28,6 @@ import type { Ref } from 'vue'
 
 export default defineComponent({
   name: 'VarIcon',
-  inheritAttrs: false,
   props,
   setup(props) {
     const nextName: Ref<string | undefined> = ref('')

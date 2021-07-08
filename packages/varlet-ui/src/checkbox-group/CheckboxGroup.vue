@@ -1,5 +1,5 @@
 <template>
-  <div class="var-checkbox-group__wrap" v-bind="$attrs">
+  <div class="var-checkbox-group__wrap">
     <div class="var-checkbox-group" :class="[`var-checkbox-group--${direction}`]">
       <slot />
     </div>
@@ -24,7 +24,6 @@ export default defineComponent({
   components: {
     [FormDetails.name]: FormDetails,
   },
-  inheritAttrs: false,
   props,
   setup(props) {
     const max: ComputedRef<number | string | undefined> = computed(() => props.max)

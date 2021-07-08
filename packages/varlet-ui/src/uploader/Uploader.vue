@@ -72,8 +72,8 @@
         x5-video-player-type="h5"
         x5-video-player-fullscreen="false"
         controls
-        :src="currentPreview.url"
-        v-if="currentPreview && isHTMLSupportVideo(currentPreview.url)"
+        :src="currentPreview?.url"
+        v-if="currentPreview && isHTMLSupportVideo(currentPreview?.url)"
       ></video>
     </var-popup>
   </div>
