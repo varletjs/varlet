@@ -9,7 +9,10 @@
   </p>
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
+    <img src="https://img.shields.io/github/stars/haoziqaq/varlet" alt="ci">
+    <img src="https://img.shields.io/npm/l/@varlet/ui.svg" alt="licence">
     <img src="https://img.shields.io/codecov/c/github/haoziqaq/varlet" alt="coverage">
+    <img src="https://github.com/haoziqaq/varlet/workflows/CI/badge.svg" alt="ci">
   </p>
 </div>
 
