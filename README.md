@@ -10,7 +10,6 @@
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
     <img src="https://img.shields.io/codecov/c/github/haoziqaq/varlet" alt="coverage">
-    <img src="https://img.shields.io/npm/dm/@varlet/ui?style=flat-square" alt="downloads" />
   </p>
 </div>
 
