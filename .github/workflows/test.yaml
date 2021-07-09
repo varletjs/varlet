@@ -15,4 +15,4 @@ jobs:
         run: yarn bootstrap
 
       - name: Run test cases
-        run: cd packages/varlet-ui & yarn test
+        run: cd packages/varlet-ui && yarn test
