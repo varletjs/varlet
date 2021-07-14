@@ -1,6 +1,6 @@
 {
   "name": "@varlet/cli",
-  "version": "1.8.0",
+  "version": "1.9.0-alpha.10+7638540",
   "description": "cli of varlet",
   "bin": {
     "varlet-cli": "./lib/index.js"
@@ -29,7 +29,7 @@
     "dev": "tsc --watch",
     "build": "tsc"
   },
-  "gitHead": "04cbbd571a061f5d5651515132a8ef079de5673e",
+  "gitHead": "7638540be5f5159578bc7a616e365f1bb6d0494f",
   "dependencies": {
     "@babel/core": "^7.12.3",
     "@babel/plugin-transform-runtime": "^7.12.1",
@@ -37,7 +37,7 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
     "@varlet/markdown-loader": "^1.0.0",
-    "@varlet/ui": "^1.8.0-alpha.81",
+    "@varlet/ui": "^1.8.0",
     "@vue/compiler-sfc": "^3.0.7",
     "@vue/test-utils": "^2.0.0-rc.6",
     "autoprefixer": "9",
