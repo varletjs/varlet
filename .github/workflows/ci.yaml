@@ -16,17 +16,3 @@ jobs:
 
       - name: Run test cases
         run: cd packages/varlet-ui && yarn test
-
-  compile:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-
-      - name: Install dependencies
-        run: yarn bootstrap
-
-      - name: Run Compile
-        run: cd packages/varlet-ui && yarn compile
