@@ -1,5 +1,5 @@
 import hash from 'hash-sum'
-import { readFile, readFileSync, remove, writeFileSync } from 'fs-extra'
+import { readFile, remove, writeFileSync } from 'fs-extra'
 import { parse, compileTemplate, compileStyle, SFCStyleBlock } from '@vue/compiler-sfc'
 import { appendContent, replaceExt } from '../shared/fsUtils'
 import { compileScript } from './compileScript'
