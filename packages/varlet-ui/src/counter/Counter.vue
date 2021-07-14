@@ -334,6 +334,8 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../styles/common';
+@import '../styles/elevation';
 @import '../icon/icon';
 @import '../form-details/formDetails';
 @import '../ripple/ripple';

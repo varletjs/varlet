@@ -1,6 +1,6 @@
 import webpack from 'webpack'
 import logger from '../shared/logger'
-import { EXAMPLE_DIR_NAME, TESTS_DIR_NAME, DOCS_DIR_NAME, SRC_DIR, CJS_DIR, ES_DIR } from '../shared/constant'
+import { EXAMPLE_DIR_NAME, TESTS_DIR_NAME, DOCS_DIR_NAME, SRC_DIR, ES_DIR } from '../shared/constant'
 import { copy, ensureFileSync, readdir, removeSync } from 'fs-extra'
 import { getComponentNames, getExportDirNames, isDir, isLess, isScript, isSFC } from '../shared/fsUtils'
 import { compileSFC } from './compileSFC'
@@ -29,25 +29,25 @@ export function compileUMD() {
   })
 }
 
-export async function compileDir(dir: string, modules: string | boolean = false) {
+export async function compileDir(dir: string) {
   const dirs = await readdir(dir)
 
   await Promise.all(
     dirs.map((filename) => {
-      const filePath = resolve(dir, filename)
+      const file = resolve(dir, filename)
 
-      ;[TESTS_DIR_NAME, EXAMPLE_DIR_NAME, DOCS_DIR_NAME].includes(filename) && removeSync(filePath)
+      ;[TESTS_DIR_NAME, EXAMPLE_DIR_NAME, DOCS_DIR_NAME].includes(filename) && removeSync(file)
 
-      return compileFile(filePath, modules)
+      return compileFile(file)
     })
   )
 }
 
-export async function compileFile(path: string, modules: string | boolean = false) {
-  isSFC(path) && (await compileSFC(path, modules))
-  isScript(path) && (await compileScriptFile(path, modules))
-  isLess(path) && (await compileLess(path))
-  isDir(path) && (await compileDir(path))
+export async function compileFile(file: string) {
+  isSFC(file) && (await compileSFC(file))
+  isScript(file) && (await compileScriptFile(file))
+  isLess(file) && (await compileLess(file))
+  isDir(file) && (await compileDir(file))
 }
 
 export async function compileModule(modules: string | boolean = false) {
@@ -56,23 +56,21 @@ export async function compileModule(modules: string | boolean = false) {
     return
   }
 
-  const MODULE_DIR: string = modules === 'cjs' ? CJS_DIR : ES_DIR
-  await copy(SRC_DIR, MODULE_DIR)
-  const moduleDir: string[] = await readdir(MODULE_DIR)
+  await copy(SRC_DIR, ES_DIR)
+  const moduleDir: string[] = await readdir(ES_DIR)
 
   await Promise.all(
     moduleDir.map((filename: string) => {
-      const path: string = resolve(MODULE_DIR, filename)
+      const file: string = resolve(ES_DIR, filename)
 
-      // cover babel-import-plugin
-      if (isDir(path)) {
-        ensureFileSync(resolve(path, './style/index.js'))
-        ensureFileSync(resolve(path, './style/less.js'))
+      if (isDir(file)) {
+        ensureFileSync(resolve(file, './style/index.js'))
+        ensureFileSync(resolve(file, './style/less.js'))
       }
 
-      return isDir(path) ? compileDir(path, modules) : null
+      return isDir(file) ? compileDir(file) : null
     })
   )
 
-  await compileLibraryEntry(MODULE_DIR, await getComponentNames(), await getExportDirNames(), modules)
+  await compileLibraryEntry(ES_DIR, await getComponentNames(), await getExportDirNames())
 }

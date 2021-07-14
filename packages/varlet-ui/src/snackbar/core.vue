@@ -103,13 +103,15 @@ export default defineComponent({
       zIndex,
       snackbarClass,
       iconName,
-      isForbidClick
+      isForbidClick,
     }
   },
 })
 </script>
 
 <style lang="less">
+@import '../styles/common';
+@import '../styles/elevation';
 @import '../loading/loading';
 @import '../button/button';
 @import '../icon/icon';

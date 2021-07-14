@@ -1,6 +1,3 @@
-@import '../styles/var';
-@import '../styles/elevation';
-
 @switch-track-background: #fff;
 @switch-track-active-background: var(--color-primary);
 @switch-track-error-background: var(--color-danger);
@@ -59,7 +56,7 @@
     color: var(--switch-ripple-color);
     border-radius: 50%;
     overflow: hidden;
-    transition: 0.3s @cubic-bezier;
+    transition: 0.3s var(--cubic-bezier);
   }
 
   &__handle {

@@ -1,6 +1,5 @@
-import { readFileSync, writeFileSync, ensureFileSync } from 'fs-extra'
+import { readFileSync, writeFileSync } from 'fs-extra'
 import { render, FileManager } from 'less'
-import { parse, resolve } from 'path'
 import { replaceExt } from '../shared/fsUtils'
 
 export const IMPORT_LESS_PATH_RE = /((?<!['"`])import\s+['"]\s*\.{1,2}\/.+\.)less(\s*['"`])(?!\s*['"`])/g
@@ -30,26 +29,12 @@ export function clearEmptyLine(style: string) {
   return style.replace(EMPTY_LINE_RE, '').replace(EMPTY_SPACE_RE, ' ')
 }
 
-export async function compileLess(path: string) {
-  const source = readFileSync(path, 'utf-8')
+export async function compileLess(file: string) {
+  const source = readFileSync(file, 'utf-8')
   const { css } = await render(source, {
-    filename: path,
+    filename: file,
     plugins: [TildeResolverPlugin],
   })
 
-  writeFileSync(replaceExt(path, '.css'), clearEmptyLine(css), 'utf-8')
-}
-
-export function emitStyleEntry(path: string, modules: string | boolean = false) {
-  const { ext, dir, base } = parse(path)
-  const styleIndex: string = resolve(dir, './style/index.js')
-  const styleLess: string = resolve(dir, './style/less.js')
-  ensureFileSync(styleIndex)
-  ensureFileSync(styleLess)
-
-  const emitPath = ext === '.css' ? styleIndex : styleLess
-  const emitScript = modules === 'cjs' ? `require('../${base}')\n` : `import '../${base}'\n`
-  const currentScript = readFileSync(emitPath, 'utf-8')
-
-  writeFileSync(emitPath, `${currentScript}${emitScript}`)
+  writeFileSync(replaceExt(file, '.css'), clearEmptyLine(css), 'utf-8')
 }

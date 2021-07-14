@@ -3,7 +3,7 @@
   "version": "1.8.0",
   "description": "A material like components library",
   "module": "es/index.js",
-  "main": "cjs/index.js",
+  "main": "es/index.js",
   "typings": "types/index.d.ts",
   "vetur": {
     "tags": "highlight/tags.json",

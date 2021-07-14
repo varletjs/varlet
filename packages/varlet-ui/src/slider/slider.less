@@ -1,5 +1,3 @@
-@import '../styles/var';
-
 @slider-error-color: var(--color-danger);
 @slider-track-background: #bdbdbd;
 @slider-track-fill-background: var(--color-primary);
@@ -78,7 +76,7 @@
       border-radius: 50%;
       opacity: 0.3;
       background: var(--slider-thumb-ripple-background);
-      transition: 0.3s @cubic-bezier;
+      transition: 0.3s var(--cubic-bezier);
 
       &-active {
         width: 36px;
@@ -100,7 +98,7 @@
       user-select: none;
       position: absolute;
       left: 45%;
-      transition: 0.3s @cubic-bezier;
+      transition: 0.3s var(--cubic-bezier);
       font-size: var(--slider-thumb-label-font-size);
       overflow: hidden;
       transform: translateY(0) translateY(0) translateX(-50%) rotate(45deg) scale(0);
@@ -119,7 +117,7 @@
     .var-slider__track {
       &-background {
         background-color: var(--slider-error-color) !important;
-        filter: opacity(.25);
+        filter: opacity(0.25);
       }
 
       &-fill {

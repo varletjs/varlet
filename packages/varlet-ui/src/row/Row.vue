@@ -3,7 +3,7 @@
     class="var-row var--box"
     :style="{
       justifyContent: justify,
-      alignItems: align
+      alignItems: align,
     }"
     @click="onClick"
   >
@@ -74,10 +74,11 @@ export default defineComponent({
     watch(() => props.gutter, computePadding)
 
     bindCols(rowProvider)
-  }
+  },
 })
 </script>
 
 <style lang="less">
-@import "./row";
+@import '../styles/common';
+@import './row';
 </style>

@@ -105,11 +105,7 @@
         </div>
       </div>
     </div>
-    <var-form-details
-      :error-message="errorMessage"
-      class="var-slider__form"
-      var-slider-cover
-    />
+    <var-form-details :error-message="errorMessage" class="var-slider__form" var-slider-cover />
   </div>
 </template>
 
@@ -134,7 +130,7 @@ type ThumbProps = {
 export default defineComponent({
   name: 'VarSlider',
   components: {
-    [FormDetails.name]: FormDetails
+    [FormDetails.name]: FormDetails,
   },
   props,
   setup(props) {
@@ -152,13 +148,13 @@ export default defineComponent({
       startPosition: 0,
       currentLeft: 0,
       active: false,
-      percentValue: 0
+      percentValue: 0,
     })
     const thumbProps2: UnwrapRef<ThumbProps> = reactive({
       startPosition: 0,
       currentLeft: 0,
       active: false,
-      percentValue: 0
+      percentValue: 0,
     })
 
     const unitWidth: ComputedRef<number> = computed(() => (maxWidth.value / 100) * toNumber(props.step))
@@ -185,7 +181,7 @@ export default defineComponent({
       return {
         width: `${width}%`,
         left: `${left}%`,
-        background: activeColor
+        background: activeColor,
       }
     })
 
@@ -357,7 +353,7 @@ export default defineComponent({
     const sliderProvider: SliderProvider = {
       reset,
       validate,
-      resetValidation
+      resetValidation,
     }
 
     bindForm?.(sliderProvider)
@@ -374,13 +370,14 @@ export default defineComponent({
       start,
       move,
       end,
-      click
+      click,
     }
-  }
+  },
 })
 </script>
 
 <style lang="less">
+@import '../styles/common';
 @import '../form-details/formDetails';
 @import './slider';
 </style>

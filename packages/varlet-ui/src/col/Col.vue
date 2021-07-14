@@ -1,13 +1,10 @@
 <template>
   <div
     class="var-col var--box"
-    :class="[
-      span ? `var-col--span-${toNumber(span)}` : null,
-      offset ? `var-col--offset-${toNumber(offset)}` : null
-    ]"
+    :class="[span ? `var-col--span-${toNumber(span)}` : null, offset ? `var-col--offset-${toNumber(offset)}` : null]"
     :style="{
       paddingLeft: toSizeUnit(padding.left),
-      paddingRight: toSizeUnit(padding.right)
+      paddingRight: toSizeUnit(padding.right),
     }"
     @click="onClick"
   >
@@ -39,7 +36,7 @@ export default defineComponent({
       offset,
       setPadding(pad: ColPadding) {
         padding.value = pad
-      }
+      },
     }
 
     watch([() => props.span, () => props.offset], () => {
@@ -51,12 +48,13 @@ export default defineComponent({
     return {
       padding,
       toNumber,
-      toSizeUnit
+      toSizeUnit,
     }
-  }
+  },
 })
 </script>
 
 <style lang="less">
-@import "./col";
+@import '../styles/common';
+@import './col';
 </style>

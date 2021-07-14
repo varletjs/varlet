@@ -21,7 +21,7 @@ export function replaceTSExt(script: string) {
   return script.replace(IMPORT_TS_PATH_RE, replacer).replace(REQUIRE_TS_PATH_RE, replacer)
 }
 
-export async function compileScript(script: string, path: string, modules: string | boolean = false) {
+export async function compileScript(script: string, path: string) {
   let { code } = (await transformAsync(script, {
     filename: replaceExt(path, '.ts'),
     presets: [
@@ -29,7 +29,7 @@ export async function compileScript(script: string, path: string, modules: strin
         '@babel/preset-env',
         {
           loose: true,
-          modules,
+          modules: false,
         },
       ],
       '@babel/preset-typescript',
@@ -45,27 +45,18 @@ export async function compileScript(script: string, path: string, modules: strin
   writeFileSync(replaceExt(path, '.js'), code, 'utf8')
 }
 
-export async function compileScriptFile(path: string, modules: string | boolean = false) {
+export async function compileScriptFile(path: string) {
   const sources = readFileSync(path, 'utf-8')
 
-  await compileScript(sources, path, modules)
+  await compileScript(sources, path)
 }
 
-export async function compileLibraryEntry(
-  dir: string,
-  componentNames: string[],
-  exportDirNames: string[],
-  modules: string | boolean = false
-) {
+export async function compileLibraryEntry(dir: string, componentNames: string[], exportDirNames: string[]) {
   const imports = exportDirNames
     .map(
       (exportDirNames: string) =>
         `import ${bigCamelize(exportDirNames)}, { _${bigCamelize(exportDirNames)}Component } from './${exportDirNames}'`
     )
-    .join('\n')
-
-  const requires = exportDirNames
-    .map((exportDirNames: string) => `var ${bigCamelize(exportDirNames)} = require('./${exportDirNames}')`)
     .join('\n')
 
   const install = `\
@@ -75,7 +66,7 @@ function install(app) {
     .join('\n  ')}
 }
 `
-  const esExports = `\
+  const exports = `\
 export {
   install,
   ${exportDirNames
@@ -88,38 +79,28 @@ export default {
   ${exportDirNames.map((exportDirName: string) => `${bigCamelize(exportDirName)}`).join(',\n  ')},
 }\
 `
-  const cjsExports = `\
-module.exports = {
-  install,
-  ${exportDirNames.map((exportDirName: string) => `${bigCamelize(exportDirName)}`).join(',\n  ')}
-}\
-`
 
   const template = `\
-${modules === 'cjs' ? requires : imports}\n
+${imports}\n
 ${install}
-${modules === 'cjs' ? cjsExports : esExports}
+${exports}
 `
 
   const cssImports = componentNames.map((componentName: string) => `import './${componentName}/style'`).join('\n')
-  const cssRequires = componentNames.map((componentName: string) => `require('./${componentName}/style')`).join('\n')
   const styleTemplate = `\
-${modules === 'cjs' ? cssRequires : cssImports}
+${cssImports}
 `
 
   const umdTemplate = `\
-${modules === 'cjs' ? requires : imports}\n
+${imports}\n
 ${install}
-${modules === 'cjs' ? cssRequires : cssImports}\n
-${modules === 'cjs' ? cjsExports : esExports}
+${cssImports}\n
+${exports}
 `
 
   const lessImports = componentNames.map((componentName: string) => `import './${componentName}/style/less'`).join('\n')
-  const lessRequires = componentNames
-    .map((componentName: string) => `require('./${componentName}/style/less')`)
-    .join('\n')
   const lessTemplate = `\
-${modules === 'cjs' ? lessRequires : lessImports}
+${lessImports}
 `
   await Promise.all([
     writeFile(resolve(dir, 'index.js'), template, 'utf-8'),

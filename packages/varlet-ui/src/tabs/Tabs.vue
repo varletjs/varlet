@@ -38,16 +38,7 @@
 
 <script lang="ts">
 import Sticky from '../sticky'
-import {
-  defineComponent,
-  watch,
-  ref,
-  computed,
-  Transition,
-  nextTick,
-  onMounted,
-  onUnmounted,
-} from 'vue'
+import { defineComponent, watch, ref, computed, Transition, nextTick, onMounted, onUnmounted } from 'vue'
 import { props } from './props'
 import { useTabList } from './provide'
 import { isNumber, linear } from '../utils/shared'
@@ -199,6 +190,8 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../styles/common';
+@import '../styles/elevation';
 @import '../sticky/sticky';
 @import './tabs';
 </style>

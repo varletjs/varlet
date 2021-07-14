@@ -7,7 +7,7 @@
         :key="anchorName"
         class="var-index-bar__anchor-item"
         :class="{ 'var-index-bar__anchor-item--active': active === anchorName }"
-        :style="{ color: active === anchorName && highlightColor ?  highlightColor : '' }"
+        :style="{ color: active === anchorName && highlightColor ? highlightColor : '' }"
         @click="anchorClick(anchorName)"
       >
         {{ anchorName }}
@@ -65,9 +65,8 @@ export default defineComponent({
         const anchorTop = anchor.ownTop.value
         const top = scrollTop - anchorTop + stickyOffsetTop.value
 
-        const distance = index === indexAnchors.length - 1
-          ? scrollHeight
-          : indexAnchors[index + 1].ownTop.value - anchor.ownTop.value
+        const distance =
+          index === indexAnchors.length - 1 ? scrollHeight : indexAnchors[index + 1].ownTop.value - anchor.ownTop.value
 
         if (top >= 0 && top <= distance) emitEvent(anchor)
       })
@@ -126,5 +125,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../styles/common';
 @import './indexBar';
 </style>

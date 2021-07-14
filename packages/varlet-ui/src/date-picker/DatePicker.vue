@@ -418,6 +418,8 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../styles/common';
+@import '../styles/elevation';
 @import '../button/button';
 @import './date-picker';
 </style>

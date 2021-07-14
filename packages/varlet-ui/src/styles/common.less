@@ -1,5 +1,6 @@
-.var {
+@import './var';
 
+.var {
   &--box {
     box-sizing: border-box;
 
@@ -39,4 +40,25 @@
   &--inline-flex {
     display: inline-flex;
   }
+}
+
+:root {
+  --font-size-xs: @font-size-xs;
+  --font-size-sm: @font-size-sm;
+  --font-size-md: @font-size-md;
+  --font-size-lg: @font-size-lg;
+  --icon-size-xs: @icon-size-xs;
+  --icon-size-sm: @icon-size-sm;
+  --icon-size-md: @icon-size-md;
+  --icon-size-lg: @icon-size-lg;
+  --color-primary: @color-primary;
+  --color-info: @color-info;
+  --color-success: @color-success;
+  --color-warning: @color-warning;
+  --color-danger: @color-danger;
+  --color-disabled: @color-disabled;
+  --cubic-bezier: @cubic-bezier;
+  --shadow-key-umbra-opacity: @shadow-key-umbra-opacity;
+  --shadow-key-penumbra-opacity: @shadow-key-penumbra-opacity;
+  --shadow-key-ambient-opacity: @shadow-key-ambient-opacity;
 }

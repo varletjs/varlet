@@ -35,6 +35,7 @@ module.exports = {
     'no-unused-expressions': 'off',
     'no-restricted-globals': 'off',
     'no-use-before-define': 'off',
+    'no-await-in-loop': 'off',
     'class-methods-use-this': 'off',
     'global-require': 'off',
     'prefer-destructuring': ['error', { object: true, array: false }],

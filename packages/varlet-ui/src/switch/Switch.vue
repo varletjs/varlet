@@ -9,7 +9,10 @@
       <div
         :style="styleComputed.track"
         class="var-switch__track"
-        :class="[modelValue === activeValue ? 'var-switch__track-active' : null, errorMessage ? 'var-switch__track-error' : null]"
+        :class="[
+          modelValue === activeValue ? 'var-switch__track-active' : null,
+          errorMessage ? 'var-switch__track-error' : null,
+        ]"
       ></div>
       <div
         class="var-switch__ripple"
@@ -21,7 +24,10 @@
         <div
           :style="styleComputed.handle"
           class="var-switch__handle var-elevation--2"
-          :class="[modelValue === activeValue ? 'var-switch__handle-active' : null, errorMessage ? 'var-switch__handle-error' : null]"
+          :class="[
+            modelValue === activeValue ? 'var-switch__handle-active' : null,
+            errorMessage ? 'var-switch__handle-error' : null,
+          ]"
         >
           <var-loading v-if="loading" :radius="size / 2 - 2" />
         </div>
@@ -56,7 +62,7 @@ export default defineComponent({
   name: 'VarSwitch',
   components: {
     [Loading.name]: Loading,
-    [FormDetails.name]: FormDetails
+    [FormDetails.name]: FormDetails,
   },
   directives: { Ripple },
   props,
@@ -80,25 +86,25 @@ export default defineComponent({
           width: `${size}px`,
           height: `${size}px`,
           backgroundColor: modelValue === activeValue ? color || '' : closeColor || '',
-          color: loadingColor && loadingColor
+          color: loadingColor && loadingColor,
         },
         ripple: {
           left: modelValue === activeValue ? `${sizeNum / 2}px` : `-${sizeNum / 2}px`,
           color: modelValue === activeValue ? color || '' : closeColor || '#999',
           width: `${sizeNum * 2}px`,
-          height: `${sizeNum * 2}px`
+          height: `${sizeNum * 2}px`,
         },
         track: {
           height: `${switchHeight * 0.6}px`,
           width: `${switchWidth - 2}px`,
           borderRadius: `${switchWidth / 3}px`,
           filter: modelValue === activeValue || errorMessage?.value ? 'opacity(.6)' : 'brightness(.6)',
-          backgroundColor: modelValue === activeValue ? color || '' : closeColor || ''
+          backgroundColor: modelValue === activeValue ? color || '' : closeColor || '',
         },
         switch: {
           height: `${switchHeight}px`,
-          width: `${switchWidth}px`
-        }
+          width: `${switchWidth}px`,
+        },
       }
     })
 
@@ -112,7 +118,7 @@ export default defineComponent({
         modelValue,
         activeValue,
         inactiveValue,
-        'onUpdate:modelValue': updateModelValue
+        'onUpdate:modelValue': updateModelValue,
       } = props
 
       onClick?.()
@@ -132,7 +138,7 @@ export default defineComponent({
     const switchProvider: SwitchProvider = {
       reset,
       validate,
-      resetValidation
+      resetValidation,
     }
 
     bindForm?.(switchProvider)
@@ -142,13 +148,15 @@ export default defineComponent({
       styleComputed,
       errorMessage,
       formDisabled: form?.disabled,
-      formReadonly: form?.readonly
+      formReadonly: form?.readonly,
     }
-  }
+  },
 })
 </script>
 
 <style lang="less">
+@import '../styles/common';
+@import '../styles/elevation';
 @import '../ripple/ripple';
 @import '../loading/loading';
 @import '../form-details/formDetails';

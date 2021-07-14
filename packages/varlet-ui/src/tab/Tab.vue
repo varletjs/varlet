@@ -91,6 +91,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../styles/common';
 @import '../ripple/ripple';
 @import './tab';
 </style>

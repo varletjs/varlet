@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="var-input var--box"
-    :class="[disabled ? 'var-input--disabled' : null]"
-    @click="handleClick"
-  >
+  <div class="var-input var--box" :class="[disabled ? 'var-input--disabled' : null]" @click="handleClick">
     <div
       class="var-input__controller"
       :class="[
@@ -272,6 +268,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../styles/common';
 @import '../icon/icon';
 @import '../form-details/formDetails';
 @import './input';
