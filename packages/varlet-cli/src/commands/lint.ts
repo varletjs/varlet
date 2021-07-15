@@ -5,6 +5,10 @@ import { ESLINT_EXTENSIONS } from '../shared/constant'
 export async function lint() {
   let spinner: Ora
   try {
+    spinner = ora('prettier starting...').start()
+    await execa('prettier', ['--write', '.'])
+    spinner.succeed('prettier success')
+
     spinner = ora('stylelint starting...').start()
     await execa('stylelint', ['./**/*.vue', './**/*.css', './**/*.less', '--fix'])
     spinner.succeed('stylelint success')
@@ -22,9 +26,6 @@ export async function lint() {
       ESLINT_EXTENSIONS.join(','),
     ])
     spinner.succeed('eslint success')
-    // spinner = ora('prettier starting...').start()
-    // await execa('prettier', ['--write'])
-    // spinner.succeed('prettier success')
   } catch (e) {
     spinner!.fail(e.toString())
     process.exit(1)
