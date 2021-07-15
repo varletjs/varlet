@@ -42,7 +42,7 @@
     "test:watch": "varlet-cli jest -w"
   },
   "peerDependencies": {
-    "vue": "3.1.0"
+    "vue": "^3.1.4"
   },
   "gitHead": "04cbbd571a061f5d5651515132a8ef079de5673e",
   "dependencies": {
