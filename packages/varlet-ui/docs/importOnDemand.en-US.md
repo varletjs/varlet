@@ -80,21 +80,28 @@ export default defineConfig({
 })
 ```
 
-After the configuration is complete, 
-the component is used directly as follows, and the plugin automatically introduces component-related dependencies
+After the configuration is completed, all components declared in the template do not need to be registered. 
+The plug-in will automatically introduce component styles and registered components.
 
 ```html
 <var-button>Default Button</var-button>
 ```
 
-Note that if you are using a function component you still need to import it manually,
-like `ImagePreview`
+Note that for functional components, you need to manually introduce styles, such as `Dialog`.
+
+```js
+import { Dialog } from '@varlet/ui'
+import '@varlet/ui/es/dialog/style/index.js'
+
+Dialog('Varlet UI UP UP')
+```
+
+Note that for directives, need to be manually registered, such as `Ripple`.
 
 ```js
 import { createApp } from 'vue'
-import { ImagePreview } from '@varlet/ui'
-import '@varlet/ui/es/image-preview/style/index.js'
+import { Ripple } from '@varlet/ui'
 
-createApp().use(ImagePreview)
+createApp().use(Ripple)
 ```
 

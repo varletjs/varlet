@@ -79,20 +79,28 @@ export default defineConfig({
 })
 ```
 
-完成配置之后，如下方式直接使用组件，插件会自动引入组件相关的依赖。
+完成配置之后，所有声明在模板里的组件，无须注册组件，插件会自动引入组件样式和注册组件。
 
 ```html
 <var-button>默认按钮</var-button>
 ```
 
-需要注意的是，如果您使用的是组件的函数调用方式仍然需要手动引入，如`ImagePreview`
+注意函数组件，需要手动引入样式，如`Dialog`。
+
+```js
+import { Dialog } from '@varlet/ui'
+import '@varlet/ui/es/dialog/style/index.js'
+
+Dialog('Varlet UI UP UP')
+```
+
+自定义指令，需要手动注册，如`Ripple`
 
 ```js
 import { createApp } from 'vue'
-import { ImagePreview } from '@varlet/ui'
-import '@varlet/ui/es/image-preview/style/index.js'
+import { Ripple } from '@varlet/ui'
 
-createApp().use(ImagePreview)
+createApp().use(Ripple)
 ```
 
 
