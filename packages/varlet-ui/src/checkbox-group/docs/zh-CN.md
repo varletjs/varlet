@@ -98,8 +98,8 @@ export default {
   <var-checkbox :checked-value="1">睡觉</var-checkbox>
 </var-checkbox-group>
 
-<var-button class="button" type="primary" @click="$refs['group'].checkAll()">全选</var-button>
-<var-button class="button" type="primary" @click="$refs['group'].inverseAll()">反选</var-button>
+<var-button class="button" type="primary" @click="$refs.group.checkAll()">全选</var-button>
+<var-button class="button" type="primary" @click="$refs.group.inverseAll()">反选</var-button>
 ```
 
 ```js

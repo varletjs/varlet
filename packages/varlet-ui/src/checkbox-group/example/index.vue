@@ -28,8 +28,8 @@
   <var-checkbox-group ref="group" v-model="value6">
     <var-checkbox :checked-value="0">{{ pack.eat }}</var-checkbox>
     <var-checkbox :checked-value="1">{{ pack.sleep }}</var-checkbox>
-    <var-button class="button" type="primary" @click="$refs['group'].checkAll()">{{ pack.checkAll }}</var-button>
-    <var-button class="button" type="primary" @click="$refs['group'].inverseAll()">{{ pack.inverseAll }}</var-button>
+    <var-button class="button" type="primary" @click="$refs.group.checkAll()">{{ pack.checkAll }}</var-button>
+    <var-button class="button" type="primary" @click="$refs.group.inverseAll()">{{ pack.inverseAll }}</var-button>
   </var-checkbox-group>
   <div class="relation">{{ pack.currentValue }} {{ value6 }}</div>
 
