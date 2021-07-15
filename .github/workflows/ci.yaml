@@ -14,5 +14,8 @@ jobs:
       - name: Install dependencies
         run: yarn bootstrap
 
+      - name: Run linter
+        run: yarn lint
+
       - name: Run test cases
         run: cd packages/varlet-ui && yarn test
