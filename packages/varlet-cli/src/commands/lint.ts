@@ -20,7 +20,6 @@ export async function lint() {
       'packages/varlet-icons/lib',
       'packages/varlet-markdown-loader',
       'packages/varlet-vscode-extension/src',
-      'packages/varlet-vscode-extension/src',
       '--fix',
       '--ext',
       ESLINT_EXTENSIONS.join(','),
