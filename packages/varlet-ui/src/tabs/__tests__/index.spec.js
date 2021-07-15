@@ -48,7 +48,7 @@ const Wrapper = {
     [VarTabsItems.name]: VarTabsItems,
     [VarTabItem.name]: VarTabItem,
   },
-  props: ['onClick', 'onChange', 'onUpdate:active'],
+  props: ['onClick', 'onChange'],
   data: () => ({
     active: 2,
   }),
