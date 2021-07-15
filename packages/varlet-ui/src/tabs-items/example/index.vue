@@ -1,5 +1,5 @@
 <template>
-	<var-tabs-items />
+  <var-tabs-items />
 </template>
 
 <script lang="ts">

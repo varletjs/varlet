@@ -27,7 +27,7 @@ export default {
   components: {
     [Sticky.name]: Sticky,
     [Button.name]: Button,
-    AppType
+    AppType,
   },
   setup() {
     watchLang(use)
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import "../../styles/var";
+@import '../../styles/var';
 
 .example {
   min-height: 200vh;
@@ -52,7 +52,7 @@ export default {
       width: 100%;
       height: 600px;
       background: @color-info;
-      opacity: .5;
+      opacity: 0.5;
     }
   }
 }

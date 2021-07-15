@@ -1,19 +1,10 @@
-import {
-  watch,
-  onBeforeMount,
-  onUnmounted,
-  onDeactivated,
-  onActivated,
-  getCurrentInstance
-} from 'vue'
+import { watch, onBeforeMount, onUnmounted, onDeactivated, onActivated, getCurrentInstance } from 'vue'
 import type { ComponentInternalInstance } from 'vue'
 import context from '.'
 
 export function resolveLock() {
   const lockCounts: number = Object.keys(context.locks).length
-  lockCounts <= 0
-    ? document.body.classList.remove('var--lock')
-    : document.body.classList.add('var--lock')
+  lockCounts <= 0 ? document.body.classList.remove('var--lock') : document.body.classList.add('var--lock')
 }
 
 export function addLock(uid: number) {
@@ -35,30 +26,36 @@ export function releaseLock(uid: number) {
 export function useLock(props: any, state: string, use?: string) {
   const { uid } = getCurrentInstance() as ComponentInternalInstance
   if (use) {
-    watch(() => props[use], (newValue: boolean) => {
-      if (newValue === false) {
-        // 改变为禁用状态 组件解锁
-        releaseLock(uid)
-      } else if (newValue === true && props[state] === true) {
-        // 改变为启用状态 并且popup处于开启状态 组件加锁
-        addLock(uid)
+    watch(
+      () => props[use],
+      (newValue: boolean) => {
+        if (newValue === false) {
+          // 改变为禁用状态 组件解锁
+          releaseLock(uid)
+        } else if (newValue === true && props[state] === true) {
+          // 改变为启用状态 并且popup处于开启状态 组件加锁
+          addLock(uid)
+        }
       }
-    })
+    )
   }
 
-  watch(() => props[state], (newValue: boolean) => {
-    if (use && props[use] === false) {
-      return
-    }
+  watch(
+    () => props[state],
+    (newValue: boolean) => {
+      if (use && props[use] === false) {
+        return
+      }
 
-    if (newValue === true) {
-      // popup开启 组件加锁
-      addLock(uid)
-    } else {
-      // popup关闭 组件解锁
-      releaseLock(uid)
+      if (newValue === true) {
+        // popup开启 组件加锁
+        addLock(uid)
+      } else {
+        // popup关闭 组件解锁
+        releaseLock(uid)
+      }
     }
-  })
+  )
 
   onBeforeMount(() => {
     if (use && props[use] === false) {

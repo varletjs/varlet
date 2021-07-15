@@ -5,5 +5,5 @@ export default {
   loadingText: 'loading QAQ',
   errorText: 'error TNT',
   finishedText: 'finished ORZ',
-  listItem: 'List Item'
+  listItem: 'List Item',
 }

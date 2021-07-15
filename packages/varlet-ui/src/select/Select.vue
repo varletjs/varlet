@@ -179,7 +179,7 @@ export default defineComponent({
       const { multiple, modelValue } = props
 
       if (multiple) {
-        const rawModelValue = (modelValue as unknown) as any[]
+        const rawModelValue = modelValue as unknown as any[]
         labels.value = rawModelValue.map(findLabel)
       }
       if (!multiple && !isEmpty(modelValue)) {
@@ -300,7 +300,7 @@ export default defineComponent({
         return
       }
 
-      const rawModelValue = (modelValue as unknown) as any[]
+      const rawModelValue = modelValue as unknown as any[]
       const option = options.find(({ label }) => label.value === text)
       const currentModelValue = rawModelValue.filter((value) => value !== (option!.value.value ?? option!.label.value))
 
@@ -313,7 +313,7 @@ export default defineComponent({
       const { multiple, modelValue } = props
 
       if (multiple) {
-        const rawModelValue = (modelValue as unknown) as any[]
+        const rawModelValue = modelValue as unknown as any[]
         options.forEach((option) => option.sync(rawModelValue.includes(findValueOrLabel(option))))
       } else {
         options.forEach((option) => option.sync(modelValue === findValueOrLabel(option)))

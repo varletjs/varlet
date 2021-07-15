@@ -1,5 +1,5 @@
 <template>
-	<var-option />
+  <var-option />
 </template>
 
 <script lang="ts">

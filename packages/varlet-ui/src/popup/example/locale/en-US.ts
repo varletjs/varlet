@@ -9,6 +9,5 @@ export default {
   overlayClass: 'Overlay Class',
   overlayStyles: 'Overlay Styles',
   event: 'Event',
-  text:
-    'As he came into the window. It was the sound of a crescendo. He came into her apartment. He left the bloodstains on the carpet.',
+  text: 'As he came into the window. It was the sound of a crescendo. He came into her apartment. He left the bloodstains on the carpet.',
 }

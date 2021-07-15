@@ -104,7 +104,7 @@ export const createInViewportObserver = <T>(handler: (el: T) => void): Intersect
   return new IntersectionObserver((intersectionObserverEntries: IntersectionObserverEntry[]) => {
     intersectionObserverEntries.forEach((intersectionObserverEntry: IntersectionObserverEntry) => {
       if (intersectionObserverEntry.intersectionRatio > 0) {
-        handler((intersectionObserverEntry.target as unknown) as T)
+        handler(intersectionObserverEntry.target as unknown as T)
       }
     })
   })
@@ -181,10 +181,7 @@ export const inBrowser = typeof window !== 'undefined'
 export const uniq = (arr: Array<any>) => [...new Set(arr)]
 
 export function kebabCase(str: string): string {
-  const reg = /([^-])([A-Z])/g;
+  const reg = /([^-])([A-Z])/g
 
-  return str
-    .replace(reg, '$1-$2')
-    .replace(reg, '$1-$2')
-    .toLowerCase();
+  return str.replace(reg, '$1-$2').replace(reg, '$1-$2').toLowerCase()
 }

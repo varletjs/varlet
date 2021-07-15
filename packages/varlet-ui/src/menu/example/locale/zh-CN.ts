@@ -8,5 +8,5 @@ export default {
   offsetLeft: '左偏移',
   offsetBottom: '下偏移',
   offsetTop: '上偏移',
-  events: '注册事件'
+  events: '注册事件',
 }

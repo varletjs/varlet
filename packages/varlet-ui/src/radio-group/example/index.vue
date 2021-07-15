@@ -81,7 +81,7 @@ export default {
 
     return {
       pack,
-      ...toRefs(values)
+      ...toRefs(values),
     }
   },
 }

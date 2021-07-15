@@ -34,7 +34,10 @@ export default {
     [Icon.name]: Icon,
   },
   setup() {
-    const { title, pc: { menu, logo, title: desc } } = varletConfig
+    const {
+      title,
+      pc: { menu, logo, title: desc },
+    } = varletConfig
     const configComponents = menu.filter((item) => !item.isTitle && !item.nonComponent)
     const components = reactive(configComponents)
     const lang = ref('zh-CN')
@@ -66,7 +69,7 @@ export default {
       toComponent,
       logo,
       title,
-      desc
+      desc,
     }
   },
 }

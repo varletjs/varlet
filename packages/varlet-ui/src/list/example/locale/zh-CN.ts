@@ -5,5 +5,5 @@ export default {
   loadingText: '正在努力输出',
   errorText: '出错了出错了',
   finishedText: '一滴都没有了',
-  listItem: '列表项'
+  listItem: '列表项',
 }

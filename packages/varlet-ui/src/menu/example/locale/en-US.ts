@@ -8,5 +8,5 @@ export default {
   offsetLeft: 'Offset Left',
   offsetBottom: 'Offset Bottom',
   offsetTop: 'Offset Top',
-  events: 'Events'
+  events: 'Events',
 }

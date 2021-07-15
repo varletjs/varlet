@@ -62,18 +62,18 @@ export default {
   components: {
     [Row.name]: Row,
     [Col.name]: Col,
-    AppType
+    AppType,
   },
   setup() {
     watchLang(use)
 
     return { pack }
-  }
+  },
 }
 </script>
 
 <style scoped lang="less">
-@import "../../styles/var";
+@import '../../styles/var';
 
 .var-col {
   display: flex;

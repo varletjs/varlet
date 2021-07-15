@@ -19,7 +19,7 @@
                 type="primary"
                 class="var-day-picker__button"
                 :class="{
-                  'var-day-picker__button--usable': day > 0
+                  'var-day-picker__button--usable': day > 0,
                 }"
                 var-day-picker-cover
                 round

@@ -64,7 +64,7 @@ export default {
       list: [],
       list2: [],
       list3: [],
-      current: 0
+      current: 0,
     })
 
     watchLang(use)

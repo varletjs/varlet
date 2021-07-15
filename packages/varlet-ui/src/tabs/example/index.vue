@@ -32,7 +32,7 @@
     <var-tab disabled>{{ pack.disabled }}</var-tab>
   </var-tabs>
 
-  <app-type>{{  pack.enableScroll }}</app-type>
+  <app-type>{{ pack.enableScroll }}</app-type>
   <var-tabs
     elevation
     color="#2979ff"
@@ -151,7 +151,7 @@ export default {
     [TabsItems.name]: TabsItems,
     [TabItem.name]: TabItem,
     [Icon.name]: Icon,
-    AppType
+    AppType,
   },
   setup() {
     const actives = reactive({
@@ -196,6 +196,6 @@ export default {
 }
 
 .var-tab-item {
-  color: #888
+  color: #888;
 }
 </style>
