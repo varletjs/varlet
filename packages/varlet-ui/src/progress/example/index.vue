@@ -42,7 +42,7 @@
 <script>
 import Progress from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '../../utils/components'
 

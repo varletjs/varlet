@@ -5,12 +5,15 @@ import { build } from './commands/build'
 import { compile } from './commands/compile'
 import { create } from './commands/create'
 import { jest } from './commands/jest'
+import { lint } from './commands/lint'
 
 command('dev').description('Run varlet development environment').action(dev)
 
 command('build').description('Build varlet site for production').action(build)
 
 command('compile').description('Compile varlet components library code').action(compile)
+
+command('lint').description('Lint code').action(lint)
 
 command('create <name>').description('Create a component directory').action(create)
 

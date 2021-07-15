@@ -105,17 +105,6 @@
     align-items: flex-end;
     justify-content: flex-end;
 
-    &__time {
-      display: flex;
-      justify-content: flex-end;
-      font-size: var(--time-picker-title-time-font-size);
-
-      .var-time-picker-title__btn {
-        align-items: center;
-        margin: var(--time-picker-title-time-margin);
-      }
-    }
-
     &__btn {
       opacity: 0.6;
       cursor: pointer;
@@ -125,6 +114,17 @@
 
       &--active {
         opacity: 1;
+      }
+    }
+
+    &__time {
+      display: flex;
+      justify-content: flex-end;
+      font-size: var(--time-picker-title-time-font-size);
+
+      .var-time-picker-title__btn {
+        align-items: center;
+        margin: var(--time-picker-title-time-margin);
       }
     }
 
@@ -169,6 +169,7 @@
 
       &::before {
         .after-before-basic();
+
         background: transparent;
         border: var(--time-picker-clock-hand-before-border-width) solid;
         width: var(--time-picker-clock-hand-before-width);
@@ -179,6 +180,7 @@
 
       &::after {
         .after-before-basic();
+
         border-color: inherit;
         height: var(--time-picker-clock-hand-after-height);
         width: var(--time-picker-clock-hand-after-width);

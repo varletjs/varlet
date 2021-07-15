@@ -11,6 +11,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "lint": "varlet-cli lint",
     "bootstrap": "yarn && node scripts/bootstrap.js",
     "commit": "git-cz",
     "publish": "yarn bootstrap && lerna publish"
@@ -39,6 +40,7 @@
       "packages/varlet-ui/es/**",
       "packages/varlet-ui/cjs/**",
       "packages/varlet-ui/umd/**",
+      "packages/varlet-ui/site/**",
       "packages/varlet-ui/src/*/__tests__/**",
       "packages/varlet"
     ],
@@ -52,6 +54,7 @@
     ],
     "ignoreFiles": [
       "packages/varlet-cli/lib/**",
+      "packages/varlet-icons/dist/**",
       "packages/varlet-ui/es/**",
       "packages/varlet-ui/cjs/**",
       "packages/varlet-ui/umd/**",
@@ -64,14 +67,11 @@
     "@commitlint/config-conventional": "^11.0.0",
     "commitizen": "^4.2.2",
     "cz-lerna-changelog": "^2.0.3",
-    "eslint": "^7.12.1",
     "execa": "^5.0.0",
     "husky": "^4.3.0",
     "lerna": "^3.22.1",
     "lint-staged": "^10.5.0",
     "ora": "^5.4.0",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "vue": "^3.0.7"
+    "vue": "3.1.0"
   }
 }

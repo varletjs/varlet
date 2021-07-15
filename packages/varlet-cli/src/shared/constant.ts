@@ -9,6 +9,7 @@ export const ES_DIR = resolve(CWD, 'es')
 export const UMD_DIR = resolve(CWD, 'umd')
 export const TYPES_DIR = resolve(CWD, 'types')
 export const ROOT_DOCS_DIR = resolve(CWD, 'docs')
+export const ESLINT_EXTENSIONS = ['.vue', '.ts', '.js']
 export const EXTENSIONS = ['.vue', '.ts', '.js', '.less', '.css']
 export const EXAMPLE_DIR_NAME = 'example'
 export const DOCS_DIR_NAME = 'docs'

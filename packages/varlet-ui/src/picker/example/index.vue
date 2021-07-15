@@ -39,15 +39,15 @@ export default {
     const columns3 = ref(area)
 
     const picker = async () => {
-      const { state, texts, indexes } = await Picker(columns.value)
+      await Picker(columns.value)
     }
 
     const picker2 = async () => {
-      const { state, texts, indexes } = await Picker(columns2.value)
+      await Picker(columns2.value)
     }
 
     const picker3 = async () => {
-      const { state, texts, indexes } = await Picker({
+      await Picker({
         cascade: true,
         columns: columns3.value,
       })

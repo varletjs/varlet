@@ -36,7 +36,7 @@ export function normalizeStyleDependency(styleImport: string) {
   relativePath = relativePath.replace(/(.less)|(\.css)/, '')
 
   if (relativePath.startsWith('./')) {
-    return '../' + relativePath.slice(2)
+    return '.' + relativePath
   }
 
   return '../' + relativePath

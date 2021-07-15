@@ -140,7 +140,7 @@ export function mockIntersectionObserver() {
   IntersectionObserver.prototype.observe = (el: HTMLElement) => {
     entry.target = el
   }
-  IntersectionObserver.prototype.unobserve = (el: HTMLElement) => {
+  IntersectionObserver.prototype.unobserve = () => {
     entry.target = null
   }
 

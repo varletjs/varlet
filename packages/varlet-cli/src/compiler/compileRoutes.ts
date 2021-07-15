@@ -21,13 +21,13 @@ export function getExampleRoutePath(examplePath: string): string {
 }
 
 export function getComponentDocsRoutePath(componentDocsPath: string): string {
-  const [_, routePath, language] = componentDocsPath.match(COMPONENT_DOCS_RE) ?? []
+  const [, routePath, language] = componentDocsPath.match(COMPONENT_DOCS_RE) ?? []
 
   return `/${language}/${routePath}`
 }
 
 export function getRootDocsRoutePath(rootDocsPath: string): string {
-  const [_, routePath, language] = rootDocsPath.match(ROOT_DOCS_RE) ?? []
+  const [, routePath, language] = rootDocsPath.match(ROOT_DOCS_RE) ?? []
 
   return `/${language}/${routePath}`
 }
