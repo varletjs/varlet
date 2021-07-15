@@ -51,4 +51,5 @@ export default {
   uploader: '/uploader',
   card: '/card',
   divider: '/divider',
+  'style-provider': '/style-provider',
 } as Record<string, string>
