@@ -1,10 +1,11 @@
 import hash from 'hash-sum'
 import { readFile, remove, writeFileSync } from 'fs-extra'
-import { parse, compileTemplate, compileStyle, SFCStyleBlock } from '@vue/compiler-sfc'
+import { parse, compileTemplate, compileStyle } from '@vue/compiler-sfc'
 import { appendContent, replaceExt } from '../shared/fsUtils'
 import { compileScript } from './compileScript'
 import { clearEmptyLine, compileLess } from './compileStyle'
 import { resolve, parse as parsePath } from 'path'
+import type { SFCStyleBlock } from '@vue/compiler-sfc'
 
 const NORMAL_EXPORT_START_RE = /export\s+default\s+{/
 const DEFINE_EXPORT_START_RE = /export\s+default\s+defineComponent\s*\(\s*{/
