@@ -1,4 +1,4 @@
-import { ensureDir, readdirSync, readFileSync, remove, writeFile } from 'fs-extra'
+import { ensureDir, readdirSync, readFileSync, writeFile } from 'fs-extra'
 import {
   SRC_DIR,
   HL_MD,
@@ -159,7 +159,6 @@ export function compileDir(
 }
 
 export async function compileTemplateHighlight() {
-  await remove(HL_DIR)
   await ensureDir(HL_DIR)
 
   const tags: Record<string, any> = {}
