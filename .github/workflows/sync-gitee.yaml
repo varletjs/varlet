@@ -5,7 +5,7 @@ on:
     branches: [dev]
 
 jobs:
-  build:
+  sync:
     runs-on: ubuntu-latest
     steps:
       - name: Sync to Gitee

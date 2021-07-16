@@ -2,7 +2,7 @@ name: Deploy Site
 
 on:
   push:
-    branches: [dev]
+    branches: [dev, gh-page]
 
 jobs:
   build-and-deploy:
