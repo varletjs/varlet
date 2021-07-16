@@ -1,11 +1,11 @@
-name: Deploy Site
+name: Sync to Gitee
 
 on:
   push:
-    branches: [dev, gh-page]
+    branches: [dev]
 
 jobs:
-  build-and-deploy:
+  deploy-site-sync-gitee:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -24,3 +24,11 @@ jobs:
         with:
           branch: gh-page
           folder: packages/varlet-ui/site
+
+      - name: Sync to Gitee
+        uses: wearerequired/git-mirror-action@master
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
+        with:
+          source-repo: git@github.com:haoziqaq/varlet.git
+          destination-repo: git@gitee.com:varlet/varlet-ui.git
