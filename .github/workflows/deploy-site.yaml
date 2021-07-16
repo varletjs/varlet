@@ -1,0 +1,26 @@
+name: Deploy Site
+
+on:
+  push:
+    branches: [dev]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: Install dependencies
+        uses: yarn bootstrap
+
+      - name: Build site
+        run: cd packages/varlet-ui && yarn build
+
+      - name: Deploy site
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-page
+          folder: site
