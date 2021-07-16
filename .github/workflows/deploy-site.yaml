@@ -14,7 +14,7 @@ jobs:
           node-version: '14.x'
 
       - name: Install dependencies
-        uses: yarn bootstrap
+        run: yarn bootstrap
 
       - name: Build site
         run: cd packages/varlet-ui && yarn build
