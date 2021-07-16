@@ -34,5 +34,6 @@ export default {
   height: 200px;
   object-fit: cover;
   background-size: cover;
+  pointer-events: none;
 }
 </style>

@@ -25,11 +25,13 @@ export function getLeft(element: HTMLElement): number {
   return left + (document.body.scrollLeft || document.documentElement.scrollLeft)
 }
 
-export function inViewport(element: HTMLElement): boolean {
+export async function inViewport(element: HTMLElement): Promise<boolean> {
+  await doubleRaf()
   const { top, bottom, left, right } = element.getBoundingClientRect()
+  const { innerWidth, innerHeight } = window
 
-  const xInViewport = left < window.innerWidth && right > 0
-  const yInViewport = top < window.innerHeight && bottom > 0
+  const xInViewport = left <= innerWidth && right >= 0
+  const yInViewport = top <= innerHeight && bottom >= 0
 
   return xInViewport && yInViewport
 }
@@ -68,6 +70,18 @@ export function getParentScroller(el: HTMLElement): HTMLElement | Window {
   }
 
   return window
+}
+
+export function getAllParentScroller(el: HTMLElement): Array<HTMLElement | Window> {
+  const allParentScroller: Array<HTMLElement | Window> = []
+  let element: HTMLElement | Window = el
+
+  while (element !== window) {
+    element = getParentScroller(element as HTMLElement)
+    allParentScroller.push(element)
+  }
+
+  return allParentScroller
 }
 
 // example 1rem
@@ -142,6 +156,14 @@ export function cancelAnimationFrame(handle: number): void {
 export function nextTickFrame(fn: FrameRequestCallback) {
   requestAnimationFrame(() => {
     requestAnimationFrame(fn)
+  })
+}
+
+export function doubleRaf() {
+  return new Promise((resolve) => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(resolve)
+    })
   })
 }
 

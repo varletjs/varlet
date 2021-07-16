@@ -98,18 +98,6 @@ export const debounce = (method: any, delay = 200) => {
   }
 }
 
-export const checkIntersectionObserverAPI = (): boolean => 'IntersectionObserver' in window
-
-export const createInViewportObserver = <T>(handler: (el: T) => void): IntersectionObserver => {
-  return new IntersectionObserver((intersectionObserverEntries: IntersectionObserverEntry[]) => {
-    intersectionObserverEntries.forEach((intersectionObserverEntry: IntersectionObserverEntry) => {
-      if (intersectionObserverEntry.intersectionRatio > 0) {
-        handler(intersectionObserverEntry.target as unknown as T)
-      }
-    })
-  })
-}
-
 export const createCache = <T>(max: number): CacheInstance<T> => {
   const cache: T[] = []
 

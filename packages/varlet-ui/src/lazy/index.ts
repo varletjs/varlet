@@ -1,11 +1,5 @@
-import { getParentScroller, inViewport } from '../utils/elements'
-import {
-  checkIntersectionObserverAPI,
-  createCache,
-  createInViewportObserver,
-  removeItem,
-  throttle,
-} from '../utils/shared'
+import { getAllParentScroller, inViewport } from '../utils/elements'
+import { createCache, removeItem, throttle } from '../utils/shared'
 import type { App, Directive, Plugin, DirectiveBinding } from 'vue'
 import type { CacheInstance } from '../utils/shared'
 
@@ -39,10 +33,8 @@ const LAZY_ERROR = 'lazy-error'
 const LAZY_ATTEMPT = 'lazy-attempt'
 const EVENTS = ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend', 'touchmove']
 export const PIXEL = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
-
 const lazyElements: LazyHTMLElement[] = []
-
-let listenTargets: ListenTarget[] = []
+const listenTargets: ListenTarget[] = []
 
 export const imageCache: CacheInstance<string> = createCache<string>(100)
 
@@ -56,8 +48,6 @@ export const defaultLazyOptions: LazyOptions = {
 
 let checkAllWithThrottle = throttle(checkAll, defaultLazyOptions.throttleWait)
 
-let observer: IntersectionObserver | null = null
-
 function setSRC(el: LazyHTMLElement, src: string) {
   if (el._lazy.arg === BACKGROUND_IMAGE_ARG_NAME) {
     el.style.backgroundImage = `url(${src})`
@@ -69,7 +59,7 @@ function setSRC(el: LazyHTMLElement, src: string) {
 function setLoading(el: LazyHTMLElement) {
   el._lazy.loading && setSRC(el, el._lazy.loading)
 
-  !checkIntersectionObserverAPI() && checkAll()
+  checkAll()
 }
 
 function setError(el: LazyHTMLElement) {
@@ -77,7 +67,7 @@ function setError(el: LazyHTMLElement) {
   el._lazy.state = 'error'
 
   clear(el)
-  !checkIntersectionObserverAPI() && checkAll()
+  checkAll()
 }
 
 function setSuccess(el: LazyHTMLElement, attemptSRC: string) {
@@ -85,7 +75,7 @@ function setSuccess(el: LazyHTMLElement, attemptSRC: string) {
   el._lazy.state = 'success'
 
   clear(el)
-  !checkIntersectionObserverAPI() && checkAll()
+  checkAll()
 }
 
 function bindEvents(listenTarget: ListenTarget) {
@@ -106,7 +96,7 @@ function unbindEvents() {
     })
   })
 
-  listenTargets = []
+  listenTargets.length = 0
 }
 
 function createLazy(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
@@ -166,69 +156,43 @@ function attemptLoad(el: LazyHTMLElement) {
   createImage(el, attemptSRC)
 }
 
-function check(el: LazyHTMLElement) {
-  inViewport(el) && attemptLoad(el)
+async function check(el: LazyHTMLElement) {
+  ;(await inViewport(el)) && attemptLoad(el)
 }
 
 function checkAll() {
   lazyElements.forEach((el: LazyHTMLElement) => check(el))
 }
 
-function add(el: LazyHTMLElement) {
-  if (checkIntersectionObserverAPI()) {
-    observe(el)
-  } else {
-    !lazyElements.includes(el) && lazyElements.push(el)
-    bindEvents(window)
-    bindEvents(getParentScroller(el))
-    check(el)
-  }
+async function add(el: LazyHTMLElement) {
+  !lazyElements.includes(el) && lazyElements.push(el)
+  getAllParentScroller(el).forEach(bindEvents)
+  await check(el)
 }
 
 function clear(el: LazyHTMLElement) {
-  if (checkIntersectionObserverAPI()) {
-    observer?.unobserve(el)
-  } else {
-    removeItem(lazyElements, el)
-    lazyElements.length === 0 && unbindEvents()
-  }
-}
-
-function observe(el: LazyHTMLElement) {
-  if (!observer) {
-    observer = createInViewportObserver<LazyHTMLElement>((el: LazyHTMLElement) => attemptLoad(el))
-  }
-
-  observer.unobserve(el)
-  observer.observe(el)
+  removeItem(lazyElements, el)
+  lazyElements.length === 0 && unbindEvents()
 }
 
 function diff(el: LazyHTMLElement, binding: DirectiveBinding<string>): boolean {
-  const { src, arg, attempt, loading, error } = el._lazy
+  const { src, arg } = el._lazy
 
-  return (
-    src !== binding.value ||
-    arg !== binding.arg ||
-    attempt !== Number(el.getAttribute(LAZY_ATTEMPT)) ||
-    loading !== el.getAttribute(LAZY_LOADING) ||
-    error !== el.getAttribute(LAZY_ERROR)
-  )
+  return src !== binding.value || arg !== binding.arg
 }
 
-function mounted(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
+async function mounted(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
   createLazy(el, binding)
-  add(el)
+  await add(el)
 }
 
-function updated(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
+async function updated(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
   if (!diff(el, binding)) {
-    if (!checkIntersectionObserverAPI() && lazyElements.includes(el)) {
-      check(el)
-    }
+    lazyElements.includes(el) && (await check(el))
     return
   }
 
-  mounted(el, binding)
+  await mounted(el, binding)
 }
 
 function mergeLazyOptions(lazyOptions: LazyOptions = {}) {
