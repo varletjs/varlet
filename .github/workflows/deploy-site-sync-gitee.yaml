@@ -1,4 +1,4 @@
-name: Sync to Gitee
+name: Deploy Site And Sync to Gitee
 
 on:
   push:
