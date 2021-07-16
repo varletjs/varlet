@@ -24,6 +24,7 @@ export const SITE_PC_MAIN = resolve(__dirname, '../../site/pc/main.ts')
 export const SITE_PC_ROUTES = resolve(__dirname, '../../site/pc/routes.ts')
 export const SITE_CONFIG = resolve(__dirname, '../../site/site.config.json')
 export const SITE_OUTPUT_PATH = resolve(CWD, 'site')
+export const SITE_PUBLIC_PATH = resolve(CWD, 'public')
 
 // template highlight
 export const HL_COMPONENT_NAME_RE = /.*(\/|\\)(.+)(\/|\\)docs(\/|\\)/

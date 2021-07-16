@@ -1,5 +1,6 @@
 packages/varlet-cli/lib/**
 packages/varlet-cli/site/**
+
 packages/varlet-ui/coverage/**
 packages/varlet-ui/es/**
 packages/varlet-ui/umd/**

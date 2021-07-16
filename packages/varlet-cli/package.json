@@ -47,6 +47,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "clipboard": "^2.0.6",
     "commander": "^6.2.0",
+    "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^5.0.0",
     "eslint": "^7.30.0",
     "execa": "^5.0.0",
@@ -79,11 +80,11 @@
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.12",
+    "@types/copy-webpack-plugin": "^8.0.1",
     "@types/fs-extra": "^9.0.2",
     "@types/hash-sum": "^1.0.0",
     "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.168",
-    "@types/mini-css-extract-plugin": "^1.2.0",
     "@types/webpack-dev-server": "^3.11.1"
   },
   "peerDependencies": {

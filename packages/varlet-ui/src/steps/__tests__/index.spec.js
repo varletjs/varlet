@@ -30,7 +30,7 @@ test('test step direction prop', async () => {
     template,
     components: {
       [VarSteps.name]: VarSteps,
-      [VarStep.name]: VarStep,
+      [VarStep.name]: VarStep
     },
     data() {
       return {
@@ -59,7 +59,7 @@ test('test step event', async () => {
     template,
     components: {
       [VarSteps.name]: VarSteps,
-      [VarStep.name]: VarStep,
+      [VarStep.name]: VarStep
     },
     data() {
       return {

@@ -1,0 +1,17 @@
+name: Sync to Gitee
+
+on:
+  push:
+    branches: [dev]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync to Gitee
+        uses: wearerequired/git-mirror-action@master
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
+        with:
+          source-repo: git@github.com:haoziqaq/varlet.git
+          destination-repo: git@gitee.com:varlet/varlet-ui.git
