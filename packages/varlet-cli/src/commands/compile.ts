@@ -9,12 +9,12 @@ export function removeDir() {
   return Promise.all([remove(ES_DIR), remove(HL_DIR), remove(UMD_DIR)])
 }
 
-export async function compile() {
+export async function compile(cmd: { noUmd: boolean }) {
   const s = ora().start('Compile start...')
 
   await removeDir()
   await Promise.all([compileTypes(), compileTemplateHighlight(), compileModule()])
-  await compileModule('umd')
+  !cmd.noUmd && (await compileModule('umd'))
 
   s.succeed('Compile success!')
 }

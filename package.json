@@ -12,9 +12,9 @@
   "license": "MIT",
   "scripts": {
     "lint": "varlet-cli lint",
-    "bootstrap": "yarn && node scripts/bootstrap.js",
+    "bootstrap": "yarn && node scripts/bootstrap.mjs",
     "commit": "git-cz",
-    "publish": "yarn bootstrap && lerna publish"
+    "publish": "node scripts/publish.mjs && lerna publish"
   },
   "config": {
     "commitizen": {

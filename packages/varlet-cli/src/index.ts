@@ -11,7 +11,10 @@ command('dev').description('Run varlet development environment').action(dev)
 
 command('build').description('Build varlet site for production').action(build)
 
-command('compile').description('Compile varlet components library code').action(compile)
+command('compile')
+  .description('Compile varlet components library code')
+  .option('-nu, --noUmd', 'Do not compile umd target code')
+  .action(compile)
 
 command('lint').description('Lint code').action(lint)
 
