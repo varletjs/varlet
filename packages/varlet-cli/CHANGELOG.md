@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/haoziqaq/varlet/compare/v1.8.0...v1.9.0) (2021-07-17)
+
+
+### Bug Fixes
+
+* adjust the execution position of the remove function ([7fc61de](https://github.com/haoziqaq/varlet/commit/7fc61deb9eca3bf30a4ecf1d37f531d2c1b154e8))
+* enhance type import ([ae000e5](https://github.com/haoziqaq/varlet/commit/ae000e5755fe3e7618c96a46fa5f3cde89dcb86f))
+
+
+
+
+
 # [1.8.0](https://github.com/haoziqaq/varlet/compare/v1.7.1...v1.8.0) (2021-07-02)
 
 

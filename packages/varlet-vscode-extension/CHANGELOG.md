@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/haoziqaq/varlet/compare/v1.8.0...v1.9.0) (2021-07-17)
+
+
+### Features
+
+* **extension:** add siteMap ([a01d726](https://github.com/haoziqaq/varlet/commit/a01d726e922d8a9f36f79f16184bf2d474b60241))
+
+
+
+
+
 # [1.7.0](https://github.com/haoziqaq/varlet/compare/v1.6.0...v1.7.0) (2021-06-14)
 
 
