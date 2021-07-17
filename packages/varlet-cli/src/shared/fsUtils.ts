@@ -68,8 +68,3 @@ export function bigCamelize(str: string): string {
 export function camelize(str: string): string {
   return str.replace(/-(\w)/g, (_: any, p: string) => p.toUpperCase())
 }
-
-export function appendContent(file: string, content: string) {
-  const code = readFileSync(file)
-  writeFileSync(file, `${code}${content}`)
-}

@@ -1,7 +1,7 @@
 import hash from 'hash-sum'
-import { readFile, remove, writeFileSync } from 'fs-extra'
+import { readFile, remove, writeFileSync, appendFileSync } from 'fs-extra'
 import { parse, compileTemplate, compileStyle } from '@vue/compiler-sfc'
-import { appendContent, replaceExt } from '../shared/fsUtils'
+import { replaceExt } from '../shared/fsUtils'
 import { compileScript } from './compileScript'
 import { clearEmptyLine, compileLess } from './compileStyle'
 import { resolve, parse as parsePath } from 'path'
@@ -50,12 +50,14 @@ export function extractStyleDependencies(file: string, code: string) {
 
   styleImports.forEach((styleImport: string) => {
     const normalizedPath = normalizeStyleDependency(styleImport)
-    appendContent(cssFile, `import '${normalizedPath}.css'\n`)
-    ext === '.less' && appendContent(lessFile, `import '${normalizedPath}.less'\n`)
+    appendFileSync(cssFile, `import '${normalizedPath}.css'\n`)
+    if (ext === '.less') {
+      appendFileSync(lessFile, `import '${normalizedPath}.less'\n`)
+    }
   })
 
-  appendContent(cssFile, `import '${normalizeStyleDependency(base)}.css'\n`)
-  ext === '.less' && appendContent(lessFile, `import '${normalizeStyleDependency(base)}.less'\n`)
+  appendFileSync(cssFile, `import '${normalizeStyleDependency(base)}.css'\n`)
+  ext === '.less' && appendFileSync(lessFile, `import '${normalizeStyleDependency(base)}.less'\n`)
 
   return code.replace(LESS_IMPORT_RE, '')
 }

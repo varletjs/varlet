@@ -1,6 +1,6 @@
 import webpack from 'webpack'
 import logger from '../shared/logger'
-import { EXAMPLE_DIR_NAME, TESTS_DIR_NAME, DOCS_DIR_NAME, SRC_DIR, ES_DIR } from '../shared/constant'
+import { EXAMPLE_DIR_NAME, TESTS_DIR_NAME, DOCS_DIR_NAME, SRC_DIR, ES_DIR, STYLE_DIR_NAME } from '../shared/constant'
 import { copy, ensureFileSync, readdir, removeSync } from 'fs-extra'
 import { getComponentNames, getExportDirNames, isDir, isLess, isScript, isSFC } from '../shared/fsUtils'
 import { compileSFC } from './compileSFC'
@@ -37,6 +37,10 @@ export async function compileDir(dir: string) {
       const file = resolve(dir, filename)
 
       ;[TESTS_DIR_NAME, EXAMPLE_DIR_NAME, DOCS_DIR_NAME].includes(filename) && removeSync(file)
+
+      if (filename === STYLE_DIR_NAME) {
+        return Promise.resolve()
+      }
 
       return compileFile(file)
     })

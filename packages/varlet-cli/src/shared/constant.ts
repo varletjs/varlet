@@ -11,6 +11,7 @@ export const TYPES_DIR = resolve(CWD, 'types')
 export const ROOT_DOCS_DIR = resolve(CWD, 'docs')
 export const ESLINT_EXTENSIONS = ['.vue', '.ts', '.js']
 export const EXTENSIONS = ['.vue', '.ts', '.js', '.less', '.css']
+export const STYLE_DIR_NAME = 'style'
 export const EXAMPLE_DIR_NAME = 'example'
 export const DOCS_DIR_NAME = 'docs'
 export const EXAMPLE_DIR_INDEX = 'index.vue'

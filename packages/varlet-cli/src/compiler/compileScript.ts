@@ -37,7 +37,6 @@ export async function compileScript(script: string, path: string) {
     ],
     plugins: ['@babel/plugin-transform-runtime'],
   })) as BabelFileResult
-
   code = replaceStyleExt(code as string)
   code = replaceVueExt(code as string)
   code = replaceTSExt(code as string)
