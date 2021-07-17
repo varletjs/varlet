@@ -12,6 +12,7 @@
     <img src="https://img.shields.io/github/stars/haoziqaq/varlet" alt="ci">
     <img src="https://img.shields.io/npm/l/@varlet/ui.svg" alt="licence">
     <img src="https://img.shields.io/codecov/c/github/haoziqaq/varlet" alt="coverage">
+    <img src="https://img.badgesize.io/https://unpkg.com/@varlet/ui/umd/varlet.js?compression=gzip&label=gzip" alt="gzip" />
     <img src="https://github.com/haoziqaq/varlet/workflows/CI/badge.svg" alt="ci">
   </p>
 </div>
