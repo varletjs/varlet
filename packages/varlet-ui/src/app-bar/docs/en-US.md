@@ -197,6 +197,8 @@ export default {
 }
 ```
 
+## API
+
 ### Props
 
 | Prop | Description | Type | Default |
