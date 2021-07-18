@@ -15,6 +15,7 @@ export async function lint() {
 
     spinner = ora('eslint starting...').start()
     await execa('eslint', [
+      './src',
       'packages/varlet-cli/src',
       'packages/varlet-ui/src',
       'packages/varlet-icons/lib',
