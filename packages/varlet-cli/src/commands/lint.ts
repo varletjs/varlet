@@ -1,6 +1,8 @@
 import execa from 'execa'
 import ora, { Ora } from 'ora'
-import { ESLINT_EXTENSIONS } from '../shared/constant'
+import { CWD, ESLINT_EXTENSIONS } from '../shared/constant'
+import { isDir } from '../shared/fsUtils'
+import { resolve } from 'path'
 
 export async function lint() {
   let spinner: Ora
@@ -14,13 +16,18 @@ export async function lint() {
     spinner.succeed('stylelint success')
 
     spinner = ora('eslint starting...').start()
-    await execa('eslint', [
+
+    const patterns: string[] = [
       './src',
-      'packages/varlet-cli/src',
-      'packages/varlet-ui/src',
-      'packages/varlet-icons/lib',
-      'packages/varlet-markdown-loader',
-      'packages/varlet-vscode-extension/src',
+      './packages/varlet-cli/src',
+      './packages/varlet-ui/src',
+      './packages/varlet-icons/lib',
+      './packages/varlet-markdown-loader',
+      './packages/varlet-vscode-extension/src',
+    ]
+
+    await execa('eslint', [
+      ...patterns.filter((pattern) => isDir(resolve(CWD, pattern))),
       '--fix',
       '--ext',
       ESLINT_EXTENSIONS.join(','),
