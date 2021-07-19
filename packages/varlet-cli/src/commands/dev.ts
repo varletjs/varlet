@@ -8,14 +8,9 @@ import { ensureDirSync } from 'fs-extra'
 import { resolve } from 'path'
 import { SRC_DIR, SITE_PC, SITE_MOBILE } from '../shared/constant'
 
-let mobileRouteId: string
-let pcRouteId: string
-
 export function runDevServer(port: number, config: any) {
   const { host } = config.devServer
   config.devServer.port = port
-  config.resolve.alias['@pc-routes'] = resolve(SITE_PC, `./${pcRouteId}.routes.ts`)
-  config.resolve.alias['@mobile-routes'] = resolve(SITE_MOBILE, `./${mobileRouteId}.routes.ts`)
   const server = new WebpackDevServer(webpack(config), config.devServer)
 
   ;(server as any).showStatus = function () {}
@@ -32,9 +27,12 @@ export function runDevServer(port: number, config: any) {
 
 export async function dev() {
   ensureDirSync(SRC_DIR)
-  ;[mobileRouteId, pcRouteId] = await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
 
+  const [mobileRouteId, pcRouteId] = await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
   const config = getDevConfig()
+  config.resolve.alias['@pc-routes'] = resolve(SITE_PC, `./${pcRouteId}.routes.ts`)
+  config.resolve.alias['@mobile-routes'] = resolve(SITE_MOBILE, `./${mobileRouteId}.routes.ts`)
+
   const { port } = config.devServer
   getPort(
     {

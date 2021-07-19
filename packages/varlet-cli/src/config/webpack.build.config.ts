@@ -1,9 +1,9 @@
 import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 import { BASE_CONFIG } from './webpack.base.config'
 import { SITE_OUTPUT_PATH, PRIMARY_COLOR, SITE_PUBLIC_PATH } from '../shared/constant'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
 import { HTML_WEBPACK_PLUGINS } from './webpack.dev.config'
 
 export function getBuildConfig() {
