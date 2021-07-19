@@ -5,11 +5,17 @@ import { getDevConfig } from '../config/webpack.dev.config'
 import { getPort } from 'portfinder'
 import { buildMobileSiteRoutes, buildPcSiteRoutes } from '../compiler/compileRoutes'
 import { ensureDirSync } from 'fs-extra'
-import { SRC_DIR } from '../shared/constant'
+import { resolve } from 'path'
+import { SRC_DIR, SITE_PC, SITE_MOBILE } from '../shared/constant'
+
+let mobileRouteId: string
+let pcRouteId: string
 
 export function runDevServer(port: number, config: any) {
   const { host } = config.devServer
   config.devServer.port = port
+  config.resolve.alias['@pc-routes'] = resolve(SITE_PC, `./${pcRouteId}.routes.ts`)
+  config.resolve.alias['@mobile-routes'] = resolve(SITE_MOBILE, `./${mobileRouteId}.routes.ts`)
   const server = new WebpackDevServer(webpack(config), config.devServer)
 
   ;(server as any).showStatus = function () {}
@@ -26,8 +32,7 @@ export function runDevServer(port: number, config: any) {
 
 export async function dev() {
   ensureDirSync(SRC_DIR)
-
-  await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
+  ;[mobileRouteId, pcRouteId] = await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
 
   const config = getDevConfig()
   const { port } = config.devServer

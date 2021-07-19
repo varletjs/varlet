@@ -1,12 +1,13 @@
 import slash from 'slash'
+import hash from 'hash-sum'
 import {
   DOCS_DIR_NAME,
   EXAMPLE_DIR_INDEX,
   EXAMPLE_DIR_NAME,
   ROOT_DOCS_DIR,
-  SITE_MOBILE_ROUTES,
-  SITE_PC_ROUTES,
   SRC_DIR,
+  SITE_PC,
+  SITE_MOBILE,
 } from '../shared/constant'
 import { pathExistsSync, readdir, readdirSync, writeFile } from 'fs-extra'
 import { resolve } from 'path'
@@ -77,7 +78,7 @@ export async function findRootDocsPaths(): Promise<string[]> {
   return dir.filter(existPath).map(slashPath)
 }
 
-export async function buildMobileSiteRoutes() {
+export async function buildMobileSiteRoutes(): Promise<string> {
   const examplePaths: string[] = await findExamplePaths()
 
   const routes = examplePaths.map(
@@ -89,15 +90,20 @@ export async function buildMobileSiteRoutes() {
 `
   )
 
-  await writeFile(
-    SITE_MOBILE_ROUTES,
-    `export default [\
+  const source = `export default [\
   ${routes.join(',')}
 ]`
-  )
+
+  const mobileRouteId = hash(source)
+
+  const path = resolve(SITE_MOBILE, `./${mobileRouteId}.routes.ts`)
+
+  await writeFile(path, source)
+
+  return mobileRouteId
 }
 
-export async function buildPcSiteRoutes() {
+export async function buildPcSiteRoutes(): Promise<string> {
   const [componentDocsPaths, rootDocsPaths] = await Promise.all([findComponentDocsPaths(), findRootDocsPaths()])
 
   const componentDocsRoutes = componentDocsPaths.map(
@@ -120,10 +126,15 @@ export async function buildPcSiteRoutes() {
 `
   )
 
-  await writeFile(
-    SITE_PC_ROUTES,
-    `export default [\
+  const source = `export default [\
   ${[...componentDocsRoutes, rootDocsRoutes].join(',')}
 ]`
-  )
+
+  const pcRouteId = hash(source)
+
+  const path = resolve(SITE_PC, `./${pcRouteId}.routes.ts`)
+
+  await writeFile(path, source)
+
+  return pcRouteId
 }

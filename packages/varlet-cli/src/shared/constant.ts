@@ -20,9 +20,9 @@ export const PRIMARY_COLOR = '#3a7afe'
 
 // site
 export const SITE_MOBILE_MAIN = resolve(__dirname, '../../site/mobile/main.ts')
-export const SITE_MOBILE_ROUTES = resolve(__dirname, '../../site/mobile/routes.ts')
+export const SITE_MOBILE = resolve(__dirname, '../../site/mobile')
 export const SITE_PC_MAIN = resolve(__dirname, '../../site/pc/main.ts')
-export const SITE_PC_ROUTES = resolve(__dirname, '../../site/pc/routes.ts')
+export const SITE_PC = resolve(__dirname, '../../site/pc')
 export const SITE_CONFIG = resolve(__dirname, '../../site/site.config.json')
 export const SITE_OUTPUT_PATH = resolve(CWD, 'site')
 export const SITE_PUBLIC_PATH = resolve(CWD, 'public')

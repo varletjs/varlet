@@ -1,13 +1,4 @@
-import {
-  EXTENSIONS,
-  POSTCSS_CONFIG,
-  SITE_CONFIG,
-  SITE_MOBILE_MAIN,
-  SITE_MOBILE_ROUTES,
-  SITE_PC_MAIN,
-  SITE_PC_ROUTES,
-  TS_CONFIG,
-} from '../shared/constant'
+import { EXTENSIONS, POSTCSS_CONFIG, SITE_CONFIG, SITE_MOBILE_MAIN, SITE_PC_MAIN, TS_CONFIG } from '../shared/constant'
 import { ForkTsCheckerWebpackPlugin } from 'fork-ts-checker-webpack-plugin/lib/ForkTsCheckerWebpackPlugin'
 import { VueLoaderPlugin } from 'vue-loader'
 import { pathExistsSync } from 'fs-extra'
@@ -56,8 +47,6 @@ export const BASE_CONFIG = {
     extensions: EXTENSIONS,
     alias: {
       '@config': SITE_CONFIG,
-      '@pc-routes': SITE_PC_ROUTES,
-      '@mobile-routes': SITE_MOBILE_ROUTES,
     },
   },
   module: {

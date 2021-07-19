@@ -11,8 +11,8 @@ packages/varlet-cli/lib/compiler
 packages/varlet-cli/lib/config
 packages/varlet-cli/lib/shared
 packages/varlet-cli/lib/index.d.ts
-packages/varlet-cli/site/mobile/routes.ts
-packages/varlet-cli/site/pc/routes.ts
+packages/varlet-cli/site/mobile/*.routes.ts
+packages/varlet-cli/site/pc/*.routes.ts
 packages/varlet-cli/site/site.config.json
 
 packages/varlet-ui/site
