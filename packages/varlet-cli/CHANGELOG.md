@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.5](https://github.com/haoziqaq/varlet/compare/v1.9.4...v1.9.5) (2021-07-19)
+
+
+### Bug Fixes
+
+* **cli:** fix build error ([27f1947](https://github.com/haoziqaq/varlet/commit/27f19477986c5979784953a2f3ef3c5e7f4fd0f1))
+* **cli:** modify the logic of create route ([d60158a](https://github.com/haoziqaq/varlet/commit/d60158ac5b7ddc13eb9c41f1a8f27bb6f5c26d8f))
+* modify the logic of create routes ([8c00955](https://github.com/haoziqaq/varlet/commit/8c0095573909db9cd406f8554466f153f39e98b7))
+* remove unnecessary code ([578b842](https://github.com/haoziqaq/varlet/commit/578b842d7cdf8e1b71cf54fc3242e1bfb0d34e3d))
+* **cli:** add ./src ([0f46b0a](https://github.com/haoziqaq/varlet/commit/0f46b0a908d072ca5939bd3c21b74344a9543c65))
+* **cli:** fix eslint pattern ([ae93da1](https://github.com/haoziqaq/varlet/commit/ae93da12af4853bcb42e746d0d89f7fddc7be792))
+
+
+### Reverts
+
+* revert the commit of modify routes ([d26c420](https://github.com/haoziqaq/varlet/commit/d26c4200c8a81af81ce74afc62d430d02923d603))
+
+
+
+
+
 ## [1.9.4](https://github.com/haoziqaq/varlet/compare/v1.9.2...v1.9.4) (2021-07-17)
 
 

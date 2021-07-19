@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.5](https://github.com/haoziqaq/varlet/compare/v1.9.4...v1.9.5) (2021-07-19)
+
+
+### Bug Fixes
+
+* **ui/button:** button add white-space nowrap ([97626e1](https://github.com/haoziqaq/varlet/commit/97626e19aaca9cbd6b6126901e0962727c24142e))
+
+
+
+
+
 ## [1.9.4](https://github.com/haoziqaq/varlet/compare/v1.9.2...v1.9.4) (2021-07-17)
 
 **Note:** Version bump only for package @varlet/ui
