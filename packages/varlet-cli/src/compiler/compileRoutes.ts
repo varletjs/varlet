@@ -8,7 +8,7 @@ import {
   SITE_PC_ROUTES,
   SRC_DIR,
 } from '../shared/constant'
-import { pathExistsSync, readdir, readdirSync, writeFile, ensureFileSync, readFileSync } from 'fs-extra'
+import { pathExistsSync, readdir, readdirSync, writeFile } from 'fs-extra'
 import { resolve } from 'path'
 import { isMD } from '../shared/fsUtils'
 
@@ -80,8 +80,6 @@ export async function findRootDocsPaths(): Promise<string[]> {
 export async function buildMobileSiteRoutes() {
   const examplePaths: string[] = await findExamplePaths()
 
-  await ensureFileSync(SITE_MOBILE_ROUTES)
-
   const routes = examplePaths.map(
     (examplePath) => `
   {
@@ -91,20 +89,16 @@ export async function buildMobileSiteRoutes() {
 `
   )
 
-  const routeContent = readFileSync(SITE_MOBILE_ROUTES, 'utf-8')
-  const newContent = `export default [\
+  await writeFile(
+    SITE_MOBILE_ROUTES,
+    `export default [\
   ${routes.join(',')}
 ]`
-
-  if (routeContent !== newContent) {
-    await writeFile(SITE_MOBILE_ROUTES, newContent)
-  }
+  )
 }
 
 export async function buildPcSiteRoutes() {
   const [componentDocsPaths, rootDocsPaths] = await Promise.all([findComponentDocsPaths(), findRootDocsPaths()])
-
-  await ensureFileSync(SITE_PC_ROUTES)
 
   const componentDocsRoutes = componentDocsPaths.map(
     (componentDocsPath) => `
@@ -126,12 +120,10 @@ export async function buildPcSiteRoutes() {
 `
   )
 
-  const routeContent = readFileSync(SITE_PC_ROUTES, 'utf-8')
-  const newContent = `export default [\
+  await writeFile(
+    SITE_PC_ROUTES,
+    `export default [\
   ${[...componentDocsRoutes, rootDocsRoutes].join(',')}
 ]`
-
-  if (routeContent !== newContent) {
-    await writeFile(SITE_PC_ROUTES, newContent)
-  }
+  )
 }
