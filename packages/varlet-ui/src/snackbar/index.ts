@@ -69,9 +69,12 @@ let isAllowMultiple = false
 let uniqSnackbarOptions: Array<UniqSnackbarOptions> = reactive<UniqSnackbarOptions[]>([])
 
 const defaultOption: Partial<Record<keyof SnackbarOptions, any>> = {
+  type: undefined,
+  content: '',
   position: 'top',
   duration: 3000,
   vertical: false,
+  contentClass: undefined,
   loadingType: 'circle',
   loadingSize: 'normal',
   lockScroll: false,
