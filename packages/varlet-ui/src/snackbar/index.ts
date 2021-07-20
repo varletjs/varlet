@@ -101,8 +101,8 @@ const TransitionGroupHost = {
           key: id,
           'data-id': id,
           style: {
-            position: 'relative',
-            top: getTop(reactiveSnackOptions.position),
+            position: isAllowMultiple ? 'relative' : 'absolute',
+            ...getTop(reactiveSnackOptions.position),
           },
           _update,
           'onUpdate:show': (value: boolean) => {
@@ -256,12 +256,10 @@ function updateUniqOption(reactiveSnackOptions: SnackbarOptions, _update: string
   firstOption._update = _update
 }
 
-function getTop(position = 'top'): string {
-  if (position === 'center') return '45%'
+function getTop(position = 'top') {
+  if (position === 'bottom') return { [position]: '5%' }
 
-  if (position === 'bottom') return '90%'
-
-  return '5%'
+  return { top: position === 'top' ? '5%' : '45%' }
 }
 
 VarSnackbar.install = function (app: App) {
