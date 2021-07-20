@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.6](https://github.com/haoziqaq/varlet/compare/v1.9.5...v1.9.6) (2021-07-20)
+
+
+### Bug Fixes
+
+* **snackbar:** add default value for options ([18e6ae1](https://github.com/haoziqaq/varlet/commit/18e6ae10a5e4bb8005de391fedd5a1de2388935d))
+* **snackbar:** fix the wrong style of snackbar ([5b0ae93](https://github.com/haoziqaq/varlet/commit/5b0ae93fa3a649a7c4c1409202a865eb405c2ee1))
+
+
+
+
+
 ## [1.9.5](https://github.com/haoziqaq/varlet/compare/v1.9.4...v1.9.5) (2021-07-19)
 
 
