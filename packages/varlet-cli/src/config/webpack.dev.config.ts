@@ -35,7 +35,7 @@ export const HTML_WEBPACK_PLUGINS = [
 ]
 
 export function getDevConfig() {
-  return merge(BASE_CONFIG as any, {
+  return merge(BASE_CONFIG, {
     mode: 'development',
     devtool: 'source-map',
     devServer: {

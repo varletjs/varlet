@@ -1,8 +1,18 @@
-import { EXTENSIONS, POSTCSS_CONFIG, SITE_CONFIG, SITE_MOBILE_MAIN, SITE_PC_MAIN, TS_CONFIG } from '../shared/constant'
+import {
+  EXTENSIONS,
+  POSTCSS_CONFIG,
+  SITE,
+  SITE_MOBILE,
+  SITE_MOBILE_MAIN,
+  SITE_PC,
+  SITE_PC_MAIN,
+  TS_CONFIG,
+} from '../shared/constant'
 import { ForkTsCheckerWebpackPlugin } from 'fork-ts-checker-webpack-plugin/lib/ForkTsCheckerWebpackPlugin'
 import { VueLoaderPlugin } from 'vue-loader'
 import { pathExistsSync } from 'fs-extra'
 import { WebpackPluginInstance } from 'webpack'
+import { resolve } from 'path'
 import { createPostcssOptions } from './postcss.config'
 
 export const CSS_LOADERS = [
@@ -38,16 +48,14 @@ export function createBasePlugins(): WebpackPluginInstance[] {
   return plugins
 }
 
-export const BASE_CONFIG = {
+export const BASE_CONFIG: any = {
   entry: {
     pc: SITE_PC_MAIN,
     mobile: SITE_MOBILE_MAIN,
   },
   resolve: {
     extensions: EXTENSIONS,
-    alias: {
-      '@config': SITE_CONFIG,
-    },
+    alias: {},
   },
   module: {
     rules: [
@@ -117,4 +125,10 @@ export const BASE_CONFIG = {
     },
   },
   plugins: createBasePlugins(),
+}
+
+export function setAlias({ pcRouteId, mobileRouteId, configId }: Record<string, string>) {
+  BASE_CONFIG.resolve.alias['@pc-routes'] = resolve(SITE_PC, `./${pcRouteId}.routes.ts`)
+  BASE_CONFIG.resolve.alias['@mobile-routes'] = resolve(SITE_MOBILE, `./${mobileRouteId}.routes.ts`)
+  BASE_CONFIG.resolve.alias['@config'] = resolve(SITE, `./${configId}.site.config.json`)
 }

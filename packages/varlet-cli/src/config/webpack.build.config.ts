@@ -7,7 +7,7 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { HTML_WEBPACK_PLUGINS } from './webpack.dev.config'
 
 export function getBuildConfig() {
-  return merge(BASE_CONFIG as any, {
+  return merge(BASE_CONFIG, {
     mode: 'production',
     output: {
       publicPath: './',
