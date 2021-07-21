@@ -8,7 +8,7 @@ import { get } from 'lodash'
 export function getUmdConfig() {
   const name: string = get(varletConfig, 'name')
 
-  return merge(BASE_CONFIG as any, {
+  return merge(BASE_CONFIG, {
     mode: 'production',
     entry: resolve(ES_DIR, 'umdIndex.js'),
     output: {
