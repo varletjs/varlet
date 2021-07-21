@@ -1,12 +1,13 @@
 import webpack from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
-import logger from '../shared/logger'
-import { getDevConfig } from '../config/webpack.dev.config'
 import { getPort } from 'portfinder'
-import { buildMobileSiteRoutes, buildPcSiteRoutes } from '../compiler/compileRoutes'
 import { ensureDirSync } from 'fs-extra'
-import { resolve } from 'path'
-import { SRC_DIR, SITE_PC, SITE_MOBILE } from '../shared/constant'
+import { getDevConfig } from '../config/webpack.dev.config'
+import { configId } from '../config/varlet.config'
+import { buildMobileSiteRoutes, buildPcSiteRoutes } from '../compiler/compileRoutes'
+import { SRC_DIR } from '../shared/constant'
+import logger from '../shared/logger'
+import { setAlias } from '../config/webpack.base.config'
 
 export function runDevServer(port: number, config: any) {
   const { host } = config.devServer
@@ -30,8 +31,8 @@ export async function dev() {
 
   const [mobileRouteId, pcRouteId] = await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
   const config = getDevConfig()
-  config.resolve.alias['@pc-routes'] = resolve(SITE_PC, `./${pcRouteId}.routes.ts`)
-  config.resolve.alias['@mobile-routes'] = resolve(SITE_MOBILE, `./${mobileRouteId}.routes.ts`)
+
+  setAlias({ pcRouteId, mobileRouteId, configId })
 
   const { port } = config.devServer
   getPort(
