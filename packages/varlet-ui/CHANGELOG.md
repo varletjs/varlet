@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.7](https://github.com/haoziqaq/varlet/compare/v1.9.6...v1.9.7) (2021-07-21)
+
+
+### Bug Fixes
+
+* **ui/locale:** expose useLocale api ([2bf30e7](https://github.com/haoziqaq/varlet/commit/2bf30e798b1e9f43a0591ada296af3ab811efbe4))
+
+
+
+
+
 ## [1.9.6](https://github.com/haoziqaq/varlet/compare/v1.9.5...v1.9.6) (2021-07-20)
 
 
