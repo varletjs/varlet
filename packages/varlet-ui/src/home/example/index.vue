@@ -20,11 +20,10 @@
 import Cell from '../../cell'
 import Icon from '../../icon'
 import Ripple from '../../ripple'
+import varletConfig from '@config'
 import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
 import { watchLang, watchPlatform } from '../../utils/components'
-
-const varletConfig = require('@varlet/cli/site/site.config.json')
 
 export default {
   name: 'HomeExample',
