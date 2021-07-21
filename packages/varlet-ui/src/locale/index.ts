@@ -46,7 +46,7 @@ use('zh-CN')
 
 export { packs, pack, add, use, merge }
 
-export const _LocaleComponent = { packs, pack, add, use, merge }
+export const _LocaleComponent = { packs, pack, add, use, merge, useLocale }
 
 export default {
   packs,
@@ -54,4 +54,5 @@ export default {
   add,
   use,
   merge,
+  useLocale,
 }
