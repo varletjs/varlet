@@ -7,11 +7,8 @@
 </template>
 
 <script>
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-
 export default {
   name: 'RippleExample',
-  components: { AppType },
   setup() {
     const elevations = Array.from({ length: 25 }).map((_, index) => index)
 
