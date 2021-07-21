@@ -31,13 +31,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { props } from './props'
-import Icon from '../icon'
 
 export default defineComponent({
   name: 'VarAppBar',
-  components: {
-    [Icon.name]: Icon,
-  },
   props,
 })
 </script>
@@ -45,6 +41,5 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../styles/elevation';
-@import '../icon/icon';
 @import './appBar';
 </style>
