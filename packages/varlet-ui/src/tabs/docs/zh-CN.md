@@ -317,6 +317,8 @@ export default {
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 视图组的内容 | `-` |
+| `scrollIntoView` | 是否在切换时滚动到视口内 | _boolean_ | `false` |
+| `distance` | 滚动到视口内距离视口顶部的距离 | _string \| number_ | `0` |
 
 ### TabItem Slots
 

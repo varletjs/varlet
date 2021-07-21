@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="var-tabs-items"
-    :style="{
-      height: transitionHeight,
-    }"
-  >
+  <div class="var-tabs-items" :style="{ height: transitionHeight }">
     <slot />
   </div>
 </template>
@@ -16,6 +11,8 @@ import { props } from './props'
 import type { Ref, ComputedRef } from 'vue'
 import type { TabsItemsProvider } from './provide'
 import type { TabItemProvider } from '../tab-item/provide'
+import { getParentScroller, getTop, scrollTo, toPxNum } from '../utils/elements'
+import { linear } from '../utils/shared'
 
 export default defineComponent({
   name: 'VarTabsItems',
@@ -39,6 +36,21 @@ export default defineComponent({
 
     const matchActive = (active: number | string | undefined): TabItemProvider | undefined => {
       return matchName(active) || matchIndex(active)
+    }
+
+    const scrollIntoView = (el: HTMLElement) => {
+      const { scrollIntoView, distance } = props
+
+      if (!scrollIntoView) {
+        return
+      }
+
+      setTimeout(() => {
+        scrollTo(getParentScroller(el), {
+          top: getTop(el) - toPxNum(distance),
+          animation: linear,
+        })
+      }, 300)
     }
 
     const resize = () => {
@@ -83,6 +95,7 @@ export default defineComponent({
 
         nextTick().then(() => {
           transitionHeight.value = `${Math.max(newEl.offsetHeight, oldEl.offsetHeight)}px`
+          scrollIntoView(newEl)
         })
       }
     )
