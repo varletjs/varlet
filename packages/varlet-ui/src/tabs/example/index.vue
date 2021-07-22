@@ -103,14 +103,14 @@
     <var-tab>{{ pack.option }}3</var-tab>
   </var-tabs>
 
-  <var-tabs-items v-model:active="activeRelation">
-    <var-tab-item style="padding: 8px 5px">
+  <var-tabs-items style="margin: 8px 0" v-model:active="activeRelation">
+    <var-tab-item style="padding: 0 4px">
       {{ pack.text }}
     </var-tab-item>
-    <var-tab-item style="padding: 8px 5px">
+    <var-tab-item style="padding: 0 4px">
       {{ pack.text2 }}
     </var-tab-item>
-    <var-tab-item style="padding: 8px 5px">
+    <var-tab-item style="padding: 0 4px">
       {{ pack.text3 }}
     </var-tab-item>
   </var-tabs-items>
