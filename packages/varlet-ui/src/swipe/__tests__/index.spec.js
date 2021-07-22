@@ -148,6 +148,46 @@ test('test touch without loop', async () => {
   wrapper.unmount()
 })
 
+test('test touch with vertical', async () => {
+  const onChange = jest.fn()
+
+  const wrapper = mount(Wrapper, {
+    props: {
+      vertical: true,
+      onChange,
+    },
+  })
+  await delay(16)
+
+  const track = wrapper.find('.var-swipe__track')
+
+  await triggerDrag(track, 0, -100)
+  expect(onChange).toHaveBeenCalledTimes(1)
+  await triggerDrag(track, 0, -100)
+  expect(onChange).toHaveBeenLastCalledWith(2)
+
+  wrapper.unmount()
+})
+
+test('test touch forbid touchable', async () => {
+  const onChange = jest.fn()
+
+  const wrapper = mount(Wrapper, {
+    props: {
+      touchable: false,
+      onChange,
+    },
+  })
+  await delay(16)
+
+  const track = wrapper.find('.var-swipe__track')
+
+  await triggerDrag(track, -100, 0)
+  expect(onChange).toHaveBeenCalledTimes(0)
+
+  wrapper.unmount()
+})
+
 test('test autoplay', async () => {
   const onChange = jest.fn()
 
