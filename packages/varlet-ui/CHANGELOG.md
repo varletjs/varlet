@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/haoziqaq/varlet/compare/v1.9.7...v1.10.0) (2021-07-22)
+
+
+### Bug Fixes
+
+* **app-bar:** remove unused component ([4c70dbc](https://github.com/haoziqaq/varlet/commit/4c70dbc75a5ec23bdfc01e07496cfe01d5be626a))
+* **style:** remove unused component ([722058d](https://github.com/haoziqaq/varlet/commit/722058df1a9ee2e5c769ca5325aff3b7bb65ebee))
+* **ui/swipe:** fix swipe scroll error ([a0c197c](https://github.com/haoziqaq/varlet/commit/a0c197c9ad109a4df45fd50e97a9805656abad62))
+
+
+### Features
+
+* **ui/tabs-items:** add scrollIntoView, distance api ([a26f329](https://github.com/haoziqaq/varlet/commit/a26f329dd7d9018f8cc29c8f11d36a229ac8a32e))
+* **ui/tabs-items:** use carousel to replace the original design ([8dd346e](https://github.com/haoziqaq/varlet/commit/8dd346ee2f2d6419bf7ec0d9fbdfa9acfba111b0))
+
+
+
+
+
 ## [1.9.7](https://github.com/haoziqaq/varlet/compare/v1.9.6...v1.9.7) (2021-07-21)
 
 
