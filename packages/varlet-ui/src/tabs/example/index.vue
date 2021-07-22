@@ -95,6 +95,8 @@
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="activeRelation"
+    sticky
+    offset-top="50"
   >
     <var-tab>{{ pack.option }}1</var-tab>
     <var-tab>{{ pack.option }}2</var-tab>

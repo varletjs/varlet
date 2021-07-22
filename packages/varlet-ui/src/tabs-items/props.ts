@@ -5,13 +5,13 @@ export const props = {
     type: [String, Number],
     default: 0,
   },
-  scrollIntoView: {
+  canSwipe: {
+    type: Boolean,
+    default: true,
+  },
+  loop: {
     type: Boolean,
     default: false,
-  },
-  distance: {
-    type: [String, Number],
-    default: 0,
   },
   'onUpdate:active': {
     type: Function as PropType<(active: string | number) => void>,

@@ -267,8 +267,8 @@ Click the Tab to scroll automatically to the center of the viewport.
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
 | `v-model:active` | The identity of the active tab | _string \| number_ | `-` |
-| `scrollIntoView` | Whether to scroll into the viewport when switching | _boolean_ | `false` |
-| `distance` | Scroll to the distance within the viewport from the top of the viewport | _string \| number_ | `0` |
+| `can-swipe` | Whether to allow swipe switch | _boolean_ | `true` |
+| `loop` | Whether to allow cycle switching | _boolean_ | `false` |
 
 ### TabItem Props
 

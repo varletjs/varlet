@@ -1,29 +1,5 @@
-.var {
-  &-tab-item-left-enter-from {
-    transform: translateX(-100%);
-  }
-  &-tab-item-left-leave-to {
-    transform: translateX(100%);
-  }
-
-  &-tab-item-right-enter-from {
-    transform: translateX(100%);
-  }
-  &-tab-item-right-leave-to {
-    transform: translateX(-100%);
-  }
-
-  &-tab-item-left-enter-active,
-  &-tab-item-left-leave-active,
-  &-tab-item-right-enter-active,
-  &-tab-item-right-leave-active {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    transition: transform 0.3s var(--cubic-bezier);
-  }
-}
-
 .var-tab-item {
-  width: 100%;
+  &--inactive {
+    height: 0;
+  }
 }
