@@ -46,9 +46,9 @@ You can also name a Tab by setting the `name` to the Tab, in which case the Tabs
 
 ```html
 <var-tabs v-model:active="active">
-  <var-tab :name="Option1">Option1</var-tab>
-  <var-tab :name="Option2">Option2</var-tab>
-  <var-tab :name="Option3">Option3</var-tab>
+  <var-tab name="Option1">Option1</var-tab>
+  <var-tab name="Option2">Option2</var-tab>
+  <var-tab name="Option3">Option3</var-tab>
 </var-tabs>
 ```
 

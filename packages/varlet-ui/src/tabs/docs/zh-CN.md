@@ -46,9 +46,9 @@ Tabs默认通过`active`去匹配Tab的`index`来决定哪个选项卡被激活�
 
 ```html
 <var-tabs v-model:active="active">
-  <var-tab :name="选项1">选项1</var-tab>
-  <var-tab :name="选项2">选项2</var-tab>
-  <var-tab :name="选项3">选项3</var-tab>
+  <var-tab name="选项1">选项1</var-tab>
+  <var-tab name="选项2">选项2</var-tab>
+  <var-tab name="选项3">选项3</var-tab>
 </var-tabs>
 ```
 
