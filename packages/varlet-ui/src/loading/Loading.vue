@@ -14,46 +14,16 @@
       </span>
     </div>
 
-    <div :class="`var-loading__wave var-loading__wave-${size}`" v-if="type === 'wave'">
-      <div :style="{ backgroundColor: color }" :class="`var-loading__wave-item var-loading__wave-item-${size}`"></div>
-      <div :style="{ backgroundColor: color }" :class="`var-loading__wave-item var-loading__wave-item-${size}`"></div>
-      <div :style="{ backgroundColor: color }" :class="`var-loading__wave-item var-loading__wave-item-${size}`"></div>
-      <div :style="{ backgroundColor: color }" :class="`var-loading__wave-item var-loading__wave-item-${size}`"></div>
-      <div :style="{ backgroundColor: color }" :class="`var-loading__wave-item var-loading__wave-item-${size}`"></div>
-    </div>
-
-    <div :class="`var-loading__cube var-loading__cube-${size}`" v-if="type === 'cube'">
-      <div :style="{ backgroundColor: color }" :class="`var-loading__cube-item var-loading__cube-item-${size}`"></div>
-      <div :style="{ backgroundColor: color }" :class="`var-loading__cube-item var-loading__cube-item-${size}`"></div>
-      <div :style="{ backgroundColor: color }" :class="`var-loading__cube-item var-loading__cube-item-${size}`"></div>
-      <div :style="{ backgroundColor: color }" :class="`var-loading__cube-item var-loading__cube-item-${size}`"></div>
-    </div>
-
-    <div :class="`var-loading__rect var-loading__rect-${size}`" v-if="type === 'rect'">
-      <div :style="{ backgroundColor: color }" :class="`var-loading__rect-item var-loading__rect-item-${size}`"></div>
-      <div :style="{ backgroundColor: color }" :class="`var-loading__rect-item var-loading__rect-item-${size}`"></div>
-      <div :style="{ backgroundColor: color }" :class="`var-loading__rect-item var-loading__rect-item-${size}`"></div>
-      <div :style="{ backgroundColor: color }" :class="`var-loading__rect-item var-loading__rect-item-${size}`"></div>
-      <div :style="{ backgroundColor: color }" :class="`var-loading__rect-item var-loading__rect-item-${size}`"></div>
-      <div :style="{ backgroundColor: color }" :class="`var-loading__rect-item var-loading__rect-item-${size}`"></div>
-      <div :style="{ backgroundColor: color }" :class="`var-loading__rect-item var-loading__rect-item-${size}`"></div>
-      <div :style="{ backgroundColor: color }" :class="`var-loading__rect-item var-loading__rect-item-${size}`"></div>
-    </div>
-
-    <div :class="`var-loading__disappear var-loading__disappear-${size}`" v-if="type === 'disappear'">
-      <div
-        :style="{ backgroundColor: color }"
-        :class="`var-loading__disappear-item var-loading__disappear-item-${size}`"
-      ></div>
-      <div
-        :style="{ backgroundColor: color }"
-        :class="`var-loading__disappear-item var-loading__disappear-item-${size}`"
-      ></div>
-      <div
-        :style="{ backgroundColor: color }"
-        :class="`var-loading__disappear-item var-loading__disappear-item-${size}`"
-      ></div>
-    </div>
+    <template v-for="(nums, key) in loadingTypeDict" :key="key">
+      <div :class="`var-loading__${key} var-loading__${key}-${size}`" v-if="type === key">
+        <div
+          v-for="num in nums"
+          :key="num + key"
+          :style="{ backgroundColor: color }"
+          :class="`var-loading__${key}-item var-loading__${key}-item-${size}`"
+        ></div>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -64,6 +34,18 @@ import { props } from './props'
 export default defineComponent({
   name: 'VarLoading',
   props,
+  setup() {
+    const loadingTypeDict = {
+      wave: 5,
+      cube: 4,
+      rect: 8,
+      disappear: 3,
+    }
+
+    return {
+      loadingTypeDict,
+    }
+  },
 })
 </script>
 
