@@ -19,7 +19,7 @@
 <script lang="ts">
 import { computed, defineComponent, nextTick, ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { isPlainObject } from '../utils/shared'
-import { getParentScroller, requestAnimationFrame } from '../utils/elements'
+import { getParentScroller, nextTickFrame, requestAnimationFrame } from '../utils/elements'
 import { useIndexAnchors } from './provide'
 import { props } from './props'
 import type { Ref, ComputedRef } from 'vue'
@@ -33,6 +33,7 @@ export default defineComponent({
     const { length, indexAnchors, bindIndexAnchors } = useIndexAnchors()
 
     const scrollEl: Ref<HTMLElement | null> = ref(null)
+    const clickedName: Ref<string | number> = ref('')
     const scroller: Ref<HTMLElement | Window | null> = ref(null)
     const barEl: Ref<HTMLDivElement | null> = ref(null)
     const anchorNameList: Ref<Array<number | string>> = ref([])
@@ -68,7 +69,9 @@ export default defineComponent({
         const distance =
           index === indexAnchors.length - 1 ? scrollHeight : indexAnchors[index + 1].ownTop.value - anchor.ownTop.value
 
-        if (top >= 0 && top <= distance) emitEvent(anchor)
+        if (top >= 0 && top < distance && !clickedName.value) {
+          emitEvent(anchor)
+        }
       })
     }
 
@@ -80,7 +83,11 @@ export default defineComponent({
       const top = indexAnchor.ownTop.value
       const { scrollLeft } = scrollEl.value as HTMLDivElement
       ;(scrollEl.value as HTMLElement).scrollTo(scrollLeft, top)
-      emitEvent(anchorName)
+      clickedName.value = anchorName
+      nextTickFrame(() => {
+        emitEvent(anchorName)
+        clickedName.value = ''
+      })
     }
 
     // expose

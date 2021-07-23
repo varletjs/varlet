@@ -62,9 +62,9 @@ export function getParentScroller(el: HTMLElement): HTMLElement | Window {
     }
 
     const scrollRE = /(scroll|auto)/
-    const { overflowY } = window.getComputedStyle(element)
+    const { overflowY, overflow } = window.getComputedStyle(element)
 
-    if (scrollRE.test(overflowY)) {
+    if (scrollRE.test(overflowY) || scrollRE.test(overflow)) {
       return element
     }
   }
