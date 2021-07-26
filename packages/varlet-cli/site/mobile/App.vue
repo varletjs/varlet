@@ -74,9 +74,6 @@ export default defineComponent({
     const language: Ref<string> = ref('')
     const languageList: Ref<Language> = ref(config.pc.header.language)
 
-    const isPhone: Ref<boolean> = ref(false)
-    isPhone.value = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
-
     const changeLanguage = (key) => {
       const CName = getHashSearch().get('path')
       language.value = key
@@ -121,7 +118,6 @@ export default defineComponent({
 
     return {
       componentName,
-      isPhone,
       isReturnIcon,
       toHome,
       showMenu,

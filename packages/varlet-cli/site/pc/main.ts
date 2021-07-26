@@ -36,6 +36,7 @@ router.afterEach(() => {
   end()
 })
 
+// @ts-ignore
 window.top['router'] = router
 
 const app = createApp(App)

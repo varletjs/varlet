@@ -4,7 +4,7 @@
       <img class="varlet-home__image" :src="logo" />
       <span>{{ title }}</span>
     </h1>
-    <h2 class="varlet-home__desc">{{ desc[lang] }}</h2>
+    <h2 class="varlet-home__desc">{{ description[lang] }}</h2>
   </div>
   <var-cell v-for="component in components" :key="component.text" @click="toComponent(component)">
     <template #extra>
@@ -20,7 +20,7 @@
 import Cell from '../../cell'
 import Icon from '../../icon'
 import Ripple from '../../ripple'
-import varletConfig from '@config'
+import config from '@config'
 import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
 import { watchLang, watchPlatform } from '../../utils/components'
@@ -33,11 +33,11 @@ export default {
     [Icon.name]: Icon,
   },
   setup() {
-    const {
-      title,
-      pc: { menu, logo, title: desc },
-    } = varletConfig
-    const configComponents = menu.filter((item) => !item.isTitle && !item.nonComponent)
+    const title = ref(config?.title ?? '')
+    const logo = ref(config?.logo ?? '')
+    const description = ref(config?.mobile?.title ?? {})
+    const menu = ref(config?.pc?.menu ?? [])
+    const configComponents = menu.value.filter((item) => !item.isTitle && !item.nonComponent)
     const components = reactive(configComponents)
     const lang = ref('zh-CN')
     const platform = ref('mobile')
@@ -68,7 +68,7 @@ export default {
       toComponent,
       logo,
       title,
-      desc,
+      description,
     }
   },
 }
