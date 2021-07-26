@@ -46,9 +46,9 @@ You can also name a Tab by setting the `name` to the Tab, in which case the Tabs
 
 ```html
 <var-tabs v-model:active="active">
-  <var-tab :name="Option1">Option1</var-tab>
-  <var-tab :name="Option2">Option2</var-tab>
-  <var-tab :name="Option3">Option3</var-tab>
+  <var-tab name="Option1">Option1</var-tab>
+  <var-tab name="Option2">Option2</var-tab>
+  <var-tab name="Option3">Option3</var-tab>
 </var-tabs>
 ```
 
@@ -267,6 +267,8 @@ Click the Tab to scroll automatically to the center of the viewport.
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
 | `v-model:active` | The identity of the active tab | _string \| number_ | `-` |
+| `can-swipe` | Whether to allow swipe switch | _boolean_ | `true` |
+| `loop` | Whether to allow cycle switching | _boolean_ | `false` |
 
 ### TabItem Props
 

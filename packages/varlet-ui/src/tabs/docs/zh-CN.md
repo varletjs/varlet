@@ -46,9 +46,9 @@ Tabs默认通过`active`去匹配Tab的`index`来决定哪个选项卡被激活�
 
 ```html
 <var-tabs v-model:active="active">
-  <var-tab :name="选项1">选项1</var-tab>
-  <var-tab :name="选项2">选项2</var-tab>
-  <var-tab :name="选项3">选项3</var-tab>
+  <var-tab name="选项1">选项1</var-tab>
+  <var-tab name="选项2">选项2</var-tab>
+  <var-tab name="选项3">选项3</var-tab>
 </var-tabs>
 ```
 
@@ -270,6 +270,8 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
 | `v-model:active` | 激活的选项卡的标识 | _string \| number_ | `-` |
+| `can-swipe` | 是否允许滑动切换 | _boolean_ | `true` |
+| `loop` | 是否允许循环切换 | _boolean_ | `false` |
 
 ### TabItem Props
 

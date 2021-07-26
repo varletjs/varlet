@@ -11,20 +11,13 @@ exports[`test tabs active 1`] = `
     </div>
   </div>
 </transition-stub>
-<div class=\\"var-tabs-items\\" style=\\"height: 0px;\\">
-  <transition-stub>
-    <div class=\\"var-tab-item\\" style=\\"display: none;\\">
-      <!--v-if-->
-    </div>
-  </transition-stub>
-  <transition-stub>
-    <div class=\\"var-tab-item\\" style=\\"display: none;\\">
-      <!--v-if-->
-    </div>
-  </transition-stub>
-  <transition-stub>
-    <div class=\\"var-tab-item\\">视图3</div>
-  </transition-stub>
+<div class=\\"var-swipe var-tabs-items\\">
+  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 0ms;\\">
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\"></div>
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\"></div>
+    <div class=\\"var-swipe-item var-tab-item\\" style=\\"width: 0px; transform: translateX(0px);\\">视图3</div>
+  </div>
+  <!--v-if-->
 </div>"
 `;
 
@@ -130,25 +123,18 @@ exports[`test tabs example 1`] = `
     </div>
   </div>
 </transition-stub>
-<div class=\\"var-tabs-items\\" style=\\"height: 0px;\\">
-  <transition-stub style=\\"padding: 8px 5px;\\">
-    <div class=\\"var-tab-item\\">呜啦啦啦火车笛，随着奔腾的马蹄。
+<div class=\\"var-swipe var-tabs-items\\" style=\\"margin: 8px 0px;\\">
+  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 0ms;\\">
+    <div class=\\"var-swipe-item var-tab-item\\" style=\\"width: 0px; transform: translateX(0px); padding: 0px 4px;\\">呜啦啦啦火车笛，随着奔腾的马蹄。
       小妹妹吹着口琴，夕阳下美了剪影。
       我用子弹写日记，介绍完了风景。
       接下来换介绍我自己。
       我虽然是个牛仔，在酒吧只点牛奶。
       为什么不喝啤酒，因为啤酒伤身体。</div>
-  </transition-stub>
-  <transition-stub style=\\"padding: 8px 5px;\\">
-    <div class=\\"var-tab-item\\" style=\\"display: none;\\">
-      <!--v-if-->
-    </div>
-  </transition-stub>
-  <transition-stub style=\\"padding: 8px 5px;\\">
-    <div class=\\"var-tab-item\\" style=\\"display: none;\\">
-      <!--v-if-->
-    </div>
-  </transition-stub>
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px); padding: 0px 4px;\\"></div>
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px); padding: 0px 4px;\\"></div>
+  </div>
+  <!--v-if-->
 </div>
 <div class=\\"app-type\\">开启粘性布局</div>
 <div class=\\"var-sticky\\" style=\\"z-index: 10; width: 0px; height: 0px;\\">
@@ -177,20 +163,13 @@ exports[`test tabs relation tabsItems 1`] = `
     </div>
   </div>
 </transition-stub>
-<div class=\\"var-tabs-items\\" style=\\"height: 0px;\\">
-  <transition-stub>
-    <div class=\\"var-tab-item\\" style=\\"display: none;\\">
-      <!--v-if-->
-    </div>
-  </transition-stub>
-  <transition-stub>
-    <div class=\\"var-tab-item\\" style=\\"display: none;\\">
-      <!--v-if-->
-    </div>
-  </transition-stub>
-  <transition-stub>
-    <div class=\\"var-tab-item\\">视图3</div>
-  </transition-stub>
+<div class=\\"var-swipe var-tabs-items\\">
+  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 0ms;\\">
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\"></div>
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\"></div>
+    <div class=\\"var-swipe-item var-tab-item\\" style=\\"width: 0px; transform: translateX(0px);\\">视图3</div>
+  </div>
+  <!--v-if-->
 </div>"
 `;
 
@@ -205,17 +184,12 @@ exports[`test tabs relation tabsItems 2`] = `
     </div>
   </div>
 </transition-stub>
-<div class=\\"var-tabs-items\\" style=\\"height: 0px;\\">
-  <transition-stub>
-    <div class=\\"var-tab-item\\" style=\\"display: none;\\">
-      <!--v-if-->
-    </div>
-  </transition-stub>
-  <transition-stub>
-    <div class=\\"var-tab-item\\">视图2</div>
-  </transition-stub>
-  <transition-stub>
-    <div class=\\"var-tab-item\\" style=\\"display: none;\\">视图3</div>
-  </transition-stub>
+<div class=\\"var-swipe var-tabs-items\\">
+  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 300ms;\\">
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\"></div>
+    <div class=\\"var-swipe-item var-tab-item\\" style=\\"width: 0px; transform: translateX(0px);\\">视图2</div>
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\">视图3</div>
+  </div>
+  <!--v-if-->
 </div>"
 `;

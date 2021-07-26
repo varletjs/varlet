@@ -10,7 +10,7 @@
         transitionDuration: lockDuration ? `0ms` : `${toNumber(duration)}ms`,
       }"
       @touchstart="handleTouchstart"
-      @touchmove.prevent="handleTouchmove"
+      @touchmove="handleTouchmove"
       @touchend="handleTouchend"
     >
       <slot />
@@ -188,6 +188,15 @@ export default defineComponent({
       timer && clearInterval(timer)
     }
 
+    const getDirection = (x: number, y: number) => {
+      if (x > y && x > 10) {
+        return 'horizontal'
+      }
+      if (y > x && y > 10) {
+        return 'vertical'
+      }
+    }
+
     const handleTouchstart = (event: TouchEvent) => {
       if (length.value <= 1 || !props.touchable) {
         return
@@ -206,19 +215,30 @@ export default defineComponent({
     }
 
     const handleTouchmove = (event: TouchEvent) => {
-      if (!touching || !props.touchable) {
+      const { touchable, vertical } = props
+
+      if (!touching || !touchable) {
         return
       }
 
       const { clientX, clientY } = event.touches[0]
-      const moveX = prevX !== undefined ? clientX - prevX : 0
-      const moveY = prevY !== undefined ? clientY - prevY : 0
-      prevX = clientX
-      prevY = clientY
+      const deltaX = Math.abs(clientX - startX)
+      const deltaY = Math.abs(clientY - startY)
+      const direction = getDirection(deltaX, deltaY)
+      const expectDirection = vertical ? 'vertical' : 'horizontal'
 
-      translate.value += props.vertical ? moveY : moveX
+      if (direction === expectDirection) {
+        event.preventDefault()
 
-      dispatchBorrower()
+        const moveX = prevX !== undefined ? clientX - prevX : 0
+        const moveY = prevY !== undefined ? clientY - prevY : 0
+        prevX = clientX
+        prevY = clientY
+
+        translate.value += vertical ? moveY : moveX
+
+        dispatchBorrower()
+      }
     }
 
     const handleTouchend = () => {

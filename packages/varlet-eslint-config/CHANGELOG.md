@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/haoziqaq/varlet/compare/v1.9.7...v1.10.0) (2021-07-22)
+
+
+### Bug Fixes
+
+* **app-bar:** remove unused component ([4c70dbc](https://github.com/haoziqaq/varlet/commit/4c70dbc75a5ec23bdfc01e07496cfe01d5be626a))
+
+
+### Features
+
+* **ui/tabs-items:** use carousel to replace the original design ([8dd346e](https://github.com/haoziqaq/varlet/commit/8dd346ee2f2d6419bf7ec0d9fbdfa9acfba111b0))
+
+
+
+
+
 # [1.9.0](https://github.com/haoziqaq/varlet/compare/v1.8.0...v1.9.0) (2021-07-17)
 
 **Note:** Version bump only for package @varlet/eslint-config

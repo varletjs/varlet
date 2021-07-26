@@ -1,33 +1,34 @@
 <template>
-  <div
+  <var-swipe
     class="var-tabs-items"
-    :style="{
-      height: transitionHeight,
-    }"
+    ref="swipe"
+    :loop="loop"
+    :touchable="canSwipe"
+    :indicator="false"
+    @change="handleSwipeChange"
   >
     <slot />
-  </div>
+  </var-swipe>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch, ref, nextTick } from 'vue'
+import Swipe from '../swipe'
+import { defineComponent, watch, ref } from 'vue'
 import { useTabItem } from './provide'
 import { props } from './props'
-import type { Ref, ComputedRef } from 'vue'
+import type { Ref } from 'vue'
 import type { TabsItemsProvider } from './provide'
 import type { TabItemProvider } from '../tab-item/provide'
 
 export default defineComponent({
   name: 'VarTabsItems',
+  components: {
+    [Swipe.name]: Swipe,
+  },
   props,
   setup(props) {
-    const transitionHeight: Ref<string> = ref('auto')
-    const active: ComputedRef<number | string> = computed(() => props.active)
+    const swipe: Ref<null | typeof Swipe> = ref(null)
     const { tabItemList, bindTabItem, length } = useTabItem()
-
-    const resetTransitionHeight = () => {
-      transitionHeight.value = 'auto'
-    }
 
     const matchName = (active: number | string | undefined): TabItemProvider | undefined => {
       return tabItemList.find(({ name }: TabItemProvider) => active === name.value)
@@ -41,61 +42,37 @@ export default defineComponent({
       return matchName(active) || matchIndex(active)
     }
 
-    const resize = () => {
-      const tabItem: TabItemProvider | undefined = matchActive(props.active)
-
-      if (!tabItem) {
+    const handleActiveChange = (newValue: number | string | undefined) => {
+      const newActiveTabItemProvider: TabItemProvider | undefined = matchActive(newValue)
+      if (!newActiveTabItemProvider) {
         return
       }
 
-      const { element } = tabItem
-
-      tabItemList.forEach(({ transition }) => transition(tabItem.index.value, -1))
-
-      nextTick().then(() => {
-        transitionHeight.value = `${(element.value as HTMLElement).offsetHeight}px`
-      })
+      tabItemList.forEach(({ setCurrent }) => setCurrent(false))
+      newActiveTabItemProvider.setCurrent(true)
+      swipe.value?.to(newActiveTabItemProvider.index.value)
     }
 
-    const tabsItemsProvider: TabsItemsProvider = {
-      active,
-      resize,
-      resetTransitionHeight,
+    const handleSwipeChange = (currentIndex: number) => {
+      const tabItem = tabItemList.find(({ index }) => index.value === currentIndex) as TabItemProvider
+      const active = tabItem.name.value ?? tabItem.index.value
+
+      props['onUpdate:active']?.(active)
     }
 
+    const tabsItemsProvider: TabsItemsProvider = {}
     bindTabItem(tabsItemsProvider)
 
-    watch(
-      () => props.active,
-      (newValue: number | string | undefined, oldValue: number | string | undefined) => {
-        const oldActiveTabItemProvider: TabItemProvider | undefined = matchActive(oldValue)
-        const newActiveTabItemProvider: TabItemProvider | undefined = matchActive(newValue)
-        if (!oldActiveTabItemProvider || !newActiveTabItemProvider) {
-          return
-        }
-
-        const { element: oldElement, index: oldIndex } = oldActiveTabItemProvider
-        const { element: newElement, index: newIndex } = newActiveTabItemProvider
-        const oldEl = oldElement.value as HTMLElement
-        const newEl = newElement.value as HTMLElement
-
-        tabItemList.forEach(({ transition }) => transition(newIndex.value, oldIndex.value))
-
-        nextTick().then(() => {
-          transitionHeight.value = `${Math.max(newEl.offsetHeight, oldEl.offsetHeight)}px`
-        })
-      }
-    )
+    watch(() => props.active, handleActiveChange)
 
     watch(
       () => length.value,
-      () => nextTick().then(resize)
+      () => handleActiveChange(props.active)
     )
 
     return {
-      transitionHeight,
-      length,
-      resize,
+      swipe,
+      handleSwipeChange,
     }
   },
 })
@@ -103,5 +80,5 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
-@import './tabsItems';
+@import '../swipe/swipe';
 </style>

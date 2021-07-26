@@ -5,6 +5,8 @@
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
 | `v-model:active` | 激活的选项卡的名字 | _string \| number_ | `-` |
+| `can-swipe` | 是否允许滑动切换 | _boolean_ | `true` |
+| `loop` | 是否允许循环切换 | _boolean_ | `false` |
 
 ### 插槽
 

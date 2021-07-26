@@ -5,8 +5,7 @@ import { TABS_ITEMS_BIND_TAB_ITEM_KEY, TABS_ITEMS_COUNT_TAB_ITEM_KEY, TabsItemsP
 export interface TabItemProvider {
   index: ComputedRef<number>
   name: ComputedRef<string | number | undefined>
-  element: ComputedRef<HTMLElement | null>
-  transition(newIndex: number, oldIndex: number): void
+  setCurrent: (value: boolean) => void
 }
 
 export function useTabsItems() {
