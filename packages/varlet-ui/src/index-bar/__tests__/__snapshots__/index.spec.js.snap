@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test indexBar event 1`] = `
+exports[`test click anchor to trigger change event 1`] = `
 "<div style=\\"height: 50px; overflow: auto;\\">
   <div class=\\"var-index-bar\\">
     <div class=\\"var-sticky\\" style=\\"z-index: 1; width: 0px; height: 0px;\\">

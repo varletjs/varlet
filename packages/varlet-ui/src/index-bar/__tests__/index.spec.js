@@ -59,8 +59,8 @@ test('test stickyOffsetTop and z-index prop', () => {
   expect(wrapper.find('.var-sticky').attributes('style')).toBe('z-index: 2; top: 10px;')
 })
 
-test('test indexBar event', async () => {
-  mockScrollTo(HTMLHtmlElement)
+test('test click anchor to trigger change event', async () => {
+  mockScrollTo(HTMLElement)
 
   const template = `
     <div style="height: 50px; overflow: auto">
@@ -113,4 +113,48 @@ test('test indexBar event', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.unmount()
+})
+
+test('test scroll indexBar to trigger change event', async () => {
+  const template = `
+    <div style="height: 50px; overflow: auto">
+      <var-index-bar @change="changeHandle" ref="bar" highlight-color="purple">
+        <var-index-anchor index="A">test A</var-index-anchor>
+        <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+        <var-index-anchor index="B">test B</var-index-anchor>
+        <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+        <var-index-anchor index="C">test C</var-index-anchor>
+        <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+        <var-index-anchor index="D">test D</var-index-anchor>
+        <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+        <var-index-anchor index="E">test E</var-index-anchor>
+      </var-index-bar>
+    </div>
+  `
+  const changeHandle = jest.fn()
+
+  const wrapper = mount({
+    components: {
+      [VarIndexBar.name]: VarIndexBar,
+      [VarIndexAnchor.name]: VarIndexAnchor,
+    },
+    methods: {
+      changeHandle
+    },
+    template
+  }, { attachTo: document.body })
+
+  await delay(0)
+
+  wrapper.vm.$refs.bar.scrollTo('A')
+
+  await delay(100)
+
+  wrapper.element.scrollTop = 150
+
+  await wrapper.trigger('scroll')
+
+  await delay(0)
+
+  expect(changeHandle).toHaveBeenCalled()
 })
