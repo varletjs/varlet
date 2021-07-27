@@ -1,21 +1,19 @@
-import { pathExistsSync, writeFileSync } from 'fs-extra'
-import hash from 'hash-sum'
-import { resolve } from 'path'
+import { pathExistsSync } from 'fs-extra'
 import { merge } from 'lodash'
-import { VARLET_CONFIG, SITE } from '../shared/constant'
+import { VARLET_CONFIG, SITE_CONFIG } from '../shared/constant'
+import { outputFileSyncOnChange } from '../shared/fsUtils'
 
 export function getVarletConfig() {
-  const config = (pathExistsSync(VARLET_CONFIG) && require(VARLET_CONFIG)) || {}
+  let config = {}
+
+  if (pathExistsSync(VARLET_CONFIG)) {
+    delete require.cache[require.resolve(VARLET_CONFIG)]
+    config = require(VARLET_CONFIG)
+  }
+
   const mergedConfig = merge(require('../../varlet.default.config.js'), config)
   const source = JSON.stringify(mergedConfig, null, 2)
+  outputFileSyncOnChange(SITE_CONFIG, source)
 
-  const configId = hash(source)
-  const path = resolve(SITE, `./${configId}.site.config.json`)
-
-  writeFileSync(path, source)
-
-  return {
-    varletConfig: mergedConfig,
-    configId,
-  }
+  return mergedConfig
 }

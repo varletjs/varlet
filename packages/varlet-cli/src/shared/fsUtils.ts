@@ -1,5 +1,14 @@
 import { parse, extname, resolve } from 'path'
-import { lstatSync, pathExistsSync, readdir, readdirSync } from 'fs-extra'
+import {
+  ensureDirSync,
+  ensureFileSync,
+  lstatSync,
+  outputFileSync,
+  pathExistsSync,
+  readdir,
+  readdirSync,
+  readFileSync,
+} from 'fs-extra'
 import { EXAMPLE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from './constant'
 
 export async function getComponentNames(): Promise<string[]> {
@@ -31,6 +40,14 @@ export function isIndexTS(path: string): boolean {
 export function hasSFC(path: string): boolean {
   const dir = readdirSync(path)
   return dir.some((filename) => isSFC(resolve(path, filename)))
+}
+
+export function outputFileSyncOnChange(path: string, code: string) {
+  ensureFileSync(path)
+  const content = readFileSync(path, 'utf-8')
+  if (content !== code) {
+    outputFileSync(path, code)
+  }
 }
 
 export function isScript(path: string): boolean {

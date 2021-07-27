@@ -1,5 +1,5 @@
 module.exports = {
-  useMobile: true,
+  useMobile: false,
   pc: {
     menu: [
       {

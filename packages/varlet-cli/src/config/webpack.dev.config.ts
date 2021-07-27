@@ -1,13 +1,14 @@
 import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { getBaseConfig } from './webpack.base.config'
+import { BASE_CONFIG } from './webpack.base.config'
 import { PRIMARY_COLOR } from '../shared/constant'
 import { resolve } from 'path'
 import { get } from 'lodash'
 import { getVarletConfig } from './varlet.config'
+import { VarletSitePlugin } from '../compiler/compileRoutes'
 
-const { varletConfig } = getVarletConfig()
+const varletConfig = getVarletConfig()
 
 export function createHtmlPluginOptions(type: 'pc' | 'mobile') {
   return {
@@ -36,7 +37,7 @@ export const HTML_WEBPACK_PLUGINS = [
 ]
 
 export function getDevConfig() {
-  return merge(getBaseConfig() as any, {
+  return merge(BASE_CONFIG, {
     mode: 'development',
     devtool: 'source-map',
     devServer: {
@@ -64,6 +65,7 @@ export function getDevConfig() {
         name: 'Site development building',
         color: PRIMARY_COLOR,
       }),
+      new VarletSitePlugin(),
       ...HTML_WEBPACK_PLUGINS,
     ],
   })

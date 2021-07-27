@@ -1,13 +1,14 @@
 import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
-import { getBaseConfig } from './webpack.base.config'
+import { BASE_CONFIG } from './webpack.base.config'
 import { SITE_OUTPUT_PATH, PRIMARY_COLOR, SITE_PUBLIC_PATH } from '../shared/constant'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { HTML_WEBPACK_PLUGINS } from './webpack.dev.config'
+import { VarletSitePlugin } from '../compiler/compileRoutes'
 
 export function getBuildConfig() {
-  return merge(getBaseConfig() as any, {
+  return merge(BASE_CONFIG, {
     mode: 'production',
     output: {
       publicPath: './',
@@ -24,6 +25,7 @@ export function getBuildConfig() {
       new CopyWebpackPlugin({
         patterns: [{ from: SITE_PUBLIC_PATH, to: SITE_OUTPUT_PATH }],
       }),
+      new VarletSitePlugin(),
       ...HTML_WEBPACK_PLUGINS,
     ],
   })

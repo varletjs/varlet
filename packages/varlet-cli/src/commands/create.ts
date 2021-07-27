@@ -6,7 +6,7 @@ import { DOCS_DIR_NAME, EXAMPLE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from '../sha
 import { getVarletConfig } from '../config/varlet.config'
 import { get } from 'lodash'
 
-const { varletConfig } = getVarletConfig()
+const varletConfig = getVarletConfig()
 
 export async function create(name: string) {
   const namespace = get(varletConfig, 'namespace')
