@@ -1,0 +1,12 @@
+{
+  "name": "varlet-cli-playground",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "varlet-cli dev"
+  },
+  "dependencies": {
+    "@varlet/cli": "^1.10.0"
+  }
+}

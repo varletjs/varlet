@@ -67,6 +67,10 @@ export async function findComponentDocsPaths(): Promise<string[]> {
 }
 
 export async function findRootDocsPaths(): Promise<string[]> {
+  if (!pathExistsSync(ROOT_DOCS_DIR)) {
+    return []
+  }
+
   const dir: string[] = await readdir(ROOT_DOCS_DIR)
 
   const buildPath = (filename: string) => resolve(ROOT_DOCS_DIR, filename)

@@ -3,7 +3,6 @@
     <app-header
       :language="language"
       :component-name="componentName"
-      @language-change="handleLanguageChange"
     />
 
     <div class="varlet-site-content">
@@ -22,6 +21,7 @@
         :component-name="componentName"
         :language="language"
         :path="path"
+        v-show="useMobile"
       />
     </div>
   </div>
@@ -40,6 +40,7 @@ import '@varlet/ui/es/loading/style'
 import { defineComponent, ref, Ref, watch, onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { get } from 'lodash'
+import { getPCLocationInfo, isPhone } from '../utils'
 
 type Language = Record<string, string>
 
@@ -48,20 +49,6 @@ export interface Menu {
   nonComponent: boolean
   doc: string
   text: Record<string, string>
-}
-
-export interface CurrentLocationInfo {
-  language: string
-  menuName: string
-}
-
-export function getCurrentLocationInfo() {
-  const [, language, menuName] = window.location.hash.split('/')
-
-  return {
-    language,
-    menuName
-  }
 }
 
 export default defineComponent({
@@ -73,6 +60,9 @@ export default defineComponent({
   },
   setup() {
     const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))
+    const redirect = get(config, 'pc.redirect', '')
+    const mobileRedirect = get(config, 'mobile.redirect', '')
+    const useMobile = ref(get(config, 'useMobile'))
     const language: Ref<string> = ref('')
     const componentName: Ref<null | string> = ref(null)
     const menuName: Ref<string> = ref('')
@@ -80,13 +70,12 @@ export default defineComponent({
     const route = useRoute()
     const path: Ref<string | null> = ref(null)
     const isBack: Ref<boolean> = ref(false)
-    const isPhone = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
 
     const judgmentType = (type: string) => {
-      const { language, menuName } = getCurrentLocationInfo()
-      path.value = menuName || 'home'
+      const { language, menuName } = getPCLocationInfo()
+      path.value = menuName || redirect.slice(1)
 
-      if (type && isPhone) {
+      if (type && isPhone()) {
         window.location.href = `./mobile.html#/${path.value}?language=${language || 'zh-CN'}&platform=mobile&path=${path.value}`
       }
 
@@ -105,11 +94,6 @@ export default defineComponent({
       })
     }
 
-    const handleLanguageChange = (_lang, _componentName) => {
-      language.value = _lang
-      componentName.value = _componentName
-    }
-
     const handleSidebarChange = ({ doc: menuName }) => {
       doc.value.scrollTop = 0
       isBack.value = false
@@ -125,12 +109,13 @@ export default defineComponent({
       () => route.path,
       (to: string) => {
         if (to === '/') return
-        const { language: lang, menuName: _menuName } = getCurrentLocationInfo()
+        const { language: lang, menuName: _menuName } = getPCLocationInfo()
         menuName.value = _menuName
         language.value = lang
         document.title = get(config, 'pc.title')[lang]
         const isNonComponent = menu.value.find((c) => c.doc === menuName.value)?.nonComponent ?? false
-        componentName.value = isNonComponent ? 'home' : menuName.value
+        componentName.value = isNonComponent ? mobileRedirect.slice(1) : menuName.value
+        console.log(componentName.value)
         isBack.value ? judgmentType('') : (isBack.value = true)
       },
       { immediate: true }
@@ -143,8 +128,8 @@ export default defineComponent({
       menuName,
       path,
       doc,
+      useMobile,
       handleSidebarChange,
-      handleLanguageChange
     }
   },
 })

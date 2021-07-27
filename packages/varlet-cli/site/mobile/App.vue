@@ -3,7 +3,7 @@
     <header>
       <var-app-bar :title="componentName" title-position="center">
         <template #left v-if="isReturnIcon">
-          <var-button round @click="toHome" color="transparent" text-color="#fff" text>
+          <var-button round @click="back" color="transparent" text-color="#fff" text>
             <var-icon name="chevron-left" :size="28" />
           </var-button>
         </template>
@@ -54,6 +54,8 @@ import '@varlet/ui/es/button/style'
 import '@varlet/ui/es/menu/style'
 import '@varlet/ui/es/cell/style'
 import { watchLang, getHashSearch } from '@varlet/ui/src/utils/components'
+import { bigCamelize } from '../utils'
+import { get } from 'lodash'
 
 type Language = Record<string, string>
 
@@ -73,53 +75,37 @@ export default defineComponent({
     const showMenu: Ref<boolean> = ref(false)
     const language: Ref<string> = ref('')
     const languageList: Ref<Language> = ref(config.pc.header.language)
+    const redirect = get(config, 'mobile.redirect', '')
 
     const changeLanguage = (key) => {
-      const CName = getHashSearch().get('path')
+      const path = route.path.slice(1)
       language.value = key
       showMenu.value = false
 
-      window.location.href = `./mobile.html#/${CName}?language=${key}&platform=mobile&path=${CName}`
+      window.location.href = `./mobile.html#/${path}?language=${key}&platform=mobile&path=${path}`
     }
 
     watchLang((newValue) => {
       language.value = newValue
     })
 
-    const toHome = () => {
-      window.location.href = `./mobile.html#/home?language=${language.value}&platform=mobile&path=home`
-    }
-
-    const getCName = (name: string) => {
-      const noComponentList = [
-        'Quickstart',
-        'ImportOnDemand',
-        'BrowserAdaptation',
-        'CustomTheme',
-        'Locale',
-        'Highlight',
-        'DeveloperGuide',
-      ]
-
-      return noComponentList.includes(name) ? 'Home' : name
+    const back = () => {
+      window.location.href = `./mobile.html#${redirect}?language=${language.value}&platform=mobile&path=${redirect.slice(1)}`
     }
 
     watch(
       () => route.path,
       (to: string) => {
-        const index = to.lastIndexOf('/')
-        const componentNameInner = to.slice(index + 1).replace(/-([a-z])/g, (all: string, i: string) => i.toUpperCase())
-        const name = componentNameInner[0]?.toUpperCase() + componentNameInner.slice(1)
-
-        componentName.value = getCName(name)
-        isReturnIcon.value = !(componentName.value.toLowerCase() === 'home')
+        const bigCamelizeComponentName = bigCamelize(to.slice(1))
+        componentName.value = bigCamelizeComponentName
+        isReturnIcon.value = bigCamelizeComponentName !== bigCamelize(redirect.slice(1))
       }
     )
 
     return {
       componentName,
       isReturnIcon,
-      toHome,
+      back,
       showMenu,
       languageList,
       language,

@@ -30,7 +30,7 @@ import Ripple from '@varlet/ui/es/ripple'
 import '@varlet/ui/es/cell/style'
 import '@varlet/ui/es/ripple/style'
 import '@varlet/ui/es/styles/elevation.less'
-import { getCurrentLocationInfo } from '../App'
+import { getPCLocationInfo } from '../../utils'
 import type { PropType } from 'vue'
 import type { Menu } from '../App'
 
@@ -54,7 +54,7 @@ export default {
   emits: ['change'],
   setup(props, { emit }) {
     const changeRoute = (item) => {
-      const { menuName } = getCurrentLocationInfo()
+      const { menuName } = getPCLocationInfo()
       if (item.isTitle || menuName === item.doc) {
         return
       }
@@ -73,7 +73,7 @@ export default {
 @import '~@varlet/ui/es/styles/var';
 
 .varlet-site-sidebar {
-  padding: 5px 0 15px;
+  padding: 0 0 15px;
   position: sticky;
   flex: 0 0 220px;
   top: 0;

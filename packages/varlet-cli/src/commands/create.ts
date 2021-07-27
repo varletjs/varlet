@@ -3,8 +3,10 @@ import { bigCamelize, camelize } from '../shared/fsUtils'
 import { mkdirs, pathExistsSync, writeFile } from 'fs-extra'
 import { resolve } from 'path'
 import { DOCS_DIR_NAME, EXAMPLE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from '../shared/constant'
-import { varletConfig } from '../config/varlet.config'
+import { getVarletConfig } from '../config/varlet.config'
 import { get } from 'lodash'
+
+const { varletConfig } = getVarletConfig()
 
 export async function create(name: string) {
   const namespace = get(varletConfig, 'namespace')

@@ -1,11 +1,13 @@
 import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { BASE_CONFIG } from './webpack.base.config'
-import { varletConfig } from './varlet.config'
+import { getBaseConfig } from './webpack.base.config'
 import { PRIMARY_COLOR } from '../shared/constant'
 import { resolve } from 'path'
 import { get } from 'lodash'
+import { getVarletConfig } from './varlet.config'
+
+const { varletConfig } = getVarletConfig()
 
 export function createHtmlPluginOptions(type: 'pc' | 'mobile') {
   return {
@@ -34,7 +36,7 @@ export const HTML_WEBPACK_PLUGINS = [
 ]
 
 export function getDevConfig() {
-  return merge(BASE_CONFIG, {
+  return merge(getBaseConfig() as any, {
     mode: 'development',
     devtool: 'source-map',
     devServer: {

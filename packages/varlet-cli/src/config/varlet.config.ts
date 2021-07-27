@@ -4,7 +4,7 @@ import { resolve } from 'path'
 import { merge } from 'lodash'
 import { VARLET_CONFIG, SITE } from '../shared/constant'
 
-function getVarletConfig() {
+export function getVarletConfig() {
   const config = (pathExistsSync(VARLET_CONFIG) && require(VARLET_CONFIG)) || {}
   const mergedConfig = merge(require('../../varlet.default.config.js'), config)
   const source = JSON.stringify(mergedConfig, null, 2)
@@ -15,9 +15,7 @@ function getVarletConfig() {
   writeFileSync(path, source)
 
   return {
-    mergedConfig,
+    varletConfig: mergedConfig,
     configId,
   }
 }
-
-export const { mergedConfig: varletConfig, configId } = getVarletConfig()

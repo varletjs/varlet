@@ -42,8 +42,9 @@ import '@varlet/ui/es/icon/style'
 import '@varlet/ui/es/cell/style'
 import { ref } from 'vue'
 import { get } from 'lodash'
+import { getPCLocationInfo } from '../../utils'
+import { useRouter } from 'vue-router'
 import type { Ref } from 'vue'
-import { getCurrentLocationInfo } from '../App'
 
 export default {
   name: 'AppHeader',
@@ -59,16 +60,16 @@ export default {
       type: String
     },
   },
-  emits: ['languageChange'],
-  setup(props, { emit }) {
+  setup() {
     const title: Ref<string> = ref(get(config, 'title'))
     const logo: Ref<string> = ref(get(config, 'logo'))
     const languages: Ref<string[]> = ref(get(config, 'pc.header.language'))
     const isOpenMenu: Ref<boolean> = ref(false)
+    const router = useRouter()
 
     const handleLanguageChange = (language) => {
-      const { menuName } = getCurrentLocationInfo()
-      emit('languageChange', language, menuName)
+      const { menuName } = getPCLocationInfo()
+      router.replace(`/${language}/${menuName}`)
       isOpenMenu.value = false
     }
 
