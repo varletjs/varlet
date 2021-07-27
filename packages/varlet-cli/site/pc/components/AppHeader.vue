@@ -61,7 +61,6 @@ export default {
   },
   emits: ['languageChange'],
   setup(props, { emit }) {
-    console.log(config)
     const title: Ref<string> = ref(get(config, 'title'))
     const logo: Ref<string> = ref(get(config, 'logo'))
     const languages: Ref<string[]> = ref(get(config, 'pc.header.language'))
