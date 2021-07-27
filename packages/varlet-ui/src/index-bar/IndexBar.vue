@@ -1,7 +1,7 @@
 <template>
   <div class="var-index-bar" ref="barEl">
     <slot />
-    <ul class="var-index-bar__anchor-list" :style="{ zIndex: zIndex + 2 }">
+    <ul class="var-index-bar__anchor-list" :style="{ zIndex: zIndex + 2, display: hideList ? 'none' : 'block' }">
       <li
         v-for="anchorName in anchorNameList"
         :key="anchorName"

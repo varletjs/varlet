@@ -67,6 +67,7 @@ import { ref, onMounted } from 'vue'
 | ----- | -------------- | -------- | ---------- |
 | `sticky` | 是否开启锚点吸顶 | _boolean_ | `true` |
 | `sticky-offset-top` | 锚点吸顶时与顶部的距离 | _number_ | `0` |
+| `hide-list` | 是否隐藏锚点列表 | _boolean_ | `false` |
 | `z-index` | z-index 层级 | _number \| string_ | `1` |
 | `highlight-color` | 索引字符高亮颜色 | _string_ | `#ee0a24` |
 

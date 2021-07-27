@@ -7,6 +7,10 @@ export const props = {
     type: Number,
     default: 0,
   },
+  hideList: {
+    type: Boolean,
+    default: false,
+  },
   zIndex: {
     type: [Number, String],
     default: 1,

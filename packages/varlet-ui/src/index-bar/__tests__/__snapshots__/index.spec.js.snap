@@ -48,7 +48,7 @@ exports[`test click anchor to trigger change event 1`] = `
         <div class=\\"var-index-anchor\\">test E</div>
       </div>
     </div>
-    <ul class=\\"var-index-bar__anchor-list\\" style=\\"z-index: 3;\\">
+    <ul class=\\"var-index-bar__anchor-list\\" style=\\"z-index: 3; display: block;\\">
       <li class=\\"var-index-bar__anchor-item\\" style=\\"\\">A</li>
       <li class=\\"var-index-bar__anchor-item var-index-bar__anchor-item--active\\" style=\\"color: purple;\\">B</li>
       <li class=\\"var-index-bar__anchor-item\\">C</li>
@@ -867,7 +867,7 @@ exports[`test indexBar example 1`] = `
       <!--v-if-->
     </div>
   </div>
-  <ul class=\\"var-index-bar__anchor-list\\" style=\\"z-index: 3;\\">
+  <ul class=\\"var-index-bar__anchor-list\\" style=\\"z-index: 3; display: block;\\">
     <li class=\\"var-index-bar__anchor-item\\">A</li>
     <li class=\\"var-index-bar__anchor-item\\">B</li>
     <li class=\\"var-index-bar__anchor-item\\">C</li>
