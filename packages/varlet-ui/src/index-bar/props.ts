@@ -19,8 +19,8 @@ export const props = {
     type: String,
   },
   duration: {
-    type: Number,
-    default: 3000,
+    type: [Number, String],
+    default: 0,
   },
   onClick: {
     type: Function,

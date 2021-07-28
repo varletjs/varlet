@@ -18,7 +18,7 @@ createApp().use(IndexBar).use(IndexAnchor)
 When you click the index bar, it will automatically jump to the corresponding `IndexAnchor` anchor position.
 
 ```html
-<var-index-bar @change="change">
+<var-index-bar @change="change" duration="300">
   <div v-for="item in list" :key="item">
     <var-index-anchor 
       :index="item" 
@@ -70,7 +70,7 @@ import { ref, onMounted } from 'vue'
 | `hide-list` | Whether to hide anchor list | _boolean_ | `false` |
 | `z-index` | z-index | _string \| number_ | `1` |
 | `highlight-color` | Index character highlight color | _string_ | `#ee0a24` |
-| `duration` | Animation duration | _number_ | `0` |
+| `duration` | Animation duration | _string \| number_ | `0` |
 
 ### IndexAnchor Props
 

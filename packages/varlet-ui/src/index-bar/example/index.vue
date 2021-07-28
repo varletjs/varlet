@@ -1,5 +1,5 @@
 <template>
-  <var-index-bar @change="change" :sticky-offset-top="50">
+  <var-index-bar @change="change" :sticky-offset-top="50" duration="300">
     <div v-for="item in list" :key="item">
       <var-index-anchor :index="item" class="var-index-anchor__example"> {{ pack.title }} {{ item }} </var-index-anchor>
       <var-cell>{{ item }} {{ pack.text }}</var-cell>

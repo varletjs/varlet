@@ -6,7 +6,7 @@ export interface IndexBarProps {
   hideList?: boolean
   zIndex?: number | string
   highlightColor?: string
-  duration?: number
+  duration?: number | string
   onClick?: (value: string | number) => void
   onChange?: (value: string | number) => void
   'onUpdate:modelValue'?: (value: string | number) => void

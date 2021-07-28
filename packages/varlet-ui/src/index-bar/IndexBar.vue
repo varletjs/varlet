@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, nextTick, ref, watch, onMounted, onBeforeUnmount } from 'vue'
-import { easeInOutCubic, isPlainObject } from '../utils/shared'
+import { easeInOutCubic, isPlainObject, toNumber } from '../utils/shared'
 import {
   getParentScroller,
   getScrollLeft,
@@ -95,7 +95,7 @@ export default defineComponent({
         left,
         top,
         animation: easeInOutCubic,
-        duration: props.duration,
+        duration: toNumber(props.duration),
       })
 
       nextTickFrame(() => {
