@@ -18,8 +18,14 @@
 
 <script lang="ts">
 import { computed, defineComponent, nextTick, ref, watch, onMounted, onBeforeUnmount } from 'vue'
-import { isPlainObject } from '../utils/shared'
-import { getParentScroller, nextTickFrame, requestAnimationFrame } from '../utils/elements'
+import { easeInOutCubic, isPlainObject } from '../utils/shared'
+import {
+  getParentScroller,
+  getScrollLeft,
+  nextTickFrame,
+  requestAnimationFrame,
+  scrollTo as varScrollTo,
+} from '../utils/elements'
 import { useIndexAnchors } from './provide'
 import { props } from './props'
 import type { Ref, ComputedRef } from 'vue'
@@ -75,17 +81,24 @@ export default defineComponent({
       })
     }
 
-    const anchorClick = (anchorName: string | number, manualCall?: boolean) => {
+    const anchorClick = async (anchorName: string | number, manualCall?: boolean) => {
       if (manualCall) props.onClick?.(anchorName)
       if (anchorName === active.value) return
       const indexAnchor = indexAnchors.find(({ name }: IndexAnchorProvider) => anchorName === name.value)
       if (!indexAnchor) return
       const top = indexAnchor.ownTop.value
-      const { scrollLeft } = scrollEl.value as HTMLDivElement
-      ;(scrollEl.value as HTMLElement).scrollTo(scrollLeft, top)
+      const left = getScrollLeft(scrollEl.value as HTMLElement)
       clickedName.value = anchorName
+      emitEvent(anchorName)
+
+      await varScrollTo(scrollEl.value as HTMLElement, {
+        left,
+        top,
+        animation: easeInOutCubic,
+        duration: props.duration,
+      })
+
       nextTickFrame(() => {
-        emitEvent(anchorName)
         clickedName.value = ''
       })
     }

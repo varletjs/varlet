@@ -18,6 +18,10 @@ export const props = {
   highlightColor: {
     type: String,
   },
+  duration: {
+    type: Number,
+    default: 3000,
+  },
   onClick: {
     type: Function,
   },

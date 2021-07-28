@@ -70,6 +70,7 @@ import { ref, onMounted } from 'vue'
 | `hide-list` | 是否隐藏锚点列表 | _boolean_ | `false` |
 | `z-index` | z-index 层级 | _number \| string_ | `1` |
 | `highlight-color` | 索引字符高亮颜色 | _string_ | `#ee0a24` |
+| `duration` | 动画持续时间 | _number_ | `0` |
 
 ### IndexAnchor 属性
 

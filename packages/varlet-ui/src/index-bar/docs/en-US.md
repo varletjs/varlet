@@ -70,6 +70,7 @@ import { ref, onMounted } from 'vue'
 | `hide-list` | Whether to hide anchor list | _boolean_ | `false` |
 | `z-index` | z-index | _string \| number_ | `1` |
 | `highlight-color` | Index character highlight color | _string_ | `#ee0a24` |
+| `duration` | Animation duration | _number_ | `0` |
 
 ### IndexAnchor Props
 
