@@ -16,10 +16,11 @@
       </div>
 
       <div class="var-input__wrap" :class="[!hint ? 'var-input--non-hint' : null]">
+        <input class="var-input__autocomplete" v-if="type === 'password'" />
         <component
           class="var-input__input"
           ref="el"
-          autocomplete="off"
+          autocomplete="new-password"
           :is="textarea ? 'textarea' : 'input'"
           :id="id"
           :disabled="formDisabled || disabled || formReadonly || readonly"
