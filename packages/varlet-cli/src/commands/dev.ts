@@ -24,6 +24,7 @@ export function runDevServer(port: number, config: any) {
 }
 
 export async function dev() {
+  process.env.NODE_ENV = 'development'
   ensureDirSync(SRC_DIR)
 
   const config = getDevConfig()

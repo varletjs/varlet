@@ -5,6 +5,7 @@ import { getBuildConfig } from '../config/webpack.build.config'
 import { SRC_DIR } from '../shared/constant'
 
 export async function build() {
+  process.env.NODE_ENV = 'production'
   ensureDirSync(SRC_DIR)
 
   const config = getBuildConfig()
