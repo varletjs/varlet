@@ -6,7 +6,7 @@ import { PRIMARY_COLOR } from '../shared/constant'
 import { resolve } from 'path'
 import { get } from 'lodash'
 import { getVarletConfig } from './varlet.config'
-import { VarletSitePlugin } from '../compiler/compileRoutes'
+import { VarletSitePlugin } from '../compiler/compileSiteEntry'
 
 const varletConfig = getVarletConfig()
 

@@ -5,11 +5,13 @@ import config from '@config'
 import App from './App.vue'
 import '@varlet/touch-emulator'
 import { createApp } from 'vue'
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import { get } from 'lodash'
-import { isPhone } from '../utils'
+import { inIframe, isPhone } from '../utils'
 
 const redirect = get(config, 'mobile.redirect')
+const defaultLanguage = get(config, 'defaultLanguage')
+
 redirect &&
   routes.push({
     path: '/:pathMatch(.*)',
@@ -23,24 +25,17 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  const language = to.query.language ?? 'zh-CN'
+  const language = to.query.language ?? defaultLanguage
   const path = to.path
+  const replace = to.query.replace
 
-  if (!language) {
-    return false
+  if (!isPhone() && !inIframe()) {
+    window.location.href = `./#/${language}${path}`
   }
 
-  if (!isPhone() && window.self === window.top) {
-    window.location.href = `./#/${language}/${path}`
-  }
-
-  if (!isPhone()) {
-    // const pcPath = toPath === redirect && path
-    //     ? `/${language}/${path}`
-    //     : `/${language}${toPath}`
-
+  if (!isPhone() && inIframe()) {
     // @ts-ignore
-    window.top['router'].replace(pcPath)
+    window.top.onMobileRouteChange(path, language, replace)
   }
 })
 

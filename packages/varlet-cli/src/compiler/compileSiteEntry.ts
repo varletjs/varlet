@@ -147,13 +147,12 @@ const PLUGIN_NAME = 'VarletSitePlugin'
 export class VarletSitePlugin {
   apply(compiler: Compiler) {
     if (process.env.NODE_ENV === 'production') {
-      compiler.hooks.beforeCompile.tapPromise('VarletSitePlugin', buildSiteEntry)
+      compiler.hooks.beforeCompile.tapPromise(PLUGIN_NAME, buildSiteEntry)
     } else {
       const watcher: FSWatcher = chokidar.watch([SITE_EXAMPLE_GLOB, SITE_DOCS_GLOB, VARLET_CONFIG])
-      compiler.hooks.watchRun.tapPromise(PLUGIN_NAME, async () => {
-        watcher.on('add', buildSiteEntry).on('unlink', buildSiteEntry).on('change', buildSiteEntry)
-        await buildSiteEntry()
-      })
+      watcher.on('add', buildSiteEntry).on('unlink', buildSiteEntry).on('change', buildSiteEntry)
+
+      compiler.hooks.watchRun.tapPromise(PLUGIN_NAME, buildSiteEntry)
     }
   }
 }

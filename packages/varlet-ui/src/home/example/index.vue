@@ -57,7 +57,6 @@ export default {
         query: {
           language: lang.value,
           platform: platform.value,
-          path: component.doc,
         },
       })
     }
@@ -76,6 +75,7 @@ export default {
 
 <style scoped lang="less">
 @import '../../styles/var';
+
 .logo {
   height: 100px;
   padding-top: 30px;

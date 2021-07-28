@@ -1,22 +1,24 @@
 module.exports = {
+  name: 'Varlet',
+  namespace: 'var',
   host: 'localhost',
   port: 8080,
-  name: 'Varlet',
   title: 'VARLET',
-  namespace: 'var',
   logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
+  defaultLanguage: 'zh-CN',
   useMobile: false,
   pc: {
-    redirect: '/zh-CN/home',
+    redirect: '/home',
     title: {
       'zh-CN': 'Varlet 面向Vue3的Material风格移动端组件库',
       'en-US': 'Material design mobile components built for Vue3',
     },
     header: {
-      language: {
+      i18n: {
         'zh-CN': '中文',
         'en-US': 'English',
       },
+      github: 'https://github.com/haoziqaq/varlet',
     },
   },
   mobile: {
@@ -26,7 +28,7 @@ module.exports = {
       'en-US': 'Material design mobile components built for Vue3',
     },
     header: {
-      language: {
+      i18n: {
         'zh-CN': '中文',
         'en-US': 'English',
       },

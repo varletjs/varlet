@@ -26,6 +26,18 @@ export function isPhone() {
 
 export enum MenuTypes {
   TITLE = 1,
-  COMPONENT = 1 << 1,
-  DOCUMENTATION = 1 << 2.
+  COMPONENT = 2,
+  DOCUMENTATION = 3
+}
+
+export function inIframe() {
+  return window.self !== window.top
+}
+
+export function removeEmpty(object: Record<string, string> = {}) {
+  return Object.keys(object).reduce((record: Record<string, string>, key) => {
+    const value = object[key]
+    value && (record[key] = value)
+    return record
+  }, {})
 }

@@ -5,7 +5,7 @@ import { BASE_CONFIG } from './webpack.base.config'
 import { SITE_OUTPUT_PATH, PRIMARY_COLOR, SITE_PUBLIC_PATH } from '../shared/constant'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { HTML_WEBPACK_PLUGINS } from './webpack.dev.config'
-import { VarletSitePlugin } from '../compiler/compileRoutes'
+import { VarletSitePlugin } from '../compiler/compileSiteEntry'
 
 export function getBuildConfig() {
   return merge(BASE_CONFIG, {

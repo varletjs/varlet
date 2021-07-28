@@ -16,7 +16,7 @@
       }"
       @click="changeRoute(item)"
     >
-      <span class="varlet-site-sidebar__item--title" v-if="item.isTitle">{{ item.text[language] }}</span>
+      <span class="varlet-site-sidebar__item--title" v-if="item.type === menuTypes.TITLE">{{ item.text[language] }}</span>
       <span class="varlet-site-sidebar__item--link" v-else>{{ item.text[language] }}</span>
     </var-cell>
   </div>
@@ -30,7 +30,6 @@ import Ripple from '@varlet/ui/es/ripple'
 import '@varlet/ui/es/cell/style'
 import '@varlet/ui/es/ripple/style'
 import '@varlet/ui/es/styles/elevation.less'
-import { getPCLocationInfo } from '../../utils'
 import type { PropType } from 'vue'
 import type { Menu } from '../App'
 import { MenuTypes } from '../../utils'
@@ -58,8 +57,7 @@ export default {
     const menuTypes = reactive(MenuTypes)
 
     const changeRoute = (item) => {
-      const { menuName } = getPCLocationInfo()
-      if (item.isTitle || menuName === item.doc) {
+      if (item.type === MenuTypes.TITLE || props.menuName === item.doc) {
         return
       }
 

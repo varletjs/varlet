@@ -9,11 +9,14 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import { get } from 'lodash'
 import { useProgress } from '../useProgress'
 
+const defaultLanguage = get(config, 'defaultLanguage')
 const redirect = get(config, 'pc.redirect')
+const mobileRedirect = get(config, 'mobile.redirect')
+
 redirect &&
   routes.push({
     path: '/:pathMatch(.*)*',
-    redirect,
+    redirect: `/${defaultLanguage}${redirect}`,
   })
 
 const router = createRouter({
@@ -30,9 +33,7 @@ router.beforeEach((to, from) => {
   }
 
   isEnd = false
-  setTimeout(() => {
-    if (!isEnd) start()
-  }, 200)
+  setTimeout(() => !isEnd && start(), 200)
 })
 
 router.afterEach(() => {
@@ -40,9 +41,17 @@ router.afterEach(() => {
   end()
 })
 
-// @ts-ignore
-window.top['router'] = router
+Object.defineProperty(window, 'onMobileRouteChange', {
+  value: (path: string, language: string, replace: string) => {
+    console.log(path, language, replace)
+    if (path === mobileRedirect) {
+      router.replace(`/${language}/${replace}`)
+      return
+    }
+
+    router.replace(`/${language}${path}`)
+  }
+})
 
 const app = createApp(App)
-
 app.use(router).mount('#app')

@@ -1,14 +1,19 @@
 <template>
   <div style="position: relative">
     <header>
-      <var-app-bar :title="componentName" title-position="center">
-        <template #left v-if="isReturnIcon">
+      <var-app-bar :title="bigCamelizeComponentName" title-position="center">
+        <template #left v-if="showBackIcon">
           <var-button round @click="back" color="transparent" text-color="#fff" text>
             <var-icon name="chevron-left" :size="28" />
           </var-button>
         </template>
         <template #right>
-          <var-menu :offset-y="38" v-model:show="showMenu" style="background: transparent">
+          <var-menu
+            style="background: transparent"
+            :offset-y="38"
+            v-model:show="showMenu"
+            v-if="languages"
+          >
             <var-button text color="transparent" text-color="#fff" @click="showMenu = true">
               <var-icon name="translate" :size="24" />
               <var-icon name="chevron-down" :size="24" />
@@ -17,7 +22,7 @@
             <template #menu>
               <div style="background: #fff">
                 <var-cell
-                  v-for="(value, key) in languageList"
+                  v-for="(value, key) in nonEmptyLanguages"
                   :key="key"
                   v-ripple
                   :style="{ color: language === key ? '#2979ff' : '#666', cursor: 'pointer' }"
@@ -51,10 +56,10 @@ import '@varlet/ui/es/app-bar/style'
 import '@varlet/ui/es/button/style'
 import '@varlet/ui/es/menu/style'
 import '@varlet/ui/es/cell/style'
-import { defineComponent, ref, Ref, watch } from 'vue'
+import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { watchLang } from '@varlet/ui/src/utils/components'
-import { bigCamelize } from '../utils'
+import { bigCamelize, removeEmpty } from '../utils'
 import { get } from 'lodash'
 
 type Language = Record<string, string>
@@ -69,46 +74,45 @@ export default defineComponent({
     [Cell.name]: Cell,
   },
   setup() {
-    const componentName: Ref<string> = ref('')
+    const bigCamelizeComponentName: Ref<string> = ref('')
     const route = useRoute()
-    const isReturnIcon: Ref<boolean> = ref(false)
+    const showBackIcon: Ref<boolean> = ref(false)
     const showMenu: Ref<boolean> = ref(false)
     const language: Ref<string> = ref('')
-    const languageList: Ref<Language> = ref(config.pc.header.language)
+    const languages: Ref<Record<string, string>> = ref(get(config, 'mobile.header.i18n'))
+    const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
     const redirect = get(config, 'mobile.redirect', '')
 
-    const changeLanguage = (key) => {
-      const path = route.path.slice(1)
-      language.value = key
+    const changeLanguage = (lang) => {
+      language.value = lang
       showMenu.value = false
+      window.location.href = `./mobile.html#${route.path}?language=${language.value}&replace=${route.query.replace}`
+    }
 
-      window.location.href = `./mobile.html#/${path}?language=${key}&platform=mobile&path=${path}`
+    const back = () => {
+      window.location.href = `./mobile.html#${redirect}?language=${language.value}&replace=${redirect.slice(1)}`
     }
 
     watchLang((newValue) => {
       language.value = newValue
     })
 
-    const back = () => {
-      window.location.href = `./mobile.html#${redirect}?language=${language.value}&platform=mobile&path=${redirect.slice(1)}`
-    }
-
     watch(
       () => route.path,
       (to: string) => {
-        const bigCamelizeComponentName = bigCamelize(to.slice(1))
-        componentName.value = bigCamelizeComponentName
-        isReturnIcon.value = bigCamelizeComponentName !== bigCamelize(redirect.slice(1))
+        bigCamelizeComponentName.value = bigCamelize(to.slice(1))
+        showBackIcon.value = bigCamelizeComponentName.value !== bigCamelize(redirect.slice(1))
       }
     )
 
     return {
-      componentName,
-      isReturnIcon,
-      back,
+      bigCamelizeComponentName,
+      showBackIcon,
       showMenu,
-      languageList,
+      languages,
       language,
+      nonEmptyLanguages,
+      back,
       changeLanguage,
     }
   },

@@ -17,7 +17,8 @@
       <app-mobile
         :component-name="componentName"
         :language="language"
-        v-if="useMobile"
+        :replace="menuName"
+        v-show="useMobile"
       />
     </div>
   </div>
@@ -33,7 +34,7 @@ import AppSidebar from './components/AppSidebar'
 import '@varlet/ui/es/cell/style'
 import '@varlet/ui/es/menu/style'
 import '@varlet/ui/es/loading/style'
-import { defineComponent, ref, Ref, watch, onMounted, nextTick } from 'vue'
+import { defineComponent, nextTick, onMounted, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { get } from 'lodash'
 import { getPCLocationInfo, isPhone, MenuTypes } from '../utils'
@@ -54,19 +55,29 @@ export default defineComponent({
     AppSidebar
   },
   setup() {
+    // config
+    const defaultLanguage = get(config, 'defaultLanguage')
     const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))
     const useMobile = ref(get(config, 'useMobile'))
+    const mobileRedirect = get(config, 'mobile.redirect')
+
     const language: Ref<string> = ref('')
     const componentName: Ref<null | string> = ref(null)
     const menuName: Ref<string> = ref('')
     const doc: Ref<HTMLElement | null> = ref(null)
     const route = useRoute()
 
+    const getComponentNameByMenuName = (menuName: string) => {
+      const currentMenu = menu.value.find(menu => menu.doc === menuName)
+      return currentMenu?.type === MenuTypes.COMPONENT ? menuName : mobileRedirect.slice(1)
+    }
+
     const init = () => {
       const { language, menuName } = getPCLocationInfo()
 
       if (isPhone()) {
-        window.location.href = `./mobile.html#/${menuName}?language=${language || 'zh-CN'}&platform=mobile`
+        window.location.href = `./mobile.html#/${menuName}?language=${language || defaultLanguage}&platform=mobile`
+        return
       }
 
       nextTick(() => {
@@ -84,9 +95,10 @@ export default defineComponent({
       })
     }
 
-    const handleSidebarChange = ({ doc: menuName }) => {
+    const handleSidebarChange = (menu: Menu) => {
       doc.value.scrollTop = 0
-      componentName.value = menuName
+      componentName.value = getComponentNameByMenuName(menu.doc)
+      menuName.value = menu.doc
     }
 
     onMounted(() => init())
@@ -98,7 +110,9 @@ export default defineComponent({
         if (!lang || !_menuName) {
           return
         }
-        componentName.value = menuName.value = _menuName
+
+        componentName.value = getComponentNameByMenuName(_menuName)
+        menuName.value = _menuName
         language.value = lang
         document.title = get(config, 'pc.title')[lang]
       },
