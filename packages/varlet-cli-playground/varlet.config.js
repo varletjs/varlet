@@ -8,7 +8,7 @@ module.exports = {
           'en-US': 'Basic Introduce',
         },
         doc: 'home',
-        nonComponent: true,
+        type: 3,
       },
     ],
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="varlet-site-mobile var-elevation--3">
     <div class="varlet-site-mobile-content">
-      <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&path=${path}`"></iframe>
+      <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc`"></iframe>
     </div>
   </div>
 </template>
@@ -16,9 +16,6 @@ export default {
     language: {
       type: String
     },
-    path: {
-      type: String
-    }
   }
 }
 </script>

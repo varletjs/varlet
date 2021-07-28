@@ -40,8 +40,6 @@
 <script lang="ts">
 // @ts-ignore
 import config from '@config'
-import { defineComponent, ref, Ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
 import Icon from '@varlet/ui/es/icon'
 import AppBar from '@varlet/ui/es/app-bar'
 import Button from '@varlet/ui/es/button'
@@ -53,7 +51,9 @@ import '@varlet/ui/es/app-bar/style'
 import '@varlet/ui/es/button/style'
 import '@varlet/ui/es/menu/style'
 import '@varlet/ui/es/cell/style'
-import { watchLang, getHashSearch } from '@varlet/ui/src/utils/components'
+import { defineComponent, ref, Ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { watchLang } from '@varlet/ui/src/utils/components'
 import { bigCamelize } from '../utils'
 import { get } from 'lodash'
 

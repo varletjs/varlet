@@ -24,7 +24,11 @@ const router = createRouter({
 let isEnd = true
 const { start, end } = useProgress()
 
-router.beforeEach(() => {
+router.beforeEach((to, from) => {
+  if (to.path === from.path) {
+    return false
+  }
+
   isEnd = false
   setTimeout(() => {
     if (!isEnd) start()

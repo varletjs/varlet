@@ -10,12 +10,10 @@ import { get } from 'lodash'
 import { isPhone } from '../utils'
 
 const redirect = get(config, 'mobile.redirect')
-const redirectComponent = routes.find((c: RouteRecordRaw) => c.path === redirect)?.component
-redirect && redirectComponent &&
+redirect &&
   routes.push({
     path: '/:pathMatch(.*)',
     redirect,
-    component: routes.find((c: RouteRecordRaw) => c.path === redirect).component,
   })
 
 const router = createRouter({
@@ -25,9 +23,10 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  const { query: { language, path }, path: toPath } = to
+  const language = to.query.language ?? 'zh-CN'
+  const path = to.path
 
-  if (!language || !path) {
+  if (!language) {
     return false
   }
 
@@ -36,9 +35,9 @@ router.beforeEach((to) => {
   }
 
   if (!isPhone()) {
-    const pcPath = toPath === redirect && path
-        ? `/${language}/${path}`
-        : `/${language}${toPath}`
+    // const pcPath = toPath === redirect && path
+    //     ? `/${language}/${path}`
+    //     : `/${language}${toPath}`
 
     // @ts-ignore
     window.top['router'].replace(pcPath)

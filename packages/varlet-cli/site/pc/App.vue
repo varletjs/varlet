@@ -1,9 +1,6 @@
 <template>
   <div class="varlet-site">
-    <app-header
-      :language="language"
-      :component-name="componentName"
-    />
+    <app-header :language="language" />
 
     <div class="varlet-site-content">
       <app-sidebar
@@ -20,8 +17,7 @@
       <app-mobile
         :component-name="componentName"
         :language="language"
-        :path="path"
-        v-show="useMobile"
+        v-if="useMobile"
       />
     </div>
   </div>
@@ -40,15 +36,14 @@ import '@varlet/ui/es/loading/style'
 import { defineComponent, ref, Ref, watch, onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { get } from 'lodash'
-import { getPCLocationInfo, isPhone } from '../utils'
+import { getPCLocationInfo, isPhone, MenuTypes } from '../utils'
 
 type Language = Record<string, string>
 
 export interface Menu {
-  isTitle: boolean
-  nonComponent: boolean
   doc: string
   text: Record<string, string>
+  type: MenuTypes
 }
 
 export default defineComponent({
@@ -60,23 +55,18 @@ export default defineComponent({
   },
   setup() {
     const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))
-    const redirect = get(config, 'pc.redirect', '')
-    const mobileRedirect = get(config, 'mobile.redirect', '')
     const useMobile = ref(get(config, 'useMobile'))
     const language: Ref<string> = ref('')
     const componentName: Ref<null | string> = ref(null)
     const menuName: Ref<string> = ref('')
     const doc: Ref<HTMLElement | null> = ref(null)
     const route = useRoute()
-    const path: Ref<string | null> = ref(null)
-    const isBack: Ref<boolean> = ref(false)
 
-    const judgmentType = (type: string) => {
+    const init = () => {
       const { language, menuName } = getPCLocationInfo()
-      path.value = menuName || redirect.slice(1)
 
-      if (type && isPhone()) {
-        window.location.href = `./mobile.html#/${path.value}?language=${language || 'zh-CN'}&platform=mobile&path=${path.value}`
+      if (isPhone()) {
+        window.location.href = `./mobile.html#/${menuName}?language=${language || 'zh-CN'}&platform=mobile`
       }
 
       nextTick(() => {
@@ -96,27 +86,21 @@ export default defineComponent({
 
     const handleSidebarChange = ({ doc: menuName }) => {
       doc.value.scrollTop = 0
-      isBack.value = false
       componentName.value = menuName
-      path.value = menuName
     }
 
-    onMounted(() => {
-      judgmentType('mounted')
-    })
+    onMounted(() => init())
 
     watch(
       () => route.path,
-      (to: string) => {
-        if (to === '/') return
+      () => {
         const { language: lang, menuName: _menuName } = getPCLocationInfo()
-        menuName.value = _menuName
+        if (!lang || !_menuName) {
+          return
+        }
+        componentName.value = menuName.value = _menuName
         language.value = lang
         document.title = get(config, 'pc.title')[lang]
-        const isNonComponent = menu.value.find((c) => c.doc === menuName.value)?.nonComponent ?? false
-        componentName.value = isNonComponent ? mobileRedirect.slice(1) : menuName.value
-        console.log(componentName.value)
-        isBack.value ? judgmentType('') : (isBack.value = true)
       },
       { immediate: true }
     )
@@ -126,7 +110,6 @@ export default defineComponent({
       language,
       componentName,
       menuName,
-      path,
       doc,
       useMobile,
       handleSidebarChange,

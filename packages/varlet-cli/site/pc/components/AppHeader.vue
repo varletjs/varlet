@@ -53,9 +53,6 @@ export default {
     [Cell.name]: Cell
   },
   props: {
-    componentName: {
-      type: String
-    },
     language: {
       type: String
     },

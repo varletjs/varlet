@@ -11,7 +11,7 @@ export interface PCLocationInfo {
   menuName: string
 }
 
-export function getPCLocationInfo() {
+export function getPCLocationInfo(): PCLocationInfo {
   const [, language, menuName] = window.location.hash.split('/')
 
   return {
@@ -22,4 +22,10 @@ export function getPCLocationInfo() {
 
 export function isPhone() {
   return /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+}
+
+export enum MenuTypes {
+  TITLE = 1,
+  COMPONENT = 1 << 1,
+  DOCUMENTATION = 1 << 2.
 }

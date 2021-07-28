@@ -37,7 +37,7 @@ export default {
     const logo = ref(config?.logo ?? '')
     const description = ref(config?.mobile?.title ?? {})
     const menu = ref(config?.pc?.menu ?? [])
-    const configComponents = menu.value.filter((item) => !item.isTitle && !item.nonComponent)
+    const configComponents = menu.value.filter((item) => item.type === 2)
     const components = reactive(configComponents)
     const lang = ref('zh-CN')
     const platform = ref('mobile')

@@ -9,7 +9,7 @@ module.exports = {
           'zh-CN': '开发指南',
           'en-US': 'Developer guide',
         },
-        isTitle: true,
+        type: 1,
       },
       {
         text: {
@@ -17,7 +17,7 @@ module.exports = {
           'en-US': 'Basic Introduce',
         },
         doc: 'home',
-        nonComponent: true,
+        type: 3,
       },
       {
         text: {
@@ -25,7 +25,7 @@ module.exports = {
           'en-US': 'Quickstart',
         },
         doc: 'quickstart',
-        nonComponent: true,
+        type: 3,
       },
       {
         text: {
@@ -33,7 +33,7 @@ module.exports = {
           'en-US': 'Import on demand',
         },
         doc: 'importOnDemand',
-        nonComponent: true,
+        type: 3,
       },
       {
         text: {
@@ -41,7 +41,7 @@ module.exports = {
           'en-US': 'Browser Adaptation',
         },
         doc: 'browserAdaptation',
-        nonComponent: true,
+        type: 3,
       },
       {
         text: {
@@ -49,7 +49,7 @@ module.exports = {
           'en-US': 'Locale',
         },
         doc: 'locale',
-        nonComponent: true,
+        type: 3,
       },
       {
         text: {
@@ -57,7 +57,7 @@ module.exports = {
           'en-US': 'IDE Code Support',
         },
         doc: 'ide',
-        nonComponent: true,
+        type: 3,
       },
       {
         text: {
@@ -65,14 +65,14 @@ module.exports = {
           'en-US': 'Developer Guide',
         },
         doc: 'developerGuide',
-        nonComponent: true,
+        type: 3,
       },
       {
         text: {
           'zh-CN': '基础组件',
           'en-US': 'Basic Components',
         },
-        isTitle: true,
+        type: 1,
       },
       {
         text: {
@@ -80,6 +80,7 @@ module.exports = {
           'en-US': 'StyleProvider',
         },
         doc: 'style-provider',
+        type: 2,
       },
       {
         text: {
@@ -87,6 +88,7 @@ module.exports = {
           'en-US': 'Button',
         },
         doc: 'button',
+        type: 2,
       },
       {
         text: {
@@ -94,6 +96,7 @@ module.exports = {
           'en-US': 'Cell',
         },
         doc: 'cell',
+        type: 2,
       },
       {
         text: {
@@ -101,6 +104,7 @@ module.exports = {
           'en-US': 'Icon',
         },
         doc: 'icon',
+        type: 2,
       },
       {
         text: {
@@ -108,6 +112,7 @@ module.exports = {
           'en-US': 'Image',
         },
         doc: 'image',
+        type: 2,
       },
       {
         text: {
@@ -115,6 +120,7 @@ module.exports = {
           'en-US': 'Loading',
         },
         doc: 'loading',
+        type: 2,
       },
       {
         text: {
@@ -122,6 +128,7 @@ module.exports = {
           'en-US': 'Chip',
         },
         doc: 'chip',
+        type: 2,
       },
       {
         text: {
@@ -129,6 +136,7 @@ module.exports = {
           'en-US': 'Badge',
         },
         doc: 'badge',
+        type: 2,
       },
       {
         text: {
@@ -136,13 +144,14 @@ module.exports = {
           'en-US': 'Elevation',
         },
         doc: 'styles',
+        type: 2,
       },
       {
         text: {
           'zh-CN': '展示组件',
           'en-US': 'Display Components',
         },
-        isTitle: true,
+        type: 1,
       },
       {
         text: {
@@ -150,6 +159,7 @@ module.exports = {
           'en-US': 'Skeleton',
         },
         doc: 'skeleton',
+        type: 2,
       },
       {
         text: {
@@ -157,6 +167,7 @@ module.exports = {
           'en-US': 'Collapse',
         },
         doc: 'collapse',
+        type: 2,
       },
       {
         text: {
@@ -164,6 +175,7 @@ module.exports = {
           'en-US': 'Layout',
         },
         doc: 'row',
+        type: 2,
       },
       {
         text: {
@@ -171,6 +183,7 @@ module.exports = {
           'en-US': 'Sticky',
         },
         doc: 'sticky',
+        type: 2,
       },
       {
         text: {
@@ -178,6 +191,7 @@ module.exports = {
           'en-US': 'Progress',
         },
         doc: 'progress',
+        type: 2,
       },
       {
         text: {
@@ -185,6 +199,7 @@ module.exports = {
           'en-US': 'List',
         },
         doc: 'list',
+        type: 2,
       },
       {
         text: {
@@ -192,6 +207,7 @@ module.exports = {
           'en-US': 'Swipe',
         },
         doc: 'swipe',
+        type: 2,
       },
       {
         text: {
@@ -199,6 +215,7 @@ module.exports = {
           'en-US': 'Steps',
         },
         doc: 'steps',
+        type: 2,
       },
       {
         text: {
@@ -206,6 +223,7 @@ module.exports = {
           'en-US': 'ImagePreview',
         },
         doc: 'image-preview',
+        type: 2,
       },
       {
         text: {
@@ -213,6 +231,7 @@ module.exports = {
           'en-US': 'Card',
         },
         doc: 'card',
+        type: 2,
       },
       {
         text: {
@@ -220,13 +239,14 @@ module.exports = {
           'en-US': 'Divider',
         },
         doc: 'divider',
+        type: 2,
       },
       {
         text: {
           'zh-CN': '导航组件',
           'en-US': 'Navigation Components',
         },
-        isTitle: true,
+        type: 1,
       },
       {
         text: {
@@ -234,6 +254,7 @@ module.exports = {
           'en-US': 'Tabs',
         },
         doc: 'tabs',
+        type: 2,
       },
       {
         text: {
@@ -241,6 +262,7 @@ module.exports = {
           'en-US': 'IndexBar',
         },
         doc: 'index-bar',
+        type: 2,
       },
       {
         text: {
@@ -248,13 +270,14 @@ module.exports = {
           'en-US': 'AppBar',
         },
         doc: 'app-bar',
+        type: 2,
       },
       {
         text: {
           'zh-CN': '功能指令',
           'en-US': 'Functional Directives',
         },
-        isTitle: true,
+        type: 1,
       },
       {
         text: {
@@ -262,6 +285,7 @@ module.exports = {
           'en-US': 'Ripple',
         },
         doc: 'ripple',
+        type: 2,
       },
       {
         text: {
@@ -269,13 +293,14 @@ module.exports = {
           'en-US': 'Lazy',
         },
         doc: 'lazy',
+        type: 2,
       },
       {
         text: {
           'zh-CN': '反馈组件',
           'en-US': 'Action Components',
         },
-        isTitle: true,
+        type: 1,
       },
       {
         text: {
@@ -283,6 +308,7 @@ module.exports = {
           'en-US': 'Snackbar',
         },
         doc: 'snackbar',
+        type: 2,
       },
       {
         text: {
@@ -290,6 +316,7 @@ module.exports = {
           'en-US': 'ActionSheet',
         },
         doc: 'action-sheet',
+        type: 2,
       },
       {
         text: {
@@ -297,6 +324,7 @@ module.exports = {
           'en-US': 'Dialog',
         },
         doc: 'dialog',
+        type: 2,
       },
       {
         text: {
@@ -304,6 +332,7 @@ module.exports = {
           'en-US': 'PullRefresh',
         },
         doc: 'pull-refresh',
+        type: 2,
       },
       {
         text: {
@@ -311,6 +340,7 @@ module.exports = {
           'en-US': 'Popup',
         },
         doc: 'popup',
+        type: 2,
       },
       {
         text: {
@@ -318,6 +348,7 @@ module.exports = {
           'en-US': 'Menu',
         },
         doc: 'menu',
+        type: 2,
       },
       {
         text: {
@@ -325,6 +356,7 @@ module.exports = {
           'en-US': 'BackTop',
         },
         doc: 'back-top',
+        type: 2,
       },
       {
         text: {
@@ -332,6 +364,7 @@ module.exports = {
           'en-US': 'Countdown',
         },
         doc: 'countdown',
+        type: 2,
       },
       {
         text: {
@@ -339,6 +372,7 @@ module.exports = {
           'en-US': 'Picker',
         },
         doc: 'picker',
+        type: 2,
       },
       {
         text: {
@@ -346,6 +380,7 @@ module.exports = {
           'en-US': 'DatePicker',
         },
         doc: 'date-picker',
+        type: 2,
       },
       {
         text: {
@@ -353,13 +388,14 @@ module.exports = {
           'en-US': 'TimePicker',
         },
         doc: 'time-picker',
+        type: 2,
       },
       {
         text: {
           'zh-CN': '表单组件',
           'en-US': 'Form Components',
         },
-        isTitle: true,
+        type: 1,
       },
       {
         text: {
@@ -367,6 +403,7 @@ module.exports = {
           'en-US': 'Form',
         },
         doc: 'form',
+        type: 2,
       },
       {
         text: {
@@ -374,6 +411,7 @@ module.exports = {
           'en-US': 'Input',
         },
         doc: 'input',
+        type: 2,
       },
       {
         text: {
@@ -381,6 +419,7 @@ module.exports = {
           'en-US': 'Select',
         },
         doc: 'select',
+        type: 2,
       },
       {
         text: {
@@ -388,6 +427,7 @@ module.exports = {
           'en-US': 'Radio',
         },
         doc: 'radio-group',
+        type: 2,
       },
       {
         text: {
@@ -395,6 +435,7 @@ module.exports = {
           'en-US': 'Checkbox',
         },
         doc: 'checkbox-group',
+        type: 2,
       },
       {
         text: {
@@ -402,6 +443,7 @@ module.exports = {
           'en-US': 'Counter',
         },
         doc: 'counter',
+        type: 2,
       },
       {
         text: {
@@ -409,6 +451,7 @@ module.exports = {
           'en-US': 'Switch',
         },
         doc: 'switch',
+        type: 2,
       },
       {
         text: {
@@ -416,6 +459,7 @@ module.exports = {
           'en-US': 'slider',
         },
         doc: 'slider',
+        type: 2,
       },
       {
         text: {
@@ -423,6 +467,7 @@ module.exports = {
           'en-US': 'Rate',
         },
         doc: 'rate',
+        type: 2,
       },
       {
         text: {
@@ -430,6 +475,7 @@ module.exports = {
           'en-US': 'Uploader',
         },
         doc: 'uploader',
+        type: 2,
       },
     ],
   },

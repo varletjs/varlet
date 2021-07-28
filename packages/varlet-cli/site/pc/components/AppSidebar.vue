@@ -4,14 +4,14 @@
       class="varlet-site-sidebar__item"
       :class="{
         'varlet-site-sidebar__item--active': item.doc === menuName,
-        'varlet-site-sidebar__link': !item.isTitle,
-        'varlet-site-sidebar__title': item.isTitle,
+        'varlet-site-sidebar__link': item.type !== menuTypes.TITLE,
+        'varlet-site-sidebar__title': item.type === menuTypes.TITLE,
       }"
       :key="index"
       v-for="(item, index) in menu"
       v-ripple="{
         touchmoveForbid: false,
-        disabled: !!item.isTitle,
+        disabled: item.type === menuTypes.TITLE,
         color: '#2979ff'
       }"
       @click="changeRoute(item)"
@@ -33,6 +33,8 @@ import '@varlet/ui/es/styles/elevation.less'
 import { getPCLocationInfo } from '../../utils'
 import type { PropType } from 'vue'
 import type { Menu } from '../App'
+import { MenuTypes } from '../../utils'
+import { reactive } from 'vue'
 
 export default {
   name: 'AppSidebar',
@@ -53,6 +55,8 @@ export default {
   },
   emits: ['change'],
   setup(props, { emit }) {
+    const menuTypes = reactive(MenuTypes)
+
     const changeRoute = (item) => {
       const { menuName } = getPCLocationInfo()
       if (item.isTitle || menuName === item.doc) {
@@ -63,6 +67,7 @@ export default {
     }
 
     return {
+      menuTypes,
       changeRoute
     }
   }
