@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/haoziqaq/varlet/compare/v1.10.0...v1.11.0) (2021-07-28)
+
+
+### Bug Fixes
+
+* **index-bar:** fix the bug of trigger two times change event after click anchor ([4282788](https://github.com/haoziqaq/varlet/commit/4282788e4d5b0ee576144da951dc10c86fb235fc))
+
+
+### Features
+
+* **index-bar:** add duration prop ([d115f84](https://github.com/haoziqaq/varlet/commit/d115f84998ae1422d560b27003a869d8a31aa533))
+* **index-bar:** add hide-list prop ([a433b08](https://github.com/haoziqaq/varlet/commit/a433b08ea13a2504e1f9d75552fd95243fed8d2f))
+
+
+
+
+
 # [1.10.0](https://github.com/haoziqaq/varlet/compare/v1.9.7...v1.10.0) (2021-07-22)
 
 
