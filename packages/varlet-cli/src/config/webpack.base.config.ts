@@ -68,37 +68,8 @@ export const BASE_CONFIG = {
       },
       {
         test: /\.(js|ts|jsx|tsx)$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                [
-                  '@babel/preset-env',
-                  {
-                    modules: false,
-                  },
-                ],
-                '@babel/preset-typescript',
-                require('./babel-sfc-ts-transform'),
-              ],
-              plugins: [
-                '@babel/plugin-transform-runtime',
-                [
-                  'import',
-                  {
-                    libraryName: '@varlet/ui',
-                    libraryDirectory: 'es',
-                    style: true,
-                  },
-                  '@varlet/ui',
-                ],
-                '@vue/babel-plugin-jsx',
-              ],
-            },
-          },
-        ],
-        exclude: /node_modules/,
+        use: ['babel-loader'],
+        exclude: /node_modules\/(?!(@varlet\/cli))/,
       },
       {
         test: /\.md$/,

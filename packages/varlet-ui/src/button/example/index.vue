@@ -58,8 +58,6 @@
   <app-type>{{ pack.event }}</app-type>
   <var-button type="success" @click="handleClick">{{ pack.click }}</var-button>
   <var-button type="success" @touchstart="handleTouchstart">{{ pack.touchstart }}</var-button>
-
-  <Test />
 </template>
 
 <script>

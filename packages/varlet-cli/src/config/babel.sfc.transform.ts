@@ -6,7 +6,7 @@ module.exports = declare(() => ({
     {
       test: (file: string) => {
         if (/\.vue$/.test(file)) {
-          const code = readFileSync(file, { encoding: 'utf8' })
+          const code = readFileSync(file, 'utf8')
           return code.includes('lang="ts"') || code.includes("lang='ts'")
         }
 

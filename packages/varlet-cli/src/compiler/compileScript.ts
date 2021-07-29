@@ -25,17 +25,6 @@ export function replaceTSExt(script: string) {
 export async function compileScript(script: string, file: string) {
   let { code } = (await transformAsync(script, {
     filename: file,
-    presets: [
-      [
-        '@babel/preset-env',
-        {
-          modules: false,
-        },
-      ],
-      '@babel/preset-typescript',
-      require('../config/babel-sfc-ts-transform'),
-    ],
-    plugins: ['@babel/plugin-transform-runtime', '@vue/babel-plugin-jsx'],
   })) as BabelFileResult
   code = replaceStyleExt(code as string)
   code = replaceVueExt(code as string)
