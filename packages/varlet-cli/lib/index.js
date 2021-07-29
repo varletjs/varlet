@@ -20,5 +20,6 @@ commander_1.command('jest')
     .description('Run Jest in work directory')
     .option('-w, --watch', 'Watch files change auto jest')
     .option('-c, --component <componentName>', 'Test a specific component')
+    .option('-cc --clearCache', 'Clear test cache')
     .action(jest_1.jest);
 commander_1.parse();

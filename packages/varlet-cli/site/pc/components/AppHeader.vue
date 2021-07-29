@@ -6,7 +6,12 @@
     </div>
 
     <div class="varlet-site-header__tail">
-      <div class="varlet-site-header__language" @mouseenter="isOpenMenu = true" @mouseleave="isOpenMenu = false">
+      <div
+        class="varlet-site-header__language"
+        @mouseenter="isOpenMenu = true"
+        @mouseleave="isOpenMenu = false"
+        v-if="languages"
+      >
         <var-icon name="translate" size="26px" color="#666" />
         <var-icon name="chevron-down" color="#666" />
         <transition name="fade">
@@ -16,7 +21,7 @@
             :style="{ pointerEvents: isOpenMenu ? 'auto' : 'none' }"
           >
             <var-cell
-              v-for="(value, key) in languages"
+              v-for="(value, key) in nonEmptyLanguages"
               :key="key"
               :class="{ 'varlet-site-header__language-list--active': language === key }"
               @click="handleLanguageChange(key)"
@@ -26,7 +31,12 @@
           </div>
         </transition>
       </div>
-      <a class="varlet-site-header__link" target="_blank" href="https://github.com/haoziqaq/varlet">
+      <a
+        class="varlet-site-header__link"
+        target="_blank"
+        :href="github"
+        v-if="github"
+      >
         <var-icon name="github" color="#666" :size="28" />
       </a>
     </div>
@@ -36,39 +46,33 @@
 <script lang="ts">
 // @ts-ignore
 import config from '@config'
-import Icon from '@varlet/ui/es/icon'
-import Cell from '@varlet/ui/es/cell'
-import '@varlet/ui/es/icon/style'
-import '@varlet/ui/es/cell/style'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { get } from 'lodash'
-import type { Ref } from 'vue'
-import { getCurrentLocationInfo } from '../App'
+import { getPCLocationInfo, removeEmpty } from '../../utils'
+import { useRouter } from 'vue-router'
+import type { Ref, ComputedRef } from 'vue'
 
 export default {
   name: 'AppHeader',
-  components: {
-    [Icon.name]: Icon,
-    [Cell.name]: Cell
-  },
   props: {
-    componentName: {
-      type: String
-    },
     language: {
       type: String
     },
   },
-  emits: ['languageChange'],
-  setup(props, { emit }) {
+  setup() {
+    // config
     const title: Ref<string> = ref(get(config, 'title'))
     const logo: Ref<string> = ref(get(config, 'logo'))
-    const languages: Ref<string[]> = ref(get(config, 'pc.header.language'))
+    const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
+    const github: Ref<Record<string, string>> = ref(get(config, 'pc.header.github'))
+
     const isOpenMenu: Ref<boolean> = ref(false)
+    const router = useRouter()
+    const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
 
     const handleLanguageChange = (language) => {
-      const { menuName } = getCurrentLocationInfo()
-      emit('languageChange', language, menuName)
+      const { menuName } = getPCLocationInfo()
+      router.replace(`/${language}/${menuName}`)
       isOpenMenu.value = false
     }
 
@@ -76,6 +80,8 @@ export default {
       logo,
       title,
       languages,
+      nonEmptyLanguages,
+      github,
       isOpenMenu,
       handleLanguageChange
     }

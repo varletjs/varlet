@@ -4,19 +4,19 @@
       class="varlet-site-sidebar__item"
       :class="{
         'varlet-site-sidebar__item--active': item.doc === menuName,
-        'varlet-site-sidebar__link': !item.isTitle,
-        'varlet-site-sidebar__title': item.isTitle,
+        'varlet-site-sidebar__link': item.type !== menuTypes.TITLE,
+        'varlet-site-sidebar__title': item.type === menuTypes.TITLE,
       }"
       :key="index"
       v-for="(item, index) in menu"
       v-ripple="{
         touchmoveForbid: false,
-        disabled: !!item.isTitle,
+        disabled: item.type === menuTypes.TITLE,
         color: '#2979ff'
       }"
       @click="changeRoute(item)"
     >
-      <span class="varlet-site-sidebar__item--title" v-if="item.isTitle">{{ item.text[language] }}</span>
+      <span class="varlet-site-sidebar__item--title" v-if="item.type === menuTypes.TITLE">{{ item.text[language] }}</span>
       <span class="varlet-site-sidebar__item--link" v-else>{{ item.text[language] }}</span>
     </var-cell>
   </div>
@@ -25,21 +25,14 @@
 <script lang="ts">
 // @ts-ignore
 import config from '@config'
-import Cell from '@varlet/ui/es/cell'
-import Ripple from '@varlet/ui/es/ripple'
-import '@varlet/ui/es/cell/style'
-import '@varlet/ui/es/ripple/style'
 import '@varlet/ui/es/styles/elevation.less'
-import { getCurrentLocationInfo } from '../App'
+import { MenuTypes } from '../../utils'
+import { reactive } from 'vue'
 import type { PropType } from 'vue'
 import type { Menu } from '../App'
 
 export default {
   name: 'AppSidebar',
-  directives: { Ripple },
-  components: {
-    [Cell.name]: Cell
-  },
   props: {
     menu: {
       type: Array as PropType<Menu[]>
@@ -53,9 +46,10 @@ export default {
   },
   emits: ['change'],
   setup(props, { emit }) {
+    const menuTypes = reactive(MenuTypes)
+
     const changeRoute = (item) => {
-      const { menuName } = getCurrentLocationInfo()
-      if (item.isTitle || menuName === item.doc) {
+      if (item.type === MenuTypes.TITLE || props.menuName === item.doc) {
         return
       }
 
@@ -63,6 +57,7 @@ export default {
     }
 
     return {
+      menuTypes,
       changeRoute
     }
   }
@@ -73,7 +68,7 @@ export default {
 @import '~@varlet/ui/es/styles/var';
 
 .varlet-site-sidebar {
-  padding: 5px 0 15px;
+  padding: 0 0 15px;
   position: sticky;
   flex: 0 0 220px;
   top: 0;

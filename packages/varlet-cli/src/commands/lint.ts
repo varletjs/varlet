@@ -12,7 +12,15 @@ export async function lint() {
     spinner.succeed('prettier success')
 
     spinner = ora('stylelint starting...').start()
-    await execa('stylelint', ['./**/*.vue', './**/*.css', './**/*.less', '--fix'])
+    await execa('stylelint', [
+      './packages/**/*.vue',
+      './packages/**/*.css',
+      './packages/**/*.less',
+      './src/**/*.vue',
+      './src/**/*.css',
+      './src/**/*.less',
+      '--fix',
+    ])
     spinner.succeed('stylelint success')
 
     spinner = ora('eslint starting...').start()
@@ -26,13 +34,16 @@ export async function lint() {
       './packages/varlet-vscode-extension/src',
     ]
 
-    await execa('eslint', [
+    const { stdout } = await execa('eslint', [
       ...patterns.filter((pattern) => isDir(resolve(CWD, pattern))),
       '--fix',
       '--ext',
       ESLINT_EXTENSIONS.join(','),
     ])
-    spinner.succeed('eslint success')
+
+    const type = stdout ? 'warn' : 'succeed'
+
+    spinner[type](stdout || 'eslint success')
   } catch (e) {
     spinner!.fail(e.toString())
     process.exit(1)

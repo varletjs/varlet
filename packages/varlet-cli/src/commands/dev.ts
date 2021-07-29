@@ -1,13 +1,10 @@
 import webpack from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
+import logger from '../shared/logger'
 import { getPort } from 'portfinder'
 import { ensureDirSync } from 'fs-extra'
 import { getDevConfig } from '../config/webpack.dev.config'
-import { configId } from '../config/varlet.config'
-import { buildMobileSiteRoutes, buildPcSiteRoutes } from '../compiler/compileRoutes'
 import { SRC_DIR } from '../shared/constant'
-import logger from '../shared/logger'
-import { setAlias } from '../config/webpack.base.config'
 
 export function runDevServer(port: number, config: any) {
   const { host } = config.devServer
@@ -27,13 +24,10 @@ export function runDevServer(port: number, config: any) {
 }
 
 export async function dev() {
+  process.env.NODE_ENV = 'development'
   ensureDirSync(SRC_DIR)
 
-  const [mobileRouteId, pcRouteId] = await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
   const config = getDevConfig()
-
-  setAlias({ pcRouteId, mobileRouteId, configId })
-
   const { port } = config.devServer
   getPort(
     {

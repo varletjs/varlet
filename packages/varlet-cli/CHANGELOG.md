@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+# [1.12.0](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.12.0) (2021-07-29)
+
+
+### Bug Fixes
+
+* **cli/lint:** fix the bug of cannot get warning message ([ba849b3](https://github.com/haoziqaq/varlet/commit/ba849b3152924716d2ea20c38c769607a28e48ee))
+* **cli/site:** fix build site fail ([fffbb41](https://github.com/haoziqaq/varlet/commit/fffbb416a9bd5f3812e8529c07ae177e3d3b6e63))
+
+
+### Features
+
+* **cli:** add babel-presets ([1c5825d](https://github.com/haoziqaq/varlet/commit/1c5825d907115b4c1b017c6fb1747cef7f72d29d))
+* **cli:** support jsx tsx ([8d8c946](https://github.com/haoziqaq/varlet/commit/8d8c9466c80cac7820f9268ac7b257c9870e13be))
+* **cli:** support jsx tsx ([132fade](https://github.com/haoziqaq/varlet/commit/132fade5a12de1b8c71263ee72aec364564f0f35))
+* **cli/site:** support hmr ([5ff00d6](https://github.com/haoziqaq/varlet/commit/5ff00d61ec0d1a332557c87142d5afb04f4a6fdb))
+
+
+
+
+
 ## [1.11.1](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.11.1) (2021-07-29)
 
 **Note:** Version bump only for package @varlet/cli

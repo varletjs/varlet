@@ -1,12 +1,12 @@
 {
   "name": "@varlet/eslint-config",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "description": "eslint config of varlet",
   "keywords": [
     "eslint",
     "tslint",
     "config",
-    "viti"
+    "varlet"
   ],
   "author": "haoziqaq <357229046@qq.com>",
   "license": "MIT",
@@ -17,9 +17,6 @@
   },
   "bugs": {
     "url": "https://github.com/haoziqaq/varlet/issues"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.6.0",

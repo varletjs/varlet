@@ -1,10 +1,6 @@
 <template>
   <div class="varlet-site">
-    <app-header
-      :language="language"
-      :component-name="componentName"
-      @language-change="handleLanguageChange"
-    />
+    <app-header :language="language" />
 
     <div class="varlet-site-content">
       <app-sidebar
@@ -21,7 +17,8 @@
       <app-mobile
         :component-name="componentName"
         :language="language"
-        :path="path"
+        :replace="menuName"
+        v-show="useMobile"
       />
     </div>
   </div>
@@ -30,64 +27,52 @@
 <script lang="ts">
 // @ts-ignore
 import config from '@config'
-import Cell from '@varlet/ui/es/cell'
 import AppMobile from './components/AppMobile'
 import AppHeader from './components/AppHeader'
 import AppSidebar from './components/AppSidebar'
-import '@varlet/ui/es/cell/style'
-import '@varlet/ui/es/menu/style'
-import '@varlet/ui/es/loading/style'
-import { defineComponent, ref, Ref, watch, onMounted, nextTick } from 'vue'
+import { defineComponent, nextTick, onMounted, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { get } from 'lodash'
+import { getPCLocationInfo, isPhone, MenuTypes } from '../utils'
 
 type Language = Record<string, string>
 
 export interface Menu {
-  isTitle: boolean
-  nonComponent: boolean
   doc: string
   text: Record<string, string>
-}
-
-export interface CurrentLocationInfo {
-  language: string
-  menuName: string
-}
-
-export function getCurrentLocationInfo() {
-  const [, language, menuName] = window.location.hash.split('/')
-
-  return {
-    language,
-    menuName
-  }
+  type: MenuTypes
 }
 
 export default defineComponent({
   components: {
-    [Cell.name]: Cell,
     AppMobile,
     AppHeader,
     AppSidebar
   },
   setup() {
+    // config
+    const defaultLanguage = get(config, 'defaultLanguage')
     const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))
+    const useMobile = ref(get(config, 'useMobile'))
+    const mobileRedirect = get(config, 'mobile.redirect')
+
     const language: Ref<string> = ref('')
     const componentName: Ref<null | string> = ref(null)
     const menuName: Ref<string> = ref('')
     const doc: Ref<HTMLElement | null> = ref(null)
     const route = useRoute()
-    const path: Ref<string | null> = ref(null)
-    const isBack: Ref<boolean> = ref(false)
-    const isPhone = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
 
-    const judgmentType = (type: string) => {
-      const { language, menuName } = getCurrentLocationInfo()
-      path.value = menuName || 'home'
+    const getComponentNameByMenuName = (menuName: string) => {
+      const currentMenu = menu.value.find(menu => menu.doc === menuName)
+      return currentMenu?.type === MenuTypes.COMPONENT ? menuName : mobileRedirect.slice(1)
+    }
 
-      if (type && isPhone) {
-        window.location.href = `./mobile.html#/${path.value}?language=${language || 'zh-CN'}&platform=mobile&path=${path.value}`
+    const init = () => {
+      const { language, menuName } = getPCLocationInfo()
+
+      if (isPhone()) {
+        window.location.href = `./mobile.html#/${menuName}?language=${language || defaultLanguage}&platform=mobile`
+        return
       }
 
       nextTick(() => {
@@ -105,33 +90,26 @@ export default defineComponent({
       })
     }
 
-    const handleLanguageChange = (_lang, _componentName) => {
-      language.value = _lang
-      componentName.value = _componentName
-    }
-
-    const handleSidebarChange = ({ doc: menuName }) => {
+    const handleSidebarChange = (menu: Menu) => {
       doc.value.scrollTop = 0
-      isBack.value = false
-      componentName.value = menuName
-      path.value = menuName
+      componentName.value = getComponentNameByMenuName(menu.doc)
+      menuName.value = menu.doc
     }
 
-    onMounted(() => {
-      judgmentType('mounted')
-    })
+    onMounted(() => init())
 
     watch(
       () => route.path,
-      (to: string) => {
-        if (to === '/') return
-        const { language: lang, menuName: _menuName } = getCurrentLocationInfo()
+      () => {
+        const { language: lang, menuName: _menuName } = getPCLocationInfo()
+        if (!lang || !_menuName) {
+          return
+        }
+
+        componentName.value = getComponentNameByMenuName(_menuName)
         menuName.value = _menuName
         language.value = lang
         document.title = get(config, 'pc.title')[lang]
-        const isNonComponent = menu.value.find((c) => c.doc === menuName.value)?.nonComponent ?? false
-        componentName.value = isNonComponent ? 'home' : menuName.value
-        isBack.value ? judgmentType('') : (isBack.value = true)
       },
       { immediate: true }
     )
@@ -141,10 +119,9 @@ export default defineComponent({
       language,
       componentName,
       menuName,
-      path,
       doc,
+      useMobile,
       handleSidebarChange,
-      handleLanguageChange
     }
   },
 })

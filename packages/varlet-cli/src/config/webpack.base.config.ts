@@ -1,18 +1,17 @@
 import {
-  EXTENSIONS,
   POSTCSS_CONFIG,
-  SITE,
-  SITE_MOBILE,
+  SITE_CONFIG,
   SITE_MOBILE_MAIN,
-  SITE_PC,
+  SITE_MOBILE_ROUTES,
   SITE_PC_MAIN,
+  SITE_PC_ROUTES,
   TS_CONFIG,
+  WEBPACK_RESOLVE_EXTENSIONS,
 } from '../shared/constant'
 import { ForkTsCheckerWebpackPlugin } from 'fork-ts-checker-webpack-plugin/lib/ForkTsCheckerWebpackPlugin'
 import { VueLoaderPlugin } from 'vue-loader'
 import { pathExistsSync } from 'fs-extra'
 import { WebpackPluginInstance } from 'webpack'
-import { resolve } from 'path'
 import { createPostcssOptions } from './postcss.config'
 
 export const CSS_LOADERS = [
@@ -48,14 +47,18 @@ export function createBasePlugins(): WebpackPluginInstance[] {
   return plugins
 }
 
-export const BASE_CONFIG: any = {
+export const BASE_CONFIG = {
   entry: {
     pc: SITE_PC_MAIN,
     mobile: SITE_MOBILE_MAIN,
   },
   resolve: {
-    extensions: EXTENSIONS,
-    alias: {},
+    extensions: WEBPACK_RESOLVE_EXTENSIONS,
+    alias: {
+      '@config': SITE_CONFIG,
+      '@pc-routes': SITE_PC_ROUTES,
+      '@mobile-routes': SITE_MOBILE_ROUTES,
+    },
   },
   module: {
     rules: [
@@ -64,17 +67,9 @@ export const BASE_CONFIG: any = {
         use: ['vue-loader'],
       },
       {
-        test: /\.(js|ts)$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-typescript'],
-              plugins: ['@babel/plugin-transform-runtime', '@babel/plugin-transform-typescript'],
-            },
-          },
-        ],
-        exclude: /node_modules/,
+        test: /\.(js|ts|jsx|tsx)$/,
+        use: ['babel-loader'],
+        exclude: /node_modules\/(?!(@varlet\/cli))/,
       },
       {
         test: /\.md$/,
@@ -125,10 +120,4 @@ export const BASE_CONFIG: any = {
     },
   },
   plugins: createBasePlugins(),
-}
-
-export function setAlias({ pcRouteId, mobileRouteId, configId }: Record<string, string>) {
-  BASE_CONFIG.resolve.alias['@pc-routes'] = resolve(SITE_PC, `./${pcRouteId}.routes.ts`)
-  BASE_CONFIG.resolve.alias['@mobile-routes'] = resolve(SITE_MOBILE, `./${mobileRouteId}.routes.ts`)
-  BASE_CONFIG.resolve.alias['@config'] = resolve(SITE, `./${configId}.site.config.json`)
-}
+} as any

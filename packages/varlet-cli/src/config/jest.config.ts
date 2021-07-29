@@ -1,4 +1,11 @@
-import { JEST_MEDIA_MOCK, JEST_STYLE_MOCK, DOCS_DIR_NAME, TESTS_DIR_NAME, EXAMPLE_DIR_NAME } from '../shared/constant'
+import {
+  JEST_MEDIA_MOCK,
+  JEST_STYLE_MOCK,
+  DOCS_DIR_NAME,
+  TESTS_DIR_NAME,
+  EXAMPLE_DIR_NAME,
+  // CWD
+} from '../shared/constant'
 
 module.exports = {
   moduleNameMapper: {
@@ -7,15 +14,15 @@ module.exports = {
   },
   transform: {
     '\\.(vue)$': 'vue-jest',
-    '\\.(js|ts)$': 'babel-jest',
+    '\\.(js|jsx|ts|tsx)$': 'babel-jest',
   },
   collectCoverage: true,
   collectCoverageFrom: [
-    'src/**/*.{js,ts,vue}',
+    'src/**/*.{js,jsx,ts,tsx,vue}',
     `!**/${EXAMPLE_DIR_NAME}/**`,
     `!**/${DOCS_DIR_NAME}/**`,
     `!**/${TESTS_DIR_NAME}/**`,
   ],
-  moduleFileExtensions: ['js', 'vue', 'ts'],
-  transformIgnorePatterns: ['/node_modules/'],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'vue'],
+  transformIgnorePatterns: ['/node_modules/(?!(@varlet/cli))'],
 }

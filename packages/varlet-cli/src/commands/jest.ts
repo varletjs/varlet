@@ -1,13 +1,16 @@
+import logger from '../shared/logger'
 import { runCLI } from 'jest'
 import { CWD, JEST_CONFIG } from '../shared/constant'
-import logger from '../shared/logger'
 
-export async function jest(cmd: { watch: boolean; component: string }) {
+export async function jest(cmd: { watch: boolean; component: string; clearCache: boolean }) {
+  process.env.NODE_ENV = 'test'
+
   const config = {
     rootDir: CWD,
     watch: cmd.watch,
+    clearCache: cmd.clearCache,
     config: JEST_CONFIG,
-    testMatch: cmd.component && [`**/${cmd.component}/__tests__/*.[jt]s`],
+    testMatch: cmd.component && [`/**/${cmd.component}/__tests__/*.[jt]s`],
   }
 
   try {

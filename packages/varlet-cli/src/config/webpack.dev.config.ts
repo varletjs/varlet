@@ -2,10 +2,13 @@ import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { BASE_CONFIG } from './webpack.base.config'
-import { varletConfig } from './varlet.config'
 import { PRIMARY_COLOR } from '../shared/constant'
 import { resolve } from 'path'
 import { get } from 'lodash'
+import { getVarletConfig } from './varlet.config'
+import { VarletSitePlugin } from '../compiler/compileSiteEntry'
+
+const varletConfig = getVarletConfig()
 
 export function createHtmlPluginOptions(type: 'pc' | 'mobile') {
   return {
@@ -15,7 +18,7 @@ export function createHtmlPluginOptions(type: 'pc' | 'mobile') {
     },
     hash: true,
     chunks: [type],
-    title: get(varletConfig, `${type}.title['zh-CN']`),
+    title: get(varletConfig, `${type}.title[${get(varletConfig, 'defaultLanguage')}]`),
     logo: get(varletConfig, `logo`),
   }
 }
@@ -62,6 +65,7 @@ export function getDevConfig() {
         name: 'Site development building',
         color: PRIMARY_COLOR,
       }),
+      new VarletSitePlugin(),
       ...HTML_WEBPACK_PLUGINS,
     ],
   })

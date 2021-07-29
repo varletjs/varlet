@@ -15,7 +15,9 @@ import {
 import { resolve } from 'path'
 import { isDir, isMD } from '../shared/fsUtils'
 import { get } from 'lodash'
-import { varletConfig } from '../config/varlet.config'
+import { getVarletConfig } from '../config/varlet.config'
+
+const varletConfig = getVarletConfig()
 
 const TABLE_HEAD_RE = /\s*\|.*\|\s*\n\s*\|.*---+\s*\|\s*\n+/
 const TABLE_FOOT_RE = /(\|\s*$)|(\|\s*\n(?!\s*\|))/

@@ -14,17 +14,12 @@
     "lint": "varlet-cli lint",
     "bootstrap": "yarn && node scripts/bootstrap.mjs",
     "commit": "git-cz",
+    "prepare": "husky install",
     "publish": "node scripts/publish.mjs && lerna publish"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-lerna-changelog"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -38,11 +33,10 @@
       "packages/varlet-cli/lib/**",
       "packages/varlet-cli/site/**",
       "packages/varlet-ui/es/**",
-      "packages/varlet-ui/cjs/**",
       "packages/varlet-ui/umd/**",
       "packages/varlet-ui/site/**",
       "packages/varlet-ui/src/*/__tests__/**",
-      "packages/varlet"
+      "packages/varlet-ui/.varlet/**"
     ],
     "extends": [
       "@varlet"
@@ -56,10 +50,10 @@
       "packages/varlet-cli/lib/**",
       "packages/varlet-icons/dist/**",
       "packages/varlet-ui/es/**",
-      "packages/varlet-ui/cjs/**",
       "packages/varlet-ui/umd/**",
       "packages/varlet-ui/site/**",
-      "packages/varlet-ui/coverage/**"
+      "packages/varlet-ui/coverage/**",
+      "packages/varlet-ui/highlight/**"
     ]
   },
   "devDependencies": {
@@ -68,7 +62,6 @@
     "commitizen": "^4.2.2",
     "cz-lerna-changelog": "^2.0.3",
     "execa": "^5.0.0",
-    "husky": "^4.3.0",
     "lerna": "^3.22.1",
     "lint-staged": "^10.5.0",
     "ora": "^5.4.0",
