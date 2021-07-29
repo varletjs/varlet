@@ -29,8 +29,8 @@ exports[`test sticky scrolling with css sticky position 1`] = `
 `;
 
 exports[`test sticky scrolling with css sticky position 2`] = `
-"<div class=\\"var-sticky\\" style=\\"z-index: 10; top: 100px;\\">
-  <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10;\\">sticky content</div>
+"<div class=\\"var-sticky\\" style=\\"z-index: 10; width: 0px; height: 0px;\\">
+  <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10; position: fixed; width: 0px; height: 0px; top: 100px;\\">sticky content</div>
 </div>"
 `;
 
