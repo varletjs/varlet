@@ -61,6 +61,7 @@
     "fs-extra": "^9.0.1",
     "hash-sum": "^2.0.0",
     "html-webpack-plugin": "^5.1.0",
+    "husky": "^7.0.1",
     "jest": "^26.6.3",
     "less": "^3.12.2",
     "less-loader": "^7.0.2",
