@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.1](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.11.1) (2021-07-29)
+
+
+### Bug Fixes
+
+* **ui/sticky:** fix sticky element size error in keep-alive ([3c269a9](https://github.com/haoziqaq/varlet/commit/3c269a9c6a379a02c448e7a911c63048ee079e33))
+
+
+
+
+
 # [1.11.0](https://github.com/haoziqaq/varlet/compare/v1.10.0...v1.11.0) (2021-07-28)
 
 
