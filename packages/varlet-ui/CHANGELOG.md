@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.12.0) (2021-07-29)
+
+
+### Bug Fixes
+
+* **ui/input:** fix the wrong style of input ([0cd5752](https://github.com/haoziqaq/varlet/commit/0cd5752f70f6d58627f9a5f7a3f5f0fa74f43619))
+* **ui/sticky:** fix sticky element size error in keep-alive ([9f30544](https://github.com/haoziqaq/varlet/commit/9f30544764ab9f4161a20a1ee2032c10744e5a7a))
+
+
+### Features
+
+* **cli:** add babel-presets ([1c5825d](https://github.com/haoziqaq/varlet/commit/1c5825d907115b4c1b017c6fb1747cef7f72d29d))
+* **cli:** support jsx tsx ([132fade](https://github.com/haoziqaq/varlet/commit/132fade5a12de1b8c71263ee72aec364564f0f35))
+
+
+
+
+
 ## [1.11.1](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.11.1) (2021-07-29)
 
 

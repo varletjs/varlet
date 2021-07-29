@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.12.0) (2021-07-29)
+
+
+### Bug Fixes
+
+* **cli/lint:** fix the bug of cannot get warning message ([ba849b3](https://github.com/haoziqaq/varlet/commit/ba849b3152924716d2ea20c38c769607a28e48ee))
+
+
+
+
+
 # [1.11.0](https://github.com/haoziqaq/varlet/compare/v1.10.0...v1.11.0) (2021-07-28)
 
 **Note:** Version bump only for package @varlet/eslint-config
