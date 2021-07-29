@@ -25,22 +25,14 @@
 <script lang="ts">
 // @ts-ignore
 import config from '@config'
-import Cell from '@varlet/ui/es/cell'
-import Ripple from '@varlet/ui/es/ripple'
-import '@varlet/ui/es/cell/style'
-import '@varlet/ui/es/ripple/style'
 import '@varlet/ui/es/styles/elevation.less'
-import type { PropType } from 'vue'
-import type { Menu } from '../App'
 import { MenuTypes } from '../../utils'
 import { reactive } from 'vue'
+import type { PropType } from 'vue'
+import type { Menu } from '../App'
 
 export default {
   name: 'AppSidebar',
-  directives: { Ripple },
-  components: {
-    [Cell.name]: Cell
-  },
   props: {
     menu: {
       type: Array as PropType<Menu[]>

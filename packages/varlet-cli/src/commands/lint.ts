@@ -12,7 +12,15 @@ export async function lint() {
     spinner.succeed('prettier success')
 
     spinner = ora('stylelint starting...').start()
-    await execa('stylelint', ['./**/*.vue', './**/*.css', './**/*.less', '--fix'])
+    await execa('stylelint', [
+      './packages/**/*.vue',
+      './packages/**/*.css',
+      './packages/**/*.less',
+      './src/**/*.vue',
+      './src/**/*.css',
+      './src/**/*.less',
+      '--fix',
+    ])
     spinner.succeed('stylelint success')
 
     spinner = ora('eslint starting...').start()

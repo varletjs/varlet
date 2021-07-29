@@ -1,5 +1,4 @@
 import {
-  EXTENSIONS,
   POSTCSS_CONFIG,
   SITE_CONFIG,
   SITE_MOBILE_MAIN,
@@ -7,6 +6,7 @@ import {
   SITE_PC_MAIN,
   SITE_PC_ROUTES,
   TS_CONFIG,
+  WEBPACK_RESOLVE_EXTENSIONS,
 } from '../shared/constant'
 import { ForkTsCheckerWebpackPlugin } from 'fork-ts-checker-webpack-plugin/lib/ForkTsCheckerWebpackPlugin'
 import { VueLoaderPlugin } from 'vue-loader'
@@ -53,7 +53,7 @@ export const BASE_CONFIG = {
     mobile: SITE_MOBILE_MAIN,
   },
   resolve: {
-    extensions: EXTENSIONS,
+    extensions: WEBPACK_RESOLVE_EXTENSIONS,
     alias: {
       '@config': SITE_CONFIG,
       '@pc-routes': SITE_PC_ROUTES,
@@ -67,13 +67,34 @@ export const BASE_CONFIG = {
         use: ['vue-loader'],
       },
       {
-        test: /\.(js|ts)$/,
+        test: /\.(js|ts|jsx|tsx)$/,
         use: [
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env', '@babel/preset-typescript'],
-              plugins: ['@babel/plugin-transform-runtime', '@babel/plugin-transform-typescript'],
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    modules: false,
+                  },
+                ],
+                '@babel/preset-typescript',
+                require('./babel-sfc-ts-transform'),
+              ],
+              plugins: [
+                '@babel/plugin-transform-runtime',
+                [
+                  'import',
+                  {
+                    libraryName: '@varlet/ui',
+                    libraryDirectory: 'es',
+                    style: true,
+                  },
+                  '@varlet/ui',
+                ],
+                '@vue/babel-plugin-jsx',
+              ],
             },
           },
         ],

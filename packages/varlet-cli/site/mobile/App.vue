@@ -45,17 +45,6 @@
 <script lang="ts">
 // @ts-ignore
 import config from '@config'
-import Icon from '@varlet/ui/es/icon'
-import AppBar from '@varlet/ui/es/app-bar'
-import Button from '@varlet/ui/es/button'
-import Menu from '@varlet/ui/es/menu'
-import Cell from '@varlet/ui/es/cell'
-import Ripple from '@varlet/ui/es/ripple'
-import '@varlet/ui/es/icon/style'
-import '@varlet/ui/es/app-bar/style'
-import '@varlet/ui/es/button/style'
-import '@varlet/ui/es/menu/style'
-import '@varlet/ui/es/cell/style'
 import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { watchLang } from '@varlet/ui/src/utils/components'
@@ -65,14 +54,6 @@ import { get } from 'lodash'
 type Language = Record<string, string>
 
 export default defineComponent({
-  directives: { Ripple },
-  components: {
-    [Icon.name]: Icon,
-    [AppBar.name]: AppBar,
-    [Button.name]: Button,
-    [Menu.name]: Menu,
-    [Cell.name]: Cell,
-  },
   setup() {
     const bigCamelizeComponentName: Ref<string> = ref('')
     const route = useRoute()

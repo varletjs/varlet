@@ -1,6 +1,6 @@
 import { parse, extname, resolve } from 'path'
 import { ensureFileSync, lstatSync, outputFileSync, pathExistsSync, readdir, readdirSync, readFileSync } from 'fs-extra'
-import { EXAMPLE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from './constant'
+import { EXAMPLE_DIR_NAME, SCRIPTS_EXTENSIONS, SRC_DIR, TESTS_DIR_NAME } from './constant'
 
 export async function getComponentNames(): Promise<string[]> {
   const srcDir: string[] = await readdir(SRC_DIR)
@@ -42,7 +42,7 @@ export function outputFileSyncOnChange(path: string, code: string) {
 }
 
 export function isScript(path: string): boolean {
-  return (pathExistsSync(path) && extname(path) === '.js') || extname(path) === '.ts'
+  return pathExistsSync(path) && SCRIPTS_EXTENSIONS.includes(extname(path))
 }
 
 export function isLess(path: string): boolean {

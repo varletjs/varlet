@@ -4,6 +4,7 @@ import '@varlet/touch-emulator'
 import routes from '@pc-routes'
 // @ts-ignore
 import config from '@config'
+import { Cell, Ripple, Icon } from '@varlet/ui'
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { get } from 'lodash'
@@ -52,5 +53,9 @@ Object.defineProperty(window, 'onMobileRouteChange', {
   }
 })
 
-const app = createApp(App)
-app.use(router).mount('#app')
+createApp(App)
+  .use(router)
+  .use(Cell)
+  .use(Ripple)
+  .use(Icon)
+  .mount('#app')

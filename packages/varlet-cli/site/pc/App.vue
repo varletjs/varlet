@@ -27,13 +27,9 @@
 <script lang="ts">
 // @ts-ignore
 import config from '@config'
-import Cell from '@varlet/ui/es/cell'
 import AppMobile from './components/AppMobile'
 import AppHeader from './components/AppHeader'
 import AppSidebar from './components/AppSidebar'
-import '@varlet/ui/es/cell/style'
-import '@varlet/ui/es/menu/style'
-import '@varlet/ui/es/loading/style'
 import { defineComponent, nextTick, onMounted, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { get } from 'lodash'
@@ -49,7 +45,6 @@ export interface Menu {
 
 export default defineComponent({
   components: {
-    [Cell.name]: Cell,
     AppMobile,
     AppHeader,
     AppSidebar

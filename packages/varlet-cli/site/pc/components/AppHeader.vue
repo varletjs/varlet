@@ -46,10 +46,6 @@
 <script lang="ts">
 // @ts-ignore
 import config from '@config'
-import Icon from '@varlet/ui/es/icon'
-import Cell from '@varlet/ui/es/cell'
-import '@varlet/ui/es/icon/style'
-import '@varlet/ui/es/cell/style'
 import { ref, computed } from 'vue'
 import { get } from 'lodash'
 import { getPCLocationInfo, removeEmpty } from '../../utils'
@@ -58,10 +54,6 @@ import type { Ref, ComputedRef } from 'vue'
 
 export default {
   name: 'AppHeader',
-  components: {
-    [Icon.name]: Icon,
-    [Cell.name]: Cell
-  },
   props: {
     language: {
       type: String

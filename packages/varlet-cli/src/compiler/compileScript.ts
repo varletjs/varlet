@@ -22,33 +22,33 @@ export function replaceTSExt(script: string) {
   return script.replace(IMPORT_TS_PATH_RE, replacer).replace(REQUIRE_TS_PATH_RE, replacer)
 }
 
-export async function compileScript(script: string, path: string) {
+export async function compileScript(script: string, file: string) {
   let { code } = (await transformAsync(script, {
-    filename: replaceExt(path, '.ts'),
+    filename: file,
     presets: [
       [
         '@babel/preset-env',
         {
-          loose: true,
           modules: false,
         },
       ],
       '@babel/preset-typescript',
+      require('../config/babel-sfc-ts-transform'),
     ],
-    plugins: ['@babel/plugin-transform-runtime'],
+    plugins: ['@babel/plugin-transform-runtime', '@vue/babel-plugin-jsx'],
   })) as BabelFileResult
   code = replaceStyleExt(code as string)
   code = replaceVueExt(code as string)
   code = replaceTSExt(code as string)
 
-  removeSync(path)
-  writeFileSync(replaceExt(path, '.js'), code, 'utf8')
+  removeSync(file)
+  writeFileSync(replaceExt(file, '.js'), code, 'utf8')
 }
 
-export async function compileScriptFile(path: string) {
-  const sources = readFileSync(path, 'utf-8')
+export async function compileScriptFile(file: string) {
+  const sources = readFileSync(file, 'utf-8')
 
-  await compileScript(sources, path)
+  await compileScript(sources, file)
 }
 
 export async function compileLibraryEntry(dir: string, componentNames: string[], exportDirNames: string[]) {

@@ -6,6 +6,7 @@ import App from './App.vue'
 import '@varlet/touch-emulator'
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { Icon, AppBar, Button, Menu, Cell, Ripple } from '@varlet/ui'
 import { get } from 'lodash'
 import { inIframe, isPhone } from '../utils'
 
@@ -39,5 +40,12 @@ router.beforeEach((to) => {
   }
 })
 
-const app = createApp(App)
-app.use(router).mount('#app')
+createApp(App)
+  .use(router)
+  .use(Icon)
+  .use(AppBar)
+  .use(Cell)
+  .use(Ripple)
+  .use(Button)
+  .use(Menu)
+  .mount('#app')

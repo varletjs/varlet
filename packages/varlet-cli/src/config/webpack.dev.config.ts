@@ -18,7 +18,7 @@ export function createHtmlPluginOptions(type: 'pc' | 'mobile') {
     },
     hash: true,
     chunks: [type],
-    title: get(varletConfig, `${type}.title['zh-CN']`),
+    title: get(varletConfig, `${type}.title[${get(varletConfig, 'defaultLanguage')}]`),
     logo: get(varletConfig, `logo`),
   }
 }
