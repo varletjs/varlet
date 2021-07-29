@@ -26,13 +26,16 @@ export async function lint() {
       './packages/varlet-vscode-extension/src',
     ]
 
-    await execa('eslint', [
+    const { stdout } = await execa('eslint', [
       ...patterns.filter((pattern) => isDir(resolve(CWD, pattern))),
       '--fix',
       '--ext',
       ESLINT_EXTENSIONS.join(','),
     ])
-    spinner.succeed('eslint success')
+
+    const type = stdout ? 'warn' : 'succeed'
+
+    spinner[type](stdout || 'eslint success')
   } catch (e) {
     spinner!.fail(e.toString())
     process.exit(1)

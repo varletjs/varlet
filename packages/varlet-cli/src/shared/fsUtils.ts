@@ -1,14 +1,5 @@
 import { parse, extname, resolve } from 'path'
-import {
-  ensureDirSync,
-  ensureFileSync,
-  lstatSync,
-  outputFileSync,
-  pathExistsSync,
-  readdir,
-  readdirSync,
-  readFileSync,
-} from 'fs-extra'
+import { ensureFileSync, lstatSync, outputFileSync, pathExistsSync, readdir, readdirSync, readFileSync } from 'fs-extra'
 import { EXAMPLE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from './constant'
 
 export async function getComponentNames(): Promise<string[]> {
