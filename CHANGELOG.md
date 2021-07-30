@@ -3,8 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-<<<<<<< HEAD
-=======
 # [1.12.0](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.12.0) (2021-07-29)
 
 
@@ -24,10 +22,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **cli/site:** support hmr ([5ff00d6](https://github.com/haoziqaq/varlet/commit/5ff00d61ec0d1a332557c87142d5afb04f4a6fdb))
 
 
-
-
-
->>>>>>> dev
 ## [1.11.1](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.11.1) (2021-07-29)
 
 
