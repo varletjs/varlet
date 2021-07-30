@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/haoziqaq/varlet/compare/v1.12.0...v1.13.0) (2021-07-30)
+
+
+### Bug Fixes
+
+* **cli:** add the dev command ipv4 prompt, Optimization tips ([e86313b](https://github.com/haoziqaq/varlet/commit/e86313b790afe7812d52dfcff11c74131bf55cdb))
+* modify the style of indexbar ([ac268f1](https://github.com/haoziqaq/varlet/commit/ac268f10f4efd51b68d5a257822ad2c9b05a1d53))
+
+
+### Features
+
+* **cli:** support extraction of style dependencies in scripts, and optimize function definitions ([4d7d76f](https://github.com/haoziqaq/varlet/commit/4d7d76f3d61c351dd50a4d8b19081c7cc8b21b9f))
+
+
+
+## [1.11.1](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.11.1) (2021-07-29)
+
+
+### Bug Fixes
+
+* **ui/sticky:** fix sticky element size error in keep-alive ([3c269a9](https://github.com/haoziqaq/varlet/commit/3c269a9c6a379a02c448e7a911c63048ee079e33))
+
+
+
+
+
 # [1.12.0](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.12.0) (2021-07-29)
 
 

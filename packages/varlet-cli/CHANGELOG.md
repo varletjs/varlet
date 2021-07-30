@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/haoziqaq/varlet/compare/v1.12.0...v1.13.0) (2021-07-30)
+
+
+### Bug Fixes
+
+* **cli:** add the dev command ipv4 prompt, Optimization tips ([e86313b](https://github.com/haoziqaq/varlet/commit/e86313b790afe7812d52dfcff11c74131bf55cdb))
+
+
+### Features
+
+* **cli:** support extraction of style dependencies in scripts, and optimize function definitions ([4d7d76f](https://github.com/haoziqaq/varlet/commit/4d7d76f3d61c351dd50a4d8b19081c7cc8b21b9f))
+
+
+
+## [1.11.1](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.11.1) (2021-07-29)
+
+
+
+
+
 
 # [1.12.0](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.12.0) (2021-07-29)
 
