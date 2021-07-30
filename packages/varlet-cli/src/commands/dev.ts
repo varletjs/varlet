@@ -1,5 +1,6 @@
 import webpack from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
+import address from 'address'
 import logger from '../shared/logger'
 import { getPort } from 'portfinder'
 import { ensureDirSync } from 'fs-extra'
@@ -19,7 +20,9 @@ export function runDevServer(port: number, config: any) {
       return
     }
 
-    logger.success(`Server running at http://${host}:${port}`)
+    logger.success(`  Server running at:`)
+    logger.success(`  Local: http://${host}:${port}`)
+    logger.success(`  Network: http://${address.ip()}:${port}\n`)
   })
 }
 

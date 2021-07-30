@@ -1,6 +1,6 @@
 import logger from '../shared/logger'
-import { bigCamelize, camelize } from '../shared/fsUtils'
-import { mkdirs, pathExistsSync, writeFile } from 'fs-extra'
+import { bigCamelize } from '../shared/fsUtils'
+import { outputFile, pathExistsSync } from 'fs-extra'
 import { resolve } from 'path'
 import { DOCS_DIR_NAME, EXAMPLE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from '../shared/constant'
 import { getVarletConfig } from '../config/varlet.config'
@@ -10,6 +10,7 @@ const varletConfig = getVarletConfig()
 
 export async function create(name: string) {
   const namespace = get(varletConfig, 'namespace')
+  const bigCamelizeName = bigCamelize(name)
   const vueTemplate = `\
 <template>
   <div class="${namespace}-${name}"></div>
@@ -19,7 +20,7 @@ export async function create(name: string) {
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: '${bigCamelize(namespace)}${bigCamelize(name)}'
+  name: '${bigCamelize(namespace)}${bigCamelizeName}'
 })
 </script>
 
@@ -30,32 +31,32 @@ export default defineComponent({
 </style>
 `
   const indexTemplate = `\
+import ${bigCamelizeName} from './${bigCamelizeName}.vue'
 import type { App } from 'vue'
-import ${bigCamelize(name)} from './${bigCamelize(name)}.vue'
 
-${bigCamelize(name)}.install = function(app: App) {
-  app.component(${bigCamelize(name)}.name, ${bigCamelize(name)})
+${bigCamelizeName}.install = function(app: App) {
+  app.component(${bigCamelizeName}.name, ${bigCamelizeName})
 }
 
-export const _${bigCamelize(name)}Component = ${bigCamelize(name)}
+export const _${bigCamelizeName}Component = ${bigCamelizeName}
 
-export default ${bigCamelize(name)}
+export default ${bigCamelizeName}
 `
 
   const testsTemplate = `\
 import example from '../example'
-import ${bigCamelize(name)} from '..'
+import ${bigCamelizeName} from '..'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 
-test('test ${camelize(name)} example', () => {
+test('test ${name} example', () => {
   const wrapper = mount(example)
   expect(wrapper.html()).toMatchSnapshot()
 })
 
-test('test ${camelize(name)} plugin', () => {
-  const app = createApp({}).use(${bigCamelize(name)})
-  expect(app.component(${bigCamelize(name)}.name)).toBeTruthy()
+test('test ${name} plugin', () => {
+  const app = createApp({}).use(${bigCamelizeName})
+  expect(app.component(${bigCamelizeName}.name)).toBeTruthy()
 })
 `
 
@@ -65,13 +66,13 @@ test('test ${camelize(name)} plugin', () => {
 </template>
 
 <script>
-import ${bigCamelize(name)} from '..'
+import ${bigCamelizeName} from '..'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: '${bigCamelize(name)}Example',
+  name: '${bigCamelizeName}Example',
   components: {
-    [${bigCamelize(name)}.name]: ${bigCamelize(name)}
+    [${bigCamelizeName}.name]: ${bigCamelizeName}
   }
 })
 </script>
@@ -87,16 +88,21 @@ export default defineComponent({
     return
   }
 
-  await Promise.all([mkdirs(componentDir), mkdirs(testsDir), mkdirs(exampleDir), mkdirs(docsDir)])
-
   await Promise.all([
-    writeFile(resolve(componentDir, `${bigCamelize(name)}.vue`), vueTemplate),
-    writeFile(resolve(componentDir, 'index.ts'), indexTemplate),
-    writeFile(resolve(testsDir, 'index.spec.js'), testsTemplate),
-    writeFile(resolve(exampleDir, 'index.vue'), exampleTemplate),
-    writeFile(resolve(docsDir, 'zh-CN.md'), ''),
-    writeFile(resolve(docsDir, 'en-US.md'), ''),
+    outputFile(resolve(componentDir, `${bigCamelizeName}.vue`), vueTemplate),
+    outputFile(resolve(componentDir, 'index.ts'), indexTemplate),
+    outputFile(resolve(testsDir, 'index.spec.js'), testsTemplate),
+    outputFile(resolve(exampleDir, 'index.vue'), exampleTemplate),
+    outputFile(resolve(docsDir, 'zh-CN.md'), ''),
+    outputFile(resolve(docsDir, 'en-US.md'), ''),
   ])
 
-  logger.success('create success!')
+  logger.success(`Create ${name} success!`)
+  logger.success(`----------------------------`)
+  logger.success(`${name}/`)
+  logger.success(`|- __tests__/ # Unit test folder`)
+  logger.success(`|- docs/ # Internationalized document folder`)
+  logger.success(`|- example/ # Mobile phone example code`)
+  logger.success(`|- ${bigCamelizeName}.vue # Sfc component, You can also use jsx or tsx`)
+  logger.success(`|- index.ts # Component entry, the folder where the file exists will be exposed to the user`)
 }

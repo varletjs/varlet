@@ -1,4 +1,5 @@
 import ora from 'ora'
+import logger from '../shared/logger'
 import { remove } from 'fs-extra'
 import { ES_DIR, HL_DIR, UMD_DIR } from '../shared/constant'
 import { compileModule } from '../compiler/compileModule'
@@ -9,12 +10,27 @@ export function removeDir() {
   return Promise.all([remove(ES_DIR), remove(HL_DIR), remove(UMD_DIR)])
 }
 
+export async function runTask(taskName: string, task: () => any) {
+  const s = ora().start(`Compiling ${taskName}`)
+  try {
+    await task()
+    s.succeed(`Compilation ${taskName} completed!`)
+  } catch (e) {
+    s.fail(`Compilation ${taskName} failed!`)
+    logger.error(e.toString())
+  }
+}
+
 export async function compile(cmd: { noUmd: boolean }) {
   const s = ora().start('Compile start...')
 
   await removeDir()
-  await Promise.all([compileTypes(), compileTemplateHighlight(), compileModule()])
-  !cmd.noUmd && (await compileModule('umd'))
+  await Promise.all([
+    runTask('types', compileTypes),
+    runTask('template highlight', compileTemplateHighlight),
+    runTask('module', compileModule),
+  ])
+  !cmd.noUmd && (await runTask('umd', () => compileModule('umd')))
 
   s.succeed('Compile success!')
 }
