@@ -22,8 +22,6 @@ export async function runTask(taskName: string, task: () => any) {
 }
 
 export async function compile(cmd: { noUmd: boolean }) {
-  const s = ora().start('Compile start...')
-
   await removeDir()
   await Promise.all([
     runTask('types', compileTypes),
@@ -31,6 +29,4 @@ export async function compile(cmd: { noUmd: boolean }) {
     runTask('module', compileModule),
   ])
   !cmd.noUmd && (await runTask('umd', () => compileModule('umd')))
-
-  s.succeed('Compile success!')
 }
