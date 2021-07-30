@@ -38,7 +38,7 @@ import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Icon from '../../icon'
 import Cell from '..'
 import { pack, use } from './locale'
-import { watchLang } from '../../utils/components'
+import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'CellExample',

@@ -2,7 +2,7 @@ import webpack from 'webpack'
 import logger from '../shared/logger'
 import { EXAMPLE_DIR_NAME, TESTS_DIR_NAME, DOCS_DIR_NAME, SRC_DIR, ES_DIR, STYLE_DIR_NAME } from '../shared/constant'
 import { copy, ensureFileSync, readdir, removeSync } from 'fs-extra'
-import { getComponentNames, getExportDirNames, isDir, isLess, isScript, isSFC } from '../shared/fsUtils'
+import { getExportComponentNames, getExportDirNames, isDir, isLess, isScript, isSFC } from '../shared/fsUtils'
 import { compileSFC } from './compileSFC'
 import { resolve } from 'path'
 import { compileLibraryEntry, compileScriptFile } from './compileScript'
@@ -76,5 +76,5 @@ export async function compileModule(modules: string | boolean = false) {
     })
   )
 
-  await compileLibraryEntry(ES_DIR, await getComponentNames(), await getExportDirNames())
+  await compileLibraryEntry(ES_DIR, await getExportComponentNames(), await getExportDirNames())
 }

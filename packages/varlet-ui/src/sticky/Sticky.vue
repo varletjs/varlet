@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted, onActivated, computed } from 'vue'
+import { defineComponent, ref, onMounted, onUnmounted, onActivated, onDeactivated, computed } from 'vue'
 import { props } from './props'
 import { getParentScroller, toPxNum } from '../utils/elements'
 import { toNumber } from '../utils/shared'
@@ -87,21 +87,30 @@ export default defineComponent({
       }
     }
 
-    onActivated(handleScroll)
-
-    onMounted(() => {
-      const sticky = stickyEl.value as HTMLElement
-      isSupportCSSSticky = ['sticky', '-webkit-sticky'].includes(window.getComputedStyle(sticky).position)
-      scroller = getParentScroller(sticky)
+    const addScrollListener = () => {
+      scroller = getParentScroller(stickyEl.value as HTMLElement)
       scroller !== window && scroller.addEventListener('scroll', handleScroll)
       window.addEventListener('scroll', handleScroll)
       handleScroll()
+    }
+
+    const removeScrollListener = () => {
+      scroller !== window && scroller.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', handleScroll)
+    }
+
+    onActivated(addScrollListener)
+
+    onDeactivated(removeScrollListener)
+
+    onMounted(() => {
+      isSupportCSSSticky = ['sticky', '-webkit-sticky'].includes(
+        window.getComputedStyle(stickyEl.value as HTMLElement).position
+      )
+      addScrollListener()
     })
 
-    onUnmounted(() => {
-      window.removeEventListener('scroll', handleScroll)
-      scroller !== window && scroller.removeEventListener('scroll', handleScroll)
-    })
+    onUnmounted(removeScrollListener)
 
     return {
       stickyEl,

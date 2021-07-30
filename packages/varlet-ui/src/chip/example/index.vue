@@ -62,12 +62,12 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Chip from '..'
 import Icon from '../../icon'
+import { ref } from 'vue'
 import { pack, use } from './locale'
-import { watchLang } from '../../utils/components'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'ChipExample',

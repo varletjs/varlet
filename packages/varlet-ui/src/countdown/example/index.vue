@@ -35,13 +35,13 @@
 </template>
 
 <script>
-import { ref } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Countdown from '..'
 import Snackbar from '../../snackbar'
 import Button from '../../button'
+import { ref } from 'vue'
 import { pack, use } from './locale'
-import { watchLang } from '../../utils/components'
+import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'CountdownExample',

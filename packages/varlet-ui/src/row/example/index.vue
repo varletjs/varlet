@@ -55,7 +55,7 @@ import Row from '..'
 import Col from '../../col'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { use, pack } from './locale'
-import { watchLang } from '../../utils/components'
+import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'RowExample',

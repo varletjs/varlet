@@ -142,7 +142,7 @@ import TabItem from '../../tab-item'
 import context from '../../context'
 import { use, pack } from './locale'
 import { onUnmounted, reactive, toRefs } from 'vue'
-import { watchPlatform, watchLang } from '../../utils/components'
+import { watchPlatform, watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'TabsExample',

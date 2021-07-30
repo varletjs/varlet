@@ -6,7 +6,12 @@
     </h1>
     <h2 class="varlet-home__desc">{{ description[lang] }}</h2>
   </div>
-  <var-cell v-for="component in components" :key="component.text" @click="toComponent(component)">
+  <var-cell
+    v-for="component in components"
+    :key="component.text"
+    @click="toComponent(component)"
+    v-ripple
+  >
     <template #extra>
       <var-icon name="chevron-right" size="14" />
     </template>
@@ -17,21 +22,13 @@
 </template>
 
 <script>
-import Cell from '../../cell'
-import Icon from '../../icon'
-import Ripple from '../../ripple'
 import config from '@config'
 import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
-import { watchLang, watchPlatform } from '../../utils/components'
+import { watchLang, watchPlatform } from '../../utils'
 
 export default {
-  name: 'HomeExample',
-  directives: { Ripple },
-  components: {
-    [Cell.name]: Cell,
-    [Icon.name]: Icon,
-  },
+  name: 'AppHome',
   setup() {
     const title = ref(config?.title ?? '')
     const logo = ref(config?.logo ?? '')
@@ -57,6 +54,7 @@ export default {
         query: {
           language: lang.value,
           platform: platform.value,
+          replace: component.doc
         },
       })
     }
@@ -74,7 +72,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import '../../styles/var';
+@import '~@varlet/ui/es/styles/var';
 
 .logo {
   height: 100px;

@@ -52,7 +52,7 @@ import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
 import { reactive, onMounted, ref, onUnmounted } from 'vue'
 import { use, pack } from './locale'
-import { watchLang, watchPlatform } from '../../utils/components'
+import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 
 const Clipboard = require('clipboard')
 

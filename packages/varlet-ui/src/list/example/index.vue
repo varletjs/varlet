@@ -39,7 +39,7 @@ import Tab from '../../tab'
 import TabsItems from '../../tabs-items'
 import TabItem from '../../tab-item'
 import { reactive, toRefs } from 'vue'
-import { watchLang } from '../../utils/components'
+import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 export default {

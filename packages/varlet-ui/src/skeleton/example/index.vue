@@ -32,7 +32,7 @@ import Skeleton from '..'
 import Button from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { ref } from 'vue'
-import { watchLang } from '../../utils/components'
+import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 export default {

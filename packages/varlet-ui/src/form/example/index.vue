@@ -81,10 +81,10 @@ import Uploader from '../../uploader'
 import Counter from '../../counter'
 import Rate from '../../rate'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
-import { onUnmounted, reactive, ref } from 'vue'
-import { watchLang, watchPlatform } from '../../utils/components'
-import { use, pack } from './locale'
 import context from '../../context'
+import { onUnmounted, reactive, ref } from 'vue'
+import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
+import { use, pack } from './locale'
 
 export default {
   name: 'FormExample',

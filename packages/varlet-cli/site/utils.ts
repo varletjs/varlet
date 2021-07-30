@@ -1,3 +1,5 @@
+import { onMounted, onUnmounted } from 'vue'
+
 export function camelize(str: string): string {
   return str.replace(/-(\w)/g, (_: any, p: string) => p.toUpperCase())
 }
@@ -40,4 +42,44 @@ export function removeEmpty(object: Record<string, string> = {}) {
     value && (record[key] = value)
     return record
   }, {})
+}
+
+export function getHashSearch() {
+  const { href } = window.location
+  const hashSearch = href.slice(href.indexOf('?'))
+
+  return new URLSearchParams(hashSearch)
+}
+
+export function watchLang(cb: (lang: string) => void) {
+  const handleHashchange = () => {
+    const language = getHashSearch().get('language') ?? 'zh-CN'
+    cb(language)
+  }
+
+  addRouteListener(handleHashchange)
+
+  handleHashchange()
+}
+
+export function watchPlatform(cb: (platform: string) => void) {
+  const handleHashchange = () => {
+    const platform = getHashSearch().get('platform') ?? 'mobile'
+    cb(platform)
+  }
+
+  addRouteListener(handleHashchange)
+
+  handleHashchange()
+}
+
+export function addRouteListener(cb: () => void) {
+  onMounted(() => {
+    window.addEventListener('hashchange', cb)
+    window.addEventListener('popstate', cb)
+  })
+  onUnmounted(() => {
+    window.removeEventListener('hashchange', cb)
+    window.removeEventListener('popstate', cb)
+  })
 }

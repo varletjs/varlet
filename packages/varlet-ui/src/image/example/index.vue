@@ -55,7 +55,7 @@
 import Image from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Row from '../../row'
-import { watchLang } from '../../utils/components'
+import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 export default {

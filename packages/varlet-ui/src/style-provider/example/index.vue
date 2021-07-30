@@ -18,7 +18,7 @@ import Button from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
 import { ref, reactive, onUnmounted } from 'vue'
-import { watchLang, watchPlatform } from '../../utils/components'
+import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 export default {

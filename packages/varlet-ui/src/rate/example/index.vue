@@ -55,13 +55,13 @@
 </template>
 
 <script>
-import { onUnmounted, reactive, toRefs } from 'vue'
 import Rate from '..'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
-import { pack, use } from './locale'
-import { watchLang, watchPlatform } from '../../utils/components'
 import context from '../../context'
+import { onUnmounted, reactive, toRefs } from 'vue'
+import { pack, use } from './locale'
+import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 
 export default {
   name: 'RateExample',

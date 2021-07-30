@@ -19,13 +19,18 @@ redirect &&
     redirect,
   })
 
+routes.push({
+  path: '/home',
+  component: () => import('./components/AppHome.vue')
+})
+
 const router = createRouter({
   history: createWebHashHistory(),
   scrollBehavior: (to, from, savedPosition) => savedPosition || { left: 0, top: 0 },
   routes,
 })
 
-router.beforeEach((to) => {
+router.beforeEach((to, from) => {
   const language = to.query.language ?? defaultLanguage
   const path = to.path
   const replace = to.query.replace

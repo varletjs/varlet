@@ -47,8 +47,7 @@
 import config from '@config'
 import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { watchLang } from '@varlet/ui/src/utils/components'
-import { bigCamelize, removeEmpty } from '../utils'
+import { bigCamelize, removeEmpty, watchLang } from '../utils'
 import { get } from 'lodash'
 
 type Language = Record<string, string>

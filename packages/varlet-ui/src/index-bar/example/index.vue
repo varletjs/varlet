@@ -15,7 +15,7 @@ import IndexAnchor from '../../index-anchor/IndexAnchor.vue'
 import IndexBar from '..'
 import Cell from '../../cell'
 import { pack, use } from './locale'
-import { watchLang } from '../../utils/components'
+import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'IndexBarExample',
