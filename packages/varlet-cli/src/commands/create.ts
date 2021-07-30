@@ -45,8 +45,8 @@ export default ${bigCamelize(name)}
   const testsTemplate = `\
 import example from '../example'
 import ${bigCamelize(name)} from '..'
-import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
 
 test('test ${camelize(name)} example', () => {
   const wrapper = mount(example)
@@ -65,8 +65,8 @@ test('test ${camelize(name)} plugin', () => {
 </template>
 
 <script>
-import { defineComponent } from 'vue'
 import ${bigCamelize(name)} from '..'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: '${bigCamelize(name)}Example',
@@ -75,12 +75,6 @@ export default defineComponent({
   }
 })
 </script>
-
-<style scoped>
-.example {
-  background: antiquewhite;
-}
-</style>
 `
 
   const componentDir = resolve(SRC_DIR, name)

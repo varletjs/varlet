@@ -1,33 +1,62 @@
 import { transformAsync } from '@babel/core'
-import { bigCamelize, replaceExt } from '../shared/fsUtils'
-import { replaceStyleExt } from './compileStyle'
+import { bigCamelize, replaceExt, smartAppendFileSync } from '../shared/fsUtils'
 import { writeFileSync, readFileSync, removeSync, writeFile } from 'fs-extra'
-import { resolve } from 'path'
+import { parse, resolve } from 'path'
 import type { BabelFileResult } from '@babel/core'
 
-export const IMPORT_VUE_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.vue(\s*['"`])(?!\s*['"`])/g
-export const REQUIRE_VUE_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\.{1,2}\/.+)\.vue(\s*['"`]\))(?!\s*['"`])/g
-export const IMPORT_TS_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+\.)ts(\s*['"`])(?!\s*['"`])/g
-export const REQUIRE_TS_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\.{1,2}\/.+\.)ts(\s*['"`]\))(?!\s*['"`])/g
+export const IMPORT_VUE_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.vue(\s*['"`]);?(?!\s*['"`])/g
+export const IMPORT_TS_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.ts(\s*['"`]);?(?!\s*['"`])/g
+export const IMPORT_JSX_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.jsx(\s*['"`]);?(?!\s*['"`])/g
+export const IMPORT_TSX_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.tsx(\s*['"`]);?(?!\s*['"`])/g
+export const IMPORT_CSS_RE = /(?<!['"`])import\s+['"](.+\.css)['"]\s*;?(?!\s*['"`])/g
+export const IMPORT_LESS_RE = /(?<!['"`])import\s+['"](.+\.less)['"]\s*;?(?!\s*['"`])/g
 
-export function replaceVueExt(script: string) {
-  const replacer = (_: any, p1: string, p2: string): string => `${p1}.js${p2}`
+const scriptReplacer = (_: any, p1: string, p2: string): string => `${p1}.js${p2}`
 
-  return script.replace(IMPORT_VUE_PATH_RE, replacer).replace(REQUIRE_VUE_PATH_RE, replacer)
+export const replaceVueExt = (script: string): string => script.replace(IMPORT_VUE_PATH_RE, scriptReplacer)
+
+export const replaceTSExt = (script: string): string => script.replace(IMPORT_TS_PATH_RE, scriptReplacer)
+
+export const replaceJSXExt = (script: string): string => script.replace(IMPORT_JSX_PATH_RE, scriptReplacer)
+
+export const replaceTSXExt = (script: string): string => script.replace(IMPORT_TSX_PATH_RE, scriptReplacer)
+
+export function normalizeStyleDependency(styleImport: string, styleReg: RegExp) {
+  let relativePath = styleImport.replace(styleReg, '$1')
+  relativePath = relativePath.replace(/(.less)|(\.css)/, '')
+
+  if (relativePath.startsWith('./')) {
+    return '.' + relativePath
+  }
+
+  return '../' + relativePath
 }
 
-export function replaceTSExt(script: string) {
-  const replacer = (_: any, p1: string, p2: string): string => `${p1}js${p2}`
+export function extractStyleDependencies(file: string, code: string, expect: 'css' | 'less') {
+  const { dir } = parse(file)
+  const reg = expect === 'css' ? IMPORT_CSS_RE : IMPORT_LESS_RE
+  const styleImports = code.match(reg) ?? []
+  const cssFile = resolve(dir, './style/index.js')
+  const lessFile = resolve(dir, './style/less.js')
 
-  return script.replace(IMPORT_TS_PATH_RE, replacer).replace(REQUIRE_TS_PATH_RE, replacer)
+  styleImports.forEach((styleImport: string) => {
+    const normalizedPath = normalizeStyleDependency(styleImport, reg)
+    smartAppendFileSync(cssFile, `import '${normalizedPath}.css'\n`)
+    smartAppendFileSync(lessFile, `import '${normalizedPath}.${expect}'\n`)
+  })
+
+  return code.replace(reg, '')
 }
 
 export async function compileScript(script: string, file: string) {
   let { code } = (await transformAsync(script, {
     filename: file,
   })) as BabelFileResult
-  code = replaceStyleExt(code as string)
+  code = extractStyleDependencies(file, code as string, 'css')
+  code = extractStyleDependencies(file, code as string, 'less')
   code = replaceVueExt(code as string)
+  code = replaceTSXExt(code as string)
+  code = replaceJSXExt(code as string)
   code = replaceTSExt(code as string)
 
   removeSync(file)
@@ -40,7 +69,7 @@ export async function compileScriptFile(file: string) {
   await compileScript(sources, file)
 }
 
-export async function compileLibraryEntry(dir: string, componentNames: string[], exportDirNames: string[]) {
+export async function compileLibraryEntry(dir: string, exportDirNames: string[]) {
   const imports = exportDirNames
     .map(
       (exportDirNames: string) =>
@@ -75,7 +104,7 @@ ${install}
 ${exports}
 `
 
-  const cssImports = componentNames.map((componentName: string) => `import './${componentName}/style'`).join('\n')
+  const cssImports = exportDirNames.map((exportDirName: string) => `import './${exportDirName}/style'`).join('\n')
   const styleTemplate = `\
 ${cssImports}
 `
@@ -87,7 +116,7 @@ ${cssImports}\n
 ${exports}
 `
 
-  const lessImports = componentNames.map((componentName: string) => `import './${componentName}/style/less'`).join('\n')
+  const lessImports = exportDirNames.map((exportDirName: string) => `import './${exportDirName}/style/less'`).join('\n')
   const lessTemplate = `\
 ${lessImports}
 `

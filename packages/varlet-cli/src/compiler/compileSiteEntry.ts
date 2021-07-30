@@ -1,4 +1,5 @@
 import slash from 'slash'
+import chokidar from 'chokidar'
 import {
   DOCS_DIR_NAME,
   EXAMPLE_DIR_INDEX,
@@ -15,7 +16,6 @@ import { pathExistsSync, readdir, readdirSync } from 'fs-extra'
 import { resolve } from 'path'
 import { isMD, outputFileSyncOnChange } from '../shared/fsUtils'
 import { getVarletConfig } from '../config/varlet.config'
-import chokidar from 'chokidar'
 import type { Compiler } from 'webpack'
 import type { FSWatcher } from 'chokidar'
 

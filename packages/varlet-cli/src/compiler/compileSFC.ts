@@ -1,7 +1,7 @@
 import hash from 'hash-sum'
-import { readFile, remove, writeFileSync, appendFileSync } from 'fs-extra'
+import { readFile, remove, writeFileSync } from 'fs-extra'
 import { parse, compileTemplate, compileStyle } from '@vue/compiler-sfc'
-import { replaceExt } from '../shared/fsUtils'
+import { replaceExt, smartAppendFileSync } from '../shared/fsUtils'
 import { compileScript } from './compileScript'
 import { clearEmptyLine, compileLess } from './compileStyle'
 import { resolve, parse as parsePath } from 'path'
@@ -9,7 +9,7 @@ import type { SFCStyleBlock } from '@vue/compiler-sfc'
 
 const NORMAL_EXPORT_START_RE = /export\s+default\s+{/
 const DEFINE_EXPORT_START_RE = /export\s+default\s+defineComponent\s*\(\s*{/
-const LESS_IMPORT_RE = /@import\s+['"](.+)['"]\s*;/g
+const STYLE_IMPORT_RE = /@import\s+['"](.+)['"]\s*;/g
 
 export function injectRender(script: string, render: string): string {
   if (DEFINE_EXPORT_START_RE.test(script.trim())) {
@@ -31,8 +31,8 @@ export function injectRender(script: string, render: string): string {
   return script
 }
 
-export function normalizeStyleDependency(styleImport: string) {
-  let relativePath = styleImport.replace(LESS_IMPORT_RE, '$1')
+export function normalizeStyleBlockDependency(styleImport: string) {
+  let relativePath = styleImport.replace(STYLE_IMPORT_RE, '$1')
   relativePath = relativePath.replace(/(.less)|(\.css)/, '')
 
   if (relativePath.startsWith('./')) {
@@ -42,24 +42,24 @@ export function normalizeStyleDependency(styleImport: string) {
   return '../' + relativePath
 }
 
-export function extractStyleDependencies(file: string, code: string) {
+export function extractStyleBlockDependencies(file: string, code: string) {
   const { ext, dir, base } = parsePath(file)
-  const styleImports = code.match(LESS_IMPORT_RE) ?? []
+  const styleImports = code.match(STYLE_IMPORT_RE) ?? []
   const cssFile = resolve(dir, './style/index.js')
   const lessFile = resolve(dir, './style/less.js')
 
   styleImports.forEach((styleImport: string) => {
-    const normalizedPath = normalizeStyleDependency(styleImport)
-    appendFileSync(cssFile, `import '${normalizedPath}.css'\n`)
+    const normalizedPath = normalizeStyleBlockDependency(styleImport)
+    smartAppendFileSync(cssFile, `import '${normalizedPath}.css'\n`)
     if (ext === '.less') {
-      appendFileSync(lessFile, `import '${normalizedPath}.less'\n`)
+      smartAppendFileSync(lessFile, `import '${normalizedPath}.less'\n`)
     }
   })
 
-  appendFileSync(cssFile, `import '${normalizeStyleDependency(base)}.css'\n`)
-  ext === '.less' && appendFileSync(lessFile, `import '${normalizeStyleDependency(base)}.less'\n`)
+  smartAppendFileSync(cssFile, `import '${normalizeStyleBlockDependency(base)}.css'\n`)
+  ext === '.less' && smartAppendFileSync(lessFile, `import '${normalizeStyleBlockDependency(base)}.less'\n`)
 
-  return code.replace(LESS_IMPORT_RE, '')
+  return code.replace(STYLE_IMPORT_RE, '')
 }
 
 export async function compileSFC(sfc: string) {
@@ -100,7 +100,7 @@ export async function compileSFC(sfc: string) {
         id: scopeId,
         scoped: style.scoped,
       })
-      code = extractStyleDependencies(file, code)
+      code = extractStyleBlockDependencies(file, code)
       writeFileSync(file, clearEmptyLine(code), 'utf-8')
       style.lang === 'less' && (await compileLess(file))
     }
