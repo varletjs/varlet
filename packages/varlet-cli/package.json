@@ -64,7 +64,7 @@
     "less": "^3.12.2",
     "less-loader": "^7.0.2",
     "lodash": "^4.17.21",
-    "ora": "^5.1.0",
+    "ora": "^5.4.0",
     "portfinder": "^1.0.28",
     "postcss": "7",
     "postcss-loader": "^4.0.4",
