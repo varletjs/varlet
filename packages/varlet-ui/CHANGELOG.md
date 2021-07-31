@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.4](https://github.com/haoziqaq/varlet/compare/v1.13.3...v1.13.4) (2021-07-31)
+
+
+### Bug Fixes
+
+* **cli:** fix loose error in windows ([2a3f968](https://github.com/haoziqaq/varlet/commit/2a3f9688fceba337bf8eef1d6977bacc75311dae))
+* **ui:** fix babel config ([e5e4128](https://github.com/haoziqaq/varlet/commit/e5e41289791102ce5955abe19f903a6a58cc1cac))
+* **ui:** fix browserlist ([3f4cfeb](https://github.com/haoziqaq/varlet/commit/3f4cfeb4177403ab8723b4841a3f193d3a8ffec6))
+
+
+
+
+
 ## [1.13.3](https://github.com/haoziqaq/varlet/compare/v1.13.1...v1.13.3) (2021-07-31)
 
 **Note:** Version bump only for package @varlet/ui
