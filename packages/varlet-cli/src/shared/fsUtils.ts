@@ -8,11 +8,11 @@ import {
   readdir,
   readFileSync,
 } from 'fs-extra'
-import { EXPORT_DIR_INDEXES, SCRIPTS_EXTENSIONS, SRC_DIR } from './constant'
+import { PUBLIC_DIR_INDEXES, SCRIPTS_EXTENSIONS, SRC_DIR } from './constant'
 
-export async function getExportDirNames(): Promise<string[]> {
+export async function getPublicDirs(): Promise<string[]> {
   const srcDir: string[] = await readdir(SRC_DIR)
-  return srcDir.filter((filename: string) => isExportDir(resolve(SRC_DIR, filename)))
+  return srcDir.filter((filename: string) => isPublicDir(resolve(SRC_DIR, filename)))
 }
 
 export const isMD = (file: string): boolean => pathExistsSync(file) && extname(file) === '.md'
@@ -29,8 +29,8 @@ export const isScript = (file: string): boolean => pathExistsSync(file) && SCRIP
 
 export const isLess = (file: string): boolean => pathExistsSync(file) && extname(file) === '.less'
 
-export const isExportDir = (dir: string): boolean =>
-  EXPORT_DIR_INDEXES.some((index) => pathExistsSync(resolve(dir, index)))
+export const isPublicDir = (dir: string): boolean =>
+  PUBLIC_DIR_INDEXES.some((index) => pathExistsSync(resolve(dir, index)))
 
 export const replaceExt = (file: string, ext: string): string => file.replace(extname(file), ext)
 

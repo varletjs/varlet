@@ -288,14 +288,14 @@ Click the Tab to scroll automatically to the center of the viewport.
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `click` | Triggered when the tab is clicked, but not when the tab `disabled` status is `true` | `active: string | number` |
-| `change` | Triggered when switching tab | `active: string | number` |
+| `click` | Triggered when the tab is clicked, but not when the tab `disabled` status is `true` | `active: string \| number` |
+| `change` | Triggered when switching tab | `active: string \| number` |
 
 ### Tab Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `click` | Triggered when the tab is clicked, but not when the tab `disabled` status is `true` | `active: string | number, event: Event` |
+| `click` | Triggered when the tab is clicked, but not when the tab `disabled` status is `true` | `active: string \| number, event: Event` |
 
 ### Slots
 
