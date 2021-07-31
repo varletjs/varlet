@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.1](https://github.com/haoziqaq/varlet/compare/v1.13.0...v1.13.1) (2021-07-31)
+
+
+### Bug Fixes
+
+* **ui/swipe:** the screen size changes, the size of the carousel will not change ([#112](https://github.com/haoziqaq/varlet/issues/112)) ([7110457](https://github.com/haoziqaq/varlet/commit/71104570a6192af6293de894d42ca09d9b78f0c5))
+
+
+
+
+
 # [1.13.0](https://github.com/haoziqaq/varlet/compare/v1.12.0...v1.13.0) (2021-07-30)
 
 
