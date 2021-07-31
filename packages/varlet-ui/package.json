@@ -43,16 +43,16 @@
     "test:watch": "varlet-cli jest -w"
   },
   "peerDependencies": {
-    "vue": "^3.1.4"
+    "vue": "^3.0.0"
   },
   "gitHead": "04cbbd571a061f5d5651515132a8ef079de5673e",
   "devDependencies": {
     "@varlet/cli": "^1.13.3"
   },
   "dependencies": {
-    "@babel/runtime": "^7.13.10",
     "@varlet/icons": "^1.0.0",
     "dayjs": "^1.10.4",
     "decimal.js": "^10.2.1"
-  }
+  },
+  "browserslist": ["Chrome >= 51", "iOS >= 10"]
 }

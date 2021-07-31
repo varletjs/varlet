@@ -64,7 +64,16 @@ export const BASE_CONFIG = {
     rules: [
       {
         test: /\.vue$/,
-        use: ['vue-loader'],
+        use: [
+          {
+            loader: 'vue-loader',
+            options: {
+              compilerOptions: {
+                preserveWhitespace: false,
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.(js|ts|jsx|tsx)$/,
