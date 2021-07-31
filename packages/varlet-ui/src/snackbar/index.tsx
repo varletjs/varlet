@@ -95,55 +95,48 @@ const transitionGroupProps: any = {
 const TransitionGroupHost = {
   setup() {
     return () => {
-      const getOption = ({ id, reactiveSnackOptions, _update }: UniqSnackbarOptions) => ({
-        ...reactiveSnackOptions,
-        ...{
-          key: id,
-          'data-id': id,
-          style: {
-            position: isAllowMultiple ? 'relative' : 'absolute',
-            ...getTop(reactiveSnackOptions.position),
-          },
-          _update,
-          'onUpdate:show': (value: boolean) => {
-            reactiveSnackOptions.show = value
-          },
-        },
-      })
-
-      const snackbarList = uniqSnackbarOptions.map((option: UniqSnackbarOptions) => {
+      const snackbarList = uniqSnackbarOptions.map(({ id, reactiveSnackOptions, _update }: UniqSnackbarOptions) => {
         const transitionGroupEl = document.querySelector('.var-transition-group')
-        if (option.reactiveSnackOptions.forbidClick || option.reactiveSnackOptions.type === 'loading') {
+        if (reactiveSnackOptions.forbidClick || reactiveSnackOptions.type === 'loading') {
           ;(transitionGroupEl as HTMLElement).classList.add('var-pointer-auto')
         } else {
           ;(transitionGroupEl as HTMLElement).classList.remove('var-pointer-auto')
         }
 
-        if (isAllowMultiple) option.reactiveSnackOptions.position = 'top'
+        if (isAllowMultiple) reactiveSnackOptions.position = 'top'
 
-        return h(VarSnackbarCore, getOption(option))
+        const style = {
+          position: isAllowMultiple ? 'relative' : 'absolute',
+          ...getTop(reactiveSnackOptions.position),
+        }
+
+        return (
+          <VarSnackbarCore
+            {...reactiveSnackOptions}
+            key={id}
+            style={style}
+            data-id={id}
+            _update={_update}
+            v-model={[reactiveSnackOptions.show, 'show']}
+          />
+        )
       })
 
-      return h(
-        TransitionGroup,
-        {
-          ...transitionGroupProps,
-          ...{
-            style: {
-              zIndex: context.zIndex,
-            },
-          },
-          onAfterEnter: opened,
-          onAfterLeave: removeUniqOption,
-        },
-        // remove [Vue warn]: Non-function value encountered for default slot. Prefer function slots for better performance
-        () => snackbarList
+      return (
+        <TransitionGroup
+          {...transitionGroupProps}
+          style={{ zIndex: context.zIndex }}
+          onAfterEnter={opened}
+          onAfterLeave={removeUniqOption}
+        >
+          {snackbarList}
+        </TransitionGroup>
       )
     }
   },
 }
 
-const Snackbar: Snackbar = <Snackbar>function (options: SnackbarOptions | string): SnackbarHandel {
+const Snackbar: Snackbar = function (options: SnackbarOptions | string): SnackbarHandel {
   const snackOptions: SnackbarOptions = isPlainObject(options) ? options : { content: options }
   const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>({
     ...defaultOption,
@@ -178,7 +171,7 @@ const Snackbar: Snackbar = <Snackbar>function (options: SnackbarOptions | string
       }
     },
   }
-}
+} as Snackbar
 
 SNACKBAR_TYPE.forEach((type) => {
   Snackbar[type] = (options: SnackbarOptions | string): SnackbarHandel => {
