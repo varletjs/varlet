@@ -25,7 +25,6 @@ module.exports = (api?: ConfigAPI, options: PresetOption = {}) => {
       require('./babel.sfc.transform'),
     ],
     plugins: [
-      '@babel/plugin-transform-runtime',
       [
         'import',
         {
