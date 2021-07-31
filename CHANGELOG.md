@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.3](https://github.com/haoziqaq/varlet/compare/v1.13.1...v1.13.3) (2021-07-31)
+
+
+### Bug Fixes
+
+* **cli:** jsx tsx is not processed as an index ([4079361](https://github.com/haoziqaq/varlet/commit/4079361bb4c4273199653a02b51be0df1d738274))
+
+
+
+
+
 ## [1.13.1](https://github.com/haoziqaq/varlet/compare/v1.13.0...v1.13.1) (2021-07-31)
 
 
