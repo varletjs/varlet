@@ -8,7 +8,7 @@ import {
   readdir,
   readFileSync,
 } from 'fs-extra'
-import { SCRIPTS_EXTENSIONS, SRC_DIR } from './constant'
+import { EXPORT_DIR_INDEXES, SCRIPTS_EXTENSIONS, SRC_DIR } from './constant'
 
 export async function getExportDirNames(): Promise<string[]> {
   const srcDir: string[] = await readdir(SRC_DIR)
@@ -30,7 +30,7 @@ export const isScript = (file: string): boolean => pathExistsSync(file) && SCRIP
 export const isLess = (file: string): boolean => pathExistsSync(file) && extname(file) === '.less'
 
 export const isExportDir = (dir: string): boolean =>
-  pathExistsSync(resolve(dir, 'index.js')) || pathExistsSync(resolve(dir, 'index.ts'))
+  EXPORT_DIR_INDEXES.some((index) => pathExistsSync(resolve(dir, index)))
 
 export const replaceExt = (file: string, ext: string): string => file.replace(extname(file), ext)
 
