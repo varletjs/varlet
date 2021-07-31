@@ -18,7 +18,7 @@ module.exports = (api?: ConfigAPI, options: PresetOption = {}) => {
         '@babel/preset-env',
         {
           modules: isTest ? 'commonjs' : false,
-          loose: options.loose ?? !isTest,
+          loose: options.loose,
         },
       ],
       '@babel/preset-typescript',
