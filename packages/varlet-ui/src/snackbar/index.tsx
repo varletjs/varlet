@@ -2,7 +2,7 @@ import type { App, Component } from 'vue'
 import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
 import context from '../context'
-import { h, reactive, TransitionGroup } from 'vue'
+import { reactive, TransitionGroup } from 'vue'
 import { mountInstance } from '../utils/components'
 import { isPlainObject, toNumber } from '../utils/shared'
 
