@@ -23,6 +23,8 @@ export async function runTask(taskName: string, task: () => any) {
 
 export async function compile(cmd: { noUmd: boolean }) {
   process.env.NODE_ENV = 'compile'
+
+  console.log(process.env.NODE_ENV)
   await removeDir()
   await Promise.all([
     runTask('types', compileTypes),
