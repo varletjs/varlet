@@ -69,59 +69,74 @@ export async function compileScriptFile(file: string) {
   await compileScript(sources, file)
 }
 
-export async function compileLibraryEntry(dir: string, exportDirNames: string[]) {
-  const imports = exportDirNames
-    .map(
-      (exportDirNames: string) =>
-        `import ${bigCamelize(exportDirNames)}, { _${bigCamelize(exportDirNames)}Component } from './${exportDirNames}'`
-    )
-    .join('\n')
+export async function compileLibraryEntry(dir: string, publicDirs: string[]) {
+  const imports: string[] = []
+  const plugins: string[] = []
+  const constInternalComponents: string[] = []
+  const internalComponents: string[] = []
+  const cssImports: string[] = []
+  const lessImports: string[] = []
+  const publicComponents: string[] = []
 
-  const install = `\
+  publicDirs.forEach((dirname: string) => {
+    const publicComponent = bigCamelize(dirname)
+
+    publicComponents.push(publicComponent)
+    imports.push(`import ${publicComponent}, * as ${publicComponent}Module from './${dirname}'`)
+    constInternalComponents.push(
+      `export const _${publicComponent}Component = ${publicComponent}Module._${publicComponent}Component || {}`
+    )
+    internalComponents.push(`_${publicComponent}Component`)
+    plugins.push(`${publicComponent}.install && app.use(${publicComponent})`)
+    cssImports.push(`import './${dirname}/style'`)
+    lessImports.push(`import './${dirname}/style/less'`)
+  })
+
+  const install = `
 function install(app) {
-  ${exportDirNames
-    .map((exportDirName: string) => `${bigCamelize(exportDirName)}.install && app.use(${bigCamelize(exportDirName)})`)
-    .join('\n  ')}
+  ${plugins.join('\n  ')}
 }
 `
-  const exports = `\
+
+  const indexTemplate = `\
+${imports.join('\n')}\n
+${constInternalComponents.join('\n')}\n
+${install}
 export {
   install,
-  ${exportDirNames
-    .map((exportDirName: string) => `${bigCamelize(exportDirName)},\n  _${bigCamelize(exportDirName)}Component`)
-    .join(',\n  ')}
+  ${publicComponents.join(',\n  ')}
 }
 
 export default {
   install,
-  ${exportDirNames.map((exportDirName: string) => `${bigCamelize(exportDirName)}`).join(',\n  ')},
-}\
+  ${publicComponents.join(',\n  ')}
+}
 `
 
-  const template = `\
-${imports}\n
-${install}
-${exports}
-`
-
-  const cssImports = exportDirNames.map((exportDirName: string) => `import './${exportDirName}/style'`).join('\n')
   const styleTemplate = `\
-${cssImports}
+${cssImports.join('\n')}
 `
 
   const umdTemplate = `\
-${imports}\n
+${imports.join('\n')}\n
+${cssImports.join('\n')}\n
 ${install}
-${cssImports}\n
-${exports}
+export {
+  install,
+  ${publicComponents.join(',\n  ')}
+}
+
+export default {
+  install,
+  ${publicComponents.join(',\n  ')}
+}
 `
 
-  const lessImports = exportDirNames.map((exportDirName: string) => `import './${exportDirName}/style/less'`).join('\n')
   const lessTemplate = `\
-${lessImports}
+${lessImports.join('\n')}
 `
   await Promise.all([
-    writeFile(resolve(dir, 'index.js'), template, 'utf-8'),
+    writeFile(resolve(dir, 'index.js'), indexTemplate, 'utf-8'),
     writeFile(resolve(dir, 'umdIndex.js'), umdTemplate, 'utf-8'),
     writeFile(resolve(dir, 'style.js'), styleTemplate, 'utf-8'),
     writeFile(resolve(dir, 'less.js'), lessTemplate, 'utf-8'),
