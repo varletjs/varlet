@@ -35,6 +35,14 @@
     />
   </div>
   <div>
+    <app-type>{{ pack.customBtn }}</app-type>
+    <var-slider v-model="value9" range active-color="#52af77">
+      <template #button="{ currentValue }">
+        <div class="slider-example_block">{{ currentValue }}</div>
+      </template>
+    </var-slider>
+  </div>
+  <div>
     <app-type>{{ pack.showLabel }}</app-type>
     <var-slider v-model="value5" label-visible="never" />
     <var-slider v-model="value6" />
@@ -70,6 +78,7 @@ export default {
       value6: 70,
       value7: 50,
       value8: 20,
+      value9: [5, 38],
     })
 
     const handleChange = (v) => {
@@ -86,3 +95,18 @@ export default {
   },
 }
 </script>
+<style lang="less" scoped>
+.slider-example_block {
+  width: 25px;
+  border: 1px solid #52af77;
+  color: #52af77;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: #ebebeb 0 2px 2px;
+  border-radius: 50%;
+  font-size: 12px;
+  background-color: #fff;
+}
+</style>

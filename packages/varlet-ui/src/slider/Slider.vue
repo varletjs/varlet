@@ -31,35 +31,37 @@
         @touchend="end(1)"
         @touchcancel="end(1)"
       >
-        <div
-          class="var-slider__thumb-block"
-          :style="{
-            background: thumbColor,
-            height: thumbSize + 'px',
-            width: thumbSize + 'px',
-          }"
-        ></div>
-        <div
-          class="var-slider__thumb-ripple"
-          :class="[thumbProps1.active ? 'var-slider__thumb-ripple-active' : null]"
-          :style="{
-            background: thumbColor,
-            height: thumbSize ? (thumbProps1.active ? 3 * thumbSize + 'px' : '0px') : null,
-            width: thumbSize ? (thumbProps1.active ? 3 * thumbSize + 'px' : '0px') : null,
-          }"
-        ></div>
-        <div
-          class="var-slider__thumb-label"
-          :class="[showLabel1 ? 'var-slider__thumb-label-active' : null]"
-          :style="{
-            background: labelColor,
-            color: labelTextColor,
-            height: 2 * thumbSize + 'px',
-            width: 2 * thumbSize + 'px',
-          }"
-        >
-          <span>{{ range ? modelValue[0] : modelValue }}</span>
-        </div>
+        <slot name="button" :current-value="range ? modelValue[0] : modelValue">
+          <div
+            class="var-slider__thumb-block"
+            :style="{
+              background: thumbColor,
+              height: thumbSize + 'px',
+              width: thumbSize + 'px',
+            }"
+          ></div>
+          <div
+            class="var-slider__thumb-ripple"
+            :class="[thumbProps1.active ? 'var-slider__thumb-ripple-active' : null]"
+            :style="{
+              background: thumbColor,
+              height: thumbSize ? (thumbProps1.active ? 3 * thumbSize + 'px' : '0px') : null,
+              width: thumbSize ? (thumbProps1.active ? 3 * thumbSize + 'px' : '0px') : null,
+            }"
+          ></div>
+          <div
+            class="var-slider__thumb-label"
+            :class="[showLabel1 ? 'var-slider__thumb-label-active' : null]"
+            :style="{
+              background: labelColor,
+              color: labelTextColor,
+              height: 2 * thumbSize + 'px',
+              width: 2 * thumbSize + 'px',
+            }"
+          >
+            <span>{{ range ? modelValue[0] : modelValue }}</span>
+          </div>
+        </slot>
       </div>
 
       <div
@@ -74,35 +76,37 @@
         @touchend="end(2)"
         @touchcancel="end(2)"
       >
-        <div
-          class="var-slider__thumb-block"
-          :style="{
-            background: thumbColor,
-            height: thumbSize + 'px',
-            width: thumbSize + 'px',
-          }"
-        ></div>
-        <div
-          class="var-slider__thumb-ripple"
-          :class="[thumbProps2.active ? 'var-slider__thumb-ripple-active' : null]"
-          :style="{
-            background: thumbColor,
-            height: thumbSize ? (thumbProps2.active ? 3 * thumbSize + 'px' : '0px') : null,
-            width: thumbSize ? (thumbProps2.active ? 3 * thumbSize + 'px' : '0px') : null,
-          }"
-        ></div>
-        <div
-          class="var-slider__thumb-label"
-          :class="[showLabel2 ? 'var-slider__thumb-label-active' : null]"
-          :style="{
-            background: labelColor,
-            color: labelTextColor,
-            height: 2 * thumbSize + 'px',
-            width: 2 * thumbSize + 'px',
-          }"
-        >
-          <span>{{ range && modelValue[1] }}</span>
-        </div>
+        <slot name="button" :current-value="range && modelValue[1]">
+          <div
+            class="var-slider__thumb-block"
+            :style="{
+              background: thumbColor,
+              height: thumbSize + 'px',
+              width: thumbSize + 'px',
+            }"
+          ></div>
+          <div
+            class="var-slider__thumb-ripple"
+            :class="[thumbProps2.active ? 'var-slider__thumb-ripple-active' : null]"
+            :style="{
+              background: thumbColor,
+              height: thumbSize ? (thumbProps2.active ? 3 * thumbSize + 'px' : '0px') : null,
+              width: thumbSize ? (thumbProps2.active ? 3 * thumbSize + 'px' : '0px') : null,
+            }"
+          ></div>
+          <div
+            class="var-slider__thumb-label"
+            :class="[showLabel2 ? 'var-slider__thumb-label-active' : null]"
+            :style="{
+              background: labelColor,
+              color: labelTextColor,
+              height: 2 * thumbSize + 'px',
+              width: 2 * thumbSize + 'px',
+            }"
+          >
+            <span>{{ range && modelValue[1] }}</span>
+          </div>
+        </slot>
       </div>
     </div>
     <var-form-details :error-message="errorMessage" class="var-slider__form" var-slider-cover />

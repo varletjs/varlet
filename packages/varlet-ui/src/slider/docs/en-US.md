@@ -99,6 +99,33 @@ Control the size of slider through `track-height` and `thumb-size`.
   label-text-color="#ededed"
 />
 ```
+### Custom Button
+
+The props such as `label-visible`, `label-text-color`, `thumb-size` are invalid when using slot custom buttons.
+
+```html
+<var-slider v-model="value" range active-color="#52af77">
+  <template #button="currentValue">
+    <div class="slider-example_block">{{ currentValue }}</div>
+  </template>
+</var-slider>
+```
+```css
+.slider-example_block {
+  width: 25px;
+  border: 1px solid #52af77;
+  color: #52af77;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: #ebebeb 0 2px 2px;
+  border-radius: 50%;
+  font-size: 12px;
+  background-color: #fff;
+}
+```
+
 
 ### Show label
 Control the display of labels through the `label-visible` attribute.
@@ -147,6 +174,12 @@ Verify the value through the `rules` attribute.
 | `change` | 	Emitted after slider changed | value: current value |
 | `start` | Emitted when start dragged | `-` |
 | `end` | Emitted when end dragged | value: current value |
+
+### Slots
+
+| Name | Description | SlotProps |
+| ----- | -------------- | -------- |
+| `button` | Custom button | `currentValue`: current value |
 
 ### Style Variables
 

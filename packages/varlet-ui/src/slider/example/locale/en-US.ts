@@ -7,5 +7,6 @@ export default {
   sliderSize: 'Slider Size',
   customStyle: 'Custom Style',
   showLabel: 'Show Label',
+  customBtn: 'Custom Button',
   validateValue: 'Validate Value',
 }

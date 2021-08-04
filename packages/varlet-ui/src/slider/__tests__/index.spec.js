@@ -5,7 +5,6 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger, mockConsole } from '../../utils/jest'
 
-
 test('test slider example', () => {
   const wrapper = mount(example)
   expect(wrapper.html()).toMatchSnapshot()

@@ -150,6 +150,26 @@ exports[`test slider example 1`] = `
   </div>
 </div>
 <div>
+  <div class=\\"app-type\\">自定义按钮</div>
+  <div class=\\"var-slider\\">
+    <div class=\\"var-slider-block\\">
+      <div class=\\"var-slider__track\\">
+        <div class=\\"var-slider__track-background\\"></div>
+        <div class=\\"var-slider__track-fill\\" style=\\"width: 33%; left: 5%; background: rgb(82, 175, 119);\\"></div>
+      </div>
+      <div class=\\"var-slider__thumb\\" style=\\"left: 5%;\\">
+        <div class=\\"slider-example_block\\">5</div>
+      </div>
+      <div class=\\"var-slider__thumb\\" style=\\"left: 38%;\\">
+        <div class=\\"slider-example_block\\">38</div>
+      </div>
+    </div>
+    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</div>
+<div>
   <div class=\\"app-type\\">显示标签</div>
   <div class=\\"var-slider\\">
     <div class=\\"var-slider-block\\">
