@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.1](https://github.com/haoziqaq/varlet/compare/v1.14.0...v1.14.1) (2021-08-04)
+
+
+### Bug Fixes
+
+* **ui/image-preview:** tap can't trigger close ([ecf7afe](https://github.com/haoziqaq/varlet/commit/ecf7afec2392678bcf65b306cdbccf23d85997c3))
+* optimize style of slider example ([8940bb6](https://github.com/haoziqaq/varlet/commit/8940bb6a712c11efca2f3eb5fd5761923db62dd3))
+
+
+
+
+
 # [1.14.0](https://github.com/haoziqaq/varlet/compare/v1.13.5...v1.14.0) (2021-08-04)
 
 
