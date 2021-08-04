@@ -97,10 +97,11 @@ export default {
 </script>
 <style lang="less" scoped>
 .slider-example_block {
-  width: 25px;
+  width: 24px;
   border: 1px solid #52af77;
   color: #52af77;
-  height: 25px;
+  height: 24px;
+  margin: 0 -12px;
   display: flex;
   align-items: center;
   justify-content: center;
