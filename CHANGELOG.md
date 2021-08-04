@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://github.com/haoziqaq/varlet/compare/v1.13.5...v1.14.0) (2021-08-04)
+
+
+### Bug Fixes
+
+* **ui/image-preview:** restore the default behavior of the browser picture and prohibit dragging ([4d5cbc6](https://github.com/haoziqaq/varlet/commit/4d5cbc68063b4aff18172ccb995ed74bf765bba5))
+
+
+### Features
+
+* **slider:** add button slot ([a912564](https://github.com/haoziqaq/varlet/commit/a912564752458cb8cd54f2330dba4223f5a619b1))
+
+
+
+
+
 ## [1.13.5](https://github.com/haoziqaq/varlet/compare/v1.13.4...v1.13.5) (2021-07-31)
 
 **Note:** Version bump only for package root
