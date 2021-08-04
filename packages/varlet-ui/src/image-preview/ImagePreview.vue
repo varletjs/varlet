@@ -168,7 +168,10 @@ export default defineComponent({
         return false
       }
 
-      return getDistance(startTouch, prevTouch) <= DISTANCE_OFFSET && target === startTouch.target
+      return (
+        getDistance(startTouch, prevTouch) <= DISTANCE_OFFSET &&
+        (target === startTouch.target || target.parentNode === startTouch.target)
+      )
     }
 
     const handleTouchend = (event: Event) => {
