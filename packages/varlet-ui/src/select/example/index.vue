@@ -1,6 +1,6 @@
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-select :placeholder="pack.placeholder" v-model="value" @click="onClick">
+  <var-select :placeholder="pack.placeholder" v-model="value">
     <var-option :label="pack.eat" />
     <var-option :label="pack.sleep" />
   </var-select>
@@ -139,10 +139,6 @@ export default {
     return {
       pack,
       ...toRefs(values),
-
-      onClick() {
-        console.log(123)
-      },
     }
   },
 }
