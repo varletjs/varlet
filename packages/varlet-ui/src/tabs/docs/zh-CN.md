@@ -46,9 +46,9 @@ Tabs默认通过`active`去匹配Tab的`index`来决定哪个选项卡被激活�
 
 ```html
 <var-tabs v-model:active="active">
-  <var-tab :name="选项1">选项1</var-tab>
-  <var-tab :name="选项2">选项2</var-tab>
-  <var-tab :name="选项3">选项3</var-tab>
+  <var-tab name="选项1">选项1</var-tab>
+  <var-tab name="选项2">选项2</var-tab>
+  <var-tab name="选项3">选项3</var-tab>
 </var-tabs>
 ```
 
@@ -291,14 +291,14 @@ export default {
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `click` | 点击选项卡时触发, 在选项卡`disabled` 状态为 `true` 时不触发 | `active: string | number` |
-| `change` | 切换选项卡时触发 | `active: string | number` |
+| `click` | 点击选项卡时触发, 在选项卡`disabled` 状态为 `true` 时不触发 | `active: string \| number` |
+| `change` | 切换选项卡时触发 | `active: string \| number` |
 
 ### Tab Events
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `click` | 点击选项卡时触发, 在 `disabled` 状态为 `true` 时不触发 | `active: string | number, event: Event` |
+| `click` | 点击选项卡时触发, 在 `disabled` 状态为 `true` 时不触发 | `active: string \| number, event: Event` |
 
 ### 插槽
 

@@ -1,6 +1,6 @@
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-select :placeholder="pack.placeholder" v-model="value" @click="onClick">
+  <var-select :placeholder="pack.placeholder" v-model="value">
     <var-option :label="pack.eat" />
     <var-option :label="pack.sleep" />
   </var-select>
@@ -95,7 +95,7 @@ import Option from '../../option'
 import Icon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { reactive, toRefs } from 'vue'
-import { watchLang } from '../../utils/components'
+import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 export default {
@@ -139,10 +139,6 @@ export default {
     return {
       pack,
       ...toRefs(values),
-
-      onClick() {
-        console.log(123)
-      },
     }
   },
 }

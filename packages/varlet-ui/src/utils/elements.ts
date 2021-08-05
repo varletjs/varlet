@@ -62,9 +62,9 @@ export function getParentScroller(el: HTMLElement): HTMLElement | Window {
     }
 
     const scrollRE = /(scroll|auto)/
-    const { overflowY } = window.getComputedStyle(element)
+    const { overflowY, overflow } = window.getComputedStyle(element)
 
-    if (scrollRE.test(overflowY)) {
+    if (scrollRE.test(overflowY) || scrollRE.test(overflow)) {
       return element
     }
   }
@@ -177,27 +177,30 @@ interface ScrollToOptions {
 export function scrollTo(
   element: HTMLElement | Window,
   { top = 0, left = 0, duration = 300, animation }: ScrollToOptions
-) {
+): Promise<void> {
   const startTime = Date.now()
 
   const scrollTop = getScrollTop(element)
   const scrollLeft = getScrollLeft(element)
 
-  const frame = () => {
-    const progress = (Date.now() - startTime) / duration
+  return new Promise((resolve) => {
+    const frame = () => {
+      const progress = (Date.now() - startTime) / duration
 
-    if (progress < 1) {
-      const nextTop = scrollTop + (top - scrollTop) * animation(progress)
-      const nextLeft = scrollLeft + (left - scrollLeft) * animation(progress)
+      if (progress < 1) {
+        const nextTop = scrollTop + (top - scrollTop) * animation(progress)
+        const nextLeft = scrollLeft + (left - scrollLeft) * animation(progress)
 
-      element.scrollTo(nextLeft, nextTop)
-      requestAnimationFrame(frame)
-    } else {
-      element.scrollTo(left, top)
+        element.scrollTo(nextLeft, nextTop)
+        requestAnimationFrame(frame)
+      } else {
+        element.scrollTo(left, top)
+        resolve()
+      }
     }
-  }
 
-  requestAnimationFrame(frame)
+    requestAnimationFrame(frame)
+  })
 }
 
 export function formatStyleVars(styleVars: StyleVars) {

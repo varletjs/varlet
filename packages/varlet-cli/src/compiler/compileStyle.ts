@@ -1,11 +1,13 @@
 import { readFileSync, writeFileSync } from 'fs-extra'
 import { render, FileManager } from 'less'
-import { replaceExt } from '../shared/fsUtils'
+import { replaceExt, smartAppendFileSync } from '../shared/fsUtils'
+import { parse, resolve } from 'path'
 
-export const IMPORT_LESS_PATH_RE = /((?<!['"`])import\s+['"]\s*\.{1,2}\/.+\.)less(\s*['"`])(?!\s*['"`])/g
-export const REQUIRE_LESS_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\.{1,2}\/.+\.)less(\s*['"`]\))(?!\s*['"`])/g
 export const EMPTY_SPACE_RE = /[\s]+/g
 export const EMPTY_LINE_RE = /[\n\r]*/g
+export const IMPORT_CSS_RE = /(?<!['"`])import\s+['"](.+\.css)['"]\s*;?(?!\s*['"`])/g
+export const IMPORT_LESS_RE = /(?<!['"`])import\s+['"](.+\.less)['"]\s*;?(?!\s*['"`])/g
+export const STYLE_IMPORT_RE = /@import\s+['"](.+)['"]\s*;/g
 
 class TildeResolver extends FileManager {
   loadFile(filename: string, ...args: any[]) {
@@ -20,13 +22,43 @@ const TildeResolverPlugin = {
   },
 }
 
-export function replaceStyleExt(script: string) {
-  const replacer = (_: any, p1: string, p2: string): string => `${p1}css${p2}`
-  return script.replace(IMPORT_LESS_PATH_RE, replacer).replace(REQUIRE_LESS_PATH_RE, replacer)
+export const clearEmptyLine = (s: string) => s.replace(EMPTY_LINE_RE, '').replace(EMPTY_SPACE_RE, ' ')
+
+export function normalizeStyleDependency(styleImport: string, reg: RegExp) {
+  let relativePath = styleImport.replace(reg, '$1')
+  relativePath = relativePath.replace(/(.less)|(\.css)/, '')
+
+  if (relativePath.startsWith('./')) {
+    return '.' + relativePath
+  }
+
+  return '../' + relativePath
 }
 
-export function clearEmptyLine(style: string) {
-  return style.replace(EMPTY_LINE_RE, '').replace(EMPTY_SPACE_RE, ' ')
+export function extractStyleDependencies(
+  file: string,
+  code: string,
+  reg: RegExp,
+  expect: 'css' | 'less',
+  self: boolean
+) {
+  const { dir, base } = parse(file)
+  const styleImports = code.match(reg) ?? []
+  const cssFile = resolve(dir, './style/index.js')
+  const lessFile = resolve(dir, './style/less.js')
+
+  styleImports.forEach((styleImport: string) => {
+    const normalizedPath = normalizeStyleDependency(styleImport, reg)
+    smartAppendFileSync(cssFile, `import '${normalizedPath}.css'\n`)
+    smartAppendFileSync(lessFile, `import '${normalizedPath}.${expect}'\n`)
+  })
+
+  if (self) {
+    smartAppendFileSync(cssFile, `import '${normalizeStyleDependency(base, reg)}.css'\n`)
+    smartAppendFileSync(lessFile, `import '${normalizeStyleDependency(base, reg)}.${expect}'\n`)
+  }
+
+  return code.replace(reg, '')
 }
 
 export async function compileLess(file: string) {

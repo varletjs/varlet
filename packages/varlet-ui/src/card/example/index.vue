@@ -32,7 +32,7 @@ import Button from '../../button'
 import Card from '..'
 import context from '../../context'
 import { pack, use } from './locale'
-import { watchLang, watchPlatform } from '../../utils/components'
+import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 import { onUnmounted } from 'vue'
 
 export default {

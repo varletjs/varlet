@@ -33,7 +33,7 @@ import Button from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { ref } from 'vue'
 import { pack, use } from './locale'
-import { watchLang } from '../../utils/components'
+import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'StepsExample',

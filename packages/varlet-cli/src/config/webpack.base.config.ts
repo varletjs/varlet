@@ -1,4 +1,13 @@
-import { EXTENSIONS, POSTCSS_CONFIG, SITE_CONFIG, SITE_MOBILE_MAIN, SITE_PC_MAIN, TS_CONFIG } from '../shared/constant'
+import {
+  POSTCSS_CONFIG,
+  SITE_CONFIG,
+  SITE_MOBILE_MAIN,
+  SITE_MOBILE_ROUTES,
+  SITE_PC_MAIN,
+  SITE_PC_ROUTES,
+  TS_CONFIG,
+  WEBPACK_RESOLVE_EXTENSIONS,
+} from '../shared/constant'
 import { ForkTsCheckerWebpackPlugin } from 'fork-ts-checker-webpack-plugin/lib/ForkTsCheckerWebpackPlugin'
 import { VueLoaderPlugin } from 'vue-loader'
 import { pathExistsSync } from 'fs-extra'
@@ -44,29 +53,32 @@ export const BASE_CONFIG = {
     mobile: SITE_MOBILE_MAIN,
   },
   resolve: {
-    extensions: EXTENSIONS,
+    extensions: WEBPACK_RESOLVE_EXTENSIONS,
     alias: {
       '@config': SITE_CONFIG,
+      '@pc-routes': SITE_PC_ROUTES,
+      '@mobile-routes': SITE_MOBILE_ROUTES,
     },
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        use: ['vue-loader'],
-      },
-      {
-        test: /\.(js|ts)$/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: 'vue-loader',
             options: {
-              presets: ['@babel/preset-env', '@babel/preset-typescript'],
-              plugins: ['@babel/plugin-transform-runtime', '@babel/plugin-transform-typescript'],
+              compilerOptions: {
+                preserveWhitespace: false,
+              },
             },
           },
         ],
-        exclude: /node_modules/,
+      },
+      {
+        test: /\.(js|ts|jsx|tsx)$/,
+        use: ['babel-loader'],
+        exclude: /node_modules\/(?!(@varlet\/cli))/,
       },
       {
         test: /\.md$/,
@@ -117,4 +129,4 @@ export const BASE_CONFIG = {
     },
   },
   plugins: createBasePlugins(),
-}
+} as any

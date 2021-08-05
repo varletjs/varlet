@@ -100,6 +100,35 @@ export default {
 />
 ```
 
+### 自定义按钮
+
+使用插槽自定义按钮时，`label-visible`、`label-text-color`、`thumb-size`等属性均无效。
+
+```html
+<var-slider v-model="value" range active-color="#52af77">
+  <template #button="currentValue">
+    <div class="slider-example_block">{{ currentValue }}</div>
+  </template>
+</var-slider>
+```
+```css
+.slider-example_block {
+  width: 24px;
+  border: 1px solid #52af77;
+  color: #52af77;
+  height: 24px;
+  margin: 0 -12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: #ebebeb 0 2px 2px;
+  border-radius: 50%;
+  font-size: 12px;
+  background-color: #fff;
+}
+```
+
+
 ### 显示标签
 通过 `label-visible` 属性控制标签的显示。
 
@@ -144,6 +173,12 @@ export default {
 | `change` | 	值改变时触发| value: 当前进度|
 | `start` | 开始拖动时触发 | `-` |
 | `end` | 结束拖动时触发 | value: 当前进度 |
+
+### 插槽
+
+| 名称 | 说明 | 参数 |
+| ----- | -------------- | -------- |
+| `button` | 自定义滑动按钮 | `currentValue`: 当前进度 |
 
 ### 样式变量
 

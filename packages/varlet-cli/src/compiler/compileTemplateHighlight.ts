@@ -15,18 +15,16 @@ import {
 import { resolve } from 'path'
 import { isDir, isMD } from '../shared/fsUtils'
 import { get } from 'lodash'
-import { varletConfig } from '../config/varlet.config'
+import { getVarletConfig } from '../config/varlet.config'
+
+const varletConfig = getVarletConfig()
 
 const TABLE_HEAD_RE = /\s*\|.*\|\s*\n\s*\|.*---+\s*\|\s*\n+/
 const TABLE_FOOT_RE = /(\|\s*$)|(\|\s*\n(?!\s*\|))/
 
-export function replaceDot(str: string) {
-  return str.replace(/`/g, '')
-}
+export const replaceDot = (s: string) => s.replace(/`/g, '')
 
-export function replaceUnderline(str: string) {
-  return str.replace(/_/g, '')
-}
+export const replaceUnderline = (s: string) => s.replace(/_/g, '')
 
 export function parseTable(table: string) {
   const rows = table.split('\n').filter(Boolean)

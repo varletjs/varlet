@@ -113,28 +113,26 @@ exports[`test tabs example 1`] = `
   </div>
 </transition-stub>
 <div class=\\"app-type\\">视图联动</div>
-<div class=\\"var-sticky\\" style=\\"z-index: 10; width: 0px; height: 0px;\\">
-  <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10; position: fixed; width: 0px; height: 0px; left: 0px; top: 50px;\\">
-    <div class=\\"var-tabs var--box var-tabs--item-horizontal var-tabs--layout-horizontal-padding var-elevation--4\\" style=\\"background: rgb(41, 121, 255);\\">
-      <div class=\\"var-tabs__tab-wrap var-tabs--layout-horizontal\\">
-        <div class=\\"var-tab var--box var-tab--active var-tab--horizontal\\" style=\\"color: rgb(255, 255, 255);\\">选项1</div>
-        <div class=\\"var-tab var--box var-tab--inactive var-tab--horizontal\\" style=\\"color: rgba(255, 255, 255, 0.6);\\">选项2</div>
-        <div class=\\"var-tab var--box var-tab--inactive var-tab--horizontal\\" style=\\"color: rgba(255, 255, 255, 0.6);\\">选项3</div>
-        <div class=\\"var-tabs__indicator var-tabs--layout-horizontal-indicator\\" style=\\"width: 0px; transform: translateX(0px); background: rgb(255, 255, 255);\\"></div>
-      </div>
+<transition-stub>
+  <div class=\\"var-tabs var--box var-tabs--item-horizontal var-tabs--layout-horizontal-padding var-elevation--4\\" style=\\"background: rgb(41, 121, 255);\\">
+    <div class=\\"var-tabs__tab-wrap var-tabs--layout-horizontal\\">
+      <div class=\\"var-tab var--box var-tab--active var-tab--horizontal\\" style=\\"color: rgb(255, 255, 255);\\">选项1</div>
+      <div class=\\"var-tab var--box var-tab--inactive var-tab--horizontal\\" style=\\"color: rgba(255, 255, 255, 0.6);\\">选项2</div>
+      <div class=\\"var-tab var--box var-tab--inactive var-tab--horizontal\\" style=\\"color: rgba(255, 255, 255, 0.6);\\">选项3</div>
+      <div class=\\"var-tabs__indicator var-tabs--layout-horizontal-indicator\\" style=\\"width: 0px; transform: translateX(0px); background: rgb(255, 255, 255);\\"></div>
     </div>
   </div>
-</div>
-<div class=\\"var-swipe var-tabs-items\\">
+</transition-stub>
+<div class=\\"var-swipe var-tabs-items\\" style=\\"margin: 8px 0px;\\">
   <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 0ms;\\">
-    <div class=\\"var-swipe-item var-tab-item\\" style=\\"width: 0px; transform: translateX(0px); padding: 8px 5px;\\">呜啦啦啦火车笛，随着奔腾的马蹄。
+    <div class=\\"var-swipe-item var-tab-item\\" style=\\"width: 0px; transform: translateX(0px); padding: 0px 4px;\\">呜啦啦啦火车笛，随着奔腾的马蹄。
       小妹妹吹着口琴，夕阳下美了剪影。
       我用子弹写日记，介绍完了风景。
       接下来换介绍我自己。
       我虽然是个牛仔，在酒吧只点牛奶。
       为什么不喝啤酒，因为啤酒伤身体。</div>
-    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px); padding: 8px 5px;\\"></div>
-    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px); padding: 8px 5px;\\"></div>
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px); padding: 0px 4px;\\"></div>
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px); padding: 0px 4px;\\"></div>
   </div>
   <!--v-if-->
 </div>

@@ -7,12 +7,20 @@ export const props = {
     type: Number,
     default: 0,
   },
+  hideList: {
+    type: Boolean,
+    default: false,
+  },
   zIndex: {
     type: [Number, String],
     default: 1,
   },
   highlightColor: {
     type: String,
+  },
+  duration: {
+    type: [Number, String],
+    default: 0,
   },
   onClick: {
     type: Function,

@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted, computed } from 'vue'
+import { defineComponent, ref, onMounted, onUnmounted, onActivated, onDeactivated, computed } from 'vue'
 import { props } from './props'
 import { getParentScroller, toPxNum } from '../utils/elements'
 import { toNumber } from '../utils/shared'
@@ -40,7 +40,7 @@ export default defineComponent({
     const stickyEl: Ref<HTMLElement | null> = ref(null)
     const wrapperEl: Ref<HTMLElement | null> = ref(null)
 
-    let isSupportCSSSticky = false
+    let isSupportCSSSticky: boolean
 
     const isFixed: Ref<boolean> = ref(false)
     const fixedTop: Ref<string> = ref('0px')
@@ -55,9 +55,6 @@ export default defineComponent({
     let scroller: HTMLElement | Window = window
 
     const handleScroll = () => {
-      const sticky = stickyEl.value as HTMLElement
-      isSupportCSSSticky = ['sticky', '-webkit-sticky'].includes(window.getComputedStyle(sticky).position)
-
       let scrollerTop = 0
 
       if (scroller !== window) {
@@ -66,7 +63,7 @@ export default defineComponent({
       }
 
       const wrapper = wrapperEl.value as HTMLElement
-
+      const sticky = stickyEl.value as HTMLElement
       const { top: stickyTop, left: stickyLeft } = sticky.getBoundingClientRect()
       const currentOffsetTop = stickyTop - scrollerTop
       const { onScroll } = props
@@ -90,17 +87,30 @@ export default defineComponent({
       }
     }
 
-    onMounted(() => {
-      window.addEventListener('scroll', handleScroll)
+    const addScrollListener = () => {
       scroller = getParentScroller(stickyEl.value as HTMLElement)
       scroller !== window && scroller.addEventListener('scroll', handleScroll)
-
+      window.addEventListener('scroll', handleScroll)
       handleScroll()
-    })
-    onUnmounted(() => {
-      window.removeEventListener('scroll', handleScroll)
+    }
+
+    const removeScrollListener = () => {
       scroller !== window && scroller.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', handleScroll)
+    }
+
+    onActivated(addScrollListener)
+
+    onDeactivated(removeScrollListener)
+
+    onMounted(() => {
+      isSupportCSSSticky = ['sticky', '-webkit-sticky'].includes(
+        window.getComputedStyle(stickyEl.value as HTMLElement).position
+      )
+      addScrollListener()
     })
+
+    onUnmounted(removeScrollListener)
 
     return {
       stickyEl,

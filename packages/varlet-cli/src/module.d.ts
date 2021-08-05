@@ -4,3 +4,5 @@ declare module 'less' {
 
   export { render, FileManager }
 }
+
+declare module '@babel/helper-plugin-utils'

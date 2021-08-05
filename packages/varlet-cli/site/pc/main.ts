@@ -4,16 +4,20 @@ import '@varlet/touch-emulator'
 import routes from '@pc-routes'
 // @ts-ignore
 import config from '@config'
+import { Cell, Ripple, Icon } from '@varlet/ui'
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { get } from 'lodash'
 import { useProgress } from '../useProgress'
 
+const defaultLanguage = get(config, 'defaultLanguage')
 const redirect = get(config, 'pc.redirect')
+const mobileRedirect = get(config, 'mobile.redirect')
+
 redirect &&
   routes.push({
     path: '/:pathMatch(.*)*',
-    redirect,
+    redirect: `/${defaultLanguage}${redirect}`,
   })
 
 const router = createRouter({
@@ -24,11 +28,13 @@ const router = createRouter({
 let isEnd = true
 const { start, end } = useProgress()
 
-router.beforeEach(() => {
+router.beforeEach((to, from) => {
+  if (to.path === from.path) {
+    return false
+  }
+
   isEnd = false
-  setTimeout(() => {
-    if (!isEnd) start()
-  }, 200)
+  setTimeout(() => !isEnd && start(), 200)
 })
 
 router.afterEach(() => {
@@ -36,8 +42,20 @@ router.afterEach(() => {
   end()
 })
 
-window.top['router'] = router
+Object.defineProperty(window, 'onMobileRouteChange', {
+  value: (path: string, language: string, replace: string) => {
+    if (path === mobileRedirect) {
+      router.replace(`/${language}/${replace}`)
+      return
+    }
 
-const app = createApp(App)
+    router.replace(`/${language}${path}`)
+  }
+})
 
-app.use(router).mount('#app')
+createApp(App)
+  .use(router)
+  .use(Cell)
+  .use(Ripple)
+  .use(Icon)
+  .mount('#app')

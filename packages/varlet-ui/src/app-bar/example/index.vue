@@ -65,7 +65,7 @@ import Menu from '../../menu'
 import Button from '../../button'
 import Cell from '../../cell'
 import { pack, use } from './locale'
-import { watchLang } from '../../utils/components'
+import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'AppBarExample',

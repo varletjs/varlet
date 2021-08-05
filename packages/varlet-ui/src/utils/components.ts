@@ -267,35 +267,6 @@ export function addRouteListener(cb: () => void) {
   })
 }
 
-export function getHashSearch() {
-  const { href } = window.location
-  const hashSearch = href.slice(href.indexOf('?'))
-
-  return new URLSearchParams(hashSearch)
-}
-
-export function watchLang(cb: (lang: string) => void) {
-  const handleHashchange = () => {
-    const language = getHashSearch().get('language') ?? 'zh-CN'
-    cb(language)
-  }
-
-  addRouteListener(handleHashchange)
-
-  handleHashchange()
-}
-
-export function watchPlatform(cb: (platform: string) => void) {
-  const handleHashchange = () => {
-    const platform = getHashSearch().get('platform') ?? 'mobile'
-    cb(platform)
-  }
-
-  addRouteListener(handleHashchange)
-
-  handleHashchange()
-}
-
 export function useTeleport() {
   const disabled: Ref<boolean> = ref(false)
 

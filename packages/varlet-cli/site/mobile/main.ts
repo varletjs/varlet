@@ -6,15 +6,23 @@ import App from './App.vue'
 import '@varlet/touch-emulator'
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { Icon, AppBar, Button, Menu, Cell, Ripple } from '@varlet/ui'
 import { get } from 'lodash'
+import { inIframe, isPhone } from '../utils'
 
 const redirect = get(config, 'mobile.redirect')
+const defaultLanguage = get(config, 'defaultLanguage')
+
 redirect &&
   routes.push({
     path: '/:pathMatch(.*)',
     redirect,
-    component: routes.find((c) => c.path === redirect).component,
   })
+
+routes.push({
+  path: '/home',
+  component: () => import('./components/AppHome.vue')
+})
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -22,23 +30,27 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((to) => {
-  const { query: { language, path }, path: toPath } = to
-  const isPhone = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+router.beforeEach((to, from) => {
+  const language = to.query.language ?? defaultLanguage
+  const path = to.path
+  const replace = to.query.replace
 
-  if (!isPhone && window.self === window.top) {
-    window.location.href = `./#/${language}/${path}`
+  if (!isPhone() && !inIframe()) {
+    window.location.href = `./#/${language}${path}`
   }
 
-  if (!isPhone) {
-    const pcPath =
-      toPath === '/home' && path
-        ? `/${language}/${path}`
-        : `/${language}${toPath}`
-
-    window.top['router'].replace(pcPath)
+  if (!isPhone() && inIframe()) {
+    // @ts-ignore
+    window.top.onMobileRouteChange(path, language, replace)
   }
 })
 
-const app = createApp(App)
-app.use(router).mount('#app')
+createApp(App)
+  .use(router)
+  .use(Icon)
+  .use(AppBar)
+  .use(Cell)
+  .use(Ripple)
+  .use(Button)
+  .use(Menu)
+  .mount('#app')

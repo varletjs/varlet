@@ -1,17 +1,23 @@
 import slash from 'slash'
-import hash from 'hash-sum'
+import chokidar from 'chokidar'
 import {
   DOCS_DIR_NAME,
   EXAMPLE_DIR_INDEX,
   EXAMPLE_DIR_NAME,
   ROOT_DOCS_DIR,
+  SITE_DOCS_GLOB,
+  SITE_EXAMPLE_GLOB,
+  SITE_MOBILE_ROUTES,
+  SITE_PC_ROUTES,
   SRC_DIR,
-  SITE_PC,
-  SITE_MOBILE,
+  VARLET_CONFIG,
 } from '../shared/constant'
-import { pathExistsSync, readdir, readdirSync, writeFile } from 'fs-extra'
+import { pathExistsSync, readdir, readdirSync } from 'fs-extra'
 import { resolve } from 'path'
-import { isMD } from '../shared/fsUtils'
+import { isMD, outputFileSyncOnChange } from '../shared/fsUtils'
+import { getVarletConfig } from '../config/varlet.config'
+import type { Compiler } from 'webpack'
+import type { FSWatcher } from 'chokidar'
 
 const EXAMPLE_COMPONENT_NAME_RE = /\/([-\w]+)\/example\/index.vue/
 const COMPONENT_DOCS_RE = /\/([-\w]+)\/docs\/([-\w]+)\.md/
@@ -67,6 +73,10 @@ export async function findComponentDocsPaths(): Promise<string[]> {
 }
 
 export async function findRootDocsPaths(): Promise<string[]> {
+  if (!pathExistsSync(ROOT_DOCS_DIR)) {
+    return []
+  }
+
   const dir: string[] = await readdir(ROOT_DOCS_DIR)
 
   const buildPath = (filename: string) => resolve(ROOT_DOCS_DIR, filename)
@@ -78,7 +88,7 @@ export async function findRootDocsPaths(): Promise<string[]> {
   return dir.filter(existPath).map(slashPath)
 }
 
-export async function buildMobileSiteRoutes(): Promise<string> {
+export async function buildMobileSiteRoutes() {
   const examplePaths: string[] = await findExamplePaths()
 
   const routes = examplePaths.map(
@@ -94,16 +104,10 @@ export async function buildMobileSiteRoutes(): Promise<string> {
   ${routes.join(',')}
 ]`
 
-  const mobileRouteId = hash(source)
-
-  const path = resolve(SITE_MOBILE, `./${mobileRouteId}.routes.ts`)
-
-  await writeFile(path, source)
-
-  return mobileRouteId
+  await outputFileSyncOnChange(SITE_MOBILE_ROUTES, source)
 }
 
-export async function buildPcSiteRoutes(): Promise<string> {
+export async function buildPcSiteRoutes() {
   const [componentDocsPaths, rootDocsPaths] = await Promise.all([findComponentDocsPaths(), findRootDocsPaths()])
 
   const componentDocsRoutes = componentDocsPaths.map(
@@ -130,11 +134,25 @@ export async function buildPcSiteRoutes(): Promise<string> {
   ${[...componentDocsRoutes, rootDocsRoutes].join(',')}
 ]`
 
-  const pcRouteId = hash(source)
+  outputFileSyncOnChange(SITE_PC_ROUTES, source)
+}
 
-  const path = resolve(SITE_PC, `./${pcRouteId}.routes.ts`)
+export async function buildSiteEntry() {
+  getVarletConfig()
+  await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
+}
 
-  await writeFile(path, source)
+const PLUGIN_NAME = 'VarletSitePlugin'
 
-  return pcRouteId
+export class VarletSitePlugin {
+  apply(compiler: Compiler) {
+    if (process.env.NODE_ENV === 'production') {
+      compiler.hooks.beforeCompile.tapPromise(PLUGIN_NAME, buildSiteEntry)
+    } else {
+      const watcher: FSWatcher = chokidar.watch([SITE_EXAMPLE_GLOB, SITE_DOCS_GLOB, VARLET_CONFIG])
+      watcher.on('add', buildSiteEntry).on('unlink', buildSiteEntry).on('change', buildSiteEntry)
+
+      compiler.hooks.watchRun.tapPromise(PLUGIN_NAME, buildSiteEntry)
+    }
+  }
 }

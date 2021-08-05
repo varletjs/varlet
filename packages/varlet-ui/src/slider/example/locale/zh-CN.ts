@@ -7,5 +7,6 @@ export default {
   sliderSize: '不同大小',
   customStyle: '自定义样式',
   showLabel: '显示标签',
+  customBtn: '自定义按钮',
   validateValue: '值的校验',
 }

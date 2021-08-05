@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/haoziqaq/varlet/compare/v1.12.0...v1.13.0) (2021-07-30)
+
+**Note:** Version bump only for package @varlet/eslint-config
+
+
+
+
+
+# [1.12.0](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.12.0) (2021-07-29)
+
+
+### Bug Fixes
+
+* **cli/lint:** fix the bug of cannot get warning message ([ba849b3](https://github.com/haoziqaq/varlet/commit/ba849b3152924716d2ea20c38c769607a28e48ee))
+
+
+
+
+
+# [1.11.0](https://github.com/haoziqaq/varlet/compare/v1.10.0...v1.11.0) (2021-07-28)
+
+**Note:** Version bump only for package @varlet/eslint-config
+
+
+
+
+
+# [1.10.0](https://github.com/haoziqaq/varlet/compare/v1.9.7...v1.10.0) (2021-07-22)
+
+
+### Bug Fixes
+
+* **app-bar:** remove unused component ([4c70dbc](https://github.com/haoziqaq/varlet/commit/4c70dbc75a5ec23bdfc01e07496cfe01d5be626a))
+
+
+### Features
+
+* **ui/tabs-items:** use carousel to replace the original design ([8dd346e](https://github.com/haoziqaq/varlet/commit/8dd346ee2f2d6419bf7ec0d9fbdfa9acfba111b0))
+
+
+
+
+
 # [1.9.0](https://github.com/haoziqaq/varlet/compare/v1.8.0...v1.9.0) (2021-07-17)
 
 **Note:** Version bump only for package @varlet/eslint-config

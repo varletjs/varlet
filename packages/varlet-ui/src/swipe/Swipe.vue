@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, onUnmounted } from 'vue'
+import { defineComponent, ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useSwipeItems } from './provide'
 import { nextTickFrame } from '../utils/elements'
 import { props } from './props'
@@ -352,7 +352,14 @@ export default defineComponent({
 
     watch(() => length.value, resize)
 
-    onUnmounted(stopAutoplay)
+    onMounted(() => {
+      window.addEventListener('resize', resize)
+    })
+
+    onUnmounted(() => {
+      window.removeEventListener('resize', resize)
+      stopAutoplay()
+    })
 
     return {
       length,

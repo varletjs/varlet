@@ -113,7 +113,7 @@ import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
 import { onUnmounted, reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchPlatform } from '../../utils/components'
+import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 
 export default {
   name: 'MenuExample',

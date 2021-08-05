@@ -41,7 +41,7 @@ import Divider from '..'
 import AppBar from '../../app-bar'
 import Icon from '../../icon'
 import { pack, use } from './locale'
-import { watchLang } from '../../utils/components'
+import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'DividerExample',

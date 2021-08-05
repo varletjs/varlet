@@ -14,7 +14,7 @@ import Ripple from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
 import { onUnmounted } from 'vue'
-import { watchPlatform, watchLang } from '../../utils/components'
+import { watchPlatform, watchLang } from '@varlet/cli/site/utils'
 import { pack, use } from './locale'
 
 export default {

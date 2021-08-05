@@ -56,7 +56,7 @@ import Button from '../../button'
 import Row from '../../row'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { reactive, toRefs } from 'vue'
-import { watchLang } from '../../utils/components'
+import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 export default {

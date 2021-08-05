@@ -3,6 +3,160 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.1](https://github.com/haoziqaq/varlet/compare/v1.14.0...v1.14.1) (2021-08-04)
+
+
+### Bug Fixes
+
+* **ui/image-preview:** tap can't trigger close ([ecf7afe](https://github.com/haoziqaq/varlet/commit/ecf7afec2392678bcf65b306cdbccf23d85997c3))
+* optimize style of slider example ([8940bb6](https://github.com/haoziqaq/varlet/commit/8940bb6a712c11efca2f3eb5fd5761923db62dd3))
+
+
+
+
+
+# [1.14.0](https://github.com/haoziqaq/varlet/compare/v1.13.5...v1.14.0) (2021-08-04)
+
+
+### Bug Fixes
+
+* **ui/image-preview:** restore the default behavior of the browser picture and prohibit dragging ([4d5cbc6](https://github.com/haoziqaq/varlet/commit/4d5cbc68063b4aff18172ccb995ed74bf765bba5))
+
+
+### Features
+
+* **slider:** add button slot ([a912564](https://github.com/haoziqaq/varlet/commit/a912564752458cb8cd54f2330dba4223f5a619b1))
+
+
+
+
+
+## [1.13.5](https://github.com/haoziqaq/varlet/compare/v1.13.4...v1.13.5) (2021-07-31)
+
+**Note:** Version bump only for package @varlet/ui
+
+
+
+
+
+## [1.13.4](https://github.com/haoziqaq/varlet/compare/v1.13.3...v1.13.4) (2021-07-31)
+
+
+### Bug Fixes
+
+* **cli:** fix loose error in windows ([2a3f968](https://github.com/haoziqaq/varlet/commit/2a3f9688fceba337bf8eef1d6977bacc75311dae))
+* **ui:** fix babel config ([e5e4128](https://github.com/haoziqaq/varlet/commit/e5e41289791102ce5955abe19f903a6a58cc1cac))
+* **ui:** fix browserlist ([3f4cfeb](https://github.com/haoziqaq/varlet/commit/3f4cfeb4177403ab8723b4841a3f193d3a8ffec6))
+
+
+
+
+
+## [1.13.3](https://github.com/haoziqaq/varlet/compare/v1.13.1...v1.13.3) (2021-07-31)
+
+**Note:** Version bump only for package @varlet/ui
+
+
+
+
+
+## [1.13.1](https://github.com/haoziqaq/varlet/compare/v1.13.0...v1.13.1) (2021-07-31)
+
+
+### Bug Fixes
+
+* **ui/swipe:** the screen size changes, the size of the carousel will not change ([#112](https://github.com/haoziqaq/varlet/issues/112)) ([7110457](https://github.com/haoziqaq/varlet/commit/71104570a6192af6293de894d42ca09d9b78f0c5))
+
+
+
+
+
+# [1.13.0](https://github.com/haoziqaq/varlet/compare/v1.12.0...v1.13.0) (2021-07-30)
+
+
+### Bug Fixes
+
+* modify the style of indexbar ([ac268f1](https://github.com/haoziqaq/varlet/commit/ac268f10f4efd51b68d5a257822ad2c9b05a1d53))
+
+
+
+## [1.11.1](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.11.1) (2021-07-29)
+
+
+### Bug Fixes
+
+* **ui/sticky:** fix sticky element size error in keep-alive ([3c269a9](https://github.com/haoziqaq/varlet/commit/3c269a9c6a379a02c448e7a911c63048ee079e33))
+
+
+
+
+
+
+# [1.12.0](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.12.0) (2021-07-29)
+
+
+### Bug Fixes
+
+* **ui/input:** fix the wrong style of input ([0cd5752](https://github.com/haoziqaq/varlet/commit/0cd5752f70f6d58627f9a5f7a3f5f0fa74f43619))
+* **ui/sticky:** fix sticky element size error in keep-alive ([9f30544](https://github.com/haoziqaq/varlet/commit/9f30544764ab9f4161a20a1ee2032c10744e5a7a))
+
+
+### Features
+
+* **cli:** add babel-presets ([1c5825d](https://github.com/haoziqaq/varlet/commit/1c5825d907115b4c1b017c6fb1747cef7f72d29d))
+* **cli:** support jsx tsx ([132fade](https://github.com/haoziqaq/varlet/commit/132fade5a12de1b8c71263ee72aec364564f0f35))
+
+
+
+
+
+## [1.11.1](https://github.com/haoziqaq/varlet/compare/v1.11.0...v1.11.1) (2021-07-29)
+
+
+### Bug Fixes
+
+* **ui/sticky:** fix sticky element size error in keep-alive ([3c269a9](https://github.com/haoziqaq/varlet/commit/3c269a9c6a379a02c448e7a911c63048ee079e33))
+
+
+
+
+
+# [1.11.0](https://github.com/haoziqaq/varlet/compare/v1.10.0...v1.11.0) (2021-07-28)
+
+
+### Bug Fixes
+
+* **index-bar:** fix the bug of trigger two times change event after click anchor ([4282788](https://github.com/haoziqaq/varlet/commit/4282788e4d5b0ee576144da951dc10c86fb235fc))
+
+
+### Features
+
+* **index-bar:** add duration prop ([d115f84](https://github.com/haoziqaq/varlet/commit/d115f84998ae1422d560b27003a869d8a31aa533))
+* **index-bar:** add hide-list prop ([a433b08](https://github.com/haoziqaq/varlet/commit/a433b08ea13a2504e1f9d75552fd95243fed8d2f))
+
+
+
+
+
+# [1.10.0](https://github.com/haoziqaq/varlet/compare/v1.9.7...v1.10.0) (2021-07-22)
+
+
+### Bug Fixes
+
+* **app-bar:** remove unused component ([4c70dbc](https://github.com/haoziqaq/varlet/commit/4c70dbc75a5ec23bdfc01e07496cfe01d5be626a))
+* **style:** remove unused component ([722058d](https://github.com/haoziqaq/varlet/commit/722058df1a9ee2e5c769ca5325aff3b7bb65ebee))
+* **ui/swipe:** fix swipe scroll error ([a0c197c](https://github.com/haoziqaq/varlet/commit/a0c197c9ad109a4df45fd50e97a9805656abad62))
+
+
+### Features
+
+* **ui/tabs-items:** add scrollIntoView, distance api ([a26f329](https://github.com/haoziqaq/varlet/commit/a26f329dd7d9018f8cc29c8f11d36a229ac8a32e))
+* **ui/tabs-items:** use carousel to replace the original design ([8dd346e](https://github.com/haoziqaq/varlet/commit/8dd346ee2f2d6419bf7ec0d9fbdfa9acfba111b0))
+
+
+
+
+
 ## [1.9.7](https://github.com/haoziqaq/varlet/compare/v1.9.6...v1.9.7) (2021-07-21)
 
 

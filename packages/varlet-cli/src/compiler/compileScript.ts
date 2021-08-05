@@ -1,109 +1,112 @@
 import { transformAsync } from '@babel/core'
 import { bigCamelize, replaceExt } from '../shared/fsUtils'
-import { replaceStyleExt } from './compileStyle'
 import { writeFileSync, readFileSync, removeSync, writeFile } from 'fs-extra'
+import { extractStyleDependencies, IMPORT_CSS_RE, IMPORT_LESS_RE } from './compileStyle'
 import { resolve } from 'path'
 import type { BabelFileResult } from '@babel/core'
 
-export const IMPORT_VUE_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.vue(\s*['"`])(?!\s*['"`])/g
-export const REQUIRE_VUE_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\.{1,2}\/.+)\.vue(\s*['"`]\))(?!\s*['"`])/g
-export const IMPORT_TS_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+\.)ts(\s*['"`])(?!\s*['"`])/g
-export const REQUIRE_TS_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\.{1,2}\/.+\.)ts(\s*['"`]\))(?!\s*['"`])/g
+export const IMPORT_VUE_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.vue(\s*['"`]);?(?!\s*['"`])/g
+export const IMPORT_TS_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.ts(\s*['"`]);?(?!\s*['"`])/g
+export const IMPORT_JSX_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.jsx(\s*['"`]);?(?!\s*['"`])/g
+export const IMPORT_TSX_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.tsx(\s*['"`]);?(?!\s*['"`])/g
 
-export function replaceVueExt(script: string) {
-  const replacer = (_: any, p1: string, p2: string): string => `${p1}.js${p2}`
+const scriptReplacer = (_: any, p1: string, p2: string): string => `${p1}.js${p2}`
 
-  return script.replace(IMPORT_VUE_PATH_RE, replacer).replace(REQUIRE_VUE_PATH_RE, replacer)
-}
+export const replaceVueExt = (script: string): string => script.replace(IMPORT_VUE_PATH_RE, scriptReplacer)
 
-export function replaceTSExt(script: string) {
-  const replacer = (_: any, p1: string, p2: string): string => `${p1}js${p2}`
+export const replaceTSExt = (script: string): string => script.replace(IMPORT_TS_PATH_RE, scriptReplacer)
 
-  return script.replace(IMPORT_TS_PATH_RE, replacer).replace(REQUIRE_TS_PATH_RE, replacer)
-}
+export const replaceJSXExt = (script: string): string => script.replace(IMPORT_JSX_PATH_RE, scriptReplacer)
 
-export async function compileScript(script: string, path: string) {
+export const replaceTSXExt = (script: string): string => script.replace(IMPORT_TSX_PATH_RE, scriptReplacer)
+
+export async function compileScript(script: string, file: string) {
   let { code } = (await transformAsync(script, {
-    filename: replaceExt(path, '.ts'),
-    presets: [
-      [
-        '@babel/preset-env',
-        {
-          loose: true,
-          modules: false,
-        },
-      ],
-      '@babel/preset-typescript',
-    ],
-    plugins: ['@babel/plugin-transform-runtime'],
+    filename: file,
   })) as BabelFileResult
-  code = replaceStyleExt(code as string)
+  code = extractStyleDependencies(file, code as string, IMPORT_CSS_RE, 'css', false)
+  code = extractStyleDependencies(file, code as string, IMPORT_LESS_RE, 'less', false)
   code = replaceVueExt(code as string)
+  code = replaceTSXExt(code as string)
+  code = replaceJSXExt(code as string)
   code = replaceTSExt(code as string)
 
-  removeSync(path)
-  writeFileSync(replaceExt(path, '.js'), code, 'utf8')
+  removeSync(file)
+  writeFileSync(replaceExt(file, '.js'), code, 'utf8')
 }
 
-export async function compileScriptFile(path: string) {
-  const sources = readFileSync(path, 'utf-8')
+export async function compileScriptFile(file: string) {
+  const sources = readFileSync(file, 'utf-8')
 
-  await compileScript(sources, path)
+  await compileScript(sources, file)
 }
 
-export async function compileLibraryEntry(dir: string, componentNames: string[], exportDirNames: string[]) {
-  const imports = exportDirNames
-    .map(
-      (exportDirNames: string) =>
-        `import ${bigCamelize(exportDirNames)}, { _${bigCamelize(exportDirNames)}Component } from './${exportDirNames}'`
+export async function compileLibraryEntry(dir: string, publicDirs: string[]) {
+  const imports: string[] = []
+  const plugins: string[] = []
+  const constInternalComponents: string[] = []
+  const cssImports: string[] = []
+  const lessImports: string[] = []
+  const publicComponents: string[] = []
+
+  publicDirs.forEach((dirname: string) => {
+    const publicComponent = bigCamelize(dirname)
+
+    publicComponents.push(publicComponent)
+    imports.push(`import ${publicComponent}, * as ${publicComponent}Module from './${dirname}'`)
+    constInternalComponents.push(
+      `export const _${publicComponent}Component = ${publicComponent}Module._${publicComponent}Component || {}`
     )
-    .join('\n')
+    plugins.push(`${publicComponent}.install && app.use(${publicComponent})`)
+    cssImports.push(`import './${dirname}/style'`)
+    lessImports.push(`import './${dirname}/style/less'`)
+  })
 
-  const install = `\
+  const install = `
 function install(app) {
-  ${exportDirNames
-    .map((exportDirName: string) => `${bigCamelize(exportDirName)}.install && app.use(${bigCamelize(exportDirName)})`)
-    .join('\n  ')}
+  ${plugins.join('\n  ')}
 }
 `
-  const exports = `\
+
+  const indexTemplate = `\
+${imports.join('\n')}\n
+${constInternalComponents.join('\n')}\n
+${install}
 export {
   install,
-  ${exportDirNames
-    .map((exportDirName: string) => `${bigCamelize(exportDirName)},\n  _${bigCamelize(exportDirName)}Component`)
-    .join(',\n  ')}
+  ${publicComponents.join(',\n  ')}
 }
 
 export default {
   install,
-  ${exportDirNames.map((exportDirName: string) => `${bigCamelize(exportDirName)}`).join(',\n  ')},
-}\
+  ${publicComponents.join(',\n  ')}
+}
 `
 
-  const template = `\
-${imports}\n
-${install}
-${exports}
-`
-
-  const cssImports = componentNames.map((componentName: string) => `import './${componentName}/style'`).join('\n')
   const styleTemplate = `\
-${cssImports}
+${cssImports.join('\n')}
 `
 
   const umdTemplate = `\
-${imports}\n
+${imports.join('\n')}\n
+${cssImports.join('\n')}\n
 ${install}
-${cssImports}\n
-${exports}
+export {
+  install,
+  ${publicComponents.join(',\n  ')}
+}
+
+export default {
+  install,
+  ${publicComponents.join(',\n  ')}
+}
 `
 
-  const lessImports = componentNames.map((componentName: string) => `import './${componentName}/style/less'`).join('\n')
   const lessTemplate = `\
-${lessImports}
+${lessImports.join('\n')}
 `
   await Promise.all([
-    writeFile(resolve(dir, 'index.js'), template, 'utf-8'),
+    writeFile(resolve(dir, 'index.js'), indexTemplate, 'utf-8'),
     writeFile(resolve(dir, 'umdIndex.js'), umdTemplate, 'utf-8'),
     writeFile(resolve(dir, 'style.js'), styleTemplate, 'utf-8'),
     writeFile(resolve(dir, 'less.js'), lessTemplate, 'utf-8'),

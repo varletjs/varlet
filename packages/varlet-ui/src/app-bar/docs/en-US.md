@@ -213,9 +213,9 @@ export default {
 
 | Slot | Description | Arguments |
 | --- | --- | --- |
-| `default` | Customize the title content to override the `title` content | - |
-| `left` | Insert the content to the left of the AppBar | - |
-| `right` | Insert the content to the right of the AppBar | - |
+| `default` | Customize the title content to override the `title` content | `-` |
+| `left` | Insert the content to the left of the AppBar | `-` |
+| `right` | Insert the content to the right of the AppBar | `-` |
 
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)

@@ -1,16 +1,12 @@
 <template>
-  <div class="var-index-bar__example">
-    <var-index-bar @change="change">
-      <div v-for="item in list" :key="item">
-        <var-index-anchor :index="item" class="var-index-anchor__example">
-          {{ pack.title }} {{ item }}
-        </var-index-anchor>
-        <var-cell>{{ item }} {{ pack.text }}</var-cell>
-        <var-cell>{{ item }} {{ pack.text }}</var-cell>
-        <var-cell>{{ item }} {{ pack.text }}</var-cell>
-      </div>
-    </var-index-bar>
-  </div>
+  <var-index-bar @change="change" :sticky-offset-top="50" duration="300">
+    <div v-for="item in list" :key="item">
+      <var-index-anchor :index="item" class="var-index-anchor__example"> {{ pack.title }} {{ item }} </var-index-anchor>
+      <var-cell>{{ item }} {{ pack.text }}</var-cell>
+      <var-cell>{{ item }} {{ pack.text }}</var-cell>
+      <var-cell>{{ item }} {{ pack.text }}</var-cell>
+    </div>
+  </var-index-bar>
 </template>
 
 <script>
@@ -19,7 +15,7 @@ import IndexAnchor from '../../index-anchor/IndexAnchor.vue'
 import IndexBar from '..'
 import Cell from '../../cell'
 import { pack, use } from './locale'
-import { watchLang } from '../../utils/components'
+import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'IndexBarExample',
@@ -53,18 +49,12 @@ export default {
 </script>
 
 <style lang="less">
-.var-index-bar__example {
-  overflow: auto;
-  height: calc(100vh - 50px);
-  margin-bottom: -20px;
-
-  .var-index-anchor__example {
-    background: #e7edf7;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    padding: 0 12px;
-    color: #2e67ba;
-  }
+.var-index-anchor__example {
+  background: #e7edf7;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  color: #2e67ba;
 }
 </style>

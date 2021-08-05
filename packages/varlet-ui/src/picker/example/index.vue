@@ -15,10 +15,10 @@ import Picker from '../index'
 import Button from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import area from '../../../json/area.json'
+import context from '../../context'
 import { onUnmounted, ref } from 'vue'
 import { use, pack } from './locale'
-import { watchLang, watchPlatform } from '../../utils/components'
-import context from '../../context'
+import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 
 export default {
   name: 'PickerExample',

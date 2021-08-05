@@ -10,7 +10,9 @@ export const UMD_DIR = resolve(CWD, 'umd')
 export const TYPES_DIR = resolve(CWD, 'types')
 export const ROOT_DOCS_DIR = resolve(CWD, 'docs')
 export const ESLINT_EXTENSIONS = ['.vue', '.ts', '.js', '.mjs']
-export const EXTENSIONS = ['.vue', '.ts', '.js', '.less', '.css']
+export const WEBPACK_RESOLVE_EXTENSIONS = ['.js', '.jsx', '.vue', '.ts', '.tsx', '.css', '.less']
+export const SCRIPTS_EXTENSIONS = ['.tsx', '.ts', '.jsx', '.js']
+export const PUBLIC_DIR_INDEXES = ['index.vue', 'index.tsx', 'index.ts', 'index.jsx', 'index.js']
 export const STYLE_DIR_NAME = 'style'
 export const EXAMPLE_DIR_NAME = 'example'
 export const DOCS_DIR_NAME = 'docs'
@@ -20,12 +22,15 @@ export const PRIMARY_COLOR = '#3a7afe'
 
 // site
 export const SITE_MOBILE_MAIN = resolve(__dirname, '../../site/mobile/main.ts')
-export const SITE_MOBILE = resolve(__dirname, '../../site/mobile')
 export const SITE_PC_MAIN = resolve(__dirname, '../../site/pc/main.ts')
-export const SITE_PC = resolve(__dirname, '../../site/pc')
-export const SITE_CONFIG = resolve(__dirname, '../../site/site.config.json')
+export const SITE = resolve(__dirname, '../../site')
 export const SITE_OUTPUT_PATH = resolve(CWD, 'site')
 export const SITE_PUBLIC_PATH = resolve(CWD, 'public')
+export const SITE_PC_ROUTES = resolve(CWD, '.varlet/pc.routes.ts')
+export const SITE_MOBILE_ROUTES = resolve(CWD, '.varlet/mobile.routes.ts')
+export const SITE_CONFIG = resolve(CWD, '.varlet/site.config.json')
+export const SITE_DOCS_GLOB = resolve(CWD, './docs/**')
+export const SITE_EXAMPLE_GLOB = resolve(CWD, './src/**/example/**')
 
 // template highlight
 export const HL_COMPONENT_NAME_RE = /.*(\/|\\)(.+)(\/|\\)docs(\/|\\)/

@@ -92,7 +92,7 @@ import SwipeItem from '../../swipe-item'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Snackbar from '../../snackbar'
 import { use, pack } from './locale'
-import { watchLang } from '../../utils/components'
+import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'SwipeExample',

@@ -54,10 +54,10 @@ import Popup from '..'
 import Button from '../../button'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { watchLang, watchPlatform } from '../../utils/components'
+import context from '../../context'
+import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 import { onUnmounted, reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
-import context from '../../context'
 
 export default {
   name: 'PopupExample',
