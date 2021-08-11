@@ -1,4 +1,4 @@
-import { ConfigAPI } from '@babel/core'
+import type { ConfigAPI } from '@babel/core'
 
 type PresetOption = {
   loose?: boolean
