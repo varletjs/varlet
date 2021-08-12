@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.2](https://github.com/haoziqaq/varlet/compare/v1.14.1...v1.14.2) (2021-08-12)
+
+
+### Bug Fixes
+
+* **ui/input:** when the value is a number, the input type is not number ([34d750a](https://github.com/haoziqaq/varlet/commit/34d750ace1a2b338dde41680924534aed446d286))
+
+
+
+
+
 ## [1.14.1](https://github.com/haoziqaq/varlet/compare/v1.14.0...v1.14.1) (2021-08-04)
 
 
