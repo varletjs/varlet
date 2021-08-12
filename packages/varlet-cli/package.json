@@ -30,7 +30,7 @@
     "dev": "tsc --watch",
     "build": "tsc"
   },
-  "gitHead": "7638540be5f5159578bc7a616e365f1bb6d0494f",
+  "gitHead": "ee9c3866bedad96c86365b0f9888a3a6bb781b1f",
   "dependencies": {
     "@babel/core": "^7.14.8",
     "@babel/preset-env": "^7.14.8",
