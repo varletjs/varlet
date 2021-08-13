@@ -111,28 +111,34 @@ export default defineComponent({
       return minSec
     })
 
+    const isDisableMinSec = (time?: string, isDisable?: boolean): boolean => {
+      time = time ?? (props.type === 'minute' ? props.time.minute : props.time.second)
+
+      const disableMethod = props.type === 'minute' ? getIsDisableMinute : getIsDisableSecond
+
+      const values = {
+        time: toNumber(time),
+        format: props.format,
+        ampm: props.ampm,
+        hour: props.time.hour,
+        minute: toNumber(props.time.minute),
+        max: props.max,
+        min: props.min,
+        allowedTime: props.allowedTime,
+        disableHour: disableHour.value,
+      }
+
+      if (isDisable && props.type === 'minute') Reflect.deleteProperty(values, 'minute')
+
+      return disableMethod(values)
+    }
+
     const getHandleColor = () => {
       if (activeItemIndex.value === undefined) return props.color
       const hour = props.isInner ? hours24[activeItemIndex.value] : timeScales.value[activeItemIndex.value]
 
       if (timeScales.value === minSec) {
-        const time = props.type === 'minute' ? toNumber(props.time.minute) : toNumber(props.time.second)
-
-        const disableMethod = props.type === 'minute' ? getIsDisableMinute : getIsDisableSecond
-
-        const values = {
-          time,
-          format: props.format,
-          ampm: props.ampm,
-          minute: toNumber(props.time.minute),
-          hour: props.time.hour,
-          max: props.max,
-          min: props.min,
-          allowedTime: props.allowedTime,
-          disableHour: disableHour.value,
-        }
-
-        return disableMethod(values) ? '#bdbdbd' : props.color
+        return isDisableMinSec() ? '#bdbdbd' : props.color
       }
 
       return isDisable(hour) ? '#bdbdbd' : props.color
@@ -152,36 +158,7 @@ export default defineComponent({
         return disable24HourIndex.value.includes(timeIndex)
       }
 
-      if (props.type === 'minute') {
-        const values = {
-          time: toNumber(time),
-          format: props.format,
-          ampm: props.ampm,
-          hour: props.time.hour,
-          max: props.max,
-          min: props.min,
-          allowedTime: props.allowedTime,
-          disableHour: disableHour.value,
-        }
-
-        return getIsDisableMinute(values)
-      }
-
-      if (props.type === 'second') {
-        const values = {
-          time: toNumber(time),
-          format: props.format,
-          ampm: props.ampm,
-          hour: props.time.hour,
-          minute: toNumber(props.time.minute),
-          max: props.max,
-          min: props.min,
-          allowedTime: props.allowedTime,
-          disableHour: disableHour.value,
-        }
-
-        return getIsDisableSecond(values)
-      }
+      return isDisableMinSec(time, true)
     }
 
     const getStyle = (index: number, hour: string, inner: boolean) => {
