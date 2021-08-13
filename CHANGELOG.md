@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0](https://github.com/haoziqaq/varlet/compare/v1.14.2...v1.15.0) (2021-08-13)
+
+
+### Features
+
+* **time-picker:** add allowedTime ([b86bd84](https://github.com/haoziqaq/varlet/commit/b86bd8420591a0bcffcae7442f5b9b7ab2546613))
+
+
+
+
+
 ## [1.14.2](https://github.com/haoziqaq/varlet/compare/v1.14.1...v1.14.2) (2021-08-12)
 
 
