@@ -54,12 +54,45 @@ use `use-seconds` prop to show seconds
 ```
 
 ### Time Limit
-
-Use `min` and `max` prop to allow the maximum and minimum time.
+Use `min`, `max` and `allowed-time` prop to allow the maximum and minimum time.
 
 ```html
-<var-time-picker v-model="date" format="24hr" min="2:28:38" max="19:40:22" />
+<var-time-picker
+  v-model="date"
+  format="24hr"
+  use-seconds
+  min="2:28:38"
+  max="19:40:22"
+  :allowed-time="allowedTime"
+/>
 ```
+```javascript
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const date = ref('07:10:12')
+
+    const allowedTime = {
+      hours(hour) {
+        return hour % 2 === 0
+      },
+      minutes(minute) {
+        return minute % 15 !== 0
+      },
+      seconds(second) {
+        return second % 2 !== 0
+      },
+    }
+    
+    return {
+      date,
+      allowedTime
+    }
+  }
+}
+```
+
 ### Custom
 
 ```html
@@ -105,8 +138,17 @@ export default {
 | `shadow` | Whether to add a shadow | _boolean_ | `false` |
 | `min` | Minimum allowed time (ISO 8601 format) | _string_ | `-` |
 | `max` | Maximum allowed time (ISO 8601 format) | _string_ | `-` |
+| `allowed-time` | Restricts which time can be selected | _AllowedTime_ | `-` |
 | `readonly` | Readonly | _boolean_ | `false` |
 | `use-seconds` | Whether to display seconds | _boolean_ | `false` |
+
+### TimePicker AllowedTime
+
+| prop | Description | Type | Default |
+| ----- | -------------- | -------- | ---------- |
+| `hours` | Limit the optional `hour` | _Function: hour => boolean_ | `-` |
+| `minutes` | Limit the optional `minute` | _Function: minute => boolean_ | `-` |
+| `seconds` | Limit the optional `second` | _Function: second => boolean_ | `-` |
 
 ### Events
 

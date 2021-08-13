@@ -61,6 +61,7 @@
             :color="color"
             :is-inner="isInner"
             :format="format"
+            :allowed-time="allowedTime"
             :rad="getRad"
             :time="time"
             :prevent-next-update="isPreventNextUpdate"
@@ -244,6 +245,7 @@ export default defineComponent({
         max: props.max,
         min: props.min,
         disableHour,
+        allowedTime: props.allowedTime,
       }
       isDisableMinute.value = getIsDisableMinute(values)
 
@@ -266,6 +268,7 @@ export default defineComponent({
         max: props.max,
         min: props.min,
         disableHour,
+        allowedTime: props.allowedTime,
       }
 
       if (!getIsDisableSecond(values)) secondRad.value = rad

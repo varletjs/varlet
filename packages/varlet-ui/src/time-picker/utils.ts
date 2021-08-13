@@ -1,5 +1,5 @@
 import { hours24, hoursAmpm } from './props'
-import type { AmPm } from './props'
+import type { AmPm, AllowedTime } from './props'
 import { toNumber } from '../utils/shared'
 
 type DisableProps = {
@@ -11,6 +11,7 @@ type DisableProps = {
   max: string | undefined
   min: string | undefined
   disableHour: Array<string>
+  allowedTime: AllowedTime | undefined
 }
 
 export const notConvert = (format: string, ampm: AmPm | undefined): boolean => format === '24hr' || ampm === 'am'
@@ -38,57 +39,66 @@ export const getNumberTime = (time: string) => {
 export const getIsDisableMinute = (values: Omit<DisableProps, 'minute'>): boolean => {
   const { time, format, ampm, hour, max, min, disableHour } = values
   const { hourStr, hourNum } = convertHour(format, ampm, hour)
+  let isBetweenMinMax = false
+  let isAllow = false
 
   if (disableHour.includes(hourStr)) return true
 
   if (max && !min) {
     const { hour: maxHour, minute: maxMinute } = getNumberTime(max)
-    return maxHour === hourNum && time > maxMinute
+    isBetweenMinMax = maxHour === hourNum && time > maxMinute
   }
 
   if (!max && min) {
     const { hour: minHour, minute: minMinute } = getNumberTime(min)
 
-    return minHour === hourNum && time < minMinute
+    isBetweenMinMax = minHour === hourNum && time < minMinute
   }
 
   if (max && min) {
     const { hour: maxHour, minute: maxMinute } = getNumberTime(max)
     const { hour: minHour, minute: minMinute } = getNumberTime(min)
 
-    return (minHour === hourNum && time < minMinute) || (maxHour === hourNum && time > maxMinute)
+    isBetweenMinMax = (minHour === hourNum && time < minMinute) || (maxHour === hourNum && time > maxMinute)
   }
-  return false
+
+  if (values.allowedTime?.minutes) isAllow = values.allowedTime?.minutes(time)
+
+  return isBetweenMinMax || isAllow
 }
 
 export const getIsDisableSecond = (values: DisableProps): boolean => {
   const { time, format, ampm, hour, minute, max, min, disableHour } = values
   const { hourStr, hourNum } = convertHour(format, ampm, hour)
+  let isBetweenMinMax = false
+  let isAllow = false
 
   if (disableHour.includes(hourStr)) return true
 
   if (max && !min) {
     const { hour: maxHour, minute: maxMinute, second: maxSecond } = getNumberTime(max)
 
-    return (maxHour === hourNum && maxMinute < minute) || (maxMinute === minute && time > maxSecond)
+    isBetweenMinMax = (maxHour === hourNum && maxMinute < minute) || (maxMinute === minute && time > maxSecond)
   }
 
   if (!max && min) {
     const { hour: minHour, minute: minMinute, second: minSecond } = getNumberTime(min)
 
-    return (minHour === hourNum && minMinute > minute) || (minMinute === minute && time > minSecond)
+    isBetweenMinMax = (minHour === hourNum && minMinute > minute) || (minMinute === minute && time > minSecond)
   }
 
   if (max && min) {
     const { hour: maxHour, minute: maxMinute, second: maxSecond } = getNumberTime(max)
     const { hour: minHour, minute: minMinute, second: minSecond } = getNumberTime(min)
 
-    return (
+    isBetweenMinMax =
       (maxHour === hourNum && maxMinute < minute) ||
       (minHour === hourNum && minMinute > minute) ||
       (maxHour === hourNum && maxMinute === minute && time > maxSecond) ||
       (minHour === hourNum && minMinute === minute && time < minSecond)
-    )
   }
-  return false
+
+  if (values.allowedTime?.seconds) isAllow = values.allowedTime?.seconds(time)
+
+  return isBetweenMinMax || isAllow
 }
