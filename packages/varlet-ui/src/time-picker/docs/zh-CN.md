@@ -56,11 +56,45 @@ export default {
 
 ### 时间限制
 
-通过 `min` 和 `max` 属性来控制可选择的时间范围。
+通过 `min`、`max` 和 `allowed-time` 属性来控制可选择的时间范围。
 
 ```html
-<var-time-picker v-model="date" format="24hr" min="2:28:38" max="19:40:22" />
+<var-time-picker
+  v-model="date"
+  format="24hr"
+  use-seconds
+  min="2:28:38"
+  max="19:40:22"
+  :allowed-time="allowedTime"
+/>
 ```
+```javascript
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const date = ref('07:10:12')
+
+    const allowedTime = {
+      hours(hour) {
+        return hour % 2 === 0
+      },
+      minutes(minute) {
+        return minute % 15 !== 0
+      },
+      seconds(second) {
+        return second % 2 !== 0
+      },
+    }
+    
+    return {
+      date,
+      allowedTime
+    }
+  }
+}
+```
+
 ### 自定义
 
 ```html
@@ -106,8 +140,17 @@ export default {
 | `shadow` | 是否添加阴影 | _boolean_ | `false` |
 | `min` | 允许的最小时间（ISO 8601格式） | _string_ | `-` |
 | `max` | 允许的最大时间（ISO 8601格式） | _string_ | `-` |
+| `allowed-time` | 限制可以选择的时间 | _AllowedTime_ | `-` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `use-seconds` | 是否显示秒 | _boolean_ | `false` |
+
+### TimePicker AllowedTime
+
+| 参数 | 说明 | 类型 | 默认值 |
+| ----- | -------------- | -------- | ---------- |
+| `hours` | 限制可选的 `hour` | _Function: hour => boolean_ | `-` |
+| `minutes` | 限制可选的 `minute` | _Function: minute => boolean_ | `-` |
+| `seconds` | 限制可选的 `second` | _Function: second => boolean_ | `-` |
 
 ### 事件
 

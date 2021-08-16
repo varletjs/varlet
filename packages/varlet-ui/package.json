@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "1.14.1",
+  "version": "1.15.0",
   "description": "A material like components library",
   "module": "es/index.js",
   "typings": "types/index.d.ts",
@@ -45,9 +45,9 @@
   "peerDependencies": {
     "vue": "^3.0.0"
   },
-  "gitHead": "04cbbd571a061f5d5651515132a8ef079de5673e",
+  "gitHead": "ee9c3866bedad96c86365b0f9888a3a6bb781b1f",
   "devDependencies": {
-    "@varlet/cli": "^1.14.1"
+    "@varlet/cli": "^1.15.0"
   },
   "dependencies": {
     "@varlet/icons": "^1.0.0",

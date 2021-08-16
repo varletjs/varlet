@@ -37,7 +37,7 @@ import { hoursAmpm, hours24, minSec } from './props'
 import { notConvert, convertHour, getIsDisableMinute, getIsDisableSecond, getNumberTime } from './utils'
 import { toNumber } from '../utils/shared'
 import type { ComputedRef, Ref, PropType } from 'vue'
-import type { Time, AmPm, Format } from './props'
+import type { Time, AmPm, Format, AllowedTime } from './props'
 
 export default defineComponent({
   name: 'Clock',
@@ -52,6 +52,9 @@ export default defineComponent({
     format: {
       type: String as PropType<Format>,
       default: 'ampm',
+    },
+    allowedTime: {
+      type: Object as PropType<AllowedTime>,
     },
     time: {
       type: Object as PropType<Time>,
@@ -108,27 +111,34 @@ export default defineComponent({
       return minSec
     })
 
+    const isDisableMinSec = (time?: string, isDisable?: boolean): boolean => {
+      time = time ?? (props.type === 'minute' ? props.time.minute : props.time.second)
+
+      const disableMethod = props.type === 'minute' ? getIsDisableMinute : getIsDisableSecond
+
+      const values = {
+        time: toNumber(time),
+        format: props.format,
+        ampm: props.ampm,
+        hour: props.time.hour,
+        minute: toNumber(props.time.minute),
+        max: props.max,
+        min: props.min,
+        allowedTime: props.allowedTime,
+        disableHour: disableHour.value,
+      }
+
+      if (isDisable && props.type === 'minute') Reflect.deleteProperty(values, 'minute')
+
+      return disableMethod(values)
+    }
+
     const getHandleColor = () => {
       if (activeItemIndex.value === undefined) return props.color
       const hour = props.isInner ? hours24[activeItemIndex.value] : timeScales.value[activeItemIndex.value]
 
       if (timeScales.value === minSec) {
-        const time = props.type === 'minute' ? toNumber(props.time.minute) : toNumber(props.time.second)
-
-        const disableMethod = props.type === 'minute' ? getIsDisableMinute : getIsDisableSecond
-
-        const values = {
-          time,
-          format: props.format,
-          ampm: props.ampm,
-          minute: toNumber(props.time.minute),
-          hour: props.time.hour,
-          max: props.max,
-          min: props.min,
-          disableHour: disableHour.value,
-        }
-
-        return disableMethod(values) ? '#bdbdbd' : props.color
+        return isDisableMinSec() ? '#bdbdbd' : props.color
       }
 
       return isDisable(hour) ? '#bdbdbd' : props.color
@@ -148,34 +158,7 @@ export default defineComponent({
         return disable24HourIndex.value.includes(timeIndex)
       }
 
-      if (props.type === 'minute') {
-        const values = {
-          time: toNumber(time),
-          format: props.format,
-          ampm: props.ampm,
-          hour: props.time.hour,
-          max: props.max,
-          min: props.min,
-          disableHour: disableHour.value,
-        }
-
-        return getIsDisableMinute(values)
-      }
-
-      if (props.type === 'second') {
-        const values = {
-          time: toNumber(time),
-          format: props.format,
-          ampm: props.ampm,
-          hour: props.time.hour,
-          minute: toNumber(props.time.minute),
-          max: props.max,
-          min: props.min,
-          disableHour: disableHour.value,
-        }
-
-        return getIsDisableSecond(values)
-      }
+      return isDisableMinSec(time, true)
     }
 
     const getStyle = (index: number, hour: string, inner: boolean) => {
@@ -274,8 +257,8 @@ export default defineComponent({
     )
 
     watch(
-      [() => props.max, () => props.min],
-      ([max, min]) => {
+      [() => props.max, () => props.min, () => props.allowedTime],
+      ([max, min, allowedTime]) => {
         disableHour.value = []
         if (max && !min) {
           const { hour: maxHour } = getNumberTime(max)
@@ -300,6 +283,14 @@ export default defineComponent({
           const disableAmpmHours = hoursAmpm.filter((hour) => toNumber(hour) < minHour || toNumber(hour) > maxHour)
           const disable24Hours = hours24.filter((hour) => toNumber(hour) < minHour || toNumber(hour) > maxHour)
           disableHour.value = [...disableAmpmHours, ...disable24Hours]
+        }
+
+        if (allowedTime?.hours) {
+          const { hours } = allowedTime
+
+          const disableAmpmHours = hoursAmpm.filter((hour) => !hours(toNumber(hour)))
+          const disable24Hours = hours24.filter((hour) => !hours(toNumber(hour)))
+          disableHour.value = [...new Set([...disableHour.value, ...disableAmpmHours, ...disable24Hours])]
         }
 
         disable24HourIndex.value = disableHour.value

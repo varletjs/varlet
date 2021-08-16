@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0](https://github.com/haoziqaq/varlet/compare/v1.14.2...v1.15.0) (2021-08-13)
+
+
+### Features
+
+* **time-picker:** add allowedTime ([b86bd84](https://github.com/haoziqaq/varlet/commit/b86bd8420591a0bcffcae7442f5b9b7ab2546613))
+
+
+
+
+
+## [1.14.2](https://github.com/haoziqaq/varlet/compare/v1.14.1...v1.14.2) (2021-08-12)
+
+
+### Bug Fixes
+
+* **ui/input:** when the value is a number, the input type is not number ([34d750a](https://github.com/haoziqaq/varlet/commit/34d750ace1a2b338dde41680924534aed446d286))
+
+
+
+
+
 ## [1.14.1](https://github.com/haoziqaq/varlet/compare/v1.14.0...v1.14.1) (2021-08-04)
 
 

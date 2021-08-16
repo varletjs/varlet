@@ -1,11 +1,4 @@
-import {
-  JEST_MEDIA_MOCK,
-  JEST_STYLE_MOCK,
-  DOCS_DIR_NAME,
-  TESTS_DIR_NAME,
-  EXAMPLE_DIR_NAME,
-  // CWD
-} from '../shared/constant'
+import { JEST_MEDIA_MOCK, JEST_STYLE_MOCK, DOCS_DIR_NAME, TESTS_DIR_NAME, EXAMPLE_DIR_NAME } from '../shared/constant'
 
 module.exports = {
   moduleNameMapper: {

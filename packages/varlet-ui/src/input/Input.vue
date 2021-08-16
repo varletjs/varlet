@@ -117,6 +117,19 @@ export default defineComponent({
     const el: Ref<HTMLInputElement | null> = ref(null)
     const isFocus: Ref<boolean> = ref(false)
     const isNumberValue: ComputedRef<boolean> = computed(() => isNumber(props.modelValue))
+    const type: ComputedRef<'number' | 'text' | 'password'> = computed(() => {
+      const { type } = props
+
+      if (type === 'password') {
+        return type
+      }
+
+      if (isNumberValue.value) {
+        return 'number'
+      }
+
+      return 'text'
+    })
     const maxlengthText: ComputedRef<string> = computed(() => {
       const { maxlength, modelValue } = props
 
@@ -244,6 +257,7 @@ export default defineComponent({
 
     return {
       el,
+      type,
       id,
       isFocus,
       errorMessage,

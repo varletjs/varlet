@@ -1,6 +1,6 @@
 import { ensureDir, readdir, writeFile } from 'fs-extra'
 import { TYPES_DIR } from '../shared/constant'
-import { bigCamelize, camelize } from '../shared/fsUtils'
+import { bigCamelize } from '../shared/fsUtils'
 import { resolve } from 'path'
 
 export async function compileTypes() {
@@ -15,7 +15,7 @@ export async function compileTypes() {
   ignoreEntryDir.forEach((filename) => {
     const componentName = bigCamelize(filename.slice(0, filename.indexOf('.d.ts')))
 
-    exports.push(`export * from './${camelize(componentName)}'`)
+    exports.push(`export * from './${componentName}'`)
   })
 
   const template = `\

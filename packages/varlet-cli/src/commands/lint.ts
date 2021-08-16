@@ -1,8 +1,9 @@
 import execa from 'execa'
-import ora, { Ora } from 'ora'
+import ora from 'ora'
 import { CWD, ESLINT_EXTENSIONS } from '../shared/constant'
 import { isDir } from '../shared/fsUtils'
 import { resolve } from 'path'
+import type { Ora } from 'ora'
 
 export async function lint() {
   let spinner: Ora
