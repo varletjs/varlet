@@ -1,10 +1,10 @@
 import webpack from 'webpack'
+import { resolve } from 'path'
+import { copy, ensureFileSync, readdir, removeSync } from 'fs-extra'
 import logger from '../shared/logger'
 import { EXAMPLE_DIR_NAME, TESTS_DIR_NAME, DOCS_DIR_NAME, SRC_DIR, ES_DIR, STYLE_DIR_NAME } from '../shared/constant'
-import { copy, ensureFileSync, readdir, removeSync } from 'fs-extra'
 import { getPublicDirs, isDir, isLess, isScript, isSFC } from '../shared/fsUtils'
 import { compileSFC } from './compileSFC'
-import { resolve } from 'path'
 import { compileLibraryEntry, compileScriptFile } from './compileScript'
 import { compileLess } from './compileStyle'
 import { getUmdConfig } from '../config/webpack.umd.config'
@@ -14,17 +14,12 @@ export function compileUMD() {
     const config = getUmdConfig()
 
     webpack(config, (err, stats: any) => {
-      if (err) {
-        logger.error(err.toString())
+      if (err || stats?.hasErrors()) {
+        logger.error(err?.toString() || stats)
         reject()
       }
-      if (stats?.hasErrors()) {
-        logger.error(stats)
-        reject()
-      }
-      if (!err && !stats?.hasErrors()) {
-        resolve()
-      }
+
+      resolve()
     })
   })
 }
