@@ -171,12 +171,6 @@ export function mockTranslate() {
   }
 }
 
-interface MockFileReaderCtx {
-  result: string
-  onload: () => void
-  readAsDataURL: () => void
-}
-
 export function mockFileReader(url: string) {
   const originMethod = window.FileReader
 
