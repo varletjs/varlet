@@ -1,5 +1,5 @@
 import hash from 'hash-sum'
-import { readFile, remove, writeFileSync } from 'fs-extra'
+import { readFile, writeFileSync } from 'fs-extra'
 import { parse, compileTemplate, compileStyle } from '@vue/compiler-sfc'
 import { replaceExt } from '../shared/fsUtils'
 import { compileScript } from './compileScript'
@@ -60,7 +60,7 @@ export async function compileSFC(sfc: string) {
     // style
     for (let index = 0; index < styles.length; index++) {
       const style: SFCStyleBlock = styles[index]
-      const file = replaceExt(sfc, `Sfc${index === 0 ? '' : index}.${style.lang}`)
+      const file = replaceExt(sfc, `Sfc${index || ''}.${style.lang}`)
       let { code } = compileStyle({
         source: style.content,
         filename: file,
@@ -71,7 +71,5 @@ export async function compileSFC(sfc: string) {
       writeFileSync(file, clearEmptyLine(code), 'utf-8')
       style.lang === 'less' && (await compileLess(file))
     }
-
-    await remove(sfc)
   }
 }
