@@ -73,11 +73,13 @@ ${imports.join('\n')}\n
 ${constInternalComponents.join('\n')}\n
 ${install}
 export {
+  install,
   ${publicComponents.join(',\n  ')}
 }
 
 export default {
-  install
+  install,
+  ${publicComponents.join(',\n  ')}
 }
 `
 
