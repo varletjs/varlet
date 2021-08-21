@@ -1,5 +1,6 @@
 import { reactive } from 'vue'
 import { Progress } from '@varlet/ui'
+// @ts-ignore
 import { mountInstance } from '@varlet/ui/es/utils/components'
 
 export function useProgress() {
