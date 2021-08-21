@@ -121,8 +121,8 @@ export default {
   color: #555;
 
   &:hover {
-    background: #edf5ff;
-    color: @color-primary;
+    color: var(--site-color-mobile-cell-hover);
+    background: var(--site-color-mobile-cell-hover-background);
   }
 }
 </style>

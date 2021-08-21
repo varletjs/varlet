@@ -1,7 +1,17 @@
 <template>
-  <div style="position: relative">
+  <div
+    style="position: relative"
+    :style="{
+      '--site-color-mobile-cell-hover': themes['color-mobile-cell-hover'],
+      '--site-color-mobile-cell-hover-background': themes['color-mobile-cell-hover-background']
+    }"
+  >
     <header>
-      <var-app-bar :title="bigCamelizeComponentName" title-position="center">
+      <var-app-bar
+        :title="bigCamelizeComponentName"
+        title-position="center"
+        :color="themes['color-app-bar']"
+      >
         <template #left v-if="showBackIcon">
           <var-button round @click="back" color="transparent" text-color="#fff" text>
             <var-icon name="chevron-left" :size="28" />
@@ -62,6 +72,7 @@ export default defineComponent({
     const languages: Ref<Record<string, string>> = ref(get(config, 'mobile.header.i18n'))
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
     const redirect = get(config, 'mobile.redirect', '')
+    const themes = ref(get(config, 'themes'))
 
     const changeLanguage = (lang) => {
       language.value = lang
@@ -86,6 +97,7 @@ export default defineComponent({
     )
 
     return {
+      themes,
       bigCamelizeComponentName,
       showBackIcon,
       showMenu,

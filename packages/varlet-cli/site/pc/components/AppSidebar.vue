@@ -12,7 +12,7 @@
       v-ripple="{
         touchmoveForbid: false,
         disabled: item.type === menuTypes.TITLE,
-        color: '#2979ff'
+        color: themes['color-side-bar']
       }"
       @click="changeRoute(item)"
     >
@@ -27,9 +27,10 @@
 import config from '@config'
 import '@varlet/ui/es/styles/elevation.less'
 import { MenuTypes } from '../../utils'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import type { PropType } from 'vue'
 import type { Menu } from '../App'
+import { get } from 'lodash'
 
 export default {
   name: 'AppSidebar',
@@ -47,6 +48,7 @@ export default {
   emits: ['change'],
   setup(props, { emit }) {
     const menuTypes = reactive(MenuTypes)
+    const themes = ref(get(config, 'themes'))
 
     const changeRoute = (item) => {
       if (item.type === MenuTypes.TITLE || props.menuName === item.doc) {
@@ -58,6 +60,7 @@ export default {
 
     return {
       menuTypes,
+      themes,
       changeRoute
     }
   }
@@ -102,22 +105,22 @@ export default {
       transition: color 0.2s;
 
       &:hover {
-        color: @color-primary;
+        color: var(--site-color-side-bar);
       }
     }
 
     &--active {
       position: relative;
-      background: #2b79fc21;
+      background: var(--site-color-side-bar-active-background);
 
       span {
-        color: @color-primary;
+        color: var(--site-color-side-bar);
       }
 
       &::before {
         display: block;
         content: '';
-        background: @color-primary;
+        background: var(--site-color-side-bar);
         width: 4px;
         height: 40px;
         position: absolute;

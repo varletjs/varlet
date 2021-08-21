@@ -9,6 +9,7 @@ import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { get } from 'lodash'
 import { useProgress } from '../useProgress'
+import '../var.less'
 
 const defaultLanguage = get(config, 'defaultLanguage')
 const redirect = get(config, 'pc.redirect')

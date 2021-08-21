@@ -1,5 +1,14 @@
 <template>
-  <div class="varlet-site">
+  <div
+    class="varlet-site"
+    :style="{
+      '--site-color-primary': themes['color-primary'],
+      '--site-color-link': themes['color-link'],
+      '--site-color-type': themes['color-type'],
+      '--site-color-side-bar': themes['color-side-bar'],
+      '--site-color-side-bar-active-background': themes['color-side-bar-active-background'],
+    }"
+  >
     <app-header :language="language" />
 
     <div class="varlet-site-content">
@@ -55,6 +64,7 @@ export default defineComponent({
     const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))
     const useMobile = ref(get(config, 'useMobile'))
     const mobileRedirect = get(config, 'mobile.redirect')
+    const themes = ref(get(config, 'themes'))
 
     const language: Ref<string> = ref('')
     const componentName: Ref<null | string> = ref(null)
@@ -119,6 +129,7 @@ export default defineComponent({
       language,
       componentName,
       menuName,
+      themes,
       doc,
       useMobile,
       handleSidebarChange,
@@ -137,7 +148,6 @@ export default defineComponent({
 </style>
 
 <style lang="less">
-@import '~@varlet/ui/es/styles/var';
 @import '~@varlet/ui/es/progress/progress';
 
 @doc-active: {
@@ -173,7 +183,7 @@ iframe {
     align-items: center;
     margin: 20px 4px 20px;
     padding: 40px;
-    border-top: 8px solid #1d92e9;
+    border-top: 8px solid var(--site-color-primary);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
@@ -216,7 +226,7 @@ iframe {
     &-doc {
       a {
         margin: 0 4px;
-        background: @color-success;
+        background: var(--site-color-link);
         -webkit-font-smoothing: antialiased;
         word-break: keep-all;
         @doc-active()
@@ -256,7 +266,7 @@ iframe {
         font-size: 15px;
         line-height: 26px;
         padding: 16px;
-        border-left: 4px solid #1d92e9;
+        border-left: 4px solid var(--site-color-primary);
         border-radius: 4px;
         background: #fff;
         box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
@@ -286,7 +296,7 @@ iframe {
       table code {
         -webkit-font-smoothing: antialiased;
         word-break: keep-all;
-        background: #1d92e9;
+        background: var(--site-color-primary);
         margin: 0 4px;
         @doc-active();
       }
@@ -327,7 +337,7 @@ iframe {
         }
 
         em {
-          background: @color-success;
+          background: var(--site-color-type);
           font-style: normal;
           @doc-active();
         }

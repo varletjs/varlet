@@ -34,4 +34,14 @@ module.exports = {
       },
     },
   },
+  themes: {
+    'color-primary': '#1d92e9',
+    'color-link': '#00c48f',
+    'color-type': '#00c48f',
+    'color-side-bar': '#3a7afe',
+    'color-side-bar-active-background': '#3a7afe1a',
+    'color-app-bar': '#3a7afe',
+    'color-mobile-cell-hover': '#3a7afe',
+    'color-mobile-cell-hover-background': '#3a7afe1a',
+  },
 }
