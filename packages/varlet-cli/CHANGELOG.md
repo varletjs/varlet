@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://github.com/haoziqaq/varlet/compare/v1.15.0...v1.16.0) (2021-08-30)
+
+
+### Bug Fixes
+
+* **cli:** bump version ([3da0433](https://github.com/haoziqaq/varlet/commit/3da04335751955cc0596fddecdcd671add0177de))
+* **cli/eslint:** add ext ([6fa3971](https://github.com/haoziqaq/varlet/commit/6fa39716015036c891aaff9cc3452b044baa0eda))
+* **compile:** remove unnecessary camelize method ([e9fd509](https://github.com/haoziqaq/varlet/commit/e9fd509fb07e29be47f11333e595a852bdc1971c))
+* **site:** remove import ([2b6c499](https://github.com/haoziqaq/varlet/commit/2b6c4996275dba15ce7bc0a8a83cd7a5f1e7ba8c))
+
+
+### Features
+
+* **site:** add theme config ([1d2c04c](https://github.com/haoziqaq/varlet/commit/1d2c04c862e8403655ec8bf5a13b84ddf2c3a801))
+
+
+
+
+
 # [1.15.0](https://github.com/haoziqaq/varlet/compare/v1.14.2...v1.15.0) (2021-08-13)
 
 **Note:** Version bump only for package @varlet/cli

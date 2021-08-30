@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://github.com/haoziqaq/varlet/compare/v1.15.0...v1.16.0) (2021-08-30)
+
+**Note:** Version bump only for package @varlet/markdown-loader
+
+
+
+
+
 # [1.9.0](https://github.com/haoziqaq/varlet/compare/v1.8.0...v1.9.0) (2021-07-17)
 
 **Note:** Version bump only for package @varlet/markdown-loader
