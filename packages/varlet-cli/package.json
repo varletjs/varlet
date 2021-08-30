@@ -79,7 +79,7 @@
     "ts-jest": "^26.5.1",
     "typescript": "^4.3.5",
     "vue-jest": "^5.0.0-alpha.8",
-    "vue-loader": "16.1.2",
+    "vue-loader": "16.5.0",
     "vue-router": "4.0.0-rc.1",
     "webpack": "^5.23.0",
     "webpack-dev-server": "^3.11.0",
