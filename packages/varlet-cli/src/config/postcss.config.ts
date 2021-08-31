@@ -7,6 +7,6 @@ export function createPostcssOptions(path: string) {
 
   return {
     ...rawOptions,
-    plugins: [require('autoprefixer'), ...rawPlugins],
+    plugins: [require.resolve('autoprefixer'), ...rawPlugins],
   }
 }

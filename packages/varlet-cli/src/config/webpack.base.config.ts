@@ -15,10 +15,10 @@ import { WebpackPluginInstance } from 'webpack'
 import { createPostcssOptions } from './postcss.config'
 
 export const CSS_LOADERS = [
-  'style-loader',
-  'css-loader',
+  require.resolve('style-loader'),
+  require.resolve('css-loader'),
   {
-    loader: 'postcss-loader',
+    loader: require.resolve('postcss-loader'),
     options: { postcssOptions: createPostcssOptions(POSTCSS_CONFIG) },
   },
 ]
@@ -47,6 +47,15 @@ export function createBasePlugins(): WebpackPluginInstance[] {
   return plugins
 }
 
+const VUE_LOADER = {
+  loader: require.resolve('vue-loader'),
+  options: {
+    compilerOptions: {
+      preserveWhitespace: false,
+    },
+  },
+}
+
 export const BASE_CONFIG = {
   entry: {
     pc: SITE_PC_MAIN,
@@ -64,25 +73,16 @@ export const BASE_CONFIG = {
     rules: [
       {
         test: /\.vue$/,
-        use: [
-          {
-            loader: 'vue-loader',
-            options: {
-              compilerOptions: {
-                preserveWhitespace: false,
-              },
-            },
-          },
-        ],
+        use: [VUE_LOADER],
       },
       {
         test: /\.(js|ts|jsx|tsx)$/,
-        use: ['babel-loader'],
+        use: [require.resolve('babel-loader')],
         exclude: /node_modules\/(?!(@varlet\/cli))/,
       },
       {
         test: /\.md$/,
-        use: ['vue-loader', '@varlet/markdown-loader'],
+        use: [VUE_LOADER, require.resolve('@varlet/markdown-loader')],
       },
       {
         test: /\.(png|jpg|gif|jpeg|svg)$/,
@@ -118,7 +118,7 @@ export const BASE_CONFIG = {
       },
       {
         test: /\.less$/,
-        use: [...CSS_LOADERS, 'less-loader'],
+        use: [...CSS_LOADERS, require.resolve('less-loader')],
       },
     ],
   },
