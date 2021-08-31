@@ -9,13 +9,12 @@ function cardWrapper(html) {
 
 function highlight(str, lang) {
   if (lang && hljs.getLanguage(lang)) {
-    return `<pre>
-         <code>
-           <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/color-brewer.min.css">
-           ${hljs.highlight(lang, str, true).value}
-         </code>
-       </pre>
-      `
+    return (
+      '<pre class="hljs"><code>' +
+      '<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/color-brewer.min.css">' +
+      hljs.highlight(lang, str, true).value +
+      '</code></pre>'
+    )
   }
 
   return ''
