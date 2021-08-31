@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.1](https://github.com/haoziqaq/varlet/compare/v1.16.0...v1.16.1) (2021-08-31)
+
+
+### Bug Fixes
+
+* **markdown-loader:** fix the bug of parse doc cause by template string ([6e35002](https://github.com/haoziqaq/varlet/commit/6e35002003e3197e0af74c87a4cf778e862405df))
+
+
+
+
+
 # [1.16.0](https://github.com/haoziqaq/varlet/compare/v1.15.0...v1.16.0) (2021-08-30)
 
 
