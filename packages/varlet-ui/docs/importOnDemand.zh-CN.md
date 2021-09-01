@@ -57,23 +57,24 @@ createApp().use(Button)
 ```shell
 # 安装插件
 # npm
-npm i vite-plugin-components -D
+npm i unplugin-vue-components -D
 # yarn
-yarn add i vite-plugin-components -D
+yarn add unplugin-vue-components -D
 ```
 
 ```js
 // vite.config.js
 import vue from '@vitejs/plugin-vue'
-import ViteComponents, { VarletUIResolver } from 'vite-plugin-components'
+import viteComponents from 'unplugin-vue-components/vite'
+import { VarletUIResolver } from 'unplugin-vue-components/resolvers'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [
     vue(),
-    ViteComponents({
-      globalComponentsDeclaration: true,
-      customComponentResolvers: [VarletUIResolver()]
+    viteComponents({
+      resolvers: [VarletUIResolver()],
+      dts: true,
     })
   ]
 })
