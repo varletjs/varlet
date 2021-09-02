@@ -444,7 +444,6 @@ exports[`test form with slider 1`] = `
         <div class=\\"var-slider__thumb-ripple\\"></div>
         <div class=\\"var-slider__thumb-label\\"><span>5</span></div>
       </div>
-      <!--v-if-->
     </div>
     <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
       <!--v-if-->
@@ -466,7 +465,6 @@ exports[`test form with slider 2`] = `
         <div class=\\"var-slider__thumb-ripple\\"></div>
         <div class=\\"var-slider__thumb-label\\"><span>5</span></div>
       </div>
-      <!--v-if-->
     </div>
     <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
       <div class=\\"var-form-details\\">
@@ -491,7 +489,6 @@ exports[`test form with slider 3`] = `
         <div class=\\"var-slider__thumb-ripple\\"></div>
         <div class=\\"var-slider__thumb-label\\"><span>0</span></div>
       </div>
-      <!--v-if-->
     </div>
     <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
       <!--v-if-->
