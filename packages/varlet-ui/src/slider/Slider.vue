@@ -21,17 +21,19 @@
         <div class="var-slider__track-fill" :style="getFillStyle"></div>
       </div>
       <div
+        v-for="item in thumbList"
         class="var-slider__thumb"
+        :key="item.enumValue"
         :style="{
-          left: `${range ? modelValue[0] : modelValue}%`,
-          zIndex: thumbProps1.active ? 1 : null,
+          left: `${item.value}%`,
+          zIndex: thumbsProps[item.enumValue].active ? 1 : null,
         }"
-        @touchstart="start($event, 1)"
-        @touchmove="move($event, 1)"
-        @touchend="end(1)"
-        @touchcancel="end(1)"
+        @touchstart="start($event, item.enumValue)"
+        @touchmove="move($event, item.enumValue)"
+        @touchend="end(item.enumValue)"
+        @touchcancel="end(item.enumValue)"
       >
-        <slot name="button" :current-value="range ? modelValue[0] : modelValue">
+        <slot name="button" :current-value="item.value">
           <div
             class="var-slider__thumb-block"
             :style="{
@@ -42,16 +44,16 @@
           ></div>
           <div
             class="var-slider__thumb-ripple"
-            :class="[thumbProps1.active ? 'var-slider__thumb-ripple-active' : null]"
+            :class="[thumbsProps[item.enumValue].active ? 'var-slider__thumb-ripple-active' : null]"
             :style="{
               background: thumbColor,
-              height: thumbSize ? (thumbProps1.active ? 3 * thumbSize + 'px' : '0px') : null,
-              width: thumbSize ? (thumbProps1.active ? 3 * thumbSize + 'px' : '0px') : null,
+              height: thumbSize ? (thumbsProps[item.enumValue].active ? 3 * thumbSize + 'px' : '0px') : null,
+              width: thumbSize ? (thumbsProps[item.enumValue].active ? 3 * thumbSize + 'px' : '0px') : null,
             }"
           ></div>
           <div
             class="var-slider__thumb-label"
-            :class="[showLabel1 ? 'var-slider__thumb-label-active' : null]"
+            :class="[showLabel(item.enumValue) ? 'var-slider__thumb-label-active' : null]"
             :style="{
               background: labelColor,
               color: labelTextColor,
@@ -59,52 +61,7 @@
               width: 2 * thumbSize + 'px',
             }"
           >
-            <span>{{ range ? modelValue[0] : modelValue }}</span>
-          </div>
-        </slot>
-      </div>
-
-      <div
-        class="var-slider__thumb"
-        v-if="range"
-        :style="{
-          left: `${range && modelValue[1]}%`,
-          zIndex: thumbProps2.active ? 1 : null,
-        }"
-        @touchstart="start($event, 2)"
-        @touchmove="move($event, 2)"
-        @touchend="end(2)"
-        @touchcancel="end(2)"
-      >
-        <slot name="button" :current-value="range && modelValue[1]">
-          <div
-            class="var-slider__thumb-block"
-            :style="{
-              background: thumbColor,
-              height: thumbSize + 'px',
-              width: thumbSize + 'px',
-            }"
-          ></div>
-          <div
-            class="var-slider__thumb-ripple"
-            :class="[thumbProps2.active ? 'var-slider__thumb-ripple-active' : null]"
-            :style="{
-              background: thumbColor,
-              height: thumbSize ? (thumbProps2.active ? 3 * thumbSize + 'px' : '0px') : null,
-              width: thumbSize ? (thumbProps2.active ? 3 * thumbSize + 'px' : '0px') : null,
-            }"
-          ></div>
-          <div
-            class="var-slider__thumb-label"
-            :class="[showLabel2 ? 'var-slider__thumb-label-active' : null]"
-            :style="{
-              background: labelColor,
-              color: labelTextColor,
-              height: 2 * thumbSize + 'px',
-              width: 2 * thumbSize + 'px',
-            }"
-          >
-            <span>{{ range && modelValue[1] }}</span>
+            <span>{{ item.value }}</span>
           </div>
         </slot>
       </div>
@@ -124,11 +81,26 @@ import FormDetails from '../form-details'
 import type { Ref, ComputedRef, UnwrapRef } from 'vue'
 import type { SliderProvider } from './provide'
 
+enum Thumbs {
+  First = '1',
+  Second = '2',
+}
+
 type ThumbProps = {
   startPosition: number
   currentLeft: number
   percentValue: number
   active: boolean
+}
+
+type ThumbsProps = {
+  [Thumbs.First]: ThumbProps
+  [Thumbs.Second]: ThumbProps
+}
+
+type ThumbsListProps = {
+  value: number | number[]
+  enumValue: Thumbs
 }
 
 export default defineComponent({
@@ -143,37 +115,44 @@ export default defineComponent({
 
     const validate = () => v(props.rules, props.modelValue)
 
+    const getThumbProps = (): ThumbProps => ({
+      startPosition: 0,
+      currentLeft: 0,
+      active: false,
+      percentValue: 0,
+    })
+
     const validateWithTrigger = () => nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
 
     const sliderEl: Ref<HTMLDivElement | null> = ref(null)
-    const maxWidth: Ref<number> = ref(0)
+    const maxWidth = ref(0)
     const isScroll: Ref<boolean> = ref(false)
-    const thumbProps1: UnwrapRef<ThumbProps> = reactive({
-      startPosition: 0,
-      currentLeft: 0,
-      active: false,
-      percentValue: 0,
-    })
-    const thumbProps2: UnwrapRef<ThumbProps> = reactive({
-      startPosition: 0,
-      currentLeft: 0,
-      active: false,
-      percentValue: 0,
+
+    const thumbsProps: UnwrapRef<ThumbsProps> = reactive({
+      [Thumbs.First]: getThumbProps(),
+      [Thumbs.Second]: getThumbProps(),
     })
 
     const unitWidth: ComputedRef<number> = computed(() => (maxWidth.value / 100) * toNumber(props.step))
+    const thumbList: ComputedRef<Array<ThumbsListProps>> = computed(() => {
+      let list = [{ value: props.modelValue, enumValue: Thumbs.First }]
 
-    const showLabel1: ComputedRef<boolean> = computed(() => {
-      if (props.labelVisible === 'always') return true
-      if (props.labelVisible === 'never') return false
-      return thumbProps1.active
+      if (props.range && isArray(props.modelValue)) {
+        list = [
+          { value: props.modelValue[0], enumValue: Thumbs.First },
+          { value: props.modelValue[1], enumValue: Thumbs.Second },
+        ]
+      }
+
+      return list
     })
 
-    const showLabel2: ComputedRef<boolean> = computed(() => {
+    const showLabel = (type: keyof ThumbsProps): boolean => {
       if (props.labelVisible === 'always') return true
       if (props.labelVisible === 'never') return false
-      return thumbProps2.active
-    })
+
+      return thumbsProps[type].active
+    }
 
     const getFillStyle: ComputedRef<Record<string, string | undefined>> = computed(() => {
       const { activeColor, range, modelValue } = props
@@ -193,91 +172,71 @@ export default defineComponent({
 
     const isReadonly: ComputedRef<boolean | undefined> = computed(() => props.readonly || form?.readonly.value)
 
-    const setPercent = (moveDistance: number, type: number) => {
-      let prevValue: number
+    const setPercent = (moveDistance: number, type: keyof ThumbsProps) => {
       let rangeValue: Array<number> = []
       const { step, range, modelValue, onChange } = props
       const stepNumber = toNumber(step)
       const roundDistance = Math.round(moveDistance / unitWidth.value)
       const curValue: number = roundDistance * stepNumber
+      const prevValue = thumbsProps[type].percentValue
 
-      if (type === 1) {
-        prevValue = thumbProps1.percentValue
-        thumbProps1.percentValue = curValue / stepNumber
-        if (range && isArray(modelValue)) rangeValue = [curValue, modelValue[1]]
-      } else {
-        prevValue = thumbProps2.percentValue
-        thumbProps2.percentValue = curValue / stepNumber
-        if (range && isArray(modelValue)) rangeValue = [modelValue[0], curValue]
+      thumbsProps[type].percentValue = curValue / stepNumber
+      if (range && isArray(modelValue)) {
+        rangeValue = type === Thumbs.First ? [curValue, modelValue[1]] : [modelValue[0], curValue]
       }
 
       if (prevValue !== curValue) {
-        if (range) {
-          onChange?.(rangeValue)
-          props['onUpdate:modelValue']?.(rangeValue)
-        } else {
-          onChange?.(curValue)
-          props['onUpdate:modelValue']?.(curValue)
-        }
+        const value = range ? rangeValue : curValue
+        onChange?.(value)
+        props['onUpdate:modelValue']?.(value)
         validateWithTrigger()
       }
     }
 
-    const getType = (offset: number): number => {
-      if (!props.range) return 1
-      const thumb1Distance = thumbProps1.percentValue * unitWidth.value
-      const thumb2Distance = thumbProps2.percentValue * unitWidth.value
+    const getType = (offset: number): keyof ThumbsProps => {
+      if (!props.range) return Thumbs.First
+      const thumb1Distance = thumbsProps[Thumbs.First].percentValue * unitWidth.value
+      const thumb2Distance = thumbsProps[Thumbs.Second].percentValue * unitWidth.value
       const offsetToThumb1 = Math.abs(offset - thumb1Distance)
       const offsetToThumb2 = Math.abs(offset - thumb2Distance)
 
-      return offsetToThumb1 <= offsetToThumb2 ? 1 : 2
+      return offsetToThumb1 <= offsetToThumb2 ? Thumbs.First : Thumbs.Second
     }
 
-    const start = (event: TouchEvent, type: number) => {
+    const start = (event: TouchEvent, type: keyof ThumbsProps) => {
       if (!maxWidth.value) maxWidth.value = (sliderEl.value as HTMLDivElement).offsetWidth
       if (isDisabled.value || isReadonly.value) return
       props.onStart?.()
       isScroll.value = true
-      if (type === 1) {
-        thumbProps1.startPosition = event.touches[0].clientX
-      } else {
-        thumbProps2.startPosition = event.touches[0].clientX
-      }
+      thumbsProps[type].startPosition = event.touches[0].clientX
     }
 
-    const move = (event: TouchEvent, type: number) => {
+    const move = (event: TouchEvent, type: keyof ThumbsProps) => {
       if (isDisabled.value || isReadonly.value || !isScroll.value) return
-      let moveDistance: number
-
-      if (type === 1) {
-        thumbProps1.active = true
-        moveDistance = event.touches[0].clientX - thumbProps1.startPosition + thumbProps1.currentLeft
-      } else {
-        thumbProps2.active = true
-        moveDistance = event.touches[0].clientX - thumbProps2.startPosition + thumbProps2.currentLeft
-      }
+      let moveDistance = event.touches[0].clientX - thumbsProps[type].startPosition + thumbsProps[type].currentLeft
+      thumbsProps[type].active = true
 
       if (moveDistance <= 0) moveDistance = 0
       else if (moveDistance >= maxWidth.value) moveDistance = maxWidth.value
+
       setPercent(moveDistance, type)
     }
 
-    const end = (type: number) => {
+    const end = (type: keyof ThumbsProps) => {
       const { range, modelValue, onEnd } = props
       if (isDisabled.value || isReadonly.value) return
       let rangeValue: Array<number> = []
-      const thumbProps = type === 1 ? thumbProps1 : thumbProps2
 
-      thumbProps.currentLeft = thumbProps.percentValue * unitWidth.value
-      thumbProps.active = false
-      const curValue: number = thumbProps.percentValue
-      if (range && isArray(modelValue)) rangeValue = type === 1 ? [curValue, modelValue[1]] : [modelValue[0], curValue]
+      thumbsProps[type].currentLeft = thumbsProps[type].percentValue * unitWidth.value
+      thumbsProps[type].active = false
 
-      if (range) {
-        onEnd?.(rangeValue)
-      } else {
-        onEnd?.(curValue)
+      const curValue: number = thumbsProps[type].percentValue
+
+      if (range && isArray(modelValue)) {
+        rangeValue = type === Thumbs.First ? [curValue, modelValue[1]] : [modelValue[0], curValue]
       }
+
+      onEnd?.(range ? rangeValue : curValue)
       isScroll.value = false
     }
 
@@ -326,12 +285,13 @@ export default defineComponent({
 
     const setProps = (modelValue = props.modelValue, step = toNumber(props.step)) => {
       if (props.range && isArray(modelValue)) {
-        thumbProps1.percentValue = modelValue[0] / step
-        thumbProps2.percentValue = modelValue[1] / step
-        thumbProps1.currentLeft = thumbProps1.percentValue * unitWidth.value
-        thumbProps2.currentLeft = thumbProps2.percentValue * unitWidth.value
+        thumbsProps[Thumbs.First].percentValue = modelValue[0] / step
+        thumbsProps[Thumbs.First].currentLeft = thumbsProps[Thumbs.First].percentValue * unitWidth.value
+
+        thumbsProps[Thumbs.Second].percentValue = modelValue[1] / step
+        thumbsProps[Thumbs.Second].currentLeft = thumbsProps[Thumbs.Second].percentValue * unitWidth.value
       } else if (isNumber(modelValue)) {
-        thumbProps1.currentLeft = (modelValue / step) * unitWidth.value
+        thumbsProps[Thumbs.First].currentLeft = (modelValue / step) * unitWidth.value
       }
     }
 
@@ -363,14 +323,14 @@ export default defineComponent({
     bindForm?.(sliderProvider)
 
     return {
+      Thumbs,
       sliderEl,
-      thumbProps1,
-      thumbProps2,
-      showLabel1,
-      showLabel2,
       getFillStyle,
       isDisabled,
       errorMessage,
+      thumbsProps,
+      thumbList,
+      showLabel,
       start,
       move,
       end,
