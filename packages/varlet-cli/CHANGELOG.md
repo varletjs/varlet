@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.2](https://github.com/haoziqaq/varlet/compare/v1.17.1...v1.17.2) (2021-09-09)
+
+
+### Bug Fixes
+
+* **cli:** add eslint,stylelint ([e393ea8](https://github.com/haoziqaq/varlet/commit/e393ea8dab9a0e8ea0248b2ee01a232cf55bc315))
+
+
+
+
+
 ## [1.17.1](https://github.com/haoziqaq/varlet/compare/v1.17.0...v1.17.1) (2021-09-09)
 
 
