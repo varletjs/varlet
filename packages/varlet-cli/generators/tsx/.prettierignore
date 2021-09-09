@@ -1,0 +1,7 @@
+coverage/**
+es/**
+umd/**
+site/**
+src/*/__tests__/**
+*.md
+

@@ -33,3 +33,4 @@ packages/varlet-vscode-extension/dist
 packages/varlet-cli/generators/**/es
 packages/varlet-cli/generators/**/umd
 packages/varlet-cli/generators/**/highlight
+packages/varlet-cli/generators/**/coverage

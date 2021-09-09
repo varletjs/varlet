@@ -23,6 +23,7 @@
   "license": "MIT",
   "scripts": {
     "husky": "husky install",
+    "commit": "git-cz",
     "dev": "varlet-cli dev",
     "build": "varlet-cli build",
     "compile": "varlet-cli compile",
@@ -36,6 +37,11 @@
   "devDependencies": {
     "@varlet/cli": "^1.16.3",
     "vue": "3.1.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-lerna-changelog"
+    }
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
