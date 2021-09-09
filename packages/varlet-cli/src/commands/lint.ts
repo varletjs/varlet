@@ -13,20 +13,15 @@ export async function lint() {
     spinner.succeed('prettier success')
 
     spinner = ora('stylelint starting...').start()
-    await execa('stylelint', [
-      './packages/**/*.vue',
-      './packages/**/*.css',
-      './packages/**/*.less',
-      './src/**/*.vue',
-      './src/**/*.css',
-      './src/**/*.less',
-      '--fix',
-    ])
+    const stylelintPattern = ['./src/**/*.vue', './src/**/*.css', './src/**/*.less']
+    const hasPackages = isDir(resolve(CWD, 'packages'))
+    hasPackages && stylelintPattern.push('./packages/**/*.vue', './packages/**/*.css', './packages/**/*.less')
+    await execa('stylelint', [...stylelintPattern, '--fix'])
     spinner.succeed('stylelint success')
 
     spinner = ora('eslint starting...').start()
 
-    const patterns: string[] = [
+    const eslintPatterns: string[] = [
       './src',
       './packages/varlet-cli/src',
       './packages/varlet-ui/src',
@@ -36,7 +31,7 @@ export async function lint() {
     ]
 
     const { stdout } = await execa('eslint', [
-      ...patterns.filter((pattern) => isDir(resolve(CWD, pattern))),
+      ...eslintPatterns.filter((pattern) => isDir(resolve(CWD, pattern))),
       '--fix',
       '--ext',
       ESLINT_EXTENSIONS.join(','),

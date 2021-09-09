@@ -38,6 +38,7 @@
     "@babel/preset-typescript": "^7.14.5",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "cz-conventional-changelog": "^3.3.0",
     "@varlet/eslint-config": "^1.13.0",
     "@varlet/icons": "^1.0.0",
     "@varlet/markdown-loader": "^1.16.3",

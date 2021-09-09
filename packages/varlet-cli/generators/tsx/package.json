@@ -21,6 +21,9 @@
     "build": "varlet-cli build",
     "compile": "varlet-cli compile",
     "create": "varlet-cli create",
+    "lint": "varlet-cli lint",
+    "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "genAllLog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "varlet-cli jest",
     "test:watch": "varlet-cli jest -w"
   },
@@ -28,12 +31,12 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@varlet/cli": "^1.16.3",
+    "@varlet/cli": "^1.17.2",
     "vue": "3.1.4"
   },
   "config": {
     "commitizen": {
-      "path": "node_modules/cz-lerna-changelog"
+      "path": "cz-conventional-changelog"
     }
   },
   "lint-staged": {

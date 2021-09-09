@@ -43,6 +43,24 @@ yarn compile
 yarn test
 ```
 
+### Lint code
+
+```shell
+yarn lint
+```
+
+### Generate changelog
+
+```shell
+yarn genlog
+```
+
+### Generate all changelog
+
+```shell
+yarn genAllLog
+```
+
 #### Run unit test in watch mode
 
 ```shell
