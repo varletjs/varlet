@@ -1,6 +1,6 @@
 {
   "name": "@varlet/cli",
-  "version": "1.17.0",
+  "version": "1.17.1",
   "description": "cli of varlet",
   "bin": {
     "varlet-cli": "./lib/index.js"
@@ -41,7 +41,7 @@
     "@varlet/icons": "^1.0.0",
     "@varlet/markdown-loader": "^1.16.3",
     "@varlet/touch-emulator": "^1.0.1",
-    "@varlet/ui": "^1.17.0",
+    "@varlet/ui": "^1.17.1",
     "@vue/babel-plugin-jsx": "^1.0.6",
     "@vue/compiler-sfc": "3.1.4",
     "@vue/test-utils": "^2.0.0-rc.6",

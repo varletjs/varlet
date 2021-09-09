@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.1](https://github.com/haoziqaq/varlet/compare/v1.17.0...v1.17.1) (2021-09-09)
+
+
+### Bug Fixes
+
+* **cli:** fix generators files publish error ([29c014d](https://github.com/haoziqaq/varlet/commit/29c014dab61cf7242dc005a3878e172a03def602))
+
+
+
+
+
 # [1.17.0](https://github.com/haoziqaq/varlet/compare/v1.16.3...v1.17.0) (2021-09-09)
 
 
