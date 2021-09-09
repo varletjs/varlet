@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.4](https://github.com/haoziqaq/varlet/compare/v1.17.3...v1.17.4) (2021-09-09)
+
+
+### Bug Fixes
+
+* **cli:** add conventional-changelog-cli ([7708781](https://github.com/haoziqaq/varlet/commit/7708781331d0d788fdadce53d8655d5ac93d849c))
+
+
+
+
+
 ## [1.17.3](https://github.com/haoziqaq/varlet/compare/v1.17.2...v1.17.3) (2021-09-09)
 
 
