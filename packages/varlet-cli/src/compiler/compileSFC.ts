@@ -60,7 +60,7 @@ export async function compileSFC(sfc: string) {
     // style
     for (let index = 0; index < styles.length; index++) {
       const style: SFCStyleBlock = styles[index]
-      const file = replaceExt(sfc, `Sfc${index || ''}.${style.lang}`)
+      const file = replaceExt(sfc, `Sfc${index || ''}.${style.lang || 'css'}`)
       let { code } = compileStyle({
         source: style.content,
         filename: file,

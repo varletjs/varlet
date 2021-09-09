@@ -1599,19 +1599,19 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@varlet/cli@^1.16.3@alpha.10":
-  version "1.16.3-alpha.10"
-  resolved "https://registry.npmjs.org/@varlet/cli/-/cli-1.16.3-alpha.10.tgz#7b9e050dcdfee8f289c3546a7e52cc50b8beae9d"
-  integrity sha512-lB1tTx+g7vTUw6ABfuD6EhNsJK1Nubeo9KmiG3uYV/i7dYUQO5hNPDWR3FcKeW7mFTDwjrDTorK6s68F0Xu2ZQ==
+"@varlet/cli@^1.16.3@alpha.11":
+  version "1.16.3-alpha.11"
+  resolved "https://registry.nlark.com/@varlet/cli/download/@varlet/cli-1.16.3-alpha.11.tgz#1bece1a0d7e5b2270fb45f2016177fe868ff12fc"
+  integrity sha1-G+zhoNflsicPtF8gFhd/6Gj/Evw=
   dependencies:
     "@babel/core" "^7.14.8"
     "@babel/preset-env" "^7.14.8"
     "@babel/preset-typescript" "^7.14.5"
     "@commitlint/cli" "^11.0.0"
     "@commitlint/config-conventional" "^11.0.0"
-    "@varlet/markdown-loader" "^1.16.3-alpha.10+9b3e3bb"
+    "@varlet/markdown-loader" "^1.16.3-alpha.11+7ca8844"
     "@varlet/touch-emulator" "^1.0.1"
-    "@varlet/ui" "^1.16.3-alpha.10+9b3e3bb"
+    "@varlet/ui" "^1.16.3-alpha.11+7ca8844"
     "@vue/babel-plugin-jsx" "^1.0.6"
     "@vue/compiler-sfc" "3.1.4"
     "@vue/test-utils" "^2.0.0-rc.6"
@@ -1667,12 +1667,13 @@
     fs-extra "^9.0.1"
     webfont "^9.0.0"
 
-"@varlet/markdown-loader@^1.16.3-alpha.10+9b3e3bb":
-  version "1.16.3-alpha.10"
-  resolved "https://registry.npmjs.org/@varlet/markdown-loader/-/markdown-loader-1.16.3-alpha.10.tgz#387b9c659e4d0610f18428939a2c102ef71f04a6"
-  integrity sha512-erfN8H8G42FfL449QNeqHJKDPR48FmvbEtvNkdSP+3ANnGf784LLMAXdWGbUyS7kuFS0bQXPzcc2F8tyo407/A==
+"@varlet/markdown-loader@^1.16.3-alpha.11+7ca8844":
+  version "1.16.3-alpha.11"
+  resolved "https://registry.nlark.com/@varlet/markdown-loader/download/@varlet/markdown-loader-1.16.3-alpha.11.tgz#ed09c9f2d7337303114113c2f65643a21e593931"
+  integrity sha1-7QnJ8tczcwMRQRPC9lZDoh5ZOTE=
   dependencies:
     highlight.js "10.3.2"
+    loader-utils "^2.0.0"
     markdown-it "^12.0.2"
 
 "@varlet/touch-emulator@^1.0.1":
@@ -1680,10 +1681,10 @@
   resolved "https://registry.nlark.com/@varlet/touch-emulator/download/@varlet/touch-emulator-1.0.1.tgz#3c2fb609561ecc089be6bf748ae42610cfca8a18"
   integrity sha1-PC+2CVYezAib5r90iuQmEM/Kihg=
 
-"@varlet/ui@^1.16.3-alpha.10+9b3e3bb":
-  version "1.16.3-alpha.10"
-  resolved "https://registry.npmjs.org/@varlet/ui/-/ui-1.16.3-alpha.10.tgz#0a4bdb91cfc610bcb7cbe8c0e382a82adf9d3592"
-  integrity sha512-Kt+60/J5l/3Co5QbDKzh9a3mghoYZjvs60G4ctO2qms90iUVZIZDKy92kMBCB9szhhYjM5+MlKgTu4LzK1J6Wg==
+"@varlet/ui@^1.16.3-alpha.11+7ca8844":
+  version "1.16.3-alpha.11"
+  resolved "https://registry.nlark.com/@varlet/ui/download/@varlet/ui-1.16.3-alpha.11.tgz#6af14f75a79b90b42f18a81384c7b26f97a1a797"
+  integrity sha1-avFPdaebkLQvGKgThMeyb5ehp5c=
   dependencies:
     "@varlet/icons" "^1.0.0"
     dayjs "^1.10.4"

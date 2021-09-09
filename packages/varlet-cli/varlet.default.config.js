@@ -7,6 +7,9 @@ module.exports = {
   logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
   defaultLanguage: 'zh-CN',
   highlight: {
+    /**
+     * @see https://highlightjs.org/
+     */
     style: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/color-brewer.min.css',
   },
   analysis: {

@@ -34,7 +34,7 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@varlet/cli": "^1.16.3@alpha.10",
+    "@varlet/cli": "^1.16.3@alpha.11",
     "vue": "3.1.4"
   },
   "dependencies": {

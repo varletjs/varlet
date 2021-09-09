@@ -27,7 +27,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="less">
+<style>
 .basic-button {
   display: flex;
   padding: 10px;
@@ -38,8 +38,10 @@ export default defineComponent({
   border-radius: 2px;
   cursor: pointer;
 
-  //&:active {
-  //  opacity: 0.9;
-  //}
+  /* &:active { */
+
+  /*  opacity: 0.9; */
+
+  /* } */
 }
 </style>
