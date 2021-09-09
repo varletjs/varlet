@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "highlight.js": "10.3.2",
-    "markdown-it": "^12.0.2"
+    "markdown-it": "^12.0.2",
+    "loader-utils": "^2.0.0"
   },
   "gitHead": "42554856ff028f6f411a35f468e0f763978270b0"
 }

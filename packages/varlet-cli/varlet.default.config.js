@@ -6,8 +6,15 @@ module.exports = {
   title: 'VARLET',
   logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
   defaultLanguage: 'zh-CN',
+  highlight: {
+    style: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/color-brewer.min.css',
+  },
+  analysis: {
+    baidu: '',
+  },
   useMobile: false,
   pc: {
+    menu: [],
     redirect: '/home',
     title: {
       'zh-CN': 'Varlet 面向Vue3的Material风格移动端组件库',

@@ -1,5 +1,6 @@
 packages/varlet-cli/lib/**
 packages/varlet-cli/site/**
+packages/varlet-cli/site/**
 
 packages/varlet-icons/dist/**
 
@@ -9,3 +10,4 @@ packages/varlet-ui/umd/**
 packages/varlet-ui/site/**
 packages/varlet-ui/src/*/__tests__/**
 *.md
+

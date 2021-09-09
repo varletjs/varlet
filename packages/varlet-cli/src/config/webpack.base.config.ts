@@ -13,6 +13,8 @@ import { VueLoaderPlugin } from 'vue-loader'
 import { pathExistsSync } from 'fs-extra'
 import { WebpackPluginInstance } from 'webpack'
 import { createPostcssOptions } from './postcss.config'
+import { getVarletConfig } from './varlet.config'
+import { get } from 'lodash'
 
 export const CSS_LOADERS = [
   require.resolve('style-loader'),
@@ -83,7 +85,15 @@ export const BASE_CONFIG = {
       },
       {
         test: /\.md$/,
-        use: [VUE_LOADER, require.resolve('@varlet/markdown-loader')],
+        use: [
+          VUE_LOADER,
+          {
+            loader: require.resolve('@varlet/markdown-loader'),
+            options: {
+              style: get(getVarletConfig(), 'highlight.style'),
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif|jpeg|svg)$/,
