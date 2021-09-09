@@ -1,7 +1,10 @@
 import { reactive } from 'vue'
 import { Progress } from '@varlet/ui'
 // @ts-ignore
+import config from '@config'
+// @ts-ignore
 import { mountInstance } from '@varlet/ui/es/utils/components'
+import { get } from 'lodash'
 
 export function useProgress() {
   const props = reactive({
@@ -13,7 +16,7 @@ export function useProgress() {
       zIndex: 10086,
     },
     trackColor: '#fff',
-    color: '#659fff',
+    color: get(config, 'themes.color-progress'),
     lineWidth: 3,
     value: 0,
   })

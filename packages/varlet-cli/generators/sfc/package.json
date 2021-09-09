@@ -34,11 +34,8 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@varlet/cli": "^1.16.3@alpha.11",
+    "@varlet/cli": "^1.16.3@alpha.13",
     "vue": "3.1.4"
-  },
-  "dependencies": {
-    "@varlet/icons": "^1.0.0"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
@@ -63,13 +60,11 @@
       "@varlet/stylelint-config"
     ],
     "ignoreFiles": [
-      "packages/varlet-cli/lib/**",
-      "packages/varlet-icons/dist/**",
-      "packages/varlet-ui/es/**",
-      "packages/varlet-ui/umd/**",
-      "packages/varlet-ui/site/**",
-      "packages/varlet-ui/coverage/**",
-      "packages/varlet-ui/highlight/**"
+      "es/**",
+      "umd/**",
+      "site/**",
+      "coverage/**",
+      "highlight/**"
     ]
   },
   "browserslist": [

@@ -1,0 +1,74 @@
+{
+  "name": "basic-ui",
+  "version": "0.0.0",
+  "description": "A basic components library",
+  "module": "es/index.js",
+  "typings": "types/index.d.ts",
+  "vetur": {
+    "tags": "highlight/tags.json",
+    "attributes": "highlight/attributes.json"
+  },
+  "web-types": "highlight/web-types.json",
+  "keywords": [
+    "Vue",
+    "UI"
+  ],
+  "files": [
+    "es",
+    "umd",
+    "highlight",
+    "types",
+    "README.md"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "husky": "husky install",
+    "dev": "varlet-cli dev",
+    "build": "varlet-cli build",
+    "compile": "varlet-cli compile",
+    "create": "varlet-cli create",
+    "test": "varlet-cli jest",
+    "test:watch": "varlet-cli jest -w"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@varlet/cli": "^1.16.3@alpha.13",
+    "vue": "3.1.4"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,vue,less}": "prettier --write",
+    "*.{ts,tsx,js,vue}": "eslint --fix",
+    "*.{vue,css,less}": "stylelint --fix"
+  },
+  "eslintConfig": {
+    "root": true,
+    "ignorePatterns": [
+      "es/**",
+      "umd/**",
+      "site/**",
+      "src/*/__tests__/**",
+      ".varlet/**"
+    ],
+    "extends": [
+      "@varlet"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "@varlet/stylelint-config"
+    ],
+    "ignoreFiles": [
+      "es/**",
+      "umd/**",
+      "site/**",
+      "coverage/**",
+      "highlight/**"
+    ]
+  },
+  "browserslist": [
+    "Chrome >= 51",
+    "iOS >= 10"
+  ]
+}

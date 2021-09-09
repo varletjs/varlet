@@ -48,6 +48,7 @@ module.exports = {
     'color-primary': '#1d92e9',
     'color-link': '#00c48f',
     'color-type': '#00c48f',
+    'color-progress': '#1d92e9',
     'color-pc-language-active': '#3a7afe',
     'color-pc-language-active-background': '#edf5ff',
     'color-side-bar': '#3a7afe',

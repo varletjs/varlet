@@ -11,37 +11,22 @@ export default defineComponent({
   name: 'BButton',
   props: {
     color: {
-      type: String,
+      type: String
     },
     onClick: {
-      type: Function as PropType<(e: Event) => void>,
-    },
+      type: Function as PropType<(e: Event) => void>
+    }
   },
   setup(props) {
     const handleClick = (e: Event) => props.onClick?.(e)
 
     return {
-      handleClick,
+      handleClick
     }
-  },
+  }
 })
 </script>
 
-<style>
-.basic-button {
-  display: flex;
-  padding: 10px;
-  background: #009688;
-  color: #fff;
-  outline: none;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
-
-  /* &:active { */
-
-  /*  opacity: 0.9; */
-
-  /* } */
-}
+<style lang="less">
+@import "./button";
 </style>
