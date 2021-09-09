@@ -41,6 +41,8 @@
     "@varlet/icons": "^1.0.0",
     "@varlet/markdown-loader": "^1.16.3",
     "@varlet/touch-emulator": "^1.0.1",
+    "@varlet/eslint-config": "^1.13.0",
+    "@varlet/stylelint-config": "^1.9.0",
     "@varlet/ui": "^1.17.1",
     "@vue/babel-plugin-jsx": "^1.0.6",
     "@vue/compiler-sfc": "3.1.4",
