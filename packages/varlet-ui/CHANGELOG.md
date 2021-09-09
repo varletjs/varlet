@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.17.0](https://github.com/haoziqaq/varlet/compare/v1.16.3...v1.17.0) (2021-09-09)
+
+
+### Features
+
+* **cli:** add gen command ([abdec46](https://github.com/haoziqaq/varlet/commit/abdec46ac7ef39962bb3025b37b12749f767a777))
+
+
+
+
+
 ## [1.16.3](https://github.com/haoziqaq/varlet/compare/v1.16.2...v1.16.3) (2021-09-09)
 
 

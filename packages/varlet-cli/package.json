@@ -1,6 +1,6 @@
 {
   "name": "@varlet/cli",
-  "version": "1.16.3",
+  "version": "1.17.0",
   "description": "cli of varlet",
   "bin": {
     "varlet-cli": "./lib/index.js"
@@ -41,7 +41,7 @@
     "@varlet/icons": "^1.0.0",
     "@varlet/markdown-loader": "^1.16.3",
     "@varlet/touch-emulator": "^1.0.1",
-    "@varlet/ui": "^1.16.3",
+    "@varlet/ui": "^1.17.0",
     "@vue/babel-plugin-jsx": "^1.0.6",
     "@vue/compiler-sfc": "3.1.4",
     "@vue/test-utils": "^2.0.0-rc.6",
@@ -65,6 +65,7 @@
     "hash-sum": "^2.0.0",
     "html-webpack-plugin": "^5.1.0",
     "husky": "^7.0.1",
+    "inquirer": "^8.1.2",
     "jest": "^26.6.3",
     "less": "^3.12.2",
     "less-loader": "^7.0.2",
@@ -86,8 +87,7 @@
     "webpack": "^5.23.0",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.3.0",
-    "webpackbar": "^5.0.0-3",
-    "inquirer": "^8.1.2"
+    "webpackbar": "^5.0.0-3"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.12",
