@@ -23,7 +23,7 @@ export default defineComponent({
           style={{ background: color }}
           onClick={ handleClick }
         >
-          { slots.default() }
+          { slots.default?.() }
         </button>
       </>
     }

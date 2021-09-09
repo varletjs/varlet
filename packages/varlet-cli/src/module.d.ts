@@ -5,4 +5,6 @@ declare module 'less' {
   export { render, FileManager }
 }
 
+declare module 'inquirer'
+
 declare module '@babel/helper-plugin-utils'

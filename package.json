@@ -15,7 +15,8 @@
     "bootstrap": "yarn && node scripts/bootstrap.mjs",
     "commit": "git-cz",
     "prepare": "husky install",
-    "publish": "node scripts/publish.mjs && lerna publish"
+    "publish": "node scripts/publish.mjs && lerna publish",
+    "gen": "varlet-cli gen"
   },
   "config": {
     "commitizen": {

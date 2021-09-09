@@ -19,6 +19,8 @@ export const EXAMPLE_LOCALE_DIR_NAME = 'locale'
 export const DOCS_DIR_NAME = 'docs'
 export const EXAMPLE_DIR_INDEX = 'index.vue'
 export const TESTS_DIR_NAME = '__tests__'
+export const GENERATORS_DIR = resolve(__dirname, '../../generators')
+export const CLI_PACKAGE_JSON = resolve(__dirname, '../../package.json')
 export const PRIMARY_COLOR = '#3a7afe'
 
 // site

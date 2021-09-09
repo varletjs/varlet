@@ -34,7 +34,7 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@varlet/cli": "^1.16.3@alpha.14",
+    "@varlet/cli": "^1.16.3",
     "vue": "3.1.4"
   },
   "lint-staged": {

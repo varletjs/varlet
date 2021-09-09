@@ -14,7 +14,7 @@ export function runDevServer(port: number, config: any) {
 
   ;(server as any).showStatus = function () {}
 
-  server.listen(port, host, (err?: Error) => {
+  server.listen(port, host === 'localhost' ? '0.0.0.0' : host, (err?: Error) => {
     if (err) {
       logger.error(err.toString())
       return

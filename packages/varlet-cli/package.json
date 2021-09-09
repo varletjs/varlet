@@ -86,7 +86,8 @@
     "webpack": "^5.23.0",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.3.0",
-    "webpackbar": "^5.0.0-3"
+    "webpackbar": "^5.0.0-3",
+    "inquirer": "^8.1.2"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.12",

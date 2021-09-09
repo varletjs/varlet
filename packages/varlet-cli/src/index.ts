@@ -6,6 +6,7 @@ import { compile } from './commands/compile'
 import { create } from './commands/create'
 import { jest } from './commands/jest'
 import { lint } from './commands/lint'
+import { gen } from './commands/gen'
 
 command('dev').description('Run varlet development environment').action(dev)
 
@@ -26,5 +27,7 @@ command('jest')
   .option('-c, --component <componentName>', 'Test a specific component')
   .option('-cc --clearCache', 'Clear test cache')
   .action(jest)
+
+command('gen <name>').description('Generate cli application').action(gen)
 
 parse()

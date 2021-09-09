@@ -8,6 +8,7 @@ var compile_1 = require("./commands/compile");
 var create_1 = require("./commands/create");
 var jest_1 = require("./commands/jest");
 var lint_1 = require("./commands/lint");
+var gen_1 = require("./commands/gen");
 commander_1.command('dev').description('Run varlet development environment').action(dev_1.dev);
 commander_1.command('build').description('Build varlet site for production').action(build_1.build);
 commander_1.command('compile')
@@ -22,4 +23,5 @@ commander_1.command('jest')
     .option('-c, --component <componentName>', 'Test a specific component')
     .option('-cc --clearCache', 'Clear test cache')
     .action(jest_1.jest);
+commander_1.command('gen <name>').description('Generate cli application').action(gen_1.gen);
 commander_1.parse();
