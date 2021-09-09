@@ -12,6 +12,7 @@
   "author": "haoziqaq <357229046@qq.com>",
   "license": "MIT",
   "files": [
+    "generators",
     "lib",
     "site",
     "tsconfig.json",
@@ -37,7 +38,7 @@
     "@babel/preset-typescript": "^7.14.5",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@varlet/markdown-loader": "^1.16.0",
+    "@varlet/markdown-loader": "^1.16.1",
     "@varlet/touch-emulator": "^1.0.1",
     "@varlet/ui": "^1.16.2",
     "@vue/babel-plugin-jsx": "^1.0.6",

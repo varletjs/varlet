@@ -43,6 +43,14 @@ router.beforeEach((to, from) => {
     // @ts-ignore
     window.top.onMobileRouteChange(path, language, replace)
   }
+
+  // @ts-ignore
+  if (window._hmt) {
+    if (to.path) {
+      // @ts-ignore
+      window._hmt.push(['_trackPageview', `/#${to.fullPath}`])
+    }
+  }
 })
 
 createApp(App)

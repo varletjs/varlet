@@ -2,7 +2,7 @@ import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { BASE_CONFIG } from './webpack.base.config'
-import { PRIMARY_COLOR } from '../shared/constant'
+import { PRIMARY_COLOR, SITE_PUBLIC_PATH } from '../shared/constant'
 import { resolve } from 'path'
 import { get } from 'lodash'
 import { getVarletConfig } from './varlet.config'
@@ -20,6 +20,7 @@ export function createHtmlPluginOptions(type: 'pc' | 'mobile') {
     chunks: [type],
     title: get(varletConfig, `${type}.title[${get(varletConfig, 'defaultLanguage')}]`),
     logo: get(varletConfig, `logo`),
+    baidu: get(varletConfig, `analysis.baidu`, ''),
   }
 }
 
@@ -44,6 +45,7 @@ export function getDevConfig() {
       port: get(varletConfig, 'port'),
       host: get(varletConfig, 'host'),
       publicPath: '/',
+      contentBase: SITE_PUBLIC_PATH,
       stats: 'errors-only',
       disableHostCheck: true,
       hot: true,

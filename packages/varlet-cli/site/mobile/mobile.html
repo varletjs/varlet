@@ -20,13 +20,15 @@
     }
   </style>
   <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement('script')
-      hm.src = 'https://hm.baidu.com/hm.js?5c628ce58967c90ff4dd9c8803d930fa'
-      var s = document.getElementsByTagName('script')[0]
-      s.parentNode.insertBefore(hm, s)
-    })()
+    if ('<%= htmlWebpackPlugin.options.baidu %>') {
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement('script')
+        hm.src = '<%= htmlWebpackPlugin.options.baidu %>'
+        var s = document.getElementsByTagName('script')[0]
+        s.parentNode.insertBefore(hm, s)
+      })()
+    }
   </script>
 </head>
 <body>

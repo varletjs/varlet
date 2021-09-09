@@ -35,6 +35,14 @@ router.beforeEach((to, from) => {
 
   isEnd = false
   setTimeout(() => !isEnd && start(), 200)
+
+  // @ts-ignore
+  if (window._hmt) {
+    if (to.path) {
+      // @ts-ignore
+      window._hmt.push(['_trackPageview', `/#${to.fullPath}`])
+    }
+  }
 })
 
 router.afterEach(() => {
