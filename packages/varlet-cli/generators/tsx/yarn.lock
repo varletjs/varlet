@@ -1599,19 +1599,20 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@varlet/cli@^1.16.3@alpha.13":
-  version "1.16.3-alpha.13"
-  resolved "https://registry.npmjs.org/@varlet/cli/-/cli-1.16.3-alpha.13.tgz#f0d344ad7f4e63d5c3f24f5e5931e6604f43dd14"
-  integrity sha512-Pv2OC+dY9zfCq1fb4eZUg6/yVsybZ6Tnn4trIFkBJjwCRnPzPp34EDLDZzyAUIkPCsKwxH8BmoP93oLmfCEnWg==
+"@varlet/cli@^1.16.3@alpha.14":
+  version "1.16.3-alpha.14"
+  resolved "https://registry.npmjs.org/@varlet/cli/-/cli-1.16.3-alpha.14.tgz#ebd053cc179abf90baba33b5b6480f414b2fcde0"
+  integrity sha512-bltwggLWWdWEDotA2n1AUGQTl8QM8x9FWsnkVrEDZ36WT+4JPK8cIYcdfvfzjfhWc/Ls6By36bmZ+YZ8Pnfcsw==
   dependencies:
     "@babel/core" "^7.14.8"
     "@babel/preset-env" "^7.14.8"
     "@babel/preset-typescript" "^7.14.5"
     "@commitlint/cli" "^11.0.0"
     "@commitlint/config-conventional" "^11.0.0"
+    "@varlet/icons" "^1.0.0"
     "@varlet/markdown-loader" "^1.16.1"
     "@varlet/touch-emulator" "^1.0.1"
-    "@varlet/ui" "^1.16.3-alpha.13+96c8551"
+    "@varlet/ui" "^1.16.3-alpha.14+f804915"
     "@vue/babel-plugin-jsx" "^1.0.6"
     "@vue/compiler-sfc" "3.1.4"
     "@vue/test-utils" "^2.0.0-rc.6"
@@ -1680,12 +1681,11 @@
   resolved "https://registry.npmjs.org/@varlet/touch-emulator/-/touch-emulator-1.0.1.tgz#3c2fb609561ecc089be6bf748ae42610cfca8a18"
   integrity sha512-SWAZ1qzbdJcScLSD2gV5c3l8yP+IKgNMy12hYhK2d0fb6KI1L4475KMmhLpE8DN0OWUPeD5UrnMqyfjFg9MKMQ==
 
-"@varlet/ui@^1.16.3-alpha.13+96c8551":
-  version "1.16.3-alpha.13"
-  resolved "https://registry.npmjs.org/@varlet/ui/-/ui-1.16.3-alpha.13.tgz#1c232abde169f886f8e2d2859cc5a4af4ecb9887"
-  integrity sha512-nPbJin0xB9cwDGBqTUkcpiYtWT00KgfsQu+ryb/QfA5/fGOfwIEe95WnYCwPow46xKidQoUkTcMhy/Gt0iqAMw==
+"@varlet/ui@^1.16.3-alpha.14+f804915":
+  version "1.16.3-alpha.14"
+  resolved "https://registry.npmjs.org/@varlet/ui/-/ui-1.16.3-alpha.14.tgz#e13254310f8f257635c0dbddfc9d829e54fc3ea7"
+  integrity sha512-MH54R3c2tCEoyWBMQhHCJ88O0UT9Oef2Uv9eRQLUd0G5ID51mScflyQMKWST6iGPEqcGza+xJzjpYEK5I5odxQ==
   dependencies:
-    "@varlet/icons" "^1.0.0"
     dayjs "^1.10.4"
     decimal.js "^10.2.1"
 

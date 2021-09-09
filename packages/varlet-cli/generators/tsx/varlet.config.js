@@ -9,6 +9,7 @@ module.exports = {
     'color-primary': '#009688',
     'color-link': '#009688',
     'color-type': '#009688',
+    'color-progress': '#009688',
     'color-side-bar': '#009688',
     'color-side-bar-active-background': '#00968821',
     'color-app-bar': '#009688',
