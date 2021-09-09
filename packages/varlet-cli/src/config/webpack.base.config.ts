@@ -57,6 +57,7 @@ const VUE_LOADER = {
 }
 
 export const BASE_CONFIG = {
+  target: 'web',
   entry: {
     pc: SITE_PC_MAIN,
     mobile: SITE_MOBILE_MAIN,

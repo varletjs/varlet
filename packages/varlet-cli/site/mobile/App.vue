@@ -1,16 +1,10 @@
 <template>
-  <div
-    style="position: relative"
-    :style="{
-      '--site-color-mobile-cell-hover': themes['color-mobile-cell-hover'],
-      '--site-color-mobile-cell-hover-background': themes['color-mobile-cell-hover-background']
-    }"
-  >
+  <div style="position: relative">
     <header>
       <var-app-bar
+        class="app-bar"
         :title="bigCamelizeComponentName"
         title-position="center"
-        :color="themes['color-app-bar']"
       >
         <template #left v-if="showBackIcon">
           <var-button round @click="back" color="transparent" text-color="#fff" text>
@@ -34,8 +28,9 @@
                 <var-cell
                   v-for="(value, key) in nonEmptyLanguages"
                   :key="key"
+                  class="mobile-language-cell"
+                  :class="[language === key && 'mobile-language-cell--active']"
                   v-ripple
-                  :style="{ color: language === key ? '#2979ff' : '#666', cursor: 'pointer' }"
                   @click="changeLanguage(key)"
                 >
                   {{ value }}
@@ -57,7 +52,7 @@
 import config from '@config'
 import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { bigCamelize, removeEmpty, watchLang } from '../utils'
+import { bigCamelize, removeEmpty, setThemes, watchLang } from '../utils'
 import { get } from 'lodash'
 
 type Language = Record<string, string>
@@ -72,7 +67,6 @@ export default defineComponent({
     const languages: Ref<Record<string, string>> = ref(get(config, 'mobile.header.i18n'))
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
     const redirect = get(config, 'mobile.redirect', '')
-    const themes = ref(get(config, 'themes'))
 
     const changeLanguage = (lang) => {
       language.value = lang
@@ -96,8 +90,9 @@ export default defineComponent({
       }
     )
 
+    setThemes(config)
+
     return {
-      themes,
       bigCamelizeComponentName,
       showBackIcon,
       showMenu,
@@ -136,11 +131,25 @@ header {
   font-weight: bold;
 }
 
+.app-bar {
+  background: var(--site-color-app-bar);
+}
+
 .router-view__block {
   padding: 50px 12px 15px;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.mobile-language-cell {
+  color: #666;
+  cursor: pointer;
+
+  &--active {
+    color: var(--site-color-mobile-language-active);
+    background: var(--site-color-mobile-language-active-background);
+  }
 }
 </style>

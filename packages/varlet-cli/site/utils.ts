@@ -1,4 +1,6 @@
 import { onMounted, onUnmounted } from 'vue'
+import { get } from 'lodash'
+import { StyleProvider } from '@varlet/ui'
 
 export function camelize(str: string): string {
   return str.replace(/-(\w)/g, (_: any, p: string) => p.toUpperCase())
@@ -23,7 +25,7 @@ export function getPCLocationInfo(): PCLocationInfo {
 }
 
 export function isPhone() {
-  return /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+  return /Android|webOS|iPhone|iPod|BlackBerry|Pad/i.test(navigator.userAgent)
 }
 
 export enum MenuTypes {
@@ -81,5 +83,15 @@ export function addRouteListener(cb: () => void) {
   onUnmounted(() => {
     window.removeEventListener('hashchange', cb)
     window.removeEventListener('popstate', cb)
+  })
+}
+
+export function setThemes(config: Record<string, any>) {
+  const themes = get(config, 'themes', {})
+  Object.keys(themes).forEach((key) => {
+    const theme = themes[key]
+    StyleProvider({
+      [`--site-${key}`]: theme
+    })
   })
 }

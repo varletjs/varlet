@@ -1,14 +1,5 @@
 <template>
-  <div
-    class="varlet-site"
-    :style="{
-      '--site-color-primary': themes['color-primary'],
-      '--site-color-link': themes['color-link'],
-      '--site-color-type': themes['color-type'],
-      '--site-color-side-bar': themes['color-side-bar'],
-      '--site-color-side-bar-active-background': themes['color-side-bar-active-background'],
-    }"
-  >
+  <div class="varlet-site">
     <app-header :language="language" />
 
     <div class="varlet-site-content">
@@ -42,7 +33,8 @@ import AppSidebar from './components/AppSidebar'
 import { defineComponent, nextTick, onMounted, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { get } from 'lodash'
-import { getPCLocationInfo, isPhone, MenuTypes } from '../utils'
+import { getPCLocationInfo, isPhone, MenuTypes, setThemes } from '../utils'
+import { StyleProvider } from '@varlet/ui'
 
 type Language = Record<string, string>
 
@@ -64,7 +56,6 @@ export default defineComponent({
     const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))
     const useMobile = ref(get(config, 'useMobile'))
     const mobileRedirect = get(config, 'mobile.redirect')
-    const themes = ref(get(config, 'themes'))
 
     const language: Ref<string> = ref('')
     const componentName: Ref<null | string> = ref(null)
@@ -124,12 +115,13 @@ export default defineComponent({
       { immediate: true }
     )
 
+    setThemes(config)
+
     return {
       menu,
       language,
       componentName,
       menuName,
-      themes,
       doc,
       useMobile,
       handleSidebarChange,

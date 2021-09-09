@@ -22,6 +22,7 @@
           >
             <var-cell
               v-for="(value, key) in nonEmptyLanguages"
+              v-ripple
               :key="key"
               :class="{ 'varlet-site-header__language-list--active': language === key }"
               @click="handleLanguageChange(key)"
@@ -203,16 +204,11 @@ export default {
 
     .var-cell {
       width: 100px;
-
-      &:hover {
-        background: #edf5ff;
-        color: @color-primary;
-      }
     }
 
     &--active {
-      background: #edf5ff;
-      color: @color-primary;
+      background: var(--site-color-pc-language-active-background);
+      color: var(--site-color-pc-language-active);
     }
   }
 }
