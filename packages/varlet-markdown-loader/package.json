@@ -1,6 +1,6 @@
 {
   "name": "@varlet/markdown-loader",
-  "version": "1.16.1",
+  "version": "1.16.3",
   "description": "markdown loader of varlet",
   "keywords": [
     "loader",
@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "highlight.js": "10.3.2",
-    "markdown-it": "^12.0.2",
-    "loader-utils": "^2.0.0"
+    "loader-utils": "^2.0.0",
+    "markdown-it": "^12.0.2"
   },
   "gitHead": "42554856ff028f6f411a35f468e0f763978270b0"
 }

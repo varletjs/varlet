@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.3](https://github.com/haoziqaq/varlet/compare/v1.16.2...v1.16.3) (2021-09-09)
+
+
+### Bug Fixes
+
+* **cli:** add site theme config property ([9bf4945](https://github.com/haoziqaq/varlet/commit/9bf49450a9b6082d5e384ae78d4f8bace568d209))
+* **cli:** fix generators progress color ([7e62811](https://github.com/haoziqaq/varlet/commit/7e62811e5fa8fa4d87ac7d0bf98cd510f5900eb6))
+* **cli:** handle sfc style block's lang non-existent ([96c8551](https://github.com/haoziqaq/varlet/commit/96c85513937e97eebd5c43575e96b689ae3cf3df))
+* **cli:** optimized Baidu statistics, add varlet-cli-app generators template, fix cli depend version ([703517e](https://github.com/haoziqaq/varlet/commit/703517eddf8842093897800e4a940906bb632c5f))
+* **cli:** themes add progress color config ([f804915](https://github.com/haoziqaq/varlet/commit/f80491508fb80bd7c15c9e014eac78f95430dc57))
+* **cli, markdown-loader:** optimize generators, markdown-loader lock highlight version ([9b3e3bb](https://github.com/haoziqaq/varlet/commit/9b3e3bba6e0c67fa53df23718fddfb8e9f09990f))
+* **cli,markdown-loader:** markdown-loader add style option, linter ignore generators ([7ca8844](https://github.com/haoziqaq/varlet/commit/7ca884425eb94df89995ab502a491a26bbefc9d4))
+* **cli/compile-types:** fix the component name of types ([4d999ee](https://github.com/haoziqaq/varlet/commit/4d999ee876e90b2c22dd93a0d17da8c181307378))
+
+
+### Performance Improvements
+
+* **site:** remove useless mobile image ([c55d7cf](https://github.com/haoziqaq/varlet/commit/c55d7cff289ac442672cf77636f87465c763fb93))
+
+
+
+
+
 ## [1.16.2](https://github.com/haoziqaq/varlet/compare/v1.16.1...v1.16.2) (2021-09-01)
 
 

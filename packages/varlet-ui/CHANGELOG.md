@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.3](https://github.com/haoziqaq/varlet/compare/v1.16.2...v1.16.3) (2021-09-09)
+
+
+### Bug Fixes
+
+* **cli:** optimized Baidu statistics, add varlet-cli-app generators template, fix cli depend version ([703517e](https://github.com/haoziqaq/varlet/commit/703517eddf8842093897800e4a940906bb632c5f))
+* **cli:** themes add progress color config ([f804915](https://github.com/haoziqaq/varlet/commit/f80491508fb80bd7c15c9e014eac78f95430dc57))
+* **cli/compile-types:** fix the component name of types ([4d999ee](https://github.com/haoziqaq/varlet/commit/4d999ee876e90b2c22dd93a0d17da8c181307378))
+
+
+
+
+
 ## [1.16.2](https://github.com/haoziqaq/varlet/compare/v1.16.1...v1.16.2) (2021-09-01)
 
 **Note:** Version bump only for package @varlet/ui

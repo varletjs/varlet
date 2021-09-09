@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.3](https://github.com/haoziqaq/varlet/compare/v1.16.2...v1.16.3) (2021-09-09)
+
+
+### Bug Fixes
+
+* **cli, markdown-loader:** optimize generators, markdown-loader lock highlight version ([9b3e3bb](https://github.com/haoziqaq/varlet/commit/9b3e3bba6e0c67fa53df23718fddfb8e9f09990f))
+* **cli,markdown-loader:** markdown-loader add style option, linter ignore generators ([7ca8844](https://github.com/haoziqaq/varlet/commit/7ca884425eb94df89995ab502a491a26bbefc9d4))
+
+
+
+
+
 ## [1.16.1](https://github.com/haoziqaq/varlet/compare/v1.16.0...v1.16.1) (2021-08-31)
 
 
