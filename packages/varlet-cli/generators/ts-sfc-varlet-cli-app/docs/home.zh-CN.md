@@ -1,5 +1,5 @@
 <div class="varlet-introduce">
-  <img class="varlet-introduce__image" src="./logo.svg" />
+  <img class="varlet-introduce__image" src="../public/logo.svg" />
   <div class="varlet-introduce__name">Basic</div>  
   <div class="varlet-introduce__des">一个组件库</div>
 </div>

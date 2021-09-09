@@ -34,8 +34,9 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@varlet/cli": "^1.16.2",
-    "vue": "^3.1.4"
+    "@varlet/cli": "^1.16.3@alpha.9",
+    "@vue/compiler-sfc": "3.1.4",
+    "vue": "3.1.4"
   },
   "dependencies": {
     "@varlet/icons": "^1.0.0"

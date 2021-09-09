@@ -42,7 +42,7 @@
     "@varlet/touch-emulator": "^1.0.1",
     "@varlet/ui": "^1.16.2",
     "@vue/babel-plugin-jsx": "^1.0.6",
-    "@vue/compiler-sfc": "^3.1.4",
+    "@vue/compiler-sfc": "3.1.4",
     "@vue/test-utils": "^2.0.0-rc.6",
     "address": "^1.1.2",
     "autoprefixer": "9",
@@ -97,6 +97,6 @@
     "@types/webpack-dev-server": "^3.11.1"
   },
   "peerDependencies": {
-    "vue": "^3.1.4"
+    "vue": "3.1.4"
   }
 }

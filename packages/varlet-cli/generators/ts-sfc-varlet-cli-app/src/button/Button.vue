@@ -38,8 +38,8 @@ export default defineComponent({
   border-radius: 2px;
   cursor: pointer;
 
-  &:active {
-    opacity: 0.3;
-  }
+  //&:active {
+  //  opacity: 0.9;
+  //}
 }
 </style>
