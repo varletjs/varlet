@@ -1,14 +1,21 @@
 import logger from '../shared/logger'
 import inquirer from 'inquirer'
 import { resolve } from 'path'
-import { copy, pathExistsSync, readFileSync, writeFileSync } from 'fs-extra'
+import { copy, pathExistsSync, readFileSync, writeFileSync, removeSync } from 'fs-extra'
 import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant'
+
+function removeFiles(dest: string) {
+  const files = ['es', 'umd', 'highlight', 'types/index.d.ts', '.varlet', 'node_modules']
+
+  files.forEach((filename) => removeSync(resolve(dest, filename)))
+}
 
 function syncVersion(name: string) {
   const file = resolve(CWD, name, 'package.json')
   const pkg = JSON.parse(readFileSync(file, 'utf-8'))
   const cliPkg = JSON.parse(readFileSync(CLI_PACKAGE_JSON, 'utf-8'))
   pkg.devDependencies['@varlet/cli'] = `^${cliPkg.version}`
+  pkg.files = ['es', 'umd', 'highlight', 'types', 'README.md']
   writeFileSync(file, JSON.stringify(pkg, null, 2))
 }
 
@@ -30,6 +37,7 @@ export async function gen(name: string) {
   const choice = ret['Please select your component library programming style']
   const generator = resolve(GENERATORS_DIR, choice)
   await copy(generator, dest)
+  removeFiles(dest)
   syncVersion(name)
 
   logger.success('Application generated successfully!')

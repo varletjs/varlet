@@ -13,13 +13,6 @@
     "Vue",
     "UI"
   ],
-  "files": [
-    "es",
-    "umd",
-    "highlight",
-    "types",
-    "README.md"
-  ],
   "license": "MIT",
   "scripts": {
     "husky": "husky install",
