@@ -188,9 +188,10 @@ iframe {
     }
 
     &__des {
-      color: #888;
+      color: #555;
       font-size: 14px;
       margin-top: 10px;
+      -webkit-font-smoothing: antialiased;
     }
   }
 
@@ -261,7 +262,7 @@ iframe {
       p,
       ul {
         -webkit-font-smoothing: antialiased;
-        color: #888;
+        color: #555;
         font-size: 15px;
         line-height: 26px;
         padding: 16px;
@@ -312,7 +313,7 @@ iframe {
           padding: 8px 16px;
           font-weight: 500;
           text-align: left;
-          color: #888;
+          color: #555;
           font-size: 13px;
           -webkit-font-smoothing: antialiased;
         }
@@ -320,7 +321,7 @@ iframe {
         td {
           padding: 8px 16px;
           border-top: 1px solid #eee;
-          color: #888;
+          color: #555;
 
           code {
             white-space: nowrap;
