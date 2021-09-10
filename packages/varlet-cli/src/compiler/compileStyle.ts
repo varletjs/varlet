@@ -5,8 +5,8 @@ import { parse, resolve } from 'path'
 
 export const EMPTY_SPACE_RE = /[\s]+/g
 export const EMPTY_LINE_RE = /[\n\r]*/g
-export const IMPORT_CSS_RE = /(?<!['"`])import\s+['"](.+\.css)['"]\s*;?(?!\s*['"`])/g
-export const IMPORT_LESS_RE = /(?<!['"`])import\s+['"](.+\.less)['"]\s*;?(?!\s*['"`])/g
+export const IMPORT_CSS_RE = /(?<!['"`])import\s+['"](\.{1,2}\/.+\.css)['"]\s*;?(?!\s*['"`])/g
+export const IMPORT_LESS_RE = /(?<!['"`])import\s+['"](\.{1,2}\/.+\.less)['"]\s*;?(?!\s*['"`])/g
 export const STYLE_IMPORT_RE = /@import\s+['"](.+)['"]\s*;/g
 
 class TildeResolver extends FileManager {

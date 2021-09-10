@@ -10,7 +10,11 @@
         @change="handleSidebarChange"
       />
 
-      <div class="varlet-site-doc-container" ref="doc">
+      <div
+        class="varlet-site-doc-container"
+        ref="doc"
+        :class="[!useMobile && 'varlet-site-doc-container--pc-only']"
+      >
         <router-view />
       </div>
 
@@ -34,7 +38,6 @@ import { defineComponent, nextTick, onMounted, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { get } from 'lodash'
 import { getPCLocationInfo, isPhone, MenuTypes, setThemes } from '../utils'
-import { StyleProvider } from '@varlet/ui'
 
 type Language = Record<string, string>
 
@@ -71,7 +74,7 @@ export default defineComponent({
     const init = () => {
       const { language, menuName } = getPCLocationInfo()
 
-      if (isPhone()) {
+      if (isPhone() && useMobile.value) {
         window.location.href = `./mobile.html#/${menuName}?language=${language || defaultLanguage}&platform=mobile`
         return
       }
@@ -144,13 +147,9 @@ export default defineComponent({
 
 @doc-active: {
   display: inline;
-  color: #fff;
-  font-size: 14px;
+  font-size: 15px;
   font-family: inherit;
-  padding: 3px 10px;
-  border-radius: 25px;
-  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
-  0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  padding: 0 4px;
   white-space: nowrap;
 }
 
@@ -175,9 +174,8 @@ iframe {
     align-items: center;
     margin: 20px 4px 20px;
     padding: 40px;
-    border-top: 8px solid var(--site-color-primary);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-top: 7px solid var(--site-color-primary);
+    border-radius: 4px;
     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 
     &__image {
@@ -213,15 +211,23 @@ iframe {
       &::-webkit-scrollbar {
         display: none;
       }
+
+      &--pc-only {
+        padding: 0 90px 0 30px;
+      }
     }
 
     &-doc {
       a {
         margin: 0 4px;
-        background: var(--site-color-link);
+        color: var(--site-color-link);
         -webkit-font-smoothing: antialiased;
         word-break: keep-all;
-        @doc-active()
+        @doc-active();
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
 
       h1,
@@ -230,13 +236,13 @@ iframe {
       h4,
       h5,
       h6 {
-        color: #323233;
+        position: relative;
+        color: #333;
         font-weight: normal;
         line-height: 1.5;
       }
 
       h1 {
-        //margin: 0 0 30px;
         line-height: 40px;
         font-size: 30px;
         cursor: default;
@@ -254,11 +260,11 @@ iframe {
 
       p,
       ul {
+        -webkit-font-smoothing: antialiased;
         color: #888;
         font-size: 15px;
         line-height: 26px;
         padding: 16px;
-        border-left: 4px solid var(--site-color-primary);
         border-radius: 4px;
         background: #fff;
         box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
@@ -280,7 +286,6 @@ iframe {
         line-height: 26px;
         white-space: pre-wrap;
         word-wrap: break-word;
-        background-color: #fff;
       }
 
       p code,
@@ -288,49 +293,45 @@ iframe {
       table code {
         -webkit-font-smoothing: antialiased;
         word-break: keep-all;
-        background: var(--site-color-primary);
-        margin: 0 4px;
+        color: var(--site-color-primary);
         @doc-active();
       }
 
       table {
+        -webkit-font-smoothing: antialiased;
         width: 100%;
         margin-top: 12px;
-        color: #34495e;
+        color: #333;
         font-size: 14px;
         line-height: 28px;
         border-collapse: collapse;
+        border-radius: 4px;
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 
         th {
-          padding: 8px 10px;
-          font-weight: 600;
+          padding: 8px 16px;
+          font-weight: 500;
           text-align: left;
-
-          &:first-child {
-            padding-left: 0;
-          }
+          color: #888;
+          font-size: 13px;
+          -webkit-font-smoothing: antialiased;
         }
 
         td {
-          padding: 8px;
-          border-top: 1px solid #f1f4f8;
+          padding: 8px 16px;
+          border-top: 1px solid #eee;
+          color: #888;
 
           code {
             white-space: nowrap;
-          }
-
-          &:first-child {
-            padding-left: 0;
-
-            code {
-              margin: 0;
-            }
+            padding: 0;
           }
         }
 
         em {
-          background: var(--site-color-type);
+          color: var(--site-color-type);
           font-style: normal;
+          -webkit-font-smoothing: antialiased;
           @doc-active();
         }
       }
