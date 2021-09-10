@@ -15,18 +15,18 @@ module.exports = (api?: ConfigAPI, options: PresetOption = {}) => {
   return {
     presets: [
       [
-        '@babel/preset-env',
+        require.resolve('@babel/preset-env'),
         {
           modules: isTest ? 'commonjs' : false,
           loose: options.loose,
         },
       ],
-      '@babel/preset-typescript',
+      require.resolve('@babel/preset-typescript'),
       require('./babel.sfc.transform'),
     ],
     plugins: [
       [
-        'import',
+        require.resolve('babel-plugin-import'),
         {
           libraryName: '@varlet/ui',
           libraryDirectory: 'es',
@@ -35,7 +35,7 @@ module.exports = (api?: ConfigAPI, options: PresetOption = {}) => {
         '@varlet/ui',
       ],
       [
-        '@vue/babel-plugin-jsx',
+        require.resolve('@vue/babel-plugin-jsx'),
         {
           enableObjectSlots: options.enableObjectSlots,
         },
