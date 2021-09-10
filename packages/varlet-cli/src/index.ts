@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { parse, command } from 'commander'
+import { parse, command, version, outputHelp, on } from 'commander'
 import { dev } from './commands/dev'
 import { build } from './commands/build'
 import { compile } from './commands/compile'
@@ -7,6 +7,9 @@ import { create } from './commands/create'
 import { jest } from './commands/jest'
 import { lint } from './commands/lint'
 import { gen } from './commands/gen'
+import logger from './shared/logger'
+
+version(`varlet-cli ${require('../package.json').version}`).usage('<command> [options]')
 
 command('dev').description('Run varlet development environment').action(dev)
 
@@ -29,5 +32,11 @@ command('jest')
   .action(jest)
 
 command('gen <name>').description('Generate cli application').action(gen)
+
+on('command:*', ([cmd]) => {
+  outputHelp()
+  logger.error(`\nUnknown command ${cmd}.\n`)
+  process.exitCode = 1
+})
 
 parse()
