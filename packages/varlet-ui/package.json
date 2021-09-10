@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "1.17.4",
+  "version": "1.18.0",
   "description": "A material like components library",
   "module": "es/index.js",
   "typings": "types/index.d.ts",
@@ -47,7 +47,7 @@
   },
   "gitHead": "ee9c3866bedad96c86365b0f9888a3a6bb781b1f",
   "devDependencies": {
-    "@varlet/cli": "^1.17.4"
+    "@varlet/cli": "^1.18.0"
   },
   "dependencies": {
     "dayjs": "^1.10.4",

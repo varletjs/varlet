@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0](https://github.com/haoziqaq/varlet/compare/v1.17.4...v1.18.0) (2021-09-10)
+
+
+### Bug Fixes
+
+* **cli:** babel configuration-related path optimization ([b79db48](https://github.com/haoziqaq/varlet/commit/b79db48df980fb192e184239d8cf7b4fde252733))
+* **cli/gen:** remove unuseful config ([2085b39](https://github.com/haoziqaq/varlet/commit/2085b39e384b9d9a66d50591dc1ca3d784292bd8))
+
+
+### Features
+
+* **cli:** add version command ([c5860c8](https://github.com/haoziqaq/varlet/commit/c5860c8cc8076b8a9f864a692d9a827beae16ed8))
+
+
+
+
+
 ## [1.17.4](https://github.com/haoziqaq/varlet/compare/v1.17.3...v1.17.4) (2021-09-09)
 
 
