@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.1](https://github.com/haoziqaq/varlet/compare/v1.18.0...v1.18.1) (2021-09-10)
+
+
+### Bug Fixes
+
+* **cli:** optimize site style and compile style reg ([df5e173](https://github.com/haoziqaq/varlet/commit/df5e173d524879ecf542281b42c93cdc061eda91))
+
+
+
+
+
 # [1.18.0](https://github.com/haoziqaq/varlet/compare/v1.17.4...v1.18.0) (2021-09-10)
 
 
