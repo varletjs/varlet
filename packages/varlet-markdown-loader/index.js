@@ -15,7 +15,7 @@ function highlight(str, lang, style) {
       '<link rel="stylesheet" href="' +
       style +
       '"/>' +
-      hljs.highlight(lang, str, true).value +
+      hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
       '</code></pre>'
     )
   }
