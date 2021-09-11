@@ -15,7 +15,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "prepare": "husky install",
+    "husky": "husky install",
     "commit": "git-cz",
     "dev": "varlet-cli dev",
     "build": "varlet-cli build",
