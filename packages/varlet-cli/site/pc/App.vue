@@ -135,10 +135,9 @@ export default defineComponent({
 
 <style>
 .hljs {
-  background: transparent !important;
+  background: #333 !important;
   padding: 0 !important;
   border-radius: 4px;
-  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 }
 </style>
 
@@ -147,7 +146,6 @@ export default defineComponent({
 
 @doc-active: {
   display: inline;
-  font-size: 15px;
   font-family: inherit;
   padding: 0 4px;
   white-space: nowrap;
@@ -220,10 +218,10 @@ iframe {
 
     &-doc {
       a {
-        margin: 0 4px;
         color: var(--site-color-link);
         -webkit-font-smoothing: antialiased;
         word-break: keep-all;
+        font-size: 15px;
         @doc-active();
 
         &:hover {
@@ -281,7 +279,6 @@ iframe {
         display: block;
         padding: 16px;
         overflow-x: auto;
-        color: #58727e;
         font-size: 13px;
         font-family: Consolas, Monaco, monospace;
         line-height: 26px;
@@ -295,6 +292,7 @@ iframe {
         -webkit-font-smoothing: antialiased;
         word-break: keep-all;
         color: var(--site-color-primary);
+        font-size: 15px;
         @doc-active();
       }
 
@@ -322,10 +320,12 @@ iframe {
           padding: 8px 16px;
           border-top: 1px solid #eee;
           color: #555;
+          font-family: Consolas, Monaco, monospace;
 
           code {
             white-space: nowrap;
             padding: 0;
+            font-size: 13px;
           }
         }
 
@@ -333,6 +333,7 @@ iframe {
           color: var(--site-color-type);
           font-style: normal;
           -webkit-font-smoothing: antialiased;
+          font-size: 13px;
           @doc-active();
         }
       }

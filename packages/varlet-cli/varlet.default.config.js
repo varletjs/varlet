@@ -10,7 +10,7 @@ module.exports = {
     /**
      * @see https://highlightjs.org/
      */
-    style: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/color-brewer.min.css',
+    style: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/nord.min.css',
   },
   analysis: {
     baidu: '',
