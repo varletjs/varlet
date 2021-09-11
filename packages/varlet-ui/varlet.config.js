@@ -481,4 +481,7 @@ module.exports = {
       },
     ],
   },
+  highlight: {
+    style: './highlight.css',
+  },
 }

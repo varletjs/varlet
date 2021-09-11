@@ -2,6 +2,7 @@ coverage/**
 es/**
 umd/**
 site/**
+public/**
 src/*/__tests__/**
 *.md
 

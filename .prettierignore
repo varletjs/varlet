@@ -9,5 +9,6 @@ packages/varlet-ui/es/**
 packages/varlet-ui/umd/**
 packages/varlet-ui/site/**
 packages/varlet-ui/src/*/__tests__/**
+packages/varlet-ui/public/**
 *.md
 

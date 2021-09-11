@@ -67,6 +67,7 @@
       "es/**",
       "umd/**",
       "site/**",
+      "public/**",
       "src/*/__tests__/**",
       ".varlet/**"
     ],
@@ -83,6 +84,7 @@
       "umd/**",
       "site/**",
       "coverage/**",
+      "public/**",
       "highlight/**"
     ]
   },

@@ -17,7 +17,7 @@ module.exports = {
     'color-mobile-cell-hover-background': '#00968821',
   },
   highlight: {
-    style: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/foundation.min.css',
+    style: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/night-owl.min.css',
   },
   pc: {
     redirect: '/home',
