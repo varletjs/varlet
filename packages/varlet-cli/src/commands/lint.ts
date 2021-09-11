@@ -34,7 +34,7 @@ export async function lint() {
       ...eslintPatterns.filter((pattern) => isDir(resolve(CWD, pattern))),
       '--fix',
       '--ext',
-      ESLINT_EXTENSIONS.join(','),
+      ESLINT_EXTENSIONS.join(),
     ])
 
     const type = stdout ? 'warn' : 'succeed'
