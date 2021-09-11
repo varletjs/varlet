@@ -47,6 +47,8 @@
     "@vue/babel-plugin-jsx": "^1.0.6",
     "@vue/compiler-sfc": "3.1.4",
     "@vue/test-utils": "^2.0.0-rc.6",
+    "@release-it/conventional-changelog": "^3.3.0",
+    "release-it": "^14.11.5",
     "address": "^1.1.2",
     "autoprefixer": "9",
     "babel-jest": "26.6.3",

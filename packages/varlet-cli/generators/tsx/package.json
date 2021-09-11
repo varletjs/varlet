@@ -32,8 +32,6 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@release-it/conventional-changelog": "^3.3.0",
-    "release-it": "^14.11.5",
     "@varlet/cli": "^1.17.2",
     "vue": "3.1.4"
   },
