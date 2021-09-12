@@ -14,24 +14,24 @@ createApp().use(Divider)
 ```
 
 ### Basic Usage
-```js
+```html
 <var-divider />
 ```
 
 ### Dashed Divider
-```js
+```html
 <var-divider dashed />
 ```
 
 ### Inset Divider
-```js
+```html
 <var-divider inset />
 <var-divider :inset="36" margin="36px 0" />
 <var-divider inset="-36px" />
 ```
 
 ### Vertical Divider
-```js
+```html
 <span>Text</span>
 <var-divider vertical />
 <span>Text</span>
@@ -40,12 +40,12 @@ createApp().use(Divider)
 ```
 
 ### The Divider with description
-```js
+```html
 <var-divider description="Description" />
 ```
 
 ### Custom
-```js
+```html
 <var-divider>
   <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
 </var-divider>
@@ -57,11 +57,11 @@ createApp().use(Divider)
 ### Props
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| inset | Set the indentation distance, and the number plus or minus sign controls the direction of indentation. The default indentation is `72px` when `true` is passed | _boolean \| number \| string_ | `false` |
-| vertical | Whether to set divider to display vertically | _boolean_ | `false` |
-| dashed | Whether divider is dashed | _boolean_ | `false` |
-| description | The text description of divider | _string_ | `-` |
-| margin | Set `margin` of divider | _string_ | `-` |
+| `inset` | Set the indentation distance, and the number plus or minus sign controls the direction of indentation. The default indentation is `72px` when `true` is passed | _boolean \| number \| string_ | `false` |
+| `vertical` | Whether to set divider to display vertically | _boolean_ | `false` |
+| `dashed` | Whether divider is dashed | _boolean_ | `false` |
+| `description` | The text description of divider | _string_ | `-` |
+| `margin` | Set `margin` of divider | _string_ | `-` |
 
 ### Slots
 | Slot | Description | Arguments |
