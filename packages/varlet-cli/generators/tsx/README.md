@@ -1,20 +1,15 @@
 # varlet-cli-app
 
+### Reference
+
+[@varlet/cli 中文文档]()
+[@varlet/cli documentation]()
+
 ### Quickstart
 
 ```shell
 yarn
 yarn dev
-```
-
-### MenuTypes
-
-```ts
-enum MenuTypes {
-  TITLE = 1,
-  COMPONENT = 2,
-  DOCUMENTATION = 3
-}
 ```
 
 ### Commands
@@ -43,6 +38,12 @@ yarn compile
 yarn test
 ```
 
+#### Run unit test in watch mode
+
+```shell
+yarn test:watch
+```
+
 ### Lint code
 
 ```shell
@@ -61,13 +62,6 @@ yarn genlog
 yarn genAllLog
 ```
 
-#### Run unit test in watch mode
-
-```shell
-yarn test:watch
-```
-
-
 #### Quickly create a component folder
 
 ```shell
@@ -82,7 +76,11 @@ yarn husky
 
 ### Publish
 
+tips: 
+- 1.The registry of npm and yarn must be the official source of npm
+- 2.Both npm and yarn must be logged in
+
 ```shell
-yarn publish
+yarn release
 ```
 
