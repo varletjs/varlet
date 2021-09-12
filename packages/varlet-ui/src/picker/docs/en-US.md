@@ -15,7 +15,6 @@ createApp().use(Picker)
 ### Scoped Install
 
 ```js
-
 import { Picker } from '@varlet/ui'
 
 export default {

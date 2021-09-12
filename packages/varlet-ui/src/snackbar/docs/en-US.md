@@ -16,7 +16,6 @@ createApp().use(Snackbar)
 ### Scoped Install
 
 ```js
-
 import { Snackbar } from '@varlet/ui'
 
 export default {

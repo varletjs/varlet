@@ -16,7 +16,6 @@ createApp().use(Snackbar)
 ### 局部引入
 
 ```js
-
 import { Snackbar } from '@varlet/ui'
 
 export default {

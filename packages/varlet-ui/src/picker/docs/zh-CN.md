@@ -14,7 +14,6 @@ createApp().use(Picker)
 ### 局部引入
 
 ```js
-
 import { Picker } from '@varlet/ui'
 
 export default {
