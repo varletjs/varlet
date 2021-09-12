@@ -49,7 +49,6 @@
     "@vue/test-utils": "^2.0.0-rc.6",
     "@release-it/conventional-changelog": "^3.3.0",
     "release-it": "^14.11.5",
-    "address": "^1.1.2",
     "autoprefixer": "9",
     "babel-jest": "26.6.3",
     "babel-loader": "^8.2.2",
@@ -91,7 +90,7 @@
     "vue-loader": "16.5.0",
     "vue-router": "4.0.0-rc.1",
     "webpack": "^5.23.0",
-    "webpack-dev-server": "^3.11.0",
+    "webpack-dev-server": "^4.2.0",
     "webpack-merge": "^5.3.0",
     "webpackbar": "^5.0.0-3"
   },
@@ -102,7 +101,7 @@
     "@types/hash-sum": "^1.0.0",
     "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.168",
-    "@types/webpack-dev-server": "^3.11.1"
+    "@types/webpack-dev-server": "^4.1.0"
   },
   "peerDependencies": {
     "vue": "3.1.4"

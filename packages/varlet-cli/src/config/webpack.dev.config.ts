@@ -44,12 +44,16 @@ export function getDevConfig() {
     devServer: {
       port: get(varletConfig, 'port'),
       host: get(varletConfig, 'host'),
-      publicPath: '/',
-      contentBase: SITE_PUBLIC_PATH,
-      stats: 'errors-only',
-      disableHostCheck: true,
+      devMiddleware: {
+        publicPath: '/',
+      },
+      directory: {
+        directory: SITE_PUBLIC_PATH,
+      },
+      allowedHosts: 'all',
       hot: true,
     },
+    stats: 'errors-only',
     optimization: {
       splitChunks: {
         cacheGroups: {
