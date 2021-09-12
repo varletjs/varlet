@@ -135,7 +135,7 @@ export default defineComponent({
 
 <style>
 .hljs {
-  background: #333 !important;
+  background: #202020 !important;
   padding: 0 !important;
   border-radius: 4px;
 }

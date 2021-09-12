@@ -25,7 +25,7 @@ function highlight(str, lang, style) {
 
 function markLoader(source) {
   const options = loaderUtils.getOptions(this)
-  const style = options.style || '//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/color-brewer.min.css'
+  const style = options.style || '//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/ir-black.min.css'
   const md = markdown({
     html: true,
     typographer: true,
