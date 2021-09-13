@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://github.com/haoziqaq/varlet/compare/v1.18.1...v1.19.0) (2021-09-13)
+
+
+### Bug Fixes
+
+* **cli:** add public folder to linter ignore ([d10a799](https://github.com/haoziqaq/varlet/commit/d10a7996efe9963a4f3c7247b1c5d2f2baac2502))
+* **cli:** fix the parameter passing method of webpack-dev-server ([0d88843](https://github.com/haoziqaq/varlet/commit/0d88843af5b15b59b27321f61f2701e562d4f8af))
+* **doc:** fix typo ([6371e4e](https://github.com/haoziqaq/varlet/commit/6371e4e7e53fa03589ac99247ab2abec8330e5c5))
+
+
+
+
+
 ## [1.18.1](https://github.com/haoziqaq/varlet/compare/v1.18.0...v1.18.1) (2021-09-10)
 
 **Note:** Version bump only for package @varlet/ui

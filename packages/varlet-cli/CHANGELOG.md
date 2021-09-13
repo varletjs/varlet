@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://github.com/haoziqaq/varlet/compare/v1.18.1...v1.19.0) (2021-09-13)
+
+
+### Bug Fixes
+
+* **cli:** add public folder to linter ignore ([d10a799](https://github.com/haoziqaq/varlet/commit/d10a7996efe9963a4f3c7247b1c5d2f2baac2502))
+* **cli:** fix prepare scripts to husky ([d0ff087](https://github.com/haoziqaq/varlet/commit/d0ff087834a5b2c4e1cacd6cb6e7e7ad0412aeda))
+* **cli:** fix the parameter passing method of webpack-dev-server ([0d88843](https://github.com/haoziqaq/varlet/commit/0d88843af5b15b59b27321f61f2701e562d4f8af))
+* **cli:** optimize site style ([f789d77](https://github.com/haoziqaq/varlet/commit/f789d7795a86736ad4f67f758759a17283e7dcdb))
+* **cli:** optimize site style ([9287d7b](https://github.com/haoziqaq/varlet/commit/9287d7b004f9b6508d065f62bb3d2e7b370499f5))
+* **cli/gen:** localize static resources ([80f9097](https://github.com/haoziqaq/varlet/commit/80f9097fde3c5e18f3ac162979b45bdb0147ffe4))
+* **doc:** fix typo ([6371e4e](https://github.com/haoziqaq/varlet/commit/6371e4e7e53fa03589ac99247ab2abec8330e5c5))
+
+
+### Features
+
+* **cli:** add release for template ([5078838](https://github.com/haoziqaq/varlet/commit/5078838cfee1cd8232aaef7fafd5eec0a03f1569))
+* **cli:** webpack-dev-server upgrade to 4.x version ([4d1fe95](https://github.com/haoziqaq/varlet/commit/4d1fe9570198b73910c0926c6f1e030753b52cda))
+
+
+
+
+
 ## [1.18.1](https://github.com/haoziqaq/varlet/compare/v1.18.0...v1.18.1) (2021-09-10)
 
 
