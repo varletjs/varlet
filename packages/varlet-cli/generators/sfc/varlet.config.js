@@ -3,7 +3,6 @@ module.exports = {
   namespace: 'b',
   title: 'Basic UI',
   logo: './logo.svg',
-  port: 8080,
   useMobile: true,
   themes: {
     'color-primary': '#009688',
