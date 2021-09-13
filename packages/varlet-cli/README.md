@@ -15,8 +15,7 @@
 
 ### 快速开始
 
-虽然提供了一系列命令降低了组件库的开发门槛，但是又带来了新的问题，那就是需要学习这些命令是怎么用的，如何配置的。
-为了解决这一问题，`@varlet/cli`内置了`单文件组件(sfc)`和`tsx, jsx`两种风格的组件库项目模板，可以通过`gen`命令直接生成。
+`@varlet/cli`内置了`单文件组件(sfc)`和`tsx, jsx`两种风格的组件库项目模板，可以通过`gen`命令直接生成。
 帮助用户直接进入组件本身的开发，这里推荐使用`yarn`作为包管理工具，首先确保安装了`yarn`并且添加到系统环境变量中去，这里不展开介绍`yarn`的安装和配置方法。
 
 ```shell
@@ -29,13 +28,13 @@ yarn
 yarn dev
 ```
 
-然后通过简单修改一些组件库模板的基础信息，就可以开始组件库的开发了，
+然后通过简单修改一些组件库模板的基础信息，就可以开始组件库的开发了
 
 ## 高级定制
 
 ### 配置文件
 
-项目根目录下的`varlet.config.js`用来管理整个组件库项目的具体细节，
+项目根目录下的`varlet.config.js`用来管理整个组件库项目的具体细节
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
@@ -71,7 +70,7 @@ yarn dev
 
 #### SiteHighlight
 
-代码片段高亮, 基于[highlight.js](https://highlightjs.org/)
+代码片段高亮，基于[highlight.js](https://highlightjs.org/)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
@@ -87,7 +86,7 @@ yarn dev
 
 #### SitePC, SiteMobile
 
-文档结构部分相关, 示例配置如下
+文档结构部分相关，示例配置如下
 
 ```js
 module.exports = {
@@ -226,7 +225,7 @@ module.exports = {
 
 #### git-hook
 
-`husky`,`lint-staged`配合`eslint`,`stylelint`,`commitlint`做commit前的检查,`package.json`配置如下
+`husky`，`lint-staged`配合`eslint`，`stylelint`，`commitlint`做commit前的检查，`package.json`配置如下
 
 ```json
 {
@@ -277,7 +276,7 @@ module.exports = {
 创建`commitlint.config.js`
 
 ```js
-// commitlint.config.sj
+// commitlint.config.js
 module.exports = {
   extends: ['@commitlint/config-conventional'],
 }
@@ -318,7 +317,7 @@ src/*/__tests__/**
 
 ### 发布代码
 
-使用`release-it`和`conventional-changelog`进行代码发布和更新日志的生成, `package.json`配置如下
+使用`release-it`和`conventional-changelog`进行代码发布和更新日志的生成，`package.json`配置如下
 
 ```json
 {
