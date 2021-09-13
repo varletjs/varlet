@@ -63,10 +63,18 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': '开发指南',
-          'en-US': 'Developer Guide',
+          'zh-CN': '组件库快速成型工具',
+          'en-US': 'Components Library Tools',
         },
-        doc: 'developerGuide',
+        doc: 'cli',
+        type: 3,
+      },
+      {
+        text: {
+          'zh-CN': '开源指南',
+          'en-US': 'Open Source Guide',
+        },
+        doc: 'openSourceGuide',
         type: 3,
       },
       {

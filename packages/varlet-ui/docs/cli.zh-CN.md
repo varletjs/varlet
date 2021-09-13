@@ -48,7 +48,7 @@ yarn dev
 | `useMobile` | 是否显示右侧手机预览 | _boolean_ | `false` |
 | `themes` | 文档主题 | _SiteThemes_ | `-` |
 | `highlight` | 文档代码片段样式相关 | _SiteHighlight_ | `-` |
-| `analysis` | 文档代码片段样式相关 | _SiteAnalysis_ | `-` |
+| `analysis` | 文档统计相关 | _SiteAnalysis_ | `-` |
 | `pc` | pc端文档结构配置 | _SitePC_ | `-` |
 | `mobile` | mobile端文档结构配置 | _SiteMobile_ | `-` |
 
@@ -282,7 +282,7 @@ module.exports = {
 }
 ```
 
-创建.prettierignore
+创建`.prettierignore`
 
 ```text
 // .prettierignore

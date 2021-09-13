@@ -13,6 +13,9 @@ cd packages/varlet-ui
 yarn dev
 ```
 
+### Contribution Guide
+see [Varlet Contribution](https://github.com/haoziqaq/varlet/blob/dev/.github/CONTRIBUTING.md)
+
 ### Join us
 
 If you want to participate in the development and maintenance of the component library,
