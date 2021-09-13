@@ -72,6 +72,7 @@ export const BASE_CONFIG = {
       '@mobile-routes': SITE_MOBILE_ROUTES,
     },
   },
+  stats: 'errors-warnings',
   module: {
     rules: [
       {

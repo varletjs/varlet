@@ -2,7 +2,7 @@ import merge from 'webpack-merge'
 import WebpackBarPlugin from 'webpackbar'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { BASE_CONFIG } from './webpack.base.config'
-import { PRIMARY_COLOR, SITE_PUBLIC_PATH } from '../shared/constant'
+import { CWD, PRIMARY_COLOR } from '../shared/constant'
 import { resolve } from 'path'
 import { get } from 'lodash'
 import { getVarletConfig } from './varlet.config'
@@ -37,23 +37,27 @@ export const HTML_WEBPACK_PLUGINS = [
   }),
 ]
 
+export function getDevServerConfig() {
+  const host = get(varletConfig, 'host')
+
+  return {
+    port: get(varletConfig, 'port'),
+    host: host === 'localhost' ? '0.0.0.0' : host,
+    devMiddleware: {
+      publicPath: '/',
+    },
+    static: {
+      directory: resolve(CWD, 'public'),
+    },
+    allowedHosts: 'all',
+    hot: true,
+  }
+}
+
 export function getDevConfig() {
   return merge(BASE_CONFIG, {
     mode: 'development',
     devtool: 'source-map',
-    devServer: {
-      port: get(varletConfig, 'port'),
-      host: get(varletConfig, 'host'),
-      devMiddleware: {
-        publicPath: '/',
-      },
-      directory: {
-        directory: SITE_PUBLIC_PATH,
-      },
-      allowedHosts: 'all',
-      hot: true,
-    },
-    stats: 'errors-only',
     optimization: {
       splitChunks: {
         cacheGroups: {
