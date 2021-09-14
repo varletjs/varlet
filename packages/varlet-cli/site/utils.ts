@@ -53,9 +53,12 @@ export function getHashSearch() {
   return new URLSearchParams(hashSearch)
 }
 
-export function watchLang(cb: (lang: string) => void) {
+export function watchLang(cb: (lang: string) => void, platform: 'pc' | 'mobile' = 'mobile') {
   const handleHashchange = () => {
-    const language = getHashSearch().get('language') ?? 'zh-CN'
+    const language = platform === 'mobile'
+      ? (getHashSearch().get('language') ?? 'zh-CN')
+      : getPCLocationInfo().language
+
     cb(language)
   }
 

@@ -193,6 +193,10 @@ iframe {
     }
   }
 
+  &-component-preview {
+    margin-top: 20px;
+  }
+
   &-site {
     &-content {
       height: calc(100vh - 60px);
