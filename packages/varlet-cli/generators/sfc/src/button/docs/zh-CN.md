@@ -14,9 +14,17 @@ createApp().use(Button)
 <b-button>组件库从我开始</b-button>
 ```
 
+```vue
+import BasicUse from '../example/BasicUse'
+```
+
 ### 主题色按钮
 ```html
 <b-button color="#009688">组件库从我开始</b-button>
+```
+
+```vue
+import ModifyColor from '../example/ModifyColor'
 ```
 
 ## API
