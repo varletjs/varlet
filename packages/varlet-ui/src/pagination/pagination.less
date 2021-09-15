@@ -1,0 +1,71 @@
+.var-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  // width: 100%;
+  // background-color: red;
+  height: 32px;
+  padding: 0 16px;
+  &--size {
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90px;
+    margin-right: 35px;
+    .active {
+      width: 40px;
+      // font-size: 16px;
+      font-weight: 500;
+    }
+  }
+  &--total {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    margin-right: 35px;
+    width: 50px;
+  }
+  &--page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100px;
+    font-size: 16px;
+    .text {
+      width: 40px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+    }
+    .page_icon {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+    }
+  }
+}
+.page-cell {
+  max-height: 200px;
+  overflow-y: auto;
+}
+.cell-list {
+  width: 60px;
+  .var-cell {
+    // justify-content: center;
+    text-align: center;
+  }
+}
+.var-option {
+  padding: 0;
+  justify-content: center;
+}
+.var-select__scroller {
+  padding: 0;
+}

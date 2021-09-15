@@ -241,6 +241,14 @@ module.exports = {
         doc: 'divider',
         type: 2,
       },
+      // {
+      //   text: {
+      //     'zh-CN': 'pagination 分页',
+      //     'en-US': 'pagination'
+      //   },
+      //   doc: 'pagination',
+      //   type: 2
+      // },
       {
         text: {
           'zh-CN': '导航组件',
