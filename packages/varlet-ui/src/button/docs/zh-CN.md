@@ -5,7 +5,6 @@
 ```js
 import { createApp } from 'vue'
 import { Button } from '@varlet/ui'
-
 createApp().use(Button)
 ```
 
