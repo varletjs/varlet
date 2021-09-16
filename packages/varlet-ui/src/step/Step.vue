@@ -1,33 +1,12 @@
 <template>
   <div class="var-step">
-    <div class="var-step-horizontal" v-if="direction === 'horizontal'">
-      <div class="var-step-horizontal__main" ref="main">
+    <div :class="`var-step-${direction}`">
+      <div :class="`var-step-${direction}__main`" :ref="getRef">
         <div
-          class="var-step-horizontal__tag"
-          :class="{ 'var-step-horizontal__tag--active': isActive || isCurrent }"
-          :style="{ backgroundColor: isActive || isCurrent ? activeColor : inactiveColor }"
-          @click="click"
-        >
-          <var-icon class="var-step__icon" var-step-cover :name="activeIcon || 'check'" v-if="isActive" />
-          <var-icon class="var-step__icon" var-step-cover :name="currentIcon" v-else-if="isCurrent && currentIcon" />
-          <var-icon class="var-step__icon" var-step-cover :name="inactiveIcon" v-else-if="inactiveIcon" />
-          <span v-else>{{ index + 1 }}</span>
-        </div>
-        <div
-          class="var-step-horizontal__content"
-          :class="{ 'var-step-horizontal__content--active': isActive || isCurrent }"
-          @click="click"
-        >
-          <slot />
-        </div>
-      </div>
-      <div class="var-step-horizontal__line" v-if="!isLastChild" :style="{ margin: lineMargin }"></div>
-    </div>
-    <div class="var-step-vertical" v-else>
-      <div class="var-step-vertical__main">
-        <div
-          class="var-step-vertical__tag"
-          :class="{ 'var-step-vertical__tag--active': isActive || isCurrent }"
+          :class="{
+            [`var-step-${direction}__tag`]: true,
+            [`var-step-${direction}__tag--active`]: isActive || isCurrent,
+          }"
           :style="{ backgroundColor: isActive || isCurrent ? activeColor : inactiveColor }"
           @click="click"
         >
@@ -37,14 +16,16 @@
           <span v-else>{{ index + 1 }}</span>
         </div>
         <div
-          class="var-step-vertical__content"
-          :class="{ 'var-step-vertical__content--active': isActive || isCurrent }"
+          :class="{
+            [`var-step-${direction}__content`]: true,
+            [`var-step-${direction}__content--active`]: isActive || isCurrent,
+          }"
           @click="click"
         >
           <slot />
         </div>
       </div>
-      <div class="var-step-vertical__line" v-if="!isLastChild" :style="{ margin: lineMargin }"></div>
+      <div :class="`var-step-${direction}__line`" v-if="!isLastChild" :style="{ margin: lineMargin }"></div>
     </div>
   </div>
 </template>
@@ -86,6 +67,12 @@ export default defineComponent({
 
     const click = () => clickStep(index.value)
 
+    const getRef = (el: HTMLDivElement) => {
+      if (direction.value === 'horizontal') {
+        main.value = el
+      }
+    }
+
     bindSteps(stepProvider)
 
     watch(length, (newLength) => {
@@ -107,6 +94,7 @@ export default defineComponent({
       inactiveColor,
       isLastChild,
       click,
+      getRef,
     }
   },
 })
