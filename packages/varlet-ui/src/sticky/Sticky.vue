@@ -2,12 +2,12 @@
   <div
     class="var-sticky"
     ref="stickyEl"
-    :class="[cssMode ? 'var-sticky--css-mode' : null]"
+    :class="[enableCSSMode ? 'var-sticky--css-mode' : null]"
     :style="{
       zIndex: toNumber(zIndex),
-      top: !isFixed ? `${offsetTop}px` : null,
-      width: isFixed ? fixedWidth : null,
-      height: isFixed ? fixedHeight : null,
+      top: enableCSSMode ? `${offsetTop}px` : null,
+      width: enableFixedMode ? fixedWidth : null,
+      height: enableFixedMode ? fixedHeight : null,
     }"
   >
     <div
@@ -15,11 +15,11 @@
       ref="wrapperEl"
       :style="{
         zIndex: toNumber(zIndex),
-        position: isFixed ? 'fixed' : null,
-        width: isFixed ? fixedWrapperWidth : null,
-        height: isFixed ? fixedWrapperHeight : null,
-        left: isFixed ? fixedLeft : null,
-        top: isFixed ? fixedTop : null,
+        position: enableFixedMode ? 'fixed' : null,
+        width: enableFixedMode ? fixedWrapperWidth : null,
+        height: enableFixedMode ? fixedWrapperHeight : null,
+        left: enableFixedMode ? fixedLeft : null,
+        top: enableFixedMode ? fixedTop : null,
       }"
     >
       <slot />
@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted, onActivated, onDeactivated, computed } from 'vue'
+import { defineComponent, ref, onMounted, onUnmounted, onActivated, onDeactivated, computed, watch } from 'vue'
 import { props } from './props'
 import { getParentScroller, toPxNum } from '../utils/elements'
 import { toNumber } from '../utils/shared'
@@ -41,8 +41,7 @@ export default defineComponent({
     const stickyEl: Ref<HTMLElement | null> = ref(null)
     const wrapperEl: Ref<HTMLElement | null> = ref(null)
 
-    let isSupportCSSSticky: boolean
-
+    const isSupportCSSSticky: Ref<boolean> = ref(false)
     const isFixed: Ref<boolean> = ref(false)
     const fixedTop: Ref<string> = ref('0px')
     const fixedLeft: Ref<string> = ref('0px')
@@ -51,11 +50,21 @@ export default defineComponent({
     const fixedWrapperWidth: Ref<string> = ref('auto')
     const fixedWrapperHeight: Ref<string> = ref('auto')
 
+    const enableCSSMode: ComputedRef<boolean> = computed(
+      () => !props.disabled && props.cssMode && isSupportCSSSticky.value
+    )
+    const enableFixedMode: ComputedRef<boolean> = computed(() => !props.disabled && isFixed.value)
     const offsetTop: ComputedRef<number> = computed(() => toPxNum(props.offsetTop))
 
     let scroller: HTMLElement | Window = window
 
     const handleScroll = () => {
+      const { onScroll, cssMode, disabled } = props
+
+      if (disabled) {
+        return
+      }
+
       let scrollerTop = 0
 
       if (scroller !== window) {
@@ -67,10 +76,9 @@ export default defineComponent({
       const sticky = stickyEl.value as HTMLElement
       const { top: stickyTop, left: stickyLeft } = sticky.getBoundingClientRect()
       const currentOffsetTop = stickyTop - scrollerTop
-      const { onScroll, cssMode } = props
 
       if (currentOffsetTop <= offsetTop.value) {
-        if (!isSupportCSSSticky || !cssMode) {
+        if (!isSupportCSSSticky.value || !cssMode) {
           fixedWidth.value = `${sticky.offsetWidth}px`
           fixedHeight.value = `${sticky.offsetHeight}px`
           fixedTop.value = `${scrollerTop + offsetTop.value}px`
@@ -100,12 +108,14 @@ export default defineComponent({
       window.removeEventListener('scroll', handleScroll)
     }
 
+    watch(() => props.disabled, handleScroll)
+
     onActivated(addScrollListener)
 
     onDeactivated(removeScrollListener)
 
     onMounted(() => {
-      isSupportCSSSticky = ['sticky', '-webkit-sticky'].includes(
+      isSupportCSSSticky.value = ['sticky', '-webkit-sticky'].includes(
         window.getComputedStyle(stickyEl.value as HTMLElement).position
       )
       addScrollListener()
@@ -124,6 +134,8 @@ export default defineComponent({
       fixedHeight,
       fixedWrapperWidth,
       fixedWrapperHeight,
+      enableCSSMode,
+      enableFixedMode,
       toNumber,
     }
   },

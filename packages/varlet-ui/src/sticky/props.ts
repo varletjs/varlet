@@ -13,6 +13,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
   onScroll: {
     type: Function as PropType<(offsetTop: number, isFixed: boolean) => void>,
   },
