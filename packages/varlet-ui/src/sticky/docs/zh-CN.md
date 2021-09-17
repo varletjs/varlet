@@ -54,6 +54,7 @@ createApp().use(Sticky)
 | --- | --- | --- | --- | 
 | `offset-top` | 吸顶距离 | _string \| number_ | `0` |
 | `z-index` | 吸顶时的层级 | _string \| number_ | `0` |
+| `css-mode` | 开启原生`css sticky`模式 | _boolean_ | `false` |
 
 ### 事件
 

@@ -49,9 +49,14 @@ test('test sticky onScroll', async () => {
 })
 
 test('test sticky scrolling with css sticky position', async () => {
+  const mockGetComputedStyle = jest
+    .spyOn(window, 'getComputedStyle')
+    .mockReturnValue({ position: 'sticky' })
+
   const wrapper = mount(VarSticky, {
     props: {
       offsetTop: 100,
+      cssMode: true
     },
     slots: {
       default: () => 'sticky content',
@@ -59,8 +64,9 @@ test('test sticky scrolling with css sticky position', async () => {
     attachTo: document.body,
   })
 
-  const mockGetComputedStyle = jest.spyOn(window, 'getComputedStyle').mockReturnValue({ position: 'sticky' })
-  const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ top: 200 })
+  const mockGetBoundingClientRect = jest
+    .spyOn(wrapper.element, 'getBoundingClientRect')
+    .mockReturnValue({ top: 200 })
   await trigger(window, 'scroll')
   expect(wrapper.html()).toMatchSnapshot()
 
@@ -76,6 +82,10 @@ test('test sticky scrolling with css sticky position', async () => {
 })
 
 test('test sticky scrolling without css sticky position', async () => {
+  const mockGetComputedStyle = jest
+    .spyOn(window, 'getComputedStyle')
+    .mockReturnValue({ position: 'relative' })
+
   const wrapper = mount(VarSticky, {
     props: {
       offsetTop: 100,
@@ -86,16 +96,16 @@ test('test sticky scrolling without css sticky position', async () => {
     attachTo: document.body,
   })
 
-  const mockGetComputedStyle = jest.spyOn(window, 'getComputedStyle').mockReturnValue({ position: 'relative' })
-  const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({
-    top: 200,
-  })
+  const mockGetBoundingClientRect = jest
+    .spyOn(wrapper.element, 'getBoundingClientRect')
+    .mockReturnValue({ top: 200 })
+
   await trigger(window, 'scroll')
   expect(wrapper.html()).toMatchSnapshot()
 
-  jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({
-    top: 100,
-  })
+  jest
+    .spyOn(wrapper.element, 'getBoundingClientRect')
+    .mockReturnValue({ top: 100 })
   await trigger(window, 'scroll')
   expect(wrapper.html()).toMatchSnapshot()
 

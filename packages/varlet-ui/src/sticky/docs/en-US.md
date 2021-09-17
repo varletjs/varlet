@@ -55,6 +55,7 @@ createApp().use(Sticky)
 | --- | --- | --- | --- | 
 | `offset-top` | Sticky offset top | _string \| number_ | `0` |
 | `z-index` | Sticky z-index | _string \| number_ | `0` |
+| `css-mode` | Enable native `css sticky` mode | _boolean_ | `false` |
 
 ### Events
 

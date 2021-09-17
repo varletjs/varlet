@@ -2,6 +2,7 @@
   <div
     class="var-sticky"
     ref="stickyEl"
+    :class="[cssMode ? 'var-sticky--css-mode' : null]"
     :style="{
       zIndex: toNumber(zIndex),
       top: !isFixed ? `${offsetTop}px` : null,
@@ -66,10 +67,10 @@ export default defineComponent({
       const sticky = stickyEl.value as HTMLElement
       const { top: stickyTop, left: stickyLeft } = sticky.getBoundingClientRect()
       const currentOffsetTop = stickyTop - scrollerTop
-      const { onScroll } = props
+      const { onScroll, cssMode } = props
 
       if (currentOffsetTop <= offsetTop.value) {
-        if (!isSupportCSSSticky) {
+        if (!isSupportCSSSticky || !cssMode) {
           fixedWidth.value = `${sticky.offsetWidth}px`
           fixedHeight.value = `${sticky.offsetHeight}px`
           fixedTop.value = `${scrollerTop + offsetTop.value}px`
