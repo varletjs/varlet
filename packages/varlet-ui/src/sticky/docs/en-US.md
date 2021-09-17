@@ -1,8 +1,8 @@
 # Sticky
 
 ### Intro
-A sticky layout is implemented by default using `position: sticky`,
-Browsers that do not support this property automatically revert to the traditional way of listening for `scroll` events.
+The sticky layout uses the `scroll` layout mode that listens to container scroll events by default. 
+If necessary, you can switch to the `css sticky` layout mode to improve performance.
 
 ### Install
 
