@@ -28,7 +28,7 @@ exports[`test click error text reload 2`] = `
 `;
 
 exports[`test list example 1`] = `
-"<div class=\\"var-sticky\\" style=\\"z-index: 10; top: 50px;\\">
+"<div class=\\"var-sticky\\" style=\\"z-index: 10;\\">
   <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10;\\">
     <div class=\\"var-tabs var--box var-tabs--item-horizontal var-tabs--layout-horizontal-padding\\" style=\\"margin-bottom: 10px;\\">
       <div class=\\"var-tabs__tab-wrap var-tabs--layout-horizontal\\">
