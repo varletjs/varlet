@@ -41,7 +41,6 @@ export default defineComponent({
     const stickyEl: Ref<HTMLElement | null> = ref(null)
     const wrapperEl: Ref<HTMLElement | null> = ref(null)
 
-    const isSupportCSSSticky: Ref<boolean> = ref(false)
     const isFixed: Ref<boolean> = ref(false)
     const fixedTop: Ref<string> = ref('0px')
     const fixedLeft: Ref<string> = ref('0px')
@@ -50,9 +49,7 @@ export default defineComponent({
     const fixedWrapperWidth: Ref<string> = ref('auto')
     const fixedWrapperHeight: Ref<string> = ref('auto')
 
-    const enableCSSMode: ComputedRef<boolean> = computed(
-      () => !props.disabled && props.cssMode && isSupportCSSSticky.value
-    )
+    const enableCSSMode: ComputedRef<boolean> = computed(() => !props.disabled && props.cssMode)
     const enableFixedMode: ComputedRef<boolean> = computed(() => !props.disabled && isFixed.value)
     const offsetTop: ComputedRef<number> = computed(() => toPxNum(props.offsetTop))
 
@@ -78,7 +75,7 @@ export default defineComponent({
       const currentOffsetTop = stickyTop - scrollerTop
 
       if (currentOffsetTop <= offsetTop.value) {
-        if (!isSupportCSSSticky.value || !cssMode) {
+        if (!cssMode) {
           fixedWidth.value = `${sticky.offsetWidth}px`
           fixedHeight.value = `${sticky.offsetHeight}px`
           fixedTop.value = `${scrollerTop + offsetTop.value}px`
@@ -114,12 +111,7 @@ export default defineComponent({
 
     onDeactivated(removeScrollListener)
 
-    onMounted(() => {
-      isSupportCSSSticky.value = ['sticky', '-webkit-sticky'].includes(
-        window.getComputedStyle(stickyEl.value as HTMLElement).position
-      )
-      addScrollListener()
-    })
+    onMounted(addScrollListener)
 
     onUnmounted(removeScrollListener)
 
