@@ -11,6 +11,7 @@ export interface IndexAnchorProvider {
   name: ComputedRef<string | number | undefined>
   ownTop: Ref<number>
   setOwnTop: () => void
+  setDisabled: (value: boolean) => void
 }
 
 export function useIndexBar() {
