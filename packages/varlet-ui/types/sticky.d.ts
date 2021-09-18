@@ -3,6 +3,8 @@ import { VarComponent } from './varComponent'
 export interface StickyProps {
   offsetTop?: string | number
   zIndex?: string | number
+  cssMode?: boolean
+  disabled?: boolean
   onScroll?: (offsetTop: number, isFixed: boolean) => void
 }
 

@@ -4,6 +4,7 @@ export interface IndexBarProps {
   sticky?: boolean
   stickyOffsetTop?: number
   hideList?: boolean
+  cssMode?: boolean
   zIndex?: number | string
   highlightColor?: string
   duration?: number | string
