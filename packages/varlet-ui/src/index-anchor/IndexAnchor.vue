@@ -3,6 +3,8 @@
     :is="sticky ? 'var-sticky' : Transition"
     :offset-top="sticky ? stickyOffsetTop : null"
     :z-index="sticky ? zIndex : null"
+    :disabled="disabled && !cssMode"
+    :css-mode="cssMode"
     ref="anchorEl"
   >
     <div class="var-index-anchor" v-bind="$attrs">
@@ -30,6 +32,7 @@ export default defineComponent({
     const { index, indexBar, bindIndexBar } = useIndexBar()
 
     const ownTop: Ref<number> = ref(0)
+    const disabled: Ref<boolean> = ref(false)
     const name: ComputedRef<number | string | undefined> = computed(() => props.index)
     const anchorEl: Ref<HTMLDivElement | RendererNode | null> = ref(null)
 
@@ -38,8 +41,7 @@ export default defineComponent({
       return
     }
 
-    const { active, sticky, stickyOffsetTop, zIndex } = indexBar
-
+    const { active, sticky, cssMode, stickyOffsetTop, zIndex } = indexBar
     const setOwnTop = () => {
       if (!anchorEl.value) return
       ownTop.value = (anchorEl.value as RendererNode).$el
@@ -47,11 +49,16 @@ export default defineComponent({
         : (anchorEl.value as HTMLDivElement).offsetTop
     }
 
+    const setDisabled = (value: boolean) => {
+      disabled.value = value
+    }
+
     const indexAnchorProvider: IndexAnchorProvider = {
       index,
       name,
       ownTop,
       setOwnTop,
+      setDisabled,
     }
 
     bindIndexBar(indexAnchorProvider)
@@ -62,6 +69,8 @@ export default defineComponent({
       active,
       sticky,
       zIndex,
+      disabled,
+      cssMode,
       stickyOffsetTop,
       Transition,
     }

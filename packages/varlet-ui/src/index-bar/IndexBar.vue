@@ -46,12 +46,14 @@ export default defineComponent({
     const active: Ref<number | string | undefined> = ref()
 
     const sticky: ComputedRef<boolean> = computed(() => props.sticky)
+    const cssMode: ComputedRef<boolean> = computed(() => props.cssMode)
     const stickyOffsetTop: ComputedRef<number> = computed(() => props.stickyOffsetTop)
     const zIndex: ComputedRef<number | string> = computed(() => props.zIndex)
 
     const indexBarProvider: IndexBarProvider = {
       active,
       sticky,
+      cssMode,
       stickyOffsetTop,
       zIndex,
     }
@@ -76,6 +78,11 @@ export default defineComponent({
           index === indexAnchors.length - 1 ? scrollHeight : indexAnchors[index + 1].ownTop.value - anchor.ownTop.value
 
         if (top >= 0 && top < distance && !clickedName.value) {
+          if (index && !props.cssMode) {
+            indexAnchors[index - 1].setDisabled(true)
+          }
+
+          anchor.setDisabled(false)
           emitEvent(anchor)
         }
       })

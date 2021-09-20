@@ -7,6 +7,10 @@ export const props = {
     type: Number,
     default: 0,
   },
+  cssMode: {
+    type: Boolean,
+    default: false,
+  },
   hideList: {
     type: Boolean,
     default: false,
