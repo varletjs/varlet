@@ -70,9 +70,10 @@ export default defineComponent({
 
     const handleScroll = () => {
       const { scrollTop, scrollHeight } = scrollEl.value as HTMLElement
+      const { offsetTop } = barEl.value as HTMLElement
       indexAnchors.forEach((anchor: IndexAnchorProvider, index: number) => {
         const anchorTop = anchor.ownTop.value
-        const top = scrollTop - anchorTop + stickyOffsetTop.value
+        const top = scrollTop - anchorTop + stickyOffsetTop.value - offsetTop
 
         const distance =
           index === indexAnchors.length - 1 ? scrollHeight : indexAnchors[index + 1].ownTop.value - anchor.ownTop.value

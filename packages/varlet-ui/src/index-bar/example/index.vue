@@ -1,16 +1,11 @@
 <template>
-  <div class="var-index-bar__example">
-    <var-index-bar @change="change" duration="300">
-      <div v-for="item in list" :key="item">
-        <var-index-anchor :index="item" class="var-index-anchor__example">
-          {{ pack.title }} {{ item }}
-        </var-index-anchor>
-        <var-cell>{{ item }} {{ pack.text }}</var-cell>
-        <var-cell>{{ item }} {{ pack.text }}</var-cell>
-        <var-cell>{{ item }} {{ pack.text }}</var-cell>
-      </div>
-    </var-index-bar>
-  </div>
+  <var-index-bar @change="change" duration="300" :sticky-offset-top="50">
+    <div v-for="item in list" :key="item">
+      <var-index-anchor :index="item" class="var-index-anchor__example"> {{ pack.title }} {{ item }} </var-index-anchor>
+      <var-cell>{{ item }} {{ pack.text }}</var-cell>
+      <var-cell>{{ item }} {{ pack.text }}</var-cell>
+    </div>
+  </var-index-bar>
 </template>
 
 <script>
@@ -53,10 +48,6 @@ export default {
 </script>
 
 <style lang="less">
-.var-index-bar__example {
-  height: calc(100vh - 50px);
-  overflow: auto;
-}
 .var-index-anchor__example {
   background: #e7edf7;
   height: 42px;
