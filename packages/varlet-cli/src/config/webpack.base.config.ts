@@ -1,5 +1,4 @@
 import {
-  POSTCSS_CONFIG,
   SITE_CONFIG,
   SITE_MOBILE_MAIN,
   SITE_MOBILE_ROUTES,
@@ -12,7 +11,7 @@ import { ForkTsCheckerWebpackPlugin } from 'fork-ts-checker-webpack-plugin/lib/F
 import { VueLoaderPlugin } from 'vue-loader'
 import { pathExistsSync } from 'fs-extra'
 import { WebpackPluginInstance } from 'webpack'
-import { createPostcssOptions } from './postcss.config'
+import { getPostcssOptions } from './postcss.config'
 import { getVarletConfig } from './varlet.config'
 import { get } from 'lodash'
 
@@ -21,7 +20,7 @@ export const CSS_LOADERS = [
   require.resolve('css-loader'),
   {
     loader: require.resolve('postcss-loader'),
-    options: { postcssOptions: createPostcssOptions(POSTCSS_CONFIG) },
+    options: { postcssOptions: getPostcssOptions() },
   },
 ]
 
