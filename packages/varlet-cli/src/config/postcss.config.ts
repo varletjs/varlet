@@ -1,12 +1,18 @@
+import { merge } from 'lodash'
 import { pathExistsSync } from 'fs-extra'
+import { POSTCSS_CONFIG } from '../shared/constant'
 
-export function createPostcssOptions(path: string) {
-  const rawOptions = (pathExistsSync(path) && require(path)) || {}
+export const defaultConfig = {
+  plugins: [require.resolve('postcss-preset-env')],
+}
 
-  const rawPlugins = Array.isArray(rawOptions.plugins) ? rawOptions.plugins : []
+export function getPostcssOptions() {
+  let config: any = {}
 
-  return {
-    ...rawOptions,
-    plugins: [require.resolve('autoprefixer'), ...rawPlugins],
+  if (pathExistsSync(POSTCSS_CONFIG)) {
+    delete require.cache[require.resolve(POSTCSS_CONFIG)]
+    config = require(POSTCSS_CONFIG)
   }
+
+  return merge(defaultConfig, config)
 }
