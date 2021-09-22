@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.21.0](https://github.com/haoziqaq/varlet/compare/v1.20.0...v1.21.0) (2021-09-22)
+
+
+### Bug Fixes
+
+* **index-bar:** fix the bug of overlap ([52c1d9b](https://github.com/haoziqaq/varlet/commit/52c1d9be10f9ece2f70fd613a24fac6457d016a6))
+* **index-bar:** fix the scrolling bug when index-bar is not 0 away from the top ([2f28954](https://github.com/haoziqaq/varlet/commit/2f28954d1ac4d14ffaa6d439675318dab273e0f9))
+* **types:** add props type declaration ([a547cc9](https://github.com/haoziqaq/varlet/commit/a547cc9fa99436d82d0ae2ac2804b0b94d0d3da0))
+* **ui/sticky:** remove auto check sticky support statement ([8a35d98](https://github.com/haoziqaq/varlet/commit/8a35d98487cc3c547d42a5c22ad32d8e2c96d19a))
+* **ui/sticky:** use scroll mode as sticky default mode ([3769f8b](https://github.com/haoziqaq/varlet/commit/3769f8b0837bc16f9bc4d7ce3405cac61c1f79e1))
+
+
+### Features
+
+* **ui/sticky:** add disabled,css-mode props ([5dbfbca](https://github.com/haoziqaq/varlet/commit/5dbfbca81a04d41583827d40f2cb9b8ffe391ad3))
+
+
+
+
+
 # [1.20.0](https://github.com/haoziqaq/varlet/compare/v1.19.0...v1.20.0) (2021-09-15)
 
 **Note:** Version bump only for package @varlet/ui
