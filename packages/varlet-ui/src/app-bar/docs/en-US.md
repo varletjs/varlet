@@ -1,4 +1,4 @@
-# App-Bar
+# AppBar
 
 ### Install
 
