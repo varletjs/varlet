@@ -1,176 +1,285 @@
 <template>
-  <div class="var-pagination">
-    <div class="var-pagination--size">
-      <div class="active">
-        <!-- {{ size }} -->
-        <var-select :hint="false" :line="false" :placeholder="size" v-model="size">
-          <var-option v-for="(item, index) in sizeData" :key="index" @click="sizeSelect(item)" :label="item" />
-        </var-select>
-      </div>
-      /页
-      <!-- <var-menu alignment="bottom" v-model:show="sizeShow">
+  <ul class="var-pagination">
+    <li class="var-pagination__total">{{ showTotal(total, range) }}</li>
+    <li
+      v-ripple="{ disabled: current <= 1 || disabled }"
+      class="var-pagination__item"
+      :class="{
+        'var-pagination__item-disabled': current <= 1 || disabled,
+      }"
+      @click="clickItem('prev')"
+    >
+      <slot name="pre">
+        <var-icon name="chevron-left" />
+      </slot>
+    </li>
+
+    <li
+      v-if="simple"
+      class="var-pagination__simple"
+      :class="{
+        'var-pagination__item-disabled': disabled,
+      }"
+    >
+      <var-input
+        v-model="simpleValue"
+        :disabled="disabled"
+        var-pagination-cover
+        @blur="setPage('simple', simpleValue)"
+      />
+      / {{ pageCount }}
+    </li>
+    <li
+      v-else
+      v-ripple="{ disabled }"
+      v-for="(item, index) in pageList"
+      :key="item + index"
+      class="var-pagination__item"
+      :class="{
+        'var-pagination__item-active': item === current,
+        'var-pagination__item-hide': isHideEllipsis(item, index),
+        'var-pagination__item-disabled': disabled,
+      }"
+      @click="clickItem(item, index)"
+    >
+      {{ item }}
+    </li>
+
+    <li
+      v-ripple="{ disabled: current >= pageCount || disabled }"
+      class="var-pagination__item"
+      :class="{
+        'var-pagination__item-disabled': current >= pageCount || disabled,
+      }"
+      @click="clickItem('next')"
+    >
+      <slot name="next">
+        <var-icon name="chevron-right" />
+      </slot>
+    </li>
+    <li
+      v-if="showSizeChanger"
+      class="var-pagination__size"
+      :class="{
+        'var-pagination__item-disabled': disabled,
+      }"
+    >
+      <var-menu v-model:show="menuVisible">
+        <div style="display: flex" @click="showMenu">
+          <span>{{ size }}条/页</span>
+          <var-icon name="menu-down" />
+        </div>
+
         <template #menu>
-          <div class="cell-list">
-            <var-cell v-for="(item, index) in sizeData" :key="index" @click="sizeSelect(item)">{{ item }}</var-cell>
-          </div>
+          <var-cell
+            class="var-pagination__list"
+            :class="{
+              'var-pagination__list-active': size === option,
+            }"
+            v-for="(option, index) in sizeOption"
+            :key="index"
+            @click="clickSize(option)"
+          >
+            {{ option }}条/页
+          </var-cell>
         </template>
-      </var-menu> -->
-    </div>
-    <div class="var-pagination--total">共{{ total }}条</div>
-    <div class="var-pagination--page">
-      <div class="page_icon" @click="prev" v-ripple="{ disabled: current < 2 }">
-        <var-icon name="chevron-left" :color="current < 2 ? `#DCDCDC` : ``" />
-      </div>
-      <div class="text">
-        <var-select :hint="false" :line="false" :placeholder="size" v-model="current">
-          <var-option v-for="(item, index) in pageData" :key="index" @click="pageSelect(item)" :label="item" />
-        </var-select>
-      </div>
-      <div class="page_icon" @click="next" v-ripple="{ disabled: current >= max }">
-        <var-icon name="chevron-right" :color="current >= max ? `#DCDCDC` : ``" />
-      </div>
-    </div>
-  </div>
+      </var-menu>
+    </li>
+    <li
+      v-if="showQuickJumper && !simple"
+      class="var-pagination__quickly"
+      :class="{
+        'var-pagination__item-disabled': disabled,
+      }"
+    >
+      跳至
+      <var-input v-model="inputValue" :disabled="disabled" var-pagination-cover @blur="setPage('quick', inputValue)" />
+      页
+    </li>
+  </ul>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, computed, onBeforeMount, Ref } from 'vue'
-import menu from '../menu'
-import cell from '../cell'
-import select from '../select'
-import option from '../option'
-import button from '../button'
-import ripple from '../ripple'
-
+import { defineComponent, ref, computed, watch } from 'vue'
+import Menu from '../menu'
+import Ripple from '../ripple'
+import Icon from '../icon'
+import Cell from '../cell'
+import Input from '../input'
 import { props } from './porps'
-import { toNumber } from '../utils/shared'
+import { isNumber, toNumber } from '../utils/shared'
+import type { ComputedRef, Ref } from 'vue'
 
 export default defineComponent({
   name: 'VarPagination',
   components: {
-    [menu.name]: menu,
-    [cell.name]: cell,
-    [button.name]: button,
-    [select.name]: select,
-    [option.name]: option,
+    [Menu.name]: Menu,
+    [Icon.name]: Icon,
+    [Cell.name]: Cell,
+    [Input.name]: Input,
   },
+  directives: { Ripple },
   props,
-  setup(props, context) {
-    const sizeShow = ref(true)
-    const pageShow = ref(true)
-    const pageData: Ref<number[]> = ref([])
-    // const total = ref(66)
-    const current: Ref<number> = ref(1)
-    const size = ref(5)
-    // const { sizeData } = props
-    const sizeData = computed(() => {
-      return props.sizeData
-    })
-    const total = computed(() => {
-      return toNumber(props.total as string | number)
-    })
-    const max = ref(0)
+  setup(props) {
+    const activePosition = Math.ceil(props.maxShowBtnCount / 2)
 
-    const sizeFocus = () => {
-      sizeShow.value = true
-    }
+    const menuVisible: Ref<boolean> = ref(false)
+    const inputValue: Ref<string> = ref('')
+    const simpleValue: Ref<string> = ref('1')
+    const isHideEllipsisHead: Ref<boolean> = ref(false)
+    const isHideEllipsisTail: Ref<boolean> = ref(false)
+    const current: Ref<number> = ref(toNumber(props.current) || 1)
+    const size: Ref<number> = ref(toNumber(props.size) || 10)
+    const pageList: Ref<Array<string | number>> = ref([])
 
-    const sizeSelect = (value: number) => {
-      const oldValue = size.value
-      size.value = value
-      sizeShow.value = false
-      pageList()
-      pageShow.value = false
-      context.emit('size-click', value, oldValue)
-    }
+    const pageCount: ComputedRef<number> = computed(() => Math.ceil(toNumber(props.total) / toNumber(size.value)))
+    const range: ComputedRef<Array<number>> = computed(() => {
+      const start = size.value * (current.value - 1) + 1
+      const end =
+        size.value * current.value > toNumber(props.total) ? toNumber(props.total) : size.value * current.value
 
-    const pageFocus = () => {
-      pageShow.value = true
-    }
-
-    const pageSelect = (value: number) => {
-      current.value = value
-      pageShow.value = false
-      sizeShow.value = false
-    }
-
-    const pageList = () => {
-      const totalPage = toNumber(total.value) / toNumber(size.value)
-      const arr = []
-      for (let i = 1; i < Math.ceil(totalPage) + 1; i++) {
-        arr.push(i)
-      }
-      console.log(total.value)
-
-      console.log(Math.ceil(totalPage))
-
-      if (current.value > arr[arr.length - 1]) {
-        current.value = arr[arr.length - 1]
-      }
-      pageData.value = arr
-      max.value = arr[arr.length - 1]
-    }
-
-    const next = () => {
-      if (current.value >= max.value) {
-        return
-      }
-      const oldValue = current.value
-      current.value += 1
-      context.emit('next-click', current.value, oldValue)
-    }
-
-    const prev = () => {
-      if (current.value < 2) {
-        return
-      }
-      const oldValue = current.value
-      current.value -= 1
-      context.emit('prev-click', current.value, oldValue)
-    }
-
-    pageList()
-
-    onBeforeMount(() => {
-      console.log(props)
+      return [start, end]
     })
 
-    watch(
-      () => current.value,
-      (newValue, oldValue) => {
-        context.emit('page-change', newValue, oldValue)
-      }
-    )
+    const isHideEllipsis = (item: string | number, index: number) => {
+      if (isNumber(item)) return false
 
-    watch(
-      () => props.current,
-      (newValue) => {
-        if (newValue >= max.value) {
-          current.value = max.value
-        } else if (newValue < 1) {
-          current.value = 1
+      return index === 1 ? isHideEllipsisHead.value : isHideEllipsisTail.value
+    }
+
+    const clickItem = (item: string | number, index?: number) => {
+      if (item === current.value || props.disabled) return
+
+      if (isNumber(item)) current.value = item
+      else if (item === 'prev') current.value > 1 && (current.value -= 1)
+      else if (item === 'next') current.value < pageCount.value && (current.value += 1)
+      else if (item === '...') {
+        if (index === 1) {
+          current.value = current.value - props.maxShowBtnCount > 1 ? current.value - props.maxShowBtnCount : 1
         } else {
-          current.value = toNumber(newValue)
+          current.value =
+            current.value + props.maxShowBtnCount < pageCount.value
+              ? current.value + props.maxShowBtnCount
+              : pageCount.value
         }
+      }
+
+      props.onChange?.(current.value)
+    }
+
+    const showMenu = () => {
+      if (props.disabled) return
+      menuVisible.value = true
+    }
+
+    const clickSize = (option: number) => {
+      size.value = option
+      menuVisible.value = false
+      props.onSizeChange?.(option)
+    }
+
+    const isValidatePage = (value: string) => {
+      const pattern = /^[1-9][0-9]*$/
+      return pattern.test(value)
+    }
+
+    const setPage = (type: 'simple' | 'quick', value: string) => {
+      if (isValidatePage(value)) {
+        let valueNum = toNumber(value)
+
+        if (valueNum > pageCount.value) {
+          valueNum = pageCount.value
+        }
+        if (valueNum !== current.value) {
+          current.value = valueNum
+          type === 'simple' && props.onChange?.(valueNum)
+        }
+      }
+
+      if (type === 'quick') inputValue.value = ''
+
+      if (type === 'simple' && !isValidatePage(value)) simpleValue.value = `${current.value}`
+    }
+
+    watch(
+      [current, pageCount],
+      ([newCurrent, newCount], [oldCurrent, oldCount]) => {
+        if (newCurrent > newCount) {
+          current.value = newCount
+          return
+        }
+
+        const { maxShowBtnCount } = props
+        simpleValue.value = `${newCurrent}`
+
+        if (newCount - 2 > maxShowBtnCount) {
+          if (oldCurrent === undefined || newCount !== oldCount) {
+            const list = []
+            for (let i = 2; i < maxShowBtnCount + 2; i++) list.push(i)
+            pageList.value = [1, '...', ...list, '...', newCount]
+          }
+
+          const rEllipseSign = newCount - (maxShowBtnCount - activePosition) - 1
+
+          // 左边不需要出现省略符号占位
+          if (newCurrent <= maxShowBtnCount && newCurrent < rEllipseSign) {
+            const list = []
+            if (toNumber(oldCurrent) > 2) {
+              for (let i = 1; i < maxShowBtnCount + 1; i++) list.push(i + 1)
+              pageList.value = [1, '...', ...list, '...', newCount]
+            }
+            isHideEllipsisHead.value = true
+            isHideEllipsisTail.value = false
+          }
+          // 两边都需要出现省略符号占位
+          if (newCurrent > maxShowBtnCount && newCurrent < rEllipseSign) {
+            // 针对 maxShowBtnCount===1 的特殊处理
+            const list = []
+            isHideEllipsisHead.value = newCurrent === 2 && maxShowBtnCount === 1
+            isHideEllipsisTail.value = false
+
+            for (let i = 1; i < maxShowBtnCount + 1; i++) {
+              list.push(newCurrent + i - activePosition)
+            }
+            pageList.value = [1, '...', ...list, '...', newCount]
+          }
+          // 右边不需要出现省略符号占位
+          if (newCurrent >= rEllipseSign) {
+            const list = []
+            isHideEllipsisHead.value = false
+            isHideEllipsisTail.value = true
+            // if (toNumber(oldCurrent) + 1 < newCount - 1) {
+            for (let i = 1; i < maxShowBtnCount + 1; i++) {
+              list.push(newCount - (maxShowBtnCount - i) - 1)
+            }
+            pageList.value = [1, '...', ...list, '...', newCount]
+            // }
+          }
+        } else {
+          const list = []
+          for (let i = 1; i <= newCount; i++) list.push(i)
+          pageList.value = list
+        }
+      },
+      {
+        immediate: true,
       }
     )
 
     return {
-      sizeFocus,
-      pageFocus,
-      pageSelect,
-      sizeSelect,
-      sizeShow,
-      pageShow,
-      sizeData,
-      pageData,
-      total,
       current,
+      menuVisible,
       size,
-      max,
+      pageCount,
+      range,
       pageList,
-      next,
-      prev,
+      inputValue,
+      simpleValue,
+      isHideEllipsis,
+      clickItem,
+      showMenu,
+      clickSize,
+      setPage,
     }
   },
 })
@@ -178,5 +287,10 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
+@import '../menu/menu';
+@import '../cell/cell';
+@import '../input/input';
+@import '../ripple/ripple';
+@import '../icon/icon';
 @import './pagination';
 </style>

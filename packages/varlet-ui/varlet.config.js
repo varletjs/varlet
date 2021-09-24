@@ -486,6 +486,14 @@ module.exports = {
         doc: 'uploader',
         type: 2,
       },
+      {
+        text: {
+          'zh-CN': 'Pagination 分页',
+          'en-US': 'Pagination',
+        },
+        doc: 'pagination',
+        type: 2,
+      },
     ],
   },
   highlight: {

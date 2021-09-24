@@ -1,7 +1,7 @@
 <template>
   <app-type> 啊这 </app-type>
   <div style="margin-top: 200px">
-    <var-pagination @pageChange="pageChange" :current="current" :size-data="[5, 10, 15, 30]" :total="80" />
+    <var-pagination total="325" :max-show-btn-count="4" size="10" show-quick-jumper :show-total="() => '共5条'" />
   </div>
 </template>
 
@@ -20,27 +20,8 @@ export default {
   },
   setup() {
     watchLang(use)
-    const current = ref(1)
-    // const pageChange = (newValue, oldValue) => {
-    //   // console.log(newValue, oldValue)
-    // }
-    const time = () => {
-      setTimeout(() => {
-        current.value = 5
-      }, 2000)
-    }
-    time()
-    return {
-      pack,
-      current,
-      time,
-    }
+
+    return {}
   },
 }
 </script>
-
-<style>
-.cell-list {
-  background: #fff;
-}
-</style>
