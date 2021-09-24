@@ -95,4 +95,8 @@ export default {
     },
   },
   selected: ' selected',
+  // pagination
+  paginationItem: '',
+  paginationPage: 'page',
+  paginationJump: 'Go to',
 }

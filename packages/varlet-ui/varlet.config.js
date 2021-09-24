@@ -494,6 +494,14 @@ module.exports = {
         doc: 'pagination',
         type: 2,
       },
+      {
+        text: {
+          'zh-CN': 'Table 表格',
+          'en-US': 'Table',
+        },
+        doc: 'table',
+        type: 2,
+      },
     ],
   },
   highlight: {

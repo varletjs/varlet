@@ -2,12 +2,34 @@
 @pagination-active-color: #fff;
 @pagination-active-bg-color: var(--color-primary);
 @pagination-hover-bg-color: rgb(245, 245, 245);
+@pagination-total-margin: 0 6px 0 0;
+@pagination-item-width: 32px;
+@pagination-item-height: 32px;
+@pagination-item-margin: 0 4px;
+@pagination-item-border-radius: 4px;
+@pagination-size-padding: 0 6px;
+@pagination-list-bg-color: #fff;
+@pagination-list-active-bg-color: #dbe4fd;
+@pagination-list-active-color: var(--color-primary);
+@pagination-input-width: 36px;
+@pagination-input-margin: 0 6px;
 
 :root {
   --pagination-font-size: @pagination-font-size;
   --pagination-active-color: @pagination-active-color;
   --pagination-active-bg-color: @pagination-active-bg-color;
   --pagination-hover-bg-color: @pagination-hover-bg-color;
+  --pagination-total-margin: @pagination-total-margin;
+  --pagination-item-width: @pagination-item-width;
+  --pagination-item-height: @pagination-item-height;
+  --pagination-item-margin: @pagination-item-margin;
+  --pagination-item-border-radius: @pagination-item-border-radius;
+  --pagination-size-padding: @pagination-size-padding;
+  --pagination-list-bg-color: @pagination-list-bg-color;
+  --pagination-list-active-bg-color: @pagination-list-active-bg-color;
+  --pagination-list-active-color: @pagination-list-active-color;
+  --pagination-input-width: @pagination-input-width;
+  --pagination-input-margin: @pagination-input-margin;
 }
 
 // Mixins
@@ -25,18 +47,19 @@
   padding: 0;
 
   &__total {
+    margin: var(--pagination-total-margin);
     .pagination-flex-nowrap();
   }
 
   &__item {
     display: inline-flex;
-    min-width: 32px;
+    min-width: var(--pagination-item-width);
     align-items: center;
     justify-content: center;
-    padding: 0 6px;
-    height: 32px;
+    margin: var(--pagination-item-margin);
+    height: var(--pagination-item-height);
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: var(--pagination-item-border-radius);
     outline: none;
     transition: all 0.3s;
     user-select: none;
@@ -66,12 +89,13 @@
 
   &__size {
     .pagination-flex-nowrap();
-    padding: 0 6px;
+
+    padding: var(--pagination-size-padding);
     cursor: pointer;
   }
 
   &__list {
-    background-color: #fff;
+    background-color: var(--pagination-list-bg-color);
     cursor: pointer;
 
     &:hover {
@@ -79,8 +103,8 @@
     }
 
     &-active {
-      background-color: #dbe4fd !important;
-      color: var(--color-primary);
+      background-color: var(--pagination-list-active-bg-color) !important;
+      color: var(--pagination-list-active-color);
     }
   }
 
@@ -89,8 +113,8 @@
     .pagination-flex-nowrap();
 
     [var-pagination-cover] {
-      width: 36px;
-      margin: 0 6px;
+      width: var(--pagination-input-width);
+      margin: var(--pagination-input-margin);
 
       .var-input__wrap {
         padding: 0;

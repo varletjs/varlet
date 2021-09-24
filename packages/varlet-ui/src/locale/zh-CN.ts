@@ -95,4 +95,8 @@ export default {
     },
   },
   selected: '个被选择',
+  // pagination
+  paginationItem: '条',
+  paginationPage: '页',
+  paginationJump: '跳至',
 }

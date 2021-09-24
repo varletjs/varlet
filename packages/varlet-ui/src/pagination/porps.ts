@@ -22,7 +22,7 @@ export const props = {
   },
   simple: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   showSizeChanger: {
     type: Boolean,
@@ -41,9 +41,6 @@ export const props = {
     default: () => {},
   },
   onChange: {
-    type: Function,
-  },
-  onSizeChange: {
     type: Function,
   },
 }

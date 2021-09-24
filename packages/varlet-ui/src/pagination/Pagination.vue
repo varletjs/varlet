@@ -1,6 +1,6 @@
 <template>
   <ul class="var-pagination">
-    <li class="var-pagination__total">{{ showTotal(total, range) }}</li>
+    <li v-if="showTotal(total, range)" class="var-pagination__total">{{ showTotal(total, range) }}</li>
     <li
       v-ripple="{ disabled: current <= 1 || disabled }"
       class="var-pagination__item"
@@ -9,7 +9,7 @@
       }"
       @click="clickItem('prev')"
     >
-      <slot name="pre">
+      <slot name="prev">
         <var-icon name="chevron-left" />
       </slot>
     </li>
@@ -66,7 +66,7 @@
     >
       <var-menu v-model:show="menuVisible">
         <div style="display: flex" @click="showMenu">
-          <span>{{ size }}条/页</span>
+          <span>{{ size }}{{ pack.paginationItem }} / {{ pack.paginationPage }}</span>
           <var-icon name="menu-down" />
         </div>
 
@@ -80,7 +80,7 @@
             :key="index"
             @click="clickSize(option)"
           >
-            {{ option }}条/页
+            {{ option }}{{ pack.paginationItem }} / {{ pack.paginationPage }}
           </var-cell>
         </template>
       </var-menu>
@@ -92,9 +92,8 @@
         'var-pagination__item-disabled': disabled,
       }"
     >
-      跳至
+      {{ pack.paginationJump }}
       <var-input v-model="inputValue" :disabled="disabled" var-pagination-cover @blur="setPage('quick', inputValue)" />
-      页
     </li>
   </ul>
 </template>
@@ -108,6 +107,7 @@ import Cell from '../cell'
 import Input from '../input'
 import { props } from './porps'
 import { isNumber, toNumber } from '../utils/shared'
+import { pack } from '../locale'
 import type { ComputedRef, Ref } from 'vue'
 
 export default defineComponent({
@@ -164,7 +164,7 @@ export default defineComponent({
         }
       }
 
-      props.onChange?.(current.value)
+      // props.onChange?.(current.value)
     }
 
     const showMenu = () => {
@@ -175,7 +175,6 @@ export default defineComponent({
     const clickSize = (option: number) => {
       size.value = option
       menuVisible.value = false
-      props.onSizeChange?.(option)
     }
 
     const isValidatePage = (value: string) => {
@@ -189,10 +188,11 @@ export default defineComponent({
 
         if (valueNum > pageCount.value) {
           valueNum = pageCount.value
+          simpleValue.value = `${valueNum}`
         }
         if (valueNum !== current.value) {
           current.value = valueNum
-          type === 'simple' && props.onChange?.(valueNum)
+          // type === 'simple' && props.onChange?.(valueNum)
         }
       }
 
@@ -260,6 +260,8 @@ export default defineComponent({
           for (let i = 1; i <= newCount; i++) list.push(i)
           pageList.value = list
         }
+
+        if (oldCurrent !== undefined) props.onChange?.(newCurrent, size.value)
       },
       {
         immediate: true,
@@ -267,6 +269,7 @@ export default defineComponent({
     )
 
     return {
+      pack,
       current,
       menuVisible,
       size,
