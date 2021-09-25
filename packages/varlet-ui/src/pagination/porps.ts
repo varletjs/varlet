@@ -1,5 +1,7 @@
 import { PropType } from 'vue'
 
+export type Range = [number, number]
+
 export const props = {
   current: {
     type: [Number, String],
@@ -37,9 +39,9 @@ export const props = {
     default: () => [10, 20, 50, 100],
   },
   showTotal: {
-    type: Function as PropType<(total: number, range: Array<number>) => string>,
+    type: Function as PropType<(total: number, range: Range) => string>,
   },
   onChange: {
-    type: Function,
+    type: Function as PropType<(current: number, size: number) => void>,
   },
 }

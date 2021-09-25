@@ -110,8 +110,7 @@ import { props } from './porps'
 import { isNumber, toNumber } from '../utils/shared'
 import { pack } from '../locale'
 import type { ComputedRef, Ref } from 'vue'
-
-type Range = [number, number]
+import type { Range } from './porps'
 
 export default defineComponent({
   name: 'VarPagination',
