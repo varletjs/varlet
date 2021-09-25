@@ -230,7 +230,7 @@ export default {
 | --- | --- | --- |
 | `open` | Triggered when the Dialog is open | `-` |
 | `opened` | Triggered when the Dialog open-animation ends | `-` |
-| `before-close` | Triggering before the Dialog closes prevents closure | `action: confirm \| cancel \| close, done: Function` |
+| `before-close` | Triggering before the Dialog closes prevents closure | `action: confirm \| cancel \| close` <br> `done: Function` |
 | `close` | Triggered when the Dialog is close | `-` |
 | `closed` | Triggered when the Dialog close-animation ends | `-` |
 | `confirm` | Trigger on confirm | `-` |

@@ -152,7 +152,7 @@ Other values are converted to text as a user prompt.
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `before-change` | Triggered before the change (lazy-change mode only) | `value: number, change: (value: string \| number) => void` |
+| `before-change` | Triggered before the change (lazy-change mode only) | `value: number` <br> `change: (value: string \| number) => void` |
 | `change` | Triggered on change | `value: number` |
 | `increment` | Triggered on increment | `value: number` |
 | `decrement` | Triggered on decrement | `value: number` |

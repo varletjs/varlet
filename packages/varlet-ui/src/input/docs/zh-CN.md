@@ -146,8 +146,8 @@ createApp().use(Icon)
 | `blur` | 失焦时触发 | `event: Event` |
 | `click` | 点击时触发 | `event: Event` |
 | `clear` | 清除时触发 | `value: string \| number` |
-| `input` | 输入时触发 | `value: string \| number` `event: Event` |
-| `change` | 更新时触发 | `value: string \| number` `event: Event` |
+| `input` | 输入时触发 | `value: string \| number` <br> `event: Event` |
+| `change` | 更新时触发 | `value: string \| number` <br> `event: Event` |
 
 ### 插槽
 

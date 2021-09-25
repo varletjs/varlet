@@ -148,7 +148,7 @@ export default defineComponent({
   display: inline;
   font-family: inherit;
   padding: 0 4px;
-  white-space: nowrap;
+  white-space: pre-wrap;
 }
 
 body {
@@ -327,7 +327,7 @@ iframe {
           font-family: Consolas, Monaco, monospace;
 
           code {
-            white-space: nowrap;
+            white-space: pre-wrap;
             padding: 0;
             font-size: 13px;
           }

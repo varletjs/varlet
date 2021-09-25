@@ -61,7 +61,7 @@ createApp().use(Sticky)
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `scroll` | 当滚动容器滚动时触发 | 距离顶部px值`offsetTop: number` 是否吸顶`isFixed: boolean` |
+| `scroll` | 当滚动容器滚动时触发 | `offsetTop: number` 距离顶部px值 <br> `isFixed: boolean` 是否吸顶 |
 
 ### 插槽
 

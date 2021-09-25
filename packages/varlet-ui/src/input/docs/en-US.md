@@ -147,8 +147,8 @@ Other values are converted to text as a user prompt.
 | `blur` | Triggered when out of focus | `event: Event` |
 | `click` | Triggered on Click | `event: Event` |
 | `clear` | Triggered on Clearance | `value: string | number` |
-| `input` | Trigger on input | `value: string | number` `event: Event` |
-| `change` | Trigger on change | `value: string | number` `event: Event` |
+| `input` | Trigger on input | `value: string | number` <br> `event: Event` |
+| `change` | Trigger on change | `value: string | number` <br> `event: Event` |
 
 ### Slots
 

@@ -153,7 +153,7 @@ export default {
 
 | 事件名 | 说明  | 回调参数 |
 | ----- | ---- | ----- |
-| `change` | 切换图片时的回调函数，回调参数为当前索引 | `index: number(图片索引)` |
+| `change` | 切换图片时的回调函数，回调参数为当前索引 | `index: number` 图片索引 |
 | `open`   | 打开image-preview时触发 | `-`  |
 | `opened` | 打开image-preview动画结束时触发 | `-` |
 | `close`  | 关闭image-preview时触发 | `-` |
@@ -163,7 +163,7 @@ export default {
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `indicator` | 分页指示器 | `index: number(图片索引), length: number(图片总数)` |
+| `indicator` | 分页指示器 | `index: number` 图片索引 <br> `length: number` 图片总数 |
 | `close-icon` | 关闭按钮 | `-` |
 
 ### ImagePreview Options

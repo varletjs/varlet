@@ -186,14 +186,14 @@ export default {
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `change` | Triggered when change swipe | `index: number(swipe index)` |
+| `change` | Triggered when change swipe | `index: number` swipe index |
 
 ### Slots
 
 | Slot | Description | Arguments |
 | --- | --- | --- |
 | `default` | Swipe content | `-` |
-| `indicator` | Swipe indicator content | `index: number, length: number` |
+| `indicator` | Swipe indicator content | `index: number` <br> `length: number` |
 
 ### Style Variables
 

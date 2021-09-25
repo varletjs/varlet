@@ -152,7 +152,7 @@ export default {
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `before-change` | 变更之前(仅限lazy-change模式)触发 | `value: number, change: (value: string \| number) => void` |
+| `before-change` | 变更之前(仅限lazy-change模式)触发 | `value: number` <br> `change: (value: string \| number) => void` |
 | `change` | 变更时触发 | `value: number` |
 | `increment` | 增加时触发 | `value: number` |
 | `decrement` | 减少时触发 | `value: number` |

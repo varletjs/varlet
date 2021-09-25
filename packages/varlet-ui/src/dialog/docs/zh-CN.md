@@ -230,7 +230,7 @@ export default {
 | --- | --- | --- |
 | `open` | 打开对话框时触发 | `-` |
 | `opened` | 打开对话框动画结束时触发 | `-` |
-| `before-close` | 对话框关闭前触发，会阻止关闭 | `action: confirm \| cancel \| close, done: Function` |
+| `before-close` | 对话框关闭前触发，会阻止关闭 | `action: confirm \| cancel \| close` <br> `done: Function` |
 | `close` | 关闭对话框时触发 | `-` |
 | `closed` | 关闭对话框动画结束时触发 | `-` |
 | `confirm` | 确认时触发 | `-` |

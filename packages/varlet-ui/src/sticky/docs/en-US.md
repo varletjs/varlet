@@ -62,7 +62,7 @@ createApp().use(Sticky)
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `scroll` | Triggered when the scroll container rolls | `offsetTop: number` `isFixed: boolean` |
+| `scroll` | Triggered when the scroll container rolls | `offsetTop: number` <br> `isFixed: boolean` |
 
 ### Slots
 

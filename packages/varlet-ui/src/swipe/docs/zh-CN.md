@@ -186,14 +186,14 @@ export default {
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `change` | 切换轮播时触发 | `index: number(轮播索引)` |
+| `change` | 切换轮播时触发 | `index: number` 轮播索引 |
 
 ### 插槽
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 轮播内容 | `-` |
-| `indicator` | 指示器内容 | `index: number(轮播索引), length: number(轮播总数)` |
+| `indicator` | 指示器内容 | `index: number` 轮播索引 <br> `length: number` 轮播总数 |
 
 ### 样式变量
 
