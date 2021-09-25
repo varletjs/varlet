@@ -101,6 +101,16 @@ import ShowTotal from '../example/ShowTotal.vue'
 />
 ```
 
+#### 禁用
+
+```vue
+import Disabled from '../example/Disabled.vue'
+```
+
+```html
+<var-pagination current="6" total="115" :simple="false" show-quick-jumper disabled />
+```
+
 ## API
 
 ### 属性
