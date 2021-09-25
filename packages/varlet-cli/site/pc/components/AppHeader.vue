@@ -91,8 +91,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import '~@varlet/ui/es/styles/var';
-
 .fade-enter-active {
   animation-name: fade-in;
   animation-duration: 0.3s;

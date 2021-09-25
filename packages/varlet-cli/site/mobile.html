@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title><%= htmlWebpackPlugin.options.title %></title>
+  <title><%= mobileTitle %></title>
   <meta http-equiv="Cache-Control" content="no-cache">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <link href="<%= htmlWebpackPlugin.options.logo %>" rel="icon" type="image/png" />
+  <link href="<%= logo %>" rel="icon" type="image/png" />
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover"
         name="viewport" />
   <style>
@@ -19,11 +19,11 @@
     }
   </style>
   <script>
-    if ('<%= htmlWebpackPlugin.options.baidu %>') {
+    if ('<%= baidu %>') {
       var _hmt = _hmt || [];
       (function() {
         var hm = document.createElement('script')
-        hm.src = '<%= htmlWebpackPlugin.options.baidu %>'
+        hm.src = '<%= baidu %>'
         var s = document.getElementsByTagName('script')[0]
         s.parentNode.insertBefore(hm, s)
       })()
@@ -32,5 +32,7 @@
 </head>
 <body>
 <div id="app"></div>
+
+<script type="module" src="/mobile/main.ts"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@ import logger from '../shared/logger'
 import { runCLI } from 'jest'
 import { CWD, JEST_CONFIG } from '../shared/constant'
 
-export async function jest(cmd: { watch: boolean; component: string; clearCache: boolean }) {
+export async function jest(cmd: { watch?: boolean; component?: string; clearCache?: boolean }) {
   process.env.NODE_ENV = 'test'
 
   const config = {

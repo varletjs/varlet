@@ -1,40 +1,18 @@
-import webpack from 'webpack'
-import WebpackDevServer from 'webpack-dev-server'
-import logger from '../shared/logger'
-import { getPort } from 'portfinder'
+import { createServer } from 'vite'
 import { ensureDirSync } from 'fs-extra'
-import { getDevConfig, getDevServerConfig } from '../config/webpack.dev.config'
 import { SRC_DIR } from '../shared/constant'
+import { buildSiteEntry } from '../compiler/compileSiteEntry'
+import { getDevConfig } from '../config/vite.config'
 import { getVarletConfig } from '../config/varlet.config'
-import { get } from 'lodash'
+import { merge } from 'lodash'
 
-export async function runDevServer(port: number, config: any) {
-  const devServerConfig = getDevServerConfig()
-  devServerConfig.port = port
-
-  const server = new WebpackDevServer(devServerConfig, webpack(config))
-
-  await server.start()
-}
-
-export async function dev() {
+export async function dev(cmd: { force?: boolean }) {
   process.env.NODE_ENV = 'development'
+
   ensureDirSync(SRC_DIR)
+  await buildSiteEntry()
 
-  const varletConfig = getVarletConfig()
-  const config = getDevConfig()
-  const port = get(varletConfig, 'port')
-
-  getPort(
-    {
-      port,
-    },
-    (err: Error, port: number) => {
-      if (err) {
-        logger.error(err.toString())
-        return
-      }
-      runDevServer(port, config)
-    }
-  )
+  const devConfig = getDevConfig(getVarletConfig())
+  const server = await createServer(merge(devConfig, cmd.force ? { server: { force: true } } : {}))
+  await server.listen()
 }

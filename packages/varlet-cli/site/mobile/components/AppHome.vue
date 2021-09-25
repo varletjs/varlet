@@ -72,8 +72,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import '~@varlet/ui/es/styles/var';
-
 .logo {
   height: 100px;
   padding-top: 30px;

@@ -142,7 +142,7 @@ export default defineComponent({
 </style>
 
 <style lang="less">
-@import '~@varlet/ui/es/progress/progress';
+@import '@varlet/ui/es/progress/progress';
 
 @doc-active: {
   display: inline;

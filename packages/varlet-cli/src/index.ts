@@ -11,7 +11,10 @@ import logger from './shared/logger'
 
 version(`varlet-cli ${require('../package.json').version}`).usage('<command> [options]')
 
-command('dev').description('Run varlet development environment').action(dev)
+command('dev')
+  .option('-f --force', 'Force dep pre-optimization regardless of whether deps have changed')
+  .description('Run varlet development environment')
+  .action(dev)
 
 command('build').description('Build varlet site for production').action(build)
 

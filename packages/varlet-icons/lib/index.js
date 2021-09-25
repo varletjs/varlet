@@ -47,6 +47,12 @@ ${iconNames.join(',\n')}
 ]
 `
 
+  const indexESMTemplate = `\
+export default [
+${iconNames.join(',\n')}
+]
+`
+
   const cssTemplate = `\
 @font-face {
   font-family: "${fontName}";
@@ -95,6 +101,7 @@ ${icons
     writeFile(resolve(CSS_DIR, `${fileName}.css`), cssTemplate),
     writeFile(resolve(CSS_DIR, `${fileName}.less`), cssTemplate),
     writeFile(resolve(DIST_DIR, 'index.js'), indexTemplate),
+    writeFile(resolve(DIST_DIR, 'index.esm.js'), indexESMTemplate),
   ])
 
   console.log('build success!')

@@ -4,7 +4,12 @@ import '@varlet/touch-emulator'
 import routes from '@pc-routes'
 // @ts-ignore
 import config from '@config'
+
 import { Cell, Ripple, Icon } from '@varlet/ui'
+import '@varlet/ui/es/cell/style'
+import '@varlet/ui/es/ripple/style'
+import '@varlet/ui/es/icon/style'
+
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { get } from 'lodash'

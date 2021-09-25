@@ -30,7 +30,10 @@ var lint_1 = require("./commands/lint");
 var gen_1 = require("./commands/gen");
 var logger_1 = __importDefault(require("./shared/logger"));
 commander_1.version("varlet-cli " + require('../package.json').version).usage('<command> [options]');
-commander_1.command('dev').description('Run varlet development environment').action(dev_1.dev);
+commander_1.command('dev')
+    .option('-f --force', 'Force dep pre-optimization regardless of whether deps have changed')
+    .description('Run varlet development environment')
+    .action(dev_1.dev);
 commander_1.command('build').description('Build varlet site for production').action(build_1.build);
 commander_1.command('compile')
     .description('Compile varlet components library code')

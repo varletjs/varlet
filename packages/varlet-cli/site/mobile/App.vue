@@ -107,8 +107,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '~@varlet/ui/es/styles/var';
-
 body {
   margin: 0;
   padding: 0;

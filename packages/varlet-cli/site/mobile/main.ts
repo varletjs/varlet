@@ -6,7 +6,15 @@ import App from './App.vue'
 import '@varlet/touch-emulator'
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
+
 import { Icon, AppBar, Button, Menu, Cell, Ripple } from '@varlet/ui'
+import '@varlet/ui/es/icon/style'
+import '@varlet/ui/es/app-bar/style'
+import '@varlet/ui/es/button/style'
+import '@varlet/ui/es/menu/style'
+import '@varlet/ui/es/cell/style'
+import '@varlet/ui/es/ripple/style'
+
 import { get } from 'lodash'
 import { inIframe, isPhone } from '../utils'
 

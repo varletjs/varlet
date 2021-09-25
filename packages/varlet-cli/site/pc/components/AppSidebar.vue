@@ -68,8 +68,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import '~@varlet/ui/es/styles/var';
-
 .varlet-site-sidebar {
   padding: 0 0 15px;
   position: sticky;

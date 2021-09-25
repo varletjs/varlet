@@ -3,7 +3,7 @@ import { merge } from 'lodash'
 import { VARLET_CONFIG, SITE_CONFIG } from '../shared/constant'
 import { outputFileSyncOnChange } from '../shared/fsUtils'
 
-export function getVarletConfig() {
+export function getVarletConfig(): Record<string, any> {
   let config: any = {}
 
   if (pathExistsSync(VARLET_CONFIG)) {

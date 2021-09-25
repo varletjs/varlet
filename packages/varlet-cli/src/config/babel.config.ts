@@ -26,15 +26,6 @@ module.exports = (api?: ConfigAPI, options: PresetOption = {}) => {
     ],
     plugins: [
       [
-        require.resolve('babel-plugin-import'),
-        {
-          libraryName: '@varlet/ui',
-          libraryDirectory: 'es',
-          style: true,
-        },
-        '@varlet/ui',
-      ],
-      [
         require.resolve('@vue/babel-plugin-jsx'),
         {
           enableObjectSlots: options.enableObjectSlots,
