@@ -252,6 +252,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Table 表格',
+          'en-US': 'Table',
+        },
+        doc: 'table',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '导航组件',
           'en-US': 'Navigation Components',
         },
@@ -349,6 +357,14 @@ module.exports = {
           'en-US': 'Popup',
         },
         doc: 'popup',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'Pagination 分页',
+          'en-US': 'Pagination',
+        },
+        doc: 'pagination',
         type: 2,
       },
       {
@@ -484,22 +500,6 @@ module.exports = {
           'en-US': 'Uploader',
         },
         doc: 'uploader',
-        type: 2,
-      },
-      {
-        text: {
-          'zh-CN': 'Pagination 分页',
-          'en-US': 'Pagination',
-        },
-        doc: 'pagination',
-        type: 2,
-      },
-      {
-        text: {
-          'zh-CN': 'Table 表格',
-          'en-US': 'Table',
-        },
-        doc: 'table',
         type: 2,
       },
     ],
