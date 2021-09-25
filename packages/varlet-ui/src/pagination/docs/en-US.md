@@ -81,7 +81,7 @@ import SizeOption from '../example/SizeOption.vue'
 #### Show Total
 
 ```vue
-import ShowTotal from '../example/EnShowTotal.vue'
+import ShowTotal from '../example/ShowTotal.vue'
 ```
 
 ```html
@@ -97,7 +97,7 @@ import ShowTotal from '../example/EnShowTotal.vue'
   size="10"
   total="66"
   :simple="false"
-  :show-total="(total, range) => `${range[0]}-${range[1]} items of ${total}`"
+  :show-total="(total, range) => `Total ${total}, current ${range[0]}-${range[1]}`"
 />
 ```
 

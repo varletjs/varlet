@@ -5,4 +5,6 @@ export default {
   item: '条',
   disabled: '禁用',
   hideSize: '隐藏 size 切换器',
+  pcTotal: '共',
+  current: '当前',
 }

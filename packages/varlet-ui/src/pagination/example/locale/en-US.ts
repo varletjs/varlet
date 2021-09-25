@@ -5,4 +5,6 @@ export default {
   item: 'items',
   disabled: 'Disabled',
   hideSize: 'Hide Size Changer',
+  pcTotal: 'Total ',
+  current: 'current',
 }

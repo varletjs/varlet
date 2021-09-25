@@ -97,7 +97,7 @@ import ShowTotal from '../example/ShowTotal.vue'
   size="10"
   total="66"
   :simple="false"
-  :show-total="(total, range) => `${total} 条中的 ${range[0]}-${range[1]}`"
+  :show-total="(total, range) => `共 ${total}, 当前 ${range[0]}-${range[1]}`"
 />
 ```
 
