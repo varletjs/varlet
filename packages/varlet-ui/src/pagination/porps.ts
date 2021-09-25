@@ -38,7 +38,6 @@ export const props = {
   },
   showTotal: {
     type: Function as PropType<(total: number, range: Array<number>) => string>,
-    default: () => {},
   },
   onChange: {
     type: Function,

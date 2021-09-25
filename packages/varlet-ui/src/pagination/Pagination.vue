@@ -1,6 +1,6 @@
 <template>
   <ul class="var-pagination">
-    <li v-if="showTotal(total, range)" class="var-pagination__total">{{ showTotal(total, range) }}</li>
+    <li v-if="totalText" class="var-pagination__total">{{ totalText }}</li>
     <li
       v-ripple="{ disabled: current <= 1 || disabled }"
       class="var-pagination__item"
@@ -110,6 +110,8 @@ import { isNumber, toNumber } from '../utils/shared'
 import { pack } from '../locale'
 import type { ComputedRef, Ref } from 'vue'
 
+type Range = [number, number]
+
 export default defineComponent({
   name: 'VarPagination',
   components: {
@@ -121,8 +123,6 @@ export default defineComponent({
   directives: { Ripple },
   props,
   setup(props) {
-    const activePosition = Math.ceil(props.maxShowBtnCount / 2)
-
     const menuVisible: Ref<boolean> = ref(false)
     const inputValue: Ref<string> = ref('')
     const simpleValue: Ref<string> = ref('1')
@@ -132,16 +132,21 @@ export default defineComponent({
     const size: Ref<number> = ref(toNumber(props.size) || 10)
     const pageList: Ref<Array<string | number>> = ref([])
 
+    const activePosition: ComputedRef<number> = computed(() => Math.ceil(props.maxShowBtnCount / 2))
     const pageCount: ComputedRef<number> = computed(() => Math.ceil(toNumber(props.total) / toNumber(size.value)))
-    const range: ComputedRef<Array<number>> = computed(() => {
+    const range: ComputedRef<Range> = computed(() => {
       const start = size.value * (current.value - 1) + 1
-      const end =
-        size.value * current.value > toNumber(props.total) ? toNumber(props.total) : size.value * current.value
+      const end = Math.min(size.value * current.value, toNumber(props.total))
 
       return [start, end]
     })
+    const totalText: ComputedRef<string> = computed(() => {
+      if (!props.showTotal) return ''
 
-    const isHideEllipsis = (item: string | number, index: number) => {
+      return props.showTotal(toNumber(props.total), range.value)
+    })
+
+    const isHideEllipsis = (item: string | number, index: number): boolean => {
       if (isNumber(item)) return false
 
       return index === 1 ? isHideEllipsisHead.value : isHideEllipsisTail.value
@@ -155,16 +160,11 @@ export default defineComponent({
       else if (item === 'next') current.value < pageCount.value && (current.value += 1)
       else if (item === '...') {
         if (index === 1) {
-          current.value = current.value - props.maxShowBtnCount > 1 ? current.value - props.maxShowBtnCount : 1
+          current.value = Math.max(current.value - props.maxShowBtnCount, 1)
         } else {
-          current.value =
-            current.value + props.maxShowBtnCount < pageCount.value
-              ? current.value + props.maxShowBtnCount
-              : pageCount.value
+          current.value = Math.min(current.value + props.maxShowBtnCount, pageCount.value)
         }
       }
-
-      // props.onChange?.(current.value)
     }
 
     const showMenu = () => {
@@ -190,10 +190,8 @@ export default defineComponent({
           valueNum = pageCount.value
           simpleValue.value = `${valueNum}`
         }
-        if (valueNum !== current.value) {
-          current.value = valueNum
-          // type === 'simple' && props.onChange?.(valueNum)
-        }
+
+        if (valueNum !== current.value) current.value = valueNum
       }
 
       if (type === 'quick') inputValue.value = ''
@@ -209,57 +207,57 @@ export default defineComponent({
           return
         }
 
+        let list = []
         const { maxShowBtnCount } = props
+        const rEllipseSign = newCount - (maxShowBtnCount - activePosition.value) - 1
         simpleValue.value = `${newCurrent}`
 
         if (newCount - 2 > maxShowBtnCount) {
           if (oldCurrent === undefined || newCount !== oldCount) {
-            const list = []
             for (let i = 2; i < maxShowBtnCount + 2; i++) list.push(i)
-            pageList.value = [1, '...', ...list, '...', newCount]
           }
-
-          const rEllipseSign = newCount - (maxShowBtnCount - activePosition) - 1
 
           // 左边不需要出现省略符号占位
           if (newCurrent <= maxShowBtnCount && newCurrent < rEllipseSign) {
-            const list = []
-            if (toNumber(oldCurrent) > 2) {
-              for (let i = 1; i < maxShowBtnCount + 1; i++) list.push(i + 1)
-              pageList.value = [1, '...', ...list, '...', newCount]
+            list = []
+
+            for (let i = 1; i < maxShowBtnCount + 1; i++) {
+              list.push(i + 1)
             }
+
             isHideEllipsisHead.value = true
             isHideEllipsisTail.value = false
           }
           // 两边都需要出现省略符号占位
           if (newCurrent > maxShowBtnCount && newCurrent < rEllipseSign) {
-            // 针对 maxShowBtnCount===1 的特殊处理
-            const list = []
-            isHideEllipsisHead.value = newCurrent === 2 && maxShowBtnCount === 1
-            isHideEllipsisTail.value = false
+            list = []
 
             for (let i = 1; i < maxShowBtnCount + 1; i++) {
-              list.push(newCurrent + i - activePosition)
+              list.push(newCurrent + i - activePosition.value)
             }
-            pageList.value = [1, '...', ...list, '...', newCount]
+
+            // 针对 maxShowBtnCount===1 的特殊处理
+            isHideEllipsisHead.value = newCurrent === 2 && maxShowBtnCount === 1
+            isHideEllipsisTail.value = false
           }
           // 右边不需要出现省略符号占位
           if (newCurrent >= rEllipseSign) {
-            const list = []
-            isHideEllipsisHead.value = false
-            isHideEllipsisTail.value = true
-            // if (toNumber(oldCurrent) + 1 < newCount - 1) {
+            list = []
+
             for (let i = 1; i < maxShowBtnCount + 1; i++) {
               list.push(newCount - (maxShowBtnCount - i) - 1)
             }
-            pageList.value = [1, '...', ...list, '...', newCount]
-            // }
+
+            isHideEllipsisHead.value = false
+            isHideEllipsisTail.value = true
           }
+
+          list = [1, '...', ...list, '...', newCount]
         } else {
-          const list = []
           for (let i = 1; i <= newCount; i++) list.push(i)
-          pageList.value = list
         }
+
+        pageList.value = list
 
         if (oldCurrent !== undefined) props.onChange?.(newCurrent, size.value)
       },
@@ -274,10 +272,10 @@ export default defineComponent({
       menuVisible,
       size,
       pageCount,
-      range,
       pageList,
       inputValue,
       simpleValue,
+      totalText,
       isHideEllipsis,
       clickItem,
       showMenu,
