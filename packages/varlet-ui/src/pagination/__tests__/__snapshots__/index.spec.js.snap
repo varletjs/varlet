@@ -1,0 +1,328 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Size related props 1`] = `
+"<ul class=\\"var-pagination\\">
+  <!--v-if-->
+  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li class=\\"var-pagination__simple\\">
+    <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
+      <div class=\\"var-input__controller\\">
+        <div class=\\"var-input__icon\\"></div>
+        <div class=\\"var-input__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-120\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-120\\"></label>
+        </div>
+        <div class=\\"var-input__icon\\">
+          <!--v-if-->
+        </div>
+      </div>
+      <div class=\\"var-input__line\\">
+        <div class=\\"var-input__dot\\"></div>
+      </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div> / 6
+  </li>
+  <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li class=\\"var-pagination__size\\">
+    <div class=\\"var-menu\\">
+      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>20条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+      <!--teleport start-->
+      <!--teleport end-->
+    </div>
+  </li>
+  <!--v-if-->
+</ul>"
+`;
+
+exports[`Size related props 2`] = `
+"<ul class=\\"var-pagination\\">
+  <!--v-if-->
+  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li class=\\"var-pagination__simple\\">
+    <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
+      <div class=\\"var-input__controller\\">
+        <div class=\\"var-input__icon\\"></div>
+        <div class=\\"var-input__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-120\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-120\\"></label>
+        </div>
+        <div class=\\"var-input__icon\\">
+          <!--v-if-->
+        </div>
+      </div>
+      <div class=\\"var-input__line\\">
+        <div class=\\"var-input__dot\\"></div>
+      </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div> / 6
+  </li>
+  <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
+  <!--v-if-->
+  <!--v-if-->
+</ul>"
+`;
+
+exports[`basic mode disabled prop 1`] = `
+"<ul class=\\"var-pagination\\">
+  <!--v-if-->
+  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li class=\\"var-pagination__item var-pagination__next var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li class=\\"var-pagination__size var-pagination__item-disabled\\">
+    <div class=\\"var-menu\\">
+      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+      <!--teleport start-->
+      <!--teleport end-->
+    </div>
+  </li>
+  <!--v-if-->
+</ul>"
+`;
+
+exports[`basic mode mount 1`] = `
+"<ul class=\\"var-pagination\\">
+  <li class=\\"var-pagination__total\\">1-10 of 123 items</li>
+  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li item-mode=\\"basic\\" class=\\"var-pagination__item var-pagination__item-active\\">1</li>
+  <li item-mode=\\"head\\" class=\\"var-pagination__item var-pagination__item-hide\\">...</li>
+  <li item-mode=\\"basic\\" class=\\"var-pagination__item\\">2</li>
+  <li item-mode=\\"basic\\" class=\\"var-pagination__item\\">3</li>
+  <li item-mode=\\"basic\\" class=\\"var-pagination__item\\">4</li>
+  <li item-mode=\\"tail\\" class=\\"var-pagination__item\\">...</li>
+  <li item-mode=\\"basic\\" class=\\"var-pagination__item\\">13</li>
+  <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li class=\\"var-pagination__size\\">
+    <div class=\\"var-menu\\">
+      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+      <!--teleport start-->
+      <!--teleport end-->
+    </div>
+  </li>
+  <li class=\\"var-pagination__quickly\\">跳至 <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
+      <div class=\\"var-input__controller\\">
+        <div class=\\"var-input__icon\\"></div>
+        <div class=\\"var-input__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-90\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-90\\"></label>
+        </div>
+        <div class=\\"var-input__icon\\">
+          <!--v-if-->
+        </div>
+      </div>
+      <div class=\\"var-input__line\\">
+        <div class=\\"var-input__dot\\"></div>
+      </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </li>
+</ul>"
+`;
+
+exports[`simple mode disabled prop 1`] = `
+"<ul class=\\"var-pagination\\">
+  <!--v-if-->
+  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li class=\\"var-pagination__simple var-pagination__item-disabled\\">
+    <div class=\\"var-input var--box var-input--disabled\\" var-pagination-cover=\\"\\">
+      <div class=\\"var-input__controller var-input--disabled\\">
+        <div class=\\"var-input__icon\\"></div>
+        <div class=\\"var-input__wrap\\">
+          <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-68\\" disabled=\\"\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-68\\"></label>
+        </div>
+        <div class=\\"var-input__icon\\">
+          <!--v-if-->
+        </div>
+      </div>
+      <div class=\\"var-input__line var-input--line-disabled\\">
+        <div class=\\"var-input__dot var-input--line-disabled\\"></div>
+      </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div> / 0
+  </li>
+  <li class=\\"var-pagination__item var-pagination__next var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li class=\\"var-pagination__size var-pagination__item-disabled\\">
+    <div class=\\"var-menu\\">
+      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+      <!--teleport start-->
+      <!--teleport end-->
+    </div>
+  </li>
+  <!--v-if-->
+</ul>"
+`;
+
+exports[`simple mode mount 1`] = `
+"<ul class=\\"var-pagination\\">
+  <li class=\\"var-pagination__total\\">1-10 of 123 items</li>
+  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li class=\\"var-pagination__simple\\">
+    <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
+      <div class=\\"var-input__controller\\">
+        <div class=\\"var-input__icon\\"></div>
+        <div class=\\"var-input__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-54\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-54\\"></label>
+        </div>
+        <div class=\\"var-input__icon\\">
+          <!--v-if-->
+        </div>
+      </div>
+      <div class=\\"var-input__line\\">
+        <div class=\\"var-input__dot\\"></div>
+      </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+    </div> / 13
+  </li>
+  <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li class=\\"var-pagination__size\\">
+    <div class=\\"var-menu\\">
+      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+      <!--teleport start-->
+      <!--teleport end-->
+    </div>
+  </li>
+  <!--v-if-->
+</ul>"
+`;
+
+exports[`test pagination example 1`] = `
+"<div>
+  <div class=\\"app-type\\">基本使用</div>
+  <ul class=\\"var-pagination\\">
+    <!--v-if-->
+    <li class=\\"var-pagination__item var-pagination__prev\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
+    <li class=\\"var-pagination__simple\\">
+      <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
+        <div class=\\"var-input__controller\\">
+          <div class=\\"var-input__icon\\"></div>
+          <div class=\\"var-input__wrap\\">
+            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-5\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-5\\"></label>
+          </div>
+          <div class=\\"var-input__icon\\">
+            <!--v-if-->
+          </div>
+        </div>
+        <div class=\\"var-input__line\\">
+          <div class=\\"var-input__dot\\"></div>
+        </div>
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div> / 12
+    </li>
+    <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
+    <li class=\\"var-pagination__size\\">
+      <div class=\\"var-menu\\">
+        <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+        <!--teleport start-->
+        <!--teleport end-->
+      </div>
+    </li>
+    <!--v-if-->
+  </ul>
+</div>
+<div>
+  <div class=\\"app-type\\">隐藏 size 切换器</div>
+  <ul class=\\"var-pagination\\">
+    <!--v-if-->
+    <li class=\\"var-pagination__item var-pagination__prev\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
+    <li class=\\"var-pagination__simple\\">
+      <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
+        <div class=\\"var-input__controller\\">
+          <div class=\\"var-input__icon\\"></div>
+          <div class=\\"var-input__wrap\\">
+            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-19\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-19\\"></label>
+          </div>
+          <div class=\\"var-input__icon\\">
+            <!--v-if-->
+          </div>
+        </div>
+        <div class=\\"var-input__line\\">
+          <div class=\\"var-input__dot\\"></div>
+        </div>
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div> / 12
+    </li>
+    <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
+    <!--v-if-->
+    <!--v-if-->
+  </ul>
+</div>
+<div>
+  <div class=\\"app-type\\">显示总数</div>
+  <ul class=\\"var-pagination\\">
+    <li class=\\"var-pagination__total\\">共 66 条</li>
+    <li class=\\"var-pagination__item var-pagination__prev\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
+    <li class=\\"var-pagination__simple\\">
+      <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
+        <div class=\\"var-input__controller\\">
+          <div class=\\"var-input__icon\\"></div>
+          <div class=\\"var-input__wrap\\">
+            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-26\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-26\\"></label>
+          </div>
+          <div class=\\"var-input__icon\\">
+            <!--v-if-->
+          </div>
+        </div>
+        <div class=\\"var-input__line\\">
+          <div class=\\"var-input__dot\\"></div>
+        </div>
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div> / 4
+    </li>
+    <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
+    <li class=\\"var-pagination__size\\">
+      <div class=\\"var-menu\\">
+        <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>20条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+        <!--teleport start-->
+        <!--teleport end-->
+      </div>
+    </li>
+    <!--v-if-->
+  </ul>
+</div>
+<div>
+  <div class=\\"app-type\\">禁用</div>
+  <ul class=\\"var-pagination\\">
+    <!--v-if-->
+    <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
+    <li class=\\"var-pagination__simple var-pagination__item-disabled\\">
+      <div class=\\"var-input var--box var-input--disabled\\" var-pagination-cover=\\"\\">
+        <div class=\\"var-input__controller var-input--disabled\\">
+          <div class=\\"var-input__icon\\"></div>
+          <div class=\\"var-input__wrap\\">
+            <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-40\\" disabled=\\"\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-40\\"></label>
+          </div>
+          <div class=\\"var-input__icon\\">
+            <!--v-if-->
+          </div>
+        </div>
+        <div class=\\"var-input__line var-input--line-disabled\\">
+          <div class=\\"var-input__dot var-input--line-disabled\\"></div>
+        </div>
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div> / 7
+    </li>
+    <li class=\\"var-pagination__item var-pagination__next var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
+    <li class=\\"var-pagination__size var-pagination__item-disabled\\">
+      <div class=\\"var-menu\\">
+        <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+        <!--teleport start-->
+        <!--teleport end-->
+      </div>
+    </li>
+    <!--v-if-->
+  </ul>
+</div>"
+`;

@@ -3,7 +3,7 @@
     <li v-if="totalText" class="var-pagination__total">{{ totalText }}</li>
     <li
       v-ripple="{ disabled: current <= 1 || disabled }"
-      class="var-pagination__item"
+      class="var-pagination__item var-pagination__prev"
       :class="{
         'var-pagination__item-disabled': current <= 1 || disabled,
       }"
@@ -34,6 +34,7 @@
       v-ripple="{ disabled }"
       v-for="(item, index) in pageList"
       :key="item + index"
+      :item-mode="getMode(item, index)"
       class="var-pagination__item"
       :class="{
         'var-pagination__item-active': item === current,
@@ -47,7 +48,7 @@
 
     <li
       v-ripple="{ disabled: current >= pageCount || disabled }"
-      class="var-pagination__item"
+      class="var-pagination__item var-pagination__next"
       :class="{
         'var-pagination__item-disabled': current >= pageCount || disabled,
       }"
@@ -65,7 +66,7 @@
       }"
     >
       <var-menu v-model:show="menuVisible">
-        <div style="display: flex" @click="showMenu">
+        <div class="var-pagination__size-open" style="display: flex" @click="showMenu">
           <span>{{ size }}{{ pack.paginationItem }} / {{ pack.paginationPage }}</span>
           <var-icon name="menu-down" />
         </div>
@@ -150,6 +151,12 @@ export default defineComponent({
       if (isNumber(item)) return false
 
       return index === 1 ? isHideEllipsisHead.value : isHideEllipsisTail.value
+    }
+
+    const getMode = (item: string | number, index: number) => {
+      if (isNumber(item)) return 'basic'
+
+      return index === 1 ? 'head' : 'tail'
     }
 
     const clickItem = (item: string | number, index?: number) => {
@@ -276,6 +283,7 @@ export default defineComponent({
       inputValue,
       simpleValue,
       totalText,
+      getMode,
       isHideEllipsis,
       clickItem,
       showMenu,
