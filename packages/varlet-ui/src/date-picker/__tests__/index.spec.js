@@ -3,7 +3,7 @@ import VarDatePicker from '../DatePicker'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockConsole } from '../../utils/jest'
-import dayjs from 'dayjs'
+import dayjs from 'dayjs/esm'
 
 const [currentYear ,currentMonth] = dayjs().format('YYYY-MM').split('-')
 

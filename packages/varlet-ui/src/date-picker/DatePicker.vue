@@ -82,7 +82,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, reactive, watch } from 'vue'
-import dayjs from 'dayjs'
+import dayjs from 'dayjs/esm'
 import MonthPickerPanel from './src/month-picker-panel.vue'
 import YearPickerPanel from './src/year-picker-panel.vue'
 import DayPickerPanel from './src/day-picker-panel.vue'

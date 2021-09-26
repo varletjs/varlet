@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref, watch } from 'vue'
-import dayjs from 'dayjs'
+import dayjs from 'dayjs/esm'
 import { hoursAmpm, hours24, minSec } from './props'
 import { notConvert, convertHour, getIsDisableMinute, getIsDisableSecond, getNumberTime } from './utils'
 import { toNumber } from '../utils/shared'

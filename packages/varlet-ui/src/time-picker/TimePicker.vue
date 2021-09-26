@@ -79,7 +79,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, reactive, ref, watch } from 'vue'
-import dayjs from 'dayjs'
+import dayjs from 'dayjs/esm'
 import Clock from './clock.vue'
 import { props, hoursAmpm, hours24 } from './props'
 import { toNumber } from '../utils/shared'

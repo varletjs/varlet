@@ -3,6 +3,7 @@ import md from '@varlet/markdown-vite-plugin'
 import jsx from '@vitejs/plugin-vue-jsx'
 import { injectHtml } from 'vite-plugin-html'
 import {
+  CWD,
   ES_DIR,
   SITE,
   SITE_CONFIG,
@@ -92,6 +93,16 @@ var head=document.querySelector('head');head.appendChild(style)})();`
   }
 }
 
+function clear(): PluginOption {
+  return {
+    name: 'varlet-clear-vite-plugin',
+    apply: 'build',
+    closeBundle() {
+      removeSync(resolve(CWD, 'dist'))
+    },
+  }
+}
+
 export function getUMDConfig(varletConfig: Record<string, any>): InlineConfig {
   const name = get(varletConfig, 'name')
   const fileName = `${kebabCase(name)}.js`
@@ -117,6 +128,6 @@ export function getUMDConfig(varletConfig: Record<string, any>): InlineConfig {
         },
       },
     },
-    plugins: [inlineCSS(fileName, UMD_DIR)],
+    plugins: [inlineCSS(fileName, UMD_DIR), clear()],
   }
 }
