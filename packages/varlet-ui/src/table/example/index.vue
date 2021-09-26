@@ -155,16 +155,6 @@ export default {
 
     watchLang(use)
 
-    watch(
-      pack,
-      (value) => {
-        console.log(value)
-      },
-      {
-        deep: true,
-      }
-    )
-
     return {
       isAllCheck,
       pack,
