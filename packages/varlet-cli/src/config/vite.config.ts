@@ -65,7 +65,6 @@ export function getBuildConfig(varletConfig: Record<string, any>): InlineConfig 
       outDir: SITE_OUTPUT_PATH,
       brotliSize: false,
       emptyOutDir: true,
-      minify: 'terser',
       rollupOptions: {
         input: {
           main: resolve(SITE, 'index.html'),
@@ -112,7 +111,6 @@ export function getUMDConfig(varletConfig: Record<string, any>): InlineConfig {
     logLevel: 'silent',
     build: {
       emptyOutDir: true,
-      minify: 'terser',
       lib: {
         name,
         formats: ['umd'],
