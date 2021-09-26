@@ -130,7 +130,7 @@ header {
 }
 
 .app-bar {
-  background: var(--site-color-app-bar);
+  background: var(--site-color-app-bar) !important;
 }
 
 .router-view__block {
