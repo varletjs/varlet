@@ -74,6 +74,7 @@ import Table from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Checkbox from '../../checkbox'
 import Button from '../../button'
+import Icon from '../../Icon'
 import { reactive, computed, ref, watch } from 'vue'
 import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
@@ -84,6 +85,7 @@ export default {
     [Table.name]: Table,
     [Checkbox.name]: Checkbox,
     [Button.name]: Button,
+    [Icon.name]: Icon,
     AppType,
   },
   setup() {
