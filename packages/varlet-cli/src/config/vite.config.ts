@@ -61,6 +61,7 @@ export function getBuildConfig(varletConfig: Record<string, any>): InlineConfig 
 
   return {
     ...devConfig,
+    base: './',
     build: {
       outDir: SITE_OUTPUT_PATH,
       brotliSize: false,
