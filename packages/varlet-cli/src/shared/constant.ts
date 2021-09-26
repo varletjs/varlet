@@ -1,8 +1,6 @@
 import { resolve } from 'path'
 
 export const CWD = process.cwd()
-export const POSTCSS_CONFIG = resolve(CWD, 'postcss.config.js')
-export const TS_CONFIG = resolve(CWD, 'tsconfig.json')
 export const VARLET_CONFIG = resolve(CWD, 'varlet.config.js')
 export const SRC_DIR = resolve(CWD, 'src')
 export const ES_DIR = resolve(CWD, 'es')
@@ -10,7 +8,6 @@ export const UMD_DIR = resolve(CWD, 'umd')
 export const TYPES_DIR = resolve(CWD, 'types')
 export const ROOT_DOCS_DIR = resolve(CWD, 'docs')
 export const ESLINT_EXTENSIONS = ['.vue', '.ts', '.js', '.mjs', '.tsx', '.jsx']
-export const WEBPACK_RESOLVE_EXTENSIONS = ['.js', '.jsx', '.vue', '.ts', '.tsx', '.css', '.less']
 export const VITE_RESOLVE_EXTENSIONS = ['.vue', '.tsx', '.ts', '.jsx', '.js', '.less', '.css']
 export const SCRIPTS_EXTENSIONS = ['.tsx', '.ts', '.jsx', '.js']
 export const PUBLIC_DIR_INDEXES = ['index.vue', 'index.tsx', 'index.ts', 'index.jsx', 'index.js']
@@ -22,7 +19,6 @@ export const EXAMPLE_DIR_INDEX = 'index.vue'
 export const TESTS_DIR_NAME = '__tests__'
 export const GENERATORS_DIR = resolve(__dirname, '../../generators')
 export const CLI_PACKAGE_JSON = resolve(__dirname, '../../package.json')
-export const PRIMARY_COLOR = '#3a7afe'
 
 // site
 export const SITE = resolve(__dirname, '../../site')
@@ -32,8 +28,6 @@ export const SITE_DIR = resolve(CWD, '.varlet/site')
 export const SITE_PC_ROUTES = resolve(CWD, '.varlet/pc.routes.ts')
 export const SITE_MOBILE_ROUTES = resolve(CWD, '.varlet/mobile.routes.ts')
 export const SITE_CONFIG = resolve(CWD, '.varlet/site.config.json')
-export const SITE_DOCS_GLOB = resolve(CWD, './docs/**')
-export const SITE_EXAMPLE_GLOB = resolve(CWD, './src/**/example/**')
 
 // template highlight
 export const HL_COMPONENT_NAME_RE = /.*(\/|\\)(.+)(\/|\\)docs(\/|\\)/

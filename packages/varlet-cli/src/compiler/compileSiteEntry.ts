@@ -1,5 +1,4 @@
 import slash from 'slash'
-import chokidar from 'chokidar'
 import {
   DOCS_DIR_NAME,
   EXAMPLE_DIR_INDEX,
@@ -7,19 +6,14 @@ import {
   ROOT_DOCS_DIR,
   SITE,
   SITE_DIR,
-  SITE_DOCS_GLOB,
-  SITE_EXAMPLE_GLOB,
   SITE_MOBILE_ROUTES,
   SITE_PC_ROUTES,
   SRC_DIR,
-  VARLET_CONFIG,
 } from '../shared/constant'
-import { copy, copySync, pathExistsSync, readdir, readdirSync } from 'fs-extra'
+import { copy, pathExistsSync, readdir, readdirSync } from 'fs-extra'
 import { resolve } from 'path'
 import { isMD, outputFileSyncOnChange } from '../shared/fsUtils'
 import { getVarletConfig } from '../config/varlet.config'
-import type { Compiler } from 'webpack'
-import type { FSWatcher } from 'chokidar'
 
 const EXAMPLE_COMPONENT_NAME_RE = /\/([-\w]+)\/example\/index.vue/
 const COMPONENT_DOCS_RE = /\/([-\w]+)\/docs\/([-\w]+)\.md/
