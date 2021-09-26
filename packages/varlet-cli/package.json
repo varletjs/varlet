@@ -74,10 +74,9 @@
     "ts-jest": "^26.5.1",
     "typescript": "^4.3.5",
     "vue-jest": "^5.0.0-alpha.8",
-    "vue-loader": "16.5.0",
     "vue-router": "4.0.0-rc.1",
     "vite-plugin-html": "^2.1.0",
-    "vite": "^2.5.10",
+    "vite": "^2.6.0-beta.2",
     "@vitejs/plugin-vue": "1.9.2",
     "@vitejs/plugin-vue-jsx": "1.1.8"
   },
