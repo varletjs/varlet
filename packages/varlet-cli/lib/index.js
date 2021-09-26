@@ -20,6 +20,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var logger_1 = __importDefault(require("./shared/logger"));
 var commander_1 = require("commander");
 var dev_1 = require("./commands/dev");
 var build_1 = require("./commands/build");
@@ -28,7 +29,6 @@ var create_1 = require("./commands/create");
 var jest_1 = require("./commands/jest");
 var lint_1 = require("./commands/lint");
 var gen_1 = require("./commands/gen");
-var logger_1 = __importDefault(require("./shared/logger"));
 commander_1.version("varlet-cli " + require('../package.json').version).usage('<command> [options]');
 commander_1.command('dev')
     .option('-f --force', 'Force dep pre-optimization regardless of whether deps have changed')
