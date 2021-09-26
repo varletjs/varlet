@@ -34,7 +34,7 @@ exports[`test table example 1`] = `
     <table class=\\"var-table__table\\" style=\\"width: 100%;\\">
       <thead>
         <tr>
-          <th style=\\"padding: 16px 8px;\\">
+          <th>
             <div class=\\"var-checkbox__wrap\\">
               <div class=\\"var-checkbox\\">
                 <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: all 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
@@ -52,7 +52,7 @@ exports[`test table example 1`] = `
       </thead>
       <tbody>
         <tr>
-          <td style=\\"padding: 16px 8px;\\">
+          <td>
             <div class=\\"var-checkbox__wrap\\">
               <div class=\\"var-checkbox\\">
                 <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: all 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
@@ -68,7 +68,7 @@ exports[`test table example 1`] = `
           <td>135</td>
         </tr>
         <tr>
-          <td style=\\"padding: 16px 8px;\\">
+          <td>
             <div class=\\"var-checkbox__wrap\\">
               <div class=\\"var-checkbox\\">
                 <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: all 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
