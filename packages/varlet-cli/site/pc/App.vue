@@ -36,7 +36,7 @@ import AppHeader from './components/AppHeader'
 import AppSidebar from './components/AppSidebar'
 import { defineComponent, nextTick, onMounted, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 import { getPCLocationInfo, isPhone, MenuTypes, setThemes } from '../utils'
 
 type Language = Record<string, string>

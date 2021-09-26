@@ -53,7 +53,7 @@ import config from '@config'
 import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { bigCamelize, removeEmpty, setThemes, watchLang } from '../utils'
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 
 type Language = Record<string, string>
 

@@ -1,5 +1,5 @@
 import { onMounted, onUnmounted } from 'vue'
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 import { StyleProvider } from '@varlet/ui'
 
 export function camelize(str: string): string {

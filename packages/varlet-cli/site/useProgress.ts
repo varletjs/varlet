@@ -4,7 +4,7 @@ import { Progress } from '@varlet/ui'
 import config from '@config'
 // @ts-ignore
 import { mountInstance } from '@varlet/ui/es/utils/components'
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 
 export function useProgress() {
   const props = reactive({

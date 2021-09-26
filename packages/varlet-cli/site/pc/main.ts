@@ -12,7 +12,7 @@ import '@varlet/ui/es/icon/style'
 
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 import { useProgress } from '../useProgress'
 
 const defaultLanguage = get(config, 'defaultLanguage')

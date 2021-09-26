@@ -48,7 +48,7 @@
 // @ts-ignore
 import config from '@config'
 import { ref, computed } from 'vue'
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 import { getPCLocationInfo, removeEmpty } from '../../utils'
 import { useRouter } from 'vue-router'
 import type { Ref, ComputedRef } from 'vue'

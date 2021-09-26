@@ -30,7 +30,7 @@ import { MenuTypes } from '../../utils'
 import { reactive, ref } from 'vue'
 import type { PropType } from 'vue'
 import type { Menu } from '../App'
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 
 export default {
   name: 'AppSidebar',

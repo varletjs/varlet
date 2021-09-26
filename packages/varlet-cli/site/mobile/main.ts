@@ -15,7 +15,7 @@ import '@varlet/ui/es/menu/style'
 import '@varlet/ui/es/cell/style'
 import '@varlet/ui/es/ripple/style'
 
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 import { inIframe, isPhone } from '../utils'
 
 const redirect = get(config, 'mobile.redirect')
