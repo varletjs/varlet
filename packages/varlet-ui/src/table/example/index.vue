@@ -26,7 +26,7 @@
   <var-table>
     <thead>
       <tr>
-        <th style="padding: 16px 8px">
+        <th>
           <var-checkbox :model-value="isAllCheck" @change="handleAllCheckChange" />
         </th>
         <th>{{ pack.name }}</th>
@@ -46,7 +46,7 @@
     </thead>
     <tbody>
       <tr v-for="item in data" :key="item.nameValue">
-        <td style="padding: 16px 8px">
+        <td>
           <var-checkbox v-model="item.isCheck" />
         </td>
         <td>{{ item.name[item.nameValue] }}</td>

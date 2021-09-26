@@ -8,6 +8,7 @@ import { create } from './commands/create'
 import { jest } from './commands/jest'
 import { lint } from './commands/lint'
 import { gen } from './commands/gen'
+import { preview } from './commands/preview'
 
 version(`varlet-cli ${require('../package.json').version}`).usage('<command> [options]')
 
@@ -17,6 +18,8 @@ command('dev')
   .action(dev)
 
 command('build').description('Build varlet site for production').action(build)
+
+command('preview').description('Preview varlet site for production').action(preview)
 
 command('compile')
   .description('Compile varlet components library code')
