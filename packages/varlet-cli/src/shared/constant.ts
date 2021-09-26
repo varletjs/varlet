@@ -25,11 +25,10 @@ export const CLI_PACKAGE_JSON = resolve(__dirname, '../../package.json')
 export const PRIMARY_COLOR = '#3a7afe'
 
 // site
-export const SITE_MOBILE_MAIN = resolve(__dirname, '../../site/mobile/main.ts')
-export const SITE_PC_MAIN = resolve(__dirname, '../../site/pc/main.ts')
 export const SITE = resolve(__dirname, '../../site')
 export const SITE_OUTPUT_PATH = resolve(CWD, 'site')
 export const SITE_PUBLIC_PATH = resolve(CWD, 'public')
+export const SITE_DIR = resolve(CWD, '.varlet/site')
 export const SITE_PC_ROUTES = resolve(CWD, '.varlet/pc.routes.ts')
 export const SITE_MOBILE_ROUTES = resolve(CWD, '.varlet/mobile.routes.ts')
 export const SITE_CONFIG = resolve(CWD, '.varlet/site.config.json')

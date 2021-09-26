@@ -5,8 +5,8 @@ import { injectHtml } from 'vite-plugin-html'
 import {
   CWD,
   ES_DIR,
-  SITE,
   SITE_CONFIG,
+  SITE_DIR,
   SITE_MOBILE_ROUTES,
   SITE_OUTPUT_PATH,
   SITE_PC_ROUTES,
@@ -24,7 +24,7 @@ export function getDevConfig(varletConfig: Record<string, any>): InlineConfig {
   const host = get(varletConfig, 'host')
 
   return {
-    root: SITE,
+    root: SITE_DIR,
     resolve: {
       extensions: VITE_RESOLVE_EXTENSIONS,
       alias: {
@@ -46,8 +46,8 @@ export function getDevConfig(varletConfig: Record<string, any>): InlineConfig {
       jsx(),
       injectHtml({
         data: {
-          pcTitle: get(varletConfig, `title[${defaultLanguage}]`),
-          mobileTitle: get(varletConfig, `title[${defaultLanguage}]`),
+          pcTitle: get(varletConfig, `pc.title['${defaultLanguage}']`),
+          mobileTitle: get(varletConfig, `mobile.title['${defaultLanguage}']`),
           logo: get(varletConfig, `logo`),
           baidu: get(varletConfig, `analysis.baidu`, ''),
         },
@@ -67,8 +67,8 @@ export function getBuildConfig(varletConfig: Record<string, any>): InlineConfig 
       emptyOutDir: true,
       rollupOptions: {
         input: {
-          main: resolve(SITE, 'index.html'),
-          nested: resolve(SITE, 'mobile.html'),
+          main: resolve(SITE_DIR, 'index.html'),
+          mobile: resolve(SITE_DIR, 'mobile.html'),
         },
       },
     },
