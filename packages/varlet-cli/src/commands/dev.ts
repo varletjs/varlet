@@ -13,6 +13,7 @@ export async function dev(cmd: { force?: boolean }) {
   await buildSiteEntry()
 
   const devConfig = getDevConfig(getVarletConfig())
-  const server = await createServer(merge(devConfig, cmd.force ? { server: { force: true } } : {}))
+  const inlineConfig = merge(devConfig, cmd.force ? { server: { force: true } } : {})
+  const server = await createServer(inlineConfig)
   await server.listen()
 }
