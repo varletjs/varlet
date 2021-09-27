@@ -162,6 +162,12 @@ varlet-cli dev
 varlet-cli build
 ```
 
+#### Preview documentation site
+
+```shell
+varlet-cli preview
+```
+
 #### Build component library code
 
 ```shell

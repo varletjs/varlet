@@ -157,6 +157,12 @@ varlet-cli dev
 varlet-cli build
 ```
 
+#### 预览文档站点
+
+```shell
+varlet-cli preview
+```
+
 #### 构建组件库代码
 
 ```shell
