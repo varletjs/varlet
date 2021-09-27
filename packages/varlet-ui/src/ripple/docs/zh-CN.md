@@ -39,3 +39,10 @@ createApp().use(Ripple)
 | `color` | 水波纹的颜色 | _string_ | `currentColor` |
 | `disabled` | 禁用状态 | _boolean_ | `false` |
 
+### 样式变量
+以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `--ripple-cubic-bezier` | `cubic-bezier(0.68, 0.01, 0.62, 0.6)` |
+
