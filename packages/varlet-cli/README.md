@@ -62,6 +62,7 @@ yarn dev
 | `color-link` |
 | `color-type` |
 | `color-progress` |
+| `color-progress-track` |
 | `color-side-bar` |
 | `color-side-bar-active-background` |
 | `color-app-bar` |

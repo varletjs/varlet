@@ -7,6 +7,10 @@ import { mountInstance } from '@varlet/ui/es/utils/components'
 import { get } from 'lodash-es'
 
 export function useProgress() {
+  let timer: number
+  const trackColor = get(config, 'themes.color-progress-track')
+  const color = get(config, 'themes.color-progress')
+
   const props = reactive({
     style: {
       position: 'fixed',
@@ -15,13 +19,11 @@ export function useProgress() {
       top: 0,
       zIndex: 10086,
     },
-    trackColor: '#fff',
-    color: get(config, 'themes.color-progress'),
+    trackColor,
+    color,
     lineWidth: 3,
     value: 0,
   })
-
-  let timer: number
 
   const changeValue = () => {
     timer = window.setTimeout(() => {
@@ -37,13 +39,13 @@ export function useProgress() {
 
   const start = () => {
     props.value = 0
-    setTimeout(() => (props.color = '#3594d9'), 200)
+    setTimeout(() => (props.color = color), 200)
     changeValue()
   }
 
   const end = () => {
     props.value = 100
-    setTimeout(() => (props.color = '#fff'), 300)
+    setTimeout(() => (props.color = trackColor), 300)
     window.clearTimeout(timer)
   }
 
