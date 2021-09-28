@@ -2,7 +2,6 @@
 
 exports[`Size related props 1`] = `
 "<ul class=\\"var-pagination\\">
-  <!--v-if-->
   <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
   <li class=\\"var-pagination__simple\\">
     <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
@@ -32,12 +31,12 @@ exports[`Size related props 1`] = `
     </div>
   </li>
   <!--v-if-->
+  <!--v-if-->
 </ul>"
 `;
 
 exports[`Size related props 2`] = `
 "<ul class=\\"var-pagination\\">
-  <!--v-if-->
   <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
   <li class=\\"var-pagination__simple\\">
     <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
@@ -61,14 +60,14 @@ exports[`Size related props 2`] = `
   <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
   <!--v-if-->
   <!--v-if-->
+  <!--v-if-->
 </ul>"
 `;
 
 exports[`basic mode disabled prop 1`] = `
 "<ul class=\\"var-pagination\\">
-  <!--v-if-->
-  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
-  <li class=\\"var-pagination__item var-pagination__next var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li class=\\"var-pagination__item var-pagination__next var-pagination__item-disabled var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
   <li class=\\"var-pagination__size var-pagination__item-disabled\\">
     <div class=\\"var-menu\\">
       <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
@@ -77,21 +76,21 @@ exports[`basic mode disabled prop 1`] = `
     </div>
   </li>
   <!--v-if-->
+  <!--v-if-->
 </ul>"
 `;
 
 exports[`basic mode mount 1`] = `
 "<ul class=\\"var-pagination\\">
-  <li class=\\"var-pagination__total\\">1-10 of 123 items</li>
-  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
-  <li item-mode=\\"basic\\" class=\\"var-pagination__item var-pagination__item-active\\">1</li>
-  <li item-mode=\\"head\\" class=\\"var-pagination__item var-pagination__item-hide\\">...</li>
-  <li item-mode=\\"basic\\" class=\\"var-pagination__item\\">2</li>
-  <li item-mode=\\"basic\\" class=\\"var-pagination__item\\">3</li>
-  <li item-mode=\\"basic\\" class=\\"var-pagination__item\\">4</li>
-  <li item-mode=\\"tail\\" class=\\"var-pagination__item\\">...</li>
-  <li item-mode=\\"basic\\" class=\\"var-pagination__item\\">13</li>
-  <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
+  <li item-mode=\\"basic\\" class=\\"var-pagination__item var-elevation--2 var-pagination__item-active\\">1</li>
+  <li item-mode=\\"head\\" class=\\"var-pagination__item var-elevation--2 var-pagination__item-hide\\">...</li>
+  <li item-mode=\\"basic\\" class=\\"var-pagination__item var-elevation--2\\">2</li>
+  <li item-mode=\\"basic\\" class=\\"var-pagination__item var-elevation--2\\">3</li>
+  <li item-mode=\\"basic\\" class=\\"var-pagination__item var-elevation--2\\">4</li>
+  <li item-mode=\\"tail\\" class=\\"var-pagination__item var-elevation--2\\">...</li>
+  <li item-mode=\\"basic\\" class=\\"var-pagination__item var-elevation--2\\">13</li>
+  <li class=\\"var-pagination__item var-pagination__next var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
   <li class=\\"var-pagination__size\\">
     <div class=\\"var-menu\\">
       <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
@@ -99,7 +98,7 @@ exports[`basic mode mount 1`] = `
       <!--teleport end-->
     </div>
   </li>
-  <li class=\\"var-pagination__quickly\\">跳至 <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
+  <li class=\\"var-pagination__quickly\\">前往 <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
       <div class=\\"var-input__controller\\">
         <div class=\\"var-input__icon\\"></div>
         <div class=\\"var-input__wrap\\">
@@ -117,12 +116,12 @@ exports[`basic mode mount 1`] = `
       </transition-stub>
     </div>
   </li>
+  <li class=\\"var-pagination__total\\">1-10 of 123 items</li>
 </ul>"
 `;
 
 exports[`simple mode disabled prop 1`] = `
 "<ul class=\\"var-pagination\\">
-  <!--v-if-->
   <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
   <li class=\\"var-pagination__simple var-pagination__item-disabled\\">
     <div class=\\"var-input var--box var-input--disabled\\" var-pagination-cover=\\"\\">
@@ -152,12 +151,12 @@ exports[`simple mode disabled prop 1`] = `
     </div>
   </li>
   <!--v-if-->
+  <!--v-if-->
 </ul>"
 `;
 
 exports[`simple mode mount 1`] = `
 "<ul class=\\"var-pagination\\">
-  <li class=\\"var-pagination__total\\">1-10 of 123 items</li>
   <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
   <li class=\\"var-pagination__simple\\">
     <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
@@ -187,14 +186,14 @@ exports[`simple mode mount 1`] = `
     </div>
   </li>
   <!--v-if-->
+  <li class=\\"var-pagination__total\\">1-10 of 123 items</li>
 </ul>"
 `;
 
 exports[`test pagination example 1`] = `
-"<div>
-  <div class=\\"app-type\\">基本使用</div>
+"<div class=\\"app-type\\">基本使用</div>
+<div class=\\"transformer\\">
   <ul class=\\"var-pagination\\">
-    <!--v-if-->
     <li class=\\"var-pagination__item var-pagination__prev\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple\\">
       <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
@@ -224,12 +223,12 @@ exports[`test pagination example 1`] = `
       </div>
     </li>
     <!--v-if-->
+    <!--v-if-->
   </ul>
 </div>
-<div>
-  <div class=\\"app-type\\">隐藏 size 切换器</div>
+<div class=\\"app-type\\">隐藏 size 切换器</div>
+<div class=\\"transformer\\">
   <ul class=\\"var-pagination\\">
-    <!--v-if-->
     <li class=\\"var-pagination__item var-pagination__prev\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple\\">
       <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
@@ -253,12 +252,12 @@ exports[`test pagination example 1`] = `
     <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
     <!--v-if-->
     <!--v-if-->
+    <!--v-if-->
   </ul>
 </div>
-<div>
-  <div class=\\"app-type\\">显示总数</div>
+<div class=\\"app-type\\">显示总数</div>
+<div class=\\"transformer\\">
   <ul class=\\"var-pagination\\">
-    <li class=\\"var-pagination__total\\">共 66 条</li>
     <li class=\\"var-pagination__item var-pagination__prev\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple\\">
       <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
@@ -277,23 +276,23 @@ exports[`test pagination example 1`] = `
         <transition-stub>
           <!--v-if-->
         </transition-stub>
-      </div> / 4
+      </div> / 12
     </li>
     <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
     <li class=\\"var-pagination__size\\">
       <div class=\\"var-menu\\">
-        <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>20条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+        <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
         <!--teleport start-->
         <!--teleport end-->
       </div>
     </li>
     <!--v-if-->
+    <li class=\\"var-pagination__total\\">共 120 条</li>
   </ul>
 </div>
-<div>
-  <div class=\\"app-type\\">禁用</div>
+<div class=\\"app-type\\">禁用</div>
+<div class=\\"transformer\\">
   <ul class=\\"var-pagination\\">
-    <!--v-if-->
     <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple var-pagination__item-disabled\\">
       <div class=\\"var-input var--box var-input--disabled\\" var-pagination-cover=\\"\\">
@@ -312,7 +311,7 @@ exports[`test pagination example 1`] = `
         <transition-stub>
           <!--v-if-->
         </transition-stub>
-      </div> / 7
+      </div> / 12
     </li>
     <li class=\\"var-pagination__item var-pagination__next var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
     <li class=\\"var-pagination__size var-pagination__item-disabled\\">
@@ -322,6 +321,7 @@ exports[`test pagination example 1`] = `
         <!--teleport end-->
       </div>
     </li>
+    <!--v-if-->
     <!--v-if-->
   </ul>
 </div>"
