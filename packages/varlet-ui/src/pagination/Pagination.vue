@@ -1,11 +1,11 @@
 <template>
   <ul class="var-pagination">
-    <li v-if="totalText" class="var-pagination__total">{{ totalText }}</li>
     <li
       v-ripple="{ disabled: current <= 1 || disabled }"
       class="var-pagination__item var-pagination__prev"
       :class="{
         'var-pagination__item-disabled': current <= 1 || disabled,
+        'var-elevation--2': !simple,
       }"
       @click="clickItem('prev')"
     >
@@ -13,14 +13,7 @@
         <var-icon name="chevron-left" />
       </slot>
     </li>
-
-    <li
-      v-if="simple"
-      class="var-pagination__simple"
-      :class="{
-        'var-pagination__item-disabled': disabled,
-      }"
-    >
+    <li v-if="simple" class="var-pagination__simple" :class="{ 'var-pagination__item-disabled': disabled }">
       <var-input
         v-model="simpleValue"
         :disabled="disabled"
@@ -35,7 +28,7 @@
       v-for="(item, index) in pageList"
       :key="item + index"
       :item-mode="getMode(item, index)"
-      class="var-pagination__item"
+      class="var-pagination__item var-elevation--2"
       :class="{
         'var-pagination__item-active': item === current,
         'var-pagination__item-hide': isHideEllipsis(item, index),
@@ -45,12 +38,12 @@
     >
       {{ item }}
     </li>
-
     <li
       v-ripple="{ disabled: current >= pageCount || disabled }"
       class="var-pagination__item var-pagination__next"
       :class="{
         'var-pagination__item-disabled': current >= pageCount || disabled,
+        'var-elevation--2': !simple,
       }"
       @click="clickItem('next')"
     >
@@ -58,14 +51,9 @@
         <var-icon name="chevron-right" />
       </slot>
     </li>
-    <li
-      v-if="showSizeChanger"
-      class="var-pagination__size"
-      :class="{
-        'var-pagination__item-disabled': disabled,
-      }"
-    >
-      <var-menu v-model:show="menuVisible">
+
+    <li v-if="showSizeChanger" class="var-pagination__size" :class="{ 'var-pagination__item-disabled': disabled }">
+      <var-menu v-model:show="menuVisible" :offset-x="-8">
         <div class="var-pagination__size-open" style="display: flex" @click="showMenu">
           <span>{{ size }}{{ pack.paginationItem }} / {{ pack.paginationPage }}</span>
           <var-icon name="menu-down" />
@@ -77,6 +65,7 @@
             :class="{
               'var-pagination__list-active': size === option,
             }"
+            v-ripple
             v-for="(option, index) in sizeOption"
             :key="index"
             @click="clickSize(option)"
@@ -89,23 +78,23 @@
     <li
       v-if="showQuickJumper && !simple"
       class="var-pagination__quickly"
-      :class="{
-        'var-pagination__item-disabled': disabled,
-      }"
+      :class="{ 'var-pagination__item-disabled': disabled }"
     >
       {{ pack.paginationJump }}
       <var-input v-model="inputValue" :disabled="disabled" var-pagination-cover @blur="setPage('quick', inputValue)" />
     </li>
+
+    <li v-if="totalText" class="var-pagination__total">{{ totalText }}</li>
   </ul>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue'
 import Menu from '../menu'
 import Ripple from '../ripple'
 import Icon from '../icon'
 import Cell from '../cell'
 import Input from '../input'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './porps'
 import { isNumber, toNumber } from '../utils/shared'
 import { pack } from '../locale'

@@ -2,17 +2,15 @@
 @pagination-active-color: #fff;
 @pagination-active-bg-color: var(--color-primary);
 @pagination-hover-bg-color: rgb(245, 245, 245);
-@pagination-total-margin: 0 6px 0 0;
+@pagination-total-margin: 0 6px;
 @pagination-item-width: 32px;
-@pagination-item-height: 32px;
-@pagination-item-margin: 0 4px;
+@pagination-item-height: 30px;
+@pagination-item-margin: 0 6px;
 @pagination-item-border-radius: 4px;
-@pagination-size-padding: 0 6px;
 @pagination-list-bg-color: #fff;
 @pagination-list-active-bg-color: #dbe4fd;
 @pagination-list-active-color: var(--color-primary);
-@pagination-input-width: 36px;
-@pagination-input-margin: 0 6px;
+@pagination-input-width: 32px;
 
 :root {
   --pagination-font-size: @pagination-font-size;
@@ -24,12 +22,10 @@
   --pagination-item-height: @pagination-item-height;
   --pagination-item-margin: @pagination-item-margin;
   --pagination-item-border-radius: @pagination-item-border-radius;
-  --pagination-size-padding: @pagination-size-padding;
   --pagination-list-bg-color: @pagination-list-bg-color;
   --pagination-list-active-bg-color: @pagination-list-active-bg-color;
   --pagination-list-active-color: @pagination-list-active-color;
   --pagination-input-width: @pagination-input-width;
-  --pagination-input-margin: @pagination-input-margin;
 }
 
 // Mixins
@@ -45,11 +41,6 @@
   margin: 0;
   font-size: var(--pagination-font-size);
   padding: 0;
-
-  &__total {
-    margin: var(--pagination-total-margin);
-    .pagination-flex-nowrap();
-  }
 
   &__item {
     display: inline-flex;
@@ -87,10 +78,19 @@
     }
   }
 
+  &__prev {
+    margin-left: 0;
+  }
+
+  &__total {
+    margin: var(--pagination-total-margin);
+    .pagination-flex-nowrap();
+  }
+
   &__size {
     .pagination-flex-nowrap();
 
-    padding: var(--pagination-size-padding);
+    margin: var(--pagination-item-margin);
     cursor: pointer;
   }
 
@@ -114,7 +114,6 @@
 
     [var-pagination-cover] {
       width: var(--pagination-input-width);
-      margin: var(--pagination-input-margin);
 
       .var-input__wrap {
         padding: 0;
@@ -125,5 +124,9 @@
         text-align: center;
       }
     }
+  }
+
+  &__quickly {
+    margin: var(--pagination-item-margin);
   }
 }

@@ -98,5 +98,5 @@ export default {
   // pagination
   paginationItem: '条',
   paginationPage: '页',
-  paginationJump: '跳至',
+  paginationJump: '前往',
 }

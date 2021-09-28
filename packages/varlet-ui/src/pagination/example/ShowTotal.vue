@@ -11,7 +11,7 @@
     size="10"
     total="66"
     :simple="false"
-    :show-total="(total, range) => `${pack.pcTotal} ${total}, ${pack.current} ${range[0]}-${range[1]}`"
+    :show-total="(total, range) => `${pack.current} ${range[0]}-${range[1]} / ${pack.pcTotal} ${total} ${pack.item}`"
   />
 </template>
 
@@ -34,3 +34,10 @@ export default {
   },
 }
 </script>
+
+<style lang="less" scoped>
+ul {
+  padding: 10px 0;
+  box-shadow: none;
+}
+</style>
