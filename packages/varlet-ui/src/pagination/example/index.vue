@@ -13,7 +13,7 @@
   </div>
   <app-type>{{ pack.disabled }}</app-type>
   <div class="transformer">
-    <var-pagination :total="115" disabled />
+    <var-pagination :current="3" :total="120" disabled />
   </div>
 </template>
 
@@ -41,6 +41,6 @@ export default {
 
 <style lang="less" scoped>
 .transformer {
-  transform: translateX(-8px);
+  transform: translateX(-10px);
 }
 </style>

@@ -2,7 +2,7 @@
 
 ### 介绍
 
-用于分解大量数据。
+当你需要处理大量数据的时候，可能需要用到它。
 
 ### 引入
 
@@ -12,22 +12,26 @@ import { Pagination } from '@varlet/ui'
 
 createApp().use(Pagination)
 ```
-### 简单模式
+### 简约模式
 
-`simple` 属性为 `true` 时， 适用于小屏设备。
+默认的一种显示模式，推荐在小屏设备上使用，组件预览见右侧手机模拟器。
 
 #### 基本使用
 
 ```html
-<var-pagination current="6" total="115" />
+<var-pagination :current="3" :total="120" />
 ```
 
-#### 隐藏 size 切换器
+#### 隐藏 size 控制器
 
-使用 `showSizeChanger` 隐藏 `size` 切换器。
+使用 `showSizeChanger` 可以控制 `size` 控制器的显示和隐藏。
 
 ```html
-<var-pagination current="3" total="115" :show-size-changer="false" />
+<var-pagination
+  :current="3" 
+  :total="120"
+  :show-size-changer="false" 
+/>
 ```
 
 #### 显示总数
@@ -36,9 +40,8 @@ createApp().use(Pagination)
 
 ```html
 <var-pagination 
-  current="3" 
-  size="20" 
-  total="66" 
+  :current="3" 
+  :total="66" 
   :show-total="total => `共 ${total} 条`" 
 />
 ```
@@ -46,39 +49,59 @@ createApp().use(Pagination)
 #### 禁用
 
 ```html
-<var-pagination total="66" disabled />
+<var-pagination :current="3" :total="115" disabled />
 ```
 
 ### 普通模式
 
-`simple` 属性为 `false` 时， 适用于中大屏设备。
+`simple` 属性为 `false` 时，可以开启我们专门为宽屏设计的分页风格。
 
 #### 基本使用
-
-使用 `showQuickJumper` 属性开启快速跳转
 
 ```vue
 import Basic from '../example/Basic.vue'
 ```
 
 ```html
-<var-pagination current="6" total="115" :simple="false" show-quick-jumper />
+<var-pagination
+  current="6"
+  total="115"
+  :simple="false" 
+/>
+```
+
+#### 开启页码快速跳转
+
+使用 `showQuickJumper` 属性开启页面快速跳转
+
+```vue
+import QuickJumper from '../example/QuickJumper.vue'
+```
+
+```html
+<var-pagination
+  :current="3"
+  :total="120"
+  :simple="false" 
+  show-quick-jumper
+/>
 ```
 
 #### Size 配置
 
-使用 `showSizeChanger` 隐藏 `size` 切换器，使用 `sizeOption` 指定可以显示的条数。
+使用 `showSizeChanger` 可以隐藏 `size` 切换器。
+使用 `sizeOption` 指定可以显示的条数。
 
 ```vue
 import SizeOption from '../example/SizeOption.vue'
 ```
 
 ```html
-<var-pagination current="6" total="115" :simple="false" :show-size-changer="false" />
-<var-pagination current="3" total="115" :simple="false" :size-option="[10, 20, 30, 40]" />
+<var-pagination :current="3" :total="120" :simple="false" :show-size-changer="false" />
+<var-pagination :current="3" :total="120" :simple="false" :size-option="[10, 20, 30, 40]" />
 ```
 
-#### 显示总数
+#### 自定义显示总数
 
 ```vue
 import ShowTotal from '../example/ShowTotal.vue'
@@ -86,16 +109,16 @@ import ShowTotal from '../example/ShowTotal.vue'
 
 ```html
 <var-pagination
-  current="3"
-  size="10"
-  total="66"
+  :current="3"
+  :size="10"
+  :total="120"
   :simple="false"
   :show-total="total => `共 ${total} 条`"
 />
 <var-pagination
-  current="3"
-  size="10"
-  total="66"
+  :current="3"
+  :size="10"
+  :total="120"
   :simple="false"
   :show-total="(total, range) => `共 ${total}, 当前 ${range[0]}-${range[1]}`"
 />
@@ -108,7 +131,7 @@ import Disabled from '../example/Disabled.vue'
 ```
 
 ```html
-<var-pagination current="6" total="115" :simple="false" show-quick-jumper disabled />
+<var-pagination :current="6" :total="120" :simple="false" disabled />
 ```
 
 ## API
@@ -151,14 +174,13 @@ import Disabled from '../example/Disabled.vue'
 | `--pagination-active-color` | `#fff` |  
 | `--pagination-active-bg-color` | `var(--color-primary)` |  
 | `--pagination-hover-bg-color` | `rgb(245, 245, 245)` |  
-| `--pagination-total-margin` | `0 6px 0 0` |  
+| `--pagination-total-margin` | `0 14px` |  
 | `--pagination-item-width` | `32px` |  
 | `--pagination-item-height` | `32px` |  
-| `--pagination-item-margin` | `0 4px` |  
+| `--pagination-item-margin` | `0 6px` |  
 | `--pagination-item-border-radius` | `4px` |  
-| `--pagination-size-padding` | `0 6px` |  
 | `--pagination-list-bg-color` | `#fff` |  
 | `--pagination-list-active-bg-color` | `#dbe4fd` |  
 | `--pagination-list-active-color` | `var(--color-primary)` |  
-| `--pagination-input-width` | `36px` |  
-| `--pagination-input-margin` | `0 6px` |  
+| `--pagination-input-width` | `32px` |
+| `--pagination-simple-padding` | `0 0 2px 0` |

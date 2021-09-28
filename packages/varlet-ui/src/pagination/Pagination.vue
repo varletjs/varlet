@@ -53,11 +53,18 @@
       </slot>
     </li>
 
-    <li v-if="showSizeChanger" class="var-pagination__size" :class="{ 'var-pagination__item-disabled': disabled }">
+    <li
+      v-if="showSizeChanger"
+      class="var-pagination__size"
+      :class="{
+        'var-pagination__item-disabled': disabled,
+        'var-pagination--simple-padding': simple,
+      }"
+    >
       <var-menu v-model:show="menuVisible" :offset-x="-4">
         <div class="var-pagination__size-open" style="display: flex" @click="showMenu">
           <span>{{ size }}{{ pack.paginationItem }} / {{ pack.paginationPage }}</span>
-          <var-icon name="menu-down" />
+          <var-icon class="var-pagination__size-open-icon" var-pagination-cover name="menu-down" />
         </div>
 
         <template #menu>
@@ -91,7 +98,9 @@
       />
     </li>
 
-    <li v-if="totalText" class="var-pagination__total">{{ totalText }}</li>
+    <li v-if="totalText" class="var-pagination__total" :class="{ 'var-pagination--simple-padding': simple }">
+      {{ totalText }}
+    </li>
   </ul>
 </template>
 

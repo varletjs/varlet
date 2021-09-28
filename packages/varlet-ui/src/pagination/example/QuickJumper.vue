@@ -1,5 +1,5 @@
 <template>
-  <var-pagination :current="6" :total="115" :simple="false" disabled />
+  <var-pagination :current="3" :total="120" :simple="false" show-quick-jumper />
 </template>
 
 <script>
@@ -8,7 +8,7 @@ import { watchLang } from '@varlet/cli/site/utils'
 import { pack, use } from './locale'
 
 export default {
-  name: 'Disabled',
+  name: 'BasicUse',
   components: {
     [Pagination.name]: Pagination,
   },

@@ -1,5 +1,5 @@
 <template>
-  <var-pagination current="6" total="115" :simple="false" show-quick-jumper />
+  <var-pagination :current="3" :total="120" :simple="false" />
 </template>
 
 <script>

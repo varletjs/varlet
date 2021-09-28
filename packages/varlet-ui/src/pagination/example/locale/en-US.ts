@@ -6,5 +6,5 @@ export default {
   disabled: 'Disabled',
   hideSize: 'Hide Size Changer',
   pcTotal: 'Total ',
-  current: 'current',
+  current: 'Current',
 }

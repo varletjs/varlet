@@ -2,15 +2,16 @@
 @pagination-active-color: #fff;
 @pagination-active-bg-color: var(--color-primary);
 @pagination-hover-bg-color: rgb(245, 245, 245);
-@pagination-total-margin: 0 6px;
+@pagination-total-margin: 0 12px;
 @pagination-item-width: 32px;
-@pagination-item-height: 30px;
+@pagination-item-height: 32px;
 @pagination-item-margin: 0 6px;
 @pagination-item-border-radius: 4px;
 @pagination-list-bg-color: #fff;
 @pagination-list-active-bg-color: #dbe4fd;
 @pagination-list-active-color: var(--color-primary);
 @pagination-input-width: 32px;
+@pagination-simple-padding: 0 0 2px 0;
 
 :root {
   --pagination-font-size: @pagination-font-size;
@@ -26,6 +27,7 @@
   --pagination-list-active-bg-color: @pagination-list-active-bg-color;
   --pagination-list-active-color: @pagination-list-active-color;
   --pagination-input-width: @pagination-input-width;
+  --pagination-simple-padding: @pagination-simple-padding;
 }
 
 // Mixins
@@ -132,5 +134,13 @@
     [var-pagination-cover] {
       margin-left: 6px;
     }
+  }
+
+  &__size-open-icon {
+    font-size: inherit;
+  }
+
+  &--simple-padding {
+    padding: var(--pagination-simple-padding);
   }
 }
