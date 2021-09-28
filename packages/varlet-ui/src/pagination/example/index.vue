@@ -41,6 +41,6 @@ export default {
 
 <style lang="less" scoped>
 .transformer {
-  transform: translateX(-10px);
+  transform: translateX(-8px);
 }
 </style>
