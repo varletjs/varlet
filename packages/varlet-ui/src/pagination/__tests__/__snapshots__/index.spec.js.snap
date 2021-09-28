@@ -23,9 +23,9 @@ exports[`Size related props 1`] = `
     </div> / 6
   </li>
   <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
-  <li class=\\"var-pagination__size\\">
+  <li class=\\"var-pagination__size var-pagination--simple-padding\\">
     <div class=\\"var-menu\\">
-      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>20条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>20条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: all 0ms;\\" var-pagination-cover=\\"\\"></i></div>
       <!--teleport start-->
       <!--teleport end-->
     </div>
@@ -70,7 +70,7 @@ exports[`basic mode disabled prop 1`] = `
   <li class=\\"var-pagination__item var-pagination__next var-pagination__item-disabled var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
   <li class=\\"var-pagination__size var-pagination__item-disabled\\">
     <div class=\\"var-menu\\">
-      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: all 0ms;\\" var-pagination-cover=\\"\\"></i></div>
       <!--teleport start-->
       <!--teleport end-->
     </div>
@@ -93,7 +93,7 @@ exports[`basic mode mount 1`] = `
   <li class=\\"var-pagination__item var-pagination__next var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
   <li class=\\"var-pagination__size\\">
     <div class=\\"var-menu\\">
-      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: all 0ms;\\" var-pagination-cover=\\"\\"></i></div>
       <!--teleport start-->
       <!--teleport end-->
     </div>
@@ -143,9 +143,9 @@ exports[`simple mode disabled prop 1`] = `
     </div> / 0
   </li>
   <li class=\\"var-pagination__item var-pagination__next var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
-  <li class=\\"var-pagination__size var-pagination__item-disabled\\">
+  <li class=\\"var-pagination__size var-pagination__item-disabled var-pagination--simple-padding\\">
     <div class=\\"var-menu\\">
-      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: all 0ms;\\" var-pagination-cover=\\"\\"></i></div>
       <!--teleport start-->
       <!--teleport end-->
     </div>
@@ -178,15 +178,15 @@ exports[`simple mode mount 1`] = `
     </div> / 13
   </li>
   <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
-  <li class=\\"var-pagination__size\\">
+  <li class=\\"var-pagination__size var-pagination--simple-padding\\">
     <div class=\\"var-menu\\">
-      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: all 0ms;\\" var-pagination-cover=\\"\\"></i></div>
       <!--teleport start-->
       <!--teleport end-->
     </div>
   </li>
   <!--v-if-->
-  <li class=\\"var-pagination__total\\">1-10 of 123 items</li>
+  <li class=\\"var-pagination__total var-pagination--simple-padding\\">1-10 of 123 items</li>
 </ul>"
 `;
 
@@ -215,9 +215,9 @@ exports[`test pagination example 1`] = `
       </div> / 12
     </li>
     <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
-    <li class=\\"var-pagination__size\\">
+    <li class=\\"var-pagination__size var-pagination--simple-padding\\">
       <div class=\\"var-menu\\">
-        <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+        <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: all 0ms;\\" var-pagination-cover=\\"\\"></i></div>
         <!--teleport start-->
         <!--teleport end-->
       </div>
@@ -279,15 +279,15 @@ exports[`test pagination example 1`] = `
       </div> / 12
     </li>
     <li class=\\"var-pagination__item var-pagination__next\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
-    <li class=\\"var-pagination__size\\">
+    <li class=\\"var-pagination__size var-pagination--simple-padding\\">
       <div class=\\"var-menu\\">
-        <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+        <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: all 0ms;\\" var-pagination-cover=\\"\\"></i></div>
         <!--teleport start-->
         <!--teleport end-->
       </div>
     </li>
     <!--v-if-->
-    <li class=\\"var-pagination__total\\">共 120 条</li>
+    <li class=\\"var-pagination__total var-pagination--simple-padding\\">共 120 条</li>
   </ul>
 </div>
 <div class=\\"app-type\\">禁用</div>
@@ -314,9 +314,9 @@ exports[`test pagination example 1`] = `
       </div> / 12
     </li>
     <li class=\\"var-pagination__item var-pagination__next var-pagination__item-disabled\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
-    <li class=\\"var-pagination__size var-pagination__item-disabled\\">
+    <li class=\\"var-pagination__size var-pagination__item-disabled var-pagination--simple-padding\\">
       <div class=\\"var-menu\\">
-        <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: all 0ms;\\"></i></div>
+        <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: all 0ms;\\" var-pagination-cover=\\"\\"></i></div>
         <!--teleport start-->
         <!--teleport end-->
       </div>
