@@ -18,7 +18,8 @@
         v-model="simpleValue"
         :disabled="disabled"
         var-pagination-cover
-        @blur="setPage('simple', simpleValue)"
+        @blur="setPage('simple', simpleValue, $event)"
+        @keydown.enter="setPage('simple', simpleValue, $event)"
       />
       / {{ pageCount }}
     </li>
@@ -81,7 +82,13 @@
       :class="{ 'var-pagination__item-disabled': disabled }"
     >
       {{ pack.paginationJump }}
-      <var-input v-model="inputValue" :disabled="disabled" var-pagination-cover @blur="setPage('quick', inputValue)" />
+      <var-input
+        v-model="inputValue"
+        :disabled="disabled"
+        var-pagination-cover
+        @blur="setPage('quick', inputValue, $event)"
+        @keydown.enter="setPage('quick', inputValue, $event)"
+      />
     </li>
 
     <li v-if="totalText" class="var-pagination__total">{{ totalText }}</li>
@@ -177,7 +184,8 @@ export default defineComponent({
       return pattern.test(value)
     }
 
-    const setPage = (type: 'simple' | 'quick', value: string) => {
+    const setPage = (type: 'simple' | 'quick', value: string, event: KeyboardEvent | FocusEvent) => {
+      ;(event.target as HTMLInputElement).blur()
       if (isValidatePage(value)) {
         let valueNum = toNumber(value)
 
