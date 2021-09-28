@@ -205,6 +205,11 @@ export default defineComponent({
       if (type === 'simple' && !isValidatePage(value)) simpleValue.value = `${current.value}`
     }
 
+    watch([() => props.current, () => props.size], ([newCurrent, newSize]) => {
+      current.value = toNumber(newCurrent) || 1
+      size.value = toNumber(newSize || 10)
+    })
+
     watch(
       [current, pageCount],
       ([newCurrent, newCount], [oldCurrent, oldCount]) => {
