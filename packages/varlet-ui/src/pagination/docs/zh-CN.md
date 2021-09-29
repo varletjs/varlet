@@ -176,3 +176,4 @@ import Disabled from '../example/Disabled.vue'
 | `--pagination-list-active-color` | `var(--color-primary)` |  
 | `--pagination-input-width` | `32px` |
 | `--pagination-simple-padding` | `0 0 2px 0` |
+| `--pagination-disabled-color` | `var(--color-disabled)` |

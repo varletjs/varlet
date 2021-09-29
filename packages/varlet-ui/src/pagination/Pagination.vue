@@ -58,7 +58,6 @@
       class="var-pagination__size"
       :class="{
         'var-pagination__item-disabled': disabled,
-        'var-pagination--simple-padding': simple,
       }"
     >
       <var-menu v-model:show="menuVisible" :offset-x="-4">
@@ -98,7 +97,7 @@
       />
     </li>
 
-    <li v-if="totalText" class="var-pagination__total" :class="{ 'var-pagination--simple-padding': simple }">
+    <li v-if="totalText" class="var-pagination__total">
       {{ totalText }}
     </li>
   </ul>
