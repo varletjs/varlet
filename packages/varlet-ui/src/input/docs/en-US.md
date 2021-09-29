@@ -174,4 +174,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--input-input-text-color` | `#555` |
 | `--input-line-size` | `1px` |
 | `--input-line-spread-size` | `2px` |
-| `--input-disabled-color` | `#aaa` |
+| `--input-disabled-color` | `var(--color-disabled)` |
