@@ -27,11 +27,7 @@ createApp().use(Pagination)
 使用 `showSizeChanger` 可以控制 `size` 控制器的显示和隐藏。
 
 ```html
-<var-pagination
-  :current="3" 
-  :total="120"
-  :show-size-changer="false" 
-/>
+<var-pagination :current="3" :total="120" :show-size-changer="false"/>
 ```
 
 #### 显示总数
@@ -63,14 +59,10 @@ import Basic from '../example/Basic.vue'
 ```
 
 ```html
-<var-pagination
-  current="6"
-  total="115"
-  :simple="false" 
-/>
+<var-pagination current="6" total="115" :simple="false"/>
 ```
 
-#### 开启页码快速跳转
+#### Enable page number to jump quickly
 
 使用 `showQuickJumper` 属性开启页面快速跳转
 
