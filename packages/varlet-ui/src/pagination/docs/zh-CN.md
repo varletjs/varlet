@@ -62,7 +62,7 @@ import Basic from '../example/Basic.vue'
 <var-pagination current="6" total="115" :simple="false"/>
 ```
 
-#### Enable page number to jump quickly
+#### 开启页码快速跳转
 
 使用 `showQuickJumper` 属性开启页面快速跳转
 
