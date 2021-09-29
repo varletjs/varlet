@@ -145,6 +145,32 @@ test('Size related props', async () => {
   wrapper.unmount()
 })
 
+test('change current and size', async () => {
+  const wrapper = mount(VarPagination, {
+    props: {
+      current: 4,
+      size: 10,
+      total: 300
+    }
+  })
+
+  const input = wrapper.find('.var-input__input')
+  const sizeEl = wrapper.find('.var-pagination__size-open')
+
+  expect(input.element.value).toBe('4')
+  expect(sizeEl.text().includes('10')).toBe(true)
+
+  await wrapper.setProps({
+    current: 5,
+    size: 20
+  })
+
+  expect(input.element.value).toBe('5')
+  expect(sizeEl.text().includes('20')).toBe(true)
+
+  wrapper.unmount()
+})
+
 test('change event', async () => {
   const change = jest.fn()
   const template = `<var-pagination current="2" :size="20" total="325" @change="change" />`
