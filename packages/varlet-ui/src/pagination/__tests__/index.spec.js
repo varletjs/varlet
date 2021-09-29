@@ -79,7 +79,7 @@ describe('basic mode', () => {
         current="10"
         :size="20"
         total="325"
-        :max-show-btn-count="4"
+        :max-pager-count="4"
         :simple="false"
         @change="change"
       />

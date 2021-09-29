@@ -147,7 +147,7 @@ import Disabled from '../example/Disabled.vue'
 | `disabled` | 禁用分页 | _boolean_ | `false` |
 | `showSizeChanger` | 是否显示 `size` 切换器 | _boolean_ | `true` |
 | `showQuickJumper` | 是否可以快速跳转至某页	 | _boolean_ | `false` |
-| `maxShowBtnCount` | 省略号间显示的按钮数量	 | _number_ | `3` |
+| `maxPagerCount` | 省略号间显示的按钮数量	 | _number_ | `3` |
 | `sizeOption` | 指定每页可以显示多少条	 | _number[]_ | `[10, 20, 50, 100]` |
 | `showTotal` | 用于显示数据总量和当前数据顺序	 | _function(total, range)_ | `-` |
 

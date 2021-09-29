@@ -14,7 +14,7 @@ export const props = {
     type: [Number, String],
     default: 0,
   },
-  maxShowBtnCount: {
+  maxPagerCount: {
     type: Number,
     default: 3,
   },

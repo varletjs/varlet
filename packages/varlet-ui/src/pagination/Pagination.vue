@@ -137,7 +137,7 @@ export default defineComponent({
     const size: Ref<number> = ref(toNumber(props.size) || 10)
     const pageList: Ref<Array<string | number>> = ref([])
 
-    const activePosition: ComputedRef<number> = computed(() => Math.ceil(props.maxShowBtnCount / 2))
+    const activePosition: ComputedRef<number> = computed(() => Math.ceil(props.maxPagerCount / 2))
     const pageCount: ComputedRef<number> = computed(() => Math.ceil(toNumber(props.total) / toNumber(size.value)))
     const range: ComputedRef<Range> = computed(() => {
       const start = size.value * (current.value - 1) + 1
@@ -171,9 +171,9 @@ export default defineComponent({
       else if (item === 'next') current.value < pageCount.value && (current.value += 1)
       else if (item === '...') {
         if (index === 1) {
-          current.value = Math.max(current.value - props.maxShowBtnCount, 1)
+          current.value = Math.max(current.value - props.maxPagerCount, 1)
         } else {
-          current.value = Math.min(current.value + props.maxShowBtnCount, pageCount.value)
+          current.value = Math.min(current.value + props.maxPagerCount, pageCount.value)
         }
       }
     }
@@ -225,20 +225,20 @@ export default defineComponent({
         }
 
         let list = []
-        const { maxShowBtnCount } = props
-        const rEllipseSign = newCount - (maxShowBtnCount - activePosition.value) - 1
+        const { maxPagerCount } = props
+        const rEllipseSign = newCount - (maxPagerCount - activePosition.value) - 1
         simpleValue.value = `${newCurrent}`
 
-        if (newCount - 2 > maxShowBtnCount) {
+        if (newCount - 2 > maxPagerCount) {
           if (oldCurrent === undefined || newCount !== oldCount) {
-            for (let i = 2; i < maxShowBtnCount + 2; i++) list.push(i)
+            for (let i = 2; i < maxPagerCount + 2; i++) list.push(i)
           }
 
           // 左边不需要出现省略符号占位
-          if (newCurrent <= maxShowBtnCount && newCurrent < rEllipseSign) {
+          if (newCurrent <= maxPagerCount && newCurrent < rEllipseSign) {
             list = []
 
-            for (let i = 1; i < maxShowBtnCount + 1; i++) {
+            for (let i = 1; i < maxPagerCount + 1; i++) {
               list.push(i + 1)
             }
 
@@ -246,23 +246,23 @@ export default defineComponent({
             isHideEllipsisTail.value = false
           }
           // 两边都需要出现省略符号占位
-          if (newCurrent > maxShowBtnCount && newCurrent < rEllipseSign) {
+          if (newCurrent > maxPagerCount && newCurrent < rEllipseSign) {
             list = []
 
-            for (let i = 1; i < maxShowBtnCount + 1; i++) {
+            for (let i = 1; i < maxPagerCount + 1; i++) {
               list.push(newCurrent + i - activePosition.value)
             }
 
-            // 针对 maxShowBtnCount===1 的特殊处理
-            isHideEllipsisHead.value = newCurrent === 2 && maxShowBtnCount === 1
+            // 针对 maxPagerCount===1 的特殊处理
+            isHideEllipsisHead.value = newCurrent === 2 && maxPagerCount === 1
             isHideEllipsisTail.value = false
           }
           // 右边不需要出现省略符号占位
           if (newCurrent >= rEllipseSign) {
             list = []
 
-            for (let i = 1; i < maxShowBtnCount + 1; i++) {
-              list.push(newCount - (maxShowBtnCount - i) - 1)
+            for (let i = 1; i < maxPagerCount + 1; i++) {
+              list.push(newCount - (maxPagerCount - i) - 1)
             }
 
             isHideEllipsisHead.value = false

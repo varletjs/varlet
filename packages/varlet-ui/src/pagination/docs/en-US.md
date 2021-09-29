@@ -124,7 +124,7 @@ import Disabled from '../example/Disabled.vue'
 | `disabled` | Disable pagination | _boolean_ | `false` |
 | `showSizeChanger` | Whether to show `size` select | _boolean_ | `true` |
 | `showQuickJumper` | Whether you can jump to pages directly	 | _boolean_ | `false` |
-| `maxShowBtnCount` | Number of buttons displayed between ellipses	| _number_ | `3` |
+| `maxPagerCount` | Number of buttons displayed between ellipses	| _number_ | `3` |
 | `sizeOption` | Specify the sizeChanger options	 | _number[]_ | `[10, 20, 50, 100]` |
 | `showTotal` | Show page item's title	 | _function(total, range)_ | `-` |
 

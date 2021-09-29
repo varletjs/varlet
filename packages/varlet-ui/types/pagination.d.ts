@@ -6,7 +6,7 @@ export interface PaginationProps {
   current?: string | number
   size?: string | number
   total?: string | number
-  maxShowBtnCount?: number
+  maxPagerCount?: number
   disabled?: boolean
   simple?: boolean
   showSizeChanger?: boolean
