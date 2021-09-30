@@ -1,31 +1,31 @@
 <template>
   <div style="position: relative">
     <header>
-      <var-app-bar
+      <var-site-app-bar
         class="app-bar"
         :title="bigCamelizeComponentName"
         title-position="center"
       >
         <template #left v-if="showBackIcon">
-          <var-button round @click="back" color="transparent" text-color="#fff" text>
-            <var-icon name="chevron-left" :size="28" />
-          </var-button>
+          <var-site-button round @click="back" color="transparent" text-color="#fff" text>
+            <var-site-icon name="chevron-left" :size="28" />
+          </var-site-button>
         </template>
         <template #right>
-          <var-menu
+          <var-site-menu
             style="background: transparent"
             :offset-y="38"
             v-model:show="showMenu"
             v-if="languages"
           >
-            <var-button text color="transparent" text-color="#fff" @click="showMenu = true">
-              <var-icon name="translate" :size="24" />
-              <var-icon name="chevron-down" :size="24" />
-            </var-button>
+            <var-site-button text color="transparent" text-color="#fff" @click="showMenu = true">
+              <var-site-icon name="translate" :size="24" />
+              <var-site-icon name="chevron-down" :size="24" />
+            </var-site-button>
 
             <template #menu>
               <div style="background: #fff">
-                <var-cell
+                <var-site-cell
                   v-for="(value, key) in nonEmptyLanguages"
                   :key="key"
                   class="mobile-language-cell"
@@ -34,12 +34,12 @@
                   @click="changeLanguage(key)"
                 >
                   {{ value }}
-                </var-cell>
+                </var-site-cell>
               </div>
             </template>
-          </var-menu>
+          </var-site-menu>
         </template>
-      </var-app-bar>
+      </var-site-app-bar>
     </header>
     <div class="router-view__block">
       <router-view />
@@ -107,6 +107,10 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -130,7 +134,7 @@ header {
 }
 
 .app-bar {
-  background: var(--site-color-app-bar) !important;
+  background: var(--site-config-color-app-bar) !important;
 }
 
 .router-view__block {
@@ -146,8 +150,8 @@ header {
   cursor: pointer;
 
   &--active {
-    color: var(--site-color-mobile-language-active);
-    background: var(--site-color-mobile-language-active-background);
+    color: var(--site-config-color-mobile-language-active);
+    background: var(--site-config-color-mobile-language-active-background);
   }
 }
 </style>

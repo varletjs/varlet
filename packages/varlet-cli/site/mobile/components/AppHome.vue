@@ -6,19 +6,19 @@
     </h1>
     <h2 class="varlet-home__desc">{{ description[lang] }}</h2>
   </div>
-  <var-cell
+  <var-site-cell
     v-for="component in components"
     :key="component.text"
     @click="toComponent(component)"
     v-ripple
   >
     <template #extra>
-      <var-icon name="chevron-right" size="14" />
+      <var-site-icon name="chevron-right" size="14" />
     </template>
     <template #default>
       {{ component.text[lang] }}
     </template>
-  </var-cell>
+  </var-site-cell>
 </template>
 
 <script>
@@ -112,15 +112,15 @@ export default {
   margin-left: 16px;
 }
 
-.var-cell {
+.var-site-cell {
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: all 0.3s;
   color: #555;
 
   &:hover {
-    color: var(--site-color-mobile-cell-hover);
-    background: var(--site-color-mobile-cell-hover-background);
+    color: var(--site-config-color-mobile-cell-hover);
+    background: var(--site-config-color-mobile-cell-hover-background);
   }
 }
 </style>

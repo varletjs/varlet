@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import Button from '..'
+import Button from '../index'
 import Icon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Snackbar from '../../snackbar'

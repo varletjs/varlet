@@ -3,7 +3,7 @@
     <div
       class="var-counter__controller var-elevation--2"
       :class="[disabled || formDisabled ? 'var-counter--disabled' : null, errorMessage ? 'var-counter--error' : null]"
-      :style="{ background: color ? color : null }"
+      :style="{ background: color ? color : undefined }"
       v-bind="$attrs"
     >
       <var-icon

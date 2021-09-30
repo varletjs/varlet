@@ -1,6 +1,6 @@
 <template>
   <div class="varlet-site-sidebar var-elevation--3">
-    <var-cell
+    <var-site-cell
       class="varlet-site-sidebar__item"
       :class="{
         'varlet-site-sidebar__item--active': item.doc === menuName,
@@ -18,7 +18,7 @@
     >
       <span class="varlet-site-sidebar__item--title" v-if="item.type === menuTypes.TITLE">{{ item.text[language] }}</span>
       <span class="varlet-site-sidebar__item--link" v-else>{{ item.text[language] }}</span>
-    </var-cell>
+    </var-site-cell>
   </div>
 </template>
 
@@ -70,9 +70,9 @@ export default {
 <style scoped lang="less">
 .varlet-site-sidebar {
   padding: 0 0 15px;
-  position: sticky;
-  flex: 0 0 220px;
-  top: 0;
+  position: fixed;
+  width: 220px;
+  top: 60px;
   bottom: 0;
   left: 0;
   z-index: 1;
@@ -109,16 +109,16 @@ export default {
 
     &--active {
       position: relative;
-      background: var(--site-color-side-bar-active-background);
+      background: var(--site-config-color-side-bar-active-background);
 
       span {
-        color: var(--site-color-side-bar);
+        color: var(--site-config-color-side-bar);
       }
 
       &::before {
         display: block;
         content: '';
-        background: var(--site-color-side-bar);
+        background: var(--site-config-color-side-bar);
         width: 4px;
         height: 40px;
         position: absolute;

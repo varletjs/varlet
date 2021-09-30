@@ -1,6 +1,6 @@
 export default {
   basicUsage: '基本使用',
-  slot: '插槽',
+  slot: '尾部插槽',
   total: '总分',
   math: '数学',
   english: '英语',

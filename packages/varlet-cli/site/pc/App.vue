@@ -82,7 +82,7 @@ export default defineComponent({
       nextTick(() => {
         const children = document
           .querySelector('.varlet-site-sidebar')
-          .getElementsByClassName('var-cell')
+          .getElementsByClassName('var-site-cell')
         const index = menu.value.findIndex((item) => item.doc === menuName)
 
         if (index !== -1) {
@@ -142,13 +142,17 @@ export default defineComponent({
 </style>
 
 <style lang="less">
-@import '@varlet/ui/es/progress/progress';
-
 @doc-active: {
   display: inline;
   font-family: inherit;
   padding: 0 4px;
   white-space: pre-wrap;
+}
+
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  background: transparent;
 }
 
 body {
@@ -172,7 +176,7 @@ iframe {
     align-items: center;
     margin: 20px 4px 20px;
     padding: 40px;
-    border-top: 7px solid var(--site-color-primary);
+    border-top: 7px solid var(--site-config-color-primary);
     border-radius: 4px;
     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 
@@ -199,9 +203,10 @@ iframe {
 
   &-site {
     &-content {
-      height: calc(100vh - 60px);
       display: flex;
       background: #fff;
+      margin-top: 60px;
+      margin-left: 220px;
     }
 
     &-doc-container {
@@ -222,7 +227,7 @@ iframe {
 
     &-doc {
       a {
-        color: var(--site-color-link);
+        color: var(--site-config-color-link);
         -webkit-font-smoothing: antialiased;
         word-break: keep-all;
         font-size: 15px;
@@ -295,7 +300,7 @@ iframe {
       table code {
         -webkit-font-smoothing: antialiased;
         word-break: keep-all;
-        color: var(--site-color-primary);
+        color: var(--site-config-color-primary);
         font-size: 15px;
         @doc-active();
       }
@@ -334,7 +339,7 @@ iframe {
         }
 
         em {
-          color: var(--site-color-type);
+          color: var(--site-config-color-type);
           font-style: normal;
           -webkit-font-smoothing: antialiased;
           font-size: 13px;

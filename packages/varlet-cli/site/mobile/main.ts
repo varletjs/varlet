@@ -7,13 +7,14 @@ import '@varlet/touch-emulator'
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-import { Icon, AppBar, Button, Menu, Cell, Ripple } from '@varlet/ui'
-import '@varlet/ui/es/icon/style'
-import '@varlet/ui/es/app-bar/style'
-import '@varlet/ui/es/button/style'
-import '@varlet/ui/es/menu/style'
-import '@varlet/ui/es/cell/style'
-import '@varlet/ui/es/ripple/style'
+import Icon from '../components/icon'
+import AppBar from '../components/app-bar'
+import Button from '../components/button'
+import Menu from '../components/menu'
+import Cell from '../components/cell'
+import Ripple from '../components/ripple'
+import '../components/styles/common.less'
+import '../components/styles/elevation.less'
 
 import { get } from 'lodash-es'
 import { inIframe, isPhone } from '../utils'
@@ -61,12 +62,18 @@ router.beforeEach((to, from) => {
   }
 })
 
+// @ts-ignore
 createApp(App)
   .use(router)
+  // @ts-ignore
   .use(Icon)
+  // @ts-ignore
   .use(AppBar)
+  // @ts-ignore
   .use(Cell)
   .use(Ripple)
+  // @ts-ignore
   .use(Button)
+  // @ts-ignore
   .use(Menu)
   .mount('#app')

@@ -1,6 +1,12 @@
 import { isNumber, isString, kebabCase, toNumber } from './shared'
 import type { StyleVars } from '../style-provider'
 
+export function getLeft(element: HTMLElement): number {
+  const { left } = element.getBoundingClientRect()
+
+  return left + (document.body.scrollLeft || document.documentElement.scrollLeft)
+}
+
 export function getTop(element: HTMLElement): number {
   const { top } = element.getBoundingClientRect()
 
@@ -18,11 +24,6 @@ export function getScrollLeft(element: Element | Window): number {
   const left = 'scrollLeft' in element ? element.scrollLeft : element.pageXOffset
 
   return Math.max(left, 0)
-}
-
-export function getLeft(element: HTMLElement): number {
-  const { left } = element.getBoundingClientRect()
-  return left + (document.body.scrollLeft || document.documentElement.scrollLeft)
 }
 
 export async function inViewport(element: HTMLElement): Promise<boolean> {

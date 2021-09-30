@@ -5,10 +5,11 @@ import routes from '@pc-routes'
 // @ts-ignore
 import config from '@config'
 
-import { Cell, Ripple, Icon } from '@varlet/ui'
-import '@varlet/ui/es/cell/style'
-import '@varlet/ui/es/ripple/style'
-import '@varlet/ui/es/icon/style'
+import Icon from '../components/icon'
+import Cell from '../components/cell'
+import Ripple from '../components/ripple'
+import '../components/styles/common.less'
+import '../components/styles/elevation.less'
 
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
@@ -68,7 +69,9 @@ Object.defineProperty(window, 'onMobileRouteChange', {
 
 createApp(App)
   .use(router)
+  // @ts-ignore
   .use(Cell)
   .use(Ripple)
+  // @ts-ignore
   .use(Icon)
   .mount('#app')

@@ -1,5 +1,5 @@
 <template>
-  <div class="varlet-site-mobile var-elevation--3">
+  <div class="varlet-site-mobile var-site-elevation--3">
     <div class="varlet-site-mobile-content">
       <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&replace=${replace}`"></iframe>
     </div>
@@ -25,10 +25,10 @@ export default {
 
 <style scoped lang="less">
 .varlet-site-mobile {
+  position: sticky;
   flex: 0 0 325px;
-  position: relative;
+  top: 80px;
   height: calc(100vh - 100px);
-  align-self: center;
   margin-right: 38px;
   overflow: hidden;
   border-radius: 8px;

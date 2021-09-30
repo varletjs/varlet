@@ -12,15 +12,15 @@
         @mouseleave="isOpenMenu = false"
         v-if="languages"
       >
-        <var-icon name="translate" size="26px" color="#666" />
-        <var-icon name="chevron-down" color="#666" />
+        <var-site-icon name="translate" size="26px" color="#666" />
+        <var-site-icon name="chevron-down" color="#666" />
         <transition name="fade">
           <div
             class="varlet-site-header__language-list var-elevation--5"
             v-show="isOpenMenu"
             :style="{ pointerEvents: isOpenMenu ? 'auto' : 'none' }"
           >
-            <var-cell
+            <var-site-cell
               v-for="(value, key) in nonEmptyLanguages"
               v-ripple
               :key="key"
@@ -28,7 +28,7 @@
               @click="handleLanguageChange(key)"
             >
               {{ value }}
-            </var-cell>
+            </var-site-cell>
           </div>
         </transition>
       </div>
@@ -38,7 +38,7 @@
         :href="github"
         v-if="github"
       >
-        <var-icon name="github" color="#666" :size="28" />
+        <var-site-icon name="github" color="#666" :size="28" />
       </a>
     </div>
   </div>
@@ -124,15 +124,19 @@ export default {
 }
 
 .varlet-site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   color: #555;
+  width: 100%;
   height: 60px;
   padding: 0 30px;
   justify-content: space-between;
   user-select: none;
-  position: relative;
-  z-index: 2;
+  z-index: 996;
+  background: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
 
@@ -200,13 +204,13 @@ export default {
     top: 40px;
     left: -20px;
 
-    .var-cell {
+    .var-site-cell {
       width: 100px;
     }
 
     &--active {
-      background: var(--site-color-pc-language-active-background);
-      color: var(--site-color-pc-language-active);
+      background: var(--site-config-color-pc-language-active-background);
+      color: var(--site-config-color-pc-language-active);
     }
   }
 }
