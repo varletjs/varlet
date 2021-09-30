@@ -72,6 +72,10 @@ subject to the theme of the `varlet` official document
 | `color-app-bar` |
 | `color-mobile-cell-hover` |
 | `color-mobile-cell-hover-background` |
+| `color-pc-language-active` |
+| `color-pc-language-active-background` |
+| `color-mobile-language-active` |
+| `color-mobile-language-active-background` |
 
 #### SiteHighlight
 
