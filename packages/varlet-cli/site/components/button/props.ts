@@ -1,5 +1,5 @@
 import { props as loadingProps } from '../loading/props'
-import { pickProps } from '../../utils'
+import { pickProps } from '../utils/components'
 import type { PropType } from 'vue'
 
 function typeValidator(type: string): boolean {

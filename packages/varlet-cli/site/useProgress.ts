@@ -1,9 +1,9 @@
+import Progress from './components/progress'
 import { reactive } from 'vue'
-import { Progress } from '@varlet/ui'
 // @ts-ignore
 import config from '@config'
 // @ts-ignore
-import { mountInstance } from '@varlet/ui/es/utils/components'
+import { mountInstance } from './utils'
 import { get } from 'lodash-es'
 
 export function useProgress() {

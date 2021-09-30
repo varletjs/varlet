@@ -17,7 +17,7 @@
       @click="changeRoute(item)"
     >
       <span class="varlet-site-sidebar__item--title" v-if="item.type === menuTypes.TITLE">{{ item.text[language] }}</span>
-      <span class="varlet-site-sidebar__item--link" v-else>{{ item.text[language] }}</span>
+      <span v-else>{{ item.text[language] }}</span>
     </var-site-cell>
   </div>
 </template>
@@ -25,7 +25,6 @@
 <script lang="ts">
 // @ts-ignore
 import config from '@config'
-import '@varlet/ui/es/styles/elevation.less'
 import { MenuTypes } from '../../utils'
 import { reactive, ref } from 'vue'
 import type { PropType } from 'vue'
@@ -97,16 +96,6 @@ export default {
       padding: 8px 0 8px;
     }
 
-    &--link {
-      font-size: 14px;
-      color: #455a64;
-      transition: color 0.2s;
-
-      &:hover {
-        color: var(--site-color-side-bar);
-      }
-    }
-
     &--active {
       position: relative;
       background: var(--site-config-color-side-bar-active-background);
@@ -129,6 +118,13 @@ export default {
 
   &__link {
     cursor: pointer;
+    font-size: 14px;
+    color: #455a64;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--site-config-color-side-bar);
+    }
   }
 
   &__title {

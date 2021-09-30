@@ -21,7 +21,8 @@
 
 <script lang="ts">
 import { defineComponent, watch, ref, nextTick } from 'vue'
-import { isURL, toNumber, toSizeUnit } from '../../utils'
+import { isURL, toNumber } from '../utils/shared'
+import { toSizeUnit } from '../utils/elements'
 import { props } from './props'
 import type { Ref } from 'vue'
 

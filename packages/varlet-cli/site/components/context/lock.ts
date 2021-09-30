@@ -4,7 +4,7 @@ import context from '.'
 
 export function resolveLock() {
   const lockCounts: number = Object.keys(context.locks).length
-  lockCounts <= 0 ? document.body.classList.remove('var--lock') : document.body.classList.add('var--lock')
+  lockCounts <= 0 ? document.body.classList.remove('var-site--lock') : document.body.classList.add('var-site--lock')
 }
 
 export function addLock(uid: number) {

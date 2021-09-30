@@ -25,7 +25,7 @@
 <script lang="ts">
 import { defineComponent, ref, watch, onMounted, onUnmounted } from 'vue'
 import { props } from './props'
-import { getLeft, getTop, toSizeUnit } from '../../utils'
+import { getLeft, getTop, toSizeUnit } from '../utils/elements'
 import { useZIndex } from '../context/zIndex'
 import type { Ref } from 'vue'
 
