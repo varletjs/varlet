@@ -1,5 +1,5 @@
 import { isNumber, isString, kebabCase, toNumber } from './shared'
-import type { StyleVars } from '../style-provider'
+import type { StyleVars } from '../../utils'
 
 export function getLeft(element: HTMLElement): number {
   const { left } = element.getBoundingClientRect()

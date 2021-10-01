@@ -166,6 +166,7 @@ export const dt = (value: unknown, defaultText: string) => (value == null ? defa
 
 export const inBrowser = typeof window !== 'undefined'
 
+// @ts-ignore
 export const uniq = (arr: Array<any>) => [...new Set(arr)]
 
 export function kebabCase(str: string): string {
