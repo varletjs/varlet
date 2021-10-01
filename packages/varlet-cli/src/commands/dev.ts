@@ -26,7 +26,7 @@ export async function dev(cmd: { force?: boolean }) {
   const ipv4 = address.ip()
 
   logger.success(`\
-  Server running at
-  Local: http://${host}:${port}
-  Network: http://${ipv4}:${port}`)
+Server running at
+[Local]: http://${host}:${port}
+[Network]: http://${ipv4}:${port}`)
 }
