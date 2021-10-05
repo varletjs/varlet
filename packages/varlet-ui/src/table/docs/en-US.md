@@ -2,7 +2,7 @@
 
 ### Intro
 
-A table displays rows of data.
+A minimal table, when you need to display some data in the form of a table, you may use it.
 
 ### Install
 
@@ -15,12 +15,17 @@ createApp().use(Table)
 
 ### Basic Usage
 
+```vue
+import BasicExample from '../example/Basic.vue'
+```
+
+
 ```html
 <var-table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Mathematics</th>
+      <th>Math</th>
       <th>English</th>
     </tr>
   </thead>
@@ -39,143 +44,82 @@ createApp().use(Table)
 </var-table>
 ```
 
-### Slots
+### Footer Slots
+
+You can insert something in the tail slot, the most common is to insert a `Pagination`.
+
+```vue
+import FooterSlots from '../example/FooterSlots.vue'
+```
 
 ```html
 <var-table>
   <thead>
     <tr>
-      <th style="padding: 16px 8px">
-        <var-checkbox :model-value="isAllCheck" @change="handleAllCheckChange" />
-      </th>
       <th>Name</th>
-      <th @click="sortBy(data, 'math')">
-        <span style="display: inline-flex">
-          Mathematics
-          <var-icon :name="getIconName('math')" />
-        </span>
-      </th>
-      <th @click="sortBy(data, 'english')">
-        <span style="display: inline-flex">
-          English
-          <var-icon :name="getIconName('english')" />
-        </span>
-      </th>
+      <th>Math</th>
+      <th>English</th>
     </tr>
   </thead>
   <tbody>
-    <tr v-for="item in data" :key="item.name">
-      <td style="padding: 16px 8px">
-        <var-checkbox v-model="item.isCheck" />
-      </td>
-      <td>{{ item.name }}</td>
-      <td>{{ item.math }}</td>
-      <td>{{ item.english }}</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>Total</td>
-      <td>{{ getTotal(data, 'math') }}</td>
-      <td>{{ getTotal(data, 'english') }}</td>
+    <tr v-for="l in list" :key="l.name">
+      <td>{{ l.name }}</td>
+      <td>{{ l.math }}</td>
+      <td>{{ l.english }}</td>
     </tr>
   </tbody>
-  
+
   <template #footer>
-    <div class="footer-container">
-      <var-button type="primary">footer slot</var-button>
+    <div class="footer">
+      <!-- Paging in the mobile preview mode uses the simple true mode, which is more friendly to small screen devices -->
+      <var-pagination
+        :simple="false"
+        :current="1"
+        :total="100"
+        :size-option="[5, 10]"
+        @change="get"
+      />
     </div>
   </template>
 </var-table>
 ```
 
 ```js
-import { ref } from 'vue'
+const gen = (current, size) => {
+  return Array.from({ length: size }).map((_, index) => {
+    const id = (current - 1) * size + index + 1
+
+    return {
+      name: `Name ${id}`,
+      math: id,
+      english: id,
+    }
+  })
+}
 
 export default {
   setup() {
-    const data = reactive([
-      {
-        name: 'Jerry',
-        math: 100,
-        english: 135,
-        isCheck: false
-      },
-      {
-        name: 'Tom',
-        math: 124,
-        english: 38,
-        isCheck: false
-      }
-    ])
-    const currentSort = ref(['', ''])
+    const list = ref(gen(1, 10))
 
-    const isAllCheck = computed(() => {
-      const checkedCount = data.reduce((count, item) => (item.isCheck ? count + 1 : count), 0)
-      return data.length === checkedCount
-    })
-
-    const getTotal = (list, key) => list.reduce((total, item) => item[key] + total, 0)
-
-    const sortBy = (list, key) => {
-      const sortMethods = {
-        asc: (a, b) => a[key] - b[key],
-        desc: (a, b) => b[key] - a[key]
-      }
-      const [currentSortKey, currentSortValue] = currentSort.value
-      let sortMethod
-
-      if (currentSortKey !== key) {
-        sortMethod = 'asc'
-      }
-
-      if (currentSortKey === key) {
-        sortMethod = currentSortValue === 'asc' ? 'desc' : 'asc'
-      }
-
-      list.sort(sortMethods[sortMethod])
-
-      currentSort.value = [key, sortMethod]
-    }
-
-    const getIconName = (key) => {
-      const [currentSortKey, currentSortValue] = currentSort.value
-
-      if (currentSortKey !== key) {
-        return 'dots-vertical'
-      }
-
-      return currentSortValue === 'asc' ? 'chevron-up' : 'chevron-down'
-    }
-    
-    const handleAllCheckChange = (value) => {
-      const check = (item) => {
-        item.isCheck = true
-      }
-      const unCheck = (item) => {
-        item.isCheck = false
-      }
-      data.forEach(value ? check : unCheck)
+    const get = (current, size) => {
+      list.value = gen(current, size)
     }
     
     return {
-      data,
-      isAllCheck,
-      sortBy,
-      getTotal,
-      getIconName,
-      handleAllCheckChange
+      list,
+      get
     }
   }
 }
 ```
 
-```css
-.footer-container {
+```less
+.footer {
   display: flex;
-  height: 54px;
-  padding: 0 24px;
-  align-items: center;
   justify-content: flex-end;
+  align-items: center;
+  height: 60px;
+  padding: 0 16px;
 }
 ```
 ## API
@@ -184,7 +128,7 @@ export default {
 
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `fullWidth` | Width of `table`	| _string \| number_ | `100%` |
+| `fullWidth` | The width of the `table` (including the scrollable part)	| _string \| number_ | `100%` |
 
 ### Slots
 
@@ -198,13 +142,14 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--table-background` | `@table-background` | 
-| `--table-border-radius` | `@table-border-radius` | 
-| `--table-thead-border-bottom` | `@table-thead-border-bottom` | 
-| `--table-thead-th-text-color` | `@table-thead-th-text-color` | 
-| `--table-thead-th-font-size` | `@table-thead-th-font-size` | 
-| `--table-thead-tr-border-bottom` | `@table-thead-tr-border-bottom` | 
-| `--table-tbody-tr-hover-background` | `@table-tbody-tr-hover-background` | 
-| `--table-tbody-tr-border-bottom` | `@table-tbody-tr-border-bottom` | 
-| `--table-footer-min-height` | `@table-footer-min-height` | 
-| `--table-footer-border-top` | `@table-footer-border-top` | 
+| `--table-background` | `#fff` | 
+| `--table-border-radius` | `2px` | 
+| `--table-thead-border-bottom` | `thin solid rgba(0, 0, 0, 0.12)` | 
+| `--table-thead-th-text-color` | `rgba(0, 0, 0, 0.6)` | 
+| `--table-thead-th-font-size` | `14px` | 
+| `--table-thead-tr-border-bottom` | `thin solid rgba(0, 0, 0, 0.12)` | 
+| `--table-tbody-tr-hover-background` | `#eee` | 
+| `--table-tbody-tr-border-bottom` | `thin solid rgba(0, 0, 0, 0.12)` | 
+| `--table-row-height` | `46px` | 
+| `--table-row-padding` | `0 16px` | 
+| `--table-footer-border-top` | `thin solid rgba(0, 0, 0, 0.12)` | 
