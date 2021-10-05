@@ -22,8 +22,8 @@ export async function dev(cmd: { force?: boolean }) {
   await server.listen()
 
   const host = get(varletConfig, 'host')
-  const port = get(varletConfig, 'port')
   const ipv4 = address.ip()
+  const { port } = server.config.server
 
   logger.success(`\
 Server running at
