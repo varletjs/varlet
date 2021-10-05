@@ -27,6 +27,6 @@ export async function dev(cmd: { force?: boolean }) {
 
   logger.success(`\
 Server running at
-[Local]: http://${host}:${port}
-[Network]: http://${ipv4}:${port}`)
+Local: http://${host}:${port}
+Network: http://${ipv4}:${port}`)
 }
