@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.1](https://github.com/haoziqaq/varlet/compare/v1.22.0...v1.22.1) (2021-10-08)
+
+
+### Bug Fixes
+
+* **pagination:** fix hover style ([1762dd8](https://github.com/haoziqaq/varlet/commit/1762dd8224806975c916485e40f4dc15b0fbb87a))
+* **ui/action-sheet:** fix disabled color ([ec70187](https://github.com/haoziqaq/varlet/commit/ec7018723815ead6f5deae85c79a5b0533a4927d))
+* **ui/styles:** fix disabled color vars ([f529c30](https://github.com/haoziqaq/varlet/commit/f529c309d41f4ca28ff8d3c0d00e48889837222d))
+
+
+
+
+
 # [1.22.0](https://github.com/haoziqaq/varlet/compare/v1.21.0...v1.22.0) (2021-10-08)
 
 

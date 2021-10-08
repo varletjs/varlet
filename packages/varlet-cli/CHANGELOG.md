@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.1](https://github.com/haoziqaq/varlet/compare/v1.22.0...v1.22.1) (2021-10-08)
+
+
+### Bug Fixes
+
+* **cli/jest:** replace testMatch to testRegex ([5ed0a5c](https://github.com/haoziqaq/varlet/commit/5ed0a5c59cdfd296d3732a10387a454464c17c05))
+* **site:** remove hover style ([5ae0179](https://github.com/haoziqaq/varlet/commit/5ae0179f6344a822ecb69d6665b7d7512ee865d7))
+
+
+
+
+
 # [1.22.0](https://github.com/haoziqaq/varlet/compare/v1.21.0...v1.22.0) (2021-10-08)
 
 
