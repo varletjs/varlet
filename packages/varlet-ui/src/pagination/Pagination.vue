@@ -5,6 +5,7 @@
       class="var-pagination__item var-pagination__prev"
       :class="{
         'var-pagination__item-disabled': current <= 1 || disabled,
+        'var-pagination__item-hover': simple,
         'var-elevation--2': !simple,
       }"
       @click="clickItem('prev')"
@@ -44,6 +45,7 @@
       class="var-pagination__item var-pagination__next"
       :class="{
         'var-pagination__item-disabled': current >= pageCount || disabled,
+        'var-pagination__item-hover': simple,
         'var-elevation--2': !simple,
       }"
       @click="clickItem('next')"

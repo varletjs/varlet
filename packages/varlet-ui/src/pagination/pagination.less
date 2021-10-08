@@ -80,6 +80,12 @@
         background-color: unset;
       }
     }
+
+    &-hover {
+      &:hover {
+        background: inherit;
+      }
+    }
   }
 
   &__prev {
@@ -95,7 +101,10 @@
     .pagination-flex-nowrap();
 
     margin: var(--pagination-item-margin);
-    cursor: pointer;
+
+    &-open {
+      cursor: pointer;
+    }
   }
 
   &__list {
