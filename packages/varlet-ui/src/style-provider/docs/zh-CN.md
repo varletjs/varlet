@@ -23,6 +23,7 @@
   --color-warning: #ff9f00;
   --color-danger: #f44336;
   --color-disabled: #e0e0e0;
+  --color-text-disabled: #aaa;
   --cubic-bezier: cubic-bezier(0.25, 0.8, 0.5, 1);
 }
 ```

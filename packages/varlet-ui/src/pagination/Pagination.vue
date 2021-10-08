@@ -32,9 +32,10 @@
       :item-mode="getMode(item, index)"
       class="var-pagination__item var-elevation--2"
       :class="{
-        'var-pagination__item-active': item === current,
+        'var-pagination__item-active': item === current && !disabled,
         'var-pagination__item-hide': isHideEllipsis(item, index),
         'var-pagination__item-disabled': disabled,
+        'var-pagination__item-disabled-active': item === current && disabled,
       }"
       @click="clickItem(item, index)"
     >

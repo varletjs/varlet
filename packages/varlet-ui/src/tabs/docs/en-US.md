@@ -347,5 +347,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--tab-padding` | `12px` |
 | `--tab-active-color` | `var(--color-primary)` |
 | `--tab-inactive-color` | `#646566` |
-| `--tab-disabled-color` | `var(--color-disabled)` |
+| `--tab-disabled-color` | `var(--color-text-disabled)` |
 | `--tab-font-size` | `var(--font-size-md)` |

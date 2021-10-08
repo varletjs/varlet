@@ -12,7 +12,8 @@
 @pagination-list-active-color: var(--color-primary);
 @pagination-input-width: 32px;
 @pagination-simple-padding: 0 0 2px 0;
-@pagination-disabled-color: var(--color-disabled);
+@pagination-disabled-color: var(--color-text-disabled);
+@pagination-bg-disabled-color: var(--color-disabled);
 
 :root {
   --pagination-font-size: @pagination-font-size;
@@ -30,6 +31,7 @@
   --pagination-input-width: @pagination-input-width;
   --pagination-simple-padding: @pagination-simple-padding;
   --pagination-disabled-color: @pagination-disabled-color;
+  --pagination-bg-disabled-color: @pagination-bg-disabled-color;
 }
 
 // Mixins
@@ -66,6 +68,10 @@
     &-active {
       color: var(--pagination-active-color);
       background-color: var(--pagination-active-bg-color) !important;
+    }
+
+    &-disabled-active {
+      background: var(--pagination-bg-disabled-color);
     }
 
     &-hide {

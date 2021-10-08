@@ -173,4 +173,4 @@ createApp().use(Icon)
 | `--input-input-text-color` | `#555` |
 | `--input-line-size` | `1px` |
 | `--input-line-spread-size` | `2px` |
-| `--input-disabled-color` | `var(--color-disabled)` |
+| `--input-disabled-color` | `var(--color-text-disabled)` |

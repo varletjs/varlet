@@ -171,5 +171,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--counter-input-font-size` | `14px` |
 | `--counter-button-size` | `28px` |
 | `--counter-button-icon-size` | `100%` |
-| `--counter-disabled-color` | `#aaa` |
+| `--counter-disabled-color` | `var(--color-text-disabled)` |
 | `--input-error-color` | `var(--color-danger`) |

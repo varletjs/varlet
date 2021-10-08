@@ -176,4 +176,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--pagination-list-active-color` | `var(--color-primary)` |  
 | `--pagination-input-width` | `36px` |  
 | `--pagination-input-margin` | `0 6px` |  
-| `--pagination-disabled-color` | `var(--color-disabled)` |
+| `--pagination-disabled-color` | `var(--color-text-disabled)` |
+| `--pagination-bg-disabled-color` | `var(--color-disabled)` |

@@ -196,6 +196,6 @@ Here are the CSS variables used by the component, Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--rate-primary-color` | `var(--color-primary)` |
-| `--rate-disabled-color` | `#aaa` |
+| `--rate-disabled-color` | `var(--color-text-disabled)` |
 | `--rate-error-color` | `var(--color-danger)` |
 | `--rate-action-padding` | `4px` |

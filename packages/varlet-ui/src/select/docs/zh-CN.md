@@ -284,7 +284,7 @@ export default {
 | `--select-line-size` | `1px` |
 | `--select-line-spread-size` | `2px` |
 | `--select-arrow-size` | `20px` |
-| `--select-disabled-color` | `#aaa` |
+| `--select-disabled-color` | `var(--color-text-disabled)` |
 
 ### Option Variables
 
