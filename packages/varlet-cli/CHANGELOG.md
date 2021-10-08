@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.2](https://github.com/haoziqaq/varlet/compare/v1.22.1...v1.22.2) (2021-10-08)
+
+
+### Bug Fixes
+
+* **cli:** fix mobile cell hover color ([ea999ed](https://github.com/haoziqaq/varlet/commit/ea999edcab71acca6894e1e7f2017fe8d96d787c))
+
+
+
+
+
 ## [1.22.1](https://github.com/haoziqaq/varlet/compare/v1.22.0...v1.22.1) (2021-10-08)
 
 
