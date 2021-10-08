@@ -117,5 +117,9 @@ export default {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: all 0.3s;
   color: #555;
+
+  &:hover {
+    color: var(--site-config-color-mobile-cell-hover);
+  }
 }
 </style>

@@ -17,8 +17,7 @@ module.exports = {
     'color-pc-language-active-background': '#00968821',
     'color-mobile-language-active': '#009688',
     'color-mobile-language-active-background': '#00968821',
-    'color-mobile-cell-hover': '#009688',
-    'color-mobile-cell-hover-background': '#00968821',
+    'color-mobile-cell-hover': '#009688'
   },
   highlight: {
     style: './highlight.css',

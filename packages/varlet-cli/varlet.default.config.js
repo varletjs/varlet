@@ -54,7 +54,6 @@ module.exports = {
     'color-side-bar-active-background': '#3a7afe1a',
     'color-app-bar': '#3a7afe',
     'color-mobile-cell-hover': '#3a7afe',
-    'color-mobile-cell-hover-background': '#3a7afe1a',
     'color-pc-language-active': '#3a7afe',
     'color-pc-language-active-background': '#edf5ff',
     'color-mobile-language-active': '#3a7afe',
