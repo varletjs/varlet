@@ -6,6 +6,7 @@
 @table-thead-tr-border-bottom: thin solid rgba(0, 0, 0, 0.12);
 @table-tbody-tr-hover-background: #eee;
 @table-tbody-tr-border-bottom: thin solid rgba(0, 0, 0, 0.12);
+@table-tbody-td-font-size: 16px;
 @table-row-height: 46px;
 @table-row-padding: 0 16px;
 @table-footer-border-top: thin solid rgba(0, 0, 0, 0.12);
@@ -19,6 +20,7 @@
   --table-thead-tr-border-bottom: @table-thead-tr-border-bottom;
   --table-tbody-tr-hover-background: @table-tbody-tr-hover-background;
   --table-tbody-tr-border-bottom: @table-tbody-tr-border-bottom;
+  --table-tbody-td-font-size: @table-tbody-td-font-size;
   --table-row-height: @table-row-height;
   --table-row-padding: @table-row-padding;
   --table-footer-border-top: @table-footer-border-top;
@@ -75,6 +77,10 @@
           &:not(:last-child) {
             border-bottom: var(--table-tbody-tr-border-bottom);
           }
+        }
+
+        td {
+          font-size: var(--table-tbody-td-font-size);
         }
       }
 
