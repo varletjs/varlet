@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.22.0](https://github.com/haoziqaq/varlet/compare/v1.21.0...v1.22.0) (2021-10-08)
+
+
+### Bug Fixes
+
+* **cli:** fix dev server logger ([4e9f81d](https://github.com/haoziqaq/varlet/commit/4e9f81dabf854961e3bd99c445a0a8566b26db66))
+* **cli:** fix dev server port log error ([2e82806](https://github.com/haoziqaq/varlet/commit/2e82806817f23e4da2f4d80e4200c3da5a4dc439))
+* **cli:** remove unuseful code and opt dev logger ([18da4b5](https://github.com/haoziqaq/varlet/commit/18da4b590bf4194581d10edff8f4b1a052ff2b69))
+* **cli/gen:** add default themes ([2d68e91](https://github.com/haoziqaq/varlet/commit/2d68e91c2fc83d1db4063ae576144815e24f17e5))
+* **cli/site:** increase app-bar vars weight ([b3e8d15](https://github.com/haoziqaq/varlet/commit/b3e8d150b843c603b090d8e2da3ec05e02f2a32e))
+* **ui/ripple, ui/menu:** opt ripple animation, fix menu left error on transition animation running ([0f714de](https://github.com/haoziqaq/varlet/commit/0f714de1c40af46116fd07d7717525c2c63d0470))
+
+
+### Features
+
+* **cli:** add preview command that can preview document site for production ([3fea1f1](https://github.com/haoziqaq/varlet/commit/3fea1f1fed8a2f0fdb0d2fd5e7880531335a6711))
+* **cli:** migrate the build tool to vite ([c0eb94c](https://github.com/haoziqaq/varlet/commit/c0eb94c3c82683abb49b8561e181e75aa843aac4))
+
+
+
+
+
 # [1.21.0](https://github.com/haoziqaq/varlet/compare/v1.20.0...v1.21.0) (2021-09-22)
 
 **Note:** Version bump only for package @varlet/cli

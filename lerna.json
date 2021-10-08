@@ -18,6 +18,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "ignoreChanges": ["**/*.md"],
-  "version": "1.21.0"
+  "ignoreChanges": [
+    "**/*.md"
+  ],
+  "version": "1.22.0"
 }

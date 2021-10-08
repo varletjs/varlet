@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.22.0](https://github.com/haoziqaq/varlet/compare/v1.21.0...v1.22.0) (2021-10-08)
+
+
+### Bug Fixes
+
+* **back-top:** cover the style of button ([b5046ae](https://github.com/haoziqaq/varlet/commit/b5046ae8e2b1c90e1583718d989e9c62528eadbb))
+* **cli/gen:** add default themes ([2d68e91](https://github.com/haoziqaq/varlet/commit/2d68e91c2fc83d1db4063ae576144815e24f17e5))
+* **input:** text-color of disabled in safari ([dd33256](https://github.com/haoziqaq/varlet/commit/dd33256c87f3d708583694e12f17ea19961812a3))
+* **pagination:** add keydown event to switch page ([414decb](https://github.com/haoziqaq/varlet/commit/414decb43bd8009776111a0bf84ad8b967ccb38e))
+* **pagination:** fix current and size not update ([463d891](https://github.com/haoziqaq/varlet/commit/463d8916960c8c9d1a32555f0a405c4b073d0502))
+* **pagination:** remove padding ([83d214a](https://github.com/haoziqaq/varlet/commit/83d214ad80423b67829b9cedf2f338f5ffe4ab25))
+* **ui/button:** remove line-height ([c0d2422](https://github.com/haoziqaq/varlet/commit/c0d2422e1a8735f7acf0459c2c4a2d8ba20bd4e2))
+* **ui/ripple:** add style variables ([551a666](https://github.com/haoziqaq/varlet/commit/551a66696c2e87fdbc2fe9b04f89350affc64d8a))
+* **ui/ripple, ui/menu:** opt ripple animation, fix menu left error on transition animation running ([0f714de](https://github.com/haoziqaq/varlet/commit/0f714de1c40af46116fd07d7717525c2c63d0470))
+* **ui/skeleton:** add avatar-border-radius css vars ([ddf259f](https://github.com/haoziqaq/varlet/commit/ddf259fab66bb0630e78c48fccd63429b87d2f0f))
+* **ui/table:** add table-tbody-td-font-size variable ([861217e](https://github.com/haoziqaq/varlet/commit/861217e49fc1594d66182a076c648bef4d462942))
+* fix component path name ([bbd8b1f](https://github.com/haoziqaq/varlet/commit/bbd8b1fbd62bdc4a084eb53f63f3d896f7ca4c1a))
+* remove console ([3ee3548](https://github.com/haoziqaq/varlet/commit/3ee35486f9ad760e7463a7fe981edcf29eb336be))
+
+
+### Features
+
+* **cli:** add preview command that can preview document site for production ([3fea1f1](https://github.com/haoziqaq/varlet/commit/3fea1f1fed8a2f0fdb0d2fd5e7880531335a6711))
+* **pagination:** add declaration file ([30fd32b](https://github.com/haoziqaq/varlet/commit/30fd32b9f5af842c7fd187e5aed9535d0eb5d195))
+* **table:** add declaration file ([30072d3](https://github.com/haoziqaq/varlet/commit/30072d3ccd2f6cddcf7ddbc734d85266489d9d32))
+* pagination ([62b27a8](https://github.com/haoziqaq/varlet/commit/62b27a8fde6c647cd072093ca0398348498a56e2))
+* **cli:** migrate the build tool to vite ([c0eb94c](https://github.com/haoziqaq/varlet/commit/c0eb94c3c82683abb49b8561e181e75aa843aac4))
+* **ui/pagination:** ui/pagination ([3f8e24c](https://github.com/haoziqaq/varlet/commit/3f8e24c075c31853b2a6de94bcd02b4bb4195d2c))
+* **ui/table:** ui/table ([abd3f7d](https://github.com/haoziqaq/varlet/commit/abd3f7da5001902870ad7a322cfa5122c41ed395))
+
+
+
+
+
 # [1.21.0](https://github.com/haoziqaq/varlet/compare/v1.20.0...v1.21.0) (2021-09-22)
 
 
