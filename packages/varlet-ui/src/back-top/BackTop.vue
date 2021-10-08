@@ -1,7 +1,7 @@
 <template>
   <div class="var-back-top" :class="[show ? 'var-back-top--active' : null]" @click.stop="click">
     <slot>
-      <var-button type="primary" round class="var-back-top__button">
+      <var-button type="primary" round var-back-top-cover>
         <var-icon name="chevron-up" />
       </var-button>
     </slot>
