@@ -5,7 +5,7 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockScrollTo } from '../../utils/jest'
 
-test('test backTop plugin', () => {
+test('test backTop plugin', () => { 
   const app = createApp({}).use(BackTop)
   expect(app.component(BackTop.name)).toBeTruthy()
 })
