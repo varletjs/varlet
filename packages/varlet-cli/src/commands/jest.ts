@@ -10,7 +10,7 @@ export async function jest(cmd: { watch?: boolean; component?: string; clearCach
     watch: cmd.watch,
     clearCache: cmd.clearCache,
     config: JEST_CONFIG,
-    testMatch: cmd.component && [`/**/${cmd.component}/__tests__/*.[jt]s`],
+    testRegex: cmd.component && `${cmd.component}/__tests__/.*.spec.[jt]s?$`,
   }
 
   try {
