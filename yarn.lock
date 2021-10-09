@@ -13706,10 +13706,10 @@ vite-plugin-html@^2.1.0:
     fs-extra "^10.0.0"
     html-minifier-terser "^5.1.1"
 
-vite@2.6.2:
-  version "2.6.2"
-  resolved "https://registry.npmjs.org/vite/-/vite-2.6.2.tgz#5bbb4afe1f69ed9d6482e51a0f761f8cfc230e22"
-  integrity sha512-HSIg9U15LOnbD3CUxX364Pdrm7DUjftuBljowGxvkFHgDZU/SKPqApg9t86MX/Qq1VCO7wS+mGJHlfuTF7c0Sg==
+vite@2.6.5:
+  version "2.6.5"
+  resolved "https://registry.npmjs.org/vite/-/vite-2.6.5.tgz#c4d25972e2f7371e682da86828722ddf5126f3d1"
+  integrity sha512-vavXMChDUb4Oh4YunrK9BrH5Ox74cu0eOp0VuyI/iqFz1FqbWD72So2c9I87lLL2n0+6tFPV5ijow60KrtxuZg==
   dependencies:
     esbuild "^0.13.2"
     postcss "^8.3.8"
