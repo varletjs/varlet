@@ -10,6 +10,7 @@
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
     <img src="https://img.shields.io/github/stars/haoziqaq/varlet" alt="ci">
+    <img src="https://img.shields.io/badge/vue-v3.2.0%2B-%23407fbc" alt="vue">
     <img src="https://img.shields.io/npm/l/@varlet/ui.svg" alt="licence">
     <img src="https://img.shields.io/codecov/c/github/haoziqaq/varlet" alt="coverage">
     <img src="https://img.badgesize.io/https://unpkg.com/@varlet/ui/umd/varlet.js?compression=gzip&label=gzip" alt="gzip" />
