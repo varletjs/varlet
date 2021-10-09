@@ -14,11 +14,11 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, RendererNode, Transition } from 'vue'
+import { computed, defineComponent, ref, Transition } from 'vue'
 import Sticky from '../sticky'
 import { useIndexBar } from './provide'
 import { props } from './props'
-import type { Ref, ComputedRef } from 'vue'
+import type { Ref, ComputedRef, RendererNode } from 'vue'
 import type { IndexAnchorProvider } from './provide'
 
 export default defineComponent({
