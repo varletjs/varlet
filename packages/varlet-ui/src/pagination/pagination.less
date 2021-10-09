@@ -43,6 +43,7 @@
 
 .var-pagination {
   display: flex;
+  align-items: center;
   list-style: none;
   margin: 0;
   font-size: var(--pagination-font-size);
@@ -109,6 +110,8 @@
     margin: var(--pagination-item-margin);
 
     &-open {
+      display: flex;
+      align-items: center;
       cursor: pointer;
     }
   }
@@ -153,7 +156,7 @@
     }
   }
 
-  &__size-open-icon {
+  &__size-open-icon[var-pagination-cover] {
     font-size: inherit;
   }
 
