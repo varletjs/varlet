@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.3](https://github.com/haoziqaq/varlet/compare/v1.22.2...v1.22.3) (2021-10-10)
+
+
+### Bug Fixes
+
+* **ui/pagination:** fix icon size style is not effective ([520b93d](https://github.com/haoziqaq/varlet/commit/520b93d806e9282d2d60605ef8b7b332a86ddebd))
+
+
+
+
+
 ## [1.22.2](https://github.com/haoziqaq/varlet/compare/v1.22.1...v1.22.2) (2021-10-08)
 
 **Note:** Version bump only for package @varlet/ui

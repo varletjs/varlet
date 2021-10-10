@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.3](https://github.com/haoziqaq/varlet/compare/v1.22.2...v1.22.3) (2021-10-10)
+
+
+### Bug Fixes
+
+* **cli:** use vite internal printUrls instead of logger ([1b164d7](https://github.com/haoziqaq/varlet/commit/1b164d7f464d7c48b78cc17271a41170f61f53c6))
+
+
+
+
+
 ## [1.22.2](https://github.com/haoziqaq/varlet/compare/v1.22.1...v1.22.2) (2021-10-08)
 
 
