@@ -39,7 +39,7 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((to, from) => {
+router.beforeEach((to) => {
   const language = to.query.language ?? defaultLanguage
   const path = to.path
   const replace = to.query.replace

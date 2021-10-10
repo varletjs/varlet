@@ -55,8 +55,6 @@ import { useRoute } from 'vue-router'
 import { bigCamelize, removeEmpty, setThemes, watchLang } from '../utils'
 import { get } from 'lodash-es'
 
-type Language = Record<string, string>
-
 export default defineComponent({
   setup() {
     const bigCamelizeComponentName: Ref<string> = ref('')

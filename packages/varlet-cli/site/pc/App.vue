@@ -39,8 +39,6 @@ import { useRoute } from 'vue-router'
 import { get } from 'lodash-es'
 import { getPCLocationInfo, isPhone, MenuTypes, setThemes } from '../utils'
 
-type Language = Record<string, string>
-
 export interface Menu {
   doc: string
   text: Record<string, string>
