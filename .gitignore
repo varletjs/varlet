@@ -6,6 +6,7 @@ node_modules
 *.log
 .DS_Store
 *.vsix
+package-lock.json
 
 packages/varlet-cli/lib/commands
 packages/varlet-cli/lib/compiler
