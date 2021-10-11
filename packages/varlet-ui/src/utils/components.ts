@@ -17,6 +17,7 @@ import {
 } from 'vue'
 import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref } from 'vue'
 import { isArray, removeItem } from './shared'
+import { pick } from 'lodash'
 
 export interface MountInstance {
   instance: any
@@ -34,8 +35,8 @@ export interface BaseParentProvider<C> {
   clear(childProvider: C): void
 }
 
-export function pickProps(props: any, propsKey: string): any
-export function pickProps(props: any, propsKey: string[]): any
+export function pickProps<T, U extends keyof T>(props: T, propsKey: U): T[U]
+export function pickProps<T, U extends keyof T>(props: T, propsKey: U[]): Pick<T, U>
 export function pickProps(props: any, propsKey: any): any {
   return Array.isArray(propsKey)
     ? propsKey.reduce((pickedProps: any, key) => {
