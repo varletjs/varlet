@@ -51,7 +51,7 @@ test('test button disabled', () => {
       onTouchstart,
     },
   })
-
+  expect(wrapper.props('disabled')).toBeTruthy()
   wrapper.trigger('click')
   wrapper.trigger('touchstart')
   expect(onClick).toHaveBeenCalledTimes(0)
@@ -68,9 +68,9 @@ test('test button loading', () => {
       loading: true,
     },
   })
-
   wrapper.trigger('click')
   wrapper.trigger('touchstart')
+  expect(wrapper.props('loading')).toBeTruthy()
   expect(onClick).toHaveBeenCalledTimes(0)
   expect(onTouchstart).toHaveBeenCalledTimes(0)
   wrapper.unmount()
@@ -83,8 +83,8 @@ test('test button color & textColor', () => {
       textColor: '#000',
     },
   })
-
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.props('color')).toBe('#000')
+  expect(wrapper.props('textColor')).toBe('#000')
   wrapper.unmount()
 })
 
@@ -99,8 +99,12 @@ test('test button styles', () => {
     slots: {
       default: () => 'button text',
     },
+    
   })
-
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.classes()).toContain('var-button--round')
+  expect(wrapper.classes()).toContain('var-button--text')
+  expect(wrapper.classes()).toContain('var-button--block')
+  expect(wrapper.classes()).toContain('var-button--large')
+  expect(wrapper.text()).toBe('button text')
   wrapper.unmount()
 })
