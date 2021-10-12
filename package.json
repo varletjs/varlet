@@ -34,6 +34,7 @@
       "packages/varlet-cli/lib/**",
       "packages/varlet-cli/site/**",
       "packages/varlet-cli/generators/**",
+      "packages/varlet-vscode-extension/dist/**",
       "packages/varlet-ui/es/**",
       "packages/varlet-ui/umd/**",
       "packages/varlet-ui/site/**",
