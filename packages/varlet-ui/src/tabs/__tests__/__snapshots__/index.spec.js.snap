@@ -138,7 +138,7 @@ exports[`test tabs example 1`] = `
 </div>
 <div class=\\"app-type\\">开启粘性布局</div>
 <div class=\\"var-sticky\\" style=\\"z-index: 10; width: 0px; height: 0px;\\">
-  <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10; position: fixed; width: 0px; height: 0px; left: 0px; top: 50px;\\">
+  <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10; position: fixed; width: 0px; height: 0px; left: 0px; top: 54px;\\">
     <div class=\\"var-tabs var--box var-tabs--item-horizontal var-tabs--layout-horizontal-padding var-elevation--4\\" style=\\"background: rgb(41, 121, 255);\\">
       <div class=\\"var-tabs__tab-wrap var-tabs--layout-horizontal\\">
         <div class=\\"var-tab var--box var-tab--active var-tab--horizontal\\" style=\\"color: rgb(255, 255, 255);\\">选项1</div>
