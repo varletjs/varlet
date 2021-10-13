@@ -15,7 +15,7 @@ createApp().use(Sticky)
 ### 基本使用
 
 ```html
-<var-sticky :offset-top="50">
+<var-sticky :offset-top="54">
   <var-button type="primary">基本使用</var-button>
 </var-sticky>
 ```

@@ -1,7 +1,7 @@
 <template>
   <div class="example">
     <app-type>{{ pack.basicUsage }}</app-type>
-    <var-sticky :offset-top="50">
+    <var-sticky :offset-top="54">
       <var-button type="primary">{{ pack.basicUsage }}</var-button>
     </var-sticky>
 

@@ -18,7 +18,11 @@ createApp().use(IndexBar).use(IndexAnchor)
 点击索引栏时，会自动跳转到对应的 `IndexAnchor` 锚点位置。
 
 ```html
-<var-index-bar @change="change" duration="300">
+<var-index-bar 
+  duration="300" 
+  :sticky-offset-top="54"
+  @change="change" 
+>
   <div v-for="item in list" :key="item">
     <var-index-anchor 
       :index="item" 

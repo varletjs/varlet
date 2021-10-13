@@ -14,11 +14,18 @@
         <template #right>
           <var-site-menu
             style="background: transparent"
+            :offset-x="1"
             :offset-y="38"
             v-model:show="showMenu"
             v-if="languages"
           >
-            <var-site-button text color="transparent" text-color="#fff" @click="showMenu = true">
+            <var-site-button
+              style="padding-right: 6px"
+              text
+              color="transparent"
+              text-color="#fff"
+              @click="showMenu = true"
+            >
               <var-site-icon name="translate" :size="24" />
               <var-site-icon name="chevron-down" :size="24" />
             </var-site-button>
@@ -136,7 +143,7 @@ header {
 }
 
 .router-view__block {
-  padding: 50px 12px 15px;
+  padding: 54px 12px 15px;
 }
 
 * {

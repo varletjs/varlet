@@ -18,7 +18,11 @@ createApp().use(IndexBar).use(IndexAnchor)
 When you click the index bar, it will automatically jump to the corresponding `IndexAnchor` anchor position.
 
 ```html
-<var-index-bar @change="change" duration="300">
+<var-index-bar
+  duration="300"
+  :sticky-offset-top="54"
+  @change="change"
+>
   <div v-for="item in list" :key="item">
     <var-index-anchor 
       :index="item" 

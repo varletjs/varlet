@@ -226,7 +226,7 @@ export default {
   color="#2979ff"
   active-color="#fff"
   inactive-color="hsla(0, 0%, 100%, .6)"
-  :offset-top="50"
+  :offset-top="54"
   v-model:active="active"
 >
   <var-tab>选项1</var-tab>

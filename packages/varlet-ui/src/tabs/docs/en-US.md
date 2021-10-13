@@ -224,7 +224,7 @@ Click the Tab to scroll automatically to the center of the viewport.
   color="#2979ff"
   active-color="#fff"
   inactive-color="hsla(0, 0%, 100%, .6)"
-  :offset-top="50"
+  :offset-top="54"
   v-model:active="active"
 >
   <var-tab>Option1</var-tab>

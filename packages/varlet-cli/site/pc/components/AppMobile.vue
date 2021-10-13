@@ -1,5 +1,5 @@
 <template>
-  <div class="varlet-site-mobile var-site-elevation--3">
+  <div class="varlet-site-mobile">
     <div class="varlet-site-mobile-content">
       <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&replace=${replace}`"></iframe>
     </div>
@@ -31,7 +31,8 @@ export default {
   height: calc(100vh - 100px);
   margin-right: 38px;
   overflow: hidden;
-  border-radius: 8px;
+  box-shadow: 0 0 14px 6px #eee;
+  border-radius: 2px;
 
   &-content {
     width: 100%;

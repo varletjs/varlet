@@ -121,7 +121,7 @@
     color="#2979ff"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
-    :offset-top="50"
+    :offset-top="54"
     v-model:active="active7"
   >
     <var-tab>{{ pack.option }}1</var-tab>

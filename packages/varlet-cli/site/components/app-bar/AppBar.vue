@@ -7,22 +7,29 @@
       color: textColor,
     }"
   >
-    <div class="var-site-app-bar__left" v-if="$slots.left">
+    <div class="var-site-app-bar__left">
       <slot name="left" />
+      <div
+        class="var-site-app-bar__title"
+        :style="{ paddingLeft: $slots.left ? 0 : undefined }"
+        v-if="titlePosition === 'left'"
+      >
+        <slot>{{ title }}</slot>
+      </div>
     </div>
 
-    <div
-      class="var-site-app-bar__title"
-      :class="`var-site-app-bar__title-${titlePosition}`"
-      :style="{
-        paddingLeft: $slots.left && titlePosition !== 'center' ? '30px' : '10px',
-        paddingRight: $slots.right && titlePosition !== 'center' ? '30px' : '10px',
-      }"
-    >
+    <div class="var-site-app-bar__title" v-if="titlePosition === 'center'">
       <slot>{{ title }}</slot>
     </div>
 
-    <div class="var-site-app-bar__right" v-if="$slots.right">
+    <div class="var-site-app-bar__right">
+      <div
+        class="var-site-app-bar__title"
+        :style="{ paddingRight: $slots.right ? 0 : undefined }"
+        v-if="titlePosition === 'right'"
+      >
+        <slot>{{ title }}</slot>
+      </div>
       <slot name="right" />
     </div>
   </div>

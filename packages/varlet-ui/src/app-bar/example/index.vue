@@ -35,7 +35,7 @@
     </template>
 
     <template #right>
-      <var-menu :offset-y="38" :offset-x="-45" v-model:show="offsetY">
+      <var-menu :offset-y="42" :offset-x="-20" v-model:show="offsetY">
         <var-button round text color="transparent" text-color="#ffffff" @click="changeOffset">
           <var-icon name="menu" :size="24" />
         </var-button>

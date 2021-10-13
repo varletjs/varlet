@@ -126,7 +126,7 @@ export default {
   </template>
 
   <template #right>
-    <var-menu :offset-y="38" :offset-x="-20" v-model:show="offsetY">
+    <var-menu :offset-y="42" :offset-x="-20" v-model:show="offsetY">
       <var-button
         round
         text
@@ -223,7 +223,9 @@ export default {
 | --- | --- |
 | `--app-bar-color` | `var(--color-primary)` |
 | `--app-bar-text-color` | `#fff` |
-| `--app-bar-height` | `50px` |
-| `--app-bar-padding` | `0 10px` |
-| `--app-bar-title-line-height` | `50px` |
+| `--app-bar-height` | `54px` |
+| `--app-bar-title-padding` | `0 12px` |
+| `--app-bar-title-line-height` | `54px` |
+| `--app-bar-left-gap` | `6px` |
+| `--app-bar-right-gap` | `6px` |
 
