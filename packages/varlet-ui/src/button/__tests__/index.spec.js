@@ -38,7 +38,7 @@ test('test button onClick & onTouchstart', () => {
   expect(onClick).toHaveBeenCalledTimes(1)
   expect(onTouchstart).toHaveBeenCalledTimes(1)
   wrapper.unmount()
-})
+})  
 
 test('test button disabled', () => {
   const onClick = jest.fn()
@@ -51,9 +51,10 @@ test('test button disabled', () => {
       onTouchstart,
     },
   })
-  expect(wrapper.props('disabled')).toBeTruthy()
+
   wrapper.trigger('click')
   wrapper.trigger('touchstart')
+  expect(wrapper.classes()).toContain('var-button--disabled')
   expect(onClick).toHaveBeenCalledTimes(0)
   expect(onTouchstart).toHaveBeenCalledTimes(0)
   wrapper.unmount()
@@ -68,9 +69,10 @@ test('test button loading', () => {
       loading: true,
     },
   })
+
   wrapper.trigger('click')
   wrapper.trigger('touchstart')
-  expect(wrapper.props('loading')).toBeTruthy()
+  expect(wrapper.find('div').classes()).toContain('var-loading')
   expect(onClick).toHaveBeenCalledTimes(0)
   expect(onTouchstart).toHaveBeenCalledTimes(0)
   wrapper.unmount()
@@ -83,6 +85,8 @@ test('test button color & textColor', () => {
       textColor: '#000',
     },
   })
+  expect(wrapper.attributes('style')).toMatch('color: rgb(0, 0, 0)')
+  expect(wrapper.attributes('style')).toMatch('background: rgb(0, 0, 0)')
   expect(wrapper.props('color')).toBe('#000')
   expect(wrapper.props('textColor')).toBe('#000')
   wrapper.unmount()
