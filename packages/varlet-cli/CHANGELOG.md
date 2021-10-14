@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.4](https://github.com/haoziqaq/varlet/compare/v1.22.3...v1.22.4) (2021-10-14)
+
+
+### Bug Fixes
+
+* **ui/app-bar:** fix app-bar style ([9da67b6](https://github.com/haoziqaq/varlet/commit/9da67b6fa0e07a644cba6118f4a90cb8293df8be))
+
+
+
+
+
 ## [1.22.3](https://github.com/haoziqaq/varlet/compare/v1.22.2...v1.22.3) (2021-10-10)
 
 
