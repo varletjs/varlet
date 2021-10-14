@@ -7,8 +7,14 @@
         title-position="center"
       >
         <template #left v-if="showBackIcon">
-          <var-site-button round @click="back" color="transparent" text-color="#fff" text>
-            <var-site-icon name="chevron-left" :size="28" />
+          <var-site-button
+            text
+            round
+            @click="back"
+            color="transparent"
+            text-color="#fff"
+          >
+            <var-site-icon name="chevron-left" :size="28" style="margin-top: 1px;" />
           </var-site-button>
         </template>
         <template #right>

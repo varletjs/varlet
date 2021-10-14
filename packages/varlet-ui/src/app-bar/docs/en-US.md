@@ -226,6 +226,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--app-bar-text-color` | `#fff` |
 | `--app-bar-height` | `54px` |
 | `--app-bar-title-padding` | `0 12px` |
-| `--app-bar-title-line-height` | `54px` |
 | `--app-bar-left-gap` | `6px` |
 | `--app-bar-right-gap` | `6px` |
