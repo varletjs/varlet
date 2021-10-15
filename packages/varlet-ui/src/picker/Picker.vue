@@ -103,7 +103,7 @@ import type { Ref, ComputedRef } from 'vue'
 import type { CascadeColumn, NormalColumn } from './props'
 import type { Texts } from './index'
 
-interface ScrollColumn {
+export interface ScrollColumn {
   touching: boolean
   index: number
   prevY: number | undefined
