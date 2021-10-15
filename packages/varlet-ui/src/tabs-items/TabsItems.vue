@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import Swipe from '../swipe'
+import VarSwipe from '../swipe'
 import { defineComponent, watch, ref } from 'vue'
 import { useTabItem } from './provide'
 import { props } from './props'
@@ -22,12 +22,10 @@ import type { TabItemProvider } from '../tab-item/provide'
 
 export default defineComponent({
   name: 'VarTabsItems',
-  components: {
-    [Swipe.name]: Swipe,
-  },
+  components: { VarSwipe },
   props,
   setup(props) {
-    const swipe: Ref<null | typeof Swipe> = ref(null)
+    const swipe: Ref<null | typeof VarSwipe> = ref(null)
     const { tabItemList, bindTabItem, length } = useTabItem()
 
     const matchName = (active: number | string | undefined): TabItemProvider | undefined => {

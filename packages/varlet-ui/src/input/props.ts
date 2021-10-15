@@ -70,10 +70,10 @@ export const props = {
     type: Array as PropType<Array<(v: string | number) => any>>,
   },
   onFocus: {
-    type: Function as PropType<(e: Event) => void>,
+    type: Function as PropType<(e: FocusEvent) => void>,
   },
   onBlur: {
-    type: Function as PropType<(e: Event) => void>,
+    type: Function as PropType<(e: FocusEvent) => void>,
   },
   onClick: {
     type: Function as PropType<(e: Event) => void>,

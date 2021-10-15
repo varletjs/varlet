@@ -94,8 +94,8 @@
 </template>
 
 <script lang="ts">
-import FormDetails from '../form-details'
-import Icon from '../icon'
+import VarFormDetails from '../form-details'
+import VarIcon from '../icon'
 import { defineComponent, getCurrentInstance, ref, computed, nextTick } from 'vue'
 import { props } from './props'
 import { isEmpty, isNumber, toNumber } from '../utils/shared'
@@ -108,8 +108,8 @@ import type { InputProvider } from './provide'
 export default defineComponent({
   name: 'VarInput',
   components: {
-    [Icon.name]: Icon,
-    [FormDetails.name]: FormDetails,
+    VarIcon,
+    VarFormDetails,
   },
   props,
   setup(props) {

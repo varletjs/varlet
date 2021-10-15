@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import SwipeItem from '../swipe-item'
+import VarSwipeItem from '../swipe-item'
 import { defineComponent, ref, computed } from 'vue'
 import { useTabsItems } from './provide'
 import { props } from './props'
@@ -15,7 +15,7 @@ import type { TabItemProvider } from './provide'
 export default defineComponent({
   name: 'VarTabItem',
   components: {
-    [SwipeItem.name]: SwipeItem,
+    VarSwipeItem,
   },
   props,
   setup(props) {

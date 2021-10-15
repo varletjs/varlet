@@ -69,10 +69,10 @@
 </template>
 
 <script lang="ts">
-import Swipe from '../swipe'
-import SwipeItem from '../swipe-item'
-import Icon from '../icon'
-import Popup from '../popup'
+import VarSwipe from '../swipe'
+import VarSwipeItem from '../swipe-item'
+import VarIcon from '../icon'
+import VarPopup from '../popup'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
 import { toNumber } from '../utils/shared'
@@ -92,10 +92,10 @@ const ANIMATION_DURATION = 200
 export default defineComponent({
   name: 'VarImagePreview',
   components: {
-    [Swipe.name]: Swipe,
-    [SwipeItem.name]: SwipeItem,
-    [Popup.name]: Popup,
-    [Icon.name]: Icon,
+    VarSwipe,
+    VarSwipeItem,
+    VarPopup,
+    VarIcon,
   },
   inheritAttrs: false,
   props,

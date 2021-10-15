@@ -59,9 +59,9 @@
 </template>
 
 <script lang="ts">
-import Icon from '../icon'
+import VarIcon from '../icon'
+import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
-import FormDetails from '../form-details'
 import { defineComponent, ref, watch, computed, nextTick } from 'vue'
 import { Decimal } from 'decimal.js'
 import { props } from './props'
@@ -79,8 +79,8 @@ const DELAY = 600
 export default defineComponent({
   name: 'VarCounter',
   components: {
-    [Icon.name]: Icon,
-    [FormDetails.name]: FormDetails,
+    VarIcon,
+    VarFormDetails,
   },
   directives: { Ripple },
   inheritAttrs: false,

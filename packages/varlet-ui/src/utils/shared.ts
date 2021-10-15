@@ -32,9 +32,21 @@ export const toNumber = (val: number | string | boolean | undefined | null): num
   return val
 }
 
-export const isHTMLSupportImage = (val: string) => val.startsWith('data:image') || /\.(png|jpg|gif|jpeg|svg)$/.test(val)
+export const isHTMLSupportImage = (val: string | undefined | null) => {
+  if (val == null) {
+    return false
+  }
 
-export const isHTMLSupportVideo = (val: string) => val.startsWith('data:video') || /\.(mp4|webm|ogg)$/.test(val)
+  return val.startsWith('data:image') || /\.(png|jpg|gif|jpeg|svg)$/.test(val)
+}
+
+export const isHTMLSupportVideo = (val: string | undefined | null) => {
+  if (val == null) {
+    return false
+  }
+
+  return val.startsWith('data:video') || /\.(mp4|webm|ogg)$/.test(val)
+}
 
 export const isString = (val: unknown): val is string => typeof val === 'string'
 

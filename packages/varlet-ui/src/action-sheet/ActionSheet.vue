@@ -49,8 +49,8 @@
 
 <script lang="ts">
 import Ripple from '../ripple'
-import Popup from '../popup'
-import Icon from '../icon'
+import VarPopup from '../popup'
+import VarIcon from '../icon'
 import { defineComponent, ref, watch } from 'vue'
 import { props } from './props'
 import { dt } from '../utils/shared'
@@ -62,8 +62,8 @@ export default defineComponent({
   name: 'VarActionSheet',
   directives: { Ripple },
   components: {
-    [Popup.name]: Popup,
-    [Icon.name]: Icon,
+    VarPopup,
+    VarIcon,
   },
   inheritAttrs: false,
   props,

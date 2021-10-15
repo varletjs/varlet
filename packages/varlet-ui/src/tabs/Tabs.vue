@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import Sticky from '../sticky'
+import VarSticky from '../sticky'
 import { defineComponent, watch, ref, computed, Transition, nextTick, onMounted, onUnmounted } from 'vue'
 import { props } from './props'
 import { useTabList } from './provide'
@@ -49,9 +49,7 @@ import type { TabProvider } from '../tab/provide'
 
 export default defineComponent({
   name: 'VarTabs',
-  components: {
-    [Sticky.name]: Sticky,
-  },
+  components: { VarSticky },
   inheritAttrs: false,
   props,
   setup(props) {

@@ -49,7 +49,8 @@
                   class="var-select__chip"
                   var-select-cover
                   closable
-                  :type="errorMessage ? 'danger' : null"
+                  size="small"
+                  :type="errorMessage ? 'danger' : undefined"
                   v-for="l in labels"
                   :key="l"
                   @click.stop
@@ -107,7 +108,7 @@
         formDisabled || disabled ? 'var-select--line-disabled' : null,
         errorMessage ? 'var-select--line-error' : null,
       ]"
-      :style="{ background: !errorMessage ? blurColor : null }"
+      :style="{ background: !errorMessage ? blurColor : undefined }"
       v-if="line"
     >
       <div
@@ -117,7 +118,7 @@
           formDisabled || disabled ? 'var-select--line-disabled' : null,
           errorMessage ? 'var-select--line-error' : null,
         ]"
-        :style="{ background: !errorMessage ? focusColor : null }"
+        :style="{ background: !errorMessage ? focusColor : undefined }"
       ></div>
     </div>
 
@@ -126,10 +127,10 @@
 </template>
 
 <script lang="ts">
-import Icon from '../icon'
-import Menu from '../menu'
-import Chip from '../chip'
-import FormDetails from '../form-details'
+import VarIcon from '../icon'
+import VarMenu from '../menu'
+import VarChip from '../chip'
+import VarFormDetails from '../form-details'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
 import { isArray, isEmpty } from '../utils/shared'
 import { props } from './props'
@@ -145,10 +146,10 @@ import type { OptionProvider } from '../option/provide'
 export default defineComponent({
   name: 'VarSelect',
   components: {
-    [Icon.name]: Icon,
-    [Menu.name]: Menu,
-    [Chip.name]: Chip,
-    [FormDetails.name]: FormDetails,
+    VarIcon,
+    VarMenu,
+    VarChip,
+    VarFormDetails,
   },
   props,
   setup(props) {
@@ -226,7 +227,7 @@ export default defineComponent({
       }
     }
 
-    const handleFocus = (e: Event) => {
+    const handleFocus = () => {
       const { disabled, readonly, onFocus } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
@@ -235,18 +236,18 @@ export default defineComponent({
 
       isFocus.value = true
 
-      onFocus?.(e)
+      onFocus?.()
       validateWithTrigger('onFocus')
     }
 
-    const handleBlur = (e: Event) => {
+    const handleBlur = () => {
       const { disabled, readonly, onBlur } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
 
-      onBlur?.(e)
+      onBlur?.()
       validateWithTrigger('onBlur')
     }
 

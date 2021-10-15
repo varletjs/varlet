@@ -320,7 +320,7 @@ exports[`test form with select 1`] = `
           <div class=\\"var-select__select var-select--disabled\\" style=\\"text-align: left;\\">
             <div>
               <div class=\\"var-select__chips\\">
-                <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--null var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip--text-normal\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: all 0ms;\\"></i></span></span></transition-stub>
+                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip--text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: all 0ms;\\"></i></span></span></transition-stub>
               </div>
             </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i>
           </div><label class=\\"var-select__placeholder var-select--placeholder-hint\\"></label>
@@ -350,7 +350,7 @@ exports[`test form with select 2`] = `
           <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
             <div>
               <div class=\\"var-select__chips\\">
-                <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--null var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip--text-normal\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: all 0ms;\\"></i></span></span></transition-stub>
+                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip--text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: all 0ms;\\"></i></span></span></transition-stub>
               </div>
             </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i>
           </div><label class=\\"var-select__placeholder var-select--placeholder-hint\\"></label>
@@ -380,7 +380,7 @@ exports[`test form with select 3`] = `
           <div class=\\"var-select__select var-select--error\\" style=\\"text-align: left;\\">
             <div>
               <div class=\\"var-select__chips\\">
-                <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--danger var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip--text-normal\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: all 0ms;\\"></i></span></span></transition-stub>
+                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--danger var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip--text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: all 0ms;\\"></i></span></span></transition-stub>
               </div>
             </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i>
           </div><label class=\\"var-select__placeholder var-select--placeholder-hint\\"></label>

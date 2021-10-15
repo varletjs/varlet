@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import FormDetails from '../form-details'
+import VarFormDetails from '../form-details'
 import { defineComponent, computed, watch, nextTick } from 'vue'
 import { props } from './props'
 import { useValidation } from '../utils/components'
@@ -21,9 +21,7 @@ import type { CheckboxGroupProvider } from './provide'
 
 export default defineComponent({
   name: 'VarCheckboxGroup',
-  components: {
-    [FormDetails.name]: FormDetails,
-  },
+  components: { VarFormDetails },
   props,
   setup(props) {
     const max: ComputedRef<number | string | undefined> = computed(() => props.max)

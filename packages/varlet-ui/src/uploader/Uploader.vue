@@ -80,11 +80,11 @@
 </template>
 
 <script lang="ts">
-import FormDetails from '../form-details'
-import Ripple from '../ripple'
-import Icon from '../icon'
-import Popup from '../popup'
+import VarFormDetails from '../form-details'
+import VarIcon from '../icon'
+import VarPopup from '../popup'
 import ImagePreview from '../image-preview'
+import Ripple from '../ripple'
 import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
 import { props } from './props'
 import { isNumber, isHTMLSupportImage, isHTMLSupportVideo, toNumber, isString } from '../utils/shared'
@@ -111,9 +111,9 @@ export default defineComponent({
   name: 'VarUploader',
   directives: { Ripple },
   components: {
-    [Icon.name]: Icon,
-    [Popup.name]: Popup,
-    [FormDetails.name]: FormDetails,
+    VarIcon,
+    VarPopup,
+    VarFormDetails,
   },
   props,
   setup(props) {

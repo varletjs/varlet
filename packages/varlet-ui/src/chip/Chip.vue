@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import Icon from '../icon'
+import VarIcon from '../icon'
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import type { ComputedRef } from 'vue'
@@ -25,7 +25,7 @@ import type { ComputedRef } from 'vue'
 export default defineComponent({
   name: 'VarChip',
   components: {
-    [Icon.name]: Icon,
+    VarIcon,
   },
   inheritAttrs: false,
   props,
