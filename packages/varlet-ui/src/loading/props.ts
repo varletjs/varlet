@@ -1,8 +1,8 @@
 import type { PropType } from 'vue'
 
-type LoadingType = 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'
+export type LoadingType = 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'
 
-type LoadingSize = 'normal' | 'mini' | 'small' | 'large'
+export type LoadingSize = 'normal' | 'mini' | 'small' | 'large'
 
 export function typeValidator(type: string): boolean {
   return ['circle', 'wave', 'cube', 'rect', 'disappear'].includes(type)

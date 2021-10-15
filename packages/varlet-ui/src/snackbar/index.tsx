@@ -1,8 +1,9 @@
 import type { App, Component } from 'vue'
+import { reactive, TransitionGroup } from 'vue'
 import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
 import context from '../context'
-import { reactive, TransitionGroup } from 'vue'
+import type { LoadingType, LoadingSize } from '../loading/props'
 import { mountInstance } from '../utils/components'
 import { isPlainObject, toNumber } from '../utils/shared'
 
@@ -18,8 +19,8 @@ interface SnackbarOptions {
   type?: SnackbarType
   content?: string
   position?: 'top' | 'center' | 'bottom'
-  loadingType?: string
-  loadingSize?: string
+  loadingType?: LoadingType
+  loadingSize?: LoadingSize
   teleport?: string
   lockScroll?: boolean
   contentClass?: string
