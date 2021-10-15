@@ -146,7 +146,7 @@ export default {
 | `loop`       | Whether to open loop playback | _boolean_ | `true` |
 | `indicator`  | Whether to show paging | _boolean_ | `true` |
 | `lock-scroll` | Lock scroll | _boolean_ | `true` |
-| `teleport`   | The location of the pop-up layer to mount | _string_ | `-` |
+| `teleport`   | The location of the pop-up layer to mount | _TeleportProps['to']_ | `-` |
 
 ### Events
 

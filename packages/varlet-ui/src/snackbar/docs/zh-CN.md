@@ -156,7 +156,7 @@ snackbar1.clear();
 | `loading-size` | 加载动画大小(见`Loading`组件) | _string_ | `normal` |
 | `lock-scroll`| 是否禁止滚动穿透 | _boolean_  | `false` |
 | `forbid-click`| 是否禁止穿透点击 | _boolean_  | `false` |
-| `teleport`| 弹出层挂载的位置 | _string_  | `body` |
+| `teleport`| 弹出层挂载的位置 | _TeleportProps['to']_  | `body` |
 
 ### 事件
 

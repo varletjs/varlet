@@ -1,5 +1,5 @@
-import type { App } from 'vue'
 import { VarComponent } from './varComponent'
+import type { App, TeleportProps } from 'vue'
 
 export interface ImagePreviewProps {
   show?: boolean
@@ -9,7 +9,7 @@ export interface ImagePreviewProps {
   lockScroll?: boolean
   indicator?: boolean
   closeable?: boolean
-  teleport?: string
+  teleport?: TeleportProps['to']
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void

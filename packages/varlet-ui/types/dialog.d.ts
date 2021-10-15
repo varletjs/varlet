@@ -1,5 +1,5 @@
-import type { App } from 'vue'
 import { VarComponent } from './varComponent'
+import type { App, TeleportProps } from 'vue'
 
 export interface DialogProps {
   show?: boolean
@@ -19,7 +19,7 @@ export interface DialogProps {
   overlayStyle?: Record<string, any>
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
-  teleport?: boolean
+  teleport?: TeleportProps['to']
   onOpen?: () => void
   onOpened?: () => void
   onBeforeClose?: (action: DialogActions, done: () => void) => void

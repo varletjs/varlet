@@ -14,8 +14,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, Transition } from 'vue'
 import Sticky from '../sticky'
+import { computed, defineComponent, ref, Transition } from 'vue'
 import { useIndexBar } from './provide'
 import { props } from './props'
 import type { Ref, ComputedRef, RendererNode } from 'vue'

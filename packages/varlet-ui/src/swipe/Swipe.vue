@@ -4,8 +4,8 @@
       class="var-swipe__track"
       :class="[vertical ? 'var-swipe--vertical' : null]"
       :style="{
-        width: !vertical ? `${trackSize}px` : null,
-        height: vertical ? `${trackSize}px` : null,
+        width: !vertical ? `${trackSize}px` : undefined,
+        height: vertical ? `${trackSize}px` : undefined,
         transform: `translate${vertical ? 'Y' : 'X'}(${translate}px)`,
         transitionDuration: lockDuration ? `0ms` : `${toNumber(duration)}ms`,
       }"

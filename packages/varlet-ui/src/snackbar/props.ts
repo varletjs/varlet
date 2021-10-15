@@ -1,7 +1,7 @@
-import type { PropType } from 'vue'
 import { pickProps } from '../utils/components'
 import { props as loadingProps } from '../loading/props'
 import { SNACKBAR_TYPE, SnackbarType } from './index'
+import type { PropType, TeleportProps } from 'vue'
 
 export function positionValidator(position: string): boolean {
   const validPositions = ['top', 'center', 'bottom']
@@ -57,6 +57,7 @@ export const props = {
   },
   // teleport
   teleport: {
+    type: String as PropType<TeleportProps['to']>,
     default: 'body',
   },
   // 是否禁止点击背景

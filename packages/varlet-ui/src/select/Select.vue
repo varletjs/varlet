@@ -12,7 +12,7 @@
         formDisabled || disabled ? 'var-select--disabled' : null,
       ]"
       :style="{
-        color: !errorMessage ? (isFocus ? focusColor : blurColor) : null,
+        color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
       }"
     >
       <div class="var-select__icon" :class="[!hint ? 'var-select--non-hint' : null]">

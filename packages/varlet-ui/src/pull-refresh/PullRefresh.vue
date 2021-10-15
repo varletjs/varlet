@@ -19,8 +19,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, onMounted } from 'vue'
 import Icon from '../icon'
+import { defineComponent, ref, computed, watch, onMounted } from 'vue'
 import { getParentScroller, getScrollTop } from '../utils/elements'
 import { props } from './props'
 import { toNumber } from '../utils/shared'
@@ -57,7 +57,7 @@ export default defineComponent({
 
     const controlStyle = computed(() => ({
       transform: `translate3d(0px, ${distance.value}px, 0px) translate(-50%, 0)`,
-      transition: isEnd.value ? `transform ${props.animationDuration}ms` : null,
+      transition: isEnd.value ? `transform ${props.animationDuration}ms` : undefined,
       background: props.successBgColor || props.bgColor,
       color: props.successColor || props.color,
     }))

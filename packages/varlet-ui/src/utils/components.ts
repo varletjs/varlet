@@ -17,7 +17,6 @@ import {
 } from 'vue'
 import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref } from 'vue'
 import { isArray, removeItem } from './shared'
-import { pick } from 'lodash'
 
 export interface MountInstance {
   instance: any

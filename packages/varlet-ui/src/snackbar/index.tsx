@@ -1,11 +1,11 @@
-import type { App, Component } from 'vue'
-import { reactive, TransitionGroup } from 'vue'
 import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
 import context from '../context'
-import type { LoadingType, LoadingSize } from '../loading/props'
+import { reactive, TransitionGroup } from 'vue'
 import { mountInstance } from '../utils/components'
 import { isPlainObject, toNumber } from '../utils/shared'
+import type { LoadingType, LoadingSize } from '../loading/props'
+import type { App, Component, TeleportProps } from 'vue'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
@@ -21,7 +21,6 @@ interface SnackbarOptions {
   position?: 'top' | 'center' | 'bottom'
   loadingType?: LoadingType
   loadingSize?: LoadingSize
-  teleport?: string
   lockScroll?: boolean
   contentClass?: string
   duration?: number
@@ -32,6 +31,8 @@ interface SnackbarOptions {
   onClose?: () => void
   onOpened?: () => void
   onClosed?: () => void
+  // internal
+  teleport?: TeleportProps['to']
 }
 
 interface UniqSnackbarOptions {

@@ -5,9 +5,9 @@
     :class="[enableCSSMode ? 'var-sticky--css-mode' : null]"
     :style="{
       zIndex: toNumber(zIndex),
-      top: enableCSSMode ? `${offsetTop}px` : null,
-      width: enableFixedMode ? fixedWidth : null,
-      height: enableFixedMode ? fixedHeight : null,
+      top: enableCSSMode ? `${offsetTop}px` : undefined,
+      width: enableFixedMode ? fixedWidth : undefined,
+      height: enableFixedMode ? fixedHeight : undefined,
     }"
   >
     <div
@@ -15,11 +15,11 @@
       ref="wrapperEl"
       :style="{
         zIndex: toNumber(zIndex),
-        position: enableFixedMode ? 'fixed' : null,
-        width: enableFixedMode ? fixedWrapperWidth : null,
-        height: enableFixedMode ? fixedWrapperHeight : null,
-        left: enableFixedMode ? fixedLeft : null,
-        top: enableFixedMode ? fixedTop : null,
+        position: enableFixedMode ? 'fixed' : undefined,
+        width: enableFixedMode ? fixedWrapperWidth : undefined,
+        height: enableFixedMode ? fixedWrapperHeight : undefined,
+        left: enableFixedMode ? fixedLeft : undefined,
+        top: enableFixedMode ? fixedTop : undefined,
       }"
     >
       <slot />

@@ -4,7 +4,7 @@
       <div
         class="var-uploader__file var-elevation--2"
         :class="[f.state === 'loading' ? 'var-uploader--loading' : null]"
-        :key="f"
+        :key="f.id"
         v-for="f in modelValue"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple }"
         @click="preview(f)"
@@ -105,6 +105,8 @@ interface VarFileUtils {
   getError(varFiles: VarFile[]): VarFile[]
 }
 
+let fid = 0
+
 export default defineComponent({
   name: 'VarUploader',
   directives: { Ripple },
@@ -156,6 +158,7 @@ export default defineComponent({
 
     const createVarFile = (file: File): VarFile => {
       return {
+        id: fid++,
         url: '',
         cover: '',
         name: file.name,

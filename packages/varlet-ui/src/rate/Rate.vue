@@ -72,7 +72,7 @@ export default defineComponent({
 
     const transformValue = (index: number) => {
       const { modelValue, disabled, disabledColor, color, half, emptyColor } = props
-      let iconColor = null
+      let iconColor
 
       if (disabled || form?.disabled.value) iconColor = disabledColor
       else if (color) iconColor = color

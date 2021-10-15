@@ -1,4 +1,4 @@
-import type { App } from 'vue'
+import type { App, TeleportProps } from 'vue'
 import { VarComponent } from './varComponent'
 
 export interface ActionSheetProps {
@@ -11,7 +11,7 @@ export interface ActionSheetProps {
   lockScroll?: boolean
   closeOnClickAction?: boolean
   closeOnClickOverlay?: boolean
-  teleport?: boolean
+  teleport?: TeleportProps['to']
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void

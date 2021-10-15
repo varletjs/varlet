@@ -157,7 +157,7 @@ snackbar1.clear();
 | `loading-size` | Loading size (see `Loading` component) | _string_ | `normal` |
 | `lock-scroll`| Whether to disable rolling penetration | _boolean_  | `false` |
 | `forbid-click`| whether to penetrating clicks are forbidden | _boolean_  | `false` |
-| `teleport`| The location of the Snackbar to mount | _string_  | `body` |
+| `teleport`| The location of the Snackbar to mount | _TeleportProps['to']_  | `body` |
 
 ### Events
 

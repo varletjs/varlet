@@ -4,7 +4,7 @@
     :class="[optionSelected ? 'var-option--selected-color' : null]"
     :style="{
       width: wrapWidth,
-      color: optionSelected ? focusColor : null,
+      color: optionSelected ? focusColor : undefined,
     }"
     v-ripple
     @click="handleClick"
@@ -13,7 +13,7 @@
       class="var-option__cover"
       :class="[optionSelected ? 'var-option--selected-background' : null]"
       :style="{
-        background: optionSelected ? focusColor : null,
+        background: optionSelected ? focusColor : undefined,
       }"
     ></div>
     <var-checkbox

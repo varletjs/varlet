@@ -1,11 +1,12 @@
 import type { PropType } from 'vue'
 
 export interface VarFile {
+  id: number
   file?: File
   name?: string
   url?: string
   cover?: string
-  fit?: string
+  fit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
   state?: 'loading' | 'success' | 'error'
 }
 
@@ -21,7 +22,8 @@ export const props = {
     default: 'image/*',
   },
   capture: {
-    type: String,
+    type: [String, Boolean] as PropType<boolean | 'user' | 'environment'>,
+    default: undefined,
   },
   multiple: {
     type: Boolean,

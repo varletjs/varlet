@@ -14,9 +14,9 @@
 </template>
 
 <script lang="ts">
+import Ripple from '../ripple'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
-import Ripple from '../ripple'
 import { useTabs } from './provide'
 import type { Ref, ComputedRef } from 'vue'
 import type { TabProvider } from './provide'

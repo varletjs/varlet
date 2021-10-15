@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import type { PropType, TeleportProps } from 'vue'
 
 function positionValidator(position: string): boolean {
   return ['top', 'bottom', 'right', 'left', 'center'].includes(position)
@@ -35,7 +35,9 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  teleport: {},
+  teleport: {
+    type: String as PropType<TeleportProps['to']>,
+  },
   onOpen: {
     type: Function as PropType<() => void>,
   },

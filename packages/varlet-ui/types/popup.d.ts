@@ -1,4 +1,5 @@
 import { VarComponent } from './varComponent'
+import type { TeleportProps } from 'vue'
 
 export interface PopupProps {
   show?: boolean
@@ -8,7 +9,7 @@ export interface PopupProps {
   overlayStyle?: Record<string, any>
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
-  teleport?: any
+  teleport?: TeleportProps['to']
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void

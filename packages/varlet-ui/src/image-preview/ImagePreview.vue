@@ -109,8 +109,8 @@ export default defineComponent({
     const scale: Ref<number> = ref(1)
     const translateX: Ref<number> = ref(0)
     const translateY: Ref<number> = ref(0)
-    const transitionTimingFunction: Ref<string | null> = ref(null)
-    const transitionDuration: Ref<string | null> = ref(null)
+    const transitionTimingFunction: Ref<string | undefined> = ref(undefined)
+    const transitionDuration: Ref<string | undefined> = ref(undefined)
     const canSwipe: Ref<boolean> = ref(true)
     let startTouch: VarTouch | null = null
     let prevTouch: VarTouch | null = null
@@ -147,8 +147,8 @@ export default defineComponent({
       translateY.value = 0
       canSwipe.value = true
       prevTouch = null
-      transitionTimingFunction.value = null
-      transitionDuration.value = null
+      transitionTimingFunction.value = undefined
+      transitionDuration.value = undefined
     }
 
     const isDoubleTouch = (currentTouch: VarTouch) => {

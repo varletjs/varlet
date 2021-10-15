@@ -47,7 +47,13 @@ export const isPlainObject = (val: unknown): val is Record<string, any> =>
 
 export const isArray = (val: unknown): val is Array<any> => Array.isArray(val)
 
-export const isURL = (val: string) => /^(http)|(\.*\/)/.test(val)
+export const isURL = (val: string | undefined | null) => {
+  if (!val) {
+    return false
+  }
+
+  return /^(http)|(\.*\/)/.test(val)
+}
 
 export const isEmpty = (val: unknown) =>
   val === undefined || val === null || val === '' || (Array.isArray(val) && !val.length)

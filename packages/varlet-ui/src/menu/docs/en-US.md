@@ -228,7 +228,7 @@ export default {
 | `alignment` | The alignment of the menu, The optional value is' `top` `bottom`, the origin is the top left corner of the default slot,top is the top of the menu to align the origin,bottom is the bottom of the menu to align the origin | _string_ | `top` |
 | `offset-x` | offset x, Relative to the aligned position of the menu | _number \| string_ | `0` |  
 | `offset-y` | offset y, Relative to the aligned position of the menu | _number \| string_ | `0` |
-| `teleport` | The location of the Menu to mount | _string_ | `body` |
+| `teleport` | The location of the Menu to mount | _TeleportProps['to']_ | `body` |
 
 ### Methods
 | Method | Description | Arguments | Return |
