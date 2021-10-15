@@ -35,7 +35,7 @@ export const props = {
     default: false,
   },
   sizeOption: {
-    type: Array,
+    type: Array as PropType<Array<number>>,
     default: () => [10, 20, 50, 100],
   },
   showTotal: {

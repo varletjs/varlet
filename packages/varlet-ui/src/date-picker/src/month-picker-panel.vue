@@ -4,8 +4,8 @@
       <panel-header
         type="month"
         :date="preview"
-        @check-panel="clickYear"
         :disabled="panelBtnDisabled"
+        @check-panel="clickYear"
         @check-date="checkDate"
       />
       <transition :name="reverse ? 'var-date-picker-reverse-translatex' : 'var-date-picker-translatex'">
@@ -37,7 +37,7 @@ import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore'
 import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter'
 import { MONTH_LIST } from '../props'
 import PanelHeader from './panel-header.vue'
-import Button from '../../button'
+import VarButton from '../../button'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
 import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
@@ -49,7 +49,7 @@ dayjs.extend(isSameOrAfter)
 export default defineComponent({
   name: 'MonthPickerPanel',
   components: {
-    [Button.name]: Button,
+    VarButton,
     PanelHeader,
   },
   props: {
@@ -66,7 +66,8 @@ export default defineComponent({
       required: true,
     },
     clickYear: {
-      type: Function,
+      type: Function as PropType<() => void>,
+      required: true,
     },
     componentProps: {
       type: Object as PropType<ComponentProps>,

@@ -4,8 +4,8 @@
       class="var-slider-block"
       :class="[isDisabled ? 'var-slider__disable' : null, errorMessage ? 'var-slider__error' : null]"
       :style="{
-        height: `${3 * thumbSize}px`,
-        margin: `0 ${thumbSize / 2}px`,
+        height: `${3 * toNumber(thumbSize)}px`,
+        margin: `0 ${toNumber(thumbSize) / 2}px`,
       }"
       ref="sliderEl"
       @click="click"
@@ -26,7 +26,7 @@
         :key="item.enumValue"
         :style="{
           left: `${item.value}%`,
-          zIndex: thumbsProps[item.enumValue].active ? 1 : null,
+          zIndex: thumbsProps[item.enumValue].active ? 1 : undefined,
         }"
         @touchstart="start($event, item.enumValue)"
         @touchmove="move($event, item.enumValue)"
@@ -47,8 +47,16 @@
             :class="[thumbsProps[item.enumValue].active ? 'var-slider__thumb-ripple-active' : null]"
             :style="{
               background: thumbColor,
-              height: thumbSize ? (thumbsProps[item.enumValue].active ? 3 * thumbSize + 'px' : '0px') : null,
-              width: thumbSize ? (thumbsProps[item.enumValue].active ? 3 * thumbSize + 'px' : '0px') : null,
+              height: thumbSize
+                ? thumbsProps[item.enumValue].active
+                  ? 3 * toNumber(thumbSize) + 'px'
+                  : '0px'
+                : undefined,
+              width: thumbSize
+                ? thumbsProps[item.enumValue].active
+                  ? 3 * toNumber(thumbSize) + 'px'
+                  : '0px'
+                : undefined,
             }"
           ></div>
           <div
@@ -57,8 +65,8 @@
             :style="{
               background: labelColor,
               color: labelTextColor,
-              height: 2 * thumbSize + 'px',
-              width: 2 * thumbSize + 'px',
+              height: 2 * toNumber(thumbSize) + 'px',
+              width: 2 * toNumber(thumbSize) + 'px',
             }"
           >
             <span>{{ item.value }}</span>
@@ -77,7 +85,7 @@ import { useForm } from '../form/provide'
 import { getLeft } from '../utils/elements'
 import { isArray, isNumber, toNumber } from '../utils/shared'
 import { props } from './props'
-import FormDetails from '../form-details'
+import VarFormDetails from '../form-details'
 import type { Ref, ComputedRef, UnwrapRef } from 'vue'
 import type { SliderProvider } from './provide'
 
@@ -106,7 +114,7 @@ type ThumbsListProps = {
 export default defineComponent({
   name: 'VarSlider',
   components: {
-    [FormDetails.name]: FormDetails,
+    VarFormDetails,
   },
   props,
   setup(props) {
@@ -330,6 +338,7 @@ export default defineComponent({
       errorMessage,
       thumbsProps,
       thumbList,
+      toNumber,
       showLabel,
       start,
       move,

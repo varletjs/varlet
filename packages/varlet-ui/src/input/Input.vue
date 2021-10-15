@@ -172,14 +172,14 @@ export default defineComponent({
 
     const normalizeValue = (value: string) => (isNumberValue.value ? toNumber(value) : value)
 
-    const handleFocus = (e: Event) => {
+    const handleFocus = (e: FocusEvent) => {
       isFocus.value = true
 
       props.onFocus?.(e)
       validateWithTrigger('onFocus')
     }
 
-    const handleBlur = (e: Event) => {
+    const handleBlur = (e: FocusEvent) => {
       isFocus.value = false
 
       props.onBlur?.(e)

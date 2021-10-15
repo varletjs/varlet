@@ -28,7 +28,7 @@
       v-else
       v-ripple="{ disabled }"
       v-for="(item, index) in pageList"
-      :key="item + index"
+      :key="toNumber(item) + index"
       :item-mode="getMode(item, index)"
       class="var-pagination__item var-elevation--2"
       :class="{
@@ -101,11 +101,11 @@
 </template>
 
 <script lang="ts">
-import Menu from '../menu'
+import VarMenu from '../menu'
 import Ripple from '../ripple'
-import Icon from '../icon'
-import Cell from '../cell'
-import Input from '../input'
+import VarIcon from '../icon'
+import VarCell from '../cell'
+import VarInput from '../input'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './porps'
 import { isNumber, toNumber } from '../utils/shared'
@@ -116,10 +116,10 @@ import type { Range } from './porps'
 export default defineComponent({
   name: 'VarPagination',
   components: {
-    [Menu.name]: Menu,
-    [Icon.name]: Icon,
-    [Cell.name]: Cell,
-    [Input.name]: Input,
+    VarMenu,
+    VarIcon,
+    VarCell,
+    VarInput,
   },
   directives: { Ripple },
   props,
@@ -295,6 +295,7 @@ export default defineComponent({
       showMenu,
       clickSize,
       setPage,
+      toNumber,
     }
   },
 })

@@ -4,8 +4,8 @@
       <span
         class="var-loading__circle-block"
         :style="{
-          width: radius * 2 + 'px',
-          height: radius * 2 + 'px',
+          width: toNumber(radius) * 2 + 'px',
+          height: toNumber(radius) * 2 + 'px',
         }"
       >
         <svg viewBox="25 25 50 50">
@@ -30,6 +30,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { props } from './props'
+import { toNumber } from '../utils/shared'
 
 export default defineComponent({
   name: 'VarLoading',
@@ -44,6 +45,7 @@ export default defineComponent({
 
     return {
       loadingTypeDict,
+      toNumber,
     }
   },
 })

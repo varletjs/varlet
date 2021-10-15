@@ -169,8 +169,8 @@ export default defineComponent({
       const computedColor = () => {
         if (!isActive(index, inner)) {
           return {
-            backgroundColor: null,
-            color: null,
+            backgroundColor: undefined,
+            color: undefined,
           }
         }
         if (isDisable(hour)) {
@@ -182,7 +182,7 @@ export default defineComponent({
 
         return {
           backgroundColor: props.color,
-          color: null,
+          color: undefined,
         }
       }
 

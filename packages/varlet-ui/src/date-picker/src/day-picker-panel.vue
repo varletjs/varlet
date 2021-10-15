@@ -45,7 +45,7 @@ import dayjs from 'dayjs/esm'
 import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore'
 import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter'
 import PanelHeader from './panel-header.vue'
-import Button from '../../button'
+import VarButton from '../../button'
 import { WEEK_HEADER } from '../props'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
@@ -58,7 +58,7 @@ dayjs.extend(isSameOrAfter)
 export default defineComponent({
   name: 'DayPickerPanel',
   components: {
-    [Button.name]: Button,
+    VarButton,
     PanelHeader,
   },
   props: {
@@ -75,7 +75,8 @@ export default defineComponent({
       required: true,
     },
     clickMonth: {
-      type: Function,
+      type: Function as PropType<() => void>,
+      required: true,
     },
     componentProps: {
       type: Object as PropType<ComponentProps>,

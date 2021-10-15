@@ -29,7 +29,7 @@
             errorMessage ? 'var-switch__handle-error' : null,
           ]"
         >
-          <var-loading v-if="loading" :radius="size / 2 - 2" />
+          <var-loading v-if="loading" :radius="toNumber(size) / 2 - 2" />
         </div>
       </div>
     </div>
@@ -43,8 +43,8 @@ import { useValidation } from '../utils/components'
 import { toNumber } from '../utils/shared'
 import { useForm } from '../form/provide'
 import { props } from './props'
-import FormDetails from '../form-details'
-import Loading from '../loading'
+import VarFormDetails from '../form-details'
+import VarLoading from '../loading'
 import Ripple from '../ripple'
 import type { ComputedRef } from 'vue'
 import type { SwitchProvider } from './provide'
@@ -61,8 +61,8 @@ type StyleProps = {
 export default defineComponent({
   name: 'VarSwitch',
   components: {
-    [Loading.name]: Loading,
-    [FormDetails.name]: FormDetails,
+    VarLoading,
+    VarFormDetails,
   },
   directives: { Ripple },
   props,
@@ -145,6 +145,7 @@ export default defineComponent({
 
     return {
       switchActive,
+      toNumber,
       styleComputed,
       errorMessage,
       formDisabled: form?.disabled,

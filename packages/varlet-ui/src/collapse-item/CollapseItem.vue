@@ -38,23 +38,18 @@ import { requestAnimationFrame } from '../utils/elements'
 import { isArray } from '../utils/shared'
 import { useCollapse } from './provide'
 import { props } from './props'
-import Icon from '../icon'
+import VarIcon from '../icon'
 import type { Ref, ComputedRef } from 'vue'
 import type { CollapseItemProvider } from './provide'
 
 export default defineComponent({
   name: 'VarCollapseItem',
   components: {
-    [Icon.name]: Icon,
+    VarIcon,
   },
   props,
   setup(props) {
     const { index, collapse, bindCollapse } = useCollapse()
-
-    if (!collapse || !bindCollapse || !index) {
-      console.error('[Varlet] Collapse: <var-collapse-item/> must in <var-collapse>')
-      return
-    }
 
     const contentEl: Ref<HTMLDivElement | null> = ref(null)
     const show: Ref<boolean> = ref(false)

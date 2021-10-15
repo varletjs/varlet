@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import Sticky from '../sticky'
+import VarSticky from '../sticky'
 import { computed, defineComponent, ref, Transition } from 'vue'
 import { useIndexBar } from './provide'
 import { props } from './props'
@@ -24,7 +24,7 @@ import type { IndexAnchorProvider } from './provide'
 export default defineComponent({
   name: 'VarIndexAnchor',
   components: {
-    [Sticky.name]: Sticky,
+    VarSticky,
   },
   inheritAttrs: false,
   props,
@@ -35,11 +35,6 @@ export default defineComponent({
     const disabled: Ref<boolean> = ref(false)
     const name: ComputedRef<number | string | undefined> = computed(() => props.index)
     const anchorEl: Ref<HTMLDivElement | RendererNode | null> = ref(null)
-
-    if (!indexBar || !bindIndexBar) {
-      console.error('[Varlet] IndexAnchor: You should use this component in "IndexBar"')
-      return
-    }
 
     const { active, sticky, cssMode, stickyOffsetTop, zIndex } = indexBar
     const setOwnTop = () => {

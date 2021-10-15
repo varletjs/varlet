@@ -9,8 +9,8 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
-import Button from '../button'
-import Icon from '../icon'
+import VarButton from '../button'
+import VarIcon from '../icon'
 import { props } from './props'
 import { isString, easeInOutCubic, throttle, toNumber } from '../utils/shared'
 import { getScrollTop, getScrollLeft, scrollTo } from '../utils/elements'
@@ -19,8 +19,8 @@ import type { Ref } from 'vue'
 export default defineComponent({
   name: 'VarBackTop',
   components: {
-    [Button.name]: Button,
-    [Icon.name]: Icon,
+    VarButton,
+    VarIcon,
   },
   props,
   setup(props) {

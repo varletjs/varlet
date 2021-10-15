@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import Icon from '../icon'
+import VarIcon from '../icon'
 import { defineComponent, ref, computed, watch, onMounted } from 'vue'
 import { getParentScroller, getScrollTop } from '../utils/elements'
 import { props } from './props'
@@ -35,7 +35,7 @@ let scroller: HTMLElement | Window = window
 export default defineComponent({
   name: 'VarPullRefresh',
   components: {
-    [Icon.name]: Icon,
+    VarIcon,
   },
   props,
   setup(props) {

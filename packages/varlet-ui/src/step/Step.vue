@@ -34,14 +34,14 @@
 import { computed, defineComponent, ref, watch } from 'vue'
 import { props } from './props'
 import { useSteps } from './provide'
-import Icon from '../icon'
-import type { Ref, ComputedRef } from 'vue'
+import VarIcon from '../icon'
+import type { Ref, ComputedRef, ComponentPublicInstance } from 'vue'
 import type { StepProvider } from './provide'
 
 export default defineComponent({
   name: 'VarStep',
   components: {
-    [Icon.name]: Icon,
+    VarIcon,
   },
   props,
   setup() {
@@ -50,11 +50,6 @@ export default defineComponent({
     const isLastChild: Ref<boolean> = ref(false)
 
     const { index, steps, bindSteps } = useSteps()
-
-    if (!steps || !bindSteps || !index) {
-      console.error('[Varlet] Steps: <step/> must in <steps>')
-      return
-    }
 
     const { active, length, activeColor, inactiveColor, direction, clickStep } = steps
 
@@ -67,9 +62,9 @@ export default defineComponent({
 
     const click = () => clickStep(index.value)
 
-    const getRef = (el: HTMLDivElement) => {
+    const getRef = (el: Element | ComponentPublicInstance | null) => {
       if (direction.value === 'horizontal') {
-        main.value = el
+        main.value = el as HTMLDivElement
       }
     }
 

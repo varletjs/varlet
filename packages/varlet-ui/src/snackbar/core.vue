@@ -15,9 +15,8 @@
 
 <script lang="ts">
 import { defineComponent, watch, ref, onMounted, computed } from 'vue'
-import Loading from '../loading'
-import Button from '../button'
-import Icon from '../icon'
+import VarLoading from '../loading'
+import VarIcon from '../icon'
 import { useZIndex } from '../context/zIndex'
 import { props } from './props'
 import { useLock } from '../context/lock'
@@ -36,9 +35,8 @@ const ICON_TYPE_DICT: Record<SnackbarType, string> = {
 export default defineComponent({
   name: 'VarSnackbarCore',
   components: {
-    [Loading.name]: Loading,
-    [Button.name]: Button,
-    [Icon.name]: Icon,
+    VarLoading,
+    VarIcon,
   },
   props,
   setup(props) {

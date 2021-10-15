@@ -20,6 +20,10 @@ export function useIndexBar() {
   )
   const { index } = useAtParentIndex(INDEX_BAR_COUNT_INDEX_ANCHOR_KEY)
 
+  if (!parentProvider || !bindParent) {
+    throw Error('[Varlet] IndexAnchor: You should use this component in "IndexBar"')
+  }
+
   return {
     index,
     indexBar: parentProvider,

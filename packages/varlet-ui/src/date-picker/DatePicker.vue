@@ -22,7 +22,7 @@
         <transition
           :name="multiple ? '' : reverse ? 'var-date-picker-reverse-translatey' : 'var-date-picker-translatey'"
         >
-          <div :key="range || multiple || chooseYear + chooseMonth?.index" v-if="type === 'month'">
+          <div :key="chooseYear + chooseMonth?.index" v-if="type === 'month'">
             <slot name="range" :choose="getChoose.chooseRangeMonth" v-if="range">
               {{ getMonthTitle }}
             </slot>
