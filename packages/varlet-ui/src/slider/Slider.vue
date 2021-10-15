@@ -4,8 +4,8 @@
       class="var-slider-block"
       :class="[isDisabled ? 'var-slider__disable' : null, errorMessage ? 'var-slider__error' : null]"
       :style="{
-        height: `${3 * toNumber(thumbSize)}px`,
-        margin: `0 ${toNumber(thumbSize) / 2}px`,
+        height: `${3 * thumbSize}px`,
+        margin: `0 ${thumbSize / 2}px`,
       }"
       ref="sliderEl"
       @click="click"
@@ -26,7 +26,7 @@
         :key="item.enumValue"
         :style="{
           left: `${item.value}%`,
-          zIndex: thumbsProps[item.enumValue].active ? 1 : undefined,
+          zIndex: thumbsProps[item.enumValue].active ? 1 : null,
         }"
         @touchstart="start($event, item.enumValue)"
         @touchmove="move($event, item.enumValue)"
@@ -47,16 +47,8 @@
             :class="[thumbsProps[item.enumValue].active ? 'var-slider__thumb-ripple-active' : null]"
             :style="{
               background: thumbColor,
-              height: thumbSize
-                ? thumbsProps[item.enumValue].active
-                  ? 3 * toNumber(thumbSize) + 'px'
-                  : '0px'
-                : undefined,
-              width: thumbSize
-                ? thumbsProps[item.enumValue].active
-                  ? 3 * toNumber(thumbSize) + 'px'
-                  : '0px'
-                : undefined,
+              height: thumbSize ? (thumbsProps[item.enumValue].active ? 3 * thumbSize + 'px' : '0px') : null,
+              width: thumbSize ? (thumbsProps[item.enumValue].active ? 3 * thumbSize + 'px' : '0px') : null,
             }"
           ></div>
           <div
@@ -65,8 +57,8 @@
             :style="{
               background: labelColor,
               color: labelTextColor,
-              height: 2 * toNumber(thumbSize) + 'px',
-              width: 2 * toNumber(thumbSize) + 'px',
+              height: 2 * thumbSize + 'px',
+              width: 2 * thumbSize + 'px',
             }"
           >
             <span>{{ item.value }}</span>
@@ -338,7 +330,6 @@ export default defineComponent({
       errorMessage,
       thumbsProps,
       thumbList,
-      toNumber,
       showLabel,
       start,
       move,
