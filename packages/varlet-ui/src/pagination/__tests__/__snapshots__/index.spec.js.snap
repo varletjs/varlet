@@ -20,7 +20,7 @@ exports[`Size related props 1`] = `
       <transition-stub>
         <!--v-if-->
       </transition-stub>
-    </div> / 6
+    </div><span>/ 6</span>
   </li>
   <li class=\\"var-pagination__item var-pagination__next var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
   <li class=\\"var-pagination__size\\">
@@ -55,7 +55,7 @@ exports[`Size related props 2`] = `
       <transition-stub>
         <!--v-if-->
       </transition-stub>
-    </div> / 6
+    </div><span>/ 6</span>
   </li>
   <li class=\\"var-pagination__item var-pagination__next var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
   <!--v-if-->
@@ -140,7 +140,7 @@ exports[`simple mode disabled prop 1`] = `
       <transition-stub>
         <!--v-if-->
       </transition-stub>
-    </div> / 0
+    </div><span>/ 0</span>
   </li>
   <li class=\\"var-pagination__item var-pagination__next var-pagination__item-disabled var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
   <li class=\\"var-pagination__size var-pagination__item-disabled\\">
@@ -175,7 +175,7 @@ exports[`simple mode mount 1`] = `
       <transition-stub>
         <!--v-if-->
       </transition-stub>
-    </div> / 13
+    </div><span>/ 13</span>
   </li>
   <li class=\\"var-pagination__item var-pagination__next var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
   <li class=\\"var-pagination__size\\">
@@ -212,7 +212,7 @@ exports[`test pagination example 1`] = `
         <transition-stub>
           <!--v-if-->
         </transition-stub>
-      </div> / 12
+      </div><span>/ 12</span>
     </li>
     <li class=\\"var-pagination__item var-pagination__next var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
     <li class=\\"var-pagination__size\\">
@@ -247,7 +247,7 @@ exports[`test pagination example 1`] = `
         <transition-stub>
           <!--v-if-->
         </transition-stub>
-      </div> / 12
+      </div><span>/ 12</span>
     </li>
     <li class=\\"var-pagination__item var-pagination__next var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
     <!--v-if-->
@@ -276,7 +276,7 @@ exports[`test pagination example 1`] = `
         <transition-stub>
           <!--v-if-->
         </transition-stub>
-      </div> / 12
+      </div><span>/ 12</span>
     </li>
     <li class=\\"var-pagination__item var-pagination__next var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
     <li class=\\"var-pagination__size\\">
@@ -311,7 +311,7 @@ exports[`test pagination example 1`] = `
         <transition-stub>
           <!--v-if-->
         </transition-stub>
-      </div> / 12
+      </div><span>/ 12</span>
     </li>
     <li class=\\"var-pagination__item var-pagination__next var-pagination__item-disabled var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
     <li class=\\"var-pagination__size var-pagination__item-disabled\\">

@@ -14,6 +14,8 @@
 @pagination-simple-padding: 0 0 2px 0;
 @pagination-disabled-color: var(--color-text-disabled);
 @pagination-bg-disabled-color: var(--color-disabled);
+@pagination-size-line-height: 24px;
+@pagination-total-line-height: 24px;
 
 :root {
   --pagination-font-size: @pagination-font-size;
@@ -21,6 +23,7 @@
   --pagination-active-bg-color: @pagination-active-bg-color;
   --pagination-hover-bg-color: @pagination-hover-bg-color;
   --pagination-total-margin: @pagination-total-margin;
+  --pagination-total-line-height: @pagination-total-line-height;
   --pagination-item-width: @pagination-item-width;
   --pagination-item-height: @pagination-item-height;
   --pagination-item-margin: @pagination-item-margin;
@@ -32,6 +35,7 @@
   --pagination-simple-padding: @pagination-simple-padding;
   --pagination-disabled-color: @pagination-disabled-color;
   --pagination-bg-disabled-color: @pagination-bg-disabled-color;
+  --pagination-size-line-height: @pagination-size-line-height;
 }
 
 // Mixins
@@ -100,13 +104,16 @@
   }
 
   &__total {
-    margin: var(--pagination-total-margin);
     .pagination-flex-nowrap();
+
+    line-height: var(--pagination-total-line-height);
+    margin: var(--pagination-total-margin);
   }
 
   &__size {
     .pagination-flex-nowrap();
 
+    line-height: var(--pagination-size-line-height);
     margin: var(--pagination-item-margin);
 
     &-open {

@@ -42,6 +42,7 @@ module.exports = {
         'zh-CN': '中文',
         'en-US': 'English',
       },
+      github: 'https://github.com/haoziqaq/varlet',
     },
   },
   themes: {

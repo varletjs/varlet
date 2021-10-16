@@ -6,8 +6,9 @@
         :title="bigCamelizeComponentName"
         title-position="center"
       >
-        <template #left v-if="showBackIcon">
+        <template #left>
           <var-site-button
+            v-if="showBackIcon"
             text
             round
             @click="back"
@@ -15,6 +16,17 @@
             text-color="#fff"
           >
             <var-site-icon name="chevron-left" :size="28" style="margin-top: 1px;" />
+          </var-site-button>
+          <var-site-button
+            v-if="!showBackIcon && github"
+            style="margin-left: 6px; "
+            text
+            round
+            @click="toGithub"
+            color="transparent"
+            text-color="#fff"
+          >
+            <var-site-icon name="github" :size="28" style="margin-top: 1px;" />
           </var-site-button>
         </template>
         <template #right>
@@ -78,6 +90,7 @@ export default defineComponent({
     const languages: Ref<Record<string, string>> = ref(get(config, 'mobile.header.i18n'))
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
     const redirect = get(config, 'mobile.redirect', '')
+    const github: Ref<string> = ref(get(config, 'mobile.header.github'))
 
     const changeLanguage = (lang) => {
       language.value = lang
@@ -87,6 +100,14 @@ export default defineComponent({
 
     const back = () => {
       window.location.href = `./mobile.html#${redirect}?language=${language.value}&replace=${redirect.slice(1)}`
+    }
+
+    const toGithub = () => {
+      if (window.parent !== window) {
+        window.parent.open(github.value)
+      } else {
+        window.location.href = github.value
+      }
     }
 
     watchLang((newValue) => {
@@ -106,10 +127,12 @@ export default defineComponent({
     return {
       bigCamelizeComponentName,
       showBackIcon,
+      github,
       showMenu,
       languages,
       language,
       nonEmptyLanguages,
+      toGithub,
       back,
       changeLanguage,
     }

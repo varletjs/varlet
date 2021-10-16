@@ -165,16 +165,17 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--pagination-active-color` | `#fff` |  
 | `--pagination-active-bg-color` | `var(--color-primary)` |  
 | `--pagination-hover-bg-color` | `rgb(245, 245, 245)` |  
-| `--pagination-total-margin` | `0 6px 0 0` |  
+| `--pagination-total-margin` | `0 12px` |  
+| `--pagination-total-line-height` | `24px` |  
 | `--pagination-item-width` | `32px` |  
 | `--pagination-item-height` | `32px` |  
-| `--pagination-item-margin` | `0 4px` |  
+| `--pagination-item-margin` | `0 6px` |  
 | `--pagination-item-border-radius` | `4px` |  
-| `--pagination-size-padding` | `0 6px` |  
 | `--pagination-list-bg-color` | `#fff` |  
 | `--pagination-list-active-bg-color` | `#dbe4fd` |  
 | `--pagination-list-active-color` | `var(--color-primary)` |  
-| `--pagination-input-width` | `36px` |  
-| `--pagination-input-margin` | `0 6px` |  
+| `--pagination-input-width` | `32px` |
+| `--pagination-simple-padding` | `0 0 2px 0` |
 | `--pagination-disabled-color` | `var(--color-text-disabled)` |
 | `--pagination-bg-disabled-color` | `var(--color-disabled)` |
+| `--pagination-size-line-height` | `24px` | 

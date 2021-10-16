@@ -67,6 +67,7 @@ module.exports = {
     },
     header: {
       i18n: null,
+      github: 'https://github.com/haoziqaq/varlet',
     },
   },
 }

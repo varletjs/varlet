@@ -114,7 +114,7 @@ exports[`test table example 1`] = `
             <transition-stub>
               <!--v-if-->
             </transition-stub>
-          </div> / 10
+          </div><span>/ 10</span>
         </li>
         <li class=\\"var-pagination__item var-pagination__next var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></li>
         <li class=\\"var-pagination__size\\">
