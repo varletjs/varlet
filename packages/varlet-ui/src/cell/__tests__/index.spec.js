@@ -7,6 +7,7 @@ import { createApp } from 'vue'
 test('test cell example', () => {
   const wrapper = mount(example)
   expect(wrapper.exists()).toBeTruthy()
+  expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
 
@@ -37,5 +38,6 @@ test('test cell props', async () => {
   expect(wrapper.find('.var-cell__title').text()).toBe('This is Cell')
   expect(wrapper.find('.var-cell__desc').text()).toBe('This is desc')
   expect(wrapper.find('.test-extra-class').text()).toBe('text')
+  expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
