@@ -33,6 +33,15 @@ test('test card props', async () => {
     },
   })
 
+  expect(wrapper.find('img').attributes('style')).toMatch('height: 200px')
+  expect(wrapper.find('img').attributes('style')).toMatch('object-fit: cover')
+  expect(wrapper.find('img').attributes('alt')).toMatch('This is an image')
+  expect(wrapper.find('img').attributes('src')).toMatch('https://varlet.gitee.io/varlet-ui/cat.jpg')
+  expect(wrapper.find('.var-card__title').text()).toBe('This is Card')
+  expect(wrapper.find('.var-card__subtitle').text()).toBe('This is subtitle')
+  expect(wrapper.find('.var-card__description').text()).toBe('This is description')
+  expect(wrapper.find('.var-card__footer').text()).toBe('text')
+  expect(wrapper.classes()).toContain('var-elevation--2')
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
