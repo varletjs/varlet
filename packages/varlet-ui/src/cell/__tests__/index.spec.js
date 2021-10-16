@@ -6,7 +6,6 @@ import { createApp } from 'vue'
 
 test('test cell example', () => {
   const wrapper = mount(example)
-  expect(wrapper.exists()).toBeTruthy()
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
