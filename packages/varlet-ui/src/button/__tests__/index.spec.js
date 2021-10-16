@@ -73,6 +73,8 @@ test('test button loading', () => {
   wrapper.trigger('click')
   wrapper.trigger('touchstart')
   expect(wrapper.find('div').classes()).toContain('var-loading')
+  expect(wrapper.find('.var-loading').exists()).toBeTruthy()
+  expect(wrapper.find('.var-loading').exists()).toBeTruthy()
   expect(onClick).toHaveBeenCalledTimes(0)
   expect(onTouchstart).toHaveBeenCalledTimes(0)
   wrapper.unmount()
@@ -103,7 +105,6 @@ test('test button styles', () => {
     slots: {
       default: () => 'button text',
     },
-    
   })
   expect(wrapper.classes()).toContain('var-button--round')
   expect(wrapper.classes()).toContain('var-button--text')
