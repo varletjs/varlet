@@ -174,9 +174,10 @@ iframe {
     align-items: center;
     margin: 20px 4px 20px;
     padding: 40px;
-    border-top: 7px solid var(--site-config-color-primary);
-    border-radius: 4px;
-    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    border-top: 6px solid var(--site-config-color-primary);
+    border-bottom: 6px solid var(--site-config-color-primary);
+    border-radius: 2px;
+    box-shadow: 0 0 14px 6px #eee;
 
     &__image {
       width: 180px;
