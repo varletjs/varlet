@@ -1,4 +1,3 @@
-Var
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-radio v-model="value">{{ pack.currentValue }} {{ value }}</var-radio>
@@ -49,7 +48,6 @@ Var
 import VarRadioGroup from '..'
 import VarRadio from '../../radio'
 import VarIcon from '../../icon'
-
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
 import { toRefs, reactive } from 'vue'
 import { watchLang } from '@varlet/cli/site/utils'

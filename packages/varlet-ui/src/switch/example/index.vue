@@ -32,7 +32,6 @@
 import { reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarSwitch from '..'
-import VarCell from '../../cell'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
 

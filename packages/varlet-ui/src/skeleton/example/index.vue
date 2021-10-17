@@ -1,4 +1,3 @@
-Var
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-skeleton :loading="loading">{{ pack.loadingData }}</var-skeleton>

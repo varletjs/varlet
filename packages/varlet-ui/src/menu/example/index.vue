@@ -1,4 +1,3 @@
-Var
 <template>
   <app-type>{{ pack.alignmentMethods }}</app-type>
   <div class="block-1">

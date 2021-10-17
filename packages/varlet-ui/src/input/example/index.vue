@@ -38,7 +38,6 @@
 
 <script>
 import VarInput from '..'
-
 import VarIcon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { reactive, toRefs } from 'vue'

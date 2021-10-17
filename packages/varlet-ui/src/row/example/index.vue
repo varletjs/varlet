@@ -1,4 +1,3 @@
-Var
 <template>
   <app-type>{{ pack.girdSystem }}</app-type>
   <var-row>
