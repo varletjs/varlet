@@ -4,12 +4,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import TabsItems from '..'
+import VarTabsItems from '..'
 
 export default defineComponent({
   name: 'TabsItemsExample',
   components: {
-    [TabsItems.name]: TabsItems,
+    VarTabsItems,
   },
 })
 </script>

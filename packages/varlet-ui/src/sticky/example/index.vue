@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import Sticky from '..'
-import Button from '../../button'
+import VarSticky from '..'
+import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
@@ -25,8 +25,8 @@ import { use, pack } from './locale'
 export default {
   name: 'StickyExample',
   components: {
-    [Sticky.name]: Sticky,
-    [Button.name]: Button,
+    VarSticky,
+    VarButton,
     AppType,
   },
   setup() {

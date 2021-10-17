@@ -55,8 +55,8 @@
 </template>
 
 <script>
-import Rate from '..'
-import Snackbar from '../../snackbar'
+import VarRate from '..'
+import VarSnackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
 import context from '../../context'
 import { onUnmounted, reactive, toRefs } from 'vue'
@@ -66,8 +66,7 @@ import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 export default {
   name: 'RateExample',
   components: {
-    [Rate.name]: Rate,
-    [Snackbar.Component.name]: Snackbar.Component,
+    VarRate,
     AppType,
   },
   setup() {
@@ -87,7 +86,7 @@ export default {
     })
 
     const handleChange = (score) => {
-      Snackbar({
+      VarSnackbar({
         content: `click ${score}`,
         position: 'top',
       })

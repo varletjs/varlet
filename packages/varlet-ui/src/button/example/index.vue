@@ -61,8 +61,8 @@
 </template>
 
 <script>
-import Button from '../index'
-import Icon from '../../icon'
+import VarButton from '../index'
+import VarIcon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Snackbar from '../../snackbar'
 import context from '../../context'
@@ -72,8 +72,8 @@ import { onUnmounted } from 'vue'
 
 export default {
   components: {
-    [Button.name]: Button,
-    [Icon.name]: Icon,
+    VarButton,
+    VarIcon,
     AppType,
   },
   setup() {

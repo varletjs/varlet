@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import Counter from '..'
+import VarCounter from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { reactive, toRefs } from 'vue'
 import { watchLang } from '@varlet/cli/site/utils'
@@ -39,7 +39,7 @@ import { use, pack } from './locale'
 export default {
   name: 'CounterExample',
   components: {
-    [Counter.name]: Counter,
+    VarCounter,
     AppType,
   },
   setup() {

@@ -63,8 +63,8 @@
 
 <script>
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Chip from '..'
-import Icon from '../../icon'
+import VarChip from '..'
+import VarIcon from '../../icon'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
@@ -72,8 +72,8 @@ import { watchLang } from '@varlet/cli/site/utils'
 export default {
   name: 'ChipExample',
   components: {
-    [Chip.name]: Chip,
-    [Icon.name]: Icon,
+    VarChip,
+    VarIcon,
     AppType,
   },
   setup() {

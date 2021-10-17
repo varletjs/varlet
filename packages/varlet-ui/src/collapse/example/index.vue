@@ -51,9 +51,9 @@
 
 <script>
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Collapse from '..'
-import CollapseItem from '../../collapse-item'
-import Button from '../../button'
+import VarCollapse from '..'
+import VarCollapseItem from '../../collapse-item'
+import VarButton from '../../button'
 import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
@@ -61,9 +61,9 @@ import { watchLang } from '@varlet/cli/site/utils'
 export default {
   name: 'CollapseExample',
   components: {
-    [Collapse.name]: Collapse,
-    [CollapseItem.name]: CollapseItem,
-    [Button.name]: Button,
+    VarCollapse,
+    VarCollapseItem,
+    VarButton,
     AppType,
   },
   setup() {

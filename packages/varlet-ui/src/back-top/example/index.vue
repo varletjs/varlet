@@ -6,16 +6,16 @@
 </template>
 
 <script>
-import BackTop from '..'
-import Cell from '../../cell'
+import VarBackTop from '..'
+import VarCell from '../../cell'
 
 const lists = [...Array(100).keys()]
 
 export default {
   name: 'BackTopExample',
   components: {
-    [BackTop.name]: BackTop,
-    [Cell.name]: Cell,
+    VarBackTop,
+    VarCell,
   },
   setup() {
     return {

@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import Picker from '../index'
-import Button from '../../button'
+import VarPicker from '../index'
+import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import area from '../../../json/area.json'
 import context from '../../context'
@@ -23,8 +23,8 @@ import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 export default {
   name: 'PickerExample',
   components: {
-    [Picker.Component.name]: Picker.Component,
-    [Button.name]: Button,
+    VarPicker: VarPicker.Component,
+    VarButton,
     AppType,
   },
   setup() {
@@ -39,15 +39,15 @@ export default {
     const columns3 = ref(area)
 
     const picker = async () => {
-      await Picker(columns.value)
+      await VarPicker(columns.value)
     }
 
     const picker2 = async () => {
-      await Picker(columns2.value)
+      await VarPicker(columns2.value)
     }
 
     const picker3 = async () => {
-      await Picker({
+      await VarPicker({
         cascade: true,
         columns: columns3.value,
       })

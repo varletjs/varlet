@@ -87,8 +87,8 @@
 </template>
 
 <script>
-import Swipe from '..'
-import SwipeItem from '../../swipe-item'
+import VarSwipe from '..'
+import VarSwipeItem from '../../swipe-item'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Snackbar from '../../snackbar'
 import { use, pack } from './locale'
@@ -97,8 +97,8 @@ import { watchLang } from '@varlet/cli/site/utils'
 export default {
   name: 'SwipeExample',
   components: {
-    [Swipe.name]: Swipe,
-    [SwipeItem.name]: SwipeItem,
+    VarSwipe,
+    VarSwipeItem,
     AppType,
   },
   setup() {
