@@ -12,9 +12,9 @@
 
 <script>
 import StyleProvider from '../index'
-import Rate from '../../rate'
-import Switch from '../../switch'
-import Button from '../../button'
+import VarRate from '../../rate'
+import VarSwitch from '../../switch'
+import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
 import { ref, reactive, onUnmounted } from 'vue'
@@ -24,10 +24,10 @@ import { use, pack } from './locale'
 export default {
   name: 'StyleProviderExample',
   components: {
-    [StyleProvider.Component.name]: StyleProvider.Component,
-    [Rate.name]: Rate,
-    [Switch.name]: Switch,
-    [Button.name]: Button,
+    VarStyleProvider: StyleProvider.Component,
+    VarRate,
+    VarSwitch,
+    VarButton,
     AppType,
   },
   setup() {

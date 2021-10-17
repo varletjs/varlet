@@ -44,8 +44,7 @@
 </template>
 
 <script>
-import Icon from '..'
-import Button from '../../button'
+import VarIcon from '..'
 import Ripple from '../../ripple'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
@@ -59,9 +58,8 @@ import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 export default {
   name: 'IconExample',
   components: {
-    [Icon.name]: Icon,
-    [Button.name]: Button,
-    [AppType.name]: AppType,
+    VarIcon,
+    AppType,
   },
   directives: { Ripple },
   setup() {

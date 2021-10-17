@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import Table from '..'
-import Pagination from '../../pagination'
+import VarTable from '..'
+import VarPagination from '../../pagination'
 import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 import { gen } from './index'
@@ -34,8 +34,8 @@ import { ref } from 'vue'
 export default {
   name: 'BasicExample',
   components: {
-    [Table.name]: Table,
-    [Pagination.name]: Pagination,
+    VarTable,
+    VarPagination,
   },
   setup() {
     const list = ref(gen(1, 10))

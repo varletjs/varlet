@@ -35,16 +35,16 @@
 
 <script>
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Icon from '../../icon'
-import Cell from '..'
+import VarIcon from '../../icon'
+import VarCell from '..'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'CellExample',
   components: {
-    [Cell.name]: Cell,
-    [Icon.name]: Icon,
+    VarIcon,
+    VarCell,
     AppType,
   },
   setup() {

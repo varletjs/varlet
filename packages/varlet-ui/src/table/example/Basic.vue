@@ -23,14 +23,14 @@
 </template>
 
 <script>
-import Table from '..'
+import VarTable from '..'
 import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 export default {
   name: 'BasicExample',
   components: {
-    [Table.name]: Table,
+    VarTable,
   },
   setup() {
     watchLang(use, 'pc')

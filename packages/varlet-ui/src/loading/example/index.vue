@@ -35,14 +35,14 @@
 
 <script>
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Loading from '..'
+import VarLoading from '..'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'LoadingExample',
   components: {
-    [Loading.name]: Loading,
+    VarLoading,
     AppType,
   },
   setup() {

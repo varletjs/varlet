@@ -66,20 +66,20 @@
 </template>
 
 <script>
-import Form from '..'
-import Input from '../../input'
-import Select from '../../select'
-import Option from '../../option'
-import CheckboxGroup from '../../checkbox-group'
-import Checkbox from '../../checkbox'
-import RadioGroup from '../../radio-group'
-import Radio from '../../radio'
-import Button from '../../button'
-import Switch from '../../switch'
-import Slider from '../../slider'
-import Uploader from '../../uploader'
-import Counter from '../../counter'
-import Rate from '../../rate'
+import VarForm from '..'
+import VarInput from '../../input'
+import VarSelect from '../../select'
+import VarOption from '../../option'
+import VarCheckboxGroup from '../../checkbox-group'
+import VarCheckbox from '../../checkbox'
+import VarRadioGroup from '../../radio-group'
+import VarRadio from '../../radio'
+import VarButton from '../../button'
+import VarSwitch from '../../switch'
+import VarSlider from '../../slider'
+import VarUploader from '../../uploader'
+import VarCounter from '../../counter'
+import VarRate from '../../rate'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
 import context from '../../context'
 import { onUnmounted, reactive, ref } from 'vue'
@@ -89,20 +89,20 @@ import { use, pack } from './locale'
 export default {
   name: 'FormExample',
   components: {
-    [Form.name]: Form,
-    [Input.name]: Input,
-    [Select.name]: Select,
-    [CheckboxGroup.name]: CheckboxGroup,
-    [Checkbox.name]: Checkbox,
-    [RadioGroup.name]: RadioGroup,
-    [Radio.name]: Radio,
-    [Option.name]: Option,
-    [Switch.name]: Switch,
-    [Slider.name]: Slider,
-    [Button.name]: Button,
-    [Uploader.name]: Uploader,
-    [Counter.name]: Counter,
-    [Rate.name]: Rate,
+    VarForm,
+    VarInput,
+    VarSelect,
+    VarCheckboxGroup,
+    VarCheckbox,
+    VarRadioGroup,
+    VarRadio,
+    VarOption,
+    VarButton,
+    VarSlider,
+    VarSwitch,
+    VarUploader,
+    VarCounter,
+    VarRate,
     AppType,
   },
   setup() {

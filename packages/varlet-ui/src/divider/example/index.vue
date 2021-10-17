@@ -37,18 +37,16 @@
 
 <script>
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Divider from '..'
-import AppBar from '../../app-bar'
-import Icon from '../../icon'
+import VarDivider from '..'
+import VarIcon from '../../icon'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'DividerExample',
   components: {
-    [Icon.name]: Icon,
-    [AppBar.name]: AppBar,
-    [Divider.name]: Divider,
+    VarIcon,
+    VarDivider,
     AppType,
   },
   setup() {

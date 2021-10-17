@@ -26,7 +26,7 @@
 <script>
 import ActionSheet from '../index'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Button from '../../button'
+import VarButton from '../../button'
 import Snackbar from '../../snackbar'
 import { ref, reactive, onUnmounted } from 'vue'
 import { pack, use } from './locale'
@@ -36,8 +36,8 @@ import context from '../../context'
 export default {
   name: 'ActionSheetExample',
   components: {
-    [ActionSheet.Component.name]: ActionSheet.Component,
-    [Button.name]: Button,
+    VarActionSheet: ActionSheet.Component,
+    VarButton,
     AppType,
   },
   setup() {

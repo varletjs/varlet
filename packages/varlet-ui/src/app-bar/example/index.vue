@@ -56,14 +56,14 @@
 
 <script>
 import { ref } from 'vue'
-import AppBar from '..'
-import Icon from '../../icon'
+import VarAppBar from '..'
+import VarIcon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Ripple from '../../ripple'
 import Snackbar from '../../snackbar'
-import Menu from '../../menu'
-import Button from '../../button'
-import Cell from '../../cell'
+import VarMenu from '../../menu'
+import VarButton from '../../button'
+import VarCell from '../../cell'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
 
@@ -71,11 +71,11 @@ export default {
   name: 'AppBarExample',
   directives: { Ripple },
   components: {
-    [AppBar.name]: AppBar,
-    [Icon.name]: Icon,
-    [Menu.name]: Menu,
-    [Button.name]: Button,
-    [Cell.name]: Cell,
+    VarAppBar,
+    VarIcon,
+    VarMenu,
+    VarButton,
+    VarCell,
     AppType,
   },
   setup() {

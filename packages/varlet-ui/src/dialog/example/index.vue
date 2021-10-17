@@ -34,10 +34,10 @@
 
 <script>
 import Dialog from '../index'
-import Button from '../../button'
-import Icon from '../../icon'
+import VarButton from '../../button'
+import VarIcon from '../../icon'
 import Snackbar from '../../snackbar'
-import Cell from '../../cell'
+import VarCell from '../../cell'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
@@ -46,10 +46,10 @@ import { watchLang } from '@varlet/cli/site/utils'
 export default {
   name: 'DialogExample',
   components: {
-    [Dialog.Component.name]: Dialog.Component,
-    [Button.name]: Button,
-    [Icon.name]: Icon,
-    [Cell.name]: Cell,
+    VarDialog: Dialog.Component,
+    VarButton,
+    VarIcon,
+    VarCell,
     AppType,
   },
   setup() {
