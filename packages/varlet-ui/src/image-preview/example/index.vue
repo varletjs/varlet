@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import VarImagePreview from '../index'
+import ImagePreview from '../index'
 import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Snackbar from '../../snackbar'
@@ -38,7 +38,7 @@ import context from '../../context'
 export default defineComponent({
   name: 'ImagePreviewExample',
   components: {
-    VarImagePreview: VarImagePreview.Component,
+    VarImagePreview: ImagePreview.Component,
     VarButton,
     AppType,
   },
@@ -55,7 +55,7 @@ export default defineComponent({
     }
 
     const previewCallback = () => {
-      VarImagePreview({
+      ImagePreview({
         images,
         onChange: (index) => {
           console.log('index', index)
@@ -77,7 +77,7 @@ export default defineComponent({
 
     return {
       preview() {
-        VarImagePreview(image)
+        ImagePreview(image)
       },
       previewCallback,
       pack,

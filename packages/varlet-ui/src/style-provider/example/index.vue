@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import VarStyleProvider from '../index'
+import StyleProvider from '../index'
 import VarRate from '../../rate'
 import VarSwitch from '../../switch'
 import VarButton from '../../button'
@@ -24,7 +24,7 @@ import { use, pack } from './locale'
 export default {
   name: 'StyleProviderExample',
   components: {
-    VarStyleProvider: VarStyleProvider.Component,
+    VarStyleProvider: StyleProvider.Component,
     VarRate,
     VarSwitch,
     VarButton,
@@ -57,7 +57,7 @@ export default {
 
     const toggleRootTheme = () => {
       const color = window.getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim()
-      VarStyleProvider({
+      StyleProvider({
         '--color-primary': color === '#3a7afe' ? '#000' : '#3a7afe',
       })
     }
@@ -75,7 +75,7 @@ export default {
     })
 
     onUnmounted(() => {
-      VarStyleProvider({
+      StyleProvider({
         '--color-primary': '#3a7afe',
       })
     })

@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import VarActionSheet from '../index'
+import ActionSheet from '../index'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarButton from '../../button'
 import Snackbar from '../../snackbar'
@@ -36,7 +36,7 @@ import context from '../../context'
 export default {
   name: 'ActionSheetExample',
   components: {
-    VarActionSheet: VarActionSheet.Component,
+    VarActionSheet: ActionSheet.Component,
     VarButton,
     AppType,
   },
@@ -97,13 +97,13 @@ export default {
     const show4 = ref(false)
 
     const createBasic = async () => {
-      const action = await VarActionSheet({ actions: rawActions })
+      const action = await ActionSheet({ actions: rawActions })
 
       action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
     }
 
     const modifyTitle = async () => {
-      const action = await VarActionSheet({
+      const action = await ActionSheet({
         actions: rawActions,
         title: pack.value.customTitle,
       })
@@ -112,7 +112,7 @@ export default {
     }
 
     const disableAction = async () => {
-      const action = await VarActionSheet({
+      const action = await ActionSheet({
         actions: rawDisabledActions,
       })
 
@@ -120,7 +120,7 @@ export default {
     }
 
     const customActionStyles = async () => {
-      const action = await VarActionSheet({
+      const action = await ActionSheet({
         actions: rawCustomStyleActions,
       })
 
@@ -128,7 +128,7 @@ export default {
     }
 
     const disableCloseOnClickAction = () => {
-      VarActionSheet({
+      ActionSheet({
         actions: [
           {
             name: 'Item 01',

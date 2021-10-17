@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import VarDialog from '../index'
+import Dialog from '../index'
 import VarButton from '../../button'
 import VarIcon from '../../icon'
 import Snackbar from '../../snackbar'
@@ -46,7 +46,7 @@ import { watchLang } from '@varlet/cli/site/utils'
 export default {
   name: 'DialogExample',
   components: {
-    VarDialog: VarDialog.Component,
+    VarDialog: Dialog.Component,
     VarButton,
     VarIcon,
     VarCell,
@@ -67,21 +67,21 @@ export default {
     }
 
     const createBasic = () =>
-      VarDialog({
+      Dialog({
         message: pack.value.message,
       })
 
-    const createAction = async () => actions[await VarDialog(pack.value.message)]()
+    const createAction = async () => actions[await Dialog(pack.value.message)]()
 
     const modifyTitle = () => {
-      VarDialog({
+      Dialog({
         title: pack.value.title,
         message: pack.value.message,
       })
     }
 
     const hideButton = () => {
-      VarDialog({
+      Dialog({
         message: pack.value.message,
         confirmButton: false,
         cancelButton: false,
@@ -98,7 +98,7 @@ export default {
     }
 
     const asyncClose = () => {
-      VarDialog({
+      Dialog({
         message: pack.value.message,
         onBeforeClose,
       })

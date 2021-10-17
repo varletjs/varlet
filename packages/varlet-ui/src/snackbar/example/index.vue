@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import VarSnackbar from '../index'
+import Snackbar from '../index'
 import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { onUnmounted, reactive, toRefs } from 'vue'
@@ -67,7 +67,7 @@ import context from '../../context'
 export default {
   name: 'SnackbarExample',
   components: {
-    VarSnackbar: VarSnackbar.Component,
+    VarSnackbar: Snackbar.Component,
     VarButton,
     AppType,
   },
@@ -86,32 +86,32 @@ export default {
 
     const create = (type) => {
       const text = type === 'loading' ? pack.value.wait : pack.value.text
-      VarSnackbar[type](text)
+      Snackbar[type](text)
 
       if (type === 'loading') {
         setTimeout(() => {
-          VarSnackbar.success(pack.value.loaded)
+          Snackbar.success(pack.value.loaded)
         }, 2000)
       }
     }
 
     const createSnackbar = (type) => {
       if (type === 'time') {
-        VarSnackbar({
+        Snackbar({
           content: pack.value.text,
           duration: 1000,
         })
       }
 
       if (type === 'position') {
-        VarSnackbar({
+        Snackbar({
           content: pack.value.text,
           position: 'bottom',
         })
       }
 
       if (!type) {
-        VarSnackbar(pack.value.text)
+        Snackbar(pack.value.text)
       }
     }
 
