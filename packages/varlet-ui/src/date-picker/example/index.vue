@@ -46,7 +46,7 @@
 <script>
 import { reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import DatePicker from '..'
+import VarDatePicker from '..'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
 
@@ -54,7 +54,7 @@ export default {
   name: 'DatePickerExample',
   components: {
     AppType,
-    [DatePicker.name]: DatePicker,
+    VarDatePicker,
   },
   setup() {
     const dates = reactive({

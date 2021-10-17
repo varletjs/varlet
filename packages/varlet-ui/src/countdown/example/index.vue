@@ -36,9 +36,9 @@
 
 <script>
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Countdown from '..'
+import VarCountdown from '..'
 import Snackbar from '../../snackbar'
-import Button from '../../button'
+import VarButton from '../../button'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
@@ -46,8 +46,8 @@ import { watchLang } from '@varlet/cli/site/utils'
 export default {
   name: 'CountdownExample',
   components: {
-    [Countdown.name]: Countdown,
-    [Button.name]: Button,
+    VarCountdown,
+    VarButton,
     AppType,
   },
   setup() {

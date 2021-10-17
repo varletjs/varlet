@@ -50,8 +50,8 @@
 </template>
 
 <script>
-import Popup from '..'
-import Button from '../../button'
+import VarPopup from '..'
+import VarButton from '../../button'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
@@ -62,8 +62,8 @@ import { pack, use } from './locale'
 export default {
   name: 'PopupExample',
   components: {
-    [Popup.name]: Popup,
-    [Button.name]: Button,
+    VarPopup,
+    VarButton,
     AppType,
   },
   setup() {

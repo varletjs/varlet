@@ -37,9 +37,9 @@
 </template>
 
 <script>
-import Input from '..'
-import Button from '../../button'
-import Icon from '../../icon'
+import VarInput from '..'
+
+import VarIcon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { reactive, toRefs } from 'vue'
 import { use, pack } from './locale'
@@ -48,9 +48,8 @@ import { watchLang } from '@varlet/cli/site/utils'
 export default {
   name: 'InputExample',
   components: {
-    [Input.name]: Input,
-    [Button.name]: Button,
-    [Icon.name]: Icon,
+    VarInput,
+    VarIcon,
     AppType,
   },
   setup() {

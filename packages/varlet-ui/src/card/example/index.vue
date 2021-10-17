@@ -28,8 +28,8 @@
 
 <script>
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Button from '../../button'
-import Card from '..'
+import VarButton from '../../button'
+import VarCard from '..'
 import context from '../../context'
 import { pack, use } from './locale'
 import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
@@ -38,8 +38,8 @@ import { onUnmounted } from 'vue'
 export default {
   name: 'CardExample',
   components: {
-    [Card.name]: Card,
-    [Button.name]: Button,
+    VarButton,
+    VarCard,
     AppType,
   },
   setup() {

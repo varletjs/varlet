@@ -134,11 +134,11 @@
 
 <script>
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Tabs from '..'
-import Tab from '../../tab'
-import Icon from '../../icon'
-import TabsItems from '../../tabs-items'
-import TabItem from '../../tab-item'
+import VarTabs from '..'
+import VarTab from '../../tab'
+import VarIcon from '../../icon'
+import VarTabsItems from '../../tabs-items'
+import VarTabItem from '../../tab-item'
 import context from '../../context'
 import { use, pack } from './locale'
 import { onUnmounted, reactive, toRefs } from 'vue'
@@ -147,11 +147,11 @@ import { watchPlatform, watchLang } from '@varlet/cli/site/utils'
 export default {
   name: 'TabsExample',
   components: {
-    [Tabs.name]: Tabs,
-    [Tab.name]: Tab,
-    [TabsItems.name]: TabsItems,
-    [TabItem.name]: TabItem,
-    [Icon.name]: Icon,
+    VarTabs,
+    VarTab,
+    VarTabsItems,
+    VarTabItem,
+    VarIcon,
     AppType,
   },
   setup() {

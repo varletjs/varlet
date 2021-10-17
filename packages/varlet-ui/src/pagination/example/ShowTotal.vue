@@ -16,14 +16,14 @@
 </template>
 
 <script>
-import Pagination from '../Pagination'
+import VarPagination from '../Pagination'
 import { watchLang } from '@varlet/cli/site/utils'
 import { pack, use } from './locale'
 
 export default {
   name: 'BasicUse',
   components: {
-    [Pagination.name]: Pagination,
+    VarPagination,
   },
   setup() {
     watchLang(use, 'pc')

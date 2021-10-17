@@ -52,17 +52,17 @@
 </template>
 
 <script>
-import Image from '..'
+import VarImage from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Row from '../../row'
+import VarRow from '../../row'
 import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 export default {
   name: 'ImageExample',
   components: {
-    [Image.name]: Image,
-    [Row.name]: Row,
+    VarImage,
+    VarRow,
     AppType,
   },
   setup() {

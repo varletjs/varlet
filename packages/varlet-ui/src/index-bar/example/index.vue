@@ -10,18 +10,18 @@
 
 <script>
 import { ref, onMounted } from 'vue'
-import IndexAnchor from '../../index-anchor/IndexAnchor.vue'
-import IndexBar from '..'
-import Cell from '../../cell'
+import VarIndexAnchor from '../../index-anchor/IndexAnchor.vue'
+import VarIndexBar from '..'
+import VarCell from '../../cell'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'IndexBarExample',
   components: {
-    [IndexBar.name]: IndexBar,
-    [IndexAnchor.name]: IndexAnchor,
-    [Cell.name]: Cell,
+    VarIndexBar,
+    VarIndexAnchor,
+    VarCell,
   },
   setup() {
     const list = ref([])

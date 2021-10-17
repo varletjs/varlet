@@ -1,3 +1,4 @@
+Var
 <template>
   <app-type>{{ pack.alignmentMethods }}</app-type>
   <div class="block-1">
@@ -105,9 +106,9 @@
 </template>
 
 <script>
-import Menu from '..'
-import Button from '../../button'
-import Cell from '../../cell'
+import VarMenu from '..'
+import VarButton from '../../button'
+import VarCell from '../../cell'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
@@ -118,9 +119,9 @@ import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 export default {
   name: 'MenuExample',
   components: {
-    [Menu.name]: Menu,
-    [Button.name]: Button,
-    [Cell.name]: Cell,
+    VarMenu,
+    VarButton,
+    VarCell,
     AppType,
   },
   setup() {
