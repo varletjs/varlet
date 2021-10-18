@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.6](https://github.com/haoziqaq/varlet/compare/v1.22.4...v1.22.6) (2021-10-18)
+
+
+### Bug Fixes
+
+* **slider/types:** fix template types ([31da191](https://github.com/haoziqaq/varlet/commit/31da19127549971732fb5f28289ee52060232a7c))
+* **ui/checkbox, radio:** fix prop types ([219cab8](https://github.com/haoziqaq/varlet/commit/219cab8f17d2fbedc7c186a2e61191a8676f779d))
+* **ui/pagination, cli/site:** fix size and total cannot be centered vertically in the pagination, ad ([ad3eb81](https://github.com/haoziqaq/varlet/commit/ad3eb81269cdb005bb41a8c8127bb07bdc62ff91))
+* fix types ([f9a372f](https://github.com/haoziqaq/varlet/commit/f9a372fb86268fa59903ef4b0c3c519cdefcf722))
+* **snackbar/types:** fix types of related loading props ([0e8d4f4](https://github.com/haoziqaq/varlet/commit/0e8d4f4230e40e5e5f431a7246cac38984b2c381))
+* **ui:** fix types ([ead022f](https://github.com/haoziqaq/varlet/commit/ead022f620f05993229682f304060530ce856f7e))
+* **ui/types:** fix types ([c87784d](https://github.com/haoziqaq/varlet/commit/c87784d4c8e32584a7a245854365259f95849fbe))
+
+
+### Reverts
+
+* revert slider types change ([b897c3c](https://github.com/haoziqaq/varlet/commit/b897c3c2b58b4213f1b8dd1d2f84a1a2bdd4e67a))
+
+
+
+
+
 ## [1.22.4](https://github.com/haoziqaq/varlet/compare/v1.22.3...v1.22.4) (2021-10-14)
 
 

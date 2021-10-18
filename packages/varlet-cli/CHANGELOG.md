@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.6](https://github.com/haoziqaq/varlet/compare/v1.22.4...v1.22.6) (2021-10-18)
+
+
+### Bug Fixes
+
+* **cli/jest:** add root config check ([052a338](https://github.com/haoziqaq/varlet/commit/052a338c9860b6d7d92e652dea0efdd8fbe41217))
+* **cli/site:** optimize site style ([aaec99e](https://github.com/haoziqaq/varlet/commit/aaec99ee9abcf6807e5629e5f07a7475452b6b5a))
+* **ui/pagination, cli/site:** fix size and total cannot be centered vertically in the pagination, ad ([ad3eb81](https://github.com/haoziqaq/varlet/commit/ad3eb81269cdb005bb41a8c8127bb07bdc62ff91))
+
+
+
+
+
 ## [1.22.4](https://github.com/haoziqaq/varlet/compare/v1.22.3...v1.22.4) (2021-10-14)
 
 
