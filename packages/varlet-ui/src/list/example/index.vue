@@ -1,5 +1,5 @@
 <template>
-  <var-tabs v-model:active="current" sticky offset-top="50px" style="margin-bottom: 10px">
+  <var-tabs v-model:active="current" sticky offset-top="54px" style="margin-bottom: 10px">
     <var-tab>{{ pack.basicUsage }}</var-tab>
     <var-tab>{{ pack.loadFail }}</var-tab>
     <var-tab>{{ pack.tipText }}</var-tab>
