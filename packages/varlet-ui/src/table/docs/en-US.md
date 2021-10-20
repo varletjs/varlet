@@ -128,7 +128,7 @@ export default {
 
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `fullWidth` | The width of the `table` (including the scrollable part)	| _string \| number_ | `100%` |
+| `full-Width` | The width of the `table` (including the scrollable part)	| _string \| number_ | `100%` |
 
 ### Slots
 

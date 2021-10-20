@@ -24,7 +24,7 @@ The default display mode is recommended for small-screen devices. See the mobile
 
 #### Hide Size Changer
 
-Use `showSizeChanger` prop to hide size changer.
+Use `show-size-changer` prop to hide size changer.
 
 ```html
 <var-pagination :current="3" :total="120" :show-size-changer="false"/>
@@ -64,7 +64,7 @@ import Basic from '../example/Basic.vue'
 
 #### Enable page number to jump quickly
 
-Use `showQuickJumper` prop to enable page number to jump quickly.
+Use `show-quick-jumper` prop to enable page number to jump quickly.
 
 ```vue
 import QuickJumper from '../example/QuickJumper.vue'
@@ -81,7 +81,7 @@ import QuickJumper from '../example/QuickJumper.vue'
 
 #### Size Option
 
-Use `showSizeChanger` hide size changer and use `sizeOption` prop set the number of `size` that can be chosen.
+Use `show-size-changer` hide size changer and use `size-option` prop set the number of `size` that can be chosen.
 
 ```vue
 import SizeOption from '../example/SizeOption.vue'
@@ -136,11 +136,11 @@ import Disabled from '../example/Disabled.vue'
 | `total` | Total number of data items | _string \| number_ | `0` |
 | `simple` | Whether to use simple mode | _boolean_ | `true` |
 | `disabled` | Disable pagination | _boolean_ | `false` |
-| `showSizeChanger` | Whether to show `size` select | _boolean_ | `true` |
-| `showQuickJumper` | Whether you can jump to pages directly	 | _boolean_ | `false` |
-| `maxPagerCount` | Number of buttons displayed between ellipses	| _number_ | `3` |
-| `sizeOption` | Specify the sizeChanger options	 | _number[]_ | `[10, 20, 50, 100]` |
-| `showTotal` | Show page item's title	 | _function(total, range)_ | `-` |
+| `show-size-changer` | Whether to show `size` select | _boolean_ | `true` |
+| `show-quick-jumper` | Whether you can jump to pages directly	 | _boolean_ | `false` |
+| `max-pager-count` | Number of buttons displayed between ellipses	| _number_ | `3` |
+| `size-option` | Specify the sizeChanger options	 | _number[]_ | `[10, 20, 50, 100]` |
+| `show-total` | Show page item's title	 | _function(total, range)_ | `-` |
 
 ### Events
 
