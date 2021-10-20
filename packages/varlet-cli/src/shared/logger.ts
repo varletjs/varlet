@@ -2,7 +2,7 @@ import chalk from 'chalk'
 
 export default {
   info(text: string) {
-    console.log(chalk.hex('#00afef')(text))
+    console.log(text)
   },
   success(text: string) {
     console.log(chalk.hex('#00c48f')(text))
