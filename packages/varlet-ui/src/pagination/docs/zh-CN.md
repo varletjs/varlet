@@ -24,7 +24,7 @@ createApp().use(Pagination)
 
 #### 隐藏 size 控制器
 
-使用 `showSizeChanger` 可以控制 `size` 控制器的显示和隐藏。
+使用 `show-size-changer` 可以控制 `size` 控制器的显示和隐藏。
 
 ```html
 <var-pagination :current="3" :total="120" :show-size-changer="false"/>
@@ -64,7 +64,7 @@ import Basic from '../example/Basic.vue'
 
 #### 开启页码快速跳转
 
-使用 `showQuickJumper` 属性开启页面快速跳转
+使用 `show-quick-jumper` 属性开启页面快速跳转
 
 ```vue
 import QuickJumper from '../example/QuickJumper.vue'
@@ -81,8 +81,8 @@ import QuickJumper from '../example/QuickJumper.vue'
 
 #### Size 配置
 
-使用 `showSizeChanger` 可以隐藏 `size` 切换器。
-使用 `sizeOption` 指定可以显示的条数。
+使用 `show-size-changer` 可以隐藏 `size` 切换器。
+使用 `size-option` 指定可以显示的条数。
 
 ```vue
 import SizeOption from '../example/SizeOption.vue'
@@ -137,11 +137,11 @@ import Disabled from '../example/Disabled.vue'
 | `total` | 总条数 | _string \| number_ | `0` |
 | `simple` | 是否为简单模式 | _boolean_ | `true` |
 | `disabled` | 禁用分页 | _boolean_ | `false` |
-| `showSizeChanger` | 是否显示 `size` 切换器 | _boolean_ | `true` |
-| `showQuickJumper` | 是否可以快速跳转至某页	 | _boolean_ | `false` |
-| `maxPagerCount` | 省略号间显示的按钮数量	 | _number_ | `3` |
-| `sizeOption` | 指定每页可以显示多少条	 | _number[]_ | `[10, 20, 50, 100]` |
-| `showTotal` | 用于显示数据总量和当前数据顺序	 | _function(total, range)_ | `-` |
+| `show-size-changer` | 是否显示 `size` 切换器 | _boolean_ | `true` |
+| `show-quick-jumper` | 是否可以快速跳转至某页	 | _boolean_ | `false` |
+| `max-pager-count` | 省略号间显示的按钮数量	 | _number_ | `3` |
+| `size-option` | 指定每页可以显示多少条	 | _number[]_ | `[10, 20, 50, 100]` |
+| `show-total` | 用于显示数据总量和当前数据顺序	 | _function(total, range)_ | `-` |
 
 ### 事件
 

@@ -128,7 +128,7 @@ export default {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `fullWidth` | `table` 的宽度(包含可滚动部分)	| _string \| number_ | `100%` |
+| `full-Width` | `table` 的宽度(包含可滚动部分)	| _string \| number_ | `100%` |
 
 ### 插槽
 
