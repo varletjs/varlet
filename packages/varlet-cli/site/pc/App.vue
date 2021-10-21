@@ -175,9 +175,8 @@ iframe {
     margin: 20px 4px 20px;
     padding: 40px;
     border-top: 6px solid var(--site-config-color-primary);
-    border-bottom: 6px solid var(--site-config-color-primary);
     border-radius: 2px;
-    box-shadow: 0 0 14px 6px #eee;
+    box-shadow: 0 0 20px 6px #eee;
 
     &__image {
       width: 180px;
