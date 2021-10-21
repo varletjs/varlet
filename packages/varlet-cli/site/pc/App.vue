@@ -111,7 +111,7 @@ export default defineComponent({
         componentName.value = getComponentNameByMenuName(_menuName)
         menuName.value = _menuName
         language.value = lang
-        document.title = get(config, 'pc.title')[lang]
+        document.title = get(config, 'pc.title')[lang] as string
       },
       { immediate: true }
     )
