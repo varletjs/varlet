@@ -36,6 +36,7 @@
         class="varlet-site-header__link"
         target="_blank"
         :href="github"
+        v-ripple
         v-if="github"
       >
         <var-site-icon name="github" color="#666" :size="28" />
@@ -185,6 +186,7 @@ export default {
     transition: background-color 0.3s;
     cursor: pointer;
     text-decoration: none;
+    color: #555;
 
     a {
       text-decoration: none;
@@ -198,7 +200,7 @@ export default {
   &__language-list {
     background: #fff;
     cursor: pointer;
-    color: #666;
+    color: #555;
     border-radius: 2px;
     position: absolute;
     top: 40px;
