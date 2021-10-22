@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.7](https://github.com/haoziqaq/varlet/compare/v1.22.6...v1.22.7) (2021-10-22)
+
+
+### Bug Fixes
+
+* **ui/site:** modify highlight.css color ([203432e](https://github.com/haoziqaq/varlet/commit/203432e12f8c9e22b92d1e00b790db708f0ac663))
+* **ui/tab-item:** add var-tab-item-cover attr ([934a833](https://github.com/haoziqaq/varlet/commit/934a833bfa9118c0c8c25e2796a1d0e7100ce84f))
+
+
+
+
+
 ## [1.22.6](https://github.com/haoziqaq/varlet/compare/v1.22.4...v1.22.6) (2021-10-18)
 
 

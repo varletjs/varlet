@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.7](https://github.com/haoziqaq/varlet/compare/v1.22.6...v1.22.7) (2021-10-22)
+
+
+### Bug Fixes
+
+* **cli/dev:** add varlet config file watcher ([28b4ea9](https://github.com/haoziqaq/varlet/commit/28b4ea9a6b28a83dd57e12914f256634c8822297))
+* **cli/dev:** fixed bug of repeat restart server ([e14f090](https://github.com/haoziqaq/varlet/commit/e14f090cd8a3b932680acb8871ffd8cdd562f2a0))
+* **cli/site:** optimize github link style ([47db851](https://github.com/haoziqaq/varlet/commit/47db8511df8234a6a713d6bdbbf6f9c6f5bfd7e8))
+* **cli/site:** optimize site ([40161bf](https://github.com/haoziqaq/varlet/commit/40161bff3776760933c3f99e6b13ab656fa456e8))
+
+
+
+
+
 ## [1.22.6](https://github.com/haoziqaq/varlet/compare/v1.22.4...v1.22.6) (2021-10-18)
 
 
