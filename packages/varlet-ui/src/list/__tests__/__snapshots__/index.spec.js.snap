@@ -42,9 +42,9 @@ exports[`test list example 1`] = `
 </div>
 <div class=\\"var-swipe var-tabs-items\\">
   <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 300ms;\\">
-    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\"></div>
-    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\"></div>
-    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\"></div>
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
   </div>
   <!--v-if-->
 </div>"
