@@ -1,5 +1,5 @@
 <template>
-  <var-swipe-item class="var-tab-item" :class="[!current && 'var-tab-item--inactive']">
+  <var-swipe-item class="var-tab-item" var-tab-item-cover :class="[!current && 'var-tab-item--inactive']">
     <slot v-if="initSlot" />
   </var-swipe-item>
 </template>
