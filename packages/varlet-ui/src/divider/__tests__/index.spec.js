@@ -20,23 +20,30 @@ test('test divider inset and vertical prop', async () => {
       inset: true,
     },
   })
+  
+  expect(wrapper.classes('var-divider--inset')).toBe(true)
 
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setProps({
     inset: 36,
   })
+  expect(wrapper.attributes('style')).toMatch('width: calc(100% - 36px); left: 36px;')
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setProps({
     inset: '-36px',
   })
+  expect(wrapper.attributes('style')).toMatch('width: calc(100% - 36px); left: 0px;')
+
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setProps({
     inset: '-36px',
     vertical: true,
   })
+  expect(wrapper.attributes('style')).toMatch('height: calc(80% - 36px);')
+  console.log(wrapper.html());
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
@@ -49,12 +56,14 @@ test('test divider dashed and margin prop', async () => {
   await wrapper.setProps({
     dashed: true,
   })
+  expect(wrapper.classes('var-divider--dashed')).toBe(true)
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setProps({
     dashed: false,
     margin: '36px 0',
   })
+  expect(wrapper.attributes('style')).toMatch('margin: 36px 0px;')
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })

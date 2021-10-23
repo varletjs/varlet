@@ -38,7 +38,6 @@ test('test icon transition name', async () => {
       name: 'check',
     },
   })
-
   expect(wrapper.find('.var-icon-check').exists()).toBeTruthy()
   expect(wrapper.element.style.transition).toEqual('all 0ms')
 
@@ -46,7 +45,6 @@ test('test icon transition name', async () => {
     transition: 300,
     name: 'error',
   })
-
   await delay(400)
 
   expect(wrapper.find('.var-icon-error').exists()).toBeTruthy()
@@ -61,6 +59,7 @@ test('test icon namespace', () => {
       namespace: 'custom-icon',
     },
   })
+  expect(wrapper.find('.custom-icon-check').exists()).toBeTruthy()
 
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
@@ -75,7 +74,10 @@ test('test icon styles', () => {
       transition: 0,
     },
   })
-
+  expect(wrapper.find('.var-icon-check').exists()).toBeTruthy()
+  expect(wrapper.element.style.transition).toEqual('all 0ms')
+  expect(wrapper.element.style.fontSize).toMatch('36px')
+  expect(wrapper.element.style.color).toMatch('rgb(0, 0, 0)')
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })

@@ -40,6 +40,9 @@ test('test chip color & textColor', () => {
     },
   })
 
+  expect(wrapper.find('.var-chip').attributes('style')).toMatch('color: rgb(0, 0, 0)')
+  expect(wrapper.find('.var-chip').attributes('style')).toMatch('background: rgb(0, 0, 0)')
+
   expect(wrapper.html()).toMatchSnapshot()
 })
 
@@ -58,5 +61,11 @@ test('test chip styles', () => {
     },
   })
 
+  expect(wrapper.find('.var-chip').classes('var-chip--round')).toBe(true)
+  expect(wrapper.find('.var-chip').classes('var-chip--large')).toBe(true)
+  expect(wrapper.find('.var-chip').classes('var-chip--plain')).toBe(true)
+  expect(wrapper.find('.var-chip--close').exists()).toBe(true)
+  expect(wrapper.find('.var-icon-fire').exists()).toBe(true)
+  expect(wrapper.text()).toBe('chip text')
   expect(wrapper.html()).toMatchSnapshot()
 })
