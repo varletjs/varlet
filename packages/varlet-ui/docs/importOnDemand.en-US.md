@@ -4,7 +4,10 @@
 The on-demand import avoids the full import of components and can effectively reduce the size of the distribution package.
 
 
-### Install method
+### Manual Import
+
+Each component is a `Vue plugin` and is composed of `component logic` and `style files`.
+It is manually install and used as follows.
 
 ```js
 import { createApp } from 'vue'
@@ -14,9 +17,11 @@ import '@varlet/ui/es/button/style/index.js'
 createApp().use(Button)
 ```
 
-The logical part and style part of the component are installed as above, but this setup is relatively tedious
-Best practices based on `Webpack` and `Vite` build tools are recommended here
-### Webpack
+### Auto Import
+
+All components declared in the template are automatically scanned by the plug-in. 
+The [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) will automatically import `component logic` and `style files` and `use components`
+
 ```shell
 # Install plugin
 # npm
@@ -25,55 +30,37 @@ npm i babel-plugin-import -D
 yarn add babel-plugin-import -D
 ```
 
+#### Vue Cli
 ```js
-// babel.config.js
+// vue.config.js
+const Components = require('unplugin-vue-components/webpack')
+const { VarletUIResolver } = require('unplugin-vue-components/resolvers')
+
 module.exports = {
-  plugins: [
-    [
-      'import',
-      {
-        libraryName: '@varlet/ui',
-        libraryDirectory: 'es',
-        style: true,
-      },
-      '@varlet/ui',
-    ],
-  ],
-};
+  configureWebpack: {
+    plugins: [
+      Components({
+        resolvers: [VarletUIResolver()],
+        dts: true
+      })
+    ]
+  }
+}
 ```
 
-After the configuration is complete, 
-the plugin automatically loads the style files required for the component when it is introduced, 
-using the following method
-
-```js
-import { createApp } from 'vue'
-import { Button } from '@varlet/ui'
-
-createApp().use(Button)
-```
-
-### Vite
-
-```shell
-# Install plugin
-# npm
-npm i unplugin-vue-components -D
-# yarn
-yarn add unplugin-vue-components -D
-```
+#### Vite
 
 ```js
 // vite.config.js
 import vue from '@vitejs/plugin-vue'
-import viteComponents from 'unplugin-vue-components/vite'
+import components from 'unplugin-vue-components/vite'
 import { VarletUIResolver } from 'unplugin-vue-components/resolvers'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [
     vue(),
-    viteComponents({
+    components({
       resolvers: [VarletUIResolver()],
       dts: true,
     })
@@ -81,28 +68,15 @@ export default defineConfig({
 })
 ```
 
-After the configuration is completed, all components declared in the template do not need to be registered. 
-The plug-in will automatically introduce component styles and registered components.
+After completing the configuration, you can use it as follows
 
 ```html
-<var-button>Default Button</var-button>
+<template>
+  <var-button>Default Button</var-button>
+</template>
 ```
 
-Note that for functional components, you need to manually introduce styles, such as `Dialog`.
 
-```js
-import { Dialog } from '@varlet/ui'
-import '@varlet/ui/es/dialog/style/index.js'
-
-Dialog('Varlet UI UP UP')
-```
-
-Note that for directives, need to be manually registered, such as `Ripple`.
-
-```js
-import { createApp } from 'vue'
-import { Ripple } from '@varlet/ui'
-
-createApp().use(Ripple)
-```
+Note: Components or directive used outside the template cannot be scanned by the plugin and still need to be imported manually. 
+For example, the function call method of the component `Snackbar.loading` or `v-ripple`
 

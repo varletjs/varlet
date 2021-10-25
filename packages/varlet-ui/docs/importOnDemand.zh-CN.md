@@ -3,7 +3,9 @@
 ### 介绍
 按需引入避免了组件的全量导入，可以有效的减少发布包的大小。
 
-### 引入方式
+### 手动引入
+
+每一个组件都是一个`Vue插件`，并由`组件逻辑`和`样式文件`组成，如下方式进行手动引入使用。
 
 ```js
 import { createApp } from 'vue'
@@ -13,66 +15,49 @@ import '@varlet/ui/es/button/style/index.js'
 createApp().use(Button)
 ```
 
-但是这样的引入方式是相对繁琐的，
-接下来推荐基于`Webpack`和`Vite`两种构建工具的最佳实践。
+### 自动引入
 
-### Webpack
-
-```shell
-# 安装插件
-# npm
-npm i babel-plugin-import -D 
-# yarn
-yarn add babel-plugin-import -D
-```
-
-```js
-// babel.config.js
-module.exports = {
-  plugins: [
-    [
-      'import',
-      {
-        libraryName: '@varlet/ui',
-        libraryDirectory: 'es',
-        style: true,
-      },
-      '@varlet/ui',
-    ],
-  ],
-};
-```
-
-完成配置之后，在引入组件时插件会自动加载组件所需的样式文件，使用方式如下。
-
-```js
-import { createApp } from 'vue'
-import { Button } from '@varlet/ui'
-
-createApp().use(Button)
-```
-
-### Vite
+所有声明在模板中的组件，都会被[unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)插件自动扫描，插件会自动引入`组件逻辑`和`样式文件`并`注册组件`。
 
 ```shell
 # 安装插件
 # npm
-npm i unplugin-vue-components -D
+npm i unplugin-vue-components -D 
 # yarn
 yarn add unplugin-vue-components -D
 ```
 
+#### Vue Cli
+```js
+// vue.config.js
+const Components = require('unplugin-vue-components/webpack')
+const { VarletUIResolver } = require('unplugin-vue-components/resolvers')
+
+module.exports = {
+  configureWebpack: {
+    plugins: [
+      Components({
+        resolvers: [VarletUIResolver()],
+        dts: true
+      })
+    ]
+  }
+}
+```
+
+#### Vite
+
 ```js
 // vite.config.js
 import vue from '@vitejs/plugin-vue'
-import viteComponents from 'unplugin-vue-components/vite'
+import components from 'unplugin-vue-components/vite'
 import { VarletUIResolver } from 'unplugin-vue-components/resolvers'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [
     vue(),
-    viteComponents({
+    components({
       resolvers: [VarletUIResolver()],
       dts: true,
     })
@@ -80,28 +65,16 @@ export default defineConfig({
 })
 ```
 
-完成配置之后，所有声明在模板里的组件，无须注册组件，插件会自动引入组件样式和注册组件。
+
+完成配置后如下使用即可
 
 ```html
-<var-button>默认按钮</var-button>
+<template>
+  <var-button>默认按钮</var-button>
+</template>
 ```
 
-注意函数组件，需要手动引入样式，如`Dialog`。
-
-```js
-import { Dialog } from '@varlet/ui'
-import '@varlet/ui/es/dialog/style/index.js'
-
-Dialog('Varlet UI UP UP')
-```
-
-自定义指令，需要手动注册，如`Ripple`
-
-```js
-import { createApp } from 'vue'
-import { Ripple } from '@varlet/ui'
-
-createApp().use(Ripple)
-```
+注意: 在模板以外使用的组件或者自定义指令无法被插件扫描，仍需要手动引入。例如组件的函数调用方式
+`Snackbar.loading`或者`v-ripple`
 
 
