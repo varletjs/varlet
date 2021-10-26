@@ -11,6 +11,7 @@ import {
   HL_DIR,
   HL_TAGS_JSON,
   HL_ATTRIBUTES_JSON,
+  CLI_PACKAGE_JSON,
 } from '../shared/constant'
 import { resolve } from 'path'
 import { isDir, isMD } from '../shared/fsUtils'
@@ -164,7 +165,7 @@ export async function compileTemplateHighlight() {
   const webTypes: Record<string, any> = {
     $schema: 'https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json',
     framework: 'vue',
-    version: '1.0.0',
+    version: require(CLI_PACKAGE_JSON).version,
     name: get(varletConfig, 'title'),
     contributions: {
       html: {
