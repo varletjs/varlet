@@ -21,7 +21,7 @@
   </div>
   <div>
     <app-type>{{ pack.sliderSize }}</app-type>
-    <var-slider v-model="value1" track-height="4" thumb-size="8" range />
+    <var-slider v-model="value10" track-height="4" thumb-size="8" range />
   </div>
   <div>
     <app-type>{{ pack.customStyle }}</app-type>
@@ -79,6 +79,7 @@ export default {
       value7: 50,
       value8: 20,
       value9: [5, 38],
+      value10: [7, 64],
     })
 
     const handleChange = (v) => {

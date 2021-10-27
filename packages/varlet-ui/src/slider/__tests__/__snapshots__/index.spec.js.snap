@@ -107,17 +107,17 @@ exports[`test slider example 1`] = `
     <div class=\\"var-slider-block\\" style=\\"height: 24px; margin: 0px 4px;\\">
       <div class=\\"var-slider__track\\">
         <div class=\\"var-slider__track-background\\" style=\\"height: 4px;\\"></div>
-        <div class=\\"var-slider__track-fill\\" style=\\"width: 26%; left: 24%;\\"></div>
+        <div class=\\"var-slider__track-fill\\" style=\\"width: 57%; left: 7%;\\"></div>
       </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 24%;\\">
+      <div class=\\"var-slider__thumb\\" style=\\"left: 7%;\\">
         <div class=\\"var-slider__thumb-block\\" style=\\"height: 8px; width: 8px;\\"></div>
         <div class=\\"var-slider__thumb-ripple\\" style=\\"height: 0px; width: 0px;\\"></div>
-        <div class=\\"var-slider__thumb-label\\" style=\\"height: 16px; width: 16px;\\"><span>24</span></div>
+        <div class=\\"var-slider__thumb-label\\" style=\\"height: 16px; width: 16px;\\"><span>7</span></div>
       </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 50%;\\">
+      <div class=\\"var-slider__thumb\\" style=\\"left: 64%;\\">
         <div class=\\"var-slider__thumb-block\\" style=\\"height: 8px; width: 8px;\\"></div>
         <div class=\\"var-slider__thumb-ripple\\" style=\\"height: 0px; width: 0px;\\"></div>
-        <div class=\\"var-slider__thumb-label\\" style=\\"height: 16px; width: 16px;\\"><span>50</span></div>
+        <div class=\\"var-slider__thumb-label\\" style=\\"height: 16px; width: 16px;\\"><span>64</span></div>
       </div>
     </div>
     <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
