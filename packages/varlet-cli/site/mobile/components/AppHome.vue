@@ -25,7 +25,7 @@
 import config from '@config'
 import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
-import { watchLang, watchPlatform } from '../../utils'
+import { inIframe, isPhone, watchLang, watchPlatform } from '../../utils'
 
 export default {
   name: 'AppHome',
@@ -57,6 +57,10 @@ export default {
           replace: component.doc
         },
       })
+
+      if (!isPhone() && inIframe()) {
+        window.top.scrollToMenu(component.doc)
+      }
     }
 
     return {

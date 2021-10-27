@@ -2,6 +2,7 @@
   <div class="varlet-site-sidebar var-elevation--3">
     <var-site-cell
       class="varlet-site-sidebar__item"
+      :id="item.doc"
       :class="{
         'varlet-site-sidebar__item--active': item.doc === menuName,
         'varlet-site-sidebar__link': item.type !== menuTypes.TITLE,

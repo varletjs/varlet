@@ -30,6 +30,7 @@ redirect &&
 
 routes.push({
   path: '/home',
+  // @ts-ignore
   component: () => import('./components/AppHome.vue')
 })
 

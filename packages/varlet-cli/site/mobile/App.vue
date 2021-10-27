@@ -77,7 +77,7 @@
 import config from '@config'
 import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { bigCamelize, removeEmpty, setThemes, watchLang } from '../utils'
+import { bigCamelize, inIframe, isPhone, removeEmpty, setThemes, watchLang } from '../utils'
 import { get } from 'lodash-es'
 
 export default defineComponent({
@@ -96,10 +96,18 @@ export default defineComponent({
       language.value = lang
       showMenu.value = false
       window.location.href = `./mobile.html#${route.path}?language=${language.value}&replace=${route.query.replace}`
+
+      if (!isPhone() && inIframe()) {
+        (window.top as any).scrollToMenu(redirect.slice(1))
+      }
     }
 
     const back = () => {
       window.location.href = `./mobile.html#${redirect}?language=${language.value}&replace=${redirect.slice(1)}`
+
+      if (!isPhone() && inIframe()) {
+        (window.top as any).scrollToMenu(redirect.slice(1))
+      }
     }
 
     const toGithub = () => {

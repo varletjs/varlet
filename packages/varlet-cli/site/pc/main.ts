@@ -28,6 +28,7 @@ redirect &&
 
 const router = createRouter({
   history: createWebHashHistory(),
+  scrollBehavior: () => ({ top: 0 }),
   routes,
 })
 
@@ -64,6 +65,16 @@ Object.defineProperty(window, 'onMobileRouteChange', {
     }
 
     router.replace(`/${language}${path}`)
+  }
+})
+
+Object.defineProperty(window, 'scrollToMenu', {
+  value: (docName: string) => {
+    setTimeout(() => {
+      const cell = document.getElementById(docName) as HTMLElement
+      const scroller = cell.parentNode as HTMLElement
+      scroller.scrollTo({ top: cell.offsetTop - scroller.offsetHeight / 2 })
+    })
   }
 })
 
