@@ -11,8 +11,7 @@ createApp().use(Input)
 
 ### Basic Usage
 
-The component automatically analyzes whether the value passed in is a string or a number,
-The same type is returned.
+The behavior of the input box is consistent with the basic content, and the user can always get a string that conforms to the `type rule when inputting
 
 ```js
 import { ref } from 'vue'
@@ -111,9 +110,9 @@ Other values are converted to text as a user prompt.
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| `v-model` | The value of the binding | _string \| number_ | `-` |
+| `v-model` | The value of the binding | _string_ | `-` |
 | `placeholder` | placeholder | _string_ | `-` |
-| `type` | Input type, The optional value is `text` `password` | _string_ | `text` |
+| `type` | Input type, The optional value is `text` `password` `number` | _string_ | `text` |
 | `maxlength` | Maxlength | _string \| number_ | `-` |
 | `textarea` | Is it a textarea | _boolean_ | `false` |  
 | `rows` | Number of lines to display in the textarea | _string \| number_ | `8` |  
@@ -127,7 +126,7 @@ Other values are converted to text as a user prompt.
 | `clearable` | Whether the clearable | _boolean_ | `false` |
 | `resize` | Whether textarea can be dragged to resize | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation, The optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
-| `rules` | The validation rules, Returns `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string \| number) => any>_ | `-` |
+| `rules` | The validation rules, Returns `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string) => any>_ | `-` |
 
 ### Methods
 
@@ -137,7 +136,7 @@ Other values are converted to text as a user prompt.
 | `blur` | Blur | `-` | `-` |
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clearing validate messages | `-` | `-` |
-| `reset` | Clear the value of the binding(The string type is set to `''`,The number type is set to `0`) and validate messages | `-` | `-` |
+| `reset` | Clear the value of the binding and validate messages | `-` | `-` |
 
 ### Events
 
@@ -146,9 +145,9 @@ Other values are converted to text as a user prompt.
 | `focus` | Trigger while focusing | `event: Event` |
 | `blur` | Triggered when out of focus | `event: Event` |
 | `click` | Triggered on Click | `event: Event` |
-| `clear` | Triggered on Clearance | `value: string | number` |
-| `input` | Trigger on input | `value: string | number` <br> `event: Event` |
-| `change` | Trigger on change | `value: string | number` <br> `event: Event` |
+| `clear` | Triggered on Clearance | `value: string` |
+| `input` | Trigger on input | `value: string`, `event: Event` |
+| `change` | Trigger on change | `value: string`, `event: Event` |
 
 ### Slots
 

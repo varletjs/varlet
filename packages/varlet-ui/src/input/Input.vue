@@ -98,7 +98,7 @@ import VarFormDetails from '../form-details'
 import VarIcon from '../icon'
 import { defineComponent, getCurrentInstance, ref, computed, nextTick } from 'vue'
 import { props } from './props'
-import { isEmpty, isNumber, toNumber } from '../utils/shared'
+import { isEmpty } from '../utils/shared'
 import { useValidation } from '../utils/components'
 import { useForm } from '../form/provide'
 import type { Ref, ComputedRef } from 'vue'
@@ -116,20 +116,6 @@ export default defineComponent({
     const id: Ref<string> = ref(`var-input-${getCurrentInstance()!.uid}`)
     const el: Ref<HTMLInputElement | null> = ref(null)
     const isFocus: Ref<boolean> = ref(false)
-    const isNumberValue: ComputedRef<boolean> = computed(() => isNumber(props.modelValue))
-    const type: ComputedRef<'number' | 'text' | 'password'> = computed(() => {
-      const { type } = props
-
-      if (type === 'password') {
-        return type
-      }
-
-      if (isNumberValue.value) {
-        return 'number'
-      }
-
-      return 'text'
-    })
     const maxlengthText: ComputedRef<string> = computed(() => {
       const { maxlength, modelValue } = props
 
@@ -170,8 +156,6 @@ export default defineComponent({
       }
     }
 
-    const normalizeValue = (value: string) => (isNumberValue.value ? toNumber(value) : value)
-
     const handleFocus = (e: FocusEvent) => {
       isFocus.value = true
 
@@ -188,17 +172,16 @@ export default defineComponent({
 
     const handleInput = (e: Event) => {
       const { value } = e.target as HTMLInputElement
-      const normalizedValue = normalizeValue(value)
 
-      props['onUpdate:modelValue']?.(normalizedValue)
-      props.onInput?.(normalizedValue, e)
+      props['onUpdate:modelValue']?.(value)
+      props.onInput?.(value, e)
       validateWithTrigger('onInput')
     }
 
     const handleChange = (e: Event) => {
       const { value } = e.target as HTMLInputElement
 
-      props.onChange?.(normalizeValue(value), e)
+      props.onChange?.(value, e)
       validateWithTrigger('onChange')
     }
 
@@ -209,9 +192,8 @@ export default defineComponent({
         return
       }
 
-      const value = isNumberValue.value ? 0 : ''
-      props['onUpdate:modelValue']?.(value)
-      onClear?.(value)
+      props['onUpdate:modelValue']?.('')
+      onClear?.('')
 
       validateWithTrigger('onClear')
     }
@@ -230,7 +212,7 @@ export default defineComponent({
 
     // expose
     const reset = () => {
-      props['onUpdate:modelValue']?.(isNumberValue.value ? 0 : '')
+      props['onUpdate:modelValue']?.('')
       resetValidation()
     }
 
@@ -257,7 +239,6 @@ export default defineComponent({
 
     return {
       el,
-      type,
       id,
       isFocus,
       errorMessage,
