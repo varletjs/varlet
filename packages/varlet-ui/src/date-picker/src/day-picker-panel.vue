@@ -111,7 +111,7 @@ export default defineComponent({
       return WEEK_HEADER.slice(index).concat(WEEK_HEADER.slice(0, index))
     })
 
-    const getDayAbbr = (key: number): number => pack.value.weekDictionary[key].abbr
+    const getDayAbbr = (key: number): number => pack.value.datePickerWeekDict[key].abbr
 
     const filterDay = (day: number): number | string => (day > 0 ? day : '')
 

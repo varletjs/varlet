@@ -14,7 +14,7 @@ export default {
   pickerConfirmButtonText: 'Confirm',
   pickerCancelButtonText: 'Cancel',
   // date-picker
-  monthDictionary: {
+  datePickerMonthDict: {
     '01': {
       name: 'January',
       abbr: 'JAN',
@@ -64,7 +64,7 @@ export default {
       abbr: 'DEC',
     },
   },
-  weekDictionary: {
+  datePickerWeekDict: {
     0: {
       name: 'Sunday',
       abbr: 'S',
@@ -94,7 +94,7 @@ export default {
       abbr: 'S',
     },
   },
-  selected: ' selected',
+  datePickerSelected: ' selected',
   // pagination
   paginationItem: '',
   paginationPage: 'page',

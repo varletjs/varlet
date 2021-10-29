@@ -67,7 +67,7 @@ export default defineComponent({
 
       if (type === 'month') return toNumber(previewYear) + forwardOrBackNum.value
 
-      const monthName = pack.value.monthDictionary[previewMonth.index].name
+      const monthName = pack.value.datePickerMonthDict[previewMonth.index].name
       return pack.value.lang === 'zh-CN' ? `${previewYear} ${monthName}` : `${monthName} ${previewYear}`
     })
 

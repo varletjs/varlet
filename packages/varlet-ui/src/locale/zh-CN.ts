@@ -14,7 +14,7 @@ export default {
   pickerConfirmButtonText: '确认',
   pickerCancelButtonText: '取消',
   // date-picker
-  monthDictionary: {
+  datePickerMonthDict: {
     '01': {
       name: '一月',
       abbr: '一月',
@@ -64,7 +64,7 @@ export default {
       abbr: '十二月',
     },
   },
-  weekDictionary: {
+  datePickerWeekDict: {
     0: {
       name: '星期日',
       abbr: '日',
@@ -94,7 +94,7 @@ export default {
       abbr: '六',
     },
   },
-  selected: '个被选择',
+  datePickerSelected: '个被选择',
   // pagination
   paginationItem: '条',
   paginationPage: '页',

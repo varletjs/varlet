@@ -150,8 +150,8 @@ export default defineComponent({
 
       if (range) return `${chooseRangeMonth.value[0]} ~ ${chooseRangeMonth.value[1]}`
 
-      const monthName = pack.value.monthDictionary[chooseMonth.value.index].name
-      return multiple ? `${chooseMonths.value.length}${pack.value.selected}` : monthName
+      const monthName = pack.value.datePickerMonthDict[chooseMonth.value.index].name
+      return multiple ? `${chooseMonths.value.length}${pack.value.datePickerSelected}` : monthName
     })
 
     const getDateTitle: ComputedRef<string> = computed(() => {
@@ -162,13 +162,13 @@ export default defineComponent({
         return `${chooseRangeDay.value[0]} ~ ${chooseRangeDay.value[1]}`
       }
 
-      if (multiple) return `${chooseDays.value.length}${pack.value.selected}`
+      if (multiple) return `${chooseDays.value.length}${pack.value.datePickerSelected}`
 
       const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value.index}-${chooseDay.value}`).day()
       const week: Week = WEEK_HEADER.find((value) => value.index === weekIndex) as Week
-      const weekName = pack.value.weekDictionary[week.index].name
+      const weekName = pack.value.datePickerWeekDict[week.index].name
 
-      const monthName = pack.value.monthDictionary[chooseMonth.value.index].name
+      const monthName = pack.value.datePickerMonthDict[chooseMonth.value.index].name
       const showDay = chooseDay.value.padStart(2, '0')
 
       if (pack.value.lang === 'zh-CN') return `${chooseMonth.value.index}-${showDay} ${weekName.slice(0, 3)}`
