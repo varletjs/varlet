@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.8](https://github.com/haoziqaq/varlet/compare/v1.22.7...v1.22.8) (2021-10-31)
+
+
+### Bug Fixes
+
+* **cli/highlight:** fix web-types version ([636b408](https://github.com/haoziqaq/varlet/commit/636b4088270857e3ada7341d707ecc63ee5c58f4))
+* **cli/site:** optimize site scroll on mobile trigger route change ([536d7b1](https://github.com/haoziqaq/varlet/commit/536d7b1daa30b6b9a8093173f64e394d3a3e69eb))
+
+
+
+
+
 ## [1.22.7](https://github.com/haoziqaq/varlet/compare/v1.22.6...v1.22.7) (2021-10-22)
 
 
