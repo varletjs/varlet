@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.9](https://github.com/haoziqaq/varlet/compare/v1.22.8...v1.22.9) (2021-10-31)
+
+
+### Bug Fixes
+
+* **cli/types:** add global.d.ts for volar ([c99e0c1](https://github.com/haoziqaq/varlet/commit/c99e0c16176f81dc3aa58b5512f9ec66d85156e2))
+
+
+
+
+
 ## [1.22.8](https://github.com/haoziqaq/varlet/compare/v1.22.7...v1.22.8) (2021-10-31)
 
 
