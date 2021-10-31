@@ -11,7 +11,7 @@
 <img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/hl_wb.jpg" alt="webstorm highlight" />
 
 ### VSCode
-安装`Vetur`插件即可
+安装`Volar`插件, 可以在模板中得到类型提示。
 
 <img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/hl_vsc_setting.png" alt="vscode setting" />
 <img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/hl_vsc.png" alt="vscode highlight" />

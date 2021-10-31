@@ -12,7 +12,7 @@ Open the library properties documentation by setting 'editor-> general-> Code Co
 <img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/hl_wb.jpg" alt="webstorm highlight" />
 
 ### VSCode
-Just install the `Vetur` plugin.
+Install the `Volar` plugin, Type hints can be obtained in the template.
 
 <img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/hl_vsc_setting.png" alt="vscode setting" />
 <img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/hl_vsc.png" alt="vscode highlight" />
