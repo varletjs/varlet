@@ -40,8 +40,7 @@ module.exports = {
   configureWebpack: {
     plugins: [
       Components({
-        resolvers: [VarletUIResolver()],
-        dts: true
+        resolvers: [VarletUIResolver()]
       })
     ]
   }
@@ -61,8 +60,7 @@ export default defineConfig({
   plugins: [
     vue(),
     components({
-      resolvers: [VarletUIResolver()],
-      dts: true,
+      resolvers: [VarletUIResolver()]
     })
   ]
 })
