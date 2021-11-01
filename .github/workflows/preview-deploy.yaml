@@ -1,24 +1,15 @@
 name: Preview Deploy
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_run:
+    workflows: ['Preview Build']
+    types: [completed]
 
 jobs:
   preview-deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '16'
-
-      - name: Install dependencies
-        run: yarn bootstrap
-
-      - name: Build site
-        run: cd packages/varlet-ui && yarn build
-
       - name: Update status comment
         uses: actions-cool/maintain-one-comment@v2
         with:
@@ -28,19 +19,37 @@ jobs:
             <!-- Created by Varlet -->
           body-include: '<!-- Created by Varlet -->'
 
+      - name: Download pr number
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: pr
+          workflow: ${{ github.event.workflow.id }}
+          run_id: ${{ github.event.workflow_run.id }}
+
+      - name: Output pr number
+        id: pr
+        run: echo "::set-output name=id::$(<pr.txt)"
+
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: site
+          workflow: ${{ github.event.workflow.id }}
+          run_id: ${{ github.event.workflow_run.id }}
+
       - name: Upload surge service
         run: |
-          npx surge --project ./site --domain https://preview-${{ github.event.number }}-varlet-ui.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+          npx surge --project ./site --domain https://preview-${{ steps.pr.outputs.id }}-varlet-ui.surge.sh --token ${{ secrets.SURGE_TOKEN }}
 
       - name: Update status comment
         uses: actions-cool/maintain-one-comment@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
-            [The preview site has been deployed successfully, click here to go](https://preview-${{ github.event.number }}-varlet-ui.surge.sh)
+            [The preview site has been deployed successfully, click here to go](https://preview-${{ steps.pr.outputs.id }}-varlet-ui.surge.sh)
             <!-- Created by Varlet -->
           body-include: '<!-- Created by Varlet -->'
-          number: ${{ github.event.number }}
+          number: ${{ steps.pr.outputs.id }}
 
       - name: The job has failed
         if: ${{ failure() }}
@@ -51,4 +60,4 @@ jobs:
             Sorry, the preview site deployment failed
             <!-- Created by Varlet -->
           body-include: '<!-- Created by Varlet -->'
-          number: ${{ github.event.number }}
+          number: ${{ steps.pr.outputs.id }}
