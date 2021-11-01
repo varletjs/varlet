@@ -1,0 +1,54 @@
+name: Preview Deploy
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  preview-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: Install dependencies
+        run: yarn bootstrap
+
+      - name: Build site
+        run: cd packages/varlet-ui && yarn build
+
+      - name: update status comment
+        uses: actions-cool/maintain-one-comment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            Hi 😀, The preview site is being deployed...please wait...
+            <!-- Created by Varlet -->
+          body-include: '<!-- Created by Varlet -->'
+
+      - name: Upload surge service
+        run: |
+          npx surge --project ./site --domain https://preview-${{ github.event.number }}-varlet-ui.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+
+      - name: Update status comment
+        uses: actions-cool/maintain-one-comment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            [The preview site has been deployed successfully, click here to go](https://preview-${{ github.event.number }}-varlet-ui.surge.sh)
+            <!-- Created by Varlet -->
+          body-include: '<!-- Created by Varlet -->'
+          number: ${{ github.event.number }}
+
+      - name: The job has failed
+        if: ${{ failure() }}
+        uses: actions-cool/maintain-one-comment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            Sorry, the preview site deployment failed
+            <!-- Created by Varlet -->
+          body-include: '<!-- Created by Varlet -->'
+          number: ${{ github.event.number }}
