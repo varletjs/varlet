@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: '16'
 
       - name: Install dependencies
         run: yarn bootstrap
@@ -19,7 +19,7 @@ jobs:
       - name: Build site
         run: cd packages/varlet-ui && yarn build
 
-      - name: update status comment
+      - name: Update status comment
         uses: actions-cool/maintain-one-comment@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
