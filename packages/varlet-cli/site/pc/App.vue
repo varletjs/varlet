@@ -291,6 +291,7 @@ iframe {
         line-height: 26px;
         white-space: pre-wrap;
         word-wrap: break-word;
+        color: #fff;
       }
 
       p code,
