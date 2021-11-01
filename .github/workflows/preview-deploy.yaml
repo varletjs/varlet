@@ -6,7 +6,7 @@ on:
     types: [completed]
 
 jobs:
-  on-success:
+  preview-deploy:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
@@ -39,7 +39,7 @@ jobs:
 
       - name: Upload surge service
         run: |
-          npx surge --project ./site --domain https://preview-${{ steps.pr.outputs.id }}-varlet-ui.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+          npx surge --project ./ --domain https://preview-${{ steps.pr.outputs.id }}-varlet-ui.surge.sh --token ${{ secrets.SURGE_TOKEN }}
 
       - name: Update status comment
         uses: actions-cool/maintain-one-comment@v2
