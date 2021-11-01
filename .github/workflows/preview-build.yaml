@@ -23,7 +23,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: site
-          path: site/
+          path: packages/varlet-ui/site/
 
       - name: Save pr number
         if: ${{ always() }}
