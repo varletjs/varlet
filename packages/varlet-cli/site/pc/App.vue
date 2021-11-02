@@ -1,6 +1,7 @@
 <template>
   <div class="varlet-site">
     <app-header :language="language" />
+    <div>test deploy</div>
 
     <div class="varlet-site-content">
       <app-sidebar
