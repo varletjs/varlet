@@ -4,9 +4,17 @@ import { formatStyleVars } from '../utils/elements'
 
 export type StyleVars = Record<string, string>
 
+const mountedVarKeys: string[] = []
+
 function StyleProvider(styleVars: StyleVars = {}) {
+  mountedVarKeys.forEach((key) => document.documentElement.style.removeProperty(key))
+  mountedVarKeys.length = 0
+
   const styles: StyleVars = formatStyleVars(styleVars)
-  Object.entries(styles).forEach(([key, value]) => document.documentElement.style.setProperty(key, value))
+  Object.entries(styles).forEach(([key, value]) => {
+    document.documentElement.style.setProperty(key, value)
+    mountedVarKeys.push(key)
+  })
 }
 
 StyleProvider.Component = VarStyleProvider
