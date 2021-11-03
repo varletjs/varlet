@@ -35,31 +35,29 @@ export default {
       score: 5,
       license: true,
     })
-    const primaryTheme = {
-      '--theme-name': 'primary',
-      '--rate-primary-color': 'var(--color-primary)',
-      '--button-primary-color': 'var(--color-primary)',
-      '--switch-handle-active-background': 'var(--color-primary)',
-      '--switch-track-active-background': 'var(--color-primary)',
-    }
+
+    const styleVars = ref(null)
+
     const successTheme = {
-      '--theme-name': 'success',
       '--rate-primary-color': 'var(--color-success)',
       '--button-primary-color': 'var(--color-success)',
       '--switch-handle-active-background': 'var(--color-success)',
       '--switch-track-active-background': 'var(--color-success)',
     }
-    const styleVars = ref(primaryTheme)
 
     const toggleTheme = () => {
-      styleVars.value = styleVars.value['--theme-name'] === 'primary' ? successTheme : primaryTheme
+      styleVars.value = styleVars.value ? null : successTheme
+    }
+
+    let rootStyleVars = null
+
+    const darkTheme = {
+      '--color-primary': '#000',
     }
 
     const toggleRootTheme = () => {
-      const color = window.getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim()
-      StyleProvider({
-        '--color-primary': color === '#3a7afe' ? '#000' : '#3a7afe',
-      })
+      rootStyleVars = rootStyleVars ? null : darkTheme
+      StyleProvider(rootStyleVars)
     }
 
     watchLang(use)
@@ -74,11 +72,7 @@ export default {
       context.touchmoveForbid = prevTouchmoveForbid
     })
 
-    onUnmounted(() => {
-      StyleProvider({
-        '--color-primary': '#3a7afe',
-      })
-    })
+    onUnmounted(() => StyleProvider(null))
 
     return {
       pack,
