@@ -46,7 +46,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
-            [The preview site has been deployed successfully, click here to go](https://preview-${{ steps.pr.outputs.id }}-varlet-ui.surge.sh)
+            [<img width="310" src="https://varlet.gitee.io/varlet-ui/preview_success.png">](https://preview-${{ steps.pr.outputs.id }}-varlet-ui.surge.sh)
             <!-- Created by Varlet -->
           body-include: '<!-- Created by Varlet -->'
           number: ${{ steps.pr.outputs.id }}
@@ -57,7 +57,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
-            Sorry, the preview site deployment failed
+            <img width="310" src="https://varlet.gitee.io/varlet-ui/preview_error.png">
             <!-- Created by Varlet -->
           body-include: '<!-- Created by Varlet -->'
           number: ${{ steps.pr.outputs.id }}
