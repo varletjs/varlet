@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.10](https://github.com/haoziqaq/varlet/compare/v1.22.9...v1.22.10) (2021-11-03)
+
+
+### Bug Fixes
+
+* **ui/style-provider:** simplify the use of style-provider ([cbf66ce](https://github.com/haoziqaq/varlet/commit/cbf66ce9b2295df7be5c0de32d0969354462cff7))
+
+
+
+
+
 ## [1.22.9](https://github.com/haoziqaq/varlet/compare/v1.22.8...v1.22.9) (2021-10-31)
 
 
