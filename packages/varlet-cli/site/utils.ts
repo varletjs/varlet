@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted } from 'vue'
+import { onActivated, onDeactivated, onMounted, onUnmounted, ref, Ref } from 'vue'
 import { get } from 'lodash-es'
 import { formatStyleVars } from './components/utils/elements'
 
@@ -108,12 +108,16 @@ export function addRouteListener(cb: () => void) {
   })
 }
 
-export function setThemes(config: Record<string, any>) {
-  const themes = get(config, 'themes', {})
+export function setThemes(config: Record<string, any>, name: 'themes' | 'darkThemes') {
+  const themes = get(config, name, {})
   const styleVars = Object.entries(themes).reduce((styleVars, [key, value]) => {
     styleVars[`--site-config-${key}`] = value as string
     return styleVars
   }, {} as StyleVars)
 
   StyleProvider(styleVars)
+}
+
+export function getBrowserThemes(): 'darkThemes' | 'themes' {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'darkThemes' : 'themes'
 }

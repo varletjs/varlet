@@ -12,8 +12,8 @@
         @mouseleave="isOpenMenu = false"
         v-if="languages"
       >
-        <var-site-icon name="translate" size="26px" color="#666" />
-        <var-site-icon name="chevron-down" color="#666" />
+        <var-site-icon name="translate" size="26px" />
+        <var-site-icon name="chevron-down" />
         <transition name="fade">
           <div
             class="varlet-site-header__language-list var-elevation--5"
@@ -32,6 +32,21 @@
           </div>
         </transition>
       </div>
+      <div
+        class="varlet-site-header__theme"
+        v-ripple
+        v-if="darkMode"
+        @click="toggleTheme"
+      >
+        <var-site-icon
+          size="26px"
+          :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'"
+          :style="{
+            marginBottom: currentThemes === 'darkThemes' && '2px',
+            marginTop: currentThemes === 'themes' && '2px',
+          }"
+        />
+      </div>
       <a
         class="varlet-site-header__link"
         target="_blank"
@@ -39,7 +54,7 @@
         v-ripple
         v-if="github"
       >
-        <var-site-icon name="github" color="#666" :size="28" />
+        <var-site-icon name="github" :size="28" />
       </a>
     </div>
   </div>
@@ -50,7 +65,7 @@
 import config from '@config'
 import { ref, computed } from 'vue'
 import { get } from 'lodash-es'
-import { getPCLocationInfo, removeEmpty } from '../../utils'
+import { getBrowserThemes, getPCLocationInfo, removeEmpty, setThemes } from '../../utils'
 import { useRouter } from 'vue-router'
 import type { Ref, ComputedRef } from 'vue'
 
@@ -67,6 +82,8 @@ export default {
     const logo: Ref<string> = ref(get(config, 'logo'))
     const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
     const github: Ref<Record<string, string>> = ref(get(config, 'pc.header.github'))
+    const darkMode: Ref<Record<string, string>> = ref(get(config, 'pc.header.darkMode'))
+    const currentThemes = ref(getBrowserThemes())
 
     const isOpenMenu: Ref<boolean> = ref(false)
     const router = useRouter()
@@ -78,6 +95,25 @@ export default {
       isOpenMenu.value = false
     }
 
+    const toggleTheme = () => {
+      currentThemes.value = currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes'
+      setThemes(config, currentThemes.value)
+      ;(document.getElementById('mobile') as HTMLIFrameElement).contentWindow.postMessage(currentThemes.value, '*')
+    }
+
+    Object.defineProperty(window, 'currentThemes', {
+      value: currentThemes
+    })
+
+    Object.defineProperty(window, 'onMobileThemeChange', {
+      value: (themes) => {
+        currentThemes.value = themes
+        setThemes(config, currentThemes.value)
+      }
+    })
+
+    setThemes(config, currentThemes.value)
+
     return {
       logo,
       title,
@@ -85,7 +121,10 @@ export default {
       nonEmptyLanguages,
       github,
       isOpenMenu,
-      handleLanguageChange
+      darkMode,
+      currentThemes,
+      handleLanguageChange,
+      toggleTheme
     }
   }
 }
@@ -130,15 +169,15 @@ export default {
   left: 0;
   display: flex;
   align-items: center;
-  color: #555;
+  color: var(--site-config-color-font-size);
   width: 100%;
   height: 60px;
   padding: 0 30px;
   justify-content: space-between;
   user-select: none;
   z-index: 996;
-  background: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--site-config-color-bar);
+  border-bottom: 1px solid var(--site-config-color-border);
   box-sizing: border-box;
 
   &__lead {
@@ -169,7 +208,8 @@ export default {
     padding: 0 10px;
     position: relative;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.25s;
+    margin-right: 6px;
 
     &:hover {
       background: rgba(0, 0, 0, 0.08);
@@ -178,19 +218,35 @@ export default {
 
   &__link {
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.3s;
     cursor: pointer;
     text-decoration: none;
-    color: #555;
+    color: var(--site-config-color-text);
+    transition: background-color 0.25s;
 
     a {
       text-decoration: none;
     }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &__theme {
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.25s;
+    margin-right: 6px;
 
     &:hover {
       background: rgba(0, 0, 0, 0.08);

@@ -3,13 +3,21 @@ import { reactive } from 'vue'
 // @ts-ignore
 import config from '@config'
 // @ts-ignore
-import { mountInstance } from './utils'
+import { getBrowserThemes, mountInstance } from './utils'
 import { get } from 'lodash-es'
+
+function getColor() {
+  return get(config, `${get(window, 'currentThemes.value') ?? getBrowserThemes()}.color-progress`)
+}
+
+function getTrackColor() {
+  return get(config, `${get(window, 'currentThemes.value') ?? getBrowserThemes()}.color-progress-track`)
+}
 
 export function useProgress() {
   let timer: number
-  const trackColor = get(config, 'themes.color-progress-track')
-  const color = get(config, 'themes.color-progress')
+  const trackColor = getTrackColor()
+  const color = getColor()
 
   const props = reactive({
     style: {
@@ -39,13 +47,13 @@ export function useProgress() {
 
   const start = () => {
     props.value = 0
-    setTimeout(() => (props.color = color), 200)
+    setTimeout(() => (props.color = getColor()), 200)
     changeValue()
   }
 
   const end = () => {
     props.value = 100
-    setTimeout(() => (props.color = trackColor), 300)
+    setTimeout(() => (props.color = getTrackColor()), 300)
     window.clearTimeout(timer)
   }
 

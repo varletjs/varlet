@@ -116,8 +116,6 @@ export default defineComponent({
       { immediate: true }
     )
 
-    setThemes(config)
-
     return {
       menu,
       language,
@@ -158,6 +156,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  background: var(--site-config-color-body);
+  color: var(--site-config-color-text);
+}
+
+* {
+  transition: background-color .25s, box-shadow .25s;
 }
 
 iframe {
@@ -176,7 +180,7 @@ iframe {
     padding: 40px;
     border-top: 6px solid var(--site-config-color-primary);
     border-radius: 2px;
-    box-shadow: 0 0 20px 6px #eee;
+    box-shadow: 0 0 20px 6px var(--site-config-color-shadow);
 
     &__image {
       width: 180px;
@@ -188,7 +192,7 @@ iframe {
     }
 
     &__des {
-      color: #555;
+      color: var(--site-config-color-text);
       font-size: 14px;
       margin-top: 10px;
       -webkit-font-smoothing: antialiased;
@@ -202,7 +206,7 @@ iframe {
   &-site {
     &-content {
       display: flex;
-      background: #fff;
+      background: var(--site-config-color-body);
       margin-top: 60px;
       margin-left: 220px;
     }
@@ -243,7 +247,7 @@ iframe {
       h5,
       h6 {
         position: relative;
-        color: #333;
+        color: var(--site-config-color-text);
         font-weight: normal;
         line-height: 1.5;
       }
@@ -267,12 +271,12 @@ iframe {
       p,
       ul {
         -webkit-font-smoothing: antialiased;
-        color: #555;
+        color: var(--site-config-color-text);
         font-size: 15px;
         line-height: 26px;
         padding: 16px;
         border-radius: 4px;
-        background: #fff;
+        background: var(--site-config-color-bar);
         box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
         list-style: none;
       }
@@ -319,7 +323,7 @@ iframe {
           padding: 8px 16px;
           font-weight: 500;
           text-align: left;
-          color: #555;
+          color: var(--site-config-color-text);
           font-size: 13px;
           -webkit-font-smoothing: antialiased;
         }

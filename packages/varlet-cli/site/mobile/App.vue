@@ -30,45 +30,54 @@
           </var-site-button>
         </template>
         <template #right>
-          <var-site-menu
-            style="background: transparent"
-            :offset-x="1"
-            :offset-y="38"
-            v-model:show="showMenu"
-            v-if="languages"
+          <var-site-button
+            style="padding-right: 6px"
+            text
+            color="transparent"
+            text-color="#fff"
+            @click.stop="showMenu = true"
+            v-if="languages || darkMode"
           >
-            <var-site-button
-              style="padding-right: 6px"
-              text
-              color="transparent"
-              text-color="#fff"
-              @click="showMenu = true"
-            >
-              <var-site-icon name="translate" :size="24" />
-              <var-site-icon name="chevron-down" :size="24" />
-            </var-site-button>
-
-            <template #menu>
-              <div style="background: #fff">
-                <var-site-cell
-                  v-for="(value, key) in nonEmptyLanguages"
-                  :key="key"
-                  class="mobile-language-cell"
-                  :class="[language === key && 'mobile-language-cell--active']"
-                  v-ripple
-                  @click="changeLanguage(key)"
-                >
-                  {{ value }}
-                </var-site-cell>
-              </div>
-            </template>
-          </var-site-menu>
+            <var-site-icon name="cog-outline" :size="26" />
+            <var-site-icon name="chevron-down" :size="22" />
+          </var-site-button>
         </template>
       </var-site-app-bar>
     </header>
     <div class="router-view__block">
       <router-view />
     </div>
+
+    <transition name="site-menu">
+      <div
+        class="settings var-site-elevation--3"
+        style="background: #fff"
+        v-if="showMenu"
+      >
+        <var-site-cell
+          v-for="(value, key) in nonEmptyLanguages"
+          :key="key"
+          class="mobile-language-cell"
+          :class="[language === key && 'mobile-language-cell--active']"
+          v-ripple
+          @click="changeLanguage(key)"
+        >
+          {{ value }}
+        </var-site-cell>
+        <var-site-cell
+          class="mobile-language-cell"
+          v-if="darkMode"
+          v-ripple
+          @click="toggleTheme"
+        >
+          <var-site-icon
+            size="20px"
+            color="#666"
+            :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'"
+          />
+        </var-site-cell>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -77,7 +86,7 @@
 import config from '@config'
 import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { bigCamelize, inIframe, isPhone, removeEmpty, setThemes, watchLang } from '../utils'
+import { bigCamelize, getBrowserThemes, inIframe, isPhone, removeEmpty, setThemes, watchLang } from '../utils'
 import { get } from 'lodash-es'
 
 export default defineComponent({
@@ -91,6 +100,8 @@ export default defineComponent({
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
     const redirect = get(config, 'mobile.redirect', '')
     const github: Ref<string> = ref(get(config, 'mobile.header.github'))
+    const darkMode: Ref<string> = ref(get(config, 'mobile.header.darkMode'))
+    const currentThemes = ref(getBrowserThemes())
 
     const changeLanguage = (lang) => {
       language.value = lang
@@ -111,8 +122,8 @@ export default defineComponent({
     }
 
     const toGithub = () => {
-      if (window.parent !== window) {
-        window.parent.open(github.value)
+      if (inIframe() && !isPhone()) {
+        window.top.open(github.value)
       } else {
         window.location.href = github.value
       }
@@ -130,7 +141,27 @@ export default defineComponent({
       }
     )
 
-    setThemes(config)
+    const toggleTheme = () => {
+      currentThemes.value = currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes'
+      setThemes(config, currentThemes.value)
+
+      if (!isPhone() && inIframe()) {
+        (window.top as any).onMobileThemeChange(currentThemes.value)
+      }
+    }
+
+    setThemes(config, currentThemes.value)
+
+    document.body.addEventListener('click', () => {
+      showMenu.value = false
+    })
+
+    window.addEventListener('message', (event) => {
+      if (event.data === 'darkThemes' || event.data === 'themes') {
+        currentThemes.value = event.data
+        setThemes(config, currentThemes.value)
+      }
+    })
 
     return {
       bigCamelizeComponentName,
@@ -140,9 +171,12 @@ export default defineComponent({
       languages,
       language,
       nonEmptyLanguages,
+      currentThemes,
+      darkMode,
       toGithub,
       back,
       changeLanguage,
+      toggleTheme
     }
   },
 })
@@ -159,13 +193,28 @@ body {
   min-height: 100%;
   font-family: 'Roboto', sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  color: #333;
+  background: var(--site-config-color-body);
+  color: var(--site-config-color-text);
+  transition: background .25s, color .25s;
 }
 
 ::-webkit-scrollbar {
   display: none;
   width: 0;
   background: transparent;
+}
+
+.site {
+  &-menu-enter-from,
+  &-menu-leave-to {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  &-menu-enter-active,
+  &-menu-leave-active {
+    transition-property: opacity, transform;
+    transition-duration: 0.25s;
+  }
 }
 
 header {
@@ -177,6 +226,13 @@ header {
 
 .app-bar {
   background: var(--site-config-color-app-bar) !important;
+}
+
+.settings {
+  position: fixed;
+  z-index: 200;
+  top: 48px;
+  right: 5px;
 }
 
 .router-view__block {

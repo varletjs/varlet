@@ -2,7 +2,7 @@
   <div class="var-menu" ref="host" @click="handleClick">
     <slot />
 
-    <teleport :to="teleport">
+    <teleport :to="teleport" :disabled="!teleport || disabled">
       <transition name="var-menu" @after-enter="onOpened" @after-leave="onClosed">
         <div
           class="var-menu__menu var-elevation--3"
@@ -28,6 +28,7 @@ import { props } from './props'
 import { getLeft, getTop, toSizeUnit } from '../utils/elements'
 import { useZIndex } from '../context/zIndex'
 import type { Ref } from 'vue'
+import { useTeleport } from '../utils/components'
 
 export default defineComponent({
   name: 'VarMenu',
@@ -38,6 +39,7 @@ export default defineComponent({
     const top: Ref<number> = ref(0)
     const left: Ref<number> = ref(0)
     const { zIndex } = useZIndex(() => props.show, 1)
+    const { disabled } = useTeleport()
     let clickSelf = false
 
     const computeTop = (alignment: string): number => {
@@ -93,6 +95,7 @@ export default defineComponent({
     })
 
     return {
+      disabled,
       zIndex,
       host,
       menu,
