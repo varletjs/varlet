@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.10](https://github.com/haoziqaq/varlet/compare/v1.22.9...v1.22.10) (2021-11-03)
+
+
+### Bug Fixes
+
+* **cli/site:** change code block font color to white ([f38aa0e](https://github.com/haoziqaq/varlet/commit/f38aa0ea1a21be630e8dd0dec9e219a28a4f4567))
+* **cli/site:** modify site theme update logic ([d12195a](https://github.com/haoziqaq/varlet/commit/d12195ae7d98f8d1e9b4cc44d71c564b2f7b2974))
+
+
+
+
+
 ## [1.22.9](https://github.com/haoziqaq/varlet/compare/v1.22.8...v1.22.9) (2021-10-31)
 
 
