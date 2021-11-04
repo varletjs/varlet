@@ -144,6 +144,7 @@ export default defineComponent({
     const toggleTheme = () => {
       currentThemes.value = currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes'
       setThemes(config, currentThemes.value)
+      window.localStorage.setItem('currentThemes', currentThemes.value)
 
       if (!isPhone() && inIframe()) {
         (window.top as any).onMobileThemeChange(currentThemes.value)
@@ -193,7 +194,7 @@ body {
   min-height: 100%;
   font-family: 'Roboto', sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background: var(--site-config-color-body);
+  background: var(--site-config-color-bar);
   color: var(--site-config-color-text);
   transition: background .25s, color .25s;
 }

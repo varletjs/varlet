@@ -119,5 +119,12 @@ export function setThemes(config: Record<string, any>, name: 'themes' | 'darkThe
 }
 
 export function getBrowserThemes(): 'darkThemes' | 'themes' {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'darkThemes' : 'themes'
+  let currentThemes = window.localStorage.getItem('currentThemes') as 'darkThemes' | 'themes'
+
+  if (!currentThemes) {
+    currentThemes = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'darkThemes' : 'themes'
+    window.localStorage.setItem('currentThemes', currentThemes)
+  }
+
+  return currentThemes
 }

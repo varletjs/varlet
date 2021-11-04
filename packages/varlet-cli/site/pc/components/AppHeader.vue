@@ -95,9 +95,15 @@ export default {
       isOpenMenu.value = false
     }
 
-    const toggleTheme = () => {
-      currentThemes.value = currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes'
+    const setCurrentThemes = (themes: 'themes' | 'darkThemes') => {
+      currentThemes.value = themes
       setThemes(config, currentThemes.value)
+      window.localStorage.setItem('currentThemes', currentThemes.value)
+      ;(window as any).resetProgressThemes()
+    }
+
+    const toggleTheme = () => {
+      setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
       ;(document.getElementById('mobile') as HTMLIFrameElement).contentWindow.postMessage(currentThemes.value, '*')
     }
 
@@ -106,10 +112,7 @@ export default {
     })
 
     Object.defineProperty(window, 'onMobileThemeChange', {
-      value: (themes) => {
-        currentThemes.value = themes
-        setThemes(config, currentThemes.value)
-      }
+      value: themes => setCurrentThemes(themes)
     })
 
     setThemes(config, currentThemes.value)

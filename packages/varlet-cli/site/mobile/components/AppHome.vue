@@ -97,7 +97,7 @@ export default {
 
 .varlet-home__desc {
   margin: 0 0 40px;
-  color: var(--site-config-color-text);
+  color: var(--site-config-color-sub-text);
   font-size: 14px;
 }
 

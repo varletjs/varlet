@@ -178,8 +178,9 @@ iframe {
     align-items: center;
     margin: 20px 4px 20px;
     padding: 40px;
-    border-top: 6px solid var(--site-config-color-primary);
+    border-top: 6px solid var(--site-config-color-introduce-border);
     border-radius: 2px;
+    background: var(--site-config-color-bar);
     box-shadow: 0 0 20px 6px var(--site-config-color-shadow);
 
     &__image {
@@ -312,7 +313,8 @@ iframe {
         -webkit-font-smoothing: antialiased;
         width: 100%;
         margin-top: 12px;
-        color: #333;
+        color: var(--site-config-color-text);
+        background: var(--site-config-color-bar);
         font-size: 14px;
         line-height: 28px;
         border-collapse: collapse;
@@ -323,15 +325,15 @@ iframe {
           padding: 8px 16px;
           font-weight: 500;
           text-align: left;
-          color: var(--site-config-color-text);
+          color: var(--site-config-color-sub-text);
           font-size: 13px;
           -webkit-font-smoothing: antialiased;
         }
 
         td {
           padding: 8px 16px;
-          border-top: 1px solid #eee;
-          color: #555;
+          border-top: 1px solid var(--site-config-color-border);
+          color: var(--site-config-color-text);
           font-family: Consolas, Monaco, monospace;
 
           code {

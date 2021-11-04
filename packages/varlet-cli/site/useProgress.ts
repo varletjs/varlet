@@ -33,6 +33,13 @@ export function useProgress() {
     value: 0,
   })
 
+  Object.defineProperty(window, 'resetProgressThemes', {
+    value: () => {
+      props.trackColor = getTrackColor()
+      props.color = props.value === 100 ? getTrackColor() : getColor()
+    }
+  })
+
   const changeValue = () => {
     timer = window.setTimeout(() => {
       if (props.value >= 95) return
