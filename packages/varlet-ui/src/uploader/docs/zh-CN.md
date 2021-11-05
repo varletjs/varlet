@@ -104,7 +104,7 @@ export default {
       }, 1000)
     }
 
-    return { 
+    return {
       files,
       handleAfterRead
     }
@@ -135,7 +135,7 @@ export default {
 
     const handleOversize = file => console.log(file)
 
-    return { 
+    return {
       files,
       handleAfterRead
     }
@@ -160,7 +160,7 @@ export default {
 
     const handleBeforeRead = file => file.file.size <= 1024 * 10
 
-    return { 
+    return {
       files,
       handleAfterRead
     }
@@ -193,6 +193,50 @@ export default {
 />
 ```
 
+### onRemove
+触发remove事件，获取返回值来决定是否删除，有存在为真的返回值将会不执行删除更新动作
+
+```html
+ <var-uploader v-model="files11" @remove="handleRemoveFile" />
+```
+
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const files = ref([
+      {
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        state: 'loading'
+      },
+      {
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        state: 'success'
+      },
+      {
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        state: 'error'
+      }
+    ])
+
+    const handleRemoveFile = (file) => {
+        //都将执行删除动作,无返回或者假值执行删除
+        //return new Promise.resole(true);
+        return true;
+    }
+
+    return {
+      files,
+      handleRemoveFile
+    }
+  }
+}
+```
+
 ### 自定义上传样式
 
 ```html
@@ -205,8 +249,8 @@ export default {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `v-model` | 文件列表 | _VarFile[]_ | `[]` |
 | `accept` | 接受的文件类型，与原生属性一致 | _string_ | `image/*` |
 | `capture` | 获取文件方式，与原生属性一致 | _string_ | `-` |
@@ -223,7 +267,7 @@ export default {
 
 ### VarFile
 
-| 参数 | 说明 | 类型 | 默认值 | 
+| 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `file` | 原生文件 | _File_ | `-` |
 | `name` | 文件名 | _string_ | `-` |
@@ -258,7 +302,7 @@ export default {
 | `before-read` | 文件读取前触发，返回假值阻止文件读取(支持promise) | `file: VarFile` |
 | `after-read` | 文件读取后触发 | `file: VarFile` |
 | `oversize` | 文件超过限制大小时触发 | `file: VarFile` |
-| `remove` | 文件删除时触发 | `file: VarFile` |
+| `remove` | 文件删除时触发,存在真值阻止删除文件(支持promise) | `file: VarFile` |
 
 ### 插槽
 

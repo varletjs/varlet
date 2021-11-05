@@ -126,6 +126,32 @@ test('test uploader onRemove', async () => {
   mockRestore()
 })
 
+test('test uploader onRemove result not empty not deleted', async () => {
+    const { mockRestore } = mockFileReader('data:image/png;base64,')
+    const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+    const onRemove = jest.fn(()=>Promise.resolve(1));
+
+    const wrapper = mount(VarUploader, {
+      props: {
+        modelValue: [],
+        onRemove,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await wrapper.vm.handleChange(createEvent('cat.png'))
+    expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
+
+    await wrapper.find('.var-uploader__file-close').trigger('click')
+    //因为有返回值,所以没有删除
+    expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
+    expect(onRemove).toHaveBeenCalledTimes(1)
+    expect(wrapper.vm.modelValue).toHaveLength(1);
+
+    wrapper.unmount()
+    mockRestore()
+})
+
 test('test uploader validation', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))

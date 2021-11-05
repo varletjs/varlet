@@ -11,4 +11,5 @@ export default {
   validateMessage: 'There is a file that failed to upload',
   style: 'Customize upload styles',
   upload: 'Upload',
+  onRemove: 'remove action',
 }

@@ -11,4 +11,5 @@ export default {
   validateMessage: '存在上传失败的文件',
   style: '自定义上传样式',
   upload: '上传',
+  onRemove: '删除事件',
 }
