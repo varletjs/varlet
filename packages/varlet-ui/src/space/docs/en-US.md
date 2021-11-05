@@ -4,7 +4,7 @@
 
 The component library provides two auxiliary layout components,
 `<var-space>`,
-so that you can layout more efficiently.
+so that you can do flex layout more efficiently.
 
 ### Install
 
