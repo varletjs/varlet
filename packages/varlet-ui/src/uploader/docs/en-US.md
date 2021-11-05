@@ -104,7 +104,7 @@ export default {
       }, 1000)
     }
 
-    return { 
+    return {
       files,
       handleAfterRead
     }
@@ -135,7 +135,7 @@ export default {
 
     const handleOversize = file => console.log(file)
 
-    return { 
+    return {
       files,
       handleAfterRead
     }
@@ -160,7 +160,7 @@ export default {
 
     const handleBeforeRead = file => file.file.size <= 1024 * 10
 
-    return { 
+    return {
       files,
       handleAfterRead
     }
@@ -195,6 +195,52 @@ The second argument is a collection of utility functions that can quickly get a 
 />
 ```
 
+### onRemove
+
+Trigger the remove event and obtain the return value to determine whether to delete. If there is a true return value, the delete update action will not be executed
+
+```html
+ <var-uploader v-model="files11" @remove="handleRemoveFile" />
+```
+
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const files = ref([
+      {
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        state: 'loading'
+      },
+      {
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        state: 'success'
+      },
+      {
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        state: 'error'
+      }
+    ])
+
+    const handleRemoveFile = (file) => {
+        //都将执行删除动作,无返回或者假值执行删除
+        //return new Promise.resole(true);
+        return true;
+    }
+
+    return {
+      files,
+      handleRemoveFile
+    }
+  }
+}
+```
+
+
 ### Customize upload styles
 
 ```html
@@ -207,8 +253,8 @@ The second argument is a collection of utility functions that can quickly get a 
 
 ### Props
 
-| Prop | Description | Type | Default | 
-| --- | --- | --- | --- | 
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
 | `v-model` | File list | _VarFile[]_ | `[]` |
 | `accept` | Accepted file type, consistent with the native attribute | _string_ | `image/*` |
 | `capture` | Get the file, the same as the native property | _string_ | `-` |
@@ -225,7 +271,7 @@ The second argument is a collection of utility functions that can quickly get a 
 
 ### VarFile
 
-| Prop | Description | Type | Default | 
+| Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `file` | Native file | _File_ | `-` |
 | `name` | File name | _string_ | `-` |
@@ -260,7 +306,7 @@ The second argument is a collection of utility functions that can quickly get a 
 | `before-read` | Trigger returns a false value before a file is read to prevent the file from being read(support promise) | `file: VarFile` |
 | `after-read` | Triggered after the file is read | `file: VarFile` |
 | `oversize` | Triggered when the file size limit is exceeded | `file: VarFile` |
-| `remove` | Triggered when a file is deleted | `file: VarFile` |
+| `remove` | Triggered when deleting a file. There is a true value to prevent deleting a file (support promise) | `file: VarFile` |
 
 ### Slots
 
