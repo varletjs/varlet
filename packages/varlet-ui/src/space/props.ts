@@ -1,6 +1,7 @@
 import type { PropType } from 'vue'
+import { SpaceAlign, SpaceDirection, SpaceJustify, SpaceSize } from '../../types'
 
-const sizeValidator = (size: TSize): boolean => {
+const sizeValidator = (size: SpaceSize): boolean => {
   if (typeof size === 'string') {
     return ['mini', 'small', 'normal', 'large'].includes(size) || !!size.match(/\d/g)
   }
@@ -11,20 +12,12 @@ const justifyValidator = (justify: string): boolean => {
   return ['start', 'end', 'center', 'space-around', 'space-between'].includes(justify)
 }
 
-type TAlign = 'stretch' | 'center' | 'start' | 'end' | 'baseline' | 'initial' | 'inherit'
-
-type TDirection = 'row' | 'column'
-
-type TJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between'
-
-export type TSize = 'mini' | 'small' | 'normal' | 'large' | number | string | [number | string, number | string]
-
 export const props = {
   align: {
-    type: String as PropType<TAlign>,
+    type: String as PropType<SpaceAlign>,
   },
   size: {
-    type: [String, Number, Array] as PropType<TSize>,
+    type: [String, Number, Array] as PropType<SpaceSize>,
     default: 'normal',
     validator: sizeValidator,
   },
@@ -33,11 +26,11 @@ export const props = {
     default: true,
   },
   direction: {
-    type: String as PropType<TDirection>,
+    type: String as PropType<SpaceDirection>,
     default: 'row',
   },
   justify: {
-    type: String as PropType<TJustify>,
+    type: String as PropType<SpaceJustify>,
     default: 'start',
     validator: justifyValidator,
   },

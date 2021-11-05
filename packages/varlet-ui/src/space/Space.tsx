@@ -1,9 +1,10 @@
 import { defineComponent } from 'vue'
-import { props, TSize } from './props'
+import { props } from './props'
 import './space.less'
 import { toPxNum } from '../utils/elements'
+import { SpaceSize } from '../../types'
 
-const sizefilter = (size: TSize) => {
+const sizefilter = (size: SpaceSize) => {
   if (typeof size === 'string') {
     if (!size.match(/\d/g)) return [size, 'class']
     return [`${toPxNum(size)}px`, 'style']
