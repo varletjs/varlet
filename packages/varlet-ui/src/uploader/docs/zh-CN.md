@@ -180,24 +180,12 @@ export default {
 <var-uploader readonly v-model="files"/>
 ```
 
-### 字段校验
+### 删除前处理
 
-通过传入一个校验器数组可以对值进行校验，校验器返回`true`则为校验通过。
-以外的值将转换为文本作为用户提示。
-第二个参数是一个工具函数集合，可以快速获取符合状态的文件集合。
+删除文件之前会触发`before-remove`事件，返回假值阻止删除操作。
 
 ```html
-<var-uploader
-  :rules="[(v, u) => u.getError(v).length === 0 || '存在上传失败的文件']"
-  v-model="files"
-/>
-```
-
-### onRemove
-触发remove事件，获取返回值来决定是否删除，有存在为真的返回值将会不执行删除更新动作
-
-```html
- <var-uploader v-model="files11" @remove="handleRemoveFile" />
+ <var-uploader v-model="files" @before-remove="handleBeforeRemove" />
 ```
 
 ```js
@@ -208,30 +196,22 @@ export default {
     const files = ref([
       {
         url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        state: 'loading'
-      },
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        state: 'success'
-      },
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        state: 'error'
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg'
       }
     ])
 
-    const handleRemoveFile = (file) => {
-        //都将执行删除动作,无返回或者假值执行删除
-        //return new Promise.resole(true);
-        return true;
+    const handleBeforeRemove = async () => {
+      const action = await Dialog({
+        title: '是否删除?',
+        message: '删除后无法撤回'
+      })
+
+      return action === 'confirm'
     }
 
     return {
       files,
-      handleRemoveFile
+      handleBeforeRemove
     }
   }
 }
@@ -243,6 +223,19 @@ export default {
 <var-uploader v-model="files">
   <var-button type="primary">上传</var-button>
 </var-uploader>
+```
+
+### 字段校验
+
+通过传入一个校验器数组可以对值进行校验，校验器返回`true`则为校验通过。
+以外的值将转换为文本作为用户提示。
+第二个参数是一个工具函数集合，可以快速获取符合状态的文件集合。
+
+```html
+<var-uploader
+  :rules="[(v, u) => u.getError(v).length === 0 || '存在上传失败的文件']"
+  v-model="files"
+/>
 ```
 
 ## API
@@ -257,7 +250,7 @@ export default {
 | `multiple` | 是否多选文件 | _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
-| `removable` | 是否可以删除 | _boolean_ | `false` |
+| `removable` | 是否可以删除 | _boolean_ | `true` |
 | `maxlength` | 最大文件个数 | _string \| number_ | `-` |
 | `maxsize` | 最大文件大小 | _string \| number_ | `-` |
 | `previewed` | 是否允许预览 | _boolean_ | `true` |
@@ -302,7 +295,8 @@ export default {
 | `before-read` | 文件读取前触发，返回假值阻止文件读取(支持promise) | `file: VarFile` |
 | `after-read` | 文件读取后触发 | `file: VarFile` |
 | `oversize` | 文件超过限制大小时触发 | `file: VarFile` |
-| `remove` | 文件删除时触发,存在真值阻止删除文件(支持promise) | `file: VarFile` |
+| `before-remove` | 文件删除前触发，返回假值阻止文件删除(支持promise) | `file: VarFile` |
+| `remove` | 文件删除时触发 | `file: VarFile` |
 
 ### 插槽
 
