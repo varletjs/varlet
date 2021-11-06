@@ -6,6 +6,30 @@
     </div>
 
     <div class="varlet-site-header__tail">
+      <a
+        class="varlet-site-header__link"
+        target="_blank"
+        :href="github"
+        v-ripple
+        v-if="github"
+      >
+        <var-site-icon name="github" :size="28" />
+      </a>
+      <div
+        class="varlet-site-header__theme"
+        v-ripple
+        v-if="darkMode"
+        @click="toggleTheme"
+      >
+        <var-site-icon
+          size="26px"
+          :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'"
+          :style="{
+            marginBottom: currentThemes === 'darkThemes' && '2px',
+            marginTop: currentThemes === 'themes' && '2px',
+          }"
+        />
+      </div>
       <div
         class="varlet-site-header__language"
         @mouseenter="isOpenMenu = true"
@@ -32,30 +56,6 @@
           </div>
         </transition>
       </div>
-      <div
-        class="varlet-site-header__theme"
-        v-ripple
-        v-if="darkMode"
-        @click="toggleTheme"
-      >
-        <var-site-icon
-          size="26px"
-          :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'"
-          :style="{
-            marginBottom: currentThemes === 'darkThemes' && '2px',
-            marginTop: currentThemes === 'themes' && '2px',
-          }"
-        />
-      </div>
-      <a
-        class="varlet-site-header__link"
-        target="_blank"
-        :href="github"
-        v-ripple
-        v-if="github"
-      >
-        <var-site-icon name="github" :size="28" />
-      </a>
     </div>
   </div>
 </template>
@@ -212,7 +212,6 @@ export default {
     position: relative;
     cursor: pointer;
     transition: background-color 0.25s;
-    margin-right: 6px;
 
     &:hover {
       background: rgba(0, 0, 0, 0.08);
@@ -230,6 +229,7 @@ export default {
     text-decoration: none;
     color: var(--site-config-color-text);
     transition: background-color 0.25s;
+    margin-right: 6px;
 
     a {
       text-decoration: none;
@@ -249,7 +249,7 @@ export default {
     align-items: center;
     cursor: pointer;
     transition: background-color 0.25s;
-    margin-right: 6px;
+    margin-right: 4px;
 
     &:hover {
       background: rgba(0, 0, 0, 0.08);
@@ -257,9 +257,9 @@ export default {
   }
 
   &__language-list {
-    background: #fff;
+    background: var(--site-config-color-bar);
     cursor: pointer;
-    color: #555;
+    color: var(--site-config-color-text);
     border-radius: 2px;
     position: absolute;
     top: 40px;

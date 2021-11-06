@@ -89,7 +89,7 @@ export default {
 
 .varlet-home__title,
 .varlet-home__desc {
-  padding-left: 16px;
+  padding: 0 12px;
   font-weight: normal;
   line-height: 1;
   user-select: none;

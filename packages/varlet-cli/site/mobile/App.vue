@@ -3,8 +3,8 @@
     <header>
       <var-site-app-bar
         class="app-bar"
+        title-position="left"
         :title="bigCamelizeComponentName"
-        title-position="center"
       >
         <template #left>
           <var-site-button
@@ -19,7 +19,6 @@
           </var-site-button>
           <var-site-button
             v-if="!showBackIcon && github"
-            style="margin-left: 6px; "
             text
             round
             @click="toGithub"
@@ -31,6 +30,21 @@
         </template>
         <template #right>
           <var-site-button
+            style="transform: translateX(2px)"
+            text
+            round
+            color="transparent"
+            text-color="#fff"
+            v-if="darkMode"
+            @click="toggleTheme"
+          >
+            <var-site-icon
+              size="24px"
+              color="#fff"
+              :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'"
+            />
+          </var-site-button>
+          <var-site-button
             style="padding-right: 6px"
             text
             color="transparent"
@@ -38,7 +52,7 @@
             @click.stop="showMenu = true"
             v-if="languages || darkMode"
           >
-            <var-site-icon name="cog-outline" :size="26" />
+            <var-site-icon name="translate" :size="24" />
             <var-site-icon name="chevron-down" :size="22" />
           </var-site-button>
         </template>
@@ -51,7 +65,6 @@
     <transition name="site-menu">
       <div
         class="settings var-site-elevation--3"
-        style="background: #fff"
         v-if="showMenu"
       >
         <var-site-cell
@@ -63,18 +76,6 @@
           @click="changeLanguage(key)"
         >
           {{ value }}
-        </var-site-cell>
-        <var-site-cell
-          class="mobile-language-cell"
-          v-if="darkMode"
-          v-ripple
-          @click="toggleTheme"
-        >
-          <var-site-icon
-            size="20px"
-            color="#666"
-            :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'"
-          />
         </var-site-cell>
       </div>
     </transition>
@@ -234,6 +235,7 @@ header {
   z-index: 200;
   top: 48px;
   right: 5px;
+  background: var(--site-config-color-bar);
 }
 
 .router-view__block {
@@ -245,7 +247,8 @@ header {
 }
 
 .mobile-language-cell {
-  color: #666;
+  color: var(--site-config-color-text);
+  background: var(--site-config-color-bar);
   cursor: pointer;
 
   &--active {

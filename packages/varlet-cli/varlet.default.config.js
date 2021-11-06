@@ -87,8 +87,8 @@ module.exports = {
     'color-app-bar': '#3a7afe',
     'color-mobile-cell-hover': '#3a7afe',
     'color-pc-language-active': '#3a7afe',
-    'color-pc-language-active-background': '#edf5ff',
+    'color-pc-language-active-background': '#3a7afe20',
     'color-mobile-language-active': '#3a7afe',
-    'color-mobile-language-active-background': '#edf5ff',
+    'color-mobile-language-active-background': '#3a7afe20',
   },
 }
