@@ -3,7 +3,7 @@
   <var-uploader v-model="files" @after-read="handleAfterRead" />
 
   <app-type>{{ pack.preview }}</app-type>
-  <var-uploader v-model="files2" @remove="handleRemoveFile" />
+  <var-uploader v-model="files2" />
 
   <app-type>{{ pack.state }}</app-type>
   <var-uploader v-model="files3" @after-read="handleAfterRead2" />
