@@ -89,10 +89,11 @@ export const removeItem = (arr: Array<unknown>, item: unknown) => {
 
 export const throttle = (method: any, mustRunDelay = 200): (() => void) => {
   let timer: number
-  let start: number
+  let start = 0
 
   return function loop(this: unknown, ...args) {
     const now = Date.now()
+    const elapsed = now - start
 
     if (!start) {
       start = now
@@ -102,13 +103,13 @@ export const throttle = (method: any, mustRunDelay = 200): (() => void) => {
       window.clearTimeout(timer)
     }
 
-    if (now - start >= mustRunDelay) {
+    if (elapsed >= mustRunDelay) {
       method.apply(this, args)
       start = now
     } else {
       timer = window.setTimeout(() => {
         loop.apply(this, args)
-      }, 50)
+      }, mustRunDelay - elapsed)
     }
   }
 }
