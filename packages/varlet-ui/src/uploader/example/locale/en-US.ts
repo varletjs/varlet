@@ -11,5 +11,7 @@ export default {
   validateMessage: 'There is a file that failed to upload',
   style: 'Customize upload styles',
   upload: 'Upload',
-  onRemove: 'remove action',
+  beforeRemove: 'Remove Preprocessing',
+  removeTitle: 'Delete or not?',
+  removeMessage: 'Cannot be withdrawn after deletion',
 }

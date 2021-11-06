@@ -9,8 +9,8 @@ import { delay, mockFileReader, mockStubs } from '../../utils/jest'
 const createEvent = (filename) => {
   return {
     target: {
-      files: [new File([], filename)],
-    },
+      files: [new File([], filename)]
+    }
   }
 }
 
@@ -30,8 +30,8 @@ test('test uploader onAfterRead', async () => {
 
   const wrapper = mount(VarUploader, {
     props: {
-      onAfterRead,
-    },
+      onAfterRead
+    }
   })
 
   await wrapper.vm.handleChange(createEvent('cat.png'))
@@ -46,8 +46,8 @@ test('test uploader onBeforeRead', async () => {
   const wrapper = mount(VarUploader, {
     props: {
       onAfterRead,
-      onBeforeRead: (file) => file.name.endsWith('jpg'),
-    },
+      onBeforeRead: (file) => file.name.endsWith('jpg')
+    }
   })
 
   await wrapper.vm.handleChange(createEvent('cat.png'))
@@ -67,8 +67,8 @@ test('test uploader preview', async () => {
   const wrapper = mount(VarUploader, {
     props: {
       modelValue: [],
-      'onUpdate:modelValue': onUpdateModelValue,
-    },
+      'onUpdate:modelValue': onUpdateModelValue
+    }
   })
 
   await wrapper.vm.handleChange(createEvent('cat.jpg'))
@@ -91,8 +91,8 @@ test('test uploader onOversize', async () => {
   const wrapper = mount(VarUploader, {
     props: {
       maxsize: -1,
-      onOversize,
-    },
+      onOversize
+    }
   })
 
   await wrapper.vm.handleChange(createEvent('cat.png'))
@@ -110,8 +110,8 @@ test('test uploader onRemove', async () => {
     props: {
       modelValue: [],
       onRemove,
-      'onUpdate:modelValue': onUpdateModelValue,
-    },
+      'onUpdate:modelValue': onUpdateModelValue
+    }
   })
 
   await wrapper.vm.handleChange(createEvent('cat.png'))
@@ -126,30 +126,32 @@ test('test uploader onRemove', async () => {
   mockRestore()
 })
 
-test('test uploader onRemove result not empty not deleted', async () => {
-    const { mockRestore } = mockFileReader('data:image/png;base64,')
-    const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
-    const onRemove = jest.fn(()=>Promise.resolve(1));
+test('test uploader onBeforeRemove', async () => {
+  const { mockRestore } = mockFileReader('data:image/png;base64,')
+  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onBeforeRemove = jest.fn(() => false)
+  const onRemove = jest.fn()
 
-    const wrapper = mount(VarUploader, {
-      props: {
-        modelValue: [],
-        onRemove,
-        'onUpdate:modelValue': onUpdateModelValue,
-      },
-    })
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+      onBeforeRemove,
+      onRemove,
+      'onUpdate:modelValue': onUpdateModelValue
+    }
+  })
 
-    await wrapper.vm.handleChange(createEvent('cat.png'))
-    expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
+  await wrapper.vm.handleChange(createEvent('cat.png'))
+  expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
 
-    await wrapper.find('.var-uploader__file-close').trigger('click')
-    //因为有返回值,所以没有删除
-    expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
-    expect(onRemove).toHaveBeenCalledTimes(1)
-    expect(wrapper.vm.modelValue).toHaveLength(1);
+  await wrapper.find('.var-uploader__file-close').trigger('click')
+  expect(onBeforeRemove).toHaveBeenCalledTimes(1)
+  expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
+  expect(onRemove).toHaveBeenCalledTimes(0)
+  expect(wrapper.vm.modelValue).toHaveLength(1)
 
-    wrapper.unmount()
-    mockRestore()
+  wrapper.unmount()
+  mockRestore()
 })
 
 test('test uploader validation', async () => {
@@ -160,8 +162,8 @@ test('test uploader validation', async () => {
     props: {
       modelValue: [],
       rules: [(v) => v.length >= 1 || '您至少上传一个'],
-      'onUpdate:modelValue': onUpdateModelValue,
-    },
+      'onUpdate:modelValue': onUpdateModelValue
+    }
   })
 
   wrapper.vm.validate()
@@ -195,8 +197,8 @@ test('test uploader disabled', async () => {
       modelValue: [],
       onAfterRead,
       onRemove,
-      'onUpdate:modelValue': onUpdateModelValue,
-    },
+      'onUpdate:modelValue': onUpdateModelValue
+    }
   })
 
   expect(wrapper.html()).toMatchSnapshot()
@@ -222,16 +224,16 @@ test('test uploader length over maxlength in multiple mode', async () => {
     props: {
       maxlength: 1,
       modelValue: [],
-      'onUpdate:modelValue': onUpdateModelValue,
-    },
+      'onUpdate:modelValue': onUpdateModelValue
+    }
   })
 
   expect(wrapper.html()).toMatchSnapshot()
 
   const event = {
     target: {
-      files: [new File([], 'cat.png'), new File([], 'dog.png')],
-    },
+      files: [new File([], 'cat.png'), new File([], 'dog.png')]
+    }
   }
 
   await wrapper.vm.handleChange(event)

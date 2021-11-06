@@ -23,16 +23,16 @@
   <app-type>{{ pack.readonly }}</app-type>
   <var-uploader readonly v-model="files9" />
 
-  <app-type>{{ pack.validate }}</app-type>
-  <var-uploader :rules="[(v, u) => u.getError(v).length === 0 || pack.validateMessage]" v-model="files10" />
-
-  <app-type>{{ pack.onRemove }}</app-type>
-  <var-uploader v-model="files11" @remove="handleRemoveFile" />
+  <app-type>{{ pack.beforeRemove }}</app-type>
+  <var-uploader v-model="files11" @before-remove="handleBeforeRemove" />
 
   <app-type>{{ pack.style }}</app-type>
   <var-uploader v-model="files6">
     <var-button type="primary">{{ pack.upload }}</var-button>
   </var-uploader>
+
+  <app-type>{{ pack.validate }}</app-type>
+  <var-uploader :rules="[(v, u) => u.getError(v).length === 0 || pack.validateMessage]" v-model="files10" />
 
   <div class="space"></div>
 </template>
@@ -102,10 +102,6 @@ export default {
           url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
           cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
         },
-        {
-          url: 'https://www.runoob.com/try/demo_source/mov_bbb.mp4',
-          cover: 'https://varlet.gitee.io/varlet-ui/cover.jpg',
-        },
       ],
     })
 
@@ -123,26 +119,13 @@ export default {
 
     const handleBeforeRead = (file) => file.file.size <= 1024 * 10
 
-    const handleRemoveFile = () => {
-      return new Promise((r) => {
-        Dialog({
-          title: '是否删除',
-          message: '确定删除？不能反悔滴阿。',
-          onBeforeClose(action, done) {
-            if (action === 'confirm') {
-              Snackbar.loading('正在执行删除')
-              setTimeout(() => {
-                Snackbar.success('删除完毕')
-                r()
-                done()
-              }, 1000)
-            } else {
-              r(true)
-              done()
-            }
-          },
-        })
+    const handleBeforeRemove = async () => {
+      const action = await Dialog({
+        title: pack.value.removeTitle,
+        message: pack.value.removeMessage,
       })
+
+      return action === 'confirm'
     }
 
     watchLang(use)
@@ -154,7 +137,7 @@ export default {
       handleAfterRead2,
       handleOversize,
       handleBeforeRead,
-      handleRemoveFile,
+      handleBeforeRemove,
     }
   },
 }
