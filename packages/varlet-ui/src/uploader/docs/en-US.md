@@ -298,6 +298,7 @@ The second argument is a collection of utility functions that can quickly get a 
 | `before-read` | Trigger returns a false value before a file is read to prevent the file from being read(support promise) | `file: VarFile` |
 | `after-read` | Triggered after the file is read | `file: VarFile` |
 | `oversize` | Triggered when the file size limit is exceeded | `file: VarFile` |
+| `before-remove` | Triggered before file deletion, return false value to prevent file deletion (support promise) | `file: VarFile` |
 | `remove` | Triggered when deleting a file. There is a true value to prevent deleting a file (support promise) | `file: VarFile` |
 
 ### Slots
