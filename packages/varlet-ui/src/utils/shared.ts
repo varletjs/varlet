@@ -32,14 +32,6 @@ export const toNumber = (val: number | string | boolean | undefined | null): num
   return val
 }
 
-export const isFunction = (val: unknown): val is () => unknown => typeof val === 'function'
-
-export const isObject = (val: unknown): val is Record<any, any> => val !== null && typeof val === 'object'
-
-export const isPromise = <T = any>(val: unknown): val is Promise<T> => {
-  return isObject(val) && isFunction(val.then) && isFunction(val.catch)
-}
-
 export const isHTMLSupportImage = (val: string | undefined | null) => {
   if (val == null) {
     return false
