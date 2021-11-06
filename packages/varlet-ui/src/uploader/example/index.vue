@@ -40,7 +40,6 @@
 <script>
 import VarUploader from '..'
 import VarButton from '../../button'
-import Snackbar from '../../snackbar'
 import Dialog from '../../dialog'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { reactive, toRefs } from 'vue'
