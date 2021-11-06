@@ -180,6 +180,52 @@ export default {
 <var-uploader readonly v-model="files"/>
 ```
 
+### Remove Preprocessing
+
+Before deleting the file, the `before-remove` event is triggered, and a falsy value is returned to prevent the delete operation.
+
+```html
+ <var-uploader v-model="files" @remove="handleBeforeRemove" />
+```
+
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const files = ref([
+      {
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      }
+    ])
+
+    const handleBeforeRemove = async () => {
+      const action = await Dialog({
+        title: 'Delete or not?',
+        message: 'Cannot be withdrawn after deletion'
+      })
+
+      return action === 'confirm'
+    }
+
+    return {
+      files,
+      handleBeforeRemove
+    }
+  }
+}
+```
+
+
+### Customize upload styles
+
+```html
+<var-uploader v-model="files">
+  <var-button type="primary">Upload</var-button>
+</var-uploader>
+```
+
 ### Validate
 
 The values are validated by passing in an array of validator, If the validator returns `true`, the validation passes.
@@ -195,60 +241,6 @@ The second argument is a collection of utility functions that can quickly get a 
 />
 ```
 
-### onRemove
-
-Trigger the remove event and obtain the return value to determine whether to delete. If there is a true return value, the delete update action will not be executed
-
-```html
- <var-uploader v-model="files11" @remove="handleRemoveFile" />
-```
-
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const files = ref([
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        state: 'loading'
-      },
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        state: 'success'
-      },
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        state: 'error'
-      }
-    ])
-
-    const handleRemoveFile = (file) => {
-        //都将执行删除动作,无返回或者假值执行删除
-        //return new Promise.resole(true);
-        return true;
-    }
-
-    return {
-      files,
-      handleRemoveFile
-    }
-  }
-}
-```
-
-
-### Customize upload styles
-
-```html
-<var-uploader v-model="files">
-  <var-button type="primary">Upload</var-button>
-</var-uploader>
-```
-
 ## API
 
 ### Props
@@ -261,7 +253,7 @@ export default {
 | `multiple` | Whether to select multiple files | _boolean_ | `false` |
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
-| `removable` | Whether the removable | _boolean_ | `false` |
+| `removable` | Whether the removable | _boolean_ | `true` |
 | `maxlength` | Maximum number of files | _string \| number_ | `-` |
 | `maxsize` | Maximum file size | _string \| number_ | `-` |
 | `previewed` | Whether to allow preview | _boolean_ | `true` |

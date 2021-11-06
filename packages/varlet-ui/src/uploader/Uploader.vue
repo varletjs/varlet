@@ -246,33 +246,22 @@ export default defineComponent({
       validVarFiles.forEach((varFile) => onAfterRead?.(reactive(varFile)))
     }
 
-    const handleRemove = (removedVarFile: VarFile) => {
-      const { disabled, readonly, modelValue, onRemove } = props
+    const handleRemove = async (removedVarFile: VarFile) => {
+      const { disabled, readonly, modelValue, onBeforeRemove, onRemove } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
       const validFiles: VarFile[] = modelValue.filter((varFile) => varFile !== removedVarFile)
 
-      const notifyRemoveFile = () => {
-        props['onUpdate:modelValue']?.(validFiles)
-        validateWithTrigger('onRemove')
-      }
-      if (onRemove) {
-        // 有返回值就不删除了
-        const isRmove = onRemove(removedVarFile)
-        if (isPromise(isRmove)) {
-          isRmove.then((v) => {
-            if (!v) {
-              notifyRemoveFile()
-            }
-          })
-          return
-        }
-        if (isRmove) return
+      if (onBeforeRemove && !(await onBeforeRemove(removedVarFile))) {
+        return
       }
 
-      notifyRemoveFile()
+      const expectedFiles: VarFile[] = modelValue.filter((varFile) => varFile !== removedVarFile)
+      onRemove?.(removedVarFile)
+      validateWithTrigger('onRemove')
+      props['onUpdate:modelValue']?.(expectedFiles)
     }
 
     // expose
