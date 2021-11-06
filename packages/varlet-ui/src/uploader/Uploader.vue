@@ -252,7 +252,6 @@ export default defineComponent({
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
-      const validFiles: VarFile[] = modelValue.filter((varFile) => varFile !== removedVarFile)
 
       if (onBeforeRemove && !(await onBeforeRemove(removedVarFile))) {
         return
