@@ -90,7 +90,7 @@ import { props, MONTH_LIST, WEEK_HEADER } from './props'
 import { isArray, toNumber } from '../utils/shared'
 import { pack } from '../locale'
 import type { Ref, ComputedRef, UnwrapRef } from 'vue'
-import type { Month, Choose, Preview, Week, ComponentProps } from './props'
+import type { MonthDict, Choose, Preview, WeekDict, ComponentProps } from './props'
 
 export default defineComponent({
   name: 'VarDatePicker',
@@ -103,14 +103,14 @@ export default defineComponent({
   setup(props) {
     const currentDate: string = dayjs().format('YYYY-MM-D')
     const [currentYear, currentMonth, currentDay] = currentDate.split('-')
-    const monthDes: Month = MONTH_LIST.find((month) => month.index === currentMonth) as Month
+    const monthDes: MonthDict = MONTH_LIST.find((month) => month.index === currentMonth) as MonthDict
     const isYearPanel: Ref<boolean> = ref(false)
     const isMonthPanel: Ref<boolean> = ref(false)
     const rangeDone: Ref<boolean> = ref(true)
-    const chooseMonth: Ref<Month> = ref(monthDes)
+    const chooseMonth: Ref<MonthDict> = ref(monthDes)
     const chooseYear: Ref<string> = ref(currentYear)
     const chooseDay: Ref<string> = ref(currentDay)
-    const previewMonth: Ref<Month> = ref(monthDes)
+    const previewMonth: Ref<MonthDict> = ref(monthDes)
     const previewYear: Ref<string> = ref(currentYear)
     const reverse: Ref<boolean> = ref(false)
     const chooseMonths: Ref<Array<string>> = ref([`${currentYear}-${currentMonth}`])
@@ -150,7 +150,7 @@ export default defineComponent({
 
       if (range) return `${chooseRangeMonth.value[0]} ~ ${chooseRangeMonth.value[1]}`
 
-      const monthName = pack.value.datePickerMonthDict[chooseMonth.value.index].name
+      const monthName = pack.value.datePickerMonthDict?.[chooseMonth.value.index].name
       return multiple ? `${chooseMonths.value.length}${pack.value.datePickerSelected}` : monthName
     })
 
@@ -165,21 +165,21 @@ export default defineComponent({
       if (multiple) return `${chooseDays.value.length}${pack.value.datePickerSelected}`
 
       const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value.index}-${chooseDay.value}`).day()
-      const week: Week = WEEK_HEADER.find((value) => value.index === weekIndex) as Week
-      const weekName = pack.value.datePickerWeekDict[week.index].name
+      const week: WeekDict = WEEK_HEADER.find((value) => value.index === `${weekIndex}`) as WeekDict
+      const weekName = pack.value.datePickerWeekDict?.[week.index].name
 
-      const monthName = pack.value.datePickerMonthDict[chooseMonth.value.index].name
+      const monthName = pack.value.datePickerMonthDict?.[chooseMonth.value.index].name
       const showDay = chooseDay.value.padStart(2, '0')
 
       if (pack.value.lang === 'zh-CN') return `${chooseMonth.value.index}-${showDay} ${weekName.slice(0, 3)}`
       return `${weekName.slice(0, 3)}, ${monthName.slice(0, 3)} ${chooseDay.value}`
     })
 
-    const slotProps: ComputedRef<Record<string, string | number>> = computed(() => {
+    const slotProps: ComputedRef<Record<string, string>> = computed(() => {
       const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value.index}-${chooseDay.value}`).day()
 
       return {
-        week: weekIndex,
+        week: `${weekIndex}`,
         year: chooseYear.value,
         month: chooseMonth.value.index,
         date: chooseDay.value,
@@ -230,10 +230,10 @@ export default defineComponent({
       props.onChange?.(formatDates)
     }
 
-    const getReverse = (dateType: string, date: Month | number) => {
+    const getReverse = (dateType: string, date: MonthDict | number) => {
       if (!isSameYear.value) return chooseYear.value > previewYear.value
 
-      if (dateType === 'month') return (date as Month).index < chooseMonth.value.index
+      if (dateType === 'month') return (date as MonthDict).index < chooseMonth.value.index
 
       return isSameMonth.value
         ? (date as number) < toNumber(chooseDay.value)
@@ -257,7 +257,7 @@ export default defineComponent({
       }
     }
 
-    const getChooseMonth = (month: Month) => {
+    const getChooseMonth = (month: MonthDict) => {
       const { type, readonly, range, multiple, onChange, 'onUpdate:modelValue': updateModelValue } = props
       reverse.value = getReverse('month', month)
 
@@ -301,7 +301,7 @@ export default defineComponent({
           checkIndex = 1
         }
 
-        previewMonth.value = MONTH_LIST.find((month) => toNumber(month.index) === checkIndex) as Month
+        previewMonth.value = MONTH_LIST.find((month) => toNumber(month.index) === checkIndex) as MonthDict
       }
     }
 
@@ -361,7 +361,7 @@ export default defineComponent({
 
       const [yearValue, monthValue, dayValue] = formatDate.split('-')
 
-      const monthDes: Month = MONTH_LIST.find((month) => month.index === monthValue) as Month
+      const monthDes: MonthDict = MONTH_LIST.find((month) => month.index === monthValue) as MonthDict
 
       chooseMonth.value = monthDes
       chooseYear.value = yearValue

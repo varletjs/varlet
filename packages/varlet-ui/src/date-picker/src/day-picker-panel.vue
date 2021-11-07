@@ -50,7 +50,7 @@ import { WEEK_HEADER } from '../props'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
 import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
-import type { Choose, Preview, ComponentProps, Week, PanelBtnDisabled } from '../props'
+import type { Choose, Preview, ComponentProps, Week, WeekDict, PanelBtnDisabled } from '../props'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -105,13 +105,13 @@ export default defineComponent({
         props.choose.chooseMonth.index === props.preview.previewMonth.index
     )
 
-    const sortWeekList: ComputedRef<Array<Week>> = computed(() => {
-      const index = WEEK_HEADER.findIndex((week: Week) => week.index === toNumber(props.componentProps.firstDayOfWeek))
+    const sortWeekList: ComputedRef<Array<WeekDict>> = computed(() => {
+      const index = WEEK_HEADER.findIndex((week: WeekDict) => week.index === props.componentProps.firstDayOfWeek)
       if (index === -1 || index === 0) return WEEK_HEADER
       return WEEK_HEADER.slice(index).concat(WEEK_HEADER.slice(0, index))
     })
 
-    const getDayAbbr = (key: number): number => pack.value.datePickerWeekDict[key].abbr
+    const getDayAbbr = (key: Week): string => pack.value.datePickerWeekDict?.[key].abbr
 
     const filterDay = (day: number): number | string => (day > 0 ? day : '')
 
@@ -122,7 +122,7 @@ export default defineComponent({
 
       const monthNum = dayjs(`${previewYear}-${previewMonth.index}`).daysInMonth()
       const firstDayToWeek = dayjs(`${previewYear}-${previewMonth.index}-01`).day()
-      const index = sortWeekList.value.findIndex((week: Week) => week.index === firstDayToWeek)
+      const index = sortWeekList.value.findIndex((week: WeekDict) => week.index === `${firstDayToWeek}`)
       days.value = [...Array(index).fill(-1), ...Array.from(Array(monthNum + 1).keys())].filter((value) => value)
     }
 
