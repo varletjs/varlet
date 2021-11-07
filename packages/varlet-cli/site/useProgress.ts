@@ -38,7 +38,7 @@ export function useProgress() {
     currentThemes = themes
     props.trackColor = getTrackColor(themes)
     props.color = props.value === 100 ? getTrackColor(themes) : getColor(themes)
-  })
+  }, false)
 
   const changeValue = () => {
     timer = window.setTimeout(() => {

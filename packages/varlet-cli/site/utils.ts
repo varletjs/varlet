@@ -39,7 +39,7 @@ export function getPCLocationInfo(): PCLocationInfo {
 
   return {
     language,
-    menuName
+    menuName,
   }
 }
 
@@ -50,7 +50,7 @@ export function isPhone() {
 export enum MenuTypes {
   TITLE = 1,
   COMPONENT = 2,
-  DOCUMENTATION = 3
+  DOCUMENTATION = 3,
 }
 
 export function inIframe() {
@@ -74,9 +74,7 @@ export function getHashSearch() {
 
 export function watchLang(cb: (lang: string) => void, platform: 'pc' | 'mobile' = 'mobile') {
   const handleHashchange = () => {
-    const language = platform === 'mobile'
-      ? (getHashSearch().get('language') ?? 'zh-CN')
-      : getPCLocationInfo().language
+    const language = platform === 'mobile' ? getHashSearch().get('language') ?? 'zh-CN' : getPCLocationInfo().language
 
     cb(language)
   }
@@ -97,7 +95,10 @@ export function watchPlatform(cb: (platform: string) => void) {
   handleHashchange()
 }
 
-export function watchThemes(cb: (themes: 'themes' | 'darkThemes', from: 'pc' | 'mobile' | 'default') => void) {
+export function watchThemes(
+  cb: (themes: 'themes' | 'darkThemes', from: 'pc' | 'mobile' | 'default') => void,
+  shouldUnmount = true
+) {
   const handleThemesChange = (event: MessageEvent) => {
     const { data } = event
     if (data.action === 'themesChange') {
@@ -107,9 +108,11 @@ export function watchThemes(cb: (themes: 'themes' | 'darkThemes', from: 'pc' | '
 
   window.addEventListener('message', handleThemesChange)
 
-  onUnmounted(() => {
-    window.removeEventListener('message', handleThemesChange)
-  })
+  if (shouldUnmount) {
+    onUnmounted(() => {
+      window.removeEventListener('message', handleThemesChange)
+    })
+  }
 
   cb(getBrowserThemes(), 'default')
 }
