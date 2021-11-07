@@ -19,6 +19,7 @@
           </var-site-button>
           <var-site-button
             v-if="!showBackIcon && github"
+            style="margin-left: 2px;"
             text
             round
             @click="toGithub"
@@ -87,7 +88,16 @@
 import config from '@config'
 import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { bigCamelize, getBrowserThemes, inIframe, isPhone, removeEmpty, setThemes, watchLang } from '../utils'
+import {
+  bigCamelize,
+  getBrowserThemes,
+  inIframe,
+  isPhone,
+  removeEmpty,
+  setThemes,
+  watchLang,
+  watchThemes
+} from '../utils'
 import { get } from 'lodash-es'
 
 export default defineComponent({
@@ -137,32 +147,39 @@ export default defineComponent({
     watch(
       () => route.path,
       (to: string) => {
-        bigCamelizeComponentName.value = bigCamelize(to.slice(1))
-        showBackIcon.value = bigCamelizeComponentName.value !== bigCamelize(redirect.slice(1))
+        const componentName = bigCamelize(to.slice(1))
+        const redirectName = bigCamelize(redirect.slice(1))
+        bigCamelizeComponentName.value = componentName === redirectName ? '' : componentName
+        showBackIcon.value = componentName !== redirectName
       }
     )
 
-    const toggleTheme = () => {
-      currentThemes.value = currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes'
+    const getThemesMessage = () => ({ action: 'themesChange', from: 'mobile', data: currentThemes.value })
+
+    const setCurrentThemes = (themes: 'themes' | 'darkThemes') => {
+      currentThemes.value = themes
       setThemes(config, currentThemes.value)
       window.localStorage.setItem('currentThemes', currentThemes.value)
+    }
+
+    const toggleTheme = () => {
+      setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
+      window.postMessage(getThemesMessage(), '*')
 
       if (!isPhone() && inIframe()) {
-        (window.top as any).onMobileThemeChange(currentThemes.value)
+        ;(window.top as any).postMessage(getThemesMessage(), '*')
       }
     }
 
     setThemes(config, currentThemes.value)
+    window.postMessage(getThemesMessage(), '*')
 
     document.body.addEventListener('click', () => {
       showMenu.value = false
     })
 
-    window.addEventListener('message', (event) => {
-      if (event.data === 'darkThemes' || event.data === 'themes') {
-        currentThemes.value = event.data
-        setThemes(config, currentThemes.value)
-      }
+    watchThemes((themes, from) => {
+      from === 'pc' && setCurrentThemes(themes)
     })
 
     return {

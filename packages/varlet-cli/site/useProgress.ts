@@ -3,19 +3,20 @@ import { reactive } from 'vue'
 // @ts-ignore
 import config from '@config'
 // @ts-ignore
-import { getBrowserThemes, mountInstance } from './utils'
+import { getBrowserThemes, mountInstance, watchThemes } from './utils'
 import { get } from 'lodash-es'
 
-function getColor() {
-  return get(config, `${get(window, 'currentThemes.value') ?? getBrowserThemes()}.color-progress`)
+function getColor(themes?: 'themes' | 'darkThemes') {
+  return get(config, `${themes ?? getBrowserThemes()}.color-progress`)
 }
 
-function getTrackColor() {
-  return get(config, `${get(window, 'currentThemes.value') ?? getBrowserThemes()}.color-progress-track`)
+function getTrackColor(themes?: 'themes' | 'darkThemes') {
+  return get(config, `${themes ?? getBrowserThemes()}.color-progress-track`)
 }
 
 export function useProgress() {
   let timer: number
+  let currentThemes: 'themes' | 'darkThemes'
   const trackColor = getTrackColor()
   const color = getColor()
 
@@ -33,11 +34,10 @@ export function useProgress() {
     value: 0,
   })
 
-  Object.defineProperty(window, 'resetProgressThemes', {
-    value: () => {
-      props.trackColor = getTrackColor()
-      props.color = props.value === 100 ? getTrackColor() : getColor()
-    }
+  watchThemes((themes) => {
+    currentThemes = themes
+    props.trackColor = getTrackColor(themes)
+    props.color = props.value === 100 ? getTrackColor(themes) : getColor(themes)
   })
 
   const changeValue = () => {
@@ -54,13 +54,13 @@ export function useProgress() {
 
   const start = () => {
     props.value = 0
-    setTimeout(() => (props.color = getColor()), 200)
+    setTimeout(() => (props.color = getColor(currentThemes)), 200)
     changeValue()
   }
 
   const end = () => {
     props.value = 100
-    setTimeout(() => (props.color = getTrackColor()), 300)
+    setTimeout(() => (props.color = getTrackColor(currentThemes)), 300)
     window.clearTimeout(timer)
   }
 

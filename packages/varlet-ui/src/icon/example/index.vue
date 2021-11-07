@@ -134,7 +134,9 @@ export default {
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     user-select: none;
-    border-bottom: 2px solid @color-primary;
+    border-bottom: 2px solid var(--color-primary);
+    background: var(--site-config-color-sub-bar);
+    transition: background-color 0.25s;
   }
 
   &__icon-name {

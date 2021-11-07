@@ -17,8 +17,9 @@ import VarSwitch from '../../switch'
 import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
+import dark from '../../themes/dark'
 import { ref, reactive, onUnmounted } from 'vue'
-import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
+import { getBrowserThemes, watchLang, watchPlatform } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 export default {
@@ -52,7 +53,7 @@ export default {
     let rootStyleVars = null
 
     const darkTheme = {
-      '--color-primary': '#000',
+      '--color-primary': '#3f51b5',
     }
 
     const toggleRootTheme = () => {
@@ -72,7 +73,9 @@ export default {
       context.touchmoveForbid = prevTouchmoveForbid
     })
 
-    onUnmounted(() => StyleProvider(null))
+    onUnmounted(() => {
+      StyleProvider(getBrowserThemes() === 'darkThemes' ? dark : null)
+    })
 
     return {
       pack,

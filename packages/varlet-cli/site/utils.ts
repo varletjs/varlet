@@ -1,4 +1,4 @@
-import { onActivated, onDeactivated, onMounted, onUnmounted, ref, Ref } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import { get } from 'lodash-es'
 import { formatStyleVars } from './components/utils/elements'
 
@@ -95,6 +95,23 @@ export function watchPlatform(cb: (platform: string) => void) {
   addRouteListener(handleHashchange)
 
   handleHashchange()
+}
+
+export function watchThemes(cb: (themes: 'themes' | 'darkThemes', from: 'pc' | 'mobile' | 'default') => void) {
+  const handleThemesChange = (event: MessageEvent) => {
+    const { data } = event
+    if (data.action === 'themesChange') {
+      cb(data.data, data.from)
+    }
+  }
+
+  window.addEventListener('message', handleThemesChange)
+
+  onUnmounted(() => {
+    window.removeEventListener('message', handleThemesChange)
+  })
+
+  cb(getBrowserThemes(), 'default')
 }
 
 export function addRouteListener(cb: () => void) {

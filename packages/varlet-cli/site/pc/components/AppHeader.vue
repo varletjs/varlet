@@ -65,7 +65,7 @@
 import config from '@config'
 import { ref, computed } from 'vue'
 import { get } from 'lodash-es'
-import { getBrowserThemes, getPCLocationInfo, removeEmpty, setThemes } from '../../utils'
+import { getBrowserThemes, getPCLocationInfo, removeEmpty, setThemes, watchThemes } from '../../utils'
 import { useRouter } from 'vue-router'
 import type { Ref, ComputedRef } from 'vue'
 
@@ -99,23 +99,22 @@ export default {
       currentThemes.value = themes
       setThemes(config, currentThemes.value)
       window.localStorage.setItem('currentThemes', currentThemes.value)
-      ;(window as any).resetProgressThemes()
     }
+
+    const getThemesMessage = () => ({ action: 'themesChange', from: 'pc', data: currentThemes.value })
 
     const toggleTheme = () => {
       setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
-      ;(document.getElementById('mobile') as HTMLIFrameElement).contentWindow.postMessage(currentThemes.value, '*')
+      window.postMessage(getThemesMessage(), '*')
+      ;(document.getElementById('mobile') as HTMLIFrameElement).contentWindow.postMessage(getThemesMessage(), '*')
     }
 
-    Object.defineProperty(window, 'currentThemes', {
-      value: currentThemes
-    })
-
-    Object.defineProperty(window, 'onMobileThemeChange', {
-      value: themes => setCurrentThemes(themes)
+    watchThemes((themes, from) => {
+      from === 'mobile' && setCurrentThemes(themes)
     })
 
     setThemes(config, currentThemes.value)
+    window.postMessage(getThemesMessage(), '*')
 
     return {
       logo,
