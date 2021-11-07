@@ -40,7 +40,7 @@
         <var-site-icon name="chevron-down" />
         <transition name="fade">
           <div
-            class="varlet-site-header__language-list var-elevation--5"
+            class="varlet-site-header__language-list var-site-elevation--5"
             v-show="isOpenMenu"
             :style="{ pointerEvents: isOpenMenu ? 'auto' : 'none' }"
           >
@@ -73,7 +73,7 @@ export default {
   name: 'AppHeader',
   props: {
     language: {
-      type: String
+      type: String,
     },
   },
   setup() {
@@ -126,9 +126,9 @@ export default {
       darkMode,
       currentThemes,
       handleLanguageChange,
-      toggleTheme
+      toggleTheme,
     }
-  }
+  },
 }
 </script>
 
@@ -266,6 +266,11 @@ export default {
 
     .var-site-cell {
       width: 100px;
+
+      &:hover {
+        background: var(--site-config-color-pc-language-active-background);
+        color: var(--site-config-color-pc-language-active);
+      }
     }
 
     &--active {
