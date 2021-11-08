@@ -78,8 +78,7 @@ module.exports = {
     'color-sub-text': '#aaa',
     'color-border': '#333',
     'color-shadow': '#121212',
-    // todo 若是效果可以则该变量可删除, 否则改回#555
-    'color-introduce-border': '#2196f3',
+    'color-introduce-border': '#555',
     'color-primary': '#5580f8',
     'color-link': '#10c48f',
     'color-type': '#10c48f',

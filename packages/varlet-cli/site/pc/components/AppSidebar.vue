@@ -122,7 +122,6 @@ export default {
     font-size: 14px;
     color: var(--site-config-color-text);
     transition: color 0.2s;
-    padding-left: 44px;
 
     &:hover {
       color: var(--site-config-color-side-bar);
