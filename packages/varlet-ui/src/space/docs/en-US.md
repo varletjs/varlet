@@ -28,7 +28,7 @@ createApp().use(Space)
 ### Vertical
 
 ```html
-<var-space direction="column">
+<var-space direction="column" size="large">
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
     <var-button>Button3</var-button>
