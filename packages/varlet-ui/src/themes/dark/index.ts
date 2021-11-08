@@ -1,6 +1,8 @@
 import button from './button'
 import cell from './cell'
-import menu from './menu'
+import popup from './popup'
+import dialog from './dialog'
+import actionSheet from './actionSheet'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -16,5 +18,7 @@ export default {
   '--color-text-disabled': '#757575',
   ...button,
   ...cell,
-  ...menu,
+  ...popup,
+  ...dialog,
+  ...actionSheet,
 } as StyleVars
