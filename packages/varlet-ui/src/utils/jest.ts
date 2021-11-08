@@ -208,10 +208,10 @@ export function mockStubs() {
   }
 }
 
-export function mockConsole(method: keyof Console) {
+export function mockConsole(method: keyof Console, fn = () => {}) {
   const originMethod = console[method]
 
-  console[method] = () => {}
+  console[method] = fn
 
   return {
     mockRestore() {

@@ -115,7 +115,8 @@ test('test slider labelVisible prop', async () => {
 })
 
 test('test step prop', async () => {
-  const { mockRestore } = mockConsole('warn')
+  const fn = jest.fn()
+  const { mockRestore } = mockConsole('warn', fn)
   const template = `<var-slider v-model="value" :step="step"/> `
 
   const wrapper = mount({
@@ -142,11 +143,14 @@ test('test step prop', async () => {
   await trigger(el, 'touchend', 50, 0)
 
   expect(wrapper.vm.value).not.toBe(0)
+  expect(fn).toHaveBeenCalledTimes(3)
+
   mockRestore()
 })
 
 test('test slider value legal', async () => {
-  const { mockRestore } = mockConsole('error')
+  const fn = jest.fn()
+  const { mockRestore } = mockConsole('error', fn)
   const template = `<var-slider v-model="value" :range="range" /> `
 
   const wrapper = mount({
@@ -165,6 +169,7 @@ test('test slider value legal', async () => {
   await delay(0)
   await wrapper.setData({ value: [] })
   await wrapper.setData({ range: false, value: [] })
+  expect(fn).toHaveBeenCalledTimes(3)
 
   mockRestore()
 })
