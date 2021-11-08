@@ -35,6 +35,7 @@ interface Locale {
   add(lang: string, pack: Partial<Pack>): void
   use(lang: string): void
   merge(lang: string, pack: Partial<Pack>): void
+  new(params:any):Locale
 }
 
 export const Locale: Locale
