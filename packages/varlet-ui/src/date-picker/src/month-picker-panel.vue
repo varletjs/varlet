@@ -41,7 +41,7 @@ import VarButton from '../../button'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
 import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
-import type { Choose, Preview, ComponentProps, Month, PanelBtnDisabled } from '../props'
+import type { Choose, Preview, ComponentProps, Month, MonthDict, PanelBtnDisabled } from '../props'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -89,7 +89,7 @@ export default defineComponent({
 
     const isCurrentYear: ComputedRef<boolean> = computed(() => props.preview.previewYear === currentYear)
 
-    const getMonthAbbr = (key: string): string => pack.value.datePickerMonthDict[key].abbr
+    const getMonthAbbr = (key: Month): string => pack.value.datePickerMonthDict?.[key].abbr
 
     const inRange = (key: string): boolean => {
       const {
@@ -185,7 +185,7 @@ export default defineComponent({
       }
     }
 
-    const chooseMonth = (month: Month) => {
+    const chooseMonth = (month: MonthDict) => {
       emit('choose-month', month)
     }
 

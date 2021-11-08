@@ -68,10 +68,13 @@ export const props = {
   onAfterRead: {
     type: Function as PropType<(file: VarFile) => any>,
   },
-  onOversize: {
+  onBeforeRemove: {
     type: Function as PropType<(file: VarFile) => any>,
   },
   onRemove: {
+    type: Function as PropType<(file: VarFile) => any>,
+  },
+  onOversize: {
     type: Function as PropType<(file: VarFile) => any>,
   },
   'onUpdate:modelValue': {

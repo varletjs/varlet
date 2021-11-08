@@ -4,6 +4,10 @@ type AllowedDates = (val: string) => boolean
 
 type DatePickerType = 'date' | 'month'
 
+export type Month = '01' | '02' | '03' | '04' | '05' | '06' | '07' | '08' | '09' | '10' | '11' | '12'
+
+export type Week = '0' | '1' | '2' | '3' | '4' | '5' | '6'
+
 function typeValidator(type: string): boolean {
   return ['date', 'month'].includes(type)
 }
@@ -20,12 +24,12 @@ export type ComponentProps = {
   range: boolean
 }
 
-export type Month = {
-  index: string
+export type MonthDict = {
+  index: Month
 }
 
-export type Week = {
-  index: number
+export type WeekDict = {
+  index: Week
 }
 
 export type PanelBtnDisabled = {
@@ -34,7 +38,7 @@ export type PanelBtnDisabled = {
 }
 
 export type Choose = {
-  chooseMonth: Month
+  chooseMonth: MonthDict
   chooseYear: string
   chooseDay: string
   chooseMonths: Array<string>
@@ -44,11 +48,11 @@ export type Choose = {
 }
 
 export type Preview = {
-  previewMonth: Month
+  previewMonth: MonthDict
   previewYear: string
 }
 
-export const MONTH_LIST: Array<Month> = [
+export const MONTH_LIST: Array<MonthDict> = [
   {
     index: '01',
   },
@@ -87,27 +91,27 @@ export const MONTH_LIST: Array<Month> = [
   },
 ]
 
-export const WEEK_HEADER: Array<Week> = [
+export const WEEK_HEADER: Array<WeekDict> = [
   {
-    index: 0,
+    index: '0',
   },
   {
-    index: 1,
+    index: '1',
   },
   {
-    index: 2,
+    index: '2',
   },
   {
-    index: 3,
+    index: '3',
   },
   {
-    index: 4,
+    index: '4',
   },
   {
-    index: 5,
+    index: '5',
   },
   {
-    index: 6,
+    index: '6',
   },
 ]
 

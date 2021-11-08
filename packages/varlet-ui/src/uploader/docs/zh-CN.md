@@ -104,7 +104,7 @@ export default {
       }, 1000)
     }
 
-    return { 
+    return {
       files,
       handleAfterRead
     }
@@ -135,7 +135,7 @@ export default {
 
     const handleOversize = file => console.log(file)
 
-    return { 
+    return {
       files,
       handleAfterRead
     }
@@ -160,7 +160,7 @@ export default {
 
     const handleBeforeRead = file => file.file.size <= 1024 * 10
 
-    return { 
+    return {
       files,
       handleAfterRead
     }
@@ -180,6 +180,51 @@ export default {
 <var-uploader readonly v-model="files"/>
 ```
 
+### 删除前处理
+
+删除文件之前会触发`before-remove`事件，返回假值阻止删除操作。
+
+```html
+ <var-uploader v-model="files" @before-remove="handleBeforeRemove" />
+```
+
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const files = ref([
+      {
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg'
+      }
+    ])
+
+    const handleBeforeRemove = async () => {
+      const action = await Dialog({
+        title: '是否删除?',
+        message: '删除后无法撤回'
+      })
+
+      return action === 'confirm'
+    }
+
+    return {
+      files,
+      handleBeforeRemove
+    }
+  }
+}
+```
+
+### 自定义上传样式
+
+```html
+<var-uploader v-model="files">
+  <var-button type="primary">上传</var-button>
+</var-uploader>
+```
+
 ### 字段校验
 
 通过传入一个校验器数组可以对值进行校验，校验器返回`true`则为校验通过。
@@ -193,27 +238,19 @@ export default {
 />
 ```
 
-### 自定义上传样式
-
-```html
-<var-uploader v-model="files">
-  <var-button type="primary">上传</var-button>
-</var-uploader>
-```
-
 ## API
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `v-model` | 文件列表 | _VarFile[]_ | `[]` |
 | `accept` | 接受的文件类型，与原生属性一致 | _string_ | `image/*` |
 | `capture` | 获取文件方式，与原生属性一致 | _string_ | `-` |
 | `multiple` | 是否多选文件 | _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
-| `removable` | 是否可以删除 | _boolean_ | `false` |
+| `removable` | 是否可以删除 | _boolean_ | `true` |
 | `maxlength` | 最大文件个数 | _string \| number_ | `-` |
 | `maxsize` | 最大文件大小 | _string \| number_ | `-` |
 | `previewed` | 是否允许预览 | _boolean_ | `true` |
@@ -223,7 +260,7 @@ export default {
 
 ### VarFile
 
-| 参数 | 说明 | 类型 | 默认值 | 
+| 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `file` | 原生文件 | _File_ | `-` |
 | `name` | 文件名 | _string_ | `-` |
@@ -258,6 +295,7 @@ export default {
 | `before-read` | 文件读取前触发，返回假值阻止文件读取(支持promise) | `file: VarFile` |
 | `after-read` | 文件读取后触发 | `file: VarFile` |
 | `oversize` | 文件超过限制大小时触发 | `file: VarFile` |
+| `before-remove` | 文件删除前触发，返回假值阻止文件删除(支持promise) | `file: VarFile` |
 | `remove` | 文件删除时触发 | `file: VarFile` |
 
 ### 插槽
