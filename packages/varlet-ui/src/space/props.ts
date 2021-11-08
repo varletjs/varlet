@@ -1,7 +1,7 @@
 import type { PropType } from 'vue'
 import { SpaceAlign, SpaceDirection, SpaceJustify, SpaceSize } from '../../types'
 
-const sizeValidator = (size: SpaceSize): boolean => {
+export const sizeValidator = (size: SpaceSize): boolean => {
   if (typeof size === 'string') {
     return ['mini', 'small', 'normal', 'large'].includes(size) || !!size.match(/\d/g)
   }
