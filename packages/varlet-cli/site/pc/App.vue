@@ -209,14 +209,14 @@ iframe {
       display: flex;
       background: var(--site-config-color-body);
       margin-top: 60px;
-      margin-left: 220px;
+      margin-left: 240px;
     }
 
     &-doc-container {
       flex: 1 0 0;
       overflow-y: auto;
       min-width: 500px;
-      padding: 0 30px;
+      padding: 0 25px;
       overflow-x: hidden;
 
       &::-webkit-scrollbar {
@@ -354,7 +354,6 @@ iframe {
 
       .card {
         margin-bottom: 24px;
-        padding: 0 4px;
       }
     }
   }
