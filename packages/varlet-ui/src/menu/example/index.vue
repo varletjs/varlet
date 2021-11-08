@@ -5,7 +5,7 @@
       <var-button type="primary" @click="top = true">{{ pack.topAlignment }}</var-button>
 
       <template #menu>
-        <div class="cell-list">
+        <div class="cell-list" :style="{ background: bgColor }">
           <var-cell>{{ pack.menuOption }}</var-cell>
           <var-cell>{{ pack.menuOption }}</var-cell>
           <var-cell>{{ pack.menuOption }}</var-cell>
@@ -19,7 +19,7 @@
       <var-button type="primary" @click="bottom = true">{{ pack.bottomAlignment }}</var-button>
 
       <template #menu>
-        <div class="cell-list">
+        <div class="cell-list" :style="{ background: bgColor }">
           <var-cell>{{ pack.menuOption }}</var-cell>
           <var-cell>{{ pack.menuOption }}</var-cell>
           <var-cell>{{ pack.menuOption }}</var-cell>
@@ -35,7 +35,7 @@
       <var-button type="primary" @click="offsetX = true">{{ pack.offsetRight }}</var-button>
 
       <template #menu>
-        <div class="cell-list">
+        <div class="cell-list" :style="{ background: bgColor }">
           <var-cell>{{ pack.menuOption }}</var-cell>
           <var-cell>{{ pack.menuOption }}</var-cell>
           <var-cell>{{ pack.menuOption }}</var-cell>
@@ -47,7 +47,7 @@
       <var-button type="primary" @click="offsetX1 = true">{{ pack.offsetLeft }}</var-button>
 
       <template #menu>
-        <div class="cell-list">
+        <div class="cell-list" :style="{ background: bgColor }">
           <var-cell>{{ pack.menuOption }}</var-cell>
           <var-cell>{{ pack.menuOption }}</var-cell>
           <var-cell>{{ pack.menuOption }}</var-cell>
@@ -61,7 +61,7 @@
       <var-button type="primary" @click="offsetY = true">{{ pack.offsetBottom }}</var-button>
 
       <template #menu>
-        <div class="cell-list">
+        <div class="cell-list" :style="{ background: bgColor }">
           <var-cell>{{ pack.menuOption }}</var-cell>
           <var-cell>{{ pack.menuOption }}</var-cell>
           <var-cell>{{ pack.menuOption }}</var-cell>
@@ -73,7 +73,7 @@
       <var-button type="primary" @click="offsetY1 = true">{{ pack.offsetTop }}</var-button>
 
       <template #menu>
-        <div class="cell-list">
+        <div class="cell-list" :style="{ background: bgColor }">
           <var-cell>{{ pack.menuOption }}</var-cell>
           <var-cell>{{ pack.menuOption }}</var-cell>
           <var-cell>{{ pack.menuOption }}</var-cell>
@@ -93,7 +93,7 @@
     <var-button type="primary" @click="event = true">{{ pack.events }}</var-button>
 
     <template #menu>
-      <div class="cell-list">
+      <div class="cell-list" :style="{ background: bgColor }">
         <var-cell>{{ pack.menuOption }}</var-cell>
         <var-cell>{{ pack.menuOption }}</var-cell>
         <var-cell>{{ pack.menuOption }}</var-cell>
@@ -111,9 +111,10 @@ import VarCell from '../../cell'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
-import { onUnmounted, reactive, toRefs } from 'vue'
+import { onUnmounted, reactive, toRefs, ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'MenuExample',
@@ -133,8 +134,12 @@ export default {
       offsetY1: false,
       event: false,
     })
+    const bgColor = ref('#fff')
 
     watchLang(use)
+    watchDarkMode((themes) => {
+      bgColor.value = themes === 'darkThemes' ? '#272727' : '#fff'
+    })
 
     const prevTouchmoveForbid = context.touchmoveForbid
     watchPlatform((platform) => {
@@ -149,6 +154,7 @@ export default {
     return {
       pack,
       ...toRefs(values),
+      bgColor,
       Snackbar,
     }
   },
@@ -157,7 +163,7 @@ export default {
 
 <style scoped lang="less">
 .cell-list {
-  background: #fff;
+  transition: background-color 0.25s;
 }
 
 .block {

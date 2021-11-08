@@ -142,7 +142,7 @@ export function getBrowserThemes(): 'darkThemes' | 'themes' {
   let currentThemes = window.localStorage.getItem('currentThemes') as 'darkThemes' | 'themes'
 
   if (!currentThemes) {
-    currentThemes = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'darkThemes' : 'themes'
+    currentThemes = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'darkThemes' : 'themes'
     window.localStorage.setItem('currentThemes', currentThemes)
   }
 
