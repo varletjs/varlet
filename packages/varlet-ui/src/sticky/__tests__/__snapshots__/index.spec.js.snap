@@ -28,7 +28,7 @@ exports[`test sticky example 1`] = `
 "<div class=\\"example\\">
   <div class=\\"app-type\\">基本使用</div>
   <div class=\\"var-sticky\\" style=\\"z-index: 10;\\">
-    <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1\\">
+    <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">基本使用</div>
       </button></div>
@@ -36,7 +36,7 @@ exports[`test sticky example 1`] = `
   <div class=\\"app-type\\">局部吸顶</div>
   <div class=\\"scroller\\">
     <div class=\\"var-sticky\\" style=\\"z-index: 10;\\">
-      <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--1\\">
+      <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
           <!--v-if-->
           <div class=\\"var-button__content\\">局部吸顶</div>
         </button></div>

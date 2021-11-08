@@ -95,7 +95,7 @@ exports[`test collapse example 1`] = `
     </div>
   </div>
   <div>
-    <div class=\\"app-type\\">禁用</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\" style=\\"margin-bottom: 8px;\\">
+    <div class=\\"app-type\\">禁用</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\" style=\\"margin-bottom: 8px;\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">禁用</div>
     </button>
