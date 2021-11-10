@@ -5,6 +5,7 @@ import dialog from './dialog'
 import actionSheet from './actionSheet'
 import chip from './chip'
 import badge from './badge'
+import uploader from './uploader'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -25,4 +26,5 @@ export default {
   ...actionSheet,
   ...chip,
   ...badge,
+  ...uploader,
 } as StyleVars

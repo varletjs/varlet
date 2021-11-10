@@ -73,15 +73,13 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import '../../styles/var';
-
 .var-col {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   height: 36px;
-  background: @color-primary;
+  background: var(--site-config-color-app-bar);
   background-clip: content-box;
   margin-bottom: 10px;
   color: #fff;

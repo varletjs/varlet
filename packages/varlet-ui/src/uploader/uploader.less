@@ -9,7 +9,7 @@
 @uploader-file-name-font-size: 12px;
 @uploader-file-name-padding: 10px;
 @uploader-file-text-align: center;
-@uploader-file-close-background: rgba(0, 0, 0, 0.6);
+@uploader-file-close-background: rgba(0, 0, 0, 0.3);
 @uploader-file-close-size: 24px;
 @uploader-file-close-icon-font-size: 14px;
 @uploader-file-close-icon-color: #fff;
@@ -21,7 +21,8 @@
 @uploader-file-indicator-normal-color: var(--color-disabled);
 @uploader-file-indicator-success-color: var(--color-success);
 @uploader-file-indicator-error-color: var(--color-danger);
-@uploader-disabled-color: #ddd;
+@uploader-disabled-color: var(--color-disabled);
+@uploader-disabled-text-color: var(--color-text-disabled);
 @uploader-loading-background: linear-gradient(
   90deg,
   hsla(0, 0%, 100%, 0),
@@ -54,6 +55,7 @@
   --uploader-file-indicator-success-color: @uploader-file-indicator-success-color;
   --uploader-file-indicator-error-color: @uploader-file-indicator-error-color;
   --uploader-disabled-color: @uploader-disabled-color;
+  --uploader-disabled-text-color: @uploader-disabled-text-color;
   --uploader-loading-background: @uploader-loading-background;
 }
 
@@ -101,6 +103,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     user-select: none;
+    transition: background-color 0.25s;
   }
 
   &__file-cover {
@@ -139,7 +142,7 @@
     z-index: 2;
     width: 100%;
     height: var(--uploader-file-indicator-height);
-    transition: all 0.3s;
+    transition: all 0.25s;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -156,6 +159,7 @@
     height: var(--uploader-file-size);
     background: var(--uploader-action-background);
     margin: var(--uploader-action-margin);
+    transition: background-color 0.25s;
   }
 
   &__action-icon[var-uploader-cover] {
@@ -208,5 +212,6 @@
 
   &--disabled {
     background: var(--uploader-disabled-color);
+    color: var(--uploader-disabled-text-color);
   }
 }

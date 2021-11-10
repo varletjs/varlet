@@ -51,7 +51,7 @@ module.exports = {
     'color-body': '#fff',
     'color-bar': '#fff',
     'color-sub-bar': '#f5f5f5',
-    'color-text': '#333',
+    'color-text': '#555',
     'color-sub-text': '#888',
     'color-border': 'rgba(0, 0, 0, 0.12)',
     'color-shadow': '#eee',

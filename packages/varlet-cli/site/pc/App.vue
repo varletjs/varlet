@@ -177,7 +177,7 @@ iframe {
     flex-direction: column;
     align-items: center;
     margin: 20px 4px 20px;
-    padding: 40px;
+    padding: 100px 40px;
     border-top: 6px solid var(--site-config-color-introduce-border);
     border-radius: 2px;
     background: var(--site-config-color-bar);
