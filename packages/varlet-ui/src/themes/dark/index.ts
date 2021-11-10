@@ -7,6 +7,8 @@ import chip from './chip'
 import badge from './badge'
 import uploader from './uploader'
 import collapse from './collapse'
+import pullRefresh from './pullRefresh'
+import switchThemes from './switch'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -29,4 +31,6 @@ export default {
   ...badge,
   ...uploader,
   ...collapse,
+  ...pullRefresh,
+  ...switchThemes,
 } as StyleVars
