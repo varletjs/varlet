@@ -39,4 +39,4 @@ interface Locale {
 
 export const Locale: Locale
 
-export class _LocaleComponent extends Locale {}
+export class _LocaleComponent {}
