@@ -9,11 +9,11 @@ const sizefilter = (size: SpaceSize): [string, string?] => {
   if (!sizeValidator(size)) return ['normal']
   if (isString(size)) {
     if (!size.match(/\d/g)) return [size]
-    return [`${toPxNum(size)}px`, `${toPxNum(size)}px`]
+    return [`${toPxNum(size) / 2}px`, `${toPxNum(size) / 2}px`]
   }
-  if (isNumber(size)) return [`${toPxNum(size)}px`, `${toPxNum(size)}px`]
+  if (isNumber(size)) return [`${toPxNum(size) / 2}px`, `${toPxNum(size) / 2}px`]
   if (Array.isArray(size)) {
-    return [`${toPxNum(size[0])}px`, `${toPxNum(size[1])}px`]
+    return [`${toPxNum(size[0]) / 2}px`, `${toPxNum(size[1]) / 2}px`]
   }
   return ['normal']
 }
