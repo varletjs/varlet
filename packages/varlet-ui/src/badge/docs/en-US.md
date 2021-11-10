@@ -13,12 +13,12 @@ createApp().use(Badge)
 Set the badge type through the `type` attribute.
 
 ```html
+<var-badge />
 <var-badge type="primary" />
 <var-badge type="info" />
 <var-badge type="success" />
 <var-badge type="warning" />
 <var-badge type="danger" />
-<var-badge />
 ```
 
 ### Dot Badge
@@ -158,7 +158,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--badge-content-padding` | `2px 6px` |
-| `--badge-default-color` | `#f5f5f5` |
+| `--badge-default-color` | `#e0e0e0` |
 | `--badge-primary-color` | `var(--color-primary)`|
 | `--badge-danger-color` |  `var(--color-danger)`|
 | `--badge-success-color` | `var(--color-success)`|

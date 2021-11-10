@@ -3,6 +3,8 @@ import cell from './cell'
 import popup from './popup'
 import dialog from './dialog'
 import actionSheet from './actionSheet'
+import chip from './chip'
+import badge from './badge'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -21,4 +23,6 @@ export default {
   ...popup,
   ...dialog,
   ...actionSheet,
+  ...chip,
+  ...badge,
 } as StyleVars

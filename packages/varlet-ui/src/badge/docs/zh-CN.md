@@ -14,12 +14,12 @@ createApp().use(Badge)
 通过`type`属性设置徽标的类型。
 
 ```html
+<var-badge />
 <var-badge type="primary" />
 <var-badge type="info" />
 <var-badge type="success" />
 <var-badge type="warning" />
 <var-badge type="danger" />
-<var-badge />
 ```
 
 ### 圆点徽标
@@ -162,7 +162,7 @@ export default {
 | 变量名 | 默认值 |
 | --- | --- |
 | `--badge-content-padding` | `2px 6px` |
-| `--badge-default-color` | `#f5f5f5` |
+| `--badge-default-color` | `#e0e0e0` |
 | `--badge-primary-color` | `var(--color-primary)`|
 | `--badge-danger-color` |  `var(--color-danger)`|
 | `--badge-success-color` | `var(--color-success)`|
