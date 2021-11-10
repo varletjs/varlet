@@ -6,6 +6,7 @@ import actionSheet from './actionSheet'
 import chip from './chip'
 import badge from './badge'
 import uploader from './uploader'
+import collapse from './collapse'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -27,4 +28,5 @@ export default {
   ...chip,
   ...badge,
   ...uploader,
+  ...collapse,
 } as StyleVars
