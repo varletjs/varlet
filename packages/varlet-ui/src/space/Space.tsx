@@ -9,11 +9,11 @@ const sizefilter = (size: SpaceSize): [string, string?] => {
   if (!sizeValidator(size)) return ['normal']
   if (isString(size)) {
     if (!size.match(/\d/g)) return [size]
-    return [`${toPxNum(size) / 2}px`, `${toPxNum(size) / 2}px`]
+    return [`${toPxNum(size) / 2}px`, `${toPxNum(size)}px`]
   }
-  if (isNumber(size)) return [`${toPxNum(size) / 2}px`, `${toPxNum(size) / 2}px`]
+  if (isNumber(size)) return [`${toPxNum(size) / 2}px`, `${toPxNum(size)}px`]
   if (Array.isArray(size)) {
-    return [`${toPxNum(size[0]) / 2}px`, `${toPxNum(size[1]) / 2}px`]
+    return [`${toPxNum(size[0]) / 2}px`, `${toPxNum(size[1])}px`]
   }
   return ['normal']
 }
@@ -25,11 +25,10 @@ export default defineComponent({
     const itemSize = computed(() => {
       return sizefilter(props.size)
     })
-    console.log(itemSize)
-    const [marginTop, marginRight] = itemSize.value as any
     const children = slots.default?.() ?? []
     const lastIndex = children.length - 1
     const renderSpace = children.map((child, index) => {
+      const [marginTop, marginRight] = itemSize.value
       const style = {}
       if (props.direction === 'column') {
         if (index === lastIndex) {
@@ -62,7 +61,6 @@ export default defineComponent({
           })
         }
       }
-
       return (
         <div class={['var-space__item', !isPx(marginTop) ? `var-space__item--${marginTop}` : '']} style={style}>
           {child}
@@ -70,7 +68,6 @@ export default defineComponent({
       )
     })
     return () => {
-      itemSize
       return (
         <>
           <div
