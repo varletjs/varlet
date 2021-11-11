@@ -213,7 +213,7 @@ export default {
     transition: background-color 0.25s;
 
     &:hover {
-      background: rgba(0, 0, 0, 0.08);
+      background: var(--site-config-color-nav-button-hover-background);
     }
   }
 
@@ -235,7 +235,7 @@ export default {
     }
 
     &:hover {
-      background: rgba(0, 0, 0, 0.08);
+      background: var(--site-config-color-nav-button-hover-background);
     }
   }
 
@@ -251,7 +251,7 @@ export default {
     margin-right: 4px;
 
     &:hover {
-      background: rgba(0, 0, 0, 0.08);
+      background: var(--site-config-color-nav-button-hover-background);
     }
   }
 
