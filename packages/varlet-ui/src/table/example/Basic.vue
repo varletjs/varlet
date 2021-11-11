@@ -26,6 +26,7 @@
 import VarTable from '..'
 import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'BasicExample',
@@ -34,6 +35,7 @@ export default {
   },
   setup() {
     watchLang(use, 'pc')
+    watchDarkMode()
 
     return {
       pack,
