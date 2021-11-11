@@ -6,6 +6,7 @@ First, thank you for your interest in joining our development. Here are some con
 ### Quickstart
 The project is based on the `workspace` feature of yarn and `lerna` as the basic architecture of Monorepo. 
 The first fork of the repository is based on the dev branch, which is in the project root directory.
+node version 16+.
 
 ```shell
 yarn bootstrap
