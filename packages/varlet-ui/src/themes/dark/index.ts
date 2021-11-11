@@ -9,6 +9,9 @@ import uploader from './uploader'
 import collapse from './collapse'
 import pullRefresh from './pullRefresh'
 import switchThemes from './switch'
+import steps from './steps'
+import pagination from './pagination'
+import table from './talble'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -33,4 +36,7 @@ export default {
   ...collapse,
   ...pullRefresh,
   ...switchThemes,
+  ...steps,
+  ...pagination,
+  ...table,
 } as StyleVars

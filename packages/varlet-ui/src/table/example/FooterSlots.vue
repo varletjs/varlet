@@ -27,6 +27,7 @@
 import VarTable from '..'
 import VarPagination from '../../pagination'
 import { watchLang } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '../../utils/components'
 import { use, pack } from './locale'
 import { gen } from './index'
 import { ref } from 'vue'
@@ -45,6 +46,7 @@ export default {
     }
 
     watchLang(use, 'pc')
+    watchDarkMode()
 
     return {
       pack,
