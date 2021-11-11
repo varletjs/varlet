@@ -1,7 +1,8 @@
 <template>
   <div class="varlet-site-sidebar var-elevation--3">
-    <var-cell
+    <var-site-cell
       class="varlet-site-sidebar__item"
+      :id="item.doc"
       :class="{
         'varlet-site-sidebar__item--active': item.doc === menuName,
         'varlet-site-sidebar__link': item.type !== menuTypes.TITLE,
@@ -12,24 +13,24 @@
       v-ripple="{
         touchmoveForbid: false,
         disabled: item.type === menuTypes.TITLE,
-        color: '#2979ff'
+        color: themes['color-side-bar']
       }"
       @click="changeRoute(item)"
     >
       <span class="varlet-site-sidebar__item--title" v-if="item.type === menuTypes.TITLE">{{ item.text[language] }}</span>
-      <span class="varlet-site-sidebar__item--link" v-else>{{ item.text[language] }}</span>
-    </var-cell>
+      <span v-else>{{ item.text[language] }}</span>
+    </var-site-cell>
   </div>
 </template>
 
 <script lang="ts">
 // @ts-ignore
 import config from '@config'
-import '@varlet/ui/es/styles/elevation.less'
 import { MenuTypes } from '../../utils'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import type { PropType } from 'vue'
 import type { Menu } from '../App'
+import { get } from 'lodash-es'
 
 export default {
   name: 'AppSidebar',
@@ -47,6 +48,7 @@ export default {
   emits: ['change'],
   setup(props, { emit }) {
     const menuTypes = reactive(MenuTypes)
+    const themes = ref(get(config, 'themes'))
 
     const changeRoute = (item) => {
       if (item.type === MenuTypes.TITLE || props.menuName === item.doc) {
@@ -58,6 +60,7 @@ export default {
 
     return {
       menuTypes,
+      themes,
       changeRoute
     }
   }
@@ -65,13 +68,11 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import '~@varlet/ui/es/styles/var';
-
 .varlet-site-sidebar {
   padding: 0 0 15px;
-  position: sticky;
-  flex: 0 0 220px;
-  top: 0;
+  position: fixed;
+  width: 220px;
+  top: 60px;
   bottom: 0;
   left: 0;
   z-index: 1;
@@ -96,28 +97,18 @@ export default {
       padding: 8px 0 8px;
     }
 
-    &--link {
-      font-size: 14px;
-      color: #455a64;
-      transition: color 0.2s;
-
-      &:hover {
-        color: @color-primary;
-      }
-    }
-
     &--active {
       position: relative;
-      background: #2b79fc21;
+      background: var(--site-config-color-side-bar-active-background);
 
       span {
-        color: @color-primary;
+        color: var(--site-config-color-side-bar);
       }
 
       &::before {
         display: block;
         content: '';
-        background: @color-primary;
+        background: var(--site-config-color-side-bar);
         width: 4px;
         height: 40px;
         position: absolute;
@@ -128,6 +119,13 @@ export default {
 
   &__link {
     cursor: pointer;
+    font-size: 14px;
+    color: #455a64;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--site-config-color-side-bar);
+    }
   }
 
   &__title {

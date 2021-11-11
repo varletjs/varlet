@@ -8,6 +8,7 @@
     "allowJs": true,
     "lib": ["esnext", "dom"],
     "allowSyntheticDefaultImports": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "isolatedModules": true
   }
 }

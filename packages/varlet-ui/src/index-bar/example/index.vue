@@ -1,8 +1,7 @@
 <template>
-  <var-index-bar @change="change" :sticky-offset-top="50" duration="300">
+  <var-index-bar @change="change" duration="300" :sticky-offset-top="54">
     <div v-for="item in list" :key="item">
       <var-index-anchor :index="item" class="var-index-anchor__example"> {{ pack.title }} {{ item }} </var-index-anchor>
-      <var-cell>{{ item }} {{ pack.text }}</var-cell>
       <var-cell>{{ item }} {{ pack.text }}</var-cell>
       <var-cell>{{ item }} {{ pack.text }}</var-cell>
     </div>
@@ -11,18 +10,18 @@
 
 <script>
 import { ref, onMounted } from 'vue'
-import IndexAnchor from '../../index-anchor/IndexAnchor.vue'
-import IndexBar from '..'
-import Cell from '../../cell'
+import VarIndexAnchor from '../../index-anchor/IndexAnchor.vue'
+import VarIndexBar from '..'
+import VarCell from '../../cell'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'IndexBarExample',
   components: {
-    [IndexBar.name]: IndexBar,
-    [IndexAnchor.name]: IndexAnchor,
-    [Cell.name]: Cell,
+    VarIndexBar,
+    VarIndexAnchor,
+    VarCell,
   },
   setup() {
     const list = ref([])

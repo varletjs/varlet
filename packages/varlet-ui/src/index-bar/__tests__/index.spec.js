@@ -40,9 +40,9 @@ test('test sticky prop and it is value equal false', () => {
   expect(wrapper.find('.var-sticky').exists()).toBeFalsy()
 })
 
-test('test stickyOffsetTop, hideList and z-index prop', () => {
+test('test, hideList and z-index prop', () => {
   const template = `
-    <var-index-bar :sticky-offset-top="10" hide-list z-index="2">
+    <var-index-bar hide-list z-index="2">
       <var-index-anchor index="A">test A</var-index-anchor>
     </var-index-bar>
   `
@@ -58,7 +58,7 @@ test('test stickyOffsetTop, hideList and z-index prop', () => {
 
   expect(wrapper.find('.var-index-bar__anchor-list').attributes('style').includes('display: none')).toBeTruthy()
 
-  expect(wrapper.find('.var-sticky').attributes('style')).toBe('z-index: 2; top: 10px;')
+  expect(wrapper.find('.var-sticky').attributes('style')).toBe('z-index: 2;')
 })
 
 test('test click anchor to trigger change event', async () => {

@@ -146,13 +146,13 @@ export default {
 | `loop`       | Whether to open loop playback | _boolean_ | `true` |
 | `indicator`  | Whether to show paging | _boolean_ | `true` |
 | `lock-scroll` | Lock scroll | _boolean_ | `true` |
-| `teleport`   | The location of the pop-up layer to mount | _string_ | `-` |
+| `teleport`   | The location of the pop-up layer to mount | _TeleportProps['to']_ | `-` |
 
 ### Events
 
 | Event | Description | Arguments |
 | ----- | ---- | ----- |
-| `change` | The callback function when switching images, the callback parameter is the current index | `index: number(Image indexing)` |
+| `change` | The callback function when switching images, the callback parameter is the current index | `index: number` Image indexing |
 | `open`   | Triggered when Image-Preview is turned on | `-`  |
 | `opened` | Triggered at the end of the open image-preview animation | `-` |
 | `close`  | Triggered when Image-Preview is off | `-` |
@@ -162,7 +162,7 @@ export default {
 
 | Slot | Description | Arguments |
 | --- | --- | --- |
-| `indicator` | Paging indicator | `index: number(Image indexing), length: number(Total number of image)` |
+| `indicator` | Paging indicator | `index: number` Image indexing <br> `length: number` Total number of image |
 | `close-icon` | Close button | `-` |
 
 ### ImagePreview Options

@@ -4,8 +4,8 @@
       <panel-header
         type="month"
         :date="preview"
-        @check-panel="clickYear"
         :disabled="panelBtnDisabled"
+        @check-panel="clickYear"
         @check-date="checkDate"
       />
       <transition :name="reverse ? 'var-date-picker-reverse-translatex' : 'var-date-picker-translatex'">
@@ -32,16 +32,16 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, reactive, watch } from 'vue'
-import dayjs from 'dayjs'
-import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
-import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
+import dayjs from 'dayjs/esm'
+import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore'
+import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter'
 import { MONTH_LIST } from '../props'
 import PanelHeader from './panel-header.vue'
-import Button from '../../button'
+import VarButton from '../../button'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
 import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
-import type { Choose, Preview, ComponentProps, Month, PanelBtnDisabled } from '../props'
+import type { Choose, Preview, ComponentProps, Month, MonthDict, PanelBtnDisabled } from '../props'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -49,7 +49,7 @@ dayjs.extend(isSameOrAfter)
 export default defineComponent({
   name: 'MonthPickerPanel',
   components: {
-    [Button.name]: Button,
+    VarButton,
     PanelHeader,
   },
   props: {
@@ -66,7 +66,8 @@ export default defineComponent({
       required: true,
     },
     clickYear: {
-      type: Function,
+      type: Function as PropType<() => void>,
+      required: true,
     },
     componentProps: {
       type: Object as PropType<ComponentProps>,
@@ -88,7 +89,7 @@ export default defineComponent({
 
     const isCurrentYear: ComputedRef<boolean> = computed(() => props.preview.previewYear === currentYear)
 
-    const getMonthAbbr = (key: string): string => pack.value.monthDictionary[key].abbr
+    const getMonthAbbr = (key: Month): string => pack.value.datePickerMonthDict?.[key].abbr
 
     const inRange = (key: string): boolean => {
       const {
@@ -184,7 +185,7 @@ export default defineComponent({
       }
     }
 
-    const chooseMonth = (month: Month) => {
+    const chooseMonth = (month: MonthDict) => {
       emit('choose-month', month)
     }
 

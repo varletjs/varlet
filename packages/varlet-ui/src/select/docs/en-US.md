@@ -214,7 +214,7 @@ export default {
 | `disabled` | Whether the disabled | _boolean_ | `false` |
 | `clearable` | Whether the clearable | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation， Optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
-| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: any | any[]) => any>_ | `-` |
+| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: any \| any[]) => any>_ | `-` |
 
 ### Option Props
 
@@ -286,7 +286,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--select-line-size` | `1px` |
 | `--select-line-spread-size` | `2px` |
 | `--select-arrow-size` | `20px` |
-| `--select-disabled-color` | `#aaa` |
+| `--select-disabled-color` | `var(--color-text-disabled)` |
 
 ### Option Variables
 

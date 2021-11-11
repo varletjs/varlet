@@ -399,7 +399,7 @@ export default {
 | `lock-scroll` | Whether to disable scrolling penetration, scrolling the Dialog when disabled will not cause the body to scroll | _boolean_ | `true` |
 | `close-on-click-action` | Whether to close the actions sheet when clicking action | _boolean_ | `true` |
 | `close-on-click-overlay` | Whether to click the overlay to close the action sheet | _boolean_ | `true` | 
-| `teleport` | The location of the action sheet to mount | _string_ | `-` |
+| `teleport` | The location of the action sheet to mount | _TeleportProps['to']_ | `-` |
 
 ### Events
 
@@ -461,6 +461,6 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--action-sheet-action-item-height` | `48px` |
 | `--action-sheet-action-item-padding` | `0px 18px` |
 | `--action-sheet-action-item-color` | `#333` |
-| `--action-sheet-action-item-disabled-color` | `var(--color-disabled)` |
+| `--action-sheet-action-item-disabled-color` | `var(--color-text-disabled)` |
 | `--action-sheet-icon-margin` | `0 0 20px 0` |
 | `--action-sheet-icon-size` | `24px` |

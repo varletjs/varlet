@@ -11,7 +11,7 @@ createApp().use(Input)
 
 ### 基本使用
 
-组件会自动分析传入的值是字符串还是数字，会返回相同的类型。
+输入框的行为和基本原生一致，用户输入时始终获得一个符合`type`规则的字符串
 
 ```js
 import { ref } from 'vue'
@@ -110,9 +110,9 @@ createApp().use(Icon)
 
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
-| `v-model` | 绑定的值 | _string \| number_ | `-` |
+| `v-model` | 绑定的值 | _string_ | `-` |
 | `placeholder` | 占位符 | _string_ | `-` |
-| `type` | 输入框类型, 可选值为 `text` `password` | _string_ | `text` |
+| `type` | 输入框类型, 可选值为 `text` `password` `number` | _string_ | `text` |
 | `maxlength` | 最大长度 | _string \| number_ | `-` |
 | `textarea` | 是否是文本域 | _boolean_ | `false` |  
 | `rows` | 文本域的显示行数 | _string \| number_ | `8` |  
@@ -126,7 +126,7 @@ createApp().use(Icon)
 | `clearable` | 是否可清除 | _boolean_ | `false` |
 | `resize` | 文本域是否可以拖动调整尺寸 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机， 可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
-| `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string \| number) => any>_ | `-` |
+| `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string) => any>_ | `-` |
 
 ### 方法
 
@@ -136,7 +136,7 @@ createApp().use(Icon)
 | `blur` | 失焦 | `-` | `-` |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
-| `reset` | 清空绑定的值(字符类型设置为`''`,数字类型设置为`0`)和校验信息 | `-` | `-` |
+| `reset` | 清空绑定的值和校验信息 | `-` | `-` |
 
 ### 事件
 
@@ -145,9 +145,9 @@ createApp().use(Icon)
 | `focus` | 聚焦时触发 | `event: Event` |
 | `blur` | 失焦时触发 | `event: Event` |
 | `click` | 点击时触发 | `event: Event` |
-| `clear` | 清除时触发 | `value: string \| number` |
-| `input` | 输入时触发 | `value: string \| number` `event: Event` |
-| `change` | 更新时触发 | `value: string \| number` `event: Event` |
+| `clear` | 清除时触发 | `value: string` |
+| `input` | 输入时触发 | `value: string`, `event: Event` |
+| `change` | 更新时触发 | `value: string`, `event: Event` |
 
 ### 插槽
 
@@ -173,4 +173,4 @@ createApp().use(Icon)
 | `--input-input-text-color` | `#555` |
 | `--input-line-size` | `1px` |
 | `--input-line-spread-size` | `2px` |
-| `--input-disabled-color` | `#aaa` |
+| `--input-disabled-color` | `var(--color-text-disabled)` |

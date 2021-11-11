@@ -1,4 +1,25 @@
 import { onMounted, onUnmounted } from 'vue'
+import { get } from 'lodash-es'
+import { formatStyleVars } from './components/utils/elements'
+
+export * from './components/utils/components'
+export * from './components/utils/elements'
+export * from './components/utils/shared'
+
+export type StyleVars = Record<string, string>
+
+const mountedVarKeys: string[] = []
+
+function StyleProvider(styleVars: StyleVars = {}) {
+  mountedVarKeys.forEach((key) => document.documentElement.style.removeProperty(key))
+  mountedVarKeys.length = 0
+
+  const styles: StyleVars = formatStyleVars(styleVars)
+  Object.entries(styles).forEach(([key, value]) => {
+    document.documentElement.style.setProperty(key, value)
+    mountedVarKeys.push(key)
+  })
+}
 
 export function camelize(str: string): string {
   return str.replace(/-(\w)/g, (_: any, p: string) => p.toUpperCase())
@@ -23,7 +44,7 @@ export function getPCLocationInfo(): PCLocationInfo {
 }
 
 export function isPhone() {
-  return /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+  return /Android|webOS|iPhone|iPod|BlackBerry|Pad/i.test(navigator.userAgent)
 }
 
 export enum MenuTypes {
@@ -51,9 +72,12 @@ export function getHashSearch() {
   return new URLSearchParams(hashSearch)
 }
 
-export function watchLang(cb: (lang: string) => void) {
+export function watchLang(cb: (lang: string) => void, platform: 'pc' | 'mobile' = 'mobile') {
   const handleHashchange = () => {
-    const language = getHashSearch().get('language') ?? 'zh-CN'
+    const language = platform === 'mobile'
+      ? (getHashSearch().get('language') ?? 'zh-CN')
+      : getPCLocationInfo().language
+
     cb(language)
   }
 
@@ -82,4 +106,14 @@ export function addRouteListener(cb: () => void) {
     window.removeEventListener('hashchange', cb)
     window.removeEventListener('popstate', cb)
   })
+}
+
+export function setThemes(config: Record<string, any>) {
+  const themes = get(config, 'themes', {})
+  const styleVars = Object.entries(themes).reduce((styleVars, [key, value]) => {
+    styleVars[`--site-config-${key}`] = value as string
+    return styleVars
+  }, {} as StyleVars)
+
+  StyleProvider(styleVars)
 }

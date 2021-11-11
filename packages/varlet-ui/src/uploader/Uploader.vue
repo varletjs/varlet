@@ -4,7 +4,7 @@
       <div
         class="var-uploader__file var-elevation--2"
         :class="[f.state === 'loading' ? 'var-uploader--loading' : null]"
-        :key="f"
+        :key="f.id"
         v-for="f in modelValue"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple }"
         @click="preview(f)"
@@ -80,11 +80,11 @@
 </template>
 
 <script lang="ts">
-import FormDetails from '../form-details'
-import Ripple from '../ripple'
-import Icon from '../icon'
-import Popup from '../popup'
+import VarFormDetails from '../form-details'
+import VarIcon from '../icon'
+import VarPopup from '../popup'
 import ImagePreview from '../image-preview'
+import Ripple from '../ripple'
 import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
 import { props } from './props'
 import { isNumber, isHTMLSupportImage, isHTMLSupportVideo, toNumber, isString } from '../utils/shared'
@@ -105,13 +105,15 @@ interface VarFileUtils {
   getError(varFiles: VarFile[]): VarFile[]
 }
 
+let fid = 0
+
 export default defineComponent({
   name: 'VarUploader',
   directives: { Ripple },
   components: {
-    [Icon.name]: Icon,
-    [Popup.name]: Popup,
-    [FormDetails.name]: FormDetails,
+    VarIcon,
+    VarPopup,
+    VarFormDetails,
   },
   props,
   setup(props) {
@@ -156,6 +158,7 @@ export default defineComponent({
 
     const createVarFile = (file: File): VarFile => {
       return {
+        id: fid++,
         url: '',
         cover: '',
         name: file.name,
@@ -243,16 +246,21 @@ export default defineComponent({
       validVarFiles.forEach((varFile) => onAfterRead?.(reactive(varFile)))
     }
 
-    const handleRemove = (removedVarFile: VarFile) => {
-      const { disabled, readonly, modelValue, onRemove } = props
+    const handleRemove = async (removedVarFile: VarFile) => {
+      const { disabled, readonly, modelValue, onBeforeRemove, onRemove } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
 
-      props['onUpdate:modelValue']?.(modelValue.filter((varFile) => varFile !== removedVarFile))
+      if (onBeforeRemove && !(await onBeforeRemove(removedVarFile))) {
+        return
+      }
+
+      const expectedFiles: VarFile[] = modelValue.filter((varFile) => varFile !== removedVarFile)
       onRemove?.(removedVarFile)
       validateWithTrigger('onRemove')
+      props['onUpdate:modelValue']?.(expectedFiles)
     }
 
     // expose

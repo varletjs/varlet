@@ -15,7 +15,6 @@ createApp().use(Picker)
 ### Scoped Install
 
 ```js
-
 import { Picker } from '@varlet/ui'
 
 export default {
@@ -198,9 +197,9 @@ export default {
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `change` | Triggered when the pick content changes | `texts: Texts(Text array), indexes: number[](picked index array)` |
-| `cancel` | Triggered when you click the cancel button | `texts: Texts(Text array), indexes: number[](picked index array)` |
-| `confirm` | Triggered when you click the confirm button | `texts: Texts(Text array), indexes: number[](picked index array)` |
+| `change` | Triggered when the pick content changes | `texts: Texts` Text array <br> `indexes: number[]` picked index array |
+| `cancel` | Triggered when you click the cancel button | `texts: Texts` Text array <br> `indexes: number[]` picked index array |
+| `confirm` | Triggered when you click the confirm button | `texts: Texts` Text array <br> `indexes: number[]` picked index array |
 
 ### Slots
 

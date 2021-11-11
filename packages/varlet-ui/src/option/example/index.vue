@@ -4,12 +4,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Option from '..'
+import VarOption from '..'
 
 export default defineComponent({
   name: 'OptionExample',
   components: {
-    [Option.name]: Option,
+    VarOption,
   },
 })
 </script>

@@ -18,6 +18,10 @@ export function useCollapse() {
   )
   const { index } = useAtParentIndex(COLLAPSE_COUNT_COLLAPSE_ITEM_KEY)
 
+  if (!parentProvider || !bindParent || !index) {
+    throw Error('[Varlet] Collapse: <var-collapse-item/> must in <var-collapse>')
+  }
+
   return {
     index,
     collapse: parentProvider,

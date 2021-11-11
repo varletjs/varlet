@@ -28,7 +28,7 @@ exports[`test click error text reload 2`] = `
 `;
 
 exports[`test list example 1`] = `
-"<div class=\\"var-sticky\\" style=\\"z-index: 10; top: 50px;\\">
+"<div class=\\"var-sticky\\" style=\\"z-index: 10;\\">
   <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10;\\">
     <div class=\\"var-tabs var--box var-tabs--item-horizontal var-tabs--layout-horizontal-padding\\" style=\\"margin-bottom: 10px;\\">
       <div class=\\"var-tabs__tab-wrap var-tabs--layout-horizontal\\">
@@ -42,9 +42,9 @@ exports[`test list example 1`] = `
 </div>
 <div class=\\"var-swipe var-tabs-items\\">
   <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 300ms;\\">
-    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\"></div>
-    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\"></div>
-    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\"></div>
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
   </div>
   <!--v-if-->
 </div>"

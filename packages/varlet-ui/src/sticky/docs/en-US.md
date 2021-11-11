@@ -1,8 +1,8 @@
 # Sticky
 
 ### Intro
-A sticky layout is implemented by default using `position: sticky`,
-Browsers that do not support this property automatically revert to the traditional way of listening for `scroll` events.
+The sticky layout uses the `scroll` layout mode that listens to container scroll events by default. 
+If necessary, you can switch to the `css sticky` layout mode to improve performance.
 
 ### Install
 
@@ -16,7 +16,7 @@ createApp().use(Sticky)
 ### Basic Use
 
 ```html
-<var-sticky :offset-top="50">
+<var-sticky :offset-top="54">
   <var-button type="primary">Basic Use</var-button>
 </var-sticky>
 ```
@@ -55,12 +55,14 @@ createApp().use(Sticky)
 | --- | --- | --- | --- | 
 | `offset-top` | Sticky offset top | _string \| number_ | `0` |
 | `z-index` | Sticky z-index | _string \| number_ | `0` |
+| `css-mode` | Enable native `css sticky` mode | _boolean_ | `false` |
+| `disabled` | Disable sticky, when set to `true`, the element will return to the document flow | _boolean_ | `false` |
 
 ### Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `scroll` | Triggered when the scroll container rolls | `offsetTop: number` `isFixed: boolean` |
+| `scroll` | Triggered when the scroll container rolls | `offsetTop: number` <br> `isFixed: boolean` |
 
 ### Slots
 

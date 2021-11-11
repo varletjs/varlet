@@ -3,6 +3,288 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.10](https://github.com/haoziqaq/varlet/compare/v1.22.9...v1.22.10) (2021-11-03)
+
+
+### Bug Fixes
+
+* **ui/style-provider:** simplify the use of style-provider ([cbf66ce](https://github.com/haoziqaq/varlet/commit/cbf66ce9b2295df7be5c0de32d0969354462cff7))
+
+
+
+
+
+## [1.22.9](https://github.com/haoziqaq/varlet/compare/v1.22.8...v1.22.9) (2021-10-31)
+
+
+### Bug Fixes
+
+* **cli/types:** add global.d.ts for volar ([c99e0c1](https://github.com/haoziqaq/varlet/commit/c99e0c16176f81dc3aa58b5512f9ec66d85156e2))
+
+
+
+
+
+## [1.22.8](https://github.com/haoziqaq/varlet/compare/v1.22.7...v1.22.8) (2021-10-31)
+
+
+### Bug Fixes
+
+* **ui/divider:** fix vertical divider ([edf9720](https://github.com/haoziqaq/varlet/commit/edf9720330adb2cadb4570847bfd1326ab3a0a2d))
+* **ui/input:** fix behaviour of the input type ([5643f3c](https://github.com/haoziqaq/varlet/commit/5643f3c29f86396badd7da2f7a6c19fe58d75a22))
+
+
+
+
+
+## [1.22.7](https://github.com/haoziqaq/varlet/compare/v1.22.6...v1.22.7) (2021-10-22)
+
+
+### Bug Fixes
+
+* **ui/site:** modify highlight.css color ([203432e](https://github.com/haoziqaq/varlet/commit/203432e12f8c9e22b92d1e00b790db708f0ac663))
+* **ui/tab-item:** add var-tab-item-cover attr ([934a833](https://github.com/haoziqaq/varlet/commit/934a833bfa9118c0c8c25e2796a1d0e7100ce84f))
+
+
+
+
+
+## [1.22.6](https://github.com/haoziqaq/varlet/compare/v1.22.4...v1.22.6) (2021-10-18)
+
+
+### Bug Fixes
+
+* **slider/types:** fix template types ([31da191](https://github.com/haoziqaq/varlet/commit/31da19127549971732fb5f28289ee52060232a7c))
+* **ui/checkbox, radio:** fix prop types ([219cab8](https://github.com/haoziqaq/varlet/commit/219cab8f17d2fbedc7c186a2e61191a8676f779d))
+* **ui/pagination, cli/site:** fix size and total cannot be centered vertically in the pagination, ad ([ad3eb81](https://github.com/haoziqaq/varlet/commit/ad3eb81269cdb005bb41a8c8127bb07bdc62ff91))
+* fix types ([f9a372f](https://github.com/haoziqaq/varlet/commit/f9a372fb86268fa59903ef4b0c3c519cdefcf722))
+* **snackbar/types:** fix types of related loading props ([0e8d4f4](https://github.com/haoziqaq/varlet/commit/0e8d4f4230e40e5e5f431a7246cac38984b2c381))
+* **ui:** fix types ([ead022f](https://github.com/haoziqaq/varlet/commit/ead022f620f05993229682f304060530ce856f7e))
+* **ui/types:** fix types ([c87784d](https://github.com/haoziqaq/varlet/commit/c87784d4c8e32584a7a245854365259f95849fbe))
+
+
+### Reverts
+
+* revert slider types change ([b897c3c](https://github.com/haoziqaq/varlet/commit/b897c3c2b58b4213f1b8dd1d2f84a1a2bdd4e67a))
+
+
+
+
+
+## [1.22.4](https://github.com/haoziqaq/varlet/compare/v1.22.3...v1.22.4) (2021-10-14)
+
+
+### Bug Fixes
+
+* **ui/app-bar:** fix app-bar style ([9da67b6](https://github.com/haoziqaq/varlet/commit/9da67b6fa0e07a644cba6118f4a90cb8293df8be))
+
+
+
+
+
+## [1.22.3](https://github.com/haoziqaq/varlet/compare/v1.22.2...v1.22.3) (2021-10-10)
+
+
+### Bug Fixes
+
+* **ui/pagination:** fix icon size style is not effective ([520b93d](https://github.com/haoziqaq/varlet/commit/520b93d806e9282d2d60605ef8b7b332a86ddebd))
+
+
+
+
+
+## [1.22.2](https://github.com/haoziqaq/varlet/compare/v1.22.1...v1.22.2) (2021-10-08)
+
+**Note:** Version bump only for package @varlet/ui
+
+
+
+
+
+## [1.22.1](https://github.com/haoziqaq/varlet/compare/v1.22.0...v1.22.1) (2021-10-08)
+
+
+### Bug Fixes
+
+* **pagination:** fix hover style ([1762dd8](https://github.com/haoziqaq/varlet/commit/1762dd8224806975c916485e40f4dc15b0fbb87a))
+* **ui/action-sheet:** fix disabled color ([ec70187](https://github.com/haoziqaq/varlet/commit/ec7018723815ead6f5deae85c79a5b0533a4927d))
+* **ui/styles:** fix disabled color vars ([f529c30](https://github.com/haoziqaq/varlet/commit/f529c309d41f4ca28ff8d3c0d00e48889837222d))
+
+
+
+
+
+# [1.22.0](https://github.com/haoziqaq/varlet/compare/v1.21.0...v1.22.0) (2021-10-08)
+
+
+### Bug Fixes
+
+* **back-top:** cover the style of button ([b5046ae](https://github.com/haoziqaq/varlet/commit/b5046ae8e2b1c90e1583718d989e9c62528eadbb))
+* **cli/gen:** add default themes ([2d68e91](https://github.com/haoziqaq/varlet/commit/2d68e91c2fc83d1db4063ae576144815e24f17e5))
+* **input:** text-color of disabled in safari ([dd33256](https://github.com/haoziqaq/varlet/commit/dd33256c87f3d708583694e12f17ea19961812a3))
+* **pagination:** add keydown event to switch page ([414decb](https://github.com/haoziqaq/varlet/commit/414decb43bd8009776111a0bf84ad8b967ccb38e))
+* **pagination:** fix current and size not update ([463d891](https://github.com/haoziqaq/varlet/commit/463d8916960c8c9d1a32555f0a405c4b073d0502))
+* **pagination:** remove padding ([83d214a](https://github.com/haoziqaq/varlet/commit/83d214ad80423b67829b9cedf2f338f5ffe4ab25))
+* **ui/button:** remove line-height ([c0d2422](https://github.com/haoziqaq/varlet/commit/c0d2422e1a8735f7acf0459c2c4a2d8ba20bd4e2))
+* **ui/ripple:** add style variables ([551a666](https://github.com/haoziqaq/varlet/commit/551a66696c2e87fdbc2fe9b04f89350affc64d8a))
+* **ui/ripple, ui/menu:** opt ripple animation, fix menu left error on transition animation running ([0f714de](https://github.com/haoziqaq/varlet/commit/0f714de1c40af46116fd07d7717525c2c63d0470))
+* **ui/skeleton:** add avatar-border-radius css vars ([ddf259f](https://github.com/haoziqaq/varlet/commit/ddf259fab66bb0630e78c48fccd63429b87d2f0f))
+* **ui/table:** add table-tbody-td-font-size variable ([861217e](https://github.com/haoziqaq/varlet/commit/861217e49fc1594d66182a076c648bef4d462942))
+* fix component path name ([bbd8b1f](https://github.com/haoziqaq/varlet/commit/bbd8b1fbd62bdc4a084eb53f63f3d896f7ca4c1a))
+* remove console ([3ee3548](https://github.com/haoziqaq/varlet/commit/3ee35486f9ad760e7463a7fe981edcf29eb336be))
+
+
+### Features
+
+* **cli:** add preview command that can preview document site for production ([3fea1f1](https://github.com/haoziqaq/varlet/commit/3fea1f1fed8a2f0fdb0d2fd5e7880531335a6711))
+* **pagination:** add declaration file ([30fd32b](https://github.com/haoziqaq/varlet/commit/30fd32b9f5af842c7fd187e5aed9535d0eb5d195))
+* **table:** add declaration file ([30072d3](https://github.com/haoziqaq/varlet/commit/30072d3ccd2f6cddcf7ddbc734d85266489d9d32))
+* pagination ([62b27a8](https://github.com/haoziqaq/varlet/commit/62b27a8fde6c647cd072093ca0398348498a56e2))
+* **cli:** migrate the build tool to vite ([c0eb94c](https://github.com/haoziqaq/varlet/commit/c0eb94c3c82683abb49b8561e181e75aa843aac4))
+* **ui/pagination:** ui/pagination ([3f8e24c](https://github.com/haoziqaq/varlet/commit/3f8e24c075c31853b2a6de94bcd02b4bb4195d2c))
+* **ui/table:** ui/table ([abd3f7d](https://github.com/haoziqaq/varlet/commit/abd3f7da5001902870ad7a322cfa5122c41ed395))
+
+
+
+
+
+# [1.21.0](https://github.com/haoziqaq/varlet/compare/v1.20.0...v1.21.0) (2021-09-22)
+
+
+### Bug Fixes
+
+* **index-bar:** fix the bug of overlap ([52c1d9b](https://github.com/haoziqaq/varlet/commit/52c1d9be10f9ece2f70fd613a24fac6457d016a6))
+* **index-bar:** fix the scrolling bug when index-bar is not 0 away from the top ([2f28954](https://github.com/haoziqaq/varlet/commit/2f28954d1ac4d14ffaa6d439675318dab273e0f9))
+* **types:** add props type declaration ([a547cc9](https://github.com/haoziqaq/varlet/commit/a547cc9fa99436d82d0ae2ac2804b0b94d0d3da0))
+* **ui/sticky:** remove auto check sticky support statement ([8a35d98](https://github.com/haoziqaq/varlet/commit/8a35d98487cc3c547d42a5c22ad32d8e2c96d19a))
+* **ui/sticky:** use scroll mode as sticky default mode ([3769f8b](https://github.com/haoziqaq/varlet/commit/3769f8b0837bc16f9bc4d7ce3405cac61c1f79e1))
+
+
+### Features
+
+* **ui/sticky:** add disabled,css-mode props ([5dbfbca](https://github.com/haoziqaq/varlet/commit/5dbfbca81a04d41583827d40f2cb9b8ffe391ad3))
+
+
+
+
+
+# [1.20.0](https://github.com/haoziqaq/varlet/compare/v1.19.0...v1.20.0) (2021-09-15)
+
+**Note:** Version bump only for package @varlet/ui
+
+
+
+
+
+# [1.19.0](https://github.com/haoziqaq/varlet/compare/v1.18.1...v1.19.0) (2021-09-13)
+
+
+### Bug Fixes
+
+* **cli:** add public folder to linter ignore ([d10a799](https://github.com/haoziqaq/varlet/commit/d10a7996efe9963a4f3c7247b1c5d2f2baac2502))
+* **cli:** fix the parameter passing method of webpack-dev-server ([0d88843](https://github.com/haoziqaq/varlet/commit/0d88843af5b15b59b27321f61f2701e562d4f8af))
+* **doc:** fix typo ([6371e4e](https://github.com/haoziqaq/varlet/commit/6371e4e7e53fa03589ac99247ab2abec8330e5c5))
+
+
+
+
+
+## [1.18.1](https://github.com/haoziqaq/varlet/compare/v1.18.0...v1.18.1) (2021-09-10)
+
+**Note:** Version bump only for package @varlet/ui
+
+
+
+
+
+# [1.18.0](https://github.com/haoziqaq/varlet/compare/v1.17.4...v1.18.0) (2021-09-10)
+
+**Note:** Version bump only for package @varlet/ui
+
+
+
+
+
+## [1.17.4](https://github.com/haoziqaq/varlet/compare/v1.17.3...v1.17.4) (2021-09-09)
+
+**Note:** Version bump only for package @varlet/ui
+
+
+
+
+
+## [1.17.3](https://github.com/haoziqaq/varlet/compare/v1.17.2...v1.17.3) (2021-09-09)
+
+**Note:** Version bump only for package @varlet/ui
+
+
+
+
+
+## [1.17.2](https://github.com/haoziqaq/varlet/compare/v1.17.1...v1.17.2) (2021-09-09)
+
+**Note:** Version bump only for package @varlet/ui
+
+
+
+
+
+## [1.17.1](https://github.com/haoziqaq/varlet/compare/v1.17.0...v1.17.1) (2021-09-09)
+
+**Note:** Version bump only for package @varlet/ui
+
+
+
+
+
+# [1.17.0](https://github.com/haoziqaq/varlet/compare/v1.16.3...v1.17.0) (2021-09-09)
+
+
+### Features
+
+* **cli:** add gen command ([abdec46](https://github.com/haoziqaq/varlet/commit/abdec46ac7ef39962bb3025b37b12749f767a777))
+
+
+
+
+
+## [1.16.3](https://github.com/haoziqaq/varlet/compare/v1.16.2...v1.16.3) (2021-09-09)
+
+
+### Bug Fixes
+
+* **cli:** optimized Baidu statistics, add varlet-cli-app generators template, fix cli depend version ([703517e](https://github.com/haoziqaq/varlet/commit/703517eddf8842093897800e4a940906bb632c5f))
+* **cli:** themes add progress color config ([f804915](https://github.com/haoziqaq/varlet/commit/f80491508fb80bd7c15c9e014eac78f95430dc57))
+* **cli/compile-types:** fix the component name of types ([4d999ee](https://github.com/haoziqaq/varlet/commit/4d999ee876e90b2c22dd93a0d17da8c181307378))
+
+
+
+
+
+## [1.16.2](https://github.com/haoziqaq/varlet/compare/v1.16.1...v1.16.2) (2021-09-01)
+
+**Note:** Version bump only for package @varlet/ui
+
+
+
+
+
+## [1.16.1](https://github.com/haoziqaq/varlet/compare/v1.16.0...v1.16.1) (2021-08-31)
+
+**Note:** Version bump only for package @varlet/ui
+
+
+
+
+
+# [1.16.0](https://github.com/haoziqaq/varlet/compare/v1.15.0...v1.16.0) (2021-08-30)
+
+**Note:** Version bump only for package @varlet/ui
+
+
+
+
+
 # [1.15.0](https://github.com/haoziqaq/varlet/compare/v1.14.2...v1.15.0) (2021-08-13)
 
 

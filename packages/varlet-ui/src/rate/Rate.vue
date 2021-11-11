@@ -17,9 +17,9 @@
 </template>
 
 <script lang="ts">
+import VarIcon from '../icon'
+import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
-import Icon from '../icon'
-import FormDetails from '../form-details'
 import { defineComponent, nextTick } from 'vue'
 import { useForm } from '../form/provide'
 import { useValidation } from '../utils/components'
@@ -31,8 +31,8 @@ import type { RateProvider } from './provide'
 export default defineComponent({
   name: 'VarRate',
   components: {
-    [Icon.name]: Icon,
-    [FormDetails.name]: FormDetails,
+    VarIcon,
+    VarFormDetails,
   },
   directives: { Ripple },
   props,
@@ -72,7 +72,7 @@ export default defineComponent({
 
     const transformValue = (index: number) => {
       const { modelValue, disabled, disabledColor, color, half, emptyColor } = props
-      let iconColor = null
+      let iconColor
 
       if (disabled || form?.disabled.value) iconColor = disabledColor
       else if (color) iconColor = color

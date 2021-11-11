@@ -1,10 +1,11 @@
-import type { App, Component } from 'vue'
 import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
 import context from '../context'
 import { reactive, TransitionGroup } from 'vue'
 import { mountInstance } from '../utils/components'
 import { isPlainObject, toNumber } from '../utils/shared'
+import type { LoadingType, LoadingSize } from '../loading/props'
+import type { App, Component, TeleportProps } from 'vue'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
@@ -18,9 +19,8 @@ interface SnackbarOptions {
   type?: SnackbarType
   content?: string
   position?: 'top' | 'center' | 'bottom'
-  loadingType?: string
-  loadingSize?: string
-  teleport?: string
+  loadingType?: LoadingType
+  loadingSize?: LoadingSize
   lockScroll?: boolean
   contentClass?: string
   duration?: number
@@ -31,6 +31,8 @@ interface SnackbarOptions {
   onClose?: () => void
   onOpened?: () => void
   onClosed?: () => void
+  // internal
+  teleport?: TeleportProps['to']
 }
 
 interface UniqSnackbarOptions {
@@ -105,8 +107,10 @@ const TransitionGroupHost = {
 
         if (isAllowMultiple) reactiveSnackOptions.position = 'top'
 
+        const position = isAllowMultiple ? 'relative' : 'absolute' // avoid stylelint value-keyword-case error
+
         const style = {
-          position: isAllowMultiple ? 'relative' : 'absolute',
+          position,
           ...getTop(reactiveSnackOptions.position),
         }
 
@@ -122,10 +126,12 @@ const TransitionGroupHost = {
         )
       })
 
+      const zindex = context.zIndex // avoid stylelint value-keyword-case error
+
       return (
         <TransitionGroup
           {...transitionGroupProps}
-          style={{ zIndex: context.zIndex }}
+          style={{ zIndex: zindex }}
           onAfterEnter={opened}
           onAfterLeave={removeUniqOption}
         >

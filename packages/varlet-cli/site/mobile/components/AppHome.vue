@@ -6,26 +6,26 @@
     </h1>
     <h2 class="varlet-home__desc">{{ description[lang] }}</h2>
   </div>
-  <var-cell
+  <var-site-cell
     v-for="component in components"
     :key="component.text"
     @click="toComponent(component)"
     v-ripple
   >
     <template #extra>
-      <var-icon name="chevron-right" size="14" />
+      <var-site-icon name="chevron-right" size="14" />
     </template>
     <template #default>
       {{ component.text[lang] }}
     </template>
-  </var-cell>
+  </var-site-cell>
 </template>
 
 <script>
 import config from '@config'
 import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
-import { watchLang, watchPlatform } from '../../utils'
+import { inIframe, isPhone, watchLang, watchPlatform } from '../../utils'
 
 export default {
   name: 'AppHome',
@@ -57,6 +57,10 @@ export default {
           replace: component.doc
         },
       })
+
+      if (!isPhone() && inIframe()) {
+        window.top.scrollToMenu(component.doc)
+      }
     }
 
     return {
@@ -72,8 +76,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import '~@varlet/ui/es/styles/var';
-
 .logo {
   height: 100px;
   padding-top: 30px;
@@ -114,15 +116,14 @@ export default {
   margin-left: 16px;
 }
 
-.var-cell {
+.var-site-cell {
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: all 0.3s;
   color: #555;
 
   &:hover {
-    background: #edf5ff;
-    color: @color-primary;
+    color: var(--site-config-color-mobile-cell-hover);
   }
 }
 </style>

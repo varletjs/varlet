@@ -54,8 +54,8 @@
 </template>
 
 <script lang="ts">
-import Popup from '../popup'
-import Button from '../button'
+import VarPopup from '../popup'
+import VarButton from '../button'
 import { props } from './props'
 import { defineComponent, ref, watch } from 'vue'
 import { dt } from '../utils/shared'
@@ -65,8 +65,8 @@ import type { Ref } from 'vue'
 export default defineComponent({
   name: 'VarDialog',
   components: {
-    [Popup.name]: Popup,
-    [Button.name]: Button,
+    VarPopup,
+    VarButton,
   },
   inheritAttrs: false,
   props,

@@ -21,7 +21,7 @@
   </div>
   <div>
     <app-type>{{ pack.sliderSize }}</app-type>
-    <var-slider v-model="value1" track-height="4" thumb-size="8" range />
+    <var-slider v-model="value10" track-height="4" thumb-size="8" range />
   </div>
   <div>
     <app-type>{{ pack.customStyle }}</app-type>
@@ -57,14 +57,14 @@
 <script>
 import { reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Slider from '..'
+import VarSlider from '..'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'SliderExample',
   components: {
-    [Slider.name]: Slider,
+    VarSlider,
     AppType,
   },
   setup() {
@@ -79,6 +79,7 @@ export default {
       value7: 50,
       value8: 20,
       value9: [5, 38],
+      value10: [7, 64],
     })
 
     const handleChange = (v) => {

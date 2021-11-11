@@ -24,8 +24,8 @@
 </template>
 
 <script lang="ts">
+import VarLoading from '../loading'
 import Ripple from '../ripple'
-import Loading from '../loading'
 import { defineComponent, onMounted, onUnmounted, ref, nextTick } from 'vue'
 import { getParentScroller, isHidden, toPxNum } from '../utils/elements'
 import { props } from './props'
@@ -37,7 +37,7 @@ export default defineComponent({
   name: 'VarList',
   directives: { Ripple },
   components: {
-    [Loading.name]: Loading,
+    VarLoading,
   },
   props,
   setup(props) {

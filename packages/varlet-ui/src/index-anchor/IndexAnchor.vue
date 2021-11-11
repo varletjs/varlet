@@ -3,6 +3,8 @@
     :is="sticky ? 'var-sticky' : Transition"
     :offset-top="sticky ? stickyOffsetTop : null"
     :z-index="sticky ? zIndex : null"
+    :disabled="disabled && !cssMode"
+    :css-mode="cssMode"
     ref="anchorEl"
   >
     <div class="var-index-anchor" v-bind="$attrs">
@@ -12,17 +14,17 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, RendererNode, Transition } from 'vue'
-import Sticky from '../sticky'
+import VarSticky from '../sticky'
+import { computed, defineComponent, ref, Transition } from 'vue'
 import { useIndexBar } from './provide'
 import { props } from './props'
-import type { Ref, ComputedRef } from 'vue'
+import type { Ref, ComputedRef, RendererNode } from 'vue'
 import type { IndexAnchorProvider } from './provide'
 
 export default defineComponent({
   name: 'VarIndexAnchor',
   components: {
-    [Sticky.name]: Sticky,
+    VarSticky,
   },
   inheritAttrs: false,
   props,
@@ -30,16 +32,11 @@ export default defineComponent({
     const { index, indexBar, bindIndexBar } = useIndexBar()
 
     const ownTop: Ref<number> = ref(0)
+    const disabled: Ref<boolean> = ref(false)
     const name: ComputedRef<number | string | undefined> = computed(() => props.index)
     const anchorEl: Ref<HTMLDivElement | RendererNode | null> = ref(null)
 
-    if (!indexBar || !bindIndexBar) {
-      console.error('[Varlet] IndexAnchor: You should use this component in "IndexBar"')
-      return
-    }
-
-    const { active, sticky, stickyOffsetTop, zIndex } = indexBar
-
+    const { active, sticky, cssMode, stickyOffsetTop, zIndex } = indexBar
     const setOwnTop = () => {
       if (!anchorEl.value) return
       ownTop.value = (anchorEl.value as RendererNode).$el
@@ -47,11 +44,16 @@ export default defineComponent({
         : (anchorEl.value as HTMLDivElement).offsetTop
     }
 
+    const setDisabled = (value: boolean) => {
+      disabled.value = value
+    }
+
     const indexAnchorProvider: IndexAnchorProvider = {
       index,
       name,
       ownTop,
       setOwnTop,
+      setDisabled,
     }
 
     bindIndexBar(indexAnchorProvider)
@@ -62,6 +64,8 @@ export default defineComponent({
       active,
       sticky,
       zIndex,
+      disabled,
+      cssMode,
       stickyOffsetTop,
       Transition,
     }

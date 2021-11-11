@@ -1,4 +1,4 @@
-# IndexBar 索引栏
+# 索引栏
 
 ### 介绍
 
@@ -18,7 +18,11 @@ createApp().use(IndexBar).use(IndexAnchor)
 点击索引栏时，会自动跳转到对应的 `IndexAnchor` 锚点位置。
 
 ```html
-<var-index-bar @change="change" duration="300">
+<var-index-bar 
+  duration="300" 
+  :sticky-offset-top="54"
+  @change="change" 
+>
   <div v-for="item in list" :key="item">
     <var-index-anchor 
       :index="item" 
@@ -68,6 +72,7 @@ import { ref, onMounted } from 'vue'
 | `sticky` | 是否开启锚点吸顶 | _boolean_ | `true` |
 | `sticky-offset-top` | 锚点吸顶时与顶部的距离 | _number_ | `0` |
 | `hide-list` | 是否隐藏锚点列表 | _boolean_ | `false` |
+| `css-mode` | 开启原生`css sticky`模式 | _boolean_ | `false` |
 | `z-index` | z-index 层级 | _number \| string_ | `1` |
 | `highlight-color` | 索引字符高亮颜色 | _string_ | `#ee0a24` |
 | `duration` | 动画持续时间 | _string \| number_ | `0` |

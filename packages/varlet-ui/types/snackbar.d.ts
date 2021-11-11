@@ -1,13 +1,17 @@
-import type { App } from 'vue'
 import { VarComponent } from './varComponent'
+import type { App, TeleportProps } from 'vue'
+
+export type LoadingType = 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'
+
+export type LoadingSize = 'normal' | 'mini' | 'small' | 'large'
 
 export interface SnackbarProps {
   type?: SnackbarType
   content?: string
   position?: 'top' | 'center' | 'bottom'
-  loadingType?: string
-  loadingSize?: string
-  teleport?: string
+  loadingType?: LoadingType
+  loadingSize?: LoadingSize
+  teleport?: TeleportProps['to']
   lockScroll?: boolean
   contentClass?: string
   duration?: number

@@ -11,4 +11,7 @@ export default {
   validateMessage: '存在上传失败的文件',
   style: '自定义上传样式',
   upload: '上传',
+  beforeRemove: '删除前处理',
+  removeTitle: '是否删除?',
+  removeMessage: '删除后无法撤回',
 }

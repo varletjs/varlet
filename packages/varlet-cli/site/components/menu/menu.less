@@ -1,0 +1,27 @@
+@site-menu-background: #fff;
+
+:root {
+  --site-menu-background: @site-menu-background;
+}
+
+.var {
+  &-site-menu-enter-from,
+  &-site-menu-leave-to {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  &-site-menu-enter-active,
+  &-site-menu-leave-active {
+    transition-property: opacity, transform;
+    transition-duration: 0.25s;
+  }
+}
+
+.var-site-menu {
+  display: inline-block;
+  background: var(--site-menu-background);
+
+  &__menu {
+    position: absolute;
+  }
+}

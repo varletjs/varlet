@@ -1,0 +1,94 @@
+{
+  "name": "basic-ui",
+  "version": "0.0.0",
+  "description": "A basic components library",
+  "module": "es/index.js",
+  "typings": "types/index.d.ts",
+  "vetur": {
+    "tags": "highlight/tags.json",
+    "attributes": "highlight/attributes.json"
+  },
+  "web-types": "highlight/web-types.json",
+  "keywords": [
+    "Vue",
+    "UI"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "husky": "husky install",
+    "commit": "git-cz",
+    "dev": "varlet-cli dev",
+    "build": "varlet-cli build",
+    "preview": "varlet-cli preview",
+    "compile": "varlet-cli compile",
+    "create": "varlet-cli create",
+    "lint": "varlet-cli lint",
+    "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "genAllLog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "release": "yarn compile && release-it",
+    "test": "varlet-cli jest",
+    "test:watch": "varlet-cli jest -w"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "devDependencies": {
+    "@varlet/cli": "^1.20.0-alpha.0",
+    "vue": "3.2.16"
+  },
+  "release-it": {
+    "git": {
+      "changelog": "git log --pretty=format:\"* %s (%h)\" ${from}...${to}",
+      "tagName": "v${version}",
+      "commitMessage": "chore: release ${version}",
+      "requireCleanWorkingDir": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular",
+        "infile": "CHANGELOG.md"
+      }
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,vue,less}": "prettier --write",
+    "*.{ts,tsx,js,vue}": "eslint --fix",
+    "*.{vue,css,less}": "stylelint --fix"
+  },
+  "eslintConfig": {
+    "root": true,
+    "ignorePatterns": [
+      "es/**",
+      "umd/**",
+      "site/**",
+      "public/**",
+      "src/*/__tests__/**",
+      ".varlet/**"
+    ],
+    "extends": [
+      "@varlet"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "@varlet/stylelint-config"
+    ],
+    "ignoreFiles": [
+      "es/**",
+      "umd/**",
+      "site/**",
+      "coverage/**",
+      "public/**",
+      "highlight/**"
+    ]
+  },
+  "browserslist": [
+    "Chrome >= 51",
+    "iOS >= 10"
+  ]
+}

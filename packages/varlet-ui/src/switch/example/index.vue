@@ -31,16 +31,14 @@
 <script>
 import { reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Switch from '..'
-import Cell from '../../cell'
+import VarSwitch from '..'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
   name: 'SwitchExample',
   components: {
-    [Switch.name]: Switch,
-    [Cell.name]: Cell,
+    VarSwitch,
     AppType,
   },
   setup() {

@@ -90,9 +90,9 @@
 </template>
 
 <script>
-import Select from '..'
-import Option from '../../option'
-import Icon from '../../icon'
+import VarSelect from '..'
+import VarOption from '../../option'
+import VarIcon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { reactive, toRefs } from 'vue'
 import { watchLang } from '@varlet/cli/site/utils'
@@ -101,9 +101,9 @@ import { use, pack } from './locale'
 export default {
   name: 'SelectExample',
   components: {
-    [Select.name]: Select,
-    [Option.name]: Option,
-    [Icon.name]: Icon,
+    VarSelect,
+    VarOption,
+    VarIcon,
     AppType,
   },
   setup() {

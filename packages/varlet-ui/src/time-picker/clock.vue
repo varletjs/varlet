@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref, watch } from 'vue'
-import dayjs from 'dayjs'
+import dayjs from 'dayjs/esm'
 import { hoursAmpm, hours24, minSec } from './props'
 import { notConvert, convertHour, getIsDisableMinute, getIsDisableSecond, getNumberTime } from './utils'
 import { toNumber } from '../utils/shared'
@@ -169,8 +169,8 @@ export default defineComponent({
       const computedColor = () => {
         if (!isActive(index, inner)) {
           return {
-            backgroundColor: null,
-            color: null,
+            backgroundColor: undefined,
+            color: undefined,
           }
         }
         if (isDisable(hour)) {
@@ -182,7 +182,7 @@ export default defineComponent({
 
         return {
           backgroundColor: props.color,
-          color: null,
+          color: undefined,
         }
       }
 

@@ -44,28 +44,26 @@
 </template>
 
 <script>
-import Icon from '..'
-import Button from '../../button'
+import VarIcon from '..'
 import Ripple from '../../ripple'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
+import Clipboard from 'clipboard'
+import icons from '@varlet/icons'
 import { reactive, onMounted, ref, onUnmounted } from 'vue'
 import { use, pack } from './locale'
 import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 
-const Clipboard = require('clipboard')
-
 export default {
   name: 'IconExample',
   components: {
-    [Icon.name]: Icon,
-    [Button.name]: Button,
-    [AppType.name]: AppType,
+    VarIcon,
+    AppType,
   },
   directives: { Ripple },
   setup() {
-    const iconNames = reactive(require('@varlet/icons'))
+    const iconNames = reactive(icons)
     const iconName = ref('information')
 
     const toggle = () => {

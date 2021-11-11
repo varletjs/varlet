@@ -1,47 +1,47 @@
-import webpack from 'webpack'
-import WebpackDevServer from 'webpack-dev-server'
-import address from 'address'
+import chokidar, { FSWatcher } from 'chokidar'
 import logger from '../shared/logger'
-import { getPort } from 'portfinder'
-import { ensureDirSync } from 'fs-extra'
-import { getDevConfig } from '../config/webpack.dev.config'
-import { SRC_DIR } from '../shared/constant'
+import { createServer, ViteDevServer } from 'vite'
+import { ensureDirSync, pathExistsSync } from 'fs-extra'
+import { SRC_DIR, VARLET_CONFIG } from '../shared/constant'
+import { buildSiteEntry } from '../compiler/compileSiteEntry'
+import { getDevConfig } from '../config/vite.config'
+import { getVarletConfig } from '../config/varlet.config'
+import { merge } from 'lodash'
 
-export function runDevServer(port: number, config: any) {
-  const { host } = config.devServer
-  config.devServer.port = port
-  const server = new WebpackDevServer(webpack(config), config.devServer)
+let server: ViteDevServer
+let watcher: FSWatcher
 
-  ;(server as any).showStatus = function () {}
+async function startServer(force: boolean | undefined) {
+  const isRestart = Boolean(server)
+  logger.info(`${isRestart ? 'Res' : 'S'}tarting server...`)
 
-  server.listen(port, host, (err?: Error) => {
-    if (err) {
-      logger.error(err.toString())
-      return
-    }
+  // close all instance
+  server && (await server.close())
+  watcher && (await watcher.close())
 
-    logger.success(`  Server running at:`)
-    logger.success(`  Local: http://${host}:${port}`)
-    logger.success(`  Network: http://${address.ip()}:${port}\n`)
-  })
+  // build all config
+  await buildSiteEntry()
+  const varletConfig = getVarletConfig()
+  const devConfig = getDevConfig(varletConfig)
+  const inlineConfig = merge(devConfig, force ? { server: { force: true } } : {})
+
+  // create all instance
+  server = await createServer(inlineConfig)
+  await server.listen()
+  server.printUrls()
+
+  if (pathExistsSync(VARLET_CONFIG)) {
+    watcher = chokidar.watch(VARLET_CONFIG)
+    watcher.on('change', () => startServer(force))
+  }
+
+  logger.info(`${isRestart ? 'Res' : 'S'}tart successfully!!!`)
 }
 
-export async function dev() {
+export async function dev(cmd: { force?: boolean }) {
   process.env.NODE_ENV = 'development'
+
   ensureDirSync(SRC_DIR)
 
-  const config = getDevConfig()
-  const { port } = config.devServer
-  getPort(
-    {
-      port,
-    },
-    (err: Error, port: number) => {
-      if (err) {
-        logger.error(err.toString())
-        return
-      }
-      runDevServer(port, config)
-    }
-  )
+  await startServer(cmd.force)
 }

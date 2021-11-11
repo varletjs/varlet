@@ -52,4 +52,7 @@ export default {
   card: '/card',
   divider: '/divider',
   'style-provider': '/style-provider',
+  table: '/table',
+  pagination: '/pagination',
+  'image-preview': '/image-preview',
 } as Record<string, string>

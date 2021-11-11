@@ -1,3 +1,5 @@
+import { Pack } from './index'
+
 export default {
   // Dialog
   dialogTitle: '提示',
@@ -14,7 +16,7 @@ export default {
   pickerConfirmButtonText: '确认',
   pickerCancelButtonText: '取消',
   // date-picker
-  monthDictionary: {
+  datePickerMonthDict: {
     '01': {
       name: '一月',
       abbr: '一月',
@@ -64,35 +66,39 @@ export default {
       abbr: '十二月',
     },
   },
-  weekDictionary: {
-    0: {
+  datePickerWeekDict: {
+    '0': {
       name: '星期日',
       abbr: '日',
     },
-    1: {
+    '1': {
       name: '星期一',
       abbr: '一',
     },
-    2: {
+    '2': {
       name: '星期二',
       abbr: '二',
     },
-    3: {
+    '3': {
       name: '星期三',
       abbr: '三',
     },
-    4: {
+    '4': {
       name: '星期四',
       abbr: '四',
     },
-    5: {
+    '5': {
       name: '星期五',
       abbr: '五',
     },
-    6: {
+    '6': {
       name: '星期六',
       abbr: '六',
     },
   },
-  selected: '个被选择',
-}
+  datePickerSelected: '个被选择',
+  // pagination
+  paginationItem: '条',
+  paginationPage: '页',
+  paginationJump: '前往',
+} as Pack

@@ -122,6 +122,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--skeleton-card-background-color` | `rgba(0, 0, 0, 0.12)` |
 | `--skeleton-animation-background` | `linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0))` |
 | `--skeleton-avatar-size` | `34px` |
+| `--skeleton-avatar-border-radius` | `50%` |
 | `--skeleton-avatar-margin-right` | `16px` |
 | `--skeleton-avatar-background-color` | `rgba(0, 0, 0, 0.12)` |
 | `--skeleton-title-width` | `50%` |

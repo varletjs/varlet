@@ -35,14 +35,14 @@
 
 <script lang="ts">
 import Ripple from '../ripple'
-import Loading from '../loading'
+import VarLoading from '../loading'
 import { defineComponent } from 'vue'
 import { props } from './props'
 
 export default defineComponent({
   name: 'VarButton',
   components: {
-    [Loading.name]: Loading,
+    VarLoading,
   },
   directives: { Ripple },
   props,

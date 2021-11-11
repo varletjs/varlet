@@ -222,7 +222,7 @@ export default {
 | `overlay-style` | Custom overlay style | _string_ | `-` |
 | `lock-scroll` | Whether to disable scrolling penetration, scrolling the Dialog when disabled will not cause the body to scroll | _boolean_ | `true` |
 | `close-on-click-overlay` | Whether to click the overlay to close the Dialog | _boolean_ | `true` | 
-| `teleport` | The location of the Dialog to mount | _string_ | `-` |
+| `teleport` | The location of the Dialog to mount | _TeleportProps['to']_ | `-` |
 
 ### Events
 
@@ -230,7 +230,7 @@ export default {
 | --- | --- | --- |
 | `open` | Triggered when the Dialog is open | `-` |
 | `opened` | Triggered when the Dialog open-animation ends | `-` |
-| `before-close` | Triggering before the Dialog closes prevents closure | `action: confirm \| cancel \| close, done: Function` |
+| `before-close` | Triggering before the Dialog closes prevents closure | `action: confirm \| cancel \| close` <br> `done: Function` |
 | `close` | Triggered when the Dialog is close | `-` |
 | `closed` | Triggered when the Dialog close-animation ends | `-` |
 | `confirm` | Trigger on confirm | `-` |

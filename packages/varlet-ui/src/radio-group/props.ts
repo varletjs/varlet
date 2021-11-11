@@ -8,6 +8,7 @@ export function directionValidator(direction: string) {
 
 export const props = {
   modelValue: {
+    type: [String, Number, Boolean, Object, Array] as PropType<any>,
     default: undefined,
   },
   direction: {

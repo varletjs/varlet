@@ -166,8 +166,8 @@ export default {
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
 | `year` | Custom the year in the title | `year: YYYY` |
-| `month` | Custom the month in the title | `year: YYYY` `month: MM` |
-| `date` | Custom the date in the title | `year: YYYY` `month: MM` `date: DD` `week: weekIndex` |
+| `month` | Custom the month in the title | `year: YYYY` <br> `month: MM` |
+| `date` | Custom the date in the title | `year: YYYY` <br> `month: MM` `date: DD` <br> `week: weekIndex` |
 | `range` | Custom the range in the title | `choose: [startData, endDate]` |
 | `multiple` | Custom the multiple in the title  | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
 

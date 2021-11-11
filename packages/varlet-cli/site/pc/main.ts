@@ -4,10 +4,16 @@ import '@varlet/touch-emulator'
 import routes from '@pc-routes'
 // @ts-ignore
 import config from '@config'
-import { Cell, Ripple, Icon } from '@varlet/ui'
+
+import Icon from '../components/icon'
+import Cell from '../components/cell'
+import Ripple from '../components/ripple'
+import '../components/styles/common.less'
+import '../components/styles/elevation.less'
+
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 import { useProgress } from '../useProgress'
 
 const defaultLanguage = get(config, 'defaultLanguage')
@@ -22,6 +28,7 @@ redirect &&
 
 const router = createRouter({
   history: createWebHashHistory(),
+  scrollBehavior: () => ({ top: 0 }),
   routes,
 })
 
@@ -35,6 +42,14 @@ router.beforeEach((to, from) => {
 
   isEnd = false
   setTimeout(() => !isEnd && start(), 200)
+
+  // @ts-ignore
+  if (window._hmt) {
+    if (to.path) {
+      // @ts-ignore
+      window._hmt.push(['_trackPageview', `/#${to.fullPath}`])
+    }
+  }
 })
 
 router.afterEach(() => {
@@ -53,9 +68,21 @@ Object.defineProperty(window, 'onMobileRouteChange', {
   }
 })
 
+Object.defineProperty(window, 'scrollToMenu', {
+  value: (docName: string) => {
+    setTimeout(() => {
+      const cell = document.getElementById(docName) as HTMLElement
+      const scroller = cell.parentNode as HTMLElement
+      scroller.scrollTo({ top: cell.offsetTop - scroller.offsetHeight / 2 })
+    })
+  }
+})
+
 createApp(App)
   .use(router)
+  // @ts-ignore
   .use(Cell)
   .use(Ripple)
+  // @ts-ignore
   .use(Icon)
   .mount('#app')

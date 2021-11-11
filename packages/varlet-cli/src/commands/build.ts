@@ -1,17 +1,17 @@
-import webpack from 'webpack'
-import logger from '../shared/logger'
 import { ensureDirSync } from 'fs-extra'
-import { getBuildConfig } from '../config/webpack.build.config'
 import { SRC_DIR } from '../shared/constant'
+import { build as buildVite } from 'vite'
+import { getBuildConfig } from '../config/vite.config'
+import { getVarletConfig } from '../config/varlet.config'
+import { buildSiteEntry } from '../compiler/compileSiteEntry'
 
 export async function build() {
   process.env.NODE_ENV = 'production'
+
   ensureDirSync(SRC_DIR)
+  await buildSiteEntry()
+  const varletConfig = getVarletConfig()
+  const buildConfig = getBuildConfig(varletConfig)
 
-  const config = getBuildConfig()
-
-  webpack(config, (err, stats) => {
-    err && logger.error(err.toString())
-    stats?.hasErrors() && logger.error(stats.toString())
-  })
+  await buildVite(buildConfig)
 }

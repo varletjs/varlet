@@ -1,3 +1,5 @@
+import { Pack } from './index'
+
 export default {
   // Dialog
   dialogTitle: 'Hint',
@@ -14,7 +16,7 @@ export default {
   pickerConfirmButtonText: 'Confirm',
   pickerCancelButtonText: 'Cancel',
   // date-picker
-  monthDictionary: {
+  datePickerMonthDict: {
     '01': {
       name: 'January',
       abbr: 'JAN',
@@ -64,35 +66,39 @@ export default {
       abbr: 'DEC',
     },
   },
-  weekDictionary: {
-    0: {
+  datePickerWeekDict: {
+    '0': {
       name: 'Sunday',
       abbr: 'S',
     },
-    1: {
+    '1': {
       name: 'Monday',
       abbr: 'M',
     },
-    2: {
+    '2': {
       name: 'Tuesday',
       abbr: 'T',
     },
-    3: {
+    '3': {
       name: 'Wednesday',
       abbr: 'W',
     },
-    4: {
+    '4': {
       name: 'Thursday',
       abbr: 'T',
     },
-    5: {
+    '5': {
       name: 'Friday',
       abbr: 'F',
     },
-    6: {
+    '6': {
       name: 'Saturday',
       abbr: 'S',
     },
   },
-  selected: ' selected',
-}
+  datePickerSelected: ' selected',
+  // pagination
+  paginationItem: '',
+  paginationPage: 'page',
+  paginationJump: 'Go to',
+} as Pack

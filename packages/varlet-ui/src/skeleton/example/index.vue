@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import Skeleton from '..'
-import Button from '../../button'
+import VarSkeleton from '..'
+import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { ref } from 'vue'
 import { watchLang } from '@varlet/cli/site/utils'
@@ -38,8 +38,8 @@ import { use, pack } from './locale'
 export default {
   name: 'SkeletonExample',
   components: {
-    [Skeleton.name]: Skeleton,
-    [Button.name]: Button,
+    VarSkeleton,
+    VarButton,
     AppType,
   },
   setup() {

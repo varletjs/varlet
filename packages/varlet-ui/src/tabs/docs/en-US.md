@@ -224,7 +224,7 @@ Click the Tab to scroll automatically to the center of the viewport.
   color="#2979ff"
   active-color="#fff"
   inactive-color="hsla(0, 0%, 100%, .6)"
-  :offset-top="50"
+  :offset-top="54"
   v-model:active="active"
 >
   <var-tab>Option1</var-tab>
@@ -295,7 +295,7 @@ Click the Tab to scroll automatically to the center of the viewport.
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `click` | Triggered when the tab is clicked, but not when the tab `disabled` status is `true` | `active: string \| number, event: Event` |
+| `click` | Triggered when the tab is clicked, but not when the tab `disabled` status is `true` | `active: string \| number` <br> `event: Event` |
 
 ### Slots
 
@@ -347,5 +347,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--tab-padding` | `12px` |
 | `--tab-active-color` | `var(--color-primary)` |
 | `--tab-inactive-color` | `#646566` |
-| `--tab-disabled-color` | `var(--color-disabled)` |
+| `--tab-disabled-color` | `var(--color-text-disabled)` |
 | `--tab-font-size` | `var(--font-size-md)` |

@@ -104,7 +104,7 @@ export default {
       }, 1000)
     }
 
-    return { 
+    return {
       files,
       handleAfterRead
     }
@@ -135,7 +135,7 @@ export default {
 
     const handleOversize = file => console.log(file)
 
-    return { 
+    return {
       files,
       handleAfterRead
     }
@@ -160,7 +160,7 @@ export default {
 
     const handleBeforeRead = file => file.file.size <= 1024 * 10
 
-    return { 
+    return {
       files,
       handleAfterRead
     }
@@ -180,6 +180,52 @@ export default {
 <var-uploader readonly v-model="files"/>
 ```
 
+### Remove Preprocessing
+
+Before deleting the file, the `before-remove` event is triggered, and a falsy value is returned to prevent the delete operation.
+
+```html
+ <var-uploader v-model="files" @remove="handleBeforeRemove" />
+```
+
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const files = ref([
+      {
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      }
+    ])
+
+    const handleBeforeRemove = async () => {
+      const action = await Dialog({
+        title: 'Delete or not?',
+        message: 'Cannot be withdrawn after deletion'
+      })
+
+      return action === 'confirm'
+    }
+
+    return {
+      files,
+      handleBeforeRemove
+    }
+  }
+}
+```
+
+
+### Customize upload styles
+
+```html
+<var-uploader v-model="files">
+  <var-button type="primary">Upload</var-button>
+</var-uploader>
+```
+
 ### Validate
 
 The values are validated by passing in an array of validator, If the validator returns `true`, the validation passes.
@@ -195,27 +241,19 @@ The second argument is a collection of utility functions that can quickly get a 
 />
 ```
 
-### Customize upload styles
-
-```html
-<var-uploader v-model="files">
-  <var-button type="primary">Upload</var-button>
-</var-uploader>
-```
-
 ## API
 
 ### Props
 
-| Prop | Description | Type | Default | 
-| --- | --- | --- | --- | 
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
 | `v-model` | File list | _VarFile[]_ | `[]` |
 | `accept` | Accepted file type, consistent with the native attribute | _string_ | `image/*` |
 | `capture` | Get the file, the same as the native property | _string_ | `-` |
 | `multiple` | Whether to select multiple files | _boolean_ | `false` |
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
-| `removable` | Whether the removable | _boolean_ | `false` |
+| `removable` | Whether the removable | _boolean_ | `true` |
 | `maxlength` | Maximum number of files | _string \| number_ | `-` |
 | `maxsize` | Maximum file size | _string \| number_ | `-` |
 | `previewed` | Whether to allow preview | _boolean_ | `true` |
@@ -225,7 +263,7 @@ The second argument is a collection of utility functions that can quickly get a 
 
 ### VarFile
 
-| Prop | Description | Type | Default | 
+| Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `file` | Native file | _File_ | `-` |
 | `name` | File name | _string_ | `-` |
@@ -260,7 +298,8 @@ The second argument is a collection of utility functions that can quickly get a 
 | `before-read` | Trigger returns a false value before a file is read to prevent the file from being read(support promise) | `file: VarFile` |
 | `after-read` | Triggered after the file is read | `file: VarFile` |
 | `oversize` | Triggered when the file size limit is exceeded | `file: VarFile` |
-| `remove` | Triggered when a file is deleted | `file: VarFile` |
+| `before-remove` | Triggered before file deletion, return false value to prevent file deletion (support promise) | `file: VarFile` |
+| `remove` | Triggered when deleting a file. There is a true value to prevent deleting a file (support promise) | `file: VarFile` |
 
 ### Slots
 

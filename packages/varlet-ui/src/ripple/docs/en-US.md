@@ -39,3 +39,10 @@ createApp().use(Ripple)
 | `color` | Ripple color | _string_ | `currentColor` |
 | `disabled` | Whether to disable ripple | _boolean_ | `false` |
 
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+
+| Variable | Default |
+| --- | --- |
+| `--ripple-cubic-bezier` | `cubic-bezier(0.68, 0.01, 0.62, 0.6)` |
+

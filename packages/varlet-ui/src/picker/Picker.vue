@@ -13,7 +13,7 @@
             closeOnClickOverlay,
             teleport,
             show,
-            'onUpdate:show': (value) => $props['onUpdate:show']?.(value),
+            'onUpdate:show': handlePopupUpdateShow,
             position: 'bottom',
             class: 'var-picker__popup',
           }
@@ -53,14 +53,14 @@
         <div
           class="var-picker__column"
           v-for="c in scrollColumns"
-          :key="c"
+          :key="c.id"
           @touchstart="handleTouchstart($event, c)"
           @touchmove.prevent="handleTouchmove($event, c)"
           @touchend="handleTouchend($event, c)"
         >
           <div
             class="var-picker__scroller"
-            :ref="(el) => (c.scrollEl = el)"
+            :ref="(el) => getScrollEl(el, c)"
             :style="{
               transform: `translateY(${c.translate}px)`,
               transitionDuration: `${c.duration}ms`,
@@ -92,18 +92,19 @@
 </template>
 
 <script lang="ts">
-import Button from '../button'
-import Popup from '../popup'
+import VarButton from '../button'
+import VarPopup from '../popup'
 import { defineComponent, watch, ref, computed, Transition, toRaw } from 'vue'
 import { props } from './props'
 import { isArray, dt } from '../utils/shared'
 import { toPxNum, getTranslate } from '../utils/elements'
 import { pack } from '../locale'
-import type { Ref, ComputedRef } from 'vue'
+import type { Ref, ComputedRef, ComponentPublicInstance } from 'vue'
 import type { CascadeColumn, NormalColumn } from './props'
 import type { Texts } from './index'
 
-interface ScrollColumn {
+export interface ScrollColumn {
+  id: number
   touching: boolean
   index: number
   prevY: number | undefined
@@ -120,11 +121,13 @@ interface ScrollColumn {
 const MOMENTUM_RECORD_TIME = 300
 const MOMENTUM_ALLOW_DISTANCE = 15
 
+let sid = 0
+
 export default defineComponent({
   name: 'VarPicker',
   components: {
-    [Button.name]: Button,
-    [Popup.name]: Popup,
+    VarButton,
+    VarPopup,
   },
   inheritAttrs: false,
   props,
@@ -137,6 +140,14 @@ export default defineComponent({
     )
     const columnHeight: ComputedRef<number> = computed(() => optionCount.value * optionHeight.value)
     let prevIndexes: number[] = []
+
+    const getScrollEl = (el: Element | ComponentPublicInstance | null, scrollColumn: ScrollColumn) => {
+      scrollColumn.scrollEl = el as HTMLElement
+    }
+
+    const handlePopupUpdateShow = (value: boolean) => {
+      props['onUpdate:show']?.(value)
+    }
 
     const limitTranslate = (scrollColumn: ScrollColumn) => {
       const START_LIMIT = optionHeight.value + center.value
@@ -240,6 +251,7 @@ export default defineComponent({
       return normalColumns.map((column: NormalColumn | any[]) => {
         const normalColumn = (isArray(column) ? { texts: column } : column) as NormalColumn
         const scrollColumn: ScrollColumn = {
+          id: sid++,
           prevY: undefined,
           momentumPrevY: undefined,
           touching: false,
@@ -267,6 +279,7 @@ export default defineComponent({
     const createChildren = (scrollColumns: ScrollColumn[], children: CascadeColumn[]) => {
       if (isArray(children) && children.length) {
         const scrollColumn: ScrollColumn = {
+          id: sid++,
           prevY: undefined,
           momentumPrevY: undefined,
           touching: false,
@@ -370,6 +383,8 @@ export default defineComponent({
       columnHeight,
       center,
       Transition,
+      getScrollEl,
+      handlePopupUpdateShow,
       handleTouchstart,
       handleTouchmove,
       handleTouchend,

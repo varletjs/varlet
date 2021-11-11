@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, onMounted } from 'vue'
-import dayjs from 'dayjs'
+import dayjs from 'dayjs/esm'
 import { toNumber } from '../../utils/shared'
 import type { ComputedRef, PropType } from 'vue'
 import type { ComponentProps } from '../props'

@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import FormDetails from '../form-details'
+import VarFormDetails from '../form-details'
 import { computed, defineComponent, nextTick, watch } from 'vue'
 import { props } from './props'
 import { useValidation } from '../utils/components'
@@ -21,9 +21,7 @@ import type { RadioGroupProvider } from './provide'
 
 export default defineComponent({
   name: 'VarRadioGroup',
-  components: {
-    [FormDetails.name]: FormDetails,
-  },
+  components: { VarFormDetails },
   props,
   setup(props) {
     const { length, radios, bindRadios } = useRadios()

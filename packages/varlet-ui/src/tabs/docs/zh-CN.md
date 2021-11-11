@@ -226,7 +226,7 @@ export default {
   color="#2979ff"
   active-color="#fff"
   inactive-color="hsla(0, 0%, 100%, .6)"
-  :offset-top="50"
+  :offset-top="54"
   v-model:active="active"
 >
   <var-tab>选项1</var-tab>
@@ -298,7 +298,7 @@ export default {
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `click` | 点击选项卡时触发, 在 `disabled` 状态为 `true` 时不触发 | `active: string \| number, event: Event` |
+| `click` | 点击选项卡时触发, 在 `disabled` 状态为 `true` 时不触发 | `active: string \| number` <br> `event: Event` |
 
 ### 插槽
 
@@ -350,5 +350,5 @@ export default {
 | `--tab-padding` | `12px` |
 | `--tab-active-color` | `var(--color-primary)` |
 | `--tab-inactive-color` | `#646566` |
-| `--tab-disabled-color` | `var(--color-disabled)` |
+| `--tab-disabled-color` | `var(--color-text-disabled)` |
 | `--tab-font-size` | `var(--font-size-md)` |

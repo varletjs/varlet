@@ -1,9 +1,9 @@
 import VarPicker from './Picker.vue'
 import { nextTick, reactive } from 'vue'
-import type { App, Component } from 'vue'
 import { NormalColumn, CascadeColumn } from './props'
 import { isArray } from '../utils/shared'
 import { mountInstance } from '../utils/components'
+import type { App, Component, TeleportProps } from 'vue'
 
 export type Texts = any[]
 
@@ -20,7 +20,7 @@ interface PickerOptions {
   cancelButtonText?: string
   confirmButtonTextColor?: string
   cancelButtonTextColor?: string
-  teleport?: string
+  teleport?: TeleportProps['to']
   dynamic?: boolean
   onOpen?: () => void
   onOpened?: () => void

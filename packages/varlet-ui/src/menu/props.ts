@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import type { PropType, TeleportProps } from 'vue'
 
 function alignmentValidator(alignment: string) {
   return ['top', 'bottom'].includes(alignment)
@@ -23,6 +23,7 @@ export const props = {
     default: 0,
   },
   teleport: {
+    type: String as PropType<TeleportProps['to']>,
     default: 'body',
   },
   onOpen: {

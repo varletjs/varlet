@@ -1,11 +1,11 @@
 <template>
-  <var-swipe-item class="var-tab-item" :class="[!current && 'var-tab-item--inactive']">
+  <var-swipe-item class="var-tab-item" var-tab-item-cover :class="[!current && 'var-tab-item--inactive']">
     <slot v-if="initSlot" />
   </var-swipe-item>
 </template>
 
 <script lang="ts">
-import SwipeItem from '../swipe-item'
+import VarSwipeItem from '../swipe-item'
 import { defineComponent, ref, computed } from 'vue'
 import { useTabsItems } from './provide'
 import { props } from './props'
@@ -15,7 +15,7 @@ import type { TabItemProvider } from './provide'
 export default defineComponent({
   name: 'VarTabItem',
   components: {
-    [SwipeItem.name]: SwipeItem,
+    VarSwipeItem,
   },
   props,
   setup(props) {

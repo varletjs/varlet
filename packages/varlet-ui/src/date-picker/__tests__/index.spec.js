@@ -3,7 +3,7 @@ import VarDatePicker from '../DatePicker'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockConsole } from '../../utils/jest'
-import dayjs from 'dayjs'
+import dayjs from 'dayjs/esm'
 
 const [currentYear ,currentMonth] = dayjs().format('YYYY-MM').split('-')
 
@@ -160,7 +160,8 @@ test('test datePicker multiple prop', async () => {
 })
 
 test('test datePicker range prop', async () => {
-  const { mockRestore } = mockConsole('error')
+  const fn = jest.fn()
+  const { mockRestore } = mockConsole('error', fn)
 
   const template = `<var-date-picker range :type="type" v-model="date" />`
 
@@ -192,6 +193,7 @@ test('test datePicker range prop', async () => {
   await lis[0].find('button').trigger('click')
   await lis[2].find('button').trigger('click')
   expect(wrapper.vm.date).toEqual([`${currentYear}-01`, `${currentYear}-03`])
+  expect(fn).toHaveBeenCalledTimes(1)
 
   mockRestore()
 })
@@ -224,7 +226,8 @@ test('test datePicker readonly', async () => {
 })
 
 test('test value legal', async () => {
-  const { mockRestore } = mockConsole('error')
+  const fn = jest.fn()
+  const { mockRestore } = mockConsole('error', fn)
   const template = `<var-date-picker v-model="date" :multiple="multiple" />`
 
   const wrapper = mount({
@@ -244,6 +247,7 @@ test('test value legal', async () => {
   await wrapper.setData({ multiple: false, date: [] })
   await delay(0)
   await wrapper.setData({ multiple: false, date: undefined })
+  expect(fn).toHaveBeenCalledTimes(3)
 
   mockRestore()
 })

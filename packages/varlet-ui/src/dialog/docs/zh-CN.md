@@ -222,7 +222,7 @@ export default {
 | `overlay-style` | 自定义遮罩层的style | _string_ | `-` |
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` | 
-| `teleport` | 弹出层挂载的位置 | _string_ | `-` |
+| `teleport` | 弹出层挂载的位置 | _TeleportProps['to']_ | `-` |
 
 ### 事件
 
@@ -230,7 +230,7 @@ export default {
 | --- | --- | --- |
 | `open` | 打开对话框时触发 | `-` |
 | `opened` | 打开对话框动画结束时触发 | `-` |
-| `before-close` | 对话框关闭前触发，会阻止关闭 | `action: confirm \| cancel \| close, done: Function` |
+| `before-close` | 对话框关闭前触发，会阻止关闭 | `action: confirm \| cancel \| close` <br> `done: Function` |
 | `close` | 关闭对话框时触发 | `-` |
 | `closed` | 关闭对话框动画结束时触发 | `-` |
 | `confirm` | 确认时触发 | `-` |

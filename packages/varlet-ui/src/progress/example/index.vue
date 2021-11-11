@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import Progress from '..'
+import VarProgress from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { ref, onMounted, onUnmounted } from 'vue'
 import { pack, use } from './locale'
@@ -49,7 +49,7 @@ import { watchLang } from '@varlet/cli/site/utils'
 export default {
   name: 'ProgressExample',
   components: {
-    [Progress.name]: Progress,
+    VarProgress,
     AppType,
   },
   setup() {

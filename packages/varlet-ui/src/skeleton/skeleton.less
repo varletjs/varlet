@@ -10,6 +10,7 @@
   hsla(0, 0%, 100%, 0)
 );
 @skeleton-avatar-size: 34px;
+@skeleton-avatar-border-radius: 50%;
 @skeleton-avatar-margin-right: 16px;
 @skeleton-avatar-background-color: rgba(0, 0, 0, 0.12);
 @skeleton-title-width: 50%;
@@ -27,6 +28,7 @@
   --skeleton-card-background-color: @skeleton-card-background-color;
   --skeleton-animation-background: @skeleton-animation-background;
   --skeleton-avatar-size: @skeleton-avatar-size;
+  --skeleton-avatar-border-radius: @skeleton-avatar-border-radius;
   --skeleton-avatar-margin-right: @skeleton-avatar-margin-right;
   --skeleton-avatar-background-color: @skeleton-avatar-background-color;
   --skeleton-title-width: @skeleton-title-width;
@@ -75,7 +77,7 @@
     flex-shrink: 0;
     width: var(--skeleton-avatar-size);
     height: var(--skeleton-avatar-size);
-    border-radius: 50%;
+    border-radius: var(--skeleton-avatar-border-radius);
     background-color: var(--skeleton-avatar-background-color);
     margin-right: var(--skeleton-avatar-margin-right);
   }

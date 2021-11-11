@@ -1,31 +1,21 @@
-import webpack from 'webpack'
-import logger from '../shared/logger'
-import { EXAMPLE_DIR_NAME, TESTS_DIR_NAME, DOCS_DIR_NAME, SRC_DIR, ES_DIR, STYLE_DIR_NAME } from '../shared/constant'
+import { build } from 'vite'
+import { resolve } from 'path'
 import { copy, ensureFileSync, readdir, removeSync } from 'fs-extra'
+import { EXAMPLE_DIR_NAME, TESTS_DIR_NAME, DOCS_DIR_NAME, SRC_DIR, ES_DIR, STYLE_DIR_NAME } from '../shared/constant'
 import { getPublicDirs, isDir, isLess, isScript, isSFC } from '../shared/fsUtils'
 import { compileSFC } from './compileSFC'
-import { resolve } from 'path'
 import { compileLibraryEntry, compileScriptFile } from './compileScript'
 import { compileLess } from './compileStyle'
-import { getUmdConfig } from '../config/webpack.umd.config'
+import { getUMDConfig } from '../config/vite.config'
+import { getVarletConfig } from '../config/varlet.config'
 
 export function compileUMD() {
   return new Promise<void>((resolve, reject) => {
-    const config = getUmdConfig()
+    const config = getUMDConfig(getVarletConfig())
 
-    webpack(config, (err, stats: any) => {
-      if (err) {
-        logger.error(err.toString())
-        reject()
-      }
-      if (stats?.hasErrors()) {
-        logger.error(stats)
-        reject()
-      }
-      if (!err && !stats?.hasErrors()) {
-        resolve()
-      }
-    })
+    build(config)
+      .then(() => resolve())
+      .catch(reject)
   })
 }
 

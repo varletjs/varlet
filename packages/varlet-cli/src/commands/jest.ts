@@ -2,7 +2,7 @@ import logger from '../shared/logger'
 import { runCLI } from 'jest'
 import { CWD, JEST_CONFIG } from '../shared/constant'
 
-export async function jest(cmd: { watch: boolean; component: string; clearCache: boolean }) {
+export async function jest(cmd: { watch?: boolean; component?: string; clearCache?: boolean }) {
   process.env.NODE_ENV = 'test'
 
   const config = {
@@ -10,7 +10,7 @@ export async function jest(cmd: { watch: boolean; component: string; clearCache:
     watch: cmd.watch,
     clearCache: cmd.clearCache,
     config: JEST_CONFIG,
-    testMatch: cmd.component && [`/**/${cmd.component}/__tests__/*.[jt]s`],
+    testRegex: cmd.component && `${cmd.component}/__tests__/.*.spec.[jt]s?$`,
   }
 
   try {

@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://github.com/haoziqaq/varlet/compare/v1.19.0...v1.20.0) (2021-09-15)
+
+
+### Features
+
+* **cli:** support pc component preview ([be463ad](https://github.com/haoziqaq/varlet/commit/be463adf62cb7cb196e555a42c37a7d2b10cac77))
+
+
+
+
+
+# [1.19.0](https://github.com/haoziqaq/varlet/compare/v1.18.1...v1.19.0) (2021-09-13)
+
+**Note:** Version bump only for package @varlet/markdown-loader
+
+
+
+
+
+## [1.18.1](https://github.com/haoziqaq/varlet/compare/v1.18.0...v1.18.1) (2021-09-10)
+
+**Note:** Version bump only for package @varlet/markdown-loader
+
+
+
+
+
+## [1.16.3](https://github.com/haoziqaq/varlet/compare/v1.16.2...v1.16.3) (2021-09-09)
+
+
+### Bug Fixes
+
+* **cli, markdown-loader:** optimize generators, markdown-loader lock highlight version ([9b3e3bb](https://github.com/haoziqaq/varlet/commit/9b3e3bba6e0c67fa53df23718fddfb8e9f09990f))
+* **cli,markdown-loader:** markdown-loader add style option, linter ignore generators ([7ca8844](https://github.com/haoziqaq/varlet/commit/7ca884425eb94df89995ab502a491a26bbefc9d4))
+
+
+
+
+
+## [1.16.1](https://github.com/haoziqaq/varlet/compare/v1.16.0...v1.16.1) (2021-08-31)
+
+
+### Bug Fixes
+
+* **markdown-loader:** fix the bug of parse doc cause by template string ([6e35002](https://github.com/haoziqaq/varlet/commit/6e35002003e3197e0af74c87a4cf778e862405df))
+
+
+
+
+
+# [1.16.0](https://github.com/haoziqaq/varlet/compare/v1.15.0...v1.16.0) (2021-08-30)
+
+**Note:** Version bump only for package @varlet/markdown-loader
+
+
+
+
+
 # [1.9.0](https://github.com/haoziqaq/varlet/compare/v1.8.0...v1.9.0) (2021-07-17)
 
 **Note:** Version bump only for package @varlet/markdown-loader

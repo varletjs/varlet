@@ -23,20 +23,24 @@
   <app-type>{{ pack.readonly }}</app-type>
   <var-uploader readonly v-model="files9" />
 
-  <app-type>{{ pack.validate }}</app-type>
-  <var-uploader :rules="[(v, u) => u.getError(v).length === 0 || pack.validateMessage]" v-model="files10" />
+  <app-type>{{ pack.beforeRemove }}</app-type>
+  <var-uploader v-model="files11" @before-remove="handleBeforeRemove" />
 
   <app-type>{{ pack.style }}</app-type>
   <var-uploader v-model="files6">
     <var-button type="primary">{{ pack.upload }}</var-button>
   </var-uploader>
 
+  <app-type>{{ pack.validate }}</app-type>
+  <var-uploader :rules="[(v, u) => u.getError(v).length === 0 || pack.validateMessage]" v-model="files10" />
+
   <div class="space"></div>
 </template>
 
 <script>
-import Uploader from '..'
-import Button from '../../button'
+import VarUploader from '..'
+import VarButton from '../../button'
+import Dialog from '../../dialog'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { reactive, toRefs } from 'vue'
 import { watchLang } from '@varlet/cli/site/utils'
@@ -45,8 +49,8 @@ import { use, pack } from './locale'
 export default {
   name: 'UploaderExample',
   components: {
-    [Uploader.name]: Uploader,
-    [Button.name]: Button,
+    VarUploader,
+    VarButton,
     AppType,
   },
   setup() {
@@ -92,6 +96,12 @@ export default {
           state: 'error',
         },
       ],
+      files11: [
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        },
+      ],
     })
 
     const handleAfterRead = (file) => console.log(file)
@@ -108,6 +118,15 @@ export default {
 
     const handleBeforeRead = (file) => file.file.size <= 1024 * 10
 
+    const handleBeforeRemove = async () => {
+      const action = await Dialog({
+        title: pack.value.removeTitle,
+        message: pack.value.removeMessage,
+      })
+
+      return action === 'confirm'
+    }
+
     watchLang(use)
 
     return {
@@ -117,6 +136,7 @@ export default {
       handleAfterRead2,
       handleOversize,
       handleBeforeRead,
+      handleBeforeRemove,
     }
   },
 }

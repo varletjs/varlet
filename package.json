@@ -15,7 +15,8 @@
     "bootstrap": "yarn && node scripts/bootstrap.mjs",
     "commit": "git-cz",
     "prepare": "husky install",
-    "publish": "node scripts/publish.mjs && lerna publish"
+    "publish": "node scripts/publish.mjs && lerna publish",
+    "gen": "varlet-cli gen"
   },
   "config": {
     "commitizen": {
@@ -25,16 +26,19 @@
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
     "*.{ts,tsx,js,vue}": "eslint --fix",
-    "*.{vue,css}": "stylelint --fix"
+    "*.{vue,css,less}": "stylelint --fix"
   },
   "eslintConfig": {
     "root": true,
     "ignorePatterns": [
       "packages/varlet-cli/lib/**",
       "packages/varlet-cli/site/**",
+      "packages/varlet-cli/generators/**",
+      "packages/varlet-vscode-extension/dist/**",
       "packages/varlet-ui/es/**",
       "packages/varlet-ui/umd/**",
       "packages/varlet-ui/site/**",
+      "packages/varlet-ui/public/**",
       "packages/varlet-ui/src/*/__tests__/**",
       "packages/varlet-ui/.varlet/**"
     ],
@@ -48,19 +52,23 @@
     ],
     "ignoreFiles": [
       "packages/varlet-cli/lib/**",
+      "packages/varlet-cli/site/**",
+      "packages/varlet-cli/generators/**",
       "packages/varlet-icons/dist/**",
       "packages/varlet-ui/es/**",
       "packages/varlet-ui/umd/**",
       "packages/varlet-ui/site/**",
       "packages/varlet-ui/coverage/**",
-      "packages/varlet-ui/highlight/**"
+      "packages/varlet-ui/highlight/**",
+      "packages/varlet-ui/public/**"
     ]
   },
   "devDependencies": {
+    "surge": "^0.23.0",
     "cz-lerna-changelog": "^2.0.3",
     "execa": "^5.0.0",
     "lerna": "^3.22.1",
     "ora": "^5.4.0",
-    "vue": "^3.1.4"
+    "vue": "3.2.16"
   }
 }

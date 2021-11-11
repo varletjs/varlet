@@ -10,6 +10,10 @@ export function useSteps() {
   const { parentProvider, bindParent } = useParent<StepsProvider, StepProvider>(STEPS_BIND_STEP_KEY)
   const { index } = useAtParentIndex(STEPS_COUNT_STEP_KEY)
 
+  if (!parentProvider || !bindParent || !index) {
+    throw Error('[Varlet] Steps: <step/> must in <steps>')
+  }
+
   return {
     index,
     steps: parentProvider,

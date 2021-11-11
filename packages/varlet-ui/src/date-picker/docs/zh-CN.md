@@ -1,4 +1,4 @@
-# DatePicker 日期选择器
+# 日期选择器
 
 ### 介绍
 
@@ -166,8 +166,8 @@ export default {
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
 | `year` | 自定义标题中的年 | `year: YYYY` |
-| `month` | 自定义标题中的月 | `year: YYYY` `month: MM` |
-| `date` | 自定义标题中的日期 | `year: YYYY` `month: MM` `date: DD` `week: weekIndex` |
+| `month` | 自定义标题中的月 | `year: YYYY` <br> `month: MM` |
+| `date` | 自定义标题中的日期 | `year: YYYY` <br> `month: MM` `date: DD` <br> `week: weekIndex` |
 | `range` | 自定义标题中的范围 | `choose: [startData, endDate]` |
 | `multiple` | 自定义标题中的多选 | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
 

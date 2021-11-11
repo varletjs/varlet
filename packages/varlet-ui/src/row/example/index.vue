@@ -51,8 +51,8 @@
 </template>
 
 <script>
-import Row from '..'
-import Col from '../../col'
+import VarRow from '..'
+import VarCol from '../../col'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { use, pack } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
@@ -60,8 +60,8 @@ import { watchLang } from '@varlet/cli/site/utils'
 export default {
   name: 'RowExample',
   components: {
-    [Row.name]: Row,
-    [Col.name]: Col,
+    VarRow,
+    VarCol,
     AppType,
   },
   setup() {

@@ -217,22 +217,3 @@ test('test input validation', async () => {
 
   wrapper.unmount()
 })
-
-test('test input number value', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
-
-  const wrapper = mount(VarInput, {
-    props: {
-      modelValue: 0,
-      'onUpdate:modelValue': onUpdateModelValue,
-    },
-  })
-
-  wrapper.find('.var-input__input').setValue('1')
-  await wrapper.find('.var-input__input').trigger('input')
-
-  expect(onUpdateModelValue).lastCalledWith(1)
-  expect(wrapper.props('modelValue')).toBe(1)
-
-  wrapper.unmount()
-})

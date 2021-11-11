@@ -1,4 +1,4 @@
-# ImagePreview 图片预览
+# 图片预览
 
 ### 介绍
 
@@ -147,13 +147,13 @@ export default {
 | `loop`       | 是否开启循环播放 | _boolean_ | `true` |
 | `indicator`  | 是否显示分页 | _boolean_ | `true` |
 | `lock-scroll` | 锁定滚动 | _boolean_ | `true` |
-| `teleport`   | 弹出层挂载的位置 | _string_ | `-` |
+| `teleport`   | 弹出层挂载的位置 | _TeleportProps['to']_ | `-` |
 
 ### 事件
 
 | 事件名 | 说明  | 回调参数 |
 | ----- | ---- | ----- |
-| `change` | 切换图片时的回调函数，回调参数为当前索引 | `index: number(图片索引)` |
+| `change` | 切换图片时的回调函数，回调参数为当前索引 | `index: number` 图片索引 |
 | `open`   | 打开image-preview时触发 | `-`  |
 | `opened` | 打开image-preview动画结束时触发 | `-` |
 | `close`  | 关闭image-preview时触发 | `-` |
@@ -163,7 +163,7 @@ export default {
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `indicator` | 分页指示器 | `index: number(图片索引), length: number(图片总数)` |
+| `indicator` | 分页指示器 | `index: number` 图片索引 <br> `length: number` 图片总数 |
 | `close-icon` | 关闭按钮 | `-` |
 
 ### ImagePreview Options

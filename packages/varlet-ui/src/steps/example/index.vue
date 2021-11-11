@@ -25,11 +25,9 @@
 </template>
 
 <script>
-import Steps from '..'
-import Step from '../../step'
-import Select from '../../select'
-import Option from '../../option'
-import Button from '../../button'
+import VarSteps from '..'
+import VarStep from '../../step'
+import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { ref } from 'vue'
 import { pack, use } from './locale'
@@ -38,11 +36,9 @@ import { watchLang } from '@varlet/cli/site/utils'
 export default {
   name: 'StepsExample',
   components: {
-    [Steps.name]: Steps,
-    [Step.name]: Step,
-    [Select.name]: Select,
-    [Option.name]: Option,
-    [Button.name]: Button,
+    VarSteps,
+    VarStep,
+    VarButton,
     AppType,
   },
   setup() {

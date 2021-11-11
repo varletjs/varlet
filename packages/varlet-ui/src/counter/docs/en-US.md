@@ -152,7 +152,7 @@ Other values are converted to text as a user prompt.
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `before-change` | Triggered before the change (lazy-change mode only) | `value: number, change: (value: string \| number) => void` |
+| `before-change` | Triggered before the change (lazy-change mode only) | `value: number` <br> `change: (value: string \| number) => void` |
 | `change` | Triggered on change | `value: number` |
 | `increment` | Triggered on increment | `value: number` |
 | `decrement` | Triggered on decrement | `value: number` |
@@ -171,5 +171,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--counter-input-font-size` | `14px` |
 | `--counter-button-size` | `28px` |
 | `--counter-button-icon-size` | `100%` |
-| `--counter-disabled-color` | `#aaa` |
+| `--counter-disabled-color` | `var(--color-text-disabled)` |
 | `--input-error-color` | `var(--color-danger`) |

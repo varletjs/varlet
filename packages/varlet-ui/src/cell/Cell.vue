@@ -24,12 +24,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { props } from './props'
-import Icon from '../icon'
+import VarIcon from '../icon'
 
 export default defineComponent({
   name: 'VarCell',
   components: {
-    [Icon.name]: Icon,
+    VarIcon,
   },
   props,
 })

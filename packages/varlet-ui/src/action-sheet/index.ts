@@ -1,6 +1,6 @@
 import VarActionSheet from './ActionSheet.vue'
+import type { App, TeleportProps } from 'vue'
 import { nextTick, reactive } from 'vue'
-import type { App } from 'vue'
 import { inBrowser } from '../utils/shared'
 import { mountInstance } from '../utils/components'
 
@@ -25,13 +25,14 @@ interface ActionSheetOptions {
   lockScroll?: boolean
   closeOnClickAction?: boolean
   closeOnClickOverlay?: boolean
-  teleport?: string
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void
   onClosed?: () => void
   onClickOverlay?: () => void
   onSelect?: (action: ActionItem) => void
+  // internal
+  teleport?: TeleportProps['to']
 }
 
 let singletonOptions: ActionSheetOptions | null

@@ -10,7 +10,11 @@
         @change="handleSidebarChange"
       />
 
-      <div class="varlet-site-doc-container" ref="doc">
+      <div
+        class="varlet-site-doc-container"
+        ref="doc"
+        :class="[!useMobile && 'varlet-site-doc-container--pc-only']"
+      >
         <router-view />
       </div>
 
@@ -32,10 +36,8 @@ import AppHeader from './components/AppHeader'
 import AppSidebar from './components/AppSidebar'
 import { defineComponent, nextTick, onMounted, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { get } from 'lodash'
-import { getPCLocationInfo, isPhone, MenuTypes } from '../utils'
-
-type Language = Record<string, string>
+import { get } from 'lodash-es'
+import { getPCLocationInfo, isPhone, MenuTypes, setThemes } from '../utils'
 
 export interface Menu {
   doc: string
@@ -70,7 +72,7 @@ export default defineComponent({
     const init = () => {
       const { language, menuName } = getPCLocationInfo()
 
-      if (isPhone()) {
+      if (isPhone() && useMobile.value) {
         window.location.href = `./mobile.html#/${menuName}?language=${language || defaultLanguage}&platform=mobile`
         return
       }
@@ -78,7 +80,7 @@ export default defineComponent({
       nextTick(() => {
         const children = document
           .querySelector('.varlet-site-sidebar')
-          .getElementsByClassName('var-cell')
+          .getElementsByClassName('var-site-cell')
         const index = menu.value.findIndex((item) => item.doc === menuName)
 
         if (index !== -1) {
@@ -109,10 +111,12 @@ export default defineComponent({
         componentName.value = getComponentNameByMenuName(_menuName)
         menuName.value = _menuName
         language.value = lang
-        document.title = get(config, 'pc.title')[lang]
+        document.title = get(config, 'pc.title')[lang] as string
       },
       { immediate: true }
     )
+
+    setThemes(config)
 
     return {
       menu,
@@ -129,27 +133,24 @@ export default defineComponent({
 
 <style>
 .hljs {
-  background: transparent !important;
+  background: #202020 !important;
   padding: 0 !important;
   border-radius: 4px;
-  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 }
 </style>
 
 <style lang="less">
-@import '~@varlet/ui/es/styles/var';
-@import '~@varlet/ui/es/progress/progress';
-
 @doc-active: {
   display: inline;
-  color: #fff;
-  font-size: 14px;
   font-family: inherit;
-  padding: 3px 10px;
-  border-radius: 25px;
-  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
-  0 1px 3px 0 rgba(0, 0, 0, 0.12);
-  white-space: nowrap;
+  padding: 0 4px;
+  white-space: pre-wrap;
+}
+
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  background: transparent;
 }
 
 body {
@@ -173,10 +174,9 @@ iframe {
     align-items: center;
     margin: 20px 4px 20px;
     padding: 40px;
-    border-top: 8px solid #1d92e9;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    border-top: 6px solid var(--site-config-color-primary);
+    border-radius: 2px;
+    box-shadow: 0 0 20px 6px #eee;
 
     &__image {
       width: 180px;
@@ -188,17 +188,23 @@ iframe {
     }
 
     &__des {
-      color: #888;
+      color: #555;
       font-size: 14px;
       margin-top: 10px;
+      -webkit-font-smoothing: antialiased;
     }
+  }
+
+  &-component-preview {
+    margin-top: 20px;
   }
 
   &-site {
     &-content {
-      height: calc(100vh - 60px);
       display: flex;
       background: #fff;
+      margin-top: 60px;
+      margin-left: 220px;
     }
 
     &-doc-container {
@@ -211,15 +217,23 @@ iframe {
       &::-webkit-scrollbar {
         display: none;
       }
+
+      &--pc-only {
+        padding: 0 90px 0 30px;
+      }
     }
 
     &-doc {
       a {
-        margin: 0 4px;
-        background: @color-success;
+        color: var(--site-config-color-link);
         -webkit-font-smoothing: antialiased;
         word-break: keep-all;
-        @doc-active()
+        font-size: 15px;
+        @doc-active();
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
 
       h1,
@@ -228,13 +242,13 @@ iframe {
       h4,
       h5,
       h6 {
-        color: #323233;
+        position: relative;
+        color: #333;
         font-weight: normal;
         line-height: 1.5;
       }
 
       h1 {
-        //margin: 0 0 30px;
         line-height: 40px;
         font-size: 30px;
         cursor: default;
@@ -252,11 +266,11 @@ iframe {
 
       p,
       ul {
-        color: #888;
+        -webkit-font-smoothing: antialiased;
+        color: #555;
         font-size: 15px;
         line-height: 26px;
         padding: 16px;
-        border-left: 4px solid #1d92e9;
         border-radius: 4px;
         background: #fff;
         box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
@@ -272,13 +286,12 @@ iframe {
         display: block;
         padding: 16px;
         overflow-x: auto;
-        color: #58727e;
         font-size: 13px;
         font-family: Consolas, Monaco, monospace;
         line-height: 26px;
         white-space: pre-wrap;
         word-wrap: break-word;
-        background-color: #fff;
+        color: #fff;
       }
 
       p code,
@@ -286,49 +299,49 @@ iframe {
       table code {
         -webkit-font-smoothing: antialiased;
         word-break: keep-all;
-        background: #1d92e9;
-        margin: 0 4px;
+        color: var(--site-config-color-primary);
+        font-size: 15px;
         @doc-active();
       }
 
       table {
+        -webkit-font-smoothing: antialiased;
         width: 100%;
         margin-top: 12px;
-        color: #34495e;
+        color: #333;
         font-size: 14px;
         line-height: 28px;
         border-collapse: collapse;
+        border-radius: 4px;
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 
         th {
-          padding: 8px 10px;
-          font-weight: 600;
+          padding: 8px 16px;
+          font-weight: 500;
           text-align: left;
-
-          &:first-child {
-            padding-left: 0;
-          }
+          color: #555;
+          font-size: 13px;
+          -webkit-font-smoothing: antialiased;
         }
 
         td {
-          padding: 8px;
-          border-top: 1px solid #f1f4f8;
+          padding: 8px 16px;
+          border-top: 1px solid #eee;
+          color: #555;
+          font-family: Consolas, Monaco, monospace;
 
           code {
-            white-space: nowrap;
-          }
-
-          &:first-child {
-            padding-left: 0;
-
-            code {
-              margin: 0;
-            }
+            white-space: pre-wrap;
+            padding: 0;
+            font-size: 13px;
           }
         }
 
         em {
-          background: @color-success;
+          color: var(--site-config-color-type);
           font-style: normal;
+          -webkit-font-smoothing: antialiased;
+          font-size: 13px;
           @doc-active();
         }
       }

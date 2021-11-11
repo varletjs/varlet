@@ -47,9 +47,9 @@
 </template>
 
 <script lang="ts">
-import Icon from '../icon'
+import VarIcon from '../icon'
+import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
-import FormDetails from '../form-details'
 import { defineComponent, ref, computed, watch, nextTick } from 'vue'
 import { props } from './props'
 import { useValidation } from '../utils/components'
@@ -63,8 +63,8 @@ export default defineComponent({
   name: 'VarCheckbox',
   directives: { Ripple },
   components: {
-    [Icon.name]: Icon,
-    [FormDetails.name]: FormDetails,
+    VarIcon,
+    VarFormDetails,
   },
   props,
   setup(props) {

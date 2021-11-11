@@ -1,8 +1,8 @@
 import VarImagePreview from './ImagePreview.vue'
 import { nextTick, reactive } from 'vue'
-import type { App } from 'vue'
 import { inBrowser, isArray, isString } from '../utils/shared'
 import { mountInstance } from '../utils/components'
+import type { App, TeleportProps } from 'vue'
 
 interface ImagePreviewOptions {
   show?: boolean
@@ -12,12 +12,13 @@ interface ImagePreviewOptions {
   lockScroll?: boolean
   indicator?: boolean
   closeable?: boolean
-  teleport?: string
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void
   onClosed?: () => void
   onChange?: (index: number) => void
+  // internal
+  teleport?: TeleportProps['to']
 }
 
 let singletonOptions: ImagePreviewOptions | null

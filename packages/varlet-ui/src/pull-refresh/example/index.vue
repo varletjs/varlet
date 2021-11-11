@@ -6,8 +6,8 @@
 
 <script>
 import { onMounted, ref, onBeforeUnmount } from 'vue'
-import PullRefresh from '..'
-import Cell from '../../cell'
+import VarPullRefresh from '..'
+import VarCell from '../../cell'
 
 const data1 = Array(10).fill('List Item')
 const data2 = Array(10).fill('This is new List Item')
@@ -15,8 +15,8 @@ const data2 = Array(10).fill('This is new List Item')
 export default {
   name: 'PullRefreshExample',
   components: {
-    [PullRefresh.name]: PullRefresh,
-    [Cell.name]: Cell,
+    VarPullRefresh,
+    VarCell,
   },
   setup() {
     const isRefresh = ref(false)

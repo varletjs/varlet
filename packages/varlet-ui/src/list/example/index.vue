@@ -1,5 +1,5 @@
 <template>
-  <var-tabs v-model:active="current" sticky offset-top="50px" style="margin-bottom: 10px">
+  <var-tabs v-model:active="current" sticky offset-top="54px" style="margin-bottom: 10px">
     <var-tab>{{ pack.basicUsage }}</var-tab>
     <var-tab>{{ pack.loadFail }}</var-tab>
     <var-tab>{{ pack.tipText }}</var-tab>
@@ -32,12 +32,12 @@
 </template>
 
 <script>
-import List from '..'
-import Cell from '../../cell'
-import Tabs from '../../tabs'
-import Tab from '../../tab'
-import TabsItems from '../../tabs-items'
-import TabItem from '../../tab-item'
+import VarList from '..'
+import VarCell from '../../cell'
+import VarTabs from '../../tabs'
+import VarTab from '../../tab'
+import VarTabsItems from '../../tabs-items'
+import VarTabItem from '../../tab-item'
 import { reactive, toRefs } from 'vue'
 import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
@@ -45,12 +45,12 @@ import { use, pack } from './locale'
 export default {
   name: 'ListExample',
   components: {
-    [List.name]: List,
-    [Cell.name]: Cell,
-    [Tabs.name]: Tabs,
-    [Tab.name]: Tab,
-    [TabsItems.name]: TabsItems,
-    [TabItem.name]: TabItem,
+    VarList,
+    VarCell,
+    VarTabs,
+    VarTab,
+    VarTabsItems,
+    VarTabItem,
   },
   setup() {
     const values = reactive({

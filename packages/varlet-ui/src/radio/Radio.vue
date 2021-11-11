@@ -46,9 +46,9 @@
 </template>
 
 <script lang="ts">
+import VarIcon from '../icon'
+import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
-import Icon from '../icon'
-import FormDetails from '../form-details'
 import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import { props } from './props'
 import { useValidation } from '../utils/components'
@@ -62,8 +62,8 @@ export default defineComponent({
   name: 'VarRadio',
   directives: { Ripple },
   components: {
-    [Icon.name]: Icon,
-    [FormDetails.name]: FormDetails,
+    VarIcon,
+    VarFormDetails,
   },
   inheritAttrs: false,
   props,

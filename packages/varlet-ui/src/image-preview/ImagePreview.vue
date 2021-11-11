@@ -69,10 +69,10 @@
 </template>
 
 <script lang="ts">
-import Swipe from '../swipe'
-import SwipeItem from '../swipe-item'
-import Icon from '../icon'
-import Popup from '../popup'
+import VarSwipe from '../swipe'
+import VarSwipeItem from '../swipe-item'
+import VarIcon from '../icon'
+import VarPopup from '../popup'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
 import { toNumber } from '../utils/shared'
@@ -92,10 +92,10 @@ const ANIMATION_DURATION = 200
 export default defineComponent({
   name: 'VarImagePreview',
   components: {
-    [Swipe.name]: Swipe,
-    [SwipeItem.name]: SwipeItem,
-    [Popup.name]: Popup,
-    [Icon.name]: Icon,
+    VarSwipe,
+    VarSwipeItem,
+    VarPopup,
+    VarIcon,
   },
   inheritAttrs: false,
   props,
@@ -109,8 +109,8 @@ export default defineComponent({
     const scale: Ref<number> = ref(1)
     const translateX: Ref<number> = ref(0)
     const translateY: Ref<number> = ref(0)
-    const transitionTimingFunction: Ref<string | null> = ref(null)
-    const transitionDuration: Ref<string | null> = ref(null)
+    const transitionTimingFunction: Ref<string | undefined> = ref(undefined)
+    const transitionDuration: Ref<string | undefined> = ref(undefined)
     const canSwipe: Ref<boolean> = ref(true)
     let startTouch: VarTouch | null = null
     let prevTouch: VarTouch | null = null
@@ -147,8 +147,8 @@ export default defineComponent({
       translateY.value = 0
       canSwipe.value = true
       prevTouch = null
-      transitionTimingFunction.value = null
-      transitionDuration.value = null
+      transitionTimingFunction.value = undefined
+      transitionDuration.value = undefined
     }
 
     const isDoubleTouch = (currentTouch: VarTouch) => {

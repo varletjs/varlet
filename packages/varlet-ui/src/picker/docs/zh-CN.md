@@ -14,7 +14,6 @@ createApp().use(Picker)
 ### 局部引入
 
 ```js
-
 import { Picker } from '@varlet/ui'
 
 export default {
@@ -198,9 +197,9 @@ export default {
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `change` | 选择内容变化时触发 | `texts: Texts(选择的内容数组)，indexes: number[](选择的下标数组)` |
-| `cancel` | 点击取消按钮时触发 | `texts: Texts(选择的内容数组)，indexes: number[](选择的下标数组)` |
-| `confirm` | 点击确认按钮时触发 | `texts: Texts(选择的内容数组)，indexes: number[](选择的下标数组)` |
+| `change` | 选择内容变化时触发 | `texts: Texts` 选择的内容数组 <br> `indexes: number[]` 选择的下标数组 |
+| `cancel` | 点击取消按钮时触发 | `texts: Texts` 选择的内容数组 <br> `indexes: number[]` 选择的下标数组 |
+| `confirm` | 点击确认按钮时触发 | `texts: Texts` 选择的内容数组 <br> `indexes: number[]` 选择的下标数组 |
 
 ### 插槽
 

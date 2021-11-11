@@ -1,7 +1,8 @@
 module.exports = {
-  host: '0.0.0.0',
-  port: 8080,
   useMobile: true,
+  analysis: {
+    baidu: 'https://hm.baidu.com/hm.js?5c628ce58967c90ff4dd9c8803d930fa',
+  },
   pc: {
     menu: [
       {
@@ -61,10 +62,18 @@ module.exports = {
       },
       {
         text: {
-          'zh-CN': '开发指南',
-          'en-US': 'Developer Guide',
+          'zh-CN': '组件库快速成型工具',
+          'en-US': 'Components Library Tools',
         },
-        doc: 'developerGuide',
+        doc: 'cli',
+        type: 3,
+      },
+      {
+        text: {
+          'zh-CN': '开源指南',
+          'en-US': 'Open Source Guide',
+        },
+        doc: 'openSourceGuide',
         type: 3,
       },
       {
@@ -243,6 +252,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Table 表格',
+          'en-US': 'Table',
+        },
+        doc: 'table',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '导航组件',
           'en-US': 'Navigation Components',
         },
@@ -340,6 +357,14 @@ module.exports = {
           'en-US': 'Popup',
         },
         doc: 'popup',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'Pagination 分页',
+          'en-US': 'Pagination',
+        },
+        doc: 'pagination',
         type: 2,
       },
       {
@@ -478,5 +503,8 @@ module.exports = {
         type: 2,
       },
     ],
+  },
+  highlight: {
+    style: './highlight.css',
   },
 }

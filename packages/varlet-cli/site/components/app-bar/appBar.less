@@ -1,0 +1,55 @@
+@site-app-bar-color: var(--site-color-primary);
+@site-app-bar-height: 54px;
+@site-app-bar-text-color: #fff;
+@site-app-bar-title-padding: 0 12px;
+@site-app-bar-left-gap: 6px;
+@site-app-bar-right-gap: 6px;
+
+:root {
+  --site-app-bar-color: @site-app-bar-color;
+  --site-app-bar-title-padding: @site-app-bar-title-padding;
+  --site-app-bar-text-color: #fff;
+  --site-app-bar-height: @site-app-bar-height;
+  --site-app-bar-left-gap: @site-app-bar-left-gap;
+  --site-app-bar-right-gap: @site-app-bar-right-gap;
+}
+
+.var-site-app-bar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--site-app-bar-height);
+  background: var(--site-app-bar-color);
+  color: var(--site-app-bar-text-color);
+
+  &__title {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: var(--site-app-bar-title-padding);
+  }
+
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    z-index: 2;
+  }
+
+  &__left {
+    position: absolute;
+    top: 0;
+    left: var(--site-app-bar-left-gap);
+  }
+
+  &__right {
+    position: absolute;
+    top: 0;
+    right: var(--site-app-bar-right-gap);
+  }
+}

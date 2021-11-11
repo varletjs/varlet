@@ -5,7 +5,7 @@ export interface VarFile {
   name?: string
   url?: string
   cover?: string
-  fit?: string
+  fit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
   state?: 'loading' | 'success' | 'error'
 }
 
@@ -14,7 +14,7 @@ export type UploaderValidateTriggers = 'onChange' | 'onRemove'
 interface UploaderProps {
   modelValue?: VarFile[]
   accept?: string
-  capture?: string
+  capture?: boolean | 'user' | 'environment'
   multiple?: boolean
   readonly?: boolean
   disabled?: boolean

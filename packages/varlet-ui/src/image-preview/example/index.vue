@@ -27,7 +27,7 @@
 
 <script>
 import ImagePreview from '../index'
-import Button from '../../button'
+import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Snackbar from '../../snackbar'
 import { defineComponent, onUnmounted, ref } from 'vue'
@@ -38,9 +38,9 @@ import context from '../../context'
 export default defineComponent({
   name: 'ImagePreviewExample',
   components: {
-    [ImagePreview.Component.name]: ImagePreview.Component,
-    [Button.name]: Button,
-    [AppType.name]: AppType,
+    VarImagePreview: ImagePreview.Component,
+    VarButton,
+    AppType,
   },
   setup() {
     const images = ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg']

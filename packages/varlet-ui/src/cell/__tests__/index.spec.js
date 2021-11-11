@@ -6,8 +6,8 @@ import { createApp } from 'vue'
 
 test('test cell example', () => {
   const wrapper = mount(example)
-
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test cell plugin', () => {
@@ -31,7 +31,12 @@ test('test cell props', async () => {
       extra: () => 'text'
     }
   })
-
-
+  expect(wrapper.find('.var-icon').exists()).toBe(true)
+  expect(wrapper.find('.var-icon').classes('var-icon-fire')).toBe(true)
+  expect(wrapper.classes('var-cell--border')).toBe(true)
+  expect(wrapper.find('.var-cell__title').text()).toBe('This is Cell')
+  expect(wrapper.find('.var-cell__desc').text()).toBe('This is desc')
+  expect(wrapper.find('.test-extra-class').text()).toBe('text')
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })

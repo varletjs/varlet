@@ -5,6 +5,7 @@ import { IndexAnchorProvider } from '../index-anchor/provide'
 export interface IndexBarProvider {
   active: Ref<number | string | undefined>
   sticky: ComputedRef<boolean>
+  cssMode: ComputedRef<boolean>
   stickyOffsetTop: ComputedRef<number>
   zIndex: ComputedRef<number | string>
 }

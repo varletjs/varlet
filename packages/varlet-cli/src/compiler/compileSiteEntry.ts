@@ -1,23 +1,19 @@
 import slash from 'slash'
-import chokidar from 'chokidar'
 import {
   DOCS_DIR_NAME,
   EXAMPLE_DIR_INDEX,
   EXAMPLE_DIR_NAME,
   ROOT_DOCS_DIR,
-  SITE_DOCS_GLOB,
-  SITE_EXAMPLE_GLOB,
+  SITE,
+  SITE_DIR,
   SITE_MOBILE_ROUTES,
   SITE_PC_ROUTES,
   SRC_DIR,
-  VARLET_CONFIG,
 } from '../shared/constant'
-import { pathExistsSync, readdir, readdirSync } from 'fs-extra'
+import { copy, pathExistsSync, readdir, readdirSync } from 'fs-extra'
 import { resolve } from 'path'
 import { isMD, outputFileSyncOnChange } from '../shared/fsUtils'
 import { getVarletConfig } from '../config/varlet.config'
-import type { Compiler } from 'webpack'
-import type { FSWatcher } from 'chokidar'
 
 const EXAMPLE_COMPONENT_NAME_RE = /\/([-\w]+)\/example\/index.vue/
 const COMPONENT_DOCS_RE = /\/([-\w]+)\/docs\/([-\w]+)\.md/
@@ -137,22 +133,11 @@ export async function buildPcSiteRoutes() {
   outputFileSyncOnChange(SITE_PC_ROUTES, source)
 }
 
-export async function buildSiteEntry() {
-  getVarletConfig()
-  await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes()])
+export async function buildSiteSource() {
+  return copy(SITE, SITE_DIR)
 }
 
-const PLUGIN_NAME = 'VarletSitePlugin'
-
-export class VarletSitePlugin {
-  apply(compiler: Compiler) {
-    if (process.env.NODE_ENV === 'production') {
-      compiler.hooks.beforeCompile.tapPromise(PLUGIN_NAME, buildSiteEntry)
-    } else {
-      const watcher: FSWatcher = chokidar.watch([SITE_EXAMPLE_GLOB, SITE_DOCS_GLOB, VARLET_CONFIG])
-      watcher.on('add', buildSiteEntry).on('unlink', buildSiteEntry).on('change', buildSiteEntry)
-
-      compiler.hooks.watchRun.tapPromise(PLUGIN_NAME, buildSiteEntry)
-    }
-  }
+export async function buildSiteEntry() {
+  getVarletConfig()
+  await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes(), buildSiteSource()])
 }

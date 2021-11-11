@@ -4,12 +4,15 @@ export type ValidateTriggers = 'onChange'
 
 export const props = {
   modelValue: {
+    type: [String, Number, Boolean, Object, Array] as PropType<any>,
     default: false,
   },
   checkedValue: {
+    type: [String, Number, Boolean, Object, Array] as PropType<any>,
     default: true,
   },
   uncheckedValue: {
+    type: [String, Number, Boolean, Object, Array] as PropType<any>,
     default: false,
   },
   disabled: {

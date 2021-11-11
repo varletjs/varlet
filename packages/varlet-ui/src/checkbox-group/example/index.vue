@@ -49,11 +49,10 @@
 </template>
 
 <script>
-import CheckboxGroup from '..'
-import Checkbox from '../../checkbox'
-import Icon from '../../icon'
-import Button from '../../button'
-import Row from '../../row'
+import VarCheckboxGroup from '..'
+import VarCheckbox from '../../checkbox'
+import VarIcon from '../../icon'
+import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { reactive, toRefs } from 'vue'
 import { watchLang } from '@varlet/cli/site/utils'
@@ -62,11 +61,10 @@ import { use, pack } from './locale'
 export default {
   name: 'CheckboxGroupExample',
   components: {
-    [CheckboxGroup.name]: CheckboxGroup,
-    [Checkbox.name]: Checkbox,
-    [Icon.name]: Icon,
-    [Button.name]: Button,
-    [Row.name]: Row,
+    VarCheckboxGroup,
+    VarCheckbox,
+    VarIcon,
+    VarButton,
     AppType,
   },
   setup() {

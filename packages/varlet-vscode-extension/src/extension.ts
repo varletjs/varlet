@@ -2,8 +2,10 @@ import * as vscode from 'vscode'
 import siteMap from './siteMap'
 
 const DOC = 'https://varlet.gitee.io/varlet-ui/#/zh-CN'
-const LINK_RE = /(?<=<var-)([\w-]+)(?=[^>]*\/?>)/g
-const BIG_CAMELIZE_RE = /(?<=<Var)([\w-]+)(?=[^>]*\/?>)/g
+const EN_DOC = 'https://varlet.gitee.io/varlet-ui/#/en-US'
+
+const LINK_RE = /(?<=<var-)([\w-]+)/g
+const BIG_CAMELIZE_RE = /(?<=<Var)([\w-]+)/g
 
 function parseToLink(str: string) {
   str = str.replace(str.charAt(0), str.charAt(0).toLowerCase())
@@ -27,7 +29,11 @@ function provideHover(document: vscode.TextDocument, position: vscode.Position) 
   if (components.length) {
     const contents = components
       .filter((component) => siteMap[component])
-      .map((component) => `[查看${bigCamelize(component)}组件Varlet官方文档](${DOC}${siteMap[component]})`)
+      .map((component) => {
+        return `\
+[Varlet -> 查看${bigCamelize(component)}组件官方文档](${DOC}${siteMap[component]})\n
+[Varlet -> Watch ${bigCamelize(component)} component documentation](${EN_DOC}${siteMap[component]})`
+      })
     return new vscode.Hover(contents)
   }
 }

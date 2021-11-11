@@ -1,10 +1,11 @@
 import hash from 'hash-sum'
-import { readFile, remove, writeFileSync } from 'fs-extra'
+import { readFile, writeFileSync } from 'fs-extra'
 import { parse, compileTemplate, compileStyle } from '@vue/compiler-sfc'
 import { replaceExt } from '../shared/fsUtils'
 import { compileScript } from './compileScript'
 import { clearEmptyLine, compileLess, extractStyleDependencies, STYLE_IMPORT_RE } from './compileStyle'
 import type { SFCStyleBlock } from '@vue/compiler-sfc'
+import logger from '../shared/logger'
 
 const NORMAL_EXPORT_START_RE = /export\s+default\s+{/
 const DEFINE_EXPORT_START_RE = /export\s+default\s+defineComponent\s*\(\s*{/
@@ -32,7 +33,14 @@ export function injectRender(script: string, render: string): string {
 export async function compileSFC(sfc: string) {
   const sources: string = await readFile(sfc, 'utf-8')
   const { descriptor } = parse(sources, { sourceMap: false })
-  const { script, template, styles } = descriptor
+  const { script, scriptSetup, template, styles } = descriptor
+  if (scriptSetup) {
+    logger.warning(
+      `\n Varlet Cli does not support compiling script setup syntax\
+       \n  The error in ${sfc}`
+    )
+    return
+  }
   // scoped
   const hasScope = styles.some((style) => style.scoped)
   const id = hash(sources)
@@ -60,7 +68,7 @@ export async function compileSFC(sfc: string) {
     // style
     for (let index = 0; index < styles.length; index++) {
       const style: SFCStyleBlock = styles[index]
-      const file = replaceExt(sfc, `Sfc${index === 0 ? '' : index}.${style.lang}`)
+      const file = replaceExt(sfc, `Sfc${index || ''}.${style.lang || 'css'}`)
       let { code } = compileStyle({
         source: style.content,
         filename: file,
@@ -71,7 +79,5 @@ export async function compileSFC(sfc: string) {
       writeFileSync(file, clearEmptyLine(code), 'utf-8')
       style.lang === 'less' && (await compileLess(file))
     }
-
-    await remove(sfc)
   }
 }

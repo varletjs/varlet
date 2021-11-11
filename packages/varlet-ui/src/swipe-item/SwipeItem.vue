@@ -2,8 +2,8 @@
   <div
     class="var-swipe-item"
     :style="{
-      width: !vertical ? `${size}px` : null,
-      height: vertical ? `${size}px` : null,
+      width: !vertical ? `${size}px` : undefined,
+      height: vertical ? `${size}px` : undefined,
       transform: `translate${vertical ? 'Y' : 'X'}(${translate}px)`,
     }"
   >

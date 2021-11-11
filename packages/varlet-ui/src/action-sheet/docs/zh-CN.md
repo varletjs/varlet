@@ -399,7 +399,7 @@ export default {
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
 | `close-on-click-action` | 是否点击选项时关闭动作面板 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭动作面板 | _boolean_ | `true` | 
-| `teleport` | 动作面板挂载的位置 | _string_ | `-` |
+| `teleport` | 动作面板挂载的位置 | _TeleportProps['to']_ | `-` |
 
 ### 事件
 
@@ -461,6 +461,6 @@ export default {
 | `--action-sheet-action-item-height` | `48px` |
 | `--action-sheet-action-item-padding` | `0px 18px` |
 | `--action-sheet-action-item-color` | `#333` |
-| `--action-sheet-action-item-disabled-color` | `var(--color-disabled)` |
+| `--action-sheet-action-item-disabled-color` | `var(--color-text-disabled)` |
 | `--action-sheet-icon-margin` | `0 0 20px 0` |
 | `--action-sheet-icon-size` | `24px` |

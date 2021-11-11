@@ -56,9 +56,9 @@
 
 <script>
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Badge from '..'
-import Button from '../../button'
-import Chip from '../../chip'
+import VarBadge from '..'
+import VarButton from '../../button'
+import VarChip from '../../chip'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
@@ -66,9 +66,9 @@ import { watchLang } from '@varlet/cli/site/utils'
 export default {
   name: 'BadgeExample',
   components: {
-    [Badge.name]: Badge,
-    [Button.name]: Button,
-    [Chip.name]: Chip,
+    VarBadge,
+    VarButton,
+    VarChip,
     AppType,
   },
   setup() {

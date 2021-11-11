@@ -3,8 +3,8 @@ import { VarComponent } from './varComponent'
 export type InputValidateTriggers = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
 
 export interface InputProps {
-  modelValue?: string | number
-  type?: 'text' | 'password'
+  modelValue?: string
+  type?: 'text' | 'password' | 'number'
   textarea?: boolean
   rows?: string | number
   placeholder?: string
@@ -18,14 +18,14 @@ export interface InputProps {
   clearable?: boolean
   resize?: boolean
   validateTrigger?: InputValidateTriggers[]
-  rules?: Array<(v: string | number) => any>
+  rules?: Array<(v: string) => any>
   onFocus?: (e: Event) => void
   onBlur?: (e: Event) => void
   onClick?: (e: Event) => void
-  onClear?: (value: string | number) => void
-  onInput?: (value: string | number, e: Event) => void
-  onChange?: (value: string | number, e: Event) => void
-  'onUpdate:modelValue'?: (value: string | number) => void
+  onClear?: (value: string) => void
+  onInput?: (value: string, e: Event) => void
+  onChange?: (value: string, e: Event) => void
+  'onUpdate:modelValue'?: (value: string) => void
 }
 
 export class Input extends VarComponent {

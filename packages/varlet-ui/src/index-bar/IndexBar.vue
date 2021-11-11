@@ -1,7 +1,10 @@
 <template>
   <div class="var-index-bar" ref="barEl">
     <slot />
-    <ul class="var-index-bar__anchor-list" :style="{ zIndex: zIndex + 2, display: hideList ? 'none' : 'block' }">
+    <ul
+      class="var-index-bar__anchor-list"
+      :style="{ zIndex: toNumber(zIndex) + 2, display: hideList ? 'none' : 'block' }"
+    >
       <li
         v-for="anchorName in anchorNameList"
         :key="anchorName"
@@ -46,12 +49,14 @@ export default defineComponent({
     const active: Ref<number | string | undefined> = ref()
 
     const sticky: ComputedRef<boolean> = computed(() => props.sticky)
+    const cssMode: ComputedRef<boolean> = computed(() => props.cssMode)
     const stickyOffsetTop: ComputedRef<number> = computed(() => props.stickyOffsetTop)
     const zIndex: ComputedRef<number | string> = computed(() => props.zIndex)
 
     const indexBarProvider: IndexBarProvider = {
       active,
       sticky,
+      cssMode,
       stickyOffsetTop,
       zIndex,
     }
@@ -68,14 +73,20 @@ export default defineComponent({
 
     const handleScroll = () => {
       const { scrollTop, scrollHeight } = scrollEl.value as HTMLElement
+      const { offsetTop } = barEl.value as HTMLElement
       indexAnchors.forEach((anchor: IndexAnchorProvider, index: number) => {
         const anchorTop = anchor.ownTop.value
-        const top = scrollTop - anchorTop + stickyOffsetTop.value
+        const top = scrollTop - anchorTop + stickyOffsetTop.value - offsetTop
 
         const distance =
           index === indexAnchors.length - 1 ? scrollHeight : indexAnchors[index + 1].ownTop.value - anchor.ownTop.value
 
         if (top >= 0 && top < distance && !clickedName.value) {
+          if (index && !props.cssMode) {
+            indexAnchors[index - 1].setDisabled(true)
+          }
+
+          anchor.setDisabled(false)
           emitEvent(anchor)
         }
       })
@@ -137,6 +148,7 @@ export default defineComponent({
       active,
       zIndex,
       anchorNameList,
+      toNumber,
       scrollTo,
       anchorClick,
     }

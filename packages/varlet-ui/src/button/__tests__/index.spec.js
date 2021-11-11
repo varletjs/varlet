@@ -54,8 +54,10 @@ test('test button disabled', () => {
 
   wrapper.trigger('click')
   wrapper.trigger('touchstart')
+  expect(wrapper.classes()).toContain('var-button--disabled')
   expect(onClick).toHaveBeenCalledTimes(0)
   expect(onTouchstart).toHaveBeenCalledTimes(0)
+  expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
 
@@ -71,8 +73,10 @@ test('test button loading', () => {
 
   wrapper.trigger('click')
   wrapper.trigger('touchstart')
+  expect(wrapper.find('.var-loading').exists()).toBeTruthy()
   expect(onClick).toHaveBeenCalledTimes(0)
   expect(onTouchstart).toHaveBeenCalledTimes(0)
+  expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
 
@@ -83,7 +87,8 @@ test('test button color & textColor', () => {
       textColor: '#000',
     },
   })
-
+  expect(wrapper.attributes('style')).toMatch('color: rgb(0, 0, 0)')
+  expect(wrapper.attributes('style')).toMatch('background: rgb(0, 0, 0)')
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
@@ -99,8 +104,13 @@ test('test button styles', () => {
     slots: {
       default: () => 'button text',
     },
-  })
 
+  })
+  expect(wrapper.classes()).toContain('var-button--round')
+  expect(wrapper.classes()).toContain('var-button--text')
+  expect(wrapper.classes()).toContain('var-button--block')
+  expect(wrapper.classes()).toContain('var-button--large')
+  expect(wrapper.text()).toBe('button text')
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })

@@ -1,0 +1,25 @@
+@import '@varlet/icons/dist/css/varlet-icons.less';
+
+@site-icon-size: 20px;
+
+:root {
+  --site-icon-size: @site-icon-size;
+}
+
+.var-site-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--site-icon-size);
+  color: inherit;
+
+  &--shrinking {
+    transform: scale(0);
+  }
+
+  &__image {
+    width: var(--site-icon-size);
+    height: var(--site-icon-size);
+    object-fit: cover;
+  }
+}

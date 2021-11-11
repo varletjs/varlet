@@ -17,17 +17,15 @@
 </template>
 
 <script lang="ts">
+import VarIcon from '../icon'
 import { computed, defineComponent } from 'vue'
 import { props } from './props'
-import Icon from '../icon'
 import { toNumber } from '../utils/shared'
 import type { ComputedRef } from 'vue'
 
 export default defineComponent({
   name: 'VarBadge',
-  components: {
-    [Icon.name]: Icon,
-  },
+  components: { VarIcon },
   inheritAttrs: false,
   props,
   setup(props, { slots }) {

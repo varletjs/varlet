@@ -57,7 +57,7 @@
 
 <script>
 import Snackbar from '../index'
-import Button from '../../button'
+import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { onUnmounted, reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
@@ -67,8 +67,8 @@ import context from '../../context'
 export default {
   name: 'SnackbarExample',
   components: {
-    [Snackbar.Component.name]: Snackbar.Component,
-    [Button.name]: Button,
+    VarSnackbar: Snackbar.Component,
+    VarButton,
     AppType,
   },
   setup() {

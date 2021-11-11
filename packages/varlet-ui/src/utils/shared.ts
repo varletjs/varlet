@@ -32,9 +32,21 @@ export const toNumber = (val: number | string | boolean | undefined | null): num
   return val
 }
 
-export const isHTMLSupportImage = (val: string) => val.startsWith('data:image') || /\.(png|jpg|gif|jpeg|svg)$/.test(val)
+export const isHTMLSupportImage = (val: string | undefined | null) => {
+  if (val == null) {
+    return false
+  }
 
-export const isHTMLSupportVideo = (val: string) => val.startsWith('data:video') || /\.(mp4|webm|ogg)$/.test(val)
+  return val.startsWith('data:image') || /\.(png|jpg|gif|jpeg|svg)$/.test(val)
+}
+
+export const isHTMLSupportVideo = (val: string | undefined | null) => {
+  if (val == null) {
+    return false
+  }
+
+  return val.startsWith('data:video') || /\.(mp4|webm|ogg)$/.test(val)
+}
 
 export const isString = (val: unknown): val is string => typeof val === 'string'
 
@@ -47,7 +59,13 @@ export const isPlainObject = (val: unknown): val is Record<string, any> =>
 
 export const isArray = (val: unknown): val is Array<any> => Array.isArray(val)
 
-export const isURL = (val: string) => /^(http)|(\.*\/)/.test(val)
+export const isURL = (val: string | undefined | null) => {
+  if (!val) {
+    return false
+  }
+
+  return /^(http)|(\.*\/)/.test(val)
+}
 
 export const isEmpty = (val: unknown) =>
   val === undefined || val === null || val === '' || (Array.isArray(val) && !val.length)
@@ -63,10 +81,11 @@ export const removeItem = (arr: Array<unknown>, item: unknown) => {
 
 export const throttle = (method: any, mustRunDelay = 200): (() => void) => {
   let timer: number
-  let start: number
+  let start = 0
 
   return function loop(this: unknown, ...args) {
     const now = Date.now()
+    const elapsed = now - start
 
     if (!start) {
       start = now
@@ -76,13 +95,13 @@ export const throttle = (method: any, mustRunDelay = 200): (() => void) => {
       window.clearTimeout(timer)
     }
 
-    if (now - start >= mustRunDelay) {
+    if (elapsed >= mustRunDelay) {
       method.apply(this, args)
       start = now
     } else {
       timer = window.setTimeout(() => {
         loop.apply(this, args)
-      }, 50)
+      }, mustRunDelay - elapsed)
     }
   }
 }

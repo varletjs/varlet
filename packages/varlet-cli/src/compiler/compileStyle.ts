@@ -1,26 +1,13 @@
 import { readFileSync, writeFileSync } from 'fs-extra'
-import { render, FileManager } from 'less'
+import { render } from 'less'
 import { replaceExt, smartAppendFileSync } from '../shared/fsUtils'
 import { parse, resolve } from 'path'
 
 export const EMPTY_SPACE_RE = /[\s]+/g
 export const EMPTY_LINE_RE = /[\n\r]*/g
-export const IMPORT_CSS_RE = /(?<!['"`])import\s+['"](.+\.css)['"]\s*;?(?!\s*['"`])/g
-export const IMPORT_LESS_RE = /(?<!['"`])import\s+['"](.+\.less)['"]\s*;?(?!\s*['"`])/g
+export const IMPORT_CSS_RE = /(?<!['"`])import\s+['"](\.{1,2}\/.+\.css)['"]\s*;?(?!\s*['"`])/g
+export const IMPORT_LESS_RE = /(?<!['"`])import\s+['"](\.{1,2}\/.+\.less)['"]\s*;?(?!\s*['"`])/g
 export const STYLE_IMPORT_RE = /@import\s+['"](.+)['"]\s*;/g
-
-class TildeResolver extends FileManager {
-  loadFile(filename: string, ...args: any[]) {
-    filename = filename.replace('~', '')
-    return super.loadFile.apply(this, [filename, ...args])
-  }
-}
-
-const TildeResolverPlugin = {
-  install(lessInstance: unknown, pluginManager: any) {
-    pluginManager.addFileManager(new TildeResolver())
-  },
-}
 
 export const clearEmptyLine = (s: string) => s.replace(EMPTY_LINE_RE, '').replace(EMPTY_SPACE_RE, ' ')
 
@@ -63,10 +50,7 @@ export function extractStyleDependencies(
 
 export async function compileLess(file: string) {
   const source = readFileSync(file, 'utf-8')
-  const { css } = await render(source, {
-    filename: file,
-    plugins: [TildeResolverPlugin],
-  })
+  const { css } = await render(source, { filename: file })
 
   writeFileSync(replaceExt(file, '.css'), clearEmptyLine(css), 'utf-8')
 }

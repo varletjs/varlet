@@ -1,40 +1,70 @@
 <template>
   <div style="position: relative">
     <header>
-      <var-app-bar :title="bigCamelizeComponentName" title-position="center">
-        <template #left v-if="showBackIcon">
-          <var-button round @click="back" color="transparent" text-color="#fff" text>
-            <var-icon name="chevron-left" :size="28" />
-          </var-button>
+      <var-site-app-bar
+        class="app-bar"
+        :title="bigCamelizeComponentName"
+        title-position="center"
+      >
+        <template #left>
+          <var-site-button
+            v-if="showBackIcon"
+            text
+            round
+            @click="back"
+            color="transparent"
+            text-color="#fff"
+          >
+            <var-site-icon name="chevron-left" :size="28" style="margin-top: 1px;" />
+          </var-site-button>
+          <var-site-button
+            v-if="!showBackIcon && github"
+            style="margin-left: 6px; "
+            text
+            round
+            @click="toGithub"
+            color="transparent"
+            text-color="#fff"
+          >
+            <var-site-icon name="github" :size="28" style="margin-top: 1px;" />
+          </var-site-button>
         </template>
         <template #right>
-          <var-menu
+          <var-site-menu
             style="background: transparent"
+            :offset-x="1"
             :offset-y="38"
             v-model:show="showMenu"
             v-if="languages"
           >
-            <var-button text color="transparent" text-color="#fff" @click="showMenu = true">
-              <var-icon name="translate" :size="24" />
-              <var-icon name="chevron-down" :size="24" />
-            </var-button>
+            <var-site-button
+              style="padding-right: 6px"
+              text
+              color="transparent"
+              text-color="#fff"
+              @click="showMenu = true"
+            >
+              <var-site-icon name="translate" :size="24" />
+              <var-site-icon name="chevron-down" :size="24" />
+            </var-site-button>
 
             <template #menu>
               <div style="background: #fff">
-                <var-cell
+                <var-site-cell
                   v-for="(value, key) in nonEmptyLanguages"
                   :key="key"
+                  class="mobile-language-cell"
+                  :class="[language === key && 'mobile-language-cell--active']"
                   v-ripple
-                  :style="{ color: language === key ? '#2979ff' : '#666', cursor: 'pointer' }"
                   @click="changeLanguage(key)"
                 >
                   {{ value }}
-                </var-cell>
+                </var-site-cell>
               </div>
             </template>
-          </var-menu>
+          </var-site-menu>
         </template>
-      </var-app-bar>
+      </var-site-app-bar>
     </header>
     <div class="router-view__block">
       <router-view />
@@ -47,10 +77,8 @@
 import config from '@config'
 import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { bigCamelize, removeEmpty, watchLang } from '../utils'
-import { get } from 'lodash'
-
-type Language = Record<string, string>
+import { bigCamelize, inIframe, isPhone, removeEmpty, setThemes, watchLang } from '../utils'
+import { get } from 'lodash-es'
 
 export default defineComponent({
   setup() {
@@ -62,15 +90,32 @@ export default defineComponent({
     const languages: Ref<Record<string, string>> = ref(get(config, 'mobile.header.i18n'))
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
     const redirect = get(config, 'mobile.redirect', '')
+    const github: Ref<string> = ref(get(config, 'mobile.header.github'))
 
     const changeLanguage = (lang) => {
       language.value = lang
       showMenu.value = false
       window.location.href = `./mobile.html#${route.path}?language=${language.value}&replace=${route.query.replace}`
+
+      if (!isPhone() && inIframe()) {
+        (window.top as any).scrollToMenu(redirect.slice(1))
+      }
     }
 
     const back = () => {
       window.location.href = `./mobile.html#${redirect}?language=${language.value}&replace=${redirect.slice(1)}`
+
+      if (!isPhone() && inIframe()) {
+        (window.top as any).scrollToMenu(redirect.slice(1))
+      }
+    }
+
+    const toGithub = () => {
+      if (window.parent !== window) {
+        window.parent.open(github.value)
+      } else {
+        window.location.href = github.value
+      }
     }
 
     watchLang((newValue) => {
@@ -85,13 +130,17 @@ export default defineComponent({
       }
     )
 
+    setThemes(config)
+
     return {
       bigCamelizeComponentName,
       showBackIcon,
+      github,
       showMenu,
       languages,
       language,
       nonEmptyLanguages,
+      toGithub,
       back,
       changeLanguage,
     }
@@ -100,7 +149,9 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '~@varlet/ui/es/styles/var';
+* {
+  -webkit-font-smoothing: antialiased;
+}
 
 body {
   margin: 0;
@@ -124,11 +175,25 @@ header {
   font-weight: bold;
 }
 
+.app-bar {
+  background: var(--site-config-color-app-bar) !important;
+}
+
 .router-view__block {
-  padding: 50px 12px 15px;
+  padding: 54px 12px 15px;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.mobile-language-cell {
+  color: #666;
+  cursor: pointer;
+
+  &--active {
+    color: var(--site-config-color-mobile-language-active);
+    background: var(--site-config-color-mobile-language-active-background);
+  }
 }
 </style>

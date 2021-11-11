@@ -7,6 +7,13 @@ exports[`test button color & textColor 1`] = `
 </button>"
 `;
 
+exports[`test button disabled 1`] = `
+"<button class=\\"var-button var--box var-button--normal var--inline-flex var-button--disabled var-button--default var-elevation--1\\" disabled=\\"\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\"></div>
+</button>"
+`;
+
 exports[`test button example 1`] = `
 "<div class=\\"app-type\\">主题色按钮</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
   <!--v-if-->
@@ -160,6 +167,19 @@ exports[`test button example 1`] = `
 </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--1\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">触摸</div>
+</button>"
+`;
+
+exports[`test button loading 1`] = `
+"<button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
+  <div class=\\"var--box var-loading var-button__loading\\">
+    <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 24px; height: 24px;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div class=\\"var-button__content var-button--hidden\\"></div>
 </button>"
 `;
 

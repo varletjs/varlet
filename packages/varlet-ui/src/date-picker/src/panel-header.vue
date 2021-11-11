@@ -28,8 +28,8 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, watch } from 'vue'
-import Button from '../../button'
-import Icon from '../../icon'
+import VarButton from '../../button'
+import VarIcon from '../../icon'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
 import type { Ref, ComputedRef, PropType } from 'vue'
@@ -38,8 +38,8 @@ import type { Preview, PanelBtnDisabled } from '../props'
 export default defineComponent({
   name: 'PanelHeader',
   components: {
-    [Button.name]: Button,
-    [Icon.name]: Icon,
+    VarButton,
+    VarIcon,
   },
   props: {
     date: {
@@ -67,7 +67,7 @@ export default defineComponent({
 
       if (type === 'month') return toNumber(previewYear) + forwardOrBackNum.value
 
-      const monthName = pack.value.monthDictionary[previewMonth.index].name
+      const monthName = pack.value.datePickerMonthDict?.[previewMonth.index].name
       return pack.value.lang === 'zh-CN' ? `${previewYear} ${monthName}` : `${monthName} ${previewYear}`
     })
 
