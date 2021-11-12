@@ -1,6 +1,9 @@
 import button from './button'
 import cell from './cell'
 import skeleton from './skeleton'
+import tabs from './tabs'
+import tab from './tab'
+import tabItem from './tab-item'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -17,4 +20,7 @@ export default {
   ...button,
   ...cell,
   ...skeleton,
+  ...tabs,
+  ...tab,
+  ...tabItem,
 } as StyleVars

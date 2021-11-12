@@ -1,4 +1,12 @@
+@tab-item-content-color: #888;
+
+:root {
+  --tab-item-content-color: @tab-item-content-color;
+}
+
 .var-tab-item {
+  color: var(--tab-item-content-color);
+
   &--inactive[var-tab-item-cover] {
     overflow: visible;
     height: 0;

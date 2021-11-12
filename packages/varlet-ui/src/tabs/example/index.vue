@@ -143,6 +143,7 @@ import context from '../../context'
 import { use, pack } from './locale'
 import { onUnmounted, reactive, toRefs } from 'vue'
 import { watchPlatform, watchLang } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'TabsExample',
@@ -167,6 +168,7 @@ export default {
     })
 
     watchLang(use)
+    watchDarkMode()
 
     const prevTouchmoveForbid = context.touchmoveForbid
     watchPlatform((platform) => {
@@ -194,9 +196,5 @@ export default {
 
 .icon {
   margin-bottom: 5px;
-}
-
-.var-tab-item {
-  color: #888;
 }
 </style>
