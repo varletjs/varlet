@@ -1,5 +1,6 @@
 import button from './button'
 import cell from './cell'
+import skeleton from './skeleton'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -15,4 +16,5 @@ export default {
   '--color-text-disabled': '#757575',
   ...button,
   ...cell,
+  ...skeleton,
 } as StyleVars
