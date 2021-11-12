@@ -60,6 +60,7 @@ import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarSlider from '..'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'SliderExample',
@@ -87,6 +88,7 @@ export default {
     }
 
     watchLang(use)
+    watchDarkMode()
 
     return {
       ...toRefs(values),
@@ -106,7 +108,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: #ebebeb 0 2px 2px;
   border-radius: 50%;
   font-size: 12px;
   background-color: #fff;

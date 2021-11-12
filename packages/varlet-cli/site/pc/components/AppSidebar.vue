@@ -71,7 +71,7 @@ export default {
 .varlet-site-sidebar {
   padding: 0 0 15px;
   position: fixed;
-  width: 220px;
+  width: 240px;
   top: 60px;
   bottom: 0;
   left: 0;
@@ -122,7 +122,6 @@ export default {
     font-size: 14px;
     color: var(--site-config-color-text);
     transition: color 0.2s;
-    padding-left: 44px;
 
     &:hover {
       color: var(--site-config-color-side-bar);

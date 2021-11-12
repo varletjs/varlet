@@ -51,9 +51,11 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100px;
-  color: #888;
+  color: var(--site-config-color-sub-text);
+  background: var(--site-config-color-sub-bar);
   user-select: none;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.25s;
 }
 </style>

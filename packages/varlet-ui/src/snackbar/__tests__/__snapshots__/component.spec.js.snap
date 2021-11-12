@@ -2,50 +2,50 @@
 
 exports[`test snackbar example 1`] = `
 "<div class=\\"snackbar-demo\\">
-  <div class=\\"app-type\\">组件调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
+  <div class=\\"app-type\\">组件调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--2\\">
     <!--v-if-->
     <div class=\\"var-button__content\\">基本使用</div>
-  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
+  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--2\\">
     <!--v-if-->
     <div class=\\"var-button__content\\">垂直排列</div>
-  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
+  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--2\\">
     <!--v-if-->
     <div class=\\"var-button__content\\">底部显示</div>
-  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
+  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--2\\">
     <!--v-if-->
     <div class=\\"var-button__content\\">显示时长</div>
-  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
+  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--2\\">
     <!--v-if-->
     <div class=\\"var-button__content\\">禁止穿透点击</div>
   </button>
 </div>
 <div class=\\"snackbar-demo\\">
-  <div class=\\"app-type\\">函数调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--warning var-elevation--1\\">
+  <div class=\\"app-type\\">函数调用</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--warning var-elevation--2\\">
     <!--v-if-->
     <div class=\\"var-button__content\\">基本使用</div>
-  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--warning var-elevation--1\\">
+  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--warning var-elevation--2\\">
     <!--v-if-->
     <div class=\\"var-button__content\\">显示时长</div>
-  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--warning var-elevation--1\\">
+  </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--warning var-elevation--2\\">
     <!--v-if-->
     <div class=\\"var-button__content\\">底部显示</div>
   </button>
 </div>
 <div class=\\"snackbar-demo\\">
   <div class=\\"app-type\\">Snackbar 类型</div>
-  <div class=\\"snackbar-demo__type-block\\"><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--success var-elevation--1\\">
+  <div class=\\"snackbar-demo__type-block\\"><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--success var-elevation--2\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">成功</div>
-    </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--warning var-elevation--1\\">
+    </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--warning var-elevation--2\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">警告</div>
-    </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--info var-elevation--1\\">
+    </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--info var-elevation--2\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">消息</div>
-    </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--danger var-elevation--1\\">
+    </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--danger var-elevation--2\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">错误</div>
-    </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--1\\">
+    </button><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--2\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">加载</div>
     </button></div>

@@ -256,7 +256,7 @@ exports[`test uploader example 1`] = `
 <div class=\\"app-type\\">自定义上传样式</div>
 <div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
-    <div class=\\"var--relative\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1\\">
+    <div class=\\"var--relative\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">上传</div>
       </button></div>

@@ -283,7 +283,7 @@ export default {
 | `--uploader-file-name-font-size`          | `12px`                                                                                       |
 | `--uploader-file-name-padding`            | `10px`                                                                                       |
 | `--uploader-file-text-align`              | `center`                                                                                     |
-| `--uploader-file-close-background`        | `rgba(0, 0, 0, 0.6)`                                                                         |
+| `--uploader-file-close-background`        | `rgba(0, 0, 0, 0.3)`                                                                         |
 | `--uploader-file-close-size`              | `24px`                                                                                       |
 | `--uploader-file-close-icon-font-size`    | `14px`                                                                                       |
 | `--uploader-file-close-icon-color`        | `#fff`                                                                                       |
@@ -296,4 +296,5 @@ export default {
 | `--uploader-file-indicator-success-color` | `var(--color-success)`                                                                       |
 | `--uploader-file-indicator-error-color`   | `var(--color-danger)`                                                                        |
 | `--uploader-disabled-color`               | `#ddd`                                                                                       |
+| `--uploader-disabled-text-color`          | `var(--color-text-disabled)`                                                                                       |
 | `--uploader-loading-background`           | `linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0))` |
