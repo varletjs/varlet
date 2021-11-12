@@ -63,6 +63,7 @@ import { onUnmounted, reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 import context from '../../context'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'SnackbarExample',
@@ -116,6 +117,7 @@ export default {
     }
 
     watchLang(use)
+    watchDarkMode()
 
     const prevTouchmoveForbid = context.touchmoveForbid
     watchPlatform((platform) => {

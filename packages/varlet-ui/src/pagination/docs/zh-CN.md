@@ -165,7 +165,7 @@ import Disabled from '../example/Disabled.vue'
 | `--pagination-font-size` | `var(--font-size-md)` |  
 | `--pagination-active-color` | `#fff` |  
 | `--pagination-active-bg-color` | `var(--color-primary)` |  
-| `--pagination-hover-bg-color` | `rgb(245, 245, 245)` |  
+| `--pagination-hover-bg-color` | `#edf5ff` |  
 | `--pagination-total-margin` | `0 12px` |  
 | `--pagination-total-line-height` | `24px` |  
 | `--pagination-item-width` | `32px` |  
@@ -173,7 +173,7 @@ import Disabled from '../example/Disabled.vue'
 | `--pagination-item-margin` | `0 6px` |  
 | `--pagination-item-border-radius` | `4px` |  
 | `--pagination-list-bg-color` | `#fff` |  
-| `--pagination-list-active-bg-color` | `#dbe4fd` |  
+| `--pagination-list-active-bg-color` | `#edf5ff` |  
 | `--pagination-list-active-color` | `var(--color-primary)` |  
 | `--pagination-input-width` | `32px` |
 | `--pagination-simple-padding` | `0 0 2px 0` |

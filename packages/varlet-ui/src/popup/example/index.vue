@@ -58,6 +58,7 @@ import context from '../../context'
 import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 import { onUnmounted, reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'PopupExample',
@@ -79,6 +80,7 @@ export default {
     })
 
     watchLang(use)
+    watchDarkMode()
 
     const prevTouchmoveForbid = context.touchmoveForbid
     watchPlatform((platform) => {
@@ -113,6 +115,6 @@ export default {
 .block {
   padding: 20px 24px;
   width: 250px;
-  color: #555;
+  color: var(--site-config-color-text);
 }
 </style>

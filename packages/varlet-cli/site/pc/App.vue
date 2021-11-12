@@ -177,25 +177,30 @@ iframe {
     flex-direction: column;
     align-items: center;
     margin: 20px 4px 20px;
-    padding: 40px;
+    padding: 100px 40px;
     border-top: 6px solid var(--site-config-color-introduce-border);
     border-radius: 2px;
     background: var(--site-config-color-bar);
     box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 
+    &__row {
+      display: flex;
+      align-items: center;
+    }
+
     &__image {
-      width: 180px;
+      width: 52px;
+      margin-right: 20px;
     }
 
     &__name {
-      font-size: 32px;
-      margin-top: 22px;
+      font-size: 52px;
     }
 
     &__des {
-      color: var(--site-config-color-text);
+      color: var(--site-config-color-sub-text);
       font-size: 14px;
-      margin-top: 10px;
+      margin-top: 16px;
       -webkit-font-smoothing: antialiased;
     }
   }
@@ -209,14 +214,14 @@ iframe {
       display: flex;
       background: var(--site-config-color-body);
       margin-top: 60px;
-      margin-left: 220px;
+      margin-left: 240px;
     }
 
     &-doc-container {
       flex: 1 0 0;
       overflow-y: auto;
       min-width: 500px;
-      padding: 0 30px;
+      padding: 0 25px;
       overflow-x: hidden;
 
       &::-webkit-scrollbar {
@@ -354,7 +359,6 @@ iframe {
 
       .card {
         margin-bottom: 24px;
-        padding: 0 4px;
       }
     }
   }

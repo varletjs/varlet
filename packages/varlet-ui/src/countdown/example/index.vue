@@ -42,6 +42,7 @@ import VarButton from '../../button'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'CountdownExample',
@@ -59,10 +60,11 @@ export default {
     }
 
     const change = () => {
-      // console.log('change')
+      console.log('change')
     }
 
     watchLang(use)
+    watchDarkMode()
 
     return {
       time,

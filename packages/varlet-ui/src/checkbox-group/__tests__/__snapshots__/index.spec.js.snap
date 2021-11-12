@@ -71,10 +71,10 @@ exports[`test checkbox example 1`] = `
       <transition-stub>
         <!--v-if-->
       </transition-stub>
-    </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1 button\\">
+    </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 button\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">全选</div>
-    </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1 button\\">
+    </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 button\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">反选</div>
     </button>

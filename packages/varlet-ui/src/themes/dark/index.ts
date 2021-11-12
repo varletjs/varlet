@@ -1,6 +1,18 @@
 import button from './button'
 import cell from './cell'
 import skeleton from './skeleton'
+import popup from './popup'
+import dialog from './dialog'
+import actionSheet from './actionSheet'
+import chip from './chip'
+import badge from './badge'
+import uploader from './uploader'
+import collapse from './collapse'
+import pullRefresh from './pullRefresh'
+import switchThemes from './switch'
+import steps from './steps'
+import pagination from './pagination'
+import table from './talble'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -17,4 +29,16 @@ export default {
   ...button,
   ...cell,
   ...skeleton,
+  ...popup,
+  ...dialog,
+  ...actionSheet,
+  ...chip,
+  ...badge,
+  ...uploader,
+  ...collapse,
+  ...pullRefresh,
+  ...switchThemes,
+  ...steps,
+  ...pagination,
+  ...table,
 } as StyleVars

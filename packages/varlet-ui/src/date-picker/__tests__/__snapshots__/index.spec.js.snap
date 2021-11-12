@@ -93,7 +93,7 @@ exports[`test datePicker style and type 1`] = `
                   <!--v-if-->
                   <div class=\\"var-button__content\\">四月</div>
                 </button></li>
-              <li><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1 var-month-picker__button\\" style=\\"background: rgb(123, 184, 114);\\" var-month-picker-cover=\\"\\">
+              <li><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-month-picker__button\\" style=\\"background: rgb(123, 184, 114);\\" var-month-picker-cover=\\"\\">
                   <!--v-if-->
                   <div class=\\"var-button__content\\">五月</div>
                 </button></li>
@@ -269,7 +269,7 @@ exports[`test datePicker style and type 2`] = `
                     <!--v-if-->
                     <div class=\\"var-button__content\\">18</div>
                   </button></li>
-                <li><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1 var-button--round var-day-picker__button var-day-picker__button--usable\\" style=\\"background: rgb(123, 184, 114);\\" var-day-picker-cover=\\"\\">
+                <li><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-day-picker__button var-day-picker__button--usable\\" style=\\"background: rgb(123, 184, 114);\\" var-day-picker-cover=\\"\\">
                     <!--v-if-->
                     <div class=\\"var-button__content\\">19</div>
                   </button></li>
