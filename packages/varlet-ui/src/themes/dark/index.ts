@@ -1,5 +1,6 @@
 import button from './button'
 import cell from './cell'
+import skeleton from './skeleton'
 import popup from './popup'
 import dialog from './dialog'
 import actionSheet from './actionSheet'
@@ -27,6 +28,7 @@ export default {
   '--color-text-disabled': '#757575',
   ...button,
   ...cell,
+  ...skeleton,
   ...popup,
   ...dialog,
   ...actionSheet,
