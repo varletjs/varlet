@@ -228,10 +228,7 @@ export default defineComponent({
 
         return true
       }
-      const isDarkTheme = ref(false)
-      watchDarkMode((themes) => {
-        isDarkTheme.value = themes === 'darkThemes'
-      })
+
       const computeTextColor = (): string | undefined => {
         if (disabled) return ''
         if (computeOutline()) return color
