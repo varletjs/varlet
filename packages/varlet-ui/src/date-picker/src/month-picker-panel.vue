@@ -89,7 +89,7 @@ export default defineComponent({
 
     const isCurrentYear: ComputedRef<boolean> = computed(() => props.preview.previewYear === currentYear)
 
-    const getMonthAbbr = (key: Month): string => pack.value.datePickerMonthDict?.[key].abbr
+    const getMonthAbbr = (key: Month): string => pack.value.datePickerMonthDict?.[key].abbr ?? ''
 
     const inRange = (key: string): boolean => {
       const {
