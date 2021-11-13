@@ -95,6 +95,7 @@ export default defineComponent({
       left: false,
       right: false,
     })
+    const isDarkTheme = ref(false)
 
     const isCurrent: ComputedRef<boolean> = computed(
       () => props.preview.previewYear === currentYear && props.preview.previewMonth.index === currentMonth
@@ -227,10 +228,7 @@ export default defineComponent({
 
         return true
       }
-      const isDarkTheme = ref(false)
-      watchDarkMode((themes) => {
-        isDarkTheme.value = themes === 'darkThemes'
-      })
+
       const computeTextColor = (): string | undefined => {
         if (disabled) return ''
         if (computeOutline()) return color
@@ -269,6 +267,10 @@ export default defineComponent({
         initHeader()
       }
     )
+
+    watchDarkMode((themes) => {
+      isDarkTheme.value = themes === 'darkThemes'
+    })
 
     return {
       days,

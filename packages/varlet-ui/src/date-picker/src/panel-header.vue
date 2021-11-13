@@ -49,6 +49,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const reverse: Ref<boolean> = ref(false)
     const forwardOrBackNum: Ref<number> = ref(0)
+    const isDarkTheme = ref(false)
 
     const showDate: ComputedRef<number | string> = computed(() => {
       const { date, type } = props
@@ -65,6 +66,12 @@ export default defineComponent({
       reverse.value = checkType === 'prev'
       forwardOrBackNum.value += checkType === 'prev' ? -1 : 1
     }
+    const computedLeftTextColor = () => {
+      return props.disabled.left ? '' : isDarkTheme.value ? '' : 'rgba(0, 0, 0, .54)'
+    }
+    const computedRightTextColor = () => {
+      return props.disabled.right ? '' : isDarkTheme.value ? '' : 'rgba(0, 0, 0, .54)'
+    }
 
     watch(
       () => props.date,
@@ -72,16 +79,11 @@ export default defineComponent({
         forwardOrBackNum.value = 0
       }
     )
-    const isDarkTheme = ref(false)
+
     watchDarkMode((themes) => {
       isDarkTheme.value = themes === 'darkThemes'
     })
-    const computedLeftTextColor = () => {
-      return props.disabled.left ? '' : isDarkTheme.value ? '' : 'rgba(0, 0, 0, .54)'
-    }
-    const computedRightTextColor = () => {
-      return props.disabled.left ? '' : isDarkTheme.value ? '' : 'rgba(0, 0, 0, .54)'
-    }
+
     return {
       reverse,
       showDate,
