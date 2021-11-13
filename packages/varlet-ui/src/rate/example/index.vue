@@ -62,6 +62,7 @@ import context from '../../context'
 import { onUnmounted, reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'RateExample',
@@ -103,6 +104,7 @@ export default {
     })
 
     watchLang(use)
+    watchDarkMode()
 
     return {
       handleChange,

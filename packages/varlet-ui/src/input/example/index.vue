@@ -43,6 +43,7 @@ import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { reactive, toRefs } from 'vue'
 import { use, pack } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'InputExample',
@@ -68,6 +69,7 @@ export default {
       use(lang)
       values.value5 = pack.value.clearableText
     })
+    watchDarkMode()
 
     return {
       pack,
