@@ -15,6 +15,7 @@ import pagination from './pagination'
 import table from './talble'
 import input from './input'
 import select from './select'
+import radio from './radio'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -45,4 +46,5 @@ export default {
   ...table,
   ...input,
   ...select,
+  ...radio,
 } as StyleVars
