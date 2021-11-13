@@ -83,7 +83,7 @@ export default defineComponent({
     watchDarkMode((themes) => {
       isDarkTheme.value = themes === 'darkThemes'
     })
-
+    
     return {
       reverse,
       showDate,
