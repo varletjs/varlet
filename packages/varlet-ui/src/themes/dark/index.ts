@@ -16,6 +16,7 @@ import table from './talble'
 import input from './input'
 import select from './select'
 import radio from './radio'
+import checkbox from './checkbox'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -47,4 +48,5 @@ export default {
   ...input,
   ...select,
   ...radio,
+  ...checkbox,
 } as StyleVars
