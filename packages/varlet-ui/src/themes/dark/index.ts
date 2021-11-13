@@ -53,6 +53,5 @@ export default {
   ...table,
   ...input,
   ...select,
-  ...radio,
   ...checkbox,
 } as StyleVars
