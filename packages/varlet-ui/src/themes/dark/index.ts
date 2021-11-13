@@ -14,6 +14,7 @@ import steps from './steps'
 import pagination from './pagination'
 import table from './talble'
 import input from './input'
+import select from './select'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -43,4 +44,5 @@ export default {
   ...pagination,
   ...table,
   ...input,
+  ...select,
 } as StyleVars
