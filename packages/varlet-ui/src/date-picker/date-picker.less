@@ -32,6 +32,7 @@
 @day-picker-head-item-color: rgba(0, 0, 0, 0.38);
 @day-picker-head-item-padding: 8px 0;
 @day-picker-head-item-font-weight: 600;
+@date-picker-body-background-color: rgba(0, 0, 0, 0);
 
 :root {
   --date-picker-border-radius: @date-picker-border-radius;
@@ -48,6 +49,7 @@
   --date-picker-title-date-font-size: @date-picker-title-date-font-size;
   --date-picker-title-date-font-weight: @date-picker-title-date-font-weight;
   --date-picker-title-date-range-font-size: @date-picker-title-date-range-font-size;
+  --date-picker-body-background-color: @date-picker-body-background-color;
   --picker-header-padding: @picker-header-padding;
   --month-picker-padding: @month-picker-padding;
   --month-picker-item-width: @month-picker-item-width;
@@ -141,6 +143,7 @@
     flex: 1;
     position: relative;
     overflow: auto;
+    background-color: var(--date-picker-body-background-color);
   }
 
   .var-picker-header {

@@ -13,6 +13,9 @@ import switchThemes from './switch'
 import steps from './steps'
 import pagination from './pagination'
 import table from './talble'
+import card from './card'
+import timePicker from './timePicker'
+import datePicker from './datePicker'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -41,4 +44,7 @@ export default {
   ...steps,
   ...pagination,
   ...table,
+  ...card,
+  ...timePicker,
+  ...datePicker,
 } as StyleVars
