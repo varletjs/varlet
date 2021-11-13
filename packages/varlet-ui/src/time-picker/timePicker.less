@@ -31,6 +31,7 @@
 @time-picker-clock-item-active-background: var(--color-primary);
 @time-picker-clock-item-active-color: #fff;
 @time-picker-clock-item-disable-color: rgba(0, 0, 0, 0.26);
+@time-picker-body-background: #fff;
 @time-picker-inner-left: 36px;
 @time-picker-inner-right: 36px;
 @time-picker-inner-top: 36px;
@@ -74,6 +75,7 @@
   --time-picker-inner-right: @time-picker-inner-right;
   --time-picker-inner-top: @time-picker-inner-top;
   --time-picker-inner-bottom: @time-picker-inner-bottom;
+  --time-picker-body-background: @time-picker-body-background;
 }
 
 // Mixins
@@ -138,6 +140,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--time-picker-body-background);
   }
 
   &-clock {

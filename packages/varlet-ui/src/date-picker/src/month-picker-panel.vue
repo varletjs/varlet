@@ -40,6 +40,7 @@ import PanelHeader from './panel-header.vue'
 import VarButton from '../../button'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
+import { watchDarkMode } from '../../utils/components'
 import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
 import type { Choose, Preview, ComponentProps, Month, PanelBtnDisabled } from '../props'
 
@@ -169,11 +170,16 @@ export default defineComponent({
         return true
       }
 
+      const isDarkTheme = ref(false)
+      watchDarkMode((themes) => {
+        isDarkTheme.value = themes === 'darkThemes'
+      })
+
       const computeTextColor = (): string | undefined => {
         if (disabled) return ''
         if (computeOutline()) return color
         if (monthExist()) return ''
-        return 'rgba(0, 0, 0, .87)'
+        return isDarkTheme.value ? '#ffffff' : 'rgba(0, 0, 0, .87)'
       }
 
       return {

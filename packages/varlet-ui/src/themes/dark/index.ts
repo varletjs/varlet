@@ -17,6 +17,9 @@ import input from './input'
 import select from './select'
 import radio from './radio'
 import checkbox from './checkbox'
+import card from './card'
+import timePicker from './timePicker'
+import datePicker from './datePicker'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -49,4 +52,7 @@ export default {
   ...select,
   ...radio,
   ...checkbox,
+  ...card,
+  ...timePicker,
+  ...datePicker,
 } as StyleVars
