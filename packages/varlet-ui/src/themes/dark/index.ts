@@ -1,5 +1,8 @@
 import button from './button'
 import cell from './cell'
+import card from './card'
+import timePicker from './timePicker'
+import datePicker from './datePicker'
 import skeleton from './skeleton'
 import popup from './popup'
 import dialog from './dialog'
@@ -17,9 +20,6 @@ import input from './input'
 import select from './select'
 import radio from './radio'
 import checkbox from './checkbox'
-import card from './card'
-import timePicker from './timePicker'
-import datePicker from './datePicker'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -35,6 +35,9 @@ export default {
   '--color-text-disabled': '#757575',
   ...button,
   ...cell,
+  ...card,
+  ...timePicker,
+  ...datePicker,
   ...skeleton,
   ...popup,
   ...dialog,
@@ -52,7 +55,4 @@ export default {
   ...select,
   ...radio,
   ...checkbox,
-  ...card,
-  ...timePicker,
-  ...datePicker,
 } as StyleVars
