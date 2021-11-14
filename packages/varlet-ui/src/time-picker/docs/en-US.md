@@ -199,3 +199,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--time-picker-inner-right` | `36px` |
 | `--time-picker-inner-top` | `36px` |
 | `--time-picker-inner-bottom` | `36px` |
+| `--time-picker-body-background` | `#fff` |

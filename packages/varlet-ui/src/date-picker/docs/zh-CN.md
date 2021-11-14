@@ -212,5 +212,4 @@ export default {
 | `--day-picker-head-item-color` | `rgba(0, 0, 0, 0.38)` |
 | `--day-picker-head-item-padding` | `8px 0` |
 | `--day-picker-head-item-font-weight` | `600` |
-| `--time-picker-body-background` | `#ffffff` |
 

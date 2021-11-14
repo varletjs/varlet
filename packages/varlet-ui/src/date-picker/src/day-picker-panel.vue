@@ -90,12 +90,12 @@ export default defineComponent({
     const [currentYear, currentMonth, currentDay] = props.current.split('-')
     const days: Ref<Array<number>> = ref([])
     const reverse: Ref<boolean> = ref(false)
+    const isDarkTheme: Ref<boolean> = ref(false)
     const panelKey: Ref<number> = ref(0)
     const panelBtnDisabled: UnwrapRef<PanelBtnDisabled> = reactive({
       left: false,
       right: false,
     })
-    const isDarkTheme = ref(false)
 
     const isCurrent: ComputedRef<boolean> = computed(
       () => props.preview.previewYear === currentYear && props.preview.previewMonth.index === currentMonth
@@ -228,14 +228,12 @@ export default defineComponent({
 
         return true
       }
-      const isDarkTheme = ref(false)
-      watchDarkMode((themes) => {
-        isDarkTheme.value = themes === 'darkThemes'
-      })
+
       const computeTextColor = (): string | undefined => {
         if (disabled) return ''
         if (computeOutline()) return color
         if (dayExist()) return ''
+
         return isDarkTheme.value ? '#ffffff' : 'rgba(0, 0, 0, .87)'
       }
 
