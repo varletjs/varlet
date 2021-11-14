@@ -340,13 +340,12 @@ export default {
 | `--tabs-padding` | `12px` |
 | `--tabs-indicator-size` | `2px` |
 | `--tabs-indicator-background` | `var(--color-primary)` |
-| `--tabs-background` | `#fff` |
+| `--tabs-background` | `transparent` |
 
 ### Tab Variables
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--tab-color` | `#fff` |
 | `--tab-padding` | `12px` |
 | `--tab-active-color` | `var(--color-primary)` |
 | `--tab-inactive-color` | `#646566` |
