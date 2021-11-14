@@ -46,6 +46,7 @@ import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarTimePicker from '..'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'TimePickerExample',
@@ -80,6 +81,7 @@ export default {
     }
 
     watchLang(use)
+    watchDarkMode()
 
     return {
       ...toRefs(dates),
