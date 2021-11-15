@@ -88,6 +88,7 @@ export default {
   color="#2979ff"
   active-color="#fff"
   inactive-color="hsla(0, 0%, 100%, .6)"
+  disabled-color="#aaa"
   v-model:active="active"
 >
   <var-tab>Option1</var-tab>

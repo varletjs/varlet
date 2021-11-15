@@ -99,7 +99,8 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable                       | Default              |
 | ------------------------------ | -------------------- |
-| `--card-padding`               | `0 0 10px 0`         |
+| `--card-background`            | `#fff`         |
+| `--card-padding`               | `5px 0 15px 0`         |
 | `--card-border-radius`         | `4px`                |
 | `--card-image-width`           | `100%`               |
 | `--card-image-height`          | `200px`              |
