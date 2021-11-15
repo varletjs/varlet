@@ -1,13 +1,22 @@
+import { isArray, isNumber, isString } from '../utils/shared'
 import type { PropType } from 'vue'
-import { SpaceAlign, SpaceDirection, SpaceJustify, SpaceSize } from '../../types'
 
-export const sizeValidator = (size: SpaceSize): boolean => {
-  if (typeof size === 'string') {
-    return ['mini', 'small', 'normal', 'large'].includes(size) || !!size.match(/\d/g)
-  }
-  if (typeof size === 'number') return true
-  return Array.isArray(size) && size.length === 2 && size.every((v) => typeof v === 'number' || typeof v === 'string')
+export type SpaceAlign = 'stretch' | 'center' | 'start' | 'end' | 'baseline' | 'initial' | 'inherit'
+
+export type SpaceDirection = 'row' | 'column'
+
+export type SpaceJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between'
+
+export type SpaceInternalSize = 'mini' | 'small' | 'normal' | 'large'
+
+export type SpaceSize = SpaceInternalSize | number | string | [number | string, number | string]
+
+export const internalSizeValidator = (size: any) => ['mini', 'small', 'normal', 'large'].includes(size)
+
+export const sizeValidator = (size: any): boolean => {
+  return internalSizeValidator(size) || isArray(size) || isNumber(size) || isString(size)
 }
+
 const justifyValidator = (justify: string): boolean => {
   return ['start', 'end', 'center', 'space-around', 'space-between'].includes(justify)
 }
