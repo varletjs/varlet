@@ -16,6 +16,7 @@ import switchThemes from './switch'
 import steps from './steps'
 import pagination from './pagination'
 import table from './table'
+import divider from './divider'
 import { StyleVars } from '../../style-provider'
 
 export default {
@@ -47,4 +48,5 @@ export default {
   ...steps,
   ...pagination,
   ...table,
+  ...divider,
 } as StyleVars
