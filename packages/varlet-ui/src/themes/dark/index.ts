@@ -4,6 +4,8 @@ import card from './card'
 import timePicker from './timePicker'
 import datePicker from './datePicker'
 import skeleton from './skeleton'
+import tab from './tab'
+import tabItem from './tab-item'
 import popup from './popup'
 import dialog from './dialog'
 import actionSheet from './actionSheet'
@@ -36,6 +38,8 @@ export default {
   ...timePicker,
   ...datePicker,
   ...skeleton,
+  ...tab,
+  ...tabItem,
   ...popup,
   ...dialog,
   ...actionSheet,
