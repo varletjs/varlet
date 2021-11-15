@@ -18,6 +18,10 @@ import switchThemes from './switch'
 import steps from './steps'
 import pagination from './pagination'
 import table from './table'
+import input from './input'
+import select from './select'
+import radio from './radio'
+import checkbox from './checkbox'
 import divider from './divider'
 import { StyleVars } from '../../style-provider'
 
@@ -52,5 +56,9 @@ export default {
   ...steps,
   ...pagination,
   ...table,
+  ...input,
+  ...select,
+  ...radio,
+  ...checkbox,
   ...divider,
 } as StyleVars
