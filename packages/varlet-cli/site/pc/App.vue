@@ -177,7 +177,7 @@ iframe {
     flex-direction: column;
     align-items: center;
     margin: 20px 4px 20px;
-    padding: 100px 40px;
+    padding: 90px 40px;
     border-top: 6px solid var(--site-config-color-introduce-border);
     border-radius: 2px;
     background: var(--site-config-color-bar);
@@ -189,17 +189,17 @@ iframe {
     }
 
     &__image {
-      width: 52px;
+      width: 60px;
       margin-right: 20px;
     }
 
     &__name {
-      font-size: 52px;
+      font-size: 60px;
     }
 
     &__des {
       color: var(--site-config-color-sub-text);
-      font-size: 14px;
+      font-size: 16px;
       margin-top: 16px;
       -webkit-font-smoothing: antialiased;
     }
