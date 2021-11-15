@@ -14,7 +14,7 @@ exports[`test allowedDates prop 1`] = `
     <transition-stub>
       <div class=\\"var-day-picker__panel\\">
         <div class=\\"var-day-picker__content\\">
-          <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\">
+          <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgba(0, 0, 0, 0.54);\\">
               <!--v-if-->
               <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></div>
             </button>
@@ -22,7 +22,7 @@ exports[`test allowedDates prop 1`] = `
               <transition-stub>
                 <div>2021 三月</div>
               </transition-stub>
-            </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\">
+            </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgba(0, 0, 0, 0.54);\\">
               <!--v-if-->
               <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></div>
             </button>
@@ -62,7 +62,7 @@ exports[`test datePicker style and type 1`] = `
     <transition-stub>
       <div class=\\"var-month-picker__panel\\">
         <div class=\\"var-month-picker__content\\">
-          <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\">
+          <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgba(0, 0, 0, 0.54);\\">
               <!--v-if-->
               <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></div>
             </button>
@@ -70,7 +70,7 @@ exports[`test datePicker style and type 1`] = `
               <transition-stub>
                 <div>2021</div>
               </transition-stub>
-            </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\">
+            </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgba(0, 0, 0, 0.54);\\">
               <!--v-if-->
               <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></div>
             </button>
@@ -148,7 +148,7 @@ exports[`test datePicker style and type 2`] = `
     <transition-stub>
       <div class=\\"var-day-picker__panel\\">
         <div class=\\"var-day-picker__content\\">
-          <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\">
+          <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgba(0, 0, 0, 0.54);\\">
               <!--v-if-->
               <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: all 0ms;\\"></i></div>
             </button>
@@ -156,7 +156,7 @@ exports[`test datePicker style and type 2`] = `
               <transition-stub>
                 <div>2021 五月</div>
               </transition-stub>
-            </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\">
+            </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgba(0, 0, 0, 0.54);\\">
               <!--v-if-->
               <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: all 0ms;\\"></i></div>
             </button>
