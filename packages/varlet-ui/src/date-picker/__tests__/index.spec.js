@@ -7,7 +7,7 @@ import dayjs from 'dayjs/esm'
 
 const [currentYear ,currentMonth] = dayjs().format('YYYY-MM').split('-')
 
-test('test datePicker plugin', () => { 
+test('test datePicker plugin', () => {
   const app = createApp({}).use(DatePicker)
   expect(app.component(DatePicker.name)).toBeTruthy()
 })

@@ -15,7 +15,7 @@ import pullRefresh from './pullRefresh'
 import switchThemes from './switch'
 import steps from './steps'
 import pagination from './pagination'
-import table from './talble'
+import table from './table'
 import { StyleVars } from '../../style-provider'
 
 export default {
