@@ -29,61 +29,52 @@ export default defineComponent({
     const lastIndex = children.length - 1
     const renderSpace = children.map((child, index) => {
       const [marginTop, marginRight] = itemSize.value
-      const style = {}
-      if (props.direction === 'column') {
-        if (index === lastIndex) {
-          Object.assign(style, {
-            margin: 0,
-          })
-        } else {
-          Object.assign(style, {
-            marginTop: 0,
-            marginBottom: isPx(marginTop) ? (props.justify === 'space-around' ? 0 : marginTop) : '',
-            marginRight: 0,
-            marginLeft: 0,
-          })
-        }
+      const style = {
+        marginTop: 0,
+        marginBottom: 0,
+        marginRight: 0,
+        marginLeft: 0,
+      }
+      if (props.direction === 'column' && index !== lastIndex) {
+        Object.assign(style, {
+          marginBottom: isPx(marginTop) ? (props.justify === 'space-around' ? 0 : marginTop) : '',
+        })
       }
       if (props.direction === 'row') {
-        if (index === lastIndex) {
+        if (index !== lastIndex) {
           Object.assign(style, {
-            marginTop: isPx(marginTop) ? marginTop : '',
-            marginBottom: isPx(marginTop) ? marginTop : '',
-            marginRight: 0,
-            marginLeft: 0,
-          })
-        } else {
-          Object.assign(style, {
-            marginTop: isPx(marginTop) ? marginTop : '',
-            marginBottom: isPx(marginTop) ? marginTop : '',
             marginRight: isPx(marginRight) ? (props.justify === 'space-around' ? 0 : marginRight) : '',
-            marginLeft: 0,
           })
         }
+        Object.assign(style, {
+          marginTop: isPx(marginTop) ? marginTop : '',
+          marginBottom: isPx(marginTop) ? 0 : '',
+        })
       }
-      return (
-        <div class={['var-space__item', !isPx(marginTop) ? `var-space__item--${marginTop}` : '']} style={style}>
-          {child}
-        </div>
-      )
+      const attrs = {
+        class: ['var-space__item', !isPx(marginTop) ? `var-space__item--${marginTop}` : ''],
+        style,
+      }
+      return <div {...attrs}>{child}</div>
+    })
+
+    const contentAttrs = computed(() => {
+      const [marginTop] = itemSize.value
+      return {
+        class: [
+          'var-space',
+          props.inline ? 'var-space--inline' : '',
+          `var-space--${props.direction}`,
+          `var-space--justifyContent__${props.justify}`,
+          props.align ? `var-space--${props.align}` : '',
+          `var-space--${props.wrap ? 'warp' : 'nowarp'}`,
+          isPx(marginTop) ? '' : `var-space--marginTop__${marginTop}`,
+        ],
+        style: [`marginTop:${isPx(marginTop) ? -marginTop : ''}`],
+      }
     })
     return () => {
-      return (
-        <>
-          <div
-            class={[
-              'var-space',
-              props.inline ? 'var-space--inline' : '',
-              `var-space--${props.direction}`,
-              `var-space--justifyContent__${props.justify}`,
-              props.align ? `var-space--${props.align}` : '',
-              `var-space--${props.wrap ? 'warp' : 'nowarp'}`,
-            ]}
-          >
-            {renderSpace}
-          </div>
-        </>
-      )
+      return <div {...contentAttrs.value}>{renderSpace}</div>
     }
   },
 })

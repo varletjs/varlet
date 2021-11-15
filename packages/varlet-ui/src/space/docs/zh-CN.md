@@ -78,4 +78,8 @@ createApp().use(Space)
 | `--space-small-margin`|`4px 6px`|
 | `--space-normal-margin`|`8px 12px`|
 | `--space-large-margin`|`12px 20px`|
+| `--space-mini-marginTop`|`-4px`|
+|`--space-small-marginTop`|`-4px`|
+|`--space-normal-marginTop`|`-8px`|
+|`--space-large-marginTop`|`-12px`|
 
