@@ -6,7 +6,7 @@ export const sizeValidator = (size: SpaceSize): boolean => {
     return ['mini', 'small', 'normal', 'large'].includes(size) || !!size.match(/\d/g)
   }
   if (typeof size === 'number') return true
-  return Array.isArray(size) && size.every((v) => typeof v === 'number' || typeof v === 'string')
+  return Array.isArray(size) && size.length === 2 && size.every((v) => typeof v === 'number' || typeof v === 'string')
 }
 const justifyValidator = (justify: string): boolean => {
   return ['start', 'end', 'center', 'space-around', 'space-between'].includes(justify)
