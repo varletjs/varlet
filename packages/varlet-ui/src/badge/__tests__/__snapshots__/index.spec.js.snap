@@ -86,7 +86,7 @@ exports[`test badge example 1`] = `
   </div>
   <div class=\\"app-type\\">自定义徽标图标</div>
   <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--default var-badge__position var-badge--right-top var-badge__icon\\" style=\\"background: rgb(98, 0, 234);\\"><i class=\\"var-icon var-icon--set var-icon-notebook\\" style=\\"transition: all 0ms; font-size: 10px;\\"></i></span></transition-stub>
+    <transition-stub><span class=\\"var-badge__content var-badge--default var-badge__position var-badge--right-top var-badge__icon\\" style=\\"background: rgb(98, 0, 234);\\"><i class=\\"var-icon var-icon--set var-icon-notebook\\" style=\\"transition: transform 0ms; font-size: 10px;\\"></i></span></transition-stub>
     <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--plain var-chip--plain-default\\" style=\\"color: rgb(0, 150, 136); border-color: #009688;\\"><span class=\\"var-chip--text-normal\\">徽标</span>
       <!--v-if--></span>
     </transition-stub>
@@ -124,6 +124,6 @@ exports[`test badge position 4`] = `
 
 exports[`test badge style 1`] = `
 "<div class=\\"var-badge var--box\\">
-  <transition-stub><span class=\\"var-badge__content var-badge--default var-badge__icon\\" style=\\"background: rgb(98, 0, 234);\\"><i class=\\"var-icon var-icon--set var-icon-fire\\" style=\\"transition: all 0ms; font-size: 10px;\\"></i></span></transition-stub>
+  <transition-stub><span class=\\"var-badge__content var-badge--default var-badge__icon\\" style=\\"background: rgb(98, 0, 234);\\"><i class=\\"var-icon var-icon--set var-icon-fire\\" style=\\"transition: transform 0ms; font-size: 10px;\\"></i></span></transition-stub>
 </div>"
 `;

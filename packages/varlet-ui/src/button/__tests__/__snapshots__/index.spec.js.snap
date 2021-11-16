@@ -147,19 +147,19 @@ exports[`test button example 1`] = `
 </button>
 <div class=\\"app-type\\">圆形按钮</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round\\">
   <!--v-if-->
-  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition: all 0ms;\\"></i></div>
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition: transform 0ms;\\"></i></div>
 </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--info var-elevation--2 var-button--round\\">
   <!--v-if-->
-  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-information\\" style=\\"transition: all 0ms;\\"></i></div>
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-information\\" style=\\"transition: transform 0ms;\\"></i></div>
 </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2 var-button--round\\">
   <!--v-if-->
-  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-check\\" style=\\"transition: all 0ms;\\"></i></div>
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-check\\" style=\\"transition: transform 0ms;\\"></i></div>
 </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--warning var-elevation--2 var-button--round\\">
   <!--v-if-->
-  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-warning\\" style=\\"transition: all 0ms;\\"></i></div>
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-warning\\" style=\\"transition: transform 0ms;\\"></i></div>
 </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--2 var-button--round\\">
   <!--v-if-->
-  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-window-close\\" style=\\"transition: all 0ms;\\"></i></div>
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-window-close\\" style=\\"transition: transform 0ms;\\"></i></div>
 </button>
 <div class=\\"app-type\\">注册事件</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
   <!--v-if-->

@@ -2,21 +2,21 @@
 
 exports[`test disabled prop 1`] = `
 "<div class=\\"var-pull-refresh\\">
-  <div class=\\"var-pull-refresh__control var-elevation--2\\" style=\\"transform: translate3d(0px, -50px, 0px) translate(-50%, 0);\\"><i class=\\"var-icon var-icon--set var-icon-arrow-down var-pull-refresh__icon\\" style=\\"transition: all 200ms;\\" var-pull-refresh-cover=\\"\\"></i></div>
+  <div class=\\"var-pull-refresh__control var-elevation--2\\" style=\\"transform: translate3d(0px, -50px, 0px) translate(-50%, 0);\\"><i class=\\"var-icon var-icon--set var-icon-arrow-down var-pull-refresh__icon\\" style=\\"transition: transform 200ms;\\" var-pull-refresh-cover=\\"\\"></i></div>
   <div style=\\"height: 200px; width: 100%;\\"></div>
 </div>"
 `;
 
 exports[`test pull-refresh event 1`] = `
 "<div class=\\"var-pull-refresh\\">
-  <div class=\\"var-pull-refresh__control var-elevation--2\\" style=\\"transform: translate3d(0px, -50px, 0px) translate(-50%, 0);\\"><i class=\\"var-icon var-icon--set var-icon-arrow-down var-pull-refresh__icon\\" style=\\"transition: all 200ms;\\" var-pull-refresh-cover=\\"\\"></i></div>
+  <div class=\\"var-pull-refresh__control var-elevation--2\\" style=\\"transform: translate3d(0px, -50px, 0px) translate(-50%, 0);\\"><i class=\\"var-icon var-icon--set var-icon-arrow-down var-pull-refresh__icon\\" style=\\"transition: transform 200ms;\\" var-pull-refresh-cover=\\"\\"></i></div>
   <div style=\\"height: 200px; width: 100%;\\"></div>
 </div>"
 `;
 
 exports[`test pullRefresh example 1`] = `
 "<div class=\\"var-pull-refresh\\">
-  <div class=\\"var-pull-refresh__control var-elevation--2\\" style=\\"transform: translate3d(0px, -50px, 0px) translate(-50%, 0);\\"><i class=\\"var-icon var-icon--set var-icon-arrow-down var-pull-refresh__icon\\" style=\\"transition: all 200ms;\\" var-pull-refresh-cover=\\"\\"></i></div>
+  <div class=\\"var-pull-refresh__control var-elevation--2\\" style=\\"transform: translate3d(0px, -50px, 0px) translate(-50%, 0);\\"><i class=\\"var-icon var-icon--set var-icon-arrow-down var-pull-refresh__icon\\" style=\\"transition: transform 200ms;\\" var-pull-refresh-cover=\\"\\"></i></div>
   <div class=\\"var-cell var-cell--border\\">
     <!--v-if-->
     <div class=\\"var-cell__content\\">
@@ -102,21 +102,21 @@ exports[`test pullRefresh example 1`] = `
 
 exports[`test the different states during the drop-down process 1`] = `
 "<div class=\\"var-pull-refresh\\">
-  <div class=\\"var-pull-refresh__control var-elevation--2\\" style=\\"transform: translate3d(0px, -50px, 0px) translate(-50%, 0); color: purple; background: rgb(0, 0, 0);\\"><i class=\\"var-icon var-icon--set var-icon-arrow-down var-pull-refresh__icon\\" style=\\"transition: all 200ms;\\" var-pull-refresh-cover=\\"\\"></i></div>
+  <div class=\\"var-pull-refresh__control var-elevation--2\\" style=\\"transform: translate3d(0px, -50px, 0px) translate(-50%, 0); color: purple; background: rgb(0, 0, 0);\\"><i class=\\"var-icon var-icon--set var-icon-arrow-down var-pull-refresh__icon\\" style=\\"transition: transform 200ms;\\" var-pull-refresh-cover=\\"\\"></i></div>
   <div style=\\"height: 200px; width: 100%;\\"></div>
 </div>"
 `;
 
 exports[`test the different states during the drop-down process 2`] = `
 "<div class=\\"var-pull-refresh\\">
-  <div class=\\"var-pull-refresh__control var-elevation--2\\" style=\\"transform: translate3d(0px, 50px, 0px) translate(-50%, 0); color: purple; background: rgb(0, 0, 0);\\"><i class=\\"var-icon var-icon--set var-icon-arrow-down var-icon--shrinking var-pull-refresh__icon\\" style=\\"transition: all 200ms;\\" var-pull-refresh-cover=\\"\\"></i></div>
+  <div class=\\"var-pull-refresh__control var-elevation--2\\" style=\\"transform: translate3d(0px, 50px, 0px) translate(-50%, 0); color: purple; background: rgb(0, 0, 0);\\"><i class=\\"var-icon var-icon--set var-icon-arrow-down var-icon--shrinking var-pull-refresh__icon\\" style=\\"transition: transform 200ms;\\" var-pull-refresh-cover=\\"\\"></i></div>
   <div style=\\"height: 200px; width: 100%;\\"></div>
 </div>"
 `;
 
 exports[`test the different states during the drop-down process 3`] = `
 "<div class=\\"var-pull-refresh\\">
-  <div class=\\"var-pull-refresh__control var-elevation--2\\" style=\\"transform: translate3d(0px, 30px, 0px) translate(-50%, 0); color: purple; transition: transform 300ms; background: rgb(0, 0, 0);\\"><i class=\\"var-icon var-icon--set var-icon-arrow-down var-icon--shrinking var-pull-refresh__icon var-pull-refresh__animation\\" style=\\"transition: all 200ms;\\" var-pull-refresh-cover=\\"\\"></i></div>
+  <div class=\\"var-pull-refresh__control var-elevation--2\\" style=\\"transform: translate3d(0px, 30px, 0px) translate(-50%, 0); color: purple; transition: transform 300ms; background: rgb(0, 0, 0);\\"><i class=\\"var-icon var-icon--set var-icon-arrow-down var-icon--shrinking var-pull-refresh__icon var-pull-refresh__animation\\" style=\\"transition: transform 200ms;\\" var-pull-refresh-cover=\\"\\"></i></div>
   <div style=\\"height: 200px; width: 100%;\\"></div>
 </div>"
 `;

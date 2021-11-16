@@ -32,6 +32,7 @@
   <div class="example__icons">
     <div
       class="example__icon var-elevation--2"
+      :style="{ background }"
       :data-clipboard-text="iconName"
       :key="iconName"
       v-for="iconName in iconNames"
@@ -54,6 +55,7 @@ import icons from '@varlet/icons'
 import { reactive, onMounted, ref, onUnmounted } from 'vue'
 import { use, pack } from './locale'
 import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'IconExample',
@@ -65,6 +67,7 @@ export default {
   setup() {
     const iconNames = reactive(icons)
     const iconName = ref('information')
+    const background = ref('#fff')
 
     const toggle = () => {
       iconName.value = iconName.value === 'information' ? 'checkbox-marked-circle' : 'information'
@@ -81,6 +84,9 @@ export default {
     })
 
     watchLang(use)
+    watchDarkMode((themes) => {
+      background.value = themes === 'darkThemes' ? '#272727' : '#fff'
+    })
 
     const prevTouchmoveForbid = context.touchmoveForbid
     watchPlatform((platform) => {
@@ -94,6 +100,7 @@ export default {
 
     return {
       pack,
+      background,
       iconNames,
       iconName,
       toggle,
@@ -135,7 +142,6 @@ export default {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     user-select: none;
     border-bottom: 2px solid var(--color-primary);
-    background: var(--site-config-color-sub-bar);
     transition: background-color 0.25s;
   }
 

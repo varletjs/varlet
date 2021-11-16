@@ -7,7 +7,7 @@ exports[`test input clear 1`] = `
     <div class=\\"var-input__wrap\\">
       <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-58\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-58\\"></label>
     </div>
-    <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input__clear-icon\\" style=\\"transition: all 0ms; font-size: 14px;\\" var-input-cover=\\"\\"></i></div>
+    <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\" var-input-cover=\\"\\"></i></div>
   </div>
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
@@ -135,7 +135,7 @@ exports[`test input example 1`] = `
     <div class=\\"var-input__wrap\\">
       <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-27\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-27\\">请输入文本</label>
     </div>
-    <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input__clear-icon\\" style=\\"transition: all 0ms; font-size: 14px;\\" var-input-cover=\\"\\"></i></div>
+    <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\" var-input-cover=\\"\\"></i></div>
   </div>
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
@@ -147,11 +147,11 @@ exports[`test input example 1`] = `
 <div class=\\"app-type pb\\">显示图标</div>
 <div class=\\"var-input var--box\\">
   <div class=\\"var-input__controller\\">
-    <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: all 0ms;\\"></i></div>
+    <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
     <div class=\\"var-input__wrap\\">
       <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-32\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-32\\">请输入文本</label>
     </div>
-    <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: all 0ms;\\"></i></div>
+    <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
   </div>
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
