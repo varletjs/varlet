@@ -6,7 +6,9 @@ export type SpaceDirection = 'row' | 'column'
 
 export type SpaceJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between'
 
-export type SpaceSize = 'mini' | 'small' | 'normal' | 'large' | number | string | [number | string, number | string]
+export type SpaceInternalSize = 'mini' | 'small' | 'normal' | 'large'
+
+export type SpaceSize = SpaceInternalSize | number | string | [number | string, number | string]
 
 export interface SpaceProps {
   align?: SpaceAlign

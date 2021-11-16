@@ -1,34 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test div in space 1`] = `
-"<div class=\\"var-space var-space--row var-space--justifyContent__start var-space--warp var-space--marginTop__mini\\">
-  <div class=\\"var-space__item var-space__item--mini\\" style=\\"margin-left: 0px;\\">
+"<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin-top: -2px;\\">
+  <div style=\\"margin: 2px 2px 2px 0px;\\">
     <div></div>
   </div>
-  <div class=\\"var-space__item var-space__item--mini\\" style=\\"margin-left: 0px;\\">
+  <div style=\\"margin: 2px 2px;\\">
     <div></div>
   </div>
-  <div class=\\"var-space__item var-space__item--mini\\" style=\\"margin-left: 0px;\\">
+  <div style=\\"margin: 2px 2px;\\">
     <div></div>
   </div>
-  <div class=\\"var-space__item var-space__item--mini\\" style=\\"margin-right: 0px; margin-left: 0px;\\">
+  <div style=\\"margin: 2px 0px 2px 2px;\\">
     <div></div>
   </div>
 </div>"
 `;
 
 exports[`test div in space 2`] = `
-"<div class=\\"var-space var-space--row var-space--justifyContent__start var-space--warp\\">
-  <div class=\\"var-space__item var-space__item--mini\\" style=\\"margin-left: 0px;\\">
+"<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin-top: -5px;\\">
+  <div style=\\"margin: 5px 10px 5px 0px;\\">
     <div></div>
   </div>
-  <div class=\\"var-space__item var-space__item--mini\\" style=\\"margin-left: 0px;\\">
+  <div style=\\"margin: 5px 10px;\\">
     <div></div>
   </div>
-  <div class=\\"var-space__item var-space__item--mini\\" style=\\"margin-left: 0px;\\">
+  <div style=\\"margin: 5px 10px;\\">
     <div></div>
   </div>
-  <div class=\\"var-space__item var-space__item--mini\\" style=\\"margin-right: 0px; margin-left: 0px;\\">
+  <div style=\\"margin: 5px 0px 5px 10px;\\">
     <div></div>
   </div>
 </div>"
@@ -36,111 +36,111 @@ exports[`test div in space 2`] = `
 
 exports[`test space example 1`] = `
 "<div class=\\"app-type\\">基本用法</div>
-<div class=\\"var-space var-space--row var-space--justifyContent__start var-space--warp var-space--marginTop__normal\\">
-  <div class=\\"var-space__item var-space__item--normal\\" style=\\"margin-left: 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin-top: -4px;\\">
+  <div style=\\"margin: 4px 6px 4px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">Button1</div>
     </button></div>
-  <div class=\\"var-space__item var-space__item--normal\\" style=\\"margin-left: 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
+  <div style=\\"margin: 4px 6px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">Button2</div>
     </button></div>
-  <div class=\\"var-space__item var-space__item--normal\\" style=\\"margin-right: 0px; margin-left: 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
+  <div style=\\"margin: 4px 0px 4px 6px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">Button3</div>
     </button></div>
 </div>
 <div class=\\"app-type\\">垂直</div>
-<div class=\\"var-space var-space--column var-space--justifyContent__start var-space--warp var-space--marginTop__large\\">
-  <div class=\\"var-space__item var-space__item--large\\" style=\\"margin-top: 0px; margin-right: 0px; margin-left: 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
+<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
+  <div style=\\"margin: 0px 0px 12px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">Button1</div>
     </button></div>
-  <div class=\\"var-space__item var-space__item--large\\" style=\\"margin-top: 0px; margin-right: 0px; margin-left: 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
+  <div style=\\"margin: 0px 0px 12px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">Button2</div>
     </button></div>
-  <div class=\\"var-space__item var-space__item--large\\" style=\\"margin: 0px 0px 0px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
+  <div style=\\"margin: 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">Button3</div>
     </button></div>
 </div>
 <div class=\\"app-type\\">间隙</div>
-<div class=\\"var-space var-space--row var-space--justifyContent__start var-space--warp\\">
-  <div class=\\"var-space__item\\" style=\\"margin: 15px 10px 0px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin-top: -15px;\\">
+  <div style=\\"margin: 15px 5px 15px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">Button1</div>
     </button></div>
-  <div class=\\"var-space__item\\" style=\\"margin: 15px 10px 0px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
+  <div style=\\"margin: 15px 5px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">Button2</div>
     </button></div>
-  <div class=\\"var-space__item\\" style=\\"margin: 15px 0px 0px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
+  <div style=\\"margin: 15px 0px 15px 5px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">Button3</div>
     </button></div>
 </div>
 <div class=\\"app-type\\">靠右</div>
-<div class=\\"var-space var-space--row var-space--justifyContent__end var-space--warp var-space--marginTop__normal\\">
-  <div class=\\"var-space__item var-space__item--normal\\" style=\\"margin-left: 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: end; flex-wrap: wrap; margin-top: -4px;\\">
+  <div style=\\"margin: 4px 6px 4px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">Button1</div>
     </button></div>
-  <div class=\\"var-space__item var-space__item--normal\\" style=\\"margin-right: 0px; margin-left: 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
+  <div style=\\"margin: 4px 0px 4px 6px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--1\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">Button2</div>
     </button></div>
 </div>"
 `;
 
-exports[`test space props 1`] = `"<div class=\\"var-space var-space--row var-space--justifyContent__start var-space--warp var-space--marginTop__normal\\"></div>"`;
+exports[`test space props 1`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 2`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__start var-space--warp var-space--marginTop__normal\\"></div>"`;
+exports[`test space props 2`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 3`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__start var-space--warp var-space--marginTop__mini\\"></div>"`;
+exports[`test space props 3`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 4`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__start var-space--warp var-space--marginTop__small\\"></div>"`;
+exports[`test space props 4`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 5`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__start var-space--warp var-space--marginTop__normal\\"></div>"`;
+exports[`test space props 5`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 6`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__start var-space--warp var-space--marginTop__large\\"></div>"`;
+exports[`test space props 6`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 7`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__start var-space--warp\\"></div>"`;
+exports[`test space props 7`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 8`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__start var-space--warp\\"></div>"`;
+exports[`test space props 8`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 9`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__start var-space--warp\\"></div>"`;
+exports[`test space props 9`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 10`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__start var-space--warp\\"></div>"`;
+exports[`test space props 10`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 11`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__start var-space--nowarp\\"></div>"`;
+exports[`test space props 11`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: nowrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 12`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__start var-space--nowarp\\"></div>"`;
+exports[`test space props 12`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: nowrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 13`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__start var-space--nowarp\\"></div>"`;
+exports[`test space props 13`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: nowrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 14`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__end var-space--nowarp\\"></div>"`;
+exports[`test space props 14`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: end; flex-wrap: nowrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 15`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__center var-space--nowarp\\"></div>"`;
+exports[`test space props 15`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: center; flex-wrap: nowrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 16`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__space-between var-space--nowarp\\"></div>"`;
+exports[`test space props 16`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-between; flex-wrap: nowrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 17`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__space-around var-space--nowarp\\"></div>"`;
+exports[`test space props 17`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; margin-top: -4px;\\"></div>"`;
 
-exports[`test space props 18`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__space-around var-space--start var-space--nowarp\\"></div>"`;
+exports[`test space props 18`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; margin-top: -4px; align-items: start;\\"></div>"`;
 
-exports[`test space props 19`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__space-around var-space--center var-space--nowarp\\"></div>"`;
+exports[`test space props 19`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; margin-top: -4px; align-items: center;\\"></div>"`;
 
-exports[`test space props 20`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__space-around var-space--end var-space--nowarp\\"></div>"`;
+exports[`test space props 20`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; margin-top: -4px; align-items: end;\\"></div>"`;
 
-exports[`test space props 21`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__space-around var-space--stretch var-space--nowarp\\"></div>"`;
+exports[`test space props 21`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; margin-top: -4px; align-items: stretch;\\"></div>"`;
 
-exports[`test space props 22`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__space-around var-space--baseline var-space--nowarp\\"></div>"`;
+exports[`test space props 22`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; margin-top: -4px; align-items: baseline;\\"></div>"`;
 
-exports[`test space props 23`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__space-around var-space--initial var-space--nowarp\\"></div>"`;
+exports[`test space props 23`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; margin-top: -4px; align-items: initial;\\"></div>"`;
 
-exports[`test space props 24`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__space-around var-space--inherit var-space--nowarp\\"></div>"`;
+exports[`test space props 24`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; margin-top: -4px; align-items: inherit;\\"></div>"`;
 
-exports[`test space props 25`] = `"<div class=\\"var-space var-space--inline var-space--column var-space--justifyContent__space-around var-space--inherit var-space--nowarp\\"></div>"`;
+exports[`test space props 25`] = `"<div class=\\"var-space var--box var-space--inline\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; margin-top: -4px; align-items: inherit;\\"></div>"`;
 
-exports[`test space props 26`] = `"<div class=\\"var-space var-space--column var-space--justifyContent__space-around var-space--inherit var-space--nowarp\\"></div>"`;
+exports[`test space props 26`] = `"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; margin-top: -4px; align-items: inherit;\\"></div>"`;

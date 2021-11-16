@@ -4,19 +4,30 @@ import Space from '..'
 import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
 
-test('test space example', () => {
-    const wrapper = mount(example)
-    expect(wrapper.html()).toMatchSnapshot()
-    wrapper.unmount()
-})
-
 test('test space plugin', () => {
     const app = createApp({}).use(Space)
     expect(app.component(Space.name)).toBeTruthy()
 })
 
 test('test space props', async () => {
-    const wrapper = mount(VarSpace)
+
+    const template = `
+        <var-space>
+            <var-button>Button1</var-button>
+            <var-button>Button2</var-button>
+            <var-button>Button3</var-button>
+        </var-space>
+    `
+
+    const wrapper = mount({
+        components: {
+            [VarSpace.name]: VarSpace
+        },
+        template
+    })
+
+    await delay(0)
+
 
     await wrapper.setProps({ direction: 'row' })
     expect(wrapper.html()).toMatchSnapshot()
