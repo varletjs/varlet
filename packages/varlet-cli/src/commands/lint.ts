@@ -42,7 +42,7 @@ export async function lint() {
     const type = stdout ? 'warn' : 'succeed'
 
     spinner[type](stdout || 'eslint success')
-  } catch (e) {
+  } catch (e: any) {
     spinner!.fail(e.toString())
     process.exit(1)
   }
