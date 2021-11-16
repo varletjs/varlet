@@ -12,6 +12,7 @@ The out-of-the-box `Vue3 component library` rapid prototyping tool provides a se
 - 6.Unit testing tools out of the box
 - 7.Out-of-the-box code publishing tool, publish to npm and github, and automatically generate a change log
 - 8.Support `Typescript`
+- 9.Support `Dark Mode`
 
 ### Quickstart
 
@@ -49,6 +50,7 @@ The `varlet.config.js` in the project root directory is used to manage the speci
 | `defaultLanguage` | Document default language | _string_ | `zh-CN` |
 | `useMobile` | Whether to display the right mobile phone preview | _boolean_ | `false` |
 | `themes` | Document themes | _SiteThemes_ | `-` |
+| `darkThemes` | Document dark mode themes | _SiteThemes_ | `-` |
 | `highlight` | Document code snippet style related | _SiteHighlight_ | `-` |
 | `analysis` | Document statistics related | _SiteAnalysis_ | `-` |
 | `pc` | PC-side document structure configuration | _SitePC_ | `-` |
@@ -62,6 +64,14 @@ subject to the theme of the `varlet` official document
 
 | Variable |
 | ----- |
+| `color-body` |
+| `color-bar` |
+| `color-sub-bar` |
+| `color-text` |
+| `color-sub-text` |
+| `color-border` |
+| `color-shadow` |
+| `color-introduce-border` |
 | `color-primary` |
 | `color-link` |
 | `color-type` |
@@ -70,10 +80,10 @@ subject to the theme of the `varlet` official document
 | `color-side-bar` |
 | `color-side-bar-active-background` |
 | `color-app-bar` |
-| `color-mobile-cell-hover` |
-| `color-mobile-cell-hover-background` |
+| `color-nav-button-hover-background` |
 | `color-pc-language-active` |
 | `color-pc-language-active-background` |
+| `color-mobile-cell-hover` |
 | `color-mobile-language-active` |
 | `color-mobile-language-active-background` |
 

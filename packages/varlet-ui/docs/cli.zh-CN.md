@@ -12,6 +12,7 @@
 - 6.开箱即用的单元测试工具
 - 7.开箱即用的代码发布工具,发布到npm和github,并自动生成更新日志
 - 8.支持`Typescript`
+- 9.支持`暗黑模式`
 
 ### 快速开始
 
@@ -47,6 +48,7 @@ yarn dev
 | `defaultLanguage` | 文档默认语言 | _string_ | `zh-CN` |
 | `useMobile` | 是否显示右侧手机预览 | _boolean_ | `false` |
 | `themes` | 文档主题 | _SiteThemes_ | `-` |
+| `darkThemes` | 暗黑模式文档主题 | _SiteThemes_ | `-` |
 | `highlight` | 文档代码片段样式相关 | _SiteHighlight_ | `-` |
 | `analysis` | 文档统计相关 | _SiteAnalysis_ | `-` |
 | `pc` | pc端文档结构配置 | _SitePC_ | `-` |
@@ -58,6 +60,14 @@ yarn dev
 
 | 参数 |
 | ----- |
+| `color-body` |
+| `color-bar` |
+| `color-sub-bar` |
+| `color-text` |
+| `color-sub-text` |
+| `color-border` |
+| `color-shadow` |
+| `color-introduce-border` |
 | `color-primary` |
 | `color-link` |
 | `color-type` |
@@ -66,10 +76,10 @@ yarn dev
 | `color-side-bar` |
 | `color-side-bar-active-background` |
 | `color-app-bar` |
-| `color-mobile-cell-hover` |
-| `color-mobile-cell-hover-background` |
+| `color-nav-button-hover-background` |
 | `color-pc-language-active` |
 | `color-pc-language-active-background` |
+| `color-mobile-cell-hover` |
 | `color-mobile-language-active` |
 | `color-mobile-language-active-background` |
 
