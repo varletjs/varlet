@@ -116,6 +116,7 @@
     background: var(--uploader-file-cover-background);
     object-fit: var(--uploader-file-cover-fit);
     pointer-events: none;
+    transition: background-color 0.25s;
   }
 
   &__file-close {
@@ -199,6 +200,7 @@
       z-index: 1;
       animation: var-uploader-loading-animation 0.6s infinite;
       background: var(--uploader-loading-background);
+      transition: background-color 0.25s;
     }
   }
 
