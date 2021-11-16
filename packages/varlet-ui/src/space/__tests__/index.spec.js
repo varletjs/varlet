@@ -2,6 +2,8 @@ import VarSpace from '../Space'
 import Space from '..'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { delay } from '../../utils/jest'
+
 
 test('test space plugin', () => {
     const app = createApp({}).use(Space)
@@ -108,7 +110,7 @@ test('test space props', async () => {
     wrapper.unmount()
 })
 
-test('test div in space', async () => {
+test('test child in space', async () => {
     const template = `
         <var-space :size="size" :direction="direction" :inline="inline">
             <var-button>Button1</var-button>
