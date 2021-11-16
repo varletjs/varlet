@@ -19,6 +19,7 @@ import context from '../../context'
 import { onUnmounted, ref } from 'vue'
 import { use, pack } from './locale'
 import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'PickerExample',
@@ -54,6 +55,7 @@ export default {
     }
 
     watchLang(use)
+    watchDarkMode()
 
     const prevTouchmoveForbid = context.touchmoveForbid
     watchPlatform((platform) => {
