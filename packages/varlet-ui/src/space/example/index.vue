@@ -25,6 +25,24 @@
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
   </var-space>
+
+  <app-type>{{ pack.around }}</app-type>
+  <var-space justify="space-around">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+  </var-space>
+
+  <app-type>{{ pack.center }}</app-type>
+  <var-space justify="center">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+  </var-space>
+
+  <app-type>{{ pack.between }}</app-type>
+  <var-space justify="space-between">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+  </var-space>
 </template>
 <script>
 import AppType from '@varlet/cli/site/mobile/components/AppType'

@@ -34,6 +34,34 @@ exports[`test div in space 2`] = `
 </div>"
 `;
 
+exports[`test div in space 3`] = `
+"<div class=\\"var-space var--box var-space--inline\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap; margin-top: -5px; margin-bottom: -5px;\\">
+  <div style=\\"margin: 0px 0px 10px 0px;\\">
+    <var-button>Button1</var-button>
+  </div>
+  <div style=\\"margin: 0px 0px 10px 0px;\\">
+    <var-button>Button2</var-button>
+  </div>
+  <div style=\\"margin: 0px;\\">
+    <var-button>Button3</var-button>
+  </div>
+</div>"
+`;
+
+exports[`test div in space 4`] = `
+"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap; margin-top: -5px; margin-bottom: -5px;\\">
+  <div style=\\"margin: 0px 0px 10px 0px;\\">
+    <var-button>Button1</var-button>
+  </div>
+  <div style=\\"margin: 0px 0px 10px 0px;\\">
+    <var-button>Button2</var-button>
+  </div>
+  <div style=\\"margin: 0px;\\">
+    <var-button>Button3</var-button>
+  </div>
+</div>"
+`;
+
 exports[`test space example 1`] = `
 "<div class=\\"app-type\\">基本用法</div>
 <div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin-top: -4px;\\">

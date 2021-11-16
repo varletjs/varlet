@@ -54,6 +54,33 @@ createApp().use(Space)
 </var-space>
 ```
 
+### Space Around
+
+```html
+<var-space justify="space-around">
+  <var-button>Button1</var-button>
+  <var-button>Button2</var-button>
+</var-space>
+```
+
+### Align Center
+
+```html
+<var-space justify="center">
+  <var-button>Button1</var-button>
+  <var-button>Button2</var-button>
+</var-space>
+```
+
+### Space Between
+
+```html
+<var-space justify="space-between">
+  <var-button>Button1</var-button>
+  <var-button>Button2</var-button>
+</var-space>
+```
+
 ## API
 
 ### Space Props
