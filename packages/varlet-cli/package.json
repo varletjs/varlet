@@ -79,7 +79,7 @@
     "vite": "2.6.5",
     "vite-plugin-html": "^2.1.0",
     "vue-jest": "^5.0.0-alpha.8",
-    "vue-router": "4.0.0-rc.1"
+    "vue-router": "4.0.12"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.12",
