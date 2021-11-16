@@ -59,7 +59,7 @@ export default defineComponent({
             justifyContent: justify,
             alignItems: align,
             flexWrap: wrap ? 'wrap' : 'nowrap',
-            marginTop: direction === 'row' ? `-${y / 2}px` : undefined,
+            margin: direction === 'row' ? `-${y / 2}px 0` : undefined,
           }}
         >
           {spacers}

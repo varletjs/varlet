@@ -1,14 +1,9 @@
-import example from '../example'
 import VarSpace from '../Space'
 import Space from '..'
 import { mount } from '@vue/test-utils'
-import { createApp, h } from 'vue'
+import { createApp } from 'vue'
+import { delay } from '../../utils/jest'
 
-test('test space example', () => {
-    const wrapper = mount(example)
-    expect(wrapper.html()).toMatchSnapshot()
-    wrapper.unmount()
-})
 
 test('test space plugin', () => {
     const app = createApp({}).use(Space)
@@ -16,7 +11,22 @@ test('test space plugin', () => {
 })
 
 test('test space props', async () => {
-    const wrapper = mount(VarSpace)
+    const template = `
+        <var-space>
+            <var-button>Button1</var-button>
+            <var-button>Button2</var-button>
+            <var-button>Button3</var-button>
+        </var-space>
+    `
+
+    const wrapper = mount({
+        components: {
+            [VarSpace.name]: VarSpace
+        },
+        template
+    })
+
+    await delay(0)
 
     await wrapper.setProps({ direction: 'row' })
     expect(wrapper.html()).toMatchSnapshot()
@@ -100,25 +110,39 @@ test('test space props', async () => {
     wrapper.unmount()
 })
 
-test('test div in space', async () => {
+test('test child in space', async () => {
+    const template = `
+        <var-space :size="size" :direction="direction" :inline="inline">
+            <var-button>Button1</var-button>
+            <var-button>Button2</var-button>
+            <var-button>Button3</var-button>
+        </var-space>
+    `
     const wrapper = mount({
+        components: {
+            [VarSpace.name]: VarSpace
+        },
         data: () => ({
-            size: 'mini'
+            size: 'mini',
+            direction:'row',
+            inline: true
         }),
-        render() {
-            return h(
-                VarSpace,
-                {
-                    size: this.size
-                },
-                () => [h('div'), h('div'), h('div'), h('div')]
-            )
-        }
+        template
     })
     expect(wrapper.html()).toMatchSnapshot()
 
     await wrapper.setData({
         size: ['10px', '20px']
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await wrapper.setData({
+        direction: 'column'
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await wrapper.setData({
+        inline: false
     })
     expect(wrapper.html()).toMatchSnapshot()
     wrapper.unmount()

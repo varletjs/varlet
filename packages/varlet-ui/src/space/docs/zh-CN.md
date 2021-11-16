@@ -52,6 +52,34 @@ createApp().use(Space)
 </var-space>
 ```
 
+### 环绕
+
+```html
+<var-space justify="space-around">
+  <var-button>Button1</var-button>
+  <var-button>Button2</var-button>
+</var-space>
+```
+
+### 居中
+
+```html
+<var-space justify="center">
+  <var-button>Button1</var-button>
+  <var-button>Button2</var-button>
+</var-space>
+```
+
+### 两端对齐
+
+```html
+<var-space justify="space-between">
+  <var-button>Button1</var-button>
+  <var-button>Button2</var-button>
+</var-space>
+```
+
+
 ## API
 
 ### 属性
