@@ -4,7 +4,9 @@ import VarRow from '../Row'
 import Col from '../../col'
 import VarCol from '../../col/Col'
 import { mount } from '@vue/test-utils'
-import { createApp, h } from 'vue'
+import { createApp } from 'vue'
+import { delay } from '../../utils/jest'
+
 
 test('test row example', () => {
   const wrapper = mount(example)
@@ -19,7 +21,16 @@ test('test row & col plugin', () => {
 })
 
 test('test row flex', async () => {
-  const wrapper = mount(VarRow)
+  const template = `<var-row></var-row>`
+
+  const wrapper = mount({
+    components: {
+      [VarRow.name]: VarRow
+    },
+    template,
+  })
+
+  await delay(0)
 
   await wrapper.setProps({ justify: 'flex-start' })
   expect(wrapper.html()).toMatchSnapshot()
@@ -49,7 +60,13 @@ test('test row flex', async () => {
 })
 
 test('test row onClick null callback', () => {
-  const wrapper = mount(VarRow)
+  const template = `<var-row></var-row>`
+  const wrapper = mount({
+    components: {
+      [VarRow.name]: VarRow
+    },
+    template
+  })
   wrapper.trigger('click')
   wrapper.unmount()
 })
@@ -68,20 +85,22 @@ test('test row onClick', () => {
 })
 
 test('test col in row', async () => {
+  const template = `
+    <var-row>
+      <var-col :span='span' :offset='offset'>1</var-col>
+      <var-col :span='12'>2</var-col>
+    </var-row>
+  `
   const wrapper = mount({
     data: () => ({
       span: 8,
       offset: 4,
     }),
-    render() {
-      return h(
-        VarRow,
-        {
-          gutter: '10px',
-        },
-        () => [h(VarCol, { span: this.span, offset: this.offset }), h(VarCol, { span: 12 })]
-      )
+    components:{
+      [VarCol.name]:VarCol,
+      [VarRow.name]:VarRow
     },
+    template
   })
   expect(wrapper.html()).toMatchSnapshot()
 

@@ -244,6 +244,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Space 间隔',
+          'en-US': 'Space',
+        },
+        doc: 'space',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Divider 分割线',
           'en-US': 'Divider',
         },
