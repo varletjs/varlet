@@ -3,13 +3,13 @@
 exports[`test child in space 1`] = `
 "<div class=\\"var-space var--box var-space--inline\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -2px 0px;\\">
   <div style=\\"margin: 2px 2px 2px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 2px 2px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 2px 0px 2px 2px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -17,13 +17,13 @@ exports[`test child in space 1`] = `
 exports[`test child in space 2`] = `
 "<div class=\\"var-space var--box var-space--inline\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
   <div style=\\"margin: 5px 10px 5px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 5px 10px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 5px 0px 5px 10px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -31,13 +31,13 @@ exports[`test child in space 2`] = `
 exports[`test child in space 3`] = `
 "<div class=\\"var-space var--box var-space--inline\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
   <div style=\\"margin: 0px 0px 10px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 10px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -45,13 +45,13 @@ exports[`test child in space 3`] = `
 exports[`test child in space 4`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
   <div style=\\"margin: 0px 0px 10px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 10px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -59,13 +59,13 @@ exports[`test child in space 4`] = `
 exports[`test space props 1`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
   <div style=\\"margin: 4px 6px 4px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 4px 6px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 4px 0px 4px 6px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -73,13 +73,13 @@ exports[`test space props 1`] = `
 exports[`test space props 2`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
   <div style=\\"margin: 0px 0px 8px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 8px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -87,13 +87,13 @@ exports[`test space props 2`] = `
 exports[`test space props 3`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
   <div style=\\"margin: 0px 0px 4px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 4px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -101,13 +101,13 @@ exports[`test space props 3`] = `
 exports[`test space props 4`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
   <div style=\\"margin: 0px 0px 6px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 6px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -115,13 +115,13 @@ exports[`test space props 4`] = `
 exports[`test space props 5`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
   <div style=\\"margin: 0px 0px 8px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 8px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -129,13 +129,13 @@ exports[`test space props 5`] = `
 exports[`test space props 6`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
   <div style=\\"margin: 0px 0px 12px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 12px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -143,13 +143,13 @@ exports[`test space props 6`] = `
 exports[`test space props 7`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
   <div style=\\"margin: 0px 0px 10px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 10px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -157,13 +157,13 @@ exports[`test space props 7`] = `
 exports[`test space props 8`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
   <div style=\\"margin: 0px 0px 10px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 10px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -171,13 +171,13 @@ exports[`test space props 8`] = `
 exports[`test space props 9`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -185,13 +185,13 @@ exports[`test space props 9`] = `
 exports[`test space props 10`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -199,13 +199,13 @@ exports[`test space props 10`] = `
 exports[`test space props 11`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: nowrap;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -213,13 +213,13 @@ exports[`test space props 11`] = `
 exports[`test space props 12`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: nowrap;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -227,13 +227,13 @@ exports[`test space props 12`] = `
 exports[`test space props 13`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: nowrap;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -241,13 +241,13 @@ exports[`test space props 13`] = `
 exports[`test space props 14`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: end; flex-wrap: nowrap;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -255,13 +255,13 @@ exports[`test space props 14`] = `
 exports[`test space props 15`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: center; flex-wrap: nowrap;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -269,13 +269,13 @@ exports[`test space props 15`] = `
 exports[`test space props 16`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-between; flex-wrap: nowrap;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -283,13 +283,13 @@ exports[`test space props 16`] = `
 exports[`test space props 17`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -297,13 +297,13 @@ exports[`test space props 17`] = `
 exports[`test space props 18`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: start;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -311,13 +311,13 @@ exports[`test space props 18`] = `
 exports[`test space props 19`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: center;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -325,13 +325,13 @@ exports[`test space props 19`] = `
 exports[`test space props 20`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: end;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -339,13 +339,13 @@ exports[`test space props 20`] = `
 exports[`test space props 21`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: stretch;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -353,13 +353,13 @@ exports[`test space props 21`] = `
 exports[`test space props 22`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: baseline;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -367,13 +367,13 @@ exports[`test space props 22`] = `
 exports[`test space props 23`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: initial;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -381,13 +381,13 @@ exports[`test space props 23`] = `
 exports[`test space props 24`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: inherit;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -395,13 +395,13 @@ exports[`test space props 24`] = `
 exports[`test space props 25`] = `
 "<div class=\\"var-space var--box var-space--inline\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: inherit;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;
@@ -409,13 +409,13 @@ exports[`test space props 25`] = `
 exports[`test space props 26`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: inherit;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button1</var-button>
+    <div>div1</div>
   </div>
   <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <var-button>Button2</var-button>
+    <div>div2</div>
   </div>
   <div style=\\"margin: 0px;\\">
-    <var-button>Button3</var-button>
+    <div>div3</div>
   </div>
 </div>"
 `;

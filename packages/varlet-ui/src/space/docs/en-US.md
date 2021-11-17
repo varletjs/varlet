@@ -83,7 +83,6 @@ createApp().use(Space)
 
 ## API
 
-### Space Props
 
 |     Prop      |      Description     |     Type    |    Default    |
 | ------------- | ------------ | ---------- | ----------- |

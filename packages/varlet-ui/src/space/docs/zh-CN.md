@@ -84,8 +84,6 @@ createApp().use(Space)
 
 ### 属性
 
-### Space Props
-
 |     参数      |      说明     |     类型    |    默认值    |
 | ------------- | ------------ | ---------- | ----------- |
 |    `align`   |   垂直排列方式 可选值为`stretch` `center` `start` `end` `baseline` | _string_   |   `-`|
