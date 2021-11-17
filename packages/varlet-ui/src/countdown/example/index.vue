@@ -41,8 +41,7 @@ import Snackbar from '../../snackbar'
 import VarButton from '../../button'
 import { ref } from 'vue'
 import { pack, use } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
-import { watchDarkMode } from '../../utils/components'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'CountdownExample',

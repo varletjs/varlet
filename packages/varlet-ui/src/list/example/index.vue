@@ -39,9 +39,8 @@ import VarTab from '../../tab'
 import VarTabsItems from '../../tabs-items'
 import VarTabItem from '../../tab-item'
 import { reactive, toRefs } from 'vue'
-import { watchLang } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
-import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'ListExample',

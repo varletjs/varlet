@@ -143,8 +143,7 @@ import VarTabItem from '../../tab-item'
 import context from '../../context'
 import { use, pack } from './locale'
 import { computed, onUnmounted, reactive, ref, toRefs } from 'vue'
-import { watchPlatform, watchLang } from '@varlet/cli/site/utils'
-import { watchDarkMode } from '../../utils/components'
+import { watchPlatform, watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'TabsExample',

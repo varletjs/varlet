@@ -26,8 +26,7 @@
 <script>
 import VarTable from '..'
 import VarPagination from '../../pagination'
-import { watchLang } from '@varlet/cli/site/utils'
-import { watchDarkMode } from '../../utils/components'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 import { gen } from './index'
 import { ref } from 'vue'

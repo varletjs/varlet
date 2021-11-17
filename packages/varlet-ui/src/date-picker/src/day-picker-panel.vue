@@ -40,16 +40,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, onMounted, reactive } from 'vue'
 import dayjs from 'dayjs/esm'
 import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore'
 import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter'
 import PanelHeader from './panel-header.vue'
 import VarButton from '../../button'
+import { defineComponent, ref, computed, watch, onMounted, reactive } from 'vue'
 import { WEEK_HEADER } from '../props'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
-import { watchDarkMode } from '../../utils/components'
+import { watchDarkMode } from '@varlet/cli/site/utils'
 import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
 import type { Choose, Preview, ComponentProps, Week, WeekDict, PanelBtnDisabled } from '../props'
 

@@ -61,8 +61,7 @@ import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
 import context from '../../context'
 import { onUnmounted, reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
-import { watchDarkMode } from '../../utils/components'
+import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'RateExample',

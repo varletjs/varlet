@@ -8,7 +8,7 @@
 <script>
 import VarBackTop from '..'
 import VarCell from '../../cell'
-import { watchDarkMode } from '../../utils/components'
+import { watchDarkMode } from '@varlet/cli/site/utils'
 
 const lists = [...Array(100).keys()]
 

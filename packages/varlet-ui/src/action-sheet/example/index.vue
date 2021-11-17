@@ -28,11 +28,10 @@ import ActionSheet from '../index'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarButton from '../../button'
 import Snackbar from '../../snackbar'
+import context from '../../context'
 import { ref, reactive, onUnmounted } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
-import context from '../../context'
-import { watchDarkMode } from '../../utils/components'
+import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'ActionSheetExample',

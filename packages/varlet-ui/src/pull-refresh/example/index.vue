@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import { onMounted, ref, onBeforeUnmount } from 'vue'
 import VarPullRefresh from '..'
 import VarCell from '../../cell'
-import { watchDarkMode } from '../../utils/components'
+import { onMounted, ref, onBeforeUnmount } from 'vue'
+import { watchDarkMode } from '@varlet/cli/site/utils'
 
 const data1 = Array(10).fill('List Item')
 const data2 = Array(10).fill('This is new List Item')

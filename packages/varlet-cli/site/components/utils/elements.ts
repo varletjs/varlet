@@ -73,7 +73,7 @@ export const toSizeUnit = (value: unknown) => {
   return `${toPxNum(value)}px`
 }
 
-export function formatStyleVars(styleVars: StyleVars) {
+export function formatStyleVars(styleVars: StyleVars | null) {
   return Object.entries(styleVars ?? {}).reduce((styles, [key, value]) => {
     const cssVar = key.startsWith('--') ? key : `--${kebabCase(key)}`
     styles[cssVar] = value

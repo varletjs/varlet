@@ -15,12 +15,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue'
 import VarButton from '../../button'
 import VarIcon from '../../icon'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
-import { watchDarkMode } from '../../utils/components'
+import { watchDarkMode } from '@varlet/cli/site/utils'
 import type { Ref, ComputedRef, PropType } from 'vue'
 import type { Preview, PanelBtnDisabled } from '../props'
 

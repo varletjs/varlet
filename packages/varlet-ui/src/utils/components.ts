@@ -285,11 +285,3 @@ export function useTeleport() {
     disabled,
   }
 }
-
-export function watchDarkMode(cb?: (themes: 'darkThemes' | 'themes') => void) {
-  watchThemes((themes) => {
-    StyleProvider(themes === 'darkThemes' ? dark : null)
-
-    cb?.(themes)
-  })
-}

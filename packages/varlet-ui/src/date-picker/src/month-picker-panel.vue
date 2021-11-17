@@ -40,7 +40,7 @@ import PanelHeader from './panel-header.vue'
 import VarButton from '../../button'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
-import { watchDarkMode } from '../../utils/components'
+import { watchDarkMode } from '@varlet/cli/site/utils'
 import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
 import type { Choose, Preview, ComponentProps, Month, MonthDict, PanelBtnDisabled } from '../props'
 

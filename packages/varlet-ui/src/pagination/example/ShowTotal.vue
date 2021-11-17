@@ -17,8 +17,7 @@
 
 <script>
 import VarPagination from '../Pagination'
-import { watchLang } from '@varlet/cli/site/utils'
-import { watchDarkMode } from '../../utils/components'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { pack, use } from './locale'
 
 export default {

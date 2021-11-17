@@ -16,8 +16,7 @@ import VarIndexAnchor from '../../index-anchor/IndexAnchor.vue'
 import VarIndexBar from '..'
 import VarCell from '../../cell'
 import { pack, use } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
-import { watchDarkMode } from '../../utils/components'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'IndexBarExample',

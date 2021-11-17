@@ -1,6 +1,7 @@
 import { onMounted, onUnmounted } from 'vue'
 import { get } from 'lodash-es'
 import { formatStyleVars } from './components/utils/elements'
+import dark from '@varlet/ui/src/themes/dark'
 
 export * from './components/utils/components'
 export * from './components/utils/elements'
@@ -10,7 +11,7 @@ export type StyleVars = Record<string, string>
 
 const mountedVarKeys: string[] = []
 
-function StyleProvider(styleVars: StyleVars = {}) {
+function StyleProvider(styleVars: StyleVars | null = {}) {
   mountedVarKeys.forEach((key) => document.documentElement.style.removeProperty(key))
   mountedVarKeys.length = 0
 
@@ -147,4 +148,12 @@ export function getBrowserThemes(): 'darkThemes' | 'themes' {
   }
 
   return currentThemes
+}
+
+export function watchDarkMode(cb?: (themes: 'darkThemes' | 'themes') => void) {
+  watchThemes((themes) => {
+    StyleProvider(themes === 'darkThemes' ? dark : null)
+
+    cb?.(themes)
+  })
 }

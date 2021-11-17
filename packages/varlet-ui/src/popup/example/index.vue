@@ -55,10 +55,9 @@ import VarButton from '../../button'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
-import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
+import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
 import { onUnmounted, reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
-import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'PopupExample',

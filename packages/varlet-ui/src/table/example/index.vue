@@ -52,9 +52,8 @@ import Table from '..'
 import Pagination from '../../pagination'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { ref } from 'vue'
-import { watchLang } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
-import { watchDarkMode } from '../../utils/components'
 
 export const gen = (current, size) => {
   return Array.from({ length: size }).map((_, index) => {

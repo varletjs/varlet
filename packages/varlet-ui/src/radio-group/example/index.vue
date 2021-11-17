@@ -50,9 +50,8 @@ import VarRadio from '../../radio'
 import VarIcon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
 import { toRefs, reactive } from 'vue'
-import { watchLang } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
-import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'RadioGroupExample',

@@ -65,8 +65,7 @@ import VarMenu from '../../menu'
 import VarButton from '../../button'
 import VarCell from '../../cell'
 import { pack, use } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
-import { watchDarkMode } from '../../utils/components'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'AppBarExample',
