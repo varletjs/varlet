@@ -26,7 +26,7 @@ Varlet is a Material design mobile component library developed based on `Vue3`, 
 
 
 ### Features
- 1. Provide more than 40 high quality general purpose components
+ 1. Provide 50 high quality general purpose components
  2. Components are very lightweight
  3. Developed by Chinese, complete Chinese and English documentation and logistics support
  4. Support on-demand introduction
@@ -36,6 +36,7 @@ Varlet is a Material design mobile component library developed based on `Vue3`, 
  8. Support the SSR
  9. Support the Typescript
  10. More than 90 percent unit test coverage, providing stability assurance
+ 11. Support dark mode
 
 ### Install
 
