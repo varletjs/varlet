@@ -43,6 +43,7 @@ declare module 'vue' {
     VarSelect: typeof import('@varlet/ui')['_SelectComponent']
     VarSlider: typeof import('@varlet/ui')['_SliderComponent']
     VarSnackbar: typeof import('@varlet/ui')['_SnackbarComponent']
+    VarSpace: typeof import('@varlet/ui')['_SpaceComponent']
     VarStep: typeof import('@varlet/ui')['_StepComponent']
     VarSteps: typeof import('@varlet/ui')['_StepsComponent']
     VarSticky: typeof import('@varlet/ui')['_StickyComponent']
