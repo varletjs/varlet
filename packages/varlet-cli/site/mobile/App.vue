@@ -214,7 +214,7 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background: var(--site-config-color-bar);
   color: var(--site-config-color-text);
-  transition: background .25s, color .25s;
+  transition: background-color .25s, color .25s;
 }
 
 ::-webkit-scrollbar {
