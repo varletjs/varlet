@@ -21,10 +21,10 @@ import skeleton from './skeleton'
 import steps from './steps'
 import switchThemes from './switch'
 import tab from './tab'
-import tabItem from './tab-item'
 import table from './table'
 import timePicker from './timePicker'
 import uploader from './uploader'
+import tabs from './tabs'
 
 export default {
   // common
@@ -43,8 +43,8 @@ export default {
   ...timePicker,
   ...datePicker,
   ...skeleton,
+  ...tabs,
   ...tab,
-  ...tabItem,
   ...popup,
   ...dialog,
   ...actionSheet,

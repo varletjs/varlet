@@ -338,7 +338,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--tabs-padding` | `12px` |
 | `--tabs-indicator-size` | `2px` |
 | `--tabs-indicator-background` | `var(--color-primary)` |
-| `--tabs-background` | `transparent` |
+| `--tabs-background` | `#fff` |
 
 ### Tab Variables
 
