@@ -75,6 +75,6 @@ After completing the configuration, you can use it as follows
 ```
 
 
-Note: Components or directive used outside the template cannot be scanned by the plugin and still need to be imported manually. 
-For example, the function call method of the component `Snackbar.loading` or `v-ripple`
+Special note: Function components called outside the template cannot be scanned by the plug-in, and styles still need to be introduced manually. For example, `Snackbar` is a functional component.
+
 
