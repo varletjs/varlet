@@ -33,8 +33,10 @@ export default {
     align-items: center;
     width: 25vw;
     height: 25vw;
-    color: #888;
+    color: var(--site-config-color-sub-text);
     margin: 2vw;
+    background: var(--site-config-color-sub-bar);
+    transition: 0.25s background-color;
   }
 }
 </style>

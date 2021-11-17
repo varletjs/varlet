@@ -1,3 +1,5 @@
+import StyleProvider from '../style-provider'
+import dark from '../themes/dark'
 import {
   createApp,
   h,
@@ -17,6 +19,7 @@ import {
 } from 'vue'
 import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref } from 'vue'
 import { isArray, removeItem } from './shared'
+import { watchThemes } from '@varlet/cli/site/utils'
 
 export interface MountInstance {
   instance: any
@@ -281,4 +284,12 @@ export function useTeleport() {
   return {
     disabled,
   }
+}
+
+export function watchDarkMode(cb?: (themes: 'darkThemes' | 'themes') => void) {
+  watchThemes((themes) => {
+    StyleProvider(themes === 'darkThemes' ? dark : null)
+
+    cb?.(themes)
+  })
 }

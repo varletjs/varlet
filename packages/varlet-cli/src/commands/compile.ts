@@ -15,7 +15,7 @@ export async function runTask(taskName: string, task: () => any) {
   try {
     await task()
     s.succeed(`Compilation ${taskName} completed!`)
-  } catch (e) {
+  } catch (e: any) {
     s.fail(`Compilation ${taskName} failed!`)
     logger.error(e.toString())
   }

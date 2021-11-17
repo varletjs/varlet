@@ -9,6 +9,9 @@ exports[`test chip color & textColor 1`] = `
 exports[`test chip example 1`] = `
 "<div class=\\"example\\">
   <div class=\\"app-type\\">纸片类型</div>
+  <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--default var-chip--round\\"><span class=\\"var-chip--text-normal\\">默认纸片</span>
+    <!--v-if--></span>
+  </transition-stub>
   <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--primary var-chip--round\\"><span class=\\"var-chip--text-normal\\">主要纸片</span>
     <!--v-if--></span>
   </transition-stub>
@@ -24,9 +27,6 @@ exports[`test chip example 1`] = `
   <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--info var-chip--round\\"><span class=\\"var-chip--text-normal\\">信息纸片</span>
     <!--v-if--></span>
   </transition-stub>
-  <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--default var-chip--round\\"><span class=\\"var-chip--text-normal\\">默认纸片</span>
-    <!--v-if--></span>
-  </transition-stub>
   <div class=\\"app-type\\">简单纸片</div>
   <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--plain var-chip--plain-primary var-chip--round\\"><span class=\\"var-chip--text-normal\\">简单纸片</span>
     <!--v-if--></span>
@@ -36,16 +36,16 @@ exports[`test chip example 1`] = `
     <!--v-if--></span>
   </transition-stub>
   <div class=\\"app-type\\">纸片尺寸</div>
-  <transition-stub><span class=\\"var-chip var--box var-chip--large var--inline-flex var-chip--default var-chip--round\\"><span class=\\"var-chip--text-large\\">大纸片</span>
+  <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--primary var-chip--round\\"><span class=\\"var-chip--text-normal\\">常规纸片</span>
     <!--v-if--></span>
   </transition-stub>
-  <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--default var-chip--round\\"><span class=\\"var-chip--text-normal\\">常规纸片</span>
+  <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--success var-chip--round\\"><span class=\\"var-chip--text-small\\">小型纸片</span>
     <!--v-if--></span>
   </transition-stub>
-  <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round\\"><span class=\\"var-chip--text-small\\">小纸片</span>
+  <transition-stub><span class=\\"var-chip var--box var-chip--mini var--inline-flex var-chip--warning var-chip--round\\"><span class=\\"var-chip--text-mini\\">迷你纸片</span>
     <!--v-if--></span>
   </transition-stub>
-  <transition-stub><span class=\\"var-chip var--box var-chip--mini var--inline-flex var-chip--default var-chip--round\\"><span class=\\"var-chip--text-mini\\">迷你纸片</span>
+  <transition-stub><span class=\\"var-chip var--box var-chip--large var--inline-flex var-chip--danger var-chip--round\\"><span class=\\"var-chip--text-large\\">大型纸片</span>
     <!--v-if--></span>
   </transition-stub>
   <div class=\\"app-type\\">块级纸片</div>
@@ -53,8 +53,8 @@ exports[`test chip example 1`] = `
     <!--v-if--></span>
   </transition-stub>
   <div class=\\"app-type\\">可关闭纸片</div>
-  <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--default var-chip--round\\"><span class=\\"var-chip--text-normal\\">可关闭纸片</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: all 0ms;\\"></i></span></span></transition-stub>
-  <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--default var-chip--round\\"><span class=\\"var-chip--text-normal\\">自定义关闭图标</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-delete\\" style=\\"transition: all 0ms;\\"></i></span></span></transition-stub>
+  <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--default var-chip--round\\"><span class=\\"var-chip--text-normal\\">可关闭纸片</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: transform 0ms;\\"></i></span></span></transition-stub>
+  <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--default var-chip--round\\"><span class=\\"var-chip--text-normal\\">自定义关闭图标</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-delete\\" style=\\"transition: transform 0ms;\\"></i></span></span></transition-stub>
   <div class=\\"app-type\\">自定义颜色</div>
   <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--default var-chip--round\\" style=\\"color: rgb(255, 255, 255); background: rgb(0, 150, 136);\\"><span class=\\"var-chip--text-normal\\">纸片</span>
     <!--v-if--></span>
@@ -69,16 +69,16 @@ exports[`test chip example 1`] = `
     <!--v-if--></span>
   </transition-stub>
   <div class=\\"app-type\\">添加插槽</div>
-  <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--plain var-chip--plain-primary var-chip--round\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: all 0ms;\\"></i><span class=\\"var-chip--text-normal\\">左侧插槽 </span>
+  <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--default var-chip--round\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: transform 0ms;\\"></i><span class=\\"var-chip--text-normal\\">左侧插槽 </span>
     <!--v-if--></span>
   </transition-stub>
-  <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--plain var-chip--plain-primary var-chip--round\\"><span class=\\"var-chip--text-normal\\">右侧插槽 </span><i class=\\"var-icon var-icon--set var-icon-fire\\" style=\\"transition: all 0ms;\\"></i>
+  <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--default var-chip--round\\"><span class=\\"var-chip--text-normal\\">右侧插槽 </span><i class=\\"var-icon var-icon--set var-icon-fire\\" style=\\"transition: transform 0ms;\\"></i>
     <!--v-if--></span>
   </transition-stub>
-  <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--plain var-chip--plain-primary var-chip--round\\"><i class=\\"var-icon var-icon--set var-icon-account-circle\\" style=\\"transition: all 0ms;\\"></i><span class=\\"var-chip--text-normal\\">左右两侧插槽 </span><i class=\\"var-icon var-icon--set var-icon-cake-variant\\" style=\\"transition: all 0ms;\\"></i>
+  <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip--default var-chip--round\\"><i class=\\"var-icon var-icon--set var-icon-account-circle\\" style=\\"transition: transform 0ms;\\"></i><span class=\\"var-chip--text-normal\\">左右两侧插槽 </span><i class=\\"var-icon var-icon--set var-icon-cake-variant\\" style=\\"transition: transform 0ms;\\"></i>
     <!--v-if--></span>
   </transition-stub>
 </div>"
 `;
 
-exports[`test chip styles 1`] = `"<transition-stub><span class=\\"var-chip var--box var-chip--large var--flex var-chip--plain var-chip--plain-default var-chip--round\\"><span class=\\"var-chip--text-large\\">chip text</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-fire\\" style=\\"transition: all 0ms;\\"></i></span></span></transition-stub>"`;
+exports[`test chip styles 1`] = `"<transition-stub><span class=\\"var-chip var--box var-chip--large var--flex var-chip--plain var-chip--plain-default var-chip--round\\"><span class=\\"var-chip--text-large\\">chip text</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-fire\\" style=\\"transition: transform 0ms;\\"></i></span></span></transition-stub>"`;

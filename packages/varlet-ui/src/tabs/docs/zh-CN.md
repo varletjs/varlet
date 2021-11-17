@@ -88,6 +88,7 @@ export default {
   color="#2979ff"
   active-color="#fff"
   inactive-color="hsla(0, 0%, 100%, .6)"
+  disabled-color="#aaa"
   v-model:active="active"
 >
   <var-tab>选项1</var-tab>
@@ -346,7 +347,6 @@ export default {
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--tab-color` | `#fff` |
 | `--tab-padding` | `12px` |
 | `--tab-active-color` | `var(--color-primary)` |
 | `--tab-inactive-color` | `#646566` |

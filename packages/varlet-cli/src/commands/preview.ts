@@ -10,8 +10,8 @@ export async function preview() {
   }
 
   try {
-    execa.command('live-server --port=5500', { cwd: SITE_OUTPUT_PATH }).stdout?.pipe(process.stdout)
-  } catch (e) {
-    logger.error(e)
+    await execa.command('live-server --port=5500', { cwd: SITE_OUTPUT_PATH }).stdout?.pipe(process.stdout)
+  } catch (e: any) {
+    logger.error(e.toString())
   }
 }

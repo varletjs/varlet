@@ -89,7 +89,7 @@ export default {
 
 .varlet-home__title,
 .varlet-home__desc {
-  padding-left: 16px;
+  padding: 0 12px;
   font-weight: normal;
   line-height: 1;
   user-select: none;
@@ -97,7 +97,7 @@ export default {
 
 .varlet-home__desc {
   margin: 0 0 40px;
-  color: rgba(69, 90, 100, 0.6);
+  color: var(--site-config-color-sub-text);
   font-size: 14px;
 }
 
@@ -120,7 +120,7 @@ export default {
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: all 0.3s;
-  color: #555;
+  color: var(--site-config-color-text);
 
   &:hover {
     color: var(--site-config-color-mobile-cell-hover);

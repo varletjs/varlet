@@ -16,7 +16,7 @@ export default defineComponent({
 .app-type {
   width: 100%;
   padding: 15px 0;
-  color: #888;
+  color: var(--site-config-color-sub-text);
   font-size: 14px;
 }
 </style>

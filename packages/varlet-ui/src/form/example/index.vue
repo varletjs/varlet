@@ -85,6 +85,7 @@ import context from '../../context'
 import { onUnmounted, reactive, ref } from 'vue'
 import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'FormExample',
@@ -138,6 +139,7 @@ export default {
       use(lang)
       form.value?.reset()
     })
+    watchDarkMode()
 
     return {
       pack,

@@ -177,3 +177,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--collapse-content-font-size` | `14px` |
 | `--collapse-item-margin-top` | `16px` |
 | `--collapse-disable-color` | `#bdbdbd` |
+| `--collapse-border-top` | `thin solid rgba(0, 0, 0, 0.12)` |

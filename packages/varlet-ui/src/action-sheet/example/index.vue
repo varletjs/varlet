@@ -32,6 +32,7 @@ import { ref, reactive, onUnmounted } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 import context from '../../context'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'ActionSheetExample',
@@ -163,6 +164,7 @@ export default {
     })
 
     watchLang(use)
+    watchDarkMode()
 
     return {
       pack,

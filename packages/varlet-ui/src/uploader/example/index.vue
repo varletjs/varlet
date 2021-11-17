@@ -45,6 +45,7 @@ import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { reactive, toRefs } from 'vue'
 import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'UploaderExample',
@@ -128,6 +129,7 @@ export default {
     }
 
     watchLang(use)
+    watchDarkMode()
 
     return {
       pack,

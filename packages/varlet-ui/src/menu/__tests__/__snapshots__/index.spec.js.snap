@@ -17,7 +17,7 @@ exports[`test menu click forbid trigger 1`] = `
 exports[`test menu example 1`] = `
 "<div class=\\"app-type\\">对齐方式</div>
 <div class=\\"block-1\\">
-  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1\\">
+  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">顶部对齐</div>
     </button>
@@ -26,7 +26,7 @@ exports[`test menu example 1`] = `
   </div>
 </div>
 <div class=\\"block\\">
-  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1\\">
+  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">底部对齐</div>
     </button>
@@ -36,14 +36,14 @@ exports[`test menu example 1`] = `
 </div>
 <div class=\\"app-type\\">偏移量</div>
 <div class=\\"block-1\\">
-  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1\\">
+  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">右偏移</div>
     </button>
     <!--teleport start-->
     <!--teleport end-->
   </div>
-  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1\\">
+  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">左偏移</div>
     </button>
@@ -52,14 +52,14 @@ exports[`test menu example 1`] = `
   </div>
 </div>
 <div class=\\"block-2\\">
-  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1\\">
+  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">下偏移</div>
     </button>
     <!--teleport start-->
     <!--teleport end-->
   </div>
-  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1\\">
+  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">上偏移</div>
     </button>
@@ -68,7 +68,7 @@ exports[`test menu example 1`] = `
   </div>
 </div>
 <div class=\\"app-type\\">注册事件</div>
-<div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--1\\">
+<div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
     <!--v-if-->
     <div class=\\"var-button__content\\">注册事件</div>
   </button>

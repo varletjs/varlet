@@ -8,6 +8,7 @@
 <script>
 import VarBackTop from '..'
 import VarCell from '../../cell'
+import { watchDarkMode } from '../../utils/components'
 
 const lists = [...Array(100).keys()]
 
@@ -18,6 +19,8 @@ export default {
     VarCell,
   },
   setup() {
+    watchDarkMode()
+
     return {
       lists,
     }

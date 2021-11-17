@@ -14,7 +14,7 @@
         <slot name="icon">
           <var-icon
             :name="icon"
-            :transition="400"
+            :transition="250"
             :class="{
               'var-collapse-item-header__icon': true,
               'var-collapse-item-header__open': isShow && icon === 'chevron-down',

@@ -49,6 +49,7 @@ import VarButton from '../../button'
 import { WEEK_HEADER } from '../props'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
+import { watchDarkMode } from '../../utils/components'
 import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
 import type { Choose, Preview, ComponentProps, Week, WeekDict, PanelBtnDisabled } from '../props'
 
@@ -89,6 +90,7 @@ export default defineComponent({
     const [currentYear, currentMonth, currentDay] = props.current.split('-')
     const days: Ref<Array<number>> = ref([])
     const reverse: Ref<boolean> = ref(false)
+    const isDarkTheme: Ref<boolean> = ref(false)
     const panelKey: Ref<number> = ref(0)
     const panelBtnDisabled: UnwrapRef<PanelBtnDisabled> = reactive({
       left: false,
@@ -231,7 +233,8 @@ export default defineComponent({
         if (disabled) return ''
         if (computeOutline()) return color
         if (dayExist()) return ''
-        return 'rgba(0, 0, 0, .87)'
+
+        return isDarkTheme.value ? '#ffffff' : 'rgba(0, 0, 0, .87)'
       }
 
       return {
@@ -265,6 +268,10 @@ export default defineComponent({
         initHeader()
       }
     )
+
+    watchDarkMode((themes) => {
+      isDarkTheme.value = themes === 'darkThemes'
+    })
 
     return {
       days,

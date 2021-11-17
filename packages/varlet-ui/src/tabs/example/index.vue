@@ -25,6 +25,7 @@
     color="#2979ff"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
+    disabled-color="#aaa"
     v-model:active="active3"
   >
     <var-tab>{{ pack.option }}1</var-tab>
@@ -103,13 +104,13 @@
   </var-tabs>
 
   <var-tabs-items style="margin: 8px 0" v-model:active="activeRelation">
-    <var-tab-item style="padding: 0 4px">
+    <var-tab-item :style="tabItemStyle">
       {{ pack.text }}
     </var-tab-item>
-    <var-tab-item style="padding: 0 4px">
+    <var-tab-item :style="tabItemStyle">
       {{ pack.text2 }}
     </var-tab-item>
-    <var-tab-item style="padding: 0 4px">
+    <var-tab-item :style="tabItemStyle">
       {{ pack.text3 }}
     </var-tab-item>
   </var-tabs-items>
@@ -141,8 +142,9 @@ import VarTabsItems from '../../tabs-items'
 import VarTabItem from '../../tab-item'
 import context from '../../context'
 import { use, pack } from './locale'
-import { onUnmounted, reactive, toRefs } from 'vue'
+import { computed, onUnmounted, reactive, ref, toRefs } from 'vue'
 import { watchPlatform, watchLang } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'TabsExample',
@@ -166,7 +168,16 @@ export default {
       activeRelation: 0,
     })
 
+    const themes = ref('themes')
+    const tabItemStyle = computed(() => ({
+      padding: '0 4px;',
+      color: themes.value === 'themes' ? '#888' : '#aaa',
+    }))
+
     watchLang(use)
+    watchDarkMode((mode) => {
+      themes.value = mode
+    })
 
     const prevTouchmoveForbid = context.touchmoveForbid
     watchPlatform((platform) => {
@@ -180,6 +191,7 @@ export default {
 
     return {
       pack,
+      tabItemStyle,
       ...toRefs(actives),
     }
   },

@@ -6,6 +6,7 @@
 @collapse-content-padding: 0 16px 10px;
 @collapse-item-margin-top: 16px;
 @collapse-disable-color: #bdbdbd;
+@collapse-border-top: thin solid rgba(0, 0, 0, 0.12);
 
 :root {
   --collapse-background: @collapse-background;
@@ -16,6 +17,7 @@
   --collapse-content-padding: @collapse-content-padding;
   --collapse-item-margin-top: @collapse-item-margin-top;
   --collapse-disable-color: @collapse-disable-color;
+  --collapse-border-top: @collapse-border-top;
 }
 
 .var-collapse-item {
@@ -25,7 +27,7 @@
   margin-top: 0;
   background: var(--collapse-background);
   color: var(--collapse-text-color);
-  transition: margin-top 0.25s, color 0.25s;
+  transition: margin-top 0.25s, background-color 0.25s;
 
   &::before {
     bottom: 0;
@@ -39,7 +41,7 @@
   }
 
   &:not(:first-child)::after {
-    border-top: thin solid rgba(0, 0, 0, 0.12);
+    border-top: var(--collapse-border-top);
     content: '';
     left: 0;
     position: absolute;
@@ -56,6 +58,10 @@
     justify-content: space-between;
     position: relative;
 
+    &__title {
+      transition: color 0.25s;
+    }
+
     &__icon {
       transform: rotate(0deg);
       opacity: 1;
@@ -71,10 +77,10 @@
   }
 
   &-content {
-    transition: height 0.25s;
     display: flex;
     font-size: var(--collapse-content-font-size);
     overflow: hidden;
+    transition: all 0.25s;
   }
 
   &__wrap {
@@ -86,6 +92,10 @@
   &__active + &,
   &__active:not(:first-child) {
     margin-top: var(--collapse-item-margin-top);
+
+    &::after {
+      border-top: none;
+    }
   }
 
   &__disable {

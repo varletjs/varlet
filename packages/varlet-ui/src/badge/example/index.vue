@@ -1,12 +1,12 @@
 <template>
   <div class="example">
     <app-type>{{ pack.themeColorBadge }}</app-type>
+    <var-badge />
     <var-badge type="primary" />
     <var-badge type="info" />
     <var-badge type="warning" />
     <var-badge type="success" />
     <var-badge type="danger" />
-    <var-badge />
 
     <app-type>{{ pack.dotBadge }}</app-type>
     <var-badge dot type="danger" />
@@ -62,6 +62,7 @@ import VarChip from '../../chip'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'BadgeExample',
@@ -82,6 +83,7 @@ export default {
     }
 
     watchLang(use)
+    watchDarkMode()
 
     return {
       value,

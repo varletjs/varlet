@@ -14,12 +14,12 @@ createApp().use(Chip)
 通过`type`属性设置纸片的类型。
 
 ```html
+<var-chip>默认纸片</var-chip>
 <var-chip type="primary">主要纸片</var-chip>
 <var-chip type="success">成功纸片</var-chip>
 <var-chip type="danger">危险纸片</var-chip>
 <var-chip type="warning">警告纸片</var-chip>
 <var-chip type="info">信息纸片</var-chip>
-<var-chip>默认纸片</var-chip>
 ```
 
 ### 简单纸片
@@ -43,10 +43,10 @@ createApp().use(Chip)
 通过`size`属性设置纸片的尺寸。
 
 ```html
-<var-chip size="large">大纸片</var-chip>
-<var-chip>常规纸片</var-chip>
-<var-chip size="small">小纸片</var-chip>
-<var-chip size="mini">迷你纸片</var-chip>
+<var-chip type="primary">常规纸片</var-chip>
+<var-chip type="success" size="small">小型纸片</var-chip>
+<var-chip type="warning" size="mini">迷你纸片</var-chip>
+<var-chip type="danger" size="large">大型纸片</var-chip>
 ```
 
 ### 块级纸片
@@ -102,19 +102,19 @@ export default {
 ### 添加插槽
 
 ```html
-<var-chip type="primary" plain>
+<var-chip plain>
   左侧插槽
   <template #left>
     <var-icon name="star" />
   </template>
 </var-chip>
-<var-chip type="primary" plain>
+<var-chip plain>
   右侧插槽
   <template #right>
     <var-icon name="fire" />
   </template>
 </var-chip>
-<var-chip type="primary" plain>
+<var-chip plain>
   左右两侧插槽
   <template #left>
     <var-icon name="account-circle" />
@@ -161,7 +161,7 @@ export default {
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--chip-default-color` | `#f5f5f5` |
+| `--chip-default-color` | `#e0e0e0` |
 | `--chip-primary-color` | `var(--color-primary)`|
 | `--chip-danger-color` |  `var(--color-danger)`|
 | `--chip-success-color` | `var(--color-success)`|

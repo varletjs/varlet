@@ -1,7 +1,7 @@
 <template>
   <div class="varlet-site-mobile">
     <div class="varlet-site-mobile-content">
-      <iframe :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&replace=${replace}`"></iframe>
+      <iframe id="mobile" :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&replace=${replace}`"></iframe>
     </div>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
   height: calc(100vh - 100px);
   margin-right: 38px;
   overflow: hidden;
-  box-shadow: 0 0 14px 6px #eee;
+  box-shadow: 0 0 14px 6px var(--site-config-color-shadow);
   border-radius: 2px;
 
   &-content {

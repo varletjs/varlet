@@ -41,7 +41,7 @@
         </var-button>
 
         <template #menu>
-          <div class="menu-list">
+          <div class="menu-list" :style="{ background: bgColor }">
             <var-cell class="menu-cell" v-for="value in menuList" :key="value.value" v-ripple>
               {{ value.label }}
             </var-cell>
@@ -66,6 +66,7 @@ import VarButton from '../../button'
 import VarCell from '../../cell'
 import { pack, use } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '../../utils/components'
 
 export default {
   name: 'AppBarExample',
@@ -81,6 +82,7 @@ export default {
   setup() {
     const offsetY = ref(false)
     const menuList = ref([])
+    const bgColor = ref('#fff')
 
     const searchData = () => {
       Snackbar({
@@ -111,8 +113,13 @@ export default {
       offsetY.value = false
     })
 
+    watchDarkMode((themes) => {
+      bgColor.value = themes === 'darkThemes' ? '#272727' : '#fff'
+    })
+
     return {
       offsetY,
+      bgColor,
       menuList,
       pack,
       searchData,
@@ -124,14 +131,6 @@ export default {
 </script>
 
 <style scoped>
-.var-menu {
-  background: transparent;
-}
-
-.menu-list {
-  background: #fff;
-}
-
 .menu-list .menu-cell {
   display: block;
   padding: 10px;

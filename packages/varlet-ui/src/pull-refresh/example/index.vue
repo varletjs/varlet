@@ -8,6 +8,7 @@
 import { onMounted, ref, onBeforeUnmount } from 'vue'
 import VarPullRefresh from '..'
 import VarCell from '../../cell'
+import { watchDarkMode } from '../../utils/components'
 
 const data1 = Array(10).fill('List Item')
 const data2 = Array(10).fill('This is new List Item')
@@ -40,6 +41,8 @@ export default {
     onBeforeUnmount(() => {
       document.body.removeEventListener('touchmove', prevent)
     })
+
+    watchDarkMode()
 
     return {
       refresh,

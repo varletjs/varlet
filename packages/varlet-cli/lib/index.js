@@ -30,30 +30,34 @@ var jest_1 = require("./commands/jest");
 var lint_1 = require("./commands/lint");
 var gen_1 = require("./commands/gen");
 var preview_1 = require("./commands/preview");
-commander_1.version("varlet-cli " + require('../package.json').version).usage('<command> [options]');
-commander_1.command('dev')
+var program = new commander_1.Command();
+program.version("varlet-cli " + require('../package.json').version).usage('<command> [options]');
+program
+    .command('dev')
     .option('-f --force', 'Force dep pre-optimization regardless of whether deps have changed')
     .description('Run varlet development environment')
     .action(dev_1.dev);
-commander_1.command('build').description('Build varlet site for production').action(build_1.build);
-commander_1.command('preview').description('Preview varlet site for production').action(preview_1.preview);
-commander_1.command('compile')
+program.command('build').description('Build varlet site for production').action(build_1.build);
+program.command('preview').description('Preview varlet site for production').action(preview_1.preview);
+program
+    .command('compile')
     .description('Compile varlet components library code')
     .option('-nu, --noUmd', 'Do not compile umd target code')
     .action(compile_1.compile);
-commander_1.command('lint').description('Lint code').action(lint_1.lint);
-commander_1.command('create <name>').description('Create a component directory').action(create_1.create);
-commander_1.command('jest')
+program.command('lint').description('Lint code').action(lint_1.lint);
+program.command('create <name>').description('Create a component directory').action(create_1.create);
+program
+    .command('jest')
     .description('Run Jest in work directory')
     .option('-w, --watch', 'Watch files change auto jest')
     .option('-c, --component <componentName>', 'Test a specific component')
     .option('-cc --clearCache', 'Clear test cache')
     .action(jest_1.jest);
-commander_1.command('gen <name>').description('Generate cli application').action(gen_1.gen);
-commander_1.on('command:*', function (_a) {
+program.command('gen <name>').description('Generate cli application').action(gen_1.gen);
+program.on('command:*', function (_a) {
     var _b = __read(_a, 1), cmd = _b[0];
-    commander_1.outputHelp();
+    program.outputHelp();
     logger_1.default.error("\nUnknown command " + cmd + ".\n");
     process.exitCode = 1;
 });
-commander_1.parse();
+program.parse();

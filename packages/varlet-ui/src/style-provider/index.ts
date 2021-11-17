@@ -6,7 +6,7 @@ export type StyleVars = Record<string, string>
 
 const mountedVarKeys: string[] = []
 
-function StyleProvider(styleVars: StyleVars = {}) {
+function StyleProvider(styleVars: StyleVars | null = {}) {
   mountedVarKeys.forEach((key) => document.documentElement.style.removeProperty(key))
   mountedVarKeys.length = 0
 

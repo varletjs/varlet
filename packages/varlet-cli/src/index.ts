@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import logger from './shared/logger'
-import { parse, command, version, outputHelp, on } from 'commander'
+import { Command } from 'commander'
 import { dev } from './commands/dev'
 import { build } from './commands/build'
 import { compile } from './commands/compile'
@@ -10,39 +10,44 @@ import { lint } from './commands/lint'
 import { gen } from './commands/gen'
 import { preview } from './commands/preview'
 
-version(`varlet-cli ${require('../package.json').version}`).usage('<command> [options]')
+const program = new Command()
 
-command('dev')
+program.version(`varlet-cli ${require('../package.json').version}`).usage('<command> [options]')
+
+program
+  .command('dev')
   .option('-f --force', 'Force dep pre-optimization regardless of whether deps have changed')
   .description('Run varlet development environment')
   .action(dev)
 
-command('build').description('Build varlet site for production').action(build)
+program.command('build').description('Build varlet site for production').action(build)
 
-command('preview').description('Preview varlet site for production').action(preview)
+program.command('preview').description('Preview varlet site for production').action(preview)
 
-command('compile')
+program
+  .command('compile')
   .description('Compile varlet components library code')
   .option('-nu, --noUmd', 'Do not compile umd target code')
   .action(compile)
 
-command('lint').description('Lint code').action(lint)
+program.command('lint').description('Lint code').action(lint)
 
-command('create <name>').description('Create a component directory').action(create)
+program.command('create <name>').description('Create a component directory').action(create)
 
-command('jest')
+program
+  .command('jest')
   .description('Run Jest in work directory')
   .option('-w, --watch', 'Watch files change auto jest')
   .option('-c, --component <componentName>', 'Test a specific component')
   .option('-cc --clearCache', 'Clear test cache')
   .action(jest)
 
-command('gen <name>').description('Generate cli application').action(gen)
+program.command('gen <name>').description('Generate cli application').action(gen)
 
-on('command:*', ([cmd]) => {
-  outputHelp()
+program.on('command:*', ([cmd]) => {
+  program.outputHelp()
   logger.error(`\nUnknown command ${cmd}.\n`)
   process.exitCode = 1
 })
 
-parse()
+program.parse()
