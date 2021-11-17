@@ -1,8 +1,8 @@
 <div align="center">
   <a href="https://varlet.gitee.io/varlet-ui/">
-    <img src="https://varlet.gitee.io/varlet-ui/varlet_icon.png" width="201">
+    <img src="https://varlet.gitee.io/varlet-ui/varlet_icon.png" width="150">
   </a>
-  <h2>VARLET</h2>
+  <h1>VARLET</h1>
   <p>Material design mobile component library for Vue3</p>
   <p>
     <a href="https://varlet.gitee.io/varlet-ui/">Documentation</a>

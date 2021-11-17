@@ -1,8 +1,8 @@
 <div align="center">
   <a href="https://varlet.gitee.io/varlet-ui/">
-    <img src="https://varlet.gitee.io/varlet-ui/varlet_icon.png" width="201">
+    <img src="https://varlet.gitee.io/varlet-ui/varlet_icon.png" width="150">
   </a>
-  <h2>VARLET</h2>
+  <h1>VARLET</h1>
   <p>基于Vue3的Material design风格移动端组件库</p>
   <p>
     <a href="https://varlet.gitee.io/varlet-ui/">开发文档</a> | <a href="https://github.com/haoziqaq/varlet/blob/dev/README.en-US.md">English</a>
