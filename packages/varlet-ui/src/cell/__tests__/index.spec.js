@@ -25,11 +25,11 @@ test('test cell props', async () => {
       titleClass: 'test-title-class',
       descClass: 'test-desc-class',
       extraClass: 'test-extra-class',
-      icon: 'fire'
+      icon: 'fire',
     },
     slots: {
-      extra: () => 'text'
-    }
+      extra: () => 'text',
+    },
   })
   expect(wrapper.find('.var-icon').exists()).toBe(true)
   expect(wrapper.find('.var-icon').classes('var-icon-fire')).toBe(true)

@@ -22,18 +22,18 @@ test('test switch value props and events', async () => {
     <var-switch v-model="value" @click="clickFn" @change="changeFn" :active-value="2" :inactive-value="1" />
   `
 
-  const wrapper =  mount({
+  const wrapper = mount({
     components: {
-      [VarSwitch.name]: VarSwitch
+      [VarSwitch.name]: VarSwitch,
     },
     data() {
       return {
-        value: 2
+        value: 2,
       }
     },
     methods: {
       clickFn,
-      changeFn
+      changeFn,
     },
     template,
   })
@@ -60,20 +60,20 @@ test('test switch not available', async () => {
     <var-switch v-model="value" @click="clickFn" @change="changeFn" :disabled="disabled" :readonly="readonly" />
   `
 
-  const wrapper =  mount({
+  const wrapper = mount({
     components: {
-      [VarSwitch.name]: VarSwitch
+      [VarSwitch.name]: VarSwitch,
     },
     data() {
       return {
         value: true,
         disabled: true,
-        readonly: false
+        readonly: false,
       }
     },
     methods: {
       clickFn,
-      changeFn
+      changeFn,
     },
     template,
   })
@@ -90,7 +90,7 @@ test('test switch not available', async () => {
 
   await wrapper.setData({
     disabled: false,
-    readonly: true
+    readonly: true,
   })
 
   await wrapper.find('.var-switch-block').trigger('click')
@@ -103,9 +103,9 @@ test('test switch color and size', async () => {
   const template = `
     <var-switch v-model="value" color="indigo" close-color="#89ddff" size="15" :ripple="false" />
   `
-  const wrapper =  mount({
+  const wrapper = mount({
     components: {
-      [VarSwitch.name]: VarSwitch
+      [VarSwitch.name]: VarSwitch,
     },
     data() {
       return {
@@ -131,8 +131,8 @@ test('test switch loading prop', () => {
     props: {
       loading: true,
       modelValue: true,
-      loadingColor: "#ff9800"
-    }
+      loadingColor: '#ff9800',
+    },
   })
 
   expect(wrapper.html()).toMatchSnapshot()
@@ -142,7 +142,7 @@ test('test switch rules prop', async () => {
   const template = `<var-switch v-model="value" :rules="[(v) => v === true || '错误！']"/>`
   const wrapper = mount({
     components: {
-      [VarSwitch.name]: VarSwitch
+      [VarSwitch.name]: VarSwitch,
     },
     data() {
       return {

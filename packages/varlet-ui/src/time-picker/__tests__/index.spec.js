@@ -28,15 +28,15 @@ test('test timePicker style and format', async () => {
   `
   const wrapper = mount({
     components: {
-      [VarTimePicker.name]: VarTimePicker
+      [VarTimePicker.name]: VarTimePicker,
     },
     data() {
       return {
         format: 'ampm',
-        time: '05:10'
+        time: '05:10',
       }
     },
-    template
+    template,
   })
 
   await delay(0)
@@ -52,13 +52,13 @@ test('test max and min', async () => {
   const template = `<var-time-picker v-model="time" :max="max" :min="min" />`
   const wrapper = mount({
     components: {
-      [VarTimePicker.name]: VarTimePicker
+      [VarTimePicker.name]: VarTimePicker,
     },
     data() {
       return {
         time: '11:11',
         max: '11:11',
-        min: undefined
+        min: undefined,
       }
     },
     template,
@@ -67,18 +67,18 @@ test('test max and min', async () => {
   await delay(0)
   expect(wrapper.html()).toMatchSnapshot()
 
-  await wrapper.setData({ max: undefined, min: '11:11'})
+  await wrapper.setData({ max: undefined, min: '11:11' })
   await delay(200)
   expect(wrapper.html()).toMatchSnapshot()
 
-  await wrapper.setData({ max: '11:11', min: '11:11'})
+  await wrapper.setData({ max: '11:11', min: '11:11' })
   await delay(200)
   expect(wrapper.find('.var-time-picker-title__time').text()).toBe('11:11')
 
   const el = wrapper.find('.var-time-picker-clock__container')
   await trigger(el, 'touchstart', 50, 30)
   await trigger(el, 'touchmove', 60, 25)
-  await trigger(el, 'touchend', 60,25)
+  await trigger(el, 'touchend', 60, 25)
 
   await delay(200)
   expect(wrapper.find('.var-time-picker-title__time').text()).toBe('11:11')
@@ -93,8 +93,8 @@ test('test useSeconds prop', () => {
   const wrapper = mount(VarTimePicker, {
     props: {
       modelValue: '11:11',
-      useSeconds: true
-    }
+      useSeconds: true,
+    },
   })
 
   expect(wrapper.html()).toMatchSnapshot()
@@ -104,11 +104,11 @@ test('test readonly prop', async () => {
   const template = `<var-time-picker v-model="time" readonly />`
   const wrapper = mount({
     components: {
-      [VarTimePicker.name]: VarTimePicker
+      [VarTimePicker.name]: VarTimePicker,
     },
     data() {
       return {
-        time: '11:11'
+        time: '11:11',
       }
     },
     template,
@@ -120,7 +120,7 @@ test('test readonly prop', async () => {
 
   await trigger(el, 'touchstart', 40, 30)
   await trigger(el, 'touchmove', 20, 25)
-  await trigger(el, 'touchend', 30,25)
+  await trigger(el, 'touchend', 30, 25)
 
   await delay(200)
   expect(wrapper.find('.var-time-picker-title__time').text()).toBe('11:11')
@@ -137,15 +137,15 @@ test('test v-model and onChange event', async () => {
   const template = `<var-time-picker v-model="time" use-seconds format="24hr" @change="change" />`
   const wrapper = mount({
     components: {
-      [VarTimePicker.name]: VarTimePicker
+      [VarTimePicker.name]: VarTimePicker,
     },
     data() {
       return {
-        time: '11:11:11'
+        time: '11:11:11',
       }
     },
     methods: {
-      change
+      change,
     },
     template,
   })
@@ -156,7 +156,7 @@ test('test v-model and onChange event', async () => {
 
   await trigger(el, 'touchstart', 40, 30)
   await trigger(el, 'touchmove', 20, 25)
-  await trigger(el, 'touchend', 30,25)
+  await trigger(el, 'touchend', 30, 25)
 
   await delay(200)
   expect(wrapper.find('.var-time-picker-title__time').text()).not.toBe('11:11:11')
@@ -167,7 +167,7 @@ test('test v-model and onChange event', async () => {
   await delay(200)
   await trigger(el, 'touchstart', 40, 30)
   await trigger(el, 'touchmove', 20, 25)
-  await trigger(el, 'touchend', 30,25)
+  await trigger(el, 'touchend', 30, 25)
   expect(wrapper.find('.var-time-picker-title__time').findAll('.var-time-picker-title__btn')[1].text()).not.toBe('11')
   expect(wrapper.find('.var-time-picker-title__time').findAll('.var-time-picker-title__btn')[2].text()).toBe('11')
 
@@ -175,7 +175,7 @@ test('test v-model and onChange event', async () => {
   await delay(200)
   await trigger(el, 'touchstart', 40, 30)
   await trigger(el, 'touchmove', 20, 25)
-  await trigger(el, 'touchend', 30,25)
+  await trigger(el, 'touchend', 30, 25)
   expect(wrapper.find('.var-time-picker-title__time').findAll('.var-time-picker-title__btn')[2].text()).not.toBe('11')
   expect(wrapper.vm.time).not.toBe('11:11:11')
   expect(change).toHaveBeenCalled()
@@ -185,16 +185,16 @@ test('test switch timePicker ampm', async () => {
   const template = `<var-time-picker v-model="time" use-seconds :min="min" max="19:40:22" />`
   const wrapper = mount({
     components: {
-      [VarTimePicker.name]: VarTimePicker
+      [VarTimePicker.name]: VarTimePicker,
     },
     data() {
       return {
         format: 'ampm',
         time: '05:10:22',
-        min: '2:38:38'
+        min: '2:38:38',
       }
     },
-    template
+    template,
   })
 
   await delay(0)

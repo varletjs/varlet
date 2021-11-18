@@ -30,9 +30,9 @@ test('test the different states during the drop-down process', async () => {
 
   const wrapper = mount({
     components: {
-      [VarPullRefresh.name]: VarPullRefresh
+      [VarPullRefresh.name]: VarPullRefresh,
     },
-    template
+    template,
   })
 
   const el = wrapper.find('.var-pull-refresh')
@@ -64,9 +64,9 @@ test('test disabled prop', async () => {
 
   const wrapper = mount({
     components: {
-      [VarPullRefresh.name]: VarPullRefresh
+      [VarPullRefresh.name]: VarPullRefresh,
     },
-    template
+    template,
   })
 
   const el = wrapper.find('.var-pull-refresh')
@@ -89,17 +89,17 @@ test('test pull-refresh event', async () => {
 
   const wrapper = mount({
     components: {
-      [VarPullRefresh.name]: VarPullRefresh
+      [VarPullRefresh.name]: VarPullRefresh,
     },
     data() {
       return {
-        isRefresh: false
+        isRefresh: false,
       }
     },
     methods: {
-      refresh
+      refresh,
     },
-    template
+    template,
   })
 
   const el = wrapper.find('.var-pull-refresh')

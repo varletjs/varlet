@@ -5,7 +5,7 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockScrollTo } from '../../utils/jest'
 
-test('test backTop plugin', () => { 
+test('test backTop plugin', () => {
   const app = createApp({}).use(BackTop)
   expect(app.component(BackTop.name)).toBeTruthy()
 })
@@ -27,15 +27,18 @@ test('test backTop props', async () => {
   `
   const clickHandle = jest.fn()
 
-  const wrapper = mount({
-    components: {
-      [VarBackTop.name]: VarBackTop,
+  const wrapper = mount(
+    {
+      components: {
+        [VarBackTop.name]: VarBackTop,
+      },
+      methods: {
+        clickHandle,
+      },
+      template,
     },
-    methods: {
-      clickHandle
-    },
-    template
-  }, { attachTo: document.body })
+    { attachTo: document.body }
+  )
 
   await delay(0)
 

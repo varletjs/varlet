@@ -38,7 +38,7 @@ test('test snackbar type', async () => {
 
   Snackbar.info({
     content: 'test snackbar',
-    forbidClick: true
+    forbidClick: true,
   })
   await delay(200)
   expect(document.body.querySelector('.var-snackbar__wrapper-info')).toBeTruthy()
@@ -62,7 +62,7 @@ test('test snackbar event', async () => {
     onOpen: open,
     onOpened: opened,
     onClose: close,
-    onClosed: closed
+    onClosed: closed,
   })
 
   await delay(200)

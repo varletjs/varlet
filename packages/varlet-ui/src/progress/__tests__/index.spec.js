@@ -19,14 +19,14 @@ test('test linear progress prop', () => {
     props: {
       value: 30,
       lineWidth: 8,
-      color: "#ff9800",
-      trackColor: "#f5cb90",
+      color: '#ff9800',
+      trackColor: '#f5cb90',
       ripple: true,
-      label: true
+      label: true,
     },
     slots: {
-      default: () => 'success'
-    }
+      default: () => 'success',
+    },
   })
 
   expect(wrapper.html()).toMatchSnapshot()
@@ -38,14 +38,13 @@ test('test circle progress prop', () => {
       mode: 'circle',
       value: 30,
       lineWidth: 8,
-      color: "#ff9800",
-      trackColor: "#f5cb90",
+      color: '#ff9800',
+      trackColor: '#f5cb90',
       size: 50,
       rotate: 10,
-      label: true
-    }
+      label: true,
+    },
   })
 
   expect(wrapper.html()).toMatchSnapshot()
 })
-

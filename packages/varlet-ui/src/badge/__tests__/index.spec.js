@@ -18,8 +18,8 @@ test('test badge plugin', () => {
 test('test badge value and maxValue', async () => {
   const wrapper = mount(VarBadge, {
     props: {
-      value: 72
-    }
+      value: 72,
+    },
   })
 
   expect(wrapper.find('.var-badge').text()).toBe('72')
@@ -32,8 +32,8 @@ test('test badge value and maxValue', async () => {
 test('test badge hidden', () => {
   const wrapper = mount(VarBadge, {
     props: {
-      hidden: true
-    }
+      hidden: true,
+    },
   })
 
   expect(wrapper.find('.var-badge__content').isVisible()).toBe(false)
@@ -43,8 +43,8 @@ test('test badge dot', async () => {
   const wrapper = mount(VarBadge, {
     props: {
       dot: true,
-      value: 72
-    }
+      value: 72,
+    },
   })
 
   expect(wrapper.find('.var-badge__dot--right').exists()).toBe(true)
@@ -64,9 +64,9 @@ test('test badge position', async () => {
   `
   const wrapper = mount({
     components: {
-      [VarBadge.name]: VarBadge
+      [VarBadge.name]: VarBadge,
     },
-    template
+    template,
   })
 
   expect(wrapper.html()).toMatchSnapshot()
@@ -88,11 +88,9 @@ test('test badge style', () => {
   const wrapper = mount(VarBadge, {
     props: {
       color: '#6200ea',
-      icon: 'fire'
-    }
+      icon: 'fire',
+    },
   })
 
   expect(wrapper.html()).toMatchSnapshot()
 })
-
-

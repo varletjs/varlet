@@ -26,18 +26,21 @@ test('test step direction prop', async () => {
       <var-step>步骤2</var-step>
     </var-steps>
   `
-  const wrapper = mount({
-    template,
-    components: {
-      [VarSteps.name]: VarSteps,
-      [VarStep.name]: VarStep
+  const wrapper = mount(
+    {
+      template,
+      components: {
+        [VarSteps.name]: VarSteps,
+        [VarStep.name]: VarStep,
+      },
+      data() {
+        return {
+          direction: 'horizontal',
+        }
+      },
     },
-    data() {
-      return {
-        direction: 'horizontal'
-      }
-    }
-  }, { attachTo: document.body })
+    { attachTo: document.body }
+  )
 
   expect(wrapper.html()).toMatchSnapshot()
 
@@ -55,21 +58,24 @@ test('test step event', async () => {
       <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">步骤2</var-step>
     </var-steps>
   `
-  const wrapper = mount({
-    template,
-    components: {
-      [VarSteps.name]: VarSteps,
-      [VarStep.name]: VarStep
+  const wrapper = mount(
+    {
+      template,
+      components: {
+        [VarSteps.name]: VarSteps,
+        [VarStep.name]: VarStep,
+      },
+      data() {
+        return {
+          active: '1',
+        }
+      },
+      methods: {
+        clickStep,
+      },
     },
-    data() {
-      return {
-        active: '1'
-      }
-    },
-    methods: {
-      clickStep
-    }
-  }, { attachTo: document.body })
+    { attachTo: document.body }
+  )
 
   expect(wrapper.html()).toMatchSnapshot()
 

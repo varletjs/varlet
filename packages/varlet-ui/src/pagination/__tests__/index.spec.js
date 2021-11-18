@@ -3,7 +3,7 @@ import Pagination from '..'
 import VarPagination from '../Pagination'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import {delay, trigger} from "../../utils/jest"
+import { delay, trigger } from '../../utils/jest'
 
 test('test pagination example', () => {
   const wrapper = mount(example)
@@ -23,8 +23,8 @@ describe('simple mode', () => {
         total: '123',
         showTotal(total, range) {
           return `${range[0]}-${range[1]} of ${total} items`
-        }
-      }
+        },
+      },
     })
 
     expect(wrapper.html()).toMatchSnapshot()
@@ -35,7 +35,7 @@ describe('simple mode', () => {
     const wrapper = mount(VarPagination, {
       props: {
         disabled: true,
-      }
+      },
     })
 
     expect(wrapper.html()).toMatchSnapshot()
@@ -52,8 +52,8 @@ describe('basic mode', () => {
         showQuickJumper: true,
         showTotal(total, range) {
           return `${range[0]}-${range[1]} of ${total} items`
-        }
-      }
+        },
+      },
     })
 
     expect(wrapper.html()).toMatchSnapshot()
@@ -65,7 +65,7 @@ describe('basic mode', () => {
       props: {
         disabled: true,
         simple: false,
-      }
+      },
     })
 
     expect(wrapper.html()).toMatchSnapshot()
@@ -86,13 +86,13 @@ describe('basic mode', () => {
     `
     const wrapper = mount({
       components: {
-        [VarPagination.name]: VarPagination
+        [VarPagination.name]: VarPagination,
       },
 
       methods: {
-        change
+        change,
       },
-      template
+      template,
     })
 
     await delay(0)
@@ -118,15 +118,15 @@ test('Size related props', async () => {
 
   const wrapper = mount({
     components: {
-      [VarPagination.name]: VarPagination
+      [VarPagination.name]: VarPagination,
     },
     data() {
       return {
         sizeChange: true,
-        sizeOption: [10, 20, 30, 40]
+        sizeOption: [10, 20, 30, 40],
       }
     },
-    template
+    template,
   })
 
   await delay(0)
@@ -150,8 +150,8 @@ test('change current and size', async () => {
     props: {
       current: 4,
       size: 10,
-      total: 300
-    }
+      total: 300,
+    },
   })
 
   const input = wrapper.find('.var-input__input')
@@ -162,7 +162,7 @@ test('change current and size', async () => {
 
   await wrapper.setProps({
     current: 5,
-    size: 20
+    size: 20,
   })
 
   expect(input.element.value).toBe('5')
@@ -177,13 +177,13 @@ test('change event', async () => {
 
   const wrapper = mount({
     components: {
-      [VarPagination.name]: VarPagination
+      [VarPagination.name]: VarPagination,
     },
 
     methods: {
-      change
+      change,
     },
-    template
+    template,
   })
 
   await delay(0)

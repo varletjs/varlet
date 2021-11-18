@@ -21,7 +21,7 @@ test('test circle props', async () => {
       type: 'circle',
       color: '#2979ff',
       radius: '12',
-    }
+    },
   })
 
   expect(wrapper.html()).toMatchSnapshot()
@@ -33,7 +33,7 @@ test('test wave props', async () => {
       type: 'wave',
       color: '#2979ff',
       size: 'small',
-    }
+    },
   })
 
   expect(wrapper.html()).toMatchSnapshot()
@@ -45,7 +45,7 @@ test('test cube props', async () => {
       type: 'cube',
       color: '#2979ff',
       size: 'small',
-    }
+    },
   })
 
   expect(wrapper.html()).toMatchSnapshot()
@@ -57,7 +57,7 @@ test('test rect props', async () => {
       type: 'rect',
       color: '#2979ff',
       size: 'small',
-    }
+    },
   })
 
   expect(wrapper.html()).toMatchSnapshot()
@@ -69,7 +69,7 @@ test('test disappear props', async () => {
       type: 'disappear',
       color: '#2979ff',
       size: 'small',
-    }
+    },
   })
 
   expect(wrapper.html()).toMatchSnapshot()

@@ -4,7 +4,6 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/jest'
 
-
 test('test space plugin', () => {
   const app = createApp({}).use(Space)
   expect(app.component(Space.name)).toBeTruthy()
@@ -21,16 +20,15 @@ test('test space props', async () => {
 
   const wrapper = mount({
     components: {
-      [VarSpace.name]: VarSpace
+      [VarSpace.name]: VarSpace,
     },
-    template
+    template,
   })
 
   await delay(0)
 
   await wrapper.setProps({ direction: 'row' })
   expect(wrapper.html()).toMatchSnapshot()
-
 
   await wrapper.setProps({ direction: 'column' })
   expect(wrapper.html()).toMatchSnapshot()
@@ -120,29 +118,29 @@ test('test child in space', async () => {
   `
   const wrapper = mount({
     components: {
-      [VarSpace.name]: VarSpace
+      [VarSpace.name]: VarSpace,
     },
     data: () => ({
       size: 'mini',
-      direction:'row',
-      inline: true
+      direction: 'row',
+      inline: true,
     }),
-    template
+    template,
   })
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setData({
-    size: ['10px', '20px']
+    size: ['10px', '20px'],
   })
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setData({
-    direction: 'column'
+    direction: 'column',
   })
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setData({
-    inline: false
+    inline: false,
   })
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()

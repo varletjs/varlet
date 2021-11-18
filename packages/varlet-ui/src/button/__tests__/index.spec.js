@@ -104,7 +104,6 @@ test('test button styles', () => {
     slots: {
       default: () => 'button text',
     },
-
   })
   expect(wrapper.classes()).toContain('var-button--round')
   expect(wrapper.classes()).toContain('var-button--text')

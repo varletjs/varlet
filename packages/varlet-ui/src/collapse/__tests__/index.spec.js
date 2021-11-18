@@ -31,21 +31,24 @@ test('test collapse modelValue and onChange', async () => {
 
   const changeHandle = jest.fn()
 
-  const wrapper = mount({
-    components: {
-      [VarCollapse.name]: VarCollapse,
-      [VarCollapseItem.name]: VarCollapseItem
+  const wrapper = mount(
+    {
+      components: {
+        [VarCollapse.name]: VarCollapse,
+        [VarCollapseItem.name]: VarCollapseItem,
+      },
+      data() {
+        return {
+          value: ['2'],
+        }
+      },
+      methods: {
+        changeHandle,
+      },
+      template,
     },
-    data(){
-      return {
-        value: ['2']
-      }
-    },
-    methods: {
-      changeHandle
-    },
-    template
-  }, { attachTo: document.body })
+    { attachTo: document.body }
+  )
 
   await delay(0)
 
@@ -79,14 +82,14 @@ test('test collapse accordion', async () => {
   const wrapper = mount({
     components: {
       [VarCollapse.name]: VarCollapse,
-      [VarCollapseItem.name]: VarCollapseItem
+      [VarCollapseItem.name]: VarCollapseItem,
     },
-    data(){
+    data() {
       return {
-        value: '2'
+        value: '2',
       }
     },
-    template
+    template,
   })
 
   await delay(0)
@@ -105,18 +108,21 @@ test('test collapseItem disabled', async () => {
     </var-collapse>
   `
 
-  const wrapper = mount({
-    components: {
-      [VarCollapse.name]: VarCollapse,
-      [VarCollapseItem.name]: VarCollapseItem
+  const wrapper = mount(
+    {
+      components: {
+        [VarCollapse.name]: VarCollapse,
+        [VarCollapseItem.name]: VarCollapseItem,
+      },
+      data() {
+        return {
+          value: ['2'],
+        }
+      },
+      template,
     },
-    data(){
-      return {
-        value: ['2']
-      }
-    },
-    template
-  }, { attachTo: document.body })
+    { attachTo: document.body }
+  )
 
   await delay(0)
 
@@ -137,18 +143,21 @@ test('tes collapse offset and collapse icon', () => {
     </var-collapse>
   `
 
-  const wrapper = mount({
-    components: {
-      [VarCollapse.name]: VarCollapse,
-      [VarCollapseItem.name]: VarCollapseItem
+  const wrapper = mount(
+    {
+      components: {
+        [VarCollapse.name]: VarCollapse,
+        [VarCollapseItem.name]: VarCollapseItem,
+      },
+      data() {
+        return {
+          value: [2],
+        }
+      },
+      template,
     },
-    data(){
-      return {
-        value: [2]
-      }
-    },
-    template
-  }, { attachTo: document.body })
+    { attachTo: document.body }
+  )
 
   expect(wrapper.html()).toMatchSnapshot()
 })
