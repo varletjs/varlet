@@ -2,6 +2,7 @@
 @date-picker-font-size: var(--font-size-md);
 @date-picker-min-width: 290px;
 @date-picker-height: 385px;
+@date-picker-main-color: rgba(0, 0, 0, 0.87);
 @date-picker-title-padding: 16px;
 @date-picker-title-background: var(--color-primary);
 @date-picker-title-color: #fff;
@@ -39,6 +40,7 @@
   --date-picker-font-size: @date-picker-font-size;
   --date-picker-min-width: @date-picker-min-width;
   --date-picker-height: @date-picker-height;
+  --date-picker-main-color: @date-picker-main-color;
   --date-picker-title-padding: @date-picker-title-padding;
   --date-picker-title-background: @date-picker-title-background;
   --date-picker-title-color: @date-picker-title-color;
@@ -248,6 +250,10 @@
       height: var(--day-picker-content-item-button-height);
       font-size: var(--day-picker-content-item-button-font-size);
     }
+  }
+
+  &-main__color {
+    color: var(--date-picker-main-color);
   }
 
   &-translatey-enter-from {

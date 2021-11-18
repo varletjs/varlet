@@ -40,7 +40,6 @@ import PanelHeader from './panel-header.vue'
 import VarButton from '../../button'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
-import { watchDarkMode } from '@varlet/cli/site/utils'
 import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
 import type { Choose, Preview, ComponentProps, Month, MonthDict, PanelBtnDisabled } from '../props'
 
@@ -80,7 +79,6 @@ export default defineComponent({
   setup(props, { emit }) {
     const [currentYear, currentMonth] = props.current.split('-')
     const reverse: Ref<boolean> = ref(false)
-    const isDarkTheme: Ref<boolean> = ref(false)
     const panelKey: Ref<number> = ref(0)
     const panelBtnDisabled: UnwrapRef<PanelBtnDisabled> = reactive({
       left: false,
@@ -171,20 +169,23 @@ export default defineComponent({
         return true
       }
 
-      const computeTextColor = (): string | undefined => {
+      const textColorOrClass = (): string => {
         if (disabled) return ''
-        if (computeOutline()) return color
+        if (computeOutline()) return color ?? ''
         if (monthExist()) return ''
 
-        return isDarkTheme.value ? '#ffffff' : 'rgba(0, 0, 0, .87)'
+        return 'var-date-picker-main__color'
       }
+
+      const isClass = textColorOrClass().startsWith('var-date-picker')
 
       return {
         disabled,
         outline: computeOutline(),
         text: computeText(),
         color: !computeText() ? color : '',
-        textColor: computeTextColor(),
+        textColor: isClass ? '' : textColorOrClass(),
+        class: isClass ? textColorOrClass() : '',
       }
     }
 
@@ -210,10 +211,6 @@ export default defineComponent({
       },
       { immediate: true }
     )
-
-    watchDarkMode((themes) => {
-      isDarkTheme.value = themes === 'darkThemes'
-    })
 
     return {
       pack,

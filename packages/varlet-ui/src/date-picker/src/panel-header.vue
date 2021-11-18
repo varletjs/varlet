@@ -1,6 +1,13 @@
 <template>
   <div class="var-picker-header">
-    <var-button round text :text-color="textColor('left')" :disabled="disabled.left" @click="checkDate('prev')">
+    <var-button
+      round
+      text
+      :class="getClass('left')"
+      style="filter: opacity(0.54)"
+      :disabled="disabled.left"
+      @click="checkDate('prev')"
+    >
       <var-icon name="chevron-left" />
     </var-button>
     <div class="var-picker-header__value" @click="$emit('check-panel')">
@@ -8,7 +15,14 @@
         <div :key="showDate">{{ showDate }}</div>
       </transition>
     </div>
-    <var-button round text :text-color="textColor('right')" :disabled="disabled.right" @click="checkDate('next')">
+    <var-button
+      round
+      text
+      :class="getClass('right')"
+      style="filter: opacity(0.54)"
+      :disabled="disabled.right"
+      @click="checkDate('next')"
+    >
       <var-icon name="chevron-right" />
     </var-button>
   </div>
@@ -20,7 +34,6 @@ import VarIcon from '../../icon'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
-import { watchDarkMode } from '@varlet/cli/site/utils'
 import type { Ref, ComputedRef, PropType } from 'vue'
 import type { Preview, PanelBtnDisabled } from '../props'
 
@@ -48,7 +61,6 @@ export default defineComponent({
 
   setup(props, { emit }) {
     const reverse: Ref<boolean> = ref(false)
-    const isDarkTheme: Ref<boolean> = ref(false)
     const forwardOrBackNum: Ref<number> = ref(0)
 
     const showDate: ComputedRef<number | string> = computed(() => {
@@ -61,8 +73,8 @@ export default defineComponent({
       return pack.value.lang === 'zh-CN' ? `${previewYear} ${monthName}` : `${monthName} ${previewYear}`
     })
 
-    const textColor = (position: 'left' | 'right') => {
-      return props.disabled[position] ? '' : isDarkTheme.value ? '' : 'rgba(0, 0, 0, .54)'
+    const getClass = (position: 'left' | 'right') => {
+      return props.disabled[position] ? '' : 'var-date-picker-main__color'
     }
 
     const checkDate = (checkType: string) => {
@@ -78,15 +90,11 @@ export default defineComponent({
       }
     )
 
-    watchDarkMode((themes) => {
-      isDarkTheme.value = themes === 'darkThemes'
-    })
-
     return {
       reverse,
       showDate,
       checkDate,
-      textColor,
+      getClass,
     }
   },
 })
