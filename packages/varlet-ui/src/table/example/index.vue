@@ -51,6 +51,7 @@
 import Table from '..'
 import Pagination from '../../pagination'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
+import dark from '../../themes/dark'
 import { ref } from 'vue'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
@@ -95,7 +96,7 @@ export default {
     }
 
     watchLang(use)
-    watchDarkMode()
+    watchDarkMode(dark)
 
     return {
       pack,

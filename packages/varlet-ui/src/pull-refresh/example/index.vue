@@ -7,6 +7,7 @@
 <script>
 import VarPullRefresh from '..'
 import VarCell from '../../cell'
+import dark from '../../themes/dark'
 import { onMounted, ref, onBeforeUnmount } from 'vue'
 import { watchDarkMode } from '@varlet/cli/site/utils'
 
@@ -42,7 +43,7 @@ export default {
       document.body.removeEventListener('touchmove', prevent)
     })
 
-    watchDarkMode()
+    watchDarkMode(dark)
 
     return {
       refresh,

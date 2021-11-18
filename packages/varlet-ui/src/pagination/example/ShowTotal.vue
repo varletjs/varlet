@@ -17,6 +17,7 @@
 
 <script>
 import VarPagination from '../Pagination'
+import dark from '../../themes/dark'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { pack, use } from './locale'
 
@@ -27,7 +28,7 @@ export default {
   },
   setup() {
     watchLang(use, 'pc')
-    watchDarkMode()
+    watchDarkMode(dark)
 
     return {
       pack,

@@ -114,6 +114,7 @@ import context from '../../context'
 import { onUnmounted, reactive, toRefs, ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
+import dark from '../../themes/dark'
 
 export default {
   name: 'MenuExample',
@@ -136,7 +137,7 @@ export default {
     const bgColor = ref('#fff')
 
     watchLang(use)
-    watchDarkMode((themes) => {
+    watchDarkMode(dark, (themes) => {
       bgColor.value = themes === 'darkThemes' ? '#272727' : '#fff'
     })
 

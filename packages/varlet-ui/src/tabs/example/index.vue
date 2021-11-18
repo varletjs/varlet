@@ -141,6 +141,7 @@ import VarIcon from '../../icon'
 import VarTabsItems from '../../tabs-items'
 import VarTabItem from '../../tab-item'
 import context from '../../context'
+import dark from '../../themes/dark'
 import { use, pack } from './locale'
 import { computed, onUnmounted, reactive, ref, toRefs } from 'vue'
 import { watchPlatform, watchLang, watchDarkMode } from '@varlet/cli/site/utils'
@@ -174,7 +175,7 @@ export default {
     }))
 
     watchLang(use)
-    watchDarkMode((mode) => {
+    watchDarkMode(dark, (mode) => {
       themes.value = mode
     })
 

@@ -1,7 +1,6 @@
 import { onMounted, onUnmounted } from 'vue'
 import { get } from 'lodash-es'
 import { formatStyleVars } from './components/utils/elements'
-import dark from '@varlet/ui/src/themes/dark'
 
 export * from './components/utils/components'
 export * from './components/utils/elements'
@@ -150,7 +149,7 @@ export function getBrowserThemes(): 'darkThemes' | 'themes' {
   return currentThemes
 }
 
-export function watchDarkMode(cb?: (themes: 'darkThemes' | 'themes') => void) {
+export function watchDarkMode(dark: StyleVars, cb?: (themes: 'darkThemes' | 'themes') => void) {
   watchThemes((themes) => {
     StyleProvider(themes === 'darkThemes' ? dark : null)
 

@@ -8,6 +8,7 @@
 <script>
 import VarBackTop from '..'
 import VarCell from '../../cell'
+import dark from '../../themes/dark'
 import { watchDarkMode } from '@varlet/cli/site/utils'
 
 const lists = [...Array(100).keys()]
@@ -19,7 +20,7 @@ export default {
     VarCell,
   },
   setup() {
-    watchDarkMode()
+    watchDarkMode(dark)
 
     return {
       lists,

@@ -55,6 +55,7 @@ import VarButton from '../../button'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
+import dark from '../../themes/dark'
 import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
 import { onUnmounted, reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
@@ -79,7 +80,7 @@ export default {
     })
 
     watchLang(use)
-    watchDarkMode()
+    watchDarkMode(dark)
 
     const prevTouchmoveForbid = context.touchmoveForbid
     watchPlatform((platform) => {

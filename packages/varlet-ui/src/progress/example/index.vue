@@ -42,6 +42,7 @@
 <script>
 import VarProgress from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
+import dark from '../../themes/dark'
 import { ref, onMounted, onUnmounted } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
@@ -64,7 +65,7 @@ export default {
     })
 
     watchLang(use)
-    watchDarkMode()
+    watchDarkMode(dark)
 
     onUnmounted(() => {
       window.clearInterval(interval.value)

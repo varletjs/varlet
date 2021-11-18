@@ -64,6 +64,7 @@ import Snackbar from '../../snackbar'
 import VarMenu from '../../menu'
 import VarButton from '../../button'
 import VarCell from '../../cell'
+import dark from '../../themes/dark'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
@@ -112,7 +113,7 @@ export default {
       offsetY.value = false
     })
 
-    watchDarkMode((themes) => {
+    watchDarkMode(dark, (themes) => {
       bgColor.value = themes === 'darkThemes' ? '#272727' : '#fff'
     })
 

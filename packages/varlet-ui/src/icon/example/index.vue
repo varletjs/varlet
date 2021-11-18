@@ -52,6 +52,7 @@ import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
 import Clipboard from 'clipboard'
 import icons from '@varlet/icons'
+import dark from '../../themes/dark'
 import { reactive, onMounted, ref, onUnmounted } from 'vue'
 import { use, pack } from './locale'
 import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
@@ -83,7 +84,7 @@ export default {
     })
 
     watchLang(use)
-    watchDarkMode((themes) => {
+    watchDarkMode(dark, (themes) => {
       background.value = themes === 'darkThemes' ? '#272727' : '#fff'
     })
 

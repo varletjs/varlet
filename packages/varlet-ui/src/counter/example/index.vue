@@ -32,6 +32,7 @@
 <script>
 import VarCounter from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
+import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
@@ -62,7 +63,7 @@ export default {
     }
 
     watchLang(use)
-    watchDarkMode()
+    watchDarkMode(dark)
 
     return {
       pack,

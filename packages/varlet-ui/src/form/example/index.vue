@@ -82,6 +82,7 @@ import VarCounter from '../../counter'
 import VarRate from '../../rate'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
 import context from '../../context'
+import dark from '../../themes/dark'
 import { onUnmounted, reactive, ref } from 'vue'
 import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
@@ -138,7 +139,7 @@ export default {
       use(lang)
       form.value?.reset()
     })
-    watchDarkMode()
+    watchDarkMode(dark)
 
     return {
       pack,

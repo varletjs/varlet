@@ -29,6 +29,7 @@ import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarButton from '../../button'
 import Snackbar from '../../snackbar'
 import context from '../../context'
+import dark from '../../themes/dark'
 import { ref, reactive, onUnmounted } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
@@ -163,7 +164,7 @@ export default {
     })
 
     watchLang(use)
-    watchDarkMode()
+    watchDarkMode(dark)
 
     return {
       pack,

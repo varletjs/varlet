@@ -24,6 +24,7 @@
 
 <script>
 import VarTable from '..'
+import dark from '../../themes/dark'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
@@ -34,7 +35,7 @@ export default {
   },
   setup() {
     watchLang(use, 'pc')
-    watchDarkMode()
+    watchDarkMode(dark)
 
     return {
       pack,

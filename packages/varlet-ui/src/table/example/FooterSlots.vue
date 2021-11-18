@@ -26,6 +26,7 @@
 <script>
 import VarTable from '..'
 import VarPagination from '../../pagination'
+import dark from '../../themes/dark'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 import { gen } from './index'
@@ -45,7 +46,7 @@ export default {
     }
 
     watchLang(use, 'pc')
-    watchDarkMode()
+    watchDarkMode(dark)
 
     return {
       pack,

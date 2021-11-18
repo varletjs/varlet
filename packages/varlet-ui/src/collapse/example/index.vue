@@ -54,6 +54,7 @@ import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarCollapse from '..'
 import VarCollapseItem from '../../collapse-item'
 import VarButton from '../../button'
+import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
@@ -81,7 +82,7 @@ export default {
     }
 
     watchLang(use)
-    watchDarkMode()
+    watchDarkMode(dark)
 
     return {
       ...toRefs(values),

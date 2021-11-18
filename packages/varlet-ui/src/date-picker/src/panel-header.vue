@@ -31,6 +31,7 @@
 <script lang="ts">
 import VarButton from '../../button'
 import VarIcon from '../../icon'
+import dark from '../../themes/dark'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'

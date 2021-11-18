@@ -49,6 +49,7 @@ import VarRadioGroup from '..'
 import VarRadio from '../../radio'
 import VarIcon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
+import dark from '../../themes/dark'
 import { toRefs, reactive } from 'vue'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
@@ -74,7 +75,7 @@ export default {
     })
 
     watchLang(use)
-    watchDarkMode()
+    watchDarkMode(dark)
 
     return {
       pack,

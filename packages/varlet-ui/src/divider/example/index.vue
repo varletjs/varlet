@@ -39,6 +39,7 @@
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarDivider from '..'
 import VarIcon from '../../icon'
+import dark from '../../themes/dark'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
@@ -51,7 +52,7 @@ export default {
   },
   setup() {
     watchLang(use)
-    watchDarkMode()
+    watchDarkMode(dark)
 
     return {
       pack,

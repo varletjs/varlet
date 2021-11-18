@@ -11,10 +11,11 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
 import VarIndexAnchor from '../../index-anchor/IndexAnchor.vue'
 import VarIndexBar from '..'
 import VarCell from '../../cell'
+import dark from '../../themes/dark'
+import { ref, onMounted } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
@@ -41,7 +42,7 @@ export default {
     }
 
     watchLang(use)
-    watchDarkMode((themes) => {
+    watchDarkMode(dark, (themes) => {
       bgColor.value = themes === 'darkThemes' ? 'rgb(41 42 45)' : '#e7edf7'
       color.value = themes === 'darkThemes' ? '#3980e8' : '#2e67ba'
     })

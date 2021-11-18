@@ -66,6 +66,7 @@
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarChip from '..'
 import VarIcon from '../../icon'
+import dark from '../../themes/dark'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
@@ -82,7 +83,7 @@ export default {
     const show1 = ref(true)
 
     watchLang(use)
-    watchDarkMode()
+    watchDarkMode(dark)
 
     return {
       show,

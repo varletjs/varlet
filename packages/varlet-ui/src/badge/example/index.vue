@@ -59,6 +59,7 @@ import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarBadge from '..'
 import VarButton from '../../button'
 import VarChip from '../../chip'
+import dark from '../../themes/dark'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
@@ -82,7 +83,7 @@ export default {
     }
 
     watchLang(use)
-    watchDarkMode()
+    watchDarkMode(dark)
 
     return {
       value,
