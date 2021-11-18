@@ -112,8 +112,8 @@ export { add, pack, packs, merge, use }
 _add('zh-CN', _zhCN)
 _add('en-US', _enCN)
 // mobile example doc
-add('zh-CN', zhCN)
-add('en-US', enUS)
+add('zh-CN', zhCN as any)
+add('en-US', enUS as any)
 `
 
   const localTemplate = `\
