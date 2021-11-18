@@ -35,8 +35,9 @@ export default {
   '--color-success': '#10c48f',
   '--color-warning': '#ff8800',
   '--color-danger': '#ef5350',
-  '--color-disabled': '#393939',
+  '--color-disabled': '#404040',
   '--color-text-disabled': '#757575',
+  // component
   ...button,
   ...cell,
   ...card,

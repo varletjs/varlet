@@ -1,3 +1,3 @@
 export default {
-  '--pull-refresh-background': '#272727',
+  '--pull-refresh-background': '#303030',
 }

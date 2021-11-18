@@ -1,7 +1,7 @@
 export default {
-  '--uploader-action-background': '#272727',
+  '--uploader-action-background': '#303030',
   '--uploader-action-icon-color': '#fff',
-  '--uploader-file-name-background': '#272727',
+  '--uploader-file-name-background': '#303030',
   '--uploader-file-name-color': '#aaa',
-  '--uploader-file-cover-background': '#272727',
+  '--uploader-file-cover-background': '#303030',
 }

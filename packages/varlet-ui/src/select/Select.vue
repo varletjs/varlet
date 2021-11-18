@@ -76,7 +76,11 @@
           </div>
           <label
             class="var-select__placeholder"
-            :class="[computePlaceholderState(), !hint ? 'var-select--placeholder-non-hint' : null]"
+            :class="[
+              formDisabled || disabled ? 'var-select--disabled' : null,
+              computePlaceholderState(),
+              !hint ? 'var-select--placeholder-non-hint' : null,
+            ]"
           >
             {{ placeholder }}
           </label>

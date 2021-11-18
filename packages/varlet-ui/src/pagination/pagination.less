@@ -6,6 +6,7 @@
 @pagination-item-width: 32px;
 @pagination-item-height: 32px;
 @pagination-item-margin: 0 6px;
+@pagination-item-background: #fff;
 @pagination-item-border-radius: 4px;
 @pagination-list-bg-color: #fff;
 @pagination-list-active-bg-color: #edf5ff;
@@ -27,6 +28,7 @@
   --pagination-item-width: @pagination-item-width;
   --pagination-item-height: @pagination-item-height;
   --pagination-item-margin: @pagination-item-margin;
+  --pagination-item-background: @pagination-item-background;
   --pagination-item-border-radius: @pagination-item-border-radius;
   --pagination-list-bg-color: @pagination-list-bg-color;
   --pagination-list-active-bg-color: @pagination-list-active-bg-color;
@@ -65,6 +67,7 @@
     outline: none;
     transition: all 0.25s;
     user-select: none;
+    background: var(--pagination-item-background);
 
     &:hover {
       background-color: var(--pagination-hover-bg-color);
