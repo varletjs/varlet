@@ -101,7 +101,7 @@ import {
 import { get } from 'lodash-es'
 
 export default defineComponent({
-  setup() {
+  setup: function() {
     const bigCamelizeComponentName: Ref<string> = ref('')
     const route = useRoute()
     const showBackIcon: Ref<boolean> = ref(false)
@@ -171,6 +171,8 @@ export default defineComponent({
       }
     }
 
+    (window as any).toggleTheme = toggleTheme
+
     setThemes(config, currentThemes.value)
     window.postMessage(getThemesMessage(), '*')
 
@@ -197,7 +199,7 @@ export default defineComponent({
       changeLanguage,
       toggleTheme
     }
-  },
+  }
 })
 </script>
 
