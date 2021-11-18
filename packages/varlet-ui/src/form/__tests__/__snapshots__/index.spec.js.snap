@@ -323,7 +323,7 @@ exports[`test form with select 1`] = `
                 <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip--text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: transform 0ms;\\"></i></span></span></transition-stub>
               </div>
             </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
-          </div><label class=\\"var-select__placeholder var-select--placeholder-hint\\"></label>
+          </div><label class=\\"var-select__placeholder var-select--disabled var-select--placeholder-hint\\"></label>
         </div>
         <!--teleport start-->
         <!--teleport end-->

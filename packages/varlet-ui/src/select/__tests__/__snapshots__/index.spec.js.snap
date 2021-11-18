@@ -72,7 +72,7 @@ exports[`test select example 1`] = `
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select var-select--disabled\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
+        <div class=\\"var-select__select var-select--disabled\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var-select--disabled\\">请选择一个选项</label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
