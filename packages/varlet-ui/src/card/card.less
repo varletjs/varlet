@@ -1,4 +1,5 @@
-@card-padding: 0 0 10px 0;
+@card-padding: 5px 0 15px 0;
+@card-background: #fff;
 @card-border-radius: 4px;
 @card-image-width: 100%;
 @card-image-height: 200px;
@@ -20,6 +21,7 @@
 
 :root {
   --card-padding: @card-padding;
+  --card-background: @card-background;
   --card-border-radius: @card-border-radius;
   --card-image-width: @card-image-width;
   --card-image-height: @card-image-height;
@@ -45,6 +47,8 @@
   overflow: hidden;
   padding: var(--card-padding);
   line-height: var(--card-line-height);
+  background: var(--card-background);
+  transition: background-color 0.25s;
 
   &__image {
     width: var(--card-image-width);

@@ -40,9 +40,10 @@
 import VarInput from '..'
 import VarIcon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
+import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
 import { use, pack } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'InputExample',
@@ -68,6 +69,7 @@ export default {
       use(lang)
       values.value5 = pack.value.clearableText
     })
+    watchDarkMode(dark)
 
     return {
       pack,

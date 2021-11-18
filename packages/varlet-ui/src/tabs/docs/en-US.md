@@ -88,6 +88,7 @@ export default {
   color="#2979ff"
   active-color="#fff"
   inactive-color="hsla(0, 0%, 100%, .6)"
+  disabled-color="#aaa"
   v-model:active="active"
 >
   <var-tab>Option1</var-tab>
@@ -343,7 +344,6 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--tab-color` | `#fff` |
 | `--tab-padding` | `12px` |
 | `--tab-active-color` | `var(--color-primary)` |
 | `--tab-inactive-color` | `#646566` |

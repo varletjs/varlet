@@ -40,12 +40,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, onMounted, reactive } from 'vue'
 import dayjs from 'dayjs/esm'
 import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore'
 import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter'
 import PanelHeader from './panel-header.vue'
 import VarButton from '../../button'
+import { defineComponent, ref, computed, watch, onMounted, reactive } from 'vue'
 import { WEEK_HEADER } from '../props'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
@@ -227,19 +227,22 @@ export default defineComponent({
         return true
       }
 
-      const computeTextColor = (): string | undefined => {
+      const textColorOrClass = (): string => {
         if (disabled) return ''
-        if (computeOutline()) return color
+        if (computeOutline()) return color ?? ''
         if (dayExist()) return ''
-        return 'rgba(0, 0, 0, .87)'
+
+        return 'var-date-picker-main__color'
       }
+
+      const isClass = textColorOrClass().startsWith('var-date-picker')
 
       return {
         disabled,
         text: computeText(),
         outline: computeOutline(),
-        color: !computeText() ? color : '',
-        textColor: computeTextColor(),
+        textColor: isClass ? '' : textColorOrClass(),
+        class: isClass ? textColorOrClass() : '',
       }
     }
 

@@ -1,8 +1,8 @@
 <div align="center">
   <a href="https://varlet.gitee.io/varlet-ui/">
-    <img src="https://varlet.gitee.io/varlet-ui/varlet_icon.png" width="201">
+    <img src="https://varlet.gitee.io/varlet-ui/varlet_icon.png" width="150">
   </a>
-  <h2>VARLET</h2>
+  <h1>VARLET</h1>
   <p>基于Vue3的Material design风格移动端组件库</p>
   <p>
     <a href="https://varlet.gitee.io/varlet-ui/">开发文档</a> | <a href="https://github.com/haoziqaq/varlet/blob/dev/README.en-US.md">English</a>
@@ -15,7 +15,6 @@
     <img src="https://img.shields.io/codecov/c/github/haoziqaq/varlet" alt="coverage">
     <img src="https://img.badgesize.io/https://unpkg.com/@varlet/ui/umd/varlet.js?compression=gzip&label=gzip" alt="gzip" />
     <img src="https://github.com/haoziqaq/varlet/workflows/CI/badge.svg" alt="ci">
-
   </p>
 </div>
 
@@ -26,7 +25,7 @@
 Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥抱`Vue3`生态，由社区建立起来的组件库团队进行维护。
 
 ### 特性
-1. 提供40多个高质量通用组件
+1. 提供50个高质量通用组件
 2. 组件十分轻量
 3. 由国人开发，完善的中英文文档和后勤保障
 4. 支持按需引入
@@ -36,6 +35,7 @@ Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥
 8. 支持SSR
 9. 支持Typescript
 10. 90%以上单元测试覆盖率，提供稳定性保证
+11. 支持暗黑模式
 
 ### 安装
 

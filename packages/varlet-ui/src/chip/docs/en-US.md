@@ -14,12 +14,12 @@ createApp().use(Chip)
 Set the type of the chip with the 'type' attribute.
 
 ```html
+<var-chip>Default Chip</var-chip>
 <var-chip type="primary">Primary Chip</var-chip>
 <var-chip type="success">Success Chip</var-chip>
 <var-chip type="danger">Danger Chip</var-chip>
 <var-chip type="warning">Waring Chip</var-chip>
 <var-chip type="info">Info Chip</var-chip>
-<var-chip>Default Chip</var-chip>
 ```
 
 ### Simple Chip
@@ -43,10 +43,10 @@ To cancel fillet style of chip by setting the `round` attribute to `false`.
 Set the chip size through the `size` attribute.
 
 ```html
-<var-chip size="large">Large Chip</var-chip>
-<var-chip>Normal Chip</var-chip>
-<var-chip size="small">Small Chip</var-chip>
-<var-chip size="mini">Mini Chip</var-chip>
+<var-chip type="primary">Normal Chip</var-chip>
+<var-chip type="success" size="small">Small Chip</var-chip>
+<var-chip type="warning" size="mini">Mini Chip</var-chip>
+<var-chip type="danger" size="large">Large Chip</var-chip>
 ```
 
 ### Block Flex
@@ -102,19 +102,19 @@ Set the chip color through the `color` and `text-color` attributes.
 ### Add Slot
 
 ```html
-<var-chip type="primary" plain>
+<var-chip plain>
   Left Slot
   <template #left>
     <var-icon name="star" />
   </template>
 </var-chip>
-<var-chip type="primary" plain>
+<var-chip plain>
   Right Slot
   <template #right>
     <var-icon name="fire" />
   </template>
 </var-chip>
-<var-chip type="primary" plain>
+<var-chip plain>
   Left And Right Slots
   <template #left>
     <var-icon name="account-circle" />

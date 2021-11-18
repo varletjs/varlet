@@ -44,8 +44,9 @@
 import { reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarTimePicker from '..'
+import dark from '../../themes/dark'
 import { pack, use } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'TimePickerExample',
@@ -80,6 +81,7 @@ export default {
     }
 
     watchLang(use)
+    watchDarkMode(dark)
 
     return {
       ...toRefs(dates),

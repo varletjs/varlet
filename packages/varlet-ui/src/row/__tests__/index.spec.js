@@ -7,7 +7,6 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/jest'
 
-
 test('test row example', () => {
   const wrapper = mount(example)
   expect(wrapper.html()).toMatchSnapshot()
@@ -25,7 +24,7 @@ test('test row flex', async () => {
 
   const wrapper = mount({
     components: {
-      [VarRow.name]: VarRow
+      [VarRow.name]: VarRow,
     },
     template,
   })
@@ -63,9 +62,9 @@ test('test row onClick null callback', () => {
   const template = `<var-row></var-row>`
   const wrapper = mount({
     components: {
-      [VarRow.name]: VarRow
+      [VarRow.name]: VarRow,
     },
-    template
+    template,
   })
   wrapper.trigger('click')
   wrapper.unmount()
@@ -96,11 +95,11 @@ test('test col in row', async () => {
       span: 8,
       offset: 4,
     }),
-    components:{
-      [VarCol.name]:VarCol,
-      [VarRow.name]:VarRow
+    components: {
+      [VarCol.name]: VarCol,
+      [VarRow.name]: VarRow,
     },
-    template
+    template,
   })
   expect(wrapper.html()).toMatchSnapshot()
 

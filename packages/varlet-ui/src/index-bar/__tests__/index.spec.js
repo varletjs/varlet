@@ -29,13 +29,16 @@ test('test sticky prop and it is value equal false', () => {
       <var-index-anchor index="B">test B</var-index-anchor>
     </var-index-bar>
   `
-  const wrapper = mount({
-    components: {
-      [VarIndexBar.name]: VarIndexBar,
-      [VarIndexAnchor.name]: VarIndexAnchor,
+  const wrapper = mount(
+    {
+      components: {
+        [VarIndexBar.name]: VarIndexBar,
+        [VarIndexAnchor.name]: VarIndexAnchor,
+      },
+      template,
     },
-    template
-  }, { attachTo: document.body })
+    { attachTo: document.body }
+  )
 
   expect(wrapper.find('.var-sticky').exists()).toBeFalsy()
 })
@@ -46,13 +49,16 @@ test('test, hideList and z-index prop', () => {
       <var-index-anchor index="A">test A</var-index-anchor>
     </var-index-bar>
   `
-  const wrapper = mount({
-    components: {
-      [VarIndexBar.name]: VarIndexBar,
-      [VarIndexAnchor.name]: VarIndexAnchor,
+  const wrapper = mount(
+    {
+      components: {
+        [VarIndexBar.name]: VarIndexBar,
+        [VarIndexAnchor.name]: VarIndexAnchor,
+      },
+      template,
     },
-    template
-  }, { attachTo: document.body })
+    { attachTo: document.body }
+  )
 
   expect(wrapper.find('.var-sticky').exists()).toBeTruthy()
 
@@ -82,17 +88,20 @@ test('test click anchor to trigger change event', async () => {
   const clickHandle = jest.fn()
   const changeHandle = jest.fn()
 
-  const wrapper = mount({
-    components: {
-      [VarIndexBar.name]: VarIndexBar,
-      [VarIndexAnchor.name]: VarIndexAnchor,
+  const wrapper = mount(
+    {
+      components: {
+        [VarIndexBar.name]: VarIndexBar,
+        [VarIndexAnchor.name]: VarIndexAnchor,
+      },
+      methods: {
+        clickHandle,
+        changeHandle,
+      },
+      template,
     },
-    methods: {
-      clickHandle,
-      changeHandle
-    },
-    template
-  }, { attachTo: document.body })
+    { attachTo: document.body }
+  )
 
   await delay(0)
 
@@ -135,16 +144,19 @@ test('test scroll indexBar to trigger change event', async () => {
   `
   const changeHandle = jest.fn()
 
-  const wrapper = mount({
-    components: {
-      [VarIndexBar.name]: VarIndexBar,
-      [VarIndexAnchor.name]: VarIndexAnchor,
+  const wrapper = mount(
+    {
+      components: {
+        [VarIndexBar.name]: VarIndexBar,
+        [VarIndexAnchor.name]: VarIndexAnchor,
+      },
+      methods: {
+        changeHandle,
+      },
+      template,
     },
-    methods: {
-      changeHandle
-    },
-    template
-  }, { attachTo: document.body })
+    { attachTo: document.body }
+  )
 
   await delay(0)
 

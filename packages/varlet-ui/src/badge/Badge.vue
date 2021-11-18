@@ -1,5 +1,5 @@
 <template>
-  <div class="var-badge">
+  <div class="var-badge var--box">
     <transition name="var-badge-fade">
       <span
         v-bind="$attrs"

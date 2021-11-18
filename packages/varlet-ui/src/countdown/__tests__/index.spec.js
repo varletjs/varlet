@@ -20,8 +20,8 @@ test('test countdown format prop', () => {
     props: {
       time: 108000000,
       autoStart: false,
-      format: 'HH : mm : ss : SS'
-    }
+      format: 'HH : mm : ss : SS',
+    },
   })
 
   expect(wrapper.html()).toMatchSnapshot()
@@ -31,8 +31,8 @@ test('test countdown autostart prop', async () => {
   const wrapper = mount(VarCountdown, {
     props: {
       time: 10800,
-      autoStart: false
-    }
+      autoStart: false,
+    },
   })
 
   const text = wrapper.text()
@@ -50,8 +50,8 @@ test('test countdown onEnd and onChange', async () => {
     props: {
       time: 1000,
       onEnd,
-      onChange
-    }
+      onChange,
+    },
   })
 
   await delay(1100)
@@ -64,14 +64,14 @@ test('test start, pause and reset methods', async () => {
   const template = `<var-countdown :time="time" ref="countdown" :auto-start="false" />`
   const wrapper = mount({
     components: {
-      [VarCountdown.name]: VarCountdown
+      [VarCountdown.name]: VarCountdown,
     },
     data() {
       return {
-        time: 108000
+        time: 108000,
       }
     },
-    template
+    template,
   })
 
   const text = wrapper.text()
@@ -106,8 +106,8 @@ test('test change event argument', async () => {
   mount(VarCountdown, {
     props: {
       time: 1,
-      onChange
-    }
+      onChange,
+    },
   })
 
   await delay(50)

@@ -10,7 +10,7 @@ export type StyleVars = Record<string, string>
 
 const mountedVarKeys: string[] = []
 
-function StyleProvider(styleVars: StyleVars = {}) {
+function StyleProvider(styleVars: StyleVars | null = {}) {
   mountedVarKeys.forEach((key) => document.documentElement.style.removeProperty(key))
   mountedVarKeys.length = 0
 
@@ -39,7 +39,7 @@ export function getPCLocationInfo(): PCLocationInfo {
 
   return {
     language,
-    menuName
+    menuName,
   }
 }
 
@@ -50,7 +50,7 @@ export function isPhone() {
 export enum MenuTypes {
   TITLE = 1,
   COMPONENT = 2,
-  DOCUMENTATION = 3
+  DOCUMENTATION = 3,
 }
 
 export function inIframe() {
@@ -74,9 +74,7 @@ export function getHashSearch() {
 
 export function watchLang(cb: (lang: string) => void, platform: 'pc' | 'mobile' = 'mobile') {
   const handleHashchange = () => {
-    const language = platform === 'mobile'
-      ? (getHashSearch().get('language') ?? 'zh-CN')
-      : getPCLocationInfo().language
+    const language = platform === 'mobile' ? getHashSearch().get('language') ?? 'zh-CN' : getPCLocationInfo().language
 
     cb(language)
   }
@@ -97,6 +95,28 @@ export function watchPlatform(cb: (platform: string) => void) {
   handleHashchange()
 }
 
+export function watchThemes(
+  cb: (themes: 'themes' | 'darkThemes', from: 'pc' | 'mobile' | 'default') => void,
+  shouldUnmount = true
+) {
+  const handleThemesChange = (event: MessageEvent) => {
+    const { data } = event
+    if (data.action === 'themesChange') {
+      cb(data.data, data.from)
+    }
+  }
+
+  window.addEventListener('message', handleThemesChange)
+
+  if (shouldUnmount) {
+    onUnmounted(() => {
+      window.removeEventListener('message', handleThemesChange)
+    })
+  }
+
+  cb(getBrowserThemes(), 'default')
+}
+
 export function addRouteListener(cb: () => void) {
   onMounted(() => {
     window.addEventListener('hashchange', cb)
@@ -108,12 +128,31 @@ export function addRouteListener(cb: () => void) {
   })
 }
 
-export function setThemes(config: Record<string, any>) {
-  const themes = get(config, 'themes', {})
+export function setThemes(config: Record<string, any>, name: 'themes' | 'darkThemes') {
+  const themes = get(config, name, {})
   const styleVars = Object.entries(themes).reduce((styleVars, [key, value]) => {
     styleVars[`--site-config-${key}`] = value as string
     return styleVars
   }, {} as StyleVars)
 
   StyleProvider(styleVars)
+}
+
+export function getBrowserThemes(): 'darkThemes' | 'themes' {
+  let currentThemes = window.localStorage.getItem('currentThemes') as 'darkThemes' | 'themes'
+
+  if (!currentThemes) {
+    currentThemes = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'darkThemes' : 'themes'
+    window.localStorage.setItem('currentThemes', currentThemes)
+  }
+
+  return currentThemes
+}
+
+export function watchDarkMode(dark: StyleVars, cb?: (themes: 'darkThemes' | 'themes') => void) {
+  watchThemes((themes) => {
+    StyleProvider(themes === 'darkThemes' ? dark : null)
+
+    cb?.(themes)
+  })
 }

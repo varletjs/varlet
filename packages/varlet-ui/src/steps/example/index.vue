@@ -29,9 +29,10 @@ import VarSteps from '..'
 import VarStep from '../../step'
 import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
+import dark from '../../themes/dark'
 import { ref } from 'vue'
 import { pack, use } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'StepsExample',
@@ -48,6 +49,8 @@ export default {
     }
 
     watchLang(use)
+
+    watchDarkMode(dark)
 
     return {
       pack,

@@ -202,3 +202,4 @@ export default {
 | `--time-picker-inner-right` | `36px` |
 | `--time-picker-inner-top` | `36px` |
 | `--time-picker-inner-bottom` | `36px` |
+| `--time-picker-body-background` | `#fff` |

@@ -9,7 +9,7 @@
     ]"
     :style="{
       color,
-      transition: `all ${toNumber(transition)}ms`,
+      transition: `transform ${toNumber(transition)}ms`,
       width: isURL(name) ? toSizeUnit(size) : null,
       height: isURL(name) ? toSizeUnit(size) : null,
       fontSize: toSizeUnit(size),

@@ -48,13 +48,28 @@
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarSpace from '..'
 import VarButton from '../../button'
+import context from '../../context'
+import dark from '../../themes/dark'
 import { pack, use } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
+import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
+import { onUnmounted } from 'vue'
 
 export default {
   components: { VarSpace, VarButton, AppType },
   setup() {
     watchLang(use)
+    watchDarkMode(dark)
+
+    const prevTouchmoveForbid = context.touchmoveForbid
+    watchPlatform((platform) => {
+      if (platform === 'pc') {
+        context.touchmoveForbid = false
+      }
+    })
+    onUnmounted(() => {
+      context.touchmoveForbid = prevTouchmoveForbid
+    })
+
     return {
       pack,
     }

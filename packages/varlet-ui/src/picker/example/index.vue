@@ -16,9 +16,10 @@ import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import area from '../../../json/area.json'
 import context from '../../context'
+import dark from '../../themes/dark'
 import { onUnmounted, ref } from 'vue'
 import { use, pack } from './locale'
-import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
+import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'PickerExample',
@@ -54,6 +55,7 @@ export default {
     }
 
     watchLang(use)
+    watchDarkMode(dark)
 
     const prevTouchmoveForbid = context.touchmoveForbid
     watchPlatform((platform) => {

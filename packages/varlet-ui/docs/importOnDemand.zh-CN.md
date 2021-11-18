@@ -72,7 +72,4 @@ export default defineConfig({
 </template>
 ```
 
-注意: 在模板以外使用的组件或者自定义指令无法被插件扫描，仍需要手动引入。例如组件的函数调用方式
-`Snackbar.loading`或者`v-ripple`
-
-
+特别注意: 在模板之外调用的函数组件无法被插件扫描，仍需要手动引入样式。例如`Snackbar`就是一个函数组件。

@@ -71,14 +71,14 @@ export default {
 .varlet-site-sidebar {
   padding: 0 0 15px;
   position: fixed;
-  width: 220px;
+  width: 240px;
   top: 60px;
   bottom: 0;
   left: 0;
   z-index: 1;
   overflow-y: scroll;
-  box-shadow: 0 8px 12px #ebedf0;
-  background: #fff;
+  box-shadow: 0 8px 12px var(--site-config-color-shadow);
+  background: var(--site-config-color-bar);
 
   &::-webkit-scrollbar {
     display: none;
@@ -92,7 +92,7 @@ export default {
     &--title {
       font-size: 16px;
       font-weight: 600;
-      color: #394950;
+      color: var(--site-config-color-text);
       line-height: 28px;
       padding: 8px 0 8px;
     }
@@ -120,7 +120,7 @@ export default {
   &__link {
     cursor: pointer;
     font-size: 14px;
-    color: #455a64;
+    color: var(--site-config-color-text);
     transition: color 0.2s;
 
     &:hover {

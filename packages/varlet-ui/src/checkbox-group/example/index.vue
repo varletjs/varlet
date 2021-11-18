@@ -54,8 +54,9 @@ import VarCheckbox from '../../checkbox'
 import VarIcon from '../../icon'
 import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
+import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
-import { watchLang } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 export default {
@@ -81,6 +82,7 @@ export default {
     })
 
     watchLang(use)
+    watchDarkMode(dark)
 
     return {
       pack,

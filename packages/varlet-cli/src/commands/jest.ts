@@ -18,7 +18,7 @@ export async function jest(cmd: { watch?: boolean; component?: string; clearCach
     if (!response.results.success && !cmd.watch) {
       process.exit(1)
     }
-  } catch (e) {
+  } catch (e: any) {
     logger.error(e.toString())
     process.exit(1)
   }

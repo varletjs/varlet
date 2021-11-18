@@ -37,8 +37,9 @@
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarIcon from '../../icon'
 import VarCell from '..'
+import dark from '../../themes/dark'
 import { pack, use } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'CellExample',
@@ -49,6 +50,7 @@ export default {
   },
   setup() {
     watchLang(use)
+    watchDarkMode(dark)
 
     return {
       pack,

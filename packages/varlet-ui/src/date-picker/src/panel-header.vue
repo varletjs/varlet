@@ -3,7 +3,8 @@
     <var-button
       round
       text
-      :text-color="disabled.left ? '' : 'rgba(0, 0, 0, .54)'"
+      :class="getClass('left')"
+      style="filter: opacity(0.54)"
       :disabled="disabled.left"
       @click="checkDate('prev')"
     >
@@ -17,7 +18,8 @@
     <var-button
       round
       text
-      :text-color="disabled.right ? '' : 'rgba(0, 0, 0, .54)'"
+      :class="getClass('right')"
+      style="filter: opacity(0.54)"
       :disabled="disabled.right"
       @click="checkDate('next')"
     >
@@ -27,9 +29,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue'
 import VarButton from '../../button'
 import VarIcon from '../../icon'
+import dark from '../../themes/dark'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
 import type { Ref, ComputedRef, PropType } from 'vue'
@@ -71,6 +74,10 @@ export default defineComponent({
       return pack.value.lang === 'zh-CN' ? `${previewYear} ${monthName}` : `${monthName} ${previewYear}`
     })
 
+    const getClass = (position: 'left' | 'right') => {
+      return props.disabled[position] ? '' : 'var-date-picker-main__color'
+    }
+
     const checkDate = (checkType: string) => {
       emit('check-date', checkType)
       reverse.value = checkType === 'prev'
@@ -88,6 +95,7 @@ export default defineComponent({
       reverse,
       showDate,
       checkDate,
+      getClass,
     }
   },
 })

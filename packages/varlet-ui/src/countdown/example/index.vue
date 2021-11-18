@@ -39,9 +39,10 @@ import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarCountdown from '..'
 import Snackbar from '../../snackbar'
 import VarButton from '../../button'
+import dark from '../../themes/dark'
 import { ref } from 'vue'
 import { pack, use } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'CountdownExample',
@@ -59,10 +60,11 @@ export default {
     }
 
     const change = () => {
-      // console.log('change')
+      console.log('change')
     }
 
     watchLang(use)
+    watchDarkMode(dark)
 
     return {
       time,

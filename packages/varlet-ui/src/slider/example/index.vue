@@ -58,8 +58,9 @@
 import { reactive, toRefs } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarSlider from '..'
+import dark from '../../themes/dark'
 import { pack, use } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'SliderExample',
@@ -87,6 +88,7 @@ export default {
     }
 
     watchLang(use)
+    watchDarkMode(dark)
 
     return {
       ...toRefs(values),
@@ -106,7 +108,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: #ebebeb 0 2px 2px;
   border-radius: 50%;
   font-size: 12px;
   background-color: #fff;

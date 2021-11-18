@@ -31,20 +31,19 @@ test('test slider style', async () => {
 
   const wrapper = mount({
     components: {
-      [VarSlider.name]: VarSlider
+      [VarSlider.name]: VarSlider,
     },
     data() {
       return {
-        value: 30
+        value: 30,
       }
     },
-    template
+    template,
   })
 
   await delay(0)
 
   expect(wrapper.html()).toMatchSnapshot()
-
 })
 
 test('test slider range prop', async () => {
@@ -53,14 +52,14 @@ test('test slider range prop', async () => {
   `
   const wrapper = mount({
     components: {
-      [VarSlider.name]: VarSlider
+      [VarSlider.name]: VarSlider,
     },
     data() {
       return {
-        value: [30, 50]
+        value: [30, 50],
       }
     },
-    template
+    template,
   })
 
   expect(wrapper.findAll('.var-slider__thumb').length).toBe(2)
@@ -71,15 +70,15 @@ test('test slider labelVisible prop', async () => {
 
   const wrapper = mount({
     components: {
-      [VarSlider.name]: VarSlider
+      [VarSlider.name]: VarSlider,
     },
     data() {
       return {
         value: 0,
-        visible: 'normal'
+        visible: 'normal',
       }
     },
-    template
+    template,
   })
 
   const el = wrapper.find('.var-slider__thumb-label')
@@ -121,15 +120,15 @@ test('test step prop', async () => {
 
   const wrapper = mount({
     components: {
-      [VarSlider.name]: VarSlider
+      [VarSlider.name]: VarSlider,
     },
     data() {
       return {
         value: 0,
-        step: NaN
+        step: NaN,
       }
     },
-    template
+    template,
   })
 
   await wrapper.setData({ step: -1 })
@@ -155,15 +154,15 @@ test('test slider value legal', async () => {
 
   const wrapper = mount({
     components: {
-      [VarSlider.name]: VarSlider
+      [VarSlider.name]: VarSlider,
     },
     data() {
       return {
         value: 0,
-        range: true
+        range: true,
       }
     },
-    template
+    template,
   })
 
   await delay(0)
@@ -184,21 +183,21 @@ test('test slider not available', async () => {
   `
   const wrapper = mount({
     components: {
-      [VarSlider.name]: VarSlider
+      [VarSlider.name]: VarSlider,
     },
     data() {
       return {
         value: 10,
         disabled: true,
-        readonly: false
+        readonly: false,
       }
     },
     methods: {
       changeFn,
       startFn,
-      endFn
+      endFn,
     },
-    template
+    template,
   })
 
   const el = wrapper.find('.var-slider__thumb')
@@ -209,7 +208,7 @@ test('test slider not available', async () => {
 
   await wrapper.setData({
     disabled: false,
-    readonly: true
+    readonly: true,
   })
 
   await trigger(el, 'touchstart', 0, 0)
@@ -231,20 +230,20 @@ test('test slider events', async () => {
   `
   const wrapper = mount({
     components: {
-      [VarSlider.name]: VarSlider
+      [VarSlider.name]: VarSlider,
     },
     data() {
       return {
         value: 10,
-        range: false
+        range: false,
       }
     },
     methods: {
       changeFn,
       startFn,
-      endFn
+      endFn,
     },
-    template
+    template,
   })
 
   const el = wrapper.find('.var-slider__thumb')
@@ -263,10 +262,10 @@ test('test slider events', async () => {
 
   await wrapper.setData({
     range: true,
-    value: [20 ,30]
+    value: [20, 30],
   })
 
-  const el1 =  wrapper.findAll('.var-slider__thumb')[1]
+  const el1 = wrapper.findAll('.var-slider__thumb')[1]
 
   await trigger(el1, 'touchstart', 0, 0)
   await trigger(el1, 'touchmove', 0, 50)
@@ -276,19 +275,17 @@ test('test slider events', async () => {
 
   await wrapper.setData({
     range: true,
-    value: [20 ,30]
+    value: [20, 30],
   })
   await blockEl.trigger('click')
 
   expect(wrapper.vm.value).not.toEqual([20, 30])
-
-
 })
 test('test slider rules prop', async () => {
   const template = `<var-slider v-model="value" :rules="[(v) => !Number.isNaN(v) || 'error message']" />`
   const wrapper = mount({
     components: {
-      [VarSlider.name]: VarSlider
+      [VarSlider.name]: VarSlider,
     },
     data() {
       return {
@@ -299,7 +296,6 @@ test('test slider rules prop', async () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
-
 
   const el = wrapper.find('.var-slider__thumb')
 

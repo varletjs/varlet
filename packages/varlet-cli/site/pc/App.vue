@@ -116,8 +116,6 @@ export default defineComponent({
       { immediate: true }
     )
 
-    setThemes(config)
-
     return {
       menu,
       language,
@@ -158,6 +156,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  background: var(--site-config-color-body);
+  color: var(--site-config-color-text);
+}
+
+* {
+  transition: background-color .25s, box-shadow .25s;
 }
 
 iframe {
@@ -173,24 +177,30 @@ iframe {
     flex-direction: column;
     align-items: center;
     margin: 20px 4px 20px;
-    padding: 40px;
-    border-top: 6px solid var(--site-config-color-primary);
+    padding: 90px 40px;
+    border-top: 6px solid var(--site-config-color-introduce-border);
     border-radius: 2px;
-    box-shadow: 0 0 20px 6px #eee;
+    background: var(--site-config-color-bar);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+
+    &__row {
+      display: flex;
+      align-items: center;
+    }
 
     &__image {
-      width: 180px;
+      width: 60px;
+      margin-right: 20px;
     }
 
     &__name {
-      font-size: 32px;
-      margin-top: 22px;
+      font-size: 60px;
     }
 
     &__des {
-      color: #555;
-      font-size: 14px;
-      margin-top: 10px;
+      color: var(--site-config-color-sub-text);
+      font-size: 16px;
+      margin-top: 16px;
       -webkit-font-smoothing: antialiased;
     }
   }
@@ -202,16 +212,16 @@ iframe {
   &-site {
     &-content {
       display: flex;
-      background: #fff;
+      background: var(--site-config-color-body);
       margin-top: 60px;
-      margin-left: 220px;
+      margin-left: 240px;
     }
 
     &-doc-container {
       flex: 1 0 0;
       overflow-y: auto;
       min-width: 500px;
-      padding: 0 30px;
+      padding: 0 25px;
       overflow-x: hidden;
 
       &::-webkit-scrollbar {
@@ -243,7 +253,7 @@ iframe {
       h5,
       h6 {
         position: relative;
-        color: #333;
+        color: var(--site-config-color-text);
         font-weight: normal;
         line-height: 1.5;
       }
@@ -267,13 +277,13 @@ iframe {
       p,
       ul {
         -webkit-font-smoothing: antialiased;
-        color: #555;
+        color: var(--site-config-color-text);
         font-size: 15px;
         line-height: 26px;
         padding: 16px;
         border-radius: 4px;
-        background: #fff;
-        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+        background: var(--site-config-color-bar);
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
         list-style: none;
       }
 
@@ -308,7 +318,8 @@ iframe {
         -webkit-font-smoothing: antialiased;
         width: 100%;
         margin-top: 12px;
-        color: #333;
+        color: var(--site-config-color-text);
+        background: var(--site-config-color-bar);
         font-size: 14px;
         line-height: 28px;
         border-collapse: collapse;
@@ -319,15 +330,15 @@ iframe {
           padding: 8px 16px;
           font-weight: 500;
           text-align: left;
-          color: #555;
+          color: var(--site-config-color-sub-text);
           font-size: 13px;
           -webkit-font-smoothing: antialiased;
         }
 
         td {
           padding: 8px 16px;
-          border-top: 1px solid #eee;
-          color: #555;
+          border-top: 1px solid var(--site-config-color-border);
+          color: var(--site-config-color-text);
           font-family: Consolas, Monaco, monospace;
 
           code {
@@ -348,7 +359,6 @@ iframe {
 
       .card {
         margin-bottom: 24px;
-        padding: 0 4px;
       }
     }
   }

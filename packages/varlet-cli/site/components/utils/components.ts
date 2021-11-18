@@ -1,4 +1,4 @@
-import { createApp, h } from 'vue'
+import { createApp, h, onActivated, onDeactivated, ref, Ref } from 'vue'
 import type { Component } from 'vue'
 
 export interface MountInstance {
@@ -50,4 +50,20 @@ export function mountInstance(
 
   const { unmount } = mount(Host)
   return { unmountInstance: unmount }
+}
+
+export function useTeleport() {
+  const disabled: Ref<boolean> = ref(false)
+
+  onActivated(() => {
+    disabled.value = false
+  })
+
+  onDeactivated(() => {
+    disabled.value = true
+  })
+
+  return {
+    disabled,
+  }
 }

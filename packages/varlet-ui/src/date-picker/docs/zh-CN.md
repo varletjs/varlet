@@ -180,6 +180,7 @@ export default {
 | `--date-picker-font-size` | `var(--font-size-md)` |
 | `--date-picker-min-width` | `290px` |
 | `--date-picker-height` | `385px` |
+| `--date-picker-main-color` | `rgba(0, 0, 0, .87)` |
 | `--date-picker-title-padding` | `16px` |
 | `--date-picker-title-background` | `var(--color-primary)` |
 | `--date-picker-title-color` | `#fff` |
@@ -190,6 +191,7 @@ export default {
 | `--date-picker-title-date-font-size` | `34px` |
 | `--date-picker-title-date-font-weight` | `500` |
 | `--date-picker-title-date-range-font-size` | `20px` |
+| `--date-picker-body-background-color` | `rgba(0, 0, 0, 0)` |
 | `--picker-header-padding` | `4px 16px` |
 | `--picker-header-padding` | `4px 16px` |
 | `--month-picker-padding` | `0 12px` |

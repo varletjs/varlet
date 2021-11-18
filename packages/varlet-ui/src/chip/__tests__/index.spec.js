@@ -20,7 +20,7 @@ test('test chip close', () => {
   const wrapper = mount(VarChip, {
     props: {
       onClose,
-      closable: true
+      closable: true,
     },
   })
 
@@ -30,7 +30,6 @@ test('test chip close', () => {
   closeEl.trigger('click')
   expect(onClose).toHaveBeenCalledTimes(1)
 })
-
 
 test('test chip color & textColor', () => {
   const wrapper = mount(VarChip, {
@@ -51,7 +50,7 @@ test('test chip styles', () => {
       round: true,
       plain: true,
       block: true,
-      iconName: 'fire'
+      iconName: 'fire',
     },
     slots: {
       default: () => 'chip text',

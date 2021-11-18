@@ -62,7 +62,7 @@ exports[`test divider example 1`] = `
 </div>
 <div>
   <div class=\\"app-type\\">自定义</div>
-  <div class=\\"var-divider var--box\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"color: rgb(41, 121, 255); transition: all 0ms; margin: 0px 16px;\\"></i></div>
+  <div class=\\"var-divider var--box\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"color: rgb(41, 121, 255); transition: transform 0ms; margin: 0px 16px;\\"></i></div>
 </div>"
 `;
 

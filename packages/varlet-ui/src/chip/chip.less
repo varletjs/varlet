@@ -1,4 +1,4 @@
-@chip-default-color: #f5f5f5;
+@chip-default-color: #e0e0e0;
 @chip-primary-color: var(--color-primary);
 @chip-danger-color: var(--color-danger);
 @chip-success-color: var(--color-success);
@@ -61,9 +61,10 @@
   border: thin solid transparent;
   vertical-align: middle;
   line-height: 1;
+  transition: background-color 0.25s;
 
   &--default {
-    color: #676767;
+    color: inherit;
     background: var(--chip-default-color);
   }
 

@@ -7,7 +7,7 @@ exports[`test select example 1`] = `
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
+        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
@@ -29,7 +29,7 @@ exports[`test select example 1`] = `
     <div class=\\"var-select__icon var-select--non-hint\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap var-select--non-hint\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var-select--placeholder-non-hint\\">请选择一个选项</label>
+        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var-select--placeholder-non-hint\\">请选择一个选项</label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
@@ -49,7 +49,7 @@ exports[`test select example 1`] = `
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
+        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
@@ -72,7 +72,7 @@ exports[`test select example 1`] = `
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select var-select--disabled\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
+        <div class=\\"var-select__select var-select--disabled\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
@@ -94,7 +94,7 @@ exports[`test select example 1`] = `
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
+        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
@@ -116,12 +116,12 @@ exports[`test select example 1`] = `
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
+        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
     </div>
-    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition: all 0ms; font-size: 14px;\\"></i></div>
+    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\"></i></div>
   </div>
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
@@ -133,15 +133,15 @@ exports[`test select example 1`] = `
 <div class=\\"app-type\\">显示图标</div>
 <div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
-    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: all 0ms;\\"></i></div>
+    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
+        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
     </div>
-    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: all 0ms;\\"></i></div>
+    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
   </div>
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
@@ -159,7 +159,7 @@ exports[`test select example 1`] = `
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
           <div>
             <div class=\\"var-select__values\\"></div>
-          </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i>
+          </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
         </div><label class=\\"var-select__placeholder\\">请选择多个选项</label>
       </div>
       <!--teleport start-->
@@ -185,7 +185,7 @@ exports[`test select example 1`] = `
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
           <div>
             <div class=\\"var-select__chips\\"></div>
-          </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i>
+          </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
         </div><label class=\\"var-select__placeholder\\">请选择多个选项</label>
       </div>
       <!--teleport start-->
@@ -208,7 +208,7 @@ exports[`test select example 1`] = `
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
+        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\">请选择一个选项</label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
@@ -233,7 +233,7 @@ exports[`test select example 1`] = `
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
           <div>
             <div class=\\"var-select__values\\"></div>
-          </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i>
+          </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
         </div><label class=\\"var-select__placeholder\\">请选择多个选项</label>
       </div>
       <!--teleport start-->
@@ -259,7 +259,7 @@ exports[`test select focus & blur methods 1`] = `
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var-select--placeholder-hint\\"></label>
+        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var-select--placeholder-hint\\"></label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
@@ -283,7 +283,7 @@ exports[`test select focus & blur methods 2`] = `
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\"></label>
+        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\"></label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
@@ -307,7 +307,7 @@ exports[`test select hint to be false 1`] = `
     <div class=\\"var-select__icon var-select--non-hint\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap var-select--non-hint\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var-select--placeholder-hidden var-select--placeholder-non-hint\\"></label>
+        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var-select--placeholder-hidden var-select--placeholder-non-hint\\"></label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
@@ -331,7 +331,7 @@ exports[`test select validation 1`] = `
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select var-select--error\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: all 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\"></label>
+        <div class=\\"var-select__select var-select--error\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder\\"></label>
       </div>
       <!--teleport start-->
       <!--teleport end-->

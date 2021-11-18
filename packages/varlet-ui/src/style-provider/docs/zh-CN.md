@@ -118,7 +118,7 @@ export default {
     let rootStyleVars = null
 
     const darkTheme = {
-      '--color-primary': '#000'
+      '--color-primary': '#3f51b5'
     }
     
     const toggleRootTheme = () => {

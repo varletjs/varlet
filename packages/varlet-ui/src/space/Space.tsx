@@ -3,6 +3,7 @@ import { internalSizeValidator, props } from './props'
 import type { SpaceInternalSize, SpaceSize } from './props'
 import { toPxNum } from '../utils/elements'
 import { isArray } from '../utils/shared'
+import '../styles/common.less'
 import './space.less'
 
 const internalSizes: Record<SpaceInternalSize, number[]> = {

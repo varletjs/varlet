@@ -3,8 +3,8 @@
     <header>
       <var-site-app-bar
         class="app-bar"
+        title-position="left"
         :title="bigCamelizeComponentName"
-        title-position="center"
       >
         <template #left>
           <var-site-button
@@ -19,7 +19,7 @@
           </var-site-button>
           <var-site-button
             v-if="!showBackIcon && github"
-            style="margin-left: 6px; "
+            style="margin-left: 2px;"
             text
             round
             @click="toGithub"
@@ -30,45 +30,56 @@
           </var-site-button>
         </template>
         <template #right>
-          <var-site-menu
-            style="background: transparent"
-            :offset-x="1"
-            :offset-y="38"
-            v-model:show="showMenu"
-            v-if="languages"
+          <var-site-button
+            style="transform: translateX(2px)"
+            text
+            round
+            color="transparent"
+            text-color="#fff"
+            v-if="darkMode"
+            @click="toggleTheme"
           >
-            <var-site-button
-              style="padding-right: 6px"
-              text
-              color="transparent"
-              text-color="#fff"
-              @click="showMenu = true"
-            >
-              <var-site-icon name="translate" :size="24" />
-              <var-site-icon name="chevron-down" :size="24" />
-            </var-site-button>
-
-            <template #menu>
-              <div style="background: #fff">
-                <var-site-cell
-                  v-for="(value, key) in nonEmptyLanguages"
-                  :key="key"
-                  class="mobile-language-cell"
-                  :class="[language === key && 'mobile-language-cell--active']"
-                  v-ripple
-                  @click="changeLanguage(key)"
-                >
-                  {{ value }}
-                </var-site-cell>
-              </div>
-            </template>
-          </var-site-menu>
+            <var-site-icon
+              size="24px"
+              color="#fff"
+              :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'"
+            />
+          </var-site-button>
+          <var-site-button
+            style="padding-right: 6px"
+            text
+            color="transparent"
+            text-color="#fff"
+            @click.stop="showMenu = true"
+            v-if="languages || darkMode"
+          >
+            <var-site-icon name="translate" :size="24" />
+            <var-site-icon name="chevron-down" :size="22" />
+          </var-site-button>
         </template>
       </var-site-app-bar>
     </header>
     <div class="router-view__block">
       <router-view />
     </div>
+
+    <transition name="site-menu">
+      <div
+        class="settings var-site-elevation--3"
+        v-if="showMenu"
+      >
+        <var-site-cell
+          v-for="(value, key) in nonEmptyLanguages"
+          :key="key"
+          class="mobile-language-cell"
+          :class="[language === key && 'mobile-language-cell--active']"
+          v-ripple
+          @click="changeLanguage(key)"
+        >
+          {{ value }}
+        </var-site-cell>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -77,7 +88,16 @@
 import config from '@config'
 import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { bigCamelize, inIframe, isPhone, removeEmpty, setThemes, watchLang } from '../utils'
+import {
+  bigCamelize,
+  getBrowserThemes,
+  inIframe,
+  isPhone,
+  removeEmpty,
+  setThemes,
+  watchLang,
+  watchThemes
+} from '../utils'
 import { get } from 'lodash-es'
 
 export default defineComponent({
@@ -91,6 +111,8 @@ export default defineComponent({
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
     const redirect = get(config, 'mobile.redirect', '')
     const github: Ref<string> = ref(get(config, 'mobile.header.github'))
+    const darkMode: Ref<string> = ref(get(config, 'mobile.header.darkMode'))
+    const currentThemes = ref(getBrowserThemes())
 
     const changeLanguage = (lang) => {
       language.value = lang
@@ -111,8 +133,8 @@ export default defineComponent({
     }
 
     const toGithub = () => {
-      if (window.parent !== window) {
-        window.parent.open(github.value)
+      if (inIframe() && !isPhone()) {
+        window.top.open(github.value)
       } else {
         window.location.href = github.value
       }
@@ -125,12 +147,40 @@ export default defineComponent({
     watch(
       () => route.path,
       (to: string) => {
-        bigCamelizeComponentName.value = bigCamelize(to.slice(1))
-        showBackIcon.value = bigCamelizeComponentName.value !== bigCamelize(redirect.slice(1))
+        const componentName = bigCamelize(to.slice(1))
+        const redirectName = bigCamelize(redirect.slice(1))
+        bigCamelizeComponentName.value = componentName === redirectName ? '' : componentName
+        showBackIcon.value = componentName !== redirectName
       }
     )
 
-    setThemes(config)
+    const getThemesMessage = () => ({ action: 'themesChange', from: 'mobile', data: currentThemes.value })
+
+    const setCurrentThemes = (themes: 'themes' | 'darkThemes') => {
+      currentThemes.value = themes
+      setThemes(config, currentThemes.value)
+      window.localStorage.setItem('currentThemes', currentThemes.value)
+    }
+
+    const toggleTheme = () => {
+      setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
+      window.postMessage(getThemesMessage(), '*')
+
+      if (!isPhone() && inIframe()) {
+        ;(window.top as any).postMessage(getThemesMessage(), '*')
+      }
+    }
+
+    setThemes(config, currentThemes.value)
+    window.postMessage(getThemesMessage(), '*')
+
+    document.body.addEventListener('click', () => {
+      showMenu.value = false
+    })
+
+    watchThemes((themes, from) => {
+      from === 'pc' && setCurrentThemes(themes)
+    })
 
     return {
       bigCamelizeComponentName,
@@ -140,9 +190,12 @@ export default defineComponent({
       languages,
       language,
       nonEmptyLanguages,
+      currentThemes,
+      darkMode,
       toGithub,
       back,
       changeLanguage,
+      toggleTheme
     }
   },
 })
@@ -159,13 +212,28 @@ body {
   min-height: 100%;
   font-family: 'Roboto', sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  color: #333;
+  background: var(--site-config-color-bar);
+  color: var(--site-config-color-text);
+  transition: background-color .25s, color .25s;
 }
 
 ::-webkit-scrollbar {
   display: none;
   width: 0;
   background: transparent;
+}
+
+.site {
+  &-menu-enter-from,
+  &-menu-leave-to {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  &-menu-enter-active,
+  &-menu-leave-active {
+    transition-property: opacity, transform;
+    transition-duration: 0.25s;
+  }
 }
 
 header {
@@ -179,6 +247,14 @@ header {
   background: var(--site-config-color-app-bar) !important;
 }
 
+.settings {
+  position: fixed;
+  z-index: 200;
+  top: 48px;
+  right: 5px;
+  background: var(--site-config-color-bar);
+}
+
 .router-view__block {
   padding: 54px 12px 15px;
 }
@@ -188,7 +264,8 @@ header {
 }
 
 .mobile-language-cell {
-  color: #666;
+  color: var(--site-config-color-text);
+  background: var(--site-config-color-bar);
   cursor: pointer;
 
   &--active {

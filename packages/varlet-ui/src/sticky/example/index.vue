@@ -38,20 +38,19 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import '../../styles/var';
-
 .example {
   min-height: 200vh;
 
   .scroller {
     height: 200px;
     overflow: auto;
-    background: @color-primary;
+    background: var(--site-config-color-app-bar);
+    border-radius: 4px;
 
     .block {
       width: 100%;
       height: 600px;
-      background: @color-info;
+      background: var(--site-config-color-type);
       opacity: 0.5;
     }
   }

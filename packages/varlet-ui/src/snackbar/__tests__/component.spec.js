@@ -34,14 +34,14 @@ test('test snackbar style', async () => {
    `
   mount({
     components: {
-      [VarSnackbar.name]: VarSnackbar
+      [VarSnackbar.name]: VarSnackbar,
     },
     data() {
       return {
-        show: true
+        show: true,
       }
     },
-    template
+    template,
   })
 
   await delay(200)
@@ -65,18 +65,18 @@ test('test snackbar event', async () => {
 
   const wrapper = mount({
     components: {
-      [VarSnackbar.name]: VarSnackbar
+      [VarSnackbar.name]: VarSnackbar,
     },
     data() {
       return {
-        show: false
+        show: false,
       }
     },
     methods: {
       open,
       opened,
       close,
-      closed
+      closed,
     },
     template,
   })

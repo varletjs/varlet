@@ -13,7 +13,7 @@
   }
   &-fade-enter-active,
   &-fade-leave-active {
-    transition: opacity 0.3s;
+    transition: opacity 0.25s;
   }
 
   &-pop-center-enter-from,
@@ -22,7 +22,7 @@
   }
   &-pop-center-enter-active,
   &-pop-center-leave-active {
-    transition: all 0.3s;
+    transition: all 0.25s;
   }
 
   &-pop-bottom-enter-from,
@@ -31,7 +31,7 @@
   }
   &-pop-bottom-enter-active,
   &-pop-bottom-leave-active {
-    transition: all 0.3s;
+    transition: all 0.25s;
   }
 
   &-pop-top-enter-from,
@@ -40,7 +40,7 @@
   }
   &-pop-top-enter-active,
   &-pop-top-leave-active {
-    transition: all 0.3s;
+    transition: all 0.25s;
   }
 
   &-pop-left-enter-from,
@@ -49,7 +49,7 @@
   }
   &-pop-left-enter-active,
   &-pop-left-leave-active {
-    transition: all 0.3s;
+    transition: all 0.25s;
   }
 
   &-pop-right-enter-from,
@@ -58,7 +58,7 @@
   }
   &-pop-right-enter-active,
   &-pop-right-leave-active {
-    transition: all 0.3s;
+    transition: all 0.25s;
   }
 }
 
@@ -82,11 +82,13 @@
     bottom: 0;
     left: 0;
     background-color: var(--popup-overlay-background-color);
+    transition: all 0.25s;
   }
 
   &__content {
     overflow: auto;
     background-color: var(--popup-content-background-color);
+    transition: all 0.25s;
   }
 
   &--center {

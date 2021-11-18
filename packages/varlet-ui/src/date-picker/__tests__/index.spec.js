@@ -5,7 +5,7 @@ import { createApp } from 'vue'
 import { delay, mockConsole } from '../../utils/jest'
 import dayjs from 'dayjs/esm'
 
-const [currentYear ,currentMonth] = dayjs().format('YYYY-MM').split('-')
+const [currentYear, currentMonth] = dayjs().format('YYYY-MM').split('-')
 
 test('test datePicker plugin', () => {
   const app = createApp({}).use(DatePicker)
@@ -25,15 +25,15 @@ test('test datePicker style and type', async () => {
   `
   const wrapper = mount({
     components: {
-      [VarDatePicker.name]: VarDatePicker
+      [VarDatePicker.name]: VarDatePicker,
     },
     data() {
       return {
         type: 'month',
-        date: '2021-05'
+        date: '2021-05',
       }
     },
-    template
+    template,
   })
 
   await delay(0)
@@ -53,8 +53,8 @@ test('test allowedDates prop', async () => {
       allowedDates: (val) => {
         return parseInt(val.split('-')[2], 10) % 2 === 1
       },
-      modelValue: '2021-03-01'
-    }
+      modelValue: '2021-03-01',
+    },
   })
 
   expect(wrapper.html()).toMatchSnapshot()
@@ -64,8 +64,8 @@ test('test firstDayOfWeek prop', async () => {
   const wrapper = mount(VarDatePicker, {
     props: {
       firstDayOfWeek: '3',
-      modelValue: '2021-03-01'
-    }
+      modelValue: '2021-03-01',
+    },
   })
 
   await delay(0)
@@ -77,8 +77,8 @@ test('test max and min', async () => {
     props: {
       max: '2021-4-8',
       min: '2021-4-8',
-      modelValue: '2021-4-8'
-    }
+      modelValue: '2021-4-8',
+    },
   })
 
   await delay(0)
@@ -101,15 +101,15 @@ test('test datePicker v-model', async () => {
 
   const wrapper = mount({
     components: {
-      [VarDatePicker.name]: VarDatePicker
+      [VarDatePicker.name]: VarDatePicker,
     },
     data() {
       return {
         type: 'month',
-        date: '2021-05'
+        date: '2021-05',
       }
     },
-    template
+    template,
   })
 
   await delay(0)
@@ -137,14 +137,14 @@ test('test datePicker multiple prop', async () => {
 
   const wrapper = mount({
     components: {
-      [VarDatePicker.name]: VarDatePicker
+      [VarDatePicker.name]: VarDatePicker,
     },
     data() {
       return {
-        date: ['2021-05-19']
+        date: ['2021-05-19'],
       }
     },
-    template
+    template,
   })
 
   await delay(0)
@@ -153,10 +153,19 @@ test('test datePicker multiple prop', async () => {
   await elements[1].trigger('click')
   await elements[2].trigger('click')
 
-  expect(wrapper.vm.date).toEqual(['2021-05-19', `${currentYear}-${currentMonth}-01`, `${currentYear}-${currentMonth}-02`, `${currentYear}-${currentMonth}-03`])
+  expect(wrapper.vm.date).toEqual([
+    '2021-05-19',
+    `${currentYear}-${currentMonth}-01`,
+    `${currentYear}-${currentMonth}-02`,
+    `${currentYear}-${currentMonth}-03`,
+  ])
 
   await elements[0].trigger('click')
-  expect(wrapper.vm.date).toEqual(['2021-05-19', `${currentYear}-${currentMonth}-02`, `${currentYear}-${currentMonth}-03`])
+  expect(wrapper.vm.date).toEqual([
+    '2021-05-19',
+    `${currentYear}-${currentMonth}-02`,
+    `${currentYear}-${currentMonth}-03`,
+  ])
 })
 
 test('test datePicker range prop', async () => {
@@ -167,15 +176,15 @@ test('test datePicker range prop', async () => {
 
   const wrapper = mount({
     components: {
-      [VarDatePicker.name]: VarDatePicker
+      [VarDatePicker.name]: VarDatePicker,
     },
     data() {
       return {
         date: ['2021-05-19', '2021-05-18'],
-        type: 'date'
+        type: 'date',
       }
     },
-    template
+    template,
   })
 
   await delay(0)
@@ -203,15 +212,15 @@ test('test datePicker readonly', async () => {
 
   const wrapper = mount({
     components: {
-      [VarDatePicker.name]: VarDatePicker
+      [VarDatePicker.name]: VarDatePicker,
     },
     data() {
       return {
         type: 'month',
-        date: '2021-05'
+        date: '2021-05',
       }
     },
-    template
+    template,
   })
 
   await delay(0)
@@ -232,15 +241,15 @@ test('test value legal', async () => {
 
   const wrapper = mount({
     components: {
-      [VarDatePicker.name]: VarDatePicker
+      [VarDatePicker.name]: VarDatePicker,
     },
     data() {
       return {
         date: '2021-05-01',
-        multiple: true
+        multiple: true,
       }
     },
-    template
+    template,
   })
 
   await delay(0)

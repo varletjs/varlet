@@ -40,7 +40,7 @@ test('test icon transition name', async () => {
   })
 
   expect(wrapper.find('.var-icon-check').exists()).toBeTruthy()
-  expect(wrapper.element.style.transition).toEqual('all 0ms')
+  expect(wrapper.element.style.transition).toEqual('transform 0ms')
 
   await wrapper.setProps({
     transition: 300,
@@ -50,7 +50,7 @@ test('test icon transition name', async () => {
   await delay(400)
 
   expect(wrapper.find('.var-icon-error').exists()).toBeTruthy()
-  expect(wrapper.element.style.transition).toEqual('all 300ms')
+  expect(wrapper.element.style.transition).toEqual('transform 300ms')
   wrapper.unmount()
 })
 
