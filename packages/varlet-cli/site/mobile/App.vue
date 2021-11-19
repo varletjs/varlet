@@ -31,11 +31,13 @@
         </template>
         <template #right>
           <var-site-button
-            style="transform: translateX(2px)"
             text
             round
             color="transparent"
             text-color="#fff"
+            :style="{
+              transform: languages ? 'translateX(2px)' : 'translateX(-4px)'
+            }"
             v-if="darkMode"
             @click="toggleTheme"
           >
