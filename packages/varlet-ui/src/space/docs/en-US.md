@@ -86,9 +86,9 @@ createApp().use(Space)
 
 |     Prop      |      Description     |     Type    |    Default    |
 | ------------- | ------------ | ---------- | ----------- |
-|    `align`   |   Vertical arrangement, Can be set to`stretch` `center` `start` `end` `baseline` | _string_   |   `-`|
+|    `align`   |   Vertical arrangement, Can be set to `stretch` `center` `start` `end` `baseline` | _string_   |   `-`|
 |`justify`|Horizontal arrangement, Can be set to `start` `end` `center` `space-around` `space-between`|_string_|`start`|
-|     `size`   |   spacing, Can be set to `mini` `small` `normal` `large`或`[Vertical, Horizontal]`(Support length unit)| _string_ \|_number_ \| _[string \| number, string \| number]_ |`normal`|
+|     `size`   |   spacing, Can be set to `mini` `small` `normal` `large` or `[Vertical, Horizontal]`(Support length unit)| _string_ \|_number_ \| _[string \| number, string \| number]_ |`normal`|
 |`wrap`|Whether to exceed the line break|_boolean_|`true`|
 |`direction`|Layout direction, Can be set to `row` `column`|_string_|`row`|
 |`inline`|Is it an inline element|_boolean_|`false`|
