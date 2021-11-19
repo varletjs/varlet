@@ -51,7 +51,7 @@
             color="transparent"
             text-color="#fff"
             @click.stop="showMenu = true"
-            v-if="languages || darkMode"
+            v-if="languages"
           >
             <var-site-icon name="translate" :size="24" />
             <var-site-icon name="chevron-down" :size="22" />
