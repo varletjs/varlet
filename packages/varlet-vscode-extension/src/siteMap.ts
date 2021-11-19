@@ -55,4 +55,5 @@ export default {
   table: '/table',
   pagination: '/pagination',
   'image-preview': '/image-preview',
+  space: '/space',
 } as Record<string, string>
