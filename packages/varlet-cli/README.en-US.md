@@ -116,6 +116,7 @@ module.exports = {
       'en-US': 'A components library',
     },
     header: {
+      darkMode: null,
       i18n: null,
       github: 'https://github.com/haoziqaq/varlet',
     },
@@ -157,6 +158,7 @@ module.exports = {
       'en-US': 'A components library',
     },
     header: {
+      darkMode: null,
       i18n: null,
       github: 'https://github.com/haoziqaq/varlet',
     },

@@ -111,6 +111,7 @@ module.exports = {
       'zh-CN': '一个组件库',
     },
     header: {
+      darkMode: null,
       i18n: null,
       github: 'https://github.com/haoziqaq/varlet',
     },
@@ -152,6 +153,7 @@ module.exports = {
       'zh-CN': '一个组件库',
     },
     header: {
+      darkMode: null,
       i18n: null,
       github: 'https://github.com/haoziqaq/varlet',
     },
