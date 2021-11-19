@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.23.0](https://github.com/haoziqaq/varlet/compare/v1.22.10...v1.23.0) (2021-11-19)
+
+
+### Bug Fixes
+
+* **ui,cli:** move dark theme import to example ([579e461](https://github.com/haoziqaq/varlet/commit/579e461a620c2a7e416193b43368b885ec02b862))
+* add assert for example lang ([7ce8bae](https://github.com/haoziqaq/varlet/commit/7ce8baefeaaf0f10d2638cb4927ccbf570b28006))
+* **cli:** bump typescript and commander version ([af893e9](https://github.com/haoziqaq/varlet/commit/af893e970b71ddc46365187c94ecba244513ef5a))
+* **doc:** progress bar should not use unmount function ([0587103](https://github.com/haoziqaq/varlet/commit/05871038e42a50f38fdc2a201107d786431691cd))
+* **site:** modify the width of nav ([af0bfbe](https://github.com/haoziqaq/varlet/commit/af0bfbe8557182fa23083b8a4060625b18132c92))
+* **site:** support bg-color for dark mode of nav button ([b8417fe](https://github.com/haoziqaq/varlet/commit/b8417fe0873b8ecea4bcef21068aa0328ec32f88))
+
+
+### Features
+
+* **all:** support dark mode ([94d9899](https://github.com/haoziqaq/varlet/commit/94d9899cd54ebe1ac864712484d2c6f6f958150a))
+* **cli/generators:** support dark mode ([4795af8](https://github.com/haoziqaq/varlet/commit/4795af8c25cc155eb1fe7cd8d8a6b23b45379989))
+* **menu:** add dark-mode ([e2807f6](https://github.com/haoziqaq/varlet/commit/e2807f6f45ee3331acdd3b9ba4180b16096f0114))
+
+
+
+
+
 ## [1.22.10](https://github.com/haoziqaq/varlet/compare/v1.22.9...v1.22.10) (2021-11-03)
 
 
