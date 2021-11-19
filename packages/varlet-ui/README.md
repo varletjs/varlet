@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://varlet.gitee.io/varlet-ui/">
-    <img src="https://varlet.gitee.io/varlet-ui/varlet_icon.png" width="150">
+    <img src="https://varlet.gitee.io/varlet-ui/logo.png" width="150">
   </a>
   <h1>VARLET</h1>
   <p>基于Vue3的Material design风格移动端组件库</p>
