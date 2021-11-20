@@ -2,6 +2,7 @@
   "name": "basic-ui",
   "version": "0.0.0",
   "description": "A basic components library",
+  "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "types/index.d.ts",
   "vetur": {
@@ -64,6 +65,7 @@
   "eslintConfig": {
     "root": true,
     "ignorePatterns": [
+      "lib/**",
       "es/**",
       "umd/**",
       "site/**",
@@ -80,6 +82,7 @@
       "@varlet/stylelint-config"
     ],
     "ignoreFiles": [
+      "lib/**",
       "es/**",
       "umd/**",
       "site/**",
