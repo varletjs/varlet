@@ -17,6 +17,7 @@
   ],
   "files": [
     "json",
+    "lib",
     "es",
     "umd",
     "highlight",
