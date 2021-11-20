@@ -36,12 +36,22 @@ export default defineComponent({
         let margin = '0'
 
         if (direction === 'row') {
-          if (index === 0) {
-            margin = `${y / 2}px ${x / 2}px ${y / 2}px 0`
-          } else if (index === lastIndex) {
-            margin = `${y / 2}px 0 ${y / 2}px ${x / 2}px`
-          } else {
+          if (justify === 'start' || justify === 'center' || justify === 'end') {
+            if (index !== lastIndex) {
+              margin = `${y / 2}px ${x}px ${y / 2}px 0`
+            } else {
+              margin = `${y / 2}px 0`
+            }
+          } else if (justify === 'space-around') {
             margin = `${y / 2}px ${x / 2}px`
+          } else if (justify === 'space-between') {
+            if (index === 0) {
+              margin = `${y / 2}px ${x / 2}px ${y / 2}px 0`
+            } else if (index === lastIndex) {
+              margin = `${y / 2}px 0 ${y / 2}px ${x / 2}px`
+            } else {
+              margin = `${y / 2}px ${x / 2}px`
+            }
           }
         }
 

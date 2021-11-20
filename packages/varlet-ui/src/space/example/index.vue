@@ -14,10 +14,13 @@
   </var-space>
 
   <app-type>{{ pack.space }}</app-type>
-  <var-space :size="['30px', '10px']">
+  <var-space :size="[20, 20]">
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
     <var-button>Button3</var-button>
+    <var-button>Button4</var-button>
+    <var-button>Button5</var-button>
+    <var-button>Button6</var-button>
   </var-space>
 
   <app-type>{{ pack.rightAlign }}</app-type>
