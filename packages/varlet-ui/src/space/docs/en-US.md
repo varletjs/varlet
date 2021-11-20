@@ -35,7 +35,7 @@ createApp().use(Space)
 </var-space>
 ```
 
-### Space Between
+### Space Size
 
 ```html
 <var-space :size="[20, 20]">
