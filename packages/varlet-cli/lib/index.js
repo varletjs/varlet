@@ -49,7 +49,8 @@ program.command('create <name>').description('Create a component directory').act
 program
     .command('jest')
     .description('Run Jest in work directory')
-    .option('-w, --watch', 'Watch files change auto jest')
+    .option('-w, --watch', 'Watch files for changes and rerun tests related to changed files')
+    .option('-wa, --watchAll', 'Watch files for changes and rerun all tests when something changes')
     .option('-c, --component <componentName>', 'Test a specific component')
     .option('-cc --clearCache', 'Clear test cache')
     .action(jest_1.jest);

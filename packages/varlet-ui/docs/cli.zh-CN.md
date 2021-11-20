@@ -197,6 +197,8 @@ varlet-cli test
 
 ```shell
 varlet-cli test -w
+or
+varlet-cli test -wa
 ```
 
 #### 检查代码

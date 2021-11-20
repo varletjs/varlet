@@ -27,7 +27,8 @@
     "genAllLog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "release": "yarn compile && release-it",
     "test": "varlet-cli jest",
-    "test:watch": "varlet-cli jest -w"
+    "test:watch": "varlet-cli jest -w",
+    "test:watchAll": "varlet-cli jest -wa"
   },
   "peerDependencies": {
     "vue": "^3.2.0"
