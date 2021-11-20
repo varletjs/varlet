@@ -5,6 +5,7 @@ import { injectHtml } from 'vite-plugin-html'
 import {
   CWD,
   ES_DIR,
+  LIB_DIR,
   SITE_CONFIG,
   SITE_DIR,
   SITE_MOBILE_ROUTES,
@@ -17,7 +18,7 @@ import {
 import { InlineConfig, PluginOption } from 'vite'
 import { get, kebabCase } from 'lodash'
 import { resolve } from 'path'
-import { readFileSync, removeSync, writeFileSync } from 'fs-extra'
+import { copyFileSync, readFileSync, removeSync, writeFileSync } from 'fs-extra'
 
 export function getDevConfig(varletConfig: Record<string, any>): InlineConfig {
   const defaultLanguage = get(varletConfig, 'defaultLanguage')
@@ -88,6 +89,7 @@ function inlineCSS(fileName: string, dir: string): PluginOption {
       const injectCode = `;(function(){var style=document.createElement('style');style.type='text/css';\
 style.rel='stylesheet';style.appendChild(document.createTextNode(\`${cssCode.replace(/\\/g, '\\\\')}\`));\
 var head=document.querySelector('head');head.appendChild(style)})();`
+      copyFileSync(cssFile, resolve(LIB_DIR, 'style.css'))
       removeSync(cssFile)
       writeFileSync(jsFile, `${injectCode}${jsCode}`)
     },

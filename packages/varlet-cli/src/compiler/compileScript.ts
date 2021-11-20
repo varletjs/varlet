@@ -169,7 +169,7 @@ export async function compileCommonJSEntry(dir: string, publicDirs: string[]) {
     const publicComponent = bigCamelize(dirname)
 
     publicComponents.push(publicComponent)
-    requires.push(`const ${publicComponent} = require('./${dirname}')`)
+    requires.push(`var ${publicComponent} = require('./${dirname}')['default']`)
     plugins.push(`${publicComponent}.install && app.use(${publicComponent})`)
     cssRequires.push(`require('./${dirname}/style')`)
     lessRequires.push(`require('./${dirname}/style/less')`)
