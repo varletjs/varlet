@@ -15,16 +15,24 @@ export const IMPORT_VUE_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/
 export const IMPORT_TS_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.ts(\s*['"`]);?(?!\s*['"`])/g
 export const IMPORT_JSX_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.jsx(\s*['"`]);?(?!\s*['"`])/g
 export const IMPORT_TSX_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.tsx(\s*['"`]);?(?!\s*['"`])/g
+export const REQUIRE_VUE_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\s*\.{1,2}\/.+)\.vue(\s*['"`]\))(?!\s*['"`])/g
+export const REQUIRE_TS_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\s*\.{1,2}\/.+)\.ts(\s*['"`]\))(?!\s*['"`])/g
+export const REQUIRE_JSX_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\s*\.{1,2}\/.+)\.jsx(\s*['"`]\))(?!\s*['"`])/g
+export const REQUIRE_TSX_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\s*\.{1,2}\/.+)\.tsx(\s*['"`]\))(?!\s*['"`])/g
 
 const scriptReplacer = (_: any, p1: string, p2: string): string => `${p1}.js${p2}`
 
-export const replaceVueExt = (script: string): string => script.replace(IMPORT_VUE_PATH_RE, scriptReplacer)
+export const replaceVueExt = (script: string): string =>
+  script.replace(IMPORT_VUE_PATH_RE, scriptReplacer).replace(REQUIRE_VUE_PATH_RE, scriptReplacer)
 
-export const replaceTSExt = (script: string): string => script.replace(IMPORT_TS_PATH_RE, scriptReplacer)
+export const replaceTSExt = (script: string): string =>
+  script.replace(IMPORT_TS_PATH_RE, scriptReplacer).replace(REQUIRE_TS_PATH_RE, scriptReplacer)
 
-export const replaceJSXExt = (script: string): string => script.replace(IMPORT_JSX_PATH_RE, scriptReplacer)
+export const replaceJSXExt = (script: string): string =>
+  script.replace(IMPORT_JSX_PATH_RE, scriptReplacer).replace(REQUIRE_JSX_PATH_RE, scriptReplacer)
 
-export const replaceTSXExt = (script: string): string => script.replace(IMPORT_TSX_PATH_RE, scriptReplacer)
+export const replaceTSXExt = (script: string): string =>
+  script.replace(IMPORT_TSX_PATH_RE, scriptReplacer).replace(REQUIRE_TSX_PATH_RE, scriptReplacer)
 
 export async function compileScript(script: string, file: string) {
   let { code } = (await transformAsync(script, {
