@@ -526,8 +526,8 @@ module.exports = {
   moduleCompatible: {
     "import dayjs from 'dayjs/esm'\n": "import * as dayjs from 'dayjs'\n",
     "import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore'\n":
-      "import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore'\n",
+      "import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'\n",
     "import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter'\n":
-      "import * as isSameOrAfter from 'dayjs/plugin/isSameOrAfter'\n",
+      "import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'\n",
   },
 }
