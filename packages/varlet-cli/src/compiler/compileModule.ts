@@ -62,7 +62,7 @@ export async function compileModule(modules: 'umd' | 'commonjs' | boolean = fals
 
   const dest = modules === 'commonjs' ? LIB_DIR : ES_DIR
   await copy(SRC_DIR, dest)
-  const moduleDir: string[] = await readdir(ES_DIR)
+  const moduleDir: string[] = await readdir(dest)
 
   await Promise.all(
     moduleDir.map((filename: string) => {
