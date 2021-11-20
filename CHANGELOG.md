@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.2](https://github.com/haoziqaq/varlet/compare/v1.23.0...v1.23.2) (2021-11-20)
+
+
+### Bug Fixes
+
+* **ui/space:** modify the behavior of space in space-around and space-between modes ([5abf617](https://github.com/haoziqaq/varlet/commit/5abf617b009fbb63409724a3394b207949cc3a2c))
+
+
+
+
+
 # [1.23.0](https://github.com/haoziqaq/varlet/compare/v1.22.10...v1.23.0) (2021-11-19)
 
 
