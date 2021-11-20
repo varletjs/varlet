@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.3](https://github.com/haoziqaq/varlet/compare/v1.23.2...v1.23.3) (2021-11-20)
+
+
+### Bug Fixes
+
+* **cli/jest:** add watchAll mode ([84ebb4e](https://github.com/haoziqaq/varlet/commit/84ebb4efe823cb9d7f22995d429b82d8fc3e05c8))
+
+
+
+
+
 # [1.23.0](https://github.com/haoziqaq/varlet/compare/v1.22.10...v1.23.0) (2021-11-19)
 
 
