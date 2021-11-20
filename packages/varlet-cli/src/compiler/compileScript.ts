@@ -10,6 +10,8 @@ import {
 } from './compileStyle'
 import { resolve } from 'path'
 import type { BabelFileResult } from '@babel/core'
+import { get } from 'lodash'
+import { getVarletConfig } from '../config/varlet.config'
 
 export const IMPORT_VUE_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.vue(\s*['"`]);?(?!\s*['"`])/g
 export const IMPORT_TS_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.ts(\s*['"`]);?(?!\s*['"`])/g
@@ -34,11 +36,26 @@ export const replaceJSXExt = (script: string): string =>
 export const replaceTSXExt = (script: string): string =>
   script.replace(IMPORT_TSX_PATH_RE, scriptReplacer).replace(REQUIRE_TSX_PATH_RE, scriptReplacer)
 
+export const moduleCompatible = (script: string): string => {
+  const moduleCompatible = get(getVarletConfig(), 'moduleCompatible', {})
+  Object.keys(moduleCompatible).forEach((esm) => {
+    const commonjs = moduleCompatible[esm]
+    script = script.replace(esm, commonjs)
+  })
+
+  return script
+}
+
 export async function compileScript(script: string, file: string) {
+  const modules = process.env.BABEL_MODULE
+
+  if (modules === 'commonjs') {
+    script = moduleCompatible(script)
+  }
+
   let { code } = (await transformAsync(script, {
     filename: file,
   })) as BabelFileResult
-  const modules = process.env.BABEL_MODULE
 
   code = extractStyleDependencies(
     file,
