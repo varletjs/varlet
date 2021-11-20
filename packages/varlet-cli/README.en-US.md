@@ -55,6 +55,32 @@ The `varlet.config.js` in the project root directory is used to manage the speci
 | `analysis` | Document statistics related | _SiteAnalysis_ | `-` |
 | `pc` | PC-side document structure configuration | _SitePC_ | `-` |
 | `mobile` | Mobile document structure configuration | _SiteMobile_ | `-` |
+| `moduleCompatible` | Module compatible config | _Record<string, string>_ | `-` |
+
+#### Module Compatible
+
+Some external dependencies may need to be compatible with module syntax to achieve the purpose of compiling correctly to `commonjs` and `esmodule`. For example, the wording of `esmodule` of `dayjs` is
+
+```js
+import dayjs from 'dayjs/esm'
+```
+
+In order to build `commonjs`, the writing method is
+
+```js
+import * as dayjs from 'dayjs'
+```
+
+In the project, we embrace the first way of writing the `esmodule` module, and make the following configuration for adaptation
+
+```js
+// varlet.config.js
+module.exports = {
+  moduleCompatible: {
+    "import dayjs from 'dayjs/esm'\n": "import * as dayjs from 'dayjs'\n"
+  }
+}
+```
 
 #### SiteThemes
 
@@ -93,7 +119,7 @@ Code snippets are highlighted, based on [highlight.js](https://highlightjs.org/)
 
 | Parameter | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `style` | highlight的css地址 | _string_ | `-` |
+| `style` | highlight css link | _string_ | `-` |
 
 #### SiteAnalysis
 
@@ -101,7 +127,7 @@ Statistics related to buried points
 
 | Parameter | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `baidu` | 百度统计脚本地址 | _string_ | `-` |
+| `baidu` | Baidu statistics script address | _string_ | `-` |
 
 #### SitePC, SiteMobile
 
