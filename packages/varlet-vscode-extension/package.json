@@ -2,7 +2,7 @@
   "name": "varlet-vscode-extension",
   "private": true,
   "displayName": "varlet-vscode-extension",
-  "icon": "src/icon.png",
+  "icon": "src/icon.svg",
   "description": "varlet extension for vscode",
   "publisher": "haoziqaq",
   "version": "1.23.1",
