@@ -48,8 +48,8 @@
 </template>
 
 <script>
-import Table from '..'
-import Pagination from '../../pagination'
+import VarTable from '..'
+import VarPagination from '../../pagination'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import dark from '../../themes/dark'
 import { ref } from 'vue'
@@ -71,8 +71,8 @@ export const gen = (current, size) => {
 export default {
   name: 'TableExample',
   components: {
-    [Table.name]: Table,
-    [Pagination.name]: Pagination,
+    VarTable,
+    VarPagination,
     AppType,
   },
   setup() {
