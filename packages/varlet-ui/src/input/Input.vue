@@ -17,11 +17,10 @@
 
       <div class="var-input__wrap" :class="[!hint ? 'var-input--non-hint' : null]">
         <input class="var-input__autocomplete" v-if="type === 'password'" />
-        <component
-          class="var-input__input"
+        <textarea
+          class="var-input__input var-input--textarea"
           ref="el"
           autocomplete="new-password"
-          :is="textarea ? 'textarea' : 'input'"
           :id="id"
           :disabled="formDisabled || disabled || formReadonly || readonly"
           :type="type"
@@ -30,7 +29,6 @@
           :rows="rows"
           :class="[
             formDisabled || disabled ? 'var-input--disabled' : null,
-            textarea ? 'var-input--textarea' : null,
             errorMessage ? 'var-input--caret-error' : null,
           ]"
           :style="{
@@ -42,6 +40,31 @@
           @blur="handleBlur"
           @input="handleInput"
           @change="handleChange"
+          v-if="textarea"
+        >
+        </textarea>
+        <input
+          class="var-input__input"
+          ref="el"
+          autocomplete="new-password"
+          :id="id"
+          :disabled="formDisabled || disabled || formReadonly || readonly"
+          :type="type"
+          :value="modelValue"
+          :maxlength="maxlength"
+          :class="[
+            formDisabled || disabled ? 'var-input--disabled' : null,
+            errorMessage ? 'var-input--caret-error' : null,
+          ]"
+          :style="{
+            color: textColor,
+            caretColor: !errorMessage ? focusColor : null,
+          }"
+          @focus="handleFocus"
+          @blur="handleBlur"
+          @input="handleInput"
+          @change="handleChange"
+          v-else
         />
         <label
           :class="[

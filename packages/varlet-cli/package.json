@@ -47,7 +47,7 @@
     "@vitejs/plugin-vue": "1.9.2",
     "@vitejs/plugin-vue-jsx": "1.1.8",
     "@vue/babel-plugin-jsx": "^1.0.7",
-    "@vue/compiler-sfc": "3.2.16",
+    "@vue/compiler-sfc": "3.2.22",
     "@vue/test-utils": "^2.0.0-rc.6",
     "babel-jest": "26.6.3",
     "chalk": "^4.1.0",
