@@ -53,7 +53,7 @@ export default defineComponent({
     const enableFixedMode: ComputedRef<boolean> = computed(() => !props.disabled && isFixed.value)
     const offsetTop: ComputedRef<number> = computed(() => toPxNum(props.offsetTop))
 
-    let scroller: HTMLElement | Window = window
+    let scroller: HTMLElement | Window
 
     const handleScroll = () => {
       const { onScroll, cssMode, disabled } = props
