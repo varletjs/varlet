@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.4](https://github.com/haoziqaq/varlet/compare/v1.23.3...v1.23.4) (2021-11-21)
+
+
+### Bug Fixes
+
+* **ui/types:** add list.d.ts ([ab06a8f](https://github.com/haoziqaq/varlet/commit/ab06a8f219fcf5f4f929938f048a142a6c4b1715))
+
+
+
+
+
 ## [1.23.3](https://github.com/haoziqaq/varlet/compare/v1.23.2...v1.23.3) (2021-11-20)
 
 
