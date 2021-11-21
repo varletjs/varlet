@@ -5,7 +5,7 @@ exports[`test input clear 1`] = `
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-58\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-58\\"></label>
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-58\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-58\\"></label>
     </div>
     <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\" var-input-cover=\\"\\"></i></div>
   </div>
@@ -24,7 +24,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-3\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-3\\">请输入文本</label>
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-3\\" type=\\"text\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-3\\">请输入文本</label>
     </div>
     <div class=\\"var-input__icon\\">
       <!--v-if-->
@@ -42,7 +42,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon var-input--non-hint\\"></div>
     <div class=\\"var-input__wrap var-input--non-hint\\">
-      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-7\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-non-hint\\" for=\\"var-input-7\\">请输入文本</label>
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-7\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-non-hint\\" for=\\"var-input-7\\">请输入文本</label>
     </div>
     <div class=\\"var-input__icon var-input--non-hint\\">
       <!--v-if-->
@@ -58,7 +58,8 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><textarea class=\\"var-input__input var-input--textarea\\" autocomplete=\\"new-password\\" id=\\"var-input-11\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"></textarea><label class=\\"var-input__textarea-placeholder\\" for=\\"var-input-11\\">请输入文本</label>
+      <!--v-if--><textarea class=\\"var-input__input var-input--textarea\\" autocomplete=\\"new-password\\" id=\\"var-input-11\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\">
+        </textarea><label class=\\"var-input__textarea-placeholder\\" for=\\"var-input-11\\">请输入文本</label>
     </div>
     <div class=\\"var-input__icon\\">
       <!--v-if-->
@@ -76,7 +77,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-15\\" type=\\"text\\" maxlength=\\"10\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-15\\">请输入文本</label>
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-15\\" type=\\"text\\" maxlength=\\"10\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-15\\">请输入文本</label>
     </div>
     <div class=\\"var-input__icon\\">
       <!--v-if-->
@@ -97,7 +98,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__controller var-input--disabled\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-19\\" disabled=\\"\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-19\\">请输入文本</label>
+      <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-19\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-19\\">请输入文本</label>
     </div>
     <div class=\\"var-input__icon\\">
       <!--v-if-->
@@ -115,7 +116,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-23\\" disabled=\\"\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-23\\">请输入文本</label>
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-23\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-23\\">请输入文本</label>
     </div>
     <div class=\\"var-input__icon\\">
       <!--v-if-->
@@ -133,7 +134,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-27\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-27\\">请输入文本</label>
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-27\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-27\\">请输入文本</label>
     </div>
     <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\" var-input-cover=\\"\\"></i></div>
   </div>
@@ -149,7 +150,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-32\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-32\\">请输入文本</label>
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-32\\" type=\\"text\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-32\\">请输入文本</label>
     </div>
     <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
   </div>
@@ -165,7 +166,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-38\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-38\\">请输入文本</label>
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-38\\" type=\\"text\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-38\\">请输入文本</label>
     </div>
     <div class=\\"var-input__icon\\">
       <!--v-if-->
@@ -186,7 +187,7 @@ exports[`test input focus & blur 1`] = `
   <div class=\\"var-input__controller var-input--focus\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-42\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-42\\"></label>
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-42\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-42\\"></label>
     </div>
     <div class=\\"var-input__icon\\">
       <!--v-if-->
@@ -206,7 +207,7 @@ exports[`test input focus & blur 2`] = `
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-42\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-42\\"></label>
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-42\\" type=\\"text\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-42\\"></label>
     </div>
     <div class=\\"var-input__icon\\">
       <!--v-if-->
@@ -226,7 +227,7 @@ exports[`test input hint to be false 1`] = `
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon var-input--non-hint\\"></div>
     <div class=\\"var-input__wrap var-input--non-hint\\">
-      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-54\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hidden var-input--placeholder-non-hint\\" for=\\"var-input-54\\"></label>
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-54\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hidden var-input--placeholder-non-hint\\" for=\\"var-input-54\\"></label>
     </div>
     <div class=\\"var-input__icon var-input--non-hint\\">
       <!--v-if-->
@@ -246,7 +247,7 @@ exports[`test input maxlength 1`] = `
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-50\\" type=\\"text\\" maxlength=\\"100\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-50\\"></label>
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-50\\" type=\\"text\\" maxlength=\\"100\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-50\\"></label>
     </div>
     <div class=\\"var-input__icon\\">
       <!--v-if-->
@@ -269,7 +270,7 @@ exports[`test input validation 1`] = `
   <div class=\\"var-input__controller var-input--error\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><input class=\\"var-input__input var-input--caret-error\\" autocomplete=\\"new-password\\" id=\\"var-input-73\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-73\\"></label>
+      <!--v-if--><input class=\\"var-input__input var-input--caret-error\\" autocomplete=\\"new-password\\" id=\\"var-input-73\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-73\\"></label>
     </div>
     <div class=\\"var-input__icon\\">
       <!--v-if-->
@@ -292,7 +293,7 @@ exports[`test input validation 2`] = `
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-73\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-73\\"></label>
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-73\\" type=\\"text\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-73\\"></label>
     </div>
     <div class=\\"var-input__icon\\">
       <!--v-if-->
@@ -312,7 +313,7 @@ exports[`test input validation 3`] = `
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
-      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-73\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-73\\"></label>
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-73\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-73\\"></label>
     </div>
     <div class=\\"var-input__icon\\">
       <!--v-if-->

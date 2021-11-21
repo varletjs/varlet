@@ -16,6 +16,7 @@ import { compileESEntry, compileCommonJSEntry, compileScriptFile } from './compi
 import { compileLess } from './compileStyle'
 import { getUMDConfig } from '../config/vite.config'
 import { getVarletConfig } from '../config/varlet.config'
+import { generateReference } from './compileTypes'
 
 export function compileUMD() {
   return new Promise<void>((resolve, reject) => {
@@ -80,4 +81,5 @@ export async function compileModule(modules: 'umd' | 'commonjs' | boolean = fals
   const publicDirs = await getPublicDirs()
 
   await (modules === 'commonjs' ? compileCommonJSEntry(dest, publicDirs) : compileESEntry(dest, publicDirs))
+  generateReference(dest)
 }
