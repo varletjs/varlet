@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.5](https://github.com/haoziqaq/varlet/compare/v1.23.4...v1.23.5) (2021-11-21)
+
+
+### Bug Fixes
+
+* **cli:** add module moduleCompatible option in varlet.config.js ([0b1d95f](https://github.com/haoziqaq/varlet/commit/0b1d95fc740a225240ee3f28e06015f4538b2304))
+* **cli:** expose lib folder ([2a8848a](https://github.com/haoziqaq/varlet/commit/2a8848a6f064aa91d56875ba467c46da79589a79))
+* **cli:** fix commonjs compiler ([c5c2b12](https://github.com/haoziqaq/varlet/commit/c5c2b12f163bed130b3c6c0ee0eb805fe4a015f1))
+* **cli:** fix inline css plugin ([3e8b7b4](https://github.com/haoziqaq/varlet/commit/3e8b7b4e5489bc67dd38f8787477f07e2a13e7ac))
+* **cli/compile:** add commonjs bundle ([4a424d4](https://github.com/haoziqaq/varlet/commit/4a424d4c066f7de69cbf561a5bc9279862739637))
+* **cli/compile:** add match commonjs script extname function ([2b5b1bd](https://github.com/haoziqaq/varlet/commit/2b5b1bde5e1c16d4e58ce2a100ae4a1a3cc428ce))
+* **cli/compile:** fix compile module readdir ([9c3ad08](https://github.com/haoziqaq/varlet/commit/9c3ad08410009e50b288f033b8fdbe10a8c01160))
+* **ui/popup,input:** support nuxt ([def81ef](https://github.com/haoziqaq/varlet/commit/def81ef821a8ce679287702316bd98ca363bc7f4))
+
+
+
+
+
 ## [1.23.3](https://github.com/haoziqaq/varlet/compare/v1.23.2...v1.23.3) (2021-11-20)
 
 
