@@ -18,7 +18,7 @@ import {
 import { InlineConfig, PluginOption } from 'vite'
 import { get, kebabCase } from 'lodash'
 import { resolve } from 'path'
-import { copyFileSync, readFileSync, removeSync, writeFileSync } from 'fs-extra'
+import { copyFileSync, pathExistsSync, readFileSync, removeSync, writeFileSync } from 'fs-extra'
 
 export function getDevConfig(varletConfig: Record<string, any>): InlineConfig {
   const defaultLanguage = get(varletConfig, 'defaultLanguage')
@@ -83,15 +83,19 @@ function inlineCSS(fileName: string, dir: string): PluginOption {
     apply: 'build',
     closeBundle() {
       const cssFile = resolve(dir, 'style.css')
+      if (!pathExistsSync(cssFile)) {
+        return
+      }
+
       const jsFile = resolve(dir, fileName)
       const cssCode = readFileSync(cssFile, 'utf-8')
       const jsCode = readFileSync(jsFile, 'utf-8')
       const injectCode = `;(function(){var style=document.createElement('style');style.type='text/css';\
 style.rel='stylesheet';style.appendChild(document.createTextNode(\`${cssCode.replace(/\\/g, '\\\\')}\`));\
 var head=document.querySelector('head');head.appendChild(style)})();`
+      writeFileSync(jsFile, `${injectCode}${jsCode}`)
       copyFileSync(cssFile, resolve(LIB_DIR, 'style.css'))
       removeSync(cssFile)
-      writeFileSync(jsFile, `${injectCode}${jsCode}`)
     },
   }
 }
