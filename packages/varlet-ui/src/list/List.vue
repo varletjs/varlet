@@ -43,7 +43,7 @@ export default defineComponent({
   setup(props) {
     const listEl: Ref<HTMLElement | null> = ref(null)
     const detectorEl: Ref<HTMLElement | null> = ref(null)
-    let scroller: HTMLElement | Window = window
+    let scroller: HTMLElement | Window
 
     const load = () => {
       props['onUpdate:error']?.(false)

@@ -24,7 +24,7 @@ interface ImagePreviewOptions {
 let singletonOptions: ImagePreviewOptions | null
 
 function ImagePreview(options: string | string[] | ImagePreviewOptions) {
-  if (!inBrowser) {
+  if (!inBrowser()) {
     return
   }
 
