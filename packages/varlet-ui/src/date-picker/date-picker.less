@@ -192,6 +192,10 @@
       width: 100%;
       max-width: var(--month-picker-item-button-max-width);
     }
+
+    &__button[var-date-picker-color-cover='true'] {
+      color: var(--date-picker-main-color);
+    }
   }
 
   .var-year-picker {
@@ -250,10 +254,10 @@
       height: var(--day-picker-content-item-button-height);
       font-size: var(--day-picker-content-item-button-font-size);
     }
-  }
 
-  &-main__color {
-    color: var(--date-picker-main-color);
+    &__button[var-date-picker-color-cover='true'] {
+      color: var(--date-picker-main-color);
+    }
   }
 
   &-translatey-enter-from {

@@ -1,13 +1,6 @@
 <template>
   <div class="var-picker-header">
-    <var-button
-      round
-      text
-      :class="getClass('left')"
-      style="filter: opacity(0.54)"
-      :disabled="disabled.left"
-      @click="checkDate('prev')"
-    >
+    <var-button round text style="filter: opacity(0.54)" :disabled="disabled.left" @click="checkDate('prev')">
       <var-icon name="chevron-left" />
     </var-button>
     <div class="var-picker-header__value" @click="$emit('check-panel')">
@@ -15,14 +8,7 @@
         <div :key="showDate">{{ showDate }}</div>
       </transition>
     </div>
-    <var-button
-      round
-      text
-      :class="getClass('right')"
-      style="filter: opacity(0.54)"
-      :disabled="disabled.right"
-      @click="checkDate('next')"
-    >
+    <var-button round text style="filter: opacity(0.54)" :disabled="disabled.right" @click="checkDate('next')">
       <var-icon name="chevron-right" />
     </var-button>
   </div>
@@ -74,10 +60,6 @@ export default defineComponent({
       return pack.value.lang === 'zh-CN' ? `${previewYear} ${monthName}` : `${monthName} ${previewYear}`
     })
 
-    const getClass = (position: 'left' | 'right') => {
-      return props.disabled[position] ? '' : 'var-date-picker-main__color'
-    }
-
     const checkDate = (checkType: string) => {
       emit('check-date', checkType)
       reverse.value = checkType === 'prev'
@@ -95,7 +77,6 @@ export default defineComponent({
       reverse,
       showDate,
       checkDate,
-      getClass,
     }
   },
 })

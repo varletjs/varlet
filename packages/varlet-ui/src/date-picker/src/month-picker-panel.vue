@@ -169,23 +169,23 @@ export default defineComponent({
         return true
       }
 
-      const textColorOrClass = (): string => {
+      const textColorOrCover = (): string => {
         if (disabled) return ''
         if (computeOutline()) return color ?? ''
         if (monthExist()) return ''
 
-        return 'var-date-picker-main__color'
+        return 'var-date-picker-color-cover'
       }
 
-      const isClass = textColorOrClass().startsWith('var-date-picker')
+      const isCover = textColorOrCover().startsWith('var-date-picker')
 
       return {
         disabled,
         outline: computeOutline(),
         text: computeText(),
         color: !computeText() ? color : '',
-        textColor: isClass ? '' : textColorOrClass(),
-        class: isClass ? textColorOrClass() : '',
+        textColor: isCover ? '' : textColorOrCover(),
+        'var-date-picker-color-cover': isCover,
       }
     }
 
