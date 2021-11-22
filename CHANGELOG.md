@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.6](https://github.com/haoziqaq/varlet/compare/v1.23.5...v1.23.6) (2021-11-22)
+
+
+### Bug Fixes
+
+* **date-picker:** css specificity ([565002b](https://github.com/haoziqaq/varlet/commit/565002bf78b0374b6b9f411df95d5e342f4ce626))
+
+
+
+
+
 ## [1.23.5](https://github.com/haoziqaq/varlet/compare/v1.23.4...v1.23.5) (2021-11-21)
 
 
