@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.2](https://github.com/haoziqaq/varlet/compare/v1.23.0...v1.23.2) (2021-11-20)
+
+**Note:** Version bump only for package varlet-vscode-extension
+
+
+
+
+
 ## [1.22.6](https://github.com/haoziqaq/varlet/compare/v1.22.4...v1.22.6) (2021-10-18)
 
 **Note:** Version bump only for package varlet-vscode-extension

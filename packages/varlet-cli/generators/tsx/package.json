@@ -2,6 +2,7 @@
   "name": "basic-ui",
   "version": "0.0.0",
   "description": "A basic components library",
+  "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "types/index.d.ts",
   "vetur": {
@@ -27,7 +28,8 @@
     "genAllLog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "release": "yarn compile && release-it",
     "test": "varlet-cli jest",
-    "test:watch": "varlet-cli jest -w"
+    "test:watch": "varlet-cli jest -w",
+    "test:watchAll": "varlet-cli jest -wa"
   },
   "peerDependencies": {
     "vue": "^3.2.0"
@@ -63,6 +65,7 @@
   "eslintConfig": {
     "root": true,
     "ignorePatterns": [
+      "lib/**",
       "es/**",
       "umd/**",
       "site/**",
@@ -79,6 +82,7 @@
       "@varlet/stylelint-config"
     ],
     "ignoreFiles": [
+      "lib/**",
       "es/**",
       "umd/**",
       "site/**",

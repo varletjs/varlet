@@ -2,13 +2,13 @@
 
 exports[`test child in space 1`] = `
 "<div class=\\"var-space var--box var-space--inline\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -2px 0px;\\">
-  <div style=\\"margin: 2px 2px 2px 0px;\\">
+  <div style=\\"margin: 2px 4px 2px 0px;\\">
     <div>div1</div>
   </div>
-  <div style=\\"margin: 2px 2px;\\">
+  <div style=\\"margin: 2px 4px 2px 0px;\\">
     <div>div2</div>
   </div>
-  <div style=\\"margin: 2px 0px 2px 2px;\\">
+  <div style=\\"margin: 2px 0px;\\">
     <div>div3</div>
   </div>
 </div>"
@@ -16,13 +16,13 @@ exports[`test child in space 1`] = `
 
 exports[`test child in space 2`] = `
 "<div class=\\"var-space var--box var-space--inline\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
-  <div style=\\"margin: 5px 10px 5px 0px;\\">
+  <div style=\\"margin: 5px 20px 5px 0px;\\">
     <div>div1</div>
   </div>
-  <div style=\\"margin: 5px 10px;\\">
+  <div style=\\"margin: 5px 20px 5px 0px;\\">
     <div>div2</div>
   </div>
-  <div style=\\"margin: 5px 0px 5px 10px;\\">
+  <div style=\\"margin: 5px 0px;\\">
     <div>div3</div>
   </div>
 </div>"
@@ -58,13 +58,13 @@ exports[`test child in space 4`] = `
 
 exports[`test space props 1`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
-  <div style=\\"margin: 4px 6px 4px 0px;\\">
+  <div style=\\"margin: 4px 12px 4px 0px;\\">
     <div>div1</div>
   </div>
-  <div style=\\"margin: 4px 6px;\\">
+  <div style=\\"margin: 4px 12px 4px 0px;\\">
     <div>div2</div>
   </div>
-  <div style=\\"margin: 4px 0px 4px 6px;\\">
+  <div style=\\"margin: 4px 0px;\\">
     <div>div3</div>
   </div>
 </div>"

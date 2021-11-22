@@ -148,11 +148,11 @@ export const toSizeUnit = (value: unknown) => {
 }
 
 export function requestAnimationFrame(fn: FrameRequestCallback): number {
-  return window.requestAnimationFrame ? window.requestAnimationFrame(fn) : window.setTimeout(fn, 16)
+  return globalThis.requestAnimationFrame ? globalThis.requestAnimationFrame(fn) : globalThis.setTimeout(fn, 16)
 }
 
 export function cancelAnimationFrame(handle: number): void {
-  window.cancelAnimationFrame ? window.cancelAnimationFrame(handle) : window.clearTimeout(handle)
+  globalThis.cancelAnimationFrame ? globalThis.cancelAnimationFrame(handle) : globalThis.clearTimeout(handle)
 }
 
 export function nextTickFrame(fn: FrameRequestCallback) {

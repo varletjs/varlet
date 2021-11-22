@@ -154,7 +154,7 @@ export default defineComponent({
 body {
   min-width: 1200px;
   margin: 0;
-  padding: 0;
+  padding: 60px 0 0;
   font-family: 'Roboto', sans-serif;
   background: var(--site-config-color-body);
   color: var(--site-config-color-text);
@@ -213,13 +213,12 @@ iframe {
     &-content {
       display: flex;
       background: var(--site-config-color-body);
-      margin-top: 60px;
       margin-left: 240px;
+      min-height: calc(100vh - 60px);
     }
 
     &-doc-container {
       flex: 1 0 0;
-      overflow-y: auto;
       min-width: 500px;
       padding: 0 25px;
       overflow-x: hidden;

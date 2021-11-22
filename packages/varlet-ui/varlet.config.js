@@ -38,6 +38,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': '暗黑模式',
+          'en-US': 'Dark Mode',
+        },
+        doc: 'themes',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '浏览器适配',
           'en-US': 'Browser Adaptation',
         },
@@ -514,5 +522,12 @@ module.exports = {
   },
   highlight: {
     style: './highlight.css',
+  },
+  moduleCompatible: {
+    "import dayjs from 'dayjs/esm'\n": "import * as dayjs from 'dayjs'\n",
+    "import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore'\n":
+      "import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'\n",
+    "import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter'\n":
+      "import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'\n",
   },
 }

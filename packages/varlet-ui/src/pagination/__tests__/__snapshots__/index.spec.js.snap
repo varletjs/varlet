@@ -8,7 +8,7 @@ exports[`Size related props 1`] = `
       <div class=\\"var-input__controller\\">
         <div class=\\"var-input__icon\\"></div>
         <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-120\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-120\\"></label>
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-120\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-120\\"></label>
         </div>
         <div class=\\"var-input__icon\\">
           <!--v-if-->
@@ -43,7 +43,7 @@ exports[`Size related props 2`] = `
       <div class=\\"var-input__controller\\">
         <div class=\\"var-input__icon\\"></div>
         <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-120\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-120\\"></label>
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-120\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-120\\"></label>
         </div>
         <div class=\\"var-input__icon\\">
           <!--v-if-->
@@ -102,7 +102,7 @@ exports[`basic mode mount 1`] = `
       <div class=\\"var-input__controller\\">
         <div class=\\"var-input__icon\\"></div>
         <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-90\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-90\\"></label>
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-90\\" type=\\"text\\"><label class=\\"var-input__placeholder\\" for=\\"var-input-90\\"></label>
         </div>
         <div class=\\"var-input__icon\\">
           <!--v-if-->
@@ -128,7 +128,7 @@ exports[`simple mode disabled prop 1`] = `
       <div class=\\"var-input__controller var-input--disabled\\">
         <div class=\\"var-input__icon\\"></div>
         <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-68\\" disabled=\\"\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-68\\"></label>
+          <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-68\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-68\\"></label>
         </div>
         <div class=\\"var-input__icon\\">
           <!--v-if-->
@@ -163,7 +163,7 @@ exports[`simple mode mount 1`] = `
       <div class=\\"var-input__controller\\">
         <div class=\\"var-input__icon\\"></div>
         <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-54\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-54\\"></label>
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-54\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-54\\"></label>
         </div>
         <div class=\\"var-input__icon\\">
           <!--v-if-->
@@ -200,7 +200,7 @@ exports[`test pagination example 1`] = `
         <div class=\\"var-input__controller\\">
           <div class=\\"var-input__icon\\"></div>
           <div class=\\"var-input__wrap\\">
-            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-5\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-5\\"></label>
+            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-5\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-5\\"></label>
           </div>
           <div class=\\"var-input__icon\\">
             <!--v-if-->
@@ -235,7 +235,7 @@ exports[`test pagination example 1`] = `
         <div class=\\"var-input__controller\\">
           <div class=\\"var-input__icon\\"></div>
           <div class=\\"var-input__wrap\\">
-            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-19\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-19\\"></label>
+            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-19\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-19\\"></label>
           </div>
           <div class=\\"var-input__icon\\">
             <!--v-if-->
@@ -264,7 +264,7 @@ exports[`test pagination example 1`] = `
         <div class=\\"var-input__controller\\">
           <div class=\\"var-input__icon\\"></div>
           <div class=\\"var-input__wrap\\">
-            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-26\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-26\\"></label>
+            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-26\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-26\\"></label>
           </div>
           <div class=\\"var-input__icon\\">
             <!--v-if-->
@@ -299,7 +299,7 @@ exports[`test pagination example 1`] = `
         <div class=\\"var-input__controller var-input--disabled\\">
           <div class=\\"var-input__icon\\"></div>
           <div class=\\"var-input__wrap\\">
-            <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-40\\" disabled=\\"\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-40\\"></label>
+            <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-40\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-40\\"></label>
           </div>
           <div class=\\"var-input__icon\\">
             <!--v-if-->

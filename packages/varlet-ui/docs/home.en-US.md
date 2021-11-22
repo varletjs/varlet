@@ -20,6 +20,8 @@ Varlet is a Material design mobile component library developed based on `Vue3`, 
 - 7.Support WebStorm, VS Code component syntax highlighting
 - 8.Support the SSR
 - 9.Support the Typescript
+- 10.More than 90 percent unit test coverage, providing stability assurance
+- 11.Support dark mode
 
 ### PR & Issue
 If you have any problems during use, you can [issue](https://github.com/haoziqaq/varlet/issues) them to us on [github](https://github.com/haoziqaq/varlet),
@@ -38,3 +40,8 @@ while non-linear animation and water ripples had certain requirements for GPU.
 As a result, Material style does not have a good experience in the mobile browser environment, and more flat and simple style is chosen to be put into the product.
 But as modern devices and new JS frameworks become more efficient at runtime processing, 
 browsers have more free time, and the ability to process animations, and Material Design will bring a better experience to applications.
+
+### Special thanks
+
+Special thanks to `Yu Tiezhu-eddieyc@163.com` for the visual support of our component library documentation site, 
+so as to help us continue to evolve.

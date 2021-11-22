@@ -31,11 +31,13 @@
         </template>
         <template #right>
           <var-site-button
-            style="transform: translateX(2px)"
             text
             round
             color="transparent"
             text-color="#fff"
+            :style="{
+              transform: languages ? 'translateX(2px)' : 'translateX(-4px)'
+            }"
             v-if="darkMode"
             @click="toggleTheme"
           >
@@ -51,7 +53,7 @@
             color="transparent"
             text-color="#fff"
             @click.stop="showMenu = true"
-            v-if="languages || darkMode"
+            v-if="languages"
           >
             <var-site-icon name="translate" :size="24" />
             <var-site-icon name="chevron-down" :size="22" />
@@ -101,7 +103,7 @@ import {
 import { get } from 'lodash-es'
 
 export default defineComponent({
-  setup() {
+  setup: function() {
     const bigCamelizeComponentName: Ref<string> = ref('')
     const route = useRoute()
     const showBackIcon: Ref<boolean> = ref(false)
@@ -171,6 +173,8 @@ export default defineComponent({
       }
     }
 
+    (window as any).toggleTheme = toggleTheme
+
     setThemes(config, currentThemes.value)
     window.postMessage(getThemesMessage(), '*')
 
@@ -197,7 +201,7 @@ export default defineComponent({
       changeLanguage,
       toggleTheme
     }
-  },
+  }
 })
 </script>
 

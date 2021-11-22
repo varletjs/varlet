@@ -2,12 +2,20 @@ import logger from '../shared/logger'
 import { runCLI } from 'jest'
 import { CWD, JEST_CONFIG } from '../shared/constant'
 
-export async function jest(cmd: { watch?: boolean; component?: string; clearCache?: boolean }) {
+interface JestCommandOptions {
+  watch?: boolean
+  watchAll?: boolean
+  component?: string
+  clearCache?: boolean
+}
+
+export async function jest(cmd: JestCommandOptions) {
   process.env.NODE_ENV = 'test'
 
   const config = {
     rootDir: CWD,
     watch: cmd.watch,
+    watchAll: cmd.watchAll,
     clearCache: cmd.clearCache,
     config: JEST_CONFIG,
     testRegex: cmd.component && `${cmd.component}/__tests__/.*.spec.[jt]s?$`,

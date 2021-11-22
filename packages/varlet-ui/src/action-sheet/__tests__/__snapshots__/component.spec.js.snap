@@ -1,14 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test action-sheet styles 1`] = `
-"<!--teleport start-->
-<transition-stub>
+"<transition-stub>
   <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
     <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
     <transition-stub>
-      <!--v-if-->
+      <!---->
     </transition-stub>
   </div>
-</transition-stub>
-<!--teleport end-->"
+</transition-stub>"
 `;

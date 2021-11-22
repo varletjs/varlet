@@ -24,7 +24,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    let element: HTMLElement | Window = window
+    let element: HTMLElement | Window
     const show: Ref<boolean> = ref(false)
 
     const click = () => {
@@ -54,7 +54,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      if (props.target) element = getHTMLElement()
+      element = props.target ? getHTMLElement() : window
       element.addEventListener('scroll', throttleScroll)
     })
 

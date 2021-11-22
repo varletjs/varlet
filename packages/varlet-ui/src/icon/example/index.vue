@@ -85,7 +85,7 @@ export default {
 
     watchLang(use)
     watchDarkMode(dark, (themes) => {
-      background.value = themes === 'darkThemes' ? '#272727' : '#fff'
+      background.value = themes === 'darkThemes' ? '#303030' : '#fff'
     })
 
     const prevTouchmoveForbid = context.touchmoveForbid

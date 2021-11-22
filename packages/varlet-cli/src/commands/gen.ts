@@ -15,7 +15,7 @@ function syncVersion(name: string) {
   const pkg = JSON.parse(readFileSync(file, 'utf-8'))
   const cliPkg = JSON.parse(readFileSync(CLI_PACKAGE_JSON, 'utf-8'))
   pkg.devDependencies['@varlet/cli'] = `^${cliPkg.version}`
-  pkg.files = ['es', 'umd', 'highlight', 'types', 'README.md']
+  pkg.files = ['es', 'lib', 'umd', 'highlight', 'types', 'README.md']
   writeFileSync(file, JSON.stringify(pkg, null, 2))
 }
 

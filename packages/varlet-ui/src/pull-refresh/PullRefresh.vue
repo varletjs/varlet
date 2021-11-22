@@ -30,7 +30,7 @@ import type { RefreshStatus } from './props'
 const MAX_DISTANCE = 100
 const CONTROL_POSITION = -50
 
-let scroller: HTMLElement | Window = window
+let scroller: HTMLElement | Window
 
 export default defineComponent({
   name: 'VarPullRefresh',

@@ -39,7 +39,7 @@ export type DialogActions = 'confirm' | 'cancel' | 'close'
 let singletonOptions: DialogOptions | null
 
 function Dialog(options: DialogOptions | string): Promise<DialogActions | void> {
-  if (!inBrowser) {
+  if (!inBrowser()) {
     return Promise.resolve()
   }
 

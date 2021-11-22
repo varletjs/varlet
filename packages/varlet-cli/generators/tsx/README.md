@@ -47,7 +47,9 @@ yarn test
 #### Run unit test in watch mode
 
 ```shell
-yarn test:watch
+yarn test:watch 
+or
+yarn test:watchAll 
 ```
 
 #### Quickly create a component folder

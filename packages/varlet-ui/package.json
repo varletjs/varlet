@@ -1,8 +1,9 @@
 {
   "name": "@varlet/ui",
-  "version": "1.22.10",
+  "version": "1.23.5",
   "description": "A material like components library",
   "module": "es/index.js",
+  "main": "lib/index.js",
   "typings": "types/index.d.ts",
   "vetur": {
     "tags": "highlight/tags.json",
@@ -16,6 +17,7 @@
   ],
   "files": [
     "json",
+    "lib",
     "es",
     "umd",
     "highlight",
@@ -41,14 +43,15 @@
     "compile": "varlet-cli compile",
     "create": "varlet-cli create",
     "test": "varlet-cli jest",
-    "test:watch": "varlet-cli jest -w"
+    "test:watch": "varlet-cli jest -w",
+    "test:watchAll": "varlet-cli jest -wa"
   },
   "peerDependencies": {
     "vue": "^3.2.0"
   },
   "gitHead": "ee9c3866bedad96c86365b0f9888a3a6bb781b1f",
   "devDependencies": {
-    "@varlet/cli": "^1.22.10"
+    "@varlet/cli": "^1.23.5"
   },
   "dependencies": {
     "dayjs": "^1.10.4",

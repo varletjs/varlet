@@ -38,7 +38,7 @@ interface ActionSheetOptions {
 let singletonOptions: ActionSheetOptions | null
 
 function ActionSheet(options: ActionSheetOptions): Promise<ActionSheetActions | void> {
-  if (!inBrowser) {
+  if (!inBrowser()) {
     return Promise.resolve()
   }
 

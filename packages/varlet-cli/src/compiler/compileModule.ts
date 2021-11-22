@@ -1,13 +1,22 @@
 import { build } from 'vite'
 import { resolve } from 'path'
 import { copy, ensureFileSync, readdir, removeSync } from 'fs-extra'
-import { EXAMPLE_DIR_NAME, TESTS_DIR_NAME, DOCS_DIR_NAME, SRC_DIR, ES_DIR, STYLE_DIR_NAME } from '../shared/constant'
+import {
+  EXAMPLE_DIR_NAME,
+  TESTS_DIR_NAME,
+  DOCS_DIR_NAME,
+  SRC_DIR,
+  ES_DIR,
+  STYLE_DIR_NAME,
+  LIB_DIR,
+} from '../shared/constant'
 import { getPublicDirs, isDir, isLess, isScript, isSFC } from '../shared/fsUtils'
 import { compileSFC } from './compileSFC'
-import { compileLibraryEntry, compileScriptFile } from './compileScript'
+import { compileESEntry, compileCommonJSEntry, compileScriptFile } from './compileScript'
 import { compileLess } from './compileStyle'
 import { getUMDConfig } from '../config/vite.config'
 import { getVarletConfig } from '../config/varlet.config'
+import { generateReference } from './compileTypes'
 
 export function compileUMD() {
   return new Promise<void>((resolve, reject) => {
@@ -44,18 +53,21 @@ export async function compileFile(file: string) {
   isDir(file) && (await compileDir(file))
 }
 
-export async function compileModule(modules: string | boolean = false) {
+export async function compileModule(modules: 'umd' | 'commonjs' | boolean = false) {
   if (modules === 'umd') {
     await compileUMD()
     return
   }
 
-  await copy(SRC_DIR, ES_DIR)
-  const moduleDir: string[] = await readdir(ES_DIR)
+  process.env.BABEL_MODULE = modules === 'commonjs' ? 'commonjs' : 'module'
+
+  const dest = modules === 'commonjs' ? LIB_DIR : ES_DIR
+  await copy(SRC_DIR, dest)
+  const moduleDir: string[] = await readdir(dest)
 
   await Promise.all(
     moduleDir.map((filename: string) => {
-      const file: string = resolve(ES_DIR, filename)
+      const file: string = resolve(dest, filename)
 
       if (isDir(file)) {
         ensureFileSync(resolve(file, './style/index.js'))
@@ -66,5 +78,8 @@ export async function compileModule(modules: string | boolean = false) {
     })
   )
 
-  await compileLibraryEntry(ES_DIR, await getPublicDirs())
+  const publicDirs = await getPublicDirs()
+
+  await (modules === 'commonjs' ? compileCommonJSEntry(dest, publicDirs) : compileESEntry(dest, publicDirs))
+  generateReference(dest)
 }
