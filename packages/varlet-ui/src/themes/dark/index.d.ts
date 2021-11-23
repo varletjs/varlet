@@ -1,3 +1,5 @@
 import { StyleVars } from '../../../types'
 
-export default StyleVars
+declare const dark: StyleVars
+
+export default dark
