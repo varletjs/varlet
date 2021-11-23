@@ -25,6 +25,8 @@ export const isJSX = (file: string): boolean => pathExistsSync(file) && extname(
 
 export const isTSX = (file: string): boolean => pathExistsSync(file) && extname(file) === '.tsx'
 
+export const isDTS = (file: string): boolean => pathExistsSync(file) && file.endsWith('.d.ts')
+
 export const isScript = (file: string): boolean => pathExistsSync(file) && SCRIPTS_EXTENSIONS.includes(extname(file))
 
 export const isLess = (file: string): boolean => pathExistsSync(file) && extname(file) === '.less'
