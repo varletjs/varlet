@@ -1,7 +1,13 @@
 <template>
   <div class="var--box var-loading">
     <div class="var-loading__circle" v-if="type === 'circle'">
-      <span class="var-loading__circle-block" :class="`var-loading__circle-block-${size}`" :style="{ color }">
+      <span
+        class="var-loading__circle-block"
+        :style="{
+          width: toNumber(radius) * 2 + 'px',
+          height: toNumber(radius) * 2 + 'px',
+        }"
+      >
         <svg viewBox="25 25 50 50">
           <circle cx="50" cy="50" r="20" fill="none"></circle>
         </svg>

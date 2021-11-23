@@ -19,6 +19,10 @@ export const props = {
     default: 'circle',
     validator: typeValidator,
   },
+  radius: {
+    type: [String, Number],
+    default: 15,
+  },
   // loading尺寸
   size: {
     type: String as PropType<LoadingSize>,
