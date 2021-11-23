@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.7](https://github.com/haoziqaq/varlet/compare/v1.23.6...v1.23.7) (2021-11-23)
+
+
+### Bug Fixes
+
+* **ui/themes, cli:** fix themes types ([f29511a](https://github.com/haoziqaq/varlet/commit/f29511a016edb462bdf578a6b5a19fbe10a22158))
+
+
+
+
+
 ## [1.23.5](https://github.com/haoziqaq/varlet/compare/v1.23.4...v1.23.5) (2021-11-21)
 
 

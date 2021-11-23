@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.7](https://github.com/haoziqaq/varlet/compare/v1.23.6...v1.23.7) (2021-11-23)
+
+
+### Bug Fixes
+
+* **loading:** add color for circle type & update doc ([3457394](https://github.com/haoziqaq/varlet/commit/345739466b8109e63205eee720d391a328d30ca7))
+* **loading:** remove radius prop & add color for circle type & update doc ([3a9dfe0](https://github.com/haoziqaq/varlet/commit/3a9dfe07886b245d686b454bfa1aa975b7e223f5))
+* **ui/themes, cli:** fix themes types ([f29511a](https://github.com/haoziqaq/varlet/commit/f29511a016edb462bdf578a6b5a19fbe10a22158))
+
+
+### Reverts
+
+* revert fix loading ([b97b8b9](https://github.com/haoziqaq/varlet/commit/b97b8b96e6f5f3c5f22f0f93eedc3e39b44e5344))
+
+
+
+
+
 ## [1.23.6](https://github.com/haoziqaq/varlet/compare/v1.23.5...v1.23.6) (2021-11-22)
 
 
