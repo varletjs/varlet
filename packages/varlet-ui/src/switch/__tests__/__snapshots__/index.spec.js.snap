@@ -157,7 +157,7 @@ exports[`test switch example 1`] = `
       <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
         <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
           <div class=\\"var--box var-loading\\">
-            <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 16px; height: 16px;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+            <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 16px; height: 16px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
             <!--v-if-->
             <!--v-if-->
             <!--v-if-->
@@ -176,7 +176,7 @@ exports[`test switch example 1`] = `
       <div class=\\"var-switch__ripple\\" style=\\"left: 12.5px; width: 50px; height: 50px;\\">
         <div style=\\"width: 25px; height: 25px; color: rgb(255, 159, 0);\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
           <div class=\\"var--box var-loading\\">
-            <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 21px; height: 21px;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+            <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 21px; height: 21px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
             <!--v-if-->
             <!--v-if-->
             <!--v-if-->
@@ -213,7 +213,7 @@ exports[`test switch loading prop 1`] = `
     <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
       <div style=\\"width: 20px; height: 20px; color: rgb(255, 152, 0);\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
         <div class=\\"var--box var-loading\\">
-          <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 16px; height: 16px;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+          <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 16px; height: 16px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
