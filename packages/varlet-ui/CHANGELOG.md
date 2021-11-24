@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.8](https://github.com/haoziqaq/varlet/compare/v1.23.7...v1.23.8) (2021-11-24)
+
+
+### Bug Fixes
+
+* **d.ts:** repair type ([b925e7e](https://github.com/haoziqaq/varlet/commit/b925e7ea63c4154b3c26cb711fde4a7382633c80))
+* compatible dayjs for nuxt ([0b3b540](https://github.com/haoziqaq/varlet/commit/0b3b540694e13130686773d9bcd3c3c4d21da496))
+
+
+
+
+
 ## [1.23.7](https://github.com/haoziqaq/varlet/compare/v1.23.6...v1.23.7) (2021-11-23)
 
 

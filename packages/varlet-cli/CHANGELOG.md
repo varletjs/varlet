@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.8](https://github.com/haoziqaq/varlet/compare/v1.23.7...v1.23.8) (2021-11-24)
+
+
+### Bug Fixes
+
+* **cli:** add ts ignore to generate routes ([3363578](https://github.com/haoziqaq/varlet/commit/3363578eb2763282fd3c274ab75374cbff94c92b))
+
+
+
+
+
 ## [1.23.7](https://github.com/haoziqaq/varlet/compare/v1.23.6...v1.23.7) (2021-11-23)
 
 
