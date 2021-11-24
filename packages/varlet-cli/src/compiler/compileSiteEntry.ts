@@ -91,6 +91,7 @@ export async function buildMobileSiteRoutes() {
     (examplePath) => `
   {
     path: '${getExampleRoutePath(examplePath)}',
+    // @ts-ignore
     component: () => import('${examplePath}')
   }\
 `
