@@ -12,7 +12,7 @@ export class StyleProviderComponent extends VarComponent {
 }
 
 export interface IStyleProvider {
-  (options: StyleVars): void
+  (options: StyleVars | null): void
   Component: typeof StyleProviderComponent
 
   install(app: App): void
