@@ -1,7 +1,7 @@
 import type { App } from 'vue'
 import { VarComponent } from './varComponent'
 
-export type StyleVars = Record<string, string> | null
+export type StyleVars = Record<string, string>
 
 export interface StyleProviderProps {
   styleVars?: StyleVars
@@ -12,7 +12,7 @@ export class StyleProviderComponent extends VarComponent {
 }
 
 export interface IStyleProvider {
-  (options: StyleVars): void
+  (options: StyleVars | null): void
   Component: typeof StyleProviderComponent
 
   install(app: App): void
