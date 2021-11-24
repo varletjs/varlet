@@ -10,7 +10,7 @@ import {
   STYLE_DIR_NAME,
   LIB_DIR,
 } from '../shared/constant'
-import { getPublicDirs, isDir, isLess, isScript, isSFC } from '../shared/fsUtils'
+import { getPublicDirs, isDir, isDTS, isLess, isScript, isSFC } from '../shared/fsUtils'
 import { compileSFC } from './compileSFC'
 import { compileESEntry, compileCommonJSEntry, compileScriptFile } from './compileScript'
 import { compileLess } from './compileStyle'
@@ -37,7 +37,7 @@ export async function compileDir(dir: string) {
 
       ;[TESTS_DIR_NAME, EXAMPLE_DIR_NAME, DOCS_DIR_NAME].includes(filename) && removeSync(file)
 
-      if (filename === STYLE_DIR_NAME) {
+      if (isDTS(file) || filename === STYLE_DIR_NAME) {
         return Promise.resolve()
       }
 

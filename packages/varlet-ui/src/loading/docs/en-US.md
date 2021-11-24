@@ -21,11 +21,11 @@ createApp().use(Loading)
 
 ### Color
 ```html
-<var-loading type="circle" style="color: #2979ff" />
-<var-loading type="cube"  style="color: #2979ff"/>
-<var-loading type="wave" style="color: #2979ff" />
-<var-loading type="rect" style="color: #2979ff" />
-<var-loading type="disappear" style="color: #2979ff" />
+<var-loading type="circle" color="#2979ff" />
+<var-loading type="cube" color="#2979ff" />
+<var-loading type="wave" color="#2979ff" />
+<var-loading type="rect" color="#2979ff" />
+<var-loading type="disappear" color="#2979ff" />
 ```
 
 ### Size
@@ -42,8 +42,9 @@ createApp().use(Loading)
 
 ### Props
 
-| prop    | Description                                             | Type     | Default        |
-| ------- | ------------------------------------------------------- | -------- | -------------- |
-| `color` | Loading color                                           | _string_ | `currentColor` |
-| `type`  | Can be set to `circle` `wave` `cube` `rect` `disappear` | _string_ | `circle`       |
-| `size`  | Can be set to `large` `normal` `small` `mini`           | _string_ | `normal`       |
+| prop     | Description                                             | Type     | Default        |
+| -------- | ------------------------------------------------------- | -------- | -------------- |
+| `color`  | Loading color                                           | _string_ | `currentColor` |
+| `type`   | Can be set to `circle` `wave` `cube` `rect` `disappear` | _string_ | `circle`       |
+| `size`   | Can be set to `large` `normal` `small` `mini`           | _string_ | `normal`       |
+| `radius` | Set size when the `type` is `circle`              | _string \| number_  | `-` |

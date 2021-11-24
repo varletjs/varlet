@@ -4,8 +4,9 @@
       <span
         class="var-loading__circle-block"
         :style="{
-          width: toNumber(radius) * 2 + 'px',
-          height: toNumber(radius) * 2 + 'px',
+          width: getRadius * 2 + 'px',
+          height: getRadius * 2 + 'px',
+          color,
         }"
       >
         <svg viewBox="25 25 50 50">
@@ -28,14 +29,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { props } from './props'
 import { toNumber } from '../utils/shared'
+import type { ComputedRef } from 'vue'
 
 export default defineComponent({
   name: 'VarLoading',
   props,
-  setup() {
+  setup(props) {
     const loadingTypeDict = {
       wave: 5,
       cube: 4,
@@ -43,9 +45,20 @@ export default defineComponent({
       disappear: 3,
     }
 
+    const sizeDict = {
+      mini: 9,
+      small: 12,
+      normal: 15,
+      large: 18,
+    }
+
+    const getRadius: ComputedRef<number> = computed(() => {
+      return props.radius ? toNumber(props.radius) : sizeDict[props.size]
+    })
+
     return {
       loadingTypeDict,
-      toNumber,
+      getRadius,
     }
   },
 })

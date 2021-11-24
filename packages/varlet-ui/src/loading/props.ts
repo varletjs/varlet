@@ -21,7 +21,6 @@ export const props = {
   },
   radius: {
     type: [String, Number],
-    default: 15,
   },
   // loading尺寸
   size: {
