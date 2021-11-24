@@ -1,7 +1,7 @@
 import type { App } from 'vue'
 import { VarComponent } from './varComponent'
 
-export type StyleVars = Record<string, string>
+export type StyleVars = Record<string, string> | null
 
 export interface StyleProviderProps {
   styleVars?: StyleVars
