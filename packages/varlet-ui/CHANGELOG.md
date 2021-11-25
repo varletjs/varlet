@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.9](https://github.com/haoziqaq/varlet/compare/v1.23.8...v1.23.9) (2021-11-25)
+
+
+### Bug Fixes
+
+* **ui/checkbox:** add ripple depend style ([b8345fa](https://github.com/haoziqaq/varlet/commit/b8345fa2792f6b3b0f7b9651a5fb63590397eb5a))
+
+
+
+
+
 ## [1.23.8](https://github.com/haoziqaq/varlet/compare/v1.23.7...v1.23.8) (2021-11-24)
 
 
