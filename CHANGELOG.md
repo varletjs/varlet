@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.10](https://github.com/haoziqaq/varlet/compare/v1.23.9...v1.23.10) (2021-12-01)
+
+
+### Bug Fixes
+
+* **ui/icon:** fix vertical align to bottom ([b2c4da9](https://github.com/haoziqaq/varlet/commit/b2c4da9a1a4df2ee43b27b005576f3523e7a4e5f))
+
+
+
+
+
 ## [1.23.9](https://github.com/haoziqaq/varlet/compare/v1.23.8...v1.23.9) (2021-11-25)
 
 
