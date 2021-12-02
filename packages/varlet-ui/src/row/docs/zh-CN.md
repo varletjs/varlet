@@ -44,7 +44,7 @@ createApp().use(Row).use(Col)
 布局组件默认使用`flex`布局，通过`<var-row/>`的`justify`和`align`属性设置主轴和交叉轴的对齐方式。
 
 ```html
- <var-row>
+<var-row>
   <var-col :span="8">span: 8</var-col>
   <var-col :span="8">span: 8</var-col>
 </var-row>

@@ -49,7 +49,7 @@ export default {
 ### Custom Style
 
 ```html
- <var-steps 
+<var-steps 
   :active="active"
   active-color="#f44336"
   inactive-color="#e99eb4"

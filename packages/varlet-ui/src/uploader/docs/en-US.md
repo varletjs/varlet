@@ -185,7 +185,7 @@ export default {
 Before deleting the file, the `before-remove` event is triggered, and a falsy value is returned to prevent the delete operation.
 
 ```html
- <var-uploader v-model="files" @remove="handleBeforeRemove" />
+<var-uploader v-model="files" @remove="handleBeforeRemove" />
 ```
 
 ```js

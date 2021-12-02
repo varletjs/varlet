@@ -50,7 +50,7 @@ The layout component is laid out in `flex` by default,
 using the `<var-row/>` `justify` and `align` properties to set the alignment of the main and cross axes.
 
 ```html
- <var-row>
+<var-row>
   <var-col :span="8">span: 8</var-col>
   <var-col :span="8">span: 8</var-col>
 </var-row>

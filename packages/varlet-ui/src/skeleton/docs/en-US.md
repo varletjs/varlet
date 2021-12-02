@@ -34,7 +34,7 @@ export default {
 ### Display Title
 
 ```html
- <var-skeleton title :loading="loading">Loading Data</var-skeleton>
+<var-skeleton title :loading="loading">Loading Data</var-skeleton>
 ```
 
 ### Custom Rows Height

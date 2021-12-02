@@ -185,7 +185,7 @@ export default {
 删除文件之前会触发`before-remove`事件，返回假值阻止删除操作。
 
 ```html
- <var-uploader v-model="files" @before-remove="handleBeforeRemove" />
+<var-uploader v-model="files" @before-remove="handleBeforeRemove" />
 ```
 
 ```js

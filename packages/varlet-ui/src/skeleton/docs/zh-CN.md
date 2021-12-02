@@ -33,7 +33,7 @@ export default {
 ### 显示标题
 
 ```html
- <var-skeleton title :loading="loading">加载的数据</var-skeleton>
+<var-skeleton title :loading="loading">加载的数据</var-skeleton>
 ```
 
 ### 自定义段落高度

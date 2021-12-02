@@ -49,7 +49,7 @@ export default {
 ### 自定义样式
 
 ```html
- <var-steps 
+<var-steps 
   :active="active"  
   active-color="#f44336" 
   inactive-color="#e99eb4"

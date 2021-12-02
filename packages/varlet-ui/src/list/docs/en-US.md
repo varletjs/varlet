@@ -69,7 +69,7 @@ You can manually set the error status using `v-model:error`, an error message is
 Clicking on the error message will help you set the `error` to `false` and trigger the `load` event again.
 
 ```html
- <var-list
+<var-list
   v-model:error="error"
   v-model:loading="loading"
   @load="load"

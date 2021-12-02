@@ -66,7 +66,7 @@ export default {
 您可以使用`v-model:error`手动设置错误状态，会展示错误提示，点击错误提示会帮您把`error`设置成`false`并再次触发`load`事件。
 
 ```html
- <var-list
+<var-list
   v-model:error="error"
   v-model:loading="loading"
   @load="load"

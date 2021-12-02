@@ -40,7 +40,7 @@ createApp().use(Swipe).use(SwipeItem)
 ### Forbid Loop
 
 ```html
- <var-swipe class="swipe" :loop="false">
+<var-swipe class="swipe" :loop="false">
   <var-swipe-item>
     <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
   </var-swipe-item>

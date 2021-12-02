@@ -39,26 +39,26 @@ createApp().use(IndexBar).use(IndexAnchor)
 ```javascript
 import { ref, onMounted } from 'vue'
 
-  export default {
-    setup() {
-      const list = ref([])
+export default {
+  setup() {
+    const list = ref([])
 
-      onMounted(() => {
-        for (let i = 0; i < 26; i++) {
-          list.value.push(String.fromCharCode(65 + i))
-        }
-      })
-
-      const change = (value) => {
-        console.log(value)
+    onMounted(() => {
+      for (let i = 0; i < 26; i++) {
+        list.value.push(String.fromCharCode(65 + i))
       }
+    })
 
-      return {
-        list,
-        change
-      }
+    const change = (value) => {
+      console.log(value)
+    }
+
+    return {
+      list,
+      change
     }
   }
+}
 ```
 
 ## API

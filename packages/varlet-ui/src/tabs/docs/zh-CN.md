@@ -67,7 +67,7 @@ export default {
 ### 修改样式
 
 ```html
- <var-tabs
+<var-tabs
   elevation
   color="#2979ff"
   active-color="#fff"
