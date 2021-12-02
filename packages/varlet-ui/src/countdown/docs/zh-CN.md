@@ -18,20 +18,20 @@ createApp().use(Countdown)
 `time` 属性表示倒计时总时长，单位为毫秒。
 
 ```html
-  <var-countdown :time="time" />
+<var-countdown :time="time" />
 ```
 ```javascript
 import { ref } from 'vue'
 
-  export default {
-    setup() {
-      const time = ref(30 * 60 * 60 * 1000)
+export default {
+  setup() {
+    const time = ref(30 * 60 * 60 * 1000)
 
-      return {
-        time
-      }
+    return {
+      time
     }
   }
+}
 ```
 ### 自定义格式
 
@@ -54,7 +54,7 @@ import { ref } from 'vue'
 通过插槽自定义倒计时的样式，`timeData` 对象格式见下方表格。
 
 ```html
-<var-down :time="time">
+<var-countdown :time="time">
   <template #default="timeData">
     <span class="block">{{ timeData.hours }}</span>
     <span class="colon">:</span>
@@ -62,7 +62,7 @@ import { ref } from 'vue'
     <span class="colon">:</span>
     <span class="block">{{ timeData.seconds }}</span>
   </template>
-</var-down>
+</var-countdown>
 ```
 
 ### 手动控制
@@ -70,50 +70,50 @@ import { ref } from 'vue'
 通过 ref 获取到组件实例后，可以调用 `start`、`pause`、`reset` 方法。
 
 ```html
-  <var-countdown
-    time="3000"
-    ref="countdown"
-    :auto-start="false"
-    format="ss : SSS"
-    @end="end"
-    @change="change"
-  />
-  <div class="btn-container">
-    <var-button type="primary" @click="$refs.countdown.start()">start</var-button>
-    <var-button @click="$refs.countdown.pause()">pause</var-button>
-    <var-button @click="$refs.countdown.reset()">reset</var-button>
-  </div>
+<var-countdown
+  time="3000"
+  ref="countdown"
+  :auto-start="false"
+  format="ss : SSS"
+  @end="end"
+  @change="change"
+/>
+<div class="btn-container">
+  <var-button type="primary" @click="$refs.countdown.start()">start</var-button>
+  <var-button @click="$refs.countdown.pause()">pause</var-button>
+  <var-button @click="$refs.countdown.reset()">reset</var-button>
+</div>
 ```
 ```javascript
 import { ref } from 'vue'
 
-  export default {
-    setup() {
-      const countdown = ref(null)
+export default {
+  setup() {
+    const countdown = ref(null)
 
-      const end = () => {
-        Snackbar.info('end!')
-      }
+    const end = () => {
+      Snackbar.info('end!')
+    }
 
-      const change = () => {
-        console.log('change')
-      }
+    const change = () => {
+      console.log('change')
+    }
 
-      return {
-        countdown,
-        end,
-        change
-      }
+    return {
+      countdown,
+      end,
+      change
     }
   }
+}
 ```
 ```css
-  .btn-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
 ```
 
 ## API

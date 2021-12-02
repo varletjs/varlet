@@ -18,20 +18,20 @@ createApp().use(Countdown)
 Use `time` to set countdown time(ms).
 
 ```html
-  <var-countdown :time="time" />
+<var-countdown :time="time" />
 ```
 ```javascript
 import { ref } from 'vue'
 
-  export default {
-    setup() {
-      const time = ref(30 * 60 * 60 * 1000)
+export default {
+  setup() {
+    const time = ref(30 * 60 * 60 * 1000)
 
-      return {
-        time
-      }
+    return {
+      time
     }
   }
+}
 ```
 ### Custom Format
 
@@ -54,7 +54,7 @@ Use `S` text to show millisecond.
 Use `slot` to set custom countdown style.
 
 ```html
-<var-down :time="time">
+<var-countdown :time="time">
   <template #default="timeData">
     <span class="block">{{ timeData.hours }}</span>
     <span class="colon">:</span>
@@ -62,7 +62,7 @@ Use `slot` to set custom countdown style.
     <span class="colon">:</span>
     <span class="block">{{ timeData.seconds }}</span>
   </template>
-</var-down>
+</var-countdown>
 ```
 
 ### Manual Control
@@ -70,50 +70,50 @@ Use `slot` to set custom countdown style.
 Use `ref` to get countdown instance, you can call the `start`, `pause`, and `reset` methods.
 
 ```html
-  <var-countdown
-    time="3000"
-    ref="countdown"
-    :auto-start="false"
-    format="ss : SSS"
-    @end="end"
-    @change="change"
-  />
-  <div class="btn-container">
-    <var-button type="primary" @click="$refs.countdown.start()">start</var-button>
-    <var-button @click="$refs.countdown.pause()">pause</var-button>
-    <var-button @click="$refs.countdown.reset()">reset</var-button>
-  </div>
+<var-countdown
+  time="3000"
+  ref="countdown"
+  :auto-start="false"
+  format="ss : SSS"
+  @end="end"
+  @change="change"
+/>
+<div class="btn-container">
+  <var-button type="primary" @click="$refs.countdown.start()">start</var-button>
+  <var-button @click="$refs.countdown.pause()">pause</var-button>
+  <var-button @click="$refs.countdown.reset()">reset</var-button>
+</div>
 ```
 ```javascript
 import { ref } from 'vue'
 
-  export default {
-    setup() {
-      const countdown = ref(null)
+export default {
+  setup() {
+    const countdown = ref(null)
 
-      const end = () => {
-        Snackbar.info('end!')
-      }
+    const end = () => {
+      Snackbar.info('end!')
+    }
 
-      const change = () => {
-        console.log('change')
-      }
+    const change = () => {
+      console.log('change')
+    }
 
-      return {
-        countdown,
-        end,
-        change
-      }
+    return {
+      countdown,
+      end,
+      change
     }
   }
+}
 ```
 ```css
-  .btn-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
 ```
 
 ## API
