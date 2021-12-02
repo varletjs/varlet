@@ -35,7 +35,7 @@ async function startServer(force: boolean | undefined) {
     watcher.on('change', () => startServer(force))
   }
 
-  logger.info(`${isRestart ? 'Res' : 'S'}tart successfully!!!`)
+  logger.success(`\n${isRestart ? 'Res' : 'S'}tart successfully!!!`)
 }
 
 export async function dev(cmd: { force?: boolean }) {
