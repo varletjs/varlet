@@ -47,4 +47,4 @@ createApp().use(Loading)
 | `color`  | loading 的颜色                                                    | _string_ | `currentColor` |
 | `type`   | loading 的类型，可选值为 `circle` `wave` `cube` `rect` `disappear` | _string_ | `circle`       |
 | `size`   | loading 的大小，可选值位 `large` `normal` `small` `mini`           | _string_ | `normal`       |
-| `radius` | loading 的类型为`circle`时，可设置其大小                            | _string \| number_  | `-` |
+| `radius` | loading 的类型为 `circle` 时，可设置其大小                            | _string \| number_  | `-` |

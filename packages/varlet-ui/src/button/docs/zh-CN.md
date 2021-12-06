@@ -140,9 +140,9 @@ export default {
 | `type` | 类型， 可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `size` | 尺寸， 可选值为 `normal` `mini` `small` `large` | _string_ | `normal` |
 | `loading` | 加载状态 | _boolean_ | `false` |  
-| `loading-radius` | loading的半径，只作用于 `loading-type="circle"` 时 | _string \| number_ | `12` |
-| `loading-type` | loading的类型，可选值为 `circle` `wave` `cube` `rect` `disappear` | _string_ | `circle` |
-| `loading-size` | loading的尺寸，可选值为 `large` `normal` `small` `mini` 不作用于 `loading-type="circle"` 时 | _string_ | `normal` |
+| `loading-radius` | loading 的半径，只作用于 `loading-type="circle"` 时 | _string \| number_ | `12` |
+| `loading-type` | loading 的类型，可选值为 `circle` `wave` `cube` `rect` `disappear` | _string_ | `circle` |
+| `loading-size` | loading 的尺寸，可选值为 `large` `normal` `small` `mini` 不作用于 `loading-type="circle"` 时 | _string_ | `normal` |
 | `round` | 是否是圆形按钮 | _boolean_ | `false` | 
 | `block` | 是否是块级元素 | _boolean_ | `false` | 
 | `text` | 是否是文字按钮 | _boolean_ | `false` |
@@ -166,7 +166,7 @@ export default {
 | `default` | 按钮内容 | `-` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的css变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

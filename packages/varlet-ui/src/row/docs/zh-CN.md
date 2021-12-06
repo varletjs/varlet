@@ -103,13 +103,13 @@ createApp().use(Row).use(Col)
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `click` | 点击Row时触发 | `event: Event` |
+| `click` | 点击 Row 时触发 | `event: Event` |
 
 ### Col Events
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `click` | 点击Col时触发 | `event: Event` |
+| `click` | 点击 Col 时触发 | `event: Event` |
 
 ### 插槽
 
@@ -117,10 +117,10 @@ createApp().use(Row).use(Col)
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `default` | Row内容 | `-` |
+| `default` | Row 内容 | `-` |
 
 ### Col Slots
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `default` | Col内容 | `-` |
+| `default` | Col 内容 | `-` |

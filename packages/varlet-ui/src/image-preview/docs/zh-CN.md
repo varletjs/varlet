@@ -154,10 +154,10 @@ export default {
 | 事件名 | 说明  | 回调参数 |
 | ----- | ---- | ----- |
 | `change` | 切换图片时的回调函数，回调参数为当前索引 | `index: number` 图片索引 |
-| `open`   | 打开image-preview时触发 | `-`  |
-| `opened` | 打开image-preview动画结束时触发 | `-` |
-| `close`  | 关闭image-preview时触发 | `-` |
-| `closed` | 关闭image-preview动画结束时触发 | `-` |
+| `open`   | 打开 image-preview 时触发 | `-`  |
+| `opened` | 打开 image-preview 动画结束时触发 | `-` |
+| `close`  | 关闭 image-preview 时触发 | `-` |
+| `closed` | 关闭 image-preview 动画结束时触发 | `-` |
 
 ### 插槽
 
@@ -170,7 +170,7 @@ export default {
 
 | 参数   | 说明  |  类型  | 默认值 |
 | ------ | ----------- | ------ | -------- |
-| `images`     | 需要预览的图片URL数组或者单个图片的url  | _string[] \| string_ | `[]` |
+| `images`     | 需要预览的图片URL数组或者单个图片的 url  | _string[] \| string_ | `[]` |
 | `current`    | 图片预览起始的 URL | _string_ | `-` |
 | `zoom`       | 双击放大倍数  | _string \| number_ | `2` |
 | `closeable`  | 是否显示关闭按钮 | _boolean_ | `false` |
@@ -178,10 +178,10 @@ export default {
 | `indicator`  | 是否显示分页 | _boolean_ | `true` |
 | `lockScroll` | 锁定滚动 | _boolean_ | `true` |
 | `onChange`   | 切换图片时的回调函数，回调参数为当前索引 | _(index: number) => void_  |  `-` |
-| `onOpen`   | image-preview开启时候的回调 |  _() => void_ | `-` |
-| `onOpened` | image-preview动画结束时候的回调 |   _() => void_ | `-` |
-| `onClose`  | image-preview时关闭时候的回调 |  _() => void_ |  `-` |
-| `onClosed` | image-preview关闭动画结束时候的回调 |  _() => void_ | `-` |
+| `onOpen`   | image-preview 开启时候的回调 |  _() => void_ | `-` |
+| `onOpened` | image-preview 动画结束时候的回调 |   _() => void_ | `-` |
+| `onClose`  | image-preview 时关闭时候的回调 |  _() => void_ |  `-` |
+| `onClosed` | image-preview 关闭动画结束时候的回调 |  _() => void_ | `-` |
 
 ### 样式变量
 以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制

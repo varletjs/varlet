@@ -255,7 +255,7 @@ export default {
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
 | `overlayClass` | 自定义遮罩层的class | _string_ | `-` |
 | `overlayStyle` | 自定义遮罩层的style | _string_ | `-` |
-| `lockScroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
+| `lockScroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `closeOnClickOverlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
 | `onOpen` | 对话框开启回调 | _() => void_ | `-` |
 | `onOpened` | 对话框开启动画结束回调 | _() => void_ | `-` |
