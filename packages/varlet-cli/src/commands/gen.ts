@@ -36,6 +36,9 @@ export async function gen(name: string) {
 
   const choice = ret['Please select your component library programming style']
   const generator = resolve(GENERATORS_DIR, choice)
+  const base = resolve(GENERATORS_DIR, 'base')
+
+  await copy(base, dest)
   await copy(generator, dest)
   removeFiles(dest)
   syncVersion(name)
