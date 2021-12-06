@@ -292,7 +292,7 @@ export default {
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `click` | 点击选项卡时触发, 在选项卡`disabled` 状态为 `true` 时不触发 | `active: string \| number` |
+| `click` | 点击选项卡时触发, 在选项卡 `disabled` 状态为 `true` 时不触发 | `active: string \| number` |
 | `change` | 切换选项卡时触发 | `active: string \| number` |
 
 ### Tab Events

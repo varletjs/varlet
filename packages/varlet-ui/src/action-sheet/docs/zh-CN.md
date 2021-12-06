@@ -394,8 +394,8 @@ export default {
 | `actions` | 选项列表 | _Actions_ | `[]` |
 | `title` | 动作面板标题 | _string_ | `请选择` |
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
-| `overlay-class` | 自定义遮罩层的class | _string_ | `-` |
-| `overlay-style` | 自定义遮罩层的style | _string_ | `-` |
+| `overlay-class` | 自定义遮罩层的 class | _string_ | `-` |
+| `overlay-style` | 自定义遮罩层的 style | _string_ | `-` |
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
 | `close-on-click-action` | 是否点击选项时关闭动作面板 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭动作面板 | _boolean_ | `true` | 
@@ -419,8 +419,8 @@ export default {
 | --- | --- | --- | --- | 
 | `title` | 动作面板标题 | _string_ | `请选择` |
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
-| `overlayClass` | 自定义遮罩层的class | _string_ | `-` |
-| `overlayStyle` | 自定义遮罩层的style | _string_ | `-` |
+| `overlayClass` | 自定义遮罩层的 class | _string_ | `-` |
+| `overlayStyle` | 自定义遮罩层的 style | _string_ | `-` |
 | `lockScroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
 | `closeOnClickOverlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
 | `onOpen` | 动作面板开启回调 | _() => void_ | `-` |
@@ -436,7 +436,7 @@ export default {
 | --- | --- | --- | --- | 
 | `name` | 选项名称 | _string_ | `-` |
 | `color` | 选项文字颜色 | _string_ | `-` |  
-| `icon` | icon图标，支持网络图片地址 | _string_ | `-` |
+| `icon` | icon 图标，支持网络图片地址 | _string_ | `-` |
 | `iconSize` | 图标尺寸 | _string_ | `-` |
 | `className` | 选项附加类名 | _string_ | `-` |
 | `disabled` | 是否禁用选项 | _boolean_ | `false` |

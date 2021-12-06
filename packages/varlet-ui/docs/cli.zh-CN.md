@@ -22,7 +22,7 @@
 ```shell
 # 安装命令行工具
 yarn global add @varlet/cli
-# 使用gen命令生成项目
+# 使用 gen 命令生成项目
 varlet-cli gen 项目名
 cd 项目名
 yarn
@@ -115,7 +115,7 @@ module.exports = {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `style` | highlight的css地址 | _string_ | `-` |
+| `style` | highlight 的 css 地址 | _string_ | `-` |
 
 #### SiteAnalysis
 
@@ -154,7 +154,7 @@ module.exports = {
           'zh-CN': '基本介绍',
         },
         doc: 'home',
-        // 索引项目根目录下的md文档
+        // 索引项目根目录下的 md 文档
         type: 3,
       },
       {
@@ -168,7 +168,7 @@ module.exports = {
           'zh-CN': 'Button 按钮',
         },
         doc: 'button',
-        // 索引组件根目录下的md文档
+        // 索引组件根目录下的 md 文档
         type: 2,
       },
     ],
@@ -397,5 +397,5 @@ src/*/__tests__/**
 
 #### 发布前注意
 
-- 1.npm和yarn的仓库源必须指向npm官方镜像
-- 2.npm和yarn都必须执行login命令进行用户登录
+- 1.npm 和 yarn 的仓库源必须指向 npm 官方镜像
+- 2.npm 和 yarn 都必须执行 login 命令进行用户登录
