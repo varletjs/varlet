@@ -5,7 +5,7 @@ import { copy, pathExistsSync, readFileSync, writeFileSync, removeSync } from 'f
 import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant'
 
 function removeFiles(dest: string) {
-  const files = ['es', 'umd', 'highlight', 'types/index.d.ts', '.varlet', 'node_modules']
+  const files = ['es', 'lib', 'umd', 'highlight', 'types/index.d.ts', '.varlet', 'node_modules']
 
   files.forEach((filename) => removeSync(resolve(dest, filename)))
 }
