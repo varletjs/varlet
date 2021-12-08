@@ -7,6 +7,6 @@ about: "If something isn't working as expected 🤔."
 
 ## Version & Environment
 
-## Expection
+## Expectation
 
 ## Actual results (or Errors)
