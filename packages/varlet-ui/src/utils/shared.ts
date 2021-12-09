@@ -181,7 +181,7 @@ export function parseFormat(format: string, time: Time): string {
   return format
 }
 
-export const dt = (value: unknown, defaultText: string) => (value == null ? defaultText : value)
+export const dt = (value: unknown, defaultText: string | undefined) => (value == null ? defaultText : value)
 
 export const inBrowser = () => typeof window !== 'undefined'
 
