@@ -1,23 +1,23 @@
 # @varlet/cli
 
-开箱即用的`Vue3组件库`快速成型工具，提供了一系列命令和工具去解决组件库开发上的问题
+开箱即用的 `Vue3组件库` 快速成型工具，提供了一系列命令和工具去解决组件库开发上的问题
 
 ### 特性
 
 - 1.开箱即用的组件库开发环境
-- 2.开箱即用的组件库编译工具，支持导出`esm`和`umd`两种模块代码
+- 2.开箱即用的组件库编译工具，支持导出 `esm` 和 `umd` 两种模块代码
 - 3.基于配置文件的组件库文档站点,支持百度统计和主题定制
-- 4.支持`单文件组件(sfc)`和`tsx,jsx`两种风格的组件库编写风格
+- 4.支持`单文件组件(sfc)`和 `tsx,jsx` 两种风格的组件库编写风格
 - 5.开箱即用的代码检查工具
 - 6.开箱即用的单元测试工具
 - 7.开箱即用的代码发布工具，发布到 npm 和 github, 并自动生成更新日志
-- 8.支持`Typescript`
-- 9.支持`暗黑模式`
+- 8.支持 `Typescript`
+- 9.支持 `暗黑模式`
 
 ### 快速开始
 
-`@varlet/cli`内置了`单文件组件(sfc)`和`tsx, jsx`两种风格的组件库项目模板，可以通过`gen`命令直接生成。
-帮助用户直接进入组件本身的开发，这里推荐使用`yarn`作为包管理工具，首先确保安装了`yarn`并且添加到系统环境变量中去，这里不展开介绍`yarn`的安装和配置方法。
+`@varlet/cli` 内置了`单文件组件(sfc)`和 `tsx, jsx` 两种风格的组件库项目模板，可以通过 `gen` 命令直接生成。
+帮助用户直接进入组件本身的开发，这里推荐使用 `yarn` 作为包管理工具，首先确保安装了 `yarn` 并且添加到系统环境变量中去，这里不展开介绍 `yarn` 的安装和配置方法。
 
 ```shell
 # 安装命令行工具
@@ -35,7 +35,7 @@ yarn dev
 
 ### 配置文件
 
-项目根目录下的`varlet.config.js`用来管理整个组件库项目的具体细节
+项目根目录下的 `varlet.config.js` 用来管理整个组件库项目的具体细节
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
@@ -57,19 +57,19 @@ yarn dev
 
 #### 模块适配对象
 
-一些外部依赖可能需要进行模块语法的适配，以达到可以正确编译到`commonjs`和`esmodule`的目的，例如`dayjs`的`esmodule`写法是
+一些外部依赖可能需要进行模块语法的适配，以达到可以正确编译到 `commonjs` 和 `esmodule` 的目的，例如 `dayjs` 的 `esmodule` 写法是
 
 ```js
 import dayjs from 'dayjs/esm'
 ```
 
-而为了构建`commonjs`时的写法是
+而为了构建 `commonjs` 时的写法是
 
 ```js
 import * as dayjs from 'dayjs'
 ```
 
-在项目中我们拥抱`esmodule`模块使用第一种写法，并做如下配置进行适配
+在项目中我们拥抱 `esmodule` 模块使用第一种写法，并做如下配置进行适配
 
 ```js
 // varlet.config.js
@@ -82,7 +82,7 @@ module.exports = {
 
 #### SiteThemes
 
-主题变量相关，由于默认的主题变量可能时常修改，以`varlet`官方文档的主题为准
+主题变量相关，由于默认的主题变量可能时常修改，以 `varlet` 官方文档的主题为准
 
 | 参数 |
 | ----- |
@@ -246,7 +246,7 @@ varlet-cli gen <projectName>
 
 ### babel
 
-对`babel`进行配置，首先在`package.json`中指定目标浏览器
+对 `babel` 进行配置，首先在 `package.json` 中指定目标浏览器
 
 ```json
 {
@@ -257,7 +257,7 @@ varlet-cli gen <projectName>
 }
 ```
 
-创建`babel.config,js`
+创建 `babel.config,js`
 
 ```js
 // babel.config.js
@@ -277,7 +277,7 @@ module.exports = {
 
 #### git-hook
 
-`husky`，`lint-staged`配合`eslint`，`stylelint`，`commitlint`做commit前的检查，`package.json`配置如下
+`husky`，`lint-staged` 配合 `eslint`，`stylelint`，`commitlint` 做commit前的检查，`package.json` 配置如下
 
 ```json
 {
@@ -325,7 +325,7 @@ module.exports = {
 }
 ```
 
-创建`commitlint.config.js`
+创建 `commitlint.config.js`
 
 ```js
 // commitlint.config.js
@@ -334,7 +334,7 @@ module.exports = {
 }
 ```
 
-创建`.prettierignore`
+创建 `.prettierignore`
 
 ```text
 // .prettierignore
@@ -349,7 +349,7 @@ src/*/__tests__/**
 
 ### typescript
 
-创建`tsconfig.json`
+创建 `tsconfig.json`
 
 ```json
 {
@@ -369,7 +369,7 @@ src/*/__tests__/**
 
 ### 发布代码
 
-使用`release-it`和`conventional-changelog`进行代码发布和更新日志的生成，`package.json`配置如下
+使用 `release-it` 和 `conventional-changelog` 进行代码发布和更新日志的生成，`package.json` 配置如下
 
 ```json
 {
