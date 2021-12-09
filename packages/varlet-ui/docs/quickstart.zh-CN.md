@@ -7,7 +7,7 @@
 ### 安装
 
 ### CDN
-`varlet.js`包含组件库的所有样式和逻辑, 引入即可。
+`varlet.js` 包含组件库的所有样式和逻辑, 引入即可。
 
 ```html
 <div id="app"></div>

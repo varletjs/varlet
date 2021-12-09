@@ -4,7 +4,7 @@
 首先感谢您有兴趣加入我们的开源项目，以下介绍一些注意事项。
 
 ### 快速开始
-项目基于yarn的`workspace`特性和`lerna`作为 monorepo 的基本架构。
+项目基于yarn的 `workspace` 特性和 `lerna` 作为 monorepo 的基本架构。
 首先 fork 仓库，基于 dev 分支进行开发，在项目根目录下。
 node 版本 16+。
 
