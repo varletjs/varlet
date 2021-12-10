@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.11](https://github.com/haoziqaq/varlet/compare/v1.23.10...v1.23.11) (2021-12-10)
+
+
+### Bug Fixes
+
+* **card:** fix image css problem in card  ([#224](https://github.com/haoziqaq/varlet/issues/224)) ([498cb3c](https://github.com/haoziqaq/varlet/commit/498cb3c41f70ca265ab407cb9d4ed4100abf6c9f))
+* **fix the offset problem when the divider is vertical:** remove transformY,use align-items: center ([5b10f08](https://github.com/haoziqaq/varlet/commit/5b10f08ef6e2ebdbae4c3e199b23e68a319181e2))
+* fix types ([2d95d4c](https://github.com/haoziqaq/varlet/commit/2d95d4c53a8e106ef38d23b372e7f5583d7ef0d2))
+* remove unused code ([b37f258](https://github.com/haoziqaq/varlet/commit/b37f25809adfc0a7e3e8a3ecf3085715c531aa7f))
+
+
+
+
+
 ## [1.23.10](https://github.com/haoziqaq/varlet/compare/v1.23.9...v1.23.10) (2021-12-01)
 
 
