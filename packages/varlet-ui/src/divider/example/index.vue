@@ -53,7 +53,6 @@ export default {
   setup() {
     watchLang(use)
     watchDarkMode(dark)
-
     return {
       pack,
     }
@@ -65,9 +64,8 @@ export default {
 .vertical-divider-wrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
   color: #333;
-  height: 36px;
-  line-height: 36px;
 
   span {
     font-size: 14px;
