@@ -105,14 +105,14 @@ createApp().use(Card)
 | 变量名                         | 默认值               |
 | ------------------------------ | -------------------- |
 | `--card-background`            | `#fff`         |
-| `--card-padding`               | `5px 0 15px 0`         |
+| `--card-padding`               | `0px 0 15px 0`         |
 | `--card-border-radius`         | `4px`                |
 | `--card-image-width`           | `100%`               |
 | `--card-image-height`          | `200px`              |
 | `--card-title-color`           | `#333`               |
 | `--card-title-font-size`       | `20px`               |
 | `--card-title-padding`         | `0 12px`             |
-| `--card-title-margin`          | `10px 0 0 0`         |
+| `--card-title-margin`          | `15px 0 0 0`         |
 | `--card-subtitle-color`        | `rgba(0, 0, 0, 0.6)` |
 | `--card-subtitle-font-size`    | `14px`               |
 | `--card-subtitle-padding`      | `0 13px`             |
