@@ -1,4 +1,5 @@
 import { buildCli, buildIcons, runTask } from './build.mjs'
-;(async () => {
+
+(async () => {
   await Promise.all([runTask('cli', buildCli), runTask('icons', buildIcons)])
 })()
