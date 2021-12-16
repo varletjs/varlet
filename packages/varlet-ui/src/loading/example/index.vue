@@ -30,26 +30,46 @@
         <var-loading type="disappear" size="small" />
       </div>
     </div>
+
+    <div>
+      <app-type>{{ pack.wrap }}</app-type>
+      <var-button @click="loading = !loading" style="margin-bottom: 8px">
+        {{ loading ? pack.close : pack.open }}
+      </var-button>
+      <var-loading desc="loading...." type="circle" :loading="loading">
+        <var-card :title="pack.cardTitle" :description="pack.cardDesc" />
+      </var-loading>
+    </div>
   </div>
 </template>
 
 <script>
+import { ref } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarLoading from '..'
+import VarButton from '../../button'
+import VarCard from '../../card'
 import { pack, use } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
+import { watchDarkMode, watchLang } from '@varlet/cli/site/utils'
+import dark from '../../themes/dark/index'
 
 export default {
   name: 'LoadingExample',
   components: {
     VarLoading,
+    VarButton,
+    VarCard,
     AppType,
   },
   setup() {
+    const loading = ref(false)
+
     watchLang(use)
+    watchDarkMode(dark)
 
     return {
       pack,
+      loading,
     }
   },
 }
@@ -70,6 +90,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
     .var-loading {
       padding: 8px 0;
     }

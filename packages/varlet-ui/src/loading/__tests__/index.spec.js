@@ -74,3 +74,28 @@ test('test disappear props', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 })
+
+test('test slots', async () => {
+  const template = `
+    <var-loading desc="loading...." type="circle" :loading="loading">
+      <div>test</div>
+    </var-loading>
+  `
+  const wrapper = mount({
+    components: {
+      [VarLoading.name]: VarLoading,
+    },
+    data() {
+      return {
+        loading: false,
+      }
+    },
+    template,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setData({ loading: true })
+
+  expect(wrapper.html()).toMatchSnapshot()
+})

@@ -52,72 +52,92 @@ exports[`test button example 1`] = `
   <div class=\\"var-button__content\\">禁用状态</div>
 </button>
 <div class=\\"app-type\\">加载状态</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
-  <div class=\\"var--box var-loading var-button__loading\\">
-    <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 24px; height: 24px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+  <div class=\\"var-loading var-button__loading\\">
     <!--v-if-->
-    <!--v-if-->
-    <!--v-if-->
-    <!--v-if-->
+    <div class=\\"var--box var-loading__body\\">
+      <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 24px; height: 24px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
   </div>
   <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
 </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--info var-elevation--2\\">
-  <div class=\\"var--box var-loading var-button__loading\\">
+  <div class=\\"var-loading var-button__loading\\">
     <!--v-if-->
-    <!--v-if-->
-    <!--v-if-->
-    <div class=\\"var-loading__rect var-loading__rect-normal\\">
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+    <div class=\\"var--box var-loading__body\\">
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <div class=\\"var-loading__rect var-loading__rect-normal\\">
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+      </div>
+      <!--v-if-->
+      <!--v-if-->
     </div>
-    <!--v-if-->
   </div>
   <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
 </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
-  <div class=\\"var--box var-loading var-button__loading\\">
+  <div class=\\"var-loading var-button__loading\\">
     <!--v-if-->
-    <!--v-if-->
-    <!--v-if-->
-    <!--v-if-->
-    <div class=\\"var-loading__disappear var-loading__disappear-normal\\">
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
+    <div class=\\"var--box var-loading__body\\">
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <div class=\\"var-loading__disappear var-loading__disappear-normal\\">
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
+      </div>
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
 </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--2\\">
-  <div class=\\"var--box var-loading var-button__loading\\">
+  <div class=\\"var-loading var-button__loading\\">
     <!--v-if-->
-    <!--v-if-->
-    <div class=\\"var-loading__cube var-loading__cube-normal\\">
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
+    <div class=\\"var--box var-loading__body\\">
+      <!--v-if-->
+      <!--v-if-->
+      <div class=\\"var-loading__cube var-loading__cube-normal\\">
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
     </div>
-    <!--v-if-->
-    <!--v-if-->
   </div>
   <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
 </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--warning var-elevation--2\\">
-  <div class=\\"var--box var-loading var-button__loading\\">
+  <div class=\\"var-loading var-button__loading\\">
     <!--v-if-->
-    <div class=\\"var-loading__wave var-loading__wave-normal\\">
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
-      <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
+    <div class=\\"var--box var-loading__body\\">
+      <!--v-if-->
+      <div class=\\"var-loading__wave var-loading__wave-normal\\">
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
     </div>
-    <!--v-if-->
-    <!--v-if-->
-    <!--v-if-->
   </div>
   <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
 </button>
@@ -172,12 +192,16 @@ exports[`test button example 1`] = `
 
 exports[`test button loading 1`] = `
 "<button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
-  <div class=\\"var--box var-loading var-button__loading\\">
-    <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 24px; height: 24px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+  <div class=\\"var-loading var-button__loading\\">
     <!--v-if-->
-    <!--v-if-->
-    <!--v-if-->
-    <!--v-if-->
+    <div class=\\"var--box var-loading__body\\">
+      <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 24px; height: 24px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
   </div>
   <div class=\\"var-button__content var-button--hidden\\"></div>
 </button>"

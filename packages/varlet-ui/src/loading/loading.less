@@ -1,5 +1,6 @@
 @import '../styles/var';
 
+@loading-opacity: 0.38;
 @loading-normal-width: 50px;
 @loading-normal-height: @font-size-md + 2;
 
@@ -12,10 +13,54 @@
 @loading-mini-width: 22px;
 @loading-mini-height: @font-size-xs + 2;
 
+:root {
+  --loading-opacity: @loading-opacity;
+}
+
 .var-loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+
+  &__content {
+    opacity: var(--loading-opacity);
+    user-select: none;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  &__inside {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  &__description {
+    color: currentColor;
+    margin-top: 8px;
+
+    &--large {
+      font-size: @font-size-lg;
+    }
+
+    &--normal {
+      font-size: @font-size-md;
+    }
+
+    &--small {
+      font-size: @font-size-sm;
+    }
+
+    &--mini {
+      font-size: @font-size-xs;
+    }
+  }
 
   &__circle {
     display: flex;

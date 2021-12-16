@@ -3,11 +3,14 @@ import Countdown from '..'
 import VarCountdown from '../Countdown'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { delay, mockConsole } from '../../utils/jest'
 
 test('test countdown example', () => {
+  const { mockRestore } = mockConsole('log')
   const wrapper = mount(example)
   expect(wrapper.html()).toMatchSnapshot()
+
+  mockRestore()
 })
 
 test('test countdown plugin', () => {
