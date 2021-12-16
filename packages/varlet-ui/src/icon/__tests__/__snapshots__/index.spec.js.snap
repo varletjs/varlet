@@ -311,9 +311,6 @@ exports[`test icon example 1`] = `
   <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"weather-night\\"><i class=\\"var-icon var-icon--set var-icon-weather-night\\" style=\\"transition: transform 0ms;\\"></i>
     <div class=\\"example__icon-name\\">weather-night</div>
   </div>
-  <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"loading\\"><i class=\\"var-icon var-icon--set var-icon-loading\\" style=\\"transition: transform 0ms;\\"></i>
-    <div class=\\"example__icon-name\\">loading</div>
-  </div>
 </div>"
 `;
 
