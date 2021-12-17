@@ -23,8 +23,13 @@
   position: relative;
 
   &__content {
-    opacity: var(--loading-opacity);
-    user-select: none;
+    transition: opacity 0.3s;
+    opacity: 1;
+
+    &--active {
+      opacity: var(--loading-opacity);
+      user-select: none;
+    }
   }
 
   &__body {

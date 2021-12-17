@@ -311,7 +311,7 @@ exports[`test loading example 1`] = `
       <div class=\\"var-button__content\\">打开</div>
     </button>
     <div class=\\"var-loading\\">
-      <div class=\\"\\">
+      <div class=\\"var-loading__content\\">
         <div class=\\"var-card var-elevation--2\\">
           <!--v-if-->
           <div class=\\"var-card__title\\">介绍</div>
@@ -351,7 +351,7 @@ exports[`test rect props 1`] = `
 
 exports[`test slots 1`] = `
 "<div class=\\"var-loading\\">
-  <div class=\\"\\">
+  <div class=\\"var-loading__content\\">
     <div>test</div>
   </div>
   <!--v-if-->
@@ -360,7 +360,7 @@ exports[`test slots 1`] = `
 
 exports[`test slots 2`] = `
 "<div class=\\"var-loading\\">
-  <div class=\\"var-loading__content\\">
+  <div class=\\"var-loading__content var-loading__content--active\\">
     <div>test</div>
   </div>
   <div class=\\"var--box var-loading__body var-loading__inside\\">

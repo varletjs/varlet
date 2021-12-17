@@ -1,6 +1,6 @@
 <template>
   <div class="var-loading">
-    <div :class="[loading ? 'var-loading__content' : null]" v-if="$slots.default">
+    <div class="var-loading__content" :class="[loading ? 'var-loading__content--active' : null]" v-if="$slots.default">
       <slot />
     </div>
     <div class="var--box var-loading__body" :class="[$slots.default ? 'var-loading__inside' : null]" v-if="isShow">
