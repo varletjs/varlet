@@ -36,7 +36,7 @@
       <var-button @click="loading = !loading" style="margin-bottom: 8px">
         {{ loading ? pack.close : pack.open }}
       </var-button>
-      <var-loading desc="loading...." type="circle" :loading="loading">
+      <var-loading description="loading...." type="circle" :loading="loading">
         <var-card :title="pack.cardTitle" :description="pack.cardDesc" />
       </var-loading>
     </div>

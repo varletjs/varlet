@@ -33,7 +33,7 @@ export const props = {
     type: String,
     default: 'currentColor',
   },
-  desc: {
+  description: {
     type: String,
   },
   loading: {

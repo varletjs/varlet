@@ -44,7 +44,7 @@ createApp().use(Loading)
 <var-button @click="loading = !loading" style="margin-bottom: 8px">
   {{ loading ? 'Open' : 'Close' }}
 </var-button>
-<var-loading desc="loading...." type="circle" :loading="loading">
+<var-loading description="loading...." type="circle" :loading="loading">
   <var-card title="Intro" description="Varlet is a Material design mobile component library developed based on Vue3, developed and maintained by partners in the community." />
 </var-loading>
 ```
@@ -72,7 +72,7 @@ export default {
 | `color`  | Loading color                                           | _string_ | `currentColor` |
 | `type`   | Can be set to `circle` `wave` `cube` `rect` `disappear` | _string_ | `circle`       |
 | `size`   | Can be set to `large` `normal` `small` `mini`           | _string_ | `normal`       |
-| `desc`   | Description of the loading                              | _string_ | `-`            |
+| `description`   | Description of the loading                       | _string_ | `-`            |
 | `loading`| Specify whether loading is active                       | _boolean_ | `false`      |
 | `radius` | Set size when the `type` is `circle`                    | _string \| number_  | `-` |
 
@@ -81,7 +81,7 @@ export default {
 | Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Content wrapped in loading | `-` |
-| `desc`    | Description of the loading | `-` |
+| `description`    | Description of the loading | `-` |
 
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)

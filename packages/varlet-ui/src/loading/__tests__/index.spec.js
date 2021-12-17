@@ -77,7 +77,7 @@ test('test disappear props', async () => {
 
 test('test slots', async () => {
   const template = `
-    <var-loading desc="loading...." type="circle" :loading="loading">
+    <var-loading description="loading...." type="circle" :loading="loading">
       <div>test</div>
     </var-loading>
   `

@@ -33,9 +33,9 @@
         class="var-loading__description"
         :class="`var-loading__description--${size}`"
         :style="{ color }"
-        v-if="$slots.desc || desc"
+        v-if="$slots.description || description"
       >
-        <slot name="desc">{{ desc }}</slot>
+        <slot name="description">{{ description }}</slot>
       </div>
     </div>
   </div>

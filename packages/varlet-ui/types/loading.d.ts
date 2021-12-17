@@ -5,7 +5,7 @@ export interface LoadingProps {
   radius?: string | number
   size?: 'normal' | 'mini' | 'small' | 'large'
   color?: string
-  desc?: string
+  description?: string
   show?: boolean
 }
 
