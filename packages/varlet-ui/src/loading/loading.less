@@ -1,6 +1,7 @@
 @import '../styles/var';
 
 @loading-opacity: 0.38;
+@loading-desc-margin: 8px 0 0;
 @loading-normal-width: 50px;
 @loading-normal-height: @font-size-md + 2;
 
@@ -15,6 +16,7 @@
 
 :root {
   --loading-opacity: @loading-opacity;
+  --loading-desc-margin: @loading-desc-margin;
 }
 
 .var-loading {
@@ -43,7 +45,7 @@
 
   &__description {
     color: currentColor;
-    margin-top: 8px;
+    margin: var(--loading-desc-margin);
 
     &--large {
       font-size: @font-size-lg;

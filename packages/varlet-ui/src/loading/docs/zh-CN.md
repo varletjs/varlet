@@ -89,3 +89,4 @@ export default {
 | 变量名 | 默认值 |
 | --- | --- |
 | `--loading-opacity` | `0.38` |
+| `--loading-desc-margin` | `8px 0 0` |

@@ -89,4 +89,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--loading-opacity` | `0.38` |
-
+| `--loading-desc-margin` | `8px 0 0` |
