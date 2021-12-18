@@ -1,11 +1,11 @@
-import type { PropType } from 'vue'
+import type { PropType, h } from 'vue'
 
 export interface Option {
   key: string | number
   label: string | number
   disabled?: boolean
   indent?: string | number
-  icon?: () => void | string
+  icon?: typeof h | string
 }
 
 export const props = {
