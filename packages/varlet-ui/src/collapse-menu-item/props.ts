@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import { ExtractPropTypes, PropType } from 'vue'
 
 export const props = {
   key: {
@@ -6,7 +6,7 @@ export const props = {
     default: null,
   },
   label: {
-    type: [String, Number],
+    type: [String, Number, Function],
     default: null,
   },
   disabled: {
@@ -17,3 +17,6 @@ export const props = {
     type: [String, Object, Function],
   },
 }
+//  as const
+
+// export type _PropType = ExtractPropTypes<typeof props>

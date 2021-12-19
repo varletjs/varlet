@@ -101,6 +101,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'collapse-menu-item 测试',
+          'en-US': 'collapse-menu-item test',
+        },
+        doc: 'collapse-menu-item',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Button 按钮',
           'en-US': 'Button',
         },
