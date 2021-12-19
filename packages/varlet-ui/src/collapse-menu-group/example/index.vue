@@ -1,22 +1,54 @@
 <template>
-  <app-type></app-type>
-  <var-collapse-menu-group />
+  <div class="collapse-demo">
+    <div>
+      <app-type>{{ pack.basicUsage }}</app-type>
+      <var-collapse-menu-group :title="pack.title">
+        <var-collapse-menu-item :label="pack.text" :key="1" />
+        <var-collapse-menu-item :label="pack.text" :key="2" />
+      </var-collapse-menu-group>
+    </div>
+
+    <div>
+      <app-type>{{ pack.expanded }}</app-type>
+      <var-collapse-menu-group :title="pack.title" :status="'open'">
+        <var-collapse-menu-item :label="pack.text" :key="1" />
+        <var-collapse-menu-item :label="pack.text" :key="2" />
+      </var-collapse-menu-group>
+    </div>
+
+    <div>
+      <app-type>{{ pack.disabled }}</app-type>
+      <var-button @click="disabled = !disabled" style="margin-bottom: 8px">
+        {{ disabled ? pack.enable : pack.disabled }}
+      </var-button>
+      <var-collapse-menu-group :title="pack.title" :disabled="disabled">
+        <var-collapse-menu-item :label="pack.text" :key="1" />
+        <var-collapse-menu-item :label="pack.text" :key="2" />
+      </var-collapse-menu-group>
+    </div>
+  </div>
 </template>
 
 <script>
-import CollapseMenuGroup from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { watchLang } from '@varlet/cli/site/utils'
-import { use, pack } from './locale'
+import VarCollapseMenuGroup from '..'
+import VarCollapseMenuItem from '../../collapse-menu-item'
+import VarButton from '../../button'
+import dark from '../../themes/dark'
+import { pack, use } from './locale'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
-  name: 'CollapseMenuGroupExample',
+  name: 'CollapseMenuExample',
   components: {
-    [CollapseMenuGroup.name]: CollapseMenuGroup,
+    VarCollapseMenuGroup,
+    VarCollapseMenuItem,
+    VarButton,
     AppType,
   },
   setup() {
     watchLang(use)
+    watchDarkMode(dark)
 
     return {
       pack,
