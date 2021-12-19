@@ -1,0 +1,49 @@
+@collapsemenuitem-font-size: var(--font-size-md);
+@collapsemenuitem-desc-font-size: var(--font-size-sm);
+@collapsemenuitem-desc-color: rgba(0, 0, 0, 0.6);
+@collapsemenuitem-padding: 10px 12px;
+@collapsemenuitem-min-height: 40px;
+@collapsemenuitem-border-color: #bcc2cb;
+@collapsemenuitem-border-left: 12px;
+@collapsemenuitem-border-right: 12px;
+@collapsemenuitem-icon-right: 8px;
+@collapsemenuitem-extra-left: 8px;
+@collapsemenuitem-disabled-color: var(--color-disabled);
+@collapsemenuitem-disabled-text-color: var(--color-text-disabled);
+
+:root {
+  --collapsemenuitem-font-size: @collapsemenuitem-font-size;
+  --collapsemenuitem-desc-font-size: @collapsemenuitem-desc-font-size;
+  --collapsemenuitem-desc-color: @collapsemenuitem-desc-color;
+  --collapsemenuitem-padding: @collapsemenuitem-padding;
+  --collapsemenuitem-min-height: @collapsemenuitem-min-height;
+  --collapsemenuitem-border-color: @collapsemenuitem-border-color;
+  --collapsemenuitem-border-left: @collapsemenuitem-border-left;
+  --collapsemenuitem-border-right: @collapsemenuitem-border-right;
+  --collapsemenuitem-icon-right: @collapsemenuitem-icon-right;
+  --collapsemenuitem-extra-left: @collapsemenuitem-extra-left;
+}
+.var-collapse-menu-item {
+  align-items: center;
+  display: flex;
+  min-height: var(--collapsemenuitem-min-height);
+  outline: none;
+  padding: var(--collapsemenuitem-padding);
+  position: relative;
+  box-sizing: border-box;
+  font-size: var(--collapsemenuitem-font-size);
+  &__icon {
+    margin-right: var(--collapsemenuitem-icon-right);
+    flex: 0;
+  }
+  &__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__disabled {
+    background-color: var(--collapsemenuitem-disabled-color);
+    color: var(--collapsemenuitem-disabled-text-color);
+    box-shadow: none !important;
+  }
+}

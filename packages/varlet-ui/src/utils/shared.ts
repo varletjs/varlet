@@ -48,6 +48,8 @@ export const isHTMLSupportVideo = (val: string | undefined | null) => {
   return val.startsWith('data:video') || /\.(mp4|webm|ogg)$/.test(val)
 }
 
+export const isFunction = (val: unknown): val is typeof Function => typeof val === 'function'
+
 export const isString = (val: unknown): val is string => typeof val === 'string'
 
 export const isBool = (val: unknown): val is boolean => typeof val === 'boolean'
