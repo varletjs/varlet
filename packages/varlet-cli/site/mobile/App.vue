@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="position: relative">
     <header>
       <var-site-app-bar
         class="app-bar"
@@ -210,29 +210,15 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased;
 }
 
-html {
-  height: 100%;
-}
-
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100%;
   font-family: 'Roboto', sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background: var(--site-config-color-bar);
   color: var(--site-config-color-text);
   transition: background-color .25s, color .25s;
-}
-
-#app {
-  height: 100%;
-  > div {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
 }
 
 ::-webkit-scrollbar {
@@ -258,7 +244,6 @@ header {
   position: fixed;
   z-index: 99;
   width: 100%;
-  flex: 0;
   font-weight: bold;
 }
 
@@ -276,7 +261,6 @@ header {
 
 .router-view__block {
   padding: 54px 12px 15px;
-  flex: 1;
 }
 
 * {
