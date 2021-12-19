@@ -12,6 +12,9 @@ export const toNumber = (val: number | string | boolean | undefined | null): num
   return val
 }
 
+export const isPlainObject = (val: unknown): val is Record<string, any> =>
+  Object.prototype.toString.call(val) === '[object Object]'
+
 export function kebabCase(str: string): string {
   const reg = /([^-])([A-Z])/g
 

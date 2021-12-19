@@ -61,15 +61,14 @@
 </template>
 
 <script lang="ts">
-// @ts-ignore
 import config from '@config'
-import { ref, computed } from 'vue'
+import { ref, computed, defineComponent } from 'vue'
 import { get } from 'lodash-es'
 import { getBrowserThemes, getPCLocationInfo, removeEmpty, setThemes, watchThemes } from '../../utils'
 import { useRouter } from 'vue-router'
 import type { Ref, ComputedRef } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'AppHeader',
   props: {
     language: {
@@ -77,7 +76,6 @@ export default {
     },
   },
   setup() {
-    // config
     const title: Ref<string> = ref(get(config, 'title'))
     const logo: Ref<string> = ref(get(config, 'logo'))
     const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
@@ -89,7 +87,7 @@ export default {
     const router = useRouter()
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
 
-    const handleLanguageChange = (language) => {
+    const handleLanguageChange = (language: string) => {
       const { menuName } = getPCLocationInfo()
       router.replace(`/${language}/${menuName}`)
       isOpenMenu.value = false
@@ -106,7 +104,7 @@ export default {
     const toggleTheme = () => {
       setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
       window.postMessage(getThemesMessage(), '*')
-      ;(document.getElementById('mobile') as HTMLIFrameElement).contentWindow.postMessage(getThemesMessage(), '*')
+      ;(document.getElementById('mobile') as HTMLIFrameElement).contentWindow!.postMessage(getThemesMessage(), '*')
     }
 
     watchThemes((themes, from) => {
@@ -129,7 +127,7 @@ export default {
       toggleTheme,
     }
   },
-}
+})
 </script>
 
 <style scoped lang="less">

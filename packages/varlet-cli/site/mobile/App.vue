@@ -86,7 +86,6 @@
 </template>
 
 <script lang="ts">
-// @ts-ignore
 import config from '@config'
 import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
@@ -136,7 +135,7 @@ export default defineComponent({
 
     const toGithub = () => {
       if (inIframe() && !isPhone()) {
-        window.top.open(github.value)
+        window.top!.open(github.value)
       } else {
         window.location.href = github.value
       }

@@ -1,5 +1,6 @@
 import { isNumber, isString, toNumber, kebabCase } from './shared'
 import type { StyleVars } from '../../utils'
+import { requestAnimationFrame } from '@varlet/ui/src/utils/elements'
 
 export function getLeft(element: HTMLElement): number {
   const { left } = element.getBoundingClientRect()
@@ -80,4 +81,12 @@ export function formatStyleVars(styleVars: StyleVars | null) {
 
     return styles
   }, {} as StyleVars)
+}
+
+export function doubleRaf() {
+  return new Promise((resolve) => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(resolve)
+    })
+  })
 }

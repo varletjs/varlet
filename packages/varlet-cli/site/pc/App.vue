@@ -29,11 +29,10 @@
 </template>
 
 <script lang="ts">
-// @ts-ignore
 import config from '@config'
-import AppMobile from './components/AppMobile'
-import AppHeader from './components/AppHeader'
-import AppSidebar from './components/AppSidebar'
+import AppMobile from './components/AppMobile.vue'
+import AppHeader from './components/AppHeader.vue'
+import AppSidebar from './components/AppSidebar.vue'
 import { defineComponent, nextTick, onMounted, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { get } from 'lodash-es'
@@ -52,7 +51,6 @@ export default defineComponent({
     AppSidebar
   },
   setup() {
-    // config
     const defaultLanguage = get(config, 'defaultLanguage')
     const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))
     const useMobile = ref(get(config, 'useMobile'))
@@ -79,7 +77,7 @@ export default defineComponent({
 
       nextTick(() => {
         const children = document
-          .querySelector('.varlet-site-sidebar')
+          .querySelector('.varlet-site-sidebar')!
           .getElementsByClassName('var-site-cell')
         const index = menu.value.findIndex((item) => item.doc === menuName)
 
@@ -93,7 +91,7 @@ export default defineComponent({
     }
 
     const handleSidebarChange = (menu: Menu) => {
-      doc.value.scrollTop = 0
+      doc.value!.scrollTop = 0
       componentName.value = getComponentNameByMenuName(menu.doc)
       menuName.value = menu.doc
     }
@@ -287,17 +285,17 @@ iframe {
       }
 
       pre {
-        margin: 20px 0 0;
+        margin: 10px 0 0;
       }
 
       code {
         position: relative;
         display: block;
-        padding: 16px;
+        padding: 10px 16px;
         overflow-x: auto;
         font-size: 13px;
         font-family: Consolas, Monaco, monospace;
-        line-height: 26px;
+        line-height: 30px;
         white-space: pre-wrap;
         word-wrap: break-word;
         color: #fff;

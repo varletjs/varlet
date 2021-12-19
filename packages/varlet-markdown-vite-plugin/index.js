@@ -43,6 +43,11 @@ function extractComponents(source) {
   }
 }
 
+function injectCodeExample(source) {
+  const codeRE = /(<pre class="hljs">(.|\r|\n)*?<\/pre>)/g
+  return source.replace(codeRE, '<var-site-code-example>$1</var-site-code-example>')
+}
+
 function highlight(str, lang, style) {
   if (lang && hljs.getLanguage(lang)) {
     return (
@@ -68,6 +73,7 @@ function markdownToVue(source, options) {
   })
   let templateString = htmlWrapper(md.render(vueSource))
   templateString = templateString.replace(/process.env/g, '<span>process.env</span>')
+  templateString = injectCodeExample(templateString)
 
   return `
 <template><div class="varlet-site-doc">${templateString}</div></template>

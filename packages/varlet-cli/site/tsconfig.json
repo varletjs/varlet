@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "outDir": "./lib",
     "target": "es5",
     "module": "commonjs",
     "sourceMap": false,
@@ -11,6 +10,5 @@
     "esModuleInterop": true,
     "jsx": "preserve",
     "lib": ["esnext", "dom"]
-  },
-  "include": ["*"]
+  }
 }

@@ -31,6 +31,14 @@ module.exports = {
       github: 'https://github.com/haoziqaq/varlet',
       darkMode: true,
     },
+    clipboard: {
+      'zh-CN': '代码已复制到剪切板',
+      'en-US': 'The code has been copied to the clipboard',
+    },
+    fold: {
+      defaultFold: false,
+      foldHeight: 59,
+    },
   },
   mobile: {
     redirect: '/home',
