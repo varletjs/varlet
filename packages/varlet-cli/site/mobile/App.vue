@@ -115,7 +115,7 @@ export default defineComponent({
     const darkMode: Ref<string> = ref(get(config, 'mobile.header.darkMode'))
     const currentThemes = ref(getBrowserThemes())
 
-    const changeLanguage = (lang) => {
+    const changeLanguage = (lang: string) => {
       language.value = lang
       showMenu.value = false
       window.location.href = `./mobile.html#${route.path}?language=${language.value}&replace=${route.query.replace}`
