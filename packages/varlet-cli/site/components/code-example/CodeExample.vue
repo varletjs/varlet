@@ -35,10 +35,11 @@ import Button from '../button'
 import Snackbar from '../snackbar'
 import Clipboard from 'clipboard'
 import config from '@config'
-import { defineComponent, nextTick, ref, Ref, onMounted } from 'vue'
+import { defineComponent, nextTick, ref, onMounted } from 'vue'
 import { doubleRaf } from '../utils/elements'
 import { get } from 'lodash-es'
 import { getPCLocationInfo } from '../../utils'
+import type { Ref } from 'vue'
 
 let clipId = 0
 
@@ -51,8 +52,8 @@ export default defineComponent({
   setup() {
     const code: Ref<HTMLElement | null> = ref(null)
     const cid: Ref<number> = ref(clipId++)
-    const fold: Ref<any> = ref(get(config, 'pc.fold'))
-    const clipboard: Ref<any> = ref(get(config, 'pc.clipboard', {}))
+    const fold: Ref = ref(get(config, 'pc.fold'))
+    const clipboard: Ref = ref(get(config, 'pc.clipboard', {}))
     const height: Ref<number> = ref(fold.value?.defaultFold ? fold.value?.foldHeight : -1)
     const opacity: Ref<number> = ref(fold.value?.defaultFold ? 0.76 : 1)
 

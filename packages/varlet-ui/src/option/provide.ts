@@ -3,8 +3,8 @@ import { useAtParentIndex, useParent } from '../utils/components'
 import { SELECT_BIND_OPTION_KEY, SELECT_COUNT_OPTION_KEY, SelectProvider } from '../select/provide'
 
 export interface OptionProvider {
-  label: ComputedRef<any>
-  value: ComputedRef<any>
+  label: ComputedRef
+  value: ComputedRef
   selected: ComputedRef<boolean>
   sync(checked: boolean): void
 }

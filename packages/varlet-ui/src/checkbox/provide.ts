@@ -8,7 +8,7 @@ import {
 } from '../checkbox-group/provide'
 
 export interface CheckboxProvider extends Validation {
-  checkedValue: ComputedRef<any>
+  checkedValue: ComputedRef
   checked: ComputedRef<boolean>
   sync(values: Array<any>): void
 }

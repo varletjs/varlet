@@ -52,8 +52,8 @@ export default defineComponent({
   setup(props) {
     const optionSelected: Ref<boolean> = ref(false)
     const selected: ComputedRef<boolean> = computed(() => optionSelected.value)
-    const label: ComputedRef<any> = computed(() => props.label)
-    const value: ComputedRef<any> = computed(() => props.value)
+    const label: ComputedRef = computed(() => props.label)
+    const value: ComputedRef = computed(() => props.value)
     const { select, bindSelect } = useSelect()
     const { wrapWidth, multiple, focusColor, onSelect } = select
 

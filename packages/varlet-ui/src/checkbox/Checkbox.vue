@@ -68,7 +68,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const value: Ref<any> = ref(false)
+    const value: Ref = ref(false)
     const checked: ComputedRef<boolean> = computed(() => value.value === props.checkedValue)
     const checkedValue: ComputedRef<boolean> = computed(() => props.checkedValue)
     const withAnimation: Ref<boolean> = ref(false)
