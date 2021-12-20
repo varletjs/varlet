@@ -4,7 +4,7 @@ import { defineComponent, ref, watch, nextTick } from 'vue'
 import { props } from './props'
 import type { Ref } from 'vue'
 
-import '../icon/icon'
+import '../icon/icon.less'
 import '../styles/common.less'
 import '../ripple/ripple.less'
 import './collapseMenuGroup.less'
