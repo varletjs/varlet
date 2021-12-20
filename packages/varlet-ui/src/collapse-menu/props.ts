@@ -14,7 +14,7 @@ export const props = {
     default: null,
   },
   'onUpdate:modelValue': {
-    type: Function,
+    type: Function as PropType<(value: string | number) => void>,
   },
   options: {
     type: Array as PropType<Array<Option>>,

@@ -315,6 +315,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'CollapseMenu 折叠菜单',
+          'en-US': 'CollapseMenu',
+        },
+        doc: 'collapse-menu',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '功能指令',
           'en-US': 'Functional Directives',
         },

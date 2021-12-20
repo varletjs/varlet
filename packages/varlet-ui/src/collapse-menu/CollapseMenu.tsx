@@ -1,10 +1,12 @@
 import { defineComponent } from 'vue'
-import { props, Option } from './props'
+import { props } from './props'
+import '../styles/common.less'
+import './collapseMenu.less'
 
 export default defineComponent({
   name: 'VarCollapseMenu',
   props,
-  setup(props) {
-    return () => <div></div>
+  setup(props, { slots }) {
+    return () => <div class={'var-collapse-menu'}>{slots.default && slots.default()}</div>
   },
 })
