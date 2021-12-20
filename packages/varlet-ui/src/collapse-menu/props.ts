@@ -9,11 +9,11 @@ export interface Option {
 }
 
 export const props = {
-  modelValue: {
+  selectedKeys: {
     type: [Array, String, Number] as PropType<null | string | number | Array<string | number>>,
     default: null,
   },
-  'onUpdate:modelValue': {
+  'onUpdate:selectedKeys': {
     type: Function as PropType<(value: string | number) => void>,
   },
   options: {
@@ -31,5 +31,9 @@ export const props = {
   expandedKeys: {
     type: Array,
     default: () => [],
+  },
+  activeColor: {
+    type: String,
+    default: '',
   },
 }

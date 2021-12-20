@@ -1,16 +1,25 @@
 import Icon from '../icon'
 import Ripple from '../ripple'
-import { defineComponent, h } from 'vue'
+import { computed, defineComponent, h, watch } from 'vue'
+import type { ComputedRef } from 'vue'
 import { isFunction, isPlainObject, isString } from '../utils/shared'
 import { props } from './props'
 import '../styles/common.less'
 import './index.less'
+import { useCollapseMenu } from './provide'
+import type { CollapseMenuItemProvider } from './provide'
 
 export default defineComponent({
   name: 'VarCollapseMenuItem',
   directives: { Ripple },
   props,
   setup(props, { slots }) {
+    const { bindCollapseMenu, collapseMenu } = useCollapseMenu()
+    const itemKey: ComputedRef<string | number> = computed(() => props.itemKey)
+    const collapseMenuItemProvider: CollapseMenuItemProvider = {
+      itemKey,
+    }
+
     const renderIcon = () => {
       if (slots.icon) {
         return slots.icon()
@@ -38,17 +47,28 @@ export default defineComponent({
       if (props.disabled) {
         return
       }
-      console.log('李航宇就靠你了')
+      collapseMenu?.updateItem(props.itemKey)
     }
+
+    bindCollapseMenu?.(collapseMenuItemProvider)
+
+    const calcColor = () => {
+      if (props.itemKey === collapseMenu?.selectedKeys.value) {
+        return collapseMenu.activeColor as string
+      }
+      return ''
+    }
+
     return () => {
       const prefix = 'var-collapse-menu-item'
-      const { disabled, key } = props
+      const { disabled, itemKey } = props
       return (
         <div
           onClick={handleClick}
           class={[prefix, { [prefix + '__disabled']: disabled }]}
+          style={{ color: calcColor() }}
           v-ripple={{ disabled }}
-          key={key}
+          key={itemKey}
         >
           <div class={prefix + '__indent'} style={{ paddingLeft: '20px' }}></div>{' '}
           {

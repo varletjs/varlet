@@ -8,8 +8,8 @@ export const props = {
     default: 'closed',
   },
   title: {
-    type: String,
-    default: false,
+    type: [String, Number],
+    default: '',
   },
   disabled: {
     type: Boolean,

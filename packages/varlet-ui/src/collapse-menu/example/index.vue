@@ -1,28 +1,45 @@
 <template>
   <app-type>基本使用</app-type>
-  <var-collapse-menu :options="options">
-    <var-collapse-menu-item :aonclick="handleClick">
-      <template #icon>
-        <var-icon name="star" />
-      </template>
-      <template #label>item</template>
-    </var-collapse-menu-item>
+  {{ selectedKeys }}
+  <var-collapse-menu v-model:selectedKeys="selectedKeys" active-color="red">
+    <var-collapse-menu-group title="group1">
+      <var-collapse-menu-item :aonclick="handleClick" item-key="1">
+        <template #icon>
+          <var-icon name="star" />
+        </template>
+        <template #label>item1</template>
+      </var-collapse-menu-item>
+      <var-collapse-menu-item :aonclick="handleClick" item-key="2">
+        <template #icon>
+          <var-icon name="star" />
+        </template>
+        <template #label>item2</template>
+      </var-collapse-menu-item>
+      <var-collapse-menu-item :aonclick="handleClick" item-key="3">
+        <template #icon>
+          <var-icon name="star" />
+        </template>
+        <template #label>item3</template>
+      </var-collapse-menu-item>
+    </var-collapse-menu-group>
   </var-collapse-menu>
 </template>
 
 <script>
 import CollapseMenu from '..'
+import CollapseMenuGroup from '../../collapse-menu-group'
 import CollapseMenuItem from '../../collapse-menu-item'
 import Icon from '../../icon'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
-import { ref } from '@vue/reactivity'
+import { ref } from 'vue'
 
 export default {
   name: 'CollapseMenuExample',
   components: {
     [CollapseMenu.name]: CollapseMenu,
+    [CollapseMenuGroup.name]: CollapseMenuGroup,
     [CollapseMenuItem.name]: CollapseMenuItem,
     [Icon.name]: Icon,
     AppType,
@@ -105,7 +122,7 @@ export default {
       },
     ]
 
-    const key = ref(123)
+    const selectedKeys = ref(3)
 
     const handleClick = (v) => {
       console.log(v)
@@ -113,8 +130,8 @@ export default {
     return {
       pack,
       options,
-      key,
       handleClick,
+      selectedKeys,
     }
   },
 }

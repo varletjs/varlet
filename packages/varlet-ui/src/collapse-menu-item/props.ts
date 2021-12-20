@@ -1,7 +1,7 @@
 import { ExtractPropTypes, PropType } from 'vue'
 
 export const props = {
-  key: {
+  itemKey: {
     type: [String, Number],
     default: null,
   },
