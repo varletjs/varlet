@@ -1,11 +1,8 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
-    "sourceMap": false,
     "strict": true,
     "downlevelIteration": true,
-    "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "jsx": "preserve",
