@@ -1,4 +1,4 @@
-import type { Pack } from '.'
+import type { Pack } from '../../types'
 
 declare const zhCN: Pack
 
