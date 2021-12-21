@@ -1,4 +1,4 @@
-import type { Pack } from './locale'
+import type { Pack } from '../../types/locale'
 
 declare const enUS: Pack
 
