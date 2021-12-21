@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { h } from 'vue'
 import Icon from '../../icon'
 import CollapseMenuItem from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
@@ -38,12 +39,12 @@ export default {
   setup() {
     watchLang(use)
     const labelStr = 'labelStr'
-    const iconFn = (h) => {
+    const iconFn = () => {
       return h(Icon, {
         name: iconStr,
       })
     }
-    const labelFn = (h) => {
+    const labelFn = () => {
       return h('div', {}, 'labelFn')
     }
 

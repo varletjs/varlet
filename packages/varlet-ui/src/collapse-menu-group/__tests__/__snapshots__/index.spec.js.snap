@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test collapse-menu-group example 1`] = `
+"<div class=\\"collapse-demo\\">
+  <div>
+    <div class=\\"app-type\\">基本使用</div>
+    <div class=\\"var-collapse-menu-group\\">
+      <div class=\\"var-collapse-menu-group-header\\">
+        <div class=\\"var-collapse-menu-group-header__title\\">标题</div>
+        <div class=\\"var-collapse-menu-group-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-menu-group-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+      </div>
+      <div class=\\"var-collapse-menu-group-content\\" style=\\"display: none;\\">
+        <div class=\\"var-collapse-menu-group__wrap\\">
+          <div class=\\"var-collapse-menu-item\\">
+            <div class=\\"var-collapse-menu-item__indent\\" style=\\"padding-left: 20px;\\"></div>
+            <div class=\\"var-collapse-menu-item__icon\\">
+              <!---->
+            </div>
+            <div class=\\"var-collapse-menu-item__label\\">
+              <div>文本</div>
+            </div>
+          </div>
+          <div class=\\"var-collapse-menu-item\\">
+            <div class=\\"var-collapse-menu-item__indent\\" style=\\"padding-left: 20px;\\"></div>
+            <div class=\\"var-collapse-menu-item__icon\\">
+              <!---->
+            </div>
+            <div class=\\"var-collapse-menu-item__label\\">
+              <div>文本</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class=\\"app-type\\">默认展开</div>
+    <div class=\\"var-collapse-menu-group\\">
+      <div class=\\"var-collapse-menu-group-header\\">
+        <div class=\\"var-collapse-menu-group-header__title\\">标题</div>
+        <div class=\\"var-collapse-menu-group-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-menu-group-header__icon var-collapse-menu-group-header__open\\" style=\\"transition: transform 250ms;\\"></i></div>
+      </div>
+      <div class=\\"var-collapse-menu-group-content\\">
+        <div class=\\"var-collapse-menu-group__wrap\\">
+          <div class=\\"var-collapse-menu-item\\">
+            <div class=\\"var-collapse-menu-item__indent\\" style=\\"padding-left: 20px;\\"></div>
+            <div class=\\"var-collapse-menu-item__icon\\">
+              <!---->
+            </div>
+            <div class=\\"var-collapse-menu-item__label\\">
+              <div>文本</div>
+            </div>
+          </div>
+          <div class=\\"var-collapse-menu-item\\">
+            <div class=\\"var-collapse-menu-item__indent\\" style=\\"padding-left: 20px;\\"></div>
+            <div class=\\"var-collapse-menu-item__icon\\">
+              <!---->
+            </div>
+            <div class=\\"var-collapse-menu-item__label\\">
+              <div>文本</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class=\\"app-type\\">禁用</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\" style=\\"margin-bottom: 8px;\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">禁用</div>
+    </button>
+    <div class=\\"var-collapse-menu-group\\">
+      <div class=\\"var-collapse-menu-group-header\\">
+        <div class=\\"var-collapse-menu-group-header__title\\">标题</div>
+        <div class=\\"var-collapse-menu-group-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-menu-group-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+      </div>
+      <div class=\\"var-collapse-menu-group-content\\" style=\\"display: none;\\">
+        <div class=\\"var-collapse-menu-group__wrap\\">
+          <div class=\\"var-collapse-menu-item\\">
+            <div class=\\"var-collapse-menu-item__indent\\" style=\\"padding-left: 20px;\\"></div>
+            <div class=\\"var-collapse-menu-item__icon\\">
+              <!---->
+            </div>
+            <div class=\\"var-collapse-menu-item__label\\">
+              <div>文本</div>
+            </div>
+          </div>
+          <div class=\\"var-collapse-menu-item\\">
+            <div class=\\"var-collapse-menu-item__indent\\" style=\\"padding-left: 20px;\\"></div>
+            <div class=\\"var-collapse-menu-item__icon\\">
+              <!---->
+            </div>
+            <div class=\\"var-collapse-menu-item__label\\">
+              <div>文本</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

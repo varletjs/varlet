@@ -37,6 +37,7 @@ import VarButton from '../../button'
 import dark from '../../themes/dark'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { reactive, toRefs } from 'vue'
 
 export default {
   name: 'CollapseMenuExample',
@@ -47,10 +48,14 @@ export default {
     AppType,
   },
   setup() {
+    const values = reactive({
+      disabled: false,
+    })
     watchLang(use)
     watchDarkMode(dark)
 
     return {
+      ...toRefs(values),
       pack,
     }
   },

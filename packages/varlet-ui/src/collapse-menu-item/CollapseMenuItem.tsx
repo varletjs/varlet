@@ -1,6 +1,6 @@
 import Icon from '../icon'
 import Ripple from '../ripple'
-import { computed, defineComponent, h } from 'vue'
+import { computed, defineComponent } from 'vue'
 import type { ComputedRef } from 'vue'
 import { isFunction, isPlainObject, isString } from '../utils/shared'
 import { props } from './props'
@@ -20,37 +20,14 @@ export default defineComponent({
       itemKey,
     }
 
-    const renderIcon = () => {
-      if (slots.icon) {
-        return slots.icon()
-      }
-      if (isFunction(props.icon)) {
-        return props.icon(h)
-      }
-      if (isPlainObject(props.icon)) {
-        return <Icon {...props.icon}></Icon>
-      }
-      if (isString(props.icon)) {
-        return <Icon name={props.icon} />
-      }
-    }
-    const renderLabel = () => {
-      if (slots.label) {
-        return slots.label()
-      }
-      if (isFunction(props.label)) {
-        return props.label(h)
-      }
-      return <div>{props.label}</div>
-    }
+    bindCollapseMenu(collapseMenuItemProvider)
+
     const handleClick = () => {
       if (props.disabled) {
         return
       }
       collapseMenu?.updateItem(props.itemKey)
     }
-
-    bindCollapseMenu(collapseMenuItemProvider)
 
     const { multiple } = collapseMenu
 
@@ -62,7 +39,38 @@ export default defineComponent({
 
     return () => {
       const prefix = 'var-collapse-menu-item'
-      const { disabled, itemKey } = props
+      const { disabled, itemKey, icon, label } = props
+
+      const renderIcon = () => {
+        if (slots.icon) {
+          return slots.icon()
+        }
+
+        if (isFunction(icon)) {
+          return icon()
+        }
+
+        if (isPlainObject(icon)) {
+          return <Icon {...icon} />
+        }
+
+        if (isString(icon)) {
+          return <Icon name={icon} />
+        }
+      }
+
+      const renderLabel = () => {
+        if (slots.label) {
+          return slots.label()
+        }
+
+        if (isFunction(label)) {
+          return label()
+        }
+
+        return <div>{label}</div>
+      }
+
       return (
         <div
           onClick={handleClick}

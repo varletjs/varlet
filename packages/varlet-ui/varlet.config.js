@@ -101,6 +101,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'collapse-menu-group 测试',
+          'en-US': 'collapse-menu-group test',
+        },
+        doc: 'collapse-menu-group',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'collapse-menu-item 测试',
           'en-US': 'collapse-menu-item test',
         },
