@@ -64,7 +64,7 @@
 import config from '@config'
 import { ref, computed, defineComponent } from 'vue'
 import { get } from 'lodash-es'
-import { getBrowserThemes, getPCLocationInfo, removeEmpty, setThemes, watchThemes } from '../../utils'
+import { getBrowserThemes, getPCLocationInfo, getThemesKey, removeEmpty, setThemes, watchThemes } from '../../utils'
 import { useRouter } from 'vue-router'
 import type { Ref, ComputedRef } from 'vue'
 
@@ -96,7 +96,7 @@ export default defineComponent({
     const setCurrentThemes = (themes: 'themes' | 'darkThemes') => {
       currentThemes.value = themes
       setThemes(config, currentThemes.value)
-      window.localStorage.setItem('currentThemes', currentThemes.value)
+      window.localStorage.setItem(getThemesKey(), currentThemes.value)
     }
 
     const getThemesMessage = () => ({ action: 'themesChange', from: 'pc', data: currentThemes.value })

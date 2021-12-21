@@ -1,6 +1,7 @@
 import { onMounted, onUnmounted } from 'vue'
 import { get } from 'lodash-es'
 import { formatStyleVars } from './components/utils/elements'
+import config from '@config'
 
 export * from './components/utils/components'
 export * from './components/utils/elements'
@@ -19,6 +20,10 @@ function StyleProvider(styleVars: StyleVars | null = {}) {
     document.documentElement.style.setProperty(key, value)
     mountedVarKeys.push(key)
   })
+}
+
+export function getThemesKey() {
+  return get(config, 'themesKey')
 }
 
 export function camelize(str: string): string {
@@ -139,11 +144,11 @@ export function setThemes(config: Record<string, any>, name: 'themes' | 'darkThe
 }
 
 export function getBrowserThemes(): 'darkThemes' | 'themes' {
-  let currentThemes = window.localStorage.getItem('currentThemes') as 'darkThemes' | 'themes'
+  let currentThemes = window.localStorage.getItem(getThemesKey()) as 'darkThemes' | 'themes'
 
   if (!currentThemes) {
     currentThemes = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'darkThemes' : 'themes'
-    window.localStorage.setItem('currentThemes', currentThemes)
+    window.localStorage.setItem(getThemesKey(), currentThemes)
   }
 
   return currentThemes

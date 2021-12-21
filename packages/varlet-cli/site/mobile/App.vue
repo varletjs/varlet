@@ -97,7 +97,8 @@ import {
   removeEmpty,
   setThemes,
   watchLang,
-  watchThemes
+  watchThemes,
+  getThemesKey
 } from '../utils'
 import { get } from 'lodash-es'
 
@@ -160,7 +161,7 @@ export default defineComponent({
     const setCurrentThemes = (themes: 'themes' | 'darkThemes') => {
       currentThemes.value = themes
       setThemes(config, currentThemes.value)
-      window.localStorage.setItem('currentThemes', currentThemes.value)
+      window.localStorage.setItem(getThemesKey(), currentThemes.value)
     }
 
     const toggleTheme = () => {

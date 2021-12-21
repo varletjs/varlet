@@ -4,6 +4,7 @@ module.exports = {
   host: 'localhost',
   port: 8080,
   title: 'VARLET',
+  themesKey: 'VARLET_THEMES',
   logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
   defaultLanguage: 'zh-CN',
   highlight: {
