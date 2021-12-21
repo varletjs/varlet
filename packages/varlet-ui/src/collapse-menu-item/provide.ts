@@ -11,6 +11,10 @@ export function useCollapseMenu() {
     COLLAPSE_MENU_BIND_MENU_ITEM_KEY
   )
 
+  if (!parentProvider || !bindParent) {
+    throw Error('no parent')
+  }
+
   return {
     collapseMenu: parentProvider,
     bindCollapseMenu: bindParent,

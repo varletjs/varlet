@@ -14,7 +14,7 @@ export const props = {
     default: null,
   },
   'onUpdate:selectedKeys': {
-    type: Function as PropType<(value: string | number) => void>,
+    type: Function as PropType<(value: string | number | Array<string | number>) => void>,
   },
   options: {
     type: Array as PropType<Array<Option>>,
@@ -26,7 +26,7 @@ export const props = {
   },
   multiple: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   expandedKeys: {
     type: Array,
@@ -34,6 +34,5 @@ export const props = {
   },
   activeColor: {
     type: String,
-    default: '',
   },
 }

@@ -1,6 +1,6 @@
 import Icon from '../icon'
 import Ripple from '../ripple'
-import { computed, defineComponent, h, watch } from 'vue'
+import { computed, defineComponent, h } from 'vue'
 import type { ComputedRef } from 'vue'
 import { isFunction, isPlainObject, isString } from '../utils/shared'
 import { props } from './props'
@@ -50,13 +50,14 @@ export default defineComponent({
       collapseMenu?.updateItem(props.itemKey)
     }
 
-    bindCollapseMenu?.(collapseMenuItemProvider)
+    bindCollapseMenu(collapseMenuItemProvider)
 
-    const calcColor = () => {
+    const { multiple } = collapseMenu
+
+    const getColor = () => {
       if (props.itemKey === collapseMenu?.selectedKeys.value) {
-        return collapseMenu.activeColor as string
+        return collapseMenu.activeColor
       }
-      return ''
     }
 
     return () => {
@@ -66,7 +67,7 @@ export default defineComponent({
         <div
           onClick={handleClick}
           class={[prefix, { [prefix + '__disabled']: disabled }]}
-          style={{ color: calcColor() }}
+          style={{ color: getColor() }}
           v-ripple={{ disabled }}
           key={itemKey}
         >

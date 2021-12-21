@@ -4,7 +4,8 @@ import { CollapseMenuItemProvider } from '../collapse-menu-item/provide'
 
 export interface CollapseMenuProvider {
   selectedKeys: ComputedRef<null | string | number | Array<string | number>>
-  activeColor: string | undefined | null
+  multiple: ComputedRef<boolean>
+  activeColor: string | undefined
   updateItem: (value: string | number) => void
 }
 

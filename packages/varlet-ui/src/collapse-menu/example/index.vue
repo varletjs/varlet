@@ -1,7 +1,30 @@
 <template>
-  <app-type>基本使用</app-type>
-  {{ selectedKeys }}
-  <var-collapse-menu v-model:selectedKeys="selectedKeys" active-color="red">
+  <app-type @click="log">基本使用</app-type>
+  selectedKeys: {{ selectedKeys }}
+  <var-collapse-menu v-model:selectedKeys="selectedKeys" multiple active-color="red">
+    <var-collapse-menu-group title="group1">
+      <var-collapse-menu-item :aonclick="handleClick" item-key="1">
+        <template #icon>
+          <var-icon name="star" />
+        </template>
+        <template #label>item1</template>
+      </var-collapse-menu-item>
+      <var-collapse-menu-item :aonclick="handleClick" item-key="2">
+        <template #icon>
+          <var-icon name="star" />
+        </template>
+        <template #label>item2</template>
+      </var-collapse-menu-item>
+      <var-collapse-menu-item :aonclick="handleClick" item-key="3">
+        <template #icon>
+          <var-icon name="star" />
+        </template>
+        <template #label>item3</template>
+      </var-collapse-menu-item>
+    </var-collapse-menu-group>
+  </var-collapse-menu>
+  selectedKeys1: {{ selectedKeys1 }}
+  <var-collapse-menu v-model:selectedKeys="selectedKeys1" active-color="red">
     <var-collapse-menu-group title="group1">
       <var-collapse-menu-item :aonclick="handleClick" item-key="1">
         <template #icon>
@@ -122,16 +145,22 @@ export default {
       },
     ]
 
-    const selectedKeys = ref(3)
+    const selectedKeys = ref(['1', '3'])
+    const selectedKeys1 = ref('2')
 
     const handleClick = (v) => {
       console.log(v)
+    }
+    const log = () => {
+      console.log(selectedKeys.value)
     }
     return {
       pack,
       options,
       handleClick,
       selectedKeys,
+      selectedKeys1,
+      log,
     }
   },
 }
