@@ -98,7 +98,6 @@ import {
   setThemes,
   watchLang,
   watchThemes,
-  getThemesKey
 } from '../utils'
 import { get } from 'lodash-es'
 
@@ -112,9 +111,10 @@ export default defineComponent({
     const languages: Ref<Record<string, string>> = ref(get(config, 'mobile.header.i18n'))
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
     const redirect = get(config, 'mobile.redirect', '')
+    const themesKey = get(config, 'themesKey')
     const github: Ref<string> = ref(get(config, 'mobile.header.github'))
     const darkMode: Ref<string> = ref(get(config, 'mobile.header.darkMode'))
-    const currentThemes = ref(getBrowserThemes())
+    const currentThemes = ref(getBrowserThemes(themesKey))
 
     const changeLanguage = (lang: string) => {
       language.value = lang
@@ -161,7 +161,7 @@ export default defineComponent({
     const setCurrentThemes = (themes: 'themes' | 'darkThemes') => {
       currentThemes.value = themes
       setThemes(config, currentThemes.value)
-      window.localStorage.setItem(getThemesKey(), currentThemes.value)
+      window.localStorage.setItem(themesKey, currentThemes.value)
     }
 
     const toggleTheme = () => {
