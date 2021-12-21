@@ -2,7 +2,7 @@
   <div class="var-site-code-example">
     <div class="var-site-code-example__toolbar">
       <var-site-button text round @click="toggle" v-if="fold">
-        <var-site-icon name="xml"/>
+        <var-site-icon name="xml" size="18" />
       </var-site-button>
 
       <var-site-button
@@ -12,7 +12,7 @@
         round
         v-if="clipboard"
       >
-        <var-site-icon name="content-copy"/>
+        <var-site-icon name="content-copy" size="18" />
       </var-site-button>
     </div>
     <div
@@ -21,7 +21,6 @@
       ref="code"
       :style="{
         height: height >= 0 ? `${height}px` : undefined,
-        opacity
       }"
       >
       <slot/>
@@ -55,7 +54,6 @@ export default defineComponent({
     const fold: Ref = ref(get(config, 'pc.fold'))
     const clipboard: Ref = ref(get(config, 'pc.clipboard', {}))
     const height: Ref<number> = ref(fold.value?.defaultFold ? fold.value?.foldHeight : -1)
-    const opacity: Ref<number> = ref(fold.value?.defaultFold ? 0.76 : 1)
 
     const toggle = async () => {
       const foldHeight = fold.value.foldHeight
@@ -68,14 +66,12 @@ export default defineComponent({
         height.value = foldHeight
         await doubleRaf()
         height.value = offsetHeight
-        opacity.value = 1
       } else {
         const { offsetHeight } = code.value as HTMLElement
 
         height.value = offsetHeight
         await doubleRaf()
         height.value = foldHeight
-        opacity.value = 0.76
       }
     }
 
@@ -90,7 +86,6 @@ export default defineComponent({
     return {
       code,
       height,
-      opacity,
       cid,
       fold,
       clipboard,
