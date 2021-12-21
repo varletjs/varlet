@@ -10,7 +10,7 @@ export interface Option {
 
 export const props = {
   selectedKeys: {
-    type: [Array, String, Number] as PropType<null | string | number | Array<string | number>>,
+    type: Array as PropType<Array<string | number>>,
     default: null,
   },
   'onUpdate:selectedKeys': {
@@ -28,11 +28,16 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  accordion: {
+    type: Boolean,
+    default: false,
+  },
   expandedKeys: {
     type: Array,
     default: () => [],
   },
   activeColor: {
     type: String,
+    default: '#3a7afe',
   },
 }

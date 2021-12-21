@@ -3,7 +3,7 @@ import { useParent } from '../utils/components'
 import { COLLAPSE_MENU_BIND_MENU_ITEM_KEY, CollapseMenuProvider } from '../collapse-menu/provide'
 
 export interface CollapseMenuItemProvider {
-  itemKey: ComputedRef<string | number>
+  name: ComputedRef<string | number>
 }
 
 export function useCollapseMenu() {
@@ -12,7 +12,7 @@ export function useCollapseMenu() {
   )
 
   if (!parentProvider || !bindParent) {
-    throw Error('no parent')
+    throw Error('[Varlet] CollapseMenuItem: <var-collapse-menu-item/> must in <var-collapse-menu>')
   }
 
   return {

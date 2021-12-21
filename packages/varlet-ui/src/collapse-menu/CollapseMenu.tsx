@@ -1,6 +1,6 @@
-import { computed, defineComponent, getCurrentInstance, toRaw } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { props } from './props'
-import { useCollapseMenuItem } from './provide'
+import { useCollapseMenuItem, useCollapseMenuGroup } from './provide'
 import type { CollapseMenuProvider } from './provide'
 import type { ComputedRef } from 'vue'
 import { removeItem } from '../utils/shared'
@@ -12,31 +12,34 @@ export default defineComponent({
   props,
   setup(props, { slots }) {
     const { collapseMenuItem, bindCollapseMenuItem } = useCollapseMenuItem()
+    const { collapseMenuGroup, bindCollapseMenuGroup } = useCollapseMenuGroup()
 
-    const selectedKeys: ComputedRef<null | string | number | Array<string | number>> = computed(
-      () => props.selectedKeys
-    )
+    const selectedKeys: ComputedRef<Array<string | number>> = computed(() => props.selectedKeys)
     const multiple: ComputedRef<boolean> = computed(() => props.multiple)
+    const accordion: ComputedRef<boolean> = computed(() => props.accordion)
 
     const updateItem = (value: string | number) => {
-      if (props.multiple) {
-        // TODO copy values to array
-        const values: Array<number | string> = toRaw(props.selectedKeys) as Array<number | string>
-        values.includes(value) ? removeItem(values, value) : values.push(value)
+      const values: Array<string | number> = []
+      Object.keys(selectedKeys.value).forEach((key) => values.push(key))
 
-        props['onUpdate:selectedKeys']?.([...values])
+      if (props.multiple) {
+        values.includes(value) ? removeItem(values, value) : values.push(value)
       } else {
-        props['onUpdate:selectedKeys']?.(value)
+        values[0] = value
       }
+      props['onUpdate:selectedKeys']?.(values)
     }
 
     const collapseMenuProvider: CollapseMenuProvider = {
       selectedKeys,
       activeColor: props.activeColor,
       multiple,
+      accordion,
       updateItem,
     }
+
     bindCollapseMenuItem(collapseMenuProvider)
+    bindCollapseMenuGroup(collapseMenuProvider)
 
     return () => <div class={'var-collapse-menu'}>{slots.default && slots.default()}</div>
   },

@@ -95,7 +95,7 @@ export default defineComponent({
             </div>
           </div>
           <div ref={contentEl} v-show={show.value} class={prefix + '-content'} onTransitionend={transitionend}>
-            <div class={prefix + '__wrap'}>{slots.default()}</div>
+            <div class={prefix + '__wrap'}>{slots.default && slots.default()}</div>
           </div>
         </div>
       )

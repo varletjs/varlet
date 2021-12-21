@@ -15,9 +15,9 @@ export default defineComponent({
   props,
   setup(props, { slots }) {
     const { bindCollapseMenu, collapseMenu } = useCollapseMenu()
-    const itemKey: ComputedRef<string | number> = computed(() => props.itemKey)
+    const name: ComputedRef<string | number> = computed(() => props.name)
     const collapseMenuItemProvider: CollapseMenuItemProvider = {
-      itemKey,
+      name,
     }
 
     bindCollapseMenu(collapseMenuItemProvider)
@@ -26,20 +26,20 @@ export default defineComponent({
       if (props.disabled) {
         return
       }
-      collapseMenu?.updateItem(props.itemKey)
+      collapseMenu?.updateItem(props.name)
     }
 
     const { multiple } = collapseMenu
 
     const getColor = () => {
-      if (props.itemKey === collapseMenu?.selectedKeys.value) {
+      if (collapseMenu?.selectedKeys.value.includes(props.name)) {
         return collapseMenu.activeColor
       }
     }
 
     return () => {
       const prefix = 'var-collapse-menu-item'
-      const { disabled, itemKey, icon, label } = props
+      const { disabled, name, icon, label } = props
 
       const renderIcon = () => {
         if (slots.icon) {
@@ -77,7 +77,7 @@ export default defineComponent({
           class={[prefix, { [prefix + '__disabled']: disabled }]}
           style={{ color: getColor() }}
           v-ripple={{ disabled }}
-          key={itemKey}
+          key={name}
         >
           <div class={prefix + '__indent'} style={{ paddingLeft: '20px' }}></div>{' '}
           {

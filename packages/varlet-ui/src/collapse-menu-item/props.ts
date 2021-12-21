@@ -1,7 +1,5 @@
-import { ExtractPropTypes, PropType } from 'vue'
-
 export const props = {
-  itemKey: {
+  name: {
     type: [String, Number],
     default: null,
   },
@@ -17,6 +15,3 @@ export const props = {
     type: [String, Object, Function],
   },
 }
-//  as const
-
-// export type _PropType = ExtractPropTypes<typeof props>
