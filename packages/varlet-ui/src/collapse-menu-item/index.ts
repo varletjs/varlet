@@ -1,4 +1,4 @@
-import CollapseMenuItem from './CollapseMenuItem.tsx'
+import CollapseMenuItem from './CollapseMenuItem'
 import { App } from 'vue'
 
 CollapseMenuItem.install = function (app: App) {

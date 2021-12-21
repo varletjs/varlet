@@ -1,4 +1,4 @@
-import CollapseMenuGroup from './CollapseMenuGroup.tsx'
+import CollapseMenuGroup from './CollapseMenuGroup'
 import type { App } from 'vue'
 
 CollapseMenuGroup.install = function (app: App) {
