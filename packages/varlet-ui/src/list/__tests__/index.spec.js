@@ -28,10 +28,7 @@ test('test list immediate check', async () => {
     attachTo: document.body,
   })
 
-  const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({
-    width: 100,
-    height: 100,
-  })
+  const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ bottom: 0 })
   await delay(16)
 
   expect(onLoad).toHaveBeenCalledTimes(1)
@@ -59,10 +56,7 @@ test('test click error text reload', async () => {
     attachTo: document.body,
   })
 
-  const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({
-    width: 100,
-    height: 100,
-  })
+  const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ bottom: 50 })
 
   await delay(16)
 
