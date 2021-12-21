@@ -37,7 +37,7 @@ module.exports = {
       'en-US': 'The code has been copied to the clipboard',
     },
     fold: {
-      defaultFold: false,
+      defaultFold: true,
       foldHeight: 59,
     },
   },
