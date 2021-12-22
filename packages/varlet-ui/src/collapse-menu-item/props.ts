@@ -11,6 +11,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  indent: {
+    type: [String, Number],
+    default: 0,
+  },
   icon: {
     type: [String, Object, Function],
   },

@@ -19,6 +19,7 @@ export default defineComponent({
     const multiple: ComputedRef<boolean> = computed(() => props.multiple)
     const accordion: ComputedRef<boolean> = computed(() => props.accordion)
 
+    // 选中状态
     const updateItem = (value: string | number) => {
       const values: Array<string | number> = []
       Object.values(selectedKeys.value).forEach((key) => values.push(key))
@@ -30,6 +31,7 @@ export default defineComponent({
       }
       props['onUpdate:selectedKeys']?.(values)
     }
+    // 展开状态
     // 在menu/group里判断 前者需要多call一次 updateGroup 不需要在group中取accordion
     const updateGroup = (value: string | number) => {
       if (accordion.value) {
@@ -40,6 +42,7 @@ export default defineComponent({
       }
     }
 
+    // 第一次加载展开
     const handleExpand = () => {
       collapseMenuGroup.forEach((group) => {
         if (expandedKeys.value.includes(group.name.value)) {
@@ -63,6 +66,6 @@ export default defineComponent({
     bindCollapseMenuItem(collapseMenuProvider)
     bindCollapseMenuGroup(collapseMenuProvider)
 
-    return () => <div class={'var-collapse-menu'}>{slots.default && slots.default()}</div>
+    return () => <div class={'var-collapse-menu'}>{slots.default?.()}</div>
   },
 })

@@ -3,11 +3,12 @@ import Ripple from '../ripple'
 import { computed, defineComponent } from 'vue'
 import type { ComputedRef } from 'vue'
 import { isFunction, isPlainObject, isString } from '../utils/shared'
+import { toPxNum } from '../utils/elements'
+import { useCollapseMenu } from './provide'
+import type { CollapseMenuItemProvider } from './provide'
 import { props } from './props'
 import '../styles/common.less'
 import './CollapseMenuItem.less'
-import { useCollapseMenu } from './provide'
-import type { CollapseMenuItemProvider } from './provide'
 
 export default defineComponent({
   name: 'VarCollapseMenuItem',
@@ -29,17 +30,15 @@ export default defineComponent({
       collapseMenu.updateItem(props.name)
     }
 
-    const { multiple } = collapseMenu
-
     const getColor = () => {
-      if (collapseMenu?.selectedKeys.value.includes(props.name)) {
+      if (collapseMenu.selectedKeys.value.includes(props.name)) {
         return collapseMenu.activeColor
       }
     }
 
     return () => {
       const prefix = 'var-collapse-menu-item'
-      const { disabled, name, icon, label } = props
+      const { disabled, name, icon, label, indent } = props
 
       const renderIcon = () => {
         if (slots.icon) {
@@ -71,6 +70,11 @@ export default defineComponent({
         return <div>{label}</div>
       }
 
+      const getWidth = () => {
+        if (typeof indent === 'number') return `${indent}px`
+        return toPxNum(indent)
+      }
+
       return (
         <div
           onClick={handleClick}
@@ -79,10 +83,7 @@ export default defineComponent({
           v-ripple={{ disabled }}
           key={name}
         >
-          <div class={prefix + '__indent'} style={{ paddingLeft: '20px' }}></div>{' '}
-          {
-            // 李航宇就靠你了
-          }
+          <div style={{ width: getWidth() }} />
           <div class={prefix + '__icon'}>{renderIcon()}</div>
           <div class={prefix + '__label'}>{renderLabel()}</div>
         </div>

@@ -1,27 +1,18 @@
 <template>
   <app-type>基本使用</app-type>
-  <var-collapse-menu v-model:selectedKeys="selectedKeys" v-model:expandedKeys="expandedKeys" multiple>
+  <var-collapse-menu v-model:selectedKeys="selectedKeys" @collapse="handleCollapse">
     <var-collapse-menu-group title="group3" name="g3">
       <var-collapse-menu-item name="7">
         <template #label>item1</template>
       </var-collapse-menu-item>
-      <var-collapse-menu-item name="8">
-        <template #label>item2</template>
+    </var-collapse-menu-group>
+    <var-collapse-menu-group title="group3-1" name="g3-1">
+      <var-collapse-menu-item name="3-1">
+        <template #label>item3-1</template>
       </var-collapse-menu-item>
-      <var-collapse-menu-item name="9">
-        <template #label>item3</template>
+      <var-collapse-menu-item name="3-2">
+        <template #label>item3-2</template>
       </var-collapse-menu-item>
-      <var-collapse-menu-group title="group3-1" name="g3-1">
-        <var-collapse-menu-item name="3-1">
-          <template #label>item1</template>
-        </var-collapse-menu-item>
-        <var-collapse-menu-item name="3-2">
-          <template #label>item2</template>
-        </var-collapse-menu-item>
-        <var-collapse-menu-item name="3-3">
-          <template #label>item3</template>
-        </var-collapse-menu-item>
-      </var-collapse-menu-group>
     </var-collapse-menu-group>
   </var-collapse-menu>
 </template>
@@ -130,6 +121,9 @@ export default {
     const handleClick = (v) => {
       console.log(v)
     }
+    const handleCollapse = (v) => {
+      console.log(v)
+    }
     return {
       pack,
       options,
@@ -137,6 +131,7 @@ export default {
       selectedKeys,
       selectedKeys1,
       expandedKeys,
+      handleCollapse,
     }
   },
 }

@@ -43,4 +43,7 @@ export const props = {
     type: String,
     default: '#3a7afe',
   },
+  onCollapse: {
+    type: Function as PropType<(value: Array<string | number>) => void>,
+  },
 }
