@@ -9,6 +9,7 @@ export interface CollapseMenuProvider {
   accordion: ComputedRef<boolean>
   activeColor: string | undefined
   updateItem: (value: string | number) => void
+  updateGroup: (value: string | number) => void
 }
 
 export const COLLAPSE_MENU_BIND_MENU_ITEM_KEY = Symbol('COLLAPSE_MENU_BIND_MENU_ITEM_KEY')

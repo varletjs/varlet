@@ -1,8 +1,9 @@
 import VarIcon from '../icon'
 import Ripple from '../ripple'
-import { defineComponent, ref, watch, nextTick } from 'vue'
+import { defineComponent, ref, watch, nextTick, computed } from 'vue'
 import { props } from './props'
-import type { Ref } from 'vue'
+import type { Ref, ComputedRef } from 'vue'
+import { CollpaseMenuGroupProvider, useCollapseMenu } from './provide'
 
 import '../icon/icon.less'
 import '../styles/common.less'
@@ -21,16 +22,9 @@ export default defineComponent({
     const contentEl: Ref<HTMLDivElement | null> = ref(null)
     const expanded: Ref<boolean> = ref(props.status === 'open')
     const show: Ref<boolean> = ref(props.status === 'open')
+    const name: ComputedRef<string | number> = computed(() => props.name)
 
-    // const renderTitle = () => {
-    //   if (slots.title) {
-    //     return slots.title()
-    //   }
-    //   if (isFunction(props.title)) {
-    //     return props.title()
-    //   }
-    //   return <div>{props.title}</div>
-    // }
+    const { bindCollapseMenu, collapseMenu } = useCollapseMenu()
 
     const handleClick = () => {
       if (props.disabled) return
@@ -71,9 +65,20 @@ export default defineComponent({
     }
 
     watch(expanded, (value) => {
-      if (value) openPanel()
-      else closePanel()
+      if (value) {
+        openPanel()
+        collapseMenu.updateGroup(name.value)
+      } else {
+        closePanel()
+      }
     })
+
+    const collapseMenuGroup: CollpaseMenuGroupProvider = {
+      name,
+      expanded,
+    }
+
+    bindCollapseMenu(collapseMenuGroup)
 
     return () => {
       const prefix = 'var-collapse-menu-group'

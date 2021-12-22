@@ -30,12 +30,22 @@ export default defineComponent({
       props['onUpdate:selectedKeys']?.(values)
     }
 
+    const updateGroup = (value: string | number) => {
+      if (accordion.value) {
+        collapseMenuGroup.forEach((group) => {
+          if (group.name.value === value) return
+          group.expanded.value = false
+        })
+      }
+    }
+
     const collapseMenuProvider: CollapseMenuProvider = {
       selectedKeys,
       activeColor: props.activeColor,
       multiple,
       accordion,
       updateItem,
+      updateGroup,
     }
 
     bindCollapseMenuItem(collapseMenuProvider)

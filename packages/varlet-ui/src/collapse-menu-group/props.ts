@@ -15,4 +15,8 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  name: {
+    type: [String, Number],
+    default: null,
+  },
 }

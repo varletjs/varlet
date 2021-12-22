@@ -26,7 +26,7 @@ export default defineComponent({
       if (props.disabled) {
         return
       }
-      collapseMenu?.updateItem(props.name)
+      collapseMenu.updateItem(props.name)
     }
 
     const { multiple } = collapseMenu

@@ -2,7 +2,7 @@
   <app-type>基本使用</app-type>
   selectedKeys: {{ selectedKeys }}
   <var-collapse-menu v-model:selectedKeys="selectedKeys" multiple accordion>
-    <var-collapse-menu-group title="group1">
+    <var-collapse-menu-group title="group1" name="g1">
       <var-collapse-menu-item name="1">
         <template #icon>
           <var-icon name="star" />
@@ -22,7 +22,7 @@
         <template #label>item3</template>
       </var-collapse-menu-item>
     </var-collapse-menu-group>
-    <var-collapse-menu-group title="group2">
+    <var-collapse-menu-group title="group2" name="g2">
       <var-collapse-menu-item name="4">
         <template #icon>
           <var-icon name="star" />
