@@ -1,69 +1,27 @@
 <template>
   <app-type>基本使用</app-type>
-  selectedKeys: {{ selectedKeys }}
-  <var-collapse-menu v-model:selectedKeys="selectedKeys" multiple accordion>
-    <var-collapse-menu-group title="group1" name="g1">
-      <var-collapse-menu-item name="1">
-        <template #icon>
-          <var-icon name="star" />
-        </template>
+  <var-collapse-menu v-model:selectedKeys="selectedKeys" v-model:expandedKeys="expandedKeys" multiple>
+    <var-collapse-menu-group title="group3" name="g3">
+      <var-collapse-menu-item name="7">
         <template #label>item1</template>
       </var-collapse-menu-item>
-      <var-collapse-menu-item name="2">
-        <template #icon>
-          <var-icon name="star" />
-        </template>
+      <var-collapse-menu-item name="8">
         <template #label>item2</template>
       </var-collapse-menu-item>
-      <var-collapse-menu-item name="3">
-        <template #icon>
-          <var-icon name="star" />
-        </template>
+      <var-collapse-menu-item name="9">
         <template #label>item3</template>
       </var-collapse-menu-item>
-    </var-collapse-menu-group>
-    <var-collapse-menu-group title="group2" name="g2">
-      <var-collapse-menu-item name="4">
-        <template #icon>
-          <var-icon name="star" />
-        </template>
-        <template #label>item1</template>
-      </var-collapse-menu-item>
-      <var-collapse-menu-item name="5">
-        <template #icon>
-          <var-icon name="star" />
-        </template>
-        <template #label>item2</template>
-      </var-collapse-menu-item>
-      <var-collapse-menu-item name="6">
-        <template #icon>
-          <var-icon name="star" />
-        </template>
-        <template #label>item3</template>
-      </var-collapse-menu-item>
-    </var-collapse-menu-group>
-  </var-collapse-menu>
-  selectedKeys1: {{ selectedKeys1 }}
-  <var-collapse-menu v-model:selectedKeys="selectedKeys1">
-    <var-collapse-menu-group title="group1">
-      <var-collapse-menu-item name="1">
-        <template #icon>
-          <var-icon name="star" />
-        </template>
-        <template #label>item1</template>
-      </var-collapse-menu-item>
-      <var-collapse-menu-item name="2">
-        <template #icon>
-          <var-icon name="star" />
-        </template>
-        <template #label>item2</template>
-      </var-collapse-menu-item>
-      <var-collapse-menu-item name="3">
-        <template #icon>
-          <var-icon name="star" />
-        </template>
-        <template #label>item3</template>
-      </var-collapse-menu-item>
+      <var-collapse-menu-group title="group3-1" name="g3-1">
+        <var-collapse-menu-item name="3-1">
+          <template #label>item1</template>
+        </var-collapse-menu-item>
+        <var-collapse-menu-item name="3-2">
+          <template #label>item2</template>
+        </var-collapse-menu-item>
+        <var-collapse-menu-item name="3-3">
+          <template #label>item3</template>
+        </var-collapse-menu-item>
+      </var-collapse-menu-group>
     </var-collapse-menu-group>
   </var-collapse-menu>
 </template>
@@ -167,6 +125,7 @@ export default {
 
     const selectedKeys = ref(['1', '3'])
     const selectedKeys1 = ref(['2'])
+    const expandedKeys = ref(['g1', 'g2'])
 
     const handleClick = (v) => {
       console.log(v)
@@ -177,6 +136,7 @@ export default {
       handleClick,
       selectedKeys,
       selectedKeys1,
+      expandedKeys,
     }
   },
 }

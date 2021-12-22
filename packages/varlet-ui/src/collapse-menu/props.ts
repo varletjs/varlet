@@ -11,10 +11,17 @@ export interface Option {
 export const props = {
   selectedKeys: {
     type: Array as PropType<Array<string | number>>,
-    default: null,
+    default: [],
   },
   'onUpdate:selectedKeys': {
-    type: Function as PropType<(value: string | number | Array<string | number>) => void>,
+    type: Function as PropType<(value: Array<string | number>) => void>,
+  },
+  expandedKeys: {
+    type: Array as PropType<Array<string | number>>,
+    default: () => [],
+  },
+  'onUpdate:expandedKeys': {
+    type: Function as PropType<(value: Array<string | number>) => void>,
   },
   options: {
     type: Array as PropType<Array<Option>>,
@@ -31,10 +38,6 @@ export const props = {
   accordion: {
     type: Boolean,
     default: false,
-  },
-  expandedKeys: {
-    type: Array,
-    default: () => [],
   },
   activeColor: {
     type: String,

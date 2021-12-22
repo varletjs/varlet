@@ -1,4 +1,4 @@
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, nextTick } from 'vue'
 import { props } from './props'
 import { useCollapseMenuItem, useCollapseMenuGroup } from './provide'
 import type { CollapseMenuProvider } from './provide'
@@ -15,6 +15,7 @@ export default defineComponent({
     const { collapseMenuGroup, bindCollapseMenuGroup } = useCollapseMenuGroup()
 
     const selectedKeys: ComputedRef<Array<string | number>> = computed(() => props.selectedKeys)
+    const expandedKeys: ComputedRef<Array<string | number>> = computed(() => props.expandedKeys)
     const multiple: ComputedRef<boolean> = computed(() => props.multiple)
     const accordion: ComputedRef<boolean> = computed(() => props.accordion)
 
@@ -29,7 +30,7 @@ export default defineComponent({
       }
       props['onUpdate:selectedKeys']?.(values)
     }
-
+    // 在menu/group里判断 前者需要多call一次 updateGroup 不需要在group中取accordion
     const updateGroup = (value: string | number) => {
       if (accordion.value) {
         collapseMenuGroup.forEach((group) => {
@@ -38,6 +39,17 @@ export default defineComponent({
         })
       }
     }
+
+    const handleExpand = () => {
+      collapseMenuGroup.forEach((group) => {
+        if (expandedKeys.value.includes(group.name.value)) {
+          group.expanded.value = true
+        }
+      })
+    }
+    nextTick(() => {
+      handleExpand()
+    })
 
     const collapseMenuProvider: CollapseMenuProvider = {
       selectedKeys,
