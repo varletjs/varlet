@@ -17,6 +17,7 @@ export default defineComponent({
   setup(props, { slots }) {
     const { bindCollapseMenu, collapseMenu } = useCollapseMenu()
     const name: ComputedRef<string | number> = computed(() => props.name)
+    const isActiced: ComputedRef<boolean> = computed(() => collapseMenu.selectedKeys.value.includes(props.name))
     const collapseMenuItemProvider: CollapseMenuItemProvider = {
       name,
     }
@@ -78,8 +79,9 @@ export default defineComponent({
       return (
         <div
           onClick={handleClick}
-          class={[prefix, { [prefix + '__disabled']: disabled }]}
+          class={[prefix, { [prefix + '__disabled']: disabled, [prefix + '__actived']: isActiced.value }]}
           style={{ color: getColor() }}
+          date-color="red"
           v-ripple={{ disabled }}
           key={name}
         >

@@ -83,9 +83,15 @@ export default defineComponent({
     return () => {
       const prefix = 'var-collapse-menu-group'
       const { title, disabled } = props
+      const { activeColor } = collapseMenu
       return (
         <div class={[prefix, { [prefix + '__disable']: disabled }]}>
-          <div v-ripple={disabled} class="var-collapse-menu-group-header" onClick={handleClick}>
+          <div
+            v-ripple={disabled}
+            class={[prefix + '-header', { [prefix + '-header__actived']: expanded.value }]}
+            style={{ color: expanded.value ? activeColor : '' }}
+            onClick={handleClick}
+          >
             <div class={prefix + '-header__title'}>{title}</div>
             <div class={prefix + '-header__icon'}>
               <var-icon

@@ -44,6 +44,18 @@
     &__open {
       transform: rotate(-180deg);
     }
+
+    &__actived::before {
+      z-index: -1;
+      border-radius: 4px;
+      opacity: 0.1;
+      content: '';
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      // background-color: currentColor;
+    }
   }
 
   &-content {
