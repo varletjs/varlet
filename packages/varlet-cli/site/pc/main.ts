@@ -21,6 +21,8 @@ const defaultLanguage = get(config, 'defaultLanguage')
 const redirect = get(config, 'pc.redirect')
 const mobileRedirect = get(config, 'mobile.redirect')
 
+Snackbar.allowMultiple(true)
+
 redirect &&
   routes.push({
     path: '/:pathMatch(.*)*',

@@ -295,7 +295,7 @@ iframe {
         overflow-x: auto;
         font-size: 13px;
         font-family: Consolas, Monaco, monospace;
-        line-height: 30px;
+        line-height: 31px;
         white-space: pre-wrap;
         word-wrap: break-word;
         color: #fff;

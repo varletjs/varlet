@@ -41,6 +41,7 @@ import { getPCLocationInfo } from '../../utils'
 import type { Ref } from 'vue'
 
 let clipId = 0
+const offset = 10
 
 export default defineComponent({
   name: 'VarSiteCodeExample',
@@ -65,7 +66,13 @@ export default defineComponent({
 
         height.value = foldHeight
         await doubleRaf()
-        height.value = offsetHeight
+
+        if (offsetHeight - foldHeight < offset) {
+          Snackbar(get(config, `pc.fold.message.${getPCLocationInfo().language}`))
+          height.value = foldHeight
+        } else {
+          height.value = offsetHeight
+        }
       } else {
         const { offsetHeight } = code.value as HTMLElement
 
