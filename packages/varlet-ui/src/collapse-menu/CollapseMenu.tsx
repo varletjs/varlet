@@ -20,7 +20,7 @@ export default defineComponent({
 
     const updateItem = (value: string | number) => {
       const values: Array<string | number> = []
-      Object.keys(selectedKeys.value).forEach((key) => values.push(key))
+      Object.values(selectedKeys.value).forEach((key) => values.push(key))
 
       if (props.multiple) {
         values.includes(value) ? removeItem(values, value) : values.push(value)

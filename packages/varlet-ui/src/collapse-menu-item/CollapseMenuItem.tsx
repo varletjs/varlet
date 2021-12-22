@@ -5,7 +5,7 @@ import type { ComputedRef } from 'vue'
 import { isFunction, isPlainObject, isString } from '../utils/shared'
 import { props } from './props'
 import '../styles/common.less'
-import './index.less'
+import './CollapseMenuItem.less'
 import { useCollapseMenu } from './provide'
 import type { CollapseMenuItemProvider } from './provide'
 
