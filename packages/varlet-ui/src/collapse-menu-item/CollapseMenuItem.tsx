@@ -81,7 +81,6 @@ export default defineComponent({
           onClick={handleClick}
           class={[prefix, { [prefix + '__disabled']: disabled, [prefix + '__actived']: isActiced.value }]}
           style={{ color: getColor() }}
-          date-color="red"
           v-ripple={{ disabled }}
           key={name}
         >

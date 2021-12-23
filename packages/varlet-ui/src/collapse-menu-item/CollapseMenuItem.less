@@ -26,15 +26,14 @@
 .var-collapse-menu-item {
   align-items: center;
   display: flex;
-  height: var(--collapsemenuitem-min-height);
   min-height: var(--collapsemenuitem-min-height);
   outline: none;
-  padding: var(--collapsemenuitem-padding) var(--collapsemenuitem-padding) var(--collapsemenuitem-padding) 0;
+  padding: 0 16px;
+  margin-bottom: 4px;
   position: relative;
   box-sizing: border-box;
   font-size: var(--collapsemenuitem-font-size);
   &__icon {
-    // margin-right: var(--collapsemenuitem-icon-right);
     flex: 0;
   }
   &__label {
@@ -56,6 +55,7 @@
     height: 100%;
     display: block;
     position: absolute;
+    left: 0;
     background-color: currentColor;
   }
 }

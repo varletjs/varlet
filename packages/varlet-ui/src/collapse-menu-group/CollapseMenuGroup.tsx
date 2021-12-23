@@ -95,7 +95,7 @@ export default defineComponent({
             <div class={prefix + '-header__title'}>{title}</div>
             <div class={prefix + '-header__icon'}>
               <var-icon
-                name="chevron-down"
+                name="menu-down"
                 transition={250}
                 class={[
                   [prefix + '-header__icon'],

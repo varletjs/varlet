@@ -1,17 +1,17 @@
 <template>
   <app-type>基本使用</app-type>
   <var-collapse-menu v-model:selectedKeys="selectedKeys" @collapse="handleCollapse">
-    <var-collapse-menu-group title="group3" name="g3">
-      <var-collapse-menu-item name="7">
-        <template #label>item1</template>
+    <var-collapse-menu-group title="折叠菜单组1" name="g3">
+      <var-collapse-menu-item name="i1">
+        <template #label>菜单1</template>
       </var-collapse-menu-item>
     </var-collapse-menu-group>
-    <var-collapse-menu-group title="group3-1" name="g3-1">
-      <var-collapse-menu-item name="3-1">
-        <template #label>item3-1</template>
+    <var-collapse-menu-group title="折叠菜单组2" name="g1">
+      <var-collapse-menu-item name="i2">
+        <template #label>菜单2</template>
       </var-collapse-menu-item>
-      <var-collapse-menu-item name="3-2">
-        <template #label>item3-2</template>
+      <var-collapse-menu-item name="i3">
+        <template #label>菜单3</template>
       </var-collapse-menu-item>
     </var-collapse-menu-group>
   </var-collapse-menu>
