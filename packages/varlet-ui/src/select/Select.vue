@@ -75,7 +75,7 @@
             />
           </div>
           <label
-            class="var-select__placeholder"
+            class="var-select__placeholder var--ellipsis"
             :class="[
               formDisabled || disabled ? 'var-select--disabled' : null,
               computePlaceholderState(),
