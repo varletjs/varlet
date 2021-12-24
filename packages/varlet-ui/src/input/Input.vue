@@ -67,6 +67,7 @@
           v-else
         />
         <label
+          class="var--ellipsis"
           :class="[
             textarea ? 'var-input__textarea-placeholder' : 'var-input__placeholder',
             computePlaceholderState(),
