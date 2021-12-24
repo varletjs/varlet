@@ -102,7 +102,7 @@ exports[`test table example 1`] = `
             <div class=\\"var-input__controller\\">
               <div class=\\"var-input__icon\\"></div>
               <div class=\\"var-input__wrap\\">
-                <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-8\\" type=\\"text\\"><label class=\\"var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-8\\"></label>
+                <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-8\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-8\\"></label>
               </div>
               <div class=\\"var-input__icon\\">
                 <!--v-if-->
