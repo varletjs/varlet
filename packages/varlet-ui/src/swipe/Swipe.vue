@@ -160,13 +160,7 @@ export default defineComponent({
     }
 
     const initialIndex = () => {
-      lockDuration.value = true
       index.value = boundaryIndex(toNumber(props.initialIndex))
-      translate.value = index.value * -size.value
-
-      nextTickFrame(() => {
-        lockDuration.value = false
-      })
     }
 
     const startAutoplay = () => {
@@ -272,14 +266,23 @@ export default defineComponent({
 
     // expose
     const resize = () => {
+      lockDuration.value = true
+
       size.value = props.vertical
         ? (swipeEl.value as HTMLElement).offsetHeight
         : (swipeEl.value as HTMLElement).offsetWidth
-
       trackSize.value = size.value * length.value
+      translate.value = index.value * -size.value
 
-      initialIndex()
+      swipeItems.forEach((swipeItem) => {
+        swipeItem.setTranslate(0)
+      })
+
       startAutoplay()
+
+      setTimeout(() => {
+        lockDuration.value = false
+      })
     }
     // expose
     const next = () => {
@@ -350,7 +353,13 @@ export default defineComponent({
 
     bindSwipeItems(swipeProvider)
 
-    watch(() => length.value, resize)
+    watch(
+      () => length.value,
+      () => {
+        initialIndex()
+        resize()
+      }
+    )
 
     onMounted(() => {
       window.addEventListener('resize', resize)
