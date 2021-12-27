@@ -29,9 +29,11 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 @import '../../styles/elevation';
+</style>
 
+<style scoped lang="less">
 .list {
   display: flex;
   flex-wrap: wrap;
