@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.24.0](https://github.com/haoziqaq/varlet/compare/v1.23.11...v1.24.0) (2021-12-27)
+
+
+### Features
+
+* **cli:** add clipboard and fold tool for site ([5298c99](https://github.com/haoziqaq/varlet/commit/5298c996a6ea890ee29c01c254704f06d157df4c))
+
+
+
+
+
 # [1.23.0](https://github.com/haoziqaq/varlet/compare/v1.22.10...v1.23.0) (2021-11-19)
 
 **Note:** Version bump only for package @varlet/icons

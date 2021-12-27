@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.24.0](https://github.com/haoziqaq/varlet/compare/v1.23.11...v1.24.0) (2021-12-27)
+
+
+### Bug Fixes
+
+* **cli/site:** adjust z-index of the sidebar and code toolbar for site ([5b81918](https://github.com/haoziqaq/varlet/commit/5b8191822305e5a485003223d3109a6554b33251))
+* **site:** modify code example style ([bb33910](https://github.com/haoziqaq/varlet/commit/bb3391008bdafbf052b8485b79bb54270ca27771))
+* fix test fail ([78f20ec](https://github.com/haoziqaq/varlet/commit/78f20ec46bea357fd12c1da68b02ce7dc9cc2918))
+* **cli:** fix icon vertical-align ([f015092](https://github.com/haoziqaq/varlet/commit/f0150923b9d33c6f61c9810887ea294015a35621))
+* **site:** add types ([6520984](https://github.com/haoziqaq/varlet/commit/6520984af6eb13b772783540aa72427cf1e4403e))
+* **site:** fix mobile style ([3189225](https://github.com/haoziqaq/varlet/commit/31892257a3611e2c6fa39d01cd0d87d4cc2d5ebb))
+
+
+### Features
+
+* **cli:** add clipboard and fold tool for site ([5298c99](https://github.com/haoziqaq/varlet/commit/5298c996a6ea890ee29c01c254704f06d157df4c))
+
+
+### Reverts
+
+* revert fix mobile style ([22d9da9](https://github.com/haoziqaq/varlet/commit/22d9da9beaf88fa1a29394bc07141e5ec3355c42))
+
+
+
+
+
 ## [1.23.11](https://github.com/haoziqaq/varlet/compare/v1.23.10...v1.23.11) (2021-12-10)
 
 **Note:** Version bump only for package @varlet/cli

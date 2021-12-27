@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.24.0](https://github.com/haoziqaq/varlet/compare/v1.23.11...v1.24.0) (2021-12-27)
+
+
+### Bug Fixes
+
+* **card:** add word-break for description ([38d7427](https://github.com/haoziqaq/varlet/commit/38d74270eed5bc71b4f821f5433604b7a62eecbc))
+* **cli:** fix icon vertical-align ([f015092](https://github.com/haoziqaq/varlet/commit/f0150923b9d33c6f61c9810887ea294015a35621))
+* **cli/site:** adjust z-index of the sidebar and code toolbar for site ([5b81918](https://github.com/haoziqaq/varlet/commit/5b8191822305e5a485003223d3109a6554b33251))
+* **d.ts:** fix pack declare lost after build ([d7df27e](https://github.com/haoziqaq/varlet/commit/d7df27e439a2b28fa4a9cfb867129611f2a268b3))
+* **loading:** add transition for overlay ([2a62eaa](https://github.com/haoziqaq/varlet/commit/2a62eaa8eed6a5ff77222b48932b39655744ffae))
+* **loading:** expose marigin css variable ([313d232](https://github.com/haoziqaq/varlet/commit/313d232b363981ce94c11e419ace904bfc2b246d))
+* **placeholder:** text-overflow to ellipsis ([7c586d2](https://github.com/haoziqaq/varlet/commit/7c586d2f7e751a12993d06e46d460ac25de24b22))
+* **select:** fix select's placeholder when too long ([a7e08a6](https://github.com/haoziqaq/varlet/commit/a7e08a60e7d2d8f49f0863fcda6814bc1fdd4fdc))
+* **site:** add types ([6520984](https://github.com/haoziqaq/varlet/commit/6520984af6eb13b772783540aa72427cf1e4403e))
+* **site:** fix mobile style ([3189225](https://github.com/haoziqaq/varlet/commit/31892257a3611e2c6fa39d01cd0d87d4cc2d5ebb))
+* **site:** modify code example style ([bb33910](https://github.com/haoziqaq/varlet/commit/bb3391008bdafbf052b8485b79bb54270ca27771))
+* **types:** fix prompts that could not find a declaration file when import translation file ([2637884](https://github.com/haoziqaq/varlet/commit/26378841f2fbafeda8bcd6fffd5eccfd50e9e559))
+* **types:** fix prompts that could not find a declaration file when import translation file ([e17c6d2](https://github.com/haoziqaq/varlet/commit/e17c6d2c430f1b4601875e98ca92d075a1de5813))
+* **ui/input, select:** fix placeholder animation and var--ellipsis class ([458ab30](https://github.com/haoziqaq/varlet/commit/458ab307652328ace71dc0523323422f7ebdbaac))
+* **ui/swipe:** do not use initialIndex when resize ([46e997e](https://github.com/haoziqaq/varlet/commit/46e997e8f014432149f409e40545592757ae4484))
+* fix test fail ([78f20ec](https://github.com/haoziqaq/varlet/commit/78f20ec46bea357fd12c1da68b02ce7dc9cc2918))
+
+
+### Features
+
+* **cli:** add clipboard and fold tool for site ([5298c99](https://github.com/haoziqaq/varlet/commit/5298c996a6ea890ee29c01c254704f06d157df4c))
+* **loading:** add slots and desc prop ([db0df16](https://github.com/haoziqaq/varlet/commit/db0df16af2cab2de059282e9a8c15c66077b1ae2))
+
+
+### Reverts
+
+* revert fix mobile style ([22d9da9](https://github.com/haoziqaq/varlet/commit/22d9da9beaf88fa1a29394bc07141e5ec3355c42))
+
+
+
+
+
 ## [1.23.11](https://github.com/haoziqaq/varlet/compare/v1.23.10...v1.23.11) (2021-12-10)
 
 
