@@ -1,7 +1,7 @@
 @collapse-menu-group-background: #fff;
 @collapse-menu-group-text-color: #232222;
 @collapse-menu-group-header-font-size: var(--font-size-md);
-@collapse-menu-group-header-padding: 10px 16px;
+@collapse-menu-group-header-padding: 8px 16px;
 @collapse-menu-group-content-padding: 0 16px 10px;
 @collapse-menu-group-disable-color: #bdbdbd;
 
@@ -25,7 +25,6 @@
     font-size: var(--collapse-menu-group-header-font-size);
     outline: none;
     padding: var(--collapse-menu-group-header-padding);
-    justify-content: space-between;
     position: relative;
     margin-bottom: 4px;
 
@@ -44,12 +43,18 @@
     }
 
     &__title {
+      flex-grow: 1;
       transition: color 0.25s;
     }
 
     &__icon {
       transform: rotate(0deg);
       opacity: 1;
+    }
+
+    &__icon-l {
+      width: 20px;
+      margin-right: 24px;
     }
 
     &__disable {

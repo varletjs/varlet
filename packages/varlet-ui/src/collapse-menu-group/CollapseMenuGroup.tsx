@@ -2,6 +2,7 @@ import VarIcon from '../icon'
 import Ripple from '../ripple'
 import { defineComponent, ref, watch, nextTick, computed } from 'vue'
 import { props } from './props'
+import { isFunction, isPlainObject, isString } from '../utils/shared'
 import type { Ref, ComputedRef } from 'vue'
 import { CollpaseMenuGroupProvider, useCollapseMenu } from './provide'
 
@@ -82,16 +83,36 @@ export default defineComponent({
 
     return () => {
       const prefix = 'var-collapse-menu-group'
-      const { title, disabled } = props
+      const { title, icon, disabled } = props
       const { activeColor } = collapseMenu
+
+      const renderIcon = () => {
+        if (slots.icon) {
+          return slots.icon()
+        }
+
+        if (isFunction(icon)) {
+          return icon()
+        }
+
+        if (isPlainObject(icon)) {
+          return <VarIcon {...icon} />
+        }
+
+        if (isString(icon)) {
+          return <VarIcon name={icon} />
+        }
+      }
+
       return (
         <div class={[prefix, { [prefix + '__disable']: disabled }]}>
           <div
             v-ripple={disabled}
-            class={[prefix + '-header', { [prefix + '-header__actived']: expanded.value }]}
+            class={[prefix + '-header']}
             style={{ color: expanded.value ? activeColor : '' }}
             onClick={handleClick}
           >
+            <div class={prefix + '-header__icon-l'}>{renderIcon()} </div>
             <div class={prefix + '-header__title'}>{title}</div>
             <div class={prefix + '-header__icon'}>
               <var-icon

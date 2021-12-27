@@ -1,4 +1,4 @@
-import { computed, defineComponent, nextTick } from 'vue'
+import { computed, defineComponent, nextTick, onMounted } from 'vue'
 import { props } from './props'
 import { useCollapseMenuItem, useCollapseMenuGroup } from './provide'
 import type { CollapseMenuProvider } from './provide'
@@ -44,15 +44,15 @@ export default defineComponent({
 
     // 第一次加载展开
     const handleExpand = () => {
+      // TODO 计算高度
       collapseMenuGroup.forEach((group) => {
         if (expandedKeys.value.includes(group.name.value)) {
           group.expanded.value = true
         }
       })
     }
-    nextTick(() => {
-      handleExpand()
-    })
+
+    onMounted(handleExpand)
 
     const collapseMenuProvider: CollapseMenuProvider = {
       selectedKeys,

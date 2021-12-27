@@ -19,4 +19,7 @@ export const props = {
     type: [String, Number],
     default: null,
   },
+  icon: {
+    type: [String, Object, Function],
+  },
 }
