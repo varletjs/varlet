@@ -12,7 +12,7 @@ exports[`test tabs active 1`] = `
   </div>
 </transition-stub>
 <div class=\\"var-swipe var-tabs-items\\">
-  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 0ms;\\">
+  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 300ms;\\">
     <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
     <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
     <div class=\\"var-swipe-item var-tab-item\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\">视图3</div>
@@ -124,7 +124,7 @@ exports[`test tabs example 1`] = `
   </div>
 </transition-stub>
 <div class=\\"var-swipe var-tabs-items\\" style=\\"margin: 8px 0px;\\">
-  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 0ms;\\">
+  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 300ms;\\">
     <div class=\\"var-swipe-item var-tab-item\\" style=\\"width: 0px; transform: translateX(0px); color: rgb(136, 136, 136);\\" var-tab-item-cover=\\"\\">呜啦啦啦火车笛，随着奔腾的马蹄。
       小妹妹吹着口琴，夕阳下美了剪影。
       我用子弹写日记，介绍完了风景。
@@ -164,7 +164,7 @@ exports[`test tabs relation tabsItems 1`] = `
   </div>
 </transition-stub>
 <div class=\\"var-swipe var-tabs-items\\">
-  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 0ms;\\">
+  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 300ms;\\">
     <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
     <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
     <div class=\\"var-swipe-item var-tab-item\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\">视图3</div>
