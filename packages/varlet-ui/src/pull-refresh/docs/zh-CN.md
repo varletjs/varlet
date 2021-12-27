@@ -66,10 +66,10 @@ export default {
 | `disabled` | 是否禁用下拉刷新 | _boolean_ | `false` |
 | `animation-duration` | 加载结束后回到初始位置的动画时长(ms) | _string \| number_ | `300` |
 | `success-duration` | 成功提示展示时长(ms) | _string \| number_ | `2000` |
-| `bgColor` | control的背景颜色 | _string_ | `#005CAF` |
+| `bg-color` | control的背景颜色 | _string_ | `#005CAF` |
 | `color` | control 的颜色 | _string_ | `#ffffff` |
-| `successBgColor` | 成功状态下control的背景颜色 | _string_ | `#4CAF50` |
-| `successColor` | 成功状态下control的颜色 | _string_ | `ffffff` |
+| `success-bg-color` | 成功状态下control的背景颜色 | _string_ | `#4CAF50` |
+| `success-color` | 成功状态下control的颜色 | _string_ | `ffffff` |
 
 ### 事件
 

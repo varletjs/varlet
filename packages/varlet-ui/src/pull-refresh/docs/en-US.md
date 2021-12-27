@@ -67,10 +67,10 @@ export default {
 | `disabled` | Whether to disable pull refresh | _boolean_ | `false` |
 | `animation-duration` | The duration of the animation to return to the initial position after loading(ms) | _string \| number_ | `300` |
 | `success-duration` | Success text display duration(ms) | _string \| number_ | `2000` |
-| `bgColor` | BackgroundColor of control | _string_ | `#005CAF` |
+| `bg-color` | BackgroundColor of control | _string_ | `#005CAF` |
 | `color` | color of control | _string_ | `#ffffff` |
-| `successBgColor` | BackgroundColor of control when the status is success | _string_ | `#4CAF50` |
-| `successColor` | color of control when the status is success | _string_ | `ffffff` |
+| `success-bg-color` | BackgroundColor of control when the status is success | _string_ | `#4CAF50` |
+| `success-color` | color of control when the status is success | _string_ | `ffffff` |
 
 ### Events
 
