@@ -179,7 +179,7 @@ export default defineComponent({
     }
 
     const stopAutoplay = () => {
-      timer && clearInterval(timer)
+      timer && clearTimeout(timer)
     }
 
     const getDirection = (x: number, y: number) => {
