@@ -1,5 +1,6 @@
 {
   "private": true,
+  "workspaces": ["packages/*"],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "lint": "varlet-cli lint",
