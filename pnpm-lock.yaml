@@ -8,6 +8,7 @@ importers:
       '@commitlint/config-conventional': ^11.0.0
       '@varlet/cli': workspace:*
       '@varlet/eslint-config': workspace:*
+      '@varlet/icons': workspace:*
       '@varlet/stylelint-config': workspace:*
       commitizen: ^4.2.2
       cz-lerna-changelog: ^2.0.3
@@ -25,6 +26,7 @@ importers:
       '@commitlint/config-conventional': 11.0.0
       '@varlet/cli': link:packages/varlet-cli
       '@varlet/eslint-config': link:packages/varlet-eslint-config
+      '@varlet/icons': link:packages/varlet-icons
       '@varlet/stylelint-config': link:packages/varlet-stylelint-config
       commitizen: 4.2.4
       cz-lerna-changelog: 2.0.3_lerna@3.22.1

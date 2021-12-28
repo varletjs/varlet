@@ -60,6 +60,7 @@
   },
   "devDependencies": {
     "@varlet/cli": "workspace:*",
+    "@varlet/icons": "workspace:*",
     "@varlet/eslint-config": "workspace:*",
     "@varlet/stylelint-config": "workspace:*",
     "prettier": "^2.3.2",
