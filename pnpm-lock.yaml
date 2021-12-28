@@ -73,6 +73,7 @@ importers:
       jest: ^26.6.3
       less: ^3.12.2
       lodash: ^4.17.21
+      lodash-es: ^4.17.21
       ora: ^5.4.0
       release-it: ^14.11.5
       slash: ^3.0.0
@@ -80,6 +81,7 @@ importers:
       typescript: ^4.4.4
       vite: 2.6.5
       vite-plugin-html: ^2.1.0
+      vue: 3.2.16
       vue-jest: ^5.0.0-alpha.8
     dependencies:
       '@babel/core': 7.16.5
@@ -107,6 +109,7 @@ importers:
       jest: 26.6.3
       less: 3.13.1
       lodash: 4.17.21
+      lodash-es: 4.17.21
       ora: 5.4.1
       release-it: 14.11.8
       slash: 3.0.0
@@ -114,7 +117,8 @@ importers:
       typescript: 4.5.4
       vite: 2.6.5_less@3.13.1
       vite-plugin-html: 2.1.2_vite@2.6.5
-      vue-jest: 5.0.0-alpha.10_bd4131cd90c3f4871e88972f2ca9243b
+      vue: 3.2.16
+      vue-jest: 5.0.0-alpha.10_4bf5a684921c48e55cb6f6d7d4d1c088
     devDependencies:
       '@types/babel__core': 7.1.17
       '@types/fs-extra': 9.0.13
@@ -13090,7 +13094,7 @@ packages:
       - supports-color
     dev: false
 
-  /vue-jest/5.0.0-alpha.10_bd4131cd90c3f4871e88972f2ca9243b:
+  /vue-jest/5.0.0-alpha.10_4bf5a684921c48e55cb6f6d7d4d1c088:
     resolution: {integrity: sha512-iN62cTi4AL0UsgxEyVeJtHG6qXEv+8Ci2wX1vP3b/dAZvyBRmqy5aJHQrP6VCEuio+HgHQ1LAZ+ccM2pouBmlg==}
     peerDependencies:
       '@babel/core': 7.x
@@ -13116,6 +13120,7 @@ packages:
       ts-jest: 26.5.6_jest@26.6.3+typescript@4.5.4
       tsconfig: 7.0.0
       typescript: 4.5.4
+      vue: 3.2.16
     transitivePeerDependencies:
       - supports-color
     dev: false

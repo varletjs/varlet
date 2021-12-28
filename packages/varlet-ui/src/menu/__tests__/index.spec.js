@@ -61,7 +61,7 @@ test('test menu click forbid trigger', async () => {
   mockRestore()
   wrapper.unmount()
 })
-//
+
 test('test menu z-index', async () => {
   const { mockRestore } = mockStubs()
   const wrapper = mount(Wrapper, { attachTo: document.body })

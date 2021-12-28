@@ -317,24 +317,6 @@ exports[`test icon example 1`] = `
   <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"content-copy\\"><i class=\\"var-icon var-icon--set var-icon-content-copy\\" style=\\"transition: transform 0ms;\\"></i>
     <div class=\\"example__icon-name\\">content-copy</div>
   </div>
-  <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"qrcode-scan\\"><i class=\\"var-icon var-icon--set var-icon-qrcode-scan\\" style=\\"transition: transform 0ms;\\"></i>
-    <div class=\\"example__icon-name\\">qrcode-scan</div>
-  </div>
-  <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"barcode-scan\\"><i class=\\"var-icon var-icon--set var-icon-barcode-scan\\" style=\\"transition: transform 0ms;\\"></i>
-    <div class=\\"example__icon-name\\">barcode-scan</div>
-  </div>
-  <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"shopping\\"><i class=\\"var-icon var-icon--set var-icon-shopping\\" style=\\"transition: transform 0ms;\\"></i>
-    <div class=\\"example__icon-name\\">shopping</div>
-  </div>
-  <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"shopping-outline\\"><i class=\\"var-icon var-icon--set var-icon-shopping-outline\\" style=\\"transition: transform 0ms;\\"></i>
-    <div class=\\"example__icon-name\\">shopping-outline</div>
-  </div>
-  <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"card-account-details\\"><i class=\\"var-icon var-icon--set var-icon-card-account-details\\" style=\\"transition: transform 0ms;\\"></i>
-    <div class=\\"example__icon-name\\">card-account-details</div>
-  </div>
-  <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"card-account-details-outline\\"><i class=\\"var-icon var-icon--set var-icon-card-account-details-outline\\" style=\\"transition: transform 0ms;\\"></i>
-    <div class=\\"example__icon-name\\">card-account-details-outline</div>
-  </div>
 </div>"
 `;
 
