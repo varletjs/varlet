@@ -6,19 +6,28 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 6
+
+      - name: Set node version to 14
+        uses: actions/setup-node@v2
         with:
           node-version: '14.x'
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: yarn bootstrap
+        run: pnpm run bootstrap
 
       - name: Run linter
-        run: yarn lint
+        run: pnpm run lint
 
       - name: Run test cases
-        run: cd packages/varlet-ui && yarn test
+        run: cd packages/varlet-ui && pnpm run test
 
       - name: Report coverage to Codecov
         uses: codecov/codecov-action@v1
