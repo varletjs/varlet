@@ -11,6 +11,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "lint": "varlet-cli lint",
     "bootstrap": "yarn && node scripts/bootstrap.mjs",
     "commit": "git-cz",
