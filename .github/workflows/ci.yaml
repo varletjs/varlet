@@ -21,13 +21,13 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm run bootstrap
+        run: pnpm bootstrap
 
       - name: Run linter
-        run: pnpm run lint
+        run: pnpm lint
 
       - name: Run test cases
-        run: cd packages/varlet-ui && pnpm run test
+        run: cd packages/varlet-ui && pnpm test
 
       - name: Report coverage to Codecov
         uses: codecov/codecov-action@v1

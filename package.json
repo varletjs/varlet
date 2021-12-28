@@ -1,14 +1,15 @@
 {
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
+    "prepare": "husky install",
     "preinstall": "npx only-allow pnpm",
     "lint": "varlet-cli lint",
     "bootstrap": "pnpm install && node scripts/bootstrap.mjs",
     "commit": "git-cz",
-    "prepare": "husky install",
-    "publish": "node scripts/publish.mjs && lerna publish",
-    "gen": "varlet-cli gen"
+    "publish": "node scripts/publish.mjs && lerna publish"
   },
   "config": {
     "commitizen": {
@@ -67,9 +68,9 @@
     "husky": "^7.0.1",
     "surge": "^0.23.0",
     "execa": "^5.0.0",
-    "lerna": "^3.22.1",
     "lint-staged": "^10.5.0",
     "ora": "^5.4.0",
+    "lerna": "^3.22.1",
     "commitizen": "^4.2.2",
     "@commitlint/config-conventional": "^11.0.0",
     "@commitlint/cli": "^11.0.0",

@@ -33,13 +33,13 @@
     <div
       class="example__icon var-elevation--2"
       :style="{ background }"
-      :data-clipboard-text="iconName"
-      :key="iconName"
-      v-for="iconName in iconNames"
+      :data-clipboard-text="name"
+      :key="name"
+      v-for="name in iconNames"
       v-ripple
     >
-      <var-icon :name="iconName" />
-      <div class="example__icon-name">{{ iconName }}</div>
+      <var-icon :name="name" />
+      <div class="example__icon-name">{{ name }}</div>
     </div>
   </div>
 </template>
