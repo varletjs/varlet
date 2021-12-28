@@ -1,6 +1,5 @@
 import { isNumber, isString, toNumber, kebabCase } from './shared'
 import type { StyleVars } from '../../utils'
-import { requestAnimationFrame } from '@varlet/ui/src/utils/elements'
 
 export function getLeft(element: HTMLElement): number {
   const { left } = element.getBoundingClientRect()

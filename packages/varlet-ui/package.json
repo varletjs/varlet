@@ -48,12 +48,21 @@
     "vue": "^3.2.0"
   },
   "gitHead": "ee9c3866bedad96c86365b0f9888a3a6bb781b1f",
-  "devDependencies": {
-    "@varlet/cli": "workspace:*"
-  },
   "dependencies": {
+    "@varlet/touch-emulator": "workspace:*",
+    "@varlet/icons": "workspace:*",
+    "lodash-es": "^4.17.21",
+    "clipboard": "^2.0.6",
+    "vue": "3.2.16",
+    "vue-router": "4.0.12",
     "dayjs": "^1.10.4",
     "decimal.js": "^10.2.1"
+  },
+  "devDependencies": {
+    "@varlet/cli": "workspace:*",
+    "@vue/test-utils": "^2.0.0-rc.18",
+    "@vue/compiler-sfc": "3.2.16",
+    "@vue/runtime-core": "3.2.16"
   },
   "browserslist": [
     "Chrome >= 51",

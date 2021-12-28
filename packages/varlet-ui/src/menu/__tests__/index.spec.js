@@ -1,15 +1,8 @@
-import example from '../example'
 import Menu from '..'
 import VarMenu from '../Menu'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/jest'
-
-test('test menu example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test menu plugin', () => {
   const app = createApp({}).use(Menu)

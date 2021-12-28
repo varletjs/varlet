@@ -1,5 +1,4 @@
 {
-  "name": "varlet-monorepo",
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -58,12 +57,18 @@
     ]
   },
   "devDependencies": {
+    "@varlet/cli": "workspace:*",
+    "@varlet/eslint-config": "workspace:*",
+    "@varlet/stylelint-config": "workspace:*",
+    "@varlet/icons": "workspace:*",
+    "stylelint": "^13.13.1",
+    "eslint": "^7.30.0",
+    "husky": "^7.0.1",
     "surge": "^0.23.0",
     "cz-lerna-changelog": "^2.0.3",
     "execa": "^5.0.0",
     "lerna": "^3.22.1",
-    "ora": "^5.4.0",
-    "vue": "3.2.16"
+    "ora": "^5.4.0"
   },
   "packageManager": "pnpm@6.24.3"
 }

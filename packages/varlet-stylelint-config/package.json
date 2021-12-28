@@ -20,8 +20,5 @@
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^20.0.0"
   },
-  "gitHead": "42554856ff028f6f411a35f468e0f763978270b0",
-  "peerDependencies": {
-    "stylelint": ">=13.7.2"
-  }
+  "gitHead": "42554856ff028f6f411a35f468e0f763978270b0"
 }
