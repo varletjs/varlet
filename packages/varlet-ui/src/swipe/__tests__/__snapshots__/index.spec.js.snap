@@ -18,7 +18,7 @@ exports[`test render initial index 1`] = `
 exports[`test swipe example 1`] = `
 "<div class=\\"app-type\\">基本使用</div>
 <div class=\\"var-swipe swipe\\">
-  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 300ms;\\">
+  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 0ms;\\">
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\" alt=\\"\\"></div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat2.jpg\\" alt=\\"\\"></div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat3.jpg\\" alt=\\"\\"></div>
@@ -31,7 +31,7 @@ exports[`test swipe example 1`] = `
 </div>
 <div class=\\"app-type\\">禁止循环轮播</div>
 <div class=\\"var-swipe swipe\\">
-  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 300ms;\\">
+  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 0ms;\\">
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\" alt=\\"\\"></div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat2.jpg\\" alt=\\"\\"></div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat3.jpg\\" alt=\\"\\"></div>
@@ -44,7 +44,7 @@ exports[`test swipe example 1`] = `
 </div>
 <div class=\\"app-type\\">开启自动播放</div>
 <div class=\\"var-swipe swipe\\">
-  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 300ms;\\">
+  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 0ms;\\">
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\" alt=\\"\\"></div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat2.jpg\\" alt=\\"\\"></div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat3.jpg\\" alt=\\"\\"></div>
@@ -57,7 +57,7 @@ exports[`test swipe example 1`] = `
 </div>
 <div class=\\"app-type\\">垂直轮播</div>
 <div class=\\"var-swipe swipe\\">
-  <div class=\\"var-swipe__track var-swipe--vertical\\" style=\\"height: 0px; transform: translateY(0px); transition-duration: 300ms;\\">
+  <div class=\\"var-swipe__track var-swipe--vertical\\" style=\\"height: 0px; transform: translateY(0px); transition-duration: 0ms;\\">
     <div class=\\"var-swipe-item\\" style=\\"height: 0px; transform: translateY(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\" alt=\\"\\"></div>
     <div class=\\"var-swipe-item\\" style=\\"height: 0px; transform: translateY(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat2.jpg\\" alt=\\"\\"></div>
     <div class=\\"var-swipe-item\\" style=\\"height: 0px; transform: translateY(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat3.jpg\\" alt=\\"\\"></div>
@@ -70,7 +70,7 @@ exports[`test swipe example 1`] = `
 </div>
 <div class=\\"app-type\\">监听切换</div>
 <div class=\\"var-swipe swipe\\">
-  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 300ms;\\">
+  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 0ms;\\">
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\" alt=\\"\\"></div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat2.jpg\\" alt=\\"\\"></div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat3.jpg\\" alt=\\"\\"></div>
@@ -83,7 +83,7 @@ exports[`test swipe example 1`] = `
 </div>
 <div class=\\"app-type\\">自定义指示器</div>
 <div class=\\"var-swipe swipe\\">
-  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 300ms;\\">
+  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 0ms;\\">
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\" alt=\\"\\"></div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat2.jpg\\" alt=\\"\\"></div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\"><img class=\\"swipe-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat3.jpg\\" alt=\\"\\"></div>
