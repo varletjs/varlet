@@ -35,7 +35,7 @@
     "vue": "^3.2.0"
   },
   "devDependencies": {
-    "@varlet/cli": "^1.20.0-alpha.0",
+    "@varlet/cli": "workspace:*",
     "vue": "3.2.16"
   },
   "release-it": {

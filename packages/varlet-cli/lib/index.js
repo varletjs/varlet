@@ -31,7 +31,7 @@ var lint_1 = require("./commands/lint");
 var gen_1 = require("./commands/gen");
 var preview_1 = require("./commands/preview");
 var program = new commander_1.Command();
-program.version("varlet-cli " + require('../package.json').version).usage('<command> [options]');
+program.version("varlet-cli ".concat(require('../package.json').version)).usage('<command> [options]');
 program
     .command('dev')
     .option('-f --force', 'Force dep pre-optimization regardless of whether deps have changed')
@@ -58,7 +58,7 @@ program.command('gen <name>').description('Generate cli application').action(gen
 program.on('command:*', function (_a) {
     var _b = __read(_a, 1), cmd = _b[0];
     program.outputHelp();
-    logger_1.default.error("\nUnknown command " + cmd + ".\n");
+    logger_1.default.error("\nUnknown command ".concat(cmd, ".\n"));
     process.exitCode = 1;
 });
 program.parse();
