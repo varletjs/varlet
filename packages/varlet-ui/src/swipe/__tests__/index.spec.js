@@ -9,13 +9,6 @@ import { delay, mockOffset, triggerDrag } from '../../utils/jest'
 
 mockOffset()
 
-test('test swipe example', async () => {
-  const wrapper = mount(example)
-  await delay(16)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
-
 test('test swipe & swipe-item plugin', () => {
   const app = createApp({}).use(Swipe).use(SwipeItem)
   expect(app.component(Swipe.name)).toBeTruthy()

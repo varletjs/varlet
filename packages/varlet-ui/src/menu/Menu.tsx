@@ -1,39 +1,18 @@
-<template>
-  <div class="var-menu" ref="host" @click="handleClick">
-    <slot />
-
-    <teleport :to="teleport" :disabled="!teleport || disabled">
-      <transition name="var-menu" @after-enter="onOpened" @after-leave="onClosed">
-        <div
-          class="var-menu__menu var-elevation--3"
-          ref="menu"
-          :style="{
-            top: `calc(${top}px + ${toSizeUnit(offsetY)})`,
-            left: `calc(${left}px + ${toSizeUnit(offsetX)})`,
-            zIndex,
-          }"
-          v-show="show"
-          @click.stop
-        >
-          <slot name="menu" />
-        </div>
-      </transition>
-    </teleport>
-  </div>
-</template>
-
-<script lang="ts">
-import { defineComponent, ref, watch, onMounted, onUnmounted } from 'vue'
+import { defineComponent, ref, watch, onMounted, onUnmounted, Transition, Teleport } from 'vue'
 import { props } from './props'
 import { getLeft, getTop, toSizeUnit } from '../utils/elements'
 import { useZIndex } from '../context/zIndex'
 import type { Ref } from 'vue'
-import { useTeleport } from '../utils/components'
+import { exposeApis, useTeleport } from '../utils/components'
+
+import '../styles/common.less'
+import '../styles/elevation.less'
+import './menu.less'
 
 export default defineComponent({
   name: 'VarMenu',
   props,
-  setup(props) {
+  setup(props, { slots }) {
     const host: Ref<null | HTMLElement> = ref(null)
     const menu: Ref<null | HTMLElement> = ref(null)
     const top: Ref<number> = ref(0)
@@ -71,6 +50,26 @@ export default defineComponent({
       left.value = getLeft(host.value as HTMLElement)
     }
 
+    const renderTransition = () => (
+      <Transition name="var-menu" onAfterEnter={props.onOpen} onAfterLeave={props.onClosed}>
+        <div
+          class="var-menu__menu var-elevation--3"
+          ref={menu}
+          style={{
+            top: `calc(${top.value}px + ${toSizeUnit(props.offsetY)})`,
+            left: `calc(${left.value}px + ${toSizeUnit(props.offsetX)})`,
+            zIndex: zIndex.value,
+          }}
+          v-show={props.show}
+          onClick={(event) => {
+            event.stopPropagation()
+          }}
+        >
+          {slots.menu?.()}
+        </div>
+      </Transition>
+    )
+
     watch(() => props.alignment, resize)
 
     watch(
@@ -94,23 +93,20 @@ export default defineComponent({
       window.removeEventListener('resize', resize)
     })
 
-    return {
-      disabled,
-      zIndex,
-      host,
-      menu,
-      top,
-      left,
-      toSizeUnit,
-      handleClick,
-      resize,
-    }
+    exposeApis({ resize })
+
+    return () => (
+      <div class="var-menu" ref={host} onClick={handleClick}>
+        {slots.default?.()}
+
+        {props.teleport ? (
+          <Teleport to={props.teleport} disabled={disabled.value}>
+            {renderTransition()}
+          </Teleport>
+        ) : (
+          renderTransition()
+        )}
+      </div>
+    )
   },
 })
-</script>
-
-<style lang="less">
-@import '../styles/common';
-@import '../styles/elevation';
-@import './menu';
-</style>

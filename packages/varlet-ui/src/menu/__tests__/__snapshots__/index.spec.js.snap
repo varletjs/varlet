@@ -2,42 +2,33 @@
 
 exports[`test menu click forbid trigger 1`] = `
 "<div class=\\"container\\">
-  <transition-stub>
-    <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 100px); left: calc(0px + 100px); z-index: 2002;\\">
+  <div class=\\"var-menu\\">
+    <!---->
+    <div class=\\"var-menu__menu var-elevation--3 var-menu-enter-from var-menu-enter-active\\" style=\\"top: calc(0px + 100px); left: calc(0px + 100px); z-index: 2002;\\">
       <div class=\\"menu-content\\"></div>
     </div>
-  </transition-stub>
-  <div class=\\"var-menu\\">
-    <!--teleport start-->
-    <!--teleport end-->
   </div>
 </div>"
 `;
 
 exports[`test menu trigger 1`] = `
 "<div class=\\"container\\">
-  <transition-stub>
-    <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 100px); left: calc(0px + 100px); z-index: 2001;\\">
+  <div class=\\"var-menu\\">
+    <!---->
+    <div class=\\"var-menu__menu var-elevation--3 var-menu-enter-from var-menu-enter-active\\" style=\\"top: calc(0px + 100px); left: calc(0px + 100px); z-index: 2001;\\">
       <div class=\\"menu-content\\"></div>
     </div>
-  </transition-stub>
-  <div class=\\"var-menu\\">
-    <!--teleport start-->
-    <!--teleport end-->
   </div>
 </div>"
 `;
 
 exports[`test menu trigger 2`] = `
 "<div class=\\"container\\">
-  <transition-stub>
+  <div class=\\"var-menu\\">
+    <!---->
     <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 100px); left: calc(0px + 100px); z-index: 2001; display: none;\\">
       <div class=\\"menu-content\\"></div>
     </div>
-  </transition-stub>
-  <div class=\\"var-menu\\">
-    <!--teleport start-->
-    <!--teleport end-->
   </div>
 </div>"
 `;

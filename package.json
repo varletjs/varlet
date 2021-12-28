@@ -61,15 +61,19 @@
     "@varlet/cli": "workspace:*",
     "@varlet/eslint-config": "workspace:*",
     "@varlet/stylelint-config": "workspace:*",
-    "@varlet/icons": "workspace:*",
+    "prettier": "^2.3.2",
     "stylelint": "^13.13.1",
     "eslint": "^7.30.0",
     "husky": "^7.0.1",
     "surge": "^0.23.0",
-    "cz-lerna-changelog": "^2.0.3",
     "execa": "^5.0.0",
     "lerna": "^3.22.1",
-    "ora": "^5.4.0"
+    "lint-staged": "^10.5.0",
+    "ora": "^5.4.0",
+    "commitizen": "^4.2.2",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/cli": "^11.0.0",
+    "cz-lerna-changelog": "^2.0.3"
   },
   "packageManager": "pnpm@6.24.3"
 }
