@@ -26,7 +26,7 @@
     "lint": "varlet-cli lint",
     "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "genAllLog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "release": "yarn compile && release-it",
+    "release": "pnpm compile && release-it",
     "test": "varlet-cli jest",
     "test:watch": "varlet-cli jest -w",
     "test:watchAll": "varlet-cli jest -wa"
