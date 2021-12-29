@@ -7,7 +7,7 @@
 
 ### Webstorm
 
-通过设置 `Editor->General->Code Completion->Show the documentation popup in ___ ms` 开启组件库文档说明。
+通过设置 `Editor -> General -> Code Completion -> Show the documentation popup in ___ ms` 开启组件库文档说明。
 
 <img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/hl_wb_setting.png" alt="webstorm setting" />
 <img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/hl_wb.jpg" alt="webstorm highlight" />
