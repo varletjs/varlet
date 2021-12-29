@@ -3,7 +3,7 @@ import { merge } from 'lodash'
 import { VARLET_CONFIG, SITE_CONFIG } from '../shared/constant'
 import { outputFileSyncOnChange } from '../shared/fsUtils'
 
-export function getVarletConfig(): Record<string, any> {
+export function getVarletConfig(isGenVarlet = false): Record<string, any> {
   let config: any = {}
 
   if (pathExistsSync(VARLET_CONFIG)) {
@@ -14,8 +14,11 @@ export function getVarletConfig(): Record<string, any> {
   const defaultConfig = require('../../varlet.default.config.js')
 
   const mergedConfig = merge(defaultConfig, config)
-  const source = JSON.stringify(mergedConfig, null, 2)
-  outputFileSyncOnChange(SITE_CONFIG, source)
+
+  if (isGenVarlet) {
+    const source = JSON.stringify(mergedConfig, null, 2)
+    outputFileSyncOnChange(SITE_CONFIG, source)
+  }
 
   return mergedConfig
 }
