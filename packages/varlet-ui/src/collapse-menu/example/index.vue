@@ -1,31 +1,47 @@
 <template>
   <app-type>基本使用</app-type>
   <var-collapse-menu v-model:selectedKeys="selectedKeys" v-model:expandedKeys="expandedKeys" @collapse="handleCollapse">
-    <var-collapse-menu-group title="折叠菜单组1" name="g3">
+    <var-collapse-menu-group title="折叠菜单组1" name="g1">
       <var-collapse-menu-item name="i1">
         <template #label>菜单1</template>
       </var-collapse-menu-item>
     </var-collapse-menu-group>
-    <var-collapse-menu-group title="折叠菜单组2" name="g1">
+    <var-collapse-menu-group title="折叠菜单组2" name="g2">
       <template #icon>
         <var-icon name="star" />
       </template>
-      <var-collapse-menu-group title="折叠菜单组2-1" name="g4">
+      <var-collapse-menu-group title="折叠菜单组2-1" name="g2-1">
         <template #icon>
           <var-icon name="star" />
         </template>
-        <var-collapse-menu-item name="i1">
-          <template #label>菜单1</template>
+        <var-collapse-menu-item name="i2">
+          <template #label>菜单2</template>
         </var-collapse-menu-item>
+        <var-collapse-menu-group title="折叠菜单组2-1-1" name="g2-1-1">
+          <template #icon>
+            <var-icon name="star" />
+          </template>
+          <var-collapse-menu-item name="i3">
+            <template #label>菜单3</template>
+          </var-collapse-menu-item>
+          <var-collapse-menu-group title="折叠菜单组2-1-1-1" name="g2-1-1-1">
+            <template #icon>
+              <var-icon name="star" />
+            </template>
+            <var-collapse-menu-item name="i4">
+              <template #label>菜单4</template>
+            </var-collapse-menu-item>
+          </var-collapse-menu-group>
+        </var-collapse-menu-group>
       </var-collapse-menu-group>
-      <var-collapse-menu-item name="i2">
-        <template #label>菜单2</template>
+      <var-collapse-menu-item name="i5">
+        <template #label>菜单5</template>
       </var-collapse-menu-item>
-      <var-collapse-menu-item name="i3">
+      <var-collapse-menu-item name="i6">
         <template #icon>
           <var-icon name="star" />
         </template>
-        <template #label>菜单3</template>
+        <template #label>菜单6</template>
       </var-collapse-menu-item>
     </var-collapse-menu-group>
   </var-collapse-menu>

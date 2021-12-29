@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test collapse-menu-item example 1`] = `
+"<app-type>基本实现</app-type>
+<!-- <var-collapse-menu-item :icon=\\"iconStr\\" :label=\\"labelStr\\" />
+  <app-type>icon使用插槽实现</app-type>
+  <var-collapse-menu-item :label=\\"labelStr\\">
+    <template #icon>
+      <var-icon :name=\\"iconStr\\"></var-icon>
+    </template>
+  </var-collapse-menu-item>
+  <app-type>label使用插槽实现</app-type>
+  <var-collapse-menu-item :icon=\\"iconStr\\">
+    <template #label>{{ labelStr }}</template>
+  </var-collapse-menu-item>
+  <app-type>icon, label使用函数实现</app-type>
+  <var-collapse-menu-item :icon=\\"iconFn\\" :label=\\"labelFn\\"></var-collapse-menu-item>
+
+  <app-type>icon使用对象实现</app-type>
+  <var-collapse-menu-item :icon=\\"iconObj\\" :label=\\"labelStr\\"></var-collapse-menu-item> -->
+<!-- <var-collapse-menu-item :icon=\\"iconFn\\" :label=\\"labelFn\\"></var-collapse-menu-item>
+  <var-collapse-menu-item :icon=\\"iconObj\\" :label=\\"labelStr\\"></var-collapse-menu-item>
+  <var-collapse-menu-item disabled=\\"true\\" :icon=\\"iconStr\\" :label=\\"labelFn\\"></var-collapse-menu-item>-->"
+`;

@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test collapse-menu example 1`] = `
+"<div class=\\"app-type\\">基本使用</div>
+<div class=\\"var-collapse-menu\\">
+  <div class=\\"var-collapse-menu-group\\">
+    <div class=\\"var-collapse-menu-group-header\\">
+      <div class=\\"var-collapse-menu-group-header__icon-l\\">
+        <!---->
+      </div>
+      <div class=\\"var-collapse-menu-group-header__title\\">折叠菜单组1</div>
+      <div class=\\"var-collapse-menu-group-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-menu-down var-collapse-menu-group-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+    </div>
+    <div class=\\"var-collapse-menu-group-content\\" style=\\"height: 0px; display: none;\\">
+      <div class=\\"var-collapse-menu-group__wrap\\">
+        <div class=\\"var-collapse-menu-item\\">
+          <div style=\\"width: 0px;\\"></div>
+          <div class=\\"var-collapse-menu-item__icon\\">
+            <!---->
+          </div>
+          <div class=\\"var-collapse-menu-item__label\\">菜单1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"var-collapse-menu-group\\">
+    <div class=\\"var-collapse-menu-group-header\\">
+      <div class=\\"var-collapse-menu-group-header__icon-l\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: transform 0ms;\\"></i></div>
+      <div class=\\"var-collapse-menu-group-header__title\\">折叠菜单组2</div>
+      <div class=\\"var-collapse-menu-group-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-menu-down var-collapse-menu-group-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+    </div>
+    <div class=\\"var-collapse-menu-group-content\\" style=\\"height: 0px; display: none;\\">
+      <div class=\\"var-collapse-menu-group__wrap\\">
+        <div class=\\"var-collapse-menu-group\\">
+          <div class=\\"var-collapse-menu-group-header\\">
+            <div class=\\"var-collapse-menu-group-header__icon-l\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: transform 0ms;\\"></i></div>
+            <div class=\\"var-collapse-menu-group-header__title\\">折叠菜单组2-1</div>
+            <div class=\\"var-collapse-menu-group-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-menu-down var-collapse-menu-group-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+          </div>
+          <div class=\\"var-collapse-menu-group-content\\" style=\\"height: 0px; display: none;\\">
+            <div class=\\"var-collapse-menu-group__wrap\\">
+              <div class=\\"var-collapse-menu-item\\">
+                <div style=\\"width: 0px;\\"></div>
+                <div class=\\"var-collapse-menu-item__icon\\">
+                  <!---->
+                </div>
+                <div class=\\"var-collapse-menu-item__label\\">菜单2</div>
+              </div>
+              <div class=\\"var-collapse-menu-group\\">
+                <div class=\\"var-collapse-menu-group-header\\">
+                  <div class=\\"var-collapse-menu-group-header__icon-l\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: transform 0ms;\\"></i></div>
+                  <div class=\\"var-collapse-menu-group-header__title\\">折叠菜单组2-1-1</div>
+                  <div class=\\"var-collapse-menu-group-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-menu-down var-collapse-menu-group-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+                </div>
+                <div class=\\"var-collapse-menu-group-content\\" style=\\"height: 0px; display: none;\\">
+                  <div class=\\"var-collapse-menu-group__wrap\\">
+                    <div class=\\"var-collapse-menu-item\\">
+                      <div style=\\"width: 0px;\\"></div>
+                      <div class=\\"var-collapse-menu-item__icon\\">
+                        <!---->
+                      </div>
+                      <div class=\\"var-collapse-menu-item__label\\">菜单3</div>
+                    </div>
+                    <div class=\\"var-collapse-menu-group\\">
+                      <div class=\\"var-collapse-menu-group-header\\">
+                        <div class=\\"var-collapse-menu-group-header__icon-l\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: transform 0ms;\\"></i></div>
+                        <div class=\\"var-collapse-menu-group-header__title\\">折叠菜单组2-1-1-1</div>
+                        <div class=\\"var-collapse-menu-group-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-menu-down var-collapse-menu-group-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+                      </div>
+                      <div class=\\"var-collapse-menu-group-content\\" style=\\"height: 0px; display: none;\\">
+                        <div class=\\"var-collapse-menu-group__wrap\\">
+                          <div class=\\"var-collapse-menu-item\\">
+                            <div style=\\"width: 0px;\\"></div>
+                            <div class=\\"var-collapse-menu-item__icon\\">
+                              <!---->
+                            </div>
+                            <div class=\\"var-collapse-menu-item__label\\">菜单4</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class=\\"var-collapse-menu-item\\">
+          <div style=\\"width: 0px;\\"></div>
+          <div class=\\"var-collapse-menu-item__icon\\">
+            <!---->
+          </div>
+          <div class=\\"var-collapse-menu-item__label\\">菜单5</div>
+        </div>
+        <div class=\\"var-collapse-menu-item\\">
+          <div style=\\"width: 0px;\\"></div>
+          <div class=\\"var-collapse-menu-item__icon\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: transform 0ms;\\"></i></div>
+          <div class=\\"var-collapse-menu-item__label\\">菜单6</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
