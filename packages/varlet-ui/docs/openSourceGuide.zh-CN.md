@@ -4,7 +4,7 @@
 首先感谢您有兴趣加入我们的开源项目，以下介绍一些注意事项。
 
 ### 快速开始
-项目基于yarn的 `workspace` 特性和 `lerna` 作为 monorepo 的基本架构。
+项目基于 yarn 的 `workspace` 特性和 `lerna` 作为 monorepo 的基本架构。
 首先 fork 仓库，基于 dev 分支进行开发，在项目根目录下。
 node 版本 16+。
 
@@ -15,7 +15,7 @@ yarn dev
 ```
 
 ### 贡献指南
-详情见[Varlet贡献指南](https://github.com/haoziqaq/varlet/blob/dev/.github/CONTRIBUTING.md)
+详情见[Varlet 贡献指南](https://github.com/haoziqaq/varlet/blob/dev/.github/CONTRIBUTING.md)
 
 ### 加入我们
 
