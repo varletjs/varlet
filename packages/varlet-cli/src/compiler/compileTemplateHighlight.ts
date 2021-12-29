@@ -18,8 +18,6 @@ import { isDir, isMD } from '../shared/fsUtils'
 import { get } from 'lodash'
 import { getVarletConfig } from '../config/varlet.config'
 
-const varletConfig = getVarletConfig()
-
 const TABLE_HEAD_RE = /\s*\|.*\|\s*\n\s*\|.*---+\s*\|\s*\n+/
 const TABLE_FOOT_RE = /(\|\s*$)|(\|\s*\n(?!\s*\|))/
 
@@ -65,13 +63,23 @@ export function compileTable(md: string, titleRe: RegExp): string {
   return md.replace(/\\\|/g, '__varlet_axis__').trim()
 }
 
-export function compileTags(table: Record<string, any>, tags: Record<string, any>, componentName: string) {
+export function compileTags(
+  table: Record<string, any>,
+  tags: Record<string, any>,
+  componentName: string,
+  varletConfig: Record<string, any>
+) {
   tags[`${get(varletConfig, 'namespace')}-${componentName}`] = {
     attributes: table.attributesTable.map((row: any) => replaceDot(row[0])),
   }
 }
 
-export function compileAttributes(table: Record<string, any>, attributes: Record<string, any>, componentName: string) {
+export function compileAttributes(
+  table: Record<string, any>,
+  attributes: Record<string, any>,
+  componentName: string,
+  varletConfig: Record<string, any>
+) {
   table.attributesTable.forEach((row: any) => {
     const attrNamespace = `${get(varletConfig, 'namespace')}-${componentName}/${replaceDot(row[0])}`
     attributes[attrNamespace] = {
@@ -81,7 +89,12 @@ export function compileAttributes(table: Record<string, any>, attributes: Record
   })
 }
 
-export function compileWebTypes(table: Record<string, any>, webTypes: Record<string, any>, componentName: string) {
+export function compileWebTypes(
+  table: Record<string, any>,
+  webTypes: Record<string, any>,
+  componentName: string,
+  varletConfig: Record<string, any>
+) {
   const { attributesTable, eventsTable, slotsTable } = table
 
   const attributes = attributesTable.map((row: any) => ({
@@ -116,7 +129,8 @@ export function compileMD(
   path: string,
   tags: Record<string, any>,
   attributes: Record<string, any>,
-  webTypes: Record<string, any>
+  webTypes: Record<string, any>,
+  varletConfig: Record<string, any>
 ) {
   if (!path.endsWith(HL_MD)) {
     return
@@ -136,30 +150,32 @@ export function compileMD(
     slotsTable,
   }
 
-  compileWebTypes(table, webTypes, componentName)
-  compileTags(table, tags, componentName)
-  compileAttributes(table, attributes, componentName)
+  compileWebTypes(table, webTypes, componentName, varletConfig)
+  compileTags(table, tags, componentName, varletConfig)
+  compileAttributes(table, attributes, componentName, varletConfig)
 }
 
 export function compileDir(
   path: string,
   tags: Record<string, any>,
   attributes: Record<string, any>,
-  webTypes: Record<string, any>
+  webTypes: Record<string, any>,
+  varletConfig: Record<string, any>
 ) {
   const dir = readdirSync(path)
 
   dir.forEach((filename) => {
     const filePath = resolve(path, filename)
 
-    isDir(filePath) && compileDir(filePath, tags, attributes, webTypes)
-    isMD(filePath) && compileMD(filePath, tags, attributes, webTypes)
+    isDir(filePath) && compileDir(filePath, tags, attributes, webTypes, varletConfig)
+    isMD(filePath) && compileMD(filePath, tags, attributes, webTypes, varletConfig)
   })
 }
 
 export async function compileTemplateHighlight() {
   await ensureDir(HL_DIR)
 
+  const varletConfig = getVarletConfig()
   const tags: Record<string, any> = {}
   const attributes: Record<string, any> = {}
   const webTypes: Record<string, any> = {
@@ -175,7 +191,7 @@ export async function compileTemplateHighlight() {
     },
   }
 
-  compileDir(SRC_DIR, tags, attributes, webTypes)
+  compileDir(SRC_DIR, tags, attributes, webTypes, varletConfig)
 
   await Promise.all([
     writeFile(HL_WEB_TYPES_JSON, JSON.stringify(webTypes, null, 2)),
