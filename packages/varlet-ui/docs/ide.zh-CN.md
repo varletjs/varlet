@@ -27,7 +27,7 @@
 <img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/hl_vsc_setting.png" alt="vscode setting" />
 <img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/hl_vsc.png" alt="vscode highlight" />
 
-### VSCode辅助插件
+### VSCode 辅助插件
 
 在 `vscode` 插件市场搜索 `varlet-vscode-extension` 安装即可, 在鼠标悬停在组件名上时, 可以通过链接直接前往该组件的文档地址。
 
