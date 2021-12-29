@@ -6,10 +6,8 @@ import { DOCS_DIR_NAME, EXAMPLE_DIR_NAME, EXAMPLE_LOCALE_DIR_NAME, SRC_DIR, TEST
 import { getVarletConfig } from '../config/varlet.config'
 import { get } from 'lodash'
 
-const varletConfig = getVarletConfig()
-
 export async function create(name: string) {
-  const namespace = get(varletConfig, 'namespace')
+  const namespace = get(getVarletConfig(), 'namespace')
   const bigCamelizeName = bigCamelize(name)
   const vueTemplate = `\
 <template>
