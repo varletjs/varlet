@@ -10,6 +10,27 @@ function removeFiles(dest: string) {
   files.forEach((filename) => removeSync(resolve(dest, filename)))
 }
 
+function generateGitIgnore(name: string) {
+  writeFileSync(
+    resolve(CWD, name, '.gitignore'),
+    `\
+node_modules
+
+.varlet
+.idea
+.vscode
+*.log
+.DS_Store
+
+site
+lib
+es
+umd
+coverage
+highlight`
+  )
+}
+
 function syncVersion(name: string) {
   const file = resolve(CWD, name, 'package.json')
   const pkg = JSON.parse(readFileSync(file, 'utf-8'))
@@ -46,6 +67,7 @@ export async function gen(name: string) {
   await copy(generator, dest)
   removeFiles(dest)
   syncVersion(name)
+  generateGitIgnore(name)
 
   logger.success('Application generated successfully!')
   logger.info(`\

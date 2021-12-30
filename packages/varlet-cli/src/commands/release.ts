@@ -26,11 +26,11 @@ async function publish(preRelease: boolean) {
   ret.stdout && logger.info(ret.stdout)
 }
 
-async function pushGit(version: string, message: string) {
+async function pushGit(version: string) {
   const s = ora().start('Pushing to remote git repository')
   await execa('git', ['add', '.'])
-  await execa('git', ['commit', '-m', message])
-  await execa('git', ['tag', version])
+  await execa('git', ['commit', '-m', `v${version}`])
+  await execa('git', ['tag', `v${version}`])
   const ret = await execa('git', ['push'])
   s.succeed('Push remote repository successfully')
   ret.stdout && logger.info(ret.stdout)
@@ -104,7 +104,7 @@ export async function release() {
 
     if (!isPreRelease) {
       await changelog()
-      await pushGit(expectVersion, `v${expectVersion}`)
+      await pushGit(expectVersion)
     }
 
     await publish(isPreRelease)

@@ -81,7 +81,8 @@
       "site/**",
       "coverage/**",
       "public/**",
-      "highlight/**"
+      "highlight/**",
+      ".varlet/**"
     ]
   },
   "browserslist": [

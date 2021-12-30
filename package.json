@@ -48,7 +48,8 @@
       "packages/varlet-ui/site/**",
       "packages/varlet-ui/coverage/**",
       "packages/varlet-ui/highlight/**",
-      "packages/varlet-ui/public/**"
+      "packages/varlet-ui/public/**",
+      "packages/varlet-ui/.varlet/**"
     ]
   },
   "devDependencies": {

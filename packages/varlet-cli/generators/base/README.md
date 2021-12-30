@@ -8,8 +8,8 @@
 ### Quickstart
 
 ```shell
-yarn
-yarn dev
+pnpm install
+pnpm dev
 ```
 
 ### Commands
@@ -17,72 +17,66 @@ yarn dev
 #### Start the development server
 
 ```shell
-yarn dev
+pnpm dev
 ```
 
 #### Build documentation site
 
 ```shell
-yarn build
+pnpm build
 ```
 
 #### Building component libraries
 
 ```shell
-yarn compile
+pnpm compile
 ```
 
 #### Lint code
 
 ```shell
-yarn lint
+pnpm lint
 ```
 
 #### Run unit test
 
 ```shell
-yarn test
+pnpm test
 ```
 
 #### Run unit test in watch mode
 
 ```shell
-yarn test:watch 
+pnpm test:watch 
 or
-yarn test:watchAll 
+pnpm test:watchAll 
 ```
 
 #### Quickly create a component folder
 
 ```shell
-yarn run create <componentName>
+pnpm run create <componentName>
 ```
 
 #### Mount git hook
 
 ```shell
-yarn husky
+pnpm husky
 ```
 
 #### Generate changelog
 
 ```shell
-yarn genlog
+pnpm changelog
 ```
 
-#### Generate all changelog
-
-```shell
-yarn genAllLog
-```
-
-#### Publish
+#### Release
 
 tips: 
-- 1.The registry of npm and yarn must be the official source of npm
-- 2.Both npm and yarn must be logged in
+- 1.The registry of npm must be the official source of npm
+- 2.The npm must be logged in
 
 ```shell
-yarn release
+pnpm release
 ```
 
