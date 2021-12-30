@@ -25,7 +25,7 @@ createApp().use(Progress)
 
 ### 显示标签
 
-通过`label`属性将label显示，label默认为进度的百分比，可以使用插槽插入自定义内容。
+通过 `label` 属性将 label 显示，label 默认为进度的百分比，可以使用插槽插入自定义内容。
 
 ```html
 <var-progress label :value="30" />
@@ -35,7 +35,7 @@ createApp().use(Progress)
 
 ### 自定义样式
 
-通过`line-width`、`color`、`track-color`、`ripple` 属性设置线宽、进度条颜色、轨道颜色、水波纹加载效果。
+通过 `line-width`、`color`、`track-color`、`ripple` 属性设置线宽、进度条颜色、轨道颜色、水波纹加载效果。
 
 ```html
 <var-progress :value="30" line-width="8" color="#ff9f00" />
@@ -54,7 +54,7 @@ createApp().use(Progress)
 
 ### 隐藏轨道
 
-通过`track`属性隐藏 track。
+通过 `track` 属性隐藏 track。
 
 ```html
 <var-progress mode="circle" :value="50" :size="56" :track="false" />
