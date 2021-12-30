@@ -9,7 +9,7 @@ import { resolve } from 'path'
 import { writeFileSync } from 'fs-extra'
 import { changelog } from './changelog'
 
-const releaseTypes = ['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch']
+const releaseTypes = ['premajor', 'preminor', 'prepatch', 'major', 'minor', 'patch']
 
 async function isWorktreeEmpty() {
   const ret = await execa('git', ['status', '--porcelain'])
@@ -108,6 +108,7 @@ export async function release() {
 
     if (isPreRelease) {
       packageJsonMaps.forEach(({ file, content }) => writeFileSync(file, content))
+      await execa('git', ['restore', '**/package.json'])
     }
 
     logger.success(`Release version ${expectVersion} successfully!`)
