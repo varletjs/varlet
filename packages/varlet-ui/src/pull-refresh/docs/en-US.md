@@ -61,7 +61,7 @@ export default {
 
 ### Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `v-model` | Loading status | _boolean_ | `-` |
 | `disabled` | Whether to disable pull refresh | _boolean_ | `false` |

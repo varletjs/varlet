@@ -67,7 +67,7 @@ export default {
 
 ### IndexBar Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `sticky` | Whether to enable anchor sticky top | _boolean_ | `true` |
 | `sticky-offset-top` | Anchor offset top when sticky | _number_ | `0` |
@@ -79,7 +79,7 @@ export default {
 
 ### IndexAnchor Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `index` | Index | _string \| number_ | `-` |
 

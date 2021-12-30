@@ -144,7 +144,7 @@ snackbar1.clear();
 
 ### Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `v-model:show` | Whether to show `Snackbar` | _boolean_ | `false` |
 | `type`| `Snackbar` type, Optional value is one of `success, warning, info, error, loading` | _string_ | `-` |
@@ -194,7 +194,7 @@ The `clear` method on the instance can close the current instance, and the `clea
 
 #### Options passed in for a functional call
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `show` | Whether to show `Snackbar` | _boolean_ | `false` |
 | `type`| `Snackbar` type, Optional value is one of `success, warning, info, error, loading` | _string_ | `-` |

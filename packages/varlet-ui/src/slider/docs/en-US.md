@@ -154,7 +154,7 @@ Verify the value through the `rules` attribute.
 
 ### Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `v-model` | The value of slider | _number \| [number, number]_ | `0` |
 | `step`| Step size. The value is an integer between `1 ~ 100` | _string \| number_ | `1` |
