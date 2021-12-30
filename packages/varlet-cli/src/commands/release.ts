@@ -38,11 +38,7 @@ async function pushGit(version: string) {
   const ret = await execa('git', ['push'])
   s.succeed('Push remote repository successfully')
 
-  if (ret.stderr) {
-    throw new Error('\n' + ret.stderr)
-  } else {
-    ret.stdout && logger.info(ret.stdout)
-  }
+  ret.stdout && logger.info(ret.stdout)
 }
 
 type packageJsonMap = {
