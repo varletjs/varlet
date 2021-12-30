@@ -23,7 +23,7 @@ async function publish(preRelease: boolean) {
   preRelease && args.push('--tag', 'alpha')
   const ret = await execa('pnpm', args)
   if (ret.stderr && ret.stderr.includes('npm ERR!')) {
-    throw new Error(ret.stderr)
+    throw new Error('\n' + ret.stderr)
   } else {
     s.succeed('Publish all packages successfully')
     ret.stdout && logger.info(ret.stdout)
@@ -39,7 +39,7 @@ async function pushGit(version: string) {
   s.succeed('Push remote repository successfully')
 
   if (ret.stderr) {
-    throw new Error(ret.stderr)
+    throw new Error('\n' + ret.stderr)
   } else {
     ret.stdout && logger.info(ret.stdout)
   }
