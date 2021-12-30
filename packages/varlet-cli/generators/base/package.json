@@ -17,6 +17,7 @@
   "license": "MIT",
   "scripts": {
     "husky": "husky install",
+    "preinstall": "npx only-allow pnpm",
     "dev": "varlet-cli dev",
     "build": "varlet-cli build",
     "preview": "varlet-cli preview",
@@ -86,5 +87,6 @@
   "browserslist": [
     "Chrome >= 51",
     "iOS >= 10"
-  ]
+  ],
+  "packageManager": "pnpm@6.24.3"
 }

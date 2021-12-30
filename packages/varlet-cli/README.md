@@ -13,20 +13,21 @@
 - 7.开箱即用的代码发布工具,发布到npm和github,并自动生成更新日志
 - 8.支持`Typescript`
 - 9.支持`暗黑模式`
+- 10.基于`pnpm`
 
 ### 快速开始
 
 `@varlet/cli`内置了`单文件组件(sfc)`和`tsx, jsx`两种风格的组件库项目模板，可以通过`gen`命令直接生成。
-帮助用户直接进入组件本身的开发，这里推荐使用`yarn`作为包管理工具，首先确保安装了`yarn`并且添加到系统环境变量中去，这里不展开介绍`yarn`的安装和配置方法。
+帮助用户直接进入组件本身的开发，推荐使用`pnpm`作为包管理工具。
 
 ```shell
 # 安装命令行工具
-yarn global add @varlet/cli
+pnpm add @varlet/cli -g
 # 使用gen命令生成项目
 varlet-cli gen 项目名
 cd 项目名
-yarn
-yarn dev
+pnpm install
+pnpm dev
 ```
 
 然后通过简单修改一些组件库模板的基础信息，就可以开始组件库的开发了
@@ -233,6 +234,24 @@ varlet-cli test -wa
 varlet-cli lint
 ```
 
+#### 校验提交信息
+
+```shell
+varlet-cli commit-lint
+```
+
+#### 生成更新日志
+
+```shell
+varlet-cli changelog
+```
+
+#### 发布组件库
+
+```shell
+varlet-cli release
+```
+
 #### 快速创建一个组件文件夹
 
 ```shell
@@ -277,18 +296,12 @@ module.exports = {
 
 #### git-hook
 
-`husky`，`lint-staged`配合`eslint`，`stylelint`，`commitlint`做commit前的检查，`package.json`配置如下
+`husky`，`lint-staged`配合`eslint`，`stylelint`，`varlet-cli commit-lint`做commit前的检查，`package.json`配置如下
 
 ```json
 {
   "scripts": {
-    "prepare": "husky install",
-    "commit": "git-cz"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
@@ -325,15 +338,6 @@ module.exports = {
 }
 ```
 
-创建`commitlint.config.js`
-
-```js
-// commitlint.config.js
-module.exports = {
-  extends: ['@commitlint/config-conventional'],
-}
-```
-
 创建`.prettierignore`
 
 ```text
@@ -367,39 +371,10 @@ src/*/__tests__/**
 }
 ```
 
-### 发布代码
-
-使用`release-it`和`conventional-changelog`进行代码发布和更新日志的生成，`package.json`配置如下
-
-```json
-{
-  "scripts": {
-    "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "genAllLog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "release": "yarn compile && release-it"
-  },
-  "release-it": {
-    "git": {
-      "changelog": "git log --pretty=format:\"* %s (%h)\" ${from}...${to}",
-      "tagName": "v${version}",
-      "commitMessage": "chore: release ${version}",
-      "requireCleanWorkingDir": false
-    },
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "preset": "angular",
-        "infile": "CHANGELOG.md"
-      }
-    }
-  }
-}
-```
-
 #### 发布前注意
 
-- 1.npm和yarn的仓库源必须指向npm官方镜像
-- 2.npm和yarn都必须执行login命令进行用户登录
-
+- 1.npm的仓库源必须指向npm官方镜像
+- 2.执行npm login进行登录
 
 ### Contributors
 
