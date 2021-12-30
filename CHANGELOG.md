@@ -1,4 +1,8 @@
-## [1.24.2](https://github.com/haoziqaq/varlet/compare/v1.24.1...v1.24.2) (2021-12-30)
+## [1.24.3](https://github.com/haoziqaq/varlet/compare/1.24.2...1.24.3) (2021-12-30)
+
+
+
+## [1.24.2](https://github.com/haoziqaq/varlet/compare/v1.24.1...1.24.2) (2021-12-30)
 
 
 ### Bug Fixes
