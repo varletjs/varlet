@@ -164,7 +164,7 @@ export default {
 ### Methods
 Use ref to get CountDown instance and call instance methods.
 
-| Name | Description	 | arguments |
+| Method | Description	 | arguments |
 | ---- | ------- | -------- |
 | `start` | Start countdown	 | `-` |
 | `pause` | Pause countdown	 | `-` |
