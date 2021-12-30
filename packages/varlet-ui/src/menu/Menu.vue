@@ -67,10 +67,8 @@ export default defineComponent({
 
     // expose
     const resize = () => {
-      nextTick(() => {
-        top.value = computeTop(props.alignment)
-        left.value = getLeft(host.value as HTMLElement)
-      })
+      top.value = computeTop(props.alignment)
+      left.value = getLeft(host.value as HTMLElement)
     }
 
     watch(() => props.alignment, resize)
@@ -79,7 +77,10 @@ export default defineComponent({
       () => props.show,
       async (newValue: boolean) => {
         const { onOpen, onClose } = props
-        newValue && resize()
+        if (newValue) {
+          await nextTick()
+          resize()
+        }
         newValue ? onOpen?.() : onClose?.()
       }
     )
