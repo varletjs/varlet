@@ -399,3 +399,10 @@ src/*/__tests__/**
 
 - 1.npm和yarn的仓库源必须指向npm官方镜像
 - 2.npm和yarn都必须执行login命令进行用户登录
+
+
+### Contributors
+
+<a href="https://github.com/haoziqaq/varlet/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=haoziqaq/varlet" />
+</a>
