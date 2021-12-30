@@ -1,12 +1,23 @@
-## [1.24.1](https://github.com/haoziqaq/varlet/compare/v1.24.0...v1.24.1) (2021-12-30)
+## [1.24.2](https://github.com/haoziqaq/varlet/compare/v1.24.1...v1.24.2) (2021-12-30)
 
 
 ### Bug Fixes
 
+* **cli:** fix release tag ([5341cfc](https://github.com/haoziqaq/varlet/commit/5341cfc4496d5b5222a2599ee494546483dcd5a4))
+* **cli:** remove unuseful import ([21e8b74](https://github.com/haoziqaq/varlet/commit/21e8b741ac4249d413a16d465ea5dd73e83114cd))
+* **compile:** move config to entry function to aviod generate unnecessary folder ([f99b050](https://github.com/haoziqaq/varlet/commit/f99b050a71c605ea907f70f855850469b652ff5c))
+* **config:** add parameter to control generate folder ([6a17558](https://github.com/haoziqaq/varlet/commit/6a175585e4f5070b0a312de403c5dbbf9e26c08d))
+* **create:** move config to entry function to aviod generate unnecessary folder ([333cfae](https://github.com/haoziqaq/varlet/commit/333cfae36313a4c8364471e076a2d6fb3b7e1818))
 * **date-picker:** fix eslint error ([5c9b12c](https://github.com/haoziqaq/varlet/commit/5c9b12cc4a06f7a877a3061d8f51cd6bc44c7a1f))
+* modify component.spec ([9f5f022](https://github.com/haoziqaq/varlet/commit/9f5f02245fea94fa3e45248391ea24fd4d5c81d2))
+* modify home.zh-CN ([3664a6d](https://github.com/haoziqaq/varlet/commit/3664a6d8d72b6545391ec7ff425ba2878bd106ee))
+* modify openSourceGuide.zh-CN ([cf263ed](https://github.com/haoziqaq/varlet/commit/cf263ed55cfafd0d9339f7fc2697e096b6b1e3cc))
 * remove yarn usage in script ([40d5fd2](https://github.com/haoziqaq/varlet/commit/40d5fd283de8ad598088c2d09949f979a5dfaff6))
 * **ui/elevation:** resolve shadow cannot display ([f8dedba](https://github.com/haoziqaq/varlet/commit/f8dedbaeb5e7af080c5f91d4501747f43ca893fa))
+* **ui/menu:** modify the implementation of sloving offsetHeight error ([9871022](https://github.com/haoziqaq/varlet/commit/987102260cf30279306914075b3f82b6083d4406))
+* **ui/menu:** reslove error of getting offsetHeight when alignment is set as bottom ([d05a7f9](https://github.com/haoziqaq/varlet/commit/d05a7f94d5a939205ade2e7df48ba1f7e6ac2a67))
 * **ui/swipe:** fix stopAutoplay function ([7cad9d5](https://github.com/haoziqaq/varlet/commit/7cad9d5fcb3b0eb4747423d44dc4935616181fdf))
+* **ui/swipe:** fix stopAutoplay function ([b2390fb](https://github.com/haoziqaq/varlet/commit/b2390fb52b13e4227f0436bb8cc6b4645cc73300))
 
 
 
@@ -16,8 +27,6 @@
 ### Bug Fixes
 
 * **ui/elevation:** resolve shadow cannot display ([227b2db](https://github.com/haoziqaq/varlet/commit/227b2dbab2884a8914ef5a530c18dfffff010323))
-
-
 
 
 
