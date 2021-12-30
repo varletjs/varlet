@@ -1,9 +1,6 @@
 {
   "private": true,
   "version": "1.24.1",
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
