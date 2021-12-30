@@ -115,9 +115,9 @@ Other values are converted to text as a user prompt.
 
 ## API
 
-### 属性
+### Props
 
-| 参数 | 说明 | 类型 | 默认值 | 
+| prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
 | `v-model` | The value of the binding | _string \| number_ | `0` |
 | `min` | Minimum value | _string \| number_ | `-` |
@@ -142,7 +142,7 @@ Other values are converted to text as a user prompt.
 
 ### Methods
 
-| 方法名 | 说明 | 参数 | 返回值 |
+| Name | Description | arguments | Return |
 | --- | --- | --- | --- |
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clearing validate messages | `-` | `-` |
