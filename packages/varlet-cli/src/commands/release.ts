@@ -22,7 +22,7 @@ async function publish(preRelease: boolean) {
 
   preRelease && args.push('--tag', 'alpha')
   const ret = await execa('pnpm', args)
-  if (ret.stderr) {
+  if (ret.stderr && ret.stderr.includes('npm ERR!')) {
     throw new Error(ret.stderr)
   } else {
     ret.stdout && logger.info(ret.stdout)
