@@ -131,7 +131,7 @@ export default {
 
 ### Collapse Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `v-model` | Names of current active panels | accordion mode： _string \| number_ <br> non-accordion mode：_string[] \| number[]_ | `-` |
 | `accordion` | Whether to be accordion mode | _boolean_ | `false` |
@@ -139,7 +139,7 @@ export default {
 
 ### CollapseItem Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `name` | Name | _string \| number_ | `index` |
 | `title` | Title | _string \| number_ | `-` |

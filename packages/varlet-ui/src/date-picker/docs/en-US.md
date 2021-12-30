@@ -137,7 +137,7 @@ export default {
 
 ### Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `v-model` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）| _string[] \| string_ | `-` |
 | `type` | Picker type, optional values`date, month` | _string_ | `date` |

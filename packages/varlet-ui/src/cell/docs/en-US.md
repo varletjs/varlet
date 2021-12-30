@@ -42,7 +42,7 @@ createApp().use(Cell)
 
 ### Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `title` | Title	| _string \| number_ | `-` |
 | `icon` | Icon name | _string_ | `-` |
@@ -53,7 +53,7 @@ createApp().use(Cell)
 | `desc-class` | Description className | _string_ | `-` |
 | `extra-class` | Extra className | _string_ | `-` |
 
-### 插槽
+### Slots
 
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |

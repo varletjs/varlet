@@ -8,7 +8,7 @@ test('test action-sheet component plugin', () => {
   expect(app.component(ActionSheet.Component.name)).toBeTruthy()
 })
 
-test('test action-sheet styles', async () => {
+test('test action-sheet styles', () => {
   const Wrapper = {
     components: {
       [VarActionSheet.name]: VarActionSheet,

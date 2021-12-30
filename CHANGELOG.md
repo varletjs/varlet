@@ -10,6 +10,17 @@
 
 
 
+## [1.24.1](https://github.com/haoziqaq/varlet/compare/v1.24.0...v1.24.1) (2021-12-27)
+
+
+### Bug Fixes
+
+* **ui/elevation:** resolve shadow cannot display ([227b2db](https://github.com/haoziqaq/varlet/commit/227b2dbab2884a8914ef5a530c18dfffff010323))
+
+
+
+
+
 # [1.24.0](https://github.com/haoziqaq/varlet/compare/v1.23.11...v1.24.0) (2021-12-27)
 
 

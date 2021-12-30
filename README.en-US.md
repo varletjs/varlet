@@ -74,3 +74,9 @@ import '@varlet/ui/es/style.js'
 
 createApp(App).use(Varlet).mount('#app')
 ```
+
+### Contributors
+
+<a href="https://github.com/haoziqaq/varlet/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=haoziqaq/varlet" />
+</a>

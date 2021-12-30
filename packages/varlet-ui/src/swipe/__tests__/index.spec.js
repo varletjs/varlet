@@ -1,4 +1,3 @@
-import example from '../example'
 import Swipe from '..'
 import SwipeItem from '../../swipe-item'
 import VarSwipe from '../Swipe'
