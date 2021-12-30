@@ -16,9 +16,12 @@ async function isWorktreeEmpty() {
   return !ret.stdout
 }
 
-async function publish() {
+async function publish(preRelease: boolean) {
   const s = ora().start('Publishing all packages')
-  const ret = await execa('pnpm', ['-r', 'publish', '--no-git-checks', '--access', 'public'])
+  const args = ['-r', 'publish', '--no-git-checks', '--access', 'public']
+
+  preRelease && args.push('--tag', 'alpha')
+  const ret = await execa('pnpm', args)
   s.succeed('Publish all packages successfully')
   ret.stdout && logger.info(ret.stdout)
 }
@@ -104,7 +107,7 @@ export async function release() {
       await pushGit(expectVersion, `v${expectVersion}`)
     }
 
-    await publish()
+    await publish(isPreRelease)
 
     if (isPreRelease) {
       packageJsonMaps.forEach(({ file, content }) => writeFileSync(file, content))
