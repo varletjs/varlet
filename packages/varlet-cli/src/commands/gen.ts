@@ -72,8 +72,8 @@ export async function gen(name: string) {
   logger.success('Application generated successfully!')
   logger.info(`\
   cd ${name}
-  yarn
-  yarn dev`)
+  pnpm install
+  pnpm dev`)
   logger.success(`\
 =======================
   Good luck have fun
