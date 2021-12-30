@@ -35,6 +35,7 @@ async function pushGit(version: string) {
   await execa('git', ['add', '.'])
   await execa('git', ['commit', '-m', `v${version}`])
   await execa('git', ['tag', `v${version}`])
+  await execa('git', ['push', 'origin', `v${version}`])
   const ret = await execa('git', ['push'])
   s.succeed('Push remote repository successfully')
 
