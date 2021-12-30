@@ -11,7 +11,7 @@
 Varlet is a Material design mobile component library developed based on `Vue3`, developed and maintained by partners in the community.
 
 ### Features
-- 1.Provide more than 40 high quality general purpose components
+- 1.Provide more than 50 high quality general purpose components
 - 2.Components are very lightweight
 - 3.Developed by Chinese, complete Chinese and English documentation and logistics support
 - 4.Support on-demand introduction
@@ -31,7 +31,7 @@ we will deal with it as soon as possible. You can also give us [PR](https://gith
 Component library based on `MIT` licenses.
 
 ### Material Design Introduction
-Material Design，Is a new design language from Google that aims to provide a more consistent and broader 
+Material Design, Is a new design language from Google that aims to provide a more consistent and broader 
 "look and feel" for phones, tablets, desktops and "other platforms".
 
 ### Why Material
