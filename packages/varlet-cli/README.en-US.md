@@ -406,3 +406,9 @@ The configuration of `package.json` is as follows
 
 - 1.The registry of npm and yarn must set to the official npm mirror
 - 2.Both npm and yarn must execute the login command for user login
+
+### Contributors
+
+<a href="https://github.com/haoziqaq/varlet/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=haoziqaq/varlet" />
+</a>
