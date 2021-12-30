@@ -40,6 +40,7 @@
     "@varlet/eslint-config": "workspace:*",
     "@varlet/stylelint-config": "workspace:*",
     "@vue/test-utils": "2.0.0-rc.6",
+    "typescript": "^4.4.4",
     "vue-router": "4.0.12",
     "vue": "3.2.16",
     "live-server": "^1.2.1",

@@ -57,6 +57,7 @@
     "@varlet/cli": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
     "@vue/test-utils": "2.0.0-rc.6",
+    "typescript": "^4.4.4",
     "lodash-es": "^4.17.21",
     "clipboard": "^2.0.6",
     "vue": "3.2.16",
