@@ -12,7 +12,7 @@ exports[`test tabs active 1`] = `
   </div>
 </transition-stub>
 <div class=\\"var-swipe var-tabs-items\\">
-  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 300ms;\\">
+  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 0ms;\\">
     <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
     <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
     <div class=\\"var-swipe-item var-tab-item\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\">视图3</div>

@@ -32,7 +32,6 @@ export default defineComponent({
     }
 
     const handleMenuClose = () => {
-      console.log(123)
       if (clickSelf) {
         clickSelf = false
         return
