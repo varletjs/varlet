@@ -375,9 +375,3 @@ src/*/__tests__/**
 
 - 1.npm的仓库源必须指向npm官方镜像
 - 2.执行npm login进行登录
-
-### Contributors
-
-<a href="https://github.com/haoziqaq/varlet/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=haoziqaq/varlet" />
-</a>

@@ -380,9 +380,3 @@ create `tsconfig.json`
 
 - 1.The registry of npm must set to the official npm mirror
 - 2.The npm must execute the login command for user login
-
-### Contributors
-
-<a href="https://github.com/haoziqaq/varlet/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=haoziqaq/varlet" />
-</a>
