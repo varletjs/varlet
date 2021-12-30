@@ -22,8 +22,12 @@ async function publish(preRelease: boolean) {
 
   preRelease && args.push('--tag', 'alpha')
   const ret = await execa('pnpm', args)
-  s.succeed('Publish all packages successfully')
-  ret.stdout && logger.info(ret.stdout)
+  if (ret.stderr) {
+    throw new Error(ret.stderr)
+  } else {
+    ret.stdout && logger.info(ret.stdout)
+    s.succeed('Publish all packages successfully')
+  }
 }
 
 async function pushGit(version: string) {
@@ -33,7 +37,12 @@ async function pushGit(version: string) {
   await execa('git', ['tag', `v${version}`])
   const ret = await execa('git', ['push'])
   s.succeed('Push remote repository successfully')
-  ret.stdout && logger.info(ret.stdout)
+
+  if (ret.stderr) {
+    throw new Error(ret.stderr)
+  } else {
+    ret.stdout && logger.info(ret.stdout)
+  }
 }
 
 type packageJsonMap = {
@@ -111,7 +120,10 @@ export async function release() {
 
     if (isPreRelease) {
       packageJsonMaps.forEach(({ file, content }) => writeFileSync(file, content))
-      await execa('git', ['restore', '**/package.json'])
+      try {
+        await execa('git', ['restore', '**/package.json'])
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
     }
 
     logger.success(`Release version ${expectVersion} successfully!`)
