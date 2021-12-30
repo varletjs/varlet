@@ -103,7 +103,7 @@ export default {
 ### Methods
 Use ref to get IndexBar instance and call instance methods.
 
-| Name | Description	 | arguments |
+| Method | Description	 | arguments |
 | ---- | ------- | -------- |
 | `scrollTo` | scroll to target element	 | `index: number \| string` |
 

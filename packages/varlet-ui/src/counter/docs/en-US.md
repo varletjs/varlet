@@ -142,7 +142,7 @@ Other values are converted to text as a user prompt.
 
 ### Methods
 
-| Name | Description | arguments | Return |
+| Method | Description | arguments | Return |
 | --- | --- | --- | --- |
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clearing validate messages | `-` | `-` |
