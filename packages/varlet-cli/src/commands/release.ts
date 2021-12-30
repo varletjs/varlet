@@ -117,5 +117,6 @@ export async function release() {
     logger.success(`Release version ${expectVersion} successfully!`)
   } catch (error: any) {
     logger.error(error.toString())
+    process.exit(1)
   }
 }
