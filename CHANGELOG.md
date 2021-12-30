@@ -1,4 +1,13 @@
-## [1.24.3](https://github.com/haoziqaq/varlet/compare/1.24.2...1.24.3) (2021-12-30)
+## [1.24.4](https://github.com/haoziqaq/varlet/compare/v1.24.3...v1.24.4) (2021-12-30)
+
+
+### Bug Fixes
+
+* **cli/release:** fix tag release error ([341997a](https://github.com/haoziqaq/varlet/commit/341997a6b02957ee34c5d2f8619b4b8c619a06d6))
+
+
+
+## [1.24.3](https://github.com/haoziqaq/varlet/compare/1.24.2...v1.24.3) (2021-12-30)
 
 
 
