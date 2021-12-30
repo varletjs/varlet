@@ -56,6 +56,110 @@ exports[`test child in space 4`] = `
 </div>"
 `;
 
+exports[`test space example 1`] = `
+"<div class=\\"app-type\\">基本用法</div>
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button1</div>
+    </button></div>
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button2</div>
+    </button></div>
+  <div style=\\"margin: 4px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button3</div>
+    </button></div>
+</div>
+<div class=\\"app-type\\">垂直</div>
+<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
+  <div style=\\"margin: 0px 0px 12px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button1</div>
+    </button></div>
+  <div style=\\"margin: 0px 0px 12px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button2</div>
+    </button></div>
+  <div style=\\"margin: 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button3</div>
+    </button></div>
+</div>
+<div class=\\"app-type\\">间隙</div>
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -10px 0px;\\">
+  <div style=\\"margin: 10px 20px 10px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button1</div>
+    </button></div>
+  <div style=\\"margin: 10px 20px 10px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button2</div>
+    </button></div>
+  <div style=\\"margin: 10px 20px 10px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button3</div>
+    </button></div>
+  <div style=\\"margin: 10px 20px 10px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button4</div>
+    </button></div>
+  <div style=\\"margin: 10px 20px 10px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button5</div>
+    </button></div>
+  <div style=\\"margin: 10px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button6</div>
+    </button></div>
+</div>
+<div class=\\"app-type\\">靠右</div>
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: end; flex-wrap: wrap; margin: -4px 0px;\\">
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button1</div>
+    </button></div>
+  <div style=\\"margin: 4px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button2</div>
+    </button></div>
+</div>
+<div class=\\"app-type\\">环绕</div>
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: space-around; flex-wrap: wrap; margin: -4px 0px;\\">
+  <div style=\\"margin: 4px 6px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button1</div>
+    </button></div>
+  <div style=\\"margin: 4px 6px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button2</div>
+    </button></div>
+</div>
+<div class=\\"app-type\\">居中</div>
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: center; flex-wrap: wrap; margin: -4px 0px;\\">
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button1</div>
+    </button></div>
+  <div style=\\"margin: 4px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button2</div>
+    </button></div>
+</div>
+<div class=\\"app-type\\">两端对齐</div>
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: space-between; flex-wrap: wrap; margin: -4px 0px;\\">
+  <div style=\\"margin: 4px 6px 4px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button1</div>
+    </button></div>
+  <div style=\\"margin: 4px 0px 4px 6px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+      <!--v-if-->
+      <div class=\\"var-button__content\\">Button2</div>
+    </button></div>
+</div>"
+`;
+
 exports[`test space props 1`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
   <div style=\\"margin: 4px 12px 4px 0px;\\">
@@ -225,20 +329,6 @@ exports[`test space props 12`] = `
 `;
 
 exports[`test space props 13`] = `
-"<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: nowrap;\\">
-  <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <div>div1</div>
-  </div>
-  <div style=\\"margin: 0px 0px 0px 0px;\\">
-    <div>div2</div>
-  </div>
-  <div style=\\"margin: 0px;\\">
-    <div>div3</div>
-  </div>
-</div>"
-`;
-
-exports[`test space props 14`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: end; flex-wrap: nowrap;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
     <div>div1</div>
@@ -252,7 +342,7 @@ exports[`test space props 14`] = `
 </div>"
 `;
 
-exports[`test space props 15`] = `
+exports[`test space props 14`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: center; flex-wrap: nowrap;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
     <div>div1</div>
@@ -266,7 +356,7 @@ exports[`test space props 15`] = `
 </div>"
 `;
 
-exports[`test space props 16`] = `
+exports[`test space props 15`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-between; flex-wrap: nowrap;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
     <div>div1</div>
@@ -280,7 +370,7 @@ exports[`test space props 16`] = `
 </div>"
 `;
 
-exports[`test space props 17`] = `
+exports[`test space props 16`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
     <div>div1</div>
@@ -294,7 +384,7 @@ exports[`test space props 17`] = `
 </div>"
 `;
 
-exports[`test space props 18`] = `
+exports[`test space props 17`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: start;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
     <div>div1</div>
@@ -308,7 +398,7 @@ exports[`test space props 18`] = `
 </div>"
 `;
 
-exports[`test space props 19`] = `
+exports[`test space props 18`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: center;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
     <div>div1</div>
@@ -322,7 +412,7 @@ exports[`test space props 19`] = `
 </div>"
 `;
 
-exports[`test space props 20`] = `
+exports[`test space props 19`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: end;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
     <div>div1</div>
@@ -336,7 +426,7 @@ exports[`test space props 20`] = `
 </div>"
 `;
 
-exports[`test space props 21`] = `
+exports[`test space props 20`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: stretch;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
     <div>div1</div>
@@ -350,7 +440,7 @@ exports[`test space props 21`] = `
 </div>"
 `;
 
-exports[`test space props 22`] = `
+exports[`test space props 21`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: baseline;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
     <div>div1</div>
@@ -364,7 +454,7 @@ exports[`test space props 22`] = `
 </div>"
 `;
 
-exports[`test space props 23`] = `
+exports[`test space props 22`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: initial;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
     <div>div1</div>
@@ -378,7 +468,7 @@ exports[`test space props 23`] = `
 </div>"
 `;
 
-exports[`test space props 24`] = `
+exports[`test space props 23`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: inherit;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
     <div>div1</div>
@@ -392,7 +482,7 @@ exports[`test space props 24`] = `
 </div>"
 `;
 
-exports[`test space props 25`] = `
+exports[`test space props 24`] = `
 "<div class=\\"var-space var--box var-space--inline\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: inherit;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
     <div>div1</div>
@@ -406,7 +496,7 @@ exports[`test space props 25`] = `
 </div>"
 `;
 
-exports[`test space props 26`] = `
+exports[`test space props 25`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: space-around; flex-wrap: nowrap; align-items: inherit;\\">
   <div style=\\"margin: 0px 0px 0px 0px;\\">
     <div>div1</div>

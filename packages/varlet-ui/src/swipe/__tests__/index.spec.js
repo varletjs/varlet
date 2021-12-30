@@ -11,7 +11,7 @@ mockOffset()
 
 test('test swipe example', async () => {
   const wrapper = mount(example)
-  await delay(16)
+  await delay(300)
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })

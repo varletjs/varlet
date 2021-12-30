@@ -3,6 +3,13 @@ import Space from '..'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/jest'
+import example from '../example'
+
+test('test space example', async () => {
+  const wrapper = mount(example)
+  expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
 
 test('test space plugin', () => {
   const app = createApp({}).use(Space)
@@ -55,9 +62,6 @@ test('test space props', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setProps({ wrap: true })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ wrap: false })
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setProps({ wrap: false })
