@@ -25,8 +25,8 @@ async function publish(preRelease: boolean) {
   if (ret.stderr && ret.stderr.includes('npm ERR!')) {
     throw new Error(ret.stderr)
   } else {
-    ret.stdout && logger.info(ret.stdout)
     s.succeed('Publish all packages successfully')
+    ret.stdout && logger.info(ret.stdout)
   }
 }
 
