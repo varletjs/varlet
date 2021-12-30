@@ -1,4 +1,4 @@
-import { defineComponent, ref, watch, onMounted, onUnmounted, Transition, Teleport } from 'vue'
+import { defineComponent, ref, watch, onMounted, onUnmounted, Transition, Teleport, nextTick } from 'vue'
 import { props } from './props'
 import { getLeft, getTop, toSizeUnit } from '../utils/elements'
 import { useZIndex } from '../context/zIndex'
@@ -32,6 +32,7 @@ export default defineComponent({
     }
 
     const handleMenuClose = () => {
+      console.log(123)
       if (clickSelf) {
         clickSelf = false
         return
@@ -76,7 +77,10 @@ export default defineComponent({
       () => props.show,
       async (newValue: boolean) => {
         const { onOpen, onClose } = props
-        newValue && resize()
+        if (newValue) {
+          await nextTick()
+          resize()
+        }
         newValue ? onOpen?.() : onClose?.()
       }
     )

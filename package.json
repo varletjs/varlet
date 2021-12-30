@@ -4,17 +4,12 @@
     "packages/*"
   ],
   "scripts": {
-    "prepare": "husky install",
     "preinstall": "npx only-allow pnpm",
-    "lint": "varlet-cli lint",
+    "prepare": "husky install",
     "bootstrap": "pnpm install && node scripts/bootstrap.mjs",
-    "commit": "git-cz",
-    "publish": "node scripts/publish.mjs && lerna publish"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-lerna-changelog"
-    }
+    "lint": "varlet-cli lint",
+    "changelog": "varlet-cli changelog",
+    "release": "node scripts/publish.mjs && varlet-cli release"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
@@ -70,12 +65,7 @@
     "surge": "^0.23.0",
     "execa": "^5.0.0",
     "lint-staged": "^10.5.0",
-    "ora": "^5.4.0",
-    "lerna": "^3.22.1",
-    "commitizen": "^4.2.2",
-    "@commitlint/config-conventional": "^11.0.0",
-    "@commitlint/cli": "^11.0.0",
-    "cz-lerna-changelog": "^2.0.3"
+    "ora": "^5.4.0"
   },
   "packageManager": "pnpm@6.24.3"
 }

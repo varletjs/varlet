@@ -9,6 +9,9 @@ import { jest } from './commands/jest'
 import { lint } from './commands/lint'
 import { gen } from './commands/gen'
 import { preview } from './commands/preview'
+import { changelog } from './commands/changelog'
+import { release } from './commands/release'
+import { commitLint } from './commands/commitLint'
 
 const program = new Command()
 
@@ -44,6 +47,17 @@ program
   .action(jest)
 
 program.command('gen <name>').description('Generate cli application').action(gen)
+
+program
+  .command('changelog')
+  .option('-rc --releaseCount <releaseCount>', 'Release count')
+  .option('-f --file <file>', 'Changelog filename')
+  .description('Generate changelog')
+  .action(changelog)
+
+program.command('release').description('Release all packages and generate changelogs').action(release)
+
+program.command('commit-lint <gitParams>').description('Lint commit message').action(commitLint)
 
 program.on('command:*', ([cmd]) => {
   program.outputHelp()
