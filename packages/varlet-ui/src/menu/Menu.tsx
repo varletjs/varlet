@@ -1,4 +1,4 @@
-import { defineComponent, ref, watch, onMounted, onUnmounted, Transition, Teleport, nextTick } from 'vue'
+import { defineComponent, ref, computed, watch, onMounted, onUnmounted, Transition, Teleport, nextTick } from 'vue'
 import { props } from './props'
 import { getLeft, getTop, toSizeUnit } from '../utils/elements'
 import { useZIndex } from '../context/zIndex'
@@ -50,16 +50,21 @@ export default defineComponent({
       left.value = getLeft(host.value as HTMLElement)
     }
 
+    // Transition style use computed place here
+    const transitionStyle = computed(() => {
+      return {
+        top: `calc(${top.value}px + ${toSizeUnit(props.offsetY)})`,
+        left: `calc(${left.value}px + ${toSizeUnit(props.offsetX)})`,
+        zIndex: zIndex.value,
+      }
+    })
+
     const renderTransition = () => (
       <Transition name="var-menu" onAfterEnter={props.onOpen} onAfterLeave={props.onClosed}>
         <div
           class="var-menu__menu var-elevation--3"
           ref={menu}
-          style={{
-            top: `calc(${top.value}px + ${toSizeUnit(props.offsetY)})`,
-            left: `calc(${left.value}px + ${toSizeUnit(props.offsetX)})`,
-            zIndex: zIndex.value,
-          }}
+          style={transitionStyle.value}
           v-show={props.show}
           onClick={(event) => {
             event.stopPropagation()
