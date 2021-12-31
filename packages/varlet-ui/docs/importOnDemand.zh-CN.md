@@ -29,7 +29,7 @@ npm i unplugin-vue-components -D
 yarn add unplugin-vue-components -D
 
 # pnpm
-pnpm add babel-plugin-import -D
+pnpm add unplugin-vue-components -D
 ```
 
 #### Vue Cli

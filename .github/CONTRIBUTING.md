@@ -22,7 +22,7 @@ At any time, you can start the following steps to submit your amazing works:
 
 1. Run `pnpm lint` check the code style.
 2. Get into `pacakges/varlet-ui` and run `pnpm test` to update & run your testcase.
-3. Run `git commit` to commit changes. Commit info should be formatted by the [rules](https://github.com/conventional-changelog/commitlint/blob/master/%40commitlint/config-conventional/README.md).
+3. Commit message should be formatted by the [rule](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y).
 4. Push code to your own repo and [create PullRequest](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) at GitHub. (Rebase before creating a PR to keep commit history clear)
 
 ### Common steps
@@ -30,12 +30,12 @@ At any time, you can start the following steps to submit your amazing works:
 **Create component**
 
 1. Get into `pacakges/varlet-ui` 
-2. Running `pnpm create [Component Name]`
+2. Running `pnpm run create [Component Name]`
 
 **Create testcase**
 
 1. If you are creating a new component, the testcase is required.
-2. If you only modify components, please note update test snapshot: `pnpm test -u`.
+2. If you only modify components, please note update test snapshot: `pnpm test -- -w and press u`.
 3. Please check coverage locally before submit.
 
 ### Q & A
@@ -51,4 +51,4 @@ At any time, you can start the following steps to submit your amazing works:
 
 ### Get stuck
 
-- Create new issue to tell us: [create issue](https://github.com/fay-org/fect/issues).
+- Create new issue to tell us: [create issue](https://github.com/haoziqaq/varlet/issues).
