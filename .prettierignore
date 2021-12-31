@@ -11,6 +11,7 @@ packages/varlet-ui/site/**
 packages/varlet-ui/public/**
 packages/varlet-ui/.varlet/**
 packages/varlet-ui/types/global.d.ts
+**/package.json
 *.md
 
 pnpm-lock.yaml
