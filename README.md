@@ -56,13 +56,16 @@ Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全�
 
 ### Webpack / Vite
 ```shell
-# 通过 npm 或 yarn 安装
+# 通过 npm 或 yarn 或 pnpm 安装
 
 # npm
 npm i @varlet/ui -S
 
 # yarn
 yarn add @varlet/ui
+
+# pnpm
+pnpm add @varlet/ui
 ```
 
 ```js

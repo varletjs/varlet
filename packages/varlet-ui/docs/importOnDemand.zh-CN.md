@@ -21,10 +21,15 @@ createApp().use(Button)
 
 ```shell
 # 安装插件
+
 # npm
 npm i unplugin-vue-components -D 
+
 # yarn
 yarn add unplugin-vue-components -D
+
+# pnpm
+pnpm add babel-plugin-import -D
 ```
 
 #### Vue Cli

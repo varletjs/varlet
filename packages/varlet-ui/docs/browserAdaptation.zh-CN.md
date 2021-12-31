@@ -12,8 +12,12 @@
 ```shell
 # npm
 npm i postcss-px-to-viewport -D
+
 # yarn
 yarn add postcss-px-to-viewport -D
+
+# pnpm
+pnpm add postcss-px-to-viewport -D
 ```
 
 ```js

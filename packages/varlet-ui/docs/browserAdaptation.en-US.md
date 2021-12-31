@@ -14,8 +14,12 @@ Create `postcss.config.js` under the `Webpack/Vite` project root path And do the
 ```shell
 # npm
 npm i postcss-px-to-viewport -D
+
 # yarn
 yarn add postcss-px-to-viewport -D
+
+# pnpm
+pnpm add postcss-px-to-viewport -D
 ```
 
 ```js

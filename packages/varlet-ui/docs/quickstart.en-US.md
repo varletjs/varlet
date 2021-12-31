@@ -22,12 +22,18 @@ Here are the most basic ways to access component libraries in common development
 ```
 
 ### Webpack/Vite
+
 ```shell
-# Install with npm or yarn
+# Install with npm or yarn or pnpm
+
 # npm
 npm i @varlet/ui -S
+
 # yarn
 yarn add @varlet/ui
+
+# pnpm
+pnpm add @varlet/ui
 ```
 
 ```js
