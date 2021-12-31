@@ -24,7 +24,6 @@
 </template>
 
 <script lang="ts">
-// @ts-ignore
 import config from '@config'
 import { MenuTypes } from '../../utils'
 import { reactive, ref, defineComponent } from 'vue'

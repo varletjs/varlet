@@ -21,7 +21,7 @@
   </var-site-cell>
 </template>
 
-<script>
+<script lang='ts'>
 import config from '@config'
 import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
@@ -34,7 +34,7 @@ export default {
     const logo = ref(config?.logo ?? '')
     const description = ref(config?.mobile?.title ?? {})
     const menu = ref(config?.pc?.menu ?? [])
-    const configComponents = menu.value.filter((item) => item.type === 2)
+    const configComponents = menu.value.filter((item: any) => item.type === 2)
     const components = reactive(configComponents)
     const lang = ref('zh-CN')
     const platform = ref('mobile')
@@ -48,7 +48,7 @@ export default {
       platform.value = newValue
     })
 
-    const toComponent = (component) => {
+    const toComponent = (component: any) => {
       router.push({
         path: `/${component.doc}`,
         query: {
@@ -59,6 +59,7 @@ export default {
       })
 
       if (!isPhone() && inIframe()) {
+        // @ts-ignore
         window.top.scrollToMenu(component.doc)
       }
     }

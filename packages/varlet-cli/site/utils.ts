@@ -1,7 +1,6 @@
 import { onMounted, onUnmounted } from 'vue'
 import { get } from 'lodash-es'
 import { formatStyleVars } from './components/utils/elements'
-import config from '@config'
 
 export * from './components/utils/components'
 export * from './components/utils/elements'
