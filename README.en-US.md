@@ -14,7 +14,7 @@
     <img src="https://img.shields.io/npm/l/@varlet/ui.svg" alt="licence">
     <img src="https://img.shields.io/codecov/c/github/haoziqaq/varlet" alt="coverage">
     <img src="https://img.badgesize.io/https://unpkg.com/@varlet/ui/umd/varlet.js?compression=gzip&label=gzip" alt="gzip" />
-    <img src="https://github.com/haoziqaq/varlet/workflows/CI/badge.svg" alt="ci">
+    <img src="https://github.com/varletjs/varlet/workflows/CI/badge.svg" alt="ci">
   </p>
 </div>
 
@@ -80,6 +80,6 @@ createApp(App).use(Varlet).mount('#app')
 
 ### Contributors
 
-<a href="https://github.com/haoziqaq/varlet/graphs/contributors">
+<a href="https://github.com/varletjs/varlet/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=haoziqaq/varlet" />
 </a>

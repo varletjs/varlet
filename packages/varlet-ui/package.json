@@ -29,10 +29,10 @@
   "homepage": "https://varlet.gitee.io/varlet-ui/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/haoziqaq/varlet.git"
+    "url": "git+https://github.com/varletjs/varlet.git"
   },
   "bugs": {
-    "url": "https://github.com/haoziqaq/varlet/issues"
+    "url": "https://github.com/varletjs/varlet/issues"
   },
   "scripts": {
     "dev": "varlet-cli dev",

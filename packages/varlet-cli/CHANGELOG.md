@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.24.0](https://github.com/haoziqaq/varlet/compare/v1.23.11...v1.24.0) (2021-12-27)
+# [1.24.0](https://github.com/varletjs/varlet/compare/v1.23.11...v1.24.0) (2021-12-27)
 
 
 ### Bug Fixes
