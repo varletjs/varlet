@@ -51,4 +51,4 @@ At any time, you can start the following steps to submit your amazing works:
 
 ### Get stuck
 
-- Create new issue to tell us: [create issue](https://github.com/haoziqaq/varlet/issues).
+- Create new issue to tell us: [create issue](https://github.com/varletjs/varlet/issues).
