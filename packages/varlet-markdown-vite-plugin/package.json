@@ -1,6 +1,6 @@
 {
   "name": "@varlet/markdown-vite-plugin",
-  "version": "1.24.0",
+  "version": "1.24.4",
   "description": "markdown vite plugin of varlet",
   "keywords": [
     "vite",
@@ -8,15 +8,15 @@
     "varlet"
   ],
   "author": "haoziqaq <357229046@qq.com>",
-  "homepage": "https://github.com/haoziqaq/varlet#readme",
+  "homepage": "https://github.com/varletjs/varlet#readme",
   "license": "MIT",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/haoziqaq/varlet.git"
+    "url": "git+https://github.com/varletjs/varlet.git"
   },
   "bugs": {
-    "url": "https://github.com/haoziqaq/varlet/issues"
+    "url": "https://github.com/varletjs/varlet/issues"
   },
   "dependencies": {
     "highlight.js": "^10.7.2",

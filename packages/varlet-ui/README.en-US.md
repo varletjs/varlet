@@ -14,7 +14,7 @@
     <img src="https://img.shields.io/npm/l/@varlet/ui.svg" alt="licence">
     <img src="https://img.shields.io/codecov/c/github/haoziqaq/varlet" alt="coverage">
     <img src="https://img.badgesize.io/https://unpkg.com/@varlet/ui/umd/varlet.js?compression=gzip&label=gzip" alt="gzip" />
-    <img src="https://github.com/haoziqaq/varlet/workflows/CI/badge.svg" alt="ci">
+    <img src="https://github.com/varletjs/varlet/workflows/CI/badge.svg" alt="ci">
   </p>
 </div>
 
@@ -56,14 +56,18 @@ Varlet is a Material design mobile component library developed based on `Vue3`, 
 ```
 
 ### Webpack / Vite
+
 ```shell
-# Install with npm or yarn
+# Install with npm or yarn or pnpm
 
 # npm
 npm i @varlet/ui -S
 
 # yarn
 yarn add @varlet/ui
+
+# pnpm
+pnpm add @varlet/ui
 ```
 
 ```js
@@ -74,3 +78,9 @@ import '@varlet/ui/es/style.js'
 
 createApp(App).use(Varlet).mount('#app')
 ```
+
+### Contributors
+
+<a href="https://github.com/varletjs/varlet/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=haoziqaq/varlet" />
+</a>

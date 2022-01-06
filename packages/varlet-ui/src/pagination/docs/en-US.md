@@ -129,7 +129,7 @@ import Disabled from '../example/Disabled.vue'
 
 ### Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `current` | Current page number | _string \| number_ | `1` |
 | `size` | Number of data items per page | _string \| number_ | `10` |

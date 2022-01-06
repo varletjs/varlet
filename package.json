@@ -1,27 +1,13 @@
 {
-  "name": "root",
   "private": true,
-  "useWorkspaces": true,
-  "version": "0.0.0",
-  "author": "haoziqaq <357229046@qq.com>",
-  "main": "index.js",
-  "npmClient": "yarn",
-  "workspaces": [
-    "packages/*"
-  ],
-  "license": "MIT",
+  "version": "1.24.4",
   "scripts": {
-    "lint": "varlet-cli lint",
-    "bootstrap": "yarn && node scripts/bootstrap.mjs",
-    "commit": "git-cz",
+    "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
-    "publish": "node scripts/publish.mjs && lerna publish",
-    "gen": "varlet-cli gen"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-lerna-changelog"
-    }
+    "bootstrap": "pnpm install && node scripts/bootstrap.mjs",
+    "lint": "varlet-cli lint",
+    "changelog": "varlet-cli changelog",
+    "release": "node scripts/publish.mjs && varlet-cli release"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
@@ -62,15 +48,24 @@
       "packages/varlet-ui/site/**",
       "packages/varlet-ui/coverage/**",
       "packages/varlet-ui/highlight/**",
-      "packages/varlet-ui/public/**"
+      "packages/varlet-ui/public/**",
+      "packages/varlet-ui/.varlet/**"
     ]
   },
   "devDependencies": {
+    "@varlet/cli": "workspace:*",
+    "@varlet/icons": "workspace:*",
+    "@varlet/eslint-config": "workspace:*",
+    "@varlet/stylelint-config": "workspace:*",
+    "typescript": "^4.4.4",
+    "prettier": "^2.3.2",
+    "stylelint": "^13.13.1",
+    "eslint": "^7.30.0",
+    "husky": "^7.0.1",
     "surge": "^0.23.0",
-    "cz-lerna-changelog": "^2.0.3",
     "execa": "^5.0.0",
-    "lerna": "^3.22.1",
-    "ora": "^5.4.0",
-    "vue": "3.2.16"
-  }
+    "lint-staged": "^10.5.0",
+    "ora": "^5.4.0"
+  },
+  "packageManager": "pnpm@6.24.3"
 }

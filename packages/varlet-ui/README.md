@@ -5,7 +5,7 @@
   <h1>VARLET</h1>
   <p>基于Vue3的Material design风格移动端组件库</p>
   <p>
-    <a href="https://varlet.gitee.io/varlet-ui/">开发文档</a> | <a href="https://github.com/haoziqaq/varlet/blob/dev/README.en-US.md">English</a>
+    <a href="https://varlet.gitee.io/varlet-ui/">开发文档</a> | <a href="https://github.com/varletjs/varlet/blob/dev/README.en-US.md">English</a>
   </p>
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
@@ -14,7 +14,7 @@
     <img src="https://img.shields.io/npm/l/@varlet/ui.svg" alt="licence">
     <img src="https://img.shields.io/codecov/c/github/haoziqaq/varlet" alt="coverage">
     <img src="https://img.badgesize.io/https://unpkg.com/@varlet/ui/umd/varlet.js?compression=gzip&label=gzip" alt="gzip" />
-    <img src="https://github.com/haoziqaq/varlet/workflows/CI/badge.svg" alt="ci">
+    <img src="https://github.com/varletjs/varlet/workflows/CI/badge.svg" alt="ci">
   </p>
 </div>
 
@@ -56,13 +56,16 @@ Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥
 
 ### Webpack / Vite
 ```shell
-# 通过npm或yarn安装
+# 通过npm或yarn或pnpm安装
 
 # npm
 npm i @varlet/ui -S
 
 # yarn
 yarn add @varlet/ui
+
+# pnpm
+pnpm add @varlet/ui
 ```
 
 ```js
@@ -74,3 +77,8 @@ import '@varlet/ui/es/style.js'
 createApp(App).use(Varlet).mount('#app')
 ```
 
+### Contributors
+
+<a href="https://github.com/varletjs/varlet/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=haoziqaq/varlet" />
+</a>

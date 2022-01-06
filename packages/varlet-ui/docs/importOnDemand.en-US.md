@@ -24,10 +24,15 @@ The [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) 
 
 ```shell
 # Install plugin
+
 # npm
-npm i babel-plugin-import -D 
+npm i unplugin-vue-components -D 
+
 # yarn
-yarn add babel-plugin-import -D
+yarn add unplugin-vue-components -D
+
+# pnpm
+pnpm add unplugin-vue-components -D
 ```
 
 #### Vue Cli

@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "1.24.1",
+  "version": "1.24.4",
   "description": "A material like components library",
   "module": "es/index.js",
   "main": "lib/index.js",
@@ -29,10 +29,10 @@
   "homepage": "https://varlet.gitee.io/varlet-ui/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/haoziqaq/varlet.git"
+    "url": "git+https://github.com/varletjs/varlet.git"
   },
   "bugs": {
-    "url": "https://github.com/haoziqaq/varlet/issues"
+    "url": "https://github.com/varletjs/varlet/issues"
   },
   "scripts": {
     "dev": "varlet-cli dev",
@@ -48,12 +48,21 @@
     "vue": "^3.2.0"
   },
   "gitHead": "ee9c3866bedad96c86365b0f9888a3a6bb781b1f",
-  "devDependencies": {
-    "@varlet/cli": "^1.24.0"
-  },
   "dependencies": {
+    "@varlet/icons": "workspace:*",
     "dayjs": "^1.10.4",
     "decimal.js": "^10.2.1"
+  },
+  "devDependencies": {
+    "@varlet/cli": "workspace:*",
+    "@varlet/touch-emulator": "workspace:*",
+    "@vue/test-utils": "2.0.0-rc.6",
+    "typescript": "^4.4.4",
+    "lodash-es": "^4.17.21",
+    "clipboard": "^2.0.6",
+    "vue": "3.2.16",
+    "vue-router": "4.0.12",
+    "live-server": "^1.2.1"
   },
   "browserslist": [
     "Chrome >= 51",

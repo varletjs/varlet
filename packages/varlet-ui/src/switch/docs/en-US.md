@@ -77,7 +77,7 @@ Other values are converted to text as a user prompt.
 
 ### Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `v-model` | Check status of Switch	| _any_ | `false` |
 | `active-value` | The value when the switch is turned on	| _any_ | `true` |

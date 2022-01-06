@@ -38,7 +38,7 @@ const router = createRouter({
 let isEnd = true
 const { start, end } = useProgress()
 
-router.beforeEach((to, from) => {
+router.beforeEach((to: any, from: any) => {
   if (to.path === from.path) {
     return false
   }

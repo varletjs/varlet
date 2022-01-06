@@ -37,7 +37,7 @@ export default {
 
 ### Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `target` | The target to trigger scroll	| _string_ | `-` |
 | `visibility-height` | The button will not show until the scroll height reaches this value | _string \| number_ | `200` |

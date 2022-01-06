@@ -29,7 +29,7 @@ module.exports = {
         'zh-CN': '中文',
         'en-US': 'English',
       },
-      github: 'https://github.com/haoziqaq/varlet',
+      github: 'https://github.com/varletjs/varlet',
       darkMode: true,
     },
     clipboard: {
@@ -56,7 +56,7 @@ module.exports = {
         'zh-CN': '中文',
         'en-US': 'English',
       },
-      github: 'https://github.com/haoziqaq/varlet',
+      github: 'https://github.com/varletjs/varlet',
       darkMode: true,
     },
   },

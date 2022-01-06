@@ -158,8 +158,9 @@ export default defineComponent({
       const { multiple, range } = props
 
       if (range) {
-        chooseRangeDay.value = chooseRangeDay.value.map((date) => dayjs(date).format('YYYY-MM-DD'))
-        return `${chooseRangeDay.value[0]} ~ ${chooseRangeDay.value[1]}`
+        const formatRangeDays = chooseRangeDay.value.map((date) => dayjs(date).format('YYYY-MM-DD'))
+
+        return `${formatRangeDays[0]} ~ ${formatRangeDays[1]}`
       }
 
       if (multiple) return `${chooseDays.value.length}${pack.value.datePickerSelected}`

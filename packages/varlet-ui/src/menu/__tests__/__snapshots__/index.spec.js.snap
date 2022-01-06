@@ -2,106 +2,33 @@
 
 exports[`test menu click forbid trigger 1`] = `
 "<div class=\\"container\\">
-  <transition-stub>
-    <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 100px); left: calc(0px + 100px); z-index: 2002;\\">
+  <div class=\\"var-menu\\">
+    <!---->
+    <div class=\\"var-menu__menu var-elevation--3 var-menu-enter-from var-menu-enter-active\\" style=\\"top: calc(0px + 100px); left: calc(0px + 100px); z-index: 2002;\\">
       <div class=\\"menu-content\\"></div>
     </div>
-  </transition-stub>
-  <div class=\\"var-menu\\">
-    <!--teleport start-->
-    <!--teleport end-->
   </div>
 </div>"
 `;
 
-exports[`test menu example 1`] = `
-"<div class=\\"app-type\\">对齐方式</div>
-<div class=\\"block-1\\">
-  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">顶部对齐</div>
-    </button>
-    <!--teleport start-->
-    <!--teleport end-->
-  </div>
-</div>
-<div class=\\"block\\">
-  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">底部对齐</div>
-    </button>
-    <!--teleport start-->
-    <!--teleport end-->
-  </div>
-</div>
-<div class=\\"app-type\\">偏移量</div>
-<div class=\\"block-1\\">
-  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">右偏移</div>
-    </button>
-    <!--teleport start-->
-    <!--teleport end-->
-  </div>
-  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">左偏移</div>
-    </button>
-    <!--teleport start-->
-    <!--teleport end-->
-  </div>
-</div>
-<div class=\\"block-2\\">
-  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">下偏移</div>
-    </button>
-    <!--teleport start-->
-    <!--teleport end-->
-  </div>
-  <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">上偏移</div>
-    </button>
-    <!--teleport start-->
-    <!--teleport end-->
-  </div>
-</div>
-<div class=\\"app-type\\">注册事件</div>
-<div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
-    <!--v-if-->
-    <div class=\\"var-button__content\\">注册事件</div>
-  </button>
-  <!--teleport start-->
-  <!--teleport end-->
-</div>
-<div style=\\"margin-bottom: 100px;\\"></div>"
-`;
-
 exports[`test menu trigger 1`] = `
 "<div class=\\"container\\">
-  <transition-stub>
-    <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 100px); left: calc(0px + 100px); z-index: 2001;\\">
+  <div class=\\"var-menu\\">
+    <!---->
+    <div class=\\"var-menu__menu var-elevation--3 var-menu-enter-from var-menu-enter-active\\" style=\\"top: calc(0px + 100px); left: calc(0px + 100px); z-index: 2001;\\">
       <div class=\\"menu-content\\"></div>
     </div>
-  </transition-stub>
-  <div class=\\"var-menu\\">
-    <!--teleport start-->
-    <!--teleport end-->
   </div>
 </div>"
 `;
 
 exports[`test menu trigger 2`] = `
 "<div class=\\"container\\">
-  <transition-stub>
+  <div class=\\"var-menu\\">
+    <!---->
     <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 100px); left: calc(0px + 100px); z-index: 2001; display: none;\\">
       <div class=\\"menu-content\\"></div>
     </div>
-  </transition-stub>
-  <div class=\\"var-menu\\">
-    <!--teleport start-->
-    <!--teleport end-->
   </div>
 </div>"
 `;

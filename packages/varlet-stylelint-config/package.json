@@ -1,6 +1,6 @@
 {
   "name": "@varlet/stylelint-config",
-  "version": "1.9.0",
+  "version": "1.24.4",
   "description": "stylelint config of varlet",
   "keywords": [
     "stylelint",
@@ -11,17 +11,14 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/haoziqaq/varlet.git"
+    "url": "https://github.com/varletjs/varlet.git"
   },
   "bugs": {
-    "url": "https://github.com/haoziqaq/varlet/issues"
+    "url": "https://github.com/varletjs/varlet/issues"
   },
   "dependencies": {
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^20.0.0"
   },
-  "gitHead": "42554856ff028f6f411a35f468e0f763978270b0",
-  "peerDependencies": {
-    "stylelint": ">=13.7.2"
-  }
+  "gitHead": "42554856ff028f6f411a35f468e0f763978270b0"
 }

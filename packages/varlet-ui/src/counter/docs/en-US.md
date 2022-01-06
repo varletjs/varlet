@@ -115,17 +115,17 @@ Other values are converted to text as a user prompt.
 
 ## API
 
-### 属性
+### Props
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
 | `v-model` | The value of the binding | _string \| number_ | `0` |
 | `min` | Minimum value | _string \| number_ | `-` |
 | `max` | Maximum value | _string \| number_ | `-` |
 | `step` | Step size | _string \| number_ | `-` |
 | `decimal-length` | Preserve decimal places | _string \| number_ | `-` |
-| `color` | Background color | _string_ | `-` |  
-| `input-width` | The width of the input box | _string \| number_ | `-` |  
+| `color` | Background color | _string_ | `-` |
+| `input-width` | The width of the input box | _string \| number_ | `-` |
 | `input-text-size` | The text size of the input box | _string \| number_ | `-` |
 | `button-size` | Button size | _string_ | `true` |
 | `readonly` | Whether the readonly | _boolean_ | `false` |
@@ -142,7 +142,7 @@ Other values are converted to text as a user prompt.
 
 ### Methods
 
-| 方法名 | 说明 | 参数 | 返回值 |
+| Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clearing validate messages | `-` | `-` |

@@ -1,6 +1,6 @@
 {
   "name": "@varlet/icons",
-  "version": "1.24.0",
+  "version": "1.24.4",
   "description": "Icons of varlet",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -21,10 +21,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/haoziqaq/varlet.git"
+    "url": "https://github.com/varletjs/varlet.git"
   },
   "bugs": {
-    "url": "https://github.com/haoziqaq/varlet/issues"
+    "url": "https://github.com/varletjs/varlet/issues"
   },
   "scripts": {
     "build": "varlet-icons build"

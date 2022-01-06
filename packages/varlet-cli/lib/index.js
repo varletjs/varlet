@@ -30,8 +30,11 @@ var jest_1 = require("./commands/jest");
 var lint_1 = require("./commands/lint");
 var gen_1 = require("./commands/gen");
 var preview_1 = require("./commands/preview");
+var changelog_1 = require("./commands/changelog");
+var release_1 = require("./commands/release");
+var commitLint_1 = require("./commands/commitLint");
 var program = new commander_1.Command();
-program.version("varlet-cli " + require('../package.json').version).usage('<command> [options]');
+program.version("varlet-cli ".concat(require('../package.json').version)).usage('<command> [options]');
 program
     .command('dev')
     .option('-f --force', 'Force dep pre-optimization regardless of whether deps have changed')
@@ -55,10 +58,22 @@ program
     .option('-cc --clearCache', 'Clear test cache')
     .action(jest_1.jest);
 program.command('gen <name>').description('Generate cli application').action(gen_1.gen);
+program
+    .command('changelog')
+    .option('-rc --releaseCount <releaseCount>', 'Release count')
+    .option('-f --file <file>', 'Changelog filename')
+    .description('Generate changelog')
+    .action(changelog_1.changelog);
+program
+    .command('release')
+    .option('-r --remote <remote>', 'Remote name')
+    .description('Release all packages and generate changelogs')
+    .action(release_1.release);
+program.command('commit-lint <gitParams>').description('Lint commit message').action(commitLint_1.commitLint);
 program.on('command:*', function (_a) {
     var _b = __read(_a, 1), cmd = _b[0];
     program.outputHelp();
-    logger_1.default.error("\nUnknown command " + cmd + ".\n");
+    logger_1.default.error("\nUnknown command ".concat(cmd, ".\n"));
     process.exitCode = 1;
 });
 program.parse();

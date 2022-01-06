@@ -8,7 +8,7 @@ exports[`Size related props 1`] = `
       <div class=\\"var-input__controller\\">
         <div class=\\"var-input__icon\\"></div>
         <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-120\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-120\\"></label>
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-125\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-125\\"></label>
         </div>
         <div class=\\"var-input__icon\\">
           <!--v-if-->
@@ -43,7 +43,7 @@ exports[`Size related props 2`] = `
       <div class=\\"var-input__controller\\">
         <div class=\\"var-input__icon\\"></div>
         <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-120\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-120\\"></label>
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-125\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-125\\"></label>
         </div>
         <div class=\\"var-input__icon\\">
           <!--v-if-->
@@ -71,8 +71,42 @@ exports[`basic mode disabled prop 1`] = `
   <li class=\\"var-pagination__size var-pagination__item-disabled\\">
     <div class=\\"var-menu\\">
       <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
-      <!--teleport start-->
-      <!--teleport end-->
+      <transition-stub>
+        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
+          <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">10条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+          <div class=\\"var-cell var-pagination__list\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">20条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+          <div class=\\"var-cell var-pagination__list\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">50条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+          <div class=\\"var-cell var-pagination__list\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">100条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+        </div>
+      </transition-stub>
     </div>
   </li>
   <!--v-if-->
@@ -94,8 +128,42 @@ exports[`basic mode mount 1`] = `
   <li class=\\"var-pagination__size\\">
     <div class=\\"var-menu\\">
       <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
-      <!--teleport start-->
-      <!--teleport end-->
+      <transition-stub>
+        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
+          <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">10条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+          <div class=\\"var-cell var-pagination__list\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">20条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+          <div class=\\"var-cell var-pagination__list\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">50条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+          <div class=\\"var-cell var-pagination__list\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">100条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+        </div>
+      </transition-stub>
     </div>
   </li>
   <li class=\\"var-pagination__quickly\\">前往 <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
@@ -146,8 +214,42 @@ exports[`simple mode disabled prop 1`] = `
   <li class=\\"var-pagination__size var-pagination__item-disabled\\">
     <div class=\\"var-menu\\">
       <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
-      <!--teleport start-->
-      <!--teleport end-->
+      <transition-stub>
+        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
+          <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">10条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+          <div class=\\"var-cell var-pagination__list\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">20条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+          <div class=\\"var-cell var-pagination__list\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">50条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+          <div class=\\"var-cell var-pagination__list\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">100条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+        </div>
+      </transition-stub>
     </div>
   </li>
   <!--v-if-->
@@ -181,8 +283,42 @@ exports[`simple mode mount 1`] = `
   <li class=\\"var-pagination__size\\">
     <div class=\\"var-menu\\">
       <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
-      <!--teleport start-->
-      <!--teleport end-->
+      <transition-stub>
+        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
+          <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">10条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+          <div class=\\"var-cell var-pagination__list\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">20条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+          <div class=\\"var-cell var-pagination__list\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">50条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+          <div class=\\"var-cell var-pagination__list\\">
+            <!--v-if-->
+            <div class=\\"var-cell__content\\">
+              <div class=\\"var-cell__title\\">100条 / 页</div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+        </div>
+      </transition-stub>
     </div>
   </li>
   <!--v-if-->
@@ -218,8 +354,42 @@ exports[`test pagination example 1`] = `
     <li class=\\"var-pagination__size\\">
       <div class=\\"var-menu\\">
         <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
-        <!--teleport start-->
-        <!--teleport end-->
+        <transition-stub>
+          <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
+            <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+              <!--v-if-->
+              <div class=\\"var-cell__content\\">
+                <div class=\\"var-cell__title\\">10条 / 页</div>
+                <!--v-if-->
+              </div>
+              <!--v-if-->
+            </div>
+            <div class=\\"var-cell var-pagination__list\\">
+              <!--v-if-->
+              <div class=\\"var-cell__content\\">
+                <div class=\\"var-cell__title\\">20条 / 页</div>
+                <!--v-if-->
+              </div>
+              <!--v-if-->
+            </div>
+            <div class=\\"var-cell var-pagination__list\\">
+              <!--v-if-->
+              <div class=\\"var-cell__content\\">
+                <div class=\\"var-cell__title\\">50条 / 页</div>
+                <!--v-if-->
+              </div>
+              <!--v-if-->
+            </div>
+            <div class=\\"var-cell var-pagination__list\\">
+              <!--v-if-->
+              <div class=\\"var-cell__content\\">
+                <div class=\\"var-cell__title\\">100条 / 页</div>
+                <!--v-if-->
+              </div>
+              <!--v-if-->
+            </div>
+          </div>
+        </transition-stub>
       </div>
     </li>
     <!--v-if-->
@@ -282,8 +452,42 @@ exports[`test pagination example 1`] = `
     <li class=\\"var-pagination__size\\">
       <div class=\\"var-menu\\">
         <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
-        <!--teleport start-->
-        <!--teleport end-->
+        <transition-stub>
+          <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
+            <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+              <!--v-if-->
+              <div class=\\"var-cell__content\\">
+                <div class=\\"var-cell__title\\">10条 / 页</div>
+                <!--v-if-->
+              </div>
+              <!--v-if-->
+            </div>
+            <div class=\\"var-cell var-pagination__list\\">
+              <!--v-if-->
+              <div class=\\"var-cell__content\\">
+                <div class=\\"var-cell__title\\">20条 / 页</div>
+                <!--v-if-->
+              </div>
+              <!--v-if-->
+            </div>
+            <div class=\\"var-cell var-pagination__list\\">
+              <!--v-if-->
+              <div class=\\"var-cell__content\\">
+                <div class=\\"var-cell__title\\">50条 / 页</div>
+                <!--v-if-->
+              </div>
+              <!--v-if-->
+            </div>
+            <div class=\\"var-cell var-pagination__list\\">
+              <!--v-if-->
+              <div class=\\"var-cell__content\\">
+                <div class=\\"var-cell__title\\">100条 / 页</div>
+                <!--v-if-->
+              </div>
+              <!--v-if-->
+            </div>
+          </div>
+        </transition-stub>
       </div>
     </li>
     <!--v-if-->
@@ -317,8 +521,42 @@ exports[`test pagination example 1`] = `
     <li class=\\"var-pagination__size var-pagination__item-disabled\\">
       <div class=\\"var-menu\\">
         <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
-        <!--teleport start-->
-        <!--teleport end-->
+        <transition-stub>
+          <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
+            <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+              <!--v-if-->
+              <div class=\\"var-cell__content\\">
+                <div class=\\"var-cell__title\\">10条 / 页</div>
+                <!--v-if-->
+              </div>
+              <!--v-if-->
+            </div>
+            <div class=\\"var-cell var-pagination__list\\">
+              <!--v-if-->
+              <div class=\\"var-cell__content\\">
+                <div class=\\"var-cell__title\\">20条 / 页</div>
+                <!--v-if-->
+              </div>
+              <!--v-if-->
+            </div>
+            <div class=\\"var-cell var-pagination__list\\">
+              <!--v-if-->
+              <div class=\\"var-cell__content\\">
+                <div class=\\"var-cell__title\\">50条 / 页</div>
+                <!--v-if-->
+              </div>
+              <!--v-if-->
+            </div>
+            <div class=\\"var-cell var-pagination__list\\">
+              <!--v-if-->
+              <div class=\\"var-cell__content\\">
+                <div class=\\"var-cell__title\\">100条 / 页</div>
+                <!--v-if-->
+              </div>
+              <!--v-if-->
+            </div>
+          </div>
+        </transition-stub>
       </div>
     </li>
     <!--v-if-->

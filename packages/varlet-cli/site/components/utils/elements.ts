@@ -7,12 +7,6 @@ export function getLeft(element: HTMLElement): number {
   return left + (document.body.scrollLeft || document.documentElement.scrollLeft)
 }
 
-export function getTop(element: HTMLElement): number {
-  const { top } = element.getBoundingClientRect()
-
-  return top + (document.body.scrollTop || document.documentElement.scrollTop)
-}
-
 export const isRem = (value: unknown) => isString(value) && value.endsWith('rem')
 
 // example 1 || 1px

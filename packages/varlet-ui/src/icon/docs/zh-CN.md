@@ -1,7 +1,7 @@
 # 图标
 
 ### 介绍
-基于字体的图标库, 也支持网络图片。
+基于字体的图标库，也支持网络图片。
 字体图标来自 [Material Design Icon](https://materialdesignicons.com/)
 
 ### 引入
@@ -57,7 +57,7 @@ export default {
 
 ### 图标切换动画
 
-当设置了`transition(ms)`并通过图标的`name`切换图标时, 可以触发切换动画。
+当设置了`transition(ms)`并通过图标的`name`切换图标时，可以触发切换动画。
 
 ```html
 <var-icon 
@@ -122,7 +122,7 @@ export default {
 }
 ```
 
-到这里你就成功的扩展了自己的图标库，`my-icon`就是你的字体`命名空间(namespace)`，您可以这样使用
+到这里你就成功的扩展了自己的图标库，`my-icon`就是你的字体`命名空间(namespace)`，您可以这样使用。
 
 ```html
 <var-icon namespace="my-icon" name="hot" />
@@ -147,7 +147,7 @@ export default {
 | `click` | 点击图标时触发 | `event: Event` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |

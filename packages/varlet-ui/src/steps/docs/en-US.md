@@ -88,7 +88,7 @@ Change the display direction of the step bar through the `direction` attribute.
 
 ### Steps Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `active` | Active step | _string \| number_ | `0` |
 | `direction` | Mode of steps, Can be set to `vertical` | _string_ | `horizontal` |
@@ -97,7 +97,7 @@ Change the display direction of the step bar through the `direction` attribute.
 
 ### Step Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `active-icon` | Active icon name  | _string_ | `check` |
 | `current-icon` | Icon name of current ste	 | _string_ | `-`|

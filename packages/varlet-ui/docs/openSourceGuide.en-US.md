@@ -4,21 +4,21 @@
 First, thank you for your interest in joining our development. Here are some considerations.
 
 ### Quickstart
-The project is based on the `workspace` feature of yarn and `lerna` as the basic architecture of Monorepo. 
+The package manager used to install and link dependencies must be [pnpm](https://pnpm.io/).
 The first fork of the repository is based on the dev branch, which is in the project root directory.
 node version 16+.
 
 ```shell
-yarn bootstrap
+pnpm bootstrap
 cd packages/varlet-ui
-yarn dev
+pnpm dev
 ```
 
 ### Contribution Guide
-see [Varlet Contribution](https://github.com/haoziqaq/varlet/blob/dev/.github/CONTRIBUTING.md)
+see [Varlet Contribution](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md)
 
 ### Join us
 
 If you want to participate in the development and maintenance of the component library,
-You can leave your email address in [issue](https://github.com/haoziqaq/varlet/issues),
+You can leave your email address in [issue](https://github.com/varletjs/varlet/issues),
 We will send you an invitation email.

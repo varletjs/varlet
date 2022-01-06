@@ -1,4 +1,3 @@
-import example from '../example'
 import Swipe from '..'
 import SwipeItem from '../../swipe-item'
 import VarSwipe from '../Swipe'
@@ -8,13 +7,6 @@ import { createApp } from 'vue'
 import { delay, mockOffset, triggerDrag } from '../../utils/jest'
 
 mockOffset()
-
-test('test swipe example', async () => {
-  const wrapper = mount(example)
-  await delay(16)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test swipe & swipe-item plugin', () => {
   const app = createApp({}).use(Swipe).use(SwipeItem)
@@ -45,7 +37,7 @@ test('test swipe next & prev & to method', async () => {
       onChange,
     },
   })
-  await delay(16)
+  await delay(50)
 
   const {
     swipe: { prev, next, to },
@@ -90,7 +82,7 @@ test('test render initial index', async () => {
       initialIndex: 2,
     },
   })
-  await delay(16)
+  await delay(50)
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
@@ -103,7 +95,7 @@ test('test touch with loop', async () => {
       onChange,
     },
   })
-  await delay(16)
+  await delay(50)
 
   const track = wrapper.find('.var-swipe__track')
 
@@ -132,7 +124,7 @@ test('test touch without loop', async () => {
       onChange,
     },
   })
-  await delay(16)
+  await delay(50)
 
   const track = wrapper.find('.var-swipe__track')
 
@@ -157,7 +149,7 @@ test('test touch with vertical', async () => {
       onChange,
     },
   })
-  await delay(16)
+  await delay(50)
 
   const track = wrapper.find('.var-swipe__track')
 
@@ -178,7 +170,7 @@ test('test touch forbid touchable', async () => {
       onChange,
     },
   })
-  await delay(16)
+  await delay(50)
 
   const track = wrapper.find('.var-swipe__track')
 

@@ -120,7 +120,7 @@ export default {
 
 ### Props
 
-| prop | Description | Type | Default |
+| Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `time` | Total time(ms)| _string \| number_ | `0` |
 | `format` | Time format | _string_ | `HH : mm : ss` |
@@ -164,7 +164,7 @@ export default {
 ### Methods
 Use ref to get CountDown instance and call instance methods.
 
-| Name | Description	 | arguments |
+| Method | Description	 | arguments |
 | ---- | ------- | -------- |
 | `start` | Start countdown	 | `-` |
 | `pause` | Pause countdown	 | `-` |
