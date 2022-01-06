@@ -256,12 +256,6 @@ varlet-cli changelog
 varlet-cli release
 ```
 
-#### Quickly create a component folder
-
-```shell
-varlet-cli create <componentName>
-```
-
 #### Generate a project template
 ```shell
 varlet-cli gen <projectName>

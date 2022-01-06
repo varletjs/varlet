@@ -52,12 +52,6 @@ or
 pnpm test:watchAll 
 ```
 
-#### Quickly create a component folder
-
-```shell
-pnpm run create <componentName>
-```
-
 #### Mount git hook
 
 ```shell

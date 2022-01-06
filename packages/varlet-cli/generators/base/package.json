@@ -22,7 +22,6 @@
     "build": "varlet-cli build",
     "preview": "varlet-cli preview",
     "compile": "varlet-cli compile",
-    "create": "varlet-cli create",
     "lint": "varlet-cli lint",
     "changelog": "varlet-cli changelog",
     "release": "pnpm compile && varlet-cli release",

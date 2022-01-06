@@ -252,12 +252,6 @@ varlet-cli changelog
 varlet-cli release
 ```
 
-#### 快速创建一个组件文件夹
-
-```shell
-varlet-cli create <componentName>
-```
-
 #### 生成一个项目模板
 ```shell
 varlet-cli gen <projectName>
