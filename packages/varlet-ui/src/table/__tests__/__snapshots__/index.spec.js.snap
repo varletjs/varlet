@@ -120,8 +120,26 @@ exports[`test table example 1`] = `
         <li class=\\"var-pagination__size\\">
           <div class=\\"var-menu\\">
             <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
-            <!--teleport start-->
-            <!--teleport end-->
+            <transition-stub>
+              <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
+                <div class=\\"var-cell var-pagination__list\\">
+                  <!--v-if-->
+                  <div class=\\"var-cell__content\\">
+                    <div class=\\"var-cell__title\\">5条 / 页</div>
+                    <!--v-if-->
+                  </div>
+                  <!--v-if-->
+                </div>
+                <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+                  <!--v-if-->
+                  <div class=\\"var-cell__content\\">
+                    <div class=\\"var-cell__title\\">10条 / 页</div>
+                    <!--v-if-->
+                  </div>
+                  <!--v-if-->
+                </div>
+              </div>
+            </transition-stub>
           </div>
         </li>
         <!--v-if-->
