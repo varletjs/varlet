@@ -64,7 +64,11 @@ program
     .option('-f --file <file>', 'Changelog filename')
     .description('Generate changelog')
     .action(changelog_1.changelog);
-program.command('release').description('Release all packages and generate changelogs').action(release_1.release);
+program
+    .command('release')
+    .option('-r --remote <remote>', 'Remote name')
+    .description('Release all packages and generate changelogs')
+    .action(release_1.release);
 program.command('commit-lint <gitParams>').description('Lint commit message').action(commitLint_1.commitLint);
 program.on('command:*', function (_a) {
     var _b = __read(_a, 1), cmd = _b[0];
