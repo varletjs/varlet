@@ -55,7 +55,11 @@ program
   .description('Generate changelog')
   .action(changelog)
 
-program.command('release').description('Release all packages and generate changelogs').action(release)
+program
+  .command('release')
+  .option('-r --remote <remote>', 'Remote name')
+  .description('Release all packages and generate changelogs')
+  .action(release)
 
 program.command('commit-lint <gitParams>').description('Lint commit message').action(commitLint)
 

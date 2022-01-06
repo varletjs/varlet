@@ -15,9 +15,9 @@ pnpm dev
 ```
 
 ### 贡献指南
-详情见[Varlet 贡献指南](https://github.com/haoziqaq/varlet/blob/dev/.github/CONTRIBUTING.md)
+详情见[Varlet 贡献指南](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md)
 
 ### 加入我们
 
-如果您想参与组件库的开发和维护，可以在[issue](https://github.com/haoziqaq/varlet/issues)中留下您的邮箱，
+如果您想参与组件库的开发和维护，可以在[issue](https://github.com/varletjs/varlet/issues)中留下您的邮箱，
 我们会给您发送邀请邮件。

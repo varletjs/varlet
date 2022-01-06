@@ -62,7 +62,7 @@ module.exports = {
     },
     header: {
       i18n: null,
-      github: 'https://github.com/haoziqaq/varlet',
+      github: 'https://github.com/varletjs/varlet',
     },
     menu: [
       {
@@ -100,7 +100,7 @@ module.exports = {
     },
     header: {
       i18n: null,
-      github: 'https://github.com/haoziqaq/varlet',
+      github: 'https://github.com/varletjs/varlet',
     },
   },
 }

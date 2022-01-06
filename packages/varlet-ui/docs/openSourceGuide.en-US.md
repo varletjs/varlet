@@ -15,10 +15,10 @@ pnpm dev
 ```
 
 ### Contribution Guide
-see [Varlet Contribution](https://github.com/haoziqaq/varlet/blob/dev/.github/CONTRIBUTING.md)
+see [Varlet Contribution](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md)
 
 ### Join us
 
 If you want to participate in the development and maintenance of the component library,
-You can leave your email address in [issue](https://github.com/haoziqaq/varlet/issues),
+You can leave your email address in [issue](https://github.com/varletjs/varlet/issues),
 We will send you an invitation email.

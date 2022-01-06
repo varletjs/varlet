@@ -30,12 +30,12 @@ async function publish(preRelease: boolean) {
   }
 }
 
-async function pushGit(version: string) {
+async function pushGit(version: string, remote = 'origin') {
   const s = ora().start('Pushing to remote git repository')
   await execa('git', ['add', '.'])
   await execa('git', ['commit', '-m', `v${version}`])
   await execa('git', ['tag', `v${version}`])
-  await execa('git', ['push', 'origin', `v${version}`])
+  await execa('git', ['push', remote, `v${version}`])
   const ret = await execa('git', ['push'])
   s.succeed('Push remote repository successfully')
 
@@ -55,7 +55,7 @@ function updateVersion(version: string) {
   })
 }
 
-export async function release() {
+export async function release(cmd: { remote?: string }) {
   try {
     const currentVersion = require(resolve(CWD, 'package.json')).version
 
@@ -99,20 +99,21 @@ export async function release() {
 
     if (!isPreRelease) {
       await changelog()
-      await pushGit(expectVersion)
+      await pushGit(expectVersion, cmd.remote)
     }
 
     await publish(isPreRelease)
+
+    logger.success(`Release version ${expectVersion} successfully!`)
 
     if (isPreRelease) {
       try {
         await execa('git', ['restore', '**/package.json'])
         await execa('git', ['restore', 'package.json'])
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
+      } catch {
+        logger.error('Restore package.json has failed, please restore manually')
+      }
     }
-
-    logger.success(`Release version ${expectVersion} successfully!`)
   } catch (error: any) {
     logger.error(error.toString())
     process.exit(1)
