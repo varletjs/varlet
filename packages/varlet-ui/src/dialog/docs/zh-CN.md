@@ -54,7 +54,7 @@ Dialog({
 #### 处理用户行为
 
 可以通过 `Dialog` 方法的返回值获取用户行为, 返回值是一个 `promise`。
-包含 `confirm(确认)`、`cancel(取消)`、`close(通过点击遮罩层触发关闭)` 三种状态。
+包含` confirm(确认)`、 `cancel(取消)`、 `close(通过点击遮罩层触发关闭)`三种状态。
 
 ```js
 import { Snackbar } from '@varlet/ui'

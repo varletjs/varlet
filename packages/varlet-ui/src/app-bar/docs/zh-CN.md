@@ -19,7 +19,7 @@ createApp().use(AppBar)
 
 ### 自定义样式
 
-通过 `title-position`、`color` 属性设置标题所处位置、导航栏颜色。
+通过 `title-position`、 `color` 属性设置标题所处位置、导航栏颜色。
 
 ```html
 <var-app-bar
@@ -217,7 +217,7 @@ export default {
 | `right` | 插入至导航栏右侧的内容 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
