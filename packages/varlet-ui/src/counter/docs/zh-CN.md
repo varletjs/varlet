@@ -71,8 +71,8 @@ export default {
 ### 异步变更
 
 在某些场景下需要等待服务器返回成功之后再执行变更。
-设置`lazy-change`后会阻止组件本身的绑定值更新操作，
-并注册`before-change`事件进行手动更新。
+设置 `lazy-change` 后会阻止组件本身的绑定值更新操作，
+并注册 `before-change` 事件进行手动更新。
 
 ```html
 <var-counter
@@ -103,7 +103,7 @@ export default {
 
 ### 字段校验
 
-通过传入一个校验器数组可以对值进行校验，校验器返回`true`则为校验通过。
+通过传入一个校验器数组可以对值进行校验，校验器返回 `true` 则为校验通过。
 以外的值将转换为文本作为用户提示。
 
 ```html
@@ -138,7 +138,7 @@ export default {
 | `press` | 是否开启按钮长按 | _boolean_ | `true` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
 | `validate-trigger` | 触发验证的时机， 可选值为 `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _ValidateTriggers[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
-| `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: number) => any>_ | `-` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: number) => any>_ | `-` |
 
 ### 方法
 
@@ -146,20 +146,20 @@ export default {
 | --- | --- | --- | --- |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
-| `reset` | 清空绑定的值(设置为`min \|\| 0`)和校验信息 | `-` | `-` |
+| `reset` | 清空绑定的值(设置为 `min \|\| 0` )和校验信息 | `-` | `-` |
 
 ### 事件
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `before-change` | 变更之前(仅限lazy-change模式)触发 | `value: number` <br> `change: (value: string \| number) => void` |
+| `before-change` | 变更之前(仅限 lazy-change 模式)触发 | `value: number` <br> `change: (value: string \| number) => void` |
 | `change` | 变更时触发 | `value: number` |
 | `increment` | 增加时触发 | `value: number` |
 | `decrement` | 减少时触发 | `value: number` |
 
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

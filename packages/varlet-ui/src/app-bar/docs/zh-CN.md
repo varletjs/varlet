@@ -11,7 +11,7 @@ createApp().use(AppBar)
 
 ### 基础导航栏
 
-通过`title`属性设置导航栏标题。
+通过 `title` 属性设置导航栏标题。
 
 ```html
 <var-app-bar title="标题" />
@@ -19,7 +19,7 @@ createApp().use(AppBar)
 
 ### 自定义样式
 
-通过`title-position`、`color`属性设置标题所处位置、导航栏颜色。
+通过 `title-position`、 `color` 属性设置标题所处位置、导航栏颜色。
 
 ```html
 <var-app-bar 
@@ -205,7 +205,7 @@ export default {
 | `color` | 背景颜色 | _string_ | `-` |
 | `text-color` | 文字颜色 | _string_ | `-` |
 | `title` | 标题 | _string_ | - |
-| `title-position` | 标题位置,可选值为 `left`,`center`,`right` | _string_ | `left` |
+| `title-position` | 标题位置,可选值为 `left`, `center`, `right` | _string_ | `left` |
 | `elevation` | 是否给导航栏设置海拔 | _boolean_ | `true` |
 
 ### 插槽
@@ -217,7 +217,7 @@ export default {
 | `right` | 插入至导航栏右侧的内容 | `-` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

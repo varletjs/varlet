@@ -11,10 +11,10 @@
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `click` | 点击Col时触发 | `event: Event` |
+| `click` | 点击 Col 时触发 | `event: Event` |
 
 ### 插槽
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `default` | Col内容 | `-` |
+| `default` | Col 内容 | `-` |

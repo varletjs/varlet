@@ -29,7 +29,7 @@ createApp().use(Icon)
 
 ### 使用图片
 
-当传入的`name`是一个网络地址时,将会使用`img`标签以`cover`模式显示。`size`为图片的宽高。
+当传入的 `name` 是一个网络地址时,将会使用 `img` 标签以 `cover` 模式显示。`size` 为图片的宽高。
 
 ```html
 <var-icon name="https://varlet.gitee.io/varlet-ui/cat.jpg" :size="32" />
@@ -57,7 +57,7 @@ export default {
 
 ### 图标切换动画
 
-当设置了`transition(ms)`并通过图标的`name`切换图标时，可以触发切换动画。
+当设置了 `transition(ms)` 并通过图标的 `name` 切换图标时，可以触发切换动画。
 
 ```html
 <var-icon 
@@ -90,7 +90,7 @@ export default {
 
 ### 自定义图标库
 首先您需要设置您自己的字体，并引入到您的项目。
-这里假设扩展一个名为`my-icons`的字体。
+这里假设扩展一个名为 `my-icons` 的字体。
 
 ```css
 /* 设置字体 */
@@ -122,7 +122,7 @@ export default {
 }
 ```
 
-到这里你就成功的扩展了自己的图标库，`my-icon`就是你的字体`命名空间(namespace)`，您可以这样使用。
+到这里你就成功的扩展了自己的图标库，`my-icon` 就是你的字体 `命名空间(namespace)`，您可以这样使用。
 
 ```html
 <var-icon namespace="my-icon" name="hot" />
@@ -147,7 +147,7 @@ export default {
 | `click` | 点击图标时触发 | `event: Event` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制。
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |

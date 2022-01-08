@@ -2,7 +2,7 @@
 
 ### 介绍
 弹出一个对话框展示内容并处理用户交互。
-`Dialog`提供了函数式和组件式两种使用方式，两种使用效果和参数并没有本质区别。
+`Dialog` 提供了函数式和组件式两种使用方式，两种使用效果和参数并没有本质区别。
 
 ### 引入
 
@@ -53,8 +53,8 @@ Dialog({
 
 #### 处理用户行为
 
-可以通过`Dialog`方法的返回值获取用户行为, 返回值是一个`promise`。
-包含`confirm(确认)`、`cancel(取消)`、`close(通过点击遮罩层触发关闭)`三种状态。
+可以通过 `Dialog` 方法的返回值获取用户行为, 返回值是一个 `promise`。
+包含` confirm(确认)`、 `cancel(取消)`、 `close(通过点击遮罩层触发关闭)`三种状态。
 
 ```js
 import { Snackbar } from '@varlet/ui'
@@ -70,7 +70,7 @@ actions[await Dialog('兰亭临帖 行书如行云流水')]()
 
 ### 异步关闭
 
-`Dialog`可以通过`onBeforeClose`进行关闭前的拦截，可以从参数中得到用户行为和触发关闭的回调函数。
+`Dialog` 可以通过 `onBeforeClose` 进行关闭前的拦截，可以从参数中得到用户行为和触发关闭的回调函数。
 
 ```js
 import { Snackbar } from '@varlet/ui'
@@ -218,9 +218,9 @@ export default {
 | `confirm-button-color` | 确认按钮背景颜色 | _string_ | `-` |
 | `cancel-button-color` | 取消按钮背景颜色 | _string_ | `-` |
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
-| `overlay-class` | 自定义遮罩层的class | _string_ | `-` |
-| `overlay-style` | 自定义遮罩层的style | _string_ | `-` |
-| `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
+| `overlay-class` | 自定义遮罩层的 class | _string_ | `-` |
+| `overlay-style` | 自定义遮罩层的 style | _string_ | `-` |
+| `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` | 
 | `teleport` | 弹出层挂载的位置 | _TeleportProps['to']_ | `-` |
 
@@ -274,7 +274,7 @@ export default {
 | `title` | 对话框标题 | `-` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

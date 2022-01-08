@@ -11,7 +11,7 @@ createApp().use(Input)
 
 ### 基本使用
 
-输入框的行为和基本原生一致，用户输入时始终获得一个符合`type`规则的字符串
+输入框的行为和基本原生一致，用户输入时始终获得一个符合 `type` 规则的字符串
 
 ```js
 import { ref } from 'vue'
@@ -93,7 +93,7 @@ createApp().use(Icon)
 
 ### 字段校验
 
-通过传入一个校验器数组可以对值进行校验，校验器返回`true`则为校验通过。
+通过传入一个校验器数组可以对值进行校验，校验器返回 `true` 则为校验通过。
 以外的值将转换为文本作为用户提示。
 
 ```html
@@ -126,7 +126,7 @@ createApp().use(Icon)
 | `clearable` | 是否可清除 | _boolean_ | `false` |
 | `resize` | 文本域是否可以拖动调整尺寸 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机， 可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
-| `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string) => any>_ | `-` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string) => any>_ | `-` |
 
 ### 方法
 
@@ -157,7 +157,7 @@ createApp().use(Icon)
 | `append-icon` | 后置图标 | `-` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
