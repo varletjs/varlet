@@ -2,8 +2,8 @@
 
 ### 介绍
 弹出一个动作面板提供用户选择选项的能力。
-`ActionSheet`提供了函数式和组件式两种使用方式，两种使用效果和参数并没有本质区别。
-函数返回一个`Promise`，选择时返回`当前选择的action`，点击遮罩层关闭返回`close`。
+`ActionSheet` 提供了函数式和组件式两种使用方式，两种使用效果和参数并没有本质区别。
+函数返回一个 `Promise` ，选择时返回 `当前选择的action` ，点击遮罩层关闭返回 `close`。
 
 ### 引入
 
@@ -76,7 +76,7 @@ ActionSheet({
 
 #### 禁用选项
 
-选项传入`disabled`可以使选项处于禁用状态。
+选项传入 `disabled` 可以使选项处于禁用状态。
 
 ```js
 ActionSheet({
@@ -100,8 +100,8 @@ ActionSheet({
 
 #### 禁用点击选项时关闭动作面板
 
-方法传入`closeOnClickAction`可以禁用在选择选项时`ActionSheet`自动关闭的行为，用户可以多次选择，
-由于`Promise`只会被`resolve`一次，所以推荐使用`onSelect`监听用户选择行为。
+方法传入 `closeOnClickAction` 可以禁用在选择选项时 `ActionSheet` 自动关闭的行为，用户可以多次选择，
+由于 `Promise` 只会被 `resolve` 一次，所以推荐使用 `onSelect` 监听用户选择行为。
 
 ```js
 import { Snackbar } from '@varlet/ui'
@@ -128,7 +128,7 @@ ActionSheet({
 
 ### 自定义选项样式
 
-选项提供了可以配置样式的参数，具体选项的参数可选项见`Action的数据结构`。
+选项提供了可以配置样式的参数，具体选项的参数可选项见 `Action 的数据结构`。
 
 ```js
 import { Snackbar } from '@varlet/ui'
@@ -396,7 +396,7 @@ export default {
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
 | `overlay-class` | 自定义遮罩层的 class | _string_ | `-` |
 | `overlay-style` | 自定义遮罩层的 style | _string_ | `-` |
-| `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
+| `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `close-on-click-action` | 是否点击选项时关闭动作面板 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭动作面板 | _boolean_ | `true` | 
 | `teleport` | 动作面板挂载的位置 | _TeleportProps['to']_ | `-` |
@@ -421,7 +421,7 @@ export default {
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
 | `overlayClass` | 自定义遮罩层的 class | _string_ | `-` |
 | `overlayStyle` | 自定义遮罩层的 style | _string_ | `-` |
-| `lockScroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
+| `lockScroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `closeOnClickOverlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
 | `onOpen` | 动作面板开启回调 | _() => void_ | `-` |
 | `onOpened` | 动作面板开启动画结束回调 | _() => void_ | `-` |
@@ -449,7 +449,7 @@ export default {
 | `title` | 动作面板标题 | `-` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

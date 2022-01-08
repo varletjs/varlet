@@ -141,7 +141,7 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
 | `v-model` | 被选择的日期（ISO 8601 格式，`YYYY-MM-DD` 或 `YYYY-MM`）| _string[] \| string_ | `-` |
-| `type` | 选择器类型，可选值为`date, month` | _string_ | `date` |
+| `type` | 选择器类型，可选值为 `date, month` | _string_ | `date` |
 | `allowed-dates` | 限制可以选择的日期 | _function_ | `-` |
 | `color` | 选择器的颜色 | _string_ | `#2979ff` |
 | `header-color` | 标题背景色。如果未指定，将使用由 color 属性或默认颜色。 | _string_ | `#2979ff` |
@@ -172,7 +172,7 @@ export default {
 | `multiple` | 自定义标题中的多选 | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

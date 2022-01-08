@@ -11,7 +11,7 @@ createApp().use(Badge)
 
 ### 徽标类型
 
-通过`type`属性设置徽标的类型。
+通过 `type` 属性设置徽标的类型。
 
 ```html
 <var-badge />
@@ -24,7 +24,7 @@ createApp().use(Badge)
 
 ### 圆点徽标
 
-通过`dot`属性将徽标设置为圆点。
+通过 `dot` 属性将徽标设置为圆点。
 
 ```html
 <var-badge type="danger" dot />
@@ -32,7 +32,7 @@ createApp().use(Badge)
 
 ### 自定义徽标内容
 
-通过`value`属性设置徽标的内容。
+通过 `value` 属性设置徽标的内容。
 
 ```html
 <var-badge type="danger" value="badge" />
@@ -42,7 +42,7 @@ createApp().use(Badge)
 
 ### 最大值
 
-通过`value`和`max-value`控制徽标显示值的范围（当`value`与`max-value`都存在时生效）。
+通过 `value` 和 `max-value` 控制徽标显示值的范围（当 `value` 与 `max-value` 都存在时生效）。
 
 ```html
 <var-badge type="danger" :value="value" :max-value="maxValue" />
@@ -69,7 +69,7 @@ export default {
 
 ### 不同定位徽标
 
-通过`position`属性设置徽标的位置。
+通过 `position` 属性设置徽标的位置。
 
 ```html
 <var-badge type="danger" position="right-top">
@@ -88,7 +88,7 @@ export default {
 
 ### 是否显示徽标
 
-通过`hidden`属性设置是否显示徽标。
+通过 `hidden` 属性设置是否显示徽标。
 
 ```html
 <var-button @click="handleChange">点击改变状态</var-button>
@@ -118,7 +118,7 @@ export default {
 
 ### 自定义徽标颜色
 
-通过`color`属性设置徽标的颜色。
+通过 `color` 属性设置徽标的颜色。
 
 ```html
 <var-badge color="#6200ea" position="right-top">
@@ -128,7 +128,7 @@ export default {
 
 ### 自定义徽标图标
 
-通过`icon`属性设置徽标图标。
+通过 `icon` 属性设置徽标图标。
 
 ```html
 <var-badge color="#6200ea" position="right-top" icon="notebook">
@@ -144,9 +144,9 @@ export default {
 | ---- | ---- | ---- | ---- |
 | `type` | 类型， 可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `dot` | 徽标是否为小圆点 | _boolean_ | `false` |
-| `value` | 徽标中显示的值（当`dot`为`false`时生效）| _string \| number_ | `0` |
-| `max-value` | 徽标中显示的最大值，当`value`大于`max-value`时会显示`max-value+`(当`value`与`max-value`都存在时生效)| _number_ | `-` |
-| `position` | 徽标标签中有其他标签时定义徽标在其他标签上的位置，可选值`right-top` `top-bottom` `left-top` `left-bottom` | _string_ | `right-top` |
+| `value` | 徽标中显示的值（当 `dot` 为 `false` 时生效）| _string \| number_ | `0` |
+| `max-value` | 徽标中显示的最大值，当 `value` 大于 `max-value` 时会显示 `max-value+` (当 `value` 与 `max-value` 都存在时生效)| _number_ | `-` |
+| `position` | 徽标标签中有其他标签时定义徽标在其他标签上的位置，可选值 `right-top` `top-bottom` `left-top` `left-bottom` | _string_ | `right-top` |
 | `color` | 自定义徽标颜色 | _string_ | `-` |
 | `icon` | 自定义徽标中图标的内容（优先级高于`value`） | _string_ | `-` |
 
@@ -157,7 +157,7 @@ export default {
 | `default` |  徽标内容 | `-` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

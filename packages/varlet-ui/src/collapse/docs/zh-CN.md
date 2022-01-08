@@ -55,7 +55,7 @@ export default {
 
 ### 手风琴模式
 
-使用 `accordion` 属性开启手风琴模式，此时`value`为字符串。
+使用 `accordion` 属性开启手风琴模式，此时 `value` 为字符串。
 
 ```html
 <var-collapse v-model="value" accordion :offset="false">
@@ -143,7 +143,7 @@ export default {
 | ----- | -------------- | -------- | ---------- |
 | `name` | 唯一标识符，默认为索引值 | _string \| number_| `index` |
 | `title` | 面板标题 | _string \| number_| `-` |
-| `icon` | icon的名称 | _string_ | `chevron-down` |
+| `icon` | icon 的名称 | _string_ | `chevron-down` |
 | `disabled` | 是否禁用面板 | _boolean_ | `false` |
 
 ### 事件
@@ -165,7 +165,7 @@ export default {
 | `icon` | 自定义右侧icon | `-` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

@@ -140,7 +140,7 @@ export default {
 | 参数         | 说明   | 类型  | 默认值  |
 | ------------ | ------------ | ------------------ | ------------ |
 | `show`       | 是否显示     | _boolean_ | `false` |
-| `images`     | 需要预览的图片 URL数组 | _string[]_ | `[]` |
+| `images`     | 需要预览的图片 URL 数组 | _string[]_ | `[]` |
 | `current`    | 图片预览起始的 URL | _string_ | `-` |
 | `zoom`       | 双击放大倍数 | _string \| number_ | `2` |
 | `closeable`  | 是否显示关闭按钮 | _boolean_ | `false` |
@@ -184,7 +184,7 @@ export default {
 | `onClosed` | image-preview 关闭动画结束时候的回调 |  _() => void_ | `-` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名  | 默认值   |
 | ------ | -------- |
