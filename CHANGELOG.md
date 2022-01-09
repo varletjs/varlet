@@ -1,3 +1,12 @@
+## [1.24.9](https://github.com/varletjs/varlet/compare/v1.24.8...v1.24.9) (2022-01-09)
+
+
+### Bug Fixes
+
+* **touch-emulator:** add module property in package.json ([866cd8d](https://github.com/varletjs/varlet/commit/866cd8d806416321e405e7b4f8bb14221f2320f3))
+
+
+
 ## [1.24.8](https://github.com/varletjs/varlet/compare/v1.24.7...v1.24.8) (2022-01-09)
 
 
