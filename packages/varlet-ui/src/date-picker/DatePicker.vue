@@ -422,5 +422,6 @@ export default defineComponent({
 @import '../styles/common';
 @import '../styles/elevation';
 @import '../button/button';
+@import '../icon/icon';
 @import './date-picker';
 </style>
