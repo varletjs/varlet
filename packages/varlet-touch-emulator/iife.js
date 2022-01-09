@@ -1,92 +1,92 @@
-const inBrowser = typeof window !== 'undefined'
-const supportTouch = inBrowser && 'ontouchstart' in window
-let initiated = false
-let eventTarget
+;(() => {
+  const inBrowser = typeof window !== 'undefined'
+  const supportTouch = inBrowser && 'ontouchstart' in window
+  let initiated = false
+  let eventTarget
 
-const isMousedown = (eventType) => eventType === 'mousedown'
+  const isMousedown = (eventType) => eventType === 'mousedown'
 
-const isMousemove = (eventType) => eventType === 'mousemove'
+  const isMousemove = (eventType) => eventType === 'mousemove'
 
-const isMouseup = (eventType) => eventType === 'mouseup'
+  const isMouseup = (eventType) => eventType === 'mouseup'
 
-const isUpdateTarget = (eventType) =>
-  isMousedown(eventType) || !eventTarget || (eventTarget && !eventTarget.dispatchEvent)
+  const isUpdateTarget = (eventType) =>
+    isMousedown(eventType) || !eventTarget || (eventTarget && !eventTarget.dispatchEvent)
 
-function Touch(target, identifier, mouseEvent) {
-  const { clientX, clientY, screenX, screenY, pageX, pageY } = mouseEvent
+  function Touch(target, identifier, mouseEvent) {
+    const { clientX, clientY, screenX, screenY, pageX, pageY } = mouseEvent
 
-  this.identifier = identifier
-  this.target = target
-  this.clientX = clientX
-  this.clientY = clientY
-  this.screenX = screenX
-  this.screenY = screenY
-  this.pageX = pageX
-  this.pageY = pageY
-}
-
-function updateTouchList(mouseEvent) {
-  const touchList = createTouchList()
-
-  touchList.push(new Touch(eventTarget, 1, mouseEvent))
-  return touchList
-}
-
-function createTouchList() {
-  const touchList = []
-
-  touchList.item = function (index) {
-    return this[index] || null
+    this.identifier = identifier
+    this.target = target
+    this.clientX = clientX
+    this.clientY = clientY
+    this.screenX = screenX
+    this.screenY = screenY
+    this.pageX = pageX
+    this.pageY = pageY
   }
 
-  return touchList
-}
+  function updateTouchList(mouseEvent) {
+    const touchList = createTouchList()
 
-function getActiveTouches(mouseEvent) {
-  const { type } = mouseEvent
-  if (isMouseup(type)) return createTouchList()
-  return updateTouchList(mouseEvent)
-}
+    touchList.push(new Touch(eventTarget, 1, mouseEvent))
+    return touchList
+  }
 
-function triggerTouch(touchType, mouseEvent) {
-  const { altKey, ctrlKey, metaKey, shiftKey } = mouseEvent
-  const touchEvent = document.createEvent('Event')
-  touchEvent.initEvent(touchType, true, true)
+  function createTouchList() {
+    const touchList = []
 
-  touchEvent.altKey = altKey
-  touchEvent.ctrlKey = ctrlKey
-  touchEvent.metaKey = metaKey
-  touchEvent.shiftKey = shiftKey
+    touchList.item = function (index) {
+      return this[index] || null
+    }
 
-  touchEvent.touches = getActiveTouches(mouseEvent)
-  touchEvent.targetTouches = getActiveTouches(mouseEvent)
-  touchEvent.changedTouches = createTouchList(mouseEvent)
+    return touchList
+  }
 
-  eventTarget.dispatchEvent(touchEvent)
-}
+  function getActiveTouches(mouseEvent) {
+    const { type } = mouseEvent
+    if (isMouseup(type)) return createTouchList()
+    return updateTouchList(mouseEvent)
+  }
 
-function onMouse(mouseEvent, touchType) {
-  const { type, target } = mouseEvent
+  function triggerTouch(touchType, mouseEvent) {
+    const { altKey, ctrlKey, metaKey, shiftKey } = mouseEvent
+    const touchEvent = document.createEvent('Event')
+    touchEvent.initEvent(touchType, true, true)
 
-  initiated = isMousedown(type) ? true : isMouseup(type) ? false : initiated
+    touchEvent.altKey = altKey
+    touchEvent.ctrlKey = ctrlKey
+    touchEvent.metaKey = metaKey
+    touchEvent.shiftKey = shiftKey
 
-  if (isMousemove(type) && !initiated) return
+    touchEvent.touches = getActiveTouches(mouseEvent)
+    touchEvent.targetTouches = getActiveTouches(mouseEvent)
+    touchEvent.changedTouches = createTouchList(mouseEvent)
 
-  if (isUpdateTarget(type)) eventTarget = target
+    eventTarget.dispatchEvent(touchEvent)
+  }
 
-  triggerTouch(touchType, mouseEvent)
+  function onMouse(mouseEvent, touchType) {
+    const { type, target } = mouseEvent
 
-  if (isMouseup(type)) eventTarget = null
-}
+    initiated = isMousedown(type) ? true : isMouseup(type) ? false : initiated
 
-function createTouchEmulator() {
-  window.addEventListener('mousedown', (event) => onMouse(event, 'touchstart'), true)
-  window.addEventListener('mousemove', (event) => onMouse(event, 'touchmove'), true)
-  window.addEventListener('mouseup', (event) => onMouse(event, 'touchend'), true)
-}
+    if (isMousemove(type) && !initiated) return
 
-if (inBrowser && !supportTouch) {
-  createTouchEmulator()
-}
+    if (isUpdateTarget(type)) eventTarget = target
 
-module.exports = {}
+    triggerTouch(touchType, mouseEvent)
+
+    if (isMouseup(type)) eventTarget = null
+  }
+
+  function createTouchEmulator() {
+    window.addEventListener('mousedown', (event) => onMouse(event, 'touchstart'), true)
+    window.addEventListener('mousemove', (event) => onMouse(event, 'touchmove'), true)
+    window.addEventListener('mouseup', (event) => onMouse(event, 'touchend'), true)
+  }
+
+  if (inBrowser && !supportTouch) {
+    createTouchEmulator()
+  }
+})()
