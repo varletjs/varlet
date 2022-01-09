@@ -1,3 +1,12 @@
+## [1.24.7](https://github.com/varletjs/varlet/compare/v1.24.6...v1.24.7) (2022-01-09)
+
+
+### Bug Fixes
+
+* **touch-emulator:** rename file ([3a4cbd5](https://github.com/varletjs/varlet/commit/3a4cbd587092fb51e3401233da718b73c4b1ad35))
+
+
+
 ## [1.24.6](https://github.com/varletjs/varlet/compare/v1.24.5...v1.24.6) (2022-01-09)
 
 
