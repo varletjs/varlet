@@ -1,4 +1,5 @@
-const supportTouch = 'ontouchstart' in window
+const inBrowser = typeof window !== 'undefined'
+const supportTouch = inBrowser && 'ontouchstart' in window
 let initiated = false
 let eventTarget
 
@@ -84,4 +85,8 @@ function createTouchEmulator() {
   window.addEventListener('mouseup', (event) => onMouse(event, 'touchend'), true)
 }
 
-if (!supportTouch) createTouchEmulator()
+if (inBrowser && !supportTouch) {
+  createTouchEmulator()
+}
+
+module.exports = {}
