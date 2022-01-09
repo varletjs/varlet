@@ -89,4 +89,4 @@ if (inBrowser && !supportTouch) {
   createTouchEmulator()
 }
 
-module.exports = {}
+export default {}
