@@ -1,3 +1,12 @@
+## [1.24.8](https://github.com/varletjs/varlet/compare/v1.24.7...v1.24.8) (2022-01-09)
+
+
+### Bug Fixes
+
+* **touch-emulator:** fix cjs to esm ([ce68ff3](https://github.com/varletjs/varlet/commit/ce68ff3ed710f3b9f5f1513659121ee21297d5e4))
+
+
+
 ## [1.24.7](https://github.com/varletjs/varlet/compare/v1.24.6...v1.24.7) (2022-01-09)
 
 
