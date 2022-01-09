@@ -1,3 +1,14 @@
+## [1.24.6](https://github.com/varletjs/varlet/compare/v1.24.5...v1.24.6) (2022-01-09)
+
+
+### Bug Fixes
+
+* **date-picker:** import icon.less ([48d54a6](https://github.com/varletjs/varlet/commit/48d54a6d5fe148bb8bf926e670f155da6ea77589))
+* **touch-emulator:** add iife script ([ed7e28a](https://github.com/varletjs/varlet/commit/ed7e28a246612573a7558309719fb616d7e46a4f))
+* **touch-emulator:** support ssr ([f5857bb](https://github.com/varletjs/varlet/commit/f5857bb93e79582dc17423d07d973d8fb590d4f6))
+
+
+
 ## [1.24.5](https://github.com/varletjs/varlet/compare/v1.24.4...v1.24.5) (2022-01-07)
 
 
