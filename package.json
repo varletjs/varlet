@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "1.24.9",
+  "version": "1.24.10",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
