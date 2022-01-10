@@ -35,6 +35,13 @@ interface Locale {
   add(lang: string, pack: Partial<Pack>): void
   use(lang: string): void
   merge(lang: string, pack: Partial<Pack>): void
+  useLocale<T = Pack>(): {
+    packs: Record<string, Partial<T>>
+    pack: Ref<Partial<T>>
+    add(lang: string, pack: Partial<T> & { lang?: string }): void
+    use(lang: string): void
+    merge(lang: string, pack: Partial<T>): void
+  }
 }
 
 export const Locale: Locale

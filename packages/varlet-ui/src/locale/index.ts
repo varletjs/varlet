@@ -26,7 +26,7 @@ export type Pack = {
   paginationItem: string
   paginationPage: string
   paginationJump: string
-} & {
+  // internal
   lang?: string
 }
 
@@ -37,7 +37,6 @@ function useLocale<T = Pack>() {
   const add = (lang: string, pack: Partial<T> & { lang?: string }) => {
     pack.lang = lang
     packs[lang] = pack
-    return packs
   }
 
   const use = (lang: string) => {
@@ -56,8 +55,8 @@ function useLocale<T = Pack>() {
     }
 
     packs[lang] = { ...packs[lang], ...pack }
+
     use(lang)
-    return packs
   }
 
   return {
