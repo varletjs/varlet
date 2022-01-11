@@ -22,6 +22,7 @@
   >
     <var-loading
       class="var-button__loading"
+      var-button-cover
       :type="loadingType"
       :size="loadingSize"
       :radius="loadingRadius"
