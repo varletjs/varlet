@@ -497,7 +497,7 @@ module.exports = {
       {
         text: {
           'zh-CN': 'Slider 滑块',
-          'en-US': 'slider',
+          'en-US': 'Slider',
         },
         doc: 'slider',
         type: 2,
