@@ -75,6 +75,11 @@ export default {
       pack,
       ...toRefs(values),
       load() {
+        if (values.current !== 0) {
+          values.loading = false
+          return
+        }
+
         setTimeout(() => {
           for (let i = 0; i < 20; i++) {
             values.list.push(values.list.length + 1)
@@ -88,6 +93,11 @@ export default {
         }, 1000)
       },
       load2() {
+        if (values.current !== 1) {
+          values.loading2 = false
+          return
+        }
+
         setTimeout(() => {
           if (values.list2.length === 40) {
             values.error = true
@@ -103,6 +113,11 @@ export default {
         }, 1000)
       },
       load3() {
+        if (values.current !== 2) {
+          values.loading3 = false
+          return
+        }
+
         setTimeout(() => {
           for (let i = 0; i < 20; i++) {
             values.list3.push(values.list3.length + 1)
