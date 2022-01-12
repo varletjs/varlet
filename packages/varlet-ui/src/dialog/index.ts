@@ -1,6 +1,6 @@
 import VarDialog from './Dialog.vue'
 import { reactive, nextTick } from 'vue'
-import { inBrowser, isString } from '../utils/shared'
+import { inBrowser, isNumber, isString } from '../utils/shared'
 import { mountInstance } from '../utils/components'
 import type { App, TeleportProps } from 'vue'
 
@@ -38,7 +38,7 @@ export type DialogActions = 'confirm' | 'cancel' | 'close'
 
 let singletonOptions: DialogOptions | null
 
-function Dialog(options: DialogOptions | string): Promise<DialogActions | void> {
+function Dialog(options: DialogOptions | string | number): Promise<DialogActions | void> {
   if (!inBrowser()) {
     return Promise.resolve()
   }
@@ -46,7 +46,7 @@ function Dialog(options: DialogOptions | string): Promise<DialogActions | void> 
   return new Promise((resolve) => {
     Dialog.close()
 
-    const dialogOptions: DialogOptions = isString(options) ? { message: options } : options
+    const dialogOptions: DialogOptions = isString(options) || isNumber(options) ? { message: String(options) } : options
     const reactiveDialogOptions: DialogOptions = reactive(dialogOptions)
     reactiveDialogOptions.teleport = 'body'
     singletonOptions = reactiveDialogOptions

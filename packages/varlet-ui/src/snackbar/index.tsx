@@ -3,7 +3,7 @@ import VarSnackbar from './Snackbar.vue'
 import context from '../context'
 import { reactive, TransitionGroup } from 'vue'
 import { mountInstance } from '../utils/components'
-import { isPlainObject, toNumber } from '../utils/shared'
+import { isNumber, isPlainObject, isString, toNumber } from '../utils/shared'
 import type { LoadingType, LoadingSize } from '../loading/props'
 import type { App, Component, TeleportProps } from 'vue'
 
@@ -142,8 +142,8 @@ const TransitionGroupHost = {
   },
 }
 
-const Snackbar: Snackbar = function (options: SnackbarOptions | string): SnackbarHandel {
-  const snackOptions: SnackbarOptions = isPlainObject(options) ? options : { content: options }
+const Snackbar: Snackbar = function (options: SnackbarOptions | string | number): SnackbarHandel {
+  const snackOptions: SnackbarOptions = isString(options) || isNumber(options) ? { content: String(options) } : options
   const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>({
     ...defaultOption,
     ...snackOptions,

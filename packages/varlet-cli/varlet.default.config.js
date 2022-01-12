@@ -21,7 +21,7 @@ module.exports = {
     menu: [],
     redirect: '/home',
     title: {
-      'zh-CN': 'Varlet 面向 Vue3 的 Material 风格移动端组件库',
+      'zh-CN': '面向 Vue3 的 Material 风格移动端组件库',
       'en-US': 'Material design mobile components built for Vue3',
     },
     header: {
@@ -48,7 +48,7 @@ module.exports = {
   mobile: {
     redirect: '/home',
     title: {
-      'zh-CN': 'Varlet 面向 Vue3 的 Material 风格移动端组件库',
+      'zh-CN': '面向 Vue3 的 Material 风格移动端组件库',
       'en-US': 'Material design mobile components built for Vue3',
     },
     header: {
