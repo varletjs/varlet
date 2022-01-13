@@ -1,6 +1,6 @@
 import { VarComponent } from './varComponent'
 
-export type CollapseModelValue = null | string | number | Array<string | number>
+export type CollapseModelValue = undefined | string | number | Array<string | number | undefined>
 
 export interface CollapseProps {
   modelValue?: CollapseModelValue

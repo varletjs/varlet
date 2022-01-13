@@ -4,7 +4,7 @@ export interface BackTopProps {
   visibilityHeight?: number | string
   duration?: number
   target?: string
-  onClick?: (e: Event) => void
+  onClick?: (e: MouseEvent) => void
 }
 
 export class BackTop extends VarComponent {

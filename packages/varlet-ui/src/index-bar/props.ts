@@ -1,3 +1,5 @@
+import type { PropType } from 'vue'
+
 export const props = {
   sticky: {
     type: Boolean,
@@ -27,9 +29,9 @@ export const props = {
     default: 0,
   },
   onClick: {
-    type: Function,
+    type: Function as PropType<(value: string | number) => void>,
   },
   onChange: {
-    type: Function,
+    type: Function as PropType<(value: string | number) => void>,
   },
 }

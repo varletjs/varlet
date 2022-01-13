@@ -18,6 +18,7 @@ export interface SliderProps {
   onChange?: (value: number | Array<number>) => void
   onStart?: () => void
   onEnd?: (value: number | Array<number>) => void
+  'onUpdate:modelValue'?: (value: number | Array<number>) => void
 }
 
 export class Slider extends VarComponent {

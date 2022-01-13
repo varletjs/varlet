@@ -43,12 +43,12 @@ export const props = {
     default: true,
   },
   onClick: {
-    type: Function,
+    type: Function as PropType<(event: MouseEvent) => void>,
   },
   onChange: {
-    type: Function,
+    type: Function as PropType<(value: boolean) => void>,
   },
   'onUpdate:modelValue': {
-    type: Function,
+    type: Function as PropType<(value: boolean) => void>,
   },
 }

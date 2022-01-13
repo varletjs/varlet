@@ -1,10 +1,4 @@
-export type Time = {
-  days: number
-  hours: number
-  minutes: number
-  seconds: number
-  milliseconds: number
-}
+import { TimeData } from '../countdown/props'
 
 export interface CacheInstance<T> {
   cache: T[]
@@ -106,17 +100,6 @@ export const throttle = (method: any, mustRunDelay = 200): (() => void) => {
   }
 }
 
-export const debounce = (method: any, delay = 200) => {
-  let timer: number
-
-  return function (this: unknown, ...args: any[]) {
-    timer && window.clearTimeout(timer)
-    timer = window.setTimeout(() => {
-      method.apply(this, args)
-    }, delay)
-  }
-}
-
 export const createCache = <T>(max: number): CacheInstance<T> => {
   const cache: T[] = []
 
@@ -153,7 +136,7 @@ export const cubic = (value: number): number => value ** 3
 export const easeInOutCubic = (value: number): number =>
   value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2
 
-export function parseFormat(format: string, time: Time): string {
+export function parseFormat(format: string, time: TimeData): string {
   const scannedTimes = Object.values(time)
   const scannedFormats = ['DD', 'HH', 'mm', 'ss']
   const padValues = [24, 60, 60, 1000]

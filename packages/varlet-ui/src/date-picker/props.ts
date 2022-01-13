@@ -164,9 +164,9 @@ export const props = {
     default: false,
   },
   onChange: {
-    type: Function,
+    type: Function as PropType<(value: string | string[]) => void>,
   },
   'onUpdate:modelValue': {
-    type: Function,
+    type: Function as PropType<(value: string | string[]) => void>,
   },
 }

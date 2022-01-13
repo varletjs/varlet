@@ -1,3 +1,5 @@
+import type { PropType } from 'vue'
+
 export type RefreshStatus = 'default' | 'pulling' | 'loosing' | 'loading' | 'success'
 
 export const props = {
@@ -36,9 +38,9 @@ export const props = {
     type: String,
   },
   onRefresh: {
-    type: Function,
+    type: Function as PropType<() => void>,
   },
   'onUpdate:modelValue': {
-    type: Function,
+    type: Function as PropType<(value: boolean) => void>,
   },
 }

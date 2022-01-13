@@ -12,6 +12,7 @@ import { isArray } from '../utils/shared'
 import type { ComputedRef } from 'vue'
 import type { CollapseItemProvider } from '../collapse-item/provide'
 import type { CollapseProvider } from './provide'
+import type { CollapseModelValue } from './props'
 
 export default defineComponent({
   name: 'VarCollapse',
@@ -37,12 +38,12 @@ export default defineComponent({
       return true
     }
 
-    const getValue = (value: number | string | undefined, isExpand: boolean) => {
+    const getValue = (value: number | string | undefined, isExpand: boolean): CollapseModelValue => {
       if (!checkValue()) return
       if (isExpand) return props.accordion ? value : [...(props.modelValue as Array<string | number>), value]
 
       return props.accordion
-        ? null
+        ? undefined
         : (props.modelValue as Array<string | number>).filter((name: string | number) => name !== value)
     }
 

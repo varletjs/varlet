@@ -1,3 +1,13 @@
+import type { PropType } from 'vue'
+
+export type TimeData = {
+  days: number
+  hours: number
+  minutes: number
+  seconds: number
+  milliseconds: number
+}
+
 export const props = {
   time: {
     type: [String, Number],
@@ -15,6 +25,6 @@ export const props = {
     type: Function,
   },
   onChange: {
-    type: Function,
+    type: Function as PropType<(value: TimeData) => void>,
   },
 }

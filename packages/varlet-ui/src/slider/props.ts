@@ -70,18 +70,18 @@ export const props = {
   },
 
   onChange: {
-    type: Function,
+    type: Function as PropType<(value: number | Array<number>) => void>,
   },
 
   onStart: {
-    type: Function,
+    type: Function as PropType<() => void>,
   },
 
   onEnd: {
-    type: Function,
+    type: Function as PropType<(value: number | Array<number>) => void>,
   },
 
   'onUpdate:modelValue': {
-    type: Function,
+    type: Function as PropType<(value: number | Array<number>) => void>,
   },
 }

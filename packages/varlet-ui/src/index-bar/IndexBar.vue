@@ -65,7 +65,7 @@ export default defineComponent({
 
     const emitEvent = (anchor: IndexAnchorProvider | number | string) => {
       const anchorName = isPlainObject(anchor) ? anchor.name.value : anchor
-      if (anchorName === active.value) return
+      if (anchorName === active.value || anchorName === undefined) return
 
       active.value = anchorName
       props.onChange?.(anchorName)

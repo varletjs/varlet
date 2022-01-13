@@ -27,8 +27,8 @@ export default defineComponent({
     let element: HTMLElement | Window
     const show: Ref<boolean> = ref(false)
 
-    const click = () => {
-      props.onClick?.()
+    const click = (event: MouseEvent) => {
+      props.onClick?.(event)
       const left = getScrollLeft(element as HTMLElement)
 
       scrollTo(element, {
