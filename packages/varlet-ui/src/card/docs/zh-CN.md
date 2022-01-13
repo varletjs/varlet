@@ -77,7 +77,7 @@ createApp().use(Card)
 | `description` | 卡片描述                                                        | _string_           | `-`     |
 | `elevation`   | 卡片阴影程度等级                                                | _string \| number_ | `2`     |
 | `src`         | 图片地址                                                        | _string_           | `-`     |
-| `fit`         | 填充模式, 可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_           | `cover` |
+| `fit`         | 填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_           | `cover` |
 | `alt`         | 替代文本                                                        | _string_           | `-`     |
 | `height`      | 图片高度                                                        | _string \| number_ | `-`     |
 | `ripple`      | 是否开启水波                                                    | _boolean_          | `false` |
@@ -100,7 +100,7 @@ createApp().use(Card)
 
 ### 样式变量
 
-以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名                         | 默认值               |
 | ------------------------------ | -------------------- |
