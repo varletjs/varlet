@@ -6,6 +6,7 @@
     "emulator",
     "varlet"
   ],
+  "type": "module",
   "author": "BeADre <beadre_wang@163.com>",
   "homepage": "https://github.com/varletjs/varlet#readme",
   "license": "MIT",
