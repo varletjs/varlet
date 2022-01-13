@@ -14,6 +14,8 @@ export interface PaginationProps {
   sizeOption?: Array<number>
   showTotal?: (total: number, range: Range) => string
   onChange?: (current: number, size: number) => void
+  'onUpdate:current': (current: number) => void
+  'onUpdate:size': (size: number) => void
 }
 
 export class Pagination extends VarComponent {

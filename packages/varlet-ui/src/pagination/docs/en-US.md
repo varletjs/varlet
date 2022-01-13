@@ -129,18 +129,18 @@ import Disabled from '../example/Disabled.vue'
 
 ### Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
-| `current` | Current page number | _string \| number_ | `1` |
-| `size` | Number of data items per page | _string \| number_ | `10` |
-| `total` | Total number of data items | _string \| number_ | `0` |
-| `simple` | Whether to use simple mode | _boolean_ | `true` |
-| `disabled` | Disable pagination | _boolean_ | `false` |
+| Prop                | Description | Type | Default |
+|---------------------| -------------- | -------- | ---------- |
+| `v-model: current`  | Current page number | _string \| number_ | `1` |
+| `v-model: size`     | Number of data items per page | _string \| number_ | `10` |
+| `total`             | Total number of data items | _string \| number_ | `0` |
+| `simple`            | Whether to use simple mode | _boolean_ | `true` |
+| `disabled`          | Disable pagination | _boolean_ | `false` |
 | `show-size-changer` | Whether to show `size` select | _boolean_ | `true` |
 | `show-quick-jumper` | Whether you can jump to pages directly	 | _boolean_ | `false` |
-| `max-pager-count` | Number of buttons displayed between ellipses	| _number_ | `3` |
-| `size-option` | Specify the sizeChanger options	 | _number[]_ | `[10, 20, 50, 100]` |
-| `show-total` | Show page item's title	 | _function(total, range)_ | `-` |
+| `max-pager-count`   | Number of buttons displayed between ellipses	| _number_ | `3` |
+| `size-option`       | Specify the sizeChanger options	 | _number[]_ | `[10, 20, 50, 100]` |
+| `show-total`        | Show page item's title	 | _function(total, range)_ | `-` |
 
 ### Events
 

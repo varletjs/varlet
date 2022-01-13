@@ -44,4 +44,10 @@ export const props = {
   onChange: {
     type: Function as PropType<(current: number, size: number) => void>,
   },
+  'onUpdate:current': {
+    type: Function as PropType<(current: number) => void>,
+  },
+  'onUpdate:size': {
+    type: Function as PropType<(size: number) => void>,
+  },
 }
