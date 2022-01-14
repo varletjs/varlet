@@ -106,7 +106,7 @@ export default {
 
 ```html
 <var-slider v-model="value" range active-color="#52af77">
-  <template #button="currentValue">
+  <template #button="{ currentValue }">
     <div class="slider-example_block">{{ currentValue }}</div>
   </template>
 </var-slider>
