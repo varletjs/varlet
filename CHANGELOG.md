@@ -1,3 +1,14 @@
+## [1.24.11](https://github.com/varletjs/varlet/compare/v1.24.10...v1.24.11) (2022-01-14)
+
+
+### Bug Fixes
+
+* **button:** add css cover for loading ([5c003cc](https://github.com/varletjs/varlet/commit/5c003ccb172e773fc369fc732df40f0df3499a7e))
+* **pagination:** emit event when change pageSize and close [#279](https://github.com/varletjs/varlet/issues/279) ([f9a9be4](https://github.com/varletjs/varlet/commit/f9a9be4a628c30c8886f1398182be9313ef8c587))
+* **ui/select:** fix select wrapWidth and offsetY display error with ssr [#276](https://github.com/varletjs/varlet/issues/276) ([6e396a3](https://github.com/varletjs/varlet/commit/6e396a3e51de9129121ab30e096805b17c6d7083))
+
+
+
 ## [1.24.10](https://github.com/varletjs/varlet/compare/v1.24.9...v1.24.10) (2022-01-10)
 
 
