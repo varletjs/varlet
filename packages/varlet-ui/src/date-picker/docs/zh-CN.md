@@ -24,7 +24,7 @@ import { ref } from 'vue'
 export default {
   setup() {
     const date = ref('2021-04-08')
-    
+
     return {
       date
     }
@@ -53,7 +53,7 @@ export default {
 通过 `range` 属性选择一个日期范围，此时 `date` 为 `[startDate, endDate]`。
 
 ```html
-<var-date-picker type="date" v-model="date" range>
+<var-date-picker type="date" v-model="date" range />
 ```
 
 ### 日期限制
@@ -61,10 +61,10 @@ export default {
 通过 `min` 和 `max` 属性来控制可选择的日期范围，使用 `allowed-dates` 属性限制可以选择的日期。
 
 ```html
-<var-date-picker 
-  v-model="date" 
+<var-date-picker
+  v-model="date"
   min="2020-10-15"
-  max="2021-01-15" 
+  max="2021-01-15"
   :allowed-dates="allowedDates"
 />
 ```
@@ -78,7 +78,7 @@ export default {
     const allowedDates = (val) => {
       return parseInt(val.split('-')[2], 10) % 2 === 1
     }
-    
+
     return {
       date,
       allowedDates,
@@ -124,7 +124,7 @@ export default {
     const change = (date) => {
       console.log(date)
     }
-    
+
     return {
       date,
       change,
@@ -213,4 +213,3 @@ export default {
 | `--day-picker-head-item-color` | `rgba(0, 0, 0, 0.38)` |
 | `--day-picker-head-item-padding` | `8px 0` |
 | `--day-picker-head-item-font-weight` | `600` |
-

@@ -23,7 +23,7 @@ import { ref } from 'vue'
 export default {
   setup() {
     const date = ref('2021-04-08')
-    
+
     return {
       date
     }
@@ -52,7 +52,7 @@ Use `multiple` prop to select multiple dates, at this time, `date` is an array.
 Use `range` prop to select date range, at this time, `date` is `[startDate, endDate]`.
 
 ```html
-<var-date-picker type="date" v-model="date" range>
+<var-date-picker type="date" v-model="date" range />
 ```
 
 ### Date Limit
@@ -60,10 +60,10 @@ Use `range` prop to select date range, at this time, `date` is `[startDate, endD
 Use `min` and `max` prop to allow the maximum and minimum date, and use `allowed-dates` prop to limit the dates that can be selected.
 
 ```html
-<var-date-picker 
-  v-model="date" 
+<var-date-picker
+  v-model="date"
   min="2020-10-15"
-  max="2021-01-15" 
+  max="2021-01-15"
   :allowed-dates="allowedDates"
 />
 ```
@@ -77,7 +77,7 @@ export default {
     const allowedDates = (val) => {
       return parseInt(val.split('-')[2], 10) % 2 === 1
     }
-    
+
     return {
       date,
       allowedDates,
@@ -123,7 +123,7 @@ export default {
     const change = (date) => {
       console.log(date)
     }
-    
+
     return {
       date,
       change,
