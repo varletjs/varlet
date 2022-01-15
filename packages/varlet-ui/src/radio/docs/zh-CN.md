@@ -2,8 +2,8 @@
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `v-model` | 绑定的值 | _any_ | `false` |
 | `checked-value` | 选中状态的值 | _any_ | `true` |
 | `unchecked-value` | 未选中状态的值 | _any_ | `false` |
@@ -13,7 +13,7 @@
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
-| `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any) => any>_ | `-` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any) => any>_ | `-` |
 
 ### 事件
 

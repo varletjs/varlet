@@ -11,8 +11,8 @@ createApp().use(Select).use(Option)
 
 ### 基本使用
 
-组件会使用option的`label`作为显示的文本。
-组件会优先使用option的`value`作为选项的值，其次使用`label`。
+组件会使用option的 `label` 作为显示的文本。
+组件会优先使用option的 `value` 作为选项的值，其次使用 `label`。
 
 ```js
 import { ref } from 'vue'
@@ -38,10 +38,10 @@ export default {
 如果只需要组件的基本功能，可以通过属性去除部分样式。
 
 ```html
-<var-select 
-  :hint="false" 
+<var-select
+  :hint="false"
   :line="false"
-  placeholder="请选择一个选项" 
+  placeholder="请选择一个选项"
   v-model="value"
 >
   <var-option label="吃饭" />
@@ -61,8 +61,8 @@ export default {
 ### 禁用
 
 ```html
-<var-select 
-  placeholder="请选择一个选项" 
+<var-select
+  placeholder="请选择一个选项"
   disabled
   v-model="value"
 >
@@ -74,9 +74,9 @@ export default {
 ### 只读
 
 ```html
-<var-select 
+<var-select
   placeholder="请选择一个选项"
-  readonly 
+  readonly
   v-model="value"
 >
   <var-option label="吃饭" />
@@ -88,7 +88,7 @@ export default {
 
 ```html
 <var-select
-  placeholder="请选择一个选项" 
+  placeholder="请选择一个选项"
   clearable
   v-model="value"
 >
@@ -135,8 +135,8 @@ export default {
 ```
 
 ```html
-<var-select 
-  placeholder="请选择多个选项" 
+<var-select
+  placeholder="请选择多个选项"
   multiple
   v-model="value"
 >
@@ -150,7 +150,7 @@ export default {
 ### 纸片风格的多选
 
 ```html
-<var-select 
+<var-select
   placeholder="请选择多个选项"
   chip
   multiple
@@ -165,8 +165,8 @@ export default {
 
 ### 单选值校验
 ```html
-<var-select 
-  placeholder="请选择一个选项" 
+<var-select
+  placeholder="请选择一个选项"
   :rules="[(v) => v === '摸鱼' || '您一定得选择摸鱼']"
   v-model="value"
 >
@@ -197,12 +197,12 @@ export default {
 
 ### Select Props
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `v-model` | 绑定的值 | _any \| any[]_ | `-` |
 | `placeholder` | 占位符 | _string_ | `-` |
-| `multiple` | 是否开启多选 | _boolean_ | `false` |  
-| `chip` | 是否使用纸片风格(仅限多选) | _boolean_ | `false` |  
+| `multiple` | 是否开启多选 | _boolean_ | `false` |
+| `chip` | 是否使用纸片风格(仅限多选) | _boolean_ | `false` |
 | `line` | 是否显示分割线 | _boolean_ | `true` |
 | `hint` | 是否使用占位符作为提示 | _boolean_ | `true` |
 | `text-color` | 文字颜色 | _string_ | `-` |
@@ -212,12 +212,12 @@ export default {
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `clearable` | 是否可清除 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机， 可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
-| `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: any \| any[]) => any>_ | `-` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: any \| any[]) => any>_ | `-` |
 
 ### Option Props
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `label` | 选项显示的文本 | _any_ | `-` |
 | `value` | 选项绑定的值 | _any_ | `-` |
 
@@ -231,7 +231,7 @@ export default {
 | `blur` | 失焦 | `-` | `-` |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
-| `reset` | 清空绑定的值(单选设置为`undefined`,多选设置为`[]`)和校验信息 | `-` | `-` |
+| `reset` | 清空绑定的值(单选设置为 `undefined`,多选设置为 `[]` )和校验信息 | `-` | `-` |
 
 ### 事件
 

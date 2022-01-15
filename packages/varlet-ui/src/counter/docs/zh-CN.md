@@ -117,15 +117,15 @@ export default {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `v-model` | 绑定的值 | _string \| number_ | `0` |
 | `min` | 最小值 | _string \| number_ | `-` |
 | `max` | 最大值 | _string \| number_ | `-` |
 | `step` | 步长 | _string \| number_ | `-` |
 | `decimal-length` | 保留小数位数 | _string \| number_ | `-` |
-| `color` | 背景颜色 | _string_ | `-` |  
-| `input-width` | 输入框的宽度 | _string \| number_ | `-` |  
+| `color` | 背景颜色 | _string_ | `-` |
+| `input-width` | 输入框的宽度 | _string \| number_ | `-` |
 | `input-text-size` | 输入框的文字大小 | _string \| number_ | `-` |
 | `button-size` | 按钮大小 | _string_ | `true` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
@@ -172,4 +172,4 @@ export default {
 | `--counter-button-size` | `28px` |
 | `--counter-button-icon-size` | `100%` |
 | `--counter-disabled-color` | `var(--color-text-disabled)` |
-| `--input-error-color` | `var(--color-danger`) |
+| `--input-error-color` | `var(--color-danger)` |

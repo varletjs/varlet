@@ -23,7 +23,7 @@ import { ref } from 'vue'
 export default {
   setup() {
     const date = ref('11:20')
-    
+
     return {
       date
     }
@@ -84,7 +84,7 @@ export default {
         return second % 2 !== 0
       },
     }
-    
+
     return {
       date,
       allowedTime
