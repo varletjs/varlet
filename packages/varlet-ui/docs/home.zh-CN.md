@@ -24,8 +24,8 @@ Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全�
 - 11.支持暗黑模式
 
 ### PR & Issue
-使用过程中出现的问题可以到[github](https://github.com/varletjs/varlet)来给我们提[issue](https://github.com/varletjs/varlet/issues)，
-我们会在第一时间处理问题。也可以给我们提[PR](https://github.com/varletjs/varlet/pulls)，十分欢迎小伙伴们来找茬。
+使用过程中出现的问题可以到 [github](https://github.com/varletjs/varlet) 来给我们提 [issue](https://github.com/varletjs/varlet/issues)，
+我们会在第一时间处理问题。也可以给我们提 [PR](https://github.com/varletjs/varlet/pulls)，十分欢迎小伙伴们来找茬。
 
 ### 开源协议
 组件库基于 `MIT` 协议。

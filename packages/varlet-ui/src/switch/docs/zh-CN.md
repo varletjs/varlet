@@ -48,7 +48,7 @@ export default {
 
 ### 不同大小
 
-通过`size`属性改变Switch大小。
+通过 `size` 属性改变Switch大小。
 
 ```html
 <var-switch v-model="value" size="15" />
@@ -65,7 +65,7 @@ export default {
 
 ### 值的校验
 
-通过传入一个校验器数组可以对值进行校验，校验器返回`true`则为校验通过。
+通过传入一个校验器数组可以对值进行校验，校验器返回 `true` 则为校验通过。
 以外的值将转换为文本作为用户提示。
 
 ```html
@@ -100,7 +100,7 @@ export default {
 
 ### 样式变量
 
-以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

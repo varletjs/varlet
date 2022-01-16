@@ -27,8 +27,8 @@ export default {
 
 ### 多列滚动
 
-Picker传入一个二维数组`columns`, `columns`的每一项就是每一列的内容。
-Picker返回用户触发状态，选择的文本，选择的下标。
+Picker 传入一个二维数组 `columns`, `columns` 的每一项就是每一列的内容。
+Picker 返回用户触发状态，选择的文本，选择的下标。
 
 ```js
 const columns = [
@@ -41,8 +41,8 @@ const { state, texts, indexes } = await Picker(columns)
 
 ### 级联滚动
 
-Picker传入一个`cascade`属性开启级联滚动。
-组件库内置提供了省市区三级联动，引入`area.json`。
+Picker传入一个 `cascade` 属性开启级联滚动。
+组件库内置提供了省市区三级联动，引入 `area.json`。
 
 ```js
 import columns from '@varlet/ui/json/area.json'
@@ -139,7 +139,7 @@ export default {
 | --- | --- | --- | --- | 
 | `columns` | 列内容 | _NormalColumn[] \| CascadeColumn[] \| Texts_ | `[]` |
 | `title` | 标题 | _string_ | `提示` |
-| `text-key` | 文本的属性key | _string_ | `text` |
+| `text-key` | 文本的属性 key | _string_ | `text` |
 | `toolbar` | 是否显示上方工具栏 | _string_ | `true` |
 | `cascade` | 是否开启级联模式 | _boolean_ | `true` |
 | `option-height` | 选项的高度(px rem) | _string \| number_ | `44` |
@@ -190,8 +190,8 @@ export default {
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
-| `confirm` | 立刻停止滚动并触发confirm事件 | `-` | `-` |
-| `cancel` | 立刻停止滚动并触发cancel事件 | `-` | `-` |
+| `confirm` | 立刻停止滚动并触发 confirm 事件 | `-` | `-` |
+| `cancel` | 立刻停止滚动并触发 cancel 事件 | `-` | `-` |
 
 ### 事件
 
@@ -211,7 +211,7 @@ export default {
 
 ### 样式变量
 
-以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
