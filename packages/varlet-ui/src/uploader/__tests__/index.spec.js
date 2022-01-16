@@ -74,7 +74,7 @@ test('test uploader preview', async () => {
   await wrapper.vm.handleChange(createEvent('cat.jpg'))
   await delay(16)
   await wrapper.find('.var-uploader__file').trigger('click')
-  await delay(16)
+  await delay(100)
 
   expect(document.querySelector('.var-popup').style.display).toBe('')
   ImagePreview.close()

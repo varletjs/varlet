@@ -189,7 +189,7 @@ test('test autoplay', async () => {
       onChange,
     },
   })
-  await delay(16)
+  await delay(100)
   await delay(100)
   expect(onChange).toHaveBeenLastCalledWith(1)
   await delay(100)

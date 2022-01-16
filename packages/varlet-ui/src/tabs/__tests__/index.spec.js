@@ -1,4 +1,3 @@
-import example from '../example'
 import Tabs from '..'
 import Tab from '../../tab'
 import TabsItems from '../../tabs-items'
@@ -23,15 +22,6 @@ afterEach(() => {
 })
 
 mockOffset()
-
-test('test tabs example', async () => {
-  const wrapper = mount(example)
-
-  await delay(50)
-
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test tabs & tab & tabsItems & tabItem plugin', () => {
   const app = createApp({}).use(Tabs).use(Tab).use(TabsItems).use(TabItem)
@@ -69,7 +59,7 @@ const Wrapper = {
 
 test('test tabs active', async () => {
   const wrapper = mount(Wrapper)
-  await delay(50)
+  await delay(200)
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
