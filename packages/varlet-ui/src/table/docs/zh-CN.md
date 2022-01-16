@@ -138,7 +138,7 @@ export default {
 | `footer` | Table尾部内容 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

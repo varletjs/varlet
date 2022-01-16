@@ -27,7 +27,7 @@ export default {
 
 ### 多列滚动
 
-Picker 传入一个二维数组 `columns`，`columns` 的每一项就是每一列的内容。
+Picker 传入一个二维数组 `columns`, `columns` 的每一项就是每一列的内容。
 Picker 返回用户触发状态，选择的文本，选择的下标。
 
 ```js
@@ -211,7 +211,7 @@ export default {
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

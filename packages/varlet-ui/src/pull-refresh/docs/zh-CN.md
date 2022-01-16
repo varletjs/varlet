@@ -15,7 +15,7 @@ createApp().use(PullRefresh)
 
 ### 基本使用
 
-下拉到刷新位置时松开会触发 `refresh` 事件，在事件开始时将 `v-model` 设置为 `true` 表示正在加载，完成后将 `v-model` 设置为 `false` 表示加载结束。
+下拉到刷新位置时松开会触发 `refresh` 事件， 在事件开始时将 `v-model` 设置为 `true` 表示正在加载，完成后将 `v-model` 设置为 `false` 表示加载结束。
 
 ```html
 <var-pull-refresh v-model="isRefresh" @refresh="refresh">
@@ -84,7 +84,7 @@ export default {
 | `default` | 默认插槽 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

@@ -112,7 +112,7 @@ module.exports = {
 
 #### SiteHighlight
 
-代码片段高亮，基于[highlight.js](https://highlightjs.org/)
+代码片段高亮，基于 [highlight.js](https://highlightjs.org/)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
