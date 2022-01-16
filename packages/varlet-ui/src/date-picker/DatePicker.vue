@@ -22,7 +22,7 @@
         <transition
           :name="multiple ? '' : reverse ? 'var-date-picker-reverse-translatey' : 'var-date-picker-translatey'"
         >
-          <div :key="`${chooseYear} ${chooseMonth?.index}`" v-if="type === 'month'">
+          <div :key="`${chooseYear}${chooseMonth?.index}`" v-if="type === 'month'">
             <slot name="range" :choose="getChoose.chooseRangeMonth" v-if="range">
               {{ getMonthTitle }}
             </slot>
@@ -102,7 +102,7 @@ export default defineComponent({
   props,
   setup(props) {
     const currentDate: string = dayjs().format('YYYY-MM-D')
-    const [currentYear, currentMonth, currentDay] = currentDate.split('-')
+    const [currentYear, currentMonth] = currentDate.split('-')
     const monthDes: MonthDict = MONTH_LIST.find((month) => month.index === currentMonth) as MonthDict
     const isYearPanel: Ref<boolean> = ref(false)
     const isMonthPanel: Ref<boolean> = ref(false)
