@@ -3,7 +3,7 @@
 ### 介绍
 
 组件提供了更方便的尺寸，填充模式，圆角的设置方式，水波效果增强图片点击交互体验。
-支持`懒加载`、`loading 图片`、 `error 图片`、应用 `Lazy` 指令的默认设置。
+支持 `懒加载`、`loading 图片`、 `error 图片`、应用 `Lazy` 指令的默认设置。
 
 ### 引入
 
@@ -25,32 +25,32 @@ createApp().use(Image)
 ```html
 <var-image width="85px" height="85px" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
 
-<var-image 
-  width="85px" 
-  height="85px"
-  fit="cover" 
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
-/>
-
-<var-image 
+<var-image
   width="85px"
-  height="85px" 
-  fit="contain"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
+  height="85px"
+  fit="cover"
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
 />
 
-<var-image 
+<var-image
+  width="85px"
+  height="85px"
+  fit="contain"
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+/>
+
+<var-image
   width="85px"
   height="85px"
   fit="none"
   src="https://varlet.gitee.io/varlet-ui/cat.jpg"
 />
 
-<var-image 
+<var-image
   width="85px"
-  height="85px" 
+  height="85px"
   fit="scale-down"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
+  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
 />
 ```
 
@@ -89,7 +89,7 @@ createApp().use(Image)
 ### 设置懒加载状态图片
 
 ```html
-<var-image 
+<var-image
   lazy
   loading="https://xxx.xxx/loading.png"
   error="https://xxx.xxx/error.png"
@@ -127,8 +127,8 @@ export default {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `src` | 图片地址 | _string_ | `-` |
 | `fit` | 填充模式, 可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_ | `fill` |
 | `alt` | 替代文本 | _string_ | `-` |
