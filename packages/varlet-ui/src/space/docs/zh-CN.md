@@ -2,7 +2,7 @@
 
 ### 介绍
 
-组件库提供了`<var-space>`布局的组件，使您更有效率的进行flex布局。
+组件库提供了 `<var-space>` 布局的组件，使您更有效率的进行flex布局。
 
 ### 引入
 
@@ -91,7 +91,7 @@ createApp().use(Space)
 | ------------- | ------------ | --------- | --------- |
 |    `align`   |   垂直排列方式 可选值为 `stretch` `center` `start` `end` `baseline` | _string_  |   `-`|
 |`justify`|水平排列方式 可选值为 `start` `end` `center` `space-around` `space-between`|_string_|`start`|
-|     `size`   |   间距，可选值为 `mini` `small` `normal` `large` 或`[垂直间距, 水平间距]`(支持长度单位)| _string \| number \| [string \| number, string \| number]_ |`normal`|
+|     `size`   |   间距，可选值为 `mini` `small` `normal` `large` 或 `[垂直间距, 水平间距]` (支持长度单位)| _string \| number \| [string \| number, string \| number]_ |`normal`|
 |`wrap`|是否超出换行|_boolean_|`true`|
 |`direction`|布局方向 可选值为 `row` `column`|_string_|`row`|
 |`inline`|是否为行内元素|_boolean_|`false`|
@@ -102,4 +102,3 @@ createApp().use(Space)
 | 插槽名 | 说明       | 参数 |
 | --- |----------| --- |
 | `default` | Space 内容 | `-` |
-

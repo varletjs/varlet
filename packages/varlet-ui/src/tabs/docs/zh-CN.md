@@ -2,7 +2,7 @@
 
 ### 介绍
 
-使用`Tabs`、`Tab`实现选项卡组的切换。使用`TabsItems`、`TabItem`实现和选项卡组的视图联动。
+使用 `Tabs`、`Tab` 实现选项卡组的切换。使用 `TabsItems`、`TabItem` 实现和选项卡组的视图联动。
 
 ### 引入
 
@@ -41,8 +41,8 @@ export default {
 
 ### 具名选项卡
 
-Tabs默认通过`active`去匹配Tab的`index`来决定哪个选项卡被激活。
-您也可以通过给Tab设置`name`来命名选项卡，这时Tabs会优先匹配`name`。
+Tabs默认通过 `active` 去匹配 Tab 的 `index` 来决定哪个选项卡被激活。
+您也可以通过给Tab设置 `name` 来命名选项卡，这时Tabs会优先匹配 `name`。
 
 ```html
 <var-tabs v-model:active="active">
@@ -99,7 +99,7 @@ export default {
 
 ### 开启滚动
 
-在选项卡数量在`四个以上`时自动开启滚动，点击选项卡自动滚动到视口中央。
+在选项卡数量在 `四个以上` 时自动开启滚动，点击选项卡自动滚动到视口中央。
 
 ```html
 <var-tabs
@@ -242,9 +242,9 @@ export default {
 
 ### Tabs Props
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
-| `v-model:active` | 激活的选项卡标识, 优先匹配name，其次是index | _string_ | `default` |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| `v-model:active` | 激活的选项卡标识, 优先匹配 name，其次是 index | _string_ | `default` |
 | `layout-direction` | 选项卡组的布局方向， 可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
 | `item-direction` | 选项卡的布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
 | `fixed-bottom` | 是否固定在窗口底部, 可用做底部导航 | _boolean_ | `false` |
@@ -261,23 +261,23 @@ export default {
 
 ### Tab Props
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `name` | 选项卡的名字 | _string \| number_ | `index` |
 | `disabled` | 是否禁用选项卡 | _boolean_ | `false` |
 
 ### TabsItems Props
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `v-model:active` | 激活的选项卡的标识 | _string \| number_ | `-` |
 | `can-swipe` | 是否允许滑动切换 | _boolean_ | `true` |
 | `loop` | 是否允许循环切换 | _boolean_ | `false` |
 
 ### TabItem Props
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `name` | 视图的名字 | _string \| number_ | `index` |
 
 ### 方法

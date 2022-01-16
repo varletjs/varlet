@@ -24,7 +24,7 @@
 ### Webpack/Vite
 
 ```shell
-# 通过 npm 或 yarn 安装 或 pnpm安装
+# 通过 npm 或 yarn 安装 或 pnpm 安装
 
 # npm
 npm i @varlet/ui -S

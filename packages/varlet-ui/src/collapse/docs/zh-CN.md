@@ -33,7 +33,7 @@ export default {
     const changeHandle = (val) => {
       console.log(val)
     }
-    
+
     return {
       value,
       changeHandle
@@ -69,7 +69,7 @@ import { ref } from 'vue'
 export default {
   setup() {
     const value = ref('')
-    
+
     return {
       value
     }
@@ -162,7 +162,7 @@ export default {
 | ----- | -------------- | -------- |
 | `default` | 面板的内容 | `-` |
 | `title` | 面板的标题 | `-` |
-| `icon` | 自定义右侧icon | `-` |
+| `icon` | 自定义右侧 icon | `-` |
 
 ### 样式变量
 以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制

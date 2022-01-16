@@ -33,7 +33,7 @@ import BasicExample from '../example/Basic.vue'
       <td>耗子君</td>
       <td>124</td>
       <td>38</td>
-    </tr> 
+    </tr>
     <tr>
       <td>火猫桑</td>
       <td>100</td>
@@ -71,12 +71,12 @@ import FooterSlots from '../example/FooterSlots.vue'
   <template #footer>
     <div class="footer">
       <!-- 手机预览模式下分页使用了simple为true的模式，对小屏设备更友好 -->
-      <var-pagination 
-        :simple="false" 
+      <var-pagination
+        :simple="false"
         :current="1"
         :total="100"
         :size-option="[5, 10]"
-        @change="get" 
+        @change="get"
       />
     </div>
   </template>
@@ -103,7 +103,7 @@ export default {
     const get = (current, size) => {
       list.value = gen(current, size)
     }
-    
+
     return {
       list,
       get
@@ -138,19 +138,19 @@ export default {
 | `footer` | Table尾部内容 | `-` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--table-background` | `#fff` | 
-| `--table-border-radius` | `2px` | 
-| `--table-thead-border-bottom` | `thin solid rgba(0, 0, 0, 0.12)` | 
-| `--table-thead-th-text-color` | `rgba(0, 0, 0, 0.6)` | 
-| `--table-thead-th-font-size` | `14px` | 
-| `--table-thead-tr-border-bottom` | `thin solid rgba(0, 0, 0, 0.12)` | 
-| `--table-tbody-tr-hover-background` | `#eee` | 
-| `--table-tbody-tr-border-bottom` | `thin solid rgba(0, 0, 0, 0.12)` | 
-| `--table-tbody-td-font-size` | `16px` | 
-| `--table-row-height` | `46px` | 
-| `--table-row-padding` | `0 16px` | 
-| `--table-footer-border-top` | `thin solid rgba(0, 0, 0, 0.12)` | 
+| `--table-background` | `#fff` |
+| `--table-border-radius` | `2px` |
+| `--table-thead-border-bottom` | `thin solid rgba(0, 0, 0, 0.12)` |
+| `--table-thead-th-text-color` | `rgba(0, 0, 0, 0.6)` |
+| `--table-thead-th-font-size` | `14px` |
+| `--table-thead-tr-border-bottom` | `thin solid rgba(0, 0, 0, 0.12)` |
+| `--table-tbody-tr-hover-background` | `#eee` |
+| `--table-tbody-tr-border-bottom` | `thin solid rgba(0, 0, 0, 0.12)` |
+| `--table-tbody-td-font-size` | `16px` |
+| `--table-row-height` | `46px` |
+| `--table-row-padding` | `0 16px` |
+| `--table-footer-border-top` | `thin solid rgba(0, 0, 0, 0.12)` |

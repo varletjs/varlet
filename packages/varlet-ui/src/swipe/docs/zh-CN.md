@@ -162,10 +162,10 @@ export default {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `loop` | 是否开启循环轮播 | _boolean_ | `true` |
-| `autoplay` | 自动播放间隔时间(ms) | _string \| number_ | `-` |
+| `autoplay` | 自动播放间隔时间 (毫秒) | _string \| number_ | `-` |
 | `duration` | 切换过度时间 | _string \| number_ | `300` |
 | `initial-index` | 初始化显示的索引 | _string \| number_ | `0` |
 | `indicator` | 是否显示指示器 | _boolean_ | `true` |
