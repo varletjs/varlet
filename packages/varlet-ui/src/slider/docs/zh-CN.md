@@ -35,7 +35,7 @@ export default {
 
 ### 指定步长
 
-通过`step`属性来设置步进增量。
+通过 `step` 属性来设置步进增量。
 
 ```html
 <var-slider v-model="value" step="10" />
@@ -43,7 +43,7 @@ export default {
 
 ### 双滑块
 
-通过`range`属性开启双滑块模式，确保`value`的值是一个**数组**。
+通过 `range` 属性开启双滑块模式，确保 `value` 的值是一个**数组**。
 
 ```html
 <var-slider v-model="value" range @change="handleChange" />
@@ -81,7 +81,7 @@ export default {
 
 ### 不同大小
 
-通过`track-height` 和 `thumb-size` 控制slider的大小。
+通过 `track-height` 和 `thumb-size` 控制slider的大小。
 
 ```html
 <var-slider v-model="value" track-height="4" thumb-size="8" range />
@@ -102,7 +102,7 @@ export default {
 
 ### 自定义按钮
 
-使用插槽自定义按钮时，`label-visible`、`label-text-color`、`thumb-size`等属性均无效。
+使用插槽自定义按钮时，`label-visible`、`label-text-color`、`thumb-size` 等属性均无效。
 
 ```html
 <var-slider v-model="value" range active-color="#52af77">
@@ -140,7 +140,7 @@ export default {
 
 ### 值的校验
 
-通过`rules`属性对值进行校验。
+通过 `rules` 属性对值进行校验。
 
 <span style="font-size: 12px">`rules`是一个可以接受 `function`、`boolean` 和 `string` 的数组。 函数传递输入值作为参数，必须返回 `true` / `false` 或包含错误消息的 `string` ， 如果函数返回 (或数组包含的任何值) `false`或`string`，输入字段将输入错误状态。</span>
 
@@ -155,9 +155,9 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
 | `v-model` | 当前进度值 | _number \| [number, number]_ | `0` |
-| `step`| 步长，取值为`1 ~ 100`间的整数 | _string \| number_ | `1` |
+| `step`| 步长，取值为 `1 ~ 100` 间的整数 | _string \| number_ | `1` |
 | `range`| 是否启用双滑块 | _boolean_ | `false` |
-| `label-visible` | 是否显示标签，可选值为`always, normal, never` | _string_ | `normal` |
+| `label-visible` | 是否显示标签，可选值为 `always, normal, never` | _string_ | `normal` |
 | `label-text-color` | 标签文字颜色 | _string_ | `#fff` |
 | `track-height` | slider的高度 | _string \| number_ | `2` |
 | `thumb-size` | 滑块的大小 | _string \| number_ | `12` |

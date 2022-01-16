@@ -89,7 +89,7 @@ export default {
 
 ### 单选框组
 
-在单选框组中，需要给`radio`设置`checked-value`用来标识，
+在单选框组中，需要给 `radio` 设置 `checked-value` 用来标识，
 单选框组会绑定选择的标识。
 
 ```html
@@ -143,16 +143,16 @@ export default {
 
 ### RadioGroup Props
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `v-model` | 绑定的值 | _any_ | `-` |
 | `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
-| `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any) => any>_ | `-` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any) => any>_ | `-` |
 
 ### Radio Props
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `v-model` | 绑定的值 | _any_ | `false` |
 | `checked-value` | 选中状态的值 | _any_ | `true` |
 | `unchecked-value` | 未选中状态的值 | _any_ | `false` |
@@ -162,7 +162,7 @@ export default {
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
-| `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any) => any>_ | `-` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any) => any>_ | `-` |
 
 ### 方法
 
@@ -172,7 +172,7 @@ export default {
 | --- | --- | --- | --- |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
-| `reset` | 清空绑定的值(设置为`undefined`)和校验信息 | `-` | `-` |
+| `reset` | 清空绑定的值(设置为 `undefined` )和校验信息 | `-` | `-` |
 
 ### Radio Methods
 
@@ -180,8 +180,8 @@ export default {
 | --- | --- | --- | --- |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
-| `reset` | 清空绑定的值(设置为`unchecked-value`)和校验信息 | `-` | `-` |
-| `toggle` | 切换选中状态，传`checked-value`为选中，`unchecked-value`为取消选中，不传或其他情况为取反 | `value: any` | `-` |
+| `reset` | 清空绑定的值(设置为 `unchecked-value` )和校验信息 | `-` | `-` |
+| `toggle` | 切换选中状态，传 `checked-value` 为选中，`unchecked-value` 为取消选中，不传或其他情况为取反 | `value: any` | `-` |
 
 ### 事件
 

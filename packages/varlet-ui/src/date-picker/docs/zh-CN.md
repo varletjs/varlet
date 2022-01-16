@@ -161,7 +161,7 @@ export default {
 | `change` | 日期变化时触发 | `value: string \| string[]` |
 
 ### 插槽
-`weekIndex` 表示一周的第n天，从周末的`0`开始
+`weekIndex` 表示一周的第 `n` 天，从周末的`0`开始
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
