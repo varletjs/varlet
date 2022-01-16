@@ -255,7 +255,7 @@ test('test value legal', async () => {
   await delay(0)
   await wrapper.setData({ multiple: false, date: [] })
   await delay(0)
-  await wrapper.setData({ multiple: false, date: undefined })
+  await wrapper.setData({ multiple: false, date: 'Invalid Date' })
   expect(fn).toHaveBeenCalledTimes(3)
 
   mockRestore()

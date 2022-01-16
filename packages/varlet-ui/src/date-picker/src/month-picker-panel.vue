@@ -113,9 +113,9 @@ export default defineComponent({
         componentProps: { type, range },
       }: { choose: Choose; componentProps: ComponentProps } = props
 
-      if (!chooseRangeMonth.length) return false
-
       if (range) {
+        if (!chooseRangeMonth.length) return false
+
         const isBeforeMax = dayjs(val).isSameOrBefore(dayjs(chooseRangeMonth[1]), 'month')
         const isAfterMin = dayjs(val).isSameOrAfter(dayjs(chooseRangeMonth[0]), 'month')
 
@@ -137,7 +137,7 @@ export default defineComponent({
 
       const monthExist = (): boolean => {
         if (range || multiple) return shouldChoose(val)
-        return chooseMonth.index === key && isSameYear.value
+        return chooseMonth?.index === key && isSameYear.value
       }
 
       const computeDisabled = (): boolean => {
@@ -150,7 +150,7 @@ export default defineComponent({
       const computeText = (): boolean => {
         if (disabled) return true
         if (range || multiple) return !shouldChoose(val)
-        return !isSameYear.value || chooseMonth.index !== key
+        return !isSameYear.value || chooseMonth?.index !== key
       }
 
       const computeOutline = (): boolean => {
@@ -164,7 +164,7 @@ export default defineComponent({
         if (range || multiple) return !shouldChoose(val)
 
         // 同一年但是未被选择的情况
-        if (isSameYear.value) return chooseMonth.index !== currentMonth
+        if (isSameYear.value) return chooseMonth?.index !== currentMonth
 
         return true
       }

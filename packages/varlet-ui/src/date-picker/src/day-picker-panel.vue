@@ -102,7 +102,7 @@ export default defineComponent({
     const isSame: ComputedRef<boolean> = computed(
       () =>
         props.choose.chooseYear === props.preview.previewYear &&
-        props.choose.chooseMonth.index === props.preview.previewMonth.index
+        props.choose.chooseMonth?.index === props.preview.previewMonth.index
     )
 
     const sortWeekList: ComputedRef<Array<WeekDict>> = computed(() => {
@@ -165,9 +165,9 @@ export default defineComponent({
         componentProps: { range },
       }: { choose: Choose; componentProps: ComponentProps } = props
 
-      if (!chooseRangeDay.length) return false
-
       if (range) {
+        if (!chooseRangeDay.length) return false
+
         const isBeforeMax = dayjs(val).isSameOrBefore(dayjs(chooseRangeDay[1]), 'day')
         const isAfterMin = dayjs(val).isSameOrAfter(dayjs(chooseRangeDay[0]), 'day')
         return isBeforeMax && isAfterMin

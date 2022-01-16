@@ -139,7 +139,7 @@ export default {
 
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `v-model` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）| _string[] \| string_ | `-` |
+| `v-model` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）| _string[] \| string_ | `undefined` |
 | `type` | Picker type, optional values`date, month` | _string_ | `date` |
 | `allowed-dates` | Restricts which dates can be selected | _function_ | `-` |
 | `color` | Picker color | _string_ | `#2979ff` |
