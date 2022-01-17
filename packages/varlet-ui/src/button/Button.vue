@@ -37,8 +37,9 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import VarLoading from '../loading'
-import { defineComponent, ref, toRef } from 'vue'
+import { defineComponent, Ref, ref, toRef, watchEffect } from 'vue'
 import { props } from './props'
+import { isPromise } from '../utils/shared'
 
 export default defineComponent({
   name: 'VarButton',
@@ -48,7 +49,18 @@ export default defineComponent({
   directives: { Ripple },
   props,
   setup(props) {
-    let loadingRef = props.autoLoading ? ref(false) : toRef(props, 'loading')
+    let loadingRef: Ref<boolean>
+
+    watchEffect(() => {
+      loadingRef = props.autoLoading ? ref(false) : toRef(props, 'loading')
+    })
+
+    const autoChangeLoading = (promise: Promise<any>): void => {
+      loadingRef.value = true
+      promise.finally(() => {
+        loadingRef.value = false
+      })
+    }
 
     const handleClick = (e: Event) => {
       const { disabled, onClick, autoLoading } = props
@@ -58,11 +70,8 @@ export default defineComponent({
       }
 
       const returnValue = onClick?.(e)
-      if (autoLoading && returnValue instanceof Promise) {
-        loadingRef.value = true
-        returnValue.finally(() => {
-          loadingRef.value = false
-        })
+      if (autoLoading && isPromise(returnValue)) {
+        autoChangeLoading(returnValue)
       }
     }
 
@@ -74,11 +83,8 @@ export default defineComponent({
       }
 
       const returnValue = onTouchstart?.(e)
-      if (autoLoading && returnValue instanceof Promise) {
-        loadingRef.value = true
-        returnValue.finally(() => {
-          loadingRef.value = false
-        })
+      if (autoLoading && isPromise(returnValue)) {
+        autoChangeLoading(returnValue)
       }
     }
 
