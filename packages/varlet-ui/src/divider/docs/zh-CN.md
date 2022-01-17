@@ -53,8 +53,8 @@ createApp().use(Divider)
 ## API
 
 ### 属性
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `inset` | 设置缩进距离，正负号可控制缩进方向。当传递 `true` 时默认缩进为 `72px` | _boolean \| number \| string_ | `false` |
 | `vertical` | 是否垂直 | _boolean_ | `false` |
 | `dashed` | 虚线 | _boolean_ | `false` |
@@ -67,7 +67,7 @@ createApp().use(Divider)
 | `default` | 自定义分割线文字描述内容 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

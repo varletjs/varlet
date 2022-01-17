@@ -2,7 +2,7 @@
 
 ### 介绍
 提供了文件读取、图片/视频预览能力。
-通过监听`after-read`事件获取文件上传服务器。
+通过监听 `after-read` 事件获取文件上传服务器。
 
 ### 引入
 
@@ -38,7 +38,7 @@ export default {
 
 ### 文件预览
 
-通过分析文件的url后缀名判断文件类型，支持图片和视频预览。
+通过分析文件的 url 后缀名判断文件类型，支持图片和视频预览。
 
 ```html
 <var-uploader v-model="files"/>
@@ -67,7 +67,7 @@ export default {
 
 ### 上传状态
 
-提供了`loading`、 `success`、`error`三种上传状态，并提供了工具函数快速获取对应状态的文件。
+提供了 `loading`、`success`、`error` 三种上传状态，并提供了工具函数快速获取对应状态的文件。
 
 ```html
 <var-uploader v-model="files" @after-read="handleAfterRead"/>
@@ -120,7 +120,7 @@ export default {
 
 ### 文件大小限制
 
-超过限制会被阻止读取，可以通过监听`oversize`事件获取文件。
+超过限制会被阻止读取，可以通过监听 `oversize` 事件获取文件。
 
 ```html
 <var-uploader v-model="files" :maxsize="1024" @oversize="handleOversize" />
@@ -145,7 +145,7 @@ export default {
 
 ### 上传预处理
 
-通过注册`before-read`事件对文件进行操作，返回假值阻止文件读取。
+通过注册 `before-read` 事件对文件进行操作，返回假值阻止文件读取。
 
 ```html
 <var-uploader v-model="files" @before-read="handleBeforeRead"/>
@@ -182,7 +182,7 @@ export default {
 
 ### 删除前处理
 
-删除文件之前会触发`before-remove`事件，返回假值阻止删除操作。
+删除文件之前会触发 `before-remove` 事件，返回假值阻止删除操作。
 
 ```html
 <var-uploader v-model="files" @before-remove="handleBeforeRemove" />
@@ -227,7 +227,7 @@ export default {
 
 ### 字段校验
 
-通过传入一个校验器数组可以对值进行校验，校验器返回`true`则为校验通过。
+通过传入一个校验器数组可以对值进行校验，校验器返回 `true` 则为校验通过。
 以外的值将转换为文本作为用户提示。
 第二个参数是一个工具函数集合，可以快速获取符合状态的文件集合。
 
@@ -255,8 +255,8 @@ export default {
 | `maxsize` | 最大文件大小 | _string \| number_ | `-` |
 | `previewed` | 是否允许预览 | _boolean_ | `true` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
-| `validate-trigger` | 触发验证的时机， 可选值为 `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
-| `rules` | 验证规则，返回`true`表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
+| `validate-trigger` | 触发验证的时机，可选值为 `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
 
 ### VarFile
 
@@ -286,16 +286,16 @@ export default {
 | `getError` |  获取 `state` 等于 `error` 的文件集合 | `VarFile[]` | `VarFile[]` |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
-| `reset` | 清空绑定的值(设置为`[]`)和校验信息 | `-` | `-` |
+| `reset` | 清空绑定的值(设置为 `[]`)和校验信息 | `-` | `-` |
 
 ### 事件
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `before-read` | 文件读取前触发，返回假值阻止文件读取(支持promise) | `file: VarFile` |
+| `before-read` | 文件读取前触发，返回假值阻止文件读取(支持 promise) | `file: VarFile` |
 | `after-read` | 文件读取后触发 | `file: VarFile` |
 | `oversize` | 文件超过限制大小时触发 | `file: VarFile` |
-| `before-remove` | 文件删除前触发，返回假值阻止文件删除(支持promise) | `file: VarFile` |
+| `before-remove` | 文件删除前触发，返回假值阻止文件删除(支持 promise) | `file: VarFile` |
 | `remove` | 文件删除时触发 | `file: VarFile` |
 
 ### 插槽
@@ -306,7 +306,7 @@ export default {
 
 ### 样式变量
 
-以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

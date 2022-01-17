@@ -41,7 +41,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useSwipeItems } from './provide'
-import { nextTickFrame } from '../utils/elements'
+import { doubleRaf, nextTickFrame } from '../utils/elements'
 import { props } from './props'
 import { isNumber, toNumber } from '../utils/shared'
 import type { Ref, ComputedRef } from 'vue'
@@ -355,7 +355,9 @@ export default defineComponent({
 
     watch(
       () => length.value,
-      () => {
+      async () => {
+        // In nuxt, the size of the swipe cannot got when the route is change, need double raf
+        await doubleRaf()
         initialIndex()
         resize()
       }

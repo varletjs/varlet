@@ -172,7 +172,7 @@ export default {
 | --- | --- | --- | --- |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
-| `reset` | 清空绑定的值(设置为 `undefined` )和校验信息 | `-` | `-` |
+| `reset` | 清空绑定的值(设置为 `undefined`)和校验信息 | `-` | `-` |
 
 ### Radio Methods
 
@@ -180,7 +180,7 @@ export default {
 | --- | --- | --- | --- |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
-| `reset` | 清空绑定的值(设置为 `unchecked-value` )和校验信息 | `-` | `-` |
+| `reset` | 清空绑定的值(设置为 `unchecked-value`)和校验信息 | `-` | `-` |
 | `toggle` | 切换选中状态，传 `checked-value` 为选中，`unchecked-value` 为取消选中，不传或其他情况为取反 | `value: any` | `-` |
 
 ### 事件
@@ -215,7 +215,7 @@ export default {
 | `default` | 显示的文本 | `-` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的css变量，可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 ### Radio Variables
 

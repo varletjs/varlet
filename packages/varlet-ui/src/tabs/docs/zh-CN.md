@@ -245,7 +245,7 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `v-model:active` | 激活的选项卡标识, 优先匹配 name，其次是 index | _string_ | `default` |
-| `layout-direction` | 选项卡组的布局方向， 可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
+| `layout-direction` | 选项卡组的布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
 | `item-direction` | 选项卡的布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
 | `fixed-bottom` | 是否固定在窗口底部, 可用做底部导航 | _boolean_ | `false` |
 | `color` | 选项卡的背景颜色 | _string_ | `#fff` |
@@ -329,7 +329,7 @@ export default {
 
 ### 样式变量
 
-以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 ### Tabs Variables
 

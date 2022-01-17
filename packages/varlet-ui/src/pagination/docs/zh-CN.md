@@ -35,10 +35,10 @@ createApp().use(Pagination)
 使用 `showTatol` 属性自定义总数显示。
 
 ```html
-<var-pagination 
-  :current="3" 
-  :total="66" 
-  :show-total="total => `共 ${total} 条`" 
+<var-pagination
+  :current="3"
+  :total="66"
+  :show-total="total => `共 ${total} 条`"
 />
 ```
 
@@ -74,7 +74,7 @@ import QuickJumper from '../example/QuickJumper.vue'
 <var-pagination
   :current="3"
   :total="120"
-  :simple="false" 
+  :simple="false"
   show-quick-jumper
 />
 ```
@@ -158,25 +158,25 @@ import Disabled from '../example/Disabled.vue'
 
 ### 样式变量
 
-以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--pagination-font-size` | `var(--font-size-md)` |  
-| `--pagination-active-color` | `#fff` |  
-| `--pagination-active-bg-color` | `var(--color-primary)` |  
-| `--pagination-hover-bg-color` | `#edf5ff` |  
-| `--pagination-total-margin` | `0 12px` |  
-| `--pagination-total-line-height` | `24px` |  
-| `--pagination-item-width` | `32px` |  
-| `--pagination-item-height` | `32px` |  
-| `--pagination-item-margin` | `0 6px` |  
-| `--pagination-item-border-radius` | `4px` |  
-| `--pagination-list-bg-color` | `#fff` |  
-| `--pagination-list-active-bg-color` | `#edf5ff` |  
-| `--pagination-list-active-color` | `var(--color-primary)` |  
+| `--pagination-font-size` | `var(--font-size-md)` |
+| `--pagination-active-color` | `#fff` |
+| `--pagination-active-bg-color` | `var(--color-primary)` |
+| `--pagination-hover-bg-color` | `#edf5ff` |
+| `--pagination-total-margin` | `0 12px` |
+| `--pagination-total-line-height` | `24px` |
+| `--pagination-item-width` | `32px` |
+| `--pagination-item-height` | `32px` |
+| `--pagination-item-margin` | `0 6px` |
+| `--pagination-item-border-radius` | `4px` |
+| `--pagination-list-bg-color` | `#fff` |
+| `--pagination-list-active-bg-color` | `#edf5ff` |
+| `--pagination-list-active-color` | `var(--color-primary)` |
 | `--pagination-input-width` | `32px` |
 | `--pagination-simple-padding` | `0 0 2px 0` |
 | `--pagination-disabled-color` | `var(--color-text-disabled)` |
 | `--pagination-bg-disabled-color` | `var(--color-disabled)` |
-| `--pagination-size-line-height` | `24px` |  
+| `--pagination-size-line-height` | `24px` |

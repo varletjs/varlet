@@ -21,7 +21,7 @@ test('test image preview functional show & close', async () => {
     onClosed,
   })
 
-  await delay(16)
+  await delay(200)
   expect(onOpen).toHaveBeenCalledTimes(1)
   await delay(300)
   expect(onOpened).toHaveBeenCalledTimes(1)
@@ -43,7 +43,7 @@ test('test image preview onChange callback', async () => {
     images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
     onChange,
   })
-  await delay(16)
+  await delay(200)
 
   const track = document.querySelector('.var-swipe__track')
   await triggerDrag(track, -100, 0)
@@ -60,7 +60,7 @@ test('test image preview closeable', async () => {
   ImagePreview({
     closeable: true,
   })
-  await delay(16)
+  await delay(200)
   await trigger(document.querySelector('.var-image-preview__close-icon'), 'click')
   await delay(300)
   expect(document.querySelector('.var-popup')).toBeFalsy()

@@ -17,13 +17,13 @@ createApp().use(Button)
 
 ### 自动引入
 
-所有声明在模板中的组件，都会被[unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)插件自动扫描，插件会自动引入`组件逻辑`和`样式文件`并`注册组件`。
+所有声明在模板中的组件，都会被[unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)插件自动扫描，插件会自动引入 `组件逻辑` 和 `样式文件` 并 `注册组件`。
 
 ```shell
 # 安装插件
 
 # npm
-npm i unplugin-vue-components -D 
+npm i unplugin-vue-components -D
 
 # yarn
 yarn add unplugin-vue-components -D

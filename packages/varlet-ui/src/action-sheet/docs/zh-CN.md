@@ -3,7 +3,7 @@
 ### 介绍
 弹出一个动作面板提供用户选择选项的能力。
 `ActionSheet` 提供了函数式和组件式两种使用方式，两种使用效果和参数并没有本质区别。
-函数返回一个 `Promise` ，选择时返回 `当前选择的action` ，点击遮罩层关闭返回 `close`。
+函数返回一个 `Promise`，选择时返回 `当前选择的action`，点击遮罩层关闭返回 `close`。
 
 ### 引入
 
@@ -160,7 +160,7 @@ ActionSheet({
 
 ```html
 <var-button type="warning" block @click="show = true">基本使用</var-button>
-<var-action-sheet 
+<var-action-sheet
   :actions="actions"
   v-model:show="show"
   @select="handleSelect"
@@ -188,7 +188,7 @@ export default {
         icon: 'wifi',
       },
     ])
-    
+
     const handleSelect = action => Snackbar(`你选择的是:${action.name}`)
 
     return {
@@ -204,11 +204,11 @@ export default {
 
 ```html
 <var-button type="warning" block @click="show = true">修改标题</var-button>
-<var-action-sheet 
-  title="选择一个你喜欢的吧" 
-  :actions="actions" 
-  v-model:show="show" 
-  @select="handleSelect" 
+<var-action-sheet
+  title="选择一个你喜欢的吧"
+  :actions="actions"
+  v-model:show="show"
+  @select="handleSelect"
 />
 ```
 
@@ -249,10 +249,10 @@ export default {
 
 ```html
 <var-button type="warning" block @click="show = true">禁用选项</var-button>
-<var-action-sheet 
-  :actions="actions" 
+<var-action-sheet
+  :actions="actions"
   v-model:show="show"
-  @select="handleSelect" 
+  @select="handleSelect"
 />
 ```
 
@@ -294,10 +294,10 @@ export default {
 
 ```html
 <var-button type="warning" block @click="show = true">禁用点击选项时关闭动作面板</var-button>
-<var-action-sheet 
+<var-action-sheet
   :close-on-click-action="false"
-  :actions="actions" 
-  v-model:show="show" 
+  :actions="actions"
+  v-model:show="show"
   @select="handleSelect"
 />
 ```
@@ -339,10 +339,10 @@ export default {
 
 ```html
 <var-button type="warning" block @click="show = true">自定义选项样式</var-button>
-<var-action-sheet 
+<var-action-sheet
   :close-on-click-action="false"
-  :actions="actions" 
-  v-model:show="show" 
+  :actions="actions"
+  v-model:show="show"
   @select="handleSelect"
 />
 ```
@@ -389,16 +389,16 @@ export default {
 ### 属性
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- | 
+| --- | --- | --- | --- |
 | `v-model:show` | 是否显示动作面板 | _boolean_ | `false` |
 | `actions` | 选项列表 | _Actions_ | `[]` |
 | `title` | 动作面板标题 | _string_ | `请选择` |
-| `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
+| `overlay` | 是否显示遮罩层 | _boolean_ | `true` |
 | `overlay-class` | 自定义遮罩层的 class | _string_ | `-` |
 | `overlay-style` | 自定义遮罩层的 style | _string_ | `-` |
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `close-on-click-action` | 是否点击选项时关闭动作面板 | _boolean_ | `true` |
-| `close-on-click-overlay` | 是否点击遮罩层关闭动作面板 | _boolean_ | `true` | 
+| `close-on-click-overlay` | 是否点击遮罩层关闭动作面板 | _boolean_ | `true` |
 | `teleport` | 动作面板挂载的位置 | _TeleportProps['to']_ | `-` |
 
 ### 事件
@@ -415,10 +415,10 @@ export default {
 ### ActionSheet Options
 #### 函数式调用时传入的选项
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `title` | 动作面板标题 | _string_ | `请选择` |
-| `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
+| `overlay` | 是否显示遮罩层 | _boolean_ | `true` |
 | `overlayClass` | 自定义遮罩层的 class | _string_ | `-` |
 | `overlayStyle` | 自定义遮罩层的 style | _string_ | `-` |
 | `lockScroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
@@ -432,10 +432,10 @@ export default {
 
 ### ActionSheet Action
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `name` | 选项名称 | _string_ | `-` |
-| `color` | 选项文字颜色 | _string_ | `-` |  
+| `color` | 选项文字颜色 | _string_ | `-` |
 | `icon` | icon 图标，支持网络图片地址 | _string_ | `-` |
 | `iconSize` | 图标尺寸 | _string_ | `-` |
 | `className` | 选项附加类名 | _string_ | `-` |
@@ -449,7 +449,7 @@ export default {
 | `title` | 动作面板标题 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

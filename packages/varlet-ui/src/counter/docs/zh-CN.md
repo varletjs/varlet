@@ -137,7 +137,7 @@ export default {
 | `decrement-button` | 是否显示减少按钮 | _boolean_ | `true` |
 | `press` | 是否开启按钮长按 | _boolean_ | `true` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
-| `validate-trigger` | 触发验证的时机， 可选值为 `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _ValidateTriggers[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
+| `validate-trigger` | 触发验证的时机，可选值为 `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _ValidateTriggers[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: number) => any>_ | `-` |
 
 ### 方法
@@ -146,7 +146,7 @@ export default {
 | --- | --- | --- | --- |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
-| `reset` | 清空绑定的值(设置为 `min \|\| 0` )和校验信息 | `-` | `-` |
+| `reset` | 清空绑定的值(设置为 `min \|\| 0`)和校验信息 | `-` | `-` |
 
 ### 事件
 
@@ -159,7 +159,7 @@ export default {
 
 
 ### 样式变量
-以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

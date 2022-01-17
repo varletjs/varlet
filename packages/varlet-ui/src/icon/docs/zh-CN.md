@@ -38,10 +38,10 @@ createApp().use(Icon)
 ### 注册事件
 
 ```html
-<var-icon 
+<var-icon
   name="checkbox-marked-circle"
   color="#2979ff"
-  @click="() => Snackbar.success('点击成功')" 
+  @click="() => Snackbar.success('点击成功')"
 />
 ```
 
@@ -60,11 +60,11 @@ export default {
 当设置了 `transition(ms)` 并通过图标的 `name` 切换图标时，可以触发切换动画。
 
 ```html
-<var-icon 
+<var-icon
   color="#2979ff"
-  :name="name" 
-  :transition="300" 
-  :size="30" 
+  :name="name"
+  :transition="300"
+  :size="30"
   @click="toggle"
 />
 ```
@@ -73,13 +73,13 @@ export default {
 export default {
   setup() {
     const name = ref('information')
-    
+
     const toggle = () => {
-      name.value = name.value === 'information' 
-        ? 'checkbox-marked-circle' 
+      name.value = name.value === 'information'
+        ? 'checkbox-marked-circle'
         : 'information'
     }
-    
+
     return {
       name,
       toggle
@@ -97,9 +97,9 @@ export default {
 @font-face {
   font-family: "my-icons";
   src: url("https://xxx.my-icons.eot");
-  src: url("https://xxx.my-icons.eot") format("embedded-opentype"), 
-    url("https://xxx.my-icons.woff2") format("woff2"), 
-    url("https://xxx.my-icons.woff") format("woff"), 
+  src: url("https://xxx.my-icons.eot") format("embedded-opentype"),
+    url("https://xxx.my-icons.woff2") format("woff2"),
+    url("https://xxx.my-icons.woff") format("woff"),
     url("https://xxx.my-icons.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
@@ -132,13 +132,13 @@ export default {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `name` | 图标名称 | _string_ | `-` |
 | `size` | 尺寸 | _string \| number_ | `-` |
-| `color` | 图标颜色, 只适用于字体图标 | _string_ | `-` |  
+| `color` | 图标颜色, 只适用于字体图标 | _string_ | `-` |
 | `namespace` | 图标的命名空间, 可扩展自定义图标库 |  _string_ | `var-icon` |
-| `transition` | 过渡动画时间(毫秒) |  _string \| number_ | `0` |
+| `transition` | 过渡动画时间（ms） |  _string \| number_ | `0` |
 
 ### 事件
 

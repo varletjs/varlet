@@ -18,17 +18,17 @@ createApp().use(IndexBar).use(IndexAnchor)
 点击索引栏时，会自动跳转到对应的 `IndexAnchor` 锚点位置。
 
 ```html
-<var-index-bar 
-  duration="300" 
+<var-index-bar
+  duration="300"
   :sticky-offset-top="54"
-  @change="change" 
+  @change="change"
 >
   <div v-for="item in list" :key="item">
-    <var-index-anchor 
-      :index="item" 
+    <var-index-anchor
+      :index="item"
       class="var-index-anchor__example"
-    > 
-      标题 {{ item }} 
+    >
+      标题 {{ item }}
     </var-index-anchor>
     <var-cell>{{ item }} 文本</var-cell>
     <var-cell>{{ item }} 文本</var-cell>
@@ -108,7 +108,7 @@ export default {
 | `scrollTo` | 滚动到指定锚点	 | `index: number \| string` |
 
 ### 样式变量
-以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

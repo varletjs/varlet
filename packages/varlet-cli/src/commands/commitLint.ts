@@ -18,14 +18,14 @@ The rules for commit messages are as follows
 
 Example:
 
-feat: added a new feature
-feat(ui/button): added a new feature in the ui/button scope
+feat: add a new feature
+feat(ui/button): add a new feature in the ui/button scope
 
-fix: fixed a bug
-fix(ui/button): fixed a bug in the ui/button scope
+fix: fix a bug
+fix(ui/button): fix a bug in the ui/button scope
 
-docs: fixed an error in the documentation
-docs(ui/button): fixed a documentation error in the ui/button scope
+docs: fix an error in the documentation
+docs(ui/button): fix a documentation error in the ui/button scope
 
 Allowed types:
 - fix
@@ -39,6 +39,7 @@ Allowed types:
 - chore
 - release
 - refactor
+- revert
 
 Commit message reference: https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y
 参考阮一峰Commit message编写指南: https://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html`)

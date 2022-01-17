@@ -63,8 +63,8 @@ ImagePreview({
 </var-button>
 <var-image-preview :images="images" v-model:show="show" />
 
-<var-button 
-  type="warning" 
+<var-button
+  type="warning"
   block
   @click="currentShow = true"
 >
@@ -73,12 +73,12 @@ ImagePreview({
 <var-image-preview
   current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
   :images="images"
-  v-model:show="currentShow" 
+  v-model:show="currentShow"
 />
 
-<var-button 
-  type="warning" 
-  block 
+<var-button
+  type="warning"
+  block
   @click="closeShow = true"
 >
   展示关闭按钮
@@ -86,7 +86,7 @@ ImagePreview({
 <var-image-preview
   closeable
   :images="images"
-  v-model:show="closeShow" 
+  v-model:show="closeShow"
 />
 
 <var-button
@@ -96,10 +96,10 @@ ImagePreview({
 >
   监听关闭事件
 </var-button>
-<var-image-preview 
+<var-image-preview
   :images="images"
   v-model:show="closeEventShow"
-  @close="handleCloseEvent" 
+  @close="handleCloseEvent"
 />
 ```
 
@@ -119,7 +119,7 @@ export default {
     ])
 
     const handleCloseEvent = () => Snackbar('触发了关闭事件。')
-    
+
     return {
       show,
       currentShow,
@@ -170,7 +170,7 @@ export default {
 
 | 参数   | 说明  |  类型  | 默认值 |
 | ------ | ----------- | ------ | -------- |
-| `images`     | 需要预览的图片URL数组或者单个图片的 url  | _string[] \| string_ | `[]` |
+| `images`     | 需要预览的图片 URL 数组或者单个图片的 URL  | _string[] \| string_ | `[]` |
 | `current`    | 图片预览起始的 URL | _string_ | `-` |
 | `zoom`       | 双击放大倍数  | _string \| number_ | `2` |
 | `closeable`  | 是否显示关闭按钮 | _boolean_ | `false` |
@@ -184,7 +184,7 @@ export default {
 | `onClosed` | image-preview 关闭动画结束时候的回调 |  _() => void_ | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名  | 默认值   |
 | ------ | -------- |

@@ -89,8 +89,8 @@ export default {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `loading` | 加载状态，设置为 `true` 开启骨架屏 | _boolean_ | `true` |
 | `title` | 是否显示标题 | _boolean_ | `false` |
 | `card` | 是否显示卡片 | _boolean_ | `false` |
@@ -110,7 +110,7 @@ export default {
 
 ### 样式变量
 
-以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

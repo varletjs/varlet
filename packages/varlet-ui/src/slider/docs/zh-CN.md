@@ -142,7 +142,7 @@ export default {
 
 通过 `rules` 属性对值进行校验。
 
-<span style="font-size: 12px">`rules`是一个可以接受 `function`、`boolean` 和 `string` 的数组。 函数传递输入值作为参数，必须返回 `true` / `false` 或包含错误消息的 `string` ， 如果函数返回 (或数组包含的任何值) `false`或`string`，输入字段将输入错误状态。</span>
+<span style="font-size: 12px">`rules`是一个可以接受 `function`、`boolean` 和 `string` 的数组。 函数传递输入值作为参数，必须返回 `true` / `false` 或包含错误消息的 `string`，如果函数返回 (或数组包含的任何值) `false`或`string`，输入字段将输入错误状态。</span>
 
 ```html
 <var-slider v-model="value" :rules="[(v) => v > 35 || 'error message']" />
@@ -157,7 +157,7 @@ export default {
 | `v-model` | 当前进度值 | _number \| [number, number]_ | `0` |
 | `step`| 步长，取值为 `1 ~ 100` 间的整数 | _string \| number_ | `1` |
 | `range`| 是否启用双滑块 | _boolean_ | `false` |
-| `label-visible` | 是否显示标签，可选值为 `always, normal, never` | _string_ | `normal` |
+| `label-visible` | 是否显示标签，可选值为 `always normal never` | _string_ | `normal` |
 | `label-text-color` | 标签文字颜色 | _string_ | `#fff` |
 | `track-height` | slider的高度 | _string \| number_ | `2` |
 | `thumb-size` | 滑块的大小 | _string \| number_ | `12` |
@@ -182,7 +182,7 @@ export default {
 
 ### 样式变量
 
-以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
