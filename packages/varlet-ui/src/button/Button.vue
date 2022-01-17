@@ -71,7 +71,7 @@ export default defineComponent({
     }
 
     const handleClick = (e: Event) => {
-      const { disabled, onClick, autoLoading } = props
+      const { disabled, onClick } = props
 
       if (loadingRef.value || disabled) {
         return
@@ -81,7 +81,7 @@ export default defineComponent({
     }
 
     const handleTouchstart = (e: Event) => {
-      const { disabled, onTouchstart, autoLoading } = props
+      const { disabled, onTouchstart } = props
 
       if (loadingRef.value || disabled) {
         return
