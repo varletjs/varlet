@@ -108,6 +108,7 @@ createApp().use(Button)
 ```html
 <var-button type="success" @click="handleClick">点击</var-button>
 <var-button type="success" @touchstart="handleTouchstart">触摸</var-button>
+<var-button type="success" @click="handleAutoLoadingClick" autoLoading>自动loading</var-button>
 ```
 
 ```js
@@ -123,9 +124,18 @@ export default {
       Snackbar.success('触摸成功')
     }
 
+    const handleAutoLoadingClick=()=>{
+      return new Promise((resolve)=>{
+        setTimeout(()=>{
+          resolve()
+        },2000)
+      })
+    }
+
     return {
       handleClick,
-      handleTouchstart
+      handleTouchstart,
+      handleAutoLoadingClick
     }
   }
 }

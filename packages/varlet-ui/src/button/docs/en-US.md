@@ -107,6 +107,7 @@ createApp().use(Button)
 ```html
 <var-button type="success" @click="handleClick">Click</var-button>
 <var-button type="success" @touchstart="handleTouchstart">Touchstart</var-button>
+<var-button type="success" @click="handleAutoLoadingClick" autoLoading>AutoLoading</var-button>
 ```
 
 ```js
@@ -122,9 +123,18 @@ export default {
       Snackbar.success('Touchstart Success')
     }
 
+    const handleAutoLoadingClick = () => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve()
+        }, 2000)
+      })
+    }
+
     return {
       handleClick,
-      handleTouchstart
+      handleTouchstart,
+      handleAutoLoadingClick
     }
   }
 }
