@@ -52,7 +52,11 @@ export default defineComponent({
     let loadingRef: Ref<boolean> = props.autoLoading ? ref(false) : toRef(props, 'loading')
 
     watchEffect(() => {
-      loadingRef = props.autoLoading ? ref(false) : toRef(props, 'loading')
+      if (props.autoLoading) {
+        loadingRef.value = false
+      } else {
+        loadingRef.value = props.loading
+      }
     })
 
     const autoChangeLoading = (returnValue: Promise<any> | undefined | void): void => {
