@@ -219,9 +219,9 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `v-model:show` | 是否显示菜单 | _string_ | `default` |
-| `alignment` | 菜单的对齐方式，可选值为 `top` `bottom`，源点为默认插槽的左上角，top 为菜单顶部对齐源点，bottom 为菜单底部对齐 | _string_ | `top` |
-| `offset-x` | x 轴偏移量，相对于菜单对齐后的位置 | _number \| string_ | `0` |
-| `offset-y` | y 轴偏移量，相对于菜单对齐后的位置 | _number \| string_ | `0` |
+| `alignment` | 菜单的对齐方式， 可选值为 `top` `bottom`， 源点为默认插槽的左上角，top 为菜单顶部对齐源点，bottom 为菜单底部对齐 | _string_ | `top` |
+| `offset-x` | x 轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |  
+| `offset-y` | y 轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |
 | `teleport` | 菜单挂载的位置 | _TeleportProps['to']_ | `body` |
 
 ### 方法

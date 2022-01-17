@@ -149,7 +149,7 @@ export default {
   block
   @click="overlayClass = true"
 >
-  遮罩层class
+  遮罩层 class
 </var-button>
 <var-button
   class="mt-10"
@@ -157,12 +157,12 @@ export default {
   block
   @click="overlayStyle = true"
 >
-  遮罩层style
+  遮罩层 style
 </var-button>
 
-// 遮罩层class
-<var-popup
-  overlay-class="custom-overlay"
+// 遮罩层 class
+<var-popup 
+  overlay-class="custom-overlay" 
   v-model:show="overlayClass"
 >
   <div class="block">
@@ -173,8 +173,8 @@ export default {
   </div>
 </var-popup>
 
-// 遮罩层style
-<var-popup
+// 遮罩层 style
+<var-popup 
   :overlay-style="{
     backgroundColor: 'rgba(0, 0, 0, 0.3)'
   }"
@@ -274,12 +274,12 @@ export default {
 | --- | --- | --- | --- |
 | `v-model:show` | 是否显示弹出层 | _boolean_ | `false` |
 | `position` | 弹出位置，可选值为 `top` `bottom` `right` `left` `center` | _string_ | `center` |
-| `overlay` | 是否显示遮罩层 | _boolean_ | `true` |
+| `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
 | `overlay-class` | 自定义遮罩层的 class | _string_ | `-` |
 | `overlay-style` | 自定义遮罩层的 style | _string_ | `-` |
 | `transition` | 过度动画的名称 | _string_ | `-` |
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
-| `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
+| `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` | 
 | `teleport` | 弹出层挂载的位置 | _TeleportProps['to']_ | `-` |
 
 ### 事件
@@ -299,7 +299,7 @@ export default {
 | `default` | 弹出层内容 | `-` |
 
 ### 样式变量
-以下为组件使用的css变量，可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
