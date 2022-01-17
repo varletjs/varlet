@@ -11,8 +11,8 @@ createApp().use(Select).use(Option)
 
 ### 基本使用
 
-组件会使用option的 `label` 作为显示的文本。
-组件会优先使用option的 `value` 作为选项的值，其次使用 `label`。
+组件会使用 option 的 `label` 作为显示的文本。
+组件会优先使用 option 的 `value` 作为选项的值，其次使用 `label`。
 
 ```js
 import { ref } from 'vue'
@@ -211,7 +211,7 @@ export default {
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `clearable` | 是否可清除 | _boolean_ | `false` |
-| `validate-trigger` | 触发验证的时机， 可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
+| `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: any \| any[]) => any>_ | `-` |
 
 ### Option Props
@@ -231,7 +231,7 @@ export default {
 | `blur` | 失焦 | `-` | `-` |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
-| `reset` | 清空绑定的值(单选设置为 `undefined`,多选设置为 `[]` )和校验信息 | `-` | `-` |
+| `reset` | 清空绑定的值(单选设置为 `undefined`，多选设置为 `[]`)和校验信息 | `-` | `-` |
 
 ### 事件
 
@@ -262,7 +262,7 @@ export default {
 | `default` | 选项显示的内容 | `-` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的css变量，可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
 
 ### Select Variables
 

@@ -3,7 +3,7 @@
 ### 介绍
 
 组件提供了更方便的尺寸，填充模式，圆角的设置方式，水波效果增强图片点击交互体验。
-支持 `懒加载`、`loading 图片`、 `error 图片`、应用 `Lazy` 指令的默认设置。
+支持 `懒加载`、`loading 图片`、`error 图片`、应用 `Lazy` 指令的默认设置。
 
 ### 引入
 
@@ -130,7 +130,7 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `src` | 图片地址 | _string_ | `-` |
-| `fit` | 填充模式, 可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_ | `fill` |
+| `fit` | 填充模式, 可选值为 `fill contain cover none scale-down` | _string_ | `fill` |
 | `alt` | 替代文本 | _string_ | `-` |
 | `width` | 图片宽度 | _string \| number_ | `-` |
 | `height` | 图片高度 | _string \| number_ | `-` |

@@ -19,13 +19,13 @@ createApp().use(AppBar)
 
 ### 自定义样式
 
-通过 `title-position`、 `color` 属性设置标题所处位置、导航栏颜色。
+通过 `title-position`、`color` 属性设置标题所处位置、导航栏颜色。
 
 ```html
-<var-app-bar 
-  title="标题" 
-  title-position="center" 
-  color="#ff9f00" 
+<var-app-bar
+  title="标题"
+  title-position="center"
+  color="#ff9f00"
 />
 ```
 
@@ -205,19 +205,19 @@ export default {
 | `color` | 背景颜色 | _string_ | `-` |
 | `text-color` | 文字颜色 | _string_ | `-` |
 | `title` | 标题 | _string_ | - |
-| `title-position` | 标题位置,可选值为 `left`, `center`, `right` | _string_ | `left` |
+| `title-position` | 标题位置，可选值为 `left` `center` `right` | _string_ | `left` |
 | `elevation` | 是否给导航栏设置海拔 | _boolean_ | `true` |
 
 ### 插槽
 
 | 名称 | 说明 | 参数 |
 | ---- | ---- | ----|
-| `default` | 自定义标题内容,会覆盖 `title` 的内容 | `-` |
+| `default` | 自定义标题内容，会覆盖 `title` 的内容 | `-` |
 | `left` | 插入至导航栏左侧的内容 | `-` |
 | `right` | 插入至导航栏右侧的内容 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
@@ -227,4 +227,3 @@ export default {
 | `--app-bar-title-padding` | `0 12px` |
 | `--app-bar-left-gap` | `6px` |
 | `--app-bar-right-gap` | `6px` |
-

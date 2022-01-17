@@ -134,7 +134,7 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
 | `v-model` | 被选择的时间（ISO 8601 格式，`HH:mm` 或 `HH:mm:ss`）| _string_ | `-` |
-| `format` | 选择器时间格式，可选值为 `ampm, 24hr` | _string_ | `ampm` |
+| `format` | 选择器时间格式，可选值为 `ampm 24hr` | _string_ | `ampm` |
 | `color` | 选择器的颜色 | _string_ | `#2979ff` |
 | `header-color` | 标题背景色。如果未指定，将使用由 color 属性或默认颜色。 | _string_ | `#2979ff` |
 | `shadow` | 是否添加阴影 | _boolean_ | `false` |
@@ -161,7 +161,7 @@ export default {
 
 ### 样式变量
 
-以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

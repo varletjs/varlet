@@ -15,7 +15,7 @@ createApp().use(Row).use(Col)
 
 ### 栅格系统
 
-`<var-row/>` 组件把一行平均划分为24列栅格(24份)，`<var-col/>` 提供 `span` 属性设置这一列所占的份数，`offset` 属性设置这一列偏移的份数。
+`<var-row/>` 组件把一行平均划分为 24列 栅格( 24份 )，`<var-col/>` 提供 `span` 属性设置这一列所占的份数，`offset` 属性设置这一列偏移的份数。
 
 ```html
 <var-row>
