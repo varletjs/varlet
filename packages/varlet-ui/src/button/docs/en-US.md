@@ -146,6 +146,7 @@ export default {
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
+| `auto-loading` | Whether to automatically loading, Event callback function return a promise is required | _boolean_ | `false` |
 | `type` | Button type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `size` | Button size, Can be set to `normal` `mini` `small` `large` | _string_ | `normal` |
 | `loading` | Loading status | _boolean_ | `false` |  
