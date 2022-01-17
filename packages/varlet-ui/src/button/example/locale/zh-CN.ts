@@ -24,6 +24,7 @@ export default {
   event: '注册事件',
   click: '点击',
   touchstart: '触摸',
+  autoLoading: '自动Loading',
   clickSuccess: '点击成功',
   touchstartSuccess: '触摸成功',
 }
