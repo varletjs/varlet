@@ -1,7 +1,7 @@
 # 弹出层
 
 ### 介绍
-创建一个可以从上、下、左、右、中心弹出的容器， 用于展示信息。默认使用 `teleport` 插入到 `body` 尾部。
+创建一个可以从上、下、左、右、中心弹出的容器，用于展示信息。默认使用 `teleport` 插入到 `body` 尾部。
 
 ### 引入
 
@@ -299,7 +299,7 @@ export default {
 | `default` | 弹出层内容 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
