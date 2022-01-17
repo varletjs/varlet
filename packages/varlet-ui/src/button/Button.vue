@@ -49,17 +49,21 @@ export default defineComponent({
   directives: { Ripple },
   props,
   setup(props) {
-    let loadingRef: Ref<boolean>
+    let loadingRef: Ref<boolean> = props.autoLoading ? ref(false) : toRef(props, 'loading')
 
     watchEffect(() => {
       loadingRef = props.autoLoading ? ref(false) : toRef(props, 'loading')
     })
 
-    const autoChangeLoading = (promise: Promise<any>): void => {
-      loadingRef.value = true
-      promise.finally(() => {
-        loadingRef.value = false
-      })
+    const autoChangeLoading = (returnValue: Promise<any> | undefined | void): void => {
+      const { autoLoading } = props
+
+      if (autoLoading && isPromise(returnValue)) {
+        loadingRef.value = true
+        returnValue.finally(() => {
+          loadingRef.value = false
+        })
+      }
     }
 
     const handleClick = (e: Event) => {
@@ -69,10 +73,7 @@ export default defineComponent({
         return
       }
 
-      const returnValue = onClick?.(e)
-      if (autoLoading && isPromise(returnValue)) {
-        autoChangeLoading(returnValue)
-      }
+      autoChangeLoading(onClick?.(e))
     }
 
     const handleTouchstart = (e: Event) => {
@@ -82,10 +83,7 @@ export default defineComponent({
         return
       }
 
-      const returnValue = onTouchstart?.(e)
-      if (autoLoading && isPromise(returnValue)) {
-        autoChangeLoading(returnValue)
-      }
+      autoChangeLoading(onTouchstart?.(e))
     }
 
     return {
