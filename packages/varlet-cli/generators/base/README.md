@@ -52,6 +52,12 @@ or
 pnpm test:watchAll 
 ```
 
+#### Mount Git Hooks
+
+```shell
+npx simple-git-hooks
+```
+
 #### Generate changelog
 
 ```shell

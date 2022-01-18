@@ -333,6 +333,12 @@ module.exports = {
 }
 ```
 
+挂载钩子
+
+```shell
+npx simple-git-hooks
+```
+
 创建 `.prettierignore`
 
 ```text

@@ -338,6 +338,12 @@ module.exports = {
 }
 ```
 
+Mount Git Hooks
+
+```shell
+npx simple-git-hooks
+```
+
 create `.prettierignore`
 
 ```text
