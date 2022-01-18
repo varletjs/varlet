@@ -3,6 +3,7 @@ import Button from '..'
 import VarButton from '../Button'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { delay, trigger } from '../../utils/jest'
 
 test('test button example', () => {
   const wrapper = mount(example)
@@ -15,14 +16,14 @@ test('test button plugin', () => {
   expect(app.component(Button.name)).toBeTruthy()
 })
 
-test('test button onClick & onTouchstart null callback', () => {
+test('test button onClick & onTouchstart null callback', async () => {
   const wrapper = mount(VarButton)
-  wrapper.trigger('click')
-  wrapper.trigger('touchstart')
+  await trigger(wrapper, 'click')
+  await trigger(wrapper, 'touchstart')
   wrapper.unmount()
 })
 
-test('test button onClick & onTouchstart', () => {
+test('test button onClick & onTouchstart', async () => {
   const onClick = jest.fn()
   const onTouchstart = jest.fn()
 
@@ -33,14 +34,14 @@ test('test button onClick & onTouchstart', () => {
     },
   })
 
-  wrapper.trigger('click')
-  wrapper.trigger('touchstart')
+  await trigger(wrapper, 'click')
+  await trigger(wrapper, 'touchstart')
   expect(onClick).toHaveBeenCalledTimes(1)
   expect(onTouchstart).toHaveBeenCalledTimes(1)
   wrapper.unmount()
 })
 
-test('test button disabled', () => {
+test('test button disabled', async () => {
   const onClick = jest.fn()
   const onTouchstart = jest.fn()
 
@@ -52,8 +53,8 @@ test('test button disabled', () => {
     },
   })
 
-  wrapper.trigger('click')
-  wrapper.trigger('touchstart')
+  await trigger(wrapper, 'click')
+  await trigger(wrapper, 'touchstart')
   expect(wrapper.classes()).toContain('var-button--disabled')
   expect(onClick).toHaveBeenCalledTimes(0)
   expect(onTouchstart).toHaveBeenCalledTimes(0)
@@ -61,7 +62,7 @@ test('test button disabled', () => {
   wrapper.unmount()
 })
 
-test('test button loading', () => {
+test('test button loading', async () => {
   const onClick = jest.fn()
   const onTouchstart = jest.fn()
 
@@ -71,11 +72,46 @@ test('test button loading', () => {
     },
   })
 
-  wrapper.trigger('click')
-  wrapper.trigger('touchstart')
+  await trigger(wrapper, 'click')
+  await trigger(wrapper, 'touchstart')
   expect(wrapper.find('.var-loading').exists()).toBeTruthy()
   expect(onClick).toHaveBeenCalledTimes(0)
   expect(onTouchstart).toHaveBeenCalledTimes(0)
+  expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
+
+test('test button auto-loading', async () => {
+  const onClick = () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 100)
+    })
+  }
+
+  const onTouchstart = () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 100)
+    })
+  }
+
+  const wrapper = mount(VarButton, {
+    props: {
+      autoLoading: true,
+      onClick,
+      onTouchstart,
+      ripple: false,
+    },
+  })
+
+  await trigger(wrapper, 'click')
+  expect(wrapper.find('.var-loading').exists()).toBeTruthy()
+  await delay(100)
+  expect(wrapper.find('.var-loading').exists()).toBeFalsy()
+
+  await trigger(wrapper, 'touchstart')
+  expect(wrapper.find('.var-loading').exists()).toBeTruthy()
+  await delay(100)
+  expect(wrapper.find('.var-loading').exists()).toBeFalsy()
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })

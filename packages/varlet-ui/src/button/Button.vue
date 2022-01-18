@@ -51,11 +51,10 @@ export default defineComponent({
   setup(props) {
     const pending: Ref<boolean> = ref(false)
 
-    const attemptAutoLoading = (result: Promise<any> | any) => {
-      if (props.autoLoading && isPromise(result)) {
+    const attemptAutoLoading = (result: any) => {
+      if (props.autoLoading) {
         pending.value = true
-
-        result.finally(() => {
+        Promise.resolve(result).finally(() => {
           pending.value = false
         })
       }
@@ -64,21 +63,20 @@ export default defineComponent({
     const handleClick = (e: Event) => {
       const { loading, disabled, onClick } = props
 
-      if (loading || disabled || pending.value) {
+      if (!onClick || loading || disabled || pending.value) {
         return
       }
-
-      attemptAutoLoading(onClick?.(e))
+      attemptAutoLoading(onClick(e))
     }
 
     const handleTouchstart = (e: Event) => {
       const { loading, disabled, onTouchstart } = props
 
-      if (loading || disabled || pending.value) {
+      if (!onTouchstart || loading || disabled || pending.value) {
         return
       }
 
-      attemptAutoLoading(onTouchstart?.(e))
+      attemptAutoLoading(onTouchstart(e))
     }
 
     return {

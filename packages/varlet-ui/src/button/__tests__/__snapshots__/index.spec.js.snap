@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`test button auto-loading 1`] = `
+"<button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\"></div>
+</button>"
+`;
+
 exports[`test button color & textColor 1`] = `
 "<button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\" style=\\"color: rgb(0, 0, 0); background: rgb(0, 0, 0);\\">
   <!--v-if-->
