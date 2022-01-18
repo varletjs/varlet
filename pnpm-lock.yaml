@@ -119,6 +119,44 @@ importers:
       '@types/lodash-es': 4.17.5
       '@types/semver': 7.3.9
 
+  packages/varlet-cli/generators/base:
+    specifiers:
+      '@varlet/cli': workspace:*
+      '@varlet/eslint-config': workspace:*
+      '@varlet/icons': workspace:*
+      '@varlet/stylelint-config': workspace:*
+      '@varlet/touch-emulator': workspace:*
+      '@vue/test-utils': 2.0.0-rc.6
+      clipboard: ^2.0.6
+      eslint: ^7.30.0
+      lint-staged: ^10.5.0
+      live-server: ^1.2.1
+      lodash-es: ^4.17.21
+      prettier: ^2.3.2
+      simple-git-hooks: ^2.7.0
+      stylelint: ^13.13.1
+      typescript: ^4.4.4
+      vue: 3.2.16
+      vue-router: 4.0.12
+    devDependencies:
+      '@varlet/cli': link:../..
+      '@varlet/eslint-config': link:../../../varlet-eslint-config
+      '@varlet/icons': link:../../../varlet-icons
+      '@varlet/stylelint-config': link:../../../varlet-stylelint-config
+      '@varlet/touch-emulator': link:../../../varlet-touch-emulator
+      '@vue/test-utils': 2.0.0-rc.6_vue@3.2.16
+      clipboard: 2.0.8
+      eslint: 7.32.0
+      lint-staged: 10.5.4
+      live-server: 1.2.1
+      lodash-es: 4.17.21
+      prettier: 2.5.1
+      simple-git-hooks: 2.7.0
+      stylelint: 13.13.1
+      typescript: 4.5.4
+      vue: 3.2.16
+      vue-router: 4.0.12_vue@3.2.16
+
   packages/varlet-eslint-config:
     specifiers:
       '@typescript-eslint/eslint-plugin': ^4.6.0
@@ -8472,6 +8510,7 @@ packages:
 
   /source-map-resolve/0.5.3:
     resolution: {integrity: sha512-Htz+RnsXWk5+P2slx5Jh3Q66vhQj1Cllm0zvnaY98+NFx+Dv2CF/f5O/t8x+KaNdrdIAsruNzoh/KpialbqAnw==}
+    deprecated: See https://github.com/lydell/source-map-resolve#deprecated
     dependencies:
       atob: 2.1.2
       decode-uri-component: 0.2.0
@@ -8487,6 +8526,7 @@ packages:
 
   /source-map-url/0.4.1:
     resolution: {integrity: sha512-cPiFOTLUKvJFIg4SKVScy4ilPPW6rFgMgfuZJPNoDuMs3nC1HbMUycBoJw77xFIp6z1UJQJOfx6C9GMH80DiTw==}
+    deprecated: See https://github.com/lydell/source-map-url#deprecated
 
   /source-map/0.5.6:
     resolution: {integrity: sha1-dc449SvwczxafwwRjYEzSiu19BI=}
