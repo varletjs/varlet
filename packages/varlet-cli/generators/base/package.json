@@ -55,6 +55,10 @@
     "*.{ts,tsx,js,vue}": "eslint --fix",
     "*.{vue,css,less}": "stylelint --fix"
   },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
+    "commit-msg": "npx --no-install varlet-cli commit-lint $1"
+  },
   "eslintConfig": {
     "root": true,
     "ignorePatterns": [
@@ -89,9 +93,5 @@
     "Chrome >= 51",
     "iOS >= 10"
   ],
-  "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
-    "commit-msg": "npx --no-install varlet-cli commit-lint $1"
-  },
   "packageManager": "pnpm@6.24.3"
 }

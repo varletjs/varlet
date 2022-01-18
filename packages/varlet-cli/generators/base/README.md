@@ -52,12 +52,6 @@ or
 pnpm test:watchAll 
 ```
 
-#### Mount git hook
-
-```shell
-pnpm husky
-```
-
 #### Generate changelog
 
 ```shell
