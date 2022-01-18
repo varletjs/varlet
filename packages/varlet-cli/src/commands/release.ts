@@ -80,7 +80,7 @@ export async function release(cmd: { remote?: string }) {
 
     const type = ret[name]
     const isPreRelease = type.startsWith('pre')
-    let expectVersion = semver.inc(currentVersion, type, `alpha.${Date.now()}`)
+    let expectVersion = semver.inc(currentVersion, type, `alpha.${Date.now()}`) as string
     expectVersion = isPreRelease ? expectVersion.slice(0, -2) : expectVersion
 
     name = 'version confirm'
