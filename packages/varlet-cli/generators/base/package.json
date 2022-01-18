@@ -16,7 +16,6 @@
   ],
   "license": "MIT",
   "scripts": {
-    "husky": "husky install",
     "preinstall": "npx only-allow pnpm",
     "dev": "varlet-cli dev",
     "build": "varlet-cli build",
