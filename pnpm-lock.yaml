@@ -10,10 +10,10 @@ importers:
       '@varlet/stylelint-config': workspace:*
       eslint: ^7.30.0
       execa: ^5.0.0
-      husky: ^7.0.1
       lint-staged: ^10.5.0
       ora: ^5.4.0
       prettier: ^2.3.2
+      simple-git-hooks: ^2.7.0
       stylelint: ^13.13.1
       surge: ^0.23.0
       typescript: ^4.4.4
@@ -24,10 +24,10 @@ importers:
       '@varlet/stylelint-config': link:packages/varlet-stylelint-config
       eslint: 7.32.0
       execa: 5.1.1
-      husky: 7.0.4
       lint-staged: 10.5.4
       ora: 5.4.1
       prettier: 2.5.1
+      simple-git-hooks: 2.7.0
       stylelint: 13.13.1
       surge: 0.23.0
       typescript: 4.5.4
@@ -5341,12 +5341,6 @@ packages:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
 
-  /husky/7.0.4:
-    resolution: {integrity: sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ==}
-    engines: {node: '>=12'}
-    hasBin: true
-    dev: true
-
   /iconv-lite/0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
     engines: {node: '>=0.10.0'}
@@ -8399,6 +8393,12 @@ packages:
       decompress-response: 4.2.1
       once: 1.4.0
       simple-concat: 1.0.1
+    dev: true
+
+  /simple-git-hooks/2.7.0:
+    resolution: {integrity: sha512-nQe6ASMO9zn5/htIrU37xEIHGr9E6wikXelLbOeTcfsX2O++DHaVug7RSQoq+kO7DvZTH37WA5gW49hN9HTDmQ==}
+    hasBin: true
+    requiresBuild: true
     dev: true
 
   /sisteransi/1.0.5:
