@@ -11,10 +11,6 @@ function sizeValidator(size: string): boolean {
 }
 
 export const props = {
-  autoLoading: {
-    type: Boolean,
-    default: false,
-  },
   type: {
     type: String as PropType<'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'>,
     default: 'default',
@@ -58,6 +54,10 @@ export const props = {
   },
   textColor: {
     type: String,
+  },
+  autoLoading: {
+    type: Boolean,
+    default: false,
   },
   loadingRadius: {
     type: [Number, String],

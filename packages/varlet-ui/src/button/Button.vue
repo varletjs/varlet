@@ -26,9 +26,9 @@
       :type="loadingType"
       :size="loadingSize"
       :radius="loadingRadius"
-      v-if="loading"
+      v-if="loading || pending"
     />
-    <div class="var-button__content" :class="[loading ? 'var-button--hidden' : null]">
+    <div class="var-button__content" :class="[loading || pending ? 'var-button--hidden' : null]">
       <slot />
     </div>
   </button>
@@ -37,7 +37,7 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import VarLoading from '../loading'
-import { defineComponent, Ref, ref, toRef, watchEffect } from 'vue'
+import { defineComponent, Ref, ref } from 'vue'
 import { props } from './props'
 import { isPromise } from '../utils/shared'
 
@@ -49,51 +49,42 @@ export default defineComponent({
   directives: { Ripple },
   props,
   setup(props) {
-    let loadingRef: Ref<boolean> = props.autoLoading ? ref(false) : toRef(props, 'loading')
+    const pending: Ref<boolean> = ref(false)
 
-    watchEffect(() => {
-      if (props.autoLoading) {
-        loadingRef.value = false
-      } else {
-        loadingRef.value = props.loading
-      }
-    })
+    const attemptAutoLoading = (result: Promise<any> | any) => {
+      if (props.autoLoading && isPromise(result)) {
+        pending.value = true
 
-    const autoChangeLoading = (returnValue: Promise<any> | undefined | void): void => {
-      const { autoLoading } = props
-
-      if (autoLoading && isPromise(returnValue)) {
-        loadingRef.value = true
-        returnValue.finally(() => {
-          loadingRef.value = false
+        result.finally(() => {
+          pending.value = false
         })
       }
     }
 
     const handleClick = (e: Event) => {
-      const { disabled, onClick } = props
+      const { loading, disabled, onClick } = props
 
-      if (loadingRef.value || disabled) {
+      if (loading || disabled || pending.value) {
         return
       }
 
-      autoChangeLoading(onClick?.(e))
+      attemptAutoLoading(onClick?.(e))
     }
 
     const handleTouchstart = (e: Event) => {
-      const { disabled, onTouchstart } = props
+      const { loading, disabled, onTouchstart } = props
 
-      if (loadingRef.value || disabled) {
+      if (loading || disabled || pending.value) {
         return
       }
 
-      autoChangeLoading(onTouchstart?.(e))
+      attemptAutoLoading(onTouchstart?.(e))
     }
 
     return {
+      pending,
       handleClick,
       handleTouchstart,
-      loading: loadingRef,
     }
   },
 })

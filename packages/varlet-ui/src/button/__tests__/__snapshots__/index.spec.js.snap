@@ -187,6 +187,9 @@ exports[`test button example 1`] = `
 </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">触摸</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">自动加载</div>
 </button>"
 `;
 
