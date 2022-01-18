@@ -99,7 +99,6 @@ test('test button auto-loading', async () => {
       autoLoading: true,
       onClick,
       onTouchstart,
-      ripple: false,
     },
   })
 
@@ -112,6 +111,7 @@ test('test button auto-loading', async () => {
   expect(wrapper.find('.var-loading').exists()).toBeTruthy()
   await delay(100)
   expect(wrapper.find('.var-loading').exists()).toBeFalsy()
+
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })

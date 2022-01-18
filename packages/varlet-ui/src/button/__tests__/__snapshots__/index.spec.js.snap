@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test button auto-loading 1`] = `
-"<button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+"<button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\" style=\\"overflow: hidden; overflow-x: hidden; overflow-y: hidden;\\">
   <!--v-if-->
   <div class=\\"var-button__content\\"></div>
+  <div class=\\"var-ripple\\" style=\\"opacity: 0.25; transform: translate(0px, 0px) scale3d(1, 1, 1); width: 0px; height: 0px; background-color: currentColor;\\" data-created-at=\\"2642.4116249999997\\"></div>
 </button>"
 `;
 
