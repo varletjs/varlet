@@ -6,11 +6,13 @@ packages/varlet-icons/dist/**
 
 packages/varlet-ui/coverage/**
 packages/varlet-ui/es/**
+packages/varlet-ui/lib/**
 packages/varlet-ui/umd/**
 packages/varlet-ui/site/**
 packages/varlet-ui/public/**
 packages/varlet-ui/.varlet/**
 packages/varlet-ui/types/global.d.ts
+
 **/package.json
 *.md
 
