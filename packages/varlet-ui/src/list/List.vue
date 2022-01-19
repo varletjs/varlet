@@ -27,7 +27,7 @@
 import VarLoading from '../loading'
 import Ripple from '../ripple'
 import { defineComponent, onMounted, onUnmounted, ref, nextTick } from 'vue'
-import { getParentScroller, isHidden, toPxNum } from '../utils/elements'
+import { getParentScroller, toPxNum } from '../utils/elements'
 import { props } from './props'
 import { isNumber, dt } from '../utils/shared'
 import { pack } from '../locale'
@@ -63,10 +63,6 @@ export default defineComponent({
     // expose
     const check = async () => {
       await nextTick()
-
-      if (isHidden(listEl.value as HTMLElement)) {
-        return
-      }
 
       const { loading, finished, error } = props
 
