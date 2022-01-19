@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "1.24.11",
+  "version": "1.25.0",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "bootstrap": "pnpm install && node scripts/bootstrap.mjs",
