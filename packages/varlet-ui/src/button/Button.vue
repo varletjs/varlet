@@ -66,6 +66,7 @@ export default defineComponent({
       if (!onClick || loading || disabled || pending.value) {
         return
       }
+
       attemptAutoLoading(onClick(e))
     }
 
