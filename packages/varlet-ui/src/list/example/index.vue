@@ -39,7 +39,7 @@ import VarTab from '../../tab'
 import VarTabsItems from '../../tabs-items'
 import VarTabItem from '../../tab-item'
 import dark from '../../themes/dark'
-import { reactive, toRefs } from 'vue'
+import { onMounted, reactive, toRefs } from 'vue'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
@@ -68,30 +68,32 @@ export default {
       current: 0,
     })
 
+    const load = () => {
+      values.loading = true
+      setTimeout(() => {
+        for (let i = 0; i < 20; i++) {
+          values.list.push(values.list.length + 1)
+        }
+
+        values.loading = false
+
+        if (values.list.length >= 60) {
+          values.finished = true
+        }
+      }, 1000)
+    }
+
+    onMounted(() => {
+      load()
+    })
+
     watchLang(use)
     watchDarkMode(dark)
 
     return {
       pack,
       ...toRefs(values),
-      load() {
-        if (values.current !== 0) {
-          values.loading = false
-          return
-        }
-
-        setTimeout(() => {
-          for (let i = 0; i < 20; i++) {
-            values.list.push(values.list.length + 1)
-          }
-
-          values.loading = false
-
-          if (values.list.length >= 60) {
-            values.finished = true
-          }
-        }, 1000)
-      },
+      load,
       load2() {
         if (values.current !== 1) {
           values.loading2 = false
