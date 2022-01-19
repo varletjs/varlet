@@ -99,6 +99,7 @@ test('test button auto-loading', async () => {
       autoLoading: true,
       onClick,
       onTouchstart,
+      ripple: false,
     },
   })
 
