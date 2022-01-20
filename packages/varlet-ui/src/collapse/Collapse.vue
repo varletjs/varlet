@@ -38,16 +38,16 @@ export default defineComponent({
       return true
     }
 
-    const getValue = (value: number | string | undefined, isExpand: boolean): CollapseModelValue => {
-      if (!checkValue()) return
+    const getValue = (value: number | string, isExpand: boolean): CollapseModelValue => {
+      if (!checkValue()) return null
       if (isExpand) return props.accordion ? value : [...(props.modelValue as Array<string | number>), value]
 
       return props.accordion
-        ? undefined
+        ? null
         : (props.modelValue as Array<string | number>).filter((name: string | number) => name !== value)
     }
 
-    const updateItem = (value: number | string | undefined, isExpand: boolean) => {
+    const updateItem = (value: number | string, isExpand: boolean) => {
       const modelValue = getValue(value, isExpand)
 
       props['onUpdate:modelValue']?.(modelValue)
