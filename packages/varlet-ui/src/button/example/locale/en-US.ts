@@ -25,6 +25,7 @@ export default {
   event: 'Event',
   click: 'Click',
   touchstart: 'Touchstart',
+  autoLoading: 'Auto Loading',
   clickSuccess: 'Click Success',
   touchstartSuccess: 'Touchstart Success',
 }

@@ -149,7 +149,7 @@ export default {
   block
   @click="overlayClass = true"
 >
-  遮罩层class
+  遮罩层 class
 </var-button>
 <var-button
   class="mt-10"
@@ -157,10 +157,10 @@ export default {
   block
   @click="overlayStyle = true"
 >
-  遮罩层style
+  遮罩层 style
 </var-button>
 
-// 遮罩层class
+// 遮罩层 class
 <var-popup
   overlay-class="custom-overlay"
   v-model:show="overlayClass"
@@ -173,7 +173,7 @@ export default {
   </div>
 </var-popup>
 
-// 遮罩层style
+// 遮罩层 style
 <var-popup
   :overlay-style="{
     backgroundColor: 'rgba(0, 0, 0, 0.3)'
@@ -299,7 +299,7 @@ export default {
 | `default` | 弹出层内容 | `-` |
 
 ### 样式变量
-以下为组件使用的css变量，可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

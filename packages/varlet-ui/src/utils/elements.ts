@@ -42,12 +42,6 @@ export function getTranslate(el: HTMLElement) {
   return +transform.slice(transform.lastIndexOf(',') + 2, transform.length - 1)
 }
 
-export function isHidden(el: HTMLElement) {
-  const { width, height } = el.getBoundingClientRect()
-
-  return width === 0 && height === 0
-}
-
 export function getParentScroller(el: HTMLElement): HTMLElement | Window {
   let element = el
 

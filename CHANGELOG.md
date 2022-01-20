@@ -1,3 +1,20 @@
+# [1.25.0](https://github.com/varletjs/varlet/compare/v1.24.11...v1.25.0) (2022-01-19)
+
+
+### Bug Fixes
+
+* **date-picker:** remove error when the initial value is undefined and close [#277](https://github.com/varletjs/varlet/issues/277) ([ede1eb1](https://github.com/varletjs/varlet/commit/ede1eb12ea2d2dcd0f24819a11369b47ac8825f7))
+* **swipe:** support ssr ([007c3e6](https://github.com/varletjs/varlet/commit/007c3e65b37259b68343388bd45453c46bca30ea))
+* **ui/app-bar:** support ssr ([3700eef](https://github.com/varletjs/varlet/commit/3700eef03ef33c53762fc677cde22ea41d669568))
+* **ui/list:** remove isHidden function ([a4634e0](https://github.com/varletjs/varlet/commit/a4634e0d468b865264381fa31acb2a4af87e2a9a))
+
+
+### Features
+
+* **button:** add autoLoading prop ([67f4b40](https://github.com/varletjs/varlet/commit/67f4b40635d3452d74be6ce0a1abc5a423611950))
+
+
+
 ## [1.24.11](https://github.com/varletjs/varlet/compare/v1.24.10...v1.24.11) (2022-01-14)
 
 
@@ -70,11 +87,7 @@
 
 
 
-## [1.24.3](https://github.com/varletjs/varlet/compare/1.24.2...v1.24.3) (2021-12-30)
-
-
-
-## [1.24.2](https://github.com/varletjs/varlet/compare/v1.24.1...1.24.2) (2021-12-30)
+## [1.24.3](https://github.com/varletjs/varlet/compare/v1.24.1...v1.24.3) (2021-12-30)
 
 
 ### Bug Fixes

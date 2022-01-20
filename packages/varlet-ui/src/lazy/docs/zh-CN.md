@@ -27,7 +27,7 @@ createApp().use(Lazy)
 ```
 
 ### 内联属性
-可以通过内联属性修改 `loading`、`error` 图片和 `加载失败时尝试重新加载的次数`。
+可以通过内联属性修改 `loading`、 `error` 图片和`加载失败时尝试重新加载的次数`。
 
 ```html
 <img
@@ -61,8 +61,8 @@ createApp().use(Lazy, {
     'touchmove'
   ],
   filter(lazy) {
-    // 可以访问lazy上下文的所有属性,执行一些属性拦截,
-    // 比如简单修改所有的图片地址http -> https
+    // 可以访问 lazy 上下文的所有属性,执行一些属性拦截,
+    // 比如简单修改所有的图片地址 http -> https
     lazy.src.replace('http://', 'https://')
   }
 })

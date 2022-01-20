@@ -10,6 +10,7 @@ export interface ButtonProps {
   outline?: boolean
   disabled?: boolean
   ripple?: boolean
+  autoLoading?: boolean
   color?: string
   textColor?: string
   loadingRadius?: string | number

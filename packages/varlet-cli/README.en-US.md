@@ -294,13 +294,14 @@ module.exports = {
 
 #### git-hook
 
-`husky`, `lint-staged` cooperate with `eslint`, `stylelint`, `varlet-cli commit-lint` to check before commit, 
+`simple-git-hooks`, `lint-staged` cooperate with `eslint`, `stylelint`, `varlet-cli commit-lint` to check before commit, 
 `package.json` configuration is as follows
 
 ```json
 {
-  "scripts": {
-    "prepare": "husky install"
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
+    "commit-msg": "npx --no-install varlet-cli commit-lint $1"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
@@ -335,6 +336,12 @@ module.exports = {
     ]
   }
 }
+```
+
+Mount Git Hooks
+
+```shell
+npx simple-git-hooks
 ```
 
 create `.prettierignore`

@@ -67,7 +67,7 @@ export default {
 
 ### 上传状态
 
-提供了 `loading`、`success`、`error` 三种上传状态，并提供了工具函数快速获取对应状态的文件。
+提供了 `loading`、 `success`、 `error` 三种上传状态，并提供了工具函数快速获取对应状态的文件。
 
 ```html
 <var-uploader v-model="files" @after-read="handleAfterRead"/>
@@ -255,7 +255,7 @@ export default {
 | `maxsize` | 最大文件大小 | _string \| number_ | `-` |
 | `previewed` | 是否允许预览 | _boolean_ | `true` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
-| `validate-trigger` | 触发验证的时机，可选值为 `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
+| `validate-trigger` | 触发验证的时机， 可选值为 `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
 
 ### VarFile
@@ -306,7 +306,7 @@ export default {
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

@@ -290,12 +290,13 @@ module.exports = {
 
 #### git-hook
 
-`husky`，`lint-staged` 配合 `eslint`，`stylelint`，`varlet-cli commit-lint` 做commit前的检查，`package.json` 配置如下
+`simple-git-hooks`，`lint-staged` 配合 `eslint`，`stylelint`，`varlet-cli commit-lint` 做commit前的检查，`package.json` 配置如下
 
 ```json
 {
-  "scripts": {
-    "prepare": "husky install"
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
+    "commit-msg": "npx --no-install varlet-cli commit-lint $1"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
@@ -330,6 +331,12 @@ module.exports = {
     ]
   }
 }
+```
+
+挂载钩子
+
+```shell
+npx simple-git-hooks
 ```
 
 创建 `.prettierignore`
