@@ -30,7 +30,7 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted, onUnmounted, onActivated, onDeactivated, computed, watch } from 'vue'
 import { props } from './props'
-import { getParentScroller, toPxNum } from '../utils/elements'
+import { doubleRaf, getParentScroller, toPxNum } from '../utils/elements'
 import { toNumber } from '../utils/shared'
 import type { Ref, ComputedRef } from 'vue'
 
@@ -93,7 +93,8 @@ export default defineComponent({
       }
     }
 
-    const addScrollListener = () => {
+    const addScrollListener = async () => {
+      await doubleRaf()
       scroller = getParentScroller(stickyEl.value as HTMLElement)
       scroller !== window && scroller.addEventListener('scroll', handleScroll)
       window.addEventListener('scroll', handleScroll)

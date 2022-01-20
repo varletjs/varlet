@@ -24,28 +24,6 @@ exports[`test sticky disabled without css sticky position 2`] = `
 </div>"
 `;
 
-exports[`test sticky example 1`] = `
-"<div class=\\"example\\">
-  <div class=\\"app-type\\">基本使用</div>
-  <div class=\\"var-sticky\\" style=\\"z-index: 10;\\">
-    <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
-        <!--v-if-->
-        <div class=\\"var-button__content\\">基本使用</div>
-      </button></div>
-  </div>
-  <div class=\\"app-type\\">局部吸顶</div>
-  <div class=\\"scroller\\">
-    <div class=\\"var-sticky\\" style=\\"z-index: 10;\\">
-      <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
-          <!--v-if-->
-          <div class=\\"var-button__content\\">局部吸顶</div>
-        </button></div>
-    </div>
-    <div class=\\"block\\"></div>
-  </div>
-</div>"
-`;
-
 exports[`test sticky scrolling with css sticky position 1`] = `
 "<div class=\\"var-sticky var-sticky--css-mode\\" style=\\"z-index: 10; top: 100px;\\">
   <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10;\\">sticky content</div>
@@ -71,7 +49,7 @@ exports[`test sticky scrolling without css sticky position 2`] = `
 `;
 
 exports[`test sticky z-index 1`] = `
-"<div class=\\"var-sticky\\" style=\\"z-index: 100;\\">
-  <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 100;\\"></div>
+"<div class=\\"var-sticky\\" style=\\"z-index: 100; width: 0px; height: 0px;\\">
+  <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 100; position: fixed; width: 0px; height: 0px; left: 0px; top: 0px;\\"></div>
 </div>"
 `;
