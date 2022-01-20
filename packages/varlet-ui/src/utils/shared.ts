@@ -53,8 +53,6 @@ export const isPlainObject = (val: unknown): val is Record<string, any> =>
 
 export const isArray = (val: unknown): val is Array<any> => Array.isArray(val)
 
-export const isPromise = (val: unknown): val is Promise<any> => val instanceof Promise
-
 export const isURL = (val: string | undefined | null) => {
   if (!val) {
     return false

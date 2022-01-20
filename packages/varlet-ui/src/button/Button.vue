@@ -39,7 +39,6 @@ import Ripple from '../ripple'
 import VarLoading from '../loading'
 import { defineComponent, Ref, ref } from 'vue'
 import { props } from './props'
-import { isPromise } from '../utils/shared'
 
 export default defineComponent({
   name: 'VarButton',
