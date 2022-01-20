@@ -1,15 +1,8 @@
-import example from '../example'
 import List from '..'
 import VarList from '../List'
 import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
 import { delay } from '../../utils/jest'
-
-test('test list example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test list plugin', () => {
   const app = createApp({}).use(List)
