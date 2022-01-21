@@ -395,7 +395,7 @@ export default {
 | `title` | 动作面板标题 | _string_ | `请选择` |
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |
 | `overlay-class` | 自定义遮罩层的 class | _string_ | `-` |
-| `overlay-style` | 自定义遮罩层的 style | _string_ | `-` |
+| `overlay-style` | 自定义遮罩层的 style | _object_ | `-` |
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `close-on-click-action` | 是否点击选项时关闭动作面板 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭动作面板 | _boolean_ | `true` |
@@ -420,7 +420,7 @@ export default {
 | `title` | 动作面板标题 | _string_ | `请选择` |
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |
 | `overlayClass` | 自定义遮罩层的 class | _string_ | `-` |
-| `overlayStyle` | 自定义遮罩层的 style | _string_ | `-` |
+| `overlayStyle` | 自定义遮罩层的 style | _object_ | `-` |
 | `lockScroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `closeOnClickOverlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
 | `onOpen` | 动作面板开启回调 | _() => void_ | `-` |

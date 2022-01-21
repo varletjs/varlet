@@ -1,6 +1,6 @@
 <template>
   <var-popup
-    class="var-dialog__popup-radius"
+    class="var-dialog__popup"
     var-dialog-cover
     :show="popupShow"
     :overlay="overlay"
@@ -16,7 +16,7 @@
     @route-change="onRouteChange"
     @click-overlay="handleClickOverlay"
   >
-    <div class="var--box var-dialog" v-bind="$attrs">
+    <div class="var--box var-dialog" :class="dialogClass" :style="dialogStyle" v-bind="$attrs">
       <div class="var-dialog__title">
         <slot name="title">{{ dt(title, pack.dialogTitle) }}</slot>
       </div>

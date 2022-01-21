@@ -30,12 +30,12 @@
 
 .var-dialog {
   width: var(--dialog-width);
-  border-radius: 3px;
+  border-radius: var(--dialog-border-radius);
   background: var(--dialog-background);
   transition: 0.25s background-color;
 
-  &__popup-radius[var-dialog-cover] {
-    border-radius: var(--dialog-border-radius);
+  &__popup[var-dialog-cover] {
+    background: transparent;
   }
 
   &__title {

@@ -217,9 +217,11 @@ export default {
 | `cancel-button-text-color` | 取消按钮文字颜色 | _string_ | `-` |
 | `confirm-button-color` | 确认按钮背景颜色 | _string_ | `-` |
 | `cancel-button-color` | 取消按钮背景颜色 | _string_ | `-` |
+| `dialog-class` | 对话框主体区域的 class | _string_ | `-` |
+| `dialog-style` | 对话框主体区域的 style | _object_ | `-` |
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |
 | `overlay-class` | 自定义遮罩层的 class | _string_ | `-` |
-| `overlay-style` | 自定义遮罩层的 style | _string_ | `-` |
+| `overlay-style` | 自定义遮罩层的 style | _object_ | `-` |
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
 | `teleport` | 弹出层挂载的位置 | _TeleportProps['to']_ | `-` |
@@ -252,9 +254,11 @@ export default {
 | `cancelButtonTextColor` | 取消按钮文字颜色 | _string_ | `-` |
 | `confirmButtonColor` | 确认按钮背景颜色 | _string_ | `-` |
 | `cancelButtonColor` | 取消按钮背景颜色 | _string_ | `-` |
+| `dialogClass` | 对话框主体区域的 class | _string_ | `-` |
+| `dialogStyle` | 对话框主体区域的 style | _object_ | `-` |
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |
 | `overlayClass` | 自定义遮罩层的 class | _string_ | `-` |
-| `overlayStyle` | 自定义遮罩层的 style | _string_ | `-` |
+| `overlayStyle` | 自定义遮罩层的 style | _object_ | `-` |
 | `lockScroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `closeOnClickOverlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
 | `onOpen` | 对话框开启回调 | _() => void_ | `-` |

@@ -217,6 +217,8 @@ export default {
 | `cancel-button-text-color` | Cancel button text color | _string_ | `-` |
 | `confirm-button-color` | Confirm button background color | _string_ | `-` |
 | `cancel-button-color` | Cancel button background color | _string_ | `-` |
+| `dialog-class` | Dialog body class | _string_ | `-` |
+| `dialog-style` | Dialog body style | _object_ | `-` |
 | `overlay` | Whether to display the overlay | _boolean_ | `true` |  
 | `overlay-class` | Custom overlay class | _string_ | `-` |
 | `overlay-style` | Custom overlay style | _string_ | `-` |
@@ -253,6 +255,8 @@ export default {
 | `cancelButtonTextColor` | Cancel button text color | _string_ | `-` |
 | `confirmButtonColor` | Confirm button background color | _string_ | `-` |
 | `cancelButtonColor` | Cancel button background color | _string_ | `-` |
+| `dialogClass` | Dialog body class | _string_ | `-` |
+| `dialogStyle` | Dialog body style | _object_ | `-` |
 | `overlay` | Whether to display the overlay | _boolean_ | `true` |  
 | `overlayClass` | Custom overlay class | _string_ | `-` |
 | `overlayStyle` | Custom overlay style | _string_ | `-` |
