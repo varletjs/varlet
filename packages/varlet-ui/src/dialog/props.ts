@@ -12,6 +12,9 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  popperClass: {
+    type: String,
+  },
   title: {
     type: String,
   },

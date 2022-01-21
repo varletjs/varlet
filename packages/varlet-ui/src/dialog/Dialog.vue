@@ -16,7 +16,7 @@
     @route-change="onRouteChange"
     @click-overlay="handleClickOverlay"
   >
-    <div class="var--box var-dialog" v-bind="$attrs">
+    <div class="var--box var-dialog" :class="popperClass" v-bind="$attrs">
       <div class="var-dialog__title">
         <slot name="title">{{ dt(title, pack.dialogTitle) }}</slot>
       </div>
