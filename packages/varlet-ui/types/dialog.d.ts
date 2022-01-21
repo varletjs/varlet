@@ -54,6 +54,8 @@ export interface DialogOptions {
   overlay?: boolean
   overlayClass?: string
   overlayStyle?: Record<string, any>
+  dialogClass?: string
+  dialogStyle?: Record<string, any>
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
   onOpen?: () => void
