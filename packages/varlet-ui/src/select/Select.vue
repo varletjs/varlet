@@ -77,10 +77,15 @@
           <label
             class="var-select__placeholder var--ellipsis"
             :class="[
+              isFocus ? 'var-select--focus' : null,
+              errorMessage ? 'var-select--error' : null,
               formDisabled || disabled ? 'var-select--disabled' : null,
               computePlaceholderState(),
               !hint ? 'var-select--placeholder-non-hint' : null,
             ]"
+            :style="{
+              color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
+            }"
           >
             {{ placeholder }}
           </label>

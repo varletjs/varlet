@@ -69,10 +69,15 @@
         <label
           class="var--ellipsis"
           :class="[
+            isFocus ? 'var-input--focus' : null,
+            errorMessage ? 'var-input--error' : null,
             textarea ? 'var-input__textarea-placeholder' : 'var-input__placeholder',
             computePlaceholderState(),
             !hint ? 'var-input--placeholder-non-hint' : null,
           ]"
+          :style="{
+            color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
+          }"
           :for="id"
         >
           {{ placeholder }}

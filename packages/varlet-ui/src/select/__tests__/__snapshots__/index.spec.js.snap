@@ -544,7 +544,7 @@ exports[`test select focus & blur methods 1`] = `
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--placeholder-hint\\"></label>
+        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--focus var-select--placeholder-hint\\"></label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
@@ -630,7 +630,7 @@ exports[`test select validation 1`] = `
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select var-select--error\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\"></label>
+        <div class=\\"var-select__select var-select--error\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--error\\"></label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
