@@ -171,7 +171,6 @@ export const inBrowser = () => typeof window !== 'undefined'
 export const uniq = (arr: Array<any>) => [...new Set(arr)]
 
 export function kebabCase(str: string): string {
-  const reg = /([^-])([A-Z])/g
-
-  return str.replace(reg, '$1-$2').replace(reg, '$1-$2').toLowerCase()
+  const ret = str.replace(/([A-Z])/g, ' $1').trim()
+  return ret.split(' ').join('-').toLowerCase()
 }
