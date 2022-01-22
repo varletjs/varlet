@@ -61,7 +61,7 @@ createApp().use(Lazy, {
     'touchmove'
   ],
   filter(lazy) {
-    // 可以访问 lazy 上下文的所有属性,执行一些属性拦截, 
+    // 可以访问 lazy 上下文的所有属性,执行一些属性拦截,
     // 比如简单修改所有的图片地址 http -> https
     lazy.src.replace('http://', 'https://')
   }

@@ -143,17 +143,17 @@ export default {
 
 ### 属性
 
-| 参数               | 说明                                                                              | 类型        | 默认值       | 
+| 参数               | 说明                                                                              | 类型        | 默认值       |
 |------------------|---------------------------------------------------------------------------------|-----------|-----------|
 | `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger`                 | _string_  | `default` |
 | `size`           | 尺寸，可选值为 `normal` `mini` `small` `large`                                         | _string_  | `normal`  |
-| `loading`        | 加载状态                                                                            | _boolean_ | `false`   |  
-| `loading-radius` | loading 的半径，只作用于 `loading-type="circle"` 时                                      | _string \ | number_   | `12` |
+| `loading`        | 加载状态                                                                            | _boolean_ | `false`   |
+| `loading-radius` | loading 的半径，只作用于 `loading-type="circle"` 时                                      | _string \| number_   | `12` |
 | `loading-type`   | loading 的类型，可选值为 `circle` `wave` `cube` `rect` `disappear`                      | _string_  | `circle`  |
 | `loading-size`   | loading 的尺寸，可选值为 `large` `normal` `small` `mini` 不作用于 `loading-type="circle"` 时 | _string_  | `normal`  |
 | `auto-loading`   | 自动 loading 模式，方便处理异步任务                                                          | _boolean_ | `false`   |
-| `round`          | 是否是圆形按钮                                                                         | _boolean_ | `false`   | 
-| `block`          | 是否是块级元素                                                                         | _boolean_ | `false`   | 
+| `round`          | 是否是圆形按钮                                                                         | _boolean_ | `false`   |
+| `block`          | 是否是块级元素                                                                         | _boolean_ | `false`   |
 | `text`           | 是否是文字按钮                                                                         | _boolean_ | `false`   |
 | `outline`        | 是否使用外边框                                                                         | _boolean_ | `false`   |
 | `disabled`       | 禁用状态                                                                            | _boolean_ | `false`   |
