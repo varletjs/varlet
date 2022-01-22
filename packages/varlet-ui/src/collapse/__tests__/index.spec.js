@@ -5,7 +5,7 @@ import VarCollapse from '../Collapse'
 import VarCollapseItem from '../../collapse-item/CollapseItem'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { delay, mockConsole } from '../../utils/jest'
 
 test('test collapse example', () => {
   const wrapper = mount(example)
@@ -69,6 +69,43 @@ test('test collapse modelValue and onChange', async () => {
 
   expect(collapseItemList[0].classes()).toContain('var-collapse-item__active')
   expect(changeHandle).toHaveBeenCalledTimes(2)
+})
+
+test('test invalid modelValue', async () => {
+  const errorFn = jest.fn()
+  const { mockRestore } = mockConsole('error', errorFn)
+  const template = `
+   <var-collapse v-model="value" :accordion="accordion">
+    <var-collapse-item title="test1" name="1">test1</var-collapse-item>
+    <var-collapse-item title="test2" name="2">test2</var-collapse-item>
+   </var-collapse>
+  `
+
+  const wrapper = mount({
+    components: {
+      [VarCollapse.name]: VarCollapse,
+      [VarCollapseItem.name]: VarCollapseItem,
+    },
+    data() {
+      return {
+        value: '1',
+        accordion: false,
+      }
+    },
+    template,
+  })
+
+  await delay(0)
+
+  await wrapper.setData({
+    value: ['1'],
+    accordion: true,
+  })
+
+  await delay(0)
+
+  expect(errorFn).toHaveBeenCalledTimes(2)
+  mockRestore()
 })
 
 test('test collapse accordion', async () => {

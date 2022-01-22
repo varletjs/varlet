@@ -395,7 +395,7 @@ export default {
 | `title` | Action sheet title | _string_ | `Select One` |
 | `overlay` | Whether to display the overlay | _boolean_ | `true` |  
 | `overlay-class` | Custom overlay class | _string_ | `-` |
-| `overlay-style` | Custom overlay style | _string_ | `-` |
+| `overlay-style` | Custom overlay style | _object_ | `-` |
 | `lock-scroll` | Whether to disable scrolling penetration, scrolling the Dialog when disabled will not cause the body to scroll | _boolean_ | `true` |
 | `close-on-click-action` | Whether to close the actions sheet when clicking action | _boolean_ | `true` |
 | `close-on-click-overlay` | Whether to click the overlay to close the action sheet | _boolean_ | `true` | 
@@ -420,7 +420,7 @@ export default {
 | `title` | Action sheet title | _string_ | `Select One` |
 | `overlay` | Whether to display the overlay | _boolean_ | `true` |  
 | `overlayClass` | Custom overlay class | _string_ | `-` |
-| `overlayStyle` | Custom overlay style | _string_ | `-` |
+| `overlayStyle` | Custom overlay style | _object_ | `-` |
 | `lockScroll` | Whether to disable scrolling penetration, scrolling the action sheet when disabled will not cause the body to scroll | _boolean_ | `true` |
 | `closeOnClickOverlay` | Whether to click the overlay to close the action sheet | _boolean_ | `true` |
 | `onOpen` | Action sheet open callback | _() => void_ | `-` |

@@ -1,10 +1,10 @@
 import type { PropType } from 'vue'
 
-export type CollapseModelValue = undefined | string | number | Array<string | number | undefined>
+export type CollapseModelValue = null | string | number | Array<string | number>
 
 export const props = {
   modelValue: {
-    type: [Array, String, Number] as PropType<string | number | Array<string | number>>,
+    type: [Array, String, Number] as PropType<null | string | number | Array<string | number>>,
   },
   accordion: {
     type: Boolean,

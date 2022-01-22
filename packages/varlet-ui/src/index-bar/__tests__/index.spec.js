@@ -103,7 +103,7 @@ test('test click anchor to trigger change event', async () => {
     { attachTo: document.body }
   )
 
-  await delay(0)
+  await delay(200)
 
   wrapper.vm.$refs.bar.scrollTo('A')
 
@@ -158,7 +158,7 @@ test('test scroll indexBar to trigger change event', async () => {
     { attachTo: document.body }
   )
 
-  await delay(0)
+  await delay(200)
 
   wrapper.vm.$refs.bar.scrollTo('A')
 

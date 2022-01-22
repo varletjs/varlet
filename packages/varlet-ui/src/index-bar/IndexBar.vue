@@ -20,9 +20,10 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { computed, defineComponent, ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { easeInOutCubic, isPlainObject, toNumber } from '../utils/shared'
 import {
+  doubleRaf,
   getParentScroller,
   getScrollLeft,
   nextTickFrame,
@@ -93,11 +94,13 @@ export default defineComponent({
     }
 
     const anchorClick = async (anchorName: string | number, manualCall?: boolean) => {
+      const { offsetTop } = barEl.value as HTMLElement
+
       if (manualCall) props.onClick?.(anchorName)
       if (anchorName === active.value) return
       const indexAnchor = indexAnchors.find(({ name }: IndexAnchorProvider) => anchorName === name.value)
       if (!indexAnchor) return
-      const top = indexAnchor.ownTop.value
+      const top = indexAnchor.ownTop.value - stickyOffsetTop.value + offsetTop
       const left = getScrollLeft(scrollEl.value as HTMLElement)
       clickedName.value = anchorName
       emitEvent(anchorName)
@@ -121,16 +124,17 @@ export default defineComponent({
 
     watch(
       () => length.value,
-      () =>
-        nextTick(() => {
-          indexAnchors.forEach(({ name, setOwnTop }) => {
-            if (name.value) anchorNameList.value.push(name.value)
-            setOwnTop()
-          })
+      async () => {
+        await doubleRaf()
+        indexAnchors.forEach(({ name, setOwnTop }) => {
+          if (name.value) anchorNameList.value.push(name.value)
+          setOwnTop()
         })
+      }
     )
 
-    onMounted(() => {
+    onMounted(async () => {
+      await doubleRaf()
       scroller.value = getParentScroller(barEl.value as HTMLDivElement)
       scrollEl.value =
         scroller.value === window

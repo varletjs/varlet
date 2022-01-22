@@ -16,9 +16,8 @@ export const isPlainObject = (val: unknown): val is Record<string, any> =>
   Object.prototype.toString.call(val) === '[object Object]'
 
 export function kebabCase(str: string): string {
-  const reg = /([^-])([A-Z])/g
-
-  return str.replace(reg, '$1-$2').replace(reg, '$1-$2').toLowerCase()
+  const ret = str.replace(/([A-Z])/g, ' $1').trim()
+  return ret.split(' ').join('-').toLowerCase()
 }
 
 export const isString = (val: unknown): val is string => typeof val === 'string'

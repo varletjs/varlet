@@ -31,29 +31,6 @@ exports[`test click error text reload 2`] = `
 </div>"
 `;
 
-exports[`test list example 1`] = `
-"<div class=\\"var-sticky\\" style=\\"z-index: 10;\\">
-  <div class=\\"var-sticky__wrapper\\" style=\\"z-index: 10;\\">
-    <div class=\\"var-tabs var--box var-tabs--item-horizontal var-tabs--layout-horizontal-padding\\" style=\\"margin-bottom: 10px;\\">
-      <div class=\\"var-tabs__tab-wrap var-tabs--layout-horizontal\\">
-        <div class=\\"var-tab var--box var-tab--inactive var-tab--horizontal\\">基本使用</div>
-        <div class=\\"var-tab var--box var-tab--inactive var-tab--horizontal\\">加载失败</div>
-        <div class=\\"var-tab var--box var-tab--inactive var-tab--horizontal\\">提示文字</div>
-        <div class=\\"var-tabs__indicator var-tabs--layout-horizontal-indicator\\" style=\\"width: 0px; transform: translateX(0px);\\"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class=\\"var-swipe var-tabs-items\\">
-  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 300ms;\\">
-    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
-    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
-    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
-  </div>
-  <!--v-if-->
-</div>"
-`;
-
 exports[`test list finished 1`] = `
 "<div class=\\"var-list var--box\\">
   <!--v-if-->
