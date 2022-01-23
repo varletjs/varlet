@@ -12,7 +12,7 @@ exports[`test app bar example 1`] = `
   </div>
 </div>
 <div class=\\"app-type\\">自定义样式</div>
-<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(255, 159, 0);\\">
+<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(0, 196, 143);\\">
   <div class=\\"var-app-bar__left\\">
     <!--v-if-->
   </div>
