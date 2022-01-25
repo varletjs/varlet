@@ -3,7 +3,7 @@
   <var-app-bar :title="pack.title" />
 
   <app-type>{{ pack.customStyle }}</app-type>
-  <var-app-bar :title="pack.title" title-position="center" color="#ff9f00" />
+  <var-app-bar :title="pack.title" title-position="center" color="#00c48f" />
 
   <app-type>{{ pack.addSlotsAtTitle }}</app-type>
   <var-app-bar>{{ pack.addTheTitleFromTheSlot }}</var-app-bar>

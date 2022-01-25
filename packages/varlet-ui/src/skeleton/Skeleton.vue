@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <div class="var-skeleton__fullscreen" v-if="loading && fullscreen">
+    <div class="var-skeleton__fullscreen" :style="{ zIndex: toNumber(fullscreenZIndex) }" v-if="loading && fullscreen">
       <div class="var-skeleton--animation"></div>
     </div>
   </div>

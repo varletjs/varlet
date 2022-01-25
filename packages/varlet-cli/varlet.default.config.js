@@ -37,10 +37,6 @@ module.exports = {
       'en-US': 'The code has been copied to the clipboard',
     },
     fold: {
-      message: {
-        'zh-CN': '已显示完整代码',
-        'en-US': 'Complete code displayed',
-      },
       defaultFold: true,
       foldHeight: 60,
     },
@@ -100,7 +96,7 @@ module.exports = {
     'color-progress-track': '#202020',
     'color-side-bar': '#4a7afe',
     'color-side-bar-active-background': '#4a7afe1a',
-    'color-app-bar': '#4a7afe',
+    'color-app-bar': '#272727',
     'color-nav-button-hover-background': 'rgba(255, 255, 255, 0.08)',
     'color-mobile-cell-hover': '#4a7afe',
     'color-pc-language-active': '#4a7afe',

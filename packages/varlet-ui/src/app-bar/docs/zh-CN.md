@@ -25,7 +25,7 @@ createApp().use(AppBar)
 <var-app-bar
   title="标题"
   title-position="center"
-  color="#ff9f00"
+  color="#00c48f"
 />
 ```
 

@@ -50,3 +50,15 @@ test('test skeleton styles', () => {
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
+
+test('test skeleton fullscreen', () => {
+  const wrapper = mount(VarSkeleton, {
+    props: {
+      fullscreen: true,
+      fullscreenZIndex: 1000,
+    },
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})

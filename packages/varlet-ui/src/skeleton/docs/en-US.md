@@ -80,10 +80,31 @@ export default {
 ### Fullscreen Mode
 
 ```html
-<var-button type="danger" @click="loading = !loading">
-	Toggle Fullscreen Mode
-</var-button>
+<var-button type="danger" @click="fullscreen">Toggle Fullscreen Mode</var-button>
 <var-skeleton fullscreen :loading="loading" />
+```
+
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const loading = ref(false)
+
+    const fullscreen = () => {
+      loading.value = true
+
+      setTimeout(() => {
+        loading.value = false
+      }, 2000)
+    }
+
+    return {
+      loading,
+      fullscreen,
+    }
+  }
+}
 ```
 
 ## API
@@ -97,6 +118,7 @@ export default {
 | `card` | Whether to display the card | _boolean_ | `false` |
 | `avatar` | Whether to display the avatar | _boolean_ | `false` |
 | `fullscreen` | Whether to enable fullscreen mode | _boolean_ | `false` |
+| `fullscreen-z-index` | Fullscreen mode z-index | _string \| number_ | `100` |
 | `title-width` | Title Width  | _string \| number_ | `50%` |
 | `card-height` | Card Height  | _string \| number_ | `160px` |
 | `avatar-size` | Avatar size  | _string \| number_ | `34px` |
@@ -107,7 +129,7 @@ export default {
 
 | Slot | Description | Arguments |
 | --- | --- | --- |
-| `default` | 加载成功后显示的内容 | `-` |
+| `default` | Loaded content | `-` |
 
 ### Style Variables
 
