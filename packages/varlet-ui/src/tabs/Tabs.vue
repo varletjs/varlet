@@ -42,7 +42,7 @@ import { defineComponent, watch, ref, computed, Transition, nextTick, onMounted,
 import { props } from './props'
 import { useTabList } from './provide'
 import { isNumber, linear } from '../utils/shared'
-import { toSizeUnit, scrollTo } from '../utils/elements'
+import { toSizeUnit, scrollTo, doubleRaf } from '../utils/elements'
 import type { Ref, ComputedRef } from 'vue'
 import type { TabsProvider } from './provide'
 import type { TabProvider } from '../tab/provide'
@@ -164,7 +164,10 @@ export default defineComponent({
 
     watch(
       () => length.value,
-      () => nextTick().then(resize)
+      async () => {
+        await doubleRaf()
+        resize()
+      }
     )
 
     watch(() => props.active, resize)
