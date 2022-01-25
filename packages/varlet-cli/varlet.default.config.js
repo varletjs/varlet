@@ -37,10 +37,6 @@ module.exports = {
       'en-US': 'The code has been copied to the clipboard',
     },
     fold: {
-      message: {
-        'zh-CN': '已显示完整代码',
-        'en-US': 'Complete code displayed',
-      },
       defaultFold: true,
       foldHeight: 60,
     },
