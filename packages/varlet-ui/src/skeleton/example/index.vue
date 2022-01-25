@@ -21,7 +21,7 @@
   </var-skeleton>
 
   <app-type>{{ pack.fullscreenMode }}</app-type>
-  <var-button type="danger" class="button" @click="fullscreenLoading = !fullscreenLoading">
+  <var-button type="danger" class="button" @click="fullscreen">
     {{ pack.toggleFullscreenMode }}
   </var-button>
   <var-skeleton fullscreen :loading="fullscreenLoading" />
@@ -47,6 +47,14 @@ export default {
     const loading = ref(true)
     const fullscreenLoading = ref(false)
 
+    const fullscreen = () => {
+      fullscreenLoading.value = true
+
+      setTimeout(() => {
+        fullscreenLoading.value = false
+      }, 2000)
+    }
+
     watchLang(use)
     watchDarkMode(dark)
 
@@ -54,6 +62,7 @@ export default {
       pack,
       loading,
       fullscreenLoading,
+      fullscreen,
     }
   },
 }
