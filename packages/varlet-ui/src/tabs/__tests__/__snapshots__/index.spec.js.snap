@@ -75,3 +75,24 @@ exports[`test tabs relation tabsItems 2`] = `
   <!--v-if-->
 </div>"
 `;
+
+exports[`test tabs relation tabsItems 3`] = `
+"<transition-stub>
+  <div class=\\"var-tabs var--box var-tabs--item-horizontal var-tabs--layout-horizontal-padding\\">
+    <div class=\\"var-tabs__tab-wrap var-tabs--layout-horizontal\\">
+      <div class=\\"var-tab var--box var-tab--inactive var-tab--horizontal\\" style=\\"width: 100px;\\">选项1</div>
+      <div class=\\"var-tab var--box var-tab--active var-tab--horizontal\\" style=\\"width: 100px;\\">选项2</div>
+      <div class=\\"var-tab var--box var-tab--inactive var-tab--horizontal\\" style=\\"width: 100px;\\">选项3</div>
+      <div class=\\"var-tabs__indicator var-tabs--layout-horizontal-indicator\\" style=\\"width: 100px; transform: translateX(0px);\\"></div>
+    </div>
+  </div>
+</transition-stub>
+<div class=\\"var-swipe var-tabs-items\\">
+  <div class=\\"var-swipe__track\\" style=\\"width: 0px; transform: translateX(0px); transition-duration: 300ms;\\">
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\"></div>
+    <div class=\\"var-swipe-item var-tab-item\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\">视图2</div>
+    <div class=\\"var-swipe-item var-tab-item var-tab-item--inactive\\" style=\\"width: 0px; transform: translateX(0px);\\" var-tab-item-cover=\\"\\">视图3</div>
+  </div>
+  <!--v-if-->
+</div>"
+`;

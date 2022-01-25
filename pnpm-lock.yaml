@@ -169,6 +169,7 @@ importers:
       '@varlet/cli': workspace:*
       '@varlet/icons': workspace:*
       '@varlet/touch-emulator': workspace:*
+      '@varlet/ui': workspace:^1.25.0
       '@vue/runtime-core': ^3.2.16
       '@vue/test-utils': 2.0.0-rc.6
       clipboard: ^2.0.6
@@ -181,6 +182,7 @@ importers:
       vue-router: 4.0.12
     dependencies:
       '@varlet/icons': link:../varlet-icons
+      '@varlet/ui': 'link:'
       dayjs: 1.10.7
       decimal.js: 10.3.1
     devDependencies:
