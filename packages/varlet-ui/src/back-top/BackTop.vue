@@ -1,5 +1,14 @@
 <template>
-  <div class="var-back-top" :class="[show ? 'var-back-top--active' : null]" @click.stop="click">
+  <div
+    class="var-back-top"
+    ref="backTopEl"
+    :class="[show ? 'var-back-top--active' : null]"
+    :style="{
+      right: right === undefined ? right : toPxNum(right),
+      bottom: bottom === undefined ? bottom : toPxNum(bottom),
+    }"
+    @click.stop="click"
+  >
     <slot>
       <var-button type="primary" round var-back-top-cover>
         <var-icon name="chevron-up" />
@@ -12,8 +21,8 @@ import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
 import VarButton from '../button'
 import VarIcon from '../icon'
 import { props } from './props'
-import { isString, easeInOutCubic, throttle, toNumber } from '../utils/shared'
-import { getScrollTop, getScrollLeft, scrollTo } from '../utils/elements'
+import { isString, easeInOutCubic, throttle, isPlainObject } from '../utils/shared'
+import { getScrollTop, getScrollLeft, scrollTo, getParentScroller, toPxNum } from '../utils/elements'
 import type { Ref } from 'vue'
 
 export default defineComponent({
@@ -26,6 +35,7 @@ export default defineComponent({
   setup(props) {
     let element: HTMLElement | Window
     const show: Ref<boolean> = ref(false)
+    const backTopEl: Ref<HTMLDivElement | null> = ref(null)
 
     const click = (event: MouseEvent) => {
       props.onClick?.(event)
@@ -39,22 +49,24 @@ export default defineComponent({
     }
 
     const scroll = () => {
-      show.value = getScrollTop(element as HTMLElement) >= toNumber(props.visibilityHeight)
+      show.value = getScrollTop(element as HTMLElement) >= toPxNum(props.visibilityHeight)
     }
 
     const throttleScroll = throttle(scroll, 200)
 
     const getHTMLElement = () => {
-      if (!isString(props.target)) throw Error('[Varlet] BackTop: type of prop "target" should be a string')
+      if (!isString(props.target) && !isPlainObject(props.target)) {
+        throw Error('[Varlet] BackTop: type of prop "target" should be a string or an Object')
+      }
 
-      const el = document.querySelector(props.target)
+      const el = isString(props.target) ? document.querySelector(props.target) : props.target
       if (!el) throw Error('[Varlet] BackTop: "target" should be a selector')
 
       return el as HTMLElement
     }
 
     onMounted(() => {
-      element = props.target ? getHTMLElement() : window
+      element = props.target ? getHTMLElement() : getParentScroller(backTopEl.value!)
       element.addEventListener('scroll', throttleScroll)
     })
 
@@ -64,6 +76,8 @@ export default defineComponent({
 
     return {
       show,
+      backTopEl,
+      toPxNum,
       click,
     }
   },
