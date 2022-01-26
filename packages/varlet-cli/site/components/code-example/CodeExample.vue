@@ -18,6 +18,7 @@
     <div
       :id="`clip-target-${cid}`"
       class="var-site-code-example__code"
+      :class="[disabledFold ? 'var-site-code-example--scroller' : null]"
       ref="code"
       :style="{
         height: height >= 0 ? `${height}px` : undefined,
@@ -57,18 +58,17 @@ export default defineComponent({
     const clipboard: Ref = ref(get(config, 'pc.clipboard', {}))
     const height: Ref<number> = ref(-1)
 
-    let fullHeight = 0
-
     const toggle = async () => {
       const foldHeight = fold.value.foldHeight
 
       if (height.value === foldHeight) {
+        height.value = -1
+        await nextTick()
+        const { offsetHeight } = code.value as HTMLElement
         height.value = foldHeight
         await doubleRaf()
-        height.value = fullHeight
+        height.value = offsetHeight
       } else {
-        height.value = fullHeight
-        await doubleRaf()
         height.value = foldHeight
       }
     }
@@ -81,8 +81,7 @@ export default defineComponent({
       })
 
       const { offsetHeight } = code.value as HTMLElement
-      fullHeight = offsetHeight
-      disabledFold.value = fullHeight - fold.value.foldHeight < offset
+      disabledFold.value = offsetHeight - fold.value.foldHeight < offset
       height.value = fold.value?.defaultFold ? fold.value?.foldHeight : -1
     })
 
