@@ -4,8 +4,8 @@
     ref="backTopEl"
     :class="[show ? 'var-back-top--active' : null]"
     :style="{
-      right: right === undefined ? right : toPxNum(right),
-      bottom: bottom === undefined ? bottom : toPxNum(bottom),
+      right: toSizeUnit(right),
+      bottom: toSizeUnit(bottom),
     }"
     @click.stop="click"
   >
@@ -22,7 +22,7 @@ import VarButton from '../button'
 import VarIcon from '../icon'
 import { props } from './props'
 import { isString, easeInOutCubic, throttle, isPlainObject } from '../utils/shared'
-import { getScrollTop, getScrollLeft, scrollTo, getParentScroller, toPxNum } from '../utils/elements'
+import { getScrollTop, getScrollLeft, scrollTo, getParentScroller, toPxNum, toSizeUnit } from '../utils/elements'
 import type { Ref } from 'vue'
 
 export default defineComponent({
@@ -77,7 +77,7 @@ export default defineComponent({
     return {
       show,
       backTopEl,
-      toPxNum,
+      toSizeUnit,
       click,
     }
   },
