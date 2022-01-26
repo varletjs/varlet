@@ -25,7 +25,7 @@
       @change="handleSelect"
     />
 
-    <div class="var-option__text">
+    <div class="var-option__text var--ellipsis">
       <slot>
         {{ label }}
       </slot>
