@@ -21,7 +21,7 @@ import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
 import VarButton from '../button'
 import VarIcon from '../icon'
 import { props } from './props'
-import { isString, easeInOutCubic, throttle, isPlainObject } from '../utils/shared'
+import { isString, easeInOutCubic, throttle, isObject } from '../utils/shared'
 import { getScrollTop, getScrollLeft, scrollTo, getParentScroller, toPxNum, toSizeUnit } from '../utils/elements'
 import type { Ref } from 'vue'
 
@@ -33,15 +33,16 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    let element: HTMLElement | Window
     const show: Ref<boolean> = ref(false)
     const backTopEl: Ref<HTMLDivElement | null> = ref(null)
 
+    let target: HTMLElement | Window
+
     const click = (event: MouseEvent) => {
       props.onClick?.(event)
-      const left = getScrollLeft(element as HTMLElement)
+      const left = getScrollLeft(target)
 
-      scrollTo(element, {
+      scrollTo(target, {
         left,
         duration: props.duration,
         animation: easeInOutCubic,
@@ -49,29 +50,38 @@ export default defineComponent({
     }
 
     const scroll = () => {
-      show.value = getScrollTop(element as HTMLElement) >= toPxNum(props.visibilityHeight)
+      show.value = getScrollTop(target) >= toPxNum(props.visibilityHeight)
     }
 
     const throttleScroll = throttle(scroll, 200)
 
-    const getHTMLElement = () => {
-      if (!isString(props.target) && !isPlainObject(props.target)) {
-        throw Error('[Varlet] BackTop: type of prop "target" should be a string or an Object')
+    const getTarget = () => {
+      const { target } = props
+
+      if (isString(target)) {
+        const el = document.querySelector(props.target as string)
+
+        if (!el) {
+          throw Error('[Varlet] BackTop: target element cannot found')
+        }
+
+        return el as HTMLElement
       }
 
-      const el = isString(props.target) ? document.querySelector(props.target) : props.target
-      if (!el) throw Error('[Varlet] BackTop: "target" should be a selector')
+      if (isObject(target)) {
+        return target
+      }
 
-      return el as HTMLElement
+      throw Error('[Varlet] BackTop: type of prop "target" should be a selector or an element object')
     }
 
     onMounted(() => {
-      element = props.target ? getHTMLElement() : getParentScroller(backTopEl.value!)
-      element.addEventListener('scroll', throttleScroll)
+      target = props.target ? getTarget() : getParentScroller(backTopEl.value!)
+      target.addEventListener('scroll', throttleScroll)
     })
 
     onBeforeUnmount(() => {
-      element.removeEventListener('scroll', throttleScroll)
+      target.removeEventListener('scroll', throttleScroll)
     })
 
     return {
