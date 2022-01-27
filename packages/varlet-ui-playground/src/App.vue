@@ -52,6 +52,9 @@ body {
 }
 
 .vue-repl {
+  --color-branding: #5580f8 !important;
+  --color-branding-dark: #5580f8 !important;
+
   height: calc(var(--vh) - var(--nav-height));
 }
 
