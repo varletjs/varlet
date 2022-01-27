@@ -8,10 +8,10 @@ import { Snackbar } from '@varlet/ui'
 const defaultMainFile = 'App.vue'
 const varletReplPlugin = 'varlet-repl-plugin.js'
 const varletImports = {
-  '@varlet/ui': '/varlet.esm.js',
-  '@varlet/touch-emulator': '/varlet-touch-emulator.js',
+  '@varlet/ui': './varlet.esm.js',
+  '@varlet/touch-emulator': './varlet-touch-emulator.js',
 }
-const varletCss = '/varlet.css'
+const varletCss = './varlet.css'
 
 const welcomeCode = `\
 <script setup lang='ts'>

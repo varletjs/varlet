@@ -20,6 +20,7 @@ function copyVarletPlugin(): Plugin {
 
 export default defineConfig(async () => {
   return {
+    base: './',
     plugins: [vue(), copyVarletPlugin()],
     build: {
       outDir: 'site',

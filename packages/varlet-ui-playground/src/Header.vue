@@ -25,7 +25,7 @@ function toggleDark() {
 <template>
   <nav>
     <h1>
-      <img alt="logo" src="/logo.svg" />
+      <img alt="logo" src="./logo.svg" />
       <span>Varlet UI Playground</span>
     </h1>
     <div class="links">
