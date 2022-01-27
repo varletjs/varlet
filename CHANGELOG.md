@@ -1,3 +1,32 @@
+## [1.25.1](https://github.com/varletjs/varlet/compare/v1.25.0...v1.25.1) (2022-01-27)
+
+
+### Bug Fixes
+
+* **cli/site:** do not show the fold icon when the height is not high enough to expand the code block ([b4cd0b5](https://github.com/varletjs/varlet/commit/b4cd0b5dc9e7a19c7933d515ee83bf6666578c4f))
+* **cli:** fix select scrollbar display error [#305](https://github.com/varletjs/varlet/issues/305) and add esm bundle ([f66ffb7](https://github.com/varletjs/varlet/commit/f66ffb70e197d3f508eeb07488496c6c5d3008bf))
+* **collapse:** fix modelValue is undefined when close accrodion item ([0da3871](https://github.com/varletjs/varlet/commit/0da38718b58ddac463965194e4160e1541318803))
+* **index-bar:** support ssr and fix top value when click anchor ([6c7df9f](https://github.com/varletjs/varlet/commit/6c7df9f4b218ca4174f610262112dbe8567fecc1))
+* **ui/input,select:** fix label color error ([652ae97](https://github.com/varletjs/varlet/commit/652ae97bb594ffa6a9309ec004b8b9c5ebc8ead6))
+* **ui/select:** fix word break ([95b1684](https://github.com/varletjs/varlet/commit/95b16848c6672470ea8f75328ac043525ca08057))
+* **ui/sticky:** add doubleRaf for ssr [#296](https://github.com/varletjs/varlet/issues/296) ([ed1348c](https://github.com/varletjs/varlet/commit/ed1348c78805282349815d317a98d262915b98f1))
+* **ui/tabs:** support nuxt3 ([9459d1d](https://github.com/varletjs/varlet/commit/9459d1d8d36264487d4a3dc29dc82fe22ccfd328))
+
+
+### Features
+
+* **backTop:** add position and default target ([86f9237](https://github.com/varletjs/varlet/commit/86f92376600578db8433ad67540d931d87bdc773))
+* **ui/app-bar:** change app-bar default background color in dark mode ([a073dee](https://github.com/varletjs/varlet/commit/a073dee493408a269666ef9615789d8c446d1e76))
+* **ui/dialog:** add dialog-class dialog-style props ([e7f9b5d](https://github.com/varletjs/varlet/commit/e7f9b5d791eb0a1a76d0a6c31b60430880232a2c))
+* **ui/skeleton:** add fullscreen-z-index prop ([394f0a9](https://github.com/varletjs/varlet/commit/394f0a9b8dabc5b877f9b27d71e5337ca6876921))
+
+
+### Performance Improvements
+
+* optimize utils ([24c0f79](https://github.com/varletjs/varlet/commit/24c0f79d83737bf93bfd6220176edb6271250c3b))
+
+
+
 # [1.25.0](https://github.com/varletjs/varlet/compare/v1.24.11...v1.25.0) (2022-01-19)
 
 
