@@ -1,0 +1,32 @@
+{
+  "name": "@varlet/ui-playground",
+  "private": true,
+  "version": "0.0.0",
+  "description": "varlet ui playground",
+  "keywords": [
+    "varlet ui",
+    "playground",
+    "repl"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "varlet-cli preview"
+  },
+  "dependencies": {
+    "@varlet/ui": "workspace: *",
+    "@vue/repl": "1.0.0",
+    "vue": "3.2.29",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.6.0"
+  },
+  "devDependencies": {
+    "@varlet/cli": "workspace: *",
+    "@types/node": "*",
+    "@types/file-saver": "^2.0.5",
+    "@vitejs/plugin-vue": "2.1.0",
+    "typescript": "^4.4.4",
+    "vite": "2.7.13"
+  }
+}
