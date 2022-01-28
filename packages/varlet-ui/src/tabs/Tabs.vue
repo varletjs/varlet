@@ -38,7 +38,7 @@
 
 <script lang="ts">
 import VarSticky from '../sticky'
-import { defineComponent, watch, ref, computed, Transition, nextTick, onMounted, onUnmounted } from 'vue'
+import { defineComponent, watch, ref, computed, Transition, onMounted, onUnmounted } from 'vue'
 import { props } from './props'
 import { useTabList } from './provide'
 import { isNumber, linear } from '../utils/shared'
