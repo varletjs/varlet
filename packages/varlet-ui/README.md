@@ -34,7 +34,11 @@ Varlet是一个基于`Vue3`开发的Material风格移动端组件库，全面拥
 7. 支持webstorm，vscode组件属性高亮
 8. 支持SSR
 9. 支持Typescript
+<<<<<<< HEAD
 10. 90%以上单元测试覆盖率，提供稳定性保证
+=======
+10. 确保90%以上单元测试覆盖率，提供稳定性保证
+>>>>>>> docs(README): fix unit test info to get better showing
 11. 支持暗黑模式
 
 ### 安装
