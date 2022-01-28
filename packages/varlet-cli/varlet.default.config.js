@@ -30,6 +30,7 @@ module.exports = {
         'en-US': 'English',
       },
       github: 'https://github.com/varletjs/varlet',
+      playground: 'https://varlet.gitee.io/varlet-ui-playground',
       darkMode: true,
     },
     clipboard: {
