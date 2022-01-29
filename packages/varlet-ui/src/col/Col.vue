@@ -45,13 +45,6 @@ export default defineComponent({
     const { row, bindRow } = useRow()
 
     const colProvider: ColProvider = {
-      span,
-      offset,
-      xs,
-      sm,
-      md,
-      lg,
-      xl,
       setPadding(pad: ColPadding) {
         padding.value = pad
       },
@@ -82,6 +75,13 @@ export default defineComponent({
       toNumber,
       toSizeUnit,
       getSize,
+      span,
+      offset,
+      xs,
+      sm,
+      md,
+      lg,
+      xl,
     }
   },
 })
