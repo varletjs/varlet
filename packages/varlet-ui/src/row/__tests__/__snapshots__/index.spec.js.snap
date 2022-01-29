@@ -1,22 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`test col in responsive 1`] = `
+"<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px 0px;\\">
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-24 var-col--span-sm-12 var-col--span-md-8 var-col--span-lg-6 var-col--span-xl-4\\" style=\\"padding-left: 0px; padding-right: 0px;\\">1</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-24 var-col--span-sm-12 var-col--span-md-8 var-col--span-lg-6 var-col--span-xl-4\\" style=\\"padding-left: 0px; padding-right: 0px;\\">2</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-24 var-col--span-sm-12 var-col--span-md-8 var-col--span-lg-6 var-col--span-xl-4\\" style=\\"padding-left: 0px; padding-right: 0px;\\">3</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-24 var-col--span-sm-12 var-col--span-md-8 var-col--span-lg-6 var-col--span-xl-4\\" style=\\"padding-left: 0px; padding-right: 0px;\\">4</div>
+</div>"
+`;
+
+exports[`test col in responsive 2`] = `
+"<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px 0px;\\">
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--span-sm-24 var-col--span-md-12 var-col--span-lg-12 var-col--span-xl-12\\" style=\\"padding-left: 0px; padding-right: 0px;\\">1</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--span-sm-24 var-col--span-md-12 var-col--span-lg-12 var-col--span-xl-12\\" style=\\"padding-left: 0px; padding-right: 0px;\\">2</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--span-sm-24 var-col--span-md-12 var-col--span-lg-12 var-col--span-xl-12\\" style=\\"padding-left: 0px; padding-right: 0px;\\">3</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--span-sm-24 var-col--span-md-12 var-col--span-lg-12 var-col--span-xl-12\\" style=\\"padding-left: 0px; padding-right: 0px;\\">4</div>
+</div>"
+`;
+
+exports[`test col in responsive 3`] = `
+"<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px -0px;\\">
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-12 var-col--span-sm-12 var-col--offset-sm-12 var-col--span-md-12 var-col--offset-md-12 var-col--span-lg-12 var-col--offset-lg-12 var-col--span-xl-12 var-col--offset-xl-12\\" style=\\"padding-left: 0px; padding-right: 0px;\\">1</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-12 var-col--span-sm-12 var-col--offset-sm-12 var-col--span-md-12 var-col--offset-md-12 var-col--span-lg-12 var-col--offset-lg-12 var-col--span-xl-12 var-col--offset-xl-12\\" style=\\"padding-left: 0px; padding-right: 0px;\\">2</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-12 var-col--span-sm-12 var-col--offset-sm-12 var-col--span-md-12 var-col--offset-md-12 var-col--span-lg-12 var-col--offset-lg-12 var-col--span-xl-12 var-col--offset-xl-12\\" style=\\"padding-left: 0px; padding-right: 0px;\\">3</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-12 var-col--span-sm-12 var-col--offset-sm-12 var-col--span-md-12 var-col--offset-md-12 var-col--span-lg-12 var-col--offset-lg-12 var-col--span-xl-12 var-col--offset-xl-12\\" style=\\"padding-left: 0px; padding-right: 0px;\\">4</div>
+</div>"
+`;
+
 exports[`test col in row 1`] = `
-"<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\">
+"<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px 0px;\\">
   <div class=\\"var-col var--box var-col--span-8 var-col--offset-4\\" style=\\"padding-left: 0px; padding-right: 0px;\\">1</div>
   <div class=\\"var-col var--box var-col--span-12\\" style=\\"padding-left: 0px; padding-right: 0px;\\">2</div>
 </div>"
 `;
 
 exports[`test col in row 2`] = `
-"<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\">
+"<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px -0px;\\">
   <div class=\\"var-col var--box var-col--span-12\\" style=\\"padding-left: 0px; padding-right: 0px;\\">1</div>
   <div class=\\"var-col var--box var-col--span-12\\" style=\\"padding-left: 0px; padding-right: 0px;\\">2</div>
 </div>"
 `;
 
+exports[`test row Responsive example 1`] = `
+"<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px 0px;\\">
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-8 var-col--span-sm-6 var-col--span-md-4 var-col--span-lg-3 var-col--span-xl-1 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">1</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-4 var-col--span-sm-6 var-col--span-md-8 var-col--span-lg-9 var-col--span-xl-11 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">2</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-4 var-col--span-sm-6 var-col--span-md-8 var-col--span-lg-9 var-col--span-xl-11 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">3</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-8 var-col--span-sm-6 var-col--span-md-4 var-col--span-lg-3 var-col--span-xl-1 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">4</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-24 var-col--span-sm-12 var-col--span-md-8 var-col--span-lg-6 var-col--span-xl-4 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">5</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-24 var-col--span-sm-12 var-col--span-md-8 var-col--span-lg-6 var-col--span-xl-4 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">6</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-12 var-col--span-sm-6 var-col--offset-sm-6 var-col--span-md-4 var-col--offset-md-4 var-col--span-lg-3 var-col--offset-lg-3 var-col--span-xl-2 var-col--offset-xl-2 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">7</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-12 var-col--span-sm-6 var-col--offset-sm-6 var-col--span-md-4 var-col--offset-md-4 var-col--span-lg-3 var-col--offset-lg-3 var-col--span-xl-2 var-col--offset-xl-2 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">8</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-12 var-col--span-sm-6 var-col--offset-sm-6 var-col--span-md-4 var-col--offset-md-4 var-col--span-lg-3 var-col--offset-lg-3 var-col--span-xl-2 var-col--offset-xl-2 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">9</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-12 var-col--span-sm-6 var-col--offset-sm-6 var-col--span-md-4 var-col--offset-md-4 var-col--span-lg-3 var-col--offset-lg-3 var-col--span-xl-2 var-col--offset-xl-2 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">10</div>
+</div>"
+`;
+
 exports[`test row example 1`] = `
 "<div class=\\"app-type\\">栅格系统</div>
-<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\">
+<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px 0px;\\">
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
@@ -25,35 +67,35 @@ exports[`test row example 1`] = `
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>
 <div class=\\"app-type\\">偏移</div>
-<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\">
+<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px 0px;\\">
   <div class=\\"var-col var--box var-col--span-16 var-col--offset-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">offset: 8 span: 16</div>
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>
 <div class=\\"app-type\\">对齐</div>
-<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\">
+<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px 0px;\\">
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>
-<div class=\\"var-row var--box\\" style=\\"justify-content: center; align-items: flex-start;\\">
+<div class=\\"var-row var--box\\" style=\\"justify-content: center; align-items: flex-start; margin: 0px 0px;\\">
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>
-<div class=\\"var-row var--box\\" style=\\"justify-content: flex-end; align-items: flex-start;\\">
+<div class=\\"var-row var--box\\" style=\\"justify-content: flex-end; align-items: flex-start; margin: 0px 0px;\\">
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>
-<div class=\\"var-row var--box\\" style=\\"justify-content: space-around; align-items: flex-start;\\">
+<div class=\\"var-row var--box\\" style=\\"justify-content: space-around; align-items: flex-start; margin: 0px 0px;\\">
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>
-<div class=\\"var-row var--box\\" style=\\"justify-content: space-between; align-items: flex-start;\\">
+<div class=\\"var-row var--box\\" style=\\"justify-content: space-between; align-items: flex-start; margin: 0px 0px;\\">
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>
 <div class=\\"app-type\\">列间距</div>
-<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\">
+<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px 0px;\\">
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
   <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
@@ -63,18 +105,18 @@ exports[`test row example 1`] = `
 </div>"
 `;
 
-exports[`test row flex 1`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\"></div>"`;
+exports[`test row flex 1`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px 0px;\\"></div>"`;
 
-exports[`test row flex 2`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: flex-end; align-items: flex-start;\\"></div>"`;
+exports[`test row flex 2`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: flex-end; align-items: flex-start; margin: 0px 0px;\\"></div>"`;
 
-exports[`test row flex 3`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: center; align-items: flex-start;\\"></div>"`;
+exports[`test row flex 3`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: center; align-items: flex-start; margin: 0px 0px;\\"></div>"`;
 
-exports[`test row flex 4`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: space-between; align-items: flex-start;\\"></div>"`;
+exports[`test row flex 4`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: space-between; align-items: flex-start; margin: 0px 0px;\\"></div>"`;
 
-exports[`test row flex 5`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: space-around; align-items: flex-start;\\"></div>"`;
+exports[`test row flex 5`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: space-around; align-items: flex-start; margin: 0px 0px;\\"></div>"`;
 
-exports[`test row flex 6`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: space-around; align-items: flex-start;\\"></div>"`;
+exports[`test row flex 6`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: space-around; align-items: flex-start; margin: 0px 0px;\\"></div>"`;
 
-exports[`test row flex 7`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: space-around; align-items: center;\\"></div>"`;
+exports[`test row flex 7`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: space-around; align-items: center; margin: 0px 0px;\\"></div>"`;
 
-exports[`test row flex 8`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: space-around; align-items: flex-end;\\"></div>"`;
+exports[`test row flex 8`] = `"<div class=\\"var-row var--box\\" style=\\"justify-content: space-around; align-items: flex-end; margin: 0px 0px;\\"></div>"`;

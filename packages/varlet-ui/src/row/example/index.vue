@@ -58,7 +58,7 @@ import { use, pack } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
 
 export default {
-  name: 'RowExample',
+  name: 'ResponsiveExample',
   components: {
     VarRow,
     VarCol,
