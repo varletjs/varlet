@@ -186,6 +186,7 @@ module.exports = {
     header: {
       darkMode: null,
       i18n: null,
+      playground: null,
       github: 'https://github.com/varletjs/varlet',
     },
   },

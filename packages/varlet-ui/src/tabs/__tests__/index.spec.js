@@ -74,7 +74,7 @@ test('test tabs match index', async () => {
       onChange,
     },
   })
-  await delay(50)
+  await delay(100)
 
   const tab = wrapper.find('.var-tab')
   await tab.trigger('click')
@@ -112,7 +112,7 @@ test('test tabs match name', async () => {
     },
   })
 
-  await delay(50)
+  await delay(100)
   const tab = wrapper.find('.var-tab')
   await tab.trigger('click')
   expect(onClick).toHaveBeenLastCalledWith('选项1')
@@ -127,7 +127,7 @@ test('test tabs match boundary', async () => {
     props: { onChange },
   })
 
-  await delay(50)
+  await delay(100)
   await wrapper.setData({ active: -1 })
   expect(onChange).toHaveBeenCalledTimes(0)
   expect(wrapper.vm.active).toBe(0)
@@ -155,7 +155,7 @@ test('test tabs disabled', async () => {
     `,
   })
 
-  await delay(50)
+  await delay(100)
   expect(wrapper.html()).toMatchSnapshot()
 
   const tab = wrapper.find('.var-tab')
@@ -168,7 +168,7 @@ test('test tabs disabled', async () => {
 test('test tabs relation tabsItems', async () => {
   const wrapper = mount(Wrapper)
 
-  await delay(50)
+  await delay(100)
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setData({ active: 1 })

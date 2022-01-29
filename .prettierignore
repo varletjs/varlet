@@ -14,6 +14,9 @@ packages/varlet-ui/coverage/**
 packages/varlet-ui/highlight/**
 packages/varlet-ui/types/global.d.ts
 
+packages/varlet-ui-playground/dist/**
+packages/varlet-ui-playground/public/**
+
 **/package.json
 *.md
 

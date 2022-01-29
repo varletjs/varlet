@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "strict": true,
+    "downlevelIteration": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "lib": ["esnext", "dom"],
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "isolatedModules": true,
+    "types": ["vite/client", "vue/macros-global"]
+  }
+}

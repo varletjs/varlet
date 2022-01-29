@@ -7,13 +7,9 @@ export interface ColPadding {
   right: number
 }
 
-export type SizeObject = {
-  span?: number
-  offset?: number
-}
-export type SizeDescriptor = string | number | SizeObject | undefined
-
 export interface ColProvider {
+  span: ComputedRef<number>
+  offset: ComputedRef<number>
   setPadding: (padding: ColPadding) => void
 }
 

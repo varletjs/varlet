@@ -195,6 +195,33 @@ importers:
       vue: 3.2.16
       vue-router: 4.0.12_vue@3.2.16
 
+  packages/varlet-ui-playground:
+    specifiers:
+      '@types/file-saver': ^2.0.5
+      '@types/node': '*'
+      '@varlet/cli': 'workspace: *'
+      '@varlet/ui': 'workspace: *'
+      '@vitejs/plugin-vue': 2.1.0
+      '@vue/repl': 1.0.0
+      file-saver: ^2.0.5
+      jszip: ^3.6.0
+      typescript: ^4.4.4
+      vite: 2.7.13
+      vue: 3.2.29
+    dependencies:
+      '@varlet/ui': link:../varlet-ui
+      '@vue/repl': 1.0.0_vue@3.2.29
+      file-saver: 2.0.5
+      jszip: 3.7.1
+      vue: 3.2.29
+    devDependencies:
+      '@types/file-saver': 2.0.5
+      '@types/node': 17.0.5
+      '@varlet/cli': link:../varlet-cli
+      '@vitejs/plugin-vue': 2.1.0_vite@2.7.13+vue@3.2.29
+      typescript: 4.5.5
+      vite: 2.7.13
+
   packages/varlet-vscode-extension:
     specifiers:
       '@types/glob': ^7.1.3
@@ -1778,6 +1805,10 @@ packages:
     resolution: {integrity: sha512-C6N5s2ZFtuZRj54k2/zyRhNDjJwwcViAM3Nbm8zjBpbqAdZ00mr0CFxvSKeO8Y/e03WVFLpQMdHYVfUd6SB+Hw==}
     dev: true
 
+  /@types/file-saver/2.0.5:
+    resolution: {integrity: sha512-zv9kNf3keYegP5oThGLaPk8E081DFDuwfqjtiTzm6PoxChdJ1raSuADf2YGCVIyrSynLrgc8JWv296s7Q7pQSQ==}
+    dev: true
+
   /@types/fs-extra/9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
@@ -2027,6 +2058,17 @@ packages:
       vite: 2.6.5_less@3.13.1
     dev: false
 
+  /@vitejs/plugin-vue/2.1.0_vite@2.7.13+vue@3.2.29:
+    resolution: {integrity: sha512-AZ78WxvFMYd8JmM/GBV6a6SGGTU0GgN/0/4T+FnMMsLzFEzTeAUwuraapy50ifHZsC+G5SvWs86bvaCPTneFlA==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      vite: ^2.5.10
+      vue: ^3.2.25
+    dependencies:
+      vite: 2.7.13
+      vue: 3.2.29
+    dev: true
+
   /@vue/babel-helper-vue-transform-on/1.0.2:
     resolution: {integrity: sha512-hz4R8tS5jMn8lDq6iD+yWL6XNB699pGIVLk7WSJnn1dbpjaazsjZQkieJoRX6gW5zpYSCFqQ7jUquPNY65tQYA==}
     dev: false
@@ -2073,11 +2115,27 @@ packages:
       estree-walker: 2.0.2
       source-map: 0.6.1
 
+  /@vue/compiler-core/3.2.29:
+    resolution: {integrity: sha512-RePZ/J4Ub3sb7atQw6V6Rez+/5LCRHGFlSetT3N4VMrejqJnNPXKUt5AVm/9F5MJriy2w/VudEIvgscCfCWqxw==}
+    dependencies:
+      '@babel/parser': 7.16.6
+      '@vue/shared': 3.2.29
+      estree-walker: 2.0.2
+      source-map: 0.6.1
+    dev: false
+
   /@vue/compiler-dom/3.2.16:
     resolution: {integrity: sha512-K7lYfwvsp5OLb0+/rKI9XT2RJy2RB7TyJBjvlfCDAF0KOJGqWAx++DLJPm+F3D29Mhxgt6ozSKP+rC3dSabvYA==}
     dependencies:
       '@vue/compiler-core': 3.2.16
       '@vue/shared': 3.2.16
+
+  /@vue/compiler-dom/3.2.29:
+    resolution: {integrity: sha512-y26vK5khdNS9L3ckvkqJk/78qXwWb75Ci8iYLb67AkJuIgyKhIOcR1E8RIt4mswlVCIeI9gQ+fmtdhaiTAtrBQ==}
+    dependencies:
+      '@vue/compiler-core': 3.2.29
+      '@vue/shared': 3.2.29
+    dev: false
 
   /@vue/compiler-sfc/3.2.16:
     resolution: {integrity: sha512-AxaDDg0ZjY7lCoVnCq7V+K3SIEfhyIHtten7k/LRupVC/VzSbelBmW0J8bawgsjLJAfTsdWZjeezZ5JJp2DM/A==}
@@ -2093,20 +2151,58 @@ packages:
       postcss: 8.4.5
       source-map: 0.6.1
 
+  /@vue/compiler-sfc/3.2.29:
+    resolution: {integrity: sha512-X9+0dwsag2u6hSOP/XsMYqFti/edvYvxamgBgCcbSYuXx1xLZN+dS/GvQKM4AgGS4djqo0jQvWfIXdfZ2ET68g==}
+    dependencies:
+      '@babel/parser': 7.16.6
+      '@vue/compiler-core': 3.2.29
+      '@vue/compiler-dom': 3.2.29
+      '@vue/compiler-ssr': 3.2.29
+      '@vue/reactivity-transform': 3.2.29
+      '@vue/shared': 3.2.29
+      estree-walker: 2.0.2
+      magic-string: 0.25.7
+      postcss: 8.4.5
+      source-map: 0.6.1
+    dev: false
+
   /@vue/compiler-ssr/3.2.16:
     resolution: {integrity: sha512-u2Inuqp3QpEV3E03ppBLdba40mU0dz/fisbfGjRPlxH5uuQ9v9i5qgrFl7xZ+N5C0ugg5+5KI7MgsbsCAPn0mQ==}
     dependencies:
       '@vue/compiler-dom': 3.2.16
       '@vue/shared': 3.2.16
 
+  /@vue/compiler-ssr/3.2.29:
+    resolution: {integrity: sha512-LrvQwXlx66uWsB9/VydaaqEpae9xtmlUkeSKF6aPDbzx8M1h7ukxaPjNCAXuFd3fUHblcri8k42lfimHfzMICA==}
+    dependencies:
+      '@vue/compiler-dom': 3.2.29
+      '@vue/shared': 3.2.29
+    dev: false
+
   /@vue/devtools-api/6.0.0-beta.21.1:
     resolution: {integrity: sha512-FqC4s3pm35qGVeXRGOjTsRzlkJjrBLriDS9YXbflHLsfA9FrcKzIyWnLXoNm+/7930E8rRakXuAc2QkC50swAw==}
     dev: true
+
+  /@vue/reactivity-transform/3.2.29:
+    resolution: {integrity: sha512-YF6HdOuhdOw6KyRm59+3rML8USb9o8mYM1q+SH0G41K3/q/G7uhPnHGKvspzceD7h9J3VR1waOQ93CUZj7J7OA==}
+    dependencies:
+      '@babel/parser': 7.16.6
+      '@vue/compiler-core': 3.2.29
+      '@vue/shared': 3.2.29
+      estree-walker: 2.0.2
+      magic-string: 0.25.7
+    dev: false
 
   /@vue/reactivity/3.2.16:
     resolution: {integrity: sha512-eOOpjakbRFg2roaGhVsGgBFnQWaXJcTw66wfc+ZMWl/cihAcgn792gFO1a6KeT68vQBp4JVpGZ5jkkdgZnwFfA==}
     dependencies:
       '@vue/shared': 3.2.16
+
+  /@vue/reactivity/3.2.29:
+    resolution: {integrity: sha512-Ryhb6Gy62YolKXH1gv42pEqwx7zs3n8gacRVZICSgjQz8Qr8QeCcFygBKYfJm3o1SccR7U+bVBQDWZGOyG1k4g==}
+    dependencies:
+      '@vue/shared': 3.2.29
+    dev: false
 
   /@vue/ref-transform/3.2.16:
     resolution: {integrity: sha512-IXFgxGnyd5jIXPQ/QlOoz+daeikeR1AA6DujgqalmW/ndCX9ZKW1rhFsoMGR0WAUZ4VHbT3eluUJhBF8ikNzPg==}
@@ -2117,11 +2213,26 @@ packages:
       estree-walker: 2.0.2
       magic-string: 0.25.7
 
+  /@vue/repl/1.0.0_vue@3.2.29:
+    resolution: {integrity: sha512-cDcQuWKZuA0Y0JYEpiQS/ZAEGP/RrfkcK+zKm5H8tUjfD8XIxYHY+sQGoY6FSkz/gAOQJocrsaPgt7ddKL0inQ==}
+    peerDependencies:
+      vue: ^3.2.13
+    dependencies:
+      vue: 3.2.29
+    dev: false
+
   /@vue/runtime-core/3.2.16:
     resolution: {integrity: sha512-Y7jDSKpwRmibQSXpGS2xcC2eVF9CuHQ6uPd1BSMy4aJCzB3ATI0CpRm/Ee/a5e70vjd5D9bY9IHe+9I0CIX1Bg==}
     dependencies:
       '@vue/reactivity': 3.2.16
       '@vue/shared': 3.2.16
+
+  /@vue/runtime-core/3.2.29:
+    resolution: {integrity: sha512-VMvQuLdzoTGmCwIKTKVwKmIL0qcODIqe74JtK1pVr5lnaE0l25hopodmPag3RcnIcIXe+Ye3B2olRCn7fTCgig==}
+    dependencies:
+      '@vue/reactivity': 3.2.29
+      '@vue/shared': 3.2.29
+    dev: false
 
   /@vue/runtime-dom/3.2.16:
     resolution: {integrity: sha512-PJ/aMaGfXkqFnykNqpDamcMJni4c/nqDQDz0hKncJiVqU4leiFGq7YC2IFbXECdG83GiHFhEc/77WOhecWSmCw==}
@@ -2129,6 +2240,14 @@ packages:
       '@vue/runtime-core': 3.2.16
       '@vue/shared': 3.2.16
       csstype: 2.6.19
+
+  /@vue/runtime-dom/3.2.29:
+    resolution: {integrity: sha512-YJgLQLwr+SQyORzTsBQLL5TT/5UiV83tEotqjL7F9aFDIQdFBTCwpkCFvX9jqwHoyi9sJqM9XtTrMcc8z/OjPA==}
+    dependencies:
+      '@vue/runtime-core': 3.2.29
+      '@vue/shared': 3.2.29
+      csstype: 2.6.19
+    dev: false
 
   /@vue/server-renderer/3.2.16_vue@3.2.16:
     resolution: {integrity: sha512-g2aSNYHaExFElYmKw1bfmp3yQmBCPQzrX3Hd7bhDa7bbGGHGchOg0n31SwuMrGk/z/pho4Z0K+LPfChmcECynQ==}
@@ -2139,8 +2258,22 @@ packages:
       '@vue/shared': 3.2.16
       vue: 3.2.16
 
+  /@vue/server-renderer/3.2.29_vue@3.2.29:
+    resolution: {integrity: sha512-lpiYx7ciV7rWfJ0tPkoSOlLmwqBZ9FTmQm33S+T4g0j1fO/LmhJ9b9Ctl1o5xvIFVDk9QkSUWANZn7H2pXuxVw==}
+    peerDependencies:
+      vue: 3.2.29
+    dependencies:
+      '@vue/compiler-ssr': 3.2.29
+      '@vue/shared': 3.2.29
+      vue: 3.2.29
+    dev: false
+
   /@vue/shared/3.2.16:
     resolution: {integrity: sha512-zpv8lxuatl3ruCJCsGzrO/F4+IlLug4jbu3vaIi/wJVZKQgnsW1R/xSRJMQS6K57cl4fT/2zkrYsWh1/6H7Esw==}
+
+  /@vue/shared/3.2.29:
+    resolution: {integrity: sha512-BjNpU8OK6Z0LVzGUppEk0CMYm/hKDnZfYdjSmPOs0N+TR1cLKJAkDwW8ASZUvaaSLEi6d3hVM7jnWnX+6yWnHw==}
+    dev: false
 
   /@vue/test-utils/2.0.0-rc.6_vue@3.2.16:
     resolution: {integrity: sha512-0cnQBVH589PwgqWpyv1fgCAz+9Ram/MsvN3ZEAEVXi1aPuhUa22EudGc0WezQ9PKwR+L40NrBmt3JBXE2tSRRQ==}
@@ -4052,7 +4185,6 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-darwin-64/0.13.15:
@@ -4060,7 +4192,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-darwin-arm64/0.13.15:
@@ -4068,7 +4199,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-freebsd-64/0.13.15:
@@ -4076,7 +4206,6 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-freebsd-arm64/0.13.15:
@@ -4084,7 +4213,6 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-linux-32/0.13.15:
@@ -4092,7 +4220,6 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-linux-64/0.13.15:
@@ -4100,7 +4227,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-linux-arm/0.13.15:
@@ -4108,7 +4234,6 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-linux-arm64/0.13.15:
@@ -4116,7 +4241,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-linux-mips64le/0.13.15:
@@ -4124,7 +4248,6 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-linux-ppc64le/0.13.15:
@@ -4132,7 +4255,6 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-netbsd-64/0.13.15:
@@ -4140,7 +4262,6 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-openbsd-64/0.13.15:
@@ -4148,7 +4269,6 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-sunos-64/0.13.15:
@@ -4156,7 +4276,6 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-windows-32/0.13.15:
@@ -4164,7 +4283,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-windows-64/0.13.15:
@@ -4172,7 +4290,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild-windows-arm64/0.13.15:
@@ -4180,7 +4297,6 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /esbuild/0.13.15:
@@ -4205,7 +4321,6 @@ packages:
       esbuild-windows-32: 0.13.15
       esbuild-windows-64: 0.13.15
       esbuild-windows-arm64: 0.13.15
-    dev: false
 
   /escalade/3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
@@ -4688,6 +4803,10 @@ packages:
       flat-cache: 3.0.4
     dev: true
 
+  /file-saver/2.0.5:
+    resolution: {integrity: sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==}
+    dev: false
+
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
     dev: true
@@ -4846,7 +4965,6 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /fstream/1.0.12:
@@ -5371,6 +5489,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /immediate/3.0.6:
+    resolution: {integrity: sha1-nbHb0Pr43m++D13V5Wu2BigN5ps=}
+    dev: false
 
   /import-fresh/2.0.0:
     resolution: {integrity: sha1-2BNVwVYS04bGH53dOSLUMEgipUY=}
@@ -6470,6 +6592,15 @@ packages:
       verror: 1.10.0
     dev: true
 
+  /jszip/3.7.1:
+    resolution: {integrity: sha512-ghL0tz1XG9ZEmRMcEN2vt7xabrDdqHHeykgARpmZ0BiIctWxM47Vt63ZO2dnp4QYt/xJVLLy5Zv1l/xRdh2byg==}
+    dependencies:
+      lie: 3.3.0
+      pako: 1.0.11
+      readable-stream: 2.3.7
+      set-immediate-shim: 1.0.1
+    dev: false
+
   /keytar/7.7.0:
     resolution: {integrity: sha512-YEY9HWqThQc5q5xbXbRwsZTh2PJ36OSYRjSv3NN2xf5s5dpLTjEZnC2YikR29OaVybf9nQ0dJ/80i40RS97t/A==}
     requiresBuild: true
@@ -6543,6 +6674,12 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
+
+  /lie/3.3.0:
+    resolution: {integrity: sha512-UaiMJzeWRlEujzAuw5LokY1L5ecNQYZKfmyZ9L7wDHb/p5etKaxXhohBcrw0EYby+G/NA52vRSN4N39dxHAIwQ==}
+    dependencies:
+      immediate: 3.0.6
+    dev: false
 
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
@@ -8182,7 +8319,6 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
-    dev: false
 
   /rsvp/4.8.5:
     resolution: {integrity: sha512-nfMOlASu9OnRJo1mbEk2cz0D56a1MBNrJ7orjRZQG10XDyuvwksKbuXNp6qa+kbn839HwjwhBzhFmdsaEAfauA==}
@@ -8328,6 +8464,11 @@ packages:
 
   /set-blocking/2.0.0:
     resolution: {integrity: sha1-BF+XgtARrppoA93TgrJDkrPYkPc=}
+
+  /set-immediate-shim/1.0.1:
+    resolution: {integrity: sha1-SysbJ+uAip+NzEgaWOXlb1mfP2E=}
+    engines: {node: '>=0.10.0'}
+    dev: false
 
   /set-value/2.0.1:
     resolution: {integrity: sha512-JxHc1weCN68wRY0fhCoXpyK55m/XPHafOmK4UWD7m2CI14GMcFypt4w/0+NV5f/ZMby2F6S2wwA7fgynh9gWSw==}
@@ -9364,6 +9505,12 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
 
+  /typescript/4.5.5:
+    resolution: {integrity: sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: true
+
   /uc.micro/1.0.6:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
 
@@ -9618,6 +9765,30 @@ packages:
       fsevents: 2.3.2
     dev: false
 
+  /vite/2.7.13:
+    resolution: {integrity: sha512-Mq8et7f3aK0SgSxjDNfOAimZGW9XryfHRa/uV0jseQSilg+KhYDSoNb9h1rknOy6SuMkvNDLKCYAYYUMCE+IgQ==}
+    engines: {node: '>=12.2.0'}
+    hasBin: true
+    peerDependencies:
+      less: '*'
+      sass: '*'
+      stylus: '*'
+    peerDependenciesMeta:
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+    dependencies:
+      esbuild: 0.13.15
+      postcss: 8.4.5
+      resolve: 1.20.0
+      rollup: 2.62.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
   /vsce/2.5.3:
     resolution: {integrity: sha512-GhxMRiiT6c7ubNDxk3GjLVkgcBq9jUWpdWTzMn5+CGmTjqh9LKW2oCJ4AfMmAWmAUfh1zYmONYkqRkO/O6IH5g==}
     engines: {node: '>= 14'}
@@ -9711,6 +9882,16 @@ packages:
       '@vue/runtime-dom': 3.2.16
       '@vue/server-renderer': 3.2.16_vue@3.2.16
       '@vue/shared': 3.2.16
+
+  /vue/3.2.29:
+    resolution: {integrity: sha512-cFIwr7LkbtCRanjNvh6r7wp2yUxfxeM2yPpDQpAfaaLIGZSrUmLbNiSze9nhBJt5MrZ68Iqt0O5scwAMEVxF+Q==}
+    dependencies:
+      '@vue/compiler-dom': 3.2.29
+      '@vue/compiler-sfc': 3.2.29
+      '@vue/runtime-dom': 3.2.29
+      '@vue/server-renderer': 3.2.29_vue@3.2.29
+      '@vue/shared': 3.2.29
+    dev: false
 
   /w3c-hr-time/1.0.2:
     resolution: {integrity: sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ==}

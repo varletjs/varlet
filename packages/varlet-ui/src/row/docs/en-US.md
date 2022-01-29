@@ -85,27 +85,6 @@ using the `<var-row/>` `justify` and `align` properties to set the alignment of 
 </var-row>
 ```
 
-### Responsive Layout
-
-```vue
-import BasicExample from '../example/Responsive.vue'
-```
-
-```html
-<var-row :gutter="10">
-  <var-col class="col" :xs="8" :sm="6" :md="4" :lg="3" :xl="1">1</var-col>
-  <var-col class="col" :xs="4" :sm="6" :md="8" :lg="9" :xl="11">2</var-col>
-  <var-col class="col" :xs="4" :sm="6" :md="8" :lg="9" :xl="11">3</var-col>
-  <var-col class="col" :xs="8" :sm="6" :md="4" :lg="3" :xl="1">4</var-col>
-  <var-col class="col" :xs="24" :sm="12" :md="8" :lg="6" :xl="4">5</var-col>
-  <var-col class="col" :xs="24" :sm="12" :md="8" :lg="6" :xl="4">6</var-col>
-  <var-col class="col" :xs="{ span: 12, offset: 12 }" :sm="{ span: 6, offset: 6 }" :md="{ span: 4, offset: 4 }" :lg="{ span: 3, offset: 3 }" :xl="{ span: 2, offset: 2 }">7</var-col>
-  <var-col class="col" :xs="{ span: 12, offset: 12 }" :sm="{ span: 6, offset: 6 }" :md="{ span: 4, offset: 4 }" :lg="{ span: 3, offset: 3 }" :xl="{ span: 2, offset: 2 }">8</var-col>
-  <var-col class="col" :xs="{ span: 12, offset: 12 }" :sm="{ span: 6, offset: 6 }" :md="{ span: 4, offset: 4 }" :lg="{ span: 3, offset: 3 }" :xl="{ span: 2, offset: 2 }">9</var-col>
-  <var-col class="col" :xs="{ span: 12, offset: 12 }" :sm="{ span: 6, offset: 6 }" :md="{ span: 4, offset: 4 }" :lg="{ span: 3, offset: 3 }" :xl="{ span: 2, offset: 2 }">10</var-col>
-</var-row>
-```
-
 ## API
 
 ### Props
@@ -124,11 +103,6 @@ import BasicExample from '../example/Responsive.vue'
 | --- | --- | --- | --- | 
 | `span` | Number of grids occupied by columns | _string \| number_ | `24` |
 | `offset` | Number of grids for column offsets | _string \| number_ | `0` |
-| `xs`     | `<768px` Responsive columns or column props object | _string \| number \| object({span: 4, offset: 4})_ | `-` |
-| `sm`     | `≥768px` Responsive columns or column props object | _string \| number \| object({span: 4, offset: 4})_ | `-` |
-| `md`     | `≥992px` Responsive columns or column props object | _string \| number \| object({span: 4, offset: 4})_ | `-` |
-| `lg`     | `≥1200px` Responsive columns or column props object | _string \| number \| object({span: 4, offset: 4})_ | `-` |
-| `xl`     | `≥1920px` Responsive columns or column props object | _string \| number \| object({span: 4, offset: 4})_ | `-` |
 
 ### Events
 
