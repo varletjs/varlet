@@ -120,13 +120,24 @@ test('test col in row', async () => {
 
 test('test col onClick', () => {
   const onClick = jest.fn()
-  const wrapper = mount(VarCol, {
-    props: {
+  const template = `
+    <var-row>
+      <var-col @click="onClick"></var-col>
+    </var-row>
+  `
+
+  const wrapper = mount({
+    methods: {
       onClick,
     },
+    components: {
+      [VarCol.name]: VarCol,
+      [VarRow.name]: VarRow,
+    },
+    template,
   })
 
-  wrapper.trigger('click')
+  wrapper.find('.var-col').trigger('click')
   expect(onClick).toHaveBeenCalledTimes(1)
   wrapper.unmount()
 })
