@@ -3,7 +3,9 @@ import { VarComponent } from './varComponent'
 export interface BackTopProps {
   visibilityHeight?: number | string
   duration?: number
-  target?: string
+  target?: string | HTMLElement
+  right?: number | string
+  bottom?: number | string
   onClick?: (e: MouseEvent) => void
 }
 

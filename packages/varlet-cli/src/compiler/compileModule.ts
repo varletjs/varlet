@@ -14,13 +14,23 @@ import { getPublicDirs, isDir, isDTS, isLess, isScript, isSFC } from '../shared/
 import { compileSFC } from './compileSFC'
 import { compileESEntry, compileCommonJSEntry, compileScriptFile } from './compileScript'
 import { compileLess } from './compileStyle'
-import { getUMDConfig } from '../config/vite.config'
+import { getESMBundleConfig, getUMDConfig } from '../config/vite.config'
 import { getVarletConfig } from '../config/varlet.config'
 import { generateReference } from './compileTypes'
 
 export function compileUMD() {
   return new Promise<void>((resolve, reject) => {
     const config = getUMDConfig(getVarletConfig())
+
+    build(config)
+      .then(() => resolve())
+      .catch(reject)
+  })
+}
+
+export function compileESMBundle() {
+  return new Promise<void>((resolve, reject) => {
+    const config = getESMBundleConfig(getVarletConfig())
 
     build(config)
       .then(() => resolve())
@@ -53,9 +63,14 @@ export async function compileFile(file: string) {
   isDir(file) && (await compileDir(file))
 }
 
-export async function compileModule(modules: 'umd' | 'commonjs' | boolean = false) {
+export async function compileModule(modules: 'umd' | 'commonjs' | 'esm-bundle' | boolean = false) {
   if (modules === 'umd') {
     await compileUMD()
+    return
+  }
+
+  if (modules === 'esm-bundle') {
+    await compileESMBundle()
     return
   }
 

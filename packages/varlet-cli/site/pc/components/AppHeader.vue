@@ -9,6 +9,15 @@
       <a
         class="varlet-site-header__link"
         target="_blank"
+        :href="playground"
+        v-ripple
+        v-if="playground"
+      >
+        <var-site-icon name="code-json" :size="24" />
+      </a>
+      <a
+        class="varlet-site-header__link"
+        target="_blank"
         :href="github"
         v-ripple
         v-if="github"
@@ -80,8 +89,9 @@ export default defineComponent({
     const logo: Ref<string> = ref(get(config, 'logo'))
     const themesKey = get(config, 'themesKey')
     const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
-    const github: Ref<Record<string, string>> = ref(get(config, 'pc.header.github'))
-    const darkMode: Ref<Record<string, string>> = ref(get(config, 'pc.header.darkMode'))
+    const playground: Ref<string> = ref(get(config, 'pc.header.playground'))
+    const github: Ref<string> = ref(get(config, 'pc.header.github'))
+    const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
     const currentThemes = ref(getBrowserThemes(themesKey))
 
     const isOpenMenu: Ref<boolean> = ref(false)
@@ -120,6 +130,7 @@ export default defineComponent({
       title,
       languages,
       nonEmptyLanguages,
+      playground,
       github,
       isOpenMenu,
       darkMode,
@@ -199,6 +210,12 @@ export default defineComponent({
   &__tail {
     display: flex;
     align-items: center;
+  }
+
+  @media screen and (max-width: 400px) {
+    &__tail {
+      display: none;
+    }
   }
 
   &__language {

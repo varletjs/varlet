@@ -335,6 +335,21 @@ exports[`test icon example 1`] = `
   <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"card-account-details-outline\\"><i class=\\"var-icon var-icon--set var-icon-card-account-details-outline\\" style=\\"transition: transform 0ms;\\"></i>
     <div class=\\"example__icon-name\\">card-account-details-outline</div>
   </div>
+  <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"pin\\"><i class=\\"var-icon var-icon--set var-icon-pin\\" style=\\"transition: transform 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">pin</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"pin-off\\"><i class=\\"var-icon var-icon--set var-icon-pin-off\\" style=\\"transition: transform 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">pin-off</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"pin-outline\\"><i class=\\"var-icon var-icon--set var-icon-pin-outline\\" style=\\"transition: transform 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">pin-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"pin-off-outline\\"><i class=\\"var-icon var-icon--set var-icon-pin-off-outline\\" style=\\"transition: transform 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">pin-off-outline</div>
+  </div>
+  <div class=\\"example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"code-json\\"><i class=\\"var-icon var-icon--set var-icon-code-json\\" style=\\"transition: transform 0ms;\\"></i>
+    <div class=\\"example__icon-name\\">code-json</div>
+  </div>
 </div>"
 `;
 

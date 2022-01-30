@@ -27,6 +27,12 @@ packages/varlet-ui/umd
 packages/varlet-ui/coverage
 packages/varlet-ui/highlight
 
+packages/varlet-ui-playground/site
+packages/varlet-ui-playground/public/touch-emulator
+packages/varlet-ui-playground/public/varlet.esm.js
+packages/varlet-ui-playground/public/varlet-touch-emulator.js
+packages/varlet-ui-playground/public/varlet.css
+
 packages/varlet-icons/dist
 
 packages/varlet-vscode-extension/dist

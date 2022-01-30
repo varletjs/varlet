@@ -28,6 +28,7 @@ export async function compile(cmd: { noUmd: boolean }) {
   await Promise.all([runTask('types', compileTypes), runTask('template highlight', compileTemplateHighlight)])
 
   await runTask('module', compileModule)
+  await runTask('esm bundle', () => compileModule('esm-bundle'))
   await runTask('commonjs', () => compileModule('commonjs'))
   !cmd.noUmd && (await runTask('umd', () => compileModule('umd')))
 }

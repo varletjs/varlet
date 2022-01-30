@@ -51,6 +51,8 @@ export const isNumber = (val: unknown): val is number => typeof val === 'number'
 export const isPlainObject = (val: unknown): val is Record<string, any> =>
   Object.prototype.toString.call(val) === '[object Object]'
 
+export const isObject = (val: unknown): val is Record<string, any> => typeof val === 'object' && val !== null
+
 export const isArray = (val: unknown): val is Array<any> => Array.isArray(val)
 
 export const isURL = (val: string | undefined | null) => {

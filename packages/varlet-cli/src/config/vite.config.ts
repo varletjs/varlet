@@ -110,6 +110,35 @@ function clear(): PluginOption {
   }
 }
 
+export function getESMBundleConfig(varletConfig: Record<string, any>): InlineConfig {
+  const name = get(varletConfig, 'name')
+  const fileName = `${kebabCase(name)}.esm.js`
+
+  return {
+    logLevel: 'silent',
+    build: {
+      emptyOutDir: true,
+      lib: {
+        name,
+        formats: ['es'],
+        fileName: () => fileName,
+        entry: resolve(ES_DIR, 'umdIndex.js'),
+      },
+      rollupOptions: {
+        external: ['vue'],
+        output: {
+          dir: ES_DIR,
+          exports: 'named',
+          globals: {
+            vue: 'Vue',
+          },
+        },
+      },
+    },
+    plugins: [clear()],
+  }
+}
+
 export function getUMDConfig(varletConfig: Record<string, any>): InlineConfig {
   const name = get(varletConfig, 'name')
   const fileName = `${kebabCase(name)}.js`
