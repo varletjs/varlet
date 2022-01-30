@@ -4,6 +4,7 @@
     :style="{
       justifyContent: justify,
       alignItems: align,
+      margin,
     }"
     @click="onClick"
   >
@@ -12,11 +13,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
 import { props } from './props'
 import { useCols } from './provide'
-import { toPxNum } from '../utils/elements'
-import type { ColProvider } from '../col/provide'
+import { toPxNum, toSizeUnit } from '../utils/elements'
 import type { RowProvider } from './provide'
 
 export default defineComponent({
@@ -24,47 +24,15 @@ export default defineComponent({
   props,
   setup(props) {
     const { cols, bindCols, length } = useCols()
-
-    const computeGroups = () => {
-      const groups: ColProvider[][] = [[]]
-      let span = 0
-
-      cols.forEach((col) => {
-        const colSpan = col.span.value + col.offset.value
-        const nextSpan = span + colSpan
-
-        if (nextSpan > 24) {
-          groups.push([col])
-          span = colSpan
-        } else {
-          groups[groups.length - 1].push(col)
-          span += colSpan
-        }
-      })
-
-      return groups
-    }
+    const margin = ref('0 0')
 
     const computePadding = () => {
-      const groups = computeGroups()
       const gutter: number = toPxNum(props.gutter)
       const average = gutter / 2
+      margin.value = `0 -${toSizeUnit(average)}`
 
-      groups.forEach((cols) => {
-        cols.forEach((col, index) => {
-          if (cols.length <= 1) {
-            return
-          }
-          if (index === 0) {
-            col.setPadding({ left: 0, right: average })
-          }
-          if (index === cols.length - 1) {
-            col.setPadding({ left: average, right: 0 })
-          }
-          if (index > 0 && index < cols.length - 1) {
-            col.setPadding({ left: average, right: average })
-          }
-        })
+      cols.forEach((col) => {
+        col.setPadding({ left: average, right: average })
       })
     }
 
@@ -74,6 +42,8 @@ export default defineComponent({
     watch(() => props.gutter, computePadding)
 
     bindCols(rowProvider)
+
+    return { margin }
   },
 })
 </script>
