@@ -14,18 +14,18 @@ export const props = {
     type: Function as PropType<(e: Event) => void>,
   },
   xs: {
-    type: [Object, Number, String] as PropType<SizeDescriptor>,
+    type: [Object as SizeDescriptor, Number, String] as PropType<string | number | SizeDescriptor | undefined>,
   },
   sm: {
-    type: [Object, Number, String] as PropType<SizeDescriptor>,
+    type: [Object as SizeDescriptor, Number, String] as PropType<string | number | SizeDescriptor | undefined>,
   },
   md: {
-    type: [Object, Number, String] as PropType<SizeDescriptor>,
+    type: [Object as SizeDescriptor, Number, String] as PropType<string | number | SizeDescriptor | undefined>,
   },
   lg: {
-    type: [Object, Number, String] as PropType<SizeDescriptor>,
+    type: [Object as SizeDescriptor, Number, String] as PropType<string | number | SizeDescriptor | undefined>,
   },
   xl: {
-    type: [Object, Number, String] as PropType<SizeDescriptor>,
+    type: [Object as SizeDescriptor, Number, String] as PropType<string | number | SizeDescriptor | undefined>,
   },
 }

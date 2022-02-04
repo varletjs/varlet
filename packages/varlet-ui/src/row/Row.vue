@@ -16,7 +16,7 @@
 import { defineComponent, ref, watch } from 'vue'
 import { props } from './props'
 import { useCols } from './provide'
-import { toPxNum, toSizeUnit } from '../utils/elements'
+import { toPxNum } from '../utils/elements'
 import type { RowProvider } from './provide'
 
 export default defineComponent({
@@ -29,7 +29,7 @@ export default defineComponent({
     const computePadding = () => {
       const gutter: number = toPxNum(props.gutter)
       const average = gutter / 2
-      margin.value = `0 -${toSizeUnit(average)}`
+      margin.value = `0 -${average}px`
 
       cols.forEach((col) => {
         col.setPadding({ left: average, right: average })

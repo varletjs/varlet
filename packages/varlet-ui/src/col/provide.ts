@@ -6,11 +6,10 @@ export interface ColPadding {
   right: number
 }
 
-export type SizeObject = {
+export type SizeDescriptor = {
   span?: number
   offset?: number
 }
-export type SizeDescriptor = string | number | SizeObject | undefined
 
 export interface ColProvider {
   setPadding: (padding: ColPadding) => void
