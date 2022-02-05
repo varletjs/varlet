@@ -1,9 +1,8 @@
 import { VarComponent } from './varComponent'
-import { SizeDescriptor } from '../src/col/provide'
 
 export type SizeDescriptor = {
-  span?: number
-  offset?: number
+  span?: number | string
+  offset?: number | string
 }
 
 export interface ColProps {

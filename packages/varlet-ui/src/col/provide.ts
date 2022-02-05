@@ -7,8 +7,8 @@ export interface ColPadding {
 }
 
 export type SizeDescriptor = {
-  span?: number
-  offset?: number
+  span?: number | string
+  offset?: number | string
 }
 
 export interface ColProvider {

@@ -1,5 +1,6 @@
 import example from '../example'
 import responsive from '../example/Responsive'
+import responsiveObject from '../example/ResponsiveObject'
 import Row from '..'
 import VarRow from '../Row'
 import Col from '../../col'
@@ -16,6 +17,12 @@ test('test row example', () => {
 
 test('test row Responsive example', () => {
   const wrapper = mount(responsive)
+  expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
+
+test('test row ResponsiveObject example', () => {
+  const wrapper = mount(responsiveObject)
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
