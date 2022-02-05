@@ -45,8 +45,11 @@ export default defineComponent({
     }
 
     const getSize = (mode: string, size: string | number | SizeDescriptor | undefined) => {
-      if (!size) return []
-      const classes = []
+      const classes: string[] = []
+
+      if (!size) {
+        return classes
+      }
 
       if (isPlainObject(size)) {
         const { span, offset } = size
@@ -55,6 +58,7 @@ export default defineComponent({
       } else {
         classes.push(`var-col--span-${mode}-${size}`)
       }
+
       return classes
     }
 
