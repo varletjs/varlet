@@ -107,38 +107,42 @@ import ObjectExample from '../example/ResponsiveObject.vue'
     class="col"
     :xs="{ span: 12, offset: 6 }"
     :sm="{ span: 6 }"
-    :md="{ span: 4, offset: '4' }"
-    :lg="{ span: '3', offset: '3' }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
     :xl="{ span: 2, offset: 2 }"
-  >1</var-col
   >
+    1
+  </var-col>
   <var-col
     class="col"
     :xs="{ span: 12, offset: 6 }"
     :sm="{ span: 6 }"
-    :md="{ span: 4, offset: '4' }"
-    :lg="{ span: '3', offset: '3' }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
     :xl="{ span: 2, offset: 2 }"
-  >2</var-col
   >
+    2
+  </var-col>
   <var-col
     class="col"
     :xs="{ span: 12, offset: 6 }"
     :sm="{ span: 6 }"
-    :md="{ span: 4, offset: '4' }"
-    :lg="{ span: '3', offset: '3' }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
     :xl="{ span: 2, offset: 2 }"
-  >3</var-col
   >
+    3
+  </var-col>
   <var-col
     class="col"
     :xs="{ span: 12, offset: 6 }"
     :sm="{ span: 6 }"
-    :md="{ span: 4, offset: '4' }"
-    :lg="{ span: '3', offset: '3' }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
     :xl="{ span: 2, offset: 2 }"
-  >4</var-col
   >
+    4
+  </var-col>
 </var-row>
 ```
 
