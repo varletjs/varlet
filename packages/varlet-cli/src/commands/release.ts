@@ -28,25 +28,24 @@ const run: RunFun = (bin, args, opts = {}) =>
 const inc = (i: ReleaseType) => semver.inc(currentVersion, i, `alpha.${Date.now()}`)
 
 async function isWorktreeEmpty() {
-  const ret = await execa('git', ['status', '--porcelain'])
+  const ret = await run('git', ['status', '--porcelain'])
   return !ret.stdout
 }
 
 async function publish(preRelease: boolean) {
-  const s = ora().start('Publishing all packages')
+  const s = ora().start('Publishing all packages\n')
   const args = ['-r', 'publish', '--no-git-checks', '--access', 'public']
 
   if (preRelease) {
     args.push('--tag', 'alpha')
   }
 
-  try {
-    await run('pnpm', args, {
-      stdio: 'pipe',
-    })
+  const { stderr, stdout } = await run('pnpm', args)
+  if (stderr?.includes('npm ERR!')) {
+    throw new Error('\n' + stderr)
+  } else {
     s.succeed('Publish all packages successfully')
-  } catch (e: any) {
-    throw new Error('\n' + e)
+    stdout && logger.info(stdout)
   }
 }
 
