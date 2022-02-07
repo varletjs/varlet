@@ -8,11 +8,21 @@ import { CWD } from '../shared/constant'
 import { resolve } from 'path'
 import { writeFileSync } from 'fs-extra'
 import { changelog } from './changelog'
+import type { ReleaseType } from 'semver'
+import type { ExecaChildProcess, Options as ExecaOptions } from 'execa'
 
-const releaseTypes = ['premajor', 'preminor', 'prepatch', 'major', 'minor', 'patch']
+const releaseTypes: ReleaseType[] = ['premajor', 'preminor', 'prepatch', 'prerelease', 'major', 'minor', 'patch']
+
+type RunFun = (bin: string, args: string[], opts?: ExecaOptions<string>) => ExecaChildProcess<string>
+
+const run: RunFun = (bin, args, opts = {}) =>
+  execa(bin, args, {
+    stdio: 'inherit',
+    ...opts,
+  })
 
 async function isWorktreeEmpty() {
-  const ret = await execa('git', ['status', '--porcelain'])
+  const ret = await run('git', ['status', '--porcelain'])
   return !ret.stdout
 }
 
@@ -21,7 +31,7 @@ async function publish(preRelease: boolean) {
   const args = ['-r', 'publish', '--no-git-checks', '--access', 'public']
 
   preRelease && args.push('--tag', 'alpha')
-  const ret = await execa('pnpm', args)
+  const ret = await run('pnpm', args)
   if (ret.stderr && ret.stderr.includes('npm ERR!')) {
     throw new Error('\n' + ret.stderr)
   } else {
@@ -32,11 +42,11 @@ async function publish(preRelease: boolean) {
 
 async function pushGit(version: string, remote = 'origin') {
   const s = ora().start('Pushing to remote git repository')
-  await execa('git', ['add', '.'])
-  await execa('git', ['commit', '-m', `v${version}`])
-  await execa('git', ['tag', `v${version}`])
-  await execa('git', ['push', remote, `v${version}`])
-  const ret = await execa('git', ['push'])
+  await run('git', ['add', '.'])
+  await run('git', ['commit', '-m', `v${version}`])
+  await run('git', ['tag', `v${version}`])
+  await run('git', ['push', remote, `v${version}`])
+  const ret = await run('git', ['push'])
   s.succeed('Push remote repository successfully')
 
   ret.stdout && logger.info(ret.stdout)
@@ -57,7 +67,7 @@ function updateVersion(version: string) {
 
 export async function release(cmd: { remote?: string }) {
   try {
-    const currentVersion = require(resolve(CWD, 'package.json')).version
+    const currentVersion: string | undefined = require(resolve(CWD, 'package.json')).version
 
     if (!currentVersion) {
       logger.error('Your package is missing the version field')
@@ -108,8 +118,8 @@ export async function release(cmd: { remote?: string }) {
 
     if (isPreRelease) {
       try {
-        await execa('git', ['restore', '**/package.json'])
-        await execa('git', ['restore', 'package.json'])
+        await run('git', ['restore', '**/package.json'])
+        await run('git', ['restore', 'package.json'])
       } catch {
         logger.error('Restore package.json has failed, please restore manually')
       }
