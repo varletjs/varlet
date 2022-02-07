@@ -1,5 +1,5 @@
 import logger from '../shared/logger'
-import inquirer from 'inquirer'
+import prompts from 'prompts'
 import { resolve } from 'path'
 import { copy, pathExistsSync, readFileSync, writeFileSync, removeSync } from 'fs-extra'
 import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant'
@@ -51,16 +51,14 @@ export async function gen(name: string) {
     return
   }
 
-  const ret = await inquirer.prompt([
-    {
-      name: 'Please select your component library programming style',
-      type: 'list',
-      choices: ['sfc', 'tsx'],
-    },
-  ])
+  const { type }: { type: string } = await prompts({
+    message: 'Please select your component library programming style',
+    type: 'list',
+    name: 'type',
+    choices: ['sfc', 'tsx'].map((i) => ({ value: i, title: i })),
+  })
 
-  const choice = ret['Please select your component library programming style']
-  const generator = resolve(GENERATORS_DIR, choice)
+  const generator = resolve(GENERATORS_DIR, type)
   const base = resolve(GENERATORS_DIR, 'base')
 
   await copy(base, dest)
