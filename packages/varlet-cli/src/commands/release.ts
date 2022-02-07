@@ -1,4 +1,4 @@
-import inquirer from 'inquirer'
+import prompts from 'prompts'
 import ora from 'ora'
 import execa from 'execa'
 import logger from '../shared/logger'
@@ -11,6 +11,10 @@ import { changelog } from './changelog'
 import type { ReleaseType } from 'semver'
 import type { ExecaChildProcess, Options as ExecaOptions } from 'execa'
 
+const pkgPath = resolve(CWD, 'package.json')
+const pkg: { name: string; version: string } = require(pkgPath)
+const currentVersion = pkg.version
+
 const releaseTypes: ReleaseType[] = ['premajor', 'preminor', 'prepatch', 'prerelease', 'major', 'minor', 'patch']
 
 type RunFun = (bin: string, args: string[], opts?: ExecaOptions<string>) => ExecaChildProcess<string>
@@ -21,22 +25,23 @@ const run: RunFun = (bin, args, opts = {}) =>
     ...opts,
   })
 
-async function isWorktreeEmpty() {
-  const ret = await run('git', ['status', '--porcelain'])
-  return !ret.stdout
-}
+const inc = (i: ReleaseType) => semver.inc(currentVersion, i, `alpha.${Date.now()}`)
 
 async function publish(preRelease: boolean) {
   const s = ora().start('Publishing all packages')
   const args = ['-r', 'publish', '--no-git-checks', '--access', 'public']
 
-  preRelease && args.push('--tag', 'alpha')
-  const ret = await run('pnpm', args)
-  if (ret.stderr && ret.stderr.includes('npm ERR!')) {
-    throw new Error('\n' + ret.stderr)
-  } else {
+  if (preRelease) {
+    args.push('--tag', 'alpha')
+  }
+
+  try {
+    await run('pnpm', args, {
+      stdio: 'pipe',
+    })
     s.succeed('Publish all packages successfully')
-    ret.stdout && logger.info(ret.stdout)
+  } catch (e: any) {
+    throw new Error('\n' + e)
   }
 }
 
@@ -67,54 +72,65 @@ function updateVersion(version: string) {
 
 export async function release(cmd: { remote?: string }) {
   try {
-    const currentVersion: string | undefined = require(resolve(CWD, 'package.json')).version
-
     if (!currentVersion) {
       logger.error('Your package is missing the version field')
       return
     }
 
-    if (!(await isWorktreeEmpty())) {
-      logger.error('Git worktree is not empty, please commit changed')
-      return
-    }
+    let targetVersion = currentVersion
 
-    let name = 'Please select release type'
-    const ret = await inquirer.prompt([
+    const { release }: { release: string } = await prompts([
       {
-        name,
-        type: 'list',
-        choices: releaseTypes,
+        name: 'release',
+        message: 'Please select release type',
+        type: 'select',
+        choices: releaseTypes
+          .map((i) => `${i} (${inc(i)})`)
+          .concat(['custom'])
+          .map((i) => ({ value: i, title: i })),
       },
     ])
 
-    const type = ret[name]
-    const isPreRelease = type.startsWith('pre')
-    let expectVersion = semver.inc(currentVersion, type, `alpha.${Date.now()}`) as string
-    expectVersion = isPreRelease ? expectVersion.slice(0, -2) : expectVersion
+    if (release === 'custom') {
+      ;({ version: targetVersion } = await prompts({
+        type: 'text',
+        name: 'version',
+        message: 'Input custom version',
+        initial: currentVersion,
+      }))
+    } else {
+      targetVersion = release.match(/\((.*)\)/)![1]
+    }
 
-    name = 'version confirm'
-    const confirm = await inquirer.prompt([
-      {
-        name,
-        type: 'confirm',
-        message: `All packages version ${currentVersion} -> ${expectVersion}:`,
-      },
-    ])
-    if (!confirm[name]) {
+    if (!semver.valid(targetVersion)) {
+      logger.error(`invalid target version: ${targetVersion}`)
       return
     }
 
-    updateVersion(expectVersion)
+    const isPreRelease = targetVersion.includes('alpha')
+    if (isPreRelease) {
+      targetVersion = targetVersion.slice(0, -2)
+    }
+
+    const { yes }: { yes: boolean } = await prompts({
+      type: 'confirm',
+      name: 'yes',
+      message: `All packages version ${currentVersion} -> ${targetVersion}, Confirm?`,
+    })
+
+    if (!yes) return
+
+    logger.success('\nUpdating package version...')
+    updateVersion(targetVersion)
 
     if (!isPreRelease) {
       await changelog()
-      await pushGit(expectVersion, cmd.remote)
+      await pushGit(targetVersion, cmd.remote)
     }
 
     await publish(isPreRelease)
 
-    logger.success(`Release version ${expectVersion} successfully!`)
+    logger.success(`Release version ${targetVersion} successfully!`)
 
     if (isPreRelease) {
       try {
