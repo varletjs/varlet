@@ -27,6 +27,11 @@ const run: RunFun = (bin, args, opts = {}) =>
 
 const inc = (i: ReleaseType) => semver.inc(currentVersion, i, `alpha.${Date.now()}`)
 
+async function isWorktreeEmpty() {
+  const ret = await execa('git', ['status', '--porcelain'])
+  return !ret.stdout
+}
+
 async function publish(preRelease: boolean) {
   const s = ora().start('Publishing all packages')
   const args = ['-r', 'publish', '--no-git-checks', '--access', 'public']
@@ -48,7 +53,7 @@ async function publish(preRelease: boolean) {
 async function pushGit(version: string, remote = 'origin') {
   const s = ora().start('Pushing to remote git repository')
   await run('git', ['add', '.'])
-  await run('git', ['commit', '-m', `v${version}`])
+  await run('git', ['commit', '-m', `release: v${version}`])
   await run('git', ['tag', `v${version}`])
   await run('git', ['push', remote, `v${version}`])
   const ret = await run('git', ['push'])
@@ -77,19 +82,22 @@ export async function release(cmd: { remote?: string }) {
       return
     }
 
+    if (!(await isWorktreeEmpty())) {
+      logger.error('Git worktree is not empty, please commit changed')
+      return
+    }
+
     let targetVersion = currentVersion
 
-    const { release }: { release: string } = await prompts([
-      {
-        name: 'release',
-        message: 'Please select release type',
-        type: 'select',
-        choices: releaseTypes
-          .map((i) => `${i} (${inc(i)})`)
-          .concat(['custom'])
-          .map((i) => ({ value: i, title: i })),
-      },
-    ])
+    const { release }: { release: string } = await prompts({
+      name: 'release',
+      message: 'Please select release type',
+      type: 'select',
+      choices: releaseTypes
+        .map((i) => `${i} (${inc(i)})`)
+        .concat(['custom'])
+        .map((i) => ({ value: i, title: i })),
+    })
 
     if (release === 'custom') {
       ;({ version: targetVersion } = await prompts({
