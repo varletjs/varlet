@@ -53,7 +53,7 @@ export async function gen(name: string) {
 
   const { type }: { type: string } = await prompts({
     message: 'Please select your component library programming style',
-    type: 'list',
+    type: 'select',
     name: 'type',
     choices: ['sfc', 'tsx'].map((i) => ({ value: i, title: i })),
   })
