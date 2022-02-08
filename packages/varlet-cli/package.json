@@ -53,12 +53,12 @@
     "fs-extra": "^9.0.1",
     "glob": "^7.2.0",
     "hash-sum": "^2.0.0",
-    "inquirer": "^8.1.2",
     "jest": "^26.6.3",
     "less": "^3.12.2",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "ora": "^5.4.0",
+    "prompts": "^2.4.2",
     "semver": "^7.3.5",
     "slash": "^3.0.0",
     "ts-jest": "^26.5.1",
@@ -75,6 +75,7 @@
     "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.174",
     "@types/lodash-es": "^4.17.5",
+    "@types/prompts": "^2.0.14",
     "@types/semver": "^7.3.9"
   },
   "peerDependencies": {
