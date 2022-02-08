@@ -1,4 +1,4 @@
-import prompts from 'prompts'
+import inquirer from 'inquirer'
 import ora from 'ora'
 import execa from 'execa'
 import logger from '../shared/logger'
@@ -8,54 +8,35 @@ import { CWD } from '../shared/constant'
 import { resolve } from 'path'
 import { writeFileSync } from 'fs-extra'
 import { changelog } from './changelog'
-import type { ReleaseType } from 'semver'
-import type { ExecaChildProcess, Options as ExecaOptions } from 'execa'
 
-const pkgPath = resolve(CWD, 'package.json')
-const pkg: { name: string; version: string } = require(pkgPath)
-const currentVersion = pkg.version
-
-const releaseTypes: ReleaseType[] = ['premajor', 'preminor', 'prepatch', 'prerelease', 'major', 'minor', 'patch']
-
-type RunFun = (bin: string, args: string[], opts?: ExecaOptions<string>) => ExecaChildProcess<string>
-
-const run: RunFun = (bin, args, opts = {}) =>
-  execa(bin, args, {
-    stdio: 'inherit',
-    ...opts,
-  })
-
-const inc = (i: ReleaseType) => semver.inc(currentVersion, i, `alpha.${Date.now()}`)
+const releaseTypes = ['premajor', 'preminor', 'prepatch', 'major', 'minor', 'patch']
 
 async function isWorktreeEmpty() {
-  const ret = await run('git', ['status', '--porcelain'])
+  const ret = await execa('git', ['status', '--porcelain'])
   return !ret.stdout
 }
 
 async function publish(preRelease: boolean) {
-  const s = ora().start('Publishing all packages\n')
+  const s = ora().start('Publishing all packages')
   const args = ['-r', 'publish', '--no-git-checks', '--access', 'public']
 
-  if (preRelease) {
-    args.push('--tag', 'alpha')
-  }
-
-  const { stderr, stdout } = await run('pnpm', args)
-  if (stderr?.includes('npm ERR!')) {
-    throw new Error('\n' + stderr)
+  preRelease && args.push('--tag', 'alpha')
+  const ret = await execa('pnpm', args)
+  if (ret.stderr && ret.stderr.includes('npm ERR!')) {
+    throw new Error('\n' + ret.stderr)
   } else {
     s.succeed('Publish all packages successfully')
-    stdout && logger.info(stdout)
+    ret.stdout && logger.info(ret.stdout)
   }
 }
 
 async function pushGit(version: string, remote = 'origin') {
   const s = ora().start('Pushing to remote git repository')
-  await run('git', ['add', '.'])
-  await run('git', ['commit', '-m', `release: v${version}`])
-  await run('git', ['tag', `v${version}`])
-  await run('git', ['push', remote, `v${version}`])
-  const ret = await run('git', ['push'])
+  await execa('git', ['add', '.'])
+  await execa('git', ['commit', '-m', `v${version}`])
+  await execa('git', ['tag', `v${version}`])
+  await execa('git', ['push', remote, `v${version}`])
+  const ret = await execa('git', ['push'])
   s.succeed('Push remote repository successfully')
 
   ret.stdout && logger.info(ret.stdout)
@@ -76,6 +57,8 @@ function updateVersion(version: string) {
 
 export async function release(cmd: { remote?: string }) {
   try {
+    const currentVersion = require(resolve(CWD, 'package.json')).version
+
     if (!currentVersion) {
       logger.error('Your package is missing the version field')
       return
@@ -86,63 +69,47 @@ export async function release(cmd: { remote?: string }) {
       return
     }
 
-    let targetVersion = currentVersion
+    let name = 'Please select release type'
+    const ret = await inquirer.prompt([
+      {
+        name,
+        type: 'list',
+        choices: releaseTypes,
+      },
+    ])
 
-    const { release }: { release: string } = await prompts({
-      name: 'release',
-      message: 'Please select release type',
-      type: 'select',
-      choices: releaseTypes
-        .map((i) => `${i} (${inc(i)})`)
-        .concat(['custom'])
-        .map((i) => ({ value: i, title: i })),
-    })
+    const type = ret[name]
+    const isPreRelease = type.startsWith('pre')
+    let expectVersion = semver.inc(currentVersion, type, `alpha.${Date.now()}`) as string
+    expectVersion = isPreRelease ? expectVersion.slice(0, -2) : expectVersion
 
-    if (release === 'custom') {
-      ;({ version: targetVersion } = await prompts({
-        type: 'text',
-        name: 'version',
-        message: 'Input custom version',
-        initial: currentVersion,
-      }))
-    } else {
-      targetVersion = release.match(/\((.*)\)/)![1]
-    }
-
-    if (!semver.valid(targetVersion)) {
-      logger.error(`invalid target version: ${targetVersion}`)
+    name = 'version confirm'
+    const confirm = await inquirer.prompt([
+      {
+        name,
+        type: 'confirm',
+        message: `All packages version ${currentVersion} -> ${expectVersion}:`,
+      },
+    ])
+    if (!confirm[name]) {
       return
     }
 
-    const isPreRelease = targetVersion.includes('alpha')
-    if (isPreRelease) {
-      targetVersion = targetVersion.slice(0, -2)
-    }
-
-    const { yes }: { yes: boolean } = await prompts({
-      type: 'confirm',
-      name: 'yes',
-      message: `All packages version ${currentVersion} -> ${targetVersion}, Confirm?`,
-    })
-
-    if (!yes) return
-
-    logger.success('\nUpdating package version...')
-    updateVersion(targetVersion)
+    updateVersion(expectVersion)
 
     if (!isPreRelease) {
       await changelog()
-      await pushGit(targetVersion, cmd.remote)
+      await pushGit(expectVersion, cmd.remote)
     }
 
     await publish(isPreRelease)
 
-    logger.success(`Release version ${targetVersion} successfully!`)
+    logger.success(`Release version ${expectVersion} successfully!`)
 
     if (isPreRelease) {
       try {
-        await run('git', ['restore', '**/package.json'])
-        await run('git', ['restore', 'package.json'])
+        await execa('git', ['restore', '**/package.json'])
+        await execa('git', ['restore', 'package.json'])
       } catch {
         logger.error('Restore package.json has failed, please restore manually')
       }
