@@ -93,7 +93,7 @@ import BasicExample from '../example/Responsive.vue'
   <var-col class="col" :xs="4" :sm="6" :md="8" :lg="9" :xl="11">2</var-col>
   <var-col class="col" :xs="4" :sm="6" :md="8" :lg="9" :xl="11">3</var-col>
   <var-col class="col" :xs="8" :sm="6" :md="4" :lg="3" :xl="1">4</var-col>
- </var-row>
+</var-row>
 ```
 
 #### 属性对象
