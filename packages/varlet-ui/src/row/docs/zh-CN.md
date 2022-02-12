@@ -81,6 +81,8 @@ createApp().use(Row).use(Col)
 
 ### 响应式布局
 
+#### 基本用法
+
 ```vue
 import BasicExample from '../example/Responsive.vue'
 ```
@@ -91,12 +93,56 @@ import BasicExample from '../example/Responsive.vue'
   <var-col class="col" :xs="4" :sm="6" :md="8" :lg="9" :xl="11">2</var-col>
   <var-col class="col" :xs="4" :sm="6" :md="8" :lg="9" :xl="11">3</var-col>
   <var-col class="col" :xs="8" :sm="6" :md="4" :lg="3" :xl="1">4</var-col>
-  <var-col class="col" :xs="24" :sm="12" :md="8" :lg="6" :xl="4">5</var-col>
-  <var-col class="col" :xs="24" :sm="12" :md="8" :lg="6" :xl="4">6</var-col>
-  <var-col class="col" :xs="{ span: 12, offset: 12 }" :sm="{ span: 6, offset: 6 }" :md="{ span: 4, offset: 4 }" :lg="{ span: 3, offset: 3 }" :xl="{ span: 2, offset: 2 }">7</var-col>
-  <var-col class="col" :xs="{ span: 12, offset: 12 }" :sm="{ span: 6, offset: 6 }" :md="{ span: 4, offset: 4 }" :lg="{ span: 3, offset: 3 }" :xl="{ span: 2, offset: 2 }">8</var-col>
-  <var-col class="col" :xs="{ span: 12, offset: 12 }" :sm="{ span: 6, offset: 6 }" :md="{ span: 4, offset: 4 }" :lg="{ span: 3, offset: 3 }" :xl="{ span: 2, offset: 2 }">9</var-col>
-  <var-col class="col" :xs="{ span: 12, offset: 12 }" :sm="{ span: 6, offset: 6 }" :md="{ span: 4, offset: 4 }" :lg="{ span: 3, offset: 3 }" :xl="{ span: 2, offset: 2 }">10</var-col>
+</var-row>
+```
+
+#### 属性对象
+```vue
+import ObjectExample from '../example/ResponsiveObject.vue'
+```
+
+```html
+<var-row :gutter="10">
+  <var-col
+    class="col"
+    :xs="{ span: 12, offset: 6 }"
+    :sm="{ span: 6 }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
+    :xl="{ span: 2, offset: 2 }"
+  >
+    1
+  </var-col>
+  <var-col
+    class="col"
+    :xs="{ span: 12, offset: 6 }"
+    :sm="{ span: 6 }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
+    :xl="{ span: 2, offset: 2 }"
+  >
+    2
+  </var-col>
+  <var-col
+    class="col"
+    :xs="{ span: 12, offset: 6 }"
+    :sm="{ span: 6 }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
+    :xl="{ span: 2, offset: 2 }"
+  >
+    3
+  </var-col>
+  <var-col
+    class="col"
+    :xs="{ span: 12, offset: 6 }"
+    :sm="{ span: 6 }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
+    :xl="{ span: 2, offset: 2 }"
+  >
+    4
+  </var-col>
 </var-row>
 ```
 
@@ -113,15 +159,15 @@ import BasicExample from '../example/Responsive.vue'
 | `align` | 交叉轴对齐方式, 可选值为 `flex-start` `flex-end` `center` | _string_ | `flex-start` |
 
 ### Col Props
-| 参数       | 说明 | 类型 | 默认值     |
-|----------| --- | --- |---------|
-| `span`   | 列占据的栅格数 | _string \| number_ | `24` |
-| `offset` | 列偏移的栅格数 | _string \| number_ | `0` |
-| `xs`     | `<768px` 响应式栅格数或者栅格属性对象 | _string \| number \| object({span: 4, offset: 4})_ | `-` |
-| `sm`     | `≥768px` 响应式栅格数或者栅格属性对象 | _string \| number \| object({span: 4, offset: 4})_ | `-` |
-| `md`     | `≥992px` 响应式栅格数或者栅格属性对象 | _string \| number \| object({span: 4, offset: 4})_ | `-` |
-| `lg`     | `≥1200px` 响应式栅格数或者栅格属性对象 | _string \| number \| object({span: 4, offset: 4})_ | `-` |
-| `xl`     | `≥1920px` 响应式栅格数或者栅格属性对象 | _string \| number \| object({span: 4, offset: 4})_ | `-` |
+| 参数       | 说明                       | 类型       | 默认值     |
+|----------|--------------------------|----------|---------|
+| `span`   | 列占据的栅格数                  | _string \| number_ | `24` |
+| `offset` | 列偏移的栅格数                  | _string \| number_ | `0` |
+| `xs`     | `<768px` 响应式栅格数或者栅格属性对象  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-` |
+| `sm`     | `≥768px` 响应式栅格数或者栅格属性对象  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-` |
+| `md`     | `≥992px` 响应式栅格数或者栅格属性对象  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-` |
+| `lg`     | `≥1200px` 响应式栅格数或者栅格属性对象 | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-` |
+| `xl`     | `≥1920px` 响应式栅格数或者栅格属性对象 | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-` |
 
 ### 事件
 

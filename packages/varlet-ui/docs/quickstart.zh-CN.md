@@ -6,7 +6,7 @@
 
 ### 安装
 
-### CDN
+#### CDN
 `varlet.js` 包含组件库的所有样式和逻辑, 引入即可。
 
 ```html
@@ -21,10 +21,10 @@
 </script>
 ```
 
-### Webpack/Vite
+#### Webpack/Vite
 
 ```shell
-# 通过 npm 或 yarn 安装 或 pnpm 安装
+# 通过 npm、yarn 或 pnpm 安装
 
 # npm
 npm i @varlet/ui -S

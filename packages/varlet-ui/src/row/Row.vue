@@ -4,7 +4,7 @@
     :style="{
       justifyContent: justify,
       alignItems: align,
-      margin,
+      margin: average ? `0 -${average}px` : undefined,
     }"
     @click="onClick"
   >
@@ -13,10 +13,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, computed, watch } from 'vue'
 import { props } from './props'
 import { useCols } from './provide'
-import { toPxNum, toSizeUnit } from '../utils/elements'
+import { toPxNum } from '../utils/elements'
+import type { ComputedRef } from 'vue'
 import type { RowProvider } from './provide'
 
 export default defineComponent({
@@ -24,15 +25,15 @@ export default defineComponent({
   props,
   setup(props) {
     const { cols, bindCols, length } = useCols()
-    const margin = ref('0 0')
+
+    const average: ComputedRef<number> = computed(() => {
+      const gutter: number = toPxNum(props.gutter)
+      return gutter / 2
+    })
 
     const computePadding = () => {
-      const gutter: number = toPxNum(props.gutter)
-      const average = gutter / 2
-      margin.value = `0 -${toSizeUnit(average)}`
-
       cols.forEach((col) => {
-        col.setPadding({ left: average, right: average })
+        col.setPadding({ left: average.value, right: average.value })
       })
     }
 
@@ -43,7 +44,7 @@ export default defineComponent({
 
     bindCols(rowProvider)
 
-    return { margin }
+    return { average }
   },
 })
 </script>

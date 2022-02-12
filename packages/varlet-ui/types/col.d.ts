@@ -1,20 +1,18 @@
 import { VarComponent } from './varComponent'
-import { SizeDescriptor } from '../src/col/provide'
 
-export type SizeObject = {
-  span?: number
-  offset?: number
+export type SizeDescriptor = {
+  span?: number | string
+  offset?: number | string
 }
-export type SizeDescriptor = string | number | SizeObject | undefined
 
 export interface ColProps {
   span?: string | number
   offset?: string | number
-  xs?: SizeDescriptor
-  sm?: SizeDescriptor
-  md?: SizeDescriptor
-  lg?: SizeDescriptor
-  xl?: SizeDescriptor
+  xs?: string | number | SizeDescriptor | undefined
+  sm?: string | number | SizeDescriptor | undefined
+  md?: string | number | SizeDescriptor | undefined
+  lg?: string | number | SizeDescriptor | undefined
+  xl?: string | number | SizeDescriptor | undefined
   onClick?: (e: Event) => void
 }
 

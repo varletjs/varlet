@@ -6,7 +6,7 @@ Here are the most basic ways to access component libraries in common development
 
 ### Install
 
-### CDN
+#### CDN
 `varlet.js` contain all the styles and logic of the component library, and you can import them.
 
 ```html
@@ -21,10 +21,10 @@ Here are the most basic ways to access component libraries in common development
 </script>
 ```
 
-### Webpack/Vite
+#### Webpack/Vite
 
 ```shell
-# Install with npm or yarn or pnpm
+# Install with npm, yarn or pnpm
 
 # npm
 npm i @varlet/ui -S

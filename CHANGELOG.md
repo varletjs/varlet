@@ -1,3 +1,27 @@
+# [1.26.0](https://github.com/varletjs/varlet/compare/v1.25.1...v1.26.0) (2022-02-08)
+
+
+### Bug Fixes
+
+* **playground:** fix primary color ([4b80e47](https://github.com/varletjs/varlet/commit/4b80e47d42948b8e67dbd7e23184431bbe51c521))
+* **playground:** fix to relative path ([73834d0](https://github.com/varletjs/varlet/commit/73834d0070c0bd8833cb4e8d0b731b884a4874f7))
+
+
+### Features
+
+* **icons:** add new icon ([49c3d5e](https://github.com/varletjs/varlet/commit/49c3d5ed790132443415b0af4ca594adfef906ed))
+* **site:** add playground logic ([24c542d](https://github.com/varletjs/varlet/commit/24c542dff259f91d427c5deaa79032cda53e4597))
+* **ui/col:** add responsive layout ([4e314cb](https://github.com/varletjs/varlet/commit/4e314cb0f3ea0d5ac234d5987289ee33c19cfc69))
+
+
+### Reverts
+
+* revert add responsive layout" ([d54e500](https://github.com/varletjs/varlet/commit/d54e500325618806adc118562fa4df9774e347b3))
+* revert release command ([c2fc9df](https://github.com/varletjs/varlet/commit/c2fc9df5c6263d30d9304410b40e6140b4a53630))
+* revert release command ([f910a24](https://github.com/varletjs/varlet/commit/f910a24a3fd3ee13f332ec0fd226971c80f862a2))
+
+
+
 ## [1.25.1](https://github.com/varletjs/varlet/compare/v1.25.0...v1.25.1) (2022-01-27)
 
 

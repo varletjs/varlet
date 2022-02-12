@@ -82,7 +82,7 @@ export default defineComponent({
 
       const { offsetHeight } = code.value as HTMLElement
       disabledFold.value = offsetHeight - fold.value.foldHeight < offset
-      height.value = fold.value?.defaultFold ? fold.value?.foldHeight : -1
+      height.value = fold.value?.defaultFold ? fold.value?.foldHeight : offsetHeight
     })
 
     return {

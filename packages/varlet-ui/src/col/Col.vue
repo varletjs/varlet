@@ -2,8 +2,8 @@
   <div
     class="var-col var--box"
     :class="[
-      span ? `var-col--span-${toNumber(span)}` : null,
-      offset ? `var-col--offset-${toNumber(offset)}` : null,
+      span ? `var-col--span-${span}` : null,
+      offset ? `var-col--offset-${offset}` : null,
       ...getSize('xs', xs),
       ...getSize('sm', sm),
       ...getSize('md', md),
@@ -36,12 +36,6 @@ export default defineComponent({
     const padding: Ref<ColPadding> = ref({ left: 0, right: 0 })
     const span: ComputedRef<number> = computed(() => toNumber(props.span))
     const offset: ComputedRef<number> = computed(() => toNumber(props.offset))
-    const xs: ComputedRef<SizeDescriptor> = computed(() => props.xs)
-    const sm: ComputedRef<SizeDescriptor> = computed(() => props.sm)
-    const md: ComputedRef<SizeDescriptor> = computed(() => props.md)
-    const lg: ComputedRef<SizeDescriptor> = computed(() => props.lg)
-    const xl: ComputedRef<SizeDescriptor> = computed(() => props.xl)
-
     const { row, bindRow } = useRow()
 
     const colProvider: ColProvider = {
@@ -50,9 +44,12 @@ export default defineComponent({
       },
     }
 
-    const getSize = (mode: string, size: SizeDescriptor) => {
-      if (!size) return []
-      const classes = []
+    const getSize = (mode: string, size: string | number | SizeDescriptor | undefined) => {
+      const classes: string[] = []
+
+      if (!size) {
+        return classes
+      }
 
       if (isPlainObject(size)) {
         const { span, offset } = size
@@ -61,6 +58,7 @@ export default defineComponent({
       } else {
         classes.push(`var-col--span-${mode}-${size}`)
       }
+
       return classes
     }
 
@@ -77,11 +75,6 @@ export default defineComponent({
       getSize,
       span,
       offset,
-      xs,
-      sm,
-      md,
-      lg,
-      xl,
     }
   },
 })

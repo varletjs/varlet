@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "1.25.1",
+  "version": "1.26.0",
   "description": "A material like components library",
   "module": "es/index.js",
   "main": "lib/index.js",
@@ -57,11 +57,11 @@
     "@varlet/cli": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
     "@vue/test-utils": "2.0.0-rc.6",
-    "@vue/runtime-core": "^3.2.16",
+    "@vue/runtime-core": "3.2.25",
     "typescript": "^4.4.4",
     "lodash-es": "^4.17.21",
     "clipboard": "^2.0.6",
-    "vue": "3.2.16",
+    "vue": "3.2.25",
     "vue-router": "4.0.12",
     "live-server": "^1.2.1"
   },

@@ -54,7 +54,7 @@
                   v-for="l in labels"
                   :key="l"
                   @click.stop
-                  @close="(e) => handleClose(l)"
+                  @close="() => handleClose(l)"
                 >
                   {{ l }}
                 </var-chip>
