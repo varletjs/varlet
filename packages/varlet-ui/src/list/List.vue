@@ -57,7 +57,9 @@ export default defineComponent({
 
       const { bottom: detectorBottom } = (detectorEl.value as HTMLElement).getBoundingClientRect()
 
-      return detectorBottom - toPxNum(props.offset) <= containerBottom
+      // The fractional part of the detectorBottom when bottoming out overflows
+      // https://github.com/varletjs/varlet/issues/310
+      return Math.floor(detectorBottom) - toPxNum(props.offset) <= containerBottom
     }
 
     // expose
