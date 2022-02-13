@@ -46,6 +46,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': '服务端渲染',
+          'en-US': 'Server side rendering',
+        },
+        doc: 'serverSideRendering',
+        type: 3,
+      },
+      {
+        text: {
           'zh-CN': '浏览器适配',
           'en-US': 'Browser Adaptation',
         },
@@ -58,14 +66,6 @@ module.exports = {
           'en-US': 'Locale',
         },
         doc: 'locale',
-        type: 3,
-      },
-      {
-        text: {
-          'zh-CN': '服务端渲染',
-          'en-US': 'Server side rendering',
-        },
-        doc: 'serverSideRendering',
         type: 3,
       },
       {

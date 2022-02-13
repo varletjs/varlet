@@ -6,7 +6,7 @@ Here is the basic way to introduce `Varlet` in `Nuxt`. You can introduce the ent
 
 ### Create Nuxt project
 
-`Nuxt.js`  is a server rendering application framework based on `Vue.js`，For more details, please go `Nuxt`([Chinese](https://www.nuxtjs.cn) [English](https://nuxtjs.org)).
+`Nuxt.js`  is a server rendering application framework based on `Vue.js`，For more details, please go [Nuxt](https://v3.nuxtjs.org/).
 
 ### Fully import
 

@@ -6,7 +6,7 @@
 
 ### 创建 Nuxt 项目
 
-`Nuxt.js` 是一个基于 `Vue.js` 的服务端渲染应用框架，详细教程请移步 `Nuxt`（[中文](https://www.nuxtjs.cn) [英文](https://nuxtjs.org)）。
+`Nuxt.js` 是一个基于 `Vue.js` 的服务端渲染应用框架，详细教程请移步 [Nuxt](https://v3.nuxtjs.org/)。
 ### 完整引入
 
 `Nuxt` 会自动读取 `plugins` 目录下的文件并加载它们。
