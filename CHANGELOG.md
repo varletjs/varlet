@@ -1,3 +1,13 @@
+## [1.26.1](https://github.com/varletjs/varlet/compare/v1.26.0...v1.26.1) (2022-02-14)
+
+
+### Bug Fixes
+
+* **site:** fix fold animation error when defaultFold set false ([e709af0](https://github.com/varletjs/varlet/commit/e709af094343ffac2002d63c5a883005bd3f82f8))
+* **ui/list:** the fractional part of the detectorBottom when bottoming out overflows ([c8e0142](https://github.com/varletjs/varlet/commit/c8e01423d98b9bdcea825be35558f299932f753d))
+
+
+
 # [1.26.0](https://github.com/varletjs/varlet/compare/v1.25.1...v1.26.0) (2022-02-08)
 
 
