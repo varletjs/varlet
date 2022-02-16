@@ -11,6 +11,7 @@ import { Picker } from '@varlet/ui'
 
 createApp().use(Picker)
 ```
+
 ### 局部引入
 
 ```js
@@ -23,7 +24,7 @@ export default {
 }
 ```
 
-### 函数调用
+## 函数调用
 
 ### 多列滚动
 
@@ -53,7 +54,7 @@ const { state, texts, indexes } = await Picker({
 })
 ```
 
-### 组件调用
+## 组件调用
 
 ### 多列滚动
 
@@ -132,8 +133,6 @@ export default {
 ## API
 
 ### 属性
-
-### Picker Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

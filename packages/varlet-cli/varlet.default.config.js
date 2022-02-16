@@ -39,7 +39,7 @@ module.exports = {
     },
     fold: {
       defaultFold: false,
-      foldHeight: 60,
+      foldHeight: 50,
     },
   },
   mobile: {

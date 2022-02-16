@@ -1,5 +1,7 @@
 # 样式定制
 
+### 介绍
+
 组件库通过 [css 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties)来组织样式，每个组件都有对应的样式变量，
 您可以通过 css 文件覆盖的方式直接替换根节点上的样式变量, 或者使用 StyleProvider 组件。
 

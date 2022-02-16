@@ -12,17 +12,20 @@ import { Pagination } from '@varlet/ui'
 
 createApp().use(Pagination)
 ```
-### Simple Mode
+
+## Simple Mode
+
+### Intro
 
 The default display mode is recommended for small-screen devices. See the mobile phone emulator on the right for a preview of the components.
 
-#### Basic Usage
+### Basic Usage
 
 ```html
 <var-pagination :current="3" :total="120" />
 ```
 
-#### Hide Size Changer
+### Hide Size Changer
 
 Use `show-size-changer` prop to hide size changer.
 
@@ -30,7 +33,7 @@ Use `show-size-changer` prop to hide size changer.
 <var-pagination :current="3" :total="120" :show-size-changer="false"/>
 ```
 
-#### Show Total
+### Show Total
 
 Use `showTatol` prop to show custom total text.
 
@@ -42,17 +45,19 @@ Use `showTatol` prop to show custom total text.
 />
 ```
 
-#### Disabled
+### Disabled
 
 ```html
 <var-pagination :current="3" :total="115" disabled />
 ```
 
-### Basic Mode
+## Basic Mode
+
+### Intro
 
 Set `simple` to `false` when you use medium and large screen devices.
 
-#### Basic Usage
+### Basic Usage
 
 ```vue
 import Basic from '../example/Basic.vue'
@@ -62,7 +67,7 @@ import Basic from '../example/Basic.vue'
 <var-pagination current="6" total="115" :simple="false" />
 ```
 
-#### Enable page number to jump quickly
+### Enable page number to jump quickly
 
 Use `show-quick-jumper` prop to enable page number to jump quickly.
 
@@ -79,7 +84,7 @@ import QuickJumper from '../example/QuickJumper.vue'
 />
 ```
 
-#### Size Option
+### Size Option
 
 Use `show-size-changer` hide size changer and use `size-option` prop set the number of `size` that can be chosen.
 
@@ -92,7 +97,7 @@ import SizeOption from '../example/SizeOption.vue'
 <var-pagination :current="3" :total="120" :simple="false" :size-option="[10, 20, 30, 40]" />
 ```
 
-#### Show Total
+### Show Total
 
 ```vue
 import ShowTotal from '../example/ShowTotal.vue'
@@ -115,7 +120,7 @@ import ShowTotal from '../example/ShowTotal.vue'
 />
 ```
 
-#### Disabled
+### Disabled
 
 ```vue
 import Disabled from '../example/Disabled.vue'

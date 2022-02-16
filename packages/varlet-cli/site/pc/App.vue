@@ -129,7 +129,7 @@ export default defineComponent({
 
 <style>
 .hljs {
-  background: #202020 !important;
+  background: #272727 !important;
   padding: 0 !important;
   border-radius: 4px;
 }
@@ -174,7 +174,7 @@ iframe {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px 4px 20px;
+    margin: 20px 0;
     padding: 90px 40px;
     border-top: 6px solid var(--site-config-color-introduce-border);
     border-radius: 2px;
@@ -267,25 +267,30 @@ iframe {
       }
 
       h3 {
-        margin-bottom: 16px;
         font-size: 18px;
+        margin: 0;
+      }
+
+      h4 {
+        margin: 18px 0 0;
       }
 
       p,
-      ul {
+      ul,
+      ol {
         -webkit-font-smoothing: antialiased;
         color: var(--site-config-color-text);
         font-size: 15px;
         line-height: 26px;
-        padding: 16px;
         border-radius: 4px;
         background: var(--site-config-color-bar);
-        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
         list-style: none;
+        margin: 14px 0 0;
+        padding: 0;
       }
 
       pre {
-        margin: 10px 0 0;
+        margin: 0;
       }
 
       code {
@@ -321,7 +326,6 @@ iframe {
         line-height: 28px;
         border-collapse: collapse;
         border-radius: 4px;
-        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 
         th {
           padding: 8px 16px;
@@ -330,11 +334,12 @@ iframe {
           color: var(--site-config-color-sub-text);
           font-size: 13px;
           -webkit-font-smoothing: antialiased;
+          border-bottom: 1px solid var(--site-config-color-border);
         }
 
         td {
           padding: 8px 16px;
-          border-top: 1px solid var(--site-config-color-border);
+          border-bottom: 1px solid var(--site-config-color-border);
           color: var(--site-config-color-text);
           font-family: Consolas, Monaco, monospace;
 
@@ -355,7 +360,11 @@ iframe {
       }
 
       .card {
-        margin-bottom: 24px;
+        border-radius: 4px;
+        background: var(--site-config-color-bar);
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
       }
     }
   }

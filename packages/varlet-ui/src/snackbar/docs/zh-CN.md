@@ -25,9 +25,9 @@ export default {
 }
 ```
 
-### 组件调用
+## 组件调用
 
-#### 基本使用
+### 基本使用
 
 ```html
 <var-button type="primary" block @click="show = !show">基本使用</var-button>
@@ -48,7 +48,7 @@ export default {
 }
 ```
 
-#### 垂直排列
+### 垂直排列
 通过 `vertical` 属性改变 `snackbar` 排列方式，通过 `自定义插槽` 创建右边 action。
 
 ```html
@@ -60,7 +60,7 @@ export default {
 </var-snackbar>
 ```
 
-#### 底部显示
+### 底部显示
 
 通过 `position` 属性改变 `snackbar` 显示位置。
 
@@ -73,7 +73,7 @@ export default {
 </var-snackbar>
 ```
 
-#### 显示时长
+### 显示时长
 
 通过 `duration` 属性改变 `snackbar` 显示时长。
 
@@ -81,7 +81,7 @@ export default {
 <var-snackbar v-model:show="show" :duration="1000"> 这是一个消息条！！</var-snackbar>
 ```
 
-#### 禁止穿透点击
+### 禁止穿透点击
 
 使用 `forbid-click` 控制是否禁止穿透点击。
 
@@ -89,15 +89,15 @@ export default {
 <var-snackbar v-model:show="show" :forbid-click="true"> 这是一个消息条！！</var-snackbar>
 ```
 
-### 函数调用
+## 函数调用
 
-#### 基本使用
+### 基本使用
 
 ```javascript
 Snackbar('这是一个消息条！！')
 ```
 
-#### 显示时长
+### 显示时长
 
 ```javascript
 Snackbar({
@@ -106,7 +106,7 @@ Snackbar({
 })
 ```
 
-#### 底部显示
+### 底部显示
 
 ```javascript
 Snackbar({

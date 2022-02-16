@@ -72,6 +72,7 @@ export default {
   }
 
   ul {
+    margin: 0;
     padding: 0;
     box-shadow: none;
     color: inherit;

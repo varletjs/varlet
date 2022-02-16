@@ -1,5 +1,7 @@
 # Dark Mode
 
+### Intro
+
 The first party of the component library provides the theme of dark mode.
 The advantage of dark mode is that it has higher readability in low light environments.
 

@@ -26,8 +26,9 @@ export default {
 }
 ```
 
-### 函数调用
-#### 基本使用
+## 函数调用
+
+### 基本使用
 
 ```js
 import { Snackbar } from '@varlet/ui'
@@ -52,7 +53,7 @@ const action = await ActionSheet({
 action !== 'close' && Snackbar(`您选择的是:${action.name}`)
 ```
 
-#### 修改标题
+### 修改标题
 
 ```js
 ActionSheet({
@@ -74,7 +75,7 @@ ActionSheet({
 })
 ```
 
-#### 禁用选项
+### 禁用选项
 
 选项传入 `disabled` 可以使选项处于禁用状态。
 
@@ -98,7 +99,7 @@ ActionSheet({
 })
 ```
 
-#### 禁用点击选项时关闭动作面板
+### 禁用点击选项时关闭动作面板
 
 方法传入 `closeOnClickAction` 可以禁用在选择选项时 `ActionSheet` 自动关闭的行为，用户可以多次选择，
 由于 `Promise` 只会被 `resolve` 一次，所以推荐使用 `onSelect` 监听用户选择行为。
@@ -154,9 +155,9 @@ ActionSheet({
 })
 ```
 
-### 组件调用
+## 组件调用
 
-#### 基本使用
+### 基本使用
 
 ```html
 <var-button type="warning" block @click="show = true">基本使用</var-button>
@@ -200,7 +201,7 @@ export default {
 }
 ```
 
-#### 修改标题
+### 修改标题
 
 ```html
 <var-button type="warning" block @click="show = true">修改标题</var-button>
@@ -245,7 +246,7 @@ export default {
 }
 ```
 
-#### 禁用选项
+### 禁用选项
 
 ```html
 <var-button type="warning" block @click="show = true">禁用选项</var-button>
@@ -290,7 +291,7 @@ export default {
 }
 ```
 
-#### 禁用点击选项时关闭动作面板
+### 禁用点击选项时关闭动作面板
 
 ```html
 <var-button type="warning" block @click="show = true">禁用点击选项时关闭动作面板</var-button>
@@ -335,7 +336,7 @@ export default {
 }
 ```
 
-#### 自定义选项样式
+### 自定义选项样式
 
 ```html
 <var-button type="warning" block @click="show = true">自定义选项样式</var-button>

@@ -157,7 +157,7 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 
 ### Props
 
-### Row Props
+#### Row Props
 
 | Prop      | Description                                                                                          | Type               | Default      |
 | --------- | ---------------------------------------------------------------------------------------------------- | ------------------ | ------------ |
@@ -165,7 +165,7 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 | `justify` | Spindle alignment, optional value is `flex-start` `flex-end` `center` `space-between` `space-around` | _string_           | `flex-start` |
 | `align`   | Cross axis alignment, optional value is `flex-start` `flex-end` `center`                             | _string_           | `flex-start` |
 
-### Col Props
+#### Col Props
 
 | Prop     | Description                                         | Type     | Default |
 |----------| --------------------------------------------------- |----------| ------- |
@@ -179,13 +179,13 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 
 ### Events
 
-### Row Events
+#### Row Events
 
 | Event   | Description                  | Arguments      |
 | ------- | ---------------------------- | -------------- |
 | `click` | Triggered when you click Row | `event: Event` |
 
-### Col Events
+#### Col Events
 
 | Event   | Description                  | Arguments      |
 | ------- | ---------------------------- | -------------- |
@@ -193,13 +193,13 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 
 ### Slots
 
-### Row Slots
+#### Row Slots
 
 | Slot      | Description | Arguments |
 | --------- | ----------- | --------- |
 | `default` | Row content | `-`       |
 
-### Col Slots
+#### Col Slots
 
 | Slot      | Description | Arguments |
 | --------- | ----------- | --------- |

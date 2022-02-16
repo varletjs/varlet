@@ -24,7 +24,7 @@ export default {
 }
 ```
 
-### Function Call
+## Function Call
 
 ### Multi-column Picker
 
@@ -54,7 +54,7 @@ const { state, texts, indexes } = await Picker({
 })
 ```
 
-### Component Call
+## Component Call
 
 ### Multi-column Picker
 
@@ -132,8 +132,6 @@ export default {
 ## API
 
 ### Props
-
-### Picker Props
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 

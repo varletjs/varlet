@@ -4,8 +4,6 @@
 
 Load when the image is visible
 
-#### 
-
 ### Install
 
 ```js

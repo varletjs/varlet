@@ -1,5 +1,7 @@
 # @varlet/cli
 
+### Intro
+
 The out-of-the-box `Vue3 component library` rapid prototyping tool provides a series of commands and tools to solve the problem of component library development
 
 ### Feature
@@ -378,7 +380,7 @@ create `tsconfig.json`
 }
 ```
 
-#### Note before release
+### Note before release
 
 - 1.The registry of npm must set to the official npm mirror
 - 2.The npm must execute the login command for user login
