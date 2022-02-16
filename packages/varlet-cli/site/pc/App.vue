@@ -133,13 +133,17 @@ export default defineComponent({
   padding: 0 !important;
   border-radius: 4px;
 }
+
+.hljs code {
+  line-height: 31px;
+}
 </style>
 
 <style lang="less">
 @doc-active: {
   display: inline;
   font-family: inherit;
-  padding: 0 4px;
+  padding: 0;
   white-space: pre-wrap;
 }
 
@@ -300,7 +304,6 @@ iframe {
         overflow-x: auto;
         font-size: 13px;
         font-family: Consolas, Monaco, monospace;
-        line-height: 31px;
         white-space: pre-wrap;
         word-wrap: break-word;
         color: #fff;
