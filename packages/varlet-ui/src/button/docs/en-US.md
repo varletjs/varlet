@@ -1,5 +1,9 @@
 # Button
 
+### Intro
+
+The component library provides `<var-button>` common button components,can used to trigger an action.
+
 ### Install
 
 ```js
