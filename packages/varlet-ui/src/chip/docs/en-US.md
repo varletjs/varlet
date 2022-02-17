@@ -1,5 +1,9 @@
 # Chip
 
+### Intro
+
+The component library provides `<var-chip>` used to convey messages.
+
 ### Install
 
 ```js
