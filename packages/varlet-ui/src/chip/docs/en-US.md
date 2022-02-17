@@ -2,7 +2,8 @@
 
 ### Intro
 
-The component library provides `<var-chip>` used to convey messages.
+The component library provides `<var-chip>` used to display small pieces of information,
+set the paper to be closable through the `closable` attribute.
 
 ### Install
 
