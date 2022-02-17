@@ -2,7 +2,7 @@
 
 ### Intro
 
-The component library provides `<var-button>` common button components,can used to trigger an action.
+Button component for triggering actions
 
 ### Install
 

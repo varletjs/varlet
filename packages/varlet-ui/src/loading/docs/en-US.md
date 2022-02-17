@@ -2,7 +2,7 @@
 
 ### Intro
 
-The component library provides `<var-loading>` Used to display the loading status while loading data.
+Loading component for performing animations when data is loaded
 
 ### Install
 
