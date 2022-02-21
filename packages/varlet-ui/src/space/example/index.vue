@@ -1,9 +1,7 @@
 <template>
   <app-type>{{ pack.baseUse }}</app-type>
   <var-space>
-    <var-button>Button1</var-button>
-    <var-button>Button2</var-button>
-    <var-button>Button3</var-button>
+    <var-button v-for="i in 3" :key="i">Button{{ i }}</var-button>
   </var-space>
 
   <app-type>{{ pack.vertical }}</app-type>

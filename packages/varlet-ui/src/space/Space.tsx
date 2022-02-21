@@ -1,8 +1,8 @@
-import { defineComponent } from 'vue'
+import { defineComponent, VNodeChild, Fragment, VNode } from 'vue'
 import { internalSizeValidator, props } from './props'
 import type { SpaceInternalSize, SpaceSize } from './props'
 import { toPxNum } from '../utils/elements'
-import { isArray } from '../utils/shared'
+import { isArray, isPlainObject } from '../utils/shared'
 import '../styles/common.less'
 import './space.less'
 
@@ -27,11 +27,30 @@ export default defineComponent({
 
     return () => {
       const { inline, justify, align, wrap, direction, size } = props
-      const children = slots.default?.() ?? []
-      const lastIndex = children.length - 1
+      let children: VNodeChild[] = slots.default?.() ?? []
       const isInternalSize = internalSizeValidator(size)
       const [y, x] = getSize(size, isInternalSize)
 
+      const flatten = (vNodes: any) => {
+        const result: VNode[] = []
+
+        vNodes.forEach((vNode: any) => {
+          if (vNode.type === Fragment && isArray(vNode.children)) {
+            vNode.children.forEach((item: VNode) => {
+              result.push(item)
+            })
+            return
+          }
+
+          result.push(vNode)
+        })
+
+        return result
+      }
+
+      children = flatten(children)
+
+      const lastIndex = children.length - 1
       const spacers = children.map((child, index) => {
         let margin = '0'
 
