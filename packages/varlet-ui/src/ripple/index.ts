@@ -73,7 +73,7 @@ function createRipple(this: RippleHTMLElement, event: TouchEvent) {
     ripple.style.transform = `translate(${x}px, ${y}px) scale3d(.3, .3, .3)`
     ripple.style.width = `${size}px`
     ripple.style.height = `${size}px`
-    ripple.style.backgroundColor = _ripple.color ?? 'currentColor'
+    _ripple.color && (ripple.style.backgroundColor = _ripple.color)
     ripple.dataset.createdAt = String(performance.now())
 
     setStyles(this)
