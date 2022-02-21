@@ -107,11 +107,11 @@ import VarIcon from '../icon'
 import VarCell from '../cell'
 import VarInput from '../input'
 import { defineComponent, ref, computed, watch } from 'vue'
-import { props } from './porps'
+import { props } from './props'
 import { isNumber, toNumber } from '../utils/shared'
 import { pack } from '../locale'
 import type { ComputedRef, Ref } from 'vue'
-import type { Range } from './porps'
+import type { Range } from './props'
 
 export default defineComponent({
   name: 'VarPagination',
