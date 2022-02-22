@@ -2,7 +2,7 @@ import { defineComponent, VNodeChild, Fragment, VNode } from 'vue'
 import { internalSizeValidator, props } from './props'
 import type { SpaceInternalSize, SpaceSize } from './props'
 import { toPxNum } from '../utils/elements'
-import { isArray, isPlainObject } from '../utils/shared'
+import { isArray } from '../utils/shared'
 import '../styles/common.less'
 import './space.less'
 
