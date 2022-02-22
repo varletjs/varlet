@@ -509,3 +509,28 @@ exports[`test space props 25`] = `
   </div>
 </div>"
 `;
+
+exports[`test space v-for 1`] = `
+"<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
+  <div style=\\"margin: 4px 12px 4px 0px;\\">
+    <div>div1</div>
+  </div>
+  <div style=\\"margin: 4px 12px 4px 0px;\\">
+    <div>div2</div>
+  </div>
+  <div style=\\"margin: 4px 0px;\\">
+    <div>div3</div>
+  </div>
+</div>"
+`;
+
+exports[`test space with Comment 1`] = `
+"<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
+  <div style=\\"margin: 4px 12px 4px 0px;\\">
+    <div>div1</div>
+  </div>
+  <div style=\\"margin: 4px 0px;\\">
+    <div>div2</div>
+  </div>
+</div>"
+`;

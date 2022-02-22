@@ -1,4 +1,4 @@
-import { defineComponent, VNodeChild, Fragment, VNode } from 'vue'
+import { defineComponent, VNodeChild, Fragment, VNode, Comment } from 'vue'
 import { internalSizeValidator, props } from './props'
 import type { SpaceInternalSize, SpaceSize } from './props'
 import { toPxNum } from '../utils/elements'
@@ -35,6 +35,8 @@ export default defineComponent({
         const result: VNode[] = []
 
         vNodes.forEach((vNode: any) => {
+          if (vNode.type === Comment) return
+
           if (vNode.type === Fragment && isArray(vNode.children)) {
             vNode.children.forEach((item: VNode) => {
               result.push(item)
