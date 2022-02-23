@@ -161,13 +161,13 @@ export default {
 | `change` | 日期变化时触发 | `value: string \| string[]` |
 
 ### 插槽
-`weekIndex` 表示一周的第 `n` 天，从周末的`0`开始
+`weekIndex` 表示一周的第 `n` 天，从周末的 `0` 开始
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
 | `year` | 自定义标题中的年 | `year: YYYY` |
 | `month` | 自定义标题中的月 | `year: YYYY` <br> `month: MM` |
-| `date` | 自定义标题中的日期 | `year: YYYY` <br> `month: MM` `date: DD` <br> `week: weekIndex` |
+| `date` | 自定义标题中的日期 | `year: YYYY` <br> `month: MM` <br> `date: DD` <br> `week: weekIndex` |
 | `range` | 自定义标题中的范围 | `choose: [startData, endDate]` |
 | `multiple` | 自定义标题中的多选 | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
 

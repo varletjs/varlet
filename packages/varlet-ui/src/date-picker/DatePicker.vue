@@ -184,12 +184,13 @@ export default defineComponent({
 
     const slotProps: ComputedRef<Record<string, string>> = computed(() => {
       const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value?.index}-${chooseDay.value}`).day()
+      const date = chooseDay.value ? chooseDay.value?.padStart(2, '0') : ''
 
       return {
         week: `${weekIndex}`,
         year: chooseYear.value ?? '',
         month: chooseMonth.value?.index ?? '',
-        date: chooseDay.value ?? '',
+        date,
       }
     })
 
