@@ -19,9 +19,7 @@
         ]"
         @click="clickEl('date')"
       >
-        <transition
-          :name="multiple ? '' : reverse ? 'var-date-picker-reverse-translatey' : 'var-date-picker-translatey'"
-        >
+        <transition :name="multiple ? '' : `var-date-picker${reverse ? '-reverse' : ''}-translatey`">
           <div :key="`${chooseYear}${chooseMonth?.index}`" v-if="type === 'month'">
             <slot name="range" :choose="getChoose.chooseRangeMonth" v-if="range">
               {{ getMonthTitle }}

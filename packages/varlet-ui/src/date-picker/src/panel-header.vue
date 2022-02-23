@@ -4,7 +4,7 @@
       <var-icon name="chevron-left" />
     </var-button>
     <div class="var-picker-header__value" @click="$emit('check-panel')">
-      <transition :name="reverse ? 'var-date-picker-reverse-translatex' : 'var-date-picker-translatex'">
+      <transition :name="`var-date-picker${reverse ? '-reverse' : ''}-translatex`">
         <div :key="showDate">{{ showDate }}</div>
       </transition>
     </div>

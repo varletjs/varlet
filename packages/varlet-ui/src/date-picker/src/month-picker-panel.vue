@@ -8,7 +8,7 @@
         @check-panel="clickYear"
         @check-date="checkDate"
       />
-      <transition :name="reverse ? 'var-date-picker-reverse-translatex' : 'var-date-picker-translatex'">
+      <transition :name="`var-date-picker${reverse ? '-reverse' : ''}-translatex`">
         <ul :key="panelKey">
           <li v-for="month in MONTH_LIST" :key="month.index">
             <var-button
@@ -143,6 +143,7 @@ export default defineComponent({
       const computeDisabled = (): boolean => {
         if (!inRange(key)) return true
         if (!allowedDates) return false
+
         return !allowedDates(val)
       }
       const disabled = computeDisabled()
@@ -150,6 +151,7 @@ export default defineComponent({
       const computeText = (): boolean => {
         if (disabled) return true
         if (range || multiple) return !shouldChoose(val)
+
         return !isSameYear.value || chooseMonth?.index !== key
       }
 

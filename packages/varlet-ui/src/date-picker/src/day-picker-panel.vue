@@ -8,7 +8,7 @@
         @check-panel="clickMonth"
         @check-date="checkDate"
       />
-      <transition :name="reverse ? 'var-date-picker-reverse-translatex' : 'var-date-picker-translatex'">
+      <transition :name="`var-date-picker${reverse ? '-reverse' : ''}-translatex`">
         <div :key="panelKey">
           <ul class="var-day-picker__head">
             <li v-for="week in sortWeekList" :key="week.index">{{ getDayAbbr(week.index) }}</li>
@@ -195,12 +195,14 @@ export default defineComponent({
 
       const dayExist = (): boolean => {
         if (range || multiple) return shouldChoose(val)
+
         return toNumber(chooseDay) === day && isSame.value
       }
 
       const computeDisabled = (): boolean => {
         if (!inRange(day)) return true
         if (!allowedDates) return false
+
         return !allowedDates(val)
       }
       const disabled = computeDisabled()
@@ -208,6 +210,7 @@ export default defineComponent({
       const computeText = (): boolean => {
         if (disabled) return true
         if (range || multiple) return !shouldChoose(val)
+
         return !isSame.value || toNumber(chooseDay) !== day
       }
 
