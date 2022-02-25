@@ -5,6 +5,12 @@
   border: thin solid var(--site-config-color-hl-border);
   border-radius: 4px;
 
+  &:hover {
+    .var-site-code-example__toolbar {
+      opacity: 1;
+    }
+  }
+
   &__toolbar {
     display: flex;
     align-items: center;
@@ -12,6 +18,8 @@
     z-index: 1;
     right: 10px;
     top: 10px;
+    opacity: 0;
+    transition: .25s all;
 
     button {
       color: var(--site-config-color-hl-code) !important;
