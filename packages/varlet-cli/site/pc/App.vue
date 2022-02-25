@@ -129,13 +129,49 @@ export default defineComponent({
 
 <style>
 .hljs {
-  background: #272727 !important;
+  background: var(--site-config-color-hl-background) !important;
   padding: 0 !important;
   border-radius: 4px;
 }
 
 .hljs code {
   line-height: 31px;
+}
+
+.hljs-comment, .hljs-meta, .hljs-quote {
+  color: var(--site-config-color-hl-group-a)
+}
+
+.hljs-keyword, .hljs-name, .hljs-selector-tag, .hljs-tag {
+  color: var(--site-config-color-hl-group-b)
+}
+
+.hljs-attribute, .hljs-selector-id {
+  color: var(--site-config-color-hl-group-c)
+}
+
+.hljs-addition, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-string {
+  color: var(--site-config-color-hl-group-d)
+}
+
+.hljs-subst {
+  color: var(--site-config-color-hl-group-e)
+}
+
+.hljs-link, .hljs-regexp {
+  color: var(--site-config-color-hl-group-f)
+}
+
+.hljs-doctag, .hljs-section, .hljs-title, .hljs-type {
+  color: var(--site-config-color-hl-group-g)
+}
+
+.hljs-bullet, .hljs-literal, .hljs-symbol, .hljs-template-variable, .hljs-variable {
+  color: var(--site-config-color-hl-group-h)
+}
+
+.hljs-deletion, .hljs-number {
+  color: var(--site-config-color-hl-group-i)
 }
 </style>
 
@@ -306,7 +342,7 @@ iframe {
         font-family: Consolas, Monaco, monospace;
         white-space: pre-wrap;
         word-wrap: break-word;
-        color: #fff;
+        color: var(--site-config-color-hl-code);
       }
 
       p code,

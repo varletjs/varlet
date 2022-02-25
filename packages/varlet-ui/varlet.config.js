@@ -529,7 +529,7 @@ module.exports = {
     ],
   },
   highlight: {
-    style: './highlight.css',
+    style: null,
   },
   moduleCompatible: {
     "import dayjs from 'dayjs/esm'\n": "import dayjs from 'dayjs'\n",

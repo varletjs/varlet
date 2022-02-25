@@ -49,12 +49,16 @@ function injectCodeExample(source) {
 }
 
 function highlight(str, lang, style) {
+  let link = ''
+
+  if (style) {
+    link = '<link class="hljs-style" rel="stylesheet" href="' + style + '"/>'
+  }
+
   if (lang && hljs.getLanguage(lang)) {
     return (
       '<pre class="hljs"><code>' +
-      '<link rel="stylesheet" href="' +
-      style +
-      '"/>' +
+      link +
       hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
       '</code></pre>'
     )
@@ -64,12 +68,11 @@ function highlight(str, lang, style) {
 }
 
 function markdownToVue(source, options) {
-  const style = options.style || '//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/ir-black.min.css'
   const { source: vueSource, imports, components } = extractComponents(source)
   const md = markdown({
     html: true,
     typographer: true,
-    highlight: (str, lang) => highlight(str, lang, style),
+    highlight: (str, lang) => highlight(str, lang, options.style),
   })
   let templateString = htmlWrapper(md.render(vueSource))
   templateString = templateString.replace(/process.env/g, '<span>process.env</span>')
