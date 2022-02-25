@@ -131,7 +131,7 @@ export default defineComponent({
 .hljs {
   background: var(--site-config-color-hl-background) !important;
   padding: 0 !important;
-  border-radius: 4px;
+  transition: all .25s
 }
 
 .hljs code {
