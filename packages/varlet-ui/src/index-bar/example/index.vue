@@ -43,7 +43,7 @@ export default {
 
     watchLang(use)
     watchDarkMode(dark, (themes) => {
-      bgColor.value = themes === 'darkThemes' ? 'rgb(41 42 45)' : '#e7edf7'
+      bgColor.value = themes === 'darkThemes' ? 'rgb(41, 42, 45)' : '#e7edf7'
       color.value = themes === 'darkThemes' ? '#3980e8' : '#2e67ba'
     })
 
