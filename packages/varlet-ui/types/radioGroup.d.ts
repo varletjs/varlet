@@ -7,8 +7,8 @@ export interface RadioGroupProps {
   direction?: 'horizontal' | 'vertical'
   validateTrigger?: Array<RadioGroupValidateTriggers>
   rules?: Array<(value: any) => any>
-  onChange?: (value: Array<any>) => void
-  'onUpdate:modelValue'?: (value: Array<any>) => void
+  onChange?: (value: any) => void
+  'onUpdate:modelValue'?: (value: any) => void
 }
 
 export class RadioGroup extends VarComponent {
