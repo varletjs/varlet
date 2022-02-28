@@ -3,7 +3,7 @@ import { VarComponent } from './varComponent'
 export type RadioGroupValidateTriggers = 'onChange'
 
 export interface RadioGroupProps {
-  modelValue?: any[]
+  modelValue?: any
   direction?: 'horizontal' | 'vertical'
   validateTrigger?: Array<RadioGroupValidateTriggers>
   rules?: Array<(value: any) => any>
