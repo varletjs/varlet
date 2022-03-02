@@ -164,7 +164,7 @@ export default defineComponent({
     }
 
     const isTapTouch = (target: HTMLElement) => {
-      if (!startTouch || !prevTouch) {
+      if (!target || !startTouch || !prevTouch) {
         return false
       }
 
