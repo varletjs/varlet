@@ -41,6 +41,7 @@
 import VarUploader from '..'
 import VarButton from '../../button'
 import Dialog from '../../dialog'
+import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
@@ -115,9 +116,19 @@ export default {
       }, 1000)
     }
 
-    const handleOversize = (file) => console.log(file)
+    const handleOversize = () => {
+      Snackbar.warning(pack.value.fileSizeExceedsLimit)
+    }
 
-    const handleBeforeRead = (file) => file.file.size <= 1024 * 10
+    const handleBeforeRead = (file) => {
+      if (file.file.size <= 1 * 1024 * 1024) {
+        Snackbar.success(pack.value.fileLessThen)
+        return true
+      } 
+        Snackbar.warning(pack.value.fileLargeThen)
+        return false
+      
+    }
 
     const handleBeforeRemove = async () => {
       const action = await Dialog({

@@ -80,6 +80,6 @@ createApp(App).use(Varlet).mount('#app')
 ### Contributors
 
 <a href="https://github.com/varletjs/varlet/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=haoziqaq/varlet" />
+  <img src="https://contrib.rocks/image?repo=varletjs/varlet" />
 </a>
 

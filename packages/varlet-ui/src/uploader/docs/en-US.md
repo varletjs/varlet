@@ -128,12 +128,15 @@ If the limit is exceeded, the file will be blocked. You can get the file by list
 
 ```js
 import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
 
 export default {
   setup() {
     const files = ref([])
 
-    const handleOversize = file => console.log(file)
+    const handleOversize = () => {
+      Snackbar.warning('file size exceeds limit')
+    }
 
     return {
       files,
@@ -153,12 +156,21 @@ Operate on a file by registering a `before-read` event that returns a false valu
 
 ```js
 import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
 
 export default {
   setup() {
     const files = ref([])
 
-    const handleBeforeRead = file => file.file.size <= 1024 * 10
+    const handleBeforeRead = (file) => {
+      if (file.file.size <= 1 * 1024 * 1024) {
+        Snackbar.success('the file is less than 1M, the upload is successful')
+        return true
+      } else {
+        Snackbar.warning('the file is larger than 1M and cannot be uploaded')
+        return false
+      }
+    }
 
     return {
       files,
