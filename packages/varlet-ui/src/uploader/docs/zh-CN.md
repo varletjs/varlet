@@ -128,12 +128,15 @@ export default {
 
 ```js
 import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
 
 export default {
   setup() {
     const files = ref([])
 
-    const handleOversize = file => console.log(file)
+    const handleOversize = () => {
+      Snackbar.warning('文件大小超出限制')
+    }
 
     return {
       files,
@@ -153,12 +156,21 @@ export default {
 
 ```js
 import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
 
 export default {
   setup() {
     const files = ref([])
 
-    const handleBeforeRead = file => file.file.size <= 1024 * 10
+    const handleBeforeRead = (file) => {
+      if (file.file.size <= 1 * 1024 * 1024) {
+        Snackbar.success('文件小于1M，上传成功')
+        return true
+      } else {
+        Snackbar.warning('文件大于1M，不能上传')
+        return false
+      }
+    }
 
     return {
       files,

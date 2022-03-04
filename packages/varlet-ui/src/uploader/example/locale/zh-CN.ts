@@ -14,4 +14,7 @@ export default {
   beforeRemove: '删除前处理',
   removeTitle: '是否删除?',
   removeMessage: '删除后无法撤回',
+  fileSizeExceedsLimit: '文件大小超出限制',
+  fileLessThen: '文件小于1M，上传成功',
+  fileLargeThen: '文件大于1M，不能上传',
 }
