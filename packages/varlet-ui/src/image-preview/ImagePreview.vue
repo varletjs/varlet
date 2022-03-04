@@ -87,6 +87,7 @@ type VarTouch = {
 
 const DISTANCE_OFFSET = 12
 const EVENT_DELAY = 200
+const TAP_DELAY = 500
 const ANIMATION_DURATION = 200
 
 export default defineComponent({
@@ -170,6 +171,7 @@ export default defineComponent({
 
       return (
         getDistance(startTouch, prevTouch) <= DISTANCE_OFFSET &&
+        Date.now() - prevTouch.timestamp < TAP_DELAY &&
         (target === startTouch.target || target.parentNode === startTouch.target)
       )
     }
