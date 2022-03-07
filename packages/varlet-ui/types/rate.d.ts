@@ -9,6 +9,7 @@ export interface RateProps {
   disabledColor?: string
   emptyIcon?: string
   halfIcon?: string
+  namespace?: string
   size?: string | number
   gap?: string | number
   half?: boolean

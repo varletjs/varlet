@@ -178,6 +178,7 @@ export default {
 | `gap` | 图标间隔，默认单位为 `px` | _number \| string_ | `4` |
 | `half` | 是否允许半选 | _boolean_ | `false` |
 | `half-icon` | 半选时图标的样式，只有在 `half` 为 `true` 时才有效| _string_ | `star-half-full` |
+| `namespace` | 图标的命名空间, 可扩展自定义图标库 |  _string_ | `var-icon` |
 | `disabled` | 是否禁止评分 | _boolean_ | `false`|
 | `disabled-color` | 禁止评分时图标的颜色，只有在 `disabled` 为 `true` 时才有效，优先级高于 `color`、`empty-color`| _string_ | `-` |
 | `readonly` | 是否使用评分只读 | _boolean_ | `false` |

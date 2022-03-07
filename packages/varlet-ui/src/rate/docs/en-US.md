@@ -178,6 +178,7 @@ Other values are converted to text as a user prompt.
 | `gap` | Icon spacing, default unit is `px` | _number \| string_ | `4` |
 | `half` | Whether half selection is allowed | _boolean_ | `false` |
 | `half-icon` | The half-selected icon style only works if `half` is `true` | _string_ | `star-half-full` |
+| `namespace` | Icon namespace, extensible custom icon library |  _string_ | `var-icon` |
 | `disabled` | Whether or not rating is prohibited | _boolean_ | `false` |
 | `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `#bdbdbd` |
 | `readonly` | Whether to use rating read-only | _boolean_ | `false` |

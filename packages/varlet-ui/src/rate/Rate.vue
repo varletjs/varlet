@@ -9,7 +9,12 @@
         :class="getClass(val)"
         @click="handleClick(val, $event)"
       >
-        <var-icon :transition="0" :name="getIconName(val)" :style="{ fontSize: toSizeUnit(size) }" />
+        <var-icon
+          :transition="0"
+          :namespace="namespace"
+          :name="getIconName(val)"
+          :style="{ fontSize: toSizeUnit(size) }"
+        />
       </div>
     </div>
     <var-form-details :error-message="errorMessage" />
