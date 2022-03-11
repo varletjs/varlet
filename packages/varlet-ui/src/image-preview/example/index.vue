@@ -22,30 +22,58 @@
 
     <var-button type="warning" block @click="closeEventShow = true">{{ pack.listenCloseEvents }} </var-button>
     <var-image-preview :images="images" v-model:show="closeEventShow" @close="handleCloseEvent" />
+
+    <var-button type="warning" block @click="extraSlotsShow = true">{{ pack.showExtraSlots }}</var-button>
+    <var-image-preview :images="images" v-model:show="extraSlotsShow">
+      <template #extra>
+        <var-button class="extra-btn" size="small" color="#333" text-color="#fff" @click="menuShow = true">
+          <var-icon name="menu" />
+        </var-button>
+
+        <var-action-sheet :actions="actions" v-model:show="menuShow" />
+      </template>
+    </var-image-preview>
   </div>
 </template>
 
 <script>
 import ImagePreview from '../index'
 import VarButton from '../../button'
+import ActionSheet from '../../action-sheet'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Snackbar from '../../snackbar'
-import { defineComponent, onUnmounted, ref } from 'vue'
+import { defineComponent, onUnmounted, ref, reactive, computed } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
 import context from '../../context'
+import VarIcon from '../../icon'
 
 export default defineComponent({
   name: 'ImagePreviewExample',
   components: {
     VarImagePreview: ImagePreview.Component,
-    VarButton,
     AppType,
+    VarButton,
+    VarIcon,
+    VarActionSheet: ActionSheet.Component,
   },
   setup() {
     const images = ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg']
 
     const image = ['https://varlet.gitee.io/varlet-ui/cat.jpg']
+
+    const actions = computed(() => {
+      return [
+        {
+          name: pack.value.operate,
+          icon: 'wrench',
+        },
+        {
+          name: pack.value.operate,
+          icon: 'wrench',
+        },
+      ]
+    })
 
     const handleCloseEvent = () => {
       Snackbar({
@@ -85,8 +113,11 @@ export default defineComponent({
       currentShow: ref(false),
       closeShow: ref(false),
       closeEventShow: ref(false),
+      extraSlotsShow: ref(false),
+      menuShow: ref(false),
       images: ref(images),
       image: ref(image),
+      actions,
       handleCloseEvent,
     }
   },
@@ -97,6 +128,10 @@ export default defineComponent({
 .image-preview-demo {
   .var-button {
     margin-top: 10px;
+  }
+
+  .extra-btn {
+    margin-top: 0;
   }
 }
 </style>

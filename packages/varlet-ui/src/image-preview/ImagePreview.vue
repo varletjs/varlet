@@ -65,6 +65,10 @@
         @click="close"
       />
     </slot>
+
+    <div class="var-image-preview__extra">
+      <slot name="extra" />
+    </div>
   </var-popup>
 </template>
 

@@ -8,4 +8,6 @@ export default {
   displayCloseButton: '展示关闭按钮',
   listenCloseEvents: '监听关闭事件',
   shutdownEvent: '触发了关闭事件。',
+  showExtraSlots: '展示额外插槽',
+  operate: '操作',
 }
