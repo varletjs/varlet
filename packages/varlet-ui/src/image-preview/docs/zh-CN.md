@@ -116,7 +116,8 @@ ImagePreview({
       size="small"
       color="#333"
       text-color="#fff"
-      @click="menuShow = true">
+      @click="menuShow = true"
+    >
       <var-icon name="menu" />
     </var-button>
 
