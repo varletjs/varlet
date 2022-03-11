@@ -278,7 +278,7 @@ export default {
 | `title` | 对话框标题 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
