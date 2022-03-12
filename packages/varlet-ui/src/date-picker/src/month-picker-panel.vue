@@ -2,6 +2,7 @@
   <div class="var-month-picker__panel">
     <div class="var-month-picker__content">
       <panel-header
+        ref="headerEl"
         type="month"
         :date="preview"
         :disabled="panelBtnDisabled"
@@ -40,7 +41,7 @@ import PanelHeader from './panel-header.vue'
 import VarButton from '../../button'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
-import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
+import type { Ref, ComputedRef, UnwrapRef, PropType, RendererNode } from 'vue'
 import type { Choose, Preview, ComponentProps, Month, MonthDict, PanelBtnDisabled } from '../props'
 
 dayjs.extend(isSameOrBefore)
@@ -80,6 +81,7 @@ export default defineComponent({
     const [currentYear, currentMonth] = props.current.split('-')
     const reverse: Ref<boolean> = ref(false)
     const panelKey: Ref<number> = ref(0)
+    const headerEl: Ref<RendererNode | null> = ref(null)
     const panelBtnDisabled: UnwrapRef<PanelBtnDisabled> = reactive({
       left: false,
       right: false,
@@ -201,6 +203,11 @@ export default defineComponent({
       emit('check-preview', 'year', checkType)
     }
 
+    // expose for internal
+    const forwardRef = (checkType: string) => {
+      headerEl.value!.checkDate(checkType)
+    }
+
     watch(
       () => props.preview.previewYear,
       (year) => {
@@ -217,9 +224,11 @@ export default defineComponent({
     return {
       pack,
       MONTH_LIST,
+      headerEl,
       reverse,
       panelKey,
       panelBtnDisabled,
+      forwardRef,
       buttonProps,
       getMonthAbbr,
       chooseMonth,

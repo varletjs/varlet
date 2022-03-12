@@ -60,6 +60,8 @@ export default defineComponent({
     })
 
     const checkDate = (checkType: string) => {
+      if ((checkType === 'prev' && props.disabled.left) || (checkType === 'next' && props.disabled.right)) return
+
       emit('check-date', checkType)
       reverse.value = checkType === 'prev'
       forwardOrBackNum.value += checkType === 'prev' ? -1 : 1

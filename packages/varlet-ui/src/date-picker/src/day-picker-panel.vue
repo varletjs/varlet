@@ -2,6 +2,7 @@
   <div class="var-day-picker__panel">
     <div class="var-day-picker__content">
       <panel-header
+        ref="headerEl"
         type="day"
         :date="preview"
         :disabled="panelBtnDisabled"
@@ -49,7 +50,7 @@ import { defineComponent, ref, computed, watch, onMounted, reactive } from 'vue'
 import { WEEK_HEADER } from '../props'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
-import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
+import type { Ref, ComputedRef, UnwrapRef, PropType, RendererNode } from 'vue'
 import type { Choose, Preview, ComponentProps, Week, WeekDict, PanelBtnDisabled } from '../props'
 
 dayjs.extend(isSameOrBefore)
@@ -90,6 +91,7 @@ export default defineComponent({
     const days: Ref<Array<number>> = ref([])
     const reverse: Ref<boolean> = ref(false)
     const panelKey: Ref<number> = ref(0)
+    const headerEl: Ref<RendererNode | null> = ref(null)
     const panelBtnDisabled: UnwrapRef<PanelBtnDisabled> = reactive({
       left: false,
       right: false,
@@ -259,6 +261,11 @@ export default defineComponent({
       emit('choose-day', day)
     }
 
+    // expose for internal
+    const forwardRef = (checkType: string) => {
+      headerEl.value!.checkDate(checkType)
+    }
+
     onMounted(() => {
       initDate()
       initHeader()
@@ -275,9 +282,11 @@ export default defineComponent({
     return {
       days,
       reverse,
+      headerEl,
       panelKey,
       sortWeekList,
       panelBtnDisabled,
+      forwardRef,
       filterDay,
       getDayAbbr,
       checkDate,
