@@ -62,6 +62,10 @@ export const props = {
   rules: {
     type: Array as PropType<Array<(v: VarFile) => any>>,
   },
+  hideList: {
+    type: Boolean,
+    default: false,
+  },
   onBeforeRead: {
     type: Function as PropType<(file: VarFile) => Promise<boolean> | boolean>,
   },

@@ -17,4 +17,5 @@ export default {
   fileSizeExceedsLimit: '文件大小超出限制',
   fileLessThen: '文件小于1M，上传成功',
   fileLargeThen: '文件大于1M，不能上传',
+  customRender: '自定义渲染文件列表',
 }

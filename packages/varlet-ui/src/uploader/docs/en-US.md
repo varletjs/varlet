@@ -253,6 +253,26 @@ The second argument is a collection of utility functions that can quickly get a 
 />
 ```
 
+### Custom render file list
+
+You can use the `hide-list` to hiddeing component files list, then you can render this list by custom.
+This invalidates the `preview`,and you can use `ImagePreview` to achieve the same function
+
+```html
+<div class="custom-uploader__file-list">
+  <div :key="f.id" v-for="f in files">
+    <img
+      class="custom-uploader__file-item"
+      :src="f.src"
+      v-if="f.src"
+    />
+  </div>
+  <var-uploader hide-list v-model="files">
+    <var-button type="primary">上传</var-button>
+  </var-uploader>
+</div>
+```
+
 ## API
 
 ### Props
@@ -270,6 +290,7 @@ The second argument is a collection of utility functions that can quickly get a 
 | `maxsize` | Maximum file size | _string \| number_ | `-` |
 | `previewed` | Whether to allow preview | _boolean_ | `true` |
 | `ripple` | Whether to open ripple | _boolean_ | `true` |
+| `hide-list` | Whether to hide the file list | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation， The optional value is `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
 
