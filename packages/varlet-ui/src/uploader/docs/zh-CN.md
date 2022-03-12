@@ -250,6 +250,25 @@ export default {
 />
 ```
 
+### 自定义渲染
+
+通过`hide-list`隐藏组件的文件列表，并且自己渲染，但这会失去preview，需要配合`ImagePreview`自己实现
+
+```html
+<div class="custom-uploader__file-list">
+  <div :key="f.id" v-for="f in files">
+    <img
+      class="custom-uploader__file-item"
+      :src="f.src"
+      v-if="f.src"
+    />
+  </div>
+  <var-uploader hide-list v-model="files">
+    <var-button type="primary">上传</var-button>
+  </var-uploader>
+</div>
+```
+
 ## API
 
 ### 属性
@@ -267,6 +286,7 @@ export default {
 | `maxsize` | 最大文件大小 | _string \| number_ | `-` |
 | `previewed` | 是否允许预览 | _boolean_ | `true` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
+| `hide-list` | 是否隐藏文件列表 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机， 可选值为 `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
 
