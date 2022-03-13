@@ -26,9 +26,7 @@
     <var-button type="warning" block @click="extraSlotsShow = true">{{ pack.showExtraSlots }}</var-button>
     <var-image-preview :images="images" v-model:show="extraSlotsShow">
       <template #extra>
-        <var-button class="extra-btn" size="small" color="#333" text-color="#fff" @click="menuShow = true">
-          <var-icon name="menu" />
-        </var-button>
+        <var-icon name="menu" size="22" @click="menuShow = true" />
 
         <var-action-sheet :actions="actions" v-model:show="menuShow" />
       </template>
