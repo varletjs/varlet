@@ -49,7 +49,6 @@
       <var-button class="custom-uploader__file-item" type="primary">{{ pack.upload }}</var-button>
     </var-uploader>
   </div>
-  <!-- hide-list -->
   <div class="space"></div>
 </template>
 

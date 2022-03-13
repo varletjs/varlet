@@ -273,7 +273,51 @@ exports[`test uploader example 1`] = `
     </div>
   </transition-stub>
 </div>
+<div class=\\"app-type\\">自定义渲染文件列表</div>
+<div class=\\"custom-uploader__file-list\\">
+  <div><img class=\\"custom-uploader__file-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
+  <div><img class=\\"custom-uploader__file-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
+  <div><img class=\\"custom-uploader__file-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
+  <div class=\\"var-uploader var--box\\">
+    <div class=\\"var-uploader__file-list\\">
+      <div class=\\"var--relative\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 custom-uploader__file-item\\">
+          <!--v-if-->
+          <div class=\\"var-button__content\\">上传</div>
+        </button></div>
+    </div>
+    <transition-stub>
+      <!--v-if-->
+    </transition-stub>
+    <transition-stub>
+      <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+        <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+        <transition-stub>
+          <!---->
+        </transition-stub>
+      </div>
+    </transition-stub>
+  </div>
+</div>
 <div class=\\"space\\"></div>"
+`;
+
+exports[`test uploader hide file list 1`] = `
+"<div class=\\"var-uploader var--box\\">
+  <div class=\\"var-uploader__file-list\\">
+    <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+  <transition-stub>
+    <div class=\\"var--box var-popup\\" style=\\"z-index: 2001; display: none;\\">
+      <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
+      <transition-stub>
+        <!---->
+      </transition-stub>
+    </div>
+  </transition-stub>
+</div>"
 `;
 
 exports[`test uploader length over maxlength in multiple mode 1`] = `
