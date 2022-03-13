@@ -1,3 +1,13 @@
+## [1.26.5](https://github.com/varletjs/varlet/compare/v1.26.4...v1.26.5) (2022-03-13)
+
+
+### Features
+
+* **date-picker:** suport touchable ([5868a11](https://github.com/varletjs/varlet/commit/5868a115e11b2e3638475857396c95957c6728d7))
+* **ui/image-preview:** add extra slot ([8dc4d2d](https://github.com/varletjs/varlet/commit/8dc4d2d800b8ee61c8c7792a907c7d9369208ddc))
+
+
+
 ## [1.26.4](https://github.com/varletjs/varlet/compare/v1.26.3...v1.26.4) (2022-03-07)
 
 
