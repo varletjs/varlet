@@ -274,28 +274,30 @@ exports[`test uploader example 1`] = `
   </transition-stub>
 </div>
 <div class=\\"app-type\\">自定义渲染文件列表</div>
-<div class=\\"custom-uploader__file-list\\">
-  <div><img class=\\"custom-uploader__file-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
-  <div><img class=\\"custom-uploader__file-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
-  <div><img class=\\"custom-uploader__file-item\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
-  <div class=\\"var-uploader var--box\\">
-    <div class=\\"var-uploader__file-list\\">
-      <div class=\\"var--relative\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 custom-uploader__file-item\\">
-          <!--v-if-->
-          <div class=\\"var-button__content\\">上传</div>
-        </button></div>
-    </div>
-    <transition-stub>
-      <!--v-if-->
-    </transition-stub>
-    <transition-stub>
-      <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
-        <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-        <transition-stub>
-          <!---->
-        </transition-stub>
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
+  <div style=\\"margin: 4px 0px;\\">
+    <div class=\\"var-uploader var--box\\">
+      <div class=\\"var-uploader__file-list\\">
+        <div class=\\"var--relative\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round\\">
+            <!--v-if-->
+            <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-upload\\" style=\\"transition: transform 0ms; font-size: 28px;\\"></i></div>
+          </button></div>
       </div>
-    </transition-stub>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
+      <transition-stub>
+        <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
+          <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
+          <transition-stub>
+            <!---->
+          </transition-stub>
+        </div>
+      </transition-stub>
+    </div>
   </div>
 </div>
 <div class=\\"space\\"></div>"

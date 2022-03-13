@@ -264,7 +264,7 @@ test('test uploader hide file list', async () => {
   }
 
   await wrapper.vm.handleChange(event)
-  expect(wrapper.vm.renderFileList.length).toBe(0)
+  expect(wrapper.vm.files.length).toBe(0)
 
   wrapper.unmount()
   mockRestore()
