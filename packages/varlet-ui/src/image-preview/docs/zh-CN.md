@@ -111,16 +111,12 @@ ImagePreview({
 </var-button>
 <var-image-preview :images="images" v-model:show="extraSlotsShow">
   <template #extra>
-    <var-button
-      class="extra-btn"
-      size="small"
-      color="#333"
-      text-color="#fff"
+    <var-icon
+      name="menu"
+      :size="22"
+      color="#fff"
       @click="menuShow = true"
-    >
-      <var-icon name="menu" />
-    </var-button>
-
+    />
     <var-action-sheet :actions="actions" v-model:show="menuShow" />
   </template>
 </var-image-preview>
@@ -230,8 +226,9 @@ export default {
 | `--image-preview-swipe-indicators-text-color` | `#ddd`  |
 | `--image-preview-swipe-indicators-padding` | `16px 0` |
 | `--image-preview-zoom-container-background`| `#000`  |
-| `--image-preview-close-icon-top` | `13px` |
-| `--image-preview-close-icon-left` | `14px` |
+| `--image-preview-close-icon-top` | `14px` |
 | `--image-preview-close-icon-right` | `14px` |
 | `--image-preview-close-icon-size` | `22px` |
 | `--image-preview-close-icon-color` | `#fff` |
+| `--image-preview-extra-top` | `14px` |
+| `--image-preview-extra-left` | `14px` |
