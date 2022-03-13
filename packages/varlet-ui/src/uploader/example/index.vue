@@ -35,26 +35,23 @@
   <var-uploader :rules="[(v, u) => u.getError(v).length === 0 || pack.validateMessage]" v-model="files10" />
 
   <app-type>{{ pack.customRender }}</app-type>
-  <div class="custom-uploader__file-list">
-    <div :key="f.id" v-for="f in files12">
-      <img
-        class="custom-uploader__file-item"
-        :style="{ objectFit: f.fit }"
-        :src="f.cover"
-        :alt="f.name"
-        v-if="f.cover"
-      />
-    </div>
+  <var-space>
+    <img class="custom-uploader-file" v-for="f in files12" :key="f.id" :src="f.cover" />
     <var-uploader hide-list v-model="files12">
-      <var-button class="custom-uploader__file-item" type="primary">{{ pack.upload }}</var-button>
+      <var-button round type="primary">
+        <var-icon :size="28" name="upload" />
+      </var-button>
     </var-uploader>
-  </div>
+  </var-space>
+
   <div class="space"></div>
 </template>
 
 <script>
 import VarUploader from '..'
 import VarButton from '../../button'
+import VarSpace from '../../space'
+import VarIcon from '../../icon'
 import Dialog from '../../dialog'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
@@ -68,7 +65,9 @@ export default {
   components: {
     VarUploader,
     VarButton,
+    VarSpace,
     AppType,
+    VarIcon,
   },
   setup() {
     const values = reactive({
@@ -191,13 +190,18 @@ export default {
   height: 40px;
 }
 
-.custom-uploader__file-list {
-  display: flex;
-  .custom-uploader__file-item {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 12px;
-  }
+.custom-uploader-file {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 12px;
+  object-fit: cover;
+}
+
+.custom-uploader-action {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 12px;
 }
 </style>

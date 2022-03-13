@@ -252,21 +252,39 @@ export default {
 
 ### 自定义渲染
 
-通过`hide-list`隐藏组件的文件列表，并且自己渲染，但这会失去preview，需要配合`ImagePreview`自己实现
+通过`hide-list`隐藏组件的文件列表，自定义文件列表的渲染逻辑
 
 ```html
-<div class="custom-uploader__file-list">
-  <div :key="f.id" v-for="f in files">
-    <img
-      class="custom-uploader__file-item"
-      :src="f.src"
-      v-if="f.src"
-    />
-  </div>
+<var-space>
+  <img
+    class="custom-uploader-file"
+    v-for="f in files"
+    :key="f.id"
+    :src="f.cover"
+  />
   <var-uploader hide-list v-model="files">
-    <var-button type="primary">上传</var-button>
+    <var-button round type="primary">
+      <var-icon :size="28" name="upload" />
+    </var-button>
   </var-uploader>
-</div>
+</var-space>
+```
+
+```css
+.custom-uploader-file {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 12px;
+  object-fit: cover;
+}
+
+.custom-uploader-action {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 12px;
+}
 ```
 
 ## API

@@ -5,7 +5,7 @@
         class="var-uploader__file var-elevation--2"
         :class="[f.state === 'loading' ? 'var-uploader--loading' : null]"
         :key="f.id"
-        v-for="f in renderFileList"
+        v-for="f in files"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple }"
         @click="preview(f)"
       >
@@ -136,9 +136,13 @@ export default defineComponent({
       resetValidation,
     } = useValidation()
 
-    const renderFileList = computed(() => {
+    const files = computed(() => {
       const { modelValue, hideList } = props
-      if (hideList) return []
+
+      if (hideList) {
+        return []
+      }
+
       return modelValue
     })
 
@@ -321,7 +325,7 @@ export default defineComponent({
     )
 
     return {
-      renderFileList,
+      files,
       showPreview,
       currentPreview,
       errorMessage,

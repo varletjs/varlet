@@ -255,22 +255,39 @@ The second argument is a collection of utility functions that can quickly get a 
 
 ### Custom render file list
 
-You can use the `hide-list` to hiddeing component files list, then you can render this list by custom.
-This invalidates the `preview`,and you can use `ImagePreview` to achieve the same function
+You can use the `hide-list` to hide component files list, then you can render this list by custom.
 
 ```html
-<div class="custom-uploader__file-list">
-  <div :key="f.id" v-for="f in files">
-    <img
-      class="custom-uploader__file-item"
-      :src="f.src"
-      v-if="f.src"
-    />
-  </div>
+<var-space>
+  <img
+    class="custom-uploader-file"
+    v-for="f in files"
+    :key="f.id"
+    :src="f.cover"
+  />
   <var-uploader hide-list v-model="files">
-    <var-button type="primary">上传</var-button>
+    <var-button round type="primary">
+      <var-icon :size="28" name="upload" />
+    </var-button>
   </var-uploader>
-</div>
+</var-space>
+```
+
+```css
+.custom-uploader-file {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 12px;
+  object-fit: cover;
+}
+
+.custom-uploader-action {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 12px;
+}
 ```
 
 ## API
