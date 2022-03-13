@@ -28,7 +28,7 @@
                 v-bind="{
                   ...buttonProps(day),
                 }"
-                @click="chooseDay(day)"
+                @click="(event) => chooseDay(day, event)"
               >
                 {{ filterDay(day) }}
               </var-button>
@@ -243,11 +243,13 @@ export default defineComponent({
       const isCover = textColorOrCover().startsWith('var-date-picker')
 
       return {
-        disabled,
         text: computeText(),
         outline: computeOutline(),
         textColor: isCover ? '' : textColorOrCover(),
         'var-date-picker-color-cover': isCover,
+        class: {
+          'var-day-picker__button-disabled': disabled,
+        },
       }
     }
 
@@ -257,7 +259,10 @@ export default defineComponent({
       emit('check-preview', 'month', checkType)
     }
 
-    const chooseDay = (day: number) => {
+    const chooseDay = (day: number, event: MouseEvent) => {
+      const buttonEl = event.currentTarget as HTMLButtonElement
+      if (buttonEl.classList.contains('var-day-picker__button-disabled')) return
+
       emit('choose-day', day)
     }
 

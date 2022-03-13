@@ -20,7 +20,7 @@
               v-bind="{
                 ...buttonProps(month.index),
               }"
-              @click="chooseMonth(month)"
+              @click="(event) => chooseMonth(month, event)"
             >
               {{ getMonthAbbr(month.index) }}
             </var-button>
@@ -184,16 +184,21 @@ export default defineComponent({
       const isCover = textColorOrCover().startsWith('var-date-picker')
 
       return {
-        disabled,
         outline: computeOutline(),
         text: computeText(),
         color: !computeText() ? color : '',
         textColor: isCover ? '' : textColorOrCover(),
         'var-date-picker-color-cover': isCover,
+        class: {
+          'var-month-picker__button-disabled': disabled,
+        },
       }
     }
 
-    const chooseMonth = (month: MonthDict) => {
+    const chooseMonth = (month: MonthDict, event: MouseEvent) => {
+      const buttonEl = event.currentTarget as HTMLButtonElement
+      if (buttonEl.classList.contains('var-month-picker__button-disabled')) return
+
       emit('choose-month', month)
     }
 

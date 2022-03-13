@@ -311,6 +311,7 @@ test('test datePicker touchable prop', async () => {
   await triggerDrag(pickBodyEl, 0, 100)
   expect(headerEl.text()).toBe('2021 四月')
   await triggerDrag(pickBodyEl, 100, 0)
+  await delay(300)
   expect(headerEl.text()).toBe('2021 三月')
 })
 

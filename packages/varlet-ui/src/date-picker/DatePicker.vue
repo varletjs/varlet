@@ -93,6 +93,7 @@ import YearPickerPanel from './src/year-picker-panel.vue'
 import DayPickerPanel from './src/day-picker-panel.vue'
 import { props, MONTH_LIST, WEEK_HEADER } from './props'
 import { isArray, toNumber } from '../utils/shared'
+import { nextTickFrame } from '../utils/elements'
 import { pack } from '../locale'
 import type { Ref, ComputedRef, UnwrapRef, RendererNode } from 'vue'
 import type { MonthDict, Choose, Preview, WeekDict, ComponentProps, TouchDirection } from './props'
@@ -262,8 +263,10 @@ export default defineComponent({
       if (isUntouchable.value || touchDirection !== 'x') return
 
       const componentRef = getPanelType.value === 'month' ? monthPanelEl : dayPanelEl
-      componentRef.value!.forwardRef(checkType)
-      resetState()
+      nextTickFrame(() => {
+        componentRef.value!.forwardRef(checkType)
+        resetState()
+      })
     }
 
     const updateRange = (date: string, type: string) => {
