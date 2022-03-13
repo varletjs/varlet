@@ -26,7 +26,7 @@
     <var-button type="warning" block @click="extraSlotsShow = true">{{ pack.showExtraSlots }}</var-button>
     <var-image-preview :images="images" v-model:show="extraSlotsShow">
       <template #extra>
-        <var-icon name="menu" size="22" @click="menuShow = true" />
+        <var-icon name="menu" :size="22" color="#fff" @click="menuShow = true" />
 
         <var-action-sheet :actions="actions" v-model:show="menuShow" />
       </template>
@@ -40,9 +40,10 @@ import VarButton from '../../button'
 import ActionSheet from '../../action-sheet'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Snackbar from '../../snackbar'
+import dark from '../../themes/dark'
 import { defineComponent, onUnmounted, ref, computed } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchPlatform } from '@varlet/cli/site/utils'
+import { watchDarkMode, watchLang, watchPlatform } from '@varlet/cli/site/utils'
 import context from '../../context'
 import VarIcon from '../../icon'
 
@@ -88,6 +89,7 @@ export default defineComponent({
     }
 
     watchLang(use)
+    watchDarkMode(dark)
 
     const prevTouchmoveForbid = context.touchmoveForbid
     watchPlatform((platform) => {
