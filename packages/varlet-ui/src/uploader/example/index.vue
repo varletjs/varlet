@@ -34,6 +34,21 @@
   <app-type>{{ pack.validate }}</app-type>
   <var-uploader :rules="[(v, u) => u.getError(v).length === 0 || pack.validateMessage]" v-model="files10" />
 
+  <app-type>{{ pack.customRender }}</app-type>
+  <div class="custom-uploader__file-list">
+    <div :key="f.id" v-for="f in files12">
+      <img
+        class="custom-uploader__file-item"
+        :style="{ objectFit: f.fit }"
+        :src="f.cover"
+        :alt="f.name"
+        v-if="f.cover"
+      />
+    </div>
+    <var-uploader hide-list v-model="files12">
+      <var-button class="custom-uploader__file-item" type="primary">{{ pack.upload }}</var-button>
+    </var-uploader>
+  </div>
   <div class="space"></div>
 </template>
 
@@ -104,6 +119,23 @@ export default {
           cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
         },
       ],
+      files12: [
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          state: 'loading',
+        },
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          state: 'success',
+        },
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          state: 'error',
+        },
+      ],
     })
 
     const handleAfterRead = (file) => console.log(file)
@@ -124,10 +156,9 @@ export default {
       if (file.file.size <= 1 * 1024 * 1024) {
         Snackbar.success(pack.value.fileLessThen)
         return true
-      } 
-        Snackbar.warning(pack.value.fileLargeThen)
-        return false
-      
+      }
+      Snackbar.warning(pack.value.fileLargeThen)
+      return false
     }
 
     const handleBeforeRemove = async () => {
@@ -158,5 +189,15 @@ export default {
 <style scoped lang="less">
 .space {
   height: 40px;
+}
+
+.custom-uploader__file-list {
+  display: flex;
+  .custom-uploader__file-item {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 12px;
+  }
 }
 </style>

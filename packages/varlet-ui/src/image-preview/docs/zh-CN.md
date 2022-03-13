@@ -117,7 +117,6 @@ ImagePreview({
       color="#fff"
       @click="menuShow = true"
     />
-
     <var-action-sheet :actions="actions" v-model:show="menuShow" />
   </template>
 </var-image-preview>

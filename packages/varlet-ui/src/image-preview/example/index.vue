@@ -27,7 +27,6 @@
     <var-image-preview :images="images" v-model:show="extraSlotsShow">
       <template #extra>
         <var-icon name="menu" :size="22" color="#fff" @click="menuShow = true" />
-
         <var-action-sheet :actions="actions" v-model:show="menuShow" />
       </template>
     </var-image-preview>
