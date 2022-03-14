@@ -281,13 +281,6 @@ You can use the `hide-list` to hide component files list, then you can render th
   font-size: 12px;
   object-fit: cover;
 }
-
-.custom-uploader-action {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 12px;
-}
 ```
 
 ## API
