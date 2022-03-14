@@ -12,17 +12,20 @@ import { Pagination } from '@varlet/ui'
 
 createApp().use(Pagination)
 ```
-### 简约模式
+
+## 简约模式
+
+### 介绍
 
 默认的一种显示模式，推荐在小屏设备上使用，组件预览见右侧手机模拟器。
 
-#### 基本使用
+### 基本使用
 
 ```html
 <var-pagination :current="3" :total="120" />
 ```
 
-#### 隐藏 size 控制器
+### 隐藏 size 控制器
 
 使用 `show-size-changer` 可以控制 `size` 控制器的显示和隐藏。
 
@@ -30,7 +33,7 @@ createApp().use(Pagination)
 <var-pagination :current="3" :total="120" :show-size-changer="false"/>
 ```
 
-#### 显示总数
+### 显示总数
 
 使用 `showTatol` 属性自定义总数显示。
 
@@ -42,17 +45,19 @@ createApp().use(Pagination)
 />
 ```
 
-#### 禁用
+### 禁用
 
 ```html
 <var-pagination :current="3" :total="115" disabled />
 ```
 
-### 普通模式
+## 普通模式
+
+### 介绍
 
 `simple` 属性为 `false` 时，可以开启我们专门为宽屏设计的分页风格。
 
-#### 基本使用
+### 基本使用
 
 ```vue
 import Basic from '../example/Basic.vue'
@@ -62,7 +67,7 @@ import Basic from '../example/Basic.vue'
 <var-pagination current="6" total="115" :simple="false"/>
 ```
 
-#### 开启页码快速跳转
+### 开启页码快速跳转
 
 使用 `show-quick-jumper` 属性开启页面快速跳转
 
@@ -79,7 +84,7 @@ import QuickJumper from '../example/QuickJumper.vue'
 />
 ```
 
-#### Size 配置
+### Size 配置
 
 使用 `show-size-changer` 可以隐藏 `size` 切换器。
 使用 `size-option` 指定可以显示的条数。
@@ -93,7 +98,7 @@ import SizeOption from '../example/SizeOption.vue'
 <var-pagination :current="3" :total="120" :simple="false" :size-option="[10, 20, 30, 40]" />
 ```
 
-#### 自定义显示总数
+### 自定义显示总数
 
 ```vue
 import ShowTotal from '../example/ShowTotal.vue'
@@ -116,7 +121,7 @@ import ShowTotal from '../example/ShowTotal.vue'
 />
 ```
 
-#### 禁用
+### 禁用
 
 ```vue
 import Disabled from '../example/Disabled.vue'
@@ -158,7 +163,7 @@ import Disabled from '../example/Disabled.vue'
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

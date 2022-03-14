@@ -129,9 +129,49 @@ export default defineComponent({
 
 <style>
 .hljs {
-  background: #202020 !important;
+  background: var(--site-config-color-hl-background) !important;
   padding: 0 !important;
-  border-radius: 4px;
+  transition: all .25s
+}
+
+.hljs code {
+  line-height: 31px;
+}
+
+.hljs-comment, .hljs-meta, .hljs-quote {
+  color: var(--site-config-color-hl-group-a)
+}
+
+.hljs-keyword, .hljs-name, .hljs-selector-tag, .hljs-tag {
+  color: var(--site-config-color-hl-group-b)
+}
+
+.hljs-attribute, .hljs-selector-id {
+  color: var(--site-config-color-hl-group-c)
+}
+
+.hljs-addition, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-string {
+  color: var(--site-config-color-hl-group-d)
+}
+
+.hljs-subst {
+  color: var(--site-config-color-hl-group-e)
+}
+
+.hljs-link, .hljs-regexp {
+  color: var(--site-config-color-hl-group-f)
+}
+
+.hljs-doctag, .hljs-section, .hljs-title, .hljs-type {
+  color: var(--site-config-color-hl-group-g)
+}
+
+.hljs-bullet, .hljs-literal, .hljs-symbol, .hljs-template-variable, .hljs-variable {
+  color: var(--site-config-color-hl-group-h)
+}
+
+.hljs-deletion, .hljs-number {
+  color: var(--site-config-color-hl-group-i)
 }
 </style>
 
@@ -139,7 +179,7 @@ export default defineComponent({
 @doc-active: {
   display: inline;
   font-family: inherit;
-  padding: 0 4px;
+  padding: 0;
   white-space: pre-wrap;
 }
 
@@ -174,7 +214,7 @@ iframe {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px 4px 20px;
+    margin: 20px 0;
     padding: 90px 40px;
     border-top: 6px solid var(--site-config-color-introduce-border);
     border-radius: 2px;
@@ -267,25 +307,30 @@ iframe {
       }
 
       h3 {
-        margin-bottom: 16px;
         font-size: 18px;
+        margin: 0;
+      }
+
+      h4 {
+        margin: 18px 0 0;
       }
 
       p,
-      ul {
+      ul,
+      ol {
         -webkit-font-smoothing: antialiased;
         color: var(--site-config-color-text);
         font-size: 15px;
         line-height: 26px;
-        padding: 16px;
         border-radius: 4px;
         background: var(--site-config-color-bar);
-        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
         list-style: none;
+        margin: 14px 0 0;
+        padding: 0;
       }
 
       pre {
-        margin: 10px 0 0;
+        margin: 0;
       }
 
       code {
@@ -295,10 +340,9 @@ iframe {
         overflow-x: auto;
         font-size: 13px;
         font-family: Consolas, Monaco, monospace;
-        line-height: 31px;
         white-space: pre-wrap;
         word-wrap: break-word;
-        color: #fff;
+        color: var(--site-config-color-hl-code);
       }
 
       p code,
@@ -321,7 +365,6 @@ iframe {
         line-height: 28px;
         border-collapse: collapse;
         border-radius: 4px;
-        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 
         th {
           padding: 8px 16px;
@@ -330,11 +373,12 @@ iframe {
           color: var(--site-config-color-sub-text);
           font-size: 13px;
           -webkit-font-smoothing: antialiased;
+          border-bottom: 1px solid var(--site-config-color-border);
         }
 
         td {
           padding: 8px 16px;
-          border-top: 1px solid var(--site-config-color-border);
+          border-bottom: 1px solid var(--site-config-color-border);
           color: var(--site-config-color-text);
           font-family: Consolas, Monaco, monospace;
 
@@ -355,7 +399,11 @@ iframe {
       }
 
       .card {
-        margin-bottom: 24px;
+        border-radius: 4px;
+        background: var(--site-config-color-bar);
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
       }
     }
   }

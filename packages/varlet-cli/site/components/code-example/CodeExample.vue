@@ -57,6 +57,7 @@ export default defineComponent({
     const disabledFold: Ref<boolean> = ref(false)
     const clipboard: Ref = ref(get(config, 'pc.clipboard', {}))
     const height: Ref<number> = ref(-1)
+    let timer: any = null
 
     const toggle = async () => {
       const foldHeight = fold.value.foldHeight
@@ -68,7 +69,15 @@ export default defineComponent({
         height.value = foldHeight
         await doubleRaf()
         height.value = offsetHeight
+
+        timer = setTimeout(() => {
+          height.value = -1
+        }, 250)
       } else {
+        clearTimeout(timer)
+        const { offsetHeight } = code.value as HTMLElement
+        height.value = offsetHeight
+        await doubleRaf()
         height.value = foldHeight
       }
     }
@@ -82,7 +91,7 @@ export default defineComponent({
 
       const { offsetHeight } = code.value as HTMLElement
       disabledFold.value = offsetHeight - fold.value.foldHeight < offset
-      height.value = fold.value?.defaultFold ? fold.value?.foldHeight : offsetHeight
+      height.value = fold.value?.defaultFold ? fold.value?.foldHeight : -1
     })
 
     return {

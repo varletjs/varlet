@@ -65,6 +65,10 @@
         @click="close"
       />
     </slot>
+
+    <div class="var-image-preview__extra">
+      <slot name="extra" />
+    </div>
   </var-popup>
 </template>
 
@@ -87,6 +91,7 @@ type VarTouch = {
 
 const DISTANCE_OFFSET = 12
 const EVENT_DELAY = 200
+const TAP_DELAY = 350
 const ANIMATION_DURATION = 200
 
 export default defineComponent({
@@ -164,12 +169,13 @@ export default defineComponent({
     }
 
     const isTapTouch = (target: HTMLElement) => {
-      if (!startTouch || !prevTouch) {
+      if (!target || !startTouch || !prevTouch) {
         return false
       }
 
       return (
         getDistance(startTouch, prevTouch) <= DISTANCE_OFFSET &&
+        Date.now() - prevTouch.timestamp < TAP_DELAY &&
         (target === startTouch.target || target.parentNode === startTouch.target)
       )
     }

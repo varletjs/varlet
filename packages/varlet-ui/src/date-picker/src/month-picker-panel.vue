@@ -2,13 +2,14 @@
   <div class="var-month-picker__panel">
     <div class="var-month-picker__content">
       <panel-header
+        ref="headerEl"
         type="month"
         :date="preview"
         :disabled="panelBtnDisabled"
         @check-panel="clickYear"
         @check-date="checkDate"
       />
-      <transition :name="reverse ? 'var-date-picker-reverse-translatex' : 'var-date-picker-translatex'">
+      <transition :name="`var-date-picker${reverse ? '-reverse' : ''}-translatex`">
         <ul :key="panelKey">
           <li v-for="month in MONTH_LIST" :key="month.index">
             <var-button
@@ -19,7 +20,7 @@
               v-bind="{
                 ...buttonProps(month.index),
               }"
-              @click="chooseMonth(month)"
+              @click="(event) => chooseMonth(month, event)"
             >
               {{ getMonthAbbr(month.index) }}
             </var-button>
@@ -40,7 +41,7 @@ import PanelHeader from './panel-header.vue'
 import VarButton from '../../button'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
-import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
+import type { Ref, ComputedRef, UnwrapRef, PropType, RendererNode } from 'vue'
 import type { Choose, Preview, ComponentProps, Month, MonthDict, PanelBtnDisabled } from '../props'
 
 dayjs.extend(isSameOrBefore)
@@ -80,6 +81,7 @@ export default defineComponent({
     const [currentYear, currentMonth] = props.current.split('-')
     const reverse: Ref<boolean> = ref(false)
     const panelKey: Ref<number> = ref(0)
+    const headerEl: Ref<RendererNode | null> = ref(null)
     const panelBtnDisabled: UnwrapRef<PanelBtnDisabled> = reactive({
       left: false,
       right: false,
@@ -143,6 +145,7 @@ export default defineComponent({
       const computeDisabled = (): boolean => {
         if (!inRange(key)) return true
         if (!allowedDates) return false
+
         return !allowedDates(val)
       }
       const disabled = computeDisabled()
@@ -150,6 +153,7 @@ export default defineComponent({
       const computeText = (): boolean => {
         if (disabled) return true
         if (range || multiple) return !shouldChoose(val)
+
         return !isSameYear.value || chooseMonth?.index !== key
       }
 
@@ -180,16 +184,21 @@ export default defineComponent({
       const isCover = textColorOrCover().startsWith('var-date-picker')
 
       return {
-        disabled,
         outline: computeOutline(),
         text: computeText(),
         color: !computeText() ? color : '',
         textColor: isCover ? '' : textColorOrCover(),
         'var-date-picker-color-cover': isCover,
+        class: {
+          'var-month-picker__button-disabled': disabled,
+        },
       }
     }
 
-    const chooseMonth = (month: MonthDict) => {
+    const chooseMonth = (month: MonthDict, event: MouseEvent) => {
+      const buttonEl = event.currentTarget as HTMLButtonElement
+      if (buttonEl.classList.contains('var-month-picker__button-disabled')) return
+
       emit('choose-month', month)
     }
 
@@ -197,6 +206,11 @@ export default defineComponent({
       reverse.value = checkType === 'prev'
       panelKey.value += checkType === 'prev' ? -1 : 1
       emit('check-preview', 'year', checkType)
+    }
+
+    // expose for internal
+    const forwardRef = (checkType: string) => {
+      headerEl.value!.checkDate(checkType)
     }
 
     watch(
@@ -215,9 +229,11 @@ export default defineComponent({
     return {
       pack,
       MONTH_LIST,
+      headerEl,
       reverse,
       panelKey,
       panelBtnDisabled,
+      forwardRef,
       buttonProps,
       getMonthAbbr,
       chooseMonth,

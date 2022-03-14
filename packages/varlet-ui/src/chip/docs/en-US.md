@@ -1,5 +1,9 @@
 # Chip
 
+### Intro
+
+Chip component, used to display some items, and supports closing items
+
 ### Install
 
 ```js

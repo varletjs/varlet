@@ -25,9 +25,9 @@ export default {
 }
 ```
 
-### Component Call
+## Component Call
 
-#### Basic Usage
+### Basic Usage
 
 ```html
 <var-button type="primary" block @click="show = !show">Basic Usage</var-button>
@@ -48,7 +48,7 @@ export default {
 }
 ```
 
-#### Multi-Line
+### Multi-Line
 
 Use `vertical` prop to change arrangement of `snackbar`. Use `Custom slot` create action of right.
 
@@ -61,7 +61,7 @@ Use `vertical` prop to change arrangement of `snackbar`. Use `Custom slot` creat
 </var-snackbar>
 ```
 
-#### Bottom Display
+### Bottom Display
 
 Use `position` prop to change position of `snackbar`.
 
@@ -74,7 +74,7 @@ Use `position` prop to change position of `snackbar`.
 </var-snackbar>
 ```
 
-#### Display Duration
+### Display Duration
 
 Use `duration` prop to change display duration of `snackbar`.
 
@@ -82,7 +82,7 @@ Use `duration` prop to change display duration of `snackbar`.
 <var-snackbar v-model:show="show" :duration="1000"> "Hello, I'm a snackbar" </var-snackbar>
 ```
 
-#### Forbid Click
+### Forbid Click
 
 Use `forbid-click` prop to control whether penetrating clicks are forbidden.
 
@@ -90,15 +90,15 @@ Use `forbid-click` prop to control whether penetrating clicks are forbidden.
 <var-snackbar v-model:show="show" :forbid-click="true"> "Hello, I'm a snackbar" </var-snackbar>
 ```
 
-### Function Call
+## Function Call
 
-#### Basic Usage
+### Basic Usage
 
 ```javascript
 Snackbar("Hello, I'm a snackbar")
 ```
 
-#### Display Duration
+### Display Duration
 
 ```javascript
 Snackbar({
@@ -107,7 +107,7 @@ Snackbar({
 })
 ```
 
-#### Bottom Display
+### Bottom Display
 
 ```javascript
 Snackbar({

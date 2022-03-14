@@ -128,12 +128,15 @@ If the limit is exceeded, the file will be blocked. You can get the file by list
 
 ```js
 import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
 
 export default {
   setup() {
     const files = ref([])
 
-    const handleOversize = file => console.log(file)
+    const handleOversize = () => {
+      Snackbar.warning('file size exceeds limit')
+    }
 
     return {
       files,
@@ -153,12 +156,21 @@ Operate on a file by registering a `before-read` event that returns a false valu
 
 ```js
 import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
 
 export default {
   setup() {
     const files = ref([])
 
-    const handleBeforeRead = file => file.file.size <= 1024 * 10
+    const handleBeforeRead = (file) => {
+      if (file.file.size <= 1 * 1024 * 1024) {
+        Snackbar.success('the file is less than 1M, the upload is successful')
+        return true
+      } else {
+        Snackbar.warning('the file is larger than 1M and cannot be uploaded')
+        return false
+      }
+    }
 
     return {
       files,
@@ -241,6 +253,43 @@ The second argument is a collection of utility functions that can quickly get a 
 />
 ```
 
+### Custom render file list
+
+You can use the `hide-list` to hide component files list, then you can render this list by custom.
+
+```html
+<var-space>
+  <img
+    class="custom-uploader-file"
+    v-for="f in files"
+    :key="f.id"
+    :src="f.cover"
+  />
+  <var-uploader hide-list v-model="files">
+    <var-button round type="primary">
+      <var-icon :size="28" name="upload" />
+    </var-button>
+  </var-uploader>
+</var-space>
+```
+
+```css
+.custom-uploader-file {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 12px;
+  object-fit: cover;
+}
+
+.custom-uploader-action {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+```
+
 ## API
 
 ### Props
@@ -258,6 +307,7 @@ The second argument is a collection of utility functions that can quickly get a 
 | `maxsize` | Maximum file size | _string \| number_ | `-` |
 | `previewed` | Whether to allow preview | _boolean_ | `true` |
 | `ripple` | Whether to open ripple | _boolean_ | `true` |
+| `hide-list` | Whether to hide the file list | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation， The optional value is `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
 

@@ -240,7 +240,7 @@ export default {
 
 ### 属性
 
-### Tabs Props
+#### Tabs Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -259,14 +259,14 @@ export default {
 | `offset-top` | 吸顶距离 | _string \| number_ | `0` |
 
 
-### Tab Props
+#### Tab Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `name` | 选项卡的名字 | _string \| number_ | `index` |
 | `disabled` | 是否禁用选项卡 | _boolean_ | `false` |
 
-### TabsItems Props
+#### TabsItems Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -274,7 +274,7 @@ export default {
 | `can-swipe` | 是否允许滑动切换 | _boolean_ | `true` |
 | `loop` | 是否允许循环切换 | _boolean_ | `false` |
 
-### TabItem Props
+#### TabItem Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -288,14 +288,14 @@ export default {
 
 ### 事件
 
-### Tabs Events
+#### Tabs Events
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
 | `click` | 点击选项卡时触发, 在选项卡 `disabled` 状态为 `true` 时不触发 | `active: string \| number` |
 | `change` | 切换选项卡时触发 | `active: string \| number` |
 
-### Tab Events
+#### Tab Events
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
@@ -303,25 +303,25 @@ export default {
 
 ### 插槽
 
-### Tabs Slots
+#### Tabs Slots
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 选项卡组的内容 | `-` |
 
-### Tab Slots
+#### Tab Slots
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 选项卡内容 | `-` |
 
-### TabsItems Slots
+#### TabsItems Slots
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 视图组的内容 | `-` |
 
-### TabItem Slots
+#### TabItem Slots
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
@@ -329,9 +329,9 @@ export default {
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
-### Tabs Variables
+#### Tabs Variables
 
 | 变量名 | 默认值 |
 | --- | --- |
@@ -343,7 +343,7 @@ export default {
 | `--tabs-indicator-background` | `var(--color-primary)` |
 | `--tabs-background` | `#fff` |
 
-### Tab Variables
+#### Tab Variables
 
 | 变量名 | 默认值 |
 | --- | --- |

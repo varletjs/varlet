@@ -181,7 +181,6 @@ export default defineComponent({
   left: 0;
   display: flex;
   align-items: center;
-  color: var(--site-config-color-font-size);
   width: 100%;
   height: 60px;
   padding: 0 30px;

@@ -129,6 +129,10 @@ export default defineComponent({
       value.value = values.includes(checkedValue) ? checkedValue : uncheckedValue
     }
 
+    const resetWithAnimation = () => {
+      withAnimation.value = false
+    }
+
     // expose
     const reset = () => {
       props['onUpdate:modelValue']?.(props.uncheckedValue)
@@ -165,6 +169,7 @@ export default defineComponent({
       validate,
       resetValidation,
       reset,
+      resetWithAnimation,
     }
 
     bindCheckboxGroup?.(checkboxProvider)

@@ -25,14 +25,15 @@ export default {
 }
 ```
 
-### Functional
-#### Basic Use
+## Functional
+
+### Basic Use
 
 ```js
 Dialog('Don\'t Wanna See No Blood, Don\'t Be A Macho Man')
 ```
 
-#### Modify Title
+### Modify Title
 
 ```js
 Dialog({
@@ -41,7 +42,7 @@ Dialog({
 })
 ```
 
-#### Hide Button
+### Hide Button
 
 ```js
 Dialog({
@@ -51,7 +52,7 @@ Dialog({
 })
 ```
 
-#### Handling user behavior
+### Handling user behavior
 
 You can get user behavior from the method's return value, which is a `Promise`.
 Includes `confirm`, `cancel`, and `close(click the overlay to trigger closure)`.
@@ -96,9 +97,9 @@ Dialog({
 })
 ```
 
-### Component Call
+## Component Call
 
-#### Basic Use
+### Basic Use
 
 ```html
 <var-button type="warning" block @click="show = true">Basic Use</var-button>
@@ -128,7 +129,7 @@ export default {
 }
 ```
 
-#### Asynchronous closing
+### Asynchronous closing
 
 ```html
 <var-button type="warning" block @click="show = true">Asynchronous closing</var-button>
@@ -172,7 +173,7 @@ export default {
 }
 ```
 
-#### Custom Slots
+### Custom Slots
 
 ```html
 <var-button type="warning" block @click="show = true">Custom Slots</var-button>

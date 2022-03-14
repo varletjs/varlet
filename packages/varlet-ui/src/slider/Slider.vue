@@ -47,18 +47,7 @@
             :class="[thumbsProps[item.enumValue].active ? 'var-slider__thumb-ripple-active' : null]"
             :style="{
               background: thumbColor,
-              height:
-                thumbSize === undefined
-                  ? undefined
-                  : thumbsProps[item.enumValue].active
-                  ? `${3 * toNumber(thumbSize)}px`
-                  : '0px',
-              width:
-                thumbSize === undefined
-                  ? undefined
-                  : thumbsProps[item.enumValue].active
-                  ? `${3 * toNumber(thumbSize)}px`
-                  : '0px',
+              ...getRippleSize(item),
             }"
           ></div>
           <div
@@ -156,6 +145,19 @@ export default defineComponent({
 
       return list
     })
+
+    const getRippleSize = (item: ThumbsListProps) => {
+      let size: string | undefined
+
+      if (props.thumbSize !== undefined) {
+        size = thumbsProps[item.enumValue].active ? `${3 * toNumber(props.thumbSize)}px` : '0px'
+      }
+
+      return {
+        height: size,
+        width: size,
+      }
+    }
 
     const showLabel = (type: keyof ThumbsProps): boolean => {
       if (props.labelVisible === 'always') return true
@@ -341,6 +343,7 @@ export default defineComponent({
       thumbsProps,
       thumbList,
       toNumber,
+      getRippleSize,
       showLabel,
       start,
       move,

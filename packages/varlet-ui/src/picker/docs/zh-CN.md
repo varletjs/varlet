@@ -11,6 +11,7 @@ import { Picker } from '@varlet/ui'
 
 createApp().use(Picker)
 ```
+
 ### 局部引入
 
 ```js
@@ -23,7 +24,7 @@ export default {
 }
 ```
 
-### 函数调用
+## 函数调用
 
 ### 多列滚动
 
@@ -53,7 +54,7 @@ const { state, texts, indexes } = await Picker({
 })
 ```
 
-### 组件调用
+## 组件调用
 
 ### 多列滚动
 
@@ -133,8 +134,6 @@ export default {
 
 ### 属性
 
-### Picker Props
-
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `columns` | 列内容 | _NormalColumn[] \| CascadeColumn[] \| Texts_ | `[]` |
@@ -211,7 +210,7 @@ export default {
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

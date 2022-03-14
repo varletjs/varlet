@@ -1,19 +1,21 @@
-# @varlet/cli
+# Varlet Cli
+
+### Intro
 
 The out-of-the-box `Vue3 component library` rapid prototyping tool provides a series of commands and tools to solve the problem of component library development
 
 ### Feature
 
-- 1.Out-of-the-box component library development environment
-- 2.Out-of-the-box component library compilation tool, support exporting `esm` and `umd` two module codes
-- 3.Component library document site based on configuration files, support Baidu statistics and theme customization
-- 4.Supports `single file component (sfc)` and `tsx, jsx` two styles of component library writing styles
-- 5.Code inspection tool out of the box
-- 6.Unit testing tools out of the box
-- 7.Out-of-the-box code publishing tool, publish to npm and github, and automatically generate a change log
-- 8.Support `Typescript`
-- 9.Support `Dark Mode`
-- 10.Based on `pnpm`
+- 📦Out-of-the-box component library development environment
+- 📦Out-of-the-box component library compilation tool, support exporting `esm` and `umd` two module codes
+- 🛠️Component library document site based on configuration files, support Baidu statistics and theme customization
+- 🛠️Supports `single file component (sfc)` and `tsx, jsx` two styles of component library writing styles
+- 📦Code inspection tool out of the box
+- 📦Unit testing tools out of the box
+- 📦Out-of-the-box code publishing tool, publish to npm and github, and automatically generate a change log
+- 💪Support `Typescript`
+- 💪Support `Dark Mode`
+- 🚀Based on `pnpm`
 
 ### Quickstart
 
@@ -57,7 +59,7 @@ The `varlet.config.js` in the project root directory is used to manage the speci
 | `mobile` | Mobile document structure configuration | _SiteMobile_ | `-` |
 | `moduleCompatible` | Module compatible config | _Record<string, string>_ | `-` |
 
-#### Module Compatible
+### Module Compatible
 
 Some external dependencies may need to be compatible with module syntax to achieve the purpose of compiling correctly to `commonjs` and `esmodule`. For example, the wording of `esmodule` of `dayjs` is
 
@@ -82,7 +84,7 @@ module.exports = {
 }
 ```
 
-#### SiteThemes
+### SiteThemes
 
 Theme variables are related,
 because the default theme variables may be modified from time to time,
@@ -113,7 +115,7 @@ subject to the theme of the `varlet` official document
 | `color-mobile-language-active` |
 | `color-mobile-language-active-background` |
 
-#### SiteHighlight
+### SiteHighlight
 
 Code snippets are highlighted, based on [highlight.js](https://highlightjs.org/)
 
@@ -121,7 +123,7 @@ Code snippets are highlighted, based on [highlight.js](https://highlightjs.org/)
 | ----- | -------------- | -------- | ---------- |
 | `style` | highlight css link | _string_ | `-` |
 
-#### SiteAnalysis
+### SiteAnalysis
 
 Statistics related to buried points
 
@@ -129,7 +131,7 @@ Statistics related to buried points
 | ----- | -------------- | -------- | ---------- |
 | `baidu` | Baidu statistics script address | _string_ | `-` |
 
-#### SitePC, SiteMobile
+### SitePC, SiteMobile
 
 The document structure is partly related, and the example configuration is as follows
 
@@ -262,7 +264,7 @@ varlet-cli release
 varlet-cli gen <projectName>
 ```
 
-### babel
+### Babel
 
 To configure `babel`, first specify the target browser in `package.json`
 
@@ -291,9 +293,9 @@ module.exports = {
 }
 ```
 
-### git and npm
+### Git and Npm
 
-#### git-hook
+#### Git-hook
 
 `simple-git-hooks`, `lint-staged` cooperate with `eslint`, `stylelint`, `varlet-cli commit-lint` to check before commit,
 `package.json` configuration is as follows
@@ -358,7 +360,7 @@ src/*/__tests__/**
 *.md
 ```
 
-### typescript
+### Typescript
 
 create `tsconfig.json`
 
@@ -378,7 +380,7 @@ create `tsconfig.json`
 }
 ```
 
-#### Note before release
+### Note before release
 
 - 1.The registry of npm must set to the official npm mirror
 - 2.The npm must execute the login command for user login

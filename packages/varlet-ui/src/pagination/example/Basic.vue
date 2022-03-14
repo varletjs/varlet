@@ -26,6 +26,7 @@ export default {
 
 <style lang="less" scoped>
 ul {
+  margin: 0;
   padding: 10px 0;
   box-shadow: none;
 }

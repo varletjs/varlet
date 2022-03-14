@@ -8,4 +8,6 @@ export default {
   displayCloseButton: 'Display the close button',
   listenCloseEvents: 'Listen for close event',
   shutdownEvent: 'The shutdown event was triggered.',
+  showExtraSlots: 'Show extra slots',
+  operate: 'Operate',
 }

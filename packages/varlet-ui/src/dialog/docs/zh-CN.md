@@ -25,14 +25,14 @@ export default {
 }
 ```
 
-### 函数调用
-#### 基本使用
+## 函数调用
+### 基本使用
 
 ```js
 Dialog('兰亭临帖 行书如行云流水')
 ```
 
-#### 修改标题
+### 修改标题
 
 ```js
 Dialog({
@@ -41,7 +41,7 @@ Dialog({
 })
 ```
 
-#### 隐藏按钮
+### 隐藏按钮
 
 ```js
 Dialog({
@@ -51,7 +51,7 @@ Dialog({
 })
 ```
 
-#### 处理用户行为
+### 处理用户行为
 
 可以通过 `Dialog` 方法的返回值获取用户行为, 返回值是一个 `promise`。
 包含 `confirm(确认)`、`cancel(取消)`、`close(通过点击遮罩层触发关闭)` 三种状态。
@@ -96,9 +96,9 @@ Dialog({
 })
 ```
 
-### 组件调用
+## 组件调用
 
-#### 基本使用
+### 基本使用
 
 ```html
 <var-button type="warning" block @click="show = true">基本使用</var-button>
@@ -128,7 +128,7 @@ export default {
 }
 ```
 
-#### 异步关闭
+### 异步关闭
 
 ```html
 <var-button type="warning" block @click="show = true">异步关闭</var-button>
@@ -172,7 +172,7 @@ export default {
 }
 ```
 
-#### 自定义插槽
+### 自定义插槽
 
 ```html
 <var-button type="warning" block @click="show = true">自定义插槽</var-button>
@@ -278,7 +278,7 @@ export default {
 | `title` | 对话框标题 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

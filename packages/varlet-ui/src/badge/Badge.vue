@@ -32,7 +32,7 @@ export default defineComponent({
     const contentClass: ComputedRef<Array<string | false | undefined>> = computed(() => {
       const { type, position, dot, icon } = props
 
-      const positionBasic = slots.default?.() && `var-badge__position var-badge--${position}`
+      const positionBasic = slots.default && `var-badge__position var-badge--${position}`
       const dotClass = dot && 'var-badge__dot'
       const positionClass = getPositionClass()
       const iconClass = icon && 'var-badge__icon'

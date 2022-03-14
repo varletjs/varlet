@@ -128,12 +128,15 @@ export default {
 
 ```js
 import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
 
 export default {
   setup() {
     const files = ref([])
 
-    const handleOversize = file => console.log(file)
+    const handleOversize = () => {
+      Snackbar.warning('文件大小超出限制')
+    }
 
     return {
       files,
@@ -153,12 +156,21 @@ export default {
 
 ```js
 import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
 
 export default {
   setup() {
     const files = ref([])
 
-    const handleBeforeRead = file => file.file.size <= 1024 * 10
+    const handleBeforeRead = (file) => {
+      if (file.file.size <= 1 * 1024 * 1024) {
+        Snackbar.success('文件小于1M，上传成功')
+        return true
+      } else {
+        Snackbar.warning('文件大于1M，不能上传')
+        return false
+      }
+    }
 
     return {
       files,
@@ -238,6 +250,43 @@ export default {
 />
 ```
 
+### 自定义渲染
+
+通过`hide-list`隐藏组件的文件列表，自定义文件列表的渲染逻辑
+
+```html
+<var-space>
+  <img
+    class="custom-uploader-file"
+    v-for="f in files"
+    :key="f.id"
+    :src="f.cover"
+  />
+  <var-uploader hide-list v-model="files">
+    <var-button round type="primary">
+      <var-icon :size="28" name="upload" />
+    </var-button>
+  </var-uploader>
+</var-space>
+```
+
+```css
+.custom-uploader-file {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 12px;
+  object-fit: cover;
+}
+
+.custom-uploader-action {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+```
+
 ## API
 
 ### 属性
@@ -255,6 +304,7 @@ export default {
 | `maxsize` | 最大文件大小 | _string \| number_ | `-` |
 | `previewed` | 是否允许预览 | _boolean_ | `true` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
+| `hide-list` | 是否隐藏文件列表 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机， 可选值为 `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
 
@@ -306,7 +356,7 @@ export default {
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

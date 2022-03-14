@@ -1,5 +1,9 @@
 # Button
 
+### Intro
+
+Button component for triggering actions
+
 ### Install
 
 ```js

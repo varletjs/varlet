@@ -242,3 +242,30 @@ test('test uploader length over maxlength in multiple mode', async () => {
   wrapper.unmount()
   mockRestore()
 })
+
+test('test uploader hide file list', async () => {
+  const { mockRestore } = mockFileReader('data:image/png;base64,')
+  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      hideList: true,
+      modelValue: [],
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  const event = {
+    target: {
+      files: [new File([], 'cat.png'), new File([], 'dog.png')],
+    },
+  }
+
+  await wrapper.vm.handleChange(event)
+  expect(wrapper.vm.files.length).toBe(0)
+
+  wrapper.unmount()
+  mockRestore()
+})

@@ -66,6 +66,7 @@ export default defineComponent({
 
     const touchStart = (event: TouchEvent) => {
       if (!isTouchable.value) return
+
       refreshStatus.value = 'pulling'
       startPosition.value = event.touches[0].clientY
     }
@@ -73,6 +74,7 @@ export default defineComponent({
     const touchMove = (event: TouchEvent) => {
       const scrollTop = getScrollTop(scroller)
       if (scrollTop > 0 || !isTouchable.value) return
+
       if (scrollTop === 0 && distance.value > CONTROL_POSITION) event.cancelable && event.preventDefault()
 
       const moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + CONTROL_POSITION
@@ -83,16 +85,20 @@ export default defineComponent({
 
     const touchEnd = () => {
       if (!isTouchable.value) return
+
       isEnd.value = true
+
       if (distance.value >= MAX_DISTANCE * 0.2) {
         refreshStatus.value = 'loading'
         distance.value = MAX_DISTANCE * 0.3
+
         props['onUpdate:modelValue']?.(true)
         props.onRefresh?.()
       } else {
         refreshStatus.value = 'loosing'
         iconName.value = 'arrow-down'
         distance.value = CONTROL_POSITION
+
         setTimeout(() => {
           isEnd.value = false
         }, toNumber(props.animationDuration))

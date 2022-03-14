@@ -150,7 +150,7 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 
 ### 属性
 
-### Row Props
+#### Row Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -158,7 +158,8 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 | `justify` | 主轴对齐方式, 可选值为 `flex-start` `flex-end` `center` `space-between` `space-around` | _string_ | `flex-start` |
 | `align` | 交叉轴对齐方式, 可选值为 `flex-start` `flex-end` `center` | _string_ | `flex-start` |
 
-### Col Props
+#### Col Props
+
 | 参数       | 说明                       | 类型       | 默认值     |
 |----------|--------------------------|----------|---------|
 | `span`   | 列占据的栅格数                  | _string \| number_ | `24` |
@@ -171,13 +172,13 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 
 ### 事件
 
-### Row Events
+#### Row Events
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
 | `click` | 点击 Row 时触发 | `event: Event` |
 
-### Col Events
+#### Col Events
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
@@ -185,13 +186,13 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 
 ### 插槽
 
-### Row Slots
+#### Row Slots
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | Row 内容 | `-` |
 
-### Col Slots
+#### Col Slots
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |

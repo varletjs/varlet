@@ -162,6 +162,7 @@
       overflow: hidden;
       font-weight: 700;
       cursor: pointer;
+      user-select: none;
 
       div {
         width: 100%;
@@ -195,6 +196,11 @@
 
     &__button[var-date-picker-color-cover='true'] {
       color: var(--date-picker-main-color);
+    }
+
+    &__button-disabled {
+      color: var(--color-text-disabled) !important;
+      cursor: not-allowed;
     }
   }
 
@@ -257,6 +263,11 @@
 
     &__button[var-date-picker-color-cover='true'] {
       color: var(--date-picker-main-color);
+    }
+
+    &__button-disabled {
+      color: var(--color-text-disabled) !important;
+      cursor: not-allowed;
     }
   }
 

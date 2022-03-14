@@ -56,6 +56,22 @@ export default {
 }
 ```
 
+### 注意
+
+当 `PullRefresh` 容器高度为 `0` 时会导致下拉功能失效，所以需保证其子元素高度**不为** `0` 或为 `PullRefresh` 容器设置高度:
+
+```html
+<var-pull-refresh>
+  <div style="height: 200px"></div>
+</var-pull-refresh>
+
+// 或
+
+<var-pull-refresh style="height: 200px">
+  <div></div>
+</var-pull-refresh>
+```
+
 ## API
 
 ### 属性
@@ -84,7 +100,7 @@ export default {
 | `default` | 默认插槽 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量, 可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

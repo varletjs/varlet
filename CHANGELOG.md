@@ -1,3 +1,68 @@
+## [1.26.5](https://github.com/varletjs/varlet/compare/v1.26.4...v1.26.5) (2022-03-13)
+
+
+### Features
+
+* **date-picker:** suport touchable ([5868a11](https://github.com/varletjs/varlet/commit/5868a115e11b2e3638475857396c95957c6728d7))
+* **ui/image-preview:** add extra slot ([8dc4d2d](https://github.com/varletjs/varlet/commit/8dc4d2d800b8ee61c8c7792a907c7d9369208ddc))
+
+
+
+## [1.26.4](https://github.com/varletjs/varlet/compare/v1.26.3...v1.26.4) (2022-03-07)
+
+
+### Bug Fixes
+
+* **ui/image-preview:** fix TAP_DELAY ([c4edf69](https://github.com/varletjs/varlet/commit/c4edf695e5bf03fb715f18d335df2705173d54b6))
+
+
+### Features
+
+* **rate:** add namespace prop ([3aaa917](https://github.com/varletjs/varlet/commit/3aaa9170af649017f6c16c92bab5c44ad41fecae))
+
+
+
+## [1.26.3](https://github.com/varletjs/varlet/compare/v1.26.2...v1.26.3) (2022-03-05)
+
+
+### Bug Fixes
+
+* **cli/site:** optimize documentation color ([c53353e](https://github.com/varletjs/varlet/commit/c53353e9e9f8fc72ccff10e277ad42b866424096))
+* **date-picker:** format date of slotProps and style of doc ([67bf46c](https://github.com/varletjs/varlet/commit/67bf46ce266fb8d1e4c25e3a6cacf43c74253db5))
+* **site:** add cssTarget chorme61 ([4481054](https://github.com/varletjs/varlet/commit/4481054517b817e168e0ac4a30c103affaea94d0))
+* **ui/checkbox:** resolve checkbox component animation display exception ([#321](https://github.com/varletjs/varlet/issues/321)) ([9e5c078](https://github.com/varletjs/varlet/commit/9e5c07812c28ede647825119a086425366cb868e))
+* **ui/image-preview:** fix isTapTouch ([f5c38f8](https://github.com/varletjs/varlet/commit/f5c38f8b454699951cde262cda7ce78b96478fc0))
+* **ui/image-preview:** fixed the error that the target value is null when triggering isTapTouch ([#323](https://github.com/varletjs/varlet/issues/323)) ([ee5c559](https://github.com/varletjs/varlet/commit/ee5c559700728fa5a620bddb9a55fa05b4ecc432))
+
+
+
+## [1.26.2](https://github.com/varletjs/varlet/compare/v1.26.1...v1.26.2) (2022-02-22)
+
+
+### Bug Fixes
+
+* support --ripple-color ([c5ded77](https://github.com/varletjs/varlet/commit/c5ded77c7be2dd8fcfa7eae24817fb18c3a29bf3))
+* **ui/space:** fix space err with comment [#319](https://github.com/varletjs/varlet/issues/319) ([f2adc98](https://github.com/varletjs/varlet/commit/f2adc981030481fb218e608342a184c4d1e07588))
+* **ui/space:** fix space v-for err ([c9d10e3](https://github.com/varletjs/varlet/commit/c9d10e3c5500f4ae5064be106b73c169dff010f3))
+
+
+### Performance Improvements
+
+* remove unuseful function call ([#316](https://github.com/varletjs/varlet/issues/316)) ([263a830](https://github.com/varletjs/varlet/commit/263a8305a5e3ec24a4b3c67db6dd2ed4dc5fdcca))
+* **ui/divider:** remove unuseful function call ([129e47d](https://github.com/varletjs/varlet/commit/129e47dd7df8bfea17059180cb5fd041fef0809b))
+
+
+
+## [1.26.1](https://github.com/varletjs/varlet/compare/v1.26.0...v1.26.1) (2022-02-14)
+
+
+### Bug Fixes
+
+* **site:** fix fold animation error when defaultFold set false ([e709af0](https://github.com/varletjs/varlet/commit/e709af094343ffac2002d63c5a883005bd3f82f8))
+* **ui/list:** the fractional part of the detectorBottom when bottoming out overflows ([c8e0142](https://github.com/varletjs/varlet/commit/c8e01423d98b9bdcea825be35558f299932f753d))
+
+
+
 # [1.26.0](https://github.com/varletjs/varlet/compare/v1.25.1...v1.26.0) (2022-02-08)
 
 

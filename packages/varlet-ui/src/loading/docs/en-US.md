@@ -1,5 +1,9 @@
 # Loading
 
+### Intro
+
+Loading component for performing animations when data is loaded
+
 ### Install
 
 ```js
