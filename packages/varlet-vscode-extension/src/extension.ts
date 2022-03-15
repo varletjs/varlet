@@ -2,7 +2,9 @@ import * as vscode from 'vscode'
 import siteMap from './siteMap'
 
 const DOC = 'https://varlet.gitee.io/varlet-ui/#/zh-CN'
+const DOC_VUE2 = 'https://varlet.gitee.io/varlet-ui-vue2/#/zh-CN'
 const EN_DOC = 'https://varlet.gitee.io/varlet-ui/#/en-US'
+const EN_DOC_VUE2 = 'https://varlet.gitee.io/varlet-ui-vue2/#/en-US'
 
 const LINK_RE = /(?<=<var-)([\w-]+)/g
 const BIG_CAMELIZE_RE = /(?<=<Var)([\w-]+)/g
@@ -32,7 +34,9 @@ function provideHover(document: vscode.TextDocument, position: vscode.Position) 
       .map((component) => {
         return `\
 [Varlet -> 查看${bigCamelize(component)}组件官方文档](${DOC}${siteMap[component]})\n
-[Varlet -> Watch ${bigCamelize(component)} component documentation](${EN_DOC}${siteMap[component]})`
+[Varlet-vue2 -> 查看${bigCamelize(component)}组件官方文档](${DOC_VUE2}${siteMap[component]})\n
+[Varlet -> Watch ${bigCamelize(component)} component documentation](${EN_DOC}${siteMap[component]})\n
+[Varlet-vue2 -> Watch ${bigCamelize(component)} component documentation](${EN_DOC_VUE2}${siteMap[component]})`
       })
     return new vscode.Hover(contents)
   }
