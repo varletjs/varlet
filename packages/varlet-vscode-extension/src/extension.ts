@@ -58,21 +58,23 @@ function provideHover(document: vscode.TextDocument, position: vscode.Position) 
         const { site } = componentMap[component]
 
         return `\
-[Varlet -> 查看${bigCamelize(component)}组件官方文档](${DOC}${site}})\n
-[Varlet-vue2 -> 查看${bigCamelize(component)}组件官方文档](${DOC_VUE2}${site}})\n
-[Varlet -> Watch ${bigCamelize(component)} component documentation](${EN_DOC}${site}})\n
-[Varlet-vue2 -> Watch ${bigCamelize(component)} component documentation](${EN_DOC_VUE2}${site}})`
+[Varlet -> 查看${bigCamelize(component)}组件官方文档](${DOC}${site})\n
+[Varlet-vue2 -> 查看${bigCamelize(component)}组件官方文档](${DOC_VUE2}${site})\n
+[Varlet -> Watch ${bigCamelize(component)} component documentation](${EN_DOC}${site})\n
+[Varlet-vue2 -> Watch ${bigCamelize(component)} component documentation](${EN_DOC_VUE2}${site})`
       })
     return new vscode.Hover(contents)
   }
 }
 
+function moveCursor(characterDelta: number) {
+  const active = vscode.window.activeTextEditor!.selection.active!
+  const position = active.translate({ characterDelta })
+  vscode.window.activeTextEditor!.selection = new vscode.Selection(position, position)
+}
+
 export function activate(context: vscode.ExtensionContext) {
-  vscode.commands.registerCommand('move-cursor', (characterDelta: number) => {
-    const active = vscode.window.activeTextEditor!.selection.active!
-    const position = active.translate({ characterDelta })
-    vscode.window.activeTextEditor!.selection = new vscode.Selection(position, position)
-  })
+  vscode.commands.registerCommand('move-cursor', moveCursor)
 
   context.subscriptions.push(
     vscode.languages.registerHoverProvider(files, {

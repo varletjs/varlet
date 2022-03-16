@@ -8,69 +8,192 @@ export interface ComponentDescriptor {
 export const componentMap: Record<string, ComponentDescriptor> = {
   button: {
     site: '/button',
-    attrs: ['type="primary"', 'size="normal"'],
+    attrs: ['type="primary"'],
   },
-  // cell: {
-  //   site: '/cell',
-  // },
-  // icon: '/icon',
-  // image: '/image',
-  // 'back-top': '/back-top',
-  // 'app-bar': '/app-bar',
-  // loading: '/loading',
-  // chip: '/chip',
-  // badge: '/badge',
-  // skeleton: '/skeleton',
+  cell: {
+    site: '/cell',
+  },
+  icon: {
+    site: '/icon',
+    attrs: ['name=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
+  image: {
+    site: '/image',
+    attrs: ['src=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
+  input: {
+    site: '/input',
+    attrs: ['v-model=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
+  'back-top': {
+    site: '/back-top',
+    closeSelf: true,
+  },
+  'app-bar': {
+    site: '/app-bar',
+  },
+  loading: {
+    site: '/loading',
+    closeSelf: true,
+  },
+  chip: {
+    site: '/chip',
+  },
+  badge: {
+    site: '/badge',
+    attrs: ['type="primary"'],
+  },
+  skeleton: {
+    site: '/skeleton',
+    attrs: ['loading=""'],
+    characterDelta: -2,
+  },
   // collapse: '/collapse',
   // 'collapse-item': '/collapse',
-  // row: '/row',
-  // col: '/row',
-  // sticky: '/sticky',
+  row: {
+    site: '/row',
+  },
+  col: {
+    site: '/row',
+    attrs: [':span=""'],
+    characterDelta: -2,
+  },
+  sticky: {
+    site: '/sticky',
+  },
   // progress: '/progress',
-  // list: '/list',
-  // swipe: '/swipe',
-  // 'swipe-item': '/swipe',
+  list: {
+    site: '/list',
+    attrs: ['@load=""'],
+    characterDelta: -2,
+  },
+  swipe: {
+    site: '/swipe',
+  },
+  'swipe-item': {
+    site: '/swipe',
+  },
   // steps: '/steps',
   // step: '/steps',
-  // tabs: '/tabs',
-  // tab: '/tabs',
-  // 'tabs-items': '/tabs',
-  // 'tab-item': '/tabs',
-  // counter: '/counter',
+  tabs: {
+    site: '/tabs',
+  },
+  tab: {
+    site: '/tabs',
+  },
+  'tabs-items': {
+    site: '/tabs',
+  },
+  'tab-item': {
+    site: '/tabs',
+  },
+  counter: {
+    site: '/counter',
+    attrs: ['v-model=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
   // countdown: '/countdown',
   // 'date-picker': '/date-picker',
   // 'time-picker': '/time-picker',
-  // dialog: '/dialog',
-  // form: '/form',
+  dialog: {
+    site: '/dialog',
+  },
+  form: {
+    site: '/form',
+  },
   // 'index-anchor': '/index-bar',
   // 'index-bar': '/index-bar',
-  input: {
-    site: '/input',
-    closeSelf: true,
+  select: {
+    site: '/select',
     attrs: ['v-model=""'],
+    characterDelta: -2,
+  },
+  option: {
+    site: '/select',
+    attrs: ['label=""'],
+    closeSelf: true,
     characterDelta: -3,
   },
-  // select: '/select',
-  // option: '/select',
-  // menu: '/menu',
-  // 'action-sheet': '/action-sheet',
-  // picker: '/picker',
-  // popup: '/popup',
+  menu: {
+    site: '/menu',
+  },
+  'action-sheet': {
+    site: '/action-sheet',
+    attrs: [':actions=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
+  picker: {
+    site: '/picker',
+    attrs: [':columns=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
+  popup: {
+    site: '/popup',
+  },
   // 'pull-refresh': '/pull-refresh',
-  // radio: '/radio-group',
-  // 'radio-group': '/radio-group',
-  // checkbox: '/checkbox-group',
-  // 'checkbox-group': '/checkbox-group',
+  radio: {
+    site: '/radio-group',
+  },
+  'radio-group': {
+    site: '/radio-group',
+    attrs: ['v-model=""'],
+    characterDelta: -2,
+  },
+  checkbox: {
+    site: '/checkbox-group',
+  },
+  'checkbox-group': {
+    site: '/checkbox-group',
+    attrs: ['v-model=""'],
+    characterDelta: -2,
+  },
   // switch: '/switch',
-  // rate: '/rate',
+  rate: {
+    site: '/rate',
+    attrs: ['v-model=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
   // slider: '/slider',
   // snackbar: '/snackbar',
-  // uploader: '/uploader',
-  // card: '/card',
-  // divider: '/divider',
-  // 'style-provider': '/style-provider',
-  // table: '/table',
+  uploader: {
+    site: '/uploader',
+    attrs: ['v-model=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
+  card: {
+    site: '/card',
+  },
+  divider: {
+    site: '/divider',
+    closeSelf: true,
+  },
+  'style-provider': {
+    site: '/style-provider',
+    attrs: [':style-vars=""'],
+    characterDelta: -2,
+  },
+  table: {
+    site: '/table',
+  },
   // pagination: '/pagination',
-  // 'image-preview': '/image-preview',
-  // space: '/space',
+  'image-preview': {
+    site: '/image-preview',
+    attrs: [':images=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
+  space: {
+    site: '/space',
+  },
 }
