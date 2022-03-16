@@ -26,6 +26,7 @@ import {
   doubleRaf,
   getParentScroller,
   getScrollLeft,
+  getScrollTop,
   nextTickFrame,
   requestAnimationFrame,
   scrollTo as varScrollTo,
@@ -73,7 +74,9 @@ export default defineComponent({
     }
 
     const handleScroll = () => {
-      const { scrollTop, scrollHeight } = scrollEl.value as HTMLElement
+      const { scrollHeight } = scrollEl.value as HTMLElement
+      const scrollTop = getScrollTop(scrollEl.value as HTMLElement)
+
       const { offsetTop } = barEl.value as HTMLElement
       indexAnchors.forEach((anchor: IndexAnchorProvider, index: number) => {
         const anchorTop = anchor.ownTop.value
