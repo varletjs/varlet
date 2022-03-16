@@ -43,7 +43,6 @@ export default defineComponent({
   setup(props) {
     const { length, indexAnchors, bindIndexAnchors } = useIndexAnchors()
 
-    const scrollEl: Ref<HTMLElement | null> = ref(null)
     const clickedName: Ref<string | number> = ref('')
     const scroller: Ref<HTMLElement | Window | null> = ref(null)
     const barEl: Ref<HTMLDivElement | null> = ref(null)
@@ -74,8 +73,9 @@ export default defineComponent({
     }
 
     const handleScroll = () => {
-      const { scrollHeight } = scrollEl.value as HTMLElement
-      const scrollTop = getScrollTop(scrollEl.value as HTMLElement)
+      const scrollTop = getScrollTop(scroller.value!)
+      const scrollHeight =
+        scroller.value === window ? document.body.scrollHeight : (scroller.value as HTMLElement).scrollHeight
 
       const { offsetTop } = barEl.value as HTMLElement
       indexAnchors.forEach((anchor: IndexAnchorProvider, index: number) => {
@@ -104,11 +104,11 @@ export default defineComponent({
       const indexAnchor = indexAnchors.find(({ name }: IndexAnchorProvider) => anchorName === name.value)
       if (!indexAnchor) return
       const top = indexAnchor.ownTop.value - stickyOffsetTop.value + offsetTop
-      const left = getScrollLeft(scrollEl.value as HTMLElement)
+      const left = getScrollLeft(scroller.value!)
       clickedName.value = anchorName
       emitEvent(anchorName)
 
-      await varScrollTo(scrollEl.value as HTMLElement, {
+      await varScrollTo(scroller.value!, {
         left,
         top,
         animation: easeInOutCubic,
@@ -139,11 +139,7 @@ export default defineComponent({
     onMounted(async () => {
       await doubleRaf()
       scroller.value = getParentScroller(barEl.value as HTMLDivElement)
-      scrollEl.value =
-        scroller.value === window
-          ? (scroller.value as Window).document.documentElement
-          : (scroller.value as HTMLElement)
-      scroller.value?.addEventListener('scroll', handleScroll)
+      scroller.value.addEventListener('scroll', handleScroll)
     })
 
     onBeforeUnmount(() => {
