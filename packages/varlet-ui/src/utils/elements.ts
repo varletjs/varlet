@@ -14,6 +14,10 @@ export function getTop(element: HTMLElement): number {
 }
 
 export function getScrollTop(element: Element | Window): number {
+  if (element === document.documentElement || element === document.body) {
+    return document.body.scrollTop || document.documentElement.scrollTop
+  }
+
   const top = 'scrollTop' in element ? element.scrollTop : element.pageYOffset
 
   // iOS scroll bounce cause minus scrollTop
@@ -21,6 +25,10 @@ export function getScrollTop(element: Element | Window): number {
 }
 
 export function getScrollLeft(element: Element | Window): number {
+  if (element === document.documentElement || element === document.body) {
+    return document.body.scrollLeft || document.documentElement.scrollLeft
+  }
+
   const left = 'scrollLeft' in element ? element.scrollLeft : element.pageXOffset
 
   return Math.max(left, 0)

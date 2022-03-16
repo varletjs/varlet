@@ -140,9 +140,7 @@ export default defineComponent({
       await doubleRaf()
       scroller.value = getParentScroller(barEl.value as HTMLDivElement)
       scrollEl.value =
-        scroller.value === window
-          ? (scroller.value as Window).document.documentElement
-          : (scroller.value as HTMLElement)
+        scroller.value === window ? (scroller.value as Window).document.body : (scroller.value as HTMLElement)
       scroller.value?.addEventListener('scroll', handleScroll)
     })
 
