@@ -197,11 +197,4 @@ export default {
   font-size: 12px;
   object-fit: cover;
 }
-
-.custom-uploader-action {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 12px;
-}
 </style>

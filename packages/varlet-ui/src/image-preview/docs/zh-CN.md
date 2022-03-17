@@ -221,14 +221,15 @@ export default {
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
-| 变量名  | 默认值   |
-| ------ | -------- |
+| 变量名                                           | 默认值   |
+|-----------------------------------------------| -------- |
 | `--image-preview-swipe-indicators-text-color` | `#ddd`  |
-| `--image-preview-swipe-indicators-padding` | `16px 0` |
-| `--image-preview-zoom-container-background`| `#000`  |
-| `--image-preview-close-icon-top` | `14px` |
-| `--image-preview-close-icon-right` | `14px` |
-| `--image-preview-close-icon-size` | `22px` |
-| `--image-preview-close-icon-color` | `#fff` |
-| `--image-preview-extra-top` | `14px` |
-| `--image-preview-extra-left` | `14px` |
+| `--image-preview-swipe-indicators-padding`    | `16px 0` |
+| `--image-preview-zoom-container-background`   | `#000`  |
+| `--image-preview-close-icon-top`              | `14px` |
+| `--image-preview-close-icon-right`            | `14px` |
+| `--image-preview-close-icon-size`             | `22px` |
+| `--image-preview-close-icon-color`            | `#fff` |
+| `--image-preview-extra-top`                   | `14px` |
+| `--image-preview-extra-left`                  | `14px` |
+

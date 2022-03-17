@@ -3,7 +3,6 @@
 @image-preview-zoom-container-background: #000;
 @image-preview-close-icon-top: 14px;
 @image-preview-close-icon-right: 14px;
-@image-preview-close-icon-left: 14px;
 @image-preview-extra-top: 14px;
 @image-preview-extra-left: 14px;
 @image-preview-close-icon-size: 22px;
@@ -15,7 +14,8 @@
   --image-preview-zoom-container-background: @image-preview-zoom-container-background;
   --image-preview-close-icon-top: @image-preview-close-icon-top;
   --image-preview-close-icon-right: @image-preview-close-icon-right;
-  --image-preview-close-icon-left: @image-preview-close-icon-left;
+  --image-preview-extra-top: @image-preview-extra-top;
+  --image-preview-extra-left: @image-preview-extra-left;
   --image-preview-close-icon-size: @image-preview-close-icon-size;
   --image-preview-close-icon-color: @image-preview-close-icon-color;
 }
@@ -44,8 +44,8 @@
 
   &__extra {
     position: absolute;
-    top: var(--image-preview-close-icon-top);
-    left: var(--image-preview-close-icon-left);
+    top: var(--image-preview-extra-top);
+    left: var(--image-preview-extra-left);
   }
 
   &__indicators {
