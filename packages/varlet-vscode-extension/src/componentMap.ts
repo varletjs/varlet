@@ -34,6 +34,7 @@ export const componentMap: Record<string, ComponentDescriptor> = {
   'back-top': {
     site: '/back-top',
     closeSelf: true,
+    characterDelta: -2,
   },
   'app-bar': {
     site: '/app-bar',
@@ -41,6 +42,7 @@ export const componentMap: Record<string, ComponentDescriptor> = {
   loading: {
     site: '/loading',
     closeSelf: true,
+    characterDelta: -2,
   },
   chip: {
     site: '/chip',
@@ -54,8 +56,16 @@ export const componentMap: Record<string, ComponentDescriptor> = {
     attrs: ['loading=""'],
     characterDelta: -2,
   },
-  // collapse: '/collapse',
-  // 'collapse-item': '/collapse',
+  collapse: {
+    site: '/collapse',
+    attrs: ['v-model=""'],
+    characterDelta: -2,
+  },
+  'collapse-item': {
+    site: '/collapse',
+    attrs: ['title=""'],
+    characterDelta: -2,
+  },
   row: {
     site: '/row',
   },
@@ -67,7 +77,12 @@ export const componentMap: Record<string, ComponentDescriptor> = {
   sticky: {
     site: '/sticky',
   },
-  // progress: '/progress',
+  progress: {
+    site: '/progress',
+    attrs: [':value=""'],
+    characterDelta: -3,
+    closeSelf: true,
+  },
   list: {
     site: '/list',
     attrs: ['@load=""'],
@@ -79,8 +94,14 @@ export const componentMap: Record<string, ComponentDescriptor> = {
   'swipe-item': {
     site: '/swipe',
   },
-  // steps: '/steps',
-  // step: '/steps',
+  steps: {
+    site: '/steps',
+    attrs: [':active=""'],
+    characterDelta: -2,
+  },
+  step: {
+    site: '/steps',
+  },
   tabs: {
     site: '/tabs',
   },
@@ -99,17 +120,38 @@ export const componentMap: Record<string, ComponentDescriptor> = {
     closeSelf: true,
     characterDelta: -3,
   },
-  // countdown: '/countdown',
-  // 'date-picker': '/date-picker',
-  // 'time-picker': '/time-picker',
+  countdown: {
+    site: '/countdown',
+    attrs: [':time=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
+  'date-picker': {
+    site: '/date-picker',
+    attrs: ['v-model=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
+  'time-picker': {
+    site: '/time-picker',
+    attrs: ['v-model=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
   dialog: {
     site: '/dialog',
   },
   form: {
     site: '/form',
   },
-  // 'index-anchor': '/index-bar',
-  // 'index-bar': '/index-bar',
+  'index-bar': {
+    site: '/index-bar',
+  },
+  'index-anchor': {
+    site: 'index-anchor',
+    attrs: [':index=""'],
+    characterDelta: -2,
+  },
   select: {
     site: '/select',
     attrs: ['v-model=""'],
@@ -139,7 +181,11 @@ export const componentMap: Record<string, ComponentDescriptor> = {
   popup: {
     site: '/popup',
   },
-  // 'pull-refresh': '/pull-refresh',
+  'pull-refresh': {
+    site: '/pull-refresh',
+    attrs: ['v-model=""'],
+    characterDelta: -2,
+  },
   radio: {
     site: '/radio-group',
   },
@@ -156,15 +202,29 @@ export const componentMap: Record<string, ComponentDescriptor> = {
     attrs: ['v-model=""'],
     characterDelta: -2,
   },
-  // switch: '/switch',
+  switch: {
+    site: '/switch',
+    attrs: ['v-model=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
   rate: {
     site: '/rate',
     attrs: ['v-model=""'],
     closeSelf: true,
     characterDelta: -3,
   },
-  // slider: '/slider',
-  // snackbar: '/snackbar',
+  slider: {
+    site: '/slider',
+    attrs: ['v-model=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
+  snackbar: {
+    site: '/snackbar',
+    attrs: ['type=""'],
+    characterDelta: -2,
+  },
   uploader: {
     site: '/uploader',
     attrs: ['v-model=""'],
@@ -186,7 +246,11 @@ export const componentMap: Record<string, ComponentDescriptor> = {
   table: {
     site: '/table',
   },
-  // pagination: '/pagination',
+  pagination: {
+    site: '/pagination',
+    closeSelf: true,
+    characterDelta: -2,
+  },
   'image-preview': {
     site: '/image-preview',
     attrs: [':images=""'],
