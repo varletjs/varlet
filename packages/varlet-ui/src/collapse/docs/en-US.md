@@ -114,13 +114,13 @@ export default {
 
 ```html
 <var-collapse v-model="value">
-  <var-collapse-item title="Title" name="1" icon="account-circle">
+  <var-collapse-item title="This is a Title" name="1" icon="account-circle">
     Hello World
   </var-collapse-item>
   <var-collapse-item name="2">
-    <template #title>Title</template>
+    <template #title>This is a Title</template>
     <template #icon>^_^</template>
-    Hello World
+    This is a content
   </var-collapse-item>
 </var-collapse>
 ```
