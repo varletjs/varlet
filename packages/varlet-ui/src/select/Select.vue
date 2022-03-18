@@ -248,7 +248,7 @@ export default defineComponent({
       }
 
       wrapWidth.value = getWrapWidth()
-      offsetY.value = getOffsetY()
+      offsetY.value = getOffsetY() + toPxNum(props.offsetY)
 
       isFocus.value = true
 
