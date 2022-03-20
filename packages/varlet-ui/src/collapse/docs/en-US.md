@@ -174,7 +174,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--collapse-header-font-size` | `var(--font-size-lg)` |
 | `--collapse-header-padding` | `10px 16px` |
 | `--collapse-content-font-size` | `var(--font-size-md)` |
-| `--collapse-content-font-size` | `14px` |
+| `--collapse-content-padding` | `0 12px 10px` |
 | `--collapse-item-margin-top` | `16px` |
 | `--collapse-disable-color` | `#bdbdbd` |
 | `--collapse-border-top` | `thin solid rgba(0, 0, 0, 0.12)` |
