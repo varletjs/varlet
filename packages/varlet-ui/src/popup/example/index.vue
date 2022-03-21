@@ -54,9 +54,8 @@ import VarPopup from '..'
 import VarButton from '../../button'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import context from '../../context'
 import dark from '../../themes/dark'
-import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { onUnmounted, reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 
@@ -81,16 +80,6 @@ export default {
 
     watchLang(use)
     watchDarkMode(dark)
-
-    const prevTouchmoveForbid = context.touchmoveForbid
-    watchPlatform((platform) => {
-      if (platform === 'pc') {
-        context.touchmoveForbid = false
-      }
-    })
-    onUnmounted(() => {
-      context.touchmoveForbid = prevTouchmoveForbid
-    })
 
     return {
       pack,

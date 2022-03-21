@@ -25,7 +25,7 @@
 import config from '@config'
 import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
-import { inIframe, isPhone, watchLang, watchPlatform } from '../../utils'
+import { inIframe, isPhone, watchLang } from '../../utils'
 
 export default {
   name: 'AppHome',
@@ -42,10 +42,6 @@ export default {
 
     watchLang((newValue) => {
       lang.value = newValue
-    })
-
-    watchPlatform((newValue) => {
-      platform.value = newValue
     })
 
     const toComponent = (component: any) => {

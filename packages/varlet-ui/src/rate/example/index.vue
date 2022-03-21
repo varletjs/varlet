@@ -58,11 +58,10 @@
 import VarRate from '..'
 import VarSnackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
-import context from '../../context'
 import dark from '../../themes/dark'
 import { onUnmounted, reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'RateExample',
@@ -92,16 +91,6 @@ export default {
         position: 'top',
       })
     }
-
-    const prevTouchmoveForbid = context.touchmoveForbid
-    watchPlatform((platform) => {
-      if (platform === 'pc') {
-        context.touchmoveForbid = false
-      }
-    })
-    onUnmounted(() => {
-      context.touchmoveForbid = prevTouchmoveForbid
-    })
 
     watchLang(use)
     watchDarkMode(dark)

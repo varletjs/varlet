@@ -28,11 +28,10 @@ import ActionSheet from '../index'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarButton from '../../button'
 import Snackbar from '../../snackbar'
-import context from '../../context'
 import dark from '../../themes/dark'
 import { ref, reactive, onUnmounted } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'ActionSheetExample',
@@ -152,16 +151,6 @@ export default {
     const handleSelect = (action) => {
       Snackbar(`${pack.value.yourSelected}${action.name}`)
     }
-
-    const prevTouchmoveForbid = context.touchmoveForbid
-    watchPlatform((platform) => {
-      if (platform === 'pc') {
-        context.touchmoveForbid = false
-      }
-    })
-    onUnmounted(() => {
-      context.touchmoveForbid = prevTouchmoveForbid
-    })
 
     watchLang(use)
     watchDarkMode(dark)
