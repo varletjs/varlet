@@ -5,9 +5,9 @@
       ref="backTopEl"
       :class="[show ? 'var-back-top--active' : null]"
       :style="{
-      right: toSizeUnit(right),
-      bottom: toSizeUnit(bottom),
-    }"
+        right: toSizeUnit(right),
+        bottom: toSizeUnit(bottom),
+      }"
       @click.stop="click"
     >
       <slot>
