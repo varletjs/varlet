@@ -40,10 +40,9 @@ import ActionSheet from '../../action-sheet'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
-import { defineComponent, onUnmounted, ref, computed } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 import { pack, use } from './locale'
-import { watchDarkMode, watchLang, watchPlatform } from '@varlet/cli/site/utils'
-import context from '../../context'
+import { watchDarkMode, watchLang } from '@varlet/cli/site/utils'
 import VarIcon from '../../icon'
 
 export default defineComponent({
@@ -89,16 +88,6 @@ export default defineComponent({
 
     watchLang(use)
     watchDarkMode(dark)
-
-    const prevTouchmoveForbid = context.touchmoveForbid
-    watchPlatform((platform) => {
-      if (platform === 'pc') {
-        context.touchmoveForbid = false
-      }
-    })
-    onUnmounted(() => {
-      context.touchmoveForbid = prevTouchmoveForbid
-    })
 
     return {
       preview() {
