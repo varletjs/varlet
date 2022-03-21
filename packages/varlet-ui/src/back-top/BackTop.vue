@@ -1,20 +1,23 @@
 <template>
-  <div
-    class="var-back-top"
-    ref="backTopEl"
-    :class="[show ? 'var-back-top--active' : null]"
-    :style="{
+  <teleport to="body" :disabled="disabled">
+    <div
+      class="var-back-top"
+      ref="backTopEl"
+      :class="[show ? 'var-back-top--active' : null]"
+      :style="{
       right: toSizeUnit(right),
       bottom: toSizeUnit(bottom),
     }"
-    @click.stop="click"
-  >
-    <slot>
-      <var-button type="primary" round var-back-top-cover>
-        <var-icon name="chevron-up" />
-      </var-button>
-    </slot>
-  </div>
+      @click.stop="click"
+    >
+      <slot>
+        <var-button type="primary" round var-back-top-cover>
+          <var-icon name="chevron-up" />
+        </var-button>
+      </slot>
+    </div>
+  </teleport>
+
 </template>
 <script lang="ts">
 import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
@@ -23,7 +26,7 @@ import VarIcon from '../icon'
 import { props } from './props'
 import { isString, easeInOutCubic, throttle, isObject } from '../utils/shared'
 import { getScrollTop, getScrollLeft, scrollTo, getParentScroller, toPxNum, toSizeUnit } from '../utils/elements'
-import type { Ref } from 'vue'
+import type { Ref, TeleportProps } from 'vue'
 
 export default defineComponent({
   name: 'VarBackTop',
@@ -35,6 +38,7 @@ export default defineComponent({
   setup(props) {
     const show: Ref<boolean> = ref(false)
     const backTopEl: Ref<HTMLDivElement | null> = ref(null)
+    const disabled: Ref<TeleportProps['disabled']> = ref(true)
 
     let target: HTMLElement | Window
 
@@ -68,9 +72,7 @@ export default defineComponent({
         return el as HTMLElement
       }
 
-      if (isObject(target)) {
-        return target
-      }
+      if (isObject(target)) return target
 
       throw Error('[Varlet] BackTop: type of prop "target" should be a selector or an element object')
     }
@@ -78,6 +80,7 @@ export default defineComponent({
     onMounted(() => {
       target = props.target ? getTarget() : getParentScroller(backTopEl.value!)
       target.addEventListener('scroll', throttleScroll)
+      disabled.value = false
     })
 
     onBeforeUnmount(() => {
@@ -85,6 +88,7 @@ export default defineComponent({
     })
 
     return {
+      disabled,
       show,
       backTopEl,
       toSizeUnit,
