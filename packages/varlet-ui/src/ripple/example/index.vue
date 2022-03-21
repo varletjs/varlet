@@ -14,7 +14,7 @@ import Ripple from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import context from '../../context'
 import { onUnmounted } from 'vue'
-import { watchPlatform, watchLang } from '@varlet/cli/site/utils'
+import { watchLang } from '@varlet/cli/site/utils'
 import { pack, use } from './locale'
 
 export default {
@@ -22,19 +22,7 @@ export default {
   components: { AppType },
   directives: { Ripple },
   setup() {
-    const prevTouchmoveForbid = context.touchmoveForbid
-
-    watchPlatform((platform) => {
-      if (platform === 'pc') {
-        context.touchmoveForbid = false
-      }
-    })
-
     watchLang(use)
-
-    onUnmounted(() => {
-      context.touchmoveForbid = prevTouchmoveForbid
-    })
 
     return {
       pack,

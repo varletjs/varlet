@@ -49,13 +49,12 @@ import VarIcon from '..'
 import Ripple from '../../ripple'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import context from '../../context'
 import Clipboard from 'clipboard'
 import icons from '@varlet/icons'
 import dark from '../../themes/dark'
 import { reactive, onMounted, ref, onUnmounted } from 'vue'
 import { use, pack } from './locale'
-import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'IconExample',
@@ -86,16 +85,6 @@ export default {
     watchLang(use)
     watchDarkMode(dark, (themes) => {
       background.value = themes === 'darkThemes' ? '#303030' : '#fff'
-    })
-
-    const prevTouchmoveForbid = context.touchmoveForbid
-    watchPlatform((platform) => {
-      if (platform === 'pc') {
-        context.touchmoveForbid = false
-      }
-    })
-    onUnmounted(() => {
-      context.touchmoveForbid = prevTouchmoveForbid
     })
 
     return {

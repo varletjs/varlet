@@ -110,10 +110,9 @@ import VarButton from '../../button'
 import VarCell from '../../cell'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import context from '../../context'
 import { onUnmounted, reactive, toRefs, ref } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import dark from '../../themes/dark'
 
 export default {
@@ -139,16 +138,6 @@ export default {
     watchLang(use)
     watchDarkMode(dark, (themes) => {
       bgColor.value = themes === 'darkThemes' ? '#272727' : '#fff'
-    })
-
-    const prevTouchmoveForbid = context.touchmoveForbid
-    watchPlatform((platform) => {
-      if (platform === 'pc') {
-        context.touchmoveForbid = false
-      }
-    })
-    onUnmounted(() => {
-      context.touchmoveForbid = prevTouchmoveForbid
     })
 
     return {

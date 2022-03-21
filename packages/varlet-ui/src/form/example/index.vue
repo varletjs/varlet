@@ -81,10 +81,9 @@ import VarUploader from '../../uploader'
 import VarCounter from '../../counter'
 import VarRate from '../../rate'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
-import context from '../../context'
 import dark from '../../themes/dark'
 import { onUnmounted, reactive, ref } from 'vue'
-import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 export default {
@@ -124,16 +123,6 @@ export default {
     const form = ref(null)
     const disabled = ref(false)
     const readonly = ref(false)
-
-    const prevTouchmoveForbid = context.touchmoveForbid
-    watchPlatform((platform) => {
-      if (platform === 'pc') {
-        context.touchmoveForbid = false
-      }
-    })
-    onUnmounted(() => {
-      context.touchmoveForbid = prevTouchmoveForbid
-    })
 
     watchLang((lang) => {
       use(lang)
