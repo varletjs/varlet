@@ -46,7 +46,7 @@ export default {
     
     watchPlatform((newValue) => {
       platform.value = newValue
-    }
+    })
 
     const toComponent = (component: any) => {
       router.push({
