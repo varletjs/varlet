@@ -5,7 +5,7 @@ import Option from '../../option'
 import VarOption from '../../option/Option'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/jest'
+import { delay, mockStubs, trigger } from '../../utils/jest'
 
 test('test select example', () => {
   const wrapper = mount(example)
@@ -368,6 +368,39 @@ test('test select focus & blur methods', async () => {
   select.blur()
   await delay(16)
   expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
+})
+
+test('test select offset-y', async () => {
+  const wrapper = mount(
+    {
+      components: {
+        [VarSelect.name]: VarSelect,
+        [VarOption.name]: VarOption,
+      },
+      data: () => ({
+        offsetY: 40,
+      }),
+      template: `
+      <var-select ref="select" :offsetY="40">
+        <var-option label="火猫" />
+        <var-option label="土猫" />
+        <var-option label="紫猫" />
+        <var-option label="蓝猫" />
+      </var-select>
+      `,
+    },
+    { attachTo: document.body }
+  )
+
+  const { select } = wrapper.vm.$refs
+
+  select.focus()
+  await delay(1000)
+  const menuEl = document.querySelector('.var-menu__menu')
+
+  expect(menuEl.style.top.includes('+ 40')).toBe(true)
 
   wrapper.unmount()
 })

@@ -86,6 +86,14 @@
     <var-option :label="pack.coding" />
   </var-select>
 
+  <app-type>{{ pack.offsetY }}</app-type>
+  <var-select :placeholder="pack.placeholder" v-model="value12" :offset-y="-138">
+    <var-option :label="pack.emberSprit" />
+    <var-option :label="pack.stormSpirit" />
+    <var-option :label="pack.voidSpirit" />
+    <var-option :label="pack.earthSprit" />
+  </var-select>
+
   <div class="space"></div>
 </template>
 
@@ -120,6 +128,7 @@ export default {
       value9: undefined,
       value10: [],
       value11: undefined,
+      value12: undefined,
     })
 
     watchLang((lang) => {
@@ -135,6 +144,7 @@ export default {
       values.value9 = undefined
       values.value10 = []
       values.value11 = undefined
+      values.value12 = undefined
     })
 
     watchDarkMode(dark)

@@ -193,6 +193,17 @@ export default {
 </var-select>
 ```
 
+### offset-y
+
+```html
+<var-select placeholder="Please select one the options" :offset-y="-62" v-model="value">
+  <var-option label="Ember Sprit" />
+  <var-option label="Storm Spirit" />
+  <var-option label="Void Spirit" />
+  <var-option label="Earth Sprit" />
+</var-select>
+```
+
 ## API
 
 ### Props
@@ -203,7 +214,8 @@ export default {
 | --- | --- | --- | --- | 
 | `v-model` | The value of the binding | _any \| any[]_ | `-` |
 | `placeholder` | placeholder | _string_ | `-` |
-| `multiple` | Whether to enable multiple selection | _boolean_ | `false` |  
+| `multiple` | Whether to enable multiple selection | _boolean_ | `false` |
+| `offset-y` | The vertical offset of the drop-down menu | string \| number_ | `true` |  
 | `chip` | Whether to use chip style (multiple choices only) | _boolean_ | `false` |  
 | `line` | Whether to display a dividing line | _boolean_ | `true` |
 | `hint` | Whether to use placeholders as prompts | _boolean_ | `true` |

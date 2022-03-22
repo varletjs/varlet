@@ -341,6 +341,8 @@ export default defineComponent({
 
     // expose
     const focus = () => {
+      wrapWidth.value = getWrapWidth()
+      offsetY.value = getOffsetY() + toPxNum(props.offsetY)
       isFocus.value = true
     }
 
