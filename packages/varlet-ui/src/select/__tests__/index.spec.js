@@ -5,7 +5,7 @@ import Option from '../../option'
 import VarOption from '../../option/Option'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockStubs, trigger } from '../../utils/jest'
+import { delay, trigger } from '../../utils/jest'
 
 test('test select example', () => {
   const wrapper = mount(example)
