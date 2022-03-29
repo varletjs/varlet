@@ -82,7 +82,7 @@ test('test render initial index', async () => {
       initialIndex: 2,
     },
   })
-  await delay(50)
+  await delay(200)
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })

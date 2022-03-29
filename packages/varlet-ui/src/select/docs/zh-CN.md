@@ -191,6 +191,16 @@ export default {
 </var-select>
 ```
 
+### 垂直偏移
+```html
+<var-select placeholder="请选择" :offset-y="-62" v-model="value">
+  <var-option label="火猫" />
+  <var-option label="蓝猫" />
+  <var-option label="紫猫" />
+  <var-option label="土猫" />
+</var-select>
+```
+
 ## API
 
 ### 属性
@@ -202,6 +212,7 @@ export default {
 | `v-model` | 绑定的值 | _any \| any[]_ | `-` |
 | `placeholder` | 占位符 | _string_ | `-` |
 | `multiple` | 是否开启多选 | _boolean_ | `false` |
+| `offset-y` | 下拉菜单的垂直偏移量 | string \| number_ | `true` |
 | `chip` | 是否使用纸片风格(仅限多选) | _boolean_ | `false` |
 | `line` | 是否显示分割线 | _boolean_ | `true` |
 | `hint` | 是否使用占位符作为提示 | _boolean_ | `true` |

@@ -371,3 +371,36 @@ test('test select focus & blur methods', async () => {
 
   wrapper.unmount()
 })
+
+test('test select offset-y', async () => {
+  const wrapper = mount(
+    {
+      components: {
+        [VarSelect.name]: VarSelect,
+        [VarOption.name]: VarOption,
+      },
+      data: () => ({
+        offsetY: 40,
+      }),
+      template: `
+      <var-select ref="select" :offsetY="40">
+        <var-option label="火猫" />
+        <var-option label="土猫" />
+        <var-option label="紫猫" />
+        <var-option label="蓝猫" />
+      </var-select>
+      `,
+    },
+    { attachTo: document.body }
+  )
+
+  const { select } = wrapper.vm.$refs
+
+  select.focus()
+  await delay(1000)
+  const menuEl = document.querySelector('.var-menu__menu')
+
+  expect(menuEl.style.top.includes('+ 40')).toBe(true)
+
+  wrapper.unmount()
+})

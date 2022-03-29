@@ -207,3 +207,8 @@ export function formatStyleVars(styleVars: StyleVars | null) {
     return styles
   }, {} as StyleVars)
 }
+
+export function supportTouch() {
+  const inBrowser = typeof window !== 'undefined'
+  return inBrowser && 'ontouchstart' in window
+}

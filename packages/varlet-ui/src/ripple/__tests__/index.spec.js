@@ -64,6 +64,7 @@ test('test ripple disabled', async () => {
 })
 
 test('test ripple touchmove', async () => {
+  window.ontouchstart = true
   const wrapper = mount(Wrapper, { attachTo: document.body })
 
   await triggerDrag(wrapper, 0, 20)

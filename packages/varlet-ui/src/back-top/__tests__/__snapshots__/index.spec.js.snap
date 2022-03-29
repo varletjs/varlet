@@ -802,9 +802,11 @@ exports[`test backTop example 1`] = `
     </div>
     <!--v-if-->
   </div>
+  <!--teleport start-->
   <div class=\\"var-back-top\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round\\" var-back-top-cover=\\"\\">
       <!--v-if-->
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-up\\" style=\\"transition: transform 0ms;\\"></i></div>
     </button></div>
+  <!--teleport end-->
 </div>"
 `;

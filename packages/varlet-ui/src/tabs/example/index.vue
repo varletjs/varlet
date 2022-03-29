@@ -140,11 +140,10 @@ import VarTab from '../../tab'
 import VarIcon from '../../icon'
 import VarTabsItems from '../../tabs-items'
 import VarTabItem from '../../tab-item'
-import context from '../../context'
 import dark from '../../themes/dark'
 import { use, pack } from './locale'
-import { computed, onUnmounted, reactive, ref, toRefs } from 'vue'
-import { watchPlatform, watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { computed, reactive, ref, toRefs } from 'vue'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'TabsExample',
@@ -177,16 +176,6 @@ export default {
     watchLang(use)
     watchDarkMode(dark, (mode) => {
       themes.value = mode
-    })
-
-    const prevTouchmoveForbid = context.touchmoveForbid
-    watchPlatform((platform) => {
-      if (platform === 'pc') {
-        context.touchmoveForbid = false
-      }
-    })
-    onUnmounted(() => {
-      context.touchmoveForbid = prevTouchmoveForbid
     })
 
     return {

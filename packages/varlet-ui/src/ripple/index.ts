@@ -1,6 +1,7 @@
 import context from '../context'
 import './ripple.less'
 import '../styles/common.less'
+import { supportTouch } from '../utils/elements'
 import type { Directive, Plugin, App } from 'vue'
 import type { DirectiveBinding } from '@vue/runtime-core'
 
@@ -113,6 +114,11 @@ function removeRipple(this: RippleHTMLElement) {
 
 function forbidRippleTask(this: RippleHTMLElement) {
   const _ripple = this._ripple as RippleOptions
+
+  if (!supportTouch()) {
+    return
+  }
+
   if (!_ripple.touchmoveForbid) {
     return
   }

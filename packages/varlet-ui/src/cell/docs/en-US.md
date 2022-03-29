@@ -65,16 +65,16 @@ createApp().use(Cell)
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
-| Variable | Default |
-| --- | --- |
-| `--cell-font-size` | `var(--font-size-md)` |
+| Variable                | Default |
+|-------------------------| --- |
+| `--cell-color`          | `var(--color-text)` |
 | `--cell-desc-font-size` | `var(--font-size-sm)` |
-| `--cell-desc-color` | `rgba(0, 0, 0, 0.6)` |
-| `--cell-padding` | `10px 12px` |
-| `--cell-min-height` | `40px` |
-| `--cell-border-color` | `#bcc2cb` |
-| `--cell-border-left` | `12px` |
-| `--cell-border-right` | `12px` |
-| `--cell-icon-right` | `8px` |
-| `--cell-extra-left` | `8px` |
+| `--cell-desc-color`     | `rgba(0, 0, 0, 0.6)` |
+| `--cell-padding`        | `10px 12px` |
+| `--cell-min-height`     | `40px` |
+| `--cell-border-color`   | `#bcc2cb` |
+| `--cell-border-left`    | `12px` |
+| `--cell-border-right`   | `12px` |
+| `--cell-icon-right`     | `8px` |
+| `--cell-extra-left`     | `8px` |
 

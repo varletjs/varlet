@@ -107,11 +107,23 @@ subject to the theme of the `varlet` official document
 | `color-side-bar-active-background` |
 | `color-app-bar` |
 | `color-nav-button-hover-background` |
+| `color-mobile-cell-hover` |
 | `color-pc-language-active` |
 | `color-pc-language-active-background` |
-| `color-mobile-cell-hover` |
 | `color-mobile-language-active` |
 | `color-mobile-language-active-background` |
+| `color-hl-background` |
+| `color-hl-code` |
+| `color-hl-border` |
+| `color-hl-group-a` |
+| `color-hl-group-b` |
+| `color-hl-group-c` |
+| `color-hl-group-d` |
+| `color-hl-group-e` |
+| `color-hl-group-f` |
+| `color-hl-group-g` |
+| `color-hl-group-h` |
+| `color-hl-group-i` |
 
 #### SiteHighlight
 

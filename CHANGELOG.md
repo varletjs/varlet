@@ -1,3 +1,46 @@
+## [1.26.8](https://github.com/varletjs/varlet/compare/v1.26.7...v1.26.8) (2022-03-25)
+
+
+### Bug Fixes
+
+* **cell:** add cell color to close [#353](https://github.com/varletjs/varlet/issues/353) ([24b44b9](https://github.com/varletjs/varlet/commit/24b44b932bae3f741858fa276c03136312ebe633))
+* **collapse:** modify padding ([6ef1a28](https://github.com/varletjs/varlet/commit/6ef1a28486ec96825f5707d4828554675de7fe9e))
+* resize offset and wrapWidth on focus function call ([e609c08](https://github.com/varletjs/varlet/commit/e609c086c82ac9c31e7c3826c26a14184b204e98))
+
+
+### Features
+
+* **ui/ripple:** determine whether to prevent ripple's fast touchmove by supporting touch events ([f859144](https://github.com/varletjs/varlet/commit/f8591445a70462d82ea19ca00ef6d1b792e62df9))
+
+
+
+## [1.26.7](https://github.com/varletjs/varlet/compare/v1.26.6...v1.26.7) (2022-03-18)
+
+
+### Bug Fixes
+
+* **cli/jest:** reset transformIgnorePatterns ([2ce595a](https://github.com/varletjs/varlet/commit/2ce595aab2cc45746f4da2d1e642e7e1c1aa33f6))
+* **index-bar:** change scrollable target to fix cant scroll in Android web ([a0c07f6](https://github.com/varletjs/varlet/commit/a0c07f66036b0a599117f9c815c4d92ef1186dd0))
+* **index-bar:** compatible scrolltop ([73fca8f](https://github.com/varletjs/varlet/commit/73fca8f89ec0342f3f897199627ddad8dbde98b5))
+
+
+### Features
+
+* **extension:** add code auto complete ([80690e4](https://github.com/varletjs/varlet/commit/80690e4125f4c5d4ba1a9eb207e1a3f4c1bb4991))
+* **extension:** compatible prompt plugin to vue2 ([#337](https://github.com/varletjs/varlet/issues/337)) ([38d715a](https://github.com/varletjs/varlet/commit/38d715a614ab1a29167f9100eee46784e8feaccb))
+
+
+### Performance Improvements
+
+* **extension:** improve component description ([5bffd8a](https://github.com/varletjs/varlet/commit/5bffd8a430f1066c96fd6783ab4f4c0c970e88e6))
+
+
+### Reverts
+
+* **ui/index-bar:** revert fix scroll getter function ([1b61cdd](https://github.com/varletjs/varlet/commit/1b61cddf53ebca76ad6d86240f25e154cb462b03))
+
+
+
 ## [1.26.6](https://github.com/varletjs/varlet/compare/v1.26.5...v1.26.6) (2022-03-14)
 
 

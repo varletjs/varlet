@@ -1,3 +1,4 @@
+@cell-color: var(--color-text);
 @cell-font-size: var(--font-size-md);
 @cell-desc-font-size: var(--font-size-sm);
 @cell-desc-color: rgba(0, 0, 0, 0.6);
@@ -10,6 +11,7 @@
 @cell-extra-left: 8px;
 
 :root {
+  --cell-color: @cell-color;
   --cell-font-size: @cell-font-size;
   --cell-desc-font-size: @cell-desc-font-size;
   --cell-desc-color: @cell-desc-color;
@@ -31,6 +33,7 @@
   position: relative;
   box-sizing: border-box;
   font-size: var(--cell-font-size);
+  color: var(--cell-color);
 
   &--border {
     &::after {
