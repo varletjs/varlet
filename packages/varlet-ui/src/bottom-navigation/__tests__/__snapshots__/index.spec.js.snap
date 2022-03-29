@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test BottomNavigation relation BottomNavigationItems 1`] = `
+"<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
+  <div class=\\"var-bottom-navigation-item var-bottom-navigation-item--active\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-home\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-account-circle\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+</div>"
+`;
+
+exports[`test BottomNavigation relation BottomNavigationItems 2`] = `
+"<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-home\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item var-bottom-navigation-item--active\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-account-circle\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+</div>"
+`;
+
+exports[`test bottom-navigation example 1`] = `
+"<div class=\\"app-type\\">基本使用</div>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-home\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-account-circle\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+</div>
+<div class=\\"app-type\\">通过名称匹配</div>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
+  <div class=\\"var-bottom-navigation-item var-bottom-navigation-item--active\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-home\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-account-circle\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+</div>
+<div class=\\"app-type\\">徽标提示</div>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-home\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: transform 0ms;\\"></i>
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--danger var-badge__dot var-badge__dot--right\\"><span></span></span></transition-stub>
+      </div>
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: transform 0ms;\\"></i>
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--primary\\"><span>66</span></span></transition-stub>
+      </div>
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-account-circle\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+</div>
+<div class=\\"app-type\\">自定义图标</div>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\">
+      <!--v-if--><img style=\\"width: 20px;\\" src=\\"https://cdn.jsdelivr.net/npm/@vant/assets/user-inactive.png\\">
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-account-circle\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+</div>
+<div class=\\"app-type\\">自定义颜色</div>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
+  <div class=\\"var-bottom-navigation-item\\" style=\\"color: rgb(33, 150, 243);\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-home\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\" style=\\"color: rgb(33, 150, 243);\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\" style=\\"color: rgb(33, 150, 243);\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\" style=\\"color: rgb(33, 150, 243);\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-account-circle\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+</div>
+<div class=\\"app-type\\">监听切换事件</div>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-home\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-account-circle\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+</div>
+<div class=\\"app-type\\">监听点击事件</div>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-home\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-account-circle\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+</div>"
+`;
