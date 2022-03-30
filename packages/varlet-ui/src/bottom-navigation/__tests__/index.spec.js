@@ -42,7 +42,7 @@ test('test bottom-navigation before-change prevent switch', async () => {
   const wrapper = mount(Wrapper)
   await delay(16)
 
-  const bottomNavigationItem = wrapper.findAllComponents('.var-bottom-navigation-item').at(1)
+  const bottomNavigationItem = wrapper.findAll('.var-bottom-navigation-item')[1]
   await trigger(bottomNavigationItem, 'click')
 
   expect(handleBeforeChange).toHaveBeenCalledTimes(1)
@@ -83,7 +83,7 @@ test('test bottom-navigation before-change return promise', async () => {
   const wrapper = mount(Wrapper)
   await delay(16)
 
-  const bottomNavigationItem = wrapper.findAllComponents('.var-bottom-navigation-item').at(1)
+  const bottomNavigationItem = wrapper.findAll('.var-bottom-navigation-item')[1]
   await trigger(bottomNavigationItem, 'click')
   expect(wrapper.vm.active).toBe(0)
 
@@ -122,7 +122,7 @@ test('test bottom-navigation change event', async () => {
   const wrapper = mount(Wrapper)
   await delay(16)
 
-  const bottomNavigationItem = wrapper.findAllComponents('.var-bottom-navigation-item').at(1)
+  const bottomNavigationItem = wrapper.findAll('.var-bottom-navigation-item')[1]
   await trigger(bottomNavigationItem, 'click')
 
   expect(handleChange).toHaveBeenCalledTimes(1)
@@ -159,7 +159,7 @@ test('test bottom-navigation-item click event', async () => {
   const wrapper = mount(Wrapper)
   await delay(16)
 
-  const bottomNavigationItem = wrapper.findAllComponents('.var-bottom-navigation-item').at(1)
+  const bottomNavigationItem = wrapper.findAll('.var-bottom-navigation-item')[1]
   await trigger(bottomNavigationItem, 'click')
 
   expect(handleClick).toHaveBeenCalledTimes(1)
