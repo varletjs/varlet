@@ -276,6 +276,11 @@ export default {
 
 ### Slots
 
+#### BottomNavigation Slots
+
+| Slot | Description | Arguments |
+| ---- | ---- | ----|
+| `fab` | Support for inserting a custom Fab button in the center of the component | `-` |
 #### BottomNavigationItem Slots
 
 | Slot | Description | Arguments |

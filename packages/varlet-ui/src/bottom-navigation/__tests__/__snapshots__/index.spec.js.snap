@@ -181,7 +181,7 @@ exports[`test bottom-navigation example 1`] = `
 <div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
   <div class=\\"var-bottom-navigation-item\\">
     <div class=\\"var-icon__wrapper van-badge__wrapper\\">
-      <!--v-if--><img style=\\"width: 20px;\\" src=\\"https://cdn.jsdelivr.net/npm/@vant/assets/user-inactive.png\\">
+      <!--v-if--><img style=\\"width: 20px;\\" src=\\"https://varlet.gitee.io/varlet-ui/home_inactive.jpg\\">
       <!--v-if-->
     </div>
     <div class=\\"var-bottom-navigation__label\\">标签</div>

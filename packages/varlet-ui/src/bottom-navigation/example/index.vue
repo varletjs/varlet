@@ -104,10 +104,8 @@ export default {
     }
     const customIcon = ref(0)
     const homeIcon = {
-      // active: 'https://varlet.gitee.io/varlet-ui/home_active.jpg',
-      // inactive: 'https://varlet.gitee.io/varlet-ui/home_inactive.jpg'
-      active: 'https://cdn.jsdelivr.net/npm/@vant/assets/user-active.png',
-      inactive: 'https://cdn.jsdelivr.net/npm/@vant/assets/user-inactive.png',
+      active: 'https://varlet.gitee.io/varlet-ui/home_active.jpg',
+      inactive: 'https://varlet.gitee.io/varlet-ui/home_inactive.jpg',
     }
 
     const customColor = ref(0)
