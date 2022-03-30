@@ -4,24 +4,22 @@ import { useAtChildrenCounter, useChildren } from '../utils/components'
 
 export interface BottomNavigationProvider {
   active: ComputedRef<number | string | undefined>
-  fixed: ComputedRef<boolean>
-  border: ComputedRef<boolean>
-  zIndex: ComputedRef<number | string>
   activeColor: ComputedRef<string | undefined>
   inactiveColor: ComputedRef<string | undefined>
   onToggle(value: number | string): void
 }
 
 export const BOTTOMNAVIGATION_BIND_BOTTOMNAVIGATIONITEM_KEY = Symbol('BOTTOMNAVIGATION_BIND_BOTTOMNAVIGATIONITEM_KEY')
-export const BOTTOMNAVIGATIONITEM_INDEX_KEY = Symbol('BOTTOMNAVIGATIONITEM_INDEX_KEY')
+export const BOTTOMNAVIGATION_COUNT_BOTTOMNAVIGATIONITEM_KEY = Symbol('BOTTOMNAVIGATION_COUNT_BOTTOMNAVIGATIONITEM_KEY')
 
-export function useBottomNavigationItem() {
+export function useBottomNavigationItems() {
   const { childProviders, bindChildren } = useChildren<BottomNavigationProvider, BottomNavigationItemProvider>(
     BOTTOMNAVIGATION_BIND_BOTTOMNAVIGATIONITEM_KEY
   )
-  useAtChildrenCounter(BOTTOMNAVIGATIONITEM_INDEX_KEY)
+  const { length } = useAtChildrenCounter(BOTTOMNAVIGATION_COUNT_BOTTOMNAVIGATIONITEM_KEY)
 
   return {
+    length,
     bottomNavigationItems: childProviders,
     bindBottomNavigationItem: bindChildren,
   }

@@ -193,6 +193,47 @@ export default {
 }
 ```
 
+### Fab
+
+```html
+<var-bottom-navigation v-model="fab" style="margin-top: 10px">
+  <template #fab>
+    <div class="fab_example">
+      <var-icon name="plus" color="#fff" size="34" />
+    </div>
+  </template>
+  <var-bottom-navigation-item :label="pack.label" icon="home" />
+  <var-bottom-navigation-item :label="pack.label" icon="magnify" />
+  <var-bottom-navigation-item :label="pack.label" icon="heart" />
+  <var-bottom-navigation-item :label="pack.label" icon="account-circle" />
+</var-bottom-navigation>
+```
+
+```js
+import { ref } from 'vue'
+import VarIcon from '../../icon'
+
+export default {
+  components:{VarIcon},
+  setup() {
+    const active = ref(0)
+    return { active }
+  }
+}
+```
+```css
+<style lang="less" scoped>
+.fab_example {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+}
+</style>
+```
+
 ## API
 
 ### Props

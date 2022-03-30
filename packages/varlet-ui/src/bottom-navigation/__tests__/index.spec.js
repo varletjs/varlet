@@ -9,6 +9,7 @@ import { delay, trigger } from '../../utils/jest'
 test('test bottom-navigation example', () => {
   const wrapper = mount(example)
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test bottom-navigation plugin', () => {
@@ -40,10 +41,14 @@ test('test bottom-navigation before-change prevent switch', async () => {
   }
   const wrapper = mount(Wrapper)
   await delay(16)
+
   const bottomNavigationItem = wrapper.findAllComponents('.var-bottom-navigation-item').at(1)
   await trigger(bottomNavigationItem, 'click')
+
   expect(handleBeforeChange).toHaveBeenCalledTimes(1)
   expect(wrapper.vm.active).toBe(0)
+
+  wrapper.unmount()
 })
 
 test('test bottom-navigation before-change return promise', async () => {
@@ -77,12 +82,16 @@ test('test bottom-navigation before-change return promise', async () => {
   }
   const wrapper = mount(Wrapper)
   await delay(16)
+
   const bottomNavigationItem = wrapper.findAllComponents('.var-bottom-navigation-item').at(1)
   await trigger(bottomNavigationItem, 'click')
   expect(wrapper.vm.active).toBe(0)
+
   await delay(600)
   expect(handleBeforeChange).toHaveBeenCalledTimes(1)
   expect(wrapper.vm.active).toBe(1)
+
+  wrapper.unmount()
 })
 
 test('test bottom-navigation change event', async () => {
@@ -112,10 +121,14 @@ test('test bottom-navigation change event', async () => {
   }
   const wrapper = mount(Wrapper)
   await delay(16)
+
   const bottomNavigationItem = wrapper.findAllComponents('.var-bottom-navigation-item').at(1)
   await trigger(bottomNavigationItem, 'click')
+
   expect(handleChange).toHaveBeenCalledTimes(1)
   expect(dummy).toBe(1)
+
+  wrapper.unmount()
 })
 
 test('test bottom-navigation-item click event', async () => {
@@ -145,10 +158,14 @@ test('test bottom-navigation-item click event', async () => {
   }
   const wrapper = mount(Wrapper)
   await delay(16)
+
   const bottomNavigationItem = wrapper.findAllComponents('.var-bottom-navigation-item').at(1)
   await trigger(bottomNavigationItem, 'click')
+
   expect(handleClick).toHaveBeenCalledTimes(1)
   expect(dummy).toBe(1)
+
+  wrapper.unmount()
 })
 
 test('test BottomNavigation relation BottomNavigationItems', async () => {
@@ -170,12 +187,41 @@ test('test BottomNavigation relation BottomNavigationItems', async () => {
     `,
   }
   const wrapper = mount(Wrapper)
-
   await delay(100)
-  expect(wrapper.html()).toMatchSnapshot()
 
+  expect(wrapper.html()).toMatchSnapshot()
   await wrapper.setData({ active: 1 })
+
   await delay(50)
   expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
+})
+
+test('fab button', async () => {
+  const Wrapper = {
+    components: {
+      [VarBottomNavigation.name]: VarBottomNavigation,
+      [VarBottomNavigationItem.name]: VarBottomNavigationItem,
+    },
+    data: () => ({
+      active: 0,
+    }),
+    template: `
+    <var-bottom-navigation v-model="active">
+      <template #fab>
+        <div class="tab_example" />
+      </template>
+      <var-bottom-navigation-item label="标签" icon="home" />
+      <var-bottom-navigation-item label="标签" icon="magnify" />
+      <var-bottom-navigation-item label="标签" icon="heart" />
+    </var-bottom-navigation>
+    `,
+  }
+  const wrapper = mount(Wrapper)
+  await delay(100)
+
+  expect(wrapper.html()).toMatchSnapshot()
+
   wrapper.unmount()
 })

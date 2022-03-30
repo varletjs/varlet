@@ -6,5 +6,6 @@ export default {
   customColor: '自定义颜色',
   changeEvent: '监听切换事件',
   clickEvent: '监听点击事件',
+  fab: '悬浮按钮',
   label: '标签',
 }

@@ -58,13 +58,27 @@
     <var-bottom-navigation-item @click="handleClick" :label="pack.label" icon="heart" />
     <var-bottom-navigation-item @click="handleClick" :label="pack.label" icon="account-circle" />
   </var-bottom-navigation>
+
+  <app-type>{{ pack.fab }}</app-type>
+  <var-bottom-navigation v-model="fab" style="margin-top: 10px">
+    <template #fab>
+      <div class="fab_example">
+        <var-icon name="plus" color="#fff" size="34" />
+      </div>
+    </template>
+    <var-bottom-navigation-item :label="pack.label" icon="home" />
+    <var-bottom-navigation-item :label="pack.label" icon="magnify" />
+    <var-bottom-navigation-item :label="pack.label" icon="heart" />
+    <var-bottom-navigation-item :label="pack.label" icon="account-circle" />
+  </var-bottom-navigation>
 </template>
 
 <script>
 import { ref } from 'vue'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarBottomNavigation from '..'
 import VarBottomNavigationItem from '../../bottom-navigation-item'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import VarIcon from '../../icon'
 import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
 import { use, pack } from './locale'
@@ -73,9 +87,10 @@ import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 export default {
   name: 'BottomNavigationExample',
   components: {
+    AppType,
     VarBottomNavigation,
     VarBottomNavigationItem,
-    AppType,
+    VarIcon,
   },
   setup() {
     const basicUsage = ref(0)
@@ -107,6 +122,8 @@ export default {
       Snackbar.success(`clicked ${active}`)
     }
 
+    const fab = ref(0)
+
     watchLang(use)
     watchDarkMode(dark)
 
@@ -123,7 +140,18 @@ export default {
       handleChange,
       clickEvent,
       handleClick,
+      fab,
     }
   },
 }
 </script>
+<style lang="less" scoped>
+.fab_example {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+}
+</style>

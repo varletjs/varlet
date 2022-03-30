@@ -20,25 +20,32 @@
   height: 100%;
   padding-top: 6px;
   position: relative;
-  flex-grow: 1;
+  flex: 1;
   text-align: center;
   line-height: var(--bottom-navigation-item-line-height);
   color: var(--bottom-navigation-item-inactive-color);
-  cursor: pointer;
+  &:not(.var-bottom-navigation-item--placeholder) {
+    cursor: pointer;
+  }
 
   &.var-bottom-navigation-item--active {
-    transform: scale(1.1);
-    transition: transform 250ms;
     background-color: var(--bottom-navigation-item-active-background-color);
     color: var(--bottom-navigation-item-active-color);
+    .var-icon,
+    .var-bottom-navigation__label {
+      transform: scale(1.1);
+    }
   }
 
   .var-icon__wrapper.van-badge__wrapper {
     position: relative;
     display: inline-block;
+
     .var-icon {
       font-size: var(--bottom-navigation-item-icon-size);
+      transition: transform 250ms;
     }
+
     .var-badge {
       position: absolute;
       top: -5px;
@@ -49,5 +56,6 @@
   .var-bottom-navigation__label {
     margin-top: var(--bottom-navigation-item-icon-margin-bottom);
     font-size: var(--bottom-navigation-item-font-size);
+    transition: transform 250ms;
   }
 }

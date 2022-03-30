@@ -11,9 +11,9 @@
     <div class="var-icon__wrapper van-badge__wrapper">
       <VarIcon v-if="icon && !$slots.icon" :name="icon" :namespace="namespace" />
       <slot name="icon" :active="active === index || active === name"></slot>
-
       <VarBadge v-if="badge" v-bind="badgeProps" />
     </div>
+
     <div class="var-bottom-navigation__label">
       <template v-if="!$slots.default">
         {{ label }}
@@ -51,18 +51,17 @@ export default defineComponent({
 
     watch(
       badge,
-      (value) => {
-        if (value) {
-          if (isBool(value)) {
-            badgeProps.value = {
-              type: 'danger',
-              dot: true,
-            }
-          } else {
-            badgeProps.value = badge.value
+      (newValue) => {
+        if (!newValue) {
+          badgeProps.value = {}
+        }
+        if (isBool(newValue)) {
+          badgeProps.value = {
+            type: 'danger',
+            dot: true,
           }
         } else {
-          badgeProps.value = {}
+          badgeProps.value = badge.value
         }
       },
       { immediate: true }
@@ -85,10 +84,12 @@ export default defineComponent({
 
     const handleClick = () => {
       const active = name.value || index.value
+
       const { onClick } = props
       if (onClick) {
         onClick(active)
       }
+
       bottomNavigation?.onToggle(active)
     }
 

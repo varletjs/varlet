@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`fab button 1`] = `
+"<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
+  <div class=\\"var-bottom-navigation-item var-bottom-navigation-item--active\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-home\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item var-bottom-navigation-item--placeholder\\"></div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"fab\\">
+    <div class=\\"tab_example\\"></div>
+  </div>
+  <div class=\\"var-bottom-navigation-item var-bottom-navigation-item--placeholder\\"></div>
+</div>"
+`;
+
 exports[`test BottomNavigation relation BottomNavigationItems 1`] = `
 "<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
   <div class=\\"var-bottom-navigation-item var-bottom-navigation-item--active\\">
@@ -26,6 +54,7 @@ exports[`test BottomNavigation relation BottomNavigationItems 1`] = `
     </div>
     <div class=\\"var-bottom-navigation__label\\">标签</div>
   </div>
+  <!--v-if-->
 </div>"
 `;
 
@@ -55,6 +84,7 @@ exports[`test BottomNavigation relation BottomNavigationItems 2`] = `
     </div>
     <div class=\\"var-bottom-navigation__label\\">标签</div>
   </div>
+  <!--v-if-->
 </div>"
 `;
 
@@ -85,6 +115,7 @@ exports[`test bottom-navigation example 1`] = `
     </div>
     <div class=\\"var-bottom-navigation__label\\">标签</div>
   </div>
+  <!--v-if-->
 </div>
 <div class=\\"app-type\\">通过名称匹配</div>
 <div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
@@ -112,6 +143,7 @@ exports[`test bottom-navigation example 1`] = `
     </div>
     <div class=\\"var-bottom-navigation__label\\">标签</div>
   </div>
+  <!--v-if-->
 </div>
 <div class=\\"app-type\\">徽标提示</div>
 <div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
@@ -143,6 +175,7 @@ exports[`test bottom-navigation example 1`] = `
     </div>
     <div class=\\"var-bottom-navigation__label\\">标签</div>
   </div>
+  <!--v-if-->
 </div>
 <div class=\\"app-type\\">自定义图标</div>
 <div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
@@ -171,6 +204,7 @@ exports[`test bottom-navigation example 1`] = `
     </div>
     <div class=\\"var-bottom-navigation__label\\">标签</div>
   </div>
+  <!--v-if-->
 </div>
 <div class=\\"app-type\\">自定义颜色</div>
 <div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
@@ -198,6 +232,7 @@ exports[`test bottom-navigation example 1`] = `
     </div>
     <div class=\\"var-bottom-navigation__label\\">标签</div>
   </div>
+  <!--v-if-->
 </div>
 <div class=\\"app-type\\">监听切换事件</div>
 <div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
@@ -225,6 +260,7 @@ exports[`test bottom-navigation example 1`] = `
     </div>
     <div class=\\"var-bottom-navigation__label\\">标签</div>
   </div>
+  <!--v-if-->
 </div>
 <div class=\\"app-type\\">监听点击事件</div>
 <div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
@@ -251,6 +287,37 @@ exports[`test bottom-navigation example 1`] = `
       <!--v-if-->
     </div>
     <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <!--v-if-->
+</div>
+<div class=\\"app-type\\">悬浮按钮</div>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1; margin-top: 10px;\\">
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-home\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"var-bottom-navigation-item\\">
+    <div class=\\"var-icon__wrapper van-badge__wrapper\\"><i class=\\"var-icon var-icon--set var-icon-account-circle\\" style=\\"transition: transform 0ms;\\"></i>
+      <!--v-if-->
+    </div>
+    <div class=\\"var-bottom-navigation__label\\">标签</div>
+  </div>
+  <div class=\\"fab\\">
+    <div class=\\"fab_example\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"color: rgb(255, 255, 255); transition: transform 0ms; font-size: 34px;\\"></i></div>
   </div>
 </div>"
 `;

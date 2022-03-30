@@ -6,5 +6,6 @@ export default {
   customColor: 'Custom Color',
   changeEvent: 'Change Event',
   clickEvent: 'Click Event',
+  fab: 'Fab',
   label: 'label',
 }
