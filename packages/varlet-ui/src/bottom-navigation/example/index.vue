@@ -66,8 +66,9 @@ import VarBottomNavigation from '..'
 import VarBottomNavigationItem from '../../bottom-navigation-item'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Snackbar from '../../snackbar'
+import dark from '../../themes/dark'
 import { use, pack } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'BottomNavigationExample',
@@ -88,7 +89,8 @@ export default {
     }
     const customIcon = ref(0)
     const homeIcon = {
-      // https://varlet.gitee.io/varlet-ui/cat.jpg
+      // active: 'https://varlet.gitee.io/varlet-ui/home_active.jpg',
+      // inactive: 'https://varlet.gitee.io/varlet-ui/home_inactive.jpg'
       active: 'https://cdn.jsdelivr.net/npm/@vant/assets/user-active.png',
       inactive: 'https://cdn.jsdelivr.net/npm/@vant/assets/user-inactive.png',
     }
@@ -106,6 +108,7 @@ export default {
     }
 
     watchLang(use)
+    watchDarkMode(dark)
 
     return {
       pack,
