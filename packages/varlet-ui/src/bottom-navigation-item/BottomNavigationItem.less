@@ -18,7 +18,7 @@
 
 .var-bottom-navigation-item {
   height: 100%;
-  padding-top: 8px;
+  padding-top: 6px;
   position: relative;
   flex-grow: 1;
   text-align: center;
@@ -27,6 +27,8 @@
   cursor: pointer;
 
   &.var-bottom-navigation-item--active {
+    transform: scale(1.1);
+    transition: transform 250ms;
     background-color: var(--bottom-navigation-item-active-background-color);
     color: var(--bottom-navigation-item-active-color);
   }
