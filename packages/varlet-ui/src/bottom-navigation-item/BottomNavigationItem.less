@@ -1,0 +1,61 @@
+@bottom-navigation-item-font-size: var(--font-size-sm);
+@bottom-navigation-item-inactive-color: #646566;
+@bottom-navigation-item-active-color: var(--color-primary);
+@bottom-navigation-item-active-background-color: #fff;
+@bottom-navigation-item-line-height: 1;
+@bottom-navigation-item-icon-size: 22px;
+@bottom-navigation-item-icon-margin-bottom: 5px;
+
+:root {
+  --bottom-navigation-item-font-size: @bottom-navigation-item-font-size;
+  --bottom-navigation-item-inactive-color: @bottom-navigation-item-inactive-color;
+  --bottom-navigation-item-active-color: @bottom-navigation-item-active-color;
+  --bottom-navigation-item-active-background-color: @bottom-navigation-item-active-background-color;
+  --bottom-navigation-item-line-height: @bottom-navigation-item-line-height;
+  --bottom-navigation-item-icon-size: @bottom-navigation-item-icon-size;
+  --bottom-navigation-item-icon-margin-bottom: @bottom-navigation-item-icon-margin-bottom;
+}
+
+.var-bottom-navigation-item {
+  height: 100%;
+  padding-top: 6px;
+  position: relative;
+  flex: 1;
+  text-align: center;
+  line-height: var(--bottom-navigation-item-line-height);
+  color: var(--bottom-navigation-item-inactive-color);
+  &:not(.var-bottom-navigation-item--placeholder) {
+    cursor: pointer;
+  }
+
+  &.var-bottom-navigation-item--active {
+    background-color: var(--bottom-navigation-item-active-background-color);
+    color: var(--bottom-navigation-item-active-color);
+    .var-icon,
+    .var-bottom-navigation__label {
+      transform: scale(1.1);
+    }
+  }
+
+  .var-icon__wrapper.van-badge__wrapper {
+    position: relative;
+    display: inline-block;
+
+    .var-icon {
+      font-size: var(--bottom-navigation-item-icon-size);
+      transition: transform 250ms;
+    }
+
+    .var-badge {
+      position: absolute;
+      top: -5px;
+      left: 70%;
+    }
+  }
+
+  .var-bottom-navigation__label {
+    margin-top: var(--bottom-navigation-item-icon-margin-bottom);
+    font-size: var(--bottom-navigation-item-font-size);
+    transition: transform 250ms;
+  }
+}
