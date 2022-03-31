@@ -183,12 +183,6 @@ export default defineComponent({
   white-space: pre-wrap;
 }
 
-::-webkit-scrollbar {
-  display: none;
-  width: 0;
-  background: transparent;
-}
-
 body {
   min-width: 1200px;
   margin: 0;

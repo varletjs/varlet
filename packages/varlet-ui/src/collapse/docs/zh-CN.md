@@ -129,7 +129,7 @@ export default {
 
 ### 属性
 
-### Collapse 属性
+#### Collapse Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
@@ -137,7 +137,7 @@ export default {
 | `accordion` | 是否开启手风琴模式 | _boolean_ | `false` |
 | `offset` | 是否显示边距 | _boolean_ | `true` |
 
-### CollapseItem 属性
+#### CollapseItem Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
@@ -148,7 +148,7 @@ export default {
 
 ### 事件
 
-### Collapse 事件
+#### Collapse Events
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------------- | -------- |
@@ -156,7 +156,7 @@ export default {
 
 ### 插槽
 
-### CollapseItem 插槽
+#### CollapseItem Slots
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |

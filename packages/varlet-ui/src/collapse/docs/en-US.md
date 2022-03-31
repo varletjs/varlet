@@ -129,7 +129,7 @@ export default {
 
 ### Props
 
-### Collapse Props
+#### Collapse Props
 
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
@@ -137,7 +137,7 @@ export default {
 | `accordion` | Whether to be accordion mode | _boolean_ | `false` |
 | `offset` | Whether to show margin | _boolean_ | `true` |
 
-### CollapseItem Props
+#### CollapseItem Props
 
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
@@ -148,7 +148,7 @@ export default {
 
 ### Events
 
-### Collapse Events
+#### Collapse Events
 
 | Event | Description | arguments |
 | ----- | -------------- | -------- |
@@ -156,7 +156,7 @@ export default {
 
 ### Slots
 
-### CollapseItem Slots
+#### CollapseItem Slots
 
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
