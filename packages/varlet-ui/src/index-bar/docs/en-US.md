@@ -24,11 +24,11 @@ When you click the index bar, it will automatically jump to the corresponding `I
   @change="change"
 >
   <div v-for="item in list" :key="item">
-    <var-index-anchor 
-      :index="item" 
+    <var-index-anchor
+      :index="item"
       class="var-index-anchor__example"
-    > 
-      Title {{ item }} 
+    >
+      Title {{ item }}
     </var-index-anchor>
     <var-cell>{{ item }} Text</var-cell>
     <var-cell>{{ item }} Text</var-cell>
@@ -65,7 +65,7 @@ export default {
 
 ### Props
 
-#### IndexBar Props
+### IndexBar Props
 
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
@@ -77,7 +77,7 @@ export default {
 | `highlight-color` | Index character highlight color | _string_ | `#ee0a24` |
 | `duration` | Animation duration | _string \| number_ | `0` |
 
-#### IndexAnchor Props
+### IndexAnchor Props
 
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
@@ -85,7 +85,7 @@ export default {
 
 ### Events
 
-#### IndexBar Events
+### IndexBar Events
 
 | Event | Description | arguments |
 | ----- | -------------- | -------- |
@@ -94,7 +94,7 @@ export default {
 
 ### Slots
 
-#### IndexAnchor Slots
+### IndexAnchor Slots
 
 | Name | Description | SlotProps |
 | --- | --- | --- |

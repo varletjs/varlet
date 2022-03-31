@@ -205,7 +205,7 @@ export default {
 
 ### 属性
 
-#### Select Props
+### Select Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -225,7 +225,7 @@ export default {
 | `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: any \| any[]) => any>_ | `-` |
 
-#### Option Props
+### Option Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -234,7 +234,7 @@ export default {
 
 ### 方法
 
-#### Select Methods
+### Select Methods
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
@@ -246,7 +246,7 @@ export default {
 
 ### 事件
 
-#### Select Events
+### Select Events
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
@@ -259,14 +259,14 @@ export default {
 
 ### 插槽
 
-#### Select Slots
+### Select Slots
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `prepend-icon` | 前置图标 | `-` |
 | `append-icon` | 后置图标 | `-` |
 
-#### Option Slots
+### Option Slots
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
@@ -275,7 +275,7 @@ export default {
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
-#### Select Variables
+### Select Variables
 
 | 变量名 | 默认值 |
 | --- | --- |
@@ -297,7 +297,7 @@ export default {
 | `--select-arrow-size` | `20px` |
 | `--select-disabled-color` | `var(--color-text-disabled)` |
 
-#### Option Variables
+### Option Variables
 
 | 变量名 | 默认值 |
 | --- | --- |

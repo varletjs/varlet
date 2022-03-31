@@ -65,7 +65,7 @@ export default {
 
 ### 属性
 
-#### IndexBar Props
+### IndexBar Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
@@ -77,7 +77,7 @@ export default {
 | `highlight-color` | 索引字符高亮颜色 | _string_ | `#ee0a24` |
 | `duration` | 动画持续时间 | _string \| number_ | `0` |
 
-#### IndexAnchor Props
+### IndexAnchor Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
@@ -85,7 +85,7 @@ export default {
 
 ### 事件
 
-#### IndexBar Events
+### IndexBar Events
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------------- | -------- |
@@ -94,7 +94,7 @@ export default {
 
 ### 插槽
 
-#### IndexAnchor Slots
+### IndexAnchor Slots
 
 | 名称 | 说明 | 参数 |
 | --- | --- | --- |
