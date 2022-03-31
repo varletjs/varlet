@@ -16,18 +16,19 @@
   display: flex;
   position: relative;
   background-color: var(--bottom-navigation-background-color);
+  transition: background-color 0.25s;
 
-  &.var-bottom-navigation--fixed {
+  &__fixed {
     position: fixed;
     left: 0;
     bottom: 0;
   }
 
-  &.var-bottom-navigation--border {
+  &__border {
     border-top: 1px solid var(--bottom-navigation-border-color);
   }
 
-  > .fab {
+  &__fab {
     width: var(--bottom-navigation-height);
     height: var(--bottom-navigation-height);
     position: absolute;

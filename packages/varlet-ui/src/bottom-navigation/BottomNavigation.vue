@@ -2,11 +2,11 @@
   <div
     class="var-bottom-navigation"
     ref="bottomNavigationDom"
-    :class="`${fixed ? 'var-bottom-navigation--fixed' : ''} ${border ? 'var-bottom-navigation--border' : ''}`"
+    :class="`${fixed ? 'var-bottom-navigation__fixed' : ''} ${border ? 'var-bottom-navigation__border' : ''}`"
     :style="`z-index:${zIndex}`"
   >
     <slot></slot>
-    <div v-if="$slots.fab" class="fab">
+    <div v-if="$slots.fab" class="var-bottom-navigation__fab">
       <slot name="fab"></slot>
     </div>
   </div>
@@ -25,9 +25,6 @@ export default defineComponent({
   setup(props, { slots }) {
     const bottomNavigationDom: Ref<HTMLElement | null> = ref(null)
     const active: ComputedRef<number | string | undefined> = computed(() => props.modelValue)
-    const fixed: ComputedRef<boolean> = computed(() => props.fixed)
-    const border: ComputedRef<boolean> = computed(() => props.border)
-    const zIndex: ComputedRef<number | string> = computed(() => props.zIndex)
     const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
     const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
 
@@ -56,40 +53,47 @@ export default defineComponent({
 
     onMounted(() => {
       if (slots.fab) {
-        handlePlaceholderDom()
+        watchPlaceholderDom()
       }
     })
 
-    function handlePlaceholderDom() {
+    function watchPlaceholderDom() {
       watch(length, (newVal: number) => {
-        handlePlacehoderDom(bottomNavigationDom.value as HTMLElement, newVal)
+        handlePlaceholderDom(bottomNavigationDom.value as HTMLElement, newVal)
       })
     }
 
-    function handlePlacehoderDom(parent: HTMLElement, length: number) {
-      removeOldPlaceholderDom(parent, '.var-bottom-navigation-item--placeholder')
-      insertFabPlaceholderDom(parent, length)
+    const childClassName = 'var-bottom-navigation-item'
+    const placeholderChildClassName = 'var-bottom-navigation-item--placeholder'
+
+    function handlePlaceholderDom(parent: HTMLElement, length: number) {
+      removeOldPlaceholderDom(parent, placeholderChildClassName)
+      insertFabPlaceholderDom(parent, length, childClassName)
       handleEndPlaceholderDom(parent, length)
     }
 
-    function removeOldPlaceholderDom(parent: HTMLElement, oldPlaceholderchildSelector: string) {
-      const oldPlaceholderDoms = parent.querySelectorAll(oldPlaceholderchildSelector)
+    function removeOldPlaceholderDom(parent: HTMLElement, placeholderChildClassName: string) {
+      const oldPlaceholderDoms = parent.querySelectorAll(`.${placeholderChildClassName}`)
       oldPlaceholderDoms.forEach((item: any) => item.remove())
     }
 
-    function insertFabPlaceholderDom(parent: HTMLElement, length: number) {
-      const placeholderDom = document.createElement('div')
-      placeholderDom.className = 'var-bottom-navigation-item var-bottom-navigation-item--placeholder'
-      const BottomNavigationItems = parent.querySelectorAll('.var-bottom-navigation-item')
+    function insertFabPlaceholderDom(parent: HTMLElement, length: number, childClassName: string) {
+      const placeholderDom = createPlaceholderDom()
+      const BottomNavigationItems = parent.querySelectorAll(`.${childClassName}`)
       parent.insertBefore(placeholderDom, BottomNavigationItems[((length - 1) >> 1) + 1])
     }
 
     function handleEndPlaceholderDom(parent: HTMLElement, length: number) {
       if (length % 2) {
-        const placeholderDom: HTMLElement = document.createElement('div')
-        placeholderDom.className = 'var-bottom-navigation-item var-bottom-navigation-item--placeholder'
+        const placeholderDom = createPlaceholderDom()
         parent.appendChild(placeholderDom)
       }
+    }
+
+    function createPlaceholderDom() {
+      const placeholderDom: HTMLElement = document.createElement('div')
+      placeholderDom.className = `${childClassName} ${placeholderChildClassName}`
+      return placeholderDom
     }
 
     const bottomNavigationProvider: BottomNavigationProvider = {
@@ -103,9 +107,6 @@ export default defineComponent({
 
     return {
       bottomNavigationDom,
-      fixed,
-      border,
-      zIndex,
     }
   },
 })

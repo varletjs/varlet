@@ -238,7 +238,7 @@ export default {
 
 ### 属性
 
-#### BottomNavigation Props
+### BottomNavigation Props
 
 |参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ---- |
@@ -249,7 +249,8 @@ export default {
 | `active-color` | 选中标签的颜色 | _string_ | `var(--color-primary)` |
 | `inactive-color` | 未选中标签的颜色 | _string_ | `#646566` |
 
-#### BottomNavigationItem Props
+
+### BottomNavigationItem Props
 
 |参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ---- |
@@ -259,16 +260,17 @@ export default {
 | `namespace` | 图标的命名空间, 可扩展自定义图标库，等同于 Icon 组件的 [namespace 属性](/#/zh-CN/icon) | _string_ | `var-icon` |
 | `badge` | 图标右上角徽标 | _boolean \| BadgeProps_ | `false` |
 
+
 ### 事件
 
-#### BottomNavigation Events
+### BottomNavigation Events
 
 |事件名 | 说明 | 回调参数 |
 | ---- | ---- | ---- |
 | `before-change` | 切换标签前的回调函数，返回 false 可阻止切换，支持返回 Promise | `active: number \| string` |
 | `change` | 切换标签时触发 | `active: number \| string` |
 
-#### BottomNavigationItem Events
+### BottomNavigationItem Events
 
 |事件名 | 说明 | 回调参数 |
 | ---- | ---- | ---- |
@@ -276,13 +278,13 @@ export default {
 
 ### 插槽
 
-#### BottomNavigation Slots
+### BottomNavigation Slots
 
 | 名称 | 说明 | 参数 |
 | ---- | ---- | ----|
 | `fab` | 支持在组件中心插入一个自定义的 fab 按钮 | `-` |
 
-#### BottomNavigationItem Slots
+### BottomNavigationItem Slots
 
 | 名称 | 说明 | 参数 |
 | ---- | ---- | ----|

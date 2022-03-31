@@ -2,19 +2,28 @@
   <div
     class="var-bottom-navigation-item"
     v-ripple
-    :class="`${active === index || active === name ? 'var-bottom-navigation-item--active' : ''}`"
+    :class="`${active === index || active === name ? 'var-bottom-navigation-item__active' : ''}`"
     :style="{
       color: computeColorStyle(),
     }"
     @click="handleClick"
   >
-    <div class="var-icon__wrapper van-badge__wrapper">
-      <VarIcon v-if="icon && !$slots.icon" :name="icon" :namespace="namespace" />
-      <slot name="icon" :active="active === index || active === name"></slot>
-      <VarBadge v-if="badge" v-bind="badgeProps" />
-    </div>
+    <var-icon
+      v-if="icon && !$slots.icon"
+      :name="icon"
+      :namespace="namespace"
+      class="var-bottom-navigation-item__icon"
+      var-bottom-navigation-item-cover
+    />
+    <slot name="icon" :active="active === index || active === name"></slot>
+    <var-badge
+      v-if="badge"
+      v-bind="badgeProps"
+      class="var-bottom-navigation-item__badge"
+      var-bottom-navigation-item-cover
+    />
 
-    <div class="var-bottom-navigation__label">
+    <div class="var-bottom-navigation-item__label">
       <template v-if="!$slots.default">
         {{ label }}
       </template>

@@ -238,7 +238,7 @@ export default {
 
 ### Props
 
-#### BottomNavigation Props
+### BottomNavigation Props
 
 |Prop | Description | Type | Default |
 | ---- | ---- | ---- | ---- |
@@ -249,7 +249,7 @@ export default {
 | `active-color` | Color of active tab item | _string_ | `var(--color-primary)` |
 | `inactive-color` | Color of inactive tab item | _string_ | `#646566` |
 
-#### BottomNavigationItem Props
+### BottomNavigationItem Props
 
 |Prop | Description | Type | Default |
 | ---- | ---- | ---- | ---- |
@@ -261,14 +261,14 @@ export default {
 
 ### Events
 
-#### BottomNavigation Events
+### BottomNavigation Events
 
 |Event | Description | Arguments |
 | ---- | ---- | ---- |
 | `before-change` | The callback function before switching labels, which returns false to prevent switching, supports the return of promise | `active: number \| string` |
 | `change` | Triggered when switching labels | `active: number \| string` |
 
-#### BottomNavigationItem Events
+### BottomNavigationItem Events
 
 |Event | Description | Arguments |
 | ---- | ---- | ---- |
@@ -276,12 +276,12 @@ export default {
 
 ### Slots
 
-#### BottomNavigation Slots
+### BottomNavigation Slots
 
 | Slot | Description | Arguments |
 | ---- | ---- | ----|
 | `fab` | Support for inserting a custom Fab button in the center of the component | `-` |
-#### BottomNavigationItem Slots
+### BottomNavigationItem Slots
 
 | Slot | Description | Arguments |
 | ---- | ---- | ----|

@@ -28,8 +28,9 @@
     cursor: pointer;
   }
 
-  &.var-bottom-navigation-item--active {
+  &__active {
     background-color: var(--bottom-navigation-item-active-background-color);
+    transition: background-color 0.25s;
     color: var(--bottom-navigation-item-active-color);
     .var-icon,
     .var-bottom-navigation__label {
@@ -37,25 +38,20 @@
     }
   }
 
-  .var-icon__wrapper.van-badge__wrapper {
-    position: relative;
-    display: inline-block;
-
-    .var-icon {
-      font-size: var(--bottom-navigation-item-icon-size);
-      transition: transform 250ms;
-    }
-
-    .var-badge {
-      position: absolute;
-      top: -5px;
-      left: 70%;
-    }
+  &__icon[var-bottom-navigation-item-cover] {
+    font-size: var(--bottom-navigation-item-icon-size);
+    transition: transform 0.25s;
   }
 
-  .var-bottom-navigation__label {
+  &__badge[var-bottom-navigation-item-cover] {
+    position: absolute;
+    left: -10px;
+    transform: translate(20%, -20px);
+  }
+
+  &__label {
     margin-top: var(--bottom-navigation-item-icon-margin-bottom);
     font-size: var(--bottom-navigation-item-font-size);
-    transition: transform 250ms;
+    transition: transform 0.25s;
   }
 }
