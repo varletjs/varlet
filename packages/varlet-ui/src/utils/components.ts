@@ -302,19 +302,7 @@ export function createNamespace(name: string) {
     return mod.startsWith('--') ? `${namespace}${mod}` : `${namespace}__${mod}`
   }
 
-  const classes = (arg: any[]): string => {
-    return arg.reduce((pre, cur) => {
-      if (!cur) return pre
-
-      if (isArray(cur)) {
-        const result = condition(cur[0], cur[1], cur[2])
-
-        return result ? `${pre} ${result}` : pre
-      }
-
-      return `${pre} ${cur}`
-    }, '')
-  }
+  const classes = (classes: any[]): any[] => classes.map(className => isArray(className) ? condition(className[0], className[1], className[2]) : className)
 
   return {
     n: createBEM,

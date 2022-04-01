@@ -32,6 +32,8 @@ import { props } from './props'
 import { createNamespace } from '../utils/components'
 import type { Ref, ComputedRef } from 'vue'
 
+const { n, classes } = createNamespace('button')
+
 export default defineComponent({
   name: 'VarButton',
   components: {
@@ -40,11 +42,9 @@ export default defineComponent({
   directives: { Ripple },
   props,
   setup(props) {
-    const { n, classes } = createNamespace('button')
-
     const pending: Ref<boolean> = ref(false)
 
-    const buttonClass: ComputedRef<string> = computed(() =>
+    const buttonClass: ComputedRef<any[]> = computed(() =>
       classes([
         n(),
         'var--box',

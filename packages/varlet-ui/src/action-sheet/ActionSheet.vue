@@ -58,6 +58,8 @@ import { createNamespace, call } from '../utils/components'
 import type { Ref } from 'vue'
 import type { ActionItem } from './index'
 
+const { n, classes } = createNamespace('action-sheet')
+
 export default defineComponent({
   name: 'VarActionSheet',
   directives: { Ripple },
@@ -68,8 +70,6 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const { n, classes } = createNamespace('action-sheet')
-
     const popupShow: Ref<boolean> = ref(false)
 
     const handleSelect = (action: ActionItem) => {
