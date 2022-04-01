@@ -1,7 +1,19 @@
 <template>
   <button
     v-ripple="{ disabled: disabled || !ripple }"
-    :class="buttonClass"
+    :class="
+      classes(
+        n(),
+        'var--box',
+        n(`--${size}`),
+        [block, `var--flex ${n('--block')}`, 'var--inline-flex'],
+        [disabled, n('--disabled')],
+        [text, `${n(`--text-${type}`)} ${n('--text')}`, `${n(`--${type}`)} var-elevation--2`],
+        [text && disabled, n('--text-disabled')],
+        [round, n('--round')],
+        [outline, n('--outline')]
+      )
+    "
     :style="{
       color: textColor,
       background: color,
@@ -18,7 +30,7 @@
       :radius="loadingRadius"
       v-if="loading || pending"
     />
-    <div :class="classes([n('content'), [loading || pending, n('--hidden')]])">
+    <div :class="classes(n('content'), [loading || pending, n('--hidden')])">
       <slot />
     </div>
   </button>
@@ -27,10 +39,10 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import VarLoading from '../loading'
-import { defineComponent, ref, computed } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
-import type { Ref, ComputedRef } from 'vue'
+import type { Ref } from 'vue'
 
 const { n, classes } = createNamespace('button')
 
@@ -43,20 +55,6 @@ export default defineComponent({
   props,
   setup(props) {
     const pending: Ref<boolean> = ref(false)
-
-    const buttonClass: ComputedRef<any[]> = computed(() =>
-      classes([
-        n(),
-        'var--box',
-        n(`--${props.size}`),
-        [props.block, `var--flex ${n('--block')}`, 'var--inline-flex'],
-        [props.disabled, n('--disabled')],
-        [props.text, `${n(`--text-${props.type}`)} ${n('--text')}`, `${n(`--${props.type}`)} var-elevation--2`],
-        [props.text && props.disabled, n('--text-disabled')],
-        [props.round, n('--round')],
-        [props.outline, n('--outline')],
-      ])
-    )
 
     const attemptAutoLoading = (result: any) => {
       if (props.autoLoading) {
@@ -90,7 +88,6 @@ export default defineComponent({
     return {
       n,
       classes,
-      buttonClass,
       pending,
       handleClick,
       handleTouchstart,

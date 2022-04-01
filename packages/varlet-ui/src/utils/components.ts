@@ -16,7 +16,7 @@ import {
   onDeactivated,
 } from 'vue'
 import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref } from 'vue'
-import { condition, isArray, removeItem } from './shared'
+import { isArray, removeItem, ternary } from './shared'
 
 export interface MountInstance {
   instance: any
@@ -293,16 +293,27 @@ export function exposeApis<T = Record<string, any>>(apis: T) {
   }
 }
 
+type Classes = (string | [any, string, string?])[]
+
 export function createNamespace(name: string) {
   const namespace = `var-${name}`
 
-  const createBEM = (mod?: string): string => {
-    if (!mod) return namespace
+  const createBEM = (suffix?: string): string => {
+    if (!suffix) return namespace
 
-    return mod.startsWith('--') ? `${namespace}${mod}` : `${namespace}__${mod}`
+    return suffix.startsWith('--') ? `${namespace}${suffix}` : `${namespace}__${suffix}`
   }
 
-  const classes = (classes: any[]): any[] => classes.map(className => isArray(className) ? condition(className[0], className[1], className[2]) : className)
+  const classes = (...classes: Classes): any[] => {
+    return classes.map((className) => {
+      if (isArray(className)) {
+        const [condition, truthy, falsy = null] = className
+        return ternary(condition, truthy, falsy)
+      }
+
+      return className
+    })
+  }
 
   return {
     n: createBEM,

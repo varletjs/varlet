@@ -177,6 +177,6 @@ export function kebabCase(str: string): string {
   return ret.split(' ').join('-').toLowerCase()
 }
 
-export function condition<T, F>(bool: any, truthy: T, falsy?: F) {
-  return bool ? truthy : falsy
+export function ternary<T, F>(condition: any, truthy: T, falsy?: F) {
+  return condition ? truthy : falsy
 }

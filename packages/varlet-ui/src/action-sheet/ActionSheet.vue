@@ -10,7 +10,7 @@
     :teleport="teleport"
     :show="popupShow"
     v-bind="{
-      'onUpdate:show': (value) => $props['onUpdate:show']?.(value),
+      'onUpdate:show': (value) => call($props['onUpdate:show'], value),
     }"
     @open="onOpen"
     @close="onClose"
@@ -18,14 +18,14 @@
     @opened="onOpened"
     @route-change="onRouteChange"
   >
-    <div :class="classes([n(), 'var--box'])" v-bind="$attrs">
+    <div :class="classes(n(), 'var--box')" v-bind="$attrs">
       <slot name="title">
         <div :class="n('title')">{{ dt(title, pack.actionSheetTitle) }}</div>
       </slot>
 
       <slot name="actions">
         <div
-          :class="classes([n('action-item'), action.className, [action.disabled, n('--disabled')]])"
+          :class="classes(n('action-item'), action.className, [action.disabled, n('--disabled')])"
           v-ripple="{ disabled: action.disabled }"
           v-for="action in actions"
           :key="action.name"
@@ -93,6 +93,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      call,
       popupShow,
       pack,
       dt,
