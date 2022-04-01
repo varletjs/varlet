@@ -130,7 +130,7 @@ exports[`test skeleton example 1`] = `
   </div>
   <!--v-if-->
 </div>
-<div class=\\"app-type\\">全屏模式</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--danger button\\">
+<div class=\\"app-type\\">全屏模式</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--2 button\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">切换全屏模式</div>
 </button>

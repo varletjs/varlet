@@ -33,7 +33,7 @@ exports[`test app bar example 1`] = `
 </div>
 <div class=\\"app-type\\">添加左侧插槽</div>
 <div class=\\"var-app-bar var-elevation--3\\">
-  <div class=\\"var-app-bar__left\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
+  <div class=\\"var-app-bar__left\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
       <!--v-if-->
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
     </button>
@@ -51,7 +51,7 @@ exports[`test app bar example 1`] = `
   </div>
   <!--v-if-->
   <div class=\\"var-app-bar__right\\">
-    <!--v-if--><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
+    <!--v-if--><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
       <!--v-if-->
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
     </button>
@@ -59,7 +59,7 @@ exports[`test app bar example 1`] = `
 </div>
 <div class=\\"app-type\\">添加左右插槽</div>
 <div class=\\"var-app-bar var-elevation--3\\">
-  <div class=\\"var-app-bar__left\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
+  <div class=\\"var-app-bar__left\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
       <!--v-if-->
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
     </button>
@@ -68,7 +68,7 @@ exports[`test app bar example 1`] = `
   <!--v-if-->
   <div class=\\"var-app-bar__right\\">
     <!--v-if-->
-    <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
+    <div class=\\"var-menu\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"color: rgb(255, 255, 255); background: transparent;\\">
         <!--v-if-->
         <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-menu\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
       </button>

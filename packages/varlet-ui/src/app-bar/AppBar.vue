@@ -1,24 +1,25 @@
 <template>
   <div
-    :class="classes(n(), elevation && n('', '', 3))"
+    class="var-app-bar"
+    :class="{ 'var-elevation--3': elevation }"
     :style="{
       background: color,
       color: textColor,
     }"
   >
-    <div :class="n('left')">
+    <div class="var-app-bar__left">
       <slot name="left" />
-      <div :class="n('title')" :style="{ paddingLeft }" v-if="titlePosition === 'left'">
+      <div class="var-app-bar__title" :style="{ paddingLeft }" v-if="titlePosition === 'left'">
         <slot>{{ title }}</slot>
       </div>
     </div>
 
-    <div :class="n('title')" v-if="titlePosition === 'center'">
+    <div class="var-app-bar__title" v-if="titlePosition === 'center'">
       <slot>{{ title }}</slot>
     </div>
 
-    <div :class="n('right')">
-      <div :class="n('title')" :style="{ paddingRight }" v-if="titlePosition === 'right'">
+    <div class="var-app-bar__right">
+      <div class="var-app-bar__title" :style="{ paddingRight }" v-if="titlePosition === 'right'">
         <slot>{{ title }}</slot>
       </div>
       <slot name="right" />
@@ -27,17 +28,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUpdated } from 'vue'
+import { defineComponent, ref, Ref, onMounted, onUpdated } from 'vue'
 import { props } from './props'
-import { createNamespace } from '../utils/components'
-import type { Ref } from 'vue'
 
 export default defineComponent({
   name: 'VarAppBar',
   props,
   setup(props, { slots }) {
-    const { n, classes } = createNamespace('app-bar')
-
     const paddingLeft: Ref<number | undefined> = ref()
     const paddingRight: Ref<number | undefined> = ref()
 
@@ -50,8 +47,6 @@ export default defineComponent({
     onUpdated(computePadding)
 
     return {
-      n,
-      classes,
       paddingLeft,
       paddingRight,
     }

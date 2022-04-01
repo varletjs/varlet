@@ -16,7 +16,7 @@ import {
   onDeactivated,
 } from 'vue'
 import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref } from 'vue'
-import { isArray, isBool, isNumber, removeItem } from './shared'
+import { isArray, removeItem } from './shared'
 
 export interface MountInstance {
   instance: any
@@ -288,33 +288,4 @@ export function exposeApis<T = Record<string, any>>(apis: T) {
   if (instance) {
     Object.assign(instance.proxy, apis)
   }
-}
-
-export function createNamespace(name: string) {
-  const namespace = `var-${name}`
-
-  const createBEM = (block?: string, mod?: string | boolean, elevation?: number): string => {
-    if (isNumber(elevation)) return `var-elevation--${elevation}`
-
-    if (isBool(mod) && mod) return `var--${block}`
-
-    if (!block && !mod) return namespace
-
-    if (block && !mod) return `${namespace}__${block}`
-
-    if (!block && mod) return `${namespace}--${mod}`
-
-    return `${namespace}__${block}--${mod}`
-  }
-
-  const classes = (...arg: any[]): string => arg.filter((value) => value).join(' ')
-
-  return {
-    n: createBEM,
-    classes,
-  }
-}
-
-export function call<F extends (...arg: any) => void, P extends Parameters<F>>(fn?: F, ...arg: P) {
-  if (fn) fn(...arg)
 }

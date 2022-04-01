@@ -1,6 +1,6 @@
 <template>
   <var-popup
-    :class="n('popup-radius')"
+    class="var-action-sheet__popup-radius"
     position="bottom"
     :overlay="overlay"
     :overlay-class="overlayClass"
@@ -18,14 +18,15 @@
     @opened="onOpened"
     @route-change="onRouteChange"
   >
-    <div :class="classes(n(), n('box', true))" v-bind="$attrs">
+    <div class="var-action-sheet var--box" v-bind="$attrs">
       <slot name="title">
-        <div :class="n('title')">{{ dt(title, pack.actionSheetTitle) }}</div>
+        <div class="var-action-sheet__title">{{ dt(title, pack.actionSheetTitle) }}</div>
       </slot>
 
       <slot name="actions">
         <div
-          :class="classes(n('action-item'), action.className, action.disabled && n('', 'disabled'))"
+          class="var-action-sheet__action-item"
+          :class="[action.className, action.disabled ? 'var-action-sheet--disabled' : null]"
           v-ripple="{ disabled: action.disabled }"
           v-for="action in actions"
           :key="action.name"
@@ -33,13 +34,13 @@
           @click="handleSelect(action)"
         >
           <var-icon
-            :class="n('action-icon')"
+            class="var-action-sheet__action-icon"
             var-action-sheet-cover
             :name="action.icon"
             :size="action.iconSize"
             v-if="action.icon"
           />
-          <div :class="n('action-name')">{{ action.name }}</div>
+          <div class="var-action-sheet__action-name">{{ action.name }}</div>
         </div>
       </slot>
     </div>
@@ -53,7 +54,6 @@ import VarIcon from '../icon'
 import { defineComponent, ref, watch } from 'vue'
 import { props } from './props'
 import { dt } from '../utils/shared'
-import { createNamespace } from '../utils/components'
 import { pack } from '../locale'
 import type { Ref } from 'vue'
 import type { ActionItem } from './index'
@@ -68,8 +68,6 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const { n, classes } = createNamespace('action-sheet')
-
     const popupShow: Ref<boolean> = ref(false)
 
     const handleSelect = (action: ActionItem) => {
@@ -91,8 +89,6 @@ export default defineComponent({
     )
 
     return {
-      n,
-      classes,
       popupShow,
       pack,
       dt,

@@ -20,13 +20,13 @@ exports[`test countdown example 1`] = `
 <div>
   <div class=\\"app-type\\">手动控制</div>
   <div class=\\"var-countdown\\">03 : 000</div>
-  <div class=\\"btn-container\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--primary\\">
+  <div class=\\"btn-container\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">开始</div>
-    </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default\\">
+    </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">暂停</div>
-    </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default\\">
+    </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">重置</div>
     </button></div>
