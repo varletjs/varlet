@@ -246,8 +246,8 @@ export default {
 | `fixed` |	Whether to fixed bottom | _boolean_ | `false` |
 | `border` | Whether to show border | _boolean_ | `false` |
 | `z-index` | Z-index | _number \| string_ | `1` |
-| `active-color` | Color of active tab item | _string_ | `var(--color-primary)` |
-| `inactive-color` | Color of inactive tab item | _string_ | `#646566` |
+| `active-color` | Color of active tab item | _string_ | `-` |
+| `inactive-color` | Color of inactive tab item | _string_ | `-` |
 
 ### BottomNavigationItem Props
 

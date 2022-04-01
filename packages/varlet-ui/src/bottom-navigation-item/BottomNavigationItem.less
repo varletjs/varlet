@@ -24,18 +24,29 @@
   text-align: center;
   line-height: var(--bottom-navigation-item-line-height);
   color: var(--bottom-navigation-item-inactive-color);
-  &:not(.var-bottom-navigation-item--placeholder) {
-    cursor: pointer;
-  }
+  transition: margin 0.25s;
 
-  &__active {
+  &--active {
     background-color: var(--bottom-navigation-item-active-background-color);
     transition: background-color 0.25s;
     color: var(--bottom-navigation-item-active-color);
+
     .var-icon,
     .var-bottom-navigation__label {
       transform: scale(1.1);
     }
+  }
+
+  &--right-half-space {
+    margin-right: calc(var(--bottom-navigation-height) / 2);
+  }
+
+  &--left-half-space {
+    margin-left: calc(var(--bottom-navigation-height) / 2);
+  }
+
+  &--right-space {
+    margin-right: var(--bottom-navigation-height);
   }
 
   &__icon[var-bottom-navigation-item-cover] {

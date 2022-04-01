@@ -1,23 +1,32 @@
+/* eslint-disable no-undef */
 <template>
   <div
     class="var-bottom-navigation"
     ref="bottomNavigationDom"
-    :class="`${fixed ? 'var-bottom-navigation__fixed' : ''} ${border ? 'var-bottom-navigation__border' : ''}`"
+    :class="`${fixed ? 'var-bottom-navigation--fixed' : ''} ${border ? 'var-bottom-navigation--border' : ''}`"
     :style="`z-index:${zIndex}`"
   >
     <slot></slot>
-    <div v-if="$slots.fab" class="var-bottom-navigation__fab">
+    <div
+      v-if="$slots.fab"
+      class="var-bottom-navigation__fab var-elevation--8"
+      :class="length % 2 ? 'var-bottom-navigation--fab-right' : 'var-bottom-navigation--fab-center'"
+    >
       <slot name="fab"></slot>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, onMounted, watch } from 'vue'
+import { defineComponent, ref, computed, onMounted, onUpdated } from 'vue'
 import type { Ref, ComputedRef } from 'vue'
 import { props } from './props'
 import { useBottomNavigationItems } from './provide'
 import type { BottomNavigationProvider } from './provide'
+
+const RIGHT_HALF_SPACE_CLASS = 'var-bottom-navigation-item--right-half-space'
+const LEFT_HALF_SPACE_CLASS = 'var-bottom-navigation-item--left-half-space'
+const RIGHT_SPACE_CLASS = 'var-bottom-navigation-item--right-space'
 
 export default defineComponent({
   name: 'VarBottomNavigation',
@@ -36,7 +45,7 @@ export default defineComponent({
       }
     }
 
-    function handleBeforeChange(changedValue: number | string) {
+    const handleBeforeChange = (changedValue: number | string) => {
       Promise.resolve(props.onBeforeChange?.(changedValue)).then((res) => {
         if (res) {
           handleChange(changedValue)
@@ -44,56 +53,48 @@ export default defineComponent({
       })
     }
 
-    function handleChange(changedValue: number | string) {
+    const handleChange = (changedValue: number | string) => {
       props['onUpdate:modelValue']?.(changedValue)
       props.onChange?.(changedValue)
     }
 
     const { length, bindBottomNavigationItem } = useBottomNavigationItems()
 
-    onMounted(() => {
-      if (slots.fab) {
-        watchPlaceholderDom()
-      }
-    })
-
-    function watchPlaceholderDom() {
-      watch(length, (newVal: number) => {
-        handlePlaceholderDom(bottomNavigationDom.value as HTMLElement, newVal)
+    const removeMarginClass = () => {
+      const bottomNavigationItems: Element[] = getBottomNavigationItems()
+      bottomNavigationItems.forEach((dom: Element) => {
+        dom.classList.remove(RIGHT_HALF_SPACE_CLASS, LEFT_HALF_SPACE_CLASS, RIGHT_SPACE_CLASS)
       })
     }
 
-    const childClassName = 'var-bottom-navigation-item'
-    const placeholderChildClassName = 'var-bottom-navigation-item--placeholder'
+    const addMarginClass = (length: number) => {
+      const bottomNavigationItems: Element[] = getBottomNavigationItems()
+      const itemsNum = bottomNavigationItems.length
+      const isEven = length % 2 === 0
 
-    function handlePlaceholderDom(parent: HTMLElement, length: number) {
-      removeOldPlaceholderDom(parent, placeholderChildClassName)
-      insertFabPlaceholderDom(parent, length, childClassName)
-      handleEndPlaceholderDom(parent, length)
+      bottomNavigationItems.forEach((bottomNavigationItem: Element, i: number) => {
+        handleMarginClass(isEven, bottomNavigationItem, i, itemsNum)
+      })
     }
 
-    function removeOldPlaceholderDom(parent: HTMLElement, placeholderChildClassName: string) {
-      const oldPlaceholderDoms = parent.querySelectorAll(`.${placeholderChildClassName}`)
-      oldPlaceholderDoms.forEach((item: any) => item.remove())
-    }
+    const handleMarginClass = (isEven: boolean, dom: Element, i: number, length: number) => {
+      const isLast = i === length - 1
+      if (!isEven && isLast) {
+        dom.classList.add(RIGHT_SPACE_CLASS)
+        return
+      }
 
-    function insertFabPlaceholderDom(parent: HTMLElement, length: number, childClassName: string) {
-      const placeholderDom = createPlaceholderDom()
-      const BottomNavigationItems = parent.querySelectorAll(`.${childClassName}`)
-      parent.insertBefore(placeholderDom, BottomNavigationItems[((length - 1) >> 1) + 1])
-    }
-
-    function handleEndPlaceholderDom(parent: HTMLElement, length: number) {
-      if (length % 2) {
-        const placeholderDom = createPlaceholderDom()
-        parent.appendChild(placeholderDom)
+      const isFabLeft = i === length / 2 - 1
+      const isFabRight = i === length / 2
+      if (isFabLeft) {
+        dom.classList.add(RIGHT_HALF_SPACE_CLASS)
+      } else if (isFabRight) {
+        dom.classList.add(LEFT_HALF_SPACE_CLASS)
       }
     }
 
-    function createPlaceholderDom() {
-      const placeholderDom: HTMLElement = document.createElement('div')
-      placeholderDom.className = `${childClassName} ${placeholderChildClassName}`
-      return placeholderDom
+    const getBottomNavigationItems = () => {
+      return Array.from(bottomNavigationDom.value!.querySelectorAll(`.var-bottom-navigation-item`))
     }
 
     const bottomNavigationProvider: BottomNavigationProvider = {
@@ -105,7 +106,26 @@ export default defineComponent({
 
     bindBottomNavigationItem(bottomNavigationProvider)
 
+    onMounted(() => {
+      if (!slots.fab) {
+        return
+      }
+
+      addMarginClass(length.value)
+    })
+
+    onUpdated(() => {
+      removeMarginClass()
+
+      if (!slots.fab) {
+        return
+      }
+
+      addMarginClass(length.value)
+    })
+
     return {
+      length,
       bottomNavigationDom,
     }
   },

@@ -246,8 +246,8 @@ export default {
 | `fixed` | 是否固定在底部 | _boolean_ | `false` |
 | `border` | 是否显示外边框 | _boolean_ | `false` |
 | `z-index` | 元素 z-index | _number \| string_ | `1` |
-| `active-color` | 选中标签的颜色 | _string_ | `var(--color-primary)` |
-| `inactive-color` | 未选中标签的颜色 | _string_ | `#646566` |
+| `active-color` | 选中标签的颜色 | _string_ | `-` |
+| `inactive-color` | 未选中标签的颜色 | _string_ | `-` |
 
 
 ### BottomNavigationItem Props

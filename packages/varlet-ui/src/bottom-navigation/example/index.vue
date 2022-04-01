@@ -26,8 +26,8 @@
   <app-type>{{ pack.customIcon }}</app-type>
   <var-bottom-navigation v-model="customIcon">
     <var-bottom-navigation-item :label="pack.label">
-      <template #icon="props">
-        <img style="width: 20px" :src="props.active ? homeIcon.active : homeIcon.inactive" />
+      <template #icon="{ active }">
+        <img style="width: 20px" :src="active ? homeIcon.active : homeIcon.inactive" />
       </template>
     </var-bottom-navigation-item>
     <var-bottom-navigation-item :label="pack.label" icon="magnify" />
@@ -36,7 +36,7 @@
   </var-bottom-navigation>
 
   <app-type>{{ pack.customColor }}</app-type>
-  <var-bottom-navigation v-model="customColor" active-color="red" inactive-color="#2196f3">
+  <var-bottom-navigation v-model="customColor" active-color="#BA68C8">
     <var-bottom-navigation-item :label="pack.label" icon="home" />
     <var-bottom-navigation-item :label="pack.label" icon="magnify" />
     <var-bottom-navigation-item :label="pack.label" icon="heart" />

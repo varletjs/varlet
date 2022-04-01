@@ -18,13 +18,13 @@
   background-color: var(--bottom-navigation-background-color);
   transition: background-color 0.25s;
 
-  &__fixed {
+  &--fixed {
     position: fixed;
     left: 0;
     bottom: 0;
   }
 
-  &__border {
+  &--border {
     border-top: 1px solid var(--bottom-navigation-border-color);
   }
 
@@ -32,11 +32,19 @@
     width: var(--bottom-navigation-height);
     height: var(--bottom-navigation-height);
     position: absolute;
+    z-index: 2;
     transform: translateY(-50%);
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+    background-color: #fff;
     overflow: hidden;
     border-radius: 50%;
+    transition: right 0.25s linear;
+  }
+
+  &--fab-center {
+    right: calc(50% - var(--bottom-navigation-height) / 2);
+  }
+
+  &--fab-right {
+    right: 0;
   }
 }

@@ -2,7 +2,7 @@
   <div
     class="var-bottom-navigation-item"
     v-ripple
-    :class="`${active === index || active === name ? 'var-bottom-navigation-item__active' : ''}`"
+    :class="`${active === index || active === name ? 'var-bottom-navigation-item--active' : ''}`"
     :style="{
       color: computeColorStyle(),
     }"
@@ -39,10 +39,14 @@ import Ripple from '../ripple'
 import VarBadge from '../badge'
 import VarIcon from '../icon'
 import type { ComputedRef } from 'vue'
-import { isBool } from '../utils/shared'
 import type { BadgeProps } from '../../types/badge'
 import { useBottomNavigation } from './provide'
 import type { BottomNavigationItemProvider } from './provide'
+
+const defaultBadgeProps = {
+  type: 'danger',
+  dot: true,
+}
 
 export default defineComponent({
   name: 'VarBottomNavigationItem',
@@ -55,31 +59,9 @@ export default defineComponent({
   setup(props) {
     const name: ComputedRef<string | undefined> = computed(() => props.name)
     const badge: ComputedRef<boolean | BadgeProps> = computed(() => props.badge)
-
     const badgeProps = ref({})
-
-    watch(
-      badge,
-      (newValue) => {
-        if (!newValue) {
-          badgeProps.value = {}
-        }
-        if (isBool(newValue)) {
-          badgeProps.value = {
-            type: 'danger',
-            dot: true,
-          }
-        } else {
-          badgeProps.value = badge.value
-        }
-      },
-      { immediate: true }
-    )
-
     const { index, bottomNavigation, bindBottomNavigation } = useBottomNavigation()
-
     const { active, activeColor, inactiveColor } = bottomNavigation
-
     const bottomNavigationItemProvider: BottomNavigationItemProvider = {
       name,
       index,
@@ -94,13 +76,18 @@ export default defineComponent({
     const handleClick = () => {
       const active = name.value || index.value
 
-      const { onClick } = props
-      if (onClick) {
-        onClick(active)
-      }
+      props.onClick?.(active)
 
       bottomNavigation?.onToggle(active)
     }
+
+    watch(
+      () => badge.value,
+      (newValue) => {
+        badgeProps.value = newValue === true ? defaultBadgeProps : badge.value
+      },
+      { immediate: true }
+    )
 
     return {
       index,
