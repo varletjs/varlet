@@ -306,7 +306,7 @@ exports[`test loading example 1`] = `
     </div>
   </div>
   <div>
-    <div class=\\"app-type\\">包裹内容</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\" style=\\"margin-bottom: 8px;\\">
+    <div class=\\"app-type\\">包裹内容</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default\\" style=\\"margin-bottom: 8px;\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">打开</div>
     </button>

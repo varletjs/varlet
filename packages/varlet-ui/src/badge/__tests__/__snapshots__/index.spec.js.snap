@@ -67,7 +67,7 @@ exports[`test badge example 1`] = `
       <!--v-if--></span>
     </transition-stub>
   </div>
-  <div class=\\"app-type\\">是否显示徽标</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+  <div class=\\"app-type\\">是否显示徽标</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default\\">
     <!--v-if-->
     <div class=\\"var-button__content\\">点击改变状态</div>
   </button>

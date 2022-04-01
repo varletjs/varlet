@@ -3,11 +3,11 @@
 exports[`test cascade mode 1`] = `
 "<transition-stub>
   <div class=\\"var-picker\\">
-    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" var-picker-cover=\\"\\">
+    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button\\" var-picker-cover=\\"\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">取消</div>
       </button>
-      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__confirm-button\\" var-picker-cover=\\"\\">
+      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__confirm-button\\" var-picker-cover=\\"\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">确认</div>
       </button>
@@ -43,11 +43,11 @@ exports[`test cascade mode 1`] = `
 exports[`test scroll down & onCancel 1`] = `
 "<transition-stub>
   <div class=\\"var-picker\\">
-    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" var-picker-cover=\\"\\">
+    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button\\" var-picker-cover=\\"\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">取消</div>
       </button>
-      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__confirm-button\\" var-picker-cover=\\"\\">
+      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__confirm-button\\" var-picker-cover=\\"\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">确认</div>
       </button>
@@ -76,11 +76,11 @@ exports[`test scroll down & onCancel 1`] = `
 exports[`test scroll down & onCancel 2`] = `
 "<transition-stub>
   <div class=\\"var-picker\\">
-    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" var-picker-cover=\\"\\">
+    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button\\" var-picker-cover=\\"\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">取消</div>
       </button>
-      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__confirm-button\\" var-picker-cover=\\"\\">
+      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__confirm-button\\" var-picker-cover=\\"\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">确认</div>
       </button>
@@ -109,11 +109,11 @@ exports[`test scroll down & onCancel 2`] = `
 exports[`test scroll up & onConfirm 1`] = `
 "<transition-stub>
   <div class=\\"var-picker\\">
-    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" var-picker-cover=\\"\\">
+    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button\\" var-picker-cover=\\"\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">取消</div>
       </button>
-      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__confirm-button\\" var-picker-cover=\\"\\">
+      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__confirm-button\\" var-picker-cover=\\"\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">确认</div>
       </button>
@@ -142,11 +142,11 @@ exports[`test scroll up & onConfirm 1`] = `
 exports[`test scroll up & onConfirm 2`] = `
 "<transition-stub>
   <div class=\\"var-picker\\">
-    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" var-picker-cover=\\"\\">
+    <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button\\" var-picker-cover=\\"\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">取消</div>
       </button>
-      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__confirm-button\\" var-picker-cover=\\"\\">
+      <div class=\\"var-picker__title\\">请选择</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__confirm-button\\" var-picker-cover=\\"\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">确认</div>
       </button>

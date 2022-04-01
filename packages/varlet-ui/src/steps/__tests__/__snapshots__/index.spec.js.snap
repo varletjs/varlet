@@ -186,7 +186,7 @@ exports[`test steps example 1`] = `
       <div class=\\"var-step-vertical__line\\"></div>
     </div>
   </div>
-</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--2\\" style=\\"margin-top: 20px;\\">
+</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-elevation--2 var-button--primary\\" style=\\"margin-top: 20px;\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">下一步</div>
 </button>"

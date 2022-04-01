@@ -17,7 +17,6 @@
       </slot>
     </div>
   </teleport>
-
 </template>
 <script lang="ts">
 import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
@@ -25,6 +24,7 @@ import VarButton from '../button'
 import VarIcon from '../icon'
 import { props } from './props'
 import { isString, easeInOutCubic, throttle, isObject } from '../utils/shared'
+import { call } from '../utils/components'
 import { getScrollTop, getScrollLeft, scrollTo, getParentScroller, toPxNum, toSizeUnit } from '../utils/elements'
 import type { Ref, TeleportProps } from 'vue'
 
@@ -43,7 +43,7 @@ export default defineComponent({
     let target: HTMLElement | Window
 
     const click = (event: MouseEvent) => {
-      props.onClick?.(event)
+      call(props.onClick, event)
       const left = getScrollLeft(target)
 
       scrollTo(target, {
