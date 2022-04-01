@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 <template>
   <div
     class="var-bottom-navigation"
