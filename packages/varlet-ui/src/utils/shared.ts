@@ -176,3 +176,7 @@ export function kebabCase(str: string): string {
   const ret = str.replace(/([A-Z])/g, ' $1').trim()
   return ret.split(' ').join('-').toLowerCase()
 }
+
+export function condition<T, F>(bool: any, truthy: T, falsy?: F) {
+  return bool ? truthy : falsy
+}

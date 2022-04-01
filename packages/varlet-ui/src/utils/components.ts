@@ -16,7 +16,7 @@ import {
   onDeactivated,
 } from 'vue'
 import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref } from 'vue'
-import { isArray, removeItem } from './shared'
+import { condition, isArray, removeItem } from './shared'
 
 export interface MountInstance {
   instance: any
@@ -25,12 +25,15 @@ export interface MountInstance {
 
 export interface ChildrenCounter {
   collect(instance: ComponentInternalInstance): void
+
   clear(instance: ComponentInternalInstance): void
+
   instances: ComponentInternalInstance[]
 }
 
 export interface BaseParentProvider<C> {
   collect(childProvider: C): void
+
   clear(childProvider: C): void
 }
 
@@ -288,4 +291,40 @@ export function exposeApis<T = Record<string, any>>(apis: T) {
   if (instance) {
     Object.assign(instance.proxy, apis)
   }
+}
+
+export function createNamespace(name: string) {
+  const namespace = `var-${name}`
+
+  const createBEM = (mod?: string): string => {
+    if (!mod) return namespace
+
+    return mod.startsWith('--') ? `${namespace}${mod}` : `${namespace}__${mod}`
+  }
+
+  const classes = (arg: any[]): string => {
+    return arg.reduce((pre, cur) => {
+      if (!cur) return pre
+
+      if (isArray(cur)) {
+        const result = condition(cur[0], cur[1], cur[2])
+
+        return result ? `${pre} ${result}` : pre
+      }
+
+      return `${pre} ${cur}`
+    }, '')
+  }
+
+  return {
+    n: createBEM,
+    classes,
+  }
+}
+
+export function call<F extends (...arg: any) => any, P extends Parameters<F>>(
+  fn?: F,
+  ...arg: P
+): ReturnType<F> | undefined {
+  if (fn) return fn(...arg)
 }
