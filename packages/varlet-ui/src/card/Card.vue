@@ -1,13 +1,12 @@
 <template>
   <div
-    class="var-card"
-    :class="[elevation ? `var-elevation--${elevation}` : 'var-elevation--2']"
+    :class="classes(n(), [elevation, `var-elevation--${elevation}`, 'var-elevation--2'])"
     v-ripple="{ disabled: !ripple }"
     @click="onClick"
   >
     <slot name="image">
       <img
-        class="var-card__image"
+        :class="n('image')"
         :style="{
           objectFit: fit,
           height: toSizeUnit(height),
@@ -18,15 +17,15 @@
       />
     </slot>
     <slot name="title">
-      <div class="var-card__title" v-if="title">{{ title }}</div>
+      <div :class="n('title')" v-if="title">{{ title }}</div>
     </slot>
     <slot name="subtitle">
-      <div class="var-card__subtitle" v-if="subtitle">{{ subtitle }}</div>
+      <div :class="n('subtitle')" v-if="subtitle">{{ subtitle }}</div>
     </slot>
     <slot name="description">
-      <div class="var-card__description" v-if="description">{{ description }}</div>
+      <div :class="n('description')" v-if="description">{{ description }}</div>
     </slot>
-    <div class="var-card__footer" v-if="$slots.extra">
+    <div :class="n('footer')" v-if="$slots.extra">
       <slot name="extra" />
     </div>
   </div>
@@ -37,6 +36,9 @@ import Ripple from '../ripple'
 import { defineComponent } from 'vue'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('card')
 
 export default defineComponent({
   name: 'VarCard',
@@ -44,6 +46,8 @@ export default defineComponent({
   props,
   setup() {
     return {
+      n,
+      classes,
       toSizeUnit,
     }
   },
