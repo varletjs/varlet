@@ -10,6 +10,15 @@ export async function preview() {
   }
 
   try {
+    execa.commandSync('npm ls live-server -g', { cwd: SITE_OUTPUT_PATH }).stdout
+  } catch (e: any) {
+    logger.error(
+      'Live-server: command not found, You can install the live-server to solve it.Please execute the following statement : `npm install live-server -g`'
+    )
+    return
+  }
+
+  try {
     await execa.command('live-server --port=5500', { cwd: SITE_OUTPUT_PATH }).stdout?.pipe(process.stdout)
   } catch (e: any) {
     logger.error(e.toString())
