@@ -16,7 +16,7 @@ import {
   onDeactivated,
 } from 'vue'
 import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref } from 'vue'
-import { isArray, removeItem, ternary } from './shared'
+import { isArray, removeItem } from './shared'
 
 export interface MountInstance {
   instance: any
@@ -308,7 +308,7 @@ export function createNamespace(name: string) {
     return classes.map((className) => {
       if (isArray(className)) {
         const [condition, truthy, falsy = null] = className
-        return ternary(condition, truthy, falsy)
+        return condition ? truthy : falsy
       }
 
       return className
