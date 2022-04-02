@@ -260,4 +260,15 @@ export const componentMap: Record<string, ComponentDescriptor> = {
   space: {
     site: '/space',
   },
+  'bottom-navigation': {
+    site: '/bottom-navigation',
+    attrs: ['v-model=""'],
+    characterDelta: -2,
+  },
+  'bottom-navigation-item': {
+    site: '/bottom-navigation',
+    attrs: ['label=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
 }

@@ -24,38 +24,45 @@
   text-align: center;
   line-height: var(--bottom-navigation-item-line-height);
   color: var(--bottom-navigation-item-inactive-color);
-  &:not(.var-bottom-navigation-item--placeholder) {
-    cursor: pointer;
-  }
+  transition: margin 0.25s;
 
-  &.var-bottom-navigation-item--active {
+  &--active {
     background-color: var(--bottom-navigation-item-active-background-color);
+    transition: background-color 0.25s;
     color: var(--bottom-navigation-item-active-color);
+
     .var-icon,
     .var-bottom-navigation__label {
       transform: scale(1.1);
     }
   }
 
-  .var-icon__wrapper.van-badge__wrapper {
-    position: relative;
-    display: inline-block;
-
-    .var-icon {
-      font-size: var(--bottom-navigation-item-icon-size);
-      transition: transform 250ms;
-    }
-
-    .var-badge {
-      position: absolute;
-      top: -5px;
-      left: 70%;
-    }
+  &--right-half-space {
+    margin-right: calc(var(--bottom-navigation-height) / 2);
   }
 
-  .var-bottom-navigation__label {
+  &--left-half-space {
+    margin-left: calc(var(--bottom-navigation-height) / 2);
+  }
+
+  &--right-space {
+    margin-right: var(--bottom-navigation-height);
+  }
+
+  &__icon[var-bottom-navigation-item-cover] {
+    font-size: var(--bottom-navigation-item-icon-size);
+    transition: transform 0.25s;
+  }
+
+  &__badge[var-bottom-navigation-item-cover] {
+    position: absolute;
+    left: -10px;
+    transform: translate(20%, -20px);
+  }
+
+  &__label {
     margin-top: var(--bottom-navigation-item-icon-margin-bottom);
     font-size: var(--bottom-navigation-item-font-size);
-    transition: transform 250ms;
+    transition: transform 0.25s;
   }
 }

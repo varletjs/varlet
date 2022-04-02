@@ -8,13 +8,22 @@
     }"
     @click="handleClick"
   >
-    <div class="var-icon__wrapper van-badge__wrapper">
-      <VarIcon v-if="icon && !$slots.icon" :name="icon" :namespace="namespace" />
-      <slot name="icon" :active="active === index || active === name"></slot>
-      <VarBadge v-if="badge" v-bind="badgeProps" />
-    </div>
+    <var-icon
+      v-if="icon && !$slots.icon"
+      :name="icon"
+      :namespace="namespace"
+      class="var-bottom-navigation-item__icon"
+      var-bottom-navigation-item-cover
+    />
+    <slot name="icon" :active="active === index || active === name"></slot>
+    <var-badge
+      v-if="badge"
+      v-bind="badgeProps"
+      class="var-bottom-navigation-item__badge"
+      var-bottom-navigation-item-cover
+    />
 
-    <div class="var-bottom-navigation__label">
+    <div class="var-bottom-navigation-item__label">
       <template v-if="!$slots.default">
         {{ label }}
       </template>
@@ -30,10 +39,14 @@ import Ripple from '../ripple'
 import VarBadge from '../badge'
 import VarIcon from '../icon'
 import type { ComputedRef } from 'vue'
-import { isBool } from '../utils/shared'
 import type { BadgeProps } from '../../types/badge'
 import { useBottomNavigation } from './provide'
 import type { BottomNavigationItemProvider } from './provide'
+
+const defaultBadgeProps = {
+  type: 'danger',
+  dot: true,
+}
 
 export default defineComponent({
   name: 'VarBottomNavigationItem',
@@ -46,31 +59,9 @@ export default defineComponent({
   setup(props) {
     const name: ComputedRef<string | undefined> = computed(() => props.name)
     const badge: ComputedRef<boolean | BadgeProps> = computed(() => props.badge)
-
     const badgeProps = ref({})
-
-    watch(
-      badge,
-      (newValue) => {
-        if (!newValue) {
-          badgeProps.value = {}
-        }
-        if (isBool(newValue)) {
-          badgeProps.value = {
-            type: 'danger',
-            dot: true,
-          }
-        } else {
-          badgeProps.value = badge.value
-        }
-      },
-      { immediate: true }
-    )
-
     const { index, bottomNavigation, bindBottomNavigation } = useBottomNavigation()
-
     const { active, activeColor, inactiveColor } = bottomNavigation
-
     const bottomNavigationItemProvider: BottomNavigationItemProvider = {
       name,
       index,
@@ -85,13 +76,18 @@ export default defineComponent({
     const handleClick = () => {
       const active = name.value || index.value
 
-      const { onClick } = props
-      if (onClick) {
-        onClick(active)
-      }
+      props.onClick?.(active)
 
       bottomNavigation?.onToggle(active)
     }
+
+    watch(
+      () => badge.value,
+      (newValue) => {
+        badgeProps.value = newValue === true ? defaultBadgeProps : badge.value
+      },
+      { immediate: true }
+    )
 
     return {
       index,

@@ -144,7 +144,7 @@ export default {
 
 ### 属性
 
-#### CheckboxGroup Props
+### CheckboxGroup Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -153,7 +153,7 @@ export default {
 | `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string \| number_ | `horizontal` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any[]) => any>_ | `horizontal` |
 
-#### Checkbox Props
+### Checkbox Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -170,7 +170,7 @@ export default {
 
 ### 方法
 
-#### CheckboxGroup Methods
+### CheckboxGroup Methods
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
@@ -180,7 +180,7 @@ export default {
 | `checkAll` | 全选 | `-` | `value: any` |
 | `inverseAll` | 反选 | `-` | `value: any` |
 
-#### Checkbox Methods
+### Checkbox Methods
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
@@ -191,13 +191,13 @@ export default {
 
 ### 事件
 
-#### CheckboxGroup Events
+### CheckboxGroup Events
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
 | `change` | 变更时触发 | `value: any[]` |
 
-#### Checkbox Events
+### Checkbox Events
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
@@ -206,13 +206,13 @@ export default {
 
 ### 插槽
 
-#### CheckboxGroup Slots
+### CheckboxGroup Slots
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 复选框组的内容 | `-` |
 
-#### Checkbox Slots
+### Checkbox Slots
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
