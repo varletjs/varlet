@@ -86,6 +86,7 @@ import type { UploaderProvider } from './provide'
 import type { VarFile, ValidateTriggers } from './props'
 
 const { n, classes } = createNamespace('uploader')
+
 interface ValidationVarFile {
   valid: boolean
   varFile: VarFile
@@ -93,7 +94,9 @@ interface ValidationVarFile {
 
 interface VarFileUtils {
   getLoading(varFiles: VarFile[]): VarFile[]
+
   getSuccess(varFiles: VarFile[]): VarFile[]
+
   getError(varFiles: VarFile[]): VarFile[]
 }
 
@@ -304,8 +307,6 @@ export default defineComponent({
       resetValidation,
       reset,
     }
-
-    bindForm?.(uploaderProvider)
 
     call(bindForm, uploaderProvider)
 
