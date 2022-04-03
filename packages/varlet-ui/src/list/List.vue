@@ -1,25 +1,25 @@
 <template>
-  <div class="var-list var--box" ref="listEl">
+  <div :class="classes(n(), 'var--box')" ref="listEl">
     <slot />
 
     <slot name="loading" v-if="loading">
-      <div class="var-list__loading">
-        <div class="var-list__loading-text">{{ dt(loadingText, pack.listLoadingText) }}</div>
+      <div :class="n('loading')">
+        <div :class="n('loading-text')">{{ dt(loadingText, pack.listLoadingText) }}</div>
         <var-loading size="mini" :radius="10" />
       </div>
     </slot>
 
     <slot name="finished" v-if="finished">
-      <div class="var-list__finished">{{ dt(finishedText, pack.listFinishedText) }}</div>
+      <div :class="n('finished')">{{ dt(finishedText, pack.listFinishedText) }}</div>
     </slot>
 
     <slot name="error" v-if="error">
-      <div class="var-list__error" v-ripple @click="load">
+      <div :class="n('error')" v-ripple @click="load">
         {{ dt(errorText, pack.listErrorText) }}
       </div>
     </slot>
 
-    <div class="var-list__detector" ref="detectorEl"></div>
+    <div :class="n('detector')" ref="detectorEl"></div>
   </div>
 </template>
 
@@ -30,8 +30,11 @@ import { defineComponent, onMounted, onUnmounted, ref, nextTick } from 'vue'
 import { getParentScroller, toPxNum } from '../utils/elements'
 import { props } from './props'
 import { isNumber, dt } from '../utils/shared'
+import { createNamespace, call } from '../utils/components'
 import { pack } from '../locale'
 import type { Ref } from 'vue'
+
+const { n, classes } = createNamespace('list')
 
 export default defineComponent({
   name: 'VarList',
@@ -93,6 +96,8 @@ export default defineComponent({
       isNumber,
       load,
       check,
+      n,
+      classes,
     }
   },
 })
