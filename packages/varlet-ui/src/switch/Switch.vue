@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, nextTick } from 'vue'
-import { useValidation, createNamespace } from '../utils/components'
+import { useValidation, createNamespace, call } from '../utils/components'
 import { toNumber } from '../utils/shared'
 import { useForm } from '../form/provide'
 import { props } from './props'
@@ -48,6 +48,7 @@ import type { ComputedRef } from 'vue'
 import type { SwitchProvider } from './provide'
 
 const { n, classes } = createNamespace('switch')
+
 type StyleProps = {
   width: string
   height: string
@@ -120,17 +121,16 @@ export default defineComponent({
         'onUpdate:modelValue': updateModelValue,
       } = props
 
-      onClick?.(event)
+      call(onClick, event)
       if (disabled || loading || readonly || form?.disabled.value || form?.readonly.value) return
-
       const newValue = modelValue === activeValue ? inactiveValue : activeValue
-      onChange?.(newValue)
-      updateModelValue?.(newValue)
+      call(onChange, newValue)
+      call(updateModelValue, newValue)
       validateWithTrigger()
     }
 
     const reset = () => {
-      props['onUpdate:modelValue']?.(props.inactiveValue)
+      call(props['onUpdate:modelValue'], props.inactiveValue)
       resetValidation()
     }
 
@@ -139,8 +139,7 @@ export default defineComponent({
       validate,
       resetValidation,
     }
-
-    bindForm?.(switchProvider)
+    call(bindForm, switchProvider)
 
     return {
       n,
