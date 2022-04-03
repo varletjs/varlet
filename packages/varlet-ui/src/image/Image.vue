@@ -1,16 +1,15 @@
 <template>
   <div
-    class="var-image var--box"
+    :class="classes(n(), 'var--box', [!block, 'var--inline-block'])"
     :style="{
       width: toSizeUnit(width),
       height: toSizeUnit(height),
       'border-radius': toSizeUnit(radius),
     }"
-    :class="[!block ? 'var--inline-block' : null]"
     v-ripple="{ disabled: !ripple }"
   >
     <img
-      class="var-image__image"
+      :class="n('image')"
       :alt="alt"
       :lazy-error="error"
       :lazy-loading="loading"
@@ -23,7 +22,7 @@
     />
 
     <img
-      class="var-image__image"
+      :class="n('image')"
       :alt="alt"
       :style="{ objectFit: fit }"
       :src="src"
@@ -42,6 +41,9 @@ import { defineComponent } from 'vue'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
 import type { LazyHTMLElement } from '../lazy'
+import { createNamespace, call } from '../utils/components'
+
+const { n, classes } = createNamespace('image')
 
 export default defineComponent({
   name: 'VarImage',
@@ -56,20 +58,22 @@ export default defineComponent({
       const { lazy, onLoad, onError } = props
 
       if (lazy) {
-        el._lazy.state === 'success' && onLoad?.(e)
-        el._lazy.state === 'error' && onError?.(e)
+        el._lazy.state === 'success' && call(onLoad, e)
+        el._lazy.state === 'error' && call(onError, e)
       } else {
-        onLoad?.(e)
+        call(onLoad, e)
       }
     }
 
     const handleError = (e: Event) => {
       const { lazy, onError } = props
 
-      !lazy && onError?.(e)
+      !lazy && call(onError, e)
     }
 
     return {
+      n,
+      classes,
       toSizeUnit,
       handleLoad,
       handleError,
