@@ -18,7 +18,7 @@
       </div>
 
       <div :class="classes(n('wrap'), [!hint, n('--non-hint')])">
-        <input class="var-input__autocomplete" v-if="type === 'password'" />
+        <input :class="classes(n('autocomplete'))" v-if="type === 'password'" />
         <textarea
           :class="
             classes(
@@ -90,7 +90,7 @@
       <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
         <slot name="append-icon">
           <var-icon
-            class="var-input__clear-icon"
+            :class="classes(n('clear-icon'))"
             var-input-cover
             name="close-circle"
             size="14px"
@@ -178,12 +178,11 @@ export default defineComponent({
 
     const computePlaceholderState = () => {
       const { hint, modelValue } = props
-
       if (!hint && !isEmpty(modelValue)) {
-        return 'var-input--placeholder-hidden'
+        return n('--placeholder-hidden')
       }
       if (hint && (!isEmpty(modelValue) || isFocus.value)) {
-        return 'var-input--placeholder-hint'
+        return n('--placeholder-hint')
       }
     }
 

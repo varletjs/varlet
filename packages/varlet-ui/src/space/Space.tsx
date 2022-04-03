@@ -5,6 +5,9 @@ import { toPxNum } from '../utils/elements'
 import { isArray } from '../utils/shared'
 import '../styles/common.less'
 import './space.less'
+import { call, createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('space')
 
 const internalSizes: Record<SpaceInternalSize, number[]> = {
   mini: [4, 4],
@@ -27,7 +30,7 @@ export default defineComponent({
 
     return () => {
       const { inline, justify, align, wrap, direction, size } = props
-      let children: VNodeChild[] = slots.default?.() ?? []
+      let children: VNodeChild[] = call(slots.default) ?? []
       const isInternalSize = internalSizeValidator(size)
       const [y, x] = getSize(size, isInternalSize)
 
@@ -85,7 +88,7 @@ export default defineComponent({
 
       return (
         <div
-          class={['var-space', 'var--box', inline ? 'var-space--inline' : null]}
+          class={classes(n(), 'var--box', [inline, n('--inline')])}
           style={{
             flexDirection: direction,
             justifyContent: justify,
