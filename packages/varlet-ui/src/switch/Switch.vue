@@ -1,21 +1,20 @@
 <template>
-  <div class="var-switch">
+  <div :class="classes(n())">
     <div
-      class="var-switch-block"
-      :class="[disabled || formDisabled ? 'var-switch__disable' : null]"
+      :class="['var-switch-block', disabled || formDisabled ? classes(n('disable')) : null]"
       @click="switchActive"
       :style="styleComputed.switch"
     >
       <div
         :style="styleComputed.track"
-        class="var-switch__track"
         :class="[
-          modelValue === activeValue ? 'var-switch__track-active' : null,
-          errorMessage ? 'var-switch__track-error' : null,
+          classes(n('track')),
+          modelValue === activeValue ? classes(n('track-active')) : null,
+          errorMessage ? classes(n('track-error')) : null,
         ]"
       ></div>
       <div
-        class="var-switch__ripple"
+        :class="classes(n('ripple'))"
         :style="styleComputed.ripple"
         v-ripple="{
           disabled: !ripple || disabled || loading || formDisabled,
@@ -23,10 +22,11 @@
       >
         <div
           :style="styleComputed.handle"
-          class="var-switch__handle var-elevation--2"
           :class="[
-            modelValue === activeValue ? 'var-switch__handle-active' : null,
-            errorMessage ? 'var-switch__handle-error' : null,
+            'var-elevation--2',
+            classes(n('handle')),
+            modelValue === activeValue ? classes(n('handle-active')) : null,
+            errorMessage ? classes(n('handle-error')) : null,
           ]"
         >
           <var-loading v-if="loading" :radius="toNumber(size) / 2 - 2" />
@@ -39,7 +39,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, nextTick } from 'vue'
-import { useValidation } from '../utils/components'
+import { useValidation, createNamespace } from '../utils/components'
 import { toNumber } from '../utils/shared'
 import { useForm } from '../form/provide'
 import { props } from './props'
@@ -48,6 +48,8 @@ import VarLoading from '../loading'
 import Ripple from '../ripple'
 import type { ComputedRef } from 'vue'
 import type { SwitchProvider } from './provide'
+
+const { n, classes } = createNamespace('switch')
 
 type StyleProps = {
   width: string
@@ -144,6 +146,8 @@ export default defineComponent({
     bindForm?.(switchProvider)
 
     return {
+      n,
+      classes,
       switchActive,
       toNumber,
       styleComputed,
