@@ -1,16 +1,16 @@
 <template>
   <div :class="classes(n())">
     <div
-      :class="['var-switch-block', disabled || formDisabled ? classes(n('disable')) : null]"
+      :class="[disabled || formDisabled ? classes(n('disable')) : null, 'var-switch-block']"
       @click="switchActive"
       :style="styleComputed.switch"
     >
       <div
         :style="styleComputed.track"
         :class="[
-          classes(n('track')),
           modelValue === activeValue ? classes(n('track-active')) : null,
           errorMessage ? classes(n('track-error')) : null,
+          classes(n('track')),
         ]"
       ></div>
       <div
@@ -23,10 +23,10 @@
         <div
           :style="styleComputed.handle"
           :class="[
-            'var-elevation--2',
-            classes(n('handle')),
             modelValue === activeValue ? classes(n('handle-active')) : null,
             errorMessage ? classes(n('handle-error')) : null,
+            classes(n('handle')),
+            'var-elevation--2',
           ]"
         >
           <var-loading v-if="loading" :radius="toNumber(size) / 2 - 2" />
