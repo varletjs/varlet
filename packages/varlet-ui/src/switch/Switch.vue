@@ -1,21 +1,16 @@
 <template>
-  <div class="var-switch">
+  <div :class="n()">
     <div
-      class="var-switch-block"
-      :class="[disabled || formDisabled ? 'var-switch__disable' : null]"
+      :class="classes('var-switch-block', [disabled || formDisabled, n('disable')])"
       @click="switchActive"
       :style="styleComputed.switch"
     >
       <div
         :style="styleComputed.track"
-        class="var-switch__track"
-        :class="[
-          modelValue === activeValue ? 'var-switch__track-active' : null,
-          errorMessage ? 'var-switch__track-error' : null,
-        ]"
+        :class="classes(n('track'), [modelValue === activeValue, n('track-active')], [errorMessage, n('track-error')])"
       ></div>
       <div
-        class="var-switch__ripple"
+        :class="n('ripple')"
         :style="styleComputed.ripple"
         v-ripple="{
           disabled: !ripple || disabled || loading || formDisabled,
@@ -23,11 +18,14 @@
       >
         <div
           :style="styleComputed.handle"
-          class="var-switch__handle var-elevation--2"
-          :class="[
-            modelValue === activeValue ? 'var-switch__handle-active' : null,
-            errorMessage ? 'var-switch__handle-error' : null,
-          ]"
+          :class="
+            classes(
+              n('handle'),
+              'var-elevation--2',
+              [modelValue === activeValue, n('handle-active')],
+              [errorMessage, n('handle-error')]
+            )
+          "
         >
           <var-loading v-if="loading" :radius="toNumber(size) / 2 - 2" />
         </div>
@@ -39,7 +37,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, nextTick } from 'vue'
-import { useValidation } from '../utils/components'
+import { useValidation, createNamespace } from '../utils/components'
 import { toNumber } from '../utils/shared'
 import { useForm } from '../form/provide'
 import { props } from './props'
@@ -49,6 +47,7 @@ import Ripple from '../ripple'
 import type { ComputedRef } from 'vue'
 import type { SwitchProvider } from './provide'
 
+const { n, classes } = createNamespace('switch')
 type StyleProps = {
   width: string
   height: string
@@ -144,6 +143,8 @@ export default defineComponent({
     bindForm?.(switchProvider)
 
     return {
+      n,
+      classes,
       switchActive,
       toNumber,
       styleComputed,
