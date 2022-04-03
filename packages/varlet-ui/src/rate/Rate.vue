@@ -37,7 +37,7 @@ import { toNumber } from '../utils/shared'
 import { props } from './props'
 import type { RateProvider } from './provide'
 
-const { n, classes } = createNamespace('rate')
+const { n } = createNamespace('rate')
 
 export default defineComponent({
   name: 'VarRate',
@@ -68,9 +68,9 @@ export default defineComponent({
 
       return {
         [n('content')]: true,
-        [n('__disable')]: form?.disabled.value,
-        [n('__error')]: errorMessage.value,
-        [n('primary')]: type !== 'empty' && !color,
+        [n('--disable')]: form?.disabled.value,
+        [n('--error')]: errorMessage.value,
+        [n('--primary')]: type !== 'empty' && !color,
       }
     }
 
@@ -151,7 +151,6 @@ export default defineComponent({
       toSizeUnit,
       toNumber,
       n,
-      classes,
     }
   },
 })
