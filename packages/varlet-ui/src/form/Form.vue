@@ -1,5 +1,5 @@
 <template>
-  <div class="var-form">
+  <div :class="n()">
     <slot />
   </div>
 </template>
@@ -10,6 +10,9 @@ import { props } from './props'
 import { useFormItems } from './provide'
 import type { ComputedRef } from 'vue'
 import type { FormProvider } from './provide'
+import { createNamespace } from '../utils/components'
+
+const { n } = createNamespace('form')
 
 export default defineComponent({
   name: 'VarForm',
@@ -40,6 +43,7 @@ export default defineComponent({
     bindFormItems(formProvider)
 
     return {
+      n,
       validate,
       reset,
       resetValidation,
