@@ -1,42 +1,42 @@
 <template>
-  <div class="var--box var-skeleton">
-    <div class="var-skeleton__data" v-if="!loading">
+  <div :class="classes('var--box', n())">
+    <div :class="n('data')" v-if="!loading">
       <slot />
     </div>
 
-    <div class="var-skeleton__content" v-if="loading && !fullscreen">
-      <div class="var-skeleton__card" :style="{ height: toSizeUnit(cardHeight) }" v-if="card">
-        <div class="var-skeleton--animation"></div>
+    <div :class="n('content')" v-if="loading && !fullscreen">
+      <div :class="n('card')" :style="{ height: toSizeUnit(cardHeight) }" v-if="card">
+        <div :class="n('--animation')"></div>
       </div>
-      <div class="var-skeleton__article">
+      <div :class="n('article')">
         <div
-          class="var-skeleton__avatar"
+          :class="n('avatar')"
           :style="{
             width: toSizeUnit(avatarSize),
             height: toSizeUnit(avatarSize),
           }"
           v-if="avatar"
         >
-          <div class="var-skeleton--animation"></div>
+          <div :class="n('--animation')"></div>
         </div>
-        <div class="var-skeleton__section">
-          <div class="var-skeleton__title" :style="{ width: toSizeUnit(titleWidth) }" v-if="title">
-            <div class="var-skeleton--animation"></div>
+        <div :class="n('section')">
+          <div :class="n('title')" :style="{ width: toSizeUnit(titleWidth) }" v-if="title">
+            <div :class="n('--animation')"></div>
           </div>
           <div
-            class="var-skeleton__row"
+            :class="n('row')"
             v-for="(r, index) in toNumber(rows)"
             :key="r"
             :style="{ width: toSizeUnit(rowsWidth[index]) }"
           >
-            <div class="var-skeleton--animation"></div>
+            <div :class="n('--animation')"></div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="var-skeleton__fullscreen" :style="{ zIndex: toNumber(fullscreenZIndex) }" v-if="loading && fullscreen">
-      <div class="var-skeleton--animation"></div>
+    <div :class="n('fullscreen')" :style="{ zIndex: toNumber(fullscreenZIndex) }" v-if="loading && fullscreen">
+      <div :class="n('--animation')"></div>
     </div>
   </div>
 </template>
@@ -46,12 +46,17 @@ import { defineComponent } from 'vue'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
 import { toNumber } from '../utils/shared'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('skeleton')
 
 export default defineComponent({
   name: 'VarSkeleton',
   props,
   setup() {
     return {
+      n,
+      classes,
       toSizeUnit,
       toNumber,
     }
