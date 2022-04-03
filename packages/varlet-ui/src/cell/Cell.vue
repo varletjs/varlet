@@ -1,21 +1,21 @@
 <template>
-  <div class="var-cell" :class="[border ? 'var-cell--border' : null]">
-    <div class="var-cell__icon" :class="[iconClass ? iconClass : null]" v-if="$slots.icon || icon">
+  <div :class="classes(n(), [border, n('--border')])">
+    <div :class="classes(n('icon'), [iconClass, iconClass])" v-if="$slots.icon || icon">
       <slot name="icon">
         <var-icon class="var--flex" :name="icon" />
       </slot>
     </div>
-    <div class="var-cell__content">
-      <div class="var-cell__title" :class="[titleClass ? titleClass : null]">
+    <div :class="n('content')">
+      <div :class="classes(n('title'), [titleClass, titleClass])">
         <slot>{{ title }}</slot>
       </div>
-      <div class="var-cell__desc" :class="[descClass ? descClass : null]" v-if="$slots.desc || desc">
+      <div :class="classes(n('desc'), [descClass, descClass])" v-if="$slots.desc || desc">
         <slot name="desc">
           {{ desc }}
         </slot>
       </div>
     </div>
-    <div class="var-cell__extra" :class="[extraClass ? extraClass : null]" v-if="$slots.extra">
+    <div :class="classes(n('extra'), [extraClass, extraClass])" v-if="$slots.extra">
       <slot name="extra" />
     </div>
   </div>
@@ -25,6 +25,9 @@
 import { defineComponent } from 'vue'
 import { props } from './props'
 import VarIcon from '../icon'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('cell')
 
 export default defineComponent({
   name: 'VarCell',
@@ -32,6 +35,12 @@ export default defineComponent({
     VarIcon,
   },
   props,
+  setup() {
+    return {
+      n,
+      classes,
+    }
+  },
 })
 </script>
 

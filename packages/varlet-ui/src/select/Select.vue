@@ -1,52 +1,41 @@
 <template>
-  <div
-    class="var-select var--box"
-    :class="[formDisabled || disabled ? 'var-select--disabled' : null]"
-    @click="handleClick"
-  >
+  <div :class="classes(n(), 'var--box', [formDisabled || disabled, n('--disabled')])" @click="handleClick">
     <div
-      class="var-select__controller"
-      :class="[
-        isFocus ? 'var-select--focus' : null,
-        errorMessage ? 'var-select--error' : null,
-        formDisabled || disabled ? 'var-select--disabled' : null,
-      ]"
+      :class="
+        classes(
+          n('controller'),
+          [isFocus, n('--focus')],
+          [errorMessage, n('--error')],
+          [formDisabled || disabled, n('--disabled')]
+        )
+      "
       :style="{
         color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
       }"
     >
-      <div class="var-select__icon" :class="[!hint ? 'var-select--non-hint' : null]">
+      <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
         <slot name="prepend-icon" />
       </div>
 
       <var-menu
-        class="var-select__menu"
+        :class="classes(n('menu'))"
         var-select-cover
         :offset-y="offsetY"
         v-model:show="isFocus"
         @close="handleBlur"
       >
-        <div
-          class="var-select__wrap"
-          :class="[!hint ? 'var-select--non-hint' : null]"
-          ref="wrapEl"
-          @click="handleFocus"
-        >
+        <div :class="classes(n('wrap'), [!hint, n('--non-hint')])" ref="wrapEl" @click="handleFocus">
           <div
-            class="var-select__select"
-            :class="[
-              errorMessage ? 'var-select--error' : null,
-              formDisabled || disabled ? 'var-select--disabled' : null,
-            ]"
+            :class="classes(n('select'), [errorMessage, n('--error')], [formDisabled || disabled, n('--disabled')])"
             :style="{
               textAlign,
               color: textColor,
             }"
           >
             <div v-if="multiple">
-              <div class="var-select__chips" v-if="chip">
+              <div :class="classes(n('chips'))" v-if="chip">
                 <var-chip
-                  class="var-select__chip"
+                  :class="classes(n('chip'))"
                   var-select-cover
                   closable
                   size="small"
@@ -59,7 +48,7 @@
                   {{ l }}
                 </var-chip>
               </div>
-              <div class="var-select__values" v-else>
+              <div :class="classes(n('values'))" v-else>
                 {{ labels.join(separator) }}
               </div>
             </div>
@@ -67,22 +56,24 @@
             <span v-else>{{ label }}</span>
 
             <var-icon
-              class="var-select__arrow"
+              :class="classes(n('arrow'), [isFocus, n('--arrow-rotate')])"
               var-select-cover
               name="menu-down"
               :transition="300"
-              :class="[isFocus ? 'var-select--arrow-rotate' : null]"
             />
           </div>
           <label
-            class="var-select__placeholder var--ellipsis"
-            :class="[
-              isFocus ? 'var-select--focus' : null,
-              errorMessage ? 'var-select--error' : null,
-              formDisabled || disabled ? 'var-select--disabled' : null,
-              computePlaceholderState(),
-              !hint ? 'var-select--placeholder-non-hint' : null,
-            ]"
+            :class="
+              classes(
+                n('placeholder'),
+                'var--ellipsis',
+                [isFocus, n('--focus')],
+                [errorMessage, n('--error')],
+                [formDisabled || disabled, n('--disabled')],
+                computePlaceholderState(),
+                [!hint, n('--placeholder-non-hint')]
+              )
+            "
             :style="{
               color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
             }"
@@ -92,16 +83,16 @@
         </div>
 
         <template #menu>
-          <div class="var-select__scroller">
+          <div :class="classes(n('scroller'))">
             <slot />
           </div>
         </template>
       </var-menu>
 
-      <div class="var-select__icon" :class="[!hint ? 'var-select--non-hint' : null]">
+      <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
         <slot name="append-icon">
           <var-icon
-            class="var-select__clear-icon"
+            :class="classes(n('clear-icon'))"
             name="close-circle"
             size="14px"
             v-if="clearable"
@@ -112,21 +103,19 @@
     </div>
 
     <div
-      class="var-select__line"
-      :class="[
-        formDisabled || disabled ? 'var-select--line-disabled' : null,
-        errorMessage ? 'var-select--line-error' : null,
-      ]"
+      :class="classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [errorMessage, n('--line-error')])"
       :style="{ background: !errorMessage ? blurColor : undefined }"
       v-if="line"
     >
       <div
-        class="var-select__dot"
-        :class="[
-          isFocus ? 'var-select--spread' : null,
-          formDisabled || disabled ? 'var-select--line-disabled' : null,
-          errorMessage ? 'var-select--line-error' : null,
-        ]"
+        :class="
+          classes(
+            n('dot'),
+            [isFocus, n('--spread')],
+            [formDisabled || disabled, n('--line-disabled')],
+            [errorMessage, n('--line-error')]
+          )
+        "
         :style="{ background: !errorMessage ? focusColor : undefined }"
       ></div>
     </div>
@@ -143,7 +132,7 @@ import VarFormDetails from '../form-details'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
 import { isArray, isEmpty } from '../utils/shared'
 import { props } from './props'
-import { useValidation } from '../utils/components'
+import { useValidation, createNamespace, call } from '../utils/components'
 import { useOptions } from './provide'
 import { useForm } from '../form/provide'
 import { toPxNum } from '../utils/elements'
@@ -152,6 +141,7 @@ import type { ValidateTriggers } from './props'
 import type { SelectProvider } from './provide'
 import type { OptionProvider } from '../option/provide'
 
+const { n, classes } = createNamespace('select')
 export default defineComponent({
   name: 'VarSelect',
   components: {
@@ -224,10 +214,10 @@ export default defineComponent({
       const { hint, modelValue } = props
 
       if (!hint && !isEmpty(modelValue)) {
-        return 'var-select--placeholder-hidden'
+        return n('--placeholder-hidden')
       }
       if (hint && (!isEmpty(modelValue) || isFocus.value)) {
-        return 'var-select--placeholder-hint'
+        return n('--placeholder-hint')
       }
     }
 
@@ -252,7 +242,7 @@ export default defineComponent({
 
       isFocus.value = true
 
-      onFocus?.()
+      call(onFocus)
       validateWithTrigger('onFocus')
     }
 
@@ -263,7 +253,7 @@ export default defineComponent({
         return
       }
 
-      onBlur?.()
+      call(onBlur)
       validateWithTrigger('onBlur')
     }
 
@@ -278,8 +268,8 @@ export default defineComponent({
         ? options.filter(({ selected }) => selected.value).map(findValueOrLabel)
         : findValueOrLabel(option)
 
-      props['onUpdate:modelValue']?.(selectedValue)
-      onChange?.(selectedValue)
+      call(props['onUpdate:modelValue'], selectedValue)
+      call(onChange, selectedValue)
       validateWithTrigger('onChange')
 
       !multiple && (isFocus.value = false)
@@ -294,8 +284,8 @@ export default defineComponent({
 
       const changedModelValue = multiple ? [] : undefined
 
-      props['onUpdate:modelValue']?.(changedModelValue)
-      onClear?.(changedModelValue)
+      call(props['onUpdate:modelValue'], changedModelValue)
+      call(onClear, changedModelValue)
       validateWithTrigger('onClear')
     }
 
@@ -306,7 +296,7 @@ export default defineComponent({
         return
       }
 
-      onClick?.(e)
+      call(onClick, e)
       validateWithTrigger('onClick')
     }
 
@@ -321,8 +311,8 @@ export default defineComponent({
       const option = options.find(({ label }) => label.value === text)
       const currentModelValue = rawModelValue.filter((value) => value !== (option!.value.value ?? option!.label.value))
 
-      props['onUpdate:modelValue']?.(currentModelValue)
-      onClose?.(currentModelValue)
+      call(props['onUpdate:modelValue'], currentModelValue)
+      call(onClose, currentModelValue)
       validateWithTrigger('onClose')
     }
 
@@ -356,7 +346,7 @@ export default defineComponent({
 
     // expose
     const reset = () => {
-      props['onUpdate:modelValue']?.(props.multiple ? [] : undefined)
+      call(props['onUpdate:modelValue'], props.multiple ? [] : undefined)
       resetValidation()
     }
 
@@ -385,7 +375,7 @@ export default defineComponent({
     }
 
     bindOptions(selectProvider)
-    bindForm?.(selectProvider)
+    call(bindForm, selectProvider)
 
     return {
       wrapEl,
@@ -395,6 +385,9 @@ export default defineComponent({
       formDisabled: form?.disabled,
       label,
       labels,
+      n,
+      classes,
+      call,
       computePlaceholderState,
       handleFocus,
       handleBlur,

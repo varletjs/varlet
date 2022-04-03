@@ -263,7 +263,7 @@ export default defineComponent({
       resetValidation,
     }
 
-    bindForm?.(inputProvider)
+    call(bindForm, inputProvider)
 
     return {
       el,

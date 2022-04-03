@@ -13,6 +13,7 @@ import type { ComputedRef } from 'vue'
 import type { CollapseItemProvider } from '../collapse-item/provide'
 import type { CollapseProvider } from './provide'
 import type { CollapseModelValue } from './props'
+import { call } from '../utils/components'
 
 export default defineComponent({
   name: 'VarCollapse',
@@ -49,9 +50,8 @@ export default defineComponent({
 
     const updateItem = (value: number | string, isExpand: boolean) => {
       const modelValue = getValue(value, isExpand)
-
-      props['onUpdate:modelValue']?.(modelValue)
-      props.onChange?.(modelValue)
+      call(props['onUpdate:modelValue'], modelValue)
+      call(props.onChange, modelValue)
     }
 
     const matchName = (): Array<CollapseItemProvider> | CollapseItemProvider | undefined => {
