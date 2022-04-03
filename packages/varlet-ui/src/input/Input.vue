@@ -1,24 +1,33 @@
 <template>
-  <div class="var-input var--box" :class="[disabled ? 'var-input--disabled' : null]" @click="handleClick">
+  <div :class="classes(n(), 'var--box', [disabled, n('--disabled')])" @click="handleClick">
     <div
-      class="var-input__controller"
-      :class="[
-        isFocus ? 'var-input--focus' : null,
-        errorMessage ? 'var-input--error' : null,
-        formDisabled || disabled ? 'var-input--disabled' : null,
-      ]"
+      :class="
+        classes(
+          n('controller'),
+          [isFocus, n('--focus')],
+          [errorMessage, n('--error')],
+          [formDisabled || disabled, n('--disabled')]
+        )
+      "
       :style="{
         color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
       }"
     >
-      <div class="var-input__icon" :class="[!hint ? 'var-input--non-hint' : null]">
+      <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
         <slot name="prepend-icon" />
       </div>
 
-      <div class="var-input__wrap" :class="[!hint ? 'var-input--non-hint' : null]">
+      <div :class="classes(n('wrap'), [!hint, n('--non-hint')])">
         <input class="var-input__autocomplete" v-if="type === 'password'" />
         <textarea
-          class="var-input__input var-input--textarea"
+          :class="
+            classes(
+              n('input'),
+              n('--textarea'),
+              [formDisabled || disabled, n('--disabled')],
+              [errorMessage, n('--caret-error')]
+            )
+          "
           ref="el"
           autocomplete="new-password"
           :id="id"
@@ -27,10 +36,6 @@
           :value="modelValue"
           :maxlength="maxlength"
           :rows="rows"
-          :class="[
-            formDisabled || disabled ? 'var-input--disabled' : null,
-            errorMessage ? 'var-input--caret-error' : null,
-          ]"
           :style="{
             color: textColor,
             caretColor: !errorMessage ? focusColor : null,
@@ -44,7 +49,7 @@
         >
         </textarea>
         <input
-          class="var-input__input"
+          :class="classes(n('input'), [formDisabled || disabled, n('--disabled')], [errorMessage, n('--caret-error')])"
           ref="el"
           autocomplete="new-password"
           :id="id"
@@ -52,10 +57,6 @@
           :type="type"
           :value="modelValue"
           :maxlength="maxlength"
-          :class="[
-            formDisabled || disabled ? 'var-input--disabled' : null,
-            errorMessage ? 'var-input--caret-error' : null,
-          ]"
           :style="{
             color: textColor,
             caretColor: !errorMessage ? focusColor : null,
@@ -67,14 +68,16 @@
           v-else
         />
         <label
-          class="var--ellipsis"
-          :class="[
-            isFocus ? 'var-input--focus' : null,
-            errorMessage ? 'var-input--error' : null,
-            textarea ? 'var-input__textarea-placeholder' : 'var-input__placeholder',
-            computePlaceholderState(),
-            !hint ? 'var-input--placeholder-non-hint' : null,
-          ]"
+          :class="
+            classes(
+              'var--ellipsis',
+              [isFocus, n('--focus')],
+              [errorMessage, n('--error')],
+              [textarea, n('textarea-placeholder'), n('placeholder')],
+              computePlaceholderState(),
+              [!hint, n('--placeholder-non-hint')]
+            )
+          "
           :style="{
             color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
           }"
@@ -84,7 +87,7 @@
         </label>
       </div>
 
-      <div class="var-input__icon" :class="[!hint ? 'var-input--non-hint' : null]">
+      <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
         <slot name="append-icon">
           <var-icon
             class="var-input__clear-icon"
@@ -99,21 +102,19 @@
     </div>
 
     <div
-      class="var-input__line"
-      :class="[
-        formDisabled || disabled ? 'var-input--line-disabled' : null,
-        errorMessage ? 'var-input--line-error' : null,
-      ]"
+      :class="classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [errorMessage, n('--line-error')])"
       :style="{ background: !errorMessage ? blurColor : undefined }"
       v-if="line"
     >
       <div
-        class="var-input__dot"
-        :class="[
-          isFocus ? 'var-input--spread' : null,
-          formDisabled || disabled ? 'var-input--line-disabled' : null,
-          errorMessage ? 'var-input--line-error' : null,
-        ]"
+        :class="
+          classes(
+            n('dot'),
+            [isFocus, n('--spread')],
+            [formDisabled || disabled, n('--line-disabled')],
+            [errorMessage, n('--line-error')]
+          )
+        "
         :style="{ background: !errorMessage ? focusColor : undefined }"
       ></div>
     </div>
@@ -128,12 +129,13 @@ import VarIcon from '../icon'
 import { defineComponent, getCurrentInstance, ref, computed, nextTick } from 'vue'
 import { props } from './props'
 import { isEmpty } from '../utils/shared'
-import { useValidation } from '../utils/components'
+import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import type { Ref, ComputedRef } from 'vue'
 import type { ValidateTriggers } from './props'
 import type { InputProvider } from './provide'
 
+const { n, classes } = createNamespace('input')
 export default defineComponent({
   name: 'VarInput',
   components: {
@@ -188,29 +190,29 @@ export default defineComponent({
     const handleFocus = (e: FocusEvent) => {
       isFocus.value = true
 
-      props.onFocus?.(e)
+      call(props.onFocus, e)
       validateWithTrigger('onFocus')
     }
 
     const handleBlur = (e: FocusEvent) => {
       isFocus.value = false
 
-      props.onBlur?.(e)
+      call(props.onBlur, e)
       validateWithTrigger('onBlur')
     }
 
     const handleInput = (e: Event) => {
       const { value } = e.target as HTMLInputElement
 
-      props['onUpdate:modelValue']?.(value)
-      props.onInput?.(value, e)
+      call(props['onUpdate:modelValue'], value)
+      call(props.onInput, value, e)
       validateWithTrigger('onInput')
     }
 
     const handleChange = (e: Event) => {
       const { value } = e.target as HTMLInputElement
 
-      props.onChange?.(value, e)
+      call(props.onChange, value, e)
       validateWithTrigger('onChange')
     }
 
@@ -221,9 +223,8 @@ export default defineComponent({
         return
       }
 
-      props['onUpdate:modelValue']?.('')
-      onClear?.('')
-
+      call(props['onUpdate:modelValue'], '')
+      call(onClear, '')
       validateWithTrigger('onClear')
     }
 
@@ -234,14 +235,13 @@ export default defineComponent({
         return
       }
 
-      onClick?.(e)
-
+      call(onClick, e)
       validateWithTrigger('onClick')
     }
 
     // expose
     const reset = () => {
-      props['onUpdate:modelValue']?.('')
+      call(props['onUpdate:modelValue'], '')
       resetValidation()
     }
 
@@ -274,6 +274,9 @@ export default defineComponent({
       maxlengthText,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      n,
+      classes,
+      call,
       isEmpty,
       computePlaceholderState,
       handleFocus,
