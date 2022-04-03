@@ -15,17 +15,17 @@
             show,
             'onUpdate:show': handlePopupUpdateShow,
             position: 'bottom',
-            class: 'var-picker__popup',
+            class: n('popup'),
           }
         : null
     "
     var-picker-cover
   >
-    <div class="var-picker" v-bind="$attrs">
-      <div class="var-picker__toolbar">
+    <div :class="n()" v-bind="$attrs">
+      <div :class="n('toolbar')">
         <slot name="cancel">
           <var-button
-            class="var-picker__cancel-button"
+            :class="n('cancel-button')"
             var-picker-cover
             text
             :text-color="cancelButtonTextColor"
@@ -35,11 +35,11 @@
           </var-button>
         </slot>
         <slot name="title">
-          <div class="var-picker__title">{{ dt(title, pack.pickerTitle) }}</div>
+          <div :class="n('title')">{{ dt(title, pack.pickerTitle) }}</div>
         </slot>
         <slot name="confirm">
           <var-button
-            class="var-picker__confirm-button"
+            :class="n('confirm-button')"
             text
             var-picker-cover
             :text-color="confirmButtonTextColor"
@@ -49,9 +49,9 @@
           </var-button>
         </slot>
       </div>
-      <div class="var-picker__columns" :style="{ height: `${columnHeight}px` }">
+      <div :class="n('columns')" :style="{ height: `${columnHeight}px` }">
         <div
-          class="var-picker__column"
+          :class="n('column')"
           v-for="c in scrollColumns"
           :key="c.id"
           @touchstart="handleTouchstart($event, c)"
@@ -59,7 +59,7 @@
           @touchend="handleTouchend($event, c)"
         >
           <div
-            class="var-picker__scroller"
+            :class="n('scroller')"
             :ref="(el) => getScrollEl(el, c)"
             :style="{
               transform: `translateY(${c.translate}px)`,
@@ -68,24 +68,19 @@
             }"
             @transitionend="handleTransitionend(c)"
           >
-            <div
-              class="var-picker__option"
-              :style="{ height: `${optionHeight}px` }"
-              v-for="t in c.column.texts"
-              :key="t"
-            >
-              <div class="var-picker__text">{{ t }}</div>
+            <div :class="n('option')" :style="{ height: `${optionHeight}px` }" v-for="t in c.column.texts" :key="t">
+              <div :class="n('text')">{{ t }}</div>
             </div>
           </div>
         </div>
         <div
-          class="var-picker__picked"
+          :class="n('picked')"
           :style="{
             top: `${center}px`,
             height: `${optionHeight}px`,
           }"
         ></div>
-        <div class="var-picker__mask" :style="{ backgroundSize: `100% ${(columnHeight - optionHeight) / 2}px` }"></div>
+        <div :class="n('mask')" :style="{ backgroundSize: `100% ${(columnHeight - optionHeight) / 2}px` }"></div>
       </div>
     </div>
   </component>
@@ -102,6 +97,7 @@ import { pack } from '../locale'
 import type { Ref, ComputedRef, ComponentPublicInstance } from 'vue'
 import type { CascadeColumn, NormalColumn } from './props'
 import type { Texts } from './index'
+import { createNamespace } from '../utils/components'
 
 export interface ScrollColumn {
   id: number
@@ -117,6 +113,8 @@ export interface ScrollColumn {
   columns?: CascadeColumn[]
   scrollEl: HTMLElement | null
 }
+
+const { n, classes } = createNamespace('picker')
 
 const MOMENTUM_RECORD_TIME = 300
 const MOMENTUM_ALLOW_DISTANCE = 15
@@ -376,6 +374,8 @@ export default defineComponent({
     )
 
     return {
+      n,
+      classes,
       pack,
       optionHeight,
       optionCount,
