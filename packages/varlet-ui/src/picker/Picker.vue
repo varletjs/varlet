@@ -97,7 +97,7 @@ import { pack } from '../locale'
 import type { Ref, ComputedRef, ComponentPublicInstance } from 'vue'
 import type { CascadeColumn, NormalColumn } from './props'
 import type { Texts } from './index'
-import { createNamespace } from '../utils/components'
+import { createNamespace, call } from '../utils/components'
 
 export interface ScrollColumn {
   id: number
@@ -144,7 +144,7 @@ export default defineComponent({
     }
 
     const handlePopupUpdateShow = (value: boolean) => {
-      props['onUpdate:show']?.(value)
+      call(props['onUpdate:show'], value)
     }
 
     const limitTranslate = (scrollColumn: ScrollColumn) => {
@@ -320,7 +320,7 @@ export default defineComponent({
       }
 
       prevIndexes = [...indexes]
-      onChange?.(texts, indexes)
+      call(onChange, texts, indexes)
     }
 
     const stopScroll = () => {
@@ -348,7 +348,7 @@ export default defineComponent({
 
       const { texts, indexes } = getPicked()
       prevIndexes = [...indexes]
-      props.onConfirm?.(texts, indexes)
+      call(props.onConfirm, texts, indexes)
     }
 
     // expose
@@ -357,7 +357,7 @@ export default defineComponent({
 
       const { texts, indexes } = getPicked()
       prevIndexes = [...indexes]
-      props.onCancel?.(texts, indexes)
+      call(props.onCancel, texts, indexes)
     }
 
     watch(
