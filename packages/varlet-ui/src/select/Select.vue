@@ -17,13 +17,7 @@
         <slot name="prepend-icon" />
       </div>
 
-      <var-menu
-        :class="classes(n('menu'))"
-        var-select-cover
-        :offset-y="offsetY"
-        v-model:show="isFocus"
-        @close="handleBlur"
-      >
+      <var-menu :class="n('menu')" var-select-cover :offset-y="offsetY" v-model:show="isFocus" @close="handleBlur">
         <div :class="classes(n('wrap'), [!hint, n('--non-hint')])" ref="wrapEl" @click="handleFocus">
           <div
             :class="classes(n('select'), [errorMessage, n('--error')], [formDisabled || disabled, n('--disabled')])"
@@ -33,9 +27,9 @@
             }"
           >
             <div v-if="multiple">
-              <div :class="classes(n('chips'))" v-if="chip">
+              <div :class="n('chips')" v-if="chip">
                 <var-chip
-                  :class="classes(n('chip'))"
+                  :class="n('chip')"
                   var-select-cover
                   closable
                   size="small"
@@ -48,7 +42,7 @@
                   {{ l }}
                 </var-chip>
               </div>
-              <div :class="classes(n('values'))" v-else>
+              <div :class="n('values')" v-else>
                 {{ labels.join(separator) }}
               </div>
             </div>
@@ -83,7 +77,7 @@
         </div>
 
         <template #menu>
-          <div :class="classes(n('scroller'))">
+          <div :class="n('scroller')">
             <slot />
           </div>
         </template>
@@ -91,13 +85,7 @@
 
       <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
         <slot name="append-icon">
-          <var-icon
-            :class="classes(n('clear-icon'))"
-            name="close-circle"
-            size="14px"
-            v-if="clearable"
-            @click="handleClear"
-          />
+          <var-icon :class="n('clear-icon')" name="close-circle" size="14px" v-if="clearable" @click="handleClear" />
         </slot>
       </div>
     </div>
