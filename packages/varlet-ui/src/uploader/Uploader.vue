@@ -1,47 +1,38 @@
 <template>
-  <div class="var-uploader var--box">
-    <div class="var-uploader__file-list">
+  <div :class="classes(n(), 'var--box')">
+    <div :class="n('file-list')">
       <div
-        class="var-uploader__file var-elevation--2"
-        :class="[f.state === 'loading' ? 'var-uploader--loading' : null]"
+        :class="classes(n('file'), 'var-elevation--2', [f.state === 'loading', n('--loading')])"
         :key="f.id"
         v-for="f in files"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple }"
         @click="preview(f)"
       >
-        <div class="var-uploader__file-name">
-          {{ f.name || f.url }}
+        <div :class="n('file-name')">{{ f.name || f.url }}</div>
+        <div :class="n('file-close')" v-if="removable" @click.stop="handleRemove(f)">
+          <var-icon :class="n('file-close-icon')" var-uploader-cover name="delete" />
         </div>
-        <div class="var-uploader__file-close" v-if="removable" @click.stop="handleRemove(f)">
-          <var-icon class="var-uploader__file-close-icon" var-uploader-cover name="delete" />
-        </div>
-        <img
-          class="var-uploader__file-cover"
-          :style="{ objectFit: f.fit }"
-          :src="f.cover"
-          :alt="f.name"
-          v-if="f.cover"
-        />
+        <img :class="n('file-cover')" :style="{ objectFit: f.fit }" :src="f.cover" :alt="f.name" v-if="f.cover" />
         <div
-          class="var-uploader__file-indicator"
-          :class="[
-            f.state === 'success' ? 'var-uploader--success' : null,
-            f.state === 'error' ? 'var-uploader--error' : null,
-          ]"
+          :class="
+            classes(n('file-indicator'), [f.state === 'success', n('--success')], [f.state === 'error', n('--error')])
+          "
         ></div>
       </div>
 
       <div
-        class="var--relative"
-        :class="[
-          !$slots.default ? 'var-uploader__action var-elevation--2' : null,
-          disabled || formDisabled ? 'var-uploader--disabled' : null,
-        ]"
+        :class="
+          classes(
+            'var--relative',
+            [!$slots.default, `${n('action')} var-elevation--2`],
+            [disabled || formDisabled, n('--disabled')]
+          )
+        "
         v-if="!maxlength || modelValue.length < maxlength"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple || $slots.default }"
       >
         <input
-          class="var-uploader__action-input"
+          :class="n('action-input')"
           type="file"
           :multiple="multiple"
           :accept="accept"
@@ -50,7 +41,7 @@
           @change="handleChange"
         />
         <slot>
-          <var-icon class="var-uploader__action-icon" var-uploader-cover name="plus" />
+          <var-icon :class="n('action-icon')" var-uploader-cover name="plus" />
         </slot>
       </div>
     </div>
@@ -58,14 +49,14 @@
     <var-form-details :error-message="errorMessage" :maxlength-text="maxlengthText" />
 
     <var-popup
-      class="var-uploader__preview"
+      :class="n('preview')"
       var-uploader-cover
       position="center"
       v-model:show="showPreview"
       @closed="currentPreview = null"
     >
       <video
-        class="var-uploader__preview-video"
+        :class="n('preview-video')"
         playsinline="true"
         webkit-playsinline="true"
         x5-playsinline="true"
@@ -88,12 +79,13 @@ import Ripple from '../ripple'
 import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
 import { props } from './props'
 import { isNumber, isHTMLSupportImage, isHTMLSupportVideo, toNumber, isString } from '../utils/shared'
-import { useValidation } from '../utils/components'
+import { call, useValidation, createNamespace } from '../utils/components'
 import { useForm } from '../form/provide'
 import type { ComputedRef, Ref } from 'vue'
 import type { UploaderProvider } from './provide'
 import type { VarFile, ValidateTriggers } from './props'
 
+const { n, classes } = createNamespace('uploader')
 interface ValidationVarFile {
   valid: boolean
   varFile: VarFile
@@ -227,7 +219,7 @@ export default defineComponent({
       const getValidSizeVarFile = (varFiles: VarFile[]): VarFile[] => {
         return varFiles.filter((varFile) => {
           if (varFile.file!.size > toNumber(maxsize)) {
-            onOversize?.(reactive(varFile))
+            call(onOversize, reactive(varFile))
             return false
           }
 
@@ -251,9 +243,9 @@ export default defineComponent({
       const validationVarFiles: ValidationVarFile[] = await Promise.all(getBeforeReaders(resolvedVarFiles))
       const validVarFiles: VarFile[] = validationVarFiles.filter(({ valid }) => valid).map(({ varFile }) => varFile)
 
-      props['onUpdate:modelValue']?.([...modelValue, ...validVarFiles])
+      call(props['onUpdate:modelValue'], [...modelValue, ...validVarFiles])
       ;(event.target as HTMLInputElement).value = ''
-      validVarFiles.forEach((varFile) => onAfterRead?.(reactive(varFile)))
+      validVarFiles.forEach((varFile) => call(onAfterRead, reactive(varFile)))
     }
 
     const handleRemove = async (removedVarFile: VarFile) => {
@@ -268,9 +260,9 @@ export default defineComponent({
       }
 
       const expectedFiles: VarFile[] = modelValue.filter((varFile) => varFile !== removedVarFile)
-      onRemove?.(removedVarFile)
+      call(onRemove, removedVarFile)
       validateWithTrigger('onRemove')
-      props['onUpdate:modelValue']?.(expectedFiles)
+      call(props['onUpdate:modelValue'], expectedFiles)
     }
 
     // expose
@@ -303,7 +295,7 @@ export default defineComponent({
     // expose
     const reset = () => {
       callReset = true
-      props['onUpdate:modelValue']?.([])
+      call(props['onUpdate:modelValue'], [])
       resetValidation()
     }
 
@@ -315,6 +307,8 @@ export default defineComponent({
 
     bindForm?.(uploaderProvider)
 
+    call(bindForm, uploaderProvider)
+
     watch(
       () => props.modelValue,
       () => {
@@ -325,6 +319,8 @@ export default defineComponent({
     )
 
     return {
+      n,
+      classes,
       files,
       showPreview,
       currentPreview,

@@ -17,15 +17,16 @@
   "dependencies": {
     "@varlet/ui": "workspace: *",
     "@vue/repl": "1.0.0",
-    "vue": "3.2.29",
     "file-saver": "^2.0.5",
-    "jszip": "^3.6.0"
+    "jszip": "^3.6.0",
+    "vue": "3.2.29"
   },
   "devDependencies": {
-    "@varlet/cli": "workspace: *",
-    "@types/node": "*",
     "@types/file-saver": "^2.0.5",
+    "@types/node": "*",
+    "@varlet/cli": "workspace: *",
     "@vitejs/plugin-vue": "2.1.0",
+    "live-server": "^1.2.1",
     "typescript": "^4.4.4",
     "vite": "2.7.13"
   }
