@@ -125,7 +125,7 @@
 <script lang="ts">
 import VarFormDetails from '../form-details'
 import VarIcon from '../icon'
-import { defineComponent, getCurrentInstance, ref, computed, nextTick, onMounted, onUpdated } from 'vue'
+import { defineComponent, getCurrentInstance, ref, computed, nextTick } from 'vue'
 import { props } from './props'
 import { isEmpty } from '../utils/shared'
 import { useValidation } from '../utils/components'
@@ -166,12 +166,6 @@ export default defineComponent({
       // expose
       resetValidation,
     } = useValidation()
-
-    onUpdated(() => {
-      console.log('111')
-
-      validate()
-    })
 
     const validateWithTrigger = (trigger: ValidateTriggers) => {
       nextTick(() => {

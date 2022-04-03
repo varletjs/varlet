@@ -65,10 +65,6 @@ export default {
       value9: '',
     })
 
-    setTimeout(() => {
-      values.value9 = 'asd'
-    }, 2000)
-
     watchLang((lang) => {
       use(lang)
       values.value5 = pack.value.clearableText

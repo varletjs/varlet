@@ -79,7 +79,7 @@ import Ripple from '../ripple'
 import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
 import { props } from './props'
 import { isNumber, isHTMLSupportImage, isHTMLSupportVideo, toNumber, isString } from '../utils/shared'
-import { call, useValidation, createNamespace } from '../utils/components'
+import { useValidation, createNamespace } from '../utils/components'
 import { useForm } from '../form/provide'
 import type { ComputedRef, Ref } from 'vue'
 import type { UploaderProvider } from './provide'
@@ -219,7 +219,7 @@ export default defineComponent({
       const getValidSizeVarFile = (varFiles: VarFile[]): VarFile[] => {
         return varFiles.filter((varFile) => {
           if (varFile.file!.size > toNumber(maxsize)) {
-            call(onOversize, reactive(varFile))
+            onOversize?.(reactive(varFile))
             return false
           }
 
@@ -243,9 +243,9 @@ export default defineComponent({
       const validationVarFiles: ValidationVarFile[] = await Promise.all(getBeforeReaders(resolvedVarFiles))
       const validVarFiles: VarFile[] = validationVarFiles.filter(({ valid }) => valid).map(({ varFile }) => varFile)
 
-      call(props['onUpdate:modelValue'], [...modelValue, ...validVarFiles])
+      props['onUpdate:modelValue']?.([...modelValue, ...validVarFiles])
       ;(event.target as HTMLInputElement).value = ''
-      validVarFiles.forEach((varFile) => call(onAfterRead, reactive(varFile)))
+      validVarFiles.forEach((varFile) => onAfterRead?.(reactive(varFile)))
     }
 
     const handleRemove = async (removedVarFile: VarFile) => {
@@ -260,9 +260,9 @@ export default defineComponent({
       }
 
       const expectedFiles: VarFile[] = modelValue.filter((varFile) => varFile !== removedVarFile)
-      call(onRemove, removedVarFile)
+      onRemove?.(removedVarFile)
       validateWithTrigger('onRemove')
-      call(props['onUpdate:modelValue'], expectedFiles)
+      props['onUpdate:modelValue']?.(expectedFiles)
     }
 
     // expose
@@ -295,7 +295,7 @@ export default defineComponent({
     // expose
     const reset = () => {
       callReset = true
-      call(props['onUpdate:modelValue'], [])
+      props['onUpdate:modelValue']?.([])
       resetValidation()
     }
 
@@ -306,8 +306,6 @@ export default defineComponent({
     }
 
     bindForm?.(uploaderProvider)
-
-    call(bindForm, uploaderProvider)
 
     watch(
       () => props.modelValue,

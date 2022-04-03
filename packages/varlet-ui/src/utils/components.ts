@@ -322,7 +322,7 @@ export function createNamespace(name: string) {
 }
 
 export function call<F extends (...arg: any) => any, P extends Parameters<F>>(
-  fn?: F | null,
+  fn?: F,
   ...arg: P
 ): ReturnType<F> | undefined {
   if (fn) return fn(...arg)
