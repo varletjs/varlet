@@ -4,7 +4,7 @@
       <var-icon name="chevron-left" />
     </var-button>
     <div class="var-picker-header__value" @click="$emit('check-panel')">
-      <transition :name="reverse ? 'var-date-picker-reverse-translatex' : 'var-date-picker-translatex'">
+      <transition :name="`var-date-picker${reverse ? '-reverse' : ''}-translatex`">
         <div :key="showDate">{{ showDate }}</div>
       </transition>
     </div>
@@ -60,6 +60,8 @@ export default defineComponent({
     })
 
     const checkDate = (checkType: string) => {
+      if ((checkType === 'prev' && props.disabled.left) || (checkType === 'next' && props.disabled.right)) return
+
       emit('check-date', checkType)
       reverse.value = checkType === 'prev'
       forwardOrBackNum.value += checkType === 'prev' ? -1 : 1

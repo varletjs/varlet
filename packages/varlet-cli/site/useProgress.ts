@@ -1,8 +1,6 @@
 import Progress from './components/progress'
 import { reactive } from 'vue'
-// @ts-ignore
 import config from '@config'
-// @ts-ignore
 import { getBrowserThemes, mountInstance, watchThemes } from './utils'
 import { get } from 'lodash-es'
 

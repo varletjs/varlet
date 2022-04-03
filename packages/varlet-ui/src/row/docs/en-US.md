@@ -18,8 +18,9 @@ createApp().use(Row).use(Col)
 ### Gird System
 
 ```html
-The `<var-row/>` component divides a row into an average grid of 24 columns (24 pieces). 
-The `<var-col/>` provides the span property to set the number of pieces in the column and the `offset` property to set the number of pieces `offset` in the column.
+The `<var-row />` component divides a row into an average grid of 24 columns (24 pieces). The `<var-col />` provides the
+span property to set the number of pieces in the column and the `offset` property to set the number of pieces `offset`
+in the column.
 ```
 
 ```html
@@ -85,49 +86,121 @@ using the `<var-row/>` `justify` and `align` properties to set the alignment of 
 </var-row>
 ```
 
+### Responsive Layout
+
+#### Basic Usage
+
+```vue
+import BasicExample from '../example/Responsive.vue'
+```
+
+```html
+<var-row :gutter="10">
+  <var-col class="col" :xs="8" :sm="6" :md="4" :lg="3" :xl="1">1</var-col>
+  <var-col class="col" :xs="4" :sm="6" :md="8" :lg="9" :xl="11">2</var-col>
+  <var-col class="col" :xs="4" :sm="6" :md="8" :lg="9" :xl="11">3</var-col>
+  <var-col class="col" :xs="8" :sm="6" :md="4" :lg="3" :xl="1">4</var-col>
+</var-row>
+```
+#### Column Props Object
+
+```vue
+import ObjectExample from '../example/ResponsiveObject.vue'
+```
+
+```html
+<var-row :gutter="10">
+  <var-col
+    class="col"
+    :xs="{ span: 12, offset: 6 }"
+    :sm="{ span: 6 }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
+    :xl="{ span: 2, offset: 2 }"
+  >
+    1
+  </var-col>
+  <var-col
+    class="col"
+    :xs="{ span: 12, offset: 6 }"
+    :sm="{ span: 6 }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
+    :xl="{ span: 2, offset: 2 }"
+  >
+    2
+  </var-col>
+  <var-col
+    class="col"
+    :xs="{ span: 12, offset: 6 }"
+    :sm="{ span: 6 }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
+    :xl="{ span: 2, offset: 2 }"
+  >
+    3
+  </var-col>
+  <var-col
+    class="col"
+    :xs="{ span: 12, offset: 6 }"
+    :sm="{ span: 6 }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
+    :xl="{ span: 2, offset: 2 }"
+  >
+    4
+  </var-col>
+</var-row>
+```
+
 ## API
 
 ### Props
 
-### Row Props
+#### Row Props
 
-| Prop | Description | Type | Default | 
-| --- | --- | --- | --- | 
-| `gutter` | Col gutter | _string \| number_ | `0` |
-| `justify` | Spindle alignment, optional value is `flex-start` `flex-end` `center` `space-between` `space-around` | _string_ | `flex-start` |
-| `align` | Cross axis alignment, optional value is `flex-start` `flex-end` `center` | _string_ | `flex-start` |
+| Prop      | Description                                                                                          | Type               | Default      |
+| --------- | ---------------------------------------------------------------------------------------------------- | ------------------ | ------------ |
+| `gutter`  | Col gutter                                                                                           | _string \| number_ | `0`          |
+| `justify` | Spindle alignment, optional value is `flex-start` `flex-end` `center` `space-between` `space-around` | _string_           | `flex-start` |
+| `align`   | Cross axis alignment, optional value is `flex-start` `flex-end` `center`                             | _string_           | `flex-start` |
 
-### Col Props
+#### Col Props
 
-| Prop | Description | Type | Default | 
-| --- | --- | --- | --- | 
-| `span` | Number of grids occupied by columns | _string \| number_ | `24` |
-| `offset` | Number of grids for column offsets | _string \| number_ | `0` |
+| Prop     | Description                                         | Type     | Default |
+|----------| --------------------------------------------------- |----------| ------- |
+| `span`   | Number of grids occupied by columns                 | _string \| number_                                                          | `24`    |
+| `offset` | Number of grids for column offsets                  | _string \| number_                                                          | `0`     |
+| `xs`     | `<768px` Responsive columns or column props object  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-`     |
+| `sm`     | `≥768px` Responsive columns or column props object  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-`     |
+| `md`     | `≥992px` Responsive columns or column props object  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-`     |
+| `lg`     | `≥1200px` Responsive columns or column props object | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-`     |
+| `xl`     | `≥1920px` Responsive columns or column props object | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-`     |
 
 ### Events
 
-### Row Events
+#### Row Events
 
-| Event | Description | Arguments |
-| --- | --- | --- |
+| Event   | Description                  | Arguments      |
+| ------- | ---------------------------- | -------------- |
 | `click` | Triggered when you click Row | `event: Event` |
 
-### Col Events
+#### Col Events
 
-| Event | Description | Arguments |
-| --- | --- | --- |
+| Event   | Description                  | Arguments      |
+| ------- | ---------------------------- | -------------- |
 | `click` | Triggered when you click Col | `event: Event` |
 
 ### Slots
 
-### Row Slots
+#### Row Slots
 
-| Slot | Description | Arguments |
-| --- | --- | --- |
-| `default` | Row content | `-` |
+| Slot      | Description | Arguments |
+| --------- | ----------- | --------- |
+| `default` | Row content | `-`       |
 
-### Col Slots
+#### Col Slots
 
-| Slot | Description | Arguments |
-| --- | --- | --- |
-| `default` | Col content | `-` |
+| Slot      | Description | Arguments |
+| --------- | ----------- | --------- |
+| `default` | Col content | `-`       |

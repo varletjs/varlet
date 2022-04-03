@@ -1,5 +1,7 @@
 import type { PropType } from 'vue'
 
+export type CollapseModelValue = null | string | number | Array<string | number>
+
 export const props = {
   modelValue: {
     type: [Array, String, Number] as PropType<null | string | number | Array<string | number>>,
@@ -13,9 +15,9 @@ export const props = {
     default: true,
   },
   onChange: {
-    type: Function,
+    type: Function as PropType<(value: CollapseModelValue) => void>,
   },
   'onUpdate:modelValue': {
-    type: Function,
+    type: Function as PropType<(value: CollapseModelValue) => void>,
   },
 }

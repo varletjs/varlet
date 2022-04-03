@@ -108,7 +108,7 @@ export default defineComponent({
       }
     })
 
-    const switchActive = () => {
+    const switchActive = (event: MouseEvent) => {
       const {
         onClick,
         onChange,
@@ -121,7 +121,7 @@ export default defineComponent({
         'onUpdate:modelValue': updateModelValue,
       } = props
 
-      onClick?.()
+      onClick?.(event)
       if (disabled || loading || readonly || form?.disabled.value || form?.readonly.value) return
 
       const newValue = modelValue === activeValue ? inactiveValue : activeValue

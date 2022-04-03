@@ -14,6 +14,7 @@ export interface DatePickerProps {
   readonly?: boolean
   multiple?: boolean
   range?: boolean
+  touchable?: boolean
   onChange?: (value: string | string[]) => void
   'onUpdate:modelValue'?: (value: string | string[]) => void
 }

@@ -25,6 +25,7 @@ import table from './table'
 import timePicker from './timePicker'
 import uploader from './uploader'
 import tabs from './tabs'
+import appBar from './appBar'
 
 export default {
   // common
@@ -64,4 +65,5 @@ export default {
   ...checkbox,
   ...divider,
   ...picker,
+  ...appBar,
 } as StyleVars

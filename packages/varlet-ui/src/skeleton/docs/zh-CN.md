@@ -79,23 +79,45 @@ export default {
 ### 全屏模式
 
 ```html
-<var-button type="danger" @click="loading = !loading">
-  切换全屏模式
-</var-button>
+<var-button type="danger" @click="fullscreen">切换全屏模式</var-button>
 <var-skeleton fullscreen :loading="loading" />
+```
+
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const loading = ref(false)
+
+    const fullscreen = () => {
+      loading.value = true
+
+      setTimeout(() => {
+        loading.value = false
+      }, 2000)
+    }
+
+    return {
+      loading,
+      fullscreen,
+    }
+  }
+}
 ```
 
 ## API
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `loading` | 加载状态，设置为 `true` 开启骨架屏 | _boolean_ | `true` |
 | `title` | 是否显示标题 | _boolean_ | `false` |
 | `card` | 是否显示卡片 | _boolean_ | `false` |
 | `avatar` | 是否显示头像 | _boolean_ | `false` |
 | `fullscreen` | 是否开启全屏模式 | _boolean_ | `false` |
+| `fullscreen-z-index` | 全屏模式的层级 | _string \| number_ | `100` |
 | `title-width` | 标题宽度 | _string \| number_ | `50%` |
 | `card-height` | 卡片高度 | _string \| number_ | `160px` |
 | `avatar-size` | 头像尺寸 | _string \| number_ | `34px` |
@@ -110,7 +132,7 @@ export default {
 
 ### 样式变量
 
-以下为组件使用的 css 变量,可以使用[StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

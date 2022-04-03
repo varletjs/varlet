@@ -13,7 +13,7 @@ export interface SwitchProps {
   closeColor?: string
   size?: string | number
   rules?: Array<(value: any) => any>
-  onClick?: (e: Event) => void
+  onClick?: (event: MouseEvent) => void
   onChange?: (value: boolean) => void
   'onUpdate:modelValue'?: (value: boolean) => void
 }

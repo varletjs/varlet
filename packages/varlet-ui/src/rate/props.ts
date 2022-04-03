@@ -31,6 +31,9 @@ export const props = {
     type: [String, Number],
     default: '2',
   },
+  namespace: {
+    type: String,
+  },
   half: {
     type: Boolean,
     default: false,

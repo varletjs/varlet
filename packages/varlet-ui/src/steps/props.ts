@@ -23,6 +23,6 @@ export const props = {
     type: String,
   },
   onClickStep: {
-    type: Function,
+    type: Function as PropType<(index: number) => void>,
   },
 }

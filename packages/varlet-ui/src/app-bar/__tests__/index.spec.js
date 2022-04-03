@@ -3,9 +3,11 @@ import AppBar from '..'
 import VarAppBar from '../AppBar'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { delay } from '../../utils/jest'
 
-test('test app bar example', () => {
+test('test app bar example', async () => {
   const wrapper = mount(example)
+  await delay(100)
 
   expect(wrapper.html()).toMatchSnapshot()
 })

@@ -10,7 +10,6 @@ export interface IndexBarProps {
   duration?: number | string
   onClick?: (value: string | number) => void
   onChange?: (value: string | number) => void
-  'onUpdate:modelValue'?: (value: string | number) => void
 }
 
 export class IndexBar extends VarComponent {

@@ -391,10 +391,7 @@ exports[`test timePicker style and format 2`] = `
       <!--v-if-->
       <!--v-if-->
     </div>
-    <div class=\\"var-time-picker-title__ampm\\">
-      <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\"> AM </div>
-      <div class=\\"var-time-picker-title__btn\\"> PM </div>
-    </div>
+    <!--v-if-->
   </div>
   <div class=\\"var-time-picker-body\\">
     <div class=\\"var-time-picker-clock__container\\">
@@ -413,7 +410,20 @@ exports[`test timePicker style and format 2`] = `
           <div class=\\"var-time-picker-clock__item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
           <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
           <div class=\\"var-time-picker-clock__item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
-          <!--v-if-->
+          <div class=\\"var-time-picker-clock__inner\\">
+            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 0%;\\">00</div>
+            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">13</div>
+            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">14</div>
+            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 100%; top: 50%;\\">15</div>
+            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">16</div>
+            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">17</div>
+            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">18</div>
+            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">19</div>
+            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">20</div>
+            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">21</div>
+            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">22</div>
+            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">23</div>
+          </div>
         </div>
       </transition-stub>
     </div>

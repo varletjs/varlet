@@ -25,14 +25,15 @@ export default {
 }
 ```
 
-### Functional
-#### Basic Use
+## Functional
+
+### Basic Use
 
 ```js
 Dialog('Don\'t Wanna See No Blood, Don\'t Be A Macho Man')
 ```
 
-#### Modify Title
+### Modify Title
 
 ```js
 Dialog({
@@ -41,7 +42,7 @@ Dialog({
 })
 ```
 
-#### Hide Button
+### Hide Button
 
 ```js
 Dialog({
@@ -51,7 +52,7 @@ Dialog({
 })
 ```
 
-#### Handling user behavior
+### Handling user behavior
 
 You can get user behavior from the method's return value, which is a `Promise`.
 Includes `confirm`, `cancel`, and `close(click the overlay to trigger closure)`.
@@ -96,9 +97,9 @@ Dialog({
 })
 ```
 
-### Component Call
+## Component Call
 
-#### Basic Use
+### Basic Use
 
 ```html
 <var-button type="warning" block @click="show = true">Basic Use</var-button>
@@ -128,7 +129,7 @@ export default {
 }
 ```
 
-#### Asynchronous closing
+### Asynchronous closing
 
 ```html
 <var-button type="warning" block @click="show = true">Asynchronous closing</var-button>
@@ -172,7 +173,7 @@ export default {
 }
 ```
 
-#### Custom Slots
+### Custom Slots
 
 ```html
 <var-button type="warning" block @click="show = true">Custom Slots</var-button>
@@ -217,6 +218,8 @@ export default {
 | `cancel-button-text-color` | Cancel button text color | _string_ | `-` |
 | `confirm-button-color` | Confirm button background color | _string_ | `-` |
 | `cancel-button-color` | Cancel button background color | _string_ | `-` |
+| `dialog-class` | Dialog body class | _string_ | `-` |
+| `dialog-style` | Dialog body style | _object_ | `-` |
 | `overlay` | Whether to display the overlay | _boolean_ | `true` |  
 | `overlay-class` | Custom overlay class | _string_ | `-` |
 | `overlay-style` | Custom overlay style | _string_ | `-` |
@@ -253,6 +256,8 @@ export default {
 | `cancelButtonTextColor` | Cancel button text color | _string_ | `-` |
 | `confirmButtonColor` | Confirm button background color | _string_ | `-` |
 | `cancelButtonColor` | Cancel button background color | _string_ | `-` |
+| `dialogClass` | Dialog body class | _string_ | `-` |
+| `dialogStyle` | Dialog body style | _object_ | `-` |
 | `overlay` | Whether to display the overlay | _boolean_ | `true` |  
 | `overlayClass` | Custom overlay class | _string_ | `-` |
 | `overlayStyle` | Custom overlay style | _string_ | `-` |
@@ -281,7 +286,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | --- | --- |
 | `--dialog-width` | `280px` |
 | `--dialog-background` | `#fff` |
-| `--dialog-border-radius` | `2px` |
+| `--dialog-border-radius` | `3px` |
 | `--dialog-title-padding` | `20px 20px 0` |
 | `--dialog-title-font-size` | `var(--font-size-lg)` |
 | `--dialog-message-color` | `#888` |

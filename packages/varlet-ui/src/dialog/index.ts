@@ -17,6 +17,8 @@ interface DialogOptions {
   cancelButtonTextColor?: string
   confirmButtonColor?: string
   cancelButtonColor?: string
+  dialogClass?: string
+  dialogStyle?: Record<string, any>
   overlay?: boolean
   overlayClass?: string
   overlayStyle?: Record<string, any>

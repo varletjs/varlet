@@ -276,7 +276,7 @@ export default {
 | `position` | Popup position with optional value of `top` `bottom` `right` `left` `center` | _string_ | `center` |
 | `overlay` | Whether to display the overlay | _boolean_ | `true` |  
 | `overlay-class` | Custom overlay class | _string_ | `-` |
-| `overlay-style` | Custom overlay style | _string_ | `-` |
+| `overlay-style` | Custom overlay style | _object_ | `-` |
 | `transition` | Transition animation name | _string_ | `-` |
 | `lock-scroll` | Whether to disable scrolling penetration, scrolling the Popup when disabled will not cause the body to scroll | _boolean_ | `true` |
 | `close-on-click-overlay` | Whether to click the overlay to close the Popup | _boolean_ | `true` | 

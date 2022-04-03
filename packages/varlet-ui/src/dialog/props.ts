@@ -61,6 +61,12 @@ export const props = {
   'onUpdate:show': {
     type: Function as PropType<(show: boolean) => void>,
   },
+  dialogClass: {
+    type: String,
+  },
+  dialogStyle: {
+    type: Object,
+  },
   ...pickProps(popupProps, [
     'overlay',
     'overlayClass',

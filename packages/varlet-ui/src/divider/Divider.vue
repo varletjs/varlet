@@ -54,7 +54,7 @@ export default defineComponent({
     })
 
     const checkHasText = () => {
-      state.withText = Boolean(slots.default?.().length) || Boolean(props.description)
+      state.withText = Boolean(slots.default) || Boolean(props.description)
     }
 
     onMounted(() => {

@@ -54,7 +54,7 @@
                   v-for="l in labels"
                   :key="l"
                   @click.stop
-                  @close="(e) => handleClose(l)"
+                  @close="() => handleClose(l)"
                 >
                   {{ l }}
                 </var-chip>
@@ -77,10 +77,15 @@
           <label
             class="var-select__placeholder var--ellipsis"
             :class="[
+              isFocus ? 'var-select--focus' : null,
+              errorMessage ? 'var-select--error' : null,
               formDisabled || disabled ? 'var-select--disabled' : null,
               computePlaceholderState(),
               !hint ? 'var-select--placeholder-non-hint' : null,
             ]"
+            :style="{
+              color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
+            }"
           >
             {{ placeholder }}
           </label>
@@ -163,13 +168,8 @@ export default defineComponent({
     const focusColor: ComputedRef<string | undefined> = computed(() => props.focusColor)
     const label: Ref<string | number> = ref('')
     const labels: Ref<(string | number)[]> = ref([])
-    const wrapWidth: ComputedRef<string> = computed(() => {
-      return (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).width) || '0px'
-    })
-    const offsetY: ComputedRef<number> = computed(() => {
-      const paddingTop = (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).paddingTop) || '0px'
-      return toPxNum(paddingTop) * 1.5
-    })
+    const wrapWidth = ref<string>('0px')
+    const offsetY = ref(0)
     const { bindForm, form } = useForm()
     const { length, options, bindOptions } = useOptions()
     const {
@@ -231,12 +231,24 @@ export default defineComponent({
       }
     }
 
+    const getWrapWidth = () => {
+      return (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).width) || '0px'
+    }
+
+    const getOffsetY = () => {
+      const paddingTop = (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).paddingTop) || '0px'
+      return toPxNum(paddingTop) * 1.5
+    }
+
     const handleFocus = () => {
       const { disabled, readonly, onFocus } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
+
+      wrapWidth.value = getWrapWidth()
+      offsetY.value = getOffsetY() + toPxNum(props.offsetY)
 
       isFocus.value = true
 
@@ -329,6 +341,8 @@ export default defineComponent({
 
     // expose
     const focus = () => {
+      wrapWidth.value = getWrapWidth()
+      offsetY.value = getOffsetY() + toPxNum(props.offsetY)
       isFocus.value = true
     }
 
@@ -361,7 +375,7 @@ export default defineComponent({
     watch(() => length.value, syncOptions)
 
     const selectProvider: SelectProvider = {
-      wrapWidth,
+      wrapWidth: computed(() => wrapWidth.value),
       multiple,
       focusColor,
       onSelect,

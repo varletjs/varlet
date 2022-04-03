@@ -141,6 +141,16 @@ exports[`test skeleton example 1`] = `
 </div>"
 `;
 
+exports[`test skeleton fullscreen 1`] = `
+"<div class=\\"var--box var-skeleton\\">
+  <!--v-if-->
+  <!--v-if-->
+  <div class=\\"var-skeleton__fullscreen\\" style=\\"z-index: 1000;\\">
+    <div class=\\"var-skeleton--animation\\"></div>
+  </div>
+</div>"
+`;
+
 exports[`test skeleton styles 1`] = `
 "<div class=\\"var--box var-skeleton\\">
   <!--v-if-->

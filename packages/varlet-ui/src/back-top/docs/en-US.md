@@ -37,11 +37,13 @@ export default {
 
 ### Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
-| `target` | The target to trigger scroll	| _string_ | `-` |
+| Prop | Description                                                         | Type   | Default |
+| ----- |---------------------------------------------------------------------|--------|-------|
+| `target` | The target to trigger scroll, If it is undefined back top will listen to the nearest scrollable parent.  | _string \| HTMLElement_     | `-` |
 | `visibility-height` | The button will not show until the scroll height reaches this value | _string \| number_ | `200` |
-| `duration` | Time to return to top（ms） | _number_ | `300` |
+| `bottom`            | `BackTop` 距离页面底部的高度                       | _string \| number_ | `40` |
+| `right`            | `BackTop` 距离页面右侧的宽度                       | _string \| number_ | `40` |
+| `duration` | Time to return to top（ms）                               | _number_ | `300` |
 
 ### Events
 

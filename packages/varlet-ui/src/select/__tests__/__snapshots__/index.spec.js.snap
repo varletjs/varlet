@@ -15,12 +15,12 @@ exports[`test select example 1`] = `
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">吃饭</div>
+              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">睡觉</div>
+              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
             </div>
           </div>
         </div>
@@ -51,12 +51,12 @@ exports[`test select example 1`] = `
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">吃饭</div>
+              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">睡觉</div>
+              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
             </div>
           </div>
         </div>
@@ -85,12 +85,12 @@ exports[`test select example 1`] = `
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">吃饭</div>
+              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">睡觉</div>
+              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
             </div>
           </div>
         </div>
@@ -122,12 +122,12 @@ exports[`test select example 1`] = `
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">吃饭</div>
+              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">睡觉</div>
+              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
             </div>
           </div>
         </div>
@@ -158,12 +158,12 @@ exports[`test select example 1`] = `
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">吃饭</div>
+              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">睡觉</div>
+              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
             </div>
           </div>
         </div>
@@ -194,12 +194,12 @@ exports[`test select example 1`] = `
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">吃饭</div>
+              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">睡觉</div>
+              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
             </div>
           </div>
         </div>
@@ -228,12 +228,12 @@ exports[`test select example 1`] = `
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">吃饭</div>
+              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">睡觉</div>
+              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
             </div>
           </div>
         </div>
@@ -274,7 +274,7 @@ exports[`test select example 1`] = `
                   <!--v-if-->
                 </transition-stub>
               </div>
-              <div class=\\"var-option__text\\">吃饭</div>
+              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
@@ -287,7 +287,7 @@ exports[`test select example 1`] = `
                   <!--v-if-->
                 </transition-stub>
               </div>
-              <div class=\\"var-option__text\\">睡觉</div>
+              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
@@ -300,7 +300,7 @@ exports[`test select example 1`] = `
                   <!--v-if-->
                 </transition-stub>
               </div>
-              <div class=\\"var-option__text\\">打游戏</div>
+              <div class=\\"var-option__text var--ellipsis\\">打游戏</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
@@ -313,7 +313,7 @@ exports[`test select example 1`] = `
                   <!--v-if-->
                 </transition-stub>
               </div>
-              <div class=\\"var-option__text\\">写代码</div>
+              <div class=\\"var-option__text var--ellipsis\\">写代码</div>
             </div>
           </div>
         </div>
@@ -356,7 +356,7 @@ exports[`test select example 1`] = `
                   <!--v-if-->
                 </transition-stub>
               </div>
-              <div class=\\"var-option__text\\">吃饭</div>
+              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
@@ -369,7 +369,7 @@ exports[`test select example 1`] = `
                   <!--v-if-->
                 </transition-stub>
               </div>
-              <div class=\\"var-option__text\\">睡觉</div>
+              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
@@ -382,7 +382,7 @@ exports[`test select example 1`] = `
                   <!--v-if-->
                 </transition-stub>
               </div>
-              <div class=\\"var-option__text\\">打游戏</div>
+              <div class=\\"var-option__text var--ellipsis\\">打游戏</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
@@ -395,7 +395,7 @@ exports[`test select example 1`] = `
                   <!--v-if-->
                 </transition-stub>
               </div>
-              <div class=\\"var-option__text\\">写代码</div>
+              <div class=\\"var-option__text var--ellipsis\\">写代码</div>
             </div>
           </div>
         </div>
@@ -426,17 +426,17 @@ exports[`test select example 1`] = `
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">吃饭</div>
+              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">睡觉</div>
+              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">摸鱼</div>
+              <div class=\\"var-option__text var--ellipsis\\">摸鱼</div>
             </div>
           </div>
         </div>
@@ -479,7 +479,7 @@ exports[`test select example 1`] = `
                   <!--v-if-->
                 </transition-stub>
               </div>
-              <div class=\\"var-option__text\\">吃饭</div>
+              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
@@ -492,7 +492,7 @@ exports[`test select example 1`] = `
                   <!--v-if-->
                 </transition-stub>
               </div>
-              <div class=\\"var-option__text\\">睡觉</div>
+              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
@@ -505,7 +505,7 @@ exports[`test select example 1`] = `
                   <!--v-if-->
                 </transition-stub>
               </div>
-              <div class=\\"var-option__text\\">打游戏</div>
+              <div class=\\"var-option__text var--ellipsis\\">打游戏</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
@@ -518,7 +518,53 @@ exports[`test select example 1`] = `
                   <!--v-if-->
                 </transition-stub>
               </div>
-              <div class=\\"var-option__text\\">写代码</div>
+              <div class=\\"var-option__text var--ellipsis\\">写代码</div>
+            </div>
+          </div>
+        </div>
+      </transition-stub>
+    </div>
+    <div class=\\"var-select__icon\\">
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"var-select__line\\">
+    <div class=\\"var-select__dot\\"></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+</div>
+<div class=\\"app-type\\">垂直偏移</div>
+<div class=\\"var-select var--box\\">
+  <div class=\\"var-select__controller\\">
+    <div class=\\"var-select__icon\\"></div>
+    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
+      <div class=\\"var-select__wrap\\">
+        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
+      </div>
+      <transition-stub>
+        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + 0px); z-index: 2000; display: none;\\">
+          <div class=\\"var-select__scroller\\">
+            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
+              <div class=\\"var-option__cover\\"></div>
+              <!--v-if-->
+              <div class=\\"var-option__text var--ellipsis\\">火猫</div>
+            </div>
+            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
+              <div class=\\"var-option__cover\\"></div>
+              <!--v-if-->
+              <div class=\\"var-option__text var--ellipsis\\">蓝猫</div>
+            </div>
+            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
+              <div class=\\"var-option__cover\\"></div>
+              <!--v-if-->
+              <div class=\\"var-option__text var--ellipsis\\">紫猫</div>
+            </div>
+            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
+              <div class=\\"var-option__cover\\"></div>
+              <!--v-if-->
+              <div class=\\"var-option__text var--ellipsis\\">土猫</div>
             </div>
           </div>
         </div>
@@ -544,7 +590,7 @@ exports[`test select focus & blur methods 1`] = `
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--placeholder-hint\\"></label>
+        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--focus var-select--placeholder-hint\\"></label>
       </div>
       <!--teleport start-->
       <!--teleport end-->
@@ -600,12 +646,12 @@ exports[`test select hint to be false 1`] = `
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">吃饭</div>
+              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
             </div>
             <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
               <div class=\\"var-option__cover\\"></div>
               <!--v-if-->
-              <div class=\\"var-option__text\\">睡觉</div>
+              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
             </div>
           </div>
         </div>
@@ -630,7 +676,7 @@ exports[`test select validation 1`] = `
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select var-select--error\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\"></label>
+        <div class=\\"var-select__select var-select--error\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--error\\"></label>
       </div>
       <!--teleport start-->
       <!--teleport end-->

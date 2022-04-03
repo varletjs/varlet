@@ -16,7 +16,6 @@
   ],
   "license": "MIT",
   "scripts": {
-    "husky": "husky install",
     "preinstall": "npx only-allow pnpm",
     "dev": "varlet-cli dev",
     "build": "varlet-cli build",
@@ -34,26 +33,31 @@
   },
   "devDependencies": {
     "@varlet/cli": "workspace:*",
-    "@varlet/touch-emulator": "workspace:*",
-    "@varlet/icons": "workspace:*",
     "@varlet/eslint-config": "workspace:*",
+    "@varlet/icons": "workspace:*",
     "@varlet/stylelint-config": "workspace:*",
+    "@varlet/touch-emulator": "workspace:*",
     "@vue/test-utils": "2.0.0-rc.6",
-    "typescript": "^4.4.4",
-    "vue-router": "4.0.12",
-    "vue": "3.2.16",
-    "live-server": "^1.2.1",
-    "prettier": "^2.3.2",
-    "stylelint": "^13.13.1",
+    "clipboard": "^2.0.6",
     "eslint": "^7.30.0",
     "lint-staged": "^10.5.0",
+    "live-server": "^1.2.1",
     "lodash-es": "^4.17.21",
-    "clipboard": "^2.0.6"
+    "prettier": "^2.3.2",
+    "simple-git-hooks": "^2.7.0",
+    "stylelint": "^13.13.1",
+    "typescript": "^4.4.4",
+    "vue": "3.2.16",
+    "vue-router": "4.0.12"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
     "*.{ts,tsx,js,vue}": "eslint --fix",
     "*.{vue,css,less}": "stylelint --fix"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
+    "commit-msg": "npx --no-install varlet-cli commit-lint $1"
   },
   "eslintConfig": {
     "root": true,

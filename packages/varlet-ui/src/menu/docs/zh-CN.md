@@ -13,8 +13,8 @@ createApp().use(Menu)
 ```
 
 ### 注意
-Menu是一个`inline-block`元素，通过默认插槽点击时显示菜单，如果希望Menu独占一行推荐包裹一个`block`元素。
-Menu在点击组件范围以外的区域自动关闭，所以不可以使用同一个状态绑定多个Menu的`v-model:show`，否则在触发显示时也同时触发了其他Menu对`v-model:show`的修改，导致Menu无法显示。
+Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单，如果希望 Menu 独占一行推荐包裹一个 `block` 元素。
+Menu 在点击组件范围以外的区域自动关闭，所以不可以使用同一个状态绑定多个 Menu 的 `v-model:show`，否则在触发显示时也同时触发了其他 Menu 对 `v-model:show` 的修改，导致 Menu 无法显示。
 
 ### 对齐方式
 ```html
@@ -55,7 +55,7 @@ export default {
     const top = ref(false)
     const bottom = ref(false)
 
-    return { 
+    return {
       top,
       bottom
     }
@@ -216,18 +216,18 @@ export default {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `v-model:show` | 是否显示菜单 | _string_ | `default` |
-| `alignment` | 菜单的对齐方式， 可选值为 `top` `bottom`， 源点为默认插槽的左上角，top为菜单顶部对齐源点，bottom为菜单底部对齐 | _string_ | `top` |
-| `offset-x` | x轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |  
-| `offset-y` | y轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |
+| `alignment` | 菜单的对齐方式， 可选值为 `top` `bottom`， 源点为默认插槽的左上角，top 为菜单顶部对齐源点，bottom 为菜单底部对齐 | _string_ | `top` |
+| `offset-x` | x 轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |
+| `offset-y` | y 轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |
 | `teleport` | 菜单挂载的位置 | _TeleportProps['to']_ | `body` |
 
 ### 方法
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
-| `resize` | Menu默认插槽元素产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
+| `resize` | Menu 默认插槽元素产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
 
 ### 事件
 

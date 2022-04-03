@@ -12,7 +12,7 @@ exports[`test app bar example 1`] = `
   </div>
 </div>
 <div class=\\"app-type\\">自定义样式</div>
-<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(255, 159, 0);\\">
+<div class=\\"var-app-bar var-elevation--3\\" style=\\"background: rgb(0, 196, 143);\\">
   <div class=\\"var-app-bar__left\\">
     <!--v-if-->
   </div>
@@ -72,11 +72,8 @@ exports[`test app bar example 1`] = `
         <!--v-if-->
         <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-menu\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
       </button>
-      <transition-stub>
-        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 42px); left: calc(0px + -20px); z-index: 2000; display: none;\\">
-          <div class=\\"menu-list\\" style=\\"background: rgb(255, 255, 255);\\"></div>
-        </div>
-      </transition-stub>
+      <!--teleport start-->
+      <!--teleport end-->
     </div>
   </div>
 </div>

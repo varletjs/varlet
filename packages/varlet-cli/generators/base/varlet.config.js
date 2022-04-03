@@ -62,6 +62,7 @@ module.exports = {
     },
     header: {
       i18n: null,
+      playground: null,
       github: 'https://github.com/varletjs/varlet',
     },
     menu: [

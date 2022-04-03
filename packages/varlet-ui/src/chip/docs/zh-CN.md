@@ -1,5 +1,9 @@
 # 纸片
 
+### 介绍
+
+纸片组件，用于显示一些条目，并且支持关闭条目
+
 ### 引入
 
 ```js
@@ -80,9 +84,9 @@ export default {
     const show = ref(true)
     const show1= ref(true)
 
-    return { 
-      show, 
-      show1 
+    return {
+      show,
+      show1
     }
   }
 }
@@ -133,7 +137,7 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ---- |
 | `type` | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
-| `size` | 尺寸， 可选值为 `normal` `mini` `small` `large` | _string_ | `normal` |
+| `size` | 尺寸，可选值为 `normal` `mini` `small` `large` | _string_ | `normal` |
 | `plain` | 是否为空心样式 | _boolean_ | `false` |
 | `round` | 是否为圆角样式 | _boolean_ | `true` |
 | `block` | 是否为块级样式 | _boolean_ | `false` |
@@ -157,7 +161,7 @@ export default {
 | `close` | 点击关闭按钮时触发，只有在显示关闭按钮的时候才能使用 | `event: Event`  |
 
 ### 样式变量
-以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
@@ -181,7 +185,3 @@ export default {
 | `--chip-text-normal-margin` | `0 5px` |
 | `--chip-text-small-margin` | `0 3px` |
 | `--chip-text-mini-margin` | `0 2px` |
-
-
-
-

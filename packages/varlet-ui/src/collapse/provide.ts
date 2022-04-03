@@ -5,7 +5,7 @@ import { CollapseItemProvider } from '../collapse-item/provide'
 export interface CollapseProvider {
   active: ComputedRef<number | string | Array<number | string> | undefined | null>
   offset: ComputedRef<boolean>
-  updateItem: (value: number | string | undefined, isExpand: boolean) => void
+  updateItem: (value: number | string, isExpand: boolean) => void
 }
 
 export const COLLAPSE_BIND_COLLAPSE_ITEM_KEY = Symbol('COLLAPSE_BIND_COLLAPSE_ITEM_KEY')

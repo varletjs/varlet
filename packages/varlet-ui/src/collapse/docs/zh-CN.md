@@ -19,8 +19,8 @@ createApp().use(Collapse).use(CollapseItem)
 
 ```html
 <var-collapse v-model="value" @change="changeHandle">
-  <var-collapse-item title="标题" name="1">内容</var-collapse-item>
-  <var-collapse-item title="标题" name="2">内容</var-collapse-item>
+  <var-collapse-item title="标题" name="1">文本</var-collapse-item>
+  <var-collapse-item title="标题" name="2">文本</var-collapse-item>
 </var-collapse>
 ```
 ```javascript
@@ -33,7 +33,7 @@ export default {
     const changeHandle = (val) => {
       console.log(val)
     }
-    
+
     return {
       value,
       changeHandle
@@ -48,8 +48,8 @@ export default {
 
 ```html
 <var-collapse v-model="value" :offset="false">
-  <var-collapse-item title="标题" name="1">内容</var-collapse-item>
-  <var-collapse-item title="标题" name="2">内容</var-collapse-item>
+  <var-collapse-item title="标题" name="1">文本</var-collapse-item>
+  <var-collapse-item title="标题" name="2">文本</var-collapse-item>
 </var-collapse>
 ```
 
@@ -59,8 +59,8 @@ export default {
 
 ```html
 <var-collapse v-model="value" accordion :offset="false">
-  <var-collapse-item title="标题" name="1">内容</var-collapse-item>
-  <var-collapse-item title="标题" name="2">内容</var-collapse-item>
+  <var-collapse-item title="标题" name="1">文本</var-collapse-item>
+  <var-collapse-item title="标题" name="2">文本</var-collapse-item>
 </var-collapse>
 ```
 ```javascript
@@ -69,7 +69,7 @@ import { ref } from 'vue'
 export default {
   setup() {
     const value = ref('')
-    
+
     return {
       value
     }
@@ -87,10 +87,10 @@ export default {
 </var-button>
 <var-collapse v-model="value">
   <var-collapse-item title="标题" :name="1" :disabled="disabled">
-    内容
+    文本
   </var-collapse-item>
   <var-collapse-item title="标题" :name="2" :disabled="disabled">
-    内容
+    文本
   </var-collapse-item>
 </var-collapse>
 ```
@@ -115,7 +115,7 @@ export default {
 ```html
 <var-collapse v-model="value">
   <var-collapse-item title="这是标题" name="1" icon="account-circle">
-    这是内容
+    文本
   </var-collapse-item>
   <var-collapse-item name="2">
     <template #title>这是标题</template>
@@ -129,7 +129,7 @@ export default {
 
 ### 属性
 
-### Collapse 属性
+#### Collapse Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
@@ -137,7 +137,7 @@ export default {
 | `accordion` | 是否开启手风琴模式 | _boolean_ | `false` |
 | `offset` | 是否显示边距 | _boolean_ | `true` |
 
-### CollapseItem 属性
+#### CollapseItem Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
@@ -148,7 +148,7 @@ export default {
 
 ### 事件
 
-### Collapse 事件
+#### Collapse Events
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------------- | -------- |
@@ -156,25 +156,25 @@ export default {
 
 ### 插槽
 
-### CollapseItem 插槽
+#### CollapseItem Slots
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
 | `default` | 面板的内容 | `-` |
 | `title` | 面板的标题 | `-` |
-| `icon` | 自定义右侧icon | `-` |
+| `icon` | 自定义右侧 icon | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
 | `--collapse-background` | `#fff` |
 | `--collapse-text-color` | `#232222` |
 | `--collapse-header-font-size` | `var(--font-size-lg)` |
-| `--collapse-header-padding` | `10px 16px` |
+| `--collapse-header-padding` | `10px 12px` |
 | `--collapse-content-font-size` | `var(--font-size-md)` |
-| `--collapse-content-font-size` | `14px` |
+| `--collapse-content-padding` | `0 12px 10px` |
 | `--collapse-item-margin-top` | `16px` |
 | `--collapse-disable-color` | `#bdbdbd` |
 | `--collapse-border-top` | `thin solid rgba(0, 0, 0, 0.12)` |

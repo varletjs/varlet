@@ -34,13 +34,26 @@
   <app-type>{{ pack.validate }}</app-type>
   <var-uploader :rules="[(v, u) => u.getError(v).length === 0 || pack.validateMessage]" v-model="files10" />
 
+  <app-type>{{ pack.customRender }}</app-type>
+  <var-space>
+    <img class="custom-uploader-file" v-for="f in files12" :key="f.id" :src="f.cover" />
+    <var-uploader hide-list v-model="files12">
+      <var-button round type="primary">
+        <var-icon :size="28" name="upload" />
+      </var-button>
+    </var-uploader>
+  </var-space>
+
   <div class="space"></div>
 </template>
 
 <script>
 import VarUploader from '..'
 import VarButton from '../../button'
+import VarSpace from '../../space'
+import VarIcon from '../../icon'
 import Dialog from '../../dialog'
+import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
@@ -52,7 +65,9 @@ export default {
   components: {
     VarUploader,
     VarButton,
+    VarSpace,
     AppType,
+    VarIcon,
   },
   setup() {
     const values = reactive({
@@ -103,6 +118,23 @@ export default {
           cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
         },
       ],
+      files12: [
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          state: 'loading',
+        },
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          state: 'success',
+        },
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          state: 'error',
+        },
+      ],
     })
 
     const handleAfterRead = (file) => console.log(file)
@@ -115,9 +147,18 @@ export default {
       }, 1000)
     }
 
-    const handleOversize = (file) => console.log(file)
+    const handleOversize = () => {
+      Snackbar.warning(pack.value.fileSizeExceedsLimit)
+    }
 
-    const handleBeforeRead = (file) => file.file.size <= 1024 * 10
+    const handleBeforeRead = (file) => {
+      if (file.file.size <= 1 * 1024 * 1024) {
+        Snackbar.success(pack.value.fileLessThen)
+        return true
+      }
+      Snackbar.warning(pack.value.fileLargeThen)
+      return false
+    }
 
     const handleBeforeRemove = async () => {
       const action = await Dialog({
@@ -147,5 +188,13 @@ export default {
 <style scoped lang="less">
 .space {
   height: 40px;
+}
+
+.custom-uploader-file {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 12px;
+  object-fit: cover;
 }
 </style>

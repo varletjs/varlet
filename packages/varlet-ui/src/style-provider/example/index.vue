@@ -16,10 +16,9 @@ import VarRate from '../../rate'
 import VarSwitch from '../../switch'
 import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import context from '../../context'
 import dark from '../../themes/dark'
 import { ref, reactive, onUnmounted } from 'vue'
-import { getBrowserThemes, watchLang, watchPlatform } from '@varlet/cli/site/utils'
+import { getBrowserThemes, watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 export default {
@@ -62,16 +61,6 @@ export default {
     }
 
     watchLang(use)
-
-    const prevTouchmoveForbid = context.touchmoveForbid
-    watchPlatform((platform) => {
-      if (platform === 'pc') {
-        context.touchmoveForbid = false
-      }
-    })
-    onUnmounted(() => {
-      context.touchmoveForbid = prevTouchmoveForbid
-    })
 
     onUnmounted(() => {
       StyleProvider(getBrowserThemes() === 'darkThemes' ? dark : null)

@@ -16,6 +16,42 @@ test('test space plugin', () => {
   expect(app.component(Space.name)).toBeTruthy()
 })
 
+test('test space v-for', async () => {
+  const template = `
+    <var-space>
+      <div v-for="i in 3">div{{i}}</div>
+    </var-space>
+  `
+  const wrapper = mount({
+    components: {
+      [VarSpace.name]: VarSpace,
+    },
+    template,
+  })
+
+  await delay(0)
+  expect(wrapper.html()).toMatchSnapshot()
+})
+
+test('test space with Comment', async () => {
+  const template = `
+    <var-space>
+      <!-- comment -->
+      <div>div1</div>
+      <div>div2</div>
+    </var-space>
+  `
+  const wrapper = mount({
+    components: {
+      [VarSpace.name]: VarSpace,
+    },
+    template,
+  })
+
+  await delay(0)
+  expect(wrapper.html()).toMatchSnapshot()
+})
+
 test('test space props', async () => {
   const template = `
     <var-space>

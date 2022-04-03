@@ -23,7 +23,7 @@ import { ref } from 'vue'
 export default {
   setup() {
     const date = ref('2021-04-08')
-    
+
     return {
       date
     }
@@ -52,7 +52,7 @@ Use `multiple` prop to select multiple dates, at this time, `date` is an array.
 Use `range` prop to select date range, at this time, `date` is `[startDate, endDate]`.
 
 ```html
-<var-date-picker type="date" v-model="date" range>
+<var-date-picker type="date" v-model="date" range />
 ```
 
 ### Date Limit
@@ -60,10 +60,10 @@ Use `range` prop to select date range, at this time, `date` is `[startDate, endD
 Use `min` and `max` prop to allow the maximum and minimum date, and use `allowed-dates` prop to limit the dates that can be selected.
 
 ```html
-<var-date-picker 
-  v-model="date" 
+<var-date-picker
+  v-model="date"
   min="2020-10-15"
-  max="2021-01-15" 
+  max="2021-01-15"
   :allowed-dates="allowedDates"
 />
 ```
@@ -77,7 +77,7 @@ export default {
     const allowedDates = (val) => {
       return parseInt(val.split('-')[2], 10) % 2 === 1
     }
-    
+
     return {
       date,
       allowedDates,
@@ -123,7 +123,7 @@ export default {
     const change = (date) => {
       console.log(date)
     }
-    
+
     return {
       date,
       change,
@@ -137,21 +137,22 @@ export default {
 
 ### Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
-| `v-model` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）| _string[] \| string_ | `-` |
-| `type` | Picker type, optional values`date, month` | _string_ | `date` |
-| `allowed-dates` | Restricts which dates can be selected | _function_ | `-` |
-| `color` | Picker color | _string_ | `#2979ff` |
+| Prop | Description                                                                                                       | Type | Default |
+| ----- |-------------------------------------------------------------------------------------------------------------------| -------- | ---------- |
+| `v-model` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）                                                         | _string[] \| string_ | `undefined` |
+| `type` | Picker type, optional values`date, month`                                                                         | _string_ | `date` |
+| `allowed-dates` | Restricts which dates can be selected                                                                             | _function_ | `-` |
+| `color` | Picker color                                                                                                      | _string_ | `#2979ff` |
 | `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
-| `shadow` | Whether to add a shadow | _boolean_ | `false` |
-| `first-day-of-week` | Sets the first day of the week, starting with 0 for Sunday. | _string \| number_ | `0` |
-| `min` | Minimum allowed date/month (ISO 8601 format) | _string_ | `-` |
-| `max` | Maximum allowed date/month (ISO 8601 format) | _string_ | `-` |
-| `show-current` | Whether to display the current date | _boolean_ | `true` |
-| `readonly` | readonly | _boolean_ | `false` |
-| `multiple` | Allow the selection of multiple dates | _boolean_ | `false` |
-| `range` | Allow the selection of date range | _boolean_ | `false` |
+| `shadow` | Whether to add a shadow                                                                                           | _boolean_ | `false` |
+| `first-day-of-week` | Sets the first day of the week, starting with 0 for Sunday.                                                       | _string \| number_ | `0` |
+| `min` | Minimum allowed date/month (ISO 8601 format)                                                                      | _string_ | `-` |
+| `max` | Maximum allowed date/month (ISO 8601 format)                                                                      | _string_ | `-` |
+| `show-current` | Whether to display the current date                                                                               | _boolean_ | `true` |
+| `readonly` | readonly                                                                                                          | _boolean_ | `false` |
+| `multiple` | Allow the selection of multiple dates                                                                             | _boolean_ | `false` |
+| `range` | Allow the selection of date range                                                                                 | _boolean_ | `false` |
+| `touchable`  | Allow switch panel by touch                                                                                       | _boolean_ | `true` |
 
 ### Events
 
@@ -167,7 +168,7 @@ export default {
 | ----- | -------------- | -------- |
 | `year` | Custom the year in the title | `year: YYYY` |
 | `month` | Custom the month in the title | `year: YYYY` <br> `month: MM` |
-| `date` | Custom the date in the title | `year: YYYY` <br> `month: MM` `date: DD` <br> `week: weekIndex` |
+| `date` | Custom the date in the title | `year: YYYY` <br> `month: MM` <br> `date: DD` <br> `week: weekIndex` |
 | `range` | Custom the range in the title | `choose: [startData, endDate]` |
 | `multiple` | Custom the multiple in the title  | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
 

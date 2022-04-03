@@ -65,7 +65,7 @@ createApp().use(Progress)
 
 | 参数  |   说明  | 类型     | 默认值   |
 | ----  | --------------- | -------- | -------- |
-| `mode`  | `progress` 的模式，可选值为`linear, circle` | _string_ | `linear` |
+| `mode`  | `progress` 的模式，可选值为 `linear, circle` | _string_ | `linear` |
 | `value` | `progress` 的进度 | _string \| number_ |  `0`  |
 | `line-width` | `progress` 的线宽 | _string \| number_ | `4` |
 | `color` | `progress` 的颜色 | _string_  | `#005CAF` |
@@ -83,7 +83,7 @@ createApp().use(Progress)
 | `default` | 自定义 label | `-` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

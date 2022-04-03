@@ -1,10 +1,4 @@
-export type Time = {
-  days: number
-  hours: number
-  minutes: number
-  seconds: number
-  milliseconds: number
-}
+import { TimeData } from '../countdown/props'
 
 export interface CacheInstance<T> {
   cache: T[]
@@ -57,6 +51,8 @@ export const isNumber = (val: unknown): val is number => typeof val === 'number'
 export const isPlainObject = (val: unknown): val is Record<string, any> =>
   Object.prototype.toString.call(val) === '[object Object]'
 
+export const isObject = (val: unknown): val is Record<string, any> => typeof val === 'object' && val !== null
+
 export const isArray = (val: unknown): val is Array<any> => Array.isArray(val)
 
 export const isURL = (val: string | undefined | null) => {
@@ -106,17 +102,6 @@ export const throttle = (method: any, mustRunDelay = 200): (() => void) => {
   }
 }
 
-export const debounce = (method: any, delay = 200) => {
-  let timer: number
-
-  return function (this: unknown, ...args: any[]) {
-    timer && window.clearTimeout(timer)
-    timer = window.setTimeout(() => {
-      method.apply(this, args)
-    }, delay)
-  }
-}
-
 export const createCache = <T>(max: number): CacheInstance<T> => {
   const cache: T[] = []
 
@@ -153,7 +138,7 @@ export const cubic = (value: number): number => value ** 3
 export const easeInOutCubic = (value: number): number =>
   value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2
 
-export function parseFormat(format: string, time: Time): string {
+export function parseFormat(format: string, time: TimeData): string {
   const scannedTimes = Object.values(time)
   const scannedFormats = ['DD', 'HH', 'mm', 'ss']
   const padValues = [24, 60, 60, 1000]
@@ -188,7 +173,6 @@ export const inBrowser = () => typeof window !== 'undefined'
 export const uniq = (arr: Array<any>) => [...new Set(arr)]
 
 export function kebabCase(str: string): string {
-  const reg = /([^-])([A-Z])/g
-
-  return str.replace(reg, '$1-$2').replace(reg, '$1-$2').toLowerCase()
+  const ret = str.replace(/([A-Z])/g, ' $1').trim()
+  return ret.split(' ').join('-').toLowerCase()
 }

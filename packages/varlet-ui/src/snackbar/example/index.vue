@@ -59,11 +59,10 @@
 import Snackbar from '../index'
 import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import context from '../../context'
 import dark from '../../themes/dark'
-import { onUnmounted, reactive, toRefs } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   name: 'SnackbarExample',
@@ -118,16 +117,6 @@ export default {
 
     watchLang(use)
     watchDarkMode(dark)
-
-    const prevTouchmoveForbid = context.touchmoveForbid
-    watchPlatform((platform) => {
-      if (platform === 'pc') {
-        context.touchmoveForbid = false
-      }
-    })
-    onUnmounted(() => {
-      context.touchmoveForbid = prevTouchmoveForbid
-    })
 
     return {
       ...toRefs(shows),

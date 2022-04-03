@@ -46,6 +46,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': '服务端渲染',
+          'en-US': 'Server side rendering',
+        },
+        doc: 'serverSideRendering',
+        type: 3,
+      },
+      {
+        text: {
           'zh-CN': '浏览器适配',
           'en-US': 'Browser Adaptation',
         },
@@ -521,7 +529,7 @@ module.exports = {
     ],
   },
   highlight: {
-    style: './highlight.css',
+    style: null,
   },
   moduleCompatible: {
     "import dayjs from 'dayjs/esm'\n": "import dayjs from 'dayjs'\n",

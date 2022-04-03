@@ -21,4 +21,9 @@ export default {
   currentSelect: 'The current selection is:',
   mustSelectRest: 'You must choose to rest',
   mustSelectMoreThan: 'You select at least two options',
+  offsetY: 'offsetY',
+  emberSprit: 'Ember Sprit',
+  earthSprit: 'Earth Sprit',
+  stormSpirit: 'Storm Spirit',
+  voidSpirit: 'Void Spirit',
 }

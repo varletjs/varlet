@@ -59,9 +59,9 @@ export const props = {
     default: false,
   },
   'onUpdate:modelValue': {
-    type: Function,
+    type: Function as PropType<(value: string) => void>,
   },
   onChange: {
-    type: Function,
+    type: Function as PropType<(value: string) => void>,
   },
 }

@@ -4,6 +4,7 @@
     :style="{
       justifyContent: justify,
       alignItems: align,
+      margin: average ? `0 -${average}px` : undefined,
     }"
     @click="onClick"
   >
@@ -12,11 +13,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch } from 'vue'
+import { defineComponent, computed, watch } from 'vue'
 import { props } from './props'
 import { useCols } from './provide'
 import { toPxNum } from '../utils/elements'
-import type { ColProvider } from '../col/provide'
+import type { ComputedRef } from 'vue'
 import type { RowProvider } from './provide'
 
 export default defineComponent({
@@ -25,46 +26,14 @@ export default defineComponent({
   setup(props) {
     const { cols, bindCols, length } = useCols()
 
-    const computeGroups = () => {
-      const groups: ColProvider[][] = [[]]
-      let span = 0
-
-      cols.forEach((col) => {
-        const colSpan = col.span.value + col.offset.value
-        const nextSpan = span + colSpan
-
-        if (nextSpan > 24) {
-          groups.push([col])
-          span = colSpan
-        } else {
-          groups[groups.length - 1].push(col)
-          span += colSpan
-        }
-      })
-
-      return groups
-    }
+    const average: ComputedRef<number> = computed(() => {
+      const gutter: number = toPxNum(props.gutter)
+      return gutter / 2
+    })
 
     const computePadding = () => {
-      const groups = computeGroups()
-      const gutter: number = toPxNum(props.gutter)
-      const average = gutter / 2
-
-      groups.forEach((cols) => {
-        cols.forEach((col, index) => {
-          if (cols.length <= 1) {
-            return
-          }
-          if (index === 0) {
-            col.setPadding({ left: 0, right: average })
-          }
-          if (index === cols.length - 1) {
-            col.setPadding({ left: average, right: 0 })
-          }
-          if (index > 0 && index < cols.length - 1) {
-            col.setPadding({ left: average, right: average })
-          }
-        })
+      cols.forEach((col) => {
+        col.setPadding({ left: average.value, right: average.value })
       })
     }
 
@@ -74,6 +43,8 @@ export default defineComponent({
     watch(() => props.gutter, computePadding)
 
     bindCols(rowProvider)
+
+    return { average }
   },
 })
 </script>

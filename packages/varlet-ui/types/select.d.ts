@@ -6,6 +6,7 @@ export interface SelectProps {
   modelValue?: any
   placeholder?: string
   multiple?: boolean
+  offsetY?: number | string
   chip?: boolean
   line?: boolean
   hint?: boolean

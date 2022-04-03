@@ -22,6 +22,7 @@ interface UploaderProps {
   maxlength?: string | number
   maxsize?: string | number
   previewed?: boolean
+  hideList?: boolean
   ripple?: boolean
   validateTrigger?: Array<UploaderValidateTriggers>
   rules?: Array<(v: VarFile) => any>

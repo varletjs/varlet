@@ -1,4 +1,3 @@
-import type { ComputedRef } from 'vue'
 import { useAtParentIndex, useParent } from '../utils/components'
 import { ROW_BIND_COL_KEY, ROW_COUNT_COL_KEY, RowProvider } from '../row/provide'
 
@@ -7,9 +6,12 @@ export interface ColPadding {
   right: number
 }
 
+export type SizeDescriptor = {
+  span?: number | string
+  offset?: number | string
+}
+
 export interface ColProvider {
-  span: ComputedRef<number>
-  offset: ComputedRef<number>
   setPadding: (padding: ColPadding) => void
 }
 

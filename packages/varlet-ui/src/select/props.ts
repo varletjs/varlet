@@ -17,6 +17,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  offsetY: {
+    type: [String, Number],
+    default: 0,
+  },
   chip: {
     type: Boolean,
     default: false,

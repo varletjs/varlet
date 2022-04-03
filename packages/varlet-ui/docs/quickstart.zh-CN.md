@@ -6,7 +6,7 @@
 
 ### 安装
 
-### CDN
+#### CDN
 `varlet.js` 包含组件库的所有样式和逻辑, 引入即可。
 
 ```html
@@ -21,10 +21,10 @@
 </script>
 ```
 
-### Webpack/Vite
+#### Webpack/Vite
 
 ```shell
-# 通过 npm 或 yarn 安装 或 pnpm安装
+# 通过 npm、yarn 或 pnpm 安装
 
 # npm
 npm i @varlet/ui -S
@@ -44,3 +44,8 @@ import '@varlet/ui/es/style.js'
 
 createApp(App).use(Varlet).mount('#app')
 ```
+
+### 在线编辑组件
+
+我们提供了网页版的组件编辑器，方便您对组件库的各个组件进行快速上手、在线编辑、分享给他人或是下载代码包本地运行。
+您可以点击网页右上角的`{...}`图标或是[这里前往](https://varlet.gitee.io/varlet-ui-playground)

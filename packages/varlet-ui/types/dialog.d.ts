@@ -17,6 +17,8 @@ export interface DialogProps {
   overlay?: boolean
   overlayClass?: string
   overlayStyle?: Record<string, any>
+  dialogClass?: string
+  dialogStyle?: Record<string, any>
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
   teleport?: TeleportProps['to']
@@ -52,6 +54,8 @@ export interface DialogOptions {
   overlay?: boolean
   overlayClass?: string
   overlayStyle?: Record<string, any>
+  dialogClass?: string
+  dialogStyle?: Record<string, any>
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
   onOpen?: () => void

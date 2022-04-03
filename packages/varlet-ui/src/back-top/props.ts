@@ -1,3 +1,5 @@
+import type { PropType } from 'vue'
+
 export const props = {
   visibilityHeight: {
     type: [Number, String],
@@ -7,10 +9,16 @@ export const props = {
     type: Number,
     default: 300,
   },
+  right: {
+    type: [Number, String],
+  },
+  bottom: {
+    type: [Number, String],
+  },
   target: {
-    type: String,
+    type: [String, Object] as PropType<string | HTMLElement>,
   },
   onClick: {
-    type: Function,
+    type: Function as PropType<(event: MouseEvent) => void>,
   },
 }

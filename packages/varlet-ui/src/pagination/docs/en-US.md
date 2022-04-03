@@ -12,17 +12,20 @@ import { Pagination } from '@varlet/ui'
 
 createApp().use(Pagination)
 ```
-### Simple Mode
+
+## Simple Mode
+
+### Intro
 
 The default display mode is recommended for small-screen devices. See the mobile phone emulator on the right for a preview of the components.
 
-#### Basic Usage
+### Basic Usage
 
 ```html
 <var-pagination :current="3" :total="120" />
 ```
 
-#### Hide Size Changer
+### Hide Size Changer
 
 Use `show-size-changer` prop to hide size changer.
 
@@ -30,7 +33,7 @@ Use `show-size-changer` prop to hide size changer.
 <var-pagination :current="3" :total="120" :show-size-changer="false"/>
 ```
 
-#### Show Total
+### Show Total
 
 Use `showTatol` prop to show custom total text.
 
@@ -42,17 +45,19 @@ Use `showTatol` prop to show custom total text.
 />
 ```
 
-#### Disabled
+### Disabled
 
 ```html
 <var-pagination :current="3" :total="115" disabled />
 ```
 
-### Basic Mode
+## Basic Mode
+
+### Intro
 
 Set `simple` to `false` when you use medium and large screen devices.
 
-#### Basic Usage
+### Basic Usage
 
 ```vue
 import Basic from '../example/Basic.vue'
@@ -62,7 +67,7 @@ import Basic from '../example/Basic.vue'
 <var-pagination current="6" total="115" :simple="false" />
 ```
 
-#### Enable page number to jump quickly
+### Enable page number to jump quickly
 
 Use `show-quick-jumper` prop to enable page number to jump quickly.
 
@@ -79,7 +84,7 @@ import QuickJumper from '../example/QuickJumper.vue'
 />
 ```
 
-#### Size Option
+### Size Option
 
 Use `show-size-changer` hide size changer and use `size-option` prop set the number of `size` that can be chosen.
 
@@ -92,7 +97,7 @@ import SizeOption from '../example/SizeOption.vue'
 <var-pagination :current="3" :total="120" :simple="false" :size-option="[10, 20, 30, 40]" />
 ```
 
-#### Show Total
+### Show Total
 
 ```vue
 import ShowTotal from '../example/ShowTotal.vue'
@@ -115,7 +120,7 @@ import ShowTotal from '../example/ShowTotal.vue'
 />
 ```
 
-#### Disabled
+### Disabled
 
 ```vue
 import Disabled from '../example/Disabled.vue'
@@ -129,18 +134,18 @@ import Disabled from '../example/Disabled.vue'
 
 ### Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
-| `current` | Current page number | _string \| number_ | `1` |
-| `size` | Number of data items per page | _string \| number_ | `10` |
-| `total` | Total number of data items | _string \| number_ | `0` |
-| `simple` | Whether to use simple mode | _boolean_ | `true` |
-| `disabled` | Disable pagination | _boolean_ | `false` |
+| Prop                | Description | Type | Default |
+|---------------------| -------------- | -------- | ---------- |
+| `v-model: current`  | Current page number | _string \| number_ | `1` |
+| `v-model: size`     | Number of data items per page | _string \| number_ | `10` |
+| `total`             | Total number of data items | _string \| number_ | `0` |
+| `simple`            | Whether to use simple mode | _boolean_ | `true` |
+| `disabled`          | Disable pagination | _boolean_ | `false` |
 | `show-size-changer` | Whether to show `size` select | _boolean_ | `true` |
 | `show-quick-jumper` | Whether you can jump to pages directly	 | _boolean_ | `false` |
-| `max-pager-count` | Number of buttons displayed between ellipses	| _number_ | `3` |
-| `size-option` | Specify the sizeChanger options	 | _number[]_ | `[10, 20, 50, 100]` |
-| `show-total` | Show page item's title	 | _function(total, range)_ | `-` |
+| `max-pager-count`   | Number of buttons displayed between ellipses	| _number_ | `3` |
+| `size-option`       | Specify the sizeChanger options	 | _number[]_ | `[10, 20, 50, 100]` |
+| `show-total`        | Show page item's title	 | _function(total, range)_ | `-` |
 
 ### Events
 

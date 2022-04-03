@@ -1,28 +1,25 @@
 import example from '../example'
 import Sticky from '..'
 import VarSticky from '../Sticky'
-import { trigger } from '../../utils/jest'
+import { delay, mockDoubleRaf, trigger } from '../../utils/jest'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 
-test('test sticky example', () => {
-  const wrapper = mount(example, { attachTo: document.body })
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
+mockDoubleRaf()
 
 test('test sticky plugin', () => {
   const app = createApp({}).use(Sticky)
   expect(app.component(Sticky.name)).toBeTruthy()
 })
 
-test('test sticky z-index', () => {
+test('test sticky z-index', async () => {
   const wrapper = mount(VarSticky, {
     props: {
       zIndex: 100,
     },
     attachTo: document.body,
   })
+  await delay(100)
 
   expect(wrapper.element.style.zIndex).toBe('100')
   expect(wrapper.html()).toMatchSnapshot()
@@ -41,6 +38,7 @@ test('test sticky onScroll', async () => {
     },
     attachTo: document.body,
   })
+  await delay(100)
 
   expect(onScroll).toHaveBeenCalledTimes(1)
   await trigger(window, 'scroll')
@@ -61,6 +59,7 @@ test('test sticky scrolling with css sticky position', async () => {
     },
     attachTo: document.body,
   })
+  await delay(100)
 
   const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ top: 200 })
   await trigger(window, 'scroll')
@@ -89,6 +88,7 @@ test('test sticky scrolling without css sticky position', async () => {
     },
     attachTo: document.body,
   })
+  await delay(100)
 
   const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ top: 200 })
 
@@ -118,6 +118,7 @@ test('test sticky disabled with css sticky position', async () => {
     },
     attachTo: document.body,
   })
+  await delay(100)
 
   const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ top: 200 })
   await trigger(window, 'scroll')
@@ -147,6 +148,7 @@ test('test sticky disabled without css sticky position', async () => {
     },
     attachTo: document.body,
   })
+  await delay(100)
 
   const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ top: 200 })
 

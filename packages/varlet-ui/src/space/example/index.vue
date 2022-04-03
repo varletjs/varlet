@@ -1,9 +1,7 @@
 <template>
   <app-type>{{ pack.baseUse }}</app-type>
   <var-space>
-    <var-button>Button1</var-button>
-    <var-button>Button2</var-button>
-    <var-button>Button3</var-button>
+    <var-button v-for="i in 3" :key="i">Button{{ i }}</var-button>
   </var-space>
 
   <app-type>{{ pack.vertical }}</app-type>
@@ -51,27 +49,15 @@
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarSpace from '..'
 import VarButton from '../../button'
-import context from '../../context'
 import dark from '../../themes/dark'
 import { pack, use } from './locale'
-import { watchLang, watchPlatform, watchDarkMode } from '@varlet/cli/site/utils'
-import { onUnmounted } from 'vue'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 export default {
   components: { VarSpace, VarButton, AppType },
   setup() {
     watchLang(use)
     watchDarkMode(dark)
-
-    const prevTouchmoveForbid = context.touchmoveForbid
-    watchPlatform((platform) => {
-      if (platform === 'pc') {
-        context.touchmoveForbid = false
-      }
-    })
-    onUnmounted(() => {
-      context.touchmoveForbid = prevTouchmoveForbid
-    })
 
     return {
       pack,

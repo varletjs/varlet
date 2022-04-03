@@ -104,11 +104,23 @@ module.exports = {
 | `color-side-bar-active-background` |
 | `color-app-bar` |
 | `color-nav-button-hover-background` |
+| `color-mobile-cell-hover` |
 | `color-pc-language-active` |
 | `color-pc-language-active-background` |
-| `color-mobile-cell-hover` |
 | `color-mobile-language-active` |
 | `color-mobile-language-active-background` |
+| `color-hl-background` |
+| `color-hl-code` |
+| `color-hl-border` |
+| `color-hl-group-a` |
+| `color-hl-group-b` |
+| `color-hl-group-c` |
+| `color-hl-group-d` |
+| `color-hl-group-e` |
+| `color-hl-group-f` |
+| `color-hl-group-g` |
+| `color-hl-group-h` |
+| `color-hl-group-i` |
 
 #### SiteHighlight
 
@@ -182,6 +194,7 @@ module.exports = {
     header: {
       darkMode: null,
       i18n: null,
+      playground: null,
       github: 'https://github.com/varletjs/varlet',
     },
   },
@@ -290,12 +303,13 @@ module.exports = {
 
 #### git-hook
 
-`husky`，`lint-staged` 配合 `eslint`，`stylelint`，`varlet-cli commit-lint` 做commit前的检查，`package.json` 配置如下
+`simple-git-hooks`，`lint-staged` 配合 `eslint`，`stylelint`，`varlet-cli commit-lint` 做commit前的检查，`package.json` 配置如下
 
 ```json
 {
-  "scripts": {
-    "prepare": "husky install"
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
+    "commit-msg": "npx --no-install varlet-cli commit-lint $1"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
@@ -330,6 +344,12 @@ module.exports = {
     ]
   }
 }
+```
+
+挂载钩子
+
+```shell
+npx simple-git-hooks
 ```
 
 创建 `.prettierignore`

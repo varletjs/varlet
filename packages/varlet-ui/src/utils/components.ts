@@ -25,12 +25,15 @@ export interface MountInstance {
 
 export interface ChildrenCounter {
   collect(instance: ComponentInternalInstance): void
+
   clear(instance: ComponentInternalInstance): void
+
   instances: ComponentInternalInstance[]
 }
 
 export interface BaseParentProvider<C> {
   collect(childProvider: C): void
+
   clear(childProvider: C): void
 }
 
@@ -286,6 +289,41 @@ export function useTeleport() {
 export function exposeApis<T = Record<string, any>>(apis: T) {
   const instance = getCurrentInstance()
   if (instance) {
-    Object.assign(instance.proxy, apis)
+    Object.assign(instance.proxy!, apis)
   }
+}
+
+type Classes = (string | [any, string, string?])[]
+
+export function createNamespace(name: string) {
+  const namespace = `var-${name}`
+
+  const createBEM = (suffix?: string): string => {
+    if (!suffix) return namespace
+
+    return suffix.startsWith('--') ? `${namespace}${suffix}` : `${namespace}__${suffix}`
+  }
+
+  const classes = (...classes: Classes): any[] => {
+    return classes.map((className) => {
+      if (isArray(className)) {
+        const [condition, truthy, falsy = null] = className
+        return condition ? truthy : falsy
+      }
+
+      return className
+    })
+  }
+
+  return {
+    n: createBEM,
+    classes,
+  }
+}
+
+export function call<F extends (...arg: any) => any, P extends Parameters<F>>(
+  fn?: F | null,
+  ...arg: P
+): ReturnType<F> | undefined {
+  if (fn) return fn(...arg)
 }

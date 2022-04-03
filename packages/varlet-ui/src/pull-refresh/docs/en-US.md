@@ -57,6 +57,22 @@ export default {
 }
 ```
 
+### Attention
+
+When the height of the `PullRefresh` is `0`, it will be unavailable, so you need to ensure that the height of its child elements is **not** `0` or set height for the `PullRefresh`:
+
+```html
+<var-pull-refresh>
+  <div style="height: 200px"></div>
+</var-pull-refresh>
+
+// or
+
+<var-pull-refresh style="height: 200px">
+  <div></div>
+</var-pull-refresh>
+```
+
 ## API
 
 ### Props

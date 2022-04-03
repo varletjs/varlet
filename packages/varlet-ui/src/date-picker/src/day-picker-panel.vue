@@ -2,13 +2,14 @@
   <div class="var-day-picker__panel">
     <div class="var-day-picker__content">
       <panel-header
+        ref="headerEl"
         type="day"
         :date="preview"
         :disabled="panelBtnDisabled"
         @check-panel="clickMonth"
         @check-date="checkDate"
       />
-      <transition :name="reverse ? 'var-date-picker-reverse-translatex' : 'var-date-picker-translatex'">
+      <transition :name="`var-date-picker${reverse ? '-reverse' : ''}-translatex`">
         <div :key="panelKey">
           <ul class="var-day-picker__head">
             <li v-for="week in sortWeekList" :key="week.index">{{ getDayAbbr(week.index) }}</li>
@@ -27,7 +28,7 @@
                 v-bind="{
                   ...buttonProps(day),
                 }"
-                @click="chooseDay(day)"
+                @click="(event) => chooseDay(day, event)"
               >
                 {{ filterDay(day) }}
               </var-button>
@@ -49,7 +50,7 @@ import { defineComponent, ref, computed, watch, onMounted, reactive } from 'vue'
 import { WEEK_HEADER } from '../props'
 import { toNumber } from '../../utils/shared'
 import { pack } from '../../locale'
-import type { Ref, ComputedRef, UnwrapRef, PropType } from 'vue'
+import type { Ref, ComputedRef, UnwrapRef, PropType, RendererNode } from 'vue'
 import type { Choose, Preview, ComponentProps, Week, WeekDict, PanelBtnDisabled } from '../props'
 
 dayjs.extend(isSameOrBefore)
@@ -90,6 +91,7 @@ export default defineComponent({
     const days: Ref<Array<number>> = ref([])
     const reverse: Ref<boolean> = ref(false)
     const panelKey: Ref<number> = ref(0)
+    const headerEl: Ref<RendererNode | null> = ref(null)
     const panelBtnDisabled: UnwrapRef<PanelBtnDisabled> = reactive({
       left: false,
       right: false,
@@ -102,7 +104,7 @@ export default defineComponent({
     const isSame: ComputedRef<boolean> = computed(
       () =>
         props.choose.chooseYear === props.preview.previewYear &&
-        props.choose.chooseMonth.index === props.preview.previewMonth.index
+        props.choose.chooseMonth?.index === props.preview.previewMonth.index
     )
 
     const sortWeekList: ComputedRef<Array<WeekDict>> = computed(() => {
@@ -165,9 +167,9 @@ export default defineComponent({
         componentProps: { range },
       }: { choose: Choose; componentProps: ComponentProps } = props
 
-      if (!chooseRangeDay.length) return false
-
       if (range) {
+        if (!chooseRangeDay.length) return false
+
         const isBeforeMax = dayjs(val).isSameOrBefore(dayjs(chooseRangeDay[1]), 'day')
         const isAfterMin = dayjs(val).isSameOrAfter(dayjs(chooseRangeDay[0]), 'day')
         return isBeforeMax && isAfterMin
@@ -195,12 +197,14 @@ export default defineComponent({
 
       const dayExist = (): boolean => {
         if (range || multiple) return shouldChoose(val)
+
         return toNumber(chooseDay) === day && isSame.value
       }
 
       const computeDisabled = (): boolean => {
         if (!inRange(day)) return true
         if (!allowedDates) return false
+
         return !allowedDates(val)
       }
       const disabled = computeDisabled()
@@ -208,6 +212,7 @@ export default defineComponent({
       const computeText = (): boolean => {
         if (disabled) return true
         if (range || multiple) return !shouldChoose(val)
+
         return !isSame.value || toNumber(chooseDay) !== day
       }
 
@@ -238,11 +243,13 @@ export default defineComponent({
       const isCover = textColorOrCover().startsWith('var-date-picker')
 
       return {
-        disabled,
         text: computeText(),
         outline: computeOutline(),
         textColor: isCover ? '' : textColorOrCover(),
         'var-date-picker-color-cover': isCover,
+        class: {
+          'var-day-picker__button-disabled': disabled,
+        },
       }
     }
 
@@ -252,8 +259,16 @@ export default defineComponent({
       emit('check-preview', 'month', checkType)
     }
 
-    const chooseDay = (day: number) => {
+    const chooseDay = (day: number, event: MouseEvent) => {
+      const buttonEl = event.currentTarget as HTMLButtonElement
+      if (buttonEl.classList.contains('var-day-picker__button-disabled')) return
+
       emit('choose-day', day)
+    }
+
+    // expose for internal
+    const forwardRef = (checkType: string) => {
+      headerEl.value!.checkDate(checkType)
     }
 
     onMounted(() => {
@@ -272,9 +287,11 @@ export default defineComponent({
     return {
       days,
       reverse,
+      headerEl,
       panelKey,
       sortWeekList,
       panelBtnDisabled,
+      forwardRef,
       filterDay,
       getDayAbbr,
       checkDate,

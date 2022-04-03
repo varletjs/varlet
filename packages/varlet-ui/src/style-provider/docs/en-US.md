@@ -1,5 +1,7 @@
 # Style Provider
 
+### Intro
+
 Component libraries organize styles through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
 Each component has a corresponding style variable, you can directly replace the style variable on the root node by overriding it with a CSS file.
 Or use StyleProvider components.

@@ -25,7 +25,7 @@ export default {
 }
 ```
 
-### 函数调用
+## 函数调用
 
 ### 基本使用
 
@@ -63,8 +63,8 @@ ImagePreview({
 </var-button>
 <var-image-preview :images="images" v-model:show="show" />
 
-<var-button 
-  type="warning" 
+<var-button
+  type="warning"
   block
   @click="currentShow = true"
 >
@@ -73,12 +73,12 @@ ImagePreview({
 <var-image-preview
   current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
   :images="images"
-  v-model:show="currentShow" 
+  v-model:show="currentShow"
 />
 
-<var-button 
-  type="warning" 
-  block 
+<var-button
+  type="warning"
+  block
   @click="closeShow = true"
 >
   展示关闭按钮
@@ -86,7 +86,7 @@ ImagePreview({
 <var-image-preview
   closeable
   :images="images"
-  v-model:show="closeShow" 
+  v-model:show="closeShow"
 />
 
 <var-button
@@ -96,11 +96,30 @@ ImagePreview({
 >
   监听关闭事件
 </var-button>
-<var-image-preview 
+<var-image-preview
   :images="images"
   v-model:show="closeEventShow"
-  @close="handleCloseEvent" 
+  @close="handleCloseEvent"
 />
+
+<var-button
+  block
+  type="warning" 
+  @click="extraSlotsShow = true"
+>
+  展示额外插槽
+</var-button>
+<var-image-preview :images="images" v-model:show="extraSlotsShow">
+  <template #extra>
+    <var-icon
+      name="menu"
+      :size="22"
+      color="#fff"
+      @click="menuShow = true"
+    />
+    <var-action-sheet :actions="actions" v-model:show="menuShow" />
+  </template>
+</var-image-preview>
 ```
 
 ```javascript
@@ -113,20 +132,35 @@ export default {
     const currentShow = ref(false)
     const closeShow = ref(false)
     const closeEventShow = ref(false)
+    const extraSlotsShow = ref(false)
+    const menuShow = ref(false)
     const images = ref([
       'https://varlet.gitee.io/varlet-ui/cat.jpg',
       'https://varlet.gitee.io/varlet-ui/cat2.jpg',
     ])
+    const actions = [
+      {
+        name: '操作',
+        icon: 'wrench'
+      },
+      {
+        name: '操作',
+        icon: 'wrench'
+      }
+    ]
 
     const handleCloseEvent = () => Snackbar('触发了关闭事件。')
-    
+
     return {
       show,
       currentShow,
       closeShow,
       closeEventShow,
+      extraSlotsShow,
+      menuShow,
       images,
-      handleCloseEvent,
+      actions,
+      handleCloseEvent
     }
   },
 }
@@ -165,12 +199,13 @@ export default {
 | --- | --- | --- |
 | `indicator` | 分页指示器 | `index: number` 图片索引 <br> `length: number` 图片总数 |
 | `close-icon` | 关闭按钮 | `-` |
+| `extra` | 额外插槽 | `-` |
 
 ### ImagePreview Options
 
 | 参数   | 说明  |  类型  | 默认值 |
 | ------ | ----------- | ------ | -------- |
-| `images`     | 需要预览的图片URL数组或者单个图片的 url  | _string[] \| string_ | `[]` |
+| `images`     | 需要预览的图片 URL 数组或者单个图片的 URL  | _string[] \| string_ | `[]` |
 | `current`    | 图片预览起始的 URL | _string_ | `-` |
 | `zoom`       | 双击放大倍数  | _string \| number_ | `2` |
 | `closeable`  | 是否显示关闭按钮 | _boolean_ | `false` |
@@ -184,14 +219,17 @@ export default {
 | `onClosed` | image-preview 关闭动画结束时候的回调 |  _() => void_ | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
-| 变量名  | 默认值   |
-| ------ | -------- |
-| `--image-preview-swipe-indicators-text-color` | ` #ddd`  |
-| `--image-preview-swipe-indicators-padding` | `16px 0` |
-| `--image-preview-zoom-container-background`| ` #000`  |
-| `--image-preview-close-icon-top` | `13px` |
-| `--image-preview-close-icon-right` | ` 14px` |
-| `--image-preview-close-icon-size` | `22px` |
-| `--image-preview-close-icon-color` | `#fff` |
+| 变量名                                           | 默认值   |
+|-----------------------------------------------| -------- |
+| `--image-preview-swipe-indicators-text-color` | `#ddd`  |
+| `--image-preview-swipe-indicators-padding`    | `16px 0` |
+| `--image-preview-zoom-container-background`   | `#000`  |
+| `--image-preview-close-icon-top`              | `14px` |
+| `--image-preview-close-icon-right`            | `14px` |
+| `--image-preview-close-icon-size`             | `22px` |
+| `--image-preview-close-icon-color`            | `#fff` |
+| `--image-preview-extra-top`                   | `14px` |
+| `--image-preview-extra-left`                  | `14px` |
+

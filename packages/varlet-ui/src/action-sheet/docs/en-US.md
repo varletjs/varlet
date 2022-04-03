@@ -27,8 +27,9 @@ export default {
 }
 ```
 
-### Functional
-#### Basic Use
+## Functional
+
+### Basic Use
 
 ```js
 import { Snackbar } from '@varlet/ui'
@@ -53,7 +54,7 @@ const action = await ActionSheet({
 action !== 'close' && Snackbar(`Your selected is:${action.name}`)
 ```
 
-#### Modify Title
+### Modify Title
 
 ```js
 ActionSheet({
@@ -75,7 +76,7 @@ ActionSheet({
 })
 ```
 
-#### Action Disabled
+### Action Disabled
 
 The option is passed `disabled` to leave the action in the disabled state
 
@@ -99,7 +100,7 @@ ActionSheet({
 })
 ```
 
-#### Disable Close On Click Action
+### Disable Close On Click Action
 
 Passing in `CloseOnClickAction` disallows the action of `ActionSheet` closing automatically when the option is selected. The user can select the action multiple times. Because `Promise` is only resolved once, it is recommended to use `onSelect` to listen for the action of the user
 
@@ -154,9 +155,9 @@ ActionSheet({
 })
 ```
 
-### Component Call
+## Component Call
 
-#### Basic Usage
+### Basic Usage
 
 ```html
 <var-button type="warning" block @click="show = true">Basic Usage</var-button>
@@ -200,7 +201,7 @@ export default {
 }
 ```
 
-#### Modify Title
+### Modify Title
 
 ```html
 <var-button type="warning" block @click="show = true">Modify Title</var-button>
@@ -245,7 +246,7 @@ export default {
 }
 ```
 
-#### Action Disabled
+### Action Disabled
 
 ```html
 <var-button type="warning" block @click="show = true">Action Disabled</var-button>
@@ -290,7 +291,7 @@ export default {
 }
 ```
 
-#### Disable close on click action
+### Disable close on click action
 
 ```html
 <var-button type="warning" block @click="show = true">Disable close on click action</var-button>
@@ -335,7 +336,7 @@ export default {
 }
 ```
 
-#### Custom Action Styles
+### Custom Action Styles
 
 ```html
 <var-button type="warning" block @click="show = true">Custom Action Styles</var-button>
@@ -395,7 +396,7 @@ export default {
 | `title` | Action sheet title | _string_ | `Select One` |
 | `overlay` | Whether to display the overlay | _boolean_ | `true` |  
 | `overlay-class` | Custom overlay class | _string_ | `-` |
-| `overlay-style` | Custom overlay style | _string_ | `-` |
+| `overlay-style` | Custom overlay style | _object_ | `-` |
 | `lock-scroll` | Whether to disable scrolling penetration, scrolling the Dialog when disabled will not cause the body to scroll | _boolean_ | `true` |
 | `close-on-click-action` | Whether to close the actions sheet when clicking action | _boolean_ | `true` |
 | `close-on-click-overlay` | Whether to click the overlay to close the action sheet | _boolean_ | `true` | 
@@ -420,7 +421,7 @@ export default {
 | `title` | Action sheet title | _string_ | `Select One` |
 | `overlay` | Whether to display the overlay | _boolean_ | `true` |  
 | `overlayClass` | Custom overlay class | _string_ | `-` |
-| `overlayStyle` | Custom overlay style | _string_ | `-` |
+| `overlayStyle` | Custom overlay style | _object_ | `-` |
 | `lockScroll` | Whether to disable scrolling penetration, scrolling the action sheet when disabled will not cause the body to scroll | _boolean_ | `true` |
 | `closeOnClickOverlay` | Whether to click the overlay to close the action sheet | _boolean_ | `true` |
 | `onOpen` | Action sheet open callback | _() => void_ | `-` |

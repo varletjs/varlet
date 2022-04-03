@@ -25,14 +25,14 @@ export default {
 }
 ```
 
-### 函数调用
-#### 基本使用
+## 函数调用
+### 基本使用
 
 ```js
 Dialog('兰亭临帖 行书如行云流水')
 ```
 
-#### 修改标题
+### 修改标题
 
 ```js
 Dialog({
@@ -41,7 +41,7 @@ Dialog({
 })
 ```
 
-#### 隐藏按钮
+### 隐藏按钮
 
 ```js
 Dialog({
@@ -51,10 +51,10 @@ Dialog({
 })
 ```
 
-#### 处理用户行为
+### 处理用户行为
 
 可以通过 `Dialog` 方法的返回值获取用户行为, 返回值是一个 `promise`。
-包含` confirm(确认)`、 `cancel(取消)`、 `close(通过点击遮罩层触发关闭)`三种状态。
+包含 `confirm(确认)`、`cancel(取消)`、`close(通过点击遮罩层触发关闭)` 三种状态。
 
 ```js
 import { Snackbar } from '@varlet/ui'
@@ -83,7 +83,7 @@ const actions = {
 
 const onBeforeClose = (action, done) => {
   Snackbar.loading('正在异步关闭')
-  
+
   setTimeout(() => {
     actions[action]()
     done()
@@ -96,9 +96,9 @@ Dialog({
 })
 ```
 
-### 组件调用
+## 组件调用
 
-#### 基本使用
+### 基本使用
 
 ```html
 <var-button type="warning" block @click="show = true">基本使用</var-button>
@@ -128,7 +128,7 @@ export default {
 }
 ```
 
-#### 异步关闭
+### 异步关闭
 
 ```html
 <var-button type="warning" block @click="show = true">异步关闭</var-button>
@@ -172,7 +172,7 @@ export default {
 }
 ```
 
-#### 自定义插槽
+### 自定义插槽
 
 ```html
 <var-button type="warning" block @click="show = true">自定义插槽</var-button>
@@ -203,12 +203,12 @@ export default {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `v-model:show` | 是否显示对话框 | _boolean_ | `false` |
 | `title` | 对话框标题 | _string_ | `提示` |
 | `message` | 对话框内容 | _string_ | `-` |
-| `message-align` | 对话框内容文字对齐方式，可选值 `center`, `left`, `right` | _string_ | `left` |
+| `message-align` | 对话框内容文字对齐方式，可选值 `center` `left` `right` | _string_ | `left` |
 | `confirm-button` | 是否显示确认按钮 | _boolean_ | `true` |
 | `cancel-button` | 是否显示取消按钮 | _boolean_ | `true` |
 | `confirm-button-text` | 确认按钮文字 | _string_ | `确认` |
@@ -217,11 +217,13 @@ export default {
 | `cancel-button-text-color` | 取消按钮文字颜色 | _string_ | `-` |
 | `confirm-button-color` | 确认按钮背景颜色 | _string_ | `-` |
 | `cancel-button-color` | 取消按钮背景颜色 | _string_ | `-` |
-| `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
+| `dialog-class` | 对话框主体区域的 class | _string_ | `-` |
+| `dialog-style` | 对话框主体区域的 style | _object_ | `-` |
+| `overlay` | 是否显示遮罩层 | _boolean_ | `true` |
 | `overlay-class` | 自定义遮罩层的 class | _string_ | `-` |
-| `overlay-style` | 自定义遮罩层的 style | _string_ | `-` |
+| `overlay-style` | 自定义遮罩层的 style | _object_ | `-` |
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
-| `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` | 
+| `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
 | `teleport` | 弹出层挂载的位置 | _TeleportProps['to']_ | `-` |
 
 ### 事件
@@ -239,8 +241,8 @@ export default {
 
 ### Dialog Options
 #### 函数式调用时传入的选项
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `title` | 对话框标题 | _string_ | `提示` |
 | `message` | 对话框内容 | _string_ | `-` |
 | `messageAlign` | 对话框内容文字对齐方式，可选值 `center` `left` `right` | _string_ | `left` |
@@ -252,9 +254,11 @@ export default {
 | `cancelButtonTextColor` | 取消按钮文字颜色 | _string_ | `-` |
 | `confirmButtonColor` | 确认按钮背景颜色 | _string_ | `-` |
 | `cancelButtonColor` | 取消按钮背景颜色 | _string_ | `-` |
-| `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
-| `overlayClass` | 自定义遮罩层的class | _string_ | `-` |
-| `overlayStyle` | 自定义遮罩层的style | _string_ | `-` |
+| `dialogClass` | 对话框主体区域的 class | _string_ | `-` |
+| `dialogStyle` | 对话框主体区域的 style | _object_ | `-` |
+| `overlay` | 是否显示遮罩层 | _boolean_ | `true` |
+| `overlayClass` | 自定义遮罩层的 class | _string_ | `-` |
+| `overlayStyle` | 自定义遮罩层的 style | _object_ | `-` |
 | `lockScroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `closeOnClickOverlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
 | `onOpen` | 对话框开启回调 | _() => void_ | `-` |
@@ -274,13 +278,13 @@ export default {
 | `title` | 对话框标题 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
 | `--dialog-width` | `280px` |
 | `--dialog-background` | `#fff` |
-| `--dialog-border-radius` | `2px` |
+| `--dialog-border-radius` | `3px` |
 | `--dialog-title-padding` | `20px 20px 0` |
 | `--dialog-title-font-size` | `var(--font-size-lg)` |
 | `--dialog-message-color` | `#888` |

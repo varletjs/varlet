@@ -27,7 +27,7 @@
 import VarLoading from '../loading'
 import Ripple from '../ripple'
 import { defineComponent, onMounted, onUnmounted, ref, nextTick } from 'vue'
-import { getParentScroller, isHidden, toPxNum } from '../utils/elements'
+import { getParentScroller, toPxNum } from '../utils/elements'
 import { props } from './props'
 import { isNumber, dt } from '../utils/shared'
 import { pack } from '../locale'
@@ -57,16 +57,14 @@ export default defineComponent({
 
       const { bottom: detectorBottom } = (detectorEl.value as HTMLElement).getBoundingClientRect()
 
-      return detectorBottom - toPxNum(props.offset) <= containerBottom
+      // The fractional part of the detectorBottom when bottoming out overflows
+      // https://github.com/varletjs/varlet/issues/310
+      return Math.floor(detectorBottom) - toPxNum(props.offset) <= containerBottom
     }
 
     // expose
     const check = async () => {
       await nextTick()
-
-      if (isHidden(listEl.value as HTMLElement)) {
-        return
-      }
 
       const { loading, finished, error } = props
 

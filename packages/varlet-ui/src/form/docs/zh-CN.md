@@ -95,9 +95,9 @@ export default {
     <var-checkbox :checked-value="2">睡觉</var-checkbox>
     <var-checkbox :checked-value="3">打游戏</var-checkbox>
   </var-checkbox-group>
-  <var-rate 
+  <var-rate
     :rules="[v => v >= 3 || 必须大于2]"
-    v-model="formData.score" 
+    v-model="formData.score"
   />
   <div>
     <var-switch
@@ -146,8 +146,8 @@ export default {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 
@@ -166,7 +166,7 @@ export default {
 | `default` | 表单内容 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

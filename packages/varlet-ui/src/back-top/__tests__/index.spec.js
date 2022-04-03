@@ -14,6 +14,8 @@ test('test backTop example', () => {
   const wrapper = mount(example, { attachTo: document.body })
 
   expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test backTop props', async () => {
@@ -42,9 +44,9 @@ test('test backTop props', async () => {
 
   await delay(0)
 
-  const backTopEl = wrapper.find('.var-back-top')
+  const backTopEl = document.querySelector('.var-back-top')
 
-  expect(backTopEl.classes('var-back-top--active')).toBe(false)
+  expect(backTopEl.classList.contains('var-back-top--active')).toBe(false)
 
   wrapper.element.scrollTop = 600
 
@@ -52,9 +54,9 @@ test('test backTop props', async () => {
 
   await delay(500)
 
-  expect(backTopEl.classes('var-back-top--active')).toBe(true)
+  expect(backTopEl.classList.contains('var-back-top--active')).toBe(true)
 
-  await backTopEl.trigger('click')
+  await backTopEl.click()
 
   await delay(500)
 

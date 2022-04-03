@@ -1,7 +1,7 @@
 # 弹出层
 
 ### 介绍
-创建一个可以从上、下、左、右、中心弹出的容器， 用于展示信息。默认使用`teleport`插入到`body`尾部。
+创建一个可以从上、下、左、右、中心弹出的容器，用于展示信息。默认使用 `teleport` 插入到 `body` 尾部。
 
 ### 引入
 
@@ -15,7 +15,7 @@ createApp().use(Popup)
 ### 弹出位置
 
 ```html
-<var-button 
+<var-button
   class="mt-10"
   type="primary"
   block
@@ -34,23 +34,23 @@ createApp().use(Popup)
 <var-button
   class="mt-10"
   type="primary"
-  block 
+  block
   @click="top = true"
 >
   上方弹出
 </var-button>
-<var-button 
-  class="mt-10" 
+<var-button
+  class="mt-10"
   type="primary"
   block
   @click="left = true"
 >
   左侧弹出
 </var-button>
-<var-button 
-  class="mt-10" 
+<var-button
+  class="mt-10"
   type="primary"
-  block 
+  block
   @click="right = true"
 >
   右侧弹出
@@ -59,9 +59,9 @@ createApp().use(Popup)
 // 居中弹出
 <var-popup v-model:show="center">
   <div class="block">
-    素胚勾勒出青花笔锋浓转淡, 
-    瓶身描绘的牡丹一如你初妆, 
-    冉冉檀香透过窗心事我了然, 
+    素胚勾勒出青花笔锋浓转淡,
+    瓶身描绘的牡丹一如你初妆,
+    冉冉檀香透过窗心事我了然,
     宣纸上走笔至此搁一半。
   </div>
 </var-popup>
@@ -69,9 +69,9 @@ createApp().use(Popup)
 // 下方弹出
 <var-popup position="bottom" v-model:show="bottom">
   <div class="block">
-    素胚勾勒出青花笔锋浓转淡, 
-    瓶身描绘的牡丹一如你初妆, 
-    冉冉檀香透过窗心事我了然, 
+    素胚勾勒出青花笔锋浓转淡,
+    瓶身描绘的牡丹一如你初妆,
+    冉冉檀香透过窗心事我了然,
     宣纸上走笔至此搁一半。
   </div>
 </var-popup>
@@ -79,9 +79,9 @@ createApp().use(Popup)
 // 上方弹出
 <var-popup position="top" v-model:show="top">
   <div class="block">
-    素胚勾勒出青花笔锋浓转淡, 
-    瓶身描绘的牡丹一如你初妆, 
-    冉冉檀香透过窗心事我了然, 
+    素胚勾勒出青花笔锋浓转淡,
+    瓶身描绘的牡丹一如你初妆,
+    冉冉檀香透过窗心事我了然,
     宣纸上走笔至此搁一半。
   </div>
 </var-popup>
@@ -89,9 +89,9 @@ createApp().use(Popup)
 // 左侧弹出
 <var-popup position="left" v-model:show="left">
   <div class="block">
-    素胚勾勒出青花笔锋浓转淡, 
+    素胚勾勒出青花笔锋浓转淡,
     瓶身描绘的牡丹一如你初妆,
-    冉冉檀香透过窗心事我了然, 
+    冉冉檀香透过窗心事我了然,
     宣纸上走笔至此搁一半。
   </div>
 </var-popup>
@@ -99,9 +99,9 @@ createApp().use(Popup)
 // 右侧弹出
 <var-popup position="right" v-model:show="right">
   <div class="block">
-    素胚勾勒出青花笔锋浓转淡, 
-    瓶身描绘的牡丹一如你初妆, 
-    冉冉檀香透过窗心事我了然, 
+    素胚勾勒出青花笔锋浓转淡,
+    瓶身描绘的牡丹一如你初妆,
+    冉冉檀香透过窗心事我了然,
     宣纸上走笔至此搁一半。
   </div>
 </var-popup>
@@ -146,44 +146,44 @@ export default {
 <var-button
   class="mt-10"
   type="primary"
-  block 
+  block
   @click="overlayClass = true"
 >
-  遮罩层class
+  遮罩层 class
 </var-button>
-<var-button 
+<var-button
   class="mt-10"
   type="primary"
-  block 
+  block
   @click="overlayStyle = true"
 >
-  遮罩层style
+  遮罩层 style
 </var-button>
 
-// 遮罩层class
-<var-popup 
-  overlay-class="custom-overlay" 
+// 遮罩层 class
+<var-popup
+  overlay-class="custom-overlay"
   v-model:show="overlayClass"
 >
   <div class="block">
-    素胚勾勒出青花笔锋浓转淡, 
+    素胚勾勒出青花笔锋浓转淡,
     瓶身描绘的牡丹一如你初妆,
-    冉冉檀香透过窗心事我了然, 
+    冉冉檀香透过窗心事我了然,
     宣纸上走笔至此搁一半。
   </div>
 </var-popup>
 
-// 遮罩层style
-<var-popup 
+// 遮罩层 style
+<var-popup
   :overlay-style="{
-    backgroundColor: 'rgba(0, 0, 0, 0.3)' 
+    backgroundColor: 'rgba(0, 0, 0, 0.3)'
   }"
   v-model:show="overlayStyle"
 >
   <div class="block">
-    素胚勾勒出青花笔锋浓转淡, 
-    瓶身描绘的牡丹一如你初妆, 
-    冉冉檀香透过窗心事我了然, 
+    素胚勾勒出青花笔锋浓转淡,
+    瓶身描绘的牡丹一如你初妆,
+    冉冉檀香透过窗心事我了然,
     宣纸上走笔至此搁一半。
   </div>
 </var-popup>
@@ -244,7 +244,7 @@ export default {
   <div class="block">
     素胚勾勒出青花笔锋浓转淡,
     瓶身描绘的牡丹一如你初妆,
-    冉冉檀香透过窗心事我了然, 
+    冉冉檀香透过窗心事我了然,
     宣纸上走笔至此搁一半。
   </div>
 </var-popup>
@@ -270,16 +270,16 @@ export default {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `v-model:show` | 是否显示弹出层 | _boolean_ | `false` |
 | `position` | 弹出位置，可选值为 `top` `bottom` `right` `left` `center` | _string_ | `center` |
-| `overlay` | 是否显示遮罩层 | _boolean_ | `true` |  
-| `overlay-class` | 自定义遮罩层的class | _string_ | `-` |
-| `overlay-style` | 自定义遮罩层的style | _string_ | `-` |
+| `overlay` | 是否显示遮罩层 | _boolean_ | `true` |
+| `overlay-class` | 自定义遮罩层的 class | _string_ | `-` |
+| `overlay-style` | 自定义遮罩层的 style | _object_ | `-` |
 | `transition` | 过度动画的名称 | _string_ | `-` |
-| `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发body的滚动 | _boolean_ | `true` |
-| `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` | 
+| `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
+| `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
 | `teleport` | 弹出层挂载的位置 | _TeleportProps['to']_ | `-` |
 
 ### 事件
@@ -299,7 +299,7 @@ export default {
 | `default` | 弹出层内容 | `-` |
 
 ### 样式变量
-以下为组件使用的css变量,可以使用[StyleProvider组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |

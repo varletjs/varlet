@@ -213,20 +213,21 @@ export default defineComponent({
     })
 
     watch(
-      [current, pageCount],
-      ([newCurrent, newCount], [oldCurrent, oldCount]) => {
-        if (newCurrent > newCount) {
-          current.value = newCount
+      [current, size],
+      ([newCurrent, newSize], [oldCurrent, oldSize]) => {
+        if (newCurrent > pageCount.value) {
+          current.value = pageCount.value
           return
         }
 
         let list = []
-        const { maxPagerCount } = props
-        const rEllipseSign = newCount - (maxPagerCount - activePosition.value) - 1
+        const { maxPagerCount, total, onChange } = props
+        const oldCount = Math.ceil(toNumber(total) / toNumber(oldSize))
+        const rEllipseSign = pageCount.value - (maxPagerCount - activePosition.value) - 1
         simpleValue.value = `${newCurrent}`
 
-        if (newCount - 2 > maxPagerCount) {
-          if (oldCurrent === undefined || newCount !== oldCount) {
+        if (pageCount.value - 2 > maxPagerCount) {
+          if (oldCurrent === undefined || pageCount.value !== oldCount) {
             for (let i = 2; i < maxPagerCount + 2; i++) list.push(i)
           }
 
@@ -258,21 +259,23 @@ export default defineComponent({
             list = []
 
             for (let i = 1; i < maxPagerCount + 1; i++) {
-              list.push(newCount - (maxPagerCount - i) - 1)
+              list.push(pageCount.value - (maxPagerCount - i) - 1)
             }
 
             isHideEllipsisHead.value = false
             isHideEllipsisTail.value = true
           }
 
-          list = [1, '...', ...list, '...', newCount]
+          list = [1, '...', ...list, '...', pageCount.value]
         } else {
-          for (let i = 1; i <= newCount; i++) list.push(i)
+          for (let i = 1; i <= pageCount.value; i++) list.push(i)
         }
 
         pageList.value = list
 
-        if (oldCurrent !== undefined) props.onChange?.(newCurrent, size.value)
+        if (oldCurrent !== undefined) onChange?.(newCurrent, newSize)
+        props['onUpdate:current']?.(newCurrent)
+        props['onUpdate:size']?.(newSize)
       },
       {
         immediate: true,

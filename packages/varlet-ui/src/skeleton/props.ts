@@ -21,6 +21,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  fullscreenZIndex: {
+    type: [Number, String],
+    default: 100,
+  },
   titleWidth: {
     type: [Number, String],
   },

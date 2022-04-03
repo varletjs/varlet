@@ -1,0 +1,19 @@
+{
+  "name": "vite-varlet-starter",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.0",
+    "@varlet/ui": "latest",
+    "@varlet/touch-emulator": "latest"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.4.0",
+    "@vue/compiler-sfc": "^3.2.0",
+    "vite": "^2.4.4"
+  }
+}

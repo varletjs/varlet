@@ -1,6 +1,4 @@
-// @ts-ignore
 import routes from '@mobile-routes'
-// @ts-ignore
 import config from '@config'
 import App from './App.vue'
 import '@varlet/touch-emulator'

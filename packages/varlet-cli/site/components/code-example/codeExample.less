@@ -1,6 +1,16 @@
 .var-site-code-example {
-  margin-top: 12px;
+  margin-top: 16px;
+  margin-bottom: 4px;
   position: relative;
+  border: thin solid var(--site-config-color-hl-border);
+  border-radius: 4px;
+  transition: border .25s;
+
+  &:hover {
+    .var-site-code-example__toolbar {
+      opacity: 1;
+    }
+  }
 
   &__toolbar {
     display: flex;
@@ -8,10 +18,12 @@
     position: absolute;
     z-index: 1;
     right: 10px;
-    top: 20px;
+    top: 10px;
+    opacity: 0;
+    transition: .25s all;
 
     button {
-      color: white !important;
+      color: var(--site-config-color-hl-code) !important;
     }
   }
 
@@ -19,5 +31,11 @@
     transition: all .25s;
     overflow: hidden;
     border-radius: 4px;
+  }
+
+  &--scroller {
+    code {
+      white-space: nowrap;
+    }
   }
 }

@@ -43,7 +43,7 @@ test('test timePicker style and format', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  await wrapper.setData({ type: '24hr' })
+  await wrapper.setData({ format: '24hr' })
 
   expect(wrapper.html()).toMatchSnapshot()
 })

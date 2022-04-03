@@ -82,7 +82,7 @@ test('test render initial index', async () => {
       initialIndex: 2,
     },
   })
-  await delay(50)
+  await delay(200)
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
@@ -189,7 +189,7 @@ test('test autoplay', async () => {
       onChange,
     },
   })
-  await delay(16)
+  await delay(100)
   await delay(100)
   expect(onChange).toHaveBeenLastCalledWith(1)
   await delay(100)

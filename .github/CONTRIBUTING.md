@@ -5,8 +5,8 @@ Hi! We are really excited that you are interested in contributing to Varlet. Bef
 ### Ready to start
 
 We welcome everyone to join the construction of the project.
-As a pre requirement, you need have a preliminary understanding of `Vue-next`, if you don't know Vue-next
-this is a good [learn document for Vue-next](https://v3.vuejs.org/).
+As a pre requirement, you need have a preliminary understanding of `vuejs/core`, if you don't know `vuejs/core`
+this is a good [learn document for vuejs/core](https://v3.vuejs.org/).
 And you can refer to [GitHub's help documentation](https://help.github.com/en/github/using-git) if you don't know the basic operation of Git
 
 The Varlet repo is a monorepo using pnpm workspaces. The package manager used to install and link dependencies must be [pnpm](https://pnpm.io/).

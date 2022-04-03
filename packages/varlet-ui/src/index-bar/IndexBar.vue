@@ -20,11 +20,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { computed, defineComponent, ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { easeInOutCubic, isPlainObject, toNumber } from '../utils/shared'
 import {
+  doubleRaf,
   getParentScroller,
   getScrollLeft,
+  getScrollTop,
   nextTickFrame,
   requestAnimationFrame,
   scrollTo as varScrollTo,
@@ -41,7 +43,6 @@ export default defineComponent({
   setup(props) {
     const { length, indexAnchors, bindIndexAnchors } = useIndexAnchors()
 
-    const scrollEl: Ref<HTMLElement | null> = ref(null)
     const clickedName: Ref<string | number> = ref('')
     const scroller: Ref<HTMLElement | Window | null> = ref(null)
     const barEl: Ref<HTMLDivElement | null> = ref(null)
@@ -65,14 +66,17 @@ export default defineComponent({
 
     const emitEvent = (anchor: IndexAnchorProvider | number | string) => {
       const anchorName = isPlainObject(anchor) ? anchor.name.value : anchor
-      if (anchorName === active.value) return
+      if (anchorName === active.value || anchorName === undefined) return
 
       active.value = anchorName
       props.onChange?.(anchorName)
     }
 
     const handleScroll = () => {
-      const { scrollTop, scrollHeight } = scrollEl.value as HTMLElement
+      const scrollTop = getScrollTop(scroller.value!)
+      const scrollHeight =
+        scroller.value === window ? document.body.scrollHeight : (scroller.value as HTMLElement).scrollHeight
+
       const { offsetTop } = barEl.value as HTMLElement
       indexAnchors.forEach((anchor: IndexAnchorProvider, index: number) => {
         const anchorTop = anchor.ownTop.value
@@ -93,16 +97,18 @@ export default defineComponent({
     }
 
     const anchorClick = async (anchorName: string | number, manualCall?: boolean) => {
+      const { offsetTop } = barEl.value as HTMLElement
+
       if (manualCall) props.onClick?.(anchorName)
       if (anchorName === active.value) return
       const indexAnchor = indexAnchors.find(({ name }: IndexAnchorProvider) => anchorName === name.value)
       if (!indexAnchor) return
-      const top = indexAnchor.ownTop.value
-      const left = getScrollLeft(scrollEl.value as HTMLElement)
+      const top = indexAnchor.ownTop.value - stickyOffsetTop.value + offsetTop
+      const left = getScrollLeft(scroller.value!)
       clickedName.value = anchorName
       emitEvent(anchorName)
 
-      await varScrollTo(scrollEl.value as HTMLElement, {
+      await varScrollTo(scroller.value!, {
         left,
         top,
         animation: easeInOutCubic,
@@ -121,22 +127,19 @@ export default defineComponent({
 
     watch(
       () => length.value,
-      () =>
-        nextTick(() => {
-          indexAnchors.forEach(({ name, setOwnTop }) => {
-            if (name.value) anchorNameList.value.push(name.value)
-            setOwnTop()
-          })
+      async () => {
+        await doubleRaf()
+        indexAnchors.forEach(({ name, setOwnTop }) => {
+          if (name.value) anchorNameList.value.push(name.value)
+          setOwnTop()
         })
+      }
     )
 
-    onMounted(() => {
+    onMounted(async () => {
+      await doubleRaf()
       scroller.value = getParentScroller(barEl.value as HTMLDivElement)
-      scrollEl.value =
-        scroller.value === window
-          ? (scroller.value as Window).document.documentElement
-          : (scroller.value as HTMLElement)
-      scroller.value?.addEventListener('scroll', handleScroll)
+      scroller.value.addEventListener('scroll', handleScroll)
     })
 
     onBeforeUnmount(() => {

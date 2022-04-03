@@ -1,12 +1,12 @@
 # 浏览器适配
 
 ### 介绍
-组件库提供移动端和桌面端适配方案,
-移动端使用 `postcss-px-to-viewport` 方案进行适配,
+组件库提供移动端和桌面端适配方案，
+移动端使用 `postcss-px-to-viewport` 方案进行适配，
 桌面端使用 `@varlet/touch-emulator` 方案进行适配。
 
 ### 移动端适配
-组件库设计基于 `375px` 宽度设计稿，推荐使用postcss插件将 `px` 单位转换成 `vw` 单位从而实现移动端适配。
+组件库设计基于 `375px` 宽度设计稿，推荐使用 postcss 插件将 `px` 单位转换成 `vw` 单位从而实现移动端适配。
 在 `Webpack/Vite` 项目根路径下创建 `postcss.config.js` 并做如下配置之后 `375px -> 100vw`
 
 ```shell

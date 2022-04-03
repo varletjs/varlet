@@ -74,7 +74,7 @@ test('test uploader preview', async () => {
   await wrapper.vm.handleChange(createEvent('cat.jpg'))
   await delay(16)
   await wrapper.find('.var-uploader__file').trigger('click')
-  await delay(16)
+  await delay(100)
 
   expect(document.querySelector('.var-popup').style.display).toBe('')
   ImagePreview.close()
@@ -238,6 +238,33 @@ test('test uploader length over maxlength in multiple mode', async () => {
 
   await wrapper.vm.handleChange(event)
   expect(wrapper.vm.modelValue.length).toBe(1)
+
+  wrapper.unmount()
+  mockRestore()
+})
+
+test('test uploader hide file list', async () => {
+  const { mockRestore } = mockFileReader('data:image/png;base64,')
+  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      hideList: true,
+      modelValue: [],
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  const event = {
+    target: {
+      files: [new File([], 'cat.png'), new File([], 'dog.png')],
+    },
+  }
+
+  await wrapper.vm.handleChange(event)
+  expect(wrapper.vm.files.length).toBe(0)
 
   wrapper.unmount()
   mockRestore()

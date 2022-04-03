@@ -117,15 +117,15 @@ export default {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 | 
-| --- | --- | --- | --- | 
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | `v-model` | 绑定的值 | _string \| number_ | `0` |
 | `min` | 最小值 | _string \| number_ | `-` |
 | `max` | 最大值 | _string \| number_ | `-` |
 | `step` | 步长 | _string \| number_ | `-` |
 | `decimal-length` | 保留小数位数 | _string \| number_ | `-` |
-| `color` | 背景颜色 | _string_ | `-` |  
-| `input-width` | 输入框的宽度 | _string \| number_ | `-` |  
+| `color` | 背景颜色 | _string_ | `-` |
+| `input-width` | 输入框的宽度 | _string \| number_ | `-` |
 | `input-text-size` | 输入框的文字大小 | _string \| number_ | `-` |
 | `button-size` | 按钮大小 | _string_ | `true` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
@@ -137,7 +137,7 @@ export default {
 | `decrement-button` | 是否显示减少按钮 | _boolean_ | `true` |
 | `press` | 是否开启按钮长按 | _boolean_ | `true` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
-| `validate-trigger` | 触发验证的时机， 可选值为 `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _ValidateTriggers[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
+| `validate-trigger` | 触发验证的时机，可选值为 `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _ValidateTriggers[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: number) => any>_ | `-` |
 
 ### 方法
@@ -146,7 +146,7 @@ export default {
 | --- | --- | --- | --- |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
-| `reset` | 清空绑定的值(设置为 `min \|\| 0` )和校验信息 | `-` | `-` |
+| `reset` | 清空绑定的值(设置为 `min \|\| 0`)和校验信息 | `-` | `-` |
 
 ### 事件
 
@@ -159,7 +159,7 @@ export default {
 
 
 ### 样式变量
-以下为组件使用的 css 变量,可以使用 [StyleProvider 组件](#/zh-CN/style-provider)进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
 | --- | --- |
@@ -172,4 +172,4 @@ export default {
 | `--counter-button-size` | `28px` |
 | `--counter-button-icon-size` | `100%` |
 | `--counter-disabled-color` | `var(--color-text-disabled)` |
-| `--input-error-color` | `var(--color-danger`) |
+| `--input-error-color` | `var(--color-danger)` |

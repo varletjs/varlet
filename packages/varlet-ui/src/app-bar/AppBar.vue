@@ -9,11 +9,7 @@
   >
     <div class="var-app-bar__left">
       <slot name="left" />
-      <div
-        class="var-app-bar__title"
-        :style="{ paddingLeft: $slots.left ? 0 : undefined }"
-        v-if="titlePosition === 'left'"
-      >
+      <div class="var-app-bar__title" :style="{ paddingLeft }" v-if="titlePosition === 'left'">
         <slot>{{ title }}</slot>
       </div>
     </div>
@@ -23,11 +19,7 @@
     </div>
 
     <div class="var-app-bar__right">
-      <div
-        class="var-app-bar__title"
-        :style="{ paddingRight: $slots.right ? 0 : undefined }"
-        v-if="titlePosition === 'right'"
-      >
+      <div class="var-app-bar__title" :style="{ paddingRight }" v-if="titlePosition === 'right'">
         <slot>{{ title }}</slot>
       </div>
       <slot name="right" />
@@ -36,12 +28,29 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, Ref, onMounted, onUpdated } from 'vue'
 import { props } from './props'
 
 export default defineComponent({
   name: 'VarAppBar',
   props,
+  setup(props, { slots }) {
+    const paddingLeft: Ref<number | undefined> = ref()
+    const paddingRight: Ref<number | undefined> = ref()
+
+    const computePadding = () => {
+      paddingLeft.value = slots.left ? 0 : undefined
+      paddingRight.value = slots.right ? 0 : undefined
+    }
+
+    onMounted(computePadding)
+    onUpdated(computePadding)
+
+    return {
+      paddingLeft,
+      paddingRight,
+    }
+  },
 })
 </script>
 
