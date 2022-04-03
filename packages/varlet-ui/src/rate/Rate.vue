@@ -64,7 +64,7 @@ export default defineComponent({
 
       return {
         [n('content')]: true,
-        [n('--disable')]: form?.disabled.value,
+        [n('--disabled')]: form?.disabled.value,
         [n('--error')]: errorMessage.value,
         [n('--primary')]: type !== 'empty' && !color,
       }
