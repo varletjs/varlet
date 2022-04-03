@@ -1,10 +1,6 @@
 <template>
-  <div 
-   :class="n('warp')"
-  >
-    <div 
-      :class="n()"
-    >
+  <div :class="n('warp')">
+    <div :class="n()">
       <div
         :key="val"
         v-for="val in toNumber(count)"
