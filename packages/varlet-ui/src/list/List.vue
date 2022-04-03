@@ -49,9 +49,9 @@ export default defineComponent({
     let scroller: HTMLElement | Window
 
     const load = () => {
-      props['onUpdate:error']?.(false)
-      props['onUpdate:loading']?.(true)
-      props.onLoad?.()
+      call(props['onUpdate:error'], false)
+      call(props['onUpdate:loading'], true)
+      call(props.onLoad)
     }
 
     const isReachBottom = () => {
