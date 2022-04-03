@@ -1,10 +1,10 @@
 <template>
-  <div class="var-snackbar" :style="{ pointerEvents: isForbidClick ? 'auto' : 'none', zIndex }" v-show="show">
+  <div :class="n()" :style="{ pointerEvents: isForbidClick ? 'auto' : 'none', zIndex }" v-show="show">
     <div :class="snackbarClass" :style="{ zIndex }">
-      <div class="var-snackbar__content" :class="[contentClass]">
+      <div :class="[n('content'), contentClass]">
         <slot>{{ content }}</slot>
       </div>
-      <div class="var-snackbar__action">
+      <div :class="n('action')">
         <var-icon v-if="iconName" :name="iconName" />
         <var-loading v-if="type === 'loading'" :type="loadingType" :size="loadingSize" />
         <slot name="action" />
@@ -23,6 +23,9 @@ import { useLock } from '../context/lock'
 import { SNACKBAR_TYPE } from './index'
 import type { Ref, ComputedRef } from 'vue'
 import type { SnackbarType } from './index'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('snackbar')
 
 const ICON_TYPE_DICT: Record<SnackbarType, string> = {
   success: 'checkbox-marked-circle',
@@ -45,14 +48,16 @@ export default defineComponent({
 
     useLock(props, 'show', 'lockScroll')
 
-    const snackbarClass: ComputedRef<string> = computed(() => {
+    const snackbarClass: ComputedRef<any[]> = computed(() => {
       const { position, vertical, type } = props
 
-      const baseClass = `var-snackbar__wrapper var-snackbar__wrapper-${position} var-elevation--4`
-      const verticalClass = vertical ? ' var-snackbar__vertical' : ''
-      const typeClass = type && SNACKBAR_TYPE.includes(type) ? ` var-snackbar__wrapper-${type}` : ''
-
-      return `${baseClass}${verticalClass}${typeClass}`
+      return classes(
+        n('wrapper'),
+        n(`wrapper-${position}`),
+        'var-elevation--4',
+        [vertical, n('vertical')],
+        [type && SNACKBAR_TYPE.includes(type), n(`wrapper-${type}`)]
+      )
     })
 
     const isForbidClick: ComputedRef<boolean> = computed(() => props.type === 'loading' || props.forbidClick)
@@ -98,6 +103,8 @@ export default defineComponent({
     })
 
     return {
+      n,
+      classes,
       zIndex,
       snackbarClass,
       iconName,
