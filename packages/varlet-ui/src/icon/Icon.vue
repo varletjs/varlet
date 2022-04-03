@@ -1,12 +1,14 @@
 <template>
   <component
-    class="var-icon"
     :is="isURL(name) ? 'img' : 'i'"
-    :class="[
-      `${namespace}--set`,
-      isURL(name) ? 'var-icon__image' : `${namespace}-${nextName}`,
-      shrinking ? 'var-icon--shrinking' : null,
-    ]"
+    :class="
+      classes(
+        n(),
+        `${namespace}--set`,
+        [isURL(name), n('image'), `${namespace}-${nextName}`],
+        [shrinking, n('--shrinking')]
+      )
+    "
     :style="{
       color,
       transition: `transform ${toNumber(transition)}ms`,
@@ -25,6 +27,9 @@ import { isURL, toNumber } from '../utils/shared'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
 import type { Ref } from 'vue'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('icon')
 
 export default defineComponent({
   name: 'VarIcon',
@@ -52,6 +57,8 @@ export default defineComponent({
     watch(() => props.name, handleNameChange, { immediate: true })
 
     return {
+      n,
+      classes,
       nextName,
       shrinking,
       isURL,
