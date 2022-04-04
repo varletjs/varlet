@@ -1,6 +1,19 @@
 <template>
-  <div :class="n()" :style="{ pointerEvents: isForbidClick ? 'auto' : 'none', zIndex }" v-show="show">
-    <div :class="snackbarClass" :style="{ zIndex }">
+  <div
+    :class="n()"
+    :style="{ pointerEvents: isForbidClick ? 'auto' : 'none', zIndex }"
+    v-show="show"
+  >
+    <div
+      :class="classes(
+        n('wrapper'),
+        n(`wrapper-${position}`),
+        'var-elevation--4',
+        [vertical, n('vertical')],
+        [type && SNACKBAR_TYPE.includes(type), n(`wrapper-${type}`)]
+      )"
+      :style="{ zIndex }"
+    >
       <div :class="[n('content'), contentClass]">
         <slot>{{ content }}</slot>
       </div>
@@ -48,18 +61,6 @@ export default defineComponent({
 
     useLock(props, 'show', 'lockScroll')
 
-    const snackbarClass: ComputedRef<any[]> = computed(() => {
-      const { position, vertical, type } = props
-
-      return classes(
-        n('wrapper'),
-        n(`wrapper-${position}`),
-        'var-elevation--4',
-        [vertical, n('vertical')],
-        [type && SNACKBAR_TYPE.includes(type), n(`wrapper-${type}`)]
-      )
-    })
-
     const isForbidClick: ComputedRef<boolean> = computed(() => props.type === 'loading' || props.forbidClick)
 
     const iconName: ComputedRef<string> = computed(() => {
@@ -103,10 +104,10 @@ export default defineComponent({
     })
 
     return {
+      SNACKBAR_TYPE,
       n,
       classes,
       zIndex,
-      snackbarClass,
       iconName,
       isForbidClick,
     }
@@ -115,10 +116,10 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '../styles/common';
-@import '../styles/elevation';
-@import '../loading/loading';
-@import '../button/button';
-@import '../icon/icon';
-@import './snackbar';
+@import "../styles/common";
+@import "../styles/elevation";
+@import "../loading/loading";
+@import "../button/button";
+@import "../icon/icon";
+@import "./snackbar";
 </style>
