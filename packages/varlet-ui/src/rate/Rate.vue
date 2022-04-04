@@ -27,7 +27,7 @@ import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
 import { defineComponent, nextTick } from 'vue'
 import { useForm } from '../form/provide'
-import { useValidation, call, createNamespace} from '../utils/components'
+import { useValidation, call, createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { toNumber } from '../utils/shared'
 import { props } from './props'
@@ -102,7 +102,7 @@ export default defineComponent({
         if (event.offsetX <= Math.floor(offsetWidth / 2)) score -= 0.5
       }
 
-      call(props['onUpdate:modelValue'],score)
+      call(props['onUpdate:modelValue'], score)
     }
 
     const validate = () => v(props.rules, toNumber(props.modelValue))

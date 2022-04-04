@@ -2,35 +2,35 @@
 
 exports[`test max and min 1`] = `
 "<div class=\\"var-time-picker\\">
-  <div class=\\"var-time-picker-title\\">
-    <div class=\\"var-time-picker-title__time\\">
-      <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\">11</div><span>:</span>
-      <div class=\\"var-time-picker-title__btn\\">11</div>
+  <div class=\\"var-time-picker__title\\">
+    <div class=\\"var-time-picker__title-time\\">
+      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">11</div><span>:</span>
+      <div class=\\"var-time-picker__title-btn\\">11</div>
       <!--v-if-->
       <!--v-if-->
     </div>
-    <div class=\\"var-time-picker-title__ampm\\">
-      <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\"> AM </div>
-      <div class=\\"var-time-picker-title__btn\\"> PM </div>
+    <div class=\\"var-time-picker__title-ampm\\">
+      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\"> AM </div>
+      <div class=\\"var-time-picker__title-btn\\"> PM </div>
     </div>
   </div>
-  <div class=\\"var-time-picker-body\\">
-    <div class=\\"var-time-picker-clock__container\\">
+  <div class=\\"var-time-picker__body\\">
+    <div class=\\"var-time-picker__clock-container\\">
       <transition-stub>
-        <div class=\\"var-time-picker-clock\\">
-          <div class=\\"var-time-picker-clock__hand\\" style=\\"transform: rotate(330deg); height: calc(50% - 4px);\\"></div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 50%; top: 0%;\\">12</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 100%; top: 50%;\\">3</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">6</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--active\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
+        <div class=\\"var-time-picker__clock\\">
+          <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(330deg); height: calc(50% - 4px);\\"></div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 50%; top: 0%;\\">12</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 100%; top: 50%;\\">3</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 100%;\\">6</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--active\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
           <!--v-if-->
         </div>
       </transition-stub>
@@ -41,35 +41,35 @@ exports[`test max and min 1`] = `
 
 exports[`test max and min 2`] = `
 "<div class=\\"var-time-picker\\">
-  <div class=\\"var-time-picker-title\\">
-    <div class=\\"var-time-picker-title__time\\">
-      <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\">11</div><span>:</span>
-      <div class=\\"var-time-picker-title__btn\\">11</div>
+  <div class=\\"var-time-picker__title\\">
+    <div class=\\"var-time-picker__title-time\\">
+      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">11</div><span>:</span>
+      <div class=\\"var-time-picker__title-btn\\">11</div>
       <!--v-if-->
       <!--v-if-->
     </div>
-    <div class=\\"var-time-picker-title__ampm\\">
-      <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\"> AM </div>
-      <div class=\\"var-time-picker-title__btn\\"> PM </div>
+    <div class=\\"var-time-picker__title-ampm\\">
+      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\"> AM </div>
+      <div class=\\"var-time-picker__title-btn\\"> PM </div>
     </div>
   </div>
-  <div class=\\"var-time-picker-body\\">
-    <div class=\\"var-time-picker-clock__container\\">
+  <div class=\\"var-time-picker__body\\">
+    <div class=\\"var-time-picker__clock-container\\">
       <transition-stub>
-        <div class=\\"var-time-picker-clock\\">
-          <div class=\\"var-time-picker-clock__hand\\" style=\\"transform: rotate(330deg); height: calc(50% - 4px);\\"></div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 0%;\\">12</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 100%; top: 50%;\\">3</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 50%; top: 100%;\\">6</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--active\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
+        <div class=\\"var-time-picker__clock\\">
+          <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(330deg); height: calc(50% - 4px);\\"></div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 100%; top: 50%;\\">3</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 50%; top: 100%;\\">6</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--active\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
           <!--v-if-->
         </div>
       </transition-stub>
@@ -82,35 +82,35 @@ exports[`test timePicker example 1`] = `
 "<div>
   <div class=\\"app-type\\">基本使用</div>
   <div class=\\"var-time-picker\\">
-    <div class=\\"var-time-picker-title\\">
-      <div class=\\"var-time-picker-title__time\\">
-        <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\">11</div><span>:</span>
-        <div class=\\"var-time-picker-title__btn\\">20</div>
+    <div class=\\"var-time-picker__title\\">
+      <div class=\\"var-time-picker__title-time\\">
+        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">11</div><span>:</span>
+        <div class=\\"var-time-picker__title-btn\\">20</div>
         <!--v-if-->
         <!--v-if-->
       </div>
-      <div class=\\"var-time-picker-title__ampm\\">
-        <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\"> AM </div>
-        <div class=\\"var-time-picker-title__btn\\"> PM </div>
+      <div class=\\"var-time-picker__title-ampm\\">
+        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\"> AM </div>
+        <div class=\\"var-time-picker__title-btn\\"> PM </div>
       </div>
     </div>
-    <div class=\\"var-time-picker-body\\">
-      <div class=\\"var-time-picker-clock__container\\">
+    <div class=\\"var-time-picker__body\\">
+      <div class=\\"var-time-picker__clock-container\\">
         <transition-stub>
-          <div class=\\"var-time-picker-clock\\">
-            <div class=\\"var-time-picker-clock__hand\\" style=\\"transform: rotate(330deg); height: calc(50% - 4px);\\"></div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 0%;\\">12</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 100%; top: 50%;\\">3</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">6</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
-            <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--active\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
+          <div class=\\"var-time-picker__clock\\">
+            <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(330deg); height: calc(50% - 4px);\\"></div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 100%; top: 50%;\\">3</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 100%;\\">6</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
+            <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--active\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
             <!--v-if-->
           </div>
         </transition-stub>
@@ -121,45 +121,45 @@ exports[`test timePicker example 1`] = `
 <div>
   <div class=\\"app-type\\">24小时格式</div>
   <div class=\\"var-time-picker var-elevation--2\\">
-    <div class=\\"var-time-picker-title\\">
-      <div class=\\"var-time-picker-title__time\\">
-        <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\">15</div><span>:</span>
-        <div class=\\"var-time-picker-title__btn\\">10</div>
+    <div class=\\"var-time-picker__title\\">
+      <div class=\\"var-time-picker__title-time\\">
+        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">15</div><span>:</span>
+        <div class=\\"var-time-picker__title-btn\\">10</div>
         <!--v-if-->
         <!--v-if-->
       </div>
       <!--v-if-->
     </div>
-    <div class=\\"var-time-picker-body\\">
-      <div class=\\"var-time-picker-clock__container\\">
+    <div class=\\"var-time-picker__body\\">
+      <div class=\\"var-time-picker__clock-container\\">
         <transition-stub>
-          <div class=\\"var-time-picker-clock\\">
-            <div class=\\"var-time-picker-clock__hand\\" style=\\"transform: rotate(90deg); height: calc(50% - 40px);\\"></div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 0%;\\">12</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 100%; top: 50%;\\">3</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">6</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
-            <div class=\\"var-time-picker-clock__inner\\">
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 0%;\\">00</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">13</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">14</div>
-              <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--active\\" style=\\"left: 100%; top: 50%;\\">15</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">16</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">17</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">18</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">19</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">20</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">21</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">22</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">23</div>
+          <div class=\\"var-time-picker__clock\\">
+            <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(90deg); height: calc(50% - 40px);\\"></div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 100%; top: 50%;\\">3</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 100%;\\">6</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
+            <div class=\\"var-time-picker__clock-inner\\">
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">00</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">13</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">14</div>
+              <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--active\\" style=\\"left: 100%; top: 50%;\\">15</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">16</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">17</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 100%;\\">18</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">19</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">20</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">21</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">22</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">23</div>
             </div>
           </div>
         </transition-stub>
@@ -170,44 +170,44 @@ exports[`test timePicker example 1`] = `
 <div>
   <div class=\\"app-type\\">显示秒</div>
   <div class=\\"var-time-picker\\">
-    <div class=\\"var-time-picker-title\\">
-      <div class=\\"var-time-picker-title__time\\">
-        <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\">17</div><span>:</span>
-        <div class=\\"var-time-picker-title__btn\\">36</div><span>:</span>
-        <div class=\\"var-time-picker-title__btn\\">22</div>
+    <div class=\\"var-time-picker__title\\">
+      <div class=\\"var-time-picker__title-time\\">
+        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">17</div><span>:</span>
+        <div class=\\"var-time-picker__title-btn\\">36</div><span>:</span>
+        <div class=\\"var-time-picker__title-btn\\">22</div>
       </div>
       <!--v-if-->
     </div>
-    <div class=\\"var-time-picker-body\\">
-      <div class=\\"var-time-picker-clock__container\\">
+    <div class=\\"var-time-picker__body\\">
+      <div class=\\"var-time-picker__clock-container\\">
         <transition-stub>
-          <div class=\\"var-time-picker-clock\\">
-            <div class=\\"var-time-picker-clock__hand\\" style=\\"transform: rotate(150deg); height: calc(50% - 40px);\\"></div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 0%;\\">12</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 100%; top: 50%;\\">3</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">6</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
-            <div class=\\"var-time-picker-clock__inner\\">
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 0%;\\">00</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">13</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">14</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 100%; top: 50%;\\">15</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">16</div>
-              <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--active\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">17</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">18</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">19</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">20</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">21</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">22</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">23</div>
+          <div class=\\"var-time-picker__clock\\">
+            <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(150deg); height: calc(50% - 40px);\\"></div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 100%; top: 50%;\\">3</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 100%;\\">6</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
+            <div class=\\"var-time-picker__clock-inner\\">
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">00</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">13</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">14</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 100%; top: 50%;\\">15</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">16</div>
+              <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--active\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">17</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 100%;\\">18</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">19</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">20</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">21</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">22</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">23</div>
             </div>
           </div>
         </transition-stub>
@@ -218,35 +218,35 @@ exports[`test timePicker example 1`] = `
 <div>
   <div class=\\"app-type\\">只读</div>
   <div class=\\"var-time-picker var-elevation--2\\">
-    <div class=\\"var-time-picker-title\\">
-      <div class=\\"var-time-picker-title__time\\">
-        <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\">07</div><span>:</span>
-        <div class=\\"var-time-picker-title__btn\\">10</div>
+    <div class=\\"var-time-picker__title\\">
+      <div class=\\"var-time-picker__title-time\\">
+        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">07</div><span>:</span>
+        <div class=\\"var-time-picker__title-btn\\">10</div>
         <!--v-if-->
         <!--v-if-->
       </div>
-      <div class=\\"var-time-picker-title__ampm\\">
-        <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\"> AM </div>
-        <div class=\\"var-time-picker-title__btn\\"> PM </div>
+      <div class=\\"var-time-picker__title-ampm\\">
+        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\"> AM </div>
+        <div class=\\"var-time-picker__title-btn\\"> PM </div>
       </div>
     </div>
-    <div class=\\"var-time-picker-body\\">
-      <div class=\\"var-time-picker-clock__container\\">
+    <div class=\\"var-time-picker__body\\">
+      <div class=\\"var-time-picker__clock-container\\">
         <transition-stub>
-          <div class=\\"var-time-picker-clock\\">
-            <div class=\\"var-time-picker-clock__hand\\" style=\\"transform: rotate(210deg); height: calc(50% - 4px);\\"></div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 0%;\\">12</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 100%; top: 50%;\\">3</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">6</div>
-            <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--active\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
+          <div class=\\"var-time-picker__clock\\">
+            <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(210deg); height: calc(50% - 4px);\\"></div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 100%; top: 50%;\\">3</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 100%;\\">6</div>
+            <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--active\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
             <!--v-if-->
           </div>
         </transition-stub>
@@ -257,44 +257,44 @@ exports[`test timePicker example 1`] = `
 <div>
   <div class=\\"app-type\\">时间限制</div>
   <div class=\\"var-time-picker\\">
-    <div class=\\"var-time-picker-title\\">
-      <div class=\\"var-time-picker-title__time\\">
-        <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\">07</div><span>:</span>
-        <div class=\\"var-time-picker-title__btn\\">10</div><span>:</span>
-        <div class=\\"var-time-picker-title__btn\\">12</div>
+    <div class=\\"var-time-picker__title\\">
+      <div class=\\"var-time-picker__title-time\\">
+        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">07</div><span>:</span>
+        <div class=\\"var-time-picker__title-btn\\">10</div><span>:</span>
+        <div class=\\"var-time-picker__title-btn\\">12</div>
       </div>
       <!--v-if-->
     </div>
-    <div class=\\"var-time-picker-body\\">
-      <div class=\\"var-time-picker-clock__container\\">
+    <div class=\\"var-time-picker__body\\">
+      <div class=\\"var-time-picker__clock-container\\">
         <transition-stub>
-          <div class=\\"var-time-picker-clock\\">
-            <div class=\\"var-time-picker-clock__hand\\" style=\\"transform: rotate(210deg); height: calc(50% - 4px); background-color: rgb(189, 189, 189); border-color: #bdbdbd;\\"></div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 0%;\\">12</div>
-            <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
-            <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 100%; top: 50%;\\">3</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
-            <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">6</div>
-            <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--active var-time-picker-clock__item--disable\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%; background-color: rgb(189, 189, 189); color: rgb(255, 255, 255);\\">7</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
-            <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
-            <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
-            <div class=\\"var-time-picker-clock__inner\\">
-              <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 50%; top: 0%;\\">00</div>
-              <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 75%; top: 6.698729810778064%;\\">13</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">14</div>
-              <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 100%; top: 50%;\\">15</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">16</div>
-              <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">17</div>
-              <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">18</div>
-              <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">19</div>
-              <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">20</div>
-              <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 0%; top: 50.000000000000014%;\\">21</div>
-              <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">22</div>
-              <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">23</div>
+          <div class=\\"var-time-picker__clock\\">
+            <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(210deg); height: calc(50% - 4px); background-color: rgb(189, 189, 189); border-color: #bdbdbd;\\"></div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
+            <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
+            <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 100%; top: 50%;\\">3</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
+            <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 100%;\\">6</div>
+            <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--active var-time-picker__clock-item--disable\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%; background-color: rgb(189, 189, 189); color: rgb(255, 255, 255);\\">7</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
+            <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
+            <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
+            <div class=\\"var-time-picker__clock-inner\\">
+              <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 50%; top: 0%;\\">00</div>
+              <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 75%; top: 6.698729810778064%;\\">13</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">14</div>
+              <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 100%; top: 50%;\\">15</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">16</div>
+              <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">17</div>
+              <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 100%;\\">18</div>
+              <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">19</div>
+              <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">20</div>
+              <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 0%; top: 50.000000000000014%;\\">21</div>
+              <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">22</div>
+              <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">23</div>
             </div>
           </div>
         </transition-stub>
@@ -305,35 +305,35 @@ exports[`test timePicker example 1`] = `
 <div style=\\"padding-bottom: 20px;\\">
   <div class=\\"app-type\\">自定义</div>
   <div class=\\"var-time-picker var-elevation--2\\">
-    <div class=\\"var-time-picker-title\\" style=\\"background: purple;\\">
-      <div class=\\"var-time-picker-title__time\\">
-        <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\">05</div><span>:</span>
-        <div class=\\"var-time-picker-title__btn\\">10</div>
+    <div class=\\"var-time-picker__title\\" style=\\"background: purple;\\">
+      <div class=\\"var-time-picker__title-time\\">
+        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">05</div><span>:</span>
+        <div class=\\"var-time-picker__title-btn\\">10</div>
         <!--v-if-->
         <!--v-if-->
       </div>
-      <div class=\\"var-time-picker-title__ampm\\">
-        <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\"> AM </div>
-        <div class=\\"var-time-picker-title__btn\\"> PM </div>
+      <div class=\\"var-time-picker__title-ampm\\">
+        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\"> AM </div>
+        <div class=\\"var-time-picker__title-btn\\"> PM </div>
       </div>
     </div>
-    <div class=\\"var-time-picker-body\\">
-      <div class=\\"var-time-picker-clock__container\\">
+    <div class=\\"var-time-picker__body\\">
+      <div class=\\"var-time-picker__clock-container\\">
         <transition-stub>
-          <div class=\\"var-time-picker-clock\\">
-            <div class=\\"var-time-picker-clock__hand\\" style=\\"transform: rotate(150deg); height: calc(50% - 4px); background-color: rgb(123, 184, 114); border-color: #7bb872;\\"></div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 0%;\\">12</div>
-            <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--disable\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 100%; top: 50%;\\">3</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
-            <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--active\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%; background-color: rgb(123, 184, 114);\\">5</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">6</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
+          <div class=\\"var-time-picker__clock\\">
+            <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(150deg); height: calc(50% - 4px); background-color: rgb(123, 184, 114); border-color: #7bb872;\\"></div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
+            <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 100%; top: 50%;\\">3</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
+            <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--active\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%; background-color: rgb(123, 184, 114);\\">5</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 100%;\\">6</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
             <!--v-if-->
           </div>
         </transition-stub>
@@ -345,35 +345,35 @@ exports[`test timePicker example 1`] = `
 
 exports[`test timePicker style and format 1`] = `
 "<div class=\\"var-time-picker var-elevation--2\\">
-  <div class=\\"var-time-picker-title\\" style=\\"background: purple;\\">
-    <div class=\\"var-time-picker-title__time\\">
-      <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\">05</div><span>:</span>
-      <div class=\\"var-time-picker-title__btn\\">10</div>
+  <div class=\\"var-time-picker__title\\" style=\\"background: purple;\\">
+    <div class=\\"var-time-picker__title-time\\">
+      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">05</div><span>:</span>
+      <div class=\\"var-time-picker__title-btn\\">10</div>
       <!--v-if-->
       <!--v-if-->
     </div>
-    <div class=\\"var-time-picker-title__ampm\\">
-      <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\"> AM </div>
-      <div class=\\"var-time-picker-title__btn\\"> PM </div>
+    <div class=\\"var-time-picker__title-ampm\\">
+      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\"> AM </div>
+      <div class=\\"var-time-picker__title-btn\\"> PM </div>
     </div>
   </div>
-  <div class=\\"var-time-picker-body\\">
-    <div class=\\"var-time-picker-clock__container\\">
+  <div class=\\"var-time-picker__body\\">
+    <div class=\\"var-time-picker__clock-container\\">
       <transition-stub>
-        <div class=\\"var-time-picker-clock\\">
-          <div class=\\"var-time-picker-clock__hand\\" style=\\"transform: rotate(150deg); height: calc(50% - 4px); background-color: rgb(123, 184, 114); border-color: #7bb872;\\"></div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 0%;\\">12</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 100%; top: 50%;\\">3</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--active\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%; background-color: rgb(123, 184, 114);\\">5</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">6</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
+        <div class=\\"var-time-picker__clock\\">
+          <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(150deg); height: calc(50% - 4px); background-color: rgb(123, 184, 114); border-color: #7bb872;\\"></div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 100%; top: 50%;\\">3</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--active\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%; background-color: rgb(123, 184, 114);\\">5</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 100%;\\">6</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
           <!--v-if-->
         </div>
       </transition-stub>
@@ -384,45 +384,45 @@ exports[`test timePicker style and format 1`] = `
 
 exports[`test timePicker style and format 2`] = `
 "<div class=\\"var-time-picker var-elevation--2\\">
-  <div class=\\"var-time-picker-title\\" style=\\"background: purple;\\">
-    <div class=\\"var-time-picker-title__time\\">
-      <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\">05</div><span>:</span>
-      <div class=\\"var-time-picker-title__btn\\">10</div>
+  <div class=\\"var-time-picker__title\\" style=\\"background: purple;\\">
+    <div class=\\"var-time-picker__title-time\\">
+      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">05</div><span>:</span>
+      <div class=\\"var-time-picker__title-btn\\">10</div>
       <!--v-if-->
       <!--v-if-->
     </div>
     <!--v-if-->
   </div>
-  <div class=\\"var-time-picker-body\\">
-    <div class=\\"var-time-picker-clock__container\\">
+  <div class=\\"var-time-picker__body\\">
+    <div class=\\"var-time-picker__clock-container\\">
       <transition-stub>
-        <div class=\\"var-time-picker-clock\\">
-          <div class=\\"var-time-picker-clock__hand\\" style=\\"transform: rotate(150deg); height: calc(50% - 4px); background-color: rgb(123, 184, 114); border-color: #7bb872;\\"></div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 0%;\\">12</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 100%; top: 50%;\\">3</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--active\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%; background-color: rgb(123, 184, 114);\\">5</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">6</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
-          <div class=\\"var-time-picker-clock__inner\\">
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 0%;\\">00</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">13</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">14</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 100%; top: 50%;\\">15</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">16</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">17</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">18</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">19</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">20</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">21</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">22</div>
-            <div class=\\"var-time-picker-clock__item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">23</div>
+        <div class=\\"var-time-picker__clock\\">
+          <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(150deg); height: calc(50% - 4px); background-color: rgb(123, 184, 114); border-color: #7bb872;\\"></div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 100%; top: 50%;\\">3</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--active\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%; background-color: rgb(123, 184, 114);\\">5</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 100%;\\">6</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
+          <div class=\\"var-time-picker__clock-inner\\">
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">00</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">13</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">14</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 100%; top: 50%;\\">15</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">16</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">17</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 100%;\\">18</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">19</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">20</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">21</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">22</div>
+            <div class=\\"var-time-picker__clock-item\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">23</div>
           </div>
         </div>
       </transition-stub>
@@ -433,34 +433,34 @@ exports[`test timePicker style and format 2`] = `
 
 exports[`test useSeconds prop 1`] = `
 "<div class=\\"var-time-picker\\">
-  <div class=\\"var-time-picker-title\\">
-    <div class=\\"var-time-picker-title__time\\">
-      <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\">11</div><span>:</span>
-      <div class=\\"var-time-picker-title__btn\\">11</div><span>:</span>
-      <div class=\\"var-time-picker-title__btn\\">00</div>
+  <div class=\\"var-time-picker__title\\">
+    <div class=\\"var-time-picker__title-time\\">
+      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">11</div><span>:</span>
+      <div class=\\"var-time-picker__title-btn\\">11</div><span>:</span>
+      <div class=\\"var-time-picker__title-btn\\">00</div>
     </div>
-    <div class=\\"var-time-picker-title__ampm\\">
-      <div class=\\"var-time-picker-title__btn var-time-picker-title__btn--active\\"> AM </div>
-      <div class=\\"var-time-picker-title__btn\\"> PM </div>
+    <div class=\\"var-time-picker__title-ampm\\">
+      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\"> AM </div>
+      <div class=\\"var-time-picker__title-btn\\"> PM </div>
     </div>
   </div>
-  <div class=\\"var-time-picker-body\\">
-    <div class=\\"var-time-picker-clock__container\\">
+  <div class=\\"var-time-picker__body\\">
+    <div class=\\"var-time-picker__clock-container\\">
       <transition-stub>
-        <div class=\\"var-time-picker-clock\\">
-          <div class=\\"var-time-picker-clock__hand\\" style=\\"transform: rotate(330deg); height: calc(50% - 4px);\\"></div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 0%;\\">12</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 100%; top: 50%;\\">3</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 50%; top: 100%;\\">6</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
-          <div class=\\"var-time-picker-clock__item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
-          <div class=\\"var-time-picker-clock__item var-time-picker-clock__item--active\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
+        <div class=\\"var-time-picker__clock\\">
+          <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(330deg); height: calc(50% - 4px);\\"></div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75%; top: 6.698729810778064%;\\">1</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922192%; top: 25%;\\">2</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 100%; top: 50%;\\">3</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 93.30127018922194%; top: 74.99999999999999%;\\">4</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 75.00000000000003%; top: 93.30127018922192%;\\">5</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 100%;\\">6</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 25.00000000000001%; top: 93.30127018922194%;\\">7</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.698729810778076%; top: 75.00000000000003%;\\">8</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 0%; top: 50.000000000000014%;\\">9</div>
+          <div class=\\"var-time-picker__clock-item\\" style=\\"left: 6.6987298107780475%; top: 25.000000000000032%;\\">10</div>
+          <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--active\\" style=\\"left: 24.99999999999998%; top: 6.698729810778076%;\\">11</div>
           <!--v-if-->
         </div>
       </transition-stub>
