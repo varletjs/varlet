@@ -1,29 +1,25 @@
 <template>
-  <div class="var-progress">
-    <div class="var-progress-linear" v-if="mode === 'linear'">
-      <div class="var-progress-linear__block" :style="{ height: `${lineWidth}px` }" v-bind="$attrs">
-        <div class="var-progress-linear__background" v-if="track" :style="{ background: trackColor }"></div>
+  <div :class="n()">
+    <div :class="n('linear')" v-if="mode === 'linear'">
+      <div :class="n('linear-block')" :style="{ height: `${lineWidth}px` }" v-bind="$attrs">
+        <div :class="n('linear-background')" v-if="track" :style="{ background: trackColor }"></div>
         <div
-          :class="`var-progress-linear__certain${ripple ? ' var-progress-linear__ripple' : ''}`"
+          :class="classes(n('linear-certain'), [ripple, n('linear-ripple')])"
           :style="{ background: color, width: linearProps.width }"
         ></div>
       </div>
-      <div class="var-progress-linear__label" v-bind="$attrs" v-if="label">
+      <div :class="n('linear-label')" v-bind="$attrs" v-if="label">
         <slot>
           {{ linearProps.roundValue }}
         </slot>
       </div>
     </div>
 
-    <div class="var-progress-circle" v-if="mode === 'circle'" :style="{ width: `${size}px`, height: `${size}px` }">
-      <svg
-        class="var-progress-circle__svg"
-        :style="{ transform: `rotate(${rotate - 90}deg)` }"
-        :viewBox="circleProps.viewBox"
-      >
+    <div :class="n('circle')" v-if="mode === 'circle'" :style="{ width: `${size}px`, height: `${size}px` }">
+      <svg :class="n('circle-svg')" :style="{ transform: `rotate(${rotate - 90}deg)` }" :viewBox="circleProps.viewBox">
         <circle
           v-if="track"
-          class="var-progress-circle__background"
+          :class="n('circle-background')"
           :cx="size / 2"
           :cy="size / 2"
           :r="circleProps.radius"
@@ -35,7 +31,7 @@
           }"
         ></circle>
         <circle
-          class="var-progress-circle__certain"
+          :class="n('circle-certain')"
           :cx="size / 2"
           :cy="size / 2"
           :r="circleProps.radius"
@@ -48,7 +44,7 @@
         ></circle>
       </svg>
 
-      <div class="var-progress-circle__label" v-if="label" v-bind="$attrs">
+      <div :class="n('circle-label')" v-if="label" v-bind="$attrs">
         <slot>
           {{ circleProps.roundValue }}
         </slot>
@@ -61,6 +57,9 @@
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { toNumber } from '../utils/shared'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('progress')
 
 export default defineComponent({
   name: 'VarProgress',
@@ -95,6 +94,8 @@ export default defineComponent({
       }
     })
     return {
+      n,
+      classes,
       linearProps,
       circleProps,
     }
