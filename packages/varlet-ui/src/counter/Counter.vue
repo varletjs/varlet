@@ -1,5 +1,5 @@
 <template>
-  <div class="var-counter var--box">
+  <div :class="[n(), 'var--box']">
     <div
       :class="[n('controller'), 'var-elevation--2', disabled || formDisabled ? n('--disabled') : null, errorMessage ? n('--error') : null]"
       :style="{ background: color ? color : undefined }"
@@ -72,8 +72,7 @@ import type { CounterProvider } from './provide'
 
 const SPEED = 100
 const DELAY = 600
-
-const { n, classes } = createNamespace('counter')
+const { n } = createNamespace('counter')
 
 export default defineComponent({
   name: 'VarCounter',
@@ -310,7 +309,6 @@ export default defineComponent({
 
     return {
       n,
-      classes,
       inputValue,
       errorMessage,
       formDisabled,
