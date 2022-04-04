@@ -1,14 +1,14 @@
 <template>
-  <div :class="[n(), 'var--box']">
+  <div :class="classes(n(), 'var--box')">
     <div
-      :class="[n('controller'), 'var-elevation--2', disabled || formDisabled ? n('--disabled') : null, errorMessage ? n('--error') : null]"
+      :class="classes(n('controller'), 'var-elevation--2', disabled || formDisabled ? n('--disabled') : null, errorMessage ? n('--error') : null)"
       :style="{ background: color ? color : undefined }"
       v-bind="$attrs"
     >
       <var-icon
         var-counter-cover
         name="minus"
-        :class="[n('decrement-button'), !decrementButton ? n('--hidden') : null]"
+        :class="classes(n('decrement-button'), !decrementButton ? n('--hidden') : null)"
         :style="{
           width: toSizeUnit(buttonSize),
           height: toSizeUnit(buttonSize),
@@ -36,7 +36,7 @@
       <var-icon
         var-counter-cover
         name="plus"
-        :class="[n('increment-button'), !incrementButton ? n('--hidden') : null]"
+        :class="classes(n('increment-button'), !incrementButton ? n('--hidden') : null)"
         :style="{
           width: toSizeUnit(buttonSize),
           height: toSizeUnit(buttonSize),
@@ -70,9 +70,9 @@ import type { Ref, ComputedRef } from 'vue'
 import type { ValidateTriggers } from './props'
 import type { CounterProvider } from './provide'
 
+const { n, classes } = createNamespace('counter')
 const SPEED = 100
 const DELAY = 600
-const { n } = createNamespace('counter')
 
 export default defineComponent({
   name: 'VarCounter',
@@ -309,6 +309,7 @@ export default defineComponent({
 
     return {
       n,
+      classes,
       inputValue,
       errorMessage,
       formDisabled,
