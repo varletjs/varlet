@@ -1,41 +1,43 @@
 <template>
-  <div class="var-radio__wrap">
-    <div class="var-radio" @click="handleClick" v-bind="$attrs">
+  <div :class="n('wrap')">
+    <div :class="n()" @click="handleClick" v-bind="$attrs">
       <div
-        class="var-radio__action"
+        :class="
+          classes(
+            n('action'),
+            [checked, n('--checked'), n('--unchecked')],
+            [errorMessage || radioGroupErrorMessage, n('--error')],
+            [formDisabled || disabled, n('--disabled')]
+          )
+        "
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
-        :class="[
-          checked ? 'var-radio--checked' : 'var-radio--unchecked',
-          errorMessage || radioGroupErrorMessage ? 'var-radio--error' : null,
-          formDisabled || disabled ? 'var-radio--disabled' : null,
-        ]"
         :style="{ color: checked ? checkedColor : uncheckedColor }"
       >
         <slot name="checked-icon" v-if="checked">
           <var-icon
-            class="var-radio__icon"
+            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
             var-radio-cover
             name="radio-marked"
-            :class="[withAnimation ? 'var-radio--with-animation' : null]"
             :size="iconSize"
           />
         </slot>
         <slot name="unchecked-icon" v-else>
           <var-icon
-            class="var-radio__icon"
+            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
             var-radio-cover
             name="radio-blank"
-            :class="[withAnimation ? 'var-radio--with-animation' : null]"
             :size="iconSize"
           />
         </slot>
       </div>
       <div
-        class="var-radio__text"
-        :class="[
-          errorMessage || radioGroupErrorMessage ? 'var-radio--error' : null,
-          formDisabled || disabled ? 'var-radio--disabled' : null,
-        ]"
+        :class="
+          classes(
+            n('text'),
+            [errorMessage || radioGroupErrorMessage, n('--error')],
+            [formDisabled || disabled, n('--disabled')]
+          )
+        "
       >
         <slot />
       </div>
@@ -51,13 +53,14 @@ import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
 import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import { props } from './props'
-import { useValidation } from '../utils/components'
+import { useValidation, createNamespace, call } from '../utils/components'
 import { useRadioGroup } from './provide'
 import { useForm } from '../form/provide'
 import type { Ref, ComputedRef } from 'vue'
 import type { ValidateTriggers } from './props'
 import type { RadioProvider } from './provide'
 
+const { n, classes } = createNamespace('radio')
 export default defineComponent({
   name: 'VarRadio',
   directives: { Ripple },
@@ -97,8 +100,8 @@ export default defineComponent({
 
       value.value = changedValue
 
-      props['onUpdate:modelValue']?.(value.value)
-      onChange?.(value.value)
+      call(props['onUpdate:modelValue'], value.value)
+      call(onChange, value.value)
       radioGroup?.onToggle(checkedValue)
       validateWithTrigger('onChange')
     }
@@ -110,8 +113,7 @@ export default defineComponent({
         return
       }
 
-      onClick?.(e)
-
+      call(onClick, e)
       if (form?.readonly.value || readonly) {
         return
       }
@@ -127,7 +129,7 @@ export default defineComponent({
 
     // expose
     const reset = () => {
-      props['onUpdate:modelValue']?.(props.uncheckedValue)
+      call(props['onUpdate:modelValue'], props.uncheckedValue)
       resetValidation()
     }
 
@@ -161,8 +163,8 @@ export default defineComponent({
       reset,
     }
 
-    bindRadioGroup?.(radioProvider)
-    bindForm?.(radioProvider)
+    call(bindRadioGroup, radioProvider)
+    call(bindForm, radioProvider)
 
     return {
       withAnimation,
@@ -171,6 +173,9 @@ export default defineComponent({
       radioGroupErrorMessage: radioGroup?.errorMessage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      n,
+      classes,
+      call,
       handleClick,
       toggle,
       reset,

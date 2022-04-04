@@ -1,6 +1,6 @@
 <template>
-  <div class="var-radio-group__wrap">
-    <div class="var-radio-group" :class="[`var-radio-group--${direction}`]">
+  <div :class="n('wrap')">
+    <div :class="classes(n(), n(`--${direction}`))">
       <slot />
     </div>
 
@@ -12,13 +12,14 @@
 import VarFormDetails from '../form-details'
 import { computed, defineComponent, nextTick, watch } from 'vue'
 import { props } from './props'
-import { useValidation } from '../utils/components'
+import { useValidation, createNamespace, call } from '../utils/components'
 import { useRadios } from './provide'
 import { useForm } from '../form/provide'
 import type { ComputedRef } from 'vue'
 import type { ValidateTriggers } from './props'
 import type { RadioGroupProvider } from './provide'
 
+const { n, classes } = createNamespace('radio-group')
 export default defineComponent({
   name: 'VarRadioGroup',
   components: { VarFormDetails },
@@ -45,8 +46,8 @@ export default defineComponent({
     const syncRadios = () => radios.forEach(({ sync }) => sync(props.modelValue))
 
     const onToggle = (changedValue: any) => {
-      props['onUpdate:modelValue']?.(changedValue)
-      props.onChange?.(changedValue)
+      call(props['onUpdate:modelValue'], changedValue)
+      call(props.onChange, changedValue)
       validateWithTrigger('onChange')
     }
 
@@ -55,7 +56,7 @@ export default defineComponent({
 
     // expose
     const reset = () => {
-      props['onUpdate:modelValue']?.(undefined)
+      call(props['onUpdate:modelValue'], undefined)
       resetValidation()
     }
 
@@ -71,11 +72,14 @@ export default defineComponent({
       errorMessage: radioGroupErrorMessage,
     }
 
-    bindForm?.(radioGroupProvider)
+    call(bindForm, radioGroupProvider)
     bindRadios(radioGroupProvider)
 
     return {
       errorMessage,
+      n,
+      classes,
+      call,
       reset,
       validate,
       resetValidation,
