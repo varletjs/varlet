@@ -2,6 +2,7 @@ import { getAllParentScroller, inViewport } from '../utils/elements'
 import { createCache, removeItem, throttle } from '../utils/shared'
 import type { App, Directive, Plugin, DirectiveBinding } from 'vue'
 import type { CacheInstance } from '../utils/shared'
+import { call } from '../utils/components'
 
 interface LazyOptions {
   loading?: string
@@ -117,7 +118,7 @@ function createLazy(el: LazyHTMLElement, binding: DirectiveBinding<string>) {
 
   setSRC(el, PIXEL)
 
-  defaultLazyOptions.filter?.(el._lazy)
+  call(defaultLazyOptions.filter, el._lazy)
 }
 
 function createImage(el: LazyHTMLElement, attemptSRC: string) {
