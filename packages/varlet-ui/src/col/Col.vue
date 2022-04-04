@@ -1,15 +1,18 @@
 <template>
   <div
-    class="var-col var--box"
-    :class="[
-      span ? `var-col--span-${span}` : null,
-      offset ? `var-col--offset-${offset}` : null,
-      ...getSize('xs', xs),
-      ...getSize('sm', sm),
-      ...getSize('md', md),
-      ...getSize('lg', lg),
-      ...getSize('xl', xl),
-    ]"
+    :class="
+      classes(
+        n(),
+        'var--box',
+        [span, n(`--span-${span}`)],
+        [offset, n(`--offset-${offset}`)],
+        ...getSize('xs', xs),
+        ...getSize('sm', sm),
+        ...getSize('md', md),
+        ...getSize('lg', lg),
+        ...getSize('xl', xl)
+      )
+    "
     :style="{
       paddingLeft: toSizeUnit(padding.left),
       paddingRight: toSizeUnit(padding.right),
@@ -28,6 +31,9 @@ import { useRow } from './provide'
 import { toSizeUnit } from '../utils/elements'
 import type { Ref, ComputedRef } from 'vue'
 import type { ColPadding, ColProvider, SizeDescriptor } from './provide'
+import { createNamespace, call } from '../utils/components'
+
+const { n, classes } = createNamespace('col')
 
 export default defineComponent({
   name: 'VarCol',
@@ -53,10 +59,10 @@ export default defineComponent({
 
       if (isPlainObject(size)) {
         const { span, offset } = size
-        span && classes.push(`var-col--span-${mode}-${span}`)
-        offset && classes.push(`var-col--offset-${mode}-${offset}`)
+        span && classes.push(n(`--span-${mode}-${span}`))
+        offset && classes.push(n(`--offset-${mode}-${offset}`))
       } else {
-        classes.push(`var-col--span-${mode}-${size}`)
+        classes.push(n(`--span-${mode}-${size}`))
       }
 
       return classes
@@ -65,10 +71,11 @@ export default defineComponent({
     watch([() => props.span, () => props.offset], () => {
       row?.computePadding()
     })
-
-    bindRow?.(colProvider)
+    call(bindRow, colProvider)
 
     return {
+      n,
+      classes,
       padding,
       toNumber,
       toSizeUnit,
