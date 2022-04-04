@@ -18,7 +18,7 @@
       </div>
 
       <div :class="classes(n('wrap'), [!hint, n('--non-hint')])">
-        <input :class="classes(n('autocomplete'))" v-if="type === 'password'" />
+        <input :class="n('autocomplete')" v-if="type === 'password'" />
         <textarea
           :class="
             classes(
@@ -90,7 +90,7 @@
       <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
         <slot name="append-icon">
           <var-icon
-            :class="classes(n('clear-icon'))"
+            :class="n('clear-icon')"
             var-input-cover
             name="close-circle"
             size="14px"
@@ -263,7 +263,7 @@ export default defineComponent({
       resetValidation,
     }
 
-    bindForm?.(inputProvider)
+    call(bindForm, inputProvider)
 
     return {
       el,
