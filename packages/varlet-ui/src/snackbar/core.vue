@@ -116,10 +116,10 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import "../styles/common";
-@import "../styles/elevation";
-@import "../loading/loading";
-@import "../button/button";
-@import "../icon/icon";
-@import "./snackbar";
+@import '../styles/common';
+@import '../styles/elevation';
+@import '../loading/loading';
+@import '../button/button';
+@import '../icon/icon';
+@import './snackbar';
 </style>
