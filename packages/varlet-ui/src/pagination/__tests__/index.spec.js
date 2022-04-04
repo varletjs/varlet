@@ -100,13 +100,13 @@ describe('basic mode', () => {
     const prev = wrapper.find('.var-pagination__item[item-mode="head"]')
     const next = wrapper.find('.var-pagination__item[item-mode="tail"]')
 
-    expect(wrapper.find('.var-pagination__item-active').text()).toBe('10')
+    expect(wrapper.find('.var-pagination__item--active').text()).toBe('10')
 
     await next.trigger('click')
-    expect(wrapper.find('.var-pagination__item-active').text()).toBe('14')
+    expect(wrapper.find('.var-pagination__item--active').text()).toBe('14')
 
     await prev.trigger('click')
-    expect(wrapper.find('.var-pagination__item-active').text()).toBe('10')
+    expect(wrapper.find('.var-pagination__item--active').text()).toBe('10')
 
     expect(change).toBeCalledTimes(2)
     wrapper.unmount()
@@ -155,7 +155,7 @@ test('change current and size', async () => {
   })
 
   const input = wrapper.find('.var-input__input')
-  const sizeEl = wrapper.find('.var-pagination__size-open')
+  const sizeEl = wrapper.find('.var-pagination__size--open')
 
   expect(input.element.value).toBe('4')
   expect(sizeEl.text().includes('10')).toBe(true)
@@ -201,7 +201,7 @@ test('change event', async () => {
   expect(input.element.value).toBe('2')
   expect(change).toBeCalledTimes(2)
 
-  await wrapper.find('.var-pagination__size-open').trigger('click')
+  await wrapper.find('.var-pagination__size--open').trigger('click')
   const li = document.querySelector('.var-pagination__list')
   await trigger(li, 'click')
   expect(change).toBeCalledTimes(3)

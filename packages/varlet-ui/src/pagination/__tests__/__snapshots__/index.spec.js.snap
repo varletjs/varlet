@@ -2,7 +2,7 @@
 
 exports[`Size related props 1`] = `
 "<ul class=\\"var-pagination\\">
-  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
+  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
   <li class=\\"var-pagination__simple\\">
     <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
       <div class=\\"var-input__controller\\">
@@ -22,10 +22,10 @@ exports[`Size related props 1`] = `
       </transition-stub>
     </div><span>/ 6</span>
   </li>
-  <li class=\\"var-pagination__item var-pagination__next var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
+  <li class=\\"var-pagination__item var-pagination__next var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
   <li class=\\"var-pagination__size\\">
     <div class=\\"var-menu\\">
-      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>20条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
+      <div class=\\"var-pagination__size--open\\" style=\\"display: flex;\\"><span>20条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
       <!--teleport start-->
       <!--teleport end-->
     </div>
@@ -37,7 +37,7 @@ exports[`Size related props 1`] = `
 
 exports[`Size related props 2`] = `
 "<ul class=\\"var-pagination\\">
-  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
+  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
   <li class=\\"var-pagination__simple\\">
     <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
       <div class=\\"var-input__controller\\">
@@ -57,7 +57,7 @@ exports[`Size related props 2`] = `
       </transition-stub>
     </div><span>/ 6</span>
   </li>
-  <li class=\\"var-pagination__item var-pagination__next var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
+  <li class=\\"var-pagination__item var-pagination__next var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
   <!--v-if-->
   <!--v-if-->
   <!--v-if-->
@@ -66,14 +66,14 @@ exports[`Size related props 2`] = `
 
 exports[`basic mode disabled prop 1`] = `
 "<ul class=\\"var-pagination\\">
-  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
-  <li class=\\"var-pagination__item var-pagination__next var-pagination__item-disabled var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
-  <li class=\\"var-pagination__size var-pagination__item-disabled\\">
+  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
+  <li class=\\"var-pagination__item var-pagination__next var-pagination__item--disabled var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
+  <li class=\\"var-pagination__size var-pagination__item--disabled\\">
     <div class=\\"var-menu\\">
-      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
+      <div class=\\"var-pagination__size--open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
       <transition-stub>
         <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
-          <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+          <div class=\\"var-cell var-pagination__list var-pagination__list--active\\">
             <!--v-if-->
             <div class=\\"var-cell__content\\">
               <div class=\\"var-cell__title\\">10条 / 页</div>
@@ -116,9 +116,9 @@ exports[`basic mode disabled prop 1`] = `
 
 exports[`basic mode mount 1`] = `
 "<ul class=\\"var-pagination\\">
-  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
-  <li item-mode=\\"basic\\" class=\\"var-pagination__item var-elevation--2 var-pagination__item-active\\">1</li>
-  <li item-mode=\\"head\\" class=\\"var-pagination__item var-elevation--2 var-pagination__item-hide\\">...</li>
+  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
+  <li item-mode=\\"basic\\" class=\\"var-pagination__item var-elevation--2 var-pagination__item--active\\">1</li>
+  <li item-mode=\\"head\\" class=\\"var-pagination__item var-elevation--2 var-pagination__item--hide\\">...</li>
   <li item-mode=\\"basic\\" class=\\"var-pagination__item var-elevation--2\\">2</li>
   <li item-mode=\\"basic\\" class=\\"var-pagination__item var-elevation--2\\">3</li>
   <li item-mode=\\"basic\\" class=\\"var-pagination__item var-elevation--2\\">4</li>
@@ -127,10 +127,10 @@ exports[`basic mode mount 1`] = `
   <li class=\\"var-pagination__item var-pagination__next var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
   <li class=\\"var-pagination__size\\">
     <div class=\\"var-menu\\">
-      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
+      <div class=\\"var-pagination__size--open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
       <transition-stub>
         <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
-          <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+          <div class=\\"var-cell var-pagination__list var-pagination__list--active\\">
             <!--v-if-->
             <div class=\\"var-cell__content\\">
               <div class=\\"var-cell__title\\">10条 / 页</div>
@@ -190,8 +190,8 @@ exports[`basic mode mount 1`] = `
 
 exports[`simple mode disabled prop 1`] = `
 "<ul class=\\"var-pagination\\">
-  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
-  <li class=\\"var-pagination__simple var-pagination__item-disabled\\">
+  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
+  <li class=\\"var-pagination__simple var-pagination__item--disabled\\">
     <div class=\\"var-input var--box var-input--disabled\\" var-pagination-cover=\\"\\">
       <div class=\\"var-input__controller var-input--disabled\\">
         <div class=\\"var-input__icon\\"></div>
@@ -210,13 +210,13 @@ exports[`simple mode disabled prop 1`] = `
       </transition-stub>
     </div><span>/ 0</span>
   </li>
-  <li class=\\"var-pagination__item var-pagination__next var-pagination__item-disabled var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
-  <li class=\\"var-pagination__size var-pagination__item-disabled\\">
+  <li class=\\"var-pagination__item var-pagination__next var-pagination__item--disabled var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
+  <li class=\\"var-pagination__size var-pagination__item--disabled\\">
     <div class=\\"var-menu\\">
-      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
+      <div class=\\"var-pagination__size--open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
       <transition-stub>
         <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
-          <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+          <div class=\\"var-cell var-pagination__list var-pagination__list--active\\">
             <!--v-if-->
             <div class=\\"var-cell__content\\">
               <div class=\\"var-cell__title\\">10条 / 页</div>
@@ -259,7 +259,7 @@ exports[`simple mode disabled prop 1`] = `
 
 exports[`simple mode mount 1`] = `
 "<ul class=\\"var-pagination\\">
-  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
+  <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
   <li class=\\"var-pagination__simple\\">
     <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
       <div class=\\"var-input__controller\\">
@@ -279,13 +279,13 @@ exports[`simple mode mount 1`] = `
       </transition-stub>
     </div><span>/ 13</span>
   </li>
-  <li class=\\"var-pagination__item var-pagination__next var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
+  <li class=\\"var-pagination__item var-pagination__next var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
   <li class=\\"var-pagination__size\\">
     <div class=\\"var-menu\\">
-      <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
+      <div class=\\"var-pagination__size--open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
       <transition-stub>
         <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
-          <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+          <div class=\\"var-cell var-pagination__list var-pagination__list--active\\">
             <!--v-if-->
             <div class=\\"var-cell__content\\">
               <div class=\\"var-cell__title\\">10条 / 页</div>
@@ -330,7 +330,7 @@ exports[`test pagination example 1`] = `
 "<div class=\\"app-type\\">基本使用</div>
 <div class=\\"transformer\\">
   <ul class=\\"var-pagination\\">
-    <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
+    <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple\\">
       <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
         <div class=\\"var-input__controller\\">
@@ -350,13 +350,13 @@ exports[`test pagination example 1`] = `
         </transition-stub>
       </div><span>/ 12</span>
     </li>
-    <li class=\\"var-pagination__item var-pagination__next var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
+    <li class=\\"var-pagination__item var-pagination__next var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
     <li class=\\"var-pagination__size\\">
       <div class=\\"var-menu\\">
-        <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
+        <div class=\\"var-pagination__size--open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
         <transition-stub>
           <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
-            <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+            <div class=\\"var-cell var-pagination__list var-pagination__list--active\\">
               <!--v-if-->
               <div class=\\"var-cell__content\\">
                 <div class=\\"var-cell__title\\">10条 / 页</div>
@@ -399,7 +399,7 @@ exports[`test pagination example 1`] = `
 <div class=\\"app-type\\">隐藏 size 切换器</div>
 <div class=\\"transformer\\">
   <ul class=\\"var-pagination\\">
-    <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
+    <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple\\">
       <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
         <div class=\\"var-input__controller\\">
@@ -419,7 +419,7 @@ exports[`test pagination example 1`] = `
         </transition-stub>
       </div><span>/ 12</span>
     </li>
-    <li class=\\"var-pagination__item var-pagination__next var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
+    <li class=\\"var-pagination__item var-pagination__next var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
     <!--v-if-->
     <!--v-if-->
     <!--v-if-->
@@ -428,7 +428,7 @@ exports[`test pagination example 1`] = `
 <div class=\\"app-type\\">显示总数</div>
 <div class=\\"transformer\\">
   <ul class=\\"var-pagination\\">
-    <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
+    <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple\\">
       <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
         <div class=\\"var-input__controller\\">
@@ -448,13 +448,13 @@ exports[`test pagination example 1`] = `
         </transition-stub>
       </div><span>/ 12</span>
     </li>
-    <li class=\\"var-pagination__item var-pagination__next var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
+    <li class=\\"var-pagination__item var-pagination__next var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
     <li class=\\"var-pagination__size\\">
       <div class=\\"var-menu\\">
-        <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
+        <div class=\\"var-pagination__size--open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
         <transition-stub>
           <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
-            <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+            <div class=\\"var-cell var-pagination__list var-pagination__list--active\\">
               <!--v-if-->
               <div class=\\"var-cell__content\\">
                 <div class=\\"var-cell__title\\">10条 / 页</div>
@@ -497,8 +497,8 @@ exports[`test pagination example 1`] = `
 <div class=\\"app-type\\">禁用</div>
 <div class=\\"transformer\\">
   <ul class=\\"var-pagination\\">
-    <li class=\\"var-pagination__item var-pagination__prev var-pagination__item-disabled var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
-    <li class=\\"var-pagination__simple var-pagination__item-disabled\\">
+    <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
+    <li class=\\"var-pagination__simple var-pagination__item--disabled\\">
       <div class=\\"var-input var--box var-input--disabled\\" var-pagination-cover=\\"\\">
         <div class=\\"var-input__controller var-input--disabled\\">
           <div class=\\"var-input__icon\\"></div>
@@ -517,13 +517,13 @@ exports[`test pagination example 1`] = `
         </transition-stub>
       </div><span>/ 12</span>
     </li>
-    <li class=\\"var-pagination__item var-pagination__next var-pagination__item-disabled var-pagination__item-hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
-    <li class=\\"var-pagination__size var-pagination__item-disabled\\">
+    <li class=\\"var-pagination__item var-pagination__next var-pagination__item--disabled var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
+    <li class=\\"var-pagination__size var-pagination__item--disabled\\">
       <div class=\\"var-menu\\">
-        <div class=\\"var-pagination__size-open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size-open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
+        <div class=\\"var-pagination__size--open\\" style=\\"display: flex;\\"><span>10条 / 页</span><i class=\\"var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon\\" style=\\"transition: transform 0ms;\\" var-pagination-cover=\\"\\"></i></div>
         <transition-stub>
           <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + -4px); z-index: 2000; display: none;\\">
-            <div class=\\"var-cell var-pagination__list var-pagination__list-active\\">
+            <div class=\\"var-cell var-pagination__list var-pagination__list--active\\">
               <!--v-if-->
               <div class=\\"var-cell__content\\">
                 <div class=\\"var-cell__title\\">10条 / 页</div>
