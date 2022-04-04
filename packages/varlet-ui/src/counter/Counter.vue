@@ -1,14 +1,22 @@
 <template>
   <div :class="classes(n(), 'var--box')">
     <div
-      :class="classes(n('controller'), 'var-elevation--2', disabled || formDisabled ? n('--disabled') : null, errorMessage ? n('--error') : null)"
+      :class="classes(
+        n('controller'),
+        'var-elevation--2',
+        [disabled || formDisabled, n('--disabled')],
+        [errorMessage, n('--error')]
+      )"
       :style="{ background: color ? color : undefined }"
       v-bind="$attrs"
     >
       <var-icon
         var-counter-cover
         name="minus"
-        :class="classes(n('decrement-button'), !decrementButton ? n('--hidden') : null)"
+        :class="classes(
+          n('decrement-button'),
+          [!decrementButton, n('--hidden')]
+        )"
         :style="{
           width: toSizeUnit(buttonSize),
           height: toSizeUnit(buttonSize),
@@ -36,7 +44,10 @@
       <var-icon
         var-counter-cover
         name="plus"
-        :class="classes(n('increment-button'), !incrementButton ? n('--hidden') : null)"
+        :class="classes(
+          n('increment-button'),
+          [!incrementButton, n('--hidden')]
+        )"
         :style="{
           width: toSizeUnit(buttonSize),
           height: toSizeUnit(buttonSize),
