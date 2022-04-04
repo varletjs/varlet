@@ -252,7 +252,7 @@ export default {
 
 ### 自定义渲染
 
-通过`hide-list`隐藏组件的文件列表，自定义文件列表的渲染逻辑
+通过 `hide-list` 隐藏组件的文件列表，自定义文件列表的渲染逻辑
 
 ```html
 <var-space>
