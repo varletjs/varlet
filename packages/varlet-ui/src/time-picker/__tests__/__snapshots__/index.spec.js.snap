@@ -10,8 +10,8 @@ exports[`test max and min 1`] = `
       <!--v-if-->
     </div>
     <div class=\\"var-time-picker__title-ampm\\">
-      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\"> AM </div>
-      <div class=\\"var-time-picker__title-btn\\"> PM </div>
+      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">AM</div>
+      <div class=\\"var-time-picker__title-btn\\">PM</div>
     </div>
   </div>
   <div class=\\"var-time-picker__body\\">
@@ -49,8 +49,8 @@ exports[`test max and min 2`] = `
       <!--v-if-->
     </div>
     <div class=\\"var-time-picker__title-ampm\\">
-      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\"> AM </div>
-      <div class=\\"var-time-picker__title-btn\\"> PM </div>
+      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">AM</div>
+      <div class=\\"var-time-picker__title-btn\\">PM</div>
     </div>
   </div>
   <div class=\\"var-time-picker__body\\">
@@ -90,8 +90,8 @@ exports[`test timePicker example 1`] = `
         <!--v-if-->
       </div>
       <div class=\\"var-time-picker__title-ampm\\">
-        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\"> AM </div>
-        <div class=\\"var-time-picker__title-btn\\"> PM </div>
+        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">AM</div>
+        <div class=\\"var-time-picker__title-btn\\">PM</div>
       </div>
     </div>
     <div class=\\"var-time-picker__body\\">
@@ -226,8 +226,8 @@ exports[`test timePicker example 1`] = `
         <!--v-if-->
       </div>
       <div class=\\"var-time-picker__title-ampm\\">
-        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\"> AM </div>
-        <div class=\\"var-time-picker__title-btn\\"> PM </div>
+        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">AM</div>
+        <div class=\\"var-time-picker__title-btn\\">PM</div>
       </div>
     </div>
     <div class=\\"var-time-picker__body\\">
@@ -313,8 +313,8 @@ exports[`test timePicker example 1`] = `
         <!--v-if-->
       </div>
       <div class=\\"var-time-picker__title-ampm\\">
-        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\"> AM </div>
-        <div class=\\"var-time-picker__title-btn\\"> PM </div>
+        <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">AM</div>
+        <div class=\\"var-time-picker__title-btn\\">PM</div>
       </div>
     </div>
     <div class=\\"var-time-picker__body\\">
@@ -353,8 +353,8 @@ exports[`test timePicker style and format 1`] = `
       <!--v-if-->
     </div>
     <div class=\\"var-time-picker__title-ampm\\">
-      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\"> AM </div>
-      <div class=\\"var-time-picker__title-btn\\"> PM </div>
+      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">AM</div>
+      <div class=\\"var-time-picker__title-btn\\">PM</div>
     </div>
   </div>
   <div class=\\"var-time-picker__body\\">
@@ -440,8 +440,8 @@ exports[`test useSeconds prop 1`] = `
       <div class=\\"var-time-picker__title-btn\\">00</div>
     </div>
     <div class=\\"var-time-picker__title-ampm\\">
-      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\"> AM </div>
-      <div class=\\"var-time-picker__title-btn\\"> PM </div>
+      <div class=\\"var-time-picker__title-btn var-time-picker__title-btn--active\\">AM</div>
+      <div class=\\"var-time-picker__title-btn\\">PM</div>
     </div>
   </div>
   <div class=\\"var-time-picker__body\\">
