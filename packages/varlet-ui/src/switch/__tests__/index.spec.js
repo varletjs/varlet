@@ -42,7 +42,7 @@ test('test switch value props and events', async () => {
 
   expect(wrapper.find('.var-switch__track').classes()).toContain('var-switch__track-active')
 
-  await wrapper.find('.var-switch-block').trigger('click')
+  await wrapper.find('.var-switch__block').trigger('click')
 
   expect(clickFn).toHaveBeenCalledTimes(1)
   expect(changeFn).toHaveBeenCalledTimes(1)
@@ -80,9 +80,9 @@ test('test switch not available', async () => {
 
   await delay(0)
 
-  expect(wrapper.find('.var-switch__disable')).toBeTruthy()
+  expect(wrapper.find('.var-switch--disable')).toBeTruthy()
 
-  await wrapper.find('.var-switch-block').trigger('click')
+  await wrapper.find('.var-switch__block').trigger('click')
 
   expect(clickFn).toHaveBeenCalledTimes(1)
   expect(changeFn).toHaveBeenCalledTimes(0)
@@ -93,7 +93,7 @@ test('test switch not available', async () => {
     readonly: true,
   })
 
-  await wrapper.find('.var-switch-block').trigger('click')
+  await wrapper.find('.var-switch__block').trigger('click')
   expect(clickFn).toHaveBeenCalledTimes(2)
   expect(changeFn).toHaveBeenCalledTimes(0)
   expect(wrapper.vm.value).toBe(true)
@@ -156,7 +156,7 @@ test('test switch rules prop', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  await wrapper.find('.var-switch-block').trigger('click')
+  await wrapper.find('.var-switch__block').trigger('click')
 
   await delay(0)
 
