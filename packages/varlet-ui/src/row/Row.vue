@@ -1,6 +1,6 @@
 <template>
   <div
-    class="var-row var--box"
+    :class="classes(n(), 'var--box')"
     :style="{
       justifyContent: justify,
       alignItems: align,
@@ -19,6 +19,9 @@ import { useCols } from './provide'
 import { toPxNum } from '../utils/elements'
 import type { ComputedRef } from 'vue'
 import type { RowProvider } from './provide'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('row')
 
 export default defineComponent({
   name: 'VarRow',
@@ -44,7 +47,7 @@ export default defineComponent({
 
     bindCols(rowProvider)
 
-    return { average }
+    return { n, classes, average }
   },
 })
 </script>
