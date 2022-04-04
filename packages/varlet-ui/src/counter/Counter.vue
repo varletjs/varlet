@@ -1,16 +1,22 @@
 <template>
-  <div class="var-counter var--box">
+  <div :class="classes(n(), 'var--box')">
     <div
-      class="var-counter__controller var-elevation--2"
-      :class="[disabled || formDisabled ? 'var-counter--disabled' : null, errorMessage ? 'var-counter--error' : null]"
+      :class="classes(
+        n('controller'),
+        'var-elevation--2',
+        [disabled || formDisabled, n('--disabled')],
+        [errorMessage, n('--error')]
+      )"
       :style="{ background: color ? color : undefined }"
       v-bind="$attrs"
     >
       <var-icon
-        class="var-counter__decrement-button"
         var-counter-cover
         name="minus"
-        :class="[!decrementButton ? 'var-counter--hidden' : null]"
+        :class="classes(
+          n('decrement-button'),
+          [!decrementButton, n('--hidden')]
+        )"
         :style="{
           width: toSizeUnit(buttonSize),
           height: toSizeUnit(buttonSize),
@@ -24,7 +30,7 @@
         @touchcancel="releaseDecrement"
       />
       <input
-        class="var-counter__input"
+        :class="n('input')"
         :style="{
           width: toSizeUnit(inputWidth),
           fontSize: toSizeUnit(inputTextSize),
@@ -36,10 +42,12 @@
         @change="handleChange"
       />
       <var-icon
-        class="var-counter__increment-button"
         var-counter-cover
         name="plus"
-        :class="[!incrementButton ? 'var-counter--hidden' : null]"
+        :class="classes(
+          n('increment-button'),
+          [!incrementButton, n('--hidden')]
+        )"
         :style="{
           width: toSizeUnit(buttonSize),
           height: toSizeUnit(buttonSize),
@@ -68,11 +76,12 @@ import { props } from './props'
 import { toNumber } from '../utils/shared'
 import { toSizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
-import { useValidation } from '../utils/components'
+import { useValidation, createNamespace, call } from '../utils/components'
 import type { Ref, ComputedRef } from 'vue'
 import type { ValidateTriggers } from './props'
 import type { CounterProvider } from './provide'
 
+const { n, classes } = createNamespace('counter')
 const SPEED = 100
 const DELAY = 600
 
@@ -115,7 +124,7 @@ export default defineComponent({
     const reset = () => {
       const { min } = props
 
-      props['onUpdate:modelValue']?.(min != null ? toNumber(min) : 0)
+      call(props['onUpdate:modelValue'], min != null ? toNumber(min) : 0)
       resetValidation()
     }
 
@@ -161,7 +170,7 @@ export default defineComponent({
       const { value } = event.target as HTMLInputElement
       const normalizedValue = normalizeValue(value)
 
-      lazyChange ? onBeforeChange?.(toNumber(normalizedValue), change) : setNormalizedValue(normalizedValue)
+      lazyChange ? call(onBeforeChange, toNumber(normalizedValue), change) : setNormalizedValue(normalizedValue)
 
       validateWithTrigger('onInputChange')
     }
@@ -191,10 +200,10 @@ export default defineComponent({
       const normalizedValue = normalizeValue(value)
       const normalizedValueNum = toNumber(normalizedValue)
 
-      onDecrement?.(normalizedValueNum)
+      call(onDecrement, normalizedValueNum)
 
       if (lazyChange) {
-        onBeforeChange?.(normalizedValueNum, change)
+        call(onBeforeChange, normalizedValueNum, change)
       } else {
         setNormalizedValue(normalizedValue)
         validateWithTrigger('onDecrement')
@@ -226,10 +235,10 @@ export default defineComponent({
       const normalizedValue = normalizeValue(value)
       const normalizedValueNum = toNumber(normalizedValue)
 
-      onIncrement?.(normalizedValueNum)
+      call(onIncrement, normalizedValueNum)
 
       if (lazyChange) {
-        onBeforeChange?.(normalizedValueNum, change)
+        call(onBeforeChange, normalizedValueNum, change)
       } else {
         setNormalizedValue(normalizedValue)
         validateWithTrigger('onIncrement')
@@ -289,7 +298,7 @@ export default defineComponent({
 
       const normalizedValueNum = toNumber(normalizedValue)
 
-      props['onUpdate:modelValue']?.(normalizedValueNum)
+      call(props['onUpdate:modelValue'], normalizedValueNum)
     }
 
     const change = (value: string | number) => {
@@ -297,19 +306,21 @@ export default defineComponent({
       validateWithTrigger('onLazyChange')
     }
 
-    bindForm?.(counterProvider)
+    call(bindForm, counterProvider)
 
     watch(
       () => props.modelValue,
       (newValue) => {
         setNormalizedValue(normalizeValue(String(newValue)))
-        props.onChange?.(toNumber(newValue))
+        call(props.onChange, toNumber(newValue))
       }
     )
 
     setNormalizedValue(normalizeValue(String(props.modelValue)))
 
     return {
+      n,
+      classes,
       inputValue,
       errorMessage,
       formDisabled,

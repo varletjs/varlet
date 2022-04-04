@@ -19,7 +19,7 @@
 .var-slider {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-  &-block {
+  &__block {
     display: flex;
     align-items: center;
     position: relative;
@@ -29,7 +29,7 @@
     margin: 0 6px;
   }
 
-  &__disable {
+  &--disabled {
     filter: opacity(0.6);
   }
 
@@ -113,7 +113,7 @@
     }
   }
 
-  &__error {
+  &--error {
     .var-slider__track {
       &-background {
         background-color: var(--slider-error-color) !important;
