@@ -1,12 +1,5 @@
 <template>
-  <var-swipe
-    class="var-tabs-items"
-    ref="swipe"
-    :loop="loop"
-    :touchable="canSwipe"
-    :indicator="false"
-    @change="handleSwipeChange"
-  >
+  <var-swipe :class="n()" ref="swipe" :loop="loop" :touchable="canSwipe" :indicator="false" @change="handleSwipeChange">
     <slot />
   </var-swipe>
 </template>
@@ -19,6 +12,9 @@ import { props } from './props'
 import type { Ref } from 'vue'
 import type { TabsItemsProvider } from './provide'
 import type { TabItemProvider } from '../tab-item/provide'
+import { call, createNamespace } from '../utils/components'
+
+const { n } = createNamespace('tabs-items')
 
 export default defineComponent({
   name: 'VarTabsItems',
@@ -55,7 +51,7 @@ export default defineComponent({
       const tabItem = tabItemList.find(({ index }) => index.value === currentIndex) as TabItemProvider
       const active = tabItem.name.value ?? tabItem.index.value
 
-      props['onUpdate:active']?.(active)
+      call(props['onUpdate:active'], active)
     }
 
     const tabsItemsProvider: TabsItemsProvider = {}
@@ -70,6 +66,7 @@ export default defineComponent({
 
     return {
       swipe,
+      n,
       handleSwipeChange,
     }
   },

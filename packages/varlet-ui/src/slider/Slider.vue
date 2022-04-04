@@ -1,8 +1,11 @@
 <template>
-  <div class="var-slider">
+  <div :class="n()">
     <div
-      class="var-slider-block"
-      :class="[isDisabled ? 'var-slider__disable' : null, errorMessage ? 'var-slider__error' : null]"
+      :class="classes(
+        n('block'),
+        [isDisabled, n('--disabled')],
+        [errorMessage, n('--error')]
+      )"
       :style="{
         height: thumbSize === undefined ? thumbSize : `${3 * toNumber(thumbSize)}px`,
         margin: thumbSize === undefined ? thumbSize : `0 ${toNumber(thumbSize) / 2}px`,
@@ -10,19 +13,19 @@
       ref="sliderEl"
       @click="click"
     >
-      <div class="var-slider__track">
+      <div :class="n('track')">
         <div
-          class="var-slider__track-background"
+          :class="n('track-background')"
           :style="{
             background: trackColor,
             height: trackHeight + 'px',
           }"
         ></div>
-        <div class="var-slider__track-fill" :style="getFillStyle"></div>
+        <div :class="n('track-fill')" :style="getFillStyle"></div>
       </div>
       <div
         v-for="item in thumbList"
-        class="var-slider__thumb"
+        :class="n('thumb')"
         :key="item.enumValue"
         :style="{
           left: `${item.value}%`,
@@ -35,7 +38,7 @@
       >
         <slot name="button" :current-value="item.value">
           <div
-            class="var-slider__thumb-block"
+            :class="n('thumb-block')"
             :style="{
               background: thumbColor,
               height: thumbSize + 'px',
@@ -43,16 +46,20 @@
             }"
           ></div>
           <div
-            class="var-slider__thumb-ripple"
-            :class="[thumbsProps[item.enumValue].active ? 'var-slider__thumb-ripple-active' : null]"
+            :class="classes(
+              n('thumb-ripple'),
+              [thumbsProps[item.enumValue].active, n('thumb-ripple-active')]
+            )"
             :style="{
               background: thumbColor,
               ...getRippleSize(item),
             }"
           ></div>
           <div
-            class="var-slider__thumb-label"
-            :class="[showLabel(item.enumValue) ? 'var-slider__thumb-label-active' : null]"
+            :class="classes(
+              n('thumb-label'),
+              [showLabel(item.enumValue), n('thumb-label-active')]
+            )"
             :style="{
               background: labelColor,
               color: labelTextColor,
@@ -65,13 +72,13 @@
         </slot>
       </div>
     </div>
-    <var-form-details :error-message="errorMessage" class="var-slider__form" var-slider-cover />
+    <var-form-details :error-message="errorMessage" :class="n('form')" var-slider-cover />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, onMounted, computed, reactive, nextTick, watch } from 'vue'
-import { useValidation } from '../utils/components'
+import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import { getLeft } from '../utils/elements'
 import { isArray, isNumber, toNumber } from '../utils/shared'
@@ -79,6 +86,8 @@ import { props } from './props'
 import VarFormDetails from '../form-details'
 import type { Ref, ComputedRef, UnwrapRef } from 'vue'
 import type { SliderProvider } from './provide'
+
+const { n, classes } = createNamespace('slider')
 
 enum Thumbs {
   First = '1',
@@ -199,8 +208,8 @@ export default defineComponent({
 
       if (prevValue !== curValue) {
         const value = range ? rangeValue : curValue
-        onChange?.(value)
-        props['onUpdate:modelValue']?.(value)
+        call(onChange, value)
+        call(props['onUpdate:modelValue'], value)
         validateWithTrigger()
       }
     }
@@ -218,7 +227,7 @@ export default defineComponent({
     const start = (event: TouchEvent, type: keyof ThumbsProps) => {
       if (!maxWidth.value) maxWidth.value = (sliderEl.value as HTMLDivElement).offsetWidth
       if (isDisabled.value || isReadonly.value) return
-      props.onStart?.()
+      call(props.onStart)
       isScroll.value = true
       thumbsProps[type].startPosition = event.touches[0].clientX
     }
@@ -248,7 +257,7 @@ export default defineComponent({
         rangeValue = type === Thumbs.First ? [curValue, modelValue[1]] : [modelValue[0], curValue]
       }
 
-      onEnd?.(range ? rangeValue : curValue)
+      call(onEnd, range ? rangeValue : curValue)
       isScroll.value = false
     }
 
@@ -322,7 +331,7 @@ export default defineComponent({
 
     const reset = () => {
       const resetValue = props.range ? [0, 0] : 0
-      props['onUpdate:modelValue']?.(resetValue)
+      call(props['onUpdate:modelValue'], resetValue)
       resetValidation()
     }
 
@@ -332,9 +341,11 @@ export default defineComponent({
       resetValidation,
     }
 
-    bindForm?.(sliderProvider)
+    call(bindForm, sliderProvider)
 
     return {
+      n,
+      classes,
       Thumbs,
       sliderEl,
       getFillStyle,

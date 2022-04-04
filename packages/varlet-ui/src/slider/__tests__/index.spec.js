@@ -247,7 +247,7 @@ test('test slider events', async () => {
   })
 
   const el = wrapper.find('.var-slider__thumb')
-  const blockEl = wrapper.find('.var-slider-block')
+  const blockEl = wrapper.find('.var-slider__block')
 
   await trigger(el, 'touchstart', 0, 0)
 

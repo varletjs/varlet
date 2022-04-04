@@ -4,6 +4,9 @@ import '../styles/common.less'
 import { supportTouch } from '../utils/elements'
 import type { Directive, Plugin, App } from 'vue'
 import type { DirectiveBinding } from '@vue/runtime-core'
+import { createNamespace } from '../utils/components'
+
+const { n } = createNamespace('ripple')
 
 interface RippleStyles {
   x: number
@@ -69,7 +72,7 @@ function createRipple(this: RippleHTMLElement, event: TouchEvent) {
 
     const { x, y, centerX, centerY, size }: RippleStyles = computeRippleStyles(this, event)
     const ripple: RippleHTMLElement = document.createElement('div')
-    ripple.classList.add('var-ripple')
+    ripple.classList.add(n())
     ripple.style.opacity = `0`
     ripple.style.transform = `translate(${x}px, ${y}px) scale3d(.3, .3, .3)`
     ripple.style.width = `${size}px`

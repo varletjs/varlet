@@ -3,6 +3,9 @@ import { defineComponent, h } from 'vue'
 import { formatStyleVars } from '../utils/elements'
 import type { PropType } from 'vue'
 import type { StyleVars } from './index'
+import { call, createNamespace } from '../utils/components'
+
+const { n } = createNamespace('style-provider')
 
 export default defineComponent({
   name: 'VarStyleProvider',
@@ -17,10 +20,10 @@ export default defineComponent({
       h(
         'div',
         {
-          class: 'var-style-provider',
+          class: n(),
           style: formatStyleVars(props.styleVars),
         },
-        slots.default?.()
+        call(slots.default)
       )
   },
 })
