@@ -1,16 +1,19 @@
 <template>
   <div
-    class="var-divider var--box"
-    :class="[
-      vertical ? 'var-divider--vertical' : null,
-      withText ? 'var-divider--with-text' : null,
-      isInset ? 'var-divider--inset' : null,
-      dashed ? 'var-divider--dashed' : null,
-    ]"
+    :class="
+      classes(
+        n(),
+        'var--box',
+        [vertical, n('--vertical')],
+        [withText, n('--with-text')],
+        [isInset, n('--inset')],
+        [dashed, n('--dashed')]
+      )
+    "
     :style="style"
   >
     <slot>
-      <span class="var-divider__text" v-if="description">{{ description }}</span>
+      <span :class="n('text')" v-if="description">{{ description }}</span>
     </slot>
   </div>
 </template>
@@ -20,6 +23,9 @@ import { defineComponent, computed, reactive, onMounted, onUpdated, toRefs } fro
 import { toSizeUnit } from '../utils/elements'
 import { isBool, toNumber } from '../utils/shared'
 import { props } from './props'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('divider')
 
 export default defineComponent({
   name: 'VarDivider',
@@ -66,6 +72,8 @@ export default defineComponent({
     })
 
     return {
+      n,
+      classes,
       ...toRefs(state),
       style,
       isInset,
