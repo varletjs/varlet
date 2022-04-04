@@ -1,0 +1,68 @@
+@bottom-navigation-item-font-size: var(--font-size-sm);
+@bottom-navigation-item-inactive-color: #646566;
+@bottom-navigation-item-active-color: var(--color-primary);
+@bottom-navigation-item-active-background-color: #fff;
+@bottom-navigation-item-line-height: 1;
+@bottom-navigation-item-icon-size: 22px;
+@bottom-navigation-item-icon-margin-bottom: 5px;
+
+:root {
+  --bottom-navigation-item-font-size: @bottom-navigation-item-font-size;
+  --bottom-navigation-item-inactive-color: @bottom-navigation-item-inactive-color;
+  --bottom-navigation-item-active-color: @bottom-navigation-item-active-color;
+  --bottom-navigation-item-active-background-color: @bottom-navigation-item-active-background-color;
+  --bottom-navigation-item-line-height: @bottom-navigation-item-line-height;
+  --bottom-navigation-item-icon-size: @bottom-navigation-item-icon-size;
+  --bottom-navigation-item-icon-margin-bottom: @bottom-navigation-item-icon-margin-bottom;
+}
+
+.var-bottom-navigation-item {
+  height: 100%;
+  padding-top: 6px;
+  position: relative;
+  flex: 1;
+  text-align: center;
+  line-height: var(--bottom-navigation-item-line-height);
+  color: var(--bottom-navigation-item-inactive-color);
+  transition: margin 0.25s;
+
+  &--active {
+    background-color: var(--bottom-navigation-item-active-background-color);
+    transition: background-color 0.25s;
+    color: var(--bottom-navigation-item-active-color);
+
+    .var-icon,
+    .var-bottom-navigation__label {
+      transform: scale(1.1);
+    }
+  }
+
+  &--right-half-space {
+    margin-right: calc(var(--bottom-navigation-height) / 2);
+  }
+
+  &--left-half-space {
+    margin-left: calc(var(--bottom-navigation-height) / 2);
+  }
+
+  &--right-space {
+    margin-right: var(--bottom-navigation-height);
+  }
+
+  &__icon[var-bottom-navigation-item-cover] {
+    font-size: var(--bottom-navigation-item-icon-size);
+    transition: transform 0.25s;
+  }
+
+  &__badge[var-bottom-navigation-item-cover] {
+    position: absolute;
+    left: -10px;
+    transform: translate(20%, -20px);
+  }
+
+  &__label {
+    margin-top: var(--bottom-navigation-item-icon-margin-bottom);
+    font-size: var(--bottom-navigation-item-font-size);
+    transition: transform 0.25s;
+  }
+}

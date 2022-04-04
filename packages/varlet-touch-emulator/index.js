@@ -50,8 +50,7 @@ function getActiveTouches(mouseEvent) {
 
 function triggerTouch(touchType, mouseEvent) {
   const { altKey, ctrlKey, metaKey, shiftKey } = mouseEvent
-  const touchEvent = new Event(touchType, {bubbles:true, cancelable:true})
-
+  const touchEvent = new Event(touchType, { bubbles: true, cancelable: true })
 
   touchEvent.altKey = altKey
   touchEvent.ctrlKey = ctrlKey

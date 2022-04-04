@@ -86,7 +86,7 @@ export default {
 
 ### 属性
 
-#### Steps Props
+### Steps Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
@@ -95,7 +95,7 @@ export default {
 | `active-color` | 激活状态颜色 | _string_ | `#2979ff` |
 | `inactive-color` | 未激活状态颜色 | _string_ | `#9e9e9e` |
 
-#### Step Props
+### Step Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
@@ -105,7 +105,7 @@ export default {
 
 ### 事件
 
-#### Steps Events
+### Steps Events
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------------- | -------- |
@@ -113,7 +113,7 @@ export default {
 
 ### 插槽
 
-#### Step Slots
+### Step Slots
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |

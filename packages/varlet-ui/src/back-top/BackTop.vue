@@ -17,7 +17,6 @@
       </slot>
     </div>
   </teleport>
-
 </template>
 <script lang="ts">
 import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'

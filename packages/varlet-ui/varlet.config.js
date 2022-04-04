@@ -315,6 +315,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'BottomNavigation 底部导航栏',
+          'en-US': 'BottomNavigation',
+        },
+        doc: 'bottom-navigation',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '功能指令',
           'en-US': 'Functional Directives',
         },
