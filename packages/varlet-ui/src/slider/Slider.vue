@@ -1,7 +1,11 @@
 <template>
   <div :class="n()">
     <div
-      :class="classes(n('block'), isDisabled ? n('--disabled') : null, errorMessage ? n('--error') : null)"
+      :class="classes(
+        n('block'),
+        [isDisabled, n('--disabled')],
+        [errorMessage, n('--error')]
+      )"
       :style="{
         height: thumbSize === undefined ? thumbSize : `${3 * toNumber(thumbSize)}px`,
         margin: thumbSize === undefined ? thumbSize : `0 ${toNumber(thumbSize) / 2}px`,
@@ -42,14 +46,20 @@
             }"
           ></div>
           <div
-            :class="classes(n('thumb-ripple'), thumbsProps[item.enumValue].active ? n('thumb-ripple-active') : null)"
+            :class="classes(
+              n('thumb-ripple'),
+              [thumbsProps[item.enumValue].active, n('thumb-ripple-active')]
+            )"
             :style="{
               background: thumbColor,
               ...getRippleSize(item),
             }"
           ></div>
           <div
-            :class="classes(n('thumb-label'), showLabel(item.enumValue) ? n('thumb-label-active') : null)"
+            :class="classes(
+              n('thumb-label'),
+              [showLabel(item.enumValue), n('thumb-label-active')]
+            )"
             :style="{
               background: labelColor,
               color: labelTextColor,
