@@ -1,7 +1,7 @@
 <template>
   <div :class="n()">
     <div
-      :class="classes(n('block'), [disabled || formDisabled, n('disable')])"
+      :class="classes(n('block'), [disabled || formDisabled, n('--disable')])"
       @click="switchActive"
       :style="styleComputed.switch"
     >
