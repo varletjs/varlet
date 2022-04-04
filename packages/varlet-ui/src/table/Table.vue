@@ -1,11 +1,11 @@
 <template>
-  <div class="var-table var-elevation--1 var--box">
-    <div class="var-table__main">
-      <table class="var-table__table" :style="{ width: toSizeUnit(fullWidth) }">
+  <div :class="classes(n(), 'var-elevation--1 var--box')">
+    <div :class="n('main')">
+      <table :class="n('table')" :style="{ width: toSizeUnit(fullWidth) }">
         <slot />
       </table>
     </div>
-    <div class="var-table__footer" v-if="$slots.footer">
+    <div :class="n('footer')" v-if="$slots.footer">
       <slot name="footer" />
     </div>
   </div>
@@ -14,6 +14,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { toSizeUnit } from '../utils/elements'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('table')
 
 export default defineComponent({
   name: 'VarTable',
@@ -26,6 +29,8 @@ export default defineComponent({
   setup() {
     return {
       toSizeUnit,
+      n,
+      classes,
     }
   },
 })
