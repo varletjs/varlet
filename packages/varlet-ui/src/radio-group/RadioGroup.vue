@@ -79,7 +79,6 @@ export default defineComponent({
       errorMessage,
       n,
       classes,
-      call,
       reset,
       validate,
       resetValidation,
