@@ -1,15 +1,15 @@
 <template>
   <transition name="var-fade">
-    <span class="var-chip var--box" :class="contentClass" :style="chipStyles" v-bind="$attrs">
+    <span :class="classes(n(), 'var--box', ...contentClass)" :style="chipStyles" v-bind="$attrs">
       <slot name="left" />
 
-      <span :class="[`var-chip--text-${size}`]">
+      <span :class="n(`text-${size}`)">
         <slot />
       </span>
 
       <slot name="right" />
 
-      <span v-if="closable" class="var-chip--close" @click="onClose">
+      <span v-if="closable" :class="n('--close')" @click="onClose">
         <var-icon :name="`${iconName ? iconName : 'close-circle'}`" />
       </span>
     </span>
@@ -21,6 +21,9 @@ import VarIcon from '../icon'
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import type { ComputedRef } from 'vue'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('chip')
 
 export default defineComponent({
   name: 'VarChip',
@@ -50,13 +53,15 @@ export default defineComponent({
       const { size, block, type, plain, round } = props
 
       const blockClass = block ? 'var--flex' : 'var--inline-flex'
-      const plainTypeClass = plain ? `var-chip--plain var-chip--plain-${type}` : `var-chip--${type}`
-      const roundClass = round && 'var-chip--round'
+      const plainTypeClass = plain ? `${n('plain')} ${n(`plain-${type}`)}` : n(`--${type}`)
+      const roundClass = round && n('--round')
 
-      return [`var-chip--${size}`, blockClass, plainTypeClass, roundClass]
+      return [n(`--${size}`), blockClass, plainTypeClass, roundClass]
     })
 
     return {
+      n,
+      classes,
       chipStyles,
       contentClass,
     }
