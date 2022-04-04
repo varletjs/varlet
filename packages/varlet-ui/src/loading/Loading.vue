@@ -1,12 +1,12 @@
 <template>
-  <div class="var-loading">
-    <div class="var-loading__content" :class="[loading ? 'var-loading__content--active' : null]" v-if="$slots.default">
+  <div :class="n()">
+    <div :class="classes(n('content'), [loading, n('content--active')])" v-if="$slots.default">
       <slot />
     </div>
-    <div class="var--box var-loading__body" :class="[$slots.default ? 'var-loading__inside' : null]" v-if="isShow">
-      <div class="var-loading__circle" v-if="type === 'circle'">
+    <div :class="classes('var--box', n('body'), [$slots.default, n('inside')])" v-if="isShow">
+      <div :class="n('circle')" v-if="type === 'circle'">
         <span
-          class="var-loading__circle-block"
+          :class="n('circle-block')"
           :style="{
             width: getRadius * 2 + 'px',
             height: getRadius * 2 + 'px',
@@ -20,18 +20,17 @@
       </div>
 
       <template v-for="(nums, key) in loadingTypeDict" :key="key">
-        <div :class="`var-loading__${key} var-loading__${key}-${size}`" v-if="type === key">
+        <div :class="classes(n(key), n(`${key}-${size}`))" v-if="type === key">
           <div
             v-for="num in nums"
             :key="num + key"
             :style="{ backgroundColor: color }"
-            :class="`var-loading__${key}-item var-loading__${key}-item-${size}`"
+            :class="classes(n(`${key}-item`), n(`${key}-item-${size}`))"
           ></div>
         </div>
       </template>
       <div
-        class="var-loading__description"
-        :class="`var-loading__description--${size}`"
+        :class="classes(n('description'), n(`description--${size}`))"
         :style="{ color }"
         v-if="$slots.description || description"
       >
@@ -46,6 +45,9 @@ import { computed, defineComponent } from 'vue'
 import { props } from './props'
 import { toNumber } from '../utils/shared'
 import type { ComputedRef } from 'vue'
+import { createNamespace, call } from '../utils/components'
+
+const { n, classes } = createNamespace('loading')
 
 export default defineComponent({
   name: 'VarLoading',
@@ -70,12 +72,14 @@ export default defineComponent({
     })
 
     const isShow: ComputedRef<boolean> = computed(() => {
-      if (!slots.default?.()) return true
+      if (!call(slots.default)) return true
 
       return props.loading
     })
 
     return {
+      n,
+      classes,
       loadingTypeDict,
       getRadius,
       isShow,
