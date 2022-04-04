@@ -1,24 +1,22 @@
 <template>
-  <div class="var-rate__warp">
-    <div class="var-rate">
-      <div
-        :key="val"
-        v-for="val in toNumber(count)"
-        v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
-        :style="getStyle(val)"
-        :class="getClass(val)"
-        @click="handleClick(val, $event)"
-      >
-        <var-icon
-          :transition="0"
-          :namespace="namespace"
-          :name="getIconName(val)"
-          :style="{ fontSize: toSizeUnit(size) }"
-        />
-      </div>
+  <div :class="n()">
+    <div
+      :key="val"
+      v-for="val in toNumber(count)"
+      v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
+      :style="getStyle(val)"
+      :class="getClass(val)"
+      @click="handleClick(val, $event)"
+    >
+      <var-icon
+        :transition="0"
+        :namespace="namespace"
+        :name="getIconName(val)"
+        :style="{ fontSize: toSizeUnit(size) }"
+      />
     </div>
-    <var-form-details :error-message="errorMessage" />
   </div>
+  <var-form-details :error-message="errorMessage" />
 </template>
 
 <script lang="ts">
@@ -27,11 +25,13 @@ import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
 import { defineComponent, nextTick } from 'vue'
 import { useForm } from '../form/provide'
-import { useValidation } from '../utils/components'
+import { useValidation, call, createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { toNumber } from '../utils/shared'
 import { props } from './props'
 import type { RateProvider } from './provide'
+
+const { n } = createNamespace('rate')
 
 export default defineComponent({
   name: 'VarRate',
@@ -61,10 +61,10 @@ export default defineComponent({
       const { type, color } = transformValue(val)
 
       return {
-        'var-rate__content': true,
-        'var-rate--disabled': form?.disabled.value,
-        'var-rate--error': errorMessage.value,
-        'var-rate--primary': type !== 'empty' && !color,
+        [n('content')]: true,
+        [n('--disabled')]: form?.disabled.value,
+        [n('--error')]: errorMessage.value,
+        [n('--primary')]: type !== 'empty' && !color,
       }
     }
 
@@ -100,7 +100,7 @@ export default defineComponent({
         if (event.offsetX <= Math.floor(offsetWidth / 2)) score -= 0.5
       }
 
-      props['onUpdate:modelValue']?.(score)
+      call(props['onUpdate:modelValue'], score)
     }
 
     const validate = () => v(props.rules, toNumber(props.modelValue))
@@ -115,12 +115,12 @@ export default defineComponent({
       }
 
       changeValue(score, event)
-      onChange?.(score)
+      call(onChange, score)
       validateWithTrigger()
     }
 
     const reset = () => {
-      props['onUpdate:modelValue']?.(0)
+      call(props['onUpdate:modelValue'], 0)
       resetValidation()
     }
 
@@ -130,8 +130,7 @@ export default defineComponent({
       resetValidation,
     }
 
-    bindForm?.(rateProvider)
-
+    call(bindForm, rateProvider)
     return {
       errorMessage,
       formDisabled: form?.disabled,
@@ -145,6 +144,7 @@ export default defineComponent({
       resetValidation,
       toSizeUnit,
       toNumber,
+      n,
     }
   },
 })

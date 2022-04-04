@@ -1,5 +1,5 @@
 <template>
-  <div class="var-steps" :style="{ flexDirection: direction === 'horizontal' ? 'row' : 'column' }">
+  <div :class="n()" :style="{ flexDirection: direction === 'horizontal' ? 'row' : 'column' }">
     <slot />
   </div>
 </template>
@@ -10,6 +10,9 @@ import { useStep } from './provide'
 import { props } from './props'
 import type { ComputedRef } from 'vue'
 import type { StepsProvider } from './provide'
+import { createNamespace, call } from '../utils/components'
+
+const { n } = createNamespace('steps')
 
 export default defineComponent({
   name: 'VarSteps',
@@ -23,7 +26,7 @@ export default defineComponent({
     const { length, bindStep } = useStep()
 
     const clickStep = (index: number) => {
-      props.onClickStep?.(index)
+      call(props.onClickStep, index)
     }
 
     const stepsProvider: StepsProvider = {
@@ -36,6 +39,9 @@ export default defineComponent({
     }
 
     bindStep(stepsProvider)
+    return {
+      n,
+    }
   },
 })
 </script>
