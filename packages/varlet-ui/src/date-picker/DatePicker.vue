@@ -1,25 +1,17 @@
 <template>
-  <div class="var-date-picker" :class="[shadow ? 'var-elevation--2' : null]">
-    <div class="var-date-picker-title" :style="{ background: headerColor || color }">
-      <div
-        class="var-date-picker-title__year"
-        :class="[isYearPanel ? 'var-date-picker-title__year--active' : null]"
-        @click="clickEl('year')"
-      >
+  <div :class="classes(n(), [shadow, 'var-elevation--2'])">
+    <div :class="n('title')" :style="{ background: headerColor || color }">
+      <div :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])" @click="clickEl('year')">
         <slot name="year" :year="previewYear">
           {{ previewYear }}
         </slot>
       </div>
 
       <div
-        class="var-date-picker-title__date"
-        :class="[
-          !isYearPanel ? 'var-date-picker-title__date--active' : null,
-          range ? 'var-date-picker-title__date--range' : null,
-        ]"
+        :class="classes(n('title-date'), [!isYearPanel, n('title-date--active')], [range, n('title-date--range')])"
         @click="clickEl('date')"
       >
-        <transition :name="multiple ? '' : `var-date-picker${reverse ? '-reverse' : ''}-translatey`">
+        <transition :name="multiple ? '' : `${n()}${reverse ? '-reverse' : ''}-translatey`">
           <div :key="`${chooseYear}${chooseMonth?.index}`" v-if="type === 'month'">
             <slot name="range" :choose="getChoose.chooseRangeMonth" v-if="range">
               {{ getMonthTitle }}
@@ -45,13 +37,8 @@
         </transition>
       </div>
     </div>
-    <div
-      class="var-date-picker-body"
-      @touchstart="handleTouchstart"
-      @touchmove="handleTouchmove"
-      @touchend="handleTouchend"
-    >
-      <transition name="var-date-picker-panel-fade">
+    <div :class="n('body')" @touchstart="handleTouchstart" @touchmove="handleTouchmove" @touchend="handleTouchend">
+      <transition :name="`${n()}-panel-fade`">
         <year-picker-panel
           :component-props="componentProps"
           :preview="previewYear"
@@ -94,9 +81,12 @@ import DayPickerPanel from './src/day-picker-panel.vue'
 import { props, MONTH_LIST, WEEK_HEADER } from './props'
 import { isArray, toNumber } from '../utils/shared'
 import { nextTickFrame } from '../utils/elements'
+import { createNamespace, call } from '../utils/components'
 import { pack } from '../locale'
 import type { Ref, ComputedRef, UnwrapRef, RendererNode } from 'vue'
 import type { MonthDict, Choose, Preview, WeekDict, ComponentProps, TouchDirection } from './props'
+
+const { n, classes } = createNamespace('date-picker')
 
 export default defineComponent({
   name: 'VarDatePicker',
@@ -278,8 +268,8 @@ export default defineComponent({
         const isChangeOrder = dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])
         const date = isChangeOrder ? [rangeDate.value[1], rangeDate.value[0]] : [...rangeDate.value]
 
-        props['onUpdate:modelValue']?.(date)
-        props.onChange?.(date)
+        call(props['onUpdate:modelValue'], date)
+        call(props.onChange, date)
       }
     }
 
@@ -293,8 +283,8 @@ export default defineComponent({
       if (index === -1) formatDates.push(date)
       else formatDates.splice(index, 1)
 
-      props['onUpdate:modelValue']?.(formatDates)
-      props.onChange?.(formatDates)
+      call(props['onUpdate:modelValue'], formatDates)
+      call(props.onChange, formatDates)
     }
 
     const getReverse = (dateType: string, date: MonthDict | number) => {
@@ -320,8 +310,8 @@ export default defineComponent({
       if (range) updateRange(formatDate, 'day')
       else if (multiple) updateMultiple(formatDate, 'day')
       else {
-        updateModelValue?.(formatDate)
-        onChange?.(formatDate)
+        call(updateModelValue, formatDate)
+        call(onChange, formatDate)
       }
     }
 
@@ -335,8 +325,8 @@ export default defineComponent({
         if (range) updateRange(date, 'month')
         else if (multiple) updateMultiple(date, 'month')
         else {
-          updateModelValue?.(date)
-          onChange?.(date)
+          call(updateModelValue, date)
+          call(onChange, date)
         }
       } else {
         previewMonth.value = month
@@ -469,6 +459,8 @@ export default defineComponent({
     watch(getPanelType, resetState)
 
     return {
+      n,
+      classes,
       monthPanelEl,
       dayPanelEl,
       reverse,

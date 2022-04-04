@@ -1,9 +1,9 @@
 <template>
-  <ul class="var-year-picker__panel">
+  <ul :class="n()">
     <li
       v-for="year in yearList"
       :key="year"
-      :class="[year === toNumber(preview) ? 'var-year-picker__panel--active' : null]"
+      :class="classes(n('item'), [year === toNumber(preview), n('item--active')])"
       :style="{ color: year === toNumber(preview) ? componentProps.color : '' }"
       @click="chooseYear(year)"
     >
@@ -16,8 +16,11 @@
 import { defineComponent, computed, onMounted } from 'vue'
 import dayjs from 'dayjs/esm'
 import { toNumber } from '../../utils/shared'
+import { createNamespace } from '../../utils/components'
 import type { ComputedRef, PropType } from 'vue'
 import type { ComponentProps } from '../props'
+
+const { n, classes } = createNamespace('year-picker')
 
 export default defineComponent({
   name: 'YearPickerPanel',
@@ -71,13 +74,15 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      const activeEl = document.querySelector('.var-year-picker__panel--active')
+      const activeEl = document.querySelector(`.${n('item--active')}`)
       activeEl?.scrollIntoView({
         block: 'center',
       })
     })
 
     return {
+      n,
+      classes,
       yearList,
       chooseYear,
       toNumber,
