@@ -6,9 +6,9 @@
 import { createApp } from 'vue'
 import { BottomNavigation, BottomNavigationItem } from '@varlet/ui'
 
-const app = createApp();
-app.use(BottomNavigation);
-app.use(BottomNavigationItem);
+const app = createApp()
+app.use(BottomNavigation)
+app.use(BottomNavigationItem)
 ```
 
 ### 基础用法
@@ -89,8 +89,8 @@ export default {
 ```html
 <var-bottom-navigation v-model="active">
   <var-bottom-navigation-item name="home" label="标签">
-    <template #icon="props">
-      <img style="width: 20px" :src="props.active ? homeIcon.active : homeIcon.inactive" />
+    <template #icon="{ active }">
+      <img style="width: 20px" :src="active ? homeIcon.active : homeIcon.inactive" />
     </template>
   </var-bottom-navigation-item>
   <var-bottom-navigation-item label="标签" icon="magnify" />
@@ -106,8 +106,8 @@ export default {
   setup() {
     const active = ref(0)
     const homeIcon = {
-      active: 'https://cdn.jsdelivr.net/npm/@vant/assets/user-active.png',
-      inactive: 'https://cdn.jsdelivr.net/npm/@vant/assets/user-inactive.png'
+      active: 'https://varlet.gitee.io/varlet-ui/home_active.jpg',
+      inactive: 'https://varlet.gitee.io/varlet-ui/home_inactive.jpg',
     }
 
     return { active, homeIcon }
@@ -157,7 +157,7 @@ import Snackbar from '../../snackbar'
 export default {
   setup() {
     const active = ref(0)
-    function handleChange(active) {
+    const handleChange = (active) => {
       Snackbar.info(`changed to ${active}`)
     }
 
@@ -184,7 +184,7 @@ import Snackbar from '../../snackbar'
 export default {
   setup() {
     const active = ref(0)
-    function handleClick(active) {
+    const handleClick = (active) => {
       Snackbar.success(`clicked ${active}`)
     }
 
@@ -199,30 +199,28 @@ export default {
 <var-bottom-navigation v-model="fab" style="margin-top: 10px">
   <template #fab>
     <div class="fab_example">
-      <var-icon name="plus" color="#fff" size="34" />
+      <var-icon name="plus" color="#fff" size="24" />
     </div>
   </template>
-  <var-bottom-navigation-item :label="pack.label" icon="home" />
-  <var-bottom-navigation-item :label="pack.label" icon="magnify" />
-  <var-bottom-navigation-item :label="pack.label" icon="heart" />
-  <var-bottom-navigation-item :label="pack.label" icon="account-circle" />
+  <var-bottom-navigation-item label="标签" icon="home" />
+  <var-bottom-navigation-item label="标签" icon="magnify" />
+  <var-bottom-navigation-item label="标签" icon="heart" />
+  <var-bottom-navigation-item label="标签" icon="account-circle" />
 </var-bottom-navigation>
 ```
 
 ```js
 import { ref } from 'vue'
-import VarIcon from '../../icon'
 
 export default {
-  components:{VarIcon},
   setup() {
     const active = ref(0)
+
     return { active }
   }
 }
 ```
 ```css
-<style lang="less" scoped>
 .fab_example {
   width: 100%;
   height: 100%;
@@ -231,14 +229,13 @@ export default {
   justify-content: center;
   background-color: var(--color-primary);
 }
-</style>
 ```
 
 ## API
 
 ### 属性
 
-### BottomNavigation Props
+#### BottomNavigation Props
 
 |参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ---- |
@@ -250,7 +247,7 @@ export default {
 | `inactive-color` | 未选中标签的颜色 | _string_ | `-` |
 
 
-### BottomNavigationItem Props
+#### BottomNavigationItem Props
 
 |参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ---- |
@@ -263,14 +260,14 @@ export default {
 
 ### 事件
 
-### BottomNavigation Events
+#### BottomNavigation Events
 
 |事件名 | 说明 | 回调参数 |
 | ---- | ---- | ---- |
 | `before-change` | 切换标签前的回调函数，返回 false 可阻止切换，支持返回 Promise | `active: number \| string` |
 | `change` | 切换标签时触发 | `active: number \| string` |
 
-### BottomNavigationItem Events
+#### BottomNavigationItem Events
 
 |事件名 | 说明 | 回调参数 |
 | ---- | ---- | ---- |
@@ -278,13 +275,13 @@ export default {
 
 ### 插槽
 
-### BottomNavigation Slots
+#### BottomNavigation Slots
 
 | 名称 | 说明 | 参数 |
 | ---- | ---- | ----|
 | `fab` | 支持在组件中心插入一个自定义的 fab 按钮 | `-` |
 
-### BottomNavigationItem Slots
+#### BottomNavigationItem Slots
 
 | 名称 | 说明 | 参数 |
 | ---- | ---- | ----|
@@ -294,7 +291,7 @@ export default {
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
-### BottomNavigation Variables
+#### BottomNavigation Variables
 
 | 变量名 | 默认值 |
 | --- | --- |
@@ -303,7 +300,7 @@ export default {
 | `--bottom-navigation-background-color` | `#fff` |
 | `--bottom-navigation-border-color` | `#bcc2cb` |
 
-### BottomNavigationItem Variables
+#### BottomNavigationItem Variables
 
 | 变量名 | 默认值 |
 | --- | --- |

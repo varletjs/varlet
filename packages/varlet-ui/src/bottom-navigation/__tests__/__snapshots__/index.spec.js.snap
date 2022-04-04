@@ -1,235 +1,149 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`fab button 1`] = `
-"<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
-  <div class=\\"var-bottom-navigation-item var-bottom-navigation-item--active\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item var-bottom-navigation-item--right-space\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation__fab var-elevation--8 var-bottom-navigation--fab-right\\">
+"<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\"><button class=\\"var-bottom-navigation-item var-bottom-navigation-item--active\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item var-bottom-navigation-item--right-space\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button>
+  <div class=\\"var-bottom-navigation__fab var-elevation--6 var-bottom-navigation--fab-right\\">
     <div class=\\"tab_example\\"></div>
   </div>
 </div>"
 `;
 
 exports[`test BottomNavigation relation BottomNavigationItems 1`] = `
-"<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
-  <div class=\\"var-bottom-navigation-item var-bottom-navigation-item--active\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
+"<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\"><button class=\\"var-bottom-navigation-item var-bottom-navigation-item--active\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button>
   <!--v-if-->
 </div>"
 `;
 
 exports[`test BottomNavigation relation BottomNavigationItems 2`] = `
-"<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item var-bottom-navigation-item--active\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
+"<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\"><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item var-bottom-navigation-item--active\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button>
   <!--v-if-->
 </div>"
 `;
 
 exports[`test bottom-navigation example 1`] = `
 "<div class=\\"app-type\\">基本使用</div>
-<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\"><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button>
   <!--v-if-->
 </div>
 <div class=\\"app-type\\">通过名称匹配</div>
-<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
-  <div class=\\"var-bottom-navigation-item var-bottom-navigation-item--active\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\"><button class=\\"var-bottom-navigation-item var-bottom-navigation-item--active\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button>
   <!--v-if-->
 </div>
 <div class=\\"app-type\\">徽标提示</div>
-<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\"><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
     <div class=\\"var-badge var--box\\">
       <transition-stub><span class=\\"var-bottom-navigation-item__badge var-badge__content var-badge--danger var-badge__dot var-badge__dot--right\\" var-bottom-navigation-item-cover=\\"\\"><span></span></span></transition-stub>
-    </div>
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    </div><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
     <div class=\\"var-badge var--box\\">
       <transition-stub><span class=\\"var-bottom-navigation-item__badge var-badge__content var-badge--primary\\" var-bottom-navigation-item-cover=\\"\\"><span>66</span></span></transition-stub>
-    </div>
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
+    </div><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button>
   <!--v-if-->
 </div>
 <div class=\\"app-type\\">自定义图标</div>
-<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
-  <div class=\\"var-bottom-navigation-item\\">
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\"><button class=\\"var-bottom-navigation-item\\">
     <!--v-if--><img style=\\"width: 20px;\\" src=\\"https://varlet.gitee.io/varlet-ui/home_inactive.jpg\\">
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button>
   <!--v-if-->
 </div>
 <div class=\\"app-type\\">自定义颜色</div>
-<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\"><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button>
   <!--v-if-->
 </div>
 <div class=\\"app-type\\">监听切换事件</div>
-<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\"><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button>
   <!--v-if-->
 </div>
 <div class=\\"app-type\\">监听点击事件</div>
-<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\">
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1;\\"><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button>
   <!--v-if-->
 </div>
 <div class=\\"app-type\\">悬浮按钮</div>
-<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1; margin-top: 10px;\\">
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item var-bottom-navigation-item--right-half-space\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item var-bottom-navigation-item--left-half-space\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
-    <!--v-if-->
-    <div class=\\"var-bottom-navigation-item__label\\">标签</div>
-  </div>
-  <div class=\\"var-bottom-navigation__fab var-elevation--8 var-bottom-navigation--fab-center\\">
-    <div class=\\"fab_example\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"color: rgb(255, 255, 255); transition: transform 0ms; font-size: 34px;\\"></i></div>
+<div class=\\"var-bottom-navigation\\" style=\\"z-index: 1; margin-top: 10px;\\"><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item var-bottom-navigation-item--right-half-space\\"><i class=\\"var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item var-bottom-navigation-item--left-half-space\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
+    <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
+  </button>
+  <div class=\\"var-bottom-navigation__fab var-elevation--6 var-bottom-navigation--fab-center\\">
+    <div class=\\"fab_example\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"color: rgb(255, 255, 255); transition: transform 0ms; font-size: 24px;\\"></i></div>
   </div>
 </div>"
 `;

@@ -63,7 +63,7 @@
   <var-bottom-navigation v-model="fab" style="margin-top: 10px">
     <template #fab>
       <div class="fab_example">
-        <var-icon name="plus" color="#fff" size="34" />
+        <var-icon name="plus" color="#fff" size="24" />
       </div>
     </template>
     <var-bottom-navigation-item :label="pack.label" icon="home" />

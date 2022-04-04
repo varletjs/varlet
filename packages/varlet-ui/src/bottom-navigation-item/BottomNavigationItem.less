@@ -18,22 +18,33 @@
 
 .var-bottom-navigation-item {
   height: 100%;
-  padding-top: 6px;
+  padding: 6px 12px 8px;
   position: relative;
-  flex: 1;
-  text-align: center;
+  display: inline-flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   line-height: var(--bottom-navigation-item-line-height);
   color: var(--bottom-navigation-item-inactive-color);
-  transition: margin 0.25s;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  appearance: none;
+  text-decoration: none;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, margin 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    padding-top 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
   &--active {
-    background-color: var(--bottom-navigation-item-active-background-color);
-    transition: background-color 0.25s;
     color: var(--bottom-navigation-item-active-color);
+    background-color: var(--bottom-navigation-item-active-background-color);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
-    .var-icon,
-    .var-bottom-navigation__label {
-      transform: scale(1.1);
+    .var-bottom-navigation-item__label {
+      font-size: calc(var(--bottom-navigation-item-font-size) * 1.16);
     }
   }
 
@@ -51,18 +62,17 @@
 
   &__icon[var-bottom-navigation-item-cover] {
     font-size: var(--bottom-navigation-item-icon-size);
-    transition: transform 0.25s;
   }
 
   &__badge[var-bottom-navigation-item-cover] {
     position: absolute;
-    left: -10px;
-    transform: translate(20%, -20px);
+    left: 4px;
+    transform: translateY(-22px);
   }
 
   &__label {
     margin-top: var(--bottom-navigation-item-icon-margin-bottom);
     font-size: var(--bottom-navigation-item-font-size);
-    transition: transform 0.25s;
+    transition: font-size 0.2s ease 0.1s;
   }
 }
