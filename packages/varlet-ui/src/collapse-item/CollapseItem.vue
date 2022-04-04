@@ -1,31 +1,27 @@
 <template>
-  <div
-    :class="{
-      'var-collapse-item': true,
-      'var-collapse-item__active': offset && isShow,
-      'var-collapse-item__disable': disabled,
-    }"
-  >
-    <div class="var-collapse-item-header" @click="toggle()">
-      <div class="var-collapse-item-header__title">
+  <div :class="classes(n(), [offset && isShow, n('--active')], [disabled, n('--disable')])">
+    <div :class="n('header')" @click="toggle()">
+      <div :class="n('header-title')">
         <slot name="title">{{ title }}</slot>
       </div>
-      <div class="var-collapse-item-header__icon">
+      <div :class="n('header-icon')">
         <slot name="icon">
           <var-icon
             :name="icon"
             :transition="250"
-            :class="{
-              'var-collapse-item-header__icon': true,
-              'var-collapse-item-header__open': isShow && icon === 'chevron-down',
-              'var-collapse-item-header__disable': disabled,
-            }"
+            :class="
+              classes(
+                n('header-icon'),
+                [isShow && icon === 'chevron-down', n('header-open')],
+                [disabled, n('header--disable')]
+              )
+            "
           />
         </slot>
       </div>
     </div>
-    <div class="var-collapse-item-content" v-show="show" ref="contentEl" @transitionend="transitionend">
-      <div class="var-collapse-item__wrap">
+    <div :class="n('content')" v-show="show" ref="contentEl" @transitionend="transitionend">
+      <div :class="n('content-wrap')">
         <slot />
       </div>
     </div>
@@ -36,11 +32,14 @@
 import { defineComponent, ref, nextTick, watch, computed } from 'vue'
 import { requestAnimationFrame } from '../utils/elements'
 import { isArray } from '../utils/shared'
+import { createNamespace } from '../utils/components'
 import { useCollapse } from './provide'
 import { props } from './props'
 import VarIcon from '../icon'
 import type { Ref, ComputedRef } from 'vue'
 import type { CollapseItemProvider } from './provide'
+
+const { n, classes } = createNamespace('collapse-item')
 
 export default defineComponent({
   name: 'VarCollapseItem',
@@ -114,6 +113,8 @@ export default defineComponent({
     })
 
     return {
+      n,
+      classes,
       show,
       isShow,
       offset,

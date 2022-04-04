@@ -1,21 +1,16 @@
 <template>
-  <div class="var-switch">
+  <div :class="n()">
     <div
-      class="var-switch-block"
-      :class="[disabled || formDisabled ? 'var-switch__disable' : null]"
+      :class="classes(n('block'), [disabled || formDisabled, n('--disable')])"
       @click="switchActive"
       :style="styleComputed.switch"
     >
       <div
         :style="styleComputed.track"
-        class="var-switch__track"
-        :class="[
-          modelValue === activeValue ? 'var-switch__track-active' : null,
-          errorMessage ? 'var-switch__track-error' : null,
-        ]"
+        :class="classes(n('track'), [modelValue === activeValue, n('track-active')], [errorMessage, n('track-error')])"
       ></div>
       <div
-        class="var-switch__ripple"
+        :class="n('ripple')"
         :style="styleComputed.ripple"
         v-ripple="{
           disabled: !ripple || disabled || loading || formDisabled,
@@ -23,11 +18,14 @@
       >
         <div
           :style="styleComputed.handle"
-          class="var-switch__handle var-elevation--2"
-          :class="[
-            modelValue === activeValue ? 'var-switch__handle-active' : null,
-            errorMessage ? 'var-switch__handle-error' : null,
-          ]"
+          :class="
+            classes(
+              n('handle'),
+              'var-elevation--2',
+              [modelValue === activeValue, n('handle-active')],
+              [errorMessage, n('handle-error')]
+            )
+          "
         >
           <var-loading v-if="loading" :radius="toNumber(size) / 2 - 2" />
         </div>
@@ -39,7 +37,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, nextTick } from 'vue'
-import { useValidation } from '../utils/components'
+import { useValidation, createNamespace, call } from '../utils/components'
 import { toNumber } from '../utils/shared'
 import { useForm } from '../form/provide'
 import { props } from './props'
@@ -48,6 +46,8 @@ import VarLoading from '../loading'
 import Ripple from '../ripple'
 import type { ComputedRef } from 'vue'
 import type { SwitchProvider } from './provide'
+
+const { n, classes } = createNamespace('switch')
 
 type StyleProps = {
   width: string
@@ -121,17 +121,16 @@ export default defineComponent({
         'onUpdate:modelValue': updateModelValue,
       } = props
 
-      onClick?.(event)
+      call(onClick, event)
       if (disabled || loading || readonly || form?.disabled.value || form?.readonly.value) return
-
       const newValue = modelValue === activeValue ? inactiveValue : activeValue
-      onChange?.(newValue)
-      updateModelValue?.(newValue)
+      call(onChange, newValue)
+      call(updateModelValue, newValue)
       validateWithTrigger()
     }
 
     const reset = () => {
-      props['onUpdate:modelValue']?.(props.inactiveValue)
+      call(props['onUpdate:modelValue'], props.inactiveValue)
       resetValidation()
     }
 
@@ -140,10 +139,11 @@ export default defineComponent({
       validate,
       resetValidation,
     }
-
-    bindForm?.(switchProvider)
+    call(bindForm, switchProvider)
 
     return {
+      n,
+      classes,
       switchActive,
       toNumber,
       styleComputed,

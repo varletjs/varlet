@@ -73,20 +73,20 @@ test('test max and min', async () => {
 
   await wrapper.setData({ max: '11:11', min: '11:11' })
   await delay(200)
-  expect(wrapper.find('.var-time-picker-title__time').text()).toBe('11:11')
+  expect(wrapper.find('.var-time-picker__title-time').text()).toBe('11:11')
 
-  const el = wrapper.find('.var-time-picker-clock__container')
+  const el = wrapper.find('.var-time-picker__clock-container')
   await trigger(el, 'touchstart', 50, 30)
   await trigger(el, 'touchmove', 60, 25)
   await trigger(el, 'touchend', 60, 25)
 
   await delay(200)
-  expect(wrapper.find('.var-time-picker-title__time').text()).toBe('11:11')
+  expect(wrapper.find('.var-time-picker__title-time').text()).toBe('11:11')
 
-  await wrapper.find('.var-time-picker-title__btn').trigger('click')
-  await wrapper.find('.var-time-picker-clock__item').trigger('click')
+  await wrapper.find('.var-time-picker__title-btn').trigger('click')
+  await wrapper.find('.var-time-picker__clock-item').trigger('click')
 
-  expect(wrapper.find('.var-time-picker-title__time').text()).toBe('11:11')
+  expect(wrapper.find('.var-time-picker__title-time').text()).toBe('11:11')
 })
 
 test('test useSeconds prop', () => {
@@ -116,19 +116,19 @@ test('test readonly prop', async () => {
 
   await delay(0)
 
-  const el = wrapper.find('.var-time-picker-clock__container')
+  const el = wrapper.find('.var-time-picker__clock-container')
 
   await trigger(el, 'touchstart', 40, 30)
   await trigger(el, 'touchmove', 20, 25)
   await trigger(el, 'touchend', 30, 25)
 
   await delay(200)
-  expect(wrapper.find('.var-time-picker-title__time').text()).toBe('11:11')
+  expect(wrapper.find('.var-time-picker__title-time').text()).toBe('11:11')
 
-  await wrapper.find('.var-time-picker-title__btn').trigger('click')
-  await wrapper.find('.var-time-picker-clock__item').trigger('click')
+  await wrapper.find('.var-time-picker__title-btn').trigger('click')
+  await wrapper.find('.var-time-picker__clock-item').trigger('click')
 
-  expect(wrapper.find('.var-time-picker-title__time').text()).toBe('11:11')
+  expect(wrapper.find('.var-time-picker__title-time').text()).toBe('11:11')
 })
 
 test('test v-model and onChange event', async () => {
@@ -152,31 +152,31 @@ test('test v-model and onChange event', async () => {
 
   await delay(0)
 
-  const el = wrapper.find('.var-time-picker-clock__container')
+  const el = wrapper.find('.var-time-picker__clock-container')
 
   await trigger(el, 'touchstart', 40, 30)
   await trigger(el, 'touchmove', 20, 25)
   await trigger(el, 'touchend', 30, 25)
 
   await delay(200)
-  expect(wrapper.find('.var-time-picker-title__time').text()).not.toBe('11:11:11')
-  expect(wrapper.find('.var-time-picker-title__time').findAll('.var-time-picker-title__btn')[1].text()).toBe('11')
-  expect(wrapper.find('.var-time-picker-title__time').findAll('.var-time-picker-title__btn')[2].text()).toBe('11')
+  expect(wrapper.find('.var-time-picker__title-time').text()).not.toBe('11:11:11')
+  expect(wrapper.find('.var-time-picker__title-time').findAll('.var-time-picker__title-btn')[1].text()).toBe('11')
+  expect(wrapper.find('.var-time-picker__title-time').findAll('.var-time-picker__title-btn')[2].text()).toBe('11')
 
-  await wrapper.find('.var-time-picker-title__time').findAll('.var-time-picker-title__btn')[1].trigger('click')
+  await wrapper.find('.var-time-picker__title-time').findAll('.var-time-picker__title-btn')[1].trigger('click')
   await delay(200)
   await trigger(el, 'touchstart', 40, 30)
   await trigger(el, 'touchmove', 20, 25)
   await trigger(el, 'touchend', 30, 25)
-  expect(wrapper.find('.var-time-picker-title__time').findAll('.var-time-picker-title__btn')[1].text()).not.toBe('11')
-  expect(wrapper.find('.var-time-picker-title__time').findAll('.var-time-picker-title__btn')[2].text()).toBe('11')
+  expect(wrapper.find('.var-time-picker__title-time').findAll('.var-time-picker__title-btn')[1].text()).not.toBe('11')
+  expect(wrapper.find('.var-time-picker__title-time').findAll('.var-time-picker__title-btn')[2].text()).toBe('11')
 
-  await wrapper.find('.var-time-picker-title__time').findAll('.var-time-picker-title__btn')[2].trigger('click')
+  await wrapper.find('.var-time-picker__title-time').findAll('.var-time-picker__title-btn')[2].trigger('click')
   await delay(200)
   await trigger(el, 'touchstart', 40, 30)
   await trigger(el, 'touchmove', 20, 25)
   await trigger(el, 'touchend', 30, 25)
-  expect(wrapper.find('.var-time-picker-title__time').findAll('.var-time-picker-title__btn')[2].text()).not.toBe('11')
+  expect(wrapper.find('.var-time-picker__title-time').findAll('.var-time-picker__title-btn')[2].text()).not.toBe('11')
   expect(wrapper.vm.time).not.toBe('11:11:11')
   expect(change).toHaveBeenCalled()
 })
@@ -198,11 +198,11 @@ test('test switch timePicker ampm', async () => {
   })
 
   await delay(0)
-  await wrapper.find('.var-time-picker-title__ampm').findAll('.var-time-picker-title__btn')[1].trigger('click')
+  await wrapper.find('.var-time-picker__title-ampm').findAll('.var-time-picker__title-btn')[1].trigger('click')
   expect(wrapper.vm.time).toBe('17:10:22')
 
   await wrapper.setData({ min: '6:00:00' })
-  await wrapper.find('.var-time-picker-title__ampm').findAll('.var-time-picker-title__btn')[0].trigger('click')
+  await wrapper.find('.var-time-picker__title-ampm').findAll('.var-time-picker__title-btn')[0].trigger('click')
 
   expect(wrapper.vm.time).toBe('06:10:22')
 })

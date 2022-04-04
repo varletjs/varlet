@@ -1,6 +1,6 @@
 <template>
-  <div class="var-day-picker__panel">
-    <div class="var-day-picker__content">
+  <div :class="n()">
+    <div :class="n('content')">
       <panel-header
         ref="headerEl"
         type="day"
@@ -9,19 +9,15 @@
         @check-panel="clickMonth"
         @check-date="checkDate"
       />
-      <transition :name="`var-date-picker${reverse ? '-reverse' : ''}-translatex`">
+      <transition :name="`${nDate()}${reverse ? '-reverse' : ''}-translatex`">
         <div :key="panelKey">
-          <ul class="var-day-picker__head">
+          <ul :class="n('head')">
             <li v-for="week in sortWeekList" :key="week.index">{{ getDayAbbr(week.index) }}</li>
           </ul>
-          <ul class="var-day-picker__body">
+          <ul :class="n('body')">
             <li v-for="(day, index) in days" :key="index">
               <var-button
                 type="primary"
-                class="var-day-picker__button"
-                :class="{
-                  'var-day-picker__button--usable': day > 0,
-                }"
                 var-day-picker-cover
                 round
                 :ripple="false"
@@ -49,12 +45,15 @@ import VarButton from '../../button'
 import { defineComponent, ref, computed, watch, onMounted, reactive } from 'vue'
 import { WEEK_HEADER } from '../props'
 import { toNumber } from '../../utils/shared'
+import { createNamespace } from '../../utils/components'
 import { pack } from '../../locale'
 import type { Ref, ComputedRef, UnwrapRef, PropType, RendererNode } from 'vue'
 import type { Choose, Preview, ComponentProps, Week, WeekDict, PanelBtnDisabled } from '../props'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
+const { n, classes } = createNamespace('day-picker')
+const { n: nDate } = createNamespace('date-picker')
 
 export default defineComponent({
   name: 'DayPickerPanel',
@@ -184,6 +183,7 @@ export default defineComponent({
           text: true,
           outline: false,
           textColor: '',
+          class: n('button'),
         }
       }
 
@@ -237,19 +237,17 @@ export default defineComponent({
         if (computeOutline()) return color ?? ''
         if (dayExist()) return ''
 
-        return 'var-date-picker-color-cover'
+        return `${nDate()}-color-cover`
       }
 
-      const isCover = textColorOrCover().startsWith('var-date-picker')
+      const isCover = textColorOrCover().startsWith(nDate())
 
       return {
         text: computeText(),
         outline: computeOutline(),
         textColor: isCover ? '' : textColorOrCover(),
-        'var-date-picker-color-cover': isCover,
-        class: {
-          'var-day-picker__button-disabled': disabled,
-        },
+        [`${nDate()}-color-cover`]: isCover,
+        class: classes(n('button'), n('button--usable'), [disabled, n('button--disabled')]),
       }
     }
 
@@ -261,7 +259,7 @@ export default defineComponent({
 
     const chooseDay = (day: number, event: MouseEvent) => {
       const buttonEl = event.currentTarget as HTMLButtonElement
-      if (buttonEl.classList.contains('var-day-picker__button-disabled')) return
+      if (buttonEl.classList.contains(n('button--disabled'))) return
 
       emit('choose-day', day)
     }
@@ -285,6 +283,8 @@ export default defineComponent({
     )
 
     return {
+      n,
+      nDate,
       days,
       reverse,
       headerEl,

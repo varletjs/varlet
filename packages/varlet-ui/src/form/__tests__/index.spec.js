@@ -448,13 +448,13 @@ test('test form with switch', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  await wrapper.find('.var-switch-block').trigger('click')
+  await wrapper.find('.var-switch__block').trigger('click')
   expect(wrapper.vm.value).toBe(false)
   expect(onChange).toHaveBeenCalledTimes(0)
 
   await wrapper.setData({ disabled: false, readonly: true })
 
-  await wrapper.find('.var-switch-block').trigger('click')
+  await wrapper.find('.var-switch__block').trigger('click')
   expect(wrapper.vm.value).toBe(false)
   expect(onChange).toHaveBeenCalledTimes(0)
 
@@ -464,7 +464,7 @@ test('test form with switch', async () => {
 
   await wrapper.setData({ disabled: false, readonly: false })
 
-  await wrapper.find('.var-switch-block').trigger('click')
+  await wrapper.find('.var-switch__block').trigger('click')
   expect(wrapper.vm.value).toBe(true)
   expect(onChange).toHaveBeenCalledTimes(1)
 

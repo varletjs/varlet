@@ -1,6 +1,6 @@
 <template>
-  <div class="var-month-picker__panel">
-    <div class="var-month-picker__content">
+  <div :class="n()">
+    <div :class="n('content')">
       <panel-header
         ref="headerEl"
         type="month"
@@ -9,12 +9,11 @@
         @check-panel="clickYear"
         @check-date="checkDate"
       />
-      <transition :name="`var-date-picker${reverse ? '-reverse' : ''}-translatex`">
+      <transition :name="`${nDate()}${reverse ? '-reverse' : ''}-translatex`">
         <ul :key="panelKey">
           <li v-for="month in MONTH_LIST" :key="month.index">
             <var-button
               type="primary"
-              class="var-month-picker__button"
               var-month-picker-cover
               :ripple="false"
               v-bind="{
@@ -40,12 +39,15 @@ import { MONTH_LIST } from '../props'
 import PanelHeader from './panel-header.vue'
 import VarButton from '../../button'
 import { toNumber } from '../../utils/shared'
+import { createNamespace } from '../../utils/components'
 import { pack } from '../../locale'
 import type { Ref, ComputedRef, UnwrapRef, PropType, RendererNode } from 'vue'
 import type { Choose, Preview, ComponentProps, Month, MonthDict, PanelBtnDisabled } from '../props'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
+const { n, classes } = createNamespace('month-picker')
+const { n: nDate } = createNamespace('date-picker')
 
 export default defineComponent({
   name: 'MonthPickerPanel',
@@ -178,26 +180,24 @@ export default defineComponent({
         if (computeOutline()) return color ?? ''
         if (monthExist()) return ''
 
-        return 'var-date-picker-color-cover'
+        return `${nDate()}-color-cover`
       }
 
-      const isCover = textColorOrCover().startsWith('var-date-picker')
+      const isCover = textColorOrCover().startsWith(nDate())
 
       return {
         outline: computeOutline(),
         text: computeText(),
         color: !computeText() ? color : '',
         textColor: isCover ? '' : textColorOrCover(),
-        'var-date-picker-color-cover': isCover,
-        class: {
-          'var-month-picker__button-disabled': disabled,
-        },
+        [`${nDate()}-color-cover`]: isCover,
+        class: classes(n('button'), [disabled, n('button--disabled')]),
       }
     }
 
     const chooseMonth = (month: MonthDict, event: MouseEvent) => {
       const buttonEl = event.currentTarget as HTMLButtonElement
-      if (buttonEl.classList.contains('var-month-picker__button-disabled')) return
+      if (buttonEl.classList.contains(n('button--disabled'))) return
 
       emit('choose-month', month)
     }
@@ -227,6 +227,8 @@ export default defineComponent({
     )
 
     return {
+      n,
+      nDate,
       pack,
       MONTH_LIST,
       headerEl,

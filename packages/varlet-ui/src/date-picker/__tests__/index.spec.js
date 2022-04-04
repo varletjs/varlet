@@ -150,7 +150,7 @@ test('test max and min', async () => {
   await wrapper.find('.var-picker-header__value').trigger('click')
   await delay(200)
 
-  expect(wrapper.find('.var-year-picker__panel').findAll('li').length).toBe(1)
+  expect(wrapper.find('.var-year-picker').findAll('li').length).toBe(1)
 })
 
 test('test datePicker v-model', async () => {
@@ -177,7 +177,7 @@ test('test datePicker v-model', async () => {
 
   await wrapper.find('.var-picker-header__value').trigger('click')
   await delay(200)
-  await wrapper.find('.var-year-picker__panel').find('li').trigger('click')
+  await wrapper.find('.var-year-picker').find('li').trigger('click')
   await delay(200)
   await wrapper.find('.var-month-picker__content').find('ul').find('button').trigger('click')
   expect(wrapper.vm.date).not.toBe('2021-01')
@@ -305,7 +305,7 @@ test('test datePicker touchable prop', async () => {
     template: `<var-date-picker v-model="date" :type="type" />`,
   })
 
-  const pickBodyEl = wrapper.find('.var-date-picker-body')
+  const pickBodyEl = wrapper.find('.var-date-picker__body')
   const headerEl = wrapper.find('.var-picker-header__value')
 
   await triggerDrag(pickBodyEl, 0, 100)

@@ -1,18 +1,13 @@
 <template>
-  <div class="var-time-picker" ref="picker" :class="[shadow ? 'var-elevation--2' : null]">
-    <div class="var-time-picker-title" :style="{ background: headerColor || color }">
-      <div class="var-time-picker-title__time">
-        <div
-          class="var-time-picker-title__btn"
-          :class="type === 'hour' ? 'var-time-picker-title__btn--active' : null"
-          @click="checkPanel('hour')"
-        >
+  <div :class="classes(n(), [shadow, 'var-elevation--2'])" ref="picker">
+    <div :class="n('title')" :style="{ background: headerColor || color }">
+      <div :class="n('title-time')">
+        <div :class="classes(n('title-btn'), [type === 'hour', n('title-btn--active')])" @click="checkPanel('hour')">
           {{ time.hour }}
         </div>
         <span>:</span>
         <div
-          class="var-time-picker-title__btn"
-          :class="type === 'minute' ? 'var-time-picker-title__btn--active' : null"
+          :class="classes(n('title-btn'), [type === 'minute', n('title-btn--active')])"
           @click="checkPanel('minute')"
         >
           {{ time.minute }}
@@ -20,39 +15,20 @@
         <span v-if="useSeconds">:</span>
         <div
           v-if="useSeconds"
-          class="var-time-picker-title__btn"
-          :class="type === 'second' ? 'var-time-picker-title__btn--active' : null"
+          :class="classes(n('title-btn'), [type === 'second', n('title-btn--active')])"
           @click="checkPanel('second')"
         >
           {{ time.second }}
         </div>
       </div>
-      <div class="var-time-picker-title__ampm" v-if="format === 'ampm'">
-        <div
-          class="var-time-picker-title__btn"
-          :class="ampm === 'am' ? 'var-time-picker-title__btn--active' : null"
-          @click="checkAmpm('am')"
-        >
-          AM
-        </div>
-        <div
-          class="var-time-picker-title__btn"
-          :class="ampm === 'pm' ? 'var-time-picker-title__btn--active' : null"
-          @click="checkAmpm('pm')"
-        >
-          PM
-        </div>
+      <div :class="n('title-ampm')" v-if="format === 'ampm'">
+        <div :class="classes(n('title-btn'), [ampm === 'am', n('title-btn--active')])" @click="checkAmpm('am')">AM</div>
+        <div :class="classes(n('title-btn'), [ampm === 'pm', n('title-btn--active')])" @click="checkAmpm('pm')">PM</div>
       </div>
     </div>
-    <div class="var-time-picker-body">
-      <div
-        class="var-time-picker-clock__container"
-        @touchstart="moveHand"
-        @touchmove="moveHand"
-        @touchend="end"
-        ref="container"
-      >
-        <transition name="var-time-picker-panel-fade">
+    <div :class="n('body')">
+      <div :class="n('clock-container')" @touchstart="moveHand" @touchmove="moveHand" @touchend="end" ref="container">
+        <transition :name="`${n()}-panel-fade`">
           <clock
             :key="type"
             ref="inner"
@@ -83,9 +59,12 @@ import dayjs from 'dayjs/esm'
 import Clock from './clock.vue'
 import { props, hoursAmpm, hours24 } from './props'
 import { toNumber } from '../utils/shared'
+import { createNamespace, call } from '../utils/components'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
 import type { ComputedRef, Ref, DefineComponent, UnwrapRef } from 'vue'
 import type { Time, AmPm } from './props'
+
+const { n, classes } = createNamespace('time-picker')
 
 export default defineComponent({
   name: 'VarTimePicker',
@@ -132,8 +111,8 @@ export default defineComponent({
     })
 
     const update = (newTime: string) => {
-      props['onUpdate:modelValue']?.(newTime)
-      props.onChange?.(newTime)
+      call(props['onUpdate:modelValue'], newTime)
+      call(props.onChange, newTime)
     }
 
     const rad2deg = (rad: number): number => {
@@ -350,6 +329,8 @@ export default defineComponent({
     )
 
     return {
+      n,
+      classes,
       getRad,
       time,
       container,

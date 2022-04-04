@@ -92,7 +92,7 @@
     padding: 0;
   }
 
-  &-title {
+  &__title {
     padding: var(--date-picker-title-padding);
     color: var(--date-picker-title-color);
     background: var(--date-picker-title-background);
@@ -101,7 +101,7 @@
     flex-direction: column;
     flex-wrap: wrap;
 
-    &__year {
+    &-year {
       opacity: 0.6;
       cursor: pointer;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -117,7 +117,7 @@
       }
     }
 
-    &__date {
+    &-date {
       height: var(--date-picker-title-date-height);
       overflow: hidden;
       font-size: var(--date-picker-title-date-font-size);
@@ -141,7 +141,7 @@
     }
   }
 
-  &-body {
+  &__body {
     flex: 1;
     position: relative;
     overflow: auto;
@@ -198,28 +198,26 @@
       color: var(--date-picker-main-color);
     }
 
-    &__button-disabled {
+    &__button--disabled {
       color: var(--color-text-disabled) !important;
       cursor: not-allowed;
     }
   }
 
   .var-year-picker {
-    &__panel {
-      width: 100%;
-      height: 100%;
-      font-weight: var(--year-picker-font-weight);
-      padding: 0;
-      margin: 0;
-      list-style-type: none;
-      overflow: auto;
-      text-align: center;
+    width: 100%;
+    height: 100%;
+    font-weight: var(--year-picker-font-weight);
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    overflow: auto;
+    text-align: center;
 
-      li {
-        padding: var(--year-picker-item-padding);
-        cursor: pointer;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      }
+    &__item {
+      padding: var(--year-picker-item-padding);
+      cursor: pointer;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
       &--active {
         font-size: var(--year-picker-item-active-font-size);
@@ -261,11 +259,15 @@
       font-size: var(--day-picker-content-item-button-font-size);
     }
 
+    &__button:not(.var-day-picker__button--usable) {
+      cursor: unset;
+    }
+
     &__button[var-date-picker-color-cover='true'] {
       color: var(--date-picker-main-color);
     }
 
-    &__button-disabled {
+    &__button--disabled {
       color: var(--color-text-disabled) !important;
       cursor: not-allowed;
     }

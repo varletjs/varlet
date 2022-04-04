@@ -4,8 +4,8 @@
       v-ripple="{ disabled: current <= 1 || disabled }"
       class="var-pagination__item var-pagination__prev"
       :class="{
-        'var-pagination__item-disabled': current <= 1 || disabled,
-        'var-pagination__item-hover': simple,
+        'var-pagination__item--disabled': current <= 1 || disabled,
+        'var-pagination__item--hover': simple,
         'var-elevation--2': !simple,
       }"
       @click="clickItem('prev')"
@@ -14,7 +14,7 @@
         <var-icon name="chevron-left" />
       </slot>
     </li>
-    <li v-if="simple" class="var-pagination__simple" :class="{ 'var-pagination__item-disabled': disabled }">
+    <li v-if="simple" class="var-pagination__simple" :class="{ 'var-pagination__item--disabled': disabled }">
       <var-input
         v-model="simpleValue"
         :disabled="disabled"
@@ -32,10 +32,10 @@
       :item-mode="getMode(item, index)"
       class="var-pagination__item var-elevation--2"
       :class="{
-        'var-pagination__item-active': item === current && !disabled,
-        'var-pagination__item-hide': isHideEllipsis(item, index),
-        'var-pagination__item-disabled': disabled,
-        'var-pagination__item-disabled-active': item === current && disabled,
+        'var-pagination__item--active': item === current && !disabled,
+        'var-pagination__item--hide': isHideEllipsis(item, index),
+        'var-pagination__item--disabled': disabled,
+        'var-pagination__item--disabled--active': item === current && disabled,
       }"
       @click="clickItem(item, index)"
     >
@@ -45,8 +45,8 @@
       v-ripple="{ disabled: current >= pageCount || disabled }"
       class="var-pagination__item var-pagination__next"
       :class="{
-        'var-pagination__item-disabled': current >= pageCount || disabled,
-        'var-pagination__item-hover': simple,
+        'var-pagination__item--disabled': current >= pageCount || disabled,
+        'var-pagination__item--hover': simple,
         'var-elevation--2': !simple,
       }"
       @click="clickItem('next')"
@@ -56,18 +56,18 @@
       </slot>
     </li>
 
-    <li v-if="showSizeChanger" class="var-pagination__size" :class="{ 'var-pagination__item-disabled': disabled }">
+    <li v-if="showSizeChanger" class="var-pagination__size" :class="{ 'var-pagination__item--disabled': disabled }">
       <var-menu v-model:show="menuVisible" :offset-x="-4">
-        <div class="var-pagination__size-open" style="display: flex" @click="showMenu">
+        <div class="var-pagination__size--open" style="display: flex" @click="showMenu">
           <span>{{ size }}{{ pack.paginationItem }} / {{ pack.paginationPage }}</span>
-          <var-icon class="var-pagination__size-open-icon" var-pagination-cover name="menu-down" />
+          <var-icon class="var-pagination__size--open-icon" var-pagination-cover name="menu-down" />
         </div>
 
         <template #menu>
           <var-cell
             class="var-pagination__list"
             :class="{
-              'var-pagination__list-active': size === option,
+              'var-pagination__list--active': size === option,
             }"
             v-ripple
             v-for="(option, index) in sizeOption"
@@ -82,7 +82,7 @@
     <li
       v-if="showQuickJumper && !simple"
       class="var-pagination__quickly"
-      :class="{ 'var-pagination__item-disabled': disabled }"
+      :class="{ 'var-pagination__item--disabled': disabled }"
     >
       {{ pack.paginationJump }}
       <var-input

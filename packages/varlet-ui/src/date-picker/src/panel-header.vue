@@ -1,9 +1,9 @@
 <template>
-  <div class="var-picker-header">
+  <div :class="n()">
     <var-button round text style="filter: opacity(0.54)" :disabled="disabled.left" @click="checkDate('prev')">
       <var-icon name="chevron-left" />
     </var-button>
-    <div class="var-picker-header__value" @click="$emit('check-panel')">
+    <div :class="n('value')" @click="$emit('check-panel')">
       <transition :name="`var-date-picker${reverse ? '-reverse' : ''}-translatex`">
         <div :key="showDate">{{ showDate }}</div>
       </transition>
@@ -19,9 +19,12 @@ import VarButton from '../../button'
 import VarIcon from '../../icon'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { toNumber } from '../../utils/shared'
+import { createNamespace } from '../../utils/components'
 import { pack } from '../../locale'
 import type { Ref, ComputedRef, PropType } from 'vue'
 import type { Preview, PanelBtnDisabled } from '../props'
+
+const { n } = createNamespace('picker-header')
 
 export default defineComponent({
   name: 'PanelHeader',
@@ -75,6 +78,7 @@ export default defineComponent({
     )
 
     return {
+      n,
       reverse,
       showDate,
       checkDate,

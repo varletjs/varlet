@@ -1,7 +1,7 @@
 <template>
   <teleport :to="teleport" :disabled="disabled">
-    <transition name="var-snackbar-fade" @after-enter="onOpened" @after-leave="onClosed">
-      <var-snackbar-core v-bind="$props" class="var-snackbar-transition">
+    <transition :name="`${n()}-fade`" @after-enter="onOpened" @after-leave="onClosed">
+      <var-snackbar-core v-bind="$props" class="var-snackbar__transition">
         <slot>{{ content }}</slot>
         <template #action>
           <slot name="action" />
@@ -14,8 +14,10 @@
 <script>
 import { defineComponent } from 'vue'
 import VarSnackbarCore from './core'
-import { useTeleport } from '../utils/components'
+import { createNamespace, useTeleport } from '../utils/components'
 import { props } from './props'
+
+const { n } = createNamespace('snackbar')
 
 export default defineComponent({
   name: 'VarSnackbar',
@@ -27,6 +29,7 @@ export default defineComponent({
     const { disabled } = useTeleport()
 
     return {
+      n,
       disabled,
     }
   },

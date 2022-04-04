@@ -1,25 +1,29 @@
 <template>
-  <div class="var-time-picker-clock">
-    <div class="var-time-picker-clock__hand" :style="handStyle"></div>
+  <div :class="n('clock')">
+    <div :class="n('clock-hand')" :style="handStyle"></div>
     <div
-      class="var-time-picker-clock__item"
-      :class="[
-        isActive(index, false) ? 'var-time-picker-clock__item--active' : null,
-        isDisable(timeScale) ? 'var-time-picker-clock__item--disable' : null,
-      ]"
+      :class="
+        classes(
+          n('clock-item'),
+          [isActive(index, false), n('clock-item--active')],
+          [isDisable(timeScale), n('clock-item--disable')]
+        )
+      "
       v-for="(timeScale, index) in timeScales"
       :key="timeScale"
       :style="getStyle(index, timeScale, false)"
     >
       {{ timeScale }}
     </div>
-    <div class="var-time-picker-clock__inner" ref="inner" v-if="format === '24hr' && type === 'hour'">
+    <div :class="n('clock-inner')" ref="inner" v-if="format === '24hr' && type === 'hour'">
       <div
-        class="var-time-picker-clock__item"
-        :class="[
-          isActive(index, true) ? 'var-time-picker-clock__item--active' : null,
-          isDisable(hour) ? 'var-time-picker-clock__item--disable' : null,
-        ]"
+        :class="
+          classes(
+            n('clock-item'),
+            [isActive(index, true), n('clock-item--active')],
+            [isDisable(hour), n('clock-item--disable')]
+          )
+        "
         v-for="(hour, index) in hours24"
         :key="hour"
         :style="getStyle(index, hour, true)"
@@ -36,8 +40,11 @@ import dayjs from 'dayjs/esm'
 import { hoursAmpm, hours24, minSec } from './props'
 import { notConvert, convertHour, getIsDisableMinute, getIsDisableSecond, getNumberTime } from './utils'
 import { toNumber } from '../utils/shared'
+import { createNamespace } from '../utils/components'
 import type { ComputedRef, Ref, PropType } from 'vue'
 import type { Time, AmPm, Format, AllowedTime } from './props'
+
+const { n, classes } = createNamespace('time-picker')
 
 export default defineComponent({
   name: 'Clock',
@@ -301,6 +308,8 @@ export default defineComponent({
     )
 
     return {
+      n,
+      classes,
       hours24,
       timeScales,
       inner,
