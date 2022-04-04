@@ -1,8 +1,7 @@
 <template>
-  <div class="var-swipe" ref="swipeEl">
+  <div :class="n()" ref="swipeEl">
     <div
-      class="var-swipe__track"
-      :class="[vertical ? 'var-swipe--vertical' : null]"
+      :class="classes(n('track'), [vertical, n('--vertical')])"
       :style="{
         width: !vertical ? `${trackSize}px` : undefined,
         height: vertical ? `${trackSize}px` : undefined,
@@ -17,17 +16,11 @@
     </div>
 
     <slot name="indicator" :index="index" :length="length">
-      <div
-        class="var-swipe__indicators"
-        :class="[vertical ? 'var-swipe--indicators-vertical' : null]"
-        v-if="indicator && length"
-      >
+      <div :class="classes(n('indicators'), [vertical, n('--indicators--vertical')])" v-if="indicator && length">
         <div
-          class="var-swipe__indicator"
-          :class="[
-            index === idx ? 'var-swipe--indicator-active' : null,
-            vertical ? 'var-swipe--indicator-vertical' : null,
-          ]"
+          :class="
+            classes(n('indicator'), [index === idx, n('--indicator-active')], [vertical, n('--indicator-vertical')])
+          "
           :style="{ background: indicatorColor }"
           :key="l"
           v-for="(l, idx) in length"
@@ -47,9 +40,12 @@ import { isNumber, toNumber } from '../utils/shared'
 import type { Ref, ComputedRef } from 'vue'
 import type { SwipeProvider } from './provide'
 import type { SwipeItemProvider } from '../swipe-item/provide'
+import { call, createNamespace } from '../utils/components'
 
 const SWIPE_DELAY = 250
 const SWIPE_DISTANCE = 20
+
+const { n, classes } = createNamespace('swipe')
 
 export default defineComponent({
   name: 'VarSwipe',
@@ -155,7 +151,7 @@ export default defineComponent({
 
       nextTickFrame(() => {
         lockDuration.value = false
-        fn?.()
+        call(fn)
       })
     }
 
@@ -261,7 +257,7 @@ export default defineComponent({
       index.value = swipeIndexToIndex(swipeIndex)
       startAutoplay()
 
-      prevIndex !== index.value && onChange?.(index.value)
+      prevIndex !== index.value && call(onChange, index.value)
     }
 
     // expose
@@ -294,7 +290,7 @@ export default defineComponent({
 
       const currentIndex = index.value
       index.value = boundaryIndex(currentIndex + 1)
-      onChange?.(index.value)
+      call(onChange, index.value)
 
       fixPosition(() => {
         if (currentIndex === length.value - 1 && loop) {
@@ -318,7 +314,7 @@ export default defineComponent({
 
       const currentIndex = index.value
       index.value = boundaryIndex(currentIndex - 1)
-      onChange?.(index.value)
+      call(onChange, index.value)
 
       fixPosition(() => {
         if (currentIndex === 0 && loop) {
@@ -373,6 +369,8 @@ export default defineComponent({
     })
 
     return {
+      n,
+      classes,
       length,
       index,
       swipeEl,
