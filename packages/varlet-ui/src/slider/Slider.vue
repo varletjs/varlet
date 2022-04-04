@@ -1,8 +1,7 @@
 <template>
   <div :class="n()">
     <div
-      class="var-slider-block"
-      :class="[isDisabled ? n('disable') : null, errorMessage ? n('error') : null]"
+      :class="classes(n('block'), isDisabled ? n('--disabled') : null, errorMessage ? n('--error') : null)"
       :style="{
         height: thumbSize === undefined ? thumbSize : `${3 * toNumber(thumbSize)}px`,
         margin: thumbSize === undefined ? thumbSize : `0 ${toNumber(thumbSize) / 2}px`,
@@ -43,14 +42,14 @@
             }"
           ></div>
           <div
-            :class="[n('thumb-ripple'), thumbsProps[item.enumValue].active ? n('thumb-ripple-active') : null]"
+            :class="classes(n('thumb-ripple'), thumbsProps[item.enumValue].active ? n('thumb-ripple-active') : null)"
             :style="{
               background: thumbColor,
               ...getRippleSize(item),
             }"
           ></div>
           <div
-            :class="[n('thumb-label'), showLabel(item.enumValue) ? n('thumb-label-active') : null]"
+            :class="classes(n('thumb-label'), showLabel(item.enumValue) ? n('thumb-label-active') : null)"
             :style="{
               background: labelColor,
               color: labelTextColor,
@@ -78,7 +77,7 @@ import VarFormDetails from '../form-details'
 import type { Ref, ComputedRef, UnwrapRef } from 'vue'
 import type { SliderProvider } from './provide'
 
-const { n } = createNamespace('slider')
+const { n, classes } = createNamespace('slider')
 
 enum Thumbs {
   First = '1',
@@ -336,6 +335,7 @@ export default defineComponent({
 
     return {
       n,
+      classes,
       Thumbs,
       sliderEl,
       getFillStyle,
