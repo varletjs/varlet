@@ -10,7 +10,7 @@
     :teleport="teleport"
     :show="popupShow"
     v-bind="{
-      'onUpdate:show': (value) => call($props['onUpdate:show'], value),
+      'onUpdate:show': handlePopupUpdateShow,
     }"
     @open="onOpen"
     @close="onClose"
@@ -82,6 +82,8 @@ export default defineComponent({
       closeOnClickAction && call(props['onUpdate:show'], false)
     }
 
+    const handlePopupUpdateShow = (value: boolean) => call(props['onUpdate:show'], value)
+
     watch(
       () => props.show,
       (newValue) => {
@@ -93,7 +95,7 @@ export default defineComponent({
     return {
       n,
       classes,
-      call,
+      handlePopupUpdateShow,
       popupShow,
       pack,
       dt,
