@@ -1,5 +1,5 @@
 <template>
-  <div class="var-collapse">
+  <div :class="n()">
     <slot />
   </div>
 </template>
@@ -8,12 +8,14 @@
 import { computed, defineComponent, nextTick, watch } from 'vue'
 import { useCollapseItem } from './provide'
 import { props } from './props'
+import { call, createNamespace } from '../utils/components'
 import { isArray } from '../utils/shared'
 import type { ComputedRef } from 'vue'
 import type { CollapseItemProvider } from '../collapse-item/provide'
 import type { CollapseProvider } from './provide'
 import type { CollapseModelValue } from './props'
-import { call } from '../utils/components'
+
+const { n } = createNamespace('collapse')
 
 export default defineComponent({
   name: 'VarCollapse',
@@ -120,6 +122,10 @@ export default defineComponent({
       () => props.modelValue,
       () => nextTick().then(resize)
     )
+
+    return {
+      n,
+    }
   },
 })
 </script>

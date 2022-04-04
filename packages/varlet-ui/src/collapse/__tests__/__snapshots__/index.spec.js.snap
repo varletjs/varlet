@@ -1,49 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tes collapse offset and collapse icon 1`] = `
-"<div class=\\"var-collapse\\">
-  <div class=\\"var-collapse-item\\">
-    <div class=\\"var-collapse-item-header\\">
-      <div class=\\"var-collapse-item-header__title\\">test1</div>
-      <div class=\\"var-collapse-item-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-fire var-collapse-item-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
-    </div>
-    <div class=\\"var-collapse-item-content\\" style=\\"display: none;\\">
-      <div class=\\"var-collapse-item__wrap\\">test1</div>
-    </div>
-  </div>
-  <div class=\\"var-collapse-item\\">
-    <div class=\\"var-collapse-item-header\\">
-      <div class=\\"var-collapse-item-header__title\\">test2</div>
-      <div class=\\"var-collapse-item-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-fire var-collapse-item-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
-    </div>
-    <div class=\\"var-collapse-item-content\\" style=\\"display: none;\\">
-      <div class=\\"var-collapse-item__wrap\\">test2</div>
-    </div>
-  </div>
-</div>"
-`;
-
 exports[`test collapse example 1`] = `
 "<div class=\\"collapse-demo\\">
   <div>
     <div class=\\"app-type\\">基本使用</div>
     <div class=\\"var-collapse\\">
       <div class=\\"var-collapse-item\\">
-        <div class=\\"var-collapse-item-header\\">
-          <div class=\\"var-collapse-item-header__title\\">标题</div>
-          <div class=\\"var-collapse-item-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+        <div class=\\"var-collapse-item__header\\">
+          <div class=\\"var-collapse-item__header-title\\">标题</div>
+          <div class=\\"var-collapse-item__header-icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item__header-icon\\" style=\\"transition: transform 250ms;\\"></i></div>
         </div>
-        <div class=\\"var-collapse-item-content\\" style=\\"display: none;\\">
-          <div class=\\"var-collapse-item__wrap\\">文本</div>
+        <div class=\\"var-collapse-item__content\\" style=\\"display: none;\\">
+          <div class=\\"var-collapse-item__content-wrap\\">文本</div>
         </div>
       </div>
       <div class=\\"var-collapse-item\\">
-        <div class=\\"var-collapse-item-header\\">
-          <div class=\\"var-collapse-item-header__title\\">标题</div>
-          <div class=\\"var-collapse-item-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+        <div class=\\"var-collapse-item__header\\">
+          <div class=\\"var-collapse-item__header-title\\">标题</div>
+          <div class=\\"var-collapse-item__header-icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item__header-icon\\" style=\\"transition: transform 250ms;\\"></i></div>
         </div>
-        <div class=\\"var-collapse-item-content\\" style=\\"display: none;\\">
-          <div class=\\"var-collapse-item__wrap\\">文本</div>
+        <div class=\\"var-collapse-item__content\\" style=\\"display: none;\\">
+          <div class=\\"var-collapse-item__content-wrap\\">文本</div>
         </div>
       </div>
     </div>
@@ -52,21 +29,21 @@ exports[`test collapse example 1`] = `
     <div class=\\"app-type\\">隐藏边距</div>
     <div class=\\"var-collapse\\">
       <div class=\\"var-collapse-item\\">
-        <div class=\\"var-collapse-item-header\\">
-          <div class=\\"var-collapse-item-header__title\\">标题</div>
-          <div class=\\"var-collapse-item-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+        <div class=\\"var-collapse-item__header\\">
+          <div class=\\"var-collapse-item__header-title\\">标题</div>
+          <div class=\\"var-collapse-item__header-icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item__header-icon\\" style=\\"transition: transform 250ms;\\"></i></div>
         </div>
-        <div class=\\"var-collapse-item-content\\" style=\\"display: none;\\">
-          <div class=\\"var-collapse-item__wrap\\">文本</div>
+        <div class=\\"var-collapse-item__content\\" style=\\"display: none;\\">
+          <div class=\\"var-collapse-item__content-wrap\\">文本</div>
         </div>
       </div>
       <div class=\\"var-collapse-item\\">
-        <div class=\\"var-collapse-item-header\\">
-          <div class=\\"var-collapse-item-header__title\\">标题</div>
-          <div class=\\"var-collapse-item-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+        <div class=\\"var-collapse-item__header\\">
+          <div class=\\"var-collapse-item__header-title\\">标题</div>
+          <div class=\\"var-collapse-item__header-icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item__header-icon\\" style=\\"transition: transform 250ms;\\"></i></div>
         </div>
-        <div class=\\"var-collapse-item-content\\" style=\\"display: none;\\">
-          <div class=\\"var-collapse-item__wrap\\">文本</div>
+        <div class=\\"var-collapse-item__content\\" style=\\"display: none;\\">
+          <div class=\\"var-collapse-item__content-wrap\\">文本</div>
         </div>
       </div>
     </div>
@@ -75,21 +52,21 @@ exports[`test collapse example 1`] = `
     <div class=\\"app-type\\">手风琴模式</div>
     <div class=\\"var-collapse\\">
       <div class=\\"var-collapse-item\\">
-        <div class=\\"var-collapse-item-header\\">
-          <div class=\\"var-collapse-item-header__title\\">标题</div>
-          <div class=\\"var-collapse-item-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+        <div class=\\"var-collapse-item__header\\">
+          <div class=\\"var-collapse-item__header-title\\">标题</div>
+          <div class=\\"var-collapse-item__header-icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item__header-icon\\" style=\\"transition: transform 250ms;\\"></i></div>
         </div>
-        <div class=\\"var-collapse-item-content\\" style=\\"display: none;\\">
-          <div class=\\"var-collapse-item__wrap\\">文本</div>
+        <div class=\\"var-collapse-item__content\\" style=\\"display: none;\\">
+          <div class=\\"var-collapse-item__content-wrap\\">文本</div>
         </div>
       </div>
       <div class=\\"var-collapse-item\\">
-        <div class=\\"var-collapse-item-header\\">
-          <div class=\\"var-collapse-item-header__title\\">标题</div>
-          <div class=\\"var-collapse-item-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+        <div class=\\"var-collapse-item__header\\">
+          <div class=\\"var-collapse-item__header-title\\">标题</div>
+          <div class=\\"var-collapse-item__header-icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item__header-icon\\" style=\\"transition: transform 250ms;\\"></i></div>
         </div>
-        <div class=\\"var-collapse-item-content\\" style=\\"display: none;\\">
-          <div class=\\"var-collapse-item__wrap\\">文本</div>
+        <div class=\\"var-collapse-item__content\\" style=\\"display: none;\\">
+          <div class=\\"var-collapse-item__content-wrap\\">文本</div>
         </div>
       </div>
     </div>
@@ -101,21 +78,21 @@ exports[`test collapse example 1`] = `
     </button>
     <div class=\\"var-collapse\\">
       <div class=\\"var-collapse-item\\">
-        <div class=\\"var-collapse-item-header\\">
-          <div class=\\"var-collapse-item-header__title\\">标题</div>
-          <div class=\\"var-collapse-item-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+        <div class=\\"var-collapse-item__header\\">
+          <div class=\\"var-collapse-item__header-title\\">标题</div>
+          <div class=\\"var-collapse-item__header-icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item__header-icon\\" style=\\"transition: transform 250ms;\\"></i></div>
         </div>
-        <div class=\\"var-collapse-item-content\\" style=\\"display: none;\\">
-          <div class=\\"var-collapse-item__wrap\\">文本</div>
+        <div class=\\"var-collapse-item__content\\" style=\\"display: none;\\">
+          <div class=\\"var-collapse-item__content-wrap\\">文本</div>
         </div>
       </div>
       <div class=\\"var-collapse-item\\">
-        <div class=\\"var-collapse-item-header\\">
-          <div class=\\"var-collapse-item-header__title\\">标题</div>
-          <div class=\\"var-collapse-item-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+        <div class=\\"var-collapse-item__header\\">
+          <div class=\\"var-collapse-item__header-title\\">标题</div>
+          <div class=\\"var-collapse-item__header-icon\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down var-collapse-item__header-icon\\" style=\\"transition: transform 250ms;\\"></i></div>
         </div>
-        <div class=\\"var-collapse-item-content\\" style=\\"display: none;\\">
-          <div class=\\"var-collapse-item__wrap\\">文本</div>
+        <div class=\\"var-collapse-item__content\\" style=\\"display: none;\\">
+          <div class=\\"var-collapse-item__content-wrap\\">文本</div>
         </div>
       </div>
     </div>
@@ -124,23 +101,46 @@ exports[`test collapse example 1`] = `
     <div class=\\"app-type\\">自定义内容</div>
     <div class=\\"var-collapse\\">
       <div class=\\"var-collapse-item\\">
-        <div class=\\"var-collapse-item-header\\">
-          <div class=\\"var-collapse-item-header__title\\">这是标题</div>
-          <div class=\\"var-collapse-item-header__icon\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-collapse-item-header__icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+        <div class=\\"var-collapse-item__header\\">
+          <div class=\\"var-collapse-item__header-title\\">这是标题</div>
+          <div class=\\"var-collapse-item__header-icon\\"><i class=\\"var-icon var-icon--set var-icon-account-circle var-collapse-item__header-icon\\" style=\\"transition: transform 250ms;\\"></i></div>
         </div>
-        <div class=\\"var-collapse-item-content\\" style=\\"display: none;\\">
-          <div class=\\"var-collapse-item__wrap\\">文本</div>
+        <div class=\\"var-collapse-item__content\\" style=\\"display: none;\\">
+          <div class=\\"var-collapse-item__content-wrap\\">文本</div>
         </div>
       </div>
       <div class=\\"var-collapse-item\\">
-        <div class=\\"var-collapse-item-header\\">
-          <div class=\\"var-collapse-item-header__title\\">这是标题</div>
-          <div class=\\"var-collapse-item-header__icon\\">^_^</div>
+        <div class=\\"var-collapse-item__header\\">
+          <div class=\\"var-collapse-item__header-title\\">这是标题</div>
+          <div class=\\"var-collapse-item__header-icon\\">^_^</div>
         </div>
-        <div class=\\"var-collapse-item-content\\" style=\\"display: none;\\">
-          <div class=\\"var-collapse-item__wrap\\"> 这是内容</div>
+        <div class=\\"var-collapse-item__content\\" style=\\"display: none;\\">
+          <div class=\\"var-collapse-item__content-wrap\\"> 这是内容</div>
         </div>
       </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`test collapse offset and collapse icon 1`] = `
+"<div class=\\"var-collapse\\">
+  <div class=\\"var-collapse-item\\">
+    <div class=\\"var-collapse-item__header\\">
+      <div class=\\"var-collapse-item__header-title\\">test1</div>
+      <div class=\\"var-collapse-item__header-icon\\"><i class=\\"var-icon var-icon--set var-icon-fire var-collapse-item__header-icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+    </div>
+    <div class=\\"var-collapse-item__content\\" style=\\"display: none;\\">
+      <div class=\\"var-collapse-item__content-wrap\\">test1</div>
+    </div>
+  </div>
+  <div class=\\"var-collapse-item\\">
+    <div class=\\"var-collapse-item__header\\">
+      <div class=\\"var-collapse-item__header-title\\">test2</div>
+      <div class=\\"var-collapse-item__header-icon\\"><i class=\\"var-icon var-icon--set var-icon-fire var-collapse-item__header-icon\\" style=\\"transition: transform 250ms;\\"></i></div>
+    </div>
+    <div class=\\"var-collapse-item__content\\" style=\\"display: none;\\">
+      <div class=\\"var-collapse-item__content-wrap\\">test2</div>
     </div>
   </div>
 </div>"
