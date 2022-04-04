@@ -375,7 +375,6 @@ export default defineComponent({
       labels,
       n,
       classes,
-      call,
       computePlaceholderState,
       handleFocus,
       handleBlur,

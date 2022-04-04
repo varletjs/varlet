@@ -132,7 +132,6 @@ export default defineComponent({
       errorMessage,
       n,
       classes,
-      call,
       checkAll,
       inverseAll,
       reset,

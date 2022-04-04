@@ -26,6 +26,8 @@ import timePicker from './timePicker'
 import uploader from './uploader'
 import tabs from './tabs'
 import appBar from './appBar'
+import bottomNavigation from './bottomNavigation'
+import bottomNavigationItem from './bottomNavigationItem'
 
 export default {
   // common
@@ -66,4 +68,6 @@ export default {
   ...divider,
   ...picker,
   ...appBar,
+  ...bottomNavigation,
+  ...bottomNavigationItem,
 } as StyleVars

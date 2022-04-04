@@ -187,7 +187,6 @@ export default defineComponent({
       formReadonly: form?.readonly,
       n,
       classes,
-      call,
       handleClick,
       toggle,
       reset,

@@ -37,7 +37,7 @@ export default {
     const next = () => {
       active.value = (active.value + 1) % 4
     }
-    
+
     return {
       active,
       next
@@ -49,7 +49,7 @@ export default {
 ### Custom Style
 
 ```html
-<var-steps 
+<var-steps
   :active="active"
   active-color="#f44336"
   inactive-color="#e99eb4"
@@ -86,7 +86,7 @@ Change the display direction of the step bar through the `direction` attribute.
 
 ### Props
 
-#### Steps Props
+### Steps Props
 
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
@@ -95,7 +95,7 @@ Change the display direction of the step bar through the `direction` attribute.
 | `active-color` | Active step color | _string_ | `#2979ff` |
 | `inactive-color` | Inactive step color | _string_ | `#9e9e9e` |
 
-#### Step Props
+### Step Props
 
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
@@ -105,7 +105,7 @@ Change the display direction of the step bar through the `direction` attribute.
 
 ### Events
 
-#### Steps Events
+### Steps Events
 
 | Event | Description | arguments |
 | ----- | -------------- | -------- |
@@ -113,7 +113,7 @@ Change the display direction of the step bar through the `direction` attribute.
 
 ### Slots
 
-#### Step Slots
+### Step Slots
 
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |

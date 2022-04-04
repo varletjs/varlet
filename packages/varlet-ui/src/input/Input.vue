@@ -275,7 +275,6 @@ export default defineComponent({
       formReadonly: form?.readonly,
       n,
       classes,
-      call,
       isEmpty,
       computePlaceholderState,
       handleFocus,

@@ -38,10 +38,10 @@ export default {
 If you only need the basic functionality of the component, you can remove some styles through attributes.
 
 ```html
-<var-select 
-  :hint="false" 
+<var-select
+  :hint="false"
   :line="false"
-  placeholder="Please select one the options" 
+  placeholder="Please select one the options"
   v-model="value"
 >
   <var-option label="Eat" />
@@ -61,8 +61,8 @@ If you only need the basic functionality of the component, you can remove some s
 ### Disabled
 
 ```html
-<var-select 
-  placeholder="Please select one the options" 
+<var-select
+  placeholder="Please select one the options"
   disabled
   v-model="value"
 >
@@ -74,9 +74,9 @@ If you only need the basic functionality of the component, you can remove some s
 ### Readonly
 
 ```html
-<var-select 
+<var-select
   placeholder="Please select one the options"
-  readonly 
+  readonly
   v-model="value"
 >
   <var-option label="Eat" />
@@ -88,7 +88,7 @@ If you only need the basic functionality of the component, you can remove some s
 
 ```html
 <var-select
-  placeholder="Please select one the options" 
+  placeholder="Please select one the options"
   clearable
   v-model="value"
 >
@@ -135,8 +135,8 @@ export default {
 ```
 
 ```html
-<var-select 
-  placeholder="Please select multiple options" 
+<var-select
+  placeholder="Please select multiple options"
   multiple
   v-model="value"
 >
@@ -150,7 +150,7 @@ export default {
 ### Multiple choice of paper style
 
 ```html
-<var-select 
+<var-select
   placeholder="Please select multiple options"
   chip
   multiple
@@ -166,8 +166,8 @@ export default {
 ### Validate
 
 ```html
-<var-select 
-  placeholder="Please select one the options" 
+<var-select
+  placeholder="Please select one the options"
   :rules="[(v) => v === 'Rest' || 'You must choose to rest']"
   v-model="value"
 >
@@ -208,15 +208,15 @@ export default {
 
 ### Props
 
-#### Select Props
+### Select Props
 
-| Prop | Description | Type | Default | 
-| --- | --- | --- | --- | 
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
 | `v-model` | The value of the binding | _any \| any[]_ | `-` |
 | `placeholder` | placeholder | _string_ | `-` |
 | `multiple` | Whether to enable multiple selection | _boolean_ | `false` |
-| `offset-y` | The vertical offset of the drop-down menu | string \| number_ | `true` |  
-| `chip` | Whether to use chip style (multiple choices only) | _boolean_ | `false` |  
+| `offset-y` | The vertical offset of the drop-down menu | string \| number_ | `true` |
+| `chip` | Whether to use chip style (multiple choices only) | _boolean_ | `false` |
 | `line` | Whether to display a dividing line | _boolean_ | `true` |
 | `hint` | Whether to use placeholders as prompts | _boolean_ | `true` |
 | `text-color` | Text color | _string_ | `-` |
@@ -228,16 +228,16 @@ export default {
 | `validate-trigger` | Timing to trigger validation， Optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: any \| any[]) => any>_ | `-` |
 
-#### Option Props
+### Option Props
 
-| Prop | Description | Type | Default | 
-| --- | --- | --- | --- | 
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
 | `label` | The text that the option displays | _any_ | `-` |
 | `value` | The value of the option binding | _any_ | `-` |
 
 ### Methods
 
-#### Select Methods
+### Select Methods
 
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
@@ -249,7 +249,7 @@ export default {
 
 ### Events
 
-#### Select Events
+### Select Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
@@ -262,14 +262,14 @@ export default {
 
 ### Slots
 
-#### Select Slots
+### Select Slots
 
 | Slot | Description | Arguments |
 | --- | --- | --- |
 | `prepend-icon` | Prepend icon | `-` |
 | `append-icon` | Append icon | `-` |
 
-#### Option Slots
+### Option Slots
 
 | Slot | Description | Arguments |
 | --- | --- | --- |
@@ -278,7 +278,7 @@ export default {
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
-#### Select Variables
+### Select Variables
 
 | Variable | Default |
 | --- | --- |
@@ -300,7 +300,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--select-arrow-size` | `20px` |
 | `--select-disabled-color` | `var(--color-text-disabled)` |
 
-#### Option Variables
+### Option Variables
 
 | Variable | Default |
 | --- | --- |
