@@ -1,6 +1,6 @@
 <template>
   <var-popup
-    class="var-dialog__popup"
+    :class="n('popup')"
     var-dialog-cover
     :show="popupShow"
     :overlay="overlay"
@@ -16,18 +16,18 @@
     @route-change="onRouteChange"
     @click-overlay="handleClickOverlay"
   >
-    <div class="var--box var-dialog" :class="dialogClass" :style="dialogStyle" v-bind="$attrs">
-      <div class="var-dialog__title">
+    <div :class="classes('var--box', n(), dialogClass)" :style="dialogStyle" v-bind="$attrs">
+      <div :class="n('title')">
         <slot name="title">{{ dt(title, pack.dialogTitle) }}</slot>
       </div>
-      <div class="var-dialog__message" :style="{ textAlign: messageAlign }">
+      <div :class="n('message')" :style="{ textAlign: messageAlign }">
         <slot>
           {{ message }}
         </slot>
       </div>
-      <div class="var-dialog__actions">
+      <div :class="n('actions')">
         <var-button
-          class="var-dialog__button var-dialog__cancel-button"
+          :class="classes(n('button'), n('cancel-button'))"
           var-dialog-cover
           text
           :text-color="cancelButtonTextColor"
@@ -38,7 +38,7 @@
           {{ dt(cancelButtonText, pack.dialogCancelButtonText) }}
         </var-button>
         <var-button
-          class="var-dialog__button var-dialog__confirm-button"
+          :class="classes(n('button'), n('confirm-button'))"
           var-dialog-cover
           text
           :text-color="confirmButtonTextColor"
@@ -61,6 +61,9 @@ import { defineComponent, ref, watch } from 'vue'
 import { dt } from '../utils/shared'
 import { pack } from '../locale'
 import type { Ref } from 'vue'
+import { call, createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('dialog')
 
 export default defineComponent({
   name: 'VarDialog',
@@ -74,12 +77,12 @@ export default defineComponent({
     const popupShow: Ref<boolean> = ref(false)
     const popupCloseOnClickOverlay: Ref<boolean> = ref(false)
 
-    const done = () => props['onUpdate:show']?.(false)
+    const done = () => call(props['onUpdate:show'], false)
 
     const handleClickOverlay = () => {
       const { closeOnClickOverlay, onClickOverlay, onBeforeClose } = props
 
-      onClickOverlay?.()
+      call(onClickOverlay)
 
       if (!closeOnClickOverlay) {
         return
@@ -90,33 +93,33 @@ export default defineComponent({
         return
       }
 
-      props['onUpdate:show']?.(false)
+      call(props['onUpdate:show'], false)
     }
 
     const confirm = () => {
       const { onBeforeClose, onConfirm } = props
 
-      onConfirm?.()
+      call(onConfirm)
 
       if (onBeforeClose != null) {
         onBeforeClose('confirm', done)
         return
       }
 
-      props['onUpdate:show']?.(false)
+      call(props['onUpdate:show'], false)
     }
 
     const cancel = () => {
       const { onBeforeClose, onCancel } = props
 
-      onCancel?.()
+      call(onCancel)
 
       if (onBeforeClose != null) {
         onBeforeClose('cancel', done)
         return
       }
 
-      props['onUpdate:show']?.(false)
+      call(props['onUpdate:show'], false)
     }
 
     watch(
@@ -141,6 +144,8 @@ export default defineComponent({
     )
 
     return {
+      n,
+      classes,
       pack,
       dt,
       popupShow,
