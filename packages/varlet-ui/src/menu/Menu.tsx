@@ -14,11 +14,13 @@ import { props } from './props'
 import { getLeft, getTop, toSizeUnit } from '../utils/elements'
 import { useZIndex } from '../context/zIndex'
 import type { Ref } from 'vue'
-import { exposeApis, useTeleport } from '../utils/components'
+import { call, createNamespace, exposeApis, useTeleport } from '../utils/components'
 
 import '../styles/common.less'
 import '../styles/elevation.less'
 import './menu.less'
+
+const { n, classes } = createNamespace('menu')
 
 export default defineComponent({
   name: 'VarMenu',
@@ -53,7 +55,7 @@ export default defineComponent({
         return
       }
 
-      props['onUpdate:show']?.(false)
+      call(props['onUpdate:show'], false)
     }
 
     // expose
@@ -74,7 +76,7 @@ export default defineComponent({
     const renderTransition = () => (
       <Transition name="var-menu" onAfterEnter={props.onOpened} onAfterLeave={props.onClosed}>
         <div
-          class="var-menu__menu var-elevation--3"
+          class={classes(n('menu'), 'var-elevation--3')}
           ref={menu}
           style={transitionStyle.value}
           v-show={props.show}
@@ -82,7 +84,7 @@ export default defineComponent({
             event.stopPropagation()
           }}
         >
-          {slots.menu?.()}
+          {call(slots.menu)}
         </div>
       </Transition>
     )
@@ -97,7 +99,7 @@ export default defineComponent({
           await nextTick()
           resize()
         }
-        newValue ? onOpen?.() : onClose?.()
+        newValue ? call(onOpen) : call(onClose)
       }
     )
 
@@ -125,8 +127,8 @@ export default defineComponent({
     exposeApis({ resize })
 
     return () => (
-      <div class="var-menu" ref={host} onClick={handleClick}>
-        {slots.default?.()}
+      <div class={n()} ref={host} onClick={handleClick}>
+        {call(slots.default)}
 
         {to.value ? (
           <Teleport to={to.value} disabled={disabled.value}>
