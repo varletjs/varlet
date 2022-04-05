@@ -1,8 +1,8 @@
 import type { ComputedRef } from 'vue'
 import { useAtParentIndex, useParent } from '../utils/components'
 import {
-  BOTTOMNAVIGATION_BIND_BOTTOMNAVIGATIONITEM_KEY,
-  BOTTOMNAVIGATION_COUNT_BOTTOMNAVIGATIONITEM_KEY,
+  BOTTOM_NAVIGATION_BIND_BOTTOM_NAVIGATION_ITEM_KEY,
+  BOTTOM_NAVIGATION_COUNT_BOTTOM_NAVIGATION_ITEM_KEY,
   BottomNavigationProvider,
 } from '../bottom-navigation/provide'
 
@@ -13,9 +13,9 @@ export interface BottomNavigationItemProvider {
 
 export function useBottomNavigation() {
   const { parentProvider, bindParent } = useParent<BottomNavigationProvider, BottomNavigationItemProvider>(
-    BOTTOMNAVIGATION_BIND_BOTTOMNAVIGATIONITEM_KEY
+    BOTTOM_NAVIGATION_BIND_BOTTOM_NAVIGATION_ITEM_KEY
   )
-  const { index } = useAtParentIndex(BOTTOMNAVIGATION_COUNT_BOTTOMNAVIGATIONITEM_KEY)
+  const { index } = useAtParentIndex(BOTTOM_NAVIGATION_COUNT_BOTTOM_NAVIGATION_ITEM_KEY)
 
   if (!parentProvider || !bindParent || !index) {
     throw Error('<var-bottom-navigation-item/> must in <var-bottom-navigation/>')

@@ -1,15 +1,13 @@
 <template>
   <div
-    class="var-bottom-navigation"
+    :class="classes(n(), [fixed, n('--fixed')], [border, n('--border')])"
     ref="bottomNavigationDom"
-    :class="`${fixed ? 'var-bottom-navigation--fixed' : ''} ${border ? 'var-bottom-navigation--border' : ''}`"
     :style="`z-index:${zIndex}`"
   >
     <slot></slot>
     <div
       v-if="$slots.fab"
-      class="var-bottom-navigation__fab var-elevation--8"
-      :class="length % 2 ? 'var-bottom-navigation--fab-right' : 'var-bottom-navigation--fab-center'"
+      :class="classes(n('fab'), 'var-elevation--6', [length % 2, n('--fab-right'), n('--fab-center')])"
     >
       <slot name="fab"></slot>
     </div>
@@ -22,10 +20,14 @@ import type { Ref, ComputedRef } from 'vue'
 import { props } from './props'
 import { useBottomNavigationItems } from './provide'
 import type { BottomNavigationProvider } from './provide'
+import { createNamespace, call } from '../utils/components'
 
-const RIGHT_HALF_SPACE_CLASS = 'var-bottom-navigation-item--right-half-space'
-const LEFT_HALF_SPACE_CLASS = 'var-bottom-navigation-item--left-half-space'
-const RIGHT_SPACE_CLASS = 'var-bottom-navigation-item--right-space'
+const { n, classes } = createNamespace('bottom-navigation')
+const { n: nItem } = createNamespace('bottom-navigation-item')
+
+const RIGHT_HALF_SPACE_CLASS = nItem('--right-half-space')
+const LEFT_HALF_SPACE_CLASS = nItem('--left-half-space')
+const RIGHT_SPACE_CLASS = nItem('--right-space')
 
 export default defineComponent({
   name: 'VarBottomNavigation',
@@ -45,7 +47,7 @@ export default defineComponent({
     }
 
     const handleBeforeChange = (changedValue: number | string) => {
-      Promise.resolve(props.onBeforeChange?.(changedValue)).then((res) => {
+      Promise.resolve(call(props.onBeforeChange, changedValue)).then((res) => {
         if (res) {
           handleChange(changedValue)
         }
@@ -53,8 +55,8 @@ export default defineComponent({
     }
 
     const handleChange = (changedValue: number | string) => {
-      props['onUpdate:modelValue']?.(changedValue)
-      props.onChange?.(changedValue)
+      call(props['onUpdate:modelValue'], changedValue)
+      call(props.onChange, changedValue)
     }
 
     const { length, bindBottomNavigationItem } = useBottomNavigationItems()
@@ -93,7 +95,7 @@ export default defineComponent({
     }
 
     const getBottomNavigationItems = () => {
-      return Array.from(bottomNavigationDom.value!.querySelectorAll(`.var-bottom-navigation-item`))
+      return Array.from(bottomNavigationDom.value!.querySelectorAll(`.${nItem()}`))
     }
 
     const bottomNavigationProvider: BottomNavigationProvider = {
@@ -124,6 +126,8 @@ export default defineComponent({
     })
 
     return {
+      n,
+      classes,
       length,
       bottomNavigationDom,
     }
@@ -133,5 +137,5 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
-@import './BottomNavigation';
+@import './bottomNavigation';
 </style>

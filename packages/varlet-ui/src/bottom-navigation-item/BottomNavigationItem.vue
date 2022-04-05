@@ -1,8 +1,7 @@
 <template>
-  <div
-    class="var-bottom-navigation-item"
+  <button
+    :class="classes(n(), [active === index || active === name, n('--active')])"
     v-ripple
-    :class="`${active === index || active === name ? 'var-bottom-navigation-item--active' : ''}`"
     :style="{
       color: computeColorStyle(),
     }"
@@ -12,24 +11,18 @@
       v-if="icon && !$slots.icon"
       :name="icon"
       :namespace="namespace"
-      class="var-bottom-navigation-item__icon"
+      :class="classes(n('icon'))"
       var-bottom-navigation-item-cover
     />
     <slot name="icon" :active="active === index || active === name"></slot>
-    <var-badge
-      v-if="badge"
-      v-bind="badgeProps"
-      class="var-bottom-navigation-item__badge"
-      var-bottom-navigation-item-cover
-    />
-
-    <div class="var-bottom-navigation-item__label">
+    <var-badge v-if="badge" v-bind="badgeProps" :class="classes(n('badge'))" var-bottom-navigation-item-cover />
+    <span :class="classes(n('label'))">
       <template v-if="!$slots.default">
         {{ label }}
       </template>
       <slot></slot>
-    </div>
-  </div>
+    </span>
+  </button>
 </template>
 
 <script lang="ts">
@@ -42,6 +35,9 @@ import type { ComputedRef } from 'vue'
 import type { BadgeProps } from '../../types/badge'
 import { useBottomNavigation } from './provide'
 import type { BottomNavigationItemProvider } from './provide'
+import { createNamespace, call } from '../utils/components'
+
+const { n, classes } = createNamespace('bottom-navigation-item')
 
 const defaultBadgeProps = {
   type: 'danger',
@@ -76,9 +72,9 @@ export default defineComponent({
     const handleClick = () => {
       const active = name.value || index.value
 
-      props.onClick?.(active)
+      call(props.onClick, active)
 
-      bottomNavigation?.onToggle(active)
+      call(bottomNavigation.onToggle, active)
     }
 
     watch(
@@ -90,6 +86,8 @@ export default defineComponent({
     )
 
     return {
+      n,
+      classes,
       index,
       active,
       badge,
@@ -105,5 +103,5 @@ export default defineComponent({
 @import '../styles/common';
 @import '../icon/icon';
 @import '../ripple/ripple';
-@import './BottomNavigationItem';
+@import './bottomNavigationItem';
 </style>

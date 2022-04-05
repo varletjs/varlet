@@ -6,9 +6,9 @@
 import { createApp } from 'vue'
 import { BottomNavigation, BottomNavigationItem } from '@varlet/ui'
 
-const app = createApp();
-app.use(BottomNavigation);
-app.use(BottomNavigationItem);
+const app = createApp()
+app.use(BottomNavigation)
+app.use(BottomNavigationItem)
 ```
 
 ### Basic Usage
@@ -89,8 +89,8 @@ export default {
 ```html
 <var-bottom-navigation v-model="active">
   <var-bottom-navigation-item name="home" label="label">
-    <template #icon="props">
-      <img style="width: 20px" :src="props.active ? homeIcon.active : homeIcon.inactive" />
+    <template #icon="{ active }">
+      <img style="width: 20px" :src="active ? homeIcon.active : homeIcon.inactive" />
     </template>
   </var-bottom-navigation-item>
   <var-bottom-navigation-item label="label" icon="magnify" />
@@ -106,8 +106,8 @@ export default {
   setup() {
     const active = ref(0)
     const homeIcon = {
-      active: 'https://cdn.jsdelivr.net/npm/@vant/assets/user-active.png',
-      inactive: 'https://cdn.jsdelivr.net/npm/@vant/assets/user-inactive.png'
+      active: 'https://varlet.gitee.io/varlet-ui/home_active.jpg',
+      inactive: 'https://varlet.gitee.io/varlet-ui/home_inactive.jpg',
     }
 
     return { active, homeIcon }
@@ -157,7 +157,7 @@ import Snackbar from '../../snackbar'
 export default {
   setup() {
     const active = ref(0)
-    function handleChange(active) {
+    const handleChange = (active) => {
       Snackbar.info(`changed to ${active}`)
     }
 
@@ -184,7 +184,7 @@ import Snackbar from '../../snackbar'
 export default {
   setup() {
     const active = ref(0)
-    function handleClick(active) {
+    const handleClick = (active) => {
       Snackbar.success(`clicked ${active}`)
     }
 
@@ -199,30 +199,29 @@ export default {
 <var-bottom-navigation v-model="fab" style="margin-top: 10px">
   <template #fab>
     <div class="fab_example">
-      <var-icon name="plus" color="#fff" size="34" />
+      <var-icon name="plus" color="#fff" size="24" />
     </div>
   </template>
-  <var-bottom-navigation-item :label="pack.label" icon="home" />
-  <var-bottom-navigation-item :label="pack.label" icon="magnify" />
-  <var-bottom-navigation-item :label="pack.label" icon="heart" />
-  <var-bottom-navigation-item :label="pack.label" icon="account-circle" />
+  <var-bottom-navigation-item label="label" icon="home" />
+  <var-bottom-navigation-item label="label" icon="magnify" />
+  <var-bottom-navigation-item label="label" icon="heart" />
+  <var-bottom-navigation-item label="label" icon="account-circle" />
 </var-bottom-navigation>
 ```
 
 ```js
 import { ref } from 'vue'
-import VarIcon from '../../icon'
 
 export default {
   components:{VarIcon},
   setup() {
     const active = ref(0)
+
     return { active }
   }
 }
 ```
 ```css
-<style lang="less" scoped>
 .fab_example {
   width: 100%;
   height: 100%;
@@ -231,14 +230,13 @@ export default {
   justify-content: center;
   background-color: var(--color-primary);
 }
-</style>
 ```
 
 ## API
 
 ### Props
 
-### BottomNavigation Props
+#### BottomNavigation Props
 
 |Prop | Description | Type | Default |
 | ---- | ---- | ---- | ---- |
@@ -249,7 +247,7 @@ export default {
 | `active-color` | Color of active tab item | _string_ | `-` |
 | `inactive-color` | Color of inactive tab item | _string_ | `-` |
 
-### BottomNavigationItem Props
+#### BottomNavigationItem Props
 
 |Prop | Description | Type | Default |
 | ---- | ---- | ---- | ---- |
@@ -261,14 +259,14 @@ export default {
 
 ### Events
 
-### BottomNavigation Events
+#### BottomNavigation Events
 
 |Event | Description | Arguments |
 | ---- | ---- | ---- |
 | `before-change` | The callback function before switching labels, which returns false to prevent switching, supports the return of promise | `active: number \| string` |
 | `change` | Triggered when switching labels | `active: number \| string` |
 
-### BottomNavigationItem Events
+#### BottomNavigationItem Events
 
 |Event | Description | Arguments |
 | ---- | ---- | ---- |
@@ -276,12 +274,12 @@ export default {
 
 ### Slots
 
-### BottomNavigation Slots
+#### BottomNavigation Slots
 
 | Slot | Description | Arguments |
 | ---- | ---- | ----|
 | `fab` | Support for inserting a custom Fab button in the center of the component | `-` |
-### BottomNavigationItem Slots
+#### BottomNavigationItem Slots
 
 | Slot | Description | Arguments |
 | ---- | ---- | ----|
@@ -291,7 +289,7 @@ export default {
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
-### BottomNavigation Variables
+#### BottomNavigation Variables
 
 | Variable | Default |
 | --- | --- |
@@ -300,7 +298,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--bottom-navigation-background-color` | `#fff` |
 | `--bottom-navigation-border-color` | `#bcc2cb` |
 
-### BottomNavigationItem Variables
+#### BottomNavigationItem Variables
 
 | Variable | Default |
 | --- | --- |
