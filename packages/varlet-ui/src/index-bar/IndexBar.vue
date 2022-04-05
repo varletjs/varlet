@@ -1,15 +1,11 @@
 <template>
-  <div class="var-index-bar" ref="barEl">
+  <div :class="n()" ref="barEl">
     <slot />
-    <ul
-      class="var-index-bar__anchor-list"
-      :style="{ zIndex: toNumber(zIndex) + 2, display: hideList ? 'none' : 'block' }"
-    >
+    <ul :class="n('anchor-list')" :style="{ zIndex: toNumber(zIndex) + 2, display: hideList ? 'none' : 'block' }">
       <li
         v-for="anchorName in anchorNameList"
         :key="anchorName"
-        class="var-index-bar__anchor-item"
-        :class="{ 'var-index-bar__anchor-item--active': active === anchorName }"
+        :class="classes(n('anchor-item'), [active === anchorName, n('anchor-item--active')])"
         :style="{ color: active === anchorName && highlightColor ? highlightColor : '' }"
         @click="anchorClick(anchorName)"
       >
@@ -36,6 +32,9 @@ import { props } from './props'
 import type { Ref, ComputedRef } from 'vue'
 import type { IndexBarProvider } from './provide'
 import type { IndexAnchorProvider } from '../index-anchor/provide'
+import { createNamespace, call } from '../utils/components'
+
+const { n, classes } = createNamespace('index-bar')
 
 export default defineComponent({
   name: 'VarIndexBar',
@@ -69,7 +68,7 @@ export default defineComponent({
       if (anchorName === active.value || anchorName === undefined) return
 
       active.value = anchorName
-      props.onChange?.(anchorName)
+      call(props.onChange, anchorName)
     }
 
     const handleScroll = () => {
@@ -99,7 +98,7 @@ export default defineComponent({
     const anchorClick = async (anchorName: string | number, manualCall?: boolean) => {
       const { offsetTop } = barEl.value as HTMLElement
 
-      if (manualCall) props.onClick?.(anchorName)
+      if (manualCall) call(props.onClick, anchorName)
       if (anchorName === active.value) return
       const indexAnchor = indexAnchors.find(({ name }: IndexAnchorProvider) => anchorName === name.value)
       if (!indexAnchor) return
@@ -143,10 +142,12 @@ export default defineComponent({
     })
 
     onBeforeUnmount(() => {
-      scroller.value?.removeEventListener('scroll', handleScroll)
+      call(scroller.value!.removeEventListener, 'scroll', handleScroll)
     })
 
     return {
+      n,
+      classes,
       barEl,
       active,
       zIndex,

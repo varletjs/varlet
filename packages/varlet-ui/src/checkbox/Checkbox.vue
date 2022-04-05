@@ -62,6 +62,7 @@ import type { ValidateTriggers } from './props'
 import type { CheckboxProvider } from './provide'
 
 const { n, classes } = createNamespace('checkbox')
+
 export default defineComponent({
   name: 'VarCheckbox',
   directives: { Ripple },

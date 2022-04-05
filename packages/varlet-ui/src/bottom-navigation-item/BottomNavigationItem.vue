@@ -11,12 +11,12 @@
       v-if="icon && !$slots.icon"
       :name="icon"
       :namespace="namespace"
-      :class="classes(n('icon'))"
+      :class="n('icon')"
       var-bottom-navigation-item-cover
     />
     <slot name="icon" :active="active === index || active === name"></slot>
-    <var-badge v-if="badge" v-bind="badgeProps" :class="classes(n('badge'))" var-bottom-navigation-item-cover />
-    <span :class="classes(n('label'))">
+    <var-badge v-if="badge" v-bind="badgeProps" :class="n('badge')" var-bottom-navigation-item-cover />
+    <span :class="n('label')">
       <template v-if="!$slots.default">
         {{ label }}
       </template>

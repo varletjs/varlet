@@ -7,7 +7,7 @@
     :css-mode="cssMode"
     ref="anchorEl"
   >
-    <div class="var-index-anchor" v-bind="$attrs">
+    <div :class="n()" v-bind="$attrs">
       <slot>{{ name }}</slot>
     </div>
   </component>
@@ -20,6 +20,9 @@ import { useIndexBar } from './provide'
 import { props } from './props'
 import type { Ref, ComputedRef, RendererNode } from 'vue'
 import type { IndexAnchorProvider } from './provide'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('index-anchor')
 
 export default defineComponent({
   name: 'VarIndexAnchor',
@@ -59,6 +62,8 @@ export default defineComponent({
     bindIndexBar(indexAnchorProvider)
 
     return {
+      n,
+      classes,
       name,
       anchorEl,
       active,
