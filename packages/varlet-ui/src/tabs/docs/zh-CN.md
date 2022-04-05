@@ -41,8 +41,8 @@ export default {
 
 ### 具名选项卡
 
-Tabs默认通过 `active` 去匹配 Tab 的 `index` 来决定哪个选项卡被激活。
-您也可以通过给Tab设置 `name` 来命名选项卡，这时Tabs会优先匹配 `name`。
+Tabs 默认通过 `active` 去匹配 Tab 的 `index` 来决定哪个选项卡被激活。
+您也可以通过给 Tab 设置 `name` 来命名选项卡，这时 Tabs 会优先匹配 `name`。
 
 ```html
 <var-tabs v-model:active="active">
