@@ -1,4 +1,4 @@
-# Space 
+# Space
 
 ### Intro
 
@@ -86,6 +86,7 @@ createApp().use(Space)
 
 ## API
 
+### Props
 
 |     Prop      |      Description     |     Type   |    Default  |
 | ------------- | ------------ | --------- | --------- |

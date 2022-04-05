@@ -141,7 +141,7 @@ export default {
 
 ### Props
 
-### RadioGroup Props
+#### RadioGroup Props
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
@@ -149,7 +149,7 @@ export default {
 | `direction` | The layout direction，Optional value is `horizontal` `vertical` | _string_ | `horizontal` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(value: any) => any>_ | `-` |
 
-### Radio Props
+#### Radio Props
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
@@ -166,7 +166,7 @@ export default {
 
 ### Methods
 
-### RadioGroup Methods
+#### RadioGroup Methods
 
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
@@ -174,7 +174,7 @@ export default {
 | `resetValidation` | Clearing validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding(set to `undefined`) and validate messages | `-` | `-` |
 
-### Radio Methods
+#### Radio Methods
 
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
@@ -185,13 +185,13 @@ export default {
 
 ### Events
 
-### RadioGroup Events
+#### RadioGroup Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
 | `change` | Trigger on change | `value: any` |
 
-### Radio Events
+#### Radio Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
@@ -200,13 +200,13 @@ export default {
 
 ### Slots
 
-### RadioGroup Slots
+#### RadioGroup Slots
 
 | Slot | Description | Arguments |
 | --- | --- | --- |
 | `default` | Radio group content | `-` |
 
-### Radio Slots
+#### Radio Slots
 
 | Slot | Description | Arguments |
 | --- | --- | --- |
@@ -217,7 +217,7 @@ export default {
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
-### Radio Variables
+#### Radio Variables
 
 | Variable | Default |
 | --- | --- |

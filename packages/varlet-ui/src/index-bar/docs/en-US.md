@@ -65,7 +65,7 @@ export default {
 
 ### Props
 
-### IndexBar Props
+#### IndexBar Props
 
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
@@ -77,7 +77,7 @@ export default {
 | `highlight-color` | Index character highlight color | _string_ | `#ee0a24` |
 | `duration` | Animation duration | _string \| number_ | `0` |
 
-### IndexAnchor Props
+#### IndexAnchor Props
 
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
@@ -85,7 +85,7 @@ export default {
 
 ### Events
 
-### IndexBar Events
+#### IndexBar Events
 
 | Event | Description | arguments |
 | ----- | -------------- | -------- |
@@ -94,7 +94,7 @@ export default {
 
 ### Slots
 
-### IndexAnchor Slots
+#### IndexAnchor Slots
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
