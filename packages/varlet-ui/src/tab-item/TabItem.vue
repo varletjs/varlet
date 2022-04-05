@@ -1,5 +1,5 @@
 <template>
-  <var-swipe-item class="var-tab-item" var-tab-item-cover :class="[!current && 'var-tab-item--inactive']">
+  <var-swipe-item :class="classes(n(), [!current, n('--inactive')])" var-tab-item-cover>
     <slot v-if="initSlot" />
   </var-swipe-item>
 </template>
@@ -11,6 +11,9 @@ import { useTabsItems } from './provide'
 import { props } from './props'
 import type { Ref, ComputedRef } from 'vue'
 import type { TabItemProvider } from './provide'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('tab-item')
 
 export default defineComponent({
   name: 'VarTabItem',
@@ -41,6 +44,8 @@ export default defineComponent({
     bindTabsItems(tabItemProvider)
 
     return {
+      n,
+      classes,
       current,
       initSlot,
     }
