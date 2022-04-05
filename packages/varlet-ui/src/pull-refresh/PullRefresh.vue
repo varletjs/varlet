@@ -7,14 +7,11 @@
     @touchend="touchEnd"
     @touchcancel="touchEnd"
   >
-    <div
-      :class="classes(n('control'), 'var-elevation--2', isSuccess ? n('control-success') : '')"
-      :style="controlStyle"
-    >
+    <div :class="classes(n('control'), 'var-elevation--2', [isSuccess, n('control-success')])" :style="controlStyle">
       <var-icon
         :name="iconName"
         :transition="200"
-        :class="classes(n('icon'), refreshStatus === 'loading' ? n('animation') : '')"
+        :class="classes(n('icon'), [refreshStatus === 'loading', n('animation')])"
         var-pull-refresh-cover
       />
     </div>
