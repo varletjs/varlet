@@ -140,5 +140,6 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
+@import '../ripple/ripple';
 @import './bottomNavigation';
 </style>
