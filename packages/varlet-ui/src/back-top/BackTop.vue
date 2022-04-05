@@ -24,8 +24,8 @@ import VarIcon from '../icon'
 import { props } from './props'
 import { isString, easeInOutCubic, throttle, isObject } from '../utils/shared'
 import { getScrollTop, getScrollLeft, scrollTo, getParentScroller, toPxNum, toSizeUnit } from '../utils/elements'
-import type { Ref, TeleportProps } from 'vue'
 import { call, createNamespace } from '../utils/components'
+import type { Ref, TeleportProps } from 'vue'
 
 const { n, classes } = createNamespace('back-top')
 
