@@ -7,8 +7,7 @@
           n('item'),
           n('prev'),
           [current <= 1 || disabled, n('item--disabled')],
-          [simple, n('item--hover')],
-          [!simple, 'var-elevation--2']
+          [simple, n('item--hover'), 'var-elevation--2']
         )
       "
       @click="clickItem('prev')"
@@ -54,8 +53,7 @@
           n('item'),
           n('next'),
           [current >= pageCount || disabled, n('item--disabled')],
-          [simple, n('item--hover')],
-          [!simple, 'var-elevation--2']
+          [simple, n('item--hover'), 'var-elevation--2']
         )
       "
       @click="clickItem('next')"
