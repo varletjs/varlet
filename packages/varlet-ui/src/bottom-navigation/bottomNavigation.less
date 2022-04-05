@@ -16,7 +16,7 @@
   display: flex;
   position: relative;
   background-color: var(--bottom-navigation-background-color);
-  transition: background-color 0.25s;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
   &--fixed {
     position: fixed;
@@ -36,8 +36,9 @@
     transform: translateY(-50%);
     background-color: #fff;
     overflow: hidden;
+    cursor: pointer;
     border-radius: 50%;
-    transition: right 0.25s linear;
+    transition: right 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 
   &--fab-center {

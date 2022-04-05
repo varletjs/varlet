@@ -62,14 +62,14 @@
   <app-type>{{ pack.fab }}</app-type>
   <var-bottom-navigation v-model="fab" style="margin-top: 10px">
     <template #fab>
-      <div class="fab_example">
+      <div class="fab_example" @click="isEven = !isEven">
         <var-icon name="plus" color="#fff" size="24" />
       </div>
     </template>
     <var-bottom-navigation-item :label="pack.label" icon="home" />
     <var-bottom-navigation-item :label="pack.label" icon="magnify" />
     <var-bottom-navigation-item :label="pack.label" icon="heart" />
-    <var-bottom-navigation-item :label="pack.label" icon="account-circle" />
+    <var-bottom-navigation-item v-if="isEven" :label="pack.label" icon="account-circle" />
   </var-bottom-navigation>
 </template>
 
@@ -121,6 +121,7 @@ export default {
     }
 
     const fab = ref(0)
+    const isEven = ref(true)
 
     watchLang(use)
     watchDarkMode(dark)
@@ -139,6 +140,7 @@ export default {
       clickEvent,
       handleClick,
       fab,
+      isEven,
     }
   },
 }

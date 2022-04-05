@@ -7,6 +7,7 @@
     <slot></slot>
     <div
       v-if="$slots.fab"
+      v-ripple
       :class="classes(n('fab'), 'var-elevation--6', [length % 2, n('--fab-right'), n('--fab-center')])"
     >
       <slot name="fab"></slot>
@@ -18,6 +19,7 @@
 import { defineComponent, ref, computed, onMounted, onUpdated } from 'vue'
 import type { Ref, ComputedRef } from 'vue'
 import { props } from './props'
+import Ripple from '../ripple'
 import { useBottomNavigationItems } from './provide'
 import type { BottomNavigationProvider } from './provide'
 import { createNamespace, call } from '../utils/components'
@@ -31,6 +33,7 @@ const RIGHT_SPACE_CLASS = nItem('--right-space')
 
 export default defineComponent({
   name: 'VarBottomNavigation',
+  directives: { Ripple },
   props,
   setup(props, { slots }) {
     const bottomNavigationDom: Ref<HTMLElement | null> = ref(null)
