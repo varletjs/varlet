@@ -2,7 +2,7 @@ import { defineComponent, watch, Transition, Teleport } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { useZIndex } from '../context/zIndex'
-import { addRouteListener, useTeleport , createNamespace } from '../utils/components'
+import { addRouteListener, useTeleport, createNamespace } from '../utils/components'
 
 import '../styles/common.less'
 import './popup.less'
@@ -43,11 +43,11 @@ export default defineComponent({
     addRouteListener(() => props.onRouteChange?.())
 
     const renderOverlay = () => {
-      const { overlayClass, overlayStyle } = props
+      const { overlayClass = '', overlayStyle } = props
 
       return (
         <div
-          class={[classes(n('overlay')), overlayClass]}
+          class={classes(n('overlay'), overlayClass)}
           style={{
             zIndex: zIndex.value - 1,
             ...overlayStyle,
