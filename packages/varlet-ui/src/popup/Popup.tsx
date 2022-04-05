@@ -2,10 +2,12 @@ import { defineComponent, watch, Transition, Teleport } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { useZIndex } from '../context/zIndex'
-import { addRouteListener, useTeleport } from '../utils/components'
+import { addRouteListener, useTeleport , createNamespace } from '../utils/components'
 
 import '../styles/common.less'
 import './popup.less'
+
+const { n, classes } = createNamespace('popup')
 
 export default defineComponent({
   name: 'VarPopup',
@@ -45,7 +47,7 @@ export default defineComponent({
 
       return (
         <div
-          class={['var-popup__overlay', overlayClass]}
+          class={[classes(n('overlay')), overlayClass]}
           style={{
             zIndex: zIndex.value - 1,
             ...overlayStyle,
@@ -58,7 +60,7 @@ export default defineComponent({
     const renderContent = () => {
       return (
         <div
-          class={['var-popup__content', 'var-elevation--3', `var-popup--${props.position}`]}
+          class={classes(n('content'), 'var-elevation--3', n(`--${props.position}`))}
           style={{ zIndex: zIndex.value }}
           {...attrs}
         >
@@ -72,7 +74,7 @@ export default defineComponent({
 
       return (
         <Transition name="var-fade" onAfterEnter={onOpened} onAfterLeave={onClosed}>
-          <div class="var--box var-popup" style={{ zIndex: zIndex.value - 2 }} v-show={show}>
+          <div class={classes('var--box', n())} style={{ zIndex: zIndex.value - 2 }} v-show={show}>
             {overlay && renderOverlay()}
             <Transition name={transition || `var-pop-${position}`}>{show && renderContent()}</Transition>
           </div>
