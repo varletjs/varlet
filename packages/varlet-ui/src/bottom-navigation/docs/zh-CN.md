@@ -119,7 +119,7 @@ export default {
 ### 自定义颜色
 
 ```html
-<var-bottom-navigation v-model="active" active-color="red" inactive-color="#2196f3">
+<var-bottom-navigation v-model="active" active-color="#BA68C8">
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" />
   <var-bottom-navigation-item label="标签" icon="heart" />
@@ -152,7 +152,7 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import Snackbar from '../../snackbar'
+import { Snackbar } from '@varlet/ui'
 
 export default {
   setup() {
@@ -179,7 +179,7 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import Snackbar from '../../snackbar'
+import { Snackbar } from '@varlet/ui'
 
 export default {
   setup() {
@@ -195,17 +195,19 @@ export default {
 
 ### 悬浮按钮
 
+Item 数量为偶数时，悬浮按钮在中间位置，为奇数时在最右侧。
+
 ```html
-<var-bottom-navigation v-model="fab" style="margin-top: 10px">
+<var-bottom-navigation v-model="fab">
   <template #fab>
-    <div class="fab_example">
+    <div class="fab_example" @click="isEven = !isEven">
       <var-icon name="plus" color="#fff" size="24" />
     </div>
   </template>
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" />
   <var-bottom-navigation-item label="标签" icon="heart" />
-  <var-bottom-navigation-item label="标签" icon="account-circle" />
+  <var-bottom-navigation-item v-if="isEven" label="标签" icon="account-circle" />
 </var-bottom-navigation>
 ```
 
@@ -215,8 +217,9 @@ import { ref } from 'vue'
 export default {
   setup() {
     const active = ref(0)
+    const isEven = ref(true)
 
-    return { active }
+    return { active, isEven }
   }
 }
 ```

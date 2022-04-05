@@ -119,7 +119,7 @@ export default {
 ### Custom Color
 
 ```html
-<var-bottom-navigation v-model="active" active-color="red" inactive-color="#2196f3">
+<var-bottom-navigation v-model="active" active-color="#BA68C8">
   <var-bottom-navigation-item label="label" icon="home" />
   <var-bottom-navigation-item label="label" icon="magnify" />
   <var-bottom-navigation-item label="label" icon="heart" />
@@ -152,7 +152,7 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import Snackbar from '../../snackbar'
+import { Snackbar } from '@varlet/ui'
 
 export default {
   setup() {
@@ -170,16 +170,16 @@ export default {
 
 ```html
 <var-bottom-navigation v-model="active">
-  <var-bottom-navigation-item  @click="handleClick" label="label" icon="home" />
-  <var-bottom-navigation-item  @click="handleClick" label="label" icon="magnify" />
-  <var-bottom-navigation-item  @click="handleClick" label="label" icon="heart" />
-  <var-bottom-navigation-item  @click="handleClick" label="label" icon="account-circle" />
+  <var-bottom-navigation-item @click="handleClick" label="label" icon="home" />
+  <var-bottom-navigation-item @click="handleClick" label="label" icon="magnify" />
+  <var-bottom-navigation-item @click="handleClick" label="label" icon="heart" />
+  <var-bottom-navigation-item @click="handleClick" label="label" icon="account-circle" />
 </var-bottom-navigation>
 ```
 
 ```js
 import { ref } from 'vue'
-import Snackbar from '../../snackbar'
+import { Snackbar } from '@varlet/ui'
 
 export default {
   setup() {
@@ -196,16 +196,16 @@ export default {
 ### Fab
 
 ```html
-<var-bottom-navigation v-model="fab" style="margin-top: 10px">
+<var-bottom-navigation v-model="fab">
   <template #fab>
-    <div class="fab_example">
+    <div class="fab_example" @click="isEven = !isEven">
       <var-icon name="plus" color="#fff" size="24" />
     </div>
   </template>
   <var-bottom-navigation-item label="label" icon="home" />
   <var-bottom-navigation-item label="label" icon="magnify" />
   <var-bottom-navigation-item label="label" icon="heart" />
-  <var-bottom-navigation-item label="label" icon="account-circle" />
+  <var-bottom-navigation-item v-if="isEven" label="label" icon="account-circle" />
 </var-bottom-navigation>
 ```
 
@@ -213,11 +213,11 @@ export default {
 import { ref } from 'vue'
 
 export default {
-  components:{VarIcon},
   setup() {
     const active = ref(0)
+    const isEven = ref(true)
 
-    return { active }
+    return { active, isEven }
   }
 }
 ```

@@ -7,6 +7,7 @@
     <slot></slot>
     <div
       v-if="$slots.fab"
+      v-ripple
       :class="classes(n('fab'), 'var-elevation--6', [length % 2, n('--fab-right'), n('--fab-center')])"
     >
       <slot name="fab"></slot>
