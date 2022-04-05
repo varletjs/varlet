@@ -1,7 +1,7 @@
 <template>
   <div
     ref="freshNode"
-    :class="classes(n())"
+    :class="n()"
     @touchstart="touchStart"
     @touchmove="touchMove"
     @touchend="touchEnd"
@@ -25,9 +25,9 @@ import { defineComponent, ref, computed, watch, onMounted } from 'vue'
 import { getParentScroller, getScrollTop } from '../utils/elements'
 import { props } from './props'
 import { toNumber } from '../utils/shared'
+import { createNamespace } from '../utils/components'
 import type { Ref } from 'vue'
 import type { RefreshStatus } from './props'
-import { createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('pull-refresh')
 
