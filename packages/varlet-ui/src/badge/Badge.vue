@@ -1,11 +1,10 @@
 <template>
-  <div class="var-badge var--box">
+  <div :class="classes(n(), 'var--box')">
     <transition name="var-badge-fade">
       <span
         v-bind="$attrs"
         v-show="!hidden"
-        class="var-badge__content"
-        :class="contentClass"
+        :class="classes(n('content'), ...contentClass)"
         :style="{ background: color }"
       >
         <var-icon v-if="icon && !dot" :name="icon" size="10px" />
@@ -22,6 +21,9 @@ import { computed, defineComponent } from 'vue'
 import { props } from './props'
 import { toNumber } from '../utils/shared'
 import type { ComputedRef } from 'vue'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('badge')
 
 export default defineComponent({
   name: 'VarBadge',
@@ -32,12 +34,12 @@ export default defineComponent({
     const contentClass: ComputedRef<Array<string | false | undefined>> = computed(() => {
       const { type, position, dot, icon } = props
 
-      const positionBasic = slots.default && `var-badge__position var-badge--${position}`
-      const dotClass = dot && 'var-badge__dot'
+      const positionBasic = slots.default && `${n('position')} ${n(`--${position}`)}`
+      const dotClass = dot && n('dot')
       const positionClass = getPositionClass()
-      const iconClass = icon && 'var-badge__icon'
+      const iconClass = icon && n('icon')
 
-      return [`var-badge--${type}`, positionBasic, dotClass, positionClass, iconClass]
+      return [n(`--${type}`), positionBasic, dotClass, positionClass, iconClass]
     })
 
     const values: ComputedRef<string | number> = computed(() => {
@@ -53,12 +55,14 @@ export default defineComponent({
     const getPositionClass = (): string | undefined => {
       const { position, dot } = props
 
-      if (dot && position.includes('right')) return 'var-badge__dot--right'
+      if (dot && position.includes('right')) return n('dot--right')
 
-      if (dot && position.includes('left')) return 'var-badge__dot--left'
+      if (dot && position.includes('left')) return n('dot--left')
     }
 
     return {
+      n,
+      classes,
       values,
       contentClass,
     }
