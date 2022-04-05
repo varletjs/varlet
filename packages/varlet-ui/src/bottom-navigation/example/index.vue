@@ -69,7 +69,8 @@
     <var-bottom-navigation-item :label="pack.label" icon="home" />
     <var-bottom-navigation-item :label="pack.label" icon="magnify" />
     <var-bottom-navigation-item :label="pack.label" icon="heart" />
-    <var-bottom-navigation-item v-if="isEven" :label="pack.label" icon="account-circle" />
+    <var-bottom-navigation-item :label="pack.label" icon="bell" />
+    <var-bottom-navigation-item v-if="!isEven" :label="pack.label" icon="account-circle" />
   </var-bottom-navigation>
 </template>
 

@@ -205,7 +205,8 @@ export default {
   <var-bottom-navigation-item label="label" icon="home" />
   <var-bottom-navigation-item label="label" icon="magnify" />
   <var-bottom-navigation-item label="label" icon="heart" />
-  <var-bottom-navigation-item v-if="isEven" label="label" icon="account-circle" />
+  <var-bottom-navigation-item label="label" icon="bell" />
+  <var-bottom-navigation-item v-if="!isEven" label="label" icon="account-circle" />
 </var-bottom-navigation>
 ```
 

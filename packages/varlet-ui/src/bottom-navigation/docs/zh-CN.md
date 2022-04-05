@@ -207,7 +207,8 @@ Item 数量为偶数时，悬浮按钮在中间位置，为奇数时在最右侧
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" />
   <var-bottom-navigation-item label="标签" icon="heart" />
-  <var-bottom-navigation-item v-if="isEven" label="标签" icon="account-circle" />
+  <var-bottom-navigation-item label="标签" icon="bell" />
+  <var-bottom-navigation-item v-if="!isEven" label="标签" icon="account-circle" />
 </var-bottom-navigation>
 ```
 
