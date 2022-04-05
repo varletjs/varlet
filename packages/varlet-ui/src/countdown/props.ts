@@ -22,7 +22,7 @@ export const props = {
     default: true,
   },
   onEnd: {
-    type: Function,
+    type: Function as PropType<() => void>,
   },
   onChange: {
     type: Function as PropType<(value: TimeData) => void>,
