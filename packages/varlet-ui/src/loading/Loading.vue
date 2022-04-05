@@ -19,8 +19,8 @@
         </span>
       </div>
 
-      <template v-for="(nums, key) in loadingTypeDict" :key="key">
-        <div :class="classes(n(key), n(`${key}-${size}`))" v-if="type === key">
+      <template v-for="(nums, key) in loadingTypeDict">
+        <div :class="classes(n(key), n(`${key}-${size}`))" v-if="type === key" :key="key">
           <div
             v-for="num in nums"
             :key="num + key"
