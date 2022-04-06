@@ -3,9 +3,11 @@ import {
   EXAMPLE_DIR_INDEX,
   EXAMPLE_DIR_NAME,
   ROOT_DOCS_DIR,
+  ROOT_PAGES_DIR,
   SITE,
   SITE_DIR,
   SITE_MOBILE_ROUTES,
+  SITE_PC_DIR,
   SITE_PC_ROUTES,
   SRC_DIR,
 } from '../shared/constant'
@@ -16,6 +18,7 @@ import { getVarletConfig } from '../config/varlet.config'
 const EXAMPLE_COMPONENT_NAME_RE = /\/([-\w]+)\/example\/index.vue/
 const COMPONENT_DOCS_RE = /\/([-\w]+)\/docs\/([-\w]+)\.md/
 const ROOT_DOCS_RE = /\/docs\/([-\w]+)\.([-\w]+)\.md/
+const ROOT_PAGE_RE = /\/pages\/([-\w]+)\.([-\w]+)\.vue/
 
 export function getExampleRoutePath(examplePath: string): string {
   return '/' + examplePath.match(EXAMPLE_COMPONENT_NAME_RE)?.[1]
@@ -35,6 +38,16 @@ export function getRootDocRoutePath(rootDocsPath: string): string {
 
 export function findExamples(): Promise<string[]> {
   return glob(`${SRC_DIR}/**/${EXAMPLE_DIR_NAME}/${EXAMPLE_DIR_INDEX}`)
+}
+
+
+export async function findRootPages(): Promise<string[]> {
+  return glob(`${ROOT_PAGES_DIR}/**/${EXAMPLE_DIR_NAME}/${EXAMPLE_DIR_INDEX}`)
+}
+
+export function getRootPagesPath(rootPagePath: string): string {
+  const [, routePath, language] = rootPagePath.match(ROOT_PAGE_RE) ?? []
+  return `/${language}/${routePath}`
 }
 
 export function findComponentDocs(): Promise<string[]> {
@@ -66,7 +79,17 @@ export async function buildMobileSiteRoutes() {
 }
 
 export async function buildPcSiteRoutes() {
-  const [componentDocs, rootDocs] = await Promise.all([findComponentDocs(), findRootDocs()])
+  const [componentDocs, rootDocs, rootPages] = await Promise.all([findComponentDocs(), findRootDocs(), findRootPages()])
+  
+  const rootPagesRoutes = rootPages.map(
+    (rootPage) => `
+  {
+    path: '${getRootPagesPath(rootPage)}',
+    // @ts-ignore
+    component: () => import('${rootPage}')
+  }\
+`
+  )
 
   const componentDocsRoutes = componentDocs.map(
     (componentDoc) => `
@@ -88,10 +111,21 @@ export async function buildPcSiteRoutes() {
 `
   )
 
+  const layoutRoutes = `
+    {
+      path: '/layout',
+      // @ts-ignore
+      component:()=> import('${SITE_PC_DIR}/Layout.vue'),
+      children: [
+        ${[...componentDocsRoutes, rootDocsRoutes].join(',')}, 
+      ]
+    }\
+  `
   const source = `export default [\
-  ${[...componentDocsRoutes, rootDocsRoutes].join(',')}
-]`
-
+    ${rootPagesRoutes.join(',')},
+    \
+    ${layoutRoutes}
+  ]`
   outputFileSyncOnChange(SITE_PC_ROUTES, source)
 }
 
