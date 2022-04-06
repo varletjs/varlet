@@ -101,12 +101,8 @@ import { ref } from 'vue'
 export default {
   setup() {
     const active = ref(0)
-    const homeIcon = {
-      active: 'https://varlet.gitee.io/varlet-ui/home_active.png',
-      inactive: 'https://varlet.gitee.io/varlet-ui/home_inactive.png',
-    }
 
-    return { active, homeIcon }
+    return { active }
   }
 }
 ```
@@ -214,9 +210,9 @@ export default {
 |Prop | Description | Type | Default |
 | ---- | ---- | ---- | ---- |
 | `name` | Identifier | _string_ | `-` |
-| `icon` | Icon name, equivalent to the [name property](/#/en-US/icon) of Icon component | _string_ | `-` |
+| `icon` | Icon name, equivalent to the [name](/#/en-US/icon) of Icon component | _string_ | `-` |
 | `label` | Label text content | _string_ | - |
-| `namespace` | Icon namespace, extensible custom icon library, equivalent to the [namespace property](/#/en-US/icon)  of Icon component | _string_ | `var-icon` |
+| `namespace` | Icon namespace, extensible custom icon library, equivalent to the [namespace](/#/en-US/icon)  of Icon component | _string_ | `var-icon` |
 | `badge` | Logo in the upper right corner of the icon | _boolean \| BadgeProps_ | `false` |
 
 ### Events
