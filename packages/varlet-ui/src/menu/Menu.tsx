@@ -74,7 +74,7 @@ export default defineComponent({
     })
 
     const renderTransition = () => (
-      <Transition name="var-menu" onAfterEnter={props.onOpened} onAfterLeave={props.onClosed}>
+      <Transition name={n()} onAfterEnter={props.onOpened} onAfterLeave={props.onClosed}>
         <div
           class={classes(n('menu'), 'var-elevation--3')}
           ref={menu}
