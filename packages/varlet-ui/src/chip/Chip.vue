@@ -49,12 +49,12 @@ export default defineComponent({
       }
     })
 
-    const contentClass: ComputedRef<Array<string | false | undefined>> = computed(() => {
+    const contentClass: ComputedRef<Array<string | null | undefined>> = computed(() => {
       const { size, block, type, plain, round } = props
 
       const blockClass = block ? 'var--flex' : 'var--inline-flex'
       const plainTypeClass = plain ? `${n('plain')} ${n(`plain-${type}`)}` : n(`--${type}`)
-      const roundClass = round && n('--round')
+      const roundClass = round ? n('--round') : null
 
       return [n(`--${size}`), blockClass, plainTypeClass, roundClass]
     })
