@@ -40,7 +40,7 @@
   </var-bottom-navigation>
 
   <app-type>{{ pack.clickEvent }}</app-type>
-  <var-bottom-navigation border v-model="clickEvent">
+  <var-bottom-navigation v-model="clickEvent">
     <var-bottom-navigation-item @click="handleClick" :label="pack.label" icon="home" />
     <var-bottom-navigation-item @click="handleClick" :label="pack.label" icon="magnify" />
     <var-bottom-navigation-item @click="handleClick" :label="pack.label" icon="heart" />
@@ -48,7 +48,7 @@
   </var-bottom-navigation>
 
   <app-type>{{ pack.fab }}</app-type>
-  <var-bottom-navigation v-model="fab" @fabClick="isEven = !isEven" :fab-props="fabProps" style="margin-top: 10px">
+  <var-bottom-navigation v-model="fab" @fabClick="isEven = !isEven" style="margin-top: 10px">
     <template #fab>
       <var-icon name="plus" color="#fff" size="24" />
     </template>
@@ -106,7 +106,6 @@ export default {
 
     const fab = ref(0)
     const isEven = ref(true)
-    const fabProps = ref({ type: 'success', loading: true })
 
     watchLang(use)
     watchDarkMode(dark)
@@ -124,7 +123,6 @@ export default {
       handleClick,
       fab,
       isEven,
-      fabProps,
     }
   },
 }

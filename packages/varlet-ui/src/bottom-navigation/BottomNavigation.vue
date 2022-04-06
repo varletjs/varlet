@@ -23,7 +23,6 @@
 import { defineComponent, ref, computed, onMounted, onUpdated } from 'vue'
 import type { Ref, ComputedRef } from 'vue'
 import { props } from './props'
-import Ripple from '../ripple'
 import VarButton from '../button'
 import { useBottomNavigationItems } from './provide'
 import type { BottomNavigationProvider } from './provide'
@@ -42,7 +41,6 @@ const defaultFabProps = {
 export default defineComponent({
   name: 'VarBottomNavigation',
   components: { VarButton },
-  directives: { Ripple },
   props,
   setup(props, { slots }) {
     const bottomNavigationDom: Ref<HTMLElement | null> = ref(null)
@@ -111,10 +109,10 @@ export default defineComponent({
       return Array.from(bottomNavigationDom.value!.querySelectorAll(`.${nItem()}`))
     }
 
-    fabProps.value = { ...defaultFabProps, ...props.fabProps }
     const handleFabClick = () => {
       call(props.onFabClick)
     }
+    fabProps.value = { ...defaultFabProps, ...props.fabProps }
 
     const bottomNavigationProvider: BottomNavigationProvider = {
       active,
@@ -157,7 +155,6 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
-@import '../ripple/ripple';
 @import '../button/button';
 @import './bottomNavigation';
 </style>
