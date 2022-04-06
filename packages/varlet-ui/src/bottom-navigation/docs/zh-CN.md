@@ -168,7 +168,7 @@ Item 数量为偶数时，悬浮按钮在中间位置，为奇数时在最右侧
 ```html
 <var-bottom-navigation v-model="fab" @fabClick="isEven = !isEven">
   <template #fab>
-    <var-icon name="plus" color="#fff" size="24" />
+    <var-icon name="heart" />
   </template>
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" />

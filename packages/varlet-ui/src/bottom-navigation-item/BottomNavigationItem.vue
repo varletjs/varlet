@@ -26,16 +26,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, watch } from 'vue'
-import { props } from './props'
 import Ripple from '../ripple'
 import VarBadge from '../badge'
 import VarIcon from '../icon'
-import type { ComputedRef } from 'vue'
-import type { BadgeProps } from '../../types/badge'
+import { defineComponent, computed, ref, watch } from 'vue'
+import { props } from './props'
 import { useBottomNavigation } from './provide'
-import type { BottomNavigationItemProvider } from './provide'
 import { createNamespace, call } from '../utils/components'
+import type { BottomNavigationItemProvider } from './provide'
+import type { ComputedRef } from 'vue'
+import type { BadgeProps } from '../../types'
 
 const { n, classes } = createNamespace('bottom-navigation-item')
 
@@ -63,8 +63,6 @@ export default defineComponent({
       index,
     }
 
-    bindBottomNavigation(bottomNavigationItemProvider)
-
     const computeColorStyle = () => {
       return active.value === name.value || active.value === index.value ? activeColor.value : inactiveColor.value
     }
@@ -76,6 +74,8 @@ export default defineComponent({
 
       call(bottomNavigation.onToggle, active)
     }
+
+    bindBottomNavigation(bottomNavigationItemProvider)
 
     watch(
       () => badge.value,
