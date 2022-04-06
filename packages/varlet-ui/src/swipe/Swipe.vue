@@ -16,7 +16,7 @@
     </div>
 
     <slot name="indicator" :index="index" :length="length">
-      <div :class="classes(n('indicators'), [vertical, n('--indicators--vertical')])" v-if="indicator && length">
+      <div :class="classes(n('indicators'), [vertical, n('--indicators-vertical')])" v-if="indicator && length">
         <div
           :class="
             classes(n('indicator'), [index === idx, n('--indicator-active')], [vertical, n('--indicator-vertical')])
