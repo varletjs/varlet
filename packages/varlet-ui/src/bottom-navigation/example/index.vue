@@ -52,7 +52,7 @@
   </var-bottom-navigation>
 
   <app-type>{{ pack.clickEvent }}</app-type>
-  <var-bottom-navigation v-model="clickEvent">
+  <var-bottom-navigation border v-model="clickEvent">
     <var-bottom-navigation-item @click="handleClick" :label="pack.label" icon="home" />
     <var-bottom-navigation-item @click="handleClick" :label="pack.label" icon="magnify" />
     <var-bottom-navigation-item @click="handleClick" :label="pack.label" icon="heart" />
@@ -60,11 +60,9 @@
   </var-bottom-navigation>
 
   <app-type>{{ pack.fab }}</app-type>
-  <var-bottom-navigation v-model="fab" style="margin-top: 10px">
+  <var-bottom-navigation v-model="fab" @fabClick="isEven = !isEven" :fab-props="fabProps" style="margin-top: 10px">
     <template #fab>
-      <div class="fab_example" @click="isEven = !isEven">
-        <var-icon name="plus" color="#fff" size="24" />
-      </div>
+      <var-icon name="plus" color="#fff" size="24" />
     </template>
     <var-bottom-navigation-item :label="pack.label" icon="home" />
     <var-bottom-navigation-item :label="pack.label" icon="magnify" />
@@ -122,6 +120,7 @@ export default {
 
     const fab = ref(0)
     const isEven = ref(true)
+    const fabProps = ref({ type: 'success', loading: true })
 
     watchLang(use)
     watchDarkMode(dark)
@@ -141,17 +140,8 @@ export default {
       handleClick,
       fab,
       isEven,
+      fabProps,
     }
   },
 }
 </script>
-<style lang="less" scoped>
-.fab_example {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-primary);
-}
-</style>

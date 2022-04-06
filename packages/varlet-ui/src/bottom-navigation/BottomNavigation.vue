@@ -5,13 +5,17 @@
     :style="`z-index:${zIndex}`"
   >
     <slot></slot>
-    <div
+
+    <var-button
       v-if="$slots.fab"
-      v-ripple
-      :class="classes(n('fab'), 'var-elevation--6', [length % 2, n('--fab-right'), n('--fab-center')])"
+      :class="classes(n('fab'), [length % 2, n('--fab-right'), n('--fab-center')])"
+      var-bottom-navigation__fab
+      @click="handleFabClick"
+      v-bind="fabProps"
+      round
     >
       <slot name="fab"></slot>
-    </div>
+    </var-button>
   </div>
 </template>
 
@@ -20,6 +24,7 @@ import { defineComponent, ref, computed, onMounted, onUpdated } from 'vue'
 import type { Ref, ComputedRef } from 'vue'
 import { props } from './props'
 import Ripple from '../ripple'
+import VarButton from '../button'
 import { useBottomNavigationItems } from './provide'
 import type { BottomNavigationProvider } from './provide'
 import { createNamespace, call } from '../utils/components'
@@ -30,9 +35,13 @@ const { n: nItem } = createNamespace('bottom-navigation-item')
 const RIGHT_HALF_SPACE_CLASS = nItem('--right-half-space')
 const LEFT_HALF_SPACE_CLASS = nItem('--left-half-space')
 const RIGHT_SPACE_CLASS = nItem('--right-space')
+const defaultFabProps = {
+  type: 'primary',
+}
 
 export default defineComponent({
   name: 'VarBottomNavigation',
+  components: { VarButton },
   directives: { Ripple },
   props,
   setup(props, { slots }) {
@@ -40,6 +49,7 @@ export default defineComponent({
     const active: ComputedRef<number | string | undefined> = computed(() => props.modelValue)
     const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
     const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
+    const fabProps = ref({})
 
     const onToggle = (changedValue: number | string) => {
       if (props.onBeforeChange) {
@@ -101,6 +111,11 @@ export default defineComponent({
       return Array.from(bottomNavigationDom.value!.querySelectorAll(`.${nItem()}`))
     }
 
+    fabProps.value = { ...defaultFabProps, ...props.fabProps }
+    const handleFabClick = () => {
+      call(props.onFabClick)
+    }
+
     const bottomNavigationProvider: BottomNavigationProvider = {
       active,
       activeColor,
@@ -133,6 +148,8 @@ export default defineComponent({
       classes,
       length,
       bottomNavigationDom,
+      handleFabClick,
+      fabProps,
     }
   },
 })
@@ -141,5 +158,6 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../ripple/ripple';
+@import '../button/button';
 @import './bottomNavigation';
 </style>
