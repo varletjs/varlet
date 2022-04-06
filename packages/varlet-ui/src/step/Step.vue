@@ -1,31 +1,25 @@
 <template>
-  <div class="var-step">
-    <div :class="`var-step-${direction}`">
-      <div :class="`var-step-${direction}__main`" :ref="getRef">
+  <div :class="n()">
+    <div :class="n(direction)">
+      <div :class="n(`${direction}-main`)" :ref="getRef">
         <div
-          :class="{
-            [`var-step-${direction}__tag`]: true,
-            [`var-step-${direction}__tag--active`]: isActive || isCurrent,
-          }"
+          :class="classes(n(`${direction}-tag`), [isActive || isCurrent, n(`${direction}-tag--active`)])"
           :style="{ backgroundColor: isActive || isCurrent ? activeColor : inactiveColor }"
           @click="click"
         >
-          <var-icon class="var-step__icon" var-step-cover :name="activeIcon" v-if="isActive" />
-          <var-icon class="var-step__icon" var-step-cover :name="currentIcon" v-else-if="isCurrent && currentIcon" />
-          <var-icon class="var-step__icon" var-step-cover :name="inactiveIcon" v-else-if="inactiveIcon" />
+          <var-icon :class="n('icon')" var-step-cover :name="activeIcon" v-if="isActive" />
+          <var-icon :class="n('icon')" var-step-cover :name="currentIcon" v-else-if="isCurrent && currentIcon" />
+          <var-icon :class="n('icon')" var-step-cover :name="inactiveIcon" v-else-if="inactiveIcon" />
           <span v-else>{{ index + 1 }}</span>
         </div>
         <div
-          :class="{
-            [`var-step-${direction}__content`]: true,
-            [`var-step-${direction}__content--active`]: isActive || isCurrent,
-          }"
+          :class="classes(n(`${direction}-content`), [isActive || isCurrent, n(`${direction}-content--active`)])"
           @click="click"
         >
           <slot />
         </div>
       </div>
-      <div :class="`var-step-${direction}__line`" v-if="!isLastChild" :style="{ margin: lineMargin }"></div>
+      <div :class="n(`${direction}-line`)" v-if="!isLastChild" :style="{ margin: lineMargin }"></div>
     </div>
   </div>
 </template>
@@ -35,8 +29,11 @@ import { computed, defineComponent, ref, watch } from 'vue'
 import { props } from './props'
 import { useSteps } from './provide'
 import VarIcon from '../icon'
+import { createNamespace } from '../utils/components'
 import type { Ref, ComputedRef, ComponentPublicInstance } from 'vue'
 import type { StepProvider } from './provide'
+
+const { n, classes } = createNamespace('step')
 
 export default defineComponent({
   name: 'VarStep',
@@ -79,6 +76,8 @@ export default defineComponent({
     })
 
     return {
+      n,
+      classes,
       main,
       index,
       isActive,

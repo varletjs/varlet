@@ -3,21 +3,21 @@
 exports[`test step direction prop 1`] = `
 "<div class=\\"var-steps\\" style=\\"flex-direction: row;\\">
   <div class=\\"var-step\\">
-    <div class=\\"var-step-horizontal\\">
-      <div class=\\"var-step-horizontal__main\\">
-        <div class=\\"var-step-horizontal__tag\\"><span>0</span></div>
-        <div class=\\"var-step-horizontal__content\\">步骤1</div>
+    <div class=\\"var-step__horizontal\\">
+      <div class=\\"var-step__horizontal-main\\">
+        <div class=\\"var-step__horizontal-tag\\"><span>0</span></div>
+        <div class=\\"var-step__horizontal-content\\">步骤1</div>
       </div>
-      <div class=\\"var-step-horizontal__line\\"></div>
+      <div class=\\"var-step__horizontal-line\\"></div>
     </div>
   </div>
   <div class=\\"var-step\\">
-    <div class=\\"var-step-horizontal\\">
-      <div class=\\"var-step-horizontal__main\\">
-        <div class=\\"var-step-horizontal__tag\\"><span>0</span></div>
-        <div class=\\"var-step-horizontal__content\\">步骤2</div>
+    <div class=\\"var-step__horizontal\\">
+      <div class=\\"var-step__horizontal-main\\">
+        <div class=\\"var-step__horizontal-tag\\"><span>0</span></div>
+        <div class=\\"var-step__horizontal-content\\">步骤2</div>
       </div>
-      <div class=\\"var-step-horizontal__line\\"></div>
+      <div class=\\"var-step__horizontal-line\\"></div>
     </div>
   </div>
 </div>"
@@ -26,21 +26,21 @@ exports[`test step direction prop 1`] = `
 exports[`test step direction prop 2`] = `
 "<div class=\\"var-steps\\" style=\\"flex-direction: column;\\">
   <div class=\\"var-step\\">
-    <div class=\\"var-step-vertical\\">
-      <div class=\\"var-step-vertical__main\\">
-        <div class=\\"var-step-vertical__tag\\"><span>0</span></div>
-        <div class=\\"var-step-vertical__content\\">步骤1</div>
+    <div class=\\"var-step__vertical\\">
+      <div class=\\"var-step__vertical-main\\">
+        <div class=\\"var-step__vertical-tag\\"><span>0</span></div>
+        <div class=\\"var-step__vertical-content\\">步骤1</div>
       </div>
-      <div class=\\"var-step-vertical__line\\"></div>
+      <div class=\\"var-step__vertical-line\\"></div>
     </div>
   </div>
   <div class=\\"var-step\\">
-    <div class=\\"var-step-vertical\\">
-      <div class=\\"var-step-vertical__main\\">
-        <div class=\\"var-step-vertical__tag\\"><span>0</span></div>
-        <div class=\\"var-step-vertical__content\\">步骤2</div>
+    <div class=\\"var-step__vertical\\">
+      <div class=\\"var-step__vertical-main\\">
+        <div class=\\"var-step__vertical-tag\\"><span>0</span></div>
+        <div class=\\"var-step__vertical-content\\">步骤2</div>
       </div>
-      <div class=\\"var-step-vertical__line\\"></div>
+      <div class=\\"var-step__vertical-line\\"></div>
     </div>
   </div>
 </div>"
@@ -49,21 +49,21 @@ exports[`test step direction prop 2`] = `
 exports[`test step event 1`] = `
 "<div class=\\"var-steps\\" style=\\"flex-direction: row;\\">
   <div class=\\"var-step\\">
-    <div class=\\"var-step-horizontal\\">
-      <div class=\\"var-step-horizontal__main\\">
-        <div class=\\"var-step-horizontal__tag\\" style=\\"background-color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full var-step__icon\\" style=\\"transition: transform 0ms;\\" var-step-cover=\\"\\"></i></div>
-        <div class=\\"var-step-horizontal__content\\">步骤1</div>
+    <div class=\\"var-step__horizontal\\">
+      <div class=\\"var-step__horizontal-main\\">
+        <div class=\\"var-step__horizontal-tag\\" style=\\"background-color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full var-step__icon\\" style=\\"transition: transform 0ms;\\" var-step-cover=\\"\\"></i></div>
+        <div class=\\"var-step__horizontal-content\\">步骤1</div>
       </div>
-      <div class=\\"var-step-horizontal__line\\"></div>
+      <div class=\\"var-step__horizontal-line\\"></div>
     </div>
   </div>
   <div class=\\"var-step\\">
-    <div class=\\"var-step-horizontal\\">
-      <div class=\\"var-step-horizontal__main\\">
-        <div class=\\"var-step-horizontal__tag\\" style=\\"background-color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full var-step__icon\\" style=\\"transition: transform 0ms;\\" var-step-cover=\\"\\"></i></div>
-        <div class=\\"var-step-horizontal__content\\">步骤2</div>
+    <div class=\\"var-step__horizontal\\">
+      <div class=\\"var-step__horizontal-main\\">
+        <div class=\\"var-step__horizontal-tag\\" style=\\"background-color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full var-step__icon\\" style=\\"transition: transform 0ms;\\" var-step-cover=\\"\\"></i></div>
+        <div class=\\"var-step__horizontal-content\\">步骤2</div>
       </div>
-      <div class=\\"var-step-horizontal__line\\"></div>
+      <div class=\\"var-step__horizontal-line\\"></div>
     </div>
   </div>
 </div>"
@@ -73,117 +73,117 @@ exports[`test steps example 1`] = `
 "<div class=\\"app-type\\">基本使用</div>
 <div class=\\"var-steps\\" style=\\"flex-direction: row;\\">
   <div class=\\"var-step\\">
-    <div class=\\"var-step-horizontal\\">
-      <div class=\\"var-step-horizontal__main\\">
-        <div class=\\"var-step-horizontal__tag\\"><span>0</span></div>
-        <div class=\\"var-step-horizontal__content\\">步骤1</div>
+    <div class=\\"var-step__horizontal\\">
+      <div class=\\"var-step__horizontal-main\\">
+        <div class=\\"var-step__horizontal-tag\\"><span>0</span></div>
+        <div class=\\"var-step__horizontal-content\\">步骤1</div>
       </div>
-      <div class=\\"var-step-horizontal__line\\"></div>
+      <div class=\\"var-step__horizontal-line\\"></div>
     </div>
   </div>
   <div class=\\"var-step\\">
-    <div class=\\"var-step-horizontal\\">
-      <div class=\\"var-step-horizontal__main\\">
-        <div class=\\"var-step-horizontal__tag\\"><span>0</span></div>
-        <div class=\\"var-step-horizontal__content\\">步骤2</div>
+    <div class=\\"var-step__horizontal\\">
+      <div class=\\"var-step__horizontal-main\\">
+        <div class=\\"var-step__horizontal-tag\\"><span>0</span></div>
+        <div class=\\"var-step__horizontal-content\\">步骤2</div>
       </div>
-      <div class=\\"var-step-horizontal__line\\"></div>
+      <div class=\\"var-step__horizontal-line\\"></div>
     </div>
   </div>
   <div class=\\"var-step\\">
-    <div class=\\"var-step-horizontal\\">
-      <div class=\\"var-step-horizontal__main\\">
-        <div class=\\"var-step-horizontal__tag\\"><span>0</span></div>
-        <div class=\\"var-step-horizontal__content\\">步骤3</div>
+    <div class=\\"var-step__horizontal\\">
+      <div class=\\"var-step__horizontal-main\\">
+        <div class=\\"var-step__horizontal-tag\\"><span>0</span></div>
+        <div class=\\"var-step__horizontal-content\\">步骤3</div>
       </div>
-      <div class=\\"var-step-horizontal__line\\"></div>
+      <div class=\\"var-step__horizontal-line\\"></div>
     </div>
   </div>
   <div class=\\"var-step\\">
-    <div class=\\"var-step-horizontal\\">
-      <div class=\\"var-step-horizontal__main\\">
-        <div class=\\"var-step-horizontal__tag\\"><span>0</span></div>
-        <div class=\\"var-step-horizontal__content\\">步骤4</div>
+    <div class=\\"var-step__horizontal\\">
+      <div class=\\"var-step__horizontal-main\\">
+        <div class=\\"var-step__horizontal-tag\\"><span>0</span></div>
+        <div class=\\"var-step__horizontal-content\\">步骤4</div>
       </div>
-      <div class=\\"var-step-horizontal__line\\"></div>
+      <div class=\\"var-step__horizontal-line\\"></div>
     </div>
   </div>
 </div>
 <div class=\\"app-type\\">自定义样式</div>
 <div class=\\"var-steps\\" style=\\"flex-direction: row;\\">
   <div class=\\"var-step\\">
-    <div class=\\"var-step-horizontal\\">
-      <div class=\\"var-step-horizontal__main\\">
-        <div class=\\"var-step-horizontal__tag\\" style=\\"background-color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full var-step__icon\\" style=\\"transition: transform 0ms;\\" var-step-cover=\\"\\"></i></div>
-        <div class=\\"var-step-horizontal__content\\">步骤1</div>
+    <div class=\\"var-step__horizontal\\">
+      <div class=\\"var-step__horizontal-main\\">
+        <div class=\\"var-step__horizontal-tag\\" style=\\"background-color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full var-step__icon\\" style=\\"transition: transform 0ms;\\" var-step-cover=\\"\\"></i></div>
+        <div class=\\"var-step__horizontal-content\\">步骤1</div>
       </div>
-      <div class=\\"var-step-horizontal__line\\"></div>
+      <div class=\\"var-step__horizontal-line\\"></div>
     </div>
   </div>
   <div class=\\"var-step\\">
-    <div class=\\"var-step-horizontal\\">
-      <div class=\\"var-step-horizontal__main\\">
-        <div class=\\"var-step-horizontal__tag\\" style=\\"background-color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full var-step__icon\\" style=\\"transition: transform 0ms;\\" var-step-cover=\\"\\"></i></div>
-        <div class=\\"var-step-horizontal__content\\">步骤2</div>
+    <div class=\\"var-step__horizontal\\">
+      <div class=\\"var-step__horizontal-main\\">
+        <div class=\\"var-step__horizontal-tag\\" style=\\"background-color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full var-step__icon\\" style=\\"transition: transform 0ms;\\" var-step-cover=\\"\\"></i></div>
+        <div class=\\"var-step__horizontal-content\\">步骤2</div>
       </div>
-      <div class=\\"var-step-horizontal__line\\"></div>
+      <div class=\\"var-step__horizontal-line\\"></div>
     </div>
   </div>
   <div class=\\"var-step\\">
-    <div class=\\"var-step-horizontal\\">
-      <div class=\\"var-step-horizontal__main\\">
-        <div class=\\"var-step-horizontal__tag\\" style=\\"background-color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full var-step__icon\\" style=\\"transition: transform 0ms;\\" var-step-cover=\\"\\"></i></div>
-        <div class=\\"var-step-horizontal__content\\">步骤3</div>
+    <div class=\\"var-step__horizontal\\">
+      <div class=\\"var-step__horizontal-main\\">
+        <div class=\\"var-step__horizontal-tag\\" style=\\"background-color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full var-step__icon\\" style=\\"transition: transform 0ms;\\" var-step-cover=\\"\\"></i></div>
+        <div class=\\"var-step__horizontal-content\\">步骤3</div>
       </div>
-      <div class=\\"var-step-horizontal__line\\"></div>
+      <div class=\\"var-step__horizontal-line\\"></div>
     </div>
   </div>
   <div class=\\"var-step\\">
-    <div class=\\"var-step-horizontal\\">
-      <div class=\\"var-step-horizontal__main\\">
-        <div class=\\"var-step-horizontal__tag\\" style=\\"background-color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full var-step__icon\\" style=\\"transition: transform 0ms;\\" var-step-cover=\\"\\"></i></div>
-        <div class=\\"var-step-horizontal__content\\">步骤4</div>
+    <div class=\\"var-step__horizontal\\">
+      <div class=\\"var-step__horizontal-main\\">
+        <div class=\\"var-step__horizontal-tag\\" style=\\"background-color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full var-step__icon\\" style=\\"transition: transform 0ms;\\" var-step-cover=\\"\\"></i></div>
+        <div class=\\"var-step__horizontal-content\\">步骤4</div>
       </div>
-      <div class=\\"var-step-horizontal__line\\"></div>
+      <div class=\\"var-step__horizontal-line\\"></div>
     </div>
   </div>
 </div>
 <div class=\\"app-type\\">垂直模式</div>
 <div class=\\"var-steps\\" style=\\"flex-direction: column;\\">
   <div class=\\"var-step\\">
-    <div class=\\"var-step-vertical\\">
-      <div class=\\"var-step-vertical__main\\">
-        <div class=\\"var-step-vertical__tag\\"><span>0</span></div>
-        <div class=\\"var-step-vertical__content\\">步骤1</div>
+    <div class=\\"var-step__vertical\\">
+      <div class=\\"var-step__vertical-main\\">
+        <div class=\\"var-step__vertical-tag\\"><span>0</span></div>
+        <div class=\\"var-step__vertical-content\\">步骤1</div>
       </div>
-      <div class=\\"var-step-vertical__line\\"></div>
+      <div class=\\"var-step__vertical-line\\"></div>
     </div>
   </div>
   <div class=\\"var-step\\">
-    <div class=\\"var-step-vertical\\">
-      <div class=\\"var-step-vertical__main\\">
-        <div class=\\"var-step-vertical__tag\\"><span>0</span></div>
-        <div class=\\"var-step-vertical__content\\">步骤2</div>
+    <div class=\\"var-step__vertical\\">
+      <div class=\\"var-step__vertical-main\\">
+        <div class=\\"var-step__vertical-tag\\"><span>0</span></div>
+        <div class=\\"var-step__vertical-content\\">步骤2</div>
       </div>
-      <div class=\\"var-step-vertical__line\\"></div>
+      <div class=\\"var-step__vertical-line\\"></div>
     </div>
   </div>
   <div class=\\"var-step\\">
-    <div class=\\"var-step-vertical\\">
-      <div class=\\"var-step-vertical__main\\">
-        <div class=\\"var-step-vertical__tag\\"><span>0</span></div>
-        <div class=\\"var-step-vertical__content\\">步骤3</div>
+    <div class=\\"var-step__vertical\\">
+      <div class=\\"var-step__vertical-main\\">
+        <div class=\\"var-step__vertical-tag\\"><span>0</span></div>
+        <div class=\\"var-step__vertical-content\\">步骤3</div>
       </div>
-      <div class=\\"var-step-vertical__line\\"></div>
+      <div class=\\"var-step__vertical-line\\"></div>
     </div>
   </div>
   <div class=\\"var-step\\">
-    <div class=\\"var-step-vertical\\">
-      <div class=\\"var-step-vertical__main\\">
-        <div class=\\"var-step-vertical__tag\\"><span>0</span></div>
-        <div class=\\"var-step-vertical__content\\">步骤4</div>
+    <div class=\\"var-step__vertical\\">
+      <div class=\\"var-step__vertical-main\\">
+        <div class=\\"var-step__vertical-tag\\"><span>0</span></div>
+        <div class=\\"var-step__vertical-content\\">步骤4</div>
       </div>
-      <div class=\\"var-step-vertical__line\\"></div>
+      <div class=\\"var-step__vertical-line\\"></div>
     </div>
   </div>
 </div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--2\\" style=\\"margin-top: 20px;\\">

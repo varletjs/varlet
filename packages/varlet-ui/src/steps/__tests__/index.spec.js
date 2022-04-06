@@ -79,7 +79,7 @@ test('test step event', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  await wrapper.find('.var-step-horizontal__tag').trigger('click')
+  await wrapper.find('.var-step__horizontal-tag').trigger('click')
 
   expect(clickStep).toHaveBeenCalledTimes(1)
 })
