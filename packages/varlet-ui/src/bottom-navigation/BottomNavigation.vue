@@ -20,13 +20,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, onMounted, onUpdated } from 'vue'
+import { defineComponent, ref, computed, onMounted, onUpdated, watch } from 'vue'
 import type { Ref, ComputedRef } from 'vue'
 import { props } from './props'
 import VarButton from '../button'
 import { useBottomNavigationItems } from './provide'
 import type { BottomNavigationProvider } from './provide'
+import type { BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 import { createNamespace, call } from '../utils/components'
+import { isNumber } from '../utils/shared'
 
 const { n, classes } = createNamespace('bottom-navigation')
 const { n: nItem } = createNamespace('bottom-navigation-item')
@@ -48,6 +50,39 @@ export default defineComponent({
     const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
     const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
     const fabProps = ref({})
+    const { length, bottomNavigationItems, bindBottomNavigationItem } = useBottomNavigationItems()
+
+    const matchBoundary = (): void => {
+      if (length.value === 0 || matchName() || matchIndex()) {
+        return
+      }
+
+      handleActiveIndex()
+    }
+
+    const matchName = (): BottomNavigationItemProvider | undefined => {
+      return bottomNavigationItems.find(({ name }: BottomNavigationItemProvider) => {
+        return active.value === name.value
+      })
+    }
+
+    const matchIndex = (): BottomNavigationItemProvider | undefined => {
+      return bottomNavigationItems.find(({ index }: BottomNavigationItemProvider) => {
+        return active.value === index.value
+      })
+    }
+
+    const handleActiveIndex = () => {
+      if (!isNumber(active.value)) {
+        return
+      }
+
+      if (active.value < 0) {
+        call(props['onUpdate:modelValue'], 0)
+      } else if (active.value > length.value - 1) {
+        call(props['onUpdate:modelValue'], length.value - 1)
+      }
+    }
 
     const onToggle = (changedValue: number | string) => {
       if (props.onBeforeChange) {
@@ -69,8 +104,6 @@ export default defineComponent({
       call(props['onUpdate:modelValue'], changedValue)
       call(props.onChange, changedValue)
     }
-
-    const { length, bindBottomNavigationItem } = useBottomNavigationItems()
 
     const removeMarginClass = () => {
       const bottomNavigationItems: Element[] = getBottomNavigationItems()
@@ -112,6 +145,7 @@ export default defineComponent({
     const handleFabClick = () => {
       call(props.onFabClick)
     }
+
     fabProps.value = { ...defaultFabProps, ...props.fabProps }
 
     const bottomNavigationProvider: BottomNavigationProvider = {
@@ -122,6 +156,8 @@ export default defineComponent({
     }
 
     bindBottomNavigationItem(bottomNavigationProvider)
+
+    watch(() => length.value, matchBoundary)
 
     onMounted(() => {
       if (!slots.fab) {
