@@ -146,8 +146,6 @@ export default defineComponent({
       call(props.onFabClick)
     }
 
-    fabProps.value = { ...defaultFabProps, ...props.fabProps }
-
     const bottomNavigationProvider: BottomNavigationProvider = {
       active,
       activeColor,
@@ -158,6 +156,14 @@ export default defineComponent({
     bindBottomNavigationItem(bottomNavigationProvider)
 
     watch(() => length.value, matchBoundary)
+
+    watch(
+      () => props.fabProps,
+      (newValue) => {
+        fabProps.value = { ...defaultFabProps, ...newValue }
+      },
+      { immediate: true, deep: true }
+    )
 
     onMounted(() => {
       if (!slots.fab) {
