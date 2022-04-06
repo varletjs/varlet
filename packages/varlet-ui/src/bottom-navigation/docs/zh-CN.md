@@ -84,42 +84,10 @@ export default {
 }
 ```
 
-### 自定义图标
-
-```html
-<var-bottom-navigation v-model="active">
-  <var-bottom-navigation-item name="home" label="标签">
-    <template #icon="{ active }">
-      <img style="width: 20px" :src="active ? homeIcon.active : homeIcon.inactive" />
-    </template>
-  </var-bottom-navigation-item>
-  <var-bottom-navigation-item label="标签" icon="magnify" />
-  <var-bottom-navigation-item label="标签" icon="heart" />
-  <var-bottom-navigation-item label="标签" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const active = ref(0)
-    const homeIcon = {
-      active: 'https://varlet.gitee.io/varlet-ui/home_active.jpg',
-      inactive: 'https://varlet.gitee.io/varlet-ui/home_inactive.jpg',
-    }
-
-    return { active, homeIcon }
-  }
-}
-```
-
-
 ### 自定义颜色
 
 ```html
-<var-bottom-navigation v-model="active" active-color="#BA68C8">
+<var-bottom-navigation active-color="#ba68c8" v-model="active">
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" />
   <var-bottom-navigation-item label="标签" icon="heart" />
@@ -133,8 +101,12 @@ import { ref } from 'vue'
 export default {
   setup() {
     const active = ref(0)
+    const homeIcon = {
+      active: 'https://varlet.gitee.io/varlet-ui/home_active.png',
+      inactive: 'https://varlet.gitee.io/varlet-ui/home_inactive.png',
+    }
 
-    return { active }
+    return { active, homeIcon }
   }
 }
 ```
@@ -207,7 +179,8 @@ Item 数量为偶数时，悬浮按钮在中间位置，为奇数时在最右侧
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" />
   <var-bottom-navigation-item label="标签" icon="heart" />
-  <var-bottom-navigation-item v-if="isEven" label="标签" icon="account-circle" />
+  <var-bottom-navigation-item label="标签" icon="bell" />
+  <var-bottom-navigation-item v-if="!isEven" label="标签" icon="account-circle" />
 </var-bottom-navigation>
 ```
 

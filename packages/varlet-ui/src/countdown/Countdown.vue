@@ -1,5 +1,5 @@
 <template>
-  <div class="var-countdown">
+  <div :class="n()">
     <slot v-bind="timeData">
       {{ showTime }}
     </slot>
@@ -13,6 +13,9 @@ import { requestAnimationFrame, cancelAnimationFrame } from '../utils/elements'
 import { toNumber, parseFormat } from '../utils/shared'
 import type { Ref } from 'vue'
 import type { TimeData } from './props'
+import { call, createNamespace } from '../utils/components'
+
+const { n } = createNamespace('countdown')
 
 const SECOND = 1000
 const MINUTE = 60 * SECOND
@@ -52,7 +55,7 @@ export default defineComponent({
       }
       timeData.value = time
 
-      props.onChange?.(timeData.value)
+      call(props.onChange, timeData.value)
       showTime.value = parseFormat(props.format, time)
     }
 
@@ -69,7 +72,7 @@ export default defineComponent({
       formatTime(durationTime)
 
       if (durationTime === 0) {
-        onEnd?.()
+        call(onEnd)
         return
       }
 
@@ -107,6 +110,7 @@ export default defineComponent({
     return {
       showTime,
       timeData,
+      n,
       start,
       pause,
       reset,

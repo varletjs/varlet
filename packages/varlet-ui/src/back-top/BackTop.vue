@@ -1,9 +1,8 @@
 <template>
   <teleport to="body" :disabled="disabled">
     <div
-      class="var-back-top"
+      :class="classes(n(), [show, n('--active')])"
       ref="backTopEl"
-      :class="[show ? 'var-back-top--active' : null]"
       :style="{
         right: toSizeUnit(right),
         bottom: toSizeUnit(bottom),
@@ -25,7 +24,10 @@ import VarIcon from '../icon'
 import { props } from './props'
 import { isString, easeInOutCubic, throttle, isObject } from '../utils/shared'
 import { getScrollTop, getScrollLeft, scrollTo, getParentScroller, toPxNum, toSizeUnit } from '../utils/elements'
+import { call, createNamespace } from '../utils/components'
 import type { Ref, TeleportProps } from 'vue'
+
+const { n, classes } = createNamespace('back-top')
 
 export default defineComponent({
   name: 'VarBackTop',
@@ -42,7 +44,7 @@ export default defineComponent({
     let target: HTMLElement | Window
 
     const click = (event: MouseEvent) => {
-      props.onClick?.(event)
+      call(props.onClick, event)
       const left = getScrollLeft(target)
 
       scrollTo(target, {
@@ -91,6 +93,8 @@ export default defineComponent({
       show,
       backTopEl,
       toSizeUnit,
+      n,
+      classes,
       click,
     }
   },

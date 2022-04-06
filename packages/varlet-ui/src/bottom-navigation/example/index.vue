@@ -23,20 +23,8 @@
     <var-bottom-navigation-item :label="pack.label" icon="account-circle" />
   </var-bottom-navigation>
 
-  <app-type>{{ pack.customIcon }}</app-type>
-  <var-bottom-navigation v-model="customIcon">
-    <var-bottom-navigation-item :label="pack.label">
-      <template #icon="{ active }">
-        <img style="width: 20px" :src="active ? homeIcon.active : homeIcon.inactive" />
-      </template>
-    </var-bottom-navigation-item>
-    <var-bottom-navigation-item :label="pack.label" icon="magnify" />
-    <var-bottom-navigation-item :label="pack.label" icon="heart" />
-    <var-bottom-navigation-item :label="pack.label" icon="account-circle" />
-  </var-bottom-navigation>
-
   <app-type>{{ pack.customColor }}</app-type>
-  <var-bottom-navigation v-model="customColor" active-color="#BA68C8">
+  <var-bottom-navigation active-color="#ba68c8" v-model="customColor">
     <var-bottom-navigation-item :label="pack.label" icon="home" />
     <var-bottom-navigation-item :label="pack.label" icon="magnify" />
     <var-bottom-navigation-item :label="pack.label" icon="heart" />
@@ -67,7 +55,8 @@
     <var-bottom-navigation-item :label="pack.label" icon="home" />
     <var-bottom-navigation-item :label="pack.label" icon="magnify" />
     <var-bottom-navigation-item :label="pack.label" icon="heart" />
-    <var-bottom-navigation-item v-if="isEven" :label="pack.label" icon="account-circle" />
+    <var-bottom-navigation-item :label="pack.label" icon="bell" />
+    <var-bottom-navigation-item v-if="!isEven" :label="pack.label" icon="account-circle" />
   </var-bottom-navigation>
 </template>
 
@@ -100,20 +89,17 @@ export default {
       type: 'primary',
       value: '66',
     }
-    const customIcon = ref(0)
-    const homeIcon = {
-      active: 'https://varlet.gitee.io/varlet-ui/home_active.jpg',
-      inactive: 'https://varlet.gitee.io/varlet-ui/home_inactive.jpg',
-    }
 
     const customColor = ref(0)
 
     const changeEvent = ref(0)
+
     function handleChange(active) {
       Snackbar.info(`changed to ${active}`)
     }
 
     const clickEvent = ref(0)
+
     function handleClick(active) {
       Snackbar.success(`clicked ${active}`)
     }
@@ -131,8 +117,6 @@ export default {
       matchByName,
       showBadge,
       badgeProps,
-      customIcon,
-      homeIcon,
       customColor,
       changeEvent,
       handleChange,
