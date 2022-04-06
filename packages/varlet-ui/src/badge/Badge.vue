@@ -31,13 +31,13 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props, { slots }) {
-    const contentClass: ComputedRef<Array<string | false | undefined>> = computed(() => {
+    const contentClass: ComputedRef<Array<string | null | undefined>> = computed(() => {
       const { type, position, dot, icon } = props
 
       const positionBasic = slots.default && `${n('position')} ${n(`--${position}`)}`
       const dotClass = dot && n('dot')
       const positionClass = getPositionClass()
-      const iconClass = icon && n('icon')
+      const iconClass = icon ? n('icon') : null
 
       return [n(`--${type}`), positionBasic, dotClass, positionClass, iconClass]
     })

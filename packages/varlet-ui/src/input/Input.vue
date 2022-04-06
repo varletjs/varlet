@@ -38,7 +38,7 @@
           :rows="rows"
           :style="{
             color: textColor,
-            caretColor: !errorMessage ? focusColor : null,
+            caretColor: !errorMessage ? focusColor : undefined,
             resize: resize ? 'vertical' : 'none',
           }"
           @focus="handleFocus"
@@ -59,7 +59,7 @@
           :maxlength="maxlength"
           :style="{
             color: textColor,
-            caretColor: !errorMessage ? focusColor : null,
+            caretColor: !errorMessage ? focusColor : undefined,
           }"
           @focus="handleFocus"
           @blur="handleBlur"

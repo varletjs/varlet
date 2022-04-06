@@ -97,7 +97,7 @@ function removeRipple(this: RippleHTMLElement) {
   const _ripple = this._ripple as RippleOptions
 
   const task = () => {
-    const ripples: NodeListOf<RippleHTMLElement> = this.querySelectorAll('.var-ripple')
+    const ripples: NodeListOf<RippleHTMLElement> = this.querySelectorAll(`.${n()}`)
     if (!ripples.length) {
       return
     }

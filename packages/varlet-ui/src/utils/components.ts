@@ -293,7 +293,8 @@ export function exposeApis<T = Record<string, any>>(apis: T) {
   }
 }
 
-type Classes = (string | [any, string, string?])[]
+type ClassName = string | undefined | null
+type Classes = (ClassName | [any, ClassName, ClassName?])[]
 
 export function createNamespace(name: string) {
   const namespace = `var-${name}`

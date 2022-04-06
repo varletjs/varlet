@@ -20,11 +20,11 @@ exports[`test cube props 1`] = `
   <div class=\\"var--box var-loading__body\\">
     <!--v-if-->
     <!--v-if-->
-    <div class=\\"var-loading__cube var-loading__cube-small\\">
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item-small\\"></div>
+    <div class=\\"var-loading__cube var-loading__cube--small\\">
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item--small\\"></div>
     </div>
     <!--v-if-->
     <!--v-if-->
@@ -41,10 +41,10 @@ exports[`test disappear props 1`] = `
     <!--v-if-->
     <!--v-if-->
     <!--v-if-->
-    <div class=\\"var-loading__disappear var-loading__disappear-small\\">
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__disappear-item var-loading__disappear-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__disappear-item var-loading__disappear-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__disappear-item var-loading__disappear-item-small\\"></div>
+    <div class=\\"var-loading__disappear var-loading__disappear--small\\">
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__disappear-item var-loading__disappear-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__disappear-item var-loading__disappear-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__disappear-item var-loading__disappear-item--small\\"></div>
     </div>
     <!--v-if-->
   </div>
@@ -72,11 +72,11 @@ exports[`test loading example 1`] = `
         <div class=\\"var--box var-loading__body\\">
           <!--v-if-->
           <!--v-if-->
-          <div class=\\"var-loading__cube var-loading__cube-normal\\">
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
+          <div class=\\"var-loading__cube var-loading__cube--normal\\">
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
           </div>
           <!--v-if-->
           <!--v-if-->
@@ -87,12 +87,12 @@ exports[`test loading example 1`] = `
         <!--v-if-->
         <div class=\\"var--box var-loading__body\\">
           <!--v-if-->
-          <div class=\\"var-loading__wave var-loading__wave-normal\\">
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
+          <div class=\\"var-loading__wave var-loading__wave--normal\\">
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
           </div>
           <!--v-if-->
           <!--v-if-->
@@ -106,15 +106,15 @@ exports[`test loading example 1`] = `
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
-          <div class=\\"var-loading__rect var-loading__rect-normal\\">
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+          <div class=\\"var-loading__rect var-loading__rect--normal\\">
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
           </div>
           <!--v-if-->
           <!--v-if-->
@@ -127,10 +127,10 @@ exports[`test loading example 1`] = `
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
-          <div class=\\"var-loading__disappear var-loading__disappear-normal\\">
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
+          <div class=\\"var-loading__disappear var-loading__disappear--normal\\">
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item--normal\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item--normal\\"></div>
           </div>
           <!--v-if-->
         </div>
@@ -156,11 +156,11 @@ exports[`test loading example 1`] = `
         <div class=\\"var--box var-loading__body\\">
           <!--v-if-->
           <!--v-if-->
-          <div class=\\"var-loading__cube var-loading__cube-normal\\">
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item-normal\\"></div>
+          <div class=\\"var-loading__cube var-loading__cube--normal\\">
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
           </div>
           <!--v-if-->
           <!--v-if-->
@@ -171,12 +171,12 @@ exports[`test loading example 1`] = `
         <!--v-if-->
         <div class=\\"var--box var-loading__body\\">
           <!--v-if-->
-          <div class=\\"var-loading__wave var-loading__wave-normal\\">
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item-normal\\"></div>
+          <div class=\\"var-loading__wave var-loading__wave--normal\\">
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
           </div>
           <!--v-if-->
           <!--v-if-->
@@ -190,15 +190,15 @@ exports[`test loading example 1`] = `
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
-          <div class=\\"var-loading__rect var-loading__rect-normal\\">
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-normal\\"></div>
+          <div class=\\"var-loading__rect var-loading__rect--normal\\">
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
           </div>
           <!--v-if-->
           <!--v-if-->
@@ -211,10 +211,10 @@ exports[`test loading example 1`] = `
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
-          <div class=\\"var-loading__disappear var-loading__disappear-normal\\">
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
-            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__disappear-item var-loading__disappear-item-normal\\"></div>
+          <div class=\\"var-loading__disappear var-loading__disappear--normal\\">
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__disappear-item var-loading__disappear-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__disappear-item var-loading__disappear-item--normal\\"></div>
+            <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__disappear-item var-loading__disappear-item--normal\\"></div>
           </div>
           <!--v-if-->
         </div>
@@ -240,11 +240,11 @@ exports[`test loading example 1`] = `
         <div class=\\"var--box var-loading__body\\">
           <!--v-if-->
           <!--v-if-->
-          <div class=\\"var-loading__cube var-loading__cube-small\\">
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item-small\\"></div>
+          <div class=\\"var-loading__cube var-loading__cube--small\\">
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--small\\"></div>
           </div>
           <!--v-if-->
           <!--v-if-->
@@ -255,12 +255,12 @@ exports[`test loading example 1`] = `
         <!--v-if-->
         <div class=\\"var--box var-loading__body\\">
           <!--v-if-->
-          <div class=\\"var-loading__wave var-loading__wave-small\\">
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item-small\\"></div>
+          <div class=\\"var-loading__wave var-loading__wave--small\\">
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--small\\"></div>
           </div>
           <!--v-if-->
           <!--v-if-->
@@ -274,15 +274,15 @@ exports[`test loading example 1`] = `
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
-          <div class=\\"var-loading__rect var-loading__rect-small\\">
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
+          <div class=\\"var-loading__rect var-loading__rect--small\\">
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
           </div>
           <!--v-if-->
           <!--v-if-->
@@ -295,10 +295,10 @@ exports[`test loading example 1`] = `
           <!--v-if-->
           <!--v-if-->
           <!--v-if-->
-          <div class=\\"var-loading__disappear var-loading__disappear-small\\">
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-small\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item-small\\"></div>
+          <div class=\\"var-loading__disappear var-loading__disappear--small\\">
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item--small\\"></div>
+            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item--small\\"></div>
           </div>
           <!--v-if-->
         </div>
@@ -333,15 +333,15 @@ exports[`test rect props 1`] = `
     <!--v-if-->
     <!--v-if-->
     <!--v-if-->
-    <div class=\\"var-loading__rect var-loading__rect-small\\">
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item-small\\"></div>
+    <div class=\\"var-loading__rect var-loading__rect--small\\">
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__rect-item var-loading__rect-item--small\\"></div>
     </div>
     <!--v-if-->
     <!--v-if-->
@@ -379,12 +379,12 @@ exports[`test wave props 1`] = `
   <!--v-if-->
   <div class=\\"var--box var-loading__body\\">
     <!--v-if-->
-    <div class=\\"var-loading__wave var-loading__wave-small\\">
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item-small\\"></div>
-      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item-small\\"></div>
+    <div class=\\"var-loading__wave var-loading__wave--small\\">
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item--small\\"></div>
+      <div style=\\"background-color: rgb(41, 121, 255);\\" class=\\"var-loading__wave-item var-loading__wave-item--small\\"></div>
     </div>
     <!--v-if-->
     <!--v-if-->

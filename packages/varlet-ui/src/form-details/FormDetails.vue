@@ -1,19 +1,23 @@
 <template>
-  <transition name="var-form-details">
-    <div class="var-form-details" v-if="errorMessage || maxlengthText">
-      <div class="var-form-details__message">{{ errorMessage }}</div>
-      <div class="var-form-details__length">{{ maxlengthText }}</div>
+  <transition :name="n()">
+    <div :class="n()" v-if="errorMessage || maxlengthText">
+      <div :class="n('message')">{{ errorMessage }}</div>
+      <div :class="n('length')">{{ maxlengthText }}</div>
     </div>
   </transition>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { createNamespace } from '../utils/components'
 import { props } from './props'
+
+const { n } = createNamespace('form-details')
 
 export default defineComponent({
   name: 'VarFormDetails',
   props,
+  setup: () => ({ n }),
 })
 </script>
 

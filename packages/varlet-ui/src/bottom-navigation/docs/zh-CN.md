@@ -101,12 +101,8 @@ import { ref } from 'vue'
 export default {
   setup() {
     const active = ref(0)
-    const homeIcon = {
-      active: 'https://varlet.gitee.io/varlet-ui/home_active.png',
-      inactive: 'https://varlet.gitee.io/varlet-ui/home_inactive.png',
-    }
 
-    return { active, homeIcon }
+    return { active }
   }
 }
 ```
@@ -217,9 +213,9 @@ export default {
 |参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ---- |
 | `name` | 标签名称，作为匹配的标识符 | _string_ | `-` |
-| `icon` | 图标名称，等同于 Icon 组件的 [name 属性](/#/zh-CN/icon) | _string_ | `-` |
+| `icon` | 图标名称，等同于 Icon 组件的 [name](/#/zh-CN/icon) | _string_ | `-` |
 | `label` | 标签文字内容 | _string_ | - |
-| `namespace` | 图标的命名空间, 可扩展自定义图标库，等同于 Icon 组件的 [namespace 属性](/#/zh-CN/icon) | _string_ | `var-icon` |
+| `namespace` | 图标的命名空间, 可扩展自定义图标库，等同于 Icon 组件的 [namespace](/#/zh-CN/icon) | _string_ | `var-icon` |
 | `badge` | 图标右上角徽标 | _boolean \| BadgeProps_ | `false` |
 
 

@@ -1,5 +1,5 @@
 <template>
-  <ul :class="classes(n())">
+  <ul :class="n()">
     <li
       v-ripple="{ disabled: current <= 1 || disabled }"
       :class="

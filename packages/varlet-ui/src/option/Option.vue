@@ -1,7 +1,6 @@
 <template>
   <div
-    class="var-option var--box"
-    :class="[optionSelected ? 'var-option--selected-color' : null]"
+    :class="classes(n(), 'var--box', [optionSelected, n('--selected-color')])"
     :style="{
       width: wrapWidth,
       color: optionSelected ? focusColor : undefined,
@@ -10,8 +9,7 @@
     @click="handleClick"
   >
     <div
-      class="var-option__cover"
-      :class="[optionSelected ? 'var-option--selected-background' : null]"
+      :class="classes(n('cover'), [optionSelected, n('--selected-background')])"
       :style="{
         background: optionSelected ? focusColor : undefined,
       }"
@@ -25,7 +23,7 @@
       @change="handleSelect"
     />
 
-    <div class="var-option__text var--ellipsis">
+    <div :class="classes(n('text'), 'var--ellipsis')">
       <slot>
         {{ label }}
       </slot>
@@ -38,9 +36,12 @@ import VarCheckbox from '../checkbox'
 import Ripple from '../ripple'
 import { defineComponent, computed, ref, watch } from 'vue'
 import { useSelect } from './provide'
+import { createNamespace } from '../utils/components'
 import { props } from './props'
 import type { Ref, ComputedRef } from 'vue'
 import type { OptionProvider } from './provide'
+
+const { n, classes } = createNamespace('option')
 
 export default defineComponent({
   name: 'VarOption',
@@ -88,6 +89,8 @@ export default defineComponent({
     bindSelect(optionProvider)
 
     return {
+      n,
+      classes,
       optionSelected,
       wrapWidth,
       multiple,
