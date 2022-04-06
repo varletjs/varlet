@@ -59,7 +59,7 @@ export default defineComponent({
   components: { VarSticky },
   inheritAttrs: false,
   props,
-  setup(props) {
+  setup (props) {
     const indicatorWidth: Ref<string> = ref('0px')
     const indicatorHeight: Ref<string> = ref('0px')
     const indicatorX: Ref<string> = ref('0px')
@@ -86,8 +86,8 @@ export default defineComponent({
       return tabList.find(({ name }: TabProvider) => props.active === name.value)
     }
 
-    const matchIndex = (): TabProvider | undefined => {
-      return tabList.find(({ index }: TabProvider) => props.active === index.value)
+    const matchIndex = (activeIndex?: number): TabProvider | undefined => {
+      return tabList.find(({ index }: TabProvider) => (activeIndex ?? props.active) === index.value)
     }
 
     const matchBoundary = (): TabProvider | undefined => {
@@ -97,13 +97,11 @@ export default defineComponent({
 
       const { active } = props
 
-      isNumber(active)
-        ? active > length.value - 1
-          ? call(props['onUpdate:active'], length.value - 1)
-          : call(props['onUpdate:active'], 0)
-        : null
-
-      return matchIndex()
+      if (isNumber(active)) {
+        const activeIndex = active > length.value - 1 ? length.value - 1 : 0
+        call(props['onUpdate:active'], activeIndex)
+        return matchIndex(activeIndex)
+      }
     }
 
     const watchScrollable = () => {
