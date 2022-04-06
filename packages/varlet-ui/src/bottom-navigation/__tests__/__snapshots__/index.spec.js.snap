@@ -7,11 +7,12 @@ exports[`fab button 1`] = `
     <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
   </button><button class=\\"var-bottom-navigation-item var-bottom-navigation-item--right-space\\"><i class=\\"var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
     <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
-  </button>
-  <div class=\\"var-bottom-navigation__fab var-elevation--6 var-bottom-navigation--fab-right\\">
-    <div class=\\"tab_example\\"></div>
-  </div>
-</div>"
+  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-bottom-navigation__fab var-bottom-navigation--fab-right\\" var-bottom-navigation__fab=\\"\\">
+    <!--v-if-->
+    <div class=\\"var-button__content\\">
+      <div class=\\"tab_example\\"></div>
+    </div>
+  </button></div>"
 `;
 
 exports[`test BottomNavigation relation BottomNavigationItems 1`] = `
@@ -129,9 +130,9 @@ exports[`test bottom-navigation example 1`] = `
   </button><button class=\\"var-bottom-navigation-item\\"><i class=\\"var-icon var-icon--set var-icon-bell var-bottom-navigation-item__icon\\" style=\\"transition: transform 0ms;\\" var-bottom-navigation-item-cover=\\"\\"></i>
     <!--v-if--><span class=\\"var-bottom-navigation-item__label\\">标签</span>
   </button>
-  <!--v-if-->
-  <div class=\\"var-bottom-navigation__fab var-elevation--6 var-bottom-navigation--fab-center\\">
-    <div class=\\"fab_example\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"color: rgb(255, 255, 255); transition: transform 0ms; font-size: 24px;\\"></i></div>
-  </div>
+  <!--v-if--><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-bottom-navigation__fab var-bottom-navigation--fab-center\\" var-bottom-navigation__fab=\\"\\">
+    <!--v-if-->
+    <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"color: rgb(255, 255, 255); transition: transform 0ms; font-size: 24px;\\"></i></div>
+  </button>
 </div>"
 `;

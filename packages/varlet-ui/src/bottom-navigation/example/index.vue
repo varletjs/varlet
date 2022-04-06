@@ -48,11 +48,9 @@
   </var-bottom-navigation>
 
   <app-type>{{ pack.fab }}</app-type>
-  <var-bottom-navigation v-model="fab" style="margin-top: 10px">
+  <var-bottom-navigation v-model="fab" @fabClick="isEven = !isEven" style="margin-top: 10px">
     <template #fab>
-      <div class="fab_example" @click="isEven = !isEven">
-        <var-icon name="plus" color="#fff" size="24" />
-      </div>
+      <var-icon name="plus" color="#fff" size="24" />
     </template>
     <var-bottom-navigation-item :label="pack.label" icon="home" />
     <var-bottom-navigation-item :label="pack.label" icon="magnify" />
@@ -129,13 +127,3 @@ export default {
   },
 }
 </script>
-<style lang="less" scoped>
-.fab_example {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-primary);
-}
-</style>

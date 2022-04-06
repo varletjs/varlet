@@ -168,11 +168,9 @@ export default {
 ### Fab
 
 ```html
-<var-bottom-navigation v-model="fab">
+<var-bottom-navigation v-model="fab @fabClick="isEven = !isEven"">
   <template #fab>
-    <div class="fab_example" @click="isEven = !isEven">
-      <var-icon name="plus" color="#fff" size="24" />
-    </div>
+    <var-icon name="plus" color="#fff" size="24" />
   </template>
   <var-bottom-navigation-item label="label" icon="home" />
   <var-bottom-navigation-item label="label" icon="magnify" />
@@ -194,16 +192,6 @@ export default {
   }
 }
 ```
-```css
-.fab_example {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-primary);
-}
-```
 
 ## API
 
@@ -219,6 +207,7 @@ export default {
 | `z-index` | Z-index | _number \| string_ | `1` |
 | `active-color` | Color of active tab item | _string_ | `-` |
 | `inactive-color` | Color of inactive tab item | _string_ | `-` |
+| `fab-props` | Fab button props | _ButtonProps_ | `{type: "primary"}` |
 
 #### BottomNavigationItem Props
 
@@ -238,6 +227,7 @@ export default {
 | ---- | ---- | ---- |
 | `before-change` | The callback function before switching labels, which returns false to prevent switching, supports the return of promise | `active: number \| string` |
 | `change` | Triggered when switching labels | `active: number \| string` |
+| `fab-click` | Triggered when fab button click | `-` |
 
 #### BottomNavigationItem Events
 

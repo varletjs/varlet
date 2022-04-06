@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import type { ButtonProps } from '../../types/button'
 
 export const props = {
   modelValue: {
@@ -31,5 +32,12 @@ export const props = {
   },
   onBeforeChange: {
     type: Function as PropType<(active: number | string) => boolean | Promise<any>>,
+  },
+  onFabClick: {
+    type: Function as PropType<() => void>,
+  },
+  fabProps: {
+    type: [Object] as PropType<Partial<ButtonProps>>,
+    default: {},
   },
 }

@@ -1,7 +1,7 @@
 @bottom-navigation-height: 50px;
 @bottom-navigation-z-index: 1;
 @bottom-navigation-background-color: #fff;
-@bottom-navigation-border-color: #bcc2cb;
+@bottom-navigation-border-color: #e3e3e3;
 
 :root {
   --bottom-navigation-height: @bottom-navigation-height;
@@ -16,7 +16,8 @@
   display: flex;
   position: relative;
   background-color: var(--bottom-navigation-background-color);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
   &--fixed {
     position: fixed;
@@ -28,16 +29,13 @@
     border-top: 1px solid var(--bottom-navigation-border-color);
   }
 
-  &__fab {
+  &__fab[var-bottom-navigation__fab] {
     width: var(--bottom-navigation-height);
     height: var(--bottom-navigation-height);
     position: absolute;
     z-index: 2;
     transform: translateY(-50%);
-    background-color: #fff;
     overflow: hidden;
-    cursor: pointer;
-    border-radius: 50%;
     transition: right 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 

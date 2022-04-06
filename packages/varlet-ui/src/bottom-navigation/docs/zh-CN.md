@@ -170,11 +170,9 @@ export default {
 Item 数量为偶数时，悬浮按钮在中间位置，为奇数时在最右侧。
 
 ```html
-<var-bottom-navigation v-model="fab">
+<var-bottom-navigation v-model="fab" @fabClick="isEven = !isEven">
   <template #fab>
-    <div class="fab_example" @click="isEven = !isEven">
-      <var-icon name="plus" color="#fff" size="24" />
-    </div>
+    <var-icon name="plus" color="#fff" size="24" />
   </template>
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" />
@@ -196,16 +194,6 @@ export default {
   }
 }
 ```
-```css
-.fab_example {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-primary);
-}
-```
 
 ## API
 
@@ -221,6 +209,7 @@ export default {
 | `z-index` | 元素 z-index | _number \| string_ | `1` |
 | `active-color` | 选中标签的颜色 | _string_ | `-` |
 | `inactive-color` | 未选中标签的颜色 | _string_ | `-` |
+| `fab-props` | 悬浮按钮属性 | _ButtonProps_ | `{type: "primary"}` |
 
 
 #### BottomNavigationItem Props
@@ -242,6 +231,7 @@ export default {
 | ---- | ---- | ---- |
 | `before-change` | 切换标签前的回调函数，返回 false 可阻止切换，支持返回 Promise | `active: number \| string` |
 | `change` | 切换标签时触发 | `active: number \| string` |
+| `fab-click` | 悬浮按钮点击时触发 | `-` |
 
 #### BottomNavigationItem Events
 
