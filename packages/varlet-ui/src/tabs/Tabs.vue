@@ -59,7 +59,7 @@ export default defineComponent({
   components: { VarSticky },
   inheritAttrs: false,
   props,
-  setup (props) {
+  setup(props) {
     const indicatorWidth: Ref<string> = ref('0px')
     const indicatorHeight: Ref<string> = ref('0px')
     const indicatorX: Ref<string> = ref('0px')
