@@ -20,15 +20,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, onMounted, onUpdated, watch } from 'vue'
-import type { Ref, ComputedRef } from 'vue'
-import { props } from './props'
 import VarButton from '../button'
+import { defineComponent, ref, computed, onMounted, onUpdated, watch } from 'vue'
+import { props } from './props'
 import { useBottomNavigationItems } from './provide'
-import type { BottomNavigationProvider } from './provide'
-import type { BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 import { createNamespace, call } from '../utils/components'
 import { isNumber } from '../utils/shared'
+import type { BottomNavigationProvider } from './provide'
+import type { BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
+import type { Ref, ComputedRef } from 'vue'
 
 const { n, classes } = createNamespace('bottom-navigation')
 const { n: nItem } = createNamespace('bottom-navigation-item')
@@ -85,19 +85,11 @@ export default defineComponent({
     }
 
     const onToggle = (changedValue: number | string) => {
-      if (props.onBeforeChange) {
-        handleBeforeChange(changedValue)
-      } else {
-        handleChange(changedValue)
-      }
+      props.onBeforeChange ? handleBeforeChange(changedValue) : handleChange(changedValue)
     }
 
     const handleBeforeChange = (changedValue: number | string) => {
-      Promise.resolve(call(props.onBeforeChange, changedValue)).then((res) => {
-        if (res) {
-          handleChange(changedValue)
-        }
-      })
+      Promise.resolve(call(props.onBeforeChange, changedValue)).then((res) => res && handleChange(changedValue))
     }
 
     const handleChange = (changedValue: number | string) => {

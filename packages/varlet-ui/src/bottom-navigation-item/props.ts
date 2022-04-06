@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import type { BadgeProps } from '../../types/badge'
+import type { BadgeProps } from '../../types'
 
 export const props = {
   name: {

@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import type { ButtonProps } from '../../types/button'
+import type { ButtonProps } from '../../types'
 
 export const props = {
   modelValue: {
