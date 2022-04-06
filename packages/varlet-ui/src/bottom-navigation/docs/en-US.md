@@ -14,7 +14,7 @@ app.use(BottomNavigationItem)
 ### Basic Usage
 
 ```html
-<var-bottom-navigation v-model:active ="active">
+<var-bottom-navigation v-model:active="active">
   <var-bottom-navigation-item label="label" icon="home" />
   <var-bottom-navigation-item label="label" icon="magnify" />
   <var-bottom-navigation-item label="label" icon="heart" />
@@ -37,7 +37,7 @@ export default {
 ### Match by name
 
 ```html
-<var-bottom-navigation v-model:active ="active">
+<var-bottom-navigation v-model:active="active">
   <var-bottom-navigation-item name="home" label="label" icon="home" />
   <var-bottom-navigation-item name="search" label="label" icon="magnify" />
   <var-bottom-navigation-item name="heart" label="label" icon="heart" />
@@ -60,7 +60,7 @@ export default {
 ### Show Badge
 
 ```html
-<var-bottom-navigation v-model:active ="active">
+<var-bottom-navigation v-model:active="active">
   <var-bottom-navigation-item label="label" icon="home" />
   <var-bottom-navigation-item label="label" icon="magnify" badge />
   <var-bottom-navigation-item label="label" icon="heart" :badge="badgeProps" />
@@ -87,7 +87,7 @@ export default {
 ### Custom Color
 
 ```html
-<var-bottom-navigation active-color="#ba68c8" v-model:active ="active">
+<var-bottom-navigation active-color="#ba68c8" v-model:active="active">
   <var-bottom-navigation-item label="label" icon="home" />
   <var-bottom-navigation-item label="label" icon="magnify" />
   <var-bottom-navigation-item label="label" icon="heart" />
@@ -110,7 +110,7 @@ export default {
 ### Change Event
 
 ```html
-<var-bottom-navigation v-model:active ="active" @change="handleChange">
+<var-bottom-navigation v-model:active="active" @change="handleChange">
   <var-bottom-navigation-item label="label" icon="home" />
   <var-bottom-navigation-item label="label" icon="magnify" />
   <var-bottom-navigation-item label="label" icon="heart" />
@@ -137,7 +137,7 @@ export default {
 ### Click Event
 
 ```html
-<var-bottom-navigation v-model:active ="active">
+<var-bottom-navigation v-model:active="active">
   <var-bottom-navigation-item @click="handleClick" label="label" icon="home" />
   <var-bottom-navigation-item @click="handleClick" label="label" icon="magnify" />
   <var-bottom-navigation-item @click="handleClick" label="label" icon="heart" />
@@ -164,7 +164,7 @@ export default {
 ### Fab
 
 ```html
-<var-bottom-navigation v-model:active ="fab @fabClick="isEven = !isEven"">
+<var-bottom-navigation v-model:active="fab @fabClick="isEven = !isEven"">
   <template #fab>
     <var-icon name="heart" />
   </template>
@@ -197,7 +197,7 @@ export default {
 
 |Prop | Description | Type | Default |
 | ---- | ---- | ---- | ---- |
-| `v-model:active ` | Identifier of current tab | _number \| string_ | `0` |
+| `v-model:active` | Identifier of current tab | _number \| string_ | `0` |
 | `fixed` |	Whether to fixed bottom | _boolean_ | `false` |
 | `border` | Whether to show border | _boolean_ | `false` |
 | `z-index` | Z-index | _number \| string_ | `1` |
