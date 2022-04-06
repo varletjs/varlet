@@ -68,6 +68,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | Variable                | Default |
 |-------------------------| --- |
 | `--cell-color`          | `var(--color-text)` |
+| `--cell-font-size`      | `var(--font-size-md)` |
 | `--cell-desc-font-size` | `var(--font-size-sm)` |
 | `--cell-desc-color`     | `rgba(0, 0, 0, 0.6)` |
 | `--cell-padding`        | `10px 12px` |
