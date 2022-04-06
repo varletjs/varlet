@@ -166,7 +166,7 @@ export default {
 ```html
 <var-bottom-navigation v-model="fab @fabClick="isEven = !isEven"">
   <template #fab>
-    <var-icon name="plus" color="#fff" size="24" />
+    <var-icon name="heart" />
   </template>
   <var-bottom-navigation-item label="label" icon="home" />
   <var-bottom-navigation-item label="label" icon="magnify" />

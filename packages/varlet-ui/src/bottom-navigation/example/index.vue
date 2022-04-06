@@ -50,7 +50,7 @@
   <app-type>{{ pack.fab }}</app-type>
   <var-bottom-navigation v-model="fab" @fabClick="isEven = !isEven" style="margin-top: 10px">
     <template #fab>
-      <var-icon name="plus" color="#fff" size="24" />
+      <var-icon name="heart" />
     </template>
     <var-bottom-navigation-item :label="pack.label" icon="home" />
     <var-bottom-navigation-item :label="pack.label" icon="magnify" />
