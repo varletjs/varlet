@@ -125,7 +125,7 @@ export default {
 <var-rate v-model="score" :ripple="false"/>
 ```
 
-### 监听change事件
+### 监听 change 事件
 
 通过调用 `change` 事件完成其他交互逻辑。
 
