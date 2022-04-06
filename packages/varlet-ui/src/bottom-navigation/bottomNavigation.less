@@ -2,12 +2,14 @@
 @bottom-navigation-z-index: 1;
 @bottom-navigation-background-color: #fff;
 @bottom-navigation-border-color: #e3e3e3;
+@bottom-navigation-fab-offset: 4px;
 
 :root {
   --bottom-navigation-height: @bottom-navigation-height;
   --bottom-navigation-z-index: @bottom-navigation-z-index;
   --bottom-navigation-background-color: @bottom-navigation-background-color;
   --bottom-navigation-border-color: @bottom-navigation-border-color;
+  --bottom-navigation-fab-offset: @bottom-navigation-fab-offset;
 }
 
 .var-bottom-navigation {
@@ -44,6 +46,6 @@
   }
 
   &--fab-right {
-    right: 0;
+    right: var(--bottom-navigation-fab-offset);
   }
 }

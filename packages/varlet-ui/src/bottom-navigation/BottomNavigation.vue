@@ -46,7 +46,7 @@ export default defineComponent({
   props,
   setup(props, { slots }) {
     const bottomNavigationDom: Ref<HTMLElement | null> = ref(null)
-    const active: ComputedRef<number | string | undefined> = computed(() => props.modelValue)
+    const active: ComputedRef<number | string | undefined> = computed(() => props.active)
     const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
     const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
     const fabProps = ref({})
@@ -78,9 +78,9 @@ export default defineComponent({
       }
 
       if (active.value < 0) {
-        call(props['onUpdate:modelValue'], 0)
+        call(props['onUpdate:active'], 0)
       } else if (active.value > length.value - 1) {
-        call(props['onUpdate:modelValue'], length.value - 1)
+        call(props['onUpdate:active'], length.value - 1)
       }
     }
 
@@ -93,7 +93,7 @@ export default defineComponent({
     }
 
     const handleChange = (changedValue: number | string) => {
-      call(props['onUpdate:modelValue'], changedValue)
+      call(props['onUpdate:active'], changedValue)
       call(props.onChange, changedValue)
     }
 
