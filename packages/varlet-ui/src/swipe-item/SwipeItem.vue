@@ -1,6 +1,6 @@
 <template>
   <div
-    class="var-swipe-item"
+    :class="n()"
     :style="{
       width: !vertical ? `${size}px` : undefined,
       height: vertical ? `${size}px` : undefined,
@@ -14,8 +14,11 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useSwipe } from './provide'
+import { createNamespace } from '../utils/components'
 import type { Ref } from 'vue'
 import type { SwipeItemProvider } from './provide'
+
+const { n } = createNamespace('swipe-item')
 
 export default defineComponent({
   name: 'VarSwipeItem',
@@ -36,6 +39,7 @@ export default defineComponent({
     bindSwipe(swipeItemProvider)
 
     return {
+      n,
       size,
       vertical,
       translate,

@@ -1,9 +1,8 @@
 <template>
   <div
-    class="var-tab var--box"
+    :class="classes(n(), 'var--box', computeColorClass(), n(`--${itemDirection}`))"
     ref="tabEl"
     v-ripple="{ disabled }"
-    :class="[computeColorClass(), `var-tab--${itemDirection}`]"
     :style="{
       color: computeColorStyle(),
     }"
@@ -17,9 +16,12 @@
 import Ripple from '../ripple'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
+import { createNamespace } from '../utils/components'
 import { useTabs } from './provide'
 import type { Ref, ComputedRef } from 'vue'
 import type { TabProvider } from './provide'
+
+const { n, classes } = createNamespace('tab')
 
 export default defineComponent({
   name: 'VarTab',
@@ -77,6 +79,8 @@ export default defineComponent({
     watch(() => props.disabled, resize)
 
     return {
+      n,
+      classes,
       tabEl,
       active,
       activeColor,
