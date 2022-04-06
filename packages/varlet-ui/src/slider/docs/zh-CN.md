@@ -142,7 +142,7 @@ export default {
 
 通过 `rules` 属性对值进行校验。
 
-<span style="font-size: 12px">`rules`是一个可以接受 `function`、`boolean` 和 `string` 的数组。 函数传递输入值作为参数，必须返回 `true` / `false` 或包含错误消息的 `string`，如果函数返回 (或数组包含的任何值) `false`或`string`，输入字段将输入错误状态。</span>
+<span style="font-size: 12px"> `rules` 是一个可以接受 `function`、`boolean` 和 `string` 的数组。 函数传递输入值作为参数，必须返回 `true` / `false` 或包含错误消息的 `string`，如果函数返回 (或数组包含的任何值) `false` 或 `string`，输入字段将输入错误状态。</span>
 
 ```html
 <var-slider v-model="value" :rules="[(v) => v > 35 || 'error message']" />
