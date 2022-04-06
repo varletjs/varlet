@@ -8,7 +8,7 @@ export interface BottomNavigationProps {
   activeColor?: string
   inactiveColor?: string
   onChange?: (active: string | number) => void
-  'onUpdate:modelValue'?: (active: string | number) => void
+  'onUpdate:active'?: (active: string | number) => void
   onBeforeChange?: (active: string | number) => boolean | Promise<any>
 }
 

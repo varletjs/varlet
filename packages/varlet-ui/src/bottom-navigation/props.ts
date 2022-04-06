@@ -2,7 +2,7 @@ import type { PropType } from 'vue'
 import type { ButtonProps } from '../../types'
 
 export const props = {
-  modelValue: {
+  active: {
     type: [Number, String] as PropType<number | string>,
     default: 0,
   },
@@ -27,7 +27,7 @@ export const props = {
   onChange: {
     type: Function as PropType<(active: number | string) => void>,
   },
-  'onUpdate:modelValue': {
+  'onUpdate:active': {
     type: Function as PropType<(active: string | number) => void>,
   },
   onBeforeChange: {

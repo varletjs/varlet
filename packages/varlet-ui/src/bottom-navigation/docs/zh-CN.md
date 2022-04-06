@@ -14,7 +14,7 @@ app.use(BottomNavigationItem)
 ### 基础用法
 
 ```html
-<var-bottom-navigation v-model="active">
+<var-bottom-navigation v-model:active ="active">
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" />
   <var-bottom-navigation-item label="标签" icon="heart" />
@@ -37,7 +37,7 @@ export default {
 ### 名称匹配
 
 ```html
-<var-bottom-navigation v-model="active">
+<var-bottom-navigation v-model:active ="active">
   <var-bottom-navigation-item name="home" label="标签" icon="home" />
   <var-bottom-navigation-item name="search" label="标签" icon="magnify" />
   <var-bottom-navigation-item name="heart" label="标签" icon="heart" />
@@ -60,7 +60,7 @@ export default {
 ### 徽标提示
 
 ```html
-<var-bottom-navigation v-model="active">
+<var-bottom-navigation v-model:active ="active">
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" badge />
   <var-bottom-navigation-item label="标签" icon="heart" :badge="badgeProps" />
@@ -87,7 +87,7 @@ export default {
 ### 自定义颜色
 
 ```html
-<var-bottom-navigation active-color="#ba68c8" v-model="active">
+<var-bottom-navigation active-color="#ba68c8" v-model:active ="active">
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" />
   <var-bottom-navigation-item label="标签" icon="heart" />
@@ -110,7 +110,7 @@ export default {
 ### 监听切换事件
 
 ```html
-<var-bottom-navigation v-model="active" @change="handleChange">
+<var-bottom-navigation v-model:active ="active" @change="handleChange">
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" />
   <var-bottom-navigation-item label="标签" icon="heart" />
@@ -137,7 +137,7 @@ export default {
 ### 监听点击事件
 
 ```html
-<var-bottom-navigation v-model="active">
+<var-bottom-navigation v-model:active ="active">
   <var-bottom-navigation-item @click="handleClick" label="标签" icon="home" />
   <var-bottom-navigation-item @click="handleClick" label="标签" icon="magnify" />
   <var-bottom-navigation-item @click="handleClick" label="标签" icon="heart" />
@@ -166,7 +166,7 @@ export default {
 Item 数量为偶数时，悬浮按钮在中间位置，为奇数时在最右侧。
 
 ```html
-<var-bottom-navigation v-model="fab" @fabClick="isEven = !isEven">
+<var-bottom-navigation v-model:active ="fab" @fabClick="isEven = !isEven">
   <template #fab>
     <var-icon name="heart" />
   </template>
@@ -199,7 +199,7 @@ export default {
 
 |参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ---- |
-| `v-model` | 选中标签的名称或者索引值 | _number \| string_ | `0` |
+| `v-model:active ` | 选中标签的名称或者索引值 | _number \| string_ | `0` |
 | `fixed` | 是否固定在底部 | _boolean_ | `false` |
 | `border` | 是否显示外边框 | _boolean_ | `false` |
 | `z-index` | 元素 z-index | _number \| string_ | `1` |
@@ -261,6 +261,7 @@ export default {
 | `--bottom-navigation-z-index` | `1` |
 | `--bottom-navigation-background-color` | `#fff` |
 | `--bottom-navigation-border-color` | `#bcc2cb` |
+| `--bottom-navigation-fab-offset` | `4px` |
 
 #### BottomNavigationItem Variables
 
