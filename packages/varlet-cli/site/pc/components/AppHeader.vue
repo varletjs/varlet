@@ -1,6 +1,6 @@
 <template>
   <div class="varlet-site-header">
-    <div class="varlet-site-header__lead">
+    <div class="varlet-site-header__lead" @click="backRoot">
       <img class="varlet-site-header__logo" :src="logo" alt="logo" v-if="logo" />
       <div class="varlet-site-header__title" v-if="title">{{ title }}</div>
     </div>
@@ -15,21 +15,10 @@
       >
         <var-site-icon name="code-json" :size="24" />
       </a>
-      <a
-        class="varlet-site-header__link"
-        target="_blank"
-        :href="github"
-        v-ripple
-        v-if="github"
-      >
+      <a class="varlet-site-header__link" target="_blank" :href="github" v-ripple v-if="github">
         <var-site-icon name="github" :size="28" />
       </a>
-      <div
-        class="varlet-site-header__theme"
-        v-ripple
-        v-if="darkMode"
-        @click="toggleTheme"
-      >
+      <div class="varlet-site-header__theme" v-ripple v-if="darkMode" @click="toggleTheme">
         <var-site-icon
           size="26px"
           :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'"
@@ -59,9 +48,7 @@
               :key="key"
               :class="{ 'varlet-site-header__language-list--active': language === key }"
               @click="handleLanguageChange(key)"
-            >
-              {{ value }}
-            </var-site-cell>
+            >{{ value }}</var-site-cell>
           </div>
         </transition>
       </div>
@@ -91,12 +78,18 @@ export default defineComponent({
     const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
     const playground: Ref<string> = ref(get(config, 'pc.header.playground'))
     const github: Ref<string> = ref(get(config, 'pc.header.github'))
+    const redirect = get(config, 'pc.redirect')
     const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
     const currentThemes = ref(getBrowserThemes(themesKey))
 
     const isOpenMenu: Ref<boolean> = ref(false)
     const router = useRouter()
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
+
+    const backRoot = () => {
+      console.log("redirect", redirect);
+      // router.replace(`/${language}/${redirect}`)
+    }
 
     const handleLanguageChange = (language: string) => {
       const { menuName } = getPCLocationInfo()
@@ -115,7 +108,7 @@ export default defineComponent({
     const toggleTheme = () => {
       setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
       window.postMessage(getThemesMessage(), '*')
-      ;(document.getElementById('mobile') as HTMLIFrameElement).contentWindow!.postMessage(getThemesMessage(), '*')
+        ; (document.getElementById('mobile') as HTMLIFrameElement).contentWindow!.postMessage(getThemesMessage(), '*')
     }
 
     watchThemes((themes, from) => {
@@ -135,6 +128,7 @@ export default defineComponent({
       isOpenMenu,
       darkMode,
       currentThemes,
+      backRoot,
       handleLanguageChange,
       toggleTheme,
     }
@@ -194,6 +188,7 @@ export default defineComponent({
   &__lead {
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
 
   &__logo {
