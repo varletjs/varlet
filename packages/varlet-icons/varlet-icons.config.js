@@ -2,5 +2,5 @@ module.exports = {
   namespace: 'var-icon',
   fileName: 'varlet-icons',
   fontName: 'varlet-icons',
-  publicPath: '../fonts/',
+  base64: true,
 }
