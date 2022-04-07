@@ -83,7 +83,7 @@ createApp(App).use(Varlet).mount('#app')
 We will use the donations to encourage open source contributors, buy them a cup of coffee and milk tea,
 purchase infrastructure that is helpful to the project, and promote the project to become better.
 
-<img style="width: 32%; border-radius: 4px" src="https://github.com/varletjs/varlet/blob/dev/sponsor/wechat.png?raw=true" />
+<img style="width: 25%" src="https://github.com/varletjs/varlet/blob/dev/sponsor/wechat.png?raw=true" />
 
 ### Contributors
 
