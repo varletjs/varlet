@@ -87,8 +87,8 @@ export default defineComponent({
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
 
     const backRoot = () => {
-      console.log("redirect", redirect);
-      // router.replace(`/${language}/${redirect}`)
+      const { language: lang } = getPCLocationInfo()
+      router.replace(`/${lang}/${redirect}`)
     }
 
     const handleLanguageChange = (language: string) => {

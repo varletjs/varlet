@@ -1,5 +1,5 @@
 <template>
-  <div class="root-page flex varlet-site">
+  <div class="root-page flex">
     <div class="just-padding flex-one">
       <div class="post-introduce flex">
         <div class="introduce-img">
@@ -36,6 +36,9 @@
               }"
             />
           </var-button>
+          <var-button v-if="languages" round @click="toggleLanguages">
+            <var-site-icon name="translate" size="26px" />
+          </var-button>
         </var-space>
       </div>
     </div>
@@ -43,30 +46,33 @@
 </template>
 <script setup lang="ts">
 import { get } from 'lodash-es'
-import { ref, Ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, Ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import config from '@config'
 import VarButton from '../src/button'
 import VarIcon from '../src/icon'
 import VarSpace from '../src/space'
 import { getBrowserThemes, setThemes } from '../.varlet/site/utils'
 import dark from '../src/themes/dark'
-import { watchDarkMode } from '@varlet/cli/site/utils'
+import { watchDarkMode, getPCLocationInfo } from '@varlet/cli/site/utils'
+
+const route = useRoute()
+const router = useRouter()
 
 const github = ref(get(config, 'pc.header.github'))
-const router = useRouter()
 const themesKey = get(config, 'themesKey')
-const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
 const currentThemes = ref(getBrowserThemes(themesKey))
 const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
+
+const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
 
 const goGithub = () => {
   window.location.href = github.value
 }
 
 const getStar = () => {
-  console.log('currentThemes', currentThemes.value)
-  router.push('/en-US/home')
+  const { language: lang } = getPCLocationInfo()
+  router.push(`/${lang}/home`)
 }
 
 const getThemesMessage = () => ({ action: 'themesChange', from: 'pc', data: currentThemes.value })
@@ -83,23 +89,30 @@ const toggleTheme = () => {
   ;(document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemesMessage(), '*')
 }
 
+const togglePageTitle = () => {
+  const { language: lang } = getPCLocationInfo()
+  if (!lang) {
+    return
+  }
+  document.title = get(config, 'pc.title')[lang] as string
+}
+
+const toggleLanguages = () => {
+  const { language: lang } = getPCLocationInfo()
+
+  const { menuName } = getPCLocationInfo()
+  // TODO: 没有想到合适的交互, 所以暂时先写死实现效果, 和大佬们商榷后重写
+  const replaceStr = `/${lang === 'zh-CN' ? 'en-US' : 'zh-CN'}/${menuName}`
+  router.replace(replaceStr)
+}
+
 watchDarkMode(dark)
 setThemes(config, currentThemes.value)
 window.postMessage(getThemesMessage(), '*')
+
+watch(() => route.path, togglePageTitle, { immediate: true })
 </script>
-<style>
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background: var(--site-config-color-body);
-  color: var(--site-config-color-text);
-}
-</style>
-<style scoped>
+<style lang="less" scoped>
 .root-page {
   width: 100vw;
   height: 100vh;
@@ -152,13 +165,18 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 15px;
   border-radius: 20px;
-  box-shadow: 0 2px 43px -4px rgb(0 0 0 / 19%);
+  background-color: var(--card-background);
+  box-shadow: 0 3px 1px -2px var(--shadow-key-umbra-opacity), 0 2px 2px 0 var(--shadow-key-penumbra-opacity),
+    0 1px 5px 0 var(--shadow-key-ambient-opacity);
 }
 
 .post-introduce > .introduce-img {
   width: 43vw;
   height: 100%;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
 }
 
 .post-introduce > .introduce-img > .img {

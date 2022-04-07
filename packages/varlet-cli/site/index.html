@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title><%= pcTitle %></title>
+  <title>
+    <%= pcTitle %>
+  </title>
   <meta http-equiv="Cache-Control" content="no-cache">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <link href="<%= logo %>" rel="icon" type="image/png" />
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover"
-        name="viewport" />
+    name="viewport" />
   <meta property="og:title" content="<%= pcTitle %>" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="<%= logo %>" />
@@ -20,15 +22,20 @@
       font-style: normal;
       font-display: swap;
     }
-    *{
-      margin: 0px;
+
+    body {
+      box-sizing: border-box;
+      margin: 0;
       padding: 0px;
+      font-family: 'Roboto', sans-serif;
+      background: var(--site-config-color-body);
+      color: var(--site-config-color-text);
     }
   </style>
   <script>
     if ('<%= baidu %>') {
       var _hmt = _hmt || [];
-      (function() {
+      (function () {
         var hm = document.createElement('script')
         hm.src = '<%= baidu %>'
         var s = document.getElementsByTagName('script')[0]
@@ -37,9 +44,11 @@
     }
   </script>
 </head>
-<body>
-<div id="app"></div>
 
-<script type="module" src="/pc/main.ts"></script>
+<body>
+  <div id="app"></div>
+
+  <script type="module" src="/pc/main.ts"></script>
 </body>
+
 </html>
