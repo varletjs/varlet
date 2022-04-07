@@ -77,6 +77,12 @@ import '@varlet/ui/es/style.js'
 createApp(App).use(Varlet).mount('#app')
 ```
 
+### 捐赠我们
+
+我们将用捐赠所得去鼓励参与开源的贡献者们，给他们买一杯咖啡奶茶，购置对于项目有帮助基础设施，推动项目变得更好。
+
+<img style="width: 32%" src="https://github.com/varletjs/varlet/blob/dev/sponsor/wechat.png?raw=true" />
+
 ### Contributors
 
 <a href="https://github.com/varletjs/varlet/graphs/contributors">
