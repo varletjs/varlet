@@ -183,10 +183,6 @@ export default defineComponent({
   white-space: pre-wrap;
 }
 
-body {
-  
-}
-
 * {
   transition: background-color .25s, box-shadow .25s;
 }
