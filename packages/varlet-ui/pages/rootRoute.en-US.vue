@@ -14,27 +14,20 @@
       </div>
     </div>
     <div class="post-detail flex-one">
-      <div class="base-title margin-bottom">
-        <img src="https://varlet.gitee.io/varlet-ui/logo.svg" class="logo" />
+      <div class="base-title margin-bottom flex row-center">
+        <animation-box class="logo" />
         Varlet
       </div>
       <div class="base-title margin-bottom">Version1.26.9</div>
       <div class="base-descrition margin-bottom">Vue 3 Mobile Component Library</div>
       <div class="flex row-center">
-        <var-space jujstify="center" align="center">
-          <var-button type="primary" @click="getStar">Get Star</var-button>
+        <var-space :wrap="false" jujstify="center" align="center">
+          <var-button type="primary" @click="getStar">Get Started</var-button>
           <var-button>
-            <var-space align="center" @click="goGithub"> <var-icon name="github" />Github </var-space>
+            <var-space size="mini" align="center" @click="goGithub"> <var-icon name="github" />Github </var-space>
           </var-button>
           <var-button v-if="darkMode" round @click="toggleTheme">
-            <var-site-icon
-              size="26px"
-              :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'"
-              :style="{
-                marginBottom: currentThemes === 'darkThemes' && '2px',
-                marginTop: currentThemes === 'themes' && '2px',
-              }"
-            />
+            <var-site-icon size="26px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
           </var-button>
           <var-button v-if="languages" round @click="toggleLanguages">
             <var-site-icon name="translate" size="26px" />
@@ -53,13 +46,14 @@ import VarButton from '../src/button'
 import VarIcon from '../src/icon'
 import VarSpace from '../src/space'
 import { getBrowserThemes, setThemes } from '../.varlet/site/utils'
+import AnimationBox from '../.varlet/site/pc/components/AnimationBox'
 import dark from '../src/themes/dark'
 import { watchDarkMode, getPCLocationInfo } from '@varlet/cli/site/utils'
 
 const route = useRoute()
 const router = useRouter()
 
-const github = ref(get(config, 'pc.header.github'))
+const github = get(config, 'pc.header.github')
 const themesKey = get(config, 'themesKey')
 const currentThemes = ref(getBrowserThemes(themesKey))
 const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
@@ -67,7 +61,7 @@ const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
 const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
 
 const goGithub = () => {
-  window.location.href = github.value
+  window.open(github)
 }
 
 const getStar = () => {
@@ -118,6 +112,8 @@ watch(() => route.path, togglePageTitle, { immediate: true })
   height: 100vh;
   justify-content: space-around;
   align-items: center;
+  padding: 50px;
+  box-sizing: border-box;
 }
 
 .flex {
@@ -152,7 +148,9 @@ watch(() => route.path, togglePageTitle, { immediate: true })
 
 .base-title > .logo {
   width: 55px;
+  height: 55px;
   vertical-align: middle;
+  margin-right: 20px;
 }
 
 .base-descrition {
@@ -190,5 +188,18 @@ watch(() => route.path, togglePageTitle, { immediate: true })
   padding: 15px 20px;
   box-sizing: border-box;
   width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+  .root-page {
+    flex-direction: column;
+  }
+
+  .post-introduce > .introduce-img {
+    width: 60vw;
+    height: 100%;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+  }
 }
 </style>

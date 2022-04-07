@@ -1,7 +1,7 @@
 <template>
   <div class="varlet-site-header">
     <div class="varlet-site-header__lead" @click="backRoot">
-      <img class="varlet-site-header__logo" :src="logo" alt="logo" v-if="logo" />
+      <animation-box class="varlet-site-header__logo"  />
       <div class="varlet-site-header__title" v-if="title">{{ title }}</div>
     </div>
 
@@ -63,6 +63,7 @@ import { get } from 'lodash-es'
 import { getBrowserThemes, getPCLocationInfo, removeEmpty, setThemes, watchThemes } from '../../utils'
 import { useRouter } from 'vue-router'
 import type { Ref, ComputedRef } from 'vue'
+import AnimationBox from "./AnimationBox.vue";
 
 export default defineComponent({
   name: 'AppHeader',
@@ -88,7 +89,7 @@ export default defineComponent({
 
     const backRoot = () => {
       const { language: lang } = getPCLocationInfo()
-      router.replace(`/${lang}/${redirect}`)
+      router.replace(`/${lang}${redirect}`)
     }
 
     const handleLanguageChange = (language: string) => {
@@ -133,6 +134,9 @@ export default defineComponent({
       toggleTheme,
     }
   },
+  components:{
+    AnimationBox
+  }
 })
 </script>
 
@@ -180,7 +184,7 @@ export default defineComponent({
   padding: 0 30px;
   justify-content: space-between;
   user-select: none;
-  z-index: 996;
+  z-index: 9;
   background: var(--site-config-color-bar);
   border-bottom: 1px solid var(--site-config-color-border);
   box-sizing: border-box;
@@ -193,8 +197,10 @@ export default defineComponent({
 
   &__logo {
     width: 32px;
+    height: 32px;
     margin-right: 12px;
     flex-shrink: 0;
+    transition: .3s all ease-in-out;
   }
 
   &__title {
