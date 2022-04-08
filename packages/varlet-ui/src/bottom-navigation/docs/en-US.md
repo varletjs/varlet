@@ -50,7 +50,7 @@ import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref("home")
+    const active = ref('home')
 
     return { active }
   }
@@ -69,15 +69,15 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
 export default {
   setup() {
     const active = ref(0)
-    const badgeProps = {
+    const badgeProps = reactive({
       type: 'primary',
       value: '66'
-    }
+    })
 
     return { active, badgeProps }
   }
