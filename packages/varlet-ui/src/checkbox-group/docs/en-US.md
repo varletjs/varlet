@@ -1,5 +1,9 @@
 # Checkbox
 
+### Intro
+
+A group of options for multiple choices
+
 ### Install
 
 ```js
