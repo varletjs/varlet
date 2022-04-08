@@ -15,11 +15,11 @@ import {
   onActivated,
   onDeactivated,
 } from 'vue'
-import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref } from 'vue'
+import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref, ComponentPublicInstance } from 'vue'
 import { isArray, removeItem } from './shared'
 
 export interface MountInstance {
-  instance: any
+  instance: ComponentPublicInstance
   unmount: () => void
 }
 
