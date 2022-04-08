@@ -1,5 +1,9 @@
 # 单选框
 
+### Intro
+
+Single selection among multiple options
+
 ### 引入
 
 ```js
