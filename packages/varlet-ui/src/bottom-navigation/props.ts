@@ -37,7 +37,6 @@ export const props = {
     type: Function as PropType<() => void>,
   },
   fabProps: {
-    type: [Object] as PropType<Partial<ButtonProps>>,
-    default: {},
+    type: Object as PropType<Partial<ButtonProps>>,
   },
 }

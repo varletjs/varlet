@@ -1,4 +1,5 @@
 import { VarComponent } from './varComponent'
+import { ButtonProps } from './button'
 
 export interface BottomNavigationProps {
   active?: number | string
@@ -10,6 +11,8 @@ export interface BottomNavigationProps {
   onChange?: (active: string | number) => void
   'onUpdate:active'?: (active: string | number) => void
   onBeforeChange?: (active: string | number) => boolean | Promise<any>
+  onFabClick?: () => void
+  fabProps: ButtonProps
 }
 
 export class BottomNavigation extends VarComponent {
