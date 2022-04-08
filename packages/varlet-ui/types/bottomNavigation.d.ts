@@ -12,7 +12,7 @@ export interface BottomNavigationProps {
   'onUpdate:active'?: (active: string | number) => void
   onBeforeChange?: (active: string | number) => boolean | Promise<any>
   onFabClick?: () => void
-  fabProps: ButtonProps
+  fabProps?: ButtonProps
 }
 
 export class BottomNavigation extends VarComponent {
