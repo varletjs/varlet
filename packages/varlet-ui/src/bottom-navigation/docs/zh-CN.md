@@ -241,7 +241,7 @@ export default {
 
 | 名称 | 说明 | 参数 |
 | ---- | ---- | ----|
-| `fab` | 支持在组件中心插入一个自定义的 fab 按钮 | `-` |
+| `fab` | 支持在组件中插入一个自定义的 fab 按钮 | `-` |
 
 #### BottomNavigationItem Slots
 
