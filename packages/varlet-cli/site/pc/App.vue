@@ -1,13 +1,15 @@
 <template>
   <router-view></router-view>
+  <logo-animation />
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
-
+import { defineComponent } from 'vue'
+import LogoAnimation from "./components/LogoAnimation.vue";
 export default defineComponent({
-  setup() {
-  },
+  components:{
+    LogoAnimation
+  }
 })
 </script>
 
