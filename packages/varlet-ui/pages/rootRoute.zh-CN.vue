@@ -8,32 +8,28 @@
             src="https://madewithnetworkfra.fra1.digitaloceanspaces.com/spatie-space-production/28269/varlet-ui.jpg"
           />
         </div>
-        <div class="base-descrition introduce-descrition">Material风格的vue3移动端组件库</div>
+        <div class="base-descrition introduce-descrition">Material风格的Vue3移动端组件库</div>
       </div>
     </div>
     <div class="post-detail flex-one">
-      <div class="base-title margin-bottom">
-        <img src="https://varlet.gitee.io/varlet-ui/logo.svg" class="logo" />
+      <div class="base-title margin-bottom flex row-center">
+        <animation-box class="logo" />
         Varlet
       </div>
       <div class="base-title margin-bottom">Version1.26.9</div>
-      <div class="base-descrition margin-bottom">Vue 3移动端组件库</div>
+      <div class="base-descrition margin-bottom">Material风格的Vue3移动端组件库</div>
       <div class="flex row-center">
-        <var-space jujstify="center">
+        <var-space :wrap="false" jujstify="center" align="center">
           <var-button type="primary" @click="getStar">起步</var-button>
           <var-button>
-            <var-space align="center" @click="goGithub"> <var-icon name="github" />Github </var-space>
+            <var-space size="mini" align="center" @click="goGithub"> <var-icon name="github" />Github </var-space>
           </var-button>
-          <div class="varlet-site-header__theme" v-ripple v-if="darkMode" @click="toggleTheme">
-            <var-site-icon
-              size="26px"
-              :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'"
-              :style="{
-                marginBottom: currentThemes === 'darkThemes' && '2px',
-                marginTop: currentThemes === 'themes' && '2px',
-              }"
-            />
-          </div>
+          <var-button v-if="darkMode" round @click="toggleTheme">
+            <var-site-icon size="26px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
+          </var-button>
+          <var-button v-if="languages" round @click="toggleLanguages">
+            <var-site-icon name="translate" size="26px" />
+          </var-button>
         </var-space>
       </div>
     </div>
@@ -41,31 +37,34 @@
 </template>
 <script setup lang="ts">
 import { get } from 'lodash-es'
-import { ref, Ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, Ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import config from '@config'
 import VarButton from '../src/button'
 import VarIcon from '../src/icon'
 import VarSpace from '../src/space'
-import VarCard from '../src/card'
 import { getBrowserThemes, setThemes } from '../.varlet/site/utils'
+import AnimationBox from '../.varlet/site/pc/components/AnimationBox'
 import dark from '../src/themes/dark'
-import { watchDarkMode } from '@varlet/cli/site/utils'
+import { watchDarkMode, getPCLocationInfo } from '@varlet/cli/site/utils'
 
-const github = ref(get(config, 'pc.header.github'))
+const route = useRoute()
 const router = useRouter()
+
+const github = get(config, 'pc.header.github')
 const themesKey = get(config, 'themesKey')
-const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
 const currentThemes = ref(getBrowserThemes(themesKey))
 const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
 
+const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
+
 const goGithub = () => {
-  window.location.href = github.value
+  window.open(github)
 }
 
 const getStar = () => {
-  console.log('currentThemes', currentThemes.value)
-  router.push('/en-US/home')
+  const { language: lang } = getPCLocationInfo()
+  router.push(`/${lang}/home`)
 }
 
 const getThemesMessage = () => ({ action: 'themesChange', from: 'pc', data: currentThemes.value })
@@ -82,24 +81,37 @@ const toggleTheme = () => {
   ;(document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemesMessage(), '*')
 }
 
+const togglePageTitle = () => {
+  const { language: lang } = getPCLocationInfo()
+  if (!lang) {
+    return
+  }
+  document.title = get(config, 'pc.title')[lang] as string
+}
+
+const toggleLanguages = () => {
+  const { language: lang } = getPCLocationInfo()
+
+  const { menuName } = getPCLocationInfo()
+  // TODO: 没有想到合适的交互, 所以暂时先写死实现效果, 和大佬们商榷后重写
+  const replaceStr = `/${lang === 'zh-CN' ? 'en-US' : 'zh-CN'}/${menuName}`
+  router.replace(replaceStr)
+}
+
 watchDarkMode(dark)
 setThemes(config, currentThemes.value)
 window.postMessage(getThemesMessage(), '*')
+
+watch(() => route.path, togglePageTitle, { immediate: true })
 </script>
-<style>
-* {
-  box-sizing: border-box;
-}
-body {
-  padding: 0 !important;
-}
-</style>
-<style scoped>
+<style lang="less" scoped>
 .root-page {
   width: 100vw;
   height: 100vh;
   justify-content: space-around;
   align-items: center;
+  padding: 50px;
+  box-sizing: border-box;
 }
 
 .flex {
@@ -134,7 +146,10 @@ body {
 
 .base-title > .logo {
   width: 55px;
+  height: 55px;
   vertical-align: middle;
+  margin-right: 20px;
+  border-radius: 50%;
 }
 
 .base-descrition {
@@ -148,12 +163,17 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  box-shadow: 0 2px 43px -4px rgb(0 0 0 / 19%);
+  padding-top: 15px;
+  background-color: var(--card-background);
+  box-shadow: 0 3px 1px -2px var(--shadow-key-umbra-opacity), 0 2px 2px 0 var(--shadow-key-penumbra-opacity),
+    0 1px 5px 0 var(--shadow-key-ambient-opacity);
 }
 
 .post-introduce > .introduce-img {
   width: 43vw;
   height: 100%;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
 }
 
 .post-introduce > .introduce-img > .img {
@@ -167,5 +187,18 @@ body {
   padding: 15px 20px;
   box-sizing: border-box;
   width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+  .root-page {
+    flex-direction: column;
+  }
+
+  .post-introduce > .introduce-img {
+    width: 60vw;
+    height: 100%;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+  }
 }
 </style>

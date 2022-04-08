@@ -183,15 +183,6 @@ export default defineComponent({
   white-space: pre-wrap;
 }
 
-body {
-  min-width: 1200px;
-  margin: 0;
-  padding: 60px 0 0;
-  font-family: 'Roboto', sans-serif;
-  background: var(--site-config-color-body);
-  color: var(--site-config-color-text);
-}
-
 * {
   transition: background-color .25s, box-shadow .25s;
 }
@@ -242,6 +233,8 @@ iframe {
   }
 
   &-site {
+    min-width: 1200px;
+    padding: 60px 0 0;
     &-content {
       display: flex;
       background: var(--site-config-color-body);
