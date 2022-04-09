@@ -1,3 +1,12 @@
+## [1.27.1](https://github.com/varletjs/varlet/compare/v1.27.0...v1.27.1) (2022-04-09)
+
+
+### Bug Fixes
+
+* **ui/uploader:** ripple does not work when customizing the style ([8e6f0e7](https://github.com/varletjs/varlet/commit/8e6f0e753845e4a1c8c872df005166b4ee4c53a3))
+
+
+
 # [1.27.0](https://github.com/varletjs/varlet/compare/v1.26.9...v1.27.0) (2022-04-08)
 
 
