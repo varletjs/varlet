@@ -93,11 +93,11 @@ interface ValidationVarFile {
 }
 
 interface VarFileUtils {
-  getLoading(varFiles: VarFile[]): VarFile[]
+  getLoading(): VarFile[]
 
-  getSuccess(varFiles: VarFile[]): VarFile[]
+  getSuccess(): VarFile[]
 
-  getError(varFiles: VarFile[]): VarFile[]
+  getError(): VarFile[]
 }
 
 let fid = 0
