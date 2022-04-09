@@ -245,7 +245,7 @@ export default {
 
 ```html
 <var-uploader
-  :rules="[(v, u) => u.getError(v).length === 0 || '存在上传失败的文件']"
+  :rules="[(v, u) => u.getError().length === 0 || '存在上传失败的文件']"
   v-model="files"
 />
 ```

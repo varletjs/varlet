@@ -22,17 +22,15 @@
 
       <div
         :class="
-          classes(
-            'var--relative',
-            [!$slots.default, `${n('action')} var-elevation--2`],
-            [disabled || formDisabled, n('--disabled')]
-          )
+          classes([!$slots.default, `${n('action')} var-elevation--2`], [disabled || formDisabled, n('--disabled')])
         "
         v-if="!maxlength || modelValue.length < maxlength"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple || $slots.default }"
+        @click="triggerAction"
       >
         <input
           :class="n('action-input')"
+          ref="input"
           type="file"
           :multiple="multiple"
           :accept="accept"
@@ -40,6 +38,7 @@
           :disabled="disabled || formDisabled || readonly || formReadonly"
           @change="handleChange"
         />
+
         <slot>
           <var-icon :class="n('action-icon')" var-uploader-cover name="plus" />
         </slot>
@@ -112,6 +111,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
+    const input: Ref<null | HTMLElement> = ref()
     const showPreview: Ref<boolean> = ref(false)
     const currentPreview: Ref<null | VarFile> = ref(null)
     const maxlengthText: ComputedRef<string> = computed(() => {
@@ -140,6 +140,10 @@ export default defineComponent({
 
       return modelValue
     })
+
+    const triggerAction = () => {
+      input.value!.click()
+    }
 
     const preview = (varFile: VarFile) => {
       const { disabled, readonly, previewed } = props
@@ -322,6 +326,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      input,
       files,
       showPreview,
       currentPreview,
@@ -331,6 +336,7 @@ export default defineComponent({
       isHTMLSupportImage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      triggerAction,
       preview,
       handleChange,
       handleRemove,

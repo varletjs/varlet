@@ -247,7 +247,7 @@ The second argument is a collection of utility functions that can quickly get a 
 ```html
 <var-uploader
   :rules="[
-    (v, u) => u.getError(v).length === 0 || 'There is a file that failed to upload'
+    (v, u) => u.getError().length === 0 || 'There is a file that failed to upload'
   ]"
   v-model="files"
 />

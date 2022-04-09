@@ -32,7 +32,7 @@
   </var-uploader>
 
   <app-type>{{ pack.validate }}</app-type>
-  <var-uploader :rules="[(v, u) => u.getError(v).length === 0 || pack.validateMessage]" v-model="files10" />
+  <var-uploader :rules="[(v, u) => u.getError().length === 0 || pack.validateMessage]" v-model="files10" />
 
   <app-type>{{ pack.customRender }}</app-type>
   <var-space>
