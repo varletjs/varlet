@@ -51,6 +51,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  safeArea: {
+    type: Boolean,
+    default: false,
+  },
   offsetTop: pickProps(stickyProps, 'offsetTop'),
   onClick: {
     type: Function as PropType<(active: string | number) => void>,

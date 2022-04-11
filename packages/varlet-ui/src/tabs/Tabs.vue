@@ -8,7 +8,8 @@
           n(`--item-${itemDirection}`),
           n(`--layout-${layoutDirection}-padding`),
           [elevation, 'var-elevation--4'],
-          [fixedBottom, n('--fixed-bottom')]
+          [fixedBottom, n('--fixed-bottom')],
+          [safeArea, n('--safe-area')]
         )
       "
       :style="{ background: color }"
