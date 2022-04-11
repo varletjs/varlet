@@ -2,7 +2,6 @@
 import Header from './Header.vue'
 import { ReplStore } from './store'
 import { watchEffect } from 'vue'
-import { Repl } from '@vue/repl'
 
 const setVH = () => {
   document.documentElement.style.setProperty('--vh', window.innerHeight + `px`)
