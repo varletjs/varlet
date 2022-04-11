@@ -197,15 +197,16 @@ export default {
 
 #### BottomNavigation Props
 
-|参数 | 说明 | 类型 | 默认值 |
-| ---- | ---- | ---- | ---- |
-| `v-model:active` | 选中标签的名称或者索引值 | _number \| string_ | `0` |
-| `fixed` | 是否固定在底部 | _boolean_ | `false` |
-| `border` | 是否显示外边框 | _boolean_ | `false` |
-| `z-index` | 元素 z-index | _number \| string_ | `1` |
-| `active-color` | 选中标签的颜色 | _string_ | `-` |
-| `inactive-color` | 未选中标签的颜色 | _string_ | `-` |
-| `fab-props` | 悬浮按钮属性 | _ButtonProps_ | `{type: "primary"}` |
+| 参数               | 说明              | 类型 | 默认值 |
+|------------------|-----------------| ---- | ---- |
+| `v-model:active` | 选中标签的名称或者索引值    | _number \| string_ | `0` |
+| `fixed`          | 是否固定在底部         | _boolean_ | `false` |
+| `border`         | 是否显示外边框         | _boolean_ | `false` |
+| `safeArea`       | 是否使组件不受IOS小黑条影响 | _boolean_ | `false` |
+| `z-index`        | 元素 z-index      | _number \| string_ | `1` |
+| `active-color`   | 选中标签的颜色         | _string_ | `-` |
+| `inactive-color` | 未选中标签的颜色        | _string_ | `-` |
+| `fab-props`      | 悬浮按钮属性          | _ButtonProps_ | `{type: "primary"}` |
 
 
 #### BottomNavigationItem Props

@@ -21,6 +21,11 @@
   transition: background-color 250ms, border-color 250ms;
   -webkit-tap-highlight-color: transparent;
 
+  &--safe-area {
+    padding-bottom: constant(safe-area-inset-bottom); // iOS < 11.2
+    padding-bottom: env(safe-area-inset-bottom); // iOS >= 11.2
+  }
+
   &--fixed {
     position: fixed;
     left: 0;

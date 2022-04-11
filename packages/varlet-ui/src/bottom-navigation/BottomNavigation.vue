@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classes(n(), [fixed, n('--fixed')], [border, n('--border')])"
+    :class="classes(n(), [fixed, n('--fixed')], [border, n('--border')], [safeArea, n('--safe-area')])"
     ref="bottomNavigationDom"
     :style="`z-index:${zIndex}`"
   >

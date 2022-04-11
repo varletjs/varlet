@@ -195,15 +195,16 @@ export default {
 
 #### BottomNavigation Props
 
-|Prop | Description | Type | Default |
-| ---- | ---- | ---- | ---- |
-| `v-model:active` | Identifier of current tab | _number \| string_ | `0` |
-| `fixed` |	Whether to fixed bottom | _boolean_ | `false` |
-| `border` | Whether to show border | _boolean_ | `false` |
-| `z-index` | Z-index | _number \| string_ | `1` |
-| `active-color` | Color of active tab item | _string_ | `-` |
-| `inactive-color` | Color of inactive tab item | _string_ | `-` |
-| `fab-props` | Fab button props | _ButtonProps_ | `{type: "primary"}` |
+| Prop            | Description                                         | Type | Default |
+|-----------------|-----------------------------------------------------| ---- | ---- |
+| `v-model:active` | Identifier of current tab                           | _number \| string_ | `0` |
+| `fixed`         | 	Whether to fixed bottom                            | _boolean_ | `false` |
+| `border`        | Whether to show border                              | _boolean_ | `false` |
+| `safeArea`       | Whether to aviod affected by the IOS home indicator | _boolean_ | `false` |
+| `z-index`       | Z-index                                             | _number \| string_ | `1` |
+| `active-color`  | Color of active tab item                            | _string_ | `-` |
+| `inactive-color` | Color of inactive tab item                          | _string_ | `-` |
+| `fab-props`     | Fab button props                                    | _ButtonProps_ | `{type: "primary"}` |
 
 #### BottomNavigationItem Props
 

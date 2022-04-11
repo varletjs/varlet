@@ -14,6 +14,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  safeArea: {
+    type: Boolean,
+    default: false,
+  },
   zIndex: {
     type: [Number, String] as PropType<number | string>,
     default: 1,
