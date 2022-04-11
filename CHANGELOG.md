@@ -1,3 +1,13 @@
+## [1.27.2](https://github.com/varletjs/varlet/compare/v1.27.1...v1.27.2) (2022-04-11)
+
+
+### Features
+
+* **bottom-navigation:** add safe-area prop to avoid affect ([921775b](https://github.com/varletjs/varlet/commit/921775be50eb7f0b9b161292a43b261e40f4247b))
+* **tabs:** add safe-area prop to avoid affect ([5cfe4b9](https://github.com/varletjs/varlet/commit/5cfe4b955f49b85bf11224657328855f33bbeed1))
+
+
+
 ## [1.27.1](https://github.com/varletjs/varlet/compare/v1.27.0...v1.27.1) (2022-04-09)
 
 
