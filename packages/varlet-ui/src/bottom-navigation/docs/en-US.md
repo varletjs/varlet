@@ -200,7 +200,7 @@ export default {
 | `v-model:active` | Identifier of current tab                           | _number \| string_ | `0` |
 | `fixed`         | 	Whether to fixed bottom                            | _boolean_ | `false` |
 | `border`        | Whether to show border                              | _boolean_ | `false` |
-| `safe-area`       | Whether to avoid affected by the IOS home indicator | _boolean_ | `false` |
+| `safe-area`       | Whether to enable bottom safe area adaptation | _boolean_ | `false` |
 | `z-index`       | Z-index                                             | _number \| string_ | `1` |
 | `active-color`  | Color of active tab item                            | _string_ | `-` |
 | `inactive-color` | Color of inactive tab item                          | _string_ | `-` |
