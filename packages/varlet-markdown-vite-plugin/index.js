@@ -48,6 +48,7 @@ function injectCodeExample(source) {
 
   return source.replace(codeRE, (str) => {
     const flags = [
+      '// playground-ignore\n',
       '<span class="hljs-meta">#</span><span class="bash"> playground-ignore</span>\n',
       '<span class="hljs-comment">// playground-ignore</span>\n',
       '<span class="hljs-comment">/* playground-ignore */</span>\n',

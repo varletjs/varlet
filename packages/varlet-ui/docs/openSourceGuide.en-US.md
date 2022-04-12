@@ -9,6 +9,7 @@ The first fork of the repository is based on the dev branch, which is in the pro
 node version 16+.
 
 ```shell
+# playground-ignore
 pnpm bootstrap
 cd packages/varlet-ui
 pnpm dev

@@ -8,25 +8,23 @@ The advantage of dark mode is that it has higher readability in low light enviro
 ### Toggle Theme
 
 ```html
-<var-button block @click="toggleTheme">Toggle Theme</var-button>
-```
-
-```js
+<!-- playground-ignore -->
+<script setup>
 import dark from '@varlet/ui/es/themes/dark'
+import { ref } from 'vue'
 import { StyleProvider } from '@varlet/ui'
 
-export default {
-  setup() {
-    let currentTheme
-    
-    const toggleTheme = () => {
-      currentTheme = currentTheme ? null : dark
-      StyleProvider(currentTheme)
-    }
-    
-    return { toggleTheme }
-  }
+const currentTheme = ref(null)
+
+const toggleTheme = () => {
+  currentTheme.value = currentTheme.value ? null : dark
+  StyleProvider(currentTheme.value)
 }
+</script>
+
+<template>
+  <var-button block @click="toggleTheme">Toggle Theme</var-button>
+</template>
 ```
 
 Inject the `text color` and `background color` variables recommended by the component library to control the overall color

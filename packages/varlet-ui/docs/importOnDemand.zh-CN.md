@@ -8,6 +8,7 @@
 每一个组件都是一个 `Vue插件`，并由 `组件逻辑` 和 `样式文件` 组成，如下方式进行手动引入使用。
 
 ```js
+// playground-ignore
 import { createApp } from 'vue'
 import { Button } from '@varlet/ui'
 import '@varlet/ui/es/button/style/index.js'
@@ -20,6 +21,7 @@ createApp().use(Button)
 所有声明在模板中的组件，都会被 [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) 插件自动扫描，插件会自动引入`组件逻辑`和`样式文件`并`注册组件`。
 
 ```shell
+# playground-ignore
 # 安装插件
 
 # npm
@@ -34,6 +36,7 @@ pnpm add unplugin-vue-components -D
 
 #### Vue Cli
 ```js
+// playground-ignore
 // vue.config.js
 const Components = require('unplugin-vue-components/webpack')
 const { VarletUIResolver } = require('unplugin-vue-components/resolvers')
@@ -52,6 +55,7 @@ module.exports = {
 #### Vite
 
 ```js
+// playground-ignore
 // vite.config.js
 import vue from '@vitejs/plugin-vue'
 import components from 'unplugin-vue-components/vite'
