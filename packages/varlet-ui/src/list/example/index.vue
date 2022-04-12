@@ -1,36 +1,3 @@
-<template>
-  <var-tabs v-model:active="current" sticky offset-top="54px" style="margin-bottom: 10px">
-    <var-tab>{{ pack.basicUsage }}</var-tab>
-    <var-tab>{{ pack.loadFail }}</var-tab>
-    <var-tab>{{ pack.tipText }}</var-tab>
-  </var-tabs>
-
-  <var-tabs-items v-model:active="current">
-    <var-tab-item>
-      <var-list :finished="finished" v-model:loading="loading" @load="load">
-        <var-cell :key="d" v-for="d in list"> {{ pack.listItem }}: {{ d }} </var-cell>
-      </var-list>
-    </var-tab-item>
-    <var-tab-item>
-      <var-list :finished="finished2" v-model:error="error" v-model:loading="loading2" @load="load2">
-        <var-cell :key="d" v-for="d in list2"> {{ pack.listItem }}: {{ d }} </var-cell>
-      </var-list>
-    </var-tab-item>
-    <var-tab-item>
-      <var-list
-        :loading-text="pack.loadingText"
-        :finished-text="pack.finishedText"
-        :error-text="pack.errorText"
-        :finished="finished3"
-        v-model:loading="loading3"
-        @load="load3"
-      >
-        <var-cell :key="d" v-for="d in list3"> {{ pack.listItem }}: {{ d }} </var-cell>
-      </var-list>
-    </var-tab-item>
-  </var-tabs-items>
-</template>
-
 <script setup>
 import VarList from '..'
 import VarCell from '../../cell'
@@ -122,3 +89,36 @@ const load2 = () => {
   }, 1000)
 }
 </script>
+
+<template>
+  <var-tabs v-model:active="current" sticky offset-top="54px" style="margin-bottom: 10px">
+    <var-tab>{{ pack.basicUsage }}</var-tab>
+    <var-tab>{{ pack.loadFail }}</var-tab>
+    <var-tab>{{ pack.tipText }}</var-tab>
+  </var-tabs>
+
+  <var-tabs-items v-model:active="current">
+    <var-tab-item>
+      <var-list :finished="finished" v-model:loading="loading" @load="load">
+        <var-cell :key="d" v-for="d in list"> {{ pack.listItem }}: {{ d }} </var-cell>
+      </var-list>
+    </var-tab-item>
+    <var-tab-item>
+      <var-list :finished="finished2" v-model:error="error" v-model:loading="loading2" @load="load2">
+        <var-cell :key="d" v-for="d in list2"> {{ pack.listItem }}: {{ d }} </var-cell>
+      </var-list>
+    </var-tab-item>
+    <var-tab-item>
+      <var-list
+        :loading-text="pack.loadingText"
+        :finished-text="pack.finishedText"
+        :error-text="pack.errorText"
+        :finished="finished3"
+        v-model:loading="loading3"
+        @load="load3"
+      >
+        <var-cell :key="d" v-for="d in list3"> {{ pack.listItem }}: {{ d }} </var-cell>
+      </var-list>
+    </var-tab-item>
+  </var-tabs-items>
+</template>

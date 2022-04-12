@@ -1,16 +1,8 @@
 # 无限滚动列表
 
 ### 介绍
+
 无限滚动加载列表、触底加载，支持手动检查位置并加载。支持自定义加载状态、错误状态、数据加载完成状态。
-
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { List } from '@varlet/ui'
-
-createApp().use(List)
-```
 
 ### 基本使用
 
@@ -60,6 +52,7 @@ const load = () => {
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const loading = ref(false)
 const error = ref(false)
 const list = ref([])
@@ -99,6 +92,7 @@ const load = () => {
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const loading = ref(false)
 const finished = ref(false)
 const list = ref([])
@@ -135,6 +129,7 @@ const load = () => {
 ```
 
 ### 注意
+
 我们是通过监听滚动容器的 `scroll` 事件检测是否触底并执行加载。
 滚动容器是指最近的一个 `overflow-y` 为 `auto` 或者 `scroll` 的元素。
 当您设置一个元素的 `overflow-x` 为除了 `visible` 以外的值时，浏览器为了维护一个 `bfc` 的结构会使您的 `overflow-y` 修正为 `auto`。
