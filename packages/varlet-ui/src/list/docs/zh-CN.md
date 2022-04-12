@@ -17,48 +17,40 @@ createApp().use(List)
 当检测到滚动容器滚动到底部底部时会触发 `load` 事件，并会设置 `loading` 为 `true`，在加载结束时您需要手动设置 `loading` 为 `false`，表示加载结束。
 
 ```html
-<var-list
-  :finished="finished"
-  v-model:loading="loading"
-  @load="load"
->
-  <var-cell :key="item" v-for="item in list">
-    列表项: {{ item }}
-  </var-cell>
-</var-list>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const loading = ref(false)
-    const finished = ref(false)
-    const list = reactive([])
+const loading = ref(false)
+const finished = ref(false)
+const list = ref([])
 
-    const load = () => {
-      setTimeout(() => {
-        for (let i = 0; i < 20; i++) {
-          list.push(list.length + 1)
-        }
-
-        loading.value = false
-
-        if (list.length >= 60) {
-          finished.value = true
-        }
-      }, 1000)
+const load = () => {
+  setTimeout(() => {
+    for (let i = 0; i < 20; i++) {
+      list.value.push(list.value.length + 1)
     }
 
-    return {
-      list,
-      loading,
-      finished,
-      load
+    loading.value = false
+
+    if (list.value.length >= 60) {
+      finished.value = true
     }
-  }
+  }, 1000)
 }
+</script>
+
+<template>
+  <var-list
+    :finished="finished"
+    v-model:loading="loading"
+    @load="load"
+  >
+    <var-cell :key="item" v-for="item in list">
+      列表项: {{ item }}
+    </var-cell>
+  </var-list>
+</template>
+
 ```
 
 ### 加载失败
@@ -66,100 +58,80 @@ export default {
 您可以使用 `v-model:error` 手动设置错误状态，会展示错误提示，点击错误提示会帮您把 `error` 设置成 `false` 并再次触发 `load` 事件。
 
 ```html
-<var-list
-  v-model:error="error"
-  v-model:loading="loading"
-  @load="load"
->
-  <var-cell :key="item" v-for="item in list">
-    列表项: {{ item }}
-  </var-cell>
-</var-list>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
+const loading = ref(false)
+const error = ref(false)
+const list = ref([])
 
-export default {
-  setup() {
-    const loading = ref(false)
-    const error = ref(false)
-    const list = reactive([])
-
-    const load = () => {
-      setTimeout(() => {
-        if (list.length === 40) {
-          error.value = true
-          loading.value = false
-          return
-        }
-
-        for (let i = 0; i < 20; i++) {
-          list.push(list.length + 1)
-        }
-
-        loading.value = false
-      }, 1000)
+const load = () => {
+  setTimeout(() => {
+    if (list.value.length === 40) {
+      error.value = true
+      loading.value = false
+      return
     }
 
-    return {
-      list,
-      loading,
-      error,
-      load
+    for (let i = 0; i < 20; i++) {
+      list.value.push(list.value.length + 1)
     }
-  }
+
+    loading.value = false
+  }, 1000)
 }
+</script>
+
+<template>
+  <var-list
+    v-model:error="error"
+    v-model:loading="loading"
+    @load="load"
+  >
+    <var-cell :key="item" v-for="item in list">
+      列表项: {{ item }}
+    </var-cell>
+  </var-list>
+</template>
 ```
 
 ### 提示文字
 
 ```html
-<var-list
-  loading-text="正在努力输出"
-  finished-text="一滴都没有了"
-  error-text="出错了出错了"
-  :finished="finished"
-  v-model:loading="loading"
-  @load="load"
->
-  <var-cell :key="item" v-for="item in list">
-    列表项: {{ item }}
-  </var-cell>
-</var-list>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
+const loading = ref(false)
+const finished = ref(false)
+const list = ref([])
 
-export default {
-  setup() {
-    const loading = ref(false)
-    const finished = ref(false)
-    const list = reactive([])
-
-    const load = () => {
-      setTimeout(() => {
-        for (let i = 0; i < 20; i++) {
-          list.push(list.length + 1)
-        }
-
-        loading.value = false
-
-        if (list.length >= 60) {
-          finished.value = true
-        }
-      }, 1000)
+const load = () => {
+  setTimeout(() => {
+    for (let i = 0; i < 20; i++) {
+      list.value.push(list.value.length + 1)
     }
 
-    return {
-      list,
-      loading,
-      finished,
-      load
+    loading.value = false
+
+    if (list.value.length >= 60) {
+      finished.value = true
     }
-  }
+  }, 1000)
 }
+</script>
+
+<template>
+  <var-list
+    loading-text="正在努力输出"
+    finished-text="一滴都没有了"
+    error-text="出错了出错了"
+    :finished="finished"
+    v-model:loading="loading"
+    @load="load"
+  >
+    <var-cell :key="item" v-for="item in list">
+      列表项: {{ item }}
+    </var-cell>
+  </var-list>
+</template>
 ```
 
 ### 注意
@@ -172,49 +144,49 @@ export default {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `v-model:loading` | 加载状态 | _boolean_ | `false` |
-| `v-model:error` | 错误状态 | _boolean_ | `false` |
-| `immediate-check` | 是否在组件初始化时立刻检测位置 | _boolean_ | `true` |
-| `finished` | 是否加载完毕 | _boolean_ | `false` |
-| `offset` | 距离底部的触发距离 | _string \| number_ | `0` |
-| `loading-text` | 加载状态文字 | _string_ | `加载中` |
-| `finished-text` | 加载完毕文字 | _string_ | `没有更多了` |
-| `error-text` | 加载失败文字 | _string_ | `加载失败` |
+| 参数              | 说明                           | 类型               | 默认值       |
+| ----------------- | ------------------------------ | ------------------ | ------------ |
+| `v-model:loading` | 加载状态                       | _boolean_          | `false`      |
+| `v-model:error`   | 错误状态                       | _boolean_          | `false`      |
+| `immediate-check` | 是否在组件初始化时立刻检测位置 | _boolean_          | `true`       |
+| `finished`        | 是否加载完毕                   | _boolean_          | `false`      |
+| `offset`          | 距离底部的触发距离             | _string \| number_ | `0`          |
+| `loading-text`    | 加载状态文字                   | _string_           | `加载中`     |
+| `finished-text`   | 加载完毕文字                   | _string_           | `没有更多了` |
+| `error-text`      | 加载失败文字                   | _string_           | `加载失败`   |
 
 ### 方法
 
-| 方法名 | 说明 | 参数 |
-| --- | --- | --- |
-| `check` | 触发位置检查, 触底触发 load 事件。 | `-` |
+| 方法名  | 说明                               | 参数 |
+| ------- | ---------------------------------- | ---- |
+| `check` | 触发位置检查, 触底触发 load 事件。 | `-`  |
 
 ### 事件
 
-| 事件名 | 说明 | 参数 |
-| --- | --- | --- |
-| `load` | 触底时触发 | `-` |
+| 事件名 | 说明       | 参数 |
+| ------ | ---------- | ---- |
+| `load` | 触底时触发 | `-`  |
 
 ### 插槽
 
-| 插槽名 | 说明 | 参数 |
-| --- | --- | --- |
-| `default` | 列表内容 | `-` |
-| `loading` | 加载中内容 | `-` |
-| `error` | 加载失败内容 | `-` |
-| `finished` | 加载完毕内容 | `-` |
+| 插槽名     | 说明         | 参数 |
+| ---------- | ------------ | ---- |
+| `default`  | 列表内容     | `-`  |
+| `loading`  | 加载中内容   | `-`  |
+| `error`    | 加载失败内容 | `-`  |
+| `finished` | 加载完毕内容 | `-`  |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
-| 变量名 | 默认值 |
-| --- | --- |
-| `--list-loading-height` | `50px` |
-| `--list-finished-height` | `50px` |
-| `--list-error-height` | `50px` |
-| `--list-loading-color` | `#888` |
-| `--list-finished-color` | `#888` |
-| `--list-error-color` | `#888` |
-| `--list-loading-font-size` | `var(--font-size-md)` |
+| 变量名                      | 默认值                |
+| --------------------------- | --------------------- |
+| `--list-loading-height`     | `50px`                |
+| `--list-finished-height`    | `50px`                |
+| `--list-error-height`       | `50px`                |
+| `--list-loading-color`      | `#888`                |
+| `--list-finished-color`     | `#888`                |
+| `--list-error-color`        | `#888`                |
+| `--list-loading-font-size`  | `var(--font-size-md)` |
 | `--list-finished-font-size` | `var(--font-size-md)` |
-| `--list-error-font-size` | `var(--font-size-md)` |
+| `--list-error-font-size`    | `var(--font-size-md)` |
