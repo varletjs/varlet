@@ -54,14 +54,20 @@ export default defineComponent({
     [Button.name]: Button,
     [Icon.name]: Icon
   },
-  setup() {
+  props: {
+    playgroundIgnore: {
+      type: Boolean,
+      default: false
+    }
+  },
+  setup(props) {
     const code: Ref<HTMLElement | null> = ref(null)
     const cid: Ref<number> = ref(clipId++)
     const fold: Ref = ref(get(config, 'pc.fold'))
     const disabledFold: Ref<boolean> = ref(false)
     const clipboard: Ref = ref(get(config, 'pc.clipboard', {}))
     const height: Ref<number> = ref(-1)
-    const playground: Ref<string | undefined> = ref(get(config, 'pc.header.playground'))
+    const playground: Ref<string | undefined> = ref(!props.playgroundIgnore ? get(config, 'pc.header.playground') : undefined )
     let timer: any = null
 
     const toggle = async () => {
