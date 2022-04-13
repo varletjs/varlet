@@ -18,6 +18,15 @@ createApp().use(Steps).use(Step)
 通过 `active` 属性控制当前步骤条的进度，值为当前 `step` 的索引，从 `0` 起计。
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+const next = () => {
+  active.value = (active.value + 1) % 4
+}
+</script>
+
 <template>
   <var-steps :active="active">
     <var-step>步骤1</var-step>
@@ -27,17 +36,6 @@ createApp().use(Steps).use(Step)
   </var-steps>
   <var-button type="primary" block @click="next">下一步</var-button>
 </template>
-```
-
-```javascript
-<script setup>
-import { ref } from 'vue'
-
-const active = ref(0)
-const next = () => {
-  active.value = (active.value + 1) % 4
-}
-</script>
 ```
 
 ### 自定义样式

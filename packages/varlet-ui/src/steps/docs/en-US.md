@@ -18,6 +18,15 @@ createApp().use(Steps).use(Step)
 Use `active` prop to control the progress of step, value is index of step and is counted from `0`.
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+const next = () => {
+  active.value = (active.value + 1) % 4
+}
+</script>
+
 <template>
   <var-steps :active="active">
     <var-step>Step1</var-step>
@@ -29,16 +38,6 @@ Use `active` prop to control the progress of step, value is index of step and is
 </template>
 ```
 
-```javascript
-<script setup>
-import { ref } from 'vue'
-
-const active = ref(0)
-const next = () => {
-  active.value = (active.value + 1) % 4
-}
-</script>
-```
 
 ### Custom Style
 
