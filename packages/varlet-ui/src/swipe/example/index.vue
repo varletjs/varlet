@@ -1,3 +1,14 @@
+<script setup>
+import VarSwipe from '..'
+import VarSwipeItem from '../../swipe-item'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import Snackbar from '../../snackbar'
+import { use, pack } from './locale'
+import { watchLang } from '@varlet/cli/site/utils'
+
+watchLang(use)
+</script>
+
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-swipe class="swipe" ref="swipe">
@@ -85,17 +96,6 @@
 
   <div class="space"></div>
 </template>
-
-<script setup>
-import VarSwipe from '..'
-import VarSwipeItem from '../../swipe-item'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Snackbar from '../../snackbar'
-import { use, pack } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
-
-watchLang(use)
-</script>
 
 <style scoped lang="less">
 .swipe {

@@ -1,14 +1,5 @@
 # Swipe
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Swipe, SwipeItem } from '@varlet/ui'
-
-createApp().use(Swipe).use(SwipeItem)
-```
-
 ### Basic Usage
 
 ```html
@@ -25,10 +16,12 @@ createApp().use(Swipe).use(SwipeItem)
     </var-swipe-item>
   </var-swipe>
 </template>
+
 <style>
 .swipe-example {
   height: 160px;
 }
+
 .swipe-item-example {
   width: 100%;
   height: 100%;
@@ -53,10 +46,12 @@ createApp().use(Swipe).use(SwipeItem)
     </var-swipe-item>
   </var-swipe>
 </template>
+
 <style>
 .swipe-example-loop {
   height: 160px;
 }
+
 .swipe-item-example-loop {
   width: 100%;
   height: 100%;
@@ -81,10 +76,12 @@ createApp().use(Swipe).use(SwipeItem)
     </var-swipe-item>
   </var-swipe>
 </template>
+
 <style>
 .swipe-example-autoplay {
   height: 160px;
 }
+
 .swipe-item-example-autoplay {
   width: 100%;
   height: 100%;
@@ -113,6 +110,7 @@ createApp().use(Swipe).use(SwipeItem)
 .swipe-example-vertical {
   height: 160px;
 }
+
 .swipe-item-example-vertical {
   width: 100%;
   height: 100%;
@@ -126,8 +124,8 @@ createApp().use(Swipe).use(SwipeItem)
 ```html
 <script setup>
 import { Snackbar } from '@varlet/ui'
-
 </script>
+
 <template>
   <var-swipe class="swipe-example-handle" @change="Snackbar">
     <var-swipe-item>
@@ -141,10 +139,12 @@ import { Snackbar } from '@varlet/ui'
     </var-swipe-item>
   </var-swipe>
 </template>
+
 <style>
 .swipe-example-handle {
   height: 160px;
 }
+
 .swipe-item-example-handle {
   width: 100%;
   height: 100%;
@@ -177,6 +177,7 @@ import { Snackbar } from '@varlet/ui'
     </template>
   </var-swipe>
 </template>
+
 <style>
 .swipe-example-indicators  {
   height: 160px;
