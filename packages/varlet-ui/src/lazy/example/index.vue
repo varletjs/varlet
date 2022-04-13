@@ -10,22 +10,13 @@
   <div class="cat" v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
 </template>
 
-<script>
-import Lazy from '..'
+<script setup>
+import vLazy from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { use, pack } from './locale'
 import { watchLang } from '@varlet/cli/site/utils'
 
-export default {
-  name: 'LazyExample',
-  directives: { Lazy },
-  components: { AppType },
-  setup() {
-    watchLang(use)
-
-    return { pack }
-  },
-}
+watchLang(use)
 </script>
 
 <style scoped lang="less">

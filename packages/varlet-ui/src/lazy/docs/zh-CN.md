@@ -16,24 +16,60 @@ createApp().use(Lazy)
 ### 基本用法
 
 ```html
-<img v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'">
+<template>
+  <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'">
+</template>
+<style>
+.lazy-example-cat {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-size: cover;
+  pointer-events: none;
+}
+</style>
 ```
 
 ### 背景图懒加载
+
 ```html
-<div v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
+<template>
+  <div class="lazy-example-cat" v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
+</template>
+<style>
+.lazy-example-cat {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-size: cover;
+  pointer-events: none;
+}
+</style>
 ```
 
 ### 内联属性
+
 可以通过内联属性修改 `loading`、 `error` 图片和`加载失败时尝试重新加载的次数`。
 
 ```html
-<img
-  v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'"
-  lazy-loading="https://xxx.cn/loading.png"
-  lazy-error="https://xxx.cn/error.png"
-  lazy-attempt="3"
->
+<template>
+  <img
+    class="lazy-example-cat"
+    v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'"
+    lazy-loading="https://xxx.cn/loading.png"
+    lazy-error="https://xxx.cn/error.png"
+    lazy-attempt="3"
+  >
+</template>
+<style>
+.lazy-example-cat {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-size: cover;
+  pointer-events: none;
+}
+</style>
 ```
 
 ### 插件
