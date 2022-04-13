@@ -1,3 +1,15 @@
+<script setup>
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import VarButton from '../../button'
+import VarCard from '..'
+import dark from '../../themes/dark'
+import { pack, use } from './locale'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+
+watchLang(use)
+watchDarkMode(dark)
+</script>
+
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-card :title="pack.title" :description="pack.description" />
@@ -25,32 +37,6 @@
   <app-type>{{ pack.showRipple }}</app-type>
   <var-card :title="pack.title" :subtitle="pack.subtitle" :description="pack.description" ripple />
 </template>
-
-<script>
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import VarButton from '../../button'
-import VarCard from '..'
-import dark from '../../themes/dark'
-import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-
-export default {
-  name: 'CardExample',
-  components: {
-    VarButton,
-    VarCard,
-    AppType,
-  },
-  setup() {
-    watchLang(use)
-    watchDarkMode(dark)
-
-    return {
-      pack,
-    }
-  },
-}
-</script>
 
 <style scoped>
 .example {
