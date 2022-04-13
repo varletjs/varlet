@@ -15,40 +15,52 @@ createApp().use(Divider)
 
 ### Basic Usage
 ```html
-<var-divider />
+<template>
+  <var-divider />
+</template>
 ```
 
 ### Dashed Divider
 ```html
-<var-divider dashed />
+<template>
+  <var-divider dashed />
+</template>
 ```
 
 ### Inset Divider
 ```html
-<var-divider inset />
-<var-divider :inset="36" margin="36px 0" />
-<var-divider inset="-36px" />
+<template>
+  <var-divider inset />
+  <var-divider :inset="36" margin="36px 0" />
+  <var-divider inset="-36px" />
+</template>
 ```
 
 ### Vertical Divider
 ```html
-<span>Text</span>
-<var-divider vertical />
-<span>Text</span>
-<var-divider vertical />
-<span>Text</span>
+<template>
+  <span>Text</span>
+  <var-divider vertical />
+  <span>Text</span>
+  <var-divider vertical />
+  <span>Text</span>
+</template>
 ```
 
 ### The Divider with description
 ```html
-<var-divider description="Description" />
+<template>
+  <var-divider description="Description" />
+</template>
 ```
 
 ### Custom
 ```html
-<var-divider>
-  <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
-</var-divider>
+<template>
+  <var-divider>
+    <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
+  </var-divider>
+</template>
 ```
 
 
