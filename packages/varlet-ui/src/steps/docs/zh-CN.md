@@ -4,15 +4,6 @@
 
 引导用户按照流程完成任务的导航条。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Steps, Step } from '@varlet/ui'
-
-createApp().use(Steps).use(Step)
-```
-
 ### 基本使用
 
 通过 `active` 属性控制当前步骤条的进度，值为当前 `step` 的索引，从 `0` 起计。
@@ -22,6 +13,7 @@ createApp().use(Steps).use(Step)
 import { ref } from 'vue'
 
 const active = ref(0)
+
 const next = () => {
   active.value = (active.value + 1) % 4
 }

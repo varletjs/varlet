@@ -9,6 +9,7 @@ import { pack, use } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const active = ref(0)
+
 const next = () => {
   active.value = (active.value + 1) % 4
 }
