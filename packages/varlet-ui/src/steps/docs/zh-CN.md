@@ -18,55 +18,51 @@ createApp().use(Steps).use(Step)
 通过 `active` 属性控制当前步骤条的进度，值为当前 `step` 的索引，从 `0` 起计。
 
 ```html
-<var-steps :active="active">
-  <var-step>步骤1</var-step>
-  <var-step>步骤2</var-step>
-  <var-step>步骤3</var-step>
-  <var-step>步骤4</var-step>
-</var-steps>
-<var-button type="primary" block @click="next">下一步</var-button>
+<template>
+  <var-steps :active="active">
+    <var-step>步骤1</var-step>
+    <var-step>步骤2</var-step>
+    <var-step>步骤3</var-step>
+    <var-step>步骤4</var-step>
+  </var-steps>
+  <var-button type="primary" block @click="next">下一步</var-button>
+</template>
 ```
 
 ```javascript
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const active = ref(0)
-
-    const next = () => {
-      active.value = (active.value + 1) % 4
-    }
-
-    return {
-      active,
-      next
-    }
-  }
+const active = ref(0)
+const next = () => {
+  active.value = (active.value + 1) % 4
 }
+</script>
 ```
 
 ### 自定义样式
 
 ```html
-<var-steps
-  :active="active"
-  active-color="#f44336"
-  inactive-color="#e99eb4"
->
-  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
-    步骤1
-  </var-step>
-  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
-    步骤2
-  </var-step>
-  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
-    步骤3
-  </var-step>
-  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
-    步骤4
-  </var-step>
-</var-steps>
+<template>
+  <var-steps
+    :active="active"
+    active-color="#f44336"
+    inactive-color="#e99eb4"
+  >
+    <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
+      步骤1
+    </var-step>
+    <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
+      步骤2
+    </var-step>
+    <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
+      步骤3
+    </var-step>
+    <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
+      步骤4
+    </var-step>
+  </var-steps>
+</template>
 ```
 
 ### 垂直模式
@@ -74,12 +70,14 @@ export default {
 通过 `direction` 属性改变步骤条的显示方向。
 
 ```html
-<var-steps direction="vertical" :active="active">
-  <var-step>步骤1</var-step>
-  <var-step>步骤2</var-step>
-  <var-step>步骤3</var-step>
-  <var-step>步骤4</var-step>
-</var-steps>
+<template>
+  <var-steps direction="vertical" :active="active">
+    <var-step>步骤1</var-step>
+    <var-step>步骤2</var-step>
+    <var-step>步骤3</var-step>
+    <var-step>步骤4</var-step>
+  </var-steps>
+</template>
 ```
 
 ## API

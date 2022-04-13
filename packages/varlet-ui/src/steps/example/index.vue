@@ -24,7 +24,7 @@
   <var-button type="primary" block @click="next" style="margin-top: 20px">{{ pack.next }}</var-button>
 </template>
 
-<script>
+<script setup>
 import VarSteps from '..'
 import VarStep from '../../step'
 import VarButton from '../../button'
@@ -34,29 +34,12 @@ import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
-export default {
-  name: 'StepsExample',
-  components: {
-    VarSteps,
-    VarStep,
-    VarButton,
-    AppType,
-  },
-  setup() {
-    const active = ref(0)
-    const next = () => {
-      active.value = (active.value + 1) % 4
-    }
-
-    watchLang(use)
-
-    watchDarkMode(dark)
-
-    return {
-      pack,
-      next,
-      active,
-    }
-  },
+const active = ref(0)
+const next = () => {
+  active.value = (active.value + 1) % 4
 }
+
+watchLang(use)
+
+watchDarkMode(dark)
 </script>
