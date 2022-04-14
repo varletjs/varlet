@@ -1,16 +1,8 @@
 # 分割线
 
 ### 介绍
+
 用于分隔列表或布局的各个部分。
-
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Divider } from '@varlet/ui'
-
-createApp().use(Divider)
-```
 
 ### 基本使用
 ```html
@@ -38,12 +30,28 @@ createApp().use(Divider)
 ### 垂直分割线
 ```html
 <template>
-  <span>文字</span>
-  <var-divider vertical />
-  <span>文字</span>
-  <var-divider vertical />
-  <span>文字</span>
+  <div class="divider-example-vertical-container">
+    <span>文字</span>
+    <var-divider vertical />
+    <span>文字</span>
+    <var-divider vertical />
+    <span>文字</span>
+  </div>
 </template>
+
+<style>
+.divider-example-vertical-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+.divider-example-vertical-container span {
+  font-size: 14px;
+  color: #888;
+}
+</style>
 ```
 
 ### 带有文字描述的分割线

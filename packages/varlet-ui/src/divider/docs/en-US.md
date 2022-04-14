@@ -3,16 +3,6 @@
 ### Intro
 Used to separate parts of a list or layout.
 
-
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Divider } from '@varlet/ui'
-
-createApp().use(Divider)
-```
-
 ### Basic Usage
 ```html
 <template>
@@ -39,12 +29,28 @@ createApp().use(Divider)
 ### Vertical Divider
 ```html
 <template>
-  <span>Text</span>
-  <var-divider vertical />
-  <span>Text</span>
-  <var-divider vertical />
-  <span>Text</span>
+  <div class="divider-example-vertical-container">
+    <span>文字</span>
+    <var-divider vertical />
+    <span>文字</span>
+    <var-divider vertical />
+    <span>文字</span>
+  </div>
 </template>
+
+<style>
+.divider-example-vertical-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+.divider-example-vertical-container span {
+  font-size: 14px;
+  color: #888;
+}
+</style>
 ```
 
 ### The Divider with description

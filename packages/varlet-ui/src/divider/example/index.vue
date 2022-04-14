@@ -10,44 +10,37 @@ watchLang(use)
 watchDarkMode(dark)
 </script>
 <template>
-  <div>
-    <app-type>{{ pack.basicUsage }}</app-type>
-    <var-divider />
+  <app-type>{{ pack.basicUsage }}</app-type>
+  <var-divider />
+
+  <app-type>{{ pack.dashed }}</app-type>
+  <var-divider dashed />
+
+  <app-type>{{ pack.inset }}</app-type>
+  <var-divider inset />
+  <var-divider :inset="36" margin="36px 0" />
+  <var-divider inset="-36px" />
+
+  <app-type>{{ pack.vertical }}</app-type>
+  <div class="divider-example-vertical-container">
+    <span>{{ pack.text }}</span>
+    <var-divider vertical />
+    <span>{{ pack.text }}</span>
+    <var-divider vertical />
+    <span>{{ pack.text }}</span>
   </div>
-  <div>
-    <app-type>{{ pack.dashed }}</app-type>
-    <var-divider dashed />
-  </div>
-  <div>
-    <app-type>{{ pack.inset }}</app-type>
-    <var-divider inset />
-    <var-divider :inset="36" margin="36px 0" />
-    <var-divider inset="-36px" />
-  </div>
-  <div>
-    <app-type>{{ pack.vertical }}</app-type>
-    <div class="vertical-divider-wrapper">
-      <span>{{ pack.text }}</span>
-      <var-divider vertical />
-      <span>{{ pack.text }}</span>
-      <var-divider vertical />
-      <span>{{ pack.text }}</span>
-    </div>
-  </div>
-  <div>
-    <app-type>{{ pack.withDesc }}</app-type>
-    <var-divider :description="pack.withDescText" />
-  </div>
-  <div>
-    <app-type>{{ pack.custom }}</app-type>
-    <var-divider>
-      <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255)" />
-    </var-divider>
-  </div>
+
+  <app-type>{{ pack.withDesc }}</app-type>
+  <var-divider :description="pack.withDescText" />
+
+  <app-type>{{ pack.custom }}</app-type>
+  <var-divider>
+    <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255)" />
+  </var-divider>
 </template>
 
 <style lang="less" scoped>
-.vertical-divider-wrapper {
+.divider-example-vertical-container {
   display: flex;
   justify-content: center;
   align-items: center;

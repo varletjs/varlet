@@ -10,14 +10,13 @@
 <!-- playground-ignore -->
 <script setup>
 import dark from '@varlet/ui/es/themes/dark'
-import { ref } from 'vue'
 import { StyleProvider } from '@varlet/ui'
 
-const currentTheme = ref(null)
+let currentTheme = null
 
 const toggleTheme = () => {
-  currentTheme.value = currentTheme.value ? null : dark
-  StyleProvider(currentTheme.value)
+  currentTheme = currentTheme ? null : dark
+  StyleProvider(currentTheme)
 }
 </script>
 

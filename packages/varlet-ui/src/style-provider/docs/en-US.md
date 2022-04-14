@@ -11,6 +11,7 @@ Or use StyleProvider components.
 Here are some basic style variables for the component library
 
 ```css
+/* playground-ignore */
 :root {
   --font-size-xs: 10px;
   --font-size-sm: 12px;
@@ -39,25 +40,6 @@ Maybe you have a need to replace the style while the program is runtime，like a
 The component library provides a StyleProvider component to assist in managing styles,
 Component provides' `component call` and `function call` and two invocation modes.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { StyleProvider } from '@varlet/ui'
-
-createApp().use(StyleProvider)
-```
-
-### Scoped Install
-
-```html
-<script setup>
-import { StyleProvider } from '@varlet/ui'
-
-const VarStyleProvider = StyleProvider.Component
-</script>
-```
-
 ### Component Call
 
 Component calls can have a scope of custom component styles, Scope contamination is avoided.
@@ -78,6 +60,7 @@ const successTheme = {
   '--switch-handle-active-background': 'var(--color-success)',
   '--switch-track-active-background': 'var(--color-success)',
 }
+
 const styleVars = ref(null)
 
 const toggleTheme = () => {
@@ -107,18 +90,18 @@ A functional call is to update variables directly on `:root`, which is suitable 
 
 ```html
 <script setup>
-  import { StyleProvider } from '@varlet/ui'
+import { StyleProvider } from '@varlet/ui'
 
-  let rootStyleVars = null
+let rootStyleVars = null
 
-  const darkTheme = {
-    '--color-primary': '#3f51b5'
-  }
+const darkTheme = {
+  '--color-primary': '#3f51b5'
+}
 
-  const toggleRootTheme = () => {
-    rootStyleVars = rootStyleVars ? null : darkTheme
-    StyleProvider(rootStyleVars)
-  }
+const toggleRootTheme = () => {
+  rootStyleVars = rootStyleVars ? null : darkTheme
+  StyleProvider(rootStyleVars)
+}
 </script>
 
 <template>
