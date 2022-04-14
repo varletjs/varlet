@@ -23,7 +23,7 @@
   <var-action-sheet :actions="customStyleActions" v-model:show="show4" @select="handleSelect" />
 </template>
 
-<script>
+<script setup>
 import ActionSheet from '../index'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarButton from '../../button'
@@ -33,147 +33,120 @@ import { ref, reactive } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
-export default {
-  name: 'ActionSheetExample',
-  components: {
-    VarActionSheet: ActionSheet.Component,
-    VarButton,
-    AppType,
+const VarActionSheet = ActionSheet.Component
+const rawActions = [
+  {
+    name: 'Item 01',
+    icon: 'account-circle',
   },
-  setup() {
-    const rawActions = [
-      {
-        name: 'Item 01',
-        icon: 'account-circle',
-      },
-      {
-        name: 'Item 02',
-        icon: 'notebook',
-      },
-      {
-        name: 'Item 03',
-        icon: 'wifi',
-      },
-    ]
-    const rawDisabledActions = [
-      {
-        name: 'Item 01',
-        icon: 'account-circle',
-      },
-      {
-        name: 'Item 02',
-        icon: 'notebook',
-      },
-      {
-        name: 'Item 03',
-        icon: 'wifi',
-        disabled: true,
-      },
-    ]
-    const rawCustomStyleActions = [
-      {
-        name: 'Item 01',
-        icon: 'account-circle',
-        color: '#00c48f',
-      },
-      {
-        name: 'Item 02',
-        icon: 'notebook',
-        color: '#ff9800',
-      },
-      {
-        name: 'Item 03',
-        icon: 'wifi',
-        color: '#00afef',
-      },
-    ]
-    const actions = reactive(rawActions)
-    const disabledActions = reactive(rawDisabledActions)
-    const customStyleActions = reactive(rawCustomStyleActions)
-    const show = ref(false)
-    const show1 = ref(false)
-    const show2 = ref(false)
-    const show3 = ref(false)
-    const show4 = ref(false)
-
-    const createBasic = async () => {
-      const action = await ActionSheet({ actions: rawActions })
-
-      action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
-    }
-
-    const modifyTitle = async () => {
-      const action = await ActionSheet({
-        actions: rawActions,
-        title: pack.value.customTitle,
-      })
-
-      action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
-    }
-
-    const disableAction = async () => {
-      const action = await ActionSheet({
-        actions: rawDisabledActions,
-      })
-
-      action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
-    }
-
-    const customActionStyles = async () => {
-      const action = await ActionSheet({
-        actions: rawCustomStyleActions,
-      })
-
-      action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
-    }
-
-    const disableCloseOnClickAction = () => {
-      ActionSheet({
-        actions: [
-          {
-            name: 'Item 01',
-            icon: 'account-circle',
-          },
-          {
-            name: 'Item 02',
-            icon: 'notebook',
-          },
-          {
-            name: 'Item 03',
-            icon: 'wifi',
-          },
-        ],
-        closeOnClickAction: false,
-        onSelect: (action) => Snackbar(`${pack.value.yourSelected}${action.name}`),
-      })
-    }
-
-    const handleSelect = (action) => {
-      Snackbar(`${pack.value.yourSelected}${action.name}`)
-    }
-
-    watchLang(use)
-    watchDarkMode(dark)
-
-    return {
-      pack,
-      show,
-      show1,
-      show2,
-      show3,
-      show4,
-      actions,
-      disabledActions,
-      customStyleActions,
-      createBasic,
-      modifyTitle,
-      disableAction,
-      customActionStyles,
-      handleSelect,
-      disableCloseOnClickAction,
-    }
+  {
+    name: 'Item 02',
+    icon: 'notebook',
   },
+  {
+    name: 'Item 03',
+    icon: 'wifi',
+  },
+]
+const rawDisabledActions = [
+  {
+    name: 'Item 01',
+    icon: 'account-circle',
+  },
+  {
+    name: 'Item 02',
+    icon: 'notebook',
+  },
+  {
+    name: 'Item 03',
+    icon: 'wifi',
+    disabled: true,
+  },
+]
+const rawCustomStyleActions = [
+  {
+    name: 'Item 01',
+    icon: 'account-circle',
+    color: '#00c48f',
+  },
+  {
+    name: 'Item 02',
+    icon: 'notebook',
+    color: '#ff9800',
+  },
+  {
+    name: 'Item 03',
+    icon: 'wifi',
+    color: '#00afef',
+  },
+]
+const actions = reactive(rawActions)
+const disabledActions = reactive(rawDisabledActions)
+const customStyleActions = reactive(rawCustomStyleActions)
+const show = ref(false)
+const show1 = ref(false)
+const show2 = ref(false)
+const show3 = ref(false)
+const show4 = ref(false)
+
+const createBasic = async () => {
+  const action = await ActionSheet({ actions: rawActions })
+
+  action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
 }
+
+const modifyTitle = async () => {
+  const action = await ActionSheet({
+    actions: rawActions,
+    title: pack.value.customTitle,
+  })
+
+  action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
+}
+
+const disableAction = async () => {
+  const action = await ActionSheet({
+    actions: rawDisabledActions,
+  })
+
+  action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
+}
+
+const customActionStyles = async () => {
+  const action = await ActionSheet({
+    actions: rawCustomStyleActions,
+  })
+
+  action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
+}
+
+const disableCloseOnClickAction = () => {
+  ActionSheet({
+    actions: [
+      {
+        name: 'Item 01',
+        icon: 'account-circle',
+      },
+      {
+        name: 'Item 02',
+        icon: 'notebook',
+      },
+      {
+        name: 'Item 03',
+        icon: 'wifi',
+      },
+    ],
+    closeOnClickAction: false,
+    onSelect: (action) => Snackbar(`${pack.value.yourSelected}${action.name}`),
+  })
+}
+
+const handleSelect = (action) => {
+  Snackbar(`${pack.value.yourSelected}${action.name}`)
+}
+
+watchLang(use)
+watchDarkMode(dark)
 </script>
 
 <style scoped lang="less">
