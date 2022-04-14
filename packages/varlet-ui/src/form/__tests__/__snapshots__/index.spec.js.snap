@@ -557,9 +557,7 @@ exports[`test form with switch 3`] = `
 exports[`test form with uploader 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-uploader var--box\\">
-    <div class=\\"var-uploader__file-list\\">
-      <div class=\\"var-uploader__action var-elevation--2 var-uploader--disabled\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
-    </div>
+    <div class=\\"var-uploader__file-list\\"><label for=\\"var-uploader-136\\" class=\\"var-uploader__action var-elevation--2 var-uploader--disabled\\"><input id=\\"var-uploader-136\\" class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></label></div>
     <transition-stub>
       <!--v-if-->
     </transition-stub>
@@ -578,9 +576,7 @@ exports[`test form with uploader 1`] = `
 exports[`test form with uploader 2`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-uploader var--box\\">
-    <div class=\\"var-uploader__file-list\\">
-      <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
-    </div>
+    <div class=\\"var-uploader__file-list\\"><label for=\\"var-uploader-136\\" class=\\"var-uploader__action var-elevation--2\\"><input id=\\"var-uploader-136\\" class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></label></div>
     <transition-stub>
       <!--v-if-->
     </transition-stub>
@@ -599,9 +595,7 @@ exports[`test form with uploader 2`] = `
 exports[`test form with uploader 3`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-uploader var--box\\">
-    <div class=\\"var-uploader__file-list\\">
-      <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
-    </div>
+    <div class=\\"var-uploader__file-list\\"><label for=\\"var-uploader-136\\" class=\\"var-uploader__action var-elevation--2\\"><input id=\\"var-uploader-136\\" class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></label></div>
     <transition-stub>
       <div class=\\"var-form-details\\">
         <div class=\\"var-form-details__message\\">至少上传一个</div>
@@ -623,9 +617,7 @@ exports[`test form with uploader 3`] = `
 exports[`test form with uploader 4`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-uploader var--box\\">
-    <div class=\\"var-uploader__file-list\\">
-      <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
-    </div>
+    <div class=\\"var-uploader__file-list\\"><label for=\\"var-uploader-136\\" class=\\"var-uploader__action var-elevation--2\\"><input id=\\"var-uploader-136\\" class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></label></div>
     <transition-stub>
       <!--v-if-->
     </transition-stub>

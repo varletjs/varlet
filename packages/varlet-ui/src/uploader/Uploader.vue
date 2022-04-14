@@ -20,17 +20,17 @@
         ></div>
       </div>
 
-      <div
+      <label
+        :for="id"
         :class="
           classes([!$slots.default, `${n('action')} var-elevation--2`], [disabled || formDisabled, n('--disabled')])
         "
         v-if="!maxlength || modelValue.length < maxlength"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple || $slots.default }"
-        @click="triggerAction"
       >
         <input
+          :id="id"
           :class="n('action-input')"
-          ref="input"
           type="file"
           :multiple="multiple"
           :accept="accept"
@@ -42,7 +42,7 @@
         <slot>
           <var-icon :class="n('action-icon')" var-uploader-cover name="plus" />
         </slot>
-      </div>
+      </label>
     </div>
 
     <var-form-details :error-message="errorMessage" :maxlength-text="maxlengthText" />
@@ -75,7 +75,7 @@ import VarIcon from '../icon'
 import VarPopup from '../popup'
 import ImagePreview from '../image-preview'
 import Ripple from '../ripple'
-import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
+import { defineComponent, nextTick, reactive, computed, watch, ref, getCurrentInstance } from 'vue'
 import { props } from './props'
 import { isNumber, isHTMLSupportImage, isHTMLSupportVideo, toNumber, isString } from '../utils/shared'
 import { call, useValidation, createNamespace } from '../utils/components'
@@ -111,7 +111,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const input: Ref<null | HTMLElement> = ref()
+    const id: Ref<string> = ref(`var-uploader-${getCurrentInstance()!.uid}`)
     const showPreview: Ref<boolean> = ref(false)
     const currentPreview: Ref<null | VarFile> = ref(null)
     const maxlengthText: ComputedRef<string> = computed(() => {
@@ -140,10 +140,6 @@ export default defineComponent({
 
       return modelValue
     })
-
-    const triggerAction = () => {
-      input.value!.click()
-    }
 
     const preview = (varFile: VarFile) => {
       const { disabled, readonly, previewed } = props
@@ -326,7 +322,7 @@ export default defineComponent({
     return {
       n,
       classes,
-      input,
+      id,
       files,
       showPreview,
       currentPreview,
@@ -336,7 +332,6 @@ export default defineComponent({
       isHTMLSupportImage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
-      triggerAction,
       preview,
       handleChange,
       handleRemove,
