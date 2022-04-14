@@ -55,7 +55,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Snackbar from '../index'
 import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
@@ -64,69 +64,55 @@ import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
-export default {
-  name: 'SnackbarExample',
-  components: {
-    VarSnackbar: Snackbar.Component,
-    VarButton,
-    AppType,
-  },
-  setup() {
-    const shows = reactive({
-      show1: false,
-      show2: false,
-      show3: false,
-      show4: false,
-      show9: false,
-    })
+const shows = reactive({
+  show1: false,
+  show2: false,
+  show3: false,
+  show4: false,
+  show9: false,
+})
 
-    const changeValue = (type) => {
-      shows[type] = !shows[type]
-    }
+const VarSnackbar = Snackbar.Component
 
-    const create = (type) => {
-      const text = type === 'loading' ? pack.value.wait : pack.value.text
-      Snackbar[type](text)
+const { show1, show2, show3, show4, show9 } = toRefs(shows)
 
-      if (type === 'loading') {
-        setTimeout(() => {
-          Snackbar.success(pack.value.loaded)
-        }, 2000)
-      }
-    }
-
-    const createSnackbar = (type) => {
-      if (type === 'time') {
-        Snackbar({
-          content: pack.value.text,
-          duration: 1000,
-        })
-      }
-
-      if (type === 'position') {
-        Snackbar({
-          content: pack.value.text,
-          position: 'bottom',
-        })
-      }
-
-      if (!type) {
-        Snackbar(pack.value.text)
-      }
-    }
-
-    watchLang(use)
-    watchDarkMode(dark)
-
-    return {
-      ...toRefs(shows),
-      pack,
-      createSnackbar,
-      changeValue,
-      create,
-    }
-  },
+const changeValue = (type) => {
+  shows[type] = !shows[type]
 }
+
+const create = (type) => {
+  const text = type === 'loading' ? pack.value.wait : pack.value.text
+  Snackbar[type](text)
+
+  if (type === 'loading') {
+    setTimeout(() => {
+      Snackbar.success(pack.value.loaded)
+    }, 2000)
+  }
+}
+
+const createSnackbar = (type) => {
+  if (type === 'time') {
+    Snackbar({
+      content: pack.value.text,
+      duration: 1000,
+    })
+  }
+
+  if (type === 'position') {
+    Snackbar({
+      content: pack.value.text,
+      position: 'bottom',
+    })
+  }
+
+  if (!type) {
+    Snackbar(pack.value.text)
+  }
+}
+
+watchLang(use)
+watchDarkMode(dark)
 </script>
 
 <style lang="less" scoped>
