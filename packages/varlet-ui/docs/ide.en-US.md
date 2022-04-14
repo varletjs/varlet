@@ -18,6 +18,7 @@ Open the library properties documentation by setting 'editor-> general-> Code Co
 Install the `Volar` plugin and configure `ts.config.json` as follows to get type hints in the template.
 
 ```json
+// playground-ignore
 {
   "compilerOptions": {
     "types": ["@varlet/ui/types/global"]

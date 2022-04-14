@@ -1,3 +1,31 @@
+<script setup>
+import VarButton from '../index'
+import VarIcon from '../../icon'
+import VarSpace from '../../space'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import Snackbar from '../../snackbar'
+import dark from '../../themes/dark'
+import { pack, use } from './locale'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+
+const handleClick = () => {
+  Snackbar.success(pack.value.clickSuccess)
+}
+
+const handleTouchstart = () => {
+  Snackbar.success(pack.value.touchstartSuccess)
+}
+
+const handleAutoLoadingClick = () => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, 2000)
+  })
+}
+
+watchLang(use)
+watchDarkMode(dark)
+</script>
+
 <template>
   <app-type>{{ pack.themeColorButton }}</app-type>
   <var-space :size="[10, 10]">
@@ -76,31 +104,3 @@
     <var-button type="success" @click="handleAutoLoadingClick" auto-loading>{{ pack.autoLoading }}</var-button>
   </var-space>
 </template>
-
-<script setup>
-import VarButton from '../index'
-import VarIcon from '../../icon'
-import VarSpace from '../../space'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Snackbar from '../../snackbar'
-import dark from '../../themes/dark'
-import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-
-const handleClick = () => {
-  Snackbar.success(pack.value.clickSuccess)
-}
-
-const handleTouchstart = () => {
-  Snackbar.success(pack.value.touchstartSuccess)
-}
-
-const handleAutoLoadingClick = () => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 2000)
-  })
-}
-
-watchLang(use)
-watchDarkMode(dark)
-</script>

@@ -1,17 +1,9 @@
 # List
 
 ### Intro
+
 Unlimited scroll load list, touch bottom load, support manual check position load.
 Support custom loading state, error state, data loading completed state.
-
-### Install
-
-```js
-import { createApp } from 'vue'
-import { List } from '@varlet/ui'
-
-createApp().use(List)
-```
 
 ### Basic Use
 
@@ -62,6 +54,7 @@ Clicking on the error message will help you set the `error` to `false` and trigg
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const loading = ref(false)
 const error = ref(false)
 const list = ref([])
@@ -101,6 +94,7 @@ const load = () => {
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const loading = ref(false)
 const finished = ref(false)
 const list = ref([])
@@ -137,6 +131,7 @@ const load = () => {
 ```
 
 ### Be Careful
+
 We detect bottoming by listening for the scroll event of the scroll container and perform the load.
 A scroll container is the nearest element that `overflow-y='auto'` or `scroll`
 When you set an element's `overflow-x` to a value other than `visible`, The browser will fix your `overflow-y` to `auto` in order to maintain a `BFC` structure.

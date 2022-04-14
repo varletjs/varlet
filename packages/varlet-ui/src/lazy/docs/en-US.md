@@ -4,36 +4,63 @@
 
 Load when the image is visible
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Lazy } from '@varlet/ui'
-
-createApp().use(Lazy)
-```
-
 ### Basic Use
 
 ```html
-<img v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'">
+<template>
+  <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'">
+</template>
+
+<style>
+.lazy-example-cat {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-size: cover;
+  pointer-events: none;
+}
+</style>
 ```
 
 ### Background Image Lazy Load
 ```html
-<div v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
+<template>
+  <div class="lazy-example-cat" v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
+</template>
+
+<style>
+.lazy-example-cat {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-size: cover;
+  pointer-events: none;
+}
+</style>
 ```
 
 ### Inline Attributes
 You can modify the `loading`, `error` image, and `reload attempts` by using inline properties.
 
 ```html
-<img 
-  v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'"
-  lazy-loading="https://xxx.cn/loading.png"
-  lazy-error="https://xxx.cn/error.png"
-  lazy-attempt="3"
->
+<template>
+  <img class="lazy-example-cat" 
+    v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'"
+    lazy-loading="https://xxx.cn/loading.png"
+    lazy-error="https://xxx.cn/error.png"
+    lazy-attempt="3"
+  >
+</template>
+
+<style>
+.lazy-example-cat {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-size: cover;
+  pointer-events: none;
+}
+</style>
 ```
 
 ### Plugin
@@ -41,6 +68,7 @@ You can modify the `loading`, `error` image, and `reload attempts` by using inli
 The option to set the default `Lazy` load option is provided, which is passed in at plugin registration.
 
 ```js
+// playground-ignore
 import { createApp } from 'vue'
 import { Lazy } from '@varlet/ui'
 

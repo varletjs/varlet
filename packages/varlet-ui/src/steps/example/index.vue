@@ -1,3 +1,24 @@
+<script setup>
+import VarSteps from '..'
+import VarStep from '../../step'
+import VarButton from '../../button'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import dark from '../../themes/dark'
+import { ref } from 'vue'
+import { pack, use } from './locale'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+
+const active = ref(0)
+
+const next = () => {
+  active.value = (active.value + 1) % 4
+}
+
+watchLang(use)
+
+watchDarkMode(dark)
+</script>
+
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-steps :active="active">
@@ -23,40 +44,3 @@
 
   <var-button type="primary" block @click="next" style="margin-top: 20px">{{ pack.next }}</var-button>
 </template>
-
-<script>
-import VarSteps from '..'
-import VarStep from '../../step'
-import VarButton from '../../button'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import dark from '../../themes/dark'
-import { ref } from 'vue'
-import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-
-export default {
-  name: 'StepsExample',
-  components: {
-    VarSteps,
-    VarStep,
-    VarButton,
-    AppType,
-  },
-  setup() {
-    const active = ref(0)
-    const next = () => {
-      active.value = (active.value + 1) % 4
-    }
-
-    watchLang(use)
-
-    watchDarkMode(dark)
-
-    return {
-      pack,
-      next,
-      active,
-    }
-  },
-}
-</script>

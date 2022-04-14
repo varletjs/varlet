@@ -4,15 +4,6 @@
 
 一个极简的表格，当你需要以表格的形式展示一些数据的时候，可能会用的上它。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Table } from '@varlet/ui'
-
-createApp().use(Table)
-```
-
 ### 基本使用
 
 ```vue
@@ -20,27 +11,29 @@ import BasicExample from '../example/Basic.vue'
 ```
 
 ```html
-<var-table>
-  <thead>
-    <tr>
-      <th>姓名</th>
-      <th>数学</th>
-      <th>英语</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>耗子君</td>
-      <td>124</td>
-      <td>38</td>
-    </tr>
-    <tr>
-      <td>火猫桑</td>
-      <td>100</td>
-      <td>135</td>
-    </tr>
-  </tbody>
-</var-table>
+<template>
+  <var-table>
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>数学</th>
+        <th>英语</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>耗子君</td>
+        <td>124</td>
+        <td>38</td>
+      </tr>
+      <tr>
+        <td>火猫桑</td>
+        <td>100</td>
+        <td>135</td>
+      </tr>
+    </tbody>
+  </var-table>
+</template>
 ```
 
 ### 尾部插槽
@@ -52,38 +45,9 @@ import FooterSlots from '../example/FooterSlots.vue'
 ```
 
 ```html
-<var-table>
-  <thead>
-    <tr>
-      <th>姓名</th>
-      <th>数学</th>
-      <th>英语</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr v-for="l in list" :key="l.name">
-      <td>{{ l.name }}</td>
-      <td>{{ l.math }}</td>
-      <td>{{ l.english }}</td>
-    </tr>
-  </tbody>
+<script>
+import { ref } from 'vue'
 
-  <template #footer>
-    <div class="footer">
-      <!-- 手机预览模式下分页使用了simple为true的模式，对小屏设备更友好 -->
-      <var-pagination
-        :simple="false"
-        :current="1"
-        :total="100"
-        :size-option="[5, 10]"
-        @change="get"
-      />
-    </div>
-  </template>
-</var-table>
-```
-
-```js
 const gen = (current, size) => {
   return Array.from({ length: size }).map((_, index) => {
     const id = (current - 1) * size + index + 1
@@ -96,30 +60,54 @@ const gen = (current, size) => {
   })
 }
 
-export default {
-  setup() {
-    const list = ref(gen(1, 10))
+const list = ref(gen(1, 10))
 
-    const get = (current, size) => {
-      list.value = gen(current, size)
-    }
-
-    return {
-      list,
-      get
-    }
-  }
+const get = (current, size) => {
+  list.value = gen(current, size)
 }
-```
+</script>
 
-```less
-.footer {
+<template>
+  <var-table>
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>数学</th>
+        <th>英语</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="l in list" :key="l.name">
+        <td>{{ l.name }}</td>
+        <td>{{ l.math }}</td>
+        <td>{{ l.english }}</td>
+      </tr>
+    </tbody>
+
+    <template #footer>
+      <div class="table-example-footer">
+        <!-- 手机预览模式下分页使用了simple为true的模式，对小屏设备更友好 -->
+        <var-pagination
+          :simple="false"
+          :current="1"
+          :total="100"
+          :size-option="[5, 10]"
+          @change="get"
+        />
+      </div>
+    </template>
+  </var-table>
+</template>
+
+<style>
+.table-example-footer  {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 60px;
   padding: 0 16px;
 }
+</style>
 ```
 
 ## API
