@@ -1,3 +1,49 @@
+<script setup>
+import VarForm from '..'
+import VarInput from '../../input'
+import VarSelect from '../../select'
+import VarOption from '../../option'
+import VarCheckboxGroup from '../../checkbox-group'
+import VarCheckbox from '../../checkbox'
+import VarRadioGroup from '../../radio-group'
+import VarRadio from '../../radio'
+import VarButton from '../../button'
+import VarSwitch from '../../switch'
+import VarSlider from '../../slider'
+import VarUploader from '../../uploader'
+import VarCounter from '../../counter'
+import VarRate from '../../rate'
+import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
+import dark from '../../themes/dark'
+import { reactive, ref } from 'vue'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { use, pack } from './locale'
+
+const formData = reactive({
+  username: '',
+  password: '',
+  department: '',
+  gender: undefined,
+  license: false,
+  range: 0,
+  count: 0,
+  group: [],
+  score: 0,
+  like: [],
+  files: [],
+})
+
+const form = ref(null)
+const disabled = ref(false)
+const readonly = ref(false)
+
+watchLang((lang) => {
+  use(lang)
+  form.value?.reset()
+})
+watchDarkMode(dark)
+</script>
+
 <template>
   <app-type>{{ pack.example }}</app-type>
   <var-form ref="form" :disabled="disabled" :readonly="readonly">
@@ -64,82 +110,6 @@
 
   <div class="space"></div>
 </template>
-
-<script>
-import VarForm from '..'
-import VarInput from '../../input'
-import VarSelect from '../../select'
-import VarOption from '../../option'
-import VarCheckboxGroup from '../../checkbox-group'
-import VarCheckbox from '../../checkbox'
-import VarRadioGroup from '../../radio-group'
-import VarRadio from '../../radio'
-import VarButton from '../../button'
-import VarSwitch from '../../switch'
-import VarSlider from '../../slider'
-import VarUploader from '../../uploader'
-import VarCounter from '../../counter'
-import VarRate from '../../rate'
-import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
-import dark from '../../themes/dark'
-import { reactive, ref } from 'vue'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-import { use, pack } from './locale'
-
-export default {
-  name: 'FormExample',
-  components: {
-    VarForm,
-    VarInput,
-    VarSelect,
-    VarCheckboxGroup,
-    VarCheckbox,
-    VarRadioGroup,
-    VarRadio,
-    VarOption,
-    VarButton,
-    VarSlider,
-    VarSwitch,
-    VarUploader,
-    VarCounter,
-    VarRate,
-    AppType,
-  },
-  setup() {
-    const formData = reactive({
-      username: '',
-      password: '',
-      department: '',
-      gender: undefined,
-      license: false,
-      range: 0,
-      count: 0,
-      group: [],
-      score: 0,
-      like: [],
-      files: [],
-    })
-
-    const form = ref(null)
-    const disabled = ref(false)
-    const readonly = ref(false)
-
-    watchLang((lang) => {
-      use(lang)
-      form.value?.reset()
-    })
-    watchDarkMode(dark)
-
-    return {
-      pack,
-      form,
-      formData,
-      disabled,
-      readonly,
-    }
-  },
-}
-</script>
 
 <style scoped lang="less">
 .row {
