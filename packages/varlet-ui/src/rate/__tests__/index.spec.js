@@ -12,7 +12,7 @@ test('test rate example', () => {
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
-
+1
 test('test rate plugin', () => {
   const app = createApp({}).use(Rate)
   expect(app.component(Rate.name)).toBeTruthy()
