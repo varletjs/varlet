@@ -1,14 +1,5 @@
 # 卡片
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Card } from '@varlet/ui'
-
-createApp().use(Card)
-```
-
 ### 基本使用
 
 ```html
@@ -56,8 +47,10 @@ createApp().use(Card)
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   >
     <template #extra>
-      <var-button type="primary" style="margin-right: 10px">添加按钮</var-button>
-      <var-button type="warning">添加按钮</var-button>
+      <var-space>
+        <var-button type="primary">添加按钮</var-button>
+        <var-button type="warning">添加按钮</var-button>
+      </var-space>
     </template>
   </var-card>
 </template>
