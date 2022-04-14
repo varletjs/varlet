@@ -1,32 +1,8 @@
-<template>
-  <app-type>{{ pack.functionCall }}</app-type>
-  <var-button type="primary" block @click="createBasic">{{ pack.basicUsage }}</var-button>
-  <var-button type="primary" block @click="modifyTitle">{{ pack.modifyTitle }}</var-button>
-  <var-button type="primary" block @click="disableAction">{{ pack.disabled }}</var-button>
-  <var-button type="primary" block @click="disableCloseOnClickAction">{{ pack.disableCloseOnClickAction }}</var-button>
-  <var-button type="primary" block @click="customActionStyles">{{ pack.customActionStyles }}</var-button>
-
-  <app-type>{{ pack.componentCall }}</app-type>
-  <var-button type="warning" block @click="show = true">{{ pack.basicUsage }}</var-button>
-  <var-action-sheet :actions="actions" v-model:show="show" @select="handleSelect" />
-
-  <var-button type="warning" block @click="show1 = true">{{ pack.modifyTitle }}</var-button>
-  <var-action-sheet :title="pack.customTitle" :actions="actions" v-model:show="show1" @select="handleSelect" />
-
-  <var-button type="warning" block @click="show2 = true">{{ pack.disabled }}</var-button>
-  <var-action-sheet :actions="disabledActions" v-model:show="show2" @select="handleSelect" />
-
-  <var-button type="warning" block @click="show3 = true">{{ pack.disableCloseOnClickAction }}</var-button>
-  <var-action-sheet :close-on-click-action="false" :actions="actions" v-model:show="show3" @select="handleSelect" />
-
-  <var-button type="warning" block @click="show4 = true">{{ pack.customActionStyles }}</var-button>
-  <var-action-sheet :actions="customStyleActions" v-model:show="show4" @select="handleSelect" />
-</template>
-
 <script setup>
 import ActionSheet from '../index'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarButton from '../../button'
+import VarSpace from '../../space'
 import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
 import { ref, reactive } from 'vue'
@@ -148,9 +124,30 @@ const handleSelect = (action) => {
 watchLang(use)
 watchDarkMode(dark)
 </script>
+<template>
+  <app-type>{{ pack.functionCall }}</app-type>
+  <var-space direction="column" :size="[10, 10]">
+    <var-button type="primary" block @click="createBasic">{{ pack.basicUsage }}</var-button>
+    <var-button type="primary" block @click="modifyTitle">{{ pack.modifyTitle }}</var-button>
+    <var-button type="primary" block @click="disableAction">{{ pack.disabled }}</var-button>
+    <var-button type="primary" block @click="disableCloseOnClickAction"
+      >{{ pack.disableCloseOnClickAction }}
+    </var-button>
+    <var-button type="primary" block @click="customActionStyles">{{ pack.customActionStyles }}</var-button>
+  </var-space>
 
-<style scoped lang="less">
-.var-button {
-  margin-top: 10px;
-}
-</style>
+  <app-type>{{ pack.componentCall }}</app-type>
+  <var-space direction="column" :size="[10, 10]">
+    <var-button type="warning" block @click="show = true">{{ pack.basicUsage }}</var-button>
+    <var-button type="warning" block @click="show1 = true">{{ pack.modifyTitle }}</var-button>
+    <var-button type="warning" block @click="show2 = true">{{ pack.disabled }}</var-button>
+    <var-button type="warning" block @click="show3 = true">{{ pack.disableCloseOnClickAction }}</var-button>
+    <var-button type="warning" block @click="show4 = true">{{ pack.customActionStyles }}</var-button>
+  </var-space>
+
+  <var-action-sheet :actions="actions" v-model:show="show" @select="handleSelect" />
+  <var-action-sheet :title="pack.customTitle" :actions="actions" v-model:show="show1" @select="handleSelect" />
+  <var-action-sheet :actions="disabledActions" v-model:show="show2" @select="handleSelect" />
+  <var-action-sheet :close-on-click-action="false" :actions="actions" v-model:show="show3" @select="handleSelect" />
+  <var-action-sheet :actions="customStyleActions" v-model:show="show4" @select="handleSelect" />
+</template>

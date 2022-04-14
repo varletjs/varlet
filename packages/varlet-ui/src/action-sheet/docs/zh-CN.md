@@ -30,9 +30,6 @@ const VarActionSheet = ActionSheet.Component;
 ### 基本使用
 
 ```html
-<template>
-  <var-button type="primary" block @click="createBasic">基本使用</var-button>
-</template>
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
@@ -55,14 +52,14 @@ const createBasic = async () => {
   action !== 'close' && Snackbar(`${action.name}`)
 }
 </script>
+<template>
+  <var-button type="primary" block @click="createBasic">基本使用</var-button>
+</template>
 ```
 
 ### 修改标题
 
 ```html
-<template>
-  <var-button type="primary" block @click="handleSelect">修改标题</var-button>
-</template>
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
@@ -85,6 +82,9 @@ const handleSelect = async () => {
   action !== 'close' && Snackbar(`${action.name}`)
 }
 </script>
+<template>
+  <var-button type="primary" block @click="handleSelect">修改标题</var-button>
+</template>
 ```
 
 ### 禁用选项
@@ -92,9 +92,6 @@ const handleSelect = async () => {
 选项传入 `disabled` 可以使选项处于禁用状态。
 
 ```html
-<template>
-  <var-button type="primary" block @click="handleSelect">禁用选项</var-button>
-</template>
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
@@ -118,6 +115,9 @@ const handleSelect = async () => {
   action !== 'close' && Snackbar(`${action.name}`)
 }
 </script>
+<template>
+  <var-button type="primary" block @click="handleSelect">禁用选项</var-button>
+</template>
 ```
 
 ### 禁用点击选项时关闭动作面板
@@ -126,9 +126,6 @@ const handleSelect = async () => {
 由于 `Promise` 只会被 `resolve` 一次，所以推荐使用 `onSelect` 监听用户选择行为。
 
 ```html
-<template>
-  <var-button type="primary" block @click="handleSelect">禁用关闭动作面板</var-button>
-</template>
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
@@ -154,6 +151,9 @@ const handleSelect = async () => {
   })
 }
 </script>
+<template>
+  <var-button type="primary" block @click="handleSelect">禁用关闭动作面板</var-button>
+</template>
 ```
 
 ### 自定义选项样式
@@ -161,9 +161,6 @@ const handleSelect = async () => {
 选项提供了可以配置样式的参数，具体选项的参数可选项见 `Action 的数据结构`。
 
 ```html
-<template>
-  <var-button type="primary" block @click="handleSelect">自定义选项样式</var-button>
-</template>
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
@@ -189,6 +186,9 @@ const handleSelect = async () => {
   action !== 'close' && Snackbar(`${action.name}`)
 }
 </script>
+<template>
+  <var-button type="primary" block @click="handleSelect">自定义选项样式</var-button>
+</template>
 ```
 
 ## 组件调用
@@ -196,14 +196,6 @@ const handleSelect = async () => {
 ### 基本使用
 
 ```html
-<template>
-  <var-button type="warning" block @click="show = true">基本使用</var-button>
-  <var-action-sheet 
-    :actions="actions"
-    v-model:show="show"
-    @select="handleSelect"
-  />
-</template>
 <script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
@@ -227,11 +219,42 @@ const handleSelect = (action) => {
   Snackbar(`${action.name}`)
 }
 </script>
+<template>
+  <var-button type="warning" block @click="show = true">基本使用</var-button>
+  <var-action-sheet 
+    :actions="actions"
+    v-model:show="show"
+    @select="handleSelect"
+  />
+</template>
 ```
 
 ### 修改标题
 
 ```html
+<script setup>
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+const actions = [
+  {
+    name: 'Item 01',
+    icon: 'account-circle',
+  },
+  {
+    name: 'Item 02',
+    icon: 'notebook',
+  },
+  {
+    name: 'Item 03',
+    icon: 'wifi',
+  },
+]
+const show = ref(false);
+const handleSelect = (action) => {
+  Snackbar(`${action.name}`)
+}
+</script>
 <template>
   <var-button type="warning" block @click="show = true">修改标题</var-button>
   <var-action-sheet 
@@ -241,42 +264,11 @@ const handleSelect = (action) => {
     @select="handleSelect"
   />
 </template>
-<script setup>
-import { ref } from 'vue'
-import { Snackbar } from '@varlet/ui'
-
-const actions = [
-  {
-    name: 'Item 01',
-    icon: 'account-circle',
-  },
-  {
-    name: 'Item 02',
-    icon: 'notebook',
-  },
-  {
-    name: 'Item 03',
-    icon: 'wifi',
-  },
-]
-const show = ref(false);
-const handleSelect = (action) => {
-  Snackbar(`${action.name}`)
-}
-</script>
 ```
 
 ### 禁用选项
 
 ```html
-<template>
-  <var-button type="warning" block @click="show = true">禁用选项</var-button>
-  <var-action-sheet 
-    :actions="actions"
-    v-model:show="show"
-    @select="handleSelect"
-  />
-</template>
 <script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
@@ -301,20 +293,19 @@ const handleSelect = (action) => {
   Snackbar(`${action.name}`)
 }
 </script>
+<template>
+  <var-button type="warning" block @click="show = true">禁用选项</var-button>
+  <var-action-sheet 
+    :actions="actions"
+    v-model:show="show"
+    @select="handleSelect"
+  />
+</template>
 ```
 
 ### 禁用点击选项时关闭动作面板
 
 ```html
-<template>
-  <var-button type="warning" block @click="show = true">禁用点击选项时关闭动作面板</var-button>
-  <var-action-sheet 
-    :close-on-click-action="false"
-    :actions="actions" 
-    v-model:show="show" 
-    @select="handleSelect"
-  />
-</template>
 <script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
@@ -338,19 +329,20 @@ const handleSelect = (action) => {
   Snackbar(`${action.name}`)
 }
 </script>
-```
-
-### 自定义选项样式
-
-```html
 <template>
-  <var-button type="warning" block @click="show = true">自定义选项样式</var-button>
+  <var-button type="warning" block @click="show = true">禁用点击选项时关闭动作面板</var-button>
   <var-action-sheet 
+    :close-on-click-action="false"
     :actions="actions" 
     v-model:show="show" 
     @select="handleSelect"
   />
 </template>
+```
+
+### 自定义选项样式
+
+```html
 <script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
@@ -377,6 +369,14 @@ const handleSelect = (action) => {
   Snackbar(`${action.name}`)
 }
 </script>
+<template>
+  <var-button type="warning" block @click="show = true">自定义选项样式</var-button>
+  <var-action-sheet 
+    :actions="actions" 
+    v-model:show="show" 
+    @select="handleSelect"
+  />
+</template>
 ```
 
 
