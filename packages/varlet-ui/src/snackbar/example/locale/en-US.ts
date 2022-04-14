@@ -16,4 +16,5 @@ export default {
   bottomDisplay: 'Bottom Display',
   hiddenTime: 'Display Duration',
   forbidClick: 'Forbid Click',
+  multiple: 'Multiple',
 }

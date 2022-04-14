@@ -55,6 +55,17 @@ const createSnackbar = (type) => {
   }
 }
 
+const openMultiple = () => {
+  Snackbar.allowMultiple(true)
+
+  const snackbar1 = Snackbar('Snackbar 1')
+  Snackbar.success('Snackbar 2')
+
+  setTimeout(() => {
+    snackbar1.clear()
+  }, 1000)
+}
+
 watchLang(use)
 watchDarkMode(dark)
 </script>
@@ -84,6 +95,9 @@ watchDarkMode(dark)
     <var-button type="danger" block @click="create('error')">{{ pack.error }}</var-button>
     <var-button type="primary" block @click="create('loading')">{{ pack.loading }}</var-button>
   </var-space>
+
+  <app-type>{{ pack.multiple }}</app-type>
+  <var-button type="primary" block @click="openMultiple">{{ pack.multiple }}</var-button>
 
   <div class="snackbar-demo">
     <var-snackbar v-model:show="show1">

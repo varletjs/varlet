@@ -230,26 +230,28 @@ const createSnackbar = (type) => {
 </template>
 ```
 
-### Singleton
+### Multiple
 
 When using functional calls, Snackbar use singleton mode by default, if you need to pop multiple Snackbar at the same time, you can refer to the following example:
 
 ```html
 <script setup>
 import { Snackbar } from '@varlet/ui'
-import { onMounted } from 'vue'
 
-onMounted(()=>{
+const openMultiple = () => {
   Snackbar.allowMultiple(true)
-})
 
-const createSnackbar = () => {
-  Snackbar('This is a Snackbar');
+  const snackbar1 = Snackbar('Snackbar 1');
+  Snackbar.success('Snackbar 2');
+
+  setTimeout(() => {
+    snackbar1.clear()
+  }, 1000)
 }
 </script>
 
 <template>
-  <var-button block @click="createSnackbar()">create snackbar</var-button>
+  <var-button type="primary" block @click="openMultiple">Multiple</var-button>
 </template>
 ```
 

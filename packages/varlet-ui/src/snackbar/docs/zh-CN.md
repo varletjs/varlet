@@ -227,26 +227,28 @@ const createSnackbar = (type) => {
 </template>
 ```
 
-### 单例模式
+### 多例模式
 
 使用函数式调用时，Snackbar 默认采用单例模式，即同一时间只会存在一个 Snackbar，如果需要在同一时间弹出多个 Snackbar，可以参考下面的示例
 
 ```html
 <script setup>
 import { Snackbar } from '@varlet/ui'
-import { onMounted } from 'vue'
 
-onMounted(()=>{
+const openMultiple = () => {
   Snackbar.allowMultiple(true)
-})
 
-const createSnackbar = () => {
-  Snackbar('这是一个消息条');
+  const snackbar1 = Snackbar('Snackbar 1');
+  Snackbar.success('Snackbar 2');
+
+  setTimeout(() => {
+    snackbar1.clear()
+  }, 1000)
 }
 </script>
 
 <template>
-  <var-button block @click="createSnackbar()">create snackbar</var-button>
+  <var-button type="primary" block @click="openMultiple">多例模式</var-button>
 </template>
 ```
 
