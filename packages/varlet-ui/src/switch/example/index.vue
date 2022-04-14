@@ -52,11 +52,6 @@ watchDarkMode(dark)
 </template>
 
 <style scoped lang="less">
-.var-switch__example-block {
-  display: flex;
-  align-items: center;
-}
-
 .var-switch {
   margin-right: 30px;
 }
