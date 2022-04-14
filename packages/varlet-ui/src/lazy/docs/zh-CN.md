@@ -4,21 +4,13 @@
 
 在图片可见时进行加载
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Lazy } from '@varlet/ui'
-
-createApp().use(Lazy)
-```
-
 ### 基本用法
 
 ```html
 <template>
   <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'">
 </template>
+
 <style>
 .lazy-example-cat {
   width: 100%;
@@ -36,6 +28,7 @@ createApp().use(Lazy)
 <template>
   <div class="lazy-example-cat" v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
 </template>
+
 <style>
 .lazy-example-cat {
   width: 100%;
@@ -61,6 +54,7 @@ createApp().use(Lazy)
     lazy-attempt="3"
   >
 </template>
+
 <style>
 .lazy-example-cat {
   width: 100%;
@@ -77,6 +71,7 @@ createApp().use(Lazy)
 `Lazy` 提供了在插件注册时传入的选项，可以设置默认的懒加载选项。
 
 ```js
+// playground-ignore
 import { createApp } from 'vue'
 import { Lazy } from '@varlet/ui'
 

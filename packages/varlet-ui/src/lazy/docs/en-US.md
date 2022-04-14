@@ -4,21 +4,13 @@
 
 Load when the image is visible
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Lazy } from '@varlet/ui'
-
-createApp().use(Lazy)
-```
-
 ### Basic Use
 
 ```html
 <template>
   <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'">
 </template>
+
 <style>
 .lazy-example-cat {
   width: 100%;
@@ -35,6 +27,7 @@ createApp().use(Lazy)
 <template>
   <div class="lazy-example-cat" v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
 </template>
+
 <style>
 .lazy-example-cat {
   width: 100%;
@@ -58,6 +51,7 @@ You can modify the `loading`, `error` image, and `reload attempts` by using inli
     lazy-attempt="3"
   >
 </template>
+
 <style>
 .lazy-example-cat {
   width: 100%;
@@ -74,6 +68,7 @@ You can modify the `loading`, `error` image, and `reload attempts` by using inli
 The option to set the default `Lazy` load option is provided, which is passed in at plugin registration.
 
 ```js
+// playground-ignore
 import { createApp } from 'vue'
 import { Lazy } from '@varlet/ui'
 

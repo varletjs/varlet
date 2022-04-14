@@ -10,6 +10,7 @@
 以下是组件库一些基本的样式变量
 
 ```css
+/* playground-ignore */
 :root {
   --font-size-xs: 10px;
   --font-size-sm: 12px;
@@ -37,25 +38,6 @@
 可能您有在程序运行时替换样式的需求，比如一键换肤之类的，组件库提供了 StyleProvider 组件来辅助管理样式，
 组件提供了 `组件式调用` 和 `函数式调用` 和两种调用方式。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { StyleProvider } from '@varlet/ui'
-
-createApp().use(StyleProvider)
-```
-
-### 局部引入
-
-```html
-<script setup>
-import { StyleProvider } from '@varlet/ui'
-
-const VarStyleProvider = StyleProvider.Component
-</script>
-```
-
 ### 组件式调用
 
 组件式调用可以有范围性的定制组件样式，避免了全局污染，需要注意是有些使用 `teleport` 传送到  `StyleProvider` 外的元素将不会生效。
@@ -75,6 +57,7 @@ const successTheme = {
   '--switch-handle-active-background': 'var(--color-success)',
   '--switch-track-active-background': 'var(--color-success)',
 }
+
 const styleVars = ref(null)
 
 const toggleTheme = () => {
@@ -104,18 +87,18 @@ const toggleTheme = () => {
 
 ```html
 <script setup>
-  import { StyleProvider } from '@varlet/ui'
+import { StyleProvider } from '@varlet/ui'
 
-  let rootStyleVars = null
+let rootStyleVars = null
 
-  const darkTheme = {
-    '--color-primary': '#3f51b5'
-  }
+const darkTheme = {
+  '--color-primary': '#3f51b5'
+}
 
-  const toggleRootTheme = () => {
-    rootStyleVars = rootStyleVars ? null : darkTheme
-    StyleProvider(rootStyleVars)
-  }
+const toggleRootTheme = () => {
+  rootStyleVars = rootStyleVars ? null : darkTheme
+  StyleProvider(rootStyleVars)
+}
 </script>
 
 <template>
