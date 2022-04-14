@@ -12,53 +12,63 @@ createApp().use(Card)
 ### Basic Use
 
 ```html
-<var-card
-  title="Little Prince"
-  description="It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me."
-/>
+<template>
+  <var-card
+    title="Little Prince"
+    description="It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me."
+  />
+</template>
 ```
 
 ### Show Subtitle
 
 ```html
-<var-card
-  title="Little Prince"
-  subtitle="where little prince from"
-  description="It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me."
-/>
+<template>
+  <var-card
+    title="Little Prince"
+    subtitle="where little prince from"
+    description="It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me."
+  />
+</template>
 ```
 
 ### Show Image
 
 ```html
-<var-card title="Little Prince" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+<template>
+  <var-card title="Little Prince" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+</template>
 ```
 
 ### Use Slot
 
 ```html
-<var-card
-  title="Little Prince"
-  subtitle="where little prince from"
-  description="It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me."
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
->
-  <template #extra>
-    <var-button type="primary" style="margin-right: 10px">Use Button</var-button>
-    <var-button type="warning">Use Button</var-button>
-  </template>
-</var-card>
+<template>
+  <var-card
+    title="Little Prince"
+    subtitle="where little prince from"
+    description="It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me."
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+  >
+    <template #extra>
+      <var-button type="primary" style="margin-right: 10px">Use Button</var-button>
+      <var-button type="warning">Use Button</var-button>
+    </template>
+  </var-card>
+</template>
 ```
 
 ### Ripple Effect
 
 ```html
-<var-card
-  title="Little Prince"
-  subtitle="where little prince from"
-  description="It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me."
-  ripple
-/>
+<template>
+  <var-card
+    title="Little Prince"
+    subtitle="where little prince from"
+    description="It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me."
+    ripple
+  />
+</template>
 ```
 
 ## API

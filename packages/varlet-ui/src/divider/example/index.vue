@@ -1,3 +1,14 @@
+<script setup>
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import VarDivider from '..'
+import VarIcon from '../../icon'
+import dark from '../../themes/dark'
+import { pack, use } from './locale'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+
+watchLang(use)
+watchDarkMode(dark)
+</script>
 <template>
   <div>
     <app-type>{{ pack.basicUsage }}</app-type>
@@ -34,31 +45,6 @@
     </var-divider>
   </div>
 </template>
-
-<script>
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import VarDivider from '..'
-import VarIcon from '../../icon'
-import dark from '../../themes/dark'
-import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-
-export default {
-  name: 'DividerExample',
-  components: {
-    VarIcon,
-    VarDivider,
-    AppType,
-  },
-  setup() {
-    watchLang(use)
-    watchDarkMode(dark)
-    return {
-      pack,
-    }
-  },
-}
-</script>
 
 <style lang="less" scoped>
 .vertical-divider-wrapper {

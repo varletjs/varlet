@@ -14,40 +14,52 @@ createApp().use(Divider)
 
 ### 基本使用
 ```html
-<var-divider />
+<template>
+  <var-divider />
+</template>
 ```
 
 ### 虚线
 ```html
-<var-divider dashed />
+<template>
+  <var-divider dashed />
+</template>
 ```
 
 ### 缩进
 ```html
-<var-divider inset />
-<var-divider :inset="36" margin="36px 0" />
-<var-divider inset="-36px" />
+<template>
+  <var-divider inset />
+  <var-divider :inset="36" margin="36px 0" />
+  <var-divider inset="-36px" />
+</template>
 ```
 
 ### 垂直分割线
 ```html
-<span>文字</span>
-<var-divider vertical />
-<span>文字</span>
-<var-divider vertical />
-<span>文字</span>
+<template>
+  <span>文字</span>
+  <var-divider vertical />
+  <span>文字</span>
+  <var-divider vertical />
+  <span>文字</span>
+</template>
 ```
 
 ### 带有文字描述的分割线
 ```html
-<var-divider description="文字描述" />
+<template>
+  <var-divider description="文字描述" />
+</template>
 ```
 
 ### 自定义
 ```html
-<var-divider>
-  <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
-</var-divider>
+<template>
+  <var-divider>
+    <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
+  </var-divider>
+</template>
 ```
 
 ## API
