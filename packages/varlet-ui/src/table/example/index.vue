@@ -18,6 +18,7 @@ const gen = (current, size) => {
     }
   })
 }
+
 const list = ref(gen(1, 10))
 
 const get = (current, size) => {

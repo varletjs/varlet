@@ -34,7 +34,6 @@ import BasicExample from '../example/Basic.vue'
     </tbody>
   </var-table>
 </template>
-
 ```
 
 ### 尾部插槽
@@ -60,12 +59,14 @@ const gen = (current, size) => {
     }
   })
 }
+
 const list = ref(gen(1, 10))
 
 const get = (current, size) => {
   list.value = gen(current, size)
 }
 </script>
+
 <template>
   <var-table>
     <thead>
@@ -97,14 +98,15 @@ const get = (current, size) => {
     </template>
   </var-table>
 </template>
+
 <style>
-  .table-example-footer  {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 60px;
-    padding: 0 16px;
-  }
+.table-example-footer  {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 60px;
+  padding: 0 16px;
+}
 </style>
 ```
 

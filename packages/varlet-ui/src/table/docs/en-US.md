@@ -10,7 +10,6 @@ A minimal table, when you need to display some data in the form of a table, you 
 import BasicExample from '../example/Basic.vue'
 ```
 
-
 ```html
 <template>
   <var-table>
@@ -98,14 +97,15 @@ const get = (current, size) => {
     </template>
   </var-table>
 </template>
+
 <style>
-  .table-example-footer  {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 60px;
-    padding: 0 16px;
-  }
+.table-example-footer  {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 60px;
+  padding: 0 16px;
+}
 </style>
 ```
 
