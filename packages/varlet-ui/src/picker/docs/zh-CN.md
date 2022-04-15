@@ -3,41 +3,20 @@
 ### 介绍
 提供了函数和组件两种调用方式。同时支持级联模式，可以处理多级联动。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Picker } from '@varlet/ui'
-
-createApp().use(Picker)
-```
-
-### 局部引入
-
-```js
-import { Picker } from '@varlet/ui'
-
-export default {
-  components: {
-    [Picker.Component.name]: Picker
-  }
-}
-```
-
-## 函数调用
-
 ### 多列滚动
 
 Picker 传入一个二维数组 `columns`, `columns` 的每一项就是每一列的内容。
 Picker 返回用户触发状态，选择的文本，选择的下标。
 
-```js
+```html
+<script setup>
 const columns = [
   Array.from({ length: 20 }).map((_, index) => index),
   Array.from({ length: 20 }).map((_, index) => index),
   Array.from({ length: 20 }).map((_, index) => index)
 ]
 const { state, texts, indexes } = await Picker(columns)
+</script>
 ```
 
 ### 级联滚动
@@ -45,13 +24,15 @@ const { state, texts, indexes } = await Picker(columns)
 Picker 传入一个 `cascade` 属性开启级联滚动。
 组件库内置提供了省市区三级联动，引入 `area.json`。
 
-```js
+```html
+<script setup>
 import columns from '@varlet/ui/json/area.json'
 
 const { state, texts, indexes } = await Picker({
   cascade: true,
   columns
 })
+</script>
 ```
 
 ## 组件调用
@@ -59,75 +40,64 @@ const { state, texts, indexes } = await Picker({
 ### 多列滚动
 
 ```html
-<var-picker :columns="columns" />
-```
+<script setup>
+const columns = ref([
+  Array.from({ length: 20 }).map((_, index) => index),
+  Array.from({ length: 20 }).map((_, index) => index),
+  Array.from({ length: 20 }).map((_, index) => index)
+])
+</script>
 
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const columns = ref([
-      Array.from({ length: 20 }).map((_, index) => index),
-      Array.from({ length: 20 }).map((_, index) => index),
-      Array.from({ length: 20 }).map((_, index) => index)
-    ])
-
-    return { columns }
-  }
-}
+<template>
+  <var-picker :columns="columns" />
+</template>
 ```
 
 ### 级联滚动
 
 ```html
-<var-picker cascade :columns="columns" />
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const columns = ref([
+const columns = ref([
+  {
+    text: '北京市',
+    children: [
       {
-        text: '北京市',
-        children: [
-          {
-            text: '市辖区'
-          }
-        ]
-      },
-      {
-        text: '河北省',
-        children: [
-          {
-            text: '石家庄市'
-          }
-        ]
+        text: '市辖区'
       }
-    ])
-
-    return { columns }
+    ]
+  },
+  {
+    text: '河北省',
+    children: [
+      {
+        text: '石家庄市'
+      }
+    ]
   }
-}
+])
+</script>
+
+<template>
+  <var-picker cascade :columns="columns" />
+</template>
 ```
 
 ### 省市区三级联动
 
 组件库提供了完整的省市区信息，可以直接使用。
 
-```js
+```html
+<script setup>
 import { ref } from 'vue'
 import area from '@varlet/ui/json/area.json'
+const columns = ref(area)
+</script>
 
-export default {
-  setup() {
-    const columns = ref(area)
-
-    return { columns }
-  }
-}
+<template>
+  <var-picker cascade :columns="columns" />
+</template>
 ```
 
 ## API
