@@ -18,18 +18,20 @@
     padding: var(--rate-action-padding);
     box-sizing: unset;
     cursor: pointer;
+    display: flex;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
-
-  &--disabled {
-    color: var(--rate-disabled-color) !important;
-  }
-
-  &--error {
-    color: var(--rate-error-color) !important;
   }
 
   &--primary {
     color: var(--rate-primary-color);
+  }
+
+  &--disabled {
+    color: var(--rate-disabled-color);
+    cursor: not-allowed;
+  }
+
+  &--error {
+    color: var(--rate-error-color);
   }
 }

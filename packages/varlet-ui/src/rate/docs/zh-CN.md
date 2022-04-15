@@ -106,7 +106,7 @@ export default {
 通过 `disabled` 属性将评分设置为禁止点击状态，`disabled-color` 设置禁用时图标的颜色。
 
 ```html
-<var-rate v-model="score" disabled disabled-color="#bbbbbb"/>
+<var-rate v-model="score" disabled/>
 ```
 
 ### 只读评分
@@ -180,7 +180,7 @@ export default {
 | `half-icon` | 半选时图标的样式，只有在 `half` 为 `true` 时才有效| _string_ | `star-half-full` |
 | `namespace` | 图标的命名空间, 可扩展自定义图标库 |  _string_ | `var-icon` |
 | `disabled` | 是否禁止评分 | _boolean_ | `false`|
-| `disabled-color` | 禁止评分时图标的颜色，只有在 `disabled` 为 `true` 时才有效，优先级高于 `color`、`empty-color`| _string_ | `-` |
+| `disabled-color` | 禁止评分时图标的颜色，只有在 `disabled` 为 `true` 时才有效，优先级高于 `color`、`empty-color`| _string_ | `#aaa` |
 | `readonly` | 是否使用评分只读 | _boolean_ | `false` |
 | `ripple` | 是否使用水波纹 | _boolean_ | `true` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string \| number) => any>_ | `-` |
