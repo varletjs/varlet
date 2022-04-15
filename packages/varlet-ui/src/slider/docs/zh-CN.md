@@ -8,9 +8,9 @@
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  const value = ref(3)
+const value = ref(3)
 </script>
 
 <template>
@@ -24,9 +24,9 @@
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  const value = ref(25)
+const value = ref(25)
 </script>
 
 <template>
@@ -40,13 +40,13 @@
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  const value = ref([24, 50])
+const value = ref([24, 50])
 
-  const handleChange = (value) => {
-    console.log(value)
-  }
+const handleChange = (value) => {
+  console.log(value)
+}
 </script>
 
 <template>
@@ -58,9 +58,9 @@
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  const value = ref(40)
+const value = ref(40)
 </script>
 
 <template>
@@ -72,9 +72,9 @@
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  const value = ref(40)
+const value = ref(40)
 </script>
 
 <template>
@@ -88,9 +88,9 @@
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  const value = ref([7, 64])
+const value = ref([7, 64])
 </script>
 
 <template>
@@ -102,9 +102,9 @@
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  const value = ref(20)
+const value = ref(20)
 </script>
 
 <template>
@@ -125,34 +125,34 @@
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  const value = ref([5, 38])
+const value = ref([5, 38])
 </script>
 
 <template>
   <var-slider v-model="value" range active-color="#52af77">
     <template #button="{ currentValue }">
-      <div class="slider-example_block">{{ currentValue }}</div>
+      <div class="slider-example__block">{{ currentValue }}</div>
     </template>
   </var-slider>
 </template>
 
 <style>
-  .slider-example_block {
-    width: 24px;
-    border: 1px solid #52af77;
-    color: #52af77;
-    height: 24px;
-    margin: 0 -12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: #ebebeb 0 2px 2px;
-    border-radius: 50%;
-    font-size: 12px;
-    background-color: #fff;
-  }
+.slider-example__block {
+  width: 24px;
+  border: 1px solid #52af77;
+  color: #52af77;
+  height: 24px;
+  margin: 0 -12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: #ebebeb 0 2px 2px;
+  border-radius: 50%;
+  font-size: 12px;
+  background-color: #fff;
+}
 </style>
 ```
 
@@ -161,11 +161,11 @@
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  const value = ref(20)
-  const value1 = ref(70)
-  const value2 = ref(50)
+const value = ref(20)
+const value1 = ref(70)
+const value2 = ref(50)
 </script>
 
 <template>
@@ -183,9 +183,9 @@
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  const value = ref(20)
+const value = ref(20)
 </script>
 
 <template>

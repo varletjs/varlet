@@ -1,238 +1,218 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test slider example 1`] = `
-"<div>
-  <div class=\\"app-type\\">基本使用</div>
-  <div class=\\"var-slider\\">
-    <div class=\\"var-slider__block\\">
-      <div class=\\"var-slider__track\\">
-        <div class=\\"var-slider__track-background\\"></div>
-        <div class=\\"var-slider__track-fill\\" style=\\"width: 3%; left: 0%;\\"></div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 3%;\\">
-        <div class=\\"var-slider__thumb-block\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\"></div>
-        <div class=\\"var-slider__thumb-label\\"><span>3</span></div>
-      </div>
+"<div class=\\"app-type\\">基本使用</div>
+<div class=\\"var-slider\\">
+  <div class=\\"var-slider__block\\">
+    <div class=\\"var-slider__track\\">
+      <div class=\\"var-slider__track-background\\"></div>
+      <div class=\\"var-slider__track-fill\\" style=\\"width: 3%; left: 0%;\\"></div>
     </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
-      <!--v-if-->
-    </transition-stub>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 3%;\\">
+      <div class=\\"var-slider__thumb-block\\"></div>
+      <div class=\\"var-slider__thumb-ripple\\"></div>
+      <div class=\\"var-slider__thumb-label\\"><span>3</span></div>
+    </div>
   </div>
+  <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <!--v-if-->
+  </transition-stub>
 </div>
-<div>
-  <div class=\\"app-type\\">指定步长</div>
-  <div class=\\"var-slider\\">
-    <div class=\\"var-slider__block\\">
-      <div class=\\"var-slider__track\\">
-        <div class=\\"var-slider__track-background\\"></div>
-        <div class=\\"var-slider__track-fill\\" style=\\"width: 25%; left: 0%;\\"></div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 25%;\\">
-        <div class=\\"var-slider__thumb-block\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\"></div>
-        <div class=\\"var-slider__thumb-label\\"><span>25</span></div>
-      </div>
+<div class=\\"app-type\\">指定步长</div>
+<div class=\\"var-slider\\">
+  <div class=\\"var-slider__block\\">
+    <div class=\\"var-slider__track\\">
+      <div class=\\"var-slider__track-background\\"></div>
+      <div class=\\"var-slider__track-fill\\" style=\\"width: 25%; left: 0%;\\"></div>
     </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
-      <!--v-if-->
-    </transition-stub>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 25%;\\">
+      <div class=\\"var-slider__thumb-block\\"></div>
+      <div class=\\"var-slider__thumb-ripple\\"></div>
+      <div class=\\"var-slider__thumb-label\\"><span>25</span></div>
+    </div>
   </div>
+  <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <!--v-if-->
+  </transition-stub>
 </div>
-<div>
-  <div class=\\"app-type\\">双滑块</div>
-  <div class=\\"var-slider\\">
-    <div class=\\"var-slider__block\\">
-      <div class=\\"var-slider__track\\">
-        <div class=\\"var-slider__track-background\\"></div>
-        <div class=\\"var-slider__track-fill\\" style=\\"width: 26%; left: 24%;\\"></div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 24%;\\">
-        <div class=\\"var-slider__thumb-block\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\"></div>
-        <div class=\\"var-slider__thumb-label var-slider__thumb-label--active\\"><span>24</span></div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 50%;\\">
-        <div class=\\"var-slider__thumb-block\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\"></div>
-        <div class=\\"var-slider__thumb-label var-slider__thumb-label--active\\"><span>50</span></div>
-      </div>
+<div class=\\"app-type\\">双滑块</div>
+<div class=\\"var-slider\\">
+  <div class=\\"var-slider__block\\">
+    <div class=\\"var-slider__track\\">
+      <div class=\\"var-slider__track-background\\"></div>
+      <div class=\\"var-slider__track-fill\\" style=\\"width: 26%; left: 24%;\\"></div>
     </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
-      <!--v-if-->
-    </transition-stub>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 24%;\\">
+      <div class=\\"var-slider__thumb-block\\"></div>
+      <div class=\\"var-slider__thumb-ripple\\"></div>
+      <div class=\\"var-slider__thumb-label var-slider__thumb-label--active\\"><span>24</span></div>
+    </div>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 50%;\\">
+      <div class=\\"var-slider__thumb-block\\"></div>
+      <div class=\\"var-slider__thumb-ripple\\"></div>
+      <div class=\\"var-slider__thumb-label var-slider__thumb-label--active\\"><span>50</span></div>
+    </div>
   </div>
+  <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <!--v-if-->
+  </transition-stub>
 </div>
-<div>
-  <div class=\\"app-type\\">禁用</div>
-  <div class=\\"var-slider\\">
-    <div class=\\"var-slider__block var-slider--disabled\\">
-      <div class=\\"var-slider__track\\">
-        <div class=\\"var-slider__track-background\\"></div>
-        <div class=\\"var-slider__track-fill\\" style=\\"width: 40%; left: 0%;\\"></div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 40%;\\">
-        <div class=\\"var-slider__thumb-block\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\"></div>
-        <div class=\\"var-slider__thumb-label\\"><span>40</span></div>
-      </div>
+<div class=\\"app-type\\">禁用</div>
+<div class=\\"var-slider\\">
+  <div class=\\"var-slider__block var-slider--disabled\\">
+    <div class=\\"var-slider__track\\">
+      <div class=\\"var-slider__track-background\\"></div>
+      <div class=\\"var-slider__track-fill\\" style=\\"width: 40%; left: 0%;\\"></div>
     </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
-      <!--v-if-->
-    </transition-stub>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 40%;\\">
+      <div class=\\"var-slider__thumb-block\\"></div>
+      <div class=\\"var-slider__thumb-ripple\\"></div>
+      <div class=\\"var-slider__thumb-label\\"><span>40</span></div>
+    </div>
   </div>
+  <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <!--v-if-->
+  </transition-stub>
 </div>
-<div>
-  <div class=\\"app-type\\">只读</div>
-  <div class=\\"var-slider\\">
-    <div class=\\"var-slider__block\\">
-      <div class=\\"var-slider__track\\">
-        <div class=\\"var-slider__track-background\\"></div>
-        <div class=\\"var-slider__track-fill\\" style=\\"width: 40%; left: 0%;\\"></div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 40%;\\">
-        <div class=\\"var-slider__thumb-block\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\"></div>
-        <div class=\\"var-slider__thumb-label\\"><span>40</span></div>
-      </div>
+<div class=\\"app-type\\">只读</div>
+<div class=\\"var-slider\\">
+  <div class=\\"var-slider__block\\">
+    <div class=\\"var-slider__track\\">
+      <div class=\\"var-slider__track-background\\"></div>
+      <div class=\\"var-slider__track-fill\\" style=\\"width: 40%; left: 0%;\\"></div>
     </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
-      <!--v-if-->
-    </transition-stub>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 40%;\\">
+      <div class=\\"var-slider__thumb-block\\"></div>
+      <div class=\\"var-slider__thumb-ripple\\"></div>
+      <div class=\\"var-slider__thumb-label\\"><span>40</span></div>
+    </div>
   </div>
+  <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <!--v-if-->
+  </transition-stub>
 </div>
-<div>
-  <div class=\\"app-type\\">不同大小</div>
-  <div class=\\"var-slider\\">
-    <div class=\\"var-slider__block\\" style=\\"height: 24px; margin: 0px 4px;\\">
-      <div class=\\"var-slider__track\\">
-        <div class=\\"var-slider__track-background\\" style=\\"height: 4px;\\"></div>
-        <div class=\\"var-slider__track-fill\\" style=\\"width: 57%; left: 7%;\\"></div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 7%;\\">
-        <div class=\\"var-slider__thumb-block\\" style=\\"height: 8px; width: 8px;\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\" style=\\"height: 0px; width: 0px;\\"></div>
-        <div class=\\"var-slider__thumb-label\\" style=\\"height: 16px; width: 16px;\\"><span>7</span></div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 64%;\\">
-        <div class=\\"var-slider__thumb-block\\" style=\\"height: 8px; width: 8px;\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\" style=\\"height: 0px; width: 0px;\\"></div>
-        <div class=\\"var-slider__thumb-label\\" style=\\"height: 16px; width: 16px;\\"><span>64</span></div>
-      </div>
+<div class=\\"app-type\\">不同大小</div>
+<div class=\\"var-slider\\">
+  <div class=\\"var-slider__block\\" style=\\"height: 24px; margin: 0px 4px;\\">
+    <div class=\\"var-slider__track\\">
+      <div class=\\"var-slider__track-background\\" style=\\"height: 4px;\\"></div>
+      <div class=\\"var-slider__track-fill\\" style=\\"width: 57%; left: 7%;\\"></div>
     </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
-      <!--v-if-->
-    </transition-stub>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 7%;\\">
+      <div class=\\"var-slider__thumb-block\\" style=\\"height: 8px; width: 8px;\\"></div>
+      <div class=\\"var-slider__thumb-ripple\\" style=\\"height: 0px; width: 0px;\\"></div>
+      <div class=\\"var-slider__thumb-label\\" style=\\"height: 16px; width: 16px;\\"><span>7</span></div>
+    </div>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 64%;\\">
+      <div class=\\"var-slider__thumb-block\\" style=\\"height: 8px; width: 8px;\\"></div>
+      <div class=\\"var-slider__thumb-ripple\\" style=\\"height: 0px; width: 0px;\\"></div>
+      <div class=\\"var-slider__thumb-label\\" style=\\"height: 16px; width: 16px;\\"><span>64</span></div>
+    </div>
   </div>
+  <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <!--v-if-->
+  </transition-stub>
 </div>
-<div>
-  <div class=\\"app-type\\">自定义样式</div>
-  <div class=\\"var-slider\\">
-    <div class=\\"var-slider__block\\">
-      <div class=\\"var-slider__track\\">
-        <div class=\\"var-slider__track-background\\" style=\\"background: rgb(58, 104, 180);\\"></div>
-        <div class=\\"var-slider__track-fill\\" style=\\"width: 20%; left: 0%; background: rgb(224, 115, 44);\\"></div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 20%;\\">
-        <div class=\\"var-slider__thumb-block\\" style=\\"background: rgb(226, 82, 65);\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\" style=\\"background: rgb(226, 82, 65);\\"></div>
-        <div class=\\"var-slider__thumb-label\\" style=\\"background: purple; color: rgb(237, 237, 237);\\"><span>20</span></div>
-      </div>
+<div class=\\"app-type\\">自定义样式</div>
+<div class=\\"var-slider\\">
+  <div class=\\"var-slider__block\\">
+    <div class=\\"var-slider__track\\">
+      <div class=\\"var-slider__track-background\\" style=\\"background: rgb(58, 104, 180);\\"></div>
+      <div class=\\"var-slider__track-fill\\" style=\\"width: 20%; left: 0%; background: rgb(224, 115, 44);\\"></div>
     </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
-      <!--v-if-->
-    </transition-stub>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 20%;\\">
+      <div class=\\"var-slider__thumb-block\\" style=\\"background: rgb(226, 82, 65);\\"></div>
+      <div class=\\"var-slider__thumb-ripple\\" style=\\"background: rgb(226, 82, 65);\\"></div>
+      <div class=\\"var-slider__thumb-label\\" style=\\"background: purple; color: rgb(237, 237, 237);\\"><span>20</span></div>
+    </div>
   </div>
+  <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <!--v-if-->
+  </transition-stub>
 </div>
-<div>
-  <div class=\\"app-type\\">自定义按钮</div>
-  <div class=\\"var-slider\\">
-    <div class=\\"var-slider__block\\">
-      <div class=\\"var-slider__track\\">
-        <div class=\\"var-slider__track-background\\"></div>
-        <div class=\\"var-slider__track-fill\\" style=\\"width: 33%; left: 5%; background: rgb(82, 175, 119);\\"></div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 5%;\\">
-        <div class=\\"slider-example_block\\">5</div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 38%;\\">
-        <div class=\\"slider-example_block\\">38</div>
-      </div>
+<div class=\\"app-type\\">自定义按钮</div>
+<div class=\\"var-slider\\">
+  <div class=\\"var-slider__block\\">
+    <div class=\\"var-slider__track\\">
+      <div class=\\"var-slider__track-background\\"></div>
+      <div class=\\"var-slider__track-fill\\" style=\\"width: 33%; left: 5%; background: rgb(82, 175, 119);\\"></div>
     </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
-      <!--v-if-->
-    </transition-stub>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 5%;\\">
+      <div class=\\"slider-example__block\\">5</div>
+    </div>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 38%;\\">
+      <div class=\\"slider-example__block\\">38</div>
+    </div>
   </div>
+  <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <!--v-if-->
+  </transition-stub>
 </div>
-<div>
-  <div class=\\"app-type\\">显示标签</div>
-  <div class=\\"var-slider\\">
-    <div class=\\"var-slider__block\\">
-      <div class=\\"var-slider__track\\">
-        <div class=\\"var-slider__track-background\\"></div>
-        <div class=\\"var-slider__track-fill\\" style=\\"width: 20%; left: 0%;\\"></div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 20%;\\">
-        <div class=\\"var-slider__thumb-block\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\"></div>
-        <div class=\\"var-slider__thumb-label\\"><span>20</span></div>
-      </div>
+<div class=\\"app-type\\">显示标签</div>
+<div class=\\"var-slider\\">
+  <div class=\\"var-slider__block\\">
+    <div class=\\"var-slider__track\\">
+      <div class=\\"var-slider__track-background\\"></div>
+      <div class=\\"var-slider__track-fill\\" style=\\"width: 20%; left: 0%;\\"></div>
     </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
-      <!--v-if-->
-    </transition-stub>
-  </div>
-  <div class=\\"var-slider\\">
-    <div class=\\"var-slider__block\\">
-      <div class=\\"var-slider__track\\">
-        <div class=\\"var-slider__track-background\\"></div>
-        <div class=\\"var-slider__track-fill\\" style=\\"width: 70%; left: 0%;\\"></div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 70%;\\">
-        <div class=\\"var-slider__thumb-block\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\"></div>
-        <div class=\\"var-slider__thumb-label\\"><span>70</span></div>
-      </div>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 20%;\\">
+      <div class=\\"var-slider__thumb-block\\"></div>
+      <div class=\\"var-slider__thumb-ripple\\"></div>
+      <div class=\\"var-slider__thumb-label\\"><span>20</span></div>
     </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
-      <!--v-if-->
-    </transition-stub>
   </div>
-  <div class=\\"var-slider\\">
-    <div class=\\"var-slider__block\\">
-      <div class=\\"var-slider__track\\">
-        <div class=\\"var-slider__track-background\\"></div>
-        <div class=\\"var-slider__track-fill\\" style=\\"width: 50%; left: 0%;\\"></div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 50%;\\">
-        <div class=\\"var-slider__thumb-block\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\"></div>
-        <div class=\\"var-slider__thumb-label var-slider__thumb-label--active\\"><span>50</span></div>
-      </div>
-    </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
-      <!--v-if-->
-    </transition-stub>
-  </div>
+  <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <!--v-if-->
+  </transition-stub>
 </div>
-<div>
-  <div class=\\"app-type\\">值的校验</div>
-  <div class=\\"var-slider\\">
-    <div class=\\"var-slider__block\\">
-      <div class=\\"var-slider__track\\">
-        <div class=\\"var-slider__track-background\\"></div>
-        <div class=\\"var-slider__track-fill\\" style=\\"width: 20%; left: 0%;\\"></div>
-      </div>
-      <div class=\\"var-slider__thumb\\" style=\\"left: 20%;\\">
-        <div class=\\"var-slider__thumb-block\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\"></div>
-        <div class=\\"var-slider__thumb-label\\"><span>20</span></div>
-      </div>
+<div class=\\"var-slider\\">
+  <div class=\\"var-slider__block\\">
+    <div class=\\"var-slider__track\\">
+      <div class=\\"var-slider__track-background\\"></div>
+      <div class=\\"var-slider__track-fill\\" style=\\"width: 70%; left: 0%;\\"></div>
     </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
-      <!--v-if-->
-    </transition-stub>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 70%;\\">
+      <div class=\\"var-slider__thumb-block\\"></div>
+      <div class=\\"var-slider__thumb-ripple\\"></div>
+      <div class=\\"var-slider__thumb-label\\"><span>70</span></div>
+    </div>
   </div>
+  <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <!--v-if-->
+  </transition-stub>
+</div>
+<div class=\\"var-slider\\">
+  <div class=\\"var-slider__block\\">
+    <div class=\\"var-slider__track\\">
+      <div class=\\"var-slider__track-background\\"></div>
+      <div class=\\"var-slider__track-fill\\" style=\\"width: 50%; left: 0%;\\"></div>
+    </div>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 50%;\\">
+      <div class=\\"var-slider__thumb-block\\"></div>
+      <div class=\\"var-slider__thumb-ripple\\"></div>
+      <div class=\\"var-slider__thumb-label var-slider__thumb-label--active\\"><span>50</span></div>
+    </div>
+  </div>
+  <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <!--v-if-->
+  </transition-stub>
+</div>
+<div class=\\"app-type\\">值的校验</div>
+<div class=\\"var-slider\\">
+  <div class=\\"var-slider__block\\">
+    <div class=\\"var-slider__track\\">
+      <div class=\\"var-slider__track-background\\"></div>
+      <div class=\\"var-slider__track-fill\\" style=\\"width: 20%; left: 0%;\\"></div>
+    </div>
+    <div class=\\"var-slider__thumb\\" style=\\"left: 20%;\\">
+      <div class=\\"var-slider__thumb-block\\"></div>
+      <div class=\\"var-slider__thumb-ripple\\"></div>
+      <div class=\\"var-slider__thumb-label\\"><span>20</span></div>
+    </div>
+  </div>
+  <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <!--v-if-->
+  </transition-stub>
 </div>"
 `;
 

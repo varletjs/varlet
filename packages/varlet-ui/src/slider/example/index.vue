@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, toRefs } from 'vue'
+import { reactive } from 'vue'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarSlider from '..'
 import dark from '../../themes/dark'
@@ -29,63 +29,52 @@ watchDarkMode(dark)
 </script>
 
 <template>
-  <div>
-    <app-type>{{ pack.basicUsage }}</app-type>
-    <var-slider v-model="values.value" />
-  </div>
-  <div>
-    <app-type>{{ pack.stepSize }}</app-type>
-    <var-slider v-model="values.value2" step="10" />
-  </div>
-  <div>
-    <app-type>{{ pack.dualThumb }}</app-type>
-    <var-slider v-model="values.value1" range @change="handleChange" label-visible="always" />
-  </div>
-  <div>
-    <app-type>{{ pack.disable }}</app-type>
-    <var-slider v-model="values.value3" disabled />
-  </div>
-  <div>
-    <app-type>{{ pack.readonly }}</app-type>
-    <var-slider v-model="values.value3" readonly />
-  </div>
-  <div>
-    <app-type>{{ pack.sliderSize }}</app-type>
-    <var-slider v-model="values.value10" track-height="4" thumb-size="8" range />
-  </div>
-  <div>
-    <app-type>{{ pack.customStyle }}</app-type>
-    <var-slider
-      v-model="values.value4"
-      label-color="purple"
-      active-color="#e0732c"
-      track-color="#3a68b4"
-      thumb-color="#e25241"
-      label-text-color="#ededed"
-    />
-  </div>
-  <div>
-    <app-type>{{ pack.customBtn }}</app-type>
-    <var-slider v-model="values.value9" range active-color="#52af77">
-      <template #button="{ currentValue }">
-        <div class="slider-example_block">{{ currentValue }}</div>
-      </template>
-    </var-slider>
-  </div>
-  <div>
-    <app-type>{{ pack.showLabel }}</app-type>
-    <var-slider v-model="values.value5" label-visible="never" />
-    <var-slider v-model="values.value6" />
-    <var-slider v-model="values.value7" label-visible="always" />
-  </div>
-  <div>
-    <app-type>{{ pack.validateValue }}</app-type>
-    <var-slider v-model="values.value8" :rules="[(v) => v > 35 || 'error message']" />
-  </div>
+  <app-type>{{ pack.basicUsage }}</app-type>
+  <var-slider v-model="values.value" />
+
+  <app-type>{{ pack.stepSize }}</app-type>
+  <var-slider v-model="values.value2" step="10" />
+
+  <app-type>{{ pack.dualThumb }}</app-type>
+  <var-slider v-model="values.value1" range @change="handleChange" label-visible="always" />
+
+  <app-type>{{ pack.disable }}</app-type>
+  <var-slider v-model="values.value3" disabled />
+
+  <app-type>{{ pack.readonly }}</app-type>
+  <var-slider v-model="values.value3" readonly />
+
+  <app-type>{{ pack.sliderSize }}</app-type>
+  <var-slider v-model="values.value10" track-height="4" thumb-size="8" range />
+
+  <app-type>{{ pack.customStyle }}</app-type>
+  <var-slider
+    v-model="values.value4"
+    label-color="purple"
+    active-color="#e0732c"
+    track-color="#3a68b4"
+    thumb-color="#e25241"
+    label-text-color="#ededed"
+  />
+
+  <app-type>{{ pack.customBtn }}</app-type>
+  <var-slider v-model="values.value9" range active-color="#52af77">
+    <template #button="{ currentValue }">
+      <div class="slider-example__block">{{ currentValue }}</div>
+    </template>
+  </var-slider>
+
+  <app-type>{{ pack.showLabel }}</app-type>
+  <var-slider v-model="values.value5" label-visible="never" />
+  <var-slider v-model="values.value6" />
+  <var-slider v-model="values.value7" label-visible="always" />
+
+  <app-type>{{ pack.validateValue }}</app-type>
+  <var-slider v-model="values.value8" :rules="[(v) => v > 35 || 'error message']" />
 </template>
 
 <style>
-.slider-example_block {
+.slider-example__block {
   width: 24px;
   border: 1px solid #52af77;
   color: #52af77;
