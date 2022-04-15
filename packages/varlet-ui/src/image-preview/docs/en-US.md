@@ -4,47 +4,44 @@
 
 Image-Preview, Support double-click magnification, Support function call and component call two ways.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { ImagePreview } from '@varlet/ui'
-
-createApp().use(ImagePreview)
-```
-
-### Scoped Install
-```js
-import { ImagePreview } from '@varlet/ui'
-
-export default {
-  components: {
-    [ImagePreview.Component.name]: ImagePreview.Component,
-  },
-}
-```
 
 ### Function Call
 
 #### Basic Usage
 
-```js
-ImagePreview('https://varlet.gitee.io/varlet-ui/cat.jpg')
+```html
+<script setup>
+import { ImagePreview } from '@varlet/ui'
+import { onMounted } from 'vue'
+
+onMounted(()=>{
+  ImagePreview('https://varlet.gitee.io/varlet-ui/cat.jpg')
+})
+
+</script>
+
 ```
 
 #### Call Back
-```js
+```html
+<script setup>
+import { ImagePreview } from '@varlet/ui'
+import { onMounted } from 'vue'
+
 const images = [
   'https://varlet.gitee.io/varlet-ui/cat.jpg',
   'https://varlet.gitee.io/varlet-ui/cat2.jpg'
 ]
 
-ImagePreview({
-  images,
-  onChange(index) {
-    console.log(index)
-  }
+onMounted(()=>{
+  ImagePreview({
+    images,
+    onChange(index) {
+      console.log(index)
+    }
+  })
 })
+</script>
 ```
 
 
@@ -53,118 +50,102 @@ ImagePreview({
 ### Basic Use
 
 ```html
-<var-button
-  type="warning"
-  block
-  @click="show = true"
->
-  Basic Use
-</var-button>
-<var-image-preview :images="images" v-model:show="show" />
-
-<var-button 
-  type="warning" 
-  block
-  @click="currentShow = true"
->
-  Specify initial position
-</var-button>
-<var-image-preview
-  current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
-  :images="images"
-  v-model:show="currentShow" 
-/>
-
-<var-button 
-  type="warning" 
-  block 
-  @click="closeShow = true"
->
-  Display the close button
-</var-button>
-<var-image-preview
-  closeable
-  :images="images"
-  v-model:show="closeShow" 
-/>
-
-<var-button
-  block
-  type="warning"
-  @click="closeEventShow = true"
->
-  Listen for close event
-</var-button>
-<var-image-preview 
-  :images="images"
-  v-model:show="closeEventShow"
-  @close="handleCloseEvent" 
-/>
-
-<var-button
-  block
-  type="warning"
-  @click="extraSlotsShow = true"
->
-  Show extra slots
-</var-button>
-<var-image-preview :images="images" v-model:show="extraSlotsShow">
-  <template #extra>
-    <var-icon
-      name="menu"
-      :size="22"
-      color="#fff"
-      @click="menuShow = true"
-    />
-    <var-action-sheet :actions="actions" v-model:show="menuShow" />
-  </template>
-</var-image-preview>
-```
-
-```javascript
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const show = ref(false)
-    const currentShow = ref(false)
-    const closeShow = ref(false)
-    const closeEventShow = ref(false)
-    const extraSlotsShow = ref(false)
-    const menuShow = ref(false)
-    const images = ref([
-      'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      'https://varlet.gitee.io/varlet-ui/cat2.jpg',
-    ])
-    const actions = [
-      {
-        name: 'operate',
-        icon: 'wrench'
-      },
-      {
-        name: 'operate',
-        icon: 'wrench'
-      }
-    ]
-
-    const handleCloseEvent = () => Snackbar('The shutdown event was triggered.')
-    
-    return {
-      show,
-      currentShow,
-      closeShow,
-      closeEventShow,
-      extraSlotsShow,
-      menuShow,
-      images,
-      actions,
-      handleCloseEvent
-    }
+const show = ref(false)
+const currentShow = ref(false)
+const closeShow = ref(false)
+const closeEventShow = ref(false)
+const extraSlotsShow = ref(false)
+const menuShow = ref(false)
+const images = ref([
+  'https://varlet.gitee.io/varlet-ui/cat.jpg',
+  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+])
+const actions = [
+  {
+    name: 'operate',
+    icon: 'wrench'
   },
-}
-```
+  {
+    name: 'operate',
+    icon: 'wrench'
+  }
+]
 
+const handleCloseEvent = () => Snackbar('The shutdown event was triggered.');
+</script>
+<template>
+  <var-button
+    type="warning"
+    block
+    @click="show = true"
+  >
+    Basic Use
+  </var-button>
+  <var-image-preview :images="images" v-model:show="show" />
+
+  <var-button 
+    type="warning" 
+    block
+    @click="currentShow = true"
+  >
+    Specify initial position
+  </var-button>
+  <var-image-preview
+    current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
+    :images="images"
+    v-model:show="currentShow" 
+  />
+
+  <var-button 
+    type="warning" 
+    block 
+    @click="closeShow = true"
+  >
+    Display the close button
+  </var-button>
+  <var-image-preview
+    closeable
+    :images="images"
+    v-model:show="closeShow" 
+  />
+
+  <var-button
+    block
+    type="warning"
+    @click="closeEventShow = true"
+  >
+    Listen for close event
+  </var-button>
+  <var-image-preview 
+    :images="images"
+    v-model:show="closeEventShow"
+    @close="handleCloseEvent" 
+  />
+
+  <var-button
+    block
+    type="warning"
+    @click="extraSlotsShow = true"
+  >
+    Show extra slots
+  </var-button>
+  <var-image-preview :images="images" v-model:show="extraSlotsShow">
+    <template #extra>
+      <var-icon
+        name="menu"
+        :size="22"
+        color="#fff"
+        @click="menuShow = true"
+      />
+      <var-action-sheet :actions="actions" v-model:show="menuShow" />
+    </template>
+  </var-image-preview>
+</template>
+```
 
 ## API
 

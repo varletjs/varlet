@@ -4,48 +4,44 @@
 
 图片放大预览，支持双击倍数放大，支持函数调用和组件调用两种方式。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { ImagePreview } from '@varlet/ui'
-
-createApp().use(ImagePreview)
-```
-
-### 局部引入
-```js
-import { ImagePreview } from '@varlet/ui'
-
-// 局部注册
-export default {
-  components: {
-    [ImagePreview.Component.name]: ImagePreview.Component,
-  },
-}
-```
 
 ## 函数调用
 
 ### 基本使用
 
-```js
-ImagePreview('https://varlet.gitee.io/varlet-ui/cat.jpg')
+```html
+<script setup>
+import { ImagePreview } from '@varlet/ui'
+import { onMounted } from 'vue'
+
+onMounted(()=>{
+  ImagePreview('https://varlet.gitee.io/varlet-ui/cat.jpg')
+})
+
+</script>
+
 ```
 
 ### 处理回调函数
-```js
+```html
+<script setup>
+import { ImagePreview } from '@varlet/ui'
+import { onMounted } from 'vue'
+
 const images = [
   'https://varlet.gitee.io/varlet-ui/cat.jpg',
   'https://varlet.gitee.io/varlet-ui/cat2.jpg'
 ]
 
-ImagePreview({
-  images,
-  onChange(index) {
-    console.log(index)
-  }
+onMounted(()=>{
+  ImagePreview({
+    images,
+    onChange(index) {
+      console.log(index)
+    }
+  })
 })
+</script>
 ```
 
 
@@ -54,116 +50,101 @@ ImagePreview({
 ### 基本使用
 
 ```html
-<var-button
-  type="warning"
-  block
-  @click="show = true"
->
-  基本使用
-</var-button>
-<var-image-preview :images="images" v-model:show="show" />
-
-<var-button
-  type="warning"
-  block
-  @click="currentShow = true"
->
-  指定初始位置
-</var-button>
-<var-image-preview
-  current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
-  :images="images"
-  v-model:show="currentShow"
-/>
-
-<var-button
-  type="warning"
-  block
-  @click="closeShow = true"
->
-  展示关闭按钮
-</var-button>
-<var-image-preview
-  closeable
-  :images="images"
-  v-model:show="closeShow"
-/>
-
-<var-button
-  block
-  type="warning"
-  @click="closeEventShow = true"
->
-  监听关闭事件
-</var-button>
-<var-image-preview
-  :images="images"
-  v-model:show="closeEventShow"
-  @close="handleCloseEvent"
-/>
-
-<var-button
-  block
-  type="warning" 
-  @click="extraSlotsShow = true"
->
-  展示额外插槽
-</var-button>
-<var-image-preview :images="images" v-model:show="extraSlotsShow">
-  <template #extra>
-    <var-icon
-      name="menu"
-      :size="22"
-      color="#fff"
-      @click="menuShow = true"
-    />
-    <var-action-sheet :actions="actions" v-model:show="menuShow" />
-  </template>
-</var-image-preview>
-```
-
-```javascript
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const show = ref(false)
-    const currentShow = ref(false)
-    const closeShow = ref(false)
-    const closeEventShow = ref(false)
-    const extraSlotsShow = ref(false)
-    const menuShow = ref(false)
-    const images = ref([
-      'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      'https://varlet.gitee.io/varlet-ui/cat2.jpg',
-    ])
-    const actions = [
-      {
-        name: '操作',
-        icon: 'wrench'
-      },
-      {
-        name: '操作',
-        icon: 'wrench'
-      }
-    ]
-
-    const handleCloseEvent = () => Snackbar('触发了关闭事件。')
-
-    return {
-      show,
-      currentShow,
-      closeShow,
-      closeEventShow,
-      extraSlotsShow,
-      menuShow,
-      images,
-      actions,
-      handleCloseEvent
-    }
+const show = ref(false)
+const currentShow = ref(false)
+const closeShow = ref(false)
+const closeEventShow = ref(false)
+const extraSlotsShow = ref(false)
+const menuShow = ref(false)
+const images = ref([
+  'https://varlet.gitee.io/varlet-ui/cat.jpg',
+  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+])
+const actions = [
+  {
+    name: '操作',
+    icon: 'wrench'
   },
-}
+  {
+    name: '操作',
+    icon: 'wrench'
+  }
+]
+
+const handleCloseEvent = () => Snackbar('触发了关闭事件。');
+</script>
+<template>
+  <var-button
+    type="warning"
+    block
+    @click="show = true"
+  >
+    基本使用
+  </var-button>
+  <var-image-preview :images="images" v-model:show="show" />
+
+  <var-button
+    type="warning"
+    block
+    @click="currentShow = true"
+  >
+    指定初始位置
+  </var-button>
+  <var-image-preview
+    current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
+    :images="images"
+    v-model:show="currentShow"
+  />
+
+  <var-button
+    type="warning"
+    block
+    @click="closeShow = true"
+  >
+    展示关闭按钮
+  </var-button>
+  <var-image-preview
+    closeable
+    :images="images"
+    v-model:show="closeShow"
+  />
+
+  <var-button
+    block
+    type="warning"
+    @click="closeEventShow = true"
+  >
+    监听关闭事件
+  </var-button>
+  <var-image-preview
+    :images="images"
+    v-model:show="closeEventShow"
+    @close="handleCloseEvent"
+  />
+
+  <var-button
+    block
+    type="warning" 
+    @click="extraSlotsShow = true"
+  >
+    展示额外插槽
+  </var-button>
+  <var-image-preview :images="images" v-model:show="extraSlotsShow">
+    <template #extra>
+      <var-icon
+        name="menu"
+        :size="22"
+        color="#fff"
+        @click="menuShow = true"
+      />
+      <var-action-sheet :actions="actions" v-model:show="menuShow" />
+    </template>
+  </var-image-preview>
+</template>
 ```
 
 
