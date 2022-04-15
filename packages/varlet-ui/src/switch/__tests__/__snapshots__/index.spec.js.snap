@@ -53,7 +53,7 @@ exports[`test switch example 1`] = `
 </div>
 <div class=\\"app-type\\">不可用</div>
 <div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
-  <div style=\\"margin: 5px 10px 5px 0px;\\">
+  <div style=\\"margin: 5px 30px 5px 0px;\\">
     <div class=\\"var-switch\\">
       <div class=\\"var-switch__block var-switch--disable\\" style=\\"height: 24px; width: 40px;\\">
         <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
@@ -86,7 +86,7 @@ exports[`test switch example 1`] = `
 </div>
 <div class=\\"app-type\\">自定义颜色</div>
 <div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
-  <div style=\\"margin: 5px 10px 5px 0px;\\">
+  <div style=\\"margin: 5px 30px 5px 0px;\\">
     <div class=\\"var-switch\\">
       <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
         <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
@@ -118,8 +118,8 @@ exports[`test switch example 1`] = `
   </div>
 </div>
 <div class=\\"app-type\\">不同大小</div>
-<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
-  <div style=\\"margin: 5px 10px 5px 0px;\\">
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; align-items: center; flex-wrap: wrap; margin: -5px 0px;\\">
+  <div style=\\"margin: 5px 30px 5px 0px;\\">
     <div class=\\"var-switch\\">
       <div class=\\"var-switch__block\\" style=\\"height: 18px; width: 30px;\\">
         <div style=\\"height: 10.799999999999999px; width: 28px; border-radius: 10px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
@@ -134,7 +134,7 @@ exports[`test switch example 1`] = `
       </transition-stub>
     </div>
   </div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\">
+  <div style=\\"margin: 5px 30px 5px 0px;\\">
     <div class=\\"var-switch\\">
       <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
         <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
@@ -166,8 +166,8 @@ exports[`test switch example 1`] = `
   </div>
 </div>
 <div class=\\"app-type\\">加载状态</div>
-<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
-  <div style=\\"margin: 5px 10px 5px 0px;\\">
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; align-items: center; flex-wrap: wrap; margin: -5px 0px;\\">
+  <div style=\\"margin: 5px 30px 5px 0px;\\">
     <div class=\\"var-switch\\">
       <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
         <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
