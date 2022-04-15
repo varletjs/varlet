@@ -1,3 +1,13 @@
+## [1.27.3](https://github.com/varletjs/varlet/compare/v1.27.2...v1.27.3) (2022-04-14)
+
+
+### Bug Fixes
+
+* **ui/uploader:** fix [#426](https://github.com/varletjs/varlet/issues/426) ([463e0a7](https://github.com/varletjs/varlet/commit/463e0a7aee6f6f1ca61c2e18f88e5db4b30d9c4d))
+* **uploader:** use label tag to replace div ([d6832c8](https://github.com/varletjs/varlet/commit/d6832c820b4538daf264e02aba39ee5e6509090d))
+
+
+
 ## [1.27.2](https://github.com/varletjs/varlet/compare/v1.27.1...v1.27.2) (2022-04-11)
 
 

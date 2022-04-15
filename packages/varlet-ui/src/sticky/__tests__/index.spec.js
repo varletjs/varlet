@@ -1,4 +1,3 @@
-import example from '../example'
 import Sticky from '..'
 import VarSticky from '../Sticky'
 import { delay, mockDoubleRaf, trigger } from '../../utils/jest'

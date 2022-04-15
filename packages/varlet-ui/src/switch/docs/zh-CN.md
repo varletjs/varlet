@@ -4,46 +4,48 @@
 
 开关选择器。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Switch } from '@varlet/ui'
-
-createApp().use(Switch)
-```
-
 ### 基本使用
 
 ```html
-<var-switch v-model="value" />
-```
-
-```javascript
+<script setup>
 import { ref } from 'vue'
-export default {
-  setup() {
-    const value = ref(true)
 
-    return {
-      value
-    }
-  }
-}
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" />
+</template>
 ```
 
 ### 不可用
 
 ```html
-<var-switch v-model="value" disabled />
-<var-switch v-model="value" readonly />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" disabled />
+  <var-switch v-model="value" readonly />
+</template>
 ```
 
 ### 自定义颜色
 
 ```html
-<var-switch v-model="value" :ripple="false" />
-<var-switch v-model="value" color="#ff9f00" close-color="#f5cb90" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" :ripple="false" />
+  <var-switch v-model="value" color="#ff9f00" close-color="#f5cb90" />
+</template>
 ```
 
 ### 不同大小
@@ -51,16 +53,32 @@ export default {
 通过 `size` 属性改变 Switch 大小。
 
 ```html
-<var-switch v-model="value" size="15" />
-<var-switch v-model="value" />
-<var-switch v-model="value" size="25" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" size="15" />
+  <var-switch v-model="value" />
+  <var-switch v-model="value" size="25" />
+</template>
 ```
 
 ### 加载状态
 
 ```html
-<var-switch :model-value="true" loading />
-<var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch :model-value="true" loading />
+  <var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
+</template>
 ```
 
 ### 值的校验
@@ -69,7 +87,15 @@ export default {
 以外的值将转换为文本作为用户提示。
 
 ```html
-<var-switch v-model="value" :rules="[(v) => v === true || '错误！']"/>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" :rules="[(v) => v === true || '错误！']"/>
+</template>
 ```
 
 ## API

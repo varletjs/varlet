@@ -29,8 +29,8 @@
         @click="triggerAction"
       >
         <input
-          :class="n('action-input')"
           ref="input"
+          :class="n('action-input')"
           type="file"
           :multiple="multiple"
           :accept="accept"
@@ -111,7 +111,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const input: Ref<null | HTMLElement> = ref()
+    const input: Ref<null | HTMLElement> = ref(null)
     const showPreview: Ref<boolean> = ref(false)
     const currentPreview: Ref<null | VarFile> = ref(null)
     const maxlengthText: ComputedRef<string> = computed(() => {
@@ -336,8 +336,8 @@ export default defineComponent({
       isHTMLSupportImage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
-      triggerAction,
       preview,
+      triggerAction,
       handleChange,
       handleRemove,
       getSuccess,
