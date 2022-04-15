@@ -63,7 +63,7 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red"></var-rate>
+  <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red"/>
 </template>
 ```
 
@@ -118,7 +118,15 @@ const score = ref(3.5)
 
 <template>
   <var-rate v-model="score" :count="8" half/>
-  <var-rate v-model="score" :count="8" icon="heart" half-icon="heart-half-full" empty-icon="heart-outline" color="red" half></var-rate>
+  <var-rate 
+    v-model="score" 
+    :count="8" 
+    icon="heart" 
+    half-icon="heart-half-full" 
+    empty-icon="heart-outline"
+    color="red" 
+    half
+  />
 </template>
 ```
 
@@ -134,7 +142,7 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate v-model="score" disabled disabled-color="#bbbbbb"/>
+  <var-rate v-model="score" disabled/>
 </template>
 ```
 
@@ -208,7 +216,7 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate :rules="[(v) => v >= 3 || '必须大于2']" v-model='score' />
+  <var-rate :rules="[(v) => v >= 3 || '必须大于2']" v-model='score'/>
 </template>
 ```
 
@@ -230,7 +238,7 @@ const score = ref(3)
 | `half-icon` | 半选时图标的样式，只有在 `half` 为 `true` 时才有效| _string_ | `star-half-full` |
 | `namespace` | 图标的命名空间, 可扩展自定义图标库 |  _string_ | `var-icon` |
 | `disabled` | 是否禁止评分 | _boolean_ | `false`|
-| `disabled-color` | 禁止评分时图标的颜色，只有在 `disabled` 为 `true` 时才有效，优先级高于 `color`、`empty-color`| _string_ | `-` |
+| `disabled-color` | 禁止评分时图标的颜色，只有在 `disabled` 为 `true` 时才有效，优先级高于 `color`、`empty-color`| _string_ | `#aaa` |
 | `readonly` | 是否使用评分只读 | _boolean_ | `false` |
 | `ripple` | 是否使用水波纹 | _boolean_ | `true` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string \| number) => any>_ | `-` |

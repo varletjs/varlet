@@ -3,7 +3,7 @@ import VarRate from '..'
 import VarSnackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
 import dark from '../../themes/dark'
-import { reactive, toRefs } from 'vue'
+import { reactive } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
@@ -74,7 +74,7 @@ watchDarkMode(dark)
   ></var-rate>
 
   <app-type>{{ pack.disableTheRating }}</app-type>
-  <var-rate v-model="scores.score7" disabled disabled-color="#bbbbbb" />
+  <var-rate v-model="scores.score7" disabled />
 
   <app-type>{{ pack.readonlyRating }}</app-type>
   <var-rate v-model="scores.score8" readonly />
@@ -88,9 +88,3 @@ watchDarkMode(dark)
   <app-type>{{ pack.validate }}</app-type>
   <var-rate :rules="[(v) => v >= 3 || pack.rateMessage]" v-model="scores.score11" />
 </template>
-
-<style>
-.var-rate {
-  margin-bottom: 10px;
-}
-</style>

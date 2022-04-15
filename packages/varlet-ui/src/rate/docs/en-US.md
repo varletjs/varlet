@@ -63,7 +63,7 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red"></var-rate>
+  <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red"/>
 </template>
 ```
 
@@ -118,7 +118,15 @@ const score = ref(3.5)
 
 <template>
   <var-rate v-model="score" :count="8" half/>
-  <var-rate v-model="score" :count="8" icon="heart" half-icon="heart-half-full" empty-icon="heart-outline" color="red" half></var-rate>
+  <var-rate
+    v-model="score"
+    :count="8"
+    icon="heart"
+    half-icon="heart-half-full"
+    empty-icon="heart-outline"
+    color="red"
+    half
+  />
 </template>
 ```
 
@@ -134,7 +142,7 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate v-model="score" disabled disabled-color="#bbbbbb"/>
+  <var-rate v-model="score" disabled/>
 </template>
 ```
 
@@ -208,7 +216,7 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate :rules="[(v) => v >= 3 || 'It has to be greater than 2']" v-model='score' />
+  <var-rate :rules="[(v) => v >= 3 || 'It has to be greater than 2']" v-model='score'/>
 </template>
 ```
 
@@ -217,7 +225,7 @@ const score = ref(3)
 ### props
 
 | Prop | Description | Type | Default | 
-| --- | --- | --- | --- | 
+| ---- | ---- | ---- | ---- |
 | `v-model` | The current rating  | _number \| string_ | `0` |
 | `count` | total rating  | _number \| string_ | `5` |
 | `color` | The color of the icon when selected  | _string_ | `-` |
@@ -230,7 +238,7 @@ const score = ref(3)
 | `half-icon` | The half-selected icon style only works if `half` is `true` | _string_ | `star-half-full` |
 | `namespace` | Icon namespace, extensible custom icon library |  _string_ | `var-icon` |
 | `disabled` | Whether or not rating is prohibited | _boolean_ | `false` |
-| `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `#bdbdbd` |
+| `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `#aaa` |
 | `readonly` | Whether to use rating read-only | _boolean_ | `false` |
 | `ripple` | Whether to use water ripple | _boolean_ | `true` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string \| number) => any>_ | `-` |
