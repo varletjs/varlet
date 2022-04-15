@@ -1,32 +1,62 @@
+<script setup>
+import { reactive, toRefs } from 'vue'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import VarSlider from '..'
+import dark from '../../themes/dark'
+import { pack, use } from './locale'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+
+const values = reactive({
+  value: 3,
+  value1: [24, 50],
+  value2: 25,
+  value3: 40,
+  value4: 20,
+  value5: 20,
+  value6: 70,
+  value7: 50,
+  value8: 20,
+  value9: [5, 38],
+  value10: [7, 64],
+})
+
+const handleChange = (v) => {
+  console.log(v)
+}
+
+watchLang(use)
+watchDarkMode(dark)
+</script>
+
 <template>
   <div>
     <app-type>{{ pack.basicUsage }}</app-type>
-    <var-slider v-model="value" />
+    <var-slider v-model="values.value" />
   </div>
   <div>
     <app-type>{{ pack.stepSize }}</app-type>
-    <var-slider v-model="value2" step="10" />
+    <var-slider v-model="values.value2" step="10" />
   </div>
   <div>
     <app-type>{{ pack.dualThumb }}</app-type>
-    <var-slider v-model="value1" range @change="handleChange" label-visible="always" />
+    <var-slider v-model="values.value1" range @change="handleChange" label-visible="always" />
   </div>
   <div>
     <app-type>{{ pack.disable }}</app-type>
-    <var-slider v-model="value3" disabled />
+    <var-slider v-model="values.value3" disabled />
   </div>
   <div>
     <app-type>{{ pack.readonly }}</app-type>
-    <var-slider v-model="value3" readonly />
+    <var-slider v-model="values.value3" readonly />
   </div>
   <div>
     <app-type>{{ pack.sliderSize }}</app-type>
-    <var-slider v-model="value10" track-height="4" thumb-size="8" range />
+    <var-slider v-model="values.value10" track-height="4" thumb-size="8" range />
   </div>
   <div>
     <app-type>{{ pack.customStyle }}</app-type>
     <var-slider
-      v-model="value4"
+      v-model="values.value4"
       label-color="purple"
       active-color="#e0732c"
       track-color="#3a68b4"
@@ -36,7 +66,7 @@
   </div>
   <div>
     <app-type>{{ pack.customBtn }}</app-type>
-    <var-slider v-model="value9" range active-color="#52af77">
+    <var-slider v-model="values.value9" range active-color="#52af77">
       <template #button="{ currentValue }">
         <div class="slider-example_block">{{ currentValue }}</div>
       </template>
@@ -44,61 +74,17 @@
   </div>
   <div>
     <app-type>{{ pack.showLabel }}</app-type>
-    <var-slider v-model="value5" label-visible="never" />
-    <var-slider v-model="value6" />
-    <var-slider v-model="value7" label-visible="always" />
+    <var-slider v-model="values.value5" label-visible="never" />
+    <var-slider v-model="values.value6" />
+    <var-slider v-model="values.value7" label-visible="always" />
   </div>
   <div>
     <app-type>{{ pack.validateValue }}</app-type>
-    <var-slider v-model="value8" :rules="[(v) => v > 35 || 'error message']" />
+    <var-slider v-model="values.value8" :rules="[(v) => v > 35 || 'error message']" />
   </div>
 </template>
 
-<script>
-import { reactive, toRefs } from 'vue'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import VarSlider from '..'
-import dark from '../../themes/dark'
-import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-
-export default {
-  name: 'SliderExample',
-  components: {
-    VarSlider,
-    AppType,
-  },
-  setup() {
-    const values = reactive({
-      value: 3,
-      value1: [24, 50],
-      value2: 25,
-      value3: 40,
-      value4: 20,
-      value5: 20,
-      value6: 70,
-      value7: 50,
-      value8: 20,
-      value9: [5, 38],
-      value10: [7, 64],
-    })
-
-    const handleChange = (v) => {
-      console.log(v)
-    }
-
-    watchLang(use)
-    watchDarkMode(dark)
-
-    return {
-      ...toRefs(values),
-      pack,
-      handleChange,
-    }
-  },
-}
-</script>
-<style lang="less" scoped>
+<style>
 .slider-example_block {
   width: 24px;
   border: 1px solid #52af77;

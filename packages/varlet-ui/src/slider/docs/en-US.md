@@ -4,33 +4,18 @@
 
 Used to take values within a given range.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Slider } from '@varlet/ui'
-
-createApp().use(Slider)
-```
-
 ### Basic Usage
 
 ```html
-<var-slider v-model="value" />
-```
+<script setup>
+  import { ref } from 'vue'
 
-```javascript
-import { ref } from 'vue'
+  const value = ref(3)
+</script>
 
-export default {
-  setup() {
-    const value = ref(3)
-
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-slider v-model="value" />
+</template>
 ```
 
 ### Step size
@@ -38,7 +23,15 @@ export default {
 Set step increment by `step`.
 
 ```html
-<var-slider v-model="value" step="10" />
+<script setup>
+  import { ref } from 'vue'
+
+  const value = ref(25)
+</script>
+
+<template>
+  <var-slider v-model="value" step="10" />
+</template>
 ```
 
 ### Dual thumb
@@ -46,37 +39,47 @@ Set step increment by `step`.
 Open the double slider mode through the `range` attribute. Make sure the `value` is an **array**.
 
 ```html
-<var-slider v-model="value" range @change="handleChange" />
-```
+<script setup>
+  import { ref } from 'vue'
 
-```javascript
-import { ref } from 'vue'
+  const value = ref([24, 50])
 
-export default {
-  setup() {
-    const value = ref([3, 50])
-
-    const handleChange = (value) => {
-      console.log(value)
-    }
-
-    return {
-      value
-    }
+  const handleChange = (value) => {
+    console.log(value)
   }
-}
+</script>
+
+<template>
+  <var-slider v-model="value" range @change="handleChange" />
+</template>
 ```
 
 ### Disable
 
 ```html
-<var-slider v-model="value" disabled />
+<script setup>
+  import { ref } from 'vue'
+
+  const value = ref(40)
+</script>
+
+<template>
+  <var-slider v-model="value" disabled />
+</template>
 ```
 
 ### Readonly
 
 ```html
-<var-slider v-model="value" readonly />
+<script setup>
+  import { ref } from 'vue'
+
+  const value = ref(40)
+</script>
+
+<template>
+  <var-slider v-model="value" readonly />
+</template>
 ```
 
 ### Slider size
@@ -84,57 +87,92 @@ export default {
 Control the size of slider through `track-height` and `thumb-size`.
 
 ```html
-<var-slider v-model="value" track-height="4" thumb-size="8" range />
+<script setup>
+  import { ref } from 'vue'
+
+  const value = ref([7, 64])
+</script>
+
+<template>
+  <var-slider v-model="value" track-height="4" thumb-size="8" range />
+</template>
 ```
 
 ### Custom style
 
 ```html
-<var-slider
-  v-model="value"
-  label-color="purple"
-  active-color="#e0732c"
-  track-color="#3a68b4"
-  thumb-color="#e25241"
-  label-text-color="#ededed"
-/>
+<script setup>
+  import { ref } from 'vue'
+
+  const value = ref(20)
+</script>
+
+<template>
+  <var-slider
+    v-model="value"
+    label-color="purple"
+    active-color="#e0732c"
+    track-color="#3a68b4"
+    thumb-color="#e25241"
+    label-text-color="#ededed"
+  />
+</template>
 ```
+
 ### Custom Button
 
 The props such as `label-visible`, `label-text-color`, `thumb-size` are invalid when using slot custom buttons.
 
 ```html
-<var-slider v-model="value" range active-color="#52af77">
-  <template #button="{ currentValue }">
-    <div class="slider-example_block">{{ currentValue }}</div>
-  </template>
-</var-slider>
-```
-```css
-.slider-example_block {
-  width: 24px;
-  border: 1px solid #52af77;
-  color: #52af77;
-  height: 24px;
-  margin: 0 -12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: #ebebeb 0 2px 2px;
-  border-radius: 50%;
-  font-size: 12px;
-  background-color: #fff;
-}
-```
+<script setup>
+  import { ref } from 'vue'
 
+  const value = ref([5, 38])
+</script>
+
+<template>
+  <var-slider v-model="value" range active-color="#52af77">
+    <template #button="{ currentValue }">
+      <div class="slider-example_block">{{ currentValue }}</div>
+    </template>
+  </var-slider>
+</template>
+
+<style>
+  .slider-example_block {
+    width: 24px;
+    border: 1px solid #52af77;
+    color: #52af77;
+    height: 24px;
+    margin: 0 -12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: #ebebeb 0 2px 2px;
+    border-radius: 50%;
+    font-size: 12px;
+    background-color: #fff;
+  }
+</style>
+```
 
 ### Show label
 Control the display of labels through the `label-visible` attribute.
 
 ```html
-<var-slider v-model="value" label-visible="never" />
-<var-slider v-model="value1" />
-<var-slider v-model="value2" label-visible="always" />
+<script setup>
+  import { ref } from 'vue'
+
+  const value = ref(20)
+  const value1 = ref(70)
+  const value2 = ref(50)
+</script>
+
+<template>
+  <var-slider v-model="value" label-visible="never" />
+  <var-slider v-model="value1" />
+  <var-slider v-model="value2" label-visible="always" />
+</template>
 ```
 
 ### Validate value
@@ -144,10 +182,15 @@ Verify the value through the `rules` attribute.
 <span style="font-size: 12px">`rules` is an array that accepts `functions`, `boolean`, and `string`. Functions pass an input value as an argument and must return either `true` / `false` or a `string` containing an error message. The input field will enter an error state if a function returns (or any value in the array contains) `false` or is a `string`.</span>
 
 ```html
-<var-slider 
-  v-model="value" 
-  :rules="[(v) => v > 35 || 'error message']" 
-/>
+<script setup>
+  import { ref } from 'vue'
+
+  const value = ref(20)
+</script>
+
+<template>
+  <var-slider v-model="value" :rules="[(v) => v > 35 || 'error message']" />
+</template>
 ```
 
 ## API
