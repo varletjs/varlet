@@ -4,32 +4,31 @@
 
 Provides the ability to control all form components.
 
+
 ### Form Example
 
 ```html
+
 <script setup>
 import { reactive, ref } from 'vue'
-   const formData = reactive({
-      username: '',
-      password: '',
-      department: '',
-      gender: undefined,
-      license: false,
-      range: 10,
-      count: 0,
-      group: [],
-      score:0,
-      like: [],
-      files: []
-    })
+const formData = reactive({
+  username: '',
+  password: '',
+  department: '',
+  gender: undefined,
+  license: false,
+  range: 10,
+  count: 0,
+  group: [],
+  score:0,
+  like: [],
+  files: []
+})
 
-    const form = ref(null)
-    const disabled = ref(false)
-    const readonly = ref(false)
+const form = ref(null)
+const disabled = ref(false)
+const readonly = ref(false)
 </script>
-```
-
-```html
 <template>
   <var-form ref="form" :disabled="disabled" :readonly="readonly">
     <var-input
@@ -78,7 +77,7 @@ import { reactive, ref } from 'vue'
       <var-checkbox :checked-value="3">Play game</var-checkbox>
     </var-checkbox-group>
     <var-rate
-      :rules="[v => v >= 3 || It has to be greater than 2]"
+      :rules="[v => v >= 3 || 'It has to be greater than 2']"
       v-model="formData.score"
     />
     <div>
@@ -102,33 +101,18 @@ import { reactive, ref } from 'vue'
       v-model="formData.files"
     />
   </var-form>
-</template>
-```
-
-### Form control
-
-```html
-<template>
   <var-button block type="danger" @click="form.reset()">
     Empty form
   </var-button>
-</template>
-<template>
   <var-button block type="warning" @click="form.resetValidation()">
     Empty the validation
   </var-button>
-</template>
-<template>
   <var-button block type="success" @click="form.validate()">
     Trigger validation
   </var-button>
-</template>
-<template>
   <var-button block type="info" @click="disabled = !disabled">
     Form disabled
   </var-button>
-</template>
-<template>
   <var-button block type="primary" @click="readonly = !readonly">
     Form readonly
   </var-button>

@@ -11,27 +11,24 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
-   const formData = reactive({
-      username: '',
-      password: '',
-      department: '',
-      gender: undefined,
-      license: false,
-      range: 10,
-      count: 0,
-      group: [],
-      score:0,
-      like: [],
-      files: []
-    })
+const formData = reactive({
+  username: '',
+  password: '',
+  department: '',
+  gender: undefined,
+  license: false,
+  range: 10,
+  count: 0,
+  group: [],
+  score:0,
+  like: [],
+  files: []
+})
 
-    const form = ref(null)
-    const disabled = ref(false)
-    const readonly = ref(false)
+const form = ref(null)
+const disabled = ref(false)
+const readonly = ref(false)
 </script>
-```
-
-```html
 <template>
   <var-form ref="form" :disabled="disabled" :readonly="readonly">
     <var-input
@@ -104,34 +101,18 @@ import { reactive, ref } from 'vue'
       v-model="formData.files"
     />
   </var-form>
-</template>
-
-```
-
-### 表单控制
-
-```html
-<template>
   <var-button block type="danger" @click="form.reset()">
     清空表单
   </var-button>
-</template>
-<template>
   <var-button block type="warning" @click="form.resetValidation()">
     清空验证
   </var-button>
-</template>
-<template>
   <var-button block type="success" @click="form.validate()">
     触发验证
   </var-button>
-</template>
-<template>
   <var-button block type="info" @click="disabled = !disabled">
     表单禁用
   </var-button>
-</template>
-<template>
   <var-button block type="primary" @click="readonly = !readonly">
     表单只读
   </var-button>
