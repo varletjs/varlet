@@ -16,87 +16,108 @@ createApp().use(ActionSheet)
 
 ### 局部引入
 
-```js
+```html
+<script setup>
 import { ActionSheet } from '@varlet/ui'
 
-export default {
-  components: {
-    [ActionSheet.Component.name]: ActionSheet
-  }
-}
+const VarActionSheet = ActionSheet.Component;
+
+</script>
 ```
 
 ## 函数调用
 
 ### 基本使用
 
-```js
-import { Snackbar } from '@varlet/ui'
+```html
+<script setup>
+import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const action = await ActionSheet({
-  actions: [
-    {
-      name: 'Item 01',
-      icon: 'account-circle',
-    },
-    {
-      name: 'Item 02',
-      icon: 'notebook',
-    },
-    {
-      name: 'Item 03',
-      icon: 'wifi',
-    }
-  ]
-})
-
-action !== 'close' && Snackbar(`您选择的是:${action.name}`)
+const rawActions = [
+  {
+    name: 'Item 01',
+    icon: 'account-circle',
+  },
+  {
+    name: 'Item 02',
+    icon: 'notebook',
+  },
+  {
+    name: 'Item 03',
+    icon: 'wifi',
+  },
+]
+const createBasic = async () => {
+  const action = await ActionSheet({ actions: rawActions })
+  action !== 'close' && Snackbar(`${action.name}`)
+}
+</script>
+<template>
+  <var-button type="primary" block @click="createBasic">基本使用</var-button>
+</template>
 ```
 
 ### 修改标题
 
-```js
-ActionSheet({
-  actions: [
-    {
-      name: 'Item 01',
-      icon: 'account-circle',
-    },
-    {
-      name: 'Item 02',
-      icon: 'notebook',
-    },
-    {
-      name: 'Item 03',
-      icon: 'wifi',
-    }
-  ],
-  title: '选择一个你喜欢的吧'
-})
+```html
+<script setup>
+import { Snackbar, ActionSheet } from '@varlet/ui'
+
+const rawActions = [
+  {
+    name: 'Item 01',
+    icon: 'account-circle',
+  },
+  {
+    name: 'Item 02',
+    icon: 'notebook',
+  },
+  {
+    name: 'Item 03',
+    icon: 'wifi',
+  },
+]
+const handleSelect = async () => {
+  const action = await ActionSheet({ actions: rawActions, title: '选择一个你喜欢的吧' })
+  action !== 'close' && Snackbar(`${action.name}`)
+}
+</script>
+<template>
+  <var-button type="primary" block @click="handleSelect">修改标题</var-button>
+</template>
 ```
 
 ### 禁用选项
 
 选项传入 `disabled` 可以使选项处于禁用状态。
 
-```js
-ActionSheet({
-  actions: [
-    {
-      name: 'Item 01',
-      icon: 'account-circle',
-    },
-    {
-      name: 'Item 02',
-      icon: 'notebook',
-    },
-    {
-      name: 'Item 03',
-      icon: 'wifi',
-      disabled: true,
-    },
-  ]
-})
+```html
+<script setup>
+import { Snackbar, ActionSheet } from '@varlet/ui'
+
+const rawActions = [
+  {
+    name: 'Item 01',
+    icon: 'account-circle',
+  },
+  {
+    name: 'Item 02',
+    icon: 'notebook',
+  },
+  {
+    name: 'Item 03',
+    icon: 'wifi',
+    disabled: true,
+  },
+]
+const handleSelect = async () => {
+  const action = await ActionSheet({ actions: rawActions })
+  action !== 'close' && Snackbar(`${action.name}`)
+}
+</script>
+<template>
+  <var-button type="primary" block @click="handleSelect">禁用选项</var-button>
+</template>
 ```
 
 ### 禁用点击选项时关闭动作面板
@@ -104,55 +125,70 @@ ActionSheet({
 方法传入 `closeOnClickAction` 可以禁用在选择选项时 `ActionSheet` 自动关闭的行为，用户可以多次选择，
 由于 `Promise` 只会被 `resolve` 一次，所以推荐使用 `onSelect` 监听用户选择行为。
 
-```js
-import { Snackbar } from '@varlet/ui'
+```html
+<script setup>
+import { Snackbar, ActionSheet } from '@varlet/ui'
 
-ActionSheet({
-  actions: [
-    {
-      name: 'Item 01',
-      icon: 'account-circle',
-    },
-    {
-      name: 'Item 02',
-      icon: 'notebook',
-    },
-    {
-      name: 'Item 03',
-      icon: 'wifi',
-    },
-  ],
-  closeOnClickAction: false,
-  onSelect: action => Snackbar(`您选择的是:${action.name}`),
-})
+const rawActions = [
+  {
+    name: 'Item 01',
+    icon: 'account-circle',
+  },
+  {
+    name: 'Item 02',
+    icon: 'notebook',
+  },
+  {
+    name: 'Item 03',
+    icon: 'wifi',
+  },
+]
+const handleSelect = async () => {
+  await ActionSheet({ 
+    actions: rawActions, 
+    closeOnClickAction: false,
+    onSelect: action => Snackbar(`Your selected is:${action.name}`), 
+  })
+}
+</script>
+<template>
+  <var-button type="primary" block @click="handleSelect">禁用关闭动作面板</var-button>
+</template>
 ```
 
 ### 自定义选项样式
 
 选项提供了可以配置样式的参数，具体选项的参数可选项见 `Action 的数据结构`。
 
-```js
-import { Snackbar } from '@varlet/ui'
+```html
+<script setup>
+import { Snackbar, ActionSheet } from '@varlet/ui'
 
-ActionSheet({
-  actions: [
-    {
-      name: 'Item 01',
-      icon: 'account-circle',
-      color: '#00c48f',
-    },
-    {
-      name: 'Item 02',
-      icon: 'notebook',
-      color: '#ff9800',
-    },
-    {
-      name: 'Item 03',
-      icon: 'wifi',
-      color: '#00afef',
-    },
-  ]
-})
+const rawActions = [
+  {
+    name: 'Item 01',
+    icon: 'account-circle',
+    color: '#00c48f',
+  },
+  {
+    name: 'Item 02',
+    icon: 'notebook',
+    color: '#ff9800',
+  },
+  {
+    name: 'Item 03',
+    icon: 'wifi',
+    color: '#00afef',
+  },
+]
+const handleSelect = async () => {
+  const action = await ActionSheet({ actions: rawActions })
+  action !== 'close' && Snackbar(`${action.name}`)
+}
+</script>
+<template>
+  <var-button type="primary" block @click="handleSelect">自定义选项样式</var-button>
+</template>
 ```
 
 ## 组件调用
@@ -160,228 +196,187 @@ ActionSheet({
 ### 基本使用
 
 ```html
-<var-button type="warning" block @click="show = true">基本使用</var-button>
-<var-action-sheet
-  :actions="actions"
-  v-model:show="show"
-  @select="handleSelect"
-/>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const show = ref(false)
-    const actions = reactive([
-      {
-        name: 'Item 01',
-        icon: 'account-circle',
-      },
-      {
-        name: 'Item 02',
-        icon: 'notebook',
-      },
-      {
-        name: 'Item 03',
-        icon: 'wifi',
-      },
-    ])
-
-    const handleSelect = action => Snackbar(`你选择的是:${action.name}`)
-
-    return {
-      show,
-      actions,
-      handleSelect
-    }
-  }
+const actions = [
+  {
+    name: 'Item 01',
+    icon: 'account-circle',
+  },
+  {
+    name: 'Item 02',
+    icon: 'notebook',
+  },
+  {
+    name: 'Item 03',
+    icon: 'wifi',
+  },
+]
+const show = ref(false);
+const handleSelect = (action) => {
+  Snackbar(`${action.name}`)
 }
+</script>
+<template>
+  <var-button type="warning" block @click="show = true">基本使用</var-button>
+  <var-action-sheet 
+    :actions="actions"
+    v-model:show="show"
+    @select="handleSelect"
+  />
+</template>
 ```
 
 ### 修改标题
 
 ```html
-<var-button type="warning" block @click="show = true">修改标题</var-button>
-<var-action-sheet
-  title="选择一个你喜欢的吧"
-  :actions="actions"
-  v-model:show="show"
-  @select="handleSelect"
-/>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const show = ref(false)
-    const actions = reactive([
-      {
-        name: 'Item 01',
-        icon: 'account-circle',
-      },
-      {
-        name: 'Item 02',
-        icon: 'notebook',
-      },
-      {
-        name: 'Item 03',
-        icon: 'wifi',
-      },
-    ])
-
-    const handleSelect = action => Snackbar(`你选择的是:${action.name}`)
-
-    return {
-      show,
-      actions,
-      handleSelect
-    }
-  }
+const actions = [
+  {
+    name: 'Item 01',
+    icon: 'account-circle',
+  },
+  {
+    name: 'Item 02',
+    icon: 'notebook',
+  },
+  {
+    name: 'Item 03',
+    icon: 'wifi',
+  },
+]
+const show = ref(false);
+const handleSelect = (action) => {
+  Snackbar(`${action.name}`)
 }
+</script>
+<template>
+  <var-button type="warning" block @click="show = true">修改标题</var-button>
+  <var-action-sheet 
+    title="选择一个你喜欢的吧"
+    :actions="actions"
+    v-model:show="show"
+    @select="handleSelect"
+  />
+</template>
 ```
 
 ### 禁用选项
 
 ```html
-<var-button type="warning" block @click="show = true">禁用选项</var-button>
-<var-action-sheet
-  :actions="actions"
-  v-model:show="show"
-  @select="handleSelect"
-/>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const show = ref(false)
-    const actions = reactive([
-      {
-        name: 'Item 01',
-        icon: 'account-circle',
-      },
-      {
-        name: 'Item 02',
-        icon: 'notebook',
-      },
-      {
-        name: 'Item 03',
-        icon: 'wifi',
-        disabled: true,
-      },
-    ])
-
-    const handleSelect = action => Snackbar(`你选择的是:${action.name}`)
-
-    return {
-      show,
-      actions,
-      handleSelect
-    }
-  }
+const actions = [
+  {
+    name: 'Item 01',
+    icon: 'account-circle',
+  },
+  {
+    name: 'Item 02',
+    icon: 'notebook',
+  },
+  {
+    name: 'Item 03',
+    icon: 'wifi',
+    disabled: true,
+  },
+]
+const show = ref(false);
+const handleSelect = (action) => {
+  Snackbar(`${action.name}`)
 }
+</script>
+<template>
+  <var-button type="warning" block @click="show = true">禁用选项</var-button>
+  <var-action-sheet 
+    :actions="actions"
+    v-model:show="show"
+    @select="handleSelect"
+  />
+</template>
 ```
 
 ### 禁用点击选项时关闭动作面板
 
 ```html
-<var-button type="warning" block @click="show = true">禁用点击选项时关闭动作面板</var-button>
-<var-action-sheet
-  :close-on-click-action="false"
-  :actions="actions"
-  v-model:show="show"
-  @select="handleSelect"
-/>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const show = ref(false)
-    const actions = reactive([
-      {
-        name: 'Item 01',
-        icon: 'account-circle',
-      },
-      {
-        name: 'Item 02',
-        icon: 'notebook',
-      },
-      {
-        name: 'Item 03',
-        icon: 'wifi',
-      },
-    ])
-
-    const handleSelect = action => Snackbar(`你选择的是:${action.name}`)
-
-    return {
-      show,
-      actions,
-      handleSelect
-    }
-  }
+const actions = [
+  {
+    name: 'Item 01',
+    icon: 'account-circle',
+  },
+  {
+    name: 'Item 02',
+    icon: 'notebook',
+  },
+  {
+    name: 'Item 03',
+    icon: 'wifi',
+  },
+]
+const show = ref(false);
+const handleSelect = (action) => {
+  Snackbar(`${action.name}`)
 }
+</script>
+<template>
+  <var-button type="warning" block @click="show = true">禁用点击选项时关闭动作面板</var-button>
+  <var-action-sheet 
+    :close-on-click-action="false"
+    :actions="actions" 
+    v-model:show="show" 
+    @select="handleSelect"
+  />
+</template>
 ```
 
 ### 自定义选项样式
 
 ```html
-<var-button type="warning" block @click="show = true">自定义选项样式</var-button>
-<var-action-sheet
-  :close-on-click-action="false"
-  :actions="actions"
-  v-model:show="show"
-  @select="handleSelect"
-/>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const show = ref(false)
-    const actions = reactive([
-      {
-        name: 'Item 01',
-        icon: 'account-circle',
-        color: '#00c48f',
-      },
-      {
-        name: 'Item 02',
-        icon: 'notebook',
-        color: '#ff9800',
-      },
-      {
-        name: 'Item 03',
-        icon: 'wifi',
-        color: '#00afef',
-      },
-    ])
-
-    const handleSelect = action => Snackbar(`你选择的是:${action.name}`)
-
-    return {
-      show,
-      actions,
-      handleSelect
-    }
-  }
+const actions = [
+  {
+    name: 'Item 01',
+    icon: 'account-circle',
+    color: '#00c48f',
+  },
+  {
+    name: 'Item 02',
+    icon: 'notebook',
+    color: '#ff9800',
+  },
+  {
+    name: 'Item 03',
+    icon: 'wifi',
+    color: '#00afef',
+  },
+]
+const show = ref(false);
+const handleSelect = (action) => {
+  Snackbar(`${action.name}`)
 }
+</script>
+<template>
+  <var-button type="warning" block @click="show = true">自定义选项样式</var-button>
+  <var-action-sheet 
+    :actions="actions" 
+    v-model:show="show" 
+    @select="handleSelect"
+  />
+</template>
 ```
 
 
