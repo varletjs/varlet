@@ -30,6 +30,7 @@ Picker 传入一个 `cascade` 属性开启级联滚动。
 组件库内置提供了省市区三级联动，引入 `area.json`。
 
 ```html
+// playground-ignore
 <script setup>
 import { Picker } from '@varlet/ui'  
 import columns from '@varlet/ui/json/area.json'
@@ -89,6 +90,7 @@ const columns = ref([
 组件库提供了完整的省市区信息，可以直接使用。
 
 ```html
+// playground-ignore
 <script setup>
 import { ref } from 'vue'
 import area from '@varlet/ui/json/area.json'

@@ -30,6 +30,7 @@ Passing in a `cascade` attribute starts cascading.
 Built-in component library provides a three-level linkage between provinces and municipalities, import `area.json`.
 
 ```html
+// playground-ignore
 <script setup>
 import { Picker } from '@varlet/ui'
 import columns from '@varlet/ui/json/area.json'
@@ -88,6 +89,7 @@ const columns = ref([
 The component library provides complete provincial information and can be used directly.
 
 ```html
+// playground-ignore
 <script setup>
 import { ref } from 'vue'
 import area from '@varlet/ui/json/area.json'
