@@ -3,6 +3,8 @@
 ### 介绍
 提供了函数和组件两种调用方式。同时支持级联模式，可以处理多级联动。
 
+## 函数调用
+
 ### 多列滚动
 
 Picker 传入一个二维数组 `columns`, `columns` 的每一项就是每一列的内容。
@@ -10,11 +12,14 @@ Picker 返回用户触发状态，选择的文本，选择的下标。
 
 ```html
 <script setup>
+import { Picker } from '@varlet/ui'
+
 const columns = [
   Array.from({ length: 20 }).map((_, index) => index),
   Array.from({ length: 20 }).map((_, index) => index),
   Array.from({ length: 20 }).map((_, index) => index)
 ]
+
 const { state, texts, indexes } = await Picker(columns)
 </script>
 ```
@@ -26,6 +31,7 @@ Picker 传入一个 `cascade` 属性开启级联滚动。
 
 ```html
 <script setup>
+import { Picker } from '@varlet/ui'  
 import columns from '@varlet/ui/json/area.json'
 
 const { state, texts, indexes } = await Picker({
@@ -41,6 +47,8 @@ const { state, texts, indexes } = await Picker({
 
 ```html
 <script setup>
+import { ref } from 'vue'
+
 const columns = ref([
   Array.from({ length: 20 }).map((_, index) => index),
   Array.from({ length: 20 }).map((_, index) => index),
@@ -62,19 +70,11 @@ import { ref } from 'vue'
 const columns = ref([
   {
     text: '北京市',
-    children: [
-      {
-        text: '市辖区'
-      }
-    ]
+    children: [{ text: '市辖区'}]
   },
   {
     text: '河北省',
-    children: [
-      {
-        text: '石家庄市'
-      }
-    ]
+    children: [{ text: '石家庄市'}]
   }
 ])
 </script>
@@ -92,6 +92,7 @@ const columns = ref([
 <script setup>
 import { ref } from 'vue'
 import area from '@varlet/ui/json/area.json'
+
 const columns = ref(area)
 </script>
 

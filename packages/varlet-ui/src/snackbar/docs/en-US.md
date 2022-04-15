@@ -4,16 +4,6 @@
 
 Used to display a quick message to a user.
 
-### Scoped Install
-
-```html
-<script setup>
-import { Snackbar } from '@varlet/ui'
-
-const VarSnackbar = Snackbar.Component;
-</script>
-```
-
 ## Component Call
 
 ### Basic Usage

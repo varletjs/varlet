@@ -12,11 +12,14 @@ Returns the user triggered status, selected text, and selected index.
 
 ```html
 <script setup>
+import { Picker } from '@varlet/ui'
+
 const columns = [
   Array.from({ length: 20 }).map((_, index) => index),
   Array.from({ length: 20 }).map((_, index) => index),
   Array.from({ length: 20 }).map((_, index) => index)
 ]
+
 const { state, texts, indexes } = await Picker(columns)
 </script>
 ```
@@ -28,6 +31,7 @@ Built-in component library provides a three-level linkage between provinces and 
 
 ```html
 <script setup>
+import { Picker } from '@varlet/ui'
 import columns from '@varlet/ui/json/area.json'
 
 const { state, texts, indexes } = await Picker({
@@ -43,6 +47,8 @@ const { state, texts, indexes } = await Picker({
 
 ```html
 <script setup>
+import { ref } from 'vue'
+
 const columns = ref([
   Array.from({ length: 20 }).map((_, index) => index),
   Array.from({ length: 20 }).map((_, index) => index),
@@ -64,19 +70,11 @@ import { ref } from 'vue'
 const columns = ref([
   {
     text: 'Washington',
-    children: [
-      {
-        text: 'City'
-      }
-    ]
+    children: [{ text: 'City' }]
   },
   {
     text: 'New York',
-    children: [
-      {
-        text: 'Queens'
-      }
-    ]
+    children: [{ text: 'Queens' }]
   }
 ])
 </script>
@@ -93,6 +91,7 @@ The component library provides complete provincial information and can be used d
 <script setup>
 import { ref } from 'vue'
 import area from '@varlet/ui/json/area.json'
+
 const columns = ref(area)
 </script>
 

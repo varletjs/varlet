@@ -4,16 +4,6 @@
 
 用于向用户显示快速消息。
 
-### 局部引入
-
-```html
-<script setup>
-import { Snackbar } from '@varlet/ui'
-
-const VarSnackbar = Snackbar.Component;
-</script>
-```
-
 ## 组件调用
 
 ### 基本使用

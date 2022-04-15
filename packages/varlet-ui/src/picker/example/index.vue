@@ -1,6 +1,6 @@
 <script setup>
 import Picker from '../index'
-import VarPicker from '../Picker'
+import VarSpace from '../../space'
 import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import area from '../../../json/area.json'
@@ -8,6 +8,8 @@ import dark from '../../themes/dark'
 import { ref } from 'vue'
 import { use, pack } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+
+const VarPicker = Picker.Component
 
 const columns = ref([Array.from({ length: 20 }).map((_, index) => index)])
 
@@ -40,12 +42,16 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.functionCall }}</app-type>
-  <var-button type="primary" style="margin-bottom: 10px" block @click="picker">{{ pack.singlePicker }}</var-button>
-  <var-button type="primary" style="margin-bottom: 10px" block @click="picker2">{{ pack.multiplePicker }}</var-button>
-  <var-button type="primary" style="margin-bottom: 10px" block @click="picker3">{{ pack.cascadePicker }}</var-button>
+  <var-space direction="column" :size="[10, 10]">
+    <var-button type="primary" block @click="picker">{{ pack.singlePicker }}</var-button>
+    <var-button type="primary" block @click="picker2">{{ pack.multiplePicker }}</var-button>
+    <var-button type="primary" block @click="picker3">{{ pack.cascadePicker }}</var-button>
+  </var-space>
 
   <app-type>{{ pack.componentCall }}</app-type>
-  <var-picker style="margin-bottom: 14px" :columns="columns" />
-  <var-picker style="margin-bottom: 14px" :columns="columns2" />
-  <var-picker style="margin-bottom: 14px" cascade :columns="columns3" />
+  <var-space direction="column" :size="[10, 14]">
+    <var-picker :columns="columns" />
+    <var-picker :columns="columns2" />
+    <var-picker cascade :columns="columns3" />
+  </var-space>
 </template>
