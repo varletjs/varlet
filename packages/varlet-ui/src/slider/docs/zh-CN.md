@@ -4,33 +4,18 @@
 
 用于在给定范围内取值。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Slider } from '@varlet/ui'
-
-createApp().use(Slider)
-```
-
 ### 基本使用
 
 ```html
-<var-slider v-model="value" />
-```
+<script setup>
+  import { ref } from 'vue'
 
-```javascript
-import { ref } from 'vue'
+  const value = ref(3)
+</script>
 
-export default {
-  setup() {
-    const value = ref(3)
-
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-slider v-model="value" />
+</template>
 ```
 
 ### 指定步长
@@ -38,7 +23,15 @@ export default {
 通过 `step` 属性来设置步进增量。
 
 ```html
-<var-slider v-model="value" step="10" />
+<script setup>
+  import { ref } from 'vue'
+
+  const value = ref(25)
+</script>
+
+<template>
+  <var-slider v-model="value" step="10" />
+</template>
 ```
 
 ### 双滑块
@@ -46,37 +39,47 @@ export default {
 通过 `range` 属性开启双滑块模式，确保 `value` 的值是一个**数组**。
 
 ```html
-<var-slider v-model="value" range @change="handleChange" />
-```
+<script setup>
+  import { ref } from 'vue'
 
-```javascript
-import { ref } from 'vue'
+  const value = ref([24, 50])
 
-export default {
-  setup() {
-    const value = ref([24, 50])
-
-    const handleChange = (value) => {
-      console.log(value)
-    }
-
-    return {
-      value
-    }
+  const handleChange = (value) => {
+    console.log(value)
   }
-}
+</script>
+
+<template>
+  <var-slider v-model="value" range @change="handleChange" />
+</template>
 ```
 
 ### 禁用
 
 ```html
-<var-slider v-model="value" disabled />
+<script setup>
+  import { ref } from 'vue'
+
+  const value = ref(40)
+</script>
+
+<template>
+  <var-slider v-model="value" disabled />
+</template>
 ```
 
 ### 只读
 
 ```html
-<var-slider v-model="value" readonly />
+<script setup>
+  import { ref } from 'vue'
+
+  const value = ref(40)
+</script>
+
+<template>
+  <var-slider v-model="value" readonly />
+</template>
 ```
 
 ### 不同大小
@@ -84,20 +87,36 @@ export default {
 通过 `track-height` 和 `thumb-size` 控制slider的大小。
 
 ```html
-<var-slider v-model="value" track-height="4" thumb-size="8" range />
+<script setup>
+  import { ref } from 'vue'
+
+  const value = ref([7, 64])
+</script>
+
+<template>
+  <var-slider v-model="value" track-height="4" thumb-size="8" range />
+</template>
 ```
 
 ### 自定义样式
 
 ```html
-<var-slider
-  v-model="value"
-  label-color="purple"
-  active-color="#e0732c"
-  track-color="#3a68b4"
-  thumb-color="#e25241"
-  label-text-color="#ededed"
-/>
+<script setup>
+  import { ref } from 'vue'
+
+  const value = ref(20)
+</script>
+
+<template>
+  <var-slider
+    v-model="value"
+    label-color="purple"
+    active-color="#e0732c"
+    track-color="#3a68b4"
+    thumb-color="#e25241"
+    label-text-color="#ededed"
+  />
+</template>
 ```
 
 ### 自定义按钮
@@ -105,37 +124,55 @@ export default {
 使用插槽自定义按钮时，`label-visible`、`label-text-color`、`thumb-size` 等属性均无效。
 
 ```html
-<var-slider v-model="value" range active-color="#52af77">
-  <template #button="{ currentValue }">
-    <div class="slider-example_block">{{ currentValue }}</div>
-  </template>
-</var-slider>
-```
-```css
-.slider-example_block {
-  width: 24px;
-  border: 1px solid #52af77;
-  color: #52af77;
-  height: 24px;
-  margin: 0 -12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: #ebebeb 0 2px 2px;
-  border-radius: 50%;
-  font-size: 12px;
-  background-color: #fff;
-}
-```
+<script setup>
+  import { ref } from 'vue'
 
+  const value = ref([5, 38])
+</script>
+
+<template>
+  <var-slider v-model="value" range active-color="#52af77">
+    <template #button="{ currentValue }">
+      <div class="slider-example_block">{{ currentValue }}</div>
+    </template>
+  </var-slider>
+</template>
+
+<style>
+  .slider-example_block {
+    width: 24px;
+    border: 1px solid #52af77;
+    color: #52af77;
+    height: 24px;
+    margin: 0 -12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: #ebebeb 0 2px 2px;
+    border-radius: 50%;
+    font-size: 12px;
+    background-color: #fff;
+  }
+</style>
+```
 
 ### 显示标签
 通过 `label-visible` 属性控制标签的显示。
 
 ```html
-<var-slider v-model="value" label-visible="never" />
-<var-slider v-model="value1" />
-<var-slider v-model="value2" label-visible="always" />
+<script setup>
+  import { ref } from 'vue'
+
+  const value = ref(20)
+  const value1 = ref(70)
+  const value2 = ref(50)
+</script>
+
+<template>
+  <var-slider v-model="value" label-visible="never" />
+  <var-slider v-model="value1" />
+  <var-slider v-model="value2" label-visible="always" />
+</template>
 ```
 
 ### 值的校验
@@ -145,7 +182,15 @@ export default {
 <span style="font-size: 12px"> `rules` 是一个可以接受 `function`、`boolean` 和 `string` 的数组。 函数传递输入值作为参数，必须返回 `true` / `false` 或包含错误消息的 `string`，如果函数返回 (或数组包含的任何值) `false` 或 `string`，输入字段将输入错误状态。</span>
 
 ```html
-<var-slider v-model="value" :rules="[(v) => v > 35 || 'error message']" />
+<script setup>
+  import { ref } from 'vue'
+
+  const value = ref(20)
+</script>
+
+<template>
+  <var-slider v-model="value" :rules="[(v) => v > 35 || 'error message']" />
+</template>
 ```
 
 ## API
