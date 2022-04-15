@@ -5,26 +5,6 @@
 `ActionSheet` 提供了函数式和组件式两种使用方式，两种使用效果和参数并没有本质区别。
 函数返回一个 `Promise`，选择时返回 `当前选择的 action`，点击遮罩层关闭返回 `close`。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { ActionSheet } from '@varlet/ui'
-
-createApp().use(ActionSheet)
-```
-
-### 局部引入
-
-```html
-<script setup>
-import { ActionSheet } from '@varlet/ui'
-
-const VarActionSheet = ActionSheet.Component;
-
-</script>
-```
-
 ## 函数调用
 
 ### 基本使用
@@ -33,25 +13,28 @@ const VarActionSheet = ActionSheet.Component;
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const rawActions = [
-  {
-    name: 'Item 01',
-    icon: 'account-circle',
-  },
-  {
-    name: 'Item 02',
-    icon: 'notebook',
-  },
-  {
-    name: 'Item 03',
-    icon: 'wifi',
-  },
-]
 const createBasic = async () => {
-  const action = await ActionSheet({ actions: rawActions })
+  const action = await ActionSheet({ 
+    actions: [
+      {
+        name: 'Item 01',
+        icon: 'account-circle',
+      },
+      {
+        name: 'Item 02',
+        icon: 'notebook',
+      },
+      {
+        name: 'Item 03',
+        icon: 'wifi',
+      },
+    ] 
+  })
+  
   action !== 'close' && Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="primary" block @click="createBasic">基本使用</var-button>
 </template>
@@ -63,25 +46,29 @@ const createBasic = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const rawActions = [
-  {
-    name: 'Item 01',
-    icon: 'account-circle',
-  },
-  {
-    name: 'Item 02',
-    icon: 'notebook',
-  },
-  {
-    name: 'Item 03',
-    icon: 'wifi',
-  },
-]
 const handleSelect = async () => {
-  const action = await ActionSheet({ actions: rawActions, title: '选择一个你喜欢的吧' })
+  const action = await ActionSheet({ 
+    actions: [
+      {
+        name: 'Item 01',
+        icon: 'account-circle',
+      },
+      {
+        name: 'Item 02',
+        icon: 'notebook',
+      },
+      {
+        name: 'Item 03',
+        icon: 'wifi',
+      },
+    ],
+    title: '选择一个你喜欢的吧' 
+  })
+  
   action !== 'close' && Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="primary" block @click="handleSelect">修改标题</var-button>
 </template>
@@ -95,26 +82,29 @@ const handleSelect = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const rawActions = [
-  {
-    name: 'Item 01',
-    icon: 'account-circle',
-  },
-  {
-    name: 'Item 02',
-    icon: 'notebook',
-  },
-  {
-    name: 'Item 03',
-    icon: 'wifi',
-    disabled: true,
-  },
-]
 const handleSelect = async () => {
-  const action = await ActionSheet({ actions: rawActions })
+  const action = await ActionSheet({ 
+    actions: [
+      {
+        name: 'Item 01',
+        icon: 'account-circle',
+      },
+      {
+        name: 'Item 02',
+        icon: 'notebook',
+      },
+      {
+        name: 'Item 03',
+        icon: 'wifi',
+        disabled: true,
+      },
+    ] 
+  })
+  
   action !== 'close' && Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="primary" block @click="handleSelect">禁用选项</var-button>
 </template>
@@ -129,28 +119,28 @@ const handleSelect = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const rawActions = [
-  {
-    name: 'Item 01',
-    icon: 'account-circle',
-  },
-  {
-    name: 'Item 02',
-    icon: 'notebook',
-  },
-  {
-    name: 'Item 03',
-    icon: 'wifi',
-  },
-]
 const handleSelect = async () => {
   await ActionSheet({ 
-    actions: rawActions, 
+    actions: [
+      {
+        name: 'Item 01',
+        icon: 'account-circle',
+      },
+      {
+        name: 'Item 02',
+        icon: 'notebook',
+      },
+      {
+        name: 'Item 03',
+        icon: 'wifi',
+      },
+    ], 
     closeOnClickAction: false,
     onSelect: action => Snackbar(`Your selected is:${action.name}`), 
   })
 }
 </script>
+
 <template>
   <var-button type="primary" block @click="handleSelect">禁用关闭动作面板</var-button>
 </template>
@@ -164,28 +154,31 @@ const handleSelect = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const rawActions = [
-  {
-    name: 'Item 01',
-    icon: 'account-circle',
-    color: '#00c48f',
-  },
-  {
-    name: 'Item 02',
-    icon: 'notebook',
-    color: '#ff9800',
-  },
-  {
-    name: 'Item 03',
-    icon: 'wifi',
-    color: '#00afef',
-  },
-]
 const handleSelect = async () => {
-  const action = await ActionSheet({ actions: rawActions })
+  const action = await ActionSheet({ 
+    actions: [
+      {
+        name: 'Item 01',
+        icon: 'account-circle',
+        color: '#00c48f',
+      },
+      {
+        name: 'Item 02',
+        icon: 'notebook',
+        color: '#ff9800',
+      },
+      {
+        name: 'Item 03',
+        icon: 'wifi',
+        color: '#00afef',
+      },
+    ] 
+  })
+  
   action !== 'close' && Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="primary" block @click="handleSelect">自定义选项样式</var-button>
 </template>
@@ -200,7 +193,8 @@ const handleSelect = async () => {
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const actions = [
+const show = ref(false)
+const actions = ref([
   {
     name: 'Item 01',
     icon: 'account-circle',
@@ -213,12 +207,13 @@ const actions = [
     name: 'Item 03',
     icon: 'wifi',
   },
-]
-const show = ref(false);
+])
+
 const handleSelect = (action) => {
   Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="warning" block @click="show = true">基本使用</var-button>
   <var-action-sheet 
@@ -236,7 +231,8 @@ const handleSelect = (action) => {
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const actions = [
+const show = ref(false)
+const actions = ref([
   {
     name: 'Item 01',
     icon: 'account-circle',
@@ -249,12 +245,13 @@ const actions = [
     name: 'Item 03',
     icon: 'wifi',
   },
-]
-const show = ref(false);
+])
+
 const handleSelect = (action) => {
   Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="warning" block @click="show = true">修改标题</var-button>
   <var-action-sheet 
@@ -273,7 +270,8 @@ const handleSelect = (action) => {
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const actions = [
+const show = ref(false)
+const actions = ref([
   {
     name: 'Item 01',
     icon: 'account-circle',
@@ -287,12 +285,13 @@ const actions = [
     icon: 'wifi',
     disabled: true,
   },
-]
-const show = ref(false);
+])
+
 const handleSelect = (action) => {
   Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="warning" block @click="show = true">禁用选项</var-button>
   <var-action-sheet 
@@ -310,7 +309,8 @@ const handleSelect = (action) => {
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const actions = [
+const show = ref(false)
+const actions = ref([
   {
     name: 'Item 01',
     icon: 'account-circle',
@@ -323,12 +323,13 @@ const actions = [
     name: 'Item 03',
     icon: 'wifi',
   },
-]
-const show = ref(false);
+])
+
 const handleSelect = (action) => {
   Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="warning" block @click="show = true">禁用点击选项时关闭动作面板</var-button>
   <var-action-sheet 
@@ -347,7 +348,8 @@ const handleSelect = (action) => {
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const actions = [
+const show = ref(false)
+const actions = ref([
   {
     name: 'Item 01',
     icon: 'account-circle',
@@ -363,12 +365,13 @@ const actions = [
     icon: 'wifi',
     color: '#00afef',
   },
-]
-const show = ref(false);
+])
+
 const handleSelect = (action) => {
   Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="warning" block @click="show = true">自定义选项样式</var-button>
   <var-action-sheet 

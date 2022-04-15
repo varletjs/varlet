@@ -6,26 +6,6 @@ An action sheet pops up to give the user the ability to select options.
 `ActionSheet` Functional and component use methods are provided, and there is no essential difference between the two effects and parameters.
 The function returns a `Promise`，on selection return `action`，Click modal close to return `close`.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { ActionSheet } from '@varlet/ui'
-
-createApp().use(ActionSheet)
-```
-
-### Scoped Install
-
-```html
-<script setup>
-import { ActionSheet } from '@varlet/ui'
-
-const VarActionSheet = ActionSheet.Component;
-
-</script>
-```
-
 ## Functional
 
 ### Basic Use
@@ -34,25 +14,28 @@ const VarActionSheet = ActionSheet.Component;
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const rawActions = [
-  {
-    name: 'Item 01',
-    icon: 'account-circle',
-  },
-  {
-    name: 'Item 02',
-    icon: 'notebook',
-  },
-  {
-    name: 'Item 03',
-    icon: 'wifi',
-  },
-]
 const createBasic = async () => {
-  const action = await ActionSheet({ actions: rawActions })
+  const action = await ActionSheet({ 
+    actions: [
+      {
+        name: 'Item 01',
+        icon: 'account-circle',
+      },
+      {
+        name: 'Item 02',
+        icon: 'notebook',
+      },
+      {
+        name: 'Item 03',
+        icon: 'wifi',
+      },
+    ] 
+  })
+  
   action !== 'close' && Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="primary" block @click="createBasic">Basic Use</var-button>
 </template>
@@ -64,25 +47,29 @@ const createBasic = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const rawActions = [
-  {
-    name: 'Item 01',
-    icon: 'account-circle',
-  },
-  {
-    name: 'Item 02',
-    icon: 'notebook',
-  },
-  {
-    name: 'Item 03',
-    icon: 'wifi',
-  },
-]
 const handleSelect = async () => {
-  const action = await ActionSheet({ actions: rawActions, title: 'Choose whichever you like' })
+  const action = await ActionSheet({ 
+    actions: [
+      {
+        name: 'Item 01',
+        icon: 'account-circle',
+      },
+      {
+        name: 'Item 02',
+        icon: 'notebook',
+      },
+      {
+        name: 'Item 03',
+        icon: 'wifi',
+      },
+    ], 
+    title: 'Choose whichever you like'
+  })
+  
   action !== 'close' && Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="primary" block @click="handleSelect">Modify Title</var-button>
 </template>
@@ -96,26 +83,29 @@ The option is passed `disabled` to leave the action in the disabled state
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const rawActions = [
-  {
-    name: 'Item 01',
-    icon: 'account-circle',
-  },
-  {
-    name: 'Item 02',
-    icon: 'notebook',
-  },
-  {
-    name: 'Item 03',
-    icon: 'wifi',
-    disabled: true,
-  },
-]
 const handleSelect = async () => {
-  const action = await ActionSheet({ actions: rawActions })
+  const action = await ActionSheet({
+    actions: [
+      {
+        name: 'Item 01',
+        icon: 'account-circle',
+      },
+      {
+        name: 'Item 02',
+        icon: 'notebook',
+      },
+      {
+        name: 'Item 03',
+        icon: 'wifi',
+        disabled: true,
+      },
+    ]
+  })
+  
   action !== 'close' && Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="primary" block @click="handleSelect">Action Disabled</var-button>
 </template>
@@ -129,28 +119,28 @@ Passing in `CloseOnClickAction` disallows the action of `ActionSheet` closing au
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const rawActions = [
-  {
-    name: 'Item 01',
-    icon: 'account-circle',
-  },
-  {
-    name: 'Item 02',
-    icon: 'notebook',
-  },
-  {
-    name: 'Item 03',
-    icon: 'wifi',
-  },
-]
 const handleSelect = async () => {
   await ActionSheet({ 
-    actions: rawActions, 
+    actions: [
+      {
+        name: 'Item 01',
+        icon: 'account-circle',
+      },
+      {
+        name: 'Item 02',
+        icon: 'notebook',
+      },
+      {
+        name: 'Item 03',
+        icon: 'wifi',
+      },
+    ], 
     closeOnClickAction: false,
     onSelect: action => Snackbar(`Your selected is:${action.name}`), 
   })
 }
 </script>
+
 <template>
   <var-button type="primary" block @click="handleSelect">Disable Close On Click Action</var-button>
 </template>
@@ -164,28 +154,31 @@ Options provide parameters to configure the style. See the `Action` data structu
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const rawActions = [
-  {
-    name: 'Item 01',
-    icon: 'account-circle',
-    color: '#00c48f',
-  },
-  {
-    name: 'Item 02',
-    icon: 'notebook',
-    color: '#ff9800',
-  },
-  {
-    name: 'Item 03',
-    icon: 'wifi',
-    color: '#00afef',
-  },
-]
 const handleSelect = async () => {
-  const action = await ActionSheet({ actions: rawActions })
+  const action = await ActionSheet({ 
+    actions: [
+      {
+        name: 'Item 01',
+        icon: 'account-circle',
+        color: '#00c48f',
+      },
+      {
+        name: 'Item 02',
+        icon: 'notebook',
+        color: '#ff9800',
+      },
+      {
+        name: 'Item 03',
+        icon: 'wifi',
+        color: '#00afef',
+      },
+    ]
+  })
+  
   action !== 'close' && Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="primary" block @click="handleSelect">Custom Action Styles</var-button>
 </template>
@@ -200,7 +193,8 @@ const handleSelect = async () => {
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const actions = [
+const show = ref(false)
+const actions = ref([
   {
     name: 'Item 01',
     icon: 'account-circle',
@@ -213,12 +207,13 @@ const actions = [
     name: 'Item 03',
     icon: 'wifi',
   },
-]
-const show = ref(false);
+])
+
 const handleSelect = (action) => {
   Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="warning" block @click="show = true">Basic Usage</var-button>
   <var-action-sheet 
@@ -236,7 +231,8 @@ const handleSelect = (action) => {
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const actions = [
+const show = ref(false)
+const actions = ref([
   {
     name: 'Item 01',
     icon: 'account-circle',
@@ -249,12 +245,13 @@ const actions = [
     name: 'Item 03',
     icon: 'wifi',
   },
-]
-const show = ref(false);
+])
+
 const handleSelect = (action) => {
   Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="warning" block @click="show = true">Modify Title</var-button>
   <var-action-sheet 
@@ -273,7 +270,8 @@ const handleSelect = (action) => {
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const actions = [
+const show = ref(false)
+const actions = ref([
   {
     name: 'Item 01',
     icon: 'account-circle',
@@ -287,12 +285,13 @@ const actions = [
     icon: 'wifi',
     disabled: true,
   },
-]
-const show = ref(false);
+])
+
 const handleSelect = (action) => {
   Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="warning" block @click="show = true">Action Disabled</var-button>
   <var-action-sheet 
@@ -310,7 +309,8 @@ const handleSelect = (action) => {
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const actions = [
+const show = ref(false)
+const actions = ref([
   {
     name: 'Item 01',
     icon: 'account-circle',
@@ -323,12 +323,13 @@ const actions = [
     name: 'Item 03',
     icon: 'wifi',
   },
-]
-const show = ref(false);
+])
+
 const handleSelect = (action) => {
   Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="warning" block @click="show = true">Disable close on click action</var-button>
   <var-action-sheet 
@@ -347,7 +348,8 @@ const handleSelect = (action) => {
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const actions = [
+const show = ref(false)
+const actions = ref([
   {
     name: 'Item 01',
     icon: 'account-circle',
@@ -363,12 +365,13 @@ const actions = [
     icon: 'wifi',
     color: '#00afef',
   },
-]
-const show = ref(false);
+])
+
 const handleSelect = (action) => {
   Snackbar(`${action.name}`)
 }
 </script>
+
 <template>
   <var-button type="warning" block @click="show = true">Custom Action Styles</var-button>
   <var-action-sheet 

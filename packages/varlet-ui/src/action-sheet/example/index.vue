@@ -124,6 +124,7 @@ const handleSelect = (action) => {
 watchLang(use)
 watchDarkMode(dark)
 </script>
+
 <template>
   <app-type>{{ pack.functionCall }}</app-type>
   <var-space direction="column" :size="[10, 10]">
