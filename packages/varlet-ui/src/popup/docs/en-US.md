@@ -15,118 +15,108 @@ createApp().use(Popup)
 ### Popup Position
 
 ```html
-<var-button 
-  class="mt-10"
-  type="primary"
-  block
-  @click="center = true"
->
-  Center Popup
-</var-button>
-<var-button
-  class="mt-10"
-  type="primary"
-  block
-  @click="bottom = true"
->
-  Below Popup
-</var-button>
-<var-button
-  class="mt-10"
-  type="primary"
-  block 
-  @click="top = true"
->
-  Above Popup
-</var-button>
-<var-button 
-  class="mt-10" 
-  type="primary"
-  block
-  @click="left = true"
->
-  Left Popup
-</var-button>
-<var-button 
-  class="mt-10" 
-  type="primary"
-  block 
-  @click="right = true"
->
-  Right Popup
-</var-button>
+<script setup>
+  import { ref } from 'vue'
 
-// Center Popup
-<var-popup v-model:show="center">
-  <div class="block">
-    As he came into the window.
-    It was the sound of a crescendo.
-    He came into her apartment.
-    He left the bloodstains on the carpet.
-  </div>
-</var-popup>
+  const center = ref(false)
+  const top = ref(false)
+  const bottom = ref(false)
+  const left = ref(false)
+  const right = ref(false)
+</script>
 
-// Below Popup
-<var-popup position="bottom" v-model:show="bottom">
-  <div class="block">
-    As he came into the window. 
-    It was the sound of a crescendo. 
-    He came into her apartment. 
-    He left the bloodstains on the carpet.
-  </div>
-</var-popup>
-
-// Above Popup
-<var-popup position="top" v-model:show="top">
-  <div class="block">
-    As he came into the window.
-    It was the sound of a crescendo.
-    He came into her apartment.
-    He left the bloodstains on the carpet.
-  </div>
-</var-popup>
-
-// Left Popup
-<var-popup position="left" v-model:show="left">
-  <div class="block">
-    As he came into the window.
-    It was the sound of a crescendo.
-    He came into her apartment.
-    He left the bloodstains on the carpet.
-  </div>
-</var-popup>
-
-// Right Popup
-<var-popup position="right" v-model:show="right">
-  <div class="block">
-    As he came into the window.
-    It was the sound of a crescendo.
-    He came into her apartment.
-    He left the bloodstains on the carpet.
-  </div>
-</var-popup>
-```
-
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const center = ref(false)
-    const top = ref(false)
-    const bottom = ref(false)
-    const left = ref(false)
-    const right = ref(false)
-
-    return {
-      center,
-      top,
-      bottom,
-      left,
-      right
-    }
-  }
-}
+<template>
+  <var-button 
+    class="mt-10"
+    type="primary"
+    block
+    @click="center = true"
+  >
+    Center Popup
+  </var-button>
+  <var-button
+    class="mt-10"
+    type="primary"
+    block
+    @click="bottom = true"
+  >
+    Below Popup
+  </var-button>
+  <var-button
+    class="mt-10"
+    type="primary"
+    block 
+    @click="top = true"
+  >
+    Above Popup
+  </var-button>
+  <var-button 
+    class="mt-10" 
+    type="primary"
+    block
+    @click="left = true"
+  >
+    Left Popup
+  </var-button>
+  <var-button 
+    class="mt-10" 
+    type="primary"
+    block 
+    @click="right = true"
+  >
+    Right Popup
+  </var-button>
+  
+  // Center Popup
+  <var-popup v-model:show="center">
+    <div class="block">
+      As he came into the window.
+      It was the sound of a crescendo.
+      He came into her apartment.
+      He left the bloodstains on the carpet.
+    </div>
+  </var-popup>
+  
+  // Below Popup
+  <var-popup position="bottom" v-model:show="bottom">
+    <div class="block">
+      As he came into the window. 
+      It was the sound of a crescendo. 
+      He came into her apartment. 
+      He left the bloodstains on the carpet.
+    </div>
+  </var-popup>
+  
+  // Above Popup
+  <var-popup position="top" v-model:show="top">
+    <div class="block">
+      As he came into the window.
+      It was the sound of a crescendo.
+      He came into her apartment.
+      He left the bloodstains on the carpet.
+    </div>
+  </var-popup>
+  
+  // Left Popup
+  <var-popup position="left" v-model:show="left">
+    <div class="block">
+      As he came into the window.
+      It was the sound of a crescendo.
+      He came into her apartment.
+      He left the bloodstains on the carpet.
+    </div>
+  </var-popup>
+  
+  // Right Popup
+  <var-popup position="right" v-model:show="right">
+    <div class="block">
+      As he came into the window.
+      It was the sound of a crescendo.
+      He came into her apartment.
+      He left the bloodstains on the carpet.
+    </div>
+  </var-popup>
+</template>
 ```
 
 ```css
@@ -143,66 +133,59 @@ export default {
 ### Overlay Style
 
 ```html
-<var-button
-  class="mt-10"
-  type="primary"
-  block 
-  @click="overlayClass = true"
->
-  Overlay Style
-</var-button>
-<var-button 
-  class="mt-10"
-  type="primary"
-  block 
-  @click="overlayStyle = true"
->
-  Overlay Style
-</var-button>
+<script setup>
+  import { ref } from 'vue'
+  
+  const overlayClass = ref(false)
+  const overlayStyle = ref(false)
+</script>
 
-// Overlay Class
-<var-popup 
-  overlay-class="custom-overlay" 
-  v-model:show="overlayClass"
->
-  <div class="block">
-    As he came into the window.
-    It was the sound of a crescendo.
-    He came into her apartment.
-    He left the bloodstains on the carpet.
-  </div>
-</var-popup>
+<template>
+  <var-button
+    class="mt-10"
+    type="primary"
+    block
+    @click="overlayClass = true"
+  >
+    Overlay Style
+  </var-button>
+  <var-button
+    class="mt-10"
+    type="primary"
+    block
+    @click="overlayStyle = true"
+  >
+    Overlay Style
+  </var-button>
 
-// Overlay style
-<var-popup 
-  :overlay-style="{
+  // Overlay Class
+  <var-popup
+    overlay-class="custom-overlay"
+    v-model:show="overlayClass"
+  >
+    <div class="block">
+      As he came into the window.
+      It was the sound of a crescendo.
+      He came into her apartment.
+      He left the bloodstains on the carpet.
+    </div>
+  </var-popup>
+
+  // Overlay style
+  <var-popup
+    :overlay-style="{
     backgroundColor: 'rgba(0, 0, 0, 0.3)' 
   }"
-  v-model:show="overlayStyle"
->
-  <div class="block">
-    As he came into the window.
-    It was the sound of a crescendo.
-    He came into her apartment.
-    He left the bloodstains on the carpet.
-  </div>
-</var-popup>
-```
-
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const overlayClass = ref(false)
-    const overlayStyle = ref(false)
-
-    return {
-      overlayClass,
-      overlayStyle
-    }
-  }
-}
+    v-model:show="overlayStyle"
+  >
+    <div class="block">
+      As he came into the window.
+      It was the sound of a crescendo.
+      He came into her apartment.
+      He left the bloodstains on the carpet.
+    </div>
+  </var-popup>
+</template>
 ```
 
 ```css
@@ -225,45 +208,38 @@ export default {
 ### Events
 
 ```html
-<var-button
-  class="mt-10"
-  type="primary"
-  block
-  @click="event = true"
->
-  Event
-</var-button>
+<script setup>
+  import { ref } from 'vue'
+  import { Snackbar } from '@varlet/ui'
+  
+  const event = ref(false)
+</script>
 
-<var-popup
-  v-model:show="event"
-  @open="() => Snackbar.info('open')"
-  @opened="() => Snackbar.success('opened')"
-  @close="() => Snackbar.warning('close')"
-  @closed="() => Snackbar.error('closed')"
->
-  <div class="block">
-    As he came into the window.
-    It was the sound of a crescendo.
-    He came into her apartment.
-    He left the bloodstains on the carpet.
-  </div>
-</var-popup>
-```
+<template>
+  <var-button
+    class="mt-10"
+    type="primary"
+    block
+    @click="event = true"
+  >
+    Event
+  </var-button>
 
-```js
-import { ref } from 'vue'
-import { Snackbar } from '@varlet/ui'
-
-export default {
-  setup() {
-    const event = ref(false)
-
-    return {
-      event,
-      Snackbar
-    }
-  }
-}
+  <var-popup
+    v-model:show="event"
+    @open="() => Snackbar.info('open')"
+    @opened="() => Snackbar.success('opened')"
+    @close="() => Snackbar.warning('close')"
+    @closed="() => Snackbar.error('closed')"
+  >
+    <div class="block">
+      As he came into the window.
+      It was the sound of a crescendo.
+      He came into her apartment.
+      He left the bloodstains on the carpet.
+    </div>
+  </var-popup>
+</template>
 ```
 
 ## API
