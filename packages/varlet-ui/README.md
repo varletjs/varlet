@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://varlet-varletjs.vercel.app">
-    <img src="https://varlet-varletjs.vercel.app/logo.svg" width="150">
+    <img src="https://varlet-varletjs.vercel.app/logo.svg" width="150" >
   </a>
   <h1>VARLET</h1>
   <p>基于 Vue3 的 Material design 风格移动端组件库</p>
