@@ -18,42 +18,34 @@ createApp().use(PullRefresh)
 下拉到刷新位置时松开会触发 `refresh` 事件， 在事件开始时将 `v-model` 设置为 `true` 表示正在加载，完成后将 `v-model` 设置为 `false` 表示加载结束。
 
 ```html
-<var-pull-refresh v-model="isRefresh" @refresh="refresh">
-  <var-cell
-    v-for="(item, index) in data"
-    :key="index"
-    border
-  >
-    {{ item + ' ' + (index + 1) }}
-  </var-cell>
-</var-pull-refresh>
-```
+<script setup>
+  import { ref } from 'vue'
 
-```javascript
-import { ref } from 'vue'
+  const data1 = Array(10).fill('List Item')
+  const data2 = Array(10).fill('This is new List Item')
 
-const data1 = Array(10).fill('List Item')
-const data2 = Array(10).fill('This is new List Item')
+  const isRefresh = ref(false)
+  const data = ref(data1)
 
-export default {
-  setup() {
-    const isRefresh = ref(false)
-    const data = ref(data1)
-
-    const refresh = () => {
-      setTimeout(() => {
-        data.value = data.value[0] === 'List Item' ? data2 : data1
-        isRefresh.value = false
-      }, 2000)
-    }
-
-    return {
-      refresh,
-      isRefresh,
-      data
-    }
+  const refresh = () => {
+    setTimeout(() => {
+      data.value = data.value[0] === 'List Item' ? data2 : data1
+      isRefresh.value = false
+    }, 2000)
   }
-}
+</script>
+
+<template>
+  <var-pull-refresh v-model="isRefresh" @refresh="refresh">
+    <var-cell
+      v-for="(item, index) in data"
+      :key="index"
+      border
+    >
+      {{ item + ' ' + (index + 1) }}
+    </var-cell>
+  </var-pull-refresh>
+</template>
 ```
 
 ### 注意
@@ -61,15 +53,19 @@ export default {
 当 `PullRefresh` 容器高度为 `0` 时会导致下拉功能失效，所以需保证其子元素高度**不为** `0` 或为 `PullRefresh` 容器设置高度:
 
 ```html
-<var-pull-refresh>
-  <div style="height: 200px"></div>
-</var-pull-refresh>
+<template>
+  <var-pull-refresh>
+    <div style="height: 200px"></div>
+  </var-pull-refresh>
+</template>
 
-// 或
+  // 或
 
-<var-pull-refresh style="height: 200px">
-  <div></div>
-</var-pull-refresh>
+<template>
+  <var-pull-refresh style="height: 200px">
+    <div></div>
+  </var-pull-refresh>
+</template>
 ```
 
 ## API

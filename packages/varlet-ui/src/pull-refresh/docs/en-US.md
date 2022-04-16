@@ -19,42 +19,34 @@ The refresh event will be Emitted when pull refresh, you should set `v-model` to
 indicates that loading is under way, and setting `v-model` to `false` after completion indicates that loading is over.
 
 ```html
-<var-pull-refresh v-model="isRefresh" @refresh="refresh">
-  <var-cell
-    v-for="(item, index) in data"
-    :key="index"
-    border
-  >
-    {{ item + ' ' + (index + 1) }}
-  </var-cell>
-</var-pull-refresh>
-```
+<script setup>
+  import { ref } from 'vue'
 
-```javascript
-import { ref } from 'vue'
+  const data1 = Array(10).fill('List Item')
+  const data2 = Array(10).fill('This is new List Item')
 
-const data1 = Array(10).fill('List Item')
-const data2 = Array(10).fill('This is new List Item')
+  const isRefresh = ref(false)
+  const data = ref(data1)
 
-export default {
-  setup() {
-    const isRefresh = ref(false)
-    const data = ref(data1)
-
-    const refresh = () => {
-      setTimeout(() => {
-        data.value = data.value[0] === 'List Item' ? data2 : data1
-        isRefresh.value = false
-      }, 2000)
-    }
-
-    return {
-      refresh,
-      isRefresh,
-      data
-    }
+  const refresh = () => {
+    setTimeout(() => {
+      data.value = data.value[0] === 'List Item' ? data2 : data1
+      isRefresh.value = false
+    }, 2000)
   }
-}
+</script>
+
+<template>
+  <var-pull-refresh v-model="isRefresh" @refresh="refresh">
+    <var-cell
+      v-for="(item, index) in data"
+      :key="index"
+      border
+    >
+      {{ item + ' ' + (index + 1) }}
+    </var-cell>
+  </var-pull-refresh>
+</template>
 ```
 
 ### Attention
@@ -62,15 +54,19 @@ export default {
 When the height of the `PullRefresh` is `0`, it will be unavailable, so you need to ensure that the height of its child elements is **not** `0` or set height for the `PullRefresh`:
 
 ```html
-<var-pull-refresh>
-  <div style="height: 200px"></div>
-</var-pull-refresh>
+<template>
+  <var-pull-refresh>
+    <div style="height: 200px"></div>
+  </var-pull-refresh>
+</template>
 
 // or
 
-<var-pull-refresh style="height: 200px">
-  <div></div>
-</var-pull-refresh>
+<template>
+  <var-pull-refresh style="height: 200px">
+    <div></div>
+  </var-pull-refresh>
+</template>__
 ```
 
 ## API
