@@ -22,7 +22,9 @@ createApp().use(Pagination)
 ### 基本使用
 
 ```html
-<var-pagination :current="3" :total="120" />
+<template>
+  <var-pagination :current="3" :total="120" />
+</template>
 ```
 
 ### 隐藏 size 控制器
@@ -30,7 +32,9 @@ createApp().use(Pagination)
 使用 `show-size-changer` 可以控制 `size` 控制器的显示和隐藏。
 
 ```html
-<var-pagination :current="3" :total="120" :show-size-changer="false"/>
+<template>
+  <var-pagination :current="3" :total="120" :show-size-changer="false"/>
+</template>
 ```
 
 ### 显示总数
@@ -38,17 +42,21 @@ createApp().use(Pagination)
 使用 `showTatol` 属性自定义总数显示。
 
 ```html
-<var-pagination
-  :current="3"
-  :total="66"
-  :show-total="total => `共 ${total} 条`"
-/>
+<template>
+  <var-pagination
+    :current="3"
+    :total="66"
+    :show-total="total => `共 ${total} 条`"
+  />
+</template>
 ```
 
 ### 禁用
 
 ```html
-<var-pagination :current="3" :total="115" disabled />
+<template>
+  <var-pagination :current="3" :total="115" disabled />
+</template>
 ```
 
 ## 普通模式
@@ -64,7 +72,9 @@ import Basic from '../example/Basic.vue'
 ```
 
 ```html
-<var-pagination current="6" total="115" :simple="false"/>
+<template>
+  <var-pagination current="6" total="115" :simple="false"/>
+</template>
 ```
 
 ### 开启页码快速跳转
@@ -76,12 +86,14 @@ import QuickJumper from '../example/QuickJumper.vue'
 ```
 
 ```html
-<var-pagination
-  :current="3"
-  :total="120"
-  :simple="false"
-  show-quick-jumper
-/>
+<template>
+  <var-pagination
+    :current="3"
+    :total="120"
+    :simple="false"
+    show-quick-jumper
+  />
+</template>
 ```
 
 ### Size 配置
@@ -94,8 +106,10 @@ import SizeOption from '../example/SizeOption.vue'
 ```
 
 ```html
-<var-pagination :current="3" :total="120" :simple="false" :show-size-changer="false" />
-<var-pagination :current="3" :total="120" :simple="false" :size-option="[10, 20, 30, 40]" />
+<template>
+  <var-pagination :current="3" :total="120" :simple="false" :show-size-changer="false" />
+  <var-pagination :current="3" :total="120" :simple="false" :size-option="[10, 20, 30, 40]" />
+</template>
 ```
 
 ### 自定义显示总数
@@ -105,20 +119,22 @@ import ShowTotal from '../example/ShowTotal.vue'
 ```
 
 ```html
-<var-pagination
-  :current="3"
-  :size="10"
-  :total="120"
-  :simple="false"
-  :show-total="total => `共 ${total} 条`"
-/>
-<var-pagination
-  :current="3"
-  :size="10"
-  :total="120"
-  :simple="false"
-  :show-total="(total, range) => `共 ${total}, 当前 ${range[0]}-${range[1]}`"
-/>
+<template>
+  <var-pagination
+    :current="3"
+    :size="10"
+    :total="120"
+    :simple="false"
+    :show-total="total => `共 ${total} 条`"
+  />
+  <var-pagination
+    :current="3"
+    :size="10"
+    :total="120"
+    :simple="false"
+    :show-total="(total, range) => `共 ${total}, 当前 ${range[0]}-${range[1]}`"
+  />
+</template>
 ```
 
 ### 禁用
@@ -128,7 +144,9 @@ import Disabled from '../example/Disabled.vue'
 ```
 
 ```html
-<var-pagination :current="6" :total="120" :simple="false" disabled />
+<template>
+  <var-pagination :current="6" :total="120" :simple="false" disabled />
+</template>
 ```
 
 ## API

@@ -1,31 +1,19 @@
-<template>
-  <var-pagination :current="3" :total="120" :simple="false" show-quick-jumper />
-</template>
-
-<script>
+<script setup>
 import VarPagination from '../Pagination'
 import dark from '../../themes/dark'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { pack, use } from './locale'
 
-export default {
-  name: 'BasicUse',
-  components: {
-    VarPagination,
-  },
-  setup() {
-    watchLang(use, 'pc')
-    watchDarkMode(dark)
-
-    return {
-      pack,
-    }
-  },
-}
+watchLang(use, 'pc')
+watchDarkMode(dark)
 </script>
 
-<style lang="less" scoped>
-ul {
+<template>
+  <var-pagination class="pagination-example-ul" :current="3" :total="120" :simple="false" show-quick-jumper />
+</template>
+
+<style>
+.pagination-example-ul {
   margin: 0;
   padding: 10px 0;
   box-shadow: none;

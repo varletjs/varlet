@@ -22,7 +22,9 @@ The default display mode is recommended for small-screen devices. See the mobile
 ### Basic Usage
 
 ```html
-<var-pagination :current="3" :total="120" />
+<template>
+  <var-pagination :current="3" :total="120" />
+</template>
 ```
 
 ### Hide Size Changer
@@ -30,7 +32,9 @@ The default display mode is recommended for small-screen devices. See the mobile
 Use `show-size-changer` prop to hide size changer.
 
 ```html
-<var-pagination :current="3" :total="120" :show-size-changer="false"/>
+<template>
+  <var-pagination :current="3" :total="120" :show-size-changer="false"/>
+</template>
 ```
 
 ### Show Total
@@ -38,17 +42,21 @@ Use `show-size-changer` prop to hide size changer.
 Use `showTatol` prop to show custom total text.
 
 ```html
-<var-pagination
-  :current="3"
-  :total="66"
-  :show-total="total => `Total ${total} items`"
-/>
+<template>
+  <var-pagination
+    :current="3"
+    :total="66"
+    :show-total="total => `Total ${total} items`"
+  />
+</template>
 ```
 
 ### Disabled
 
 ```html
-<var-pagination :current="3" :total="115" disabled />
+<template>
+  <var-pagination :current="3" :total="115" disabled />
+</template>
 ```
 
 ## Basic Mode
@@ -64,7 +72,9 @@ import Basic from '../example/Basic.vue'
 ```
 
 ```html
-<var-pagination current="6" total="115" :simple="false" />
+<template>
+  <var-pagination current="6" total="115" :simple="false" />
+</template>
 ```
 
 ### Enable page number to jump quickly
@@ -76,12 +86,14 @@ import QuickJumper from '../example/QuickJumper.vue'
 ```
 
 ```html
-<var-pagination
-  :current="3"
-  :total="120"
-  :simple="false" 
-  show-quick-jumper
-/>
+<template>
+  <var-pagination
+    :current="3"
+    :total="120"
+    :simple="false"
+    show-quick-jumper
+  />
+</template>
 ```
 
 ### Size Option
@@ -93,8 +105,10 @@ import SizeOption from '../example/SizeOption.vue'
 ```
 
 ```html
-<var-pagination :current="3" :total="120" :simple="false" :show-size-changer="false" />
-<var-pagination :current="3" :total="120" :simple="false" :size-option="[10, 20, 30, 40]" />
+<template>
+  <var-pagination :current="3" :total="120" :simple="false" :show-size-changer="false" />
+  <var-pagination :current="3" :total="120" :simple="false" :size-option="[10, 20, 30, 40]" />
+</template>
 ```
 
 ### Show Total
@@ -104,20 +118,22 @@ import ShowTotal from '../example/ShowTotal.vue'
 ```
 
 ```html
-<var-pagination
-  :current="3"
-  :size="10"
-  :total="120"
-  :simple="false"
-  :show-total="total => `Total ${total} items`"
-/>
-<var-pagination
-  :current="3"
-  :size="10"
-  :total="120"
-  :simple="false"
-  :show-total="(total, range) => `Total ${total}, current ${range[0]}-${range[1]}`"
-/>
+<template>
+  <var-pagination
+    :current="3"
+    :size="10"
+    :total="120"
+    :simple="false"
+    :show-total="total => `Total ${total} items`"
+  />
+  <var-pagination
+    :current="3"
+    :size="10"
+    :total="120"
+    :simple="false"
+    :show-total="(total, range) => `Total ${total}, current ${range[0]}-${range[1]}`"
+  />
+</template>
 ```
 
 ### Disabled
@@ -127,7 +143,9 @@ import Disabled from '../example/Disabled.vue'
 ```
 
 ```html
-<var-pagination :current="6" :total="120" :simple="false" disabled />
+<template>
+  <var-pagination :current="6" :total="120" :simple="false" disabled />
+</template>
 ```
 
 ## API
