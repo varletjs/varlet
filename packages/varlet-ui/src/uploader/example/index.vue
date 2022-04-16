@@ -7,7 +7,7 @@ import Dialog from '../../dialog'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import dark from '../../themes/dark'
-import { reactive, toRefs } from 'vue'
+import { reactive } from 'vue'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
