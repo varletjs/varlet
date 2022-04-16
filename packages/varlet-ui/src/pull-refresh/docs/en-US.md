@@ -54,15 +54,14 @@ indicates that loading is under way, and setting `v-model` to `false` after comp
 When the height of the `PullRefresh` is `0`, it will be unavailable, so you need to ensure that the height of its child elements is **not** `0` or set height for the `PullRefresh`:
 
 ```html
+<!-- playground-ignore -->
 <template>
   <var-pull-refresh>
     <div style="height: 200px"></div>
   </var-pull-refresh>
-</template>
 
 // or
-
-<template>
+  
   <var-pull-refresh style="height: 200px">
     <div></div>
   </var-pull-refresh>
