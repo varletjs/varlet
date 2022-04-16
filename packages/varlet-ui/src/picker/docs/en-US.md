@@ -5,6 +5,24 @@ Provides two kinds of function and component call mode support cascading mode at
 
 ## Function Call
 
+### Single-column Picker
+
+```html
+<script setup>
+import { Picker } from '@varlet/ui'
+
+const columns = [Array.from({ length: 20 }).map((_, index) => index)]
+
+const picker = async () => {
+  await Picker(columns)
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">Single Column Picker</var-button>
+</template>
+```
+
 ### Multi-column Picker
 
 A two-dimensional array is passed in, and each entry of the array is the contents of each column.
@@ -20,8 +38,14 @@ const columns = [
   Array.from({ length: 20 }).map((_, index) => index)
 ]
 
-const { state, texts, indexes } = await Picker(columns)
+const picker = async () => {
+  const { state, texts, indexes } = await Picker(columns)
+}
 </script>
+
+<template>
+  <var-button type="primary" block @click="picker">Multiple Column Picker</var-button>
+</template>
 ```
 
 ### Cascade Picker
@@ -30,19 +54,38 @@ Passing in a `cascade` attribute starts cascading.
 Built-in component library provides a three-level linkage between provinces and municipalities, import `area.json`.
 
 ```html
-// playground-ignore
 <script setup>
 import { Picker } from '@varlet/ui'
 import columns from '@varlet/ui/json/area.json'
 
-const { state, texts, indexes } = await Picker({
-  cascade: true,
-  columns
-})
+const picker = async () => {
+  const { state, texts, indexes } = await Picker({
+    cascade: true,
+    columns
+  })
+}
 </script>
+
+<template>
+  <var-button type="primary" block @click="picker">Cascade Column Picker</var-button>
+</template>
 ```
 
 ## Component Call
+
+### Single-column Picker
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([Array.from({ length: 20 }).map((_, index) => index)])
+</script>
+
+<template>
+  <var-picker :columns="columns" />
+</template>
+```
 
 ### Multi-column Picker
 
@@ -65,31 +108,6 @@ const columns = ref([
 ### Cascade Picker
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const columns = ref([
-  {
-    text: 'Washington',
-    children: [{ text: 'City' }]
-  },
-  {
-    text: 'New York',
-    children: [{ text: 'Queens' }]
-  }
-])
-</script>
-
-<template>
-  <var-picker cascade :columns="columns" />
-</template>
-```
-
-### The three-level linkage between the provincial and municipal levels
-The component library provides complete provincial information and can be used directly.
-
-```html
-// playground-ignore
 <script setup>
 import { ref } from 'vue'
 import area from '@varlet/ui/json/area.json'

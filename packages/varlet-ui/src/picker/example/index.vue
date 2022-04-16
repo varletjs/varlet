@@ -49,9 +49,13 @@ watchDarkMode(dark)
   </var-space>
 
   <app-type>{{ pack.componentCall }}</app-type>
-  <var-space direction="column" :size="[10, 14]">
-    <var-picker :columns="columns" />
-    <var-picker :columns="columns2" />
-    <var-picker cascade :columns="columns3" />
-  </var-space>
+
+  <app-type>{{ pack.singlePicker }}</app-type>
+  <var-picker :columns="columns" />
+
+  <app-type>{{ pack.multiplePicker }}</app-type>
+  <var-picker :columns="columns2" />
+
+  <app-type>{{ pack.cascadePicker }}</app-type>
+  <var-picker cascade :columns="columns3" />
 </template>

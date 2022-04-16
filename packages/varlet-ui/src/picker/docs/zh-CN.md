@@ -5,7 +5,25 @@
 
 ## 函数调用
 
-### 多列滚动
+### 单列选择
+
+```html
+<script setup>
+import { Picker } from '@varlet/ui'
+
+const columns = [Array.from({ length: 20 }).map((_, index) => index)]
+
+const picker = async () => {
+  await Picker(columns)
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">单列选择</var-button>
+</template>
+```
+
+### 多列选择
 
 Picker 传入一个二维数组 `columns`, `columns` 的每一项就是每一列的内容。
 Picker 返回用户触发状态，选择的文本，选择的下标。
@@ -20,31 +38,56 @@ const columns = [
   Array.from({ length: 20 }).map((_, index) => index)
 ]
 
-const { state, texts, indexes } = await Picker(columns)
+const picker = async () => {
+  const { state, texts, indexes } = await Picker(columns)
+}
 </script>
+
+<template>
+  <var-button type="primary" block @click="picker">多列选择</var-button>
+</template>
 ```
 
-### 级联滚动
+### 级联选择
 
 Picker 传入一个 `cascade` 属性开启级联滚动。
 组件库内置提供了省市区三级联动，引入 `area.json`。
 
 ```html
-// playground-ignore
 <script setup>
-import { Picker } from '@varlet/ui'  
+import { Picker } from '@varlet/ui'
 import columns from '@varlet/ui/json/area.json'
 
-const { state, texts, indexes } = await Picker({
-  cascade: true,
-  columns
-})
+const picker = async () => {
+  const { state, texts, indexes } = await Picker({
+    cascade: true,
+    columns
+  })
+}
 </script>
+
+<template>
+  <var-button type="primary" block @click="picker">级联选择</var-button>
+</template>
 ```
 
 ## 组件调用
 
-### 多列滚动
+### 单列选择
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([Array.from({ length: 20 }).map((_, index) => index)])
+</script>
+
+<template>
+  <var-picker :columns="columns" />
+</template>
+```
+
+### 多列选择
 
 ```html
 <script setup>
@@ -62,35 +105,9 @@ const columns = ref([
 </template>
 ```
 
-### 级联滚动
+### 级联选择
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const columns = ref([
-  {
-    text: '北京市',
-    children: [{ text: '市辖区'}]
-  },
-  {
-    text: '河北省',
-    children: [{ text: '石家庄市'}]
-  }
-])
-</script>
-
-<template>
-  <var-picker cascade :columns="columns" />
-</template>
-```
-
-### 省市区三级联动
-
-组件库提供了完整的省市区信息，可以直接使用。
-
-```html
-// playground-ignore
 <script setup>
 import { ref } from 'vue'
 import area from '@varlet/ui/json/area.json'
