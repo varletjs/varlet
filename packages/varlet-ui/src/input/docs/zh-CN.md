@@ -7,8 +7,10 @@
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input placeholder="请输入文本" v-model="value" />
 </template>
@@ -22,8 +24,10 @@ const value = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input
     :hint="false"
@@ -39,8 +43,10 @@ const value = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input placeholder="请输入文本" textarea v-model="value" />
 </template>
@@ -51,8 +57,10 @@ const value = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input placeholder="请输入文本" :maxlength="10" v-model="value" />
 </template>
@@ -63,8 +71,10 @@ const value = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input placeholder="请输入文本" disabled v-model="value" />
 </template>
@@ -75,8 +85,10 @@ const value = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input placeholder="请输入文本" readonly v-model="value" />
 </template>
@@ -87,8 +99,10 @@ const value = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input placeholder="请输入文本" clearable v-model="value" />
 </template>
@@ -99,8 +113,10 @@ const value = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input placeholder="请输入文本" v-model="value">
     <template #prepend-icon>
@@ -121,8 +137,10 @@ const value = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input
     placeholder="请输入文本"

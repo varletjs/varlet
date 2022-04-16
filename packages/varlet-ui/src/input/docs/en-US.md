@@ -7,8 +7,10 @@ The behavior of the input box is consistent with the basic content, and the user
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input placeholder="Please enter text" v-model="value" />
 </template>
@@ -21,8 +23,10 @@ If you only need the basic functionality of the component, you can remove some s
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input 
     :hint="false" 
@@ -38,8 +42,10 @@ const value = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input placeholder="Please enter text" textarea v-model="value" />
 </template>
@@ -50,8 +56,10 @@ const value = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input placeholder="Please enter text" :maxlength="10" v-model="value" />
 </template>
@@ -62,8 +70,10 @@ const value = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input placeholder="Please enter text" disabled v-model="value" />
 </template>
@@ -74,8 +84,10 @@ const value = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input placeholder="Please enter text" readonly v-model="value" />
 </template>
@@ -86,8 +98,10 @@ const value = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input placeholder="Please enter text" clearable v-model="value" />
 </template>
@@ -98,8 +112,10 @@ const value = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input placeholder="Please enter text" v-model="value">
     <template #prepend-icon>
@@ -120,8 +136,10 @@ Other values are converted to text as a user prompt.
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const value = ref('')
 </script>
+
 <template>
   <var-input
     placeholder="Please enter text"
