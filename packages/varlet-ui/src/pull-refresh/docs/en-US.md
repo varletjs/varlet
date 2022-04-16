@@ -65,7 +65,7 @@ When the height of the `PullRefresh` is `0`, it will be unavailable, so you need
   <var-pull-refresh style="height: 200px">
     <div></div>
   </var-pull-refresh>
-</template>__
+</template>
 ```
 
 ## API
