@@ -278,7 +278,7 @@ const files = ref([
 <template>
   <var-space>
     <img
-      class="custom-uploader-file"
+      class="uploader-example-file"
       v-for="f in files"
       :key="f.id"
       :src="f.cover"
@@ -292,13 +292,13 @@ const files = ref([
 </template>
 
 <style>
-  .custom-uploader-file {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 12px;
-    object-fit: cover;
-  }
+.uploader-example-file {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 12px;
+  object-fit: cover;
+}
 </style>
 ```
 
