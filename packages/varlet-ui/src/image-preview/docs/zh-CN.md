@@ -11,13 +11,15 @@
 ```html
 <script setup>
 import { ImagePreview } from '@varlet/ui'
-import { onMounted } from 'vue'
 
-onMounted(()=>{
+const preview = () => {
   ImagePreview('https://varlet.gitee.io/varlet-ui/cat.jpg')
-})
+}
 </script>
 
+<template>
+  <var-button type="primary" block @click="preview">基本使用</var-button>
+</template>
 ```
 
 ### 处理回调函数
@@ -25,22 +27,23 @@ onMounted(()=>{
 ```html
 <script setup>
 import { ImagePreview } from '@varlet/ui'
-import { onMounted } from 'vue'
 
-const images = [
-  'https://varlet.gitee.io/varlet-ui/cat.jpg',
-  'https://varlet.gitee.io/varlet-ui/cat2.jpg'
-]
-
-onMounted(()=>{
+const preview = () => {
   ImagePreview({
-    images,
+    images: [
+      'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      'https://varlet.gitee.io/varlet-ui/cat2.jpg'
+    ],
     onChange(index) {
       console.log(index)
     }
   })
-})
+}
 </script>
+
+<template>
+  <var-button type="primary" block @click="preview">处理回调函数</var-button>
+</template>
 ```
 
 
@@ -76,7 +79,7 @@ const images = ref([
 <script setup>
 import { ref } from 'vue'
 
-const currentShow = ref(false)
+const show = ref(false)
 const images = ref([
   'https://varlet.gitee.io/varlet-ui/cat.jpg',
   'https://varlet.gitee.io/varlet-ui/cat2.jpg',
@@ -87,14 +90,14 @@ const images = ref([
   <var-button
     type="warning"
     block
-    @click="currentShow = true"
+    @click="show = true"
   >
     指定初始位置
   </var-button>
   <var-image-preview
     current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
     :images="images"
-    v-model:show="currentShow"
+    v-model:show="show"
   />
 </template>
 ```
@@ -105,7 +108,7 @@ const images = ref([
 <script setup>
 import { ref } from 'vue'
 
-const closeShow = ref(false)
+const show = ref(false)
 const images = ref([
   'https://varlet.gitee.io/varlet-ui/cat.jpg',
   'https://varlet.gitee.io/varlet-ui/cat2.jpg',
@@ -116,14 +119,14 @@ const images = ref([
   <var-button
     type="warning"
     block
-    @click="closeShow = true"
+    @click="show = true"
   >
     展示关闭按钮
   </var-button>
   <var-image-preview
     closeable
     :images="images"
-    v-model:show="closeShow"
+    v-model:show="show"
   />
 </template>
 ```
@@ -135,7 +138,7 @@ const images = ref([
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const closeEventShow = ref(false)
+const show = ref(false)
 const images = ref([
   'https://varlet.gitee.io/varlet-ui/cat.jpg',
   'https://varlet.gitee.io/varlet-ui/cat2.jpg',
@@ -147,13 +150,13 @@ const handleCloseEvent = () => Snackbar('触发了关闭事件。');
   <var-button
     block
     type="warning"
-    @click="closeEventShow = true"
+    @click="show = true"
   >
     监听关闭事件
   </var-button>
   <var-image-preview
     :images="images"
-    v-model:show="closeEventShow"
+    v-model:show="show"
     @close="handleCloseEvent"
   />
 </template>
@@ -164,7 +167,7 @@ const handleCloseEvent = () => Snackbar('触发了关闭事件。');
 <script setup>
 import { ref } from 'vue'
 
-const extraSlotsShow = ref(false)
+const show = ref(false)
 const menuShow = ref(false)
 const images = ref([
   'https://varlet.gitee.io/varlet-ui/cat.jpg',
@@ -186,11 +189,11 @@ const actions = [
   <var-button
     block
     type="warning" 
-    @click="extraSlotsShow = true"
+    @click="show = true"
   >
     展示额外插槽
   </var-button>
-  <var-image-preview :images="images" v-model:show="extraSlotsShow">
+  <var-image-preview :images="images" v-model:show="show">
     <template #extra>
       <var-icon
         name="menu"
