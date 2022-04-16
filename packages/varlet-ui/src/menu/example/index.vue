@@ -1,3 +1,32 @@
+<script setup>
+import VarMenu from '..'
+import VarButton from '../../button'
+import VarCell from '../../cell'
+import Snackbar from '../../snackbar'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { reactive, toRefs, ref } from 'vue'
+import { pack, use } from './locale'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import dark from '../../themes/dark'
+
+const values = reactive({
+  top: false,
+  bottom: false,
+  offsetX: false,
+  offsetX1: false,
+  offsetY: false,
+  offsetY1: false,
+  event: false,
+})
+const bgColor = ref('#fff')
+const { top, bottom, offsetX, offsetX1, offsetY, offsetY1, event } = toRefs(values)
+
+watchLang(use)
+watchDarkMode(dark, (themes) => {
+  bgColor.value = themes === 'darkThemes' ? '#272727' : '#fff'
+})
+</script>
+
 <template>
   <app-type>{{ pack.alignmentMethods }}</app-type>
   <div class="block-1">
@@ -103,52 +132,6 @@
 
   <div style="margin-bottom: 100px"></div>
 </template>
-
-<script>
-import VarMenu from '..'
-import VarButton from '../../button'
-import VarCell from '../../cell'
-import Snackbar from '../../snackbar'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { reactive, toRefs, ref } from 'vue'
-import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-import dark from '../../themes/dark'
-
-export default {
-  name: 'MenuExample',
-  components: {
-    VarMenu,
-    VarButton,
-    VarCell,
-    AppType,
-  },
-  setup() {
-    const values = reactive({
-      top: false,
-      bottom: false,
-      offsetX: false,
-      offsetX1: false,
-      offsetY: false,
-      offsetY1: false,
-      event: false,
-    })
-    const bgColor = ref('#fff')
-
-    watchLang(use)
-    watchDarkMode(dark, (themes) => {
-      bgColor.value = themes === 'darkThemes' ? '#272727' : '#fff'
-    })
-
-    return {
-      pack,
-      ...toRefs(values),
-      bgColor,
-      Snackbar,
-    }
-  },
-}
-</script>
 
 <style scoped lang="less">
 .cell-list {
