@@ -106,9 +106,17 @@ import SizeOption from '../example/SizeOption.vue'
 
 ```html
 <template>
-  <var-pagination :current="3" :total="120" :simple="false" :show-size-changer="false" />
-  <var-pagination :current="3" :total="120" :simple="false" :size-option="[10, 20, 30, 40]" />
+  <var-pagination class="pagination-example-ul" :current="3" :total="120" :simple="false" :show-size-changer="false" />
+  <var-pagination class="pagination-example-ul" :current="3" :total="120" :simple="false" :size-option="[10, 20, 30, 40]" />
 </template>
+
+<style>
+  .pagination-example-ul {
+    margin: 0 !important;
+    padding: 10px 0 !important;
+    box-shadow: none;
+  }
+</style>
 ```
 
 ### Show Total
@@ -120,6 +128,7 @@ import ShowTotal from '../example/ShowTotal.vue'
 ```html
 <template>
   <var-pagination
+    class="pagination-example-ul"
     :current="3"
     :size="10"
     :total="120"
@@ -127,6 +136,7 @@ import ShowTotal from '../example/ShowTotal.vue'
     :show-total="total => `Total ${total} items`"
   />
   <var-pagination
+    class="pagination-example-ul"
     :current="3"
     :size="10"
     :total="120"
@@ -134,6 +144,14 @@ import ShowTotal from '../example/ShowTotal.vue'
     :show-total="(total, range) => `Total ${total}, current ${range[0]}-${range[1]}`"
   />
 </template>
+
+<style>
+  .pagination-example-ul {
+    margin: 0 !important;
+    padding: 10px 0 !important;
+    box-shadow: none;
+  }
+</style>
 ```
 
 ### Disabled
