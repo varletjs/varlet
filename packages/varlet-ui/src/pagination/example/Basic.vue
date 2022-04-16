@@ -9,11 +9,11 @@ watchDarkMode(dark)
 </script>
 
 <template>
-  <var-pagination class="pagination-example-ul" :current="3" :total="120" :simple="false" />
+  <var-pagination :current="3" :total="120" :simple="false" />
 </template>
 
-<style>
-.pagination-example-ul {
+<style scoped>
+ul {
   margin: 0;
   padding: 10px 0;
   box-shadow: none;

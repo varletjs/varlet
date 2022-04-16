@@ -10,7 +10,6 @@ watchDarkMode(dark)
 
 <template>
   <var-pagination
-    class="pagination-example-ul"
     :current="3"
     :size="10"
     :total="120"
@@ -18,7 +17,6 @@ watchDarkMode(dark)
     :show-total="(total) => `${pack.pcTotal} ${total} ${pack.item}`"
   />
   <var-pagination
-    class="pagination-example-ul"
     :current="3"
     :size="10"
     :total="120"
@@ -28,7 +26,7 @@ watchDarkMode(dark)
 </template>
 
 <style>
-.pagination-example-ul {
+ul {
   margin: 0;
   padding: 10px 0;
   box-shadow: none;
