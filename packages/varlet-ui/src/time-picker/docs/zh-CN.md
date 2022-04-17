@@ -4,32 +4,17 @@
 
 用于选择时间。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { TimePicker } from '@varlet/ui'
-
-createApp().use(TimePicker)
-```
-
 ### 基本使用
 
 ```html
-<var-time-picker v-model="date" />
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
+const date = ref('11:20')
+</script>
 
-export default {
-  setup() {
-    const date = ref('11:20')
-
-    return {
-      date
-    }
-  }
-}
+<template>
+  <var-time-picker v-model="date" />
+</template>
 ```
 
 ### 24小时格式
@@ -37,7 +22,14 @@ export default {
 使用 `format` 属性切换选择器的时间格式，`format` 默认值为 `ampm`。
 
 ```html
-<var-time-picker v-model="date" format="24hr" shadow />
+<script setup>
+import { ref } from 'vue'
+const date = ref('11:20')
+</script>
+
+<template>
+  <var-time-picker v-model="date" format="24hr" shadow />
+</template>
 ```
 
 ### 显示秒
@@ -45,88 +37,85 @@ export default {
 使用 `use-seconds` 属性显示秒
 
 ```html
-<var-time-picker v-model="date" format="24hr" use-seconds />
-```
+<script setup>
+import { ref } from 'vue'
+const date = ref('11:20')
+</script>
 
+<template>
+  <var-time-picker v-model="date" format="24hr" use-seconds />
+</template>
+```
 ### 只读
 
 ```html
-<var-time-picker v-model="date" readonly shadow />
-```
+<script setup>
+import { ref } from 'vue'
+const date = ref('11:20')
+</script>
 
+<template>
+  <var-time-picker v-model="date" readonly shadow />
+</template>
+```
 ### 时间限制
 
 通过 `min`、`max` 和 `allowed-time` 属性来控制可选择的时间范围。
 
 ```html
-<var-time-picker
-  v-model="date"
-  format="24hr"
-  use-seconds
-  min="2:28:38"
-  max="19:40:22"
-  :allowed-time="allowedTime"
-/>
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
+const date = ref('07:10:12')
 
-export default {
-  setup() {
-    const date = ref('07:10:12')
-
-    const allowedTime = {
-      hours(hour) {
-        return hour % 2 === 0
-      },
-      minutes(minute) {
-        return minute % 15 !== 0
-      },
-      seconds(second) {
-        return second % 2 !== 0
-      },
-    }
-
-    return {
-      date,
-      allowedTime
-    }
-  }
+const allowedTime = {
+  hours(hour) {
+    return hour % 2 === 0
+  },
+  minutes(minute) {
+    return minute % 15 !== 0
+  },
+  seconds(second) {
+    return second % 2 !== 0
+  },
 }
+</script>
+
+<template>
+  <var-time-picker
+    v-model="date"
+    format="24hr"
+    use-seconds
+    min="2:28:38"
+    max="19:40:22"
+    :allowed-time="allowedTime"
+  />
+</template>
 ```
 
 ### 自定义
 
 ```html
-<var-time-picker
-  v-model="date"
-  header-color="purple"
-  color="#7bb872"
-  min="2:28:38"
-  max="19:40:22"
-  shadow
-  @change="change"
-/>
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
+const date = ref('05:10')
 
-export default {
-  setup() {
-    const date = ref('05:10')
-
-    const change = (time) => {
-      console.log(time)
-    }
-
-    return {
-      date,
-      change
-    }
-  }
+const change = (time) => {
+  console.log(time)
 }
-```
+</script>
 
+<template>
+  <var-time-picker
+    v-model="date"
+    header-color="purple"
+    color="#7bb872"
+    min="2:28:38"
+    max="19:40:22"
+    shadow
+    @change="change"
+  />
+</template>
+```
 ## API
 
 ### 属性
