@@ -18,198 +18,178 @@ Menu 在点击组件范围以外的区域自动关闭，所以不可以使用同
 
 ### 对齐方式
 ```html
-<div class="block">
-  <var-menu v-model:show="top">
-    <var-button type="primary" @click="top = true">顶部对齐</var-button>
+<script setup>
+  import { ref } from 'vue'
+  
+  const top = ref(false)
+  const bottom = ref(false)
+</script>
 
-    <template #menu>
-      <div class="cell-list">
-        <var-cell>菜单项</var-cell>
-        <var-cell>菜单项</var-cell>
-        <var-cell>菜单项</var-cell>
-      </div>
-    </template>
-  </var-menu>
-</div>
+<template>
+  <div class="menu-example-block">
+    <var-menu v-model:show="top">
+      <var-button type="primary" @click="top = true">顶部对齐</var-button>
 
-<div class="block-mt">
-  <var-menu alignment="bottom" v-model:show="bottom">
-    <var-button type="primary" @click="bottom = true">底部对齐</var-button>
+      <template #menu>
+        <div class="menu-example-cell-list">
+          <var-cell>菜单项</var-cell>
+          <var-cell>菜单项</var-cell>
+          <var-cell>菜单项</var-cell>
+        </div>
+      </template>
+    </var-menu>
+  </div>
 
-    <template #menu>
-      <div class="cell-list">
-        <var-cell>菜单项</var-cell>
-        <var-cell>菜单项</var-cell>
-        <var-cell>菜单项</var-cell>
-      </div>
-    </template>
-  </var-menu>
-</div>
-```
+  <div class="menu-example-block-mt">
+    <var-menu alignment="bottom" v-model:show="bottom">
+      <var-button type="primary" @click="bottom = true">底部对齐</var-button>
 
-```js
-import { ref } from 'vue'
+      <template #menu>
+        <div class="menu-example-cell-list">
+          <var-cell>菜单项</var-cell>
+          <var-cell>菜单项</var-cell>
+          <var-cell>菜单项</var-cell>
+        </div>
+      </template>
+    </var-menu>
+  </div>
+</template>
 
-export default {
-  setup() {
-    const top = ref(false)
-    const bottom = ref(false)
-
-    return {
-      top,
-      bottom
-    }
+<style>
+  .menu-example-block {
+    display: flex;
+    justify-content: space-between;
   }
-}
-```
 
-```css
-.block {
-  display: flex;
-  justify-content: space-between;
-}
+  .menu-example-block-mt {
+    margin-top: 130px;
+  }
 
-.block-mt {
-  margin-top: 130px;
-}
-
-.cell-list {
-  background: #fff;
-}
+  .menu-example-cell-list{
+    background: #fff;
+  }
+</style>
 ```
 
 ### 偏移量
 
 ```html
-<div class="block-1">
-  <var-menu :offset-x="72" v-model:show="offsetX">
-    <var-button type="primary" @click="offsetX = true">右偏移</var-button>
+<script setup>
+  import { ref } from 'vue'
+  
+  const offsetX = ref(false)
+  const offsetX1 = ref(false)
+  const offsetY = ref(false)
+  const offsetY1 = ref(false)
+</script>
 
-    <template #menu>
-      <div class="cell-list">
-        <var-cell>菜单项</var-cell>
-        <var-cell>菜单项</var-cell>
-        <var-cell>菜单项</var-cell>
-      </div>
-    </template>
-  </var-menu>
+<template>
+  <div class="menu-example-block-1">
+    <var-menu :offset-x="72" v-model:show="offsetX">
+      <var-button type="primary" @click="offsetX = true">右偏移</var-button>
 
-  <var-menu :offset-x="-72" v-model:show="offsetX1">
-    <var-button type="primary" @click="offsetX1 = true">左偏移</var-button>
+      <template #menu>
+        <div class="menu-example-cell-list">
+          <var-cell>菜单项</var-cell>
+          <var-cell>菜单项</var-cell>
+          <var-cell>菜单项</var-cell>
+        </div>
+      </template>
+    </var-menu>
 
-    <template #menu>
-      <div class="cell-list">
-        <var-cell>菜单项</var-cell>
-        <var-cell>菜单项</var-cell>
-        <var-cell>菜单项</var-cell>
-      </div>
-    </template>
-  </var-menu>
-</div>
+    <var-menu :offset-x="-72" v-model:show="offsetX1">
+      <var-button type="primary" @click="offsetX1 = true">左偏移</var-button>
 
-<div class="block-2">
-  <var-menu :offset-y="36" v-model:show="offsetY">
-    <var-button type="primary" @click="offsetY = true">下偏移</var-button>
+      <template #menu>
+        <div class="menu-example-cell-list">
+          <var-cell>菜单项</var-cell>
+          <var-cell>菜单项</var-cell>
+          <var-cell>菜单项</var-cell>
+        </div>
+      </template>
+    </var-menu>
+  </div>
 
-    <template #menu>
-      <div class="cell-list">
-        <var-cell>菜单项</var-cell>
-        <var-cell>菜单项</var-cell>
-        <var-cell>菜单项</var-cell>
-      </div>
-    </template>
-  </var-menu>
+  <div class="menu-example-block-2">
+    <var-menu :offset-y="36" v-model:show="offsetY">
+      <var-button type="primary" @click="offsetY = true">下偏移</var-button>
 
-  <var-menu :offset-y="-36" v-model:show="offsetY1">
-    <var-button type="primary" @click="offsetY1 = true">上偏移</var-button>
+      <template #menu>
+        <div class="menu-example-cell-list">
+          <var-cell>菜单项</var-cell>
+          <var-cell>菜单项</var-cell>
+          <var-cell>菜单项</var-cell>
+        </div>
+      </template>
+    </var-menu>
 
-    <template #menu>
-      <div class="cell-list">
-        <var-cell>菜单项</var-cell>
-        <var-cell>菜单项</var-cell>
-        <var-cell>菜单项</var-cell>
-      </div>
-    </template>
-  </var-menu>
-</div>
-```
+    <var-menu :offset-y="-36" v-model:show="offsetY1">
+      <var-button type="primary" @click="offsetY1 = true">上偏移</var-button>
 
+      <template #menu>
+        <div class="menu-example-cell-list">
+          <var-cell>菜单项</var-cell>
+          <var-cell>菜单项</var-cell>
+          <var-cell>菜单项</var-cell>
+        </div>
+      </template>
+    </var-menu>
+  </div>
+</template>
 
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const offsetX = ref(false)
-    const offsetX1 = ref(false)
-    const offsetY = ref(false)
-    const offsetY1 = ref(false)
-
-    return {
-      offsetX,
-      offsetX1,
-      offsetY,
-      offsetY1
-    }
+<style>
+  .menu-example-block-1 {
+    display: flex;
+    justify-content: space-between;
   }
-}
-```
 
-```css
-.block-1 {
-  display: flex;
-  justify-content: space-between;
-}
+  .menu-example-block-2 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 130px;
+  }
 
-.block-2 {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 130px;
-}
+  .menu-example-cell-list {
+    background: #fff;
+  }
+</style>
 ```
 
 ### 注册事件
 
 ```html
-<var-menu
-  v-model:show="event"
-  @open="() => Snackbar.info('open')"
-  @opened="() => Snackbar.success('opened')"
-  @close="() => Snackbar.warning('close')"
-  @closed="() => Snackbar.error('closed')"
->
-  <var-button type="primary" @click="event = true">注册事件</var-button>
+<script setup>
+  import { ref } from 'vue'
+  import { Snackbar } from '@varlet/ui'
+  
+  const event = ref(false)
+</script>
 
-  <template #menu>
-    <div class="cell-list">
-      <var-cell>菜单项</var-cell>
-      <var-cell>菜单项</var-cell>
-      <var-cell>菜单项</var-cell>
-    </div>
-  </template>
-</var-menu>
-```
+<template>
+  <var-menu
+    v-model:show="event"
+    @open="() => Snackbar.info('open')"
+    @opened="() => Snackbar.success('opened')"
+    @close="() => Snackbar.warning('close')"
+    @closed="() => Snackbar.error('closed')"
+  >
+    <var-button type="primary" @click="event = true">注册事件</var-button>
 
-```js
-import { ref } from 'vue'
-import { Snackbar } from '@varlet/ui'
+    <template #menu>
+      <div class="menu-example-cell-list">
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+      </div>
+    </template>
+  </var-menu>
+</template>
 
-export default {
-  setup() {
-    const event = ref(false)
-
-    return {
-      event,
-      Snackbar
-    }
+<style>
+  .menu-example-cell-list {
+    background: #fff;
   }
-}
-```
-
-```css
-.cell-list {
-  background: #fff;
-}
+</style>
 ```
 
 ## API
