@@ -9,7 +9,7 @@
 ```html
 <template>
   <var-space class="elevation-demo">
-    <div class="elevation-demo__item" :class="`var-elevation--${e}`" :style="{ background }" v-for="e in 24" :key="e">
+    <div class="elevation-demo__item" :class="`var-elevation--${e}`" v-for="e in 24" :key="e">
       {{ e }}
     </div>
   </var-space>
@@ -22,7 +22,6 @@
   align-items: center;
   width: 25vw;
   height: 25vw;
-  color: var(--site-config-color-sub-text);
   transition: 0.25s background-color;
 }
 </style>

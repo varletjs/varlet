@@ -10,7 +10,7 @@ Shadows are divided into `0-24` levels, and the higher the level, the higher the
 ```html
 <template>
   <var-space class="elevation-demo">
-    <div class="elevation-demo__item" :class="`var-elevation--${e}`" :style="{ background }" v-for="e in 24" :key="e">
+    <div class="elevation-demo__item" :class="`var-elevation--${e}`" v-for="e in 24" :key="e">
       {{ e }}
     </div>
   </var-space>
@@ -23,7 +23,6 @@ Shadows are divided into `0-24` levels, and the higher the level, the higher the
   align-items: center;
   width: 25vw;
   height: 25vw;
-  color: var(--site-config-color-sub-text);
   transition: 0.25s background-color;
 }
 </style>
