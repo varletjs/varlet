@@ -4,91 +4,94 @@
 
 A group of options for multiple choices
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Checkbox, CheckboxGroup } from '@varlet/ui'
-
-createApp().use(CheckboxGroup).use(Checkbox)
-```
-
 ### Basic Usage
 
 ```html
-<var-checkbox v-model="value">Current value: {{ value }}</var-checkbox>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(false)
+const value = ref(false)
+</script>
 
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-checkbox v-model="value">Current value: {{ value }}</var-checkbox>
+</template>
 ```
 
 ### Set State value
 
 ```html
-<var-checkbox
-  :unchecked-value="0"
-  :checked-value="1"
-  v-model="value"
->
-  Current value: {{ value }}
-</var-checkbox>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(0)
+const value = ref(0)
+</script>
 
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-checkbox
+    :unchecked-value="0"
+    :checked-value="1"
+    v-model="value"
+  >
+    Current value: {{ value }}
+  </var-checkbox>
+</template>
 ```
 
 ### Modify the icon and color
 
 ```html
-<var-checkbox
-  unchecked-color="#e99eb4"
-  checked-color="#f44336"
-  v-model="value"
->
-  <template #unchecked-icon>
-    <var-icon name="heart-half-full" size="24px"/>
-  </template>
-  <template #checked-icon>
-    <var-icon name="heart" size="24px"/>
-  </template>
-  <template #default>
-    Current value: {{ value }}
-  </template>
-</var-checkbox>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-checkbox
+    unchecked-color="#e99eb4"
+    checked-color="#f44336"
+    v-model="value"
+  >
+    <template #unchecked-icon>
+      <var-icon name="heart-half-full" size="24px"/>
+    </template>
+    <template #checked-icon>
+      <var-icon name="heart" size="24px"/>
+    </template>
+    <template #default>
+      Current value: {{ value }}
+    </template>
+  </var-checkbox>
+</template>
 ```
 
 ### Disabled
 
 ```html
-<var-checkbox disabled v-model="value">Current value: {{ value }}</var-checkbox>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-checkbox disabled v-model="value">Current value: {{ value }}</var-checkbox>
+</template>
 ```
 
 ### Readonly
 
 ```html
-<var-checkbox readonly v-model="value">Current value: {{ value }}</var-checkbox>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-checkbox readonly v-model="value">Current value: {{ value }}</var-checkbox>
+</template>
 ```
 
 ### CheckboxGroup/Actions
@@ -97,50 +100,60 @@ In the checkbox group, you must set the `checked-value` to identify the `checkbo
 The checkbox group collects all checked identifiers.
 
 ```html
-<var-checkbox-group ref="group" v-model="value">
-  <var-checkbox :checked-value="0">Eat</var-checkbox>
-  <var-checkbox :checked-value="1">Sleep</var-checkbox>
-</var-checkbox-group>
-
-<var-button class="button" type="primary" @click="$refs.group.checkAll()">Check All</var-button>
-<var-button class="button" type="primary" @click="$refs.group.inverseAll()">Inverse All</var-button>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref([])
+const value = ref([])
+</script>
 
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-checkbox-group ref="group" v-model="value">
+    <var-checkbox :checked-value="0">Eat</var-checkbox>
+    <var-checkbox :checked-value="1">Sleep</var-checkbox>
+  </var-checkbox-group>
+
+  <var-button class="button" type="primary" @click="$refs.group.checkAll()">Check All</var-button>
+  <var-button class="button" type="primary" @click="$refs.group.inverseAll()">Inverse All</var-button>
+</template>
 ```
 
 ### Checkbox validation
 
 ```html
-<var-checkbox
-  v-model="value"
-  :rules="[v => v || 'Please check your choices']"
->
-  Current value: {{ value }}
-</var-checkbox>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+</script>
+
+<template>
+  <var-checkbox
+    v-model="value"
+    :rules="[v => v || 'Please check your choices']"
+  >
+    Current value: {{ value }}
+  </var-checkbox>
+</template>
 ```
 
 ### CheckboxGroup validate
 
 ```html
-<var-checkbox-group
-  v-model="value"
-  :rules="[v => v.length === 2 || 'Please check all']"
->
-  <var-checkbox :checked-value="0">Eat</var-checkbox>
-  <var-checkbox :checked-value="1">Sleep</var-checkbox>
-</var-checkbox-group>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+</script>
+
+<template>
+  <var-checkbox-group
+    v-model="value"
+    :rules="[v => v.length === 2 || 'Please check all']"
+  >
+    <var-checkbox :checked-value="0">Eat</var-checkbox>
+    <var-checkbox :checked-value="1">Sleep</var-checkbox>
+  </var-checkbox-group>
+</template>
 ```
 
 

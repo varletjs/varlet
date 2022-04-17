@@ -1,3 +1,31 @@
+<script setup>
+import VarCheckboxGroup from '..'
+import VarCheckbox from '../../checkbox'
+import VarIcon from '../../icon'
+import VarButton from '../../button'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import dark from '../../themes/dark'
+import { reactive, toRefs } from 'vue'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { use, pack } from './locale'
+
+const values = reactive({
+  value: false,
+  value2: 0,
+  value3: false,
+  value4: false,
+  value5: false,
+  value6: [],
+  value7: false,
+  value8: [],
+  group: null,
+})
+
+const { value, value2, value3, value4, value5, value6, value7, value8, group } = toRefs(values)
+watchLang(use)
+watchDarkMode(dark)
+</script>
+
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-checkbox v-model="value">{{ pack.currentValue }} {{ value }}</var-checkbox>
@@ -47,50 +75,6 @@
 
   <div class="space"></div>
 </template>
-
-<script>
-import VarCheckboxGroup from '..'
-import VarCheckbox from '../../checkbox'
-import VarIcon from '../../icon'
-import VarButton from '../../button'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import dark from '../../themes/dark'
-import { reactive, toRefs } from 'vue'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-import { use, pack } from './locale'
-
-export default {
-  name: 'CheckboxGroupExample',
-  components: {
-    VarCheckboxGroup,
-    VarCheckbox,
-    VarIcon,
-    VarButton,
-    AppType,
-  },
-  setup() {
-    const values = reactive({
-      value: false,
-      value2: 0,
-      value3: false,
-      value4: false,
-      value5: false,
-      value6: [],
-      value7: false,
-      value8: [],
-      group: null,
-    })
-
-    watchLang(use)
-    watchDarkMode(dark)
-
-    return {
-      pack,
-      ...toRefs(values),
-    }
-  },
-}
-</script>
 
 <style scoped lang="less">
 .relation {
