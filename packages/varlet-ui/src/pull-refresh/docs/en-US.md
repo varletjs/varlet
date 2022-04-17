@@ -4,15 +4,6 @@
 
 Provides a drop-down refresh interaction.
 
-### install
-
-  ```js
-import { createApp } from 'vue'
-import { PullRefresh } from '@varlet/ui'
-
-createApp().use(PullRefresh)
-```
-
 ### Basic Usage
 
 The refresh event will be Emitted when pull refresh, you should set `v-model` to `true` at the beginning of the event
@@ -20,20 +11,20 @@ indicates that loading is under way, and setting `v-model` to `false` after comp
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  const data1 = Array(10).fill('List Item')
-  const data2 = Array(10).fill('This is new List Item')
+const data1 = Array(10).fill('List Item')
+const data2 = Array(10).fill('This is new List Item')
 
-  const isRefresh = ref(false)
-  const data = ref(data1)
+const isRefresh = ref(false)
+const data = ref(data1)
 
-  const refresh = () => {
-    setTimeout(() => {
-      data.value = data.value[0] === 'List Item' ? data2 : data1
-      isRefresh.value = false
-    }, 2000)
-  }
+const refresh = () => {
+  setTimeout(() => {
+    data.value = data.value[0] === 'List Item' ? data2 : data1
+    isRefresh.value = false
+  }, 2000)
+}
 </script>
 
 <template>

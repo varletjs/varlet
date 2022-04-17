@@ -4,35 +4,26 @@
 
 用于提供下拉刷新的交互操作。
 
-### 引入
-
-  ```js
-import { createApp } from 'vue'
-import { PullRefresh } from '@varlet/ui'
-
-createApp().use(PullRefresh)
-```
-
 ### 基本使用
 
 下拉到刷新位置时松开会触发 `refresh` 事件， 在事件开始时将 `v-model` 设置为 `true` 表示正在加载，完成后将 `v-model` 设置为 `false` 表示加载结束。
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  const data1 = Array(10).fill('List Item')
-  const data2 = Array(10).fill('This is new List Item')
+const data1 = Array(10).fill('List Item')
+const data2 = Array(10).fill('This is new List Item')
 
-  const isRefresh = ref(false)
-  const data = ref(data1)
+const isRefresh = ref(false)
+const data = ref(data1)
 
-  const refresh = () => {
-    setTimeout(() => {
-      data.value = data.value[0] === 'List Item' ? data2 : data1
-      isRefresh.value = false
-    }, 2000)
-  }
+const refresh = () => {
+  setTimeout(() => {
+    data.value = data.value[0] === 'List Item' ? data2 : data1
+    isRefresh.value = false
+  }, 2000)
+}
 </script>
 
 <template>
