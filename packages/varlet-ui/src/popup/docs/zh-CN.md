@@ -1,71 +1,41 @@
 # 弹出层
 
 ### 介绍
+
 创建一个可以从上、下、左、右、中心弹出的容器，用于展示信息。默认使用 `teleport` 插入到 `body` 尾部。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Popup } from '@varlet/ui'
-
-createApp().use(Popup)
-```
 
 ### 弹出位置
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
   
-  const center = ref(false)
-  const top = ref(false)
-  const bottom = ref(false)
-  const left = ref(false)
-  const right = ref(false)
+const center = ref(false)
+const top = ref(false)
+const bottom = ref(false)
+const left = ref(false) 
+const right = ref(false)
 </script>
 
 <template>
-  <var-button
-    class="popup-example-mt-10"
-    type="primary"
-    block
-    @click="center = true"
-  >
-    居中弹出
-  </var-button>
-  <var-button
-    class="popup-example-mt-10"
-    type="primary"
-    block
-    @click="bottom = true"
-  >
-    下方弹出
-  </var-button>
-  <var-button
-    class="popup-example-mt-10"
-    type="primary"
-    block
-    @click="top = true"
-  >
-    上方弹出
-  </var-button>
-  <var-button
-    class="popup-example-mt-10"
-    type="primary"
-    block
-    @click="left = true"
-  >
-    左侧弹出
-  </var-button>
-  <var-button
-    class="popup-example-mt-10"
-    type="primary"
-    block
-    @click="right = true"
-  >
-    右侧弹出
-  </var-button>
+  <var-space direction="column" :size="[10, 0]">
+    <var-button type="primary" block @click="center = true">
+      居中弹出
+    </var-button>
+    <var-button type="primary" block @click="bottom = true">
+      下方弹出
+    </var-button>
+    <var-button type="primary" block @click="top = true">
+      上方弹出
+    </var-button>
+    <var-button type="primary" block @click="left = true">
+      左侧弹出
+    </var-button>
+    <var-button type="primary" block @click="right = true">
+      右侧弹出
+    </var-button>
+  </var-space>
   
   <var-popup v-model:show="center">
     <div class="popup-example-block">
@@ -114,14 +84,10 @@ createApp().use(Popup)
 </template>
 
 <style>
-  .popup-example-mt-10 {
-    margin-top: 10px;
-  }
-
-  .popup-example-block {
-    padding: 20px 24px;
-    width: 250px;
-  }
+.popup-example-block {
+  padding: 20px 24px;
+  width: 250px;
+}
 </style>
 ```
 
@@ -129,29 +95,21 @@ createApp().use(Popup)
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
   
-  const overlayClass = ref(false)
-  const overlayStyle = ref(false)
+const overlayClass = ref(false)
+const overlayStyle = ref(false)
 </script>
 
 <template>
-  <var-button
-    class="popup-example-mt-10"
-    type="primary"
-    block
-    @click="overlayClass = true"
-  >
-    遮罩层 class
-  </var-button>
-  <var-button
-    class="popup-example-mt-10"
-    type="primary"
-    block
-    @click="overlayStyle = true"
-  >
-    遮罩层 style
-  </var-button>
+  <var-space direction="column" :size="[10, 0]">
+    <var-button type="primary" block @click="overlayClass = true">
+      遮罩层 class
+    </var-button>
+    <var-button type="primary" block @click="overlayStyle = true">
+      遮罩层 style
+    </var-button>
+  </var-space>
   
   <var-popup
     overlay-class="popup-example-custom-overlay"
@@ -166,9 +124,7 @@ createApp().use(Popup)
   </var-popup>
   
   <var-popup
-    :overlay-style="{
-    backgroundColor: 'rgba(0, 0, 0, 0.3)'
-  }"
+    :overlay-style="{backgroundColor: 'rgba(0, 0, 0, 0.3)'}"
     v-model:show="overlayStyle"
   >
     <div class="popup-example-block">
@@ -181,18 +137,14 @@ createApp().use(Popup)
 </template>
 
 <style>
-  .popup-example-custom-overlay {
-    background: rgba(0, 0, 0, 0.3) !important;
-  }
-  
-  .popup-example-mt-10 {
-    margin-top: 10px;
-  }
+.popup-example-custom-overlay {
+  background: rgba(0, 0, 0, 0.3) !important;
+}
 
-  .popup-example-block {
-    padding: 20px 24px;
-    width: 250px;
-  }
+.popup-example-block {
+  padding: 20px 24px;
+  width: 250px;
+}
 </style>
 ```
 
@@ -200,19 +152,14 @@ createApp().use(Popup)
 
 ```html
 <script setup>
-  import { ref } from 'vue'
-  import { Snackbar } from '@varlet/ui'
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
 
-  const event = ref(false)
+const event = ref(false)
 </script>
 
 <template>
-  <var-button
-    class="popup-example-mt-10"
-    type="primary"
-    block
-    @click="event = true"
-  >
+  <var-button type="primary" block @click="event = true">
     注册事件
   </var-button>
 
@@ -233,10 +180,10 @@ createApp().use(Popup)
 </template>
 
 <style>
-  .popup-example-block {
-    padding: 20px 24px;
-    width: 250px;
-  }
+.popup-example-block {
+  padding: 20px 24px;
+  width: 250px;
+}
 </style>
 ```
 

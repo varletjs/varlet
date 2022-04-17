@@ -3,69 +3,37 @@
 ### Intro
 Create a container that can pop up from top, bottom, left, right and center. `teleport` inserts into the end of the `body` by default.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Popup } from '@varlet/ui'
-
-createApp().use(Popup)
-```
-
 ### Popup Position
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  const center = ref(false)
-  const top = ref(false)
-  const bottom = ref(false)
-  const left = ref(false)
-  const right = ref(false)
+const center = ref(false)
+const top = ref(false)
+const bottom = ref(false)
+const left = ref(false)
+const right = ref(false)
 </script>
 
 <template>
-  <var-button 
-    class="popup-example-mt-10"
-    type="primary"
-    block
-    @click="center = true"
-  >
-    Center Popup
-  </var-button>
-  <var-button
-    class="popup-example-mt-10"
-    type="primary"
-    block
-    @click="bottom = true"
-  >
-    Below Popup
-  </var-button>
-  <var-button
-    class="popup-example-mt-10"
-    type="primary"
-    block 
-    @click="top = true"
-  >
-    Above Popup
-  </var-button>
-  <var-button 
-    class="popup-example-mt-10" 
-    type="primary"
-    block
-    @click="left = true"
-  >
-    Left Popup
-  </var-button>
-  <var-button 
-    class="popup-example-mt-10" 
-    type="primary"
-    block 
-    @click="right = true"
-  >
-    Right Popup
-  </var-button>
+  <var-space direction="column" :size="[10, 0]">
+    <var-button type="primary" block @click="center = true">
+      Center Popup
+    </var-button>
+    <var-button type="primary" block @click="bottom = true">
+      Below Popup
+    </var-button>
+    <var-button type="primary" block @click="top = true">
+      Above Popup
+    </var-button>
+    <var-button type="primary" block @click="left = true">
+      Left Popup
+    </var-button>
+    <var-button type="primary" block @click="right = true">
+      Right Popup
+    </var-button>
+  </var-space>
   
   <var-popup v-model:show="center">
     <div class="popup-example-block">
@@ -114,14 +82,10 @@ createApp().use(Popup)
 </template>
 
 <style>
-  .popup-example-mt-10 {
-    margin-top: 10px;
-  }
-
-  .popup-example-block {
-    padding: 20px 24px;
-    width: 250px;
-  }
+.popup-example-block {
+  padding: 20px 24px;
+  width: 250px;
+}
 </style>
 ```
 
@@ -129,29 +93,21 @@ createApp().use(Popup)
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
   
-  const overlayClass = ref(false)
-  const overlayStyle = ref(false)
+const overlayClass = ref(false)
+const overlayStyle = ref(false)
 </script>
 
 <template>
-  <var-button
-    class="popup-example-mt-10"
-    type="primary"
-    block
-    @click="overlayClass = true"
-  >
-    Overlay Class
-  </var-button>
-  <var-button
-    class="popup-example-mt-10"
-    type="primary"
-    block
-    @click="overlayStyle = true"
-  >
-    Overlay Style
-  </var-button>
+  <var-space direction="column" :size="[10, 0]">
+    <var-button type="primary" block @click="overlayClass = true">
+      Overlay Class
+    </var-button>
+    <var-button type="primary" block @click="overlayStyle = true">
+      Overlay Style
+    </var-button>
+  </var-space>
   
   <var-popup
     overlay-class="popup-example-custom-overlay"
@@ -166,9 +122,7 @@ createApp().use(Popup)
   </var-popup>
   
   <var-popup
-    :overlay-style="{
-    backgroundColor: 'rgba(0, 0, 0, 0.3)' 
-  }"
+    :overlay-style="{backgroundColor: 'rgba(0, 0, 0, 0.3)'}"
     v-model:show="overlayStyle"
   >
     <div class="popup-example-block">
@@ -181,18 +135,14 @@ createApp().use(Popup)
 </template>
 
 <style>
-  .popup-example-custom-overlay {
-    background: rgba(0, 0, 0, 0.3) !important;
-  }
+.popup-example-custom-overlay {
+  background: rgba(0, 0, 0, 0.3) !important;
+}
 
-  .popup-example-mt-10 {
-    margin-top: 10px;
-  }
-
-  .popup-example-block {
-    padding: 20px 24px;
-    width: 250px;
-  }
+.popup-example-block {
+  padding: 20px 24px;
+  width: 250px;
+}
 </style>
 ```
 
@@ -200,19 +150,14 @@ createApp().use(Popup)
 
 ```html
 <script setup>
-  import { ref } from 'vue'
-  import { Snackbar } from '@varlet/ui'
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
   
-  const event = ref(false)
+const event = ref(false)
 </script>
 
 <template>
-  <var-button
-    class="popup-example-mt-10"
-    type="primary"
-    block
-    @click="event = true"
-  >
+  <var-button type="primary" block @click="event = true">
     Event
   </var-button>
 
@@ -233,10 +178,10 @@ createApp().use(Popup)
 </template>
 
 <style>
-  .popup-example-block {
-    padding: 20px 24px;
-    width: 250px;
-  }
+.popup-example-block {
+  padding: 20px 24px;
+  width: 250px;
+}
 </style>
 ```
 
