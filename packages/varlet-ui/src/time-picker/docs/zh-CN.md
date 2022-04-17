@@ -9,6 +9,7 @@
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const date = ref('11:20')
 </script>
 
@@ -24,6 +25,7 @@ const date = ref('11:20')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const date = ref('11:20')
 </script>
 
@@ -39,6 +41,7 @@ const date = ref('11:20')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const date = ref('11:20')
 </script>
 
@@ -51,6 +54,7 @@ const date = ref('11:20')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const date = ref('11:20')
 </script>
 
@@ -65,18 +69,13 @@ const date = ref('11:20')
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const date = ref('07:10:12')
 
 const allowedTime = {
-  hours(hour) {
-    return hour % 2 === 0
-  },
-  minutes(minute) {
-    return minute % 15 !== 0
-  },
-  seconds(second) {
-    return second % 2 !== 0
-  },
+  hours: (hour) => hour % 2 === 0,
+  minutes: (minute) => minute % 15 !== 0,
+  seconds: (second) => second % 2 !== 0,
 }
 </script>
 
@@ -97,6 +96,7 @@ const allowedTime = {
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const date = ref('05:10')
 
 const change = (time) => {
