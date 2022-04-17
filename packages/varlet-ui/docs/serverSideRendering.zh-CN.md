@@ -13,7 +13,6 @@
 所以您可以在 `plugins` 目录下新建 `varlet.ts` 并写入以下内容：
 
 ```js
-// playground-ignore
 import { defineNuxtPlugin } from '#app'
 import Varlet from '@varlet/ui'
 import '@varlet/ui/es/style.js'
@@ -21,6 +20,7 @@ import '@varlet/ui/es/style.js'
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(Varlet)
 })
+
 ```
 
 以上代码便完成了 `Varlet` 的引入。需要注意的是，样式文件需要单独引入。
@@ -28,10 +28,10 @@ export default defineNuxtPlugin((nuxtApp) => {
 ### 按需引入
 
 按需引入避免了组件的全量导入，可以有效的减少发布包的大小。
+
 每一个组件都是一个 `Vue插件`，并由 `组件逻辑` 和 `样式文件` 组成，可按如下方式进行按需引入使用。
 
 ```js
-// playground-ignore
 import { defineNuxtPlugin } from '#app'
 import { Button } from '@varlet/ui'
 import '@varlet/ui/es/button/style/index.js'

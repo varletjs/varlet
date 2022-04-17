@@ -4,64 +4,67 @@
 
 Loading component for performing animations when data is loaded
 
+### Install
+
+```js
+import { createApp } from 'vue'
+import { Loading } from '@varlet/ui'
+
+createApp().use(Loading)
+```
+
 ### Type
 
 ```html
-<template>
-  <var-space align="center" justify="space-between">
-    <var-loading type="circle" />
-    <var-loading type="cube" />
-    <var-loading type="wave" />
-    <var-loading type="rect" />
-    <var-loading type="disappear" />
-  </var-space>
-</template>
+<var-loading type="circle" />
+<var-loading type="cube" />
+<var-loading type="wave" />
+<var-loading type="rect" />
+<var-loading type="disappear" />
 ```
 
 ### Color
 ```html
-<template>
-  <var-space align="center" justify="space-between">
-    <var-loading type="circle" color="#2979ff" />
-    <var-loading type="cube" color="#2979ff" />
-    <var-loading type="wave" color="#2979ff" />
-    <var-loading type="rect" color="#2979ff" />
-    <var-loading type="disappear" color="#2979ff" />
-  </var-space>
-</template>
+<var-loading type="circle" color="#2979ff" />
+<var-loading type="cube" color="#2979ff" />
+<var-loading type="wave" color="#2979ff" />
+<var-loading type="rect" color="#2979ff" />
+<var-loading type="disappear" color="#2979ff" />
 ```
 
 ### Size
 
 ```html
-<template>
-  <var-space align="center" justify="space-between">
-    <var-loading type="circle" size="small" />
-    <var-loading type="cube" size="small" />
-    <var-loading type="wave" size="small" />
-    <var-loading type="rect" size="small" />
-    <var-loading type="disappear" size="small" />
-  </var-space>
-</template>
+<var-loading type="circle" size="small" />
+<var-loading type="cube" size="small" />
+<var-loading type="wave" size="small" />
+<var-loading type="rect" size="small" />
+<var-loading type="disappear" size="small" />
 ```
 
 ### Wrap
 
 ```html
-<script setup>
+<var-button @click="loading = !loading" style="margin-bottom: 8px">
+  {{ loading ? 'Open' : 'Close' }}
+</var-button>
+<var-loading description="loading...." type="circle" :loading="loading">
+  <var-card title="Intro" description="Varlet is a Material design mobile component library developed based on Vue3, developed and maintained by partners in the community." />
+</var-loading>
+```
+
+```javascript
 import { ref } from 'vue'
 
-const loading = ref(false)
-</script>
+export default {
+  setup() {
+    const loading = ref(false)
 
-<template>
-  <var-button @click="loading = !loading" style="margin-bottom: 8px">
-    {{ loading ? 'Open' : 'Close' }}
-  </var-button>
-  <var-loading description="loading...." type="circle" :loading="loading">
-    <var-card title="Intro" description="Varlet is a Material design mobile component library developed based on Vue3, developed and maintained by partners in the community." />
-  </var-loading>
-</template>
+    return {
+      loading,
+    }
+  }
+}
 ```
 
 ## API

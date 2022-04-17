@@ -1,73 +1,53 @@
 # 分割线
 
 ### 介绍
-
 用于分隔列表或布局的各个部分。
+
+### 引入
+
+```js
+import { createApp } from 'vue'
+import { Divider } from '@varlet/ui'
+
+createApp().use(Divider)
+```
 
 ### 基本使用
 ```html
-<template>
-  <var-divider />
-</template>
+<var-divider />
 ```
 
 ### 虚线
 ```html
-<template>
-  <var-divider dashed />
-</template>
+<var-divider dashed />
 ```
 
 ### 缩进
 ```html
-<template>
-  <var-divider inset />
-  <var-divider :inset="36" margin="36px 0" />
-  <var-divider inset="-36px" />
-</template>
+<var-divider inset />
+<var-divider :inset="36" margin="36px 0" />
+<var-divider inset="-36px" />
 ```
 
 ### 垂直分割线
 ```html
-<template>
-  <div class="divider-example-vertical-container">
-    <span>文字</span>
-    <var-divider vertical />
-    <span>文字</span>
-    <var-divider vertical />
-    <span>文字</span>
-  </div>
-</template>
-
-<style>
-.divider-example-vertical-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #333;
-}
-
-.divider-example-vertical-container span {
-  font-size: 14px;
-  color: #888;
-}
-</style>
+<span>文字</span>
+<var-divider vertical />
+<span>文字</span>
+<var-divider vertical />
+<span>文字</span>
 ```
 
 ### 带有文字描述的分割线
 ```html
-<template>
-  <var-divider description="文字描述" />
-</template>
+<var-divider description="文字描述" />
 ```
 
 ### 自定义
 ```html
-<template>
-  <var-divider>
-    <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
-  </var-divider>
-</template>
+<var-divider>
+  <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
+</var-divider>
 ```
 
 ## API

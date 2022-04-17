@@ -4,62 +4,39 @@
 
 组件库提供了 `<var-row/>` 和 `<var-col/>` 两个辅助布局的组件，使您更有效率的进行布局。
 
+### 引入
+
+```js
+import { createApp } from 'vue'
+import { Row, Col } from '@varlet/ui'
+
+createApp().use(Row).use(Col)
+```
+
 ### 栅格系统
 
 `<var-row/>` 组件把一行平均划分为 24列 栅格( 24份 )，`<var-col/>` 提供 `span` 属性设置这一列所占的份数，`offset` 属性设置这一列偏移的份数。
 
 ```html
-<template>
-  <var-row>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-  </var-row>
-</template>
-
-<style>
-.var-col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 36px;
-  margin-bottom: 10px;
-  color: #fff;
-  text-align: center;
-  background-clip: content-box;
-  background: #3a7afe;
-}
-</style>
+<var-row>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+</var-row>
 ```
 
 ### 偏移
 
 ```html
-<template>
-  <var-row>
-    <var-col :span="16" :offset="8">offset: 8 span: 16</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-  </var-row>
-</template>
-
-<style>
-.var-col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 36px;
-  margin-bottom: 10px;
-  color: #fff;
-  text-align: center;
-  background-clip: content-box;
-  background: #3a7afe;
-}
-</style>
+<var-row>
+  <var-col :span="16" :offset="8">offset: 8 span: 16</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+</var-row>
 ```
 
 ### 对齐
@@ -67,71 +44,39 @@
 布局组件默认使用 `flex` 布局，通过  `<var-row/>`的 `justify` 和 `align` 属性设置主轴和交叉轴的对齐方式。
 
 ```html
-<template>
-  <var-row>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-  </var-row>
-  <var-row justify="center">
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-  </var-row>
-  <var-row justify="flex-end">
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-  </var-row>
-  <var-row justify="space-around">
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-  </var-row>
-  <var-row justify="space-between">
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-  </var-row>
-</template>
-
-<style>
-.var-col {   
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 36px;
-  margin-bottom: 10px;
-  color: #fff;
-  text-align: center;
-  background-clip: content-box;
-  background: #3a7afe;
-}
-</style>
+<var-row>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+</var-row>
+<var-row justify="center">
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+</var-row>
+<var-row justify="flex-end">
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+</var-row>
+<var-row justify="space-around">
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+</var-row>
+<var-row justify="space-between">
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+</var-row>
 ```
 
 ### 列间距
 
 ```html
-<template>
-  <var-row :gutter="10">
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-  </var-row>
-</template>
-
-<style>
-.var-col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 36px;
-  margin-bottom: 10px;
-  color: #fff;
-  text-align: center;
-  background-clip: content-box;
-  background: #3a7afe;
-}
-</style>
+<var-row :gutter="10">
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+  <var-col :span="8">span: 8</var-col>
+</var-row>
 ```
 
 ### 响应式布局
@@ -143,91 +88,62 @@ import BasicExample from '../example/Responsive.vue'
 ```
 
 ```html
-<template>
-  <var-row :gutter="10">
-    <var-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1">1</var-col>
-    <var-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11">2</var-col>
-    <var-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11">3</var-col>
-    <var-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1">4</var-col>
-  </var-row>
-</template>
-
-<style>
-.var-col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 36px;
-  margin-bottom: 10px;
-  color: #fff;
-  text-align: center;
-  background-clip: content-box !important;
-  background: #3a7afe;
-}
-</style>
+<var-row :gutter="10">
+  <var-col class="col" :xs="8" :sm="6" :md="4" :lg="3" :xl="1">1</var-col>
+  <var-col class="col" :xs="4" :sm="6" :md="8" :lg="9" :xl="11">2</var-col>
+  <var-col class="col" :xs="4" :sm="6" :md="8" :lg="9" :xl="11">3</var-col>
+  <var-col class="col" :xs="8" :sm="6" :md="4" :lg="3" :xl="1">4</var-col>
+</var-row>
 ```
 
 #### 属性对象
-
 ```vue
 import ObjectExample from '../example/ResponsiveObject.vue'
 ```
 
 ```html
-<template>
-  <var-row :gutter="10">
-    <var-col
-      :xs="{ span: 12, offset: 6 }"
-      :sm="{ span: 6 }"
-      :md="{ span: 4, offset: 4 }"
-      :lg="{ span: 3, offset: 3 }"
-      :xl="{ span: 2, offset: 2 }"
-    >
-      1
-    </var-col>
-    <var-col
-      :xs="{ span: 12, offset: 6 }"
-      :sm="{ span: 6 }"
-      :md="{ span: 4, offset: 4 }"
-      :lg="{ span: 3, offset: 3 }"
-      :xl="{ span: 2, offset: 2 }"
-    >
-      2
-    </var-col>
-    <var-col
-      :xs="{ span: 12, offset: 6 }"
-      :sm="{ span: 6 }"
-      :md="{ span: 4, offset: 4 }"
-      :lg="{ span: 3, offset: 3 }"
-      :xl="{ span: 2, offset: 2 }"
-    >
-      3
-    </var-col>
-    <var-col
-      :xs="{ span: 12, offset: 6 }"
-      :sm="{ span: 6 }"
-      :md="{ span: 4, offset: 4 }"
-      :lg="{ span: 3, offset: 3 }"
-      :xl="{ span: 2, offset: 2 }"
-    >
-      4
-    </var-col>
-  </var-row>
-</template>
-
-<style>
-.var-col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 36px;
-  margin-bottom: 10px;
-  color: #fff;
-  text-align: center;
-  background-clip: content-box !important;
-  background: #3a7afe;
-}
-</style>
+<var-row :gutter="10">
+  <var-col
+    class="col"
+    :xs="{ span: 12, offset: 6 }"
+    :sm="{ span: 6 }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
+    :xl="{ span: 2, offset: 2 }"
+  >
+    1
+  </var-col>
+  <var-col
+    class="col"
+    :xs="{ span: 12, offset: 6 }"
+    :sm="{ span: 6 }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
+    :xl="{ span: 2, offset: 2 }"
+  >
+    2
+  </var-col>
+  <var-col
+    class="col"
+    :xs="{ span: 12, offset: 6 }"
+    :sm="{ span: 6 }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
+    :xl="{ span: 2, offset: 2 }"
+  >
+    3
+  </var-col>
+  <var-col
+    class="col"
+    :xs="{ span: 12, offset: 6 }"
+    :sm="{ span: 6 }"
+    :md="{ span: 4, offset: 4 }"
+    :lg="{ span: 3, offset: 3 }"
+    :xl="{ span: 2, offset: 2 }"
+  >
+    4
+  </var-col>
+</var-row>
 ```
 
 ## API

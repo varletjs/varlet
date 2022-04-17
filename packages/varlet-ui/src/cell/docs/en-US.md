@@ -4,37 +4,38 @@
 
 The cell is a single display item in the list.
 
+### Install
+
+```js
+import { createApp } from 'vue'
+import { Cell } from '@varlet/ui'
+
+createApp().use(Cell)
+```
+
 ### Basic Usage
 
 ```html
-<template>
-  <var-cell> This is Cell </var-cell>
-</template>
+<var-cell> This is Cell </var-cell>
 ```
 
 ### Show Icon
 ```html
-<template>
-  <var-cell icon="fire" title="This is Cell">
-    <template #extra>
-      <var-icon name="information" />
-    </template>
-  </var-cell>
-</template>
+<var-cell icon="fire" title="This is Cell">
+  <template #extra>
+    <var-icon name="information" />
+  </template>
+</var-cell>
 ```
 
 ### Show Description
 ```html
-<template>
-  <var-cell title="This is Cell" desc="description" />
-</template>
+<var-cell title="This is Cell" desc="description" />
 ```
 
 ### Show Border
 ```html
-<template>
-  <var-cell border> This is Cell </var-cell>
-</template>
+<var-cell border> This is Cell </var-cell>
 ```
 
 ## API

@@ -1,33 +1,3 @@
-<script setup>
-import VarTable from '..'
-import VarPagination from '../../pagination'
-import dark from '../../themes/dark'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-import { use, pack } from './locale'
-import { ref } from 'vue'
-
-const gen = (current, size) => {
-  return Array.from({ length: size }).map((_, index) => {
-    const id = (current - 1) * size + index + 1
-
-    return {
-      name: `Name ${id}`,
-      math: id,
-      english: id,
-    }
-  })
-}
-
-const list = ref(gen(1, 10))
-
-const get = (current, size) => {
-  list.value = gen(current, size)
-}
-
-watchLang(use, 'pc')
-watchDarkMode(dark)
-</script>
-
 <template>
   <var-table class="reset">
     <thead>
@@ -52,6 +22,40 @@ watchDarkMode(dark)
     </template>
   </var-table>
 </template>
+
+<script>
+import VarTable from '..'
+import VarPagination from '../../pagination'
+import dark from '../../themes/dark'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { use, pack } from './locale'
+import { gen } from './index'
+import { ref } from 'vue'
+
+export default {
+  name: 'BasicExample',
+  components: {
+    VarTable,
+    VarPagination,
+  },
+  setup() {
+    const list = ref(gen(1, 10))
+
+    const get = (current, size) => {
+      list.value = gen(current, size)
+    }
+
+    watchLang(use, 'pc')
+    watchDarkMode(dark)
+
+    return {
+      pack,
+      get,
+      list,
+    }
+  },
+}
+</script>
 
 <style lang="less">
 .reset {

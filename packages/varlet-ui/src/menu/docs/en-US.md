@@ -4,6 +4,15 @@
 
 Enable elements to display a menu when clicked, freely control the display position of the menu by controlling the alignment and offset of the menu.
 
+### Install
+
+```js
+import { createApp } from 'vue'
+import { Menu } from '@varlet/ui'
+
+createApp().use(Menu)
+```
+
 ### Attention
 
 Menu is an `inline block` element. When you click through the default slot, the menu will be displayed.
@@ -15,178 +24,198 @@ other menu pairs are also triggered Menu cannot be displayed due to the modifica
 
 ### Alignment Methods
 ```html
-<script setup>
-import { ref } from 'vue'
-  
-const top = ref(false)
-const bottom = ref(false)
-</script>
-
-<template>
-  <div class="menu-example-block">
-    <var-menu v-model:show="top">
-      <var-button type="primary" @click="top = true">Top Alignment</var-button>
-
-      <template #menu>
-        <div class="menu-example-cell-list">
-          <var-cell>Menu Option</var-cell>
-          <var-cell>Menu Option</var-cell>
-          <var-cell>Menu Option</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
-
-  <div class="menu-example-block-mt">
-    <var-menu alignment="bottom" v-model:show="bottom">
-      <var-button type="primary" @click="bottom = true">Bottom Alignment</var-button>
-
-      <template #menu>
-        <div class="menu-example-cell-list">
-          <var-cell>Menu Option</var-cell>
-          <var-cell>Menu Option</var-cell>
-          <var-cell>Menu Option</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
-</template>
-
-<style>
-.menu-example-block {
-  display: flex;
-  justify-content: space-between;
-}
-
-.menu-example-block-mt {
-  margin-top: 130px;
-}
-
-.menu-example-cell-list {
-  background: #fff;
-}
-</style>
-```
-
-### Offset
-
-```html
-<script setup>
-import { ref } from 'vue'
-  
-const offsetX = ref(false)
-const offsetX1 = ref(false)
-const offsetY = ref(false)
-const offsetY1 = ref(false)
-</script>
-
-<template>
-  <div class="menu-example-block-1">
-    <var-menu :offset-x="72" v-model:show="offsetX">
-      <var-button type="primary" @click="offsetX = true">Offset Right</var-button>
-
-      <template #menu>
-        <div class="menu-example-cell-list">
-          <var-cell>Menu Option</var-cell>
-          <var-cell>Menu Option</var-cell>
-          <var-cell>Menu Option</var-cell>
-        </div>
-      </template>
-    </var-menu>
-
-    <var-menu :offset-x="-72" v-model:show="offsetX1">
-      <var-button type="primary" @click="offsetX1 = true">Offset Left</var-button>
-
-      <template #menu>
-        <div class="menu-example-cell-list">
-          <var-cell>Menu Option</var-cell>
-          <var-cell>Menu Option</var-cell>
-          <var-cell>Menu Option</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
-
-  <div class="menu-example-block-2">
-    <var-menu :offset-y="36" v-model:show="offsetY">
-      <var-button type="primary" @click="offsetY = true">Offset Bottom</var-button>
-
-      <template #menu>
-        <div class="menu-example-cell-list">
-          <var-cell>Menu Option</var-cell>
-          <var-cell>Menu Option</var-cell>
-          <var-cell>Menu Option</var-cell>
-        </div>
-      </template>
-    </var-menu>
-
-    <var-menu :offset-y="-36" v-model:show="offsetY1">
-      <var-button type="primary" @click="offsetY1 = true">Offset Top</var-button>
-
-      <template #menu>
-        <div class="menu-example-cell-list">
-          <var-cell>Menu Option</var-cell>
-          <var-cell>Menu Option</var-cell>
-          <var-cell>Menu Option</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
-</template>
-
-<style>
-.menu-example-block-1 {
-  display: flex;
-  justify-content: space-between;
-}
-
-.menu-example-block-2 {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 130px;
-}
-  
-.menu-example-cell-list {
-  background: #fff;
-}
-</style>
-```
-
-### 注册事件
-
-```html
-<script setup>
-import { ref } from 'vue'
-import { Snackbar } from '@varlet/ui'
-  
-const show = ref(false)
-</script>
-
-<template>
-  <var-menu
-    v-model:show="show"
-    @open="() => Snackbar.info('open')"
-    @opened="() => Snackbar.success('opened')"
-    @close="() => Snackbar.warning('close')"
-    @closed="() => Snackbar.error('closed')"
-  >
-    <var-button type="primary" @click="show = true">Events</var-button>
+<div class="block">
+  <var-menu v-model:show="top">
+    <var-button type="primary" @click="top = true">Top Alignment</var-button>
 
     <template #menu>
-      <div class="menu-example-cell-list">
+      <div class="cell-list">
         <var-cell>Menu Option</var-cell>
         <var-cell>Menu Option</var-cell>
         <var-cell>Menu Option</var-cell>
       </div>
     </template>
   </var-menu>
-</template>
+</div>
 
-<style>
-.menu-example-cell-list {
+<div class="block-mt">
+  <var-menu alignment="bottom" v-model:show="bottom">
+    <var-button type="primary" @click="bottom = true">Bottom Alignment</var-button>
+
+    <template #menu>
+      <div class="cell-list">
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+      </div>
+    </template>
+  </var-menu>
+</div>
+```
+
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const top = ref(false)
+    const bottom = ref(false)
+
+    return { 
+      top,
+      bottom
+    }
+  }
+}
+```
+
+```css
+.block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.block-mt {
+  margin-top: 130px;
+}
+
+.cell-list {
   background: #fff;
 }
-</style>
+```
+
+### Offset
+
+```html
+<div class="block-1">
+  <var-menu :offset-x="72" v-model:show="offsetX">
+    <var-button type="primary" @click="offsetX = true">Offset Right</var-button>
+
+    <template #menu>
+      <div class="cell-list">
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+      </div>
+    </template>
+  </var-menu>
+
+  <var-menu :offset-x="-72" v-model:show="offsetX1">
+    <var-button type="primary" @click="offsetX1 = true">Offset Left</var-button>
+
+    <template #menu>
+      <div class="cell-list">
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+      </div>
+    </template>
+  </var-menu>
+</div>
+
+<div class="block-2">
+  <var-menu :offset-y="36" v-model:show="offsetY">
+    <var-button type="primary" @click="offsetY = true">Offset Bottom</var-button>
+
+    <template #menu>
+      <div class="cell-list">
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+      </div>
+    </template>
+  </var-menu>
+
+  <var-menu :offset-y="-36" v-model:show="offsetY1">
+    <var-button type="primary" @click="offsetY1 = true">Offset Top</var-button>
+
+    <template #menu>
+      <div class="cell-list">
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+      </div>
+    </template>
+  </var-menu>
+</div>
+```
+
+
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const offsetX = ref(false)
+    const offsetX1 = ref(false)
+    const offsetY = ref(false)
+    const offsetY1 = ref(false)
+
+    return {
+      offsetX,
+      offsetX1,
+      offsetY,
+      offsetY1
+    }
+  }
+}
+```
+
+```css
+.block-1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.block-2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 130px;
+}
+```
+
+### 注册事件
+
+```html
+<var-menu
+  v-model:show="event"
+  @open="() => Snackbar.info('open')"
+  @opened="() => Snackbar.success('opened')"
+  @close="() => Snackbar.warning('close')"
+  @closed="() => Snackbar.error('closed')"
+>
+  <var-button type="primary" @click="event = true">Events</var-button>
+
+  <template #menu>
+    <div class="cell-list">
+      <var-cell>Menu Option</var-cell>
+      <var-cell>Menu Option</var-cell>
+      <var-cell>Menu Option</var-cell>
+    </div>
+  </template>
+</var-menu>
+```
+
+```js
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+export default {
+  setup() {
+    const event = ref(false)
+
+    return {
+      event,
+      Snackbar
+    }
+  }
+}
+```
+
+```css
+.cell-list {
+  background: #fff;
+}
 ```
 
 ## API

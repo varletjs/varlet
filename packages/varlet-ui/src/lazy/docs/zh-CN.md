@@ -4,66 +4,36 @@
 
 在图片可见时进行加载
 
+### 引入
+
+```js
+import { createApp } from 'vue'
+import { Lazy } from '@varlet/ui'
+
+createApp().use(Lazy)
+```
+
 ### 基本用法
 
 ```html
-<template>
-  <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'">
-</template>
-
-<style>
-.lazy-example-cat {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  background-size: cover;
-  pointer-events: none;
-}
-</style>
+<img v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'">
 ```
 
 ### 背景图懒加载
-
 ```html
-<template>
-  <div class="lazy-example-cat" v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
-</template>
-
-<style>
-.lazy-example-cat {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  background-size: cover;
-  pointer-events: none;
-}
-</style>
+<div v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
 ```
 
 ### 内联属性
-
 可以通过内联属性修改 `loading`、 `error` 图片和`加载失败时尝试重新加载的次数`。
 
 ```html
-<template>
-  <img
-    class="lazy-example-cat"
-    v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'"
-    lazy-loading="https://xxx.cn/loading.png"
-    lazy-error="https://xxx.cn/error.png"
-    lazy-attempt="3"
-  >
-</template>
-
-<style>
-.lazy-example-cat {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  background-size: cover;
-  pointer-events: none;
-}
-</style>
+<img
+  v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'"
+  lazy-loading="https://xxx.cn/loading.png"
+  lazy-error="https://xxx.cn/error.png"
+  lazy-attempt="3"
+>
 ```
 
 ### 插件
@@ -71,7 +41,6 @@
 `Lazy` 提供了在插件注册时传入的选项，可以设置默认的懒加载选项。
 
 ```js
-// playground-ignore
 import { createApp } from 'vue'
 import { Lazy } from '@varlet/ui'
 

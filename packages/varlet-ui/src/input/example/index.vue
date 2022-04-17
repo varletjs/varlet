@@ -1,31 +1,3 @@
-<script setup>
-import VarInput from '..'
-import VarIcon from '../../icon'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import dark from '../../themes/dark'
-import { reactive, toRefs } from 'vue'
-import { use, pack } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-
-const values = reactive({
-  value: '',
-  value2: '',
-  value3: '',
-  value4: '',
-  value5: '',
-  value6: '',
-  value7: '',
-  value8: '',
-  value9: '',
-})
-const { value, value2, value3, value4, value5, value6, value7, value8, value9 } = toRefs(values)
-watchLang((lang) => {
-  use(lang)
-  values.value5 = pack.value.clearableText
-})
-watchDarkMode(dark)
-</script>
-
 <template>
   <app-type class="pb">{{ pack.basicUsage }}</app-type>
   <var-input :placeholder="pack.placeholder" v-model="value" />
@@ -63,6 +35,49 @@ watchDarkMode(dark)
 
   <div style="height: 40px"></div>
 </template>
+
+<script>
+import VarInput from '..'
+import VarIcon from '../../icon'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import dark from '../../themes/dark'
+import { reactive, toRefs } from 'vue'
+import { use, pack } from './locale'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+
+export default {
+  name: 'InputExample',
+  components: {
+    VarInput,
+    VarIcon,
+    AppType,
+  },
+  setup() {
+    const values = reactive({
+      value: '',
+      value2: '',
+      value3: '',
+      value4: '',
+      value5: '',
+      value6: '',
+      value7: '',
+      value8: '',
+      value9: '',
+    })
+
+    watchLang((lang) => {
+      use(lang)
+      values.value5 = pack.value.clearableText
+    })
+    watchDarkMode(dark)
+
+    return {
+      pack,
+      ...toRefs(values),
+    }
+  },
+}
+</script>
 
 <style scoped lang="less">
 .prepend-icon {

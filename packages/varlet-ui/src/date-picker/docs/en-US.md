@@ -3,19 +3,32 @@
 ### Intro
 Used to select a date or date range.
 
+### Install
+
+```js
+import { createApp } from 'vue'
+import { DatePicker } from '@varlet/ui'
+
+createApp().use(DatePicker)
+```
+
 ### Basic Usage
 
 ```html
-<script setup>
+<var-date-picker v-model="date" />
+```
+```javascript
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
-const date = ref('2021-04-08')
-</script>
+export default {
+  setup() {
+    const date = ref('2021-04-08')
 
-<template>
-  <var-date-picker v-model="date" />
-</template>
+    return {
+      date
+    }
+  }
+}
 ```
 
 ### Month Picker
@@ -23,15 +36,7 @@ const date = ref('2021-04-08')
 Use `type` prop to change the type of the picker. The default value of `type` is `date`.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
-
-const date = ref('2021-04-08')
-</script>
-<template>
-  <var-date-picker type="month" v-model="date" shadow />
-</template>
+<var-date-picker type="month" v-model="date" shadow />
 ```
 
 ### Multiple
@@ -39,97 +44,94 @@ const date = ref('2021-04-08')
 Use `multiple` prop to select multiple dates, at this time, `date` is an array.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
-
-const date = ref([])
-</script>
-<template>
-  <var-date-picker v-model="date" multiple />
-</template>
+<var-date-picker v-model="date" multiple />
 ```
+
 ### Range
 
 Use `range` prop to select date range, at this time, `date` is `[startDate, endDate]`.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
-
-const date = ref(['2021-04-08', '2021-04-20'])
-</script>
-<template>
-  <var-date-picker type="date" v-model="date" range />
-</template>
+<var-date-picker type="date" v-model="date" range />
 ```
+
 ### Date Limit
 
 Use `min` and `max` prop to allow the maximum and minimum date, and use `allowed-dates` prop to limit the dates that can be selected.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
-
-const date = ref('2020-11-11')
-
-const allowedDates = (val) => {
-  return parseInt(val.split('-')[2], 10) % 2 === 1
-}
-</script>
-
-<template>
-  <var-date-picker
-    v-model="date"
-    min="2020-10-15"
-    max="2021-01-15"
-    :allowed-dates="allowedDates"
-  />
-</template>
+<var-date-picker
+  v-model="date"
+  min="2020-10-15"
+  max="2021-01-15"
+  :allowed-dates="allowedDates"
+/>
 ```
+```javascript
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const date = ref('2020-11-11')
+
+    const allowedDates = (val) => {
+      return parseInt(val.split('-')[2], 10) % 2 === 1
+    }
+
+    return {
+      date,
+      allowedDates,
+    }
+  }
+}
+```
+
 ### Custom
 
 ```html
-<script setup>
-import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
-
-const date = ref('2021-02')
-
-const allowedDates = (val) => {
-  return parseInt(val.split('-')[1], 10) % 2 === 1
-}
-
-const change = (date) => {
-  console.log(date)
-}
-</script>
-
-<template>
-  <var-date-picker
-    shadow
-    type="month"
-    v-model="date"
-    min="2016-07"
-    max="2022-01"
-    header-color="purple"
-    color="#7bb872"
-    first-day-of-week="1"
-    :allowed-dates="allowedDates"
-    @change="change"
-  >
-    <template #year="{ year }">
-      <span>{{ year }}</span>
-    </template>
-    <template #month="{ year, month }">
-      <span>{{ year }}-{{ month }}</span>
-    </template>
-  </var-date-picker>
-</template>
+<var-date-picker
+  shadow
+  type="month"
+  v-model="date"
+  min="2016-07"
+  max="2022-01"
+  header-color="purple"
+  color="#7bb872"
+  first-day-of-week="1"
+  :allowed-dates="allowedDates"
+  @change="change"
+>
+  <template #year="{ year }">
+    <span>{{ year }}</span>
+  </template>
+  <template #month="{ year, month }">
+    <span>{{ year }}-{{ month }}</span>
+  </template>
+</var-date-picker>
 ```
+```javascript
+import { ref } from 'vue'
 
+export default {
+  setup() {
+    const date = ref('2021-02')
+
+    const allowedDates = (val) => {
+      return parseInt(val.split('-')[1], 10) % 2 === 1
+    }
+
+    const change = (date) => {
+      console.log(date)
+    }
+
+    return {
+      date,
+      change,
+      allowedDates
+    }
+  }
+}
+```
 
 ## API
 

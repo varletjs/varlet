@@ -1,13 +1,3 @@
-<script setup>
-import VarTable from '..'
-import dark from '../../themes/dark'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-import { use, pack } from './locale'
-
-watchLang(use, 'pc')
-watchDarkMode(dark)
-</script>
-
 <template>
   <var-table class="reset">
     <thead>
@@ -31,6 +21,28 @@ watchDarkMode(dark)
     </tbody>
   </var-table>
 </template>
+
+<script>
+import VarTable from '..'
+import dark from '../../themes/dark'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { use, pack } from './locale'
+
+export default {
+  name: 'BasicExample',
+  components: {
+    VarTable,
+  },
+  setup() {
+    watchLang(use, 'pc')
+    watchDarkMode(dark)
+
+    return {
+      pack,
+    }
+  },
+}
+</script>
 
 <style lang="less">
 .reset {

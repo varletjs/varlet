@@ -1,19 +1,34 @@
 # Rate
 
+### Install
+
+```js
+import { createApp } from 'vue'
+import { Rate } from '@varlet/ui'
+
+createApp().use(Rate)
+```
+
 ### Base Rate
 
 Default display style.
 
 ```html
-<script setup>
+<var-rate v-model="score"/>
+```
+
+```js
 import { ref } from 'vue'
 
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score"/>
-</template>
+export default {
+  setup() {
+    const score = ref(3)
+    
+    return { 
+      score 
+    }
+  }
+}
 ```
 
 ### Customize the total rating
@@ -21,15 +36,7 @@ const score = ref(3)
 Set the total rating through the `count` attribute.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score" :count="8"/>
-</template>
+<var-rate v-model="score" :count="8"/>
 ```
 
 ### Customize the rating icon color
@@ -37,18 +44,10 @@ const score = ref(3)
 Set the colors of selected and unselected through the `color` and `empty-color` properties.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score" color="#9c27b0" empty-color="#d199da"/>
-  <var-rate v-model="score" color="#e91e63" empty-color="#f48fb1"/>
-  <var-rate v-model="score" color="#4caf50" empty-color="#a5d6a7"/>
-  <var-rate v-model="score" color="#3f51b5" empty-color="#9fa8da"/>
-</template>
+<var-rate v-model="score" color="#9c27b0" empty-color="#d199da"/>
+<var-rate v-model="score" color="#e91e63" empty-color="#f48fb1"/>
+<var-rate v-model="score" color="#4caf50" empty-color="#a5d6a7"/>
+<var-rate v-model="score" color="#3f51b5" empty-color="#9fa8da"/>
 ```
 
 ### Customize the rating icon style
@@ -56,15 +55,7 @@ const score = ref(3)
 Set the icon style when it is selected or not through the `icon` and `empty-icon` attributes.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red"/>
-</template>
+<var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red"></var-rate>
 ```
 
 ### Customize the rating icon size
@@ -72,18 +63,10 @@ const score = ref(3)
 Set the size of the rating icon through the `size` attribute.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score" :size="14"/>
-  <var-rate v-model="score" :size="16"/>
-  <var-rate v-model="score" :size="18"/>
-  <var-rate v-model="score" :size="20"/>
-</template>
+<var-rate v-model="score" :size="14"/>
+<var-rate v-model="score" :size="16"/>
+<var-rate v-model="score" :size="18"/>
+<var-rate v-model="score" :size="20"/>
 ```
 
 ### Custom Icon Interval
@@ -91,18 +74,10 @@ const score = ref(3)
 Set the interval between ratings by the `gap` attribute.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score" :gap="2"/>
-  <var-rate v-model="score"/>
-  <var-rate v-model="score" :gap="6"/>
-  <var-rate v-model="score" :gap="8"/>
-</template>
+<var-rate v-model="score" :gap="2"/>
+<var-rate v-model="score"/>
+<var-rate v-model="score" :gap="6"/>
+<var-rate v-model="score" :gap="8"/>
 ```
 
 ### allows half ICONS
@@ -110,24 +85,20 @@ const score = ref(3)
 The `half` attribute is used to set the rating to semi selective, and the `half-icon` attribute is used to set the style of semi selective.
 
 ```html
-<script setup>
+<var-rate v-model="score" :count="8" half/>
+<var-rate v-model="score" :count="8" icon="heart" half-icon="heart-half-full" empty-icon="heart-outline" color="red" half></var-rate>
+```
+
+```js
 import { ref } from 'vue'
 
-const score = ref(3.5)
-</script>
-
-<template>
-  <var-rate v-model="score" :count="8" half/>
-  <var-rate
-    v-model="score"
-    :count="8"
-    icon="heart"
-    half-icon="heart-half-full"
-    empty-icon="heart-outline"
-    color="red"
-    half
-  />
-</template>
+export default {
+	setup() {
+		const score = ref(3.5)
+    
+		return { score }
+	}
+}
 ```
 
 ### Disables rating
@@ -135,15 +106,7 @@ const score = ref(3.5)
 The `disabled` attribute is used to set the rating to the status of no clicking, and the `disabled-color` is used to set the color of the icon when it is disabled.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score" disabled/>
-</template>
+<var-rate v-model="score" disabled/>
 ```
 
 ### Read only rating
@@ -151,15 +114,7 @@ const score = ref(3)
 Set the rating to read-only status through the `readonly` attribute.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score" readonly/>
-</template>
+<var-rate v-model="score" readonly/>
 ```
 
 ### Use water ripples
@@ -167,15 +122,7 @@ const score = ref(3)
 Set the `ripple` attribute to `false` to prohibit the use of water ripples.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score" :ripple="false"/>
-</template>
+<var-rate v-model="score" :ripple="false"/>
 ```
 
 ### listens for the change event
@@ -183,23 +130,26 @@ const score = ref(3)
 Other interaction logic is completed by calling the `change` event.
 
 ```html
-<script setup>
+<var-rate v-model="score" @change="handleChange"/>
+```
+
+```js
 import { ref } from 'vue'
-import { Snackbar } from '@varlet/ui'
 
-const score = ref(3)
+export default { 
+  setup() {
+    const handleChange = (score) => {
+      Snackbar({
+        content: `click ${score}`,
+        position: 'top'
+      })
+    }
 
-const handleChange = (score) => {
-  Snackbar({
-    content: `click ${score}`,
-    position: 'top'
-  })
+    return { 
+      handleChange 
+    }
+  }
 }
-</script>
-
-<template>
-  <var-rate v-model="score" @change="handleChange"/>
-</template>
 ```
 
 ### Validate Value
@@ -209,15 +159,7 @@ Other values are converted to text as a user prompt.
 
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate :rules="[(v) => v >= 3 || 'It has to be greater than 2']" v-model='score'/>
-</template>
+<var-rate :rules="[(v) => v >= 3 || 'It has to be greater than 2']" v-model='score' />
 ```
 
 ## API
@@ -225,7 +167,7 @@ const score = ref(3)
 ### props
 
 | Prop | Description | Type | Default | 
-| ---- | ---- | ---- | ---- |
+| --- | --- | --- | --- | 
 | `v-model` | The current rating  | _number \| string_ | `0` |
 | `count` | total rating  | _number \| string_ | `5` |
 | `color` | The color of the icon when selected  | _string_ | `-` |

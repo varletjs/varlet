@@ -1,59 +1,3 @@
-<script setup>
-import ImagePreview from '../index'
-import VarButton from '../../button'
-import ActionSheet from '../../action-sheet'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Snackbar from '../../snackbar'
-import dark from '../../themes/dark'
-import { ref, computed } from 'vue'
-import { pack, use } from './locale'
-import { watchDarkMode, watchLang } from '@varlet/cli/site/utils'
-import VarIcon from '../../icon'
-
-const VarImagePreview = ImagePreview.Component
-const VarActionSheet = ActionSheet.Component
-
-const show = ref(false)
-const currentShow = ref(false)
-const closeShow = ref(false)
-const closeEventShow = ref(false)
-const extraSlotsShow = ref(false)
-const menuShow = ref(false)
-const images = ref(['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'])
-const image = ref(['https://varlet.gitee.io/varlet-ui/cat.jpg'])
-const actions = computed(() => [
-  {
-    name: pack.value.operate,
-    icon: 'wrench',
-  },
-  {
-    name: pack.value.operate,
-    icon: 'wrench',
-  },
-])
-
-const handleCloseEvent = () => {
-  Snackbar({
-    content: pack.value.shutdownEvent,
-    duration: 1000,
-  })
-}
-const preview = () => {
-  ImagePreview(image.value)
-}
-const previewCallback = () => {
-  ImagePreview({
-    images,
-    onChange: (index) => {
-      console.log('index', index)
-    },
-  })
-}
-
-watchLang(use)
-watchDarkMode(dark)
-</script>
-
 <template>
   <div class="image-preview-demo">
     <app-type>{{ pack.functionCall }}</app-type>
@@ -88,6 +32,83 @@ watchDarkMode(dark)
     </var-image-preview>
   </div>
 </template>
+
+<script>
+import ImagePreview from '../index'
+import VarButton from '../../button'
+import ActionSheet from '../../action-sheet'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import Snackbar from '../../snackbar'
+import dark from '../../themes/dark'
+import { defineComponent, ref, computed } from 'vue'
+import { pack, use } from './locale'
+import { watchDarkMode, watchLang } from '@varlet/cli/site/utils'
+import VarIcon from '../../icon'
+
+export default defineComponent({
+  name: 'ImagePreviewExample',
+  components: {
+    VarImagePreview: ImagePreview.Component,
+    AppType,
+    VarButton,
+    VarIcon,
+    VarActionSheet: ActionSheet.Component,
+  },
+  setup() {
+    const images = ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg']
+
+    const image = ['https://varlet.gitee.io/varlet-ui/cat.jpg']
+
+    const actions = computed(() => [
+      {
+        name: pack.value.operate,
+        icon: 'wrench',
+      },
+      {
+        name: pack.value.operate,
+        icon: 'wrench',
+      },
+    ])
+
+    const handleCloseEvent = () => {
+      Snackbar({
+        content: pack.value.shutdownEvent,
+        duration: 1000,
+      })
+    }
+
+    const previewCallback = () => {
+      ImagePreview({
+        images,
+        onChange: (index) => {
+          console.log('index', index)
+        },
+      })
+    }
+
+    watchLang(use)
+    watchDarkMode(dark)
+
+    return {
+      preview() {
+        ImagePreview(image)
+      },
+      previewCallback,
+      pack,
+      show: ref(false),
+      currentShow: ref(false),
+      closeShow: ref(false),
+      closeEventShow: ref(false),
+      extraSlotsShow: ref(false),
+      menuShow: ref(false),
+      images: ref(images),
+      image: ref(image),
+      actions,
+      handleCloseEvent,
+    }
+  },
+})
+</script>
 
 <style lang="less" scoped>
 .image-preview-demo {

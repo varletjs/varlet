@@ -21,37 +21,49 @@ exports[`test divider dashed and margin prop 3`] = `
 `;
 
 exports[`test divider example 1`] = `
-"<div class=\\"app-type\\">基本使用</div>
-<div class=\\"var-divider var--box\\">
-  <!--v-if-->
-</div>
-<div class=\\"app-type\\">虚线</div>
-<div class=\\"var-divider var--box var-divider--dashed\\">
-  <!--v-if-->
-</div>
-<div class=\\"app-type\\">缩进</div>
-<div class=\\"var-divider var--box var-divider--inset\\">
-  <!--v-if-->
-</div>
-<div class=\\"var-divider var--box var-divider--inset\\" style=\\"margin: 36px 0px; width: calc(100% - 36px); left: 36px;\\">
-  <!--v-if-->
-</div>
-<div class=\\"var-divider var--box var-divider--inset\\" style=\\"width: calc(100% - 36px); left: 0px;\\">
-  <!--v-if-->
-</div>
-<div class=\\"app-type\\">垂直分割线</div>
-<div class=\\"divider-example-vertical-container\\"><span>文字</span>
-  <div class=\\"var-divider var--box var-divider--vertical\\">
+"<div>
+  <div class=\\"app-type\\">基本使用</div>
+  <div class=\\"var-divider var--box\\">
     <!--v-if-->
-  </div><span>文字</span>
-  <div class=\\"var-divider var--box var-divider--vertical\\">
-    <!--v-if-->
-  </div><span>文字</span>
+  </div>
 </div>
-<div class=\\"app-type\\">带有文字描述的分割线</div>
-<div class=\\"var-divider var--box\\"><span class=\\"var-divider__text\\">文字描述</span></div>
-<div class=\\"app-type\\">自定义</div>
-<div class=\\"var-divider var--box\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"color: rgb(41, 121, 255); transition: transform 0ms; margin: 0px 16px;\\"></i></div>"
+<div>
+  <div class=\\"app-type\\">虚线</div>
+  <div class=\\"var-divider var--box var-divider--dashed\\">
+    <!--v-if-->
+  </div>
+</div>
+<div>
+  <div class=\\"app-type\\">缩进</div>
+  <div class=\\"var-divider var--box var-divider--inset\\">
+    <!--v-if-->
+  </div>
+  <div class=\\"var-divider var--box var-divider--inset\\" style=\\"margin: 36px 0px; width: calc(100% - 36px); left: 36px;\\">
+    <!--v-if-->
+  </div>
+  <div class=\\"var-divider var--box var-divider--inset\\" style=\\"width: calc(100% - 36px); left: 0px;\\">
+    <!--v-if-->
+  </div>
+</div>
+<div>
+  <div class=\\"app-type\\">垂直分割线</div>
+  <div class=\\"vertical-divider-wrapper\\"><span>文字</span>
+    <div class=\\"var-divider var--box var-divider--vertical\\">
+      <!--v-if-->
+    </div><span>文字</span>
+    <div class=\\"var-divider var--box var-divider--vertical\\">
+      <!--v-if-->
+    </div><span>文字</span>
+  </div>
+</div>
+<div>
+  <div class=\\"app-type\\">带有文字描述的分割线</div>
+  <div class=\\"var-divider var--box\\"><span class=\\"var-divider__text\\">文字描述</span></div>
+</div>
+<div>
+  <div class=\\"app-type\\">自定义</div>
+  <div class=\\"var-divider var--box\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"color: rgb(41, 121, 255); transition: transform 0ms; margin: 0px 16px;\\"></i></div>
+</div>"
 `;
 
 exports[`test divider inset and vertical prop 1`] = `

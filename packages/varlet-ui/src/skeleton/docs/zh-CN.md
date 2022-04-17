@@ -3,119 +3,107 @@
 ### 介绍
 显示一些带过渡效果的占位元素，优化加载过程。
 
+### 引入
+
+```js
+import { createApp } from 'vue'
+import { Skeleton } from '@varlet/ui'
+
+createApp().use(Skeleton)
+```
+
 ### 基本使用
 
 ```html
-<script setup>
+<var-skeleton :loading="loading">加载的数据</var-skeleton>
+```
+
+```js
 import { ref } from 'vue'
 
-const loading = ref(true)
-</script>
+export default {
+  setup() {
+    const loading = ref(true)
 
-<template>
-  <var-skeleton :loading="loading">加载的数据</var-skeleton>
-</template>
+    return { loading }
+  }
+}
 ```
 
 ### 显示标题
 
 ```html
-<script setup>
-import { ref } from 'vue'
-  
-const loading = ref(true)
-</script>
-
-<template>
-  <var-skeleton title :loading="loading">加载的数据</var-skeleton>
-</template>
+<var-skeleton title :loading="loading">加载的数据</var-skeleton>
 ```
 
 ### 自定义段落高度
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const loading = ref(true)
-</script>
-
-<template>
-  <var-skeleton
-    title
-    :rows="3"
-    :loading="loading"
-    :rows-width="['200px', '100px', '50px']"
-  >
-    加载的数据
-  </var-skeleton>
-</template>
+<var-skeleton
+  title
+  :rows="3"
+  :loading="loading"
+  :rows-width="['200px', '100px', '50px']"
+>
+  加载的数据
+</var-skeleton>
 ```
 
 ### 显示头像
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const loading = ref(true)
-</script>
-
-<template>
-  <var-skeleton
-    title
-    avatar
-    :rows="3"
-    :loading="loading"
-  >
-    加载的数据
-  </var-skeleton>
-</template>
+<var-skeleton
+  title
+  avatar
+  :rows="3"
+  :loading="loading"
+>
+  加载的数据
+</var-skeleton>
 ```
 
 ### 显示卡片
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const loading = ref(true)
-</script>
-
-<template>
-  <var-skeleton
-    title
-    avatar
-    card
-    :rows="3"
-    :loading="loading"
-  >
-    加载的数据
-  </var-skeleton>
-</template>
+<var-skeleton
+  title
+  avatar
+  card
+  :rows="3"
+  :loading="loading"
+>
+  加载的数据
+</var-skeleton>
 ```
 
 ### 全屏模式
 
 ```html
-<script setup>
+<var-button type="danger" @click="fullscreen">切换全屏模式</var-button>
+<var-skeleton fullscreen :loading="loading" />
+```
+
+```js
 import { ref } from 'vue'
 
-const loading = ref(false)
+export default {
+  setup() {
+    const loading = ref(false)
 
-const fullscreen = () => {
-  loading.value = true
+    const fullscreen = () => {
+      loading.value = true
 
-  setTimeout(() => {
-    loading.value = false
-  }, 2000)
+      setTimeout(() => {
+        loading.value = false
+      }, 2000)
+    }
+
+    return {
+      loading,
+      fullscreen,
+    }
+  }
 }
-</script>
-
-<template>
-  <var-button type="danger" @click="fullscreen">切换全屏模式</var-button>
-  <var-skeleton fullscreen :loading="loading" />
-</template>
 ```
 
 ## API

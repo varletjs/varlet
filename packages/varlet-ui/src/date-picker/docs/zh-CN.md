@@ -4,19 +4,32 @@
 
 用于选择日期或日期范围。
 
+### 引入
+
+```js
+import { createApp } from 'vue'
+import { DatePicker } from '@varlet/ui'
+
+createApp().use(DatePicker)
+```
+
 ### 基本使用
 
 ```html
-<script setup>
+<var-date-picker v-model="date" />
+```
+```javascript
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
-const date = ref('2021-04-08')
-</script>
+export default {
+  setup() {
+    const date = ref('2021-04-08')
 
-<template>
-  <var-date-picker v-model="date" />
-</template>
+    return {
+      date
+    }
+  }
+}
 ```
 
 ### 月份选择器
@@ -24,15 +37,7 @@ const date = ref('2021-04-08')
 使用 `type` 属性切换选择器的类型，`type` 默认值为 `date`
 
 ```html
-<script setup>
-import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
-
-const date = ref('2021-04-08')
-</script>
-<template>
-  <var-date-picker type="month" v-model="date" shadow />
-</template>
+<var-date-picker type="month" v-model="date" shadow />
 ```
 
 ### 多选
@@ -40,15 +45,7 @@ const date = ref('2021-04-08')
 通过 `multiple` 属性选择多个日期，此时 `date` 为一个数组。
 
 ```html
-<script setup>
-import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
-
-const date = ref([])
-</script>
-<template>
-  <var-date-picker v-model="date" multiple />
-</template>
+<var-date-picker v-model="date" multiple />
 ```
 
 ### 选择范围
@@ -56,15 +53,7 @@ const date = ref([])
 通过 `range` 属性选择一个日期范围，此时 `date` 为 `[startDate, endDate]`。
 
 ```html
-<script setup>
-import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
-
-const date = ref(['2021-04-08', '2021-04-20'])
-</script>
-<template>
-  <var-date-picker type="date" v-model="date" range />
-</template>
+<var-date-picker type="date" v-model="date" range />
 ```
 
 ### 日期限制
@@ -72,66 +61,77 @@ const date = ref(['2021-04-08', '2021-04-20'])
 通过 `min` 和 `max` 属性来控制可选择的日期范围，使用 `allowed-dates` 属性限制可以选择的日期。
 
 ```html
-<script setup>
+<var-date-picker
+  v-model="date"
+  min="2020-10-15"
+  max="2021-01-15"
+  :allowed-dates="allowedDates"
+/>
+```
+```javascript
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
-const date = ref('2020-11-11')
+export default {
+  setup() {
+    const date = ref('2020-11-11')
 
-const allowedDates = (val) => {
-  return parseInt(val.split('-')[2], 10) % 2 === 1
+    const allowedDates = (val) => {
+      return parseInt(val.split('-')[2], 10) % 2 === 1
+    }
+
+    return {
+      date,
+      allowedDates,
+    }
+  }
 }
-</script>
-
-<template>
-  <var-date-picker
-    v-model="date"
-    min="2020-10-15"
-    max="2021-01-15"
-    :allowed-dates="allowedDates"
-  />
-</template>
 ```
 
 ### 自定义
 
 ```html
-<script setup>
+<var-date-picker
+  shadow
+  type="month"
+  v-model="date"
+  min="2016-07"
+  max="2022-01"
+  header-color="purple"
+  color="#7bb872"
+  first-day-of-week="1"
+  :allowed-dates="allowedDates"
+  @change="change"
+>
+  <template #year="{ year }">
+    <span>{{ year }}年</span>
+  </template>
+  <template #month="{ year, month }">
+    <span>{{ year }}年{{ month }}月</span>
+  </template>
+</var-date-picker>
+```
+```javascript
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
-const date = ref('2021-02')
+export default {
+  setup() {
+    const date = ref('2021-02')
 
-const allowedDates = (val) => {
-  return parseInt(val.split('-')[1], 10) % 2 === 1
+    const allowedDates = (val) => {
+      return parseInt(val.split('-')[1], 10) % 2 === 1
+    }
+
+    const change = (date) => {
+      console.log(date)
+    }
+
+    return {
+      date,
+      change,
+      allowedDates
+    }
+  }
 }
-
-const change = (date) => {
-  console.log(date)
-}
-</script>
-
-<template>
-  <var-date-picker
-    shadow
-    type="month"
-    v-model="date"
-    min="2016-07"
-    max="2022-01"
-    header-color="purple"
-    color="#7bb872"
-    first-day-of-week="1"
-    :allowed-dates="allowedDates"
-    @change="change"
-  >
-    <template #year="{ year }">
-      <span>{{ year }}年</span>
-    </template>
-    <template #month="{ year, month }">
-      <span>{{ year }}年{{ month }}月</span>
-    </template>
-  </var-date-picker>
-</template>
 ```
 
 ## API

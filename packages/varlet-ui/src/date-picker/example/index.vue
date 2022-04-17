@@ -1,67 +1,30 @@
-<script setup>
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import VarDatePicker from '..'
-import dark from '../../themes/dark'
-import { reactive } from 'vue'
-import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-
-const dates = reactive({
-  date: '2021-01',
-  date1: '2021-04-08',
-  date2: ['', ''],
-  date3: ['2021-02-01', '2021-02-15'],
-  date4: '2020-11-11',
-  date5: '2021-02',
-})
-
-const allowedDates = (date) => {
-  return parseInt(date.split('-')[1], 10) % 2 === 1
-}
-const allowedDates1 = (date) => {
-  return parseInt(date.split('-')[2], 10) % 2 === 1
-}
-const change = (date) => {
-  console.log(date)
-}
-
-watchLang(use)
-watchDarkMode(dark)
-</script>
-
 <template>
   <div>
     <app-type>{{ pack.basicUsage }}</app-type>
-    <var-date-picker v-model="dates.date1" />
+    <var-date-picker v-model="date1" />
   </div>
   <div>
     <app-type>{{ pack.monthPicker }}</app-type>
-    <var-date-picker type="month" v-model="dates.date" shadow />
+    <var-date-picker type="month" v-model="date" shadow />
   </div>
   <div>
     <app-type>{{ pack.multiple }}</app-type>
-    <var-date-picker type="date" v-model="dates.date2" multiple />
+    <var-date-picker type="date" v-model="date2" multiple />
   </div>
   <div>
     <app-type>{{ pack.range }}</app-type>
-    <var-date-picker type="date" v-model="dates.date3" range />
+    <var-date-picker type="date" v-model="date3" range />
   </div>
   <div>
     <app-type>{{ pack.dateLimit }}</app-type>
-    <var-date-picker
-      type="date"
-      v-model="dates.date4"
-      min="2020-10-15"
-      max="2021-01-15"
-      :allowed-dates="allowedDates1"
-    />
+    <var-date-picker type="date" v-model="date4" min="2020-10-15" max="2021-01-15" :allowed-dates="allowedDates1" />
   </div>
   <div style="padding-bottom: 20px">
     <app-type>{{ pack.custom }}</app-type>
     <var-date-picker
       type="month"
       :allowed-dates="allowedDates"
-      v-model="dates.date5"
+      v-model="date5"
       max="2022-01"
       min="2016-07"
       shadow
@@ -79,3 +42,51 @@ watchDarkMode(dark)
     </var-date-picker>
   </div>
 </template>
+
+<script>
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import VarDatePicker from '..'
+import dark from '../../themes/dark'
+import { reactive, toRefs } from 'vue'
+import { pack, use } from './locale'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+
+export default {
+  name: 'DatePickerExample',
+  components: {
+    AppType,
+    VarDatePicker,
+  },
+  setup() {
+    const dates = reactive({
+      date: '2021-01',
+      date1: '2021-04-08',
+      date2: ['', ''],
+      date3: ['2021-02-01', '2021-02-15'],
+      date4: '2020-11-11',
+      date5: '2021-02',
+    })
+
+    const allowedDates = (val) => {
+      return parseInt(val.split('-')[1], 10) % 2 === 1
+    }
+    const allowedDates1 = (val) => {
+      return parseInt(val.split('-')[2], 10) % 2 === 1
+    }
+    const change = (date) => {
+      console.log(date)
+    }
+
+    watchLang(use)
+    watchDarkMode(dark)
+
+    return {
+      ...toRefs(dates),
+      pack,
+      change,
+      allowedDates,
+      allowedDates1,
+    }
+  },
+}
+</script>

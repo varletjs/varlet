@@ -1,30 +1,3 @@
-<script setup>
-import VarPopup from '..'
-import VarButton from '../../button'
-import Snackbar from '../../snackbar'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import dark from '../../themes/dark'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-import { reactive, toRefs } from 'vue'
-import { pack, use } from './locale'
-
-const values = reactive({
-  center: false,
-  top: false,
-  bottom: false,
-  left: false,
-  right: false,
-  overlayClass: false,
-  overlayStyle: false,
-  event: false,
-})
-
-const { center, top, bottom, left, right, overlayClass, overlayStyle, event } = toRefs(values)
-
-watchLang(use)
-watchDarkMode(dark)
-</script>
-
 <template>
   <app-type>{{ pack.popupPosition }}</app-type>
   <var-button class="mt-10" type="primary" block @click="center = true">{{ pack.centerPopup }}</var-button>
@@ -75,6 +48,47 @@ watchDarkMode(dark)
     <div class="block">{{ pack.text }}</div>
   </var-popup>
 </template>
+
+<script>
+import VarPopup from '..'
+import VarButton from '../../button'
+import Snackbar from '../../snackbar'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import dark from '../../themes/dark'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { reactive, toRefs } from 'vue'
+import { pack, use } from './locale'
+
+export default {
+  name: 'PopupExample',
+  components: {
+    VarPopup,
+    VarButton,
+    AppType,
+  },
+  setup() {
+    const values = reactive({
+      center: false,
+      top: false,
+      bottom: false,
+      left: false,
+      right: false,
+      overlayClass: false,
+      overlayStyle: false,
+      event: false,
+    })
+
+    watchLang(use)
+    watchDarkMode(dark)
+
+    return {
+      pack,
+      ...toRefs(values),
+      Snackbar,
+    }
+  },
+}
+</script>
 
 <style>
 .custom-overlay {

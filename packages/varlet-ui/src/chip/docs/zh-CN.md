@@ -4,21 +4,26 @@
 
 纸片组件，用于显示一些条目，并且支持关闭条目
 
+### 引入
+
+```js
+import { createApp } from 'vue'
+import { Chip } from '@varlet/ui'
+
+createApp().use(Chip)
+```
+
 ### 纸片类型
 
 通过 `type` 属性设置纸片的类型。
 
 ```html
-<template>
-  <var-space>
-    <var-chip>默认纸片</var-chip>
-    <var-chip type="primary">主要纸片</var-chip>
-    <var-chip type="success">成功纸片</var-chip>
-    <var-chip type="danger">危险纸片</var-chip>
-    <var-chip type="warning">警告纸片</var-chip>
-    <var-chip type="info">信息纸片</var-chip>
-  </var-space>
-</template>
+<var-chip>默认纸片</var-chip>
+<var-chip type="primary">主要纸片</var-chip>
+<var-chip type="success">成功纸片</var-chip>
+<var-chip type="danger">危险纸片</var-chip>
+<var-chip type="warning">警告纸片</var-chip>
+<var-chip type="info">信息纸片</var-chip>
 ```
 
 ### 简单纸片
@@ -26,9 +31,7 @@
 通过 `plain` 属性将纸片设置为简单纸片。
 
 ```html
-<template>
-  <var-chip plain type="primary">简单纸片</var-chip>
-</template>
+<var-chip plain type="primary">简单纸片</var-chip>
 ```
 
 ### 非圆角纸片
@@ -36,9 +39,7 @@
 通过把 `round` 属性设置为 `false` 来取消纸片的圆角样式。
 
 ```html
-<template>
-  <var-chip :round="false" type="primary">非圆角纸片</var-chip>
-</template>
+<var-chip :round="false" type="primary">非圆角纸片</var-chip>
 ```
 
 ### 纸片尺寸
@@ -46,14 +47,10 @@
 通过 `size` 属性设置纸片的尺寸。
 
 ```html
-<template>
-  <var-space align="center">
-    <var-chip type="primary">常规纸片</var-chip>
-    <var-chip type="success" size="small">小型纸片</var-chip>
-    <var-chip type="warning" size="mini">迷你纸片</var-chip>
-    <var-chip type="danger" size="large">大型纸片</var-chip>
-  </var-space>
-</template>
+<var-chip type="primary">常规纸片</var-chip>
+<var-chip type="success" size="small">小型纸片</var-chip>
+<var-chip type="warning" size="mini">迷你纸片</var-chip>
+<var-chip type="danger" size="large">大型纸片</var-chip>
 ```
 
 ### 块级纸片
@@ -61,9 +58,7 @@
 通过 `block` 属性将纸片设置为块级纸片。
 
 ```html
-<template>
-  <var-chip type="primary" block>块级纸片</var-chip>
-</template>
+<var-chip type="primary" block>块级纸片</var-chip>
 ```
 
 ### 可关闭纸片
@@ -71,23 +66,30 @@
 通过 `closable` 属性将纸片设置为可关闭纸片，使用 `close-name` 属性设置纸片的关闭图标样式（必须在 `closeable` 为 `true` 的条件下才能使用）。
 
 ```html
-<script setup>
+<var-chip closable v-if="show" @close="show = false">可关闭纸片</var-chip>
+<var-chip
+  closable
+  icon-name="delete"
+  v-if="show1"
+  @close="show1 = false">
+  自定义关闭图标
+</var-chip>
+```
+
+```js
 import { ref } from 'vue'
 
-const show = ref(true)
-const show1= ref(true)
-</script>
+export default {
+  setup() {
+    const show = ref(true)
+    const show1= ref(true)
 
-<template>
-  <var-chip closable v-if="show" @close="show = false">可关闭纸片</var-chip>
-  <var-chip
-    closable
-    icon-name="delete"
-    v-if="show1"
-    @close="show1 = false">
-    自定义关闭图标
-  </var-chip>
-</template>
+    return {
+      show,
+      show1
+    }
+  }
+}
 ```
 
 ### 自定义颜色
@@ -95,44 +97,37 @@ const show1= ref(true)
 通过 `color` 和 `text-color` 属性设置纸片颜色。
 
 ```html
-<template>
-  <var-space>
-    <var-chip color="#009688">纸片</var-chip>
-    <var-chip color="#009688" plain>纸片</var-chip>
-    <var-chip color="#faecd8" text-color="#e6a23c" plain>纸片</var-chip>
-    <var-chip color="#faecd8" text-color="#e6a23c">纸片</var-chip>
-  </var-space>
-</template>
+<var-chip color="#009688">纸片</var-chip>
+<var-chip color="#009688" plain>纸片</var-chip>
+<var-chip color="#faecd8" text-color="#e6a23c" plain>纸片</var-chip>
+<var-chip color="#faecd8" text-color="#e6a23c">纸片</var-chip>
 ```
 
 ### 添加插槽
 
 ```html
-<template>
-  <var-space>
-    <var-chip>
-      左侧插槽
-      <template #left>
-        <var-icon name="star" />
-      </template>
-    </var-chip>
-    <var-chip>
-      右侧插槽
-      <template #right>
-        <var-icon name="fire" />
-      </template>
-    </var-chip>
-    <var-chip>
-      左右两侧插槽
-      <template #left>
-        <var-icon name="account-circle" />
-      </template>
-      <template #right>
-        <var-icon name="cake-variant" />
-      </template>
-    </var-chip>
-  </var-space>
-</template>
+<var-chip plain>
+  左侧插槽
+  <template #left>
+    <var-icon name="star" />
+  </template>
+</var-chip>
+<var-chip plain>
+  右侧插槽
+  <template #right>
+    <var-icon name="fire" />
+  </template>
+</var-chip>
+<var-chip plain>
+  左右两侧插槽
+  <template #left>
+    <var-icon name="account-circle" />
+  </template>
+
+  <template #right>
+    <var-icon name="cake-variant" />
+  </template>
+</var-chip>
 ```
 
 ## API

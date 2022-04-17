@@ -4,48 +4,46 @@
 
 开关选择器。
 
+### 引入
+
+```js
+import { createApp } from 'vue'
+import { Switch } from '@varlet/ui'
+
+createApp().use(Switch)
+```
+
 ### 基本使用
 
 ```html
-<script setup>
+<var-switch v-model="value" />
+```
+
+```javascript
 import { ref } from 'vue'
+export default {
+  setup() {
+    const value = ref(true)
 
-const value = ref(true)
-</script>
-
-<template>
-  <var-switch v-model="value" />
-</template>
+    return {
+      value
+    }
+  }
+}
 ```
 
 ### 不可用
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(true)
-</script>
-
-<template>
-  <var-switch v-model="value" disabled />
-  <var-switch v-model="value" readonly />
-</template>
+<var-switch v-model="value" disabled />
+<var-switch v-model="value" readonly />
 ```
 
 ### 自定义颜色
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(true)
-</script>
-
-<template>
-  <var-switch v-model="value" :ripple="false" />
-  <var-switch v-model="value" color="#ff9f00" close-color="#f5cb90" />
-</template>
+<var-switch v-model="value" :ripple="false" />
+<var-switch v-model="value" color="#ff9f00" close-color="#f5cb90" />
 ```
 
 ### 不同大小
@@ -53,32 +51,16 @@ const value = ref(true)
 通过 `size` 属性改变 Switch 大小。
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(true)
-</script>
-
-<template>
-  <var-switch v-model="value" size="15" />
-  <var-switch v-model="value" />
-  <var-switch v-model="value" size="25" />
-</template>
+<var-switch v-model="value" size="15" />
+<var-switch v-model="value" />
+<var-switch v-model="value" size="25" />
 ```
 
 ### 加载状态
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(true)
-</script>
-
-<template>
-  <var-switch :model-value="true" loading />
-  <var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
-</template>
+<var-switch :model-value="true" loading />
+<var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
 ```
 
 ### 值的校验
@@ -87,15 +69,7 @@ const value = ref(true)
 以外的值将转换为文本作为用户提示。
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(true)
-</script>
-
-<template>
-  <var-switch v-model="value" :rules="[(v) => v === true || '错误！']"/>
-</template>
+<var-switch v-model="value" :rules="[(v) => v === true || '错误！']"/>
 ```
 
 ## API

@@ -7,22 +7,25 @@
 ### 切换主题
 
 ```html
-<!-- playground-ignore -->
-<script setup>
+<var-button block @click="toggleTheme">切换主题</var-button>
+```
+
+```js
 import dark from '@varlet/ui/es/themes/dark'
 import { StyleProvider } from '@varlet/ui'
 
-let currentTheme = null
-
-const toggleTheme = () => {
-  currentTheme = currentTheme ? null : dark
-  StyleProvider(currentTheme)
+export default {
+  setup() {
+    let currentTheme
+    
+    const toggleTheme = () => {
+      currentTheme = currentTheme ? null : dark
+      StyleProvider(currentTheme)
+    }
+    
+    return { toggleTheme }
+  }
 }
-</script>
-
-<template>
-  <var-button block @click="toggleTheme">切换主题</var-button>
-</template>
 ```
 
 注入组件库推荐的`文字颜色`和`背景颜色`变量来控制整体颜色

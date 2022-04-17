@@ -22,228 +22,182 @@ exports[`test button disabled 1`] = `
 `;
 
 exports[`test button example 1`] = `
-"<div class=\\"app-type\\">主题色按钮</div>
-<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+"<div class=\\"app-type\\">主题色按钮</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">默认按钮</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">主要按钮</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--info var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">信息按钮</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">成功按钮</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--warning var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">警告按钮</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">危险按钮</div>
+</button>
+<div class=\\"app-type\\">文字按钮</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-primary var-button--text var-button--outline\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">外边框按钮</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-primary var-button--text\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">纯文字按钮</div>
+</button>
+<div class=\\"app-type\\">禁用状态</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--disabled var-button--default var-elevation--2\\" disabled=\\"\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">禁用状态</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--disabled var-button--text-default var-button--text var-button--text-disabled var-button--outline\\" disabled=\\"\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">禁用状态</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--disabled var-button--text-default var-button--text var-button--text-disabled\\" disabled=\\"\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">禁用状态</div>
+</button>
+<div class=\\"app-type\\">加载状态</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
+  <div class=\\"var-loading var-button__loading\\" var-button-cover=\\"\\">
+    <!--v-if-->
+    <div class=\\"var--box var-loading__body\\">
+      <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 24px; height: 24px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
       <!--v-if-->
-      <div class=\\"var-button__content\\">默认按钮</div>
-    </button></div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
       <!--v-if-->
-      <div class=\\"var-button__content\\">主要按钮</div>
-    </button></div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--info var-elevation--2\\">
       <!--v-if-->
-      <div class=\\"var-button__content\\">信息按钮</div>
-    </button></div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
       <!--v-if-->
-      <div class=\\"var-button__content\\">成功按钮</div>
-    </button></div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--warning var-elevation--2\\">
       <!--v-if-->
-      <div class=\\"var-button__content\\">警告按钮</div>
-    </button></div>
-  <div style=\\"margin: 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--2\\">
+    </div>
+  </div>
+  <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--info var-elevation--2\\">
+  <div class=\\"var-loading var-button__loading\\" var-button-cover=\\"\\">
+    <!--v-if-->
+    <div class=\\"var--box var-loading__body\\">
       <!--v-if-->
-      <div class=\\"var-button__content\\">危险按钮</div>
-    </button></div>
-</div>
-<div class=\\"app-type\\">文字按钮</div>
-<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-primary var-button--text var-button--outline\\">
       <!--v-if-->
-      <div class=\\"var-button__content\\">外边框按钮</div>
-    </button></div>
-  <div style=\\"margin: 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-primary var-button--text\\">
       <!--v-if-->
-      <div class=\\"var-button__content\\">纯文字按钮</div>
-    </button></div>
-</div>
-<div class=\\"app-type\\">禁用状态</div>
-<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--disabled var-button--default var-elevation--2\\" disabled=\\"\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">禁用状态</div>
-    </button></div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--disabled var-button--text-default var-button--text var-button--text-disabled var-button--outline\\" disabled=\\"\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">禁用状态</div>
-    </button></div>
-  <div style=\\"margin: 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--disabled var-button--text-default var-button--text var-button--text-disabled\\" disabled=\\"\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">禁用状态</div>
-    </button></div>
-</div>
-<div class=\\"app-type\\">加载状态</div>
-<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
-      <div class=\\"var-loading var-button__loading\\" var-button-cover=\\"\\">
-        <!--v-if-->
-        <div class=\\"var--box var-loading__body\\">
-          <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 24px; height: 24px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
-          <!--v-if-->
-          <!--v-if-->
-          <!--v-if-->
-          <!--v-if-->
-          <!--v-if-->
-        </div>
+      <div class=\\"var-loading__rect var-loading__rect--normal\\">
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
       </div>
-      <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
-    </button></div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--info var-elevation--2\\">
-      <div class=\\"var-loading var-button__loading\\" var-button-cover=\\"\\">
-        <!--v-if-->
-        <div class=\\"var--box var-loading__body\\">
-          <!--v-if-->
-          <!--v-if-->
-          <!--v-if-->
-          <div class=\\"var-loading__rect var-loading__rect--normal\\">
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__rect-item var-loading__rect-item--normal\\"></div>
-          </div>
-          <!--v-if-->
-          <!--v-if-->
-        </div>
-      </div>
-      <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
-    </button></div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
-      <div class=\\"var-loading var-button__loading\\" var-button-cover=\\"\\">
-        <!--v-if-->
-        <div class=\\"var--box var-loading__body\\">
-          <!--v-if-->
-          <!--v-if-->
-          <!--v-if-->
-          <!--v-if-->
-          <div class=\\"var-loading__disappear var-loading__disappear--normal\\">
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item--normal\\"></div>
-          </div>
-          <!--v-if-->
-        </div>
-      </div>
-      <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
-    </button></div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--2\\">
-      <div class=\\"var-loading var-button__loading\\" var-button-cover=\\"\\">
-        <!--v-if-->
-        <div class=\\"var--box var-loading__body\\">
-          <!--v-if-->
-          <!--v-if-->
-          <div class=\\"var-loading__cube var-loading__cube--normal\\">
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
-          </div>
-          <!--v-if-->
-          <!--v-if-->
-          <!--v-if-->
-        </div>
-      </div>
-      <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
-    </button></div>
-  <div style=\\"margin: 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--warning var-elevation--2\\">
-      <div class=\\"var-loading var-button__loading\\" var-button-cover=\\"\\">
-        <!--v-if-->
-        <div class=\\"var--box var-loading__body\\">
-          <!--v-if-->
-          <div class=\\"var-loading__wave var-loading__wave--normal\\">
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
-            <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
-          </div>
-          <!--v-if-->
-          <!--v-if-->
-          <!--v-if-->
-          <!--v-if-->
-        </div>
-      </div>
-      <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
-    </button></div>
-</div>
-<div class=\\"app-type\\">按钮尺寸</div>
-<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; align-items: center; flex-wrap: wrap; margin: -5px 0px;\\">
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
       <!--v-if-->
-      <div class=\\"var-button__content\\">常规按钮</div>
-    </button></div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--small var--inline-flex var-button--success var-elevation--2\\">
       <!--v-if-->
-      <div class=\\"var-button__content\\">小型按钮</div>
-    </button></div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--mini var--inline-flex var-button--warning var-elevation--2\\">
+    </div>
+  </div>
+  <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
+  <div class=\\"var-loading var-button__loading\\" var-button-cover=\\"\\">
+    <!--v-if-->
+    <div class=\\"var--box var-loading__body\\">
       <!--v-if-->
-      <div class=\\"var-button__content\\">迷你按钮</div>
-    </button></div>
-  <div style=\\"margin: 5px 0px;\\"><button class=\\"var-button var--box var-button--large var--inline-flex var-button--danger var-elevation--2\\">
       <!--v-if-->
-      <div class=\\"var-button__content\\">大型按钮</div>
-    </button></div>
-</div>
+      <!--v-if-->
+      <!--v-if-->
+      <div class=\\"var-loading__disappear var-loading__disappear--normal\\">
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__disappear-item var-loading__disappear-item--normal\\"></div>
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--2\\">
+  <div class=\\"var-loading var-button__loading\\" var-button-cover=\\"\\">
+    <!--v-if-->
+    <div class=\\"var--box var-loading__body\\">
+      <!--v-if-->
+      <!--v-if-->
+      <div class=\\"var-loading__cube var-loading__cube--normal\\">
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__cube-item var-loading__cube-item--normal\\"></div>
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--warning var-elevation--2\\">
+  <div class=\\"var-loading var-button__loading\\" var-button-cover=\\"\\">
+    <!--v-if-->
+    <div class=\\"var--box var-loading__body\\">
+      <!--v-if-->
+      <div class=\\"var-loading__wave var-loading__wave--normal\\">
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
+        <div style=\\"background-color: currentColor;\\" class=\\"var-loading__wave-item var-loading__wave-item--normal\\"></div>
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"var-button__content var-button--hidden\\">加载状态</div>
+</button>
+<div class=\\"app-type\\">按钮尺寸</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">常规按钮</div>
+</button><button class=\\"var-button var--box var-button--small var--inline-flex var-button--success var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">小型按钮</div>
+</button><button class=\\"var-button var--box var-button--mini var--inline-flex var-button--warning var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">迷你按钮</div>
+</button><button class=\\"var-button var--box var-button--large var--inline-flex var-button--danger var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">大型按钮</div>
+</button>
 <div class=\\"app-type\\">块级按钮</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--2\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">块级按钮</div>
 </button>
-<div class=\\"app-type\\">自定义颜色</div>
-<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\" style=\\"color: rgb(238, 238, 238); background: rgb(105, 219, 170);\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">背景/文字</div>
-    </button></div>
-  <div style=\\"margin: 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\" style=\\"color: rgb(255, 255, 255);\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">使用渐变</div>
-    </button></div>
-</div>
-<div class=\\"app-type\\">圆形按钮</div>
-<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition: transform 0ms;\\"></i></div>
-    </button></div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--info var-elevation--2 var-button--round\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-information\\" style=\\"transition: transform 0ms;\\"></i></div>
-    </button></div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2 var-button--round\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-check\\" style=\\"transition: transform 0ms;\\"></i></div>
-    </button></div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--warning var-elevation--2 var-button--round\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-warning\\" style=\\"transition: transform 0ms;\\"></i></div>
-    </button></div>
-  <div style=\\"margin: 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--2 var-button--round\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-window-close\\" style=\\"transition: transform 0ms;\\"></i></div>
-    </button></div>
-</div>
-<div class=\\"app-type\\">注册事件</div>
-<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">点击</div>
-    </button></div>
-  <div style=\\"margin: 5px 10px 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">触摸</div>
-    </button></div>
-  <div style=\\"margin: 5px 0px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">自动加载</div>
-    </button></div>
-</div>"
+<div class=\\"app-type\\">自定义颜色</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\" style=\\"color: rgb(238, 238, 238); background: rgb(105, 219, 170);\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">背景/文字</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\" style=\\"color: rgb(255, 255, 255);\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">使用渐变</div>
+</button>
+<div class=\\"app-type\\">圆形按钮</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition: transform 0ms;\\"></i></div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--info var-elevation--2 var-button--round\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-information\\" style=\\"transition: transform 0ms;\\"></i></div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2 var-button--round\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-check\\" style=\\"transition: transform 0ms;\\"></i></div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--warning var-elevation--2 var-button--round\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-warning\\" style=\\"transition: transform 0ms;\\"></i></div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--2 var-button--round\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-window-close\\" style=\\"transition: transform 0ms;\\"></i></div>
+</button>
+<div class=\\"app-type\\">注册事件</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">点击</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">触摸</div>
+</button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2\\">
+  <!--v-if-->
+  <div class=\\"var-button__content\\">自动加载</div>
+</button>"
 `;
 
 exports[`test button loading 1`] = `

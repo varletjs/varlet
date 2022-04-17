@@ -52,68 +52,68 @@ exports[`test col in row 2`] = `
 
 exports[`test row Responsive example 1`] = `
 "<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px -5px;\\">
-  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-8 var-col--span-sm-6 var-col--span-md-4 var-col--span-lg-3 var-col--span-xl-1\\" style=\\"padding-left: 0px; padding-right: 0px;\\">1</div>
-  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-4 var-col--span-sm-6 var-col--span-md-8 var-col--span-lg-9 var-col--span-xl-11\\" style=\\"padding-left: 0px; padding-right: 0px;\\">2</div>
-  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-4 var-col--span-sm-6 var-col--span-md-8 var-col--span-lg-9 var-col--span-xl-11\\" style=\\"padding-left: 0px; padding-right: 0px;\\">3</div>
-  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-8 var-col--span-sm-6 var-col--span-md-4 var-col--span-lg-3 var-col--span-xl-1\\" style=\\"padding-left: 0px; padding-right: 0px;\\">4</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-8 var-col--span-sm-6 var-col--span-md-4 var-col--span-lg-3 var-col--span-xl-1 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">1</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-4 var-col--span-sm-6 var-col--span-md-8 var-col--span-lg-9 var-col--span-xl-11 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">2</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-4 var-col--span-sm-6 var-col--span-md-8 var-col--span-lg-9 var-col--span-xl-11 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">3</div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-8 var-col--span-sm-6 var-col--span-md-4 var-col--span-lg-3 var-col--span-xl-1 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">4</div>
 </div>"
 `;
 
 exports[`test row ResponsiveObject example 1`] = `
 "<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px -5px;\\">
-  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-6 var-col--span-sm-6 var-col--span-md-4 var-col--offset-md-4 var-col--span-lg-3 var-col--offset-lg-3 var-col--span-xl-2 var-col--offset-xl-2\\" style=\\"padding-left: 0px; padding-right: 0px;\\"> 1 </div>
-  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-6 var-col--span-sm-6 var-col--span-md-4 var-col--offset-md-4 var-col--span-lg-3 var-col--offset-lg-3 var-col--span-xl-2 var-col--offset-xl-2\\" style=\\"padding-left: 0px; padding-right: 0px;\\"> 2 </div>
-  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-6 var-col--span-sm-6 var-col--span-md-4 var-col--offset-md-4 var-col--span-lg-3 var-col--offset-lg-3 var-col--span-xl-2 var-col--offset-xl-2\\" style=\\"padding-left: 0px; padding-right: 0px;\\"> 3 </div>
-  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-6 var-col--span-sm-6 var-col--span-md-4 var-col--offset-md-4 var-col--span-lg-3 var-col--offset-lg-3 var-col--span-xl-2 var-col--offset-xl-2\\" style=\\"padding-left: 0px; padding-right: 0px;\\"> 4 </div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-6 var-col--span-sm-6 var-col--span-md-4 var-col--offset-md-4 var-col--span-lg-3 var-col--offset-lg-3 var-col--span-xl-2 var-col--offset-xl-2 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\"> 1 </div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-6 var-col--span-sm-6 var-col--span-md-4 var-col--offset-md-4 var-col--span-lg-3 var-col--offset-lg-3 var-col--span-xl-2 var-col--offset-xl-2 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\"> 2 </div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-6 var-col--span-sm-6 var-col--span-md-4 var-col--offset-md-4 var-col--span-lg-3 var-col--offset-lg-3 var-col--span-xl-2 var-col--offset-xl-2 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\"> 3 </div>
+  <div class=\\"var-col var--box var-col--span-24 var-col--span-xs-12 var-col--offset-xs-6 var-col--span-sm-6 var-col--span-md-4 var-col--offset-md-4 var-col--span-lg-3 var-col--offset-lg-3 var-col--span-xl-2 var-col--offset-xl-2 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\"> 4 </div>
 </div>"
 `;
 
 exports[`test row example 1`] = `
 "<div class=\\"app-type\\">栅格系统</div>
 <div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\">
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>
 <div class=\\"app-type\\">偏移</div>
 <div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\">
-  <div class=\\"var-col var--box var-col--span-16 var-col--offset-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">offset: 8 span: 16</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-16 var-col--offset-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">offset: 8 span: 16</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>
 <div class=\\"app-type\\">对齐</div>
 <div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\">
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>
 <div class=\\"var-row var--box\\" style=\\"justify-content: center; align-items: flex-start;\\">
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>
 <div class=\\"var-row var--box\\" style=\\"justify-content: flex-end; align-items: flex-start;\\">
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>
 <div class=\\"var-row var--box\\" style=\\"justify-content: space-around; align-items: flex-start;\\">
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>
 <div class=\\"var-row var--box\\" style=\\"justify-content: space-between; align-items: flex-start;\\">
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>
 <div class=\\"app-type\\">列间距</div>
 <div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px -5px;\\">
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
-  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8 col\\" style=\\"padding-left: 0px; padding-right: 0px;\\">span: 8</div>
 </div>"
 `;
 

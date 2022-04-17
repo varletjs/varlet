@@ -4,21 +4,48 @@
 
 Used to display a quick message to a user.
 
+### Install
+
+```js
+import { createApp } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+createApp().use(Snackbar)
+```
+
+### Scoped Install
+
+```js
+import { Snackbar } from '@varlet/ui'
+
+export default {
+  components: {
+    [Snackbar.Component.name]: Snackbar
+  }
+}
+```
+
 ## Component Call
 
 ### Basic Usage
 
 ```html
-<script setup>
+<var-button type="primary" block @click="show = !show">Basic Usage</var-button>
+<var-snackbar v-model:show="show"> "Hello, I'm a snackbar" </var-snackbar>
+```
+
+```js
 import { ref } from 'vue'
 
-const show = ref(false)
-</script>
+export default {
+  setup() {
+    const show = ref(false)
 
-<template>
-  <var-button type="primary" block @click="show = !show">Basic Usage</var-button>
-  <var-snackbar v-model:show="show"> Hello, I'm a snackbar </var-snackbar>
-</template>
+    return {
+      show
+    }
+  }
+}
 ```
 
 ### Multi-Line
@@ -26,21 +53,12 @@ const show = ref(false)
 Use `vertical` prop to change arrangement of `snackbar`. Use `Custom slot` create action of right.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const show = ref(false)
-</script>
-
-<template>
-  <var-snackbar v-model:show="show" :vertical="true">
-    Hello, I'm a snackbar
-    <template #action>
-      <var-button type="primary" @click="show = !show">Close</var-button>
-    </template>
-  </var-snackbar>
-  <var-button type="primary" block @click="show = true">Multi-Line</var-button>
-</template>
+<var-snackbar v-model:show="show" :vertical="true">
+  "Hello, I'm a snackbar"
+  <template #action>
+    <var-button type="primary" @click="show = !show">Close</var-button>
+  </template>
+</var-snackbar>
 ```
 
 ### Bottom Display
@@ -48,21 +66,12 @@ const show = ref(false)
 Use `position` prop to change position of `snackbar`.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const show = ref(false)
-</script>
-
-<template>
-  <var-snackbar v-model:show="show" position="bottom">
-    Hello, I'm a snackbar
-    <template #action>
-      <var-button type="primary" @click="show = false">Close</var-button>
-    </template>
-  </var-snackbar>
-  <var-button type="primary" block @click="show = true">Bottom Display</var-button>
-</template>
+<var-snackbar v-model:show="show" position="bottom">
+  "Hello, I'm a snackbar"
+  <template #action>
+    <var-button type="primary" @click="show = false">Close</var-button>
+  </template>
+</var-snackbar>
 ```
 
 ### Display Duration
@@ -70,20 +79,7 @@ const show = ref(false)
 Use `duration` prop to change display duration of `snackbar`.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const show = ref(false)
-</script>
-
-<template>
-  <var-snackbar v-model:show="show" :duration="10000">
-    Hello, I'm a snackbar
-  </var-snackbar>
-  <var-button type="primary" block @click="show = true">
-    Display Duration
-  </var-button>
-</template>
+<var-snackbar v-model:show="show" :duration="1000"> "Hello, I'm a snackbar" </var-snackbar>
 ```
 
 ### Forbid Click
@@ -91,158 +87,57 @@ const show = ref(false)
 Use `forbid-click` prop to control whether penetrating clicks are forbidden.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const show = ref(false)
-</script>
-
-<template>
-  <var-snackbar v-model:show="show" :forbid-click="true">
-    Hello, I'm a snackbar
-  </var-snackbar>
-  <var-button type="primary" block @click="show = true">
-    Display Duration
-  </var-button>
-</template>
+<var-snackbar v-model:show="show" :forbid-click="true"> "Hello, I'm a snackbar" </var-snackbar>
 ```
 
 ## Function Call
 
 ### Basic Usage
 
-```html
-<script setup>
-import { Snackbar } from '@varlet/ui'
-
-const createSnackbar = () => {
-  Snackbar("Hello, I'm a snackbar")
-}
-</script>
-
-<template>
-  <var-button type="warning" block @click="createSnackbar()">Basic Usage</var-button>
-</template>
+```javascript
+Snackbar("Hello, I'm a snackbar")
 ```
 
 ### Display Duration
 
-```html
-<script setup>
-import { Snackbar } from '@varlet/ui'
-
-const createSnackbar = () => {
-  Snackbar({
-    content: "Hello, I'm a snackbar",
-    duration: 1000
-  })
-}
-</script>
-
-<template>
-  <var-button type="warning" block @click="createSnackbar()">Display Duration</var-button>
-</template>
+```javascript
+Snackbar({
+ content: "Hello, I'm a snackbar",
+ duration: 1000
+})
 ```
 
 ### Bottom Display
 
-```html
-<script setup>
-import { Snackbar } from '@varlet/ui'
-
-const createSnackbar = () => {
-  Snackbar({
-    content: "Hello, I'm a snackbar",
-    position: 'bottom'
-  })
-}
-</script>
-
-<template>
-  <var-button type="warning" block @click="createSnackbar()">Bottom Display</var-button>
-</template>
+```javascript
+Snackbar({
+ content: "Hello, I'm a snackbar",
+ position: 'bottom'
+})
 ```
 
 ### Snackbar Type
 
-```html
-<script setup>
-import { Snackbar } from '@varlet/ui'
-
-const createSnackbar = (type) => {
-  Snackbar[type]("Hello, I'm a snackbar")
-  if (type === 'loading') {
-    setTimeout(() => {
-      Snackbar.success("loading success")
-    }, 2000)
-  }
-}
-</script>
-
-<template>
-  <var-space direction="column" size="large">
-    <var-button 
-      type="success" 
-      block 
-      @click="createSnackbar('success')"
-    >
-      success
-    </var-button>
-    <var-button 
-      type="warning" 
-      block 
-      @click="createSnackbar('warning')"
-    >
-      warning
-    </var-button>
-    <var-button 
-      type="info" 
-      block 
-      @click="createSnackbar('info')"
-    >
-      info
-    </var-button>
-    <var-button 
-      type="danger" 
-      block 
-      @click="createSnackbar('error')"
-    >
-      error
-    </var-button>
-    <var-button 
-      type="primary" 
-      block 
-      @click="createSnackbar('loading')"
-    >
-      loading
-    </var-button>
-  </var-space>
-</template>
+```javascript
+Snackbar.success("Hello, I'm a snackbar")
+Snackbar.warning("Hello, I'm a snackbar")
+Snackbar.info("Hello, I'm a snackbar")
+Snackbar.error("Hello, I'm a snackbar")
+Snackbar.loading("Hello, I'm a snackbar")
 ```
 
-### Multiple
+### Singleton
 
 When using functional calls, Snackbar use singleton mode by default, if you need to pop multiple Snackbar at the same time, you can refer to the following example:
 
-```html
-<script setup>
-import { Snackbar } from '@varlet/ui'
+```javascript
+Snackbar.allowMultiple(true)
 
-const openMultiple = () => {
-  Snackbar.allowMultiple(true)
+const snackbar1 = Snackbar('First Snackbar');
+const snackbar1 = Snackbar.success('Second Snackbar');
 
-  const snackbar1 = Snackbar('Snackbar 1');
-  Snackbar.success('Snackbar 2');
-
-  setTimeout(() => {
-    snackbar1.clear()
-  }, 1000)
-}
-</script>
-
-<template>
-  <var-button type="primary" block @click="openMultiple">Multiple</var-button>
-</template>
+snackbar1.clear();
+snackbar1.clear();
 ```
 
 ## API

@@ -23,7 +23,6 @@ The out-of-the-box `Vue3 component library` rapid prototyping tool provides a se
 To help users directly enter the development of the component itself, it is recommended to use `pnpm` as a package management tool.
 
 ```shell
-# playground-ignore
 # Install command line tools
 pnpm add @varlet/cli -g
 # Use the gen command to generate the project
@@ -65,21 +64,18 @@ The `varlet.config.js` in the project root directory is used to manage the speci
 Some external dependencies may need to be compatible with module syntax to achieve the purpose of compiling correctly to `commonjs` and `esmodule`. For example, the wording of `esmodule` of `dayjs` is
 
 ```js
-// playground-ignore
 import dayjs from 'dayjs/esm'
 ```
 
 In order to build `commonjs`, the writing method is
 
 ```js
-// playground-ignore
 import * as dayjs from 'dayjs'
 ```
 
 In the project, we embrace the first way of writing the `esmodule` module, and make the following configuration for adaptation
 
 ```js
-// playground-ignore
 // varlet.config.js
 module.exports = {
   moduleCompatible: {
@@ -152,7 +148,6 @@ Statistics related to buried points
 The document structure is partly related, and the example configuration is as follows
 
 ```js
-// playground-ignore
 module.exports = {
   defaultLanguage: 'en-US',
   pc: {
@@ -217,42 +212,36 @@ module.exports = {
 #### Start the development server
 
 ```shell
-# playground-ignore
 varlet-cli dev
 ```
 
 #### Build documentation site
 
 ```shell
-# playground-ignore
 varlet-cli build
 ```
 
 #### Preview documentation site
 
 ```shell
-# playground-ignore
 varlet-cli preview
 ```
 
 #### Build component library code
 
 ```shell
-# playground-ignore
 varlet-cli compile
 ```
 
 #### Perform all unit tests
 
 ```shell
-# playground-ignore
 varlet-cli test
 ```
 
 #### Execute unit tests in watch mode
 
 ```shell
-# playground-ignore
 varlet-cli test -w
 or
 varlet-cli test -wa
@@ -261,35 +250,29 @@ varlet-cli test -wa
 #### Lint code
 
 ```shell
-# playground-ignore
 varlet-cli lint
 ```
 
 #### Lint commit message
 
 ```shell
-# playground-ignore
 varlet-cli commit-lint
 ```
 
 #### Generate changelog
 
 ```shell
-# playground-ignore
 varlet-cli changelog
 ```
 
 #### Release component library
 
 ```shell
-# playground-ignore
 varlet-cli release
 ```
 
 #### Generate a project template
-
 ```shell
-# playground-ignore
 varlet-cli gen <projectName>
 ```
 
@@ -298,7 +281,6 @@ varlet-cli gen <projectName>
 To configure `babel`, first specify the target browser in `package.json`
 
 ```json
-// playground-ignore
 {
   "browserslist": [
     "Chrome >= 51",
@@ -310,7 +292,6 @@ To configure `babel`, first specify the target browser in `package.json`
 create `babel.config,js`
 
 ```js
-// playground-ignore
 // babel.config.js
 module.exports = {
   presets: [
@@ -332,7 +313,6 @@ module.exports = {
 `package.json` configuration is as follows
 
 ```json
-// playground-ignore
 {
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
@@ -376,14 +356,12 @@ module.exports = {
 Mount Git Hooks
 
 ```shell
-# playground-ignore
 npx simple-git-hooks
 ```
 
 create `.prettierignore`
 
 ```text
-// playground-ignore
 // .prettierignore
 coverage/**
 es/**
@@ -399,7 +377,6 @@ src/*/__tests__/**
 create `tsconfig.json`
 
 ```json
-// playground-ignore
 {
   "compilerOptions": {
     "strict": true,

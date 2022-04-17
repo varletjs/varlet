@@ -4,37 +4,38 @@
 
 单元格为列表中的单个展示项。
 
+### 引入
+
+```js
+import { createApp } from 'vue'
+import { Cell } from '@varlet/ui'
+
+createApp().use(Cell)
+```
+
 ### 基本使用
 
 ```html
-<template>
-  <var-cell> 这是单元格 </var-cell>
-</template>
+<var-cell> 这是单元格 </var-cell>
 ```
 
 ### 显示图标
 ```html
-<template>
-  <var-cell icon="fire" title="这是单元格">
-    <template #extra>
-      <var-icon name="information" />
-    </template>
-  </var-cell>
-</template>
+<var-cell icon="fire" title="这是单元格">
+  <template #extra>
+    <var-icon name="information" />
+  </template>
+</var-cell>
 ```
 
 ### 显示描述
 ```html
-<template>
-  <var-cell title="这是单元格" desc="描述" />
-</template>
+<var-cell title="这是单元格" desc="描述" />
 ```
 
 ### 显示边框
 ```html
-<template>
-  <var-cell border> 这是单元格 </var-cell>
-</template>
+<var-cell border> 这是单元格 </var-cell>
 ```
 
 ## API

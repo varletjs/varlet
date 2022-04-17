@@ -23,7 +23,6 @@
 帮助用户直接进入组件本身的开发，推荐使用 `pnpm` 作为包管理工具。
 
 ```shell
-# playground-ignore
 # 安装命令行工具
 pnpm add @varlet/cli -g
 # 使用 gen 命令生成项目
@@ -64,21 +63,18 @@ pnpm dev
 一些外部依赖可能需要进行模块语法的适配，以达到可以正确编译到 `commonjs` 和 `esmodule` 的目的，例如 `dayjs` 的 `esmodule` 写法是
 
 ```js
-// playground-ignore
 import dayjs from 'dayjs/esm'
 ```
 
 而为了构建 `commonjs` 时的写法是
 
 ```js
-// playground-ignore
 import * as dayjs from 'dayjs'
 ```
 
 在项目中我们拥抱 `esmodule` 模块使用第一种写法，并做如下配置进行适配
 
 ```js
-// playground-ignore
 // varlet.config.js
 module.exports = {
   moduleCompatible: {
@@ -149,7 +145,6 @@ module.exports = {
 文档结构部分相关，示例配置如下
 
 ```js
-// playground-ignore
 module.exports = {
   pc: {
     redirect: '/home',
@@ -213,42 +208,36 @@ module.exports = {
 #### 启动开发服务器
 
 ```shell
-# playground-ignore
 varlet-cli dev
 ```
 
 #### 构建文档站点
 
 ```shell
-# playground-ignore
 varlet-cli build
 ```
 
 #### 预览文档站点
 
 ```shell
-# playground-ignore
 varlet-cli preview
 ```
 
 #### 构建组件库代码
 
 ```shell
-# playground-ignore
 varlet-cli compile
 ```
 
 #### 执行所有的单元测试
 
 ```shell
-# playground-ignore
 varlet-cli test
 ```
 
 #### 以 watch 模式执行单元测试
 
 ```shell
-# playground-ignore
 varlet-cli test -w
 or
 varlet-cli test -wa
@@ -257,34 +246,29 @@ varlet-cli test -wa
 #### 检查代码
 
 ```shell
-# playground-ignore
 varlet-cli lint
 ```
 
 #### 校验提交信息
 
 ```shell
-# playground-ignore
 varlet-cli commit-lint
 ```
 
 #### 生成更新日志
 
 ```shell
-# playground-ignore
 varlet-cli changelog
 ```
 
 #### 发布组件库
 
 ```shell
-# playground-ignore
 varlet-cli release
 ```
 
 #### 生成一个项目模板
 ```shell
-# playground-ignore
 varlet-cli gen <projectName>
 ```
 
@@ -293,7 +277,6 @@ varlet-cli gen <projectName>
 对 `babel` 进行配置，首先在 `package.json` 中指定目标浏览器
 
 ```json
-// playground-ignore
 {
   "browserslist": [
     "Chrome >= 51",
@@ -305,7 +288,6 @@ varlet-cli gen <projectName>
 创建 `babel.config,js`
 
 ```js
-// playground-ignore
 // babel.config.js
 module.exports = {
   presets: [
@@ -326,7 +308,6 @@ module.exports = {
 `simple-git-hooks`，`lint-staged` 配合 `eslint`，`stylelint`，`varlet-cli commit-lint` 做commit前的检查，`package.json` 配置如下
 
 ```json
-// playground-ignore
 {
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
@@ -370,14 +351,12 @@ module.exports = {
 挂载钩子
 
 ```shell
-# playground-ignore
 npx simple-git-hooks
 ```
 
 创建 `.prettierignore`
 
 ```text
-// playground-ignore
 // .prettierignore
 coverage/**
 es/**
@@ -393,7 +372,6 @@ src/*/__tests__/**
 创建 `tsconfig.json`
 
 ```json
-// playground-ignore
 {
   "compilerOptions": {
     "strict": true,

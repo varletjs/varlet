@@ -4,64 +4,67 @@
 
 加载组件，用于数据加载时执行动画
 
+### 引入
+
+```js
+import { createApp } from 'vue'
+import { Loading } from '@varlet/ui'
+
+createApp().use(Loading)
+```
+
 ### Loading 类型
 
 ```html
-<template>
-  <var-space align="center" justify="space-between">
-    <var-loading type="circle" />
-    <var-loading type="cube" />
-    <var-loading type="wave" />
-    <var-loading type="rect" />
-    <var-loading type="disappear" />
-  </var-space>
-</template>
+<var-loading type="circle" />
+<var-loading type="cube" />
+<var-loading type="wave" />
+<var-loading type="rect" />
+<var-loading type="disappear" />
 ```
 
 ### Loading 颜色
 ```html
-<template>
-  <var-space align="center" justify="space-between">
-    <var-loading type="circle" color="#2979ff" />
-    <var-loading type="cube" color="#2979ff" />
-    <var-loading type="wave" color="#2979ff" />
-    <var-loading type="rect" color="#2979ff" />
-    <var-loading type="disappear" color="#2979ff" />
-  </var-space>
-</template>
+<var-loading type="circle" color="#2979ff" />
+<var-loading type="cube" color="#2979ff" />
+<var-loading type="wave" color="#2979ff" />
+<var-loading type="rect" color="#2979ff" />
+<var-loading type="disappear" color="#2979ff" />
 ```
 
 ### Loading 大小
 
 ```html
-<template>
-  <var-space align="center" justify="space-between">
-    <var-loading type="circle" size="small" />
-    <var-loading type="cube" size="small" />
-    <var-loading type="wave" size="small" />
-    <var-loading type="rect" size="small" />
-    <var-loading type="disappear" size="small" />
-  </var-space>
-</template>
+<var-loading type="circle" size="small" />
+<var-loading type="cube" size="small" />
+<var-loading type="wave" size="small" />
+<var-loading type="rect" size="small" />
+<var-loading type="disappear" size="small" />
 ```
 
 ### 包裹内容
 
 ```html
-<script setup>
+<var-button @click="loading = !loading" style="margin-bottom: 8px">
+  {{ loading ? '关闭' : '打开' }}
+</var-button>
+<var-loading description="loading...." type="circle" :loading="loading">
+  <var-card title="介绍" description="Varlet 是一个基于Vue3开发的 Material 风格移动端组件库，全面拥抱Vue3生态，由社区的小伙伴开发和维护。" />
+</var-loading>
+```
+
+```javascript
 import { ref } from 'vue'
 
-const loading = ref(false)
-</script>
+export default {
+  setup() {
+    const loading = ref(false)
 
-<template>
-  <var-button @click="loading = !loading" style="margin-bottom: 8px">
-    {{ loading ? '关闭' : '打开' }}
-  </var-button>
-  <var-loading description="loading...." type="circle" :loading="loading">
-    <var-card title="介绍" description="Varlet 是一个基于Vue3开发的 Material 风格移动端组件库，全面拥抱Vue3生态，由社区的小伙伴开发和维护。" />
-  </var-loading>
-</template>
+    return {
+      loading,
+    }
+  }
+}
 ```
 
 ## API

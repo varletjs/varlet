@@ -4,42 +4,60 @@
 
 用于向用户显示快速消息。
 
+### 引入
+
+```js
+import { createApp } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+createApp().use(Snackbar)
+```
+
+### 局部引入
+
+```js
+import { Snackbar } from '@varlet/ui'
+
+export default {
+  components: {
+    [Snackbar.Component.name]: Snackbar
+  }
+}
+```
+
 ## 组件调用
 
 ### 基本使用
 
 ```html
-<script setup>
+<var-button type="primary" block @click="show = !show">基本使用</var-button>
+<var-snackbar v-model:show="show"> 这是一个消息条！！</var-snackbar>
+```
+
+```js
 import { ref } from 'vue'
 
-const show = ref(false)
-</script>
+export default {
+  setup() {
+    const show = ref(false)
 
-<template>
-  <var-button type="primary" block @click="show = !show">基本使用</var-button>
-  <var-snackbar v-model:show="show"> 这是一个消息条！！ </var-snackbar>
-</template>
+    return {
+      show
+    }
+  }
+}
 ```
 
 ### 垂直排列
 通过 `vertical` 属性改变 `snackbar` 排列方式，通过 `自定义插槽` 创建右边 action。
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const show = ref(false)
-</script>
-
-<template>
-  <var-snackbar v-model:show="show" :vertical="true">
-    这是一个消息条！！
-    <template #action>
-      <var-button type="primary" @click="show = !show">关闭</var-button>
-    </template>
-  </var-snackbar>
-  <var-button type="primary" block @click="show = true">垂直排列</var-button>
-</template>
+<var-snackbar v-model:show="show" :vertical="true">
+  这是一个消息条！！
+  <template #action>
+    <var-button type="primary" @click="show = !show">关闭</var-button>
+  </template>
+</var-snackbar>
 ```
 
 ### 底部显示
@@ -47,21 +65,12 @@ const show = ref(false)
 通过 `position` 属性改变 `snackbar` 显示位置。
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const show = ref(false)
-</script>
-
-<template>
-  <var-snackbar v-model:show="show" position="bottom">
-    这是一个消息条！！
-    <template #action>
-      <var-button type="primary" @click="show = false">关闭</var-button>
-    </template>
-  </var-snackbar>
-  <var-button type="primary" block @click="show = true">底部显示</var-button>
-</template>
+<var-snackbar v-model:show="show" position="bottom">
+  这是一个消息条！！
+  <template #action>
+    <var-button type="primary" @click="show = false">关闭</var-button>
+  </template>
+</var-snackbar>
 ```
 
 ### 显示时长
@@ -69,18 +78,7 @@ const show = ref(false)
 通过 `duration` 属性改变 `snackbar` 显示时长。
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const show = ref(false)
-</script>
-
-<template>
-  <var-snackbar v-model:show="show" :duration="1000"> 这是一个消息条！！</var-snackbar>
-  <var-button type="primary" block @click="show = true">
-    显示时长
-  </var-button>
-</template>
+<var-snackbar v-model:show="show" :duration="1000"> 这是一个消息条！！</var-snackbar>
 ```
 
 ### 禁止穿透点击
@@ -88,158 +86,57 @@ const show = ref(false)
 使用 `forbid-click` 控制是否禁止穿透点击。
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const show = ref(false)
-</script>
-
-<template>
-  <var-snackbar v-model:show="show" :forbid-click="true">
-    这是一个消息条！！
-  </var-snackbar>
-  <var-button type="primary" block @click="show = true">
-    禁止穿透
-  </var-button>
-</template>
+<var-snackbar v-model:show="show" :forbid-click="true"> 这是一个消息条！！</var-snackbar>
 ```
 
 ## 函数调用
 
 ### 基本使用
 
-```html
-<script setup>
-import { Snackbar } from '@varlet/ui'
-
-const createSnackbar = () => {
-  Snackbar("这是一个消息条")
-}
-</script>
-
-<template>
-  <var-button type="warning" block @click="createSnackbar()">基本使用</var-button>
-</template>
+```javascript
+Snackbar('这是一个消息条！！')
 ```
 
 ### 显示时长
 
-```html
-<script setup>
-import { Snackbar } from '@varlet/ui'
-
-const createSnackbar = () => {
-  Snackbar({
-    content: "这是一个消息条!!",
-    duration: 1000
-  })
-}
-</script>
-
-<template>
-  <var-button type="warning" block @click="createSnackbar()">显示时长</var-button>
-</template>
+```javascript
+Snackbar({
+ content: '这是一个消息条！！',
+ duration: 1000
+})
 ```
 
 ### 底部显示
 
-```html
-<script setup>
-import { Snackbar } from '@varlet/ui'
-
-const createSnackbar = () => {
-  Snackbar({
-    content: "这是一个消息条！！",
-    position: 'bottom'
-  })
-}
-</script>
-
-<template>
-  <var-button type="warning" block @click="createSnackbar()">底部显示</var-button>
-</template>
+```javascript
+Snackbar({
+ content: '这是一个消息条！！',
+ position: 'bottom'
+})
 ```
 
 ### Snackbar 类型
 
-```html
-<script setup>
-import { Snackbar } from '@varlet/ui'
-
-const createSnackbar = (type) => {
-  Snackbar[type]("这是一个消息条")
-  if (type === 'loading') {
-    setTimeout(() => {
-      Snackbar.success("加载成功")
-    }, 2000)
-  }
-}
-</script>
-
-<template>
-  <var-space direction="column" size="large">
-    <var-button 
-      type="success" 
-      block 
-      @click="createSnackbar('success')"
-    >
-      成功
-    </var-button>
-    <var-button 
-      type="warning" 
-      block 
-      @click="createSnackbar('warning')"
-    >
-      警告
-    </var-button>
-    <var-button 
-      type="info" 
-      block 
-      @click="createSnackbar('info')"
-    >
-      消息
-    </var-button>
-    <var-button 
-      type="danger" 
-      block 
-      @click="createSnackbar('error')"
-    >
-      错误
-    </var-button>
-    <var-button 
-      type="primary" 
-      block 
-      @click="createSnackbar('loading')"
-    >
-      加载
-    </var-button>
-  </var-space>
-</template>
+```javascript
+Snackbar.success('这是一个消息条！！')
+Snackbar.warning('这是一个消息条！！')
+Snackbar.info('这是一个消息条！！')
+Snackbar.error('这是一个消息条！！')
+Snackbar.loading('这是一个消息条！！')
 ```
 
-### 多例模式
+### 单例模式
 
 使用函数式调用时，Snackbar 默认采用单例模式，即同一时间只会存在一个 Snackbar，如果需要在同一时间弹出多个 Snackbar，可以参考下面的示例
 
-```html
-<script setup>
-import { Snackbar } from '@varlet/ui'
+```javascript
+Snackbar.allowMultiple(true)
 
-const openMultiple = () => {
-  Snackbar.allowMultiple(true)
+const snackbar1 = Snackbar('第一个 Snackbar');
+const snackbar1 = Snackbar.success('第二个 Snackbar');
 
-  const snackbar1 = Snackbar('Snackbar 1');
-  Snackbar.success('Snackbar 2');
-
-  setTimeout(() => {
-    snackbar1.clear()
-  }, 1000)
-}
-</script>
-
-<template>
-  <var-button type="primary" block @click="openMultiple">多例模式</var-button>
-</template>
+snackbar1.clear();
+snackbar1.clear();
 ```
 
 ## API

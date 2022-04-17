@@ -4,19 +4,33 @@
 
 返回页面顶部的操作按钮。
 
+### 引入
+
+```js
+import { createApp } from 'vue'
+import { BackTop } from '@varlet/ui'
+
+createApp().use(BackTop)
+```
+
 ### 基本使用
 
 ```html
-<script setup>
+<div>
+  <var-cell v-for="list in lists" :key="list">Scroll to bottom {{ list }}</var-cell>
+  <var-back-top :duration="300" />
+</div>
+```
+```javascript
 const lists = [...Array(100).keys()]
-</script>
 
-<template>
-  <div>
-    <var-cell v-for="list in lists" :key="list">Scroll to bottom {{ list }}</var-cell>
-    <var-back-top :duration="300" />
-  </div>
-</template>
+export default {
+  setup() {
+    return {
+      lists
+    }
+  }
+}
 ```
 
 ## API

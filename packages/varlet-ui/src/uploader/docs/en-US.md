@@ -4,19 +4,36 @@
 It provides the ability to read files and preview pictures and videos.
 Get the file upload server by listening for `after-read` events.
 
+### Install
+
+```js
+import { createApp } from 'vue'
+import { Uploader } from '@varlet/ui'
+
+createApp().use(Uploader)
+```
+
 ### Basic Usage
 
 ```html
-<script setup>
+<var-uploader v-model="files" @after-read="handleAfterRead"/>
+```
+
+```js
 import { ref } from 'vue'
 
-const files = ref([])
-const handleAfterRead = file => console.log(file)
-</script>
+export default {
+  setup() {
+    const files = ref([])
 
-<template>
-  <var-uploader v-model="files" @after-read="handleAfterRead"/>
-</template>
+    const handleAfterRead = file => console.log(file)
+
+    return {
+      files,
+      handleAfterRead
+    }
+  }
+}
 ```
 
 ### File Preview
@@ -24,24 +41,28 @@ const handleAfterRead = file => console.log(file)
 By analyzing the file URL suffix name to determine the file type, support image and video preview.
 
 ```html
-<script setup>
+<var-uploader v-model="files"/>
+```
+
+```js
 import { ref } from 'vue'
 
-const files = ref([
-  {
-    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg'
-  },
-  {
-    url: 'https://www.runoob.com/try/demo_source/mov_bbb.mp4',
-    cover: 'https://varlet.gitee.io/varlet-ui/cover.jpg'
-  }
-])
-</script>
+export default {
+  setup() {
+    const files = ref([
+      {
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg'
+      },
+      {
+        url: 'https://www.runoob.com/try/demo_source/mov_bbb.mp4',
+        cover: 'https://varlet.gitee.io/varlet-ui/cover.jpg'
+      }
+    ])
 
-<template>
-  <var-uploader v-model="files"/>
-</template>
+    return { files }
+  }
+}
 ```
 
 ### Upload State
@@ -49,53 +70,52 @@ const files = ref([
 Three uploading states, `loading`, `success` and `error`, are provided, and tool functions are provided to quickly obtain files with corresponding states.
 
 ```html
-<script setup>
+<var-uploader v-model="files" @after-read="handleAfterRead"/>
+```
+
+```js
 import { ref } from 'vue'
 
-const files = ref([
-  {
-    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    state: 'loading'
-  },
-  {
-    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    state: 'success'
-  },
-  {
-    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    state: 'error'
+export default {
+  setup() {
+    const files = ref([
+      {
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        state: 'loading'
+      },
+      {
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        state: 'success'
+      },
+      {
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        state: 'error'
+      }
+    ])
+
+    const handleAfterRead = (file) => {
+      file.state = 'loading'
+
+      setTimeout(() => {
+        file.state = 'success'
+      }, 1000)
+    }
+
+    return {
+      files,
+      handleAfterRead
+    }
   }
-])
-
-const handleAfterRead = (file) => {
-  file.state = 'loading'
-
-  setTimeout(() => {
-    file.state = 'success'
-  }, 1000)
 }
-</script>
-
-<template>
-  <var-uploader v-model="files" @after-read="handleAfterRead"/>
-</template>
 ```
 
 ### File Maxlength
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const files = ref([])
-</script>
-
-<template>
-  <var-uploader v-model="files" :maxlength="1"/>
-</template>
+<var-uploader v-model="files" :maxlength="1"/>
 ```
 
 ### File Size Limit
@@ -103,20 +123,27 @@ const files = ref([])
 If the limit is exceeded, the file will be blocked. You can get the file by listening for the `oversize` event.
 
 ```html
-<script setup>
+<var-uploader v-model="files" :maxsize="1024" @oversize="handleOversize" />
+```
+
+```js
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const files = ref([])
+export default {
+  setup() {
+    const files = ref([])
 
-const handleOversize = () => {
-  Snackbar.warning('file size exceeds limit')
+    const handleOversize = () => {
+      Snackbar.warning('file size exceeds limit')
+    }
+
+    return {
+      files,
+      handleAfterRead
+    }
+  }
 }
-</script>
-
-<template>
-  <var-uploader v-model="files" :maxsize="1024" @oversize="handleOversize" />
-</template>
 ```
 
 ### Upload Preprocessing
@@ -124,54 +151,45 @@ const handleOversize = () => {
 Operate on a file by registering a `before-read` event that returns a false value to prevent the file from being read.
 
 ```html
-<script setup>
+<var-uploader v-model="files" @before-read="handleBeforeRead"/>
+```
+
+```js
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const files = ref([])
+export default {
+  setup() {
+    const files = ref([])
 
-const handleBeforeRead = (file) => {
-  if (file.file.size <= 1 * 1024 * 1024) {
-    Snackbar.success('the file is less than 1M, the upload is successful')
-    return true
-  } else {
-    Snackbar.warning('the file is larger than 1M and cannot be uploaded')
-    return false
+    const handleBeforeRead = (file) => {
+      if (file.file.size <= 1 * 1024 * 1024) {
+        Snackbar.success('the file is less than 1M, the upload is successful')
+        return true
+      } else {
+        Snackbar.warning('the file is larger than 1M and cannot be uploaded')
+        return false
+      }
+    }
+
+    return {
+      files,
+      handleAfterRead
+    }
   }
 }
-</script>
-
-<template>
-  <var-uploader v-model="files" @before-read="handleBeforeRead"/>
-</template>
 ```
 
 ### Disabled
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const files = ref([])
-</script>
-
-<template>
-  <var-uploader disabled v-model="files"/>
-</template>
+<var-uploader disabled v-model="files"/>
 ```
 
 ### Readonly
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const files = ref([])
-</script>
-
-<template>
-  <var-uploader readonly v-model="files"/>
-</template>
+<var-uploader readonly v-model="files"/>
 ```
 
 ### Remove Preprocessing
@@ -179,46 +197,45 @@ const files = ref([])
 Before deleting the file, the `before-remove` event is triggered, and a falsy value is returned to prevent the delete operation.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-import { Dialog } from '@varlet/ui'
-
-const files = ref([
-  {
-    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg'
-  }
-])
-
-const handleBeforeRemove = async () => {
-  const action = await Dialog({
-    title: 'Delete or not?',
-    message: 'Cannot be withdrawn after deletion'
-  })
-
-  return action === 'confirm'
-}
-</script>
-
-<template>
-  <var-uploader v-model="files" @before-remove="handleBeforeRemove" />
-</template>
+<var-uploader v-model="files" @remove="handleBeforeRemove" />
 ```
+
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const files = ref([
+      {
+        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      }
+    ])
+
+    const handleBeforeRemove = async () => {
+      const action = await Dialog({
+        title: 'Delete or not?',
+        message: 'Cannot be withdrawn after deletion'
+      })
+
+      return action === 'confirm'
+    }
+
+    return {
+      files,
+      handleBeforeRemove
+    }
+  }
+}
+```
+
 
 ### Customize upload styles
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const files = ref()
-</script>
-
-<template>
-  <var-uploader v-model="files">
-    <var-button type="primary">Upload</var-button>
-  </var-uploader>
-</template>
+<var-uploader v-model="files">
+  <var-button type="primary">Upload</var-button>
+</var-uploader>
 ```
 
 ### Validate
@@ -228,24 +245,12 @@ Other values are converted to text as a user prompt.
 The second argument is a collection of utility functions that can quickly get a collection of files that match the state.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const files = ref([
-  {
-    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    state: 'error',
-  },
-])
-</script>
-
-<template>
-  <var-uploader
-    :rules="[(v, u) => u.getError().length === 0 || 'There is a file that failed to upload']"
-    v-model="files"
-  />
-</template>
+<var-uploader
+  :rules="[
+    (v, u) => u.getError().length === 0 || 'There is a file that failed to upload'
+  ]"
+  v-model="files"
+/>
 ```
 
 ### Custom render file list
@@ -253,53 +258,29 @@ const files = ref([
 You can use the `hide-list` to hide component files list, then you can render this list by custom.
 
 ```html
-<script setup>
-import { ref } from 'vue'
+<var-space>
+  <img
+    class="custom-uploader-file"
+    v-for="f in files"
+    :key="f.id"
+    :src="f.cover"
+  />
+  <var-uploader hide-list v-model="files">
+    <var-button round type="primary">
+      <var-icon :size="28" name="upload" />
+    </var-button>
+  </var-uploader>
+</var-space>
+```
 
-const files = ref([
-  {
-    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    state: 'loading',
-  },
-  {
-    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    state: 'success',
-  },
-  {
-    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    state: 'error',
-  },
-])
-</script>
-
-<template>
-  <var-space>
-    <img
-      class="uploader-example-file"
-      v-for="f in files"
-      :key="f.id"
-      :src="f.cover"
-    />
-    <var-uploader hide-list v-model="files">
-      <var-button round type="primary">
-        <var-icon :size="28" name="upload" />
-      </var-button>
-    </var-uploader>
-  </var-space>
-</template>
-
-<style>
-.uploader-example-file {
+```css
+.custom-uploader-file {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   font-size: 12px;
   object-fit: cover;
 }
-</style>
 ```
 
 ## API

@@ -1,11 +1,7 @@
-<script setup>
-import VarRow from '../../row'
-import VarCol from '../../col'
-</script>
-
 <template>
   <var-row :gutter="10">
     <var-col
+      class="col"
       :xs="{ span: 12, offset: 6 }"
       :sm="{ span: 6 }"
       :md="{ span: 4, offset: 4 }"
@@ -15,6 +11,7 @@ import VarCol from '../../col'
       1
     </var-col>
     <var-col
+      class="col"
       :xs="{ span: 12, offset: 6 }"
       :sm="{ span: 6 }"
       :md="{ span: 4, offset: 4 }"
@@ -24,6 +21,7 @@ import VarCol from '../../col'
       2
     </var-col>
     <var-col
+      class="col"
       :xs="{ span: 12, offset: 6 }"
       :sm="{ span: 6 }"
       :md="{ span: 4, offset: 4 }"
@@ -33,6 +31,7 @@ import VarCol from '../../col'
       3
     </var-col>
     <var-col
+      class="col"
       :xs="{ span: 12, offset: 6 }"
       :sm="{ span: 6 }"
       :md="{ span: 4, offset: 4 }"
@@ -43,6 +42,19 @@ import VarCol from '../../col'
     </var-col>
   </var-row>
 </template>
+
+<script>
+import { defineComponent } from 'vue'
+import VarRow from '../../row'
+import VarCol from '../../col'
+
+export default defineComponent({
+  components: {
+    VarRow,
+    VarCol,
+  },
+})
+</script>
 
 <style scoped lang="less">
 .var-col {

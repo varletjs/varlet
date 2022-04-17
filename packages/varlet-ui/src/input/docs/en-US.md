@@ -1,19 +1,32 @@
 # Input
 
+### Install
+
+```js
+import { createApp } from 'vue'
+import { Input } from '@varlet/ui'
+
+createApp().use(Input)
+```
+
 ### Basic Usage
 
 The behavior of the input box is consistent with the basic content, and the user can always get a string that conforms to the `type rule when inputting
 
-```html
-<script setup>
+```js
 import { ref } from 'vue'
 
-const value = ref('')
-</script>
+export default {
+  setup() {
+    const value = ref('')
 
-<template>
-  <var-input placeholder="Please enter text" v-model="value" />
-</template>
+    return { value }
+  }
+}
+```
+
+```html
+<var-input placeholder="Please enter text" v-model="value" />
 ```
 
 ### Plain Mode
@@ -21,111 +34,61 @@ const value = ref('')
 If you only need the basic functionality of the component, you can remove some styles through attributes.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input 
-    :hint="false" 
-    :line="false" 
-    placeholder="Please enter text"
-    v-model="value"
-  />
-</template>
+<var-input 
+  :hint="false" 
+  :line="false" 
+  placeholder="Please enter text"
+  v-model="value"
+/>
 ```
 
 ### Textarea
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" textarea v-model="value" />
-</template>
+<var-input placeholder="Please enter text" textarea v-model="value" />
 ```
 
 ### Maxlength
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" :maxlength="10" v-model="value" />
-</template>
+<var-input placeholder="Please enter text" :maxlength="10" v-model="value" />
 ```
 
 ### Disabled
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" disabled v-model="value" />
-</template>
+<var-input placeholder="Please enter text" disabled v-model="value" />
 ```
 
 ### Readonly
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" readonly v-model="value" />
-</template>
+<var-input placeholder="Please enter text" readonly v-model="value" />
 ```
 
 ### Clearable
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" clearable v-model="value" />
-</template>
+<var-input placeholder="Please enter text" clearable v-model="value" />
 ```
 
 ### Display Icon
+```js
+import { createApp } from 'vue'
+import { Icon } from '@varlet/ui'
+
+createApp().use(Icon)
+```
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" v-model="value">
-    <template #prepend-icon>
-      <var-icon name="plus"/>
-    </template>
-    <template #append-icon>
-      <var-icon name="minus"/>
-    </template>
-  </var-input>
-</template>
+<var-input placeholder="Please enter text" v-model="value">
+  <template #prepend-icon>
+    <var-icon name="plus"/>
+  </template>
+  <template #append-icon>
+    <var-icon name="minus"/>
+  </template>
+</var-input>
 ```
 
 ### Validate
@@ -134,19 +97,11 @@ The values are validated by passing in an array of validators，If the validator
 Other values are converted to text as a user prompt.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input
-    placeholder="Please enter text"
-    :rules="[v => v.length > 6 || 'Text length must be greater than 6']"
-    v-model="value"
-  />
-</template>
+<var-input
+  placeholder="Please enter text"
+  :rules="[v => v.length > 6 || 'Text length must be greater than 6']"
+  v-model="value"
+/>
 ```
 
 ## API

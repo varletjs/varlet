@@ -1,20 +1,24 @@
 # Badge
+### Install
+
+```js
+import { createApp } from 'vue'
+import { Badge } from '@varlet/ui'
+
+createApp().use(Badge)
+```
 
 ### Badge Type
 
 Set the badge type through the `type` attribute.
 
 ```html
-<template>
-  <var-space>
-    <var-badge />
-    <var-badge type="primary" />
-    <var-badge type="info" />
-    <var-badge type="success" />
-    <var-badge type="warning" />
-    <var-badge type="danger" />
-  </var-space>
-</template>
+<var-badge />
+<var-badge type="primary" />
+<var-badge type="info" />
+<var-badge type="success" />
+<var-badge type="warning" />
+<var-badge type="danger" />
 ```
 
 ### Dot Badge
@@ -22,65 +26,60 @@ Set the badge type through the `type` attribute.
 Set the badge as a dot through the `dot` attribute.
 
 ```html
-<template>
-  <var-badge type="danger" dot />
-</template>
+<var-badge type="danger" dot />
 ```
 ### Customize Badge Content
 
 Set the content of the badge through the `value` attribute.
 
 ```html
-<template>
-  <var-space>
-    <var-badge type="danger" value="badge" />
-    <var-badge type="danger" value="hot" />
-    <var-badge type="danger" value="66" />
-  </var-space>
-</template>
+<var-badge type="danger" value="badge" />
+<var-badge type="danger" value="hot" />
+<var-badge type="danger" value="66" />
 ```
 ### Maximum
 
 Control the range of badge display values through `value` and `max-value` (effective when both `value` and `max-value` exist).
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(88);
-const value1 = ref(188);
-const maxValue = ref(99);
-</script>
-
-<template>
-  <var-space>
-    <var-badge type="danger" :value="value" :max-value="maxValue" />
-    <var-badge type="danger" :value="value1" :max-value="maxValue" />
-  </var-space>
-</template>
+<var-badge type="danger" :value="value" :max-value="maxValue" />
+<var-badge type="danger" :value="value1" :max-value="maxValue" />
 ```
 
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const value = ref(88);
+    const value1 = ref(188);
+    const maxValue = ref(99);
+
+    return { 
+      value, 
+      value1,
+      maxValue 
+    }
+  }
+}
+```
 ### Different Positioning Badges
 
 Set the position of the badge through the `position` property.
 
 ```html
-<template>
-  <var-space :size="[8,20]">
-    <var-badge type="danger" position="right-top">
-      <var-chip plain :round="false" color="#009688">The Upper Right</var-chip>
-    </var-badge>
-    <var-badge type="danger" position="right-bottom">
-      <var-chip plain :round="false" color="#009688">The Lower Right</var-chip>
-    </var-badge>
-    <var-badge type="danger" position="left-top">
-      <var-chip plain :round="false" color="#009688">The Upper Left</var-chip>
-    </var-badge>
-    <var-badge type="danger" position="left-bottom">
-      <var-chip plain :round="false" color="#009688">The Lower Left</var-chip>
-    </var-badge>
-  </var-space>
-</template>
+<var-badge type="danger" position="right-top">
+  <var-chip plain :round="false" color="#009688">The Upper Right</var-chip>
+</var-badge>
+<var-badge type="danger" position="right-bottom">
+  <var-chip plain :round="false" color="#009688">The Lower Right</var-chip>
+</var-badge>
+<var-badge type="danger" position="left-top">
+  <var-chip plain :round="false" color="#009688">The Upper Left</var-chip>
+</var-badge>
+<var-badge type="danger" position="left-bottom">
+  <var-chip plain :round="false" color="#009688">The Lower Left</var-chip>
+</var-badge>
 ```
 
 ### Whether To Display The Badge
@@ -88,21 +87,29 @@ Set the position of the badge through the `position` property.
 Set whether the badge is displayed through the `hidden` attribute.
 
 ```html
-<script setup>
-  import { ref } from 'vue'
+<var-button @click="handleChange">Click To Change The State</var-button>
+<var-badge type="danger" position="right-top" :hidden="hidden">
+  <var-chip plain :round="false" color="#009688">Badge</var-chip>
+</var-badge>
+```
 
-  const hidden = ref(false);
-  const handleChange = () => {
-    hidden.value = !hidden.value
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const hidden = ref(false);
+
+    const handleChange = () => {
+      hidden.value = !hidden.value
+    }
+
+    return { 
+      hidden, 
+      handleChange 
+    }
   }
-</script>
-
-<template>
-  <var-button @click="handleChange">Click To Change The State</var-button>
-  <var-badge type="danger" position="right-top" :hidden="hidden">
-    <var-chip plain :round="false" color="#009688">Badge</var-chip>
-  </var-badge>
-</template>
+}
 ```
 
 ### Custom Badge Colors
@@ -110,11 +117,9 @@ Set whether the badge is displayed through the `hidden` attribute.
 Set the color of the badge through the `color` property.
 
 ```html
-<template>
-  <var-badge color="#6200ea" position="right-top">
-    <var-chip plain :round="false" color="#009688">Badge</var-chip>
-  </var-badge>
-</template>
+<var-badge color="#6200ea" position="right-top">
+  <var-chip plain :round="false" color="#009688">Badge</var-chip>
+</var-badge>
 ```
 
 ### Custom Badge Icon
@@ -122,11 +127,9 @@ Set the color of the badge through the `color` property.
 Set Badge Icon through `icon` property.
 
 ```html
-<template>
-  <var-badge color="#6200ea" position="right-top" icon="notebook">
-    <var-chip plain :round="false" color="#009688">Badge</var-chip>
-  </var-badge>
-</template>
+<var-badge color="#6200ea" position="right-top" icon="notebook">
+  <var-chip plain :round="false" color="#009688">Badge</var-chip>
+</var-badge>
 ```
 
 ## API

@@ -4,24 +4,37 @@
 
 通过下拉菜单展示并选择内容
 
+### 引入
+
+```js
+import { createApp } from 'vue'
+import { Select, Option } from '@varlet/ui'
+
+createApp().use(Select).use(Option)
+```
+
 ### 基本使用
 
 组件会使用 option 的 `label` 作为显示的文本。
 组件会优先使用 option 的 `value` 作为选项的值，其次使用 `label`。
 
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const value = ref('')
+
+    return { value }
+  }
+}
+```
+
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select placeholder="请选择一个选项" v-model="value">
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
-  </var-select>
-</template>
+<var-select placeholder="请选择一个选项" v-model="value">
+  <var-option label="吃饭" />
+  <var-option label="睡觉" />
+</var-select>
 ```
 
 ### 朴素模式
@@ -29,237 +42,167 @@ const value = ref('')
 如果只需要组件的基本功能，可以通过属性去除部分样式。
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select
-    :hint="false"
-    :line="false"
-    placeholder="请选择一个选项"
-    v-model="value"
-  >
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
-  </var-select>
-</template>
+<var-select
+  :hint="false"
+  :line="false"
+  placeholder="请选择一个选项"
+  v-model="value"
+>
+  <var-option label="吃饭" />
+  <var-option label="睡觉" />
+</var-select>
 ```
 
 ### 文本关联值
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select placeholder="请选择一个选项" v-model="value">
-    <var-option label="吃饭" :value="1" />
-    <var-option label="睡觉" :value="2" />
-  </var-select>
-</template>
+<var-select placeholder="请选择一个选项" v-model="value">
+  <var-option label="吃饭" :value="1" />
+  <var-option label="睡觉" :value="2" />
+</var-select>
 ```
 
 ### 禁用
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-   <var-select
-    placeholder="请选择一个选项"
-    disabled
-    v-model="value"
-  >
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
-  </var-select>
-</template>
+<var-select
+  placeholder="请选择一个选项"
+  disabled
+  v-model="value"
+>
+  <var-option label="吃饭" />
+  <var-option label="睡觉" />
+</var-select>
 ```
 
 ### 只读
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select
-    placeholder="请选择一个选项"
-    readonly
-    v-model="value"
-  >
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
-  </var-select>
-</template>
+<var-select
+  placeholder="请选择一个选项"
+  readonly
+  v-model="value"
+>
+  <var-option label="吃饭" />
+  <var-option label="睡觉" />
+</var-select>
 ```
 
 ### 可清除
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select
-    placeholder="请选择一个选项"
-    clearable
-    v-model="value"
-  >
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
-  </var-select>
-</template>
+<var-select
+  placeholder="请选择一个选项"
+  clearable
+  v-model="value"
+>
+  <var-option label="吃饭" />
+  <var-option label="睡觉" />
+</var-select>
 ```
 
 ### 显示图标
+```js
+import { createApp } from 'vue'
+import { Icon } from '@varlet/ui'
+
+createApp().use(Icon)
+```
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select placeholder="请选择一个选项" v-model="value">
-    <template #prepend-icon>
-      <var-icon name="plus"/>
-    </template>
-     <template #append-icon>
-      <var-icon name="minus"/>
-    </template>
-    <template #default>
-      <var-option label="吃饭" />
-      <var-option label="睡觉" />
-    </template>
-  </var-select>
-</template>
+<var-select placeholder="请选择一个选项" v-model="value">
+  <template #prepend-icon>
+    <var-icon name="plus"/>
+  </template>
+  <template #append-icon>
+    <var-icon name="minus"/>
+  </template>
+  <template #default>
+    <var-option label="吃饭" />
+    <var-option label="睡觉" />
+  </template>
+</var-select>
 ```
 
 ### 多选
 
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const value = ref([])
+
+    return { value }
+  }
+}
+```
+
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref([])
-</script>
-
-<template>
-  <var-select
-    placeholder="请选择多个选项"
-    multiple
-    v-model="value"
-  >
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
-    <var-option label="打游戏" />
-    <var-option label="写代码" />
-  </var-select>
-</template>
+<var-select
+  placeholder="请选择多个选项"
+  multiple
+  v-model="value"
+>
+  <var-option label="吃饭" />
+  <var-option label="睡觉" />
+  <var-option label="打游戏" />
+  <var-option label="写代码" />
+</var-select>
 ```
 
 ### 纸片风格的多选
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref([])
-</script>
-
-<template>
-  <var-select
-    placeholder="请选择多个选项"
-    chip
-    multiple
-    v-model="value"
-  >
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
-    <var-option label="打游戏" />
-    <var-option label="写代码" />
-  </var-select>
-</template>
+<var-select
+  placeholder="请选择多个选项"
+  chip
+  multiple
+  v-model="value"
+>
+  <var-option label="吃饭" />
+  <var-option label="睡觉" />
+  <var-option label="打游戏" />
+  <var-option label="写代码" />
+</var-select>
 ```
 
 ### 单选值校验
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select
-    placeholder="请选择一个选项"
-    :rules="[(v) => v === '摸鱼' || '您一定得选择摸鱼']"
-    v-model="value"
-  >
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
-    <var-option label="摸鱼" />
-  </var-select>
-</template>
+<var-select
+  placeholder="请选择一个选项"
+  :rules="[(v) => v === '摸鱼' || '您一定得选择摸鱼']"
+  v-model="value"
+>
+  <var-option label="吃饭" />
+  <var-option label="睡觉" />
+  <var-option label="摸鱼" />
+</var-select>
 ```
 
 ### 多选值校验
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref([])
-</script>
-
-<template>
-  <var-select
-    placeholder="请选择多个选项"
-    multiple
-    :rules="[(v) => v.length >= 2 || '您至少选择两个选项']"
-    v-model="value"
-  >
-    <var-option label="吃饭" />
-    <var-option label="睡觉" />
-    <var-option label="打游戏" />
-    <var-option label="写代码" />
-  </var-select>
-</template>
+<var-select
+  placeholder="请选择多个选项"
+  multiple
+  :rules="[(v) => v.length >= 2 || '您至少选择两个选项']"
+  v-model="value"
+>
+  <var-option label="吃饭" />
+  <var-option label="睡觉" />
+  <var-option label="打游戏" />
+  <var-option label="写代码" />
+</var-select>
 ```
 
 ### 垂直偏移
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select placeholder="请选择" :offset-y="-62" v-model="value">
-    <var-option label="火猫" />
-    <var-option label="蓝猫" />
-    <var-option label="紫猫" />
-    <var-option label="土猫" />
-  </var-select>
-</template>
+<var-select placeholder="请选择" :offset-y="-62" v-model="value">
+  <var-option label="火猫" />
+  <var-option label="蓝猫" />
+  <var-option label="紫猫" />
+  <var-option label="土猫" />
+</var-select>
 ```
 
 ## API

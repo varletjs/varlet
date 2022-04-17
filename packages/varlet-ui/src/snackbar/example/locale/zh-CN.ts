@@ -16,5 +16,4 @@ export default {
   bottomDisplay: '底部显示',
   hiddenTime: '显示时长',
   forbidClick: '禁止穿透点击',
-  multiple: '多例模式',
 }

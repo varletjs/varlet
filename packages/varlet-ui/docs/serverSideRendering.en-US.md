@@ -14,7 +14,6 @@ Here is the basic way to introduce `Varlet` in `Nuxt`. You can introduce the ent
 So you can create a new `varlet.ts` in the `plugins` directory and write the following:
 
 ```js
-// playground-ignore
 import { defineNuxtPlugin } from '#app'
 import Varlet from '@varlet/ui'
 import '@varlet/ui/es/style.js'
@@ -22,6 +21,7 @@ import '@varlet/ui/es/style.js'
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(Varlet)
 })
+
 ```
 
 The above imports `Varlet` entirely. Note that CSS file needs to be imported separately.
@@ -29,11 +29,11 @@ The above imports `Varlet` entirely. Note that CSS file needs to be imported sep
 ### On demand
 
 The on-demand import avoids the full import of components and can effectively reduce the size of the distribution package.
+
 Each component is a `Vue plugin` and is composed of `component logic` and `style files`.
 It is manually install and used as follows.
 
 ```js
-// playground-ignore
 import { defineNuxtPlugin } from '#app'
 import { Button } from '@varlet/ui'
 import '@varlet/ui/es/button/style/index.js'

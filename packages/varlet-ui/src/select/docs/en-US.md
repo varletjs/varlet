@@ -4,24 +4,37 @@
 
 Display and select the content through the drop-down menu
 
+### Install
+
+```js
+import { createApp } from 'vue'
+import { Select, Option } from '@varlet/ui'
+
+createApp().use(Select).use(Option)
+```
+
 ### Basic Usage
 
 The component uses the option's `label` as the displayed text.
 The component uses the `value` of the option first as the value of the option, followed by the `label`.
 
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const value = ref('')
+
+    return { value }
+  }
+}
+```
+
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select placeholder="Please select one the options" v-model="value">
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-  </var-select>
-</template>
+<var-select placeholder="Please select one the options" v-model="value">
+  <var-option label="Eat" />
+  <var-option label="Sleep" />
+</var-select>
 ```
 
 ### Plain Mode
@@ -29,240 +42,170 @@ const value = ref('')
 If you only need the basic functionality of the component, you can remove some styles through attributes.
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select
-    :hint="false"
-    :line="false"
-    placeholder="Please select one the options"
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-  </var-select>
-</template>
+<var-select
+  :hint="false"
+  :line="false"
+  placeholder="Please select one the options"
+  v-model="value"
+>
+  <var-option label="Eat" />
+  <var-option label="Sleep" />
+</var-select>
 ```
 
 ### Label relation value
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select placeholder="Please select one the options" v-model="value">
-    <var-option label="Eat" :value="1" />
-    <var-option label="Sleep" :value="2" />
-  </var-select>
-</template>
+<var-select placeholder="Please select one the options" v-model="value">
+  <var-option label="Eat" :value="1" />
+  <var-option label="Sleep" :value="2" />
+</var-select>
 ```
 
 ### Disabled
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select
-    placeholder="Please select one the options"
-    disabled
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-  </var-select>
-</template>
+<var-select
+  placeholder="Please select one the options"
+  disabled
+  v-model="value"
+>
+  <var-option label="Eat" />
+  <var-option label="Sleep" />
+</var-select>
 ```
 
 ### Readonly
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select
-    placeholder="Please select one the options"
-    readonly
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-  </var-select>
-</template>
+<var-select
+  placeholder="Please select one the options"
+  readonly
+  v-model="value"
+>
+  <var-option label="Eat" />
+  <var-option label="Sleep" />
+</var-select>
 ```
 
 ### Clearable
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select
-    placeholder="Please select one the options"
-    clearable
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-  </var-select>
-</template>
+<var-select
+  placeholder="Please select one the options"
+  clearable
+  v-model="value"
+>
+  <var-option label="Eat" />
+  <var-option label="Sleep" />
+</var-select>
 ```
 
 ### Display Icon
+```js
+import { createApp } from 'vue'
+import { Icon } from '@varlet/ui'
+
+createApp().use(Icon)
+```
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select placeholder="Please select one the options" v-model="value">
-    <template #prepend-icon>
-      <var-icon name="plus"/>
-    </template>
-    <template #append-icon>
-      <var-icon name="minus"/>
-    </template>
-    <template #default>
-      <var-option label="Eat" />
-      <var-option label="Sleep" />
-    </template>
-  </var-select>
-</template>
+<var-select placeholder="Please select one the options" v-model="value">
+  <template #prepend-icon>
+    <var-icon name="plus"/>
+  </template>
+  <template #append-icon>
+    <var-icon name="minus"/>
+  </template>
+  <template #default>
+    <var-option label="Eat" />
+    <var-option label="Sleep" />
+  </template>
+</var-select>
 ```
 
 ### Multiple Selection
 
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const value = ref([])
+
+    return { value }
+  }
+}
+```
+
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref([])
-</script>
-
-<template>
-  <var-select
-    placeholder="Please select multiple options"
-    multiple
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-    <var-option label="Play game" />
-    <var-option label="Coding" />
-  </var-select>
-</template>
+<var-select
+  placeholder="Please select multiple options"
+  multiple
+  v-model="value"
+>
+  <var-option label="Eat" />
+  <var-option label="Sleep" />
+  <var-option label="Play game" />
+  <var-option label="Coding" />
+</var-select>
 ```
 
 ### Multiple choice of paper style
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref([])
-</script>
-
-<template>
-  <var-select
-    placeholder="Please select multiple options"
-    chip
-    multiple
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-    <var-option label="Play game" />
-    <var-option label="Coding" />
-  </var-select>
-</template>
+<var-select
+  placeholder="Please select multiple options"
+  chip
+  multiple
+  v-model="value"
+>
+  <var-option label="Eat" />
+  <var-option label="Sleep" />
+  <var-option label="Play game" />
+  <var-option label="Coding" />
+</var-select>
 ```
 
 ### Validate
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select
-    placeholder="Please select one the options"
-    :rules="[(v) => v === 'Rest' || 'You must choose to rest']"
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-    <var-option label="Rest" />
-  </var-select>
-</template>
+<var-select
+  placeholder="Please select one the options"
+  :rules="[(v) => v === 'Rest' || 'You must choose to rest']"
+  v-model="value"
+>
+  <var-option label="Eat" />
+  <var-option label="Sleep" />
+  <var-option label="Rest" />
+</var-select>
 ```
 
 ### Multiple Validate
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref([])
-</script>
-
-<template>
-  <var-select
-    placeholder="Please select multiple options"
-    multiple
-    :rules="[(v) => v.length >= 2 || 'You select at least two options']"
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-    <var-option label="Play game" />
-    <var-option label="Coding" />
-  </var-select>
-</template>
+<var-select
+  placeholder="Please select multiple options"
+  multiple
+  :rules="[(v) => v.length >= 2 || 'You select at least two options']"
+  v-model="value"
+>
+  <var-option label="Eat" />
+  <var-option label="Sleep" />
+  <var-option label="Play game" />
+  <var-option label="Coding" />
+</var-select>
 ```
 
 ### offset-y
 
 ```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select placeholder="Please select one the options" :offset-y="-62" v-model="value">
-    <var-option label="Ember Sprit" />
-    <var-option label="Storm Spirit" />
-    <var-option label="Void Spirit" />
-    <var-option label="Earth Sprit" />
-  </var-select>
-</template>
+<var-select placeholder="Please select one the options" :offset-y="-62" v-model="value">
+  <var-option label="Ember Sprit" />
+  <var-option label="Storm Spirit" />
+  <var-option label="Void Spirit" />
+  <var-option label="Earth Sprit" />
+</var-select>
 ```
 
 ## API

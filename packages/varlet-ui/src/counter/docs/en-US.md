@@ -1,106 +1,71 @@
 # Counter
 
+### Install
+
+```js
+import { createApp } from 'vue'
+import { Counter } from '@varlet/ui'
+
+createApp().use(Counter)
+```
+
 ### Basic Usage
 
-```html
-<script setup>
+```js
 import { ref } from 'vue'
 
-const value = ref(0)
-</script>
+export default {
+  setup() {
+    const value = ref(0)
 
-<template>
-  <var-counter v-model="value"/>
-</template>
+    return { value }
+  }
+}
+```
+
+```html
+<var-counter v-model="value"/>
 ```
 
 ### Set the value range
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(0)
-</script>
-
-<template>
-  <var-counter :min="0" :max="5" v-model="value"/>
-</template>
+<var-counter :min="0" :max="5" v-model="value"/>
 ```
 
 ### Set step
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(0)
-</script>
-
-<template>
-  <var-counter :step="10" v-model="value"/>
-</template>
+<var-counter :step="10" v-model="value"/>
 ```
 
 ### Decimal length
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(0)
-</script>
-
-<template>
-  <var-counter :decimal-length="1" v-model="value" />
-</template>
+<var-counter :decimal-length="1" v-model="value" />
 ```
 
 ### Set size
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(0)
-</script>
-
-<template>
-  <var-counter
-    input-text-size="18px"
-    input-width="50px"
-    button-size="36px"
-    v-model="value"
-  />
-</template>
+<var-counter
+  input-text-size="18px"
+  input-width="50px"
+  button-size="36px"
+  v-model="value"
+/>
 ```
 
 ### Disabled
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(0)
-</script>
-
-<template>
-  <var-counter disabled v-model="value"/>
-</template>
+<var-counter disabled v-model="value"/>
 ```
 
 ### Readonly
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(0)
-</script>
-
-<template>
-  <var-counter readonly v-model="value"/>
-</template>
+<var-counter readonly v-model="value"/>
 ```
 
 ### Asynchronous change
@@ -110,23 +75,30 @@ In some scenarios, you may need to wait for the server to return successfully be
 Register `before-change` events for manual updates.
 
 ```html
-<script setup>
+<var-counter
+  lazy-change
+  v-model="value"
+  @before-change="handleBeforeChange"
+/>
+```
+
+```js
 import { ref } from 'vue'
 
-const value = ref(0)
+export default {
+  setup() {
+    const value = ref(0)
 
-const handleBeforeChange = (value, change) => {
-  setTimeout(() => change(value), 500)
+    const handleBeforeChange = (value, change) => {
+      setTimeout(() => change(value), 500)
+    }
+
+    return {
+      value,
+      handleBeforeChange
+    }
+  }
 }
-</script>
-
-<template>
-  <var-counter
-    lazy-change
-    v-model="value"
-    @before-change="handleBeforeChange"
-  />
-</template>
 ```
 
 ### Validate
@@ -135,18 +107,10 @@ The values are validated by passing in an array of validators，If the validator
 Other values are converted to text as a user prompt.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(0)
-</script>
-
-<template>
-  <var-counter
-    :rules="[v => v > 5 || 'Please select a value greater than 5']"
-    v-model="value"
-  />
-</template>
+<var-counter
+  :rules="[v => v > 5 || 'Please select a value greater than 5']"
+  v-model="value"
+/>
 ```
 
 ## API

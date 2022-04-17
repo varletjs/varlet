@@ -10,7 +10,6 @@ Each component is a `Vue plugin` and is composed of `component logic` and `style
 It is manually install and used as follows.
 
 ```js
-// playground-ignore
 import { createApp } from 'vue'
 import { Button } from '@varlet/ui'
 import '@varlet/ui/es/button/style/index.js'
@@ -24,7 +23,6 @@ All components declared in the template are automatically scanned by the plug-in
 The [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) will automatically import `component logic` and `style files` and `use components`
 
 ```shell
-# playground-ignore
 # Install plugin
 
 # npm
@@ -39,7 +37,6 @@ pnpm add unplugin-vue-components -D
 
 #### Vue Cli
 ```js
-// playground-ignore
 // vue.config.js
 const Components = require('unplugin-vue-components/webpack')
 const { VarletUIResolver } = require('unplugin-vue-components/resolvers')
@@ -58,7 +55,6 @@ module.exports = {
 #### Vite
 
 ```js
-// playground-ignore
 // vite.config.js
 import vue from '@vitejs/plugin-vue'
 import components from 'unplugin-vue-components/vite'

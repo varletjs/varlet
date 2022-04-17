@@ -4,142 +4,127 @@
 
 Button component for triggering actions
 
+### Install
+
+```js
+import { createApp } from 'vue'
+import { Button } from '@varlet/ui'
+
+createApp().use(Button)
+```
+
 ### Theme Color Button
 
 ```html
-<template>
-  <var-space :size="[10, 10]">
-    <var-button>Default Button</var-button>
-    <var-button type="primary">Primary Button</var-button>
-    <var-button type="info">Info Button</var-button>
-    <var-button type="success">Success Button</var-button>
-    <var-button type="warning">Warning Button</var-button>
-    <var-button type="danger">Danger Button</var-button>
-  </var-space>
-</template>
+<var-button>Default Button</var-button>
+<var-button type="primary">Primary Button</var-button>
+<var-button type="info">Info Button</var-button>
+<var-button type="success">Success Button</var-button>
+<var-button type="warning">Warning Button</var-button>
+<var-button type="danger">Danger Button</var-button>
 ```
 
 ### Text Button
 
 ```html
-<template>
-  <var-space :size="[10, 10]">
-    <var-button text outline type="primary">Outline Button</var-button>
-    <var-button text type="primary">Plain Text Button</var-button>
-  </var-space>
-</template>
+<var-button text outline type="primary">Outline Button</var-button>
+<var-button text type="primary">Plain Text Button</var-button>
 ```
 
 ### Disabled Status
 
 ```html
-<template>
-  <var-space :size="[10, 10]">
-    <var-button disabled>Disabled Status</var-button>
-    <var-button disabled text outline>Disabled Status</var-button>
-    <var-button disabled text>Disabled Status</var-button>
-  </var-space>
-</template>
+<var-button disabled>Disabled Status</var-button>
+<var-button disabled text outline>Disabled Status</var-button>
+<var-button disabled text>Disabled Status</var-button>
 ```
 
 ### Loading Status
 
 ```html
-<template>
-  <var-space :size="[10, 10]">
-    <var-button loading type="primary"> Loading Status </var-button>
-    <var-button loading type="info" loading-type="rect"> Loading Status </var-button>
-    <var-button loading type="success" loading-type="disappear"> Loading Status </var-button>
-    <var-button loading type="danger" loading-type="cube"> Loading Status </var-button>
-    <var-button loading type="warning" loading-type="wave"> Loading Status </var-button>
-  </var-space>
-</template>
+<var-button loading type="primary"> Loading Status </var-button>
+<var-button loading type="info" loading-type="rect"> Loading Status </var-button>
+<var-button loading type="success" loading-type="disappear"> Loading Status </var-button>
+<var-button loading type="danger" loading-type="cube"> Loading Status </var-button>
+<var-button loading type="warning" loading-type="wave"> Loading Status </var-button>
 ```
 
 ### Button Size
 
 ```html
-<template>
-  <var-space align="center" :size="[10, 10]">
-    <var-button type="primary">Normal Button</var-button>
-    <var-button type="success" size="small">Small Button</var-button>
-    <var-button type="warning" size="mini">Mini Button</var-button>
-    <var-button type="danger" size="large">Large Button</var-button>
-  </var-space>
-</template>
+<var-button type="primary">Normal Button</var-button>
+<var-button type="success" size="small">Small Button</var-button>
+<var-button type="warning" size="mini">Mini Button</var-button>
+<var-button type="danger" size="large">Large Button</var-button>
 ```
 
 ### Block Button
 
 ```html
-<template>
-  <var-button block type="primary">Block Button</var-button>
-</template>
+<var-button block type="primary">Block Button</var-button>
 ```
 
 ### Custom Color
 
 ```html
-<template>
-  <var-space :size="[10, 10]">
-    <var-button color="#e91e63" text-color="#fff">Background/Text Color</var-button>
-    <var-button color="linear-gradient(to right, #69dbaa, #3a7afe)" text-color="#fff"> Linear Gradient Color </var-button>
-  </var-space>
-</template>
+<var-button color="#e91e63" text-color="#fff">Background/Text Color</var-button>
+<var-button color="linear-gradient(to right, #69dbaa, #3a7afe)" text-color="#fff"> Linear Gradient Color </var-button>
 ```
 
 ### Round Button
 
 ```html
-<template>
-  <var-space :size="[10, 10]">
-    <var-button type="primary" round>
-      <var-icon name="plus" />
-    </var-button>
-    <var-button type="info" round>
-      <var-icon name="information" />
-    </var-button>
-    <var-button type="success" round>
-      <var-icon name="check" />
-    </var-button>
-    <var-button type="warning" round>
-      <var-icon name="warning" />
-    </var-button>
-    <var-button type="danger" round>
-      <var-icon name="window-close" />
-    </var-button>
-  </var-space>
-</template>
+<var-button type="primary" round>
+  <var-icon name="plus" />
+</var-button>
+<var-button type="info" round>
+  <var-icon name="information" />
+</var-button>
+<var-button type="success" round>
+  <var-icon name="check" />
+</var-button>
+<var-button type="warning" round>
+  <var-icon name="warning" />
+</var-button>
+<var-button type="danger" round>
+  <var-icon name="window-close" />
+</var-button>
 ```
 
 ### Events
 
 ```html
-<script setup>
+<var-button type="success" @click="handleClick">Click</var-button>
+<var-button type="success" @touchstart="handleTouchstart">TouchStart</var-button>
+<var-button type="success" @click="handleAutoLoadingClick" auto-loading>AutoLoading</var-button>
+```
+
+```js
 import { Snackbar } from '@varlet/ui'
 
-const handleClick = () => {
-  Snackbar.success('点击成功')
-}
+export default {
+  setup() {
+    const handleClick = () => {
+      Snackbar.success('Click Success')
+    }
 
-const handleTouchstart = () => {
-  Snackbar.success('触摸成功')
-}
+    const handleTouchstart = () => {
+      Snackbar.success('Touchstart Success')
+    }
 
-const handleAutoLoadingClick = () => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 2000)
-  })
-}
-</script>
+    const handleAutoLoadingClick = () => {
+      return new Promise((resolve) => {
+        setTimeout(resolve, 2000)
+      })
+    }
 
-<template>
-  <var-space :size="[10, 10]">
-    <var-button type="success" @click="handleClick">Click</var-button>
-    <var-button type="success" @touchstart="handleTouchstart">TouchStart</var-button>
-    <var-button type="success" @click="handleAutoLoadingClick" auto-loading>AutoLoading</var-button>
-  </var-space>
-</template>
+    return {
+      handleClick,
+      handleTouchstart,
+      handleAutoLoadingClick,
+    }
+  },
+}
 ```
 
 ## API

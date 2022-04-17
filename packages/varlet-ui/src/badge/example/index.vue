@@ -1,70 +1,38 @@
-<script setup>
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import VarBadge from '..'
-import VarButton from '../../button'
-import VarChip from '../../chip'
-import VarSpace from '../../space'
-import dark from '../../themes/dark'
-import { ref } from 'vue'
-import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-
-const value = ref(88)
-const value1 = ref(188)
-const maxValue = ref(99)
-const hidden = ref(false)
-
-const handleChange = () => {
-  hidden.value = !hidden.value
-}
-
-watchLang(use)
-watchDarkMode(dark)
-</script>
-
 <template>
   <div class="example">
     <app-type>{{ pack.themeColorBadge }}</app-type>
-    <var-space>
-      <var-badge />
-      <var-badge type="primary" />
-      <var-badge type="info" />
-      <var-badge type="warning" />
-      <var-badge type="success" />
-      <var-badge type="danger" />
-    </var-space>
+    <var-badge />
+    <var-badge type="primary" />
+    <var-badge type="info" />
+    <var-badge type="warning" />
+    <var-badge type="success" />
+    <var-badge type="danger" />
 
     <app-type>{{ pack.dotBadge }}</app-type>
     <var-badge dot type="danger" />
 
     <app-type>{{ pack.customContentBadge }}</app-type>
-    <var-space>
-      <var-badge type="danger" value="badge" />
-      <var-badge type="danger" value="hot" />
-      <var-badge type="danger" value="66" />
-    </var-space>
+    <var-badge type="danger" value="badge" />
+    <var-badge type="danger" value="hot" />
+    <var-badge type="danger" value="66" />
 
     <app-type>{{ pack.maximum }}</app-type>
-    <var-space>
-      <var-badge type="danger" :value="value" :max-value="maxValue" />
-      <var-badge type="danger" :value="value1" :max-value="maxValue" />
-    </var-space>
+    <var-badge type="danger" :value="value" :max-value="maxValue" />
+    <var-badge type="danger" :value="value1" :max-value="maxValue" />
 
     <app-type>{{ pack.differentPositioningBadges }}</app-type>
-    <var-space :size="[8, 20]">
-      <var-badge type="danger" position="right-top">
-        <var-chip plain :round="false" color="#009688">{{ pack.upperRight }}</var-chip>
-      </var-badge>
-      <var-badge type="danger" position="right-bottom">
-        <var-chip plain :round="false" color="#009688">{{ pack.lowerRight }}</var-chip>
-      </var-badge>
-      <var-badge type="danger" position="left-top">
-        <var-chip plain :round="false" color="#009688">{{ pack.upperLeft }}</var-chip>
-      </var-badge>
-      <var-badge type="danger" position="left-bottom">
-        <var-chip plain :round="false" color="#009688">{{ pack.lowerLeft }}</var-chip>
-      </var-badge>
-    </var-space>
+    <var-badge type="danger" position="right-top">
+      <var-chip plain :round="false" color="#009688">{{ pack.upperRight }}</var-chip>
+    </var-badge>
+    <var-badge type="danger" position="right-bottom">
+      <var-chip plain :round="false" color="#009688">{{ pack.lowerRight }}</var-chip>
+    </var-badge>
+    <var-badge type="danger" position="left-top">
+      <var-chip plain :round="false" color="#009688">{{ pack.upperLeft }}</var-chip>
+    </var-badge>
+    <var-badge type="danger" position="left-bottom">
+      <var-chip plain :round="false" color="#009688">{{ pack.lowerLeft }}</var-chip>
+    </var-badge>
 
     <app-type>{{ pack.whetherToDisplayTheBadge }}</app-type>
     <var-button @click="handleChange">
@@ -85,3 +53,53 @@ watchDarkMode(dark)
     </var-badge>
   </div>
 </template>
+
+<script>
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import VarBadge from '..'
+import VarButton from '../../button'
+import VarChip from '../../chip'
+import dark from '../../themes/dark'
+import { ref } from 'vue'
+import { pack, use } from './locale'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+
+export default {
+  name: 'BadgeExample',
+  components: {
+    VarBadge,
+    VarButton,
+    VarChip,
+    AppType,
+  },
+  setup() {
+    const value = ref(88)
+    const value1 = ref(188)
+    const maxValue = ref(99)
+    const hidden = ref(false)
+
+    const handleChange = () => {
+      hidden.value = !hidden.value
+    }
+
+    watchLang(use)
+    watchDarkMode(dark)
+
+    return {
+      value,
+      value1,
+      maxValue,
+      hidden,
+      pack,
+      handleChange,
+    }
+  },
+}
+</script>
+
+<style scoped>
+.var-badge {
+  margin-right: 20px;
+  margin-bottom: 8px;
+}
+</style>
