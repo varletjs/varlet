@@ -4,15 +4,6 @@
 
 Enable elements to display a menu when clicked, freely control the display position of the menu by controlling the alignment and offset of the menu.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Menu } from '@varlet/ui'
-
-createApp().use(Menu)
-```
-
 ### Attention
 
 Menu is an `inline block` element. When you click through the default slot, the menu will be displayed.
@@ -25,10 +16,10 @@ other menu pairs are also triggered Menu cannot be displayed due to the modifica
 ### Alignment Methods
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
   
-  const top = ref(false)
-  const bottom = ref(false)
+const top = ref(false)
+const bottom = ref(false)
 </script>
 
 <template>
@@ -62,18 +53,18 @@ other menu pairs are also triggered Menu cannot be displayed due to the modifica
 </template>
 
 <style>
-  .menu-example-block {
-    display: flex;
-    justify-content: space-between;
-  }
+.menu-example-block {
+  display: flex;
+  justify-content: space-between;
+}
 
-  .menu-example-block-mt {
-    margin-top: 130px;
-  }
+.menu-example-block-mt {
+  margin-top: 130px;
+}
 
-  .menu-example-cell-list {
-    background: #fff;
-  }
+.menu-example-cell-list {
+  background: #fff;
+}
 </style>
 ```
 
@@ -81,12 +72,12 @@ other menu pairs are also triggered Menu cannot be displayed due to the modifica
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
   
-  const offsetX = ref(false)
-  const offsetX1 = ref(false)
-  const offsetY = ref(false)
-  const offsetY1 = ref(false)
+const offsetX = ref(false)
+const offsetX1 = ref(false)
+const offsetY = ref(false)
+const offsetY1 = ref(false)
 </script>
 
 <template>
@@ -144,20 +135,20 @@ other menu pairs are also triggered Menu cannot be displayed due to the modifica
 </template>
 
 <style>
-  .menu-example-block-1 {
-    display: flex;
-    justify-content: space-between;
-  }
+.menu-example-block-1 {
+  display: flex;
+  justify-content: space-between;
+}
 
-  .menu-example-block-2 {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 130px;
-  }
+.menu-example-block-2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 130px;
+}
   
-  .menu-example-cell-list {
-    background: #fff;
-  }
+.menu-example-cell-list {
+  background: #fff;
+}
 </style>
 ```
 
@@ -165,21 +156,21 @@ other menu pairs are also triggered Menu cannot be displayed due to the modifica
 
 ```html
 <script setup>
-  import { ref } from 'vue'
-  import { Snackbar } from '@varlet/ui'
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
   
-  const event = ref(false)
+const show = ref(false)
 </script>
 
 <template>
   <var-menu
-    v-model:show="event"
+    v-model:show="show"
     @open="() => Snackbar.info('open')"
     @opened="() => Snackbar.success('opened')"
     @close="() => Snackbar.warning('close')"
     @closed="() => Snackbar.error('closed')"
   >
-    <var-button type="primary" @click="event = true">Events</var-button>
+    <var-button type="primary" @click="show = true">Events</var-button>
 
     <template #menu>
       <div class="menu-example-cell-list">
@@ -192,9 +183,9 @@ other menu pairs are also triggered Menu cannot be displayed due to the modifica
 </template>
 
 <style>
-  .menu-example-cell-list {
-    background: #fff;
-  }
+.menu-example-cell-list {
+  background: #fff;
+}
 </style>
 ```
 

@@ -3,15 +3,6 @@
 ### 介绍
 使元素点击时显示一个菜单，通过控制菜单的对齐方式和偏移量自由的控制菜单的显示位置。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Menu } from '@varlet/ui'
-
-createApp().use(Menu)
-```
-
 ### 注意
 Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单，如果希望 Menu 独占一行推荐包裹一个 `block` 元素。
 Menu 在点击组件范围以外的区域自动关闭，所以不可以使用同一个状态绑定多个 Menu 的 `v-model:show`，否则在触发显示时也同时触发了其他 Menu 对 `v-model:show` 的修改，导致 Menu 无法显示。
@@ -19,10 +10,10 @@ Menu 在点击组件范围以外的区域自动关闭，所以不可以使用同
 ### 对齐方式
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
   
-  const top = ref(false)
-  const bottom = ref(false)
+const top = ref(false)
+const bottom = ref(false)
 </script>
 
 <template>
@@ -56,18 +47,18 @@ Menu 在点击组件范围以外的区域自动关闭，所以不可以使用同
 </template>
 
 <style>
-  .menu-example-block {
-    display: flex;
-    justify-content: space-between;
-  }
+.menu-example-block {
+  display: flex;
+  justify-content: space-between;
+}
 
-  .menu-example-block-mt {
-    margin-top: 130px;
-  }
+.menu-example-block-mt {
+  margin-top: 130px;
+}
 
-  .menu-example-cell-list{
-    background: #fff;
-  }
+.menu-example-cell-list{
+  background: #fff;
+}
 </style>
 ```
 
@@ -75,12 +66,12 @@ Menu 在点击组件范围以外的区域自动关闭，所以不可以使用同
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
   
-  const offsetX = ref(false)
-  const offsetX1 = ref(false)
-  const offsetY = ref(false)
-  const offsetY1 = ref(false)
+const offsetX = ref(false)
+const offsetX1 = ref(false)
+const offsetY = ref(false)
+const offsetY1 = ref(false)
 </script>
 
 <template>
@@ -138,20 +129,20 @@ Menu 在点击组件范围以外的区域自动关闭，所以不可以使用同
 </template>
 
 <style>
-  .menu-example-block-1 {
-    display: flex;
-    justify-content: space-between;
-  }
+.menu-example-block-1 {
+  display: flex;
+  justify-content: space-between;
+}
 
-  .menu-example-block-2 {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 130px;
-  }
+.menu-example-block-2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 130px;
+}
 
-  .menu-example-cell-list {
-    background: #fff;
-  }
+.menu-example-cell-list {
+  background: #fff;
+}
 </style>
 ```
 
@@ -159,21 +150,21 @@ Menu 在点击组件范围以外的区域自动关闭，所以不可以使用同
 
 ```html
 <script setup>
-  import { ref } from 'vue'
-  import { Snackbar } from '@varlet/ui'
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
   
-  const event = ref(false)
+const show = ref(false)
 </script>
 
 <template>
   <var-menu
-    v-model:show="event"
+    v-model:show="show"
     @open="() => Snackbar.info('open')"
     @opened="() => Snackbar.success('opened')"
     @close="() => Snackbar.warning('close')"
     @closed="() => Snackbar.error('closed')"
   >
-    <var-button type="primary" @click="event = true">注册事件</var-button>
+    <var-button type="primary" @click="show = true">注册事件</var-button>
 
     <template #menu>
       <div class="menu-example-cell-list">
@@ -186,9 +177,9 @@ Menu 在点击组件范围以外的区域自动关闭，所以不可以使用同
 </template>
 
 <style>
-  .menu-example-cell-list {
-    background: #fff;
-  }
+.menu-example-cell-list {
+  background: #fff;
+}
 </style>
 ```
 
