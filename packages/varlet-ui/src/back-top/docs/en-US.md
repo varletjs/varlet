@@ -4,20 +4,11 @@
 
 A button to back to top.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { BackTop } from '@varlet/ui'
-
-createApp().use(BackTop)
-```
-
 ### Basic Usage
 
 ```html
 <script setup>
-  const lists = [...Array(100).keys()]
+const lists = [...Array(100).keys()]
 </script>
 
 <template>

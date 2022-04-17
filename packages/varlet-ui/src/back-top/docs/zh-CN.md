@@ -4,20 +4,11 @@
 
 返回页面顶部的操作按钮。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { BackTop } from '@varlet/ui'
-
-createApp().use(BackTop)
-```
-
 ### 基本使用
 
 ```html
 <script setup>
-  const lists = [...Array(100).keys()]
+const lists = [...Array(100).keys()]
 </script>
 
 <template>
