@@ -5,7 +5,7 @@ import ActionSheet from '../../action-sheet'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
-import { defineComponent, ref, computed } from 'vue'
+import { ref, computed } from 'vue'
 import { pack, use } from './locale'
 import { watchDarkMode, watchLang } from '@varlet/cli/site/utils'
 import VarIcon from '../../icon'
@@ -53,6 +53,7 @@ const previewCallback = () => {
 watchLang(use)
 watchDarkMode(dark)
 </script>
+
 <template>
   <div class="image-preview-demo">
     <app-type>{{ pack.functionCall }}</app-type>

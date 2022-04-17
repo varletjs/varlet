@@ -1,3 +1,16 @@
+## [1.27.5](https://github.com/varletjs/varlet/compare/v1.27.4...v1.27.5) (2022-04-16)
+
+
+
+## [1.27.4](https://github.com/varletjs/varlet/compare/v1.27.3...v1.27.4) (2022-04-16)
+
+
+### Bug Fixes
+
+* **rate:** fix rate style ([79edabf](https://github.com/varletjs/varlet/commit/79edabff2fa08f44dd3b251af9a41e311a7426d6))
+
+
+
 ## [1.27.3](https://github.com/varletjs/varlet/compare/v1.27.2...v1.27.3) (2022-04-14)
 
 

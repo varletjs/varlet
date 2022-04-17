@@ -4,15 +4,6 @@
 
 Enable elements to display a menu when clicked, freely control the display position of the menu by controlling the alignment and offset of the menu.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Menu } from '@varlet/ui'
-
-createApp().use(Menu)
-```
-
 ### Attention
 
 Menu is an `inline block` element. When you click through the default slot, the menu will be displayed.
@@ -24,198 +15,178 @@ other menu pairs are also triggered Menu cannot be displayed due to the modifica
 
 ### Alignment Methods
 ```html
-<div class="block">
-  <var-menu v-model:show="top">
-    <var-button type="primary" @click="top = true">Top Alignment</var-button>
-
-    <template #menu>
-      <div class="cell-list">
-        <var-cell>Menu Option</var-cell>
-        <var-cell>Menu Option</var-cell>
-        <var-cell>Menu Option</var-cell>
-      </div>
-    </template>
-  </var-menu>
-</div>
-
-<div class="block-mt">
-  <var-menu alignment="bottom" v-model:show="bottom">
-    <var-button type="primary" @click="bottom = true">Bottom Alignment</var-button>
-
-    <template #menu>
-      <div class="cell-list">
-        <var-cell>Menu Option</var-cell>
-        <var-cell>Menu Option</var-cell>
-        <var-cell>Menu Option</var-cell>
-      </div>
-    </template>
-  </var-menu>
-</div>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
+  
+const top = ref(false)
+const bottom = ref(false)
+</script>
 
-export default {
-  setup() {
-    const top = ref(false)
-    const bottom = ref(false)
+<template>
+  <div class="menu-example-block">
+    <var-menu v-model:show="top">
+      <var-button type="primary" @click="top = true">Top Alignment</var-button>
 
-    return { 
-      top,
-      bottom
-    }
-  }
-}
-```
+      <template #menu>
+        <div class="menu-example-cell-list">
+          <var-cell>Menu Option</var-cell>
+          <var-cell>Menu Option</var-cell>
+          <var-cell>Menu Option</var-cell>
+        </div>
+      </template>
+    </var-menu>
+  </div>
 
-```css
-.block {
+  <div class="menu-example-block-mt">
+    <var-menu alignment="bottom" v-model:show="bottom">
+      <var-button type="primary" @click="bottom = true">Bottom Alignment</var-button>
+
+      <template #menu>
+        <div class="menu-example-cell-list">
+          <var-cell>Menu Option</var-cell>
+          <var-cell>Menu Option</var-cell>
+          <var-cell>Menu Option</var-cell>
+        </div>
+      </template>
+    </var-menu>
+  </div>
+</template>
+
+<style>
+.menu-example-block {
   display: flex;
   justify-content: space-between;
 }
 
-.block-mt {
+.menu-example-block-mt {
   margin-top: 130px;
 }
 
-.cell-list {
+.menu-example-cell-list {
   background: #fff;
 }
+</style>
 ```
 
 ### Offset
 
 ```html
-<div class="block-1">
-  <var-menu :offset-x="72" v-model:show="offsetX">
-    <var-button type="primary" @click="offsetX = true">Offset Right</var-button>
-
-    <template #menu>
-      <div class="cell-list">
-        <var-cell>Menu Option</var-cell>
-        <var-cell>Menu Option</var-cell>
-        <var-cell>Menu Option</var-cell>
-      </div>
-    </template>
-  </var-menu>
-
-  <var-menu :offset-x="-72" v-model:show="offsetX1">
-    <var-button type="primary" @click="offsetX1 = true">Offset Left</var-button>
-
-    <template #menu>
-      <div class="cell-list">
-        <var-cell>Menu Option</var-cell>
-        <var-cell>Menu Option</var-cell>
-        <var-cell>Menu Option</var-cell>
-      </div>
-    </template>
-  </var-menu>
-</div>
-
-<div class="block-2">
-  <var-menu :offset-y="36" v-model:show="offsetY">
-    <var-button type="primary" @click="offsetY = true">Offset Bottom</var-button>
-
-    <template #menu>
-      <div class="cell-list">
-        <var-cell>Menu Option</var-cell>
-        <var-cell>Menu Option</var-cell>
-        <var-cell>Menu Option</var-cell>
-      </div>
-    </template>
-  </var-menu>
-
-  <var-menu :offset-y="-36" v-model:show="offsetY1">
-    <var-button type="primary" @click="offsetY1 = true">Offset Top</var-button>
-
-    <template #menu>
-      <div class="cell-list">
-        <var-cell>Menu Option</var-cell>
-        <var-cell>Menu Option</var-cell>
-        <var-cell>Menu Option</var-cell>
-      </div>
-    </template>
-  </var-menu>
-</div>
-```
-
-
-```js
+<script setup>
 import { ref } from 'vue'
+  
+const offsetX = ref(false)
+const offsetX1 = ref(false)
+const offsetY = ref(false)
+const offsetY1 = ref(false)
+</script>
 
-export default {
-  setup() {
-    const offsetX = ref(false)
-    const offsetX1 = ref(false)
-    const offsetY = ref(false)
-    const offsetY1 = ref(false)
+<template>
+  <div class="menu-example-block-1">
+    <var-menu :offset-x="72" v-model:show="offsetX">
+      <var-button type="primary" @click="offsetX = true">Offset Right</var-button>
 
-    return {
-      offsetX,
-      offsetX1,
-      offsetY,
-      offsetY1
-    }
-  }
-}
-```
+      <template #menu>
+        <div class="menu-example-cell-list">
+          <var-cell>Menu Option</var-cell>
+          <var-cell>Menu Option</var-cell>
+          <var-cell>Menu Option</var-cell>
+        </div>
+      </template>
+    </var-menu>
 
-```css
-.block-1 {
+    <var-menu :offset-x="-72" v-model:show="offsetX1">
+      <var-button type="primary" @click="offsetX1 = true">Offset Left</var-button>
+
+      <template #menu>
+        <div class="menu-example-cell-list">
+          <var-cell>Menu Option</var-cell>
+          <var-cell>Menu Option</var-cell>
+          <var-cell>Menu Option</var-cell>
+        </div>
+      </template>
+    </var-menu>
+  </div>
+
+  <div class="menu-example-block-2">
+    <var-menu :offset-y="36" v-model:show="offsetY">
+      <var-button type="primary" @click="offsetY = true">Offset Bottom</var-button>
+
+      <template #menu>
+        <div class="menu-example-cell-list">
+          <var-cell>Menu Option</var-cell>
+          <var-cell>Menu Option</var-cell>
+          <var-cell>Menu Option</var-cell>
+        </div>
+      </template>
+    </var-menu>
+
+    <var-menu :offset-y="-36" v-model:show="offsetY1">
+      <var-button type="primary" @click="offsetY1 = true">Offset Top</var-button>
+
+      <template #menu>
+        <div class="menu-example-cell-list">
+          <var-cell>Menu Option</var-cell>
+          <var-cell>Menu Option</var-cell>
+          <var-cell>Menu Option</var-cell>
+        </div>
+      </template>
+    </var-menu>
+  </div>
+</template>
+
+<style>
+.menu-example-block-1 {
   display: flex;
   justify-content: space-between;
 }
 
-.block-2 {
+.menu-example-block-2 {
   display: flex;
   justify-content: space-between;
   margin-top: 130px;
 }
+  
+.menu-example-cell-list {
+  background: #fff;
+}
+</style>
 ```
 
 ### 注册事件
 
 ```html
-<var-menu
-  v-model:show="event"
-  @open="() => Snackbar.info('open')"
-  @opened="() => Snackbar.success('opened')"
-  @close="() => Snackbar.warning('close')"
-  @closed="() => Snackbar.error('closed')"
->
-  <var-button type="primary" @click="event = true">Events</var-button>
-
-  <template #menu>
-    <div class="cell-list">
-      <var-cell>Menu Option</var-cell>
-      <var-cell>Menu Option</var-cell>
-      <var-cell>Menu Option</var-cell>
-    </div>
-  </template>
-</var-menu>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
+  
+const show = ref(false)
+</script>
 
-export default {
-  setup() {
-    const event = ref(false)
+<template>
+  <var-menu
+    v-model:show="show"
+    @open="() => Snackbar.info('open')"
+    @opened="() => Snackbar.success('opened')"
+    @close="() => Snackbar.warning('close')"
+    @closed="() => Snackbar.error('closed')"
+  >
+    <var-button type="primary" @click="show = true">Events</var-button>
 
-    return {
-      event,
-      Snackbar
-    }
-  }
-}
-```
+    <template #menu>
+      <div class="menu-example-cell-list">
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+      </div>
+    </template>
+  </var-menu>
+</template>
 
-```css
-.cell-list {
+<style>
+.menu-example-cell-list {
   background: #fff;
 }
+</style>
 ```
 
 ## API
