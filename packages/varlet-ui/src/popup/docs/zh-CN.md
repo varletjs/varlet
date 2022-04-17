@@ -15,255 +15,229 @@ createApp().use(Popup)
 ### 弹出位置
 
 ```html
-<var-button
-  class="mt-10"
-  type="primary"
-  block
-  @click="center = true"
->
-  居中弹出
-</var-button>
-<var-button
-  class="mt-10"
-  type="primary"
-  block
-  @click="bottom = true"
->
-  下方弹出
-</var-button>
-<var-button
-  class="mt-10"
-  type="primary"
-  block
-  @click="top = true"
->
-  上方弹出
-</var-button>
-<var-button
-  class="mt-10"
-  type="primary"
-  block
-  @click="left = true"
->
-  左侧弹出
-</var-button>
-<var-button
-  class="mt-10"
-  type="primary"
-  block
-  @click="right = true"
->
-  右侧弹出
-</var-button>
+<script setup>
+  import { ref } from 'vue'
+  
+  const center = ref(false)
+  const top = ref(false)
+  const bottom = ref(false)
+  const left = ref(false)
+  const right = ref(false)
+</script>
 
-// 居中弹出
-<var-popup v-model:show="center">
-  <div class="block">
-    素胚勾勒出青花笔锋浓转淡,
-    瓶身描绘的牡丹一如你初妆,
-    冉冉檀香透过窗心事我了然,
-    宣纸上走笔至此搁一半。
-  </div>
-</var-popup>
+<template>
+  <var-button
+    class="popup-example-mt-10"
+    type="primary"
+    block
+    @click="center = true"
+  >
+    居中弹出
+  </var-button>
+  <var-button
+    class="popup-example-mt-10"
+    type="primary"
+    block
+    @click="bottom = true"
+  >
+    下方弹出
+  </var-button>
+  <var-button
+    class="popup-example-mt-10"
+    type="primary"
+    block
+    @click="top = true"
+  >
+    上方弹出
+  </var-button>
+  <var-button
+    class="popup-example-mt-10"
+    type="primary"
+    block
+    @click="left = true"
+  >
+    左侧弹出
+  </var-button>
+  <var-button
+    class="popup-example-mt-10"
+    type="primary"
+    block
+    @click="right = true"
+  >
+    右侧弹出
+  </var-button>
+  
+  <var-popup v-model:show="center">
+    <div class="popup-example-block">
+      素胚勾勒出青花笔锋浓转淡,
+      瓶身描绘的牡丹一如你初妆,
+      冉冉檀香透过窗心事我了然,
+      宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
+  
+  <var-popup position="bottom" v-model:show="bottom">
+    <div class="popup-example-block">
+      素胚勾勒出青花笔锋浓转淡,
+      瓶身描绘的牡丹一如你初妆,
+      冉冉檀香透过窗心事我了然,
+      宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
+  
+  <var-popup position="top" v-model:show="top">
+    <div class="popup-example-block">
+      素胚勾勒出青花笔锋浓转淡,
+      瓶身描绘的牡丹一如你初妆,
+      冉冉檀香透过窗心事我了然,
+      宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
+  
+  <var-popup position="left" v-model:show="left">
+    <div class="popup-example-block">
+      素胚勾勒出青花笔锋浓转淡,
+      瓶身描绘的牡丹一如你初妆,
+      冉冉檀香透过窗心事我了然,
+      宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
+  
+  <var-popup position="right" v-model:show="right">
+    <div class="popup-example-block">
+      素胚勾勒出青花笔锋浓转淡,
+      瓶身描绘的牡丹一如你初妆,
+      冉冉檀香透过窗心事我了然,
+      宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
+</template>
 
-// 下方弹出
-<var-popup position="bottom" v-model:show="bottom">
-  <div class="block">
-    素胚勾勒出青花笔锋浓转淡,
-    瓶身描绘的牡丹一如你初妆,
-    冉冉檀香透过窗心事我了然,
-    宣纸上走笔至此搁一半。
-  </div>
-</var-popup>
-
-// 上方弹出
-<var-popup position="top" v-model:show="top">
-  <div class="block">
-    素胚勾勒出青花笔锋浓转淡,
-    瓶身描绘的牡丹一如你初妆,
-    冉冉檀香透过窗心事我了然,
-    宣纸上走笔至此搁一半。
-  </div>
-</var-popup>
-
-// 左侧弹出
-<var-popup position="left" v-model:show="left">
-  <div class="block">
-    素胚勾勒出青花笔锋浓转淡,
-    瓶身描绘的牡丹一如你初妆,
-    冉冉檀香透过窗心事我了然,
-    宣纸上走笔至此搁一半。
-  </div>
-</var-popup>
-
-// 右侧弹出
-<var-popup position="right" v-model:show="right">
-  <div class="block">
-    素胚勾勒出青花笔锋浓转淡,
-    瓶身描绘的牡丹一如你初妆,
-    冉冉檀香透过窗心事我了然,
-    宣纸上走笔至此搁一半。
-  </div>
-</var-popup>
-```
-
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const center = ref(false)
-    const top = ref(false)
-    const bottom = ref(false)
-    const left = ref(false)
-    const right = ref(false)
-
-    return {
-      center,
-      top,
-      bottom,
-      left,
-      right
-    }
+<style>
+  .popup-example-mt-10 {
+    margin-top: 10px;
   }
-}
-```
 
-```css
-.mt-10 {
-  margin-top: 10px;
-}
-
-.block {
-  padding: 20px 24px;
-  width: 250px;
-}
+  .popup-example-block {
+    padding: 20px 24px;
+    width: 250px;
+  }
+</style>
 ```
 
 ### 遮罩层样式
 
 ```html
-<var-button
-  class="mt-10"
-  type="primary"
-  block
-  @click="overlayClass = true"
->
-  遮罩层 class
-</var-button>
-<var-button
-  class="mt-10"
-  type="primary"
-  block
-  @click="overlayStyle = true"
->
-  遮罩层 style
-</var-button>
+<script setup>
+  import { ref } from 'vue'
+  
+  const overlayClass = ref(false)
+  const overlayStyle = ref(false)
+</script>
 
-// 遮罩层 class
-<var-popup
-  overlay-class="custom-overlay"
-  v-model:show="overlayClass"
->
-  <div class="block">
-    素胚勾勒出青花笔锋浓转淡,
-    瓶身描绘的牡丹一如你初妆,
-    冉冉檀香透过窗心事我了然,
-    宣纸上走笔至此搁一半。
-  </div>
-</var-popup>
-
-// 遮罩层 style
-<var-popup
-  :overlay-style="{
+<template>
+  <var-button
+    class="popup-example-mt-10"
+    type="primary"
+    block
+    @click="overlayClass = true"
+  >
+    遮罩层 class
+  </var-button>
+  <var-button
+    class="popup-example-mt-10"
+    type="primary"
+    block
+    @click="overlayStyle = true"
+  >
+    遮罩层 style
+  </var-button>
+  
+  <var-popup
+    overlay-class="popup-example-custom-overlay"
+    v-model:show="overlayClass"
+  >
+    <div class="popup-example-block">
+      素胚勾勒出青花笔锋浓转淡,
+      瓶身描绘的牡丹一如你初妆,
+      冉冉檀香透过窗心事我了然,
+      宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
+  
+  <var-popup
+    :overlay-style="{
     backgroundColor: 'rgba(0, 0, 0, 0.3)'
   }"
-  v-model:show="overlayStyle"
->
-  <div class="block">
-    素胚勾勒出青花笔锋浓转淡,
-    瓶身描绘的牡丹一如你初妆,
-    冉冉檀香透过窗心事我了然,
-    宣纸上走笔至此搁一半。
-  </div>
-</var-popup>
-```
+    v-model:show="overlayStyle"
+  >
+    <div class="popup-example-block">
+      素胚勾勒出青花笔锋浓转淡,
+      瓶身描绘的牡丹一如你初妆,
+      冉冉檀香透过窗心事我了然,
+      宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
+</template>
 
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const overlayClass = ref(false)
-    const overlayStyle = ref(false)
-
-    return {
-      overlayClass,
-      overlayStyle
-    }
+<style>
+  .popup-example-custom-overlay {
+    background: rgba(0, 0, 0, 0.3) !important;
   }
-}
-```
+  
+  .popup-example-mt-10 {
+    margin-top: 10px;
+  }
 
-```css
-/* normal css */
-.custom-overlay {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-/* scoped css */
-.mt-10 {
-  margin-top: 10px;
-}
-
-.block {
-  padding: 20px 24px;
-  width: 250px;
-}
+  .popup-example-block {
+    padding: 20px 24px;
+    width: 250px;
+  }
+</style>
 ```
 
 ### 注册事件
 
 ```html
-<var-button
-  class="mt-10"
-  type="primary"
-  block
-  @click="event = true"
->
-  注册事件
-</var-button>
+<script setup>
+  import { ref } from 'vue'
+  import { Snackbar } from '@varlet/ui'
 
-<var-popup
-  v-model:show="event"
-  @open="() => Snackbar.info('open')"
-  @opened="() => Snackbar.success('opened')"
-  @close="() => Snackbar.warning('close')"
-  @closed="() => Snackbar.error('closed')"
->
-  <div class="block">
-    素胚勾勒出青花笔锋浓转淡,
-    瓶身描绘的牡丹一如你初妆,
-    冉冉檀香透过窗心事我了然,
-    宣纸上走笔至此搁一半。
-  </div>
-</var-popup>
-```
+  const event = ref(false)
+</script>
 
-```js
-import { ref } from 'vue'
-import { Snackbar } from '@varlet/ui'
+<template>
+  <var-button
+    class="popup-example-mt-10"
+    type="primary"
+    block
+    @click="event = true"
+  >
+    注册事件
+  </var-button>
 
-export default {
-  setup() {
-    const event = ref(false)
+  <var-popup
+    v-model:show="event"
+    @open="() => Snackbar.info('open')"
+    @opened="() => Snackbar.success('opened')"
+    @close="() => Snackbar.warning('close')"
+    @closed="() => Snackbar.error('closed')"
+  >
+    <div class="popup-example-block">
+      素胚勾勒出青花笔锋浓转淡,
+      瓶身描绘的牡丹一如你初妆,
+      冉冉檀香透过窗心事我了然,
+      宣纸上走笔至此搁一半。
+    </div>
+  </var-popup>
+</template>
 
-    return {
-      event,
-      Snackbar
-    }
+<style>
+  .popup-example-block {
+    padding: 20px 24px;
+    width: 250px;
   }
-}
+</style>
 ```
 
 ## API
