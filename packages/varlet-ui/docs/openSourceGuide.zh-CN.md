@@ -9,6 +9,7 @@
 node 版本 16+。
 
 ```shell
+# playground-ignore
 pnpm bootstrap
 cd packages/varlet-ui
 pnpm dev

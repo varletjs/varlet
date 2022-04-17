@@ -1,17 +1,6 @@
-<template>
-  <app-type>{{ pack.functionCall }}</app-type>
-  <var-button type="primary" style="margin-bottom: 10px" block @click="picker">{{ pack.singlePicker }}</var-button>
-  <var-button type="primary" style="margin-bottom: 10px" block @click="picker2">{{ pack.multiplePicker }}</var-button>
-  <var-button type="primary" style="margin-bottom: 10px" block @click="picker3">{{ pack.cascadePicker }}</var-button>
-
-  <app-type>{{ pack.componentCall }}</app-type>
-  <var-picker style="margin-bottom: 14px" :columns="columns" />
-  <var-picker style="margin-bottom: 14px" :columns="columns2" />
-  <var-picker style="margin-bottom: 14px" cascade :columns="columns3" />
-</template>
-
-<script>
+<script setup>
 import Picker from '../index'
+import VarSpace from '../../space'
 import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import area from '../../../json/area.json'
@@ -20,51 +9,53 @@ import { ref } from 'vue'
 import { use, pack } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
-export default {
-  name: 'PickerExample',
-  components: {
-    VarPicker: Picker.Component,
-    VarButton,
-    AppType,
-  },
-  setup() {
-    const columns = ref([Array.from({ length: 20 }).map((_, index) => index)])
+const VarPicker = Picker.Component
 
-    const columns2 = ref([
-      Array.from({ length: 20 }).map((_, index) => index),
-      Array.from({ length: 20 }).map((_, index) => index),
-      Array.from({ length: 20 }).map((_, index) => index),
-    ])
+const columns = ref([Array.from({ length: 20 }).map((_, index) => index)])
 
-    const columns3 = ref(area)
+const columns2 = ref([
+  Array.from({ length: 20 }).map((_, index) => index),
+  Array.from({ length: 20 }).map((_, index) => index),
+  Array.from({ length: 20 }).map((_, index) => index),
+])
 
-    const picker = async () => {
-      await Picker(columns.value)
-    }
+const columns3 = ref(area)
 
-    const picker2 = async () => {
-      await Picker(columns2.value)
-    }
-
-    const picker3 = async () => {
-      await Picker({
-        cascade: true,
-        columns: columns3.value,
-      })
-    }
-
-    watchLang(use)
-    watchDarkMode(dark)
-
-    return {
-      pack,
-      columns,
-      columns2,
-      columns3,
-      picker,
-      picker2,
-      picker3,
-    }
-  },
+const picker = async () => {
+  await Picker(columns.value)
 }
+
+const picker2 = async () => {
+  await Picker(columns2.value)
+}
+
+const picker3 = async () => {
+  await Picker({
+    cascade: true,
+    columns: columns3.value,
+  })
+}
+
+watchLang(use)
+watchDarkMode(dark)
 </script>
+
+<template>
+  <app-type>{{ pack.functionCall }}</app-type>
+  <var-space direction="column" :size="[10, 10]">
+    <var-button type="primary" block @click="picker">{{ pack.singlePicker }}</var-button>
+    <var-button type="primary" block @click="picker2">{{ pack.multiplePicker }}</var-button>
+    <var-button type="primary" block @click="picker3">{{ pack.cascadePicker }}</var-button>
+  </var-space>
+
+  <app-type>{{ pack.componentCall }}</app-type>
+
+  <app-type>{{ pack.singlePicker }}</app-type>
+  <var-picker :columns="columns" />
+
+  <app-type>{{ pack.multiplePicker }}</app-type>
+  <var-picker :columns="columns2" />
+
+  <app-type>{{ pack.cascadePicker }}</app-type>
+  <var-picker cascade :columns="columns3" />
+</template>

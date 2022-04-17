@@ -1,10 +1,4 @@
-<template>
-  <var-pull-refresh @refresh="refresh" v-model="isRefresh" success-duration="2000">
-    <var-cell v-for="(item, index) in data" :key="index" border>{{ item + ' ' + (index + 1) }}</var-cell>
-  </var-pull-refresh>
-</template>
-
-<script>
+<script setup>
 import VarPullRefresh from '..'
 import VarCell from '../../cell'
 import dark from '../../themes/dark'
@@ -14,45 +8,36 @@ import { watchDarkMode } from '@varlet/cli/site/utils'
 const data1 = Array(10).fill('List Item')
 const data2 = Array(10).fill('This is new List Item')
 
-export default {
-  name: 'PullRefreshExample',
-  components: {
-    VarPullRefresh,
-    VarCell,
-  },
-  setup() {
-    const isRefresh = ref(false)
-    const data = ref(data1)
+const isRefresh = ref(false)
+const data = ref(data1)
 
-    const refresh = () => {
-      setTimeout(() => {
-        data.value = data.value[0] === 'List Item' ? data2 : data1
-        isRefresh.value = false
-      }, 2000)
-    }
-
-    const prevent = (event) => {
-      event.preventDefault()
-    }
-
-    onMounted(() => {
-      document.body.addEventListener('touchmove', prevent, { passive: false })
-    })
-
-    onBeforeUnmount(() => {
-      document.body.removeEventListener('touchmove', prevent)
-    })
-
-    watchDarkMode(dark)
-
-    return {
-      refresh,
-      isRefresh,
-      data,
-    }
-  },
+const refresh = () => {
+  setTimeout(() => {
+    data.value = data.value[0] === 'List Item' ? data2 : data1
+    isRefresh.value = false
+  }, 2000)
 }
+
+const prevent = (event) => {
+  event.preventDefault()
+}
+
+onMounted(() => {
+  document.body.addEventListener('touchmove', prevent, { passive: false })
+})
+
+onBeforeUnmount(() => {
+  document.body.removeEventListener('touchmove', prevent)
+})
+
+watchDarkMode(dark)
 </script>
+
+<template>
+  <var-pull-refresh @refresh="refresh" v-model="isRefresh" success-duration="2000">
+    <var-cell v-for="(item, index) in data" :key="index" border>{{ item + ' ' + (index + 1) }}</var-cell>
+  </var-pull-refresh>
+</template>
 
 <style lang="less" scoped>
 .var-pull-refresh {

@@ -1,152 +1,196 @@
 # 轮播
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Swipe, SwipeItem } from '@varlet/ui'
-
-createApp().use(Swipe).use(SwipeItem)
-```
-
 ### 基本使用
 
 ```html
-<var-swipe class="swipe">
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
-  </var-swipe-item>
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
-  </var-swipe-item>
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
-  </var-swipe-item>
-</var-swipe>
-```
+<template>
+  <var-swipe class="swipe-example">
+    <var-swipe-item>
+      <img class="swipe-item-example" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-item-example" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-item-example" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
+    </var-swipe-item>
+  </var-swipe>
+</template>
 
-```css
-.swipe {
+<style>
+.swipe-example {
   height: 160px;
 }
 
-.swipe-item {
+.swipe-item-example {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+</style>
 ```
 
 ### 禁止循环轮播
 
 ```html
-<var-swipe class="swipe" :loop="false">
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
-  </var-swipe-item>
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
-  </var-swipe-item>
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
-  </var-swipe-item>
-</var-swipe>
+<template>
+  <var-swipe class="swipe-example-loop" :loop="false">
+    <var-swipe-item>
+      <img class="swipe-item-example-loop" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-item-example-loop" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-item-example-loop" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
+    </var-swipe-item>
+  </var-swipe>
+</template>
+
+<style>
+.swipe-example-loop {
+  height: 160px;
+}
+
+.swipe-item-example-loop {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
 ```
 
 ### 开启自动播放
 
 ```html
-<var-swipe class="swipe" :autoplay="2000">
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
-  </var-swipe-item>
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
-  </var-swipe-item>
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
-  </var-swipe-item>
-</var-swipe>
+<template>
+  <var-swipe class="swipe-example-autoplay" :autoplay="2000">
+    <var-swipe-item>
+      <img class="swipe-item-example-autoplay" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-item-example-autoplay" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-item-example-autoplay" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
+    </var-swipe-item>
+  </var-swipe>
+</template>
+
+<style>
+.swipe-example-autoplay {
+  height: 160px;
+}
+
+.swipe-item-example-autoplay {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
 ```
 
 ### 垂直轮播
 
 ```html
-<var-swipe class="swipe" vertical>
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
-  </var-swipe-item>
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
-  </var-swipe-item>
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
-  </var-swipe-item>
-</var-swipe>
+<template>
+  <var-swipe class="swipe-example-vertical" vertical>
+    <var-swipe-item>
+      <img class="swipe-item-example-vertical" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-item-example-vertical" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-item-example-vertical" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
+    </var-swipe-item>
+  </var-swipe>
+</template>
+
+<style>
+.swipe-example-vertical {
+  height: 160px;
+}
+
+.swipe-item-example-vertical {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
 ```
 
 ### 监听切换
 
 ```html
-<var-swipe class="swipe" @change="Snackbar">
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
-  </var-swipe-item>
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
-  </var-swipe-item>
-  <var-swipe-item>
-    <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
-  </var-swipe-item>
-</var-swipe>
-```
-
-```js
+<script setup>
 import { Snackbar } from '@varlet/ui'
+</script>
 
-export default {
-  setup() {
-    return { Snackbar }
-  }
+<template>
+  <var-swipe class="swipe-example-handle" @change="Snackbar">
+    <var-swipe-item>
+      <img class="swipe-item-example-handle" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-item-example-handle" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-item-example-handle" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
+    </var-swipe-item>
+  </var-swipe>
+</template>
+
+<style>
+.swipe-example-handle {
+  height: 160px;
 }
+
+.swipe-item-example-handle {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
 ```
 
 ### 自定义指示器
 
 ```html
-<var-swipe class="swipe">
-  <template #default>
-    <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
-    </var-swipe-item>
-    <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
-    </var-swipe-item>
-    <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
-    </var-swipe-item>
-  </template>
+<template>
+  <var-swipe class="swipe-example-indicators ">
+    <template #default>
+      <var-swipe-item>
+        <img class="swipe-item-example-indicators " src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+      </var-swipe-item>
+      <var-swipe-item>
+        <img class="swipe-item-example-indicators " src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
+      </var-swipe-item>
+      <var-swipe-item>
+        <img class="swipe-item-example-indicators " src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
+      </var-swipe-item>
+    </template>
 
-  <template #indicator="{ index, length }">
-    <div class="indicators">
-      {{ index + 1 }} / {{ length }}
-    </div>
-  </template>
-</var-swipe>
-```
+    <template #indicator="{ index, length }">
+      <div class="indicators">
+        {{ index + 1 }} / {{ length }}
+      </div>
+    </template>
+  </var-swipe>
+</template>
 
-```css
-.swipe {
+<style>
+.swipe-example-indicators  {
   height: 160px;
 }
 
-.swipe-item {
+.swipe-item-example-indicators {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.indicators {
+.swipe-example-indicators>.indicators {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -156,6 +200,7 @@ export default {
   font-size: 14px;
   background: rgba(0, 0, 0, 0.6);
 }
+</style>
 ```
 
 ## API

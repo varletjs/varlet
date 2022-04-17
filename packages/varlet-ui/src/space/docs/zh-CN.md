@@ -4,82 +4,87 @@
 
 组件库提供了 `<var-space>` 布局的组件，使您更有效率的进行 flex 布局。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Space } from '@varlet/ui'
-
-createApp().use(Space)
-```
-
 ### 基本用法
 
 ```html
-<var-space>
-  <var-button>Button1</var-button>
-  <var-button>Button2</var-button>
-  <var-button>Button3</var-button>
-</var-space>
+<template>
+  <var-space>
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+    <var-button>Button3</var-button>
+  </var-space>
+</template>
 ```
 
 ### 垂直
 
 ```html
-<var-space direction="column" size="large">
-  <var-button>Button1</var-button>
-  <var-button>Button2</var-button>
-  <var-button>Button3</var-button>
-</var-space>
+<template>
+  <var-space direction="column" size="large">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+    <var-button>Button3</var-button>
+  </var-space>
+</template>
 ```
 
 ### 间隙
 
 ```html
-<var-space :size="[20, 20]">
-  <var-button>Button1</var-button>
-  <var-button>Button2</var-button>
-  <var-button>Button3</var-button>
-  <var-button>Button4</var-button>
-  <var-button>Button5</var-button>
-  <var-button>Button6</var-button>
-</var-space>
+<template>
+  <var-space :size="[20, 20]">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+    <var-button>Button3</var-button>
+    <var-button>Button4</var-button>
+    <var-button>Button5</var-button>
+    <var-button>Button6</var-button>
+  </var-space>
+</template>
 ```
 
 ### 靠右
 
 ```html
-<var-space justify="end" >
-  <var-button>Button1</var-button>
-  <var-button>Button2</var-button>
-</var-space>
+<template>
+  <var-space justify="end">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+  </var-space>
+</template>
 ```
 
 ### 环绕
 
 ```html
-<var-space justify="space-around">
-  <var-button>Button1</var-button>
-  <var-button>Button2</var-button>
-</var-space>
+<template>
+  <var-space justify="space-around">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+  </var-space>
+</template>
 ```
 
 ### 居中
 
 ```html
-<var-space justify="center">
-  <var-button>Button1</var-button>
-  <var-button>Button2</var-button>
-</var-space>
+<template>
+  <var-space justify="center">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+  </var-space>
+</template>
 ```
 
 ### 两端对齐
 
 ```html
-<var-space justify="space-between">
-  <var-button>Button1</var-button>
-  <var-button>Button2</var-button>
-</var-space>
+<template>
+  <var-space justify="space-between">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+  </var-space>
+</template>
 ```
 
 

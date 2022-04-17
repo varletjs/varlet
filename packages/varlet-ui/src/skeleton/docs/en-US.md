@@ -4,107 +4,119 @@
 
 Display some space occupying elements with transition effect to optimize the loading process.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Skeleton } from '@varlet/ui'
-
-createApp().use(Skeleton)
-```
-
 ### Basic Use
 
 ```html
-<var-skeleton :loading="loading">Loading Data</var-skeleton>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const loading = ref(true)
+const loading = ref(true)
+</script>
 
-    return { loading }
-  }
-}
+<template>
+  <var-skeleton :loading="loading">Loading Data</var-skeleton>
+</template>
 ```
 
 ### Display Title
 
 ```html
-<var-skeleton title :loading="loading">Loading Data</var-skeleton>
+<script setup>
+import { ref } from 'vue'
+
+const loading = ref(true)
+</script>
+
+<template>
+  <var-skeleton title :loading="loading">Loading Data</var-skeleton>
+</template>
 ```
 
 ### Custom Rows Height
 
 ```html
-<var-skeleton
-  title
-  :rows="3"
-  :loading="loading"
-  :rows-width="['200px', '100px', '50px']"
->
-  Loading Data
-</var-skeleton>
+<script setup>
+import { ref } from 'vue'
+
+const loading = ref(true)
+</script>
+
+<template>
+  <var-skeleton
+    title
+    :rows="3"
+    :loading="loading"
+    :rows-width="['200px', '100px', '50px']"
+  >
+    Loading Data
+  </var-skeleton>
+</template>
 ```
 
 ### Display Avatar
 
 ```html
-<var-skeleton
-  title
-  avatar
-  :rows="3"
-  :loading="loading"
->
-	Loading Data
-</var-skeleton>
+<script setup>
+import { ref } from 'vue'
+
+const loading = ref(true)
+</script>
+
+<template>
+  <var-skeleton
+    title
+    avatar
+    :rows="3"
+    :loading="loading"
+  >
+    Loading Data
+  </var-skeleton>
+</template>
 ```
 
 ### Display Card
 
 ```html
-<var-skeleton
-  title
-  avatar
-  card
-  :rows="3"
-  :loading="loading"
->
-  Loading Data
-</var-skeleton>
+<script setup>
+import { ref } from 'vue'
+
+const loading = ref(true)
+</script>
+
+<template>
+  <var-skeleton
+    title
+    avatar
+    card
+    :rows="3"
+    :loading="loading"
+  >
+    Loading Data
+  </var-skeleton>
+</template>
 ```
 
 ### Fullscreen Mode
 
 ```html
-<var-button type="danger" @click="fullscreen">Toggle Fullscreen Mode</var-button>
-<var-skeleton fullscreen :loading="loading" />
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const loading = ref(false)
+const loading = ref(false)
 
-    const fullscreen = () => {
-      loading.value = true
+const fullscreen = () => {
+  loading.value = true
 
-      setTimeout(() => {
-        loading.value = false
-      }, 2000)
-    }
-
-    return {
-      loading,
-      fullscreen,
-    }
-  }
+  setTimeout(() => {
+    loading.value = false
+  }, 2000)
 }
+</script>
+
+<template>
+  <var-button type="danger" @click="fullscreen">Toggle Fullscreen Mode</var-button>
+  <var-skeleton fullscreen :loading="loading" />
+</template>
 ```
 
 ## API

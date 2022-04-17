@@ -1,71 +1,106 @@
 # 计数器
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Counter } from '@varlet/ui'
-
-createApp().use(Counter)
-```
-
 ### 基本使用
 
-```js
+```html
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(0)
+const value = ref(0)
+</script>
 
-    return { value }
-  }
-}
-```
-
-```html
-<var-counter v-model="value"/>
+<template>
+  <var-counter v-model="value"/>
+</template>
 ```
 
 ### 设置取值范围
 
 ```html
-<var-counter :min="0" :max="5" v-model="value"/>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-counter :min="0" :max="5" v-model="value"/>
+</template>
 ```
 
 ### 设置步长
 
 ```html
-<var-counter :step="10" v-model="value"/>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-counter :step="10" v-model="value"/>
+</template>
 ```
 
 ### 保留小数
 
 ```html
-<var-counter :decimal-length="1" v-model="value" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-counter :decimal-length="1" v-model="value" />
+</template>
 ```
 
 ### 设置尺寸
 
 ```html
-<var-counter
-  input-text-size="18px"
-  input-width="50px"
-  button-size="36px"
-  v-model="value"
-/>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-counter
+    input-text-size="18px"
+    input-width="50px"
+    button-size="36px"
+    v-model="value"
+  />
+</template>
 ```
 
 ### 禁用
 
 ```html
-<var-counter disabled v-model="value"/>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-counter disabled v-model="value"/>
+</template>
 ```
 
 ### 只读
 
 ```html
-<var-counter readonly v-model="value"/>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-counter readonly v-model="value"/>
+</template>
 ```
 
 ### 异步变更
@@ -75,30 +110,23 @@ export default {
 并注册 `before-change` 事件进行手动更新。
 
 ```html
-<var-counter
-  lazy-change
-  v-model="value"
-  @before-change="handleBeforeChange"
-/>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(0)
+const value = ref(0)
 
-    const handleBeforeChange = (value, change) => {
-      setTimeout(() => change(value), 500)
-    }
-
-    return {
-      value,
-      handleBeforeChange
-    }
-  }
+const handleBeforeChange = (value, change) => {
+  setTimeout(() => change(value), 500)
 }
+</script>
+
+<template>
+  <var-counter
+    lazy-change
+    v-model="value"
+    @before-change="handleBeforeChange"
+  />
+</template>
 ```
 
 ### 字段校验
@@ -107,10 +135,18 @@ export default {
 以外的值将转换为文本作为用户提示。
 
 ```html
-<var-counter
-  :rules="[v => v > 5 || '请选择大于5的值']"
-  v-model="value"
-/>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-counter
+    :rules="[v => v > 5 || '请选择大于5的值']"
+    v-model="value"
+  />
+</template>
 ```
 
 ## API

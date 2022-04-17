@@ -4,36 +4,19 @@
 提供了文件读取、图片/视频预览能力。
 通过监听 `after-read` 事件获取文件上传服务器。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Uploader } from '@varlet/ui'
-
-createApp().use(Uploader)
-```
-
 ### 基本使用
 
 ```html
-<var-uploader v-model="files" @after-read="handleAfterRead"/>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const files = ref([])
+const files = ref([])
+const handleAfterRead = file => console.log(file)
+</script>
 
-    const handleAfterRead = file => console.log(file)
-
-    return {
-      files,
-      handleAfterRead
-    }
-  }
-}
+<template>
+  <var-uploader v-model="files" @after-read="handleAfterRead"/>
+</template>
 ```
 
 ### 文件预览
@@ -41,28 +24,24 @@ export default {
 通过分析文件的 url 后缀名判断文件类型，支持图片和视频预览。
 
 ```html
-<var-uploader v-model="files"/>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const files = ref([
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg'
-      },
-      {
-        url: 'https://www.runoob.com/try/demo_source/mov_bbb.mp4',
-        cover: 'https://varlet.gitee.io/varlet-ui/cover.jpg'
-      }
-    ])
-
-    return { files }
+const files = ref([
+  {
+    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg'
+  },
+  {
+    url: 'https://www.runoob.com/try/demo_source/mov_bbb.mp4',
+    cover: 'https://varlet.gitee.io/varlet-ui/cover.jpg'
   }
-}
+])
+</script>
+
+<template>
+  <var-uploader v-model="files"/>
+</template>
 ```
 
 ### 上传状态
@@ -70,52 +49,53 @@ export default {
 提供了 `loading`、 `success`、 `error` 三种上传状态，并提供了工具函数快速获取对应状态的文件。
 
 ```html
-<var-uploader v-model="files" @after-read="handleAfterRead"/>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const files = ref([
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        state: 'loading'
-      },
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        state: 'success'
-      },
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        state: 'error'
-      }
-    ])
-
-    const handleAfterRead = (file) => {
-      file.state = 'loading'
-
-      setTimeout(() => {
-        file.state = 'success'
-      }, 1000)
-    }
-
-    return {
-      files,
-      handleAfterRead
-    }
+const files = ref([
+  {
+    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    state: 'loading'
+  },
+  {
+    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    state: 'success'
+  },
+  {
+    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    state: 'error'
   }
+])
+
+const handleAfterRead = (file) => {
+  file.state = 'loading'
+
+  setTimeout(() => {
+    file.state = 'success'
+  }, 1000)
 }
+</script>
+
+<template>
+  <var-uploader v-model="files" @after-read="handleAfterRead"/>
+</template>
 ```
 
 ### 文件数量限制
 
 ```html
-<var-uploader v-model="files" :maxlength="1"/>
+<script setup>
+import { ref } from 'vue'
+
+const files = ref([])
+</script>
+
+<template>
+  <var-uploader v-model="files" :maxlength="1"/>
+</template>
 ```
 
 ### 文件大小限制
@@ -123,27 +103,20 @@ export default {
 超过限制会被阻止读取，可以通过监听 `oversize` 事件获取文件。
 
 ```html
-<var-uploader v-model="files" :maxsize="1024" @oversize="handleOversize" />
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const files = ref([])
+const files = ref([])
 
-    const handleOversize = () => {
-      Snackbar.warning('文件大小超出限制')
-    }
-
-    return {
-      files,
-      handleAfterRead
-    }
-  },
+const handleOversize = () => {
+  Snackbar.warning('文件大小超出限制')
 }
+</script>
+
+<template>
+  <var-uploader v-model="files" :maxsize="1024" @oversize="handleOversize" />
+</template>
 ```
 
 ### 上传预处理
@@ -151,45 +124,54 @@ export default {
 通过注册 `before-read` 事件对文件进行操作，返回假值阻止文件读取。
 
 ```html
-<var-uploader v-model="files" @before-read="handleBeforeRead"/>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const files = ref([])
+const files = ref([])
 
-    const handleBeforeRead = (file) => {
-      if (file.file.size <= 1 * 1024 * 1024) {
-        Snackbar.success('文件小于1M，上传成功')
-        return true
-      } else {
-        Snackbar.warning('文件大于1M，不能上传')
-        return false
-      }
-    }
-
-    return {
-      files,
-      handleAfterRead
-    }
+const handleBeforeRead = (file) => {
+  if (file.file.size <= 1 * 1024 * 1024) {
+    Snackbar.success('文件小于1M，上传成功')
+    return true
+  } else {
+    Snackbar.warning('文件大于1M，不能上传')
+    return false
   }
 }
+</script>
+
+<template>
+  <var-uploader v-model="files" @before-read="handleBeforeRead"/>
+</template>
 ```
 
 ### 禁用
 
 ```html
-<var-uploader disabled v-model="files"/>
+<script setup>
+import { ref } from 'vue'
+
+const files = ref([])
+</script>
+
+<template>
+  <var-uploader disabled v-model="files"/>
+</template>
 ```
 
 ### 只读
 
 ```html
-<var-uploader readonly v-model="files"/>
+<script setup>
+import { ref } from 'vue'
+
+const files = ref([])
+</script>
+
+<template>
+  <var-uploader readonly v-model="files"/>
+</template>
 ```
 
 ### 删除前处理
@@ -197,44 +179,46 @@ export default {
 删除文件之前会触发 `before-remove` 事件，返回假值阻止删除操作。
 
 ```html
-<var-uploader v-model="files" @before-remove="handleBeforeRemove" />
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
+import { Dialog } from '@varlet/ui'
 
-export default {
-  setup() {
-    const files = ref([
-      {
-        url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-        cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg'
-      }
-    ])
-
-    const handleBeforeRemove = async () => {
-      const action = await Dialog({
-        title: '是否删除?',
-        message: '删除后无法撤回'
-      })
-
-      return action === 'confirm'
-    }
-
-    return {
-      files,
-      handleBeforeRemove
-    }
+const files = ref([
+  {
+    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg'
   }
+])
+
+const handleBeforeRemove = async () => {
+  const action = await Dialog({
+    title: '是否删除?',
+    message: '删除后无法撤回'
+  })
+
+  return action === 'confirm'
 }
+</script>
+
+<template>
+  <var-uploader v-model="files" @before-remove="handleBeforeRemove" />
+</template>
 ```
 
 ### 自定义上传样式
 
 ```html
-<var-uploader v-model="files">
-  <var-button type="primary">上传</var-button>
-</var-uploader>
+<script setup>
+import { ref } from 'vue'
+
+const files = ref()
+</script>
+
+<template>
+  <var-uploader v-model="files">
+    <var-button type="primary">上传</var-button>
+  </var-uploader>
+</template>
 ```
 
 ### 字段校验
@@ -244,10 +228,24 @@ export default {
 第二个参数是一个工具函数集合，可以快速获取符合状态的文件集合。
 
 ```html
-<var-uploader
-  :rules="[(v, u) => u.getError().length === 0 || '存在上传失败的文件']"
-  v-model="files"
-/>
+<script setup>
+import { ref } from 'vue'
+
+const files = ref([
+  {
+    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    state: 'error',
+  },
+])
+</script>
+
+<template>
+  <var-uploader
+    :rules="[(v, u) => u.getError().length === 0 || '存在上传失败的文件']"
+    v-model="files"
+  />
+</template>
 ```
 
 ### 自定义渲染
@@ -255,29 +253,53 @@ export default {
 通过 `hide-list` 隐藏组件的文件列表，自定义文件列表的渲染逻辑
 
 ```html
-<var-space>
-  <img
-    class="custom-uploader-file"
-    v-for="f in files"
-    :key="f.id"
-    :src="f.cover"
-  />
-  <var-uploader hide-list v-model="files">
-    <var-button round type="primary">
-      <var-icon :size="28" name="upload" />
-    </var-button>
-  </var-uploader>
-</var-space>
-```
+<script setup>
+import { ref } from 'vue'
 
-```css
-.custom-uploader-file {
+const files = ref([
+  {
+    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    state: 'loading',
+  },
+  {
+    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    state: 'success',
+  },
+  {
+    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    state: 'error',
+  },
+])
+</script>
+
+<template>
+  <var-space>
+    <img
+      class="uploader-example-file"
+      v-for="f in files"
+      :key="f.id"
+      :src="f.cover"
+    />
+    <var-uploader hide-list v-model="files">
+      <var-button round type="primary">
+        <var-icon :size="28" name="upload" />
+      </var-button>
+    </var-uploader>
+  </var-space>
+</template>
+
+<style>
+.uploader-example-file {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   font-size: 12px;
   object-fit: cover;
 }
+</style>
 ```
 
 ## API

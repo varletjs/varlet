@@ -156,3 +156,7 @@ export function watchDarkMode(dark: StyleVars, cb?: (themes: 'darkThemes' | 'the
     cb?.(themes)
   })
 }
+
+export function utoa(data: string): string {
+  return btoa(unescape(encodeURIComponent(data)))
+}

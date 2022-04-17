@@ -26,8 +26,8 @@ import { defineComponent, watch, ref, nextTick } from 'vue'
 import { isURL, toNumber } from '../utils/shared'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
-import type { Ref } from 'vue'
 import { createNamespace } from '../utils/components'
+import type { Ref } from 'vue'
 
 const { n, classes } = createNamespace('icon')
 

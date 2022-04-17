@@ -5,96 +5,106 @@
 组件提供了更方便的尺寸，填充模式，圆角的设置方式，水波效果增强图片点击交互体验。
 支持 `懒加载`、 `loading 图片`、 `error 图片`、应用 `Lazy` 指令的默认设置。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Image } from '@varlet/ui'
-
-createApp().use(Image)
-```
-
 ### 基本使用
 
 ```html
-<var-image src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+<template>
+  <var-image src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+</template>
 ```
 
 ### 填充模式
 
 ```html
-<var-image width="85px" height="85px" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+<template>
+  <var-space :size="[20, 20]">
+    <var-image width="85px" height="85px" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
 
-<var-image
-  width="85px"
-  height="85px"
-  fit="cover"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-/>
+    <var-image 
+      width="85px" 
+      height="85px"
+      fit="cover" 
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
+    />
 
-<var-image
-  width="85px"
-  height="85px"
-  fit="contain"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-/>
+    <var-image 
+      width="85px"
+      height="85px" 
+      fit="contain"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
+    />
 
-<var-image
-  width="85px"
-  height="85px"
-  fit="none"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-/>
+    <var-image 
+      width="85px"
+      height="85px"
+      fit="none"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    />
 
-<var-image
-  width="85px"
-  height="85px"
-  fit="scale-down"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-/>
+    <var-image 
+      width="85px"
+      height="85px" 
+      fit="scale-down"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
+    />
+  </var-space>
+</template>
 ```
 
 ### 设置圆角
 
 ```html
-<var-image
-  width="85px"
-  height="85px"
-  fit="cover"
-  :radius="10"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-/>
+<template>
+  <var-space :size="[20, 20]">
+    <var-image
+      width="85px"
+      height="85px"
+      fit="cover"
+      :radius="10"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    />
 
-<var-image
-  width="85px"
-  height="85px"
-  fit="cover"
-  radius="50%"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-/>
+    <var-image
+      width="85px"
+      height="85px"
+      fit="cover"
+      radius="50%"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    />
+  </var-space>
+</template>
 ```
 
 ### 开启水波
 
 ```html
-<var-image ripple src="https://varlet.gitee.io/varlet-ui/cat.jpg"/>
+<template>
+  <var-image width="85px" height="85px" ripple src="https://varlet.gitee.io/varlet-ui/cat.jpg"/>
+</template>
 ```
 
 ### 开启懒加载
 
 ```html
-<var-image lazy src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+<template>
+  <var-image width="85px" height="85px"  lazy src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+</template>
 ```
 
 ### 设置懒加载状态图片
 
 ```html
-<var-image
-  lazy
-  loading="https://xxx.xxx/loading.png"
-  error="https://xxx.xxx/error.png"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-/>
+<!-- playground-ignore -->
+<template>
+  <var-image 
+    lazy
+    width="85px" 
+    height="85px"
+    loading="https://xxx.xxx/loading.png"
+    error="https://xxx.xxx/error.png"
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+  />
+</template>
 ```
 
 ### 使用本地路径
@@ -105,22 +115,22 @@ createApp().use(Image)
 #### Webpack
 
 ```html
-<var-image :src="require('../../assets/logo.png')"/>
+<!-- playground-ignore -->
+<template>
+  <var-image :src="require('../../assets/logo.png')"/>
+</template>
 ```
 
 #### Vite
 ```html
-<var-image :src="logo"/>
-```
-
-```js
+<!-- playground-ignore -->
+<script setup>
 import logo from '../../assets/logo.png'
+</script>
 
-export default {
-  setup() {
-    return { logo }
-  }
-}
+<template>
+  <var-image :src="logo"/>
+</template>
 ```
 
 ## API

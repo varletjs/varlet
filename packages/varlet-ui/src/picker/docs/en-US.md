@@ -3,41 +3,49 @@
 ### Intro
 Provides two kinds of function and component call mode support cascading mode at the same time, can handle multilevel linkage.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Picker } from '@varlet/ui'
-
-createApp().use(Picker)
-```
-
-### Scoped Install
-
-```js
-import { Picker } from '@varlet/ui'
-
-export default {
-  components: {
-    [Picker.Component.name]: Picker
-  }
-}
-```
-
 ## Function Call
+
+### Single-column Picker
+
+```html
+<script setup>
+import { Picker } from '@varlet/ui'
+
+const columns = [Array.from({ length: 20 }).map((_, index) => index)]
+
+const picker = async () => {
+  await Picker(columns)
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">Single Column Picker</var-button>
+</template>
+```
 
 ### Multi-column Picker
 
 A two-dimensional array is passed in, and each entry of the array is the contents of each column.
 Returns the user triggered status, selected text, and selected index.
 
-```js
+```html
+<script setup>
+import { Picker } from '@varlet/ui'
+
 const columns = [
   Array.from({ length: 20 }).map((_, index) => index),
   Array.from({ length: 20 }).map((_, index) => index),
   Array.from({ length: 20 }).map((_, index) => index)
 ]
-const { state, texts, indexes } = await Picker(columns)
+
+const picker = async () => {
+  const { state, texts, indexes } = await Picker(columns)
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">Multiple Column Picker</var-button>
+</template>
 ```
 
 ### Cascade Picker
@@ -45,88 +53,71 @@ const { state, texts, indexes } = await Picker(columns)
 Passing in a `cascade` attribute starts cascading.
 Built-in component library provides a three-level linkage between provinces and municipalities, import `area.json`.
 
-```js
+```html
+<script setup>
+import { Picker } from '@varlet/ui'
 import columns from '@varlet/ui/json/area.json'
 
-const { state, texts, indexes } = await Picker({
-  cascade: true,
-  columns
-})
+const picker = async () => {
+  const { state, texts, indexes } = await Picker({
+    cascade: true,
+    columns
+  })
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">Cascade Column Picker</var-button>
+</template>
 ```
 
 ## Component Call
 
+### Single-column Picker
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([Array.from({ length: 20 }).map((_, index) => index)])
+</script>
+
+<template>
+  <var-picker :columns="columns" />
+</template>
+```
+
 ### Multi-column Picker
 
 ```html
-<var-picker :columns="columns" />
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const columns = ref([
-      Array.from({ length: 20 }).map((_, index) => index),
-      Array.from({ length: 20 }).map((_, index) => index),
-      Array.from({ length: 20 }).map((_, index) => index),
-    ])
+const columns = ref([
+  Array.from({ length: 20 }).map((_, index) => index),
+  Array.from({ length: 20 }).map((_, index) => index),
+  Array.from({ length: 20 }).map((_, index) => index)
+])
+</script>
 
-    return { columns }
-  }
-}
+<template>
+  <var-picker :columns="columns" />
+</template>
 ```
 
 ### Cascade Picker
 
 ```html
-<var-picker cascade :columns="columns" />
-```
-
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const columns = ref([
-      {
-        text: '北京市',
-        children: [
-          {
-            text: '市辖区'
-          }
-        ]
-      },
-      {
-        text: '河北省',
-        children: [
-          {
-            text: '石家庄市'
-          }
-        ]
-      }
-    ])
-
-    return { columns }
-  }
-}
-```
-
-### The three-level linkage between the provincial and municipal levels
-The component library provides complete provincial information and can be used directly.
-
-```js
+<script setup>
 import { ref } from 'vue'
 import area from '@varlet/ui/json/area.json'
 
-export default {
-  setup() {
-    const columns = ref(area)
+const columns = ref(area)
+</script>
 
-    return { columns }
-  }
-}
+<template>
+  <var-picker cascade :columns="columns" />
+</template>
 ```
 
 ## API

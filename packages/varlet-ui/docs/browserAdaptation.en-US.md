@@ -12,6 +12,7 @@ It is recommended to use PostCSS plugin to convert `px` units into `vw` units to
 Create `postcss.config.js` under the `Webpack/Vite` project root path And do the following configuration `375px -> 100vw`
 
 ```shell
+# playground-ignore
 # npm
 npm i postcss-px-to-viewport -D
 
@@ -23,6 +24,7 @@ pnpm add postcss-px-to-viewport -D
 ```
 
 ```js
+// playground-ignore
 // postcss.config.js
 module.exports = {
   plugins: {
@@ -41,6 +43,7 @@ Because component library interaction events are developed using `touch` events,
 It is recommended to use `@varlet/touch-emulator` to set `touch -> mouse` for desktop adaptation.
 
 ```shell
+# playground-ignore
 # npm
 npm i @varlet/touch-emulator
 # yarn
@@ -48,5 +51,6 @@ yarn add @varlet/touch-emulator
 ```
 
 ```js
+// playground-ignore
 import '@varlet/touch-emulator'
 ```
