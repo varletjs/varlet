@@ -129,7 +129,7 @@ import logo from '../../assets/logo.png'
 </script>
 
 <template>
-<var-image :src="logo"/>
+  <var-image :src="logo"/>
 </template>
 ```
 
