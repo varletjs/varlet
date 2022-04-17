@@ -4,42 +4,27 @@
 
 A content area which can be collapsed and expanded.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Collapse, CollapseItem } from '@varlet/ui'
-
-createApp().use(Collapse).use(CollapseItem)
-```
-
 ### Basic Usage
 
 Use `v-model` to control the name of active panels. `value` is an Array.
 
 ```html
-<var-collapse v-model="value" @change="changeHandle">
-  <var-collapse-item title="Title" name="1">Hello World</var-collapse-item>
-  <var-collapse-item title="Title" name="2">Hello World</var-collapse-item>
-</var-collapse>
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(['1'])
+const value = ref(['1'])
 
-    const changeHandle = (val) => {
-      console.log(val)
-    }
-    
-    return {
-      value,
-      changeHandle
-    }
-  }
+const changeHandle = (val) => {
+  console.log(val)
 }
+</script>
+
+<template>
+  <var-collapse v-model="value" @change="changeHandle">
+    <var-collapse-item title="Title" name="1">Hello World</var-collapse-item>
+    <var-collapse-item title="Title" name="2">Hello World</var-collapse-item>
+  </var-collapse>
+</template>
 ```
 
 ### Hide The Margin
@@ -47,10 +32,18 @@ export default {
 Use `offset` prop to hide the margin.
 
 ```html
-<var-collapse v-model="value" :offset="false">
-  <var-collapse-item title="Title" name="1">Hello World</var-collapse-item>
-  <var-collapse-item title="Title" name="2">Hello World</var-collapse-item>
-</var-collapse>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(['2'])
+</script>
+
+<template>
+  <var-collapse v-model="value" :offset="false">
+    <var-collapse-item title="Title" name="1">Hello World</var-collapse-item>
+    <var-collapse-item title="Title" name="2">Hello World</var-collapse-item>
+  </var-collapse>
+</template>
 ```
 
 ### Accordion Mode
@@ -58,23 +51,18 @@ Use `offset` prop to hide the margin.
 Use `accordion` prop to open accordion mode, In this case `value` is a String.
 
 ```html
-<var-collapse v-model="value" accordion :offset="false">
-  <var-collapse-item title="Title" name="1">Hello World</var-collapse-item>
-  <var-collapse-item title="Title" name="2">Hello World</var-collapse-item>
-</var-collapse>
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref('')
-    
-    return {
-      value
-    }
-  }
-}
+const value = ref('')
+</script>
+
+<template>
+  <var-collapse v-model="value" accordion :offset="false">
+    <var-collapse-item title="Title" name="1">Hello World</var-collapse-item>
+    <var-collapse-item title="Title" name="2">Hello World</var-collapse-item>
+  </var-collapse>
+</template>
 ```
 
 ### Disabled
@@ -82,47 +70,53 @@ export default {
 Use the `disabled` prop to disable CollapseItem.
 
 ```html
-<var-button @click="disabled = !disabled" style="margin-bottom: 8px">
-  {{ disabled ? 'enable' : 'disable' }}
-</var-button>
-<var-collapse v-model="value">
-  <var-collapse-item title="Title" :name="1" :disabled="disabled">
-    Hello World
-  </var-collapse-item>
-  <var-collapse-item title="Title" :name="2" :disabled="disabled">
-    Hello World
-  </var-collapse-item>
-</var-collapse>
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref([1])
-    const disabled = ref(false)
+const value = ref([1])
 
-    return {
-      value,
-      disabled
-    }
-  }
-}
+const disabled = ref(false)  
+</script>
+
+<template>
+  <var-space direction="column" :size="[8, 8]">
+    <var-button @click="disabled = !disabled">
+      {{ disabled ? 'enable' : 'disable' }}
+    </var-button>
+    
+    <var-collapse v-model="value">
+      <var-collapse-item title="Title" :name="1" :disabled="disabled">
+        Hello World
+      </var-collapse-item>
+      <var-collapse-item title="Title" :name="2" :disabled="disabled">
+        Hello World
+      </var-collapse-item>
+    </var-collapse>
+  </var-space>
+</template>
 ```
 
 ### Custom Content
 
 ```html
-<var-collapse v-model="value">
-  <var-collapse-item title="This is a Title" name="1" icon="account-circle">
-    Hello World
-  </var-collapse-item>
-  <var-collapse-item name="2">
-    <template #title>This is a Title</template>
-    <template #icon>^_^</template>
-    This is a content
-  </var-collapse-item>
-</var-collapse>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(['1'])  
+</script>
+
+<template>
+  <var-collapse v-model="value">
+    <var-collapse-item title="This is a Title" name="1" icon="account-circle">
+      Hello World
+    </var-collapse-item>
+    <var-collapse-item name="2">
+      <template #title>This is a Title</template>
+      <template #icon>^_^</template>
+      This is a content
+    </var-collapse-item>
+  </var-collapse>
+</template>
 ```
 
 ## API

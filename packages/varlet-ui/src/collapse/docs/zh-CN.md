@@ -4,53 +4,45 @@
 
 可以折叠/展开的内容区域。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Collapse, CollapseItem } from '@varlet/ui'
-
-createApp().use(Collapse).use(CollapseItem)
-```
-
 ### 基本使用
 
 通过 `v-model` 控制展开的面板列表，`value` 为数组格式。
 
 ```html
-<var-collapse v-model="value" @change="changeHandle">
-  <var-collapse-item title="标题" name="1">文本</var-collapse-item>
-  <var-collapse-item title="标题" name="2">文本</var-collapse-item>
-</var-collapse>
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(['1'])
+const value = ref(['1'])
 
-    const changeHandle = (val) => {
-      console.log(val)
-    }
-
-    return {
-      value,
-      changeHandle
-    }
-  }
+const changeHandle = (val) => {
+  console.log(val)
 }
-```
+</script>
 
+<template>
+  <var-collapse v-model="value" @change="changeHandle">
+    <var-collapse-item title="标题" name="1">文本</var-collapse-item>
+    <var-collapse-item title="标题" name="2">文本</var-collapse-item>
+  </var-collapse>
+</template>
+```
 ### 隐藏边距
 
 使用 `offset` 属性隐藏边距。
 
 ```html
-<var-collapse v-model="value" :offset="false">
-  <var-collapse-item title="标题" name="1">文本</var-collapse-item>
-  <var-collapse-item title="标题" name="2">文本</var-collapse-item>
-</var-collapse>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(['2'])
+</script>
+
+<template>
+  <var-collapse v-model="value" :offset="false">
+    <var-collapse-item title="标题" name="1">文本</var-collapse-item>
+    <var-collapse-item title="标题" name="2">文本</var-collapse-item>
+  </var-collapse>
+</template>
 ```
 
 ### 手风琴模式
@@ -58,23 +50,18 @@ export default {
 使用 `accordion` 属性开启手风琴模式，此时 `value` 为字符串。
 
 ```html
-<var-collapse v-model="value" accordion :offset="false">
-  <var-collapse-item title="标题" name="1">文本</var-collapse-item>
-  <var-collapse-item title="标题" name="2">文本</var-collapse-item>
-</var-collapse>
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref('')
+const value = ref('')
+</script>
 
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-collapse v-model="value" accordion :offset="false">
+    <var-collapse-item title="标题" name="1">文本</var-collapse-item>
+    <var-collapse-item title="标题" name="2">文本</var-collapse-item>
+  </var-collapse>
+</template>
 ```
 
 ### 禁用
@@ -82,47 +69,53 @@ export default {
 在 `collapse-item` 上使用 `disabled` 属性禁用当前面板。
 
 ```html
-<var-button @click="disabled = !disabled" style="margin-bottom: 8px">
-  {{ disabled ? '启用' : '禁用' }}
-</var-button>
-<var-collapse v-model="value">
-  <var-collapse-item title="标题" :name="1" :disabled="disabled">
-    文本
-  </var-collapse-item>
-  <var-collapse-item title="标题" :name="2" :disabled="disabled">
-    文本
-  </var-collapse-item>
-</var-collapse>
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref([1])
-    const disabled = ref(false)
+const value = ref([1])
 
-    return {
-      value,
-      disabled
-    }
-  }
-}
+const disabled = ref(false)  
+</script>
+
+<template>
+  <var-space direction="column" :size="[8, 8]">
+    <var-button @click="disabled = !disabled">
+      {{ disabled ? '启用' : '禁用' }}
+    </var-button>
+    
+    <var-collapse v-model="value">
+      <var-collapse-item title="标题" :name="1" :disabled="disabled">
+        文本
+      </var-collapse-item>
+      <var-collapse-item title="标题" :name="2" :disabled="disabled">
+        文本
+      </var-collapse-item>
+    </var-collapse>
+  </var-space>
+</template>
 ```
 
 ### 自定义内容
 
 ```html
-<var-collapse v-model="value">
-  <var-collapse-item title="这是标题" name="1" icon="account-circle">
-    文本
-  </var-collapse-item>
-  <var-collapse-item name="2">
-    <template #title>这是标题</template>
-    <template #icon>^_^</template>
-    这是内容
-  </var-collapse-item>
-</var-collapse>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(['1'])  
+</script>
+
+<template>
+  <var-collapse v-model="value">
+    <var-collapse-item title="这是标题" name="1" icon="account-circle">
+      文本
+    </var-collapse-item>
+    <var-collapse-item name="2">
+      <template #title>这是标题</template>
+      <template #icon>^_^</template>
+      这是内容
+    </var-collapse-item>
+  </var-collapse>
+</template>
 ```
 
 ## API
