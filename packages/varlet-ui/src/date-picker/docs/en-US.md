@@ -8,7 +8,6 @@ Used to select a date or date range.
 ```html
 <script setup>
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
 const date = ref('2021-04-08')
 </script>
@@ -25,7 +24,6 @@ Use `type` prop to change the type of the picker. The default value of `type` is
 ```html
 <script setup>
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
 const date = ref('2021-04-08')
 </script>
@@ -41,7 +39,6 @@ Use `multiple` prop to select multiple dates, at this time, `date` is an array.
 ```html
 <script setup>
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
 const date = ref([])
 </script>
@@ -56,7 +53,6 @@ Use `range` prop to select date range, at this time, `date` is `[startDate, endD
 ```html
 <script setup>
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
 const date = ref(['2021-04-08', '2021-04-20'])
 </script>
@@ -71,7 +67,6 @@ Use `min` and `max` prop to allow the maximum and minimum date, and use `allowed
 ```html
 <script setup>
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
 const date = ref('2020-11-11')
 
@@ -94,7 +89,6 @@ const allowedDates = (val) => {
 ```html
 <script setup>
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
 const date = ref('2021-02')
 

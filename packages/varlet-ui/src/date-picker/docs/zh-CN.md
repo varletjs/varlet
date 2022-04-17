@@ -9,7 +9,6 @@
 ```html
 <script setup>
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
 const date = ref('2021-04-08')
 </script>
@@ -26,7 +25,6 @@ const date = ref('2021-04-08')
 ```html
 <script setup>
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
 const date = ref('2021-04-08')
 </script>
@@ -42,7 +40,6 @@ const date = ref('2021-04-08')
 ```html
 <script setup>
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
 const date = ref([])
 </script>
@@ -58,7 +55,6 @@ const date = ref([])
 ```html
 <script setup>
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
 const date = ref(['2021-04-08', '2021-04-20'])
 </script>
@@ -74,7 +70,6 @@ const date = ref(['2021-04-08', '2021-04-20'])
 ```html
 <script setup>
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
 const date = ref('2020-11-11')
 
@@ -98,7 +93,6 @@ const allowedDates = (val) => {
 ```html
 <script setup>
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
 const date = ref('2021-02')
 

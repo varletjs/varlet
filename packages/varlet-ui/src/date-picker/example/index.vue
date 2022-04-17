@@ -12,7 +12,7 @@ const dates = reactive({
   date2: ['', ''],
   date3: ['2021-02-01', '2021-02-15'],
   date4: '2020-11-11',
-  date5: '2021-02',
+  date5: '2021-05',
 })
 
 const allowedDates = (date) => {
@@ -30,52 +30,39 @@ watchDarkMode(dark)
 </script>
 
 <template>
-  <div>
-    <app-type>{{ pack.basicUsage }}</app-type>
-    <var-date-picker v-model="dates.date1" />
-  </div>
-  <div>
-    <app-type>{{ pack.monthPicker }}</app-type>
-    <var-date-picker type="month" v-model="dates.date" shadow />
-  </div>
-  <div>
-    <app-type>{{ pack.multiple }}</app-type>
-    <var-date-picker type="date" v-model="dates.date2" multiple />
-  </div>
-  <div>
-    <app-type>{{ pack.range }}</app-type>
-    <var-date-picker type="date" v-model="dates.date3" range />
-  </div>
-  <div>
-    <app-type>{{ pack.dateLimit }}</app-type>
-    <var-date-picker
-      type="date"
-      v-model="dates.date4"
-      min="2020-10-15"
-      max="2021-01-15"
-      :allowed-dates="allowedDates1"
-    />
-  </div>
-  <div style="padding-bottom: 20px">
-    <app-type>{{ pack.custom }}</app-type>
-    <var-date-picker
-      type="month"
-      :allowed-dates="allowedDates"
-      v-model="dates.date5"
-      max="2022-01"
-      min="2016-07"
-      shadow
-      header-color="purple"
-      color="#7bb872"
-      first-day-of-week="1"
-      @change="change"
-    >
-      <template #year="{ year }">
-        <span>{{ year }}{{ pack.year }}</span>
-      </template>
-      <template #month="{ year, month }">
-        <span>{{ year }}{{ pack.divider }}{{ month }}{{ pack.month }}</span>
-      </template>
-    </var-date-picker>
-  </div>
+  <app-type>{{ pack.basicUsage }}</app-type>
+  <var-date-picker v-model="dates.date1" />
+
+  <app-type>{{ pack.monthPicker }}</app-type>
+  <var-date-picker type="month" v-model="dates.date" shadow />
+
+  <app-type>{{ pack.multiple }}</app-type>
+  <var-date-picker type="date" v-model="dates.date2" multiple />
+
+  <app-type>{{ pack.range }}</app-type>
+  <var-date-picker type="date" v-model="dates.date3" range />
+
+  <app-type>{{ pack.dateLimit }}</app-type>
+  <var-date-picker type="date" v-model="dates.date4" min="2020-10-15" max="2021-01-15" :allowed-dates="allowedDates1" />
+
+  <app-type>{{ pack.custom }}</app-type>
+  <var-date-picker
+    type="month"
+    :allowed-dates="allowedDates"
+    v-model="dates.date5"
+    max="2022-01"
+    min="2016-07"
+    shadow
+    header-color="purple"
+    color="#7bb872"
+    first-day-of-week="1"
+    @change="change"
+  >
+    <template #year="{ year }">
+      <span>{{ year }}{{ pack.year }}</span>
+    </template>
+    <template #month="{ year, month }">
+      <span>{{ year }}{{ pack.divider }}{{ month }}{{ pack.month }}</span>
+    </template>
+  </var-date-picker>
 </template>
