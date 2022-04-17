@@ -27,7 +27,7 @@ createApp().use(Popup)
 
 <template>
   <var-button
-    class="mt-10"
+    class="popup-example-mt-10"
     type="primary"
     block
     @click="center = true"
@@ -35,7 +35,7 @@ createApp().use(Popup)
     居中弹出
   </var-button>
   <var-button
-    class="mt-10"
+    class="popup-example-mt-10"
     type="primary"
     block
     @click="bottom = true"
@@ -43,7 +43,7 @@ createApp().use(Popup)
     下方弹出
   </var-button>
   <var-button
-    class="mt-10"
+    class="popup-example-mt-10"
     type="primary"
     block
     @click="top = true"
@@ -51,7 +51,7 @@ createApp().use(Popup)
     上方弹出
   </var-button>
   <var-button
-    class="mt-10"
+    class="popup-example-mt-10"
     type="primary"
     block
     @click="left = true"
@@ -59,57 +59,52 @@ createApp().use(Popup)
     左侧弹出
   </var-button>
   <var-button
-    class="mt-10"
+    class="popup-example-mt-10"
     type="primary"
     block
     @click="right = true"
   >
     右侧弹出
   </var-button>
-
-  // 居中弹出
+  
   <var-popup v-model:show="center">
-    <div class="block">
+    <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
       瓶身描绘的牡丹一如你初妆,
       冉冉檀香透过窗心事我了然,
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-
-  // 下方弹出
+  
   <var-popup position="bottom" v-model:show="bottom">
-    <div class="block">
+    <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
       瓶身描绘的牡丹一如你初妆,
       冉冉檀香透过窗心事我了然,
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-
-  // 上方弹出
+  
   <var-popup position="top" v-model:show="top">
-    <div class="block">
+    <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
       瓶身描绘的牡丹一如你初妆,
       冉冉檀香透过窗心事我了然,
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-
-  // 左侧弹出
+  
   <var-popup position="left" v-model:show="left">
-    <div class="block">
+    <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
       瓶身描绘的牡丹一如你初妆,
       冉冉檀香透过窗心事我了然,
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-
-  // 右侧弹出
+  
   <var-popup position="right" v-model:show="right">
-    <div class="block">
+    <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
       瓶身描绘的牡丹一如你初妆,
       冉冉檀香透过窗心事我了然,
@@ -117,17 +112,17 @@ createApp().use(Popup)
     </div>
   </var-popup>
 </template>
-```
 
-```css
-.mt-10 {
-  margin-top: 10px;
-}
+<style>
+  .popup-example-mt-10 {
+    margin-top: 10px;
+  }
 
-.block {
-  padding: 20px 24px;
-  width: 250px;
-}
+  .popup-example-block {
+    padding: 20px 24px;
+    width: 250px;
+  }
+</style>
 ```
 
 ### 遮罩层样式
@@ -142,7 +137,7 @@ createApp().use(Popup)
 
 <template>
   <var-button
-    class="mt-10"
+    class="popup-example-mt-10"
     type="primary"
     block
     @click="overlayClass = true"
@@ -150,35 +145,33 @@ createApp().use(Popup)
     遮罩层 class
   </var-button>
   <var-button
-    class="mt-10"
+    class="popup-example-mt-10"
     type="primary"
     block
     @click="overlayStyle = true"
   >
     遮罩层 style
   </var-button>
-
-  // 遮罩层 class
+  
   <var-popup
-    overlay-class="custom-overlay"
+    overlay-class="popup-example-custom-overlay"
     v-model:show="overlayClass"
   >
-    <div class="block">
+    <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
       瓶身描绘的牡丹一如你初妆,
       冉冉檀香透过窗心事我了然,
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-
-  // 遮罩层 style
+  
   <var-popup
     :overlay-style="{
     backgroundColor: 'rgba(0, 0, 0, 0.3)'
   }"
     v-model:show="overlayStyle"
   >
-    <div class="block">
+    <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
       瓶身描绘的牡丹一如你初妆,
       冉冉檀香透过窗心事我了然,
@@ -186,23 +179,21 @@ createApp().use(Popup)
     </div>
   </var-popup>
 </template>
-```
 
-```css
-/* normal css */
-.custom-overlay {
-  background: rgba(0, 0, 0, 0.3);
-}
+<style>
+  .popup-example-custom-overlay {
+    background: rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  .popup-example-mt-10 {
+    margin-top: 10px;
+  }
 
-/* scoped css */
-.mt-10 {
-  margin-top: 10px;
-}
-
-.block {
-  padding: 20px 24px;
-  width: 250px;
-}
+  .popup-example-block {
+    padding: 20px 24px;
+    width: 250px;
+  }
+</style>
 ```
 
 ### 注册事件
@@ -217,7 +208,7 @@ createApp().use(Popup)
 
 <template>
   <var-button
-    class="mt-10"
+    class="popup-example-mt-10"
     type="primary"
     block
     @click="event = true"
@@ -232,7 +223,7 @@ createApp().use(Popup)
     @close="() => Snackbar.warning('close')"
     @closed="() => Snackbar.error('closed')"
   >
-    <div class="block">
+    <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
       瓶身描绘的牡丹一如你初妆,
       冉冉檀香透过窗心事我了然,
@@ -240,6 +231,13 @@ createApp().use(Popup)
     </div>
   </var-popup>
 </template>
+
+<style>
+  .popup-example-block {
+    padding: 20px 24px;
+    width: 250px;
+  }
+</style>
 ```
 
 ## API

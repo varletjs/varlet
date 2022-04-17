@@ -27,7 +27,7 @@ createApp().use(Popup)
 
 <template>
   <var-button 
-    class="mt-10"
+    class="popup-example-mt-10"
     type="primary"
     block
     @click="center = true"
@@ -35,7 +35,7 @@ createApp().use(Popup)
     Center Popup
   </var-button>
   <var-button
-    class="mt-10"
+    class="popup-example-mt-10"
     type="primary"
     block
     @click="bottom = true"
@@ -43,7 +43,7 @@ createApp().use(Popup)
     Below Popup
   </var-button>
   <var-button
-    class="mt-10"
+    class="popup-example-mt-10"
     type="primary"
     block 
     @click="top = true"
@@ -51,7 +51,7 @@ createApp().use(Popup)
     Above Popup
   </var-button>
   <var-button 
-    class="mt-10" 
+    class="popup-example-mt-10" 
     type="primary"
     block
     @click="left = true"
@@ -59,7 +59,7 @@ createApp().use(Popup)
     Left Popup
   </var-button>
   <var-button 
-    class="mt-10" 
+    class="popup-example-mt-10" 
     type="primary"
     block 
     @click="right = true"
@@ -67,9 +67,8 @@ createApp().use(Popup)
     Right Popup
   </var-button>
   
-  // Center Popup
   <var-popup v-model:show="center">
-    <div class="block">
+    <div class="popup-example-block">
       As he came into the window.
       It was the sound of a crescendo.
       He came into her apartment.
@@ -77,9 +76,8 @@ createApp().use(Popup)
     </div>
   </var-popup>
   
-  // Below Popup
   <var-popup position="bottom" v-model:show="bottom">
-    <div class="block">
+    <div class="popup-example-block">
       As he came into the window. 
       It was the sound of a crescendo. 
       He came into her apartment. 
@@ -87,9 +85,8 @@ createApp().use(Popup)
     </div>
   </var-popup>
   
-  // Above Popup
   <var-popup position="top" v-model:show="top">
-    <div class="block">
+    <div class="popup-example-block">
       As he came into the window.
       It was the sound of a crescendo.
       He came into her apartment.
@@ -97,9 +94,8 @@ createApp().use(Popup)
     </div>
   </var-popup>
   
-  // Left Popup
   <var-popup position="left" v-model:show="left">
-    <div class="block">
+    <div class="popup-example-block">
       As he came into the window.
       It was the sound of a crescendo.
       He came into her apartment.
@@ -107,9 +103,8 @@ createApp().use(Popup)
     </div>
   </var-popup>
   
-  // Right Popup
   <var-popup position="right" v-model:show="right">
-    <div class="block">
+    <div class="popup-example-block">
       As he came into the window.
       It was the sound of a crescendo.
       He came into her apartment.
@@ -117,17 +112,17 @@ createApp().use(Popup)
     </div>
   </var-popup>
 </template>
-```
 
-```css
-.mt-10 {
-  margin-top: 10px;
-}
+<style>
+  .popup-example-mt-10 {
+    margin-top: 10px;
+  }
 
-.block {
-  padding: 20px 24px;
-  width: 250px;
-}
+  .popup-example-block {
+    padding: 20px 24px;
+    width: 250px;
+  }
+</style>
 ```
 
 ### Overlay Style
@@ -142,43 +137,41 @@ createApp().use(Popup)
 
 <template>
   <var-button
-    class="mt-10"
+    class="popup-example-mt-10"
     type="primary"
     block
     @click="overlayClass = true"
   >
-    Overlay Style
+    Overlay Class
   </var-button>
   <var-button
-    class="mt-10"
+    class="popup-example-mt-10"
     type="primary"
     block
     @click="overlayStyle = true"
   >
     Overlay Style
   </var-button>
-
-  // Overlay Class
+  
   <var-popup
-    overlay-class="custom-overlay"
+    overlay-class="popup-example-custom-overlay"
     v-model:show="overlayClass"
   >
-    <div class="block">
+    <div class="popup-example-block">
       As he came into the window.
       It was the sound of a crescendo.
       He came into her apartment.
       He left the bloodstains on the carpet.
     </div>
   </var-popup>
-
-  // Overlay style
+  
   <var-popup
     :overlay-style="{
     backgroundColor: 'rgba(0, 0, 0, 0.3)' 
   }"
     v-model:show="overlayStyle"
   >
-    <div class="block">
+    <div class="popup-example-block">
       As he came into the window.
       It was the sound of a crescendo.
       He came into her apartment.
@@ -186,23 +179,21 @@ createApp().use(Popup)
     </div>
   </var-popup>
 </template>
-```
 
-```css
-/* normal css */
-.custom-overlay {
-  background: rgba(0, 0, 0, 0.3);
-}
+<style>
+  .popup-example-custom-overlay {
+    background: rgba(0, 0, 0, 0.3) !important;
+  }
 
-/* scoped css */
-.mt-10 {
-  margin-top: 10px;
-}
+  .popup-example-mt-10 {
+    margin-top: 10px;
+  }
 
-.block {
-  padding: 20px 24px;
-  width: 250px;
-}
+  .popup-example-block {
+    padding: 20px 24px;
+    width: 250px;
+  }
+</style>
 ```
 
 ### Events
@@ -217,7 +208,7 @@ createApp().use(Popup)
 
 <template>
   <var-button
-    class="mt-10"
+    class="popup-example-mt-10"
     type="primary"
     block
     @click="event = true"
@@ -232,7 +223,7 @@ createApp().use(Popup)
     @close="() => Snackbar.warning('close')"
     @closed="() => Snackbar.error('closed')"
   >
-    <div class="block">
+    <div class="popup-example-block">
       As he came into the window.
       It was the sound of a crescendo.
       He came into her apartment.
@@ -240,6 +231,13 @@ createApp().use(Popup)
     </div>
   </var-popup>
 </template>
+
+<style>
+  .popup-example-block {
+    padding: 20px 24px;
+    width: 250px;
+  }
+</style>
 ```
 
 ## API
