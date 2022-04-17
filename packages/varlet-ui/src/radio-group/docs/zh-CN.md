@@ -2,93 +2,96 @@
 
 ### Intro
 
-Single selection among multiple options
-
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Radio, RadioGroup } from '@varlet/ui'
-
-createApp().use(RadioGroup).use(Radio)
-```
+在一组备选项中进行单选
 
 ### 基本使用
 
 ```html
-<var-radio v-model="value">当前的值: {{ value }}</var-radio>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(false)
+const value = ref(false)
+</script>
 
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-radio v-model="value">当前的值: {{ value }}</var-radio>
+</template>
 ```
 
 ### 设置状态值
 
 ```html
-<var-radio
-  :unchecked-value="0"
-  :checked-value="1"
-  v-model="value"
->
-  当前的值: {{ value }}
-</var-radio>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(0)
+const value = ref(0)
+</script>
 
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-radio
+    :unchecked-value="0"
+    :checked-value="1"
+    v-model="value"
+  >
+    当前的值: {{ value }}
+  </var-radio>
+</template>
 ```
 
 ### 修改图标和颜色
 
 ```html
-<var-radio
-  unchecked-color="#e99eb4"
-  checked-color="#f44336"
-  v-model="value"
->
-  <template #unchecked-icon>
-    <var-icon name="heart-half-full" size="24px"/>
-  </template>
-  <template #checked-icon>
-    <var-icon name="heart" size="24px"/>
-  </template>
-  <template #default>
-    当前的值: {{ value }}
-  </template>
-</var-radio>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-radio
+    unchecked-color="#e99eb4"
+    checked-color="#f44336"
+    v-model="value"
+  >
+    <template #unchecked-icon>
+      <var-icon name="heart-half-full" size="24px"/>
+    </template>
+    <template #checked-icon>
+      <var-icon name="heart" size="24px"/>
+    </template>
+    <template #default>
+      当前的值: {{ value }}
+    </template>
+  </var-radio>
+</template>
 ```
 
 ### 禁用
 
 ```html
-<var-radio disabled v-model="value">当前的值: {{ value }}</var-radio>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-radio disabled v-model="value">当前的值: {{ value }}</var-radio>
+</template>
 ```
 
 ### 只读
 
 ```html
-<var-radio readonly v-model="value">当前的值: {{ value }}</var-radio>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-radio readonly v-model="value">当前的值: {{ value }}</var-radio>
+</template>
 ```
 
 ### 单选框组
@@ -97,47 +100,57 @@ export default {
 单选框组会绑定选择的标识。
 
 ```html
-<var-radio-group v-model="value">
-  <var-radio :checked-value="0">吃饭</var-radio>
-  <var-radio :checked-value="1">睡觉</var-radio>
-</var-radio-group>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(0)
+const value = ref(0)
+</script>
 
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-radio-group v-model="value">
+    <var-radio :checked-value="0">吃饭</var-radio>
+    <var-radio :checked-value="1">睡觉</var-radio>
+  </var-radio-group>
+</template>
 ```
 
 ### 单选框字段校验
 
 ```html
-<var-radio
-  v-model="value"
-  :rules="[v => v || '请勾选']"
->
-  当前的值: {{ value }}
-</var-radio>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-radio
+    v-model="value"
+    :rules="[v => v || '请勾选']"
+  >
+    当前的值: {{ value }}
+  </var-radio>
+</template>
 ```
 
 ### 单选框组字段校验
 
 ```html
-<var-radio-group
-  v-model="value"
-  :rules="[v => v === 0 || '必须选择吃饭']"
->
-  <var-radio :checked-value="0">吃饭</var-radio>
-  <var-radio :checked-value="1">睡觉</var-radio>
-</var-radio-group>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-radio-group
+    v-model="value"
+    :rules="[v => v === 0 || '必须选择吃饭']"
+  >
+    <var-radio :checked-value="0">吃饭</var-radio>
+    <var-radio :checked-value="1">睡觉</var-radio>
+  </var-radio-group>
+</template>
 ```
 
 
