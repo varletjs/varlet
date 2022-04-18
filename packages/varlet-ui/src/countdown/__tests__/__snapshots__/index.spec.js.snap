@@ -11,7 +11,7 @@ exports[`test countdown example 1`] = `
 <div class=\\"var-countdown\\"><span class=\\"countdown-block\\">6</span><span class=\\"countdown-colon\\">:</span><span class=\\"countdown-block\\">0</span><span class=\\"countdown-colon\\">:</span><span class=\\"countdown-block\\">0</span></div>
 <div class=\\"app-type\\">手动控制</div>
 <div class=\\"var-countdown\\">03 : 000</div>
-<div class=\\"countdown-btn-container\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
+<div class=\\"var-row var--box\\" style=\\"justify-content: space-between; align-items: center;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
     <!--v-if-->
     <div class=\\"var-button__content\\">开始</div>
   </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
