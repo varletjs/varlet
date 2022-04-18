@@ -26,10 +26,9 @@ exports[`test linear progress prop 1`] = `
 `;
 
 exports[`test progress example 1`] = `
-"<div class=\\"progress-demo\\">
-  <div class=\\"space\\"></div>
-  <div class=\\"progress-demo__basic\\">
-    <div class=\\"app-type\\">基本使用</div>
+"<div class=\\"app-type\\">基本使用</div>
+<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
+  <div style=\\"margin: 0px 0px 12px 0px;\\">
     <div class=\\"var-progress\\">
       <div class=\\"var-progress__linear\\">
         <div class=\\"var-progress__linear-block\\" style=\\"height: 4px;\\">
@@ -40,6 +39,8 @@ exports[`test progress example 1`] = `
       </div>
       <!--v-if-->
     </div>
+  </div>
+  <div style=\\"margin: 0px 0px 12px 0px;\\">
     <div class=\\"var-progress\\">
       <div class=\\"var-progress__linear\\">
         <div class=\\"var-progress__linear-block\\" style=\\"height: 4px;\\">
@@ -50,6 +51,8 @@ exports[`test progress example 1`] = `
       </div>
       <!--v-if-->
     </div>
+  </div>
+  <div style=\\"margin: 0px;\\">
     <div class=\\"var-progress\\">
       <div class=\\"var-progress__linear\\">
         <div class=\\"var-progress__linear-block\\" style=\\"height: 4px;\\">
@@ -61,8 +64,10 @@ exports[`test progress example 1`] = `
       <!--v-if-->
     </div>
   </div>
-  <div class=\\"progress-demo__label\\">
-    <div class=\\"app-type\\">显示标签</div>
+</div>
+<div class=\\"app-type\\">显示标签</div>
+<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
+  <div style=\\"margin: 0px 0px 12px 0px;\\">
     <div class=\\"var-progress\\">
       <div class=\\"var-progress__linear\\">
         <div class=\\"var-progress__linear-block\\" style=\\"height: 4px;\\">
@@ -73,6 +78,8 @@ exports[`test progress example 1`] = `
       </div>
       <!--v-if-->
     </div>
+  </div>
+  <div style=\\"margin: 0px 0px 12px 0px;\\">
     <div class=\\"var-progress\\">
       <div class=\\"var-progress__linear\\">
         <div class=\\"var-progress__linear-block\\" style=\\"height: 4px;\\">
@@ -83,6 +90,8 @@ exports[`test progress example 1`] = `
       </div>
       <!--v-if-->
     </div>
+  </div>
+  <div style=\\"margin: 0px;\\">
     <div class=\\"var-progress\\">
       <div class=\\"var-progress__linear\\">
         <div class=\\"var-progress__linear-block\\" style=\\"height: 4px;\\">
@@ -94,8 +103,10 @@ exports[`test progress example 1`] = `
       <!--v-if-->
     </div>
   </div>
-  <div class=\\"progress-demo__style\\">
-    <div class=\\"app-type\\">自定义样式</div>
+</div>
+<div class=\\"app-type\\">自定义样式</div>
+<div class=\\"var-space var--box\\" style=\\"flex-direction: column; justify-content: start; flex-wrap: wrap;\\">
+  <div style=\\"margin: 0px 0px 12px 0px;\\">
     <div class=\\"var-progress\\">
       <div class=\\"var-progress__linear\\">
         <div class=\\"var-progress__linear-block\\" style=\\"height: 8px;\\">
@@ -106,6 +117,8 @@ exports[`test progress example 1`] = `
       </div>
       <!--v-if-->
     </div>
+  </div>
+  <div style=\\"margin: 0px 0px 12px 0px;\\">
     <div class=\\"var-progress\\">
       <div class=\\"var-progress__linear\\">
         <div class=\\"var-progress__linear-block\\" style=\\"height: 8px;\\">
@@ -116,6 +129,8 @@ exports[`test progress example 1`] = `
       </div>
       <!--v-if-->
     </div>
+  </div>
+  <div style=\\"margin: 0px;\\">
     <div class=\\"var-progress\\">
       <div class=\\"var-progress__linear\\">
         <div class=\\"var-progress__linear-block\\" style=\\"height: 8px;\\">
@@ -127,8 +142,10 @@ exports[`test progress example 1`] = `
       <!--v-if-->
     </div>
   </div>
-  <div class=\\"app-type\\">环形进度条</div>
-  <div class=\\"progress-demo__circle\\">
+</div>
+<div class=\\"app-type\\">环形进度条</div>
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -10px 0px;\\">
+  <div style=\\"margin: 10px 20px 10px 0px;\\">
     <div class=\\"var-progress\\">
       <!--v-if-->
       <div class=\\"var-progress__circle\\" style=\\"width: 56px; height: 56px;\\"><svg class=\\"var-progress__circle-svg\\" style=\\"transform: rotate(-90deg);\\" viewBox=\\"0 0 56 56\\">
@@ -138,7 +155,8 @@ exports[`test progress example 1`] = `
         <!--v-if-->
       </div>
     </div>
-    <div class=\\"space\\"></div>
+  </div>
+  <div style=\\"margin: 10px 20px 10px 0px;\\">
     <div class=\\"var-progress\\">
       <!--v-if-->
       <div class=\\"var-progress__circle\\" style=\\"width: 56px; height: 56px;\\"><svg class=\\"var-progress__circle-svg\\" style=\\"transform: rotate(-90deg);\\" viewBox=\\"0 0 56 56\\">
@@ -148,7 +166,8 @@ exports[`test progress example 1`] = `
         <div class=\\"var-progress__circle-label\\">0%</div>
       </div>
     </div>
-    <div class=\\"space\\"></div>
+  </div>
+  <div style=\\"margin: 10px 0px;\\">
     <div class=\\"var-progress\\">
       <!--v-if-->
       <div class=\\"var-progress__circle\\" style=\\"width: 56px; height: 56px;\\"><svg class=\\"var-progress__circle-svg\\" style=\\"transform: rotate(-90deg);\\" viewBox=\\"0 0 56 56\\">
@@ -159,17 +178,15 @@ exports[`test progress example 1`] = `
       </div>
     </div>
   </div>
-  <div class=\\"app-type\\">隐藏轨道</div>
-  <div class=\\"progress-demo__circle\\">
-    <div class=\\"var-progress\\">
+</div>
+<div class=\\"app-type\\">隐藏轨道</div>
+<div class=\\"var-progress\\">
+  <!--v-if-->
+  <div class=\\"var-progress__circle\\" style=\\"width: 56px; height: 56px;\\"><svg class=\\"var-progress__circle-svg\\" style=\\"transform: rotate(-90deg);\\" viewBox=\\"0 0 56 56\\">
       <!--v-if-->
-      <div class=\\"var-progress__circle\\" style=\\"width: 56px; height: 56px;\\"><svg class=\\"var-progress__circle-svg\\" style=\\"transform: rotate(-90deg);\\" viewBox=\\"0 0 56 56\\">
-          <!--v-if-->
-          <circle class=\\"var-progress__circle-certain\\" cx=\\"28\\" cy=\\"28\\" r=\\"26\\" fill=\\"transparent\\" stroke-width=\\"4\\" style=\\"stroke-dasharray: 81.68140899333463, 163.36281798666926;\\"></circle>
-        </svg>
-        <!--v-if-->
-      </div>
-    </div>
+      <circle class=\\"var-progress__circle-certain\\" cx=\\"28\\" cy=\\"28\\" r=\\"26\\" fill=\\"transparent\\" stroke-width=\\"4\\" style=\\"stroke-dasharray: 81.68140899333463, 163.36281798666926;\\"></circle>
+    </svg>
+    <!--v-if-->
   </div>
 </div>"
 `;
