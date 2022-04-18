@@ -47,9 +47,9 @@ export function findRootDocs(): Promise<string[]> {
 }
 
 export async function buildMobileSiteRoutes() {
-  const examplePaths: string[] = await findExamples()
+  const examples: string[] = await findExamples()
 
-  const routes = examplePaths.map(
+  const routes = examples.map(
     (example) => `
   {
     path: '${getExampleRoutePath(slash(example))}',
