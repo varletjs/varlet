@@ -65,7 +65,7 @@
 
     <li v-if="showSizeChanger" :class="classes(n('size'), [disabled, n('item--disabled')])">
       <var-menu v-model:show="menuVisible" :offset-x="-4">
-        <div :class="n('size--open')" style="display: flex" @click="showMenu">
+        <div :class="classes(n('size--open'), [current <= 1 || disabled, n('size--open--disabled')])" @click="showMenu">
           <span>{{ size }}{{ pack.paginationItem }} / {{ pack.paginationPage }}</span>
           <var-icon :class="n('size--open-icon')" var-pagination-cover name="menu-down" />
         </div>
