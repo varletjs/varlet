@@ -104,7 +104,7 @@ Set the line width, progress bar color, track color and ripple loading effect th
 </script>
 
 <template>
-  <var-space direction="row" :size="[20, 20]">
+  <var-space :size="[20, 20]">
     <var-progress mode="circle" :value="30" line-width="5" :size="56" />
     <var-progress mode="circle" label :value="value" line-width="5" :size="56" />
     <var-progress mode="circle" label :value="100" line-width="5" :size="56" />
