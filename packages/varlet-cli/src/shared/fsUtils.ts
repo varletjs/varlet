@@ -9,6 +9,7 @@ import {
   readFileSync,
 } from 'fs-extra'
 import { PUBLIC_DIR_INDEXES, SCRIPTS_EXTENSIONS, SRC_DIR } from './constant'
+import globSync from 'glob'
 
 export async function getPublicDirs(): Promise<string[]> {
   const srcDir: string[] = await readdir(SRC_DIR)
@@ -56,4 +57,16 @@ export function outputFileSyncOnChange(path: string, code: string) {
   if (content !== code) {
     outputFileSync(path, code)
   }
+}
+
+export function glob(pattern: string): Promise<string[]> {
+  return new Promise((resolve, reject) => {
+    globSync(pattern, (err, files) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(files)
+      }
+    })
+  })
 }
