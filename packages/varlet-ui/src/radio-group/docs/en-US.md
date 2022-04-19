@@ -1,7 +1,6 @@
 # Radio
 
-### 介绍
-
+### Intro
 
 Single selection among multiple options
 
