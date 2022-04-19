@@ -14,6 +14,7 @@ import { ref } from 'vue'
 
 const time = ref(30 * 60 * 60 * 1000)
 </script>
+
 <template>
   <var-countdown :time="time" />
 </template>
@@ -29,6 +30,7 @@ import { ref } from 'vue'
 
 const time = ref(30 * 60 * 60 * 1000)
 </script>
+
 <template>
   <var-countdown :time="time" format="DD 天 HH 时 mm 分 ss 秒" />
 </template>
@@ -44,6 +46,7 @@ import { ref } from 'vue'
 
 const time = ref(30 * 60 * 60 * 1000)
 </script>
+
 <template>
   <var-countdown :time="time" format="HH:mm:ss:SS" />
 </template>
@@ -115,7 +118,7 @@ const change = () => {
     @end="end"
     @change="change"
   />
-  <var-row justify="space-between" align="center">
+  <var-row justify="space-between" align="center" style="margin-top: 10px">
     <var-button type="primary" @click="$refs.countdown.start()">开始</var-button>
     <var-button @click="$refs.countdown.pause()">暂停</var-button>
     <var-button @click="$refs.countdown.reset()">重置</var-button>

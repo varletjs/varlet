@@ -47,7 +47,7 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.manualControl }}</app-type>
   <var-countdown :time="time" ref="countdown" :auto-start="false" format="ss : SSS" @end="end" @change="change" />
-  <var-row justify="space-between" align="center">
+  <var-row justify="space-between" align="center" style="margin-top: 10px">
     <var-button type="primary" @click="$refs.countdown.start()">{{ pack.startText }}</var-button>
     <var-button @click="$refs.countdown.pause()">{{ pack.pauseText }}</var-button>
     <var-button @click="$refs.countdown.reset()">{{ pack.resetText }}</var-button>
