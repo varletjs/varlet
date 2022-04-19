@@ -1,4 +1,3 @@
-import slash from 'slash'
 import {
   DOCS_DIR_NAME,
   EXAMPLE_DIR_INDEX,
@@ -52,7 +51,7 @@ export async function buildMobileSiteRoutes() {
   const routes = examples.map(
     (example) => `
   {
-    path: '${getExampleRoutePath(slash(example))}',
+    path: '${getExampleRoutePath(example)}',
     // @ts-ignore
     component: () => import('${example}')
   }\
@@ -72,7 +71,7 @@ export async function buildPcSiteRoutes() {
   const componentDocsRoutes = componentDocs.map(
     (componentDoc) => `
   {
-    path: '${getComponentDocRoutePath(slash(componentDoc))}',
+    path: '${getComponentDocRoutePath(componentDoc)}',
     // @ts-ignore
     component: () => import('${componentDoc}')
   }\
@@ -82,7 +81,7 @@ export async function buildPcSiteRoutes() {
   const rootDocsRoutes = rootDocs.map(
     (rootDoc) => `
   {
-    path: '${getRootDocRoutePath(slash(rootDoc))}',
+    path: '${getRootDocRoutePath(rootDoc)}',
     // @ts-ignore
     component: () => import('${rootDoc}')
   }\
