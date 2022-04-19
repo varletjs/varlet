@@ -1,3 +1,29 @@
+<script setup>
+import VarRadioGroup from '..'
+import VarRadio from '../../radio'
+import VarIcon from '../../icon'
+import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
+import dark from '../../themes/dark'
+import { toRefs, reactive } from 'vue'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { use, pack } from './locale'
+
+const values = reactive({
+  value: false,
+  value2: 0,
+  value3: false,
+  value4: false,
+  value5: false,
+  value6: 0,
+  value7: false,
+  value8: 0,
+})
+const { value, value2, value3, value4, value5, value6, value7, value8 } = toRefs(values)
+
+watchLang(use)
+watchDarkMode(dark)
+</script>
+
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-radio v-model="value">{{ pack.currentValue }} {{ value }}</var-radio>
@@ -43,47 +69,6 @@
 
   <div class="space"></div>
 </template>
-
-<script lang="ts">
-import VarRadioGroup from '..'
-import VarRadio from '../../radio'
-import VarIcon from '../../icon'
-import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
-import dark from '../../themes/dark'
-import { toRefs, reactive } from 'vue'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-import { use, pack } from './locale'
-
-export default {
-  name: 'RadioGroupExample',
-  components: {
-    VarRadioGroup,
-    VarRadio,
-    VarIcon,
-    AppType,
-  },
-  setup() {
-    const values = reactive({
-      value: false,
-      value2: 0,
-      value3: false,
-      value4: false,
-      value5: false,
-      value6: 0,
-      value7: false,
-      value8: 0,
-    })
-
-    watchLang(use)
-    watchDarkMode(dark)
-
-    return {
-      pack,
-      ...toRefs(values),
-    }
-  },
-}
-</script>
 
 <style scoped lang="less">
 .relation {
