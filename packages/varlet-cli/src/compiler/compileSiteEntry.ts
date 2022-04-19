@@ -10,9 +10,8 @@ import {
   SITE_PC_ROUTES,
   SRC_DIR,
 } from '../shared/constant'
-import { copy, pathExistsSync, readdir, readdirSync } from 'fs-extra'
-import { resolve } from 'path'
-import { isMD, outputFileSyncOnChange } from '../shared/fsUtils'
+import { copy } from 'fs-extra'
+import { glob, outputFileSyncOnChange } from '../shared/fsUtils'
 import { getVarletConfig } from '../config/varlet.config'
 
 const EXAMPLE_COMPONENT_NAME_RE = /\/([-\w]+)\/example\/index.vue/
@@ -23,76 +22,39 @@ export function getExampleRoutePath(examplePath: string): string {
   return '/' + examplePath.match(EXAMPLE_COMPONENT_NAME_RE)?.[1]
 }
 
-export function getComponentDocsRoutePath(componentDocsPath: string): string {
+export function getComponentDocRoutePath(componentDocsPath: string): string {
   const [, routePath, language] = componentDocsPath.match(COMPONENT_DOCS_RE) ?? []
 
   return `/${language}/${routePath}`
 }
 
-export function getRootDocsRoutePath(rootDocsPath: string): string {
+export function getRootDocRoutePath(rootDocsPath: string): string {
   const [, routePath, language] = rootDocsPath.match(ROOT_DOCS_RE) ?? []
 
   return `/${language}/${routePath}`
 }
 
-export async function findExamplePaths(): Promise<string[]> {
-  const dir: string[] = await readdir(SRC_DIR)
-
-  const buildPath = (filename: string) => resolve(SRC_DIR, filename, EXAMPLE_DIR_NAME, EXAMPLE_DIR_INDEX)
-
-  const existPath = (filename: string) => pathExistsSync(buildPath(filename))
-
-  const slashPath = (filename: string) => slash(buildPath(filename))
-
-  return dir.filter(existPath).map(slashPath)
+export function findExamples(): Promise<string[]> {
+  return glob(`${SRC_DIR}/**/${EXAMPLE_DIR_NAME}/${EXAMPLE_DIR_INDEX}`)
 }
 
-export async function findComponentDocsPaths(): Promise<string[]> {
-  const dir: string[] = await readdir(SRC_DIR)
-
-  const buildPath = (filename: string) => resolve(SRC_DIR, filename, DOCS_DIR_NAME)
-
-  const existPath = (filename: string) => pathExistsSync(buildPath(filename))
-
-  const collectRoutePath = (routePaths: string[], filename: string) => {
-    const dirPath = buildPath(filename)
-
-    readdirSync(dirPath).forEach((mdName: string) => {
-      const path = resolve(dirPath, mdName)
-      isMD(path) && routePaths.push(slash(path))
-    })
-
-    return routePaths
-  }
-
-  return dir.filter(existPath).reduce(collectRoutePath, [])
+export function findComponentDocs(): Promise<string[]> {
+  return glob(`${SRC_DIR}/**/${DOCS_DIR_NAME}/*.md`)
 }
 
-export async function findRootDocsPaths(): Promise<string[]> {
-  if (!pathExistsSync(ROOT_DOCS_DIR)) {
-    return []
-  }
-
-  const dir: string[] = await readdir(ROOT_DOCS_DIR)
-
-  const buildPath = (filename: string) => resolve(ROOT_DOCS_DIR, filename)
-
-  const existPath = (filename: string) => isMD(buildPath(filename))
-
-  const slashPath = (filename: string) => slash(buildPath(filename))
-
-  return dir.filter(existPath).map(slashPath)
+export function findRootDocs(): Promise<string[]> {
+  return glob(`${ROOT_DOCS_DIR}/*.md`)
 }
 
 export async function buildMobileSiteRoutes() {
-  const examplePaths: string[] = await findExamplePaths()
+  const examples: string[] = await findExamples()
 
-  const routes = examplePaths.map(
-    (examplePath) => `
+  const routes = examples.map(
+    (example) => `
   {
-    path: '${getExampleRoutePath(examplePath)}',
+    path: '${getExampleRoutePath(slash(example))}',
     // @ts-ignore
-    component: () => import('${examplePath}')
+    component: () => import('${example}')
   }\
 `
   )
@@ -105,24 +67,24 @@ export async function buildMobileSiteRoutes() {
 }
 
 export async function buildPcSiteRoutes() {
-  const [componentDocsPaths, rootDocsPaths] = await Promise.all([findComponentDocsPaths(), findRootDocsPaths()])
+  const [componentDocs, rootDocs] = await Promise.all([findComponentDocs(), findRootDocs()])
 
-  const componentDocsRoutes = componentDocsPaths.map(
-    (componentDocsPath) => `
+  const componentDocsRoutes = componentDocs.map(
+    (componentDoc) => `
   {
-    path: '${getComponentDocsRoutePath(componentDocsPath)}',
+    path: '${getComponentDocRoutePath(slash(componentDoc))}',
     // @ts-ignore
-    component: () => import('${componentDocsPath}')
+    component: () => import('${componentDoc}')
   }\
 `
   )
 
-  const rootDocsRoutes = rootDocsPaths.map(
-    (rootDocsPath) => `
+  const rootDocsRoutes = rootDocs.map(
+    (rootDoc) => `
   {
-    path: '${getRootDocsRoutePath(rootDocsPath)}',
+    path: '${getRootDocRoutePath(slash(rootDoc))}',
     // @ts-ignore
-    component: () => import('${rootDocsPath}')
+    component: () => import('${rootDoc}')
   }\
 `
   )
