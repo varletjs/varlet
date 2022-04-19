@@ -74,7 +74,6 @@ const actions = {
 }
 
 const createAction = async () => actions[await Dialog('兰亭临帖 行书如行云流水')]()
-
 </script>
 
 <template>
@@ -104,11 +103,12 @@ const onBeforeClose = (action, done) => {
   }, 1000)
 }
 
-const createAction = async () => Dialog({
-  message: '兰亭临帖 行书如行云流水',
-  onBeforeClose
-})
-
+const createAction = async () => {
+  Dialog({
+    message: '兰亭临帖 行书如行云流水',
+    onBeforeClose
+  })
+}
 </script>
 
 <template>

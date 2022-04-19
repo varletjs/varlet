@@ -75,7 +75,6 @@ const actions = {
 }
 
 const createAction = async () => actions[await Dialog('Don\'t Wanna See No Blood, Don\'t Be A Macho Man')]()
-
 </script>
 
 <template>
@@ -105,11 +104,12 @@ const onBeforeClose = (action, done) => {
   }, 1000)
 }
 
-const createAction = async () => Dialog({
-  message: 'Don\'t Wanna See No Blood, Don\'t Be A Macho Man',
-  onBeforeClose
-})
-
+const createAction = async () => {
+  Dialog({
+    message: 'Don\'t Wanna See No Blood, Don\'t Be A Macho Man',
+    onBeforeClose
+  })
+}
 </script>
 
 <template>
