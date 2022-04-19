@@ -33,6 +33,7 @@ watchDarkMode(dark, (mode) => {
   themes.value = mode
 })
 </script>
+
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-tabs v-model:active="active">

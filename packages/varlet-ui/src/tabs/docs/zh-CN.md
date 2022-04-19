@@ -191,8 +191,8 @@ const active = ref(0)
 
 <style>
 .tabs-example-vertical {
-  width: 80px;
-  height: 120px;
+  width: 80px !important;
+  height: 120px !important;
 }
 </style>
 ```
@@ -256,20 +256,27 @@ const active = ref(0)
 </script>
 
 <template>
-  <var-tabs
-    sticky
-    elevation
-    color="#2979ff"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
-    :offset-top="54"
-    v-model:active="active"
-  >
-    <var-tab>选项1</var-tab>
-    <var-tab>选项2</var-tab>
-    <var-tab>选项3</var-tab>
-  </var-tabs>
+  <div class="sticky-example">
+    <var-tabs
+      sticky
+      elevation
+      color="#2979ff"
+      active-color="#fff"
+      inactive-color="hsla(0, 0%, 100%, .6)"
+      v-model:active="active"
+    >
+      <var-tab>选项1</var-tab>
+      <var-tab>选项2</var-tab>
+      <var-tab>选项3</var-tab>
+    </var-tabs>
+  </div>
 </template>
+
+<style>
+.sticky-example {
+  height: 200vh
+}
+</style>
 ```
 
 ## API
