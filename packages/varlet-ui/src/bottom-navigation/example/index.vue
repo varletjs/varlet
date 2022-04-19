@@ -48,7 +48,7 @@
   </var-bottom-navigation>
 
   <app-type>{{ pack.fab }}</app-type>
-  <var-bottom-navigation v-model:active="fab" @fabClick="isEven = !isEven" style="margin-top: 10px">
+  <var-bottom-navigation v-model:active="fab" @fab-click="isEven = !isEven" style="margin-top: 10px">
     <template #fab>
       <var-icon name="heart" />
     </template>

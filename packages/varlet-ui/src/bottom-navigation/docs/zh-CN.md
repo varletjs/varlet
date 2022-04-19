@@ -166,7 +166,7 @@ export default {
 Item 数量为偶数时，悬浮按钮在中间位置，为奇数时在最右侧。
 
 ```html
-<var-bottom-navigation v-model:active="fab" @fabClick="isEven = !isEven">
+<var-bottom-navigation v-model:active="fab" @fab-click="isEven = !isEven">
   <template #fab>
     <var-icon name="heart" />
   </template>

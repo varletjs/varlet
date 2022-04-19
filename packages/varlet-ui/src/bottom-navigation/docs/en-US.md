@@ -164,7 +164,7 @@ export default {
 ### Fab
 
 ```html
-<var-bottom-navigation v-model:active="fab @fabClick="isEven = !isEven"">
+<var-bottom-navigation v-model:active="fab" @fab-click="isEven = !isEven">
   <template #fab>
     <var-icon name="heart" />
   </template>
