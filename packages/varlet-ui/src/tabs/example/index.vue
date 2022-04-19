@@ -1,3 +1,38 @@
+<script setup>
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import VarTabs from '..'
+import VarTab from '../../tab'
+import VarIcon from '../../icon'
+import VarTabsItems from '../../tabs-items'
+import VarTabItem from '../../tab-item'
+import dark from '../../themes/dark'
+import { use, pack } from './locale'
+import { computed, reactive, ref, toRefs } from 'vue'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+
+const actives = reactive({
+  active: 0,
+  active2: 0,
+  active3: 0,
+  active4: 0,
+  active5: 0,
+  active6: 0,
+  active7: 0,
+  activeRelation: 0,
+})
+const { active, active2, active3, active4, active5, active6, active7, activeRelation } = toRefs(actives)
+
+const themes = ref('themes')
+const tabItemStyle = computed(() => ({
+  padding: '0 4px;',
+  color: themes.value === 'themes' ? '#888' : '#aaa',
+}))
+
+watchLang(use)
+watchDarkMode(dark, (mode) => {
+  themes.value = mode
+})
+</script>
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-tabs v-model:active="active">
@@ -132,60 +167,6 @@
 
   <div style="height: 120vh"></div>
 </template>
-
-<script>
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import VarTabs from '..'
-import VarTab from '../../tab'
-import VarIcon from '../../icon'
-import VarTabsItems from '../../tabs-items'
-import VarTabItem from '../../tab-item'
-import dark from '../../themes/dark'
-import { use, pack } from './locale'
-import { computed, reactive, ref, toRefs } from 'vue'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-
-export default {
-  name: 'TabsExample',
-  components: {
-    VarTabs,
-    VarTab,
-    VarTabsItems,
-    VarTabItem,
-    VarIcon,
-    AppType,
-  },
-  setup() {
-    const actives = reactive({
-      active: 0,
-      active2: 0,
-      active3: 0,
-      active4: 0,
-      active5: 0,
-      active6: 0,
-      active7: 0,
-      activeRelation: 0,
-    })
-
-    const themes = ref('themes')
-    const tabItemStyle = computed(() => ({
-      padding: '0 4px;',
-      color: themes.value === 'themes' ? '#888' : '#aaa',
-    }))
-
-    watchLang(use)
-    watchDarkMode(dark, (mode) => {
-      themes.value = mode
-    })
-
-    return {
-      pack,
-      tabItemStyle,
-      ...toRefs(actives),
-    }
-  },
-}
-</script>
 
 <style lang="less" scoped>
 .vertical-tabs {
