@@ -11,7 +11,7 @@ import {
   SITE_MOBILE_ROUTES,
   SITE_PC_DIR,
   SITE_PC_ROUTES,
-  SRC_DIR
+  SRC_DIR,
 } from '../shared/constant'
 import { glob, outputFileSyncOnChange } from '../shared/fsUtils'
 
@@ -62,12 +62,12 @@ export async function buildMobileSiteRoutes() {
 
   const routes = examples.map(
     (example) => `
-  {
-    path: '${getExampleRoutePath(example)}',
-    // @ts-ignore
-    component: () => import('${example}')
-  }\
-`
+      {
+        path: '${getExampleRoutePath(example)}',
+        // @ts-ignore
+        component: () => import('${example}')
+      }\
+    `
   )
 
   const source = `export default [\
@@ -102,12 +102,12 @@ export async function buildPcSiteRoutes() {
 
   const rootDocsRoutes = rootDocs.map(
     (rootDoc) => `
-  {
-    path: '${getRootDocRoutePath(rootDoc)}',
-    // @ts-ignore
-    component: () => import('${rootDoc}')
-  }\
-`
+      {
+        path: '${getRootDocRoutePath(rootDoc)}',
+        // @ts-ignore
+        component: () => import('${rootDoc}')
+      }\
+    `
   )
 
   const layoutRoutes = `
