@@ -278,12 +278,14 @@ describe('test button component props', () => {
 })
 
 describe('test button component slots', () => {
-  const wrapper = mount(VarButton, {
-    slots: {
-      default: () => 'test',
-    },
-  })
+  test('test button default slots', () => {
+    const wrapper = mount(VarButton, {
+      slots: {
+        default: () => 'test',
+      },
+    })
 
-  expect(wrapper.find('.var-button__content').element.textContent).toBe('test')
-  wrapper.unmount()
+    expect(wrapper.find('.var-button__content').element.textContent).toBe('test')
+    wrapper.unmount()
+  })
 })
