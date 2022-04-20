@@ -14,179 +14,157 @@ app.use(BottomNavigationItem)
 ### Basic Usage
 
 ```html
-<var-bottom-navigation v-model:active="active">
-  <var-bottom-navigation-item label="label" icon="home" />
-  <var-bottom-navigation-item label="label" icon="magnify" />
-  <var-bottom-navigation-item label="label" icon="heart" />
-  <var-bottom-navigation-item label="label" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const active = ref(0)
+const active = ref(0)
+</script>
 
-    return { active }
-  }
-}
+<template>
+  <var-bottom-navigation v-model:active="active">
+    <var-bottom-navigation-item label="label" icon="home" />
+    <var-bottom-navigation-item label="label" icon="magnify" />
+    <var-bottom-navigation-item label="label" icon="heart" />
+    <var-bottom-navigation-item label="label" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
 ```
 
 ### Match by name
 
 ```html
-<var-bottom-navigation v-model:active="active">
-  <var-bottom-navigation-item name="home" label="label" icon="home" />
-  <var-bottom-navigation-item name="search" label="label" icon="magnify" />
-  <var-bottom-navigation-item name="heart" label="label" icon="heart" />
-  <var-bottom-navigation-item name="user" label="label" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const active = ref('home')
+const active = ref('home')
+</script>
 
-    return { active }
-  }
-}
+<template>
+  <var-bottom-navigation v-model:active="active">
+    <var-bottom-navigation-item name="home" label="label" icon="home" />
+    <var-bottom-navigation-item name="search" label="label" icon="magnify" />
+    <var-bottom-navigation-item name="heart" label="label" icon="heart" />
+    <var-bottom-navigation-item name="user" label="label" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
 ```
 
 ### Show Badge
 
 ```html
-<var-bottom-navigation v-model:active="active">
-  <var-bottom-navigation-item label="label" icon="home" />
-  <var-bottom-navigation-item label="label" icon="magnify" badge />
-  <var-bottom-navigation-item label="label" icon="heart" :badge="badgeProps" />
-  <var-bottom-navigation-item label="label" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
+<script setup>
 import { ref, reactive } from 'vue'
 
-export default {
-  setup() {
-    const active = ref(0)
-    const badgeProps = reactive({
-      type: 'primary',
-      value: '66'
-    })
+const active = ref(0)
+const badgeProps = reactive({
+  type: 'primary',
+  value: '66'
+})
+</script>
 
-    return { active, badgeProps }
-  }
-}
+<template>
+  <var-bottom-navigation v-model:active="active">
+    <var-bottom-navigation-item label="label" icon="home" />
+    <var-bottom-navigation-item label="label" icon="magnify" badge />
+    <var-bottom-navigation-item label="label" icon="heart" :badge="badgeProps" />
+    <var-bottom-navigation-item label="label" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
 ```
 
 ### Custom Color
 
 ```html
-<var-bottom-navigation active-color="#ba68c8" v-model:active="active">
-  <var-bottom-navigation-item label="label" icon="home" />
-  <var-bottom-navigation-item label="label" icon="magnify" />
-  <var-bottom-navigation-item label="label" icon="heart" />
-  <var-bottom-navigation-item label="label" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const active = ref(0)
+const active = ref(0)
+</script>
 
-    return { active }
-  }
-}
+<template>
+  <var-bottom-navigation active-color="#ba68c8" v-model:active="active">
+    <var-bottom-navigation-item label="label" icon="home" />
+    <var-bottom-navigation-item label="label" icon="magnify" />
+    <var-bottom-navigation-item label="label" icon="heart" />
+    <var-bottom-navigation-item label="label" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
 ```
 
 ### Change Event
 
 ```html
-<var-bottom-navigation v-model:active="active" @change="handleChange">
-  <var-bottom-navigation-item label="label" icon="home" />
-  <var-bottom-navigation-item label="label" icon="magnify" />
-  <var-bottom-navigation-item label="label" icon="heart" />
-  <var-bottom-navigation-item label="label" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const active = ref(0)
-    const handleChange = (active) => {
-      Snackbar.info(`changed to ${active}`)
-    }
-
-    return { active, handleChange }
-  }
+const active = ref(0)
+const handleChange = (active) => {
+  Snackbar.info(`changed to ${active}`)
 }
+</script>
+
+<template>
+  <var-bottom-navigation v-model:active="active" @change="handleChange">
+    <var-bottom-navigation-item label="label" icon="home" />
+    <var-bottom-navigation-item label="label" icon="magnify" />
+    <var-bottom-navigation-item label="label" icon="heart" />
+    <var-bottom-navigation-item label="label" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
 ```
 
 ### Click Event
 
 ```html
-<var-bottom-navigation v-model:active="active">
-  <var-bottom-navigation-item @click="handleClick" label="label" icon="home" />
-  <var-bottom-navigation-item @click="handleClick" label="label" icon="magnify" />
-  <var-bottom-navigation-item @click="handleClick" label="label" icon="heart" />
-  <var-bottom-navigation-item @click="handleClick" label="label" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const active = ref(0)
-    const handleClick = (active) => {
-      Snackbar.success(`clicked ${active}`)
-    }
-
-    return { active, handleClick }
-  }
+const active = ref(0)
+const handleClick = (active) => {
+  Snackbar.success(`clicked ${active}`)
 }
+</script>
+
+<template>
+  <var-bottom-navigation v-model:active="active">
+    <var-bottom-navigation-item @click="handleClick" label="label" icon="home" />
+    <var-bottom-navigation-item @click="handleClick" label="label" icon="magnify" />
+    <var-bottom-navigation-item @click="handleClick" label="label" icon="heart" />
+    <var-bottom-navigation-item @click="handleClick" label="label" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
 ```
 
 ### Fab
 
 ```html
-<var-bottom-navigation v-model:active="fab @fabClick="isEven = !isEven"">
-  <template #fab>
-    <var-icon name="heart" />
-  </template>
-  <var-bottom-navigation-item label="label" icon="home" />
-  <var-bottom-navigation-item label="label" icon="magnify" />
-  <var-bottom-navigation-item label="label" icon="heart" />
-  <var-bottom-navigation-item label="label" icon="bell" />
-  <var-bottom-navigation-item v-if="!isEven" label="label" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const active = ref(0)
-    const isEven = ref(true)
+const active = ref(0)
+const isEven = ref(true)
+</script>
 
-    return { active, isEven }
-  }
+<template>
+  <var-bottom-navigation class="var-bottom-navigation--example" v-model:active="active" @fabClick="isEven = !isEven">
+    <template #fab>
+      <var-icon name="heart" />
+    </template>
+    <var-bottom-navigation-item label="label" icon="home" />
+    <var-bottom-navigation-item label="label" icon="magnify" />
+    <var-bottom-navigation-item label="label" icon="heart" />
+    <var-bottom-navigation-item label="label" icon="bell" />
+    <var-bottom-navigation-item v-if="!isEven" label="label" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
+
+<style>
+.var-bottom-navigation--example{
+  margin-top:40px;
 }
+</style>
 ```
 
 ## API

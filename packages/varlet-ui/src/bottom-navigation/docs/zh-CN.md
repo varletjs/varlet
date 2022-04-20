@@ -14,151 +14,127 @@ app.use(BottomNavigationItem)
 ### 基础用法
 
 ```html
-<var-bottom-navigation v-model:active="active">
-  <var-bottom-navigation-item label="标签" icon="home" />
-  <var-bottom-navigation-item label="标签" icon="magnify" />
-  <var-bottom-navigation-item label="标签" icon="heart" />
-  <var-bottom-navigation-item label="标签" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const active = ref(0)
+const active = ref(0)
+</script>
 
-    return { active }
-  }
-}
+<template>
+  <var-bottom-navigation v-model:active="active">
+    <var-bottom-navigation-item label="标签" icon="home" />
+    <var-bottom-navigation-item label="标签" icon="magnify" />
+    <var-bottom-navigation-item label="标签" icon="heart" />
+    <var-bottom-navigation-item label="标签" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
 ```
 
 ### 名称匹配
 
 ```html
-<var-bottom-navigation v-model:active="active">
-  <var-bottom-navigation-item name="home" label="标签" icon="home" />
-  <var-bottom-navigation-item name="search" label="标签" icon="magnify" />
-  <var-bottom-navigation-item name="heart" label="标签" icon="heart" />
-  <var-bottom-navigation-item name="user" label="标签" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const active = ref('home')
+const active = ref('home')
+</script>
 
-    return { active }
-  }
-}
+<template>
+  <var-bottom-navigation v-model:active="active">
+    <var-bottom-navigation-item name="home" label="标签" icon="home" />
+    <var-bottom-navigation-item name="search" label="标签" icon="magnify" />
+    <var-bottom-navigation-item name="heart" label="标签" icon="heart" />
+    <var-bottom-navigation-item name="user" label="标签" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
 ```
 
 ### 徽标提示
 
 ```html
-<var-bottom-navigation v-model:active="active">
-  <var-bottom-navigation-item label="标签" icon="home" />
-  <var-bottom-navigation-item label="标签" icon="magnify" badge />
-  <var-bottom-navigation-item label="标签" icon="heart" :badge="badgeProps" />
-  <var-bottom-navigation-item label="标签" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
+<script setup>
 import { ref, reactive } from 'vue'
 
-export default {
-  setup() {
-    const active = ref(0)
-    const badgeProps = reactive({
-      type: 'primary',
-      value: '66'
-    })
+const active = ref(0)
+const badgeProps = reactive({
+  type: 'primary',
+  value: '66'
+})
+</script>
 
-    return { active, badgeProps }
-  }
-}
+<template>
+  <var-bottom-navigation v-model:active="active">
+    <var-bottom-navigation-item label="标签" icon="home" />
+    <var-bottom-navigation-item label="标签" icon="magnify" badge />
+    <var-bottom-navigation-item label="标签" icon="heart" :badge="badgeProps" />
+    <var-bottom-navigation-item label="标签" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
 ```
 
 ### 自定义颜色
 
 ```html
-<var-bottom-navigation active-color="#ba68c8" v-model:active="active">
-  <var-bottom-navigation-item label="标签" icon="home" />
-  <var-bottom-navigation-item label="标签" icon="magnify" />
-  <var-bottom-navigation-item label="标签" icon="heart" />
-  <var-bottom-navigation-item label="标签" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const active = ref(0)
+const active = ref(0)
+</script>
 
-    return { active }
-  }
-}
+<template>
+  <var-bottom-navigation active-color="#ba68c8" v-model:active="active">
+    <var-bottom-navigation-item label="标签" icon="home" />
+    <var-bottom-navigation-item label="标签" icon="magnify" />
+    <var-bottom-navigation-item label="标签" icon="heart" />
+    <var-bottom-navigation-item label="标签" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
 ```
 
 ### 监听切换事件
 
 ```html
-<var-bottom-navigation v-model:active="active" @change="handleChange">
-  <var-bottom-navigation-item label="标签" icon="home" />
-  <var-bottom-navigation-item label="标签" icon="magnify" />
-  <var-bottom-navigation-item label="标签" icon="heart" />
-  <var-bottom-navigation-item label="标签" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const active = ref(0)
-    const handleChange = (active) => {
-      Snackbar.info(`changed to ${active}`)
-    }
-
-    return { active, handleChange }
-  }
+const active = ref(0)
+const handleChange = (active) => {
+  Snackbar.info(`changed to ${active}`)
 }
+</script>
+
+<template>
+  <var-bottom-navigation v-model:active="active" @change="handleChange">
+    <var-bottom-navigation-item label="标签" icon="home" />
+    <var-bottom-navigation-item label="标签" icon="magnify" />
+    <var-bottom-navigation-item label="标签" icon="heart" />
+    <var-bottom-navigation-item label="标签" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
 ```
 
 ### 监听点击事件
 
 ```html
-<var-bottom-navigation v-model:active="active">
-  <var-bottom-navigation-item @click="handleClick" label="标签" icon="home" />
-  <var-bottom-navigation-item @click="handleClick" label="标签" icon="magnify" />
-  <var-bottom-navigation-item @click="handleClick" label="标签" icon="heart" />
-  <var-bottom-navigation-item @click="handleClick" label="标签" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const active = ref(0)
-    const handleClick = (active) => {
-      Snackbar.success(`clicked ${active}`)
-    }
-
-    return { active, handleClick }
-  }
+const active = ref(0)
+const handleClick = (active) => {
+  Snackbar.success(`clicked ${active}`)
 }
+</script>
+
+<template>
+  <var-bottom-navigation v-model:active="active">
+    <var-bottom-navigation-item @click="handleClick" label="标签" icon="home" />
+    <var-bottom-navigation-item @click="handleClick" label="标签" icon="magnify" />
+    <var-bottom-navigation-item @click="handleClick" label="标签" icon="heart" />
+    <var-bottom-navigation-item @click="handleClick" label="标签" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
 ```
 
 ### 悬浮按钮
@@ -166,29 +142,31 @@ export default {
 Item 数量为偶数时，悬浮按钮在中间位置，为奇数时在最右侧。
 
 ```html
-<var-bottom-navigation v-model:active="fab" @fabClick="isEven = !isEven">
-  <template #fab>
-    <var-icon name="heart" />
-  </template>
-  <var-bottom-navigation-item label="标签" icon="home" />
-  <var-bottom-navigation-item label="标签" icon="magnify" />
-  <var-bottom-navigation-item label="标签" icon="heart" />
-  <var-bottom-navigation-item label="标签" icon="bell" />
-  <var-bottom-navigation-item v-if="!isEven" label="标签" icon="account-circle" />
-</var-bottom-navigation>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const active = ref(0)
-    const isEven = ref(true)
+const active = ref(0)
+const isEven = ref(true)
+</script>
 
-    return { active, isEven }
-  }
+<template>
+  <var-bottom-navigation class="var-bottom-navigation--example" v-model:active="active" @fabClick="isEven = !isEven">
+    <template #fab>
+      <var-icon name="heart" />
+    </template>
+    <var-bottom-navigation-item label="标签" icon="home" />
+    <var-bottom-navigation-item label="标签" icon="magnify" />
+    <var-bottom-navigation-item label="标签" icon="heart" />
+    <var-bottom-navigation-item label="标签" icon="bell" />
+    <var-bottom-navigation-item v-if="!isEven" label="标签" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
+
+<style>
+.var-bottom-navigation--example{
+  margin-top:40px;
 }
+</style>
 ```
 
 ## API
