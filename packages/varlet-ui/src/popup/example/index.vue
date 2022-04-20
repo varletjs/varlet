@@ -28,11 +28,14 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.popupPosition }}</app-type>
-  <var-button class="mt-10" type="primary" block @click="center = true">{{ pack.centerPopup }}</var-button>
-  <var-button class="mt-10" type="primary" block @click="bottom = true">{{ pack.belowPopup }}</var-button>
-  <var-button class="mt-10" type="primary" block @click="top = true">{{ pack.abovePopup }}</var-button>
-  <var-button class="mt-10" type="primary" block @click="left = true">{{ pack.leftPopup }}</var-button>
-  <var-button class="mt-10" type="primary" block @click="right = true">{{ pack.rightPopup }}</var-button>
+  <var-space direction="column" :size="[10, 0]">
+    <var-button type="primary" block @click="center = true">{{ pack.centerPopup }}</var-button>
+    <var-button type="primary" block @click="bottom = true">{{ pack.belowPopup }}</var-button>
+    <var-button type="primary" block @click="top = true">{{ pack.abovePopup }}</var-button>
+    <var-button type="primary" block @click="left = true">{{ pack.leftPopup }}</var-button>
+    <var-button type="primary" block @click="right = true">{{ pack.rightPopup }}</var-button>
+  </var-space>
+
   <var-popup v-model:show="center">
     <div class="block">{{ pack.text }}</div>
   </var-popup>
@@ -50,11 +53,15 @@ watchDarkMode(dark)
   </var-popup>
 
   <app-type>{{ pack.overlayStyle }}</app-type>
-  <var-button class="mt-10" type="primary" block @click="overlayClass = true">{{ pack.overlayClass }}</var-button>
+
+  <var-space direction="column" :size="[10, 0]">
+    <var-button type="primary" block @click="overlayClass = true">{{ pack.overlayClass }}</var-button>
+    <var-button type="primary" block @click="overlayStyle = true">{{ pack.overlayStyles }}</var-button>
+  </var-space>
+
   <var-popup overlay-class="custom-overlay" v-model:show="overlayClass">
     <div class="block">{{ pack.text }}</div>
   </var-popup>
-  <var-button class="mt-10" type="primary" block @click="overlayStyle = true">{{ pack.overlayStyles }}</var-button>
   <var-popup
     :overlay-style="{
       backgroundColor: 'rgba(0, 0, 0, 0.3)',
@@ -65,7 +72,7 @@ watchDarkMode(dark)
   </var-popup>
 
   <app-type>{{ pack.event }}</app-type>
-  <var-button class="mt-10" type="primary" block @click="event = true">{{ pack.event }}</var-button>
+  <var-button type="primary" block @click="event = true">{{ pack.event }}</var-button>
   <var-popup
     v-model:show="event"
     @open="() => Snackbar.info('open')"
@@ -84,10 +91,6 @@ watchDarkMode(dark)
 </style>
 
 <style scoped lang="less">
-.mt-10 {
-  margin-top: 10px;
-}
-
 .block {
   padding: 20px 24px;
   width: 250px;

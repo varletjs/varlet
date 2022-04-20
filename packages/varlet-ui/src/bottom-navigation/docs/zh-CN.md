@@ -1,16 +1,5 @@
 # 底部导航栏
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { BottomNavigation, BottomNavigationItem } from '@varlet/ui'
-
-const app = createApp()
-app.use(BottomNavigation)
-app.use(BottomNavigationItem)
-```
-
 ### 基础用法
 
 ```html

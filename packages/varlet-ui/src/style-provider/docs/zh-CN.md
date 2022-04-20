@@ -10,6 +10,7 @@
 以下是组件库一些基本的样式变量
 
 ```css
+/* playground-ignore */
 :root {
   --font-size-xs: 10px;
   --font-size-sm: 12px;
@@ -37,75 +38,47 @@
 可能您有在程序运行时替换样式的需求，比如一键换肤之类的，组件库提供了 StyleProvider 组件来辅助管理样式，
 组件提供了 `组件式调用` 和 `函数式调用` 和两种调用方式。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { StyleProvider } from '@varlet/ui'
-
-createApp().use(StyleProvider)
-```
-
-### 局部引入
-
-```js
-import { StyleProvider } from '@varlet/ui'
-
-export default {
-  components: {
-    [StyleProvider.Component.name]: StyleProvider
-  }
-}
-```
-
 ### 组件式调用
 
 组件式调用可以有范围性的定制组件样式，避免了全局污染，需要注意是有些使用 `teleport` 传送到  `StyleProvider` 外的元素将不会生效。
 
 ```html
-<var-style-provider :style-vars="styleVars">
-  <var-rate v-model="state.score" />
-  <var-switch v-model="state.license" />
-  <var-button
-    style="margin-top: 10px"
-    type="primary"
-    block
-    @click="toggleTheme"
-  >
-    切换样式变量
-  </var-button>
-</var-style-provider>
-```
+<script setup>
+import { ref, reactive } from 'vue'
 
-```js
-import { ref } from 'vue'
+const state = reactive({
+  score: 5,
+  license: true,
+})
 
-export default {
-  setup() {
-    const state = reactive({
-      score: 5,
-      license: true,
-    })
-
-    const successTheme = {
-      '--rate-primary-color': 'var(--color-success)',
-      '--button-primary-color': 'var(--color-success)',
-      '--switch-handle-active-background': 'var(--color-success)',
-      '--switch-track-active-background': 'var(--color-success)',
-    }
-    const styleVars = ref(null)
-
-    const toggleTheme = () => {
-      styleVars.value = styleVars.value ? null : successTheme
-    }
-
-    return {
-      state,
-      styleVars,
-      toggleTheme
-    }
-  }
+const successTheme = {
+  '--rate-primary-color': 'var(--color-success)',
+  '--button-primary-color': 'var(--color-success)',
+  '--switch-handle-active-background': 'var(--color-success)',
+  '--switch-track-active-background': 'var(--color-success)',
 }
+
+const styleVars = ref(null)
+
+const toggleTheme = () => {
+  styleVars.value = styleVars.value ? null : successTheme
+}
+</script>
+
+<template>
+  <var-style-provider :style-vars="styleVars">
+    <var-rate v-model="state.score" />
+    <var-switch v-model="state.license" />
+    <var-button
+      style="margin-top: 10px"
+      type="primary"
+      block
+      @click="toggleTheme"
+    >
+      切换样式变量
+    </var-button>
+  </var-style-provider>
+</template>
 ```
 
 ### 函数式调用
@@ -113,26 +86,24 @@ export default {
 函数式的调用是直接更新 `:root` 上的变量，适合需要全局更新样式的情况。
 
 ```html
-<var-button type="primary" block @click="toggleRootTheme">切换根节点样式变量</var-button>
-```
+<script setup>
+import { StyleProvider } from '@varlet/ui'
 
-```js
-export default {
-  setup() {
-    let rootStyleVars = null
+let rootStyleVars = null
 
-    const darkTheme = {
-      '--color-primary': '#3f51b5'
-    }
-
-    const toggleRootTheme = () => {
-      rootStyleVars = rootStyleVars ? null : darkTheme
-      StyleProvider(rootStyleVars)
-    }
-
-    return { toggleRootTheme }
-  }
+const darkTheme = {
+  '--color-primary': '#3f51b5'
 }
+
+const toggleRootTheme = () => {
+  rootStyleVars = rootStyleVars ? null : darkTheme
+  StyleProvider(rootStyleVars)
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="toggleRootTheme">切换根节点样式变量</var-button>
+</template>
 ```
 
 ## API

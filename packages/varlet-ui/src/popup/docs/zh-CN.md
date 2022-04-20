@@ -4,14 +4,6 @@
 
 创建一个可以从上、下、左、右、中心弹出的容器，用于展示信息。默认使用 `teleport` 插入到 `body` 尾部。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Popup } from '@varlet/ui'
-
-createApp().use(Popup)
-```
 
 ### 弹出位置
 

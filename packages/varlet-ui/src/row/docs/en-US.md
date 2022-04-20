@@ -6,15 +6,6 @@ The component library provides two auxiliary layout components,
 `<var-row/>` and `<var-col/>`,
 so that you can layout more efficiently.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Row, Col } from '@varlet/ui'
-
-createApp().use(Row).use(Col)
-```
-
 ### Gird System
 
 ```html
@@ -24,25 +15,57 @@ in the column.
 ```
 
 ```html
-<var-row>
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-</var-row>
+<template>
+  <var-row>
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+  </var-row>
+</template>
+
+<style>
+.var-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  margin-bottom: 10px;
+  color: #fff;
+  text-align: center;
+  background-clip: content-box;
+  background: #3a7afe;
+}
+</style>
 ```
 
 ### Offset
 
 ```html
-<var-row>
-  <var-col :span="16" :offset="8">offset: 8 span: 16</var-col>
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-</var-row>
+<template>
+  <var-row>
+    <var-col :span="16" :offset="8">offset: 8 span: 16</var-col>
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+  </var-row>
+</template>
+
+<style>
+.var-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  margin-bottom: 10px;
+  color: #fff;
+  text-align: center;
+  background-clip: content-box;
+  background: #3a7afe;
+}
+</style>
 ```
 
 ### Alignment
@@ -51,39 +74,71 @@ The layout component is laid out in `flex` by default,
 using the `<var-row/>` `justify` and `align` properties to set the alignment of the main and cross axes.
 
 ```html
-<var-row>
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-</var-row>
-<var-row justify="center">
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-</var-row>
-<var-row justify="flex-end">
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-</var-row>
-<var-row justify="space-around">
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-</var-row>
-<var-row justify="space-between">
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-</var-row>
+<template>
+  <var-row>
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+  </var-row>
+  <var-row justify="center">
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+  </var-row>
+  <var-row justify="flex-end">
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+  </var-row>
+  <var-row justify="space-around">
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+  </var-row>
+  <var-row justify="space-between">
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+  </var-row>
+</template>
+
+<style>
+.var-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  margin-bottom: 10px;
+  color: #fff;
+  text-align: center;
+  background-clip: content-box;
+  background: #3a7afe;
+}
+</style>
 ```
 
 ### Gutter
 
 ```html
-<var-row :gutter="10">
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-  <var-col :span="8">span: 8</var-col>
-</var-row>
+<template>
+  <var-row :gutter="10">
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
+  </var-row>
+</template>
+
+<style>
+.var-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  margin-bottom: 10px;
+  color: #fff;
+  text-align: center;
+  background-clip: content-box;
+  background: #3a7afe;
+}
+</style>
 ```
 
 ### Responsive Layout
@@ -95,12 +150,28 @@ import BasicExample from '../example/Responsive.vue'
 ```
 
 ```html
-<var-row :gutter="10">
-  <var-col class="col" :xs="8" :sm="6" :md="4" :lg="3" :xl="1">1</var-col>
-  <var-col class="col" :xs="4" :sm="6" :md="8" :lg="9" :xl="11">2</var-col>
-  <var-col class="col" :xs="4" :sm="6" :md="8" :lg="9" :xl="11">3</var-col>
-  <var-col class="col" :xs="8" :sm="6" :md="4" :lg="3" :xl="1">4</var-col>
-</var-row>
+<template>
+  <var-row :gutter="10">
+    <var-col class="col" :xs="8" :sm="6" :md="4" :lg="3" :xl="1">1</var-col>
+    <var-col class="col" :xs="4" :sm="6" :md="8" :lg="9" :xl="11">2</var-col>
+    <var-col class="col" :xs="4" :sm="6" :md="8" :lg="9" :xl="11">3</var-col>
+    <var-col class="col" :xs="8" :sm="6" :md="4" :lg="3" :xl="1">4</var-col>
+  </var-row>
+</template>
+
+<style>
+.var-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  margin-bottom: 10px;
+  color: #fff;
+  text-align: center;
+  background-clip: content-box !important;
+  background: #3a7afe;
+}
+</style>
 ```
 #### Column Props Object
 
@@ -109,48 +180,64 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 ```
 
 ```html
-<var-row :gutter="10">
-  <var-col
-    class="col"
-    :xs="{ span: 12, offset: 6 }"
-    :sm="{ span: 6 }"
-    :md="{ span: 4, offset: 4 }"
-    :lg="{ span: 3, offset: 3 }"
-    :xl="{ span: 2, offset: 2 }"
-  >
-    1
-  </var-col>
-  <var-col
-    class="col"
-    :xs="{ span: 12, offset: 6 }"
-    :sm="{ span: 6 }"
-    :md="{ span: 4, offset: 4 }"
-    :lg="{ span: 3, offset: 3 }"
-    :xl="{ span: 2, offset: 2 }"
-  >
-    2
-  </var-col>
-  <var-col
-    class="col"
-    :xs="{ span: 12, offset: 6 }"
-    :sm="{ span: 6 }"
-    :md="{ span: 4, offset: 4 }"
-    :lg="{ span: 3, offset: 3 }"
-    :xl="{ span: 2, offset: 2 }"
-  >
-    3
-  </var-col>
-  <var-col
-    class="col"
-    :xs="{ span: 12, offset: 6 }"
-    :sm="{ span: 6 }"
-    :md="{ span: 4, offset: 4 }"
-    :lg="{ span: 3, offset: 3 }"
-    :xl="{ span: 2, offset: 2 }"
-  >
-    4
-  </var-col>
-</var-row>
+<template>
+  <var-row :gutter="10">
+    <var-col
+      class="col"
+      :xs="{ span: 12, offset: 6 }"
+      :sm="{ span: 6 }"
+      :md="{ span: 4, offset: 4 }"
+      :lg="{ span: 3, offset: 3 }"
+      :xl="{ span: 2, offset: 2 }"
+    >
+      1
+    </var-col>
+    <var-col
+      class="col"
+      :xs="{ span: 12, offset: 6 }"
+      :sm="{ span: 6 }"
+      :md="{ span: 4, offset: 4 }"
+      :lg="{ span: 3, offset: 3 }"
+      :xl="{ span: 2, offset: 2 }"
+    >
+      2
+    </var-col>
+    <var-col
+      class="col"
+      :xs="{ span: 12, offset: 6 }"
+      :sm="{ span: 6 }"
+      :md="{ span: 4, offset: 4 }"
+      :lg="{ span: 3, offset: 3 }"
+      :xl="{ span: 2, offset: 2 }"
+    >
+      3
+    </var-col>
+    <var-col
+      class="col"
+      :xs="{ span: 12, offset: 6 }"
+      :sm="{ span: 6 }"
+      :md="{ span: 4, offset: 4 }"
+      :lg="{ span: 3, offset: 3 }"
+      :xl="{ span: 2, offset: 2 }"
+    >
+      4
+    </var-col>
+  </var-row>
+</template>
+
+<style>
+.var-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  margin-bottom: 10px;
+  color: #fff;
+  text-align: center;
+  background-clip: content-box !important;
+  background: #3a7afe;
+}
+</style>
 ```
 
 ## API

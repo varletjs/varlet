@@ -3,15 +3,6 @@
 ### Intro
 Create a container that can pop up from top, bottom, left, right and center. `teleport` inserts into the end of the `body` by default.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Popup } from '@varlet/ui'
-
-createApp().use(Popup)
-```
-
 ### Popup Position
 
 ```html

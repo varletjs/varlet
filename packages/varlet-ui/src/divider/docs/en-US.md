@@ -3,52 +3,70 @@
 ### Intro
 Used to separate parts of a list or layout.
 
-
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Divider } from '@varlet/ui'
-
-createApp().use(Divider)
-```
-
 ### Basic Usage
 ```html
-<var-divider />
+<template>
+  <var-divider />
+</template>
 ```
 
 ### Dashed Divider
 ```html
-<var-divider dashed />
+<template>
+  <var-divider dashed />
+</template>
 ```
 
 ### Inset Divider
 ```html
-<var-divider inset />
-<var-divider :inset="36" margin="36px 0" />
-<var-divider inset="-36px" />
+<template>
+  <var-divider inset />
+  <var-divider :inset="36" margin="36px 0" />
+  <var-divider inset="-36px" />
+</template>
 ```
 
 ### Vertical Divider
 ```html
-<span>Text</span>
-<var-divider vertical />
-<span>Text</span>
-<var-divider vertical />
-<span>Text</span>
+<template>
+  <div class="divider-example-vertical-container">
+    <span>文字</span>
+    <var-divider vertical />
+    <span>文字</span>
+    <var-divider vertical />
+    <span>文字</span>
+  </div>
+</template>
+
+<style>
+.divider-example-vertical-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+.divider-example-vertical-container span {
+  font-size: 14px;
+  color: #888;
+}
+</style>
 ```
 
 ### The Divider with description
 ```html
-<var-divider description="Description" />
+<template>
+  <var-divider description="Description" />
+</template>
 ```
 
 ### Custom
 ```html
-<var-divider>
-  <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
-</var-divider>
+<template>
+  <var-divider>
+    <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
+  </var-divider>
+</template>
 ```
 
 
