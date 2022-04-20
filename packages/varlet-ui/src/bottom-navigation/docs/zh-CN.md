@@ -1,16 +1,5 @@
 # 底部导航栏
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { BottomNavigation, BottomNavigationItem } from '@varlet/ui'
-
-const app = createApp()
-app.use(BottomNavigation)
-app.use(BottomNavigationItem)
-```
-
 ### 基础用法
 
 ```html
@@ -150,7 +139,11 @@ const isEven = ref(true)
 </script>
 
 <template>
-  <var-bottom-navigation class="var-bottom-navigation--example" v-model:active="active" @fabClick="isEven = !isEven">
+  <var-bottom-navigation 
+    class="bottom-navigation-example"
+    v-model:active="active"
+    @fab-click="isEven = !isEven"
+  >
     <template #fab>
       <var-icon name="heart" />
     </template>
@@ -163,8 +156,8 @@ const isEven = ref(true)
 </template>
 
 <style>
-.var-bottom-navigation--example{
-  margin-top:40px;
+.bottom-navigation-example {
+  margin-top: 40px;
 }
 </style>
 ```
