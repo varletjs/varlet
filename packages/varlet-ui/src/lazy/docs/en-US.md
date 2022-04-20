@@ -8,7 +8,7 @@ Load when the image is visible
 
 ```html
 <template>
-  <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'">
+  <img class="lazy-example-cat" v-lazy="'https://varlet-varletjs.vercel.app/cat.jpg'">
 </template>
 
 <style>
@@ -25,7 +25,7 @@ Load when the image is visible
 ### Background Image Lazy Load
 ```html
 <template>
-  <div class="lazy-example-cat" v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
+  <div class="lazy-example-cat" v-lazy:background-image="'https://varlet-varletjs.vercel.app/cat.jpg'"></div>
 </template>
 
 <style>
@@ -45,7 +45,7 @@ You can modify the `loading`, `error` image, and `reload attempts` by using inli
 ```html
 <template>
   <img class="lazy-example-cat" 
-    v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'"
+    v-lazy="'https://varlet-varletjs.vercel.app/cat.jpg'"
     lazy-loading="https://xxx.cn/loading.png"
     lazy-error="https://xxx.cn/error.png"
     lazy-attempt="3"

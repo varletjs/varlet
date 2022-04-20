@@ -4,7 +4,7 @@ import VarImage from '../Image'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 
-const SRC = 'https://varlet.gitee.io/varlet-ui/cat.png'
+const SRC = 'https://varlet-varletjs.vercel.app/cat.png'
 
 test('test image example', () => {
   const wrapper = mount(example)

@@ -9,14 +9,14 @@ watchLang(use)
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
-  <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
-  <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
-  <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
-  <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
+  <img class="lazy-example-cat" v-lazy="'https://varlet-varletjs.vercel.app/cat.jpg'" />
+  <img class="lazy-example-cat" v-lazy="'https://varlet-varletjs.vercel.app/cat.jpg'" />
+  <img class="lazy-example-cat" v-lazy="'https://varlet-varletjs.vercel.app/cat.jpg'" />
+  <img class="lazy-example-cat" v-lazy="'https://varlet-varletjs.vercel.app/cat.jpg'" />
+  <img class="lazy-example-cat" v-lazy="'https://varlet-varletjs.vercel.app/cat.jpg'" />
 
   <app-type>{{ pack.backgroundImageLazyLoad }}</app-type>
-  <div class="lazy-example-cat" v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
+  <div class="lazy-example-cat" v-lazy:background-image="'https://varlet-varletjs.vercel.app/cat.jpg'"></div>
 </template>
 
 <style scoped lang="less">

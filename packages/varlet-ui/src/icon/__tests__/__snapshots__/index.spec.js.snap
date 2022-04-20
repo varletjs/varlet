@@ -3,7 +3,7 @@
 exports[`test icon example 1`] = `
 "<div class=\\"app-type\\">图标尺寸</div><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle icon-example__animation-icon\\" style=\\"transition: transform 0ms;\\"></i><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle icon-example__animation-icon\\" style=\\"transition: transform 0ms; font-size: 26px;\\"></i>
 <div class=\\"app-type\\">图标颜色</div><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle icon-example__animation-icon\\" style=\\"color: rgb(41, 121, 255); transition: transform 0ms;\\"></i><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle icon-example__animation-icon\\" style=\\"color: rgb(41, 121, 255); transition: transform 0ms; font-size: 26px;\\"></i>
-<div class=\\"app-type\\">使用图片</div><img class=\\"var-icon var-icon--set var-icon__image icon-example__animation-icon\\" style=\\"transition: transform 0ms; width: 32px; height: 32px; font-size: 32px;\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+<div class=\\"app-type\\">使用图片</div><img class=\\"var-icon var-icon--set var-icon__image icon-example__animation-icon\\" style=\\"transition: transform 0ms; width: 32px; height: 32px; font-size: 32px;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
 <div class=\\"app-type\\">注册事件</div><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle icon-example__animation-icon\\" style=\\"color: rgb(41, 121, 255); transition: transform 0ms;\\"></i>
 <div class=\\"app-type\\">图标切换动画 (点击切换)</div><i class=\\"var-icon var-icon--set var-icon-information icon-example__animation-icon\\" style=\\"color: rgb(41, 121, 255); transition: transform 300ms; font-size: 30px;\\"></i>
 <div class=\\"app-type\\">图标列表 (点击复制)</div>

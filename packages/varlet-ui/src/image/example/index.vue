@@ -10,32 +10,32 @@ watchLang(use)
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-image src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+  <var-image src="https://varlet-varletjs.vercel.app/cat.jpg" />
 
   <app-type>{{ pack.fitMode }}</app-type>
   <var-row>
     <div class="image-example-fit-item">
-      <var-image width="85px" height="85px" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-image width="85px" height="85px" src="https://varlet-varletjs.vercel.app/cat.jpg" />
       <div class="image-example-margin-bottom">fill</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="85px" height="85px" fit="cover" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-image width="85px" height="85px" fit="cover" src="https://varlet-varletjs.vercel.app/cat.jpg" />
       <div class="image-example-margin-bottom">cover</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="85px" height="85px" fit="contain" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-image width="85px" height="85px" fit="contain" src="https://varlet-varletjs.vercel.app/cat.jpg" />
       <div class="image-example-margin-bottom">contain</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="85px" height="85px" fit="none" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-image width="85px" height="85px" fit="none" src="https://varlet-varletjs.vercel.app/cat.jpg" />
       <div class="image-example-margin-bottom">none</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="85px" height="85px" fit="scale-down" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-image width="85px" height="85px" fit="scale-down" src="https://varlet-varletjs.vercel.app/cat.jpg" />
       <div class="image-example-margin-bottom">scale-down</div>
     </div>
   </var-row>
@@ -47,18 +47,18 @@ watchLang(use)
       height="85px"
       fit="cover"
       :radius="10"
-      src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+      src="https://varlet-varletjs.vercel.app/cat.jpg"
       style="margin-right: 10px"
     />
 
-    <var-image width="85px" height="85px" fit="cover" radius="50%" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+    <var-image width="85px" height="85px" fit="cover" radius="50%" src="https://varlet-varletjs.vercel.app/cat.jpg" />
   </var-row>
 
   <app-type>{{ pack.useRipple }}</app-type>
-  <var-image ripple src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+  <var-image ripple src="https://varlet-varletjs.vercel.app/cat.jpg" />
 
   <app-type>{{ pack.useLazyLoad }}</app-type>
-  <var-image lazy src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+  <var-image lazy src="https://varlet-varletjs.vercel.app/cat.jpg" />
 </template>
 
 <style scoped lang="less">

@@ -66,13 +66,13 @@ exports[`test uploader example 1`] = `
 <div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__file var-elevation--2\\">
-      <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-name\\">https://varlet-varletjs.vercel.app/cat.jpg</div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
       <div class=\\"var-uploader__file-indicator\\"></div>
     </div>
     <div class=\\"var-uploader__file var-elevation--2\\">
       <div class=\\"var-uploader__file-name\\">https://www.runoob.com/try/demo_source/mov_bbb.mp4</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cover.jpg\\">
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet-varletjs.vercel.app/cover.jpg\\">
       <div class=\\"var-uploader__file-indicator\\"></div>
     </div>
     <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
@@ -93,18 +93,18 @@ exports[`test uploader example 1`] = `
 <div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__file var-elevation--2 var-uploader--loading\\">
-      <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-name\\">https://varlet-varletjs.vercel.app/cat.jpg</div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
       <div class=\\"var-uploader__file-indicator\\"></div>
     </div>
     <div class=\\"var-uploader__file var-elevation--2\\">
-      <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-name\\">https://varlet-varletjs.vercel.app/cat.jpg</div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
       <div class=\\"var-uploader__file-indicator var-uploader--success\\"></div>
     </div>
     <div class=\\"var-uploader__file var-elevation--2\\">
-      <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-name\\">https://varlet-varletjs.vercel.app/cat.jpg</div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
       <div class=\\"var-uploader__file-indicator var-uploader--error\\"></div>
     </div>
     <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
@@ -213,8 +213,8 @@ exports[`test uploader example 1`] = `
 <div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__file var-elevation--2\\">
-      <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-name\\">https://varlet-varletjs.vercel.app/cat.jpg</div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
       <div class=\\"var-uploader__file-indicator\\"></div>
     </div>
     <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
@@ -255,8 +255,8 @@ exports[`test uploader example 1`] = `
 <div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__file var-elevation--2\\">
-      <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-name\\">https://varlet-varletjs.vercel.app/cat.jpg</div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
       <div class=\\"var-uploader__file-indicator var-uploader--error\\"></div>
     </div>
     <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
@@ -275,9 +275,9 @@ exports[`test uploader example 1`] = `
 </div>
 <div class=\\"app-type\\">自定义渲染文件列表</div>
 <div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
-  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
-  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
-  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\"></div>
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\"></div>
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\"></div>
   <div style=\\"margin: 4px 0px;\\">
     <div class=\\"var-uploader var--box\\">
       <div class=\\"var-uploader__file-list\\">

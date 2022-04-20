@@ -29,7 +29,7 @@ When the name passed in is a URL the `img` tag is displayed in `cover` mode.
 
 ```html
 <template>
-  <var-icon name="https://varlet.gitee.io/varlet-ui/cat.jpg" :size="32" />
+  <var-icon name="https://varlet-varletjs.vercel.app/cat.jpg" :size="32" />
 </template>
 ```
 

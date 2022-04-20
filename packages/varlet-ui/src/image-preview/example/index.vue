@@ -19,8 +19,8 @@ const closeShow = ref(false)
 const closeEventShow = ref(false)
 const extraSlotsShow = ref(false)
 const menuShow = ref(false)
-const images = ref(['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'])
-const image = ref(['https://varlet.gitee.io/varlet-ui/cat.jpg'])
+const images = ref(['https://varlet-varletjs.vercel.app/cat.jpg', 'https://varlet-varletjs.vercel.app/cat2.jpg'])
+const image = ref(['https://varlet-varletjs.vercel.app/cat.jpg'])
 const actions = computed(() => [
   {
     name: pack.value.operate,
@@ -70,7 +70,7 @@ watchDarkMode(dark)
     <var-image-preview
       :images="images"
       v-model:show="currentShow"
-      current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
+      current="https://varlet-varletjs.vercel.app/cat2.jpg"
     />
 
     <var-button type="warning" block @click="closeShow = true">{{ pack.displayCloseButton }}</var-button>

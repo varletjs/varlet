@@ -15,28 +15,28 @@ const values = reactive({
   files: [],
   files2: [
     {
-      url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      url: 'https://varlet-varletjs.vercel.app/cat.jpg',
+      cover: 'https://varlet-varletjs.vercel.app/cat.jpg',
     },
     {
       url: 'https://www.runoob.com/try/demo_source/mov_bbb.mp4',
-      cover: 'https://varlet.gitee.io/varlet-ui/cover.jpg',
+      cover: 'https://varlet-varletjs.vercel.app/cover.jpg',
     },
   ],
   files3: [
     {
-      url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      url: 'https://varlet-varletjs.vercel.app/cat.jpg',
+      cover: 'https://varlet-varletjs.vercel.app/cat.jpg',
       state: 'loading',
     },
     {
-      url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      url: 'https://varlet-varletjs.vercel.app/cat.jpg',
+      cover: 'https://varlet-varletjs.vercel.app/cat.jpg',
       state: 'success',
     },
     {
-      url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      url: 'https://varlet-varletjs.vercel.app/cat.jpg',
+      cover: 'https://varlet-varletjs.vercel.app/cat.jpg',
       state: 'error',
     },
   ],
@@ -48,31 +48,31 @@ const values = reactive({
   files9: [],
   files10: [
     {
-      url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      url: 'https://varlet-varletjs.vercel.app/cat.jpg',
+      cover: 'https://varlet-varletjs.vercel.app/cat.jpg',
       state: 'error',
     },
   ],
   files11: [
     {
-      url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      url: 'https://varlet-varletjs.vercel.app/cat.jpg',
+      cover: 'https://varlet-varletjs.vercel.app/cat.jpg',
     },
   ],
   files12: [
     {
-      url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      url: 'https://varlet-varletjs.vercel.app/cat.jpg',
+      cover: 'https://varlet-varletjs.vercel.app/cat.jpg',
       state: 'loading',
     },
     {
-      url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      url: 'https://varlet-varletjs.vercel.app/cat.jpg',
+      cover: 'https://varlet-varletjs.vercel.app/cat.jpg',
       state: 'success',
     },
     {
-      url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      url: 'https://varlet-varletjs.vercel.app/cat.jpg',
+      cover: 'https://varlet-varletjs.vercel.app/cat.jpg',
       state: 'error',
     },
   ],

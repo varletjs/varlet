@@ -13,7 +13,7 @@
 import { ImagePreview } from '@varlet/ui'
 
 const preview = () => {
-  ImagePreview('https://varlet.gitee.io/varlet-ui/cat.jpg')
+  ImagePreview('https://varlet-varletjs.vercel.app/cat.jpg')
 }
 </script>
 
@@ -31,8 +31,8 @@ import { ImagePreview } from '@varlet/ui'
 const preview = () => {
   ImagePreview({
     images: [
-      'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      'https://varlet.gitee.io/varlet-ui/cat2.jpg'
+      'https://varlet-varletjs.vercel.app/cat.jpg',
+      'https://varlet-varletjs.vercel.app/cat2.jpg'
     ],
     onChange(index) {
       console.log(index)
@@ -57,8 +57,8 @@ import { ref } from 'vue'
 
 const show = ref(false)
 const images = ref([
-  'https://varlet.gitee.io/varlet-ui/cat.jpg',
-  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+  'https://varlet-varletjs.vercel.app/cat.jpg',
+  'https://varlet-varletjs.vercel.app/cat2.jpg',
 ])
 </script>
 
@@ -81,8 +81,8 @@ import { ref } from 'vue'
 
 const show = ref(false)
 const images = ref([
-  'https://varlet.gitee.io/varlet-ui/cat.jpg',
-  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+  'https://varlet-varletjs.vercel.app/cat.jpg',
+  'https://varlet-varletjs.vercel.app/cat2.jpg',
 ])
 </script>
 
@@ -95,7 +95,7 @@ const images = ref([
     指定初始位置
   </var-button>
   <var-image-preview
-    current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
+    current="https://varlet-varletjs.vercel.app/cat2.jpg"
     :images="images"
     v-model:show="show"
   />
@@ -110,8 +110,8 @@ import { ref } from 'vue'
 
 const show = ref(false)
 const images = ref([
-  'https://varlet.gitee.io/varlet-ui/cat.jpg',
-  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+  'https://varlet-varletjs.vercel.app/cat.jpg',
+  'https://varlet-varletjs.vercel.app/cat2.jpg',
 ])
 </script>
 
@@ -140,8 +140,8 @@ import { Snackbar } from '@varlet/ui'
 
 const show = ref(false)
 const images = ref([
-  'https://varlet.gitee.io/varlet-ui/cat.jpg',
-  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+  'https://varlet-varletjs.vercel.app/cat.jpg',
+  'https://varlet-varletjs.vercel.app/cat2.jpg',
 ])
 const handleCloseEvent = () => Snackbar('触发了关闭事件。');
 </script>
@@ -170,8 +170,8 @@ import { ref } from 'vue'
 const show = ref(false)
 const menuShow = ref(false)
 const images = ref([
-  'https://varlet.gitee.io/varlet-ui/cat.jpg',
-  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+  'https://varlet-varletjs.vercel.app/cat.jpg',
+  'https://varlet-varletjs.vercel.app/cat2.jpg',
 ])
 const actions = [
   {

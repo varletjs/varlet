@@ -23,7 +23,7 @@ watchDarkMode(dark)
     :title="pack.title"
     :subtitle="pack.subtitle"
     :description="pack.description"
-    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    src="https://varlet-varletjs.vercel.app/cat.jpg"
   />
 
   <app-type>{{ pack.useSlot }}</app-type>
@@ -31,7 +31,7 @@ watchDarkMode(dark)
     :title="pack.title"
     :subtitle="pack.subtitle"
     :description="pack.description"
-    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
       <var-space>

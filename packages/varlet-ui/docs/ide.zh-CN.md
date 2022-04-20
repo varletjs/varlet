@@ -9,8 +9,8 @@
 
 通过设置 `Editor -> General -> Code Completion -> Show the documentation popup in ___ ms` 开启组件库文档说明。
 
-<img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/hl_wb_setting.png" alt="webstorm setting" />
-<img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/hl_wb.jpg" alt="webstorm highlight" />
+<img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet-varletjs.vercel.app/hl_wb_setting.png" alt="webstorm setting" />
+<img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet-varletjs.vercel.app/hl_wb.jpg" alt="webstorm highlight" />
 
 ### VSCode
 
@@ -25,13 +25,13 @@
 }
 ```
 
-<img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/hl_vsc_setting.png" alt="vscode setting" />
-<img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/hl_vsc.png" alt="vscode highlight" />
+<img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet-varletjs.vercel.app/hl_vsc_setting.png" alt="vscode setting" />
+<img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet-varletjs.vercel.app/hl_vsc.png" alt="vscode highlight" />
 
 ### VSCode 辅助插件
 
 在 `vscode` 插件市场搜索 `varlet-vscode-extension` 安装即可, 在鼠标悬停在组件名上时, 可以通过链接直接前往该组件的文档地址。
 
-<img style="width: 50%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/ext_vsc.png" alt="vscode ext" />
-<img style="width: 78%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/ext_vsc_link.png" alt="vscode ext link" />
+<img style="width: 50%; margin-top: 10px; border-radius: 5px" src="https://varlet-varletjs.vercel.app/ext_vsc.png" alt="vscode ext" />
+<img style="width: 78%; margin-top: 10px; border-radius: 5px" src="https://varlet-varletjs.vercel.app/ext_vsc_link.png" alt="vscode ext link" />
 
