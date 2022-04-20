@@ -10,7 +10,7 @@
 
 ```html
 <script setup>
-import { ref, onMounted} from 'vue'
+import { ref, onMounted } from 'vue'
 
 const list = ref([])
 

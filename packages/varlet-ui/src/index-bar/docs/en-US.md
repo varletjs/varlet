@@ -10,7 +10,7 @@ When you click the index bar, it will automatically jump to the corresponding `I
 
 ```html
 <script setup>
-import { ref, onMounted} from 'vue'
+import { ref, onMounted } from 'vue'
 
 const list = ref([])
 
