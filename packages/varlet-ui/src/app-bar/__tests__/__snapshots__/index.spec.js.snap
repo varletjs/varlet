@@ -77,7 +77,7 @@ exports[`test app bar example 1`] = `
     </div>
   </div>
 </div>
-<div class=\\"space\\"></div>"
+<div class=\\"var-app-var--example-space\\"></div>"
 `;
 
 exports[`test app bar props 1`] = `
