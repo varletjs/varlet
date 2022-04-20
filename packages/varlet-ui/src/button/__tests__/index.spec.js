@@ -1,4 +1,3 @@
-import example from '../example'
 import Button from '..'
 import VarButton from '../Button'
 import { mount } from '@vue/test-utils'
