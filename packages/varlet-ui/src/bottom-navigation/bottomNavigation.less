@@ -1,13 +1,15 @@
 @bottom-navigation-height: 50px;
 @bottom-navigation-z-index: 1;
 @bottom-navigation-background-color: #fff;
-@bottom-navigation-border-color: #bcc2cb;
+@bottom-navigation-border-color: #e3e3e3;
+@bottom-navigation-fab-offset: 4px;
 
 :root {
   --bottom-navigation-height: @bottom-navigation-height;
   --bottom-navigation-z-index: @bottom-navigation-z-index;
   --bottom-navigation-background-color: @bottom-navigation-background-color;
   --bottom-navigation-border-color: @bottom-navigation-border-color;
+  --bottom-navigation-fab-offset: @bottom-navigation-fab-offset;
 }
 
 .var-bottom-navigation {
@@ -16,7 +18,13 @@
   display: flex;
   position: relative;
   background-color: var(--bottom-navigation-background-color);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms, border-color 250ms;
+  -webkit-tap-highlight-color: transparent;
+
+  &--safe-area {
+    padding-bottom: constant(safe-area-inset-bottom); // iOS < 11.2
+    padding-bottom: env(safe-area-inset-bottom); // iOS >= 11.2
+  }
 
   &--fixed {
     position: fixed;
@@ -28,16 +36,13 @@
     border-top: 1px solid var(--bottom-navigation-border-color);
   }
 
-  &__fab {
+  &__fab[var-bottom-navigation__fab] {
     width: var(--bottom-navigation-height);
     height: var(--bottom-navigation-height);
     position: absolute;
     z-index: 2;
     transform: translateY(-50%);
-    background-color: #fff;
     overflow: hidden;
-    cursor: pointer;
-    border-radius: 50%;
     transition: right 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 
@@ -46,6 +51,6 @@
   }
 
   &--fab-right {
-    right: 0;
+    right: var(--bottom-navigation-fab-offset);
   }
 }

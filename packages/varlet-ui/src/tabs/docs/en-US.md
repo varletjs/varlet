@@ -254,6 +254,7 @@ Click the Tab to scroll automatically to the center of the viewport.
 | `indicator-size` | Tab activates the size of the indicator | _string \| number_ | `2px` |
 | `elevation` | Whether to enable shadows | _boolean_ | `false` |
 | `sticky` | Whether to enable sticky layouts | _boolean_ | `false` |
+| `safe-area` | Whether to enable bottom safe area adaptation | _boolean_ | `false` |
 | `offset-top` | Distance offset top | _string \| number_ | `0` |
 
 #### Tab Props

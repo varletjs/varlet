@@ -245,7 +245,7 @@ export default {
 
 ```html
 <var-uploader
-  :rules="[(v, u) => u.getError(v).length === 0 || '存在上传失败的文件']"
+  :rules="[(v, u) => u.getError().length === 0 || '存在上传失败的文件']"
   v-model="files"
 />
 ```
@@ -316,17 +316,17 @@ export default {
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
-| `getLoading` | 获取 `state` 等于 `loading` 的文件集合| `VarFile[]` | `VarFile[]` |
-| `getSuccess` | 获取 `state` 等于 `success` 的文件集合| `VarFile[]` | `VarFile[]` |
-| `getError` |  获取 `state` 等于 `error` 的文件集合 | `VarFile[]` | `VarFile[]` |
+| `getLoading` | 获取 `state` 等于 `loading` 的文件集合| `-` | `VarFile[]` |
+| `getSuccess` | 获取 `state` 等于 `success` 的文件集合| `-` | `VarFile[]` |
+| `getError` |  获取 `state` 等于 `error` 的文件集合 | `-` | `VarFile[]` |
 
 ### 方法
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
-| `getLoading` | 获取 `state` 等于 `loading` 的文件集合| `VarFile[]` | `VarFile[]` |
-| `getSuccess` | 获取 `state` 等于 `success` 的文件集合| `VarFile[]` | `VarFile[]` |
-| `getError` |  获取 `state` 等于 `error` 的文件集合 | `VarFile[]` | `VarFile[]` |
+| `getLoading` | 获取 `state` 等于 `loading` 的文件集合| `-` | `VarFile[]` |
+| `getSuccess` | 获取 `state` 等于 `success` 的文件集合| `-` | `VarFile[]` |
+| `getError` |  获取 `state` 等于 `error` 的文件集合 | `-` | `VarFile[]` |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
 | `reset` | 清空绑定的值(设置为 `[]`)和校验信息 | `-` | `-` |

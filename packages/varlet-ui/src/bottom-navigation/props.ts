@@ -1,7 +1,8 @@
 import type { PropType } from 'vue'
+import type { ButtonProps } from '../../types'
 
 export const props = {
-  modelValue: {
+  active: {
     type: [Number, String] as PropType<number | string>,
     default: 0,
   },
@@ -10,6 +11,10 @@ export const props = {
     default: false,
   },
   border: {
+    type: Boolean,
+    default: false,
+  },
+  safeArea: {
     type: Boolean,
     default: false,
   },
@@ -26,10 +31,16 @@ export const props = {
   onChange: {
     type: Function as PropType<(active: number | string) => void>,
   },
-  'onUpdate:modelValue': {
+  'onUpdate:active': {
     type: Function as PropType<(active: string | number) => void>,
   },
   onBeforeChange: {
     type: Function as PropType<(active: number | string) => boolean | Promise<any>>,
+  },
+  onFabClick: {
+    type: Function as PropType<() => void>,
+  },
+  fabProps: {
+    type: Object as PropType<Partial<ButtonProps>>,
   },
 }

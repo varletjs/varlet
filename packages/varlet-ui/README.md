@@ -1,11 +1,11 @@
 <div align="center">
-  <a href="https://varlet.gitee.io/varlet-ui/">
-    <img src="https://varlet.gitee.io/varlet-ui/logo.svg" width="150">
+  <a href="https://varlet-varletjs.vercel.app">
+    <img src="https://varlet-varletjs.vercel.app/logo.svg" width="150" >
   </a>
   <h1>VARLET</h1>
   <p>基于 Vue3 的 Material design 风格移动端组件库</p>
   <p>
-    <a href="https://varlet.gitee.io/varlet-ui/">开发文档</a> | <a href="https://github.com/varletjs/varlet/blob/dev/README.en-US.md">English</a>
+    <a href="https://varlet-varletjs.vercel.app">开发文档</a> | <a href="https://github.com/varletjs/varlet/blob/dev/README.en-US.md">English</a>
   </p>
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
@@ -25,7 +25,7 @@
 Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全面拥抱 `Vue3` 生态，由社区建立起来的组件库团队进行维护。
 
 ### 特性
-- 🚀 提供50个高质量通用组件 
+- 🚀 提供50+个高质量通用组件 
 - 🚀 组件十分轻量
 - 💪 由国人开发，完善的中英文文档和后勤保障
 - 🛠️ 支持按需引入
@@ -76,6 +76,12 @@ import '@varlet/ui/es/style.js'
 
 createApp(App).use(Varlet).mount('#app')
 ```
+
+### 捐赠我们
+
+我们将用捐赠所得去鼓励参与开源的贡献者们，给他们买一杯咖啡奶茶，购置对于项目有帮助基础设施，推动项目变得更好。
+
+<img style="width: 25%" src="https://github.com/varletjs/varlet/blob/dev/sponsor/wechat.png?raw=true" />
 
 ### Contributors
 

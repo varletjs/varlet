@@ -39,7 +39,7 @@
   ></var-rate>
 
   <app-type>{{ pack.disableTheRating }}</app-type>
-  <var-rate v-model="score7" disabled disabled-color="#bbbbbb" />
+  <var-rate v-model="score7" disabled />
 
   <app-type>{{ pack.readonlyRating }}</app-type>
   <var-rate v-model="score8" readonly />

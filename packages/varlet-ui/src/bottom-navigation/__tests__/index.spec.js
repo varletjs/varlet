@@ -31,7 +31,7 @@ test('test bottom-navigation before-change prevent switch', async () => {
       handleBeforeChange,
     },
     template: `
-    <var-bottom-navigation v-model="active" @before-change="handleBeforeChange">
+    <var-bottom-navigation v-model:active="active" @before-change="handleBeforeChange">
       <var-bottom-navigation-item label="标签" icon="home" />
       <var-bottom-navigation-item label="标签" icon="magnify" />
       <var-bottom-navigation-item label="标签" icon="heart" />
@@ -72,7 +72,7 @@ test('test bottom-navigation before-change return promise', async () => {
       handleBeforeChange,
     },
     template: `
-    <var-bottom-navigation v-model="active" @before-change="handleBeforeChange">
+    <var-bottom-navigation v-model:active="active" @before-change="handleBeforeChange">
       <var-bottom-navigation-item label="标签" icon="home" />
       <var-bottom-navigation-item label="标签" icon="magnify" />
       <var-bottom-navigation-item label="标签" icon="heart" />
@@ -111,7 +111,7 @@ test('test bottom-navigation change event', async () => {
       handleChange,
     },
     template: `
-    <var-bottom-navigation v-model="active" @change="handleChange">
+    <var-bottom-navigation v-model:active="active" @change="handleChange">
       <var-bottom-navigation-item label="标签" icon="home" />
       <var-bottom-navigation-item label="标签" icon="magnify" />
       <var-bottom-navigation-item label="标签" icon="heart" />
@@ -148,7 +148,7 @@ test('test bottom-navigation-item click event', async () => {
       handleClick,
     },
     template: `
-    <var-bottom-navigation v-model="active">
+    <var-bottom-navigation v-model:active="active">
       <var-bottom-navigation-item label="标签" icon="home" />
       <var-bottom-navigation-item @click="handleClick" label="标签" icon="magnify" />
       <var-bottom-navigation-item label="标签" icon="heart" />
@@ -178,7 +178,7 @@ test('test BottomNavigation relation BottomNavigationItems', async () => {
       active: 0,
     }),
     template: `
-    <var-bottom-navigation v-model="active">
+    <var-bottom-navigation v-model:active="active">
       <var-bottom-navigation-item label="标签" icon="home" />
       <var-bottom-navigation-item label="标签" icon="magnify" />
       <var-bottom-navigation-item label="标签" icon="heart" />
@@ -208,7 +208,7 @@ test('fab button', async () => {
       active: 0,
     }),
     template: `
-    <var-bottom-navigation v-model="active">
+    <var-bottom-navigation v-model:active="active">
       <template #fab>
         <div class="tab_example" />
       </template>

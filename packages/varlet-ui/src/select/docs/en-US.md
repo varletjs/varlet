@@ -1,5 +1,9 @@
 # Select
 
+### Intro
+
+Display and select the content through the drop-down menu
+
 ### Install
 
 ```js

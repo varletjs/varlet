@@ -22,16 +22,14 @@
 
       <div
         :class="
-          classes(
-            'var--relative',
-            [!$slots.default, `${n('action')} var-elevation--2`],
-            [disabled || formDisabled, n('--disabled')]
-          )
+          classes([!$slots.default, `${n('action')} var-elevation--2`], [disabled || formDisabled, n('--disabled')])
         "
         v-if="!maxlength || modelValue.length < maxlength"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple || $slots.default }"
+        @click="triggerAction"
       >
         <input
+          ref="input"
           :class="n('action-input')"
           type="file"
           :multiple="multiple"
@@ -40,6 +38,7 @@
           :disabled="disabled || formDisabled || readonly || formReadonly"
           @change="handleChange"
         />
+
         <slot>
           <var-icon :class="n('action-icon')" var-uploader-cover name="plus" />
         </slot>
@@ -93,11 +92,11 @@ interface ValidationVarFile {
 }
 
 interface VarFileUtils {
-  getLoading(varFiles: VarFile[]): VarFile[]
+  getLoading(): VarFile[]
 
-  getSuccess(varFiles: VarFile[]): VarFile[]
+  getSuccess(): VarFile[]
 
-  getError(varFiles: VarFile[]): VarFile[]
+  getError(): VarFile[]
 }
 
 let fid = 0
@@ -112,6 +111,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
+    const input: Ref<null | HTMLElement> = ref(null)
     const showPreview: Ref<boolean> = ref(false)
     const currentPreview: Ref<null | VarFile> = ref(null)
     const maxlengthText: ComputedRef<string> = computed(() => {
@@ -140,6 +140,10 @@ export default defineComponent({
 
       return modelValue
     })
+
+    const triggerAction = () => {
+      input.value!.click()
+    }
 
     const preview = (varFile: VarFile) => {
       const { disabled, readonly, previewed } = props
@@ -322,6 +326,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      input,
       files,
       showPreview,
       currentPreview,
@@ -332,6 +337,7 @@ export default defineComponent({
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
       preview,
+      triggerAction,
       handleChange,
       handleRemove,
       getSuccess,

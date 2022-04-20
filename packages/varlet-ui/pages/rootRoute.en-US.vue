@@ -1,42 +1,3 @@
-<template>
-  <div class="root-page flex">
-    <div class="just-padding flex-one">
-      <div class="post-introduce flex">
-        <div class="introduce-img">
-          <img
-            class="img"
-            src="https://madewithnetworkfra.fra1.digitaloceanspaces.com/spatie-space-production/28269/varlet-ui.jpg"
-          />
-        </div>
-        <div class="base-descrition introduce-descrition">
-          Material style mobile terminal component library for vue3
-        </div>
-      </div>
-    </div>
-    <div class="post-detail flex-one">
-      <div class="base-title margin-bottom flex row-center">
-        <animation-box class="logo" />
-        Varlet
-      </div>
-      <div class="base-title margin-bottom">Version1.26.9</div>
-      <div class="base-descrition margin-bottom">Vue 3 Mobile Component Library</div>
-      <div class="flex row-center">
-        <var-space :wrap="false" jujstify="center" align="center">
-          <var-button type="primary" @click="getStar">Get Started</var-button>
-          <var-button>
-            <var-space size="mini" align="center" @click="goGithub"> <var-icon name="github" />Github </var-space>
-          </var-button>
-          <var-button v-if="darkMode" round @click="toggleTheme">
-            <var-site-icon size="26px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
-          </var-button>
-          <var-button v-if="languages" round @click="toggleLanguages">
-            <var-site-icon name="translate" size="26px" />
-          </var-button>
-        </var-space>
-      </div>
-    </div>
-  </div>
-</template>
 <script setup lang="ts">
 import { get } from 'lodash-es'
 import { ref, Ref, watch } from 'vue'
@@ -49,6 +10,7 @@ import { getBrowserThemes, setThemes } from '../.varlet/site/utils'
 import AnimationBox from '../.varlet/site/pc/components/AnimationBox'
 import dark from '../src/themes/dark'
 import { watchDarkMode, getPCLocationInfo } from '@varlet/cli/site/utils'
+import { version } from '../package.json'
 
 const route = useRoute()
 const router = useRouter()
@@ -106,6 +68,47 @@ window.postMessage(getThemesMessage(), '*')
 
 watch(() => route.path, togglePageTitle, { immediate: true })
 </script>
+
+<template>
+  <div class="root-page flex">
+    <div class="just-padding flex-one">
+      <div class="post-introduce flex">
+        <div class="introduce-img">
+          <img
+            class="img"
+            src="https://madewithnetworkfra.fra1.digitaloceanspaces.com/spatie-space-production/28269/varlet-ui.jpg"
+          />
+        </div>
+        <div class="base-descrition introduce-descrition">
+          Material style mobile terminal component library for vue3
+        </div>
+      </div>
+    </div>
+    <div class="post-detail flex-one">
+      <div class="base-title margin-bottom flex row-center">
+        <animation-box class="logo" />
+        Varlet
+      </div>
+      <div class="base-title margin-bottom">Version{{ version }}</div>
+      <div class="base-descrition margin-bottom">Vue 3 Mobile Component Library</div>
+      <div class="flex row-center">
+        <var-space :wrap="false" jujstify="center" align="center">
+          <var-button type="primary" @click="getStar">Get Started</var-button>
+          <var-button>
+            <var-space size="mini" align="center" @click="goGithub"> <var-icon name="github" />Github </var-space>
+          </var-button>
+          <var-button v-if="darkMode" round @click="toggleTheme">
+            <var-site-icon size="26px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
+          </var-button>
+          <var-button v-if="languages" round @click="toggleLanguages">
+            <var-site-icon name="translate" size="26px" />
+          </var-button>
+        </var-space>
+      </div>
+    </div>
+  </div>
+</template>
+
 <style lang="less" scoped>
 .root-page {
   width: 100vw;

@@ -1,3 +1,120 @@
+## [1.27.5](https://github.com/varletjs/varlet/compare/v1.27.4...v1.27.5) (2022-04-16)
+
+
+
+## [1.27.4](https://github.com/varletjs/varlet/compare/v1.27.3...v1.27.4) (2022-04-16)
+
+
+### Bug Fixes
+
+* **rate:** fix rate style ([79edabf](https://github.com/varletjs/varlet/commit/79edabff2fa08f44dd3b251af9a41e311a7426d6))
+
+
+
+## [1.27.3](https://github.com/varletjs/varlet/compare/v1.27.2...v1.27.3) (2022-04-14)
+
+
+### Bug Fixes
+
+* **ui/uploader:** fix [#426](https://github.com/varletjs/varlet/issues/426) ([463e0a7](https://github.com/varletjs/varlet/commit/463e0a7aee6f6f1ca61c2e18f88e5db4b30d9c4d))
+* **uploader:** use label tag to replace div ([d6832c8](https://github.com/varletjs/varlet/commit/d6832c820b4538daf264e02aba39ee5e6509090d))
+
+
+
+## [1.27.2](https://github.com/varletjs/varlet/compare/v1.27.1...v1.27.2) (2022-04-11)
+
+
+### Features
+
+* **bottom-navigation:** add safe-area prop to avoid affect ([921775b](https://github.com/varletjs/varlet/commit/921775be50eb7f0b9b161292a43b261e40f4247b))
+* **tabs:** add safe-area prop to avoid affect ([5cfe4b9](https://github.com/varletjs/varlet/commit/5cfe4b955f49b85bf11224657328855f33bbeed1))
+
+
+
+## [1.27.1](https://github.com/varletjs/varlet/compare/v1.27.0...v1.27.1) (2022-04-09)
+
+
+### Bug Fixes
+
+* **ui/uploader:** ripple does not work when customizing the style ([8e6f0e7](https://github.com/varletjs/varlet/commit/8e6f0e753845e4a1c8c872df005166b4ee4c53a3))
+
+
+
+# [1.27.0](https://github.com/varletjs/varlet/compare/v1.26.9...v1.27.0) (2022-04-08)
+
+
+### Bug Fixes
+
+* **icons:** use base64 src ([465b3c3](https://github.com/varletjs/varlet/commit/465b3c35db29b682997560ba63210b1347b81cbe))
+* **icons:** use relative path src ([bdab3d4](https://github.com/varletjs/varlet/commit/bdab3d41aa358686385cbb382319c9e8a85c9b37))
+* **ui/tabs:** fix match boundary error ([6cb05e0](https://github.com/varletjs/varlet/commit/6cb05e0c37527f1e44ac0ee6c91b209fc3fa8503))
+
+
+### Features
+
+* **bottom-navigation:** new component bottom-navigation [#866](https://github.com/varletjs/varlet/issues/866)dc6ee ([ee48111](https://github.com/varletjs/varlet/commit/ee48111afa5a6dcb548a7d790915d6101a7cd555)), closes [#866dc6](https://github.com/varletjs/varlet/issues/866dc6)
+* new component BottomNavigation ([#356](https://github.com/varletjs/varlet/issues/356)) ([2fd7753](https://github.com/varletjs/varlet/commit/2fd7753cab212bef0c3da552509ecb67a7d503e3))
+
+
+### Performance Improvements
+
+* add class and call function ([da8ac80](https://github.com/varletjs/varlet/commit/da8ac80a58e10f734add8ae3d33585e73b0d1355))
+* add class and call function ([469b5d0](https://github.com/varletjs/varlet/commit/469b5d0b7d07615b5460f4fd2beab2b65c212368))
+* **card:** add class ([#361](https://github.com/varletjs/varlet/issues/361)) ([73426b2](https://github.com/varletjs/varlet/commit/73426b25602e433f7fa0fd7e2f975668497523b2))
+* **collapse:** add class ([dc5b23e](https://github.com/varletjs/varlet/commit/dc5b23e67da1254456281f27f415f36c43d3a0e0))
+* **date-picker:** add class ([7cfd233](https://github.com/varletjs/varlet/commit/7cfd233023f705bc98fcd1b865315b84e2751d84))
+* **form-details:** add class ([5047156](https://github.com/varletjs/varlet/commit/50471560724b866cb501922399a922e742b1b514))
+* Modify the class display method in table, tabs, ripple and lazy ([#391](https://github.com/varletjs/varlet/issues/391)) ([25ebec9](https://github.com/varletjs/varlet/commit/25ebec98855975492a051a3b64cde73c41b7a5fa))
+* **option:** add class ([ea062e8](https://github.com/varletjs/varlet/commit/ea062e857a475238a975530c2d72a9291e6d971c))
+* **progress:** add class ([4a878d3](https://github.com/varletjs/varlet/commit/4a878d3dc3e6c602dd26621ef0f0d186e37c9278))
+* remove unuseful function define ([d372fc0](https://github.com/varletjs/varlet/commit/d372fc0cd7404e2070cc49172e1dbef7c85a7c48))
+* **snackbar:** complete to replace class ([9961458](https://github.com/varletjs/varlet/commit/996145813dd8ed00b6f6ef82c1212f36f674db70))
+* **step:** add class ([9c97678](https://github.com/varletjs/varlet/commit/9c97678dc4a7baa5c9a3eaca00e10c663036346e))
+* **tab&swipe-item:** add class ([7807520](https://github.com/varletjs/varlet/commit/78075201606d3851b2a00da4c86f63b78e2c8b08))
+* **time-picker:** add class ([b2f458e](https://github.com/varletjs/varlet/commit/b2f458e1403185ed1a5035d114cbb26418b18172))
+* **ui/app-bar:** add class ([#396](https://github.com/varletjs/varlet/issues/396)) ([687d791](https://github.com/varletjs/varlet/commit/687d7918ce8f068e702e64b0a524cd1dfbad0e07))
+* **ui/back-top,countdown,menu:** modify class method ([#404](https://github.com/varletjs/varlet/issues/404)) ([f9a7295](https://github.com/varletjs/varlet/commit/f9a72953114f76f58794bc5428eaeb462a96a4c4))
+* **ui/badge:** add class ([de33df1](https://github.com/varletjs/varlet/commit/de33df180fae615e417fbe1c23ee65b838ad2436))
+* **ui/bottom-navigation:** handle active boundary ([#411](https://github.com/varletjs/varlet/issues/411)) ([49c91b3](https://github.com/varletjs/varlet/commit/49c91b359e92ee764fb5241af614df7139053dcd))
+* **ui/cell:** add class ([6b40718](https://github.com/varletjs/varlet/commit/6b40718f610e64895e62dc5183898d8f9d21410a))
+* **ui/chip:** add class & canonical class name ([5b5987f](https://github.com/varletjs/varlet/commit/5b5987fe897281c58d2232367e40242648495254))
+* **ui/col:** add class ([#383](https://github.com/varletjs/varlet/issues/383)) ([2d57c82](https://github.com/varletjs/varlet/commit/2d57c825898fde3b350077ae3b40eb091c5c1d5e))
+* **ui/collapse:** add call ([#369](https://github.com/varletjs/varlet/issues/369)) ([cfd23a3](https://github.com/varletjs/varlet/commit/cfd23a3926e438b9dacb7ff610cb4467073cf6c5))
+* **ui/counter&slider:** add class&call ([#382](https://github.com/varletjs/varlet/issues/382)) ([3277814](https://github.com/varletjs/varlet/commit/3277814bd7b1d8f0b1345a77655911d7c5eca180))
+* **ui/dialog:** add class and call ([#397](https://github.com/varletjs/varlet/issues/397)) ([c1df88f](https://github.com/varletjs/varlet/commit/c1df88f9bac031c7b553bd20af51536e34623f37))
+* **ui/divider:** add class ([#393](https://github.com/varletjs/varlet/issues/393)) ([520d211](https://github.com/varletjs/varlet/commit/520d21125a6d299e79c537d435eef3f385452e13))
+* **ui/form:** delete call ([#392](https://github.com/varletjs/varlet/issues/392)) ([0726cb0](https://github.com/varletjs/varlet/commit/0726cb0a5c7c7eb4422e464c24e5f9a470062e94))
+* **ui/icon:** add class ([1bb74a3](https://github.com/varletjs/varlet/commit/1bb74a3748316921247f96efd2b1ed51d31ef3ed))
+* **ui/image-preview:** add class and call ([#387](https://github.com/varletjs/varlet/issues/387)) ([fab1856](https://github.com/varletjs/varlet/commit/fab185657d67b044ec73fcf866e497291650aed7))
+* **ui/image:** add class and call function ([16a8bed](https://github.com/varletjs/varlet/commit/16a8bed4f83995a7304f897cadeb738526788bf7))
+* **ui/index-bar:** add class and call function ([#395](https://github.com/varletjs/varlet/issues/395)) ([ae489da](https://github.com/varletjs/varlet/commit/ae489da0e58c1ae413a2908855928e8eebde5ab7))
+* **ui/input:** add class ([#377](https://github.com/varletjs/varlet/issues/377)) ([adc8a5c](https://github.com/varletjs/varlet/commit/adc8a5ca5b212afb1122b1370c3ef0480aaf4c48))
+* **ui/list:** add class and call function ([#376](https://github.com/varletjs/varlet/issues/376)) ([387af67](https://github.com/varletjs/varlet/commit/387af67e3a94877c1cc8c5a7536152a8ad311ebd))
+* **ui/loading:** add class and call function ([807f07d](https://github.com/varletjs/varlet/commit/807f07d1c8627866054def13d9d778b0e77db174))
+* **ui/picker:** add class ([#373](https://github.com/varletjs/varlet/issues/373)) ([eadf910](https://github.com/varletjs/varlet/commit/eadf910bc9a8b567dbfc9322267ad90b05c2f6d9))
+* **ui/pull-refresh:** add class ([#399](https://github.com/varletjs/varlet/issues/399)) ([e874763](https://github.com/varletjs/varlet/commit/e8747638db35e82defcca9863219b17ce674efd7))
+* **ui/radio, checkbox:** add class and call function ([#389](https://github.com/varletjs/varlet/issues/389)) ([4d399e4](https://github.com/varletjs/varlet/commit/4d399e4f606c76a695a434f7d4b21f7f943ebdca))
+* **ui/rate:** add call function ([#379](https://github.com/varletjs/varlet/issues/379)) ([5982608](https://github.com/varletjs/varlet/commit/5982608d092a8eeb58b64068c7073f8418c1061d))
+* **ui/row:** add class ([#384](https://github.com/varletjs/varlet/issues/384)) ([a76fdb0](https://github.com/varletjs/varlet/commit/a76fdb05aebbc5ec5406d99701deb2dadcbb6eb3))
+* **ui/select:** add class and call function ([#380](https://github.com/varletjs/varlet/issues/380)) ([c0b7d07](https://github.com/varletjs/varlet/commit/c0b7d07022245dc246f4fcf8189067a5a1008151))
+* **ui/skeleton:** add namespace ([#362](https://github.com/varletjs/varlet/issues/362)) ([cb97d8d](https://github.com/varletjs/varlet/commit/cb97d8dc5517953495ca3f37212686a3d1c48d4a))
+* **ui/snackbar:** add class ([#371](https://github.com/varletjs/varlet/issues/371)) ([a0e6bfc](https://github.com/varletjs/varlet/commit/a0e6bfc6f4a63b8bf3b84214bbc955e09b6e9c81))
+* **ui/space:** add class ([#374](https://github.com/varletjs/varlet/issues/374)) ([ceb18a7](https://github.com/varletjs/varlet/commit/ceb18a756bd7bbf39fb717839ad0b49786f716f1))
+* **ui/steps:** add class ([#378](https://github.com/varletjs/varlet/issues/378)) ([e0fcbb3](https://github.com/varletjs/varlet/commit/e0fcbb3ed2699ffc87f82ce68d02591ddf9aca0a))
+* **ui/sticky:** add class and call ([#385](https://github.com/varletjs/varlet/issues/385)) ([baea28d](https://github.com/varletjs/varlet/commit/baea28dd083ab59fcea34b47c3a4257b84d51c85))
+* **ui/swipe:** add class and call ([#386](https://github.com/varletjs/varlet/issues/386)) ([0ec82e2](https://github.com/varletjs/varlet/commit/0ec82e2677fdc5167d82760b3b52f3504beeb570))
+* **ui/switch:** add class ([#372](https://github.com/varletjs/varlet/issues/372)) ([1d5eaed](https://github.com/varletjs/varlet/commit/1d5eaed11eb11f92df83a61aee54b69e7a2ae839))
+* **ui/tab-item:** add class ([#400](https://github.com/varletjs/varlet/issues/400)) ([58984b2](https://github.com/varletjs/varlet/commit/58984b242d9f787b5a3cb71c8f27e45804c74b67))
+* **ui/uploader:** add namespace ([ee8e833](https://github.com/varletjs/varlet/commit/ee8e833106b98c4db5d74d5dd4539a919ad4c8ae))
+
+
+### Reverts
+
+* **rate:** revert remove useless div ([95a9f25](https://github.com/varletjs/varlet/commit/95a9f252d9152caef2d0e97e705e556e84e75d7c))
+* revert add class and call function ([cc70cae](https://github.com/varletjs/varlet/commit/cc70caed053eaf7659dbbdcc0822d1fd4047e386))
+
+
+
 ## [1.26.9](https://github.com/varletjs/varlet/compare/v1.26.8...v1.26.9) (2022-03-31)
 
 

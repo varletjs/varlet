@@ -256,6 +256,7 @@ export default {
 | `indicator-size` | 选项卡激活指示器的尺寸 | _string \| number_ | `2px` |
 | `elevation` | 是否启用阴影 | _boolean_ | `false` |
 | `sticky` | 是否启用粘性布局 | _boolean_ | `false` |
+| `safe-area`   | 是否开启底部安全区适配 | _boolean_ | `false` |
 | `offset-top` | 吸顶距离 | _string \| number_ | `0` |
 
 

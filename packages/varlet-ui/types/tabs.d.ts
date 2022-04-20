@@ -13,6 +13,7 @@ export interface TabsProps {
   indicatorSize?: string | number
   elevation?: boolean
   sticky?: boolean
+  safeArea?: boolean
   offsetTop?: string | number
   onClick?: (active: string | number) => void
   onChange?: (active: string | number) => void

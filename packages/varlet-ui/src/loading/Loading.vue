@@ -20,12 +20,12 @@
       </div>
 
       <template v-for="(nums, key) in loadingTypeDict" :key="key">
-        <div :class="classes(n(key), n(`${key}-${size}`))" v-if="type === key">
+        <div :class="classes(n(key), n(`${key}--${size}`))" v-if="type === key">
           <div
             v-for="num in nums"
             :key="num + key"
             :style="{ backgroundColor: color }"
-            :class="classes(n(`${key}-item`), n(`${key}-item-${size}`))"
+            :class="classes(n(`${key}-item`), n(`${key}-item--${size}`))"
           ></div>
         </div>
       </template>

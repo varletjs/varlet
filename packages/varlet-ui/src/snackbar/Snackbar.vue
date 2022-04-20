@@ -1,7 +1,7 @@
 <template>
   <teleport :to="teleport" :disabled="disabled">
     <transition :name="`${n()}-fade`" @after-enter="onOpened" @after-leave="onClosed">
-      <var-snackbar-core v-bind="$props" class="var-snackbar__transition">
+      <var-snackbar-core v-bind="$props" :class="n('transition')">
         <slot>{{ content }}</slot>
         <template #action>
           <slot name="action" />

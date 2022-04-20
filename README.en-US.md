@@ -1,11 +1,11 @@
 <div align="center">
-  <a href="https://varlet.gitee.io/varlet-ui/">
-    <img src="https://varlet.gitee.io/varlet-ui/logo.svg" width="150">
+  <a href="https://varlet-varletjs.vercel.app/#/en-US/home">
+    <img src="https://varlet-varletjs.vercel.app/logo.svg" width="150">
   </a>
   <h1>VARLET</h1>
   <p>Material design mobile component library for Vue3</p>
   <p>
-    <a href="https://varlet.gitee.io/varlet-ui/">Documentation</a>
+    <a href="https://varlet-varletjs.vercel.app/#/en-US/home">Documentation</a>
   </p>
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
@@ -26,7 +26,7 @@ Varlet is a Material design mobile component library developed based on `Vue3`, 
 
 
 ### Features
-- 🚀 Provide 50 high quality general purpose components
+- 🚀 Provide 50+ high quality general purpose components
 - 🚀 Components are very lightweight
 - 💪 Developed by Chinese, complete Chinese and English documentation and logistics support
 - 🛠️ Support on-demand introduction
@@ -77,6 +77,13 @@ import '@varlet/ui/es/style.js'
 
 createApp(App).use(Varlet).mount('#app')
 ```
+
+### Sponsorship us
+
+We will use the donations to encourage open source contributors, buy them a cup of coffee and milk tea, 
+purchase infrastructure that is helpful to the project, and promote the project to become better.
+
+<img style="width: 25%" src="https://github.com/varletjs/varlet/blob/dev/sponsor/wechat.png?raw=true" />
 
 ### Contributors
 

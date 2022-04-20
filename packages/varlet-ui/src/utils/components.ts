@@ -15,11 +15,11 @@ import {
   onActivated,
   onDeactivated,
 } from 'vue'
-import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref } from 'vue'
+import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref, ComponentPublicInstance } from 'vue'
 import { isArray, removeItem } from './shared'
 
 export interface MountInstance {
-  instance: any
+  instance: ComponentPublicInstance
   unmount: () => void
 }
 
@@ -293,7 +293,8 @@ export function exposeApis<T = Record<string, any>>(apis: T) {
   }
 }
 
-type Classes = (string | [any, string, string?])[]
+type ClassName = string | undefined | null
+type Classes = (ClassName | [any, ClassName, ClassName?])[]
 
 export function createNamespace(name: string) {
   const namespace = `var-${name}`

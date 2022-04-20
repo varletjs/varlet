@@ -1,28 +1,34 @@
 <template>
   <div
-    :class="classes(n(), [fixed, n('--fixed')], [border, n('--border')])"
+    :class="classes(n(), [fixed, n('--fixed')], [border, n('--border')], [safeArea, n('--safe-area')])"
     ref="bottomNavigationDom"
     :style="`z-index:${zIndex}`"
   >
     <slot></slot>
-    <div
+
+    <var-button
       v-if="$slots.fab"
-      v-ripple
-      :class="classes(n('fab'), 'var-elevation--6', [length % 2, n('--fab-right'), n('--fab-center')])"
+      :class="classes(n('fab'), [length % 2, n('--fab-right'), n('--fab-center')])"
+      var-bottom-navigation__fab
+      @click="handleFabClick"
+      v-bind="fabProps"
+      round
     >
       <slot name="fab"></slot>
-    </div>
+    </var-button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, onMounted, onUpdated } from 'vue'
-import type { Ref, ComputedRef } from 'vue'
+import VarButton from '../button'
+import { defineComponent, ref, computed, onMounted, onUpdated, watch } from 'vue'
 import { props } from './props'
-import Ripple from '../ripple'
 import { useBottomNavigationItems } from './provide'
-import type { BottomNavigationProvider } from './provide'
 import { createNamespace, call } from '../utils/components'
+import { isNumber } from '../utils/shared'
+import type { BottomNavigationProvider } from './provide'
+import type { BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
+import type { Ref, ComputedRef } from 'vue'
 
 const { n, classes } = createNamespace('bottom-navigation')
 const { n: nItem } = createNamespace('bottom-navigation-item')
@@ -30,39 +36,66 @@ const { n: nItem } = createNamespace('bottom-navigation-item')
 const RIGHT_HALF_SPACE_CLASS = nItem('--right-half-space')
 const LEFT_HALF_SPACE_CLASS = nItem('--left-half-space')
 const RIGHT_SPACE_CLASS = nItem('--right-space')
+const defaultFabProps = {
+  type: 'primary',
+}
 
 export default defineComponent({
   name: 'VarBottomNavigation',
-  directives: { Ripple },
+  components: { VarButton },
   props,
   setup(props, { slots }) {
     const bottomNavigationDom: Ref<HTMLElement | null> = ref(null)
-    const active: ComputedRef<number | string | undefined> = computed(() => props.modelValue)
+    const active: ComputedRef<number | string | undefined> = computed(() => props.active)
     const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
     const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
+    const fabProps = ref({})
+    const { length, bottomNavigationItems, bindBottomNavigationItem } = useBottomNavigationItems()
 
-    const onToggle = (changedValue: number | string) => {
-      if (props.onBeforeChange) {
-        handleBeforeChange(changedValue)
-      } else {
-        handleChange(changedValue)
+    const matchBoundary = (): void => {
+      if (length.value === 0 || matchName() || matchIndex()) {
+        return
       }
+
+      handleActiveIndex()
     }
 
-    const handleBeforeChange = (changedValue: number | string) => {
-      Promise.resolve(call(props.onBeforeChange, changedValue)).then((res) => {
-        if (res) {
-          handleChange(changedValue)
-        }
+    const matchName = (): BottomNavigationItemProvider | undefined => {
+      return bottomNavigationItems.find(({ name }: BottomNavigationItemProvider) => {
+        return active.value === name.value
       })
     }
 
-    const handleChange = (changedValue: number | string) => {
-      call(props['onUpdate:modelValue'], changedValue)
-      call(props.onChange, changedValue)
+    const matchIndex = (): BottomNavigationItemProvider | undefined => {
+      return bottomNavigationItems.find(({ index }: BottomNavigationItemProvider) => {
+        return active.value === index.value
+      })
     }
 
-    const { length, bindBottomNavigationItem } = useBottomNavigationItems()
+    const handleActiveIndex = () => {
+      if (!isNumber(active.value)) {
+        return
+      }
+
+      if (active.value < 0) {
+        call(props['onUpdate:active'], 0)
+      } else if (active.value > length.value - 1) {
+        call(props['onUpdate:active'], length.value - 1)
+      }
+    }
+
+    const onToggle = (changedValue: number | string) => {
+      props.onBeforeChange ? handleBeforeChange(changedValue) : handleChange(changedValue)
+    }
+
+    const handleBeforeChange = (changedValue: number | string) => {
+      Promise.resolve(call(props.onBeforeChange, changedValue)).then((res) => res && handleChange(changedValue))
+    }
+
+    const handleChange = (changedValue: number | string) => {
+      call(props['onUpdate:active'], changedValue)
+      call(props.onChange, changedValue)
+    }
 
     const removeMarginClass = () => {
       const bottomNavigationItems: Element[] = getBottomNavigationItems()
@@ -101,6 +134,10 @@ export default defineComponent({
       return Array.from(bottomNavigationDom.value!.querySelectorAll(`.${nItem()}`))
     }
 
+    const handleFabClick = () => {
+      call(props.onFabClick)
+    }
+
     const bottomNavigationProvider: BottomNavigationProvider = {
       active,
       activeColor,
@@ -109,6 +146,16 @@ export default defineComponent({
     }
 
     bindBottomNavigationItem(bottomNavigationProvider)
+
+    watch(() => length.value, matchBoundary)
+
+    watch(
+      () => props.fabProps,
+      (newValue) => {
+        fabProps.value = { ...defaultFabProps, ...newValue }
+      },
+      { immediate: true, deep: true }
+    )
 
     onMounted(() => {
       if (!slots.fab) {
@@ -133,6 +180,8 @@ export default defineComponent({
       classes,
       length,
       bottomNavigationDom,
+      handleFabClick,
+      fabProps,
     }
   },
 })
@@ -140,6 +189,6 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
-@import '../ripple/ripple';
+@import '../button/button';
 @import './bottomNavigation';
 </style>

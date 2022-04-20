@@ -14,7 +14,7 @@ app.use(BottomNavigationItem)
 ### Basic Usage
 
 ```html
-<var-bottom-navigation v-model="active">
+<var-bottom-navigation v-model:active="active">
   <var-bottom-navigation-item label="label" icon="home" />
   <var-bottom-navigation-item label="label" icon="magnify" />
   <var-bottom-navigation-item label="label" icon="heart" />
@@ -37,7 +37,7 @@ export default {
 ### Match by name
 
 ```html
-<var-bottom-navigation v-model="active">
+<var-bottom-navigation v-model:active="active">
   <var-bottom-navigation-item name="home" label="label" icon="home" />
   <var-bottom-navigation-item name="search" label="label" icon="magnify" />
   <var-bottom-navigation-item name="heart" label="label" icon="heart" />
@@ -50,7 +50,7 @@ import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref("home")
+    const active = ref('home')
 
     return { active }
   }
@@ -60,7 +60,7 @@ export default {
 ### Show Badge
 
 ```html
-<var-bottom-navigation v-model="active">
+<var-bottom-navigation v-model:active="active">
   <var-bottom-navigation-item label="label" icon="home" />
   <var-bottom-navigation-item label="label" icon="magnify" badge />
   <var-bottom-navigation-item label="label" icon="heart" :badge="badgeProps" />
@@ -69,15 +69,15 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
 export default {
   setup() {
     const active = ref(0)
-    const badgeProps = {
+    const badgeProps = reactive({
       type: 'primary',
       value: '66'
-    }
+    })
 
     return { active, badgeProps }
   }
@@ -87,7 +87,7 @@ export default {
 ### Custom Color
 
 ```html
-<var-bottom-navigation active-color="#ba68c8" v-model="active">
+<var-bottom-navigation active-color="#ba68c8" v-model:active="active">
   <var-bottom-navigation-item label="label" icon="home" />
   <var-bottom-navigation-item label="label" icon="magnify" />
   <var-bottom-navigation-item label="label" icon="heart" />
@@ -101,12 +101,8 @@ import { ref } from 'vue'
 export default {
   setup() {
     const active = ref(0)
-    const homeIcon = {
-      active: 'https://varlet.gitee.io/varlet-ui/home_active.png',
-      inactive: 'https://varlet.gitee.io/varlet-ui/home_inactive.png',
-    }
 
-    return { active, homeIcon }
+    return { active }
   }
 }
 ```
@@ -114,7 +110,7 @@ export default {
 ### Change Event
 
 ```html
-<var-bottom-navigation v-model="active" @change="handleChange">
+<var-bottom-navigation v-model:active="active" @change="handleChange">
   <var-bottom-navigation-item label="label" icon="home" />
   <var-bottom-navigation-item label="label" icon="magnify" />
   <var-bottom-navigation-item label="label" icon="heart" />
@@ -141,7 +137,7 @@ export default {
 ### Click Event
 
 ```html
-<var-bottom-navigation v-model="active">
+<var-bottom-navigation v-model:active="active">
   <var-bottom-navigation-item @click="handleClick" label="label" icon="home" />
   <var-bottom-navigation-item @click="handleClick" label="label" icon="magnify" />
   <var-bottom-navigation-item @click="handleClick" label="label" icon="heart" />
@@ -168,11 +164,9 @@ export default {
 ### Fab
 
 ```html
-<var-bottom-navigation v-model="fab">
+<var-bottom-navigation v-model:active="fab" @fab-click="isEven = !isEven">
   <template #fab>
-    <div class="fab_example" @click="isEven = !isEven">
-      <var-icon name="plus" color="#fff" size="24" />
-    </div>
+    <var-icon name="heart" />
   </template>
   <var-bottom-navigation-item label="label" icon="home" />
   <var-bottom-navigation-item label="label" icon="magnify" />
@@ -194,16 +188,6 @@ export default {
   }
 }
 ```
-```css
-.fab_example {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-primary);
-}
-```
 
 ## API
 
@@ -211,23 +195,25 @@ export default {
 
 #### BottomNavigation Props
 
-|Prop | Description | Type | Default |
-| ---- | ---- | ---- | ---- |
-| `v-model` | Identifier of current tab | _number \| string_ | `0` |
-| `fixed` |	Whether to fixed bottom | _boolean_ | `false` |
-| `border` | Whether to show border | _boolean_ | `false` |
-| `z-index` | Z-index | _number \| string_ | `1` |
-| `active-color` | Color of active tab item | _string_ | `-` |
-| `inactive-color` | Color of inactive tab item | _string_ | `-` |
+| Prop            | Description                                         | Type | Default |
+|-----------------|-----------------------------------------------------| ---- | ---- |
+| `v-model:active` | Identifier of current tab                           | _number \| string_ | `0` |
+| `fixed`         | 	Whether to fixed bottom                            | _boolean_ | `false` |
+| `border`        | Whether to show border                              | _boolean_ | `false` |
+| `safe-area`       | Whether to enable bottom safe area adaptation | _boolean_ | `false` |
+| `z-index`       | Z-index                                             | _number \| string_ | `1` |
+| `active-color`  | Color of active tab item                            | _string_ | `-` |
+| `inactive-color` | Color of inactive tab item                          | _string_ | `-` |
+| `fab-props`     | Fab button props                                    | _ButtonProps_ | `{type: "primary"}` |
 
 #### BottomNavigationItem Props
 
 |Prop | Description | Type | Default |
 | ---- | ---- | ---- | ---- |
 | `name` | Identifier | _string_ | `-` |
-| `icon` | Icon name, equivalent to the [name property](/#/en-US/icon) of Icon component | _string_ | `-` |
+| `icon` | Icon name, equivalent to the [name](/#/en-US/icon) of Icon component | _string_ | `-` |
 | `label` | Label text content | _string_ | - |
-| `namespace` | Icon namespace, extensible custom icon library, equivalent to the [namespace property](/#/en-US/icon)  of Icon component | _string_ | `var-icon` |
+| `namespace` | Icon namespace, extensible custom icon library, equivalent to the [namespace](/#/en-US/icon)  of Icon component | _string_ | `var-icon` |
 | `badge` | Logo in the upper right corner of the icon | _boolean \| BadgeProps_ | `false` |
 
 ### Events
@@ -238,6 +224,7 @@ export default {
 | ---- | ---- | ---- |
 | `before-change` | The callback function before switching labels, which returns false to prevent switching, supports the return of promise | `active: number \| string` |
 | `change` | Triggered when switching labels | `active: number \| string` |
+| `fab-click` | Triggered when fab button click | `-` |
 
 #### BottomNavigationItem Events
 
@@ -251,7 +238,7 @@ export default {
 
 | Slot | Description | Arguments |
 | ---- | ---- | ----|
-| `fab` | Support for inserting a custom Fab button in the center of the component | `-` |
+| `fab` | Support for inserting a custom Fab button into a component | `-` |
 #### BottomNavigationItem Slots
 
 | Slot | Description | Arguments |
@@ -270,6 +257,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--bottom-navigation-z-index` | `1` |
 | `--bottom-navigation-background-color` | `#fff` |
 | `--bottom-navigation-border-color` | `#bcc2cb` |
+| `--bottom-navigation-fab-offset` | `4px` |
 
 #### BottomNavigationItem Variables
 

@@ -50,12 +50,12 @@ exports[`test slider example 1`] = `
       <div class=\\"var-slider__thumb\\" style=\\"left: 24%;\\">
         <div class=\\"var-slider__thumb-block\\"></div>
         <div class=\\"var-slider__thumb-ripple\\"></div>
-        <div class=\\"var-slider__thumb-label var-slider__thumb-label-active\\"><span>24</span></div>
+        <div class=\\"var-slider__thumb-label var-slider__thumb-label--active\\"><span>24</span></div>
       </div>
       <div class=\\"var-slider__thumb\\" style=\\"left: 50%;\\">
         <div class=\\"var-slider__thumb-block\\"></div>
         <div class=\\"var-slider__thumb-ripple\\"></div>
-        <div class=\\"var-slider__thumb-label var-slider__thumb-label-active\\"><span>50</span></div>
+        <div class=\\"var-slider__thumb-label var-slider__thumb-label--active\\"><span>50</span></div>
       </div>
     </div>
     <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
@@ -207,7 +207,7 @@ exports[`test slider example 1`] = `
       <div class=\\"var-slider__thumb\\" style=\\"left: 50%;\\">
         <div class=\\"var-slider__thumb-block\\"></div>
         <div class=\\"var-slider__thumb-ripple\\"></div>
-        <div class=\\"var-slider__thumb-label var-slider__thumb-label-active\\"><span>50</span></div>
+        <div class=\\"var-slider__thumb-label var-slider__thumb-label--active\\"><span>50</span></div>
       </div>
     </div>
     <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">

@@ -14,7 +14,7 @@ app.use(BottomNavigationItem)
 ### 基础用法
 
 ```html
-<var-bottom-navigation v-model="active">
+<var-bottom-navigation v-model:active="active">
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" />
   <var-bottom-navigation-item label="标签" icon="heart" />
@@ -37,7 +37,7 @@ export default {
 ### 名称匹配
 
 ```html
-<var-bottom-navigation v-model="active">
+<var-bottom-navigation v-model:active="active">
   <var-bottom-navigation-item name="home" label="标签" icon="home" />
   <var-bottom-navigation-item name="search" label="标签" icon="magnify" />
   <var-bottom-navigation-item name="heart" label="标签" icon="heart" />
@@ -50,7 +50,7 @@ import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref("home")
+    const active = ref('home')
 
     return { active }
   }
@@ -60,7 +60,7 @@ export default {
 ### 徽标提示
 
 ```html
-<var-bottom-navigation v-model="active">
+<var-bottom-navigation v-model:active="active">
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" badge />
   <var-bottom-navigation-item label="标签" icon="heart" :badge="badgeProps" />
@@ -69,15 +69,15 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
 export default {
   setup() {
     const active = ref(0)
-    const badgeProps = {
+    const badgeProps = reactive({
       type: 'primary',
       value: '66'
-    }
+    })
 
     return { active, badgeProps }
   }
@@ -87,7 +87,7 @@ export default {
 ### 自定义颜色
 
 ```html
-<var-bottom-navigation active-color="#ba68c8" v-model="active">
+<var-bottom-navigation active-color="#ba68c8" v-model:active="active">
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" />
   <var-bottom-navigation-item label="标签" icon="heart" />
@@ -101,12 +101,8 @@ import { ref } from 'vue'
 export default {
   setup() {
     const active = ref(0)
-    const homeIcon = {
-      active: 'https://varlet.gitee.io/varlet-ui/home_active.png',
-      inactive: 'https://varlet.gitee.io/varlet-ui/home_inactive.png',
-    }
 
-    return { active, homeIcon }
+    return { active }
   }
 }
 ```
@@ -114,7 +110,7 @@ export default {
 ### 监听切换事件
 
 ```html
-<var-bottom-navigation v-model="active" @change="handleChange">
+<var-bottom-navigation v-model:active="active" @change="handleChange">
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" />
   <var-bottom-navigation-item label="标签" icon="heart" />
@@ -141,7 +137,7 @@ export default {
 ### 监听点击事件
 
 ```html
-<var-bottom-navigation v-model="active">
+<var-bottom-navigation v-model:active="active">
   <var-bottom-navigation-item @click="handleClick" label="标签" icon="home" />
   <var-bottom-navigation-item @click="handleClick" label="标签" icon="magnify" />
   <var-bottom-navigation-item @click="handleClick" label="标签" icon="heart" />
@@ -170,11 +166,9 @@ export default {
 Item 数量为偶数时，悬浮按钮在中间位置，为奇数时在最右侧。
 
 ```html
-<var-bottom-navigation v-model="fab">
+<var-bottom-navigation v-model:active="fab" @fab-click="isEven = !isEven">
   <template #fab>
-    <div class="fab_example" @click="isEven = !isEven">
-      <var-icon name="plus" color="#fff" size="24" />
-    </div>
+    <var-icon name="heart" />
   </template>
   <var-bottom-navigation-item label="标签" icon="home" />
   <var-bottom-navigation-item label="标签" icon="magnify" />
@@ -196,16 +190,6 @@ export default {
   }
 }
 ```
-```css
-.fab_example {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-primary);
-}
-```
 
 ## API
 
@@ -213,14 +197,16 @@ export default {
 
 #### BottomNavigation Props
 
-|参数 | 说明 | 类型 | 默认值 |
-| ---- | ---- | ---- | ---- |
-| `v-model` | 选中标签的名称或者索引值 | _number \| string_ | `0` |
-| `fixed` | 是否固定在底部 | _boolean_ | `false` |
-| `border` | 是否显示外边框 | _boolean_ | `false` |
-| `z-index` | 元素 z-index | _number \| string_ | `1` |
-| `active-color` | 选中标签的颜色 | _string_ | `-` |
-| `inactive-color` | 未选中标签的颜色 | _string_ | `-` |
+| 参数               | 说明              | 类型 | 默认值 |
+|------------------|-----------------| ---- | ---- |
+| `v-model:active` | 选中标签的名称或者索引值    | _number \| string_ | `0` |
+| `fixed`          | 是否固定在底部         | _boolean_ | `false` |
+| `border`         | 是否显示外边框         | _boolean_ | `false` |
+| `safe-area`       | 是否开启底部安全区适配 | _boolean_ | `false` |
+| `z-index`        | 元素 z-index      | _number \| string_ | `1` |
+| `active-color`   | 选中标签的颜色         | _string_ | `-` |
+| `inactive-color` | 未选中标签的颜色        | _string_ | `-` |
+| `fab-props`      | 悬浮按钮属性          | _ButtonProps_ | `{type: "primary"}` |
 
 
 #### BottomNavigationItem Props
@@ -228,9 +214,9 @@ export default {
 |参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ---- |
 | `name` | 标签名称，作为匹配的标识符 | _string_ | `-` |
-| `icon` | 图标名称，等同于 Icon 组件的 [name 属性](/#/zh-CN/icon) | _string_ | `-` |
+| `icon` | 图标名称，等同于 Icon 组件的 [name](/#/zh-CN/icon) | _string_ | `-` |
 | `label` | 标签文字内容 | _string_ | - |
-| `namespace` | 图标的命名空间, 可扩展自定义图标库，等同于 Icon 组件的 [namespace 属性](/#/zh-CN/icon) | _string_ | `var-icon` |
+| `namespace` | 图标的命名空间, 可扩展自定义图标库，等同于 Icon 组件的 [namespace](/#/zh-CN/icon) | _string_ | `var-icon` |
 | `badge` | 图标右上角徽标 | _boolean \| BadgeProps_ | `false` |
 
 
@@ -242,6 +228,7 @@ export default {
 | ---- | ---- | ---- |
 | `before-change` | 切换标签前的回调函数，返回 false 可阻止切换，支持返回 Promise | `active: number \| string` |
 | `change` | 切换标签时触发 | `active: number \| string` |
+| `fab-click` | 悬浮按钮点击时触发 | `-` |
 
 #### BottomNavigationItem Events
 
@@ -255,7 +242,7 @@ export default {
 
 | 名称 | 说明 | 参数 |
 | ---- | ---- | ----|
-| `fab` | 支持在组件中心插入一个自定义的 fab 按钮 | `-` |
+| `fab` | 支持在组件中插入一个自定义的 fab 按钮 | `-` |
 
 #### BottomNavigationItem Slots
 
@@ -275,6 +262,7 @@ export default {
 | `--bottom-navigation-z-index` | `1` |
 | `--bottom-navigation-background-color` | `#fff` |
 | `--bottom-navigation-border-color` | `#bcc2cb` |
+| `--bottom-navigation-fab-offset` | `4px` |
 
 #### BottomNavigationItem Variables
 

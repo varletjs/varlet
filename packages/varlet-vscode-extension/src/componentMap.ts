@@ -262,8 +262,6 @@ export const componentMap: Record<string, ComponentDescriptor> = {
   },
   'bottom-navigation': {
     site: '/bottom-navigation',
-    attrs: ['v-model=""'],
-    characterDelta: -2,
   },
   'bottom-navigation-item': {
     site: '/bottom-navigation',

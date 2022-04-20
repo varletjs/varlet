@@ -247,7 +247,7 @@ The second argument is a collection of utility functions that can quickly get a 
 ```html
 <var-uploader
   :rules="[
-    (v, u) => u.getError(v).length === 0 || 'There is a file that failed to upload'
+    (v, u) => u.getError().length === 0 || 'There is a file that failed to upload'
   ]"
   v-model="files"
 />
@@ -319,17 +319,17 @@ You can use the `hide-list` to hide component files list, then you can render th
 
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
-| `getLoading` | Gets a collection of files for `state` is `loading` | `VarFile[]` | `VarFile[]` |
-| `getSuccess` | Gets a collection of files for `state` is `success` | `VarFile[]` | `VarFile[]` |
-| `getError` | Gets a collection of files for `state` is `error` | `VarFile[]` | `VarFile[]` |
+| `getLoading` | Gets a collection of files for `state` is `loading` | `-` | `VarFile[]` |
+| `getSuccess` | Gets a collection of files for `state` is `success` | `-` | `VarFile[]` |
+| `getError` | Gets a collection of files for `state` is `error` | `-` | `VarFile[]` |
 
 ### Methods
 
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
-| `getLoading` | Gets a collection of files for `state` is `loading` | `VarFile[]` | `VarFile[]` |
-| `getSuccess` | Gets a collection of files for `state` is `success` | `VarFile[]` | `VarFile[]` |
-| `getError` |  Gets a collection of files for `state` is `error` | `VarFile[]` | `VarFile[]` |
+| `getLoading` | Gets a collection of files for `state` is `loading` | `-` | `VarFile[]` |
+| `getSuccess` | Gets a collection of files for `state` is `success` | `-` | `VarFile[]` |
+| `getError` |  Gets a collection of files for `state` is `error` | `-` | `VarFile[]` |
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clearing validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding(set to `[]`)and validate messages | `-` | `-` |

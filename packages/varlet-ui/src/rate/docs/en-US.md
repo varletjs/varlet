@@ -106,7 +106,7 @@ export default {
 The `disabled` attribute is used to set the rating to the status of no clicking, and the `disabled-color` is used to set the color of the icon when it is disabled.
 
 ```html
-<var-rate v-model="score" disabled disabled-color="#bbbbbb"/>
+<var-rate v-model="score" disabled/>
 ```
 
 ### Read only rating
@@ -180,7 +180,7 @@ Other values are converted to text as a user prompt.
 | `half-icon` | The half-selected icon style only works if `half` is `true` | _string_ | `star-half-full` |
 | `namespace` | Icon namespace, extensible custom icon library |  _string_ | `var-icon` |
 | `disabled` | Whether or not rating is prohibited | _boolean_ | `false` |
-| `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `#bdbdbd` |
+| `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `#aaa` |
 | `readonly` | Whether to use rating read-only | _boolean_ | `false` |
 | `ripple` | Whether to use water ripple | _boolean_ | `true` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string \| number) => any>_ | `-` |
