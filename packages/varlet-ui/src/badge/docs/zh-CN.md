@@ -15,7 +15,6 @@
     <var-badge type="danger" />
   </var-space>
 </template>
-
 ```
 
 ### 圆点徽标
