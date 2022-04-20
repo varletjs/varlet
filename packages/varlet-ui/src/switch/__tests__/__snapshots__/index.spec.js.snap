@@ -34,183 +34,207 @@ exports[`test switch color and size 2`] = `
 
 exports[`test switch example 1`] = `
 "<div class=\\"app-type\\">基本使用</div>
-<div class=\\"var-switch__example-block\\">
-  <div class=\\"var-switch\\">
-    <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
-      <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-      <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
-        <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
-          <!--v-if-->
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
+  <div style=\\"margin: 5px 0px;\\">
+    <div class=\\"var-switch\\">
+      <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
+        <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
+        <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
+          <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+            <!--v-if-->
+          </div>
         </div>
       </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
     </div>
-    <transition-stub>
-      <!--v-if-->
-    </transition-stub>
   </div>
 </div>
 <div class=\\"app-type\\">不可用</div>
-<div class=\\"var-switch__example-block\\">
-  <div class=\\"var-switch\\">
-    <div class=\\"var-switch__block var-switch--disable\\" style=\\"height: 24px; width: 40px;\\">
-      <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-      <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
-        <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
-          <!--v-if-->
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
+  <div style=\\"margin: 5px 30px 5px 0px;\\">
+    <div class=\\"var-switch\\">
+      <div class=\\"var-switch__block var-switch--disable\\" style=\\"height: 24px; width: 40px;\\">
+        <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
+        <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
+          <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+            <!--v-if-->
+          </div>
         </div>
       </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
     </div>
-    <transition-stub>
-      <!--v-if-->
-    </transition-stub>
   </div>
-  <div class=\\"var-switch\\">
-    <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
-      <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-      <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
-        <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
-          <!--v-if-->
+  <div style=\\"margin: 5px 0px;\\">
+    <div class=\\"var-switch\\">
+      <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
+        <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
+        <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
+          <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+            <!--v-if-->
+          </div>
         </div>
       </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
     </div>
-    <transition-stub>
-      <!--v-if-->
-    </transition-stub>
   </div>
 </div>
 <div class=\\"app-type\\">自定义颜色</div>
-<div class=\\"var-switch__example-block\\">
-  <div class=\\"var-switch\\">
-    <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
-      <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-      <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
-        <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
-          <!--v-if-->
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
+  <div style=\\"margin: 5px 30px 5px 0px;\\">
+    <div class=\\"var-switch\\">
+      <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
+        <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
+        <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
+          <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+            <!--v-if-->
+          </div>
         </div>
       </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
     </div>
-    <transition-stub>
-      <!--v-if-->
-    </transition-stub>
   </div>
-  <div class=\\"var-switch\\">
-    <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
-      <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6); background-color: rgb(255, 159, 0);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-      <div class=\\"var-switch__ripple\\" style=\\"left: 10px; color: rgb(255, 159, 0); width: 40px; height: 40px;\\">
-        <div style=\\"width: 20px; height: 20px; background-color: rgb(255, 159, 0);\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
-          <!--v-if-->
+  <div style=\\"margin: 5px 0px;\\">
+    <div class=\\"var-switch\\">
+      <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
+        <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6); background-color: rgb(255, 159, 0);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
+        <div class=\\"var-switch__ripple\\" style=\\"left: 10px; color: rgb(255, 159, 0); width: 40px; height: 40px;\\">
+          <div style=\\"width: 20px; height: 20px; background-color: rgb(255, 159, 0);\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+            <!--v-if-->
+          </div>
         </div>
       </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
     </div>
-    <transition-stub>
-      <!--v-if-->
-    </transition-stub>
   </div>
 </div>
 <div class=\\"app-type\\">不同大小</div>
-<div class=\\"var-switch__example-block\\">
-  <div class=\\"var-switch\\">
-    <div class=\\"var-switch__block\\" style=\\"height: 18px; width: 30px;\\">
-      <div style=\\"height: 10.799999999999999px; width: 28px; border-radius: 10px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-      <div class=\\"var-switch__ripple\\" style=\\"left: 7.5px; width: 30px; height: 30px;\\">
-        <div style=\\"width: 15px; height: 15px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
-          <!--v-if-->
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; align-items: center; flex-wrap: wrap; margin: -5px 0px;\\">
+  <div style=\\"margin: 5px 30px 5px 0px;\\">
+    <div class=\\"var-switch\\">
+      <div class=\\"var-switch__block\\" style=\\"height: 18px; width: 30px;\\">
+        <div style=\\"height: 10.799999999999999px; width: 28px; border-radius: 10px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
+        <div class=\\"var-switch__ripple\\" style=\\"left: 7.5px; width: 30px; height: 30px;\\">
+          <div style=\\"width: 15px; height: 15px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+            <!--v-if-->
+          </div>
         </div>
       </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
     </div>
-    <transition-stub>
-      <!--v-if-->
-    </transition-stub>
   </div>
-  <div class=\\"var-switch\\">
-    <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
-      <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-      <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
-        <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
-          <!--v-if-->
+  <div style=\\"margin: 5px 30px 5px 0px;\\">
+    <div class=\\"var-switch\\">
+      <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
+        <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
+        <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
+          <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+            <!--v-if-->
+          </div>
         </div>
       </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
     </div>
-    <transition-stub>
-      <!--v-if-->
-    </transition-stub>
   </div>
-  <div class=\\"var-switch\\">
-    <div class=\\"var-switch__block\\" style=\\"height: 30px; width: 50px;\\">
-      <div style=\\"height: 18px; width: 48px; border-radius: 16.666666666666668px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-      <div class=\\"var-switch__ripple\\" style=\\"left: 12.5px; width: 50px; height: 50px;\\">
-        <div style=\\"width: 25px; height: 25px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
-          <!--v-if-->
+  <div style=\\"margin: 5px 0px;\\">
+    <div class=\\"var-switch\\">
+      <div class=\\"var-switch__block\\" style=\\"height: 30px; width: 50px;\\">
+        <div style=\\"height: 18px; width: 48px; border-radius: 16.666666666666668px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
+        <div class=\\"var-switch__ripple\\" style=\\"left: 12.5px; width: 50px; height: 50px;\\">
+          <div style=\\"width: 25px; height: 25px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+            <!--v-if-->
+          </div>
         </div>
       </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
     </div>
-    <transition-stub>
-      <!--v-if-->
-    </transition-stub>
   </div>
 </div>
 <div class=\\"app-type\\">加载状态</div>
-<div class=\\"var-switch__example-block\\">
-  <div class=\\"var-switch\\">
-    <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
-      <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-      <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
-        <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
-          <div class=\\"var-loading\\">
-            <!--v-if-->
-            <div class=\\"var--box var-loading__body\\">
-              <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 16px; height: 16px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; align-items: center; flex-wrap: wrap; margin: -5px 0px;\\">
+  <div style=\\"margin: 5px 30px 5px 0px;\\">
+    <div class=\\"var-switch\\">
+      <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
+        <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
+        <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
+          <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+            <div class=\\"var-loading\\">
               <!--v-if-->
-              <!--v-if-->
-              <!--v-if-->
-              <!--v-if-->
-              <!--v-if-->
+              <div class=\\"var--box var-loading__body\\">
+                <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 16px; height: 16px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+                <!--v-if-->
+                <!--v-if-->
+                <!--v-if-->
+                <!--v-if-->
+                <!--v-if-->
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
     </div>
-    <transition-stub>
-      <!--v-if-->
-    </transition-stub>
   </div>
-  <div class=\\"var-switch\\">
-    <div class=\\"var-switch__block\\" style=\\"height: 30px; width: 50px;\\">
-      <div style=\\"height: 18px; width: 48px; border-radius: 16.666666666666668px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-      <div class=\\"var-switch__ripple\\" style=\\"left: 12.5px; width: 50px; height: 50px;\\">
-        <div style=\\"width: 25px; height: 25px; color: rgb(255, 159, 0);\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
-          <div class=\\"var-loading\\">
-            <!--v-if-->
-            <div class=\\"var--box var-loading__body\\">
-              <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 21px; height: 21px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+  <div style=\\"margin: 5px 0px;\\">
+    <div class=\\"var-switch\\">
+      <div class=\\"var-switch__block\\" style=\\"height: 30px; width: 50px;\\">
+        <div style=\\"height: 18px; width: 48px; border-radius: 16.666666666666668px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
+        <div class=\\"var-switch__ripple\\" style=\\"left: 12.5px; width: 50px; height: 50px;\\">
+          <div style=\\"width: 25px; height: 25px; color: rgb(255, 159, 0);\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+            <div class=\\"var-loading\\">
               <!--v-if-->
-              <!--v-if-->
-              <!--v-if-->
-              <!--v-if-->
-              <!--v-if-->
+              <div class=\\"var--box var-loading__body\\">
+                <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 21px; height: 21px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+                <!--v-if-->
+                <!--v-if-->
+                <!--v-if-->
+                <!--v-if-->
+                <!--v-if-->
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
     </div>
-    <transition-stub>
-      <!--v-if-->
-    </transition-stub>
   </div>
 </div>
 <div class=\\"app-type\\">值的校验</div>
-<div class=\\"var-switch\\">
-  <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
-    <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-    <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
-      <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
-        <!--v-if-->
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -5px 0px;\\">
+  <div style=\\"margin: 5px 0px;\\">
+    <div class=\\"var-switch\\">
+      <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
+        <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
+        <div class=\\"var-switch__ripple\\" style=\\"left: 10px; width: 40px; height: 40px;\\">
+          <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+            <!--v-if-->
+          </div>
+        </div>
       </div>
+      <transition-stub>
+        <!--v-if-->
+      </transition-stub>
     </div>
   </div>
-  <transition-stub>
-    <!--v-if-->
-  </transition-stub>
 </div>"
 `;
 

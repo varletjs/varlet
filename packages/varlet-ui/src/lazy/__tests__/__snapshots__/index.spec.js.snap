@@ -13,9 +13,9 @@ exports[`test lazy error with attempt 3`] = `"<img lazy-error=\\"https://varlet-
 exports[`test lazy error with attempt 4`] = `"<img lazy-error=\\"https://varlet-varletjs.vercel.app/error.jpg\\" src=\\"https://varlet-varletjs.vercel.app/error.jpg\\">"`;
 
 exports[`test lazy example 1`] = `
-"<div class=\\"app-type\\">基本使用</div><img class=\\"cat\\" src=\\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\\"><img class=\\"cat\\" src=\\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\\"><img class=\\"cat\\" src=\\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\\"><img class=\\"cat\\" src=\\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\\"><img class=\\"cat\\" src=\\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\\">
+"<div class=\\"app-type\\">基本使用</div><img class=\\"lazy-example-cat\\" src=\\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\\"><img class=\\"lazy-example-cat\\" src=\\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\\"><img class=\\"lazy-example-cat\\" src=\\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\\"><img class=\\"lazy-example-cat\\" src=\\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\\"><img class=\\"lazy-example-cat\\" src=\\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\\">
 <div class=\\"app-type\\">背景图懒加载</div>
-<div class=\\"cat\\" style=\\"background-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==);\\"></div>"
+<div class=\\"lazy-example-cat\\" style=\\"background-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==);\\"></div>"
 `;
 
 exports[`test lazy load 1`] = `"<img lazy-error=\\"https://varlet-varletjs.vercel.app/error.jpg\\" src=\\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\\">"`;

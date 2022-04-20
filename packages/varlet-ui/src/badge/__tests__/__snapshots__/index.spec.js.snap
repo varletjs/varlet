@@ -3,69 +3,107 @@
 exports[`test badge example 1`] = `
 "<div class=\\"example\\">
   <div class=\\"app-type\\">主题色徽标</div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--default\\"><span>0</span></span></transition-stub>
-  </div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--primary\\"><span>0</span></span></transition-stub>
-  </div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--info\\"><span>0</span></span></transition-stub>
-  </div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--warning\\"><span>0</span></span></transition-stub>
-  </div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--success\\"><span>0</span></span></transition-stub>
-  </div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--danger\\"><span>0</span></span></transition-stub>
+  <div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
+    <div style=\\"margin: 4px 12px 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--default\\"><span>0</span></span></transition-stub>
+      </div>
+    </div>
+    <div style=\\"margin: 4px 12px 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--primary\\"><span>0</span></span></transition-stub>
+      </div>
+    </div>
+    <div style=\\"margin: 4px 12px 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--info\\"><span>0</span></span></transition-stub>
+      </div>
+    </div>
+    <div style=\\"margin: 4px 12px 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--warning\\"><span>0</span></span></transition-stub>
+      </div>
+    </div>
+    <div style=\\"margin: 4px 12px 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--success\\"><span>0</span></span></transition-stub>
+      </div>
+    </div>
+    <div style=\\"margin: 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--danger\\"><span>0</span></span></transition-stub>
+      </div>
+    </div>
   </div>
   <div class=\\"app-type\\">圆点徽标</div>
   <div class=\\"var-badge var--box\\">
     <transition-stub><span class=\\"var-badge__content var-badge--danger var-badge__dot var-badge__dot--right\\"><span></span></span></transition-stub>
   </div>
   <div class=\\"app-type\\">自定义内容标签</div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--danger\\"><span>badge</span></span></transition-stub>
-  </div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--danger\\"><span>hot</span></span></transition-stub>
-  </div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--danger\\"><span>66</span></span></transition-stub>
+  <div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
+    <div style=\\"margin: 4px 12px 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--danger\\"><span>badge</span></span></transition-stub>
+      </div>
+    </div>
+    <div style=\\"margin: 4px 12px 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--danger\\"><span>hot</span></span></transition-stub>
+      </div>
+    </div>
+    <div style=\\"margin: 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--danger\\"><span>66</span></span></transition-stub>
+      </div>
+    </div>
   </div>
   <div class=\\"app-type\\">最大值</div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--danger\\"><span>88</span></span></transition-stub>
-  </div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--danger\\"><span>99+</span></span></transition-stub>
+  <div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
+    <div style=\\"margin: 4px 12px 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--danger\\"><span>88</span></span></transition-stub>
+      </div>
+    </div>
+    <div style=\\"margin: 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--danger\\"><span>99+</span></span></transition-stub>
+      </div>
+    </div>
   </div>
   <div class=\\"app-type\\">不同定位徽标</div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--danger var-badge__position var-badge--right-top\\"><span>0</span></span></transition-stub>
-    <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip__plain var-chip__plain-default\\" style=\\"color: rgb(0, 150, 136); border-color: #009688;\\"><span class=\\"var-chip__text-normal\\">右上</span>
-      <!--v-if--></span>
-    </transition-stub>
-  </div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--danger var-badge__position var-badge--right-bottom\\"><span>0</span></span></transition-stub>
-    <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip__plain var-chip__plain-default\\" style=\\"color: rgb(0, 150, 136); border-color: #009688;\\"><span class=\\"var-chip__text-normal\\">右下</span>
-      <!--v-if--></span>
-    </transition-stub>
-  </div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--danger var-badge__position var-badge--left-top\\"><span>0</span></span></transition-stub>
-    <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip__plain var-chip__plain-default\\" style=\\"color: rgb(0, 150, 136); border-color: #009688;\\"><span class=\\"var-chip__text-normal\\">左上</span>
-      <!--v-if--></span>
-    </transition-stub>
-  </div>
-  <div class=\\"var-badge var--box\\">
-    <transition-stub><span class=\\"var-badge__content var-badge--danger var-badge__position var-badge--left-bottom\\"><span>0</span></span></transition-stub>
-    <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip__plain var-chip__plain-default\\" style=\\"color: rgb(0, 150, 136); border-color: #009688;\\"><span class=\\"var-chip__text-normal\\">左下</span>
-      <!--v-if--></span>
-    </transition-stub>
+  <div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
+    <div style=\\"margin: 4px 20px 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--danger var-badge__position var-badge--right-top\\"><span>0</span></span></transition-stub>
+        <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip__plain var-chip__plain-default\\" style=\\"color: rgb(0, 150, 136); border-color: #009688;\\"><span class=\\"var-chip__text-normal\\">右上</span>
+          <!--v-if--></span>
+        </transition-stub>
+      </div>
+    </div>
+    <div style=\\"margin: 4px 20px 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--danger var-badge__position var-badge--right-bottom\\"><span>0</span></span></transition-stub>
+        <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip__plain var-chip__plain-default\\" style=\\"color: rgb(0, 150, 136); border-color: #009688;\\"><span class=\\"var-chip__text-normal\\">右下</span>
+          <!--v-if--></span>
+        </transition-stub>
+      </div>
+    </div>
+    <div style=\\"margin: 4px 20px 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--danger var-badge__position var-badge--left-top\\"><span>0</span></span></transition-stub>
+        <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip__plain var-chip__plain-default\\" style=\\"color: rgb(0, 150, 136); border-color: #009688;\\"><span class=\\"var-chip__text-normal\\">左上</span>
+          <!--v-if--></span>
+        </transition-stub>
+      </div>
+    </div>
+    <div style=\\"margin: 4px 0px;\\">
+      <div class=\\"var-badge var--box\\">
+        <transition-stub><span class=\\"var-badge__content var-badge--danger var-badge__position var-badge--left-bottom\\"><span>0</span></span></transition-stub>
+        <transition-stub><span class=\\"var-chip var--box var-chip--normal var--inline-flex var-chip__plain var-chip__plain-default\\" style=\\"color: rgb(0, 150, 136); border-color: #009688;\\"><span class=\\"var-chip__text-normal\\">左下</span>
+          <!--v-if--></span>
+        </transition-stub>
+      </div>
+    </div>
   </div>
   <div class=\\"app-type\\">是否显示徽标</div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
     <!--v-if-->
