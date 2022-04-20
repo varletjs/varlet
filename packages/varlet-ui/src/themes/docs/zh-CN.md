@@ -27,7 +27,8 @@ const toggleTheme = () => {
 
 注入组件库推荐的`文字颜色`和`背景颜色`变量来控制整体颜色
 
-```less
+```css
+/* playground-ignore */
 body {
   transition: background-color .25s;
   color: var(--color-text);
