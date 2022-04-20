@@ -3,31 +3,67 @@
 ### Intro
 Causes the element to generate a ripple spread effect when clicked.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Ripple } from '@varlet/ui'
-
-createApp().use(Ripple)
-```
-
 ### Basic Use
 
 ```html
-<div class="block var-elevation--2" v-ripple>click</div>
+<template>
+  <div class="ripple-example__block var-elevation--2" v-ripple>click</div>
+</template>
+
+<style>
+.ripple-example__block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  user-select: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.25s;
+}
+</style>
 ```
 
 ### Custom Color
 
 ```html
-<div class="block var-elevation--2" v-ripple="{ color: '#2979ff' }">click</div>
+<template>
+  <div class="ripple-example__block var-elevation--2" v-ripple="{ color: '#2979ff' }">click</div>
+</template>
+
+<style>
+.ripple-example__block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  user-select: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.25s;
+}
+</style>
 ```
 
 ### Disabled Status
 
 ```html
-<div class="block var-elevation--2" v-ripple="{ disabled: true }">click</div>
+<template>
+  <div class="ripple-example__block var-elevation--2" v-ripple="{ disabled: true }">click</div>
+</template>
+
+<style>
+.ripple-example__block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  user-select: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.25s;
+}
+</style>
 ```
 
 ## API
