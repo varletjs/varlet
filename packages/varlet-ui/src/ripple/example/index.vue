@@ -18,7 +18,9 @@ watchLang(use)
   <div class="ripple-example__block var-elevation--2" v-ripple="{ disabled: true }">{{ pack.click }}</div>
 </template>
 
-<style>
+<style scoped lang="less">
+@import '../../styles/elevation.less';
+
 .ripple-example__block {
   display: flex;
   justify-content: center;
