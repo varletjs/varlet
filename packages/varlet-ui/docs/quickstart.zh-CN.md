@@ -10,6 +10,7 @@
 `varlet.js` 包含组件库的所有样式和逻辑, 引入即可。
 
 ```html
+<!-- playground-ignore -->
 <div id="app"></div>
 <script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
 <script src="https://cdn.jsdelivr.net/npm/@varlet/ui/umd/varlet.js"></script>
@@ -24,6 +25,7 @@
 #### Webpack/Vite
 
 ```shell
+# playground-ignore
 # 通过 npm、yarn 或 pnpm 安装
 
 # npm
@@ -37,6 +39,7 @@ pnpm add @varlet/ui
 ```
 
 ```js
+// playground-ignore
 import App from './App.vue'
 import Varlet from '@varlet/ui'
 import { createApp } from 'vue'

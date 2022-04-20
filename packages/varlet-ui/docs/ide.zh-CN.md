@@ -17,6 +17,7 @@
 安装 `Volar` 插件, 并按照下面的方式配置 `ts.config.json`，可以在模板中得到类型提示。
 
 ```json
+// playground-ignore
 {
   "compilerOptions": {
     "types": ["@varlet/ui/types/global"]

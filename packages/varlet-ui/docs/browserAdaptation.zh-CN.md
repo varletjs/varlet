@@ -10,6 +10,7 @@
 在 `Webpack/Vite` 项目根路径下创建 `postcss.config.js` 并做如下配置之后 `375px -> 100vw`
 
 ```shell
+# playground-ignore
 # npm
 npm i postcss-px-to-viewport -D
 
@@ -21,6 +22,7 @@ pnpm add postcss-px-to-viewport -D
 ```
 
 ```js
+// playground-ignore
 // postcss.config.js
 module.exports = {
   plugins: {
@@ -39,6 +41,7 @@ module.exports = {
 推荐使用 `@varlet/touch-emulator` 将 `touch -> mouse` 从而实现桌面端适配。
 
 ```shell
+# playground-ignore
 # npm
 npm i @varlet/touch-emulator
 # yarn
@@ -46,5 +49,6 @@ yarn add @varlet/touch-emulator
 ```
 
 ```js
+// playground-ignore
 import '@varlet/touch-emulator'
 ```
