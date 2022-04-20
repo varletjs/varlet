@@ -2,10 +2,10 @@ import * as vscode from 'vscode'
 import { componentMap, ComponentDescriptor } from './componentMap'
 import { bigCamelize, kebabCase } from './utils'
 
-const DOC = 'https://varlet.gitee.io/varlet-ui/#/zh-CN'
-const DOC_VUE2 = 'https://varlet.gitee.io/varlet-ui-vue2/#/zh-CN'
-const EN_DOC = 'https://varlet.gitee.io/varlet-ui/#/en-US'
-const EN_DOC_VUE2 = 'https://varlet.gitee.io/varlet-ui-vue2/#/en-US'
+const DOC = 'https://varlet-varletjs.vercel.app/#/zh-CN'
+const DOC_VUE2 = 'https://varlet-vue2.vercel.app/#/zh-CN'
+const EN_DOC = 'https://varlet-varletjs.vercel.app/#/en-US'
+const EN_DOC_VUE2 = 'https://varlet-vue2.vercel.app/#/en-US'
 
 const LINK_RE = /(?<=<var-)([\w-]+)/g
 const BIG_CAMELIZE_RE = /(?<=<Var)([\w-]+)/g

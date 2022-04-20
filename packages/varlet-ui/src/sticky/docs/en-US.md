@@ -1,50 +1,60 @@
 # Sticky
 
 ### Intro
+
 The sticky layout uses the `scroll` layout mode that listens to container scroll events by default. 
 If necessary, you can switch to the `css sticky` layout mode to improve performance.
-
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Sticky } from '@varlet/ui'
-
-createApp().use(Sticky)
-```
 
 ### Basic Use
 
 ```html
-<var-sticky :offset-top="54">
-  <var-button type="primary">Basic Use</var-button>
-</var-sticky>
+<template>
+  <div class="sticky-example">
+    <var-sticky :offset-top="54">
+      <var-button type="primary">Basic Use</var-button>
+    </var-sticky>
+  </div>
+</template>
+
+<style>
+.sticky-example {
+  min-height: 200vh;
+}
+</style>
 ```
 
 ### Local Sticky
 
 ```html
-<div class="scroller">
-  <var-sticky>
-    <var-button type="success">Local Sticky</var-button>
-  </var-sticky>
-  <div class="block"></div>
-</div>
-```
+<template>
+  <div class="sticky-example">
+    <div class="sticky-example-scroller">
+      <var-sticky>
+        <var-button type="success">Local Sticky</var-button>
+      </var-sticky>
+      <div class="sticky-example-block"></div>
+    </div>
+  </div>
+</template>
 
-```less
-.scroller {
+<style>
+.sticky-example {
+  min-height: 200vh;
+}
+
+.sticky-example-scroller {
   height: 200px;
   overflow: auto;
   background: #2979ff;
-
-  .block {
-    width: 100%;
-    height: 600px;
-    background: #2979ff;
-    opacity: .5;
-  }
 }
+
+.sticky-example-block {
+  width: 100%;
+  height: 600px;
+  background: #2979ff;
+  opacity: .5;
+}
+</style>
 ```
 
 ## API

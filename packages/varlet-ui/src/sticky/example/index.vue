@@ -1,3 +1,13 @@
+<script setup>
+import VarSticky from '..'
+import VarButton from '../../button'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { watchLang } from '@varlet/cli/site/utils'
+import { use, pack } from './locale'
+
+watchLang(use)
+</script>
+
 <template>
   <div class="example">
     <app-type>{{ pack.basicUsage }}</app-type>
@@ -14,28 +24,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import VarSticky from '..'
-import VarButton from '../../button'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { watchLang } from '@varlet/cli/site/utils'
-import { use, pack } from './locale'
-
-export default {
-  name: 'StickyExample',
-  components: {
-    VarSticky,
-    VarButton,
-    AppType,
-  },
-  setup() {
-    watchLang(use)
-
-    return { pack }
-  },
-}
-</script>
 
 <style scoped lang="less">
 .example {

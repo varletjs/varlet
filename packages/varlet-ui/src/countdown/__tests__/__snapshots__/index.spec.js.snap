@@ -1,36 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test countdown example 1`] = `
-"<div>
-  <div class=\\"app-type\\">基本使用</div>
-  <div class=\\"var-countdown\\">30 : 00 : 00</div>
-</div>
-<div>
-  <div class=\\"app-type\\">自定义格式</div>
-  <div class=\\"var-countdown\\">01 天 06 时 00 分 00 秒</div>
-</div>
-<div>
-  <div class=\\"app-type\\">显示毫秒</div>
-  <div class=\\"var-countdown\\">30 : 00 : 00 : 00</div>
-</div>
-<div>
-  <div class=\\"app-type\\">自定义样式</div>
-  <div class=\\"var-countdown\\"><span class=\\"block\\">6</span><span class=\\"colon\\">:</span><span class=\\"block\\">0</span><span class=\\"colon\\">:</span><span class=\\"block\\">0</span></div>
-</div>
-<div>
-  <div class=\\"app-type\\">手动控制</div>
-  <div class=\\"var-countdown\\">03 : 000</div>
-  <div class=\\"btn-container\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">开始</div>
-    </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">暂停</div>
-    </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
-      <!--v-if-->
-      <div class=\\"var-button__content\\">重置</div>
-    </button></div>
-</div>"
+"<div class=\\"app-type\\">基本使用</div>
+<div class=\\"var-countdown\\">30 : 00 : 00</div>
+<div class=\\"app-type\\">自定义格式</div>
+<div class=\\"var-countdown\\">01 天 06 时 00 分 00 秒</div>
+<div class=\\"app-type\\">显示毫秒</div>
+<div class=\\"var-countdown\\">30 : 00 : 00 : 00</div>
+<div class=\\"app-type\\">自定义样式</div>
+<div class=\\"var-countdown\\"><span class=\\"countdown-block\\">6</span><span class=\\"countdown-colon\\">:</span><span class=\\"countdown-block\\">0</span><span class=\\"countdown-colon\\">:</span><span class=\\"countdown-block\\">0</span></div>
+<div class=\\"app-type\\">手动控制</div>
+<div class=\\"var-countdown\\">03 : 000</div>
+<div class=\\"var-row var--box\\" style=\\"justify-content: space-between; align-items: center; margin-top: 10px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
+    <!--v-if-->
+    <div class=\\"var-button__content\\">开始</div>
+  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+    <!--v-if-->
+    <div class=\\"var-button__content\\">暂停</div>
+  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2\\">
+    <!--v-if-->
+    <div class=\\"var-button__content\\">重置</div>
+  </button></div>"
 `;
 
 exports[`test countdown format prop 1`] = `"<div class=\\"var-countdown\\">30 : 00 : 00 : 00</div>"`;

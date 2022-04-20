@@ -1,20 +1,13 @@
 # AppBar
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { AppBar } from '@varlet/ui'
-
-createApp().use(AppBar)
-```
-
 ### Basic AppBar
 
 Set the navigation bar title through the `title` attribute.
 
 ```html
-<var-app-bar title="title" />
+<template>
+  <var-app-bar title="title" />
+</template>
 ```
 
 ### Custom Style
@@ -22,179 +15,163 @@ Set the navigation bar title through the `title` attribute.
 Set the position of the title and the color of the navigation bar through the `title-position` and `color` attributes.
 
 ```html
-<var-app-bar 
-  title="title" 
-  title-position="center" 
-  color="#00c48f" 
-/>
+<template>
+  <var-app-bar
+    title="title"
+    title-position="center"
+    color="#00c48f"
+  />
+</template>
 ```
 
 ### Add Slots At Title
 
 ```html
-<var-app-bar>Add the title from the slot</var-app-bar>
+<template>
+  <var-app-bar>Add the title from the slot</var-app-bar>
+</template>
 ```
 
-### Add Left Slot 
+### Add Left Slot
 
 ```html
-<var-app-bar title="title">
-<template #left>
-  <var-button 
-    round 
-    text 
-    color="transparent" 
-    text-color="#ffffff" 
-    @click="goBack"
-  >
-    <var-icon name="chevron-left" :size="24" />
-  </var-button>
-</template>
-</var-app-bar>
-```
-
-```js
+<script setup>
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const goBack = () => {
-      Snackbar({
-        content: 'Go Back',
-        position: 'top'
-      })
-    }
-
-    return {
-      goBack
-    }
-  }
+const goBack = () => {
+  Snackbar({
+    content: 'Go Back',
+    position: 'top'
+  })
 }
+</script>
+
+<template>
+  <var-app-bar title="title">
+    <template #left>
+      <var-button
+        round
+        text
+        color="transparent"
+        text-color="#ffffff"
+        @click="goBack"
+      >
+        <var-icon name="chevron-left" :size="24" />
+      </var-button>
+    </template>
+  </var-app-bar>
+</template>
 ```
 
 ### Add Right Slot
 
 ```html
-<var-app-bar title="title">
-<template #right>
-  <var-button 
-    round 
-    text 
-    color="transparent" 
-    text-color="#ffffff" 
-    @click="searchData"
-  >
-    <var-icon name="magnify" :size="24" />
-  </var-button>
-</template>
-</var-app-bar>
-```
-
-```js
+<script setup>
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const searchData = () => {
-      Snackbar({
-        content: 'search',
-        position: 'top'
-      })
-    }
-
-    return {
-      searchData
-    }
-  }
+const searchData = () => {
+  Snackbar({
+    content: 'search',
+    position: 'top'
+  })
 }
+</script>
+
+<template>
+  <var-app-bar title="title">
+    <template #right>
+      <var-button
+        round
+        text
+        color="transparent"
+        text-color="#ffffff"
+        @click="searchData"
+      >
+        <var-icon name="magnify" :size="24" />
+      </var-button>
+    </template>
+  </var-app-bar>
+</template>
 ```
 
 ### Add Left And Right Slot
 
 ```html
-<var-app-bar title="title">
-  <template #left>
-    <var-button 
-      round 
-      text 
-      color="transparent" 
-      text-color="#ffffff" 
-      @click="goBack"
-    >
-      <var-icon name="chevron-left" :size="24" />
-    </var-button>
-  </template>
-    
-  <template #right>
-    <var-menu :offset-y="38" :offset-x="-20" v-model:show="offsetY">
-      <var-button 
-        round 
-        text
-        color="transparent" 
-        text-color="#ffffff"
-        @click="offsetY = true"
-      >
-        <var-icon name="menu" :size="24" />
-      </var-button>
-      
-      <template #menu>
-        <div class="menu-list">
-          <var-cell
-            class="menu-cell"
-            v-for="value in menuList" 
-            :key="value.value"  
-            v-ripple
-          >
-            {{ value.label }}
-          </var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </template>
-</var-app-bar>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const offsetY = ref(false)
-    const menuList = ref([
-      { label: 'options1', value: 'menu1' },
-      { label: 'options2', value: 'menu2' }
-    ])
+const offsetY = ref(false)
+const menuList = ref([
+  { label: 'options1', value: 'menu1' },
+  { label: 'options2', value: 'menu2' }
+])
 
-    const goBack = () => {
-      Snackbar({
-        content: 'Go Back',
-        position: 'top'
-      })
-    }
-
-    return {
-      offsetY,
-      menuList,
-      goBack
-    }
-  }
+const goBack = () => {
+  Snackbar({
+    content: 'Go Back',
+    position: 'top'
+  })
 }
-```
+</script>
 
-```css
-.var-menu {
-  background: transparent;
+<template>
+  <var-app-bar title="Title">
+    <template #left>
+      <var-button
+        round
+        text
+        color="transparent"
+        text-color="#fff"
+        @click="goBack"
+      >
+        <var-icon name="chevron-left" :size="24" />
+      </var-button>
+    </template>
+
+    <template #right>
+      <var-menu class="app-bar-example-menu" :offset-y="42" :offset-x="-20" v-model:show="offsetY">
+        <var-button
+          round
+          text
+          color="transparent"
+          text-color="#ffffff"
+          @click="offsetY = true"
+        >
+          <var-icon name="menu" :size="24" />
+        </var-button>
+
+        <template #menu>
+          <div class="app-bar-example-menu-list">
+            <var-cell
+              class="app-bar-example-menu-cell"
+              v-for="value in menuList"
+              :key="value.value"
+              v-ripple
+            >
+              {{ value.label }}
+            </var-cell>
+          </div>
+        </template>
+      </var-menu>
+    </template>
+  </var-app-bar>
+</template>
+
+<style>
+.app-bar-example-menu {   
+  background: transparent; 
 }
 
-.menu-list {
+.app-bar-example-menu-list {
   background: #fff;
 }
 
-.menu-list .menu-cell {
+.app-bar-example-menu-cell {
   display: block;
   padding: 10px;
 }
+</style>
 ```
 
 ## API

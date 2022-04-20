@@ -3,32 +3,19 @@
 ### Intro
 Used to select a date or date range.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { DatePicker } from '@varlet/ui'
-
-createApp().use(DatePicker)
-```
-
 ### Basic Usage
 
 ```html
-<var-date-picker v-model="date" />
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
+import { DatePicker } from '@varlet/ui'
 
-export default {
-  setup() {
-    const date = ref('2021-04-08')
+const date = ref('2021-04-08')
+</script>
 
-    return {
-      date
-    }
-  }
-}
+<template>
+  <var-date-picker v-model="date" />
+</template>
 ```
 
 ### Month Picker
@@ -36,7 +23,14 @@ export default {
 Use `type` prop to change the type of the picker. The default value of `type` is `date`.
 
 ```html
-<var-date-picker type="month" v-model="date" shadow />
+<script setup>
+import { ref } from 'vue'
+
+const date = ref('2021-04-08')
+</script>
+<template>
+  <var-date-picker type="month" v-model="date" shadow />
+</template>
 ```
 
 ### Multiple
@@ -44,94 +38,94 @@ Use `type` prop to change the type of the picker. The default value of `type` is
 Use `multiple` prop to select multiple dates, at this time, `date` is an array.
 
 ```html
-<var-date-picker v-model="date" multiple />
-```
+<script setup>
+import { ref } from 'vue'
 
+const date = ref([])
+</script>
+<template>
+  <var-date-picker v-model="date" multiple />
+</template>
+```
 ### Range
 
 Use `range` prop to select date range, at this time, `date` is `[startDate, endDate]`.
 
 ```html
-<var-date-picker type="date" v-model="date" range />
-```
+<script setup>
+import { ref } from 'vue'
 
+const date = ref(['2021-04-08', '2021-04-20'])
+</script>
+<template>
+  <var-date-picker type="date" v-model="date" range />
+</template>
+```
 ### Date Limit
 
 Use `min` and `max` prop to allow the maximum and minimum date, and use `allowed-dates` prop to limit the dates that can be selected.
 
 ```html
-<var-date-picker
-  v-model="date"
-  min="2020-10-15"
-  max="2021-01-15"
-  :allowed-dates="allowedDates"
-/>
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const date = ref('2020-11-11')
+const date = ref('2020-11-11')
 
-    const allowedDates = (val) => {
-      return parseInt(val.split('-')[2], 10) % 2 === 1
-    }
-
-    return {
-      date,
-      allowedDates,
-    }
-  }
+const allowedDates = (val) => {
+  return parseInt(val.split('-')[2], 10) % 2 === 1
 }
-```
+</script>
 
+<template>
+  <var-date-picker
+    v-model="date"
+    min="2020-10-15"
+    max="2021-01-15"
+    :allowed-dates="allowedDates"
+  />
+</template>
+```
 ### Custom
 
 ```html
-<var-date-picker
-  shadow
-  type="month"
-  v-model="date"
-  min="2016-07"
-  max="2022-01"
-  header-color="purple"
-  color="#7bb872"
-  first-day-of-week="1"
-  :allowed-dates="allowedDates"
-  @change="change"
->
-  <template #year="{ year }">
-    <span>{{ year }}</span>
-  </template>
-  <template #month="{ year, month }">
-    <span>{{ year }}-{{ month }}</span>
-  </template>
-</var-date-picker>
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
+import { DatePicker } from '@varlet/ui'
 
-export default {
-  setup() {
-    const date = ref('2021-02')
+const date = ref('2021-02')
 
-    const allowedDates = (val) => {
-      return parseInt(val.split('-')[1], 10) % 2 === 1
-    }
-
-    const change = (date) => {
-      console.log(date)
-    }
-
-    return {
-      date,
-      change,
-      allowedDates
-    }
-  }
+const allowedDates = (val) => {
+  return parseInt(val.split('-')[1], 10) % 2 === 1
 }
+
+const change = (date) => {
+  console.log(date)
+}
+</script>
+
+<template>
+  <var-date-picker
+    shadow
+    type="month"
+    v-model="date"
+    min="2016-07"
+    max="2022-01"
+    header-color="purple"
+    color="#7bb872"
+    first-day-of-week="1"
+    :allowed-dates="allowedDates"
+    @change="change"
+  >
+    <template #year="{ year }">
+      <span>{{ year }}</span>
+    </template>
+    <template #month="{ year, month }">
+      <span>{{ year }}-{{ month }}</span>
+    </template>
+  </var-date-picker>
+</template>
 ```
+
 
 ## API
 

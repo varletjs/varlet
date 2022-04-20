@@ -4,91 +4,94 @@
 
 在一组备选项中进行多选
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Checkbox, CheckboxGroup } from '@varlet/ui'
-
-createApp().use(CheckboxGroup).use(Checkbox)
-```
-
 ### 基本使用
 
 ```html
-<var-checkbox v-model="value">当前的值: {{ value }}</var-checkbox>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(false)
+const value = ref(false)
+</script>
 
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-checkbox v-model="value">当前的值: {{ value }}</var-checkbox>
+</template>
 ```
 
 ### 设置状态值
 
 ```html
-<var-checkbox
-  :unchecked-value="0"
-  :checked-value="1"
-  v-model="value"
->
-  当前的值: {{ value }}
-</var-checkbox>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(0)
+const value = ref(0)
+</script>
 
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-checkbox
+    :unchecked-value="0"
+    :checked-value="1"
+    v-model="value"
+  >
+    当前的值: {{ value }}
+  </var-checkbox>
+</template>
 ```
 
 ### 修改图标和颜色
 
 ```html
-<var-checkbox
-  unchecked-color="#e99eb4"
-  checked-color="#f44336"
-  v-model="value"
->
-  <template #unchecked-icon>
-    <var-icon name="heart-half-full" size="24px"/>
-  </template>
-  <template #checked-icon>
-    <var-icon name="heart" size="24px"/>
-  </template>
-  <template #default>
-    当前的值: {{ value }}
-  </template>
-</var-checkbox>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-checkbox
+    unchecked-color="#e99eb4"
+    checked-color="#f44336"
+    v-model="value"
+  >
+    <template #unchecked-icon>
+      <var-icon name="heart-half-full" size="24px"/>
+    </template>
+    <template #checked-icon>
+      <var-icon name="heart" size="24px"/>
+    </template>
+    <template #default>
+      当前的值: {{ value }}
+    </template>
+  </var-checkbox>
+</template>
 ```
 
 ### 禁用
 
 ```html
-<var-checkbox disabled v-model="value">当前的值: {{ value }}</var-checkbox>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-checkbox disabled v-model="value">当前的值: {{ value }}</var-checkbox>
+</template>
 ```
 
 ### 只读
 
 ```html
-<var-checkbox readonly v-model="value">当前的值: {{ value }}</var-checkbox>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-checkbox readonly v-model="value">当前的值: {{ value }}</var-checkbox>
+</template>
 ```
 
 ### 复选框组/复选框操作
@@ -97,50 +100,60 @@ export default {
 复选框组会收集所有选择的标识。
 
 ```html
-<var-checkbox-group ref="group" v-model="value">
-  <var-checkbox :checked-value="0">吃饭</var-checkbox>
-  <var-checkbox :checked-value="1">睡觉</var-checkbox>
-</var-checkbox-group>
-
-<var-button class="button" type="primary" @click="$refs.group.checkAll()">全选</var-button>
-<var-button class="button" type="primary" @click="$refs.group.inverseAll()">反选</var-button>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref([])
+const value = ref([])
+</script>
 
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-checkbox-group ref="group" v-model="value">
+    <var-checkbox :checked-value="0">吃饭</var-checkbox>
+    <var-checkbox :checked-value="1">睡觉</var-checkbox>
+  </var-checkbox-group>
+
+  <var-button class="button" type="primary" @click="$refs.group.checkAll()">全选</var-button>
+  <var-button class="button" type="primary" @click="$refs.group.inverseAll()">反选</var-button>
+</template>
 ```
 
 ### 复选框字段校验
 
 ```html
-<var-checkbox
-  v-model="value"
-  :rules="[v => v || '请勾选']"
->
-  当前的值: {{ value }}
-</var-checkbox>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+</script>
+
+<template>
+  <var-checkbox
+    v-model="value"
+    :rules="[v => v || '请勾选']"
+  >
+    当前的值: {{ value }}
+  </var-checkbox>
+</template>
 ```
 
 ### 复选框组字段校验
 
 ```html
-<var-checkbox-group
-  v-model="value"
-  :rules="[v => v.length === 2 || '请全选']"
->
-  <var-checkbox :checked-value="0">吃饭</var-checkbox>
-  <var-checkbox :checked-value="1">睡觉</var-checkbox>
-</var-checkbox-group>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+</script>
+
+<template>
+  <var-checkbox-group
+    v-model="value"
+    :rules="[v => v.length === 2 || '请全选']"
+  >
+    <var-checkbox :checked-value="0">吃饭</var-checkbox>
+    <var-checkbox :checked-value="1">睡觉</var-checkbox>
+  </var-checkbox-group>
+</template>
 ```
 
 

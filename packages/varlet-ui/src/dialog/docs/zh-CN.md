@@ -4,51 +4,58 @@
 弹出一个对话框展示内容并处理用户交互。
 `Dialog` 提供了函数式和组件式两种使用方式，两种使用效果和参数并没有本质区别。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Dialog } from '@varlet/ui'
-
-createApp().use(Dialog)
-```
-
-### 局部引入
-
-```js
-import { Dialog } from '@varlet/ui'
-
-export default {
-  components: {
-    [Dialog.Component.name]: Dialog
-  }
-}
-```
-
 ## 函数调用
 ### 基本使用
 
-```js
-Dialog('兰亭临帖 行书如行云流水')
+```html
+<script setup>
+import { Dialog } from '@varlet/ui'
+
+const createBasic = () => Dialog('兰亭临帖 行书如行云流水')
+</script>
+
+<template>
+  <var-button type="primary" block @click="createBasic">基本使用</var-button>
+</template>
 ```
 
 ### 修改标题
 
-```js
-Dialog({
-  title: '兰亭序',
-  message: '兰亭临帖 行书如行云流水',
-})
+```html
+<script setup>
+import { Dialog } from '@varlet/ui'
+
+const modifyTitle = () => {
+  Dialog({
+    title: '兰亭序',
+    message: '兰亭临帖 行书如行云流水',
+  })
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="modifyTitle">修改标题</var-button>
+</template>
 ```
 
 ### 隐藏按钮
 
-```js
-Dialog({
-  message: '兰亭临帖 行书如行云流水',
-  confirmButton: false,
-  cancelButton: false,
-})
+```html
+<script setup>
+import { Dialog } from '@varlet/ui'
+
+const hideButton = () => {
+  Dialog({
+    message: '兰亭临帖 行书如行云流水',
+    confirmButton: false,
+    cancelButton: false,
+  })
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="hideButton">隐藏按钮</var-button>
+</template>
 ```
 
 ### 处理用户行为
@@ -56,8 +63,9 @@ Dialog({
 可以通过 `Dialog` 方法的返回值获取用户行为, 返回值是一个 `promise`。
 包含 `confirm(确认)`、`cancel(取消)`、`close(通过点击遮罩层触发关闭)` 三种状态。
 
-```js
-import { Snackbar } from '@varlet/ui'
+```html
+<script setup>
+import { Dialog, Snackbar } from '@varlet/ui'
 
 const actions = {
   confirm: () => Snackbar.success('confirm'),
@@ -65,15 +73,21 @@ const actions = {
   close: () => Snackbar.info('close'),
 }
 
-actions[await Dialog('兰亭临帖 行书如行云流水')]()
+const createAction = async () => actions[await Dialog('兰亭临帖 行书如行云流水')]()
+</script>
+
+<template>
+  <var-button type="primary" block @click="createAction">处理用户行为</var-button>
+</template>
 ```
 
 ### 异步关闭
 
 `Dialog` 可以通过 `onBeforeClose` 进行关闭前的拦截，可以从参数中得到用户行为和触发关闭的回调函数。
 
-```js
-import { Snackbar } from '@varlet/ui'
+```html
+<script setup>
+import { Dialog, Snackbar } from '@varlet/ui'
 
 const actions = {
   confirm: () => Snackbar.success('confirm'),
@@ -83,17 +97,23 @@ const actions = {
 
 const onBeforeClose = (action, done) => {
   Snackbar.loading('正在异步关闭')
-
   setTimeout(() => {
     actions[action]()
     done()
   }, 1000)
 }
 
-Dialog({
-  message: '兰亭临帖 行书如行云流水',
-  onBeforeClose
-})
+const createAction = async () => {
+  Dialog({
+    message: '兰亭临帖 行书如行云流水',
+    onBeforeClose
+  })
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="createAction">异步关闭</var-button>
+</template>
 ```
 
 ## 组件调用
@@ -101,48 +121,34 @@ Dialog({
 ### 基本使用
 
 ```html
-<var-button type="warning" block @click="show = true">基本使用</var-button>
-<var-dialog
-  title="兰亭序"
-  message="兰亭临帖 行书如行云流水"
-  v-model:show="show"
-  @confirm="() => Snackbar.success('confirm')"
-  @cancel="() => Snackbar.error('cancel')"
-  @closed="() => Snackbar.info('closed')"
-/>
-```
-
-```js
+<script>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
+   
+const show = ref(false)
+</script>
 
-export default {
-  setup() {
-    const show = ref(false)
-
-    return {
-      show,
-      Snackbar,
-    }
-  }
-}
+<template>
+  <var-button type="warning" block @click="show = true">基本使用</var-button>
+  <var-dialog
+    title="兰亭序"
+    message="兰亭临帖 行书如行云流水"
+    v-model:show="show"
+    @confirm="() => Snackbar.success('confirm')"
+    @cancel="() => Snackbar.error('cancel')"
+    @closed="() => Snackbar.info('closed')"
+  />
+</template>
 ```
 
 ### 异步关闭
 
 ```html
-<var-button type="warning" block @click="show = true">异步关闭</var-button>
-<var-dialog
-  title="兰亭序"
-  message="兰亭临帖 行书如行云流水"
-  v-model:show="show"
-  @before-close="onBeforeClose"
-/>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
+
+const show = ref(false)
 
 const actions = {
   confirm: () => Snackbar.success('confirm'),
@@ -150,53 +156,48 @@ const actions = {
   close: () => Snackbar.info('close'),
 }
 
-export default {
-  setup() {
-    const show = ref(false)
+const onBeforeClose = (action, done) => {
+  Snackbar.loading('Asynchronous shutdown in progress')
 
-    const onBeforeClose = (action, done) => {
-      Snackbar.loading('正在异步关闭')
-
-      setTimeout(() => {
-        actions[action]()
-        done()
-      }, 1000)
-    }
-
-    return {
-      show,
-      Snackbar,
-      onBeforeClose,
-    }
-  }
+  setTimeout(() => {
+    actions[action]()
+    done()
+   }, 1000)
 }
+</script>
+
+<template>
+  <var-button type="warning" block @click="show = true">异步关闭</var-button>
+  <var-dialog
+    title="兰亭序"
+    message="兰亭临帖 行书如行云流水"
+    v-model:show="show"
+    @before-close="onBeforeClose"
+  />
+</template>
 ```
 
 ### 自定义插槽
 
 ```html
-<var-button type="warning" block @click="show = true">自定义插槽</var-button>
-<var-dialog v-model:show="show">
-  <template #title>
-    <var-icon name="information" color="#2979ff" />
-  </template>
-
-  <var-cell>兰亭临帖 行书如行云流水</var-cell>
-  <var-cell>兰亭临帖 行书如行云流水</var-cell>
-  <var-cell>兰亭临帖 行书如行云流水</var-cell>
-</var-dialog>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const show = ref(false)
+const show = ref(false)
+</script>
 
-    return { show }
-  }
-}
+<template>
+  <var-button type="warning" block @click="show = true">自定义插槽</var-button>
+  <var-dialog v-model:show="show">
+    <template #title>
+      <var-icon name="information" color="#2979ff" />
+    </template>
+
+    <var-cell>兰亭临帖 行书如行云流水</var-cell>
+    <var-cell>兰亭临帖 行书如行云流水</var-cell>
+    <var-cell>兰亭临帖 行书如行云流水</var-cell>
+  </var-dialog>
+</template>
 ```
 
 ## API

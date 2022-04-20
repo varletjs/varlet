@@ -5,25 +5,25 @@ exports[`test image example 1`] = `
 <div class=\\"var-image var--box\\" style=\\"border-radius: 0px;\\"><img class=\\"var-image__image\\" style=\\"object-fit: fill;\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
 <div class=\\"app-type\\">填充模式</div>
 <div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\">
-  <div class=\\"fit-item\\">
-    <div class=\\"var-image var--box\\" style=\\"width: 85px; height: 85px; border-radius: 0px;\\"><img class=\\"var-image__image\\" style=\\"object-fit: fill;\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
-    <div>fill</div>
+  <div class=\\"image-example-fit-item\\">
+    <div class=\\"var-image var--box\\" style=\\"width: 85px; height: 85px; border-radius: 0px;\\"><img class=\\"var-image__image\\" style=\\"object-fit: fill;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\"></div>
+    <div class=\\"image-example-margin-bottom\\">fill</div>
   </div>
-  <div class=\\"fit-item\\">
-    <div class=\\"var-image var--box\\" style=\\"width: 85px; height: 85px; border-radius: 0px;\\"><img class=\\"var-image__image\\" style=\\"object-fit: cover;\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
-    <div>cover</div>
+  <div class=\\"image-example-fit-item\\">
+    <div class=\\"var-image var--box\\" style=\\"width: 85px; height: 85px; border-radius: 0px;\\"><img class=\\"var-image__image\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\"></div>
+    <div class=\\"image-example-margin-bottom\\">cover</div>
   </div>
-  <div class=\\"fit-item\\">
-    <div class=\\"var-image var--box\\" style=\\"width: 85px; height: 85px; border-radius: 0px;\\"><img class=\\"var-image__image\\" style=\\"object-fit: contain;\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
-    <div>contain</div>
+  <div class=\\"image-example-fit-item\\">
+    <div class=\\"var-image var--box\\" style=\\"width: 85px; height: 85px; border-radius: 0px;\\"><img class=\\"var-image__image\\" style=\\"object-fit: contain;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\"></div>
+    <div class=\\"image-example-margin-bottom\\">contain</div>
   </div>
-  <div class=\\"fit-item\\">
-    <div class=\\"var-image var--box\\" style=\\"width: 85px; height: 85px; border-radius: 0px;\\"><img class=\\"var-image__image\\" style=\\"object-fit: none;\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
-    <div>none</div>
+  <div class=\\"image-example-fit-item\\">
+    <div class=\\"var-image var--box\\" style=\\"width: 85px; height: 85px; border-radius: 0px;\\"><img class=\\"var-image__image\\" style=\\"object-fit: none;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\"></div>
+    <div class=\\"image-example-margin-bottom\\">none</div>
   </div>
-  <div class=\\"fit-item\\">
-    <div class=\\"var-image var--box\\" style=\\"width: 85px; height: 85px; border-radius: 0px;\\"><img class=\\"var-image__image\\" style=\\"object-fit: scale-down;\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
-    <div>scale-down</div>
+  <div class=\\"image-example-fit-item\\">
+    <div class=\\"var-image var--box\\" style=\\"width: 85px; height: 85px; border-radius: 0px;\\"><img class=\\"var-image__image\\" style=\\"object-fit: scale-down;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\"></div>
+    <div class=\\"image-example-margin-bottom\\">scale-down</div>
   </div>
 </div>
 <div class=\\"app-type\\">设置圆角</div>

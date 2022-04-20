@@ -4,61 +4,51 @@
 
 用于跳转到页面指定位置。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { IndexBar, IndexAnchor } from '@varlet/ui'
-
-createApp().use(IndexBar).use(IndexAnchor)
-```
-
 ### 基本使用
 
 点击索引栏时，会自动跳转到对应的 `IndexAnchor` 锚点位置。
 
 ```html
-<var-index-bar
-  duration="300"
-  :sticky-offset-top="54"
-  @change="change"
->
-  <div v-for="item in list" :key="item">
-    <var-index-anchor
-      :index="item"
-      class="var-index-anchor__example"
-    >
-      标题 {{ item }}
-    </var-index-anchor>
-    <var-cell>{{ item }} 文本</var-cell>
-    <var-cell>{{ item }} 文本</var-cell>
-    <var-cell>{{ item }} 文本</var-cell>
-  </div>
-</var-index-bar>
-```
-```javascript
+<script setup>
 import { ref, onMounted } from 'vue'
 
-export default {
-  setup() {
-    const list = ref([])
+const list = ref([])
 
-    onMounted(() => {
-      for (let i = 0; i < 26; i++) {
-        list.value.push(String.fromCharCode(65 + i))
-      }
-    })
-
-    const change = (value) => {
-      console.log(value)
-    }
-
-    return {
-      list,
-      change
-    }
-  }
+const change = (value) => {
+  console.log(value)
 }
+
+onMounted(() => {
+  for (let i = 0; i < 26; i++) {
+    list.value.push(String.fromCharCode(65 + i))
+  }
+})
+</script>
+
+<template>
+  <var-index-bar duration="300" @change="change">
+    <div v-for="item in list" :key="item">
+      <var-index-anchor :index="item" class="var-index-anchor__example">
+        标题 {{ item }}
+      </var-index-anchor>
+      <var-cell>{{ item }} 文本</var-cell>
+      <var-cell>{{ item }} 文本</var-cell>
+      <var-cell>{{ item }} 文本</var-cell>
+    </div>
+  </var-index-bar>
+</template>
+
+<style>
+.var-index-anchor__example {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  transition: all 0.25s;
+  background: #e7edf7;
+  color: #2e67ba;
+}
+</style>
 ```
 
 ## API

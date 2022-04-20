@@ -1,49 +1,59 @@
 # 粘性布局
 
 ### 介绍
+
 粘性布局默认使用监听容器滚动事件的 `scroll` 模式，如有需要可以切换成基于 `css sticky` 的模式来提升性能。
-
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Sticky } from '@varlet/ui'
-
-createApp().use(Sticky)
-```
 
 ### 基本使用
 
 ```html
-<var-sticky :offset-top="54">
-  <var-button type="primary">基本使用</var-button>
-</var-sticky>
+<template>
+  <div class="sticky-example">
+    <var-sticky :offset-top="54">
+      <var-button type="primary">基本使用</var-button>
+    </var-sticky>
+  </div>
+</template>
+
+<style>
+.sticky-example {
+  min-height: 200vh;
+}
+</style>
 ```
 
 ### 局部吸顶
 
 ```html
-<div class="scroller">
-  <var-sticky>
-    <var-button type="success">局部吸顶</var-button>
-  </var-sticky>
-  <div class="block"></div>
-</div>
-```
+<template>
+  <div class="sticky-example">
+    <div class="sticky-example-scroller">
+      <var-sticky>
+        <var-button type="success">局部吸顶</var-button>
+      </var-sticky>
+      <div class="sticky-example-block"></div>
+    </div>
+  </div>
+</template>
 
-```less
-.scroller {
+<style>
+.sticky-example {
+  min-height: 200vh;
+}
+
+.sticky-example-scroller {
   height: 200px;
   overflow: auto;
   background: #2979ff;
-
-  .block {
-    width: 100%;
-    height: 600px;
-    background: #2979ff;
-    opacity: .5;
-  }
 }
+
+.sticky-example-block {
+  width: 100%;
+  height: 600px;
+  background: #2979ff;
+  opacity: .5;
+}
+</style>
 ```
 
 ## API

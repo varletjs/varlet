@@ -4,61 +4,51 @@
 
 Hyperlinks to scroll on one page.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { IndexBar, IndexAnchor } from '@varlet/ui'
-
-createApp().use(IndexBar).use(IndexAnchor)
-```
-
 ### Basic Usage
 
 When you click the index bar, it will automatically jump to the corresponding `IndexAnchor` anchor position.
 
 ```html
-<var-index-bar
-  duration="300"
-  :sticky-offset-top="54"
-  @change="change"
->
-  <div v-for="item in list" :key="item">
-    <var-index-anchor
-      :index="item"
-      class="var-index-anchor__example"
-    >
-      Title {{ item }}
-    </var-index-anchor>
-    <var-cell>{{ item }} Text</var-cell>
-    <var-cell>{{ item }} Text</var-cell>
-    <var-cell>{{ item }} Text</var-cell>
-  </div>
-</var-index-bar>
-```
-```javascript
+<script setup>
 import { ref, onMounted } from 'vue'
 
-export default {
-  setup() {
-    const list = ref([])
+const list = ref([])
 
-    onMounted(() => {
-      for (let i = 0; i < 26; i++) {
-        list.value.push(String.fromCharCode(65 + i))
-      }
-    })
-
-    const change = (value) => {
-      console.log(value)
-    }
-
-    return {
-      list,
-      change
-    }
-  }
+const change = (value) => {
+  console.log(value)
 }
+
+onMounted(() => {
+  for (let i = 0; i < 26; i++) {
+    list.value.push(String.fromCharCode(65 + i))
+  }
+})
+</script>
+
+<template>
+  <var-index-bar duration="300" @change="change">
+    <div v-for="item in list" :key="item">
+      <var-index-anchor :index="item" class="var-index-anchor__example">
+        Title {{ item }}
+      </var-index-anchor>
+      <var-cell>{{ item }} Text</var-cell>
+      <var-cell>{{ item }} Text</var-cell>
+      <var-cell>{{ item }} Text</var-cell>
+    </div>
+  </var-index-bar>
+</template>
+
+<style>
+.var-index-anchor__example {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  transition: all 0.25s;
+  background: #e7edf7;
+  color: #2e67ba;
+}
+</style>
 ```
 
 ## API

@@ -31,7 +31,8 @@ export default {
 
 Inject the `text color` and `background color` variables recommended by the component library to control the overall color
 
-```less
+```css
+/* playground-ignore */
 body {
   transition: background-color .25s;
   color: var(--color-text);

@@ -3,32 +3,18 @@
 ### Intro
 Used to select a time.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { TimePicker } from '@varlet/ui'
-
-createApp().use(TimePicker)
-```
-
 ### Basic Usage
 
 ```html
-<var-time-picker v-model="date" />
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const date = ref('11:20')
+const date = ref('11:20')
+</script>
 
-    return {
-      date
-    }
-  }
-}
+<template>
+  <var-time-picker v-model="date" />
+</template>
 ```
 
 ### 24hr Format
@@ -36,7 +22,15 @@ export default {
 Use `format` prop to change the format of the picker. The default value of `format` is `ampm`.
 
 ```html
-<var-time-picker v-model="date" format="24hr" shadow />
+<script setup>
+import { ref } from 'vue'
+
+const date = ref('11:20')
+</script>
+
+<template>
+  <var-time-picker v-model="date" format="24hr" shadow />
+</template>
 ```
 
 ### Show Seconds
@@ -44,87 +38,84 @@ Use `format` prop to change the format of the picker. The default value of `form
 use `use-seconds` prop to show seconds
 
 ```html
-<var-time-picker v-model="date" format="24hr" use-seconds />
+<script setup>
+import { ref } from 'vue'
+
+const date = ref('11:20')
+</script>
+
+<template>
+  <var-time-picker v-model="date" format="24hr" use-seconds />
+</template>
 ```
 
 ### Readonly
 
 ```html
-<var-time-picker v-model="date" readonly shadow />
+<script setup>
+import { ref } from 'vue'
+
+const date = ref('11:20')
+</script>
+
+<template>
+  <var-time-picker v-model="date" readonly shadow />
+</template>
 ```
 
 ### Time Limit
 Use `min`, `max` and `allowed-time` prop to allow the maximum and minimum time.
 
 ```html
-<var-time-picker
-  v-model="date"
-  format="24hr"
-  use-seconds
-  min="2:28:38"
-  max="19:40:22"
-  :allowed-time="allowedTime"
-/>
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const date = ref('07:10:12')
+const date = ref('07:10:12')
 
-    const allowedTime = {
-      hours(hour) {
-        return hour % 2 === 0
-      },
-      minutes(minute) {
-        return minute % 15 !== 0
-      },
-      seconds(second) {
-        return second % 2 !== 0
-      },
-    }
-
-    return {
-      date,
-      allowedTime
-    }
-  }
+const allowedTime = {
+  hours: (hour) => hour % 2 === 0,
+  minutes: (minute) => minute % 15 !== 0,
+  seconds: (second) => second % 2 !== 0,
 }
+</script>
+
+<template>
+  <var-time-picker
+    v-model="date"
+    format="24hr"
+    use-seconds
+    min="2:28:38"
+    max="19:40:22"
+    :allowed-time="allowedTime"
+  />
+</template>
 ```
 
 ### Custom
 
 ```html
-<var-time-picker
-  v-model="date"
-  header-color="purple"
-  color="#7bb872"
-  min="2:28:38"
-  max="19:40:22"
-  shadow
-  @change="change"
-/>
-```
-```javascript
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const date = ref('05:10')
+const date = ref('05:10')
 
-    const change = (time) => {
-      console.log(time)
-    }
-
-    return {
-      date,
-      change
-    }
-  }
+const change = (time) => {
+  console.log(time)
 }
-```
+</script>
 
+<template>
+  <var-time-picker
+    v-model="date"
+    header-color="purple"
+    color="#7bb872"
+    min="2:28:38"
+    max="19:40:22"
+    shadow
+    @change="change"
+  />
+</template>
+```
 ## API
 
 ### Props

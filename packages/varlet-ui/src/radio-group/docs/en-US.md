@@ -1,94 +1,97 @@
 # Radio
 
-### 介绍
+### Intro
 
-在一组备选项中进行单选
-
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Radio, RadioGroup } from '@varlet/ui'
-
-createApp().use(RadioGroup).use(Radio)
-```
+Single selection among multiple options
 
 ### Basic Usage
 
 ```html
-<var-radio v-model="value">Current value: {{ value }}</var-radio>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(false)
+const value = ref(false)
+</script>
 
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-radio v-model="value">Current value: {{ value }}</var-radio>
+</template>
 ```
 
 ### Set State value
 
 ```html
-<var-radio
-  :unchecked-value="0"
-  :checked-value="1"
-  v-model="value"
->
-  Current value: {{ value }}
-</var-radio>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(0)
+const value = ref(0)
+</script>
 
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-radio
+    :unchecked-value="0"
+    :checked-value="1"
+    v-model="value"
+  >
+    Current value: {{ value }}
+  </var-radio>
+</template>
 ```
 
 ### Modify the icon and color
 
 ```html
-<var-radio
-  unchecked-color="#e99eb4"
-  checked-color="#f44336"
-  v-model="value"
->
-  <template #unchecked-icon>
-    <var-icon name="heart-half-full" size="24px"/>
-  </template>
-  <template #checked-icon>
-    <var-icon name="heart" size="24px"/>
-  </template>
-  <template #default>
-    Current value: {{ value }}
-  </template>
-</var-radio>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-radio
+    unchecked-color="#e99eb4"
+    checked-color="#f44336"
+    v-model="value"
+  >
+    <template #unchecked-icon>
+      <var-icon name="heart-half-full" size="24px"/>
+    </template>
+    <template #checked-icon>
+      <var-icon name="heart" size="24px"/>
+    </template>
+    <template #default>
+      Current value: {{ value }}
+    </template>
+  </var-radio>
+</template>
 ```
 
 ### Disabled
 
 ```html
-<var-radio disabled v-model="value">Current value: {{ value }}</var-radio>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-radio disabled v-model="value">Current value: {{ value }}</var-radio>
+</template>
 ```
 
 ### Readonly
 
 ```html
-<var-radio readonly v-model="value">Current value: {{ value }}</var-radio>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-radio readonly v-model="value">Current value: {{ value }}</var-radio>
+</template>
 ```
 
 ### RadioGroup
@@ -97,47 +100,57 @@ In the radio group, you must set the `checked-value` to identify the `radio`,
 The radio group bind group checked identifiers.
 
 ```html
-<var-radio-group v-model="value">
-  <var-radio :checked-value="0">Eat</var-radio>
-  <var-radio :checked-value="1">Sleep</var-radio>
-</var-radio-group>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(0)
+const value = ref(0)
+</script>
 
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-radio-group v-model="value">
+    <var-radio :checked-value="0">Eat</var-radio>
+    <var-radio :checked-value="1">Sleep</var-radio>
+  </var-radio-group>
+</template>
 ```
 
 ### Radio validation
 
 ```html
-<var-radio
-  v-model="value"
-  :rules="[v => v || 'Please check your choice']"
->
-  Current value: {{ value }}
-</var-radio>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-radio
+    v-model="value"
+    :rules="[v => v || 'Please check your choice']"
+  >
+    Current value: {{ value }}
+  </var-radio>
+</template>
 ```
 
 ### RadioGroup validate
 
 ```html
-<var-radio-group
-  v-model="value"
-  :rules="[v => v === 0 || 'Please check eat']"
->
-  <var-radio :checked-value="0">Eat</var-radio>
-  <var-radio :checked-value="1">Sleep</var-radio>
-</var-radio-group>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-radio-group
+    v-model="value"
+    :rules="[v => v === 0 || 'Please check eat']"
+  >
+    <var-radio :checked-value="0">Eat</var-radio>
+    <var-radio :checked-value="1">Sleep</var-radio>
+  </var-radio-group>
+</template>
 ```
 
 

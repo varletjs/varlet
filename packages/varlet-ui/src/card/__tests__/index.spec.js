@@ -21,7 +21,7 @@ test('test card props', async () => {
       title: 'This is Card',
       description: 'This is description',
       subtitle: 'This is subtitle',
-      src: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      src: 'https://varlet-varletjs.vercel.app/cat.jpg',
       fit: 'cover',
       height: '200px',
       alt: 'This is an image',
@@ -36,7 +36,7 @@ test('test card props', async () => {
   expect(wrapper.find('img').attributes('style')).toMatch('height: 200px')
   expect(wrapper.find('img').attributes('style')).toMatch('object-fit: cover')
   expect(wrapper.find('img').attributes('alt')).toMatch('This is an image')
-  expect(wrapper.find('img').attributes('src')).toMatch('https://varlet.gitee.io/varlet-ui/cat.jpg')
+  expect(wrapper.find('img').attributes('src')).toMatch('https://varlet-varletjs.vercel.app/cat.jpg')
   expect(wrapper.find('.var-card__title').text()).toBe('This is Card')
   expect(wrapper.find('.var-card__subtitle').text()).toBe('This is subtitle')
   expect(wrapper.find('.var-card__description').text()).toBe('This is description')
