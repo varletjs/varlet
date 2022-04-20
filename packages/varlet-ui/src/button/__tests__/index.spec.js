@@ -128,7 +128,7 @@ describe('test button component props', () => {
     })
   })
 
-  test('test button auto-loading', async () => {
+  test('test button auto loading', async () => {
     const onClick = () => {
       return new Promise((resolve) => {
         setTimeout(resolve, 100)
@@ -256,7 +256,7 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
-  test('test button textColor', () => {
+  test('test button text color', () => {
     const wrapper = mount(VarButton, {
       props: {
         textColor: '#000',
