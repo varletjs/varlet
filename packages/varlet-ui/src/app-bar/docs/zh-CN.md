@@ -14,7 +14,9 @@ createApp().use(AppBar)
 通过 `title` 属性设置导航栏标题。
 
 ```html
-<var-app-bar title="标题" />
+<template>
+  <var-app-bar title="标题" />
+</template>
 ```
 
 ### 自定义样式
@@ -22,180 +24,169 @@ createApp().use(AppBar)
 通过 `title-position`、`color` 属性设置标题所处位置、导航栏颜色。
 
 ```html
-<var-app-bar
-  title="标题"
-  title-position="center"
-  color="#00c48f"
-/>
+<template>
+  <var-app-bar
+    title="标题"
+    title-position="center"
+    color="#00c48f"
+  />
+</template>
 ```
 
 ### 添加标题处插槽
 
 ```html
-<var-app-bar>从插槽处添加标题</var-app-bar>
+<template>
+  <var-app-bar>从插槽处添加标题</var-app-bar>
+</template>
 ```
 
 ### 添加左侧插槽
 
 ```html
-<var-app-bar title="title">
-  <template #left>
-    <var-button
-      round
-      text
-      color="transparent"
-      text-color="#ffffff"
-      @click="goBack"
-    >
-      <var-icon name="chevron-left" :size="24" />
-    </var-button>
-  </template>
-</var-app-bar>
-```
-
-```js
+<script setup>
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const goBack = () => {
-      Snackbar({
-        content: '返回',
-        position: 'top'
-      })
-    }
-
-    return {
-      goBack
-    }
-  }
+const goBack = () => {
+  Snackbar({
+    content: '返回',
+    position: 'top'
+  })
 }
-```
+</script>
 
-### 添加右侧插槽
-
-```html
-<var-app-bar title="标题">
-  <template #right>
-    <var-button
-      round
-      text
-      color="transparent"
-      text-color="#ffffff"
-      @click="searchData"
-    >
-      <var-icon name="magnify" :size="24" />
-    </var-button>
-  </template>
-</var-app-bar>
-```
-
-```js
-import { Snackbar } from '@varlet/ui'
-
-export default {
-  setup() {
-    const searchData = () => {
-      Snackbar({
-        content: '搜索',
-        position: 'top'
-      })
-    }
-
-    return {
-      searchData
-    }
-  }
-}
-```
-
-### 添加左右插槽
-
-```html
-<var-app-bar title="标题">
-  <template #left>
-    <var-button
-      round
-      text
-      color="transparent"
-      text-color="#ffffff"
-      @click="goBack"
-    >
-      <var-icon name="chevron-left" :size="24" />
-    </var-button>
-  </template>
-
-  <template #right>
-    <var-menu :offset-y="42" :offset-x="-20" v-model:show="offsetY">
+<template>
+  <var-app-bar title="title">
+    <template #left>
       <var-button
         round
         text
         color="transparent"
         text-color="#ffffff"
-        @click="offsetY = true"
+        @click="goBack"
       >
-        <var-icon name="menu" :size="24" />
+        <var-icon name="chevron-left" :size="24" />
       </var-button>
-
-      <template #menu>
-        <div class="menu-list">
-          <var-cell
-            class="menu-cell"
-            v-for="value in menuList"
-            :key="value.value"
-            v-ripple
-          >
-            {{ value.label }}
-          </var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </template>
-</var-app-bar>
+    </template>
+  </var-app-bar>
+</template>
 ```
 
 ```js
+
+```
+
+### 添加右侧插槽
+
+```html
+<script setup>
+import { Snackbar } from '@varlet/ui'
+
+const searchData = () => {
+  Snackbar({
+    content: '搜索',
+    position: 'top'
+  })
+}
+</script>
+
+<template>
+  <var-app-bar title="标题">
+    <template #right>
+      <var-button
+        round
+        text
+        color="transparent"
+        text-color="#ffffff"
+        @click="searchData"
+      >
+      <var-icon name="magnify" :size="24" />
+      </var-button>
+    </template>
+  </var-app-bar>
+</template>
+```
+
+### 添加左右插槽
+
+```html
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-export default {
-  setup() {
-    const offsetY = ref(false)
-    const menuList = ref([
-      { label: '选项一', value: 'menu1' },
-      { label: '选项二', value: 'menu2' }
-    ])
+const offsetY = ref(false)
+const menuList = ref([
+  { label: '选项一', value: 'menu1' },
+  { label: '选项二', value: 'menu2' }
+])
 
-    const goBack = () => {
-      Snackbar({
-        content: '返回',
-        position: 'top'
-      })
-    }
-
-    return {
-      offsetY,
-      menuList,
-      goBack
-    }
-  }
+const goBack = () => {
+  Snackbar({
+    content: '返回',
+    position: 'top'
+  })
 }
-```
+</script>
 
-```css
-.var-menu {
+<template>
+  <var-app-bar class="var-app-var--example" title="标题">
+    <template #left>
+      <var-button
+        round
+        text
+        color="transparent"
+        text-color="#ffffff"
+        @click="goBack"
+      >
+        <var-icon name="chevron-left" :size="24" />
+      </var-button>
+    </template>
+
+    <template #right>
+      <var-menu :offset-y="42" :offset-x="-20" v-model:show="offsetY">
+        <var-button
+          round
+          text
+          color="transparent"
+          text-color="#ffffff"
+          @click="offsetY = true"
+        >
+          <var-icon name="menu" :size="24" />
+        </var-button>
+
+        <template #menu>
+          <div class="menu-list">
+            <var-cell
+              class="menu-cell"
+              v-for="value in menuList"
+              :key="value.value"
+              v-ripple
+            >
+              {{ value.label }}
+            </var-cell>
+          </div>
+        </template>
+      </var-menu>
+    </template>
+  </var-app-bar>
+</template>
+
+<style>
+.var-app-var--example .var-menu {
   background: transparent;
 }
 
-.menu-list {
+.var-app-var--example .menu-list {
   background: #fff;
 }
 
-.menu-list .menu-cell {
+.var-app-var--example .menu-list .menu-cell {
   display: block;
   padding: 10px;
 }
+</style>
 ```
+
 ## API
 
 ### 属性
