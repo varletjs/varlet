@@ -6,13 +6,13 @@
 <template>
   <var-swipe class="swipe-example">
     <var-swipe-item>
-      <img class="swipe-item-example" src="https://varlet-varletjs.vercel.app/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item-example" src="https://varlet-varletjs.vercel.app/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item-example" src="https://varlet-varletjs.vercel.app/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
@@ -22,10 +22,11 @@
   height: 160px;
 }
 
-.swipe-item-example {
+.swipe-example-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
 }
 </style>
 ```
@@ -34,28 +35,29 @@
 
 ```html
 <template>
-  <var-swipe class="swipe-example-loop" :loop="false">
+  <var-swipe class="swipe-example" :loop="false">
     <var-swipe-item>
-      <img class="swipe-item-example-loop" src="https://varlet-varletjs.vercel.app/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item-example-loop" src="https://varlet-varletjs.vercel.app/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item-example-loop" src="https://varlet-varletjs.vercel.app/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
 
 <style>
-.swipe-example-loop {
+.swipe-example {
   height: 160px;
 }
 
-.swipe-item-example-loop {
+.swipe-example-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
 }
 </style>
 ```
@@ -64,28 +66,29 @@
 
 ```html
 <template>
-  <var-swipe class="swipe-example-autoplay" :autoplay="2000">
+  <var-swipe class="swipe-example" :autoplay="2000">
     <var-swipe-item>
-      <img class="swipe-item-example-autoplay" src="https://varlet-varletjs.vercel.app/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item-example-autoplay" src="https://varlet-varletjs.vercel.app/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item-example-autoplay" src="https://varlet-varletjs.vercel.app/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
 
 <style>
-.swipe-example-autoplay {
+.swipe-example {
   height: 160px;
 }
 
-.swipe-item-example-autoplay {
+.swipe-example-image {   
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
 }
 </style>
 ```
@@ -94,27 +97,29 @@
 
 ```html
 <template>
-  <var-swipe class="swipe-example-vertical" vertical>
+  <var-swipe class="swipe-example" vertical>
     <var-swipe-item>
-      <img class="swipe-item-example-vertical" src="https://varlet-varletjs.vercel.app/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item-example-vertical" src="https://varlet-varletjs.vercel.app/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item-example-vertical" src="https://varlet-varletjs.vercel.app/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
+
 <style>
-.swipe-example-vertical {
+.swipe-example {
   height: 160px;
 }
 
-.swipe-item-example-vertical {
+.swipe-example-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
 }
 </style>
 ```
@@ -127,28 +132,29 @@ import { Snackbar } from '@varlet/ui'
 </script>
 
 <template>
-  <var-swipe class="swipe-example-handle" @change="Snackbar">
+  <var-swipe class="swipe-example" @change="Snackbar">
     <var-swipe-item>
-      <img class="swipe-item-example-handle" src="https://varlet-varletjs.vercel.app/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item-example-handle" src="https://varlet-varletjs.vercel.app/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item-example-handle" src="https://varlet-varletjs.vercel.app/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
 
 <style>
-.swipe-example-handle {
+.swipe-example {
   height: 160px;
 }
 
-.swipe-item-example-handle {
+.swipe-example-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
 }
 </style>
 ```
@@ -157,21 +163,21 @@ import { Snackbar } from '@varlet/ui'
 
 ```html
 <template>
-  <var-swipe class="swipe-example-indicators ">
+  <var-swipe class="swipe-example">
     <template #default>
       <var-swipe-item>
-        <img class="swipe-item-example-indicators " src="https://varlet-varletjs.vercel.app/cat.jpg">
+        <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat.jpg">
       </var-swipe-item>
       <var-swipe-item>
-        <img class="swipe-item-example-indicators " src="https://varlet-varletjs.vercel.app/cat2.jpg">
+        <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat2.jpg">
       </var-swipe-item>
       <var-swipe-item>
-        <img class="swipe-item-example-indicators " src="https://varlet-varletjs.vercel.app/cat3.jpg">
+        <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat3.jpg">
       </var-swipe-item>
     </template>
 
     <template #indicator="{ index, length }">
-      <div class="indicators">
+      <div class="swipe-example-indicators">
         {{ index + 1 }} / {{ length }}
       </div>
     </template>
@@ -179,17 +185,18 @@ import { Snackbar } from '@varlet/ui'
 </template>
 
 <style>
-.swipe-example-indicators  {
+.swipe-example {
   height: 160px;
 }
 
-.swipe-item-example-indicators {
+.swipe-example-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
 }
 
-.swipe-example-indicators>.indicators {
+.swipe-example-indicators {
   position: absolute;
   bottom: 0;
   width: 100%;
