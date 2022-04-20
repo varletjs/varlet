@@ -275,25 +275,4 @@ describe('test button component props', () => {
     expect(wrapper.attributes('style')).toMatch('background: rgb(0, 0, 0)')
     wrapper.unmount()
   })
-
-  test('test button styles', () => {
-    const wrapper = mount(VarButton, {
-      props: {
-        size: 'large',
-        round: true,
-        text: true,
-        block: true,
-      },
-      slots: {
-        default: () => 'button text',
-      },
-    })
-
-    expect(wrapper.classes()).toContain('var-button--round')
-    expect(wrapper.classes()).toContain('var-button--text')
-    expect(wrapper.classes()).toContain('var-button--block')
-    expect(wrapper.classes()).toContain('var-button--large')
-    expect(wrapper.text()).toBe('button text')
-    wrapper.unmount()
-  })
 })
