@@ -45,7 +45,22 @@ function extractComponents(source) {
 
 function injectCodeExample(source) {
   const codeRE = /(<pre class="hljs">(.|\r|\n)*?<\/pre>)/g
-  return source.replace(codeRE, '<var-site-code-example>$1</var-site-code-example>')
+
+  return source.replace(codeRE, (str) => {
+    const flags = [
+      '// playground-ignore\n',
+      '<span class="hljs-meta">#</span><span class="bash"> playground-ignore</span>\n',
+      '<span class="hljs-comment">// playground-ignore</span>\n',
+      '<span class="hljs-comment">/* playground-ignore */</span>\n',
+      '<span class="hljs-comment">&lt;!-- playground-ignore --&gt;</span>\n',
+    ]
+
+    const attr = flags.some((flag) => str.includes(flag)) ? 'playground-ignore' : ''
+
+    str = flags.reduce((str, flag) => str.replace(flag, ''), str)
+
+    return `<var-site-code-example ${attr}>${str}</var-site-code-example>`
+  })
 }
 
 function highlight(str, lang, style) {
