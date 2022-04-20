@@ -13,9 +13,9 @@ watchDarkMode(dark, (themes) => {
 </script>
 
 <template>
-  <var-space class="elevation-demo" justify="space-between">
+  <var-space class="elevation-example-list" :size="[16, 16]">
     <div
-      class="elevation-demo__item"
+      class="elevation-example-item"
       :class="`var-elevation--${e}`"
       :style="{ background }"
       v-for="e in elevations"
@@ -31,13 +31,16 @@ watchDarkMode(dark, (themes) => {
 </style>
 
 <style>
-.elevation-demo .elevation-demo__item {
+.elevation-example-list {
+  margin-top: 8px !important;
+}
+
+.elevation-example-item {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 25vw;
   height: 25vw;
-  color: var(--site-config-color-sub-text);
   transition: 0.25s background-color;
 }
 </style>
