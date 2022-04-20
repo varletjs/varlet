@@ -1,14 +1,5 @@
 # 导航栏
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { AppBar } from '@varlet/ui'
-
-createApp().use(AppBar)
-```
-
 ### 基础导航栏
 
 通过 `title` 属性设置导航栏标题。
@@ -62,7 +53,7 @@ const goBack = () => {
         round
         text
         color="transparent"
-        text-color="#ffffff"
+        text-color="#fff"
         @click="goBack"
       >
         <var-icon name="chevron-left" :size="24" />
@@ -100,7 +91,7 @@ const searchData = () => {
         text-color="#ffffff"
         @click="searchData"
       >
-      <var-icon name="magnify" :size="24" />
+        <var-icon name="magnify" :size="24" />
       </var-button>
     </template>
   </var-app-bar>
@@ -129,13 +120,13 @@ const goBack = () => {
 </script>
 
 <template>
-  <var-app-bar class="var-app-var--example" title="标题">
+  <var-app-bar title="标题">
     <template #left>
       <var-button
         round
         text
         color="transparent"
-        text-color="#ffffff"
+        text-color="#fff"
         @click="goBack"
       >
         <var-icon name="chevron-left" :size="24" />
@@ -143,7 +134,7 @@ const goBack = () => {
     </template>
 
     <template #right>
-      <var-menu :offset-y="42" :offset-x="-20" v-model:show="offsetY">
+      <var-menu class="app-bar-example-menu" :offset-y="42" :offset-x="-20" v-model:show="offsetY">
         <var-button
           round
           text
@@ -155,9 +146,9 @@ const goBack = () => {
         </var-button>
 
         <template #menu>
-          <div class="menu-list">
+          <div class="app-bar-example-menu-list">
             <var-cell
-              class="menu-cell"
+              class="app-bar-example-menu-cell"
               v-for="value in menuList"
               :key="value.value"
               v-ripple
@@ -172,15 +163,15 @@ const goBack = () => {
 </template>
 
 <style>
-.var-app-var--example .var-menu {
+.app-bar-example-menu {
   background: transparent;
 }
 
-.var-app-var--example .menu-list {
+.app-bar-example-menu-list {
   background: #fff;
 }
 
-.var-app-var--example .menu-list .menu-cell {
+.app-bar-example-menu-cell {
   display: block;
   padding: 10px;
 }
