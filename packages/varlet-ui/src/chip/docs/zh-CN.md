@@ -84,7 +84,8 @@ const show1= ref(true)
     closable
     icon-name="delete"
     v-if="show1"
-    @close="show1 = false">
+    @close="show1 = false"
+  >
     自定义关闭图标
   </var-chip>
 </template>
