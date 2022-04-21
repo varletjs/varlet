@@ -1,16 +1,10 @@
-import example from '../example'
 import Cell from '..'
 import VarCell from '../Cell'
 import VarIcon from '../../icon/Icon'
 import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
 
-describe('test cell component mount', () => {
-  test('test cell example', () => {
-    const wrapper = mount(example)
-    wrapper.unmount()
-  })
-
+describe('test cell component use', () => {
   test('test cell plugin', () => {
     const app = createApp({}).use(Cell)
     expect(app.component(Cell.name)).toBeTruthy()
