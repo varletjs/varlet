@@ -59,7 +59,10 @@ const loading = ref(false)
     {{ loading ? '关闭' : '打开' }}
   </var-button>
   <var-loading description="loading...." type="circle" :loading="loading">
-    <var-card title="介绍" description="Varlet 是一个基于Vue3开发的 Material 风格移动端组件库，全面拥抱Vue3生态，由社区的小伙伴开发和维护。" />
+    <var-card 
+      title="介绍" 
+      description="Varlet 是一个基于Vue3开发的 Material 风格移动端组件库，全面拥抱Vue3生态，由社区的小伙伴开发和维护。" 
+    />
   </var-loading>
 </template>
 ```
