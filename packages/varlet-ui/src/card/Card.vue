@@ -122,7 +122,7 @@ import type { Ref } from 'vue'
 const { n, classes } = createNamespace('card')
 
 const RIPPLE_DELAY = 300
-const IMAGE_BLUR = '6px'
+const IMAGE_BLUR = '10px'
 const IMAGE_TRANSFORM = `translate3d(-10%, 0, 0)`
 const IMAGE_WIDTH = '30vw'
 
