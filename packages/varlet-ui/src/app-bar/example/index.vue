@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import VarAppBar from '..'
 import VarIcon from '../../icon'
+import vRipple from '../../ripple'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Snackbar from '../../snackbar'
 import VarMenu from '../../menu'
