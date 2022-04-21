@@ -1,96 +1,101 @@
-import example from '../example'
 import Badge from '..'
 import VarBadge from '../Badge'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 
-test('test badge example', () => {
-  const wrapper = mount(example)
-
-  expect(wrapper.html()).toMatchSnapshot()
+describe('test badge component use', () => {
+  test('test badge plugin', () => {
+    const app = createApp({}).use(Badge)
+    expect(app.component(Badge.name)).toBeTruthy()
+  })
 })
 
-test('test badge plugin', () => {
-  const app = createApp({}).use(Badge)
-  expect(app.component(Badge.name)).toBeTruthy()
-})
+describe('test badge component props', () => {
+  test('test badge value and maxValue', async () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        value: 72,
+      },
+    })
 
-test('test badge value and maxValue', async () => {
-  const wrapper = mount(VarBadge, {
-    props: {
-      value: 72,
-    },
+    expect(wrapper.find('.var-badge').text()).toBe('72')
+    await wrapper.setProps({ maxValue: 60 })
+    expect(wrapper.find('.var-badge').text()).toBe('60+')
+    wrapper.unmount()
   })
 
-  expect(wrapper.find('.var-badge').text()).toBe('72')
+  test('test badge hidden', () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        hidden: true,
+      },
+    })
 
-  await wrapper.setProps({ maxValue: 60 })
-
-  expect(wrapper.find('.var-badge').text()).toBe('60+')
-})
-
-test('test badge hidden', () => {
-  const wrapper = mount(VarBadge, {
-    props: {
-      hidden: true,
-    },
+    expect(wrapper.find('.var-badge__content').isVisible()).toBe(false)
+    wrapper.unmount()
   })
 
-  expect(wrapper.find('.var-badge__content').isVisible()).toBe(false)
-})
+  test('test badge dot', async () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        dot: true,
+        value: 72,
+      },
+    })
 
-test('test badge dot', async () => {
-  const wrapper = mount(VarBadge, {
-    props: {
-      dot: true,
-      value: 72,
-    },
+    expect(wrapper.find('.var-badge__dot--right').exists()).toBe(true)
+    await wrapper.setProps({ position: 'left-top' })
+    expect(wrapper.find('.var-badge__dot--left').exists()).toBe(true)
+    expect(wrapper.find('.var-badge').text()).toBe('')
+    wrapper.unmount()
   })
 
-  expect(wrapper.find('.var-badge__dot--right').exists()).toBe(true)
+  test('test badge position', async () => {
+    const template = `
+      <var-badge>
+        <div style="width: 100px; height: 30px"></div>
+      </var-badge>
+    `
+    const wrapper = mount({
+      components: {
+        [VarBadge.name]: VarBadge,
+      },
+      template,
+    })
 
-  await wrapper.setProps({ position: 'left-top' })
-
-  expect(wrapper.find('.var-badge__dot--left').exists()).toBe(true)
-
-  expect(wrapper.find('.var-badge').text()).toBe('')
-})
-
-test('test badge position', async () => {
-  const template = `
-    <var-badge>
-      <div style="width: 100px; height: 30px"></div>
-    </var-badge>
-  `
-  const wrapper = mount({
-    components: {
-      [VarBadge.name]: VarBadge,
-    },
-    template,
+    await wrapper.setProps({ position: 'right-top' })
+    expect(wrapper.find('.var-badge__content').classes()).toContain('var-badge--right-top')
+    await wrapper.setProps({ position: 'right-bottom' })
+    expect(wrapper.find('.var-badge__content').classes()).toContain('var-badge--right-bottom')
+    await wrapper.setProps({ position: 'left-top' })
+    expect(wrapper.find('.var-badge__content').classes()).toContain('var-badge--left-top')
+    await wrapper.setProps({ position: 'left-bottom' })
+    expect(wrapper.find('.var-badge__content').classes()).toContain('var-badge--left-bottom')
+    wrapper.unmount()
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ position: 'right-bottom' })
-
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ position: 'left-top' })
-
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ position: 'left-bottom' })
-
-  expect(wrapper.html()).toMatchSnapshot()
+  test('test badge color and icon', () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        color: 'red',
+        icon: 'notebook',
+      },
+    })
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('background: red;')
+    expect(wrapper.find('.var-icon').classes()).toContain('var-icon-notebook')
+    wrapper.unmount()
+  })
 })
 
-test('test badge style', () => {
-  const wrapper = mount(VarBadge, {
-    props: {
-      color: '#6200ea',
-      icon: 'fire',
-    },
-  })
+describe('test badge component slots', () => {
+  test('test badge default slots', () => {
+    const wrapper = mount(VarBadge, {
+      slots: {
+        default: () => '',
+      },
+    })
 
-  expect(wrapper.html()).toMatchSnapshot()
+    expect(wrapper.find('.var-badge__content').element.textContent).toBe('0')
+    wrapper.unmount()
+  })
 })
