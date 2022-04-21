@@ -57,16 +57,16 @@ describe('test image component event', () => {
   test('test image onLoad & onError null callback', async () => {
     const wrapper = mount(VarImage)
     const img = wrapper.find('img')
-    img.trigger('load')
-    img.trigger('error')
+    await img.trigger('load')
+    await img.trigger('error')
 
     await wrapper.setProps({ lazy: true })
 
     const lazyImage = wrapper.find('img')
     lazyImage.element._lazy.state = 'success'
-    lazyImage.trigger('load')
+    await lazyImage.trigger('load')
     lazyImage.element._lazy.state = 'error'
-    lazyImage.trigger('load')
+    await lazyImage.trigger('load')
     wrapper.unmount()
   })
 })
@@ -195,7 +195,6 @@ describe('test image component props', () => {
   })
 
   test('test image ripple', async () => {
-    const onTouchstart = jest.fn()
     const wrapper = mount(VarImage, {
       props: {
         ripple: true,
@@ -206,13 +205,11 @@ describe('test image component props', () => {
     await trigger(wrapper, 'touchstart')
     await delay(500)
     expect(wrapper.find('.var-ripple').exists()).toBe(true)
-    expect(onTouchstart).toHaveBeenCalledTimes(0)
 
     await wrapper.setProps({ ripple: false })
     await trigger(wrapper, 'touchstart')
     await delay(500)
     expect(wrapper.find('.var-ripple').exists()).toBe(false)
-    expect(onTouchstart).toHaveBeenCalledTimes(0)
 
     wrapper.unmount()
   })
