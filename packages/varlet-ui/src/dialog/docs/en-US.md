@@ -1,6 +1,7 @@
 # Dialog
 
 ### Intro
+
 A dialog pops up to display the content and handle the user interaction
 `Dialog` have provided functional and component usage, and there is no essential difference between the two usage effects and parameters.
 
@@ -242,6 +243,7 @@ const show = ref(false)
 | `click-overlay` | Triggered when you click on overlay                  | `-`                                                        |
 
 ### Dialog Options
+
 #### Options passed in for a functional call
 
 | Prop                     | Description                                                                                                    | Type                                                           | Default |
@@ -281,6 +283,7 @@ const show = ref(false)
 | `title`   | Dialog title           | `-`       |
 
 ### Style Variables
+
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable                        | Default                |
