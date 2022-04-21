@@ -77,7 +77,13 @@ onUnmounted(() => {
   <var-space direction="column" :size="[12, 12]">
     <var-progress :value="30" line-width="8" color="#ff9f00" />
     <var-progress :value="60" line-width="8" color="#ff9f00" track-color="#f5cb90" />
-    <var-progress :value="80" ripple line-width="8" color="#ff9f00" track-color="#f5cb90" />
+    <var-progress
+      :value="80"
+      ripple
+      line-width="8"
+      color="#ff9f00"
+      track-color="#f5cb90"
+    />
   </var-space>
 </template>
 ```
