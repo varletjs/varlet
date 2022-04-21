@@ -19,8 +19,11 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
 ```html
 <template>
   <var-space :size="[20, 20]">
-    <var-image width="85px" height="85px" src="https://varlet-varletjs.vercel.app/cat.jpg" />
-
+    <var-image
+      width="85px"
+      height="85px"
+      src="https://varlet-varletjs.vercel.app/cat.jpg"
+    />
     <var-image 
       width="85px" 
       height="85px"
@@ -80,7 +83,12 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
 
 ```html
 <template>
-  <var-image width="85px" height="85px" ripple src="https://varlet-varletjs.vercel.app/cat.jpg"/>
+  <var-image
+    width="85px"
+    height="85px"
+    ripple
+    src="https://varlet-varletjs.vercel.app/cat.jpg"
+  />
 </template>
 ```
 
@@ -88,7 +96,12 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
 
 ```html
 <template>
-  <var-image width="85px" height="85px"  lazy src="https://varlet-varletjs.vercel.app/cat.jpg" />
+  <var-image
+    width="85px"
+    height="85px"
+    lazy
+    src="https://varlet-varletjs.vercel.app/cat.jpg"
+  />
 </template>
 ```
 

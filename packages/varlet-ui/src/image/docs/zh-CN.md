@@ -18,7 +18,11 @@
 ```html
 <template>
   <var-space :size="[20, 20]">
-    <var-image width="85px" height="85px" src="https://varlet-varletjs.vercel.app/cat.jpg" />
+    <var-image 
+      width="85px" 
+      height="85px" 
+      src="https://varlet-varletjs.vercel.app/cat.jpg" 
+    />
 
     <var-image 
       width="85px" 
@@ -79,7 +83,12 @@
 
 ```html
 <template>
-  <var-image width="85px" height="85px" ripple src="https://varlet-varletjs.vercel.app/cat.jpg"/>
+  <var-image 
+    width="85px" 
+    height="85px"
+    ripple
+    src="https://varlet-varletjs.vercel.app/cat.jpg"
+  />
 </template>
 ```
 
@@ -87,7 +96,12 @@
 
 ```html
 <template>
-  <var-image width="85px" height="85px"  lazy src="https://varlet-varletjs.vercel.app/cat.jpg" />
+  <var-image 
+    width="85px"
+    height="85px"  
+    lazy 
+    src="https://varlet-varletjs.vercel.app/cat.jpg" 
+  />
 </template>
 ```
 
