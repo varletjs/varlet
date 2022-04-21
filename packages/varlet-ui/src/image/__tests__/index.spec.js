@@ -1,130 +1,232 @@
-import example from '../example'
 import Image from '..'
 import VarImage from '../Image'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { delay, trigger } from '../../utils/jest'
 
 const SRC = 'https://varlet-varletjs.vercel.app/cat.png'
-
-test('test image example', () => {
-  const wrapper = mount(example)
-
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
-
-test('test image src', () => {
-  const wrapper = mount(VarImage, {
-    props: {
-      src: SRC,
-    },
-  })
-
-  expect(wrapper.find('img').element.src).toEqual(SRC)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test image plugin', () => {
   const app = createApp({}).use(Image)
   expect(app.component(Image.name)).toBeTruthy()
 })
 
-test('test image onLoad & onError', () => {
-  const onLoad = jest.fn()
-  const onError = jest.fn()
+describe('test image component event', () => {
+  test('test image onLoad & onError', () => {
+    const onLoad = jest.fn()
+    const onError = jest.fn()
+    const wrapper = mount(VarImage, {
+      props: {
+        onLoad,
+        onError,
+      },
+    })
+    const img = wrapper.find('img')
 
-  const wrapper = mount(VarImage, {
-    props: {
-      onLoad,
-      onError,
-    },
+    img.trigger('load')
+    img.trigger('error')
+    expect(onLoad).toHaveBeenCalledTimes(1)
+    expect(onError).toHaveBeenCalledTimes(1)
+    wrapper.unmount()
   })
 
-  const img = wrapper.find('img')
+  test('test image onLoad & onError in lazy mode', () => {
+    const onLoad = jest.fn()
+    const onError = jest.fn()
+    const wrapper = mount(VarImage, {
+      props: {
+        lazy: true,
+        onLoad,
+        onError,
+      },
+    })
 
-  img.trigger('load')
-  img.trigger('error')
-  expect(onLoad).toHaveBeenCalledTimes(1)
-  expect(onError).toHaveBeenCalledTimes(1)
-  wrapper.unmount()
-})
+    const img = wrapper.find('img')
 
-test('test image onLoad & onError in lazy mode', () => {
-  const onLoad = jest.fn()
-  const onError = jest.fn()
+    img.element._lazy.state = 'success'
+    img.trigger('load')
+    expect(onLoad).toHaveBeenCalledTimes(1)
 
-  const wrapper = mount(VarImage, {
-    props: {
-      lazy: true,
-      onLoad,
-      onError,
-    },
+    img.element._lazy.state = 'error'
+    img.trigger('load')
+    expect(onError).toHaveBeenCalledTimes(1)
+
+    wrapper.unmount()
   })
 
-  const img = wrapper.find('img')
+  test('test image onLoad & onError null callback', async () => {
+    const wrapper = mount(VarImage)
+    const img = wrapper.find('img')
+    img.trigger('load')
+    img.trigger('error')
 
-  img.element._lazy.state = 'success'
-  img.trigger('load')
-  expect(onLoad).toHaveBeenCalledTimes(1)
+    await wrapper.setProps({ lazy: true })
 
-  img.element._lazy.state = 'error'
-  img.trigger('load')
-  expect(onError).toHaveBeenCalledTimes(1)
-
-  wrapper.unmount()
+    const lazyImage = wrapper.find('img')
+    lazyImage.element._lazy.state = 'success'
+    lazyImage.trigger('load')
+    lazyImage.element._lazy.state = 'error'
+    lazyImage.trigger('load')
+    wrapper.unmount()
+  })
 })
 
-test('test image onLoad & onError null callback', async () => {
-  const wrapper = mount(VarImage)
+describe('test image component props', () => {
+  test('test image src', () => {
+    const wrapper = mount(VarImage, {
+      props: {
+        src: SRC,
+      },
+    })
 
-  const img = wrapper.find('img')
-  img.trigger('load')
-  img.trigger('error')
-
-  await wrapper.setProps({ lazy: true })
-
-  const lazyImage = wrapper.find('img')
-  lazyImage.element._lazy.state = 'success'
-  lazyImage.trigger('load')
-  lazyImage.element._lazy.state = 'error'
-  lazyImage.trigger('load')
-  wrapper.unmount()
-})
-
-test('test image styles', () => {
-  const wrapper = mount(VarImage, {
-    props: {
-      src: SRC,
-      ripple: true,
-      block: false,
-      alt: 'alt',
-      width: '100px',
-      height: '100px',
-      radius: '10px',
-    },
+    expect(wrapper.find('img').element.src).toEqual(SRC)
+    wrapper.unmount()
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
+  test('test image fit', () => {
+    ;['fill', 'contain', 'cover', 'none', 'scale-down'].forEach((fit) => {
+      const wrapper = mount(VarImage, {
+        props: { fit },
+      })
 
-test('test image fit', async () => {
-  const wrapper = mount(VarImage)
+      expect(wrapper.find('.var-image__image').attributes('style')).toContain(`object-fit: ${fit};`)
+      wrapper.unmount()
+    })
+  })
 
-  await wrapper.setProps({ fit: 'fill' })
-  expect(wrapper.html()).toMatchSnapshot()
+  test('test image alt', () => {
+    const wrapper = mount(VarImage, {
+      props: {
+        alt: 'This is alt',
+      },
+    })
 
-  await wrapper.setProps({ fit: 'cover' })
-  expect(wrapper.html()).toMatchSnapshot()
+    expect(wrapper.find('.var-image__image').attributes('alt')).toContain('This is alt')
+    wrapper.unmount()
+  })
 
-  await wrapper.setProps({ fit: 'none' })
-  expect(wrapper.html()).toMatchSnapshot()
+  test('test image width', async () => {
+    const wrapper = mount(VarImage, {
+      props: {
+        width: '20px',
+      },
+    })
 
-  await wrapper.setProps({ fit: 'scale-down' })
-  expect(wrapper.html()).toMatchSnapshot()
+    expect(wrapper.find('.var-image').attributes('style')).toContain('width: 20px;')
+    await wrapper.setProps({ width: 30 })
+    expect(wrapper.find('.var-image').attributes('style')).toContain('width: 30px;')
+    wrapper.unmount()
+  })
 
-  await wrapper.setProps({ fit: 'contain' })
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
+  test('test image height', async () => {
+    const wrapper = mount(VarImage, {
+      props: {
+        height: '20px',
+      },
+    })
+
+    expect(wrapper.find('.var-image').attributes('style')).toContain('height: 20px;')
+    await wrapper.setProps({ height: 30 })
+    expect(wrapper.find('.var-image').attributes('style')).toContain('height: 30px;')
+    wrapper.unmount()
+  })
+
+  test('test image radius', async () => {
+    const wrapper = mount(VarImage, {
+      props: {
+        radius: '20px',
+      },
+    })
+
+    expect(wrapper.find('.var-image').attributes('style')).toContain('radius: 20px;')
+    await wrapper.setProps({ radius: 30 })
+    expect(wrapper.find('.var-image').attributes('style')).toContain('radius: 30px;')
+    wrapper.unmount()
+  })
+
+  test('test image lazy', async () => {
+    const wrapper = mount(VarImage, {
+      props: {
+        lazy: false,
+        src: SRC,
+      },
+    })
+
+    expect(wrapper.find('.var-image__image').attributes('src')).toContain(SRC)
+    await wrapper.setProps({ lazy: true })
+    expect(wrapper.find('.var-image__image').attributes('src')).not.toContain(SRC)
+    wrapper.unmount()
+  })
+
+  test('test image loading', () => {
+    const wrapper = mount(VarImage, {
+      props: {
+        lazy: true,
+        loading: SRC,
+      },
+    })
+
+    expect(wrapper.find('.var-image__image').attributes('lazy-loading')).toContain(SRC)
+    wrapper.unmount()
+  })
+
+  test('test image error', () => {
+    const wrapper = mount(VarImage, {
+      props: {
+        lazy: true,
+        error: SRC,
+      },
+    })
+
+    expect(wrapper.find('.var-image__image').attributes('lazy-error')).toContain(SRC)
+    wrapper.unmount()
+  })
+
+  test('test image error', () => {
+    const wrapper = mount(VarImage, {
+      props: {
+        lazy: true,
+        error: SRC,
+      },
+    })
+
+    expect(wrapper.find('.var-image__image').attributes('lazy-error')).toContain(SRC)
+    wrapper.unmount()
+  })
+
+  test('test image ripple', async () => {
+    const onTouchstart = jest.fn()
+    const wrapper = mount(VarImage, {
+      props: {
+        ripple: true,
+        src: SRC,
+      },
+    })
+
+    await trigger(wrapper, 'touchstart')
+    await delay(500)
+    expect(wrapper.find('.var-ripple').exists()).toBe(true)
+    expect(onTouchstart).toHaveBeenCalledTimes(0)
+
+    await wrapper.setProps({ ripple: false })
+    await trigger(wrapper, 'touchstart')
+    await delay(500)
+    expect(wrapper.find('.var-ripple').exists()).toBe(false)
+    expect(onTouchstart).toHaveBeenCalledTimes(0)
+
+    wrapper.unmount()
+  })
+
+  test('test image block', async () => {
+    const wrapper = mount(VarImage, {
+      props: {
+        block: true,
+      },
+    })
+
+    expect(wrapper.find('.var--inline-block').exists()).toBe(false)
+    await wrapper.setProps({ block: false })
+    expect(wrapper.find('.var--inline-block').exists()).toBe(true)
+    wrapper.unmount()
+  })
 })
