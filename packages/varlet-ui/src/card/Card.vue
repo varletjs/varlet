@@ -23,10 +23,11 @@
       <div
         :class="n('image-row-container')"
         :style="{
-          transition: `filter ${floatingDuration}ms, transform ${floatingDuration}ms`,
+          transition: `filter ${floatingDuration}ms, transform ${floatingDuration}ms, width ${floatingDuration}ms`,
           filter: `blur(${imageBlur})`,
           transformOrigin: 'right',
           transform: imageTransform,
+          width: imageWidth ? imageWidth : undefined,
         }"
         v-if="isRow"
         v-ripple="{ disabled: !ripple }"
@@ -37,7 +38,7 @@
             :style="{
               objectFit: fit,
               height: toSizeUnit(height),
-              width: toSizeUnit(width),
+              width: imageWidth ? imageWidth : toSizeUnit(width),
             }"
             :src="src"
             :alt="alt"
@@ -123,6 +124,7 @@ const { n, classes } = createNamespace('card')
 const RIPPLE_DELAY = 300
 const IMAGE_BLUR = '6px'
 const IMAGE_TRANSFORM = `translate3d(-10%, 0, 0)`
+const IMAGE_WIDTH = '30vw'
 
 export default defineComponent({
   name: 'VarCard',
@@ -142,6 +144,7 @@ export default defineComponent({
     const contentOpacity: Ref<string> = ref('0')
     const imageBlur: Ref<string> = ref('0')
     const imageTransform: Ref<string> = ref('')
+    const imageWidth: Ref<string> = ref('')
     const { zIndex } = useZIndex(() => props.floating, 1)
     const isRow = computed(() => props.layout === 'row')
     useLock(props, 'floating')
@@ -179,6 +182,7 @@ export default defineComponent({
           floaterOverflow.value = 'auto'
           imageBlur.value = IMAGE_BLUR
           imageTransform.value = IMAGE_TRANSFORM
+          imageWidth.value = IMAGE_WIDTH
         },
         props.ripple ? RIPPLE_DELAY : 0
       )
@@ -196,6 +200,7 @@ export default defineComponent({
       contentOpacity.value = '0'
       imageBlur.value = '0'
       imageTransform.value = ''
+      imageWidth.value = ''
 
       dropper = setTimeout(() => {
         holderWidth.value = 'auto'
@@ -236,6 +241,7 @@ export default defineComponent({
       floaterOverflow,
       contentHeight,
       contentOpacity,
+      imageWidth,
       imageBlur,
       imageTransform,
       zIndex,
