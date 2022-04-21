@@ -270,8 +270,8 @@ const openMultiple = () => {
 | ----- | -------- | -------- |
 | `open` | Triggered when the `Snackbar` is open | `-` |
 | `opened` | Triggered when the `Snackbar` open-animation ends | `-` |
-| `close` |	Triggered when the `Snackbar` is close | `-` |
-| `closed` | 	Triggered when the `Snackbar` close-animation ends | `-` |
+| `close` | Triggered when the `Snackbar` is close | `-` |
+| `closed` | Triggered when the `Snackbar` close-animation ends | `-` |
 
 ### Slots
 
@@ -284,7 +284,7 @@ const openMultiple = () => {
 
 The `clear` method on the instance can close the current instance, and the `clear` method on the Snackbar can close all message bars.
 
-| Method | Description	 | Arguments | Return value |
+| Method | Description | Arguments | Return value |
 | ---- | ---- | ---- | ---- |
 | `Snackbar` | Show snackbar | _options \| string_ | `snackbar instance` |
 | `Snackbar.success` | Show success snackbar | _options \| string_ | `snackbar instance` |
@@ -314,8 +314,8 @@ The `clear` method on the instance can close the current instance, and the `clea
 | `forbidClick`| whether to penetrating clicks are forbidden (Value is `true` when the `type` prop is `loading`) | _boolean_  | `false` |
 | `onOpen` | Triggered when the `Snackbar` is open | _() => void_ | `-` |
 | `onOpened` | Triggered when the `Snackbar` open-animation ends | _() => void_ | `-` |
-| `onClose` |	Triggered when the `Snackbar` is close | _() => void_ | `-` |
-| `onClosed` | 	Triggered when the `Snackbar` close-animation ends | _() => void_ | `-` |
+| `onClose` | Triggered when the `Snackbar` is close | _() => void_ | `-` |
+| `onClosed` | Triggered when the `Snackbar` close-animation ends | _() => void_ | `-` |
 
 ### Style Variables
 

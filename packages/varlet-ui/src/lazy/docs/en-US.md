@@ -23,6 +23,7 @@ Load when the image is visible
 ```
 
 ### Background Image Lazy Load
+
 ```html
 <template>
   <div 
@@ -43,6 +44,7 @@ Load when the image is visible
 ```
 
 ### Inline Attributes
+
 You can modify the `loading`, `error` image, and `reload attempts` by using inline properties.
 
 ```html
@@ -101,8 +103,8 @@ createApp().use(Lazy, {
 
 ### Plugin Options
 
-| Option | Description | Type | Default | 
-| --- | --- | --- | --- | 
+| Option | Description | Type | Default |
+| --- | --- | --- | --- |
 | `loading` | Loading images, if possible, select images that load quickly | _string_ | `Pixel transparent picture` |
 | `error` | Load failed to display the picture | _string_ | `Pixel transparent picture` |
 | `attempt` | The number of times a load failed to reload | _number_ | `3` |  

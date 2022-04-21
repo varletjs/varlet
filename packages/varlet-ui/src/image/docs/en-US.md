@@ -122,8 +122,9 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
 ```
 
 ### Use local paths
+
 In the file `.vue`,
-the `Vue component` will not be automatically processed by the build tool like the native img module, 
+the `Vue component` will not be automatically processed by the build tool like the native img module,
 so you need to import the image resources manually.
 Here's how the different build tools are used.
 
@@ -137,6 +138,7 @@ Here's how the different build tools are used.
 ```
 
 #### Vite
+
 ```html
 <!-- playground-ignore -->
 <script setup>
@@ -152,8 +154,8 @@ import logo from '../../assets/logo.png'
 
 ### Props
 
-| Prop | Description | Type | Default | 
-| --- | --- | --- | --- | 
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
 | `src` | Image src | _string_ | `-` |
 | `fit` | Image fit mode, optional value is `fill` `contain` `cover` `none` `scale-down` | _string_ | `fill` |
 | `alt` | Image alt text | _string_ | `-` |

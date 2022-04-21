@@ -60,17 +60,17 @@ const time = ref(30 * 60 * 60 * 1000)
 <template>
   <var-countdown :time="108000000">
     <template #default="timeData">
-      <span class="countdown-block">{{ timeData.hours }}</span>
-      <span class="countdown-colon">:</span>
-      <span class="countdown-block">{{ timeData.minutes }}</span>
-      <span class="countdown-colon">:</span>
-      <span class="countdown-block">{{ timeData.seconds }}</span>
+      <span class="countdown-example-block">{{ timeData.hours }}</span>
+      <span class="countdown-example-colon">:</span>
+      <span class="countdown-example-block">{{ timeData.minutes }}</span>
+      <span class="countdown-example-colon">:</span>
+      <span class="countdown-example-block">{{ timeData.seconds }}</span>
      </template>
   </var-countdown>
 </template>
 
 <style>
-.countdown-block {
+.countdown-example-block {
   background: #ff9f00;
   color: white;
   width: 30px;
@@ -81,7 +81,7 @@ const time = ref(30 * 60 * 60 * 1000)
   justify-content: center;
 }
 
-.countdown-colon {
+.countdown-example-colon {
   margin: 0 5px;
   font-size: 18px;
   font-weight: 500;
@@ -137,6 +137,7 @@ const change = () => {
 | `auto-start` | 是否自动开始倒计时 | _boolean_ | `true` |
 
 ### format 格式
+
 | 格式 | 说明 |
 | -- | --- |
 | `DD` | 天数 |
@@ -170,12 +171,12 @@ const change = () => {
 | `seconds` | 剩余秒数 | `number` |
 | `milliseconds` | 剩余毫秒 | `number` |
 
-
 ### 方法
+
 通过 ref 可以获取到 CountDown 实例并调用实例方法
 
 | 方法名 | 说明 | 参数 |
 | ---- | ------- | -------- |
-| `start` | 开始倒计时	 | `-` |
-| `pause` | 暂停倒计时	 | `-` |
+| `start` | 开始倒计时 | `-` |
+| `pause` | 暂停倒计时 | `-` |
 | `reset` | 重设倒计时，若 `auto-start` 为 `true`，重设后会自动开始倒计时 | `-` |
