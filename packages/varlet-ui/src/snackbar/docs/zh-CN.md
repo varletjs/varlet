@@ -22,6 +22,7 @@ const show = ref(false)
 ```
 
 ### 垂直排列
+
 通过 `vertical` 属性改变 `snackbar` 排列方式，通过 `自定义插槽` 创建右边 action。
 
 ```html
@@ -265,10 +266,10 @@ const openMultiple = () => {
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------- | -------- |
-| `open` | 	打开 `Snackbar` 时触发 | `-` |
-| `opened` | 	打开 `Snackbar` 动画结束时触发 | `-` |
-| `close` | 	关闭 `Snackbar` 时触发 | `-` |
-| `closed` | 	关闭 `Snackbar` 动画结束时触发 | `-` |
+| `open` | 打开 `Snackbar` 时触发 | `-` |
+| `opened` |  打开 `Snackbar` 动画结束时触发 | `-` |
+| `close` | 关闭 `Snackbar` 时触发 | `-` |
+| `closed` | 关闭 `Snackbar` 动画结束时触发 | `-` |
 
 ### 插槽
 
@@ -309,10 +310,10 @@ const openMultiple = () => {
 | `loadingSize` | 加载动画大小(见 `Loading` 组件) | _string_ | `normal` |
 | `lockScroll`| 是否禁止滚动穿透 | _boolean_  | `false` |
 | `forbidClick`| 是否禁止穿透点击(当 `type` 属性为 `loading` 时，默认为 `true`) | _boolean_  | `false` |
-| `onOpen` | 	打开 `Snackbar` 时触发 | _() => void_ | `-` |
-| `onOpened` | 	打开 `Snackbar` 动画结束时触发 | _() => void_ | `-` |
-| `onClose` | 	关闭 `Snackbar` 时触发 | _() => void_ | `-` |
-| `onClosed` | 	关闭 `Snackbar` 动画结束时触发 | _() => void_ | `-` |
+| `onOpen` | 打开 `Snackbar` 时触发 | _() => void_ | `-` |
+| `onOpened` | 打开 `Snackbar` 动画结束时触发 | _() => void_ | `-` |
+| `onClose` | 关闭 `Snackbar` 时触发 | _() => void_ | `-` |
+| `onClosed` | 关闭 `Snackbar` 动画结束时触发 | _() => void_ | `-` |
 
 ### 样式变量
 
