@@ -70,7 +70,7 @@ watchDarkMode(dark)
     <var-image-preview
       :images="images"
       v-model:show="currentShow"
-      current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
+      current="https://varlet-varletjs.vercel.app/cat2.jpg"
     />
 
     <var-button type="warning" block @click="closeShow = true">{{ pack.displayCloseButton }}</var-button>
