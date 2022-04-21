@@ -19,7 +19,7 @@ export const props = {
   width: {
     type: [String, Number],
   },
-  direction: {
+  layout: {
     type: String as PropType<'row' | 'column'>,
     default: 'column',
   },
@@ -29,7 +29,7 @@ export const props = {
   },
   floatingDuration: {
     type: Number,
-    default: 360,
+    default: 250,
   },
   alt: {
     type: String,

@@ -1,14 +1,16 @@
 <template>
   <var-card
+    style="margin-top: 20px"
     :floating="floating"
     @click="floating = !floating"
     :title="pack.title"
     :subtitle="pack.subtitle"
+    ripple
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
-      <var-button type="primary" style="margin-right: 10px">{{ pack.button }}</var-button>
-      <var-button type="warning">{{ pack.button }}</var-button>
+      <var-button text type="info" style="margin-right: 10px">{{ pack.button }}</var-button>
+      <var-button text type="info">{{ pack.button }}</var-button>
     </template>
 
     <template #content>
@@ -35,9 +37,18 @@
   <var-card
     :title="pack.title"
     :subtitle="pack.subtitle"
+    :floating="floating1"
+    @click="floating1 = !floating1"
     src="https://varlet-varletjs.vercel.app/cat.jpg"
-    direction="row"
-  />
+    ripple
+    layout="row"
+  >
+    <template #content>
+      <p style="padding: 0 14px">
+        {{ pack.description }}
+      </p>
+    </template>
+  </var-card>
 
   <app-type>{{ pack.useSlot }}</app-type>
   <var-card
@@ -73,12 +84,14 @@ export default {
   },
   setup() {
     const floating = ref(false)
+    const floating1 = ref(false)
 
     watchLang(use)
     watchDarkMode(dark)
 
     return {
       floating,
+      floating1,
       pack,
     }
   },
