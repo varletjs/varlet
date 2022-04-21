@@ -112,8 +112,20 @@ const value = ref([])
     <var-checkbox :checked-value="1">Sleep</var-checkbox>
   </var-checkbox-group>
 
-  <var-button class="button" type="primary" @click="$refs.group.checkAll()">Check All</var-button>
-  <var-button class="button" type="primary" @click="$refs.group.inverseAll()">Inverse All</var-button>
+  <var-button
+    class="button"
+    type="primary"
+    @click="$refs.group.checkAll()"
+  >
+    Check All
+  </var-button>
+  <var-button
+    class="button"
+    type="primary"
+    @click="$refs.group.inverseAll()"
+  >
+    Inverse All
+  </var-button>
 </template>
 ```
 
