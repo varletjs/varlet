@@ -382,7 +382,6 @@ const handleSelect = (action) => {
 </template>
 ```
 
-
 ## API
 
 ### Props
@@ -412,6 +411,7 @@ const handleSelect = (action) => {
 | `click-overlay` | Triggered when you click on overlay                  | `-`              |
 
 ### ActionSheet Options
+
 #### Options passed in for a functional call
 
 | Prop                  | Description                                                                                                          | Type                       | Default      |
@@ -448,6 +448,7 @@ const handleSelect = (action) => {
 | `title`   | Action sheet title | `-`       |
 
 ### Style Variables
+
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable                                    | Default                      |

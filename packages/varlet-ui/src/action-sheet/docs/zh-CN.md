@@ -1,6 +1,7 @@
 # 动作面板
 
 ### 介绍
+
 弹出一个动作面板提供用户选择选项的能力。
 `ActionSheet` 提供了函数式和组件式两种使用方式，两种使用效果和参数并没有本质区别。
 函数返回一个 `Promise`，选择时返回 `当前选择的 action`，点击遮罩层关闭返回 `close`。
@@ -382,7 +383,6 @@ const handleSelect = (action) => {
 </template>
 ```
 
-
 ## API
 
 ### 属性
@@ -412,6 +412,7 @@ const handleSelect = (action) => {
 | `click-overlay` | 点击遮罩层时触发 | `-` |
 
 ### ActionSheet Options
+
 #### 函数式调用时传入的选项
 
 | 参数 | 说明 | 类型 | 默认值 |
@@ -448,6 +449,7 @@ const handleSelect = (action) => {
 | `title` | 动作面板标题 | `-` |
 
 ### 样式变量
+
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
