@@ -15,6 +15,7 @@ watchDarkMode(dark)
   <var-card :title="pack.title" :description="pack.description" />
   <app-type>{{ pack.showSubtitle }}</app-type>
   <var-card :title="pack.title" :subtitle="pack.subtitle" :description="pack.description" />
+
   <app-type>{{ pack.showImage }}</app-type>
   <var-card
     :title="pack.title"
@@ -22,6 +23,15 @@ watchDarkMode(dark)
     :description="pack.description"
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   />
+
+  <app-type>{{ pack.horizontal }}</app-type>
+  <var-card
+    :title="pack.title"
+    :subtitle="pack.subtitle"
+    src="https://varlet-varletjs.vercel.app/cat.jpg"
+    direction="row"
+  />
+
   <app-type>{{ pack.useSlot }}</app-type>
   <var-card
     :title="pack.title"

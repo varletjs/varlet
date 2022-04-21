@@ -16,6 +16,13 @@ export const props = {
   height: {
     type: [String, Number],
   },
+  width: {
+    type: [String, Number],
+  },
+  direction: {
+    type: String as PropType<'row' | 'column'>,
+    default: 'column',
+  },
   alt: {
     type: String,
   },

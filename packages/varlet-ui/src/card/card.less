@@ -2,6 +2,7 @@
 @card-background: #fff;
 @card-border-radius: 4px;
 @card-image-width: 100%;
+@card-row-image-width: 100px;
 @card-image-height: 200px;
 @card-title-color: #333;
 @card-title-font-size: 20px;
@@ -24,6 +25,7 @@
   --card-background: @card-background;
   --card-border-radius: @card-border-radius;
   --card-image-width: @card-image-width;
+  --card-row-image-width: @card-row-image-width;
   --card-image-height: @card-image-height;
   --card-title-color: @card-title-color;
   --card-title-font-size: @card-title-font-size;
@@ -49,11 +51,24 @@
   line-height: var(--card-line-height);
   background: var(--card-background);
   transition: background-color 0.25s;
+  display: flex;
+  position: relative;
 
-  &__image {
+  &__contain-row {
+    width: calc(100% - var(--card-row-image-width));
+    margin-left: var(--card-row-image-width);
+  }
+
+  &__image-column {
     width: var(--card-image-width);
     height: var(--card-image-height);
     display: block;
+  }
+
+  &__image-row {
+    position: absolute;
+    width: 100px;
+    height: 100%;
   }
 
   &__title {

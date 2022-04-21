@@ -27,7 +27,15 @@
 
 ```html
 <template>
-  <var-card title="Little Prince" src="https://varlet-varletjs.vercel.app/cat.jpg" />
+  <var-card title="Little Prince" subtitle="where little prince from" src="https://varlet-varletjs.vercel.app/cat.jpg" />
+</template>
+```
+
+### 横向显示
+
+```html
+<template>
+  <var-card title="Little Prince" subtitle="where little prince from" src="https://varlet-varletjs.vercel.app/cat.jpg" direction="row"/>
 </template>
 ```
 
@@ -69,15 +77,17 @@
 ### Props
 
 | Prop          | Description                                                     | Type               | Default |
-| ------------- | --------------------------------------------------------------- | ------------------ | ------- |
+|---------------|-----------------------------------------------------------------| ------------------ | ------- |
 | `title`       | The title of Card                                               | _string_           | `-`     |
 | `subtitle`    | The subtitle of Card                                            | _string_           | `-`     |
 | `description` | The description of Card                                         | _string_           | `-`     |
 | `elevation`   | The shadow level of Card                                        | _string \| number_ | `2`     |
 | `src`         | The src of Image                                                | _string_           | `-`     |
+| `direction`   | Arrangement mode, options `row` `column`                        | _string_           | `column` |
 | `fit`         | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_           | `cover` |
 | `alt`         | Alt text                                                        | _string_           | `-`     |
 | `height`      | height of Image                                                 | _string \| number_ | `-`     |
+| `width`       | width of Image                                                  | _string \| number_ | `-`     |
 | `ripple`      | Whether to enable ripple                                        | _boolean_          | `false` |
 
 ### Slots
@@ -106,6 +116,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--card-padding`               | `0px 0 15px 0`         |
 | `--card-border-radius`         | `4px`                |
 | `--card-image-width`           | `100%`               |
+| `--card-row-image-width`       | `100px`              |
 | `--card-image-height`          | `200px`              |
 | `--card-title-color`           | `#333`               |
 | `--card-title-font-size`       | `20px`               |
