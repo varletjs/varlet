@@ -56,7 +56,9 @@ When `transition (ms)` is set, and the icon is toggled by its `name`, trigger a 
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const name = ref('information')
+
 const toggle = () => {
   name.value = name.value === 'information' 
     ? 'checkbox-marked-circle' 

@@ -55,7 +55,9 @@ import { Snackbar } from '@varlet/ui'
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const name = ref('information')
+
 const toggle = () => {
   name.value = name.value === 'information' 
     ? 'checkbox-marked-circle' 
