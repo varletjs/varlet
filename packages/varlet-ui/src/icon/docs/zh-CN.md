@@ -1,6 +1,7 @@
 # 图标
 
 ### 介绍
+
 基于字体的图标库，也支持网络图片。
 字体图标来自 [Material Design Icon](https://materialdesignicons.com/)
 
@@ -77,6 +78,7 @@ const toggle = () => {
 ```
 
 ### 自定义图标库
+
 首先您需要设置您自己的字体，并引入到您的项目。
 这里假设扩展一个名为 `my-icons` 的字体。
 
@@ -139,6 +141,7 @@ const toggle = () => {
 | `click` | 点击图标时触发 | `event: Event` |
 
 ### 样式变量
+
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |

@@ -1,6 +1,7 @@
 # Icon
 
 ### Intro
+
 Font based icon library, also support web images.
 Font icons are from [Material Design Icon](https://materialdesignicons.com/).
 
@@ -33,7 +34,7 @@ When the name passed in is a URL the `img` tag is displayed in `cover` mode.
 </template>
 ```
 
-### Events
+### Event
 
 ```html
 <script setup>
@@ -143,6 +144,7 @@ You can use it this way:
 | `click` | Triggered when you click on the icon | `event: Event` |
 
 ### Style Variables
+
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable      | Default |
