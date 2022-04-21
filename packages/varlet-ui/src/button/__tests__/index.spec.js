@@ -4,9 +4,11 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/jest'
 
-test('test button plugin', () => {
-  const app = createApp({}).use(Button)
-  expect(app.component(Button.name)).toBeTruthy()
+describe('test button component use', () => {
+  test('test button plugin', () => {
+    const app = createApp({}).use(Button)
+    expect(app.component(Button.name)).toBeTruthy()
+  })
 })
 
 describe('test button component event', () => {
