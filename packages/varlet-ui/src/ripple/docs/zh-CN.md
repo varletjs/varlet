@@ -30,7 +30,9 @@
 
 ```html
 <template>
-  <div class="ripple-example-block var-elevation--2" v-ripple="{ color: '#2979ff' }">点击</div>
+  <div class="ripple-example-block var-elevation--2" v-ripple="{ color: '#2979ff' }">
+    点击
+  </div>
 </template>
 
 <style>
@@ -52,7 +54,9 @@
 
 ```html
 <template>
-  <div class="ripple-example-block var-elevation--2" v-ripple="{ disabled: true }">点击</div>
+  <div class="ripple-example-block var-elevation--2" v-ripple="{ disabled: true }">
+    点击
+  </div>
 </template>
 
 <style>

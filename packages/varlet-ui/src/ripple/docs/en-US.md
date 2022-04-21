@@ -29,7 +29,9 @@ Causes the element to generate a ripple spread effect when clicked.
 
 ```html
 <template>
-  <div class="ripple-example-block var-elevation--2" v-ripple="{ color: '#2979ff' }">click</div>
+  <div class="ripple-example-block var-elevation--2" v-ripple="{ color: '#2979ff' }">
+    click
+  </div>
 </template>
 
 <style>
@@ -51,7 +53,9 @@ Causes the element to generate a ripple spread effect when clicked.
 
 ```html
 <template>
-  <div class="ripple-example-block var-elevation--2" v-ripple="{ disabled: true }">click</div>
+  <div class="ripple-example-block var-elevation--2" v-ripple="{ disabled: true }">
+    click
+  </div>
 </template>
 
 <style>
