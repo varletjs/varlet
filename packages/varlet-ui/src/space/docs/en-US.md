@@ -49,7 +49,7 @@ so that you can do flex layout more efficiently.
 
 ```html
 <template>
-  <var-space justify="end" >
+  <var-space justify="end">
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
   </var-space>
