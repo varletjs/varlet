@@ -47,9 +47,9 @@ Control the range of badge display values through `value` and `max-value` (effec
 <script setup>
 import { ref } from 'vue'
 
-const value = ref(88);
-const value1 = ref(188);
-const maxValue = ref(99);
+const value = ref(88)
+const value1 = ref(188)
+const maxValue = ref(99)
 </script>
 
 <template>
@@ -89,12 +89,13 @@ Set whether the badge is displayed through the `hidden` attribute.
 
 ```html
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  const hidden = ref(false);
-  const handleChange = () => {
-    hidden.value = !hidden.value
-  }
+const hidden = ref(false)
+
+const handleChange = () => {
+  hidden.value = !hidden.value
+}
 </script>
 
 <template>

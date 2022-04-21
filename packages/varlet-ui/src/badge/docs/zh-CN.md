@@ -49,9 +49,9 @@
 <script setup>
 import { ref } from 'vue'
 
-const value = ref(88);
-const value1 = ref(188);
-const maxValue = ref(99);
+const value = ref(88)
+const value1 = ref(188)
+const maxValue = ref(99)
 </script>
 
 <template>
@@ -93,7 +93,8 @@ const maxValue = ref(99);
 <script setup>
 import { ref } from 'vue'
 
-const hidden = ref(false);
+const hidden = ref(false)
+
 const handleChange = () => {
   hidden.value = !hidden.value
 }
