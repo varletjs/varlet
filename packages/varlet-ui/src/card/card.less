@@ -47,16 +47,25 @@
 .var-card {
   border-radius: var(--card-border-radius);
   overflow: hidden;
-  padding: var(--card-padding);
   line-height: var(--card-line-height);
   background: var(--card-background);
   transition: background-color 0.25s;
-  display: flex;
-  position: relative;
 
-  &__contain-row {
-    width: calc(100% - var(--card-row-image-width));
-    margin-left: var(--card-row-image-width);
+  &__floater {
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    line-height: var(--card-line-height);
+    background: var(--card-background);
+    display: flex;
+    align-items: stretch;
+  }
+
+  &__container {
+    padding: var(--card-padding);
+  }
+
+  &__container-row {
+    flex: 1;
   }
 
   &__image-column {
@@ -66,9 +75,8 @@
   }
 
   &__image-row {
-    position: absolute;
-    width: 100px;
-    height: 100%;
+    width: var(--card-row-image-width);
+    display: block;
   }
 
   &__title {
@@ -96,5 +104,14 @@
   &__footer {
     padding: var(--card-footer-padding);
     margin: var(--card-footer-margin);
+  }
+
+  &__content {
+    overflow: hidden;
+  }
+
+  &--floating {
+    position: fixed;
+    overflow: auto;
   }
 }

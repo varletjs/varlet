@@ -23,6 +23,14 @@ export const props = {
     type: String as PropType<'row' | 'column'>,
     default: 'column',
   },
+  floating: {
+    type: Boolean,
+    default: false,
+  },
+  floatingDuration: {
+    type: Number,
+    default: 360,
+  },
   alt: {
     type: String,
   },
