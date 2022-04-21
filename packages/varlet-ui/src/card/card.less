@@ -45,27 +45,24 @@
 }
 
 .var-card {
-  border-radius: var(--card-border-radius);
-  overflow: hidden;
-  line-height: var(--card-line-height);
-  background: var(--card-background);
-  transition: background-color 0.25s;
-
   &__floater {
     border-radius: var(--card-border-radius);
     overflow: hidden;
     line-height: var(--card-line-height);
     background: var(--card-background);
-    display: flex;
-    align-items: stretch;
+    transition-timing-function: cubic-bezier(0.45, 0.19, 0.06, 0.89);
   }
 
   &__container {
     padding: var(--card-padding);
   }
 
-  &__container-row {
+  &__row-container {
     flex: 1;
+  }
+
+  &--layout-row {
+    display: flex;
   }
 
   &__image-column {
@@ -74,9 +71,16 @@
     display: block;
   }
 
+  &__image-row-container {
+    position: relative;
+    transition-timing-function: cubic-bezier(0.45, 0.19, 0.06, 0.89);
+  }
+
   &__image-row {
     width: var(--card-row-image-width);
+    height: 100%;
     display: block;
+    flex-shrink: 0;
   }
 
   &__title {
@@ -108,6 +112,7 @@
 
   &__content {
     overflow: hidden;
+    transition-timing-function: cubic-bezier(0.45, 0.19, 0.06, 0.89);
   }
 
   &--floating {
