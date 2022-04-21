@@ -13,6 +13,7 @@
 ```
 
 ### 显示图标
+
 ```html
 <template>
   <var-cell icon="fire" title="这是单元格">
@@ -24,6 +25,7 @@
 ```
 
 ### 显示描述
+
 ```html
 <template>
   <var-cell title="这是单元格" desc="描述" />
@@ -31,6 +33,7 @@
 ```
 
 ### 显示边框
+
 ```html
 <template>
   <var-cell border> 这是单元格 </var-cell>
@@ -43,7 +46,7 @@
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `title` | 单元格标题	| _string \| number_ | `-` |
+| `title` | 单元格标题  | _string \| number_ | `-` |
 | `icon` | 左侧图标名称 | _string_ | `-` |
 | `desc` | 单元格描述 | _string_ | `-` |
 | `border` | 是否显示边框 | _boolean_ | `false` |
@@ -62,6 +65,7 @@
 | `extra` | 自定义右侧区域内容 | `-` |
 
 ### 样式变量
+
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名                     | 默认值 |
