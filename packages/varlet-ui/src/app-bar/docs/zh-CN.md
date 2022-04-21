@@ -134,7 +134,12 @@ const goBack = () => {
     </template>
 
     <template #right>
-      <var-menu class="app-bar-example-menu" :offset-y="42" :offset-x="-20" v-model:show="offsetY">
+      <var-menu
+        class="app-bar-example-menu"
+        :offset-y="42"
+        :offset-x="-20"
+        v-model:show="offsetY"
+      >
         <var-button
           round
           text
