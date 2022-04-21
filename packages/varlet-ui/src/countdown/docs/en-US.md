@@ -60,17 +60,17 @@ Use `slot` to set custom countdown style.
 <template>
   <var-countdown :time="108000000">
     <template #default="timeData">
-      <span class="countdown-block">{{ timeData.hours }}</span>
-      <span class="countdown-colon">:</span>
-      <span class="countdown-block">{{ timeData.minutes }}</span>
-      <span class="countdown-colon">:</span>
-      <span class="countdown-block">{{ timeData.seconds }}</span>
+      <span class="countdown-example-block">{{ timeData.hours }}</span>
+      <span class="countdown-example-colon">:</span>
+      <span class="countdown-example-block">{{ timeData.minutes }}</span>
+      <span class="countdown-example-colon">:</span>
+      <span class="countdown-example-block">{{ timeData.seconds }}</span>
      </template>
   </var-countdown>
 </template>
 
 <style>
-.countdown-block {
+.countdown-example-block {
   background: #ff9f00;
   color: white;
   width: 30px;
@@ -81,7 +81,7 @@ Use `slot` to set custom countdown style.
   justify-content: center;
 }
 
-.countdown-colon {
+.countdown-example-colon {
   margin: 0 5px;
   font-size: 18px;
   font-weight: 500;
@@ -137,6 +137,7 @@ const change = () => {
 | `auto-start` | Whether to auto start count down | _boolean_          | `true`         |
 
 ### Available formats
+
 | Format | Description          |
 | ------ | -------------------- |
 | `DD`   | Day                  |
@@ -170,8 +171,8 @@ const change = () => {
 | `seconds`      | Remain seconds      | `number` |
 | `milliseconds` | Remain milliseconds | `number` |
 
-
 ### Methods
+
 Use ref to get CountDown instance and call instance methods.
 
 | Method  | Description     | arguments |

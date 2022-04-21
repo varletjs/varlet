@@ -8,7 +8,7 @@ exports[`test countdown example 1`] = `
 <div class=\\"app-type\\">显示毫秒</div>
 <div class=\\"var-countdown\\">30 : 00 : 00 : 00</div>
 <div class=\\"app-type\\">自定义样式</div>
-<div class=\\"var-countdown\\"><span class=\\"countdown-block\\">6</span><span class=\\"countdown-colon\\">:</span><span class=\\"countdown-block\\">0</span><span class=\\"countdown-colon\\">:</span><span class=\\"countdown-block\\">0</span></div>
+<div class=\\"var-countdown\\"><span class=\\"countdown-example-block\\">6</span><span class=\\"countdown-example-colon\\">:</span><span class=\\"countdown-example-block\\">0</span><span class=\\"countdown-example-colon\\">:</span><span class=\\"countdown-example-block\\">0</span></div>
 <div class=\\"app-type\\">手动控制</div>
 <div class=\\"var-countdown\\">03 : 000</div>
 <div class=\\"var-row var--box\\" style=\\"justify-content: space-between; align-items: center; margin-top: 10px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
