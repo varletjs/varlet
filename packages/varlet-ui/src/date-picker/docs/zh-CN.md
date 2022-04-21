@@ -9,7 +9,6 @@
 ```html
 <script setup>
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
 const date = ref('2021-04-08')
 </script>
@@ -94,7 +93,6 @@ const allowedDates = (val) => {
 ```html
 <script setup>
 import { ref } from 'vue'
-import { DatePicker } from '@varlet/ui'
 
 const date = ref('2021-02')
 
