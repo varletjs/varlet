@@ -121,8 +121,8 @@ import type { Ref } from 'vue'
 const { n, classes } = createNamespace('card')
 
 const RIPPLE_DELAY = 300
-const IMAGE_BLUR = '8px'
-const IMAGE_TRANSFORM = `scale(1.2) translate(-12%)`
+const IMAGE_BLUR = '6px'
+const IMAGE_TRANSFORM = `scale(1.2) translate3d(-10%, 0, 0)`
 
 export default defineComponent({
   name: 'VarCard',
