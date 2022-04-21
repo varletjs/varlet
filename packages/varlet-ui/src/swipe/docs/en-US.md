@@ -128,6 +128,7 @@
 ```html
 <script setup>
 import { Snackbar } from '@varlet/ui'
+
 </script>
 
 <template>
