@@ -4,6 +4,8 @@ export interface CardProps {
   src?: string
   fit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
   height?: string | number
+  width?: string | number
+  direction?: 'row' | 'column'
   alt?: string
   title?: string
   subtitle?: string

@@ -36,6 +36,14 @@
 </template>
 ```
 
+### 横向显示
+
+```html
+<template>
+  <var-card title="风景" subtitle="公园里的风景" src="https://varlet-varletjs.vercel.app/cat.jpg" direction="row"/>
+</template>
+```
+
 ### 使用插槽
 
 ```html
@@ -73,17 +81,19 @@
 
 ### 属性
 
-| 参数          | 说明                                                            | 类型               | 默认值  |
-| ------------- | --------------------------------------------------------------- | ------------------ | ------- |
-| `title`       | 卡片标题                                                        | _string_           | `-`     |
-| `subtitle`    | 卡片副标题                                                      | _string_           | `-`     |
-| `description` | 卡片描述                                                        | _string_           | `-`     |
-| `elevation`   | 卡片阴影程度等级                                                | _string \| number_ | `2`     |
-| `src`         | 图片地址                                                        | _string_           | `-`     |
+| 参数            | 说明                                                     | 类型               | 默认值  |
+|---------------|--------------------------------------------------------| ------------------ | ------- |
+| `title`       | 卡片标题                                                   | _string_           | `-`     |
+| `subtitle`    | 卡片副标题                                                  | _string_           | `-`     |
+| `description` | 卡片描述                                                   | _string_           | `-`     |
+| `elevation`   | 卡片阴影程度等级                                               | _string \| number_ | `2`     |
+| `src`         | 图片地址                                                   | _string_           | `-`     |
+| `direction`   | 排列方式，可选值为 `row` `column`                               | _string_           | `column` |
 | `fit`         | 填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_           | `cover` |
-| `alt`         | 替代文本                                                        | _string_           | `-`     |
-| `height`      | 图片高度                                                        | _string \| number_ | `-`     |
-| `ripple`      | 是否开启水波                                                    | _boolean_          | `false` |
+| `alt`         | 替代文本                                                   | _string_           | `-`     |
+| `height`      | 图片高度                                                   | _string \| number_ | `-`     |
+| `width`       | 图片宽度                                                   | _string \| number_ | `-`     |
+| `ripple`      | 是否开启水波                                                 | _boolean_          | `false` |
 
 ### 插槽
 
@@ -105,12 +115,13 @@
 
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
-| 变量名                         | 默认值               |
-| ------------------------------ | -------------------- |
-| `--card-background`            | `#fff`         |
-| `--card-padding`               | `0px 0 15px 0`         |
+| 变量名                         | 默认值                  |
+| ------------------------------ |----------------------|
+| `--card-background`            | `#fff`               |
+| `--card-padding`               | `0px 0 15px 0`       |
 | `--card-border-radius`         | `4px`                |
 | `--card-image-width`           | `100%`               |
+| `--card-row-image-width`       | `100px`              |
 | `--card-image-height`          | `200px`              |
 | `--card-title-color`           | `#333`               |
 | `--card-title-font-size`       | `20px`               |
