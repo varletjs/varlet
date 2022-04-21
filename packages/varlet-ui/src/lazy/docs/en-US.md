@@ -25,7 +25,10 @@ Load when the image is visible
 ### Background Image Lazy Load
 ```html
 <template>
-  <div class="lazy-example-cat" v-lazy:background-image="'https://varlet-varletjs.vercel.app/cat.jpg'"></div>
+  <div 
+    class="lazy-example-cat"
+    v-lazy:background-image="'https://varlet-varletjs.vercel.app/cat.jpg'"
+  ></div>
 </template>
 
 <style>
