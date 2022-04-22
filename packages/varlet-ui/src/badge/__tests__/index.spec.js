@@ -3,11 +3,9 @@ import VarBadge from '../Badge'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 
-describe('test badge component use', () => {
-  test('test badge plugin', () => {
-    const app = createApp({}).use(Badge)
-    expect(app.component(Badge.name)).toBeTruthy()
-  })
+test('test badge plugin', () => {
+  const app = createApp({}).use(Badge)
+  expect(app.component(Badge.name)).toBeTruthy()
 })
 
 describe('test badge component props', () => {
@@ -87,15 +85,13 @@ describe('test badge component props', () => {
   })
 })
 
-describe('test badge component slots', () => {
-  test('test badge default slots', () => {
-    const wrapper = mount(VarBadge, {
-      slots: {
-        default: () => '',
-      },
-    })
-
-    expect(wrapper.find('.var-badge__content').element.textContent).toBe('0')
-    wrapper.unmount()
+test('test badge default slots', () => {
+  const wrapper = mount(VarBadge, {
+    slots: {
+      default: () => '',
+    },
   })
+
+  expect(wrapper.find('.var-badge__content').element.textContent).toBe('0')
+  wrapper.unmount()
 })
