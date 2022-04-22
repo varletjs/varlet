@@ -35,7 +35,7 @@
 
 ```html
 <template>
-  <var-card title="Little Prince" subtitle="where little prince from" src="https://varlet-varletjs.vercel.app/cat.jpg" direction="row"/>
+  <var-card title="Little Prince" subtitle="where little prince from" src="https://varlet-varletjs.vercel.app/cat.jpg" layout="row"/>
 </template>
 ```
 
@@ -83,7 +83,7 @@
 | `description` | The description of Card                                         | _string_           | `-`     |
 | `elevation`   | The shadow level of Card                                        | _string \| number_ | `2`     |
 | `src`         | The src of Image                                                | _string_           | `-`     |
-| `direction`   | Arrangement mode, options `row` `column`                        | _string_           | `column` |
+| `layout`      | Arrangement mode, options `row` `column`                        | _string_           | `column` |
 | `fit`         | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_           | `cover` |
 | `alt`         | Alt text                                                        | _string_           | `-`     |
 | `height`      | height of Image                                                 | _string \| number_ | `-`     |

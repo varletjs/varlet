@@ -20,25 +20,14 @@
         transition: `background-color 250ms, border-radius ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`,
       }"
     >
-      <div
-        :class="n('image-row-container')"
-        :style="{
-          transition: `filter ${floatingDuration}ms, transform ${floatingDuration}ms, width ${floatingDuration}ms`,
-          filter: `blur(${imageBlur})`,
-          transformOrigin: 'right',
-          transform: imageTransform,
-          width: imageWidth ? imageWidth : undefined,
-        }"
-        v-if="isRow"
-        v-ripple="{ disabled: !ripple }"
-      >
+      <div :class="n('image-row-container')" v-if="isRow" v-ripple="{ disabled: !ripple || floating }">
         <slot name="image">
           <img
             :class="n('image-row')"
             :style="{
               objectFit: fit,
               height: toSizeUnit(height),
-              width: imageWidth ? imageWidth : toSizeUnit(width),
+              width: toSizeUnit(width),
             }"
             :src="src"
             :alt="alt"
@@ -47,7 +36,7 @@
         </slot>
       </div>
 
-      <div :class="classes(n('container'), [isRow, n('row-container')])" v-ripple="{ disabled: !ripple }">
+      <div :class="classes(n('container'), [isRow, n('row-container')])" v-ripple="{ disabled: !ripple || floating }">
         <slot name="image" v-if="!isRow">
           <img
             :class="n('image-column')"
@@ -77,7 +66,7 @@
           :class="n('content')"
           :style="{
             height: contentHeight,
-            opacity: contentOpacity,
+            opacity,
             transition: `opacity ${floatingDuration * 2}ms`,
           }"
           v-if="$slots.content && isRow"
@@ -90,8 +79,8 @@
         :class="n('content')"
         :style="{
           height: contentHeight,
-          opacity: contentOpacity,
-          transition: `opacity ${floatingDuration * 2}ms`,
+          opacity,
+          transition: `opacity ${floatingDuration * 1.5}ms`,
         }"
         v-if="$slots.content && !isRow"
       >
@@ -106,15 +95,32 @@
         height: holderHeight,
       }"
     ></div>
+
+    <div
+      :class="n('toolbar')"
+      :style="{
+        zIndex,
+        opacity,
+        transition: `opacity ${floatingDuration * 2}ms`,
+      }"
+      v-if="showToolBar"
+    >
+      <slot name="toolbar-close">
+        <var-icon name="window-close" @click.stop="close" />
+      </slot>
+
+      <slot name="toolbar-extra" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Ripple from '../ripple'
+import VarIcon from '../icon'
 import { ref, defineComponent, watch, computed, nextTick } from 'vue'
 import { props } from './props'
 import { doubleRaf, toSizeUnit } from '../utils/elements'
-import { createNamespace } from '../utils/components'
+import { call, createNamespace } from '../utils/components'
 import { useZIndex } from '../context/zIndex'
 import { useLock } from '../context/lock'
 import type { Ref } from 'vue'
@@ -122,13 +128,13 @@ import type { Ref } from 'vue'
 const { n, classes } = createNamespace('card')
 
 const RIPPLE_DELAY = 300
-const IMAGE_BLUR = '10px'
-const IMAGE_TRANSFORM = `translate3d(-10%, 0, 0)`
-const IMAGE_WIDTH = '30vw'
 
 export default defineComponent({
   name: 'VarCard',
   directives: { Ripple },
+  components: {
+    VarIcon,
+  },
   props,
   setup(props) {
     const card: Ref<null | HTMLElement> = ref(null)
@@ -141,12 +147,10 @@ export default defineComponent({
     const floaterPosition: Ref<string> = ref('static')
     const floaterOverflow: Ref<string> = ref('hidden')
     const contentHeight: Ref<string> = ref('0px')
-    const contentOpacity: Ref<string> = ref('0')
-    const imageBlur: Ref<string> = ref('0')
-    const imageTransform: Ref<string> = ref('')
-    const imageWidth: Ref<string> = ref('')
+    const opacity: Ref<string> = ref('0')
     const { zIndex } = useZIndex(() => props.floating, 1)
     const isRow = computed(() => props.layout === 'row')
+    const showToolBar: Ref<boolean> = ref(false)
     useLock(props, 'floating')
 
     let dropdownFloaterTop = 'auto'
@@ -170,6 +174,7 @@ export default defineComponent({
           floaterPosition.value = 'fixed'
           dropdownFloaterTop = floaterTop.value
           dropdownFloaterLeft = floaterLeft.value
+          showToolBar.value = true
 
           await doubleRaf()
 
@@ -178,11 +183,8 @@ export default defineComponent({
           floaterTop.value = '0px'
           floaterLeft.value = '0px'
           contentHeight.value = 'auto'
-          contentOpacity.value = '1'
+          opacity.value = '1'
           floaterOverflow.value = 'auto'
-          imageBlur.value = IMAGE_BLUR
-          imageTransform.value = IMAGE_TRANSFORM
-          imageWidth.value = IMAGE_WIDTH
         },
         props.ripple ? RIPPLE_DELAY : 0
       )
@@ -197,10 +199,8 @@ export default defineComponent({
       floaterTop.value = dropdownFloaterTop
       floaterLeft.value = dropdownFloaterLeft
       contentHeight.value = '0px'
-      contentOpacity.value = '0'
-      imageBlur.value = '0'
-      imageTransform.value = ''
-      imageWidth.value = ''
+      opacity.value = '0'
+      showToolBar.value = false
 
       dropper = setTimeout(() => {
         holderWidth.value = 'auto'
@@ -216,9 +216,15 @@ export default defineComponent({
       }, props.floatingDuration)
     }
 
+    const close = () => {
+      call(props['onUpdate:floating'], false)
+    }
+
     watch(
       () => props.floating,
       (value) => {
+        if (isRow.value) return
+
         nextTick(() => {
           value ? floating() : dropdown()
         })
@@ -240,12 +246,11 @@ export default defineComponent({
       floaterPosition,
       floaterOverflow,
       contentHeight,
-      contentOpacity,
-      imageWidth,
-      imageBlur,
-      imageTransform,
+      opacity,
       zIndex,
       isRow,
+      close,
+      showToolBar,
     }
   },
 })
