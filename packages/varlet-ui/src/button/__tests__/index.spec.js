@@ -4,11 +4,9 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/jest'
 
-describe('test button component use', () => {
-  test('test button plugin', () => {
-    const app = createApp({}).use(Button)
-    expect(app.component(Button.name)).toBeTruthy()
-  })
+test('test button plugin', () => {
+  const app = createApp({}).use(Button)
+  expect(app.component(Button.name)).toBeTruthy()
 })
 
 describe('test button component event', () => {
@@ -271,15 +269,13 @@ describe('test button component props', () => {
   })
 })
 
-describe('test button component slots', () => {
-  test('test button default slots', () => {
-    const wrapper = mount(VarButton, {
-      slots: {
-        default: () => 'test',
-      },
-    })
-
-    expect(wrapper.find('.var-button__content').element.textContent).toBe('test')
-    wrapper.unmount()
+test('test button default slots', () => {
+  const wrapper = mount(VarButton, {
+    slots: {
+      default: () => 'test',
+    },
   })
+
+  expect(wrapper.find('.var-button__content').element.textContent).toBe('test')
+  wrapper.unmount()
 })

@@ -4,26 +4,22 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/jest'
 
-describe('test icon component use', () => {
-  test('test icon plugin', () => {
-    const app = createApp({}).use(Icon)
-    expect(app.component(Icon.name)).toBeTruthy()
-  })
+test('test icon plugin', () => {
+  const app = createApp({}).use(Icon)
+  expect(app.component(Icon.name)).toBeTruthy()
 })
 
-describe('test icon component event', () => {
-  test('test icon onClick', () => {
-    const onClick = jest.fn()
-    const wrapper = mount(VarIcon, {
-      props: {
-        onClick,
-      },
-    })
-
-    wrapper.trigger('click')
-    expect(onClick).toHaveBeenCalledTimes(1)
-    wrapper.unmount()
+test('test icon onClick', () => {
+  const onClick = jest.fn()
+  const wrapper = mount(VarIcon, {
+    props: {
+      onClick,
+    },
   })
+
+  wrapper.trigger('click')
+  expect(onClick).toHaveBeenCalledTimes(1)
+  wrapper.unmount()
 })
 
 describe('test icon component props', () => {
