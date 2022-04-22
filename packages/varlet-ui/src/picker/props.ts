@@ -33,6 +33,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  cascadeInitialIndexes: {
+    type: Array as PropType<number[]>,
+    default: () => [],
+  },
   optionHeight: {
     type: [Number, String],
     default: 44,

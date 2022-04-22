@@ -14,6 +14,7 @@ interface PickerOptions {
   textKey?: string
   toolbar?: boolean
   cascade?: boolean
+  cascadeInitialIndexes?: number[]
   optionHeight?: number | string
   optionCount?: number | string
   confirmButtonText?: string
