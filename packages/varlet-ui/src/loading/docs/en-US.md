@@ -72,13 +72,13 @@ const loading = ref(false)
 ### Props
 
 | prop     | Description                                             | Type     | Default        |
-| -------- | ------------------------------------------------------- | -------- | -------------- |
+| -------- |---------------------------------------------------------| -------- | -------------- |
 | `color`  | Loading color                                           | _string_ | `currentColor` |
 | `type`   | Can be set to `circle` `wave` `cube` `rect` `disappear` | _string_ | `circle`       |
 | `size`   | Can be set to `large` `normal` `small` `mini`           | _string_ | `normal`       |
-| `description`   | Description of the loading                       | _string_ | `-`            |
+| `description`   | Description of the loading                              | _string_ | `-`            |
 | `loading`| Specify whether loading is active                       | _boolean_ | `false`      |
-| `radius` | Set size when the `type` is `circle`                    | _string \| number_  | `-` |
+| `radius` | Set radius size when the `type` is `circle`             | _string \| number_  | `-` |
 
 ### Slots
 
