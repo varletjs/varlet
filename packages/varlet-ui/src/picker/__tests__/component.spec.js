@@ -144,3 +144,50 @@ test('test cascade mode', async () => {
   mockRestore()
   wrapper.unmount()
 })
+
+test('test cascade initial indexes', async () => {
+  const onConfirm = jest.fn()
+  const onCancel = jest.fn()
+
+  const wrapper = mount(VarPicker, {
+    props: {
+      cascade: true,
+      cascadeInitialIndexes: [1, 0],
+      columns: [
+        {
+          text: '成都市',
+          children: [
+            {
+              text: '温江区',
+            },
+            {
+              text: '金牛区',
+            },
+          ],
+        },
+        {
+          text: '无锡市',
+          children: [
+            {
+              text: '新吴区',
+            },
+            {
+              text: '惠山区',
+            },
+          ],
+        },
+      ],
+      onConfirm,
+      onCancel,
+    },
+  })
+
+  wrapper.vm.confirm()
+  wrapper.vm.cancel()
+
+  expect(onCancel).lastCalledWith(['无锡市', '新吴区'], [1, 0])
+  expect(onConfirm).lastCalledWith(['无锡市', '新吴区'], [1, 0])
+
+  expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})

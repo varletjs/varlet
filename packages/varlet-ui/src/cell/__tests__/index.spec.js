@@ -4,11 +4,9 @@ import VarIcon from '../../icon/Icon'
 import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
 
-describe('test cell component use', () => {
-  test('test cell plugin', () => {
-    const app = createApp({}).use(Cell)
-    expect(app.component(Cell.name)).toBeTruthy()
-  })
+test('test cell plugin', () => {
+  const app = createApp({}).use(Cell)
+  expect(app.component(Cell.name)).toBeTruthy()
 })
 
 describe('test cell component props', () => {

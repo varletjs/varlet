@@ -261,7 +261,7 @@ export default defineComponent({
           scrollEl: null,
           scrolling: false,
         }
-        scrollTo(scrollColumn, scrollColumn.index, 200)
+        scrollTo(scrollColumn, scrollColumn.index, 0, true)
         return scrollColumn
       })
     }
@@ -269,20 +269,22 @@ export default defineComponent({
     const normalizeCascadeColumns = (cascadeColumns: CascadeColumn[]) => {
       const scrollColumns: ScrollColumn[] = []
 
-      createChildren(scrollColumns, cascadeColumns)
+      createChildren(scrollColumns, cascadeColumns, true)
 
       return scrollColumns
     }
 
-    const createChildren = (scrollColumns: ScrollColumn[], children: CascadeColumn[]) => {
+    const createChildren = (scrollColumns: ScrollColumn[], children: CascadeColumn[], initial = false) => {
       if (isArray(children) && children.length) {
+        const index = initial ? props.cascadeInitialIndexes[scrollColumns.length] ?? 0 : 0
+
         const scrollColumn: ScrollColumn = {
           id: sid++,
           prevY: undefined,
           momentumPrevY: undefined,
           touching: false,
           translate: center.value,
-          index: 0,
+          index,
           duration: 0,
           momentumTime: 0,
           column: {
@@ -294,7 +296,8 @@ export default defineComponent({
         }
 
         scrollColumns.push(scrollColumn)
-        createChildren(scrollColumns, (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children)
+        scrollTo(scrollColumn, scrollColumn.index, 0, true)
+        createChildren(scrollColumns, (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children, initial)
       }
     }
 

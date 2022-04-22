@@ -13,6 +13,7 @@ The cell is a single display item in the list.
 ```
 
 ### Show Icon
+
 ```html
 <template>
   <var-cell icon="fire" title="This is Cell">
@@ -24,6 +25,7 @@ The cell is a single display item in the list.
 ```
 
 ### Show Description
+
 ```html
 <template>
   <var-cell title="This is Cell" desc="description" />
@@ -31,6 +33,7 @@ The cell is a single display item in the list.
 ```
 
 ### Show Border
+
 ```html
 <template>
   <var-cell border> This is Cell </var-cell>
@@ -43,7 +46,7 @@ The cell is a single display item in the list.
 
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `title` | Title	| _string \| number_ | `-` |
+| `title` | Title | _string \| number_ | `-` |
 | `icon` | Icon name | _string_ | `-` |
 | `desc` | Description | _string_ | `-` |
 | `border` | Whether to show border | _boolean_ | `false` |
@@ -62,6 +65,7 @@ The cell is a single display item in the list.
 | `extra` | Extra of cell | `-` |
 
 ### Style Variables
+
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable                | Default |
@@ -77,4 +81,3 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--cell-border-right`   | `12px` |
 | `--cell-icon-right`     | `8px` |
 | `--cell-extra-left`     | `8px` |
-

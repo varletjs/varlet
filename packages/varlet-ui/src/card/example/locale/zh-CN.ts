@@ -10,4 +10,5 @@ export default {
   useSlot: '使用插槽',
   button: '添加按钮',
   showRipple: '水波效果',
+  fullScreen: '全屏显示',
 }

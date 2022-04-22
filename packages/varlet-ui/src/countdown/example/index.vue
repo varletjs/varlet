@@ -37,11 +37,11 @@ watchDarkMode(dark)
   <app-type>{{ pack.customStyle }}</app-type>
   <var-countdown time="108000000">
     <template #default="timeData">
-      <span class="countdown-block">{{ timeData.hours }}</span>
-      <span class="countdown-colon">:</span>
-      <span class="countdown-block">{{ timeData.minutes }}</span>
-      <span class="countdown-colon">:</span>
-      <span class="countdown-block">{{ timeData.seconds }}</span>
+      <span class="countdown-example-block">{{ timeData.hours }}</span>
+      <span class="countdown-example-colon">:</span>
+      <span class="countdown-example-block">{{ timeData.minutes }}</span>
+      <span class="countdown-example-colon">:</span>
+      <span class="countdown-example-block">{{ timeData.seconds }}</span>
     </template>
   </var-countdown>
 
@@ -55,7 +55,7 @@ watchDarkMode(dark)
 </template>
 
 <style scoped>
-.countdown-block {
+.countdown-example-block {
   background: #ff9f00;
   color: white;
   width: 30px;
@@ -66,7 +66,7 @@ watchDarkMode(dark)
   justify-content: center;
 }
 
-.countdown-colon {
+.countdown-example-colon {
   margin: 0 5px;
   font-size: 18px;
   font-weight: 500;

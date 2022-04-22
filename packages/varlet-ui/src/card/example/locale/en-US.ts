@@ -10,4 +10,5 @@ export default {
   useSlot: 'Use Slot',
   button: 'Use Button',
   showRipple: 'Ripple Effect',
+  fullScreen: 'Full Screen',
 }

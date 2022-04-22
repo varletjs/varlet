@@ -131,6 +131,7 @@ const columns = ref(area)
 | `text-key` | 文本的属性 key | _string_ | `text` |
 | `toolbar` | 是否显示上方工具栏 | _string_ | `true` |
 | `cascade` | 是否开启级联模式 | _boolean_ | `true` |
+| `cascade-initial-indexes` | 级联模式的初始化索引列表 | _number[]_ | `-` |
 | `option-height` | 选项的高度(px rem) | _string \| number_ | `44` |
 | `option-count` | 可见的选项个数 | _string \| number_ | `6` |
 | `confirm-button-text` | 确认按钮文字 | _string_ | `确认` |
@@ -147,6 +148,7 @@ const columns = ref(area)
 | `textKey` | 文本的属性 key | _string_ | `text` |
 | `toolbar` | 是否显示上方工具栏 | _string_ | `true` |
 | `cascade` | 是否开启级联模式 | _boolean_ | `true` |
+| `cascadeInitialIndexes` | 级联模式的初始化索引列表 | _number[]_ | `-` |
 | `optionHeight` | 选项的高度 | _string \| number_ | `44` |
 | `optionCount` | 可见的选项个数 | _string \| number_ | `6` |
 | `confirmButtonText` | 确认按钮文字 | _string_ | `确认` |

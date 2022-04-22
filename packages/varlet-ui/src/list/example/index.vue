@@ -27,28 +27,6 @@ const values = reactive({
 const { list, list2, list3, loading, loading2, loading3, finished, finished2, finished3, error, current } =
   toRefs(values)
 
-watchLang(use)
-watchDarkMode(dark)
-
-const load3 = () => {
-  if (values.current !== 2) {
-    values.loading3 = false
-    return
-  }
-
-  setTimeout(() => {
-    for (let i = 0; i < 20; i++) {
-      values.list3.push(values.list3.length + 1)
-    }
-
-    values.loading3 = false
-
-    if (values.list3.length >= 60) {
-      values.finished3 = true
-    }
-  }, 1000)
-}
-
 const load = () => {
   if (values.current !== 0) {
     values.loading = false
@@ -88,6 +66,28 @@ const load2 = () => {
     values.loading2 = false
   }, 1000)
 }
+
+const load3 = () => {
+  if (values.current !== 2) {
+    values.loading3 = false
+    return
+  }
+
+  setTimeout(() => {
+    for (let i = 0; i < 20; i++) {
+      values.list3.push(values.list3.length + 1)
+    }
+
+    values.loading3 = false
+
+    if (values.list3.length >= 60) {
+      values.finished3 = true
+    }
+  }, 1000)
+}
+
+watchLang(use)
+watchDarkMode(dark)
 </script>
 
 <template>

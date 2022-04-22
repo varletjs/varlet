@@ -131,6 +131,7 @@ const columns = ref(area)
 | `text-key` | The attribute key of the text | _string_ | `text` |
 | `toolbar` | Whether to display the top toolbar | _string_ | `true` |
 | `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
+| `cascade-initial-indexes` | List of initialization indices for cascade mode | _number[]_ | `-` |
 | `option-height` | Option height(px rem) | _string \| number_ | `44` |
 | `option-count` | Number of options visible | _string \| number_ | `6` |
 | `confirm-button-text` | Confirm button text | _string_ | `Confirm` |
@@ -147,6 +148,7 @@ const columns = ref(area)
 | `textKey` | The attribute key of the text | _string_ | `text` |
 | `toolbar` | Whether to display the top toolbar | _string_ | `true` |
 | `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
+| `cascadeInitialIndexes` | List of initialization indices for cascade mode | _number[]_ | `-` |
 | `optionHeight` | Option height | _string \| number_ | `44` |
 | `optionCount` | Number of options visible | _string \| number_ | `6` |
 | `confirmButtonText` | Confirm button text | _string_ | `Confirm` |

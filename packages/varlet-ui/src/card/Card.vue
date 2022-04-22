@@ -62,17 +62,6 @@
         <div :class="n('footer')" v-if="$slots.extra">
           <slot name="extra" />
         </div>
-        <div
-          :class="n('content')"
-          :style="{
-            height: contentHeight,
-            opacity,
-            transition: `opacity ${floatingDuration * 2}ms`,
-          }"
-          v-if="$slots.content && isRow"
-        >
-          <slot name="content" />
-        </div>
       </div>
 
       <div
@@ -86,6 +75,22 @@
       >
         <slot name="content" />
       </div>
+
+      <div
+        :class="classes(n('toolbar'), 'var--box')"
+        :style="{
+          zIndex,
+          opacity,
+          transition: `opacity ${floatingDuration * 2}ms`,
+        }"
+        v-if="showToolBar"
+      >
+        <slot name="toolbar-close">
+          <var-icon name="window-close" @click.stop="close" />
+        </slot>
+
+        <slot name="toolbar-extra" />
+      </div>
     </div>
 
     <div
@@ -95,22 +100,6 @@
         height: holderHeight,
       }"
     ></div>
-
-    <div
-      :class="n('toolbar')"
-      :style="{
-        zIndex,
-        opacity,
-        transition: `opacity ${floatingDuration * 2}ms`,
-      }"
-      v-if="showToolBar"
-    >
-      <slot name="toolbar-close">
-        <var-icon name="window-close" @click.stop="close" />
-      </slot>
-
-      <slot name="toolbar-extra" />
-    </div>
   </div>
 </template>
 
@@ -151,7 +140,10 @@ export default defineComponent({
     const { zIndex } = useZIndex(() => props.floating, 1)
     const isRow = computed(() => props.layout === 'row')
     const showToolBar: Ref<boolean> = ref(false)
-    useLock(props, 'floating')
+    useLock(
+      () => props.floating,
+      () => isRow
+    )
 
     let dropdownFloaterTop = 'auto'
     let dropdownFloaterLeft = 'auto'

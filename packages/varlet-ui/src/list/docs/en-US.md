@@ -7,7 +7,7 @@ Support custom loading state, error state, data loading completed state.
 
 ### Basic Use
 
-The `load` event is emitted when a scroll container is detected scrolling to the bottom，and will be set `loading` to `true`, 
+The `load` event is emitted when a scroll container is detected scrolling to the bottom，and will be set `loading` to `true`,
 you need to manually set `loading` to `false` at the end of loading, that's the end of the load.
 
 ```html
@@ -174,6 +174,7 @@ This can be mistaken for a scroll container, so avoid it.
 | `finished` | Finished content | `-`       |
 
 ### Style Variables
+
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable                    | Default               |
