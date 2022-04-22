@@ -40,7 +40,7 @@
 
 ```html
 <template>
-  <var-card title="风景" subtitle="公园里的风景" src="https://varlet-varletjs.vercel.app/cat.jpg" direction="row"/>
+  <var-card title="风景" subtitle="公园里的风景" src="https://varlet-varletjs.vercel.app/cat.jpg" layout="row"/>
 </template>
 ```
 
@@ -88,7 +88,7 @@
 | `description` | 卡片描述                                                   | _string_           | `-`     |
 | `elevation`   | 卡片阴影程度等级                                               | _string \| number_ | `2`     |
 | `src`         | 图片地址                                                   | _string_           | `-`     |
-| `direction`   | 排列方式，可选值为 `row` `column`                               | _string_           | `column` |
+| `layout`      | 排列方式，可选值为 `row` `column`                               | _string_           | `column` |
 | `fit`         | 填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_           | `cover` |
 | `alt`         | 替代文本                                                   | _string_           | `-`     |
 | `height`      | 图片高度                                                   | _string \| number_ | `-`     |

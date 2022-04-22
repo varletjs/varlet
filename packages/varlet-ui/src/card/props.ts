@@ -27,6 +27,9 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  'onUpdate:floating': {
+    type: Function as PropType<(floating: boolean) => void>,
+  },
   floatingDuration: {
     type: Number,
     default: 250,

@@ -1,8 +1,27 @@
+<script setup>
+import vRipple from '../../ripple'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import VarButton from '../../button'
+import VarSpace from '../../space'
+import VarIcon from '../../icon'
+import VarCard from '..'
+import dark from '../../themes/dark'
+import { pack, use } from './locale'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { ref } from 'vue'
+
+const floating = ref(false)
+const floating1 = ref(false)
+
+watchLang(use)
+watchDarkMode(dark)
+</script>
+
 <template>
   <var-card
     style="margin-top: 20px"
-    :floating="floating"
-    @click="floating = !floating"
+    v-model:floating="floating"
+    @click="floating = true"
     :title="pack.title"
     :subtitle="pack.subtitle"
     ripple
@@ -17,6 +36,13 @@
       <p style="padding: 0 14px">
         {{ pack.description }}
       </p>
+    </template>
+
+    <template #toolbar-extra>
+      <var-space align="center">
+        <var-icon name="heart" v-ripple />
+        <var-icon name="dots-vertical" v-ripple />
+      </var-space>
     </template>
   </var-card>
 
@@ -65,41 +91,3 @@
   <app-type>{{ pack.showRipple }}</app-type>
   <var-card :title="pack.title" :subtitle="pack.subtitle" :description="pack.description" ripple />
 </template>
-
-<script>
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import VarButton from '../../button'
-import VarCard from '..'
-import dark from '../../themes/dark'
-import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-import { ref } from 'vue'
-
-export default {
-  name: 'CardExample',
-  components: {
-    VarButton,
-    VarCard,
-    AppType,
-  },
-  setup() {
-    const floating = ref(false)
-    const floating1 = ref(false)
-
-    watchLang(use)
-    watchDarkMode(dark)
-
-    return {
-      floating,
-      floating1,
-      pack,
-    }
-  },
-}
-</script>
-
-<style scoped>
-.example {
-  background: antiquewhite;
-}
-</style>
