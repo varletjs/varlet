@@ -29,7 +29,10 @@ export default defineComponent({
       props['onUpdate:show']?.(false)
     }
 
-    useLock(props, 'show', 'lockScroll')
+    useLock(
+      () => props.show,
+      () => props.lockScroll
+    )
 
     watch(
       () => props.show,
