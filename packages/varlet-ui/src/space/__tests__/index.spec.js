@@ -2,8 +2,6 @@ import VarSpace from '../Space'
 import Space from '..'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
-import exp from '../../../es/varlet.esm'
 
 test('test space use', () => {
   const app = createApp({}).use(Space)
