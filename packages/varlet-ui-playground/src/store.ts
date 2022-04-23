@@ -10,6 +10,7 @@ const varletReplPlugin = 'varlet-repl-plugin.js'
 const varletImports = {
   '@varlet/ui': './varlet.esm.js',
   '@varlet/touch-emulator': './varlet-touch-emulator.js',
+  '@varlet/ui/json/area.json': './varlet-area.js',
 }
 const varletCss = './varlet.css'
 
