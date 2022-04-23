@@ -1,3 +1,26 @@
+## [1.27.6](https://github.com/varletjs/varlet/compare/v1.27.5...v1.27.6) (2022-04-23)
+
+
+### Bug Fixes
+
+* **pagination:** modify css style of disabled ([273bd6f](https://github.com/varletjs/varlet/commit/273bd6f0aced4b00b49af53733daef4d3a3e9dcb))
+
+
+### Features
+
+* **cli:** code example component support playground ([6763794](https://github.com/varletjs/varlet/commit/6763794d1d2bb7bc2ed9cb478311b85dd7c2bbd1))
+* **markdown-vite-plugin:** add playground flag ([06f4394](https://github.com/varletjs/varlet/commit/06f43943ddeeb142d6fecf7bcb2d3fe49ac56b84))
+* **markdown-vite-plugin:** add playground-ignore flag for code block ([07008bc](https://github.com/varletjs/varlet/commit/07008bcb033a7e0b3b1d275e9b847889ed5bd525))
+* **playground:** add area.json to import map ([2320f4e](https://github.com/varletjs/varlet/commit/2320f4e6033715a045e8ddb051925654085ee0c5))
+* **ui/picker:** add cascadeInitialIndexes prop ([#489](https://github.com/varletjs/varlet/issues/489)) ([c6f10bd](https://github.com/varletjs/varlet/commit/c6f10bd162b50006fbf34c1580de2d530ea768e3))
+
+
+### Reverts
+
+* Merge branch 'docs/script-setup' into dev ([2208334](https://github.com/varletjs/varlet/commit/220833436211f5b21aa9d8a8309a17c5b957d8b1))
+
+
+
 ## [1.27.5](https://github.com/varletjs/varlet/compare/v1.27.4...v1.27.5) (2022-04-16)
 
 
