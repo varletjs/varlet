@@ -141,7 +141,7 @@ const fullscreen = () => {
 
 | Slot | Description | Arguments |
 | --- | --- | --- |
-| `default` | Loaded content | `-` |
+| `default` | Content not loaded | `-` |
 
 ### Style Variables
 
