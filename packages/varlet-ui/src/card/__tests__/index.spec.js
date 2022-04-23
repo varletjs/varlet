@@ -3,6 +3,7 @@ import Card from '..'
 import VarCard from '../Card'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { delay } from '../../utils/jest'
 
 test('test card example', () => {
   const wrapper = mount(example)
@@ -24,6 +25,7 @@ test('test card props', async () => {
       src: 'https://varlet-varletjs.vercel.app/cat.jpg',
       fit: 'cover',
       height: '200px',
+      width: '200px',
       alt: 'This is an image',
       elevation: '2',
       ripple: true,
@@ -34,6 +36,7 @@ test('test card props', async () => {
   })
 
   expect(wrapper.find('img').attributes('style')).toMatch('height: 200px')
+  expect(wrapper.find('img').attributes('style')).toMatch('width: 200px')
   expect(wrapper.find('img').attributes('style')).toMatch('object-fit: cover')
   expect(wrapper.find('img').attributes('alt')).toMatch('This is an image')
   expect(wrapper.find('img').attributes('src')).toMatch('https://varlet-varletjs.vercel.app/cat.jpg')
@@ -41,8 +44,85 @@ test('test card props', async () => {
   expect(wrapper.find('.var-card__subtitle').text()).toBe('This is subtitle')
   expect(wrapper.find('.var-card__description').text()).toBe('This is description')
   expect(wrapper.find('.var-card__footer').text()).toBe('text')
-  expect(wrapper.classes()).toContain('var-elevation--2')
+  expect(wrapper.find('.var-card__floater').classes()).toContain('var-elevation--2')
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
+
+test('test card layout', async () => {
+  const wrapper = mount(VarCard, {
+    props: {
+      layout: 'row',
+      src: 'https://varlet-varletjs.vercel.app/cat.jpg',
+      title: 'This is Card',
+    },
+  })
+
+  expect(wrapper.find('.var-card--layout-row').exists()).toBeTruthy()
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setProps({
+    layout: 'column',
+  })
+
+  expect(wrapper.find('.var-card--layout-row').exists()).toBeFalsy()
+  expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
+})
+
+test('test card floating', async () => {
+  const wrapper = mount({
+    components: {
+      [VarCard.name]: VarCard,
+    },
+    data: () => ({
+      title: 'Title',
+      floating: false,
+      layout: 'column',
+      src: 'https://varlet-varletjs.vercel.app/cat.jpg',
+      content: 'Content',
+      floatingDuration: 300,
+    }),
+    template: `<var-card v-model:floating="floating" :title="title" @click="floating=!floating" :layout="layout"
+      :src="src"
+    >
+      <template #content>{{content}}</template>
+    </var-card>
+    `,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.trigger('click')
+  expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: auto')
+  await delay(300)
+  expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: 100vw')
+
+  await wrapper.trigger('click')
+  await delay(300)
+  expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: auto')
+
+  await wrapper.setData({
+    floating: true,
+  })
+  await delay(300)
+  expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: 100vw')
+  await wrapper.setData({
+    floating: false,
+  })
+  await delay(300)
+  expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: auto')
+
+  await wrapper.setData({
+    layout: 'row',
+  })
+  await wrapper.trigger('click')
+  await delay(300)
+  expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: auto')
+  expect(wrapper.find('.var-card__content').exists()).toBeFalsy()
+  expect(wrapper.html()).toMatchSnapshot()
+
   wrapper.unmount()
 })
 
