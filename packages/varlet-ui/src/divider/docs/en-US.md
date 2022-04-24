@@ -30,11 +30,11 @@ Used to separate parts of a list or layout.
 ```html
 <template>
   <div class="divider-example-vertical-container">
-    <span>文字</span>
+    <span>text</span>
     <var-divider vertical />
-    <span>文字</span>
+    <span>text</span>
     <var-divider vertical />
-    <span>文字</span>
+    <span>text</span>
   </div>
 </template>
 

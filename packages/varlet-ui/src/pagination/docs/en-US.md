@@ -37,7 +37,7 @@ Use `showTatol` prop to show custom total text.
   <var-pagination
     :current="3"
     :total="66"
-    :show-total="total => `共 ${total} 条`"
+    :show-total="total => `Total ${total} items`"
   />
 </template>
 ```
