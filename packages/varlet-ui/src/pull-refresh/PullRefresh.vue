@@ -43,7 +43,7 @@ export default defineComponent({
   props,
   setup(props) {
     let scroller: HTMLElement | Window
-    let changeResult: Promise<void>
+    let changing: Promise<void>
 
     const freshNode: Ref<HTMLElement | null> = ref(null)
     const startPosition: Ref<number> = ref(0)
@@ -51,6 +51,8 @@ export default defineComponent({
     const iconName: Ref<string> = ref('arrow-down')
     const refreshStatus: Ref<RefreshStatus> = ref('default')
     const isEnd: Ref<boolean> = ref(false)
+
+    // https://github.com/varletjs/varlet/issues/509
     const iconHasChanged: Ref<boolean> = ref(true)
 
     const isTouchable = computed(
@@ -95,7 +97,7 @@ export default defineComponent({
       if (distance.value >= MAX_DISTANCE * 0.2) {
         iconHasChanged.value = false
         iconName.value = 'refresh'
-        changeResult = changeIcon()
+        changing = changeIcon()
       } else {
         iconName.value = 'arrow-down'
       }
@@ -107,7 +109,7 @@ export default defineComponent({
       isEnd.value = true
 
       if (distance.value >= MAX_DISTANCE * 0.2) {
-        await changeResult
+        await changing
         refreshStatus.value = 'loading'
         distance.value = MAX_DISTANCE * 0.3
 
