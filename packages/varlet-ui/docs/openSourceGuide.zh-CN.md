@@ -16,7 +16,7 @@ pnpm dev
 ```
 
 ### 贡献指南
-详情见[Varlet 贡献指南](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md)
+详情见 [Varlet 贡献指南](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md)
 
 ### 加入我们
 
