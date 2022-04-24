@@ -108,7 +108,7 @@ test('test pull-refresh event', async () => {
   await trigger(el, 'touchmove', 0, 200)
   await trigger(el, 'touchend', 0, 150)
 
-  await delay(0)
+  await delay(200)
 
   expect(wrapper.vm.isRefresh).toBe(true)
   expect(refresh).toHaveBeenCalledTimes(1)
