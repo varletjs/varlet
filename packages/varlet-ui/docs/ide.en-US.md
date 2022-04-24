@@ -8,7 +8,7 @@ The component library provides a separate helper plugin for `vscode`, which can 
 
 ### Webstorm
 
-Open the library properties documentation by setting 'editor-> general-> Code Completion->Show the documentation popup in ___ ms'.
+Open the library properties documentation by setting `Editor -> General -> Code Completion -> Show the documentation popup in ___ ms` .
 
 <img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet-varletjs.vercel.app/hl_wb_setting.png" alt="webstorm setting" />
 <img style="width: 100%; margin-top: 10px; border-radius: 5px" src="https://varlet-varletjs.vercel.app/hl_wb.jpg" alt="webstorm highlight" />
