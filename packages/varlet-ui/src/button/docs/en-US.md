@@ -119,11 +119,11 @@ Button component for triggering actions
 import { Snackbar } from '@varlet/ui'
 
 const handleClick = () => {
-  Snackbar.success('点击成功')
+  Snackbar.success('Click Success')
 }
 
 const handleTouchstart = () => {
-  Snackbar.success('触摸成功')
+  Snackbar.success('Touchstart Success')
 }
 
 const handleAutoLoadingClick = () => {
