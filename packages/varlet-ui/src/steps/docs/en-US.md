@@ -34,6 +34,12 @@ const next = () => {
 ### Custom Style
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
 <template>
   <var-steps
     :active="active"
@@ -61,6 +67,12 @@ const next = () => {
 Change the display direction of the step bar through the `direction` attribute.
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
 <template>
   <var-steps direction="vertical" :active="active">
     <var-step>Step1</var-step>

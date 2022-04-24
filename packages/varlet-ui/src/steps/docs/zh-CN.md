@@ -33,6 +33,12 @@ const next = () => {
 ### 自定义样式
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
 <template>
   <var-steps
     :active="active"
@@ -60,6 +66,12 @@ const next = () => {
 通过 `direction` 属性改变步骤条的显示方向。
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
 <template>
   <var-steps direction="vertical" :active="active">
     <var-step>步骤1</var-step>
