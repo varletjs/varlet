@@ -55,6 +55,46 @@ function updateVersion(version: string) {
   })
 }
 
+async function confirmRegistry() {
+  const registry = (await execa('npm', ['config', 'get', 'registry'])).stdout
+  const name = 'Registry confirm'
+  const ret = await inquirer.prompt([
+    {
+      name,
+      type: 'confirm',
+      message: `Current registry is: ${registry}`,
+    },
+  ])
+
+  return ret[name]
+}
+
+async function confirmVersion(currentVersion: string, expectVersion: string) {
+  const name = 'Version confirm'
+  const ret = await inquirer.prompt([
+    {
+      name,
+      type: 'confirm',
+      message: `All packages version ${currentVersion} -> ${expectVersion}:`,
+    },
+  ])
+
+  return ret[name]
+}
+
+async function getReleaseType() {
+  const name = 'Please select release type'
+  const ret = await inquirer.prompt([
+    {
+      name,
+      type: 'list',
+      choices: releaseTypes,
+    },
+  ])
+
+  return ret[name]
+}
+
 export async function release(cmd: { remote?: string }) {
   try {
     const currentVersion = require(resolve(CWD, 'package.json')).version
@@ -69,29 +109,16 @@ export async function release(cmd: { remote?: string }) {
       return
     }
 
-    let name = 'Please select release type'
-    const ret = await inquirer.prompt([
-      {
-        name,
-        type: 'list',
-        choices: releaseTypes,
-      },
-    ])
+    if (!(await confirmRegistry())) {
+      return
+    }
 
-    const type = ret[name]
+    const type = await getReleaseType()
     const isPreRelease = type.startsWith('pre')
     let expectVersion = semver.inc(currentVersion, type, `alpha.${Date.now()}`) as string
     expectVersion = isPreRelease ? expectVersion.slice(0, -2) : expectVersion
 
-    name = 'version confirm'
-    const confirm = await inquirer.prompt([
-      {
-        name,
-        type: 'confirm',
-        message: `All packages version ${currentVersion} -> ${expectVersion}:`,
-      },
-    ])
-    if (!confirm[name]) {
+    if (!(await confirmVersion(currentVersion, expectVersion))) {
       return
     }
 
