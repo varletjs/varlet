@@ -57,6 +57,8 @@
 .var-card {
   &__floater {
     border-radius: var(--card-border-radius);
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
     line-height: var(--card-line-height);
     background: var(--card-background);
@@ -72,18 +74,13 @@
   }
 
   &--layout-row {
-    display: flex;
+    flex-direction: row;
   }
 
   &__image-column {
     width: var(--card-image-width);
     height: var(--card-image-height);
     display: block;
-  }
-
-  &__image-row-container {
-    position: relative;
-    transition-timing-function: cubic-bezier(0.45, 0.19, 0.06, 0.89);
   }
 
   &__image-row {
