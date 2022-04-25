@@ -48,8 +48,7 @@ export function trigger(
   const el = 'element' in wrapper ? wrapper.element : wrapper
   const touchList = [getTouch(el, x, y)]
 
-  const event = document.createEvent('CustomEvent')
-  event.initCustomEvent(eventName, true, true, {})
+  const event = new CustomEvent(eventName, { bubbles: true, cancelable: true, detail: {} })
 
   Object.assign(event, {
     clientX: x,
