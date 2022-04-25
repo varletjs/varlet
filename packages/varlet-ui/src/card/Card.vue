@@ -20,10 +20,10 @@
         transition: `background-color 250ms, border-radius ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`,
       }"
     >
-      <div :class="n('image-row-container')" v-if="isRow" v-ripple="{ disabled: !ripple || floating }">
+      <div v-ripple="{ disabled: !ripple || floating }">
         <slot name="image">
           <img
-            :class="n('image-row')"
+            :class="isRow ? n('image-row') : n('image-column')"
             :style="{
               objectFit: fit,
               height: toSizeUnit(height),
@@ -36,20 +36,7 @@
         </slot>
       </div>
 
-      <div :class="classes(n('container'), [isRow, n('row-container')])" v-ripple="{ disabled: !ripple || floating }">
-        <slot name="image" v-if="!isRow">
-          <img
-            :class="n('image-column')"
-            :style="{
-              objectFit: fit,
-              height: toSizeUnit(height),
-              width: toSizeUnit(width),
-            }"
-            :src="src"
-            :alt="alt"
-            v-if="src"
-          />
-        </slot>
+      <div :class="classes(n('container'))" v-ripple="{ disabled: !ripple || floating }">
         <slot name="title">
           <div :class="n('title')" v-if="title">{{ title }}</div>
         </slot>
