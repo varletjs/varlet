@@ -32,16 +32,17 @@ describe('test space component props', () => {
   })
 
   test('test space size', () => {
-    let margin = -2
-    ;['mini', 'small', 'normal', 'large'].forEach((size, index) => {
+    ;[
+      { sizeType: 'mini', sizeVal: -2 },
+      { sizeType: 'small', sizeVal: -3 },
+      { sizeType: 'normal', sizeVal: -4 },
+      { sizeType: 'large', sizeVal: -6 },
+    ].forEach((size) => {
       const wrapper = mount(VarSpace, {
-        props: { size },
+        props: { size: size.sizeType },
       })
 
-      expect(wrapper.find('.var-space').attributes('style')).toContain(
-        `margin: ${index === 3 ? (margin -= 1) : margin}px 0px;`
-      )
-      margin -= 1
+      expect(wrapper.find('.var-space').attributes('style')).toContain(`margin: ${size.sizeVal}px 0px;`)
       wrapper.unmount()
     })
   })
