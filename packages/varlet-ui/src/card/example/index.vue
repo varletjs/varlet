@@ -3,6 +3,7 @@ import vRipple from '../../ripple'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarButton from '../../button'
 import VarSpace from '../../space'
+import VarDivider from '../../divider'
 import VarIcon from '../../icon'
 import VarCard from '..'
 import dark from '../../themes/dark'
@@ -67,15 +68,29 @@ watchDarkMode(dark)
     </template>
 
     <template #content>
+      <var-divider></var-divider>
       <p style="padding: 0 14px">
+        {{ pack.description }}
+        {{ pack.description }}
+        {{ pack.description }}
+        {{ pack.description }}
+        {{ pack.description }}
+        {{ pack.description }}
+        {{ pack.description }}
+        {{ pack.description }}
+        {{ pack.description }}
         {{ pack.description }}
       </p>
     </template>
 
     <template #toolbar-extra>
-      <var-space align="center">
-        <var-icon name="heart" v-ripple />
-        <var-icon name="dots-vertical" v-ripple />
+      <var-space align="center" size="mini">
+        <var-button round text>
+          <var-icon name="heart" />
+        </var-button>
+        <var-button round text>
+          <var-icon name="dots-vertical" />
+        </var-button>
       </var-space>
     </template>
   </var-card>

@@ -23,7 +23,7 @@
 @card-floater-toolbar-left: 0px;
 @card-floater-toolbar-size: 22px;
 @card-floater-toolbar-color: #fff;
-@card-floater-toolbar-padding: 0 14px;
+@card-floater-toolbar-padding: 0 10px;
 
 :root {
   --card-padding: @card-padding;
@@ -59,7 +59,6 @@
     border-radius: var(--card-border-radius);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     line-height: var(--card-line-height);
     background: var(--card-background);
     transition-timing-function: cubic-bezier(0.45, 0.19, 0.06, 0.89);
@@ -124,19 +123,15 @@
     transition-timing-function: cubic-bezier(0.45, 0.19, 0.06, 0.89);
   }
 
-  &--floating {
-    position: fixed;
-    overflow: auto;
-  }
-
   &__toolbar {
-    position: absolute;
-    top: var(--card-floater-toolbar-top);
+    position: fixed;
+    top: 0;
+    padding: var(--card-floater-toolbar-padding);
+    padding-top: var(--card-floater-toolbar-top);
     left: var(--card-floater-toolbar-left);
     color: var(--card-floater-toolbar-color);
     font-size: var(--card-floater-toolbar-size);
     width: 100vw;
-    padding: var(--card-floater-toolbar-padding);
     display: flex;
     justify-content: space-between;
   }

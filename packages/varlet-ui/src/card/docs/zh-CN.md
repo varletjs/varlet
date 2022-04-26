@@ -189,4 +189,4 @@ const floating = ref(false)
 | `--card-floater-toolbar-left`     | `0px`                |
 | `--card-floater-toolbar-size`     | `22px`               |
 | `--card-floater-toolbar-color`    | `#fff`               |
-| `--card-floater-toolbar-padding`  | `0 14px`             |
+| `--card-floater-toolbar-padding`  | `0 10px`             |

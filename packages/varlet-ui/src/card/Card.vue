@@ -1,10 +1,11 @@
 <template>
   <div ref="card" :class="n()" @click="onClick">
     <div
+      ref="cardFloater"
       :class="
         classes(
           n('floater'),
-          [elevation, `var-elevation--${elevation}`, 'var-elevation--2'],
+          [elevation, `var-elevation--${elevation}`, 'var-elevation--1'],
           [isRow, n('--layout-row')]
         )
       "
@@ -19,24 +20,23 @@
         zIndex,
         transition: `background-color 250ms, border-radius ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`,
       }"
+      v-ripple="{ disabled: !ripple || floating }"
     >
-      <div v-ripple="{ disabled: !ripple || floating }">
-        <slot name="image">
-          <img
-            :class="isRow ? n('image-row') : n('image-column')"
-            :style="{
-              objectFit: fit,
-              height: toSizeUnit(height),
-              width: toSizeUnit(width),
-            }"
-            :src="src"
-            :alt="alt"
-            v-if="src"
-          />
-        </slot>
-      </div>
+      <slot name="image">
+        <img
+          :class="isRow ? n('image-row') : n('image-column')"
+          :style="{
+            objectFit: fit,
+            height: toSizeUnit(height),
+            width: toSizeUnit(width),
+          }"
+          :src="src"
+          :alt="alt"
+          v-if="src"
+        />
+      </slot>
 
-      <div :class="classes(n('container'))" v-ripple="{ disabled: !ripple || floating }">
+      <div :class="classes(n('container'))">
         <slot name="title">
           <div :class="n('title')" v-if="title">{{ title }}</div>
         </slot>
@@ -49,31 +49,32 @@
         <div :class="n('footer')" v-if="$slots.extra">
           <slot name="extra" />
         </div>
-      </div>
-
-      <div
-        :class="n('content')"
-        :style="{
-          height: contentHeight,
-          opacity,
-          transition: `opacity ${floatingDuration * 1.5}ms`,
-        }"
-        v-if="$slots.content && !isRow"
-      >
-        <slot name="content" />
+        <div
+          :class="n('content')"
+          :style="{
+            height: contentHeight,
+            opacity,
+            transition: `opacity ${floatingDuration * 2}ms`,
+          }"
+          v-if="$slots.content && !isRow"
+        >
+          <slot name="content" />
+        </div>
       </div>
 
       <div
         :class="classes(n('toolbar'), 'var--box')"
         :style="{
           zIndex,
-          opacity,
+          backgroundColor: toolbarBgColor,
           transition: `opacity ${floatingDuration * 2}ms`,
         }"
         v-if="showToolBar"
       >
         <slot name="toolbar-close">
-          <var-icon name="window-close" @click.stop="close" />
+          <var-button text round @click.stop="close">
+            <var-icon name="window-close" />
+          </var-button>
         </slot>
 
         <slot name="toolbar-extra" />
@@ -93,6 +94,7 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import VarIcon from '../icon'
+import VarButton from '../button'
 import { ref, defineComponent, watch, computed, nextTick } from 'vue'
 import { props } from './props'
 import { doubleRaf, toSizeUnit } from '../utils/elements'
@@ -100,6 +102,7 @@ import { call, createNamespace } from '../utils/components'
 import { useZIndex } from '../context/zIndex'
 import { useLock } from '../context/lock'
 import type { Ref } from 'vue'
+import { useScroll } from '../context/scroll'
 
 const { n, classes } = createNamespace('card')
 
@@ -110,10 +113,12 @@ export default defineComponent({
   directives: { Ripple },
   components: {
     VarIcon,
+    VarButton,
   },
   props,
   setup(props) {
     const card: Ref<null | HTMLElement> = ref(null)
+    const cardFloater: Ref<null | HTMLElement> = ref(null)
     const holderWidth: Ref<string> = ref('auto')
     const holderHeight: Ref<string> = ref('auto')
     const floaterWidth: Ref<string> = ref('auto')
@@ -131,6 +136,17 @@ export default defineComponent({
       () => props.floating,
       () => isRow
     )
+    const { top } = useScroll(
+      () => cardFloater.value,
+      () => props.floating
+    )
+
+    const toolbarBgColor = computed(() => {
+      if (top.value < 100) {
+        return `rgba(58, 122, 254, ${top.value / 100})`
+      }
+      return 'rgba(58, 122, 254)'
+    })
 
     let dropdownFloaterTop = 'auto'
     let dropdownFloaterLeft = 'auto'
@@ -216,6 +232,7 @@ export default defineComponent({
       classes,
       toSizeUnit,
       card,
+      cardFloater,
       holderWidth,
       holderHeight,
       floaterWidth,
@@ -230,6 +247,8 @@ export default defineComponent({
       isRow,
       close,
       showToolBar,
+      toolbarBgColor,
+      top,
     }
   },
 })
