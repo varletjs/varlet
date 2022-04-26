@@ -1,13 +1,8 @@
 <template>
-  <div ref="card" :class="n()" @click="onClick">
+  <div ref="card" :class="classes(n(), [isRow, n('--layout-row')])" @click="onClick">
     <div
-      :class="
-        classes(
-          n('floater'),
-          [elevation, `var-elevation--${elevation}`, 'var-elevation--2'],
-          [isRow, n('--layout-row')]
-        )
-      "
+      ref="cardFloater"
+      :class="classes(n('floater'), [elevation, `var-elevation--${elevation}`, 'var-elevation--1'])"
       :style="{
         width: floaterWidth,
         height: floaterHeight,
@@ -16,27 +11,28 @@
         overflow: floaterOverflow,
         position: floaterPosition,
         borderRadius: floating ? '0px' : undefined,
-        zIndex,
-        transition: `background-color 250ms, border-radius ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`,
+        zIndex: floated ? zIndex : undefined,
+        transition: floated
+          ? `background-color ${floatingDuration}ms, border-radius ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`
+          : undefined,
       }"
+      v-ripple="{ disabled: !ripple || floater }"
     >
-      <div v-ripple="{ disabled: !ripple || floating }">
-        <slot name="image">
-          <img
-            :class="isRow ? n('image-row') : n('image-column')"
-            :style="{
-              objectFit: fit,
-              height: toSizeUnit(height),
-              width: toSizeUnit(width),
-            }"
-            :src="src"
-            :alt="alt"
-            v-if="src"
-          />
-        </slot>
-      </div>
+      <slot name="image">
+        <img
+          :class="n('image')"
+          :style="{
+            objectFit: fit,
+            height: toSizeUnit(height),
+            width: toSizeUnit(width),
+          }"
+          :src="src"
+          :alt="alt"
+          v-if="src"
+        />
+      </slot>
 
-      <div :class="classes(n('container'))" v-ripple="{ disabled: !ripple || floating }">
+      <div :class="n('container')">
         <slot name="title">
           <div :class="n('title')" v-if="title">{{ title }}</div>
         </slot>
@@ -56,22 +52,27 @@
             opacity,
             transition: `opacity ${floatingDuration * 2}ms`,
           }"
-          v-if="$slots.content && isRow"
+          v-if="$slots.content && !isRow"
         >
           <slot name="content" />
         </div>
       </div>
 
       <div
-        :class="n('content')"
+        :class="classes(n('toolbar'), 'var--box')"
         :style="{
-          height: contentHeight,
+          zIndex,
           opacity,
-          transition: `opacity ${floatingDuration * 1.5}ms`,
+          transition: `opacity ${floatingDuration * 2}ms`,
         }"
-        v-if="$slots.content && !isRow"
+        v-if="showToolBar"
       >
-        <slot name="content" />
+        <slot name="toolbar-close">
+          <var-button size="large" round :class="classes(n('toolbar-close'), 'var-elevation--6')" @click.stop="close">
+            <var-icon name="window-close" size="24px" />
+          </var-button>
+        </slot>
+        <slot name="toolbar-extra" />
       </div>
     </div>
 
@@ -82,28 +83,13 @@
         height: holderHeight,
       }"
     ></div>
-
-    <div
-      :class="n('toolbar')"
-      :style="{
-        zIndex,
-        opacity,
-        transition: `opacity ${floatingDuration * 2}ms`,
-      }"
-      v-if="showToolBar"
-    >
-      <slot name="toolbar-close">
-        <var-icon name="window-close" @click.stop="close" />
-      </slot>
-
-      <slot name="toolbar-extra" />
-    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Ripple from '../ripple'
 import VarIcon from '../icon'
+import VarButton from '../button'
 import { ref, defineComponent, watch, computed, nextTick } from 'vue'
 import { props } from './props'
 import { doubleRaf, toSizeUnit } from '../utils/elements'
@@ -114,21 +100,23 @@ import type { Ref } from 'vue'
 
 const { n, classes } = createNamespace('card')
 
-const RIPPLE_DELAY = 300
+const RIPPLE_DELAY = 500
 
 export default defineComponent({
   name: 'VarCard',
   directives: { Ripple },
   components: {
     VarIcon,
+    VarButton,
   },
   props,
   setup(props) {
     const card: Ref<null | HTMLElement> = ref(null)
+    const cardFloater: Ref<null | HTMLElement> = ref(null)
     const holderWidth: Ref<string> = ref('auto')
     const holderHeight: Ref<string> = ref('auto')
-    const floaterWidth: Ref<string> = ref('auto')
-    const floaterHeight: Ref<string> = ref('auto')
+    const floaterWidth: Ref<string> = ref('100%')
+    const floaterHeight: Ref<string> = ref('100%')
     const floaterTop: Ref<string> = ref('auto')
     const floaterLeft: Ref<string> = ref('auto')
     const floaterPosition: Ref<string> = ref('static')
@@ -138,26 +126,33 @@ export default defineComponent({
     const { zIndex } = useZIndex(() => props.floating, 1)
     const isRow = computed(() => props.layout === 'row')
     const showToolBar: Ref<boolean> = ref(false)
-    useLock(props, 'floating')
+    const floated: Ref<boolean> = ref(false)
+
+    useLock(
+      () => props.floating,
+      () => isRow
+    )
 
     let dropdownFloaterTop = 'auto'
     let dropdownFloaterLeft = 'auto'
     let dropper: any = null
-    let floater: any = null
+    const floater: any = ref(null)
 
     const floating = async () => {
-      clearTimeout(floater)
+      clearTimeout(floater.value)
       clearTimeout(dropper)
 
-      floater = setTimeout(
+      floater.value = null
+
+      floater.value = setTimeout(
         async () => {
           const { width, height, left, top } = card.value!.getBoundingClientRect()
-          holderWidth.value = toSizeUnit(width) as string
-          holderHeight.value = toSizeUnit(height) as string
+          holderWidth.value = <string>toSizeUnit(width)
+          holderHeight.value = <string>toSizeUnit(height)
           floaterWidth.value = holderWidth.value
           floaterHeight.value = holderHeight.value
-          floaterTop.value = toSizeUnit(top) as string
-          floaterLeft.value = toSizeUnit(left) as string
+          floaterTop.value = <string>toSizeUnit(top)
+          floaterLeft.value = <string>toSizeUnit(left)
           floaterPosition.value = 'fixed'
           dropdownFloaterTop = floaterTop.value
           dropdownFloaterLeft = floaterLeft.value
@@ -165,13 +160,14 @@ export default defineComponent({
 
           await doubleRaf()
 
+          floaterTop.value = '0'
+          floaterLeft.value = '0'
           floaterWidth.value = '100vw'
           floaterHeight.value = '100vh'
-          floaterTop.value = '0px'
-          floaterLeft.value = '0px'
           contentHeight.value = 'auto'
           opacity.value = '1'
           floaterOverflow.value = 'auto'
+          floated.value = true
         },
         props.ripple ? RIPPLE_DELAY : 0
       )
@@ -179,7 +175,8 @@ export default defineComponent({
 
     const dropdown = () => {
       clearTimeout(dropper)
-      clearTimeout(floater)
+      clearTimeout(floater.value)
+      floater.value = null
 
       floaterWidth.value = holderWidth.value
       floaterHeight.value = holderHeight.value
@@ -192,14 +189,15 @@ export default defineComponent({
       dropper = setTimeout(() => {
         holderWidth.value = 'auto'
         holderHeight.value = 'auto'
-        floaterWidth.value = 'auto'
-        floaterHeight.value = 'auto'
+        floaterWidth.value = '100%'
+        floaterHeight.value = '100%'
         floaterTop.value = 'auto'
         floaterLeft.value = 'auto'
         dropdownFloaterTop = 'auto'
         dropdownFloaterLeft = 'auto'
         floaterOverflow.value = 'hidden'
         floaterPosition.value = 'static'
+        floated.value = false
       }, props.floatingDuration)
     }
 
@@ -224,8 +222,10 @@ export default defineComponent({
       classes,
       toSizeUnit,
       card,
+      cardFloater,
       holderWidth,
       holderHeight,
+      floater,
       floaterWidth,
       floaterHeight,
       floaterTop,
@@ -238,6 +238,7 @@ export default defineComponent({
       isRow,
       close,
       showToolBar,
+      floated,
     }
   },
 })
