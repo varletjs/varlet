@@ -69,7 +69,7 @@
             @transitionend="handleTransitionend(c)"
           >
             <div :class="n('option')" :style="{ height: `${optionHeight}px` }" v-for="t in c.column.texts" :key="t">
-              <div :class="n('text')">{{ t }}</div>
+              <div :class="n('text')">{{ textFormatter(t, c.columnIndex) }}</div>
             </div>
           </div>
         </div>
@@ -103,6 +103,7 @@ export interface ScrollColumn {
   id: number
   touching: boolean
   index: number
+  columnIndex: number
   prevY: number | undefined
   momentumPrevY: number | undefined
   momentumTime: number
@@ -246,7 +247,7 @@ export default defineComponent({
     }
 
     const normalizeNormalColumns = (normalColumns: NormalColumn[]) => {
-      return normalColumns.map((column: NormalColumn | any[]) => {
+      return normalColumns.map((column: NormalColumn | any[], columnIndex: number) => {
         const normalColumn = (isArray(column) ? { texts: column } : column) as NormalColumn
         const scrollColumn: ScrollColumn = {
           id: sid++,
@@ -255,6 +256,7 @@ export default defineComponent({
           touching: false,
           translate: center.value,
           index: normalColumn.initialIndex ?? 0,
+          columnIndex,
           duration: 0,
           momentumTime: 0,
           column: normalColumn,
@@ -269,12 +271,17 @@ export default defineComponent({
     const normalizeCascadeColumns = (cascadeColumns: CascadeColumn[]) => {
       const scrollColumns: ScrollColumn[] = []
 
-      createChildren(scrollColumns, cascadeColumns, true)
+      createChildren(scrollColumns, cascadeColumns, 0, true)
 
       return scrollColumns
     }
 
-    const createChildren = (scrollColumns: ScrollColumn[], children: CascadeColumn[], initial = false) => {
+    const createChildren = (
+      scrollColumns: ScrollColumn[],
+      children: CascadeColumn[],
+      columnIndex: number,
+      initial = false
+    ) => {
       if (isArray(children) && children.length) {
         const index = initial ? props.cascadeInitialIndexes[scrollColumns.length] ?? 0 : 0
 
@@ -285,6 +292,7 @@ export default defineComponent({
           touching: false,
           translate: center.value,
           index,
+          columnIndex,
           duration: 0,
           momentumTime: 0,
           column: {
@@ -297,13 +305,22 @@ export default defineComponent({
 
         scrollColumns.push(scrollColumn)
         scrollTo(scrollColumn, scrollColumn.index, 0, true)
-        createChildren(scrollColumns, (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children, initial)
+        createChildren(
+          scrollColumns,
+          (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children,
+          columnIndex + 1,
+          initial
+        )
       }
     }
 
     const rebuildChildren = (scrollColumn: ScrollColumn) => {
       scrollColumns.value.splice(scrollColumns.value.indexOf(scrollColumn) + 1)
-      createChildren(scrollColumns.value, (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children)
+      createChildren(
+        scrollColumns.value,
+        (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children,
+        scrollColumn.columnIndex + 1
+      )
     }
 
     const change = (scrollColumn: ScrollColumn) => {
