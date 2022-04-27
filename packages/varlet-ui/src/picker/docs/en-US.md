@@ -71,10 +71,10 @@ const picker = async () => {
 </template>
 ```
 
-### textFormatter
+### Text Formatter
 
 Picker passes in a `textFormatter` attribute to customize the text.
-`TextFormatter ` accepts two parameters. The first parameter `text` is the current text, and the second parameter  `columnIndex` is the subscript of the column where the current text is located.
+`textFormatter` accepts two parameters. The first parameter `text` is the current text, and the second parameter  `columnIndex` is the subscript of the column where the current text is located.
 
 ```html
 <script setup>
@@ -90,8 +90,8 @@ const oddMonthDates = genCounts(31)
 
 const evenMonthDates = genCounts(30)
 
-function isBigMonth(month) {
-	return [1, 3, 5, 7, 8, 10, 12].includes(month)
+function isOddMonth(month) {
+  return [1, 3, 5, 7, 8, 10, 12].includes(month)
 }
 
 function genCounts(length) {
@@ -111,7 +111,7 @@ function genDates(year, month) {
     return februaryDates
   }
 
-  if (isBigMonth(month)) {
+  if (isOddMonth(month)) {
     return oddMonthDates
   }
 
@@ -161,52 +161,42 @@ const picker = async () => {
 
 ### Mapping of values
 
-Picker can use `textFormatter` to achieve the effect that the binding value and display value are enumerations.
-
 ```html
 <script setup>
 import { Picker， Snackbar } from '@varlet/ui'
 
 const serverColumns = ref([
   [
-    { label: '灰烬之灵', id: 1 },
-    { label: '风暴之灵', id: 2 },
-    { label: '大地之灵', id: 3 },
-    { label: '虚空之灵', id: 4 },
+    { label: 'Ember Spirit', id: 1 },
+    { label: 'Storm Spirit', id: 2 },
+    { label: 'Earth Spirit', id: 3 },
+    { label: 'Void Spirit', id: 4 },
   ],
   [
-    { label: '灰烬之灵', id: 1 },
-    { label: '风暴之灵', id: 2 },
-    { label: '大地之灵', id: 3 },
-    { label: '虚空之灵', id: 4 },
+    { label: 'Ember Spirit', id: 1 },
+    { label: 'Storm Spirit', id: 2 },
+    { label: 'Earth Spirit', id: 3 },
+    { label: 'Void Spirit', id: 4 },
   ],
   [
-    { label: '灰烬之灵', id: 1 },
-    { label: '风暴之灵', id: 2 },
-    { label: '大地之灵', id: 3 },
-    { label: '虚空之灵', id: 4 },
+    { label: 'Ember Spirit', id: 1 },
+    { label: 'Storm Spirit', id: 2 },
+    { label: 'Earth Spirit', id: 3 },
+    { label: 'Void Spirit', id: 4 },
   ],
 ])
 
-const columnsMap = ref({})
-
-const columns = computed(() => {
-  return serverColumns.value.map((column, index) => {
-    columnsMap.value[index] = {}
-    return column.map((item) => {
-      columnsMap.value[index][item.id] = item.label
-      return item.id
-    })
-  })
+const normalizedRawColumns = rawColumns.map((column) => {
+  return column.map(option => option.label)
 })
 
-const textFormatter = (text, columnIndex) => {
-  return columnsMap.value[columnIndex][text];
-}
+const columns = ref(normalizedRawColumns)
 
-const change = texts => {
+const handleChange = (_, [i1, i2, i3]) => {
+  const [c1, c2, c3] = rawColumns
+  const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
   Snackbar({
-    content: columns.value.map((item, index) => texts[index]).join(',')
+    content: ids
   })
 }
 
@@ -214,7 +204,7 @@ const picker = async () => {
   const { state, texts, indexes } = await Picker({
     cascade: true,
     columns,
-    textFormatter,
+    onChange: handleChange
   })
 }
 </script>
@@ -289,8 +279,8 @@ const oddMonthDates = genCounts(31)
 
 const evenMonthDates = genCounts(30)
 
-function isBigMonth(month) {
-	return [1, 3, 5, 7, 8, 10, 12].includes(month)
+function isOddMonth(month) {
+  return [1, 3, 5, 7, 8, 10, 12].includes(month)
 }
 
 function genCounts(length) {
@@ -310,7 +300,7 @@ function genDates(year, month) {
     return februaryDates
   }
 
-  if (isBigMonth(month)) {
+  if (isOddMonth(month)) {
     return oddMonthDates
   }
 
@@ -346,7 +336,7 @@ const textFormatter = (text, columnIndex) => {
 </script>
 
 <template>
-  <var-picker cascade :columns="columns" :textFormatter="textFormatter" />
+  <var-picker cascade :columns="columns" :text-formatter="textFormatter" />
 </template>
 ```
 
@@ -356,52 +346,44 @@ const textFormatter = (text, columnIndex) => {
 <script setup>
 import { Picker， Snackbar } from '@varlet/ui'
 
-const serverColumns = ref([
+const rawColumns = [
   [
-    { label: '灰烬之灵', id: 1 },
-    { label: '风暴之灵', id: 2 },
-    { label: '大地之灵', id: 3 },
-    { label: '虚空之灵', id: 4 },
+    { label: 'Ember Spirit', id: 1 },
+    { label: 'Storm Spirit', id: 2 },
+    { label: 'Earth Spirit', id: 3 },
+    { label: 'Void Spirit', id: 4 },
   ],
   [
-    { label: '灰烬之灵', id: 1 },
-    { label: '风暴之灵', id: 2 },
-    { label: '大地之灵', id: 3 },
-    { label: '虚空之灵', id: 4 },
+    { label: 'Ember Spirit', id: 1 },
+    { label: 'Storm Spirit', id: 2 },
+    { label: 'Earth Spirit', id: 3 },
+    { label: 'Void Spirit', id: 4 },
   ],
   [
-    { label: '灰烬之灵', id: 1 },
-    { label: '风暴之灵', id: 2 },
-    { label: '大地之灵', id: 3 },
-    { label: '虚空之灵', id: 4 },
-  ],
-])
+    { label: 'Ember Spirit', id: 1 },
+    { label: 'Storm Spirit', id: 2 },
+    { label: 'Earth Spirit', id: 3 },
+    { label: 'Void Spirit', id: 4 },
+  ]
+]
 
-const columnsMap = ref({})
-
-const columns = computed(() => {
-  return serverColumns.value.map((column, index) => {
-    columnsMap.value[index] = {}
-    return column.map((item) => {
-      columnsMap.value[index][item.id] = item.label
-      return item.id
-    })
-  })
+const normalizedRawColumns = rawColumns.map((column) => {
+  return column.map(option => option.label)
 })
 
-const textFormatter = (text, columnIndex) => {
-  return columnsMap.value[columnIndex][text];
-}
+const columns = ref(normalizedRawColumns)
 
-const change = texts => {
+const handleChange = (_, [i1, i2, i3]) => {
+  const [c1, c2, c3] = rawColumns
+  const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
   Snackbar({
-    content: columns.value.map((item, index) => texts[index]).join(',')
+    content: ids
   })
 }
 </script>
 
 <template>
-  <var-picker @change="change" :columns="columns" :textFormatter="textFormatter" />
+  <var-picker :columns="columns" @change="handleChange" />
 </template>
 ```
 
@@ -417,7 +399,7 @@ const change = texts => {
 | `toolbar` | Whether to display the top toolbar | _string_ | `true` |
 | `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
 | `cascade-initial-indexes` | List of initialization indices for cascade mode | _number[]_ | `-` |
-| `textFormatter` | textFormatter | _function_ | `text => text` |
+| `text-formatter` | Text formatter | _function_ | `text => text` |
 | `option-height` | Option height(px rem) | _string \| number_ | `44` |
 | `option-count` | Number of options visible | _string \| number_ | `6` |
 | `confirm-button-text` | Confirm button text | _string_ | `Confirm` |

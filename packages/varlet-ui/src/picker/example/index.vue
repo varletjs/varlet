@@ -6,7 +6,7 @@ import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import area from '../../../json/area.json'
 import dark from '../../themes/dark'
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { use, pack } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
@@ -34,7 +34,7 @@ const oddMonthDates = genCounts(31)
 
 const evenMonthDates = genCounts(30)
 
-function isBigMonth(month) {
+function isOddMonth(month) {
   return [1, 3, 5, 7, 8, 10, 12].includes(month)
 }
 
@@ -55,7 +55,7 @@ function genDates(year, month) {
     return februaryDates
   }
 
-  if (isBigMonth(month)) {
+  if (isOddMonth(month)) {
     return oddMonthDates
   }
 
@@ -64,13 +64,13 @@ function genDates(year, month) {
 
 function genColumns(startYear, endYear) {
   const columns = []
-  for (let i = startYear; i < endYear; i++) {
+  for (let year = startYear; year < endYear; year++) {
     columns.push({
-      text: i,
+      text: year,
       children: months.map((month) => {
         return {
           text: month,
-          children: genDates(i, month).map((date) => {
+          children: genDates(year, month).map((date) => {
             return { text: date }
           }),
         }
@@ -89,7 +89,7 @@ const formatter = (text, columnIndex) => {
   if (columnIndex === 2) return `${text}日`
 }
 
-const columns5 = ref([
+const rawColumns = [
   [
     { label: '灰烬之灵', id: 1 },
     { label: '风暴之灵', id: 2 },
@@ -108,27 +108,19 @@ const columns5 = ref([
     { label: '大地之灵', id: 3 },
     { label: '虚空之灵', id: 4 },
   ],
-])
+]
 
-const columnsMap = ref({})
-
-const columns6 = computed(() => {
-  return columns5.value.map((column, index) => {
-    columnsMap.value[index] = {}
-    return column.map((item) => {
-      columnsMap.value[index][item.id] = item.label
-      return item.id
-    })
-  })
+const normalizedRawColumns = rawColumns.map((column) => {
+  return column.map((option) => option.label)
 })
 
-const formatter2 = (text, columnIndex) => {
-  return columnsMap.value[columnIndex][text]
-}
+const columns5 = ref(normalizedRawColumns)
 
-const change = (texts) => {
+const handleChange = (_, [i1, i2, i3]) => {
+  const [c1, c2, c3] = rawColumns
+  const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
   Snackbar({
-    content: columns6.value.map((item, index) => texts[index]).join(','),
+    content: ids,
   })
 }
 
@@ -159,9 +151,8 @@ const picker4 = async () => {
 
 const picker5 = async () => {
   await Picker({
-    onChange: change,
-    columns: columns6.value,
-    textFormatter: formatter2,
+    columns: columns5.value,
+    onChange: handleChange,
   })
 }
 
@@ -194,5 +185,5 @@ watchDarkMode(dark)
   <var-picker cascade :columns="columns4" :text-formatter="formatter" />
 
   <app-type>{{ pack.extension }}</app-type>
-  <var-picker :columns="columns6" :text-formatter="formatter2" @change="change" />
+  <var-picker :columns="columns5" :text-formatter="formatter2" @change="handleChange" />
 </template>

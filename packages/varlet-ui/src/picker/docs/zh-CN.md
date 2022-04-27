@@ -161,13 +161,11 @@ const picker = async () => {
 
 ### 值的映射
 
-Picker 可使用 `textFormatter` 来达到绑定值与显示值为枚举的效果。
-
 ```html
 <script setup>
 import { Picker， Snackbar } from '@varlet/ui'
 
-const serverColumns = ref([
+const rawColumns = [
   [
     { label: '灰烬之灵', id: 1 },
     { label: '风暴之灵', id: 2 },
@@ -185,28 +183,20 @@ const serverColumns = ref([
     { label: '风暴之灵', id: 2 },
     { label: '大地之灵', id: 3 },
     { label: '虚空之灵', id: 4 },
-  ],
-])
+  ]
+]
 
-const columnsMap = ref({})
-
-const columns = computed(() => {
-  return serverColumns.value.map((column, index) => {
-    columnsMap.value[index] = {}
-    return column.map((item) => {
-      columnsMap.value[index][item.id] = item.label
-      return item.id
-    })
-  })
+const normalizedRawColumns = rawColumns.map((column) => {
+  return column.map(option => option.label)
 })
 
-const textFormatter = (text, columnIndex) => {
-  return columnsMap.value[columnIndex][text];
-}
+const columns = ref(normalizedRawColumns)
 
-const change = texts => {
+const handleChange = (_, [i1, i2, i3]) => {
+  const [c1, c2, c3] = rawColumns
+  const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
   Snackbar({
-    content: columns.value.map((item, index) => texts[index]).join(',')
+    content: ids
   })
 }
 
@@ -214,7 +204,7 @@ const picker = async () => {
   const { state, texts, indexes } = await Picker({
     cascade: true,
     columns,
-    textFormatter,
+    onChange: handleChange
   })
 }
 </script>
@@ -346,7 +336,7 @@ const textFormatter = (text, columnIndex) => {
 </script>
 
 <template>
-  <var-picker cascade :columns="columns" :textFormatter="textFormatter" />
+  <var-picker cascade :columns="columns" :text-formatter="textFormatter" />
 </template>
 ```
 
@@ -356,7 +346,7 @@ const textFormatter = (text, columnIndex) => {
 <script setup>
 import { Picker， Snackbar } from '@varlet/ui'
 
-const serverColumns = ref([
+const rawColumns = [
   [
     { label: '灰烬之灵', id: 1 },
     { label: '风暴之灵', id: 2 },
@@ -374,34 +364,26 @@ const serverColumns = ref([
     { label: '风暴之灵', id: 2 },
     { label: '大地之灵', id: 3 },
     { label: '虚空之灵', id: 4 },
-  ],
-])
+  ]
+]
 
-const columnsMap = ref({})
-
-const columns = computed(() => {
-  return serverColumns.value.map((column, index) => {
-    columnsMap.value[index] = {}
-    return column.map((item) => {
-      columnsMap.value[index][item.id] = item.label
-      return item.id
-    })
-  })
+const normalizedRawColumns = rawColumns.map((column) => {
+  return column.map(option => option.label)
 })
 
-const textFormatter = (text, columnIndex) => {
-  return columnsMap.value[columnIndex][text];
-}
+const columns = ref(normalizedRawColumns)
 
-const change = texts => {
+const handleChange = (_, [i1, i2, i3]) => {
+  const [c1, c2, c3] = rawColumns
+  const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
   Snackbar({
-    content: columns.value.map((item, index) => texts[index]).join(',')
+    content: ids
   })
 }
 </script>
 
 <template>
-  <var-picker @change="change" :columns="columns" :textFormatter="textFormatter" />
+  <var-picker :columns="columns" @change="handleChange" />
 </template>
 ```
 
@@ -417,7 +399,7 @@ const change = texts => {
 | `toolbar` | 是否显示上方工具栏 | _string_ | `true` |
 | `cascade` | 是否开启级联模式 | _boolean_ | `true` |
 | `cascade-initial-indexes` | 级联模式的初始化索引列表 | _number[]_ | `-` |
-| `textFormatter` | 文本格式化 | _function_ | `text => text` |
+| `text-formatter` | 文本格式化 | _function_ | `text => text` |
 | `option-height` | 选项的高度(px rem) | _string \| number_ | `44` |
 | `option-count` | 可见的选项个数 | _string \| number_ | `6` |
 | `confirm-button-text` | 确认按钮文字 | _string_ | `确认` |
