@@ -5,9 +5,8 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 
 const makeScroll = async (dom, name, offset) => {
-  const eventTarget = dom === document.documentElement ? window : dom
   dom[name] = offset
-  eventTarget.dispatchEvent(
+  window.dispatchEvent(
     new CustomEvent('scroll', {
       detail: {
         target: {
