@@ -2,6 +2,7 @@
   <div :class="n()">
     <div :class="classes(n('content'), [loading, n('content--active')])" v-if="$slots.default">
       <slot />
+      <div :class="n('content-mask')" v-if="loading"></div>
     </div>
     <div :class="classes('var--box', n('body'), [$slots.default, n('inside')])" v-if="isShow">
       <div :class="n('circle')" v-if="type === 'circle'">

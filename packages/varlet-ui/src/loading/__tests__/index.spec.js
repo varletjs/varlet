@@ -63,9 +63,9 @@ describe('test loading component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-loading__body').exists()).toBe(true)
+    expect(wrapper.find('.var-loading__content-mask').exists()).toBe(true)
     await wrapper.setProps({ loading: false })
-    expect(wrapper.find('.var-loading__body').exists()).toBe(false)
+    expect(wrapper.find('.var-loading__content-mask').exists()).toBe(false)
     wrapper.unmount()
   })
 

@@ -23,12 +23,20 @@
   position: relative;
 
   &__content {
+    position: relative;
     transition: opacity 0.3s;
     opacity: 1;
 
     &--active {
       opacity: var(--loading-opacity);
-      user-select: none;
+    }
+
+    &-mask {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
     }
   }
 
