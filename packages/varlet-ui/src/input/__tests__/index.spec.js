@@ -198,7 +198,7 @@ test('test input validation', async () => {
     },
   })
 
-  wrapper.find('.var-input__input').setValue('1')
+  await wrapper.find('.var-input__input').setValue('1')
   await wrapper.find('.var-input__input').trigger('input')
   await delay(16)
   expect(wrapper.find('.var-form-details__message').text()).toBe('长度必须大于3')
@@ -209,11 +209,29 @@ test('test input validation', async () => {
   expect(wrapper.props('modelValue')).toBe('')
   expect(wrapper.html()).toMatchSnapshot()
 
-  wrapper.find('.var-input__input').setValue('1234')
+  await wrapper.find('.var-input__input').setValue('1234')
   await wrapper.find('.var-input__input').trigger('input')
   await delay(16)
   expect(wrapper.find('.var-form-details__message').exists()).toBeFalsy()
   expect(wrapper.html()).toMatchSnapshot()
 
+  wrapper.unmount()
+})
+
+test('test input trim', async () => {
+  const onUpdateModelValue = jest.fn()
+
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: '123',
+      modelModifiers: { trim: true },
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await wrapper.find('.var-input__input').setValue('123 ')
+  await wrapper.find('.var-input__input').trigger('input')
+
+  expect(onUpdateModelValue).lastCalledWith('123')
   wrapper.unmount()
 })

@@ -10,6 +10,10 @@ export const props = {
   modelValue: {
     type: String,
   },
+  modelModifiers: {
+    type: Object as PropType<{ trim?: boolean }>,
+    default: () => ({}),
+  },
   type: {
     type: String as PropType<'text' | 'password' | 'number'>,
     default: 'text',
