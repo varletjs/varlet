@@ -80,6 +80,12 @@ import '@varlet/ui/es/style.js'
 createApp(App).use(Varlet).mount('#app')
 ```
 
+### 反馈和交流
+
+我们推荐使用`issue`列表进行最直接有效的反馈，也可以通过扫描下方二维码进入微信群进行交流
+
+<img style="width: 25%" src="https://github.com/varletjs/varlet/blob/dev/sponsor/community.png?raw=true" />
+
 ### 捐赠我们
 
 我们将用捐赠所得去鼓励参与开源的贡献者们，给他们买一杯咖啡奶茶，购置对于项目有帮助基础设施，推动项目变得更好。
