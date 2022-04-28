@@ -36,18 +36,13 @@ export function getRootDocRoutePath(rootDocsPath: string): string {
   return `/${language}/${routePath}`
 }
 
-export function findExamples(): Promise<string[]> {
-  return glob(`${SRC_DIR}/**/${EXAMPLE_DIR_NAME}/${EXAMPLE_DIR_INDEX}`)
-}
-
-
-export async function findRootPages(): Promise<string[]> {
-  return glob(`${ROOT_PAGES_DIR}/**/${EXAMPLE_DIR_NAME}/${EXAMPLE_DIR_INDEX}`)
-}
-
 export function getRootPagesPath(rootPagePath: string): string {
   const [, routePath, language] = rootPagePath.match(ROOT_PAGE_RE) ?? []
   return `/${language}/${routePath}`
+}
+
+export function findExamples(): Promise<string[]> {
+  return glob(`${SRC_DIR}/**/${EXAMPLE_DIR_NAME}/${EXAMPLE_DIR_INDEX}`)
 }
 
 export function findComponentDocs(): Promise<string[]> {
@@ -56,6 +51,10 @@ export function findComponentDocs(): Promise<string[]> {
 
 export function findRootDocs(): Promise<string[]> {
   return glob(`${ROOT_DOCS_DIR}/*.md`)
+}
+
+export async function findRootPages(): Promise<string[]> {
+  return glob(`${ROOT_PAGES_DIR}/*.vue`)
 }
 
 export async function buildMobileSiteRoutes() {
@@ -80,35 +79,35 @@ export async function buildMobileSiteRoutes() {
 
 export async function buildPcSiteRoutes() {
   const [componentDocs, rootDocs, rootPages] = await Promise.all([findComponentDocs(), findRootDocs(), findRootPages()])
-  
+
   const rootPagesRoutes = rootPages.map(
     (rootPage) => `
-  {
-    path: '${getRootPagesPath(rootPage)}',
-    // @ts-ignore
-    component: () => import('${rootPage}')
-  }\
-`
+      {
+        path: '${getRootPagesPath(rootPage)}',
+        // @ts-ignore
+        component: () => import('${rootPage}')
+      }\
+    `
   )
 
   const componentDocsRoutes = componentDocs.map(
     (componentDoc) => `
-  {
-    path: '${getComponentDocRoutePath(componentDoc)}',
-    // @ts-ignore
-    component: () => import('${componentDoc}')
-  }\
-`
+      {
+        path: '${getComponentDocRoutePath(componentDoc)}',
+        // @ts-ignore
+        component: () => import('${componentDoc}')
+      }\
+    `
   )
 
   const rootDocsRoutes = rootDocs.map(
     (rootDoc) => `
-  {
-    path: '${getRootDocRoutePath(rootDoc)}',
-    // @ts-ignore
-    component: () => import('${rootDoc}')
-  }\
-`
+      {
+        path: '${getRootDocRoutePath(rootDoc)}',
+        // @ts-ignore
+        component: () => import('${rootDoc}')
+      }\
+    `
   )
 
   const layoutRoutes = `
