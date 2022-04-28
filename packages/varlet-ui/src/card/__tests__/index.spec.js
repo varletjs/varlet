@@ -95,13 +95,18 @@ test('test card floating', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.trigger('click')
-  expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: auto')
   await delay(300)
   expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: 100vw')
 
   await wrapper.trigger('click')
   await delay(300)
-  expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: auto')
+  expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: 100%')
+
+  await wrapper.trigger('click')
+  await delay(300)
+  await wrapper.find('.var-card__toolbar-close').trigger('click')
+  await delay(300)
+  expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: 100%')
 
   await wrapper.setData({
     floating: true,
@@ -112,14 +117,14 @@ test('test card floating', async () => {
     floating: false,
   })
   await delay(300)
-  expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: auto')
+  expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: 100%')
 
   await wrapper.setData({
     layout: 'row',
   })
   await wrapper.trigger('click')
   await delay(300)
-  expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: auto')
+  expect(wrapper.find('.var-card__floater').attributes('style')).toMatch('width: 100%')
   expect(wrapper.find('.var-card__content').exists()).toBeFalsy()
   expect(wrapper.html()).toMatchSnapshot()
 

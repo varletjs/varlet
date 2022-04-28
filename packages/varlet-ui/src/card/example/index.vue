@@ -1,10 +1,7 @@
 <script setup>
-import vRipple from '../../ripple'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarButton from '../../button'
-import VarSpace from '../../space'
 import VarDivider from '../../divider'
-import VarIcon from '../../icon'
 import VarCard from '..'
 import dark from '../../themes/dark'
 import { pack, use } from './locale'
@@ -30,14 +27,6 @@ watchDarkMode(dark)
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   />
 
-  <app-type>{{ pack.horizontal }}</app-type>
-  <var-card
-    :title="pack.title"
-    :subtitle="pack.subtitle"
-    layout="row"
-    src="https://varlet-varletjs.vercel.app/cat.jpg"
-  />
-
   <app-type>{{ pack.useSlot }}</app-type>
   <var-card
     :title="pack.title"
@@ -50,6 +39,21 @@ watchDarkMode(dark)
       <var-button type="warning">{{ pack.button }}</var-button>
     </template>
   </var-card>
+
+  <app-type>{{ pack.horizontal }}</app-type>
+  <var-card
+    :title="pack.title"
+    :subtitle="pack.description"
+    layout="row"
+    src="https://varlet-varletjs.vercel.app/cat.jpg"
+  >
+    <template #extra>
+      <var-button type="primary" text size="small">
+        {{ pack.button }}
+      </var-button>
+    </template>
+  </var-card>
+
   <app-type>{{ pack.showRipple }}</app-type>
   <var-card :title="pack.title" :subtitle="pack.subtitle" :description="pack.description" ripple />
 
@@ -71,27 +75,7 @@ watchDarkMode(dark)
       <var-divider></var-divider>
       <p style="padding: 0 14px">
         {{ pack.description }}
-        {{ pack.description }}
-        {{ pack.description }}
-        {{ pack.description }}
-        {{ pack.description }}
-        {{ pack.description }}
-        {{ pack.description }}
-        {{ pack.description }}
-        {{ pack.description }}
-        {{ pack.description }}
       </p>
-    </template>
-
-    <template #toolbar-extra>
-      <var-space align="center" size="mini">
-        <var-button round text>
-          <var-icon name="heart" />
-        </var-button>
-        <var-button round text>
-          <var-icon name="dots-vertical" />
-        </var-button>
-      </var-space>
     </template>
   </var-card>
 </template>

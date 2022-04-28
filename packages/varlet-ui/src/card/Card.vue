@@ -1,5 +1,5 @@
 <template>
-  <div ref="card" :class="n()" @click="onClick">
+  <div ref="card" :class="classes(n(), [isRow, n('--row')])" @click="onClick">
     <div
       ref="cardFloater"
       :class="
@@ -17,14 +17,14 @@
         overflow: floaterOverflow,
         position: floaterPosition,
         borderRadius: floating ? '0px' : undefined,
-        zIndex,
+        zIndex: floating ? zIndex : undefined,
         transition: `background-color 250ms, border-radius ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`,
       }"
       v-ripple="{ disabled: !ripple || floating }"
     >
       <slot name="image">
         <img
-          :class="isRow ? n('image-row') : n('image-column')"
+          :class="classes([isRow, n('image-row'), n('image-column')])"
           :style="{
             objectFit: fit,
             height: toSizeUnit(height),
@@ -38,15 +38,15 @@
 
       <div :class="classes(n('container'))">
         <slot name="title">
-          <div :class="n('title')" v-if="title">{{ title }}</div>
+          <div :class="classes(n('title'), [isRow, n('title-row')])" v-if="title">{{ title }}</div>
         </slot>
         <slot name="subtitle">
-          <div :class="n('subtitle')" v-if="subtitle">{{ subtitle }}</div>
+          <div :class="classes(n('subtitle'), [isRow, n('subtitle-row')])" v-if="subtitle">{{ subtitle }}</div>
         </slot>
         <slot name="description">
-          <div :class="n('description')" v-if="description">{{ description }}</div>
+          <div :class="classes(n('description'))" v-if="description">{{ description }}</div>
         </slot>
-        <div :class="n('footer')" v-if="$slots.extra">
+        <div :class="classes(n('footer'), [isRow, n('footer-row')])" v-if="$slots.extra">
           <slot name="extra" />
         </div>
         <div
@@ -66,17 +66,16 @@
         :class="classes(n('toolbar'), 'var--box')"
         :style="{
           zIndex,
-          backgroundColor: toolbarBgColor,
+          opacity,
           transition: `opacity ${floatingDuration * 2}ms`,
         }"
         v-if="showToolBar"
       >
         <slot name="toolbar-close">
-          <var-button text round @click.stop="close">
+          <var-button size="large" round :class="n('toolbar-close')" @click.stop="close">
             <var-icon name="window-close" />
           </var-button>
         </slot>
-
         <slot name="toolbar-extra" />
       </div>
     </div>
@@ -102,7 +101,6 @@ import { call, createNamespace } from '../utils/components'
 import { useZIndex } from '../context/zIndex'
 import { useLock } from '../context/lock'
 import type { Ref } from 'vue'
-import { useScroll } from '../context/scroll'
 
 const { n, classes } = createNamespace('card')
 
@@ -121,8 +119,8 @@ export default defineComponent({
     const cardFloater: Ref<null | HTMLElement> = ref(null)
     const holderWidth: Ref<string> = ref('auto')
     const holderHeight: Ref<string> = ref('auto')
-    const floaterWidth: Ref<string> = ref('auto')
-    const floaterHeight: Ref<string> = ref('auto')
+    const floaterWidth: Ref<string> = ref('100%')
+    const floaterHeight: Ref<string> = ref('100%')
     const floaterTop: Ref<string> = ref('auto')
     const floaterLeft: Ref<string> = ref('auto')
     const floaterPosition: Ref<string> = ref('static')
@@ -136,17 +134,6 @@ export default defineComponent({
       () => props.floating,
       () => isRow
     )
-    const { top } = useScroll(
-      () => cardFloater.value,
-      () => props.floating
-    )
-
-    const toolbarBgColor = computed(() => {
-      if (top.value < 100) {
-        return `rgba(58, 122, 254, ${top.value / 100})`
-      }
-      return 'rgba(58, 122, 254)'
-    })
 
     let dropdownFloaterTop = 'auto'
     let dropdownFloaterLeft = 'auto'
@@ -200,8 +187,8 @@ export default defineComponent({
       dropper = setTimeout(() => {
         holderWidth.value = 'auto'
         holderHeight.value = 'auto'
-        floaterWidth.value = 'auto'
-        floaterHeight.value = 'auto'
+        floaterWidth.value = '100%'
+        floaterHeight.value = '100%'
         floaterTop.value = 'auto'
         floaterLeft.value = 'auto'
         dropdownFloaterTop = 'auto'
@@ -247,8 +234,6 @@ export default defineComponent({
       isRow,
       close,
       showToolBar,
-      toolbarBgColor,
-      top,
     }
   },
 })

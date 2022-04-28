@@ -5,8 +5,8 @@
 ```html
 <template>
   <var-card
-    title="风景"
-    description="公园的树林也很美。在公园的小山上栽满了树木，梧桐树的叶子随着时间的流逝慢慢变黄，纷纷飘落；枫树的叶子却变红了，公园笼罩在片片红云中，也使秋天增添了一分热情。而柏树的叶子仍是那么青翠欲滴，令你陶醉极了。山上有一群孩子在快乐的嬉戏，不时传来阵阵欢笑声，瞧，他们玩得多起劲呀，给树林增添了活力。"
+    title="本草纲目"
+    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
   />
 </template>
 ```
@@ -16,9 +16,9 @@
 ```html
 <template>
   <var-card
-    title="风景"
-    subtitle="公园里的风景"
-    description="公园的树林也很美。在公园的小山上栽满了树木，梧桐树的叶子随着时间的流逝慢慢变黄，纷纷飘落；枫树的叶子却变红了，公园笼罩在片片红云中，也使秋天增添了一分热情。而柏树的叶子仍是那么青翠欲滴，令你陶醉极了。山上有一群孩子在快乐的嬉戏，不时传来阵阵欢笑声，瞧，他们玩得多起劲呀，给树林增添了活力。"
+    title="本草纲目"
+    subtitle="我表情悠哉 跳个大概"
+    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
   />
 </template>
 ```
@@ -28,9 +28,9 @@
 ```html
 <template>
   <var-card
-    title="风景"
-    subtitle="公园里的风景"
-    description="公园的树林也很美。在公园的小山上栽满了树木，梧桐树的叶子随着时间的流逝慢慢变黄，纷纷飘落；枫树的叶子却变红了，公园笼罩在片片红云中，也使秋天增添了一分热情。而柏树的叶子仍是那么青翠欲滴，令你陶醉极了。山上有一群孩子在快乐的嬉戏，不时传来阵阵欢笑声，瞧，他们玩得多起劲呀，给树林增添了活力。"
+    title="本草纲目"
+    subtitle="我表情悠哉 跳个大概"
+    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   />
 </template>
@@ -40,7 +40,15 @@
 
 ```html
 <template>
-  <var-card title="风景" subtitle="公园里的风景" src="https://varlet-varletjs.vercel.app/cat.jpg" layout="row"/>
+  <var-card 
+    title="本草纲目"
+    subtitle="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
+    src="https://varlet-varletjs.vercel.app/cat.jpg"
+    layout="row">
+    <template #extra>
+      <var-button type="primary" text size="small">添加按钮</var-button>
+    </template>
+  </var-card>
 </template>
 ```
 
@@ -49,9 +57,9 @@
 ```html
 <template>
   <var-card
-    title="风景"
-    subtitle="公园里的风景"
-    description="公园的树林也很美。在公园的小山上栽满了树木，梧桐树的叶子随着时间的流逝慢慢变黄，纷纷飘落；枫树的叶子却变红了，公园笼罩在片片红云中，也使秋天增添了一分热情。而柏树的叶子仍是那么青翠欲滴，令你陶醉极了。山上有一群孩子在快乐的嬉戏，不时传来阵阵欢笑声，瞧，他们玩得多起劲呀，给树林增添了活力。"
+    title="本草纲目"
+    subtitle="我表情悠哉 跳个大概"
+    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
@@ -69,9 +77,9 @@
 ```html
 <template>
   <var-card
-    title="风景"
-    subtitle="公园里的风景"
-    description="公园的树林也很美。在公园的小山上栽满了树木，梧桐树的叶子随着时间的流逝慢慢变黄，纷纷飘落；枫树的叶子却变红了，公园笼罩在片片红云中，也使秋天增添了一分热情。而柏树的叶子仍是那么青翠欲滴，令你陶醉极了。山上有一群孩子在快乐的嬉戏，不时传来阵阵欢笑声，瞧，他们玩得多起劲呀，给树林增添了活力。"
+    title="本草纲目"
+    subtitle="我表情悠哉 跳个大概"
+    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
     ripple
   />
 </template>
@@ -90,8 +98,8 @@ const floating = ref(false)
   <var-card
     v-model:floating="floating"
     @click="floating = true"
-    title="风景"
-    subtitle="公园里的风景"
+    title="本草纲目"
+    subtitle="我表情悠哉 跳个大概"
     ripple
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
@@ -101,18 +109,11 @@ const floating = ref(false)
     </template>
 
     <template #content>
+      <var-divider />
       <p style="padding: 0 14px">
-        公园的树林也很美。在公园的小山上栽满了树木，梧桐树的叶子随着时间的流逝慢慢变黄，纷纷飘落；枫树的叶子却变红了，公园笼罩在片片红云中，也使秋天增添了一分热情。而柏树的叶子仍是那么青翠欲滴，令你陶醉极了。山上有一群孩子在快乐的嬉戏，不时传来阵阵欢笑声，瞧，他们玩得多起劲呀，给树林增添了活力。
+        如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~
       </p>
     </template>
-
-    <template #toolbar-extra>
-      <var-space align="center">
-        <var-icon name="heart" v-ripple />
-        <var-icon name="dots-vertical" v-ripple />
-      </var-space>
-    </template>
-    
   </var-card>
 </template>
 ```
@@ -149,7 +150,6 @@ const floating = ref(false)
 | `content`     | 自定义正文      | `-`  |
 | `extra`       | 自定义底部内容    | `-`  |
 | `toolbar-close` | 工具栏自定义关闭   | `-`  |
-| `toolbar-extra` | 工具栏自定义右侧内容 | `-`  |
 
 
 ### 事件
@@ -162,31 +162,39 @@ const floating = ref(false)
 
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
-| 变量名                               | 默认值                  |
-|-----------------------------------|----------------------|
-| `--card-background`               | `#fff`               |
-| `--card-padding`                  | `0px 0 15px 0`       |
-| `--card-border-radius`            | `4px`                |
-| `--card-image-width`              | `100%`               |
-| `--card-row-image-width`          | `100px`              |
-| `--card-image-height`             | `200px`              |
-| `--card-title-color`              | `#333`               |
-| `--card-title-font-size`          | `20px`               |
-| `--card-title-padding`            | `0 12px`             |
-| `--card-title-margin`             | `15px 0 0 0`         |
-| `--card-subtitle-color`           | `rgba(0, 0, 0, 0.6)` |
-| `--card-subtitle-font-size`       | `14px`               |
-| `--card-subtitle-padding`         | `0 13px`             |
-| `--card-subtitle-margin`          | `10px 0 0 0`         |
-| `--card-description-color`        | `rgba(0, 0, 0, 0.6)` |
-| `--card-description-font-size`    | `14px`               |
-| `--card-description-margin`       | `20px 0 0 0`         |
-| `--card-description-padding`      | `0 13px`             |
-| `--card-footer-padding`           | `0 12px`             |
-| `--card-footer-margin`            | `30px 0 0px 0`       |
-| `--card-line-height`              | `22px`               |
-| `--card-floater-toolbar-top`      | `14px`               |
-| `--card-floater-toolbar-left`     | `0px`                |
-| `--card-floater-toolbar-size`     | `22px`               |
-| `--card-floater-toolbar-color`    | `#fff`               |
-| `--card-floater-toolbar-padding`  | `0 10px`             |
+| 变量名                                          | 默认值                    |
+|----------------------------------------------|------------------------|
+| `--card-background`                          | `#fff`                 |
+| `--card-padding`                             | `0px 0 15px 0`         |
+| `--card-border-radius`                       | `4px`                  |
+| `--card-image-width`                         | `100%`                 |
+| `--card-row-image-width`                     | `120px`                |
+| `--card-image-height`                        | `200px`                |
+| `--card-row-image-height`                    | `120px`                |
+| `--card-title-color`                         | `#333`                 |
+| `--card-title-font-size`                     | `20px`                 |
+| `--card-title-padding`                       | `0 12px`               |
+| `--card-title-margin`                        | `15px 0 0 0`           |
+| `--card-title-row-margin`                    | `10px 0 0 0`           |
+| `--card-subtitle-color`                      | `rgba(0, 0, 0, 0.6)`   |
+| `--card-subtitle-font-size`                  | `14px`                 |
+| `--card-subtitle-row-font-size`              | `12px`                 |
+| `--card-subtitle-padding`                    | `0 13px`               |
+| `--card-subtitle-margin`                     | `10px 0 0 0`           |
+| `--card-subtitle-row-margin`                 | `4px 0 0 0`            |
+| `--card-description-color`                   | `rgba(0, 0, 0, 0.6)`   |
+| `--card-description-font-size`               | `14px`                 |
+| `--card-description-margin`                  | `20px 0 0 0`           |
+| `--card-description-padding`                 | `0 13px`               |
+| `--card-footer-padding`                      | `0 12px`               |
+| `--card-footer-margin`                       | `30px 0 0px 0`         |
+| `--card-footer-right`                        | `13px`                 |
+| `--card-footer-bottom`                       | `10px`                 |
+| `--card-line-height`                         | `22px`                 |
+| `--card-row-line-height`                     | `1.3`                  |
+| `--card-floater-toolbar-bottom`              | `20px`                 |
+| `--card-floater-toolbar-right`               | `13px`                 |
+| `--card-floater-toolbar-size`                | `22px`                 |
+| `--card-floater-toolbar-color`               | `#fff`                 |
+| `--card-floater-toolbar-close-padding`       | `0 10px`               |
+| `--card-floater-toolbar-close-primary-color` | `var(--color-primary)` |

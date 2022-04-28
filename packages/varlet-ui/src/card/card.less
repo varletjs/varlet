@@ -2,28 +2,35 @@
 @card-background: #fff;
 @card-border-radius: 4px;
 @card-image-width: 100%;
-@card-row-image-width: 30vw;
+@card-row-image-width: 120px;
+@card-row-height: 120px;
 @card-image-height: 200px;
 @card-title-color: #333;
 @card-title-font-size: 20px;
 @card-title-padding: 0 12px;
 @card-title-margin: 15px 0 0 0;
+@card-title-row-margin: 10px 0 0 0;
 @card-subtitle-color: rgba(0, 0, 0, 0.6);
 @card-subtitle-font-size: 14px;
+@card-subtitle-row-font-size: 12px;
 @card-subtitle-padding: 0 13px;
+@card-subtitle-row-margin: 4px 0 0 0;
 @card-subtitle-margin: 10px 0 0 0;
 @card-description-color: rgba(0, 0, 0, 0.6);
 @card-description-font-size: 14px;
 @card-description-margin: 20px 0 0 0;
 @card-description-padding: 0 13px;
 @card-footer-padding: 0 12px;
+@card-footer-right: 13px;
+@card-footer-bottom: 10px;
 @card-footer-margin: 30px 0 0px 0;
 @card-line-height: 22px;
-@card-floater-toolbar-top: 14px;
-@card-floater-toolbar-left: 0px;
-@card-floater-toolbar-size: 22px;
+@card-row-line-height: 1.3;
+@card-floater-toolbar-bottom: 20px;
+@card-floater-toolbar-right: 13px;
 @card-floater-toolbar-color: #fff;
-@card-floater-toolbar-padding: 0 10px;
+@card-floater-toolbar-close-padding: 10px;
+@card-floater-toolbar-close-primary-color: var(--color-primary);
 
 :root {
   --card-padding: @card-padding;
@@ -32,29 +39,40 @@
   --card-image-width: @card-image-width;
   --card-row-image-width: @card-row-image-width;
   --card-image-height: @card-image-height;
+  --card-row-height: @card-row-height;
   --card-title-color: @card-title-color;
   --card-title-font-size: @card-title-font-size;
   --card-title-padding: @card-title-padding;
   --card-title-margin: @card-title-margin;
+  --card-title-row-margin: @card-title-row-margin;
   --card-subtitle-color: @card-subtitle-color;
   --card-subtitle-font-size: @card-subtitle-font-size;
+  --card-subtitle-row-font-size: @card-subtitle-row-font-size;
   --card-subtitle-padding: @card-subtitle-padding;
   --card-subtitle-margin: @card-subtitle-margin;
+  --card-subtitle-row-margin: @card-subtitle-row-margin;
   --card-description-color: @card-description-color;
   --card-description-font-size: @card-description-font-size;
   --card-description-margin: @card-description-margin;
   --card-description-padding: @card-description-padding;
   --card-footer-padding: @card-footer-padding;
+  --card-footer-right: @card-footer-right;
+  --card-footer-bottom: @card-footer-bottom;
   --card-footer-margin: @card-footer-margin;
   --card-line-height: @card-line-height;
-  --card-floater-toolbar-top: @card-floater-toolbar-top;
-  --card-floater-toolbar-left: @card-floater-toolbar-left;
-  --card-floater-toolbar-size: @card-floater-toolbar-size;
+  --card-row-line-height: @card-row-line-height;
+  --card-floater-toolbar-bottom: @card-floater-toolbar-bottom;
+  --card-floater-toolbar-right: @card-floater-toolbar-right;
   --card-floater-toolbar-color: @card-floater-toolbar-color;
-  --card-floater-toolbar-padding: @card-floater-toolbar-padding;
+  --card-floater-toolbar-close-padding: @card-floater-toolbar-close-padding;
+  --card-floater-toolbar-close-primary-color: @card-floater-toolbar-close-primary-color;
 }
 
 .var-card {
+  &--row {
+    height: var(--card-row-height);
+  }
+
   &__floater {
     border-radius: var(--card-border-radius);
     display: flex;
@@ -66,14 +84,12 @@
 
   &__container {
     padding: var(--card-padding);
-  }
-
-  &__row-container {
-    flex: 1;
+    position: relative;
   }
 
   &--layout-row {
     flex-direction: row;
+    line-height: var(--card-row-line-height);
   }
 
   &__image-column {
@@ -84,7 +100,6 @@
 
   &__image-row {
     width: var(--card-row-image-width);
-    height: 100%;
     display: block;
     flex-shrink: 0;
   }
@@ -96,11 +111,25 @@
     color: var(--card-title-color);
   }
 
+  &__title-row {
+    margin: var(--card-title-row-margin);
+  }
+
   &__subtitle {
     font-size: var(--card-subtitle-font-size);
     color: var(--card-subtitle-color);
     padding: var(--card-subtitle-padding);
     margin: var(--card-subtitle-margin);
+  }
+
+  &__subtitle-row {
+    font-size: var(--card-subtitle-row-font-size);
+    margin: var(--card-subtitle-row-margin);
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
 
   &__description {
@@ -118,6 +147,13 @@
     margin: var(--card-footer-margin);
   }
 
+  &__footer-row {
+    position: absolute;
+    padding: 0;
+    right: var(--card-footer-right);
+    bottom: var(--card-footer-bottom);
+  }
+
   &__content {
     overflow: hidden;
     transition-timing-function: cubic-bezier(0.45, 0.19, 0.06, 0.89);
@@ -125,14 +161,13 @@
 
   &__toolbar {
     position: fixed;
-    top: 0;
-    padding: var(--card-floater-toolbar-padding);
-    padding-top: var(--card-floater-toolbar-top);
-    left: var(--card-floater-toolbar-left);
+    bottom: var(--card-floater-toolbar-bottom);
+    right: var(--card-floater-toolbar-right);
+  }
+
+  &__toolbar-close {
+    padding: var(--card-floater-toolbar-close-padding);
+    background-color: var(--card-floater-toolbar-close-primary-color);
     color: var(--card-floater-toolbar-color);
-    font-size: var(--card-floater-toolbar-size);
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
   }
 }
