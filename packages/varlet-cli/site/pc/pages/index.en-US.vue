@@ -3,14 +3,12 @@ import { get } from 'lodash-es'
 import { ref, Ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import config from '@config'
-import VarButton from '../src/button'
-import VarIcon from '../src/icon'
-import VarSpace from '../src/space'
-import { getBrowserThemes, setThemes } from '../.varlet/site/utils'
-import AnimationBox from '../.varlet/site/pc/components/AnimationBox'
-import dark from '../src/themes/dark'
-import { watchDarkMode, getPCLocationInfo } from '@varlet/cli/site/utils'
-import { version } from '../package.json'
+import VarButton from '../../components/button'
+import VarIcon from '../../components/icon'
+import { getBrowserThemes, setThemes } from '../../utils'
+import AnimationBox from '../components/AnimationBox.vue'
+import { watchDarkMode, getPCLocationInfo, watchThemes } from '@varlet/cli/site/utils'
+import { version } from '../../../../package.json'
 
 const route = useRoute()
 const router = useRouter()
@@ -42,7 +40,7 @@ const setCurrentThemes = (themes: 'themes' | 'darkThemes') => {
 const toggleTheme = () => {
   setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
   window.postMessage(getThemesMessage(), '*')
-  ;(document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemesMessage(), '*')
+    ; (document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemesMessage(), '*')
 }
 
 const togglePageTitle = () => {
@@ -62,9 +60,12 @@ const toggleLanguages = () => {
   router.replace(replaceStr)
 }
 
-watchDarkMode(dark)
+// watchDarkMode(dark)
 setThemes(config, currentThemes.value)
 window.postMessage(getThemesMessage(), '*')
+watchThemes((themes, from) => {
+  from === 'mobile' && setCurrentThemes(themes)
+})
 
 watch(() => route.path, togglePageTitle, { immediate: true })
 </script>
@@ -74,12 +75,12 @@ watch(() => route.path, togglePageTitle, { immediate: true })
     <div class="just-padding flex-one">
       <div class="post-introduce flex">
         <div class="introduce-img">
-          <img
-            class="img"
-            src="https://madewithnetworkfra.fra1.digitaloceanspaces.com/spatie-space-production/28269/varlet-ui.jpg"
-          />
+          <img class="img"
+            src="https://madewithnetworkfra.fra1.digitaloceanspaces.com/spatie-space-production/28269/varlet-ui.jpg" />
         </div>
-        <div class="base-descrition introduce-descrition">Material风格的Vue3移动端组件库</div>
+        <div class="base-descrition introduce-descrition">
+          Material style mobile terminal component library for vue3
+        </div>
       </div>
     </div>
     <div class="post-detail flex-one">
@@ -88,20 +89,20 @@ watch(() => route.path, togglePageTitle, { immediate: true })
         Varlet
       </div>
       <div class="base-title margin-bottom">Version{{ version }}</div>
-      <div class="base-descrition margin-bottom">Material风格的Vue3移动端组件库</div>
-      <div class="flex row-center">
-        <var-space :wrap="false" jujstify="center" align="center">
-          <var-button type="primary" @click="getStar">起步</var-button>
-          <var-button>
-            <var-space size="mini" align="center" @click="goGithub"> <var-icon name="github" />Github </var-space>
-          </var-button>
-          <var-button v-if="darkMode" round @click="toggleTheme">
-            <var-site-icon size="26px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
-          </var-button>
-          <var-button v-if="languages" round @click="toggleLanguages">
-            <var-site-icon name="translate" size="26px" />
-          </var-button>
-        </var-space>
+      <div class="base-descrition margin-bottom">Vue 3 Mobile Component Library</div>
+      <div class="flex row-center col-center">
+        <!-- <var-space :wrap="false" jujstify="center" align="center"> -->
+        <div v-ripple class="site-btn primary" @click="getStar">Get Started</div>
+        <div v-ripple class="site-btn">
+          <var-icon name="github" />Github
+        </div>
+        <div class="site-action" v-if="darkMode" v-ripple @click="toggleTheme">
+          <var-site-icon size="26px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
+        </div>
+        <div class="site-action" v-if="languages" v-ripple @click="toggleLanguages">
+          <var-site-icon name="translate" size="26px" />
+        </div>
+        <!-- </var-space> -->
       </div>
     </div>
   </div>
@@ -123,6 +124,10 @@ watch(() => route.path, togglePageTitle, { immediate: true })
 
 .row-center {
   justify-content: center;
+}
+
+.col-center {
+  align-items: center;
 }
 
 .flex-one {
@@ -147,12 +152,11 @@ watch(() => route.path, togglePageTitle, { immediate: true })
   font-weight: 400;
 }
 
-.base-title > .logo {
+.base-title>.logo {
   width: 55px;
   height: 55px;
   vertical-align: middle;
   margin-right: 20px;
-  border-radius: 50%;
 }
 
 .base-descrition {
@@ -165,31 +169,64 @@ watch(() => route.path, togglePageTitle, { immediate: true })
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
   padding-top: 15px;
+  border-radius: 20px;
   background-color: var(--card-background);
   box-shadow: 0 3px 1px -2px var(--shadow-key-umbra-opacity), 0 2px 2px 0 var(--shadow-key-penumbra-opacity),
     0 1px 5px 0 var(--shadow-key-ambient-opacity);
 }
 
-.post-introduce > .introduce-img {
+.post-introduce>.introduce-img {
   width: 43vw;
   height: 100%;
   border-radius: 20px 20px 0 0;
   overflow: hidden;
 }
 
-.post-introduce > .introduce-img > .img {
+.post-introduce>.introduce-img>.img {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.post-introduce > .introduce-descrition {
+.post-introduce>.introduce-descrition {
   border-top: 2px solid rgba(67, 91, 113, 0.1);
   padding: 15px 20px;
   box-sizing: border-box;
   width: 100%;
+}
+
+
+.site-btn {
+  border-radius: 5px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.25s;
+  padding: 0px 20px;
+  margin-right: 4px;
+  background: var(--site-config-color-nav-button-hover-background);
+  user-select: contain;
+}
+
+.site-action {
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.25s;
+  margin-right: 4px;
+  background: var(--site-config-color-nav-button-hover-background);
+}
+
+.primary {
+  background-color: var(--site-color-primary);
+  color: #fff;
 }
 
 @media screen and (max-width: 900px) {
@@ -197,7 +234,7 @@ watch(() => route.path, togglePageTitle, { immediate: true })
     flex-direction: column;
   }
 
-  .post-introduce > .introduce-img {
+  .post-introduce>.introduce-img {
     width: 60vw;
     height: 100%;
     border-radius: 20px 20px 0 0;
