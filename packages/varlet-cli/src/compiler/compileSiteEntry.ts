@@ -57,16 +57,23 @@ export async function findRootPages(): Promise<string[]> {
   // the user pages
   const userPages = await glob(`${ROOT_PAGES_DIR}/*.vue`)
   // authority pattern
-  const authorityPage = await glob(`${SITE_PC_DIR}/pages/*.vue`)
+  const authorityPage = await glob(`${SITE}/pc/pages/*.vue`)
 
   // filter
   const rootPages: string[] = []
   const filterPage = new Map()
-  ;[...userPages, ...authorityPage].forEach((page) => {
+  userPages.forEach((page) => {
     const [, routePath, language] = page.match(ROOT_PAGE_RE) ?? []
     if (!filterPage.has(routePath + language)) {
       filterPage.set(routePath + language, true)
       rootPages.push(page)
+    }
+  })
+  authorityPage.forEach((page) => {
+    const [, routePath, language] = page.match(ROOT_PAGE_RE) ?? []
+    if (!filterPage.has(routePath + language)) {
+      filterPage.set(routePath + language, true)
+      rootPages.push(`${SITE_PC_DIR}/pages/${routePath}.${language}.vue`)
     }
   })
 
@@ -95,6 +102,7 @@ export async function buildMobileSiteRoutes() {
 
 export async function buildPcSiteRoutes() {
   const [componentDocs, rootDocs, rootPages] = await Promise.all([findComponentDocs(), findRootDocs(), findRootPages()])
+  console.log('rootPages111', rootPages)
 
   const rootPagesRoutes = rootPages.map(
     (rootPage) => `
