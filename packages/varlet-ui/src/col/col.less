@@ -1,7 +1,8 @@
 .var-col {
   transition: all 0.25s;
+  display: flex !important;
 
-  &--none {
+  &--span-0 {
     display: none !important;
   }
 }
@@ -34,20 +35,40 @@
 
 @media only screen and (max-width: 767px) {
   .create-responsive-col(1, xs);
+
+  .var-col--span-xs-0 {
+    display: none !important;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .create-responsive-col(1, sm);
+
+  .var-col--span-sm-0 {
+    display: none !important;
+  }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .create-responsive-col(1, md);
+
+  .var-col--span-md-0 {
+    display: none !important;
+  }
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1919px) {
   .create-responsive-col(1, lg);
+
+  .var-col--span-lg-0 {
+    display: none !important;
+  }
 }
 
 @media only screen and (min-width: 1920px) {
   .create-responsive-col(0, xl);
+
+  .var-col--span-xl-0 {
+    display: none !important;
+  }
 }

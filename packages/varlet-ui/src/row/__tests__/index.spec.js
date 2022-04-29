@@ -76,7 +76,7 @@ describe('test row and col component props', () => {
       },
     })
 
-    expect(wrapper.findAll('.var-col--none').length).toBe(1)
+    expect(wrapper.findAll('.var-col--span-0').length).toBe(1)
     wrapper.unmount()
   })
 
@@ -122,6 +122,10 @@ test('test row and col responsive 0', () => {
     },
   })
 
-  expect(wrapper.find('.var-col--none')).toBeTruthy()
+  expect(wrapper.find('.var-col--span-xs-0')).toBeTruthy()
+  expect(wrapper.find('.var-col--span-sm-0')).toBeTruthy()
+  expect(wrapper.find('.var-col--span-md-0')).toBeTruthy()
+  expect(wrapper.find('.var-col--span-lg-0')).toBeTruthy()
+  expect(wrapper.find('.var-col--span-xl-0')).toBeTruthy()
   wrapper.unmount()
 })
