@@ -1,33 +1,3 @@
-<template>
-  <div class="varlet-site">
-    <app-header :language="language" />
-
-    <div class="varlet-site-content">
-      <app-sidebar
-        :language="language"
-        :menu="menu"
-        :menu-name="menuName"
-        @change="handleSidebarChange"
-      />
-
-      <div
-        class="varlet-site-doc-container"
-        ref="doc"
-        :class="[!useMobile && 'varlet-site-doc-container--pc-only']"
-      >
-        <router-view />
-      </div>
-
-      <app-mobile
-        :component-name="componentName"
-        :language="language"
-        :replace="menuName"
-        v-show="useMobile"
-      />
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 import config from '@config'
 import AppMobile from './components/AppMobile.vue'
@@ -51,7 +21,6 @@ export default defineComponent({
     AppSidebar
   },
   setup() {
-    const defaultLanguage = get(config, 'defaultLanguage')
     const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))
     const useMobile = ref(get(config, 'useMobile'))
     const mobileRedirect = get(config, 'mobile.redirect')
@@ -68,12 +37,7 @@ export default defineComponent({
     }
 
     const init = () => {
-      const { language, menuName } = getPCLocationInfo()
-
-      if (isPhone() && useMobile.value) {
-        window.location.href = `./mobile.html#/${menuName}?language=${language || defaultLanguage}&platform=mobile`
-        return
-      }
+      const { menuName } = getPCLocationInfo()
 
       nextTick(() => {
         const children = document
@@ -126,6 +90,36 @@ export default defineComponent({
   },
 })
 </script>
+
+<template>
+  <div class="varlet-site">
+    <app-header :language="language" />
+
+    <div class="varlet-site-content">
+      <app-sidebar
+        :language="language"
+        :menu="menu"
+        :menu-name="menuName"
+        @change="handleSidebarChange"
+      />
+
+      <div
+        class="varlet-site-doc-container"
+        ref="doc"
+        :class="[!useMobile && 'varlet-site-doc-container--pc-only']"
+      >
+        <router-view />
+      </div>
+
+      <app-mobile
+        :component-name="componentName"
+        :language="language"
+        :replace="menuName"
+        v-show="useMobile"
+      />
+    </div>
+  </div>
+</template>
 
 <style>
 .hljs {

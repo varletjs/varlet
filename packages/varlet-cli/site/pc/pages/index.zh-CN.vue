@@ -3,12 +3,10 @@ import { get } from 'lodash-es'
 import { ref, Ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import config from '@config'
-import VarButton from '../../components/button'
 import VarIcon from '../../components/icon'
 import { getBrowserThemes, setThemes } from '../../utils'
 import AnimationBox from '../components/AnimationBox.vue'
-import { watchDarkMode, getPCLocationInfo, watchThemes } from '@varlet/cli/site/utils'
-import { version } from '../../../../package.json'
+import { getPCLocationInfo, watchThemes } from '@varlet/cli/site/utils'
 
 const route = useRoute()
 const router = useRouter()
@@ -60,7 +58,6 @@ const toggleLanguages = () => {
   router.replace(replaceStr)
 }
 
-// watchDarkMode(dark)
 setThemes(config, currentThemes.value)
 window.postMessage(getThemesMessage(), '*')
 watchThemes((themes, from) => {
@@ -72,29 +69,20 @@ watch(() => route.path, togglePageTitle, { immediate: true })
 
 <template>
   <div class="root-page flex">
-    <div class="just-padding flex-one">
-      <div class="post-introduce flex">
-        <div class="introduce-img">
-          <img class="img"
-            src="https://madewithnetworkfra.fra1.digitaloceanspaces.com/spatie-space-production/28269/varlet-ui.jpg" />
-        </div>
-        <div class="base-descrition introduce-descrition">
-          Vue3的Material风格移动端ui组件库
-        </div>
-      </div>
-    </div>
     <div class="post-detail flex-one">
-      <div class="base-title margin-bottom flex row-center">
-        <animation-box class="logo" />
+      <div class="base-title margin-bottom">
         Varlet
       </div>
-      <div class="base-title margin-bottom">Version{{ version }}</div>
-      <div class="base-descrition margin-bottom">Vue 3的移动ui组件库</div>
+      <div class="base-descrition margin-bottom">Vue 3 移动端组件库</div>
       <div class="flex row-center col-center">
         <!-- <var-space :wrap="false" jujstify="center" align="center"> -->
-        <div v-ripple class="site-btn primary" @click="getStar">起步</div>
-        <div v-ripple class="site-btn">
-          <var-icon name="github" />Github
+        <div v-ripple class="site-btn" @click="getStar">
+          起步
+          <animation-box class="logo" :style="{ transform: 'rotate(-90deg)' }" />
+        </div>
+        <div v-ripple class="site-btn" @click="goGithub">
+          Github
+          <var-icon name="github" />
         </div>
         <div class="site-action" v-if="darkMode" v-ripple @click="toggleTheme">
           <var-site-icon size="26px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
@@ -103,6 +91,17 @@ watch(() => route.path, togglePageTitle, { immediate: true })
           <var-site-icon name="translate" size="26px" />
         </div>
         <!-- </var-space> -->
+      </div>
+    </div>
+    <div class="just-padding flex-one">
+      <div class="post-introduce flex">
+        <div class="introduce-img">
+          <img class="img"
+            src="https://madewithnetworkfra.fra1.digitaloceanspaces.com/spatie-space-production/28269/varlet-ui.jpg" />
+        </div>
+        <div class="base-descrition introduce-descrition">
+          Vue3 Material风格的移动端组件库
+        </div>
       </div>
     </div>
   </div>
@@ -150,13 +149,6 @@ watch(() => route.path, togglePageTitle, { immediate: true })
   font-size: 48px;
   line-height: 55px;
   font-weight: 400;
-}
-
-.base-title>.logo {
-  width: 55px;
-  height: 55px;
-  vertical-align: middle;
-  margin-right: 20px;
 }
 
 .base-descrition {
@@ -209,6 +201,13 @@ watch(() => route.path, togglePageTitle, { immediate: true })
   margin-right: 4px;
   background: var(--site-config-color-nav-button-hover-background);
   user-select: contain;
+}
+
+.logo {
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  margin-left: 10px;
 }
 
 .site-action {

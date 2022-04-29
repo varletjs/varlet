@@ -1,5 +1,6 @@
 <template>
-  <img v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo" v-if="logo" class="logo-animation" />
+  <img v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo" v-if="logo" class="logo-animation"
+    :class="{ 'logo-transition': transition }" />
 </template>
 <script lang="ts">
 import config from '@config'
@@ -26,7 +27,8 @@ export default defineComponent({
     })
 
     const proxyRect: Ref<DOMRect | undefined> = ref<DOMRect>();
-    const logo: Ref<string> = get(config, 'logo')
+    const logo: Ref<string> = get(config, 'logo');
+    const transition: Ref<boolean> = ref<boolean>(true);
     const styles: Ref<StyleValue | undefined> = computed(() => {
       return {
         width: `${proxyRect.value?.width}px`,
@@ -37,22 +39,32 @@ export default defineComponent({
     })
 
     const resetPostion = () => {
+      transition.value = false;
       const newBRect = animationEl.value?.getBoundingClientRect();
       if (newBRect) {
         proxyRect.value = newBRect;
+        setTimeout(() => {
+          transition.value = true;
+        }, 200);
       }
     }
 
     return {
       logo,
       animationBoxData,
-      styles
+      styles,
+      transition
     }
   }
 })
 </script>
-<style lang="less" scoped>.logo-animation {
+<style lang="less" scoped>
+.logo-transition {
+  transition: .5s all ease-in-out;
+}
+
+.logo-animation {
   position: fixed;
   z-index: 10;
-  transition: .5s all ease-in-out;
-}</style>
+}
+</style>

@@ -102,7 +102,6 @@ export async function buildMobileSiteRoutes() {
 
 export async function buildPcSiteRoutes() {
   const [componentDocs, rootDocs, rootPages] = await Promise.all([findComponentDocs(), findRootDocs(), findRootPages()])
-  console.log('rootPages111', rootPages)
 
   const rootPagesRoutes = rootPages.map(
     (rootPage) => `
