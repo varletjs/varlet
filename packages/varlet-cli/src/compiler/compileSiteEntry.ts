@@ -64,10 +64,7 @@ export async function findRootPages(): Promise<string[]> {
   const filterPage = new Map()
   userPages.forEach((page) => {
     const [, routePath, language] = page.match(ROOT_PAGE_RE) ?? []
-    if (!filterPage.has(routePath + language)) {
-      filterPage.set(routePath + language, true)
-      rootPages.push(page)
-    }
+    filterPage.set(routePath + language, true)
   })
   authorityPage.forEach((page) => {
     const [, routePath, language] = page.match(ROOT_PAGE_RE) ?? []
