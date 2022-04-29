@@ -105,7 +105,6 @@ export async function buildPcSiteRoutes() {
       }\
     `
   )
-  // component: () => import('${SITE_PC_DIR}/Layout.vue'),
 
   const componentDocsRoutes = componentDocs.map(
     (componentDoc) => `
