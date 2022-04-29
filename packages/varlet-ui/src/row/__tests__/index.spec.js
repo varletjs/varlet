@@ -69,6 +69,17 @@ describe('test row and col component props', () => {
     wrapper.unmount()
   })
 
+  test('test row and col span 0', () => {
+    const wrapper = mount(VarRow, {
+      slots: {
+        default: () => [0, 12, 12].map((span) => h(VarCol, { span })),
+      },
+    })
+
+    expect(wrapper.findAll('.var-col--none').length).toBe(1)
+    wrapper.unmount()
+  })
+
   test('test row and col offset', () => {
     const wrapper = mount(VarRow, {
       slots: {
@@ -80,7 +91,7 @@ describe('test row and col component props', () => {
     wrapper.unmount()
   })
 
-  test('test row and col offset', () => {
+  test('test row and col responsive', () => {
     const wrapper = mount(VarRow, {
       slots: {
         default: () =>
@@ -102,4 +113,15 @@ describe('test row and col component props', () => {
     expect(classNames).toContain('var-col--span-xl-2')
     wrapper.unmount()
   })
+})
+
+test('test row and col responsive 0', () => {
+  const wrapper = mount(VarRow, {
+    slots: {
+      default: () => [h(VarCol, { xs: 0, sm: 0, md: 0, lg: 0, xl: 0 })],
+    },
+  })
+
+  expect(wrapper.find('.var-col--none')).toBeTruthy()
+  wrapper.unmount()
 })

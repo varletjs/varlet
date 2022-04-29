@@ -1,5 +1,9 @@
 .var-col {
   transition: all 0.25s;
+
+  &--none {
+    display: none !important;
+  }
 }
 
 .create-col(@i) when (@i =< 24) {
@@ -23,7 +27,7 @@
     margin-left: @i * (100% / 24);
   }
 
-  .create-responsive-col(@i + 1,@mode);
+  .create-responsive-col(@i + 1, @mode);
 }
 
 .create-col(1);
@@ -45,5 +49,5 @@
 }
 
 @media only screen and (min-width: 1920px) {
-  .create-responsive-col(1, xl);
+  .create-responsive-col(0, xl);
 }

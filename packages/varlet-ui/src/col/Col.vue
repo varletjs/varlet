@@ -4,7 +4,7 @@
       classes(
         n(),
         'var--box',
-        [span, n(`--span-${span}`)],
+        [span, n(`--span-${span}`), n('--none')],
         [offset, n(`--offset-${offset}`)],
         ...getSize('xs', xs),
         ...getSize('sm', sm),
@@ -53,16 +53,24 @@ export default defineComponent({
     const getSize = (mode: string, size: string | number | SizeDescriptor | undefined) => {
       const classes: string[] = []
 
-      if (!size) {
+      if (size == null) {
         return classes
       }
 
       if (isPlainObject(size)) {
-        const { span, offset } = size
-        span && classes.push(n(`--span-${mode}-${span}`))
+        const { offset } = size
+        let { span } = size
+        span = Number(span)
+
+        span === 0 && classes.push(n('--none'))
+        span > 0 && classes.push(n(`--span-${mode}-${span}`))
+
         offset && classes.push(n(`--offset-${mode}-${offset}`))
       } else {
-        classes.push(n(`--span-${mode}-${size}`))
+        size = Number(size)
+
+        size === 0 && classes.push(n('--none'))
+        size > 0 && classes.push(n(`--span-${mode}-${size}`))
       }
 
       return classes
