@@ -82,7 +82,7 @@ watch(() => route.path, togglePageTitle, { immediate: true })
         </div>
         <div v-ripple class="site-btn" @click="goGithub">
           Github
-          <var-icon name="github" />
+          <var-icon style="margin-left:5px" name="github" />
         </div>
         <div class="site-action" v-if="darkMode" v-ripple @click="toggleTheme">
           <var-site-icon size="26px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
@@ -200,7 +200,7 @@ watch(() => route.path, togglePageTitle, { immediate: true })
   padding: 0px 20px;
   margin-right: 4px;
   background: var(--site-config-color-nav-button-hover-background);
-  user-select: contain;
+  user-select: none;
 }
 
 .logo {
