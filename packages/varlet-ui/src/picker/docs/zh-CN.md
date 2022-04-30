@@ -90,7 +90,7 @@ const oddMonthDates = genCounts(31)
 
 const evenMonthDates = genCounts(30)
 
-function isBigMonth(month) {
+function isOddMonth(month) {
 	return [1, 3, 5, 7, 8, 10, 12].includes(month)
 }
 
@@ -111,7 +111,7 @@ function genDates(year, month) {
     return februaryDates
   }
 
-  if (isBigMonth(month)) {
+  if (isOddMonth(month)) {
     return oddMonthDates
   }
 
@@ -195,9 +195,7 @@ const columns = ref(normalizedRawColumns)
 const handleChange = (_, [i1, i2, i3]) => {
   const [c1, c2, c3] = rawColumns
   const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
-  Snackbar({
-    content: ids
-  })
+  Snackbar(ids.toString())
 }
 
 const picker = async () => {
@@ -279,7 +277,7 @@ const oddMonthDates = genCounts(31)
 
 const evenMonthDates = genCounts(30)
 
-function isBigMonth(month) {
+function isOddMonth(month) {
 	return [1, 3, 5, 7, 8, 10, 12].includes(month)
 }
 
@@ -300,7 +298,7 @@ function genDates(year, month) {
     return februaryDates
   }
 
-  if (isBigMonth(month)) {
+  if (isOddMonth(month)) {
     return oddMonthDates
   }
 
@@ -376,9 +374,7 @@ const columns = ref(normalizedRawColumns)
 const handleChange = (_, [i1, i2, i3]) => {
   const [c1, c2, c3] = rawColumns
   const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
-  Snackbar({
-    content: ids
-  })
+  Snackbar(ids.toString())
 }
 </script>
 

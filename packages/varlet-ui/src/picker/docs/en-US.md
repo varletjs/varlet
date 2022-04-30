@@ -195,9 +195,7 @@ const columns = ref(normalizedRawColumns)
 const handleChange = (_, [i1, i2, i3]) => {
   const [c1, c2, c3] = rawColumns
   const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
-  Snackbar({
-    content: ids
-  })
+  Snackbar(ids.toString())
 }
 
 const picker = async () => {
@@ -376,9 +374,7 @@ const columns = ref(normalizedRawColumns)
 const handleChange = (_, [i1, i2, i3]) => {
   const [c1, c2, c3] = rawColumns
   const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
-  Snackbar({
-    content: ids
-  })
+  Snackbar(ids.toString())
 }
 </script>
 
