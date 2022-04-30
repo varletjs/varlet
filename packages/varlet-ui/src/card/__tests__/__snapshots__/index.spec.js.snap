@@ -33,7 +33,7 @@ exports[`test card example 1`] = `
 </div>
 <div class=\\"app-type\\">显示图片</div>
 <div class=\\"var-card\\">
-  <div class=\\"var-card__floater var-elevation--1\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image-column\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
+  <div class=\\"var-card__floater var-elevation--1\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
     <div class=\\"var-card__container\\">
       <div class=\\"var-card__title\\">本草纲目</div>
       <div class=\\"var-card__subtitle\\">我表情悠哉 跳个大概</div>
@@ -47,7 +47,7 @@ exports[`test card example 1`] = `
 </div>
 <div class=\\"app-type\\">使用插槽</div>
 <div class=\\"var-card\\">
-  <div class=\\"var-card__floater var-elevation--1\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image-column\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
+  <div class=\\"var-card__floater var-elevation--1\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
     <div class=\\"var-card__container\\">
       <div class=\\"var-card__title\\">本草纲目</div>
       <div class=\\"var-card__subtitle\\">我表情悠哉 跳个大概</div>
@@ -66,13 +66,13 @@ exports[`test card example 1`] = `
   <div class=\\"var-card__holder\\" style=\\"width: auto; height: auto;\\"></div>
 </div>
 <div class=\\"app-type\\">横向显示</div>
-<div class=\\"var-card var-card--row\\">
-  <div class=\\"var-card__floater var-elevation--1 var-card--layout-row\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image-row\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
+<div class=\\"var-card var-card--layout-row\\">
+  <div class=\\"var-card__floater var-elevation--1\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
     <div class=\\"var-card__container\\">
-      <div class=\\"var-card__title var-card__title-row\\">本草纲目</div>
-      <div class=\\"var-card__subtitle var-card__subtitle-row\\">如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~</div>
+      <div class=\\"var-card__title\\">本草纲目</div>
+      <div class=\\"var-card__subtitle\\">如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~</div>
       <!--v-if-->
-      <div class=\\"var-card__footer var-card__footer-row\\"><button class=\\"var-button var--box var-button--small var--inline-flex var-button--text-primary var-button--text\\">
+      <div class=\\"var-card__footer\\"><button class=\\"var-button var--box var-button--small var--inline-flex var-button--text-primary var-button--text\\">
           <!--v-if-->
           <div class=\\"var-button__content\\">添加按钮</div>
         </button></div>
@@ -99,7 +99,7 @@ exports[`test card example 1`] = `
 </div>
 <div class=\\"app-type\\">全屏显示</div>
 <div class=\\"var-card\\">
-  <div class=\\"var-card__floater var-elevation--1\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image-column\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
+  <div class=\\"var-card__floater var-elevation--1\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
     <div class=\\"var-card__container\\">
       <div class=\\"var-card__title\\">本草纲目</div>
       <div class=\\"var-card__subtitle\\">我表情悠哉 跳个大概</div>
@@ -126,7 +126,7 @@ exports[`test card example 1`] = `
 
 exports[`test card floating 1`] = `
 "<div class=\\"var-card\\">
-  <div class=\\"var-card__floater var-elevation--1\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image-column\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
+  <div class=\\"var-card__floater var-elevation--1\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
     <div class=\\"var-card__container\\">
       <div class=\\"var-card__title\\">Title</div>
       <!--v-if-->
@@ -141,10 +141,10 @@ exports[`test card floating 1`] = `
 `;
 
 exports[`test card floating 2`] = `
-"<div class=\\"var-card var-card--row\\">
-  <div class=\\"var-card__floater var-elevation--1 var-card--layout-row\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms; top: 0px; left: 0px; border-radius: 0px; z-index: 2004;\\"><img class=\\"var-card__image-row\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
+"<div class=\\"var-card var-card--layout-row\\">
+  <div class=\\"var-card__floater var-elevation--1\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms; top: 0px; left: 0px; border-radius: 0px;\\"><img class=\\"var-card__image\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
     <div class=\\"var-card__container\\">
-      <div class=\\"var-card__title var-card__title-row\\">Title</div>
+      <div class=\\"var-card__title\\">Title</div>
       <!--v-if-->
       <!--v-if-->
       <!--v-if-->
@@ -157,10 +157,10 @@ exports[`test card floating 2`] = `
 `;
 
 exports[`test card layout 1`] = `
-"<div class=\\"var-card var-card--row\\">
-  <div class=\\"var-card__floater var-elevation--1 var-card--layout-row\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image-row\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
+"<div class=\\"var-card var-card--layout-row\\">
+  <div class=\\"var-card__floater var-elevation--1\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
     <div class=\\"var-card__container\\">
-      <div class=\\"var-card__title var-card__title-row\\">This is Card</div>
+      <div class=\\"var-card__title\\">This is Card</div>
       <!--v-if-->
       <!--v-if-->
       <!--v-if-->
@@ -174,7 +174,7 @@ exports[`test card layout 1`] = `
 
 exports[`test card layout 2`] = `
 "<div class=\\"var-card\\">
-  <div class=\\"var-card__floater var-elevation--1\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image-column\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
+  <div class=\\"var-card__floater var-elevation--1\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image\\" style=\\"object-fit: cover;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\">
     <div class=\\"var-card__container\\">
       <div class=\\"var-card__title\\">This is Card</div>
       <!--v-if-->
@@ -190,7 +190,7 @@ exports[`test card layout 2`] = `
 
 exports[`test card props 1`] = `
 "<div class=\\"var-card\\">
-  <div class=\\"var-card__floater var-elevation--2\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image-column\\" style=\\"object-fit: cover; height: 200px; width: 200px;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\" alt=\\"This is an image\\">
+  <div class=\\"var-card__floater var-elevation--2\\" style=\\"width: 100%; height: 100%; overflow: hidden; position: static; transition: background-color 250ms, border-radius 250ms, width 250ms, height 250ms, top 250ms, left 250ms;\\"><img class=\\"var-card__image\\" style=\\"object-fit: cover; height: 200px; width: 200px;\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\" alt=\\"This is an image\\">
     <div class=\\"var-card__container\\">
       <div class=\\"var-card__title\\">This is Card</div>
       <div class=\\"var-card__subtitle\\">This is subtitle</div>
