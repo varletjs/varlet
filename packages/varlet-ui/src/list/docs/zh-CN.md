@@ -128,6 +128,47 @@ const load = () => {
 </template>
 ```
 
+### 组合
+
+与 `PullRefresh` 组件结合使用即可实现上拉加载和下拉刷新的功能，需保证`PullRefresh` 容器高度不为 `0` 。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const isRefresh = ref(false)
+const loading = ref(false)
+const list = ref([])
+
+const refresh = () => {
+  setTimeout(() => {
+    console.log('refresh')
+    isRefresh.value = false
+  }, 2000)
+}
+
+const load = () => {
+  loading.value = true
+  
+  setTimeout(() => {
+    for (let i = 0; i < 20; i++) {
+      list.value.push(list.value.length + 1)
+    }
+    
+    loading.value = false
+  }, 1000)
+}
+</script>
+
+<template>
+  <var-pull-refresh v-model="isRefresh" @refresh="refresh">
+    <var-list v-model:loading="loading" @load="load">
+      <var-cell :key="d" v-for="d in list">ListItem {{ d }}</var-cell>
+    </var-list>
+  </var-pull-refresh>
+</template>
+```
+
 ### 注意
 
 我们是通过监听滚动容器的 `scroll` 事件检测是否触底并执行加载。
