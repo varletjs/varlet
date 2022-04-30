@@ -1,14 +1,8 @@
 <template>
-  <div ref="card" :class="classes(n(), [isRow, n('--row')])" @click="onClick">
+  <div ref="card" :class="classes(n(), [isRow, n('--layout-row')])" @click="onClick">
     <div
       ref="cardFloater"
-      :class="
-        classes(
-          n('floater'),
-          [elevation, `var-elevation--${elevation}`, 'var-elevation--1'],
-          [isRow, n('--layout-row')]
-        )
-      "
+      :class="classes(n('floater'), [elevation, `var-elevation--${elevation}`, 'var-elevation--1'])"
       :style="{
         width: floaterWidth,
         height: floaterHeight,
@@ -17,14 +11,14 @@
         overflow: floaterOverflow,
         position: floaterPosition,
         borderRadius: floating ? '0px' : undefined,
-        zIndex: floating ? zIndex : undefined,
+        zIndex: floated ? zIndex : undefined,
         transition: `background-color 250ms, border-radius ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`,
       }"
       v-ripple="{ disabled: !ripple || floating }"
     >
       <slot name="image">
         <img
-          :class="classes([isRow, n('image-row'), n('image-column')])"
+          :class="n('image')"
           :style="{
             objectFit: fit,
             height: toSizeUnit(height),
@@ -36,17 +30,17 @@
         />
       </slot>
 
-      <div :class="classes(n('container'))">
+      <div :class="n('container')">
         <slot name="title">
-          <div :class="classes(n('title'), [isRow, n('title-row')])" v-if="title">{{ title }}</div>
+          <div :class="n('title')" v-if="title">{{ title }}</div>
         </slot>
         <slot name="subtitle">
-          <div :class="classes(n('subtitle'), [isRow, n('subtitle-row')])" v-if="subtitle">{{ subtitle }}</div>
+          <div :class="n('subtitle')" v-if="subtitle">{{ subtitle }}</div>
         </slot>
         <slot name="description">
-          <div :class="classes(n('description'))" v-if="description">{{ description }}</div>
+          <div :class="n('description')" v-if="description">{{ description }}</div>
         </slot>
-        <div :class="classes(n('footer'), [isRow, n('footer-row')])" v-if="$slots.extra">
+        <div :class="n('footer')" v-if="$slots.extra">
           <slot name="extra" />
         </div>
         <div
@@ -130,6 +124,7 @@ export default defineComponent({
     const { zIndex } = useZIndex(() => props.floating, 1)
     const isRow = computed(() => props.layout === 'row')
     const showToolBar: Ref<boolean> = ref(false)
+    const floated: Ref<boolean> = ref(false)
     useLock(
       () => props.floating,
       () => isRow
@@ -167,6 +162,7 @@ export default defineComponent({
           contentHeight.value = 'auto'
           opacity.value = '1'
           floaterOverflow.value = 'auto'
+          floated.value = true
         },
         props.ripple ? RIPPLE_DELAY : 0
       )
@@ -195,6 +191,7 @@ export default defineComponent({
         dropdownFloaterLeft = 'auto'
         floaterOverflow.value = 'hidden'
         floaterPosition.value = 'static'
+        floated.value = false
       }, props.floatingDuration)
     }
 
@@ -234,6 +231,7 @@ export default defineComponent({
       isRow,
       close,
       showToolBar,
+      floated,
     }
   },
 })
