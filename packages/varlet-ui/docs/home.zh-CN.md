@@ -1,10 +1,3 @@
-<div class="varlet-introduce">
-  <div class="varlet-introduce__row">
-    <img class="varlet-introduce__image" src="https://varlet-varletjs.vercel.app/varlet_icon.png" />
-    <div class="varlet-introduce__name">VARLET</div>
-  </div>
-  <div class="varlet-introduce__des">面向 Vue3 的 Material 风格移动端组件库</div>
-</div>
 
 ### 介绍
 

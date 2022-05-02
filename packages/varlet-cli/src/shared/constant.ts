@@ -8,6 +8,8 @@ export const LIB_DIR = resolve(CWD, 'lib')
 export const UMD_DIR = resolve(CWD, 'umd')
 export const TYPES_DIR = resolve(CWD, 'types')
 export const ROOT_DOCS_DIR = resolve(CWD, 'docs')
+export const ROOT_PAGES_DIR = resolve(CWD, 'pages')
+
 export const ESLINT_EXTENSIONS = ['.vue', '.ts', '.js', '.mjs', '.tsx', '.jsx']
 export const VITE_RESOLVE_EXTENSIONS = ['.vue', '.tsx', '.ts', '.jsx', '.js', '.less', '.css']
 export const SCRIPTS_EXTENSIONS = ['.tsx', '.ts', '.jsx', '.js']
@@ -27,6 +29,7 @@ export const SITE = resolve(__dirname, '../../site')
 export const SITE_OUTPUT_PATH = resolve(CWD, 'site')
 export const SITE_PUBLIC_PATH = resolve(CWD, 'public')
 export const SITE_DIR = resolve(CWD, '.varlet/site')
+export const SITE_PC_DIR = resolve(CWD, '.varlet/site/pc')
 export const SITE_PC_ROUTES = resolve(CWD, '.varlet/pc.routes.ts')
 export const SITE_MOBILE_ROUTES = resolve(CWD, '.varlet/mobile.routes.ts')
 export const SITE_CONFIG = resolve(CWD, '.varlet/site.config.json')
