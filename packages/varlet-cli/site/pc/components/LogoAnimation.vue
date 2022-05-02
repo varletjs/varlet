@@ -64,7 +64,7 @@ export default defineComponent({
 }
 
 .logo-animation {
-  position: fixed;
+  position: absolute;
   z-index: 10;
   pointer-events:none;
 }
