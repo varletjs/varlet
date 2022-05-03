@@ -74,35 +74,27 @@ const picker = async () => {
 ### Text Formatter
 
 Picker passes in a `textFormatter` attribute to customize the text.
-`textFormatter` accepts two parameters. The first parameter `text` is the current text, and the second parameter  `columnIndex` is the subscript of the column where the current text is located.
+`textFormatter` accepts two parameters. The first parameter `text` is the current text, and the second parameter
+`columnIndex` is the subscript of the column where the current text is located.
+The following is the case of year month day selection
 
 ```html
 <script setup>
 import { Picker } from '@varlet/ui'
 
+const genCounts = length => Array.from({ length }, (_, index) => index + 1)
+
 const months = genCounts(12)
-
 const leapYearFebruaryDates = genCounts(29)
-
 const februaryDates = genCounts(28)
-
 const oddMonthDates = genCounts(31)
-
 const evenMonthDates = genCounts(30)
 
-function isOddMonth(month) {
-  return [1, 3, 5, 7, 8, 10, 12].includes(month)
-}
+const isOddMonth = month => [1, 3, 5, 7, 8, 10, 12].includes(month)
 
-function genCounts(length) {
-  return Array.from({ length }, (_, index) => index + 1)
-}
+const isLeapYear = year => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
 
-function isLeapYear(year) {
-  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
-}
-
-function genDates(year, month) {
+const genDates = (year, month) => {
   if (isLeapYear(year) && month === 2) {
     return leapYearFebruaryDates
   }
@@ -117,18 +109,17 @@ function genDates(year, month) {
 
   return evenMonthDates
 }
-  
-function genColumns(startYear, endYear) {
+
+const genColumns = (startYear, endYear) => {
   const columns = []
-  for (let i = startYear; i < endYear; i++) {
+
+  for (let year = startYear; year < endYear; year++) {
     columns.push({
-      text: i,
+      text: year,
       children: months.map((month) => {
         return {
           text: month,
-          children: genDates(i, month).map(date => {
-            return { text: date }
-          })
+          children: genDates(year, month).map(date => ({ text: date }))
         }
       })
     })
@@ -137,12 +128,12 @@ function genColumns(startYear, endYear) {
   return columns
 }
 
-const columns = ref(genColumns(1970, 2100))
+const columns = genColumns(1970, 2100)
 
 const textFormatter = (text, columnIndex) => {
-  if (columnIndex === 0) return `${text}year`
-  else if (columnIndex === 1) return `${text}month`
-  else if (columnIndex === 2) return `${text}date`
+  if (columnIndex === 0) return `${text} YEAR`
+  else if (columnIndex === 1) return `${text} MONTH`
+  else if (columnIndex === 2) return `${text} DATE`
 }
 
 const picker = async () => {
@@ -155,7 +146,7 @@ const picker = async () => {
 </script>
 
 <template>
-  <var-button type="primary" block @click="picker">textFormatter</var-button>
+  <var-button type="primary" block @click="picker">Text Formatter</var-button>
 </template>
 ```
 
@@ -163,9 +154,9 @@ const picker = async () => {
 
 ```html
 <script setup>
-import { Picker， Snackbar } from '@varlet/ui'
+import { Picker, Snackbar } from '@varlet/ui'
 
-const serverColumns = ref([
+const rawColumns = [
   [
     { label: 'Ember Spirit', id: 1 },
     { label: 'Storm Spirit', id: 2 },
@@ -184,13 +175,9 @@ const serverColumns = ref([
     { label: 'Earth Spirit', id: 3 },
     { label: 'Void Spirit', id: 4 },
   ],
-])
+]
 
-const normalizedRawColumns = rawColumns.map((column) => {
-  return column.map(option => option.label)
-})
-
-const columns = ref(normalizedRawColumns)
+const normalizedColumns = rawColumns.map((column) => column.map(option => option.label))
 
 const handleChange = (_, [i1, i2, i3]) => {
   const [c1, c2, c3] = rawColumns
@@ -200,8 +187,7 @@ const handleChange = (_, [i1, i2, i3]) => {
 
 const picker = async () => {
   const { state, texts, indexes } = await Picker({
-    cascade: true,
-    columns,
+    columns: normalizedColumns,
     onChange: handleChange
   })
 }
@@ -261,35 +247,25 @@ const columns = ref(area)
 </template>
 ```
 
-### textFormatter
+### Text Formatter
 
 ```html
 <script setup>
-import { Picker } from '@varlet/ui'
+import { ref } from 'vue'
+
+const genCounts = length => Array.from({ length }, (_, index) => index + 1)
 
 const months = genCounts(12)
-
 const leapYearFebruaryDates = genCounts(29)
-
 const februaryDates = genCounts(28)
-
 const oddMonthDates = genCounts(31)
-
 const evenMonthDates = genCounts(30)
 
-function isOddMonth(month) {
-  return [1, 3, 5, 7, 8, 10, 12].includes(month)
-}
+const isOddMonth = month => [1, 3, 5, 7, 8, 10, 12].includes(month)
 
-function genCounts(length) {
-  return Array.from({ length }, (_, index) => index + 1)
-}
+const isLeapYear = year => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
 
-function isLeapYear(year) {
-  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
-}
-
-function genDates(year, month) {
+const genDates = (year, month) => {
   if (isLeapYear(year) && month === 2) {
     return leapYearFebruaryDates
   }
@@ -304,18 +280,17 @@ function genDates(year, month) {
 
   return evenMonthDates
 }
-  
-function genColumns(startYear, endYear) {
+
+const genColumns = (startYear, endYear) => {
   const columns = []
-  for (let i = startYear; i < endYear; i++) {
+
+  for (let year = startYear; year < endYear; year++) {
     columns.push({
-      text: i,
+      text: year,
       children: months.map((month) => {
         return {
           text: month,
-          children: genDates(i, month).map(date => {
-            return { text: date }
-          })
+          children: genDates(year, month).map(date => ({ text: date }))
         }
       })
     })
@@ -327,9 +302,9 @@ function genColumns(startYear, endYear) {
 const columns = ref(genColumns(1970, 2100))
 
 const textFormatter = (text, columnIndex) => {
-  if (columnIndex === 0) return `${text}year`
-  else if (columnIndex === 1) return `${text}month`
-  else if (columnIndex === 2) return `${text}date`
+  if (columnIndex === 0) return `${text} YEAR`
+  else if (columnIndex === 1) return `${text} MONTH`
+  else if (columnIndex === 2) return `${text} DATE`
 }
 </script>
 
@@ -342,7 +317,8 @@ const textFormatter = (text, columnIndex) => {
 
 ```html
 <script setup>
-import { Picker， Snackbar } from '@varlet/ui'
+import { ref } from 'vue' 
+import { Snackbar } from '@varlet/ui'
 
 const rawColumns = [
   [
@@ -365,11 +341,9 @@ const rawColumns = [
   ]
 ]
 
-const normalizedRawColumns = rawColumns.map((column) => {
-  return column.map(option => option.label)
-})
+const normalizedColumns = rawColumns.map(column => column.map(option => option.label))
 
-const columns = ref(normalizedRawColumns)
+const columns = ref(normalizedColumns)
 
 const handleChange = (_, [i1, i2, i3]) => {
   const [c1, c2, c3] = rawColumns
@@ -395,7 +369,7 @@ const handleChange = (_, [i1, i2, i3]) => {
 | `toolbar` | Whether to display the top toolbar | _string_ | `true` |
 | `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
 | `cascade-initial-indexes` | List of initialization indices for cascade mode | _number[]_ | `-` |
-| `text-formatter` | Text formatter | _function_ | `text => text` |
+| `text-formatter` | Text formatter | _(text: any, columnIndex: number) => any_ | `text => text` |
 | `option-height` | Option height(px rem) | _string \| number_ | `44` |
 | `option-count` | Number of options visible | _string \| number_ | `6` |
 | `confirm-button-text` | Confirm button text | _string_ | `Confirm` |
@@ -413,6 +387,7 @@ const handleChange = (_, [i1, i2, i3]) => {
 | `toolbar` | Whether to display the top toolbar | _string_ | `true` |
 | `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
 | `cascadeInitialIndexes` | List of initialization indices for cascade mode | _number[]_ | `-` |
+| `textFormatter` | Text formatter | _(text: any, columnIndex: number) => any_ | `text => text` |
 | `optionHeight` | Option height | _string \| number_ | `44` |
 | `optionCount` | Number of options visible | _string \| number_ | `6` |
 | `confirmButtonText` | Confirm button text | _string_ | `Confirm` |

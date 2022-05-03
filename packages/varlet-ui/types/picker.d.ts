@@ -20,6 +20,7 @@ export interface PickerProps {
   toolbar?: boolean
   cascade?: boolean
   cascadeInitialIndexes: number[]
+  textFormatter?: (text: any, columnIndex: number) => any
   optionHeight?: string | number
   optionCount?: string | number
   confirmButtonText?: string
