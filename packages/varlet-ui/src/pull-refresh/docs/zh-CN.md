@@ -41,26 +41,24 @@ const refresh = () => {
 
 ### 组合
 
-与 `List` 组件结合使用即可实现上拉加载和下拉刷新的功能，需保证`PullRefresh` 容器高度不为 `0` 。
+与 `List` 组件结合使用即可实现上拉加载和下拉刷新的功能，需保证 `PullRefresh` 容器高度不为 `0` 。
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
-const isRefresh = ref(false)
+const refreshing = ref(false)
 const loading = ref(false)
 const list = ref([])
 
 const refresh = () => {
   setTimeout(() => {
     console.log('refresh')
-    isRefresh.value = false
+    refreshing.value = false
   }, 2000)
 }
 
 const load = () => {
-  loading.value = true
-  
   setTimeout(() => {
     for (let i = 0; i < 20; i++) {
       list.value.push(list.value.length + 1)
@@ -72,7 +70,7 @@ const load = () => {
 </script>
 
 <template>
-  <var-pull-refresh v-model="isRefresh" @refresh="refresh">
+  <var-pull-refresh v-model="refreshing" @refresh="refresh">
     <var-list v-model:loading="loading" @load="load">
       <var-cell :key="d" v-for="d in list">ListItem {{ d }}</var-cell>
     </var-list>
@@ -91,7 +89,7 @@ const load = () => {
     <div style="height: 200px"></div>
   </var-pull-refresh>
 
-  // 或
+  <!-- 或 -->
   
   <var-pull-refresh style="height: 200px">
     <div></div>

@@ -138,20 +138,18 @@ Combined with the `PullRefresh` component to implement the function of pull-up l
 <script setup>
 import { ref } from 'vue'
 
-const isRefresh = ref(false)
+const refreshing = ref(false)
 const loading = ref(false)
 const list = ref([])
 
 const refresh = () => {
   setTimeout(() => {
     console.log('refresh')
-    isRefresh.value = false
+    refreshing.value = false
   }, 2000)
 }
 
 const load = () => {
-  loading.value = true
-  
   setTimeout(() => {
     for (let i = 0; i < 20; i++) {
       list.value.push(list.value.length + 1)
@@ -163,7 +161,7 @@ const load = () => {
 </script>
 
 <template>
-  <var-pull-refresh v-model="isRefresh" @refresh="refresh">
+  <var-pull-refresh v-model="refreshing" @refresh="refresh">
     <var-list v-model:loading="loading" @load="load">
       <var-cell :key="d" v-for="d in list">ListItem {{ d }}</var-cell>
     </var-list>
