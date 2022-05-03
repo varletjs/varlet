@@ -60,6 +60,7 @@ export interface PickerOptions {
   cancelButtonText?: string
   confirmButtonTextColor?: string
   cancelButtonTextColor?: string
+  textFormatter?: (text: any, columnIndex: number) => any
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void

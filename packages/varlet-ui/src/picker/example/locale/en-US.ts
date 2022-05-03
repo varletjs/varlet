@@ -4,4 +4,6 @@ export default {
   singlePicker: 'Single Column Picker',
   multiplePicker: 'Multiple Column Picker',
   cascadePicker: 'Cascade Column Picker',
+  textFormatter: 'Text Formatting',
+  extension: 'Value Mapping',
 }

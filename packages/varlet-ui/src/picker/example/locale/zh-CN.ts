@@ -4,4 +4,6 @@ export default {
   singlePicker: '单列选择',
   multiplePicker: '多列选择',
   cascadePicker: '级联选择',
+  textFormatter: '文本格式化',
+  extension: '值的映射',
 }

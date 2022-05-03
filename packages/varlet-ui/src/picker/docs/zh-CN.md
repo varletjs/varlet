@@ -71,6 +71,147 @@ const picker = async () => {
 </template>
 ```
 
+### 文本格式化
+
+Picker 传入一个 `textFormatter` 属性可对文本进行自定义。
+`textFormatter` 接受两个参数, 第一个参数 `text` 是当前文本, 第二个参数 `columnIndex` 是当前文本所在列的下标。
+
+```html
+<script setup>
+import { Picker } from '@varlet/ui'
+
+const months = genCounts(12)
+
+const leapYearFebruaryDates = genCounts(29)
+
+const februaryDates = genCounts(28)
+
+const oddMonthDates = genCounts(31)
+
+const evenMonthDates = genCounts(30)
+
+function isOddMonth(month) {
+	return [1, 3, 5, 7, 8, 10, 12].includes(month)
+}
+
+function genCounts(length) {
+  return Array.from({ length }, (_, index) => index + 1)
+}
+
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+}
+
+function genDates(year, month) {
+  if (isLeapYear(year) && month === 2) {
+    return leapYearFebruaryDates
+  }
+
+  if (!isLeapYear(year) && month === 2) {
+    return februaryDates
+  }
+
+  if (isOddMonth(month)) {
+    return oddMonthDates
+  }
+
+  return evenMonthDates
+}
+  
+function genColumns(startYear, endYear) {
+  const columns = []
+  for (let i = startYear; i < endYear; i++) {
+    columns.push({
+      text: i,
+      children: months.map((month) => {
+        return {
+          text: month,
+          children: genDates(i, month).map(date => {
+            return { text: date }
+          })
+        }
+      })
+    })
+  }
+
+  return columns
+}
+
+const columns = ref(genColumns(1970, 2100))
+
+const textFormatter = (text, columnIndex) => {
+  if (columnIndex === 0) return `${text}年`
+  else if (columnIndex === 1) return `${text}月`
+  else if (columnIndex === 2) return `${text}日`
+}
+
+const picker = async () => {
+  const { state, texts, indexes } = await Picker({
+    cascade: true,
+    columns,
+    textFormatter,
+  })
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">文本格式化</var-button>
+</template>
+```
+
+### 值的映射
+
+```html
+<script setup>
+import { Picker， Snackbar } from '@varlet/ui'
+
+const rawColumns = [
+  [
+    { label: '灰烬之灵', id: 1 },
+    { label: '风暴之灵', id: 2 },
+    { label: '大地之灵', id: 3 },
+    { label: '虚空之灵', id: 4 },
+  ],
+  [
+    { label: '灰烬之灵', id: 1 },
+    { label: '风暴之灵', id: 2 },
+    { label: '大地之灵', id: 3 },
+    { label: '虚空之灵', id: 4 },
+  ],
+  [
+    { label: '灰烬之灵', id: 1 },
+    { label: '风暴之灵', id: 2 },
+    { label: '大地之灵', id: 3 },
+    { label: '虚空之灵', id: 4 },
+  ]
+]
+
+const normalizedRawColumns = rawColumns.map((column) => {
+  return column.map(option => option.label)
+})
+
+const columns = ref(normalizedRawColumns)
+
+const handleChange = (_, [i1, i2, i3]) => {
+  const [c1, c2, c3] = rawColumns
+  const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
+  Snackbar(ids.toString())
+}
+
+const picker = async () => {
+  const { state, texts, indexes } = await Picker({
+    cascade: true,
+    columns,
+    onChange: handleChange
+  })
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">值的映射</var-button>
+</template>
+```
+
 ## 组件调用
 
 ### 单列选择
@@ -120,6 +261,128 @@ const columns = ref(area)
 </template>
 ```
 
+### 文本格式化
+
+```html
+<script setup>
+import { Picker } from '@varlet/ui'
+
+const months = genCounts(12)
+
+const leapYearFebruaryDates = genCounts(29)
+
+const februaryDates = genCounts(28)
+
+const oddMonthDates = genCounts(31)
+
+const evenMonthDates = genCounts(30)
+
+function isOddMonth(month) {
+	return [1, 3, 5, 7, 8, 10, 12].includes(month)
+}
+
+function genCounts(length) {
+  return Array.from({ length }, (_, index) => index + 1)
+}
+
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+}
+
+function genDates(year, month) {
+  if (isLeapYear(year) && month === 2) {
+    return leapYearFebruaryDates
+  }
+
+  if (!isLeapYear(year) && month === 2) {
+    return februaryDates
+  }
+
+  if (isOddMonth(month)) {
+    return oddMonthDates
+  }
+
+  return evenMonthDates
+}
+  
+function genColumns(startYear, endYear) {
+  const columns = []
+  for (let i = startYear; i < endYear; i++) {
+    columns.push({
+      text: i,
+      children: months.map((month) => {
+        return {
+          text: month,
+          children: genDates(i, month).map(date => {
+            return { text: date }
+          })
+        }
+      })
+    })
+  }
+
+  return columns
+}
+
+const columns = ref(genColumns(1970, 2100))
+
+const textFormatter = (text, columnIndex) => {
+  if (columnIndex === 0) return `${text}年`
+  else if (columnIndex === 1) return `${text}月`
+  else if (columnIndex === 2) return `${text}日`
+}
+</script>
+
+<template>
+  <var-picker cascade :columns="columns" :text-formatter="textFormatter" />
+</template>
+```
+
+### 值的映射
+
+```html
+<script setup>
+import { Picker， Snackbar } from '@varlet/ui'
+
+const rawColumns = [
+  [
+    { label: '灰烬之灵', id: 1 },
+    { label: '风暴之灵', id: 2 },
+    { label: '大地之灵', id: 3 },
+    { label: '虚空之灵', id: 4 },
+  ],
+  [
+    { label: '灰烬之灵', id: 1 },
+    { label: '风暴之灵', id: 2 },
+    { label: '大地之灵', id: 3 },
+    { label: '虚空之灵', id: 4 },
+  ],
+  [
+    { label: '灰烬之灵', id: 1 },
+    { label: '风暴之灵', id: 2 },
+    { label: '大地之灵', id: 3 },
+    { label: '虚空之灵', id: 4 },
+  ]
+]
+
+const normalizedRawColumns = rawColumns.map((column) => {
+  return column.map(option => option.label)
+})
+
+const columns = ref(normalizedRawColumns)
+
+const handleChange = (_, [i1, i2, i3]) => {
+  const [c1, c2, c3] = rawColumns
+  const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
+  Snackbar(ids.toString())
+}
+</script>
+
+<template>
+  <var-picker :columns="columns" @change="handleChange" />
+</template>
+```
+
 ## API
 
 ### 属性
@@ -132,6 +395,7 @@ const columns = ref(area)
 | `toolbar` | 是否显示上方工具栏 | _string_ | `true` |
 | `cascade` | 是否开启级联模式 | _boolean_ | `true` |
 | `cascade-initial-indexes` | 级联模式的初始化索引列表 | _number[]_ | `-` |
+| `text-formatter` | 文本格式化 | _function_ | `text => text` |
 | `option-height` | 选项的高度(px rem) | _string \| number_ | `44` |
 | `option-count` | 可见的选项个数 | _string \| number_ | `6` |
 | `confirm-button-text` | 确认按钮文字 | _string_ | `确认` |

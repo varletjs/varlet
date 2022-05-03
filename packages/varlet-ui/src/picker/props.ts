@@ -71,6 +71,10 @@ export const props = {
   onCancel: {
     type: Function as PropType<(texts: Texts, indexes: number[]) => void>,
   },
+  textFormatter: {
+    type: Function as PropType<(text: any, columnIndex: number) => any>,
+    default: (text: any) => text,
+  },
   // dynamic internal
   ...pickProps(popupProps, [
     'show',
