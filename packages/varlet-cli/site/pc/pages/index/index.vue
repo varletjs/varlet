@@ -1,25 +1,31 @@
 <script setup lang="ts">
+import AnimationBox from '../../components/AnimationBox.vue'
 import config from '@config'
-import VarSiteIcon from '../../components/icon'
-import VarSiteButton from '../../components/button'
-import AnimationBox from '../components/AnimationBox.vue'
+import VarSiteButton from '../../../components/button'
+import VarSiteIcon from '../../../components/icon'
 import { get } from 'lodash-es'
 import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getBrowserThemes, setThemes } from '../../utils'
+import { getBrowserThemes, setThemes } from '../../../utils'
 import { getPCLocationInfo, watchThemes } from '@varlet/cli/site/utils'
+import en_US from './locale/en-US'
+import zh_CN from './locale/zh-CN'
 import type { Ref } from 'vue'
 
 const route = useRoute()
 const router = useRouter()
+const packs = {
+  'zh-CN': zh_CN,
+  'en-US': en_US
+} as any
 
 const github = get(config, 'pc.header.github')
 const themesKey = get(config, 'themesKey')
 const currentThemes = ref(getBrowserThemes(themesKey))
 const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
 const title: Ref<string> = ref(get(config, 'title'))
-const description: Ref<string> = ref(get(config, 'pc.title')['en-US'])
 const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
+const pack: Ref<Record<string, string>> = ref({})
 
 const goGithub = () => {
   window.open(github)
@@ -44,11 +50,11 @@ const toggleTheme = () => {
   ;(document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemesMessage(), '*')
 }
 
-const togglePageTitle = () => {
+const setLocale = () => {
   const { language: lang } = getPCLocationInfo()
-  if (!lang) {
-    return
-  }
+  if (!lang) return
+
+  pack.value = packs[lang]
   document.title = get(config, 'pc.title')[lang] as string
 }
 
@@ -69,7 +75,7 @@ watchThemes((themes, from) => {
   from === 'mobile' && setCurrentThemes(themes)
 })
 
-watch(() => route.path, togglePageTitle, { immediate: true })
+watch(() => route.path, setLocale, { immediate: true })
 </script>
 
 <template>
@@ -77,7 +83,7 @@ watch(() => route.path, togglePageTitle, { immediate: true })
     <div class="profile-container">
       <div style="padding-left: 6px">
         <div class="base-title">{{ title }}</div>
-        <div class="base-description">{{ description }}</div>
+        <div class="base-description">{{ pack.description }}</div>
         <div class="button-group">
           <var-site-button class="round-button" round v-if="darkMode" @click="toggleTheme">
             <var-site-icon size="24px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
@@ -96,7 +102,7 @@ watch(() => route.path, togglePageTitle, { immediate: true })
       </var-site-button>
       <var-site-button class="block-button" block @click="getStar">
         <div class="block-button-content">
-          <span>GET STARTED</span>
+          <span>{{ pack.started }}</span>
           <animation-box class="logo" :style="{ transform: 'rotate(-90deg)' }" />
         </div>
       </var-site-button>
@@ -106,7 +112,7 @@ watch(() => route.path, togglePageTitle, { immediate: true })
         <div class="introduce-img">
           <img
             class="img"
-            src="../../banner.png"
+            src="../../../banner.png"
           />
         </div>
       </div>

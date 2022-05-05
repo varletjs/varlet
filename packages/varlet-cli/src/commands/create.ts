@@ -2,7 +2,7 @@ import logger from '../shared/logger'
 import { bigCamelize } from '../shared/fsUtils'
 import { outputFile, pathExistsSync } from 'fs-extra'
 import { resolve } from 'path'
-import { DOCS_DIR_NAME, EXAMPLE_DIR_NAME, EXAMPLE_LOCALE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from '../shared/constant'
+import { DOCS_DIR_NAME, EXAMPLE_DIR_NAME, LOCALE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from '../shared/constant'
 import { getVarletConfig } from '../config/varlet.config'
 import { get } from 'lodash'
 
@@ -123,7 +123,7 @@ export default {
   const componentDir = resolve(SRC_DIR, name)
   const testsDir = resolve(SRC_DIR, name, TESTS_DIR_NAME)
   const exampleDir = resolve(SRC_DIR, name, EXAMPLE_DIR_NAME)
-  const exampleLocalDir = resolve(SRC_DIR, name, EXAMPLE_DIR_NAME, EXAMPLE_LOCALE_DIR_NAME)
+  const exampleLocalDir = resolve(SRC_DIR, name, EXAMPLE_DIR_NAME, LOCALE_DIR_NAME)
   const docsDir = resolve(SRC_DIR, name, DOCS_DIR_NAME)
 
   if (pathExistsSync(componentDir)) {
