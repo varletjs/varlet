@@ -1,18 +1,12 @@
 <template>
   <div class="varlet-site-header">
     <div class="varlet-site-header__lead" @click="backRoot">
-      <animation-box class="varlet-site-header__logo"  />
+      <animation-box class="varlet-site-header__logo" />
       <div class="varlet-site-header__title" v-if="title">{{ title }}</div>
     </div>
 
     <div class="varlet-site-header__tail">
-      <a
-        class="varlet-site-header__link"
-        target="_blank"
-        :href="playground"
-        v-ripple
-        v-if="playground"
-      >
+      <a class="varlet-site-header__link" target="_blank" :href="playground" v-ripple v-if="playground">
         <var-site-icon name="code-json" :size="24" />
       </a>
       <a class="varlet-site-header__link" target="_blank" :href="github" v-ripple v-if="github">
@@ -48,7 +42,8 @@
               :key="key"
               :class="{ 'varlet-site-header__language-list--active': language === key }"
               @click="handleLanguageChange(key)"
-            >{{ value }}</var-site-cell>
+              >{{ value }}
+            </var-site-cell>
           </div>
         </transition>
       </div>
@@ -62,11 +57,12 @@ import { ref, computed, defineComponent } from 'vue'
 import { get } from 'lodash-es'
 import { getBrowserThemes, getPCLocationInfo, removeEmpty, setThemes, watchThemes } from '../../utils'
 import { useRouter } from 'vue-router'
+import AnimationBox from './AnimationBox.vue'
 import type { Ref, ComputedRef } from 'vue'
-import AnimationBox from "./AnimationBox.vue";
 
 export default defineComponent({
   name: 'AppHeader',
+  components: { AnimationBox },
   props: {
     language: {
       type: String,
@@ -109,7 +105,7 @@ export default defineComponent({
     const toggleTheme = () => {
       setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
       window.postMessage(getThemesMessage(), '*')
-        ; (document.getElementById('mobile') as HTMLIFrameElement).contentWindow!.postMessage(getThemesMessage(), '*')
+      ;(document.getElementById('mobile') as HTMLIFrameElement).contentWindow!.postMessage(getThemesMessage(), '*')
     }
 
     watchThemes((themes, from) => {
@@ -134,9 +130,6 @@ export default defineComponent({
       toggleTheme,
     }
   },
-  components:{
-    AnimationBox
-  }
 })
 </script>
 
@@ -200,7 +193,7 @@ export default defineComponent({
     height: 32px;
     margin-right: 12px;
     flex-shrink: 0;
-    transition: .3s all ease-in-out;
+    transition: 0.3s all ease-in-out;
   }
 
   &__title {

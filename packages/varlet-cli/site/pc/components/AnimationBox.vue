@@ -1,24 +1,24 @@
 <template>
   <div ref="varletLogoAnimationRef"></div>
 </template>
+
 <script lang="ts">
-import { defineComponent, onMounted, ref, useAttrs } from "vue"
-import { animationBoxData, animationEl } from "../floating"
+import { defineComponent, onMounted, ref, useAttrs } from 'vue'
+import { animationBoxData, animationEl } from '../floating'
+
 export default defineComponent({
-  name: "AnimationBox",
+  name: 'AnimationBox',
   setup() {
+    const varletLogoAnimationRef = ref<HTMLElement>()
+    animationBoxData.attrs = useAttrs()
+
     onMounted(() => {
-      animationEl.value = varletLogoAnimationRef.value;
+      animationEl.value = varletLogoAnimationRef.value
     })
 
-    const varletLogoAnimationRef = ref<HTMLElement>();
-    const attrs = useAttrs();
-    animationBoxData.attrs = attrs;
-
     return {
-      varletLogoAnimationRef
+      varletLogoAnimationRef,
     }
-  }
+  },
 })
 </script>
-<style></style>

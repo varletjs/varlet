@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { get } from 'lodash-es'
-import { ref, Ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import config from '@config'
 import VarIcon from '../../components/icon'
 import { getBrowserThemes, setThemes } from '../../utils'
 import AnimationBox from '../components/AnimationBox.vue'
 import { getPCLocationInfo, watchThemes } from '@varlet/cli/site/utils'
+import type { Ref } from 'vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -38,7 +39,7 @@ const setCurrentThemes = (themes: 'themes' | 'darkThemes') => {
 const toggleTheme = () => {
   setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
   window.postMessage(getThemesMessage(), '*')
-    ; (document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemesMessage(), '*')
+  ;(document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemesMessage(), '*')
 }
 
 const togglePageTitle = () => {
@@ -59,7 +60,9 @@ const toggleLanguages = () => {
 }
 
 setThemes(config, currentThemes.value)
+
 window.postMessage(getThemesMessage(), '*')
+
 watchThemes((themes, from) => {
   from === 'mobile' && setCurrentThemes(themes)
 })
@@ -70,19 +73,16 @@ watch(() => route.path, togglePageTitle, { immediate: true })
 <template>
   <div class="root-page flex">
     <div class="post-detail flex-one">
-      <div class="base-title margin-bottom">
-        Varlet
-      </div>
+      <div class="base-title margin-bottom">Varlet</div>
       <div class="base-descrition margin-bottom">Vue 3 移动端组件库</div>
       <div class="flex row-center col-center">
-        <!-- <var-space :wrap="false" jujstify="center" align="center"> -->
         <div v-ripple class="site-btn" @click="getStar">
           起步
           <animation-box class="logo" :style="{ transform: 'rotate(-90deg)' }" />
         </div>
         <div v-ripple class="site-btn" @click="goGithub">
           Github
-          <var-icon style="margin-left:5px" name="github" />
+          <var-icon style="margin-left: 5px" name="github" />
         </div>
         <div class="site-action" v-if="darkMode" v-ripple @click="toggleTheme">
           <var-site-icon size="26px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
@@ -90,18 +90,17 @@ watch(() => route.path, togglePageTitle, { immediate: true })
         <div class="site-action" v-if="languages" v-ripple @click="toggleLanguages">
           <var-site-icon name="translate" size="26px" />
         </div>
-        <!-- </var-space> -->
       </div>
     </div>
     <div class="just-padding flex-one">
       <div class="post-introduce flex">
         <div class="introduce-img">
-          <img class="img"
-            src="https://madewithnetworkfra.fra1.digitaloceanspaces.com/spatie-space-production/28269/varlet-ui.jpg" />
+          <img
+            class="img"
+            src="https://madewithnetworkfra.fra1.digitaloceanspaces.com/spatie-space-production/28269/varlet-ui.jpg"
+          />
         </div>
-        <div class="base-descrition introduce-descrition">
-          Vue3 Material风格的移动端组件库
-        </div>
+        <div class="base-descrition introduce-descrition">Vue3 Material风格的移动端组件库</div>
       </div>
     </div>
   </div>
@@ -168,26 +167,25 @@ watch(() => route.path, togglePageTitle, { immediate: true })
     0 1px 5px 0 var(--shadow-key-ambient-opacity);
 }
 
-.post-introduce>.introduce-img {
+.post-introduce > .introduce-img {
   width: 43vw;
   height: 100%;
   border-radius: 20px 20px 0 0;
   overflow: hidden;
 }
 
-.post-introduce>.introduce-img>.img {
+.post-introduce > .introduce-img > .img {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.post-introduce>.introduce-descrition {
+.post-introduce > .introduce-descrition {
   border-top: 2px solid rgba(67, 91, 113, 0.1);
   padding: 15px 20px;
   box-sizing: border-box;
   width: 100%;
 }
-
 
 .site-btn {
   border-radius: 5px;
@@ -233,7 +231,7 @@ watch(() => route.path, togglePageTitle, { immediate: true })
     flex-direction: column;
   }
 
-  .post-introduce>.introduce-img {
+  .post-introduce > .introduce-img {
     width: 60vw;
     height: 100%;
     border-radius: 20px 20px 0 0;

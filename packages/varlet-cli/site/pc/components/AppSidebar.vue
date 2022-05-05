@@ -28,7 +28,7 @@ import config from '@config'
 import { MenuTypes } from '../../utils'
 import { reactive, ref, defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import type { Menu } from '../App.vue'
+import type { Menu } from '../Layout.vue'
 import { get } from 'lodash-es'
 
 export default defineComponent({

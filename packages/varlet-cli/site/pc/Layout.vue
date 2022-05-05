@@ -3,10 +3,11 @@ import config from '@config'
 import AppMobile from './components/AppMobile.vue'
 import AppHeader from './components/AppHeader.vue'
 import AppSidebar from './components/AppSidebar.vue'
-import { defineComponent, nextTick, onMounted, ref, Ref, watch } from 'vue'
+import { defineComponent, nextTick, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { get } from 'lodash-es'
-import { getPCLocationInfo, isPhone, MenuTypes } from '../utils'
+import { getPCLocationInfo, MenuTypes } from '../utils'
+import type { Ref } from 'vue'
 
 export interface Menu {
   doc: string
@@ -60,7 +61,7 @@ export default defineComponent({
       menuName.value = menu.doc
     }
 
-    onMounted(() => init())
+    onMounted(init)
 
     watch(
       () => route.path,

@@ -1,16 +1,16 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
-import LogoAnimation from "./components/LogoAnimation.vue";
-import { getPCLocationInfo, isPhone, MenuTypes } from '../utils'
+import LogoAnimation from './components/LogoAnimation.vue'
+import { getPCLocationInfo, isPhone } from '../utils'
 import { get } from 'lodash-es'
 import config from '@config'
 
 export default defineComponent({
   components: {
-    LogoAnimation
+    LogoAnimation,
   },
   setup() {
-    const showLogo = ref<boolean>(false);
+    const showLogo = ref<boolean>(false)
     const useMobile = ref(get(config, 'useMobile'))
     const defaultLanguage = get(config, 'defaultLanguage')
 
@@ -21,15 +21,15 @@ export default defineComponent({
         window.location.href = `./mobile.html#/${menuName}?language=${language || defaultLanguage}&platform=mobile`
         return
       }
-      showLogo.value = true;
+      showLogo.value = true
     }
 
-    onMounted(init);
+    onMounted(init)
 
     return {
-      showLogo
+      showLogo,
     }
-  }
+  },
 })
 </script>
 
