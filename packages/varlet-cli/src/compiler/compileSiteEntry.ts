@@ -78,17 +78,16 @@ export async function buildMobileSiteRoutes() {
 
   const routes = examples.map(
     (example) => `
-      {
-        path: '${getExampleRoutePath(example)}',
-        // @ts-ignore
-        component: () => import('${example}')
-      }\
-    `
+  {
+    path: '${getExampleRoutePath(example)}',
+    // @ts-ignore
+    component: () => import('${example}')
+  }`
   )
 
   const source = `export default [\
     ${routes.join(',')}
-  ]`
+]`
 
   await outputFileSyncOnChange(SITE_MOBILE_ROUTES, source)
 }
@@ -98,12 +97,12 @@ export async function buildPcSiteRoutes() {
 
   const rootPagesRoutes = rootPages.map(
     (rootPage) => `
-      {
-        path: '${getRootPagesPath(rootPage)}',
-        // @ts-ignore
-        component: () => import('${rootPage}')
-      }\
-    `
+  {
+    path: '${getRootPagesPath(rootPage)}',
+    // @ts-ignore
+    component: () => import('${rootPage}')
+  }\
+`
   )
 
   const componentDocsRoutes = componentDocs.map(
@@ -112,8 +111,7 @@ export async function buildPcSiteRoutes() {
         path: '${getComponentDocRoutePath(componentDoc)}',
         // @ts-ignore
         component: () => import('${componentDoc}')
-      }\
-    `
+      }`
   )
 
   const rootDocsRoutes = rootDocs.map(
@@ -122,25 +120,22 @@ export async function buildPcSiteRoutes() {
         path: '${getRootDocRoutePath(rootDoc)}',
         // @ts-ignore
         component: () => import('${rootDoc}')
-      }\
-    `
+      }`
   )
 
-  const layoutRoutes = `
-    {
-      path: '/layout',
-      // @ts-ignore
-      component:()=> import('${SITE_PC_DIR}/Layout.vue'),
-      children: [
-        ${[...componentDocsRoutes, rootDocsRoutes].join(',')}, 
-      ]
-    }\
-  `
+  const layoutRoutes = `{
+    path: '/layout',
+    // @ts-ignore
+    component:()=> import('${SITE_PC_DIR}/Layout.vue'),
+    children: [
+      ${[...componentDocsRoutes, rootDocsRoutes].join(',')},
+    ]
+  }`
+
   const source = `export default [\
-    ${rootPagesRoutes.join(',')},
-    \
-    ${layoutRoutes}
-  ]`
+  ${rootPagesRoutes.join(',')},
+  ${layoutRoutes}
+]`
   outputFileSyncOnChange(SITE_PC_ROUTES, source)
 }
 
