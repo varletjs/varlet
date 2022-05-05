@@ -100,7 +100,7 @@ watch(() => route.path, togglePageTitle, { immediate: true })
             src="https://madewithnetworkfra.fra1.digitaloceanspaces.com/spatie-space-production/28269/varlet-ui.jpg"
           />
         </div>
-        <div class="base-descrition introduce-descrition">
+        <div class="base-description introduce-description">
           Material style mobile terminal component library for vue3
         </div>
       </div>
