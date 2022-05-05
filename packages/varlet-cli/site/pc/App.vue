@@ -7,7 +7,7 @@ import config from '@config'
 
 export default defineComponent({
   components: {
-    LogoAnimation,
+    LogoAnimation
   },
   setup() {
     const showLogo = ref<boolean>(false)
@@ -27,9 +27,9 @@ export default defineComponent({
     onMounted(init)
 
     return {
-      showLogo,
+      showLogo
     }
-  },
+  }
 })
 </script>
 
@@ -39,3 +39,13 @@ export default defineComponent({
     <logo-animation />
   </template>
 </template>
+
+<style lang="less">
+body {
+  transition: background-color 0.25s, box-shadow 0.25s;
+
+  * {
+    transition: background-color 0.25s, box-shadow 0.25s;
+  }
+}
+</style>
