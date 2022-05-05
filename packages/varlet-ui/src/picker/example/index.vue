@@ -120,7 +120,7 @@ const handleChange = (_, [i1, i2, i3]) => {
   const [c1, c2, c3] = rawColumns
   const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
   Snackbar({
-    content: ids,
+    content: ids.toString(),
   })
 }
 
@@ -185,5 +185,5 @@ watchDarkMode(dark)
   <var-picker cascade :columns="columns4" :text-formatter="formatter" />
 
   <app-type>{{ pack.extension }}</app-type>
-  <var-picker :columns="columns5" :text-formatter="formatter2" @change="handleChange" />
+  <var-picker :columns="columns5" @change="handleChange" />
 </template>
