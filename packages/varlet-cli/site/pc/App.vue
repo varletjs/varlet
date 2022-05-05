@@ -1,9 +1,9 @@
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
+import config from '@config'
 import LogoAnimation from './components/LogoAnimation.vue'
+import { defineComponent, onMounted, ref } from 'vue'
 import { getPCLocationInfo, isPhone } from '../utils'
 import { get } from 'lodash-es'
-import config from '@config'
 
 export default defineComponent({
   components: {

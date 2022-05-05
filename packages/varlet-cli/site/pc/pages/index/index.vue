@@ -79,18 +79,16 @@ watch(() => route.path, setLocale, { immediate: true })
 </script>
 
 <template>
-  <div class="root-page">
+  <div class="home-page">
+    <div class="slash-1"></div>
+    <div class="slash-2"></div>
+    <div class="slash-3"></div>
     <div class="profile-container">
-      <div style="padding-left: 6px">
-        <div class="base-title">{{ title }}</div>
-        <div class="base-description">{{ pack.description }}</div>
-        <div class="button-group">
-          <var-site-button class="round-button" round v-if="darkMode" @click="toggleTheme">
-            <var-site-icon size="24px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
-          </var-site-button>
-          <var-site-button class="round-button" round v-if="languages" @click="toggleLanguages">
-            <var-site-icon name="translate" size="24px" />
-          </var-site-button>
+      <div class="description-container">
+        <animation-box class="logo" />
+        <div>
+          <div class="base-title">{{ title }}</div>
+          <div class="base-description">{{ pack.description }}</div>
         </div>
       </div>
 
@@ -100,21 +98,20 @@ watch(() => route.path, setLocale, { immediate: true })
           <var-site-icon style="margin-left: 10px;" name="github" size="24px" />
         </div>
       </var-site-button>
-      <var-site-button class="block-button" block @click="getStar">
+      <var-site-button type="primary" class="block-primary-button" block @click="getStar">
         <div class="block-button-content">
           <span>{{ pack.started }}</span>
-          <animation-box class="logo" :style="{ transform: 'rotate(-90deg)' }" />
+          <var-site-icon style="margin-left: 10px; transform: rotate(-90deg)" name="arrow-down" size="24px" />
         </div>
       </var-site-button>
-    </div>
-    <div>
-      <div class="post-introduce">
-        <div class="introduce-img">
-          <img
-            class="img"
-            src="../../../banner.png"
-          />
-        </div>
+
+      <div class="button-group">
+        <var-site-button class="round-button" round v-if="darkMode" @click="toggleTheme">
+          <var-site-icon size="24px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
+        </var-site-button>
+        <var-site-button class="round-button" round v-if="languages" @click="toggleLanguages">
+          <var-site-icon name="translate" size="24px" />
+        </var-site-button>
       </div>
     </div>
   </div>
