@@ -13,8 +13,9 @@ import {
   SRC_DIR,
 } from '../shared/constant'
 import { copy } from 'fs-extra'
-import { glob, outputFileSyncOnChange } from '../shared/fsUtils'
+import { glob, isDir, outputFileSyncOnChange } from '../shared/fsUtils'
 import { getVarletConfig } from '../config/varlet.config'
+import { get } from 'lodash'
 
 const EXAMPLE_COMPONENT_NAME_RE = /\/([-\w]+)\/example\/index.vue/
 const COMPONENT_DOCS_RE = /\/([-\w]+)\/docs\/([-\w]+)\.md/
@@ -60,8 +61,24 @@ export function findRootDocs(): Promise<string[]> {
 }
 
 export async function findRootLocales(): Promise<string[]> {
-  const userLocales = await glob(`${ROOT_PAGES_DIR}/**/${LOCALE_DIR_NAME}/*.ts`)
+  const defaultLanguage = get(getVarletConfig(), 'defaultLanguage')
+
+  const userPages = await glob(`${ROOT_PAGES_DIR}/*`)
   const baseLocales = await glob(`${SITE}/pc/pages/**/${LOCALE_DIR_NAME}/*.ts`)
+
+  const userLocales = await userPages.reduce<Promise<string[]>>(
+    async (userLocales: Promise<string[]>, page: string) => {
+      if (isDir(page)) {
+        const locales = await glob(`${page}/${LOCALE_DIR_NAME}/*.ts`)
+
+        if (!locales.length) locales.push(`${page}/${LOCALE_DIR_NAME}/${defaultLanguage}.ts`)
+        ;(await userLocales).push(...locales)
+      }
+
+      return userLocales
+    },
+    Promise.resolve([])
+  )
 
   // filter
   const filterMap = new Map()
@@ -69,6 +86,7 @@ export async function findRootLocales(): Promise<string[]> {
     const [, routePath, language] = locale.match(ROOT_LOCALE_RE) ?? []
     filterMap.set(routePath + language, `${SITE_PC_DIR}/pages/${routePath}/locale/${language}.ts`)
   })
+
   userLocales.forEach((locale) => {
     const [, routePath, language] = locale.match(ROOT_LOCALE_RE) ?? []
     filterMap.set(routePath + language, locale)
