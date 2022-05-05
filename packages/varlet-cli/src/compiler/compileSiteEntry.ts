@@ -13,6 +13,7 @@ import {
   SRC_DIR,
 } from '../shared/constant'
 import { copy } from 'fs-extra'
+import slash from 'slash'
 import { glob, isDir, outputFileSyncOnChange } from '../shared/fsUtils'
 import { getVarletConfig } from '../config/varlet.config'
 import { get } from 'lodash'
@@ -84,7 +85,7 @@ export async function findRootLocales(): Promise<string[]> {
   const filterMap = new Map()
   baseLocales.forEach((locale) => {
     const [, routePath, language] = locale.match(ROOT_LOCALE_RE) ?? []
-    filterMap.set(routePath + language, `${SITE_PC_DIR}/pages/${routePath}/locale/${language}.ts`)
+    filterMap.set(routePath + language, slash(`${SITE_PC_DIR}/pages/${routePath}/locale/${language}.ts`))
   })
 
   userLocales.forEach((locale) => {
@@ -152,7 +153,7 @@ export async function buildPcSiteRoutes() {
   const layoutRoutes = `{
     path: '/layout',
     // @ts-ignore
-    component:()=> import('${SITE_PC_DIR}/Layout.vue'),
+    component:()=> import('${slash(SITE_PC_DIR)}/Layout.vue'),
     children: [
       ${[...componentDocsRoutes, rootDocsRoutes].join(',')},
     ]
