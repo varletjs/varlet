@@ -1,7 +1,8 @@
 import {
   DOCS_DIR_NAME,
-  EXAMPLE_DIR_INDEX,
+  DIR_INDEX,
   EXAMPLE_DIR_NAME,
+  LOCALE_DIR_NAME,
   ROOT_DOCS_DIR,
   ROOT_PAGES_DIR,
   SITE,
@@ -18,7 +19,7 @@ import { getVarletConfig } from '../config/varlet.config'
 const EXAMPLE_COMPONENT_NAME_RE = /\/([-\w]+)\/example\/index.vue/
 const COMPONENT_DOCS_RE = /\/([-\w]+)\/docs\/([-\w]+)\.md/
 const ROOT_DOCS_RE = /\/docs\/([-\w]+)\.([-\w]+)\.md/
-const ROOT_PAGE_RE = /\/pages\/([-\w]+)\.([-\w]+)\.vue/
+const ROOT_LOCALE_RE = /\/pages\/([-\w]+)\/locale\/([-\w]+)\.ts/
 
 export function getExampleRoutePath(examplePath: string): string {
   return '/' + examplePath.match(EXAMPLE_COMPONENT_NAME_RE)?.[1]
@@ -36,13 +37,18 @@ export function getRootDocRoutePath(rootDocsPath: string): string {
   return `/${language}/${routePath}`
 }
 
-export function getRootPagesPath(rootPagePath: string): string {
-  const [, routePath, language] = rootPagePath.match(ROOT_PAGE_RE) ?? []
+export function getRootRoutePath(rootLocalePath: string): string {
+  const [, routePath, language] = rootLocalePath.match(ROOT_LOCALE_RE) ?? []
+
   return `/${language}/${routePath}`
 }
 
+export function getRootFilePath(rootLocalePath: string): string {
+  return rootLocalePath.replace(/locale\/.+/, DIR_INDEX)
+}
+
 export function findExamples(): Promise<string[]> {
-  return glob(`${SRC_DIR}/**/${EXAMPLE_DIR_NAME}/${EXAMPLE_DIR_INDEX}`)
+  return glob(`${SRC_DIR}/**/${EXAMPLE_DIR_NAME}/${DIR_INDEX}`)
 }
 
 export function findComponentDocs(): Promise<string[]> {
@@ -53,21 +59,19 @@ export function findRootDocs(): Promise<string[]> {
   return glob(`${ROOT_DOCS_DIR}/*.md`)
 }
 
-export async function findRootPages(): Promise<string[]> {
-  // the user pages
-  const userPages = await glob(`${ROOT_PAGES_DIR}/*.vue`)
-  // authority pattern
-  const authorityPage = await glob(`${SITE}/pc/pages/*.vue`)
+export async function findRootLocales(): Promise<string[]> {
+  const userLocales = await glob(`${ROOT_PAGES_DIR}/**/${LOCALE_DIR_NAME}/*.ts`)
+  const baseLocales = await glob(`${SITE}/pc/pages/**/${LOCALE_DIR_NAME}/*.ts`)
 
   // filter
   const filterMap = new Map()
-  authorityPage.forEach((page) => {
-    const [, routePath, language] = page.match(ROOT_PAGE_RE) ?? []
-    filterMap.set(routePath + language, `${SITE_PC_DIR}/pages/${routePath}.${language}.vue`)
+  baseLocales.forEach((locale) => {
+    const [, routePath, language] = locale.match(ROOT_LOCALE_RE) ?? []
+    filterMap.set(routePath + language, `${SITE_PC_DIR}/pages/${routePath}/locale/${language}.ts`)
   })
-  userPages.forEach((page) => {
-    const [, routePath, language] = page.match(ROOT_PAGE_RE) ?? []
-    filterMap.set(routePath + language, page)
+  userLocales.forEach((locale) => {
+    const [, routePath, language] = locale.match(ROOT_LOCALE_RE) ?? []
+    filterMap.set(routePath + language, locale)
   })
 
   return Promise.resolve(Array.from(filterMap.values()))
@@ -93,14 +97,18 @@ export async function buildMobileSiteRoutes() {
 }
 
 export async function buildPcSiteRoutes() {
-  const [componentDocs, rootDocs, rootPages] = await Promise.all([findComponentDocs(), findRootDocs(), findRootPages()])
+  const [componentDocs, rootDocs, rootLocales] = await Promise.all([
+    findComponentDocs(),
+    findRootDocs(),
+    findRootLocales(),
+  ])
 
-  const rootPagesRoutes = rootPages.map(
-    (rootPage) => `
+  const rootPagesRoutes = rootLocales.map(
+    (rootLocale) => `
   {
-    path: '${getRootPagesPath(rootPage)}',
+    path: '${getRootRoutePath(rootLocale)}',
     // @ts-ignore
-    component: () => import('${rootPage}')
+    component: () => import('${getRootFilePath(rootLocale)}')
   }\
 `
   )
