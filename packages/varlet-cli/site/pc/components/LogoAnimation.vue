@@ -4,7 +4,7 @@
     :style="styles"
     :src="logo"
     alt="logo"
-    v-if="logo"
+    v-if="logo && animationEl"
     class="logo-animation"
     :class="{ 'logo-transition': transition }"
   />
@@ -63,6 +63,7 @@ export default defineComponent({
       animationBoxData,
       styles,
       transition,
+      animationEl
     }
   },
 })

@@ -6,72 +6,103 @@
   min-width: 1200px;
   background: var(--site-config-color-home-page-background);
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 @keyframes slash-1 {
   from {
-    right: 0;
-    transform: rotate(0);;
+    left: 0;
+    transform: rotate(0);
+    ;
   }
 
   to {
-    right: 10%;
-    transform: rotate(-10deg);
+    left: 48%;
+    transform: rotate(10deg);
   }
 }
 
 @keyframes slash-2 {
   from {
-    right: 0;
-    transform: rotate(0);;
+    left: 0;
+    transform: rotate(0);
+    ;
   }
 
   to {
-    right: 21%;
-    transform: rotate(-20deg);
+    left: 48%;
+    transform: rotate(20deg);
   }
 }
 
 @keyframes slash-3 {
   from {
-    right: 0;
-    transform: rotate(0);;
+    left: 0;
+    transform: rotate(0);
+    ;
   }
 
   to {
-    right: 32%;
-    transform: rotate(-30deg);
+    left: 48%;
+    transform: rotate(30deg);
   }
 }
 
-.slash-1 {
-  position: absolute;
-  width: 30px;
-  height: 200%;
-  top: -30%;
-  transition: box-shadow .25s;
-  box-shadow: -20px 0 20px var(--site-config-color-home-page-slash);
-  animation: slash-1 .25s forwards;
+@keyframes slash-4 {
+  from {
+    left: 0;
+    transform: rotate(0);
+    ;
+  }
+
+  to {
+    left: 48%;
+    transform: rotate(40deg);
+  }
 }
 
-.slash-2 {
-  position: absolute;
-  width: 30px;
-  height: 200%;
-  top: -30%;
-  transition: box-shadow .25s;
-  box-shadow: -20px 0 20px var(--site-config-color-home-page-slash);
-  animation: slash-2 .35s forwards;
+@keyframes slash-5 {
+  from {
+    left: 0;
+    transform: rotate(0);
+    ;
+  }
+
+  to {
+    left: 48%;
+    transform: rotate(50deg);
+  }
 }
 
-.slash-3 {
+.slash-box {
   position: absolute;
   width: 30px;
   height: 200%;
   top: -30%;
-  transition: box-shadow .25s;
+  transform-origin: bottom;
+  transition: box-shadow 0.5s;
   box-shadow: -20px 0 20px var(--site-config-color-home-page-slash);
-  animation: slash-3 .4s forwards;
+}
+
+.box-1 {
+  animation: slash-1 .75s forwards;
+}
+
+.box-2 {
+  animation: slash-2 .75s forwards;
+}
+
+.box-3 {
+  animation: slash-3 .75s forwards;
+}
+
+.box-4 {
+  animation: slash-4 .75s forwards;
+}
+
+.box-5 {
+  animation: slash-5 .75s forwards;
 }
 
 .profile-container {
@@ -119,23 +150,26 @@
   box-shadow: none;
 }
 
-.base-description {
-  font-size: 16px;
-  line-height: 24px;
-  margin-top: 4px;
-  padding-left: 4px;
-}
+.base {
+  margin-left: 115px;
 
-.base-title {
-  font-size: 64px;
-  line-height: 72px;
-  font-weight: 500;
+  .base-description {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 4px;
+    padding-left: 4px;
+  }
+
+  .base-title {
+    font-size: 64px;
+    line-height: 72px;
+    font-weight: 500;
+  }
 }
 
 .logo {
   width: 90px;
   height: 90px;
   flex-shrink: 0;
-  margin-right: 25px;
   margin-top: 10px;
 }
