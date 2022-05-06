@@ -10,6 +10,23 @@
   align-items: center;
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform:none;
+  }
+
+  10% {
+    opacity: 0.1;
+    transform: translateX(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
 @keyframes slash-1 {
   from {
     transform: rotate(0);
@@ -97,8 +114,10 @@
 }
 
 .profile-container {
+  animation: fade-in .75s forwards;
   width: 500px;
   padding: 120px 100px;
+  transform: none;
 }
 
 .description-container {
