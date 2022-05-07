@@ -1,9 +1,5 @@
-<template>
-  <div ref="varletLogoAnimationRef"></div>
-</template>
-
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted, ref, useAttrs } from 'vue'
+import { defineComponent, onMounted, ref, useAttrs } from 'vue'
 import { animationBoxData, animationEl } from '../floating'
 
 export default defineComponent({
@@ -22,3 +18,8 @@ export default defineComponent({
   },
 })
 </script>
+
+<template>
+  <div ref="varletLogoAnimationRef"></div>
+</template>
+

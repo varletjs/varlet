@@ -86,7 +86,7 @@ watch(() => route.path, setLocale, { immediate: true })
     <div class="slash-box box-5"></div>
     <div class="profile-container">
       <div class="description-container">
-        <animation-box class="logo" style="position:absolute;" />
+        <animation-box class="logo" />
         <div class="base-title">{{ title }}</div>
       </div>
       <div class="base-description">{{ pack.description }}</div>

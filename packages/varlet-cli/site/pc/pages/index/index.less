@@ -13,13 +13,9 @@
 @keyframes fade-in {
   0% {
     opacity: 0;
-    transform:none;
-  }
-
-  10% {
-    opacity: 0.1;
     transform: translateX(-100%);
   }
+
 
   to {
     opacity: 1;
@@ -114,7 +110,6 @@
 }
 
 .profile-container {
-  animation: fade-in .75s forwards;
   width: 500px;
   padding: 120px 100px;
   transform: none;
@@ -144,12 +139,14 @@
   font-size: 18px;
   background-color: var(--site-config-color-home-page-button-background);
   transition: all .25s;
+  animation: fade-in .75s forwards;
 }
 
 .block-primary-button {
   height: 52px;
   margin-top: 20px;
   font-size: 18px;
+  animation: fade-in .75s forwards;
 }
 
 .round-button {
@@ -158,14 +155,16 @@
   background-color: transparent;
   color: inherit;
   box-shadow: none;
+  animation: fade-in .75s forwards;
+  transition: all .25s;
 }
 
 .base-title {
-  margin-left: 118px;
   font-size: 84px;
   line-height: 72px;
   font-weight: 500;
   margin-top: 8px;
+  animation: fade-in .75s forwards;
 }
 
 .base-description {
@@ -175,10 +174,12 @@
   font-weight: 500;
   margin-bottom: 45px;
   letter-spacing: 1px;
+  animation: fade-in .75s forwards;
 }
 
 .logo {
   width: 90px;
   height: 90px;
   flex-shrink: 0;
+  margin-right: 25px;
 }
