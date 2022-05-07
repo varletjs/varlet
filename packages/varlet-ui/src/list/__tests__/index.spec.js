@@ -1,15 +1,15 @@
 import List from '..'
 import VarList from '../List'
 import { mount } from '@vue/test-utils'
-import { createApp, h } from 'vue'
+import { createApp } from 'vue'
 import { delay } from '../../utils/jest'
 
-test('test list plugin', () => {
+test('test list use', () => {
   const app = createApp({}).use(List)
   expect(app.component(List.name)).toBeTruthy()
 })
 
-test('test list immediate check', async () => {
+test('test list component load event', async () => {
   const onLoad = jest.fn()
   const onUpdateLoading = jest.fn()
 
@@ -26,59 +26,68 @@ test('test list immediate check', async () => {
 
   expect(onLoad).toHaveBeenCalledTimes(1)
   expect(onUpdateLoading).toHaveBeenCalledTimes(1)
-  expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
   mockGetBoundingClientRect.mockRestore()
 })
 
-test('test click error text reload', async () => {
-  const onLoad = jest.fn()
-  const onUpdateLoading = jest.fn((value) => wrapper.setProps({ loading: value }))
-  const onUpdateError = jest.fn((value) => wrapper.setProps({ error: value }))
+describe('test list component props', () => {
+  test('test list loading and loading-text', async () => {
+    const wrapper = mount(VarList, {
+      props: {
+        loading: true,
+        loadingText: 'This is loading text',
+      },
+    })
 
-  const wrapper = mount(VarList, {
-    props: {
-      loading: false,
-      loadingText: '正在加载',
-      error: true,
-      errorText: '点击重试',
-      onLoad,
-      'onUpdate:error': onUpdateError,
-      'onUpdate:loading': onUpdateLoading,
-    },
-    attachTo: document.body,
+    const mockGetBoundingClientRect = jest
+      .spyOn(wrapper.element, 'getBoundingClientRect')
+      .mockReturnValue({ bottom: 50 })
+    await delay(16)
+    expect(wrapper.find('.var-list__loading').element.textContent).toBe('This is loading text')
+    await wrapper.setProps({ loading: false })
+    await delay(16)
+    expect(wrapper.find('.var-list__loading').exists()).toBe(false)
+    wrapper.unmount()
+    mockGetBoundingClientRect.mockRestore()
   })
 
-  const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ bottom: 50 })
+  test('test list error and error-text', async () => {
+    const wrapper = mount(VarList, {
+      props: {
+        error: true,
+        errorText: 'This is error text',
+      },
+    })
 
-  await delay(16)
-
-  expect(onLoad).toHaveBeenCalledTimes(0)
-  expect(wrapper.find('.var-list__error').text()).toBe('点击重试')
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.find('.var-list__error').trigger('click')
-  expect(onUpdateLoading).toHaveBeenCalledTimes(1)
-  expect(onUpdateError).toHaveBeenCalledTimes(1)
-  expect(onLoad).toHaveBeenCalledTimes(1)
-  expect(wrapper.find('.var-list__loading-text').text()).toBe('正在加载')
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-  mockGetBoundingClientRect.mockRestore()
-})
-
-test('test list finished', async () => {
-  const wrapper = mount(VarList, {
-    props: {
-      finished: true,
-      finishedText: '暂无更多',
-    },
-    attachTo: document.body,
+    const mockGetBoundingClientRect = jest
+      .spyOn(wrapper.element, 'getBoundingClientRect')
+      .mockReturnValue({ bottom: 50 })
+    await delay(16)
+    expect(wrapper.find('.var-list__error').element.textContent).toBe('This is error text')
+    await wrapper.setProps({ error: false })
+    await delay(16)
+    expect(wrapper.find('.var-list__error').exists()).toBe(false)
+    wrapper.unmount()
+    mockGetBoundingClientRect.mockRestore()
   })
 
-  await delay(16)
+  test('test list finished and finished-text', async () => {
+    const wrapper = mount(VarList, {
+      props: {
+        finished: true,
+        finishedText: 'This is finished text',
+      },
+    })
 
-  expect(wrapper.find('.var-list__finished').text()).toBe('暂无更多')
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
+    const mockGetBoundingClientRect = jest
+      .spyOn(wrapper.element, 'getBoundingClientRect')
+      .mockReturnValue({ bottom: 50 })
+    await delay(16)
+    expect(wrapper.find('.var-list__finished').element.textContent).toBe('This is finished text')
+    await wrapper.setProps({ finished: false })
+    await delay(16)
+    expect(wrapper.find('.var-list__finished').exists()).toBe(false)
+    wrapper.unmount()
+    mockGetBoundingClientRect.mockRestore()
+  })
 })
