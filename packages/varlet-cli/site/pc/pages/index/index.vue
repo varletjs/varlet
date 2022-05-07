@@ -62,7 +62,6 @@ const toggleLanguages = () => {
   const { language: lang } = getPCLocationInfo()
 
   const { menuName } = getPCLocationInfo()
-  // TODO: 没有想到合适的交互, 所以暂时先写死实现效果, 和大佬们商榷后重写
   const replaceStr = `/${lang === 'zh-CN' ? 'en-US' : 'zh-CN'}/${menuName}`
   router.replace(replaceStr)
 }
@@ -88,11 +87,9 @@ watch(() => route.path, setLocale, { immediate: true })
     <div class="profile-container">
       <div class="description-container">
         <animation-box class="logo" style="position:absolute;" />
-        <div class="base">
-          <div class="base-title">{{ title }}</div>
-          <div class="base-description">{{ pack.description }}</div>
-        </div>
+        <div class="base-title">{{ title }}</div>
       </div>
+      <div class="base-description">{{ pack.description }}</div>
 
       <var-site-button class="block-button" block @click="goGithub">
         <div class="block-button-content">
