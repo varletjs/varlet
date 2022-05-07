@@ -25,7 +25,7 @@
 
 @keyframes slash-1 {
   from {
-    transform: rotate(0);
+    transform: rotate(90deg);
     ;
   }
 
@@ -36,7 +36,7 @@
 
 @keyframes slash-2 {
   from {
-    transform: rotate(0);
+    transform: rotate(90deg);
     ;
   }
 
@@ -47,7 +47,7 @@
 
 @keyframes slash-3 {
   from {
-    transform: rotate(0);
+    transform: rotate(90deg);
     ;
   }
 
@@ -58,7 +58,7 @@
 
 @keyframes slash-4 {
   from {
-    transform: rotate(0);
+    transform: rotate(90deg);
     ;
   }
 
@@ -69,7 +69,7 @@
 
 @keyframes slash-5 {
   from {
-    transform: rotate(0);
+    transform: rotate(90deg);
     ;
   }
 
@@ -127,6 +127,7 @@
 .button-group {
   display: flex;
   margin-top: 25px;
+  align-items: center;
 }
 
 .block-button-content {
@@ -142,21 +143,19 @@
   animation: fade-in .75s forwards;
 }
 
+.github-button {
+  background-color: var(--site-config-color-pc-github-active-background);
+  color: #fff;
+}
+
 .block-primary-button {
   height: 52px;
-  margin-top: 20px;
   font-size: 18px;
   animation: fade-in .75s forwards;
 }
 
-.round-button {
-  padding: 8px;
-  margin-right: 10px;
-  background-color: transparent;
-  color: inherit;
-  box-shadow: none;
-  animation: fade-in .75s forwards;
-  transition: all .25s;
+.margin-left{
+  margin-left: 10px;
 }
 
 .base-title {

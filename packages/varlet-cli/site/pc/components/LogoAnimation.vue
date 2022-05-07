@@ -1,32 +1,8 @@
-<template>
-  <Teleport :to="animationEl" v-if="animationEl && !floatingState">
-    <img 
-      v-bind="animationBoxData.attrs" 
-      :style="styles" 
-      :src="logo" 
-      alt="logo" 
-      v-if="logo && animationEl"
-      class="varlet-cli-logo-animation" 
-    />
-  </Teleport>
-  <div v-else>
-    <img 
-      @transitionend="land" 
-      v-bind="animationBoxData.attrs" 
-      :style="styles" 
-      :src="logo" 
-      alt="logo" 
-      v-if="logo && animationEl"
-      class="varlet-cli-logo-animation varlet-cli-logo-position varlet-cli-logo-transition" 
-    />
-  </div>
-</template>
-
 <script lang="ts">
 import config from '@config'
 import { get } from 'lodash-es'
-import { computed, defineComponent, ref, watch, nextTick } from 'vue'
-import { animationBoxData, animationEl } from '../floating'
+import { computed, defineComponent, onMounted, ref, watch, nextTick } from 'vue'
+import { animationBoxData, animationEl, animationElClientRect } from '../floating'
 import type { Ref, StyleValue } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -37,10 +13,9 @@ export default defineComponent({
     const proxyRect: Ref<DOMRect | undefined> = ref<DOMRect>()
     const floatingState: Ref<boolean> = ref<boolean>(false)
 
-    watch(animationEl, async (newEl) => {
-      const newElBRect = newEl?.getBoundingClientRect()
-      if (newElBRect) {
-        proxyRect.value = newElBRect
+    watch(animationElClientRect, async (newClientRect) => {
+      if (newClientRect) {
+        proxyRect.value = newClientRect
       }
     })
 
@@ -58,7 +33,13 @@ export default defineComponent({
       }
       await nextTick();
     })
-    
+
+    onMounted(() => {
+      if (floatingState.value) {
+        floatingState.value = false
+      }
+    })
+
     const land = () => {
       floatingState.value = false;
     }
@@ -75,12 +56,23 @@ export default defineComponent({
 })
 </script>
 
+<template>
+  <Teleport :to="animationEl" v-if="animationEl">
+    <img v-show="!floatingState" v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo"
+      v-if="logo && animationEl" class="varlet-cli-logo-animation" />
+  </Teleport>
+  <div v-show="floatingState">
+    <img @transitionend="land" v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo"
+      v-if="logo && animationEl"
+      class="varlet-cli-logo-animation varlet-cli-logo-position varlet-cli-logo-transition" />
+  </div>
+</template>
+
 <style lang="less">
 .varlet-cli-logo-transition {
   transition: 0.5s all ease-in-out;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   display: block;
 }
 
@@ -90,6 +82,6 @@ export default defineComponent({
 }
 
 .varlet-cli-logo-position {
-  position: absolute;
+  position: fixed;
 }
 </style>
