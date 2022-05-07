@@ -26,7 +26,7 @@
 import config from '@config'
 import { get } from 'lodash-es'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
-import { animationBoxData, animationEl } from '../floating'
+import { animationBoxData, animationEl, animationElClientRect } from '../floating'
 import type { Ref, StyleValue } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -37,10 +37,9 @@ export default defineComponent({
     const proxyRect: Ref<DOMRect | undefined> = ref<DOMRect>()
     const floatingState: Ref<boolean> = ref<boolean>(false)
 
-    watch(animationEl, async (newEl) => {
-      const newElBRect = newEl?.getBoundingClientRect()
-      if (newElBRect) {
-        proxyRect.value = newElBRect
+    watch(animationElClientRect, async (newClientRect) => {
+      if (newClientRect) {
+        proxyRect.value = newClientRect
       }
     })
 

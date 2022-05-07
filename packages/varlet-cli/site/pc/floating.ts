@@ -5,3 +5,5 @@ export const animationBoxData = reactive<any>({})
 
 // 存储节点
 export const animationEl = ref<HTMLElement | null>()
+
+export const animationElClientRect = ref<DOMRect | null>();
