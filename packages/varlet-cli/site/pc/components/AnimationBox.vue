@@ -30,6 +30,6 @@ export default defineComponent({
 </script>
 
 <template>
-  <div ref="varletLogoAnimationRef" data-animation="port"></div>
+  <div ref="varletLogoAnimationRef"></div>
 </template>
 
