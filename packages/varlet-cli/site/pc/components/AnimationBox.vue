@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, useAttrs } from 'vue'
+import { defineComponent, onMounted, onUnmounted, ref, useAttrs } from 'vue'
 import { animationBoxData, animationEl } from '../floating'
 
 export default defineComponent({

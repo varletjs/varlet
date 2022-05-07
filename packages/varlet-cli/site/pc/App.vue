@@ -10,7 +10,6 @@ export default defineComponent({
     LogoAnimation
   },
   setup() {
-    const showLogo = ref<boolean>(false)
     const useMobile = ref(get(config, 'useMobile'))
     const defaultLanguage = get(config, 'defaultLanguage')
 
@@ -21,23 +20,16 @@ export default defineComponent({
         window.location.href = `./mobile.html#/${menuName}?language=${language || defaultLanguage}&platform=mobile`
         return
       }
-      showLogo.value = true
     }
 
     onMounted(init)
-
-    return {
-      showLogo
-    }
   }
 })
 </script>
 
 <template>
   <router-view></router-view>
-  <template v-if="showLogo">
-    <logo-animation />
-  </template>
+  <logo-animation />
 </template>
 
 <style lang="less">

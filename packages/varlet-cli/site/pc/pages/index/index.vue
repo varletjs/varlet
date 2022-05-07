@@ -80,13 +80,15 @@ watch(() => route.path, setLocale, { immediate: true })
 
 <template>
   <div class="home-page">
-    <div class="slash-1"></div>
-    <div class="slash-2"></div>
-    <div class="slash-3"></div>
+    <div class="slash-box box-1"></div>
+    <div class="slash-box box-2"></div>
+    <div class="slash-box box-3"></div>
+    <div class="slash-box box-4"></div>
+    <div class="slash-box box-5"></div>
     <div class="profile-container">
       <div class="description-container">
-        <animation-box class="logo" />
-        <div>
+        <animation-box class="logo" style="position:absolute;" />
+        <div class="base">
           <div class="base-title">{{ title }}</div>
           <div class="base-description">{{ pack.description }}</div>
         </div>

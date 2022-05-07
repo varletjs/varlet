@@ -6,77 +6,118 @@
   min-width: 1200px;
   background: var(--site-config-color-home-page-background);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform:none;
+  }
+
+  10% {
+    opacity: 0.1;
+    transform: translateX(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
 }
 
 @keyframes slash-1 {
   from {
-    right: 0;
-    transform: rotate(0);;
+    transform: rotate(0);
+    ;
   }
 
   to {
-    right: 10%;
-    transform: rotate(-10deg);
+    transform: rotate(10deg);
   }
 }
 
 @keyframes slash-2 {
   from {
-    right: 0;
-    transform: rotate(0);;
+    transform: rotate(0);
+    ;
   }
 
   to {
-    right: 21%;
-    transform: rotate(-20deg);
+    transform: rotate(20deg);
   }
 }
 
 @keyframes slash-3 {
   from {
-    right: 0;
-    transform: rotate(0);;
+    transform: rotate(0);
+    ;
   }
 
   to {
-    right: 32%;
-    transform: rotate(-30deg);
+    transform: rotate(30deg);
   }
 }
 
-.slash-1 {
-  position: absolute;
-  width: 30px;
-  height: 200%;
-  top: -30%;
-  transition: box-shadow .25s;
-  box-shadow: -20px 0 20px var(--site-config-color-home-page-slash);
-  animation: slash-1 .25s forwards;
+@keyframes slash-4 {
+  from {
+    transform: rotate(0);
+    ;
+  }
+
+  to {
+    transform: rotate(40deg);
+  }
 }
 
-.slash-2 {
-  position: absolute;
-  width: 30px;
-  height: 200%;
-  top: -30%;
-  transition: box-shadow .25s;
-  box-shadow: -20px 0 20px var(--site-config-color-home-page-slash);
-  animation: slash-2 .35s forwards;
+@keyframes slash-5 {
+  from {
+    transform: rotate(0);
+    ;
+  }
+
+  to {
+    transform: rotate(50deg);
+  }
 }
 
-.slash-3 {
+.slash-box {
   position: absolute;
   width: 30px;
   height: 200%;
   top: -30%;
-  transition: box-shadow .25s;
+  right: 52%;
+  transform-origin: bottom right;
+  transition: box-shadow 0.5s;
   box-shadow: -20px 0 20px var(--site-config-color-home-page-slash);
-  animation: slash-3 .4s forwards;
+}
+
+.box-1 {
+  animation: slash-1 .75s forwards;
+}
+
+.box-2 {
+  animation: slash-2 .75s forwards;
+}
+
+.box-3 {
+  animation: slash-3 .75s forwards;
+}
+
+.box-4 {
+  animation: slash-4 .75s forwards;
+}
+
+.box-5 {
+  animation: slash-5 .75s forwards;
 }
 
 .profile-container {
+  animation: fade-in .75s forwards;
   width: 500px;
   padding: 120px 100px;
+  transform: none;
 }
 
 .description-container {
@@ -119,23 +160,26 @@
   box-shadow: none;
 }
 
-.base-description {
-  font-size: 16px;
-  line-height: 24px;
-  margin-top: 4px;
-  padding-left: 4px;
-}
+.base {
+  margin-left: 115px;
 
-.base-title {
-  font-size: 64px;
-  line-height: 72px;
-  font-weight: 500;
+  .base-description {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 4px;
+    padding-left: 4px;
+  }
+
+  .base-title {
+    font-size: 64px;
+    line-height: 72px;
+    font-weight: 500;
+  }
 }
 
 .logo {
   width: 90px;
   height: 90px;
   flex-shrink: 0;
-  margin-right: 25px;
   margin-top: 10px;
 }
