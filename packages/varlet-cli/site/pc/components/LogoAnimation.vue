@@ -1,5 +1,5 @@
 <template>
-  <Teleport :to="animationEl" v-if="animationEl && !showLogo">
+  <Teleport :to="animationEl" v-if="animationEl && showLogo">
     <img v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo" v-if="logo && animationEl"
       class="varlet-cli-logo-animation" />
   </Teleport>
