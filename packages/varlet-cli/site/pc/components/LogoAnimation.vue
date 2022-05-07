@@ -1,31 +1,19 @@
 <template>
-  <Teleport :to="animationEl" v-if="animationEl && showLogo">
-    <img 
-      v-bind="animationBoxData.attrs" 
-      :style="styles" 
-      :src="logo" 
-      alt="logo" 
-      v-if="logo && animationEl"
-      class="varlet-cli-logo-animation" 
-    />
+  <Teleport :to="animationEl" v-if="animationEl && !floatingState">
+    <img v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo" v-if="logo && animationEl"
+      class="varlet-cli-logo-animation" />
   </Teleport>
   <div v-show="floatingState">
-    <img 
-      @transitionend="land" 
-      v-bind="animationBoxData.attrs" 
-      :style="styles" 
-      :src="logo" 
-      alt="logo" 
+    <img @transitionend="land" v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo"
       v-if="logo && animationEl"
-      class="varlet-cli-logo-animation varlet-cli-logo-position varlet-cli-logo-transition" 
-    />
+      class="varlet-cli-logo-animation varlet-cli-logo-position varlet-cli-logo-transition" />
   </div>
 </template>
 
 <script lang="ts">
 import config from '@config'
 import { get } from 'lodash-es'
-import { computed, defineComponent, onBeforeMount, ref, watch, nextTick } from 'vue'
+import { computed, defineComponent, onMounted, ref, watch, nextTick } from 'vue'
 import { animationBoxData, animationEl, animationElClientRect } from '../floating'
 import type { Ref, StyleValue } from 'vue'
 import { useRouter } from 'vue-router'
@@ -60,17 +48,17 @@ export default defineComponent({
       await nextTick();
     })
 
-    onBeforeMount(() => {
+    onMounted(() => {
       if (floatingState.value) {
         floatingState.value = false
       }
     })
-    
+
     const land = () => {
       showLogo.value = true;
       setTimeout(() => {
         floatingState.value = false;
-      }, 200);
+      }, 150);
     }
 
     return {
@@ -100,6 +88,6 @@ export default defineComponent({
 }
 
 .varlet-cli-logo-position {
-  position: absolute;
+  position: fixed;
 }
 </style>
