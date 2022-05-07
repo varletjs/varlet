@@ -1,15 +1,3 @@
-<template>
-  <Teleport :to="animationEl" v-if="animationEl">
-    <img v-show="!floatingState" v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo"
-      v-if="logo && animationEl" class="varlet-cli-logo-animation" />
-  </Teleport>
-  <div v-show="floatingState">
-    <img @transitionend="land" v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo"
-      v-if="logo && animationEl"
-      class="varlet-cli-logo-animation varlet-cli-logo-position varlet-cli-logo-transition" />
-  </div>
-</template>
-
 <script lang="ts">
 import config from '@config'
 import { get } from 'lodash-es'
@@ -67,6 +55,18 @@ export default defineComponent({
   },
 })
 </script>
+
+<template>
+  <Teleport :to="animationEl" v-if="animationEl">
+    <img v-show="!floatingState" v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo"
+      v-if="logo && animationEl" class="varlet-cli-logo-animation" />
+  </Teleport>
+  <div v-show="floatingState">
+    <img @transitionend="land" v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo"
+      v-if="logo && animationEl"
+      class="varlet-cli-logo-animation varlet-cli-logo-position varlet-cli-logo-transition" />
+  </div>
+</template>
 
 <style lang="less">
 .varlet-cli-logo-transition {
