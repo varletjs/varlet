@@ -1,5 +1,5 @@
 <template>
-  <Teleport :to="animationEl" v-if="animationEl && !floatingState">
+  <Teleport :to="animationEl" v-if="animationEl && showLogo">
     <img 
       v-bind="animationBoxData.attrs" 
       :style="styles" 
@@ -9,7 +9,7 @@
       class="varlet-cli-logo-animation" 
     />
   </Teleport>
-  <div v-else>
+  <div v-show="floatingState">
     <img 
       @transitionend="land" 
       v-bind="animationBoxData.attrs" 
@@ -25,7 +25,7 @@
 <script lang="ts">
 import config from '@config'
 import { get } from 'lodash-es'
-import { computed, defineComponent, ref, watch, nextTick } from 'vue'
+import { computed, defineComponent, onBeforeMount, ref, watch, nextTick } from 'vue'
 import { animationBoxData, animationEl, animationElClientRect } from '../floating'
 import type { Ref, StyleValue } from 'vue'
 import { useRouter } from 'vue-router'
@@ -36,6 +36,7 @@ export default defineComponent({
     const logo: Ref<string> = get(config, 'logo')
     const proxyRect: Ref<DOMRect | undefined> = ref<DOMRect>()
     const floatingState: Ref<boolean> = ref<boolean>(false)
+    const showLogo: Ref<boolean> = ref<boolean>(true)
 
     watch(animationElClientRect, async (newClientRect) => {
       if (newClientRect) {
@@ -53,13 +54,23 @@ export default defineComponent({
     const router = useRouter()
     router.beforeEach(async () => {
       if (!floatingState.value) {
+        showLogo.value = false;
         floatingState.value = true
       }
       await nextTick();
     })
+
+    onBeforeMount(() => {
+      if (floatingState.value) {
+        floatingState.value = false
+      }
+    })
     
     const land = () => {
-      floatingState.value = false;
+      showLogo.value = true;
+      setTimeout(() => {
+        floatingState.value = false;
+      }, 200);
     }
 
     return {
@@ -68,6 +79,7 @@ export default defineComponent({
       styles,
       animationEl,
       floatingState,
+      showLogo,
       land
     }
   },
@@ -79,7 +91,6 @@ export default defineComponent({
   transition: 0.5s all ease-in-out;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   display: block;
 }
 
