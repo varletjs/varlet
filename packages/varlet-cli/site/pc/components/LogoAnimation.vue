@@ -1,7 +1,7 @@
 <template>
-  <Teleport :to="animationEl" v-if="animationEl && showLogo">
-    <img v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo" v-if="logo && animationEl"
-      class="varlet-cli-logo-animation" />
+  <Teleport :to="animationEl" v-if="animationEl">
+    <img v-show="!floatingState" v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo"
+      v-if="logo && animationEl" class="varlet-cli-logo-animation" />
   </Teleport>
   <div v-show="floatingState">
     <img @transitionend="land" v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo"
@@ -24,7 +24,6 @@ export default defineComponent({
     const logo: Ref<string> = get(config, 'logo')
     const proxyRect: Ref<DOMRect | undefined> = ref<DOMRect>()
     const floatingState: Ref<boolean> = ref<boolean>(false)
-    const showLogo: Ref<boolean> = ref<boolean>(true)
 
     watch(animationElClientRect, async (newClientRect) => {
       if (newClientRect) {
@@ -42,7 +41,6 @@ export default defineComponent({
     const router = useRouter()
     router.beforeEach(async () => {
       if (!floatingState.value) {
-        showLogo.value = false;
         floatingState.value = true
       }
       await nextTick();
@@ -55,10 +53,7 @@ export default defineComponent({
     })
 
     const land = () => {
-      showLogo.value = true;
-      setTimeout(() => {
-        floatingState.value = false;
-      }, 150);
+      floatingState.value = false;
     }
 
     return {
@@ -67,7 +62,6 @@ export default defineComponent({
       styles,
       animationEl,
       floatingState,
-      showLogo,
       land
     }
   },
