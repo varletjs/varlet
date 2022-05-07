@@ -47,7 +47,7 @@ const setCurrentThemes = (themes: 'themes' | 'darkThemes') => {
 const toggleTheme = () => {
   setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
   window.postMessage(getThemesMessage(), '*')
-  ;(document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemesMessage(), '*')
+    ; (document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemesMessage(), '*')
 }
 
 const setLocale = () => {
@@ -91,24 +91,26 @@ watch(() => route.path, setLocale, { immediate: true })
       </div>
       <div class="base-description">{{ pack.description }}</div>
 
-      <var-site-button class="block-button" block @click="goGithub">
-        <div class="block-button-content">
-          <span>GITHUB</span>
-          <var-site-icon style="margin-left: 10px;" name="github" size="24px" />
-        </div>
-      </var-site-button>
-      <var-site-button type="primary" class="block-primary-button" block @click="getStar">
-        <div class="block-button-content">
-          <span>{{ pack.started }}</span>
-          <var-site-icon style="margin-left: 10px; transform: rotate(-90deg)" name="arrow-down" size="24px" />
-        </div>
-      </var-site-button>
-
       <div class="button-group">
-        <var-site-button class="round-button" round v-if="darkMode" @click="toggleTheme">
+        <var-site-button class="block-button github-button" block @click="goGithub">
+          <div class="block-button-content">
+            <span>GITHUB</span>
+            <var-site-icon style="margin-left: 10px;" name="github" size="24px" />
+          </div>
+        </var-site-button>
+        <var-site-button class="block-button margin-left" text v-if="darkMode" @click="toggleTheme">
           <var-site-icon size="24px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
         </var-site-button>
-        <var-site-button class="round-button" round v-if="languages" @click="toggleLanguages">
+      </div>
+
+      <div class="button-group">
+        <var-site-button type="primary" class="block-primary-button" block @click="getStar">
+          <div class="block-button-content">
+            <span>{{ pack.started }}</span>
+            <var-site-icon style="margin-left: 10px; transform: rotate(-90deg)" name="arrow-down" size="24px" />
+          </div>
+        </var-site-button>
+        <var-site-button class="block-button margin-left" text v-if="languages" @click="toggleLanguages">
           <var-site-icon name="translate" size="24px" />
         </var-site-button>
       </div>
