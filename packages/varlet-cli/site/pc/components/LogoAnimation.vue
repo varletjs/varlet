@@ -1,7 +1,7 @@
 <script lang="ts">
 import config from '@config'
 import { get } from 'lodash-es'
-import { computed, defineComponent, onMounted, ref, watch, nextTick } from 'vue'
+import { computed, defineComponent, onBeforeMount, onMounted, onBeforeUnmount, ref, watch, nextTick } from 'vue'
 import { animationBoxData, animationEl, animationElClientRect } from '../floating'
 import type { Ref, StyleValue } from 'vue'
 import { useRouter } from 'vue-router'
@@ -34,14 +34,37 @@ export default defineComponent({
       await nextTick();
     })
 
+    onBeforeMount(() => {
+      floatingState.value = false
+    })
+
     onMounted(() => {
-      if (floatingState.value) {
-        floatingState.value = false
-      }
+      window.addEventListener('resize', resetPosition, false);
+    })
+
+    onBeforeUnmount(() => {
+      resetTimer && clearTimeout(resetTimer)
+      window.removeEventListener('resize', resetPosition);
     })
 
     const land = () => {
       floatingState.value = false;
+    }
+
+    let resetTimer: number;
+
+    const resetPosition = async () => {
+      if (floatingState.value) {
+        floatingState.value = false
+        await nextTick();
+      }
+      clearTimeout(resetTimer);
+      const newBRect = animationEl.value?.getBoundingClientRect()
+      if (newBRect) {
+        resetTimer = setTimeout(() => {
+          proxyRect.value = newBRect
+        }, 200)
+      }
     }
 
     return {
