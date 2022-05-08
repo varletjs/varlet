@@ -85,36 +85,34 @@ watch(() => route.path, setLocale, { immediate: true })
     <div class="slash-box box-4"></div>
     <div class="slash-box box-5"></div>
     <div class="profile-container">
-      <div class="container-box">
-        <div class="description-container">
-          <animation-box class="logo" />
-          <div class="base-title">{{ title }}</div>
-        </div>
-        <div class="base-description">{{ pack.description }}</div>
+      <div class="description-container">
+        <animation-box class="logo" />
+        <div class="base-title">{{ title }}</div>
+      </div>
+      <div class="base-description">{{ pack.description }}</div>
 
-        <div class="button-group">
-          <var-site-button class="block-button github-button" block @click="goGithub">
-            <div class="block-button-content">
-              <span>GITHUB</span>
-              <var-site-icon style="margin-left: 10px;" name="github" size="24px" />
-            </div>
-          </var-site-button>
-          <var-site-button class="block-button margin-left" text v-if="darkMode" @click="toggleTheme">
-            <var-site-icon size="24px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
-          </var-site-button>
-        </div>
+      <div class="button-group">
+        <var-site-button class="block-button github-button" block @click="goGithub">
+          <div class="block-button-content">
+            <span>GITHUB</span>
+            <var-site-icon style="margin-left: 10px;" name="github" size="24px" />
+          </div>
+        </var-site-button>
+        <var-site-button class="block-button margin-left" text v-if="darkMode" @click="toggleTheme">
+          <var-site-icon size="24px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
+        </var-site-button>
+      </div>
 
-        <div class="button-group">
-          <var-site-button type="primary" class="block-primary-button" block @click="getStar">
-            <div class="block-button-content">
-              <span>{{ pack.started }}</span>
-              <var-site-icon style="margin-left: 10px; transform: rotate(-90deg)" name="arrow-down" size="24px" />
-            </div>
-          </var-site-button>
-          <var-site-button class="block-button margin-left" text v-if="languages" @click="toggleLanguages">
-            <var-site-icon name="translate" size="24px" />
-          </var-site-button>
-        </div>
+      <div class="button-group">
+        <var-site-button type="primary" class="block-primary-button" block @click="getStar">
+          <div class="block-button-content">
+            <span>{{ pack.started }}</span>
+            <var-site-icon style="margin-left: 10px; transform: rotate(-90deg)" name="arrow-down" size="24px" />
+          </div>
+        </var-site-button>
+        <var-site-button class="block-button margin-left" text v-if="languages" @click="toggleLanguages">
+          <var-site-icon name="translate" size="24px" />
+        </var-site-button>
       </div>
     </div>
   </div>
