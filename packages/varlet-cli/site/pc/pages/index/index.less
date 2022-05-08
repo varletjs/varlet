@@ -81,8 +81,8 @@
 .slash-box {
   position: absolute;
   width: 30px;
-  height: 200%;
-  top: -30%;
+  bottom: -70%;
+  top: -130%;
   right: 52%;
   transform-origin: bottom right;
   transition: box-shadow 0.5s;
@@ -110,75 +110,82 @@
 }
 
 .profile-container {
-  width: 500px;
-  padding: 120px 100px;
-  transform: none;
-}
-
-.description-container {
+  height: 100vh;
+  padding-left: 12.5vw;
   display: flex;
-  margin-bottom: 35px;
-}
-
-.logo-container {
-  margin-right: 20px;
-}
-
-.button-group {
-  display: flex;
-  margin-top: 25px;
+  justify-content: center;
   align-items: center;
-}
 
-.block-button-content {
-  display: flex;
-  align-items: center;
-}
+  .container-box {
+    width: 35vw;
+    min-width: 500px;
 
-.block-button {
-  height: 52px;
-  font-size: 18px;
-  background-color: var(--site-config-color-home-page-button-background);
-  transition: all .25s;
-  animation: fade-in .75s forwards;
-}
+    .description-container {
+      display: flex;
+      margin-bottom: 35px;
+    }
 
-.github-button {
-  background-color: var(--site-config-color-pc-github-active-background);
-  color: #fff;
-}
+    .logo-container {
+      margin-right: 20px;
+    }
 
-.block-primary-button {
-  height: 52px;
-  font-size: 18px;
-  animation: fade-in .75s forwards;
-}
+    .button-group {
+      display: flex;
+      margin-top: 25px;
+      align-items: center;
+    }
 
-.margin-left{
-  margin-left: 10px;
-}
+    .block-button-content {
+      display: flex;
+      align-items: center;
+    }
 
-.base-title {
-  font-size: 84px;
-  line-height: 72px;
-  font-weight: 500;
-  margin-top: 8px;
-  animation: fade-in .75s forwards;
-}
+    .block-button {
+      height: 52px;
+      font-size: 18px;
+      background-color: var(--site-config-color-home-page-button-background);
+      transition: all .25s;
+      animation: fade-in .75s forwards;
+    }
 
-.base-description {
-  font-size: 16px;
-  line-height: 28px;
-  padding-left: 4px;
-  font-weight: 500;
-  margin-bottom: 45px;
-  letter-spacing: 1px;
-  animation: fade-in .75s forwards;
-}
+    .github-button {
+      background-color: var(--site-config-color-pc-github-active-background);
+      color: #fff;
+    }
 
-.logo {
-  width: 90px;
-  height: 90px;
-  flex-shrink: 0;
-  margin-right: 25px;
+    .block-primary-button {
+      height: 52px;
+      font-size: 18px;
+      animation: fade-in .75s forwards;
+    }
+
+    .margin-left {
+      margin-left: 10px;
+    }
+
+    .base-title {
+      font-size: 84px;
+      line-height: 72px;
+      font-weight: 500;
+      margin-top: 8px;
+      animation: fade-in .75s forwards;
+    }
+
+    .base-description {
+      font-size: 16px;
+      line-height: 28px;
+      padding-left: 4px;
+      font-weight: 500;
+      margin-bottom: 45px;
+      letter-spacing: 1px;
+      animation: fade-in .75s forwards;
+    }
+
+    .logo {
+      width: 90px;
+      height: 90px;
+      flex-shrink: 0;
+      margin-right: 25px;
+    }
+  }
 }
