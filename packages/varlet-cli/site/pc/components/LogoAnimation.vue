@@ -61,7 +61,7 @@ export default defineComponent({
       clearTimeout(resetTimer);
       const newBRect = animationEl.value?.getBoundingClientRect()
       if (newBRect) {
-        resetTimer = setTimeout(() => {
+        resetTimer = window.setTimeout(() => {
           proxyRect.value = newBRect
         }, 200)
       }

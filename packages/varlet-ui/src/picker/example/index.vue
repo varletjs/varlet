@@ -12,8 +12,6 @@ import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const VarPicker = Picker.Component
 
-const VarSnackbar = Snackbar.Component
-
 const columns = ref([Array.from({ length: 20 }).map((_, index) => index)])
 
 const columns2 = ref([
