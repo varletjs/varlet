@@ -1,3 +1,21 @@
+## [1.27.8](https://github.com/varletjs/varlet/compare/v1.27.7...v1.27.8) (2022-05-09)
+
+
+### Bug Fixes
+
+* **compileSiteEntry:** slash path for windows ([5170997](https://github.com/varletjs/varlet/commit/51709974d5b7c77bc9c7f37b09a79348a0ff9ca6))
+* **ui/col:** fix logic for span & responsive setting 0 [#529](https://github.com/varletjs/varlet/issues/529) ([80da305](https://github.com/varletjs/varlet/commit/80da3058913b5300539184c2650eb709b5bb0e10))
+* **ui/col:** fix span & responsive props when equal 0 [#529](https://github.com/varletjs/varlet/issues/529) ([a0831c3](https://github.com/varletjs/varlet/commit/a0831c3410d40cf5fd8b1f5795a930ac7d6aebdc))
+
+
+### Features
+
+* cli pages and homepage ([#531](https://github.com/varletjs/varlet/issues/531)) ([d723e36](https://github.com/varletjs/varlet/commit/d723e367dd006243d7bf0b2adb0611ae49e19d5f))
+* finish the floating and land && optimize home page style ([#541](https://github.com/varletjs/varlet/issues/541)) ([76d6fad](https://github.com/varletjs/varlet/commit/76d6fadfe66fb0d9c2892666c309933d3a378c0e))
+* **ui/picker:** add props textFormatter ([#522](https://github.com/varletjs/varlet/issues/522)) ([f735468](https://github.com/varletjs/varlet/commit/f735468dd5879f19a3f4285ab1ddf9629ddd3849))
+
+
+
 ## [1.27.7](https://github.com/varletjs/varlet/compare/v1.27.6...v1.27.7) (2022-04-29)
 
 
