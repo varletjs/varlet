@@ -6,7 +6,9 @@
   <h1>VARLET</h1>
   <p>基于 Vue3 的 Material design 风格移动端组件库</p>
   <p>
-    <a href="https://varlet-varletjs.vercel.app">开发文档</a> | <a href="https://github.com/varletjs/varlet/blob/dev/README.en-US.md">English</a>
+    <a href="https://varlet-varletjs.vercel.app">文档(Vercel)</a> | 
+    <a href="https://varlet.gitee.io/varlet-ui">文档(Gitee)</a> | 
+<a href="https://github.com/varletjs/varlet/blob/dev/README.en-US.md">English Readme</a>
   </p>
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
@@ -77,6 +79,12 @@ import '@varlet/ui/es/style.js'
 
 createApp(App).use(Varlet).mount('#app')
 ```
+
+### 反馈和交流
+
+我们推荐使用`issue`列表进行最直接有效的反馈，也可以通过扫描下方二维码进入微信群进行交流
+
+<img style="width: 25%" src="https://github.com/varletjs/varlet/blob/dev/sponsor/community.png?raw=true" />
 
 ### 捐赠我们
 

@@ -201,7 +201,9 @@ export default defineComponent({
     }
 
     const handleInput = (e: Event) => {
-      const { value } = e.target as HTMLInputElement
+      let { value } = e.target as HTMLInputElement
+
+      value = withTrim(value)
 
       call(props['onUpdate:modelValue'], value)
       call(props.onInput, value, e)
@@ -211,7 +213,7 @@ export default defineComponent({
     const handleChange = (e: Event) => {
       const { value } = e.target as HTMLInputElement
 
-      call(props.onChange, value, e)
+      call(props.onChange, withTrim(value), e)
       validateWithTrigger('onChange')
     }
 
@@ -237,6 +239,8 @@ export default defineComponent({
       call(onClick, e)
       validateWithTrigger('onClick')
     }
+
+    const withTrim = (value: string) => (props.modelModifiers.trim ? value.trim() : value)
 
     // expose
     const reset = () => {

@@ -28,7 +28,6 @@ in the column.
 
 <style>
 .var-col {
-  display: flex;
   justify-content: center;
   align-items: center;
   height: 36px;
@@ -55,7 +54,6 @@ in the column.
 
 <style>
 .var-col {
-  display: flex;
   justify-content: center;
   align-items: center;
   height: 36px;
@@ -99,7 +97,6 @@ using the `<var-row/>` `justify` and `align` properties to set the alignment of 
 
 <style>
 .var-col {
-  display: flex;
   justify-content: center;
   align-items: center;
   height: 36px;
@@ -128,7 +125,6 @@ using the `<var-row/>` `justify` and `align` properties to set the alignment of 
 
 <style>
 .var-col {
-  display: flex;
   justify-content: center;
   align-items: center;
   height: 36px;
@@ -161,7 +157,6 @@ import BasicExample from '../example/Responsive.vue'
 
 <style>
 .var-col {
-  display: flex;
   justify-content: center;
   align-items: center;
   height: 36px;
@@ -227,7 +222,6 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 
 <style>
 .var-col {
-  display: flex;
   justify-content: center;
   align-items: center;
   height: 36px;

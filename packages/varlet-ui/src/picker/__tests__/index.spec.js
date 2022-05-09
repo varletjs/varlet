@@ -73,3 +73,24 @@ test('test picker functional cancel', async () => {
   await delay(16)
   await delay(300)
 })
+
+test('test picker functional textFormatter', async () => {
+  const textFormatter = jest.fn().mockReturnValue('text')
+
+  const columns = [['A']]
+
+  Picker({
+    columns,
+    textFormatter,
+  })
+  await delay(16)
+  await delay(300)
+
+  await trigger(document.querySelector('.var-picker__cancel-button'), 'click')
+
+  expect(textFormatter).toHaveBeenLastCalledWith('A', 0)
+  expect(document.querySelector('.var-picker__text').innerHTML).toBe('text')
+
+  await delay(16)
+  await delay(300)
+})

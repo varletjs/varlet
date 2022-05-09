@@ -191,3 +191,20 @@ test('test cascade initial indexes', async () => {
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
+
+test('test picker component textFormatter', async () => {
+  const textFormatter = jest.fn().mockReturnValue('text')
+
+  const wrapper = mount(VarPicker, {
+    props: {
+      columns,
+      textFormatter,
+    },
+  })
+
+  const pickerText = wrapper.find('.var-picker__text')
+
+  expect(pickerText.text()).toBe('text')
+
+  wrapper.unmount()
+})

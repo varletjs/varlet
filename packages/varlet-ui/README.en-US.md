@@ -5,7 +5,8 @@
   <h1>VARLET</h1>
   <p>Material design mobile component library for Vue3</p>
   <p>
-    <a href="https://varlet-varletjs.vercel.app/#/en-US/home">Documentation</a>
+    <a href="https://varlet-varletjs.vercel.app/#/en-US/home">Documentation(Vercel)</a> 
+    <a href="https://varlet.gitee.io/varlet-ui/#/en-US/home">Documentation(Gitee)</a>
   </p>
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">

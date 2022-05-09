@@ -14,7 +14,6 @@ import VarCol from '../../col'
 
 <style scoped lang="less">
 .var-col {
-  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
