@@ -140,23 +140,25 @@
       align-items: center;
     }
 
-    .block-button {
+    .common-button {
       height: 52px;
       font-size: 18px;
-      background-color: var(--site-config-color-home-page-button-background);
       transition: all .25s;
       animation: fade-in .75s forwards;
     }
 
+    .extra-button {
+      flex-shrink: 0;
+      background-color: var(--site-config-color-home-page-extra-button-background);
+    }
+
     .github-button {
-      background-color: var(--site-config-color-pc-github-active-background);
+      background-color: var(--site-config-color-home-page-github-button-background);
       color: #fff;
     }
 
-    .block-primary-button {
-      height: 52px;
-      font-size: 18px;
-      animation: fade-in .75s forwards;
+    .primary-button {
+      background-color: var(--site-config-color-home-page-primary-button-background);
     }
 
     .margin-left {
