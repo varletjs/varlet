@@ -191,10 +191,9 @@ const floating = ref(false)
 | `--card-footer-right`                        | `13px`                 |
 | `--card-footer-bottom`                       | `10px`                 |
 | `--card-line-height`                         | `22px`                 |
-| `--card-row-line-height`                     | `1.3`                  |
-| `--card-floater-toolbar-bottom`              | `20px`                 |
-| `--card-floater-toolbar-right`               | `13px`                 |
-| `--card-floater-toolbar-size`                | `22px`                 |
+| `--card-row-line-height`                     | `1.4`                  |
+| `--card-floater-toolbar-bottom`              | `16px`                 |
+| `--card-floater-toolbar-right`               | `16px`                 |
 | `--card-floater-toolbar-color`               | `#fff`                 |
-| `--card-floater-toolbar-close-padding`       | `0 10px`               |
+| `--card-floater-toolbar-close-padding`       | `16px`                 |
 | `--card-floater-toolbar-close-primary-color` | `var(--color-primary)` |

@@ -12,7 +12,7 @@
         position: floaterPosition,
         borderRadius: floating ? '0px' : undefined,
         zIndex: floated ? zIndex : undefined,
-        transition: `background-color 250ms, border-radius ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`,
+        transition: `background-color ${floatingDuration}ms, border-radius ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`,
       }"
       v-ripple="{ disabled: !ripple || floating }"
     >
@@ -67,7 +67,7 @@
       >
         <slot name="toolbar-close">
           <var-button size="large" round :class="n('toolbar-close')" @click.stop="close">
-            <var-icon name="window-close" />
+            <var-icon name="window-close" size="24px" />
           </var-button>
         </slot>
         <slot name="toolbar-extra" />
@@ -142,12 +142,12 @@ export default defineComponent({
       floater = setTimeout(
         async () => {
           const { width, height, left, top } = card.value!.getBoundingClientRect()
-          holderWidth.value = toSizeUnit(width) as string
-          holderHeight.value = toSizeUnit(height) as string
+          holderWidth.value = <string>toSizeUnit(width)
+          holderHeight.value = <string>toSizeUnit(height)
           floaterWidth.value = holderWidth.value
           floaterHeight.value = holderHeight.value
-          floaterTop.value = toSizeUnit(top) as string
-          floaterLeft.value = toSizeUnit(left) as string
+          floaterTop.value = <string>toSizeUnit(top)
+          floaterLeft.value = <string>toSizeUnit(left)
           floaterPosition.value = 'fixed'
           dropdownFloaterTop = floaterTop.value
           dropdownFloaterLeft = floaterLeft.value
@@ -155,10 +155,10 @@ export default defineComponent({
 
           await doubleRaf()
 
+          floaterTop.value = '0'
+          floaterLeft.value = '0'
           floaterWidth.value = '100vw'
           floaterHeight.value = '100vh'
-          floaterTop.value = '0px'
-          floaterLeft.value = '0px'
           contentHeight.value = 'auto'
           opacity.value = '1'
           floaterOverflow.value = 'auto'
