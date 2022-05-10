@@ -12,9 +12,11 @@
         position: floaterPosition,
         borderRadius: floating ? '0px' : undefined,
         zIndex: floated ? zIndex : undefined,
-        transition: `background-color ${floatingDuration}ms, border-radius ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`,
+        transition: floated
+          ? `background-color ${floatingDuration}ms, border-radius ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`
+          : undefined,
       }"
-      v-ripple="{ disabled: !ripple || floating }"
+      v-ripple="{ disabled: !ripple || floated }"
     >
       <slot name="image">
         <img
@@ -98,7 +100,7 @@ import type { Ref } from 'vue'
 
 const { n, classes } = createNamespace('card')
 
-const RIPPLE_DELAY = 300
+const RIPPLE_DELAY = 500
 
 export default defineComponent({
   name: 'VarCard',
@@ -125,6 +127,7 @@ export default defineComponent({
     const isRow = computed(() => props.layout === 'row')
     const showToolBar: Ref<boolean> = ref(false)
     const floated: Ref<boolean> = ref(false)
+
     useLock(
       () => props.floating,
       () => isRow
