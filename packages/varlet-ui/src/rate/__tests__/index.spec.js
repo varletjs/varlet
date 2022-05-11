@@ -109,13 +109,14 @@ describe('test rate component props', () => {
     wrapper.unmount()
   })
 
-  test('test rate gap', async () => {
+  test('test rate gap', () => {
     const wrapper = mount(VarRate, {
       props: {
         gap: 10,
       },
     })
-    const el = await wrapper.find('.var-rate__content')
+
+    const el = wrapper.find('.var-rate__content')
     expect(el.attributes('style')).toMatch(/(margin-right: 10px)(.*)/)
 
     wrapper.unmount()
