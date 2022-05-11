@@ -72,7 +72,7 @@ exports[`test card example 1`] = `
       <div class=\\"var-card__title\\">本草纲目</div>
       <div class=\\"var-card__subtitle\\">如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~</div>
       <!--v-if-->
-      <div class=\\"var-card__footer\\"><button class=\\"var-button var--box var-button--mini var--inline-flex var-button--text-default var-button--text\\" style=\\"color: rgb(255, 152, 0);\\">
+      <div class=\\"var-card__footer\\"><button class=\\"var-button var--box var-button--small var--inline-flex var-button--text-default var-button--text\\" style=\\"color: rgb(255, 152, 0);\\">
           <!--v-if-->
           <div class=\\"var-button__content\\">查看详情</div>
         </button></div>
@@ -112,10 +112,10 @@ exports[`test card example 1`] = `
           <div class=\\"var-button__content\\">浏览</div>
         </button></div>
       <div class=\\"var-card__content\\" style=\\"height: 0px; opacity: 0; transition: opacity 500ms;\\">
-        <div class=\\"var-divider var--box\\">
+        <div class=\\"var-divider var--box var-divider--dashed\\">
           <!--v-if-->
         </div>
-        <p style=\\"padding: 0px 14px;\\">如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~</p>
+        <div class=\\"card-example-text\\">如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~ 如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~ 如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~ 如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~ 如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~ 如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~</div>
       </div>
     </div>
     <!--v-if-->

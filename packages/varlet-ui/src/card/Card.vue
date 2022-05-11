@@ -16,7 +16,7 @@
           ? `background-color ${floatingDuration}ms, border-radius ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`
           : undefined,
       }"
-      v-ripple="{ disabled: !ripple || floated }"
+      v-ripple="{ disabled: !ripple || floater }"
     >
       <slot name="image">
         <img
@@ -136,13 +136,15 @@ export default defineComponent({
     let dropdownFloaterTop = 'auto'
     let dropdownFloaterLeft = 'auto'
     let dropper: any = null
-    let floater: any = null
+    const floater: any = ref(null)
 
     const floating = async () => {
-      clearTimeout(floater)
+      clearTimeout(floater.value)
       clearTimeout(dropper)
 
-      floater = setTimeout(
+      floater.value = null
+
+      floater.value = setTimeout(
         async () => {
           const { width, height, left, top } = card.value!.getBoundingClientRect()
           holderWidth.value = <string>toSizeUnit(width)
@@ -173,7 +175,8 @@ export default defineComponent({
 
     const dropdown = () => {
       clearTimeout(dropper)
-      clearTimeout(floater)
+      clearTimeout(floater.value)
+      floater.value = null
 
       floaterWidth.value = holderWidth.value
       floaterHeight.value = holderHeight.value
@@ -222,6 +225,7 @@ export default defineComponent({
       cardFloater,
       holderWidth,
       holderHeight,
+      floater,
       floaterWidth,
       floaterHeight,
       floaterTop,

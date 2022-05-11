@@ -46,7 +46,7 @@
     src="https://varlet-varletjs.vercel.app/cat.jpg"
     layout="row">
     <template #extra>
-      <var-button text text-color="#ff9800" size="mini">查看详情</var-button>
+      <var-button text text-color="#ff9800" size="small">查看详情</var-button>
     </template>
   </var-card>
 </template>
@@ -109,13 +109,22 @@ const floating = ref(false)
     </template>
 
     <template #content>
-      <var-divider />
-      <p style="padding: 0 14px">
+      <var-divider dashed />
+      
+      <div class="card-example-text">
         如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~
-      </p>
+      </div>
     </template>
   </var-card>
 </template>
+
+<style>
+.card-example-text {
+  padding: 14px;
+  font-size: 14px;
+  line-height: 28px;
+}
+</style>
 ```
 
 ## API
@@ -189,7 +198,7 @@ const floating = ref(false)
 | `--card-footer-padding`                      | `0 12px`             |
 | `--card-footer-margin`                       | `30px 0 0px 0`       |
 | `--card-footer-right`                        | `13px`               |
-| `--card-footer-bottom`                       | `10px`               |
+| `--card-footer-bottom`                       | `9px`               |
 | `--card-line-height`                         | `22px`               |
 | `--card-row-line-height`                     | `1.4`                |
 | `--card-floater-toolbar-bottom`              | `16px`               |

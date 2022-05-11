@@ -104,15 +104,23 @@ const floating = ref(false)
     </template>
 
     <template #content>
-      <var-divider />
+      <var-divider dashed />
       
-      <p style="padding: 0 14px">
+      <div class="card-example-text">
         The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous.
-      </p>
+      </div>
     </template>
     
   </var-card>
 </template>
+
+<style>
+.card-example-text {
+  padding: 14px;
+  font-size: 14px;
+  line-height: 28px;
+}
+</style>
 ```
 
 ## API
@@ -183,7 +191,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--card-footer-padding`                      | `0 12px`             |
 | `--card-footer-margin`                       | `30px 0 0px 0`       |
 | `--card-footer-right`                        | `13px`               |
-| `--card-footer-bottom`                       | `10px`               |
+| `--card-footer-bottom`                       | `9px`               |
 | `--card-line-height`                         | `22px`               |
 | `--card-row-line-height`                     | `1.4`                |
 | `--card-floater-toolbar-bottom`              | `16px`               |

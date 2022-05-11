@@ -48,7 +48,7 @@ watchDarkMode(dark)
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
-      <var-button text text-color="#ff9800" size="mini">
+      <var-button text text-color="#ff9800" size="small">
         {{ pack.learnMore }}
       </var-button>
     </template>
@@ -72,15 +72,23 @@ watchDarkMode(dark)
     </template>
 
     <template #content>
-      <var-divider></var-divider>
-      <p style="padding: 0 14px">
+      <var-divider dashed></var-divider>
+      <div class="card-example-text">
         {{ pack.description }}
         {{ pack.description }}
         {{ pack.description }}
         {{ pack.description }}
         {{ pack.description }}
         {{ pack.description }}
-      </p>
+      </div>
     </template>
   </var-card>
 </template>
+
+<style scoped lang="less">
+.card-example-text {
+  padding: 14px;
+  font-size: 14px;
+  line-height: 28px;
+}
+</style>
