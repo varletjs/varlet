@@ -83,7 +83,7 @@ export default {
 
 .varlet-home__title {
   margin: 0 0 16px;
-  font-size: 32px;
+  font-size: 34px;
 }
 
 .varlet-home__title,
@@ -101,8 +101,8 @@ export default {
 }
 
 .varlet-home__image {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
 }
 
 .varlet-home__image,
@@ -121,7 +121,7 @@ export default {
   justify-content: space-between;
   min-height: 40px;
   padding: 10px 12px;
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: all 0.3s;

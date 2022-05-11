@@ -5,7 +5,6 @@ module.exports = {
       unitPrecision: 6,
       unitToConvert: 'px',
       propList: ['*'],
-      selectorBlackList: ['.router-view__block'],
       exclude: [/site\/components\//, /site\/pc/],
     },
   },

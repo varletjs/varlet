@@ -104,6 +104,6 @@ watchDarkMode(dark)
 
 <style scoped lang="less">
 .var-button {
-  margin-top: 10px;
+  margin-bottom: 11px;
 }
 </style>
