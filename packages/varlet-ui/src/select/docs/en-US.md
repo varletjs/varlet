@@ -256,7 +256,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-select placeholder="Please select one the options" :offset-y="-62" v-model="value">
+  <var-select placeholder="Please select one the options" :offset-y="-136" v-model="value">
     <var-option label="Ember Sprit" />
     <var-option label="Storm Spirit" />
     <var-option label="Void Spirit" />

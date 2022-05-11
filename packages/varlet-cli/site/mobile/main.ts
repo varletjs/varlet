@@ -6,8 +6,9 @@ import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 import Icon from '../components/icon'
-import AppBar from '../components/app-bar'
+import AppBar from './components/app-bar'
 import Button from '../components/button'
+import Cell from '../components/cell'
 import Ripple from '../components/ripple'
 import '../components/styles/common.less'
 import '../components/styles/elevation.less'
@@ -65,6 +66,8 @@ createApp(App)
   .use(Icon)
   // @ts-ignore
   .use(AppBar)
+  // @ts-ignore
+  .use(Cell)
   .use(Ripple)
   // @ts-ignore
   .use(Button)
