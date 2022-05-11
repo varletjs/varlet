@@ -24,7 +24,6 @@ const { active, active2, active3, active4, active5, active6, active7, activeRela
 
 const themes = ref('themes')
 const tabItemStyle = computed(() => ({
-  padding: '0 4px;',
   color: themes.value === 'themes' ? '#888' : '#aaa',
 }))
 
