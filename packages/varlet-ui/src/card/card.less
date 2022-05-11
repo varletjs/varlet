@@ -29,8 +29,9 @@
 @card-floater-toolbar-bottom: 16px;
 @card-floater-toolbar-right: 16px;
 @card-floater-toolbar-color: #fff;
+@card-floater-toolbar-close-size: 24px;
 @card-floater-toolbar-close-padding: 16px;
-@card-floater-toolbar-close-primary-color: var(--color-primary);
+@card-floater-toolbar-close-primary-color: #212121;
 
 :root {
   --card-padding: @card-padding;
@@ -64,6 +65,7 @@
   --card-floater-toolbar-bottom: @card-floater-toolbar-bottom;
   --card-floater-toolbar-right: @card-floater-toolbar-right;
   --card-floater-toolbar-color: @card-floater-toolbar-color;
+  --card-floater-toolbar-close-size: @card-floater-toolbar-close-size;
   --card-floater-toolbar-close-padding: @card-floater-toolbar-close-padding;
   --card-floater-toolbar-close-primary-color: @card-floater-toolbar-close-primary-color;
 }
@@ -170,5 +172,11 @@
     padding: var(--card-floater-toolbar-close-padding);
     background-color: var(--card-floater-toolbar-close-primary-color);
     color: var(--card-floater-toolbar-color);
+
+    .var-icon {
+      width: var(--card-floater-toolbar-close-size);
+      height: var(--card-floater-toolbar-close-size);
+      font-size: var(--card-floater-toolbar-close-size);
+    }
   }
 }

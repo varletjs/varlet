@@ -1,13 +1,16 @@
 export default {
   basicUsage: 'Basic Usage',
-  title: 'Little Prince',
+  title: 'Dangerous',
   showSubtitle: 'Show Subtitle',
-  subtitle: 'Little prince from',
+  subtitle: 'The girl was dangerous',
   horizontal: 'Horizontal',
   description:
-    'It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me.',
+    'The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous.',
   showImage: 'Show Image',
   useSlot: 'Use Slot',
-  button: 'Use Button',
+  share: 'Share',
+  explore: 'Explore',
   showRipple: 'Ripple Effect',
+  fullScreen: 'Full Screen',
+  learnMore: 'Learn More',
 }
