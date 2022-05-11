@@ -109,16 +109,14 @@ describe('test rate component props', () => {
     wrapper.unmount()
   })
 
-  test('test rate gap', () => {
+  test('test rate gap', async () => {
     const wrapper = mount(VarRate, {
       props: {
         gap: 10,
       },
     })
-
-    console.log('wrapper.element', wrapper.element)
-
-    // const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ bottom: 0 })
+    const el = await wrapper.find('.var-rate__content')
+    expect(el.attributes('style')).toMatch(/(margin-right: 10px)(.*)/)
 
     wrapper.unmount()
   })
