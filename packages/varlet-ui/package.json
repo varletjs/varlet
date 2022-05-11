@@ -56,14 +56,15 @@
   "devDependencies": {
     "@varlet/cli": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
-    "@vue/test-utils": "2.0.0-rc.6",
     "@vue/runtime-core": "3.2.25",
-    "typescript": "^4.4.4",
-    "lodash-es": "^4.17.21",
+    "@vue/test-utils": "2.0.0-rc.6",
     "clipboard": "^2.0.6",
+    "live-server": "^1.2.1",
+    "lodash-es": "^4.17.21",
+    "postcss-px-to-viewport": "^1.1.1",
+    "typescript": "^4.4.4",
     "vue": "3.2.25",
-    "vue-router": "4.0.12",
-    "live-server": "^1.2.1"
+    "vue-router": "4.0.12"
   },
   "browserslist": [
     "Chrome >= 51",

@@ -75,6 +75,11 @@ watchDarkMode(dark)
       <var-divider></var-divider>
       <p style="padding: 0 14px">
         {{ pack.description }}
+        {{ pack.description }}
+        {{ pack.description }}
+        {{ pack.description }}
+        {{ pack.description }}
+        {{ pack.description }}
       </p>
     </template>
   </var-card>

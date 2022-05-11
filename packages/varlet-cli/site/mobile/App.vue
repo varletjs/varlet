@@ -1,7 +1,7 @@
 <template>
   <div style="position: relative">
     <header>
-      <var-site-app-bar class="app-bar" title-position="left" :title="bigCamelizeComponentName">
+      <var-site-app-bar class="app-bar" style="font-size: 16px;" title-position="left" :title="bigCamelizeComponentName">
         <template #left>
           <var-site-button v-if="showBackIcon" text round @click="back" color="transparent" text-color="#fff">
             <var-site-icon name="chevron-left" :size="28" style="margin-top: 1px" />
@@ -200,6 +200,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100%;
+  font-size: 16px;
   font-family: 'Roboto', sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background: var(--site-config-color-bar);
@@ -246,7 +247,7 @@ header {
 }
 
 .router-view__block {
-  padding: 54px 12px 15px;
+  padding: 56px 14px 15px;
 }
 
 * {
