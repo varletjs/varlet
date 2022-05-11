@@ -35,8 +35,8 @@ watchDarkMode(dark)
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
-      <var-button type="primary" style="margin-right: 10px">{{ pack.button }}</var-button>
-      <var-button type="warning">{{ pack.button }}</var-button>
+      <var-button text text-color="#ff9800">{{ pack.share }}</var-button>
+      <var-button text text-color="#ff9800">{{ pack.explore }}</var-button>
     </template>
   </var-card>
 
@@ -48,8 +48,8 @@ watchDarkMode(dark)
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
-      <var-button type="primary" text size="small">
-        {{ pack.button }}
+      <var-button text text-color="#ff9800" size="mini">
+        {{ pack.learnMore }}
       </var-button>
     </template>
   </var-card>
@@ -67,8 +67,8 @@ watchDarkMode(dark)
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
-      <var-button text type="info" style="margin-right: 10px">{{ pack.button }}</var-button>
-      <var-button text type="info">{{ pack.button }}</var-button>
+      <var-button text text-color="#ff9800">{{ pack.share }}</var-button>
+      <var-button text text-color="#ff9800">{{ pack.explore }}</var-button>
     </template>
 
     <template #content>

@@ -68,7 +68,7 @@
         v-if="showToolBar"
       >
         <slot name="toolbar-close">
-          <var-button size="large" round :class="n('toolbar-close')" @click.stop="close">
+          <var-button size="large" round :class="classes(n('toolbar-close'), 'var-elevation--6')" @click.stop="close">
             <var-icon name="window-close" size="24px" />
           </var-button>
         </slot>

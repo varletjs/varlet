@@ -5,8 +5,8 @@
 ```html
 <template>
   <var-card
-    title="Little Prince"
-    description="It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me."
+    title="Dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
   />
 </template>
 ```
@@ -16,9 +16,9 @@
 ```html
 <template>
   <var-card
-    title="Little Prince"
-    subtitle="where little prince from"
-    description="It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me."
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
   />
 </template>
 ```
@@ -27,7 +27,7 @@
 
 ```html
 <template>
-  <var-card title="Little Prince" subtitle="where little prince from" src="https://varlet-varletjs.vercel.app/cat.jpg" />
+  <var-card title="Dangerous" subtitle="The girl was dangerous" src="https://varlet-varletjs.vercel.app/cat.jpg" />
 </template>
 ```
 
@@ -36,12 +36,12 @@
 ```html
 <template>
   <var-card 
-    title="Little Prince"
-    subtitle="It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me."
+    title="Dangerous"
+    subtitle="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
     src="https://varlet-varletjs.vercel.app/cat.jpg"
     layout="row">
     <template #extra>
-      <var-button type="primary" text size="small">Use Button</var-button>
+      <var-button text text-color="#ff9800" size="mini">Learn More</var-button>
     </template>
   </var-card>
 </template>
@@ -52,15 +52,15 @@
 ```html
 <template>
   <var-card
-    title="Little Prince"
-    subtitle="where little prince from"
-    description="It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me."
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
       <var-space>
-        <var-button type="primary">Use Button</var-button>
-        <var-button type="warning">Use Button</var-button>
+        <var-button text text-color="#ff9800">Share</var-button>
+        <var-button text text-color="#ff9800">Explore</var-button>
       </var-space>
     </template>
   </var-card>
@@ -72,9 +72,9 @@
 ```html
 <template>
   <var-card
-    title="Little Prince"
-    subtitle="where little prince from"
-    description="It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me."
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
     ripple
   />
 </template>
@@ -93,21 +93,21 @@ const floating = ref(false)
   <var-card
     v-model:floating="floating"
     @click="floating = true"
-    title="Little Prince"
-    subtitle="where little prince from"
+    title="Dangerous"
+    subtitle="The girl was dangerous"
     ripple
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
-      <var-button text type="info" style="margin-right: 10px">Use Button</var-button>
-      <var-button text type="info">Use Button</var-button>
+      <var-button text text-color="#ff9800">Share</var-button>
+      <var-button text text-color="#ff9800">Explore</var-button>
     </template>
 
     <template #content>
       <var-divider />
       
       <p style="padding: 0 14px">
-        It took me a long time to learn where he came from. The little prince, whoasked me so many questions, never seemed to hear the ones I asked him. Itwas from words dropped by chance that, little by little, everything wasrevealed to me.
+        The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous.
       </p>
     </template>
     
@@ -156,38 +156,40 @@ const floating = ref(false)
 
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
-| Variable                                     | Default                |
-|----------------------------------------------|------------------------|
-| `--card-background`                          | `#fff`                 |
-| `--card-padding`                             | `0px 0 15px 0`         |
-| `--card-border-radius`                       | `4px`                  |
-| `--card-image-width`                         | `100%`                 |
-| `--card-row-image-width`                     | `120px`                |
-| `--card-image-height`                        | `200px`                |
-| `--card-row-image-height`                    | `120px`                |
-| `--card-title-color`                         | `#333`                 |
-| `--card-title-font-size`                     | `20px`                 |
-| `--card-title-padding`                       | `0 12px`               |
-| `--card-title-margin`                        | `15px 0 0 0`           |
-| `--card-title-row-margin`                    | `10px 0 0 0`           |
-| `--card-subtitle-color`                      | `rgba(0, 0, 0, 0.6)`   |
-| `--card-subtitle-font-size`                  | `14px`                 |
-| `--card-subtitle-row-font-size`              | `12px`                 |
-| `--card-subtitle-padding`                    | `0 13px`               |
-| `--card-subtitle-margin`                     | `10px 0 0 0`           |
-| `--card-subtitle-row-margin`                 | `4px 0 0 0`            |
-| `--card-description-color`                   | `rgba(0, 0, 0, 0.6)`   |
-| `--card-description-font-size`               | `14px`                 |
-| `--card-description-margin`                  | `20px 0 0 0`           |
-| `--card-description-padding`                 | `0 13px`               |
-| `--card-footer-padding`                      | `0 12px`               |
-| `--card-footer-margin`                       | `30px 0 0px 0`         |
-| `--card-footer-right`                        | `13px`                 |
-| `--card-footer-bottom`                       | `10px`                 |
-| `--card-line-height`                         | `22px`                 |
-| `--card-row-line-height`                     | `1.4`                  |
-| `--card-floater-toolbar-bottom`              | `16px`                 |
-| `--card-floater-toolbar-right`               | `16px`                 |
-| `--card-floater-toolbar-color`               | `#fff`                 |
-| `--card-floater-toolbar-close-padding`       | `16px`                 |
-| `--card-floater-toolbar-close-primary-color` | `var(--color-primary)` |
+| Variable                                     | Default              |
+|----------------------------------------------|----------------------|
+| `--card-background`                          | `#fff`               |
+| `--card-padding`                             | `0px 0 15px 0`       |
+| `--card-border-radius`                       | `4px`                |
+| `--card-image-width`                         | `100%`               |
+| `--card-row-image-width`                     | `120px`              |
+| `--card-image-height`                        | `200px`              |
+| `--card-row-image-height`                    | `120px`              |
+| `--card-title-color`                         | `#333`               |
+| `--card-title-font-size`                     | `20px`               |
+| `--card-title-padding`                       | `0 12px`             |
+| `--card-title-margin`                        | `15px 0 0 0`         |
+| `--card-title-row-margin`                    | `10px 0 0 0`         |
+| `--card-subtitle-color`                      | `rgba(0, 0, 0, 0.6)` |
+| `--card-subtitle-font-size`                  | `14px`               |
+| `--card-subtitle-row-font-size`              | `12px`               |
+| `--card-subtitle-padding`                    | `0 13px`             |
+| `--card-subtitle-margin`                     | `10px 0 0 0`         |
+| `--card-subtitle-row-margin`                 | `4px 0 0 0`          |
+| `--card-description-color`                   | `rgba(0, 0, 0, 0.6)` |
+| `--card-description-font-size`               | `14px`               |
+| `--card-description-margin`                  | `20px 0 0 0`         |
+| `--card-description-padding`                 | `0 13px`             |
+| `--card-footer-padding`                      | `0 12px`             |
+| `--card-footer-margin`                       | `30px 0 0px 0`       |
+| `--card-footer-right`                        | `13px`               |
+| `--card-footer-bottom`                       | `10px`               |
+| `--card-line-height`                         | `22px`               |
+| `--card-row-line-height`                     | `1.4`                |
+| `--card-floater-toolbar-bottom`              | `16px`               |
+| `--card-floater-toolbar-right`               | `16px`               |
+| `--card-floater-toolbar-color`               | `#fff`               |
+| `--card-floater-toolbar-close-size`          | `24px`               |
+| `--card-floater-toolbar-close-padding`       | `16px`               |
+| `--card-floater-toolbar-close-primary-color` | `#212121`            |
+
