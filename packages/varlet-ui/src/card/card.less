@@ -112,10 +112,16 @@
     padding: var(--card-title-padding);
     margin: var(--card-title-margin);
     color: var(--card-title-color);
+    word-break: break-word;
   }
 
   &--layout-row &__title {
     margin: var(--card-title-row-margin);
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
   }
 
   &__subtitle {
@@ -123,6 +129,7 @@
     color: var(--card-subtitle-color);
     padding: var(--card-subtitle-padding);
     margin: var(--card-subtitle-margin);
+    word-break: break-word;
   }
 
   &--layout-row &__subtitle {
