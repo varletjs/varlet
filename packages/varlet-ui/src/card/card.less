@@ -86,7 +86,8 @@
 
   &__container {
     padding: var(--card-padding);
-    position: relative;
+    flex-grow: 1;
+    min-width: 0;
   }
 
   &--layout-row &__floater {
@@ -116,12 +117,11 @@
   }
 
   &--layout-row &__title {
+    max-width: 100%;
+    overflow: hidden;
     margin: var(--card-title-row-margin);
     text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
+    white-space: nowrap;
   }
 
   &__subtitle {
