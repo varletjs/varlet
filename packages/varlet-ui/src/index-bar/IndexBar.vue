@@ -26,6 +26,7 @@ import {
   nextTickFrame,
   requestAnimationFrame,
   scrollTo as varScrollTo,
+  toPxNum,
 } from '../utils/elements'
 import { useIndexAnchors } from './provide'
 import { props } from './props'
@@ -50,7 +51,7 @@ export default defineComponent({
 
     const sticky: ComputedRef<boolean> = computed(() => props.sticky)
     const cssMode: ComputedRef<boolean> = computed(() => props.cssMode)
-    const stickyOffsetTop: ComputedRef<number> = computed(() => props.stickyOffsetTop)
+    const stickyOffsetTop: ComputedRef<number> = computed(() => toPxNum(props.stickyOffsetTop))
     const zIndex: ComputedRef<number | string> = computed(() => props.zIndex)
 
     const indexBarProvider: IndexBarProvider = {
