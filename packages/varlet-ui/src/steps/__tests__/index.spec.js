@@ -6,19 +6,23 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/jest'
 
+const clickStep = jest.fn()
 const Wrapper = {
   components: {
     [VarSteps.name]: VarSteps,
     [VarStep.name]: VarStep,
   },
   template: `
-    <var-steps>
+    <var-steps @clickStep="clickStep">
       <var-step>step 1</var-step>
       <var-step>step 2</var-step>
       <var-step active-icon="check-circle-outline" current-icon="radio-blank" inactive-icon="minus-circle-outline">step 3</var-step>
       <var-step>step 4</var-step>
     </var-steps>
   `,
+  methods: {
+    clickStep,
+  },
 }
 
 test('test steps and step use', () => {
@@ -26,6 +30,13 @@ test('test steps and step use', () => {
 
   expect(app.component(Steps.name)).toBeTruthy()
   expect(app.component(Step.name)).toBeTruthy()
+})
+
+test('test steps component event', async () => {
+  const wrapper = mount(Wrapper)
+  await wrapper.find('.var-step__horizontal-tag').trigger('click')
+  expect(clickStep).toHaveBeenCalledTimes(1)
+  wrapper.unmount()
 })
 
 describe('test steps and step components props', () => {
