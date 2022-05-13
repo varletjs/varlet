@@ -519,9 +519,9 @@ exports[`test form with switch 2`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-switch\\">
     <div class=\\"var-switch__block\\">
-      <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-error\\"></div>
+      <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--error\\"></div>
       <div class=\\"var-switch__ripple\\" style=\\"color: rgb(153, 153, 153);\\">
-        <div class=\\"var-switch__handle var-elevation--2 var-switch__handle-error\\">
+        <div class=\\"var-switch__handle var-elevation--2 var-switch__handle--error\\">
           <!--v-if-->
         </div>
       </div>

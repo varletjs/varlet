@@ -3,9 +3,9 @@
 exports[`test switch color and size 1`] = `
 "<div class=\\"var-switch\\">
   <div class=\\"var-switch__block\\" style=\\"height: 18px; width: 30px;\\">
-    <div style=\\"height: 10.799999999999999px; width: 28.5px; border-radius: 10px; filter: opacity(.6); background-color: indigo;\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-    <div class=\\"var-switch__ripple var-switch__ripple-active\\" style=\\"left: 7.5px; color: indigo; width: 30px; height: 30px;\\">
-      <div style=\\"width: 15px; height: 15px; background-color: indigo;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+    <div style=\\"height: 10.799999999999999px; width: 28.5px; border-radius: 10px; filter: opacity(.6); background-color: indigo;\\" class=\\"var-switch__track var-switch__track--active\\"></div>
+    <div class=\\"var-switch__ripple var-switch__ripple--active\\" style=\\"left: 7.5px; color: indigo; width: 30px; height: 30px;\\">
+      <div style=\\"width: 15px; height: 15px; background-color: indigo;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle--active\\">
         <!--v-if-->
       </div>
     </div>
@@ -38,9 +38,9 @@ exports[`test switch example 1`] = `
   <div style=\\"margin: 15.36px 0px;\\">
     <div class=\\"var-switch\\">
       <div class=\\"var-switch__block\\">
-        <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-        <div class=\\"var-switch__ripple var-switch__ripple-active\\">
-          <div class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+        <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--active\\"></div>
+        <div class=\\"var-switch__ripple var-switch__ripple--active\\">
+          <div class=\\"var-switch__handle var-elevation--2 var-switch__handle--active\\">
             <!--v-if-->
           </div>
         </div>
@@ -56,9 +56,9 @@ exports[`test switch example 1`] = `
   <div style=\\"margin: 15.36px 92.16px 15.36px 0px;\\">
     <div class=\\"var-switch\\">
       <div class=\\"var-switch__block var-switch--disable\\">
-        <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-        <div class=\\"var-switch__ripple var-switch__ripple-active\\">
-          <div class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+        <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--active\\"></div>
+        <div class=\\"var-switch__ripple var-switch__ripple--active\\">
+          <div class=\\"var-switch__handle var-elevation--2 var-switch__handle--active\\">
             <!--v-if-->
           </div>
         </div>
@@ -71,9 +71,9 @@ exports[`test switch example 1`] = `
   <div style=\\"margin: 15.36px 0px;\\">
     <div class=\\"var-switch\\">
       <div class=\\"var-switch__block\\">
-        <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-        <div class=\\"var-switch__ripple var-switch__ripple-active\\">
-          <div class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+        <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--active\\"></div>
+        <div class=\\"var-switch__ripple var-switch__ripple--active\\">
+          <div class=\\"var-switch__handle var-elevation--2 var-switch__handle--active\\">
             <!--v-if-->
           </div>
         </div>
@@ -89,9 +89,9 @@ exports[`test switch example 1`] = `
   <div style=\\"margin: 15.36px 92.16px 15.36px 0px;\\">
     <div class=\\"var-switch\\">
       <div class=\\"var-switch__block\\">
-        <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-        <div class=\\"var-switch__ripple var-switch__ripple-active\\">
-          <div class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+        <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--active\\"></div>
+        <div class=\\"var-switch__ripple var-switch__ripple--active\\">
+          <div class=\\"var-switch__handle var-elevation--2 var-switch__handle--active\\">
             <!--v-if-->
           </div>
         </div>
@@ -104,9 +104,9 @@ exports[`test switch example 1`] = `
   <div style=\\"margin: 15.36px 0px;\\">
     <div class=\\"var-switch\\">
       <div class=\\"var-switch__block\\">
-        <div style=\\"filter: opacity(.6); background-color: rgb(255, 159, 0);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-        <div class=\\"var-switch__ripple var-switch__ripple-active\\" style=\\"color: rgb(255, 159, 0);\\">
-          <div style=\\"background-color: rgb(255, 159, 0);\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+        <div style=\\"filter: opacity(.6); background-color: rgb(255, 159, 0);\\" class=\\"var-switch__track var-switch__track--active\\"></div>
+        <div class=\\"var-switch__ripple var-switch__ripple--active\\" style=\\"color: rgb(255, 159, 0);\\">
+          <div style=\\"background-color: rgb(255, 159, 0);\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle--active\\">
             <!--v-if-->
           </div>
         </div>
@@ -119,12 +119,12 @@ exports[`test switch example 1`] = `
 </div>
 <div class=\\"app-type\\">不同大小</div>
 <div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; align-items: center; flex-wrap: wrap; margin: -15.36px 0px;\\">
-  <div style=\\"margin: 15.36px 92.16px 15.36px 0px;\\">
+  <div style=\\"margin: 15.36px 112.64px 15.36px 0px;\\">
     <div class=\\"var-switch\\">
-      <div class=\\"var-switch__block\\" style=\\"height: 18px; width: 30px;\\">
-        <div style=\\"height: 10.799999999999999px; width: 28.5px; border-radius: 10px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-        <div class=\\"var-switch__ripple var-switch__ripple-active\\" style=\\"left: 7.5px; width: 30px; height: 30px;\\">
-          <div style=\\"width: 15px; height: 15px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+      <div class=\\"var-switch__block\\" style=\\"height: 5.1192vw; width: 8.532vw;\\">
+        <div style=\\"height: 3.07152vw; width: 8.1054vw; border-radius: 2.844vw; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--active\\"></div>
+        <div class=\\"var-switch__ripple var-switch__ripple--active\\" style=\\"left: 2.133vw; width: 8.532vw; height: 8.532vw;\\">
+          <div style=\\"width: 4.266vw; height: 4.266vw;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle--active\\">
             <!--v-if-->
           </div>
         </div>
@@ -134,12 +134,12 @@ exports[`test switch example 1`] = `
       </transition-stub>
     </div>
   </div>
-  <div style=\\"margin: 15.36px 92.16px 15.36px 0px;\\">
+  <div style=\\"margin: 15.36px 112.64px 15.36px 0px;\\">
     <div class=\\"var-switch\\">
       <div class=\\"var-switch__block\\">
-        <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-        <div class=\\"var-switch__ripple var-switch__ripple-active\\">
-          <div class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+        <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--active\\"></div>
+        <div class=\\"var-switch__ripple var-switch__ripple--active\\">
+          <div class=\\"var-switch__handle var-elevation--2 var-switch__handle--active\\">
             <!--v-if-->
           </div>
         </div>
@@ -151,10 +151,10 @@ exports[`test switch example 1`] = `
   </div>
   <div style=\\"margin: 15.36px 0px;\\">
     <div class=\\"var-switch\\">
-      <div class=\\"var-switch__block\\" style=\\"height: 30px; width: 50px;\\">
-        <div style=\\"height: 18px; width: 47.5px; border-radius: 16.666666666666664px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-        <div class=\\"var-switch__ripple var-switch__ripple-active\\" style=\\"left: 12.5px; width: 50px; height: 50px;\\">
-          <div style=\\"width: 25px; height: 25px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+      <div class=\\"var-switch__block\\" style=\\"height: 7.68vw; width: 12.8vw;\\">
+        <div style=\\"height: 4.608vw; width: 12.16vw; border-radius: 4.266666666666667vw; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--active\\"></div>
+        <div class=\\"var-switch__ripple var-switch__ripple--active\\" style=\\"left: 3.2vw; width: 12.8vw; height: 12.8vw;\\">
+          <div style=\\"width: 6.4vw; height: 6.4vw;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle--active\\">
             <!--v-if-->
           </div>
         </div>
@@ -170,13 +170,13 @@ exports[`test switch example 1`] = `
   <div style=\\"margin: 15.36px 92.16px 15.36px 0px;\\">
     <div class=\\"var-switch\\">
       <div class=\\"var-switch__block\\">
-        <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-        <div class=\\"var-switch__ripple var-switch__ripple-active\\">
-          <div class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+        <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--active\\"></div>
+        <div class=\\"var-switch__ripple var-switch__ripple--active\\">
+          <div class=\\"var-switch__handle var-elevation--2 var-switch__handle--active\\">
             <div class=\\"var-loading\\">
               <!--v-if-->
               <div class=\\"var--box var-loading__body\\">
-                <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: -4px; height: -4px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+                <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block var-loading__circle-block--normal\\" style=\\"width: 4.2664vw; height: 4.2664vw; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
                 <!--v-if-->
                 <!--v-if-->
                 <!--v-if-->
@@ -194,14 +194,14 @@ exports[`test switch example 1`] = `
   </div>
   <div style=\\"margin: 15.36px 0px;\\">
     <div class=\\"var-switch\\">
-      <div class=\\"var-switch__block\\" style=\\"height: 30px; width: 50px;\\">
-        <div style=\\"height: 18px; width: 47.5px; border-radius: 16.666666666666664px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-        <div class=\\"var-switch__ripple var-switch__ripple-active\\" style=\\"left: 12.5px; width: 50px; height: 50px;\\">
-          <div style=\\"width: 25px; height: 25px; color: rgb(255, 159, 0);\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+      <div class=\\"var-switch__block\\" style=\\"height: 7.68vw; width: 12.8vw;\\">
+        <div style=\\"height: 4.608vw; width: 12.16vw; border-radius: 4.266666666666667vw; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--active\\"></div>
+        <div class=\\"var-switch__ripple var-switch__ripple--active\\" style=\\"left: 3.2vw; width: 12.8vw; height: 12.8vw;\\">
+          <div style=\\"width: 6.4vw; height: 6.4vw; color: rgb(255, 159, 0);\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle--active\\">
             <div class=\\"var-loading\\">
               <!--v-if-->
               <div class=\\"var--box var-loading__body\\">
-                <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: 21px; height: 21px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+                <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block var-loading__circle-block--normal\\" style=\\"width: 5.120000000000001vw; height: 5.120000000000001vw; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
                 <!--v-if-->
                 <!--v-if-->
                 <!--v-if-->
@@ -223,9 +223,9 @@ exports[`test switch example 1`] = `
   <div style=\\"margin: 15.36px 0px;\\">
     <div class=\\"var-switch\\">
       <div class=\\"var-switch__block\\">
-        <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-        <div class=\\"var-switch__ripple var-switch__ripple-active\\">
-          <div class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+        <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--active\\"></div>
+        <div class=\\"var-switch__ripple var-switch__ripple--active\\">
+          <div class=\\"var-switch__handle var-elevation--2 var-switch__handle--active\\">
             <!--v-if-->
           </div>
         </div>
@@ -241,13 +241,13 @@ exports[`test switch example 1`] = `
 exports[`test switch loading prop 1`] = `
 "<div class=\\"var-switch\\">
   <div class=\\"var-switch__block\\">
-    <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-    <div class=\\"var-switch__ripple var-switch__ripple-active\\">
-      <div style=\\"color: rgb(255, 152, 0);\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+    <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--active\\"></div>
+    <div class=\\"var-switch__ripple var-switch__ripple--active\\">
+      <div style=\\"color: rgb(255, 152, 0);\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle--active\\">
         <div class=\\"var-loading\\">
           <!--v-if-->
           <div class=\\"var--box var-loading__body\\">
-            <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block\\" style=\\"width: -4px; height: -4px; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
+            <div class=\\"var-loading__circle\\"><span class=\\"var-loading__circle-block var-loading__circle-block--normal\\" style=\\"width: 4.2664vw; height: 4.2664vw; color: currentColor;\\"><svg viewBox=\\"25 25 50 50\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle></svg></span></div>
             <!--v-if-->
             <!--v-if-->
             <!--v-if-->
@@ -267,9 +267,9 @@ exports[`test switch loading prop 1`] = `
 exports[`test switch rules prop 1`] = `
 "<div class=\\"var-switch\\">
   <div class=\\"var-switch__block\\">
-    <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-active\\"></div>
-    <div class=\\"var-switch__ripple var-switch__ripple-active\\">
-      <div class=\\"var-switch__handle var-elevation--2 var-switch__handle-active\\">
+    <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--active\\"></div>
+    <div class=\\"var-switch__ripple var-switch__ripple--active\\">
+      <div class=\\"var-switch__handle var-elevation--2 var-switch__handle--active\\">
         <!--v-if-->
       </div>
     </div>
@@ -283,9 +283,9 @@ exports[`test switch rules prop 1`] = `
 exports[`test switch rules prop 2`] = `
 "<div class=\\"var-switch\\">
   <div class=\\"var-switch__block\\">
-    <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-error\\"></div>
+    <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--error\\"></div>
     <div class=\\"var-switch__ripple\\" style=\\"color: rgb(153, 153, 153);\\">
-      <div class=\\"var-switch__handle var-elevation--2 var-switch__handle-error\\">
+      <div class=\\"var-switch__handle var-elevation--2 var-switch__handle--error\\">
         <!--v-if-->
       </div>
     </div>

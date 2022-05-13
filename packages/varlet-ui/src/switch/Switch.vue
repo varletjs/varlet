@@ -107,7 +107,7 @@ export default defineComponent({
     })
 
     const radius: ComputedRef<string> = computed(() => {
-      const { size = '20px' } = props
+      const { size = '5.333vw' } = props
 
       return multiplySizeUnit(size, 0.4) as string
     })
