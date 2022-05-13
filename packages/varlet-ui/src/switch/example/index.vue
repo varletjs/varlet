@@ -23,32 +23,32 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-space :size="[10, 30]">
+  <var-space :size="['3vw', '9vw']">
     <var-switch v-model="value" />
   </var-space>
   <app-type>{{ pack.notAvailable }}</app-type>
-  <var-space :size="[10, 30]">
+  <var-space :size="['3vw', '9vw']">
     <var-switch v-model="value1" disabled />
     <var-switch v-model="value1" readonly />
   </var-space>
   <app-type>{{ pack.customColor }}</app-type>
-  <var-space :size="[10, 30]">
+  <var-space :size="['3vw', '9vw']">
     <var-switch v-model="value2" :ripple="false" />
     <var-switch v-model="value2" color="#ff9f00" close-color="#f5cb90" />
   </var-space>
   <app-type>{{ pack.size }}</app-type>
-  <var-space :size="[10, 30]" align="center">
+  <var-space :size="['3vw', '9vw']" align="center">
     <var-switch v-model="value3" size="15" />
     <var-switch v-model="value3" />
     <var-switch v-model="value3" size="25" />
   </var-space>
   <app-type>{{ pack.loading }}</app-type>
-  <var-space :size="[10, 30]" align="center">
+  <var-space :size="['3vw', '9vw']" align="center">
     <var-switch :model-value="true" loading />
     <var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
   </var-space>
   <app-type>{{ pack.validateValue }}</app-type>
-  <var-space :size="[10, 30]">
+  <var-space :size="['3vw', '9vw']">
     <var-switch v-model="value4" :rules="[(v) => v === true || pack.state]" />
   </var-space>
 </template>

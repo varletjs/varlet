@@ -33,7 +33,6 @@ export const props = {
   },
   size: {
     type: [String, Number],
-    default: 20,
   },
   rules: {
     type: Array as PropType<Array<(v: boolean) => any>>,

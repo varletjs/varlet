@@ -141,6 +141,18 @@ export const toSizeUnit = (value: unknown) => {
   return `${toPxNum(value)}px`
 }
 
+export const multiplySizeUnit = (value: unknown, quantity = 1) => {
+  if (value == null) {
+    return undefined
+  }
+
+  const legalSize = toSizeUnit(value) as string
+
+  const unit = legalSize.match(/(vh|%|rem|px|vw)$/)![0]
+
+  return `${parseFloat(legalSize) * quantity}${unit}`
+}
+
 export function requestAnimationFrame(fn: FrameRequestCallback): number {
   return globalThis.requestAnimationFrame ? globalThis.requestAnimationFrame(fn) : globalThis.setTimeout(fn, 16)
 }

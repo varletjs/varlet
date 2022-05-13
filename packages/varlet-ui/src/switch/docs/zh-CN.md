@@ -102,20 +102,20 @@ const value = ref(true)
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | ---------- |
-| `v-model` | 开关选中状态	| _any_ | `false` |
-| `active-value` | 开关打开时的值	| _any_ | `true` |
+| 参数               | 说明 | 类型 | 默认值 |
+|------------------| -------------- | -------- | ---------- |
+| `v-model`        | 开关选中状态	| _any_ | `false` |
+| `active-value`   | 开关打开时的值	| _any_ | `true` |
 | `inactive-value` | 开关关闭时的值	| _any_ | `false` |
-| `disabled` | 是否禁用| _boolean_ | `false` |
-| `readonly` | 是否只读 | _boolean_ | `false` |
-| `loading` | 是否为加载状态 | _boolean_ | `false` |
-| `ripple` | 是否启用水波纹 | _boolean_ | `true` |
-| `color` | 打开状态下的颜色 | _string_ | `#2979ff` |
-| `loading-color` | 加载图标的颜色 | _string_ | `#fff` |
-| `close-color` | 关闭状态下的颜色 | _string_ | `#fff` |
-| `size` | switch 的大小 | _string \| number_ | `20` |
-| `rules`| 校验规则 | _array_  | - |
+| `disabled`       | 是否禁用| _boolean_ | `false` |
+| `readonly`       | 是否只读 | _boolean_ | `false` |
+| `loading`        | 是否为加载状态 | _boolean_ | `false` |
+| `ripple`         | 是否启用水波纹 | _boolean_ | `true` |
+| `color`          | 打开状态下的颜色 | _string_ | `#2979ff` |
+| `loading-color`  | 加载图标的颜色 | _string_ | `#fff` |
+| `close-color`    | 关闭状态下的颜色 | _string_ | `#fff` |
+| `size`           | switch 的大小 | _string \| number_ | `20px` |
+| `rules`          | 校验规则 | _array_  | - |
 
 ### 事件
 

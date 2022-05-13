@@ -102,20 +102,20 @@ const value = ref(true)
 
 ### Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
-| `v-model` | Check status of Switch	| _any_ | `false` |
-| `active-value` | The value when the switch is turned on	| _any_ | `true` |
+| Prop             | Description | Type | Default |
+|------------------| -------------- | -------- | ---------- |
+| `v-model`        | Check status of Switch	| _any_ | `false` |
+| `active-value`   | The value when the switch is turned on	| _any_ | `true` |
 | `inactive-value` | The value when the switch is turned off	| _any_ | `false` |
-| `disabled` | Whether to disable switch| _boolean_ | `false` |
-| `readonly` | Whether to readonly switch | _boolean_ | `false` |
-| `loading` | Whether to show loading icon | _boolean_ | `false` |
-| `ripple` | Whether to open ripple | _boolean_ | `true` |
-| `color` | Background color when open | _string_ | `#2979ff` |
-| `close-color` | Background color when close | _string_ | `#fff` |
-| `loading-color` | Color of loading icon | _string_ | `#fff` |
-| `size` | Size of switch | _string \| number_ | `20` |
-| `rules`| Validation rules | _array_  | - |
+| `disabled`       | Whether to disable switch| _boolean_ | `false` |
+| `readonly`       | Whether to readonly switch | _boolean_ | `false` |
+| `loading`        | Whether to show loading icon | _boolean_ | `false` |
+| `ripple`         | Whether to open ripple | _boolean_ | `true` |
+| `color`          | Background color when open | _string_ | `#2979ff` |
+| `close-color`    | Background color when close | _string_ | `#fff` |
+| `loading-color`  | Color of loading icon | _string_ | `#fff` |
+| `size`           | Size of switch | _string \| number_ | `20px` |
+| `rules`          | Validation rules | _array_  | - |
 
 ### Events
 
