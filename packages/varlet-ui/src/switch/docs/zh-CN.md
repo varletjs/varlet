@@ -114,7 +114,7 @@ const value = ref(true)
 | `color`          | 打开状态下的颜色 | _string_ | `#2979ff` |
 | `loading-color`  | 加载图标的颜色 | _string_ | `#fff` |
 | `close-color`    | 关闭状态下的颜色 | _string_ | `#fff` |
-| `size`           | switch 的大小 | _string \| number_ | `20px` |
+| `size`           | switch 的大小 | _string \| number_ | - |
 | `rules`          | 校验规则 | _array_  | - |
 
 ### 事件

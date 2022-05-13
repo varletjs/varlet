@@ -114,7 +114,7 @@ const value = ref(true)
 | `color`          | Background color when open | _string_ | `#2979ff` |
 | `close-color`    | Background color when close | _string_ | `#fff` |
 | `loading-color`  | Color of loading icon | _string_ | `#fff` |
-| `size`           | Size of switch | _string \| number_ | `20px` |
+| `size`           | Size of switch | _string \| number_ | - |
 | `rules`          | Validation rules | _array_  | - |
 
 ### Events

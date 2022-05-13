@@ -37,15 +37,15 @@ watchDarkMode(dark)
     <var-switch v-model="value2" color="#ff9f00" close-color="#f5cb90" />
   </var-space>
   <app-type>{{ pack.size }}</app-type>
-  <var-space :size="['3vw', '9vw']" align="center">
-    <var-switch v-model="value3" size="15" />
+  <var-space :size="['3vw', '11vw']" align="center">
+    <var-switch v-model="value3" size="4.266vw" />
     <var-switch v-model="value3" />
-    <var-switch v-model="value3" size="25" />
+    <var-switch v-model="value3" size="6.4vw" />
   </var-space>
   <app-type>{{ pack.loading }}</app-type>
   <var-space :size="['3vw', '9vw']" align="center">
     <var-switch :model-value="true" loading />
-    <var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
+    <var-switch :model-value="true" size="6.4vw" loading loading-color="#ff9f00" />
   </var-space>
   <app-type>{{ pack.validateValue }}</app-type>
   <var-space :size="['3vw', '9vw']">

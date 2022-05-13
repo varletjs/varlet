@@ -7,10 +7,12 @@
     >
       <div
         :style="styleComputed.track"
-        :class="classes(n('track'), [modelValue === activeValue, n('track-active')], [errorMessage, n('track-error')])"
+        :class="
+          classes(n('track'), [modelValue === activeValue, n('track--active')], [errorMessage, n('track--error')])
+        "
       ></div>
       <div
-        :class="classes(n('ripple'), [modelValue === activeValue, n('ripple-active')])"
+        :class="classes(n('ripple'), [modelValue === activeValue, n('ripple--active')])"
         :style="styleComputed.ripple"
         v-ripple="{
           disabled: !ripple || disabled || loading || formDisabled,
@@ -22,12 +24,12 @@
             classes(
               n('handle'),
               'var-elevation--2',
-              [modelValue === activeValue, n('handle-active')],
-              [errorMessage, n('handle-error')]
+              [modelValue === activeValue, n('handle--active')],
+              [errorMessage, n('handle--error')]
             )
           "
         >
-          <var-loading v-if="loading" :radius="toNumber(size) / 2 - 2" />
+          <var-loading v-if="loading" :radius="radius" />
         </div>
       </div>
     </div>
@@ -39,7 +41,6 @@
 import { defineComponent, computed, nextTick } from 'vue'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
-import { toNumber } from '../utils/shared'
 import { useForm } from '../form/provide'
 import { props } from './props'
 import VarFormDetails from '../form-details'
@@ -105,6 +106,12 @@ export default defineComponent({
       }
     })
 
+    const radius: ComputedRef<string> = computed(() => {
+      const { size = '20px' } = props
+
+      return multiplySizeUnit(size, 0.4) as string
+    })
+
     const switchActive = (event: MouseEvent) => {
       const {
         onClick,
@@ -142,7 +149,7 @@ export default defineComponent({
       n,
       classes,
       switchActive,
-      toNumber,
+      radius,
       styleComputed,
       errorMessage,
       formDisabled: form?.disabled,
