@@ -7,10 +7,12 @@
     >
       <div
         :style="styleComputed.track"
-        :class="classes(n('track'), [modelValue === activeValue, n('track-active')], [errorMessage, n('track-error')])"
+        :class="
+          classes(n('track'), [modelValue === activeValue, n('track--active')], [errorMessage, n('track--error')])
+        "
       ></div>
       <div
-        :class="n('ripple')"
+        :class="classes(n('ripple'), [modelValue === activeValue, n('ripple--active')])"
         :style="styleComputed.ripple"
         v-ripple="{
           disabled: !ripple || disabled || loading || formDisabled,
@@ -22,12 +24,12 @@
             classes(
               n('handle'),
               'var-elevation--2',
-              [modelValue === activeValue, n('handle-active')],
-              [errorMessage, n('handle-error')]
+              [modelValue === activeValue, n('handle--active')],
+              [errorMessage, n('handle--error')]
             )
           "
         >
-          <var-loading v-if="loading" :radius="toNumber(size) / 2 - 2" />
+          <var-loading v-if="loading" :radius="radius" />
         </div>
       </div>
     </div>
@@ -38,7 +40,7 @@
 <script lang="ts">
 import { defineComponent, computed, nextTick } from 'vue'
 import { useValidation, createNamespace, call } from '../utils/components'
-import { toNumber } from '../utils/shared'
+import { multiplySizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
 import { props } from './props'
 import VarFormDetails from '../form-details'
@@ -77,35 +79,37 @@ export default defineComponent({
     const styleComputed: ComputedRef<Record<string, Partial<StyleProps>>> = computed(() => {
       const { size, modelValue, color, closeColor, loadingColor, activeValue } = props
 
-      const sizeNum = toNumber(size)
-      const switchWidth = sizeNum * 2
-      const switchHeight = sizeNum * 1.2
-
       return {
         handle: {
-          width: `${size}px`,
-          height: `${size}px`,
+          width: multiplySizeUnit(size),
+          height: multiplySizeUnit(size),
           backgroundColor: modelValue === activeValue ? color || '' : closeColor || '',
           color: loadingColor && loadingColor,
         },
         ripple: {
-          left: modelValue === activeValue ? `${sizeNum / 2}px` : `-${sizeNum / 2}px`,
+          left: modelValue === activeValue ? multiplySizeUnit(size, 0.5) : `-${multiplySizeUnit(size, 0.5)}`,
           color: modelValue === activeValue ? color || '' : closeColor || '#999',
-          width: `${sizeNum * 2}px`,
-          height: `${sizeNum * 2}px`,
+          width: multiplySizeUnit(size, 2),
+          height: multiplySizeUnit(size, 2),
         },
         track: {
-          height: `${switchHeight * 0.6}px`,
-          width: `${switchWidth - 2}px`,
-          borderRadius: `${switchWidth / 3}px`,
+          height: multiplySizeUnit(size, 0.72),
+          width: multiplySizeUnit(size, 1.9),
+          borderRadius: multiplySizeUnit(size, 2 / 3),
           filter: modelValue === activeValue || errorMessage?.value ? 'opacity(.6)' : 'brightness(.6)',
           backgroundColor: modelValue === activeValue ? color || '' : closeColor || '',
         },
         switch: {
-          height: `${switchHeight}px`,
-          width: `${switchWidth}px`,
+          height: multiplySizeUnit(size, 1.2),
+          width: multiplySizeUnit(size, 2),
         },
       }
+    })
+
+    const radius: ComputedRef<string> = computed(() => {
+      const { size = '20px' } = props
+
+      return multiplySizeUnit(size, 0.4) as string
     })
 
     const switchActive = (event: MouseEvent) => {
@@ -145,7 +149,7 @@ export default defineComponent({
       n,
       classes,
       switchActive,
-      toNumber,
+      radius,
       styleComputed,
       errorMessage,
       formDisabled: form?.disabled,
