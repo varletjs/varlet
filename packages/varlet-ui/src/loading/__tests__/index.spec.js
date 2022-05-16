@@ -3,7 +3,7 @@ import VarLoading from '../Loading'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 
-test('test loading plugin', () => {
+test('test loading use', () => {
   const app = createApp({}).use(Loading)
   expect(app.component(Loading.name)).toBeTruthy()
 })
