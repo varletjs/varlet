@@ -25,11 +25,9 @@ export const props = {
   },
   size: {
     type: [String, Number],
-    default: '24',
   },
   gap: {
     type: [String, Number],
-    default: '2',
   },
   namespace: {
     type: String,

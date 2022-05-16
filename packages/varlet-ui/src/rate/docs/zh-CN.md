@@ -98,9 +98,9 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate v-model="score" :gap="2"/>
+  <var-rate v-model="score" :gap="1"/>
   <var-rate v-model="score"/>
-  <var-rate v-model="score" :gap="6"/>
+  <var-rate v-model="score" :gap="4"/>
   <var-rate v-model="score" :gap="8"/>
 </template>
 ```
@@ -224,24 +224,24 @@ const score = ref(3)
 
 ### 属性
 
-|参数 | 说明 | 类型 | 默认值 |
-| ---- | ---- | ---- | ---- |
-| `v-model` | 当前分数 | _number \| string_ | `0` |
-| `count` | 评分总数 | _number \| string_ | `5` |
-| `color` | 选中时图标的颜色 | _string_ | `-` |
-| `icon` | 选中整个图标时的图标样式 | _string_ | `star`|
-| `empty-color` | 未选中时图标的颜色 | _string_ | `-` |
-| `empty-icon` | 未选中时图标的样式 | _string_ | `star-outline` |
-| `size` | 图标大小，默认单位为 `px` | _number \| string_ | `20`|
-| `gap` | 图标间隔，默认单位为 `px` | _number \| string_ | `4` |
-| `half` | 是否允许半选 | _boolean_ | `false` |
-| `half-icon` | 半选时图标的样式，只有在 `half` 为 `true` 时才有效| _string_ | `star-half-full` |
-| `namespace` | 图标的命名空间, 可扩展自定义图标库 |  _string_ | `var-icon` |
-| `disabled` | 是否禁止评分 | _boolean_ | `false`|
+| 参数               | 说明 | 类型 | 默认值 |
+|------------------| ---- | ---- | ---- |
+| `v-model`        | 当前分数 | _number \| string_ | `0` |
+| `count`          | 评分总数 | _number \| string_ | `5` |
+| `color`          | 选中时图标的颜色 | _string_ | `-` |
+| `icon`           | 选中整个图标时的图标样式 | _string_ | `star`|
+| `empty-color`    | 未选中时图标的颜色 | _string_ | `-` |
+| `empty-icon`     | 未选中时图标的样式 | _string_ | `star-outline` |
+| `size`           | 图标大小，默认单位为 `px` | _number \| string_ | `-`|
+| `gap`            | 图标间隔，默认单位为 `px` | _number \| string_ | `-` |
+| `half`           | 是否允许半选 | _boolean_ | `false` |
+| `half-icon`      | 半选时图标的样式，只有在 `half` 为 `true` 时才有效| _string_ | `star-half-full` |
+| `namespace`      | 图标的命名空间, 可扩展自定义图标库 |  _string_ | `var-icon` |
+| `disabled`       | 是否禁止评分 | _boolean_ | `false`|
 | `disabled-color` | 禁止评分时图标的颜色，只有在 `disabled` 为 `true` 时才有效，优先级高于 `color`、`empty-color`| _string_ | `#aaa` |
-| `readonly` | 是否使用评分只读 | _boolean_ | `false` |
-| `ripple` | 是否使用水波纹 | _boolean_ | `true` |
-| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string \| number) => any>_ | `-` |
+| `readonly`       | 是否使用评分只读 | _boolean_ | `false` |
+| `ripple`         | 是否使用水波纹 | _boolean_ | `true` |
+| `rules`          | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string \| number) => any>_ | `-` |
 
 ### 事件
 
