@@ -127,7 +127,7 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.functionCall }}</app-type>
-  <var-space direction="column" :size="[10, 10]">
+  <var-space direction="column" :size="['3vw', '4vw']">
     <var-button type="primary" block @click="createBasic">{{ pack.basicUsage }}</var-button>
     <var-button type="primary" block @click="modifyTitle">{{ pack.modifyTitle }}</var-button>
     <var-button type="primary" block @click="disableAction">{{ pack.disabled }}</var-button>
@@ -138,7 +138,7 @@ watchDarkMode(dark)
   </var-space>
 
   <app-type>{{ pack.componentCall }}</app-type>
-  <var-space direction="column" :size="[10, 10]">
+  <var-space direction="column" :size="['3vw', '4vw']">
     <var-button type="warning" block @click="show = true">{{ pack.basicUsage }}</var-button>
     <var-button type="warning" block @click="show1 = true">{{ pack.modifyTitle }}</var-button>
     <var-button type="warning" block @click="show2 = true">{{ pack.disabled }}</var-button>

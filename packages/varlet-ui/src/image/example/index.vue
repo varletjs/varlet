@@ -15,27 +15,27 @@ watchLang(use)
   <app-type>{{ pack.fitMode }}</app-type>
   <var-row>
     <div class="image-example-fit-item">
-      <var-image width="85px" height="85px" src="https://varlet-varletjs.vercel.app/cat.jpg" />
+      <var-image width="22.666vw" height="22.666vw" src="https://varlet-varletjs.vercel.app/cat.jpg" />
       <div class="image-example-margin-bottom">fill</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="85px" height="85px" fit="cover" src="https://varlet-varletjs.vercel.app/cat.jpg" />
+      <var-image width="22.666vw" height="22.666vw" fit="cover" src="https://varlet-varletjs.vercel.app/cat.jpg" />
       <div class="image-example-margin-bottom">cover</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="85px" height="85px" fit="contain" src="https://varlet-varletjs.vercel.app/cat.jpg" />
+      <var-image width="22.666vw" height="22.666vw" fit="contain" src="https://varlet-varletjs.vercel.app/cat.jpg" />
       <div class="image-example-margin-bottom">contain</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="85px" height="85px" fit="none" src="https://varlet-varletjs.vercel.app/cat.jpg" />
+      <var-image width="22.666vw" height="22.666vw" fit="none" src="https://varlet-varletjs.vercel.app/cat.jpg" />
       <div class="image-example-margin-bottom">none</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="85px" height="85px" fit="scale-down" src="https://varlet-varletjs.vercel.app/cat.jpg" />
+      <var-image width="22.666vw" height="22.666vw" fit="scale-down" src="https://varlet-varletjs.vercel.app/cat.jpg" />
       <div class="image-example-margin-bottom">scale-down</div>
     </div>
   </var-row>
@@ -43,15 +43,21 @@ watchLang(use)
   <app-type>{{ pack.setRadius }}</app-type>
   <var-row>
     <var-image
-      width="85px"
-      height="85px"
+      width="22.666vw"
+      height="22.666vw"
       fit="cover"
       :radius="10"
       src="https://varlet-varletjs.vercel.app/cat.jpg"
-      style="margin-right: 10px"
+      class="image-example-fit-item"
     />
 
-    <var-image width="85px" height="85px" fit="cover" radius="50%" src="https://varlet-varletjs.vercel.app/cat.jpg" />
+    <var-image
+      width="22.666vw"
+      height="22.666vw"
+      fit="cover"
+      radius="50%"
+      src="https://varlet-varletjs.vercel.app/cat.jpg"
+    />
   </var-row>
 
   <app-type>{{ pack.useRipple }}</app-type>

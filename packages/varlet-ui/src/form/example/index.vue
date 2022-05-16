@@ -49,7 +49,7 @@ watchDarkMode(dark)
   <app-type>{{ pack.example }}</app-type>
 
   <var-form ref="form" :disabled="disabled" :readonly="readonly">
-    <var-space direction="column" :size="[14, 0]">
+    <var-space direction="column" :size="['4vw', 0]">
       <var-input
         :placeholder="pack.username"
         :rules="[(v) => !!v || pack.usernameMessage]"
@@ -99,7 +99,7 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.controller }}</app-type>
 
-  <var-space direction="column" :size="[14, 0]">
+  <var-space direction="column" :size="['4vw', 0]">
     <var-button block type="danger" @click="form.reset()">{{ pack.reset }}</var-button>
     <var-button block type="warning" @click="form.resetValidation()">{{ pack.resetValidation }}</var-button>
     <var-button block type="success" @click="form.validate()">{{ pack.validate }}</var-button>

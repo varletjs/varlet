@@ -253,7 +253,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-select placeholder="请选择" :offset-y="-62" v-model="value">
+  <var-select placeholder="请选择" :offset-y="-136" v-model="value">
     <var-option label="火猫" />
     <var-option label="蓝猫" />
     <var-option label="紫猫" />

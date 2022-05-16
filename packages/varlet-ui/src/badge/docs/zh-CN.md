@@ -101,10 +101,12 @@ const handleChange = () => {
 </script>
 
 <template>
-  <var-button @click="handleChange">点击改变状态</var-button>
-  <var-badge type="danger" position="right-top" :hidden="hidden">
-    <var-chip plain :round="false" color="#009688">徽标</var-chip>
-  </var-badge>
+  <var-space>
+    <var-badge type="danger" position="right-top" :hidden="hidden">
+      <var-chip plain :round="false" color="#009688">徽标</var-chip>
+    </var-badge>
+    <var-button type="success" @click="handleChange">点击改变状态</var-button>
+  </var-space>
 </template>
 ```
 

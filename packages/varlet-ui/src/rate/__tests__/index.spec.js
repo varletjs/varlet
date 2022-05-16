@@ -1,24 +1,15 @@
-import example from '../example'
 import Rate from '..'
 import VarRate from '../Rate'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockOffset, trigger } from '../../utils/jest'
+import { delay, trigger } from '../../utils/jest'
 
-mockOffset()
-
-test('test rate example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
-
-test('test rate plugin', () => {
+test('test rate use', () => {
   const app = createApp({}).use(Rate)
   expect(app.component(Rate.name)).toBeTruthy()
 })
 
-test('test rate onChange', async () => {
+test('test rate component onchange event', async () => {
   const onChange = jest.fn()
   const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
 
@@ -33,26 +24,6 @@ test('test rate onChange', async () => {
   await wrapper.find('.var-rate__content').trigger('click')
   expect(onChange).toHaveBeenCalledTimes(1)
   expect(wrapper.props('modelValue')).toBe(1)
-
-  wrapper.unmount()
-})
-
-test('test rate half', async () => {
-  const onChange = jest.fn()
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
-
-  const wrapper = mount(VarRate, {
-    props: {
-      half: true,
-      modelValue: 0,
-      onChange,
-      'onUpdate:modelValue': onUpdateModelValue,
-    },
-  })
-
-  await trigger(wrapper.find('.var-rate__content'), 'click')
-  expect(onChange).toHaveBeenCalledTimes(1)
-  expect(wrapper.props('modelValue')).toBe(0.5)
 
   wrapper.unmount()
 })
@@ -72,15 +43,10 @@ test('test rate validation', async () => {
 
   wrapper.vm.validate()
   await delay(16)
-
   expect(wrapper.find('.var-form-details__message').text()).toBe('至少选择一分')
-  expect(wrapper.html()).toMatchSnapshot()
-
   await wrapper.find('.var-rate__content').trigger('click')
   await delay(16)
   expect(wrapper.find('.var-form-details__message').exists()).toBeFalsy()
-  expect(wrapper.html()).toMatchSnapshot()
-
   wrapper.vm.reset()
   await delay(16)
   expect(wrapper.props('modelValue')).toBe(0)
@@ -88,48 +54,71 @@ test('test rate validation', async () => {
   wrapper.unmount()
 })
 
-test('test rate disabled & readonly', async () => {
-  const onChange = jest.fn()
+describe('test rate component props', () => {
+  test('test rate half', async () => {
+    const onChange = jest.fn()
+    const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
 
-  const wrapper = mount(VarRate, {
-    props: {
-      disabled: true,
-      readonly: false,
-      onChange,
-    },
+    const wrapper = mount(VarRate, {
+      props: {
+        half: true,
+        modelValue: 0,
+        onChange,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await trigger(wrapper.find('.var-rate__content'), 'click')
+    expect(onChange).toHaveBeenCalledTimes(1)
+    expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
+    expect(wrapper.props('modelValue')).toBe(0.5)
+
+    wrapper.unmount()
   })
 
-  await wrapper.find('.var-rate__content').trigger('click')
-  expect(wrapper.html()).toMatchSnapshot()
-  expect(onChange).toHaveBeenCalledTimes(0)
+  test('test rate disabled & readonly', async () => {
+    const onChange = jest.fn()
 
-  await wrapper.setProps({ disabled: false, readonly: true })
-  await wrapper.find('.var-rate__content').trigger('click')
-  expect(wrapper.html()).toMatchSnapshot()
-  expect(onChange).toHaveBeenCalledTimes(0)
-})
+    const wrapper = mount(VarRate, {
+      props: {
+        disabled: true,
+        readonly: false,
+        onChange,
+      },
+    })
 
-test('test rate count', () => {
-  const wrapper = mount(VarRate, {
-    props: {
-      count: 10,
-    },
+    await wrapper.find('.var-rate__content').trigger('click')
+    expect(onChange).toHaveBeenCalledTimes(0)
+
+    await wrapper.setProps({ disabled: false, readonly: true })
+    await wrapper.find('.var-rate__content').trigger('click')
+    expect(onChange).toHaveBeenCalledTimes(0)
+
+    wrapper.unmount()
   })
 
-  expect(wrapper.findAll('.var-rate__content').length).toBe(10)
-  expect(wrapper.html()).toMatchSnapshot()
+  test('test rate count', () => {
+    const wrapper = mount(VarRate, {
+      props: {
+        count: 10,
+      },
+    })
 
-  wrapper.unmount()
-})
+    expect(wrapper.findAll('.var-rate__content').length).toBe(10)
 
-test('test rate gap', () => {
-  const wrapper = mount(VarRate, {
-    props: {
-      gap: 10,
-    },
+    wrapper.unmount()
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
+  test('test rate gap', () => {
+    const wrapper = mount(VarRate, {
+      props: {
+        gap: 10,
+      },
+    })
 
-  wrapper.unmount()
+    const el = wrapper.find('.var-rate__content')
+    expect(el.attributes('style')).toMatch(/(margin-right: 10px)(.*)/)
+
+    wrapper.unmount()
+  })
 })

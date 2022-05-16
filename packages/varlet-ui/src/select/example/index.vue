@@ -133,7 +133,7 @@ watchDarkMode(dark)
   </var-select>
 
   <app-type>{{ pack.offsetY }}</app-type>
-  <var-select :placeholder="pack.placeholder" v-model="value12" :offset-y="-138">
+  <var-select :placeholder="pack.placeholder" v-model="value12" offset-y="-36.2vw">
     <var-option :label="pack.emberSprit" />
     <var-option :label="pack.stormSpirit" />
     <var-option :label="pack.voidSpirit" />

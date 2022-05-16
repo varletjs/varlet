@@ -16,6 +16,24 @@ export const props = {
   height: {
     type: [String, Number],
   },
+  width: {
+    type: [String, Number],
+  },
+  layout: {
+    type: String as PropType<'row' | 'column'>,
+    default: 'column',
+  },
+  floating: {
+    type: Boolean,
+    default: false,
+  },
+  'onUpdate:floating': {
+    type: Function as PropType<(floating: boolean) => void>,
+  },
+  floatingDuration: {
+    type: Number,
+    default: 250,
+  },
   alt: {
     type: String,
   },

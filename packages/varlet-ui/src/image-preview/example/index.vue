@@ -92,7 +92,7 @@ watchDarkMode(dark)
 <style lang="less" scoped>
 .image-preview-demo {
   .var-button {
-    margin-top: 10px;
+    margin-bottom: 14px;
   }
 
   .extra-btn {

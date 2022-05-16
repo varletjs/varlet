@@ -24,7 +24,6 @@ const { active, active2, active3, active4, active5, active6, active7, activeRela
 
 const themes = ref('themes')
 const tabItemStyle = computed(() => ({
-  padding: '0 4px;',
   color: themes.value === 'themes' ? '#888' : '#aaa',
 }))
 
@@ -158,7 +157,7 @@ watchDarkMode(dark, (mode) => {
     color="#2979ff"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
-    :offset-top="54"
+    offset-top="14.4vw"
     v-model:active="active7"
   >
     <var-tab>{{ pack.option }}1</var-tab>

@@ -58,9 +58,9 @@ onMounted(() => {
 #### IndexBar Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | ---------- |
+| ----- | -------------- | -------- | --------- |
 | `sticky` | 是否开启锚点吸顶 | _boolean_ | `true` |
-| `sticky-offset-top` | 锚点吸顶时与顶部的距离 | _number_ | `0` |
+| `sticky-offset-top` | 锚点吸顶时与顶部的距离 | _number \| string_ | `0` |
 | `hide-list` | 是否隐藏锚点列表 | _boolean_ | `false` |
 | `css-mode` | 开启原生 `css sticky` 模式 | _boolean_ | `false` |
 | `z-index` | z-index 层级 | _number \| string_ | `1` |

@@ -40,7 +40,7 @@ test('test switch value props and events', async () => {
 
   await delay(0)
 
-  expect(wrapper.find('.var-switch__track').classes()).toContain('var-switch__track-active')
+  expect(wrapper.find('.var-switch__track').classes()).toContain('var-switch__track--active')
 
   await wrapper.find('.var-switch__block').trigger('click')
 
@@ -50,7 +50,7 @@ test('test switch value props and events', async () => {
   await delay(0)
 
   expect(wrapper.vm.value).toBe(1)
-  expect(wrapper.find('.var-switch__track').classes()).not.toContain('var-switch__track-active')
+  expect(wrapper.find('.var-switch__track').classes()).not.toContain('var-switch__track--active')
 })
 
 test('test switch not available', async () => {

@@ -47,19 +47,19 @@ watchDarkMode(dark)
   <var-rate v-model="scores.score2" color="#3f51b5" empty-color="#9fa8da" />
 
   <app-type>{{ pack.customizeRatingIconStyles }}</app-type>
-  <var-rate v-model="scores.score3" icon="heart" empty-icon="heart-outline" color="red"></var-rate>
+  <var-rate v-model="scores.score3" icon="heart" empty-icon="heart-outline" color="red" />
 
   <app-type>{{ pack.customizeRatingIconSize }}</app-type>
-  <var-rate v-model="scores.score4" :size="16" />
-  <var-rate v-model="scores.score4" :size="18" />
-  <var-rate v-model="scores.score4" :size="20" />
+  <var-rate v-model="scores.score4" size="5.6vw" />
   <var-rate v-model="scores.score4" />
+  <var-rate v-model="scores.score4" size="7.2vw" />
+  <var-rate v-model="scores.score4" size="8vw" />
 
   <app-type>{{ pack.customIconSpacing }}</app-type>
-  <var-rate v-model="scores.score5" :gap="2" />
   <var-rate v-model="scores.score5" />
-  <var-rate v-model="scores.score5" :gap="6" />
-  <var-rate v-model="scores.score5" :gap="8" />
+  <var-rate v-model="scores.score5" gap="1vw" />
+  <var-rate v-model="scores.score5" gap="2vw" />
+  <var-rate v-model="scores.score5" gap="3vw" />
 
   <app-type>{{ pack.useHalfAStar }}</app-type>
   <var-rate v-model="scores.score6" :count="8" half />
@@ -71,7 +71,7 @@ watchDarkMode(dark)
     empty-icon="heart-outline"
     color="red"
     half
-  ></var-rate>
+  />
 
   <app-type>{{ pack.disableTheRating }}</app-type>
   <var-rate v-model="scores.score7" disabled />

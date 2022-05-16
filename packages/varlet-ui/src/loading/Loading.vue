@@ -7,10 +7,10 @@
     <div :class="classes('var--box', n('body'), [$slots.default, n('inside')])" v-if="isShow">
       <div :class="n('circle')" v-if="type === 'circle'">
         <span
-          :class="n('circle-block')"
+          :class="classes(n('circle-block'), n(`circle-block--${size}`))"
           :style="{
-            width: getRadius * 2 + 'px',
-            height: getRadius * 2 + 'px',
+            width: multiplySizeUnit(radius, 2),
+            height: multiplySizeUnit(radius, 2),
             color,
           }"
         >
@@ -44,9 +44,9 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { props } from './props'
-import { toNumber } from '../utils/shared'
-import type { ComputedRef } from 'vue'
 import { createNamespace, call } from '../utils/components'
+import { multiplySizeUnit } from '../utils/elements'
+import type { ComputedRef } from 'vue'
 
 const { n, classes } = createNamespace('loading')
 
@@ -61,17 +61,6 @@ export default defineComponent({
       disappear: 3,
     }
 
-    const sizeDict = {
-      mini: 9,
-      small: 12,
-      normal: 15,
-      large: 18,
-    }
-
-    const getRadius: ComputedRef<number> = computed(() => {
-      return props.radius ? toNumber(props.radius) : sizeDict[props.size]
-    })
-
     const isShow: ComputedRef<boolean> = computed(() => {
       if (!call(slots.default)) return true
 
@@ -81,8 +70,8 @@ export default defineComponent({
     return {
       n,
       classes,
+      multiplySizeUnit,
       loadingTypeDict,
-      getRadius,
       isShow,
     }
   },

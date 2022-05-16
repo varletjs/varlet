@@ -6,7 +6,7 @@ import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 import Icon from '../components/icon'
-import AppBar from '../components/app-bar'
+import AppBar from './components/app-bar'
 import Button from '../components/button'
 import Cell from '../components/cell'
 import Ripple from '../components/ripple'

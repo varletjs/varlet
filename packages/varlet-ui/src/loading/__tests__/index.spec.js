@@ -30,16 +30,12 @@ describe('test loading component props', () => {
   })
 
   test('test loading size', () => {
-    let sizeNum = 36
     ;['large', 'normal', 'small', 'mini'].forEach((size) => {
       const wrapper = mount(VarLoading, {
         props: { size },
       })
 
-      expect(wrapper.find('.var-loading__circle-block').attributes('style')).toContain(
-        `width: ${sizeNum}px; height: ${sizeNum}px;`
-      )
-      sizeNum -= 6
+      expect(wrapper.find('.var-loading__circle-block').classes()).toContain(`var-loading__circle-block--${size}`)
       wrapper.unmount()
     })
   })

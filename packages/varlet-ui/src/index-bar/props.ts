@@ -6,7 +6,7 @@ export const props = {
     default: true,
   },
   stickyOffsetTop: {
-    type: Number,
+    type: [String, Number],
     default: 0,
   },
   cssMode: {

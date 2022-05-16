@@ -99,10 +99,12 @@ const handleChange = () => {
 </script>
 
 <template>
-  <var-button @click="handleChange">Click To Change The State</var-button>
-  <var-badge type="danger" position="right-top" :hidden="hidden">
-    <var-chip plain :round="false" color="#009688">Badge</var-chip>
-  </var-badge>
+  <var-space>
+    <var-badge type="danger" position="right-top" :hidden="hidden">
+      <var-chip plain :round="false" color="#009688">Badge</var-chip>
+    </var-badge>
+    <var-button type="success" @click="handleChange">Click To Change The State</var-button>
+  </var-space>
 </template>
 ```
 

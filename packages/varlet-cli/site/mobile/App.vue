@@ -4,7 +4,7 @@
       <var-site-app-bar class="app-bar" title-position="left" :title="bigCamelizeComponentName">
         <template #left>
           <var-site-button v-if="showBackIcon" text round @click="back" color="transparent" text-color="#fff">
-            <var-site-icon name="chevron-left" :size="28" style="margin-top: 1px" />
+            <var-site-icon name="chevron-left" class="arrow-left" style="margin-top: 1px" />
           </var-site-button>
           <var-site-button
             v-if="!showBackIcon && github"
@@ -15,7 +15,7 @@
             color="transparent"
             text-color="#fff"
           >
-            <var-site-icon name="github" :size="28" style="margin-top: 1px" />
+            <var-site-icon name="github" class="github" style="margin-top: 1px" />
           </var-site-button>
         </template>
         <template #right>
@@ -31,21 +31,21 @@
             @click="toggleTheme"
           >
             <var-site-icon
-              size="24px"
+              class="theme"
               color="#fff"
               :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'"
             />
           </var-site-button>
           <var-site-button
-            style="padding-right: 6px"
+            class="i18n-button"
             text
             color="transparent"
             text-color="#fff"
             @click.stop="showMenu = true"
             v-if="languages"
           >
-            <var-site-icon name="translate" :size="24" />
-            <var-site-icon name="chevron-down" :size="22" />
+            <var-site-icon name="translate" class="i18n" />
+            <var-site-icon name="chevron-down" class="arrow-down" />
           </var-site-button>
         </template>
       </var-site-app-bar>
@@ -200,6 +200,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100%;
+  font-size: 16px;
   font-family: 'Roboto', sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background: var(--site-config-color-bar);
@@ -246,7 +247,7 @@ header {
 }
 
 .router-view__block {
-  padding: 54px 12px 15px;
+  padding: 55px 12px 15px;
 }
 
 * {
@@ -262,5 +263,29 @@ header {
     color: var(--site-config-color-mobile-language-active);
     background: var(--site-config-color-mobile-language-active-background);
   }
+}
+
+.arrow-left {
+  font-size: 28px !important;
+}
+
+.github {
+  font-size: 28px !important;
+}
+
+.theme {
+  font-size: 24px !important;
+}
+
+.i18n {
+  font-size: 24px !important;
+}
+
+.arrow-down {
+  font-size: 22px !important;
+}
+
+.i18n-button {
+  padding-right: 6px !important;
 }
 </style>

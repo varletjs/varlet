@@ -10,6 +10,8 @@
         @click="handleClick(val, $event)"
       >
         <var-icon
+          :class="n('content-icon')"
+          var-rate-cover
           :transition="0"
           :namespace="namespace"
           :name="getIconName(val)"

@@ -25,7 +25,7 @@ watchDarkMode(dark)
 <template>
   <div class="example">
     <app-type>{{ pack.themeColorBadge }}</app-type>
-    <var-space>
+    <var-space :size="['2.666vw', '4vw']">
       <var-badge />
       <var-badge type="primary" />
       <var-badge type="info" />
@@ -38,20 +38,20 @@ watchDarkMode(dark)
     <var-badge dot type="danger" />
 
     <app-type>{{ pack.customContentBadge }}</app-type>
-    <var-space>
+    <var-space :size="['2.666vw', '4vw']">
       <var-badge type="danger" value="badge" />
       <var-badge type="danger" value="hot" />
       <var-badge type="danger" value="66" />
     </var-space>
 
     <app-type>{{ pack.maximum }}</app-type>
-    <var-space>
+    <var-space :size="['2.666vw', '4vw']">
       <var-badge type="danger" :value="value" :max-value="maxValue" />
       <var-badge type="danger" :value="value1" :max-value="maxValue" />
     </var-space>
 
     <app-type>{{ pack.differentPositioningBadges }}</app-type>
-    <var-space :size="[8, 20]">
+    <var-space :size="['2.666vw', '6vw']">
       <var-badge type="danger" position="right-top">
         <var-chip plain :round="false" color="#009688">{{ pack.upperRight }}</var-chip>
       </var-badge>
@@ -67,12 +67,15 @@ watchDarkMode(dark)
     </var-space>
 
     <app-type>{{ pack.whetherToDisplayTheBadge }}</app-type>
-    <var-button @click="handleChange">
-      {{ pack.clickToChangeTheState }}
-    </var-button>
-    <var-badge type="danger" position="right-top" :hidden="hidden">
-      <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
-    </var-badge>
+    <var-space :size="['2.666vw', '6vw']">
+      <var-badge type="danger" position="right-top" :hidden="hidden">
+        <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+      </var-badge>
+
+      <var-button type="success" @click="handleChange">
+        {{ pack.clickToChangeTheState }}
+      </var-button>
+    </var-space>
 
     <app-type>{{ pack.customBadgeColors }}</app-type>
     <var-badge color="#6200ea" position="right-top">

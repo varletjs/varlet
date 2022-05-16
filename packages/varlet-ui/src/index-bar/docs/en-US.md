@@ -58,9 +58,9 @@ onMounted(() => {
 #### IndexBar Props
 
 | Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
+| ----- | -------------- | -------- | --------- |
 | `sticky` | Whether to enable anchor sticky top | _boolean_ | `true` |
-| `sticky-offset-top` | Anchor offset top when sticky | _number_ | `0` |
+| `sticky-offset-top` | Anchor offset top when sticky | _number \| string_ | `0` |
 | `hide-list` | Whether to hide anchor list | _boolean_ | `false` |
 | `css-mode` | Enable native `css sticky` mode | _boolean_ | `false` |
 | `z-index` | z-index | _string \| number_ | `1` |
