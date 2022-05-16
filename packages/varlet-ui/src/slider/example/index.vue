@@ -45,7 +45,7 @@ watchDarkMode(dark)
   <var-slider v-model="values.value3" readonly />
 
   <app-type>{{ pack.sliderSize }}</app-type>
-  <var-slider v-model="values.value10" track-height="4" thumb-size="8" range />
+  <var-slider v-model="values.value10" track-height="1vw" thumb-size="2.4vw" range />
 
   <app-type>{{ pack.customStyle }}</app-type>
   <var-slider
