@@ -35,7 +35,7 @@ export default defineComponent({
       const { type, position, dot, icon } = props
 
       const positionBasic = slots.default && `${n('position')} ${n(`--${position}`)}`
-      const dotClass = dot && n('dot')
+      const dotClass = dot ? n('dot') : null
       const positionClass = getPositionClass()
       const iconClass = icon ? n('icon') : null
 

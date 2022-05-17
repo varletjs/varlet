@@ -27,33 +27,33 @@ onUnmounted(() => {
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-space direction="column" :size="[12, 12]">
+  <var-space direction="column" :size="['3vh', '3vh']">
     <var-progress :value="20" :track="false" />
     <var-progress :value="value" :track="false" />
     <var-progress :value="100" :track="false" />
   </var-space>
 
   <app-type>{{ pack.showLabel }}</app-type>
-  <var-space direction="column" :size="[12, 12]">
+  <var-space direction="column" :size="['3vh', '3vh']">
     <var-progress :value="30" label />
     <var-progress :value="value" label />
     <var-progress :value="100" label>success</var-progress>
   </var-space>
 
   <app-type>{{ pack.style }}</app-type>
-  <var-space direction="column" :size="[12, 12]">
+  <var-space direction="column" :size="['3vh', '3vh']">
     <var-progress :value="30" line-width="8" color="#ff9f00" />
     <var-progress :value="60" line-width="8" color="#ff9f00" track-color="#f5cb90" />
     <var-progress :value="80" ripple line-width="8" color="#ff9f00" track-color="#f5cb90" />
   </var-space>
 
   <app-type>{{ pack.circle }}</app-type>
-  <var-space :size="[20, 20]">
-    <var-progress mode="circle" :value="30" line-width="5" :size="56" />
-    <var-progress mode="circle" label :value="value" line-width="5" :size="56" />
-    <var-progress mode="circle" label :value="100" line-width="5" :size="56" />
+  <var-space :size="['8vw', '8vw']">
+    <var-progress mode="circle" :value="30" line-width="5" size="18vw" />
+    <var-progress mode="circle" label :value="value" line-width="5" size="18vw" />
+    <var-progress mode="circle" label :value="100" line-width="5" size="18vw" />
   </var-space>
 
   <app-type>{{ pack.hideTrack }}</app-type>
-  <var-progress mode="circle" :value="50" :size="56" :track="false" />
+  <var-progress mode="circle" :value="50" size="18vw" :track="false" />
 </template>
