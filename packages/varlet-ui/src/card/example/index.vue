@@ -2,6 +2,8 @@
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import VarButton from '../../button'
 import VarDivider from '../../divider'
+import VarIcon from '../../icon'
+import VarSpace from '../../space'
 import VarCard from '..'
 import dark from '../../themes/dark'
 import { pack, use } from './locale'
@@ -34,8 +36,8 @@ watchDarkMode(dark)
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
-      <var-button text text-color="#ff9800">{{ pack.share }}</var-button>
-      <var-button text text-color="#ff9800">{{ pack.explore }}</var-button>
+      <var-button text text-color="#ff9800">{{ pack.action1 }}</var-button>
+      <var-button text text-color="#ff9800">{{ pack.action2 }}</var-button>
     </template>
   </var-card>
 
@@ -47,8 +49,11 @@ watchDarkMode(dark)
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
-      <var-button text text-color="#ff9800" size="small">
-        {{ pack.learnMore }}
+      <var-button text round>
+        <var-icon name="star" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="heart" />
       </var-button>
     </template>
   </var-card>
@@ -56,7 +61,7 @@ watchDarkMode(dark)
   <app-type>{{ pack.showRipple }}</app-type>
   <var-card :title="pack.title" :subtitle="pack.subtitle" :description="pack.description" ripple />
 
-  <app-type>{{ pack.fullScreen }}</app-type>
+  <app-type>{{ pack.floating }}</app-type>
   <var-card
     v-model:floating="floating"
     @click="floating = true"
@@ -66,18 +71,13 @@ watchDarkMode(dark)
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
-      <var-button text text-color="#ff9800">{{ pack.share }}</var-button>
-      <var-button text text-color="#ff9800">{{ pack.explore }}</var-button>
+      <var-button text text-color="#ff9800">{{ pack.action1 }}</var-button>
+      <var-button text text-color="#ff9800">{{ pack.action2 }}</var-button>
     </template>
 
     <template #content>
       <var-divider dashed></var-divider>
       <div class="card-example-text">
-        {{ pack.description }}
-        {{ pack.description }}
-        {{ pack.description }}
-        {{ pack.description }}
-        {{ pack.description }}
         {{ pack.description }}
       </div>
     </template>

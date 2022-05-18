@@ -46,7 +46,12 @@
     src="https://varlet-varletjs.vercel.app/cat.jpg"
     layout="row">
     <template #extra>
-      <var-button text text-color="#ff9800" size="small">查看详情</var-button>
+      <var-button text round>
+        <var-icon name="star" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="heart" />
+      </var-button>
     </template>
   </var-card>
 </template>
@@ -64,8 +69,8 @@
   >
     <template #extra>
       <var-space>
-        <var-button text text-color="#ff9800">分享</var-button>
-        <var-button text text-color="#ff9800">浏览</var-button>
+        <var-button text text-color="#ff9800">操作 1</var-button>
+        <var-button text text-color="#ff9800">操作 2</var-button>
       </var-space>
     </template>
   </var-card>
@@ -85,7 +90,7 @@
 </template>
 ```
 
-### 全屏
+### 漂浮
 
 ```html
 <script setup>
@@ -104,8 +109,8 @@ const floating = ref(false)
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
-      <var-button text text-color="#ff9800">分享</var-button>
-      <var-button text text-color="#ff9800">浏览</var-button>
+      <var-button text text-color="#ff9800">操作 1</var-button>
+      <var-button text text-color="#ff9800">操作 2</var-button>
     </template>
 
     <template #content>
@@ -177,20 +182,19 @@ const floating = ref(false)
 | `--card-padding`                             | `0px 0 15px 0`       |
 | `--card-border-radius`                       | `4px`                |
 | `--card-image-width`                         | `100%`               |
-| `--card-row-image-width`                     | `120px`              |
+| `--card-row-image-width`                     | `150px`              |
 | `--card-image-height`                        | `200px`              |
-| `--card-row-image-height`                    | `120px`              |
+| `--card-row-image-height`                    | `150px`              |
 | `--card-title-color`                         | `#333`               |
 | `--card-title-font-size`                     | `20px`               |
 | `--card-title-padding`                       | `0 12px`             |
 | `--card-title-margin`                        | `15px 0 0 0`         |
-| `--card-title-row-margin`                    | `10px 0 0 0`         |
+| `--card-title-row-margin`                    | `12px 0`             |
 | `--card-subtitle-color`                      | `rgba(0, 0, 0, 0.6)` |
 | `--card-subtitle-font-size`                  | `14px`               |
-| `--card-subtitle-row-font-size`              | `12px`               |
 | `--card-subtitle-padding`                    | `0 13px`             |
 | `--card-subtitle-margin`                     | `10px 0 0 0`         |
-| `--card-subtitle-row-margin`                 | `4px 0 0 0`          |
+| `--card-subtitle-row-margin`                 | `-8px 0 0 0`         |
 | `--card-description-color`                   | `rgba(0, 0, 0, 0.6)` |
 | `--card-description-font-size`               | `14px`               |
 | `--card-description-margin`                  | `20px 0 0 0`         |
@@ -198,9 +202,9 @@ const floating = ref(false)
 | `--card-footer-padding`                      | `0 12px`             |
 | `--card-footer-margin`                       | `30px 0 0px 0`       |
 | `--card-footer-right`                        | `13px`               |
-| `--card-footer-bottom`                       | `9px`               |
+| `--card-footer-bottom`                       | `9px`                |
 | `--card-line-height`                         | `22px`               |
-| `--card-row-line-height`                     | `1.4`                |
+| `--card-row-line-height`                     | `1.5`                |
 | `--card-floater-toolbar-bottom`              | `16px`               |
 | `--card-floater-toolbar-right`               | `16px`               |
 | `--card-floater-toolbar-color`               | `#fff`               |
