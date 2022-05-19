@@ -13,7 +13,7 @@
         <var-site-icon name="chevron-down" />
         <transition name="fade">
           <div
-            class="varlet-site-header__animation-list var-site-elevation--5"
+            class="varlet-site-header__animation-list varlet-site-header__animation-versions var-site-elevation--5"
             v-show="isOpenVersionsMenu"
             :style="{ pointerEvents: isOpenVersionsMenu ? 'auto' : 'none' }"
           >
@@ -140,7 +140,9 @@ export default defineComponent({
 
     const open = (value: string) => {
       if (value !== nowVersion.value) {
-        window.location.href = value
+        setTimeout(() => {
+          window.location.href = value
+        }, 350);
       }
     }
 
@@ -344,6 +346,10 @@ export default defineComponent({
       background: var(--site-config-color-pc-language-active-background);
       color: var(--site-config-color-pc-language-active);
     }
+  }
+
+   &__animation-versions {
+    left: -7px;
   }
 }
 </style>
