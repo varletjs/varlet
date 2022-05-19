@@ -4,6 +4,15 @@ module.exports = {
     baidu: 'https://hm.baidu.com/hm.js?5c628ce58967c90ff4dd9c8803d930fa',
   },
   pc: {
+    header: {
+      versions: {
+        default: "VUE3",
+        item: {
+          'VUE3': 'https://varlet-varletjs.vercel.app/',
+          'VUE2': 'https://varlet-vue2.vercel.app/'
+        }
+      }
+    },
     menu: [
       {
         text: {

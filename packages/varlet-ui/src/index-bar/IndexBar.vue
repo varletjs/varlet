@@ -7,7 +7,7 @@
         :key="anchorName"
         :class="classes(n('anchor-item'), [active === anchorName, n('anchor-item--active')])"
         :style="{ color: active === anchorName && highlightColor ? highlightColor : '' }"
-        @click="anchorClick(anchorName)"
+        @click="anchorClick(anchorName, true)"
       >
         {{ anchorName }}
       </li>
@@ -122,7 +122,7 @@ export default defineComponent({
 
     // expose
     const scrollTo = (index: number | string) => {
-      requestAnimationFrame(() => anchorClick(index, true))
+      requestAnimationFrame(() => anchorClick(index))
     }
 
     watch(
