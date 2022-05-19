@@ -138,8 +138,10 @@ export default defineComponent({
       ;(document.getElementById('mobile') as HTMLIFrameElement).contentWindow!.postMessage(getThemesMessage(), '*')
     }
 
-    const open = (value:string) => {
-      window.location.href = value;
+    const open = (value: string) => {
+      if (value !== nowVersion.value) {
+        window.location.href = value
+      }
     }
 
     watchThemes((themes, from) => {
