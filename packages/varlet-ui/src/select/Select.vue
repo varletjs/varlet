@@ -195,7 +195,7 @@ export default defineComponent({
         option = options.find(({ label }) => label.value === modelValue)
       }
 
-      return option!.label.value
+      return option?.label.value ?? ''
     }
 
     const computePlaceholderState = () => {
