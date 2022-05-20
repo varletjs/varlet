@@ -16,12 +16,12 @@ To develop and test the core `varlet` package:
 1. [Fork this repository](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) to your own account and then clone it.
 2. Create a new branch for your changes: `git checkout -b {BRANCH_NAME}`.
 3. Run `pnpm bootstrap` in Varlet's root folder.
-4. View your change on your local document site , you need to get into `pacakges/varlet-ui` and run `pnpm dev`.
+4. View your change on your local document site , you need to get into `packages/varlet-ui` and run `pnpm dev`.
 
 At any time, you can start the following steps to submit your amazing works:
 
 1. Run `pnpm lint` check the code style.
-2. Get into `pacakges/varlet-ui` and run `pnpm test` to update & run your testcase.
+2. Get into `packages/varlet-ui` and run `pnpm test` to update & run your testcase.
 3. Commit message should be formatted by the [rule](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y).
 4. Push code to your own repo and [create PullRequest](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) at GitHub. (Rebase before creating a PR to keep commit history clear)
 
@@ -29,7 +29,7 @@ At any time, you can start the following steps to submit your amazing works:
 
 **Create component**
 
-1. Get into `pacakges/varlet-ui` 
+1. Get into `packages/varlet-ui` 
 2. Running `pnpm run create [Component Name]`
 
 **Create testcase**
