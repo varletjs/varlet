@@ -390,7 +390,7 @@ export default defineComponent({
         const { indexes } = getPicked()
         prevIndexes = [...indexes]
       },
-      { immediate: true }
+      { immediate: true, deep: true }
     )
 
     return {
