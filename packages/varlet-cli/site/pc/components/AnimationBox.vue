@@ -15,7 +15,11 @@ export default defineComponent({
       mutationObserver.value = new MutationObserver(() => {
         animationElClientRect.value = varletLogoAnimationRef?.value?.getBoundingClientRect();
       });
-      mutationObserver.value.observe(document.body, { attributes: true, subtree: true, childList:true });
+      mutationObserver.value.observe(varletLogoAnimationRef.value?.parentNode?.parentNode || document.body, {
+        attributes: true, 
+        subtree: true, 
+        childList:true 
+      });
     })
 
     onBeforeUnmount(() => {
