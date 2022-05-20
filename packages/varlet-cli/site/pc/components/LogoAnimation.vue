@@ -31,7 +31,6 @@ export default defineComponent({
       if (!floatingState.value && from.path !== '/') {
         floatingState.value = true
       }
-      await nextTick()
     })
 
     onMounted(() => {
