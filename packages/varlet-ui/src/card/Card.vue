@@ -23,8 +23,8 @@
           :class="n('image')"
           :style="{
             objectFit: fit,
-            height: toSizeUnit(height),
-            width: toSizeUnit(width),
+            height: toSizeUnit(imageHeight ?? height),
+            width: toSizeUnit(imageWidth),
           }"
           :src="src"
           :alt="alt"
@@ -119,7 +119,7 @@ export default defineComponent({
     const floaterHeight: Ref<string> = ref('100%')
     const floaterTop: Ref<string> = ref('auto')
     const floaterLeft: Ref<string> = ref('auto')
-    const floaterPosition: Ref<string> = ref('static')
+    const floaterPosition: Ref<string | undefined> = ref(undefined)
     const floaterOverflow: Ref<string> = ref('hidden')
     const contentHeight: Ref<string> = ref('0px')
     const opacity: Ref<string> = ref('0')
@@ -196,7 +196,7 @@ export default defineComponent({
         dropdownFloaterTop = 'auto'
         dropdownFloaterLeft = 'auto'
         floaterOverflow.value = 'hidden'
-        floaterPosition.value = 'static'
+        floaterPosition.value = undefined
         floated.value = false
       }, props.floatingDuration)
     }

@@ -10,6 +10,7 @@ import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { ref } from 'vue'
 
 const floating = ref(false)
+
 watchLang(use)
 watchDarkMode(dark)
 </script>

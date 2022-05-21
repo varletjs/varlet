@@ -132,21 +132,21 @@ const floating = ref(false)
 
 ### Props
 
-| Prop                  | Description                                                     | Type               | Default |
-|-----------------------|-----------------------------------------------------------------| ------------------ | ------- |
-| `title`               | The title of Card                                               | _string_           | `-`     |
-| `subtitle`            | The subtitle of Card                                            | _string_           | `-`     |
-| `description`         | The description of Card                                         | _string_           | `-`     |
-| `elevation`           | The shadow level of Card                                        | _string \| number_ | `2`     |
-| `src`                 | The src of Image                                                | _string_           | `-`     |
-| `layout`              | Arrangement mode, options `row` `column`                        | _string_           | `column` |
-| `fit`                 | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_           | `cover` |
-| `alt`                 | Alt text                                                        | _string_           | `-`     |
-| `height`              | height of Image                                                 | _string \| number_ | `-`     |
-| `width`               | width of Image                                                  | _string \| number_ | `-`     |
-| `ripple`              | Whether to enable ripple                                        | _boolean_          | `false` |
-| `floating`            | Whether to full screen                                          |_boolean_          | `false`  |
-| `floatingDuration`    | Time to full screen(ms)                                         |_number_          | `250`    |
+| Prop               | Description                                                     | Type               | Default |
+|--------------------|-----------------------------------------------------------------| ------------------ | ------- |
+| `title`            | The title of Card                                               | _string_           | `-`     |
+| `subtitle`         | The subtitle of Card                                            | _string_           | `-`     |
+| `description`      | The description of Card                                         | _string_           | `-`     |
+| `elevation`        | The shadow level of Card                                        | _string \| number_ | `2`     |
+| `src`              | The src of Image                                                | _string_           | `-`     |
+| `layout`           | Arrangement mode, options `row` `column`                        | _string_           | `column` |
+| `fit`              | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_           | `cover` |
+| `alt`              | Alt text                                                        | _string_           | `-`     |
+| `image-height`       | height of Image                                                 | _string \| number_ | `-`     |
+| `image-width`        | width of Image                                                  | _string \| number_ | `-`     |
+| `ripple`           | Whether to enable ripple                                        | _boolean_          | `false` |
+| `floating`         | Whether to full screen                                          |_boolean_          | `false`  |
+| `floatingDuration` | Time to full screen(ms)                                         |_number_          | `250`    |
 
 ### Slots
 

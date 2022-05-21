@@ -136,21 +136,21 @@ const floating = ref(false)
 
 ### 属性
 
-| 参数            | 说明                                                     | 类型               | 默认值      |
-|---------------|--------------------------------------------------------| ------------------ |----------|
-| `title`       | 卡片标题                                                   | _string_           | `-`      |
-| `subtitle`    | 卡片副标题                                                  | _string_           | `-`      |
-| `description` | 卡片描述                                                   | _string_           | `-`      |
-| `elevation`   | 卡片阴影程度等级                                               | _string \| number_  | `2`     |
-| `src`         | 图片地址                                                   | _string_           | `-`      |
-| `layout`      | 排列方式，可选值为 `row` `column`                               | _string_           | `column` |
-| `fit`         | 填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_           | `cover`  |
-| `alt`         | 替代文本                                                   | _string_           | `-`      |
-| `height`      | 图片高度                                                   | _string \| number_  | `-`     |
-| `width`       | 图片宽度                                                   | _string \| number_  | `-`     |
-| `ripple`      | 是否开启水波                                                 | _boolean_          | `false`  |
-| `floating`    | 是否开启全屏                                                 |_boolean_          | `false`  |
-| `floatingDuration`    | 开关全屏所需时间（ms）                           |_number_          | `250`    |
+| 参数                 | 说明                                                     | 类型               | 默认值      |
+|--------------------|--------------------------------------------------------| ------------------ |----------|
+| `title`            | 卡片标题                                                   | _string_           | `-`      |
+| `subtitle`         | 卡片副标题                                                  | _string_           | `-`      |
+| `description`      | 卡片描述                                                   | _string_           | `-`      |
+| `elevation`        | 卡片阴影程度等级                                               | _string \| number_  | `2`     |
+| `src`              | 图片地址                                                   | _string_           | `-`      |
+| `layout`           | 排列方式，可选值为 `row` `column`                               | _string_           | `column` |
+| `fit`              | 填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_           | `cover`  |
+| `alt`              | 替代文本                                                   | _string_           | `-`      |
+| `image-height`     | 图片高度                                                   | _string \| number_  | `-`     |
+| `image-width`        | 图片宽度                                                   | _string \| number_  | `-`     |
+| `ripple`           | 是否开启水波                                                 | _boolean_          | `false`  |
+| `floating`         | 是否开启全屏                                                 |_boolean_          | `false`  |
+| `floatingDuration` | 开关全屏所需时间（ms）                                           |_number_          | `250`    |
 
 
 ### 插槽

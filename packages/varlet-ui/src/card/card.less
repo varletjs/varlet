@@ -69,15 +69,11 @@
 }
 
 .var-card {
-  &--layout-row {
-    height: var(--card-row-height);
-    position: relative;
-  }
-
   &__floater {
     border-radius: var(--card-border-radius);
     display: flex;
     flex-direction: column;
+    position: static;
     line-height: var(--card-line-height);
     background: var(--card-background);
     transition-timing-function: cubic-bezier(0.45, 0.19, 0.06, 0.89);
@@ -90,7 +86,10 @@
   }
 
   &--layout-row &__floater {
+    min-height: var(--card-row-height);
+    height: 100%;
     flex-direction: row;
+    position: relative;
     line-height: var(--card-row-line-height);
   }
 
@@ -102,7 +101,7 @@
 
   &--layout-row &__image {
     width: var(--card-row-image-width);
-    height: 100%;
+    height: auto;
     display: block;
     flex-shrink: 0;
   }

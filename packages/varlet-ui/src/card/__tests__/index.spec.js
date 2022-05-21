@@ -2,6 +2,7 @@ import Card from '..'
 import VarCard from '../Card'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { delay } from '../../utils/jest'
 
 test('test card use', () => {
   const app = createApp({}).use(Card)
@@ -111,10 +112,10 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
-  test('test card height', () => {
+  test('test card height', async () => {
     const wrapper = mount(VarCard, {
       props: {
-        height: 100,
+        imageHeight: 100,
         src: 'https://varlet-varletjs.vercel.app/cat.jpg',
       },
     })
@@ -126,12 +127,28 @@ describe('test card component props', () => {
   test('test card width', () => {
     const wrapper = mount(VarCard, {
       props: {
-        width: 100,
+        imageWidth: 100,
         src: 'https://varlet-varletjs.vercel.app/cat.jpg',
       },
     })
 
     expect(wrapper.find('img').attributes('style')).toContain('width: 100px;')
+    wrapper.unmount()
+  })
+
+  test('test card floating', async () => {
+    const wrapper = mount(VarCard, {
+      props: {
+        floating: false,
+      },
+    })
+
+    expect(wrapper.find('.var-card__floater').attributes('style')).toContain('width: 100%;')
+    await wrapper.setProps({
+      floating: true,
+    })
+    await delay(300)
+    expect(wrapper.find('.var-card__floater').attributes('style')).toContain('width: 100vw;')
     wrapper.unmount()
   })
 })
