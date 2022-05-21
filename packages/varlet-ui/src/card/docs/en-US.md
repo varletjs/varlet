@@ -16,9 +16,9 @@
 ```html
 <template>
   <var-card
-      title="Dangerous"
-      subtitle="The girl was dangerous"
-      description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
   />
 </template>
 ```
@@ -36,10 +36,11 @@
 ```html
 <template>
   <var-card
-      title="Dangerous"
-      subtitle="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
-      src="https://varlet-varletjs.vercel.app/cat.jpg"
-      layout="row">
+    title="Dangerous"
+    subtitle="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
+    src="https://varlet-varletjs.vercel.app/cat.jpg"
+    layout="row"
+  >
     <template #extra>
       <var-button text round>
         <var-icon name="star" />
@@ -57,10 +58,10 @@
 ```html
 <template>
   <var-card
-      title="Dangerous"
-      subtitle="The girl was dangerous"
-      description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
-      src="https://varlet-varletjs.vercel.app/cat.jpg"
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
+    src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
       <var-space>
@@ -77,10 +78,10 @@
 ```html
 <template>
   <var-card
-      title="Dangerous"
-      subtitle="The girl was dangerous"
-      description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
-      ripple
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
+    ripple
   />
 </template>
 ```
@@ -96,12 +97,12 @@ const floating = ref(false)
 
 <template>
   <var-card
-      v-model:floating="floating"
-      @click="floating = true"
-      title="Dangerous"
-      subtitle="The girl was dangerous"
-      ripple
-      src="https://varlet-varletjs.vercel.app/cat.jpg"
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    ripple
+    src="https://varlet-varletjs.vercel.app/cat.jpg"
+    v-model:floating="floating"
+    @click="floating = true"
   >
     <template #extra>
       <var-button text text-color="#ff9800">ACTION 1</var-button>
@@ -115,7 +116,6 @@ const floating = ref(false)
         The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous.
       </div>
     </template>
-
   </var-card>
 </template>
 
@@ -146,7 +146,7 @@ const floating = ref(false)
 | `image-width`        | width of Image                                                  | _string \| number_ | `-`     |
 | `ripple`           | Whether to enable ripple                                        | _boolean_          | `false` |
 | `floating`         | Whether to full screen                                          |_boolean_          | `false`  |
-| `floatingDuration` | Time to full screen(ms)                                         |_number_          | `250`    |
+| `floating-duration` | Time to full screen(ms)                                         |_number_          | `250`    |
 
 ### Slots
 

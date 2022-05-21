@@ -14,7 +14,7 @@ export const props = {
     default: 'cover',
   },
   /**
-   * @deprecated use imgHeight instead
+   * @deprecated use imageHeight instead
    */
   height: {
     type: [String, Number],

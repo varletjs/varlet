@@ -44,7 +44,8 @@
     title="本草纲目"
     subtitle="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
     src="https://varlet-varletjs.vercel.app/cat.jpg"
-    layout="row">
+    layout="row"
+  \>
     <template #extra>
       <var-button text round>
         <var-icon name="star" />
@@ -101,12 +102,12 @@ const floating = ref(false)
 
 <template>
   <var-card
-    v-model:floating="floating"
-    @click="floating = true"
     title="本草纲目"
     subtitle="我表情悠哉 跳个大概"
     ripple
     src="https://varlet-varletjs.vercel.app/cat.jpg"
+    v-model:floating="floating"
+    @click="floating = true"
   >
     <template #extra>
       <var-button text text-color="#ff9800">操作 1</var-button>
@@ -150,7 +151,7 @@ const floating = ref(false)
 | `image-width`        | 图片宽度                                                   | _string \| number_  | `-`     |
 | `ripple`           | 是否开启水波                                                 | _boolean_          | `false`  |
 | `floating`         | 是否开启全屏                                                 |_boolean_          | `false`  |
-| `floatingDuration` | 开关全屏所需时间（ms）                                           |_number_          | `250`    |
+| `floating-duration` | 开关全屏所需时间（ms）                                           |_number_          | `250`    |
 
 
 ### 插槽
