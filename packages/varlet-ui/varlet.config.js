@@ -5,12 +5,12 @@ module.exports = {
   },
   pc: {
     header: {
-      versions: {
-        nowVersion: "Vue3",
-        otherVersions: {
-          'Vue2': 'https://varlet-vue2.vercel.app/'
-        }
-      }
+      version: {
+        current: 'Vue 3',
+        items: {
+          'Vue 2': 'https://varlet-vue2.vercel.app/',
+        },
+      },
     },
     menu: [
       {

@@ -3,13 +3,16 @@
     <div class="varlet-site-header__lead">
       <animation-box class="varlet-site-header__logo"  @click="backRoot" />
       <div class="varlet-site-header__title" v-if="title"  @click="backRoot">{{ title }}</div>
+    </div>
+
+    <div class="varlet-site-header__tail">
       <div
         class="varlet-site-header__versions"
         @mouseenter="isOpenVersionsMenu = true"
         @mouseleave="isOpenVersionsMenu = false"
-        v-if="otherVersions"
+        v-if="versionItems"
       >
-        {{ nowVersion }}
+        <span style="font-size: 14px;">{{ currentVersion }}</span>
         <var-site-icon name="chevron-down" />
         <transition name="fade">
           <div
@@ -21,16 +24,14 @@
               v-for="(value, key) in nonEmptyVersions"
               v-ripple
               :key="key"
-              :class="{ 'varlet-site-header__animation-list--active': nowVersion === key }"
+              :class="{ 'varlet-site-header__animation-list--active': currentVersion === key }"
               @click="open(value)"
-              >{{ key }}
+            >{{ key }}
             </var-site-cell>
           </div>
         </transition>
       </div>
-    </div>
 
-    <div class="varlet-site-header__tail">
       <a class="varlet-site-header__link" target="_blank" :href="playground" v-ripple v-if="playground">
         <var-site-icon name="code-json" :size="24" />
       </a>
@@ -99,8 +100,8 @@ export default defineComponent({
     const logo: Ref<string> = ref(get(config, 'logo'))
     const themesKey = get(config, 'themesKey')
     const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
-    const nowVersion: Ref<string> = ref(get(config, 'pc.header.versions.nowVersion'))
-    const otherVersions: Ref<Record<string, string>> = ref(get(config, 'pc.header.versions.otherVersions'))
+    const currentVersion: Ref<string> = ref(get(config, 'pc.header.version.current'))
+    const versionItems: Ref<Record<string, string>> = ref(get(config, 'pc.header.version.items'))
     const playground: Ref<string> = ref(get(config, 'pc.header.playground'))
     const github: Ref<string> = ref(get(config, 'pc.header.github'))
     const redirect = get(config, 'pc.redirect')
@@ -111,7 +112,7 @@ export default defineComponent({
     const isOpenVersionsMenu: Ref<boolean> = ref(false)
     const router = useRouter()
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
-    const nonEmptyVersions: ComputedRef<Record<string, string>> = computed(() => removeEmpty(otherVersions.value))
+    const nonEmptyVersions: ComputedRef<Record<string, string>> = computed(() => removeEmpty(versionItems.value))
 
     const backRoot = () => {
       const { language: lang } = getPCLocationInfo()
@@ -139,7 +140,7 @@ export default defineComponent({
     }
 
     const open = (value: string) => {
-      if (value !== nowVersion.value) {
+      if (value !== currentVersion.value) {
         setTimeout(() => {
           window.location.href = value
         }, 350);
@@ -156,9 +157,9 @@ export default defineComponent({
     return {
       logo,
       title,
-      nowVersion,
+      currentVersion,
       languages,
-      otherVersions,
+      versionItems,
       nonEmptyLanguages,
       nonEmptyVersions,
       playground,
@@ -280,6 +281,7 @@ export default defineComponent({
     position: relative;
     cursor: pointer;
     transition: background-color 0.25s;
+    margin-right: 6px;
 
     &:hover {
       background: var(--site-config-color-nav-button-hover-background);
