@@ -6,10 +6,9 @@ module.exports = {
   pc: {
     header: {
       versions: {
-        default: "VUE3",
-        item: {
-          'VUE3': 'https://varlet-varletjs.vercel.app/',
-          'VUE2': 'https://varlet-vue2.vercel.app/'
+        nowVersion: "Vue3",
+        otherVersions: {
+          'Vue2': 'https://varlet-vue2.vercel.app/'
         }
       }
     },

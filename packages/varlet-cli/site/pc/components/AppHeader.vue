@@ -7,7 +7,7 @@
         class="varlet-site-header__versions"
         @mouseenter="isOpenVersionsMenu = true"
         @mouseleave="isOpenVersionsMenu = false"
-        v-if="versions"
+        v-if="otherVersions"
       >
         {{ nowVersion }}
         <var-site-icon name="chevron-down" />
@@ -99,8 +99,8 @@ export default defineComponent({
     const logo: Ref<string> = ref(get(config, 'logo'))
     const themesKey = get(config, 'themesKey')
     const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
-    const nowVersion: Ref<string> = ref(get(config, 'pc.header.versions.default'))
-    const versions: Ref<Record<string, string>> = ref(get(config, 'pc.header.versions.item'))
+    const nowVersion: Ref<string> = ref(get(config, 'pc.header.versions.nowVersion'))
+    const otherVersions: Ref<Record<string, string>> = ref(get(config, 'pc.header.versions.otherVersions'))
     const playground: Ref<string> = ref(get(config, 'pc.header.playground'))
     const github: Ref<string> = ref(get(config, 'pc.header.github'))
     const redirect = get(config, 'pc.redirect')
@@ -111,7 +111,7 @@ export default defineComponent({
     const isOpenVersionsMenu: Ref<boolean> = ref(false)
     const router = useRouter()
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
-    const nonEmptyVersions: ComputedRef<Record<string, string>> = computed(() => removeEmpty(versions.value))
+    const nonEmptyVersions: ComputedRef<Record<string, string>> = computed(() => removeEmpty(otherVersions.value))
 
     const backRoot = () => {
       const { language: lang } = getPCLocationInfo()
@@ -158,7 +158,7 @@ export default defineComponent({
       title,
       nowVersion,
       languages,
-      versions,
+      otherVersions,
       nonEmptyLanguages,
       nonEmptyVersions,
       playground,
