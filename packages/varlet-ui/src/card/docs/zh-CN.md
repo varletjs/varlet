@@ -70,8 +70,8 @@
   >
     <template #extra>
       <var-space>
-        <var-button text text-color="#ff9800">操作 1</var-button>
-        <var-button text text-color="#ff9800">操作 2</var-button>
+        <var-button text type="warning">操作 1</var-button>
+        <var-button text type="warning">操作 2</var-button>
       </var-space>
     </template>
   </var-card>
@@ -110,8 +110,8 @@ const floating = ref(false)
     @click="floating = true"
   >
     <template #extra>
-      <var-button text text-color="#ff9800">操作 1</var-button>
-      <var-button text text-color="#ff9800">操作 2</var-button>
+      <var-button text type="warning">操作 1</var-button>
+      <var-button text type="warning">操作 2</var-button>
     </template>
 
     <template #content>
@@ -156,15 +156,15 @@ const floating = ref(false)
 
 ### 插槽
 
-| 插槽名           | 说明         | 参数 |
-|---------------|------------| ---- |
-| `image`       | 自定义图片      | `-`  |
-| `title`       | 自定义标题      | `-`  |
-| `subtitle`    | 自定义副标题     | `-`  |
-| `description` | 自定义描述      | `-`  |
-| `content`     | 自定义正文      | `-`  |
-| `extra`       | 自定义底部内容    | `-`  |
-| `toolbar-close` | 工具栏自定义关闭   | `-`  |
+| 插槽名           | 说明      | 参数 |
+|---------------|---------| ---- |
+| `image`       | 自定义图片   | `-`  |
+| `title`       | 自定义标题   | `-`  |
+| `subtitle`    | 自定义副标题  | `-`  |
+| `description` | 自定义描述   | `-`  |
+| `content`     | 自定义正文   | `-`  |
+| `extra`       | 自定义底部内容 | `-`  |
+| `close-button` | 自定义关闭   | `-`  |
 
 
 ### 事件
@@ -177,38 +177,38 @@ const floating = ref(false)
 
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
-| 变量名                                          | 默认值                  |
-|----------------------------------------------|----------------------|
-| `--card-background`                          | `#fff`               |
-| `--card-padding`                             | `0px 0 15px 0`       |
-| `--card-border-radius`                       | `4px`                |
-| `--card-image-width`                         | `100%`               |
-| `--card-row-image-width`                     | `150px`              |
-| `--card-image-height`                        | `200px`              |
-| `--card-row-image-height`                    | `150px`              |
-| `--card-title-color`                         | `#333`               |
-| `--card-title-font-size`                     | `20px`               |
-| `--card-title-padding`                       | `0 12px`             |
-| `--card-title-margin`                        | `15px 0 0 0`         |
-| `--card-title-row-margin`                    | `12px 0`             |
-| `--card-subtitle-color`                      | `rgba(0, 0, 0, 0.6)` |
-| `--card-subtitle-font-size`                  | `14px`               |
-| `--card-subtitle-padding`                    | `0 13px`             |
-| `--card-subtitle-margin`                     | `10px 0 0 0`         |
-| `--card-subtitle-row-margin`                 | `-8px 0 0 0`         |
-| `--card-description-color`                   | `rgba(0, 0, 0, 0.6)` |
-| `--card-description-font-size`               | `14px`               |
-| `--card-description-margin`                  | `20px 0 0 0`         |
-| `--card-description-padding`                 | `0 13px`             |
-| `--card-footer-padding`                      | `0 12px`             |
-| `--card-footer-margin`                       | `30px 0 0px 0`       |
-| `--card-footer-right`                        | `13px`               |
-| `--card-footer-bottom`                       | `9px`                |
-| `--card-line-height`                         | `22px`               |
-| `--card-row-line-height`                     | `1.5`                |
-| `--card-floater-toolbar-bottom`              | `16px`               |
-| `--card-floater-toolbar-right`               | `16px`               |
-| `--card-floater-toolbar-color`               | `#fff`               |
-| `--card-floater-toolbar-close-size`          | `24px`               |
-| `--card-floater-toolbar-close-padding`       | `16px`               |
-| `--card-floater-toolbar-close-primary-color` | `#212121`            |
+| 变量名                                   | 默认值                  |
+|---------------------------------------|----------------------|
+| `--card-background`                   | `#fff`               |
+| `--card-padding`                      | `0px 0 15px 0`       |
+| `--card-border-radius`                | `4px`                |
+| `--card-image-width`                  | `100%`               |
+| `--card-row-image-width`              | `140px`              |
+| `--card-image-height`                 | `200px`              |
+| `--card-row-image-height`             | `140px`              |
+| `--card-title-color`                  | `#333`               |
+| `--card-title-font-size`              | `20px`               |
+| `--card-title-padding`                | `0 12px`             |
+| `--card-title-margin`                 | `15px 0 0 0`         |
+| `--card-title-row-margin`             | `12px 0`             |
+| `--card-subtitle-color`               | `rgba(0, 0, 0, 0.6)` |
+| `--card-subtitle-font-size`           | `14px`               |
+| `--card-subtitle-padding`             | `0 13px`             |
+| `--card-subtitle-margin`              | `10px 0 0 0`         |
+| `--card-subtitle-row-margin`          | `-8px 0 0 0`         |
+| `--card-description-color`            | `rgba(0, 0, 0, 0.6)` |
+| `--card-description-font-size`        | `14px`               |
+| `--card-description-margin`           | `20px 0 0 0`         |
+| `--card-description-padding`          | `0 13px`             |
+| `--card-footer-padding`               | `0 12px`             |
+| `--card-footer-margin`                | `30px 0 0px 0`       |
+| `--card-footer-right`                 | `13px`               |
+| `--card-footer-bottom`                | `9px`                |
+| `--card-line-height`                  | `22px`               |
+| `--card-row-line-height`              | `1.5`                |
+| `--card-floating-buttons-bottom`      | `16px`               |
+| `--card-floating-buttons-right`       | `16px`               |
+| `--card-floating-buttons-color`       | `#fff`               |
+| `--card-close-button-size`            | `24px`               |
+| `--card-close-button-padding`         | `16px`               |
+| `--card-close-button-primary-color`   | `#212121`            |

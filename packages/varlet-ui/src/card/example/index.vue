@@ -36,8 +36,8 @@ watchDarkMode(dark)
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
-      <var-button text text-color="#ff9800">{{ pack.action1 }}</var-button>
-      <var-button text text-color="#ff9800">{{ pack.action2 }}</var-button>
+      <var-button text type="warning">{{ pack.action1 }}</var-button>
+      <var-button text type="warning">{{ pack.action2 }}</var-button>
     </template>
   </var-card>
 
@@ -71,8 +71,8 @@ watchDarkMode(dark)
     src="https://varlet-varletjs.vercel.app/cat.jpg"
   >
     <template #extra>
-      <var-button text text-color="#ff9800">{{ pack.action1 }}</var-button>
-      <var-button text text-color="#ff9800">{{ pack.action2 }}</var-button>
+      <var-button text type="warning">{{ pack.action1 }}</var-button>
+      <var-button text type="warning">{{ pack.action2 }}</var-button>
     </template>
 
     <template #content>

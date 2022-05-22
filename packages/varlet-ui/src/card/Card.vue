@@ -59,20 +59,19 @@
       </div>
 
       <div
-        :class="classes(n('toolbar'), 'var--box')"
+        :class="classes(n('floating-buttons'), 'var--box')"
         :style="{
           zIndex,
           opacity,
           transition: `opacity ${floatingDuration * 2}ms`,
         }"
-        v-if="showToolBar"
+        v-if="showFloatingButtons"
       >
-        <slot name="toolbar-close">
-          <var-button size="large" round :class="classes(n('toolbar-close'), 'var-elevation--6')" @click.stop="close">
-            <var-icon name="window-close" size="24px" />
+        <slot name="close-button">
+          <var-button size="large" round :class="classes(n('close-button'), 'var-elevation--6')" @click.stop="close">
+            <var-icon name="window-close" />
           </var-button>
         </slot>
-        <slot name="toolbar-extra" />
       </div>
     </div>
 
@@ -125,7 +124,7 @@ export default defineComponent({
     const opacity: Ref<string> = ref('0')
     const { zIndex } = useZIndex(() => props.floating, 1)
     const isRow = computed(() => props.layout === 'row')
-    const showToolBar: Ref<boolean> = ref(false)
+    const showFloatingButtons: Ref<boolean> = ref(false)
     const floated: Ref<boolean> = ref(false)
 
     useLock(
@@ -156,7 +155,7 @@ export default defineComponent({
           floaterPosition.value = 'fixed'
           dropdownFloaterTop = floaterTop.value
           dropdownFloaterLeft = floaterLeft.value
-          showToolBar.value = true
+          showFloatingButtons.value = true
 
           await doubleRaf()
 
@@ -184,7 +183,7 @@ export default defineComponent({
       floaterLeft.value = dropdownFloaterLeft
       contentHeight.value = '0px'
       opacity.value = '0'
-      showToolBar.value = false
+      showFloatingButtons.value = false
 
       dropper = setTimeout(() => {
         holderWidth.value = 'auto'
@@ -237,7 +236,7 @@ export default defineComponent({
       zIndex,
       isRow,
       close,
-      showToolBar,
+      showFloatingButtons,
       floated,
     }
   },
