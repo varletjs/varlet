@@ -75,7 +75,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <Teleport :to="animationEl" v-if="animationEl">
+  <Teleport :to="animationEl || 'body'">
     <img
       v-show="!floatingState"
       v-bind="animationBoxData.attrs"
@@ -84,6 +84,7 @@ export default defineComponent({
       alt="logo"
       v-if="logo && animationEl"
       class="varlet-cli-logo-animation"
+      :class="{ 'varlet-cli-logo-position': !animationEl }"
     />
   </Teleport>
   <div v-show="floatingState">
