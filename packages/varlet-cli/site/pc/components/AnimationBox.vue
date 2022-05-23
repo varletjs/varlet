@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, onMounted, onBeforeUnmount, ref, useAttrs } from 'vue'
+import { defineComponent, onMounted, onBeforeUnmount, onUnmounted, ref, useAttrs } from 'vue'
 import { animationBoxData, animationEl, animationElClientRect } from '../floating'
 
 export default defineComponent({
@@ -25,6 +25,11 @@ export default defineComponent({
 
     onBeforeUnmount(() => {
       mutationObserver.value?.disconnect();
+    })
+
+    onUnmounted(() => {
+      animationEl.value = undefined
+      animationElClientRect.value = undefined
     })
 
     return {
