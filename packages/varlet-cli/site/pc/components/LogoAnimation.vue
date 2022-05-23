@@ -75,16 +75,15 @@ export default defineComponent({
 </script>
 
 <template>
-  <Teleport :to="animationEl || 'body'">
+  <Teleport :to="animationEl" v-if="animationEl">
     <img
       v-show="!floatingState"
       v-bind="animationBoxData.attrs"
       :style="styles"
       :src="logo"
       alt="logo"
-      v-if="logo"
+      v-if="logo && animationEl"
       class="varlet-cli-logo-animation"
-      :class="{ 'varlet-cli-logo-position': !animationEl }"
     />
   </Teleport>
   <div v-show="floatingState">
@@ -94,7 +93,7 @@ export default defineComponent({
       :style="styles"
       :src="logo"
       alt="logo"
-      v-if="logo"
+      v-if="logo && animationEl"
       class="varlet-cli-logo-animation varlet-cli-logo-position varlet-cli-logo-transition"
     />
   </div>
