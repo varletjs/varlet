@@ -1,8 +1,16 @@
 <template>
-  <div ref="card" :class="classes(n(), [isRow, n('--layout-row')])" @click="onClick">
+  <div
+    ref="card"
+    :class="classes(n(), [isRow, n('--layout-row')], [elevation, `var-elevation--${elevation}`, 'var-elevation--1'])"
+    :style="{
+      zIndex: floated ? zIndex : undefined,
+    }"
+    @click="onClick"
+    v-ripple="{ disabled: !ripple || floater }"
+  >
     <div
       ref="cardFloater"
-      :class="classes(n('floater'), [elevation, `var-elevation--${elevation}`, 'var-elevation--1'])"
+      :class="classes(n('floater'))"
       :style="{
         width: floaterWidth,
         height: floaterHeight,
@@ -10,13 +18,10 @@
         left: floaterLeft,
         overflow: floaterOverflow,
         position: floaterPosition,
-        borderRadius: floaterBorderRadius,
-        zIndex: floated ? zIndex : undefined,
         transition: floated
-          ? `background-color ${floatingDuration}ms, border-radius ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`
+          ? `background-color ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`
           : undefined,
       }"
-      v-ripple="{ disabled: !ripple || floater }"
     >
       <slot name="image">
         <img
@@ -120,7 +125,6 @@ export default defineComponent({
     const floaterLeft: Ref<string> = ref('auto')
     const floaterPosition: Ref<string | undefined> = ref(undefined)
     const floaterOverflow: Ref<string> = ref('hidden')
-    const floaterBorderRadius: Ref<string | undefined> = ref(undefined)
     const contentHeight: Ref<string> = ref('0px')
     const opacity: Ref<string> = ref('0')
     const { zIndex } = useZIndex(() => props.floating, 1)
@@ -167,7 +171,6 @@ export default defineComponent({
           contentHeight.value = 'auto'
           opacity.value = '1'
           floaterOverflow.value = 'auto'
-          floaterBorderRadius.value = '0px'
           floated.value = true
         },
         props.ripple ? RIPPLE_DELAY : 0
@@ -183,7 +186,6 @@ export default defineComponent({
       floaterHeight.value = holderHeight.value
       floaterTop.value = dropdownFloaterTop
       floaterLeft.value = dropdownFloaterLeft
-      floaterBorderRadius.value = undefined
       contentHeight.value = '0px'
       opacity.value = '0'
       showFloatingButtons.value = false
@@ -234,7 +236,6 @@ export default defineComponent({
       floaterLeft,
       floaterPosition,
       floaterOverflow,
-      floaterBorderRadius,
       contentHeight,
       opacity,
       zIndex,
