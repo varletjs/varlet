@@ -29,7 +29,7 @@ watchDarkMode(dark, (themes) => {
 </script>
 
 <template>
-  <var-index-bar @change="change" duration="300" :sticky-offset-top="54">
+  <var-index-bar @change="change" duration="300" sticky-offset-top="14.4vw">
     <div v-for="item in list" :key="item">
       <var-index-anchor :index="item" class="var-index-anchor__example" :style="{ background: bgColor, color }">
         {{ pack.title }} {{ item }}

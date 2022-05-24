@@ -29,6 +29,7 @@ module.exports = {
         'zh-CN': '中文',
         'en-US': 'English',
       },
+      versions: null,
       github: 'https://github.com/varletjs/varlet',
       playground: 'https://varlet-ui-playground.vercel.app',
       darkMode: true,

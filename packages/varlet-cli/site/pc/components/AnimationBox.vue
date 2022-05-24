@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, onMounted, onBeforeUnmount, ref, useAttrs } from 'vue'
+import { defineComponent, onMounted, onBeforeUnmount, onUnmounted, ref, useAttrs } from 'vue'
 import { animationBoxData, animationEl, animationElClientRect } from '../floating'
 
 export default defineComponent({
@@ -15,11 +15,21 @@ export default defineComponent({
       mutationObserver.value = new MutationObserver(() => {
         animationElClientRect.value = varletLogoAnimationRef?.value?.getBoundingClientRect();
       });
-      mutationObserver.value.observe(document.body, { attributes: true, subtree: true, childList:true });
+      const logoContainer = varletLogoAnimationRef.value?.parentNode?.parentNode
+      mutationObserver.value.observe(logoContainer || document.body, {
+        attributes: true, 
+        subtree: true, 
+        childList:true 
+      });
     })
 
     onBeforeUnmount(() => {
       mutationObserver.value?.disconnect();
+    })
+
+    onUnmounted(() => {
+      animationEl.value = undefined
+      animationElClientRect.value = undefined
     })
 
     return {

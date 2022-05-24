@@ -1,8 +1,16 @@
 <template>
-  <div ref="card" :class="classes(n(), [isRow, n('--layout-row')])" @click="onClick">
+  <div
+    ref="card"
+    :class="classes(n(), [isRow, n('--layout-row')], [elevation, `var-elevation--${elevation}`, 'var-elevation--1'])"
+    :style="{
+      zIndex: floated ? zIndex : undefined,
+    }"
+    @click="onClick"
+    v-ripple="{ disabled: !ripple || floater }"
+  >
     <div
       ref="cardFloater"
-      :class="classes(n('floater'), [elevation, `var-elevation--${elevation}`, 'var-elevation--1'])"
+      :class="classes(n('floater'))"
       :style="{
         width: floaterWidth,
         height: floaterHeight,
@@ -10,21 +18,18 @@
         left: floaterLeft,
         overflow: floaterOverflow,
         position: floaterPosition,
-        borderRadius: floating ? '0px' : undefined,
-        zIndex: floated ? zIndex : undefined,
         transition: floated
-          ? `background-color ${floatingDuration}ms, border-radius ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`
+          ? `background-color ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`
           : undefined,
       }"
-      v-ripple="{ disabled: !ripple || floater }"
     >
       <slot name="image">
         <img
           :class="n('image')"
           :style="{
             objectFit: fit,
-            height: toSizeUnit(height),
-            width: toSizeUnit(width),
+            height: toSizeUnit(imageHeight ?? height),
+            width: toSizeUnit(imageWidth),
           }"
           :src="src"
           :alt="alt"
@@ -59,20 +64,19 @@
       </div>
 
       <div
-        :class="classes(n('toolbar'), 'var--box')"
+        :class="classes(n('floating-buttons'), 'var--box')"
         :style="{
           zIndex,
           opacity,
           transition: `opacity ${floatingDuration * 2}ms`,
         }"
-        v-if="showToolBar"
+        v-if="showFloatingButtons"
       >
-        <slot name="toolbar-close">
-          <var-button size="large" round :class="classes(n('toolbar-close'), 'var-elevation--6')" @click.stop="close">
-            <var-icon name="window-close" size="24px" />
+        <slot name="close-button">
+          <var-button size="large" round :class="classes(n('close-button'), 'var-elevation--6')" @click.stop="close">
+            <var-icon name="window-close" />
           </var-button>
         </slot>
-        <slot name="toolbar-extra" />
       </div>
     </div>
 
@@ -119,13 +123,13 @@ export default defineComponent({
     const floaterHeight: Ref<string> = ref('100%')
     const floaterTop: Ref<string> = ref('auto')
     const floaterLeft: Ref<string> = ref('auto')
-    const floaterPosition: Ref<string> = ref('static')
+    const floaterPosition: Ref<string | undefined> = ref(undefined)
     const floaterOverflow: Ref<string> = ref('hidden')
     const contentHeight: Ref<string> = ref('0px')
     const opacity: Ref<string> = ref('0')
     const { zIndex } = useZIndex(() => props.floating, 1)
     const isRow = computed(() => props.layout === 'row')
-    const showToolBar: Ref<boolean> = ref(false)
+    const showFloatingButtons: Ref<boolean> = ref(false)
     const floated: Ref<boolean> = ref(false)
 
     useLock(
@@ -156,7 +160,7 @@ export default defineComponent({
           floaterPosition.value = 'fixed'
           dropdownFloaterTop = floaterTop.value
           dropdownFloaterLeft = floaterLeft.value
-          showToolBar.value = true
+          showFloatingButtons.value = true
 
           await doubleRaf()
 
@@ -184,7 +188,7 @@ export default defineComponent({
       floaterLeft.value = dropdownFloaterLeft
       contentHeight.value = '0px'
       opacity.value = '0'
-      showToolBar.value = false
+      showFloatingButtons.value = false
 
       dropper = setTimeout(() => {
         holderWidth.value = 'auto'
@@ -196,7 +200,7 @@ export default defineComponent({
         dropdownFloaterTop = 'auto'
         dropdownFloaterLeft = 'auto'
         floaterOverflow.value = 'hidden'
-        floaterPosition.value = 'static'
+        floaterPosition.value = undefined
         floated.value = false
       }, props.floatingDuration)
     }
@@ -237,7 +241,7 @@ export default defineComponent({
       zIndex,
       isRow,
       close,
-      showToolBar,
+      showFloatingButtons,
       floated,
     }
   },

@@ -61,6 +61,8 @@ module.exports = {
       'zh-CN': '一个组件库',
     },
     header: {
+      darkMode: null,
+      versions: null,
       i18n: null,
       playground: null,
       github: 'https://github.com/varletjs/varlet',

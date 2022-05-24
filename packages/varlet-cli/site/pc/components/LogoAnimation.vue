@@ -1,7 +1,7 @@
 <script lang="ts">
 import config from '@config'
 import { get } from 'lodash-es'
-import { computed, defineComponent, onBeforeMount, onMounted, onBeforeUnmount, ref, watch, nextTick } from 'vue'
+import { computed, defineComponent, onMounted, onBeforeUnmount, ref, watch, nextTick } from 'vue'
 import { animationBoxData, animationEl, animationElClientRect } from '../floating'
 import type { Ref, StyleValue } from 'vue'
 import { useRouter } from 'vue-router'
@@ -27,38 +27,33 @@ export default defineComponent({
     }))
 
     const router = useRouter()
-    router.beforeEach(async () => {
-      if (!floatingState.value) {
+    router.beforeEach(async (to: any, from: any) => {
+      if (!floatingState.value && from.path !== '/') {
         floatingState.value = true
       }
-      await nextTick();
-    })
-
-    onBeforeMount(() => {
-      floatingState.value = false
     })
 
     onMounted(() => {
-      window.addEventListener('resize', resetPosition, false);
+      window.addEventListener('resize', resetPosition, false)
     })
 
     onBeforeUnmount(() => {
       resetTimer && clearTimeout(resetTimer)
-      window.removeEventListener('resize', resetPosition);
+      window.removeEventListener('resize', resetPosition)
     })
 
     const land = () => {
-      floatingState.value = false;
+      floatingState.value = false
     }
 
-    let resetTimer: number;
+    let resetTimer: number
 
     const resetPosition = async () => {
       if (floatingState.value) {
         floatingState.value = false
-        await nextTick();
+        await nextTick()
       }
-      clearTimeout(resetTimer);
+      clearTimeout(resetTimer)
       const newBRect = animationEl.value?.getBoundingClientRect()
       if (newBRect) {
         resetTimer = window.setTimeout(() => {
@@ -73,21 +68,35 @@ export default defineComponent({
       styles,
       animationEl,
       floatingState,
-      land
+      land,
     }
   },
 })
 </script>
 
 <template>
-  <Teleport :to="animationEl" v-if="animationEl">
-    <img v-show="!floatingState" v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo"
-      v-if="logo && animationEl" class="varlet-cli-logo-animation" />
+  <Teleport :to="animationEl || 'body'">
+    <img
+      v-show="!floatingState"
+      v-bind="animationBoxData.attrs"
+      :style="styles"
+      :src="logo"
+      alt="logo"
+      v-if="logo && animationEl"
+      class="varlet-cli-logo-animation"
+      :class="{ 'varlet-cli-logo-position': !animationEl }"
+    />
   </Teleport>
   <div v-show="floatingState">
-    <img @transitionend="land" v-bind="animationBoxData.attrs" :style="styles" :src="logo" alt="logo"
+    <img
+      @transitionend="land"
+      v-bind="animationBoxData.attrs"
+      :style="styles"
+      :src="logo"
+      alt="logo"
       v-if="logo && animationEl"
-      class="varlet-cli-logo-animation varlet-cli-logo-position varlet-cli-logo-transition" />
+      class="varlet-cli-logo-animation varlet-cli-logo-position varlet-cli-logo-transition"
+    />
   </div>
 </template>
 

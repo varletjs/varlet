@@ -2,19 +2,18 @@
 @card-background: #fff;
 @card-border-radius: 4px;
 @card-image-width: 100%;
-@card-row-image-width: 120px;
-@card-row-height: 120px;
+@card-row-image-width: 140px;
+@card-row-height: 140px;
 @card-image-height: 200px;
 @card-title-color: #333;
 @card-title-font-size: 20px;
 @card-title-padding: 0 12px;
 @card-title-margin: 15px 0 0 0;
-@card-title-row-margin: 10px 0 0 0;
+@card-title-row-margin: 12px 0;
 @card-subtitle-color: rgba(0, 0, 0, 0.6);
 @card-subtitle-font-size: 14px;
-@card-subtitle-row-font-size: 12px;
-@card-subtitle-padding: 0 13px;
-@card-subtitle-row-margin: 4px 0 0 0;
+@card-subtitle-padding: 0 12px;
+@card-subtitle-row-margin: -8px 0 0 0;
 @card-subtitle-margin: 10px 0 0 0;
 @card-description-color: rgba(0, 0, 0, 0.6);
 @card-description-font-size: 14px;
@@ -25,13 +24,13 @@
 @card-footer-bottom: 9px;
 @card-footer-margin: 30px 0 0px 0;
 @card-line-height: 22px;
-@card-row-line-height: 1.4;
-@card-floater-toolbar-bottom: 16px;
-@card-floater-toolbar-right: 16px;
-@card-floater-toolbar-color: #fff;
-@card-floater-toolbar-close-size: 24px;
-@card-floater-toolbar-close-padding: 16px;
-@card-floater-toolbar-close-primary-color: #212121;
+@card-row-line-height: 1.5;
+@card-floating-buttons-bottom: 16px;
+@card-floating-buttons-right: 16px;
+@card-floating-buttons-color: #fff;
+@card-close-button-size: 24px;
+@card-close-button-padding: 16px;
+@card-close-button-primary-color: #212121;
 
 :root {
   --card-padding: @card-padding;
@@ -48,7 +47,6 @@
   --card-title-row-margin: @card-title-row-margin;
   --card-subtitle-color: @card-subtitle-color;
   --card-subtitle-font-size: @card-subtitle-font-size;
-  --card-subtitle-row-font-size: @card-subtitle-row-font-size;
   --card-subtitle-padding: @card-subtitle-padding;
   --card-subtitle-margin: @card-subtitle-margin;
   --card-subtitle-row-margin: @card-subtitle-row-margin;
@@ -62,23 +60,22 @@
   --card-footer-margin: @card-footer-margin;
   --card-line-height: @card-line-height;
   --card-row-line-height: @card-row-line-height;
-  --card-floater-toolbar-bottom: @card-floater-toolbar-bottom;
-  --card-floater-toolbar-right: @card-floater-toolbar-right;
-  --card-floater-toolbar-color: @card-floater-toolbar-color;
-  --card-floater-toolbar-close-size: @card-floater-toolbar-close-size;
-  --card-floater-toolbar-close-padding: @card-floater-toolbar-close-padding;
-  --card-floater-toolbar-close-primary-color: @card-floater-toolbar-close-primary-color;
+  --card-floating-buttons-bottom: @card-floating-buttons-bottom;
+  --card-floating-buttons-right: @card-floating-buttons-right;
+  --card-floating-buttons-color: @card-floating-buttons-color;
+  --card-close-button-size: @card-close-button-size;
+  --card-close-button-padding: @card-close-button-padding;
+  --card-close-button-primary-color: @card-close-button-primary-color;
 }
 
 .var-card {
-  &--layout-row {
-    height: var(--card-row-height);
-  }
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
 
   &__floater {
-    border-radius: var(--card-border-radius);
     display: flex;
     flex-direction: column;
+    position: static;
     line-height: var(--card-line-height);
     background: var(--card-background);
     transition-timing-function: cubic-bezier(0.45, 0.19, 0.06, 0.89);
@@ -91,7 +88,10 @@
   }
 
   &--layout-row &__floater {
+    min-height: var(--card-row-height);
+    height: 100%;
     flex-direction: row;
+    position: relative;
     line-height: var(--card-row-line-height);
   }
 
@@ -103,7 +103,7 @@
 
   &--layout-row &__image {
     width: var(--card-row-image-width);
-    height: 100%;
+    height: auto;
     display: block;
     flex-shrink: 0;
   }
@@ -133,7 +133,6 @@
   }
 
   &--layout-row &__subtitle {
-    font-size: var(--card-subtitle-row-font-size);
     margin: var(--card-subtitle-row-margin);
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -169,21 +168,21 @@
     transition-timing-function: cubic-bezier(0.45, 0.19, 0.06, 0.89);
   }
 
-  &__toolbar {
+  &__floating-buttons {
     position: fixed;
-    bottom: var(--card-floater-toolbar-bottom);
-    right: var(--card-floater-toolbar-right);
+    bottom: var(--card-floating-buttons-bottom);
+    right: var(--card-floating-buttons-right);
+    color: var(--card-floating-buttons-color);
   }
 
-  &__toolbar-close {
-    padding: var(--card-floater-toolbar-close-padding);
-    background-color: var(--card-floater-toolbar-close-primary-color);
-    color: var(--card-floater-toolbar-color);
+  &__close-button {
+    padding: var(--card-close-button-padding);
+    background-color: var(--card-close-button-primary-color);
 
     .var-icon {
-      width: var(--card-floater-toolbar-close-size);
-      height: var(--card-floater-toolbar-close-size);
-      font-size: var(--card-floater-toolbar-close-size);
+      width: var(--card-close-button-size);
+      height: var(--card-close-button-size);
+      font-size: var(--card-close-button-size);
     }
   }
 }

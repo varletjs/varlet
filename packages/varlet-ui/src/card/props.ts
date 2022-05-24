@@ -13,10 +13,16 @@ export const props = {
     validator: fitValidator,
     default: 'cover',
   },
+  /**
+   * @deprecated use imageHeight instead
+   */
   height: {
     type: [String, Number],
   },
-  width: {
+  imageHeight: {
+    type: [String, Number],
+  },
+  imageWidth: {
     type: [String, Number],
   },
   layout: {
@@ -28,7 +34,7 @@ export const props = {
     default: false,
   },
   'onUpdate:floating': {
-    type: Function as PropType<(floating: boolean) => void>,
+    type: Function as PropType<(value: boolean) => void>,
   },
   floatingDuration: {
     type: Number,

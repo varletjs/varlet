@@ -230,3 +230,25 @@ export function mockScrollTo(Element: any) {
     }
   }
 }
+
+export function mockIndexBarOwnTop() {
+  const originForEach = Array.prototype.forEach
+
+  // eslint-disable-next-line no-extend-native
+  Array.prototype.forEach = function (fn, thisArg) {
+    const changedArr = this.map((value, index) => {
+      if (value.ownTop && !value.ownTop.value) value.ownTop.value = (index + 1) * 50
+
+      return value
+    })
+
+    originForEach.call(changedArr, fn, thisArg)
+  }
+
+  return {
+    mockRestore() {
+      // eslint-disable-next-line no-extend-native
+      Array.prototype.forEach = originForEach
+    },
+  }
+}

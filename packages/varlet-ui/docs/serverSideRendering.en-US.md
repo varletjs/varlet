@@ -8,6 +8,18 @@ Here is the basic way to introduce `Varlet` in `Nuxt`. You can introduce the ent
 
 `Nuxt.js`  is a server rendering application framework based on `Vue.js`，For more details, please go [Nuxt](https://v3.nuxtjs.org/).
 
+### Transpile Library
+
+```ts
+import { defineNuxtConfig } from 'nuxt'
+
+export default defineNuxtConfig({
+  build: {
+    transpile: ['@varlet/ui']
+  }
+})
+```
+
 ### Fully import
 
 `Nuxt` will automatically read the files in your `plugins` directory and load them.

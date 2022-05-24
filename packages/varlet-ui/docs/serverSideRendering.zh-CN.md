@@ -7,6 +7,19 @@
 ### 创建 Nuxt 项目
 
 `Nuxt.js` 是一个基于 `Vue.js` 的服务端渲染应用框架，详细教程请移步 [Nuxt](https://v3.nuxtjs.org/)。
+
+### 转译组件库
+
+```ts
+import { defineNuxtConfig } from 'nuxt'
+
+export default defineNuxtConfig({
+  build: {
+    transpile: ['@varlet/ui']
+  }
+})
+```
+
 ### 完整引入
 
 `Nuxt` 会自动读取 `plugins` 目录下的文件并加载它们。
