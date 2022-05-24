@@ -1,5 +1,13 @@
+## <small>1.27.10 (2022-05-24)</small>
+
+* docs(ui/table,pagination): remove pc preview for px to vw ([70762a4](https://github.com/varletjs/varlet/commit/70762a4))
+* refactor(cli/site): optimize version styles ([7962f99](https://github.com/varletjs/varlet/commit/7962f99))
+
+
+
 ## <small>1.27.9 (2022-05-24)</small>
 
+* v1.27.9 ([53c4d4b](https://github.com/varletjs/varlet/commit/53c4d4b))
 * fix: animationBox is not in the DomTree. the logo will not show (#579) ([a50f735](https://github.com/varletjs/varlet/commit/a50f735)), closes [#579](https://github.com/varletjs/varlet/issues/579)
 * fix: fix select throws an error when the select does not match any of the options (#571) ([f180d93](https://github.com/varletjs/varlet/commit/f180d93)), closes [#571](https://github.com/varletjs/varlet/issues/571)
 * fix: fix the logo fixed style && filter change (#573) ([37908dc](https://github.com/varletjs/varlet/commit/37908dc)), closes [#573](https://github.com/varletjs/varlet/issues/573)
