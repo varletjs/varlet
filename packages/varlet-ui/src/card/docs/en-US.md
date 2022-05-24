@@ -202,6 +202,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--card-floating-buttons-right`     | `16px`               |
 | `--card-floating-buttons-color`     | `#fff`               |
 | `--card-close-button-icon-size`     | `24px`               |
-| `--card-close-button-padding`       | `0`                  |
 | `--card-close-button-size`          | `56px`               |
 | `--card-close-button-primary-color` | `#212121`            |
