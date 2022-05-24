@@ -27,8 +27,15 @@ export async function compile(cmd: { noUmd: boolean }) {
   await removeDir()
   await Promise.all([runTask('types', compileTypes), runTask('template highlight', compileTemplateHighlight)])
 
+  process.env.TARGET_MODULE = 'module'
   await runTask('module', compileModule)
+
+  process.env.TARGET_MODULE = 'esm-bundle'
   await runTask('esm bundle', () => compileModule('esm-bundle'))
+
+  process.env.TARGET_MODULE = 'commonjs'
   await runTask('commonjs', () => compileModule('commonjs'))
+
+  process.env.TARGET_MODULE = 'umd'
   !cmd.noUmd && (await runTask('umd', () => compileModule('umd')))
 }

@@ -5,14 +5,16 @@ import { compileFile, File } from '@vue/repl'
 import { utoa, atou } from './utils/encode'
 import { Snackbar } from '@varlet/ui'
 
+const publicPath = process.env.NODE_ENV === 'production' ? 'https://varlet-ui-playground.vercel.app/' : './'
+
 const defaultMainFile = 'App.vue'
 const varletReplPlugin = 'varlet-repl-plugin.js'
 const varletImports = {
-  '@varlet/ui': './varlet.esm.js',
-  '@varlet/touch-emulator': './varlet-touch-emulator.js',
-  '@varlet/ui/json/area.json': './varlet-area.js',
+  '@varlet/ui': `${publicPath}varlet.esm.js`,
+  '@varlet/touch-emulator': `${publicPath}varlet-touch-emulator.js`,
+  '@varlet/ui/json/area.json': `${publicPath}varlet-area.js`,
 }
-const varletCss = './varlet.css'
+const varletCss = `${publicPath}varlet.css`
 
 const welcomeCode = `\
 <script setup lang='ts'>
