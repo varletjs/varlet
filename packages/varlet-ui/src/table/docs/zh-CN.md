@@ -6,10 +6,6 @@
 
 ### 基本使用
 
-```vue
-import BasicExample from '../example/Basic.vue'
-```
-
 ```html
 <template>
   <var-table>
@@ -39,10 +35,6 @@ import BasicExample from '../example/Basic.vue'
 ### 尾部插槽
 
 可以在尾部插槽中插入一些东西，最常见的是插入分页组件。
-
-```vue
-import FooterSlots from '../example/FooterSlots.vue'
-```
 
 ```html
 <script>

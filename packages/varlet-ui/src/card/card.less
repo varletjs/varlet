@@ -28,8 +28,8 @@
 @card-floating-buttons-bottom: 16px;
 @card-floating-buttons-right: 16px;
 @card-floating-buttons-color: #fff;
-@card-close-button-size: 24px;
-@card-close-button-padding: 16px;
+@card-close-button-icon-size: 24px;
+@card-close-button-size: 56px;
 @card-close-button-primary-color: #212121;
 
 :root {
@@ -63,8 +63,8 @@
   --card-floating-buttons-bottom: @card-floating-buttons-bottom;
   --card-floating-buttons-right: @card-floating-buttons-right;
   --card-floating-buttons-color: @card-floating-buttons-color;
+  --card-close-button-icon-size: @card-close-button-icon-size;
   --card-close-button-size: @card-close-button-size;
-  --card-close-button-padding: @card-close-button-padding;
   --card-close-button-primary-color: @card-close-button-primary-color;
 }
 
@@ -175,14 +175,14 @@
     color: var(--card-floating-buttons-color);
   }
 
-  &__close-button {
+  &__close-button[var-card-cover] {
     padding: var(--card-close-button-padding);
+    width: var(--card-close-button-size);
+    height: var(--card-close-button-size);
     background-color: var(--card-close-button-primary-color);
+  }
 
-    .var-icon {
-      width: var(--card-close-button-size);
-      height: var(--card-close-button-size);
-      font-size: var(--card-close-button-size);
-    }
+  &__close-button-icon[var-card-cover] {
+    font-size: var(--card-close-button-icon-size);
   }
 }

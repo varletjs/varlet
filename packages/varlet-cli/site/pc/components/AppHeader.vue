@@ -281,7 +281,7 @@ export default defineComponent({
     position: relative;
     cursor: pointer;
     transition: background-color 0.25s;
-    margin-right: 6px;
+    margin-right: 4px;
 
     &:hover {
       background: var(--site-config-color-nav-button-hover-background);
