@@ -140,11 +140,9 @@ export default defineComponent({
     }
 
     const open = (value: string) => {
-      if (value !== currentVersion.value) {
-        setTimeout(() => {
-          window.location.href = value
-        }, 350);
-      }
+      setTimeout(() => {
+        window.location.href = value
+      }, 350);
     }
 
     watchThemes((themes, from) => {
