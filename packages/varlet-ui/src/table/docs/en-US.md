@@ -105,9 +105,9 @@ const get = (current, size) => {
 
 ### Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
-| `full-Width` | The width of the `table` (including the scrollable part)	| _string \| number_ | `100%` |
+| Prop         | Description | Type | Default |
+|--------------| -------------- | -------- | ---------- |
+| `full-width` | The width of the `table` (including the scrollable part)	| _string \| number_ | `100%` |
 
 ### Slots
 
