@@ -12,7 +12,7 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.baseUse }}</app-type>
-  <var-space>
+  <var-space :size="['2.666vw', '2.666vw']">
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
     <var-button>Button3</var-button>
@@ -36,25 +36,25 @@ watchDarkMode(dark)
   </var-space>
 
   <app-type>{{ pack.rightAlign }}</app-type>
-  <var-space justify="end">
+  <var-space justify="end" :size="['2.666vw', '2.666vw']">
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
   </var-space>
 
   <app-type>{{ pack.around }}</app-type>
-  <var-space justify="space-around">
+  <var-space justify="space-around" :size="['2.666vw', '2.666vw']">
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
   </var-space>
 
   <app-type>{{ pack.center }}</app-type>
-  <var-space justify="center">
+  <var-space justify="center" :size="['2.666vw', '2.666vw']">
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
   </var-space>
 
   <app-type>{{ pack.between }}</app-type>
-  <var-space justify="space-between">
+  <var-space justify="space-between" :size="['2.666vw', '2.666vw']">
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
   </var-space>
