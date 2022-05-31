@@ -247,7 +247,7 @@ header {
 }
 
 .router-view__block {
-  padding: 55px 12px 15px;
+  padding: 55px 15px 15px;
 }
 
 * {

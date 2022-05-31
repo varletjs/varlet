@@ -52,15 +52,13 @@
 
 ## 普通模式
 
+
 ### 介绍
 
-`simple` 属性为 `false` 时，可以开启我们专门为宽屏设计的分页风格。
+`simple` 属性为 `false` 时，可以开启我们专门为宽屏设计的分页风格，预览效果见 `playground`。
+
 
 ### 基本使用
-
-```vue
-import Basic from '../example/Basic.vue'
-```
 
 ```html
 <template>
@@ -71,10 +69,6 @@ import Basic from '../example/Basic.vue'
 ### 开启页码快速跳转
 
 使用 `show-quick-jumper` 属性开启页面快速跳转
-
-```vue
-import QuickJumper from '../example/QuickJumper.vue'
-```
 
 ```html
 <template>
@@ -91,10 +85,6 @@ import QuickJumper from '../example/QuickJumper.vue'
 
 使用 `show-size-changer` 可以隐藏 `size` 切换器。
 使用 `size-option` 指定可以显示的条数。
-
-```vue
-import SizeOption from '../example/SizeOption.vue'
-```
 
 ```html
 <template>
@@ -116,10 +106,6 @@ import SizeOption from '../example/SizeOption.vue'
 ```
 
 ### 自定义显示总数
-
-```vue
-import ShowTotal from '../example/ShowTotal.vue'
-```
 
 ```html
 <template>
@@ -143,10 +129,6 @@ import ShowTotal from '../example/ShowTotal.vue'
 ```
 
 ### 禁用
-
-```vue
-import Disabled from '../example/Disabled.vue'
-```
 
 ```html
 <template>

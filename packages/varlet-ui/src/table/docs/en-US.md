@@ -6,10 +6,6 @@ A minimal table, when you need to display some data in the form of a table, you 
 
 ### Basic Usage
 
-```vue
-import BasicExample from '../example/Basic.vue'
-```
-
 ```html
 <template>
   <var-table>
@@ -39,10 +35,6 @@ import BasicExample from '../example/Basic.vue'
 ### Footer Slots
 
 You can insert something in the tail slot, the most common is to insert a `Pagination`.
-
-```vue
-import FooterSlots from '../example/FooterSlots.vue'
-```
 
 ```html
 <script>
@@ -113,9 +105,9 @@ const get = (current, size) => {
 
 ### Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
-| `full-Width` | The width of the `table` (including the scrollable part)	| _string \| number_ | `100%` |
+| Prop         | Description | Type | Default |
+|--------------| -------------- | -------- | ---------- |
+| `full-width` | The width of the `table` (including the scrollable part)	| _string \| number_ | `100%` |
 
 ### Slots
 

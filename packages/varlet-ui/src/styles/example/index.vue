@@ -13,7 +13,7 @@ watchDarkMode(dark, (themes) => {
 </script>
 
 <template>
-  <var-space class="elevation-example-list" :size="['6vw', '6vw']">
+  <var-space class="elevation-example-list" :size="['5.5vw', '5.5vw']">
     <div
       class="elevation-example-item"
       :class="`var-elevation--${e}`"

@@ -140,11 +140,9 @@ export default defineComponent({
     }
 
     const open = (value: string) => {
-      if (value !== currentVersion.value) {
-        setTimeout(() => {
-          window.location.href = value
-        }, 350);
-      }
+      setTimeout(() => {
+        window.location.href = value
+      }, 350);
     }
 
     watchThemes((themes, from) => {
@@ -281,7 +279,7 @@ export default defineComponent({
     position: relative;
     cursor: pointer;
     transition: background-color 0.25s;
-    margin-right: 6px;
+    margin-right: 4px;
 
     &:hover {
       background: var(--site-config-color-nav-button-hover-background);

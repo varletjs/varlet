@@ -54,13 +54,9 @@ Use `showTatol` prop to show custom total text.
 
 ### Intro
 
-Set `simple` to `false` when you use medium and large screen devices.
+Set `simple` to `false` when you use medium and large screen devices, preview see `playground`
 
 ### Basic Usage
-
-```vue
-import Basic from '../example/Basic.vue'
-```
 
 ```html
 <template>
@@ -71,10 +67,6 @@ import Basic from '../example/Basic.vue'
 ### Enable page number to jump quickly
 
 Use `show-quick-jumper` prop to enable page number to jump quickly.
-
-```vue
-import QuickJumper from '../example/QuickJumper.vue'
-```
 
 ```html
 <template>
@@ -90,10 +82,6 @@ import QuickJumper from '../example/QuickJumper.vue'
 ### Size Option
 
 Use `show-size-changer` hide size changer and use `size-option` prop set the number of `size` that can be chosen.
-
-```vue
-import SizeOption from '../example/SizeOption.vue'
-```
 
 ```html
 <template>
@@ -115,10 +103,6 @@ import SizeOption from '../example/SizeOption.vue'
 ```
 
 ### Show Total
-
-```vue
-import ShowTotal from '../example/ShowTotal.vue'
-```
 
 ```html
 <template>
@@ -142,10 +126,6 @@ import ShowTotal from '../example/ShowTotal.vue'
 ```
 
 ### Disabled
-
-```vue
-import Disabled from '../example/Disabled.vue'
-```
 
 ```html
 <template>

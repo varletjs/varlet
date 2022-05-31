@@ -6,10 +6,6 @@
 
 ### 基本使用
 
-```vue
-import BasicExample from '../example/Basic.vue'
-```
-
 ```html
 <template>
   <var-table>
@@ -39,10 +35,6 @@ import BasicExample from '../example/Basic.vue'
 ### 尾部插槽
 
 可以在尾部插槽中插入一些东西，最常见的是插入分页组件。
-
-```vue
-import FooterSlots from '../example/FooterSlots.vue'
-```
 
 ```html
 <script>
@@ -114,9 +106,9 @@ const get = (current, size) => {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | ---------- |
-| `full-Width` | `table` 的宽度(包含可滚动部分)	| _string \| number_ | `100%` |
+| 参数           | 说明 | 类型 | 默认值 |
+|--------------| -------------- | -------- | ---------- |
+| `full-width` | `table` 的宽度(包含可滚动部分)	| _string \| number_ | `100%` |
 
 ### 插槽
 
