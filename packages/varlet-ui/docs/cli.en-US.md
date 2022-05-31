@@ -294,6 +294,13 @@ varlet-cli release
 varlet-cli gen <projectName>
 ```
 
+#### Create component template files
+
+```shell
+# playground-ignore
+varlet-cli create <componentName>
+```
+
 ### Babel
 
 To configure `babel`, first specify the target browser in `package.json`

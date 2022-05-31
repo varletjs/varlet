@@ -57,15 +57,23 @@ export async function gen(name: string) {
       type: 'list',
       choices: ['sfc', 'tsx'],
     },
+    {
+      name: 'Whether to use i18n?',
+      type: 'confirm',
+    },
   ])
 
+  const i18n = ret['Whether to use i18n?']
   const choice = ret['Please select your component library programming style']
-  const generator = resolve(GENERATORS_DIR, choice)
+  const dirName = i18n ? 'i18n' : 'default'
+
   const base = resolve(GENERATORS_DIR, 'base')
+  const configBase = resolve(GENERATORS_DIR, 'config', dirName, 'base')
+  const code = resolve(GENERATORS_DIR, 'config', dirName, choice)
 
   await copy(base, dest)
-  await copy(generator, dest)
-  removeFiles(dest)
+  await copy(configBase, dest)
+  await copy(code, dest)
   syncVersion(name)
   generateGitIgnore(name)
 
