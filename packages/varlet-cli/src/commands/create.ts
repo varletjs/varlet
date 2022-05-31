@@ -57,10 +57,6 @@ test('test ${name} use', () => {
 <script setup>
 import ${bigCamelizeName} from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { watchLang } from '@varlet/cli/site/utils'
-import { use, pack } from './locale'
-
-watchLang(use)
 </script>
 
 <template>
@@ -112,26 +108,29 @@ export default {
     return
   }
 
-  i18nFiles = [
-    outputFile(resolve(exampleLocalDir, 'index.ts'), localeIndexTemplate),
-    outputFile(resolve(exampleLocalDir, 'en-US.ts'), localTemplate),
-    outputFile(resolve(exampleLocalDir, 'zh-CN.ts'), localTemplate),
-    outputFile(resolve(docsDir, 'en-US.md'), ''),
-  ]
-
-  if (cmd.disableI18n) {
+  if (!cmd.disableI18n) {
     exampleTemplate = `\
 <script setup>
 import ${bigCamelizeName} from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { watchLang } from '@varlet/cli/site/utils'
+import { use, pack } from './locale'
+
+watchLang(use)
 </script>
 
 <template>
   <app-type></app-type>
   <${namespace}-${name}/>
 </template>
-`
-    i18nFiles = []
+    `
+
+    i18nFiles = [
+      outputFile(resolve(exampleLocalDir, 'index.ts'), localeIndexTemplate),
+      outputFile(resolve(exampleLocalDir, 'en-US.ts'), localTemplate),
+      outputFile(resolve(exampleLocalDir, 'zh-CN.ts'), localTemplate),
+      outputFile(resolve(docsDir, 'en-US.md'), ''),
+    ]
   }
 
   await Promise.all([
