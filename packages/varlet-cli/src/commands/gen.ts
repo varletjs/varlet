@@ -1,14 +1,8 @@
 import logger from '../shared/logger'
 import inquirer from 'inquirer'
 import { resolve } from 'path'
-import { copy, pathExistsSync, readFileSync, writeFileSync, removeSync } from 'fs-extra'
+import { copy, pathExistsSync, readFileSync, writeFileSync } from 'fs-extra'
 import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant'
-
-function removeFiles(dest: string) {
-  const files = ['es', 'lib', 'umd', 'highlight', 'types/index.d.ts', '.varlet', 'node_modules']
-
-  files.forEach((filename) => removeSync(resolve(dest, filename)))
-}
 
 function generateGitIgnore(name: string) {
   writeFileSync(
