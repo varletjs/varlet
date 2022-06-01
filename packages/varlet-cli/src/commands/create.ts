@@ -6,7 +6,8 @@ import { DOCS_DIR_NAME, EXAMPLE_DIR_NAME, LOCALE_DIR_NAME, SRC_DIR, TESTS_DIR_NA
 import { getVarletConfig } from '../config/varlet.config'
 import { get } from 'lodash'
 
-export async function create(name: string) {
+export async function create(name: string, cmd: { disableI18n?: boolean }) {
+  let i18nFiles: Array<Promise<void>> = []
   const namespace = get(getVarletConfig(), 'namespace')
   const bigCamelizeName = bigCamelize(name)
   const vueTemplate = `\
@@ -42,50 +43,26 @@ export default ${bigCamelizeName}
 `
 
   const testsTemplate = `\
-import example from '../example'
 import ${bigCamelizeName} from '..'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 
-test('test ${name} example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-})
-
-test('test ${name} plugin', () => {
+test('test ${name} use', () => {
   const app = createApp({}).use(${bigCamelizeName})
   expect(app.component(${bigCamelizeName}.name)).toBeTruthy()
 })
 `
 
-  const exampleTemplate = `\
+  let exampleTemplate = `\
+<script setup>
+import ${bigCamelizeName} from '..'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+</script>
+
 <template>
   <app-type></app-type>
   <${namespace}-${name}/>
 </template>
-
-<script>
-import ${bigCamelizeName} from '..'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { watchLang } from '@varlet/cli/site/utils'
-import { use, pack } from './locale'
-
-export default {
-  name: '${bigCamelizeName}Example',
-  components: {
-    [${bigCamelizeName}.name]: ${bigCamelizeName},
-    AppType
-  },
-  setup() {
-
-     watchLang(use)
-
-     return {
-       pack
-     }
-  }
-}
-</script>
 `
 
   const localeIndexTemplate = `\
@@ -131,16 +108,38 @@ export default {
     return
   }
 
+  if (!cmd.disableI18n) {
+    exampleTemplate = `\
+<script setup>
+import ${bigCamelizeName} from '..'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { watchLang } from '@varlet/cli/site/utils'
+import { use, pack } from './locale'
+
+watchLang(use)
+</script>
+
+<template>
+  <app-type></app-type>
+  <${namespace}-${name}/>
+</template>
+    `
+
+    i18nFiles = [
+      outputFile(resolve(exampleLocalDir, 'index.ts'), localeIndexTemplate),
+      outputFile(resolve(exampleLocalDir, 'en-US.ts'), localTemplate),
+      outputFile(resolve(exampleLocalDir, 'zh-CN.ts'), localTemplate),
+      outputFile(resolve(docsDir, 'en-US.md'), ''),
+    ]
+  }
+
   await Promise.all([
     outputFile(resolve(componentDir, `${bigCamelizeName}.vue`), vueTemplate),
     outputFile(resolve(componentDir, 'index.ts'), indexTemplate),
     outputFile(resolve(testsDir, 'index.spec.js'), testsTemplate),
     outputFile(resolve(exampleDir, 'index.vue'), exampleTemplate),
-    outputFile(resolve(exampleLocalDir, 'index.ts'), localeIndexTemplate),
-    outputFile(resolve(exampleLocalDir, 'en-US.ts'), localTemplate),
-    outputFile(resolve(exampleLocalDir, 'zh-CN.ts'), localTemplate),
+    ...i18nFiles,
     outputFile(resolve(docsDir, 'zh-CN.md'), ''),
-    outputFile(resolve(docsDir, 'en-US.md'), ''),
   ])
 
   logger.success(`Create ${name} success!`)

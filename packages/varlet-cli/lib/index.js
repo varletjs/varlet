@@ -48,7 +48,11 @@ program
     .option('-nu, --noUmd', 'Do not compile umd target code')
     .action(compile_1.compile);
 program.command('lint').description('Lint code').action(lint_1.lint);
-program.command('create <name>').description('Create a component directory').action(create_1.create);
+program
+    .command('create <name>')
+    .description('Create a component directory')
+    .option('-d, --disableI18n', 'Disable to generator i18n files')
+    .action(create_1.create);
 program
     .command('jest')
     .description('Run Jest in work directory')

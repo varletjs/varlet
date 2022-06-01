@@ -289,6 +289,13 @@ varlet-cli release
 varlet-cli gen <projectName>
 ```
 
+#### 创建组件模板文件
+
+```shell
+# playground-ignore
+varlet-cli create <componentName>
+```
+
 ### Babel
 
 对 `babel` 进行配置，首先在 `package.json` 中指定目标浏览器
