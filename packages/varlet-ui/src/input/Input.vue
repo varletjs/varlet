@@ -253,7 +253,7 @@ export default defineComponent({
 
     // expose
     const focus = () => {
-      ;(el.value as HTMLInputElement).focus()
+      ;(el.value as HTMLInputElement)?.focus()
     }
 
     // expose
