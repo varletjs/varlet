@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`test input autofocus 1`] = `
+"<div class=\\"var-input var--box\\">
+  <div class=\\"var-input__controller\\">
+    <div class=\\"var-input__icon\\"></div>
+    <div class=\\"var-input__wrap\\">
+      <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-84\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-84\\"></label>
+    </div>
+    <div class=\\"var-input__icon\\">
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"var-input__line\\">
+    <div class=\\"var-input__dot\\"></div>
+  </div>
+  <transition-stub>
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
 exports[`test input clear 1`] = `
 "<div class=\\"var-input var--box\\">
   <div class=\\"var-input__controller\\">

@@ -17,6 +17,7 @@ export interface InputProps {
   readonly?: boolean
   clearable?: boolean
   resize?: boolean
+  autofocus?: boolean
   validateTrigger?: InputValidateTriggers[]
   rules?: Array<(v: string) => any>
   onFocus?: (e: Event) => void

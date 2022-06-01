@@ -126,7 +126,7 @@
 <script lang="ts">
 import VarFormDetails from '../form-details'
 import VarIcon from '../icon'
-import { defineComponent, getCurrentInstance, ref, computed, nextTick } from 'vue'
+import { defineComponent, getCurrentInstance, ref, computed, nextTick, onMounted } from 'vue'
 import { props } from './props'
 import { isEmpty } from '../utils/shared'
 import { useValidation, createNamespace, call } from '../utils/components'
@@ -253,7 +253,7 @@ export default defineComponent({
 
     // expose
     const focus = () => {
-      ;(el.value as HTMLInputElement).focus()
+      ;(el.value as HTMLInputElement)?.focus()
     }
 
     // expose
@@ -268,6 +268,10 @@ export default defineComponent({
     }
 
     call(bindForm, inputProvider)
+
+    onMounted(() => {
+      if (props.autofocus) focus()
+    })
 
     return {
       el,
