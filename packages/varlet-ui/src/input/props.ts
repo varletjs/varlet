@@ -66,6 +66,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  autofocus: {
+    type: Boolean,
+    default: false,
+  },
   validateTrigger: {
     type: Array as PropType<ValidateTriggers[]>,
     default: () => ['onInput', 'onClear'],

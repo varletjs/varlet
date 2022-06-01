@@ -170,6 +170,7 @@ const value = ref('')
 | `disabled` | Whether the disabled | _boolean_ | `false` |
 | `clearable` | Whether the clearable | _boolean_ | `false` |
 | `resize` | Whether textarea can be dragged to resize | _boolean_ | `false` |
+| `autofocus` | Whether the autofocus | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation, The optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
 | `rules` | The validation rules, Returns `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string) => any>_ | `-` |
 

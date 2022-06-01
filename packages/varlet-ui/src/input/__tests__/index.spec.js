@@ -235,3 +235,28 @@ test('test input trim', async () => {
   expect(onUpdateModelValue).lastCalledWith('123')
   wrapper.unmount()
 })
+
+test('test input autofocus', async () => {
+  const onFocus = jest.fn()
+
+  const template = `
+     <var-input
+      autofocus
+      @focus="onFocus"
+    />
+  `
+
+  const wrapper = mount({
+    components: {
+      [VarInput.name]: VarInput,
+    },
+    methods: {
+      onFocus,
+    },
+    template,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
+})
