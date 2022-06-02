@@ -56,12 +56,14 @@ function provideHover(document: vscode.TextDocument, position: vscode.Position) 
       .filter((component) => componentMap[component])
       .map((component) => {
         const { site } = componentMap[component]
+        const isCN = vscode.env.language === 'zh-cn'
+        const text = isCN
+          ? `查看${bigCamelize(component)}组件官方文档`
+          : `Watch ${bigCamelize(component)} component documentation`
 
         return `\
-[Varlet -> 查看${bigCamelize(component)}组件官方文档](${DOC}${site})\n
-[Varlet-vue2 -> 查看${bigCamelize(component)}组件官方文档](${DOC_VUE2}${site})\n
-[Varlet -> Watch ${bigCamelize(component)} component documentation](${EN_DOC}${site})\n
-[Varlet-vue2 -> Watch ${bigCamelize(component)} component documentation](${EN_DOC_VUE2}${site})`
+[Varlet -> ${text}](${isCN ? DOC : EN_DOC}${site})\n
+[Varlet-vue2 -> ${text}](${isCN ? DOC_VUE2 : EN_DOC_VUE2}${site})`
       })
     return new vscode.Hover(contents)
   }
