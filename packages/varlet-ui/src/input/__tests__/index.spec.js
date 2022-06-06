@@ -57,7 +57,7 @@ test('test input onInput & onChange & onClick', async () => {
   await wrapper.trigger('click')
   expect(onClick).toHaveBeenCalledTimes(1)
 
-  wrapper.find('.var-input__input').setValue('t')
+  await wrapper.find('.var-input__input').setValue('t')
 
   await wrapper.find('.var-input__input').trigger('input')
   expect(onUpdateModelValue).lastCalledWith('t')
@@ -237,26 +237,14 @@ test('test input trim', async () => {
 })
 
 test('test input autofocus', async () => {
-  const onFocus = jest.fn()
-
-  const template = `
-     <var-input
-      autofocus
-      @focus="onFocus"
-    />
-  `
-
-  const wrapper = mount({
-    components: {
-      [VarInput.name]: VarInput,
+  const wrapper = mount(VarInput, {
+    props: {
+      autofocus: true,
     },
-    methods: {
-      onFocus,
-    },
-    template,
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
+  await delay(100)
+  expect(wrapper.find('.var-input--focus')).toBeTruthy()
 
   wrapper.unmount()
 })
