@@ -83,7 +83,7 @@ export default defineComponent({
           margin = `0 0 ${y}px 0`
         }
 
-        return <div style={{ margin }}>{child}</div>
+        return <div style={{ margin, width: '100%' }}>{child}</div>
       })
 
       return (

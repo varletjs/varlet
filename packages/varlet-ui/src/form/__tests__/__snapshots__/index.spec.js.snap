@@ -258,7 +258,7 @@ exports[`test form with radio 4`] = `
 
 exports[`test form with rate 1`] = `
 "<div class=\\"var-form\\">
-  <div class=\\"var-rate__warp\\">
+  <div class=\\"var-rate__wrap\\">
     <div class=\\"var-rate\\">
       <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
       <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
@@ -275,7 +275,7 @@ exports[`test form with rate 1`] = `
 
 exports[`test form with rate 2`] = `
 "<div class=\\"var-form\\">
-  <div class=\\"var-rate__warp\\">
+  <div class=\\"var-rate__wrap\\">
     <div class=\\"var-rate\\">
       <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
       <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
@@ -295,7 +295,7 @@ exports[`test form with rate 2`] = `
 
 exports[`test form with rate 3`] = `
 "<div class=\\"var-form\\">
-  <div class=\\"var-rate__warp\\">
+  <div class=\\"var-rate__wrap\\">
     <div class=\\"var-rate\\">
       <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
       <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
