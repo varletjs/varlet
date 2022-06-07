@@ -275,10 +275,10 @@ exports[`test uploader example 1`] = `
 </div>
 <div class=\\"app-type\\">自定义渲染文件列表</div>
 <div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
-  <div style=\\"margin: 4px 12px 4px 0px; width: 100%;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\"></div>
-  <div style=\\"margin: 4px 12px 4px 0px; width: 100%;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\"></div>
-  <div style=\\"margin: 4px 12px 4px 0px; width: 100%;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\"></div>
-  <div style=\\"margin: 4px 0px; width: 100%;\\">
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\"></div>
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\"></div>
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet-varletjs.vercel.app/cat.jpg\\"></div>
+  <div style=\\"margin: 4px 0px;\\">
     <div class=\\"var-uploader var--box\\">
       <div class=\\"var-uploader__file-list\\">
         <div class=\\"\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round\\">
