@@ -1,3 +1,15 @@
+## [1.27.12](https://github.com/varletjs/varlet/compare/v1.27.11...v1.27.12) (2022-06-10)
+
+
+### Bug Fixes
+
+* add default width ([09fe1cc](https://github.com/varletjs/varlet/commit/09fe1cc8b560d7c05f6b8f06daca61babb6c6012))
+* **space:** add width when direction is column ([9108bfa](https://github.com/varletjs/varlet/commit/9108bfadfc761b1ce66191cc8e546d3edab840c4))
+* swiperItem's type ([#602](https://github.com/varletjs/varlet/issues/602)) ([33a1488](https://github.com/varletjs/varlet/commit/33a1488f9b43a6f7a073f3dccf5257ebcbc5adfe))
+* **ui/ripple:** ripple cannot be removed when the updated hooks trigger ([fc2fb08](https://github.com/varletjs/varlet/commit/fc2fb086c9cbdcb36003fe12993271cc27af2f4a))
+
+
+
 ## [1.27.11](https://github.com/varletjs/varlet/compare/v1.27.10...v1.27.11) (2022-06-01)
 
 
