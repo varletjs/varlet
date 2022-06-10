@@ -1,4 +1,5 @@
 import BottomNavigation from '..'
+import BottomNavigationItem from '../../bottom-navigation-item'
 import VarBottomNavigation from '../BottomNavigation'
 import VarBottomNavigationItem from '../../bottom-navigation-item/BottomNavigationItem'
 import { createApp } from 'vue'
@@ -27,8 +28,9 @@ const Wrapper = {
 }
 
 test('test bottom-navigation plugin', () => {
-  const app = createApp({}).use(BottomNavigation)
+  const app = createApp({}).use(BottomNavigation).use(BottomNavigationItem)
   expect(app.component(BottomNavigation.name)).toBeTruthy()
+  expect(app.component(BottomNavigationItem.name)).toBeTruthy()
 })
 
 describe('test bottom-navigation events', () => {
@@ -100,7 +102,7 @@ describe('test bottom-navigation events', () => {
         new Promise((resolve) => {
           setTimeout(() => {
             resolve(true)
-          }, 500)
+          }, 200)
         })
     )
     const wrapper = mount({
@@ -126,6 +128,9 @@ describe('test bottom-navigation events', () => {
     await trigger(wrapper.findAll('.var-bottom-navigation-item')[1], 'click')
     expect(handleBeforeChange).toHaveBeenCalledTimes(1)
     expect(wrapper.vm.active).toBe(0)
+    await delay(200)
+    expect(wrapper.vm.active).toBe(1)
+
     wrapper.unmount()
   })
 
