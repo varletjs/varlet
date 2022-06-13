@@ -154,6 +154,10 @@ function unmounted(el: RippleHTMLElement) {
 }
 
 function updated(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>) {
+  if (el._ripple!.tasker) {
+    el._ripple!.removeRipple()
+  }
+
   el._ripple = {
     ...el._ripple,
     ...(binding.value ?? {}),

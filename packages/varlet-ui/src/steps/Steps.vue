@@ -50,6 +50,7 @@ export default defineComponent({
 @import '../styles/common';
 
 .var-steps {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   overflow: hidden;

@@ -1,5 +1,5 @@
 <template>
-  <div :class="n('warp')">
+  <div :class="n('wrap')">
     <div :class="n()">
       <div
         :key="val"

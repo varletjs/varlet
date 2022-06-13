@@ -136,5 +136,6 @@ export default defineComponent({
 
 .var-collapse {
   position: relative;
+  width: 100%;
 }
 </style>
