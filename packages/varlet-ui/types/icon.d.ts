@@ -6,7 +6,7 @@ export interface IconProps {
   color?: string
   namespace?: string
   transition?: string | number
-  onClick?: () => (event: Event) => void
+  onClick?: (event: Event) => void
 }
 
 export class Icon extends VarComponent {
