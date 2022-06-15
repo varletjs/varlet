@@ -123,7 +123,7 @@ import { props } from './props'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useOptions } from './provide'
 import { useForm } from '../form/provide'
-import { toPxNum, getParentScroller, getScrollTop } from '../utils/elements'
+import { toPxNum } from '../utils/elements'
 import type { Ref, ComputedRef } from 'vue'
 import type { ValidateTriggers } from './props'
 import type { SelectProvider } from './provide'
@@ -342,7 +342,7 @@ export default defineComponent({
     }
 
     const detectBoundary = () => {
-      const {body} = document
+      const { body } = document
       nextTick(() => {
         const { offsetTop: menuOffsetTop, offsetHeight: menuOffsetHeight } = menuEl.value?.parentElement as HTMLElement
         const menuOffsetBottom = body.scrollHeight - menuOffsetHeight - menuOffsetTop
