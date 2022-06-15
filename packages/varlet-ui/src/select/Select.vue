@@ -77,7 +77,7 @@
         </div>
 
         <template #menu>
-          <div :class="n('scroller')">
+          <div ref="menuEl" :class="n('scroller')">
             <slot />
           </div>
         </template>
@@ -123,7 +123,7 @@ import { props } from './props'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useOptions } from './provide'
 import { useForm } from '../form/provide'
-import { toPxNum } from '../utils/elements'
+import { toPxNum, getParentScroller, getScrollTop } from '../utils/elements'
 import type { Ref, ComputedRef } from 'vue'
 import type { ValidateTriggers } from './props'
 import type { SelectProvider } from './provide'
@@ -365,6 +365,39 @@ export default defineComponent({
     bindOptions(selectProvider)
     call(bindForm, selectProvider)
 
+    const menuEl: Ref<HTMLElement | null> = ref(null)
+
+    let scroller: HTMLElement | Window
+
+    watch(
+      () => isFocus.value,
+      (newValue) => {
+        if (newValue) {
+          nextTick(() => {
+            scroller = getParentScroller(menuEl.value?.parentElement as HTMLDivElement)
+
+            const { offsetTop: menuTop, offsetHeight: menuHeight } = menuEl.value?.parentElement as HTMLElement
+            const menuBottom = document.body.scrollHeight - menuHeight - menuTop
+
+            const scrollerTop = scroller === window ? 0 : (scroller as HTMLElement).offsetTop
+            const scrollerBottom =
+              scroller === window
+                ? 0
+                : document.body.scrollHeight -
+                  (scroller as HTMLElement).offsetHeight -
+                  (scroller as HTMLElement).offsetTop
+
+            const top = menuTop - scrollerTop
+            const bottom = menuBottom - scrollerBottom
+            console.log(top, bottom)
+
+            if (top < 0) offsetY.value = 0
+            // if (bottom < 0) offsetY.value = '-36.2vw'
+          })
+        }
+      }
+    )
+
     return {
       wrapEl,
       offsetY,
@@ -373,6 +406,8 @@ export default defineComponent({
       formDisabled: form?.disabled,
       label,
       labels,
+      menuEl,
+      scroller,
       n,
       classes,
       computePlaceholderState,
