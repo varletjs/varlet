@@ -273,7 +273,7 @@ const value = ref('')
 | `v-model` | 绑定的值 | _any \| any[]_ | `-` |
 | `placeholder` | 占位符 | _string_ | `-` |
 | `multiple` | 是否开启多选 | _boolean_ | `false` |
-| `offset-y` | 下拉菜单的垂直偏移量 | _string \| number_ | `true` |
+| `offset-y` | 下拉菜单的垂直偏移量 | _string \| number_ | `0` |
 | `chip` | 是否使用纸片风格(仅限多选) | _boolean_ | `false` |
 | `line` | 是否显示分割线 | _boolean_ | `true` |
 | `hint` | 是否使用占位符作为提示 | _boolean_ | `true` |

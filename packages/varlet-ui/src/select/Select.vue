@@ -157,6 +157,7 @@ export default defineComponent({
       // expose
       resetValidation,
     } = useValidation()
+    const menuEl: Ref<HTMLElement | null> = ref(null)
 
     const computeLabel = () => {
       const { multiple, modelValue } = props
@@ -232,6 +233,7 @@ export default defineComponent({
 
       call(onFocus)
       validateWithTrigger('onFocus')
+      detectBoundary()
     }
 
     const handleBlur = () => {
@@ -322,6 +324,7 @@ export default defineComponent({
       wrapWidth.value = getWrapWidth()
       offsetY.value = getOffsetY() + toPxNum(props.offsetY)
       isFocus.value = true
+      detectBoundary()
     }
 
     // expose
@@ -336,6 +339,23 @@ export default defineComponent({
     const reset = () => {
       call(props['onUpdate:modelValue'], props.multiple ? [] : undefined)
       resetValidation()
+    }
+
+    const detectBoundary = () => {
+      const {body} = document
+      nextTick(() => {
+        const { offsetTop: menuOffsetTop, offsetHeight: menuOffsetHeight } = menuEl.value?.parentElement as HTMLElement
+        const menuOffsetBottom = body.scrollHeight - menuOffsetHeight - menuOffsetTop
+
+        const scrollerOffsetTop = body.offsetTop
+        const scrollerOffsetBottom = body.scrollHeight - body.offsetHeight - body.offsetTop
+
+        const top = menuOffsetTop - scrollerOffsetTop
+        const bottom = menuOffsetBottom - scrollerOffsetBottom
+
+        if (top < 0) offsetY.value = getOffsetY()
+        if (bottom < 0) offsetY.value -= (menuEl.value?.parentElement as HTMLElement).offsetHeight - getOffsetY()
+      })
     }
 
     watch(
@@ -365,39 +385,6 @@ export default defineComponent({
     bindOptions(selectProvider)
     call(bindForm, selectProvider)
 
-    const menuEl: Ref<HTMLElement | null> = ref(null)
-
-    let scroller: HTMLElement | Window
-
-    watch(
-      () => isFocus.value,
-      (newValue) => {
-        if (newValue) {
-          nextTick(() => {
-            scroller = getParentScroller(menuEl.value?.parentElement as HTMLDivElement)
-
-            const { offsetTop: menuTop, offsetHeight: menuHeight } = menuEl.value?.parentElement as HTMLElement
-            const menuBottom = document.body.scrollHeight - menuHeight - menuTop
-
-            const scrollerTop = scroller === window ? 0 : (scroller as HTMLElement).offsetTop
-            const scrollerBottom =
-              scroller === window
-                ? 0
-                : document.body.scrollHeight -
-                  (scroller as HTMLElement).offsetHeight -
-                  (scroller as HTMLElement).offsetTop
-
-            const top = menuTop - scrollerTop
-            const bottom = menuBottom - scrollerBottom
-            console.log(top, bottom)
-
-            if (top < 0) offsetY.value = 0
-            // if (bottom < 0) offsetY.value = '-36.2vw'
-          })
-        }
-      }
-    )
-
     return {
       wrapEl,
       offsetY,
@@ -407,7 +394,6 @@ export default defineComponent({
       label,
       labels,
       menuEl,
-      scroller,
       n,
       classes,
       computePlaceholderState,
