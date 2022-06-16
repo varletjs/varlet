@@ -276,7 +276,7 @@ const value = ref('')
 | `v-model` | The value of the binding | _any \| any[]_ | `-` |
 | `placeholder` | placeholder | _string_ | `-` |
 | `multiple` | Whether to enable multiple selection | _boolean_ | `false` |
-| `offset-y` | The vertical offset of the drop-down menu | _string \| number_ | `true` |
+| `offset-y` | The vertical offset of the drop-down menu | _string \| number_ | `0` |
 | `chip` | Whether to use chip style (multiple choices only) | _boolean_ | `false` |
 | `line` | Whether to display a dividing line | _boolean_ | `true` |
 | `hint` | Whether to use placeholders as prompts | _boolean_ | `true` |
