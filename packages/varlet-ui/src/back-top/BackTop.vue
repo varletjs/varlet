@@ -7,6 +7,7 @@
         right: toSizeUnit(right),
         bottom: toSizeUnit(bottom),
       }"
+      v-bind="$attrs"
       @click.stop="click"
     >
       <slot>
@@ -35,6 +36,7 @@ export default defineComponent({
     VarButton,
     VarIcon,
   },
+  inheritAttrs: false,
   props,
   setup(props) {
     const show: Ref<boolean> = ref(false)
