@@ -1,3 +1,18 @@
+## [1.27.13](https://github.com/varletjs/varlet/compare/v1.27.12...v1.27.13) (2022-06-17)
+
+
+### Bug Fixes
+
+* **back-top:** add inheritAttrs ([cce45e2](https://github.com/varletjs/varlet/commit/cce45e269cd431593e3703e20a8ae592cf20d7a1))
+* **ui/types:** icon onClick's type ([d18d0ca](https://github.com/varletjs/varlet/commit/d18d0ca1de53b0b03f10d6daffc97711912fc141))
+
+
+### Features
+
+* **ui/select:** add boundary detection in select ([#606](https://github.com/varletjs/varlet/issues/606)) ([27eb0ea](https://github.com/varletjs/varlet/commit/27eb0eaf249c7b7faa8dad0dec47fa27e2a75c49))
+
+
+
 ## [1.27.12](https://github.com/varletjs/varlet/compare/v1.27.11...v1.27.12) (2022-06-10)
 
 
