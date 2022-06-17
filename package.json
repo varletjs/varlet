@@ -32,7 +32,9 @@
       "packages/varlet-ui/src/*/__tests__/**",
       "packages/varlet-ui/.varlet/**",
       "packages/varlet-ui-playground/public/**",
-      "packages/varlet-ui-playground/dist/**"
+      "packages/varlet-ui-playground/dist/**",
+      "packages/varlet-shared/lib/**",
+      "packages/varlet-shared/es/**"
     ],
     "extends": [
       "@varlet"

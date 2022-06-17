@@ -155,6 +155,12 @@ importers:
       highlight.js: 10.7.3
       markdown-it: 12.3.0
 
+  packages/varlet-shared:
+    specifiers:
+      typescript: ^4.4.4
+    devDependencies:
+      typescript: 4.5.5
+
   packages/varlet-stylelint-config:
     specifiers:
       stylelint-config-prettier: ^8.0.2
@@ -9900,7 +9906,7 @@ packages:
     dev: false
 
   /vary/1.1.2:
-    resolution: {integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=}
+    resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
     dev: true
 

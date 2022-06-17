@@ -31,7 +31,6 @@
     "dev": "tsc --watch",
     "build": "tsc"
   },
-  "gitHead": "ee9c3866bedad96c86365b0f9888a3a6bb781b1f",
   "dependencies": {
     "@babel/core": "^7.14.8",
     "@babel/helper-plugin-utils": "^7.14.5",
