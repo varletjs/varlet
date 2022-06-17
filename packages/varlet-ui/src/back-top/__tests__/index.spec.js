@@ -1,68 +1,73 @@
-import example from '../example'
 import BackTop from '..'
 import VarBackTop from '../BackTop'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockScrollTo } from '../../utils/jest'
 
+mockScrollTo(HTMLDivElement)
+
+const clickHandle = jest.fn()
+const Wrapper = {
+  components: {
+    [VarBackTop.name]: VarBackTop,
+  },
+  methods: {
+    clickHandle,
+  },
+  template: `
+    <div class="back-top__test" style="height: 300px; overflow: auto">
+      <div style="height: 5000px"></div>
+      <var-back-top
+        target=".back-top__test"
+        :duration="500"
+        visibility-height="500"
+        right="80"
+        bottom="80"
+        @click="clickHandle"
+      />
+    </div>
+  `,
+}
+
 test('test backTop plugin', () => {
   const app = createApp({}).use(BackTop)
   expect(app.component(BackTop.name)).toBeTruthy()
 })
 
-test('test backTop example', () => {
-  const wrapper = mount(example, { attachTo: document.body })
+describe('test backTop props', () => {
+  test('test visibilityHeight prop', async () => {
+    const wrapper = mount(Wrapper, { attachTo: document.body })
 
-  expect(wrapper.html()).toMatchSnapshot()
+    const backTopEl = document.querySelector('.var-back-top')
+    expect(backTopEl.classList.contains('var-back-top--active')).toBe(false)
 
-  wrapper.unmount()
+    wrapper.element.scrollTop = 600
+    await wrapper.trigger('scroll')
+    expect(backTopEl.classList.contains('var-back-top--active')).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  test('test position prop', async () => {
+    const wrapper = mount(Wrapper, { attachTo: document.body })
+    const backTopEl = document.querySelector('.var-back-top')
+
+    expect(backTopEl.style.right).toBe('80px')
+    expect(backTopEl.style.bottom).toBe('80px')
+
+    wrapper.unmount()
+  })
 })
 
-test('test backTop props', async () => {
-  mockScrollTo(HTMLDivElement)
-
-  const template = `
-    <div class="back-top__test" style="height: 300px; overflow: auto">
-      <div style="height: 5000px"></div>
-      <var-back-top target=".back-top__test" :duration="500" visibility-height="500" @click="clickHandle" />
-    </div>
-  `
-  const clickHandle = jest.fn()
-
-  const wrapper = mount(
-    {
-      components: {
-        [VarBackTop.name]: VarBackTop,
-      },
-      methods: {
-        clickHandle,
-      },
-      template,
-    },
-    { attachTo: document.body }
-  )
-
-  await delay(0)
-
+test('test backTop event', async () => {
+  const wrapper = mount(Wrapper, { attachTo: document.body })
   const backTopEl = document.querySelector('.var-back-top')
 
-  expect(backTopEl.classList.contains('var-back-top--active')).toBe(false)
-
   wrapper.element.scrollTop = 600
-
   await wrapper.trigger('scroll')
-
-  await delay(500)
-
-  expect(backTopEl.classList.contains('var-back-top--active')).toBe(true)
-
   await backTopEl.click()
-
   await delay(500)
 
   expect(wrapper.element.scrollTop).toBeLessThan(1)
-
   expect(clickHandle).toHaveBeenCalledTimes(1)
-
-  wrapper.unmount()
 })
