@@ -3,7 +3,7 @@ import VarSnackbar from './Snackbar.vue'
 import context from '../context'
 import { reactive, TransitionGroup } from 'vue'
 import { mountInstance } from '../utils/components'
-import { isNumber, isPlainObject, isString, toNumber } from '../utils/shared'
+import { isNumber, isPlainObject, isString, toNumber } from '@varlet/shared'
 import type { LoadingType, LoadingSize } from '../loading/props'
 import type { App, Component, TeleportProps } from 'vue'
 

@@ -18,7 +18,7 @@
 import VarButton from '../../button'
 import VarIcon from '../../icon'
 import { defineComponent, ref, computed, watch } from 'vue'
-import { toNumber } from '../../utils/shared'
+import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../../utils/components'
 import { pack } from '../../locale'
 import type { Ref, ComputedRef, PropType } from 'vue'

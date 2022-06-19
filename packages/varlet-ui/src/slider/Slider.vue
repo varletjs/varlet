@@ -71,7 +71,7 @@ import { defineComponent, ref, onMounted, computed, reactive, nextTick, watch } 
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import { getLeft, multiplySizeUnit } from '../utils/elements'
-import { isArray, isNumber, toNumber } from '../utils/shared'
+import { isArray, isNumber, toNumber } from '@varlet/shared'
 import { props } from './props'
 import VarFormDetails from '../form-details'
 import type { Ref, ComputedRef, UnwrapRef } from 'vue'

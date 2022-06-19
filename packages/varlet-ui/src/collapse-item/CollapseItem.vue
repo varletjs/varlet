@@ -31,7 +31,7 @@
 <script lang="ts">
 import { defineComponent, ref, nextTick, watch, computed } from 'vue'
 import { requestAnimationFrame } from '../utils/elements'
-import { isArray } from '../utils/shared'
+import { isArray } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { useCollapse } from './provide'
 import { props } from './props'
