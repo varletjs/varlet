@@ -1,3 +1,5 @@
+import { removeItem } from '@varlet/shared'
+
 export interface CacheInstance<T> {
   cache: T[]
 
@@ -24,15 +26,6 @@ export const isHTMLSupportVideo = (val: string | undefined | null) => {
   }
 
   return val.startsWith('data:video') || /\.(mp4|webm|ogg)$/.test(val)
-}
-
-export const removeItem = (arr: Array<unknown>, item: unknown) => {
-  if (arr.length) {
-    const index: number = arr.indexOf(item)
-    if (index > -1) {
-      return arr.splice(index, 1)
-    }
-  }
 }
 
 export const createCache = <T>(max: number): CacheInstance<T> => {
