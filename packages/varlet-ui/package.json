@@ -34,6 +34,12 @@
   "bugs": {
     "url": "https://github.com/varletjs/varlet/issues"
   },
+  "sideEffects": [
+    "es/**/style/*",
+    "lib/**/style/*",
+    "*.css",
+    "*.less"
+  ],
   "scripts": {
     "dev": "varlet-cli dev",
     "build": "varlet-cli build",
