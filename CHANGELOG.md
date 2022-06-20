@@ -1,3 +1,17 @@
+## [1.27.14](https://github.com/varletjs/varlet/compare/v1.27.13...v1.27.14) (2022-06-20)
+
+
+### Bug Fixes
+
+* add side-effects for tree shaking ([4fa8559](https://github.com/varletjs/varlet/commit/4fa85597ce0c7ed7c7335c17732cfc39dc7d6abe))
+
+
+### Features
+
+* add new package varlet-shared ([939d945](https://github.com/varletjs/varlet/commit/939d945d7a7b45b01b9784d22043c302b1753b4c))
+
+
+
 ## [1.27.13](https://github.com/varletjs/varlet/compare/v1.27.12...v1.27.13) (2022-06-17)
 
 
