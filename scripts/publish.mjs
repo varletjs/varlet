@@ -1,10 +1,7 @@
 import { buildCli, buildIcons, buildShared, buildUI, runTask } from './build.mjs'
 
-(async () => {
+;(async () => {
   await runTask('shared', buildShared)
-  await Promise.all([
-    runTask('cli', buildCli),
-    runTask('icons', buildIcons)
-  ])
+  await Promise.all([runTask('cli', buildCli), runTask('icons', buildIcons)])
   await runTask('ui', () => buildUI(false))
 })()
