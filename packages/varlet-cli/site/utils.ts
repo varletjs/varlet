@@ -4,7 +4,6 @@ import { formatStyleVars } from './components/utils/elements'
 
 export * from './components/utils/components'
 export * from './components/utils/elements'
-export * from './components/utils/shared'
 
 export type StyleVars = Record<string, string>
 
