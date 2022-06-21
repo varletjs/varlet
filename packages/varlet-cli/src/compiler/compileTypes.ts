@@ -1,6 +1,6 @@
 import { ensureDir, readdir, writeFile, writeFileSync } from 'fs-extra'
 import { TYPES_DIR, UI_PACKAGE_JSON } from '../shared/constant'
-import { bigCamelize } from '../shared/fsUtils'
+import { bigCamelize } from '@varlet/shared'
 import { resolve, relative } from 'path'
 import { getVarletConfig } from '../config/varlet.config'
 import { get } from 'lodash'
