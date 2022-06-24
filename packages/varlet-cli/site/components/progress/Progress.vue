@@ -60,7 +60,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
-import { toNumber } from '../utils/shared'
+import { toNumber } from '@varlet/shared'
 
 export default defineComponent({
   name: 'VarSiteProgress',

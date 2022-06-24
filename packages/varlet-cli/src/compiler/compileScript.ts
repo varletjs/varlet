@@ -1,5 +1,6 @@
 import { transformAsync } from '@babel/core'
-import { bigCamelize, replaceExt } from '../shared/fsUtils'
+import { bigCamelize } from '@varlet/shared'
+import { replaceExt } from '../shared/fsUtils'
 import { writeFileSync, readFileSync, removeSync, writeFile } from 'fs-extra'
 import {
   extractStyleDependencies,

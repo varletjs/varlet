@@ -1,6 +1,6 @@
 import { hours24, hoursAmpm } from './props'
 import type { AmPm, AllowedTime } from './props'
-import { toNumber } from '../utils/shared'
+import { toNumber } from '@varlet/shared'
 
 type DisableProps = {
   time: number

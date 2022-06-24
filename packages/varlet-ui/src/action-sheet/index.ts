@@ -1,7 +1,7 @@
 import VarActionSheet from './ActionSheet.vue'
 import type { App, TeleportProps } from 'vue'
 import { nextTick, reactive } from 'vue'
-import { inBrowser } from '../utils/shared'
+import { inBrowser } from '@varlet/shared'
 import { mountInstance } from '../utils/components'
 
 export type ActionSheetActions = ActionItem | 'close'

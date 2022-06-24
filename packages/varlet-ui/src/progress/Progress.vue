@@ -56,7 +56,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
-import { toNumber } from '../utils/shared'
+import { toNumber } from '@varlet/shared'
 import { toSizeUnit, multiplySizeUnit, toPxNum } from '../utils/elements'
 import { createNamespace } from '../utils/components'
 

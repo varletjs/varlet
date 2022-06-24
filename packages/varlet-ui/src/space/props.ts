@@ -1,4 +1,4 @@
-import { isArray, isNumber, isString } from '../utils/shared'
+import { isArray, isNumber, isString } from '@varlet/shared'
 import type { PropType } from 'vue'
 
 export type SpaceAlign = 'stretch' | 'center' | 'start' | 'end' | 'baseline' | 'initial' | 'inherit'

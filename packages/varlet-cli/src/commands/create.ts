@@ -1,5 +1,5 @@
 import logger from '../shared/logger'
-import { bigCamelize } from '../shared/fsUtils'
+import { bigCamelize } from '@varlet/shared'
 import { outputFile, pathExistsSync } from 'fs-extra'
 import { resolve } from 'path'
 import { DOCS_DIR_NAME, EXAMPLE_DIR_NAME, LOCALE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from '../shared/constant'

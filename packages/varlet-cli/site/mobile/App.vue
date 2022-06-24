@@ -76,7 +76,6 @@ import config from '@config'
 import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import {
-  bigCamelize,
   getBrowserThemes,
   inIframe,
   isPhone,
@@ -85,6 +84,7 @@ import {
   watchLang,
   watchThemes,
 } from '../utils'
+import { bigCamelize } from '@varlet/shared'
 import { get } from 'lodash-es'
 
 export default defineComponent({

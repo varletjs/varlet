@@ -16,6 +16,8 @@ packages/varlet-ui/types/global.d.ts
 
 packages/varlet-ui-playground/dist/**
 packages/varlet-ui-playground/public/**
+packages/varlet-shared/lib/**
+packages/varlet-shared/es/**
 
 **/package.json
 *.md

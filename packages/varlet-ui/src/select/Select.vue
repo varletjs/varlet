@@ -118,7 +118,7 @@ import VarMenu from '../menu'
 import VarChip from '../chip'
 import VarFormDetails from '../form-details'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
-import { isArray, isEmpty } from '../utils/shared'
+import { isArray, isEmpty } from '@varlet/shared'
 import { props } from './props'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useOptions } from './provide'
@@ -347,14 +347,9 @@ export default defineComponent({
         const { offsetTop: menuOffsetTop, offsetHeight: menuOffsetHeight } = menuEl.value?.parentElement as HTMLElement
         const menuOffsetBottom = body.scrollHeight - menuOffsetHeight - menuOffsetTop
 
-        const scrollerOffsetTop = body.offsetTop
-        const scrollerOffsetBottom = body.scrollHeight - body.offsetHeight - body.offsetTop
-
-        const top = menuOffsetTop - scrollerOffsetTop
-        const bottom = menuOffsetBottom - scrollerOffsetBottom
-
-        if (top < 0) offsetY.value = getOffsetY()
-        if (bottom < 0) offsetY.value -= (menuEl.value?.parentElement as HTMLElement).offsetHeight - getOffsetY()
+        if (menuOffsetTop < 0) offsetY.value = getOffsetY()
+        if (menuOffsetBottom < 0)
+          offsetY.value -= (menuEl.value?.parentElement as HTMLElement).offsetHeight - getOffsetY()
       })
     }
 

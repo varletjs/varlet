@@ -17,11 +17,11 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
+import { toNumber } from '@varlet/shared'
 import { computed, defineComponent } from 'vue'
 import { props } from './props'
-import { toNumber } from '../utils/shared'
-import type { ComputedRef } from 'vue'
 import { createNamespace } from '../utils/components'
+import type { ComputedRef } from 'vue'
 
 const { n, classes } = createNamespace('badge')
 
