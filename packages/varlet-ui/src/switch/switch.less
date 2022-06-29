@@ -28,6 +28,8 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     align-items: center;
     justify-content: center;
+    height: 24px;
+    width: 40px;
   }
 
   &--disable {
@@ -39,12 +41,15 @@
     background: var(--switch-track-background);
     transition: background-color 0.25s;
     filter: opacity(0.6);
+    height: 14.4px;
+    width: 38px;
+    border-radius: calc(20px * 2 / 3);
 
-    &-active {
+    &--active {
       background-color: var(--switch-track-active-background);
     }
 
-    &-error {
+    &--error {
       background-color: var(--switch-track-error-background) !important;
     }
   }
@@ -58,6 +63,13 @@
     border-radius: 50%;
     overflow: hidden;
     transition: 0.3s var(--cubic-bezier);
+    width: 40px;
+    height: 40px;
+    left: -10px;
+
+    &--active {
+      left: 10px;
+    }
   }
 
   &__handle {
@@ -68,12 +80,14 @@
     justify-content: center;
     color: var(--switch-handle-color);
     transition: background-color 0.25s;
+    width: 20px;
+    height: 20px;
 
-    &-active {
+    &--active {
       background-color: var(--switch-handle-active-background);
     }
 
-    &-error {
+    &--error {
       background-color: var(--switch-handle-error-background) !important;
     }
   }

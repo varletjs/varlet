@@ -3,41 +3,49 @@
 ### Intro
 Provides two kinds of function and component call mode support cascading mode at the same time, can handle multilevel linkage.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Picker } from '@varlet/ui'
-
-createApp().use(Picker)
-```
-
-### Scoped Install
-
-```js
-import { Picker } from '@varlet/ui'
-
-export default {
-  components: {
-    [Picker.Component.name]: Picker
-  }
-}
-```
-
 ## Function Call
+
+### Single-column Picker
+
+```html
+<script setup>
+import { Picker } from '@varlet/ui'
+
+const columns = [Array.from({ length: 20 }).map((_, index) => index)]
+
+const picker = async () => {
+  await Picker(columns)
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">Single Column Picker</var-button>
+</template>
+```
 
 ### Multi-column Picker
 
 A two-dimensional array is passed in, and each entry of the array is the contents of each column.
 Returns the user triggered status, selected text, and selected index.
 
-```js
+```html
+<script setup>
+import { Picker } from '@varlet/ui'
+
 const columns = [
   Array.from({ length: 20 }).map((_, index) => index),
   Array.from({ length: 20 }).map((_, index) => index),
   Array.from({ length: 20 }).map((_, index) => index)
 ]
-const { state, texts, indexes } = await Picker(columns)
+
+const picker = async () => {
+  const { state, texts, indexes } = await Picker(columns)
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">Multiple Column Picker</var-button>
+</template>
 ```
 
 ### Cascade Picker
@@ -45,88 +53,308 @@ const { state, texts, indexes } = await Picker(columns)
 Passing in a `cascade` attribute starts cascading.
 Built-in component library provides a three-level linkage between provinces and municipalities, import `area.json`.
 
-```js
+```html
+<script setup>
+import { Picker } from '@varlet/ui'
 import columns from '@varlet/ui/json/area.json'
 
-const { state, texts, indexes } = await Picker({
-  cascade: true,
-  columns
-})
+const picker = async () => {
+  const { state, texts, indexes } = await Picker({
+    cascade: true,
+    columns
+  })
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">Cascade Column Picker</var-button>
+</template>
+```
+
+### Text Formatter
+
+Picker passes in a `textFormatter` attribute to customize the text.
+`textFormatter` accepts two parameters. The first parameter `text` is the current text, and the second parameter
+`columnIndex` is the subscript of the column where the current text is located.
+The following is the case of year month day selection
+
+```html
+<script setup>
+import { Picker } from '@varlet/ui'
+
+const genCounts = length => Array.from({ length }, (_, index) => index + 1)
+
+const months = genCounts(12)
+const leapYearFebruaryDates = genCounts(29)
+const februaryDates = genCounts(28)
+const oddMonthDates = genCounts(31)
+const evenMonthDates = genCounts(30)
+
+const isOddMonth = month => [1, 3, 5, 7, 8, 10, 12].includes(month)
+
+const isLeapYear = year => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+
+const genDates = (year, month) => {
+  if (isLeapYear(year) && month === 2) {
+    return leapYearFebruaryDates
+  }
+
+  if (!isLeapYear(year) && month === 2) {
+    return februaryDates
+  }
+
+  if (isOddMonth(month)) {
+    return oddMonthDates
+  }
+
+  return evenMonthDates
+}
+
+const genColumns = (startYear, endYear) => {
+  const columns = []
+
+  for (let year = startYear; year < endYear; year++) {
+    columns.push({
+      text: year,
+      children: months.map((month) => {
+        return {
+          text: month,
+          children: genDates(year, month).map(date => ({ text: date }))
+        }
+      })
+    })
+  }
+
+  return columns
+}
+
+const columns = genColumns(1970, 2100)
+
+const textFormatter = (text, columnIndex) => {
+  if (columnIndex === 0) return `${text} YEAR`
+  else if (columnIndex === 1) return `${text} MONTH`
+  else if (columnIndex === 2) return `${text} DATE`
+}
+
+const picker = async () => {
+  const { state, texts, indexes } = await Picker({
+    cascade: true,
+    columns,
+    textFormatter,
+  })
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">Text Formatter</var-button>
+</template>
+```
+
+### Mapping of values
+
+```html
+<script setup>
+import { Picker, Snackbar } from '@varlet/ui'
+
+const rawColumns = [
+  [
+    { label: 'Ember Spirit', id: 1 },
+    { label: 'Storm Spirit', id: 2 },
+    { label: 'Earth Spirit', id: 3 },
+    { label: 'Void Spirit', id: 4 },
+  ],
+  [
+    { label: 'Ember Spirit', id: 1 },
+    { label: 'Storm Spirit', id: 2 },
+    { label: 'Earth Spirit', id: 3 },
+    { label: 'Void Spirit', id: 4 },
+  ],
+  [
+    { label: 'Ember Spirit', id: 1 },
+    { label: 'Storm Spirit', id: 2 },
+    { label: 'Earth Spirit', id: 3 },
+    { label: 'Void Spirit', id: 4 },
+  ],
+]
+
+const normalizedColumns = rawColumns.map((column) => column.map(option => option.label))
+
+const handleChange = (_, [i1, i2, i3]) => {
+  const [c1, c2, c3] = rawColumns
+  const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
+  Snackbar(ids.toString())
+}
+
+const picker = async () => {
+  const { state, texts, indexes } = await Picker({
+    columns: normalizedColumns,
+    onChange: handleChange
+  })
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">Mapping of values</var-button>
+</template>
 ```
 
 ## Component Call
 
+### Single-column Picker
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([Array.from({ length: 20 }).map((_, index) => index)])
+</script>
+
+<template>
+  <var-picker :columns="columns" />
+</template>
+```
+
 ### Multi-column Picker
 
 ```html
-<var-picker :columns="columns" />
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const columns = ref([
-      Array.from({ length: 20 }).map((_, index) => index),
-      Array.from({ length: 20 }).map((_, index) => index),
-      Array.from({ length: 20 }).map((_, index) => index),
-    ])
+const columns = ref([
+  Array.from({ length: 20 }).map((_, index) => index),
+  Array.from({ length: 20 }).map((_, index) => index),
+  Array.from({ length: 20 }).map((_, index) => index)
+])
+</script>
 
-    return { columns }
-  }
-}
+<template>
+  <var-picker :columns="columns" />
+</template>
 ```
 
 ### Cascade Picker
 
 ```html
-<var-picker cascade :columns="columns" />
-```
-
-```js
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const columns = ref([
-      {
-        text: '北京市',
-        children: [
-          {
-            text: '市辖区'
-          }
-        ]
-      },
-      {
-        text: '河北省',
-        children: [
-          {
-            text: '石家庄市'
-          }
-        ]
-      }
-    ])
-
-    return { columns }
-  }
-}
-```
-
-### The three-level linkage between the provincial and municipal levels
-The component library provides complete provincial information and can be used directly.
-
-```js
+<script setup>
 import { ref } from 'vue'
 import area from '@varlet/ui/json/area.json'
 
-export default {
-  setup() {
-    const columns = ref(area)
+const columns = ref(area)
+</script>
 
-    return { columns }
+<template>
+  <var-picker cascade :columns="columns" />
+</template>
+```
+
+### Text Formatter
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const genCounts = length => Array.from({ length }, (_, index) => index + 1)
+
+const months = genCounts(12)
+const leapYearFebruaryDates = genCounts(29)
+const februaryDates = genCounts(28)
+const oddMonthDates = genCounts(31)
+const evenMonthDates = genCounts(30)
+
+const isOddMonth = month => [1, 3, 5, 7, 8, 10, 12].includes(month)
+
+const isLeapYear = year => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+
+const genDates = (year, month) => {
+  if (isLeapYear(year) && month === 2) {
+    return leapYearFebruaryDates
   }
+
+  if (!isLeapYear(year) && month === 2) {
+    return februaryDates
+  }
+
+  if (isOddMonth(month)) {
+    return oddMonthDates
+  }
+
+  return evenMonthDates
 }
+
+const genColumns = (startYear, endYear) => {
+  const columns = []
+
+  for (let year = startYear; year < endYear; year++) {
+    columns.push({
+      text: year,
+      children: months.map((month) => {
+        return {
+          text: month,
+          children: genDates(year, month).map(date => ({ text: date }))
+        }
+      })
+    })
+  }
+
+  return columns
+}
+
+const columns = ref(genColumns(1970, 2100))
+
+const textFormatter = (text, columnIndex) => {
+  if (columnIndex === 0) return `${text} YEAR`
+  else if (columnIndex === 1) return `${text} MONTH`
+  else if (columnIndex === 2) return `${text} DATE`
+}
+</script>
+
+<template>
+  <var-picker cascade :columns="columns" :text-formatter="textFormatter" />
+</template>
+```
+
+### Mapping of values
+
+```html
+<script setup>
+import { ref } from 'vue' 
+import { Snackbar } from '@varlet/ui'
+
+const rawColumns = [
+  [
+    { label: 'Ember Spirit', id: 1 },
+    { label: 'Storm Spirit', id: 2 },
+    { label: 'Earth Spirit', id: 3 },
+    { label: 'Void Spirit', id: 4 },
+  ],
+  [
+    { label: 'Ember Spirit', id: 1 },
+    { label: 'Storm Spirit', id: 2 },
+    { label: 'Earth Spirit', id: 3 },
+    { label: 'Void Spirit', id: 4 },
+  ],
+  [
+    { label: 'Ember Spirit', id: 1 },
+    { label: 'Storm Spirit', id: 2 },
+    { label: 'Earth Spirit', id: 3 },
+    { label: 'Void Spirit', id: 4 },
+  ]
+]
+
+const normalizedColumns = rawColumns.map(column => column.map(option => option.label))
+
+const columns = ref(normalizedColumns)
+
+const handleChange = (_, [i1, i2, i3]) => {
+  const [c1, c2, c3] = rawColumns
+  const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
+  Snackbar(ids.toString())
+}
+</script>
+
+<template>
+  <var-picker :columns="columns" @change="handleChange" />
+</template>
 ```
 
 ## API
@@ -140,6 +368,8 @@ export default {
 | `text-key` | The attribute key of the text | _string_ | `text` |
 | `toolbar` | Whether to display the top toolbar | _string_ | `true` |
 | `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
+| `cascade-initial-indexes` | List of initialization indices for cascade mode | _number[]_ | `-` |
+| `text-formatter` | Text formatter | _(text: any, columnIndex: number) => any_ | `text => text` |
 | `option-height` | Option height(px rem) | _string \| number_ | `44` |
 | `option-count` | Number of options visible | _string \| number_ | `6` |
 | `confirm-button-text` | Confirm button text | _string_ | `Confirm` |
@@ -156,6 +386,8 @@ export default {
 | `textKey` | The attribute key of the text | _string_ | `text` |
 | `toolbar` | Whether to display the top toolbar | _string_ | `true` |
 | `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
+| `cascadeInitialIndexes` | List of initialization indices for cascade mode | _number[]_ | `-` |
+| `textFormatter` | Text formatter | _(text: any, columnIndex: number) => any_ | `text => text` |
 | `optionHeight` | Option height | _string \| number_ | `44` |
 | `optionCount` | Number of options visible | _string \| number_ | `6` |
 | `confirmButtonText` | Confirm button text | _string_ | `Confirm` |

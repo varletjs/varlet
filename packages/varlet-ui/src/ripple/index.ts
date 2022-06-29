@@ -154,11 +154,23 @@ function unmounted(el: RippleHTMLElement) {
 }
 
 function updated(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>) {
-  el._ripple = {
-    ...el._ripple,
-    ...(binding.value ?? {}),
+  const newBinding = {
     touchmoveForbid: binding.value?.touchmoveForbid ?? context.touchmoveForbid,
-    tasker: null,
+    color: binding.value?.color,
+    disabled: binding.value?.disabled,
+  }
+
+  const diff =
+    newBinding.touchmoveForbid !== el._ripple?.touchmoveForbid ||
+    newBinding.color !== el._ripple?.color ||
+    newBinding.disabled !== el._ripple?.disabled
+
+  if (diff) {
+    el._ripple = {
+      tasker: el._ripple?.tasker,
+      removeRipple: el._ripple?.removeRipple,
+      ...newBinding,
+    }
   }
 }
 

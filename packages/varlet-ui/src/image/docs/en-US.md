@@ -6,131 +6,156 @@ Components provide more convenient size, fill mode, rounded corner Settings,
 ripple effect enhanced picture click interactive experience.
 Supports `Lazy load`, `loading images`, `error images`, and default Settings for applying Lazy instructions.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Image } from '@varlet/ui'
-
-createApp().use(Image)
-```
-
 ### Basic Use
 
 ```html
-<var-image src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+<template>
+  <var-image src="https://varlet-varletjs.vercel.app/cat.jpg" />
+</template>
 ```
 
 ### Fit Mode
 
 ```html
-<var-image width="85px" height="85px" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+<template>
+  <var-space :size="[20, 20]">
+    <var-image
+      width="85px"
+      height="85px"
+      src="https://varlet-varletjs.vercel.app/cat.jpg"
+    />
+    <var-image 
+      width="85px" 
+      height="85px"
+      fit="cover" 
+      src="https://varlet-varletjs.vercel.app/cat.jpg" 
+    />
 
-<var-image 
-  width="85px" 
-  height="85px"
-  fit="cover" 
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
-/>
+    <var-image 
+      width="85px"
+      height="85px" 
+      fit="contain"
+      src="https://varlet-varletjs.vercel.app/cat.jpg" 
+    />
 
-<var-image 
-  width="85px"
-  height="85px" 
-  fit="contain"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
-/>
+    <var-image 
+      width="85px"
+      height="85px"
+      fit="none"
+      src="https://varlet-varletjs.vercel.app/cat.jpg"
+    />
 
-<var-image 
-  width="85px"
-  height="85px"
-  fit="none"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-/>
-
-<var-image 
-  width="85px"
-  height="85px" 
-  fit="scale-down"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
-/>
+    <var-image 
+      width="85px"
+      height="85px" 
+      fit="scale-down"
+      src="https://varlet-varletjs.vercel.app/cat.jpg" 
+    />
+  </var-space>
+</template>
 ```
 
 ### Set Radius
 
 ```html
-<var-image
-  width="85px"
-  height="85px"
-  fit="cover"
-  :radius="10"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-/>
+<template>
+  <var-space :size="[20, 20]">
+    <var-image
+      width="85px"
+      height="85px"
+      fit="cover"
+      :radius="10"
+      src="https://varlet-varletjs.vercel.app/cat.jpg"
+    />
 
-<var-image
-  width="85px"
-  height="85px"
-  fit="cover"
-  radius="50%"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-/>
+    <var-image
+      width="85px"
+      height="85px"
+      fit="cover"
+      radius="50%"
+      src="https://varlet-varletjs.vercel.app/cat.jpg"
+    />
+  </var-space>
+</template>
 ```
 
 ### Use Ripple
 
 ```html
-<var-image ripple src="https://varlet.gitee.io/varlet-ui/cat.jpg"/>
+<template>
+  <var-image
+    width="85px"
+    height="85px"
+    ripple
+    src="https://varlet-varletjs.vercel.app/cat.jpg"
+  />
+</template>
 ```
 
 ### Use LazyLoad
 
 ```html
-<var-image lazy src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+<template>
+  <var-image
+    width="85px"
+    height="85px"
+    lazy
+    src="https://varlet-varletjs.vercel.app/cat.jpg"
+  />
+</template>
 ```
 
 ### Set the lazy loading state
 
 ```html
-<var-image 
-  lazy
-  loading="https://xxx.xxx/loading.png"
-  error="https://xxx.xxx/error.png"
-  src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-/>
+<!-- playground-ignore -->
+<template>
+  <var-image 
+    lazy
+    width="85px" 
+    height="85px"
+    loading="https://xxx.xxx/loading.png"
+    error="https://xxx.xxx/error.png"
+    src="https://varlet-varletjs.vercel.app/cat.jpg"
+  />
+</template>
 ```
 
 ### Use local paths
+
 In the file `.vue`,
-the `Vue component` will not be automatically processed by the build tool like the native img module, 
+the `Vue component` will not be automatically processed by the build tool like the native img module,
 so you need to import the image resources manually.
 Here's how the different build tools are used.
 
 #### Webpack
 
 ```html
-<var-image :src="require('../../assets/logo.png')"/>
+<!-- playground-ignore -->
+<template>
+  <var-image :src="require('../../assets/logo.png')"/>
+</template>
 ```
 
 #### Vite
+
 ```html
-<var-image :src="logo"/>
-```
-
-```js
+<!-- playground-ignore -->
+<script setup>
 import logo from '../../assets/logo.png'
+</script>
 
-export default {
-  setup() {
-    return { logo }
-  }
-}
+<template>
+  <var-image :src="logo"/>
+</template>
 ```
 
 ## API
 
 ### Props
 
-| Prop | Description | Type | Default | 
-| --- | --- | --- | --- | 
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
 | `src` | Image src | _string_ | `-` |
 | `fit` | Image fit mode, optional value is `fill` `contain` `cover` `none` `scale-down` | _string_ | `fill` |
 | `alt` | Image alt text | _string_ | `-` |

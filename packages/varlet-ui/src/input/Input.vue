@@ -126,9 +126,9 @@
 <script lang="ts">
 import VarFormDetails from '../form-details'
 import VarIcon from '../icon'
-import { defineComponent, getCurrentInstance, ref, computed, nextTick } from 'vue'
+import { defineComponent, getCurrentInstance, ref, computed, nextTick, onMounted } from 'vue'
 import { props } from './props'
-import { isEmpty } from '../utils/shared'
+import { isEmpty } from '@varlet/shared'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import type { Ref, ComputedRef } from 'vue'
@@ -201,7 +201,9 @@ export default defineComponent({
     }
 
     const handleInput = (e: Event) => {
-      const { value } = e.target as HTMLInputElement
+      let { value } = e.target as HTMLInputElement
+
+      value = withTrim(value)
 
       call(props['onUpdate:modelValue'], value)
       call(props.onInput, value, e)
@@ -211,7 +213,7 @@ export default defineComponent({
     const handleChange = (e: Event) => {
       const { value } = e.target as HTMLInputElement
 
-      call(props.onChange, value, e)
+      call(props.onChange, withTrim(value), e)
       validateWithTrigger('onChange')
     }
 
@@ -238,6 +240,8 @@ export default defineComponent({
       validateWithTrigger('onClick')
     }
 
+    const withTrim = (value: string) => (props.modelModifiers.trim ? value.trim() : value)
+
     // expose
     const reset = () => {
       call(props['onUpdate:modelValue'], '')
@@ -249,7 +253,7 @@ export default defineComponent({
 
     // expose
     const focus = () => {
-      ;(el.value as HTMLInputElement).focus()
+      ;(el.value as HTMLInputElement)?.focus()
     }
 
     // expose
@@ -264,6 +268,10 @@ export default defineComponent({
     }
 
     call(bindForm, inputProvider)
+
+    onMounted(() => {
+      if (props.autofocus) focus()
+    })
 
     return {
       el,

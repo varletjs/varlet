@@ -33,6 +33,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  cascadeInitialIndexes: {
+    type: Array as PropType<number[]>,
+    default: () => [],
+  },
   optionHeight: {
     type: [Number, String],
     default: 44,
@@ -66,6 +70,10 @@ export const props = {
   },
   onCancel: {
     type: Function as PropType<(texts: Texts, indexes: number[]) => void>,
+  },
+  textFormatter: {
+    type: Function as PropType<(text: any, columnIndex: number) => any>,
+    default: (text: any) => text,
   },
   // dynamic internal
   ...pickProps(popupProps, [

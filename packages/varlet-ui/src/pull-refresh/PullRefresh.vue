@@ -10,8 +10,8 @@
     <div :class="classes(n('control'), 'var-elevation--2', [isSuccess, n('control-success')])" :style="controlStyle">
       <var-icon
         :name="iconName"
-        :transition="200"
-        :class="classes(n('icon'), [refreshStatus === 'loading', n('animation')])"
+        :transition="ICON_TRANSITION"
+        :class="classes(n('icon'), [refreshStatus === 'loading' && iconHasChanged, n('animation')])"
         var-pull-refresh-cover
       />
     </div>
@@ -24,7 +24,7 @@ import VarIcon from '../icon'
 import { defineComponent, ref, computed, watch, onMounted } from 'vue'
 import { getParentScroller, getScrollTop } from '../utils/elements'
 import { props } from './props'
-import { toNumber } from '../utils/shared'
+import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import type { Ref } from 'vue'
 import type { RefreshStatus } from './props'
@@ -33,8 +33,7 @@ const { n, classes } = createNamespace('pull-refresh')
 
 const MAX_DISTANCE = 100
 const CONTROL_POSITION = -50
-
-let scroller: HTMLElement | Window
+const ICON_TRANSITION = 150
 
 export default defineComponent({
   name: 'VarPullRefresh',
@@ -43,12 +42,18 @@ export default defineComponent({
   },
   props,
   setup(props) {
+    let scroller: HTMLElement | Window
+    let changing: Promise<void>
+
     const freshNode: Ref<HTMLElement | null> = ref(null)
     const startPosition: Ref<number> = ref(0)
     const distance: Ref<number> = ref(CONTROL_POSITION)
     const iconName: Ref<string> = ref('arrow-down')
     const refreshStatus: Ref<RefreshStatus> = ref('default')
     const isEnd: Ref<boolean> = ref(false)
+
+    // https://github.com/varletjs/varlet/issues/509
+    const iconHasChanged: Ref<boolean> = ref(true)
 
     const isTouchable = computed(
       () => refreshStatus.value !== 'loading' && refreshStatus.value !== 'success' && !props.disabled
@@ -62,6 +67,15 @@ export default defineComponent({
     }))
 
     const isSuccess = computed(() => refreshStatus.value === 'success')
+
+    const changeIcon = (): Promise<void> => {
+      return new Promise((resolve) => {
+        window.setTimeout(() => {
+          iconHasChanged.value = true
+          resolve()
+        }, ICON_TRANSITION)
+      })
+    }
 
     const touchStart = (event: TouchEvent) => {
       if (!isTouchable.value) return
@@ -79,15 +93,23 @@ export default defineComponent({
       const moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + CONTROL_POSITION
 
       distance.value = moveDistance >= MAX_DISTANCE ? MAX_DISTANCE : moveDistance
-      iconName.value = distance.value >= MAX_DISTANCE * 0.2 ? 'refresh' : 'arrow-down'
+
+      if (distance.value >= MAX_DISTANCE * 0.2) {
+        iconHasChanged.value = false
+        iconName.value = 'refresh'
+        changing = changeIcon()
+      } else {
+        iconName.value = 'arrow-down'
+      }
     }
 
-    const touchEnd = () => {
+    const touchEnd = async () => {
       if (!isTouchable.value) return
 
       isEnd.value = true
 
       if (distance.value >= MAX_DISTANCE * 0.2) {
+        await changing
         refreshStatus.value = 'loading'
         distance.value = MAX_DISTANCE * 0.3
 
@@ -134,6 +156,8 @@ export default defineComponent({
     return {
       n,
       classes,
+      iconHasChanged,
+      ICON_TRANSITION,
       refreshStatus,
       freshNode,
       touchStart,

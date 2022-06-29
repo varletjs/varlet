@@ -1,3 +1,14 @@
+<script setup>
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import VarPagination from '..'
+import dark from '../../themes/dark'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { use, pack } from './locale'
+
+watchLang(use)
+watchDarkMode(dark)
+</script>
+
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <div class="transformer">
@@ -16,30 +27,6 @@
     <var-pagination :current="3" :total="120" disabled />
   </div>
 </template>
-
-<script>
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import VarPagination from '..'
-import dark from '../../themes/dark'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-import { use, pack } from './locale'
-
-export default {
-  name: 'PaginationExample',
-  components: {
-    VarPagination,
-    AppType,
-  },
-  setup() {
-    watchLang(use)
-    watchDarkMode(dark)
-
-    return {
-      pack,
-    }
-  },
-}
-</script>
 
 <style lang="less" scoped>
 .transformer {

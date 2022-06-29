@@ -16,7 +16,8 @@ import {
   VITE_RESOLVE_EXTENSIONS,
 } from '../shared/constant'
 import { InlineConfig, PluginOption } from 'vite'
-import { get, kebabCase } from 'lodash'
+import { get } from 'lodash'
+import { kebabCase } from '@varlet/shared'
 import { resolve } from 'path'
 import { copyFileSync, pathExistsSync, readFileSync, removeSync, writeFileSync } from 'fs-extra'
 

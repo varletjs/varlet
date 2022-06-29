@@ -1,14 +1,8 @@
 import logger from '../shared/logger'
 import inquirer from 'inquirer'
 import { resolve } from 'path'
-import { copy, pathExistsSync, readFileSync, writeFileSync, removeSync } from 'fs-extra'
+import { copy, pathExistsSync, readFileSync, writeFileSync } from 'fs-extra'
 import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant'
-
-function removeFiles(dest: string) {
-  const files = ['es', 'lib', 'umd', 'highlight', 'types/index.d.ts', '.varlet', 'node_modules']
-
-  files.forEach((filename) => removeSync(resolve(dest, filename)))
-}
 
 function generateGitIgnore(name: string) {
   writeFileSync(
@@ -57,15 +51,23 @@ export async function gen(name: string) {
       type: 'list',
       choices: ['sfc', 'tsx'],
     },
+    {
+      name: 'Whether to use i18n?',
+      type: 'confirm',
+    },
   ])
 
+  const i18n = ret['Whether to use i18n?']
   const choice = ret['Please select your component library programming style']
-  const generator = resolve(GENERATORS_DIR, choice)
+  const dirName = i18n ? 'i18n' : 'default'
+
   const base = resolve(GENERATORS_DIR, 'base')
+  const configBase = resolve(GENERATORS_DIR, 'config', dirName, 'base')
+  const code = resolve(GENERATORS_DIR, 'config', dirName, choice)
 
   await copy(base, dest)
-  await copy(generator, dest)
-  removeFiles(dest)
+  await copy(configBase, dest)
+  await copy(code, dest)
   syncVersion(name)
   generateGitIgnore(name)
 

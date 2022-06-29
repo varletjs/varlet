@@ -6,82 +6,87 @@ The component library provides two auxiliary layout components,
 `<var-space>`,
 so that you can do flex layout more efficiently.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Space } from '@varlet/ui'
-
-createApp().use(Space)
-```
-
 ### Basic use
 
 ```html
-<var-space>
-  <var-button>Button1</var-button>
-  <var-button>Button2</var-button>
-  <var-button>Button3</var-button>
-</var-space>
+<template>
+  <var-space>
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+    <var-button>Button3</var-button>
+  </var-space>
+</template>
 ```
 
 ### Vertical
 
 ```html
-<var-space direction="column" size="large">
-  <var-button>Button1</var-button>
-  <var-button>Button2</var-button>
-  <var-button>Button3</var-button>
-</var-space>
+<template>
+  <var-space direction="column" size="large">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+    <var-button>Button3</var-button>
+  </var-space>
+</template>
 ```
 
 ### Space Size
 
 ```html
-<var-space :size="[20, 20]">
-  <var-button>Button1</var-button>
-  <var-button>Button2</var-button>
-  <var-button>Button3</var-button>
-  <var-button>Button4</var-button>
-  <var-button>Button5</var-button>
-  <var-button>Button6</var-button>
-</var-space>
+<template>
+  <var-space :size="[20, 20]">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+    <var-button>Button3</var-button>
+    <var-button>Button4</var-button>
+    <var-button>Button5</var-button>
+    <var-button>Button6</var-button>
+  </var-space>
+</template>
 ```
 
 ### Right Align
 
 ```html
-<var-space justify="end" >
-  <var-button>Button1</var-button>
-  <var-button>Button2</var-button>
-</var-space>
+<template>
+  <var-space justify="end">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+  </var-space>
+</template>
 ```
 
 ### Space Around
 
 ```html
-<var-space justify="space-around">
-  <var-button>Button1</var-button>
-  <var-button>Button2</var-button>
-</var-space>
+<template>
+  <var-space justify="space-around">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+  </var-space>
+</template>
 ```
 
 ### Align Center
 
 ```html
-<var-space justify="center">
-  <var-button>Button1</var-button>
-  <var-button>Button2</var-button>
-</var-space>
+<template>
+  <var-space justify="center">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+  </var-space>
+</template>
 ```
 
 ### Space Between
 
 ```html
-<var-space justify="space-between">
-  <var-button>Button1</var-button>
-  <var-button>Button2</var-button>
-</var-space>
+<template>
+  <var-space justify="space-between">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+  </var-space>
+</template>
 ```
 
 ## API

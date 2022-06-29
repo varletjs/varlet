@@ -2,7 +2,7 @@ import { nextTick } from 'vue'
 import type { ComponentPublicInstance } from 'vue'
 import { config } from '@vue/test-utils'
 import type { VueWrapper, DOMWrapper } from '@vue/test-utils'
-import { isPlainObject } from './shared'
+import { isPlainObject } from '@varlet/shared'
 
 export const delay = (time: number) => new Promise((resolve) => setTimeout(resolve, time))
 
@@ -48,8 +48,7 @@ export function trigger(
   const el = 'element' in wrapper ? wrapper.element : wrapper
   const touchList = [getTouch(el, x, y)]
 
-  const event = document.createEvent('CustomEvent')
-  event.initCustomEvent(eventName, true, true, {})
+  const event = new CustomEvent(eventName, { bubbles: true, cancelable: true, detail: {} })
 
   Object.assign(event, {
     clientX: x,
@@ -229,5 +228,27 @@ export function mockScrollTo(Element: any) {
       this.scrollLeft = x
       this.scrollTop = y
     }
+  }
+}
+
+export function mockIndexBarOwnTop() {
+  const originForEach = Array.prototype.forEach
+
+  // eslint-disable-next-line no-extend-native
+  Array.prototype.forEach = function (fn, thisArg) {
+    const changedArr = this.map((value, index) => {
+      if (value.ownTop && !value.ownTop.value) value.ownTop.value = (index + 1) * 50
+
+      return value
+    })
+
+    originForEach.call(changedArr, fn, thisArg)
+  }
+
+  return {
+    mockRestore() {
+      // eslint-disable-next-line no-extend-native
+      Array.prototype.forEach = originForEach
+    },
   }
 }

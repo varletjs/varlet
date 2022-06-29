@@ -4,46 +4,48 @@
 
 开关选择器。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Switch } from '@varlet/ui'
-
-createApp().use(Switch)
-```
-
 ### 基本使用
 
 ```html
-<var-switch v-model="value" />
-```
-
-```javascript
+<script setup>
 import { ref } from 'vue'
-export default {
-  setup() {
-    const value = ref(true)
 
-    return {
-      value
-    }
-  }
-}
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" />
+</template>
 ```
 
 ### 不可用
 
 ```html
-<var-switch v-model="value" disabled />
-<var-switch v-model="value" readonly />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" disabled />
+  <var-switch v-model="value" readonly />
+</template>
 ```
 
 ### 自定义颜色
 
 ```html
-<var-switch v-model="value" :ripple="false" />
-<var-switch v-model="value" color="#ff9f00" close-color="#f5cb90" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" :ripple="false" />
+  <var-switch v-model="value" color="#ff9f00" close-color="#f5cb90" />
+</template>
 ```
 
 ### 不同大小
@@ -51,16 +53,32 @@ export default {
 通过 `size` 属性改变 Switch 大小。
 
 ```html
-<var-switch v-model="value" size="15" />
-<var-switch v-model="value" />
-<var-switch v-model="value" size="25" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" size="15" />
+  <var-switch v-model="value" />
+  <var-switch v-model="value" size="25" />
+</template>
 ```
 
 ### 加载状态
 
 ```html
-<var-switch :model-value="true" loading />
-<var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch :model-value="true" loading />
+  <var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
+</template>
 ```
 
 ### 值的校验
@@ -69,27 +87,35 @@ export default {
 以外的值将转换为文本作为用户提示。
 
 ```html
-<var-switch v-model="value" :rules="[(v) => v === true || '错误！']"/>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" :rules="[(v) => v === true || '错误！']"/>
+</template>
 ```
 
 ## API
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | ---------- |
-| `v-model` | 开关选中状态	| _any_ | `false` |
-| `active-value` | 开关打开时的值	| _any_ | `true` |
+| 参数               | 说明 | 类型 | 默认值 |
+|------------------| -------------- | -------- | ---------- |
+| `v-model`        | 开关选中状态	| _any_ | `false` |
+| `active-value`   | 开关打开时的值	| _any_ | `true` |
 | `inactive-value` | 开关关闭时的值	| _any_ | `false` |
-| `disabled` | 是否禁用| _boolean_ | `false` |
-| `readonly` | 是否只读 | _boolean_ | `false` |
-| `loading` | 是否为加载状态 | _boolean_ | `false` |
-| `ripple` | 是否启用水波纹 | _boolean_ | `true` |
-| `color` | 打开状态下的颜色 | _string_ | `#2979ff` |
-| `loading-color` | 加载图标的颜色 | _string_ | `#fff` |
-| `close-color` | 关闭状态下的颜色 | _string_ | `#fff` |
-| `size` | switch 的大小 | _string \| number_ | `20` |
-| `rules`| 校验规则 | _array_  | - |
+| `disabled`       | 是否禁用| _boolean_ | `false` |
+| `readonly`       | 是否只读 | _boolean_ | `false` |
+| `loading`        | 是否为加载状态 | _boolean_ | `false` |
+| `ripple`         | 是否启用水波纹 | _boolean_ | `true` |
+| `color`          | 打开状态下的颜色 | _string_ | `#2979ff` |
+| `loading-color`  | 加载图标的颜色 | _string_ | `#fff` |
+| `close-color`    | 关闭状态下的颜色 | _string_ | `#fff` |
+| `size`           | switch 的大小 | _string \| number_ | - |
+| `rules`          | 校验规则 | _array_  | - |
 
 ### 事件
 

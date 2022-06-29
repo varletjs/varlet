@@ -65,7 +65,7 @@
 
     <li v-if="showSizeChanger" :class="classes(n('size'), [disabled, n('item--disabled')])">
       <var-menu v-model:show="menuVisible" :offset-x="-4">
-        <div :class="n('size--open')" style="display: flex" @click="showMenu">
+        <div :class="classes(n('size--open'), [current <= 1 || disabled, n('size--open--disabled')])" @click="showMenu">
           <span>{{ size }}{{ pack.paginationItem }} / {{ pack.paginationPage }}</span>
           <var-icon :class="n('size--open-icon')" var-pagination-cover name="menu-down" />
         </div>
@@ -108,7 +108,7 @@ import VarCell from '../cell'
 import VarInput from '../input'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './porps'
-import { isNumber, toNumber } from '../utils/shared'
+import { isNumber, toNumber } from '@varlet/shared'
 import { pack } from '../locale'
 import type { ComputedRef, Ref } from 'vue'
 import type { Range } from './porps'

@@ -1,11 +1,12 @@
 import { VarComponent } from './varComponent'
+import { BadgeProps } from './badge'
 
 export interface BottomNavigationItemProps {
   name?: string
   icon?: string
   label?: string
   namespace?: string
-  badge?: boolean
+  badge?: boolean | BadgeProps
   onClick?: (active: string | number) => void
 }
 

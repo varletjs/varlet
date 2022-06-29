@@ -1,204 +1,131 @@
-import example from '../example'
-import responsive from '../example/Responsive'
-import responsiveObject from '../example/ResponsiveObject'
 import Row from '..'
 import VarRow from '../Row'
 import Col from '../../col'
 import VarCol from '../../col/Col'
 import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { createApp, h } from 'vue'
 
-test('test row example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
-
-test('test row Responsive example', () => {
-  const wrapper = mount(responsive)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
-
-test('test row ResponsiveObject example', () => {
-  const wrapper = mount(responsiveObject)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
-
-test('test row & col plugin', () => {
+test('test row and col use', () => {
   const app = createApp({}).use(Row).use(Col)
   expect(app.component(Row.name)).toBeTruthy()
   expect(app.component(Col.name)).toBeTruthy()
 })
 
-test('test row flex', async () => {
-  const template = `<var-row></var-row>`
+describe('test row and col component props', () => {
+  test('test row and col gutter', () => {
+    const wrapper = mount(VarRow, {
+      props: {
+        gutter: 20,
+      },
+      slots: {
+        default: () => [12, 12].map((span) => h(VarCol, { span })),
+      },
+    })
 
-  const wrapper = mount({
-    components: {
-      [VarRow.name]: VarRow,
-    },
-    template,
+    expect(wrapper.find('.var-row').attributes('style')).toContain('margin: 0px -10px;')
+    wrapper.unmount()
   })
 
-  await delay(0)
+  test('test row and col justify', () => {
+    ;['flex-start', 'flex-end', 'center', 'space-between', 'space-around'].forEach((justify) => {
+      const wrapper = mount(VarRow, {
+        props: {
+          justify,
+        },
+        slots: {
+          default: () => [12, 12].map((span) => h(VarCol, { span })),
+        },
+      })
 
-  await wrapper.setProps({ justify: 'flex-start' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ justify: 'flex-end' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ justify: 'center' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ justify: 'space-between' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ justify: 'space-around' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ align: 'flex-start' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ align: 'center' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ align: 'flex-end' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  wrapper.unmount()
-})
-
-test('test row onClick null callback', () => {
-  const template = `<var-row></var-row>`
-  const wrapper = mount({
-    components: {
-      [VarRow.name]: VarRow,
-    },
-    template,
+      expect(wrapper.find('.var-row').attributes('style')).toContain('justify-content: ' + justify)
+      wrapper.unmount()
+    })
   })
-  wrapper.trigger('click')
-  wrapper.unmount()
+
+  test('test row and col align', () => {
+    ;['flex-start', 'flex-end', 'center'].forEach((align) => {
+      const wrapper = mount(VarRow, {
+        props: {
+          align,
+        },
+        slots: {
+          default: () => [12, 12].map((span) => h(VarCol, { span })),
+        },
+      })
+
+      expect(wrapper.find('.var-row').attributes('style')).toContain('align-items: ' + align)
+      wrapper.unmount()
+    })
+  })
+
+  test('test row and col span', () => {
+    const wrapper = mount(VarRow, {
+      slots: {
+        default: () => [6, 6, 6, 6].map((span) => h(VarCol, { span })),
+      },
+    })
+
+    expect(wrapper.findAll('.var-col--span-6').length).toBe(4)
+    wrapper.unmount()
+  })
+
+  test('test row and col span 0', () => {
+    const wrapper = mount(VarRow, {
+      slots: {
+        default: () => [0, 12, 12].map((span) => h(VarCol, { span })),
+      },
+    })
+
+    expect(wrapper.findAll('.var-col--span-0').length).toBe(1)
+    wrapper.unmount()
+  })
+
+  test('test row and col offset', () => {
+    const wrapper = mount(VarRow, {
+      slots: {
+        default: () => [6, 6].map((span) => h(VarCol, { span, offset: 6 })),
+      },
+    })
+
+    expect(wrapper.findAll('.var-col--offset-6').length).toBe(2)
+    wrapper.unmount()
+  })
+
+  test('test row and col responsive', () => {
+    const wrapper = mount(VarRow, {
+      slots: {
+        default: () =>
+          h(VarCol, {
+            xs: { span: 12 },
+            sm: { span: 6 },
+            md: { span: 4 },
+            lg: { span: 3 },
+            xl: { span: 2 },
+          }),
+      },
+    })
+
+    const classNames = wrapper.find('.var-col').classes()
+    expect(classNames).toContain('var-col--span-xs-12')
+    expect(classNames).toContain('var-col--span-sm-6')
+    expect(classNames).toContain('var-col--span-md-4')
+    expect(classNames).toContain('var-col--span-lg-3')
+    expect(classNames).toContain('var-col--span-xl-2')
+    wrapper.unmount()
+  })
 })
 
-test('test row onClick', () => {
-  const onClick = jest.fn()
-
+test('test row and col responsive 0', () => {
   const wrapper = mount(VarRow, {
-    props: {
-      onClick,
+    slots: {
+      default: () => [h(VarCol, { xs: 0, sm: 0, md: 0, lg: 0, xl: 0 })],
     },
   })
-  wrapper.trigger('click')
-  expect(onClick).toHaveBeenCalledTimes(1)
-  wrapper.unmount()
-})
 
-test('test col in row', async () => {
-  const template = `
-    <var-row>
-      <var-col :span='span' :offset='offset'>1</var-col>
-      <var-col :span='12'>2</var-col>
-    </var-row>
-  `
-  const wrapper = mount({
-    data: () => ({
-      span: 8,
-      offset: 4,
-    }),
-    components: {
-      [VarCol.name]: VarCol,
-      [VarRow.name]: VarRow,
-    },
-    template,
-  })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setData({
-    span: 12,
-    offset: 0,
-  })
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
-
-test('test col onClick', () => {
-  const onClick = jest.fn()
-  const template = `
-    <var-row>
-      <var-col @click="onClick"></var-col>
-    </var-row>
-  `
-
-  const wrapper = mount({
-    methods: {
-      onClick,
-    },
-    components: {
-      [VarCol.name]: VarCol,
-      [VarRow.name]: VarRow,
-    },
-    template,
-  })
-
-  wrapper.find('.var-col').trigger('click')
-  expect(onClick).toHaveBeenCalledTimes(1)
-  wrapper.unmount()
-})
-
-test('test col in responsive', async () => {
-  const template = `
-    <var-row>
-       <var-col :xs="xs" :sm="sm" :md="md" :lg="lg" :xl="xl">1</var-col>
-       <var-col :xs="xs" :sm="sm" :md="md" :lg="lg" :xl="xl">2</var-col>
-       <var-col :xs="xs" :sm="sm" :md="md" :lg="lg" :xl="xl">3</var-col>
-       <var-col :xs="xs" :sm="sm" :md="md" :lg="lg" :xl="xl">4</var-col>
-    </var-row>
-  `
-  const wrapper = mount({
-    data: () => ({
-      xs: 24,
-      sm: 12,
-      md: 8,
-      lg: 6,
-      xl: 4,
-    }),
-    components: {
-      [VarCol.name]: VarCol,
-      [VarRow.name]: VarRow,
-    },
-    template,
-  })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setData({
-    xs: 12,
-    sm: 24,
-    md: 12,
-    lg: 12,
-    xl: 12,
-  })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setData({
-    xs: { span: 12, offset: 12 },
-    sm: { span: 12, offset: 12 },
-    md: { span: 12, offset: 12 },
-    lg: { span: 12, offset: 12 },
-    xl: { span: 12, offset: 12 },
-  })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setData({
-    xs: 24,
-    sm: { span: '12', offset: 12 },
-    md: { span: 12, offset: '12' },
-    lg: '12',
-    xl: { span: '12', offset: '12' },
-  })
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('.var-col--span-xs-0')).toBeTruthy()
+  expect(wrapper.find('.var-col--span-sm-0')).toBeTruthy()
+  expect(wrapper.find('.var-col--span-md-0')).toBeTruthy()
+  expect(wrapper.find('.var-col--span-lg-0')).toBeTruthy()
+  expect(wrapper.find('.var-col--span-xl-0')).toBeTruthy()
   wrapper.unmount()
 })

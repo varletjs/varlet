@@ -2,7 +2,7 @@ import { VarComponent } from './varComponent'
 
 export interface IndexBarProps {
   sticky?: boolean
-  stickyOffsetTop?: number
+  stickyOffsetTop?: number | string
   hideList?: boolean
   cssMode?: boolean
   zIndex?: number | string

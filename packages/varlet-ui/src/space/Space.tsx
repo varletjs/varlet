@@ -2,7 +2,7 @@ import { defineComponent, VNodeChild, Fragment, VNode, Comment } from 'vue'
 import { internalSizeValidator, props } from './props'
 import type { SpaceInternalSize, SpaceSize } from './props'
 import { toPxNum } from '../utils/elements'
-import { isArray } from '../utils/shared'
+import { isArray } from '@varlet/shared'
 import '../styles/common.less'
 import './space.less'
 import { call, createNamespace } from '../utils/components'
@@ -57,6 +57,7 @@ export default defineComponent({
 
       const lastIndex = children.length - 1
       const spacers = children.map((child, index) => {
+        const width = direction === 'row' ? undefined : '100%'
         let margin = '0'
 
         if (direction === 'row') {
@@ -83,7 +84,7 @@ export default defineComponent({
           margin = `0 0 ${y}px 0`
         }
 
-        return <div style={{ margin }}>{child}</div>
+        return <div style={{ margin, width }}>{child}</div>
       })
 
       return (

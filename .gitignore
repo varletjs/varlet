@@ -33,6 +33,7 @@ packages/varlet-ui-playground/public/touch-emulator
 packages/varlet-ui-playground/public/varlet.esm.js
 packages/varlet-ui-playground/public/varlet-touch-emulator.js
 packages/varlet-ui-playground/public/varlet.css
+packages/varlet-ui-playground/public/varlet-area.js
 
 packages/varlet-icons/dist
 
@@ -43,3 +44,6 @@ packages/varlet-cli/generators/**/umd
 packages/varlet-cli/generators/**/lib
 packages/varlet-cli/generators/**/highlight
 packages/varlet-cli/generators/**/coverage
+
+packages/varlet-shared/lib
+packages/varlet-shared/es

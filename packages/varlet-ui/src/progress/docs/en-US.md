@@ -4,23 +4,36 @@
 
 Display the current progress of an operation flow.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Progress } from '@varlet/ui'
-
-createApp().use(Progress)
-```
-
 ### Basic Usage
 
 Set the current progress through the `value` attribute.
 
 ```html
-<var-progress :value="20" :track="false" />
-<var-progress :value="value" :track="false" />
-<var-progress :value="100" :track="false" />
+<script setup>
+  import { ref, onMounted, onUnmounted } from 'vue'
+
+  const value = ref(0)
+  const interval = ref(0)
+
+  onMounted(() => {
+    interval.value = window.setInterval(() => {
+      if (value.value >= 100) value.value = 0
+      else value.value += 20
+    }, 1000)
+  })
+
+  onUnmounted(() => {
+    window.clearInterval(interval.value)
+  })
+</script>
+
+<template>
+  <var-space direction="column" :size="[12, 12]">
+    <var-progress :value="20" :track="false" />
+    <var-progress :value="value" :track="false" />
+    <var-progress :value="100" :track="false" />
+  </var-space>
+</template>
 ```
 
 ### Show Label
@@ -28,9 +41,31 @@ Set the current progress through the `value` attribute.
 The label is displayed through the `label` attribute. The label is the percentage of progress by default. You can use the slot to insert custom content.
 
 ```html
-<var-progress label :value="30" />
-<var-progress label :value="value" />
-<var-progress label :value="100">success</var-progress>
+<script setup>
+  import { ref, onMounted, onUnmounted } from 'vue'
+
+  const value = ref(0)
+  const interval = ref(0)
+
+  onMounted(() => {
+    interval.value = window.setInterval(() => {
+      if (value.value >= 100) value.value = 0
+      else value.value += 20
+    }, 1000)
+  })
+
+  onUnmounted(() => {
+    window.clearInterval(interval.value)
+  })
+</script>
+
+<template>
+  <var-space direction="column" :size="[12, 12]">
+    <var-progress label :value="30" />
+    <var-progress label :value="value" />
+    <var-progress label :value="100">success</var-progress>
+  </var-space>
+</template>
 ```
 
 ### Custom Style
@@ -38,17 +73,49 @@ The label is displayed through the `label` attribute. The label is the percentag
 Set the line width, progress bar color, track color and ripple loading effect through the attributes of `line-width`, `color`, `track-color` and `ripple`.
 
 ```html
-<var-progress :value="30" line-width="8" color="#ff9f00" />
-<var-progress :value="60" line-width="8" color="#ff9f00" track-color="#f5cb90" />
-<var-progress :value="80" ripple line-width="8" color="#ff9f00" track-color="#f5cb90" />
+<template>
+  <var-space direction="column" :size="[12, 12]">
+    <var-progress :value="30" line-width="8" color="#ff9f00" />
+    <var-progress :value="60" line-width="8" color="#ff9f00" track-color="#f5cb90" />
+    <var-progress 
+      :value="80"
+      ripple 
+      line-width="8"
+      color="#ff9f00" 
+      track-color="#f5cb90" 
+    />
+  </var-space>
+</template>
 ```
 
 ### Progress circle
 
 ```html
-<var-progress mode="circle" :value="30" line-width="5" :size="56" />
-<var-progress mode="circle" label :value="value" line-width="5" :size="56" />
-<var-progress mode="circle" label :value="100" line-width="5" :size="56" />
+<script setup>
+  import { ref, onMounted, onUnmounted } from 'vue'
+
+  const value = ref(0)
+  const interval = ref(0)
+
+  onMounted(() => {
+    interval.value = window.setInterval(() => {
+      if (value.value >= 100) value.value = 0
+      else value.value += 20
+    }, 1000)
+  })
+
+  onUnmounted(() => {
+    window.clearInterval(interval.value)
+  })
+</script>
+
+<template>
+  <var-space :size="[20, 20]">
+    <var-progress mode="circle" :value="30" line-width="5" :size="56" />
+    <var-progress mode="circle" label :value="value" line-width="5" :size="56" />
+    <var-progress mode="circle" label :value="100" line-width="5" :size="56" />
+  </var-space>
+</template>
 ```
 
 ### Hide Track
@@ -56,7 +123,9 @@ Set the line width, progress bar color, track color and ripple loading effect th
 Use `track` prop to hide track.
 
 ```html
-<var-progress mode="circle" :value="50" :size="56" :track="false" />
+<template>
+  <var-progress mode="circle" :value="50" :size="56" :track="false" />
+</template>
 ```
 ## API
 

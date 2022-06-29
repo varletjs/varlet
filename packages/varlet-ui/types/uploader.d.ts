@@ -11,6 +11,12 @@ export interface VarFile {
 
 export type UploaderValidateTriggers = 'onChange' | 'onRemove'
 
+export type UploaderVarFileUtils = {
+  getLoading(): VarFile[]
+  getSuccess(): VarFile[]
+  getError(): VarFile[]
+}
+
 interface UploaderProps {
   modelValue?: VarFile[]
   accept?: string
@@ -25,10 +31,11 @@ interface UploaderProps {
   hideList?: boolean
   ripple?: boolean
   validateTrigger?: Array<UploaderValidateTriggers>
-  rules?: Array<(v: VarFile) => any>
+  rules?: Array<(v: VarFile[], u: UploaderVarFileUtils) => any>
   onBeforeRead?: (file: VarFile) => Promise<boolean> | boolean
   onAfterRead?: (file: VarFile) => any
   onOversize?: (file: VarFile) => any
+  onBeforeRemove?: (file: VarFile) => any
   onRemove?: (file: VarFile) => any
   'onUpdate:modelValue'?: (files: VarFile[]) => any
 }
@@ -36,11 +43,11 @@ interface UploaderProps {
 export class Uploader extends VarComponent {
   $props: UploaderProps
 
-  getLoading(varFiles: VarFile[]): VarFile[]
+  getLoading(): VarFile[]
 
-  getSuccess(varFiles: VarFile[]): VarFile[]
+  getSuccess(): VarFile[]
 
-  getError(varFiles: VarFile[]): VarFile[]
+  getError(): VarFile[]
 
   validate(): Promise<boolean>
 

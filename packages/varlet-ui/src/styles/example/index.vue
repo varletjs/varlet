@@ -1,53 +1,46 @@
-<template>
-  <div class="list">
-    <div class="list__item" :class="`var-elevation--${e}`" :style="{ background }" v-for="e in elevations" :key="e">
-      {{ e }}
-    </div>
-  </div>
-</template>
-
-<script>
+<script setup>
 import dark from '../../themes/dark'
 import { ref } from 'vue'
+import VarSpace from '../../space'
 import { watchDarkMode } from '@varlet/cli/site/utils'
 
-export default {
-  name: 'RippleExample',
-  setup() {
-    const elevations = Array.from({ length: 25 }).map((_, index) => index)
-    const background = ref(dark)
+const elevations = Array.from({ length: 25 }).map((_, index) => index)
+const background = ref(dark)
 
-    watchDarkMode(dark, (themes) => {
-      background.value = themes === 'darkThemes' ? '#303030' : '#fff'
-    })
-
-    return {
-      background,
-      elevations,
-    }
-  },
-}
+watchDarkMode(dark, (themes) => {
+  background.value = themes === 'darkThemes' ? '#303030' : '#fff'
+})
 </script>
+
+<template>
+  <var-space class="elevation-example-list" :size="['5.5vw', '5.5vw']">
+    <div
+      class="elevation-example-item"
+      :class="`var-elevation--${e}`"
+      :style="{ background }"
+      v-for="e in elevations"
+      :key="e"
+    >
+      {{ e }}
+    </div>
+  </var-space>
+</template>
 
 <style lang="less">
 @import '../../styles/elevation';
 </style>
 
-<style scoped lang="less">
-.list {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 2vw;
+<style>
+.elevation-example-list {
+  margin-top: 8px !important;
+}
 
-  &__item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 25vw;
-    height: 25vw;
-    color: var(--site-config-color-sub-text);
-    margin: 2vw;
-    transition: 0.25s background-color;
-  }
+.elevation-example-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25vw;
+  height: 25vw;
+  transition: 0.25s background-color;
 }
 </style>

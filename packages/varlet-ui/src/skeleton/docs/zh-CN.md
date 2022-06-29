@@ -3,107 +3,119 @@
 ### 介绍
 显示一些带过渡效果的占位元素，优化加载过程。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Skeleton } from '@varlet/ui'
-
-createApp().use(Skeleton)
-```
-
 ### 基本使用
 
 ```html
-<var-skeleton :loading="loading">加载的数据</var-skeleton>
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const loading = ref(true)
+const loading = ref(true)
+</script>
 
-    return { loading }
-  }
-}
+<template>
+  <var-skeleton :loading="loading">加载的数据</var-skeleton>
+</template>
 ```
 
 ### 显示标题
 
 ```html
-<var-skeleton title :loading="loading">加载的数据</var-skeleton>
+<script setup>
+import { ref } from 'vue'
+  
+const loading = ref(true)
+</script>
+
+<template>
+  <var-skeleton title :loading="loading">加载的数据</var-skeleton>
+</template>
 ```
 
 ### 自定义段落高度
 
 ```html
-<var-skeleton
-  title
-  :rows="3"
-  :loading="loading"
-  :rows-width="['200px', '100px', '50px']"
->
-  加载的数据
-</var-skeleton>
+<script setup>
+import { ref } from 'vue'
+
+const loading = ref(true)
+</script>
+
+<template>
+  <var-skeleton
+    title
+    :rows="3"
+    :loading="loading"
+    :rows-width="['200px', '100px', '50px']"
+  >
+    加载的数据
+  </var-skeleton>
+</template>
 ```
 
 ### 显示头像
 
 ```html
-<var-skeleton
-  title
-  avatar
-  :rows="3"
-  :loading="loading"
->
-  加载的数据
-</var-skeleton>
+<script setup>
+import { ref } from 'vue'
+
+const loading = ref(true)
+</script>
+
+<template>
+  <var-skeleton
+    title
+    avatar
+    :rows="3"
+    :loading="loading"
+  >
+    加载的数据
+  </var-skeleton>
+</template>
 ```
 
 ### 显示卡片
 
 ```html
-<var-skeleton
-  title
-  avatar
-  card
-  :rows="3"
-  :loading="loading"
->
-  加载的数据
-</var-skeleton>
+<script setup>
+import { ref } from 'vue'
+
+const loading = ref(true)
+</script>
+
+<template>
+  <var-skeleton
+    title
+    avatar
+    card
+    :rows="3"
+    :loading="loading"
+  >
+    加载的数据
+  </var-skeleton>
+</template>
 ```
 
 ### 全屏模式
 
 ```html
-<var-button type="danger" @click="fullscreen">切换全屏模式</var-button>
-<var-skeleton fullscreen :loading="loading" />
-```
-
-```js
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const loading = ref(false)
+const loading = ref(false)
 
-    const fullscreen = () => {
-      loading.value = true
+const fullscreen = () => {
+  loading.value = true
 
-      setTimeout(() => {
-        loading.value = false
-      }, 2000)
-    }
-
-    return {
-      loading,
-      fullscreen,
-    }
-  }
+  setTimeout(() => {
+    loading.value = false
+  }, 2000)
 }
+</script>
+
+<template>
+  <var-button type="danger" @click="fullscreen">切换全屏模式</var-button>
+  <var-skeleton fullscreen :loading="loading" />
+</template>
 ```
 
 ## API
@@ -127,8 +139,8 @@ export default {
 ### 插槽
 
 | 插槽名 | 说明 | 参数 |
-| --- | --- | --- |
-| `default` | 加载成功后显示的内容 | `-` |
+| --- |--| --- |
+| `default` | 非加载状态下的内容 | `-` |
 
 ### 样式变量
 

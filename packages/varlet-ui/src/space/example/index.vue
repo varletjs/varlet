@@ -1,7 +1,21 @@
+<script setup>
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import VarSpace from '..'
+import VarButton from '../../button'
+import dark from '../../themes/dark'
+import { pack, use } from './locale'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+
+watchLang(use)
+watchDarkMode(dark)
+</script>
+
 <template>
   <app-type>{{ pack.baseUse }}</app-type>
-  <var-space>
-    <var-button v-for="i in 3" :key="i">Button{{ i }}</var-button>
+  <var-space :size="['2.666vw', '2.666vw']">
+    <var-button>Button1</var-button>
+    <var-button>Button2</var-button>
+    <var-button>Button3</var-button>
   </var-space>
 
   <app-type>{{ pack.vertical }}</app-type>
@@ -22,46 +36,26 @@
   </var-space>
 
   <app-type>{{ pack.rightAlign }}</app-type>
-  <var-space justify="end">
+  <var-space justify="end" :size="['2.666vw', '2.666vw']">
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
   </var-space>
 
   <app-type>{{ pack.around }}</app-type>
-  <var-space justify="space-around">
+  <var-space justify="space-around" :size="['2.666vw', '2.666vw']">
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
   </var-space>
 
   <app-type>{{ pack.center }}</app-type>
-  <var-space justify="center">
+  <var-space justify="center" :size="['2.666vw', '2.666vw']">
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
   </var-space>
 
   <app-type>{{ pack.between }}</app-type>
-  <var-space justify="space-between">
+  <var-space justify="space-between" :size="['2.666vw', '2.666vw']">
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
   </var-space>
 </template>
-<script>
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import VarSpace from '..'
-import VarButton from '../../button'
-import dark from '../../themes/dark'
-import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-
-export default {
-  components: { VarSpace, VarButton, AppType },
-  setup() {
-    watchLang(use)
-    watchDarkMode(dark)
-
-    return {
-      pack,
-    }
-  },
-}
-</script>

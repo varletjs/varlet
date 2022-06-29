@@ -2,186 +2,98 @@ import VarSpace from '../Space'
 import Space from '..'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
-import example from '../example'
 
-test('test space example', async () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
-
-test('test space plugin', () => {
+test('test space use', () => {
   const app = createApp({}).use(Space)
   expect(app.component(Space.name)).toBeTruthy()
 })
 
-test('test space v-for', async () => {
-  const template = `
-    <var-space>
-      <div v-for="i in 3">div{{i}}</div>
-    </var-space>
-  `
-  const wrapper = mount({
-    components: {
-      [VarSpace.name]: VarSpace,
-    },
-    template,
+describe('test space component props', () => {
+  test('test space align', () => {
+    ;['stretch', 'center', 'start', 'end', 'baseline'].forEach((align) => {
+      const wrapper = mount(VarSpace, {
+        props: { align },
+      })
+
+      expect(wrapper.find('.var-space').attributes('style')).toContain('align-items: ' + align)
+      wrapper.unmount()
+    })
   })
 
-  await delay(0)
-  expect(wrapper.html()).toMatchSnapshot()
+  test('test space justify', () => {
+    ;['start', 'end', 'center', 'space-around', 'space-between'].forEach((justify) => {
+      const wrapper = mount(VarSpace, {
+        props: { justify },
+      })
+
+      expect(wrapper.find('.var-space').attributes('style')).toContain('justify-content: ' + justify)
+      wrapper.unmount()
+    })
+  })
+
+  test('test space size', () => {
+    ;[
+      { sizeType: 'mini', sizeVal: -2 },
+      { sizeType: 'small', sizeVal: -3 },
+      { sizeType: 'normal', sizeVal: -4 },
+      { sizeType: 'large', sizeVal: -6 },
+    ].forEach((size) => {
+      const wrapper = mount(VarSpace, {
+        props: { size: size.sizeType },
+      })
+
+      expect(wrapper.find('.var-space').attributes('style')).toContain(`margin: ${size.sizeVal}px 0px;`)
+      wrapper.unmount()
+    })
+  })
+
+  test('test space wrap', async () => {
+    const wrapper = mount(VarSpace, {
+      props: {
+        wrap: true,
+      },
+    })
+
+    expect(wrapper.find('.var-space').attributes('style')).toContain('flex-wrap: wrap;')
+    await wrapper.setProps({ wrap: false })
+    expect(wrapper.find('.var-space').attributes('style')).toContain('flex-wrap: nowrap;')
+    wrapper.unmount()
+  })
+
+  test('test space direction', async () => {
+    const wrapper = mount(VarSpace, {
+      props: {
+        direction: 'row',
+      },
+    })
+
+    expect(wrapper.find('.var-space').attributes('style')).toContain('flex-direction: row;')
+    await wrapper.setProps({ direction: 'column' })
+    expect(wrapper.find('.var-space').attributes('style')).toContain('flex-direction: column;')
+    wrapper.unmount()
+  })
+
+  test('test space inline', async () => {
+    const wrapper = mount(VarSpace, {
+      props: {
+        inline: true,
+      },
+    })
+
+    expect(wrapper.find('.var-space--inline').exists()).toBe(true)
+    await wrapper.setProps({ inline: false })
+    expect(wrapper.find('.var-space--inline').exists()).toBe(false)
+    wrapper.unmount()
+  })
 })
 
-test('test space with Comment', async () => {
-  const template = `
-    <var-space>
-      <!-- comment -->
-      <div>div1</div>
-      <div>div2</div>
-    </var-space>
-  `
-  const wrapper = mount({
-    components: {
-      [VarSpace.name]: VarSpace,
+test('test space default slots', () => {
+  const wrapper = mount(VarSpace, {
+    slots: {
+      default: 'This is default slots',
     },
-    template,
   })
 
-  await delay(0)
-  expect(wrapper.html()).toMatchSnapshot()
-})
-
-test('test space props', async () => {
-  const template = `
-    <var-space>
-      <div>div1</div>
-      <div>div2</div>
-      <div>div3</div>
-    </var-space>
-  `
-
-  const wrapper = mount({
-    components: {
-      [VarSpace.name]: VarSpace,
-    },
-    template,
-  })
-
-  await delay(0)
-
-  await wrapper.setProps({ direction: 'row' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ direction: 'column' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ size: 'mini' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ size: 'small' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ size: 'normal' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ size: 'large' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ size: '10px' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ size: '10rem' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ size: '[10px,20px]' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ wrap: true })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ wrap: false })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ justify: 'start' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ justify: 'end' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ justify: 'center' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ justify: 'space-between' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ justify: 'space-around' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ align: 'start' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ align: 'center' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ align: 'end' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ align: 'stretch' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ align: 'baseline' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ align: 'initial' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ align: 'inherit' })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ inline: true })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setProps({ inline: false })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  wrapper.unmount()
-})
-
-test('test child in space', async () => {
-  const template = `
-    <var-space :size="size" :direction="direction" :inline="inline">
-      <div>div1</div>
-      <div>div2</div>
-      <div>div3</div>
-    </var-space>
-  `
-  const wrapper = mount({
-    components: {
-      [VarSpace.name]: VarSpace,
-    },
-    data: () => ({
-      size: 'mini',
-      direction: 'row',
-      inline: true,
-    }),
-    template,
-  })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setData({
-    size: ['10px', '20px'],
-  })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setData({
-    direction: 'column',
-  })
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setData({
-    inline: false,
-  })
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('.var-space').html()).toContain('This is default slots')
   wrapper.unmount()
 })

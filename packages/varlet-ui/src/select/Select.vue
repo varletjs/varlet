@@ -77,7 +77,7 @@
         </div>
 
         <template #menu>
-          <div :class="n('scroller')">
+          <div ref="menuEl" :class="n('scroller')">
             <slot />
           </div>
         </template>
@@ -118,7 +118,7 @@ import VarMenu from '../menu'
 import VarChip from '../chip'
 import VarFormDetails from '../form-details'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
-import { isArray, isEmpty } from '../utils/shared'
+import { isArray, isEmpty } from '@varlet/shared'
 import { props } from './props'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useOptions } from './provide'
@@ -157,6 +157,7 @@ export default defineComponent({
       // expose
       resetValidation,
     } = useValidation()
+    const menuEl: Ref<HTMLElement | null> = ref(null)
 
     const computeLabel = () => {
       const { multiple, modelValue } = props
@@ -195,7 +196,7 @@ export default defineComponent({
         option = options.find(({ label }) => label.value === modelValue)
       }
 
-      return option!.label.value
+      return option?.label.value ?? ''
     }
 
     const computePlaceholderState = () => {
@@ -232,6 +233,7 @@ export default defineComponent({
 
       call(onFocus)
       validateWithTrigger('onFocus')
+      detectBoundary()
     }
 
     const handleBlur = () => {
@@ -322,6 +324,7 @@ export default defineComponent({
       wrapWidth.value = getWrapWidth()
       offsetY.value = getOffsetY() + toPxNum(props.offsetY)
       isFocus.value = true
+      detectBoundary()
     }
 
     // expose
@@ -336,6 +339,18 @@ export default defineComponent({
     const reset = () => {
       call(props['onUpdate:modelValue'], props.multiple ? [] : undefined)
       resetValidation()
+    }
+
+    const detectBoundary = () => {
+      const { body } = document
+      nextTick(() => {
+        const { offsetTop: menuOffsetTop, offsetHeight: menuOffsetHeight } = menuEl.value?.parentElement as HTMLElement
+        const menuOffsetBottom = body.scrollHeight - menuOffsetHeight - menuOffsetTop
+
+        if (menuOffsetTop < 0) offsetY.value = getOffsetY()
+        if (menuOffsetBottom < 0)
+          offsetY.value -= (menuEl.value?.parentElement as HTMLElement).offsetHeight - getOffsetY()
+      })
     }
 
     watch(
@@ -373,6 +388,7 @@ export default defineComponent({
       formDisabled: form?.disabled,
       label,
       labels,
+      menuEl,
       n,
       classes,
       computePlaceholderState,

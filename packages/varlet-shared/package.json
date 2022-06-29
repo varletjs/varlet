@@ -1,0 +1,35 @@
+{
+  "name": "@varlet/shared",
+  "version": "1.27.15",
+  "module": "es/index.js",
+  "main": "lib/index.js",
+  "description": "shared utils of varlet",
+  "keywords": [
+    "shared",
+    "utils",
+    "varlet"
+  ],
+  "author": "haoziqaq <357229046@qq.com>",
+  "license": "MIT",
+  "files": [
+    "lib",
+    "es",
+    "tsconfig.json",
+    "CHANGELOG.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/varletjs/varlet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/varletjs/varlet/issues"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "dev:cjs": "tsc -p tsconfig.cjs.json --watch",
+    "build": "tsc && tsc -p tsconfig.cjs.json"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  }
+}

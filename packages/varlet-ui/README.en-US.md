@@ -1,11 +1,12 @@
 <div align="center">
-  <a href="https://varlet.gitee.io/varlet-ui/">
-    <img src="https://varlet.gitee.io/varlet-ui/logo.svg" width="150">
+  <a href="https://varlet-varletjs.vercel.app/#/en-US/home">
+    <img src="https://varlet-varletjs.vercel.app/logo.svg" width="150">
   </a>
   <h1>VARLET</h1>
   <p>Material design mobile component library for Vue3</p>
   <p>
-    <a href="https://varlet.gitee.io/varlet-ui/">Documentation</a>
+    <a href="https://varlet-varletjs.vercel.app/#/en-US/home">Documentation(Vercel)</a> 
+    <a href="https://varlet.gitee.io/varlet-ui/#/en-US/home">Documentation(Gitee)</a>
   </p>
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">

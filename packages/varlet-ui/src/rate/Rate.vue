@@ -1,5 +1,5 @@
 <template>
-  <div :class="n('warp')">
+  <div :class="n('wrap')">
     <div :class="n()">
       <div
         :key="val"
@@ -10,6 +10,8 @@
         @click="handleClick(val, $event)"
       >
         <var-icon
+          :class="n('content-icon')"
+          var-rate-cover
           :transition="0"
           :namespace="namespace"
           :name="getIconName(val)"
@@ -29,7 +31,7 @@ import { defineComponent, nextTick } from 'vue'
 import { useForm } from '../form/provide'
 import { useValidation, call, createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { toNumber } from '../utils/shared'
+import { toNumber } from '@varlet/shared'
 import { props } from './props'
 import type { RateProvider } from './provide'
 
@@ -64,7 +66,7 @@ export default defineComponent({
 
       return {
         [n('content')]: true,
-        [n('--disabled')]: form?.disabled.value,
+        [n('--disabled')]: form?.disabled.value || props.disabled,
         [n('--error')]: errorMessage.value,
         [n('--primary')]: type !== 'empty' && !color,
       }

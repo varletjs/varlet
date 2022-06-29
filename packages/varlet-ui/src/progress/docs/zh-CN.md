@@ -4,23 +4,36 @@
 
 展示操作的当前进度。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Progress } from '@varlet/ui'
-
-createApp().use(Progress)
-```
-
 ### 基本使用
 
 通过 `value` 属性设置当前进度。
 
 ```html
-<var-progress :value="20" :track="false" />
-<var-progress :value="value" :track="false" />
-<var-progress :value="100" :track="false" />
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const value = ref(0)
+const interval = ref(0)
+
+onMounted(() => {
+  interval.value = window.setInterval(() => {
+    if (value.value >= 100) value.value = 0
+    else value.value += 20
+  }, 1000)
+})
+
+onUnmounted(() => {
+  window.clearInterval(interval.value)
+})  
+</script>
+
+<template>
+  <var-space direction="column" :size="[12, 12]">
+    <var-progress :value="20" :track="false" />
+    <var-progress :value="value" :track="false" />
+    <var-progress :value="100" :track="false" />
+  </var-space>
+</template>
 ```
 
 ### 显示标签
@@ -28,9 +41,31 @@ createApp().use(Progress)
 通过 `label` 属性将 label 显示，label 默认为进度的百分比，可以使用插槽插入自定义内容。
 
 ```html
-<var-progress label :value="30" />
-<var-progress label :value="value" />
-<var-progress label :value="100">success</var-progress>
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const value = ref(0)
+const interval = ref(0)
+
+onMounted(() => {
+  interval.value = window.setInterval(() => {
+    if (value.value >= 100) value.value = 0
+    else value.value += 20
+  }, 1000)
+})
+
+onUnmounted(() => {
+  window.clearInterval(interval.value)
+})  
+</script>
+
+<template>
+  <var-space direction="column" :size="[12, 12]">
+    <var-progress label :value="30" />
+    <var-progress label :value="value" />
+    <var-progress label :value="100">success</var-progress>
+  </var-space>
+</template>
 ```
 
 ### 自定义样式
@@ -38,26 +73,59 @@ createApp().use(Progress)
 通过 `line-width`、`color`、`track-color`、`ripple` 属性设置线宽、进度条颜色、轨道颜色、水波纹加载效果。
 
 ```html
-<var-progress :value="30" line-width="8" color="#ff9f00" />
-<var-progress :value="60" line-width="8" color="#ff9f00" track-color="#f5cb90" />
-<var-progress :value="80" ripple line-width="8" color="#ff9f00" track-color="#f5cb90" />
+<template>
+  <var-space direction="column" :size="[12, 12]">
+    <var-progress :value="30" line-width="8" color="#ff9f00" />
+    <var-progress :value="60" line-width="8" color="#ff9f00" track-color="#f5cb90" />
+    <var-progress
+      :value="80"
+      ripple
+      line-width="8"
+      color="#ff9f00"
+      track-color="#f5cb90"
+    />
+  </var-space>
+</template>
 ```
 
 ### 环形进度条
 
 ```html
-<var-progress mode="circle" :value="30" line-width="5" :size="56" />
-<var-progress mode="circle" label :value="value" line-width="5" :size="56" />
-<var-progress mode="circle" label :value="100" line-width="5" :size="56" />
-```
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
 
+const value = ref(0)
+const interval = ref(0)
+
+onMounted(() => {
+  interval.value = window.setInterval(() => {
+    if (value.value >= 100) value.value = 0
+    else value.value += 20
+  }, 1000)
+})
+
+onUnmounted(() => {
+  window.clearInterval(interval.value)
+})  
+</script>
+
+<template>
+  <var-space :size="[20, 20]">
+    <var-progress mode="circle" :value="30" line-width="5" :size="56" />
+    <var-progress mode="circle" label :value="value" line-width="5" :size="56" />
+    <var-progress mode="circle" label :value="100" line-width="5" :size="56" />
+  </var-space>
+</template>
+```
 
 ### 隐藏轨道
 
 通过 `track` 属性隐藏 track。
 
 ```html
-<var-progress mode="circle" :value="50" :size="56" :track="false" />
+<template>
+  <var-progress mode="circle" :value="50" :size="56" :track="false" />
+</template>
 ```
 ## API
 

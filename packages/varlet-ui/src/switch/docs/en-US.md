@@ -4,47 +4,48 @@
 
 Switching Selector.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Switch } from '@varlet/ui'
-
-createApp().use(Switch)
-```
-
 ### Basic Usage
 
 ```html
-<var-switch v-model="value" />
-```
-
-```javascript
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref(true)
+const value = ref(true)
+</script>
 
-    return {
-      value
-    }
-  }
-}
+<template>
+  <var-switch v-model="value" />
+</template>
 ```
 
 ### Not Available
 
 ```html
-<var-switch v-model="value" disabled />
-<var-switch v-model="value" readonly />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" disabled />
+  <var-switch v-model="value" readonly />
+</template>
 ```
 
 ### Custom color
 
 ```html
-<var-switch v-model="value" :ripple="false" />
-<var-switch v-model="value" color="#ff9f00" close-color="#f5cb90" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" :ripple="false" />
+  <var-switch v-model="value" color="#ff9f00" close-color="#f5cb90" />
+</template>
 ```
 
 ### Size
@@ -52,16 +53,32 @@ export default {
 Use `size` prop to change size of Switch.
 
 ```html
-<var-switch v-model="value" size="15" />
-<var-switch v-model="value" />
-<var-switch v-model="value" size="25" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" size="15" />
+  <var-switch v-model="value" />
+  <var-switch v-model="value" size="25" />
+</template>
 ```
 
 ### Loading
 
 ```html
-<var-switch :model-value="true" loading />
-<var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch :model-value="true" loading />
+  <var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
+</template>
 ```
 
 ### Validate value
@@ -70,27 +87,35 @@ The values are validated by passing in an array of validators，If the validator
 Other values are converted to text as a user prompt.
 
 ```html
-<var-switch v-model="value" :rules="[(v) => v === true || 'Error！']"/>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" :rules="[(v) => v === true || 'Error！']"/>
+</template>
 ```
 
 ## API
 
 ### Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
-| `v-model` | Check status of Switch	| _any_ | `false` |
-| `active-value` | The value when the switch is turned on	| _any_ | `true` |
+| Prop             | Description | Type | Default |
+|------------------| -------------- | -------- | ---------- |
+| `v-model`        | Check status of Switch	| _any_ | `false` |
+| `active-value`   | The value when the switch is turned on	| _any_ | `true` |
 | `inactive-value` | The value when the switch is turned off	| _any_ | `false` |
-| `disabled` | Whether to disable switch| _boolean_ | `false` |
-| `readonly` | Whether to readonly switch | _boolean_ | `false` |
-| `loading` | Whether to show loading icon | _boolean_ | `false` |
-| `ripple` | Whether to open ripple | _boolean_ | `true` |
-| `color` | Background color when open | _string_ | `#2979ff` |
-| `close-color` | Background color when close | _string_ | `#fff` |
-| `loading-color` | Color of loading icon | _string_ | `#fff` |
-| `size` | Size of switch | _string \| number_ | `20` |
-| `rules`| Validation rules | _array_  | - |
+| `disabled`       | Whether to disable switch| _boolean_ | `false` |
+| `readonly`       | Whether to readonly switch | _boolean_ | `false` |
+| `loading`        | Whether to show loading icon | _boolean_ | `false` |
+| `ripple`         | Whether to open ripple | _boolean_ | `true` |
+| `color`          | Background color when open | _string_ | `#2979ff` |
+| `close-color`    | Background color when close | _string_ | `#fff` |
+| `loading-color`  | Color of loading icon | _string_ | `#fff` |
+| `size`           | Size of switch | _string \| number_ | - |
+| `rules`          | Validation rules | _array_  | - |
 
 ### Events
 

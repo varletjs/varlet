@@ -1,3 +1,49 @@
+<script setup>
+import VarSelect from '..'
+import VarOption from '../../option'
+import VarIcon from '../../icon'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import dark from '../../themes/dark'
+import { reactive, toRefs } from 'vue'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { use, pack } from './locale'
+
+const values = reactive({
+  value: undefined,
+  value2: undefined,
+  value3: undefined,
+  value4: undefined,
+  value5: [],
+  value6: undefined,
+  value7: [],
+  value8: undefined,
+  value9: undefined,
+  value10: [],
+  value11: undefined,
+  value12: undefined,
+})
+const { value, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12 } =
+  toRefs(values)
+
+watchLang((lang) => {
+  use(lang)
+  values.value = undefined
+  values.value2 = undefined
+  values.value3 = undefined
+  values.value4 = undefined
+  values.value6 = undefined
+  values.value5 = []
+  values.value7 = []
+  values.value8 = undefined
+  values.value9 = undefined
+  values.value10 = []
+  values.value11 = undefined
+  values.value12 = undefined
+})
+
+watchDarkMode(dark)
+</script>
+
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-select :placeholder="pack.placeholder" v-model="value">
@@ -87,7 +133,7 @@
   </var-select>
 
   <app-type>{{ pack.offsetY }}</app-type>
-  <var-select :placeholder="pack.placeholder" v-model="value12" :offset-y="-138">
+  <var-select :placeholder="pack.placeholder" v-model="value12" offset-y="-36.2vw">
     <var-option :label="pack.emberSprit" />
     <var-option :label="pack.stormSpirit" />
     <var-option :label="pack.voidSpirit" />
@@ -96,66 +142,6 @@
 
   <div class="space"></div>
 </template>
-
-<script>
-import VarSelect from '..'
-import VarOption from '../../option'
-import VarIcon from '../../icon'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import dark from '../../themes/dark'
-import { reactive, toRefs } from 'vue'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-import { use, pack } from './locale'
-
-export default {
-  name: 'SelectExample',
-  components: {
-    VarSelect,
-    VarOption,
-    VarIcon,
-    AppType,
-  },
-  setup() {
-    const values = reactive({
-      value: undefined,
-      value2: undefined,
-      value3: undefined,
-      value4: undefined,
-      value5: [],
-      value6: undefined,
-      value7: [],
-      value8: undefined,
-      value9: undefined,
-      value10: [],
-      value11: undefined,
-      value12: undefined,
-    })
-
-    watchLang((lang) => {
-      use(lang)
-      values.value = undefined
-      values.value2 = undefined
-      values.value3 = undefined
-      values.value4 = undefined
-      values.value6 = undefined
-      values.value5 = []
-      values.value7 = []
-      values.value8 = undefined
-      values.value9 = undefined
-      values.value10 = []
-      values.value11 = undefined
-      values.value12 = undefined
-    })
-
-    watchDarkMode(dark)
-
-    return {
-      pack,
-      ...toRefs(values),
-    }
-  },
-}
-</script>
 
 <style scoped lang="less">
 .relation {

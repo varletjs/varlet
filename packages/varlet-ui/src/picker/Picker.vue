@@ -69,7 +69,7 @@
             @transitionend="handleTransitionend(c)"
           >
             <div :class="n('option')" :style="{ height: `${optionHeight}px` }" v-for="t in c.column.texts" :key="t">
-              <div :class="n('text')">{{ t }}</div>
+              <div :class="n('text')">{{ textFormatter(t, c.columnIndex) }}</div>
             </div>
           </div>
         </div>
@@ -91,7 +91,8 @@ import VarButton from '../button'
 import VarPopup from '../popup'
 import { defineComponent, watch, ref, computed, Transition, toRaw } from 'vue'
 import { props } from './props'
-import { isArray, dt } from '../utils/shared'
+import { isArray } from '@varlet/shared'
+import { dt } from '../utils/shared'
 import { toPxNum, getTranslate } from '../utils/elements'
 import { pack } from '../locale'
 import type { Ref, ComputedRef, ComponentPublicInstance } from 'vue'
@@ -103,6 +104,7 @@ export interface ScrollColumn {
   id: number
   touching: boolean
   index: number
+  columnIndex: number
   prevY: number | undefined
   momentumPrevY: number | undefined
   momentumTime: number
@@ -246,7 +248,7 @@ export default defineComponent({
     }
 
     const normalizeNormalColumns = (normalColumns: NormalColumn[]) => {
-      return normalColumns.map((column: NormalColumn | any[]) => {
+      return normalColumns.map((column: NormalColumn | any[], columnIndex: number) => {
         const normalColumn = (isArray(column) ? { texts: column } : column) as NormalColumn
         const scrollColumn: ScrollColumn = {
           id: sid++,
@@ -255,13 +257,14 @@ export default defineComponent({
           touching: false,
           translate: center.value,
           index: normalColumn.initialIndex ?? 0,
+          columnIndex,
           duration: 0,
           momentumTime: 0,
           column: normalColumn,
           scrollEl: null,
           scrolling: false,
         }
-        scrollTo(scrollColumn, scrollColumn.index, 200)
+        scrollTo(scrollColumn, scrollColumn.index, 0, true)
         return scrollColumn
       })
     }
@@ -269,20 +272,28 @@ export default defineComponent({
     const normalizeCascadeColumns = (cascadeColumns: CascadeColumn[]) => {
       const scrollColumns: ScrollColumn[] = []
 
-      createChildren(scrollColumns, cascadeColumns)
+      createChildren(scrollColumns, cascadeColumns, 0, true)
 
       return scrollColumns
     }
 
-    const createChildren = (scrollColumns: ScrollColumn[], children: CascadeColumn[]) => {
+    const createChildren = (
+      scrollColumns: ScrollColumn[],
+      children: CascadeColumn[],
+      columnIndex: number,
+      initial = false
+    ) => {
       if (isArray(children) && children.length) {
+        const index = initial ? props.cascadeInitialIndexes[scrollColumns.length] ?? 0 : 0
+
         const scrollColumn: ScrollColumn = {
           id: sid++,
           prevY: undefined,
           momentumPrevY: undefined,
           touching: false,
           translate: center.value,
-          index: 0,
+          index,
+          columnIndex,
           duration: 0,
           momentumTime: 0,
           column: {
@@ -294,13 +305,23 @@ export default defineComponent({
         }
 
         scrollColumns.push(scrollColumn)
-        createChildren(scrollColumns, (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children)
+        scrollTo(scrollColumn, scrollColumn.index, 0, true)
+        createChildren(
+          scrollColumns,
+          (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children,
+          columnIndex + 1,
+          initial
+        )
       }
     }
 
     const rebuildChildren = (scrollColumn: ScrollColumn) => {
       scrollColumns.value.splice(scrollColumns.value.indexOf(scrollColumn) + 1)
-      createChildren(scrollColumns.value, (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children)
+      createChildren(
+        scrollColumns.value,
+        (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children,
+        scrollColumn.columnIndex + 1
+      )
     }
 
     const change = (scrollColumn: ScrollColumn) => {
@@ -370,7 +391,10 @@ export default defineComponent({
         const { indexes } = getPicked()
         prevIndexes = [...indexes]
       },
-      { immediate: true }
+      {
+        immediate: true,
+        deep: true,
+      }
     )
 
     return {

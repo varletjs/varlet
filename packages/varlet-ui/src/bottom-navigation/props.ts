@@ -14,6 +14,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  safeArea: {
+    type: Boolean,
+    default: false,
+  },
   zIndex: {
     type: [Number, String] as PropType<number | string>,
     default: 1,
@@ -37,7 +41,6 @@ export const props = {
     type: Function as PropType<() => void>,
   },
   fabProps: {
-    type: [Object] as PropType<Partial<ButtonProps>>,
-    default: {},
+    type: Object as PropType<Partial<ButtonProps>>,
   },
 }

@@ -1,94 +1,132 @@
 # 输入框
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Input } from '@varlet/ui'
-
-createApp().use(Input)
-```
-
 ### 基本使用
 
 输入框的行为和基本原生一致，用户输入时始终获得一个符合 `type` 规则的字符串
 
-```js
+```html
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const value = ref('')
+const value = ref('')
+</script>
 
-    return { value }
-  }
-}
+<template>
+  <var-input placeholder="请输入文本" v-model="value" />
+</template>
 ```
 
-```html
-<var-input placeholder="请输入文本" v-model="value" />
-```
 
 ### 朴素模式
 
 如果只需要组件的基本功能，可以通过属性去除部分样式。
 
 ```html
-<var-input
-  :hint="false"
-  :line="false"
-  placeholder="请输入文本"
-  v-model="value"
-/>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-input
+    :hint="false"
+    :line="false"
+    placeholder="请输入文本"
+    v-model="value"
+  />
+</template>
 ```
 
 ### 文本域
 
 ```html
-<var-input placeholder="请输入文本" textarea v-model="value" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-input placeholder="请输入文本" textarea v-model="value" />
+</template>
 ```
 
 ### 最大长度
 
 ```html
-<var-input placeholder="请输入文本" :maxlength="10" v-model="value" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-input placeholder="请输入文本" :maxlength="10" v-model="value" />
+</template>
 ```
 
 ### 禁用
 
 ```html
-<var-input placeholder="请输入文本" disabled v-model="value" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-input placeholder="请输入文本" disabled v-model="value" />
+</template>
 ```
 
 ### 只读
 
 ```html
-<var-input placeholder="请输入文本" readonly v-model="value" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-input placeholder="请输入文本" readonly v-model="value" />
+</template>
 ```
 
 ### 可清除
 
 ```html
-<var-input placeholder="请输入文本" clearable v-model="value" />
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-input placeholder="请输入文本" clearable v-model="value" />
+</template>
 ```
 
 ### 显示图标
-```js
-import { createApp } from 'vue'
-import { Icon } from '@varlet/ui'
-
-createApp().use(Icon)
-```
 
 ```html
-<var-input placeholder="请输入文本" v-model="value">
-  <template #prepend-icon>
-    <var-icon name="plus"/>
-  </template>
-  <template #append-icon>
-    <var-icon name="minus"/>
-  </template>
-</var-input>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-input placeholder="请输入文本" v-model="value">
+    <template #prepend-icon>
+      <var-icon name="plus"/>
+    </template>
+    <template #append-icon>
+      <var-icon name="minus"/>
+    </template>
+  </var-input>
+</template>
 ```
 
 ### 字段校验
@@ -97,11 +135,19 @@ createApp().use(Icon)
 以外的值将转换为文本作为用户提示。
 
 ```html
-<var-input
-  placeholder="请输入文本"
-  :rules="[v => v.length > 6 || '文本长度必须大于6']"
-  v-model="value"
-/>
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-input
+    placeholder="请输入文本"
+    :rules="[v => v.length > 6 || '文本长度必须大于6']"
+    v-model="value"
+  />
+</template>
 ```
 
 ## API
@@ -125,6 +171,7 @@ createApp().use(Icon)
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `clearable` | 是否可清除 | _boolean_ | `false` |
 | `resize` | 文本域是否可以拖动调整尺寸 | _boolean_ | `false` |
+| `autofocus` | 是否自动聚焦 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string) => any>_ | `-` |
 

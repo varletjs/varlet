@@ -258,13 +258,13 @@ exports[`test form with radio 4`] = `
 
 exports[`test form with rate 1`] = `
 "<div class=\\"var-form\\">
-  <div class=\\"var-rate__warp\\">
+  <div class=\\"var-rate__wrap\\">
     <div class=\\"var-rate\\">
-      <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
-      <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
-      <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
-      <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
-      <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
+      <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div style=\\"margin-right: 0px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
     </div>
     <transition-stub>
       <!--v-if-->
@@ -275,13 +275,13 @@ exports[`test form with rate 1`] = `
 
 exports[`test form with rate 2`] = `
 "<div class=\\"var-form\\">
-  <div class=\\"var-rate__warp\\">
+  <div class=\\"var-rate__wrap\\">
     <div class=\\"var-rate\\">
-      <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
-      <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
-      <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
-      <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
-      <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
+      <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div style=\\"margin-right: 0px; border-radius: 50%;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
     </div>
     <transition-stub>
       <div class=\\"var-form-details\\">
@@ -295,13 +295,13 @@ exports[`test form with rate 2`] = `
 
 exports[`test form with rate 3`] = `
 "<div class=\\"var-form\\">
-  <div class=\\"var-rate__warp\\">
+  <div class=\\"var-rate__wrap\\">
     <div class=\\"var-rate\\">
-      <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
-      <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
-      <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
-      <div style=\\"margin-right: 2px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
-      <div style=\\"margin-right: 0px; width: 24px; height: 24px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
+      <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div style=\\"border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div style=\\"margin-right: 0px; border-radius: 50%;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
     </div>
     <transition-stub>
       <!--v-if-->
@@ -500,10 +500,10 @@ exports[`test form with slider 3`] = `
 exports[`test form with switch 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-switch\\">
-    <div class=\\"var-switch__block var-switch--disable\\" style=\\"height: 24px; width: 40px;\\">
-      <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: brightness(.6);\\" class=\\"var-switch__track\\"></div>
-      <div class=\\"var-switch__ripple\\" style=\\"left: -10px; color: rgb(153, 153, 153); width: 40px; height: 40px;\\">
-        <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2\\">
+    <div class=\\"var-switch__block var-switch--disable\\">
+      <div style=\\"filter: brightness(.6);\\" class=\\"var-switch__track\\"></div>
+      <div class=\\"var-switch__ripple\\" style=\\"color: rgb(153, 153, 153);\\">
+        <div class=\\"var-switch__handle var-elevation--2\\">
           <!--v-if-->
         </div>
       </div>
@@ -518,10 +518,10 @@ exports[`test form with switch 1`] = `
 exports[`test form with switch 2`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-switch\\">
-    <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
-      <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track-error\\"></div>
-      <div class=\\"var-switch__ripple\\" style=\\"left: -10px; color: rgb(153, 153, 153); width: 40px; height: 40px;\\">
-        <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2 var-switch__handle-error\\">
+    <div class=\\"var-switch__block\\">
+      <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--error\\"></div>
+      <div class=\\"var-switch__ripple\\" style=\\"color: rgb(153, 153, 153);\\">
+        <div class=\\"var-switch__handle var-elevation--2 var-switch__handle--error\\">
           <!--v-if-->
         </div>
       </div>
@@ -539,10 +539,10 @@ exports[`test form with switch 2`] = `
 exports[`test form with switch 3`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-switch\\">
-    <div class=\\"var-switch__block\\" style=\\"height: 24px; width: 40px;\\">
-      <div style=\\"height: 14.399999999999999px; width: 38px; border-radius: 13.333333333333334px; filter: brightness(.6);\\" class=\\"var-switch__track\\"></div>
-      <div class=\\"var-switch__ripple\\" style=\\"left: -10px; color: rgb(153, 153, 153); width: 40px; height: 40px;\\">
-        <div style=\\"width: 20px; height: 20px;\\" class=\\"var-switch__handle var-elevation--2\\">
+    <div class=\\"var-switch__block\\">
+      <div style=\\"filter: brightness(.6);\\" class=\\"var-switch__track\\"></div>
+      <div class=\\"var-switch__ripple\\" style=\\"color: rgb(153, 153, 153);\\">
+        <div class=\\"var-switch__handle var-elevation--2\\">
           <!--v-if-->
         </div>
       </div>
@@ -558,7 +558,7 @@ exports[`test form with uploader 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-uploader var--box\\">
     <div class=\\"var-uploader__file-list\\">
-      <div class=\\"var--relative var-uploader__action var-elevation--2 var-uploader--disabled\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+      <div class=\\"var-uploader__action var-elevation--2 var-uploader--disabled\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
     </div>
     <transition-stub>
       <!--v-if-->
@@ -579,7 +579,7 @@ exports[`test form with uploader 2`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-uploader var--box\\">
     <div class=\\"var-uploader__file-list\\">
-      <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+      <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
     </div>
     <transition-stub>
       <!--v-if-->
@@ -600,7 +600,7 @@ exports[`test form with uploader 3`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-uploader var--box\\">
     <div class=\\"var-uploader__file-list\\">
-      <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+      <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
     </div>
     <transition-stub>
       <div class=\\"var-form-details\\">
@@ -624,7 +624,7 @@ exports[`test form with uploader 4`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-uploader var--box\\">
     <div class=\\"var-uploader__file-list\\">
-      <div class=\\"var--relative var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+      <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
     </div>
     <transition-stub>
       <!--v-if-->

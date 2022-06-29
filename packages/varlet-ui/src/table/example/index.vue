@@ -1,3 +1,34 @@
+<script setup>
+import VarTable from '..'
+import VarPagination from '../../pagination'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import dark from '../../themes/dark'
+import { ref } from 'vue'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { use, pack } from './locale'
+
+const gen = (current, size) => {
+  return Array.from({ length: size }).map((_, index) => {
+    const id = (current - 1) * size + index + 1
+
+    return {
+      name: `Name ${id}`,
+      math: id,
+      english: id,
+    }
+  })
+}
+
+const list = ref(gen(1, 10))
+
+const get = (current, size) => {
+  list.value = gen(current, size)
+}
+
+watchLang(use)
+watchDarkMode(dark)
+</script>
+
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-table>
@@ -46,67 +77,6 @@
     </template>
   </var-table>
 </template>
-
-<script>
-import VarTable from '..'
-import VarPagination from '../../pagination'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import dark from '../../themes/dark'
-import { ref } from 'vue'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-import { use, pack } from './locale'
-
-export const gen = (current, size) => {
-  return Array.from({ length: size }).map((_, index) => {
-    const id = (current - 1) * size + index + 1
-
-    return {
-      name: `Name ${id}`,
-      math: id,
-      english: id,
-    }
-  })
-}
-
-export default {
-  name: 'TableExample',
-  components: {
-    VarTable,
-    VarPagination,
-    AppType,
-  },
-  setup() {
-    const data = ref([
-      {
-        name: 'tom',
-        math: 100,
-        english: 135,
-      },
-      {
-        name: 'jerry',
-        math: 124,
-        english: 38,
-      },
-    ])
-
-    const list = ref(gen(1, 10))
-
-    const get = (current, size) => {
-      list.value = gen(current, size)
-    }
-
-    watchLang(use)
-    watchDarkMode(dark)
-
-    return {
-      pack,
-      data,
-      list,
-      get,
-    }
-  },
-}
-</script>
 
 <style lang="less" scoped>
 .footer {

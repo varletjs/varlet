@@ -4,69 +4,62 @@
 
 Steps is a navigation bar that guides users through the steps of a task.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Steps, Step } from '@varlet/ui'
-
-createApp().use(Steps).use(Step)
-```
-
 ### Basic Usage
 
 Use `active` prop to control the progress of step, value is index of step and is counted from `0`.
 
 ```html
-<var-steps :active="active">
-  <var-step>Step1</var-step>
-  <var-step>Step2</var-step>
-  <var-step>Step3</var-step>
-  <var-step>Step4</var-step>
-</var-steps>
-<var-button type="primary" block @click="next">next</var-button>
-```
-
-```javascript
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const active = ref(0)
+const active = ref(0)
 
-    const next = () => {
-      active.value = (active.value + 1) % 4
-    }
-
-    return {
-      active,
-      next
-    }
-  }
+const next = () => {
+  active.value = (active.value + 1) % 4
 }
+</script>
+
+<template>
+  <var-steps :active="active">
+    <var-step>Step1</var-step>
+    <var-step>Step2</var-step>
+    <var-step>Step3</var-step>
+    <var-step>Step4</var-step>
+  </var-steps>
+  <var-button type="primary" block @click="next">next</var-button>
+</template>
 ```
+
 
 ### Custom Style
 
 ```html
-<var-steps
-  :active="active"
-  active-color="#f44336"
-  inactive-color="#e99eb4"
->
-  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
-    Step1
-  </var-step>
-  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
-    Step2
-  </var-step>
-  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
-    Step3
-  </var-step>
-  <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
-    Step4
-  </var-step>
-</var-steps>
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-steps
+    :active="active"
+    active-color="#f44336"
+    inactive-color="#e99eb4"
+  >
+    <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
+      Step1
+    </var-step>
+    <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
+      Step2
+    </var-step>
+    <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
+      Step3
+    </var-step>
+    <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
+      Step4
+    </var-step>
+  </var-steps>
+</template>
 ```
 
 ### Vertical Mode
@@ -74,12 +67,20 @@ export default {
 Change the display direction of the step bar through the `direction` attribute.
 
 ```html
-<var-steps direction="vertical" :active="active">
-  <var-step>Step1</var-step>
-  <var-step>Step2</var-step>
-  <var-step>Step3</var-step>
-  <var-step>Step4</var-step>
-</var-steps>
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-steps direction="vertical" :active="active">
+    <var-step>Step1</var-step>
+    <var-step>Step2</var-step>
+    <var-step>Step3</var-step>
+    <var-step>Step4</var-step>
+  </var-steps>
+</template>
 ```
 
 ## API

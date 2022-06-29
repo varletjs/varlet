@@ -2,53 +2,99 @@
 @card-background: #fff;
 @card-border-radius: 4px;
 @card-image-width: 100%;
+@card-row-image-width: 140px;
+@card-row-height: 140px;
 @card-image-height: 200px;
 @card-title-color: #333;
 @card-title-font-size: 20px;
 @card-title-padding: 0 12px;
 @card-title-margin: 15px 0 0 0;
+@card-title-row-margin: 12px 0;
 @card-subtitle-color: rgba(0, 0, 0, 0.6);
 @card-subtitle-font-size: 14px;
-@card-subtitle-padding: 0 13px;
+@card-subtitle-padding: 0 12px;
+@card-subtitle-row-margin: -8px 0 0 0;
 @card-subtitle-margin: 10px 0 0 0;
 @card-description-color: rgba(0, 0, 0, 0.6);
 @card-description-font-size: 14px;
 @card-description-margin: 20px 0 0 0;
 @card-description-padding: 0 13px;
 @card-footer-padding: 0 12px;
+@card-footer-right: 13px;
+@card-footer-bottom: 9px;
 @card-footer-margin: 30px 0 0px 0;
 @card-line-height: 22px;
+@card-row-line-height: 1.5;
+@card-floating-buttons-bottom: 16px;
+@card-floating-buttons-right: 16px;
+@card-floating-buttons-color: #fff;
+@card-close-button-icon-size: 24px;
+@card-close-button-size: 56px;
+@card-close-button-primary-color: #212121;
 
 :root {
   --card-padding: @card-padding;
   --card-background: @card-background;
   --card-border-radius: @card-border-radius;
   --card-image-width: @card-image-width;
+  --card-row-image-width: @card-row-image-width;
   --card-image-height: @card-image-height;
+  --card-row-height: @card-row-height;
   --card-title-color: @card-title-color;
   --card-title-font-size: @card-title-font-size;
   --card-title-padding: @card-title-padding;
   --card-title-margin: @card-title-margin;
+  --card-title-row-margin: @card-title-row-margin;
   --card-subtitle-color: @card-subtitle-color;
   --card-subtitle-font-size: @card-subtitle-font-size;
   --card-subtitle-padding: @card-subtitle-padding;
   --card-subtitle-margin: @card-subtitle-margin;
+  --card-subtitle-row-margin: @card-subtitle-row-margin;
   --card-description-color: @card-description-color;
   --card-description-font-size: @card-description-font-size;
   --card-description-margin: @card-description-margin;
   --card-description-padding: @card-description-padding;
   --card-footer-padding: @card-footer-padding;
+  --card-footer-right: @card-footer-right;
+  --card-footer-bottom: @card-footer-bottom;
   --card-footer-margin: @card-footer-margin;
   --card-line-height: @card-line-height;
+  --card-row-line-height: @card-row-line-height;
+  --card-floating-buttons-bottom: @card-floating-buttons-bottom;
+  --card-floating-buttons-right: @card-floating-buttons-right;
+  --card-floating-buttons-color: @card-floating-buttons-color;
+  --card-close-button-icon-size: @card-close-button-icon-size;
+  --card-close-button-size: @card-close-button-size;
+  --card-close-button-primary-color: @card-close-button-primary-color;
 }
 
 .var-card {
   border-radius: var(--card-border-radius);
   overflow: hidden;
-  padding: var(--card-padding);
-  line-height: var(--card-line-height);
-  background: var(--card-background);
-  transition: background-color 0.25s;
+  width: 100%;
+
+  &__floater {
+    display: flex;
+    flex-direction: column;
+    position: static;
+    line-height: var(--card-line-height);
+    background: var(--card-background);
+    transition-timing-function: cubic-bezier(0.45, 0.19, 0.06, 0.89);
+  }
+
+  &__container {
+    padding: var(--card-padding);
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  &--layout-row &__floater {
+    min-height: var(--card-row-height);
+    height: 100%;
+    flex-direction: row;
+    position: relative;
+    line-height: var(--card-row-line-height);
+  }
 
   &__image {
     width: var(--card-image-width);
@@ -56,11 +102,27 @@
     display: block;
   }
 
+  &--layout-row &__image {
+    width: var(--card-row-image-width);
+    height: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+
   &__title {
     font-size: var(--card-title-font-size);
     padding: var(--card-title-padding);
     margin: var(--card-title-margin);
     color: var(--card-title-color);
+    word-break: break-word;
+  }
+
+  &--layout-row &__title {
+    max-width: 100%;
+    overflow: hidden;
+    margin: var(--card-title-row-margin);
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__subtitle {
@@ -68,6 +130,16 @@
     color: var(--card-subtitle-color);
     padding: var(--card-subtitle-padding);
     margin: var(--card-subtitle-margin);
+    word-break: break-word;
+  }
+
+  &--layout-row &__subtitle {
+    margin: var(--card-subtitle-row-margin);
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
 
   &__description {
@@ -79,7 +151,39 @@
   }
 
   &__footer {
+    display: flex;
+    justify-content: flex-end;
     padding: var(--card-footer-padding);
     margin: var(--card-footer-margin);
+  }
+
+  &--layout-row &__footer {
+    position: absolute;
+    padding: 0;
+    right: var(--card-footer-right);
+    bottom: var(--card-footer-bottom);
+  }
+
+  &__content {
+    overflow: hidden;
+    transition-timing-function: cubic-bezier(0.45, 0.19, 0.06, 0.89);
+  }
+
+  &__floating-buttons {
+    position: fixed;
+    bottom: var(--card-floating-buttons-bottom);
+    right: var(--card-floating-buttons-right);
+    color: var(--card-floating-buttons-color);
+  }
+
+  &__close-button[var-card-cover] {
+    padding: var(--card-close-button-padding);
+    width: var(--card-close-button-size);
+    height: var(--card-close-button-size);
+    background-color: var(--card-close-button-primary-color);
+  }
+
+  &__close-button-icon[var-card-cover] {
+    font-size: var(--card-close-button-icon-size);
   }
 }

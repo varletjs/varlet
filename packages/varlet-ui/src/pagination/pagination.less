@@ -51,6 +51,7 @@
   display: flex;
   align-items: center;
   list-style: none;
+  width: 100%;
   margin: 0;
   font-size: var(--pagination-font-size);
   padding: 0;
@@ -67,7 +68,7 @@
     outline: none;
     transition: all 0.25s;
     user-select: none;
-    background: var(--pagination-item-background);
+    background-color: var(--pagination-item-background);
 
     &:hover {
       background-color: var(--pagination-hover-bg-color);
@@ -78,26 +79,31 @@
       background-color: var(--pagination-active-bg-color) !important;
     }
 
-    &--disabled--active {
-      background: var(--pagination-bg-disabled-color);
-    }
-
     &--hide {
       display: none;
     }
 
     &--disabled {
-      cursor: default !important;
+      cursor: default;
       color: var(--pagination-disabled-color);
+      background-color: unset;
 
       &:hover {
         background-color: unset;
       }
-    }
 
-    &--hover {
-      &:hover {
-        background: inherit;
+      &--hover {
+        &:hover {
+          background-color: inherit;
+        }
+      }
+
+      &--active {
+        background-color: var(--pagination-bg-disabled-color);
+
+        &:hover {
+          background-color: var(--pagination-bg-disabled-color);
+        }
       }
     }
   }
@@ -123,6 +129,10 @@
       display: flex;
       align-items: center;
       cursor: pointer;
+
+      &--disabled {
+        cursor: default;
+      }
     }
   }
 

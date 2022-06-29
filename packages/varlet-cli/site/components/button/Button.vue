@@ -7,7 +7,7 @@
       block ? 'var-site--flex var-site-button--block' : 'var-site--inline-flex',
       disabled ? 'var-site-button--disabled' : null,
       text ? `var-site-button--text-${type}` : `var-site-button--${type}`,
-      text ? 'var-site-button--text' : 'var-elevation--1',
+      text ? 'var-site-button--text' : 'var-site-elevation--1',
       text && disabled ? 'var-site-button--text-disabled' : null,
       round ? 'var-site-button--round' : null,
       outline ? 'var-site-button--outline' : null,

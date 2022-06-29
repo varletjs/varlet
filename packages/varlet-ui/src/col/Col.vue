@@ -4,7 +4,7 @@
       classes(
         n(),
         'var--box',
-        [span, n(`--span-${span}`)],
+        [span >= 0, n(`--span-${span}`)],
         [offset, n(`--offset-${offset}`)],
         ...getSize('xs', xs),
         ...getSize('sm', sm),
@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, watch } from 'vue'
-import { isPlainObject, toNumber } from '../utils/shared'
+import { isPlainObject, toNumber } from '@varlet/shared'
 import { props } from './props'
 import { useRow } from './provide'
 import { toSizeUnit } from '../utils/elements'
@@ -53,16 +53,17 @@ export default defineComponent({
     const getSize = (mode: string, size: string | number | SizeDescriptor | undefined) => {
       const classes: string[] = []
 
-      if (!size) {
+      if (size == null) {
         return classes
       }
 
       if (isPlainObject(size)) {
-        const { span, offset } = size
-        span && classes.push(n(`--span-${mode}-${span}`))
+        const { offset, span } = size
+
+        Number(span) >= 0 && classes.push(n(`--span-${mode}-${span}`))
         offset && classes.push(n(`--offset-${mode}-${offset}`))
       } else {
-        classes.push(n(`--span-${mode}-${size}`))
+        Number(size) >= 0 && classes.push(n(`--span-${mode}-${size}`))
       }
 
       return classes

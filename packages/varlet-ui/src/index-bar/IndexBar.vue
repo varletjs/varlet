@@ -7,7 +7,7 @@
         :key="anchorName"
         :class="classes(n('anchor-item'), [active === anchorName, n('anchor-item--active')])"
         :style="{ color: active === anchorName && highlightColor ? highlightColor : '' }"
-        @click="anchorClick(anchorName)"
+        @click="anchorClick(anchorName, true)"
       >
         {{ anchorName }}
       </li>
@@ -17,7 +17,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref, watch, onMounted, onBeforeUnmount } from 'vue'
-import { easeInOutCubic, isPlainObject, toNumber } from '../utils/shared'
+import { isPlainObject, toNumber } from '@varlet/shared'
+import { easeInOutCubic } from '../utils/shared'
 import {
   doubleRaf,
   getParentScroller,
@@ -26,6 +27,7 @@ import {
   nextTickFrame,
   requestAnimationFrame,
   scrollTo as varScrollTo,
+  toPxNum,
 } from '../utils/elements'
 import { useIndexAnchors } from './provide'
 import { props } from './props'
@@ -50,7 +52,7 @@ export default defineComponent({
 
     const sticky: ComputedRef<boolean> = computed(() => props.sticky)
     const cssMode: ComputedRef<boolean> = computed(() => props.cssMode)
-    const stickyOffsetTop: ComputedRef<number> = computed(() => props.stickyOffsetTop)
+    const stickyOffsetTop: ComputedRef<number> = computed(() => toPxNum(props.stickyOffsetTop))
     const zIndex: ComputedRef<number | string> = computed(() => props.zIndex)
 
     const indexBarProvider: IndexBarProvider = {
@@ -121,7 +123,7 @@ export default defineComponent({
 
     // expose
     const scrollTo = (index: number | string) => {
-      requestAnimationFrame(() => anchorClick(index, true))
+      requestAnimationFrame(() => anchorClick(index))
     }
 
     watch(

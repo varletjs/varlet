@@ -4,33 +4,19 @@
 
 返回页面顶部的操作按钮。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { BackTop } from '@varlet/ui'
-
-createApp().use(BackTop)
-```
-
 ### 基本使用
 
 ```html
-<div>
-  <var-cell v-for="list in lists" :key="list">Scroll to bottom {{ list }}</var-cell>
-  <var-back-top :duration="300" />
-</div>
-```
-```javascript
+<script setup>
 const lists = [...Array(100).keys()]
+</script>
 
-export default {
-  setup() {
-    return {
-      lists
-    }
-  }
-}
+<template>
+  <div>
+    <var-cell v-for="list in lists" :key="list">Scroll to bottom {{ list }}</var-cell>
+    <var-back-top :duration="300" />
+  </div>
+</template>
 ```
 
 ## API
@@ -41,8 +27,8 @@ export default {
 |---------------------|-------------------------------------------|------|--------------|
 | `target`            | 触发滚动的对象，如果为 undefined 会监听距离最近的一个可滚动的祖先节点	 | _string \| HTMLElement_ | `-` |
 | `visibility-height` | 滚动高度达到此参数值才出现                             | _string \| number_      | `200` |
-| `bottom`            | `BackTop` 距离页面底部的高度                       | _string \| number_      | `40` |
-| `right`            | `BackTop` 距离页面右侧的宽度                       | _string \| number_      | `40` |
+| `bottom`            | `BackTop` 距离页面底部的距离                       | _string \| number_      | `40` |
+| `right`            | `BackTop` 距离页面右侧的距离                       | _string \| number_      | `40` |
 | `duration`          | 回到顶部所需时间（ms）                              | _number_ | `300`        |
 
 ### 事件

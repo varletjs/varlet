@@ -1,17 +1,15 @@
 <template>
-  <div
-    :class="n()"
-    :style="{ pointerEvents: isForbidClick ? 'auto' : 'none', zIndex }"
-    v-show="show"
-  >
+  <div :class="n()" :style="{ pointerEvents: isForbidClick ? 'auto' : 'none', zIndex }" v-show="show">
     <div
-      :class="classes(
-        n('wrapper'),
-        n(`wrapper-${position}`),
-        'var-elevation--4',
-        [vertical, n('vertical')],
-        [type && SNACKBAR_TYPE.includes(type), n(`wrapper-${type}`)]
-      )"
+      :class="
+        classes(
+          n('wrapper'),
+          n(`wrapper-${position}`),
+          'var-elevation--4',
+          [vertical, n('vertical')],
+          [type && SNACKBAR_TYPE.includes(type), n(`wrapper-${type}`)]
+        )
+      "
       :style="{ zIndex }"
     >
       <div :class="[n('content'), contentClass]">
@@ -59,7 +57,10 @@ export default defineComponent({
     const timer: Ref = ref(null)
     const { zIndex } = useZIndex(() => props.show, 1)
 
-    useLock(props, 'show', 'lockScroll')
+    useLock(
+      () => props.show,
+      () => props.lockScroll
+    )
 
     const isForbidClick: ComputedRef<boolean> = computed(() => props.type === 'loading' || props.forbidClick)
 

@@ -4,87 +4,42 @@
 
 A minimal table, when you need to display some data in the form of a table, you may use it.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Table } from '@varlet/ui'
-
-createApp().use(Table)
-```
-
 ### Basic Usage
 
-```vue
-import BasicExample from '../example/Basic.vue'
-```
-
-
 ```html
-<var-table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Math</th>
-      <th>English</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Jerry</td>
-      <td>124</td>
-      <td>38</td>
-    </tr> 
-    <tr>
-      <td>Tom</td>
-      <td>100</td>
-      <td>135</td>
-    </tr>
-  </tbody>
-</var-table>
+<template>
+  <var-table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Math</th>
+        <th>English</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Jerry</td>
+        <td>124</td>
+        <td>38</td>
+      </tr> 
+      <tr>
+        <td>Tom</td>
+        <td>100</td>
+        <td>135</td>
+      </tr>
+    </tbody>
+  </var-table>
+</template>
 ```
 
 ### Footer Slots
 
 You can insert something in the tail slot, the most common is to insert a `Pagination`.
 
-```vue
-import FooterSlots from '../example/FooterSlots.vue'
-```
-
 ```html
-<var-table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Math</th>
-      <th>English</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr v-for="l in list" :key="l.name">
-      <td>{{ l.name }}</td>
-      <td>{{ l.math }}</td>
-      <td>{{ l.english }}</td>
-    </tr>
-  </tbody>
+<script>
+import { ref } from 'vue'
 
-  <template #footer>
-    <div class="footer">
-      <!-- Paging in the mobile preview mode uses the simple true mode, which is more friendly to small screen devices -->
-      <var-pagination
-        :simple="false"
-        :current="1"
-        :total="100"
-        :size-option="[5, 10]"
-        @change="get"
-      />
-    </div>
-  </template>
-</var-table>
-```
-
-```js
 const gen = (current, size) => {
   return Array.from({ length: size }).map((_, index) => {
     const id = (current - 1) * size + index + 1
@@ -96,39 +51,63 @@ const gen = (current, size) => {
     }
   })
 }
+const list = ref(gen(1, 10))
 
-export default {
-  setup() {
-    const list = ref(gen(1, 10))
-
-    const get = (current, size) => {
-      list.value = gen(current, size)
-    }
-    
-    return {
-      list,
-      get
-    }
-  }
+const get = (current, size) => {
+  list.value = gen(current, size)
 }
-```
+</script>
 
-```less
-.footer {
+<template>
+  <var-table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Math</th>
+        <th>English</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="l in list" :key="l.name">
+        <td>{{ l.name }}</td>
+        <td>{{ l.math }}</td>
+        <td>{{ l.english }}</td>
+      </tr>
+    </tbody>
+
+    <template #footer>
+      <div class="table-example-footer">
+        <!-- Paging in the mobile preview mode uses the simple true mode, which is more friendly to small screen devices -->
+        <var-pagination
+          :simple="false"
+          :current="1"
+          :total="100"
+          :size-option="[5, 10]"
+          @change="get"
+        />
+      </div>
+    </template>
+  </var-table>
+</template>
+
+<style>
+.table-example-footer  {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 60px;
   padding: 0 16px;
 }
+</style>
 ```
+
 ## API
 
 ### Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
-| `full-Width` | The width of the `table` (including the scrollable part)	| _string \| number_ | `100%` |
+| Prop         | Description | Type | Default |
+|--------------| -------------- | -------- | ---------- |
+| `full-width` | The width of the `table` (including the scrollable part)	| _string \| number_ | `100%` |
 
 ### Slots
 

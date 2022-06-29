@@ -3,31 +3,75 @@
 ### 介绍
 使元素点击时生成一个水波扩散的效果。
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Ripple } from '@varlet/ui'
-
-createApp().use(Ripple)
-```
 
 ### 基本使用
 
 ```html
-<div class="block var-elevation--2" v-ripple>点击</div>
+<template>
+  <div class="ripple-example-block var-elevation--2" v-ripple>点击</div>
+</template>
+
+<style>
+.ripple-example-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  user-select: none;
+  cursor: pointer;
+  color: #888;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.25s;
+}
+</style>
 ```
 
 ### 修改颜色
 
 ```html
-<div class="block var-elevation--2" v-ripple="{ color: '#2979ff' }">点击</div>
+<template>
+  <div class="ripple-example-block var-elevation--2" v-ripple="{ color: '#2979ff' }">
+    点击
+  </div>
+</template>
+
+<style>
+.ripple-example-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  user-select: none;
+  cursor: pointer;
+  color: #888;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.25s;
+}
+</style>
 ```
 
 ### 禁用水波
 
 ```html
-<div class="block var-elevation--2" v-ripple="{ disabled: true }">点击</div>
+<template>
+  <div class="ripple-example-block var-elevation--2" v-ripple="{ disabled: true }">
+    点击
+  </div>
+</template>
+
+<style>
+.ripple-example-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  user-select: none;
+  cursor: pointer;
+  color: #888;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.25s;
+}
+</style>
 ```
 
 ## API

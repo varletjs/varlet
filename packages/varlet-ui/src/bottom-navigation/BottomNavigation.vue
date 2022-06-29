@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classes(n(), [fixed, n('--fixed')], [border, n('--border')])"
+    :class="classes(n(), [fixed, n('--fixed')], [border, n('--border')], [safeArea, n('--safe-area')])"
     ref="bottomNavigationDom"
     :style="`z-index:${zIndex}`"
   >
@@ -25,7 +25,7 @@ import { defineComponent, ref, computed, onMounted, onUpdated, watch } from 'vue
 import { props } from './props'
 import { useBottomNavigationItems } from './provide'
 import { createNamespace, call } from '../utils/components'
-import { isNumber } from '../utils/shared'
+import { isNumber } from '@varlet/shared'
 import type { BottomNavigationProvider } from './provide'
 import type { BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 import type { Ref, ComputedRef } from 'vue'

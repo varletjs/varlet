@@ -4,38 +4,40 @@
 
 The cell is a single display item in the list.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { Cell } from '@varlet/ui'
-
-createApp().use(Cell)
-```
-
 ### Basic Usage
 
 ```html
-<var-cell> This is Cell </var-cell>
+<template>
+  <var-cell> This is Cell </var-cell>
+</template>
 ```
 
 ### Show Icon
+
 ```html
-<var-cell icon="fire" title="This is Cell">
-  <template #extra>
-    <var-icon name="information" />
-  </template>
-</var-cell>
+<template>
+  <var-cell icon="fire" title="This is Cell">
+    <template #extra>
+      <var-icon name="information" />
+    </template>
+  </var-cell>
+</template>
 ```
 
 ### Show Description
+
 ```html
-<var-cell title="This is Cell" desc="description" />
+<template>
+  <var-cell title="This is Cell" desc="description" />
+</template>
 ```
 
 ### Show Border
+
 ```html
-<var-cell border> This is Cell </var-cell>
+<template>
+  <var-cell border> This is Cell </var-cell>
+</template>
 ```
 
 ## API
@@ -44,7 +46,7 @@ createApp().use(Cell)
 
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `title` | Title	| _string \| number_ | `-` |
+| `title` | Title | _string \| number_ | `-` |
 | `icon` | Icon name | _string_ | `-` |
 | `desc` | Description | _string_ | `-` |
 | `border` | Whether to show border | _boolean_ | `false` |
@@ -63,6 +65,7 @@ createApp().use(Cell)
 | `extra` | Extra of cell | `-` |
 
 ### Style Variables
+
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable                | Default |
@@ -78,4 +81,3 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--cell-border-right`   | `12px` |
 | `--cell-icon-right`     | `8px` |
 | `--cell-extra-left`     | `8px` |
-

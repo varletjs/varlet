@@ -14,22 +14,35 @@
   display: flex;
   transform: translateX(calc(-1 * var(--rate-action-padding)));
 
+  &__wrap {
+    width: 100%;
+  }
+
   &__content {
     padding: var(--rate-action-padding);
     box-sizing: unset;
     cursor: pointer;
+    display: flex;
+    width: 24px;
+    height: 24px;
+    margin-right: 2px;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
 
-  &--disabled {
-    color: var(--rate-disabled-color) !important;
-  }
-
-  &--error {
-    color: var(--rate-error-color) !important;
+    &-icon[var-rate-cover] {
+      font-size: 24px;
+    }
   }
 
   &--primary {
     color: var(--rate-primary-color);
+  }
+
+  &--disabled {
+    color: var(--rate-disabled-color);
+    cursor: not-allowed;
+  }
+
+  &--error {
+    color: var(--rate-error-color);
   }
 }

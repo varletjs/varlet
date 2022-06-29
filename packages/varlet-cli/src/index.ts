@@ -35,7 +35,11 @@ program
 
 program.command('lint').description('Lint code').action(lint)
 
-program.command('create <name>').description('Create a component directory').action(create)
+program
+  .command('create <name>')
+  .description('Create a component directory')
+  .option('-d, --disableI18n', 'Disable to generator i18n files')
+  .action(create)
 
 program
   .command('jest')

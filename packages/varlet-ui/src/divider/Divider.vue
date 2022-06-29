@@ -21,7 +21,7 @@
 <script lang="ts">
 import { defineComponent, computed, reactive, onMounted, onUpdated, toRefs } from 'vue'
 import { toSizeUnit } from '../utils/elements'
-import { isBool, toNumber } from '../utils/shared'
+import { isBoolean, toNumber } from '@varlet/shared'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
 
@@ -33,7 +33,7 @@ export default defineComponent({
   setup(props, { slots }) {
     const state = reactive({ withText: false })
 
-    const isInset = computed(() => (isBool(props.inset) ? props.inset : true))
+    const isInset = computed(() => (isBoolean(props.inset) ? props.inset : true))
 
     const style = computed(() => {
       const { inset, vertical, margin } = props
@@ -41,7 +41,7 @@ export default defineComponent({
         margin,
       }
 
-      if (isBool(inset) || inset === 0) return { ...baseStyle }
+      if (isBoolean(inset) || inset === 0) return { ...baseStyle }
 
       // -18px -> -18
       const _inset = toNumber(inset)

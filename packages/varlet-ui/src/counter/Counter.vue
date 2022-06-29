@@ -1,22 +1,21 @@
 <template>
   <div :class="classes(n(), 'var--box')">
     <div
-      :class="classes(
-        n('controller'),
-        'var-elevation--2',
-        [disabled || formDisabled, n('--disabled')],
-        [errorMessage, n('--error')]
-      )"
+      :class="
+        classes(
+          n('controller'),
+          'var-elevation--2',
+          [disabled || formDisabled, n('--disabled')],
+          [errorMessage, n('--error')]
+        )
+      "
       :style="{ background: color ? color : undefined }"
       v-bind="$attrs"
     >
       <var-icon
         var-counter-cover
         name="minus"
-        :class="classes(
-          n('decrement-button'),
-          [!decrementButton, n('--hidden')]
-        )"
+        :class="classes(n('decrement-button'), [!decrementButton, n('--hidden')])"
         :style="{
           width: toSizeUnit(buttonSize),
           height: toSizeUnit(buttonSize),
@@ -44,10 +43,7 @@
       <var-icon
         var-counter-cover
         name="plus"
-        :class="classes(
-          n('increment-button'),
-          [!incrementButton, n('--hidden')]
-        )"
+        :class="classes(n('increment-button'), [!incrementButton, n('--hidden')])"
         :style="{
           width: toSizeUnit(buttonSize),
           height: toSizeUnit(buttonSize),
@@ -73,7 +69,7 @@ import Ripple from '../ripple'
 import { defineComponent, ref, watch, computed, nextTick } from 'vue'
 import { Decimal } from 'decimal.js'
 import { props } from './props'
-import { toNumber } from '../utils/shared'
+import { toNumber } from '@varlet/shared'
 import { toSizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
 import { useValidation, createNamespace, call } from '../utils/components'

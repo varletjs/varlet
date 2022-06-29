@@ -10,6 +10,7 @@ Here are the most basic ways to access component libraries in common development
 `varlet.js` contain all the styles and logic of the component library, and you can import them.
 
 ```html
+<!-- playground-ignore -->
 <div id="app"></div>
 <script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
 <script src="https://cdn.jsdelivr.net/npm/@varlet/ui/umd/varlet.js"></script>
@@ -24,6 +25,7 @@ Here are the most basic ways to access component libraries in common development
 #### Webpack/Vite
 
 ```shell
+# playground-ignore
 # Install with npm, yarn or pnpm
 
 # npm
@@ -37,6 +39,7 @@ pnpm add @varlet/ui
 ```
 
 ```js
+// playground-ignore
 import App from './App.vue'
 import Varlet from '@varlet/ui'
 import { createApp } from 'vue'
@@ -50,4 +53,4 @@ createApp(App).use(Varlet).mount('#app')
 We provide a web version of the component editor,
 which is convenient for you to quickly get started with each component of the component library,
 edit it online, share it with others, or download the code package to run locally.
-You can click the `{...}` icon in the upper right corner of the page or [go here](https://varlet.gitee.io/varlet-ui-playground)
+You can click the `{...}` icon in the upper right corner of the page or [go here](https://varlet-ui-playground.vercel.app)

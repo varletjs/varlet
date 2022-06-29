@@ -68,7 +68,7 @@ export default defineComponent({
     }
 
     const handleClick = () => {
-      const active = name.value || index.value
+      const active = name.value ?? index.value
 
       call(props.onClick, active)
 

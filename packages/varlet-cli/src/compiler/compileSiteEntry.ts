@@ -1,136 +1,168 @@
-import slash from 'slash'
 import {
   DOCS_DIR_NAME,
-  EXAMPLE_DIR_INDEX,
+  DIR_INDEX,
   EXAMPLE_DIR_NAME,
+  LOCALE_DIR_NAME,
   ROOT_DOCS_DIR,
+  ROOT_PAGES_DIR,
   SITE,
   SITE_DIR,
   SITE_MOBILE_ROUTES,
+  SITE_PC_DIR,
   SITE_PC_ROUTES,
   SRC_DIR,
 } from '../shared/constant'
-import { copy, pathExistsSync, readdir, readdirSync } from 'fs-extra'
-import { resolve } from 'path'
-import { isMD, outputFileSyncOnChange } from '../shared/fsUtils'
+import { copy } from 'fs-extra'
+import slash from 'slash'
+import { glob, isDir, outputFileSyncOnChange } from '../shared/fsUtils'
 import { getVarletConfig } from '../config/varlet.config'
+import { get } from 'lodash'
 
 const EXAMPLE_COMPONENT_NAME_RE = /\/([-\w]+)\/example\/index.vue/
 const COMPONENT_DOCS_RE = /\/([-\w]+)\/docs\/([-\w]+)\.md/
 const ROOT_DOCS_RE = /\/docs\/([-\w]+)\.([-\w]+)\.md/
+const ROOT_LOCALE_RE = /\/pages\/([-\w]+)\/locale\/([-\w]+)\.ts/
 
 export function getExampleRoutePath(examplePath: string): string {
   return '/' + examplePath.match(EXAMPLE_COMPONENT_NAME_RE)?.[1]
 }
 
-export function getComponentDocsRoutePath(componentDocsPath: string): string {
+export function getComponentDocRoutePath(componentDocsPath: string): string {
   const [, routePath, language] = componentDocsPath.match(COMPONENT_DOCS_RE) ?? []
 
   return `/${language}/${routePath}`
 }
 
-export function getRootDocsRoutePath(rootDocsPath: string): string {
+export function getRootDocRoutePath(rootDocsPath: string): string {
   const [, routePath, language] = rootDocsPath.match(ROOT_DOCS_RE) ?? []
 
   return `/${language}/${routePath}`
 }
 
-export async function findExamplePaths(): Promise<string[]> {
-  const dir: string[] = await readdir(SRC_DIR)
+export function getRootRoutePath(rootLocalePath: string): string {
+  const [, routePath, language] = rootLocalePath.match(ROOT_LOCALE_RE) ?? []
 
-  const buildPath = (filename: string) => resolve(SRC_DIR, filename, EXAMPLE_DIR_NAME, EXAMPLE_DIR_INDEX)
-
-  const existPath = (filename: string) => pathExistsSync(buildPath(filename))
-
-  const slashPath = (filename: string) => slash(buildPath(filename))
-
-  return dir.filter(existPath).map(slashPath)
+  return `/${language}/${routePath}`
 }
 
-export async function findComponentDocsPaths(): Promise<string[]> {
-  const dir: string[] = await readdir(SRC_DIR)
-
-  const buildPath = (filename: string) => resolve(SRC_DIR, filename, DOCS_DIR_NAME)
-
-  const existPath = (filename: string) => pathExistsSync(buildPath(filename))
-
-  const collectRoutePath = (routePaths: string[], filename: string) => {
-    const dirPath = buildPath(filename)
-
-    readdirSync(dirPath).forEach((mdName: string) => {
-      const path = resolve(dirPath, mdName)
-      isMD(path) && routePaths.push(slash(path))
-    })
-
-    return routePaths
-  }
-
-  return dir.filter(existPath).reduce(collectRoutePath, [])
+export function getRootFilePath(rootLocalePath: string): string {
+  return rootLocalePath.replace(/locale\/.+/, DIR_INDEX)
 }
 
-export async function findRootDocsPaths(): Promise<string[]> {
-  if (!pathExistsSync(ROOT_DOCS_DIR)) {
-    return []
-  }
+export function findExamples(): Promise<string[]> {
+  return glob(`${SRC_DIR}/**/${EXAMPLE_DIR_NAME}/${DIR_INDEX}`)
+}
 
-  const dir: string[] = await readdir(ROOT_DOCS_DIR)
+export function findComponentDocs(): Promise<string[]> {
+  return glob(`${SRC_DIR}/**/${DOCS_DIR_NAME}/*.md`)
+}
 
-  const buildPath = (filename: string) => resolve(ROOT_DOCS_DIR, filename)
+export function findRootDocs(): Promise<string[]> {
+  return glob(`${ROOT_DOCS_DIR}/*.md`)
+}
 
-  const existPath = (filename: string) => isMD(buildPath(filename))
+export async function findRootLocales(): Promise<string[]> {
+  const defaultLanguage = get(getVarletConfig(), 'defaultLanguage')
 
-  const slashPath = (filename: string) => slash(buildPath(filename))
+  const userPages = await glob(`${ROOT_PAGES_DIR}/*`)
+  const baseLocales = await glob(`${SITE}/pc/pages/**/${LOCALE_DIR_NAME}/*.ts`)
 
-  return dir.filter(existPath).map(slashPath)
+  const userLocales = await userPages.reduce<Promise<string[]>>(
+    async (userLocales: Promise<string[]>, page: string) => {
+      if (isDir(page)) {
+        const locales = await glob(`${page}/${LOCALE_DIR_NAME}/*.ts`)
+
+        if (!locales.length) locales.push(`${page}/${LOCALE_DIR_NAME}/${defaultLanguage}.ts`)
+        ;(await userLocales).push(...locales)
+      }
+
+      return userLocales
+    },
+    Promise.resolve([])
+  )
+
+  // filter
+  const filterMap = new Map()
+  baseLocales.forEach((locale) => {
+    const [, routePath, language] = locale.match(ROOT_LOCALE_RE) ?? []
+    filterMap.set(routePath + language, slash(`${SITE_PC_DIR}/pages/${routePath}/locale/${language}.ts`))
+  })
+
+  userLocales.forEach((locale) => {
+    const [, routePath, language] = locale.match(ROOT_LOCALE_RE) ?? []
+    filterMap.set(routePath + language, locale)
+  })
+
+  return Promise.resolve(Array.from(filterMap.values()))
 }
 
 export async function buildMobileSiteRoutes() {
-  const examplePaths: string[] = await findExamplePaths()
+  const examples: string[] = await findExamples()
 
-  const routes = examplePaths.map(
-    (examplePath) => `
+  const routes = examples.map(
+    (example) => `
   {
-    path: '${getExampleRoutePath(examplePath)}',
+    path: '${getExampleRoutePath(example)}',
     // @ts-ignore
-    component: () => import('${examplePath}')
-  }\
-`
+    component: () => import('${example}')
+  }`
   )
 
   const source = `export default [\
-  ${routes.join(',')}
+    ${routes.join(',')}
 ]`
 
   await outputFileSyncOnChange(SITE_MOBILE_ROUTES, source)
 }
 
 export async function buildPcSiteRoutes() {
-  const [componentDocsPaths, rootDocsPaths] = await Promise.all([findComponentDocsPaths(), findRootDocsPaths()])
+  const [componentDocs, rootDocs, rootLocales] = await Promise.all([
+    findComponentDocs(),
+    findRootDocs(),
+    findRootLocales(),
+  ])
 
-  const componentDocsRoutes = componentDocsPaths.map(
-    (componentDocsPath) => `
+  const rootPagesRoutes = rootLocales.map(
+    (rootLocale) => `
   {
-    path: '${getComponentDocsRoutePath(componentDocsPath)}',
+    path: '${getRootRoutePath(rootLocale)}',
     // @ts-ignore
-    component: () => import('${componentDocsPath}')
+    component: () => import('${getRootFilePath(rootLocale)}')
   }\
 `
   )
 
-  const rootDocsRoutes = rootDocsPaths.map(
-    (rootDocsPath) => `
-  {
-    path: '${getRootDocsRoutePath(rootDocsPath)}',
-    // @ts-ignore
-    component: () => import('${rootDocsPath}')
-  }\
-`
+  const componentDocsRoutes = componentDocs.map(
+    (componentDoc) => `
+      {
+        path: '${getComponentDocRoutePath(componentDoc)}',
+        // @ts-ignore
+        component: () => import('${componentDoc}')
+      }`
   )
+
+  const rootDocsRoutes = rootDocs.map(
+    (rootDoc) => `
+      {
+        path: '${getRootDocRoutePath(rootDoc)}',
+        // @ts-ignore
+        component: () => import('${rootDoc}')
+      }`
+  )
+
+  const layoutRoutes = `{
+    path: '/layout',
+    // @ts-ignore
+    component:()=> import('${slash(SITE_PC_DIR)}/Layout.vue'),
+    children: [
+      ${[...componentDocsRoutes, rootDocsRoutes].join(',')},
+    ]
+  }`
 
   const source = `export default [\
-  ${[...componentDocsRoutes, rootDocsRoutes].join(',')}
+  ${rootPagesRoutes.join(',')},
+  ${layoutRoutes}
 ]`
-
   outputFileSyncOnChange(SITE_PC_ROUTES, source)
 }
 

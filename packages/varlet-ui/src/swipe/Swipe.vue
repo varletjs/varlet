@@ -36,7 +36,7 @@ import { defineComponent, ref, computed, watch, onMounted, onUnmounted } from 'v
 import { useSwipeItems } from './provide'
 import { doubleRaf, nextTickFrame } from '../utils/elements'
 import { props } from './props'
-import { isNumber, toNumber } from '../utils/shared'
+import { isNumber, toNumber } from '@varlet/shared'
 import type { Ref, ComputedRef } from 'vue'
 import type { SwipeProvider } from './provide'
 import type { SwipeItemProvider } from '../swipe-item/provide'

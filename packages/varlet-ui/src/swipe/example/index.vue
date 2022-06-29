@@ -1,66 +1,77 @@
+<script setup>
+import VarSwipe from '..'
+import VarSwipeItem from '../../swipe-item'
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import Snackbar from '../../snackbar'
+import { use, pack } from './locale'
+import { watchLang } from '@varlet/cli/site/utils'
+
+watchLang(use)
+</script>
+
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-swipe class="swipe" ref="swipe">
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat2.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat3.jpg" alt="" />
     </var-swipe-item>
   </var-swipe>
 
   <app-type>{{ pack.forbidLoop }}</app-type>
   <var-swipe class="swipe" :loop="false">
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat2.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat3.jpg" alt="" />
     </var-swipe-item>
   </var-swipe>
 
   <app-type>{{ pack.autoplay }}</app-type>
   <var-swipe class="swipe" :autoplay="2000">
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat2.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat3.jpg" alt="" />
     </var-swipe-item>
   </var-swipe>
 
   <app-type>{{ pack.vertical }}</app-type>
   <var-swipe class="swipe" vertical>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat2.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat3.jpg" alt="" />
     </var-swipe-item>
   </var-swipe>
 
   <app-type>{{ pack.handleChange }}</app-type>
   <var-swipe class="swipe" @change="Snackbar">
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat2.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat3.jpg" alt="" />
     </var-swipe-item>
   </var-swipe>
 
@@ -68,13 +79,13 @@
   <var-swipe class="swipe">
     <template #default>
       <var-swipe-item>
-        <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+        <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat.jpg" alt="" />
       </var-swipe-item>
       <var-swipe-item>
-        <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+        <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat2.jpg" alt="" />
       </var-swipe-item>
       <var-swipe-item>
-        <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+        <img class="swipe-item" src="https://varlet-varletjs.vercel.app/cat3.jpg" alt="" />
       </var-swipe-item>
     </template>
 
@@ -85,32 +96,6 @@
 
   <div class="space"></div>
 </template>
-
-<script>
-import VarSwipe from '..'
-import VarSwipeItem from '../../swipe-item'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import Snackbar from '../../snackbar'
-import { use, pack } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
-
-export default {
-  name: 'SwipeExample',
-  components: {
-    VarSwipe,
-    VarSwipeItem,
-    AppType,
-  },
-  setup() {
-    watchLang(use)
-
-    return {
-      pack,
-      Snackbar,
-    }
-  },
-}
-</script>
 
 <style scoped lang="less">
 .swipe {

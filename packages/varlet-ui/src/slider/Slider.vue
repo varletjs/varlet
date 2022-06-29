@@ -3,8 +3,8 @@
     <div
       :class="classes(n('block'), [isDisabled, n('--disabled')], [errorMessage, n('--error')])"
       :style="{
-        height: thumbSize === undefined ? thumbSize : `${3 * toNumber(thumbSize)}px`,
-        margin: thumbSize === undefined ? thumbSize : `0 ${toNumber(thumbSize) / 2}px`,
+        height: thumbSize === undefined ? thumbSize : multiplySizeUnit(thumbSize, 3),
+        margin: thumbSize === undefined ? thumbSize : `0 ${multiplySizeUnit(thumbSize, 0.5)}`,
       }"
       ref="sliderEl"
       @click="click"
@@ -14,7 +14,7 @@
           :class="n('track-background')"
           :style="{
             background: trackColor,
-            height: trackHeight + 'px',
+            height: multiplySizeUnit(trackHeight),
           }"
         ></div>
         <div :class="n('track-fill')" :style="getFillStyle"></div>
@@ -37,8 +37,8 @@
             :class="n('thumb-block')"
             :style="{
               background: thumbColor,
-              height: thumbSize + 'px',
-              width: thumbSize + 'px',
+              height: multiplySizeUnit(thumbSize),
+              width: multiplySizeUnit(thumbSize),
             }"
           ></div>
           <div
@@ -53,8 +53,8 @@
             :style="{
               background: labelColor,
               color: labelTextColor,
-              height: thumbSize === undefined ? thumbSize : `${2 * toNumber(thumbSize)}px`,
-              width: thumbSize === undefined ? thumbSize : `${2 * toNumber(thumbSize)}px`,
+              height: thumbSize === undefined ? thumbSize : multiplySizeUnit(thumbSize, 2),
+              width: thumbSize === undefined ? thumbSize : multiplySizeUnit(thumbSize, 2),
             }"
           >
             <span>{{ item.value }}</span>
@@ -70,8 +70,8 @@
 import { defineComponent, ref, onMounted, computed, reactive, nextTick, watch } from 'vue'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
-import { getLeft } from '../utils/elements'
-import { isArray, isNumber, toNumber } from '../utils/shared'
+import { getLeft, multiplySizeUnit } from '../utils/elements'
+import { isArray, isNumber, toNumber } from '@varlet/shared'
 import { props } from './props'
 import VarFormDetails from '../form-details'
 import type { Ref, ComputedRef, UnwrapRef } from 'vue'
@@ -149,7 +149,7 @@ export default defineComponent({
       let size: string | undefined
 
       if (props.thumbSize !== undefined) {
-        size = thumbsProps[item.enumValue].active ? `${3 * toNumber(props.thumbSize)}px` : '0px'
+        size = thumbsProps[item.enumValue].active ? multiplySizeUnit(props.thumbSize, 3) : '0px'
       }
 
       return {
@@ -343,6 +343,7 @@ export default defineComponent({
       errorMessage,
       thumbsProps,
       thumbList,
+      multiplySizeUnit,
       toNumber,
       getRippleSize,
       showLabel,

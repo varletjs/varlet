@@ -4,46 +4,32 @@
 
 A button to back to top.
 
-### Install
-
-```js
-import { createApp } from 'vue'
-import { BackTop } from '@varlet/ui'
-
-createApp().use(BackTop)
-```
-
 ### Basic Usage
 
 ```html
-<div>
-  <var-cell v-for="list in lists" :key="list">Scroll to bottom {{ list }}</var-cell>
-  <var-back-top :duration="300" />
-</div>
-```
-```javascript
+<script setup>
 const lists = [...Array(100).keys()]
+</script>
 
-export default {
-  setup() {
-    return {
-      lists
-    }
-  }
-}
+<template>
+  <div>
+    <var-cell v-for="list in lists" :key="list">Scroll to bottom {{ list }}</var-cell>
+    <var-back-top :duration="300" />
+  </div>
+</template>
 ```
 
 ## API
 
 ### Props
 
-| Prop | Description                                                         | Type   | Default |
-| ----- |---------------------------------------------------------------------|--------|-------|
-| `target` | The target to trigger scroll, If it is undefined back top will listen to the nearest scrollable parent.  | _string \| HTMLElement_     | `-` |
-| `visibility-height` | The button will not show until the scroll height reaches this value | _string \| number_ | `200` |
-| `bottom`            | `BackTop` 距离页面底部的高度                       | _string \| number_ | `40` |
-| `right`            | `BackTop` 距离页面右侧的宽度                       | _string \| number_ | `40` |
-| `duration` | Time to return to top（ms）                               | _number_ | `300` |
+| Prop | Description                                                                                             | Type   | Default |
+| ----- |---------------------------------------------------------------------------------------------------------|--------|-------|
+| `target` | The target to trigger scroll, If it is undefined back top will listen to the nearest scrollable parent. | _string \| HTMLElement_     | `-` |
+| `visibility-height` | The button will not show until the scroll height reaches this value                                     | _string \| number_ | `200` |
+| `bottom`            | Distance between `BackTop` and page bottom                                                              | _string \| number_ | `40` |
+| `right`            | Distance between `BackTop` and page right                                                               | _string \| number_ | `40` |
+| `duration` | Time to return to top（ms）                                                                               | _number_ | `300` |
 
 ### Events
 

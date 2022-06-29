@@ -9,6 +9,7 @@ import {
   readFileSync,
 } from 'fs-extra'
 import { PUBLIC_DIR_INDEXES, SCRIPTS_EXTENSIONS, SRC_DIR } from './constant'
+import globSync from 'glob'
 
 export async function getPublicDirs(): Promise<string[]> {
   const srcDir: string[] = await readdir(SRC_DIR)
@@ -21,10 +22,6 @@ export const isDir = (file: string): boolean => pathExistsSync(file) && lstatSyn
 
 export const isSFC = (file: string): boolean => pathExistsSync(file) && extname(file) === '.vue'
 
-export const isJSX = (file: string): boolean => pathExistsSync(file) && extname(file) === '.jsx'
-
-export const isTSX = (file: string): boolean => pathExistsSync(file) && extname(file) === '.tsx'
-
 export const isDTS = (file: string): boolean => pathExistsSync(file) && file.endsWith('.d.ts')
 
 export const isScript = (file: string): boolean => pathExistsSync(file) && SCRIPTS_EXTENSIONS.includes(extname(file))
@@ -35,10 +32,6 @@ export const isPublicDir = (dir: string): boolean =>
   PUBLIC_DIR_INDEXES.some((index) => pathExistsSync(resolve(dir, index)))
 
 export const replaceExt = (file: string, ext: string): string => file.replace(extname(file), ext)
-
-export const bigCamelize = (s: string): string => camelize(s).replace(s.charAt(0), s.charAt(0).toUpperCase())
-
-export const camelize = (s: string): string => s.replace(/-(\w)/g, (_: any, p: string) => p.toUpperCase())
 
 export function smartAppendFileSync(file: string, code: string) {
   if (pathExistsSync(file)) {
@@ -56,4 +49,16 @@ export function outputFileSyncOnChange(path: string, code: string) {
   if (content !== code) {
     outputFileSync(path, code)
   }
+}
+
+export function glob(pattern: string): Promise<string[]> {
+  return new Promise((resolve, reject) => {
+    globSync(pattern, (err, files) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(files)
+      }
+    })
+  })
 }

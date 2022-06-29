@@ -8,7 +8,8 @@
           n(`--item-${itemDirection}`),
           n(`--layout-${layoutDirection}-padding`),
           [elevation, 'var-elevation--4'],
-          [fixedBottom, n('--fixed-bottom')]
+          [fixedBottom, n('--fixed-bottom')],
+          [safeArea, n('--safe-area')]
         )
       "
       :style="{ background: color }"
@@ -45,7 +46,8 @@ import VarSticky from '../sticky'
 import { defineComponent, watch, ref, computed, Transition, onMounted, onUnmounted } from 'vue'
 import { props } from './props'
 import { useTabList } from './provide'
-import { isNumber, linear } from '../utils/shared'
+import { isNumber } from '@varlet/shared'
+import { linear } from '../utils/shared'
 import { toSizeUnit, scrollTo, doubleRaf } from '../utils/elements'
 import type { Ref, ComputedRef } from 'vue'
 import type { TabsProvider } from './provide'
