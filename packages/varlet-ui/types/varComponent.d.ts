@@ -5,3 +5,8 @@ export class VarComponent {
 
   static install(app: App): void
 }
+
+export interface BasicAttributes {
+  class?: string | Record<string, any>
+  style?: string | Record<string, any>
+}
