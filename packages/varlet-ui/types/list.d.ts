@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { BasicAttributes, VarComponent } from './varComponent'
 
-export interface ListProps {
+export interface ListProps extends BasicAttributes {
   loading?: boolean
   immediateCheck?: boolean
   finished?: boolean
