@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "1.27.12",
+  "version": "1.27.15",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "bootstrap": "pnpm install && node scripts/bootstrap.mjs",
@@ -32,7 +32,9 @@
       "packages/varlet-ui/src/*/__tests__/**",
       "packages/varlet-ui/.varlet/**",
       "packages/varlet-ui-playground/public/**",
-      "packages/varlet-ui-playground/dist/**"
+      "packages/varlet-ui-playground/dist/**",
+      "packages/varlet-shared/lib/**",
+      "packages/varlet-shared/es/**"
     ],
     "extends": [
       "@varlet"

@@ -45,7 +45,7 @@
 import { defineComponent } from 'vue'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
-import { toNumber } from '../utils/shared'
+import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('skeleton')

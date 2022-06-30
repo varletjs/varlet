@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, watch } from 'vue'
-import { isPlainObject, toNumber } from '../utils/shared'
+import { isPlainObject, toNumber } from '@varlet/shared'
 import { props } from './props'
 import { useRow } from './provide'
 import { toSizeUnit } from '../utils/elements'

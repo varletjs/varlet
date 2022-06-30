@@ -16,7 +16,7 @@ import {
   onDeactivated,
 } from 'vue'
 import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref, ComponentPublicInstance } from 'vue'
-import { isArray, removeItem } from './shared'
+import { isArray, removeItem } from '@varlet/shared'
 
 export interface MountInstance {
   instance: ComponentPublicInstance

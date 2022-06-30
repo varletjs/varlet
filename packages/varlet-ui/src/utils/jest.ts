@@ -2,7 +2,7 @@ import { nextTick } from 'vue'
 import type { ComponentPublicInstance } from 'vue'
 import { config } from '@vue/test-utils'
 import type { VueWrapper, DOMWrapper } from '@vue/test-utils'
-import { isPlainObject } from './shared'
+import { isPlainObject } from '@varlet/shared'
 
 export const delay = (time: number) => new Promise((resolve) => setTimeout(resolve, time))
 

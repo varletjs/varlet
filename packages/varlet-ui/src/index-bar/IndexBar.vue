@@ -17,7 +17,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref, watch, onMounted, onBeforeUnmount } from 'vue'
-import { easeInOutCubic, isPlainObject, toNumber } from '../utils/shared'
+import { isPlainObject, toNumber } from '@varlet/shared'
+import { easeInOutCubic } from '../utils/shared'
 import {
   doubleRaf,
   getParentScroller,

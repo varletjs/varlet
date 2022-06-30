@@ -30,7 +30,7 @@
 import { defineComponent, ref, onMounted, onUnmounted, onActivated, onDeactivated, computed, watch } from 'vue'
 import { props } from './props'
 import { doubleRaf, getParentScroller, toPxNum } from '../utils/elements'
-import { toNumber } from '../utils/shared'
+import { toNumber } from '@varlet/shared'
 import type { Ref, ComputedRef } from 'vue'
 import { call, createNamespace } from '../utils/components'
 

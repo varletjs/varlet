@@ -10,7 +10,7 @@
 import { defineComponent, ref, watch } from 'vue'
 import { props } from './props'
 import { requestAnimationFrame, cancelAnimationFrame } from '../utils/elements'
-import { toNumber, parseFormat } from '../utils/shared'
+import { toNumber } from '@varlet/shared'
 import type { Ref } from 'vue'
 import type { TimeData } from './props'
 import { call, createNamespace } from '../utils/components'
@@ -38,6 +38,34 @@ export default defineComponent({
       seconds: 0,
       milliseconds: 0,
     })
+
+    const parseFormat = (format: string, time: TimeData): string => {
+      const scannedTimes = Object.values(time)
+      const scannedFormats = ['DD', 'HH', 'mm', 'ss']
+      const padValues = [24, 60, 60, 1000]
+
+      scannedFormats.forEach((scannedFormat, index) => {
+        if (!format.includes(scannedFormat)) {
+          scannedTimes[index + 1] += scannedTimes[index] * padValues[index]
+        } else {
+          format = format.replace(scannedFormat, String(scannedTimes[index]).padStart(2, '0'))
+        }
+      })
+
+      if (format.includes('S')) {
+        const ms = String(scannedTimes[scannedTimes.length - 1]).padStart(3, '0')
+
+        if (format.includes('SSS')) {
+          format = format.replace('SSS', ms)
+        } else if (format.includes('SS')) {
+          format = format.replace('SS', ms.slice(0, 2))
+        } else {
+          format = format.replace('S', ms.slice(0, 1))
+        }
+      }
+
+      return format
+    }
 
     const formatTime = (durationTime: number) => {
       const days = Math.floor(durationTime / DAY)

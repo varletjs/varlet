@@ -1,7 +1,7 @@
 import VarPicker from './Picker.vue'
 import { nextTick, reactive } from 'vue'
 import { NormalColumn, CascadeColumn } from './props'
-import { isArray } from '../utils/shared'
+import { isArray } from '@varlet/shared'
 import { mountInstance } from '../utils/components'
 import type { App, Component, TeleportProps } from 'vue'
 

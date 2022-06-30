@@ -1,4 +1,4 @@
-import { isNumber, isString, kebabCase, toNumber } from './shared'
+import { isNumber, isString, kebabCase, toNumber } from '@varlet/shared'
 import type { StyleVars } from '../style-provider'
 
 export function getLeft(element: HTMLElement): number {

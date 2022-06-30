@@ -66,7 +66,7 @@ import VarIcon from '../icon'
 import VarPopup from '../popup'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
-import { toNumber } from '../utils/shared'
+import { toNumber } from '@varlet/shared'
 import type { Ref, ComputedRef } from 'vue'
 import { call, createNamespace } from '../utils/components'
 

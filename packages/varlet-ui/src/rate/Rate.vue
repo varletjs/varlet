@@ -31,7 +31,7 @@ import { defineComponent, nextTick } from 'vue'
 import { useForm } from '../form/provide'
 import { useValidation, call, createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { toNumber } from '../utils/shared'
+import { toNumber } from '@varlet/shared'
 import { props } from './props'
 import type { RateProvider } from './provide'
 

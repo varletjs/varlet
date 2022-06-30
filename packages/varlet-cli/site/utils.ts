@@ -4,7 +4,6 @@ import { formatStyleVars } from './components/utils/elements'
 
 export * from './components/utils/components'
 export * from './components/utils/elements'
-export * from './components/utils/shared'
 
 export type StyleVars = Record<string, string>
 
@@ -19,14 +18,6 @@ function StyleProvider(styleVars: StyleVars | null = {}) {
     document.documentElement.style.setProperty(key, value)
     mountedVarKeys.push(key)
   })
-}
-
-export function camelize(str: string): string {
-  return str.replace(/-(\w)/g, (_: any, p: string) => p.toUpperCase())
-}
-
-export function bigCamelize(str: string): string {
-  return camelize(str).replace(str.charAt(0), str.charAt(0).toUpperCase())
 }
 
 export interface PCLocationInfo {

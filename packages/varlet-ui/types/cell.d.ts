@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { BasicAttributes, VarComponent } from './varComponent'
 
-export interface CellProps {
+export interface CellProps extends BasicAttributes {
   title?: string | number
   icon?: string
   desc?: string

@@ -1,6 +1,6 @@
 import VarDialog from './Dialog.vue'
 import { reactive, nextTick } from 'vue'
-import { inBrowser, isNumber, isString } from '../utils/shared'
+import { inBrowser, isNumber, isString } from '@varlet/shared'
 import { mountInstance } from '../utils/components'
 import type { App, TeleportProps } from 'vue'
 
