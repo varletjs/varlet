@@ -1,3 +1,13 @@
+## [1.27.16](https://github.com/varletjs/varlet/compare/v1.27.15...v1.27.16) (2022-07-01)
+
+
+### Bug Fixes
+
+* **slider:** stop propagation when touch slider ([6b4bc18](https://github.com/varletjs/varlet/commit/6b4bc181e50ffb887b8f7bae8bd161dddaa4530f))
+* **ui/snackbar:** remove position absolute in leaving animation's style ([#611](https://github.com/varletjs/varlet/issues/611)) ([18d5086](https://github.com/varletjs/varlet/commit/18d5086cc176929ad4abed1d257757305ea83afd))
+
+
+
 ## [1.27.15](https://github.com/varletjs/varlet/compare/v1.27.14...v1.27.15) (2022-06-20)
 
 

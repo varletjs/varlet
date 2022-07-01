@@ -26,6 +26,7 @@ const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
 const title: Ref<string> = ref(get(config, 'title'))
 const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
 const pack: Ref<Record<string, string>> = ref({})
+const description:Ref<string> = ref('')
 
 const goGithub = () => {
   window.open(github)
@@ -33,6 +34,7 @@ const goGithub = () => {
 
 const getStar = () => {
   const { language: lang } = getPCLocationInfo()
+
   router.push(`/${lang}/home`)
 }
 
@@ -54,6 +56,7 @@ const setLocale = () => {
   const { language: lang } = getPCLocationInfo()
   if (!lang) return
 
+  description.value = get(config, 'pc.description')[lang] as string
   pack.value = packs[lang]
   document.title = get(config, 'pc.title')[lang] as string
 }
@@ -90,7 +93,7 @@ watch(() => route.path, setLocale, { immediate: true })
           <animation-box class="logo" />
           <div class="base-title">{{ title }}</div>
         </div>
-        <div class="base-description">{{ pack.description }}</div>
+        <div class="base-description">{{ description }}</div>
 
         <div class="button-group">
           <var-site-button class="common-button github-button" block @click="goGithub">
