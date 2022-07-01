@@ -27,8 +27,8 @@
           left: `${item.value}%`,
           zIndex: thumbsProps[item.enumValue].active ? 1 : undefined,
         }"
-        @touchstart="start($event, item.enumValue)"
-        @touchmove="move($event, item.enumValue)"
+        @touchstart.stop="start($event, item.enumValue)"
+        @touchmove.stop="move($event, item.enumValue)"
         @touchend="end(item.enumValue)"
         @touchcancel="end(item.enumValue)"
       >
