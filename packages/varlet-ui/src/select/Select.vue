@@ -123,7 +123,7 @@ import { props } from './props'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useOptions } from './provide'
 import { useForm } from '../form/provide'
-import { toPxNum } from '../utils/elements'
+import { getTop, toPxNum } from '../utils/elements'
 import type { Ref, ComputedRef } from 'vue'
 import type { ValidateTriggers } from './props'
 import type { SelectProvider } from './provide'
@@ -343,13 +343,19 @@ export default defineComponent({
 
     const detectBoundary = () => {
       const { body } = document
-      nextTick(() => {
-        const { offsetTop: menuOffsetTop, offsetHeight: menuOffsetHeight } = menuEl.value?.parentElement as HTMLElement
-        const menuOffsetBottom = body.scrollHeight - menuOffsetHeight - menuOffsetTop
+      const bodyScrollHeight = body.scrollHeight
 
-        if (menuOffsetTop < 0) offsetY.value = getOffsetY()
-        if (menuOffsetBottom < 0)
-          offsetY.value -= (menuEl.value?.parentElement as HTMLElement).offsetHeight - getOffsetY()
+      nextTick(() => {
+        const { offsetHeight: menuOffsetHeight } = menuEl.value?.parentElement as HTMLElement
+        const wrapOffsetTop = getTop(wrapEl.value as HTMLElement)
+
+        if (wrapOffsetTop + offsetY.value < 0) {
+          offsetY.value = getOffsetY()
+        }
+
+        if (menuOffsetHeight + wrapOffsetTop + offsetY.value > bodyScrollHeight) {
+          offsetY.value -= menuOffsetHeight - getOffsetY()
+        }
       })
     }
 
