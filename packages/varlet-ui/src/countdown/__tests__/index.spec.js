@@ -1,71 +1,88 @@
-import example from '../example'
 import Countdown from '..'
 import VarCountdown from '../Countdown'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockConsole } from '../../utils/jest'
-
-test('test countdown example', () => {
-  const { mockRestore } = mockConsole('log')
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-
-  mockRestore()
-})
+import { delay } from '../../utils/jest'
 
 test('test countdown plugin', () => {
   const app = createApp({}).use(Countdown)
   expect(app.component(Countdown.name)).toBeTruthy()
 })
 
-test('test countdown format prop', () => {
-  const wrapper = mount(VarCountdown, {
-    props: {
-      time: 108000000,
-      autoStart: false,
-      format: 'HH : mm : ss : SS',
-    },
+describe('test countdown props', () => {
+  test('test format prop', () => {
+    const wrapper = mount(VarCountdown, {
+      props: {
+        time: 108000000,
+        format: 'HH-mm-ss-SS',
+      },
+    })
+
+    const reg = /(\d{2}-){3}\d{2}/
+    expect(reg.test(wrapper.text())).toBe(true)
+
+    wrapper.unmount()
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
-})
+  test('test autostart prop', async () => {
+    const wrapper = mount(VarCountdown, {
+      props: {
+        time: 10800,
+        autoStart: false,
+      },
+    })
 
-test('test countdown autostart prop', async () => {
-  const wrapper = mount(VarCountdown, {
-    props: {
-      time: 10800,
-      autoStart: false,
-    },
+    const text = wrapper.text()
+
+    await delay(100)
+    expect(wrapper.text()).toBe(text)
+
+    wrapper.unmount()
   })
-
-  const text = wrapper.text()
-
-  await delay(100)
-
-  expect(wrapper.text()).toBe(text)
 })
 
-test('test countdown onEnd and onChange', async () => {
+describe('test countdown events', () => {
   const onEnd = jest.fn()
   const onChange = jest.fn()
 
-  mount(VarCountdown, {
-    props: {
-      time: 1000,
-      onEnd,
-      onChange,
-    },
+  test('test onChange event', async () => {
+    const wrapper = mount(VarCountdown, {
+      props: {
+        time: 1,
+        onChange,
+      },
+    })
+
+    await delay(10)
+    expect(onChange).toHaveBeenCalled()
+    expect(onChange.mock.calls[0][0]).toEqual({
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 1,
+    })
+
+    wrapper.unmount()
   })
 
-  await delay(1100)
+  test('test onEnd event', async () => {
+    const wrapper = mount(VarCountdown, {
+      props: {
+        time: 1,
+        onEnd,
+      },
+    })
 
-  expect(onEnd).toHaveBeenCalledTimes(1)
-  expect(onChange).toHaveBeenCalled()
+    await delay(10)
+    expect(onEnd).toBeCalledTimes(1)
+
+    wrapper.unmount()
+  })
 })
 
-test('test start, pause and reset methods', async () => {
-  const template = `<var-countdown :time="time" ref="countdown" :auto-start="false" />`
-  const wrapper = mount({
+describe('test countdown methods', () => {
+  const Wrapper = {
     components: {
       [VarCountdown.name]: VarCountdown,
     },
@@ -74,52 +91,53 @@ test('test start, pause and reset methods', async () => {
         time: 108000,
       }
     },
-    template,
+    template: `
+      <var-countdown :time="time" ref="countdown" :auto-start="false"/>`,
+  }
+
+  test('test countdown start method', async () => {
+    const wrapper = mount(Wrapper)
+    const text = wrapper.text()
+
+    await delay(50)
+    expect(wrapper.text()).toBe(text)
+
+    wrapper.vm.$refs.countdown.start()
+
+    await delay(100)
+    expect(wrapper.text()).not.toBe(text)
+
+    wrapper.unmount()
   })
 
-  const text = wrapper.text()
+  test('test countdown start method', async () => {
+    const wrapper = mount(Wrapper)
+    wrapper.vm.$refs.countdown.start()
 
-  await delay(100)
+    await delay(50)
 
-  expect(wrapper.text()).toBe(text)
+    wrapper.vm.$refs.countdown.pause()
+    const text = wrapper.text()
 
-  wrapper.vm.$refs.countdown.start()
+    await delay(50)
+    expect(wrapper.text()).toBe(text)
 
-  await delay(100)
-
-  expect(wrapper.text()).not.toBe(text)
-
-  wrapper.vm.$refs.countdown.pause()
-  const text1 = wrapper.text()
-
-  await delay(100)
-
-  expect(wrapper.text()).toBe(text1)
-
-  wrapper.vm.$refs.countdown.reset()
-
-  await delay(500)
-
-  expect(wrapper.text()).toBe(text)
-})
-
-test('test change event argument', async () => {
-  const onChange = jest.fn()
-
-  mount(VarCountdown, {
-    props: {
-      time: 1,
-      onChange,
-    },
+    wrapper.unmount()
   })
 
-  await delay(50)
+  test('test countdown reset method', async () => {
+    const wrapper = mount(Wrapper)
+    const text = wrapper.text()
 
-  expect(onChange.mock.calls[0][0]).toEqual({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-    milliseconds: 1,
+    wrapper.vm.$refs.countdown.start()
+
+    await delay(50)
+
+    wrapper.vm.$refs.countdown.reset()
+
+    await delay(50)
+    expect(wrapper.text()).toBe(text)
+
+    wrapper.unmount()
   })
 })
