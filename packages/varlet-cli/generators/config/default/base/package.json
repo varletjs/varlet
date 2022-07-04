@@ -38,6 +38,7 @@
     "@varlet/icons": "workspace:*",
     "@varlet/stylelint-config": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
+    "@varlet/shared": "workspace:*",
     "@vue/test-utils": "2.0.0-rc.6",
     "clipboard": "^2.0.6",
     "eslint": "^7.30.0",
