@@ -1,16 +1,9 @@
-import example from '../example'
 import Lazy, { imageCache } from '..'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockDoubleRaf, trigger } from '../../utils/jest'
 
-test('test lazy example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
-
-test('test lazy plugin', () => {
+test('test lazy use', () => {
   const app = createApp({}).use(Lazy)
   expect(app.directive('lazy')).toBeTruthy()
 })
@@ -19,93 +12,84 @@ const Wrapper = {
   directives: { Lazy },
   data: () => ({
     src: 'https://varlet-varletjs.vercel.app/cat.jpg',
-    error: 'https://varlet-varletjs.vercel.app/error.jpg',
   }),
   template: `
     <img
-      :lazy-error="error"
+      lazy-error="https://varlet-varletjs.vercel.app/error.jpg"
       v-lazy="src"
+      lazy-loading="https://xxx.cn/loading.png"
+      lazy-attempt="3"
+      lazy-throttle-wait="500"
     >
   `,
 }
 
-test('test lazy load', async () => {
-  const { mockRestore } = mockDoubleRaf()
-  const wrapper = mount(Wrapper)
-  await delay(80)
-  expect(wrapper.html()).toMatchSnapshot()
+describe('test lazy component props', () => {
+  test('test lazy loading', async () => {
+    const { mockRestore } = mockDoubleRaf()
+    const wrapper = mount(Wrapper)
 
-  await trigger(wrapper.element._lazy.preloadImage, 'load')
-  await delay(80)
-  expect(wrapper.html()).toMatchSnapshot()
+    await delay(80)
+    expect(wrapper.find('img').attributes('src')).toBe('https://xxx.cn/loading.png')
 
-  wrapper.unmount()
-  imageCache.clear()
-  mockRestore()
-})
+    await trigger(wrapper.element._lazy.preloadImage, 'load')
+    await delay(80)
+    expect(wrapper.find('img').attributes('src')).toBe('https://varlet-varletjs.vercel.app/cat.jpg')
 
-test('test lazy error with attempt', async () => {
-  const { mockRestore } = mockDoubleRaf()
-  const wrapper = mount(Wrapper)
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await delay(80)
-
-  await trigger(wrapper.element._lazy.preloadImage, 'error')
-  await delay(80)
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await trigger(wrapper.element._lazy.preloadImage, 'error')
-  await delay(80)
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await trigger(wrapper.element._lazy.preloadImage, 'error')
-  await delay(80)
-  expect(wrapper.html()).toMatchSnapshot()
-
-  wrapper.unmount()
-  imageCache.clear()
-  mockRestore()
-})
-
-test('test lazy updated', async () => {
-  const { mockRestore } = mockDoubleRaf()
-  const wrapper = mount(Wrapper)
-  await delay(80)
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await trigger(wrapper.element._lazy.preloadImage, 'load')
-  await delay(80)
-  expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setData({ src: 'https://varlet-varletjs.vercel.app/dog.jpg' })
-  await delay(80)
-
-  await trigger(wrapper.element._lazy.preloadImage, 'load')
-  await delay(80)
-  expect(wrapper.html()).toMatchSnapshot()
-
-  wrapper.unmount()
-  imageCache.clear()
-  mockRestore()
-})
-
-test('test lazy background-image', async () => {
-  const { mockRestore } = mockDoubleRaf()
-  const wrapper = mount({
-    directives: { Lazy },
-    template: `
-      <img v-lazy:background-image="'https://varlet-varletjs.vercel.app/cat.jpg'">
-    `,
+    wrapper.unmount()
+    imageCache.clear()
+    mockRestore()
   })
-  await delay(80)
-  expect(wrapper.html()).toMatchSnapshot()
 
-  await trigger(wrapper.element._lazy.preloadImage, 'load')
-  await delay(80)
-  expect(wrapper.html()).toMatchSnapshot()
+  test('test lazy error', () => {
+    const { mockRestore } = mockDoubleRaf()
+    const wrapper = mount(Wrapper)
+    expect(wrapper.find('img').attributes('lazy-error')).toBe('https://varlet-varletjs.vercel.app/error.jpg')
+    wrapper.unmount()
+    imageCache.clear()
+    mockRestore()
+  })
 
-  wrapper.unmount()
-  imageCache.clear()
-  mockRestore()
+  test('test lazy attempt', async () => {
+    const { mockRestore } = mockDoubleRaf()
+    const wrapper = mount(Wrapper)
+
+    await delay(80)
+    await trigger(wrapper.element._lazy.preloadImage, 'error')
+    expect(wrapper.find('img').attributes('lazy-attempt')).toBe('3')
+
+    wrapper.unmount()
+    imageCache.clear()
+    mockRestore()
+  })
+
+  test('test lazy throttleWait', () => {
+    const { mockRestore } = mockDoubleRaf()
+    const wrapper = mount(Wrapper)
+    expect(wrapper.find('img').attributes('lazy-throttle-wait')).toBe('500')
+    wrapper.unmount()
+    imageCache.clear()
+    mockRestore()
+  })
+
+  test('test lazy update', async () => {
+    const { mockRestore } = mockDoubleRaf()
+    const wrapper = mount(Wrapper)
+
+    await delay(80)
+    expect(wrapper.find('img').attributes('src')).toBe('https://xxx.cn/loading.png')
+
+    await delay(80)
+    await trigger(wrapper.element._lazy.preloadImage, 'load')
+    expect(wrapper.find('img').attributes('src')).toBe('https://varlet-varletjs.vercel.app/cat.jpg')
+
+    await wrapper.setData({ src: 'https://varlet-varletjs.vercel.app/dog.jpg' })
+    await delay(80)
+    await trigger(wrapper.element._lazy.preloadImage, 'load')
+    expect(wrapper.find('img').attributes('src')).toBe('https://varlet-varletjs.vercel.app/dog.jpg')
+
+    wrapper.unmount()
+    imageCache.clear()
+    mockRestore()
+  })
 })
