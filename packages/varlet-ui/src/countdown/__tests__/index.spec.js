@@ -74,7 +74,7 @@ describe('test countdown events', () => {
       },
     })
 
-    await delay(10)
+    await delay(100)
     expect(onEnd).toBeCalledTimes(1)
 
     wrapper.unmount()
