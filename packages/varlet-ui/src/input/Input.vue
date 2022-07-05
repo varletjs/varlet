@@ -45,6 +45,7 @@
           @blur="handleBlur"
           @input="handleInput"
           @change="handleChange"
+          @touchstart="handleTouchstart"
           v-if="textarea"
         >
         </textarea>
@@ -65,6 +66,7 @@
           @blur="handleBlur"
           @input="handleInput"
           @change="handleChange"
+          @touchstart="handleTouchstart"
           v-else
         />
         <label
@@ -242,6 +244,16 @@ export default defineComponent({
 
     const withTrim = (value: string) => (props.modelModifiers.trim ? value.trim() : value)
 
+    const handleTouchstart = (e: Event) => {
+      const { disabled, readonly } = props
+
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
+        return
+      }
+
+      e.stopPropagation()
+    }
+
     // expose
     const reset = () => {
       call(props['onUpdate:modelValue'], '')
@@ -291,6 +303,7 @@ export default defineComponent({
       handleChange,
       handleClear,
       handleClick,
+      handleTouchstart,
       validate,
       resetValidation,
       reset,

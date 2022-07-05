@@ -4,7 +4,7 @@ export type InputValidateTriggers = 'onFocus' | 'onBlur' | 'onChange' | 'onClick
 
 export interface InputProps {
   modelValue?: string
-  type?: 'text' | 'password' | 'number'
+  type?: 'text' | 'password' | 'number' | 'tel' | 'email'
   textarea?: boolean
   rows?: string | number
   placeholder?: string
