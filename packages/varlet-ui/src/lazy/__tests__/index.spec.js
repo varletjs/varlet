@@ -58,14 +58,6 @@ describe('test lazy component props', () => {
     await trigger(wrapper.element._lazy.preloadImage, 'error')
     expect(wrapper.find('img').attributes('lazy-attempt')).toBe('3')
 
-    await delay(80)
-    await trigger(wrapper.element._lazy.preloadImage, 'error')
-    expect(wrapper.find('img').attributes('lazy-attempt')).toBe('3')
-
-    await delay(80)
-    await trigger(wrapper.element._lazy.preloadImage, 'error')
-    expect(wrapper.find('img').attributes('lazy-attempt')).toBe('3')
-
     wrapper.unmount()
     imageCache.clear()
     mockRestore()
