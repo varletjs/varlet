@@ -8,16 +8,10 @@ import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getBrowserThemes, setThemes } from '../../../utils'
 import { getPCLocationInfo, watchThemes } from '@varlet/cli/site/utils'
-import en_US from './locale/en-US'
-import zh_CN from './locale/zh-CN'
 import type { Ref } from 'vue'
 
 const route = useRoute()
 const router = useRouter()
-const packs = {
-  'zh-CN': zh_CN,
-  'en-US': en_US
-} as any
 
 const github = get(config, 'pc.header.github')
 const themesKey = get(config, 'themesKey')
@@ -25,8 +19,8 @@ const currentThemes = ref(getBrowserThemes(themesKey))
 const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
 const title: Ref<string> = ref(get(config, 'title'))
 const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
-const pack: Ref<Record<string, string>> = ref({})
 const description:Ref<string> = ref('')
+const started:Ref<string> = ref('')
 
 const goGithub = () => {
   window.open(github)
@@ -56,8 +50,8 @@ const setLocale = () => {
   const { language: lang } = getPCLocationInfo()
   if (!lang) return
 
-  description.value = get(config, 'pc.description')[lang] as string
-  pack.value = packs[lang]
+  description.value = get(config, 'pc.indexPage.description')[lang] as string
+  started.value = get(config, 'pc.indexPage.started')[lang] as string
   document.title = get(config, 'pc.title')[lang] as string
 }
 
@@ -110,7 +104,7 @@ watch(() => route.path, setLocale, { immediate: true })
         <div class="button-group">
           <var-site-button type="primary" class="common-button primary-button" block @click="getStar">
             <div class="block-button-content">
-              <span>{{ pack.started }}</span>
+              <span>{{ started }}</span>
               <var-site-icon style="margin-left: 10px; transform: rotate(-90deg)" name="arrow-down" size="24px" />
             </div>
           </var-site-button>

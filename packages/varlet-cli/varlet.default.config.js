@@ -34,11 +34,17 @@ module.exports = {
       playground: 'https://varlet-ui-playground.vercel.app',
       darkMode: true,
     },
-    description: {
-      'zh-CN':
-        'Varlet 是一个基于 Vue3 开发的 Material 风格移动端组件库，全面拥抱 Vue3 生态，由社区团队维护。支持 Typescript、按需引入、暗黑模式、主题定制、国际化，并提供 VSCode 插件保障良好的开发体验',
-      'en-US':
-        'Varlet is a Material design mobile component library developed based on Vue3, developed and maintained by partners in the community. Support Typescript, import on demand, dark mode, theme customization, internationalization, and provide VSCode plugin to ensure a good development experience',
+    indexPage: {
+      started: {
+        'zh-CN': '起步',
+        'en-US': 'GET STARTED',
+      },
+      description: {
+        'zh-CN':
+          'Varlet 是一个基于 Vue3 开发的 Material 风格移动端组件库，全面拥抱 Vue3 生态，由社区团队维护。支持 Typescript、按需引入、暗黑模式、主题定制、国际化，并提供 VSCode 插件保障良好的开发体验',
+        'en-US':
+          'Varlet is a Material design mobile component library developed based on Vue3, developed and maintained by partners in the community. Support Typescript, import on demand, dark mode, theme customization, internationalization, and provide VSCode plugin to ensure a good development experience',
+      },
     },
     clipboard: {
       'zh-CN': '代码已复制到剪切板',
