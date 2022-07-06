@@ -89,14 +89,21 @@ export default defineComponent({
 
     const closePanel = () => {
       if (!contentEl.value) return
-      ;(contentEl.value as HTMLDivElement).style.height = 0 + 'px'
+
+      const { offsetHeight } = contentEl.value
+      contentEl.value.style.height = offsetHeight + 'px'
+
+      requestAnimationFrame(() => {
+        ;(contentEl.value as HTMLDivElement).style.height = 0 + 'px'
+      })
     }
 
     const transitionend = () => {
       if (!isShow.value) {
         show.value = false
-        ;(contentEl.value as HTMLDivElement).style.height = ''
       }
+
+      ;(contentEl.value as HTMLDivElement).style.height = ''
     }
 
     const collapseItemProvider: CollapseItemProvider = {
