@@ -1,6 +1,6 @@
 {
   "name": "@varlet/stylelint-config",
-  "version": "1.27.16",
+  "version": "1.27.17",
   "description": "stylelint config of varlet",
   "keywords": [
     "stylelint",

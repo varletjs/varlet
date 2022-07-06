@@ -1,3 +1,28 @@
+## [1.27.17](https://github.com/varletjs/varlet/compare/v1.27.16...v1.27.17) (2022-07-06)
+
+
+### Bug Fixes
+
+* **cli/gen:** add varlet/shared to dependencies ([90800e1](https://github.com/varletjs/varlet/commit/90800e14567374a5db396da7e6bdba921329f878))
+* **cli/site:** support custom description ([d1b243e](https://github.com/varletjs/varlet/commit/d1b243e90ad5dad50ad3da30231b0c89caf64f45))
+* **collapse:** fix content height error ([be485c4](https://github.com/varletjs/varlet/commit/be485c45e31b8eb76048191468bceefe9ef3f3c4))
+* **ui/select:** select boundary detection bug fix ([#623](https://github.com/varletjs/varlet/issues/623)) ([eb2fc84](https://github.com/varletjs/varlet/commit/eb2fc8467cc25476994a68f4f7214be6936deb05))
+* **ui/skeleton:** do not render the container when rows and title not exist ([b8c3b7c](https://github.com/varletjs/varlet/commit/b8c3b7cdb13a7a0f33e77679e4a02e4e0438ce9b))
+
+
+### Features
+
+* **site:** support custom index page text ([5401c1c](https://github.com/varletjs/varlet/commit/5401c1cdae2f7d787211e1d79cb718ea9644e019))
+* **ui/input:** type support tel and email, touchstart event stop propagation ([c6cdcc9](https://github.com/varletjs/varlet/commit/c6cdcc902dbc4fa7ccd7f2730dfe3ff290a7358f))
+
+
+### Reverts
+
+* revert "fix(cli/site): support custom description" ([b23e0d2](https://github.com/varletjs/varlet/commit/b23e0d2f2f3e8c44fb770b7089cdd5aa6ceb015e))
+* revert "refactor(cli/site): adjust configurable item structure" ([493803b](https://github.com/varletjs/varlet/commit/493803b06a342a1b792ce7462633590365338176))
+
+
+
 ## [1.27.16](https://github.com/varletjs/varlet/compare/v1.27.15...v1.27.16) (2022-07-01)
 
 
