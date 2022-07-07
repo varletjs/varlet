@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export interface SwipeProps {
+export interface SwipeProps extends BasicAttributes {
   loop?: boolean
   autoplay?: string | number
   duration?: string | number
