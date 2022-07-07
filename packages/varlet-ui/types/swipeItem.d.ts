@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export interface SwipeItemProps {}
+export interface SwipeItemProps extends BasicAttributes {}
 
 export class SwipeItem extends VarComponent {
   $props: SwipeItemProps
