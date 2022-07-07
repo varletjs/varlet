@@ -15,6 +15,12 @@
     "UI"
   ],
   "license": "MIT",
+  "sideEffects": [
+    "es/**/style/*",
+    "lib/**/style/*",
+    "*.css",
+    "*.less"
+  ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "varlet-cli dev",
