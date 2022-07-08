@@ -1,4 +1,4 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
 export type AllowedTime = {
   hours?: (hour: number) => boolean
@@ -6,7 +6,7 @@ export type AllowedTime = {
   seconds?: (second: number) => boolean
 }
 
-export interface TimePickerProps {
+export interface TimePickerProps extends BasicAttributes {
   modelValue?: string
   shadow?: boolean
   color?: string
