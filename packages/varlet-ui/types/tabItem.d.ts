@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export interface TabItemProps {
+export interface TabItemProps extends BasicAttributes {
   name?: string | number
 }
 
