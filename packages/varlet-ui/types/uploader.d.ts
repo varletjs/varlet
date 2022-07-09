@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export interface VarFile {
+export interface VarFile extends BasicAttributes {
   file?: File
   name?: string
   url?: string
