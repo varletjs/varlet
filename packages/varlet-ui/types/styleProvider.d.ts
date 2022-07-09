@@ -1,9 +1,9 @@
 import type { App } from 'vue'
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
 export type StyleVars = Record<string, string>
 
-export interface StyleProviderProps {
+export interface StyleProviderProps extends BasicAttributes {
   styleVars?: StyleVars
 }
 
