@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export interface TabsItemsProps {
+export interface TabsItemsProps extends BasicAttributes {
   active?: string | number
   'onUpdate:active'?: (active: string | number) => void
 }
