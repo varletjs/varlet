@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export interface StepsProps {
+export interface StepsProps extends BasicAttributes {
   active?: string | number
   direction?: 'horizontal' | 'vertical'
   activeColor?: string

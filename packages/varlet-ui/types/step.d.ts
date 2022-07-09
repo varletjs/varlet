@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export interface StepProps {
+export interface StepProps extends BasicAttributes {
   activeIcon?: string
   currentIcon?: string
   inactiveIcon?: string
