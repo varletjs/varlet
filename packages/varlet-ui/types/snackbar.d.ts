@@ -1,11 +1,11 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 import type { App, TeleportProps } from 'vue'
 
 export type LoadingType = 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'
 
 export type LoadingSize = 'normal' | 'mini' | 'small' | 'large'
 
-export interface SnackbarProps {
+export interface SnackbarProps extends BasicAttributes {
   type?: SnackbarType
   content?: string
   position?: 'top' | 'center' | 'bottom'
