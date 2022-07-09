@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export interface SkeletonProps {
+export interface SkeletonProps extends BasicAttributes {
   loading?: boolean
   title?: boolean
   avatar?: boolean
