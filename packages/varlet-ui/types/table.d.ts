@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export interface TableProps {
+export interface TableProps extends BasicAttributes {
   fullWidth?: string | number
 }
 
