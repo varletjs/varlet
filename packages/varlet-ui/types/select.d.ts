@@ -1,8 +1,8 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
 export type SelectValidateTriggers = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
 
-export interface SelectProps {
+export interface SelectProps extends BasicAttributes {
   modelValue?: any
   placeholder?: string
   multiple?: boolean
