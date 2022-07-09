@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export interface StickyProps {
+export interface StickyProps extends BasicAttributes {
   offsetTop?: string | number
   zIndex?: string | number
   cssMode?: boolean
