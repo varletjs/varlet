@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export interface RowProps {
+export interface RowProps extends BasicAttributes {
   gutter?: string | number
   justify?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around'
   align?: 'flex-start' | 'center' | 'flex-end'
