@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export interface ProgressProps {
+export interface ProgressProps extends BasicAttributes {
   mode?: 'linear' | 'circle'
   lineWidth?: string | number
   color?: string
