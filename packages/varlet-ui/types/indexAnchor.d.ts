@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface IndexAnchorProps {
+export interface IndexAnchorProps extends BasicAttributes {
   index: string | number
 }
 

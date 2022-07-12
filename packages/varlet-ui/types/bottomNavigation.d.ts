@@ -1,7 +1,8 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 import { ButtonProps } from './button'
 
-export interface BottomNavigationProps {
+export interface BottomNavigationProps extends BasicAttributes {
   active?: number | string
   fixed?: boolean
   border?: boolean

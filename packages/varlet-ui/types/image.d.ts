@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface ImageProps {
+export interface ImageProps extends BasicAttributes {
   src?: string
   fit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
   alt?: string

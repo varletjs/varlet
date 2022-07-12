@@ -1,7 +1,8 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 import { BadgeProps } from './badge'
 
-export interface BottomNavigationItemProps {
+export interface BottomNavigationItemProps extends BasicAttributes {
   name?: string
   icon?: string
   label?: string

@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface AppBarProps {
+export interface AppBarProps extends BasicAttributes {
   color?: string
   textColor?: string
   title?: string

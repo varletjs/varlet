@@ -1,4 +1,5 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
 export type TimeData = {
   days: number
@@ -8,7 +9,7 @@ export type TimeData = {
   milliseconds: number
 }
 
-export interface CountdownProps {
+export interface CountdownProps extends BasicAttributes {
   time?: string | number
   format?: string
   autoStart?: boolean

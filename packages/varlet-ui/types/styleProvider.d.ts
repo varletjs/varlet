@@ -1,5 +1,6 @@
 import type { App } from 'vue'
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
 export type StyleVars = Record<string, string>
 

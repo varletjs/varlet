@@ -1,4 +1,5 @@
-import { BasicAttributes, VarComponent } from './varComponent'
+import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
 export interface SwitchProps extends BasicAttributes {
   modelValue?: any

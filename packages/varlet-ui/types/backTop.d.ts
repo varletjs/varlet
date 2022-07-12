@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface BackTopProps {
+export interface BackTopProps extends BasicAttributes {
   visibilityHeight?: number | string
   duration?: number
   target?: string | HTMLElement

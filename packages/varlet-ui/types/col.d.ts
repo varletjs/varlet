@@ -1,11 +1,12 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
 export type SizeDescriptor = {
   span?: number | string
   offset?: number | string
 }
 
-export interface ColProps {
+export interface ColProps extends BasicAttributes {
   span?: string | number
   offset?: string | number
   xs?: string | number | SizeDescriptor | undefined

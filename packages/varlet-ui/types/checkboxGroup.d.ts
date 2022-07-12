@@ -1,8 +1,9 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
 export type CheckboxGroupValidateTriggers = 'onChange'
 
-export interface CheckboxGroupProps {
+export interface CheckboxGroupProps extends BasicAttributes {
   modelValue?: any[]
   max?: string | number
   direction?: 'horizontal' | 'vertical'

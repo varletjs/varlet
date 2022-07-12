@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface IndexBarProps {
+export interface IndexBarProps extends BasicAttributes {
   sticky?: boolean
   stickyOffsetTop?: number | string
   hideList?: boolean

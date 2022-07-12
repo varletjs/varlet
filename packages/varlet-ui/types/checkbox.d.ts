@@ -1,8 +1,9 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
 export type CheckboxValidateTriggers = 'onChange'
 
-export interface CheckboxProps {
+export interface CheckboxProps extends BasicAttributes {
   modelValue?: any
   checkedValue?: any
   uncheckedValue?: any
