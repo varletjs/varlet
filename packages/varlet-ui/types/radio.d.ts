@@ -1,8 +1,8 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
 export type RadioValidateTriggers = 'onChange'
 
-export interface RadioProps {
+export interface RadioProps extends BasicAttributes {
   modelValue?: any
   checkedValue?: any
   uncheckedValue?: any
