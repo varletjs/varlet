@@ -15,7 +15,7 @@ export const props = {
     default: () => ({}),
   },
   type: {
-    type: String as PropType<'text' | 'password' | 'number'>,
+    type: String as PropType<'text' | 'password' | 'number' | 'tel' | 'email'>,
     default: 'text',
     validator: typeValidator,
   },

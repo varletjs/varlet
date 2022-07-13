@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { BasicAttributes, VarComponent } from './varComponent'
 
-export interface ButtonProps {
+export interface ButtonProps extends BasicAttributes {
   type?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
   size?: 'normal' | 'mini' | 'small' | 'large'
   loading?: boolean

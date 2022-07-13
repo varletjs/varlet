@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { BasicAttributes, VarComponent } from './varComponent'
 
-export interface CardProps {
+export interface CardProps extends BasicAttributes {
   src?: string
   fit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
   /**

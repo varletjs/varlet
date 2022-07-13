@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { BasicAttributes, VarComponent } from './varComponent'
 
-export interface IconProps {
+export interface IconProps extends BasicAttributes {
   name?: string
   size?: string | number
   color?: string

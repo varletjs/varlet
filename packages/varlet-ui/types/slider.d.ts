@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export interface SliderProps {
+export interface SliderProps extends BasicAttributes {
   modelValue?: number | Array<number>
   step?: number | string
   range?: boolean

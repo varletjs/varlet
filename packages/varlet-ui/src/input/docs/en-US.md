@@ -153,25 +153,25 @@ const value = ref('')
 
 ### Props
 
-| Prop | Description | Type | Default | 
-| --- | --- | --- | --- | 
-| `v-model` | The value of the binding | _string_ | `-` |
-| `placeholder` | placeholder | _string_ | `-` |
-| `type` | Input type, The optional value is `text` `password` `number` | _string_ | `text` |
-| `maxlength` | Maxlength | _string \| number_ | `-` |
-| `textarea` | Is it a textarea | _boolean_ | `false` |  
-| `rows` | Number of lines to display in the textarea | _string \| number_ | `8` |  
-| `line` | Whether to display a dividing line | _boolean_ | `true` |
-| `hint` | Whether to use placeholder as hint | _boolean_ | `true` |
-| `text-color` | Text color | _string_ | `-` |
-| `focus-color` | The primary color in focus | _string_ | `-` |
-| `blur-color` | The primary color in blur | _string_ | `-` |
-| `readonly` | Whether the readonly | _boolean_ | `false` |
-| `disabled` | Whether the disabled | _boolean_ | `false` |
-| `clearable` | Whether the clearable | _boolean_ | `false` |
-| `resize` | Whether textarea can be dragged to resize | _boolean_ | `false` |
-| `autofocus` | Whether the autofocus | _boolean_ | `false` |
-| `validate-trigger` | Timing to trigger validation, The optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
+| Prop | Description                                                                                                                            | Type | Default | 
+| --- |----------------------------------------------------------------------------------------------------------------------------------------| --- | --- | 
+| `v-model` | The value of the binding                                                                                                               | _string_ | `-` |
+| `placeholder` | placeholder                                                                                                                            | _string_ | `-` |
+| `type` | Input type, The optional value is `text` `password` `number` `tel`                                                                     | _string_ | `text` |
+| `maxlength` | Maxlength                                                                                                                              | _string \| number_ | `-` |
+| `textarea` | Is it a textarea                                                                                                                       | _boolean_ | `false` |  
+| `rows` | Number of lines to display in the textarea                                                                                             | _string \| number_ | `8` |  
+| `line` | Whether to display a dividing line                                                                                                     | _boolean_ | `true` |
+| `hint` | Whether to use placeholder as hint                                                                                                     | _boolean_ | `true` |
+| `text-color` | Text color                                                                                                                             | _string_ | `-` |
+| `focus-color` | The primary color in focus                                                                                                             | _string_ | `-` |
+| `blur-color` | The primary color in blur                                                                                                              | _string_ | `-` |
+| `readonly` | Whether the readonly                                                                                                                   | _boolean_ | `false` |
+| `disabled` | Whether the disabled                                                                                                                   | _boolean_ | `false` |
+| `clearable` | Whether the clearable                                                                                                                  | _boolean_ | `false` |
+| `resize` | Whether textarea can be dragged to resize                                                                                              | _boolean_ | `false` |
+| `autofocus` | Whether the autofocus                                                                                                                  | _boolean_ | `false` |
+| `validate-trigger` | Timing to trigger validation, The optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput`                        | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
 | `rules` | The validation rules, Returns `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string) => any>_ | `-` |
 
 ### Methods

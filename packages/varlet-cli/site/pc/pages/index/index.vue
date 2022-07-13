@@ -4,19 +4,19 @@ import config from '@config'
 import VarSiteButton from '../../../components/button'
 import VarSiteIcon from '../../../components/icon'
 import { get } from 'lodash-es'
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getBrowserThemes, setThemes } from '../../../utils'
 import { getPCLocationInfo, watchThemes } from '@varlet/cli/site/utils'
 import en_US from './locale/en-US'
 import zh_CN from './locale/zh-CN'
-import type { Ref } from 'vue'
+import type { Ref, ComputedRef } from 'vue'
 
 const route = useRoute()
 const router = useRouter()
 const packs = {
   'zh-CN': zh_CN,
-  'en-US': en_US
+  'en-US': en_US,
 } as any
 
 const github = get(config, 'pc.header.github')
@@ -24,16 +24,28 @@ const themesKey = get(config, 'themesKey')
 const currentThemes = ref(getBrowserThemes(themesKey))
 const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
 const title: Ref<string> = ref(get(config, 'title'))
+const language: Ref<string> = ref(get(config, 'defaultLanguage'))
 const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
 const pack: Ref<Record<string, string>> = ref({})
+
+const description: ComputedRef<string> = computed(() => {
+  const { indexPage = {} } = get(config, 'pc')
+
+  return indexPage?.description?.[language.value] || pack.value.description
+})
+
+const started: ComputedRef<string> = computed(() => {
+  const { indexPage = {} } = get(config, 'pc')
+
+  return indexPage?.started?.[language.value] || pack.value.started
+})
 
 const goGithub = () => {
   window.open(github)
 }
 
 const getStar = () => {
-  const { language: lang } = getPCLocationInfo()
-  router.push(`/${lang}/home`)
+  router.push(`/${language.value}/home`)
 }
 
 const getThemesMessage = () => ({ action: 'themesChange', from: 'pc', data: currentThemes.value })
@@ -54,6 +66,7 @@ const setLocale = () => {
   const { language: lang } = getPCLocationInfo()
   if (!lang) return
 
+  language.value = lang
   pack.value = packs[lang]
   document.title = get(config, 'pc.title')[lang] as string
 }
@@ -63,6 +76,8 @@ const toggleLanguages = () => {
 
   const { menuName } = getPCLocationInfo()
   const replaceStr = `/${lang === 'zh-CN' ? 'en-US' : 'zh-CN'}/${menuName}`
+
+  language.value = lang
   router.replace(replaceStr)
 }
 
@@ -90,13 +105,13 @@ watch(() => route.path, setLocale, { immediate: true })
           <animation-box class="logo" />
           <div class="base-title">{{ title }}</div>
         </div>
-        <div class="base-description">{{ pack.description }}</div>
+        <div class="base-description">{{ description }}</div>
 
         <div class="button-group">
           <var-site-button class="common-button github-button" block @click="goGithub">
             <div class="block-button-content">
               <span>GITHUB</span>
-              <var-site-icon style="margin-left: 10px;" name="github" size="24px" />
+              <var-site-icon style="margin-left: 10px" name="github" size="24px" />
             </div>
           </var-site-button>
           <var-site-button class="common-button extra-button margin-left" text v-if="darkMode" @click="toggleTheme">
@@ -107,11 +122,16 @@ watch(() => route.path, setLocale, { immediate: true })
         <div class="button-group">
           <var-site-button type="primary" class="common-button primary-button" block @click="getStar">
             <div class="block-button-content">
-              <span>{{ pack.started }}</span>
+              <span>{{ started }}</span>
               <var-site-icon style="margin-left: 10px; transform: rotate(-90deg)" name="arrow-down" size="24px" />
             </div>
           </var-site-button>
-          <var-site-button class="common-button extra-button margin-left" text v-if="languages" @click="toggleLanguages">
+          <var-site-button
+            class="common-button extra-button margin-left"
+            text
+            v-if="languages"
+            @click="toggleLanguages"
+          >
             <var-site-icon name="translate" size="24px" />
           </var-site-button>
         </div>
@@ -121,5 +141,5 @@ watch(() => route.path, setLocale, { immediate: true })
 </template>
 
 <style lang="less" scoped>
-@import "./index";
+@import './index';
 </style>

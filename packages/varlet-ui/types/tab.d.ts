@@ -1,6 +1,6 @@
-import { VarComponent } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export interface TabProps {
+export interface TabProps extends BasicAttributes {
   name?: string | number
   disabled?: boolean
   onClick?: (active: string | number, e: Event) => void

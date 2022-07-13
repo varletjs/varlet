@@ -8,7 +8,7 @@
       <div :class="n('card')" :style="{ height: toSizeUnit(cardHeight) }" v-if="card">
         <div :class="n('--animation')"></div>
       </div>
-      <div :class="n('article')">
+      <div :class="n('article')" v-if="avatar || title || toNumber(rows) > 0">
         <div
           :class="n('avatar')"
           :style="{
@@ -19,7 +19,7 @@
         >
           <div :class="n('--animation')"></div>
         </div>
-        <div :class="n('section')">
+        <div :class="n('section')" v-if="title || toNumber(rows) > 0">
           <div :class="n('title')" :style="{ width: toSizeUnit(titleWidth) }" v-if="title">
             <div :class="n('--animation')"></div>
           </div>
