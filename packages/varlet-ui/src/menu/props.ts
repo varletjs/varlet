@@ -9,6 +9,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  mouseToggle: {
+    type: Boolean,
+    default: false,
+  },
   alignment: {
     type: String as PropType<'top' | 'bottom'>,
     default: 'top',

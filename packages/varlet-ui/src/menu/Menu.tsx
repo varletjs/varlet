@@ -127,7 +127,7 @@ export default defineComponent({
     exposeApis({ resize })
 
     return () => (
-      <div class={n()} ref={host} onClick={handleClick}>
+      <div class={n()} ref={host} onClick={handleClick} onMouseenter={props.mouseToggle ? handleClick : undefined}>
         {call(slots.default)}
 
         {to.value ? (
