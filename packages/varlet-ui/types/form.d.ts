@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface FormProps {
+export interface FormProps extends BasicAttributes {
   disabled?: boolean
   readonly?: boolean
 }

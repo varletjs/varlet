@@ -1,8 +1,9 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
 export type CounterValidateTriggers = 'onIncrement' | 'onDecrement' | 'onInputChange' | 'onLazyChange'
 
-export interface CounterProps {
+export interface CounterProps extends BasicAttributes {
   modelValue?: string | number
   min?: string | number
   max?: string | number

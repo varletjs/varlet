@@ -1,7 +1,8 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 import type { TeleportProps } from 'vue'
 
-export interface PopupProps {
+export interface PopupProps extends BasicAttributes {
   show?: boolean
   position?: 'top' | 'bottom' | 'right' | 'left' | 'center'
   overlay?: boolean

@@ -1,8 +1,9 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
 export type InputValidateTriggers = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
 
-export interface InputProps {
+export interface InputProps extends BasicAttributes {
   modelValue?: string
   type?: 'text' | 'password' | 'number' | 'tel' | 'email'
   textarea?: boolean

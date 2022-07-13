@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface BadgeProps {
+export interface BadgeProps extends BasicAttributes {
   type?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
   hidden?: boolean
   dot?: boolean

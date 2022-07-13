@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface OptionProps {
+export interface OptionProps extends BasicAttributes {
   label?: any
   value?: any
 }

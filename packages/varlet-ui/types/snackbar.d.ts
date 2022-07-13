@@ -1,4 +1,5 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 import type { App, TeleportProps } from 'vue'
 
 export type LoadingType = 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'

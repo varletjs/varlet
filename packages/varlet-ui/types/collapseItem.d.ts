@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface CollapseItemProps {
+export interface CollapseItemProps extends BasicAttributes {
   name?: string | number
   title?: string
   icon?: string

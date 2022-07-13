@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface PullRefreshProps {
+export interface PullRefreshProps extends BasicAttributes {
   modelValue?: boolean
   disabled?: boolean
   animationDuration?: number | string

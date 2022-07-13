@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface DividerProps {
+export interface DividerProps extends BasicAttributes {
   inset?: boolean | number
   vertical?: boolean
   description?: string

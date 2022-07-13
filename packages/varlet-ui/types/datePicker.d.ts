@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface DatePickerProps {
+export interface DatePickerProps extends BasicAttributes {
   modelValue: string | Array<string>
   type?: 'date' | 'month'
   allowedDates?: (val: string) => boolean

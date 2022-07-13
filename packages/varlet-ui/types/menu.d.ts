@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface MenuProps {
+export interface MenuProps extends BasicAttributes {
   show?: boolean
   alignment?: 'top' | 'bottom'
   offsetX?: string | number

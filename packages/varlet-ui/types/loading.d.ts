@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface LoadingProps {
+export interface LoadingProps extends BasicAttributes {
   type?: 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'
   radius?: string | number
   size?: 'normal' | 'mini' | 'small' | 'large'

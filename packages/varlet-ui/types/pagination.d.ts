@@ -1,8 +1,9 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
 type Range = [number, number]
 
-export interface PaginationProps {
+export interface PaginationProps extends BasicAttributes {
   current?: string | number
   size?: string | number
   total?: string | number

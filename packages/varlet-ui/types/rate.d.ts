@@ -1,6 +1,7 @@
 import { VarComponent } from './varComponent'
+import type { BasicAttributes } from './varComponent'
 
-export interface RateProps {
+export interface RateProps extends BasicAttributes {
   modelValue?: string | number
   count?: string | number
   color?: string
