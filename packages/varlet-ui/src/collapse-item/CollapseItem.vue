@@ -20,7 +20,7 @@
         </slot>
       </div>
     </div>
-    <div :class="n('content')" v-show="show" ref="contentEl" @transitionend="transitionend">
+    <div :class="n('content')" v-show="show" ref="contentEl" @transitionend="transitionend" @transitionstart="start">
       <div :class="n('content-wrap')">
         <slot />
       </div>
@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, nextTick, watch, computed } from 'vue'
-import { requestAnimationFrame } from '../utils/elements'
+import { nextTickFrame, requestAnimationFrame } from '../utils/elements'
 import { isArray } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { useCollapse } from './provide'
@@ -50,6 +50,7 @@ export default defineComponent({
   setup(props) {
     const { index, collapse, bindCollapse } = useCollapse()
 
+    let isInitToTrigger = true // ensure to trigger transitionend
     const contentEl: Ref<HTMLDivElement | null> = ref(null)
     const show: Ref<boolean> = ref(false)
     const isShow: Ref<boolean> = ref(false)
@@ -83,8 +84,18 @@ export default defineComponent({
 
         requestAnimationFrame(() => {
           ;(contentEl.value as HTMLDivElement).style.height = offsetHeight + 'px'
+
+          if (!isInitToTrigger) return
+
+          nextTickFrame(() => {
+            if (isInitToTrigger) transitionend()
+          })
         })
       })
+    }
+
+    const start = () => {
+      isInitToTrigger = false
     }
 
     const closePanel = () => {
@@ -121,6 +132,7 @@ export default defineComponent({
 
     return {
       n,
+      start,
       classes,
       show,
       isShow,
