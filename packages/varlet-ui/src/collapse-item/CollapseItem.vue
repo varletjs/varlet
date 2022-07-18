@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, nextTick, watch, computed } from 'vue'
-import { requestAnimationFrame } from '../utils/elements'
+import { nextTickFrame, requestAnimationFrame } from '../utils/elements'
 import { isArray } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { useCollapse } from './provide'
@@ -81,12 +81,8 @@ export default defineComponent({
         const { offsetHeight } = contentEl.value as HTMLDivElement
           ;(contentEl.value as HTMLDivElement).style.height = 0 + 'px'
 
-        const raf = window.requestAnimationFrame
-          ? window.requestAnimationFrame
-          : setTimeout;
-
-        raf(() => {
-          ;(contentEl.value as HTMLDivElement).style.height = offsetHeight + 'px'
+        nextTickFrame(() => {
+          ; (contentEl.value as HTMLDivElement).style.height = offsetHeight + 'px'
         })
       })
     }
