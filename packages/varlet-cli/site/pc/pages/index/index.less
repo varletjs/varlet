@@ -4,6 +4,7 @@
   height: 100vh;
   box-sizing: border-box;
   min-width: 1200px;
+  min-height: 460px;
   background: var(--site-config-color-home-page-background);
   overflow: hidden;
   display: flex;
@@ -116,79 +117,159 @@
   justify-content: center;
   align-items: center;
 
-  .container-box {
-    width: 35vw;
-    min-width: 500px;
+  @media all and (max-width: 2560px) {
+    .container-box {
+      width: 35vw;
+      min-width: 500px;
 
-    .description-container {
-      display: flex;
-      margin-bottom: 35px;
+      .description-container {
+        display: flex;
+        margin-bottom: 40px;
+      }
+
+      .logo-container {
+        margin-right: 20px;
+      }
+
+      .button-group {
+        display: flex;
+        margin-top: 25px;
+        align-items: center;
+      }
+
+      .block-button-content {
+        display: flex;
+        align-items: center;
+      }
+
+      .common-button {
+        height: 52px;
+        font-size: 18px;
+        transition: all .25s;
+        animation: fade-in .75s forwards;
+      }
+
+      .extra-button {
+        flex-shrink: 0;
+        background-color: var(--site-config-color-home-page-extra-button-background);
+      }
+
+      .github-button {
+        background-color: var(--site-config-color-home-page-github-button-background);
+        color: #fff;
+      }
+
+      .primary-button {
+        background-color: var(--site-config-color-home-page-primary-button-background);
+      }
+
+      .margin-left {
+        margin-left: 10px;
+      }
+
+      .base-title {
+        font-size: 110px;
+        line-height: 72px;
+        font-weight: 500;
+        margin-top: 21px;
+        animation: fade-in .75s forwards;
+      }
+
+      .base-description {
+        font-size: 20px;
+        line-height: 38px;
+        padding-left: 4px;
+        font-weight: 500;
+        margin-bottom: 43px;
+        letter-spacing: 1px;
+        animation: fade-in .75s forwards;
+      }
+
+      .logo-box {
+        width: 120px;
+        height: 120px;
+        flex-shrink: 0;
+        margin-right: 30px;
+        z-index: 2;
+      }
     }
+  }
 
-    .logo-container {
-      margin-right: 20px;
-    }
+  @media all and (max-width: 1920px) {
+    .container-box {
+      width: 35vw;
+      min-width: 500px;
 
-    .button-group {
-      display: flex;
-      margin-top: 25px;
-      align-items: center;
-    }
+      .description-container {
+        display: flex;
+        margin-bottom: 35px;
+      }
 
-    .block-button-content {
-      display: flex;
-      align-items: center;
-    }
+      .logo-container {
+        margin-right: 20px;
+      }
 
-    .common-button {
-      height: 52px;
-      font-size: 18px;
-      transition: all .25s;
-      animation: fade-in .75s forwards;
-    }
+      .button-group {
+        display: flex;
+        margin-top: 25px;
+        align-items: center;
+      }
 
-    .extra-button {
-      flex-shrink: 0;
-      background-color: var(--site-config-color-home-page-extra-button-background);
-    }
+      .block-button-content {
+        display: flex;
+        align-items: center;
+      }
 
-    .github-button {
-      background-color: var(--site-config-color-home-page-github-button-background);
-      color: #fff;
-    }
+      .common-button {
+        height: 52px;
+        font-size: 18px;
+        transition: all .25s;
+        animation: fade-in .75s forwards;
+      }
 
-    .primary-button {
-      background-color: var(--site-config-color-home-page-primary-button-background);
-    }
+      .extra-button {
+        flex-shrink: 0;
+        background-color: var(--site-config-color-home-page-extra-button-background);
+      }
 
-    .margin-left {
-      margin-left: 10px;
-    }
+      .github-button {
+        background-color: var(--site-config-color-home-page-github-button-background);
+        color: #fff;
+      }
 
-    .base-title {
-      font-size: 84px;
-      line-height: 72px;
-      font-weight: 500;
-      margin-top: 8px;
-      animation: fade-in .75s forwards;
-    }
+      .primary-button {
+        background-color: var(--site-config-color-home-page-primary-button-background);
+      }
 
-    .base-description {
-      font-size: 16px;
-      line-height: 28px;
-      padding-left: 4px;
-      font-weight: 500;
-      margin-bottom: 45px;
-      letter-spacing: 1px;
-      animation: fade-in .75s forwards;
-    }
+      .margin-left {
+        margin-left: 10px;
+      }
 
-    .logo {
-      width: 90px;
-      height: 90px;
-      flex-shrink: 0;
-      margin-right: 25px;
-      z-index: 2;
+      .base-title {
+        font-size: 84px;
+        line-height: 72px;
+        font-weight: 500;
+        margin-top: 8px;
+        animation: fade-in .75s forwards;
+      }
+
+      .base-description {
+        font-size: 16px;
+        line-height: 28px;
+        padding-left: 4px;
+        font-weight: 500;
+        margin-bottom: 45px;
+        letter-spacing: 1px;
+        animation: fade-in .75s forwards;
+      }
+
+      .logo-box {
+        width: 90px;
+        height: 90px;
+        flex-shrink: 0;
+        margin-right: 25px;
+        z-index: 2;
+      }
     }
   }
 }

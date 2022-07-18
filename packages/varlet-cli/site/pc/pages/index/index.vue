@@ -99,10 +99,10 @@ watch(() => route.path, setLocale, { immediate: true })
     <div class="slash-box box-3"></div>
     <div class="slash-box box-4"></div>
     <div class="slash-box box-5"></div>
-    <div class="profile-container">
+    <div class="profile-container profile-container--scale">
       <div class="container-box">
         <div class="description-container">
-          <animation-box class="logo" />
+          <animation-box class="logo-box" />
           <div class="base-title">{{ title }}</div>
         </div>
         <div class="base-description">{{ description }}</div>
