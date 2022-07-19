@@ -117,54 +117,54 @@
   justify-content: center;
   align-items: center;
 
-  @media all and (max-width: 2560px) {
-    .container-box {
-      width: 35vw;
-      min-width: 500px;
+  .container-box {
+    width: 35vw;
+    min-width: 500px;
 
+    .logo-container {
+      margin-right: 20px;
+    }
+
+    .button-group {
+      display: flex;
+      margin-top: 25px;
+      align-items: center;
+    }
+
+    .block-button-content {
+      display: flex;
+      align-items: center;
+    }
+
+    .common-button {
+      height: 52px;
+      font-size: 18px;
+      transition: all .25s;
+      animation: fade-in .75s forwards;
+    }
+
+    .extra-button {
+      flex-shrink: 0;
+      background-color: var(--site-config-color-home-page-extra-button-background);
+    }
+
+    .github-button {
+      background-color: var(--site-config-color-home-page-github-button-background);
+      color: #fff;
+    }
+
+    .primary-button {
+      background-color: var(--site-config-color-home-page-primary-button-background);
+    }
+
+    .margin-left {
+      margin-left: 10px;
+    }
+
+    @media all and (max-width: 2560px) {
       .description-container {
         display: flex;
         margin-bottom: 40px;
-      }
-
-      .logo-container {
-        margin-right: 20px;
-      }
-
-      .button-group {
-        display: flex;
-        margin-top: 25px;
-        align-items: center;
-      }
-
-      .block-button-content {
-        display: flex;
-        align-items: center;
-      }
-
-      .common-button {
-        height: 52px;
-        font-size: 18px;
-        transition: all .25s;
-        animation: fade-in .75s forwards;
-      }
-
-      .extra-button {
-        flex-shrink: 0;
-        background-color: var(--site-config-color-home-page-extra-button-background);
-      }
-
-      .github-button {
-        background-color: var(--site-config-color-home-page-github-button-background);
-        color: #fff;
-      }
-
-      .primary-button {
-        background-color: var(--site-config-color-home-page-primary-button-background);
-      }
-
-      .margin-left {
-        margin-left: 10px;
       }
 
       .base-title {
@@ -193,56 +193,12 @@
         z-index: 2;
       }
     }
-  }
 
-  @media all and (max-width: 1920px) {
-    .container-box {
-      width: 35vw;
-      min-width: 500px;
+    @media all and (max-width: 1920px) {
 
       .description-container {
         display: flex;
         margin-bottom: 35px;
-      }
-
-      .logo-container {
-        margin-right: 20px;
-      }
-
-      .button-group {
-        display: flex;
-        margin-top: 25px;
-        align-items: center;
-      }
-
-      .block-button-content {
-        display: flex;
-        align-items: center;
-      }
-
-      .common-button {
-        height: 52px;
-        font-size: 18px;
-        transition: all .25s;
-        animation: fade-in .75s forwards;
-      }
-
-      .extra-button {
-        flex-shrink: 0;
-        background-color: var(--site-config-color-home-page-extra-button-background);
-      }
-
-      .github-button {
-        background-color: var(--site-config-color-home-page-github-button-background);
-        color: #fff;
-      }
-
-      .primary-button {
-        background-color: var(--site-config-color-home-page-primary-button-background);
-      }
-
-      .margin-left {
-        margin-left: 10px;
       }
 
       .base-title {
