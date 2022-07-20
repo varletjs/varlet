@@ -102,7 +102,7 @@ watch(() => route.path, setLocale, { immediate: true })
     <div class="profile-container">
       <div class="container-box">
         <div class="description-container">
-          <animation-box class="logo" />
+          <animation-box class="logo-box" />
           <div class="base-title">{{ title }}</div>
         </div>
         <div class="base-description">{{ description }}</div>

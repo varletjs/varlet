@@ -152,7 +152,7 @@ const change = (time) => {
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
-| --- | --- |
+| --- | -- |
 | `--time-picker-border-radius` | `4px` |
 | `--time-picker-font-size` | `var(--font-size-md)` |
 | `--time-picker-min-width` | `290px` |
@@ -190,4 +190,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--time-picker-inner-right` | `36px` |
 | `--time-picker-inner-top` | `36px` |
 | `--time-picker-inner-bottom` | `36px` |
-| `--time-picker-body-background` | `#fff` |
+| `--time-picker-body-background` | `transparent` |
