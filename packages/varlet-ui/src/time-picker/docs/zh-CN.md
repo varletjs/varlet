@@ -153,7 +153,7 @@ const change = (time) => {
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
 | 变量名 | 默认值 |
-| --- | --- |
+| --- | -- |
 | `--time-picker-border-radius` | `4px` |
 | `--time-picker-font-size` | `var(--font-size-md)` |
 | `--time-picker-min-width` | `290px` |
@@ -191,4 +191,4 @@ const change = (time) => {
 | `--time-picker-inner-right` | `36px` |
 | `--time-picker-inner-top` | `36px` |
 | `--time-picker-inner-bottom` | `36px` |
-| `--time-picker-body-background` | `#fff` |
+| `--time-picker-body-background` | `transparent` |

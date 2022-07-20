@@ -33,7 +33,7 @@
 @day-picker-head-item-color: rgba(0, 0, 0, 0.38);
 @day-picker-head-item-padding: 8px 0;
 @day-picker-head-item-font-weight: 600;
-@date-picker-body-background-color: rgba(0, 0, 0, 0);
+@date-picker-body-background-color: transparent;
 
 :root {
   --date-picker-border-radius: @date-picker-border-radius;
@@ -147,6 +147,12 @@
     position: relative;
     overflow: auto;
     background-color: var(--date-picker-body-background-color);
+
+    &::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      background: transparent;
+    }
   }
 
   .var-picker-header {
