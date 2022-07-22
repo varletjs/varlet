@@ -1,3 +1,19 @@
+## [1.27.18](https://github.com/varletjs/varlet/compare/v1.27.17...v1.27.18) (2022-07-22)
+
+
+### Bug Fixes
+
+* **collapse:** ensure to trigger transitionend ([51b7710](https://github.com/varletjs/varlet/commit/51b77104d12e7a59c267921a004a429f882bcd9d))
+* **date-picker&time-picker:** change background color and add ripple style for close [#651](https://github.com/varletjs/varlet/issues/651) ([c1303a0](https://github.com/varletjs/varlet/commit/c1303a0b97430c0b03d90e8f404aa8a3b2586306))
+* **pull-refresh:** use success props when status is success ([189f8ab](https://github.com/varletjs/varlet/commit/189f8ab5eff8e406332cd1e4587f8a167e13d94c))
+
+
+### Features
+
+* **cli:** compatible with screens > 2560 ([6c4f161](https://github.com/varletjs/varlet/commit/6c4f1612857f1789e8c69ea63bbde24b5776c97e))
+
+
+
 ## [1.27.17](https://github.com/varletjs/varlet/compare/v1.27.16...v1.27.17) (2022-07-06)
 
 
