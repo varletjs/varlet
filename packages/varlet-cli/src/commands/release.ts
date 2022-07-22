@@ -124,12 +124,12 @@ export async function release(cmd: { remote?: string }) {
 
     updateVersion(expectVersion)
 
+    await publish(isPreRelease)
+
     if (!isPreRelease) {
       await changelog()
       await pushGit(expectVersion, cmd.remote)
     }
-
-    await publish(isPreRelease)
 
     logger.success(`Release version ${expectVersion} successfully!`)
 
