@@ -2,8 +2,8 @@
   <div :class="classes(n(), [shadow, 'var-elevation--2'])">
     <div :class="n('title')" :style="{ background: headerColor || color }">
       <div :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])" @click="clickEl('year')">
-        <slot name="year" :year="previewYear">
-          {{ previewYear }}
+        <slot name="year" :year="chooseYear">
+          {{ chooseYear }}
         </slot>
       </div>
 
