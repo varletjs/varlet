@@ -169,6 +169,9 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  onPreview: {
+    type: Function as PropType<(year: number, month: number) => void>,
+  },
   onChange: {
     type: Function as PropType<(value: string | string[]) => void>,
   },

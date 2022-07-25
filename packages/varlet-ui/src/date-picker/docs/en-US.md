@@ -148,9 +148,10 @@ const change = (date) => {
 
 ### Events
 
-| Event | Description | arguments |
-| ----- | -------------- | -------- |
-| `change` | Emitted after date changed | `value: string \| string[]` |
+| Event | Description                 | arguments |
+| ----- |-----------------------------| -------- |
+| `preview` | Emitted after date switched | `year: number` <br>`month: number` |
+| `change` | Emitted after date changed  | `value: string \| string[]` |
 
 ### Slots
 

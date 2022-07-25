@@ -316,7 +316,7 @@ export default defineComponent({
     }
 
     const getChooseMonth = (month: MonthDict) => {
-      const { type, readonly, range, multiple, onChange, 'onUpdate:modelValue': updateModelValue } = props
+      const { type, readonly, range, multiple, onChange, onPreview, 'onUpdate:modelValue': updateModelValue } = props
       reverse.value = getReverse('month', month)
 
       if (type === 'month' && !readonly) {
@@ -330,6 +330,8 @@ export default defineComponent({
         }
       } else {
         previewMonth.value = month
+
+        call(onPreview, toNumber(previewYear.value), toNumber(previewMonth.value.index))
       }
 
       isMonthPanel.value = false
@@ -339,6 +341,8 @@ export default defineComponent({
       previewYear.value = `${year}`
       isYearPanel.value = false
       isMonthPanel.value = true
+
+      call(props.onPreview, toNumber(previewYear.value), toNumber(previewMonth.value.index))
     }
 
     const checkPreview = (type: string, checkType: string) => {
@@ -361,6 +365,8 @@ export default defineComponent({
 
         previewMonth.value = MONTH_LIST.find((month) => toNumber(month.index) === checkIndex) as MonthDict
       }
+
+      call(props.onPreview, toNumber(previewYear.value), toNumber(previewMonth.value.index))
     }
 
     const checkValue = () => {
