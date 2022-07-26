@@ -62,8 +62,8 @@ export default defineComponent({
     const controlStyle = computed(() => ({
       transform: `translate3d(0px, ${distance.value}px, 0px) translate(-50%, 0)`,
       transition: isEnd.value ? `transform ${props.animationDuration}ms` : undefined,
-      background: props.successBgColor || props.bgColor,
-      color: props.successColor || props.color,
+      background: isSuccess.value ? props.successBgColor : props.bgColor,
+      color: isSuccess.value ? props.successColor : props.color,
     }))
 
     const isSuccess = computed(() => refreshStatus.value === 'success')

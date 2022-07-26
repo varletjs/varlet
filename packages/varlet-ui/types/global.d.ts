@@ -1,5 +1,5 @@
 declare module 'vue' {
-  export interface GlobalComponents extends BasicAttributes {
+  export interface GlobalComponents {
     VarActionSheet: typeof import('@varlet/ui')['_ActionSheetComponent']
     VarAppBar: typeof import('@varlet/ui')['_AppBarComponent']
     VarBackTop: typeof import('@varlet/ui')['_BackTopComponent']

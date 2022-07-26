@@ -16,7 +16,7 @@ export const props = {
     type: [Number, String],
     default: 300,
   },
-  // 刷新成功提示展示时长
+  // 成功提示展示时长
   successDuration: {
     type: [Number, String],
     default: 2000,
