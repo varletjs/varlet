@@ -21,13 +21,13 @@
 </template>
 ```
 
-### 简单纸片
+### 空心纸片
 
-通过 `plain` 属性将纸片设置为简单纸片。
+通过 `plain` 属性将纸片设置为空心纸片。
 
 ```html
 <template>
-  <var-chip plain type="primary">简单纸片</var-chip>
+  <var-chip plain type="primary">空心纸片</var-chip>
 </template>
 ```
 

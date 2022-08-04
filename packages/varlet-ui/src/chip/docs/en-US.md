@@ -22,13 +22,13 @@ Set the type of the chip with the 'type' attribute.
 </template>
 ```
 
-### Simple Chip
+### Plain Chip
 
-Use the `plain` property to make the chip simple.
+Use the `plain` property to make the chip plain.
 
 ```html
 <template>
-  <var-chip plain type="primary">Simple Chip</var-chip>
+  <var-chip plain type="primary">Plain Chip</var-chip>
 </template>
 ```
 

@@ -63,10 +63,6 @@ const goBack = () => {
 </template>
 ```
 
-```js
-
-```
-
 ### 添加右侧插槽
 
 ```html
