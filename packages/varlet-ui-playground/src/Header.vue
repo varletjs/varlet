@@ -6,6 +6,7 @@ import Share from './icons/Share.vue'
 import Download from './icons/Download.vue'
 import { downloadProject } from './download/download'
 import { Snackbar } from '@varlet/ui'
+import { onMounted } from 'vue'
 
 // eslint-disable-next-line no-undef
 const props = defineProps(['store'])
@@ -19,7 +20,29 @@ function toggleDark() {
   const cls = document.documentElement.classList
   cls.toggle('dark')
   localStorage.setItem('varlet-ui-playground-prefer-dark', String(cls.contains('dark')))
+
+  notifyIframeThemeChange()
 }
+
+function notifyIframeThemeChange() {
+  setTimeout(() => {
+    window[0].postMessage({
+      action: 'theme-change',
+      value: document.documentElement.classList.contains('dark') ? 'dark' : 'light',
+    })
+  })
+}
+
+onMounted(() => {
+  const cls = document.documentElement.classList
+
+  const saved = localStorage.getItem('varlet-ui-playground-prefer-dark')
+  if (saved !== 'false') {
+    cls.add('dark')
+  }
+
+  notifyIframeThemeChange()
+})
 </script>
 
 <template>

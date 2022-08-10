@@ -41,6 +41,22 @@ Context.touchmoveForbid = false
 await appendStyle()
 
 export function installVarletUI() {
+  const { parent } = window
+
+  document.body.style.minHeight = '100vh'
+  document.body.style.color = 'var(--color-text)'
+  document.body.style.backgroundColor = 'var(--color-body)'
+
+  if (parent.document.documentElement.classList.contains('dark')) {
+    VarletUI.StyleProvider(VarletUI.Themes.dark)
+  }
+
+  window.addEventListener('message', ({ data }) => {
+    if (data.action === 'theme-change') {
+      VarletUI.StyleProvider(data.value === 'dark' ? VarletUI.Themes.dark : null)
+    }
+  })
+
   const instance = getCurrentInstance()
   instance.appContext.app.use(VarletUI)
 }
