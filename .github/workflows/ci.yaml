@@ -21,7 +21,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --ignore-scripts  && node scripts/bootstrap.mjs
+        run: pnpm install --no-frozen-lockfile --ignore-scripts && node scripts/bootstrap.mjs
 
       - name: Run linter
         run: pnpm lint
