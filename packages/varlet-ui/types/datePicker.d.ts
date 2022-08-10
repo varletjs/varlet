@@ -16,6 +16,7 @@ export interface DatePickerProps extends BasicAttributes {
   multiple?: boolean
   range?: boolean
   touchable?: boolean
+  onPreview?: (year: number, month: number) => void
   onChange?: (value: string | string[]) => void
   'onUpdate:modelValue'?: (value: string | string[]) => void
 }

@@ -6,7 +6,7 @@ export default {
   successChip: '成功纸片',
   warningChip: '警告纸片',
   dangerChip: '危险纸片',
-  simpleChip: '简单纸片',
+  plainChip: '空心纸片',
   nonRoundChip: '非圆角纸片',
   chipSize: '纸片尺寸',
   largeChip: '大型纸片',

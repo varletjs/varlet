@@ -26,8 +26,8 @@ watchDarkMode(dark)
     <var-chip type="info">{{ pack.infoChip }}</var-chip>
   </var-space>
 
-  <app-type>{{ pack.simpleChip }}</app-type>
-  <var-chip plain type="primary">{{ pack.simpleChip }}</var-chip>
+  <app-type>{{ pack.plainChip }}</app-type>
+  <var-chip plain type="primary">{{ pack.plainChip }}</var-chip>
 
   <app-type>{{ pack.nonRoundChip }}</app-type>
   <var-chip :round="false" type="primary">{{ pack.nonRoundChip }}</var-chip>

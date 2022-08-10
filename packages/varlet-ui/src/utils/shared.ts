@@ -17,7 +17,7 @@ export const isHTMLSupportImage = (val: string | undefined | null) => {
     return false
   }
 
-  return val.startsWith('data:image') || /\.(png|jpg|gif|jpeg|svg)$/.test(val)
+  return val.startsWith('data:image') || /\.(png|jpg|gif|jpeg|svg|webp)$/.test(val)
 }
 
 export const isHTMLSupportVideo = (val: string | undefined | null) => {

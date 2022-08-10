@@ -6,7 +6,7 @@ export default {
   successChip: 'Success Chip',
   warningChip: 'Warning Chip',
   dangerChip: 'Danger Chip',
-  simpleChip: 'Simple Chip',
+  plainChip: 'Plain Chip',
   nonRoundChip: 'Non Round Chip',
   chipSize: 'Chip Size',
   largeChip: 'Large Chip',

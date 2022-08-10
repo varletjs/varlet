@@ -1,3 +1,19 @@
+## [1.27.19](https://github.com/varletjs/varlet/compare/v1.27.18...v1.27.19) (2022-08-08)
+
+
+### Bug Fixes
+
+* **cli/release:** change code execution order ([6f4e75c](https://github.com/varletjs/varlet/commit/6f4e75c1a9787cdf400718d9d4ce29df948b1d12))
+* **date-picker:** change preview to choose ([3fe98f9](https://github.com/varletjs/varlet/commit/3fe98f99ee213525a20ff082bd1579b7c68ed60d))
+* **ui/uploader:** add webp image ext ([e49d511](https://github.com/varletjs/varlet/commit/e49d51129c8cc349bbf3540b1d84df6c8fbb03bb))
+
+
+### Features
+
+* **date-picker:** add preview to close [#654](https://github.com/varletjs/varlet/issues/654) ([ed23775](https://github.com/varletjs/varlet/commit/ed23775e7da53e71a2d5112b7b7f8133fb180336))
+
+
+
 ## [1.27.18](https://github.com/varletjs/varlet/compare/v1.27.17...v1.27.18) (2022-07-22)
 
 

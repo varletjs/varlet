@@ -24,6 +24,9 @@ const allowedDates1 = (date) => {
 const change = (date) => {
   console.log(date)
 }
+const preview = (year, month) => {
+  console.log(year, month)
+}
 
 watchLang(use)
 watchDarkMode(dark)
@@ -56,6 +59,7 @@ watchDarkMode(dark)
     header-color="purple"
     color="#7bb872"
     first-day-of-week="1"
+    @preview="preview"
     @change="change"
   >
     <template #year="{ year }">
