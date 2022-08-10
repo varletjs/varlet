@@ -11,6 +11,8 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7
 
       - name: Set node version to 16
         uses: actions/setup-node@v3
@@ -19,7 +21,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm bootstrap
+        run: pnpm install --frozen-lockfile --ignore-scripts  && node scripts/bootstrap.mjs
 
       - name: Run linter
         run: pnpm lint
