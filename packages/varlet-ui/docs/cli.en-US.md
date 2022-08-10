@@ -344,7 +344,7 @@ module.exports = {
 {
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
-    "commit-msg": "npx --no-install varlet-cli commit-lint $1"
+    "commit-msg": "pnpm exec varlet-cli commit-lint $1"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
