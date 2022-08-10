@@ -35,7 +35,7 @@ At any time, you can start the following steps to submit your amazing works:
 **Create testcase**
 
 1. If you are creating a new component, the testcase is required.
-2. If you only modify components, please note update test snapshot: `pnpm test -- -w and press u`.
+2. If you only modify components, please note update test snapshot: `pnpm test -w and press u`.
 3. Please check coverage locally before submit.
 
 ### Q & A
