@@ -9,21 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v2.2.2
         with:
           version: 7
 
-      - name: Set node version to 14
-        uses: actions/setup-node@v2
+      - name: Set node version to 16
+        uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
+          node-version: '16'
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm bootstrap
+        run: pnpm install --no-frozen-lockfile --ignore-scripts && node scripts/bootstrap.mjs
 
       - name: Build site
         run: cd packages/varlet-ui && pnpm build
