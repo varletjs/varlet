@@ -3,6 +3,7 @@
   "version": "1.27.19",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "postinstall": "simple-git-hooks",
     "bootstrap": "pnpm install && node scripts/bootstrap.mjs",
     "lint": "varlet-cli lint",
     "changelog": "varlet-cli changelog",
@@ -10,7 +11,7 @@
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
-    "commit-msg": "npx --no-install varlet-cli commit-lint $1"
+    "commit-msg": "pnpm exec varlet-cli commit-lint $1"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
@@ -71,9 +72,9 @@
     "lint-staged": "^10.5.0",
     "ora": "^5.4.0",
     "prettier": "^2.3.2",
-    "simple-git-hooks": "^2.7.0",
+    "simple-git-hooks": "^2.8.0",
     "stylelint": "^13.13.1",
     "typescript": "^4.4.4"
   },
-  "packageManager": "pnpm@6.24.3"
+  "packageManager": "pnpm@7.9.0"
 }
