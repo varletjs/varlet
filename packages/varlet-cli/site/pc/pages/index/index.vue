@@ -4,20 +4,14 @@ import config from '@config'
 import VarSiteButton from '../../../components/button'
 import VarSiteIcon from '../../../components/icon'
 import { get } from 'lodash-es'
-import { ref, watch, computed } from 'vue'
+import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getBrowserThemes, setThemes } from '../../../utils'
 import { getPCLocationInfo, watchThemes } from '@varlet/cli/site/utils'
-import en_US from './locale/en-US'
-import zh_CN from './locale/zh-CN'
-import type { Ref, ComputedRef } from 'vue'
+import type { Ref } from 'vue'
 
 const route = useRoute()
 const router = useRouter()
-const packs = {
-  'zh-CN': zh_CN,
-  'en-US': en_US
-} as any
 
 const github = get(config, 'pc.header.github')
 const themesKey = get(config, 'themesKey')
@@ -26,19 +20,7 @@ const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
 const title: Ref<string> = ref(get(config, 'title'))
 const language: Ref<string> = ref(get(config, 'defaultLanguage'))
 const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
-const pack: Ref<Record<string, string>> = ref({})
-
-const description: ComputedRef<string> = computed(() => {
-  const { indexPage = {} } = get(config, 'pc')
-
-  return indexPage?.description?.[language.value] || pack.value.description
-})
-
-const started: ComputedRef<string> = computed(() => {
-  const { indexPage = {} } = get(config, 'pc')
-
-  return indexPage?.started?.[language.value] || pack.value.started
-})
+const indexPage: Ref<Record<string, any>> = get(config, 'pc.indexPage')
 
 const goGithub = () => {
   window.open(github)
@@ -67,7 +49,6 @@ const setLocale = () => {
   if (!lang) return
 
   language.value = lang
-  pack.value = packs[lang]
   document.title = get(config, 'pc.title')[lang] as string
 }
 
@@ -101,7 +82,7 @@ watch(() => route.path, setLocale, { immediate: true })
       </div>
 
       <div class="varlet-doc-index__title">{{ title }}</div>
-      <div class="varlet-doc-index__description">{{ description }}</div>
+      <div class="varlet-doc-index__description">{{ indexPage.description[language] }}</div>
       <div class="varlet-doc-index__link-button-group">
         <var-site-button class="varlet-doc-index__link-button" text outline @click="goGithub">
           <var-site-icon name="github" size="24px" />
@@ -119,40 +100,15 @@ watch(() => route.path, setLocale, { immediate: true })
           <var-site-icon name="translate" size="24px" />
         </var-site-button>
         <var-site-button class="varlet-doc-index__link-button" type="primary" @click="getStar">
-          <span class="varlet-doc-index__link-button-text">{{ started }}</span>
+          <span class="varlet-doc-index__link-button-text">{{ indexPage.started[language] }}</span>
           <var-site-icon style="transform: rotate(-90deg)" name="arrow-down" size="24px" />
         </var-site-button>
       </div>
 
       <div class="varlet-doc-index__features">
-        <div class="varlet-doc-index__feature">
-          <div class="varlet-doc-index__feature-name">组件丰富</div>
-          <div class="varlet-doc-index__feature-description">提供50个高质量通用组件</div>
-        </div>
-
-        <div class="varlet-doc-index__feature">
-          <div class="varlet-doc-index__feature-name">按需引入</div>
-          <div class="varlet-doc-index__feature-description">每一个组件都可单独引入，并有着良好的 tree-shaking 优化</div>
-        </div>
-
-        <div class="varlet-doc-index__feature">
-          <div class="varlet-doc-index__feature-name">国人开发</div>
-          <div class="varlet-doc-index__feature-description">由国人开发，完善的中英文文档和后勤保障</div>
-        </div>
-
-        <div class="varlet-doc-index__feature">
-          <div class="varlet-doc-index__feature-name">国际化</div>
-          <div class="varlet-doc-index__feature-description">内置国际化 API，默认支持中英两国语言</div>
-        </div>
-
-        <div class="varlet-doc-index__feature">
-          <div class="varlet-doc-index__feature-name">开发工具支持</div>
-          <div class="varlet-doc-index__feature-description">支持 webstorm，vscode 组件属性高亮, 提供vscode插件为开发提升效率 </div>
-        </div>
-
-        <div class="varlet-doc-index__feature">
-          <div class="varlet-doc-index__feature-name">Typescript + SSR</div>
-          <div class="varlet-doc-index__feature-description">对 Typescript 对使用者十分友好，并且支持服务端渲染</div>
+        <div class="varlet-doc-index__feature" v-for="feature in indexPage.features">
+          <div class="varlet-doc-index__feature-name">{{ feature.name[language] }}</div>
+          <div class="varlet-doc-index__feature-description">{{ feature.description[language] }}</div>
         </div>
       </div>
     </div>
