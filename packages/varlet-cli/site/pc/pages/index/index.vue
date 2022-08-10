@@ -16,7 +16,7 @@ const route = useRoute()
 const router = useRouter()
 const packs = {
   'zh-CN': zh_CN,
-  'en-US': en_US,
+  'en-US': en_US
 } as any
 
 const github = get(config, 'pc.header.github')
@@ -59,7 +59,7 @@ const setCurrentThemes = (themes: 'themes' | 'darkThemes') => {
 const toggleTheme = () => {
   setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
   window.postMessage(getThemesMessage(), '*')
-    ; (document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemesMessage(), '*')
+  ;(document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemesMessage(), '*')
 }
 
 const setLocale = () => {
@@ -93,47 +93,66 @@ watch(() => route.path, setLocale, { immediate: true })
 </script>
 
 <template>
-  <div class="home-page">
-    <div class="slash-box box-1"></div>
-    <div class="slash-box box-2"></div>
-    <div class="slash-box box-3"></div>
-    <div class="slash-box box-4"></div>
-    <div class="slash-box box-5"></div>
-    <div class="profile-container">
-      <div class="container-box">
-        <div class="description-container">
-          <animation-box class="logo-box" />
-          <div class="base-title">{{ title }}</div>
-        </div>
-        <div class="base-description">{{ description }}</div>
+  <div class="varlet-doc-index">
+    <div class="varlet-doc-index__layout">
+      <div class="varlet-doc-index__logo-container">
+        <div class="varlet-doc-index__logo-background-mask"></div>
+        <animation-box class="varlet-doc-index__logo" />
+      </div>
 
-        <div class="button-group">
-          <var-site-button class="common-button github-button" block @click="goGithub">
-            <div class="block-button-content">
-              <span>GITHUB</span>
-              <var-site-icon style="margin-left: 10px" name="github" size="24px" />
-            </div>
-          </var-site-button>
-          <var-site-button class="common-button extra-button margin-left" text v-if="darkMode" @click="toggleTheme">
-            <var-site-icon size="24px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
-          </var-site-button>
+      <div class="varlet-doc-index__title">{{ title }}</div>
+      <div class="varlet-doc-index__description">{{ description }}</div>
+      <div class="varlet-doc-index__link-button-group">
+        <var-site-button class="varlet-doc-index__link-button" text outline @click="goGithub">
+          <var-site-icon name="github" size="24px" />
+        </var-site-button>
+        <var-site-button class="varlet-doc-index__link-button" text outline v-if="darkMode" @click="toggleTheme">
+          <var-site-icon size="24px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
+        </var-site-button>
+        <var-site-button
+          class="varlet-doc-index__link-button"
+          text
+          outline
+          v-if="languages"
+          @click="toggleLanguages"
+        >
+          <var-site-icon name="translate" size="24px" />
+        </var-site-button>
+        <var-site-button class="varlet-doc-index__link-button" type="primary" @click="getStar">
+          <span class="varlet-doc-index__link-button-text">{{ started }}</span>
+          <var-site-icon style="transform: rotate(-90deg)" name="arrow-down" size="24px" />
+        </var-site-button>
+      </div>
+
+      <div class="varlet-doc-index__features">
+        <div class="varlet-doc-index__feature">
+          <div class="varlet-doc-index__feature-name">组件丰富</div>
+          <div class="varlet-doc-index__feature-description">提供50个高质量通用组件</div>
         </div>
 
-        <div class="button-group">
-          <var-site-button type="primary" class="common-button primary-button" block @click="getStar">
-            <div class="block-button-content">
-              <span>{{ started }}</span>
-              <var-site-icon style="margin-left: 10px; transform: rotate(-90deg)" name="arrow-down" size="24px" />
-            </div>
-          </var-site-button>
-          <var-site-button
-            class="common-button extra-button margin-left"
-            text
-            v-if="languages"
-            @click="toggleLanguages"
-          >
-            <var-site-icon name="translate" size="24px" />
-          </var-site-button>
+        <div class="varlet-doc-index__feature">
+          <div class="varlet-doc-index__feature-name">按需引入</div>
+          <div class="varlet-doc-index__feature-description">每一个组件都可单独引入，并有着良好的 tree-shaking 优化</div>
+        </div>
+
+        <div class="varlet-doc-index__feature">
+          <div class="varlet-doc-index__feature-name">国人开发</div>
+          <div class="varlet-doc-index__feature-description">由国人开发，完善的中英文文档和后勤保障</div>
+        </div>
+
+        <div class="varlet-doc-index__feature">
+          <div class="varlet-doc-index__feature-name">国际化</div>
+          <div class="varlet-doc-index__feature-description">内置国际化 API，默认支持中英两国语言</div>
+        </div>
+
+        <div class="varlet-doc-index__feature">
+          <div class="varlet-doc-index__feature-name">开发工具支持</div>
+          <div class="varlet-doc-index__feature-description">支持 webstorm，vscode 组件属性高亮, 提供vscode插件为开发提升效率 </div>
+        </div>
+
+        <div class="varlet-doc-index__feature">
+          <div class="varlet-doc-index__feature-name">Typescript + SSR</div>
+          <div class="varlet-doc-index__feature-description">对 Typescript 对使用者十分友好，并且支持服务端渲染</div>
         </div>
       </div>
     </div>
