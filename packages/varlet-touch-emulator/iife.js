@@ -60,7 +60,7 @@
 
     touchEvent.touches = getActiveTouches(mouseEvent)
     touchEvent.targetTouches = getActiveTouches(mouseEvent)
-    touchEvent.changedTouches = createTouchList(mouseEvent)
+    touchEvent.changedTouches = createTouchList()
 
     eventTarget.dispatchEvent(touchEvent)
   }

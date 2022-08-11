@@ -83,12 +83,12 @@ export default defineComponent({
         handle: {
           width: multiplySizeUnit(size),
           height: multiplySizeUnit(size),
-          backgroundColor: modelValue === activeValue ? color || '' : closeColor || '',
-          color: loadingColor && loadingColor,
+          backgroundColor: modelValue === activeValue ? color : closeColor,
+          color: loadingColor,
         },
         ripple: {
           left: modelValue === activeValue ? multiplySizeUnit(size, 0.5) : `-${multiplySizeUnit(size, 0.5)}`,
-          color: modelValue === activeValue ? color || '' : closeColor || '#999',
+          color: modelValue === activeValue ? color : closeColor || '#999',
           width: multiplySizeUnit(size, 2),
           height: multiplySizeUnit(size, 2),
         },
@@ -97,7 +97,7 @@ export default defineComponent({
           width: multiplySizeUnit(size, 1.9),
           borderRadius: multiplySizeUnit(size, 2 / 3),
           filter: modelValue === activeValue || errorMessage?.value ? 'opacity(.6)' : 'brightness(.6)',
-          backgroundColor: modelValue === activeValue ? color || '' : closeColor || '',
+          backgroundColor: modelValue === activeValue ? color : closeColor,
         },
         switch: {
           height: multiplySizeUnit(size, 1.2),
