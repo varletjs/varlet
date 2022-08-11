@@ -276,7 +276,7 @@ export default defineComponent({
 
         pageList.value = list
 
-        if (oldCurrent !== undefined) onChange?.(newCurrent, newSize)
+        if (oldCurrent !== undefined && pageCount.value > 0) onChange?.(newCurrent, newSize)
         props['onUpdate:current']?.(newCurrent)
         props['onUpdate:size']?.(newSize)
       },
