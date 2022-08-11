@@ -4,11 +4,11 @@ import type { BasicAttributes } from './varComponent'
 export interface CellProps extends BasicAttributes {
   title?: string | number
   icon?: string
-  desc?: string
+  description?: string
   border?: boolean
   iconClass?: string
   titleClass?: string
-  descClass?: string
+  descriptionClass?: string
   extraClass?: string
 }
 
