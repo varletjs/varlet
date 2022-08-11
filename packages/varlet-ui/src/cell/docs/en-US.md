@@ -28,7 +28,7 @@ The cell is a single display item in the list.
 
 ```html
 <template>
-  <var-cell title="This is Cell" desc="description" />
+  <var-cell title="This is Cell" description="description" />
 </template>
 ```
 
@@ -48,11 +48,11 @@ The cell is a single display item in the list.
 | ----- | -------------- | -------- | ---------- |
 | `title` | Title | _string \| number_ | `-` |
 | `icon` | Icon name | _string_ | `-` |
-| `desc` | Description | _string_ | `-` |
+| `description` | Description | _string_ | `-` |
 | `border` | Whether to show border | _boolean_ | `false` |
 | `icon-class` | Icon className | _string_ | `-` |
 | `title-class` | Title className | _string_ | `-` |
-| `desc-class` | Description className | _string_ | `-` |
+| `description-class` | Description className | _string_ | `-` |
 | `extra-class` | Extra className | _string_ | `-` |
 
 ### Slots
@@ -61,23 +61,23 @@ The cell is a single display item in the list.
 | ----- | -------------- | -------- |
 | `default` | Content of cell | `-` |
 | `icon` | Icon of cell | `-` |
-| `desc` | Description of cell | `-` |
+| `description` | Description of cell | `-` |
 | `extra` | Extra of cell | `-` |
 
 ### Style Variables
 
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
-| Variable                | Default |
-|-------------------------| --- |
-| `--cell-color`          | `var(--color-text)` |
-| `--cell-font-size`      | `var(--font-size-md)` |
-| `--cell-desc-font-size` | `var(--font-size-sm)` |
-| `--cell-desc-color`     | `rgba(0, 0, 0, 0.6)` |
-| `--cell-padding`        | `10px 12px` |
-| `--cell-min-height`     | `40px` |
-| `--cell-border-color`   | `#bcc2cb` |
-| `--cell-border-left`    | `12px` |
-| `--cell-border-right`   | `12px` |
-| `--cell-icon-right`     | `8px` |
-| `--cell-extra-left`     | `8px` |
+| Variable        | Default |
+|-----------------| --- |
+| `--cell-color`  | `var(--color-text)` |
+| `--cell-font-size` | `var(--font-size-md)` |
+| `--cell-description-font-size` | `var(--font-size-sm)` |
+| `--cell-description-color` | `rgba(0, 0, 0, 0.6)` |
+| `--cell-padding` | `10px 12px` |
+| `--cell-min-height` | `40px` |
+| `--cell-border-color` | `#bcc2cb` |
+| `--cell-border-left` | `12px` |
+| `--cell-border-right` | `12px` |
+| `--cell-icon-right` | `8px` |
+| `--cell-extra-left` | `8px` |
