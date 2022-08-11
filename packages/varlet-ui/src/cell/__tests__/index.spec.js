@@ -32,14 +32,14 @@ describe('test cell component props', () => {
     wrapper.unmount()
   })
 
-  test('test cell desc', () => {
+  test('test cell description', () => {
     const wrapper = mount(VarCell, {
       props: {
-        desc: 'This is desc',
+        description: 'This is desc',
       },
     })
 
-    expect(wrapper.find('.var-cell__desc').text()).toBe('This is desc')
+    expect(wrapper.find('.var-cell__description').text()).toBe('This is desc')
     wrapper.unmount()
   })
 
@@ -80,15 +80,15 @@ describe('test cell component props', () => {
     wrapper.unmount()
   })
 
-  test('test cell desc class', () => {
+  test('test cell description class', () => {
     const wrapper = mount(VarCell, {
       props: {
-        desc: 'This is desc',
-        descClass: 'test-desc-class',
+        description: 'This is desc',
+        descriptionClass: 'test-desc-class',
       },
     })
 
-    expect(wrapper.find('.var-cell__desc').classes()).toContain('test-desc-class')
+    expect(wrapper.find('.var-cell__description').classes()).toContain('test-desc-class')
     wrapper.unmount()
   })
 
@@ -130,14 +130,14 @@ describe('test cell component slots', () => {
     wrapper.unmount()
   })
 
-  test('test cell desc slots', () => {
+  test('test cell description slots', () => {
     const wrapper = mount(VarCell, {
       slots: {
-        desc: () => 'This is desc',
+        description: () => 'This is desc',
       },
     })
 
-    expect(wrapper.find('.var-cell__desc').text()).toBe('This is desc')
+    expect(wrapper.find('.var-cell__description').text()).toBe('This is desc')
     wrapper.unmount()
   })
 
