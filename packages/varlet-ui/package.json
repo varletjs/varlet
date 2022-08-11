@@ -37,6 +37,10 @@
   "sideEffects": [
     "es/**/style/*",
     "lib/**/style/*",
+    "es/style.js",
+    "es/less.js",
+    "lib/style.js",
+    "lib/less.js",
     "*.css",
     "*.less"
   ],
