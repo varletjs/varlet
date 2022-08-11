@@ -1,4 +1,4 @@
 export default {
-  '--cell-desc-color': '#aaa',
+  '--cell-description-color': '#aaa',
   '--cell-border-color': '#545454',
 }

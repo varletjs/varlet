@@ -28,12 +28,12 @@ watchDarkMode(dark)
   </var-cell>
 
   <app-type>{{ pack.showDesc }}</app-type>
-  <var-cell icon="fire" :title="pack.content" :desc="pack.description">
+  <var-cell icon="fire" :title="pack.content" :description="pack.description">
     <template #extra>
       <var-icon name="information" />
     </template>
   </var-cell>
-  <var-cell :title="pack.content" :desc="pack.description" />
+  <var-cell :title="pack.content" :description="pack.description" />
 
   <app-type>{{ pack.showBorder }}</app-type>
   <var-cell border> {{ pack.content }} </var-cell>
