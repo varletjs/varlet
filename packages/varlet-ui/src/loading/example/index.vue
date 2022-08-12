@@ -31,11 +31,11 @@ watchDarkMode(dark)
     <div class="loading-demo__type">
       <app-type>{{ pack.color }}</app-type>
       <var-space align="center" justify="space-between">
-        <var-loading type="circle" color="#2979ff" />
-        <var-loading type="cube" color="#2979ff" />
-        <var-loading type="wave" color="#2979ff" />
-        <var-loading type="rect" color="#2979ff" />
-        <var-loading type="disappear" color="#2979ff" />
+        <var-loading type="circle" color="#00afef" />
+        <var-loading type="cube" color="#00c48f" />
+        <var-loading type="wave" color="#ff9f00" />
+        <var-loading type="rect" color="#f44336" />
+        <var-loading type="disappear" color="#aaa" />
       </var-space>
     </div>
     <div class="loading-demo__size">
