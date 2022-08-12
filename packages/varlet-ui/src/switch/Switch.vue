@@ -29,7 +29,7 @@
             )
           "
         >
-          <var-loading v-if="loading" :radius="radius" />
+          <var-loading v-if="loading" :radius="radius" color="currentColor" />
         </div>
       </div>
     </div>
