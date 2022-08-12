@@ -31,7 +31,6 @@ export const props = {
   // loading颜色
   color: {
     type: String,
-    default: 'currentColor',
   },
   description: {
     type: String,
