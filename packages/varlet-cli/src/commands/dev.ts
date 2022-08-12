@@ -23,7 +23,7 @@ async function startServer(force: boolean | undefined) {
   await buildSiteEntry()
   const varletConfig = getVarletConfig()
   const devConfig = getDevConfig(varletConfig)
-  const inlineConfig = merge(devConfig, force ? { server: { force: true } } : {})
+  const inlineConfig = merge(devConfig, force ? { optimizeDeps: { force: true } } : {})
 
   // create all instance
   server = await createServer(inlineConfig)
