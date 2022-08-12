@@ -22,11 +22,11 @@ Loading component for performing animations when data is loaded
 ```html
 <template>
   <var-space align="center" justify="space-between">
-    <var-loading type="circle" color="#2979ff" />
-    <var-loading type="cube" color="#2979ff" />
-    <var-loading type="wave" color="#2979ff" />
-    <var-loading type="rect" color="#2979ff" />
-    <var-loading type="disappear" color="#2979ff" />
+    <var-loading type="circle" color="#00afef" />
+    <var-loading type="cube" color="#00c48f" />
+    <var-loading type="wave" color="#ff9f00" />
+    <var-loading type="rect" color="#f44336" />
+    <var-loading type="disappear" color="#aaa" />
   </var-space>
 </template>
 ```
@@ -71,13 +71,13 @@ const loading = ref(false)
 
 ### Props
 
-| prop     | Description                                             | Type     | Default        |
-| -------- |---------------------------------------------------------| -------- | -------------- |
-| `color`  | Loading color                                           | _string_ | `currentColor` |
-| `type`   | Can be set to `circle` `wave` `cube` `rect` `disappear` | _string_ | `circle`       |
-| `size`   | Can be set to `large` `normal` `small` `mini`           | _string_ | `normal`       |
-| `description`   | Description of the loading                              | _string_ | `-`            |
-| `loading`| Specify whether loading is active                       | _boolean_ | `false`      |
+| prop     | Description                                             | Type     | Default  |
+| -------- |---------------------------------------------------------| -------- |----------|
+| `color`  | Loading color                                           | _string_ | `-`      |
+| `type`   | Can be set to `circle` `wave` `cube` `rect` `disappear` | _string_ | `circle` |
+| `size`   | Can be set to `large` `normal` `small` `mini`           | _string_ | `normal` |
+| `description`   | Description of the loading                       | _string_ | `-`      |
+| `loading`| Specify whether loading is active                       | _boolean_ | `false`  |
 | `radius` | Set radius size when the `type` is `circle`             | _string \| number_  | `-` |
 
 ### Slots
