@@ -5,150 +5,196 @@ import { resolve } from 'path'
 import { DOCS_DIR_NAME, EXAMPLE_DIR_NAME, LOCALE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from '../shared/constant'
 import { getVarletConfig } from '../config/varlet.config'
 import { get } from 'lodash'
+import createQuestion from '../shared/createQuestion'
+
+interface options {
+  name: string
+  i18n?: boolean
+}
+const options: options = {
+  name: 'project name',
+}
+const projectName = [
+  {
+    name: 'projectName',
+    type: 'text',
+    message: 'Project name:',
+    initial: options.name,
+    onState: (state: any) => {
+      options.name = state.value
+    },
+    active: 'Yes',
+    inactive: 'No',
+  },
+  {
+    name: 'overwrite',
+    type: async () => (pathExistsSync(resolve(SRC_DIR, options.name)) ? null : 'toggle'),
+    initial: false,
+    message: async () => {
+      return `⚠️⚠️ files "${options.name}" is not empty. Remove existing files and continue?`
+    },
+    active: 'Yes',
+    inactive: 'No',
+  },
+  {
+    name: 'overwrite',
+    type: (prev: any, values: any) => {
+      console.log(values)
+
+      if (values.overwrite === false) {
+        throw new Error('Operation cancelled')
+      }
+      return null
+    },
+  },
+]
 
 export async function create(name: string, cmd: { disableI18n?: boolean }) {
-  let i18nFiles: Array<Promise<void>> = []
-  const namespace = get(getVarletConfig(), 'namespace')
-  const bigCamelizeName = bigCamelize(name)
-  const vueTemplate = `\
-<template>
-  <div class="${namespace}-${name}"></div>
-</template>
+  await createQuestion(projectName, options)
+  //   let i18nFiles: Array<Promise<void>> = []
+  //   const namespace = get(getVarletConfig(), 'namespace')
+  //   console.log(namespace)
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+  //   const bigCamelizeName = bigCamelize(name)
+  //   const vueTemplate = `\
+  // <template>
+  //   <div class="${namespace}-${name}"></div>
+  // </template>
 
-export default defineComponent({
-  name: '${bigCamelize(namespace)}${bigCamelizeName}'
-})
-</script>
+  // <script lang="ts">
+  // import { defineComponent } from 'vue'
 
-<style lang="less">
-.${namespace}-${name} {
-  display: flex;
-}
-</style>
-`
-  const indexTemplate = `\
-import ${bigCamelizeName} from './${bigCamelizeName}.vue'
-import type { App } from 'vue'
+  // export default defineComponent({
+  //   name: '${bigCamelize(namespace)}${bigCamelizeName}'
+  // })
+  // </script>
 
-${bigCamelizeName}.install = function(app: App) {
-  app.component(${bigCamelizeName}.name, ${bigCamelizeName})
-}
+  // <style lang="less">
+  // .${namespace}-${name} {
+  //   display: flex;
+  // }
+  // </style>
+  // `
+  //   const indexTemplate = `\
+  // import ${bigCamelizeName} from './${bigCamelizeName}.vue'
+  // import type { App } from 'vue'
 
-export const _${bigCamelizeName}Component = ${bigCamelizeName}
+  // ${bigCamelizeName}.install = function(app: App) {
+  //   app.component(${bigCamelizeName}.name, ${bigCamelizeName})
+  // }
 
-export default ${bigCamelizeName}
-`
+  // export const _${bigCamelizeName}Component = ${bigCamelizeName}
 
-  const testsTemplate = `\
-import ${bigCamelizeName} from '..'
-import { createApp } from 'vue'
-import { mount } from '@vue/test-utils'
+  // export default ${bigCamelizeName}
+  // `
 
-test('test ${name} use', () => {
-  const app = createApp({}).use(${bigCamelizeName})
-  expect(app.component(${bigCamelizeName}.name)).toBeTruthy()
-})
-`
+  //   const testsTemplate = `\
+  // import ${bigCamelizeName} from '..'
+  // import { createApp } from 'vue'
+  // import { mount } from '@vue/test-utils'
 
-  let exampleTemplate = `\
-<script setup>
-import ${bigCamelizeName} from '..'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-</script>
+  // test('test ${name} use', () => {
+  //   const app = createApp({}).use(${bigCamelizeName})
+  //   expect(app.component(${bigCamelizeName}.name)).toBeTruthy()
+  // })
+  // `
 
-<template>
-  <app-type></app-type>
-  <${namespace}-${name}/>
-</template>
-`
+  //   let exampleTemplate = `\
+  // <script setup>
+  // import ${bigCamelizeName} from '..'
+  // import AppType from '@varlet/cli/site/mobile/components/AppType'
+  // </script>
 
-  const localeIndexTemplate = `\
-// lib
-import _zhCN from '../../../locale/zh-CN'
-import _enCN from '../../../locale/en-US'
-// mobile example doc
-import zhCN from './zh-CN'
-import enUS from './en-US'
-import { useLocale, add as _add, use as _use } from '../../../locale'
+  // <template>
+  //   <app-type></app-type>
+  //   <${namespace}-${name}/>
+  // </template>
+  // `
 
-const { add, use: exampleUse, pack, packs, merge } = useLocale()
+  //   const localeIndexTemplate = `\
+  // // lib
+  // import _zhCN from '../../../locale/zh-CN'
+  // import _enCN from '../../../locale/en-US'
+  // // mobile example doc
+  // import zhCN from './zh-CN'
+  // import enUS from './en-US'
+  // import { useLocale, add as _add, use as _use } from '../../../locale'
 
-const use = (lang: string) => {
-  _use(lang)
-  exampleUse(lang)
-}
+  // const { add, use: exampleUse, pack, packs, merge } = useLocale()
 
-export { add, pack, packs, merge, use }
+  // const use = (lang: string) => {
+  //   _use(lang)
+  //   exampleUse(lang)
+  // }
 
-// lib
-_add('zh-CN', _zhCN)
-_add('en-US', _enCN)
-// mobile example doc
-add('zh-CN', zhCN as any)
-add('en-US', enUS as any)
-`
+  // export { add, pack, packs, merge, use }
 
-  const localTemplate = `\
-export default {
+  // // lib
+  // _add('zh-CN', _zhCN)
+  // _add('en-US', _enCN)
+  // // mobile example doc
+  // add('zh-CN', zhCN as any)
+  // add('en-US', enUS as any)
+  // `
 
-}
-`
+  //   const localTemplate = `\
+  // export default {
 
-  const componentDir = resolve(SRC_DIR, name)
-  const testsDir = resolve(SRC_DIR, name, TESTS_DIR_NAME)
-  const exampleDir = resolve(SRC_DIR, name, EXAMPLE_DIR_NAME)
-  const exampleLocalDir = resolve(SRC_DIR, name, EXAMPLE_DIR_NAME, LOCALE_DIR_NAME)
-  const docsDir = resolve(SRC_DIR, name, DOCS_DIR_NAME)
+  // }
+  // `
 
-  if (pathExistsSync(componentDir)) {
-    logger.error('component directory is existed')
-    return
-  }
+  //   const componentDir = resolve(SRC_DIR, name)
+  //   const testsDir = resolve(SRC_DIR, name, TESTS_DIR_NAME)
+  //   const exampleDir = resolve(SRC_DIR, name, EXAMPLE_DIR_NAME)
+  //   const exampleLocalDir = resolve(SRC_DIR, name, EXAMPLE_DIR_NAME, LOCALE_DIR_NAME)
+  //   const docsDir = resolve(SRC_DIR, name, DOCS_DIR_NAME)
 
-  if (!cmd.disableI18n) {
-    exampleTemplate = `\
-<script setup>
-import ${bigCamelizeName} from '..'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { watchLang } from '@varlet/cli/site/utils'
-import { use, pack } from './locale'
+  //   if (pathExistsSync(componentDir)) {
+  //     logger.error('component directory is existed')
+  //     return
+  //   }
 
-watchLang(use)
-</script>
+  //   if (!cmd.disableI18n) {
+  //     exampleTemplate = `\
+  // <script setup>
+  // import ${bigCamelizeName} from '..'
+  // import AppType from '@varlet/cli/site/mobile/components/AppType'
+  // import { watchLang } from '@varlet/cli/site/utils'
+  // import { use, pack } from './locale'
 
-<template>
-  <app-type></app-type>
-  <${namespace}-${name}/>
-</template>
-    `
+  // watchLang(use)
+  // </script>
 
-    i18nFiles = [
-      outputFile(resolve(exampleLocalDir, 'index.ts'), localeIndexTemplate),
-      outputFile(resolve(exampleLocalDir, 'en-US.ts'), localTemplate),
-      outputFile(resolve(exampleLocalDir, 'zh-CN.ts'), localTemplate),
-      outputFile(resolve(docsDir, 'en-US.md'), ''),
-    ]
-  }
+  // <template>
+  //   <app-type></app-type>
+  //   <${namespace}-${name}/>
+  // </template>
+  //     `
 
-  await Promise.all([
-    outputFile(resolve(componentDir, `${bigCamelizeName}.vue`), vueTemplate),
-    outputFile(resolve(componentDir, 'index.ts'), indexTemplate),
-    outputFile(resolve(testsDir, 'index.spec.js'), testsTemplate),
-    outputFile(resolve(exampleDir, 'index.vue'), exampleTemplate),
-    ...i18nFiles,
-    outputFile(resolve(docsDir, 'zh-CN.md'), ''),
-  ])
+  //     i18nFiles = [
+  //       outputFile(resolve(exampleLocalDir, 'index.ts'), localeIndexTemplate),
+  //       outputFile(resolve(exampleLocalDir, 'en-US.ts'), localTemplate),
+  //       outputFile(resolve(exampleLocalDir, 'zh-CN.ts'), localTemplate),
+  //       outputFile(resolve(docsDir, 'en-US.md'), ''),
+  //     ]
+  //   }
 
-  logger.success(`Create ${name} success!`)
-  logger.success(`----------------------------`)
-  logger.success(`${name}/`)
-  logger.success(`|- __tests__/ # Unit test folder`)
-  logger.success(`|- docs/ # Internationalized document folder`)
-  logger.success(`|- example/ # Mobile phone example code`)
-  logger.success(`|- example/locale # Example locale`)
-  logger.success(`|- ${bigCamelizeName}.vue # Sfc component, You can also use jsx or tsx`)
-  logger.success(`|- index.ts # Component entry, the folder where the file exists will be exposed to the user`)
+  //   await Promise.all([
+  //     outputFile(resolve(componentDir, `${bigCamelizeName}.vue`), vueTemplate),
+  //     outputFile(resolve(componentDir, 'index.ts'), indexTemplate),
+  //     outputFile(resolve(testsDir, 'index.spec.js'), testsTemplate),
+  //     outputFile(resolve(exampleDir, 'index.vue'), exampleTemplate),
+  //     ...i18nFiles,
+  //     outputFile(resolve(docsDir, 'zh-CN.md'), ''),
+  //   ])
+
+  //   logger.success(`Create ${name} success!`)
+  //   logger.success(`----------------------------`)
+  //   logger.success(`${name}/`)
+  //   logger.success(`|- __tests__/ # Unit test folder`)
+  //   logger.success(`|- docs/ # Internationalized document folder`)
+  //   logger.success(`|- example/ # Mobile phone example code`)
+  //   logger.success(`|- example/locale # Example locale`)
+  //   logger.success(`|- ${bigCamelizeName}.vue # Sfc component, You can also use jsx or tsx`)
+  //   logger.success(`|- index.ts # Component entry, the folder where the file exists will be exposed to the user`)
 }
