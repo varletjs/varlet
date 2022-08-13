@@ -74,22 +74,29 @@ const componentStylePrompt = {
   ],
 }
 export function templateFiles(): string[] {
-  return [
-    '__tests__/index.spec.js',
-    'example/index.ts',
-    `${options.name}.less`,
-    `${options.name}.tsx`,
-    `${options.name}.vue`,
-    'index.ts',
-  ]
+  return ['__tests__/index.spec.js', 'example/index.vue', `less.less`, `tsx.tsx`, `vue.vue`, 'index.ts']
+}
+export function renameFiles(): string[] {
+  return ['tsx', 'vue', 'less']
 }
 export async function create(name: string, cmd: { disableI18n?: boolean }) {
   await createQuestion(projectNamePrompt, options)
   await createQuestion(localePrompt, options)
   await createQuestion(componentStylePrompt, options)
+  options.name = bigCamelize(options.name)
   await fs.copy(resolve(__dirname, '../../template/create'), `${process.cwd()}/src/${options.projectName}`)
-  await renameSync(`${process.cwd()}/src/${options.projectName}/tsx.ejs`, `${process.cwd()}/src/${options.projectName}/${options.name}.ejs`)
-  // await Promise.all(templateFiles().map((file: string) => ejsRender(file, options)))
+  await Promise.all(templateFiles().map((file: string) => ejsRender(file, options)))
+  await Promise.all(
+    renameFiles().map((file: string) => {
+      console.log(`${process.cwd()}/src/${options.projectName}/${file}.${file}`)
+      console.log(`${process.cwd()}/src/${options.projectName}/${options.projectName}.${file}`)
+      return renameSync(
+        `${process.cwd()}/src/${options.projectName}/${file}.${file}`,
+        `${process.cwd()}/src/${options.projectName}/${options.projectName}.${file}`
+      )
+    })
+  )
+
   // let i18nFiles: Array<Promise<void>> = []
   // const namespace = get(getVarletConfig(), 'namespace')
   // console.log(namespace)

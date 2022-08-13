@@ -1,18 +1,17 @@
   <template>
-    <div class="var-create"></div>
+    <div class="var-<%- name %>"></div>
   </template>
 
   <script lang="ts">
   import { defineComponent } from 'vue'
 
   export default defineComponent({
-    name: 'VarCreate'
+    name: 'Var<%- name %>'
   })
   </script>
 
   <style lang="less">
-  .var-create {
+  .var-<%- name %> {
     display: flex;
   }
   </style>
-  

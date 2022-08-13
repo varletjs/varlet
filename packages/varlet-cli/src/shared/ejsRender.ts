@@ -7,22 +7,14 @@ export async function ejsRender(filePath: string, options: any): Promise<void> {
   try {
     // 根目录template 绝对路径
     const templatePath = path.resolve(__dirname, `../../template/create`)
-    console.log(templatePath)
-
     // 获取当前渲染文件的 各种 参数 such as ext
     const file = path.parse(filePath)
-    console.log(file)
-
     // 编译根目录 创建的根目录
     const dest = path.resolve(`${process.cwd()}/src`, options.name)
     // 当前 需要编译的 ejs文件
     const readFilePath = path.resolve(dest, file.dir, `${file.name}.ejs`)
-    console.log(readFilePath)
-
     // 转换 之后的 js or ts or vue 文件
     const outputFilePath = path.resolve(dest, filePath)
-    console.log(outputFilePath, outputFilePath)
-
     // 是一个buffer
     const templateCode = await fs.readFile(readFilePath)
     // 编译当前code
@@ -35,6 +27,9 @@ export async function ejsRender(filePath: string, options: any): Promise<void> {
       .then((opts) => {
         switch (extname) {
           case 'ts':
+            prettierCode = prettier.format(code, { parser: 'babel', ...opts })
+            break
+          case 'tsx':
             prettierCode = prettier.format(code, { parser: 'babel', ...opts })
             break
           case 'js':
