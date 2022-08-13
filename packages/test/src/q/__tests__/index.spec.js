@@ -1,0 +1,8 @@
+import Create from '..'
+import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
+
+test('test create use', () => {
+  const app = createApp({}).use(Create)
+  expect(app.component(Create.name)).toBeTruthy()
+})

@@ -14,6 +14,7 @@
   "files": [
     "generators",
     "lib",
+    "template",
     "site",
     "tsconfig.json",
     "varlet.default.config.js",
