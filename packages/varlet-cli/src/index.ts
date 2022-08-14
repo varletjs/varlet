@@ -38,7 +38,6 @@ program.command('lint').description('Lint code').action(lint)
 program
   .command('create')
   .description('Create a component directory')
-  .option('-d, --disableI18n', 'Disable to generator i18n files')
   .option('-sfc, --sfc', 'Disable to generator i18n files')
   .option('-tsx, --tsx', 'Disable to generator i18n files')
   .option('-jsx, --jsx', 'Disable to generator i18n files')
