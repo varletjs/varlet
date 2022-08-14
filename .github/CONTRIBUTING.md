@@ -30,7 +30,7 @@ At any time, you can start the following steps to submit your amazing works:
 **Create component**
 
 1. Get into `packages/varlet-ui` 
-2. Running `pnpm run create [Component Name]`
+2. Running `pnpm run create`
 
 **Create testcase**
 

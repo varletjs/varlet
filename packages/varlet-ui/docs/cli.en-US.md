@@ -298,7 +298,13 @@ varlet-cli gen <projectName>
 
 ```shell
 # playground-ignore
-varlet-cli create <componentName>
+varlet-cli create 
+or
+varlet-cli create --sfc
+or 
+varlet-cli create --tsx
+or 
+varlet-cli create --jsx
 ```
 
 ### Babel
