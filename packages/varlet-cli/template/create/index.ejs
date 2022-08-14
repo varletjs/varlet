@@ -1,11 +1,10 @@
-  import Create from './Create.vue'
+  import <%- name %> from './<%- name %>.vue'
   import type { App } from 'vue'
 
-  Create.install = function(app: App) {
-    app.component(Create.name, Create)
+  <%- name %>.install = function(app: App) {
+    app.component(<%- name %>.name, <%- name %>)
   }
 
-  export const _CreateComponent = Create
+  export const _<%- name %>Component = <%- name %>
 
-  export default Create
-  
+  export default <%- name %>

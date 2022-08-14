@@ -1,9 +1,10 @@
 import { defineComponent } from 'vue'
+import './<%- name %>.less'
 
 export default defineComponent({
-  setup(props, { slots }) { // 逻辑
+  setup(props, { slots }) {
     return () => {
-      return <button>{ slots.default?.() }</button>
+      return <div>{ slots.default?.() }</div>
     }
   },
 })

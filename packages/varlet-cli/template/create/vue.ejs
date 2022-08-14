@@ -1,17 +1,8 @@
   <template>
-    <div class="var-<%- name %>"></div>
+    <div class="var-<%- projectName %>"></div>
   </template>
 
-  <script lang="ts">
-  import { defineComponent } from 'vue'
+  <script lang="ts" setup>
+  import './<%- name %>.less'
 
-  export default defineComponent({
-    name: 'Var<%- name %>'
-  })
   </script>
-
-  <style lang="less">
-  .var-<%- name %> {
-    display: flex;
-  }
-  </style>

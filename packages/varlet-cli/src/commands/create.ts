@@ -1,14 +1,13 @@
 // import { bigCamelize } from '@varlet/shared'
 import gradient from 'gradient-string'
-import fs, { outputFile, pathExistsSync } from 'fs-extra'
+import fs, { pathExistsSync } from 'fs-extra'
 import { renameSync } from 'fs'
 import { resolve } from 'path'
-import { DOCS_DIR_NAME, EXAMPLE_DIR_NAME, LOCALE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from '../shared/constant'
-import { getVarletConfig } from '../config/varlet.config'
-import { get } from 'lodash'
+import { SRC_DIR } from '../shared/constant'
 import createQuestion from '../shared/createQuestion'
 import { ejsRender } from '../shared/ejsRender'
 import logger from '../shared/logger'
+
 export const camelize = (s: string): string => s.replace(/-(\w)/g, (_: any, p: string) => p.toUpperCase())
 
 export const bigCamelize = (s: string): string => camelize(s).replace(s.charAt(0), s.charAt(0).toUpperCase())
@@ -26,7 +25,7 @@ interface options {
   style?: string
 }
 const options: options = {
-  name: 'component name',
+  name: 'componentName',
 }
 const projectNamePrompt = [
   {
@@ -53,7 +52,6 @@ const projectNamePrompt = [
   {
     name: 'overwrite',
     type: (prev: any, values: any) => {
-      console.log(values)
       if (values.overwrite === false) {
         throw new Error('Operation cancelled')
       }
@@ -90,7 +88,9 @@ export function removeFiles(): string[] {
 }
 export async function create(cmd: cmdTypes) {
   console.log(gradient('cyan', 'purple')('\n📦📦 Create a Varlet Component ! \n'))
+
   await createQuestion(projectNamePrompt, options)
+  options.name = bigCamelize(options.name)
   if (cmd.locale) {
     options.locale = cmd.locale
   } else {
@@ -102,15 +102,13 @@ export async function create(cmd: cmdTypes) {
   } else {
     await createQuestion(componentStylePrompt, options)
   }
-  console.log(options.style)
-
-  options.name = bigCamelize(options.name)
   const srcPath = `${process.cwd()}/src/${options.projectName}`
+  console.log(srcPath);
   await fs.copy(resolve(__dirname, '../../template/create'), srcPath)
   await Promise.all(templateFiles().map((file: string) => ejsRender(file, options)))
   await Promise.all(
     renameFiles().map((file: string) => {
-      return renameSync(`${srcPath}/${file}.${file}`, `${srcPath}/${options.projectName}.${file}`)
+      return renameSync(`${srcPath}/${file}.${file}`, `${srcPath}/${options.name}.${file}`)
     })
   )
   !options.locale && fs.remove(`${srcPath}/example/locale`)
