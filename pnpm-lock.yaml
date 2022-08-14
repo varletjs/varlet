@@ -37,6 +37,7 @@ importers:
       '@babel/preset-env': ^7.14.8
       '@babel/preset-typescript': ^7.14.5
       '@types/babel__core': ^7.1.12
+      '@types/ejs': ^3.1.1
       '@types/fs-extra': ^9.0.2
       '@types/glob': ^7.1.3
       '@types/hash-sum': ^1.0.0
@@ -71,6 +72,7 @@ importers:
       lodash: ^4.17.21
       lodash-es: ^4.17.21
       ora: ^5.4.0
+      prettier: ^2.7.1
       prompts: ^2.4.2
       semver: ^7.3.5
       slash: ^3.0.0
@@ -111,6 +113,7 @@ importers:
       lodash: 4.17.21
       lodash-es: 4.17.21
       ora: 5.4.1
+      prettier: 2.7.1
       prompts: 2.4.2
       semver: 7.3.5
       slash: 3.0.0
@@ -122,6 +125,7 @@ importers:
       vue-jest: 5.0.0-alpha.10_kcdx44dd3xrcqz67rawqd7vmyu
     devDependencies:
       '@types/babel__core': 7.1.17
+      '@types/ejs': 3.1.1
       '@types/fs-extra': 9.0.13
       '@types/glob': 7.2.0
       '@types/hash-sum': 1.0.0
@@ -2125,6 +2129,10 @@ packages:
     resolution: {integrity: sha512-K2waXdXBi2302XUdcHcR1jCeU0LL4TD9HRs/gk0N2Xvrht+G/BfJa4QObBQZfhMdxiCpV3COl5Nfq4uKTeTnJA==}
     dependencies:
       '@babel/types': 7.16.0
+
+  /@types/ejs/3.1.1:
+    resolution: {integrity: sha512-RQul5wEfY7BjWm0sYY86cmUN/pcXWGyVxWX93DFFJvcrxax5zKlieLwA3T77xJGwNcZW0YW6CYG70p1m8xPFmA==}
+    dev: true
 
   /@types/eslint-scope/3.7.2:
     resolution: {integrity: sha512-TzgYCWoPiTeRg6RQYgtuW7iODtVoKu3RVL72k3WohqhjfaOLK5Mg2T4Tg1o2bSfu0vPkoI48wdQFv5b/Xe04wQ==}
@@ -8341,6 +8349,12 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
+
+  /prettier/2.7.1:
+    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: false
 
   /pretty-format/26.6.2:
     resolution: {integrity: sha512-7AeGuCYNGmycyQbCqd/3PWH4eOoX/OiCa0uphp57NVTeAGdJGaAliecxwBDHYQCIvrW7aDBZCYeNTP/WX69mkg==}

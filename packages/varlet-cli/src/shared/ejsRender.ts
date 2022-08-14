@@ -1,7 +1,7 @@
-import ejs = require('ejs')
-import fs = require('fs-extra')
-import path = require('path')
-import prettier = require('prettier')
+import ejs from 'ejs'
+import fs from 'fs-extra'
+import path from 'node:path'
+import prettier from 'prettier'
 
 export async function ejsRender(filePath: string, options: any): Promise<void> {
   try {
@@ -21,7 +21,7 @@ export async function ejsRender(filePath: string, options: any): Promise<void> {
     const code = ejs.render(templateCode.toString(), options)
     // 获取后缀
     const extname = path.extname(filePath).replace(/[.]/g, '')
-    let prettierCode: string
+    let prettierCode = ''
     await prettier
       .resolveConfig(templatePath)
       .then((opts) => {
@@ -30,6 +30,9 @@ export async function ejsRender(filePath: string, options: any): Promise<void> {
             prettierCode = prettier.format(code, { parser: 'babel', ...opts })
             break
           case 'tsx':
+            prettierCode = prettier.format(code, { parser: 'babel', ...opts })
+            break
+          case 'jsx':
             prettierCode = prettier.format(code, { parser: 'babel', ...opts })
             break
           case 'js':

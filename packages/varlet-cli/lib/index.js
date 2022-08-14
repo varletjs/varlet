@@ -19,9 +19,13 @@ var program = new commander_1.Command();
 //   .action(compile)
 // program.command('lint').description('Lint code').action(lint)
 program
-    .command('create <name>')
+    .command('create')
     .description('Create a component directory')
     .option('-d, --disableI18n', 'Disable to generator i18n files')
+    .option('-sfc, --sfc', 'Disable to generator i18n files')
+    .option('-tsx, --tsx', 'Disable to generator i18n files')
+    .option('-jsx, --jsx', 'Disable to generator i18n files')
+    .option('-l, --locale', 'Disable to generator i18n files')
     .action(create_1.create);
 // program
 //   .command('jest')

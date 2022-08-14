@@ -1,5 +1,5 @@
-import logger from '../shared/logger'
 // import { bigCamelize } from '@varlet/shared'
+import gradient from 'gradient-string'
 import fs, { outputFile, pathExistsSync } from 'fs-extra'
 import { renameSync } from 'fs'
 import { resolve } from 'path'
@@ -8,15 +8,22 @@ import { getVarletConfig } from '../config/varlet.config'
 import { get } from 'lodash'
 import createQuestion from '../shared/createQuestion'
 import { ejsRender } from '../shared/ejsRender'
-
+import logger from '../shared/logger'
 export const camelize = (s: string): string => s.replace(/-(\w)/g, (_: any, p: string) => p.toUpperCase())
 
 export const bigCamelize = (s: string): string => camelize(s).replace(s.charAt(0), s.charAt(0).toUpperCase())
-
+interface cmdTypes {
+  disableI18n?: boolean
+  locale?: boolean
+  sfc?: boolean
+  jsx?: boolean
+  tsx?: boolean
+}
 interface options {
   name: string
-  i18n?: boolean
+  locale?: boolean
   projectName?: string
+  style?: string
 }
 const options: options = {
   name: 'component name',
@@ -38,9 +45,7 @@ const projectNamePrompt = [
     type: async () => (pathExistsSync(resolve(SRC_DIR, options.name)) ? 'toggle' : null),
     initial: false,
     message: async () => {
-      console.log(resolve(SRC_DIR, options.name))
-      console.log(pathExistsSync(resolve(SRC_DIR, options.name)))
-      return `⚠️ ⚠️  files "${options.name}" is not empty. Remove existing files and continue?`
+      return `⚠️ ⚠️  files "${options.name}" is not empty. Overwrite the current Folder and continue?`
     },
     active: 'Yes',
     inactive: 'No',
@@ -59,7 +64,7 @@ const projectNamePrompt = [
 const localePrompt = {
   name: 'locale',
   type: 'toggle',
-  message: 'Whether components need to be internationalized ?',
+  message: 'Whether components need to be internationalized (i18n) ?',
   initial: false,
   active: 'Yes',
   inactive: 'No',
@@ -70,177 +75,55 @@ const componentStylePrompt = {
   message: 'What style do you use to write your components? ?',
   choices: [
     { title: 'sfc', value: 'vue' },
+    { title: 'jsx', value: 'jsx' },
     { title: 'tsx', value: 'tsx' },
   ],
 }
 export function templateFiles(): string[] {
-  return ['__tests__/index.spec.js', 'example/index.vue', `less.less`, `tsx.tsx`, `vue.vue`, 'index.ts']
+  return ['__tests__/index.spec.js', 'example/index.vue', `less.less`, `tsx.tsx`, `jsx.jsx`, `vue.vue`, 'index.ts']
 }
 export function renameFiles(): string[] {
-  return ['tsx', 'vue', 'less']
+  return ['tsx', 'vue', 'less', 'jsx']
 }
-export async function create(name: string, cmd: { disableI18n?: boolean }) {
+export function removeFiles(): string[] {
+  return ['tsx', 'vue', 'jsx']
+}
+export async function create(cmd: cmdTypes) {
+  console.log(gradient('cyan', 'purple')('\n📦📦 Create a Varlet Component ! \n'))
   await createQuestion(projectNamePrompt, options)
-  await createQuestion(localePrompt, options)
-  await createQuestion(componentStylePrompt, options)
+  if (cmd.locale) {
+    options.locale = cmd.locale
+  } else {
+    await createQuestion(localePrompt, options)
+  }
+  if (cmd.sfc || cmd.jsx || cmd.tsx) {
+    const cmdToExt = Object.keys(cmd)[0]
+    options.style = cmdToExt === 'sfc' ? 'vue' : cmdToExt
+  } else {
+    await createQuestion(componentStylePrompt, options)
+  }
+  console.log(options.style)
+
   options.name = bigCamelize(options.name)
-  await fs.copy(resolve(__dirname, '../../template/create'), `${process.cwd()}/src/${options.projectName}`)
+  const srcPath = `${process.cwd()}/src/${options.projectName}`
+  await fs.copy(resolve(__dirname, '../../template/create'), srcPath)
   await Promise.all(templateFiles().map((file: string) => ejsRender(file, options)))
   await Promise.all(
     renameFiles().map((file: string) => {
-      console.log(`${process.cwd()}/src/${options.projectName}/${file}.${file}`)
-      console.log(`${process.cwd()}/src/${options.projectName}/${options.projectName}.${file}`)
-      return renameSync(
-        `${process.cwd()}/src/${options.projectName}/${file}.${file}`,
-        `${process.cwd()}/src/${options.projectName}/${options.projectName}.${file}`
-      )
+      return renameSync(`${srcPath}/${file}.${file}`, `${srcPath}/${options.projectName}.${file}`)
     })
   )
-
-  // let i18nFiles: Array<Promise<void>> = []
-  // const namespace = get(getVarletConfig(), 'namespace')
-  // console.log(namespace)
-
-  // const bigCamelizeName = bigCamelize(name)
-  // const vueTemplate = `\
-  // <template>
-  //   <div class="${namespace}-${name}"></div>
-  // </template>
-
-  // <script lang="ts">
-  // import { defineComponent } from 'vue'
-
-  // export default defineComponent({
-  //   name: '${bigCamelize(namespace)}${bigCamelizeName}'
-  // })
-  // </script>
-
-  // <style lang="less">
-  // .${namespace}-${name} {
-  //   display: flex;
-  // }
-  // </style>
-  // `
-  // const indexTemplate = `\
-  // import ${bigCamelizeName} from './${bigCamelizeName}.vue'
-  // import type { App } from 'vue'
-
-  // ${bigCamelizeName}.install = function(app: App) {
-  //   app.component(${bigCamelizeName}.name, ${bigCamelizeName})
-  // }
-
-  // export const _${bigCamelizeName}Component = ${bigCamelizeName}
-
-  // export default ${bigCamelizeName}
-  // `
-
-  // const testsTemplate = `\
-  // import ${bigCamelizeName} from '..'
-  // import { createApp } from 'vue'
-  // import { mount } from '@vue/test-utils'
-
-  // test('test ${name} use', () => {
-  //   const app = createApp({}).use(${bigCamelizeName})
-  //   expect(app.component(${bigCamelizeName}.name)).toBeTruthy()
-  // })
-  // `
-
-  // let exampleTemplate = `\
-  // <script setup>
-  // import ${bigCamelizeName} from '..'
-  // import AppType from '@varlet/cli/site/mobile/components/AppType'
-  // </script>
-
-  // <template>
-  //   <app-type></app-type>
-  //   <${namespace}-${name}/>
-  // </template>
-  // `
-
-  // const localeIndexTemplate = `\
-  // // lib
-  // import _zhCN from '../../../locale/zh-CN'
-  // import _enCN from '../../../locale/en-US'
-  // // mobile example doc
-  // import zhCN from './zh-CN'
-  // import enUS from './en-US'
-  // import { useLocale, add as _add, use as _use } from '../../../locale'
-
-  // const { add, use: exampleUse, pack, packs, merge } = useLocale()
-
-  // const use = (lang: string) => {
-  //   _use(lang)
-  //   exampleUse(lang)
-  // }
-
-  // export { add, pack, packs, merge, use }
-
-  // // lib
-  // _add('zh-CN', _zhCN)
-  // _add('en-US', _enCN)
-  // // mobile example doc
-  // add('zh-CN', zhCN as any)
-  // add('en-US', enUS as any)
-  // `
-
-  // const localTemplate = `\
-  // export default {
-
-  // }
-  // `
-
-  // const componentDir = resolve(SRC_DIR, name)
-  // const testsDir = resolve(SRC_DIR, name, TESTS_DIR_NAME)
-  // const exampleDir = resolve(SRC_DIR, name, EXAMPLE_DIR_NAME)
-  // const exampleLocalDir = resolve(SRC_DIR, name, EXAMPLE_DIR_NAME, LOCALE_DIR_NAME)
-  // const docsDir = resolve(SRC_DIR, name, DOCS_DIR_NAME)
-
-  // if (pathExistsSync(componentDir)) {
-  //   logger.error('component directory is existed')
-  //   return
-  // }
-
-  // if (!cmd.disableI18n) {
-  //   exampleTemplate = `\
-  // <script setup>
-  // import ${bigCamelizeName} from '..'
-  // import AppType from '@varlet/cli/site/mobile/components/AppType'
-  // import { watchLang } from '@varlet/cli/site/utils'
-  // import { use, pack } from './locale'
-
-  // watchLang(use)
-  // </script>
-
-  // <template>
-  //   <app-type></app-type>
-  //   <${namespace}-${name}/>
-  // </template>
-  //     `
-
-  //   i18nFiles = [
-  //     outputFile(resolve(exampleLocalDir, 'index.ts'), localeIndexTemplate),
-  //     outputFile(resolve(exampleLocalDir, 'en-US.ts'), localTemplate),
-  //     outputFile(resolve(exampleLocalDir, 'zh-CN.ts'), localTemplate),
-  //     outputFile(resolve(docsDir, 'en-US.md'), ''),
-  //   ]
-  // }
-
-  // await Promise.all([
-  //   outputFile(resolve(componentDir, `${bigCamelizeName}.vue`), vueTemplate),
-  //   outputFile(resolve(componentDir, 'index.ts'), indexTemplate),
-  //   outputFile(resolve(testsDir, 'index.spec.js'), testsTemplate),
-  //   outputFile(resolve(exampleDir, 'index.vue'), exampleTemplate),
-  //   ...i18nFiles,
-  //   outputFile(resolve(docsDir, 'zh-CN.md'), ''),
-  // ])
-
-  // logger.success(`Create ${name} success!`)
-  // logger.success(`----------------------------`)
-  // logger.success(`${name}/`)
-  // logger.success(`|- __tests__/ # Unit test folder`)
-  // logger.success(`|- docs/ # Internationalized document folder`)
-  // logger.success(`|- example/ # Mobile phone example code`)
-  // logger.success(`|- example/locale # Example locale`)
-  // logger.success(`|- ${bigCamelizeName}.vue # Sfc component, You can also use jsx or tsx`)
-  // logger.success(`|- index.ts # Component entry, the folder where the file exists will be exposed to the user`)
+  !options.locale && fs.remove(`${srcPath}/example/locale`)
+  removeFiles()
+    .filter((item) => item !== options.style)
+    .map((item) => fs.remove(`${srcPath}/${options.name}.${item}`))
+  logger.success(`Create ${options.name} Component success!`)
+  logger.success(`----------------------------`)
+  logger.success(`${options.name}/`)
+  logger.success(`|- __tests__/ # Unit test folder`)
+  logger.success(`|- docs/ # Internationalized document folder`)
+  logger.success(`|- example/ # Mobile phone example code`)
+  logger.success(`|- example/locale # Example locale`)
+  logger.success(`|- ${options.name}.${options.style}`)
+  logger.success(`|- index.ts # Component entry, the folder where the file exists will be exposed to the user`)
 }
