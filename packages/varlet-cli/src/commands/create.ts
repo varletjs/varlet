@@ -1,4 +1,4 @@
-// import { bigCamelize } from '@varlet/shared'
+import { bigCamelize } from '@varlet/shared'
 import gradient from 'gradient-string'
 import fs, { pathExistsSync } from 'fs-extra'
 import { renameSync } from 'fs'
@@ -8,9 +8,6 @@ import createQuestion from '../shared/createQuestion'
 import { ejsRender } from '../shared/ejsRender'
 import logger from '../shared/logger'
 
-export const camelize = (s: string): string => s.replace(/-(\w)/g, (_: any, p: string) => p.toUpperCase())
-
-export const bigCamelize = (s: string): string => camelize(s).replace(s.charAt(0), s.charAt(0).toUpperCase())
 interface cmdTypes {
   disableI18n?: boolean
   locale?: boolean
@@ -103,7 +100,6 @@ export async function create(cmd: cmdTypes) {
     await createQuestion(componentStylePrompt, options)
   }
   const srcPath = `${process.cwd()}/src/${options.projectName}`
-  console.log(srcPath);
   await fs.copy(resolve(__dirname, '../../template/create'), srcPath)
   await Promise.all(templateFiles().map((file: string) => ejsRender(file, options)))
   await Promise.all(
