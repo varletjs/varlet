@@ -7,6 +7,8 @@ import { SRC_DIR } from '../shared/constant'
 import createQuestion from '../shared/createQuestion'
 import { ejsRender } from '../shared/ejsRender'
 import logger from '../shared/logger'
+import { getVarletConfig } from '../config/varlet.config'
+import { get } from 'lodash'
 
 interface cmdTypes {
   disableI18n?: boolean
@@ -20,6 +22,7 @@ interface options {
   locale?: boolean
   projectName?: string
   style?: string
+  namespace?: string
 }
 const options: options = {
   name: 'componentName',
@@ -88,6 +91,7 @@ export async function create(cmd: cmdTypes) {
 
   await createQuestion(projectNamePrompt, options)
   options.name = bigCamelize(options.name)
+  options.namespace = bigCamelize(get(getVarletConfig(), 'namespace'))
   if (cmd.locale) {
     options.locale = cmd.locale
   } else {
