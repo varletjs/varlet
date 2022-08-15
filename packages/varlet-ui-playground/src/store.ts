@@ -19,9 +19,6 @@ const varletCss = `${publicPath}varlet.css`
 const welcomeCode = `\
 <script setup lang='ts'>
 import { ref } from 'vue'
-import { installVarletUI } from './${varletReplPlugin}'
-
-installVarletUI()
 
 const msg = ref('Hello Varlet!')
 </script>
@@ -72,6 +69,17 @@ export function appendStyle() {
   })
 }
 `
+const MAIN_CONTAINER = 'Playground.vue'
+const containerCode = `\
+<script setup>
+import App from './${defaultMainFile}'
+import { installVarletUI } from './${varletReplPlugin}'
+installVarletUI()
+</script>
+<template>
+  <App />
+</template>
+`
 
 export class ReplStore implements Store {
   state: StoreState
@@ -120,8 +128,12 @@ export class ReplStore implements Store {
     if (!files[mainFile]) {
       mainFile = Object.keys(files)[0]
     }
+    /**
+     * 通过外层容器自动将组件库install到实例内以及引入样式文件
+     */
+     files[MAIN_CONTAINER] = new File(MAIN_CONTAINER, containerCode, true)
     this.state = reactive({
-      mainFile,
+      mainFile: MAIN_CONTAINER,
       files,
       activeFile: files[mainFile],
       errors: [],
