@@ -3,9 +3,6 @@ import fs from 'fs-extra'
 import path from 'node:path'
 import prettier from 'prettier'
 
-export const camelize = (s: string): string => s.replace(/-(\w)/g, (_: any, p: string) => p.toUpperCase())
-
-export const bigCamelize = (s: string): string => camelize(s).replace(s.charAt(0), s.charAt(0).toUpperCase())
 export async function ejsRender(filePath: string, options: any): Promise<void> {
   try {
     // 根目录template 绝对路径
@@ -16,7 +13,6 @@ export async function ejsRender(filePath: string, options: any): Promise<void> {
     const dest = path.resolve(`${process.cwd()}/src`, options.projectName)
     // 当前 需要编译的 ejs文件
     const readFilePath = path.resolve(dest, file.dir, `${file.name}.ejs`)
-
     // 转换 之后的 js or ts or vue 文件
     const outputFilePath = path.resolve(dest, filePath)
     // 是一个buffer
@@ -26,30 +22,28 @@ export async function ejsRender(filePath: string, options: any): Promise<void> {
     // 获取后缀
     const extname = path.extname(filePath).replace(/[.]/g, '')
     let prettierCode = ''
-    await prettier
-      .resolveConfig(templatePath)
-      .then((opts) => {
-        switch (extname) {
-          case 'ts':
-            prettierCode = prettier.format(code, { parser: 'babel', ...opts })
-            break
-          case 'tsx':
-            prettierCode = prettier.format(code, { parser: 'babel', ...opts })
-            break
-          case 'jsx':
-            prettierCode = prettier.format(code, { parser: 'babel', ...opts })
-            break
-          case 'js':
-            prettierCode = prettier.format(code, { parser: 'babel', ...opts })
-            break
-          default:
-            prettierCode = prettier.format(code, { parser: extname })
-            break
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    const opts = await prettier.resolveConfig(templatePath)
+    try {
+      switch (extname) {
+        case 'ts':
+          prettierCode = prettier.format(code, { parser: 'babel', ...opts })
+          break
+        case 'tsx':
+          prettierCode = prettier.format(code, { parser: 'babel', ...opts })
+          break
+        case 'jsx':
+          prettierCode = prettier.format(code, { parser: 'babel', ...opts })
+          break
+        case 'js':
+          prettierCode = prettier.format(code, { parser: 'babel', ...opts })
+          break
+        default:
+          prettierCode = prettier.format(code, { parser: extname })
+          break
+      }
+    } catch (err) {
+      console.log(err)
+    }
     await fs.outputFile(outputFilePath, prettierCode)
     await fs.remove(readFilePath)
   } catch (error) {
