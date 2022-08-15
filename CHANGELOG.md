@@ -1,3 +1,13 @@
+## [1.27.20](https://github.com/varletjs/varlet/compare/v1.27.19...v1.27.20) (2022-08-11)
+
+
+### Bug Fixes
+
+* add style and less to sideeffects to close [#666](https://github.com/varletjs/varlet/issues/666) ([1e542fd](https://github.com/varletjs/varlet/commit/1e542fda37adcbaebc3cdc1d20f0845f82e8b22c))
+* **pagination:** judge pagecount and close [#668](https://github.com/varletjs/varlet/issues/668) ([4f8135f](https://github.com/varletjs/varlet/commit/4f8135f746a48e0cb8a3fb78ff4aa939fcad8ee7))
+
+
+
 ## [1.27.19](https://github.com/varletjs/varlet/compare/v1.27.18...v1.27.19) (2022-08-08)
 
 
