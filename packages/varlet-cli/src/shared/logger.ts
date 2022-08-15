@@ -13,4 +13,7 @@ export default {
   error(text: string) {
     console.log(chalk.hex('#f44336')(text))
   },
+  title(text: string) {
+    console.log(chalk.cyan(text))
+  },
 }

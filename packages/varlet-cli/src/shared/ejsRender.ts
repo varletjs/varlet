@@ -14,8 +14,6 @@ export async function ejsRender(filePath: string, options: any): Promise<void> {
     const dest = path.resolve(`${process.cwd()}/src`, options.projectName)
     // 当前 需要编译的 ejs文件
     const readFilePath = path.resolve(dest, file.dir, `${file.name}.ejs`)
-    console.log(path.resolve(dest, file.dir))
-
     // 转换 之后的 js or ts or vue 文件
     const outputFilePath = path.resolve(dest, filePath)
     // 是一个buffer
