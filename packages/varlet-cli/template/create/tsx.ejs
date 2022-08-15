@@ -1,0 +1,11 @@
+import { defineComponent } from 'vue'
+import { props } from './props'
+import './<%- name %>.less'
+
+export default defineComponent({
+  setup(props, { slots }) {
+    return () => {
+      return <div>{ slots.default?.() }</div>
+    }
+  },
+})

@@ -1,0 +1,15 @@
+  <script setup>
+  import <%- namespace + name %> from '../index'
+  import AppType from '@varlet/cli/site/mobile/components/AppType'
+  <% if (locale) { -%>
+  import { watchLang } from '@varlet/cli/site/utils'
+  import { use, pack } from './locale'
+
+  watchLang(use)
+  <% } -%>
+  </script>
+
+  <template>
+    <app-type></app-type>
+    <var-<%- projectName %>/>
+  </template>

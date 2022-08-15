@@ -1,0 +1,10 @@
+import './<%- name %>.less'
+import { props } from './props'
+
+export default ({
+  setup(props, { slots }) {
+    return () => {
+      return <div>{ slots.default?.() }</div>
+    }
+  },
+})

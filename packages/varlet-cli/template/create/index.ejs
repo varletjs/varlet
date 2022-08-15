@@ -1,0 +1,10 @@
+  import <%- name %> from './<%- name %>.vue'
+  import type { App } from 'vue'
+
+  <%- name %>.install = function(app: App) {
+    app.component(<%- name %>.name, <%- name %>)
+  }
+
+  export const _<%- name %>Component = <%- name %>
+
+  export default <%- name %>

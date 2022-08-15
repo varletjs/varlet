@@ -298,7 +298,15 @@ varlet-cli gen <projectName>
 
 ```shell
 # playground-ignore
-varlet-cli create <componentName>
+varlet-cli create 
+or
+varlet-cli create --sfc (Automatically generate .vue format files)
+or 
+varlet-cli create --tsx (Automatically generate .tsx format files)
+or 
+varlet-cli create --jsx (Automatically generate .jsx format files)
+or
+varlet-cli create --l (Automatically generate internationalized files)
 ```
 
 ### Babel

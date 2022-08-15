@@ -49,9 +49,12 @@ program
     .action(compile_1.compile);
 program.command('lint').description('Lint code').action(lint_1.lint);
 program
-    .command('create <name>')
+    .command('create')
     .description('Create a component directory')
-    .option('-d, --disableI18n', 'Disable to generator i18n files')
+    .option('-s, --sfc', 'Disable to generator i18n files')
+    .option('-t, --tsx', 'Disable to generator i18n files')
+    .option('-j, --jsx', 'Disable to generator i18n files')
+    .option('-l, --locale', 'Disable to generator internationalized files')
     .action(create_1.create);
 program
     .command('jest')
