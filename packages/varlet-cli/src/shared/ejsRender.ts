@@ -5,6 +5,7 @@ import prettier from 'prettier'
 
 export async function ejsRender(filePath: string, options: any): Promise<void> {
   try {
+    let prettierCode = ''
     // 根目录template 绝对路径
     const templatePath = path.resolve(__dirname, `../../template/create`)
     // 获取当前渲染文件的 各种 参数 such as ext
@@ -13,6 +14,8 @@ export async function ejsRender(filePath: string, options: any): Promise<void> {
     const dest = path.resolve(`${process.cwd()}/src`, options.projectName)
     // 当前 需要编译的 ejs文件
     const readFilePath = path.resolve(dest, file.dir, `${file.name}.ejs`)
+    console.log(path.resolve(dest, file.dir))
+
     // 转换 之后的 js or ts or vue 文件
     const outputFilePath = path.resolve(dest, filePath)
     // 是一个buffer
@@ -21,7 +24,6 @@ export async function ejsRender(filePath: string, options: any): Promise<void> {
     const code = ejs.render(templateCode.toString(), options)
     // 获取后缀
     const extname = path.extname(filePath).replace(/[.]/g, '')
-    let prettierCode = ''
     const opts = await prettier.resolveConfig(templatePath)
     try {
       switch (extname) {
