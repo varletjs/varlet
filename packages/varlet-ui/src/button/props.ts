@@ -65,6 +65,10 @@ export const props = {
   },
   loadingType: pickProps(loadingProps, 'type'),
   loadingSize: pickProps(loadingProps, 'size'),
+  loadingColor: {
+    ...pickProps(loadingProps, 'color'),
+    default: 'currentColor',
+  },
   onClick: {
     type: Function as PropType<(e: Event) => void | Promise<any>>,
   },
