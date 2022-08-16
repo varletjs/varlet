@@ -247,20 +247,22 @@ const openMultiple = () => {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | ---------- |
-| `v-model:show` | 是否显示 `Snackbar` | _boolean_ | `false` |
-| `type`| `Snackbar` 类型，可选值为 `success warning info error loading` | _string_ | `-` |
-| `position`| `Snackbar`  位置，可选值为 `top center bottom` | _string_ | `top` |
-| `duration`| 显示时长 | _number_ | `3000` |
-| `content` | 自定义内容 | _string_ | `-` |
-| `content-class` | 自定义内容的类名 | _string_ | `-` |
-| `vertical` | 是否启用竖直排列方式 | _boolean_ | `false` |
-| `loading-type` | 加载动画类型(见 `Loading` 组件) | _string_ | `circle` |
-| `loading-size` | 加载动画大小(见 `Loading` 组件) | _string_ | `normal` |
-| `lock-scroll`| 是否禁止滚动穿透 | _boolean_  | `false` |
-| `forbid-click`| 是否禁止穿透点击 | _boolean_  | `false` |
-| `teleport`| 弹出层挂载的位置 | _TeleportProps['to']_  | `body` |
+| 参数               | 说明                                                      | 类型 | 默认值 |
+|------------------|---------------------------------------------------------| -------- | ---------- |
+| `v-model:show`   | 是否显示 `Snackbar`                                         | _boolean_ | `false` |
+| `type`           | `Snackbar` 类型，可选值为 `success warning info error loading` | _string_ | `-` |
+| `position`       | `Snackbar`  位置，可选值为 `top center bottom`                 | _string_ | `top` |
+| `duration`       | 显示时长                                                    | _number_ | `3000` |
+| `content`        | 自定义内容                                                   | _string_ | `-` |
+| `content-class`  | 自定义内容的类名                                                | _string_ | `-` |
+| `vertical`       | 是否启用竖直排列方式                                              | _boolean_ | `false` |
+| `loading-type`   | Loading类型(见 `Loading` 组件)                               | _string_ | `circle`       |
+| `loading-size`   | Loading大小(见 `Loading` 组件)                               | _string_ | `normal`       |
+| `loading-color`  | loading颜色(见`_loading`组件)                                |_string_|`current_color`|
+| `loading-radius` | Loading半径大小(见 `Loading` 组件)                             | _string \| number_  | `-` |
+| `lock-scroll`    | 是否禁止滚动穿透                                                | _boolean_  | `false` |
+| `forbid-click`   | 是否禁止穿透点击                                                | _boolean_  | `false` |
+| `teleport`       | 弹出层挂载的位置                                                | _TeleportProps['to']_  | `body` |
 
 ### 事件
 
@@ -297,23 +299,25 @@ const openMultiple = () => {
 
 #### 函数式调用时传入的选项
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | ---------- |
-| `show` | 是否显示 `Snackbar` | _boolean_ | `false` |
-| `type`| `Snackbar` 类型，可选值为 `success warning info error loading` | _string_ | `-` |
-| `position`| `Snackbar` 位置，可选值为 `top center bottom` | _string_ | `top` |
-| `duration`| 显示时长(当 `type` 属性为 `loading` 时，需要手动关闭) | _number_ | `3000` |
-| `content` | 自定义内容 | _string_ | `-` |
-| `contentClass` | 自定义内容的类名 | _string_ | `-` |
-| `vertical` | 是否启用竖直排列方式 | _boolean_ | `false` |
-| `loadingType` | 加载动画类型(见 `Loading` 组件) | _string_ | `circle` |
-| `loadingSize` | 加载动画大小(见 `Loading` 组件) | _string_ | `normal` |
-| `lockScroll`| 是否禁止滚动穿透 | _boolean_  | `false` |
-| `forbidClick`| 是否禁止穿透点击(当 `type` 属性为 `loading` 时，默认为 `true`) | _boolean_  | `false` |
-| `onOpen` | 打开 `Snackbar` 时触发 | _() => void_ | `-` |
-| `onOpened` | 打开 `Snackbar` 动画结束时触发 | _() => void_ | `-` |
-| `onClose` | 关闭 `Snackbar` 时触发 | _() => void_ | `-` |
-| `onClosed` | 关闭 `Snackbar` 动画结束时触发 | _() => void_ | `-` |
+| 参数              | 说明                                                      | 类型 | 默认值            |
+|-----------------|---------------------------------------------------------| -------- |----------------|
+| `show`          | 是否显示 `Snackbar`                                         | _boolean_ | `false`        |
+| `type`          | `Snackbar` 类型，可选值为 `success warning info error loading` | _string_ | `-`            |
+| `position`      | `Snackbar` 位置，可选值为 `top center bottom`                  | _string_ | `top`          |
+| `duration`      | 显示时长(当 `type` 属性为 `loading` 时，需要手动关闭)                   | _number_ | `3000`         |
+| `content`       | 自定义内容                                                   | _string_ | `-`            |
+| `contentClass`  | 自定义内容的类名                                                | _string_ | `-`            |
+| `vertical`      | 是否启用竖直排列方式                                              | _boolean_ | `false`        |
+| `loadingType`   | Loading类型(见 `Loading` 组件)                               | _string_ | `circle`       |
+| `loadingSize`   | Loading大小(见 `Loading` 组件)                               | _string_ | `normal`       |
+| `loadingColor`  | Loading颜色(见 `Loading` 组件)                               | _string_ | `currentColor` |
+| `loadingRadius` | Loading半径大小(见 `Loading` 组件)                                 | _string \| number_  | `-` |
+| `lockScroll`    | 是否禁止滚动穿透                                                | _boolean_  | `false`        |
+| `forbidClick`   | 是否禁止穿透点击(当 `type` 属性为 `loading` 时，默认为 `true`)           | _boolean_  | `false`        |
+| `onOpen`        | 打开 `Snackbar` 时触发                                       | _() => void_ | `-`            |
+| `onOpened`      | 打开 `Snackbar` 动画结束时触发                                   | _() => void_ | `-`            |
+| `onClose`       | 关闭 `Snackbar` 时触发                                       | _() => void_ | `-`            |
+| `onClosed`      | 关闭 `Snackbar` 动画结束时触发                                   | _() => void_ | `-`            |
 
 ### 样式变量
 

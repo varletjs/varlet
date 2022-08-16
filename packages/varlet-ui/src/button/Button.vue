@@ -25,7 +25,7 @@
     <var-loading
       :class="n('loading')"
       var-button-cover
-      color="currentColor"
+      :color="loadingColor"
       :type="loadingType"
       :size="loadingSize"
       :radius="loadingRadius"
