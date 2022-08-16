@@ -71,14 +71,14 @@ const loading = ref(false)
 
 ### 属性
 
-| 参数     | 说明                                                            | 类型     | 默认值      |
-| -------- |---------------------------------------------------------------| -------- |----------|
-| `color`  | loading 的颜色                                                   | _string_ | `-`      |
-| `type`   | loading 的类型，可选值为 `circle` `wave` `cube` `rect` `disappear`    | _string_ | `circle` |
-| `size`   | loading 的大小，可选值位 `large` `normal` `small` `mini`              | _string_ | `normal` |
-| `description`   | loading 的描述文字                                                 | _string_ | `-`      |
-| `loading`| 存在内容时 loading 是否显示                                            | _boolean_ | `false`  |
-| `radius` | loading 的类型为 `circle` 时，可设置其半径大小                              | _string \| number_  | `-` |
+| 参数     | 说明                                                         | 类型     | 默认值      |
+| -------- |------------------------------------------------------------| -------- |----------|
+| `color`  | loading 的颜色                                                | _string_ | `-`      |
+| `type`   | loading 的类型，可选值为 `circle` `wave` `cube` `rect` `disappear` | _string_ | `circle` |
+| `size`   | loading 的大小，可选值为 `large` `normal` `small` `mini`           | _string_ | `normal` |
+| `description`   | loading 的描述文字                                              | _string_ | `-`      |
+| `loading`| 存在内容时 loading 是否显示                                         | _boolean_ | `false`  |
+| `radius` | loading 的类型为 `circle` 时，可设置其半径大小                           | _string \| number_  | `-` |
 
 ### 插槽
 
