@@ -14,7 +14,7 @@
           var-rate-cover
           :transition="0"
           :namespace="namespace"
-          :name="getIconName(val)"
+          :name="getCurrentState(val).name"
           :style="{ fontSize: toSizeUnit(size) }"
         />
       </div>
@@ -53,48 +53,39 @@ export default defineComponent({
       const { count, size, gap } = props
 
       return {
-        color: transformValue(val).color,
+        color: getCurrentState(val).color,
         marginRight: val !== toNumber(count) ? toSizeUnit(gap) : 0,
         width: toSizeUnit(size),
         height: toSizeUnit(size),
-        borderRadius: '50%',
       }
     }
 
     const getClass = (val: number) => {
-      const { type, color } = transformValue(val)
+      const { name, color } = getCurrentState(val)
 
       return {
         [n('content')]: true,
         [n('--disabled')]: form?.disabled.value || props.disabled,
         [n('--error')]: errorMessage.value,
-        [n('--primary')]: type !== 'empty' && !color,
+        [n('--primary')]: name !== props.emptyIcon && !color,
       }
     }
 
-    const getIconName = (val: number) => {
-      const { type } = transformValue(val)
-      const { icon, halfIcon, emptyIcon } = props
-
-      return type === 'full' ? icon : type === 'half' ? halfIcon : emptyIcon
-    }
-
-    const transformValue = (index: number) => {
-      const { modelValue, disabled, disabledColor, color, half, emptyColor } = props
-      let iconColor
+    const getCurrentState = (index: number) => {
+      const { modelValue, disabled, disabledColor, color, half, emptyColor, icon, halfIcon, emptyIcon } = props
+      let iconColor = color
 
       if (disabled || form?.disabled.value) iconColor = disabledColor
-      else if (color) iconColor = color
 
       if (index <= toNumber(modelValue)) {
-        return { type: 'full', score: index, color: iconColor }
+        return { color: iconColor, name: icon }
       }
 
       if (half && index <= toNumber(modelValue) + 0.5) {
-        return { type: 'half', score: index, color: iconColor }
+        return { color: iconColor, name: halfIcon }
       }
 
-      return { type: 'empty', score: index, color: disabled || form?.disabled.value ? disabledColor : emptyColor }
+      return { color: disabled || form?.disabled.value ? disabledColor : emptyColor, name: emptyIcon }
     }
 
     const changeValue = (score: number, event: MouseEvent) => {
@@ -135,13 +126,14 @@ export default defineComponent({
     }
 
     call(bindForm, rateProvider)
+
     return {
       errorMessage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
       getStyle,
       getClass,
-      getIconName,
+      getCurrentState,
       handleClick,
       reset,
       validate,
