@@ -6,6 +6,7 @@ export type StyleVars = Record<string, string>
 
 export interface StyleProviderProps extends BasicAttributes {
   styleVars?: StyleVars
+  tag?: string
 }
 
 export class StyleProviderComponent extends VarComponent {
