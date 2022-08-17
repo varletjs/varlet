@@ -14,11 +14,15 @@ export default defineComponent({
       type: Object as PropType<StyleVars>,
       default: () => ({}),
     },
+    tag: {
+      type: String,
+      default: 'div',
+    },
   },
   setup(props, { slots }) {
     return () =>
       h(
-        'div',
+        props.tag,
         {
           class: n(),
           style: formatStyleVars(props.styleVars),
