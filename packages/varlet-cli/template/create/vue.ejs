@@ -1,12 +1,12 @@
 <template>
-  <div class="var-<%- projectName %>"></div>
+  <div class="var-<%- kebabCaseName %>"></div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import './<%- projectName %>.less'
+import './<%- kebabCaseName %>.less'
 
 export default defineComponent({
-  name: '<%- namespace + name %>',
+  name: '<%- namespace + bigCamelizeName %>',
 })
 </script>

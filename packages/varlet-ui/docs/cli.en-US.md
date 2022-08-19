@@ -201,7 +201,7 @@ module.exports = {
       started: {
         'en-US': 'GET STARTED',
       },
-    }
+    },
     menu: [
       {
         text: {
