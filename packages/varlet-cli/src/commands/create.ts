@@ -1,67 +1,53 @@
-import { bigCamelize } from '@varlet/shared'
+import { bigCamelize, kebabCase } from '@varlet/shared'
 import ejs from 'ejs'
-import fs from 'fs-extra'
+import fs, { removeSync, outputFileSync, readFileSync, copySync, pathExistsSync, renameSync } from 'fs-extra'
 import { get } from 'lodash'
 import { resolve, parse } from 'path'
-import createQuestion from '../shared/createQuestion'
+import { createQuestion, createOptions } from '../shared/createQuestion'
 import logger from '../shared/logger'
 import { getVarletConfig } from '../config/varlet.config'
 import { SRC_DIR } from '../shared/constant'
+import { type PromptObject } from 'prompts'
 
 interface CmdTypes {
   locale?: boolean
   sfc?: boolean
-  jsx?: boolean
   tsx?: boolean
 }
-interface CreateOptions {
-  name: string
-  locale?: boolean
-  projectName?: string
-  style?: string
-  namespace?: string
-}
-const createOptions: CreateOptions = {
-  name: 'componentName',
-}
-const templateFiles: string[] = [
-  '__tests__/index.spec.js',
-  'example/index.vue',
-  `less.less`,
-  `tsx.tsx`,
-  `jsx.jsx`,
-  `vue.vue`,
-  'index.ts',
-]
-const renameFiles: string[] = ['tsx', 'vue', 'less', 'jsx']
-const removeFiles: string[] = renameFiles.filter((item) => item !== 'less')
 
-// create projectName question
-const projectNamePrompt = [
+const templateFiles = ['__tests__/index.spec.js', 'example/index.vue', `less.less`, `tsx.tsx`, `vue.vue`, 'index.ts']
+const renameFiles = ['tsx', 'vue', 'less']
+const removeFiles = renameFiles.filter((item) => item !== 'less')
+
+// create componentName question
+const componentNamePrompt: Array<PromptObject> = [
   {
-    name: 'projectName',
+    name: 'componentName',
     type: 'text',
     message: 'The name of the component created: ',
     initial: createOptions.name,
     onState: (state: any) => {
       createOptions.name = state.value
+      createOptions.kebabCaseName = kebabCase(state.value)
+      createOptions.bigCamelizeName = bigCamelize(state.value)
     },
     active: 'Yes',
     inactive: 'No',
   },
   {
     name: 'overwrite',
-    type: async () => (fs.pathExistsSync(resolve(SRC_DIR, createOptions.name)) ? 'toggle' : null),
+    type: pathExistsSync(resolve(SRC_DIR, createOptions.kebabCaseName)) && 'toggle',
     initial: false,
-    message: async () => {
-      return `⚠️ ⚠️  files "${createOptions.name}" is not empty. Overwrite the current Folder and continue?`
-    },
+    message: () =>
+      `⚠️ ⚠️  files "${createOptions.kebabCaseName}" is not empty. Overwrite the current Folder and continue ?`,
     active: 'Yes',
     inactive: 'No',
   },
   {
     name: 'overwrite',
     type: (prev: any, values: any) => {
+      console.log(prev)
+      console.log(values)
       if (values.overwrite === false) {
         throw new Error('Operation cancelled')
       }
@@ -71,7 +57,7 @@ const projectNamePrompt = [
 ]
 
 // create internationalized files question
-const localePrompt = {
+const localePrompt: PromptObject = {
   name: 'locale',
   type: 'toggle',
   message: 'Whether components need to be internationalized ?',
@@ -81,13 +67,12 @@ const localePrompt = {
 }
 
 // create component style question
-const componentStylePrompt = {
+const componentStylePrompt: PromptObject = {
   name: 'style',
   type: 'select',
-  message: 'What style do you use to write your components? ?',
+  message: 'What style do you use to write your components ?',
   choices: [
     { title: 'sfc', value: 'vue' },
-    { title: 'jsx', value: 'jsx' },
     { title: 'tsx', value: 'tsx' },
   ],
 }
@@ -97,55 +82,53 @@ export async function create(cmd: CmdTypes) {
   logger.title('\n📦📦 Create a Varlet Component ! \n')
 
   // realize projectName
-  await createQuestion(projectNamePrompt, createOptions)
-  createOptions.name = bigCamelize(createOptions.name)
+  await createQuestion(componentNamePrompt)
   createOptions.namespace = bigCamelize(get(getVarletConfig(), 'namespace'))
 
   // Determine whether the parameter carries internationalization.
   if (cmd.locale) {
     createOptions.locale = cmd.locale
   } else {
-    await createQuestion(localePrompt, createOptions)
+    await createQuestion(localePrompt)
   }
 
   // Determine whether the parameter carries a component style
-  if (cmd.sfc || cmd.jsx || cmd.tsx) {
+  if (cmd.sfc || cmd.tsx) {
+    console.log(cmd)
     const cmdToExt = Object.keys(cmd)[0]
     createOptions.style = cmdToExt === 'sfc' ? 'vue' : cmdToExt
   } else {
-    await createQuestion(componentStylePrompt, createOptions)
+    await createQuestion(componentStylePrompt)
   }
 
   // Copy files to Current working directory
-  const srcPath = `${process.cwd()}/src/${createOptions.projectName}`
-  await fs.copy(resolve(__dirname, '../../template/create'), srcPath)
+  const componentPath = resolve(SRC_DIR, createOptions.kebabCaseName)
+  copySync(resolve(__dirname, '../../template/create'), componentPath)
 
   // Compile ejs and change the file name
   await Promise.all(templateFiles.map((file: string) => ejsRender(file, createOptions)))
-  await Promise.all(
-    renameFiles.map((file: string) => {
-      return fs.rename(
-        `${srcPath}/${file}.${file}`,
-        `${srcPath}/${file === 'less' ? createOptions.projectName : createOptions.name}.${file}`
-      )
-    })
-  )
+  renameFiles.forEach((file: string) => {
+    renameSync(
+      `${componentPath}/${file}.${file}`,
+      `${componentPath}/${file === 'less' ? createOptions.kebabCaseName : createOptions.bigCamelizeName}.${file}`
+    )
+  })
 
   // Remove unnecessary files
-  !createOptions.locale && fs.remove(`${srcPath}/example/locale`)
+  !createOptions.locale && removeSync(`${componentPath}/example/locale`)
   removeFiles
     .filter((item) => item !== createOptions.style)
-    .map((item) => fs.remove(`${srcPath}/${createOptions.name}.${item}`))
+    .forEach((item) => fs.removeSync(`${componentPath}/${createOptions.bigCamelizeName}.${item}`))
 
   // need refactor
-  logger.success(`Create ${createOptions.name} Component success!`)
+  logger.success(`Create ${createOptions.kebabCaseName} Component success!`)
   logger.success(`----------------------------`)
-  logger.success(`${createOptions.name}/`)
+  logger.success(`${createOptions.kebabCaseName}/`)
   logger.success(`|- __tests__/ # Unit test folder`)
   logger.success(`|- docs/ # Internationalized document folder`)
   logger.success(`|- example/ # Mobile phone example code`)
   logger.success(`|- example/locale # Example locale`)
-  logger.success(`|- ${createOptions.name}.${createOptions.style}`)
+  logger.success(`|- ${createOptions.kebabCaseName}.${createOptions.style}`)
   logger.success(`|- index.ts # Component entry, the folder where the file exists will be exposed to the user`)
 }
 
@@ -155,17 +138,17 @@ async function ejsRender(filePath: string, options: any): Promise<void> {
     // Get the current render file information
     const file = parse(filePath)
     // Compile the root directory
-    const dest = resolve(`${process.cwd()}/src`, options.projectName)
+    const dest = resolve(SRC_DIR, options.kebabCaseName)
     // Ejs files that need to be compiled
     const readFilePath = resolve(dest, file.dir, `${file.name}.ejs`)
     // Converted file
     const outputFilePath = resolve(dest, filePath)
     // Generate buffer
-    const templateCode = await fs.readFile(readFilePath, { encoding: 'utf-8' })
+    const templateCode = readFileSync(readFilePath, { encoding: 'utf-8' })
     // Compile code
     const code = ejs.render(templateCode, options)
-    await fs.outputFile(outputFilePath, code)
-    await fs.remove(readFilePath)
+    outputFileSync(outputFilePath, code)
+    removeSync(readFilePath)
   } catch (error) {
     console.log(error)
   }
