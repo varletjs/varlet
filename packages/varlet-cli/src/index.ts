@@ -47,9 +47,12 @@ program
 program.command('lint').description('Lint code').action(lint)
 
 program
-  .command('create <name>')
+  .command('create')
   .description('Create a component directory')
-  .option('-d, --disableI18n', 'Disable to generator i18n files')
+  .option('-s, --sfc', 'Generate files in sfc format')
+  .option('-t, --tsx', 'Generate files in tsx format')
+  .option('-j, --jsx', 'Generate files in jsx format')
+  .option('-l, --locale', 'Generator internationalized files')
   .action(create)
 
 program

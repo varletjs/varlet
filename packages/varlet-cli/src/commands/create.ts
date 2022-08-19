@@ -1,154 +1,172 @@
-import logger from '../shared/logger'
 import { bigCamelize } from '@varlet/shared'
-import { outputFile, pathExistsSync } from 'fs-extra'
-import { resolve } from 'path'
-import { DOCS_DIR_NAME, EXAMPLE_DIR_NAME, LOCALE_DIR_NAME, SRC_DIR, TESTS_DIR_NAME } from '../shared/constant'
-import { getVarletConfig } from '../config/varlet.config'
+import ejs from 'ejs'
+import fs from 'fs-extra'
 import { get } from 'lodash'
+import { resolve, parse } from 'path'
+import createQuestion from '../shared/createQuestion'
+import logger from '../shared/logger'
+import { getVarletConfig } from '../config/varlet.config'
+import { SRC_DIR } from '../shared/constant'
 
-export async function create(name: string, cmd: { disableI18n?: boolean }) {
-  let i18nFiles: Array<Promise<void>> = []
-  const namespace = get(getVarletConfig(), 'namespace')
-  const bigCamelizeName = bigCamelize(name)
-  const vueTemplate = `\
-<template>
-  <div class="${namespace}-${name}"></div>
-</template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: '${bigCamelize(namespace)}${bigCamelizeName}'
-})
-</script>
-
-<style lang="less">
-.${namespace}-${name} {
-  display: flex;
+interface CmdTypes {
+  locale?: boolean
+  sfc?: boolean
+  jsx?: boolean
+  tsx?: boolean
 }
-</style>
-`
-  const indexTemplate = `\
-import ${bigCamelizeName} from './${bigCamelizeName}.vue'
-import type { App } from 'vue'
+interface CreateOptions {
+  name: string
+  locale?: boolean
+  projectName?: string
+  style?: string
+  namespace?: string
+}
+const createOptions: CreateOptions = {
+  name: 'componentName',
+}
+const templateFiles: string[] = [
+  '__tests__/index.spec.js',
+  'example/index.vue',
+  `less.less`,
+  `tsx.tsx`,
+  `jsx.jsx`,
+  `vue.vue`,
+  'index.ts',
+]
+const renameFiles: string[] = ['tsx', 'vue', 'less', 'jsx']
+const removeFiles: string[] = renameFiles.filter((item) => item !== 'less')
 
-${bigCamelizeName}.install = function(app: App) {
-  app.component(${bigCamelizeName}.name, ${bigCamelizeName})
+// create projectName question
+const projectNamePrompt = [
+  {
+    name: 'projectName',
+    type: 'text',
+    message: 'The name of the component created: ',
+    initial: createOptions.name,
+    onState: (state: any) => {
+      createOptions.name = state.value
+    },
+    active: 'Yes',
+    inactive: 'No',
+  },
+  {
+    name: 'overwrite',
+    type: async () => (fs.pathExistsSync(resolve(SRC_DIR, createOptions.name)) ? 'toggle' : null),
+    initial: false,
+    message: async () => {
+      return `⚠️ ⚠️  files "${createOptions.name}" is not empty. Overwrite the current Folder and continue?`
+    },
+    active: 'Yes',
+    inactive: 'No',
+  },
+  {
+    name: 'overwrite',
+    type: (prev: any, values: any) => {
+      if (values.overwrite === false) {
+        throw new Error('Operation cancelled')
+      }
+      return null
+    },
+  },
+]
+
+// create internationalized files question
+const localePrompt = {
+  name: 'locale',
+  type: 'toggle',
+  message: 'Whether components need to be internationalized ?',
+  initial: false,
+  active: 'Yes',
+  inactive: 'No',
 }
 
-export const _${bigCamelizeName}Component = ${bigCamelizeName}
-
-export default ${bigCamelizeName}
-`
-
-  const testsTemplate = `\
-import ${bigCamelizeName} from '..'
-import { createApp } from 'vue'
-import { mount } from '@vue/test-utils'
-
-test('test ${name} use', () => {
-  const app = createApp({}).use(${bigCamelizeName})
-  expect(app.component(${bigCamelizeName}.name)).toBeTruthy()
-})
-`
-
-  let exampleTemplate = `\
-<script setup>
-import ${bigCamelizeName} from '..'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-</script>
-
-<template>
-  <app-type></app-type>
-  <${namespace}-${name}/>
-</template>
-`
-
-  const localeIndexTemplate = `\
-// lib
-import _zhCN from '../../../locale/zh-CN'
-import _enCN from '../../../locale/en-US'
-// mobile example doc
-import zhCN from './zh-CN'
-import enUS from './en-US'
-import { useLocale, add as _add, use as _use } from '../../../locale'
-
-const { add, use: exampleUse, pack, packs, merge } = useLocale()
-
-const use = (lang: string) => {
-  _use(lang)
-  exampleUse(lang)
+// create component style question
+const componentStylePrompt = {
+  name: 'style',
+  type: 'select',
+  message: 'What style do you use to write your components? ?',
+  choices: [
+    { title: 'sfc', value: 'vue' },
+    { title: 'jsx', value: 'jsx' },
+    { title: 'tsx', value: 'tsx' },
+  ],
 }
 
-export { add, pack, packs, merge, use }
+// create command action
+export async function create(cmd: CmdTypes) {
+  logger.title('\n📦📦 Create a Varlet Component ! \n')
 
-// lib
-_add('zh-CN', _zhCN)
-_add('en-US', _enCN)
-// mobile example doc
-add('zh-CN', zhCN as any)
-add('en-US', enUS as any)
-`
+  // realize projectName
+  await createQuestion(projectNamePrompt, createOptions)
+  createOptions.name = bigCamelize(createOptions.name)
+  createOptions.namespace = bigCamelize(get(getVarletConfig(), 'namespace'))
 
-  const localTemplate = `\
-export default {
-
-}
-`
-
-  const componentDir = resolve(SRC_DIR, name)
-  const testsDir = resolve(SRC_DIR, name, TESTS_DIR_NAME)
-  const exampleDir = resolve(SRC_DIR, name, EXAMPLE_DIR_NAME)
-  const exampleLocalDir = resolve(SRC_DIR, name, EXAMPLE_DIR_NAME, LOCALE_DIR_NAME)
-  const docsDir = resolve(SRC_DIR, name, DOCS_DIR_NAME)
-
-  if (pathExistsSync(componentDir)) {
-    logger.error('component directory is existed')
-    return
+  // Determine whether the parameter carries internationalization.
+  if (cmd.locale) {
+    createOptions.locale = cmd.locale
+  } else {
+    await createQuestion(localePrompt, createOptions)
   }
 
-  if (!cmd.disableI18n) {
-    exampleTemplate = `\
-<script setup>
-import ${bigCamelizeName} from '..'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { watchLang } from '@varlet/cli/site/utils'
-import { use, pack } from './locale'
-
-watchLang(use)
-</script>
-
-<template>
-  <app-type></app-type>
-  <${namespace}-${name}/>
-</template>
-    `
-
-    i18nFiles = [
-      outputFile(resolve(exampleLocalDir, 'index.ts'), localeIndexTemplate),
-      outputFile(resolve(exampleLocalDir, 'en-US.ts'), localTemplate),
-      outputFile(resolve(exampleLocalDir, 'zh-CN.ts'), localTemplate),
-      outputFile(resolve(docsDir, 'en-US.md'), ''),
-    ]
+  // Determine whether the parameter carries a component style
+  if (cmd.sfc || cmd.jsx || cmd.tsx) {
+    const cmdToExt = Object.keys(cmd)[0]
+    createOptions.style = cmdToExt === 'sfc' ? 'vue' : cmdToExt
+  } else {
+    await createQuestion(componentStylePrompt, createOptions)
   }
 
-  await Promise.all([
-    outputFile(resolve(componentDir, `${bigCamelizeName}.vue`), vueTemplate),
-    outputFile(resolve(componentDir, 'index.ts'), indexTemplate),
-    outputFile(resolve(testsDir, 'index.spec.js'), testsTemplate),
-    outputFile(resolve(exampleDir, 'index.vue'), exampleTemplate),
-    ...i18nFiles,
-    outputFile(resolve(docsDir, 'zh-CN.md'), ''),
-  ])
+  // Copy files to Current working directory
+  const srcPath = `${process.cwd()}/src/${createOptions.projectName}`
+  await fs.copy(resolve(__dirname, '../../template/create'), srcPath)
 
-  logger.success(`Create ${name} success!`)
+  // Compile ejs and change the file name
+  await Promise.all(templateFiles.map((file: string) => ejsRender(file, createOptions)))
+  await Promise.all(
+    renameFiles.map((file: string) => {
+      return fs.rename(
+        `${srcPath}/${file}.${file}`,
+        `${srcPath}/${file === 'less' ? createOptions.projectName : createOptions.name}.${file}`
+      )
+    })
+  )
+
+  // Remove unnecessary files
+  !createOptions.locale && fs.remove(`${srcPath}/example/locale`)
+  removeFiles
+    .filter((item) => item !== createOptions.style)
+    .map((item) => fs.remove(`${srcPath}/${createOptions.name}.${item}`))
+
+  // need refactor
+  logger.success(`Create ${createOptions.name} Component success!`)
   logger.success(`----------------------------`)
-  logger.success(`${name}/`)
+  logger.success(`${createOptions.name}/`)
   logger.success(`|- __tests__/ # Unit test folder`)
   logger.success(`|- docs/ # Internationalized document folder`)
   logger.success(`|- example/ # Mobile phone example code`)
   logger.success(`|- example/locale # Example locale`)
-  logger.success(`|- ${bigCamelizeName}.vue # Sfc component, You can also use jsx or tsx`)
+  logger.success(`|- ${createOptions.name}.${createOptions.style}`)
   logger.success(`|- index.ts # Component entry, the folder where the file exists will be exposed to the user`)
+}
+
+// ejs render function
+async function ejsRender(filePath: string, options: any): Promise<void> {
+  try {
+    // Get the current render file information
+    const file = parse(filePath)
+    // Compile the root directory
+    const dest = resolve(`${process.cwd()}/src`, options.projectName)
+    // Ejs files that need to be compiled
+    const readFilePath = resolve(dest, file.dir, `${file.name}.ejs`)
+    // Converted file
+    const outputFilePath = resolve(dest, filePath)
+    // Generate buffer
+    const templateCode = await fs.readFile(readFilePath, { encoding: 'utf-8' })
+    // Compile code
+    const code = ejs.render(templateCode, options)
+    await fs.outputFile(outputFilePath, code)
+    await fs.remove(readFilePath)
+  } catch (error) {
+    console.log(error)
+  }
 }
