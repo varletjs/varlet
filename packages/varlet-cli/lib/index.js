@@ -42,8 +42,14 @@ program
     .description('Run varlet development environment')
     .action(dev_1.dev);
 program.command('build').description('Build varlet site for production').action(build_1.build);
-program.command('build:vite').description('Use vite build app for production').action(function () { return (0, useVite_1.useVite)('build'); });
-program.command('dev:vite').description('Use vite start server for development').action(function () { return (0, useVite_1.useVite)('dev'); });
+program
+    .command('build:vite')
+    .description('Use vite build app for production')
+    .action(function () { return (0, useVite_1.useVite)('build'); });
+program
+    .command('dev:vite')
+    .description('Use vite start server for development')
+    .action(function () { return (0, useVite_1.useVite)('dev'); });
 program.command('preview').description('Preview varlet site for production').action(preview_1.preview);
 program
     .command('compile')
@@ -53,8 +59,13 @@ program
 program.command('lint').description('Lint code').action(lint_1.lint);
 program
     .command('create <name>')
+    .command('create')
     .description('Create a component directory')
     .option('-d, --disableI18n', 'Disable to generator i18n files')
+    .option('-s, --sfc', 'Generate files in sfc format')
+    .option('-t, --tsx', 'Generate files in tsx format')
+    .option('-j, --jsx', 'Generate files in jsx format')
+    .option('-l, --locale', 'Generator internationalized files')
     .action(create_1.create);
 program
     .command('jest')

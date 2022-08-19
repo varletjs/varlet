@@ -1,0 +1,8 @@
+  import <%- name %> from '..'
+  import { createApp } from 'vue'
+  import { mount } from '@vue/test-utils'
+
+  test('test <%- name %> use', () => {
+    const app = createApp({}).use(<%- name %>)
+    expect(app.component(<%- name %>.name)).toBeTruthy()
+  })
