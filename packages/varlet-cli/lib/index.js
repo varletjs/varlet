@@ -60,9 +60,9 @@ program.command('lint').description('Lint code').action(lint_1.lint);
 program
     .command('create')
     .description('Create a component directory')
+    .option('-n, --name <componentName>', 'Component name')
     .option('-s, --sfc', 'Generate files in sfc format')
     .option('-t, --tsx', 'Generate files in tsx format')
-    .option('-j, --jsx', 'Generate files in jsx format')
     .option('-l, --locale', 'Generator internationalized files')
     .action(create_1.create);
 program
