@@ -1,11 +1,27 @@
-import prompts from 'prompts'
+import prompts, { type PromptObject } from 'prompts'
 
-export default async function createQuestion(question: any, options: any) {
+export interface CreateOptions {
+  name: string
+  kebabCaseName: string
+  bigCamelizeName: string
+  locale?: boolean
+  style?: string
+  namespace?: string
+}
+
+export const createOptions: CreateOptions = {
+  name: 'componentName',
+  kebabCaseName: '',
+  bigCamelizeName: '',
+}
+
+export async function createQuestion(question: PromptObject | Array<PromptObject>) {
   const result = await prompts(question, {
     onCancel: () => {
       throw new Error('❌ Operation cancelled')
     },
   })
-  Object.assign(options, result)
-  return Promise.resolve(options)
+  Object.assign(createOptions, result)
+
+  return Promise.resolve(createOptions)
 }
