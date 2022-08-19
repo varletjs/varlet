@@ -2,6 +2,7 @@ import './<%- projectName %>.less'
 import { props } from './props'
 
 export default ({
+  props,
   setup(props, { slots }) {
     return () => {
       return <div>{ slots.default?.() }</div>

@@ -152,19 +152,18 @@ export async function create(cmd: CmdTypes) {
 // ejs render function
 async function ejsRender(filePath: string, options: any): Promise<void> {
   try {
-    // 获取当前渲染文件的 各种 参数 such as ext
+    // Get the current render file information
     const file = parse(filePath)
-    // 编译根目录 创建的根目录
+    // Compile the root directory
     const dest = resolve(`${process.cwd()}/src`, options.projectName)
-    // 当前 需要编译的 ejs文件
+    // Ejs files that need to be compiled
     const readFilePath = resolve(dest, file.dir, `${file.name}.ejs`)
-    // 转换 之后的 js or ts or vue 文件
+    // Converted file
     const outputFilePath = resolve(dest, filePath)
-    // 是一个buffer
-    const templateCode = await fs.readFile(readFilePath)
-    // 编译当前code
-    const code = ejs.render(templateCode.toString(), options)
-    // 获取后缀
+    // Generate buffer
+    const templateCode = await fs.readFile(readFilePath, { encoding: 'utf-8' })
+    // Compile code
+    const code = ejs.render(templateCode, options)
     await fs.outputFile(outputFilePath, code)
     await fs.remove(readFilePath)
   } catch (error) {
