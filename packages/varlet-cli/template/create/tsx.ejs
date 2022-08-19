@@ -3,6 +3,7 @@ import { props } from './props'
 import './<%- kebabCaseName %>.less'
 
 export default defineComponent({
+  name: '<%- bigCamelizeNamespace + bigCamelizeName %>',
   props,
   setup(props, { slots }) {
     return () => {
