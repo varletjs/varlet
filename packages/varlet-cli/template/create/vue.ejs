@@ -4,9 +4,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import './<%- kebabCaseName %>.less'
+import { props } from './props'
 
 export default defineComponent({
-  name: '<%- namespace + bigCamelizeName %>',
+  name: '<%- bigCamelizeNamespace + bigCamelizeName %>',
+  props
 })
 </script>
+
+<style lang="less">
+@import './<%- kebabCaseName %>.less';
+</style>
