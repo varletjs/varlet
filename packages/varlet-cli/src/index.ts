@@ -3,6 +3,7 @@ import logger from './shared/logger'
 import { Command } from 'commander'
 import { dev } from './commands/dev'
 import { build } from './commands/build'
+import { useVite } from './commands/useVite'
 import { compile } from './commands/compile'
 import { create } from './commands/create'
 import { jest } from './commands/jest'
@@ -24,6 +25,16 @@ program
   .action(dev)
 
 program.command('build').description('Build varlet site for production').action(build)
+
+program
+  .command('build:vite')
+  .description('Use vite build app for production')
+  .action(() => useVite('build'))
+
+program
+  .command('dev:vite')
+  .description('Use vite start server for development')
+  .action(() => useVite('dev'))
 
 program.command('preview').description('Preview varlet site for production').action(preview)
 

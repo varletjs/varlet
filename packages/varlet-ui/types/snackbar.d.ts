@@ -12,6 +12,8 @@ export interface SnackbarProps extends BasicAttributes {
   position?: 'top' | 'center' | 'bottom'
   loadingType?: LoadingType
   loadingSize?: LoadingSize
+  loadingColor?: string
+  loadingRadius?: string | number
   teleport?: TeleportProps['to']
   lockScroll?: boolean
   contentClass?: string

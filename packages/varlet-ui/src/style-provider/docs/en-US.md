@@ -113,9 +113,10 @@ const toggleRootTheme = () => {
 
 ### Props
 
-| Prop | Description | Type | Default | 
-| --- | --- | --- | --- | 
-| `style-vars` | CSS variables | _Record<string, string>_ | `{}` |
+| Prop         | Description   | Type                     | Default | 
+|--------------|---------------|--------------------------|---------| 
+| `style-vars` | CSS variables | _Record<string, string>_ | `{}`    |
+| `tag`        | Tag name      | _string_                 | `div`   |
 
 ### Slots
 

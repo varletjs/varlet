@@ -17,6 +17,7 @@ export interface ButtonProps extends BasicAttributes {
   loadingRadius?: string | number
   loadingType?: 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'
   loadingSize?: 'normal' | 'mini' | 'small' | 'large'
+  loadingColor?: string
   onClick?: (e: Event) => void
   onTouchstart?: (e: Event) => void
 }
