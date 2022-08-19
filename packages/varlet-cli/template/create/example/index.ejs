@@ -1,5 +1,5 @@
 <script setup>
-import <%- namespace + bigCamelizeName %> from '../index'
+import <%- bigCamelizeNamespace + bigCamelizeName %> from '../index'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 <% if (locale) { -%>
 import { watchLang } from '@varlet/cli/site/utils'
@@ -10,6 +10,6 @@ watchLang(use)
 </script>
 
 <template>
-  <app-type></app-type>
+  <app-type>Mobile phone example code</app-type>
   <var-<%- kebabCaseName %>/>
 </template>
