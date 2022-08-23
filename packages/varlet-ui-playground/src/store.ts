@@ -144,6 +144,7 @@ export class ReplStore implements Store {
     this.initImportMap()
 
     // varlet inject
+    // @ts-ignore
     this.state.files[varletReplPlugin] = new File(varletReplPlugin, varletReplPluginCode, !import.meta.env.DEV)
 
     watchEffect(() => compileFile(this, this.state.activeFile))
