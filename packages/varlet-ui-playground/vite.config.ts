@@ -1,13 +1,12 @@
 import fs from 'fs'
 import { resolve } from 'path'
-import { defineConfig, Plugin } from 'vite'
 
 const varletESMBundleFile = resolve(__dirname, '../varlet-ui/es/varlet.esm.js')
 const varletArea = resolve(__dirname, '../varlet-ui/json/area.json')
 const varletTouchEmulatorFile = resolve(__dirname, '../varlet-touch-emulator/index.js')
 const varletCSSFile = resolve(__dirname, '../varlet-ui/es/style.css')
 
-function copyVarletPlugin(): Plugin {
+function copyVarletPlugin() {
   return {
     name: 'copy-varlet',
     buildStart() {
@@ -19,7 +18,7 @@ function copyVarletPlugin(): Plugin {
   }
 }
 
-export default defineConfig(async () => {
+export default async () => {
   return {
     base: './',
     plugins: [copyVarletPlugin()],
@@ -31,4 +30,4 @@ export default defineConfig(async () => {
       outDir: 'site',
     },
   }
-})
+}
