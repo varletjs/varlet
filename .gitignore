@@ -39,11 +39,11 @@ packages/varlet-icons/dist
 
 packages/varlet-vscode-extension/dist
 
-packages/varlet-cli/generators/**/es
-packages/varlet-cli/generators/**/umd
-packages/varlet-cli/generators/**/lib
-packages/varlet-cli/generators/**/highlight
-packages/varlet-cli/generators/**/coverage
+packages/varlet-cli/template/generators/**/es
+packages/varlet-cli/template/generators/**/umd
+packages/varlet-cli/template/generators/**/lib
+packages/varlet-cli/template/generators/**/highlight
+packages/varlet-cli/template/generators/**/coverage
 
 packages/varlet-shared/lib
 packages/varlet-shared/es
