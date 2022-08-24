@@ -6,6 +6,7 @@ module.exports = () => {
       viewportWidth: 375,
       unitPrecision: 6,
       unitToConvert: 'px',
+      selectorBlackList: ['.var-slider__track-background'],
       propList: ['*'],
       exclude: [/site\/components\//, /site\/pc/],
     }
