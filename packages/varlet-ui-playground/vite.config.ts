@@ -18,16 +18,14 @@ function copyVarletPlugin() {
   }
 }
 
-export default async () => {
-  return {
-    base: './',
-    plugins: [copyVarletPlugin()],
-    server: {
-      host: '0.0.0.0',
-      port: 3000,
-    },
-    build: {
-      outDir: 'site',
-    },
-  }
+export default {
+  base: './',
+  plugins: [copyVarletPlugin()],
+  server: {
+    host: '0.0.0.0',
+    port: 3000,
+  },
+  build: {
+    outDir: 'site',
+  },
 }

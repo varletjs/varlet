@@ -40,9 +40,21 @@ await appendStyle()
 export function installVarletUI() {
   const { parent } = window
 
-  document.body.style.minHeight = '100vh'
-  document.body.style.color = 'var(--color-text)'
-  document.body.style.backgroundColor = 'var(--color-body)'
+  const style = document.createElement('style')
+  style.innerHTML = \`
+    body {
+      min-height: 100vh;
+      padding: 16px;
+      margin: 0;
+      color: var(--color-text);
+      background-color: var(--color-body);
+    }
+
+    *::-webkit-scrollbar {
+      display: none;
+    }
+  \`
+  document.head.appendChild(style)
 
   if (parent.document.documentElement.classList.contains('dark')) {
     VarletUI.StyleProvider(VarletUI.Themes.dark)
@@ -74,6 +86,7 @@ const containerCode = `\
 <script setup>
 import App from './${defaultMainFile}'
 import { installVarletUI } from './${varletReplPlugin}'
+
 installVarletUI()
 </script>
 
@@ -129,10 +142,9 @@ export class ReplStore implements Store {
     if (!files[mainFile]) {
       mainFile = Object.keys(files)[0]
     }
-    /**
-     * 通过外层容器自动将组件库install到实例内以及引入样式文件
-     */
+
     files[MAIN_CONTAINER] = new File(MAIN_CONTAINER, containerCode, true)
+
     this.state = reactive({
       mainFile: MAIN_CONTAINER,
       files,
