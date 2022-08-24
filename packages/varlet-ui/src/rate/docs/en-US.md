@@ -98,8 +98,8 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate v-model="score" :gap="1"/>
   <var-rate v-model="score"/>
+  <var-rate v-model="score" :gap="2"/>
   <var-rate v-model="score" :gap="4"/>
   <var-rate v-model="score" :gap="8"/>
 </template>
