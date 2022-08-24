@@ -17,7 +17,9 @@
       }"
       @click="changeRoute(item)"
     >
-      <span class="varlet-site-sidebar__item--title" v-if="item.type === menuTypes.TITLE">{{ item.text[language] }}</span>
+      <span class="varlet-site-sidebar__indicator"></span>
+      <span class="varlet-site-sidebar__item--title" v-if="item.type === menuTypes.TITLE">{{ item.text[language]
+        }}</span>
       <span v-else>{{ item.text[language] }}</span>
     </var-site-cell>
   </div>
@@ -67,6 +69,18 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
+@keyframes indicator-fade-in {
+  from {
+    transform: scaleY(0);
+    opacity: .3;
+  }
+
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
 .varlet-site-sidebar {
   padding: 0 0 15px;
   position: fixed;
@@ -112,6 +126,7 @@ export default defineComponent({
         height: 40px;
         position: absolute;
         left: 0;
+        animation: indicator-fade-in .25s;
       }
     }
   }
