@@ -94,18 +94,7 @@ export default defineComponent({
     }
 
     const toPlayground = () => {
-      const scriptStart = '<script setup>\n'
-      const scriptEnd = '<\/script>'
-      const injectImport = 'import { installVarletUI } from \'./varlet-repl-plugin.js\'\n'
-      const injectCall = '\ninstallVarletUI()\n'
-      let codeText = code.value?.innerText ?? ''
-
-      if (codeText.includes(scriptStart)) {
-        codeText = codeText.replace(scriptStart, `${scriptStart}${injectImport}`)
-        codeText = codeText.replace(scriptEnd, `${injectCall}${scriptEnd}`)
-      } else {
-        codeText = `${scriptStart}${injectImport}${injectCall}<\/script>\n\n${codeText}`
-      }
+      const codeText = code.value?.innerText ?? ''
 
       const file = { 'App.vue': codeText }
       window.open(`${playground.value}/#${utoa(JSON.stringify(file))}`)

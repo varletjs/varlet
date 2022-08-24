@@ -1,5 +1,6 @@
 import { VarComponent } from './varComponent'
 import type { BasicAttributes } from './varComponent'
+import type { Swipe } from './swipe'
 
 export interface TabsItemsProps extends BasicAttributes {
   active?: string | number
@@ -8,6 +9,8 @@ export interface TabsItemsProps extends BasicAttributes {
 
 export class TabsItems extends VarComponent {
   $props: TabsItemsProps
+
+  getSwipe(): Swipe
 }
 
 export class _TabsItemsComponent extends TabsItems {}
