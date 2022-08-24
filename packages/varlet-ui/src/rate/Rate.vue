@@ -50,13 +50,11 @@ export default defineComponent({
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
 
     const getStyle = (val: number) => {
-      const { count, size, gap } = props
+      const { count, gap } = props
 
       return {
         color: getCurrentState(val).color,
         marginRight: val !== toNumber(count) ? toSizeUnit(gap) : 0,
-        width: toSizeUnit(size),
-        height: toSizeUnit(size),
       }
     }
 
