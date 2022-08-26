@@ -138,6 +138,7 @@ import type { ValidateTriggers } from './props'
 import type { InputProvider } from './provide'
 
 const { n, classes } = createNamespace('input')
+
 export default defineComponent({
   name: 'VarInput',
   components: {
