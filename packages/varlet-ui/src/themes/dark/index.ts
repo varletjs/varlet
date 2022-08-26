@@ -28,6 +28,7 @@ import tabs from './tabs'
 import appBar from './appBar'
 import bottomNavigation from './bottomNavigation'
 import bottomNavigationItem from './bottomNavigationItem'
+import menuV2 from './menuV2'
 
 export default {
   // common
@@ -70,4 +71,5 @@ export default {
   ...appBar,
   ...bottomNavigation,
   ...bottomNavigationItem,
+  ...menuV2,
 } as StyleVars

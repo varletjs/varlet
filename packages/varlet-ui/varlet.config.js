@@ -421,6 +421,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': 'Menu V2 菜单',
+          'en-US': 'Menu V2',
+        },
+        doc: 'menu-v2',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'BackTop 回到顶部',
           'en-US': 'BackTop',
         },

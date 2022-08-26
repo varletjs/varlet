@@ -192,6 +192,8 @@ importers:
 
   packages/varlet-ui:
     specifiers:
+      '@popperjs/core': ^2.11.6
+      '@types/jest': ^26.0.15
       '@varlet/cli': workspace:*
       '@varlet/icons': workspace:*
       '@varlet/shared': workspace:*
@@ -208,11 +210,13 @@ importers:
       vue: 3.2.25
       vue-router: 4.0.12
     dependencies:
+      '@popperjs/core': 2.11.6
       '@varlet/icons': link:../varlet-icons
       '@varlet/shared': link:../varlet-shared
       dayjs: 1.11.5
       decimal.js: 10.4.0
     devDependencies:
+      '@types/jest': 26.0.24
       '@varlet/cli': link:../varlet-cli
       '@varlet/touch-emulator': link:../varlet-touch-emulator
       '@vue/runtime-core': 3.2.25
@@ -1810,6 +1814,10 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
+
+  /@popperjs/core/2.11.6:
+    resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
+    dev: false
 
   /@rollup/pluginutils/4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
@@ -4068,7 +4076,7 @@ packages:
     dev: true
 
   /ee-first/1.1.1:
-    resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
+    resolution: {integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=}
     dev: true
 
   /ejs/3.1.8:

@@ -1,0 +1,27 @@
+@menu-v2-background-color: #fff;
+
+:root {
+  --menu-v2-background-color: @menu-v2-background-color;
+}
+
+.var {
+  &-menu-v2-enter-from,
+  &-menu-v2-leave-to {
+    opacity: 0;
+  }
+
+  &-menu-v2-enter-active,
+  &-menu-v2-leave-active {
+    transition-property: opacity;
+    transition-duration: 0.25s;
+  }
+}
+
+.var-menu-v2 {
+  display: inline-block;
+
+  &--menu-background-color {
+    background: var(--menu-v2-background-color);
+    transition: opacity 0.25s, background-color 0.25s;
+  }
+}
