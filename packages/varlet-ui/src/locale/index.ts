@@ -2,6 +2,7 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 import type { Month, Week } from '../date-picker/props'
 import zhCN from './zh-CN'
+import enUS from './en-US'
 
 export type Pack = {
   // Dialog
@@ -73,11 +74,13 @@ const { packs, pack, add, use, merge } = useLocale()
 add('zh-CN', zhCN)
 use('zh-CN')
 
-export { packs, pack, add, use, merge, useLocale }
+export { zhCN, enUS, packs, pack, add, use, merge, useLocale }
 
-export const _LocaleComponent = { packs, pack, add, use, merge, useLocale }
+export const _LocaleComponent = { zhCN, enUS, packs, pack, add, use, merge, useLocale }
 
 export default {
+  zhCN,
+  enUS,
   packs,
   pack,
   add,
