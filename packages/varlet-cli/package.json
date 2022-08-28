@@ -80,7 +80,6 @@
     "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.174",
     "@types/lodash-es": "^4.17.5",
-    "@types/prompts": "^2.0.14",
     "@types/semver": "^7.3.9"
   },
   "peerDependencies": {
