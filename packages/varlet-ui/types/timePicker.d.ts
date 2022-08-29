@@ -6,13 +6,15 @@ export type AllowedTime = {
   seconds?: (second: number) => boolean
 }
 
+export type TimePickerFormat = 'ampm' | '24hr'
+
 export interface TimePickerProps extends BasicAttributes {
   modelValue?: string
   shadow?: boolean
   color?: string
   headerColor?: string
   allowedTime?: AllowedTime
-  format?: 'ampm' | '24hr'
+  format?: TimePickerFormat
   min?: string
   max?: string
   useSeconds?: boolean

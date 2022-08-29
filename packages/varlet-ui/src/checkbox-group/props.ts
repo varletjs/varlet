@@ -1,6 +1,6 @@
 import type { PropType } from 'vue'
 
-export type ValidateTriggers = 'onChange'
+export type CheckBoxGroupValidateTrigger = 'onChange'
 
 export function directionValidator(direction: string) {
   return ['horizontal', 'vertical'].includes(direction)
@@ -20,7 +20,7 @@ export const props = {
     validator: directionValidator,
   },
   validateTrigger: {
-    type: Array as PropType<Array<ValidateTriggers>>,
+    type: Array as PropType<Array<CheckBoxGroupValidateTrigger>>,
     default: ['onChange'],
   },
   rules: {
