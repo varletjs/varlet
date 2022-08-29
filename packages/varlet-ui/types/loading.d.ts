@@ -1,5 +1,4 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
 export interface LoadingProps extends BasicAttributes {
   type?: 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'
