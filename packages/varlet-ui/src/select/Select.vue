@@ -17,7 +17,14 @@
         <slot name="prepend-icon" />
       </div>
 
-      <var-menu :class="n('menu')" var-select-cover :offset-y="offsetY" v-model:show="isFocus" @close="handleBlur">
+      <var-menu-v2
+        :class="n('menu')"
+        var-select-cover
+        :offset-y="offsetY"
+        :disabled="readonly || disabled"
+        v-model:show="isFocus"
+        @close="handleBlur"
+      >
         <div :class="classes(n('wrap'), [!hint, n('--non-hint')])" ref="wrapEl" @click="handleFocus">
           <div
             :class="classes(n('select'), [errorMessage, n('--error')], [formDisabled || disabled, n('--disabled')])"
@@ -81,7 +88,7 @@
             <slot />
           </div>
         </template>
-      </var-menu>
+      </var-menu-v2>
 
       <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
         <slot name="append-icon">
@@ -114,7 +121,7 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import VarMenu from '../menu'
+import VarMenuV2 from '../menu-v2'
 import VarChip from '../chip'
 import VarFormDetails from '../form-details'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
@@ -123,7 +130,7 @@ import { props } from './props'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useOptions } from './provide'
 import { useForm } from '../form/provide'
-import { getTop, toPxNum } from '../utils/elements'
+import { toPxNum } from '../utils/elements'
 import type { Ref, ComputedRef } from 'vue'
 import type { SelectValidateTrigger } from './props'
 import type { SelectProvider } from './provide'
@@ -134,9 +141,9 @@ export default defineComponent({
   name: 'VarSelect',
   components: {
     VarIcon,
-    VarMenu,
     VarChip,
     VarFormDetails,
+    VarMenuV2,
   },
   props,
   setup(props) {
@@ -233,7 +240,6 @@ export default defineComponent({
 
       call(onFocus)
       validateWithTrigger('onFocus')
-      detectBoundary()
     }
 
     const handleBlur = () => {
@@ -324,7 +330,6 @@ export default defineComponent({
       wrapWidth.value = getWrapWidth()
       offsetY.value = getOffsetY() + toPxNum(props.offsetY)
       isFocus.value = true
-      detectBoundary()
     }
 
     // expose
@@ -339,24 +344,6 @@ export default defineComponent({
     const reset = () => {
       call(props['onUpdate:modelValue'], props.multiple ? [] : undefined)
       resetValidation()
-    }
-
-    const detectBoundary = () => {
-      const { body } = document
-      const bodyScrollHeight = body.scrollHeight
-
-      nextTick(() => {
-        const { offsetHeight: menuOffsetHeight } = menuEl.value?.parentElement as HTMLElement
-        const wrapOffsetTop = getTop(wrapEl.value as HTMLElement)
-
-        if (wrapOffsetTop + offsetY.value < 0) {
-          offsetY.value = getOffsetY()
-        }
-
-        if (menuOffsetHeight + wrapOffsetTop + offsetY.value > bodyScrollHeight) {
-          offsetY.value -= menuOffsetHeight - getOffsetY()
-        }
-      })
     }
 
     watch(

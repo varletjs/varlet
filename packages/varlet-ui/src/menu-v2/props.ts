@@ -90,4 +90,8 @@ export const props = {
   'onUpdate:show': {
     type: Function as PropType<(show: boolean) => void>,
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
 }
