@@ -11,6 +11,10 @@ module.exports = {
           'Vue 2': 'https://varlet-vue2.vercel.app/',
         },
       },
+
+      // TODO: remove it after the v2.0 branch is released
+      playground:
+        process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://varlet-ui-playground.vercel.app',
     },
     menu: [
       {
@@ -413,6 +417,14 @@ module.exports = {
           'en-US': 'Menu',
         },
         doc: 'menu',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'Menu V2 菜单',
+          'en-US': 'Menu V2',
+        },
+        doc: 'menu-v2',
         type: 2,
       },
       {

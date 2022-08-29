@@ -66,7 +66,7 @@ export function getBuildConfig(varletConfig: Record<string, any>): InlineConfig 
     base: './',
     build: {
       outDir: SITE_OUTPUT_PATH,
-      brotliSize: false,
+      reportCompressedSize: false,
       emptyOutDir: true,
       cssTarget: 'chrome61',
       rollupOptions: {

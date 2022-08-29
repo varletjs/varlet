@@ -1,10 +1,9 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, Direction as TabsDirection } from './varComponent'
 
 export interface TabsProps extends BasicAttributes {
   active?: string | number
-  layoutDirection?: 'horizontal' | 'vertical'
-  itemDirection?: 'horizontal' | 'vertical'
+  layoutDirection?: TabsDirection
+  itemDirection?: TabsDirection
   fixedBottom?: boolean
   activeColor?: string
   inactiveColor?: string

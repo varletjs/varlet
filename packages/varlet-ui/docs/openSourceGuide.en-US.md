@@ -4,7 +4,7 @@
 First, thank you for your interest in joining our development. Here are some considerations.
 
 ### Quickstart
-The package manager used to install and link dependencies must be [pnpm 6.x](https://pnpm.io/6.x/installation).
+The package manager used to install and link dependencies must be [pnpm 7.x](https://pnpm.io/installation).
 The first fork of the repository is based on the dev branch, which is in the project root directory.
 node version 16+.
 

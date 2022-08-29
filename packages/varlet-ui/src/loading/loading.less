@@ -57,7 +57,7 @@
   }
 
   &__description {
-    color: currentColor;
+    color: @color-primary;
     margin: var(--loading-desc-margin);
 
     &--large {
@@ -82,6 +82,7 @@
 
     &-block {
       display: inline-block;
+      color: @color-primary;
       animation: circle 1.8s linear infinite;
 
       &--large {
@@ -176,6 +177,7 @@
       height: 100%;
       display: inline-block;
       animation: 1.2s ease-in-out infinite wave;
+      background-color: @color-primary;
 
       &:nth-child(1) {
         animation-delay: -1.2s;
@@ -263,6 +265,7 @@
       display: inline-block;
       transform-origin: right bottom;
       animation: 1.5s ease infinite cube;
+      background-color: @color-primary;
 
       &:nth-child(1) {
         animation-delay: 0.2s;
@@ -349,6 +352,7 @@
 
     &-item {
       animation: 2s ease-in-out infinite rect;
+      background-color: @color-primary;
 
       &:nth-child(1) {
         animation-delay: 1.75s;
@@ -454,6 +458,7 @@
     &-item {
       border-radius: 50%;
       animation: 0.5s ease-in-out infinite alternate disappear;
+      background-color: @color-primary;
 
       &:nth-child(1) {
         animation-delay: -0.4s;

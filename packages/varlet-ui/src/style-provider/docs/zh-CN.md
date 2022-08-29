@@ -110,9 +110,10 @@ const toggleRootTheme = () => {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `style-vars` | css 变量 | _Record<string, string>_ | `{}` |
+| 参数         | 说明   | 类型                     | 默认值 | 
+|--------------|---------------|--------------------------|---------| 
+| `style-vars` | CSS 变量 | _Record<string, string>_ | `{}`    |
+| `tag`        | 自定义标签名      | _string_                 | `div`   |
 
 ### 插槽
 

@@ -1,9 +1,12 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
+
+export type CardFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
+
+export type CardLayout = 'row' | 'column'
 
 export interface CardProps extends BasicAttributes {
   src?: string
-  fit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
+  fit?: CardFit
   /**
    * @deprecated use imageHeight instead
    */
@@ -17,7 +20,7 @@ export interface CardProps extends BasicAttributes {
   elevation?: string | number
   ripple?: boolean
   onClick?: (e: Event) => void
-  layout?: 'row' | 'column'
+  layout?: CardLayout
   floating?: boolean
   floatingDuration?: number
   'onUpdate:floating'?: (value: boolean) => void

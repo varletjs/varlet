@@ -1,6 +1,5 @@
 import type { App, TeleportProps } from 'vue'
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
 export interface ActionSheetProps extends BasicAttributes {
   actions?: ActionItem[]

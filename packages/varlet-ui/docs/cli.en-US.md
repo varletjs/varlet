@@ -60,6 +60,28 @@ The `varlet.config.js` in the project root directory is used to manage the speci
 | `mobile` | Mobile document structure configuration | _SiteMobile_ | `-` |
 | `moduleCompatible` | Module compatible config | _Record<string, string>_ | `-` |
 
+### Other Pages
+
+If you want to add other pages to the component library, you can write vue components in the create `pages` folder under the project root directory to generate other pages
+
+The folder name will be used as a route path, and you can jump to it according to your needs.
+
+⚠️：If there is a conflict between the folder name and the component name, the route will first match the component in `pages`
+
+```js
+// playground-ignore
+|-- varlet-ui
+    |-- src
+    |-- docs
+    |-- pages
+        |-- homepage
+            |-- index.vue
+        |-- sponsor
+            |-- index.vue
+        |-- contributor
+            |-- index.vue
+```
+
 ### Module Compatible
 
 Some external dependencies may need to be compatible with module syntax to achieve the purpose of compiling correctly to `commonjs` and `esmodule`. For example, the wording of `esmodule` of `dayjs` is
@@ -165,6 +187,20 @@ module.exports = {
       versions: null,
       i18n: null,
       github: 'https://github.com/varletjs/varlet',
+      version: {
+        current: 'Vue 3',
+        items: {
+          'Vue 2': 'https://varlet-vue2.vercel.app/',
+        },
+      },
+    },
+    indexPage: {
+      description: {
+        'en-US': 'Varlet is a Material design mobile component library developed based on Vue3',
+      },
+      started: {
+        'en-US': 'GET STARTED',
+      },
     },
     menu: [
       {
@@ -298,7 +334,21 @@ varlet-cli gen <projectName>
 
 ```shell
 # playground-ignore
-varlet-cli create <componentName>
+varlet-cli create [-n | --name[=<componentName>]] [-s | --sfc] [-t | --tsx] [-l | --locale]
+
+# Options
+-n
+--name
+  Component name
+-s
+--sfc
+  Automatically generate .vue format files
+-t
+--tsx
+  Automatically generate .tsx format files
+-l
+--locale
+  Automatically generate example internationalized files
 ```
 
 ### Babel
@@ -344,7 +394,7 @@ module.exports = {
 {
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
-    "commit-msg": "npx --no-install varlet-cli commit-lint $1"
+    "commit-msg": "pnpm exec varlet-cli commit-lint $1"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",

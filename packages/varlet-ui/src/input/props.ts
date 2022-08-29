@@ -4,7 +4,7 @@ export function typeValidator(type: string) {
   return ['text', 'password', 'number'].includes(type)
 }
 
-export type ValidateTriggers = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
+export type InputValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
 
 export const props = {
   modelValue: {
@@ -71,7 +71,7 @@ export const props = {
     default: false,
   },
   validateTrigger: {
-    type: Array as PropType<ValidateTriggers[]>,
+    type: Array as PropType<InputValidateTrigger[]>,
     default: () => ['onInput', 'onClear'],
   },
   rules: {

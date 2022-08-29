@@ -1,14 +1,12 @@
-import vue from '@vitejs/plugin-vue'
 import fs from 'fs'
 import { resolve } from 'path'
-import { defineConfig, Plugin } from 'vite'
 
 const varletESMBundleFile = resolve(__dirname, '../varlet-ui/es/varlet.esm.js')
 const varletArea = resolve(__dirname, '../varlet-ui/json/area.json')
 const varletTouchEmulatorFile = resolve(__dirname, '../varlet-touch-emulator/index.js')
 const varletCSSFile = resolve(__dirname, '../varlet-ui/es/style.css')
 
-function copyVarletPlugin(): Plugin {
+function copyVarletPlugin() {
   return {
     name: 'copy-varlet',
     buildStart() {
@@ -20,12 +18,14 @@ function copyVarletPlugin(): Plugin {
   }
 }
 
-export default defineConfig(async () => {
-  return {
-    base: './',
-    plugins: [vue(), copyVarletPlugin()],
-    build: {
-      outDir: 'site',
-    },
-  }
-})
+export default {
+  base: './',
+  plugins: [copyVarletPlugin()],
+  server: {
+    host: '0.0.0.0',
+    port: 3000,
+  },
+  build: {
+    outDir: 'site',
+  },
+}
