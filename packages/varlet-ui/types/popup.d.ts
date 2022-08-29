@@ -1,5 +1,4 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 import type { TeleportProps } from 'vue'
 
 export interface PopupProps extends BasicAttributes {
