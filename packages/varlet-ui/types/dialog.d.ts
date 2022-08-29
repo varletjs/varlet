@@ -1,5 +1,4 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 import type { App, TeleportProps } from 'vue'
 
 export interface DialogProps extends BasicAttributes {

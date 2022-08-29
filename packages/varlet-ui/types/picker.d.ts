@@ -1,6 +1,5 @@
 import type { App } from 'vue'
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
 export interface NormalColumn extends BasicAttributes {
   texts: Texts
