@@ -1,9 +1,11 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import type { TeleportProps } from 'vue'
 
+export type PopupPosition = 'top' | 'bottom' | 'right' | 'left' | 'center'
+
 export interface PopupProps extends BasicAttributes {
   show?: boolean
-  position?: 'top' | 'bottom' | 'right' | 'left' | 'center'
+  position?: PopupPosition
   overlay?: boolean
   overlayClass?: string
   overlayStyle?: Record<string, any>

@@ -1,8 +1,8 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, Direction as StepsDirection } from './varComponent'
 
 export interface StepsProps extends BasicAttributes {
   active?: string | number
-  direction?: 'horizontal' | 'vertical'
+  direction?: StepsDirection
   activeColor?: string
   inactiveColor?: string
   onClickStep?: (index: number) => void

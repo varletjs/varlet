@@ -45,7 +45,6 @@ importers:
       '@types/jest': ^26.0.15
       '@types/lodash': ^4.14.174
       '@types/lodash-es': ^4.17.5
-      '@types/prompts': ^2.0.14
       '@types/semver': ^7.3.9
       '@varlet/icons': workspace:*
       '@varlet/markdown-vite-plugin': workspace:*
@@ -133,7 +132,6 @@ importers:
       '@types/jest': 26.0.24
       '@types/lodash': 4.14.184
       '@types/lodash-es': 4.17.6
-      '@types/prompts': 2.0.14
       '@types/semver': 7.3.12
       clipboard: 2.0.11
       live-server: 1.2.2
@@ -2016,12 +2014,6 @@ packages:
   /@types/prettier/2.7.0:
     resolution: {integrity: sha512-RI1L7N4JnW5gQw2spvL7Sllfuf1SaHdrZpCHiBlCXjIlufi1SMNnbu2teze3/QE67Fg2tBlH7W+mi4hVNk4p0A==}
     dev: false
-
-  /@types/prompts/2.0.14:
-    resolution: {integrity: sha512-HZBd99fKxRWpYCErtm2/yxUZv6/PBI9J7N4TNFffl5JbrYMHBwF25DjQGTW3b3jmXq+9P6/8fCIb2ee57BFfYA==}
-    dependencies:
-      '@types/node': 18.7.6
-    dev: true
 
   /@types/semver/7.3.12:
     resolution: {integrity: sha512-WwA1MW0++RfXmCr12xeYOOC5baSC9mSb0ZqCquFzKhcoF4TvHu5MKOuXsncgZcpVFhB1pXd5hZmM0ryAoCp12A==}

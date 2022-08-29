@@ -4,7 +4,7 @@ export function textAlignValidator(textAlign: string) {
   return ['left', 'right', 'center'].includes(textAlign)
 }
 
-export type ValidateTriggers = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
+export type SelectValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
 
 export const props = {
   modelValue: {
@@ -64,7 +64,7 @@ export const props = {
     validator: textAlignValidator,
   },
   validateTrigger: {
-    type: Array as PropType<Array<ValidateTriggers>>,
+    type: Array as PropType<Array<SelectValidateTrigger>>,
     default: () => ['onChange', 'onClear', 'onClose'],
   },
   rules: {
