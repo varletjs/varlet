@@ -1,11 +1,13 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import type { App, TeleportProps } from 'vue'
 
+export type DialogTypeMessageAlign = 'left' | 'center' | 'right'
+
 export interface DialogProps extends BasicAttributes {
   show?: boolean
   title?: string
   message?: string
-  messageAlign?: 'left' | 'center' | 'right'
+  messageAlign?: DialogTypeMessageAlign
   confirmButton?: boolean
   cancelButton?: boolean
   confirmButtonText?: string

@@ -1,10 +1,12 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 
-export type InputValidateTriggers = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
+export type InputValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
+
+export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email'
 
 export interface InputProps extends BasicAttributes {
   modelValue?: string
-  type?: 'text' | 'password' | 'number' | 'tel' | 'email'
+  type?: InputType
   textarea?: boolean
   rows?: string | number
   placeholder?: string
@@ -18,7 +20,7 @@ export interface InputProps extends BasicAttributes {
   clearable?: boolean
   resize?: boolean
   autofocus?: boolean
-  validateTrigger?: InputValidateTriggers[]
+  validateTrigger?: InputValidateTrigger[]
   rules?: Array<(v: string) => any>
   onFocus?: (e: Event) => void
   onBlur?: (e: Event) => void

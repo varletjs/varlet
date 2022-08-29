@@ -1,12 +1,12 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, Direction as CheckboxGroupDirection } from './varComponent'
 
-export type CheckboxGroupValidateTriggers = 'onChange'
+export type CheckboxGroupValidateTrigger = 'onChange'
 
 export interface CheckboxGroupProps extends BasicAttributes {
   modelValue?: any[]
   max?: string | number
-  direction?: 'horizontal' | 'vertical'
-  validateTrigger?: Array<CheckboxGroupValidateTriggers>
+  direction?: CheckboxGroupDirection
+  validateTrigger?: Array<CheckboxGroupValidateTrigger>
   rules?: Array<(value: any) => any>
   onChange?: (value: Array<any>) => void
   'onUpdate:modelValue'?: (value: Array<any>) => void
