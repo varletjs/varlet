@@ -1,5 +1,4 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
 export interface ChipProps extends BasicAttributes {
   type?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
