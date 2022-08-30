@@ -1,7 +1,7 @@
 module.exports = () => {
   const plugins = {}
 
-  if (!process.env.TARGET_MODULE && !process.env.NODE_ENV !== 'test') {
+  if (!process.env.TARGET_MODULE && process.env.NODE_ENV !== 'test') {
     plugins['postcss-px-to-viewport'] = {
       viewportWidth: 375,
       unitPrecision: 6,
