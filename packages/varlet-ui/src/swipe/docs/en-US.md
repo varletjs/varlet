@@ -6,13 +6,13 @@
 <template>
   <var-swipe class="swipe-example">
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
@@ -37,13 +37,13 @@
 <template>
   <var-swipe class="swipe-example" :loop="false">
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
@@ -68,13 +68,13 @@
 <template>
   <var-swipe class="swipe-example" :autoplay="2000">
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
@@ -99,13 +99,13 @@
 <template>
   <var-swipe class="swipe-example" vertical>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
@@ -135,13 +135,13 @@ import { Snackbar } from '@varlet/ui'
 <template>
   <var-swipe class="swipe-example" @change="Snackbar">
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
@@ -167,13 +167,13 @@ import { Snackbar } from '@varlet/ui'
   <var-swipe class="swipe-example">
     <template #default>
       <var-swipe-item>
-        <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat.jpg">
+        <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
       </var-swipe-item>
       <var-swipe-item>
-        <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat2.jpg">
+        <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
       </var-swipe-item>
       <var-swipe-item>
-        <img class="swipe-example-image" src="https://varlet-varletjs.vercel.app/cat3.jpg">
+        <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
       </var-swipe-item>
     </template>
 

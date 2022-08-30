@@ -27,7 +27,7 @@
 
 ```html
 <template>
-  <var-card title="Dangerous" subtitle="The girl was dangerous" src="https://varlet-varletjs.vercel.app/cat.jpg" />
+  <var-card title="Dangerous" subtitle="The girl was dangerous" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
 </template>
 ```
 
@@ -38,7 +38,7 @@
   <var-card
     title="Dangerous"
     subtitle="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
-    src="https://varlet-varletjs.vercel.app/cat.jpg"
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     layout="row"
   >
     <template #extra>
@@ -61,7 +61,7 @@
     title="Dangerous"
     subtitle="The girl was dangerous"
     description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
-    src="https://varlet-varletjs.vercel.app/cat.jpg"
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   >
     <template #extra>
       <var-space>
@@ -100,7 +100,7 @@ const floating = ref(false)
     title="Dangerous"
     subtitle="The girl was dangerous"
     ripple
-    src="https://varlet-varletjs.vercel.app/cat.jpg"
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     v-model:floating="floating"
     @click="floating = true"
   >
