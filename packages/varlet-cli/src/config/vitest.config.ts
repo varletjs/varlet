@@ -12,6 +12,9 @@ export default defineConfig({
 
   test: {
     environment: 'jsdom',
+    coverage: {
+      provider: 'istanbul',
+    },
     globals: true,
     transformMode: {
       web: [/\.[jt]sx$/],
