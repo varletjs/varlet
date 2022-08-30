@@ -1,7 +1,7 @@
 import Snackbar from '../index'
 import VarSnackbar from '../Snackbar'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { delay } from '../../utils/test'
 
 test('test snackbar plugin', () => {
   const app = createApp({}).use(Snackbar)
@@ -51,10 +51,10 @@ test('test snackbar type', async () => {
 })
 
 test('test snackbar event', async () => {
-  const open = jest.fn()
-  const opened = jest.fn()
-  const close = jest.fn()
-  const closed = jest.fn()
+  const open = vi.fn()
+  const opened = vi.fn()
+  const close = vi.fn()
+  const closed = vi.fn()
 
   const { clear } = Snackbar({
     content: 'test snackbar',

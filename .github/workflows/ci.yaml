@@ -27,7 +27,7 @@ jobs:
         run: pnpm lint
 
       - name: Run test cases
-        run: cd packages/varlet-ui && pnpm test
+        run: cd packages/varlet-ui && pnpm test -- -cov
 
       - name: Report coverage to Codecov
         uses: codecov/codecov-action@v1

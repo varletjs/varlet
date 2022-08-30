@@ -6,7 +6,7 @@ import { build } from './commands/build'
 import { useVite } from './commands/useVite'
 import { compile } from './commands/compile'
 import { create } from './commands/create'
-import { jest } from './commands/jest'
+import { test } from './commands/test'
 import { lint } from './commands/lint'
 import { gen } from './commands/gen'
 import { preview } from './commands/preview'
@@ -56,13 +56,12 @@ program
   .action(create)
 
 program
-  .command('jest')
-  .description('Run Jest in work directory')
+  .command('test')
+  .description('Run test in work directory')
   .option('-w, --watch', 'Watch files for changes and rerun tests related to changed files')
-  .option('-wa, --watchAll', 'Watch files for changes and rerun all tests when something changes')
   .option('-c, --component <componentName>', 'Test a specific component')
-  .option('-cc --clearCache', 'Clear test cache')
-  .action(jest)
+  .option('-cov, --coverage', 'Generate the coverage')
+  .action(test)
 
 program.command('gen <name>').description('Generate cli application').action(gen)
 

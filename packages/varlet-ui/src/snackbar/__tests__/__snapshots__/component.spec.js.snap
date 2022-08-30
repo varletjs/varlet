@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
 exports[`test snackbar example 1`] = `
 "<div class=\\"app-type\\">组件调用</div>
@@ -62,7 +62,8 @@ exports[`test snackbar example 1`] = `
       <div class=\\"var-button__content\\">加载</div>
     </button></div>
 </div>
-<div class=\\"app-type\\">多例模式</div><button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--2\\">
+<div class=\\"app-type\\">多例模式</div>
+<button class=\\"var-button var--box var-button--normal var--flex var-button--block var-button--primary var-elevation--2\\">
   <!--v-if-->
   <div class=\\"var-button__content\\">多例模式</div>
 </button>

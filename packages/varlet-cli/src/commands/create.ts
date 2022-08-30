@@ -9,7 +9,7 @@ import { glob } from '../shared/fsUtils'
 import { getVarletConfig } from '../config/varlet.config'
 import { SRC_DIR } from '../shared/constant'
 
-interface CmdTypes {
+interface CreateCommandOptions {
   name?: string
   locale?: boolean
   sfc?: boolean
@@ -57,11 +57,11 @@ const removeFiles = async (path: string) => {
   ;(await glob(`${path}/**/*.ejs`)).forEach((file) => removeSync(file))
 }
 
-export async function create(cmd: CmdTypes) {
+export async function create(options: CreateCommandOptions) {
   logger.title('\n📦📦 Create a Component ! \n')
 
-  const { name } = cmd.name
-    ? cmd
+  const { name } = options.name
+    ? options
     : await prompt({
         name: 'name',
         message: 'Name of the component created: ',
@@ -77,8 +77,8 @@ export async function create(cmd: CmdTypes) {
   }
 
   // Determine whether the parameter carries internationalization.
-  const { locale } = cmd.locale
-    ? cmd
+  const { locale } = options.locale
+    ? options
     : await prompt({
         name: 'locale',
         type: 'confirm',
@@ -89,8 +89,8 @@ export async function create(cmd: CmdTypes) {
   createOptions.locale = locale
 
   // Determine whether the parameter carries a component style
-  if (cmd.sfc || cmd.tsx) {
-    createOptions.style = cmd.sfc ? 'vue' : 'tsx'
+  if (options.sfc || options.tsx) {
+    createOptions.style = options.sfc ? 'vue' : 'tsx'
   } else {
     const { style } = await prompt({
       name: 'style',

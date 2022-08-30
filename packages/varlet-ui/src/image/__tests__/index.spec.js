@@ -2,7 +2,7 @@ import Image from '..'
 import VarImage from '../Image'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/jest'
+import { delay, trigger } from '../../utils/test'
 
 const SRC = 'https://varlet.gitee.io/varlet-ui/cat.png'
 
@@ -13,8 +13,8 @@ test('test image plugin', () => {
 
 describe('test image component event', () => {
   test('test image onLoad & onError', () => {
-    const onLoad = jest.fn()
-    const onError = jest.fn()
+    const onLoad = vi.fn()
+    const onError = vi.fn()
     const wrapper = mount(VarImage, {
       props: {
         onLoad,
@@ -31,8 +31,8 @@ describe('test image component event', () => {
   })
 
   test('test image onLoad & onError in lazy mode', () => {
-    const onLoad = jest.fn()
-    const onError = jest.fn()
+    const onLoad = vi.fn()
+    const onError = vi.fn()
     const wrapper = mount(VarImage, {
       props: {
         lazy: true,

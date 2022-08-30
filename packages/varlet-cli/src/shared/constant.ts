@@ -2,6 +2,7 @@ import { resolve } from 'path'
 
 export const CWD = process.cwd()
 export const VARLET_CONFIG = resolve(CWD, 'varlet.config.js')
+export const VITEST_CONFIG = resolve(__dirname, '../config/vitest.config.js')
 export const SRC_DIR = resolve(CWD, 'src')
 export const ES_DIR = resolve(CWD, 'es')
 export const LIB_DIR = resolve(CWD, 'lib')

@@ -2,7 +2,7 @@ import Menu from '..'
 import VarMenu from '../Menu'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockStubs } from '../../utils/jest'
+import { delay, mockStubs } from '../../utils/test'
 
 test('test menu plugin', () => {
   const app = createApp({}).use(Menu)

@@ -1,7 +1,7 @@
 import Dialog from '../index'
 import VarDialog from '../Dialog'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/jest'
+import { delay, trigger } from '../../utils/test'
 
 test('test dialog plugin', () => {
   const app = createApp({}).use(Dialog)
@@ -9,10 +9,10 @@ test('test dialog plugin', () => {
 })
 
 test('test dialog functional show & close', async () => {
-  const onOpen = jest.fn()
-  const onOpened = jest.fn()
-  const onClose = jest.fn()
-  const onClosed = jest.fn()
+  const onOpen = vi.fn()
+  const onOpened = vi.fn()
+  const onClose = vi.fn()
+  const onClosed = vi.fn()
 
   Dialog({
     message: 'test message',
@@ -38,8 +38,8 @@ test('test dialog functional show & close', async () => {
 })
 
 test('test dialog functional confirm & cancel', async () => {
-  const onConfirm = jest.fn()
-  const onCancel = jest.fn()
+  const onConfirm = vi.fn()
+  const onCancel = vi.fn()
 
   Dialog({
     message: 'test confirm',

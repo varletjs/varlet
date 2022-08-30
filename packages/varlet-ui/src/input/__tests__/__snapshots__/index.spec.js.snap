@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
 exports[`test input clear 1`] = `
 "<div class=\\"var-input var--box\\">
@@ -19,8 +19,8 @@ exports[`test input clear 1`] = `
 `;
 
 exports[`test input example 1`] = `
-"<div class=\\"app-type pb\\">基本使用</div>
-<div class=\\"var-input var--box\\">
+"<div class=\\"app-type pb\\" data-v-9abe30fd=\\"\\">基本使用</div>
+<div class=\\"var-input var--box\\" data-v-9abe30fd=\\"\\">
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
@@ -37,8 +37,8 @@ exports[`test input example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type pb\\">朴素模式</div>
-<div class=\\"var-input var--box\\">
+<div class=\\"app-type pb\\" data-v-9abe30fd=\\"\\">朴素模式</div>
+<div class=\\"var-input var--box\\" data-v-9abe30fd=\\"\\">
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon var-input--non-hint\\"></div>
     <div class=\\"var-input__wrap var-input--non-hint\\">
@@ -53,8 +53,8 @@ exports[`test input example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type pb\\">文本域</div>
-<div class=\\"var-input var--box\\">
+<div class=\\"app-type pb\\" data-v-9abe30fd=\\"\\">文本域</div>
+<div class=\\"var-input var--box\\" data-v-9abe30fd=\\"\\">
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
@@ -72,8 +72,8 @@ exports[`test input example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type pb\\">最大长度</div>
-<div class=\\"var-input var--box\\">
+<div class=\\"app-type pb\\" data-v-9abe30fd=\\"\\">最大长度</div>
+<div class=\\"var-input var--box\\" data-v-9abe30fd=\\"\\">
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
@@ -93,8 +93,8 @@ exports[`test input example 1`] = `
     </div>
   </transition-stub>
 </div>
-<div class=\\"app-type pb\\">禁用</div>
-<div class=\\"var-input var--box var-input--disabled\\">
+<div class=\\"app-type pb\\" data-v-9abe30fd=\\"\\">禁用</div>
+<div class=\\"var-input var--box var-input--disabled\\" data-v-9abe30fd=\\"\\">
   <div class=\\"var-input__controller var-input--disabled\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
@@ -111,8 +111,8 @@ exports[`test input example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type pb\\">只读</div>
-<div class=\\"var-input var--box\\">
+<div class=\\"app-type pb\\" data-v-9abe30fd=\\"\\">只读</div>
+<div class=\\"var-input var--box\\" data-v-9abe30fd=\\"\\">
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
@@ -129,8 +129,8 @@ exports[`test input example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type pb\\">可清除</div>
-<div class=\\"var-input var--box\\">
+<div class=\\"app-type pb\\" data-v-9abe30fd=\\"\\">可清除</div>
+<div class=\\"var-input var--box\\" data-v-9abe30fd=\\"\\">
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
@@ -145,14 +145,14 @@ exports[`test input example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type pb\\">显示图标</div>
-<div class=\\"var-input var--box\\">
+<div class=\\"app-type pb\\" data-v-9abe30fd=\\"\\">显示图标</div>
+<div class=\\"var-input var--box\\" data-v-9abe30fd=\\"\\">
   <div class=\\"var-input__controller\\">
-    <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
+    <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: transform 0ms;\\" data-v-9abe30fd=\\"\\"></i></div>
     <div class=\\"var-input__wrap\\">
       <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-32\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-32\\">请输入文本</label>
     </div>
-    <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
+    <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: transform 0ms;\\" data-v-9abe30fd=\\"\\"></i></div>
   </div>
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
@@ -161,8 +161,8 @@ exports[`test input example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">字段校验</div>
-<div class=\\"var-input var--box\\">
+<div class=\\"app-type\\" data-v-9abe30fd=\\"\\">字段校验</div>
+<div class=\\"var-input var--box\\" data-v-9abe30fd=\\"\\">
   <div class=\\"var-input__controller\\">
     <div class=\\"var-input__icon\\"></div>
     <div class=\\"var-input__wrap\\">
@@ -179,7 +179,7 @@ exports[`test input example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div style=\\"height: 40px;\\"></div>"
+<div style=\\"height: 40px;\\" data-v-9abe30fd=\\"\\"></div>"
 `;
 
 exports[`test input focus & blur 1`] = `

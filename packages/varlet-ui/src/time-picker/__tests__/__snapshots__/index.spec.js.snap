@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
 exports[`test max and min 1`] = `
 "<div class=\\"var-time-picker\\">
