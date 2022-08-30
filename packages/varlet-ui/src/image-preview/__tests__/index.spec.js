@@ -1,7 +1,7 @@
 import ImagePreview from '../index'
 import VarImagePreview from '../ImagePreview.vue'
 import { createApp } from 'vue'
-import { delay, trigger, triggerDrag } from '../../utils/jest'
+import { delay, trigger, triggerDrag } from '../../utils/test'
 
 test('test image preview plugin', () => {
   const app = createApp({}).use(ImagePreview)
@@ -9,10 +9,10 @@ test('test image preview plugin', () => {
 })
 
 test('test image preview functional show & close', async () => {
-  const onOpen = jest.fn()
-  const onOpened = jest.fn()
-  const onClose = jest.fn()
-  const onClosed = jest.fn()
+  const onOpen = vi.fn()
+  const onOpened = vi.fn()
+  const onClose = vi.fn()
+  const onClosed = vi.fn()
 
   ImagePreview({
     onOpen,
@@ -37,7 +37,7 @@ test('test image preview functional show & close', async () => {
 })
 
 test('test image preview onChange callback', async () => {
-  const onChange = jest.fn()
+  const onChange = vi.fn()
 
   ImagePreview({
     images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],

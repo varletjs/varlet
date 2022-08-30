@@ -27,6 +27,7 @@ export function getDevConfig(varletConfig: Record<string, any>): InlineConfig {
 
   return {
     root: SITE_DIR,
+
     resolve: {
       extensions: VITE_RESOLVE_EXTENSIONS,
       alias: {
@@ -35,11 +36,14 @@ export function getDevConfig(varletConfig: Record<string, any>): InlineConfig {
         '@mobile-routes': SITE_MOBILE_ROUTES,
       },
     },
+
     server: {
       port: get(varletConfig, 'port'),
       host: host === 'localhost' ? '0.0.0.0' : host,
     },
+
     publicDir: SITE_PUBLIC_PATH,
+
     plugins: [
       vue({
         include: [/\.vue$/, /\.md$/],
@@ -63,7 +67,9 @@ export function getBuildConfig(varletConfig: Record<string, any>): InlineConfig 
 
   return {
     ...devConfig,
+
     base: './',
+
     build: {
       outDir: SITE_OUTPUT_PATH,
       reportCompressedSize: false,
@@ -118,6 +124,7 @@ export function getESMBundleConfig(varletConfig: Record<string, any>): InlineCon
 
   return {
     logLevel: 'silent',
+
     build: {
       emptyOutDir: true,
       lib: {
@@ -137,6 +144,7 @@ export function getESMBundleConfig(varletConfig: Record<string, any>): InlineCon
         },
       },
     },
+
     plugins: [clear()],
   }
 }
@@ -147,6 +155,7 @@ export function getUMDConfig(varletConfig: Record<string, any>): InlineConfig {
 
   return {
     logLevel: 'silent',
+
     build: {
       emptyOutDir: true,
       lib: {
@@ -166,6 +175,7 @@ export function getUMDConfig(varletConfig: Record<string, any>): InlineConfig {
         },
       },
     },
+
     plugins: [inlineCSS(fileName, UMD_DIR), clear()],
   }
 }

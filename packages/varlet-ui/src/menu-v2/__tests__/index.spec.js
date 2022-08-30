@@ -1,7 +1,7 @@
 import MenuV2 from '..'
 import { createApp, h } from 'vue'
 import { mount } from '@vue/test-utils'
-import { delay, mockStubs, trigger } from '../../utils/jest'
+import { delay, mockStubs, trigger } from '../../utils/test'
 import { doubleRaf } from '../../utils/elements'
 
 test('test menu v2 plugin', () => {
@@ -74,10 +74,10 @@ test('test menu v2 click trigger', async () => {
 test('test menu v2 hover trigger and events', async () => {
   const { mockRestore } = mockStubs()
 
-  const onOpen = jest.fn()
-  const onOpened = jest.fn()
-  const onClose = jest.fn()
-  const onClosed = jest.fn()
+  const onOpen = vi.fn()
+  const onOpened = vi.fn()
+  const onClose = vi.fn()
+  const onClosed = vi.fn()
 
   const root = document.createElement('div')
 

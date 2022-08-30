@@ -95,7 +95,11 @@ async function getReleaseType() {
   return ret[name]
 }
 
-export async function release(cmd: { remote?: string }) {
+interface ReleaseCommandOptions {
+  remote?: string
+}
+
+export async function release(options: ReleaseCommandOptions) {
   try {
     const currentVersion = require(resolve(CWD, 'package.json')).version
 
@@ -128,7 +132,7 @@ export async function release(cmd: { remote?: string }) {
 
     if (!isPreRelease) {
       await changelog()
-      await pushGit(expectVersion, cmd.remote)
+      await pushGit(expectVersion, options.remote)
     }
 
     logger.success(`Release version ${expectVersion} successfully!`)

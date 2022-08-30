@@ -8,13 +8,13 @@ import VarTabsItems from '../../tabs-items/TabsItems'
 import VarTabItem from '../../tab-item/TabItem'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockOffset } from '../../utils/jest'
+import { delay, mockOffset } from '../../utils/test'
 
 let originScrollTo
 
 beforeEach(() => {
   originScrollTo = Element.prototype.scrollTo
-  Element.prototype.scrollTo = jest.fn()
+  Element.prototype.scrollTo = vi.fn()
 })
 
 afterEach(() => {
@@ -72,8 +72,8 @@ test('test tabs & tab & tabsItems & tabItem plugin', () => {
 })
 
 test('test tabs event', async () => {
-  const onClick = jest.fn()
-  const onChange = jest.fn()
+  const onClick = vi.fn()
+  const onChange = vi.fn()
   const wrapper = mount(Wrapper, {
     props: {
       onClick,
