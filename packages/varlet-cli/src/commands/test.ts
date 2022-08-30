@@ -1,4 +1,3 @@
-import logger from '../shared/logger.js'
 import execa from 'execa'
 import { VITEST_CONFIG } from '../shared/constant'
 
@@ -25,9 +24,5 @@ export async function test({ component, watch, coverage }: TestCommandOptions) {
     args.push('--dir', `src/${component.trim()}`)
   }
 
-  try {
-    await execa('vitest', args, { stdin: 'inherit', stdout: 'inherit', stderr: 'inherit' })
-  } catch (e: any) {
-    logger.error(e.toString())
-  }
+  await execa('vitest', args, { stdin: 'inherit', stdout: 'inherit', stderr: 'inherit' })
 }
