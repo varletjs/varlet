@@ -7,10 +7,6 @@ export type CardLayout = 'row' | 'column'
 export interface CardProps extends BasicAttributes {
   src?: string
   fit?: CardFit
-  /**
-   * @deprecated use imageHeight instead
-   */
-  height?: string | number
   imageHeight?: string | number
   imageWidth?: string | number
   alt?: string
