@@ -9,9 +9,12 @@
       <div :class="classes(n('title'), [titleClass, titleClass])">
         <slot>{{ title }}</slot>
       </div>
-      <div :class="classes(n('desc'), [descClass, descClass])" v-if="$slots.desc || desc">
-        <slot name="desc">
-          {{ desc }}
+      <div
+        :class="classes(n('description'), [descriptionClass, descriptionClass])"
+        v-if="$slots.description || description"
+      >
+        <slot name="description">
+          {{ description }}
         </slot>
       </div>
     </div>

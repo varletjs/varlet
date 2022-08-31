@@ -8,11 +8,11 @@
 import VarSwipe from '../swipe'
 import { defineComponent, watch, ref } from 'vue'
 import { useTabItem } from './provide'
+import { call, createNamespace } from '../utils/components'
 import { props } from './props'
 import type { Ref } from 'vue'
 import type { TabsItemsProvider } from './provide'
 import type { TabItemProvider } from '../tab-item/provide'
-import { call, createNamespace } from '../utils/components'
 
 const { n } = createNamespace('tabs-items')
 
@@ -54,6 +54,11 @@ export default defineComponent({
       call(props['onUpdate:active'], active)
     }
 
+    // expose
+    const getSwipe = () => {
+      return swipe.value
+    }
+
     const tabsItemsProvider: TabsItemsProvider = {}
     bindTabItem(tabsItemsProvider)
 
@@ -68,6 +73,7 @@ export default defineComponent({
       swipe,
       n,
       handleSwipeChange,
+      getSwipe,
     }
   },
 })

@@ -125,7 +125,7 @@ import { useOptions } from './provide'
 import { useForm } from '../form/provide'
 import { getTop, toPxNum } from '../utils/elements'
 import type { Ref, ComputedRef } from 'vue'
-import type { ValidateTriggers } from './props'
+import type { SelectValidateTrigger } from './props'
 import type { SelectProvider } from './provide'
 import type { OptionProvider } from '../option/provide'
 
@@ -174,7 +174,7 @@ export default defineComponent({
       }
     }
 
-    const validateWithTrigger = (trigger: ValidateTriggers) => {
+    const validateWithTrigger = (trigger: SelectValidateTrigger) => {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)

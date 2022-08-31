@@ -1,10 +1,13 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
+
+export type RowJustify = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around'
+
+export type RowAlign = 'flex-start' | 'center' | 'flex-end'
 
 export interface RowProps extends BasicAttributes {
   gutter?: string | number
-  justify?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around'
-  align?: 'flex-start' | 'center' | 'flex-end'
+  justify?: RowJustify
+  align?: RowAlign
   onClick?: (e: Event) => void
 }
 

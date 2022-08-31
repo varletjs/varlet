@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
 exports[`Size related props 1`] = `
 "<ul class=\\"var-pagination\\">
@@ -64,7 +64,7 @@ exports[`Size related props 2`] = `
 </ul>"
 `;
 
-exports[`basic mode disabled prop 1`] = `
+exports[`basic mode > disabled prop 1`] = `
 "<ul class=\\"var-pagination\\">
   <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
   <li class=\\"var-pagination__item var-pagination__next var-pagination__item--disabled var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></li>
@@ -114,7 +114,7 @@ exports[`basic mode disabled prop 1`] = `
 </ul>"
 `;
 
-exports[`basic mode mount 1`] = `
+exports[`basic mode > mount 1`] = `
 "<ul class=\\"var-pagination\\">
   <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
   <li item-mode=\\"basic\\" class=\\"var-pagination__item var-elevation--2 var-pagination__item--active\\">1</li>
@@ -188,7 +188,7 @@ exports[`basic mode mount 1`] = `
 </ul>"
 `;
 
-exports[`simple mode disabled prop 1`] = `
+exports[`simple mode > disabled prop 1`] = `
 "<ul class=\\"var-pagination\\">
   <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
   <li class=\\"var-pagination__simple var-pagination__item--disabled\\">
@@ -257,7 +257,7 @@ exports[`simple mode disabled prop 1`] = `
 </ul>"
 `;
 
-exports[`simple mode mount 1`] = `
+exports[`simple mode > mount 1`] = `
 "<ul class=\\"var-pagination\\">
   <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
   <li class=\\"var-pagination__simple\\">
@@ -327,9 +327,9 @@ exports[`simple mode mount 1`] = `
 `;
 
 exports[`test pagination example 1`] = `
-"<div class=\\"app-type\\">基本使用</div>
-<div class=\\"transformer\\">
-  <ul class=\\"var-pagination\\">
+"<div class=\\"app-type\\" data-v-6c683ca5=\\"\\">基本使用</div>
+<div class=\\"transformer\\" data-v-6c683ca5=\\"\\">
+  <ul class=\\"var-pagination\\" data-v-6c683ca5=\\"\\">
     <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple\\">
       <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
@@ -396,9 +396,9 @@ exports[`test pagination example 1`] = `
     <!--v-if-->
   </ul>
 </div>
-<div class=\\"app-type\\">隐藏 size 切换器</div>
-<div class=\\"transformer\\">
-  <ul class=\\"var-pagination\\">
+<div class=\\"app-type\\" data-v-6c683ca5=\\"\\">隐藏 size 切换器</div>
+<div class=\\"transformer\\" data-v-6c683ca5=\\"\\">
+  <ul class=\\"var-pagination\\" data-v-6c683ca5=\\"\\">
     <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple\\">
       <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
@@ -425,9 +425,9 @@ exports[`test pagination example 1`] = `
     <!--v-if-->
   </ul>
 </div>
-<div class=\\"app-type\\">显示总数</div>
-<div class=\\"transformer\\">
-  <ul class=\\"var-pagination\\">
+<div class=\\"app-type\\" data-v-6c683ca5=\\"\\">显示总数</div>
+<div class=\\"transformer\\" data-v-6c683ca5=\\"\\">
+  <ul class=\\"var-pagination\\" data-v-6c683ca5=\\"\\">
     <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple\\">
       <div class=\\"var-input var--box\\" var-pagination-cover=\\"\\">
@@ -494,9 +494,9 @@ exports[`test pagination example 1`] = `
     <li class=\\"var-pagination__total\\">共 120 条</li>
   </ul>
 </div>
-<div class=\\"app-type\\">禁用</div>
-<div class=\\"transformer\\">
-  <ul class=\\"var-pagination\\">
+<div class=\\"app-type\\" data-v-6c683ca5=\\"\\">禁用</div>
+<div class=\\"transformer\\" data-v-6c683ca5=\\"\\">
+  <ul class=\\"var-pagination\\" data-v-6c683ca5=\\"\\">
     <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--hover\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple var-pagination__item--disabled\\">
       <div class=\\"var-input var--box var-input--disabled\\" var-pagination-cover=\\"\\">

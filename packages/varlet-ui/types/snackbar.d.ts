@@ -1,17 +1,19 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
-import type { App, TeleportProps } from 'vue'
+import { VarComponent, BasicAttributes, Size as LoadingSize } from './varComponent'
+import { LoadingType } from './loading'
+import { App, TeleportProps } from 'vue'
 
-export type LoadingType = 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'
+export type SnackbarPosition = 'top' | 'center' | 'bottom'
 
-export type LoadingSize = 'normal' | 'mini' | 'small' | 'large'
+export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
 export interface SnackbarProps extends BasicAttributes {
   type?: SnackbarType
   content?: string
-  position?: 'top' | 'center' | 'bottom'
+  position?: SnackbarPosition
   loadingType?: LoadingType
   loadingSize?: LoadingSize
+  loadingColor?: string
+  loadingRadius?: string | number
   teleport?: TeleportProps['to']
   lockScroll?: boolean
   contentClass?: string
@@ -30,8 +32,6 @@ export class SnackbarComponent extends VarComponent {
   $props: SnackbarProps
 }
 
-export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
-
 export interface SnackbarHandel {
   clear: () => void
 }
@@ -39,7 +39,7 @@ export interface SnackbarHandel {
 export interface SnackbarOptions {
   type?: SnackbarType
   content?: string
-  position?: 'top' | 'center' | 'bottom'
+  position?: SnackbarPosition
   loadingType?: string
   loadingSize?: string
   teleport?: string

@@ -41,6 +41,10 @@ watchEffect(() => history.replaceState({}, '', store.serialize()))
 </template>
 
 <style>
+*::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-size: 13px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',

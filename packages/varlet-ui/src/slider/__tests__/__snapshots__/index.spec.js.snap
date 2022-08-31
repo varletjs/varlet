@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
 exports[`test slider example 1`] = `
 "<div class=\\"app-type\\">基本使用</div>

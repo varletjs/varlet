@@ -2,7 +2,7 @@ import Rate from '..'
 import VarRate from '../Rate'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/jest'
+import { delay, trigger } from '../../utils/test'
 
 test('test rate use', () => {
   const app = createApp({}).use(Rate)
@@ -10,8 +10,8 @@ test('test rate use', () => {
 })
 
 test('test rate component onchange event', async () => {
-  const onChange = jest.fn()
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onChange = vi.fn()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarRate, {
     props: {
@@ -29,8 +29,8 @@ test('test rate component onchange event', async () => {
 })
 
 test('test rate validation', async () => {
-  const onChange = jest.fn()
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onChange = vi.fn()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarRate, {
     props: {
@@ -56,8 +56,8 @@ test('test rate validation', async () => {
 
 describe('test rate component props', () => {
   test('test rate half', async () => {
-    const onChange = jest.fn()
-    const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+    const onChange = vi.fn()
+    const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
     const wrapper = mount(VarRate, {
       props: {
@@ -77,7 +77,7 @@ describe('test rate component props', () => {
   })
 
   test('test rate disabled & readonly', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
 
     const wrapper = mount(VarRate, {
       props: {

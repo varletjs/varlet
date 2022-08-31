@@ -1,7 +1,7 @@
 import ActionSheet from '../index'
 import VarActionSheet from '../ActionSheet'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/jest'
+import { delay, trigger } from '../../utils/test'
 
 test('test action sheet plugin', () => {
   const app = createApp({}).use(ActionSheet)
@@ -9,10 +9,10 @@ test('test action sheet plugin', () => {
 })
 
 test('test action sheet functional show & close', async () => {
-  const onOpen = jest.fn()
-  const onOpened = jest.fn()
-  const onClose = jest.fn()
-  const onClosed = jest.fn()
+  const onOpen = vi.fn()
+  const onOpened = vi.fn()
+  const onClose = vi.fn()
+  const onClosed = vi.fn()
 
   ActionSheet({
     actions: [],
@@ -38,7 +38,7 @@ test('test action sheet functional show & close', async () => {
 })
 
 test('test action sheet functional onSelect', async () => {
-  const onSelect = jest.fn()
+  const onSelect = vi.fn()
 
   ActionSheet({
     actions: [{ name: 'Item 01' }],
@@ -53,7 +53,7 @@ test('test action sheet functional onSelect', async () => {
 })
 
 test('test action sheet functional disabled', async () => {
-  const onSelect = jest.fn()
+  const onSelect = vi.fn()
 
   ActionSheet({
     actions: [

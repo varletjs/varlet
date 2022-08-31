@@ -1,11 +1,11 @@
 import type { App } from 'vue'
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
 export type StyleVars = Record<string, string>
 
 export interface StyleProviderProps extends BasicAttributes {
   styleVars?: StyleVars
+  tag?: string
 }
 
 export class StyleProviderComponent extends VarComponent {

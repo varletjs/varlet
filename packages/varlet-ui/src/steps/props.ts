@@ -1,7 +1,5 @@
 import type { PropType } from 'vue'
 
-type Direction = 'horizontal' | 'vertical'
-
 function directionValidator(direction: string): boolean {
   return ['horizontal', 'vertical'].includes(direction)
 }
@@ -12,7 +10,7 @@ export const props = {
     default: 0,
   },
   direction: {
-    type: String as PropType<Direction>,
+    type: String as PropType<'horizontal' | 'vertical'>,
     default: 'horizontal',
     validator: directionValidator,
   },
