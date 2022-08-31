@@ -8,7 +8,7 @@ module.exports = {
       version: {
         current: 'Vue 3',
         items: {
-          'Vue 2': 'https://varlet-vue2.vercel.app/',
+          'Vue 2': 'https://varlet.gitee.io/varlet-ui-vue2/',
         },
       },
     },

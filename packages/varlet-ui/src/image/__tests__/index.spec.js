@@ -4,7 +4,7 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/jest'
 
-const SRC = 'https://varlet-varletjs.vercel.app/cat.png'
+const SRC = 'https://varlet.gitee.io/varlet-ui/cat.png'
 
 test('test image plugin', () => {
   const app = createApp({}).use(Image)

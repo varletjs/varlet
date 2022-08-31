@@ -25,7 +25,7 @@ watchDarkMode(dark)
     :title="pack.title"
     :subtitle="pack.subtitle"
     :description="pack.description"
-    src="https://varlet-varletjs.vercel.app/cat.jpg"
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   />
 
   <app-type>{{ pack.useSlot }}</app-type>
@@ -33,7 +33,7 @@ watchDarkMode(dark)
     :title="pack.title"
     :subtitle="pack.subtitle"
     :description="pack.description"
-    src="https://varlet-varletjs.vercel.app/cat.jpg"
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   >
     <template #extra>
       <var-button text type="warning">{{ pack.action1 }}</var-button>
@@ -46,7 +46,7 @@ watchDarkMode(dark)
     :title="pack.title"
     :subtitle="pack.description"
     layout="row"
-    src="https://varlet-varletjs.vercel.app/cat.jpg"
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   >
     <template #extra>
       <var-button text round>
@@ -68,7 +68,7 @@ watchDarkMode(dark)
     :title="pack.title"
     :subtitle="pack.subtitle"
     ripple
-    src="https://varlet-varletjs.vercel.app/cat.jpg"
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   >
     <template #extra>
       <var-button text type="warning">{{ pack.action1 }}</var-button>

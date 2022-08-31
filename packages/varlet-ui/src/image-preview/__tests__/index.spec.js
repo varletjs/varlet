@@ -40,7 +40,7 @@ test('test image preview onChange callback', async () => {
   const onChange = jest.fn()
 
   ImagePreview({
-    images: ['https://varlet-varletjs.vercel.app/cat.jpg', 'https://varlet-varletjs.vercel.app/cat2.jpg'],
+    images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
     onChange,
   })
   await delay(200)

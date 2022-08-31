@@ -78,11 +78,11 @@ describe('test card component props', () => {
   test('test card src', () => {
     const wrapper = mount(VarCard, {
       props: {
-        src: 'https://varlet-varletjs.vercel.app/cat.jpg',
+        src: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
       },
     })
 
-    expect(wrapper.find('img').attributes('src')).toBe('https://varlet-varletjs.vercel.app/cat.jpg')
+    expect(wrapper.find('img').attributes('src')).toBe('https://varlet.gitee.io/varlet-ui/cat.jpg')
     wrapper.unmount()
   })
 
@@ -91,7 +91,7 @@ describe('test card component props', () => {
       const wrapper = mount(VarCard, {
         props: {
           fit,
-          src: 'https://varlet-varletjs.vercel.app/cat.jpg',
+          src: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
         },
       })
 
@@ -104,7 +104,7 @@ describe('test card component props', () => {
     const wrapper = mount(VarCard, {
       props: {
         alt: 'This is alt',
-        src: 'https://varlet-varletjs.vercel.app/cat.jpg',
+        src: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
       },
     })
 
@@ -116,7 +116,7 @@ describe('test card component props', () => {
     const wrapper = mount(VarCard, {
       props: {
         imageHeight: 100,
-        src: 'https://varlet-varletjs.vercel.app/cat.jpg',
+        src: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
       },
     })
 
@@ -128,7 +128,7 @@ describe('test card component props', () => {
     const wrapper = mount(VarCard, {
       props: {
         imageWidth: 100,
-        src: 'https://varlet-varletjs.vercel.app/cat.jpg',
+        src: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
       },
     })
 

@@ -10,7 +10,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
 
 ```html
 <template>
-  <var-image src="https://varlet-varletjs.vercel.app/cat.jpg" />
+  <var-image src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
 </template>
 ```
 
@@ -22,34 +22,34 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
     <var-image
       width="85px"
       height="85px"
-      src="https://varlet-varletjs.vercel.app/cat.jpg"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     />
     <var-image 
       width="85px" 
       height="85px"
       fit="cover" 
-      src="https://varlet-varletjs.vercel.app/cat.jpg" 
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
     />
 
     <var-image 
       width="85px"
       height="85px" 
       fit="contain"
-      src="https://varlet-varletjs.vercel.app/cat.jpg" 
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
     />
 
     <var-image 
       width="85px"
       height="85px"
       fit="none"
-      src="https://varlet-varletjs.vercel.app/cat.jpg"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     />
 
     <var-image 
       width="85px"
       height="85px" 
       fit="scale-down"
-      src="https://varlet-varletjs.vercel.app/cat.jpg" 
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
     />
   </var-space>
 </template>
@@ -65,7 +65,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
       height="85px"
       fit="cover"
       :radius="10"
-      src="https://varlet-varletjs.vercel.app/cat.jpg"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     />
 
     <var-image
@@ -73,7 +73,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
       height="85px"
       fit="cover"
       radius="50%"
-      src="https://varlet-varletjs.vercel.app/cat.jpg"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     />
   </var-space>
 </template>
@@ -87,7 +87,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
     width="85px"
     height="85px"
     ripple
-    src="https://varlet-varletjs.vercel.app/cat.jpg"
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   />
 </template>
 ```
@@ -100,7 +100,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
     width="85px"
     height="85px"
     lazy
-    src="https://varlet-varletjs.vercel.app/cat.jpg"
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   />
 </template>
 ```
@@ -116,7 +116,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
     height="85px"
     loading="https://xxx.xxx/loading.png"
     error="https://xxx.xxx/error.png"
-    src="https://varlet-varletjs.vercel.app/cat.jpg"
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   />
 </template>
 ```

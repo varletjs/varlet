@@ -5,7 +5,7 @@ module.exports = {
   port: 8080,
   title: 'VARLET',
   themesKey: 'VARLET_THEMES',
-  logo: 'https://varlet-varletjs.vercel.app/varlet_icon.png',
+  logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
   defaultLanguage: 'zh-CN',
   highlight: {
     /**
@@ -31,7 +31,7 @@ module.exports = {
       },
       versions: null,
       github: 'https://github.com/varletjs/varlet',
-      playground: 'https://varlet-ui-playground.vercel.app',
+      playground: 'https://varlet.gitee.io/varlet-ui-playground',
       darkMode: true,
     },
     clipboard: {
