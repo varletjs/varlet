@@ -13,12 +13,6 @@ export const props = {
     validator: fitValidator,
     default: 'cover',
   },
-  /**
-   * @deprecated use imageHeight instead
-   */
-  height: {
-    type: [String, Number],
-  },
   imageHeight: {
     type: [String, Number],
   },

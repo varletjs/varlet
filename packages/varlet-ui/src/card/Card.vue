@@ -28,7 +28,7 @@
           :class="n('image')"
           :style="{
             objectFit: fit,
-            height: toSizeUnit(imageHeight ?? height),
+            height: toSizeUnit(imageHeight),
             width: toSizeUnit(imageWidth),
           }"
           :src="src"
