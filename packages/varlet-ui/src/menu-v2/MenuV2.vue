@@ -262,6 +262,12 @@ export default defineComponent({
 
     // expose
     const open = () => {
+      const { disabled } = props
+
+      if (disabled) {
+        return
+      }
+
       show.value = true
       call(props['onUpdate:show'], true)
     }
@@ -306,6 +312,8 @@ export default defineComponent({
         }
       }
     )
+
+    watch(() => props.disabled, close)
 
     onMounted(() => {
       popover = createPopper(host.value!, menu.value!, getPopperOptions())
