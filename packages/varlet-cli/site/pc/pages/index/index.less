@@ -36,7 +36,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 100px;
+    padding: 100px 0px;
     max-width: 1200px;
   }
 
@@ -74,12 +74,15 @@
   }
 
   &__description {
-    width: 700px;
+    max-width: 700px;
+    width: 90vw;
     font-size: 16px;
     line-height: 28px;
     letter-spacing: 1px;
     margin-top: 30px;
+    padding: 0px 20px;
     text-align: center;
+    box-sizing: border-box;
     color: var(--site-config-color-index-page-second-text-color);
   }
 
