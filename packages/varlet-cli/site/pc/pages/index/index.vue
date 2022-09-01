@@ -119,6 +119,11 @@ watch(() => route.path, setLocale, { immediate: true })
           <img class="varlet-doc-index__contributors-image" :src="indexPage.contributors.image">
         </a>
       </div>
+
+      <div class="varlet-doc-index__footer">
+        <div class="varlet-doc-index__license">{{ indexPage.license[language] }}</div>
+        <div class="varlet-doc-index__copyright">{{ indexPage.copyright[language] }}</div>
+      </div>
     </div>
   </div>
 </template>
