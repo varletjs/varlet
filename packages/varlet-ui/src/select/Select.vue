@@ -403,7 +403,7 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../icon/icon';
-@import '../menu/menu';
+@import '../menu-v2/menuV2';
 @import '../form-details/formDetails';
 @import '../chip/chip';
 @import './select';

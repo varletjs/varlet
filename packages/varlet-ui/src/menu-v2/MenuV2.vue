@@ -247,6 +247,7 @@ export default defineComponent({
           flip,
           {
             ...offset,
+            enabled: show.value,
             options: {
               offset: [skidding, distance],
             },
@@ -324,6 +325,7 @@ export default defineComponent({
     })
     onUnmounted(() => {
       document.removeEventListener('click', handleMenuClose)
+      popover!.destroy()
     })
 
     return {
@@ -350,4 +352,6 @@ export default defineComponent({
 
 <style lang="less">
 @import './menuV2';
+@import '../styles/elevation.less';
+@import '../styles/common.less';
 </style>

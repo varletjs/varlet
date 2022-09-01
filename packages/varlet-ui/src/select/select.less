@@ -60,6 +60,7 @@
   &__menu[var-select-cover] {
     flex-grow: 1;
     background: transparent;
+    margin-top: 16px;
   }
 
   &__chip[var-select-cover] {
@@ -77,7 +78,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    padding-top: var(--select-placeholder-size);
   }
 
   &__icon {
@@ -95,7 +95,7 @@
     transform-origin: left;
     transition-property: top, transform, width;
     transition-duration: 0.3s;
-    transform: translate(0, calc(-50% + var(--select-placeholder-size) / 2)) scale(1);
+    transform: translate(0, -50%) scale(1);
     font-size: var(--select-placeholder-size);
     color: var(--select-blur-color);
   }
@@ -136,7 +136,7 @@
   }
 
   &--placeholder-hint {
-    top: 0;
+    top: calc(-1 * (var(--select-placeholder-size) + 5px));
     width: 133.33%;
     transform: translate(0, 0) scale(0.75);
   }
