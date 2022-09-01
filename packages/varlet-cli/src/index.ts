@@ -3,7 +3,7 @@ import logger from './shared/logger'
 import { Command } from 'commander'
 import { dev } from './commands/dev'
 import { build } from './commands/build'
-import { useVite } from './commands/useVite'
+import { vite } from './commands/vite'
 import { compile } from './commands/compile'
 import { create } from './commands/create'
 import { test } from './commands/test'
@@ -29,12 +29,12 @@ program.command('build').description('Build varlet site for production').action(
 program
   .command('build:vite')
   .description('Use vite build app for production')
-  .action(() => useVite('build'))
+  .action(() => vite('build'))
 
 program
   .command('dev:vite')
   .description('Use vite start server for development')
-  .action(() => useVite('dev'))
+  .action(() => vite('dev'))
 
 program.command('preview').description('Preview varlet site for production').action(preview)
 
