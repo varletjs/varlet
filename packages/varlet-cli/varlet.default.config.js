@@ -54,12 +54,12 @@ module.exports = {
         },
         {
           name: {
-            'zh-CN': '国人开发',
-            'en-US': 'Developed by Chinese',
+            'zh-CN': '主题定制',
+            'en-US': 'Theme customization',
           },
           description: {
-            'zh-CN': '由国人开发，完善的中英文文档和后勤保障',
-            'en-US': 'Complete Chinese and English documentation and logistics support',
+            'zh-CN': '内置亮色和暗色两种主题，支持组件的样式自定义',
+            'en-US': 'Built-in light and dark themes, support style customization of components',
           },
         },
         {
@@ -74,7 +74,37 @@ module.exports = {
         },
         {
           name: {
-            'zh-CN': '开发工具支持',
+            'zh-CN': '支持 Typescript',
+            'en-US': 'Support typescript',
+          },
+          description: {
+            'zh-CN': '使用 Typescript 构建，提供良好的组件类型系统',
+            'en-US': 'Built with typescript, which provides a nice components type system',
+          },
+        },
+        {
+          name: {
+            'zh-CN': '服务端渲染',
+            'en-US': 'Server-side rendering',
+          },
+          description: {
+            'zh-CN': '对服务端渲染支持良好，并对 Nuxt 进行了适配',
+            'en-US': 'Good support for server-side rendering and adaptation to Nuxt',
+          },
+        },
+        {
+          name: {
+            'zh-CN': '国人开发',
+            'en-US': 'Developed by Chinese',
+          },
+          description: {
+            'zh-CN': '由国人开发，完善的中英文文档和后勤保障',
+            'en-US': 'Complete Chinese and English documentation and logistics support',
+          },
+        },
+        {
+          name: {
+            'zh-CN': 'IDE 支持',
             'en-US': 'IDE Code Support',
           },
           description: {
@@ -85,12 +115,13 @@ module.exports = {
         },
         {
           name: {
-            'zh-CN': 'Typescript + SSR',
-            'en-US': 'Typescript + SSR',
+            'zh-CN': '组件库快速成型工具',
+            'en-US': 'Component library toolchain',
           },
           description: {
-            'zh-CN': '对 TypeScript 使用者十分友好，并且支持服务端渲染',
-            'en-US': 'Develop with TypeScript, and support SSR',
+            'zh-CN': '开源了搭建本组件库的所有工具链，提供快速开发组件库的能力',
+            'en-US':
+              'Open-sourced the toolchain for building this component library, providing the ability to rapidly develop the component library',
           },
         },
       ],
@@ -101,6 +132,14 @@ module.exports = {
         },
         link: 'https://github.com/varletjs/varlet/graphs/contributors',
         image: 'https://contrib.rocks/image?repo=varletjs/varlet',
+      },
+      license: {
+        'zh-CN': '组件库基于 MIT 协议，您可以自由的使用和分享',
+        'en-US': 'Released under the MIT License, You can use and share freely.',
+      },
+      copyright: {
+        'zh-CN': 'Copyright © 2020 varletjs 组织成员以及 varlet 的贡献者们',
+        'en-US': 'Copyright © 2020 varletjs member and varlet contributors.',
       },
     },
     title: {
