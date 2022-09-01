@@ -61,6 +61,7 @@ function computeRippleStyles(element: RippleHTMLElement, event: TouchEvent): Rip
 
 function createRipple(this: RippleHTMLElement, event: TouchEvent) {
   const _ripple = this._ripple as RippleOptions
+  _ripple.removeRipple()
 
   if (_ripple.disabled || _ripple.tasker) {
     return
