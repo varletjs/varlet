@@ -105,11 +105,24 @@ watch(() => route.path, setLocale, { immediate: true })
         </var-site-button>
       </div>
 
-      <div class="varlet-doc-index__features">
+      <div class="varlet-doc-index__features" v-if="indexPage.features">
         <div class="varlet-doc-index__feature" v-for="feature in indexPage.features">
           <div class="varlet-doc-index__feature-name">{{ feature.name[language] }}</div>
           <div class="varlet-doc-index__feature-description">{{ feature.description[language] }}</div>
         </div>
+      </div>
+
+      <div class="varlet-doc-index__contributors" v-if="indexPage.contributors">
+        <div class="varlet-doc-index__contributors-title">{{ indexPage.contributors.label[language] }}</div>
+
+        <a class="varlet-doc-index__contributors-link" :href="indexPage.contributors.link">
+          <img class="varlet-doc-index__contributors-image" :src="indexPage.contributors.image">
+        </a>
+      </div>
+
+      <div class="varlet-doc-index__footer">
+        <div class="varlet-doc-index__license">{{ indexPage.license[language] }}</div>
+        <div class="varlet-doc-index__copyright">{{ indexPage.copyright[language] }}</div>
       </div>
     </div>
   </div>

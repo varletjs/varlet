@@ -235,8 +235,11 @@ describe('test button component props', () => {
       },
     })
     await trigger(wrapper, 'touchstart')
-    await delay(500)
+    await delay(250)
     expect(wrapper.find('.var-ripple').exists()).toBe(true)
+    await trigger(document, 'touchend')
+    await delay(500)
+    expect(wrapper.find('.var-ripple').exists()).toBe(false)
     expect(onTouchstart).toHaveBeenCalledTimes(0)
 
     await wrapper.setProps({ ripple: false })

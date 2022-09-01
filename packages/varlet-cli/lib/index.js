@@ -8,7 +8,7 @@ const logger_1 = __importDefault(require("./shared/logger"));
 const commander_1 = require("commander");
 const dev_1 = require("./commands/dev");
 const build_1 = require("./commands/build");
-const useVite_1 = require("./commands/useVite");
+const vite_1 = require("./commands/vite");
 const compile_1 = require("./commands/compile");
 const create_1 = require("./commands/create");
 const test_1 = require("./commands/test");
@@ -29,11 +29,11 @@ program.command('build').description('Build varlet site for production').action(
 program
     .command('build:vite')
     .description('Use vite build app for production')
-    .action(() => (0, useVite_1.useVite)('build'));
+    .action(() => (0, vite_1.vite)('build'));
 program
     .command('dev:vite')
     .description('Use vite start server for development')
-    .action(() => (0, useVite_1.useVite)('dev'));
+    .action(() => (0, vite_1.vite)('dev'));
 program.command('preview').description('Preview varlet site for production').action(preview_1.preview);
 program
     .command('compile')

@@ -4,17 +4,17 @@ Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全�
 
 ### 特性
 
-- 🚀 提供50个高质量通用组件
-- 🚀 组件十分轻量
-- 💪 由国人开发，完善的中英文文档和后勤保障
-- 🛠️ 支持按需引入
-- 🛠️ 支持主题定制
-- 🌍 支持国际化
-- 💡 支持 webstorm，vscode 组件属性高亮
-- 💪 支持 SSR
-- 💡 支持 Typescript
-- 💪 确保90%以上单元测试覆盖率，提供稳定性保证
-- 🛠️ 支持暗黑模式
+- 🚀 &nbsp; 提供 50 个高质量通用组件
+- 🚀 &nbsp; 组件十分轻量
+- 💪 &nbsp; 由国人开发，完善的中英文文档和后勤保障
+- 🛠️ &nbsp; 支持按需引入
+- 🛠️ &nbsp; 支持主题定制
+- 🌍 &nbsp; 支持国际化
+- 💡 &nbsp; 支持 webstorm，vscode 组件属性高亮
+- 💪 &nbsp; 支持 SSR
+- 💡 &nbsp; 支持 Typescript
+- 💪 &nbsp; 确保 90% 以上单元测试覆盖率，提供稳定性保证
+- 🛠️ &nbsp; 支持暗黑模式
 
 ### PR & Issue
 使用过程中出现的问题可以到 [github](https://github.com/varletjs/varlet) 来给我们提 [issue](https://github.com/varletjs/varlet/issues)，
