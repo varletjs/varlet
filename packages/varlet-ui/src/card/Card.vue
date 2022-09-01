@@ -127,10 +127,10 @@ export default defineComponent({
     const floaterOverflow: Ref<string> = ref('hidden')
     const contentHeight: Ref<string> = ref('0px')
     const opacity: Ref<string> = ref('0')
-    const { zIndex } = useZIndex(() => props.floating, 1)
     const isRow = computed(() => props.layout === 'row')
     const showFloatingButtons: Ref<boolean> = ref(false)
     const floated: Ref<boolean> = ref(false)
+    const { zIndex } = useZIndex(() => props.floating, 1)
 
     useLock(
       () => props.floating,
