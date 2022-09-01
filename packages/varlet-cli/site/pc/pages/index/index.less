@@ -95,7 +95,7 @@
   &__link-button {
     height: 44px;
     font-size: 18px;
-    transition: all .25s;
+    transition: all .2s;
     margin: 0 10px;
   }
 
@@ -124,5 +124,33 @@
     font-size: 14px;
     margin-top: 10px;
     line-height: 1.5;
+  }
+
+  &__contributors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__contributors-title {
+    margin-top: 74px;
+    padding-top: 30px;
+    line-height: 32px;
+    font-size: 22px;
+    border-top: thin solid var(--site-config-color-index-page-divider-color);
+    color: var(--site-config-color-index-page-second-text-color);
+    letter-spacing: 1px;
+    transition: all .2s;
+  }
+
+  &__contributors-link {
+    display: block;
+    margin-top: 40px;
+    width: 700px;
+  }
+
+  &__contributors-image {
+    display: block;
+    width: 100%;
   }
 }

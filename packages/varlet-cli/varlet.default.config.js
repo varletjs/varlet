@@ -38,7 +38,7 @@ module.exports = {
             'en-US': 'Rich components',
           },
           description: {
-            'zh-CN': '提供50个高质量通用组件',
+            'zh-CN': '提供 50 个高质量通用组件',
             'en-US': 'Provide 50 high quality general purpose components',
           },
         },
@@ -68,7 +68,7 @@ module.exports = {
             'en-US': 'Locale',
           },
           description: {
-            'zh-CN': '内置国际化 API，默认支持中英两国语言',
+            'zh-CN': '内置国际化 API，内置中文和英文的语言包',
             'en-US': 'Built-in i18n API, which supports both Chinese and English languages by default',
           },
         },
@@ -78,7 +78,7 @@ module.exports = {
             'en-US': 'IDE Code Support',
           },
           description: {
-            'zh-CN': '支持 webstorm，vscode 组件属性高亮, 提供vscode插件为开发提升效率',
+            'zh-CN': '支持在 webstorm，vscode 中的组件语法高亮, 并提供 vscode 插件为开发提升效率',
             'en-US':
               'Supports to highlight the component syntax for webstorm and vscode, and provides a separate helper plugin for vscode',
           },
@@ -94,6 +94,14 @@ module.exports = {
           },
         },
       ],
+      contributors: {
+        label: {
+          'zh-CN': '贡献者',
+          'en-US': 'Contributors',
+        },
+        link: 'https://github.com/varletjs/varlet/graphs/contributors',
+        image: 'https://contrib.rocks/image?repo=varletjs/varlet',
+      },
     },
     title: {
       'zh-CN': '面向 Vue3 的 Material 风格移动端组件库',
@@ -139,6 +147,7 @@ module.exports = {
     'color-index-page-feature-background': '#fff',
     'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #8baff8 50%, #84e0ff 50%)',
     'color-index-page-second-text-color': 'rgba(60, 60, 60, .7)',
+    'color-index-page-divider-color': '#ddd',
     'color-bar': '#fff',
     'color-sub-bar': '#f5f5f5',
     'color-text': '#555',
@@ -180,6 +189,7 @@ module.exports = {
     'color-index-page-feature-background': '#303030',
     'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #729dfc 50%, #6859f4 50%)',
     'color-index-page-second-text-color': 'rgba(255, 255, 255, .75)',
+    'color-index-page-divider-color': 'rgba(84, 84, 84, .8)',
     'color-bar': '#1e1e1e',
     'color-sub-bar': '#272727',
     'color-text': '#fff',
