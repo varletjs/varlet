@@ -27,8 +27,6 @@ export default defineComponent({
     const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
     const currentTheme = ref(getBrowserTheme())
 
-    console.log(currentTheme.value);
-
     const isOpenLanguageMenu: Ref<boolean> = ref(false)
     const isOpenVersionsMenu: Ref<boolean> = ref(false)
     const router = useRouter()
@@ -77,7 +75,6 @@ export default defineComponent({
       }
 
       if (from === 'playground') {
-        console.log(123123);
         setCurrentTheme(theme)
         notifyIframeThemeChange('mobile')
       }
