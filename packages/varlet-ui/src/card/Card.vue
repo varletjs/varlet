@@ -134,7 +134,7 @@ export default defineComponent({
 
     useLock(
       () => props.floating,
-      () => isRow
+      () => !isRow.value
     )
 
     let dropdownFloaterTop = 'auto'
