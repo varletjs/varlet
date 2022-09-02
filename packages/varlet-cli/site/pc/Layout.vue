@@ -55,6 +55,14 @@ const handleSidebarChange = (menu: Menu) => {
   menuName.value = menu.doc
 }
 
+const confirmClose = () => {
+  if (!window.confirm('The code will no longer be saved after closing. Are you sure you want to close?')) {
+    return
+  }
+
+  context.showPlayground = false
+}
+
 onMounted(() => {
   init()
 
@@ -62,7 +70,7 @@ onMounted(() => {
     const { data } = event
 
     if (data.action === 'playground-close') {
-      context.showPlayground = false
+      confirmClose()
     }
   })
 })
@@ -113,7 +121,11 @@ watch(
     </div>
   </div>
 
-  <var-popup position="right" v-model:show="context.showPlayground">
+  <var-popup
+    position="right"
+    :show="context.showPlayground"
+    @click-overlay="confirmClose"
+  >
     <div class="varlet-site-playground-container">
       <iframe id="playground" class="varlet-site-playground-iframe" :src="context.playgroundURL" frameborder="0"></iframe>
     </div>
