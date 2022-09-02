@@ -244,10 +244,12 @@ export default defineComponent({
       return {
         placement,
         modifiers: [
-          flip,
+          {
+            ...flip,
+            enabled: show.value,
+          },
           {
             ...offset,
-            enabled: show.value,
             options: {
               offset: [skidding, distance],
             },
