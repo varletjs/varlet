@@ -1,5 +1,6 @@
 import execa from 'execa'
 import { VITEST_CONFIG } from '../shared/constant'
+import { buildSiteEntry } from '../compiler/compileSiteEntry'
 
 interface TestCommandOptions {
   watch?: boolean
@@ -9,6 +10,9 @@ interface TestCommandOptions {
 
 export async function test({ component, watch, coverage }: TestCommandOptions) {
   process.env.NODE_ENV = 'test'
+
+  // Test cases may contain documentation example code, and site dependencies need to build
+  await buildSiteEntry()
 
   const args = ['--config', VITEST_CONFIG]
 
