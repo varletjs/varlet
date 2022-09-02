@@ -1,6 +1,6 @@
 <template>
   <div class="varlet-site-sidebar var-elevation--3">
-    <var-site-cell
+    <var-cell
       class="varlet-site-sidebar__item"
       :id="item.doc"
       :class="{
@@ -11,9 +11,7 @@
       :key="index"
       v-for="(item, index) in menu"
       v-ripple="{
-        touchmoveForbid: false,
         disabled: item.type === menuTypes.TITLE,
-        color: themes['color-side-bar']
       }"
       @click="changeRoute(item)"
     >
@@ -21,17 +19,15 @@
       <span class="varlet-site-sidebar__item--title" v-if="item.type === menuTypes.TITLE">{{ item.text[language]
         }}</span>
       <span v-else>{{ item.text[language] }}</span>
-    </var-site-cell>
+    </var-cell>
   </div>
 </template>
 
 <script lang="ts">
-import config from '@config'
 import { MenuTypes } from '../../utils'
-import { reactive, ref, defineComponent } from 'vue'
+import { reactive, defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import type { Menu } from '../Layout.vue'
-import { get } from 'lodash-es'
 
 export default defineComponent({
   name: 'AppSidebar',
@@ -49,7 +45,6 @@ export default defineComponent({
   emits: ['change'],
   setup(props, { emit }) {
     const menuTypes = reactive(MenuTypes)
-    const themes = ref(get(config, 'themes'))
 
     const changeRoute = (item: Menu) => {
       if (item.type === MenuTypes.TITLE || props.menuName === item.doc) {
@@ -61,7 +56,6 @@ export default defineComponent({
 
     return {
       menuTypes,
-      themes,
       changeRoute
     }
   }

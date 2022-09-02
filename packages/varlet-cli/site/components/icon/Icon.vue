@@ -1,15 +1,17 @@
 <template>
   <component
-    class="var-site-icon"
     :is="isURL(name) ? 'img' : 'i'"
-    :class="[
-      `${namespace}--set`,
-      isURL(name) ? 'var-site-icon__image' : `${namespace}-${nextName}`,
-      shrinking ? 'var-site-icon--shrinking' : null,
-    ]"
+    :class="
+      classes(
+        n(),
+        `${namespace}--set`,
+        [isURL(name), n('image'), `${namespace}-${nextName}`],
+        [shrinking, n('--shrinking')]
+      )
+    "
     :style="{
       color,
-      transition: `all ${toNumber(transition)}ms`,
+      transition: `transform ${toNumber(transition)}ms`,
       width: isURL(name) ? toSizeUnit(size) : null,
       height: isURL(name) ? toSizeUnit(size) : null,
       fontSize: toSizeUnit(size),
@@ -22,12 +24,15 @@
 <script lang="ts">
 import { defineComponent, watch, ref, nextTick } from 'vue'
 import { isURL, toNumber } from '@varlet/shared'
-import { toSizeUnit } from '../utils/elements'
 import { props } from './props'
+import { toSizeUnit } from '../utils/elements'
 import type { Ref } from 'vue'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('icon')
 
 export default defineComponent({
-  name: 'VarSiteIcon',
+  name: 'VarIcon',
   props,
   setup(props) {
     const nextName: Ref<string | undefined> = ref('')
@@ -52,6 +57,8 @@ export default defineComponent({
     watch(() => props.name, handleNameChange, { immediate: true })
 
     return {
+      n,
+      classes,
       nextName,
       shrinking,
       isURL,

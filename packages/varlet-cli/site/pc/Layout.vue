@@ -1,12 +1,13 @@
-<script lang="ts">
+<script lang="ts" setup>
 import config from '@config'
 import AppMobile from './components/AppMobile.vue'
 import AppHeader from './components/AppHeader.vue'
 import AppSidebar from './components/AppSidebar.vue'
-import { defineComponent, nextTick, onMounted, ref, watch } from 'vue'
+import context from '../components/context'
+import { nextTick, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { get } from 'lodash-es'
-import { getPCLocationInfo, MenuTypes } from '../utils'
+import { getPCLocationInfo, MenuTypes } from "../utils";
 import type { Ref } from 'vue'
 
 export interface Menu {
@@ -15,81 +16,72 @@ export interface Menu {
   type: MenuTypes
 }
 
-export default defineComponent({
-  components: {
-    AppMobile,
-    AppHeader,
-    AppSidebar
-  },
-  setup() {
-    const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))
-    const useMobile = ref(get(config, 'useMobile'))
-    const mobileRedirect = get(config, 'mobile.redirect')
+const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))
+const useMobile = ref(get(config, 'useMobile'))
+const mobileRedirect = get(config, 'mobile.redirect')
 
-    const language: Ref<string> = ref('')
-    const componentName: Ref<null | string> = ref(null)
-    const menuName: Ref<string> = ref('')
-    const doc: Ref<HTMLElement | null> = ref(null)
-    const route = useRoute()
+const language: Ref<string> = ref('')
+const componentName: Ref<null | string> = ref(null)
+const menuName: Ref<string> = ref('')
+const doc: Ref<HTMLElement | null> = ref(null)
+const route = useRoute()
 
-    const getComponentNameByMenuName = (menuName: string) => {
-      const currentMenu = menu.value.find(menu => menu.doc === menuName)
-      return currentMenu?.type === MenuTypes.COMPONENT ? menuName : mobileRedirect.slice(1)
-    }
+const getComponentNameByMenuName = (menuName: string) => {
+  const currentMenu = menu.value.find(menu => menu.doc === menuName)
+  return currentMenu?.type === MenuTypes.COMPONENT ? menuName : mobileRedirect.slice(1)
+}
 
-    const init = () => {
-      const { menuName } = getPCLocationInfo()
+const init = () => {
+  const { menuName } = getPCLocationInfo()
 
-      nextTick(() => {
-        const children = document
-          .querySelector('.varlet-site-sidebar')!
-          .getElementsByClassName('var-site-cell')
-        const index = menu.value.findIndex((item) => item.doc === menuName)
+  nextTick(() => {
+    const children = document
+      .querySelector('.varlet-site-sidebar')!
+      .getElementsByClassName('var-site-cell')
+    const index = menu.value.findIndex((item) => item.doc === menuName)
 
-        if (index !== -1) {
-          children[index].scrollIntoView({
-            block: 'center',
-            inline: 'start',
-          })
-        }
+    if (index !== -1) {
+      children[index].scrollIntoView({
+        block: 'center',
+        inline: 'start',
       })
     }
+  })
+}
 
-    const handleSidebarChange = (menu: Menu) => {
-      doc.value!.scrollTop = 0
-      componentName.value = getComponentNameByMenuName(menu.doc)
-      menuName.value = menu.doc
+const handleSidebarChange = (menu: Menu) => {
+  doc.value!.scrollTop = 0
+  componentName.value = getComponentNameByMenuName(menu.doc)
+  menuName.value = menu.doc
+}
+
+onMounted(() => {
+  init()
+
+  window.addEventListener('message', (event) => {
+    const { data } = event
+
+    if (data.action === 'playground-close') {
+      context.showPlayground = false
     }
-
-    onMounted(init)
-
-    watch(
-      () => route.path,
-      () => {
-        const { language: lang, menuName: _menuName } = getPCLocationInfo()
-        if (!lang || !_menuName) {
-          return
-        }
-
-        componentName.value = getComponentNameByMenuName(_menuName)
-        menuName.value = _menuName
-        language.value = lang
-        document.title = get(config, 'pc.title')[lang] as string
-      },
-      { immediate: true }
-    )
-
-    return {
-      menu,
-      language,
-      componentName,
-      menuName,
-      doc,
-      useMobile,
-      handleSidebarChange,
-    }
-  },
+  })
 })
+
+watch(
+  () => route.path,
+  () => {
+    const { language: lang, menuName: _menuName } = getPCLocationInfo()
+    if (!lang || !_menuName) {
+      return
+    }
+
+    componentName.value = getComponentNameByMenuName(_menuName)
+    menuName.value = _menuName
+    language.value = lang
+    document.title = get(config, 'pc.title')[lang] as string
+  },
+  { immediate: true }
+)
 </script>
 
 <template>
@@ -120,9 +112,30 @@ export default defineComponent({
       />
     </div>
   </div>
+
+  <var-popup position="right" v-model:show="context.showPlayground">
+    <div class="varlet-site-playground-container">
+      <iframe id="playground" class="varlet-site-playground-iframe" :src="context.playgroundURL" frameborder="0"></iframe>
+    </div>
+  </var-popup>
 </template>
 
 <style>
+.varlet-site-playground-container {
+  width: calc(100vw - 256px);
+  max-width: 1360px;
+  height: 100vh;
+}
+
+.varlet-site-playground-iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.var-site-popup__content {
+  background-color: rgba(0, 0, 0, 0)
+}
+
 .hljs {
   background: var(--site-config-color-hl-background) !important;
   padding: 0 !important;
@@ -230,6 +243,7 @@ iframe {
   &-site {
     min-width: 1200px;
     padding: 60px 0 0;
+
     &-content {
       display: flex;
       background: var(--site-config-color-body);

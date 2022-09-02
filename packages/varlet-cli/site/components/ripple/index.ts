@@ -1,8 +1,12 @@
 import context from '../context'
 import './ripple.less'
 import '../styles/common.less'
+import { supportTouch } from '../utils/elements'
+import { createNamespace } from '../utils/components'
 import type { Directive, Plugin, App } from 'vue'
 import type { DirectiveBinding } from '@vue/runtime-core'
+
+const { n } = createNamespace('ripple')
 
 interface RippleStyles {
   x: number
@@ -68,12 +72,12 @@ function createRipple(this: RippleHTMLElement, event: TouchEvent) {
 
     const { x, y, centerX, centerY, size }: RippleStyles = computeRippleStyles(this, event)
     const ripple: RippleHTMLElement = document.createElement('div')
-    ripple.classList.add('var-site-ripple')
+    ripple.classList.add(n())
     ripple.style.opacity = `0`
     ripple.style.transform = `translate(${x}px, ${y}px) scale3d(.3, .3, .3)`
     ripple.style.width = `${size}px`
     ripple.style.height = `${size}px`
-    ripple.style.backgroundColor = _ripple.color ?? 'currentColor'
+    _ripple.color && (ripple.style.backgroundColor = _ripple.color)
     ripple.dataset.createdAt = String(performance.now())
 
     setStyles(this)
@@ -93,7 +97,7 @@ function removeRipple(this: RippleHTMLElement) {
   const _ripple = this._ripple as RippleOptions
 
   const task = () => {
-    const ripples: NodeListOf<RippleHTMLElement> = this.querySelectorAll('.var-site-ripple')
+    const ripples: NodeListOf<RippleHTMLElement> = this.querySelectorAll(`.${n()}`)
     if (!ripples.length) {
       return
     }
@@ -113,6 +117,11 @@ function removeRipple(this: RippleHTMLElement) {
 
 function forbidRippleTask(this: RippleHTMLElement) {
   const _ripple = this._ripple as RippleOptions
+
+  if (!supportTouch()) {
+    return
+  }
+
   if (!_ripple.touchmoveForbid) {
     return
   }
@@ -145,11 +154,23 @@ function unmounted(el: RippleHTMLElement) {
 }
 
 function updated(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>) {
-  el._ripple = {
-    ...el._ripple,
-    ...(binding.value ?? {}),
+  const newBinding = {
     touchmoveForbid: binding.value?.touchmoveForbid ?? context.touchmoveForbid,
-    tasker: null,
+    color: binding.value?.color,
+    disabled: binding.value?.disabled,
+  }
+
+  const diff =
+    newBinding.touchmoveForbid !== el._ripple?.touchmoveForbid ||
+    newBinding.color !== el._ripple?.color ||
+    newBinding.disabled !== el._ripple?.disabled
+
+  if (diff) {
+    el._ripple = {
+      tasker: newBinding.disabled ? null : el._ripple?.tasker,
+      removeRipple: el._ripple?.removeRipple,
+      ...newBinding,
+    }
   }
 }
 

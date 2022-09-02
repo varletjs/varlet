@@ -83,3 +83,20 @@ export function doubleRaf() {
     })
   })
 }
+
+export function supportTouch() {
+  const inBrowser = typeof window !== 'undefined'
+  return inBrowser && 'ontouchstart' in window
+}
+
+export const multiplySizeUnit = (value: unknown, quantity = 1) => {
+  if (value == null) {
+    return undefined
+  }
+
+  const legalSize = toSizeUnit(value) as string
+
+  const unit = legalSize.match(/(vh|%|rem|px|vw)$/)![0]
+
+  return `${parseFloat(legalSize) * quantity}${unit}`
+}

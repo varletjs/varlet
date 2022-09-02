@@ -1,37 +1,49 @@
 <template>
-  <div class="var-site-cell" :class="[border ? 'var-site-cell--border' : null]">
-    <div class="var-site-cell__icon" :class="[iconClass ? iconClass : null]" v-if="$slots.icon || icon">
+  <div :class="classes(n(), [border, n('--border')])">
+    <div :class="classes(n('icon'), [iconClass, iconClass])" v-if="$slots.icon || icon">
       <slot name="icon">
-        <var-site-icon class="var-site--flex" :name="icon" />
+        <var-icon class="var--flex" :name="icon" />
       </slot>
     </div>
-    <div class="var-site-cell__content">
-      <div class="var-site-cell__title" :class="[titleClass ? titleClass : null]">
+    <div :class="n('content')">
+      <div :class="classes(n('title'), [titleClass, titleClass])">
         <slot>{{ title }}</slot>
       </div>
-      <div class="var-site-cell__desc" :class="[descClass ? descClass : null]" v-if="$slots.desc || desc">
-        <slot name="desc">
-          {{ desc }}
+      <div
+        :class="classes(n('description'), [descriptionClass, descriptionClass])"
+        v-if="$slots.description || description"
+      >
+        <slot name="description">
+          {{ description }}
         </slot>
       </div>
     </div>
-    <div class="var-site-cell__extra" :class="[extraClass ? extraClass : null]" v-if="$slots.extra">
+    <div :class="classes(n('extra'), [extraClass, extraClass])" v-if="$slots.extra">
       <slot name="extra" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import VarIcon from '../icon'
 import { defineComponent } from 'vue'
 import { props } from './props'
-import Icon from '../icon'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('cell')
 
 export default defineComponent({
-  name: 'VarSiteCell',
+  name: 'VarCell',
   components: {
-    [Icon.name]: Icon,
+    VarIcon,
   },
   props,
+  setup() {
+    return {
+      n,
+      classes,
+    }
+  },
 })
 </script>
 

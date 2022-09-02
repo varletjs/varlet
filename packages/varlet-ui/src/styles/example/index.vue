@@ -7,8 +7,8 @@ import { watchDarkMode } from '@varlet/cli/site/utils'
 const elevations = Array.from({ length: 25 }).map((_, index) => index)
 const background = ref(dark)
 
-watchDarkMode(dark, (themes) => {
-  background.value = themes === 'darkThemes' ? '#303030' : '#fff'
+watchDarkMode(dark, (theme) => {
+  background.value = theme === 'darkTheme' ? '#303030' : '#fff'
 })
 </script>
 

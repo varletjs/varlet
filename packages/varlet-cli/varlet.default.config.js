@@ -4,7 +4,6 @@ module.exports = {
   host: 'localhost',
   port: 8080,
   title: 'VARLET',
-  themesKey: 'VARLET_THEMES',
   logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
   defaultLanguage: 'zh-CN',
   highlight: {
@@ -180,7 +179,8 @@ module.exports = {
       darkMode: true,
     },
   },
-  themes: {
+  themeKey: 'VARLET_THEME',
+  lightTheme: {
     'color-body': '#fff',
     'color-index-page-background': '#fff',
     'color-index-page-feature-background': '#fff',
@@ -222,7 +222,7 @@ module.exports = {
     'color-hl-group-h': '#06a6e9',
     'color-hl-group-i': '#f23733',
   },
-  darkThemes: {
+  darkTheme: {
     'color-body': '#121212',
     'color-index-page-background': '#272727',
     'color-index-page-feature-background': '#303030',

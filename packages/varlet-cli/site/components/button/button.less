@@ -5,7 +5,7 @@
 @site-button-warning-color: var(--site-color-warning);
 @site-button-info-color: var(--site-color-info);
 @site-button-disabled-color: var(--site-color-disabled);
-@site-button-disabled-text-color: #bdbdbd;
+@site-button-disabled-text-color: var(--site-color-text-disabled);
 @site-button-border-radius: 4px;
 @site-button-mini-padding: 0 9px;
 @site-button-small-padding: 0 11px;
@@ -44,22 +44,22 @@
   align-items: center;
   outline: none;
   border: none;
-  line-height: 1.2;
   border-radius: var(--site-button-border-radius);
   user-select: none;
   cursor: pointer;
   font-family: inherit;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, background-color 0.25s;
   will-change: box-shadow;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   white-space: nowrap;
+  line-height: 1;
 
   &:active {
-    box-shadow: 0 3px 5px -1px var(--site-shadow-key-umbra-opacity), 0 5px 8px 0 var(--site-shadow-key-penumbra-opacity),
-      0 1px 14px 0 var(--site-shadow-key-ambient-opacity);
+    box-shadow: 0 3px 5px -1px var(--shadow-key-umbra-opacity), 0 5px 8px 0 var(--shadow-key-penumbra-opacity),
+      0 1px 14px 0 var(--shadow-key-ambient-opacity);
   }
 
-  &__loading {
+  &__loading[var-site-button-cover] {
     position: absolute;
     top: 50%;
     left: 50%;

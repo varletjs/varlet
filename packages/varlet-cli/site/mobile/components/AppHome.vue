@@ -15,7 +15,7 @@
     @click="toComponent(component)"
   >
     <span>{{ component.text[lang] }}</span>
-    <var-site-icon name="chevron-right" size="14" />
+    <var-icon name="chevron-right" size="14" />
   </div>
 </template>
 

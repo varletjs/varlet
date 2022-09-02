@@ -2,7 +2,7 @@
 import config from '@config'
 import { ref, computed, defineComponent } from 'vue'
 import { get } from 'lodash-es'
-import { getBrowserThemes, getPCLocationInfo, removeEmpty, setThemes, watchThemes } from '../../utils'
+import { getBrowserTheme, getPCLocationInfo, removeEmpty, setTheme, Theme, watchTheme } from "../../utils";
 import { useRouter } from 'vue-router'
 import AnimationBox from './AnimationBox.vue'
 import type { Ref, ComputedRef } from 'vue'
@@ -18,7 +18,6 @@ export default defineComponent({
   setup() {
     const title: Ref<string> = ref(get(config, 'title'))
     const logo: Ref<string> = ref(get(config, 'logo'))
-    const themesKey = get(config, 'themesKey')
     const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
     const currentVersion: Ref<string> = ref(get(config, 'pc.header.version.current'))
     const versionItems: Ref<Record<string, string>> = ref(get(config, 'pc.header.version.items'))
@@ -26,7 +25,9 @@ export default defineComponent({
     const github: Ref<string> = ref(get(config, 'pc.header.github'))
     const redirect = get(config, 'pc.redirect')
     const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
-    const currentThemes = ref(getBrowserThemes(themesKey))
+    const currentTheme = ref(getBrowserTheme())
+
+    console.log(currentTheme.value);
 
     const isOpenLanguageMenu: Ref<boolean> = ref(false)
     const isOpenVersionsMenu: Ref<boolean> = ref(false)
@@ -45,18 +46,23 @@ export default defineComponent({
       isOpenLanguageMenu.value = false
     }
 
-    const setCurrentThemes = (themes: 'themes' | 'darkThemes') => {
-      currentThemes.value = themes
-      setThemes(config, currentThemes.value)
-      window.localStorage.setItem(themesKey, currentThemes.value)
+    const setCurrentTheme = (theme: Theme) => {
+      currentTheme.value = theme
+      setTheme(config, currentTheme.value)
+      window.localStorage.setItem(get(config, 'themeKey'), currentTheme.value)
     }
 
-    const getThemesMessage = () => ({ action: 'themesChange', from: 'pc', data: currentThemes.value })
+    const getThemeMessage = () => ({ action: 'theme-change', from: 'pc', data: currentTheme.value })
 
     const toggleTheme = () => {
-      setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
-      window.postMessage(getThemesMessage(), '*')
-      ;(document.getElementById('mobile') as HTMLIFrameElement).contentWindow!.postMessage(getThemesMessage(), '*')
+      setCurrentTheme(currentTheme.value === 'darkTheme' ? 'lightTheme' : 'darkTheme')
+
+      window.postMessage(getThemeMessage(), '*')
+      ;(document.getElementById('mobile') as HTMLIFrameElement).contentWindow!.postMessage(getThemeMessage(), '*')
+    }
+
+    const notifyIframeThemeChange = (target: 'mobile' | 'playground') => {
+      ;(document.getElementById(target) as HTMLIFrameElement).contentWindow!.postMessage(getThemeMessage(), '*')
     }
 
     const open = (value: string) => {
@@ -65,12 +71,20 @@ export default defineComponent({
       }, 350);
     }
 
-    watchThemes((themes, from) => {
-      from === 'mobile' && setCurrentThemes(themes)
+    watchTheme((theme, from) => {
+      if (from === 'mobile') {
+        setCurrentTheme(theme)
+      }
+
+      if (from === 'playground') {
+        console.log(123123);
+        setCurrentTheme(theme)
+        notifyIframeThemeChange('mobile')
+      }
     })
 
-    setThemes(config, currentThemes.value)
-    window.postMessage(getThemesMessage(), '*')
+    setTheme(config, currentTheme.value)
+    window.postMessage(getThemeMessage(), '*')
 
     return {
       logo,
@@ -85,7 +99,7 @@ export default defineComponent({
       isOpenLanguageMenu,
       isOpenVersionsMenu,
       darkMode,
-      currentThemes,
+      currentTheme,
       open,
       backRoot,
       handleLanguageChange,
@@ -110,38 +124,38 @@ export default defineComponent({
         v-if="versionItems"
       >
         <span style="font-size: 14px;">{{ currentVersion }}</span>
-        <var-site-icon name="chevron-down" />
+        <var-icon name="chevron-down" />
         <transition name="fade">
           <div
             class="varlet-site-header__animation-list varlet-site-header__animation-versions var-site-elevation--5"
             v-show="isOpenVersionsMenu"
             :style="{ pointerEvents: isOpenVersionsMenu ? 'auto' : 'none' }"
           >
-            <var-site-cell
+            <var-cell
               v-for="(value, key) in nonEmptyVersions"
               v-ripple
               :key="key"
               :class="{ 'varlet-site-header__animation-list--active': currentVersion === key }"
               @click="open(value)"
             >{{ key }}
-            </var-site-cell>
+            </var-cell>
           </div>
         </transition>
       </div>
 
       <a class="varlet-site-header__link" target="_blank" :href="playground" v-ripple v-if="playground">
-        <var-site-icon name="code-json" :size="24" />
+        <var-icon name="code-json" :size="24" />
       </a>
       <a class="varlet-site-header__link" target="_blank" :href="github" v-ripple v-if="github">
-        <var-site-icon name="github" :size="28" />
+        <var-icon name="github" :size="28" />
       </a>
       <div class="varlet-site-header__theme" v-ripple v-if="darkMode" @click="toggleTheme">
-        <var-site-icon
+        <var-icon
           size="26px"
-          :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'"
+          :name="currentTheme === 'lightTheme' ? 'white-balance-sunny' : 'weather-night'"
           :style="{
-            marginBottom: currentThemes === 'darkThemes' && '2px',
-            marginTop: currentThemes === 'themes' && '2px',
+            marginBottom: currentTheme === 'darkTheme' && '2px',
+            marginTop: currentTheme === 'lightTheme' && '2px',
           }"
         />
       </div>
@@ -151,22 +165,22 @@ export default defineComponent({
         @mouseleave="isOpenLanguageMenu = false"
         v-if="languages"
       >
-        <var-site-icon name="translate" size="26px" />
-        <var-site-icon name="chevron-down" />
+        <var-icon name="translate" size="26px" />
+        <var-icon name="chevron-down" />
         <transition name="fade">
           <div
             class="varlet-site-header__animation-list var-site-elevation--5"
             v-show="isOpenLanguageMenu"
             :style="{ pointerEvents: isOpenLanguageMenu ? 'auto' : 'none' }"
           >
-            <var-site-cell
+            <var-cell
               v-for="(value, key) in nonEmptyLanguages"
               v-ripple
               :key="key"
               :class="{ 'varlet-site-header__animation-list--active': language === key }"
               @click="handleLanguageChange(key)"
               >{{ value }}
-            </var-site-cell>
+            </var-cell>
           </div>
         </transition>
       </div>
@@ -248,7 +262,7 @@ export default defineComponent({
     align-items: center;
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 562px) {
     &__tail {
       display: none;
     }

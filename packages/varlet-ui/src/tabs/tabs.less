@@ -41,6 +41,10 @@
     &-scrollable {
       overflow-x: auto;
       overflow-y: hidden;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     &-padding {
@@ -61,6 +65,10 @@
     &-scrollable {
       overflow-x: hidden;
       overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     &-padding {
