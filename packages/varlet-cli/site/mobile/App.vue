@@ -1,12 +1,12 @@
 <template>
   <div style="position: relative">
     <header>
-      <var-site-app-bar class="app-bar" title-position="left" :title="bigCamelizeComponentName">
+      <var-app-bar class="app-bar" title-position="left" :title="bigCamelizeComponentName">
         <template #left>
-          <var-site-button v-if="showBackIcon" text round @click="back" color="transparent" text-color="#fff">
-            <var-site-icon name="chevron-left" class="arrow-left" style="margin-top: 1px" />
-          </var-site-button>
-          <var-site-button
+          <var-button v-if="showBackIcon" text round @click="back" color="transparent" text-color="#fff">
+            <var-icon name="chevron-left" class="arrow-left" style="margin-top: 1px" />
+          </var-button>
+          <var-button
             v-if="!showBackIcon && github"
             style="margin-left: 2px"
             text
@@ -15,11 +15,11 @@
             color="transparent"
             text-color="#fff"
           >
-            <var-site-icon name="github" class="github" style="margin-top: 1px" />
-          </var-site-button>
+            <var-icon name="github" class="github" style="margin-top: 1px" />
+          </var-button>
         </template>
         <template #right>
-          <var-site-button
+          <var-button
             text
             round
             color="transparent"
@@ -30,13 +30,13 @@
             v-if="darkMode"
             @click="toggleTheme"
           >
-            <var-site-icon
+            <var-icon
               class="theme"
               color="#fff"
-              :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'"
+              :name="currentTheme === 'lightTheme' ? 'white-balance-sunny' : 'weather-night'"
             />
-          </var-site-button>
-          <var-site-button
+          </var-button>
+          <var-button
             class="i18n-button"
             text
             color="transparent"
@@ -44,11 +44,11 @@
             @click.stop="showMenu = true"
             v-if="languages"
           >
-            <var-site-icon name="translate" class="i18n" />
-            <var-site-icon name="chevron-down" class="arrow-down" />
-          </var-site-button>
+            <var-icon name="translate" class="i18n" />
+            <var-icon name="chevron-down" class="arrow-down" />
+          </var-button>
         </template>
-      </var-site-app-bar>
+      </var-app-bar>
     </header>
     <div class="router-view__block">
       <router-view />
@@ -56,7 +56,7 @@
 
     <transition name="site-menu">
       <div class="settings var-site-elevation--3" v-if="showMenu">
-        <var-site-cell
+        <var-cell
           v-for="(value, key) in nonEmptyLanguages"
           :key="key"
           class="mobile-language-cell"
@@ -65,7 +65,7 @@
           @click="changeLanguage(key)"
         >
           {{ value }}
-        </var-site-cell>
+        </var-cell>
       </div>
     </transition>
   </div>
@@ -76,19 +76,20 @@ import config from '@config'
 import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import {
-  getBrowserThemes,
+  getBrowserTheme,
   inIframe,
   isPhone,
   removeEmpty,
-  setThemes,
+  setTheme,
+  Theme,
   watchLang,
-  watchThemes,
-} from '../utils'
+  watchTheme
+} from "../utils";
 import { bigCamelize } from '@varlet/shared'
 import { get } from 'lodash-es'
 
 export default defineComponent({
-  setup: function () {
+  setup() {
     const bigCamelizeComponentName: Ref<string> = ref('')
     const route = useRoute()
     const showBackIcon: Ref<boolean> = ref(false)
@@ -97,10 +98,9 @@ export default defineComponent({
     const languages: Ref<Record<string, string>> = ref(get(config, 'mobile.header.i18n'))
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
     const redirect = get(config, 'mobile.redirect', '')
-    const themesKey = get(config, 'themesKey')
     const github: Ref<string> = ref(get(config, 'mobile.header.github'))
     const darkMode: Ref<string> = ref(get(config, 'mobile.header.darkMode'))
-    const currentThemes = ref(getBrowserThemes(themesKey))
+    const currentTheme = ref(getBrowserTheme())
 
     const changeLanguage = (lang: string) => {
       language.value = lang
@@ -142,34 +142,34 @@ export default defineComponent({
       }
     )
 
-    const getThemesMessage = () => ({ action: 'themesChange', from: 'mobile', data: currentThemes.value })
+    const getThemeMessage = () => ({ action: 'theme-change', from: 'mobile', data: currentTheme.value })
 
-    const setCurrentThemes = (themes: 'themes' | 'darkThemes') => {
-      currentThemes.value = themes
-      setThemes(config, currentThemes.value)
-      window.localStorage.setItem(themesKey, currentThemes.value)
+    const setCurrentTheme = (theme: Theme) => {
+      currentTheme.value = theme
+      setTheme(config, currentTheme.value)
+      window.localStorage.setItem(get(config, 'themeKey'), currentTheme.value)
     }
 
     const toggleTheme = () => {
-      setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
-      window.postMessage(getThemesMessage(), '*')
+      setCurrentTheme(currentTheme.value === 'darkTheme' ? 'lightTheme' : 'darkTheme')
+      window.postMessage(getThemeMessage(), '*')
 
       if (!isPhone() && inIframe()) {
-        ;(window.top as any).postMessage(getThemesMessage(), '*')
+        ;(window.top as any).postMessage(getThemeMessage(), '*')
       }
     }
 
     ;(window as any).toggleTheme = toggleTheme
 
-    setThemes(config, currentThemes.value)
-    window.postMessage(getThemesMessage(), '*')
+    setTheme(config, currentTheme.value)
+    window.postMessage(getThemeMessage(), '*')
 
     document.body.addEventListener('click', () => {
       showMenu.value = false
     })
 
-    watchThemes((themes, from) => {
-      from === 'pc' && setCurrentThemes(themes)
+    watchTheme((theme, from) => {
+      from === 'pc' && setCurrentTheme(theme)
     })
 
     return {
@@ -180,7 +180,7 @@ export default defineComponent({
       languages,
       language,
       nonEmptyLanguages,
-      currentThemes,
+      currentTheme,
       darkMode,
       toGithub,
       back,
@@ -255,13 +255,13 @@ header {
 }
 
 .mobile-language-cell {
-  color: var(--site-config-color-text);
-  background: var(--site-config-color-bar);
+  color: var(--site-config-color-text) !important;
+  background: var(--site-config-color-bar) !important;
   cursor: pointer;
 
   &--active {
-    color: var(--site-config-color-mobile-language-active);
-    background: var(--site-config-color-mobile-language-active-background);
+    color: var(--site-config-color-mobile-language-active) !important;
+    background: var(--site-config-color-mobile-language-active-background) !important;
   }
 }
 

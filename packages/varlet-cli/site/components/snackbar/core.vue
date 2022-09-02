@@ -1,12 +1,29 @@
 <template>
-  <div class="var-site-snackbar" :style="{ pointerEvents: isForbidClick ? 'auto' : 'none', zIndex }" v-show="show">
-    <div :class="snackbarClass" :style="{ zIndex }">
-      <div class="var-site-snackbar__content" :class="[contentClass]">
+  <div :class="n()" :style="{ pointerEvents: isForbidClick ? 'auto' : 'none', zIndex }" v-show="show">
+    <div
+      :class="
+        classes(
+          n('wrapper'),
+          n(`wrapper-${position}`),
+          'var-site-elevation--4',
+          [vertical, n('vertical')],
+          [type && SNACKBAR_TYPE.includes(type), n(`wrapper-${type}`)]
+        )
+      "
+      :style="{ zIndex }"
+    >
+      <div :class="[n('content'), contentClass]">
         <slot>{{ content }}</slot>
       </div>
-      <div class="var-site-snackbar__action">
-        <var-site-icon v-if="iconName" :name="iconName" />
-        <var-site-loading v-if="type === 'loading'" :type="loadingType" :size="loadingSize" />
+      <div :class="n('action')">
+        <var-icon v-if="iconName" :name="iconName" />
+        <var-loading
+          v-if="type === 'loading'"
+          :type="loadingType"
+          :size="loadingSize"
+          :color="loadingColor"
+          :radius="loadingRadius"
+        />
         <slot name="action" />
       </div>
     </div>
@@ -15,14 +32,17 @@
 
 <script lang="ts">
 import { defineComponent, watch, ref, onMounted, computed } from 'vue'
-import VarSiteLoading from '../loading'
-import VarSiteIcon from '../icon'
+import VarLoading from '../loading'
+import VarIcon from '../icon'
 import { useZIndex } from '../context/zIndex'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { SNACKBAR_TYPE } from './index'
 import type { Ref, ComputedRef } from 'vue'
 import type { SnackbarType } from './index'
+import { createNamespace } from '../utils/components'
+
+const { n, classes } = createNamespace('snackbar')
 
 const ICON_TYPE_DICT: Record<SnackbarType, string> = {
   success: 'checkbox-marked-circle',
@@ -35,25 +55,18 @@ const ICON_TYPE_DICT: Record<SnackbarType, string> = {
 export default defineComponent({
   name: 'VarSiteSnackbarCore',
   components: {
-    VarSiteLoading,
-    VarSiteIcon,
+    VarLoading,
+    VarIcon,
   },
   props,
   setup(props) {
     const timer: Ref = ref(null)
     const { zIndex } = useZIndex(() => props.show, 1)
 
-    useLock(props, 'show', 'lockScroll')
-
-    const snackbarClass: ComputedRef<string> = computed(() => {
-      const { position, vertical, type } = props
-
-      const baseClass = `var-site-snackbar__wrapper var-site-snackbar__wrapper-${position} var-site-elevation--4`
-      const verticalClass = vertical ? ' var-site-snackbar__vertical' : ''
-      const typeClass = type && SNACKBAR_TYPE.includes(type) ? ` var-site-snackbar__wrapper-${type}` : ''
-
-      return `${baseClass}${verticalClass}${typeClass}`
-    })
+    useLock(
+      () => props.show,
+      () => props.lockScroll
+    )
 
     const isForbidClick: ComputedRef<boolean> = computed(() => props.type === 'loading' || props.forbidClick)
 
@@ -98,8 +111,10 @@ export default defineComponent({
     })
 
     return {
+      SNACKBAR_TYPE,
+      n,
+      classes,
       zIndex,
-      snackbarClass,
       iconName,
       isForbidClick,
     }

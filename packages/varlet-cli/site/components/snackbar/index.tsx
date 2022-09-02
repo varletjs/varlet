@@ -1,9 +1,9 @@
-import VarSiteSnackbarCore from './core.vue'
-import VarSiteSnackbar from './Snackbar.vue'
+import VarSnackbarCore from './core.vue'
+import VarSnackbar from './Snackbar.vue'
 import context from '../context'
 import { reactive, TransitionGroup } from 'vue'
 import { mountInstance } from '../utils/components'
-import { isPlainObject, toNumber } from '@varlet/shared'
+import { isNumber, isPlainObject, isString, toNumber } from '@varlet/shared'
 import type { LoadingType, LoadingSize } from '../loading/props'
 import type { App, Component, TeleportProps } from 'vue'
 
@@ -95,7 +95,7 @@ const transitionGroupProps: any = {
 }
 
 const TransitionGroupHost = {
-  setup: function() {
+  setup() {
     return () => {
       const snackbarList = uniqSnackbarOptions.map(({ id, reactiveSnackOptions, _update }: UniqSnackbarOptions) => {
         const transitionGroupEl = document.querySelector('.var-site-transition-group')
@@ -111,11 +111,11 @@ const TransitionGroupHost = {
 
         const style = {
           position,
-          ...getTop(reactiveSnackOptions.position)
+          ...getTop(reactiveSnackOptions.position),
         }
 
         return (
-          <VarSiteSnackbarCore
+          <VarSnackbarCore
             {...reactiveSnackOptions}
             key={id}
             style={style}
@@ -139,11 +139,11 @@ const TransitionGroupHost = {
         </TransitionGroup>
       )
     }
-  }
+  },
 }
 
-const Snackbar: Snackbar = function (options: SnackbarOptions | string): SnackbarHandel {
-  const snackOptions: SnackbarOptions = isPlainObject(options) ? options : { content: options }
+const Snackbar: Snackbar = function (options: SnackbarOptions | string | number): SnackbarHandel {
+  const snackOptions: SnackbarOptions = isString(options) || isNumber(options) ? { content: String(options) } : options
   const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>({
     ...defaultOption,
     ...snackOptions,
@@ -194,7 +194,7 @@ SNACKBAR_TYPE.forEach((type) => {
 })
 
 Snackbar.install = function (app: App) {
-  app.component(VarSiteSnackbar.name, VarSiteSnackbar)
+  app.component(VarSnackbar.name, VarSnackbar)
 }
 
 Snackbar.allowMultiple = function (bool = false) {
@@ -213,7 +213,7 @@ Snackbar.clear = function () {
   })
 }
 
-Snackbar.Component = VarSiteSnackbar
+Snackbar.Component = VarSnackbar
 
 function opened(element: HTMLElement): void {
   const id = element.getAttribute('data-id')
@@ -261,10 +261,10 @@ function getTop(position = 'top') {
   return { top: position === 'top' ? '5%' : '45%' }
 }
 
-VarSiteSnackbar.install = function (app: App) {
-  app.component(VarSiteSnackbar.name, VarSiteSnackbar)
+VarSnackbar.install = function (app: App) {
+  app.component(VarSnackbar.name, VarSnackbar)
 }
 
-export const _SnackbarComponent = VarSiteSnackbar
+export const _SnackbarComponent = VarSnackbar
 
 export default Snackbar

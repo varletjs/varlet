@@ -22,9 +22,9 @@ const change = (value) => {
 }
 
 watchLang(use)
-watchDarkMode(dark, (themes) => {
-  bgColor.value = themes === 'darkThemes' ? 'rgb(41, 42, 45)' : '#e7edf7'
-  color.value = themes === 'darkThemes' ? '#3980e8' : '#2e67ba'
+watchDarkMode(dark, (theme) => {
+  bgColor.value = theme === 'darkTheme' ? 'rgb(41, 42, 45)' : '#e7edf7'
+  color.value = theme === 'darkTheme' ? '#3980e8' : '#2e67ba'
 })
 </script>
 

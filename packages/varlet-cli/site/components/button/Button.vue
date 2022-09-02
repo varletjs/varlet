@@ -1,17 +1,19 @@
 <template>
   <button
     v-ripple="{ disabled: disabled || !ripple }"
-    class="var-site-button var-site--box"
-    :class="[
-      `var-site-button--${size}`,
-      block ? 'var-site--flex var-site-button--block' : 'var-site--inline-flex',
-      disabled ? 'var-site-button--disabled' : null,
-      text ? `var-site-button--text-${type}` : `var-site-button--${type}`,
-      text ? 'var-site-button--text' : 'var-site-elevation--1',
-      text && disabled ? 'var-site-button--text-disabled' : null,
-      round ? 'var-site-button--round' : null,
-      outline ? 'var-site-button--outline' : null,
-    ]"
+    :class="
+      classes(
+        n(),
+        'var-site--box',
+        n(`--${size}`),
+        [block, `var-site--flex ${n('--block')}`, 'var-site--inline-flex'],
+        [disabled, n('--disabled')],
+        [text, `${n(`--text-${type}`)} ${n('--text')}`, `${n(`--${type}`)} var-site-elevation--2`],
+        [text && disabled, n('--text-disabled')],
+        [round, n('--round')],
+        [outline, n('--outline')]
+      )
+    "
     :style="{
       color: textColor,
       background: color,
@@ -20,14 +22,16 @@
     @click="handleClick"
     @touchstart="handleTouchstart"
   >
-    <var-site-loading
-      class="var-site-button__loading"
+    <var-loading
+      :class="n('loading')"
+      var-site-button-cover
+      :color="loadingColor"
       :type="loadingType"
       :size="loadingSize"
       :radius="loadingRadius"
-      v-if="loading"
+      v-if="loading || pending"
     />
-    <div class="var-site-button__content" :class="[loading ? 'var-site-button--hidden' : null]">
+    <div :class="classes(n('content'), [loading || pending, n('--hidden')])">
       <slot />
     </div>
   </button>
@@ -35,39 +39,57 @@
 
 <script lang="ts">
 import Ripple from '../ripple'
-import Loading from '../loading'
-import { defineComponent } from 'vue'
+import VarLoading from '../loading'
+import { defineComponent, ref } from 'vue'
 import { props } from './props'
+import { createNamespace } from '../utils/components'
+import type { Ref } from 'vue'
+
+const { n, classes } = createNamespace('button')
 
 export default defineComponent({
-  name: 'VarSiteButton',
+  name: 'VarButton',
   components: {
-    [Loading.name]: Loading,
+    VarLoading,
   },
   directives: { Ripple },
   props,
   setup(props) {
+    const pending: Ref<boolean> = ref(false)
+
+    const attemptAutoLoading = (result: any) => {
+      if (props.autoLoading) {
+        pending.value = true
+        Promise.resolve(result).finally(() => {
+          pending.value = false
+        })
+      }
+    }
+
     const handleClick = (e: Event) => {
       const { loading, disabled, onClick } = props
 
-      if (loading || disabled) {
+      if (!onClick || loading || disabled || pending.value) {
         return
       }
 
-      onClick?.(e)
+      attemptAutoLoading(onClick(e))
     }
 
     const handleTouchstart = (e: Event) => {
       const { loading, disabled, onTouchstart } = props
 
-      if (loading || disabled) {
+      if (!onTouchstart || loading || disabled || pending.value) {
         return
       }
 
-      onTouchstart?.(e)
+      attemptAutoLoading(onTouchstart(e))
     }
 
     return {
+      n,
+      classes,
+      pending,
       handleClick,
       handleTouchstart,
     }

@@ -39,7 +39,7 @@ export const props = {
   },
   // circle 的尺寸
   size: {
-    type: Number,
+    type: [Number, String],
     default: 40,
   },
   // circle的原点

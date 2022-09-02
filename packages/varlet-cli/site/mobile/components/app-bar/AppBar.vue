@@ -1,33 +1,24 @@
 <template>
   <div
-    class="var-site-app-bar"
-    :class="{ 'var-site-elevation--3': elevation }"
+    :class="classes(n(), [elevation, 'var-site-elevation--3'])"
     :style="{
       background: color,
       color: textColor,
     }"
   >
-    <div class="var-site-app-bar__left">
+    <div :class="n('left')">
       <slot name="left" />
-      <div
-        class="var-site-app-bar__title"
-        :style="{ paddingLeft }"
-        v-if="titlePosition === 'left'"
-      >
+      <div :class="n('title')" :style="{ paddingLeft }" v-if="titlePosition === 'left'">
         <slot>{{ title }}</slot>
       </div>
     </div>
 
-    <div class="var-site-app-bar__title" v-if="titlePosition === 'center'">
+    <div :class="n('title')" v-if="titlePosition === 'center'">
       <slot>{{ title }}</slot>
     </div>
 
-    <div class="var-site-app-bar__right">
-      <div
-        class="var-site-app-bar__title"
-        :style="{ paddingRight }"
-        v-if="titlePosition === 'right'"
-      >
+    <div :class="n('right')">
+      <div :class="n('title')" :style="{ paddingRight }" v-if="titlePosition === 'right'">
         <slot>{{ title }}</slot>
       </div>
       <slot name="right" />
@@ -36,11 +27,14 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, onUpdated, ref, Ref} from 'vue'
+import { defineComponent, ref, Ref, onMounted, onUpdated } from 'vue'
 import { props } from './props'
+import { createNamespace } from '../../../components/utils/components'
+
+const { n, classes } = createNamespace('app-bar')
 
 export default defineComponent({
-  name: 'VarSiteAppBar',
+  name: 'VarAppBar',
   props,
   setup(props, { slots }) {
     const paddingLeft: Ref<number | undefined> = ref()
@@ -55,15 +49,17 @@ export default defineComponent({
     onUpdated(computePadding)
 
     return {
+      n,
+      classes,
       paddingLeft,
-      paddingRight
+      paddingRight,
     }
-  }
+  },
 })
 </script>
 
 <style lang="less">
-@import '../styles/common';
-@import '../styles/elevation';
+@import '../../../components/styles/common';
+@import '../../../components/styles/elevation';
 @import './appBar';
 </style>
