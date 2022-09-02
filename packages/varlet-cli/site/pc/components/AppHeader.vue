@@ -56,11 +56,13 @@ export default defineComponent({
       setCurrentTheme(currentTheme.value === 'darkTheme' ? 'lightTheme' : 'darkTheme')
 
       window.postMessage(getThemeMessage(), '*')
-      ;(document.getElementById('mobile') as HTMLIFrameElement).contentWindow!.postMessage(getThemeMessage(), '*')
+      notifyThemeChange('mobile')
     }
 
-    const notifyIframeThemeChange = (target: 'mobile' | 'playground') => {
-      ;(document.getElementById(target) as HTMLIFrameElement).contentWindow!.postMessage(getThemeMessage(), '*')
+    const notifyThemeChange = (target: 'mobile' | 'window') => {
+      const contentWindow = target === 'window' ? window : (document.getElementById(target) as HTMLIFrameElement).contentWindow!
+
+      contentWindow.postMessage(getThemeMessage(), '*')
     }
 
     const open = (value: string) => {
@@ -76,12 +78,12 @@ export default defineComponent({
 
       if (from === 'playground') {
         setCurrentTheme(theme)
-        notifyIframeThemeChange('mobile')
+        notifyThemeChange('mobile')
       }
     })
 
     setTheme(config, currentTheme.value)
-    window.postMessage(getThemeMessage(), '*')
+    notifyThemeChange('window')
 
     return {
       logo,
