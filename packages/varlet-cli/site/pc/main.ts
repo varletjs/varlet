@@ -6,6 +6,8 @@ import config from '@config'
 import Icon from '../components/icon'
 import Cell from '../components/cell'
 import Ripple from '../components/ripple'
+import Button from '../components/button'
+import Popup from '../components/popup'
 import CodeExample from '../components/code-example'
 import Snackbar from '../components/snackbar'
 
@@ -91,4 +93,8 @@ createApp(App)
   // @ts-ignore
   .use(CodeExample)
   .use(Snackbar)
+  // @ts-ignore
+  .use(Popup)
+  // @ts-ignore
+  .use(Button)
   .mount('#app')

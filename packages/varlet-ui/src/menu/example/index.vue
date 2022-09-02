@@ -22,8 +22,8 @@ const bgColor = ref('#fff')
 const { top, bottom, offsetX, offsetX1, offsetY, offsetY1, event } = toRefs(values)
 
 watchLang(use)
-watchDarkMode(dark, (themes) => {
-  bgColor.value = themes === 'darkThemes' ? '#272727' : '#fff'
+watchDarkMode(dark, (theme) => {
+  bgColor.value = theme === 'darkTheme' ? '#272727' : '#fff'
 })
 </script>
 

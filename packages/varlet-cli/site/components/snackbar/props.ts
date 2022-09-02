@@ -41,10 +41,13 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  // 加载动画类型
   loadingType: pickProps(loadingProps, 'type'),
-  // 加载动画尺寸
   loadingSize: pickProps(loadingProps, 'size'),
+  loadingRadius: pickProps(loadingProps, 'radius'),
+  loadingColor: {
+    ...pickProps(loadingProps, 'color'),
+    default: 'currentColor',
+  },
   // 是否禁止滚动穿透
   lockScroll: {
     type: Boolean,
@@ -67,26 +70,26 @@ export const props = {
   },
   // 打开时的回调函数
   onOpen: {
-    type: Function,
+    type: Function as PropType<() => void>,
     default: () => {},
   },
   // 打开动画结束时的回调
   onOpened: {
-    type: Function,
+    type: Function as PropType<() => void>,
     default: () => {},
   },
   // 关闭时的回调函数
   onClose: {
-    type: Function,
+    type: Function as PropType<() => void>,
     default: () => {},
   },
   // 关闭动画结束时的回调
   onClosed: {
-    type: Function,
+    type: Function as PropType<() => void>,
     default: () => {},
   },
   'onUpdate:show': {
-    type: Function,
+    type: Function as PropType<(show: boolean) => void>,
   },
   _update: {
     type: String,

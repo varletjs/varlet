@@ -1,7 +1,9 @@
 @site-ripple-cubic-bezier: cubic-bezier(0.68, 0.01, 0.62, 0.6);
+@site-ripple-color: currentColor;
 
 :root {
   --site-ripple-cubic-bezier: @site-ripple-cubic-bezier;
+  --site-ripple-color: @site-ripple-color;
 }
 
 .var-site-ripple {
@@ -14,4 +16,5 @@
   will-change: transform, opacity;
   pointer-events: none;
   z-index: 100;
+  background-color: var(--site-ripple-color);
 }

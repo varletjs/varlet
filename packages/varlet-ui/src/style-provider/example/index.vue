@@ -6,7 +6,7 @@ import VarButton from '../../button'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import dark from '../../themes/dark'
 import { ref, reactive, onUnmounted } from 'vue'
-import { getBrowserThemes, watchLang } from '@varlet/cli/site/utils'
+import { getBrowserTheme, watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 const VarStyleProvider = StyleProvider.Component
@@ -43,7 +43,7 @@ const toggleRootTheme = () => {
 watchLang(use)
 
 onUnmounted(() => {
-  StyleProvider(getBrowserThemes() === 'darkThemes' ? dark : null)
+  StyleProvider(getBrowserTheme() === 'darkTheme' ? dark : null)
 })
 </script>
 

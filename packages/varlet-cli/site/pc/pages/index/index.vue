@@ -1,21 +1,18 @@
 <script setup lang="ts">
 import AnimationBox from '../../components/AnimationBox.vue'
 import config from '@config'
-import VarSiteButton from '../../../components/button'
-import VarSiteIcon from '../../../components/icon'
 import { get } from 'lodash-es'
 import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getBrowserThemes, setThemes } from '../../../utils'
-import { getPCLocationInfo, watchThemes } from '@varlet/cli/site/utils'
+import { getBrowserTheme, setTheme, Theme } from "../../../utils";
+import { getPCLocationInfo, watchTheme } from '@varlet/cli/site/utils'
 import type { Ref } from 'vue'
 
 const route = useRoute()
 const router = useRouter()
 
 const github = get(config, 'pc.header.github')
-const themesKey = get(config, 'themesKey')
-const currentThemes = ref(getBrowserThemes(themesKey))
+const currentTheme = ref(getBrowserTheme())
 const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
 const title: Ref<string> = ref(get(config, 'title'))
 const language: Ref<string> = ref(get(config, 'defaultLanguage'))
@@ -30,18 +27,18 @@ const getStar = () => {
   router.push(`/${language.value}/home`)
 }
 
-const getThemesMessage = () => ({ action: 'themesChange', from: 'pc', data: currentThemes.value })
+const getThemeMessage = () => ({ action: 'theme-change', from: 'pc', data: currentTheme.value })
 
-const setCurrentThemes = (themes: 'themes' | 'darkThemes') => {
-  currentThemes.value = themes
-  setThemes(config, currentThemes.value)
-  window.localStorage.setItem(themesKey, currentThemes.value)
+const setCurrentTheme = (theme: Theme) => {
+  currentTheme.value = theme
+  setTheme(config, currentTheme.value)
+  window.localStorage.setItem(get(config, 'themeKey'), currentTheme.value)
 }
 
 const toggleTheme = () => {
-  setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
-  window.postMessage(getThemesMessage(), '*')
-  ;(document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemesMessage(), '*')
+  setCurrentTheme(currentTheme.value === 'darkTheme' ? 'lightTheme' : 'darkTheme')
+  window.postMessage(getThemeMessage(), '*')
+  ;(document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemeMessage(), '*')
 }
 
 const setLocale = () => {
@@ -62,12 +59,12 @@ const toggleLanguages = () => {
   router.replace(replaceStr)
 }
 
-setThemes(config, currentThemes.value)
+setTheme(config, currentTheme.value)
 
-window.postMessage(getThemesMessage(), '*')
+window.postMessage(getThemeMessage(), '*')
 
-watchThemes((themes, from) => {
-  from === 'mobile' && setCurrentThemes(themes)
+watchTheme((theme, from) => {
+  from === 'mobile' && setCurrentTheme(theme)
 })
 
 watch(() => route.path, setLocale, { immediate: true })
@@ -84,25 +81,25 @@ watch(() => route.path, setLocale, { immediate: true })
       <div class="varlet-doc-index__title">{{ title }}</div>
       <div class="varlet-doc-index__description">{{ indexPage.description[language] }}</div>
       <div class="varlet-doc-index__link-button-group">
-        <var-site-button class="varlet-doc-index__link-button" text outline @click="goGithub">
-          <var-site-icon name="github" size="24px" />
-        </var-site-button>
-        <var-site-button class="varlet-doc-index__link-button" text outline v-if="darkMode" @click="toggleTheme">
-          <var-site-icon size="24px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
-        </var-site-button>
-        <var-site-button
+        <var-button class="varlet-doc-index__link-button" text outline @click="goGithub">
+          <var-icon name="github" size="24px" />
+        </var-button>
+        <var-button class="varlet-doc-index__link-button" text outline v-if="darkMode" @click="toggleTheme">
+          <var-icon size="24px" :name="currentTheme === 'lightTheme' ? 'white-balance-sunny' : 'weather-night'" />
+        </var-button>
+        <var-button
           class="varlet-doc-index__link-button"
           text
           outline
           v-if="languages"
           @click="toggleLanguages"
         >
-          <var-site-icon name="translate" size="24px" />
-        </var-site-button>
-        <var-site-button class="varlet-doc-index__link-button" type="primary" @click="getStar">
+          <var-icon name="translate" size="24px" />
+        </var-button>
+        <var-button class="varlet-doc-index__link-button" type="primary" style="line-height: 1.2" @click="getStar">
           <span class="varlet-doc-index__link-button-text">{{ indexPage.started[language] }}</span>
-          <var-site-icon style="transform: rotate(-90deg)" name="arrow-down" size="24px" />
-        </var-site-button>
+          <var-icon style="transform: rotate(-90deg)" name="arrow-down" size="24px" />
+        </var-button>
       </div>
 
       <div class="varlet-doc-index__features" v-if="indexPage.features">
