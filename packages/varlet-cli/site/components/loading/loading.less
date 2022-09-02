@@ -1,5 +1,7 @@
 @import '../styles/var';
 
+@site-loading-opacity: 0.38;
+@site-loading-desc-margin: 8px 0 0;
 @site-loading-normal-width: 50px;
 @site-loading-normal-height: @site-font-size-md + 2;
 
@@ -12,17 +14,96 @@
 @site-loading-mini-width: 22px;
 @site-loading-mini-height: @site-font-size-xs + 2;
 
+:root {
+  --site-loading-opacity: @site-loading-opacity;
+  --site-loading-desc-margin: @site-loading-desc-margin;
+}
+
 .var-site-loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+
+  &__content {
+    position: relative;
+    transition: opacity 0.3s;
+    opacity: 1;
+
+    &--active {
+      opacity: var(--site-loading-opacity);
+    }
+
+    &-mask {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+  }
+
+  &__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  &__inside {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  &__description {
+    color: @site-color-primary;
+    margin: var(--site-loading-desc-margin);
+
+    &--large {
+      font-size: @site-font-size-lg;
+    }
+
+    &--normal {
+      font-size: @site-font-size-md;
+    }
+
+    &--small {
+      font-size: @site-font-size-sm;
+    }
+
+    &--mini {
+      font-size: @site-font-size-xs;
+    }
+  }
 
   &__circle {
     display: flex;
 
     &-block {
       display: inline-block;
+      color: @site-color-primary;
       animation: circle 1.8s linear infinite;
+
+      &--large {
+        width: 36px;
+        height: 36px;
+      }
+
+      &--normal {
+        width: 30px;
+        height: 30px;
+      }
+
+      &--small {
+        width: 24px;
+        height: 24px;
+      }
+
+      &--mini {
+        width: 18px;
+        height: 18px;
+      }
 
       svg {
         display: block;
@@ -72,22 +153,22 @@
     align-items: center;
     justify-content: center;
 
-    &-large {
+    &--large {
       width: @site-loading-large-width;
       height: @site-loading-large-height;
     }
 
-    &-normal {
+    &--normal {
       width: @site-loading-normal-width;
       height: @site-loading-normal-height;
     }
 
-    &-small {
+    &--small {
       width: @site-loading-small-width;
       height: @site-loading-small-height;
     }
 
-    &-mini {
+    &--mini {
       width: @site-loading-mini-width;
       height: @site-loading-mini-height;
     }
@@ -96,6 +177,7 @@
       height: 100%;
       display: inline-block;
       animation: 1.2s ease-in-out infinite wave;
+      background-color: @site-color-primary;
 
       &:nth-child(1) {
         animation-delay: -1.2s;
@@ -119,22 +201,22 @@
       }
     }
 
-    &-item-large {
+    &-item--large {
       width: @site-loading-wave-size-item-width;
       margin-left: @site-loading-wave-size-item-margin;
     }
 
-    &-item-normal {
+    &-item--normal {
       width: @site-loading-wave-size-item-width - 1;
       margin-left: @site-loading-wave-size-item-margin - 1;
     }
 
-    &-item-small {
+    &-item--small {
       width: @site-loading-wave-size-item-width - 2;
       margin-left: @site-loading-wave-size-item-margin - 2;
     }
 
-    &-item-mini {
+    &-item--mini {
       width: @site-loading-wave-size-item-width - 3;
       margin-left: @site-loading-wave-size-item-margin - 3;
     }
@@ -159,22 +241,22 @@
     display: flex;
     align-items: center;
 
-    &-large {
+    &--large {
       width: @site-loading-large-width;
       height: @site-loading-large-height;
     }
 
-    &-normal {
+    &--normal {
       width: @site-loading-normal-width;
       height: @site-loading-normal-height;
     }
 
-    &-small {
+    &--small {
       width: @site-loading-small-width;
       height: @site-loading-small-height;
     }
 
-    &-mini {
+    &--mini {
       width: @site-loading-mini-width;
       height: @site-loading-mini-height;
     }
@@ -183,6 +265,7 @@
       display: inline-block;
       transform-origin: right bottom;
       animation: 1.5s ease infinite cube;
+      background-color: @site-color-primary;
 
       &:nth-child(1) {
         animation-delay: 0.2s;
@@ -202,25 +285,25 @@
       }
     }
 
-    &-item-large {
+    &-item--large {
       height: @site-loading-cube-size-item-height;
       width: @site-loading-cube-size-item-width;
       margin-left: @site-loading-cube-size-item-margin;
     }
 
-    &-item-normal {
+    &-item--normal {
       height: @site-loading-cube-size-item-height - 2;
       width: @site-loading-cube-size-item-width - 2;
       margin-left: @site-loading-cube-size-item-margin - 1;
     }
 
-    &-item-small {
+    &-item--small {
       height: @site-loading-cube-size-item-height - 4;
       width: @site-loading-cube-size-item-width - 4;
       margin-left: @site-loading-cube-size-item-margin - 2;
     }
 
-    &-item-mini {
+    &-item--mini {
       height: @site-loading-cube-size-item-height - 6;
       width: @site-loading-cube-size-item-width - 6;
       margin-left: @site-loading-cube-size-item-margin - 3;
@@ -247,28 +330,29 @@
     justify-content: center;
     align-items: center;
 
-    &-large {
+    &--large {
       width: @site-loading-large-width;
       height: @site-loading-large-height;
     }
 
-    &-normal {
+    &--normal {
       width: @site-loading-normal-width;
       height: @site-loading-normal-height;
     }
 
-    &-small {
+    &--small {
       width: @site-loading-small-width;
       height: @site-loading-small-height;
     }
 
-    &-mini {
+    &--mini {
       width: @site-loading-mini-width;
       height: @site-loading-mini-height;
     }
 
     &-item {
       animation: 2s ease-in-out infinite rect;
+      background-color: @site-color-primary;
 
       &:nth-child(1) {
         animation-delay: 1.75s;
@@ -303,22 +387,22 @@
       }
     }
 
-    &-item-large {
+    &-item--large {
       height: @site-loading-rect-size-item-height;
       width: @site-loading-rect-size-item-width;
     }
 
-    &-item-normal {
+    &-item--normal {
       height: @site-loading-rect-size-item-height * 0.9;
       width: @site-loading-rect-size-item-width * 0.8;
     }
 
-    &-item-small {
+    &-item--small {
       height: @site-loading-rect-size-item-height * 0.8;
       width: @site-loading-rect-size-item-width * 0.6;
     }
 
-    &-item-mini {
+    &-item--mini {
       height: @site-loading-rect-size-item-height * 0.7;
       width: @site-loading-rect-size-item-width * 0.4;
     }
@@ -351,22 +435,22 @@
     align-items: center;
     flex-flow: nowrap;
 
-    &-large {
+    &--large {
       width: @site-loading-large-width;
       height: @site-loading-large-height;
     }
 
-    &-normal {
+    &--normal {
       width: @site-loading-normal-width;
       height: @site-loading-normal-height;
     }
 
-    &-small {
+    &--small {
       width: @site-loading-small-width;
       height: @site-loading-small-height;
     }
 
-    &-mini {
+    &--mini {
       width: @site-loading-mini-width;
       height: @site-loading-mini-height;
     }
@@ -374,6 +458,7 @@
     &-item {
       border-radius: 50%;
       animation: 0.5s ease-in-out infinite alternate disappear;
+      background-color: @site-color-primary;
 
       &:nth-child(1) {
         animation-delay: -0.4s;
@@ -388,22 +473,22 @@
       }
     }
 
-    &-item-large {
+    &-item--large {
       height: @site-loading-disappear-size-item-height;
       width: @site-loading-disappear-size-item-width;
     }
 
-    &-item-normal {
+    &-item--normal {
       height: @site-loading-disappear-size-item-height * 0.8;
       width: @site-loading-disappear-size-item-width * 0.8;
     }
 
-    &-item-small {
+    &-item--small {
       height: @site-loading-disappear-size-item-height * 0.6;
       width: @site-loading-disappear-size-item-width * 0.6;
     }
 
-    &-item-mini {
+    &-item--mini {
       height: @site-loading-disappear-size-item-height * 0.4;
       width: @site-loading-disappear-size-item-width * 0.4;
     }

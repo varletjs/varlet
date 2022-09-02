@@ -1,24 +1,21 @@
 import Progress from './components/progress'
-import { reactive } from 'vue'
 import config from '@config'
-import { getBrowserThemes, mountInstance, watchThemes } from './utils'
+import { reactive } from 'vue'
+import { getBrowserTheme, mountInstance, Theme, watchTheme } from "./utils";
 import { get } from 'lodash-es'
 
-function getColor(themes?: 'themes' | 'darkThemes') {
-  const themesKey = get(config, 'themesKey')
-
-  return get(config, `${themes ?? getBrowserThemes(themesKey)}.color-progress`)
+function getColor(theme?: Theme) {
+  return get(config, `${theme ?? getBrowserTheme()}.color-progress`)
 }
 
-function getTrackColor(themes?: 'themes' | 'darkThemes') {
-  const themesKey = get(config, 'themesKey')
-
-  return get(config, `${themes ?? getBrowserThemes(themesKey)}.color-progress-track`)
+function getTrackColor(theme?: Theme) {
+  return get(config, `${theme ?? getBrowserTheme()}.color-progress-track`)
 }
 
 export function useProgress() {
   let timer: number
-  let currentThemes: 'themes' | 'darkThemes'
+  let currentTheme: Theme
+
   const trackColor = getTrackColor()
   const color = getColor()
 
@@ -36,10 +33,10 @@ export function useProgress() {
     value: 0,
   })
 
-  watchThemes((themes) => {
-    currentThemes = themes
-    props.trackColor = getTrackColor(themes)
-    props.color = props.value === 100 ? getTrackColor(themes) : getColor(themes)
+  watchTheme((theme) => {
+    currentTheme = theme
+    props.trackColor = getTrackColor(theme)
+    props.color = props.value === 100 ? getTrackColor(theme) : getColor(theme)
   }, false)
 
   const changeValue = () => {
@@ -56,13 +53,13 @@ export function useProgress() {
 
   const start = () => {
     props.value = 0
-    setTimeout(() => (props.color = getColor(currentThemes)), 200)
+    setTimeout(() => (props.color = getColor(currentTheme)), 200)
     changeValue()
   }
 
   const end = () => {
     props.value = 100
-    setTimeout(() => (props.color = getTrackColor(currentThemes)), 300)
+    setTimeout(() => (props.color = getTrackColor(currentTheme)), 300)
     window.clearTimeout(timer)
   }
 

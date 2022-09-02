@@ -55,16 +55,24 @@ export const props = {
   textColor: {
     type: String,
   },
+  autoLoading: {
+    type: Boolean,
+    default: false,
+  },
   loadingRadius: {
     type: [Number, String],
     default: 12,
   },
   loadingType: pickProps(loadingProps, 'type'),
   loadingSize: pickProps(loadingProps, 'size'),
+  loadingColor: {
+    ...pickProps(loadingProps, 'color'),
+    default: 'currentColor',
+  },
   onClick: {
-    type: Function as PropType<(e: Event) => void>,
+    type: Function as PropType<(e: Event) => void | Promise<any>>,
   },
   onTouchstart: {
-    type: Function as PropType<(e: Event) => void>,
+    type: Function as PropType<(e: Event) => void | Promise<any>>,
   },
 }
