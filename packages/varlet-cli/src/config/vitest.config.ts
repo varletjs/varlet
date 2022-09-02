@@ -1,10 +1,13 @@
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
 import { defineConfig } from 'vitest/config'
-import { VITE_RESOLVE_EXTENSIONS } from '../shared/constant'
+import { SITE_CONFIG, VITE_RESOLVE_EXTENSIONS } from '../shared/constant'
 
 export default defineConfig({
   resolve: {
+    alias: {
+      '@config': SITE_CONFIG,
+    },
     extensions: VITE_RESOLVE_EXTENSIONS,
   },
 
