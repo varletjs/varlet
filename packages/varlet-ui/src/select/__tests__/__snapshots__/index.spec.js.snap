@@ -5,12 +5,12 @@ exports[`test select example 1`] = `
 <div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -27,12 +27,12 @@ exports[`test select example 1`] = `
 <div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon var-select--non-hint\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap var-select--non-hint\\">
+    <div class=\\"var-select__wrap var-select--non-hint\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--placeholder-non-hint\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon var-select--non-hint\\">
       <!--v-if-->
@@ -47,12 +47,12 @@ exports[`test select example 1`] = `
 <div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -70,12 +70,12 @@ exports[`test select example 1`] = `
 <div class=\\"var-select var--box var-select--disabled\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller var-select--disabled\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select var-select--disabled\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--disabled\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -92,12 +92,12 @@ exports[`test select example 1`] = `
 <div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -114,12 +114,12 @@ exports[`test select example 1`] = `
 <div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\"></i></div>
   </div>
@@ -134,12 +134,12 @@ exports[`test select example 1`] = `
 <div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: transform 0ms;\\" data-v-137f5c44=\\"\\"></i></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: transform 0ms;\\" data-v-137f5c44=\\"\\"></i></div>
   </div>
@@ -154,16 +154,16 @@ exports[`test select example 1`] = `
 <div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
           <div>
             <div class=\\"var-select__values\\"></div>
           </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
         </div><label class=\\"var-select__placeholder var--ellipsis\\">请选择多个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -180,16 +180,16 @@ exports[`test select example 1`] = `
 <div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
           <div>
             <div class=\\"var-select__chips\\"></div>
           </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
         </div><label class=\\"var-select__placeholder var--ellipsis\\">请选择多个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -206,12 +206,12 @@ exports[`test select example 1`] = `
 <div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -228,38 +228,16 @@ exports[`test select example 1`] = `
 <div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
           <div>
             <div class=\\"var-select__values\\"></div>
           </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
         </div><label class=\\"var-select__placeholder var--ellipsis\\">请选择多个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
-    </div>
-    <div class=\\"var-select__icon\\">
-      <!--v-if-->
-    </div>
-  </div>
-  <div class=\\"var-select__line\\">
-    <div class=\\"var-select__dot\\"></div>
-  </div>
-  <transition-stub>
-    <!--v-if-->
-  </transition-stub>
-</div>
-<div class=\\"app-type\\" data-v-137f5c44=\\"\\">垂直偏移</div>
-<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
-  <div class=\\"var-select__controller\\">
-    <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
-      </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -279,12 +257,12 @@ exports[`test select focus & blur methods 1`] = `
 "<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller var-select--focus\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--focus var-select--placeholder-hint\\"></label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -303,12 +281,12 @@ exports[`test select focus & blur methods 2`] = `
 "<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\"></label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -327,12 +305,12 @@ exports[`test select hint to be false 1`] = `
 "<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon var-select--non-hint\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap var-select--non-hint\\">
+    <div class=\\"var-select__wrap var-select--non-hint\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--placeholder-hidden var-select--placeholder-non-hint\\"></label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon var-select--non-hint\\">
       <!--v-if-->
@@ -351,12 +329,12 @@ exports[`test select validation 1`] = `
 "<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller var-select--error\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select var-select--error\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--error\\"></label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->

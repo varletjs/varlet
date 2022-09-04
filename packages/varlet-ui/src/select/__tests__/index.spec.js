@@ -116,7 +116,7 @@ test('test select onFocus & onBlur', async () => {
     { attachTo: document.body }
   )
 
-  await wrapper.find('.var-select__wrap').trigger('click')
+  await wrapper.find('.var-select__menu').trigger('click')
   expect(onFocus).toHaveBeenCalledTimes(1)
   await wrapper.find('.container').trigger('click')
   expect(onBlur).toHaveBeenCalledTimes(1)
