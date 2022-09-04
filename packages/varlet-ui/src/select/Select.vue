@@ -17,15 +17,15 @@
         <slot name="prepend-icon" />
       </div>
 
-      <var-menu
-        :class="n('menu')"
-        var-select-cover
-        :offset-y="offsetY"
-        :disabled="readonly || disabled"
-        v-model:show="isFocus"
-        @close="handleBlur"
-      >
-        <div :class="classes(n('wrap'), [!hint, n('--non-hint')])" ref="wrapEl" @click="handleFocus">
+      <div :class="classes(n('wrap'), [!hint, n('--non-hint')])" ref="wrapEl" @click="handleFocus">
+        <var-menu
+          :class="n('menu')"
+          var-select-cover
+          :offset-y="offsetY"
+          :disabled="readonly || disabled"
+          v-model:show="isFocus"
+          @close="handleBlur"
+        >
           <div
             :class="classes(n('select'), [errorMessage, n('--error')], [formDisabled || disabled, n('--disabled')])"
             :style="{
@@ -81,14 +81,14 @@
           >
             {{ placeholder }}
           </label>
-        </div>
 
-        <template #menu>
-          <div ref="menuEl" :class="n('scroller')">
-            <slot />
-          </div>
-        </template>
-      </var-menu>
+          <template #menu>
+            <div ref="menuEl" :class="n('scroller')">
+              <slot />
+            </div>
+          </template>
+        </var-menu>
+      </div>
 
       <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
         <slot name="append-icon">
@@ -221,11 +221,6 @@ export default defineComponent({
       return (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).width) || '0px'
     }
 
-    const getOffsetY = () => {
-      const paddingTop = (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).paddingTop) || '0px'
-      return toPxNum(paddingTop) * 1.5
-    }
-
     const handleFocus = () => {
       const { disabled, readonly, onFocus } = props
 
@@ -234,7 +229,7 @@ export default defineComponent({
       }
 
       wrapWidth.value = getWrapWidth()
-      offsetY.value = getOffsetY() + toPxNum(props.offsetY)
+      offsetY.value = toPxNum(props.offsetY)
 
       isFocus.value = true
 
@@ -328,7 +323,7 @@ export default defineComponent({
     // expose
     const focus = () => {
       wrapWidth.value = getWrapWidth()
-      offsetY.value = getOffsetY() + toPxNum(props.offsetY)
+      offsetY.value = toPxNum(props.offsetY)
       isFocus.value = true
     }
 
