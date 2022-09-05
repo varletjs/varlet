@@ -1,10 +1,10 @@
 @select-select-text-color: #555;
-@select-select-min-height: 22px;
-@select-menu-margin-top: 10px;
+@select-select-padding: 5px 0;
 @select-error-color: var(--color-danger);
 @select-blur-color: #888;
 @select-focus-color: var(--color-primary);
 @select-scroller-background: #fff;
+@select-scroller-margin: 9px 0 0 0;
 @select-scroller-padding: 6px 0;
 @select-scroller-max-height: 278px;
 @select-placeholder-size: 16px;
@@ -18,13 +18,13 @@
 
 :root {
   --select-select-text-color: @select-select-text-color;
-  --select-select-min-height: @select-select-min-height;
+  --select-select-padding: @select-select-padding;
   --select-error-color: @select-error-color;
-  --select-menu-margin-top: @select-menu-margin-top;
   --select-blur-color: @select-blur-color;
   --select-focus-color: @select-focus-color;
   --select-scroller-background: @select-scroller-background;
   --select-scroller-padding: @select-scroller-padding;
+  --select-scroller-margin: @select-scroller-margin;
   --select-scroller-max-height: @select-scroller-max-height;
   --select-placeholder-size: @select-placeholder-size;
   --select-icon-padding: @select-icon-padding;
@@ -62,7 +62,6 @@
   &__menu[var-select-cover] {
     flex-grow: 1;
     background: transparent;
-    margin-top: var(--select-menu-margin-top);
   }
 
   &__chip[var-select-cover] {
@@ -74,13 +73,14 @@
     background: var(--select-scroller-background);
     padding: var(--select-scroller-padding);
     overflow-y: auto;
+    margin: var(--select-scroller-margin);
   }
 
   &__wrap {
-    width: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
+    width: 100%;
     padding-top: var(--select-placeholder-size);
   }
 
@@ -109,7 +109,8 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    min-height: var(--select-select-min-height);
+    min-height: 32px;
+    padding: var(--select-select-padding);
     outline: none;
     border: none;
     font-size: inherit;
@@ -121,7 +122,6 @@
   &__arrow[var-select-cover] {
     flex-shrink: 0;
     font-size: var(--select-arrow-size);
-    transform: translateY(calc(-1 * var(--select-menu-margin-top) / 2));
   }
 
   &__line {

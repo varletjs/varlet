@@ -19,10 +19,11 @@
 
       <div :class="classes(n('wrap'), [!hint, n('--non-hint')])" ref="wrapEl" @click="handleFocus">
         <var-menu
-          :class="n('menu')"
           var-select-cover
+          :class="classes(n('menu'))"
           :offset-y="offsetY"
           :disabled="readonly || disabled"
+          :default-style="false"
           v-model:show="isFocus"
           @close="handleBlur"
         >
@@ -83,7 +84,7 @@
           </label>
 
           <template #menu>
-            <div ref="menuEl" :class="n('scroller')">
+            <div ref="menuEl" :class="classes(n('scroller'), 'var-elevation--3')">
               <slot />
             </div>
           </template>
