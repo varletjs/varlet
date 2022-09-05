@@ -19,7 +19,7 @@
         overflow: floaterOverflow,
         position: floaterPosition,
         transition: floated
-          ? `background-color ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`
+          ? `background-color ${floatingDuration}ms, color ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`
           : undefined,
       }"
     >
