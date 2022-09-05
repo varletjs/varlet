@@ -1,5 +1,6 @@
 @select-select-text-color: #555;
-@select-select-padding: 5px 0;
+@select-select-min-height: 22px;
+@select-menu-margin-top: 10px;
 @select-error-color: var(--color-danger);
 @select-blur-color: #888;
 @select-focus-color: var(--color-primary);
@@ -17,8 +18,9 @@
 
 :root {
   --select-select-text-color: @select-select-text-color;
-  --select-select-padding: @select-select-padding;
+  --select-select-min-height: @select-select-min-height;
   --select-error-color: @select-error-color;
+  --select-menu-margin-top: @select-menu-margin-top;
   --select-blur-color: @select-blur-color;
   --select-focus-color: @select-focus-color;
   --select-scroller-background: @select-scroller-background;
@@ -60,6 +62,7 @@
   &__menu[var-select-cover] {
     flex-grow: 1;
     background: transparent;
+    margin-top: var(--select-menu-margin-top);
   }
 
   &__chip[var-select-cover] {
@@ -74,6 +77,7 @@
   }
 
   &__wrap {
+    width: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -105,8 +109,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    min-height: 32px;
-    padding: var(--select-select-padding);
+    min-height: var(--select-select-min-height);
     outline: none;
     border: none;
     font-size: inherit;
@@ -118,6 +121,7 @@
   &__arrow[var-select-cover] {
     flex-shrink: 0;
     font-size: var(--select-arrow-size);
+    transform: translateY(calc(-1 * var(--select-menu-margin-top) / 2));
   }
 
   &__line {

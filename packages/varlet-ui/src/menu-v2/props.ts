@@ -49,6 +49,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
   trigger: {
     type: String as PropType<'click' | 'hover'>,
     default: 'click',
