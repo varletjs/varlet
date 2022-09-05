@@ -39,26 +39,22 @@ export async function compileTypes() {
     }
   })
 
+  const globalDeclares = `\
+declare module 'vue' {
+  export interface GlobalComponents {
+    ${declares.join('\n    ')}
+  }
+}`
+
   const template = `\
 import type { App } from 'vue'
 
 export const install: (app: App) => void
 
 ${exports.join('\n')}
+
+${globalDeclares}
 `
 
-  const globalTemplate = `\
-declare module 'vue' {
-  export interface GlobalComponents {
-    ${declares.join('\n    ')}
-  }
-}
-
-export {}
-`
-
-  await Promise.all([
-    writeFile(resolve(TYPES_DIR, 'index.d.ts'), template),
-    writeFile(resolve(TYPES_DIR, 'global.d.ts'), globalTemplate),
-  ])
+  await Promise.all([writeFile(resolve(TYPES_DIR, 'index.d.ts'), template)])
 }
