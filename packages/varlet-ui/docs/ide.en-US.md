@@ -15,7 +15,7 @@ Open the library properties documentation by setting `Editor -> General -> Code 
 
 ### VSCode
 
-Install the `Volar` plugin and configure `ts.config.json` as follows to get type hints in the template.
+Install the `Volar` plugin and configure `tsconfig.json` as follows to get type hints in the template.
 
 ```json
 // playground-ignore
