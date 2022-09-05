@@ -4,7 +4,7 @@ exports[`test menu v2 click trigger 1`] = `"<div data-v-app=\\"\\"><div class=\\
 
 exports[`test menu v2 click trigger 2`] = `"<div data-v-app=\\"\\"><div class=\\"var-menu-v2\\"><!--teleport start--><!--teleport end--></div></div><div style=\\"z-index: 2001; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px); display: none;\\" class=\\"var-menu-v2__menu var-menu-v2--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom-start\\"></div>"`;
 
-exports[`test menu v2 default style 1`] = `"<transition-stub><div style=\\"z-index: 2002; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu-v2__menu var-elevation--3\\" data-popper-placement=\\"bottom-start\\"></div></transition-stub>"`;
+exports[`test menu v2 default style 1`] = `"<transition-stub><div style=\\"z-index: 2002; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu-v2__menu\\" data-popper-placement=\\"bottom-start\\"></div></transition-stub>"`;
 
 exports[`test menu v2 hover the menu list 1`] = `"<div style=\\"z-index: 2003; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px); display: none;\\" class=\\"var-menu-v2__menu var-menu-v2--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom-start\\"></div>"`;
 
