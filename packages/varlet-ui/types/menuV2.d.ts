@@ -19,6 +19,7 @@ export type MenuV2Trigger = 'click' | 'hover'
 
 export interface MenuV2Props extends BasicAttributes {
   show?: boolean
+  disabled?: boolean
   trigger?: MenuV2Trigger
   placement?: MenuV2Placement
   offsetX?: string | number

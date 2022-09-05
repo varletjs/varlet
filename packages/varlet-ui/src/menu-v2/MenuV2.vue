@@ -244,7 +244,10 @@ export default defineComponent({
       return {
         placement,
         modifiers: [
-          flip,
+          {
+            ...flip,
+            enabled: show.value,
+          },
           {
             ...offset,
             options: {
@@ -262,6 +265,12 @@ export default defineComponent({
 
     // expose
     const open = () => {
+      const { disabled } = props
+
+      if (disabled) {
+        return
+      }
+
       show.value = true
       call(props['onUpdate:show'], true)
     }
@@ -307,6 +316,8 @@ export default defineComponent({
       }
     )
 
+    watch(() => props.disabled, close)
+
     onMounted(() => {
       popover = createPopper(host.value!, menu.value!, getPopperOptions())
 
@@ -316,6 +327,7 @@ export default defineComponent({
     })
     onUnmounted(() => {
       document.removeEventListener('click', handleMenuClose)
+      popover!.destroy()
     })
 
     return {
@@ -342,4 +354,6 @@ export default defineComponent({
 
 <style lang="less">
 @import './menuV2';
+@import '../styles/elevation.less';
+@import '../styles/common.less';
 </style>
