@@ -4,9 +4,33 @@ import VarIndexBar from '../IndexBar'
 import VarIndexAnchor from '../../index-anchor/IndexAnchor'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockScrollTo, mockIndexBarOwnTop } from '../../utils/test'
+import { delay, mockScrollTo } from '../../utils/test'
 
 mockScrollTo(HTMLElement)
+
+function mockIndexBarOwnTop() {
+  const originForEach = Array.prototype.forEach
+
+  Array.prototype.forEach = function (fn, thisArg) {
+    let changedArr = this
+
+    if (this && this.map) {
+      changedArr = this.map((value, index) => {
+        if (value.ownTop && !value.ownTop.value) value.ownTop.value = (index + 1) * 50
+
+        return value
+      })
+    }
+
+    originForEach.call(changedArr, fn, thisArg)
+  }
+
+  return {
+    mockRestore() {
+      Array.prototype.forEach = originForEach
+    },
+  }
+}
 
 const Wrapper = {
   components: {
@@ -19,6 +43,42 @@ const Wrapper = {
     <var-index-anchor index="B">test B</var-index-anchor>
     </var-index-bar>
   `,
+}
+
+const clickHandle = vi.fn()
+const changeHandle = vi.fn()
+const Wrapper2 = {
+  template: `
+    <div style="height: 50px; overflow: auto">
+      <var-index-bar @click="clickHandle" @change="changeHandle" ref="bar" highlight-color="purple">
+        <var-index-anchor index="A">test A</var-index-anchor>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <var-index-anchor index="B">test B</var-index-anchor>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <var-index-anchor index="C">test C</var-index-anchor>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <var-index-anchor index="D">test D</var-index-anchor>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <var-index-anchor index="E">test E</var-index-anchor>
+      </var-index-bar>
+    </div>
+  `,
+  components: {
+    [VarIndexBar.name]: VarIndexBar,
+    [VarIndexAnchor.name]: VarIndexAnchor,
+  },
+  methods: {
+    clickHandle,
+    changeHandle,
+  },
 }
 
 test('test indexBar and indexAnchor use', () => {
@@ -88,42 +148,6 @@ describe('test index-bar component props', () => {
   })
 
   test('test index-bar highlightColor', async () => {
-    const clickHandle = vi.fn()
-    const changeHandle = vi.fn()
-    const Wrapper2 = {
-      template: `
-    <div style="height: 50px; overflow: auto">
-      <var-index-bar @click="clickHandle" @change="changeHandle" ref="bar" highlight-color="purple">
-        <var-index-anchor index="A">test A</var-index-anchor>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <var-index-anchor index="B">test B</var-index-anchor>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <var-index-anchor index="C">test C</var-index-anchor>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <var-index-anchor index="D">test D</var-index-anchor>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <var-index-anchor index="E">test E</var-index-anchor>
-      </var-index-bar>
-    </div>
-  `,
-      components: {
-        [VarIndexBar.name]: VarIndexBar,
-        [VarIndexAnchor.name]: VarIndexAnchor,
-      },
-      methods: {
-        clickHandle,
-        changeHandle,
-      },
-    }
-
     const wrapper = mount(Wrapper2, { attachTo: document.body })
 
     await delay(100)
@@ -138,41 +162,6 @@ describe('test index-bar component props', () => {
 describe('test index-bar events', () => {
   test('test index-bar click event', async () => {
     vi.clearAllMocks()
-    const clickHandle = vi.fn()
-    const changeHandle = vi.fn()
-    const Wrapper2 = {
-      template: `
-    <div style="height: 50px; overflow: auto">
-      <var-index-bar @click="clickHandle" @change="changeHandle" ref="bar" highlight-color="purple">
-        <var-index-anchor index="A">test A</var-index-anchor>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <var-index-anchor index="B">test B</var-index-anchor>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <var-index-anchor index="C">test C</var-index-anchor>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <var-index-anchor index="D">test D</var-index-anchor>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <var-index-anchor index="E">test E</var-index-anchor>
-      </var-index-bar>
-    </div>
-  `,
-      components: {
-        [VarIndexBar.name]: VarIndexBar,
-        [VarIndexAnchor.name]: VarIndexAnchor,
-      },
-      methods: {
-        clickHandle,
-        changeHandle,
-      },
-    }
 
     const wrapper = mount(Wrapper2, { attachTo: document.body })
 
@@ -191,41 +180,6 @@ describe('test index-bar events', () => {
   })
 
   test('test indexBar scrollTo method', async () => {
-    const clickHandle = vi.fn()
-    const changeHandle = vi.fn()
-    const Wrapper2 = {
-      template: `
-    <div style="height: 50px; overflow: auto">
-      <var-index-bar @click="clickHandle" @change="changeHandle" ref="bar" highlight-color="purple">
-        <var-index-anchor index="A">test A</var-index-anchor>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <var-index-anchor index="B">test B</var-index-anchor>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <var-index-anchor index="C">test C</var-index-anchor>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <var-index-anchor index="D">test D</var-index-anchor>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <var-index-anchor index="E">test E</var-index-anchor>
-      </var-index-bar>
-    </div>
-  `,
-      components: {
-        [VarIndexBar.name]: VarIndexBar,
-        [VarIndexAnchor.name]: VarIndexAnchor,
-      },
-      methods: {
-        clickHandle,
-        changeHandle,
-      },
-    }
     const wrapper = mount(Wrapper2, { attachTo: document.body })
 
     await delay(100)
@@ -239,56 +193,20 @@ describe('test index-bar events', () => {
     wrapper.unmount()
   })
 
-  // TODO: vitest issue
-  // test('test indexBar scroll to trigger change event', async () => {
-  //   const clickHandle = vi.fn()
-  //   const changeHandle = vi.fn()
-  //   const Wrapper2 = {
-  //     template: `
-  //   <div style="height: 50px; overflow: auto">
-  //     <var-index-bar @click="clickHandle" @change="changeHandle" ref="bar" highlight-color="purple">
-  //       <var-index-anchor index="A">test A</var-index-anchor>
-  //       <p>test</p>
-  //       <p>test</p>
-  //       <p>test</p>
-  //       <var-index-anchor index="B">test B</var-index-anchor>
-  //       <p>test</p>
-  //       <p>test</p>
-  //       <p>test</p>
-  //       <var-index-anchor index="C">test C</var-index-anchor>
-  //       <p>test</p>
-  //       <p>test</p>
-  //       <p>test</p>
-  //       <var-index-anchor index="D">test D</var-index-anchor>
-  //       <p>test</p>
-  //       <p>test</p>
-  //       <p>test</p>
-  //       <var-index-anchor index="E">test E</var-index-anchor>
-  //     </var-index-bar>
-  //   </div>
-  // `,
-  //     components: {
-  //       [VarIndexBar.name]: VarIndexBar,
-  //       [VarIndexAnchor.name]: VarIndexAnchor,
-  //     },
-  //     methods: {
-  //       clickHandle,
-  //       changeHandle,
-  //     },
-  //   }
-  //   vi.clearAllMocks()
-  //
-  //   const { mockRestore } = mockIndexBarOwnTop()
-  //   const wrapper = mount(Wrapper2, { attachTo: document.body })
-  //
-  //   await delay(100)
-  //
-  //   wrapper.element.scrollTop = 150
-  //   await wrapper.trigger('scroll')
-  //
-  //   expect(changeHandle).toHaveBeenCalled()
-  //
-  //   mockRestore()
-  //   wrapper.unmount()
-  // })
+  test('test indexBar scroll to trigger change event', async () => {
+    vi.clearAllMocks()
+
+    const { mockRestore } = mockIndexBarOwnTop()
+    const wrapper = mount(Wrapper2, { attachTo: document.body })
+
+    await delay(100)
+
+    wrapper.element.scrollTop = 150
+    await wrapper.trigger('scroll')
+
+    expect(changeHandle).toHaveBeenCalled()
+
+    mockRestore()
+    wrapper.unmount()
+  })
 })
