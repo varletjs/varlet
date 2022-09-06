@@ -24,7 +24,10 @@
         @blur="setPage('simple', simpleValue, $event)"
         @keydown.enter="setPage('simple', simpleValue, $event)"
       />
-      <span>/ {{ pageCount }}</span>
+      <span>
+        / {{ pageCount }}
+        <div :class="n('simple-line')"></div>
+      </span>
     </li>
     <li
       v-else
