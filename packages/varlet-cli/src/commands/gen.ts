@@ -4,25 +4,22 @@ import { resolve } from 'path'
 import { copy, pathExistsSync, readFileSync, writeFileSync } from 'fs-extra'
 import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant'
 
-function generateGitIgnore(name: string) {
-  writeFileSync(
-    resolve(CWD, name, '.gitignore'),
-    `\
-node_modules
+interface GenCommandOptions {
+  name?: string
+  i18n?: boolean
+  sfc?: boolean
+  tsx?: boolean
+  choice: 'sfc' | 'tsx'
+}
 
-.varlet
-.idea
-.vscode
-*.log
-.DS_Store
+interface genOptions {
+  kebabCaseName: string
+  bigCamelizeName: string
+}
 
-site
-lib
-es
-umd
-coverage
-highlight`
-  )
+const genOptions: genOptions = {
+  kebabCaseName: 'application-name',
+  bigCamelizeName: 'applicationName',
 }
 
 function syncVersion(name: string) {
@@ -40,41 +37,59 @@ function syncVersion(name: string) {
   writeFileSync(file, JSON.stringify(pkg, null, 2))
 }
 
-export async function gen(name: string) {
+export async function gen(options: GenCommandOptions) {
+  logger.title('\n📦📦 Generate cli application ! \n')
+
+  // Determine projectName
+  const { name } = options.name
+    ? options
+    : await prompt({
+        name: 'name',
+        message: 'Name of the generate application: ',
+        default: genOptions.kebabCaseName,
+      })
   const dest = resolve(CWD, name)
   if (pathExistsSync(dest)) {
     logger.error(`${name} already exists and cannot be recreated...`)
     return
   }
 
-  const ret = await prompt([
-    {
+  // Determine whether the parameter carries a component style
+  if (options.sfc) {
+    options.choice = 'sfc'
+  } else if (options.tsx) {
+    options.choice = 'tsx'
+  } else {
+    const { choice } = await prompt({
       name: 'choice',
-      message: 'Please select your component library programming style',
       type: 'list',
+      message: 'Please select your component library programming style',
       choices: ['sfc', 'tsx'],
-    },
-    {
-      name: 'i18n',
-      message: 'Whether to use i18n?',
-      type: 'confirm',
-    },
-  ])
+    })
+    options.choice = choice
+  }
 
-  const { i18n, choice } = ret
+  // Determine whether the parameter carries internationalization.
+  const { i18n } = options.i18n
+    ? options
+    : await prompt({
+        name: 'i18n',
+        type: 'confirm',
+        message: 'Whether to use i18n?',
+        default: false,
+      })
   const dirName = i18n ? 'i18n' : 'default'
 
   const base = resolve(GENERATORS_DIR, 'base')
   const configBase = resolve(GENERATORS_DIR, 'config', dirName, 'base')
-  const code = resolve(GENERATORS_DIR, 'config', dirName, choice)
+  const code = resolve(GENERATORS_DIR, 'config', dirName, options.choice)
 
   await copy(base, dest)
   await copy(configBase, dest)
   await copy(code, dest)
   syncVersion(name)
-  generateGitIgnore(name)
 
-  logger.success('Application generated successfully!')
+  logger.success('✨ Application generated successfully!')
   logger.info(`\
   cd ${name}
   pnpm install
