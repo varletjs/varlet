@@ -1,9 +1,16 @@
 import hash from 'hash-sum'
+import { parse, resolve } from 'path'
 import { readFile, writeFileSync } from 'fs-extra'
-import { parse, compileTemplate, compileStyle } from '@vue/compiler-sfc'
-import { replaceExt } from '../shared/fsUtils'
+import { parse as parseSFC, compileTemplate, compileStyle } from '@vue/compiler-sfc'
+import { replaceExt, smartAppendFileSync } from '../shared/fsUtils'
 import { compileScript } from './compileScript'
-import { clearEmptyLine, compileLess, extractStyleDependencies, STYLE_IMPORT_RE } from './compileStyle'
+import {
+  clearEmptyLine,
+  compileLess,
+  extractStyleDependencies,
+  normalizeStyleDependency,
+  STYLE_IMPORT_RE,
+} from './compileStyle'
 import type { SFCStyleBlock } from '@vue/compiler-sfc'
 import logger from '../shared/logger'
 
@@ -32,7 +39,7 @@ export function injectRender(script: string, render: string): string {
 
 export async function compileSFC(sfc: string) {
   const sources: string = await readFile(sfc, 'utf-8')
-  const { descriptor } = parse(sources, { sourceMap: false })
+  const { descriptor } = parseSFC(sources, { sourceMap: false })
   const { script, scriptSetup, template, styles } = descriptor
   if (scriptSetup) {
     logger.warning(
@@ -69,15 +76,29 @@ export async function compileSFC(sfc: string) {
     for (let index = 0; index < styles.length; index++) {
       const style: SFCStyleBlock = styles[index]
       const file = replaceExt(sfc, `Sfc${index || ''}.${style.lang || 'css'}`)
+      const { base, dir } = parse(file)
+      const dependencyPath = normalizeStyleDependency(base, STYLE_IMPORT_RE)
+      const cssFile = resolve(dir, './style/index.js')
+
       let { code } = compileStyle({
         source: style.content,
         filename: file,
         id: scopeId,
         scoped: style.scoped,
       })
-      code = extractStyleDependencies(file, code, STYLE_IMPORT_RE, style.lang as 'css' | 'less', true)
+
+      code = extractStyleDependencies(file, code, STYLE_IMPORT_RE)
       writeFileSync(file, clearEmptyLine(code), 'utf-8')
-      style.lang === 'less' && (await compileLess(file))
+      smartAppendFileSync(
+        cssFile,
+        process.env.BABEL_MODULE === 'commonjs'
+          ? `require('${dependencyPath}.css')\n`
+          : `import '${dependencyPath}.css'\n`
+      )
+
+      if (style.lang === 'less') {
+        await compileLess(file)
+      }
     }
   }
 }
