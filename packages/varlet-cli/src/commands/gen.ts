@@ -50,7 +50,7 @@ export async function gen(options: GenCommandOptions) {
       })
   const dest = resolve(CWD, name)
   if (pathExistsSync(dest)) {
-    logger.error(`${options.name} already exists and cannot be recreated...`)
+    logger.error(`${name} already exists and cannot be recreated...`)
     return
   }
 
