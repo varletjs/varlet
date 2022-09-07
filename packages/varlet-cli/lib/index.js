@@ -56,7 +56,14 @@ program
     .option('-c, --component <componentName>', 'Test a specific component')
     .option('-cov, --coverage', 'Generate the coverage')
     .action(test_1.test);
-program.command('gen <name>').description('Generate cli application').action(gen_1.gen);
+program
+    .command('gen')
+    .description('Generate cli application')
+    .option('-n, --name <applicationName>', 'application name')
+    .option('-s, --sfc', 'Generate files in sfc format')
+    .option('-t, --tsx', 'Generate files in tsx format')
+    .option('-l, --i18n', 'Generator internationalized files')
+    .action(gen_1.gen);
 program
     .command('changelog')
     .option('-rc --releaseCount <releaseCount>', 'Release count')
