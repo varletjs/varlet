@@ -58,20 +58,8 @@ export async function compileScript(script: string, file: string) {
     filename: file,
   })) as BabelFileResult
 
-  code = extractStyleDependencies(
-    file,
-    code as string,
-    modules === 'commonjs' ? REQUIRE_CSS_RE : IMPORT_CSS_RE,
-    'css',
-    false
-  )
-  code = extractStyleDependencies(
-    file,
-    code as string,
-    modules === 'commonjs' ? REQUIRE_LESS_RE : IMPORT_LESS_RE,
-    'less',
-    false
-  )
+  code = extractStyleDependencies(file, code as string, modules === 'commonjs' ? REQUIRE_CSS_RE : IMPORT_CSS_RE)
+  code = extractStyleDependencies(file, code as string, modules === 'commonjs' ? REQUIRE_LESS_RE : IMPORT_LESS_RE)
   code = replaceVueExt(code as string)
   code = replaceTSXExt(code as string)
   code = replaceJSXExt(code as string)
@@ -92,7 +80,6 @@ export async function compileESEntry(dir: string, publicDirs: string[]) {
   const plugins: string[] = []
   const constInternalComponents: string[] = []
   const cssImports: string[] = []
-  const lessImports: string[] = []
   const publicComponents: string[] = []
 
   publicDirs.forEach((dirname: string) => {
@@ -105,7 +92,6 @@ export async function compileESEntry(dir: string, publicDirs: string[]) {
     )
     plugins.push(`${publicComponent}.install && app.use(${publicComponent})`)
     cssImports.push(`import './${dirname}/style'`)
-    lessImports.push(`import './${dirname}/style/less'`)
   })
 
   const install = `
@@ -148,14 +134,10 @@ export default {
 }
 `
 
-  const lessTemplate = `\
-${lessImports.join('\n')}
-`
   await Promise.all([
     writeFile(resolve(dir, 'index.js'), indexTemplate, 'utf-8'),
     writeFile(resolve(dir, 'umdIndex.js'), umdTemplate, 'utf-8'),
     writeFile(resolve(dir, 'style.js'), styleTemplate, 'utf-8'),
-    writeFile(resolve(dir, 'less.js'), lessTemplate, 'utf-8'),
   ])
 }
 
@@ -163,7 +145,6 @@ export async function compileCommonJSEntry(dir: string, publicDirs: string[]) {
   const requires: string[] = []
   const plugins: string[] = []
   const cssRequires: string[] = []
-  const lessRequires: string[] = []
   const publicComponents: string[] = []
 
   publicDirs.forEach((dirname: string) => {
@@ -173,7 +154,6 @@ export async function compileCommonJSEntry(dir: string, publicDirs: string[]) {
     requires.push(`var ${publicComponent} = require('./${dirname}')['default']`)
     plugins.push(`${publicComponent}.install && app.use(${publicComponent})`)
     cssRequires.push(`require('./${dirname}/style')`)
-    lessRequires.push(`require('./${dirname}/style/less')`)
   })
 
   const install = `
@@ -196,12 +176,8 @@ module.exports = {
 ${cssRequires.join('\n')}
 `
 
-  const lessTemplate = `\
-${lessRequires.join('\n')}
-`
   await Promise.all([
     writeFile(resolve(dir, 'index.js'), indexTemplate, 'utf-8'),
     writeFile(resolve(dir, 'style.js'), styleTemplate, 'utf-8'),
-    writeFile(resolve(dir, 'less.js'), lessTemplate, 'utf-8'),
   ])
 }

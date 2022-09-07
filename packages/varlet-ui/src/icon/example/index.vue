@@ -81,7 +81,6 @@ watchDarkMode(dark, (theme) => {
 </template>
 
 <style lang="less" scoped>
-@import '../../styles/var';
 @import '../../styles/elevation';
 
 .icon-example {
