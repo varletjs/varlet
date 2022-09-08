@@ -26,7 +26,7 @@ export default {
 <style scoped lang="less">
 .varlet-site-mobile {
   position: sticky;
-  flex: 0 0 325px;
+  flex: 0 0 350px;
   top: 80px;
   height: calc(100vh - 100px);
   margin-right: 38px;
