@@ -66,10 +66,10 @@ program
 program
   .command('gen')
   .description('Generate cli application')
-  .option('-n, --name <applicationName>', 'application name')
+  .option('-n, --name <applicationName>', 'Application name')
   .option('-s, --sfc', 'Generate files in sfc format')
   .option('-t, --tsx', 'Generate files in tsx format')
-  .option('-l, --i18n', 'Generator internationalized files')
+  .option('-l, --locale', 'Generator internationalized files')
   .action(gen)
 
 program

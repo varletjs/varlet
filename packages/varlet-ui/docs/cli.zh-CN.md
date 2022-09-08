@@ -19,7 +19,7 @@
 
 ### 快速开始
 
-`@varlet/cli` 内置了 `单文件组件(sfc)` 和 `tsx，jsx` 两种风格的组件库项目模板，可以通过 `gen` 命令直接生成。
+`@varlet/cli` 内置了 `单文件组件(sfc)` 和 `tsx` 两种风格的组件库项目模板，可以通过 `gen` 命令直接生成。
 帮助用户直接进入组件本身的开发，推荐使用 `pnpm` 作为包管理工具。
 
 ```shell
@@ -27,7 +27,7 @@
 # 安装命令行工具
 pnpm add @varlet/cli -g
 # 使用 gen 命令生成项目
-varlet-cli gen 项目名
+varlet-cli gen
 cd 项目名
 pnpm install
 pnpm dev
@@ -323,7 +323,21 @@ varlet-cli release
 
 ```shell
 # playground-ignore
-varlet-cli gen <projectName>
+varlet-cli gen [-n | --name[=<projectName>]] [-s | --sfc] [-t | --tsx] [-l | --locale]
+
+# Options
+-n
+--name
+  项目名
+-s
+--sfc
+  自动生成 .vue 格式项目
+-t
+--tsx
+  自动生成 .tsx 格式项目
+-l
+--locale
+  添加国际化功能
 ```
 
 #### 创建组件模板文件

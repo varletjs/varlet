@@ -4,22 +4,25 @@ import { resolve } from 'path'
 import { copy, pathExistsSync, readFileSync, writeFileSync } from 'fs-extra'
 import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant'
 
+type CodingStyle = 'tsx' | 'sfc'
+
 interface GenCommandOptions {
   name?: string
   i18n?: boolean
   sfc?: boolean
   tsx?: boolean
-  choice: 'sfc' | 'tsx'
 }
 
-interface genOptions {
-  kebabCaseName: string
-  bigCamelizeName: string
+interface GenOptions {
+  name: string
+  locale: boolean
+  style: CodingStyle
 }
 
-const genOptions: genOptions = {
-  kebabCaseName: 'application-name',
-  bigCamelizeName: 'applicationName',
+const genOptions: GenOptions = {
+  name: 'varlet-app',
+  locale: false,
+  style: 'sfc',
 }
 
 function syncVersion(name: string) {
@@ -46,27 +49,27 @@ export async function gen(options: GenCommandOptions) {
     : await prompt({
         name: 'name',
         message: 'Name of the generate application: ',
-        default: genOptions.kebabCaseName,
+        default: genOptions.name,
       })
   const dest = resolve(CWD, name)
+
   if (pathExistsSync(dest)) {
     logger.error(`${name} already exists and cannot be recreated...`)
     return
   }
 
-  // Determine whether the parameter carries a component style
-  if (options.sfc) {
-    options.choice = 'sfc'
-  } else if (options.tsx) {
-    options.choice = 'tsx'
+  // Determine whether the parameter carries a coding style
+  if (options.sfc || options.tsx) {
+    genOptions.style = options.sfc ? 'sfc' : 'tsx'
   } else {
-    const { choice } = await prompt({
-      name: 'choice',
+    const { style } = await prompt({
+      name: 'style',
       type: 'list',
-      message: 'Please select your component library programming style',
+      message: 'Please select your component library programming format',
       choices: ['sfc', 'tsx'],
     })
-    options.choice = choice
+
+    genOptions.style = style
   }
 
   // Determine whether the parameter carries internationalization.
@@ -82,7 +85,7 @@ export async function gen(options: GenCommandOptions) {
 
   const base = resolve(GENERATORS_DIR, 'base')
   const configBase = resolve(GENERATORS_DIR, 'config', dirName, 'base')
-  const code = resolve(GENERATORS_DIR, 'config', dirName, options.choice)
+  const code = resolve(GENERATORS_DIR, 'config', dirName, genOptions.style)
 
   await copy(base, dest)
   await copy(configBase, dest)

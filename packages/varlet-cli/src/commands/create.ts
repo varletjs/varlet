@@ -9,6 +9,8 @@ import { glob } from '../shared/fsUtils'
 import { getVarletConfig } from '../config/varlet.config'
 import { SRC_DIR } from '../shared/constant'
 
+type CodingStyle = 'tsx' | 'vue'
+
 interface CreateCommandOptions {
   name?: string
   locale?: boolean
@@ -20,7 +22,7 @@ interface CreateOptions {
   kebabCaseName: string
   bigCamelizeName: string
   locale?: boolean
-  style: 'tsx' | 'vue'
+  style: CodingStyle
   namespace: string
   bigCamelizeNamespace: string
 }
@@ -72,7 +74,7 @@ export async function create(options: CreateCommandOptions) {
   createOptions.bigCamelizeName = bigCamelize(name)
 
   if (pathExistsSync(resolve(SRC_DIR, createOptions.kebabCaseName))) {
-    logger.error(`${createOptions.kebabCaseName} already exists and cannot be recreated...`)
+    logger.error(`${createOptions.kebabCaseName} already exist and cannot be recreated...`)
     return
   }
 
@@ -82,7 +84,7 @@ export async function create(options: CreateCommandOptions) {
     : await prompt({
         name: 'locale',
         type: 'confirm',
-        message: 'Whether components need to be internationalized ?',
+        message: 'Whether to use i18n?',
         default: false,
       })
 
@@ -115,5 +117,5 @@ export async function create(options: CreateCommandOptions) {
 
   await removeFiles(componentPath)
 
-  logger.success(`Create ${createOptions.kebabCaseName} Component success!`)
+  logger.success(`Create ${createOptions.kebabCaseName} component success!`)
 }
