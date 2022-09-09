@@ -29,7 +29,7 @@ const date = ref('11:20')
 </script>
 
 <template>
-  <var-time-picker v-model="date" format="24hr" shadow />
+  <var-time-picker v-model="date" format="24hr" elevation />
 </template>
 ```
 
@@ -59,7 +59,7 @@ const date = ref('11:20')
 </script>
 
 <template>
-  <var-time-picker v-model="date" readonly shadow />
+  <var-time-picker v-model="date" readonly elevation />
 </template>
 ```
 
@@ -111,7 +111,7 @@ const change = (time) => {
     color="#7bb872"
     min="2:28:38"
     max="19:40:22"
-    shadow
+    elevation
     @change="change"
   />
 </template>
@@ -126,7 +126,7 @@ const change = (time) => {
 | `format` | Picker type, optional values `ampm, 24hr` | _string_ | `ampm` |
 | `color` | Picker color | _string_ | `#2979ff` |
 | `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
-| `shadow` | Whether to add a shadow | _boolean_ | `false` |
+| `elevation` | Whether to enable shadows | _boolean_ | `false` |
 | `min` | Minimum allowed time (ISO 8601 format) | _string_ | `-` |
 | `max` | Maximum allowed time (ISO 8601 format) | _string_ | `-` |
 | `allowed-time` | Restricts which time can be selected | _AllowedTime_ | `-` |

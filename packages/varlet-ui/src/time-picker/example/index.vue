@@ -34,13 +34,13 @@ watchDarkMode(dark)
   <var-time-picker v-model="dates.date" />
 
   <app-type>{{ pack.hour24 }}</app-type>
-  <var-time-picker v-model="dates.date1" format="24hr" shadow />
+  <var-time-picker v-model="dates.date1" format="24hr" elevation />
 
   <app-type>{{ pack.showSecond }}</app-type>
   <var-time-picker v-model="dates.date5" format="24hr" use-seconds />
 
   <app-type>{{ pack.readonly }}</app-type>
-  <var-time-picker v-model="dates.date2" readonly shadow />
+  <var-time-picker v-model="dates.date2" readonly elevation />
 
   <app-type>{{ pack.timeLimit }}</app-type>
   <var-time-picker
@@ -55,7 +55,7 @@ watchDarkMode(dark)
   <app-type>{{ pack.custom }}</app-type>
   <var-time-picker
     v-model="dates.date4"
-    shadow
+    elevation
     header-color="purple"
     color="#7bb872"
     min="2:28:38"
