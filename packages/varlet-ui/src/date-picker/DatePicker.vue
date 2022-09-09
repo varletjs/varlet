@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), [shadow, 'var-elevation--2'])">
+  <div :class="classes(n(), [elevation, 'var-elevation--2'])">
     <div :class="n('title')" :style="{ background: headerColor || color }">
       <div :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])" @click="clickEl('year')">
         <slot name="year" :year="chooseYear">

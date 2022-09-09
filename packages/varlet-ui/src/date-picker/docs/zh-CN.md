@@ -29,7 +29,7 @@ import { ref } from 'vue'
 const date = ref('2021-04-08')
 </script>
 <template>
-  <var-date-picker type="month" v-model="date" shadow />
+  <var-date-picker type="month" v-model="date" elevation />
 </template>
 ```
 
@@ -94,7 +94,7 @@ const allowedDates = (val) => {
 <script setup>
 import { ref } from 'vue'
 
-const date = ref('2021-02')
+const date = ref('2021-05')
 
 const allowedDates = (val) => {
   return parseInt(val.split('-')[1], 10) % 2 === 1
@@ -107,7 +107,7 @@ const change = (date) => {
 
 <template>
   <var-date-picker
-    shadow
+    elevation
     type="month"
     v-model="date"
     min="2016-07"
@@ -139,7 +139,7 @@ const change = (date) => {
 | `allowed-dates`     | 限制可以选择的日期                                    | _function_ | `-` |
 | `color`             | 选择器的颜色                                       | _string_ | `#2979ff` |
 | `header-color`      | 标题背景色。如果未指定，将使用由 color 属性或默认颜色。              | _string_ | `#2979ff` |
-| `shadow`            | 是否添加阴影                                       | _boolean_ | `false` |
+| `elevation`            | 是否添加阴影                                       | _boolean_ | `false` |
 | `first-day-of-week` | 设置一周的第一天，从周日的 0 开始。                          | _string \| number_ | `0` |
 | `min`               | 允许的最小日期/月份（ISO 8601格式）                       | _string_ | `-` |
 | `max`               | 允许的最大日期/月份（ISO 8601格式）                       | _string_ | `-` |

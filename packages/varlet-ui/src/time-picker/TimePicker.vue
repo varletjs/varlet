@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), [shadow, 'var-elevation--2'])" ref="picker">
+  <div :class="classes(n(), [elevation, 'var-elevation--2'])" ref="picker">
     <div :class="n('title')" :style="{ background: headerColor || color }">
       <div :class="n('title-time')">
         <div :class="classes(n('title-btn'), [type === 'hour', n('title-btn--active')])" @click="checkPanel('hour')">

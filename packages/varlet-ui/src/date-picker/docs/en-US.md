@@ -28,7 +28,7 @@ import { ref } from 'vue'
 const date = ref('2021-04-08')
 </script>
 <template>
-  <var-date-picker type="month" v-model="date" shadow />
+  <var-date-picker type="month" v-model="date" elevation />
 </template>
 ```
 
@@ -90,7 +90,7 @@ const allowedDates = (val) => {
 <script setup>
 import { ref } from 'vue'
 
-const date = ref('2021-02')
+const date = ref('2021-05')
 
 const allowedDates = (val) => {
   return parseInt(val.split('-')[1], 10) % 2 === 1
@@ -103,7 +103,7 @@ const change = (date) => {
 
 <template>
   <var-date-picker
-    shadow
+    elevation
     type="month"
     v-model="date"
     min="2016-07"
@@ -136,7 +136,7 @@ const change = (date) => {
 | `allowed-dates` | Restricts which dates can be selected                                                                             | _function_ | `-` |
 | `color` | Picker color                                                                                                      | _string_ | `#2979ff` |
 | `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
-| `shadow` | Whether to add a shadow                                                                                           | _boolean_ | `false` |
+| `elevation` | Whether to enable shadows                                                                                           | _boolean_ | `false` |
 | `first-day-of-week` | Sets the first day of the week, starting with 0 for Sunday.                                                       | _string \| number_ | `0` |
 | `min` | Minimum allowed date/month (ISO 8601 format)                                                                      | _string_ | `-` |
 | `max` | Maximum allowed date/month (ISO 8601 format)                                                                      | _string_ | `-` |

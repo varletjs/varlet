@@ -21,7 +21,7 @@ test('test timePicker style and format', async () => {
     <var-time-picker
       :format="format"
       v-model="time"
-      shadow
+      elevation
       header-color="purple"
       color="#7bb872"
     />

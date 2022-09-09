@@ -26,7 +26,7 @@ export const props = {
   modelValue: {
     type: String,
   },
-  shadow: {
+  elevation: {
     type: Boolean,
     default: false,
   },
