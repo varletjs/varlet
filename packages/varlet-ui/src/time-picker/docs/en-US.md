@@ -25,7 +25,7 @@ Use `format` prop to change the format of the picker. The default value of `form
 <script setup>
 import { ref } from 'vue'
 
-const date = ref('11:20')
+const date = ref('15:20')
 </script>
 
 <template>
@@ -41,7 +41,7 @@ use `use-seconds` prop to show seconds
 <script setup>
 import { ref } from 'vue'
 
-const date = ref('11:20')
+const date = ref('17:36:22')
 </script>
 
 <template>
@@ -55,7 +55,7 @@ const date = ref('11:20')
 <script setup>
 import { ref } from 'vue'
 
-const date = ref('11:20')
+const date = ref('07:10')
 </script>
 
 <template>

@@ -26,7 +26,7 @@ const date = ref('11:20')
 <script setup>
 import { ref } from 'vue'
 
-const date = ref('11:20')
+const date = ref('15:20')
 </script>
 
 <template>
@@ -42,7 +42,7 @@ const date = ref('11:20')
 <script setup>
 import { ref } from 'vue'
 
-const date = ref('11:20')
+const date = ref('17:36:22')
 </script>
 
 <template>
@@ -55,7 +55,7 @@ const date = ref('11:20')
 <script setup>
 import { ref } from 'vue'
 
-const date = ref('11:20')
+const date = ref('07:10')
 </script>
 
 <template>
