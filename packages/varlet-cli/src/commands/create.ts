@@ -111,7 +111,7 @@ export default {
   if (!cmd.disableI18n) {
     exampleTemplate = `\
 <script setup>
-import ${bigCamelizeName} from '..'
+import ${bigCamelize(namespace)}${bigCamelizeName} from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
