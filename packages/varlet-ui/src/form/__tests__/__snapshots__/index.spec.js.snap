@@ -316,7 +316,7 @@ exports[`test form with select 1`] = `
     <div class=\\"var-select__controller var-select--disabled\\">
       <div class=\\"var-select__icon\\"></div>
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
+        <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
           <div class=\\"var-select__select var-select--disabled\\" style=\\"text-align: left;\\">
             <div>
               <div class=\\"var-select__chips\\">
@@ -346,7 +346,7 @@ exports[`test form with select 2`] = `
     <div class=\\"var-select__controller\\">
       <div class=\\"var-select__icon\\"></div>
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
+        <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
           <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
             <div>
               <div class=\\"var-select__chips\\">
@@ -376,7 +376,7 @@ exports[`test form with select 3`] = `
     <div class=\\"var-select__controller var-select--error\\">
       <div class=\\"var-select__icon\\"></div>
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
+        <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
           <div class=\\"var-select__select var-select--error\\" style=\\"text-align: left;\\">
             <div>
               <div class=\\"var-select__chips\\">
@@ -409,7 +409,7 @@ exports[`test form with select 4`] = `
     <div class=\\"var-select__controller\\">
       <div class=\\"var-select__icon\\"></div>
       <div class=\\"var-select__wrap\\">
-        <div class=\\"var-menu-v2 var-select__menu\\" var-select-cover=\\"\\">
+        <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
           <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
             <div>
               <div class=\\"var-select__chips\\"></div>

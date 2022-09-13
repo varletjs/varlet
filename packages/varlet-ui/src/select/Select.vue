@@ -122,7 +122,7 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import VarMenu from '../menu-v2'
+import VarMenu from '../menu'
 import VarChip from '../chip'
 import VarFormDetails from '../form-details'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
@@ -399,7 +399,7 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../icon/icon';
-@import '../menu-v2/menuV2';
+@import '../menu/menu';
 @import '../form-details/formDetails';
 @import '../chip/chip';
 @import './select';
