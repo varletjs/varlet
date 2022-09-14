@@ -34,7 +34,6 @@ export * from './list'
 export * from './loading'
 export * from './locale'
 export * from './menu'
-export * from './menuV2'
 export * from './option'
 export * from './pagination'
 export * from './picker'
@@ -102,7 +101,6 @@ declare module 'vue' {
     VarLoading: typeof import('@varlet/ui')['_LoadingComponent']
     VarLocale: typeof import('@varlet/ui')['_LocaleComponent']
     VarMenu: typeof import('@varlet/ui')['_MenuComponent']
-    VarMenuV2: typeof import('@varlet/ui')['_MenuV2Component']
     VarOption: typeof import('@varlet/ui')['_OptionComponent']
     VarPagination: typeof import('@varlet/ui')['_PaginationComponent']
     VarPicker: typeof import('@varlet/ui')['_PickerComponent']

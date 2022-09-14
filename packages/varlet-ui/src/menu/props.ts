@@ -1,7 +1,47 @@
-import type { PropType, TeleportProps } from 'vue'
+import type { PropType } from 'vue'
+import type { Placement as PopperPlacement } from '@popperjs/core'
+import { TeleportProps } from 'vue'
 
-function alignmentValidator(alignment: string) {
-  return ['top', 'bottom'].includes(alignment)
+export type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
+
+export type Placement =
+  | NeededPopperPlacement
+  | 'cover-top'
+  | 'cover-top-start'
+  | 'cover-top-end'
+  | 'cover-bottom'
+  | 'cover-bottom-start'
+  | 'cover-bottom-end'
+  | 'cover-left'
+  | 'cover-right'
+
+function triggerValidator(trigger: string) {
+  return ['click', 'hover'].includes(trigger)
+}
+
+function placementValidator(alignment: string) {
+  return [
+    'top',
+    'top-start',
+    'top-end',
+    'bottom',
+    'bottom-start',
+    'bottom-end',
+    'right',
+    'right-start',
+    'right-end',
+    'left',
+    'left-start',
+    'left-end',
+    'cover-top',
+    'cover-top-start',
+    'cover-top-end',
+    'cover-bottom',
+    'cover-bottom-start',
+    'cover-bottom-end',
+    'cover-left',
+    'cover-right',
+  ].includes(alignment)
 }
 
 export const props = {
@@ -9,10 +49,19 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  alignment: {
-    type: String as PropType<'top' | 'bottom'>,
-    default: 'top',
-    validator: alignmentValidator,
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  trigger: {
+    type: String as PropType<'click' | 'hover'>,
+    default: 'click',
+    validator: triggerValidator,
+  },
+  placement: {
+    type: String as PropType<Placement>,
+    default: 'cover-top-start',
+    validator: placementValidator,
   },
   offsetX: {
     type: [Number, String],
@@ -23,8 +72,12 @@ export const props = {
     default: 0,
   },
   teleport: {
-    type: String as PropType<TeleportProps['to']>,
+    type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body',
+  },
+  defaultStyle: {
+    type: Boolean,
+    default: true,
   },
   onOpen: {
     type: Function as PropType<() => void>,

@@ -1,12 +1,31 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { Placement as PopperPlacement } from '@popperjs/core/lib/enums'
+import { TeleportProps } from 'vue'
 
-export type MenuAlignment = 'top' | 'bottom'
+type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
+
+export type MenuPlacement =
+  | NeededPopperPlacement
+  | 'cover-top'
+  | 'cover-top-start'
+  | 'cover-top-end'
+  | 'cover-bottom'
+  | 'cover-bottom-start'
+  | 'cover-bottom-end'
+  | 'cover-left'
+  | 'cover-right'
+
+export type MenuTrigger = 'click' | 'hover'
 
 export interface MenuProps extends BasicAttributes {
   show?: boolean
-  alignment?: MenuAlignment
+  disabled?: boolean
+  trigger?: MenuTrigger
+  placement?: MenuPlacement
   offsetX?: string | number
   offsetY?: string | number
+  teleport?: TeleportProps['to']
+  defaultStyle?: boolean
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void
@@ -16,6 +35,10 @@ export interface MenuProps extends BasicAttributes {
 
 export class Menu extends VarComponent {
   $props: MenuProps
+
+  open(): void
+
+  close(): void
 
   resize(): void
 }

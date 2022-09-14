@@ -1,34 +1,55 @@
 // Vitest Snapshot v1
 
-exports[`test menu click forbid trigger 1`] = `
-"<div class=\\"container\\">
-  <div class=\\"var-menu\\">
-    <!---->
-    <div class=\\"var-menu__menu var-elevation--3 var-menu-enter-from var-menu-enter-active\\" style=\\"top: calc(0px + 100px); left: calc(0px + 100px); z-index: 2002;\\">
-      <div class=\\"menu-content\\"></div>
-    </div>
-  </div>
-</div>"
-`;
+exports[`test menu click trigger 1`] = `"<div data-v-app=\\"\\"><div class=\\"var-menu\\"><!--teleport start--><!--teleport end--></div></div><div style=\\"z-index: 2001; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom-start\\"></div>"`;
 
-exports[`test menu trigger 1`] = `
-"<div class=\\"container\\">
-  <div class=\\"var-menu\\">
-    <!---->
-    <div class=\\"var-menu__menu var-elevation--3 var-menu-enter-from var-menu-enter-active\\" style=\\"top: calc(0px + 100px); left: calc(0px + 100px); z-index: 2001;\\">
-      <div class=\\"menu-content\\"></div>
-    </div>
-  </div>
-</div>"
-`;
+exports[`test menu click trigger 2`] = `"<div data-v-app=\\"\\"><div class=\\"var-menu\\"><!--teleport start--><!--teleport end--></div></div><div style=\\"z-index: 2001; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px); display: none;\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom-start\\"></div>"`;
 
-exports[`test menu trigger 2`] = `
-"<div class=\\"container\\">
-  <div class=\\"var-menu\\">
-    <!---->
-    <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 100px); left: calc(0px + 100px); z-index: 2001; display: none;\\">
-      <div class=\\"menu-content\\"></div>
-    </div>
-  </div>
-</div>"
-`;
+exports[`test menu default style 1`] = `"<transition-stub><div style=\\"z-index: 2002; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu\\" data-popper-placement=\\"bottom-start\\"></div></transition-stub>"`;
+
+exports[`test menu hover the menu list 1`] = `"<div style=\\"z-index: 2003; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px); display: none;\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom-start\\"></div>"`;
+
+exports[`test menu hover trigger and events 1`] = `"<div style=\\"z-index: 2002; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom-start\\"></div>"`;
+
+exports[`test menu hover trigger and events 2`] = `"<div style=\\"z-index: 2002; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px); display: none;\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom-start\\"></div>"`;
+
+exports[`test menu offset 1`] = `"<div style=\\"z-index: 2002; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(100px, 100px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom-start\\"></div>"`;
+
+exports[`test menu placement 1`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"top\\"></div>"`;
+
+exports[`test menu placement 2`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"top-start\\"></div>"`;
+
+exports[`test menu placement 3`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; bottom: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"top-end\\"></div>"`;
+
+exports[`test menu placement 4`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom\\"></div>"`;
+
+exports[`test menu placement 5`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom-start\\"></div>"`;
+
+exports[`test menu placement 6`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom-end\\"></div>"`;
+
+exports[`test menu placement 7`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"right\\"></div>"`;
+
+exports[`test menu placement 8`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"right-start\\"></div>"`;
+
+exports[`test menu placement 9`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"right-end\\"></div>"`;
+
+exports[`test menu placement 10`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"left\\"></div>"`;
+
+exports[`test menu placement 11`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"left-start\\"></div>"`;
+
+exports[`test menu placement 12`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; bottom: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"left-end\\"></div>"`;
+
+exports[`test menu placement 13`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom\\"></div>"`;
+
+exports[`test menu placement 14`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom-start\\"></div>"`;
+
+exports[`test menu placement 15`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom-end\\"></div>"`;
+
+exports[`test menu placement 16`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"top\\"></div>"`;
+
+exports[`test menu placement 17`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"top-start\\"></div>"`;
+
+exports[`test menu placement 18`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; bottom: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"top-end\\"></div>"`;
+
+exports[`test menu placement 19`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"right\\"></div>"`;
+
+exports[`test menu placement 20`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"left\\"></div>"`;
