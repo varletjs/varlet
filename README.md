@@ -28,17 +28,17 @@
 Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全面拥抱 `Vue3` 生态，由社区建立起来的组件库团队进行维护。
 
 ### 特性
-- 🚀 提供50+个高质量通用组件 
-- 🚀 组件十分轻量
-- 💪 由国人开发，完善的中英文文档和后勤保障
-- 🛠️ 支持按需引入
-- 🛠️ 支持主题定制
-- 🌍 支持国际化
-- 💡 支持 webstorm，vscode 组件属性高亮
-- 💪 支持 SSR
-- 💡 支持 Typescript 
-- 💪 确保90%以上单元测试覆盖率，提供稳定性保证
-- 🛠️ 支持暗黑模式
+- 🚀 &nbsp; 提供50+个高质量通用组件 
+- 🚀 &nbsp; 组件十分轻量
+- 💪 &nbsp; 由国人开发，完善的中英文文档和后勤保障
+- 🛠️ &nbsp; 支持按需引入
+- 🛠️ &nbsp; 支持主题定制
+- 🌍 &nbsp; 支持国际化
+- 💡 &nbsp; 支持 webstorm，vscode 组件属性高亮
+- 💪 &nbsp; 支持 SSR
+- 💡 &nbsp; 支持 Typescript 
+- 💪 &nbsp; 确保90%以上单元测试覆盖率，提供稳定性保证
+- 🛠️ &nbsp; 支持暗黑模式
 
 ### 安装
 
@@ -86,13 +86,7 @@ createApp(App).use(Varlet).mount('#app')
 
 <img style="width: 25%" src="https://github.com/varletjs/varlet/blob/dev/sponsor/community.png?raw=true" />
 
-### 捐赠我们
-
-我们将用捐赠所得去鼓励参与开源的贡献者们，给他们买一杯咖啡奶茶，购置对于项目有帮助基础设施，推动项目变得更好。
-
-<img style="width: 25%" src="https://github.com/varletjs/varlet/blob/dev/sponsor/wechat.png?raw=true" />
-
-### Contributors
+### 感谢贡献者们做出的努力
 
 <a href="https://github.com/varletjs/varlet/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=varletjs/varlet" />

@@ -27,17 +27,17 @@ Varlet is a Material design mobile component library developed based on `Vue3`, 
 
 
 ### Features
-- 🚀 Provide 50+ high quality general purpose components
-- 🚀 Components are very lightweight
-- 💪 Developed by Chinese, complete Chinese and English documentation and logistics support
-- 🛠️ Support on-demand introduction
-- 🛠️ Support theme customization
-- 🌍 Support internationalization
-- 💡 Support WebStorm, VS Code component syntax highlighting
-- 💪 Support the SSR
-- 💡 Support the Typescript
-- 💪 Make sure more than 90 percent unit test coverage, providing stability assurance
-- 🛠️ Support dark mode
+- 🚀 &nbsp; Provide 50+ high quality general purpose components
+- 🚀 &nbsp; Components are very lightweight
+- 💪 &nbsp; Developed by Chinese, complete Chinese and English documentation and logistics support
+- 🛠️ &nbsp; Support on-demand introduction
+- 🛠️ &nbsp; Support theme customization
+- 🌍 &nbsp; Support internationalization
+- 💡 &nbsp; Support WebStorm, VS Code component syntax highlighting
+- 💪 &nbsp; Support the SSR
+- 💡 &nbsp; Support the Typescript
+- 💪 &nbsp; Make sure more than 90 percent unit test coverage, providing stability assurance
+- 🛠️ &nbsp; Support dark mode
 
 ### Install
 
@@ -79,14 +79,7 @@ import '@varlet/ui/es/style.js'
 createApp(App).use(Varlet).mount('#app')
 ```
 
-### Sponsorship us
-
-We will use the donations to encourage open source contributors, buy them a cup of coffee and milk tea, 
-purchase infrastructure that is helpful to the project, and promote the project to become better.
-
-<img style="width: 25%" src="https://github.com/varletjs/varlet/blob/dev/sponsor/wechat.png?raw=true" />
-
-### Contributors
+### Thanks to contributors
 
 <a href="https://github.com/varletjs/varlet/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=haoziqaq/varlet" />
