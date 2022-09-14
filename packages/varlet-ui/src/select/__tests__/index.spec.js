@@ -399,7 +399,7 @@ test('test select offset-y', async () => {
   select.focus()
   await delay(1000)
 
-  const menu = wrapper.findComponent({ name: 'var-menu-v2' })
+  const menu = wrapper.findComponent({ name: 'var-menu' })
 
   expect(menu.vm.offsetY).toBe(40)
 

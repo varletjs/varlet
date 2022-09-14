@@ -33,7 +33,7 @@ import type { Ref } from 'vue'
 import type { Instance } from '@popperjs/core/lib/types'
 import type { NeededPopperPlacement } from './props'
 
-const { n, classes } = createNamespace('menu-v2')
+const { n, classes } = createNamespace('menu')
 
 export interface HostSize {
   width: number
@@ -47,7 +47,7 @@ export interface Position {
 }
 
 export default defineComponent({
-  name: 'VarMenuV2',
+  name: 'VarMenu',
   props,
   setup(props) {
     const host: Ref<null | HTMLElement> = ref(null)
@@ -353,7 +353,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import './menuV2';
+@import './menu';
 @import '../styles/elevation.less';
 @import '../styles/common.less';
 </style>
