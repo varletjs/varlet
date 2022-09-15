@@ -57,7 +57,7 @@ import { useValidation, createNamespace, call } from '../utils/components'
 import { useRadioGroup } from './provide'
 import { useForm } from '../form/provide'
 import type { Ref, ComputedRef } from 'vue'
-import type { ValidateTriggers } from './props'
+import type { ValidateTrigger } from './props'
 import type { RadioProvider } from './provide'
 
 const { n, classes } = createNamespace('radio')
@@ -84,7 +84,7 @@ export default defineComponent({
       resetValidation,
     } = useValidation()
 
-    const validateWithTrigger = (trigger: ValidateTriggers) => {
+    const validateWithTrigger = (trigger: ValidateTrigger) => {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)
