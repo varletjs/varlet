@@ -13,7 +13,7 @@ export interface VarFile extends BasicAttributes {
   state?: VarFileState
 }
 
-export type UploaderValidateTriggers = 'onChange' | 'onRemove'
+export type UploaderValidateTrigger = 'onChange' | 'onRemove'
 
 export type UploaderVarFileUtils = {
   getLoading(): VarFile[]
@@ -36,7 +36,7 @@ interface UploaderProps {
   previewed?: boolean
   hideList?: boolean
   ripple?: boolean
-  validateTrigger?: Array<UploaderValidateTriggers>
+  validateTrigger?: Array<UploaderValidateTrigger>
   rules?: Array<(v: VarFile[], u: UploaderVarFileUtils) => any>
   onBeforeRead?: (file: VarFile) => Promise<boolean> | boolean
   onAfterRead?: (file: VarFile) => any

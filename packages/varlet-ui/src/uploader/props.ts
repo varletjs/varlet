@@ -10,7 +10,7 @@ export interface VarFile {
   state?: 'loading' | 'success' | 'error'
 }
 
-export type ValidateTriggers = 'onChange' | 'onRemove'
+export type ValidateTrigger = 'onChange' | 'onRemove'
 
 export const props = {
   modelValue: {
@@ -56,7 +56,7 @@ export const props = {
     default: true,
   },
   validateTrigger: {
-    type: Array as PropType<Array<ValidateTriggers>>,
+    type: Array as PropType<Array<ValidateTrigger>>,
     default: () => ['onChange', 'onRemove'],
   },
   rules: {

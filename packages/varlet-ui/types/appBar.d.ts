@@ -1,10 +1,12 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 
+export type AppBarTitlePosition = 'left' | 'center' | 'right'
+
 export interface AppBarProps extends BasicAttributes {
   color?: string
   textColor?: string
   title?: string
-  titlePosition?: 'left' | 'center' | 'right'
+  titlePosition?: AppBarTitlePosition
   elevation?: boolean
 }
 

@@ -1,6 +1,6 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 
-export type RadioValidateTriggers = 'onChange'
+export type RadioValidateTrigger = 'onChange'
 
 export interface RadioProps extends BasicAttributes {
   modelValue?: any
@@ -12,7 +12,7 @@ export interface RadioProps extends BasicAttributes {
   readonly?: boolean
   iconSize?: string | number
   ripple?: boolean
-  validateTrigger?: Array<RadioValidateTriggers>
+  validateTrigger?: Array<RadioValidateTrigger>
   rules?: Array<(value: any) => any>
   onClick?: (e: Event) => void
   onChange?: (value: any) => void
