@@ -1,15 +1,8 @@
-import example from '../example'
 import Input from '..'
 import VarInput from '../Input'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/test'
-
-test('test input example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test input plugin', () => {
   const app = createApp({}).use(Input)

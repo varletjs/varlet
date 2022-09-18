@@ -1,4 +1,3 @@
-import example from '../example'
 import RadioGroup from '..'
 import Radio from '../../radio'
 import VarRadioGroup from '../RadioGroup'
@@ -6,12 +5,6 @@ import VarRadio from '../../radio/Radio'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/test'
-
-test('test radio example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test radio group plugin', () => {
   const app = createApp({}).use(RadioGroup)

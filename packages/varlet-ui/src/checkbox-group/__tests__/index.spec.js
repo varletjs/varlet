@@ -1,4 +1,3 @@
-import example from '../example'
 import CheckboxGroup from '..'
 import Checkbox from '../../checkbox'
 import VarCheckboxGroup from '../CheckboxGroup'
@@ -6,12 +5,6 @@ import VarCheckbox from '../../checkbox/Checkbox'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/test'
-
-test('test checkbox example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test checkbox group plugin', () => {
   const app = createApp({}).use(CheckboxGroup)

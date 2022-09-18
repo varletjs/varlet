@@ -1,15 +1,8 @@
 import Snackbar from '..'
 import VarSnackbar from '../Snackbar'
-import example from '../example'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockStubs } from '../../utils/test'
-
-test('test snackbar example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test snackbar component plugin', () => {
   const app = createApp({}).use(Snackbar.Component)
