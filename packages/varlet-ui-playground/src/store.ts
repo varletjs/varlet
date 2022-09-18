@@ -5,7 +5,7 @@ import { compileFile, File } from '@vue/repl'
 import { utoa, atou } from './utils/encode'
 import { Snackbar } from '@varlet/ui'
 
-const publicPath = process.env.NODE_ENV === 'production' ? 'https://varlet.gitee.io/varlet-ui-playground/' : './'
+const publicPath = process.env.NODE_ENV === 'production' ? 'https://varlet-ui-playground.vercel.app/' : './'
 
 const defaultMainFile = 'App.vue'
 const varletReplPlugin = 'varlet-repl-plugin.js'
