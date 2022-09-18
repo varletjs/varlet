@@ -183,7 +183,6 @@ module.exports = {
   lightTheme: {
     'color-body': '#fff',
     'color-index-page-background': '#f2f2f2',
-    'color-index-page-layout-background': '#fff',
     'color-index-page-feature-background': '#fff',
     'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #8baff8 50%, #84e0ff 50%)',
     'color-index-page-second-text-color': 'rgba(60, 60, 60, .7)',
@@ -226,7 +225,6 @@ module.exports = {
   darkTheme: {
     'color-body': '#121212',
     'color-index-page-background': '#1e1e1e',
-    'color-index-page-layout-background': '#272727',
     'color-index-page-feature-background': '#303030',
     'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #729dfc 50%, #6859f4 50%)',
     'color-index-page-second-text-color': 'rgba(255, 255, 255, .75)',
