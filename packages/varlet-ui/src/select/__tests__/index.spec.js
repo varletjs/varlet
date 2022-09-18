@@ -1,3 +1,4 @@
+import example from '../example'
 import Select from '..'
 import VarSelect from '../Select'
 import Option from '../../option'
@@ -5,6 +6,12 @@ import VarOption from '../../option/Option'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/test'
+
+test('test select example', () => {
+  const wrapper = mount(example)
+  expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
 
 test('test select plugin', () => {
   const app = createApp({}).use(Select)
