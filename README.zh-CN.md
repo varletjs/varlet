@@ -7,7 +7,8 @@
   <p>基于 Vue3 的 Material design 风格移动端组件库</p>
   <p>
     <a href="https://varlet-varletjs.vercel.app">文档(Vercel)</a> | 
-    <a href="https://varlet.gitee.io/varlet-ui">文档(Gitee)</a>
+    <a href="https://varlet.gitee.io/varlet-ui">文档(Gitee)</a> |
+    <a href="https://github.com/varletjs/varlet/blob/dev/README.md">ENGLISH README</a>
   </p>
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
