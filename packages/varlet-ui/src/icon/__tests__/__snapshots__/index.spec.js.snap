@@ -1,0 +1,361 @@
+// Vitest Snapshot v1
+
+exports[`test icon example 1`] = `
+"<div class=\\"app-type\\" data-v-1f92c76e=\\"\\">图标尺寸</div>
+<i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle icon-example__animation-icon\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+<i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle icon-example__animation-icon\\" style=\\"transition: transform 0ms; font-size: 26px;\\" data-v-1f92c76e=\\"\\"></i>
+<div class=\\"app-type\\" data-v-1f92c76e=\\"\\">图标颜色</div>
+<i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle icon-example__animation-icon\\" style=\\"color: rgb(41, 121, 255); transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+<i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle icon-example__animation-icon\\" style=\\"color: rgb(41, 121, 255); transition: transform 0ms; font-size: 26px;\\" data-v-1f92c76e=\\"\\"></i>
+<div class=\\"app-type\\" data-v-1f92c76e=\\"\\">使用图片</div>
+<img class=\\"var-icon var-icon--set var-icon__image icon-example__animation-icon\\" style=\\"transition: transform 0ms; width: 32px; height: 32px; font-size: 32px;\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\" data-v-1f92c76e=\\"\\">
+<div class=\\"app-type\\" data-v-1f92c76e=\\"\\">注册事件</div>
+<i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle icon-example__animation-icon\\" style=\\"color: rgb(41, 121, 255); transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+<div class=\\"app-type\\" data-v-1f92c76e=\\"\\">图标切换动画 (点击切换)</div>
+<i class=\\"var-icon var-icon--set var-icon-information icon-example__animation-icon\\" style=\\"color: rgb(41, 121, 255); transition: transform 300ms; font-size: 30px;\\" data-v-1f92c76e=\\"\\"></i>
+<div class=\\"app-type\\" data-v-1f92c76e=\\"\\">图标列表 (点击复制)</div>
+<div class=\\"icon-example__icons\\" data-v-1f92c76e=\\"\\">
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"checkbox-marked-circle\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">checkbox-marked-circle</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"check-circle-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-check-circle-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">check-circle-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"information\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-information\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">information</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"information-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-information-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">information-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"warning\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-warning\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">warning</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"alert-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-alert-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">alert-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"error\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-error\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">error</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"alert-circle-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-alert-circle-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">alert-circle-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"checkbox-marked\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-marked\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">checkbox-marked</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"checkbox-marked-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">checkbox-marked-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"checkbox-blank-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">checkbox-blank-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"radio-marked\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-radio-marked\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">radio-marked</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"checkbox-marked-circle-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-marked-circle-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">checkbox-marked-circle-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"radio-blank\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">radio-blank</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"close-circle\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">close-circle</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"close-circle-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-close-circle-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">close-circle-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"close-box\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-close-box\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">close-box</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"close-box-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-close-box-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">close-box-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"minus-circle\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-minus-circle\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">minus-circle</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"minus-circle-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-minus-circle-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">minus-circle-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"star\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-star\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">star</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"star-half-full\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-star-half-full\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">star-half-full</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"star-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-star-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">star-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"heart\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-heart\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">heart</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"heart-half-full\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">heart-half-full</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"heart-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-heart-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">heart-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"delete\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-delete\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">delete</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"trash-can\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-trash-can\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">trash-can</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"trash-can-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-trash-can-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">trash-can-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"minus-box\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-minus-box\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">minus-box</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"minus-box-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-minus-box-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">minus-box-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"account-circle\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-account-circle\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">account-circle</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"account-circle-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-account-circle-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">account-circle-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"cog\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-cog\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">cog</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"cog-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-cog-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">cog-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"map-marker-radius\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-map-marker-radius\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">map-marker-radius</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"map-marker-radius-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-map-marker-radius-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">map-marker-radius-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"camera\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-camera\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">camera</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"camera-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-camera-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">camera-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"cart\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-cart\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">cart</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"cart-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-cart-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">cart-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"phone\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-phone\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">phone</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"phone-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-phone-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">phone-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"image\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-image\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">image</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"image-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-image-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">image-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"bell\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-bell\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">bell</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"bell-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-bell-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">bell-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"home\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-home\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">home</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"home-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-home-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">home-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"map-marker\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-map-marker\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">map-marker</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"map-marker-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-map-marker-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">map-marker-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"magnify-plus\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-magnify-plus\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">magnify-plus</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"magnify-plus-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-magnify-plus-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">magnify-plus-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"magnify-minus\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-magnify-minus\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">magnify-minus</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"magnify-minus-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-magnify-minus-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">magnify-minus-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"play-circle\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-play-circle\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">play-circle</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"play-circle-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-play-circle-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">play-circle-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"help-circle\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-help-circle\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">help-circle</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"help-circle-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-help-circle-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">help-circle-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"plus-circle\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus-circle\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">plus-circle</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"plus-circle-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus-circle-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">plus-circle-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"check\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-check\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">check</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"window-close\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-window-close\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">window-close</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"plus\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">plus</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"minus\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-minus\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">minus</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"chevron-up\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-chevron-up\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">chevron-up</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"chevron-down\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-chevron-down\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">chevron-down</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"chevron-left\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">chevron-left</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"chevron-right\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">chevron-right</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"menu-up\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-menu-up\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">menu-up</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"menu-down\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-menu-down\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">menu-down</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"menu-left\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-menu-left\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">menu-left</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"menu-right\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-menu-right\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">menu-right</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"upload\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-upload\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">upload</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"download\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-download\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">download</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"format-list-checkbox\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-format-list-checkbox\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">format-list-checkbox</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"menu\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-menu\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">menu</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"menu-open\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-menu-open\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">menu-open</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"dots-vertical\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-dots-vertical\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">dots-vertical</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"message-text-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-message-text-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">message-text-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"message-processing-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-message-processing-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">message-processing-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"white-balance-sunny\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-white-balance-sunny\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">white-balance-sunny</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"weather-cloudy\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-weather-cloudy\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">weather-cloudy</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"weather-lightning\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-weather-lightning\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">weather-lightning</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"weather-pouring\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-weather-pouring\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">weather-pouring</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"weather-snowy\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-weather-snowy\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">weather-snowy</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"weather-rainy\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-weather-rainy\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">weather-rainy</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"translate\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-translate\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">translate</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"magnify\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-magnify\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">magnify</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"github\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-github\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">github</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"refresh\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-refresh\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">refresh</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"arrow-down\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-arrow-down\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">arrow-down</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"power\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-power\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">power</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"file-document-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-file-document-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">file-document-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"fire\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-fire\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">fire</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"wifi\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-wifi\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">wifi</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"wrench\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-wrench\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">wrench</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"cake-variant\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-cake-variant\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">cake-variant</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"notebook\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-notebook\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">notebook</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"cellphone\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-cellphone\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">cellphone</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"weather-night\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-weather-night\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">weather-night</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"xml\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-xml\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">xml</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"content-copy\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-content-copy\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">content-copy</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"qrcode-scan\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-qrcode-scan\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">qrcode-scan</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"barcode-scan\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-barcode-scan\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">barcode-scan</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"shopping\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-shopping\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">shopping</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"shopping-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-shopping-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">shopping-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"card-account-details\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-card-account-details\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">card-account-details</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"card-account-details-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-card-account-details-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">card-account-details-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"pin\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-pin\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">pin</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"pin-off\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-pin-off\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">pin-off</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"pin-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-pin-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">pin-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"pin-off-outline\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-pin-off-outline\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">pin-off-outline</div>
+  </div>
+  <div class=\\"icon-example__icon var-elevation--2\\" style=\\"background: rgb(255, 255, 255);\\" data-clipboard-text=\\"code-json\\" data-v-1f92c76e=\\"\\"><i class=\\"var-icon var-icon--set var-icon-code-json\\" style=\\"transition: transform 0ms;\\" data-v-1f92c76e=\\"\\"></i>
+    <div class=\\"icon-example__icon-name\\" data-v-1f92c76e=\\"\\">code-json</div>
+  </div>
+</div>"
+`;

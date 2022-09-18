@@ -1,0 +1,50 @@
+// Vitest Snapshot v1
+
+exports[`test row and col example 1`] = `
+"<div class=\\"app-type\\" data-v-5c0415cd=\\"\\">栅格系统</div>
+<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\" data-v-5c0415cd=\\"\\">
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+</div>
+<div class=\\"app-type\\" data-v-5c0415cd=\\"\\">偏移</div>
+<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\" data-v-5c0415cd=\\"\\">
+  <div class=\\"var-col var--box var-col--span-16 var-col--offset-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">offset: 8 span: 16</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+</div>
+<div class=\\"app-type\\" data-v-5c0415cd=\\"\\">对齐</div>
+<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\" data-v-5c0415cd=\\"\\">
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+</div>
+<div class=\\"var-row var--box\\" style=\\"justify-content: center; align-items: flex-start;\\" data-v-5c0415cd=\\"\\">
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+</div>
+<div class=\\"var-row var--box\\" style=\\"justify-content: flex-end; align-items: flex-start;\\" data-v-5c0415cd=\\"\\">
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+</div>
+<div class=\\"var-row var--box\\" style=\\"justify-content: space-around; align-items: flex-start;\\" data-v-5c0415cd=\\"\\">
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+</div>
+<div class=\\"var-row var--box\\" style=\\"justify-content: space-between; align-items: flex-start;\\" data-v-5c0415cd=\\"\\">
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+</div>
+<div class=\\"app-type\\" data-v-5c0415cd=\\"\\">列间距</div>
+<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px -5px;\\" data-v-5c0415cd=\\"\\">
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+  <div class=\\"var-col var--box var-col--span-8\\" style=\\"padding-left: 0px; padding-right: 0px;\\" data-v-5c0415cd=\\"\\">span: 8</div>
+</div>"
+`;

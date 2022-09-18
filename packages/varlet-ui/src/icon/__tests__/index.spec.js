@@ -3,10 +3,15 @@ import VarIcon from '../Icon'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/test'
+import example from '../example/index'
 
 test('test icon plugin', () => {
   const app = createApp({}).use(Icon)
   expect(app.component(Icon.name)).toBeTruthy()
+})
+
+test('test icon example', () => {
+  expect(mount(example).html()).toMatchSnapshot()
 })
 
 test('test icon onClick', () => {
