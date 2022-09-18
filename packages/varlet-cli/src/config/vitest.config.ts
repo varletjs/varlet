@@ -17,6 +17,7 @@ export default defineConfig({
     environment: 'jsdom',
     coverage: {
       provider: 'istanbul',
+      exclude: ['**/example/**', '**/__tests__/**'],
     },
     globals: true,
     transformMode: {
