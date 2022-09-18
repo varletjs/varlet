@@ -137,8 +137,8 @@ module.exports = {
         'en-US': 'Released under the MIT License, You can use and share freely.',
       },
       copyright: {
-        'zh-CN': 'Copyright © 2020 varletjs 组织成员以及 varlet 的贡献者们',
-        'en-US': 'Copyright © 2020 varletjs member and varlet contributors.',
+        'zh-CN': 'Copyright © 2022 varletjs 组织成员以及 varlet 的贡献者们',
+        'en-US': 'Copyright © 2022 varletjs member and varlet contributors.',
       },
     },
     title: {
