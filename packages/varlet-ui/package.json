@@ -58,25 +58,25 @@
     "vue": "^3.2.0"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.6",
     "@varlet/icons": "workspace:*",
     "@varlet/shared": "workspace:*",
+    "@popperjs/core": "^2.11.6",
     "dayjs": "^1.10.4",
     "decimal.js": "^10.2.1"
   },
   "devDependencies": {
     "@varlet/cli": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
-    "@vitest/coverage-c8": "^0.23.4",
     "@vue/runtime-core": "3.2.25",
     "@vue/test-utils": "^2.0.2",
-    "clipboard": "^2.0.6",
+    "@vitest/coverage-istanbul": "0.22.1",
+    "vitest": "0.22.1",
     "jsdom": "^20.0.0",
+    "clipboard": "^2.0.6",
     "live-server": "^1.2.1",
     "lodash-es": "^4.17.21",
     "postcss-px-to-viewport": "^1.1.1",
     "typescript": "^4.4.4",
-    "vitest": "0.22.1",
     "vue": "3.2.25",
     "vue-router": "4.0.12"
   },
