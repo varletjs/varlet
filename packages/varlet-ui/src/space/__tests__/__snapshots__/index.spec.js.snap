@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`test space component props > test space justify 1`] = `
-"<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
+"<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: flex-start; flex-wrap: wrap; margin: -4px 0px;\\">
   <div style=\\"margin: 4px 12px 4px 0px;\\">
     <div>child</div>
   </div>
@@ -15,7 +15,7 @@ exports[`test space component props > test space justify 1`] = `
 `;
 
 exports[`test space component props > test space justify 2`] = `
-"<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: end; flex-wrap: wrap; margin: -4px 0px;\\">
+"<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: flex-end; flex-wrap: wrap; margin: -4px 0px;\\">
   <div style=\\"margin: 4px 12px 4px 0px;\\">
     <div>child</div>
   </div>

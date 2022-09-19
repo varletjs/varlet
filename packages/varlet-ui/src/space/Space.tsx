@@ -87,13 +87,17 @@ export default defineComponent({
         return <div style={{ margin, width }}>{child}</div>
       })
 
+      const formatStyle = (style: string | undefined) => {
+        return style && ['start', 'end'].includes(style) ? `flex-${style}` : style
+      }
+
       return (
         <div
           class={classes(n(), 'var--box', [inline, n('--inline')])}
           style={{
             flexDirection: direction,
-            justifyContent: justify,
-            alignItems: align,
+            justifyContent: formatStyle(justify),
+            alignItems: formatStyle(align),
             flexWrap: wrap ? 'wrap' : 'nowrap',
             margin: direction === 'row' ? `-${y / 2}px 0` : undefined,
           }}
