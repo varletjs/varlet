@@ -9,7 +9,7 @@ export function commitLint(gitParams: string) {
   const message = require('fs').readFileSync(gitParams, 'utf-8').trim()
 
   const COMMIT_MESSAGE_RE =
-    /^(revert|fix|feat|docs|perf|test|types|style|build|chore|release|refactor)(\(.+\))?: (.|\n)+/
+    /^(revert|fix|feat|docs|perf|test|types|style|build|chore|release|refactor)(\(.+\))?!?: (.|\n)+/
 
   if (!isVersion(message) && !COMMIT_MESSAGE_RE.test(message)) {
     logger.error(`Commit message invalid`)

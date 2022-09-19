@@ -1,31 +1,31 @@
-import vue from '@vitejs/plugin-vue'
 import fs from 'fs'
 import { resolve } from 'path'
-import { defineConfig, Plugin } from 'vite'
 
 const varletESMBundleFile = resolve(__dirname, '../varlet-ui/es/varlet.esm.js')
-const varletArea = resolve(__dirname, '../varlet-ui/json/area.json')
 const varletTouchEmulatorFile = resolve(__dirname, '../varlet-touch-emulator/index.js')
 const varletCSSFile = resolve(__dirname, '../varlet-ui/es/style.css')
+const varletArea = resolve(__dirname, '../varlet-ui/json/area.json')
 
-function copyVarletPlugin(): Plugin {
+function copyVarletDependencies() {
   return {
-    name: 'copy-varlet',
+    name: 'copy-varlet-dependencies',
     buildStart() {
       fs.copyFileSync(varletESMBundleFile, resolve('public/varlet.esm.js'))
-      fs.writeFileSync(resolve('public/varlet-area.js'), `export default ${fs.readFileSync(varletArea)}`)
       fs.copyFileSync(varletTouchEmulatorFile, resolve('public/varlet-touch-emulator.js'))
       fs.copyFileSync(varletCSSFile, resolve('public/varlet.css'))
+      fs.writeFileSync(resolve('public/varlet-area.js'), `export default ${fs.readFileSync(varletArea)}`)
     },
   }
 }
 
-export default defineConfig(async () => {
-  return {
-    base: './',
-    plugins: [vue(), copyVarletPlugin()],
-    build: {
-      outDir: 'site',
-    },
-  }
-})
+export default {
+  base: './',
+  plugins: [copyVarletDependencies()],
+  server: {
+    host: '0.0.0.0',
+    port: 3000,
+  },
+  build: {
+    outDir: 'site',
+  },
+}

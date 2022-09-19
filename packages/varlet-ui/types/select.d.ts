@@ -1,7 +1,8 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export type SelectValidateTriggers = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
+export type SelectValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
+
+export type SelectTextAlign = 'left' | 'right' | 'center'
 
 export interface SelectProps extends BasicAttributes {
   modelValue?: any
@@ -18,8 +19,8 @@ export interface SelectProps extends BasicAttributes {
   readonly?: boolean
   clearable?: boolean
   separator?: string
-  textAlign?: 'left' | 'right' | 'center'
-  validateTrigger?: Array<SelectValidateTriggers>
+  textAlign?: SelectTextAlign
+  validateTrigger?: Array<SelectValidateTrigger>
   rules?: Array<(v: any) => any>
   onFocus?: (e: Event) => void
   onBlur?: (e: Event) => void

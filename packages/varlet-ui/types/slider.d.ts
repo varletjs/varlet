@@ -1,11 +1,12 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
+
+export type SliderLabelVisible = 'always' | 'normal' | 'never'
 
 export interface SliderProps extends BasicAttributes {
   modelValue?: number | Array<number>
   step?: number | string
   range?: boolean
-  labelVisible?: 'always' | 'normal' | 'never'
+  labelVisible?: SliderLabelVisible
   activeColor?: string
   trackColor?: string
   thumbColor?: string

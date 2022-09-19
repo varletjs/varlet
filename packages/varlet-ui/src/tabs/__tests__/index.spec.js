@@ -2,19 +2,15 @@ import Tabs from '..'
 import Tab from '../../tab'
 import TabsItems from '../../tabs-items'
 import TabItem from '../../tab-item'
-import VarTabs from '../Tabs'
-import VarTab from '../../tab/Tab'
-import VarTabsItems from '../../tabs-items/TabsItems'
-import VarTabItem from '../../tab-item/TabItem'
 import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
-import { delay, mockOffset } from '../../utils/jest'
+import { createApp, h } from 'vue'
+import { delay, mockOffset } from '../../utils/test'
 
 let originScrollTo
 
 beforeEach(() => {
   originScrollTo = Element.prototype.scrollTo
-  Element.prototype.scrollTo = jest.fn()
+  Element.prototype.scrollTo = vi.fn()
 })
 
 afterEach(() => {
@@ -25,10 +21,10 @@ mockOffset()
 
 const Wrapper = {
   components: {
-    [VarTabs.name]: VarTabs,
-    [VarTab.name]: VarTab,
-    [VarTabsItems.name]: VarTabsItems,
-    [VarTabItem.name]: VarTabItem,
+    [Tabs.name]: Tabs,
+    [Tab.name]: Tab,
+    [TabsItems.name]: TabsItems,
+    [TabItem.name]: TabItem,
   },
   props: [
     'onClick',
@@ -50,15 +46,15 @@ const Wrapper = {
   }),
   template: `
     <var-tabs v-model:active="active" v-bind="$props">
-      <var-tab style="width: 100px">tab 1</var-tab>
-      <var-tab disabled style="width: 100px">tab 2</var-tab>
-      <var-tab style="width: 100px">tab 3</var-tab>
+    <var-tab style="width: 100px">tab 1</var-tab>
+    <var-tab disabled style="width: 100px">tab 2</var-tab>
+    <var-tab style="width: 100px">tab 3</var-tab>
     </var-tabs>
 
     <var-tabs-items>
-      <var-tab-item>tab item 1</var-tab-item>
-      <var-tab-item>tab item 2</var-tab-item>
-      <var-tab-item>tab item 3</var-tab-item>
+    <var-tab-item>tab item 1</var-tab-item>
+    <var-tab-item>tab item 2</var-tab-item>
+    <var-tab-item>tab item 3</var-tab-item>
     </var-tabs-items>
   `,
 }
@@ -72,8 +68,8 @@ test('test tabs & tab & tabsItems & tabItem plugin', () => {
 })
 
 test('test tabs event', async () => {
-  const onClick = jest.fn()
-  const onChange = jest.fn()
+  const onClick = vi.fn()
+  const onChange = vi.fn()
   const wrapper = mount(Wrapper, {
     props: {
       onClick,
@@ -224,4 +220,30 @@ describe('test tabs component props', () => {
     expect(wrapper.find('.var-tabs--safe-area').exists()).toBe(false)
     wrapper.unmount()
   })
+})
+
+test('test tabs items getSwipe method', async () => {
+  const onUpdateActive = vi.fn((active) => {
+    wrapper.setProps({ active })
+  })
+
+  const wrapper = mount(TabsItems, {
+    props: {
+      active: 0,
+      'onUpdate:active': onUpdateActive,
+    },
+    slots: {
+      default: () => [
+        h(TabItem, { slots: { default: () => 'hello' } }),
+        h(TabItem, { slots: { default: () => 'hello' } }),
+      ],
+    },
+  })
+
+  await delay(0)
+  expect(wrapper.vm.getSwipe()).toBeTruthy()
+  wrapper.vm.getSwipe().next()
+  expect(onUpdateActive).toHaveBeenCalledTimes(1)
+
+  wrapper.unmount()
 })

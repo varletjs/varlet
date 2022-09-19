@@ -21,7 +21,6 @@ export const props = {
   },
   radius: {
     type: [String, Number],
-    default: 15,
   },
   // loading尺寸
   size: {
@@ -32,6 +31,12 @@ export const props = {
   // loading颜色
   color: {
     type: String,
-    default: 'currentColor',
+  },
+  description: {
+    type: String,
+  },
+  loading: {
+    type: Boolean,
+    default: false,
   },
 }

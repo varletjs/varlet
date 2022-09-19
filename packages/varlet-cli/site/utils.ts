@@ -1,6 +1,7 @@
 import { onMounted, onUnmounted } from 'vue'
 import { get } from 'lodash-es'
 import { formatStyleVars } from './components/utils/elements'
+import config from "@config";
 
 export * from './components/utils/components'
 export * from './components/utils/elements'
@@ -86,26 +87,26 @@ export function watchPlatform(cb: (platform: string) => void) {
   handleHashchange()
 }
 
-export function watchThemes(
-  cb: (themes: 'themes' | 'darkThemes', from: 'pc' | 'mobile' | 'default') => void,
+export function watchTheme(
+  cb: (theme: Theme, from: 'pc' | 'mobile' | 'default' | 'playground') => void,
   shouldUnmount = true
 ) {
-  const handleThemesChange = (event: MessageEvent) => {
+  const handleThemeChange = (event: MessageEvent) => {
     const { data } = event
-    if (data.action === 'themesChange') {
+    if (data.action === 'theme-change') {
       cb(data.data, data.from)
     }
   }
 
-  window.addEventListener('message', handleThemesChange)
+  window.addEventListener('message', handleThemeChange)
 
   if (shouldUnmount) {
     onUnmounted(() => {
-      window.removeEventListener('message', handleThemesChange)
+      window.removeEventListener('message', handleThemeChange)
     })
   }
 
-  cb(getBrowserThemes(), 'default')
+  cb(getBrowserTheme(), 'default')
 }
 
 export function addRouteListener(cb: () => void) {
@@ -119,9 +120,11 @@ export function addRouteListener(cb: () => void) {
   })
 }
 
-export function setThemes(config: Record<string, any>, name: 'themes' | 'darkThemes') {
-  const themes = get(config, name, {})
-  const styleVars = Object.entries(themes).reduce((styleVars, [key, value]) => {
+export type Theme = 'lightTheme' | 'darkTheme'
+
+export function setTheme(config: Record<string, any>, name: Theme) {
+  const themeConfig = get(config, name, {})
+  const styleVars = Object.entries(themeConfig).reduce((styleVars, [key, value]) => {
     styleVars[`--site-config-${key}`] = value as string
     return styleVars
   }, {} as StyleVars)
@@ -129,22 +132,33 @@ export function setThemes(config: Record<string, any>, name: 'themes' | 'darkThe
   StyleProvider(styleVars)
 }
 
-export function getBrowserThemes(themes = 'VARLET_THEMES'): 'darkThemes' | 'themes' {
-  let currentThemes = window.localStorage.getItem(themes) as 'darkThemes' | 'themes'
+export function getBrowserTheme(): Theme {
+  const themeKey = get(config, 'themeKey')
+  const darkThemeConfig = get(config, 'darkTheme')
 
-  if (!currentThemes) {
-    currentThemes = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'darkThemes' : 'themes'
-    window.localStorage.setItem(themes, currentThemes)
+  if (!darkThemeConfig) {
+    return 'lightTheme'
   }
 
-  return currentThemes
+  const storageTheme = window.localStorage.getItem(themeKey) as Theme
+
+  if (!storageTheme) {
+    const preferTheme = window.matchMedia?.('(prefers-color-scheme: dark)').matches
+      ? 'darkTheme'
+      : 'lightTheme'
+    window.localStorage.setItem(themeKey, preferTheme)
+
+    return preferTheme
+  }
+
+  return storageTheme
 }
 
-export function watchDarkMode(dark: StyleVars, cb?: (themes: 'darkThemes' | 'themes') => void) {
-  watchThemes((themes) => {
-    StyleProvider(themes === 'darkThemes' ? dark : null)
+export function watchDarkMode(dark: StyleVars, cb?: (theme: Theme) => void) {
+  watchTheme((theme) => {
+    StyleProvider(theme === 'darkTheme' ? dark : null)
 
-    cb?.(themes)
+    cb?.(theme)
   })
 }
 

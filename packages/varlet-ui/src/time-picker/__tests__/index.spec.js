@@ -3,7 +3,7 @@ import TimePicker from '..'
 import VarTimePicker from '../TimePicker'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/jest'
+import { delay, trigger } from '../../utils/test'
 
 test('test timePicker example', () => {
   const wrapper = mount(example)
@@ -21,7 +21,7 @@ test('test timePicker style and format', async () => {
     <var-time-picker
       :format="format"
       v-model="time"
-      shadow
+      elevation
       header-color="purple"
       color="#7bb872"
     />
@@ -132,7 +132,7 @@ test('test readonly prop', async () => {
 })
 
 test('test v-model and onChange event', async () => {
-  const change = jest.fn()
+  const change = vi.fn()
 
   const template = `<var-time-picker v-model="time" use-seconds format="24hr" @change="change" />`
   const wrapper = mount({

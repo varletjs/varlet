@@ -1,70 +1,70 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
 exports[`test counter example 1`] = `
-"<div class=\\"app-type\\">基本使用</div>
-<div class=\\"var-counter var--box\\">
+"<div class=\\"app-type\\" data-v-6f5790d6=\\"\\">基本使用</div>
+<div class=\\"var-counter var--box\\" data-v-6f5790d6=\\"\\">
   <div class=\\"var-counter__controller var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
   <transition-stub>
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">设置取值范围</div>
-<div class=\\"var-counter var--box\\">
+<div class=\\"app-type\\" data-v-6f5790d6=\\"\\">设置取值范围</div>
+<div class=\\"var-counter var--box\\" data-v-6f5790d6=\\"\\">
   <div class=\\"var-counter__controller var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
   <transition-stub>
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">设置步长</div>
-<div class=\\"var-counter var--box\\">
+<div class=\\"app-type\\" data-v-6f5790d6=\\"\\">设置步长</div>
+<div class=\\"var-counter var--box\\" data-v-6f5790d6=\\"\\">
   <div class=\\"var-counter__controller var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
   <transition-stub>
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">保留小数</div>
-<div class=\\"var-counter var--box\\">
+<div class=\\"app-type\\" data-v-6f5790d6=\\"\\">保留小数</div>
+<div class=\\"var-counter var--box\\" data-v-6f5790d6=\\"\\">
   <div class=\\"var-counter__controller var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"decimal\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
   <transition-stub>
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">设置尺寸</div>
-<div class=\\"var-counter var--box\\">
+<div class=\\"app-type\\" data-v-6f5790d6=\\"\\">设置尺寸</div>
+<div class=\\"var-counter var--box\\" data-v-6f5790d6=\\"\\">
   <div class=\\"var-counter__controller var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms; width: 36px; height: 36px;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" style=\\"width: 50px; font-size: 18px;\\" inputmode=\\"numeric\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms; width: 36px; height: 36px;\\" var-counter-cover=\\"\\"></i></div>
   <transition-stub>
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">禁用</div>
-<div class=\\"var-counter var--box\\">
+<div class=\\"app-type\\" data-v-6f5790d6=\\"\\">禁用</div>
+<div class=\\"var-counter var--box\\" data-v-6f5790d6=\\"\\">
   <div class=\\"var-counter__controller var-elevation--2 var-counter--disabled\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
   <transition-stub>
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">只读</div>
-<div class=\\"var-counter var--box\\">
+<div class=\\"app-type\\" data-v-6f5790d6=\\"\\">只读</div>
+<div class=\\"var-counter var--box\\" data-v-6f5790d6=\\"\\">
   <div class=\\"var-counter__controller var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
   <transition-stub>
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">异步变更</div>
-<div class=\\"var-counter var--box\\">
+<div class=\\"app-type\\" data-v-6f5790d6=\\"\\">异步变更</div>
+<div class=\\"var-counter var--box\\" data-v-6f5790d6=\\"\\">
   <div class=\\"var-counter__controller var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
   <transition-stub>
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">字段校验</div>
-<div class=\\"var-counter var--box\\">
+<div class=\\"app-type\\" data-v-6f5790d6=\\"\\">字段校验</div>
+<div class=\\"var-counter var--box\\" data-v-6f5790d6=\\"\\">
   <div class=\\"var-counter__controller var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
   <transition-stub>
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"space\\"></div>"
+<div class=\\"space\\" data-v-6f5790d6=\\"\\"></div>"
 `;
 
 exports[`test counter validation 1`] = `

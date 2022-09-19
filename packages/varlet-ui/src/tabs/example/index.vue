@@ -22,14 +22,14 @@ const actives = reactive({
 })
 const { active, active2, active3, active4, active5, active6, active7, activeRelation } = toRefs(actives)
 
-const themes = ref('themes')
+const theme = ref('lightTheme')
 const tabItemStyle = computed(() => ({
-  color: themes.value === 'themes' ? '#888' : '#aaa',
+  color: theme.value === 'lightTheme' ? '#888' : '#aaa',
 }))
 
 watchLang(use)
 watchDarkMode(dark, (mode) => {
-  themes.value = mode
+  theme.value = mode
 })
 </script>
 

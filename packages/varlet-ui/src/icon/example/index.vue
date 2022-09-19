@@ -29,8 +29,8 @@ onMounted(() => {
 })
 
 watchLang(use)
-watchDarkMode(dark, (themes) => {
-  background.value = themes === 'darkThemes' ? '#303030' : '#fff'
+watchDarkMode(dark, (theme) => {
+  background.value = theme === 'darkTheme' ? '#303030' : '#fff'
 })
 </script>
 
@@ -81,7 +81,6 @@ watchDarkMode(dark, (themes) => {
 </template>
 
 <style lang="less" scoped>
-@import '../../styles/var';
 @import '../../styles/elevation';
 
 .icon-example {

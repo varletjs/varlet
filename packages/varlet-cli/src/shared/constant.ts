@@ -2,6 +2,7 @@ import { resolve } from 'path'
 
 export const CWD = process.cwd()
 export const VARLET_CONFIG = resolve(CWD, 'varlet.config.js')
+export const VITEST_CONFIG = resolve(__dirname, '../config/vitest.config.js')
 export const SRC_DIR = resolve(CWD, 'src')
 export const ES_DIR = resolve(CWD, 'es')
 export const LIB_DIR = resolve(CWD, 'lib')
@@ -20,7 +21,7 @@ export const LOCALE_DIR_NAME = 'locale'
 export const DOCS_DIR_NAME = 'docs'
 export const DIR_INDEX = 'index.vue'
 export const TESTS_DIR_NAME = '__tests__'
-export const GENERATORS_DIR = resolve(__dirname, '../../generators')
+export const GENERATORS_DIR = resolve(__dirname, '../../template/generators')
 export const UI_PACKAGE_JSON = resolve(CWD, 'package.json')
 export const CLI_PACKAGE_JSON = resolve(__dirname, '../../package.json')
 

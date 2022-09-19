@@ -1,25 +1,18 @@
-@import '../styles/var';
-
-@loading-opacity: 0.38;
-@loading-desc-margin: 8px 0 0;
-@loading-normal-width: 50px;
-@loading-normal-height: @font-size-md + 2;
-
-@loading-large-width: 64px;
-@loading-large-height: @font-size-lg + 2;
-
-@loading-small-width: 36px;
-@loading-small-height: @font-size-sm + 2;
-
-@loading-mini-width: 22px;
-@loading-mini-height: @font-size-xs + 2;
-
 :root {
-  --loading-opacity: @loading-opacity;
-  --loading-desc-margin: @loading-desc-margin;
+  --loading-opacity: 0.38;
+  --loading-desc-margin: 8px 0 0;
 }
 
 .var-loading {
+  --loading-normal-width: 50px;
+  --loading-normal-height: calc(var(--font-size-md) + 2px);
+  --loading-large-width: 64px;
+  --loading-large-height: calc(var(--font-size-lg) + 2px);
+  --loading-small-width: 36px;
+  --loading-small-height: calc(var(--font-size-sm) + 2px);
+  --loading-mini-width: 22px;
+  --loading-mini-height: calc(var(--font-size-xs) + 2px);
+
   position: relative;
 
   &__content {
@@ -57,23 +50,23 @@
   }
 
   &__description {
-    color: currentColor;
+    color: var(--color-primary);
     margin: var(--loading-desc-margin);
 
     &--large {
-      font-size: @font-size-lg;
+      font-size: var(--font-size-lg);
     }
 
     &--normal {
-      font-size: @font-size-md;
+      font-size: var(--font-size-md);
     }
 
     &--small {
-      font-size: @font-size-sm;
+      font-size: var(--font-size-sm);
     }
 
     &--mini {
-      font-size: @font-size-xs;
+      font-size: var(--font-size-xs);
     }
   }
 
@@ -82,6 +75,7 @@
 
     &-block {
       display: inline-block;
+      color: var(--color-primary);
       animation: circle 1.8s linear infinite;
 
       &--large {
@@ -145,37 +139,38 @@
   }
 
   &__wave {
-    @loading-wave-size-item-width: 5px;
-    @loading-wave-size-item-margin: 5px;
+    --loading-wave-size-item-width: 5px;
+    --loading-wave-size-item-margin: 5px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     &--large {
-      width: @loading-large-width;
-      height: @loading-large-height;
+      width: var(--loading-large-width);
+      height: var(--loading-large-height);
     }
 
     &--normal {
-      width: @loading-normal-width;
-      height: @loading-normal-height;
+      width: var(--loading-normal-width);
+      height: var(--loading-normal-height);
     }
 
     &--small {
-      width: @loading-small-width;
-      height: @loading-small-height;
+      width: var(--loading-small-width);
+      height: var(--loading-small-height);
     }
 
     &--mini {
-      width: @loading-mini-width;
-      height: @loading-mini-height;
+      width: var(--loading-mini-width);
+      height: var(--loading-mini-height);
     }
 
     &-item {
       height: 100%;
       display: inline-block;
       animation: 1.2s ease-in-out infinite wave;
+      background-color: var(--color-primary);
 
       &:nth-child(1) {
         animation-delay: -1.2s;
@@ -200,23 +195,23 @@
     }
 
     &-item--large {
-      width: @loading-wave-size-item-width;
-      margin-left: @loading-wave-size-item-margin;
+      width: var(--loading-wave-size-item-width);
+      margin-left: var(--loading-wave-size-item-margin);
     }
 
     &-item--normal {
-      width: @loading-wave-size-item-width - 1;
-      margin-left: @loading-wave-size-item-margin - 1;
+      width: calc(var(--loading-wave-size-item-width) - 1px);
+      margin-left: calc(var(--loading-wave-size-item-margin) - 1px);
     }
 
     &-item--small {
-      width: @loading-wave-size-item-width - 2;
-      margin-left: @loading-wave-size-item-margin - 2;
+      width: calc(var(--loading-wave-size-item-width) - 2px);
+      margin-left: calc(var(--loading-wave-size-item-margin) - 2px);
     }
 
     &-item--mini {
-      width: @loading-wave-size-item-width - 3;
-      margin-left: @loading-wave-size-item-margin - 3;
+      width: calc(var(--loading-wave-size-item-width) - 3px);
+      margin-left: calc(var(--loading-wave-size-item-margin) - 3px);
     }
 
     @keyframes wave {
@@ -232,37 +227,38 @@
   }
 
   &__cube {
-    @loading-cube-size-item-width: 10px;
-    @loading-cube-size-item-height: 10px;
-    @loading-cube-size-item-margin: 5px;
+    --loading-cube-size-item-width: 10px;
+    --loading-cube-size-item-height: 10px;
+    --loading-cube-size-item-margin: 5px;
 
     display: flex;
     align-items: center;
 
     &--large {
-      width: @loading-large-width;
-      height: @loading-large-height;
+      width: var(--loading-large-width);
+      height: var(--loading-large-height);
     }
 
     &--normal {
-      width: @loading-normal-width;
-      height: @loading-normal-height;
+      width: var(--loading-normal-width);
+      height: var(--loading-normal-height);
     }
 
     &--small {
-      width: @loading-small-width;
-      height: @loading-small-height;
+      width: var(--loading-small-width);
+      height: var(--loading-small-height);
     }
 
     &--mini {
-      width: @loading-mini-width;
-      height: @loading-mini-height;
+      width: var(--loading-mini-width);
+      height: var(--loading-mini-height);
     }
 
     &-item {
       display: inline-block;
       transform-origin: right bottom;
       animation: 1.5s ease infinite cube;
+      background-color: var(--color-primary);
 
       &:nth-child(1) {
         animation-delay: 0.2s;
@@ -283,27 +279,27 @@
     }
 
     &-item--large {
-      height: @loading-cube-size-item-height;
-      width: @loading-cube-size-item-width;
-      margin-left: @loading-cube-size-item-margin;
+      height: var(--loading-cube-size-item-height);
+      width: var(--loading-cube-size-item-width);
+      margin-left: var(--loading-cube-size-item-margin);
     }
 
     &-item--normal {
-      height: @loading-cube-size-item-height - 2;
-      width: @loading-cube-size-item-width - 2;
-      margin-left: @loading-cube-size-item-margin - 1;
+      height: calc(var(--loading-cube-size-item-height) - 2px);
+      width: calc(var(--loading-cube-size-item-width) - 2px);
+      margin-left: calc(var(--loading-cube-size-item-margin) - 1px);
     }
 
     &-item--small {
-      height: @loading-cube-size-item-height - 4;
-      width: @loading-cube-size-item-width - 4;
-      margin-left: @loading-cube-size-item-margin - 2;
+      height: calc(var(--loading-cube-size-item-height) - 4px);
+      width: calc(var(--loading-cube-size-item-width) - 4px);
+      margin-left: calc(var(--loading-cube-size-item-margin) - 2px);
     }
 
     &-item--mini {
-      height: @loading-cube-size-item-height - 6;
-      width: @loading-cube-size-item-width - 6;
-      margin-left: @loading-cube-size-item-margin - 3;
+      height: calc(var(--loading-cube-size-item-height) - 6px);
+      width: calc(var(--loading-cube-size-item-width) - 6px);
+      margin-left: calc(var(--loading-cube-size-item-margin) - 3px);
     }
 
     @keyframes cube {
@@ -319,8 +315,8 @@
   }
 
   &__rect {
-    @loading-rect-size-item-width: 8px;
-    @loading-rect-size-item-height: 100%;
+    --loading-rect-size-item-width: 8px;
+    --loading-rect-size-item-height: 100%;
 
     display: flex;
     flex-wrap: nowrap;
@@ -328,27 +324,28 @@
     align-items: center;
 
     &--large {
-      width: @loading-large-width;
-      height: @loading-large-height;
+      width: var(--loading-large-width);
+      height: var(--loading-large-height);
     }
 
     &--normal {
-      width: @loading-normal-width;
-      height: @loading-normal-height;
+      width: var(--loading-normal-width);
+      height: var(--loading-normal-height);
     }
 
     &--small {
-      width: @loading-small-width;
-      height: @loading-small-height;
+      width: var(--loading-small-width);
+      height: var(--loading-small-height);
     }
 
     &--mini {
-      width: @loading-mini-width;
-      height: @loading-mini-height;
+      width: var(--loading-mini-width);
+      height: var(--loading-mini-height);
     }
 
     &-item {
       animation: 2s ease-in-out infinite rect;
+      background-color: var(--color-primary);
 
       &:nth-child(1) {
         animation-delay: 1.75s;
@@ -384,23 +381,23 @@
     }
 
     &-item--large {
-      height: @loading-rect-size-item-height;
-      width: @loading-rect-size-item-width;
+      height: var(--loading-rect-size-item-height);
+      width: var(--loading-rect-size-item-width);
     }
 
     &-item--normal {
-      height: @loading-rect-size-item-height * 0.9;
-      width: @loading-rect-size-item-width * 0.8;
+      height: calc(var(--loading-rect-size-item-height) * 0.9);
+      width: calc(var(--loading-rect-size-item-width) * 0.8);
     }
 
     &-item--small {
-      height: @loading-rect-size-item-height * 0.8;
-      width: @loading-rect-size-item-width * 0.6;
+      height: calc(var(--loading-rect-size-item-height) * 0.8);
+      width: calc(var(--loading-rect-size-item-width) * 0.6);
     }
 
     &-item--mini {
-      height: @loading-rect-size-item-height * 0.7;
-      width: @loading-rect-size-item-width * 0.4;
+      height: calc(var(--loading-rect-size-item-height) * 0.7);
+      width: calc(var(--loading-rect-size-item-width) * 0.4);
     }
 
     @keyframes rect {
@@ -423,8 +420,8 @@
   }
 
   &__disappear {
-    @loading-disappear-size-item-width: 15px;
-    @loading-disappear-size-item-height: 15px;
+    --loading-disappear-size-item-width: 15px;
+    --loading-disappear-size-item-height: 15px;
 
     display: flex;
     justify-content: space-around;
@@ -432,28 +429,29 @@
     flex-flow: nowrap;
 
     &--large {
-      width: @loading-large-width;
-      height: @loading-large-height;
+      width: var(--loading-large-width);
+      height: var(--loading-large-height);
     }
 
     &--normal {
-      width: @loading-normal-width;
-      height: @loading-normal-height;
+      width: var(--loading-normal-width);
+      height: var(--loading-normal-height);
     }
 
     &--small {
-      width: @loading-small-width;
-      height: @loading-small-height;
+      width: var(--loading-small-width);
+      height: var(--loading-small-height);
     }
 
     &--mini {
-      width: @loading-mini-width;
-      height: @loading-mini-height;
+      width: var(--loading-mini-width);
+      height: var(--loading-mini-height);
     }
 
     &-item {
       border-radius: 50%;
       animation: 0.5s ease-in-out infinite alternate disappear;
+      background-color: var(--color-primary);
 
       &:nth-child(1) {
         animation-delay: -0.4s;
@@ -469,23 +467,23 @@
     }
 
     &-item--large {
-      height: @loading-disappear-size-item-height;
-      width: @loading-disappear-size-item-width;
+      height: var(--loading-disappear-size-item-height);
+      width: var(--loading-disappear-size-item-width);
     }
 
     &-item--normal {
-      height: @loading-disappear-size-item-height * 0.8;
-      width: @loading-disappear-size-item-width * 0.8;
+      height: calc(var(--loading-disappear-size-item-height) * 0.8);
+      width: calc(var(--loading-disappear-size-item-width) * 0.8);
     }
 
     &-item--small {
-      height: @loading-disappear-size-item-height * 0.6;
-      width: @loading-disappear-size-item-width * 0.6;
+      height: calc(var(--loading-disappear-size-item-height) * 0.6);
+      width: calc(var(--loading-disappear-size-item-width) * 0.6);
     }
 
     &-item--mini {
-      height: @loading-disappear-size-item-height * 0.4;
-      width: @loading-disappear-size-item-width * 0.4;
+      height: calc(var(--loading-disappear-size-item-height) * 0.4);
+      width: calc(var(--loading-disappear-size-item-width) * 0.4);
     }
 
     @keyframes disappear {

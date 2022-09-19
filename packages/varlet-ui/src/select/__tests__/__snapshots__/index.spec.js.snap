@@ -1,30 +1,16 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
 exports[`test select example 1`] = `
-"<div class=\\"app-type\\">基本使用</div>
-<div class=\\"var-select var--box\\">
+"<div class=\\"app-type\\" data-v-137f5c44=\\"\\">基本使用</div>
+<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <transition-stub>
-        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + 0px); z-index: 2000; display: none;\\">
-          <div class=\\"var-select__scroller\\">
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
-            </div>
-          </div>
-        </div>
-      </transition-stub>
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -37,30 +23,16 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">朴素模式</div>
-<div class=\\"var-select var--box\\">
+<div class=\\"app-type\\" data-v-137f5c44=\\"\\">朴素模式</div>
+<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon var-select--non-hint\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap var-select--non-hint\\">
+    <div class=\\"var-select__wrap var-select--non-hint\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--placeholder-non-hint\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <transition-stub>
-        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + 0px); z-index: 2000; display: none;\\">
-          <div class=\\"var-select__scroller\\">
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
-            </div>
-          </div>
-        </div>
-      </transition-stub>
     </div>
     <div class=\\"var-select__icon var-select--non-hint\\">
       <!--v-if-->
@@ -71,30 +43,16 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">文本关联值</div>
-<div class=\\"var-select var--box\\">
+<div class=\\"app-type\\" data-v-137f5c44=\\"\\">文本关联值</div>
+<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <transition-stub>
-        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + 0px); z-index: 2000; display: none;\\">
-          <div class=\\"var-select__scroller\\">
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
-            </div>
-          </div>
-        </div>
-      </transition-stub>
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -107,31 +65,17 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"relation\\">当前选择的是: </div>
-<div class=\\"app-type\\">禁用</div>
-<div class=\\"var-select var--box var-select--disabled\\">
+<div class=\\"relation\\" data-v-137f5c44=\\"\\">当前选择的是: </div>
+<div class=\\"app-type\\" data-v-137f5c44=\\"\\">禁用</div>
+<div class=\\"var-select var--box var-select--disabled\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller var-select--disabled\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select var-select--disabled\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--disabled\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <transition-stub>
-        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + 0px); z-index: 2000; display: none;\\">
-          <div class=\\"var-select__scroller\\">
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
-            </div>
-          </div>
-        </div>
-      </transition-stub>
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -144,30 +88,16 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">只读</div>
-<div class=\\"var-select var--box\\">
+<div class=\\"app-type\\" data-v-137f5c44=\\"\\">只读</div>
+<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <transition-stub>
-        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + 0px); z-index: 2000; display: none;\\">
-          <div class=\\"var-select__scroller\\">
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
-            </div>
-          </div>
-        </div>
-      </transition-stub>
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -180,30 +110,16 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">可清除</div>
-<div class=\\"var-select var--box\\">
+<div class=\\"app-type\\" data-v-137f5c44=\\"\\">可清除</div>
+<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <transition-stub>
-        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + 0px); z-index: 2000; display: none;\\">
-          <div class=\\"var-select__scroller\\">
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
-            </div>
-          </div>
-        </div>
-      </transition-stub>
     </div>
     <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\"></i></div>
   </div>
@@ -214,32 +130,18 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">显示图标</div>
-<div class=\\"var-select var--box\\">
+<div class=\\"app-type\\" data-v-137f5c44=\\"\\">显示图标</div>
+<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
-    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: transform 0ms;\\" data-v-137f5c44=\\"\\"></i></div>
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <transition-stub>
-        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + 0px); z-index: 2000; display: none;\\">
-          <div class=\\"var-select__scroller\\">
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
-            </div>
-          </div>
-        </div>
-      </transition-stub>
     </div>
-    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
+    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: transform 0ms;\\" data-v-137f5c44=\\"\\"></i></div>
   </div>
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
@@ -248,76 +150,20 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">多选</div>
-<div class=\\"var-select var--box\\">
+<div class=\\"app-type\\" data-v-137f5c44=\\"\\">多选</div>
+<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
           <div>
             <div class=\\"var-select__values\\"></div>
           </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
         </div><label class=\\"var-select__placeholder var--ellipsis\\">请选择多个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <transition-stub>
-        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + 0px); z-index: 2000; display: none;\\">
-          <div class=\\"var-select__scroller\\">
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <div class=\\"var-checkbox__wrap\\">
-                <div class=\\"var-checkbox\\">
-                  <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
-                  <div class=\\"var-checkbox__text\\"></div>
-                </div>
-                <transition-stub>
-                  <!--v-if-->
-                </transition-stub>
-              </div>
-              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <div class=\\"var-checkbox__wrap\\">
-                <div class=\\"var-checkbox\\">
-                  <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
-                  <div class=\\"var-checkbox__text\\"></div>
-                </div>
-                <transition-stub>
-                  <!--v-if-->
-                </transition-stub>
-              </div>
-              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <div class=\\"var-checkbox__wrap\\">
-                <div class=\\"var-checkbox\\">
-                  <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
-                  <div class=\\"var-checkbox__text\\"></div>
-                </div>
-                <transition-stub>
-                  <!--v-if-->
-                </transition-stub>
-              </div>
-              <div class=\\"var-option__text var--ellipsis\\">打游戏</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <div class=\\"var-checkbox__wrap\\">
-                <div class=\\"var-checkbox\\">
-                  <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
-                  <div class=\\"var-checkbox__text\\"></div>
-                </div>
-                <transition-stub>
-                  <!--v-if-->
-                </transition-stub>
-              </div>
-              <div class=\\"var-option__text var--ellipsis\\">写代码</div>
-            </div>
-          </div>
-        </div>
-      </transition-stub>
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -330,76 +176,20 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">纸片风格的多选</div>
-<div class=\\"var-select var--box\\">
+<div class=\\"app-type\\" data-v-137f5c44=\\"\\">纸片风格的多选</div>
+<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
           <div>
             <div class=\\"var-select__chips\\"></div>
           </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
         </div><label class=\\"var-select__placeholder var--ellipsis\\">请选择多个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <transition-stub>
-        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + 0px); z-index: 2000; display: none;\\">
-          <div class=\\"var-select__scroller\\">
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <div class=\\"var-checkbox__wrap\\">
-                <div class=\\"var-checkbox\\">
-                  <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
-                  <div class=\\"var-checkbox__text\\"></div>
-                </div>
-                <transition-stub>
-                  <!--v-if-->
-                </transition-stub>
-              </div>
-              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <div class=\\"var-checkbox__wrap\\">
-                <div class=\\"var-checkbox\\">
-                  <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
-                  <div class=\\"var-checkbox__text\\"></div>
-                </div>
-                <transition-stub>
-                  <!--v-if-->
-                </transition-stub>
-              </div>
-              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <div class=\\"var-checkbox__wrap\\">
-                <div class=\\"var-checkbox\\">
-                  <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
-                  <div class=\\"var-checkbox__text\\"></div>
-                </div>
-                <transition-stub>
-                  <!--v-if-->
-                </transition-stub>
-              </div>
-              <div class=\\"var-option__text var--ellipsis\\">打游戏</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <div class=\\"var-checkbox__wrap\\">
-                <div class=\\"var-checkbox\\">
-                  <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
-                  <div class=\\"var-checkbox__text\\"></div>
-                </div>
-                <transition-stub>
-                  <!--v-if-->
-                </transition-stub>
-              </div>
-              <div class=\\"var-option__text var--ellipsis\\">写代码</div>
-            </div>
-          </div>
-        </div>
-      </transition-stub>
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -412,35 +202,16 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">单选值校验</div>
-<div class=\\"var-select var--box\\">
+<div class=\\"app-type\\" data-v-137f5c44=\\"\\">单选值校验</div>
+<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <transition-stub>
-        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + 0px); z-index: 2000; display: none;\\">
-          <div class=\\"var-select__scroller\\">
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">摸鱼</div>
-            </div>
-          </div>
-        </div>
-      </transition-stub>
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -453,76 +224,20 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">多选值校验</div>
-<div class=\\"var-select var--box\\">
+<div class=\\"app-type\\" data-v-137f5c44=\\"\\">多选值校验</div>
+<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
           <div>
             <div class=\\"var-select__values\\"></div>
           </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
         </div><label class=\\"var-select__placeholder var--ellipsis\\">请选择多个选项</label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <transition-stub>
-        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + 0px); z-index: 2000; display: none;\\">
-          <div class=\\"var-select__scroller\\">
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <div class=\\"var-checkbox__wrap\\">
-                <div class=\\"var-checkbox\\">
-                  <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
-                  <div class=\\"var-checkbox__text\\"></div>
-                </div>
-                <transition-stub>
-                  <!--v-if-->
-                </transition-stub>
-              </div>
-              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <div class=\\"var-checkbox__wrap\\">
-                <div class=\\"var-checkbox\\">
-                  <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
-                  <div class=\\"var-checkbox__text\\"></div>
-                </div>
-                <transition-stub>
-                  <!--v-if-->
-                </transition-stub>
-              </div>
-              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <div class=\\"var-checkbox__wrap\\">
-                <div class=\\"var-checkbox\\">
-                  <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
-                  <div class=\\"var-checkbox__text\\"></div>
-                </div>
-                <transition-stub>
-                  <!--v-if-->
-                </transition-stub>
-              </div>
-              <div class=\\"var-option__text var--ellipsis\\">打游戏</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <div class=\\"var-checkbox__wrap\\">
-                <div class=\\"var-checkbox\\">
-                  <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
-                  <div class=\\"var-checkbox__text\\"></div>
-                </div>
-                <transition-stub>
-                  <!--v-if-->
-                </transition-stub>
-              </div>
-              <div class=\\"var-option__text var--ellipsis\\">写代码</div>
-            </div>
-          </div>
-        </div>
-      </transition-stub>
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -535,65 +250,19 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\">垂直偏移</div>
-<div class=\\"var-select var--box\\">
-  <div class=\\"var-select__controller\\">
-    <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
-        <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
-      </div>
-      <transition-stub>
-        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + 0px); z-index: 2000; display: none;\\">
-          <div class=\\"var-select__scroller\\">
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">火猫</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">蓝猫</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">紫猫</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">土猫</div>
-            </div>
-          </div>
-        </div>
-      </transition-stub>
-    </div>
-    <div class=\\"var-select__icon\\">
-      <!--v-if-->
-    </div>
-  </div>
-  <div class=\\"var-select__line\\">
-    <div class=\\"var-select__dot\\"></div>
-  </div>
-  <transition-stub>
-    <!--v-if-->
-  </transition-stub>
-</div>
-<div class=\\"space\\"></div>"
+<div class=\\"space\\" data-v-137f5c44=\\"\\"></div>"
 `;
 
 exports[`test select focus & blur methods 1`] = `
 "<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller var-select--focus\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--focus var-select--placeholder-hint\\"></label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -612,12 +281,12 @@ exports[`test select focus & blur methods 2`] = `
 "<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\"></label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->
@@ -636,26 +305,12 @@ exports[`test select hint to be false 1`] = `
 "<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon var-select--non-hint\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap var-select--non-hint\\">
+    <div class=\\"var-select__wrap var-select--non-hint\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--placeholder-hidden var-select--placeholder-non-hint\\"></label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <transition-stub>
-        <div class=\\"var-menu__menu var-elevation--3\\" style=\\"top: calc(0px + 0px); left: calc(0px + 0px); z-index: 2000; display: none;\\">
-          <div class=\\"var-select__scroller\\">
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">吃饭</div>
-            </div>
-            <div class=\\"var-option var--box\\" style=\\"width: 0px;\\">
-              <div class=\\"var-option__cover\\"></div>
-              <!--v-if-->
-              <div class=\\"var-option__text var--ellipsis\\">睡觉</div>
-            </div>
-          </div>
-        </div>
-      </transition-stub>
     </div>
     <div class=\\"var-select__icon var-select--non-hint\\">
       <!--v-if-->
@@ -674,12 +329,12 @@ exports[`test select validation 1`] = `
 "<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller var-select--error\\">
     <div class=\\"var-select__icon\\"></div>
-    <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-      <div class=\\"var-select__wrap\\">
+    <div class=\\"var-select__wrap\\">
+      <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select var-select--error\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis var-select--error\\"></label>
+        <!--teleport start-->
+        <!--teleport end-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
     </div>
     <div class=\\"var-select__icon\\">
       <!--v-if-->

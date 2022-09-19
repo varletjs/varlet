@@ -134,10 +134,11 @@ import { isEmpty } from '@varlet/shared'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import type { Ref, ComputedRef } from 'vue'
-import type { ValidateTriggers } from './props'
+import type { InputValidateTrigger } from './props'
 import type { InputProvider } from './provide'
 
 const { n, classes } = createNamespace('input')
+
 export default defineComponent({
   name: 'VarInput',
   components: {
@@ -171,7 +172,7 @@ export default defineComponent({
       resetValidation,
     } = useValidation()
 
-    const validateWithTrigger = (trigger: ValidateTriggers) => {
+    const validateWithTrigger = (trigger: InputValidateTrigger) => {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)

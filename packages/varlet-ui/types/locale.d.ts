@@ -30,11 +30,14 @@ export type Pack = {
 }
 
 interface Locale {
+  zhCN: Pack
+  enUS: Pack
   packs: Record<string, Partial<Pack>>
   pack: Ref<Partial<Pack>>
   add(lang: string, pack: Partial<Pack>): void
   use(lang: string): void
   merge(lang: string, pack: Partial<Pack>): void
+
   useLocale<T = Pack>(): {
     packs: Record<string, Partial<T>>
     pack: Ref<Partial<T>>

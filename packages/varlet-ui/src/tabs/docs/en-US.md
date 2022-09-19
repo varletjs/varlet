@@ -4,7 +4,6 @@
 
 Use `Tabs, Tab` to switch between tabbed groups and Use `TabsItems`, `TabItem` to achieve view linkage with Tabs.
 
-
 ### Basic Usage
 
 ```html
@@ -175,7 +174,7 @@ const active = ref(0)
 </script>
 
 <template>
- <var-tabs
+  <var-tabs
     class="tabs-example-vertical"
     elevation
     layout-direction="vertical"
@@ -222,23 +221,14 @@ const active = ref(0)
 
   <var-tabs-items v-model:active="active">
     <var-tab-item>
-      The way she came into the place.
-      I knew right then and there.
-      there was something different about this girl.
+      The way she came into the place. I knew right then and there. there was something different about this girl.
     </var-tab-item>
     <var-tab-item>
-      The girl was persuasive.
-      the girl I could not trust.
-      The girl was bad.
-      the girl was dangerous.
-      I never know.
+      The girl was persuasive. the girl I could not trust. The girl was bad. the girl was dangerous. I never know.
     </var-tab-item>
     <var-tab-item>
-      She's so dangerous.
-      the girl is so dangerous.
-      Take away my money, throw away my time.
-      You can call me honey.
-      but you're no damn good for me.
+      She's so dangerous. the girl is so dangerous. Take away my money, throw away my time. You can call me honey. but
+      you're no damn good for me.
     </var-tab-item>
   </var-tabs-items>
 </template>
@@ -283,90 +273,98 @@ const active = ref(0)
 
 #### Tabs Props
 
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `v-model:active` | The `active` tab identifier matches `name` first, followed by `index` | _string_ | `index` |
-| `layout-direction` | The layout direction of the tabs, optional value of `horizontal` `vertical` | _string_ | `horizontal` |
-| `item-direction` | The layout direction of the tab, optional value of `horizontal` `vertical` | _string_ | `horizontal` |
-| `fixed-bottom` | Whether fixed to the bottom of the window, can be used for bottom navigation | _boolean_ | `false` |
-| `color` | The background color of the tabs | _string_ | `#fff` |
-| `active-color` | The primary color that the tab is activates | _string_ | `#2979ff` |
-| `inactive-color` | The primary color that the tab is not activated | _string_ | `#646566` |
-| `disabled-color` | The primary color that the tab is disabled | _string_ | `#e0e0e0` |
-| `indicator-color` | The tab activates the color of the indicator | _string_ | `#2979ff` |
-| `indicator-size` | Tab activates the size of the indicator | _string \| number_ | `2px` |
-| `elevation` | Whether to enable shadows | _boolean_ | `false` |
-| `sticky` | Whether to enable sticky layouts | _boolean_ | `false` |
-| `safe-area` | Whether to enable bottom safe area adaptation | _boolean_ | `false` |
-| `offset-top` | Distance offset top | _string \| number_ | `0` |
+| Prop               | Description                                                                  | Type               | Default      |
+| ------------------ | ---------------------------------------------------------------------------- | ------------------ | ------------ |
+| `v-model:active`   | The `active` tab identifier matches `name` first, followed by `index`        | _string_           | `index`      |
+| `layout-direction` | The layout direction of the tabs, optional value of `horizontal` `vertical`  | _string_           | `horizontal` |
+| `item-direction`   | The layout direction of the tab, optional value of `horizontal` `vertical`   | _string_           | `horizontal` |
+| `fixed-bottom`     | Whether fixed to the bottom of the window, can be used for bottom navigation | _boolean_          | `false`      |
+| `color`            | The background color of the tabs                                             | _string_           | `#fff`       |
+| `active-color`     | The primary color that the tab is activates                                  | _string_           | `#2979ff`    |
+| `inactive-color`   | The primary color that the tab is not activated                              | _string_           | `#646566`    |
+| `disabled-color`   | The primary color that the tab is disabled                                   | _string_           | `#e0e0e0`    |
+| `indicator-color`  | The tab activates the color of the indicator                                 | _string_           | `#2979ff`    |
+| `indicator-size`   | Tab activates the size of the indicator                                      | _string \| number_ | `2px`        |
+| `elevation`        | Whether to enable shadows                                                    | _boolean_          | `false`      |
+| `sticky`           | Whether to enable sticky layouts                                             | _boolean_          | `false`      |
+| `safe-area`        | Whether to enable bottom safe area adaptation                                | _boolean_          | `false`      |
+| `offset-top`       | Distance offset top                                                          | _string \| number_ | `0`          |
 
 #### Tab Props
 
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `name` | tab's name | _string \| number_ | `index` |
-| `disabled` | Whether to disable tab | _boolean_ | `false` |
+| Prop       | Description            | Type               | Default |
+| ---------- | ---------------------- | ------------------ | ------- |
+| `name`     | tab's name             | _string \| number_ | `index` |
+| `disabled` | Whether to disable tab | _boolean_          | `false` |
 
 #### TabsItems Props
 
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `v-model:active` | The identity of the active tab | _string \| number_ | `-` |
-| `can-swipe` | Whether to allow swipe switch | _boolean_ | `true` |
-| `loop` | Whether to allow cycle switching | _boolean_ | `false` |
+| Prop             | Description                      | Type               | Default |
+| ---------------- | -------------------------------- | ------------------ | ------- |
+| `v-model:active` | The identity of the active tab   | _string \| number_ | `-`     |
+| `can-swipe`      | Whether to allow swipe switch    | _boolean_          | `true`  |
+| `loop`           | Whether to allow cycle switching | _boolean_          | `false` |
 
 #### TabItem Props
 
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
+| Prop   | Description | Type               | Default |
+| ------ | ----------- | ------------------ | ------- |
 | `name` | view's name | _string \| number_ | `index` |
 
 ### Methods
 
-| Method | Description | Arguments | Return |
-| --- | --- | --- | --- |
-| `resize` | You can call this method to redraw when a tabs changes position size | `-` | `-` |
+#### Tabs Methods
+
+| Method   | Description                                                          | Arguments | Return |
+| -------- | -------------------------------------------------------------------- | --------- | ------ |
+| `resize` | You can call this method to redraw when a tabs changes position size | `-`       | `-`    |
+
+#### TabsItems Methods
+
+| Method     | Description                        | Arguments | Return |
+| ---------- | ---------------------------------- | --------- | ------ |
+| `getSwipe` | Get the `swipe` component instance | `-`       | `-`    |
 
 ### Events
 
 #### Tabs Events
 
-| Event | Description | Arguments |
-| --- | --- | --- |
-| `click` | Triggered when the tab is clicked, but not when the tab `disabled` status is `true` | `active: string \| number` |
-| `change` | Triggered when switching tab | `active: string \| number` |
+| Event    | Description                                                                         | Arguments                  |
+| -------- | ----------------------------------------------------------------------------------- | -------------------------- |
+| `click`  | Triggered when the tab is clicked, but not when the tab `disabled` status is `true` | `active: string \| number` |
+| `change` | Triggered when switching tab                                                        | `active: string \| number` |
 
 #### Tab Events
 
-| Event | Description | Arguments |
-| --- | --- | --- |
+| Event   | Description                                                                         | Arguments                                      |
+| ------- | ----------------------------------------------------------------------------------- | ---------------------------------------------- |
 | `click` | Triggered when the tab is clicked, but not when the tab `disabled` status is `true` | `active: string \| number` <br> `event: Event` |
 
 ### Slots
 
 #### Tabs Slots
 
-| Slot | Description | Arguments |
-| --- | --- | --- |
-| `default` | tabs content | `-` |
+| Slot      | Description  | Arguments |
+| --------- | ------------ | --------- |
+| `default` | tabs content | `-`       |
 
 #### Tab Slots
 
-| Slot | Description | Arguments |
-| --- | --- | --- |
-| `default` | tab's content | `-` |
+| Slot      | Description   | Arguments |
+| --------- | ------------- | --------- |
+| `default` | tab's content | `-`       |
 
 #### TabsItems Slots
 
-| Slot | Description | Arguments |
-| --- | --- | --- |
-| `default` | TabsItems content | `-` |
+| Slot      | Description       | Arguments |
+| --------- | ----------------- | --------- |
+| `default` | TabsItems content | `-`       |
 
 #### TabItem Slots
 
-| Slot | Description | Arguments |
-| --- | --- | --- |
-| `default` | tabItem's content | `-` |
+| Slot      | Description       | Arguments |
+| --------- | ----------------- | --------- |
+| `default` | tabItem's content | `-`       |
 
 ### Style Variables
 
@@ -374,22 +372,22 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 #### Tabs Variables
 
-| Variable | Default |
-| --- | --- |
-| `--tabs-item-horizontal-height` | `44px` |
-| `--tabs-item-vertical-height` | `66px` |
-| `--tabs-radius` | `2px` |
-| `--tabs-padding` | `12px` |
-| `--tabs-indicator-size` | `2px` |
-| `--tabs-indicator-background` | `var(--color-primary)` |
-| `--tabs-background` | `#fff` |
+| Variable                        | Default                |
+| ------------------------------- | ---------------------- |
+| `--tabs-item-horizontal-height` | `44px`                 |
+| `--tabs-item-vertical-height`   | `66px`                 |
+| `--tabs-radius`                 | `2px`                  |
+| `--tabs-padding`                | `12px`                 |
+| `--tabs-indicator-size`         | `2px`                  |
+| `--tabs-indicator-background`   | `var(--color-primary)` |
+| `--tabs-background`             | `#fff`                 |
 
 #### Tab Variables
 
-| Variable | Default |
-| --- | --- |
-| `--tab-padding` | `12px` |
-| `--tab-active-color` | `var(--color-primary)` |
-| `--tab-inactive-color` | `#646566` |
+| Variable               | Default                      |
+| ---------------------- | ---------------------------- |
+| `--tab-padding`        | `12px`                       |
+| `--tab-active-color`   | `var(--color-primary)`       |
+| `--tab-inactive-color` | `#646566`                    |
 | `--tab-disabled-color` | `var(--color-text-disabled)` |
-| `--tab-font-size` | `var(--font-size-md)` |
+| `--tab-font-size`      | `var(--font-size-md)`        |

@@ -45,8 +45,8 @@ watchLang((lang) => {
   offsetY.value = false
 })
 
-watchDarkMode(dark, (themes) => {
-  bgColor.value = themes === 'darkThemes' ? '#272727' : '#fff'
+watchDarkMode(dark, (theme) => {
+  bgColor.value = theme === 'darkTheme' ? '#272727' : '#fff'
 })
 </script>
 

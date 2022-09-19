@@ -84,10 +84,7 @@ export async function compileModule(modules: 'umd' | 'commonjs' | 'esm-bundle' |
     moduleDir.map((filename: string) => {
       const file: string = resolve(dest, filename)
 
-      if (isDir(file)) {
-        ensureFileSync(resolve(file, './style/index.js'))
-        ensureFileSync(resolve(file, './style/less.js'))
-      }
+      isDir(file) && ensureFileSync(resolve(file, './style/index.js'))
 
       return isDir(file) ? compileDir(file) : null
     })
@@ -95,6 +92,11 @@ export async function compileModule(modules: 'umd' | 'commonjs' | 'esm-bundle' |
 
   const publicDirs = await getPublicDirs()
 
-  await (modules === 'commonjs' ? compileCommonJSEntry(dest, publicDirs) : compileESEntry(dest, publicDirs))
+  if (modules === 'commonjs') {
+    await compileCommonJSEntry(dest, publicDirs)
+  } else {
+    await compileESEntry(dest, publicDirs)
+  }
+
   generateReference(dest)
 }

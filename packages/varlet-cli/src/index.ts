@@ -3,9 +3,10 @@ import logger from './shared/logger'
 import { Command } from 'commander'
 import { dev } from './commands/dev'
 import { build } from './commands/build'
+import { vite } from './commands/vite'
 import { compile } from './commands/compile'
 import { create } from './commands/create'
-import { jest } from './commands/jest'
+import { test } from './commands/test'
 import { lint } from './commands/lint'
 import { gen } from './commands/gen'
 import { preview } from './commands/preview'
@@ -25,6 +26,16 @@ program
 
 program.command('build').description('Build varlet site for production').action(build)
 
+program
+  .command('build:vite')
+  .description('Use vite build app for production')
+  .action(() => vite('build'))
+
+program
+  .command('dev:vite')
+  .description('Use vite start server for development')
+  .action(() => vite('dev'))
+
 program.command('preview').description('Preview varlet site for production').action(preview)
 
 program
@@ -36,21 +47,30 @@ program
 program.command('lint').description('Lint code').action(lint)
 
 program
-  .command('create <name>')
+  .command('create')
   .description('Create a component directory')
-  .option('-d, --disableI18n', 'Disable to generator i18n files')
+  .option('-n, --name <componentName>', 'Component name')
+  .option('-s, --sfc', 'Generate files in sfc format')
+  .option('-t, --tsx', 'Generate files in tsx format')
+  .option('-l, --locale', 'Generator internationalized files')
   .action(create)
 
 program
-  .command('jest')
-  .description('Run Jest in work directory')
+  .command('test')
+  .description('Run test in work directory')
   .option('-w, --watch', 'Watch files for changes and rerun tests related to changed files')
-  .option('-wa, --watchAll', 'Watch files for changes and rerun all tests when something changes')
   .option('-c, --component <componentName>', 'Test a specific component')
-  .option('-cc --clearCache', 'Clear test cache')
-  .action(jest)
+  .option('-cov, --coverage', 'Generate the coverage')
+  .action(test)
 
-program.command('gen <name>').description('Generate cli application').action(gen)
+program
+  .command('gen')
+  .description('Generate cli application')
+  .option('-n, --name <applicationName>', 'Application name')
+  .option('-s, --sfc', 'Generate files in sfc format')
+  .option('-t, --tsx', 'Generate files in tsx format')
+  .option('-l, --locale', 'Generator internationalized files')
+  .action(gen)
 
 program
   .command('changelog')

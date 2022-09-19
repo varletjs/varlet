@@ -1,40 +1,59 @@
 <template>
-  <div class="var-site--box var-site-loading">
-    <div class="var-site-loading__circle" v-if="type === 'circle'">
-      <span
-        class="var-site-loading__circle-block"
-        :style="{
-          width: radius * 2 + 'px',
-          height: radius * 2 + 'px',
-        }"
-      >
-        <svg viewBox="25 25 50 50">
-          <circle cx="50" cy="50" r="20" fill="none"></circle>
-        </svg>
-      </span>
+  <div :class="n()">
+    <div :class="classes(n('content'), [loading, n('content--active')])" v-if="$slots.default">
+      <slot />
+      <div :class="n('content-mask')" v-if="loading"></div>
     </div>
-
-    <template v-for="(nums, key) in loadingTypeDict" :key="key">
-      <div :class="`var-site-loading__${key} var-site-loading__${key}-${size}`" v-if="type === key">
-        <div
-          v-for="num in nums"
-          :key="num + key"
-          :style="{ backgroundColor: color }"
-          :class="`var-site-loading__${key}-item var-site-loading__${key}-item-${size}`"
-        ></div>
+    <div :class="classes('var-site--box', n('body'), [$slots.default, n('inside')])" v-if="isShow">
+      <div :class="n('circle')" v-if="type === 'circle'">
+        <span
+          :class="classes(n('circle-block'), n(`circle-block--${size}`))"
+          :style="{
+            width: multiplySizeUnit(radius, 2),
+            height: multiplySizeUnit(radius, 2),
+            color,
+          }"
+        >
+          <svg viewBox="25 25 50 50">
+            <circle cx="50" cy="50" r="20" fill="none"></circle>
+          </svg>
+        </span>
       </div>
-    </template>
+
+      <template v-for="(nums, key) in loadingTypeDict" :key="key">
+        <div :class="classes(n(key), n(`${key}--${size}`))" v-if="type === key">
+          <div
+            v-for="num in nums"
+            :key="num + key"
+            :style="{ backgroundColor: color }"
+            :class="classes(n(`${key}-item`), n(`${key}-item--${size}`))"
+          ></div>
+        </div>
+      </template>
+      <div
+        :class="classes(n('description'), n(`description--${size}`))"
+        :style="{ color }"
+        v-if="$slots.description || description"
+      >
+        <slot name="description">{{ description }}</slot>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { props } from './props'
+import { createNamespace, call } from '../utils/components'
+import { multiplySizeUnit } from '../utils/elements'
+import type { ComputedRef } from 'vue'
+
+const { n, classes } = createNamespace('loading')
 
 export default defineComponent({
-  name: 'VarSiteLoading',
+  name: 'VarLoading',
   props,
-  setup() {
+  setup(props, { slots }) {
     const loadingTypeDict = {
       wave: 5,
       cube: 4,
@@ -42,8 +61,18 @@ export default defineComponent({
       disappear: 3,
     }
 
+    const isShow: ComputedRef<boolean> = computed(() => {
+      if (!call(slots.default)) return true
+
+      return props.loading
+    })
+
     return {
+      n,
+      classes,
+      multiplySizeUnit,
       loadingTypeDict,
+      isShow,
     }
   },
 })

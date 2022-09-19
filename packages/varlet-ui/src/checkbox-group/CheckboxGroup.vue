@@ -16,7 +16,7 @@ import { useCheckboxes } from './provide'
 import { useForm } from '../form/provide'
 import { uniq } from '@varlet/shared'
 import type { ComputedRef } from 'vue'
-import type { ValidateTriggers } from './props'
+import type { CheckBoxGroupValidateTrigger } from './props'
 import type { CheckboxGroupProvider } from './provide'
 
 const { n, classes } = createNamespace('checkbox-group')
@@ -38,7 +38,7 @@ export default defineComponent({
     } = useValidation()
     const checkboxGroupErrorMessage: ComputedRef<string> = computed(() => errorMessage.value)
 
-    const validateWithTrigger = (trigger: ValidateTriggers) => {
+    const validateWithTrigger = (trigger: CheckBoxGroupValidateTrigger) => {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)

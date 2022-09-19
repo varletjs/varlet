@@ -34,7 +34,7 @@ in the column.
   margin-bottom: 10px;
   color: #fff;
   text-align: center;
-  background-clip: content-box;
+  background-clip: content-box !important;
   background: #3a7afe;
 }
 </style>
@@ -60,7 +60,7 @@ in the column.
   margin-bottom: 10px;
   color: #fff;
   text-align: center;
-  background-clip: content-box;
+  background-clip: content-box !important;
   background: #3a7afe;
 }
 </style>
@@ -103,7 +103,7 @@ using the `<var-row/>` `justify` and `align` properties to set the alignment of 
   margin-bottom: 10px;
   color: #fff;
   text-align: center;
-  background-clip: content-box;
+  background-clip: content-box !important;
   background: #3a7afe;
 }
 </style>
@@ -131,7 +131,7 @@ using the `<var-row/>` `justify` and `align` properties to set the alignment of 
   margin-bottom: 10px;
   color: #fff;
   text-align: center;
-  background-clip: content-box;
+  background-clip: content-box !important;
   background: #3a7afe;
 }
 </style>

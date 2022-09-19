@@ -3,7 +3,7 @@ import Input from '..'
 import VarInput from '../Input'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { delay } from '../../utils/test'
 
 test('test input example', () => {
   const wrapper = mount(example)
@@ -16,58 +16,71 @@ test('test input plugin', () => {
   expect(app.component(Input.name)).toBeTruthy()
 })
 
-test('test input focus & blur', async () => {
-  const onFocus = jest.fn()
-  const onBlur = jest.fn()
+describe('test input events', () => {
+  async function expectFocusAndBlur(props = {}) {
+    const onFocus = vi.fn()
+    const onBlur = vi.fn()
 
-  const wrapper = mount(VarInput, {
-    props: {
-      onFocus,
-      onBlur,
-    },
+    const wrapper = mount(VarInput, {
+      props: {
+        onFocus,
+        onBlur,
+        ...props,
+      },
+    })
+
+    wrapper.vm.focus()
+    await wrapper.find('.var-input__input').trigger('focus')
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.vm.blur()
+    await wrapper.find('.var-input__input').trigger('blur')
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  }
+
+  async function expectInputAndChangeAndClick(props = {}) {
+    const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+    const onInput = vi.fn()
+    const onChange = vi.fn()
+    const onClick = vi.fn()
+
+    const wrapper = mount(VarInput, {
+      props: {
+        modelValue: '',
+        onInput,
+        onChange,
+        onClick,
+        'onUpdate:modelValue': onUpdateModelValue,
+        ...props,
+      },
+    })
+
+    await wrapper.trigger('click')
+    expect(onClick).toHaveBeenCalledTimes(1)
+
+    await wrapper.find('.var-input__input').setValue('t')
+    await wrapper.find('.var-input__input').trigger('input')
+    expect(onUpdateModelValue).lastCalledWith('t')
+    expect(onInput).lastCalledWith('t', new Event('input'))
+    expect(wrapper.props('modelValue')).toBe('t')
+
+    await wrapper.find('.var-input__input').trigger('change')
+    expect(onChange).lastCalledWith('t', new Event('input'))
+
+    wrapper.unmount()
+  }
+
+  test('test input focus & blur', async () => {
+    await expectFocusAndBlur()
+    await expectFocusAndBlur({ textarea: true })
   })
 
-  wrapper.vm.focus()
-  await wrapper.find('.var-input__input').trigger('focus')
-  expect(wrapper.html()).toMatchSnapshot()
-
-  wrapper.vm.blur()
-  await wrapper.find('.var-input__input').trigger('blur')
-  expect(wrapper.html()).toMatchSnapshot()
-
-  wrapper.unmount()
-})
-
-test('test input onInput & onChange & onClick', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
-  const onInput = jest.fn()
-  const onChange = jest.fn()
-  const onClick = jest.fn()
-
-  const wrapper = mount(VarInput, {
-    props: {
-      modelValue: '',
-      onInput,
-      onChange,
-      onClick,
-      'onUpdate:modelValue': onUpdateModelValue,
-    },
+  test('test input onInput & onChange & onClick', async () => {
+    await expectInputAndChangeAndClick()
+    await expectInputAndChangeAndClick({ textarea: true })
   })
-
-  await wrapper.trigger('click')
-  expect(onClick).toHaveBeenCalledTimes(1)
-
-  await wrapper.find('.var-input__input').setValue('t')
-
-  await wrapper.find('.var-input__input').trigger('input')
-  expect(onUpdateModelValue).lastCalledWith('t')
-  expect(onInput).lastCalledWith('t', new Event('input'))
-  expect(wrapper.props('modelValue')).toBe('t')
-
-  await wrapper.find('.var-input__input').trigger('change')
-  expect(onChange).lastCalledWith('t', new Event('input'))
-
-  wrapper.unmount()
 })
 
 test('test input maxlength', () => {
@@ -96,8 +109,8 @@ test('test input hint to be false', () => {
 })
 
 test('test input clear', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
-  const onClear = jest.fn()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onClear = vi.fn()
 
   const wrapper = mount(VarInput, {
     props: {
@@ -126,11 +139,11 @@ const triggerEvents = async (wrapper) => {
 }
 
 test('test input disabled', async () => {
-  const onClear = jest.fn()
-  const onClick = jest.fn()
-  const onInput = jest.fn()
-  const onChange = jest.fn()
-  const onUpdateModelValue = jest.fn()
+  const onClear = vi.fn()
+  const onClick = vi.fn()
+  const onInput = vi.fn()
+  const onChange = vi.fn()
+  const onUpdateModelValue = vi.fn()
 
   const wrapper = mount(VarInput, {
     props: {
@@ -157,11 +170,11 @@ test('test input disabled', async () => {
 })
 
 test('test input readonly', async () => {
-  const onClear = jest.fn()
-  const onClick = jest.fn()
-  const onInput = jest.fn()
-  const onChange = jest.fn()
-  const onUpdateModelValue = jest.fn()
+  const onClear = vi.fn()
+  const onClick = vi.fn()
+  const onInput = vi.fn()
+  const onChange = vi.fn()
+  const onUpdateModelValue = vi.fn()
 
   const wrapper = mount(VarInput, {
     props: {
@@ -188,7 +201,7 @@ test('test input readonly', async () => {
 })
 
 test('test input validation', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarInput, {
     props: {
@@ -219,7 +232,7 @@ test('test input validation', async () => {
 })
 
 test('test input trim', async () => {
-  const onUpdateModelValue = jest.fn()
+  const onUpdateModelValue = vi.fn()
 
   const wrapper = mount(VarInput, {
     props: {

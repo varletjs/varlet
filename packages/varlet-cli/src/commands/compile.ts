@@ -21,7 +21,11 @@ export async function runTask(taskName: string, task: () => any) {
   }
 }
 
-export async function compile(cmd: { noUmd: boolean }) {
+interface CompileCommandOptions {
+  noUmd?: boolean
+}
+
+export async function compile(options: CompileCommandOptions) {
   process.env.NODE_ENV = 'compile'
 
   await removeDir()
@@ -37,5 +41,5 @@ export async function compile(cmd: { noUmd: boolean }) {
   await runTask('commonjs', () => compileModule('commonjs'))
 
   process.env.TARGET_MODULE = 'umd'
-  !cmd.noUmd && (await runTask('umd', () => compileModule('umd')))
+  !options.noUmd && (await runTask('umd', () => compileModule('umd')))
 }

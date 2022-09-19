@@ -19,7 +19,7 @@
 
 ### 快速开始
 
-`@varlet/cli` 内置了 `单文件组件(sfc)` 和 `tsx，jsx` 两种风格的组件库项目模板，可以通过 `gen` 命令直接生成。
+`@varlet/cli` 内置了 `单文件组件(sfc)` 和 `tsx` 两种风格的组件库项目模板，可以通过 `gen` 命令直接生成。
 帮助用户直接进入组件本身的开发，推荐使用 `pnpm` 作为包管理工具。
 
 ```shell
@@ -27,7 +27,7 @@
 # 安装命令行工具
 pnpm add @varlet/cli -g
 # 使用 gen 命令生成项目
-varlet-cli gen 项目名
+varlet-cli gen
 cd 项目名
 pnpm install
 pnpm dev
@@ -45,7 +45,7 @@ pnpm dev
 | ----- | -------------- | -------- | ---------- |
 | `host` | 开发服务器主机 | _number_ | `localhost` |
 | `port` | 开发服务器端口 | _number_ | `8080` |
-| `name` | 组件库全名	| _string_ | `Varlet` |
+| `name` | 组件库全名 | _string_ | `Varlet` |
 | `namespace` | 组件库命名空间, 会作为组件前缀 | _string_ | `var` |
 | `title` | 文档中组件库的标题 | _string_ | `VARLET` |
 | `logo` | 文档中组件库的logo | _string_ | `-` |
@@ -58,6 +58,28 @@ pnpm dev
 | `pc` | pc端文档结构配置 | _SitePC_ | `-` |
 | `mobile` | mobile端文档结构配置 | _SiteMobile_ | `-` |
 | `moduleCompatible` | 模块兼容配置 | _Record<string, string>_ | `-` |
+
+### 其他页面
+
+如果你想在组件库中加入其他页面，你可以在项目根目录下的创建`pages`文件夹编写vue组件， 用来生成其他的页面
+
+文件夹名称会被作为路由path，你可以根据自己的需求进行跳转
+
+⚠️：如该文件夹名称和组件名称有冲突，路由将会优先匹配`pages`中的组件
+
+```js
+// playground-ignore
+|-- varlet-ui
+    |-- src
+    |-- docs
+    |-- pages
+        |-- homepage
+            |-- index.vue
+        |-- sponsor
+            |-- index.vue
+        |-- contributor
+            |-- index.vue
+```
 
 ### 模块适配对象
 
@@ -161,6 +183,20 @@ module.exports = {
       versions: null,
       i18n: null,
       github: 'https://github.com/varletjs/varlet',
+      version: {
+        current: 'Vue 3',
+        items: {
+          'Vue 2': 'https://varlet-vue2.vercel.app/',
+        },
+      },
+    },
+    indexPage: {
+      description: {
+        'zh-CN': 'Varlet 是一个基于 Vue3 开发的 Material 风格移动端组件库',
+      },
+      started: {
+        'zh-CN': '起步',
+      },
     },
     menu: [
       {
@@ -284,16 +320,45 @@ varlet-cli release
 ```
 
 #### 生成一个项目模板
+
 ```shell
 # playground-ignore
-varlet-cli gen <projectName>
+varlet-cli gen [-n | --name[=<projectName>]] [-s | --sfc] [-t | --tsx] [-l | --locale]
+
+# Options
+-n
+--name
+  项目名
+-s
+--sfc
+  自动生成 .vue 格式项目
+-t
+--tsx
+  自动生成 .tsx 格式项目
+-l
+--locale
+  添加国际化功能
 ```
 
 #### 创建组件模板文件
 
 ```shell
 # playground-ignore
-varlet-cli create <componentName>
+varlet-cli create [-n | --name[=<componentName>]] [-s | --sfc] [-t | --tsx] [-l | --locale]
+
+# Options
+-n
+--name
+  组件名
+-s
+--sfc
+  自动生成 .vue 格式文件
+-t
+--tsx
+  自动生成 .tsx 格式文件
+-l
+--locale
+  自动生成 example 国际化文件
 ```
 
 ### Babel
@@ -338,7 +403,7 @@ module.exports = {
 {
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
-    "commit-msg": "npx --no-install varlet-cli commit-lint $1"
+    "commit-msg": "pnpm exec varlet-cli commit-lint $1"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",

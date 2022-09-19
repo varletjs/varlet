@@ -1,13 +1,14 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
+
+export type DatePickerType = 'date' | 'month'
 
 export interface DatePickerProps extends BasicAttributes {
   modelValue: string | Array<string>
-  type?: 'date' | 'month'
+  type?: DatePickerType
   allowedDates?: (val: string) => boolean
   color?: string
   headerColor?: string
-  shadow?: boolean
+  elevation?: boolean
   firstDayOfWeek?: string | number
   min?: string
   max?: string

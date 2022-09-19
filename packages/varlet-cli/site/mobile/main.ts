@@ -46,8 +46,12 @@ router.beforeEach((to: any) => {
   }
 
   if (!isPhone() && inIframe()) {
-    // @ts-ignore
-    window.top.onMobileRouteChange(path, language, replace)
+    try {
+      // @ts-ignore
+      window.top.onMobileRouteChange(path, language, replace)
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   // @ts-ignore

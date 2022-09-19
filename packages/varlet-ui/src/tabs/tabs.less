@@ -1,19 +1,11 @@
-@tabs-item-horizontal-height: 44px;
-@tabs-item-vertical-height: 66px;
-@tabs-radius: 2px;
-@tabs-padding: 12px;
-@tabs-indicator-size: 2px;
-@tabs-indicator-background: var(--color-primary);
-@tabs-background: #fff;
-
 :root {
-  --tabs-item-horizontal-height: @tabs-item-horizontal-height;
-  --tabs-item-vertical-height: @tabs-item-vertical-height;
-  --tabs-radius: @tabs-radius;
-  --tabs-padding: @tabs-padding;
-  --tabs-indicator-size: @tabs-indicator-size;
-  --tabs-indicator-background: @tabs-indicator-background;
-  --tabs-background: @tabs-background;
+  --tabs-item-horizontal-height: 44px;
+  --tabs-item-vertical-height: 66px;
+  --tabs-radius: 2px;
+  --tabs-padding: 12px;
+  --tabs-indicator-size: 2px;
+  --tabs-indicator-background: var(--color-primary);
+  --tabs-background: #fff;
 }
 
 .var-tabs {
@@ -41,6 +33,10 @@
     &-scrollable {
       overflow-x: auto;
       overflow-y: hidden;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     &-padding {
@@ -61,6 +57,10 @@
     &-scrollable {
       overflow-x: hidden;
       overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     &-padding {

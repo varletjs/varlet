@@ -1,23 +1,23 @@
 <template>
   <div class="var-site-code-example">
     <div class="var-site-code-example__toolbar">
-      <var-site-button text round @click="toggle" v-if="fold && !disabledFold">
-        <var-site-icon name="xml" size="18" />
-      </var-site-button>
+      <var-button text round @click="toggle" v-if="fold && !disabledFold">
+        <var-icon name="xml" size="18" />
+      </var-button>
 
-      <var-site-button
+      <var-button
         :id="`clip-trigger-${cid}`"
         :data-clipboard-target="`#clip-target-${cid}`"
         text
         round
         v-if="clipboard"
       >
-        <var-site-icon name="content-copy" size="18" />
-      </var-site-button>
+        <var-icon name="content-copy" size="18" />
+      </var-button>
 
-      <var-site-button text round @click="toPlayground" v-if="playground">
-        <var-site-icon name="code-json" size="18" />
-      </var-site-button>
+      <var-button text round @click="toPlayground" v-if="playground">
+        <var-icon name="code-json" size="18" />
+      </var-button>
     </div>
     <div
       :id="`clip-target-${cid}`"
@@ -38,11 +38,12 @@ import Icon from '../icon'
 import Button from '../button'
 import Snackbar from '../snackbar'
 import Clipboard from 'clipboard'
+import context from '../context'
 import config from '@config'
 import { defineComponent, nextTick, ref, onMounted } from 'vue'
 import { doubleRaf } from '../utils/elements'
 import { get } from 'lodash-es'
-import { getPCLocationInfo, utoa } from '../../utils'
+import { getBrowserTheme, getPCLocationInfo, utoa } from "../../utils";
 import type { Ref } from 'vue'
 
 let clipId = 0
@@ -94,21 +95,14 @@ export default defineComponent({
     }
 
     const toPlayground = () => {
-      const scriptStart = '<script setup>\n'
-      const scriptEnd = '<\/script>'
-      const injectImport = 'import { installVarletUI } from \'./varlet-repl-plugin.js\'\n'
-      const injectCall = '\ninstallVarletUI()\n'
-      let codeText = code.value?.innerText ?? ''
-
-      if (codeText.includes(scriptStart)) {
-        codeText = codeText.replace(scriptStart, `${scriptStart}${injectImport}`)
-        codeText = codeText.replace(scriptEnd, `${injectCall}${scriptEnd}`)
-      } else {
-        codeText = `${scriptStart}${injectImport}${injectCall}<\/script>\n\n${codeText}`
-      }
+      const codeText = code.value?.innerText ?? ''
 
       const file = { 'App.vue': codeText }
-      window.open(`${playground.value}/#${utoa(JSON.stringify(file))}`)
+
+      const initialTheme = getBrowserTheme().replace('Theme', '')
+
+      context.showPlayground = true
+      context.playgroundURL = `${playground.value}/?initialTheme=${initialTheme}#${utoa(JSON.stringify(file))}`
     }
 
     onMounted(() => {

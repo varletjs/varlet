@@ -5,7 +5,8 @@ import { compileFile, File } from '@vue/repl'
 import { utoa, atou } from './utils/encode'
 import { Snackbar } from '@varlet/ui'
 
-const publicPath = process.env.NODE_ENV === 'production' ? 'https://varlet.gitee.io/varlet-ui-playground/' : './'
+const publicPath =
+  process.env.NODE_ENV === 'production' ? 'https://varlet-ui-playground-git-dev-varletjs.vercel.app/' : './'
 
 const defaultMainFile = 'App.vue'
 const varletReplPlugin = 'varlet-repl-plugin.js'
@@ -19,9 +20,6 @@ const varletCss = `${publicPath}varlet.css`
 const welcomeCode = `\
 <script setup lang='ts'>
 import { ref } from 'vue'
-import { installVarletUI } from './${varletReplPlugin}'
-
-installVarletUI()
 
 const msg = ref('Hello Varlet!')
 </script>
@@ -41,6 +39,34 @@ Context.touchmoveForbid = false
 await appendStyle()
 
 export function installVarletUI() {
+  const { parent } = window
+
+  const style = document.createElement('style')
+  style.innerHTML = \`
+    body {
+      min-height: 100vh;
+      padding: 16px;
+      margin: 0;
+      color: var(--color-text);
+      background-color: var(--color-body);
+    }
+
+    *::-webkit-scrollbar {
+      display: none;
+    }
+  \`
+  document.head.appendChild(style)
+
+  if (parent.document.documentElement.classList.contains('dark')) {
+    VarletUI.StyleProvider(VarletUI.Themes.dark)
+  }
+
+  window.addEventListener('message', ({ data }) => {
+    if (data.action === 'theme-change') {
+      VarletUI.StyleProvider(data.value === 'dark' ? VarletUI.Themes.dark : null)
+    }
+  })
+
   const instance = getCurrentInstance()
   instance.appContext.app.use(VarletUI)
 }
@@ -55,6 +81,19 @@ export function appendStyle() {
     document.body.appendChild(link)
   })
 }
+`
+const MAIN_CONTAINER = 'Playground.vue'
+const containerCode = `\
+<script setup>
+import App from './${defaultMainFile}'
+import { installVarletUI } from './${varletReplPlugin}'
+
+installVarletUI()
+</script>
+
+<template>
+  <App />
+</template>
 `
 
 export class ReplStore implements Store {
@@ -104,8 +143,11 @@ export class ReplStore implements Store {
     if (!files[mainFile]) {
       mainFile = Object.keys(files)[0]
     }
+
+    files[MAIN_CONTAINER] = new File(MAIN_CONTAINER, containerCode, true)
+
     this.state = reactive({
-      mainFile,
+      mainFile: MAIN_CONTAINER,
       files,
       activeFile: files[mainFile],
       errors: [],
@@ -115,6 +157,7 @@ export class ReplStore implements Store {
     this.initImportMap()
 
     // varlet inject
+    // @ts-ignore
     this.state.files[varletReplPlugin] = new File(varletReplPlugin, varletReplPluginCode, !import.meta.env.DEV)
 
     watchEffect(() => compileFile(this, this.state.activeFile))

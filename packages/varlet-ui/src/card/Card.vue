@@ -19,7 +19,7 @@
         overflow: floaterOverflow,
         position: floaterPosition,
         transition: floated
-          ? `background-color ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`
+          ? `background-color ${floatingDuration}ms, color ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`
           : undefined,
       }"
     >
@@ -28,7 +28,7 @@
           :class="n('image')"
           :style="{
             objectFit: fit,
-            height: toSizeUnit(imageHeight ?? height),
+            height: toSizeUnit(imageHeight),
             width: toSizeUnit(imageWidth),
           }"
           :src="src"
@@ -127,14 +127,14 @@ export default defineComponent({
     const floaterOverflow: Ref<string> = ref('hidden')
     const contentHeight: Ref<string> = ref('0px')
     const opacity: Ref<string> = ref('0')
-    const { zIndex } = useZIndex(() => props.floating, 1)
     const isRow = computed(() => props.layout === 'row')
     const showFloatingButtons: Ref<boolean> = ref(false)
     const floated: Ref<boolean> = ref(false)
+    const { zIndex } = useZIndex(() => props.floating, 1)
 
     useLock(
       () => props.floating,
-      () => isRow
+      () => !isRow.value
     )
 
     let dropdownFloaterTop = 'auto'

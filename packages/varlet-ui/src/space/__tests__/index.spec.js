@@ -1,7 +1,7 @@
 import VarSpace from '../Space'
 import Space from '..'
 import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
+import { createApp, Fragment, h } from 'vue'
 
 test('test space use', () => {
   const app = createApp({}).use(Space)
@@ -24,9 +24,13 @@ describe('test space component props', () => {
     ;['start', 'end', 'center', 'space-around', 'space-between'].forEach((justify) => {
       const wrapper = mount(VarSpace, {
         props: { justify },
+        slots: {
+          default: () => h(Fragment, [h('div', 'child'), h('div', 'child'), h('div', 'child')]),
+        },
       })
 
       expect(wrapper.find('.var-space').attributes('style')).toContain('justify-content: ' + justify)
+      expect(wrapper.html()).toMatchSnapshot()
       wrapper.unmount()
     })
   })

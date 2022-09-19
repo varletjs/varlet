@@ -83,7 +83,7 @@ import { call, useValidation, createNamespace } from '../utils/components'
 import { useForm } from '../form/provide'
 import type { ComputedRef, Ref } from 'vue'
 import type { UploaderProvider } from './provide'
-import type { VarFile, ValidateTriggers } from './props'
+import type { VarFile, ValidateTrigger } from './props'
 
 const { n, classes } = createNamespace('uploader')
 
@@ -288,7 +288,7 @@ export default defineComponent({
       getLoading,
     }
 
-    const validateWithTrigger = (trigger: ValidateTriggers) => {
+    const validateWithTrigger = (trigger: ValidateTrigger) => {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue, varFileUtils)

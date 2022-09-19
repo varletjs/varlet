@@ -28,7 +28,7 @@
   margin-bottom: 10px;
   color: #fff;
   text-align: center;
-  background-clip: content-box;
+  background-clip: content-box !important;
   background: #3a7afe;
 }
 </style>
@@ -54,7 +54,7 @@
   margin-bottom: 10px;
   color: #fff;
   text-align: center;
-  background-clip: content-box;
+  background-clip: content-box !important;
   background: #3a7afe;
 }
 </style>
@@ -96,7 +96,7 @@
   margin-bottom: 10px;
   color: #fff;
   text-align: center;
-  background-clip: content-box;
+  background-clip: content-box !important;
   background: #3a7afe;
 }
 </style>
@@ -124,7 +124,7 @@
   margin-bottom: 10px;
   color: #fff;
   text-align: center;
-  background-clip: content-box;
+  background-clip: content-box !important;
   background: #3a7afe;
 }
 </style>

@@ -7,7 +7,7 @@ import { pack, use } from './locale'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const dates = reactive({
-  date: '2021-01',
+  date: '2021-04',
   date1: '2021-04-08',
   date2: ['', ''],
   date3: ['2021-02-01', '2021-02-15'],
@@ -37,7 +37,7 @@ watchDarkMode(dark)
   <var-date-picker v-model="dates.date1" />
 
   <app-type>{{ pack.monthPicker }}</app-type>
-  <var-date-picker type="month" v-model="dates.date" shadow />
+  <var-date-picker type="month" v-model="dates.date" elevation />
 
   <app-type>{{ pack.multiple }}</app-type>
   <var-date-picker type="date" v-model="dates.date2" multiple />
@@ -55,7 +55,7 @@ watchDarkMode(dark)
     v-model="dates.date5"
     max="2022-01"
     min="2016-07"
-    shadow
+    elevation
     header-color="purple"
     color="#7bb872"
     first-day-of-week="1"

@@ -1,0 +1,14 @@
+node_modules
+
+.varlet
+.idea
+.vscode
+*.log
+.DS_Store
+
+site
+lib
+es
+umd
+coverage
+highlight

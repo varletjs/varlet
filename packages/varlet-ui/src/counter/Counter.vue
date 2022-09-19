@@ -74,7 +74,7 @@ import { toSizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
 import { useValidation, createNamespace, call } from '../utils/components'
 import type { Ref, ComputedRef } from 'vue'
-import type { ValidateTriggers } from './props'
+import type { ValidateTrigger } from './props'
 import type { CounterProvider } from './provide'
 
 const { n, classes } = createNamespace('counter')
@@ -109,7 +109,7 @@ export default defineComponent({
     // expose
     const validate = () => v(props.rules, props.modelValue)
 
-    const validateWithTrigger = (trigger: ValidateTriggers) => {
+    const validateWithTrigger = (trigger: ValidateTrigger) => {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)

@@ -259,7 +259,7 @@ export function useValidation() {
   }
 }
 
-export function addRouteListener(cb: () => void) {
+export function useRouteListener(cb: () => void) {
   onMounted(() => {
     window.addEventListener('hashchange', cb)
     window.addEventListener('popstate', cb)

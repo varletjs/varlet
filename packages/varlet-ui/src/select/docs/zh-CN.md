@@ -244,24 +244,6 @@ const value = ref([])
 </template>
 ```
 
-### 垂直偏移
-```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select placeholder="请选择" :offset-y="-136" v-model="value">
-    <var-option label="火猫" />
-    <var-option label="蓝猫" />
-    <var-option label="紫猫" />
-    <var-option label="土猫" />
-  </var-select>
-</template>
-```
-
 ## API
 
 ### 属性
@@ -341,7 +323,8 @@ const value = ref('')
 | 变量名 | 默认值 |
 | --- | --- |
 | `--select-select-text-color` | `#555` |
-| `--select-select-padding` | `5px 0` |
+| `--select-select-min-height` | `22px` |
+| `--select-menu-margin-top` | `10px` |
 | `--select-error-color` | `var(--color-danger)` |
 | `--select-blur-color` | `#888` |
 | `--select-focus-color` | `var(--color-primary)` |

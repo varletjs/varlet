@@ -26,11 +26,11 @@ const date = ref('11:20')
 <script setup>
 import { ref } from 'vue'
 
-const date = ref('11:20')
+const date = ref('15:20')
 </script>
 
 <template>
-  <var-time-picker v-model="date" format="24hr" shadow />
+  <var-time-picker v-model="date" format="24hr" elevation />
 </template>
 ```
 
@@ -42,7 +42,7 @@ const date = ref('11:20')
 <script setup>
 import { ref } from 'vue'
 
-const date = ref('11:20')
+const date = ref('17:36:22')
 </script>
 
 <template>
@@ -55,11 +55,11 @@ const date = ref('11:20')
 <script setup>
 import { ref } from 'vue'
 
-const date = ref('11:20')
+const date = ref('07:10')
 </script>
 
 <template>
-  <var-time-picker v-model="date" readonly shadow />
+  <var-time-picker v-model="date" readonly elevation />
 </template>
 ```
 ### 时间限制
@@ -111,7 +111,7 @@ const change = (time) => {
     color="#7bb872"
     min="2:28:38"
     max="19:40:22"
-    shadow
+    elevation
     @change="change"
   />
 </template>
@@ -120,18 +120,18 @@ const change = (time) => {
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | ---------- |
-| `v-model` | 被选择的时间（ISO 8601 格式，`HH:mm` 或 `HH:mm:ss`）| _string_ | `-` |
-| `format` | 选择器时间格式，可选值为 `ampm 24hr` | _string_ | `ampm` |
-| `color` | 选择器的颜色 | _string_ | `#2979ff` |
-| `header-color` | 标题背景色。如果未指定，将使用由 color 属性或默认颜色。 | _string_ | `#2979ff` |
-| `shadow` | 是否添加阴影 | _boolean_ | `false` |
-| `min` | 允许的最小时间（ISO 8601格式） | _string_ | `-` |
-| `max` | 允许的最大时间（ISO 8601格式） | _string_ | `-` |
-| `allowed-time` | 限制可以选择的时间 | _AllowedTime_ | `-` |
-| `readonly` | 是否只读 | _boolean_ | `false` |
-| `use-seconds` | 是否显示秒 | _boolean_ | `false` |
+| 参数 | 说明                                       | 类型 | 默认值 |
+| ----- |------------------------------------------| -------- | ---------- |
+| `v-model` | 被选择的时间（ISO 8601 格式，`HH:mm` 或 `HH:mm:ss`） | _string_ | `-` |
+| `format` | 选择器时间格式，可选值为 `ampm 24hr`                 | _string_ | `ampm` |
+| `color` | 选择器的颜色                                   | _string_ | `#2979ff` |
+| `header-color` | 标题背景色。如果未指定，将使用由 color 属性或默认颜色。          | _string_ | `#2979ff` |
+| `elevation` | 是否添加阴影                                   | _boolean_ | `false` |
+| `min` | 允许的最小时间（ISO 8601格式）                      | _string_ | `-` |
+| `max` | 允许的最大时间（ISO 8601格式）                      | _string_ | `-` |
+| `allowed-time` | 限制可以选择的时间                                | _AllowedTime_ | `-` |
+| `readonly` | 是否只读                                     | _boolean_ | `false` |
+| `use-seconds` | 是否显示秒                                    | _boolean_ | `false` |
 
 ### TimePicker AllowedTime
 

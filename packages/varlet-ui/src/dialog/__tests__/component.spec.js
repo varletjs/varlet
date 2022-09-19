@@ -22,7 +22,7 @@ const Wrapper = {
 }
 
 test('test dialog component click overlay', async () => {
-  const onClickOverlay = jest.fn()
+  const onClickOverlay = vi.fn()
 
   const wrapper = mount(Wrapper, {
     props: {
@@ -45,7 +45,7 @@ test('test dialog component click overlay', async () => {
 })
 
 test('test dialog component onBeforeClose', async () => {
-  const onBeforeClose = jest.fn()
+  const onBeforeClose = vi.fn()
 
   const wrapper = mount(Wrapper, {
     props: {
