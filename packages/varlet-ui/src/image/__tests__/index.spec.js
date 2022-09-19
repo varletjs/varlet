@@ -3,6 +3,7 @@ import VarImage from '../Image'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/test'
+import { wrapperPlant } from 'lodash-es'
 
 const SRC = 'https://varlet.gitee.io/varlet-ui/cat.png'
 
@@ -68,6 +69,25 @@ describe('test image component event', () => {
     lazyImage.element._lazy.state = 'error'
     await lazyImage.trigger('load')
     wrapper.unmount()
+  })
+
+  test('test image onClick', () => {
+    function expectOnClick(props = {}) {
+      const onClick = vi.fn()
+      const wrapper = mount(VarImage, {
+        props: {
+          onClick,
+          ...props,
+        },
+      })
+
+      wrapper.find('.var-image__image').trigger('click')
+      expect(onClick).toHaveBeenCalledTimes(1)
+      wrapper.unmount()
+    }
+
+    expectOnClick()
+    expectOnClick({ lazy: true })
   })
 })
 

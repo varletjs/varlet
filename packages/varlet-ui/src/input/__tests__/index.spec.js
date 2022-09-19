@@ -16,58 +16,71 @@ test('test input plugin', () => {
   expect(app.component(Input.name)).toBeTruthy()
 })
 
-test('test input focus & blur', async () => {
-  const onFocus = vi.fn()
-  const onBlur = vi.fn()
+describe('test input events', () => {
+  async function expectFocusAndBlur(props = {}) {
+    const onFocus = vi.fn()
+    const onBlur = vi.fn()
 
-  const wrapper = mount(VarInput, {
-    props: {
-      onFocus,
-      onBlur,
-    },
+    const wrapper = mount(VarInput, {
+      props: {
+        onFocus,
+        onBlur,
+        ...props,
+      },
+    })
+
+    wrapper.vm.focus()
+    await wrapper.find('.var-input__input').trigger('focus')
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.vm.blur()
+    await wrapper.find('.var-input__input').trigger('blur')
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  }
+
+  async function expectInputAndChangeAndClick(props = {}) {
+    const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+    const onInput = vi.fn()
+    const onChange = vi.fn()
+    const onClick = vi.fn()
+
+    const wrapper = mount(VarInput, {
+      props: {
+        modelValue: '',
+        onInput,
+        onChange,
+        onClick,
+        'onUpdate:modelValue': onUpdateModelValue,
+        ...props,
+      },
+    })
+
+    await wrapper.trigger('click')
+    expect(onClick).toHaveBeenCalledTimes(1)
+
+    await wrapper.find('.var-input__input').setValue('t')
+    await wrapper.find('.var-input__input').trigger('input')
+    expect(onUpdateModelValue).lastCalledWith('t')
+    expect(onInput).lastCalledWith('t', new Event('input'))
+    expect(wrapper.props('modelValue')).toBe('t')
+
+    await wrapper.find('.var-input__input').trigger('change')
+    expect(onChange).lastCalledWith('t', new Event('input'))
+
+    wrapper.unmount()
+  }
+
+  test('test input focus & blur', async () => {
+    await expectFocusAndBlur()
+    await expectFocusAndBlur({ textarea: true })
   })
 
-  wrapper.vm.focus()
-  await wrapper.find('.var-input__input').trigger('focus')
-  expect(wrapper.html()).toMatchSnapshot()
-
-  wrapper.vm.blur()
-  await wrapper.find('.var-input__input').trigger('blur')
-  expect(wrapper.html()).toMatchSnapshot()
-
-  wrapper.unmount()
-})
-
-test('test input onInput & onChange & onClick', async () => {
-  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
-  const onInput = vi.fn()
-  const onChange = vi.fn()
-  const onClick = vi.fn()
-
-  const wrapper = mount(VarInput, {
-    props: {
-      modelValue: '',
-      onInput,
-      onChange,
-      onClick,
-      'onUpdate:modelValue': onUpdateModelValue,
-    },
+  test('test input onInput & onChange & onClick', async () => {
+    await expectInputAndChangeAndClick()
+    await expectInputAndChangeAndClick({ textarea: true })
   })
-
-  await wrapper.trigger('click')
-  expect(onClick).toHaveBeenCalledTimes(1)
-
-  await wrapper.find('.var-input__input').setValue('t')
-
-  await wrapper.find('.var-input__input').trigger('input')
-  expect(onUpdateModelValue).lastCalledWith('t')
-  expect(onInput).lastCalledWith('t', new Event('input'))
-  expect(wrapper.props('modelValue')).toBe('t')
-
-  await wrapper.find('.var-input__input').trigger('change')
-  expect(onChange).lastCalledWith('t', new Event('input'))
-
-  wrapper.unmount()
 })
 
 test('test input maxlength', () => {

@@ -2,12 +2,8 @@ import Tabs from '..'
 import Tab from '../../tab'
 import TabsItems from '../../tabs-items'
 import TabItem from '../../tab-item'
-import VarTabs from '../Tabs'
-import VarTab from '../../tab/Tab'
-import VarTabsItems from '../../tabs-items/TabsItems'
-import VarTabItem from '../../tab-item/TabItem'
 import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 import { delay, mockOffset } from '../../utils/test'
 
 let originScrollTo
@@ -25,10 +21,10 @@ mockOffset()
 
 const Wrapper = {
   components: {
-    [VarTabs.name]: VarTabs,
-    [VarTab.name]: VarTab,
-    [VarTabsItems.name]: VarTabsItems,
-    [VarTabItem.name]: VarTabItem,
+    [Tabs.name]: Tabs,
+    [Tab.name]: Tab,
+    [TabsItems.name]: TabsItems,
+    [TabItem.name]: TabItem,
   },
   props: [
     'onClick',
@@ -224,4 +220,27 @@ describe('test tabs component props', () => {
     expect(wrapper.find('.var-tabs--safe-area').exists()).toBe(false)
     wrapper.unmount()
   })
+})
+
+test('test tabs items getSwipe method', async () => {
+  const onUpdateActive = vi.fn((active) => {
+    wrapper.setProps({ active })
+  })
+
+  const wrapper = mount(TabsItems, {
+    props: {
+      active: 0,
+      'onUpdate:active': onUpdateActive,
+    },
+    slots: {
+      default: () => [h(TabItem, 'hello'), h(TabItem, 'hello')],
+    },
+  })
+
+  await delay(0)
+  expect(wrapper.vm.getSwipe()).toBeTruthy()
+  wrapper.vm.getSwipe().next()
+  expect(onUpdateActive).toHaveBeenCalledTimes(1)
+
+  wrapper.unmount()
 })

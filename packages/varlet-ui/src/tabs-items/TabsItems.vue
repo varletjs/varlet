@@ -44,6 +44,7 @@ export default defineComponent({
 
       tabItemList.forEach(({ setCurrent }) => setCurrent(false))
       newActiveTabItemProvider.setCurrent(true)
+
       swipe.value?.to(newActiveTabItemProvider.index.value)
     }
 

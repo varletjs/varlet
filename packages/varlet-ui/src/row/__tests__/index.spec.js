@@ -4,6 +4,7 @@ import Col from '../../col'
 import VarCol from '../../col/Col'
 import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
+import { delay, mockConsole } from '../../utils/test'
 
 test('test row and col use', () => {
   const app = createApp({}).use(Row).use(Col)
@@ -23,6 +24,23 @@ describe('test row and col component props', () => {
     })
 
     expect(wrapper.find('.var-row').attributes('style')).toContain('margin: 0px -10px;')
+    wrapper.unmount()
+  })
+
+  test('test row and col gutter computed', async () => {
+    const wrapper = mount(VarRow, {
+      props: {
+        gutter: 20,
+      },
+      slots: {
+        default: () => [12, 12].map((span) => h(VarCol, { span })),
+      },
+    })
+
+    await delay(0)
+    expect(wrapper.html()).toMatchSnapshot()
+    await wrapper.setProps({ gutter: 40 })
+    expect(wrapper.html()).toMatchSnapshot()
     wrapper.unmount()
   })
 
@@ -128,4 +146,14 @@ test('test row and col responsive 0', () => {
   expect(wrapper.find('.var-col--span-lg-0')).toBeTruthy()
   expect(wrapper.find('.var-col--span-xl-0')).toBeTruthy()
   wrapper.unmount()
+})
+
+test('test col is not used in row', () => {
+  const { mockRestore } = mockConsole('warn', (text) => {
+    expect(text).toBe('col must in row')
+  })
+
+  mount(VarCol)
+
+  mockRestore()
 })
