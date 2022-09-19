@@ -1,93 +1,93 @@
-// import IndexBar from '..'
-// import IndexAnchor from '../../index-anchor'
-// import VarIndexBar from '../IndexBar'
-// import VarIndexAnchor from '../../index-anchor/IndexAnchor'
-// import { mount } from '@vue/test-utils'
-// import { createApp } from 'vue'
-// import { delay, mockScrollTo } from '../../utils/test'
-//
-// mockScrollTo(HTMLElement)
-//
-// function mockIndexBarOwnTop() {
-//   const originForEach = Array.prototype.forEach
-//
-//   Array.prototype.forEach = function (fn, thisArg) {
-//     let changedArr = this
-//
-//     if (this && this.map) {
-//       changedArr = this.map((value, index) => {
-//         if (value.ownTop && !value.ownTop.value) value.ownTop.value = (index + 1) * 50
-//
-//         return value
-//       })
-//     }
-//
-//     originForEach.call(changedArr, fn, thisArg)
-//   }
-//
-//   return {
-//     mockRestore() {
-//       Array.prototype.forEach = originForEach
-//     },
-//   }
-// }
-//
-// const Wrapper = {
-//   components: {
-//     [VarIndexBar.name]: VarIndexBar,
-//     [VarIndexAnchor.name]: VarIndexAnchor,
-//   },
-//   template: `
-//     <var-index-bar>
-//     <var-index-anchor index="A">test A</var-index-anchor>
-//     <var-index-anchor index="B">test B</var-index-anchor>
-//     </var-index-bar>
-//   `,
-// }
-//
-// const clickHandle = vi.fn()
-// const changeHandle = vi.fn()
-// const Wrapper2 = {
-//   template: `
-//     <div style="height: 50px; overflow: auto">
-//       <var-index-bar @click="clickHandle" @change="changeHandle" ref="bar" highlight-color="purple">
-//         <var-index-anchor index="A">test A</var-index-anchor>
-//         <p>test</p>
-//         <p>test</p>
-//         <p>test</p>
-//         <var-index-anchor index="B">test B</var-index-anchor>
-//         <p>test</p>
-//         <p>test</p>
-//         <p>test</p>
-//         <var-index-anchor index="C">test C</var-index-anchor>
-//         <p>test</p>
-//         <p>test</p>
-//         <p>test</p>
-//         <var-index-anchor index="D">test D</var-index-anchor>
-//         <p>test</p>
-//         <p>test</p>
-//         <p>test</p>
-//         <var-index-anchor index="E">test E</var-index-anchor>
-//       </var-index-bar>
-//     </div>
-//   `,
-//   components: {
-//     [VarIndexBar.name]: VarIndexBar,
-//     [VarIndexAnchor.name]: VarIndexAnchor,
-//   },
-//   methods: {
-//     clickHandle,
-//     changeHandle,
-//   },
-// }
-//
-// test('test indexBar and indexAnchor use', () => {
-//   const app = createApp({}).use(IndexBar).use(IndexAnchor)
-//
-//   expect(app.component(IndexBar.name)).toBeTruthy()
-//   expect(app.component(IndexAnchor.name)).toBeTruthy()
-// })
-//
+import IndexBar from '..'
+import IndexAnchor from '../../index-anchor'
+import VarIndexBar from '../IndexBar'
+import VarIndexAnchor from '../../index-anchor/IndexAnchor'
+import { mount } from '@vue/test-utils'
+import { createApp } from 'vue'
+import { delay, mockScrollTo } from '../../utils/test'
+
+mockScrollTo(HTMLElement)
+
+function mockIndexBarOwnTop() {
+  const originForEach = Array.prototype.forEach
+
+  Array.prototype.forEach = function (fn, thisArg) {
+    let changedArr = this
+
+    if (this && this.map) {
+      changedArr = this.map((value, index) => {
+        if (value.ownTop && !value.ownTop.value) value.ownTop.value = (index + 1) * 50
+
+        return value
+      })
+    }
+
+    originForEach.call(changedArr, fn, thisArg)
+  }
+
+  return {
+    mockRestore() {
+      Array.prototype.forEach = originForEach
+    },
+  }
+}
+
+const Wrapper = {
+  components: {
+    [VarIndexBar.name]: VarIndexBar,
+    [VarIndexAnchor.name]: VarIndexAnchor,
+  },
+  template: `
+    <var-index-bar>
+    <var-index-anchor index="A">test A</var-index-anchor>
+    <var-index-anchor index="B">test B</var-index-anchor>
+    </var-index-bar>
+  `,
+}
+
+const clickHandle = vi.fn()
+const changeHandle = vi.fn()
+const Wrapper2 = {
+  template: `
+    <div style="height: 50px; overflow: auto">
+      <var-index-bar @click="clickHandle" @change="changeHandle" ref="bar" highlight-color="purple">
+        <var-index-anchor index="A">test A</var-index-anchor>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <var-index-anchor index="B">test B</var-index-anchor>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <var-index-anchor index="C">test C</var-index-anchor>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <var-index-anchor index="D">test D</var-index-anchor>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <var-index-anchor index="E">test E</var-index-anchor>
+      </var-index-bar>
+    </div>
+  `,
+  components: {
+    [VarIndexBar.name]: VarIndexBar,
+    [VarIndexAnchor.name]: VarIndexAnchor,
+  },
+  methods: {
+    clickHandle,
+    changeHandle,
+  },
+}
+
+test('test indexBar and indexAnchor use', () => {
+  const app = createApp({}).use(IndexBar).use(IndexAnchor)
+
+  expect(app.component(IndexBar.name)).toBeTruthy()
+  expect(app.component(IndexAnchor.name)).toBeTruthy()
+})
+
 // describe('test index-bar component props', () => {
 //   test('test sticky prop and it is value equal false', async () => {
 //     const wrapper = mount(Wrapper, {
@@ -158,7 +158,7 @@
 //     wrapper.unmount()
 //   })
 // })
-//
+
 // describe('test index-bar events', () => {
 //   test('test index-bar click event', async () => {
 //     vi.clearAllMocks()
