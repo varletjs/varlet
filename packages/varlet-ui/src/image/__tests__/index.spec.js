@@ -3,7 +3,6 @@ import VarImage from '../Image'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/test'
-import { wrapperPlant } from 'lodash-es'
 
 const SRC = 'https://varlet.gitee.io/varlet-ui/cat.png'
 
