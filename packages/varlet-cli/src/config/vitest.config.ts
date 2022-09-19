@@ -13,11 +13,15 @@ export default defineConfig({
 
   plugins: [vue(), jsx()],
 
+  optimizeDeps: {
+    disabled: true,
+  },
+
   test: {
+    clearMocks: true,
     environment: 'jsdom',
     coverage: {
-      provider: 'istanbul',
-      exclude: ['**/example/**', '**/__tests__/**'],
+      exclude: ['**/example/**', '**/__tests__/**', 'node_modules/**'],
     },
     globals: true,
     transformMode: {

@@ -234,8 +234,8 @@ test('test tabs items getSwipe method', async () => {
     },
     slots: {
       default: () => [
-        h(TabItem, null, { slots: { default: () => 'hello' } }),
-        h(TabItem, null, { slots: { default: () => 'hello' } }),
+        h(TabItem, { slots: { default: () => 'hello' } }),
+        h(TabItem, { slots: { default: () => 'hello' } }),
       ],
     },
   })
