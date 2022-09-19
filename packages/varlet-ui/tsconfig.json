@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "module": "esnext",
     "strict": true,
     "downlevelIteration": true,
     "declaration": true,

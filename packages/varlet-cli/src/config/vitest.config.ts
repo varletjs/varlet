@@ -1,7 +1,7 @@
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
 import { defineConfig } from 'vitest/config'
-import { CWD, SITE_CONFIG, VITE_RESOLVE_EXTENSIONS } from '../shared/constant'
+import { SITE_CONFIG, VITE_RESOLVE_EXTENSIONS } from '../shared/constant'
 
 export default defineConfig({
   resolve: {
@@ -14,7 +14,6 @@ export default defineConfig({
   plugins: [vue(), jsx()],
 
   test: {
-    root: CWD,
     environment: 'jsdom',
     coverage: {
       provider: 'istanbul',
