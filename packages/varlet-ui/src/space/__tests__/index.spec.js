@@ -15,7 +15,9 @@ describe('test space component props', () => {
         props: { align },
       })
 
-      expect(wrapper.find('.var-space').attributes('style')).toContain('align-items: ' + align)
+      expect(wrapper.find('.var-space').attributes('style')).toContain(
+        'align-items: ' + (align === 'start' || align === 'end' ? `flex-${align}` : align)
+      )
       wrapper.unmount()
     })
   })
@@ -29,7 +31,9 @@ describe('test space component props', () => {
         },
       })
 
-      expect(wrapper.find('.var-space').attributes('style')).toContain('justify-content: ' + justify)
+      expect(wrapper.find('.var-space').attributes('style')).toContain(
+        'justify-content: ' + (justify === 'start' || justify === 'end' ? `flex-${justify}` : justify)
+      )
       expect(wrapper.html()).toMatchSnapshot()
       wrapper.unmount()
     })
