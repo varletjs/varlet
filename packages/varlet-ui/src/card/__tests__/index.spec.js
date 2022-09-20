@@ -2,7 +2,7 @@ import Card from '..'
 import VarCard from '../Card'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/test'
+import { delay } from '../../utils/jest'
 
 test('test card use', () => {
   const app = createApp({}).use(Card)
@@ -17,7 +17,7 @@ describe('test card component events', () => {
   })
 
   test('test card onClick', () => {
-    const onClick = vi.fn()
+    const onClick = jest.fn()
     const wrapper = mount(VarCard, {
       props: {
         onClick,

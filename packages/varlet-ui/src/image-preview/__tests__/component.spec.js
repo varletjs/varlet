@@ -2,7 +2,7 @@ import ImagePreview from '../index'
 import VarImagePreview from '../ImagePreview.vue'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { delay, mockImageNaturalSize, mockOffset, trigger, triggerDrag } from '../../utils/test'
+import { delay, mockImageNaturalSize, mockOffset, trigger, triggerDrag } from '../../utils/jest'
 
 mockImageNaturalSize(1440, 1080)
 mockOffset({ offsetWidth: 375, offsetHeight: 815 })
@@ -32,7 +32,7 @@ test('test image preview component plugin', () => {
 })
 
 test('test image preview tap', async () => {
-  const onUpdateShow = vi.fn((value) => wrapper.setProps({ show: value }))
+  const onUpdateShow = jest.fn((value) => wrapper.setProps({ show: value }))
   const wrapper = mount(VarImagePreview, {
     props: {
       show: true,
@@ -48,7 +48,7 @@ test('test image preview tap', async () => {
 })
 
 test('test image preview zoom', async () => {
-  const onUpdateShow = vi.fn((value) => wrapper.setProps({ show: value }))
+  const onUpdateShow = jest.fn((value) => wrapper.setProps({ show: value }))
   const wrapper = mount(VarImagePreview, {
     props: {
       show: true,

@@ -1,7 +1,7 @@
 import Picker from '..'
 import VarPicker from '../Picker'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/test'
+import { delay, trigger } from '../../utils/jest'
 
 test('test picker plugin', () => {
   const app = createApp({}).use(Picker)
@@ -11,10 +11,10 @@ test('test picker plugin', () => {
 const columns = [['A', 'B', 'C']]
 
 test('test picker functional show & close', async () => {
-  const onOpen = vi.fn()
-  const onOpened = vi.fn()
-  const onClose = vi.fn()
-  const onClosed = vi.fn()
+  const onOpen = jest.fn()
+  const onOpened = jest.fn()
+  const onClose = jest.fn()
+  const onClosed = jest.fn()
 
   Picker({
     columns,
@@ -41,7 +41,7 @@ test('test picker functional show & close', async () => {
 })
 
 test('test picker functional confirm', async () => {
-  const onConfirm = vi.fn()
+  const onConfirm = jest.fn()
 
   Picker({
     columns,
@@ -58,7 +58,7 @@ test('test picker functional confirm', async () => {
 })
 
 test('test picker functional cancel', async () => {
-  const onCancel = vi.fn()
+  const onCancel = jest.fn()
 
   Picker({
     columns,
@@ -75,7 +75,7 @@ test('test picker functional cancel', async () => {
 })
 
 test('test picker functional textFormatter', async () => {
-  const textFormatter = vi.fn().mockReturnValue('text')
+  const textFormatter = jest.fn().mockReturnValue('text')
 
   const columns = [['A']]
 

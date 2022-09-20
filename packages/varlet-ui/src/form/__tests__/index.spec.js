@@ -12,7 +12,7 @@ import VarSwitch from '../../switch/Switch'
 import VarSlider from '../../slider/Slider'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/test'
+import { delay, trigger } from '../../utils/jest'
 
 test('test form plugin', () => {
   const app = createApp({}).use(Form)
@@ -50,9 +50,9 @@ const Wrapper = {
 }
 
 test('test form with input', async () => {
-  const onClick = vi.fn()
-  const onInput = vi.fn()
-  const onChange = vi.fn()
+  const onClick = jest.fn()
+  const onInput = jest.fn()
+  const onChange = jest.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -109,9 +109,9 @@ test('test form with input', async () => {
 })
 
 test('test form with select', async () => {
-  const onClear = vi.fn()
-  const onClick = vi.fn()
-  const onClose = vi.fn()
+  const onClear = jest.fn()
+  const onClick = jest.fn()
+  const onClose = jest.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -174,8 +174,8 @@ test('test form with select', async () => {
 })
 
 test('test form with radio', async () => {
-  const onChange = vi.fn()
-  const onClick = vi.fn()
+  const onChange = jest.fn()
+  const onClick = jest.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -222,8 +222,8 @@ test('test form with radio', async () => {
 })
 
 test('test form with checkbox', async () => {
-  const onChange = vi.fn()
-  const onClick = vi.fn()
+  const onChange = jest.fn()
+  const onClick = jest.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -271,9 +271,9 @@ test('test form with checkbox', async () => {
 })
 
 test('test form with counter', async () => {
-  const onIncrement = vi.fn()
-  const onDecrement = vi.fn()
-  const onChange = vi.fn()
+  const onIncrement = jest.fn()
+  const onDecrement = jest.fn()
+  const onChange = jest.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -329,7 +329,7 @@ test('test form with counter', async () => {
 })
 
 test('test form with rate', async () => {
-  const onChange = vi.fn()
+  const onChange = jest.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -372,7 +372,7 @@ test('test form with rate', async () => {
 })
 
 test('test form with uploader', async () => {
-  const onAfterRead = vi.fn()
+  const onAfterRead = jest.fn()
 
   const createEvent = (filename) => {
     return {
@@ -423,7 +423,7 @@ test('test form with uploader', async () => {
 })
 
 test('test form with switch', async () => {
-  const onChange = vi.fn()
+  const onChange = jest.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -472,9 +472,9 @@ test('test form with switch', async () => {
 })
 
 test('test form with slider', async () => {
-  const onChange = vi.fn()
-  const onStart = vi.fn()
-  const onEnd = vi.fn()
+  const onChange = jest.fn()
+  const onStart = jest.fn()
+  const onEnd = jest.fn()
 
   const wrapper = mount({
     ...Wrapper,

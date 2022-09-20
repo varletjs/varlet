@@ -1,7 +1,7 @@
 import { onMounted, onUnmounted } from 'vue'
 import { get } from 'lodash-es'
 import { formatStyleVars } from './components/utils/elements'
-import config from "@config";
+import config from '@config'
 
 export * from './components/utils/components'
 export * from './components/utils/elements'
@@ -143,9 +143,7 @@ export function getBrowserTheme(): Theme {
   const storageTheme = window.localStorage.getItem(themeKey) as Theme
 
   if (!storageTheme) {
-    const preferTheme = window.matchMedia?.('(prefers-color-scheme: dark)').matches
-      ? 'darkTheme'
-      : 'lightTheme'
+    const preferTheme = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'darkTheme' : 'lightTheme'
     window.localStorage.setItem(themeKey, preferTheme)
 
     return preferTheme

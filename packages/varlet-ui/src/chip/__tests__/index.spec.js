@@ -9,7 +9,7 @@ test('test chip plugin', () => {
 })
 
 test('test chip close', () => {
-  const onClose = vi.fn()
+  const onClose = jest.fn()
   const wrapper = mount(VarChip, {
     props: {
       onClose,

@@ -50,9 +50,9 @@
     "preview": "varlet-cli preview",
     "compile": "varlet-cli compile",
     "create": "varlet-cli create",
-    "test": "varlet-cli test",
-    "test:watch": "varlet-cli test -w",
-    "test:coverage": "varlet-cli test -cov"
+    "test": "varlet-cli jest",
+    "test:watch": "varlet-cli jest -w",
+    "test:watchAll": "varlet-cli jest -wa"
   },
   "peerDependencies": {
     "vue": "^3.2.0"
@@ -67,17 +67,15 @@
   "devDependencies": {
     "@varlet/cli": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
-    "@vitest/coverage-c8": "^0.23.4",
-    "@vitest/coverage-istanbul": "0.22.1",
     "@vue/runtime-core": "3.2.25",
     "@vue/test-utils": "^2.0.2",
+    "@types/jest": "^26.0.15",
     "clipboard": "^2.0.6",
     "jsdom": "^20.0.0",
     "live-server": "^1.2.1",
     "lodash-es": "^4.17.21",
     "postcss-px-to-viewport": "^1.1.1",
     "typescript": "^4.4.4",
-    "vitest": "0.22.1",
     "vue": "3.2.25",
     "vue-router": "4.0.12"
   },

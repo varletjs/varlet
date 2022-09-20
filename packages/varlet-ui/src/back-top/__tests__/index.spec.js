@@ -2,11 +2,11 @@ import BackTop from '..'
 import VarBackTop from '../BackTop'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockScrollTo } from '../../utils/test'
+import { delay, mockScrollTo } from '../../utils/jest'
 
 mockScrollTo(HTMLDivElement)
 
-const clickHandle = vi.fn()
+const clickHandle = jest.fn()
 const Wrapper = {
   components: {
     [VarBackTop.name]: VarBackTop,
