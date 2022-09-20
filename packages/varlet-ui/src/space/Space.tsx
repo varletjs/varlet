@@ -28,6 +28,10 @@ export default defineComponent({
         : [toPxNum(size), toPxNum(size)]
     }
 
+    const padStartFlex = (style: string | undefined) => {
+      return style === 'start' || style === 'end' ? `flex-${style}` : style
+    }
+
     return () => {
       const { inline, justify, align, wrap, direction, size } = props
       let children: VNodeChild[] = call(slots.default) ?? []
@@ -87,17 +91,13 @@ export default defineComponent({
         return <div style={{ margin, width }}>{child}</div>
       })
 
-      const formatStyle = (style: string | undefined) => {
-        return style && ['start', 'end'].includes(style) ? `flex-${style}` : style
-      }
-
       return (
         <div
           class={classes(n(), 'var--box', [inline, n('--inline')])}
           style={{
             flexDirection: direction,
-            justifyContent: formatStyle(justify),
-            alignItems: formatStyle(align),
+            justifyContent: padStartFlex(justify),
+            alignItems: padStartFlex(align),
             flexWrap: wrap ? 'wrap' : 'nowrap',
             margin: direction === 'row' ? `-${y / 2}px 0` : undefined,
           }}
