@@ -4,7 +4,7 @@ import VarCollapse from '../Collapse'
 import VarCollapseItem from '../../collapse-item/CollapseItem'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockConsole } from '../../utils/test'
+import { delay, mockConsole } from '../../utils/jest'
 
 test('test collapse and collapseItem use', () => {
   const app = createApp({}).use(Collapse).use(CollapseItem)
@@ -22,7 +22,7 @@ test('test collapse and collapseItem onChange', async () => {
     </var-collapse>
   `
 
-  const changeHandle = vi.fn()
+  const changeHandle = jest.fn()
 
   const wrapper = mount(
     {
@@ -66,7 +66,7 @@ test('test collapse and collapseItem onChange', async () => {
 
 describe('test collapse and collapseItem props', () => {
   test('test invalid modelValue', async () => {
-    const errorFn = vi.fn()
+    const errorFn = jest.fn()
     const { mockRestore } = mockConsole('error', errorFn)
     const template = `
        <var-collapse v-model="value" :accordion="accordion">

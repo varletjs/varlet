@@ -1,6 +1,6 @@
-// Vitest Snapshot v1
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test space component props > test space justify 1`] = `
+exports[`test space component props test space justify 1`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
   <div style=\\"margin: 4px 12px 4px 0px;\\">
     <div>child</div>
@@ -14,7 +14,7 @@ exports[`test space component props > test space justify 1`] = `
 </div>"
 `;
 
-exports[`test space component props > test space justify 2`] = `
+exports[`test space component props test space justify 2`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: end; flex-wrap: wrap; margin: -4px 0px;\\">
   <div style=\\"margin: 4px 12px 4px 0px;\\">
     <div>child</div>
@@ -28,7 +28,7 @@ exports[`test space component props > test space justify 2`] = `
 </div>"
 `;
 
-exports[`test space component props > test space justify 3`] = `
+exports[`test space component props test space justify 3`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: center; flex-wrap: wrap; margin: -4px 0px;\\">
   <div style=\\"margin: 4px 12px 4px 0px;\\">
     <div>child</div>
@@ -42,7 +42,7 @@ exports[`test space component props > test space justify 3`] = `
 </div>"
 `;
 
-exports[`test space component props > test space justify 4`] = `
+exports[`test space component props test space justify 4`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: space-around; flex-wrap: wrap; margin: -4px 0px;\\">
   <div style=\\"margin: 4px 6px;\\">
     <div>child</div>
@@ -56,7 +56,7 @@ exports[`test space component props > test space justify 4`] = `
 </div>"
 `;
 
-exports[`test space component props > test space justify 5`] = `
+exports[`test space component props test space justify 5`] = `
 "<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: space-between; flex-wrap: wrap; margin: -4px 0px;\\">
   <div style=\\"margin: 4px 6px 4px 0px;\\">
     <div>child</div>

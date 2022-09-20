@@ -1,8 +1,8 @@
-// Vitest Snapshot v1
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test checkbox example 1`] = `
-"<div class=\\"app-type\\" data-v-d225b30a=\\"\\">基本使用</div>
-<div class=\\"var-checkbox__wrap\\" data-v-d225b30a=\\"\\">
+"<div class=\\"app-type\\">基本使用</div>
+<div class=\\"var-checkbox__wrap\\">
   <div class=\\"var-checkbox\\">
     <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
     <div class=\\"var-checkbox__text\\">当前的值: false</div>
@@ -11,8 +11,8 @@ exports[`test checkbox example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d225b30a=\\"\\">设置状态值</div>
-<div class=\\"var-checkbox__wrap\\" data-v-d225b30a=\\"\\">
+<div class=\\"app-type\\">设置状态值</div>
+<div class=\\"var-checkbox__wrap\\">
   <div class=\\"var-checkbox\\">
     <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
     <div class=\\"var-checkbox__text\\">当前的值: 0</div>
@@ -21,18 +21,18 @@ exports[`test checkbox example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d225b30a=\\"\\">修改图标和颜色</div>
-<div class=\\"var-checkbox__wrap\\" data-v-d225b30a=\\"\\">
+<div class=\\"app-type\\">修改图标和颜色</div>
+<div class=\\"var-checkbox__wrap\\">
   <div class=\\"var-checkbox\\">
-    <div class=\\"var-checkbox__action var-checkbox--unchecked\\" style=\\"color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full\\" style=\\"transition: transform 0ms; font-size: 24px;\\" data-v-d225b30a=\\"\\"></i></div>
+    <div class=\\"var-checkbox__action var-checkbox--unchecked\\" style=\\"color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
     <div class=\\"var-checkbox__text\\">当前的值: false</div>
   </div>
   <transition-stub>
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d225b30a=\\"\\">禁用</div>
-<div class=\\"var-checkbox__wrap\\" data-v-d225b30a=\\"\\">
+<div class=\\"app-type\\">禁用</div>
+<div class=\\"var-checkbox__wrap\\">
   <div class=\\"var-checkbox\\">
     <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--disabled\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
     <div class=\\"var-checkbox__text var-checkbox--disabled\\">当前的值: false</div>
@@ -41,8 +41,8 @@ exports[`test checkbox example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d225b30a=\\"\\">只读</div>
-<div class=\\"var-checkbox__wrap\\" data-v-d225b30a=\\"\\">
+<div class=\\"app-type\\">只读</div>
+<div class=\\"var-checkbox__wrap\\">
   <div class=\\"var-checkbox\\">
     <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
     <div class=\\"var-checkbox__text\\">当前的值: false</div>
@@ -51,10 +51,10 @@ exports[`test checkbox example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d225b30a=\\"\\">复选框组</div>
-<div class=\\"var-checkbox-group__wrap\\" data-v-d225b30a=\\"\\">
+<div class=\\"app-type\\">复选框组</div>
+<div class=\\"var-checkbox-group__wrap\\">
   <div class=\\"var-checkbox-group var-checkbox-group--horizontal\\">
-    <div class=\\"var-checkbox__wrap\\" data-v-d225b30a=\\"\\">
+    <div class=\\"var-checkbox__wrap\\">
       <div class=\\"var-checkbox\\">
         <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
         <div class=\\"var-checkbox__text\\">吃饭</div>
@@ -63,7 +63,7 @@ exports[`test checkbox example 1`] = `
         <!--v-if-->
       </transition-stub>
     </div>
-    <div class=\\"var-checkbox__wrap\\" data-v-d225b30a=\\"\\">
+    <div class=\\"var-checkbox__wrap\\">
       <div class=\\"var-checkbox\\">
         <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
         <div class=\\"var-checkbox__text\\">睡觉</div>
@@ -71,10 +71,10 @@ exports[`test checkbox example 1`] = `
       <transition-stub>
         <!--v-if-->
       </transition-stub>
-    </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 button\\" data-v-d225b30a=\\"\\">
+    </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 button\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">全选</div>
-    </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 button\\" data-v-d225b30a=\\"\\">
+    </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 button\\">
       <!--v-if-->
       <div class=\\"var-button__content\\">反选</div>
     </button>
@@ -83,9 +83,9 @@ exports[`test checkbox example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"relation\\" data-v-d225b30a=\\"\\">当前的值: []</div>
-<div class=\\"app-type\\" data-v-d225b30a=\\"\\">复选框字段校验</div>
-<div class=\\"var-checkbox__wrap\\" data-v-d225b30a=\\"\\">
+<div class=\\"relation\\">当前的值: []</div>
+<div class=\\"app-type\\">复选框字段校验</div>
+<div class=\\"var-checkbox__wrap\\">
   <div class=\\"var-checkbox\\">
     <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
     <div class=\\"var-checkbox__text\\">当前的值: false</div>
@@ -94,10 +94,10 @@ exports[`test checkbox example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d225b30a=\\"\\">复选框组字段校验</div>
-<div class=\\"var-checkbox-group__wrap\\" data-v-d225b30a=\\"\\">
+<div class=\\"app-type\\">复选框组字段校验</div>
+<div class=\\"var-checkbox-group__wrap\\">
   <div class=\\"var-checkbox-group var-checkbox-group--horizontal\\">
-    <div class=\\"var-checkbox__wrap\\" data-v-d225b30a=\\"\\">
+    <div class=\\"var-checkbox__wrap\\">
       <div class=\\"var-checkbox\\">
         <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
         <div class=\\"var-checkbox__text\\">吃饭</div>
@@ -106,7 +106,7 @@ exports[`test checkbox example 1`] = `
         <!--v-if-->
       </transition-stub>
     </div>
-    <div class=\\"var-checkbox__wrap\\" data-v-d225b30a=\\"\\">
+    <div class=\\"var-checkbox__wrap\\">
       <div class=\\"var-checkbox\\">
         <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
         <div class=\\"var-checkbox__text\\">睡觉</div>
@@ -120,8 +120,8 @@ exports[`test checkbox example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"relation\\" data-v-d225b30a=\\"\\">当前的值: []</div>
-<div class=\\"space\\" data-v-d225b30a=\\"\\"></div>"
+<div class=\\"relation\\">当前的值: []</div>
+<div class=\\"space\\"></div>"
 `;
 
 exports[`test checkbox group layout direction 1`] = `

@@ -1,8 +1,8 @@
-// Vitest Snapshot v1
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test radio example 1`] = `
-"<div class=\\"app-type\\" data-v-497ba92f=\\"\\">基本使用</div>
-<div class=\\"var-radio__wrap\\" data-v-497ba92f=\\"\\">
+"<div class=\\"app-type\\">基本使用</div>
+<div class=\\"var-radio__wrap\\">
   <div class=\\"var-radio\\">
     <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
     <div class=\\"var-radio__text\\">当前的值: false</div>
@@ -11,8 +11,8 @@ exports[`test radio example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-497ba92f=\\"\\">设置状态值</div>
-<div class=\\"var-radio__wrap\\" data-v-497ba92f=\\"\\">
+<div class=\\"app-type\\">设置状态值</div>
+<div class=\\"var-radio__wrap\\">
   <div class=\\"var-radio\\">
     <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
     <div class=\\"var-radio__text\\">当前的值: 0</div>
@@ -21,18 +21,18 @@ exports[`test radio example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-497ba92f=\\"\\">修改图标和颜色</div>
-<div class=\\"var-radio__wrap\\" data-v-497ba92f=\\"\\">
+<div class=\\"app-type\\">修改图标和颜色</div>
+<div class=\\"var-radio__wrap\\">
   <div class=\\"var-radio\\">
-    <div class=\\"var-radio__action var-radio--unchecked\\" style=\\"color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full\\" style=\\"transition: transform 0ms; font-size: 24px;\\" data-v-497ba92f=\\"\\"></i></div>
+    <div class=\\"var-radio__action var-radio--unchecked\\" style=\\"color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
     <div class=\\"var-radio__text\\">当前的值: false</div>
   </div>
   <transition-stub>
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-497ba92f=\\"\\">禁用</div>
-<div class=\\"var-radio__wrap\\" data-v-497ba92f=\\"\\">
+<div class=\\"app-type\\">禁用</div>
+<div class=\\"var-radio__wrap\\">
   <div class=\\"var-radio\\">
     <div class=\\"var-radio__action var-radio--unchecked var-radio--disabled\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
     <div class=\\"var-radio__text var-radio--disabled\\">当前的值: false</div>
@@ -41,8 +41,8 @@ exports[`test radio example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-497ba92f=\\"\\">只读</div>
-<div class=\\"var-radio__wrap\\" data-v-497ba92f=\\"\\">
+<div class=\\"app-type\\">只读</div>
+<div class=\\"var-radio__wrap\\">
   <div class=\\"var-radio\\">
     <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
     <div class=\\"var-radio__text\\">当前的值: false</div>
@@ -51,10 +51,10 @@ exports[`test radio example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-497ba92f=\\"\\">单选框组</div>
-<div class=\\"var-radio-group__wrap\\" data-v-497ba92f=\\"\\">
+<div class=\\"app-type\\">单选框组</div>
+<div class=\\"var-radio-group__wrap\\">
   <div class=\\"var-radio-group var-radio-group--horizontal\\">
-    <div class=\\"var-radio__wrap\\" data-v-497ba92f=\\"\\">
+    <div class=\\"var-radio__wrap\\">
       <div class=\\"var-radio\\">
         <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
         <div class=\\"var-radio__text\\">吃饭</div>
@@ -63,7 +63,7 @@ exports[`test radio example 1`] = `
         <!--v-if-->
       </transition-stub>
     </div>
-    <div class=\\"var-radio__wrap\\" data-v-497ba92f=\\"\\">
+    <div class=\\"var-radio__wrap\\">
       <div class=\\"var-radio\\">
         <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
         <div class=\\"var-radio__text\\">睡觉</div>
@@ -77,9 +77,9 @@ exports[`test radio example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"relation\\" data-v-497ba92f=\\"\\">当前的值: 0</div>
-<div class=\\"app-type\\" data-v-497ba92f=\\"\\">单选框字段校验</div>
-<div class=\\"var-radio__wrap\\" data-v-497ba92f=\\"\\">
+<div class=\\"relation\\">当前的值: 0</div>
+<div class=\\"app-type\\">单选框字段校验</div>
+<div class=\\"var-radio__wrap\\">
   <div class=\\"var-radio\\">
     <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
     <div class=\\"var-radio__text\\">当前的值: false</div>
@@ -88,10 +88,10 @@ exports[`test radio example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-497ba92f=\\"\\">单选框组字段校验</div>
-<div class=\\"var-radio-group__wrap\\" data-v-497ba92f=\\"\\">
+<div class=\\"app-type\\">单选框组字段校验</div>
+<div class=\\"var-radio-group__wrap\\">
   <div class=\\"var-radio-group var-radio-group--horizontal\\">
-    <div class=\\"var-radio__wrap\\" data-v-497ba92f=\\"\\">
+    <div class=\\"var-radio__wrap\\">
       <div class=\\"var-radio\\">
         <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
         <div class=\\"var-radio__text\\">吃饭</div>
@@ -100,7 +100,7 @@ exports[`test radio example 1`] = `
         <!--v-if-->
       </transition-stub>
     </div>
-    <div class=\\"var-radio__wrap\\" data-v-497ba92f=\\"\\">
+    <div class=\\"var-radio__wrap\\">
       <div class=\\"var-radio\\">
         <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
         <div class=\\"var-radio__text\\">睡觉</div>
@@ -114,8 +114,8 @@ exports[`test radio example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"relation\\" data-v-497ba92f=\\"\\">当前的值: 0</div>
-<div class=\\"space\\" data-v-497ba92f=\\"\\"></div>"
+<div class=\\"relation\\">当前的值: 0</div>
+<div class=\\"space\\"></div>"
 `;
 
 exports[`test radio group layout direction 1`] = `

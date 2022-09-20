@@ -2,7 +2,7 @@ import Switch from '..'
 import VarSwitch from '../Switch'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/test'
+import { delay } from '../../utils/jest'
 
 test('test switch plugin', () => {
   const app = createApp({}).use(Switch)
@@ -101,8 +101,8 @@ describe('test switch component props', () => {
 
 describe('test switch events', () => {
   test('test switch v-model and events', async () => {
-    const clickFn = vi.fn()
-    const changeFn = vi.fn()
+    const clickFn = jest.fn()
+    const changeFn = jest.fn()
 
     const wrapper = mount({
       components: {
@@ -130,8 +130,8 @@ describe('test switch events', () => {
   })
 
   test('test switch event not trigger', async () => {
-    const clickFn = vi.fn()
-    const changeFn = vi.fn()
+    const clickFn = jest.fn()
+    const changeFn = jest.fn()
     const template = `
     <var-switch v-model="value" @click="clickFn" @change="changeFn" :disabled="disabled" :readonly="readonly" />
   `

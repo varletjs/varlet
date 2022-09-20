@@ -1,8 +1,8 @@
-// Vitest Snapshot v1
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test select example 1`] = `
-"<div class=\\"app-type\\" data-v-137f5c44=\\"\\">基本使用</div>
-<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
+"<div class=\\"app-type\\">基本使用</div>
+<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-select__wrap\\">
@@ -23,8 +23,8 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-137f5c44=\\"\\">朴素模式</div>
-<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
+<div class=\\"app-type\\">朴素模式</div>
+<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon var-select--non-hint\\"></div>
     <div class=\\"var-select__wrap var-select--non-hint\\">
@@ -43,8 +43,8 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-137f5c44=\\"\\">文本关联值</div>
-<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
+<div class=\\"app-type\\">文本关联值</div>
+<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-select__wrap\\">
@@ -65,9 +65,9 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"relation\\" data-v-137f5c44=\\"\\">当前选择的是: </div>
-<div class=\\"app-type\\" data-v-137f5c44=\\"\\">禁用</div>
-<div class=\\"var-select var--box var-select--disabled\\" data-v-137f5c44=\\"\\">
+<div class=\\"relation\\">当前选择的是: </div>
+<div class=\\"app-type\\">禁用</div>
+<div class=\\"var-select var--box var-select--disabled\\">
   <div class=\\"var-select__controller var-select--disabled\\">
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-select__wrap\\">
@@ -88,8 +88,8 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-137f5c44=\\"\\">只读</div>
-<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
+<div class=\\"app-type\\">只读</div>
+<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-select__wrap\\">
@@ -110,8 +110,8 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-137f5c44=\\"\\">可清除</div>
-<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
+<div class=\\"app-type\\">可清除</div>
+<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-select__wrap\\">
@@ -130,10 +130,10 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-137f5c44=\\"\\">显示图标</div>
-<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
+<div class=\\"app-type\\">显示图标</div>
+<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
-    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: transform 0ms;\\" data-v-137f5c44=\\"\\"></i></div>
+    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
     <div class=\\"var-select__wrap\\">
       <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\"><span></span><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i></div><label class=\\"var-select__placeholder var--ellipsis\\">请选择一个选项</label>
@@ -141,7 +141,7 @@ exports[`test select example 1`] = `
         <!--teleport end-->
       </div>
     </div>
-    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: transform 0ms;\\" data-v-137f5c44=\\"\\"></i></div>
+    <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
   </div>
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
@@ -150,8 +150,8 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-137f5c44=\\"\\">多选</div>
-<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
+<div class=\\"app-type\\">多选</div>
+<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-select__wrap\\">
@@ -176,8 +176,8 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-137f5c44=\\"\\">纸片风格的多选</div>
-<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
+<div class=\\"app-type\\">纸片风格的多选</div>
+<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-select__wrap\\">
@@ -202,8 +202,8 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-137f5c44=\\"\\">单选值校验</div>
-<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
+<div class=\\"app-type\\">单选值校验</div>
+<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-select__wrap\\">
@@ -224,8 +224,8 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-137f5c44=\\"\\">多选值校验</div>
-<div class=\\"var-select var--box\\" data-v-137f5c44=\\"\\">
+<div class=\\"app-type\\">多选值校验</div>
+<div class=\\"var-select var--box\\">
   <div class=\\"var-select__controller\\">
     <div class=\\"var-select__icon\\"></div>
     <div class=\\"var-select__wrap\\">
@@ -250,7 +250,7 @@ exports[`test select example 1`] = `
     <!--v-if-->
   </transition-stub>
 </div>
-<div class=\\"space\\" data-v-137f5c44=\\"\\"></div>"
+<div class=\\"space\\"></div>"
 `;
 
 exports[`test select focus & blur methods 1`] = `

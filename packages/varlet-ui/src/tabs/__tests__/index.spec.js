@@ -4,13 +4,13 @@ import TabsItems from '../../tabs-items'
 import TabItem from '../../tab-item'
 import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
-import { delay, mockOffset } from '../../utils/test'
+import { delay, mockOffset } from '../../utils/jest'
 
 let originScrollTo
 
 beforeEach(() => {
   originScrollTo = Element.prototype.scrollTo
-  Element.prototype.scrollTo = vi.fn()
+  Element.prototype.scrollTo = jest.fn()
 })
 
 afterEach(() => {
@@ -50,7 +50,6 @@ const Wrapper = {
     <var-tab disabled style="width: 100px">tab 2</var-tab>
     <var-tab style="width: 100px">tab 3</var-tab>
     </var-tabs>
-
     <var-tabs-items>
     <var-tab-item>tab item 1</var-tab-item>
     <var-tab-item>tab item 2</var-tab-item>
@@ -68,8 +67,8 @@ test('test tabs & tab & tabsItems & tabItem plugin', () => {
 })
 
 test('test tabs event', async () => {
-  const onClick = vi.fn()
-  const onChange = vi.fn()
+  const onClick = jest.fn()
+  const onChange = jest.fn()
   const wrapper = mount(Wrapper, {
     props: {
       onClick,
@@ -223,7 +222,7 @@ describe('test tabs component props', () => {
 })
 
 test('test tabs items getSwipe method', async () => {
-  const onUpdateActive = vi.fn((active) => {
+  const onUpdateActive = jest.fn((active) => {
     wrapper.setProps({ active })
   })
 

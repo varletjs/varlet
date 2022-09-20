@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test uploader disabled 1`] = `
 "<div class=\\"var-uploader var--box\\">
@@ -45,8 +45,8 @@ exports[`test uploader disabled 2`] = `
 `;
 
 exports[`test uploader example 1`] = `
-"<div class=\\"app-type\\" data-v-d5b80d5a=\\"\\">基本使用</div>
-<div class=\\"var-uploader var--box\\" data-v-d5b80d5a=\\"\\">
+"<div class=\\"app-type\\">基本使用</div>
+<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
@@ -62,8 +62,8 @@ exports[`test uploader example 1`] = `
     </div>
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d5b80d5a=\\"\\">文件预览</div>
-<div class=\\"var-uploader var--box\\" data-v-d5b80d5a=\\"\\">
+<div class=\\"app-type\\">文件预览</div>
+<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__file var-elevation--2\\">
       <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
@@ -89,8 +89,8 @@ exports[`test uploader example 1`] = `
     </div>
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d5b80d5a=\\"\\">上传状态</div>
-<div class=\\"var-uploader var--box\\" data-v-d5b80d5a=\\"\\">
+<div class=\\"app-type\\">上传状态</div>
+<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__file var-elevation--2 var-uploader--loading\\">
       <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
@@ -121,8 +121,8 @@ exports[`test uploader example 1`] = `
     </div>
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d5b80d5a=\\"\\">文件数量限制</div>
-<div class=\\"var-uploader var--box\\" data-v-d5b80d5a=\\"\\">
+<div class=\\"app-type\\">文件数量限制</div>
+<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
@@ -141,8 +141,8 @@ exports[`test uploader example 1`] = `
     </div>
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d5b80d5a=\\"\\">文件大小限制</div>
-<div class=\\"var-uploader var--box\\" data-v-d5b80d5a=\\"\\">
+<div class=\\"app-type\\">文件大小限制</div>
+<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
@@ -158,8 +158,8 @@ exports[`test uploader example 1`] = `
     </div>
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d5b80d5a=\\"\\">上传预处理</div>
-<div class=\\"var-uploader var--box\\" data-v-d5b80d5a=\\"\\">
+<div class=\\"app-type\\">上传预处理</div>
+<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
@@ -175,8 +175,8 @@ exports[`test uploader example 1`] = `
     </div>
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d5b80d5a=\\"\\">禁用</div>
-<div class=\\"var-uploader var--box\\" data-v-d5b80d5a=\\"\\">
+<div class=\\"app-type\\">禁用</div>
+<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__action var-elevation--2 var-uploader--disabled\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
@@ -192,8 +192,8 @@ exports[`test uploader example 1`] = `
     </div>
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d5b80d5a=\\"\\">只读</div>
-<div class=\\"var-uploader var--box\\" data-v-d5b80d5a=\\"\\">
+<div class=\\"app-type\\">只读</div>
+<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
@@ -209,8 +209,8 @@ exports[`test uploader example 1`] = `
     </div>
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d5b80d5a=\\"\\">删除前处理</div>
-<div class=\\"var-uploader var--box\\" data-v-d5b80d5a=\\"\\">
+<div class=\\"app-type\\">删除前处理</div>
+<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__file var-elevation--2\\">
       <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
@@ -231,10 +231,10 @@ exports[`test uploader example 1`] = `
     </div>
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d5b80d5a=\\"\\">自定义上传样式</div>
-<div class=\\"var-uploader var--box\\" data-v-d5b80d5a=\\"\\">
+<div class=\\"app-type\\">自定义上传样式</div>
+<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
-    <div class=\\"\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\" data-v-d5b80d5a=\\"\\">
+    <div class=\\"\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">上传</div>
       </button></div>
@@ -251,8 +251,8 @@ exports[`test uploader example 1`] = `
     </div>
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d5b80d5a=\\"\\">字段校验</div>
-<div class=\\"var-uploader var--box\\" data-v-d5b80d5a=\\"\\">
+<div class=\\"app-type\\">字段校验</div>
+<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__file var-elevation--2\\">
       <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
@@ -273,17 +273,17 @@ exports[`test uploader example 1`] = `
     </div>
   </transition-stub>
 </div>
-<div class=\\"app-type\\" data-v-d5b80d5a=\\"\\">自定义渲染文件列表</div>
-<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\" data-v-d5b80d5a=\\"\\">
-  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\" data-v-d5b80d5a=\\"\\"></div>
-  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\" data-v-d5b80d5a=\\"\\"></div>
-  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\" data-v-d5b80d5a=\\"\\"></div>
+<div class=\\"app-type\\">自定义渲染文件列表</div>
+<div class=\\"var-space var--box\\" style=\\"flex-direction: row; justify-content: start; flex-wrap: wrap; margin: -4px 0px;\\">
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
+  <div style=\\"margin: 4px 12px 4px 0px;\\"><img class=\\"custom-uploader-file\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\"></div>
   <div style=\\"margin: 4px 0px;\\">
-    <div class=\\"var-uploader var--box\\" data-v-d5b80d5a=\\"\\">
+    <div class=\\"var-uploader var--box\\">
       <div class=\\"var-uploader__file-list\\">
-        <div class=\\"\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round\\" data-v-d5b80d5a=\\"\\">
+        <div class=\\"\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round\\">
             <!--v-if-->
-            <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-upload\\" style=\\"transition: transform 0ms; font-size: 28px;\\" data-v-d5b80d5a=\\"\\"></i></div>
+            <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-upload\\" style=\\"transition: transform 0ms; font-size: 28px;\\"></i></div>
           </button></div>
       </div>
       <transition-stub>
@@ -300,7 +300,7 @@ exports[`test uploader example 1`] = `
     </div>
   </div>
 </div>
-<div class=\\"space\\" data-v-d5b80d5a=\\"\\"></div>"
+<div class=\\"space\\"></div>"
 `;
 
 exports[`test uploader hide file list 1`] = `

@@ -2,7 +2,7 @@ import List from '..'
 import VarList from '../List'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/test'
+import { delay } from '../../utils/jest'
 
 test('test list use', () => {
   const app = createApp({}).use(List)
@@ -10,8 +10,8 @@ test('test list use', () => {
 })
 
 test('test list component load event', async () => {
-  const onLoad = vi.fn()
-  const onUpdateLoading = vi.fn()
+  const onLoad = jest.fn()
+  const onUpdateLoading = jest.fn()
 
   const wrapper = mount(VarList, {
     props: {
@@ -21,7 +21,7 @@ test('test list component load event', async () => {
     attachTo: document.body,
   })
 
-  const mockGetBoundingClientRect = vi.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ bottom: 0 })
+  const mockGetBoundingClientRect = jest.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ bottom: 0 })
   await delay(16)
 
   expect(onLoad).toHaveBeenCalledTimes(1)
@@ -39,7 +39,9 @@ describe('test list component props', () => {
       },
     })
 
-    const mockGetBoundingClientRect = vi.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ bottom: 50 })
+    const mockGetBoundingClientRect = jest
+      .spyOn(wrapper.element, 'getBoundingClientRect')
+      .mockReturnValue({ bottom: 50 })
     await delay(16)
     expect(wrapper.find('.var-list__loading').element.textContent).toBe('This is loading text')
     await wrapper.setProps({ loading: false })
@@ -57,7 +59,9 @@ describe('test list component props', () => {
       },
     })
 
-    const mockGetBoundingClientRect = vi.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ bottom: 50 })
+    const mockGetBoundingClientRect = jest
+      .spyOn(wrapper.element, 'getBoundingClientRect')
+      .mockReturnValue({ bottom: 50 })
     await delay(16)
     expect(wrapper.find('.var-list__error').element.textContent).toBe('This is error text')
     await wrapper.setProps({ error: false })
@@ -75,7 +79,9 @@ describe('test list component props', () => {
       },
     })
 
-    const mockGetBoundingClientRect = vi.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue({ bottom: 50 })
+    const mockGetBoundingClientRect = jest
+      .spyOn(wrapper.element, 'getBoundingClientRect')
+      .mockReturnValue({ bottom: 50 })
     await delay(16)
     expect(wrapper.find('.var-list__finished').element.textContent).toBe('This is finished text')
     await wrapper.setProps({ finished: false })

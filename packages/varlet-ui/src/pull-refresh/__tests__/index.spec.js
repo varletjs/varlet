@@ -2,7 +2,7 @@ import PullRefresh from '..'
 import VarPullRefresh from '../PullRefresh'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/test'
+import { delay, trigger } from '../../utils/jest'
 
 const Wrapper = {
   template: `
@@ -81,7 +81,7 @@ describe('test pull-refresh props', () => {
 })
 
 test('test pull-refresh success state', async () => {
-  const refresh = vi.fn()
+  const refresh = jest.fn()
   const wrapper = mount(Wrapper, {
     props: {
       successColor: 'green',

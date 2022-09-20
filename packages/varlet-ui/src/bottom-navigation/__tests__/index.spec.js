@@ -4,7 +4,7 @@ import VarBottomNavigation from '../BottomNavigation'
 import VarBottomNavigationItem from '../../bottom-navigation-item/BottomNavigationItem'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { delay, trigger } from '../../utils/test'
+import { delay, trigger } from '../../utils/jest'
 
 const Wrapper = {
   components: {
@@ -36,7 +36,7 @@ test('test bottom-navigation plugin', () => {
 describe('test bottom-navigation events', () => {
   test('test bottom-navigation change event', async () => {
     let dummy
-    const handleChange = vi.fn((active) => {
+    const handleChange = jest.fn((active) => {
       dummy = active
     })
     const wrapper = mount({
@@ -67,7 +67,7 @@ describe('test bottom-navigation events', () => {
 
   test('test bottom-navigation click event', async () => {
     let dummy
-    const handleClick = vi.fn((active) => {
+    const handleClick = jest.fn((active) => {
       dummy = active
     })
     const wrapper = mount({
@@ -97,7 +97,7 @@ describe('test bottom-navigation events', () => {
   })
 
   test('test bottom-navigation before-change event', async () => {
-    const handleBeforeChange = vi.fn(
+    const handleBeforeChange = jest.fn(
       () =>
         new Promise((resolve) => {
           setTimeout(() => {
@@ -135,7 +135,7 @@ describe('test bottom-navigation events', () => {
   })
 
   test('test bottom-navigation fab-click event', async () => {
-    const handleFabClick = vi.fn()
+    const handleFabClick = jest.fn()
     const wrapper = mount({
       components: {
         [VarBottomNavigation.name]: VarBottomNavigation,

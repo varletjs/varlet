@@ -3,7 +3,7 @@ import Slider from '..'
 import VarSlider from '../Slider'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger, mockConsole } from '../../utils/test'
+import { delay, trigger, mockConsole } from '../../utils/jest'
 
 test('test slider example', () => {
   const wrapper = mount(example)
@@ -114,7 +114,7 @@ test('test slider labelVisible prop', async () => {
 })
 
 test('test step prop', async () => {
-  const fn = vi.fn()
+  const fn = jest.fn()
   const { mockRestore } = mockConsole('warn', fn)
   const template = `<var-slider v-model="value" :step="step"/> `
 
@@ -148,7 +148,7 @@ test('test step prop', async () => {
 })
 
 test('test slider value legal', async () => {
-  const fn = vi.fn()
+  const fn = jest.fn()
   const { mockRestore } = mockConsole('error', fn)
   const template = `<var-slider v-model="value" :range="range" /> `
 
@@ -174,9 +174,9 @@ test('test slider value legal', async () => {
 })
 
 test('test slider not available', async () => {
-  const changeFn = vi.fn()
-  const startFn = vi.fn()
-  const endFn = vi.fn()
+  const changeFn = jest.fn()
+  const startFn = jest.fn()
+  const endFn = jest.fn()
 
   const template = `
     <var-slider v-model="value" :disabled="disabled" :readonly="readonly" @change="changeFn" @start="startFn" @end="endFn" />
@@ -221,9 +221,9 @@ test('test slider not available', async () => {
 })
 
 test('test slider events', async () => {
-  const changeFn = vi.fn()
-  const startFn = vi.fn()
-  const endFn = vi.fn()
+  const changeFn = jest.fn()
+  const startFn = jest.fn()
+  const endFn = jest.fn()
 
   const template = `
     <var-slider v-model="value" :range="range" @change="changeFn" @start="startFn" @end="endFn" />
