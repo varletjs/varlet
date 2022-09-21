@@ -197,7 +197,7 @@ varlet-cli create
 # Options
 -n
 --name
-  组件名
+  project name
 -s
 --sfc
   Generate sfc-style component
