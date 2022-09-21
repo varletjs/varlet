@@ -189,7 +189,6 @@ const change = (date) => {
 | `--date-picker-title-date-range-font-size` | `20px` |
 | `--date-picker-body-background-color` | `transparent` |
 | `--picker-header-padding` | `4px 16px` |
-| `--picker-header-padding` | `4px 16px` |
 | `--month-picker-padding` | `0 12px` |
 | `--month-picker-item-width` | `33%` |
 | `--month-picker-item-height` | `56px` |
