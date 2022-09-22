@@ -65,3 +65,20 @@ export const easeInOutCubic = (value: number): number =>
   value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2
 
 export const dt = (value: unknown, defaultText: string | undefined) => (value == null ? defaultText : value)
+
+export const getGlobalThis = (): typeof globalThis => {
+  if (typeof globalThis !== 'undefined') return globalThis
+
+  if (typeof window !== 'undefined') return window
+
+  return typeof global !== 'undefined' ? global : self
+}
+
+export const padStart = (str = '', maxLength: number, fillString = ''): string => {
+  if (str.length >= maxLength || maxLength <= 0) return str
+
+  const len = maxLength - str.length
+  const repeatCount = Math.floor(len / fillString.length)
+
+  return fillString.repeat(repeatCount) + fillString.slice(0, len % fillString.length) + str
+}

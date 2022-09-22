@@ -194,6 +194,7 @@ importers:
     specifiers:
       '@popperjs/core': ^2.11.6
       '@types/jest': ^26.0.15
+      '@types/node': ^18.7.18
       '@varlet/cli': workspace:*
       '@varlet/icons': workspace:*
       '@varlet/shared': workspace:*
@@ -218,6 +219,7 @@ importers:
       decimal.js: 10.4.0
     devDependencies:
       '@types/jest': 26.0.24
+      '@types/node': 18.7.18
       '@varlet/cli': link:../varlet-cli
       '@varlet/touch-emulator': link:../varlet-touch-emulator
       '@vue/runtime-core': 3.2.25
@@ -1733,7 +1735,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 18.7.6
+      '@types/node': 18.7.18
       '@types/yargs': 15.0.14
       chalk: 4.1.2
 
@@ -1996,6 +1998,9 @@ packages:
 
   /@types/node/14.18.24:
     resolution: {integrity: sha512-aJdn8XErcSrfr7k8ZDDfU6/2OgjZcB2Fu9d+ESK8D7Oa5mtsv8Fa8GpcwTA0v60kuZBaalKPzuzun4Ov1YWO/w==}
+
+  /@types/node/18.7.18:
+    resolution: {integrity: sha512-m+6nTEOadJZuTPkKR/SYK3A2d7FZrgElol9UP1Kae90VVU4a6mxnPuLiIW1m4Cq4gZ/nWb9GrdVXJCoCazDAbg==}
 
   /@types/node/18.7.6:
     resolution: {integrity: sha512-EdxgKRXgYsNITy5mjjXjVE/CS8YENSdhiagGrLqjG0pvA2owgJ6i4l7wy/PFZGC0B1/H20lWKN7ONVDNYDZm7A==}
