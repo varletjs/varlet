@@ -75,7 +75,7 @@ export const getGlobalThis = (): typeof globalThis => {
 }
 
 export const padStart = (str = '', maxLength: number, fillString = ''): string => {
-  if (str.length >= maxLength || maxLength <= 0) return str
+  if (str.length >= maxLength) return str
 
   const len = maxLength - str.length
   const repeatCount = Math.floor(len / fillString.length)
