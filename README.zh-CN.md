@@ -82,9 +82,13 @@ createApp(App).use(Varlet).mount('#app')
 
 ### 反馈和交流
 
-我们推荐使用`issue`列表进行最直接有效的反馈，也可以通过扫描下方二维码进入微信群进行交流
+我们推荐使用`issue`列表进行最直接有效的反馈，也可以下面的方式
+
+* 微信
 
 <img style="width: 25%" src="https://github.com/varletjs/varlet/blob/dev/sponsor/community.png?raw=true" />
+
+* 加入 [Discord](https://discord.gg/Dmb8ydBHkw) 社区交流
 
 ### 感谢贡献者们做出的努力
 
