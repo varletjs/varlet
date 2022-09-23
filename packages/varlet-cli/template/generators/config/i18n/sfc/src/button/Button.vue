@@ -1,7 +1,7 @@
 <template>
-  <button class="basic-button" :style="{ background: color }">
+  <button class="var-button" :style="{ background: color }">
     <slot />
-    <!--    {{ pack.button }}-->
+    {{ pack.button }}
   </button>
 </template>
 
@@ -9,7 +9,7 @@
 import { defineComponent, PropType } from 'vue'
 
 // i18n for component's internal
-// import { pack } from '../locale'
+import { pack } from '../locale'
 
 export default defineComponent({
   name: 'VarButton',
@@ -25,6 +25,7 @@ export default defineComponent({
     const handleClick = (e: Event) => props.onClick?.(e)
 
     return {
+      pack,
       handleClick,
     }
   },
@@ -32,5 +33,5 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import 'button';
+@import './button';
 </style>

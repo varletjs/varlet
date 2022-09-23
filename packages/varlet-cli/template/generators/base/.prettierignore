@@ -1,9 +1,14 @@
 coverage/**
+highlight/**
 es/**
 umd/**
+lib/**
 site/**
 public/**
-types/global.d.ts
+.varlet/**
+types/index.d.ts
 *.md
 package.json
 
+pnpm-lock.yaml
+pnpm-workspace.yaml
