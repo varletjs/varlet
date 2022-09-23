@@ -1,14 +1,5 @@
 # 按钮
 
-### 引入
-
-```js
-import { createApp } from 'vue'
-import { Button } from '@varlet/ui'
-
-createApp().use(Button)
-```
-
 ### 基本使用
 ```html
 <var-button>组件库从我开始</var-button>
