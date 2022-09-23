@@ -7,143 +7,26 @@
 Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单，如果希望 Menu 独占一行推荐包裹一个 `block` 元素。
 Menu 在点击组件范围以外的区域自动关闭，所以不可以使用同一个状态绑定多个 Menu 的 `v-model:show`，否则在触发显示时也同时触发了其他 Menu 对 `v-model:show` 的修改，导致 Menu 无法显示。
 
-### 对齐方式
 ```html
 <script setup>
-import { ref } from 'vue'
-  
-const top = ref(false)
-const bottom = ref(false)
+
 </script>
 
 <template>
-  <div class="menu-example-block">
-    <var-menu v-model:show="top">
-      <var-button type="primary" @click="top = true">顶部对齐</var-button>
-
-      <template #menu>
-        <div class="menu-example-cell-list">
-          <var-cell>菜单项</var-cell>
-          <var-cell>菜单项</var-cell>
-          <var-cell>菜单项</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
-
-  <div class="menu-example-block-mt">
-    <var-menu alignment="bottom" v-model:show="bottom">
-      <var-button type="primary" @click="bottom = true">底部对齐</var-button>
-
-      <template #menu>
-        <div class="menu-example-cell-list">
-          <var-cell>菜单项</var-cell>
-          <var-cell>菜单项</var-cell>
-          <var-cell>菜单项</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
+  
 </template>
-
-<style>
-.menu-example-block {
-  display: flex;
-  justify-content: space-between;
-}
-
-.menu-example-block-mt {
-  margin-top: 130px;
-}
-
-.menu-example-cell-list{
-  background: #fff;
-}
-</style>
 ```
 
-### 偏移量
+### 菜单位置
 
 ```html
 <script setup>
-import { ref } from 'vue'
-  
-const offsetX = ref(false)
-const offsetX1 = ref(false)
-const offsetY = ref(false)
-const offsetY1 = ref(false)
+
 </script>
 
 <template>
-  <div class="menu-example-block-1">
-    <var-menu :offset-x="72" v-model:show="offsetX">
-      <var-button type="primary" @click="offsetX = true">右偏移</var-button>
 
-      <template #menu>
-        <div class="menu-example-cell-list">
-          <var-cell>菜单项</var-cell>
-          <var-cell>菜单项</var-cell>
-          <var-cell>菜单项</var-cell>
-        </div>
-      </template>
-    </var-menu>
-
-    <var-menu :offset-x="-72" v-model:show="offsetX1">
-      <var-button type="primary" @click="offsetX1 = true">左偏移</var-button>
-
-      <template #menu>
-        <div class="menu-example-cell-list">
-          <var-cell>菜单项</var-cell>
-          <var-cell>菜单项</var-cell>
-          <var-cell>菜单项</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
-
-  <div class="menu-example-block-2">
-    <var-menu :offset-y="36" v-model:show="offsetY">
-      <var-button type="primary" @click="offsetY = true">下偏移</var-button>
-
-      <template #menu>
-        <div class="menu-example-cell-list">
-          <var-cell>菜单项</var-cell>
-          <var-cell>菜单项</var-cell>
-          <var-cell>菜单项</var-cell>
-        </div>
-      </template>
-    </var-menu>
-
-    <var-menu :offset-y="-36" v-model:show="offsetY1">
-      <var-button type="primary" @click="offsetY1 = true">上偏移</var-button>
-
-      <template #menu>
-        <div class="menu-example-cell-list">
-          <var-cell>菜单项</var-cell>
-          <var-cell>菜单项</var-cell>
-          <var-cell>菜单项</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
 </template>
-
-<style>
-.menu-example-block-1 {
-  display: flex;
-  justify-content: space-between;
-}
-
-.menu-example-block-2 {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 130px;
-}
-
-.menu-example-cell-list {
-  background: #fff;
-}
-</style>
 ```
 
 ### 注册事件

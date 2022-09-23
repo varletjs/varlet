@@ -6,7 +6,7 @@ import VarOption from '../../option'
 import VarCell from '../../cell'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { reactive, toRefs, ref } from 'vue'
+import { reactive, toRefs, ref, onMounted } from 'vue'
 import { pack, use } from './locale/index'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import dark from '../../themes/dark'
@@ -49,6 +49,10 @@ const placementOption = ref([
   'cover-right',
 ])
 const triggerValue = ref('click')
+const scroll = ref(null)
+onMounted(() => {
+  scroll.value.scrollTo(0, 175)
+})
 
 watchLang(use)
 watchDarkMode(dark, (themes) => {
@@ -57,108 +61,29 @@ watchDarkMode(dark, (themes) => {
 </script>
 
 <template>
-  <app-type>{{ pack.alignmentMethods }}</app-type>
-  <div class="block-1">
-    <var-menu v-model:show="top">
-      <var-button type="primary" @click="top = true">{{ pack.topAlignment }}</var-button>
+  <app-type>{{ pack.placement }}</app-type>
 
-      <template #menu>
-        <div class="cell-list" :style="{ background: bgColor }">
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
+  <div class="scroll" ref="scroll">
+    <div class="scroll-child">
+      <div class="flex-box">
+        <var-menu v-model:show="placement" :placement="placementValue">
+          <var-button type="primary" @click="placement = true">{{ pack.placement }}</var-button>
 
-  <div class="block">
-    <var-menu alignment="bottom" v-model:show="bottom">
-      <var-button type="primary" @click="bottom = true">{{ pack.bottomAlignment }}</var-button>
-
-      <template #menu>
-        <div class="cell-list" :style="{ background: bgColor }">
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
-
-  <app-type>{{ pack.offset }}</app-type>
-
-  <div class="block-1">
-    <var-menu :offset-x="72" v-model:show="offsetX">
-      <var-button type="primary" @click="offsetX = true">{{ pack.offsetRight }}</var-button>
-
-      <template #menu>
-        <div class="cell-list" :style="{ background: bgColor }">
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-        </div>
-      </template>
-    </var-menu>
-
-    <var-menu :offset-x="-72" v-model:show="offsetX1">
-      <var-button type="primary" @click="offsetX1 = true">{{ pack.offsetLeft }}</var-button>
-
-      <template #menu>
-        <div class="cell-list" :style="{ background: bgColor }">
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
-
-  <div class="block-2">
-    <var-menu :offset-y="36" v-model:show="offsetY">
-      <var-button type="primary" @click="offsetY = true">{{ pack.offsetBottom }}</var-button>
-
-      <template #menu>
-        <div class="cell-list" :style="{ background: bgColor }">
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-        </div>
-      </template>
-    </var-menu>
-
-    <var-menu :offset-y="-36" v-model:show="offsetY1">
-      <var-button type="primary" @click="offsetY1 = true">{{ pack.offsetTop }}</var-button>
-
-      <template #menu>
-        <div class="cell-list" :style="{ background: bgColor }">
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
-
-  <app-type>{{ pack.events }}</app-type>
-  <var-menu
-    v-model:show="event"
-    @open="() => Snackbar.info('open')"
-    @opened="() => Snackbar.success('opened')"
-    @close="() => Snackbar.warning('close')"
-    @closed="() => Snackbar.error('closed')"
-    @update="(show) => console.log('show改变了')"
-  >
-    <var-button type="primary" @click="event = true">{{ pack.events }}</var-button>
-
-    <template #menu>
-      <div class="cell-list" :style="{ background: bgColor }">
-        <var-cell>{{ pack.menuOption }}</var-cell>
-        <var-cell>{{ pack.menuOption }}</var-cell>
-        <var-cell>{{ pack.menuOption }}</var-cell>
+          <template #menu>
+            <div class="cell-list" :style="{ background: bgColor }">
+              <var-cell>{{ pack.menuOption }}</var-cell>
+              <var-cell>{{ pack.menuOption }}</var-cell>
+              <var-cell>{{ pack.menuOption }}</var-cell>
+            </div>
+          </template>
+        </var-menu>
       </div>
-    </template>
-  </var-menu>
+    </div>
+  </div>
+
+  <var-select :hint="false" :line="false" placeholder="请选择菜单显示方向" v-model="placementValue">
+    <var-option v-for="(item, index) in placementOption" :key="index" :label="item" />
+  </var-select>
 
   <app-type>{{ pack.trigger }}</app-type>
   <var-select :hint="false" :line="false" placeholder="请选择菜单显示方向" v-model="triggerValue">
@@ -177,12 +102,16 @@ watchDarkMode(dark, (themes) => {
     </template>
   </var-menu>
 
-  <app-type>{{ pack.placement }}</app-type>
-  <var-select :hint="false" :line="false" placeholder="请选择菜单显示方向" v-model="placementValue">
-    <var-option v-for="(item, index) in placementOption" :key="index" :label="item" />
-  </var-select>
-  <var-menu v-model:show="placement" :placement="placementValue">
-    <var-button type="primary" @click="placement = true">{{ pack.placement }}</var-button>
+  <app-type>{{ pack.events }}</app-type>
+  <var-menu
+    v-model:show="event"
+    @open="() => Snackbar.info('open')"
+    @opened="() => Snackbar.success('opened')"
+    @close="() => Snackbar.warning('close')"
+    @closed="() => Snackbar.error('closed')"
+    @update="(show) => console.log('show改变了')"
+  >
+    <var-button type="primary" @click="event = true">{{ pack.events }}</var-button>
 
     <template #menu>
       <div class="cell-list" :style="{ background: bgColor }">
@@ -210,8 +139,22 @@ watchDarkMode(dark, (themes) => {
 </template>
 
 <style scoped lang="less">
+.scroll {
+  height: 250px;
+  overflow-y: scroll;
+  &-child {
+    height: 600px;
+    .flex-box {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
 .cell-list {
-  transition: background-color 0.25s;
+  // transition: background-color 0.25s;
 }
 
 .block {
