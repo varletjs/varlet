@@ -98,7 +98,7 @@
     ]
   },
   "browserslist": [
-    "Chrome >= 51",
+    "Chrome >= 54",
     "iOS >= 10"
   ],
   "packageManager": "pnpm@7.9.0"

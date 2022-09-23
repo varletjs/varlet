@@ -277,7 +277,7 @@ varlet-cli gen <projectName>
 ```json
 {
   "browserslist": [
-    "Chrome >= 51",
+    "Chrome >= 54",
     "iOS >= 10"
   ]
 }
