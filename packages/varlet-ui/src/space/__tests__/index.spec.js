@@ -1,7 +1,7 @@
 import VarSpace from '../Space'
 import Space from '..'
 import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
+import { createApp, Fragment, h } from 'vue'
 
 test('test space use', () => {
   const app = createApp({}).use(Space)
@@ -15,7 +15,9 @@ describe('test space component props', () => {
         props: { align },
       })
 
-      expect(wrapper.find('.var-space').attributes('style')).toContain('align-items: ' + align)
+      expect(wrapper.find('.var-space').attributes('style')).toContain(
+        'align-items: ' + (align === 'start' || align === 'end' ? `flex-${align}` : align)
+      )
       wrapper.unmount()
     })
   })
@@ -24,9 +26,15 @@ describe('test space component props', () => {
     ;['start', 'end', 'center', 'space-around', 'space-between'].forEach((justify) => {
       const wrapper = mount(VarSpace, {
         props: { justify },
+        slots: {
+          default: () => h(Fragment, [h('div', 'child'), h('div', 'child'), h('div', 'child')]),
+        },
       })
 
-      expect(wrapper.find('.var-space').attributes('style')).toContain('justify-content: ' + justify)
+      expect(wrapper.find('.var-space').attributes('style')).toContain(
+        'justify-content: ' + (justify === 'start' || justify === 'end' ? `flex-${justify}` : justify)
+      )
+      expect(wrapper.html()).toMatchSnapshot()
       wrapper.unmount()
     })
   })

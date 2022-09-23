@@ -1,3 +1,4 @@
+
 # Menu
 
 ### Intro
@@ -200,6 +201,10 @@ const show = ref(false)
 | `offset-x` | offset x, Relative to the aligned position of the menu | _number \| string_ | `0` |  
 | `offset-y` | offset y, Relative to the aligned position of the menu | _number \| string_ | `0` |
 | `teleport` | The location of the Menu to mount | _TeleportProps['to']_ | `body` |
+| `disabled` | whether to disable the menu | _boolean_ | `false` |
+| `trigger` | menu trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_ | `click` |
+| `placement` | menu display position, please refer to [popper documentation](https://popper.js.org/docs/v2/) | _string: cover-top \| cover-top-start \| cover-top-end \| cover-bottom \| cover-bottom-start \| cover-bottom-end \| cover-left \| cover-right_ | `cover-top-start` |
+| `defaultStyle` | whether to enable default styles | _boolean_ | `true` |
 
 ### Methods
 | Method | Description | Arguments | Return |

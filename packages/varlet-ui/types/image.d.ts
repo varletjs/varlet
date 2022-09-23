@@ -1,9 +1,10 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
+
+type ImageFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
 export interface ImageProps extends BasicAttributes {
   src?: string
-  fit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
+  fit?: ImageFit
   alt?: string
   width?: string | number
   height?: string | number

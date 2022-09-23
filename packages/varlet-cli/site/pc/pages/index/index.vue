@@ -1,44 +1,23 @@
 <script setup lang="ts">
 import AnimationBox from '../../components/AnimationBox.vue'
 import config from '@config'
-import VarSiteButton from '../../../components/button'
-import VarSiteIcon from '../../../components/icon'
 import { get } from 'lodash-es'
-import { ref, watch, computed } from 'vue'
+import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getBrowserThemes, setThemes } from '../../../utils'
-import { getPCLocationInfo, watchThemes } from '@varlet/cli/site/utils'
-import en_US from './locale/en-US'
-import zh_CN from './locale/zh-CN'
-import type { Ref, ComputedRef } from 'vue'
+import { getBrowserTheme, setTheme, Theme } from "../../../utils";
+import { getPCLocationInfo, watchTheme } from '@varlet/cli/site/utils'
+import type { Ref } from 'vue'
 
 const route = useRoute()
 const router = useRouter()
-const packs = {
-  'zh-CN': zh_CN,
-  'en-US': en_US,
-} as any
 
 const github = get(config, 'pc.header.github')
-const themesKey = get(config, 'themesKey')
-const currentThemes = ref(getBrowserThemes(themesKey))
+const currentTheme = ref(getBrowserTheme())
 const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
 const title: Ref<string> = ref(get(config, 'title'))
 const language: Ref<string> = ref(get(config, 'defaultLanguage'))
 const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
-const pack: Ref<Record<string, string>> = ref({})
-
-const description: ComputedRef<string> = computed(() => {
-  const { indexPage = {} } = get(config, 'pc')
-
-  return indexPage?.description?.[language.value] || pack.value.description
-})
-
-const started: ComputedRef<string> = computed(() => {
-  const { indexPage = {} } = get(config, 'pc')
-
-  return indexPage?.started?.[language.value] || pack.value.started
-})
+const indexPage: Ref<Record<string, any>> = get(config, 'pc.indexPage')
 
 const goGithub = () => {
   window.open(github)
@@ -48,18 +27,18 @@ const getStar = () => {
   router.push(`/${language.value}/home`)
 }
 
-const getThemesMessage = () => ({ action: 'themesChange', from: 'pc', data: currentThemes.value })
+const getThemeMessage = () => ({ action: 'theme-change', from: 'pc', data: currentTheme.value })
 
-const setCurrentThemes = (themes: 'themes' | 'darkThemes') => {
-  currentThemes.value = themes
-  setThemes(config, currentThemes.value)
-  window.localStorage.setItem(themesKey, currentThemes.value)
+const setCurrentTheme = (theme: Theme) => {
+  currentTheme.value = theme
+  setTheme(config, currentTheme.value)
+  window.localStorage.setItem(get(config, 'themeKey'), currentTheme.value)
 }
 
 const toggleTheme = () => {
-  setCurrentThemes(currentThemes.value === 'darkThemes' ? 'themes' : 'darkThemes')
-  window.postMessage(getThemesMessage(), '*')
-    ; (document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemesMessage(), '*')
+  setCurrentTheme(currentTheme.value === 'darkTheme' ? 'lightTheme' : 'darkTheme')
+  window.postMessage(getThemeMessage(), '*')
+  ;(document.getElementById('mobile') as HTMLIFrameElement)?.contentWindow!.postMessage(getThemeMessage(), '*')
 }
 
 const setLocale = () => {
@@ -67,7 +46,6 @@ const setLocale = () => {
   if (!lang) return
 
   language.value = lang
-  pack.value = packs[lang]
   document.title = get(config, 'pc.title')[lang] as string
 }
 
@@ -81,60 +59,67 @@ const toggleLanguages = () => {
   router.replace(replaceStr)
 }
 
-setThemes(config, currentThemes.value)
+setTheme(config, currentTheme.value)
 
-window.postMessage(getThemesMessage(), '*')
+window.postMessage(getThemeMessage(), '*')
 
-watchThemes((themes, from) => {
-  from === 'mobile' && setCurrentThemes(themes)
+watchTheme((theme, from) => {
+  from === 'mobile' && setCurrentTheme(theme)
 })
 
 watch(() => route.path, setLocale, { immediate: true })
 </script>
 
 <template>
-  <div class="home-page">
-    <div class="slash-box box-1"></div>
-    <div class="slash-box box-2"></div>
-    <div class="slash-box box-3"></div>
-    <div class="slash-box box-4"></div>
-    <div class="slash-box box-5"></div>
-    <div class="profile-container">
-      <div class="container-box">
-        <div class="description-container">
-          <animation-box class="logo-box" />
-          <div class="base-title">{{ title }}</div>
-        </div>
-        <div class="base-description">{{ description }}</div>
+  <div class="varlet-doc-index">
+    <div class="varlet-doc-index__layout">
+      <div class="varlet-doc-index__logo-container">
+        <div class="varlet-doc-index__logo-background-mask"></div>
+        <animation-box class="varlet-doc-index__logo" />
+      </div>
 
-        <div class="button-group">
-          <var-site-button class="common-button github-button" block @click="goGithub">
-            <div class="block-button-content">
-              <span>GITHUB</span>
-              <var-site-icon style="margin-left: 10px" name="github" size="24px" />
-            </div>
-          </var-site-button>
-          <var-site-button class="common-button extra-button margin-left" text v-if="darkMode" @click="toggleTheme">
-            <var-site-icon size="24px" :name="currentThemes === 'themes' ? 'white-balance-sunny' : 'weather-night'" />
-          </var-site-button>
-        </div>
+      <div class="varlet-doc-index__title">{{ title }}</div>
+      <div class="varlet-doc-index__description">{{ indexPage.description[language] }}</div>
+      <div class="varlet-doc-index__link-button-group">
+        <var-button class="varlet-doc-index__link-button" text outline @click="goGithub">
+          <var-icon name="github" size="24px" />
+        </var-button>
+        <var-button class="varlet-doc-index__link-button" text outline v-if="darkMode" @click="toggleTheme">
+          <var-icon size="24px" :name="currentTheme === 'lightTheme' ? 'white-balance-sunny' : 'weather-night'" />
+        </var-button>
+        <var-button
+          class="varlet-doc-index__link-button"
+          text
+          outline
+          v-if="languages"
+          @click="toggleLanguages"
+        >
+          <var-icon name="translate" size="24px" />
+        </var-button>
+        <var-button class="varlet-doc-index__link-button" type="primary" style="line-height: 1.2" @click="getStar">
+          <span class="varlet-doc-index__link-button-text">{{ indexPage.started[language] }}</span>
+          <var-icon style="transform: rotate(-90deg)" name="arrow-down" size="24px" />
+        </var-button>
+      </div>
 
-        <div class="button-group">
-          <var-site-button type="primary" class="common-button primary-button" block @click="getStar">
-            <div class="block-button-content">
-              <span>{{ started }}</span>
-              <var-site-icon style="margin-left: 10px; transform: rotate(-90deg)" name="arrow-down" size="24px" />
-            </div>
-          </var-site-button>
-          <var-site-button
-            class="common-button extra-button margin-left"
-            text
-            v-if="languages"
-            @click="toggleLanguages"
-          >
-            <var-site-icon name="translate" size="24px" />
-          </var-site-button>
+      <div class="varlet-doc-index__features" v-if="indexPage.features">
+        <div class="varlet-doc-index__feature" v-for="feature in indexPage.features">
+          <div class="varlet-doc-index__feature-name">{{ feature.name[language] }}</div>
+          <div class="varlet-doc-index__feature-description">{{ feature.description[language] }}</div>
         </div>
+      </div>
+
+      <div class="varlet-doc-index__contributors" v-if="indexPage.contributors">
+        <div class="varlet-doc-index__contributors-title">{{ indexPage.contributors.label[language] }}</div>
+
+        <a class="varlet-doc-index__contributors-link" :href="indexPage.contributors.link">
+          <img class="varlet-doc-index__contributors-image" :src="indexPage.contributors.image">
+        </a>
+      </div>
+
+      <div class="varlet-doc-index__footer">
+        <div class="varlet-doc-index__license">{{ indexPage.license[language] }}</div>
+        <div class="varlet-doc-index__copyright">{{ indexPage.copyright[language] }}</div>
       </div>
     </div>
   </div>

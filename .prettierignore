@@ -1,6 +1,6 @@
 packages/varlet-cli/lib/**
 packages/varlet-cli/site/**
-packages/varlet-cli/generators/**
+packages/varlet-cli/template/**
 
 packages/varlet-icons/dist/**
 
@@ -12,7 +12,7 @@ packages/varlet-ui/public/**
 packages/varlet-ui/.varlet/**
 packages/varlet-ui/coverage/**
 packages/varlet-ui/highlight/**
-packages/varlet-ui/types/global.d.ts
+packages/varlet-ui/types/index.d.ts
 
 packages/varlet-ui-playground/dist/**
 packages/varlet-ui-playground/public/**

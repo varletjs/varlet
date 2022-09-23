@@ -1,6 +1,6 @@
 import type { PropType } from 'vue'
 
-export type ValidateTriggers = 'onChange'
+export type ValidateTrigger = 'onChange'
 
 export const props = {
   modelValue: {
@@ -37,7 +37,7 @@ export const props = {
     default: true,
   },
   validateTrigger: {
-    type: Array as PropType<Array<ValidateTriggers>>,
+    type: Array as PropType<Array<ValidateTrigger>>,
     default: () => ['onChange'],
   },
   rules: {

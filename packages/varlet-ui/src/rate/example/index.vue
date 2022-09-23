@@ -71,6 +71,7 @@ watchDarkMode(dark)
     empty-icon="heart-outline"
     color="red"
     half
+    style="margin-top: 4px"
   />
 
   <app-type>{{ pack.disableTheRating }}</app-type>

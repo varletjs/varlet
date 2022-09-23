@@ -1,12 +1,11 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, Direction as RadioGroupDirection } from './varComponent'
 
-export type RadioGroupValidateTriggers = 'onChange'
+export type RadioGroupValidateTrigger = 'onChange'
 
 export interface RadioGroupProps extends BasicAttributes {
   modelValue?: any
-  direction?: 'horizontal' | 'vertical'
-  validateTrigger?: Array<RadioGroupValidateTriggers>
+  direction?: RadioGroupDirection
+  validateTrigger?: Array<RadioGroupValidateTrigger>
   rules?: Array<(value: any) => any>
   onChange?: (value: any) => void
   'onUpdate:modelValue'?: (value: any) => void

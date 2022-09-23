@@ -10,9 +10,8 @@ The `Locale` component is introduced to realize multi-language switching, and `L
 ```js
 // playground-ignore
 import { Locale } from '@varlet/ui'
-import enUS from '@varlet/ui/es/locale/en-US'
 
-Locale.add('en-US', enUS)
+Locale.add('en-US', Locale.enUS)
 ```
 
 Use `Locale.use` to switch languages.

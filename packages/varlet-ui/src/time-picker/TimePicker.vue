@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), [shadow, 'var-elevation--2'])" ref="picker">
+  <div :class="classes(n(), [elevation, 'var-elevation--2'])" ref="picker">
     <div :class="n('title')" :style="{ background: headerColor || color }">
       <div :class="n('title-time')">
         <div :class="classes(n('title-btn'), [type === 'hour', n('title-btn--active')])" @click="checkPanel('hour')">
@@ -60,6 +60,7 @@ import Clock from './clock.vue'
 import { props, hoursAmpm, hours24 } from './props'
 import { toNumber } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
+import { padStart } from '../utils/shared'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
 import type { ComputedRef, Ref, DefineComponent, UnwrapRef } from 'vue'
 import type { Time, AmPm } from './props'
@@ -147,7 +148,7 @@ export default defineComponent({
       if (!newHour) return
 
       const second = props.useSeconds ? `:${time.value.second}` : ''
-      const newTime = `${newHour.padStart(2, '0')}:${time.value.minute}${second}`
+      const newTime = `${padStart(newHour, 2, '0')}:${time.value.minute}${second}`
 
       update(newTime)
     }
@@ -319,7 +320,7 @@ export default defineComponent({
           time.value = getTime(value)
 
           if (props.format !== '24hr') {
-            ampm.value = `${hour}`.padStart(2, '0') === formatHour24 && hours24.includes(formatHour24) ? 'pm' : 'am'
+            ampm.value = padStart(`${hour}`, 2, '0') === formatHour24 && hours24.includes(formatHour24) ? 'pm' : 'am'
           }
 
           isInner.value = props.format === '24hr' && hours24.includes(formatHour24)

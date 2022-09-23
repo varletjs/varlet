@@ -246,25 +246,6 @@ const value = ref([])
 </template>
 ```
 
-### offset-y
-
-```html
-<script setup>
-import { reactive, ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select placeholder="Please select one the options" :offset-y="-136" v-model="value">
-    <var-option label="Ember Sprit" />
-    <var-option label="Storm Spirit" />
-    <var-option label="Void Spirit" />
-    <var-option label="Earth Sprit" />
-  </var-select>
-</template>
-```
-
 ## API
 
 ### Props
@@ -344,7 +325,8 @@ Here are the CSS variables used by the component, Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--select-select-text-color` | `#555` |
-| `--select-select-padding` | `5px 0` |
+| `--select-select-min-height` | `22px` |
+| `--select-menu-margin-top` | `10px` |
 | `--select-error-color` | `var(--color-danger)` |
 | `--select-blur-color` | `#888` |
 | `--select-focus-color` | `var(--color-primary)` |

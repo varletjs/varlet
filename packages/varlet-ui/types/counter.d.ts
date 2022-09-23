@@ -1,7 +1,6 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
 
-export type CounterValidateTriggers = 'onIncrement' | 'onDecrement' | 'onInputChange' | 'onLazyChange'
+export type CounterValidateTrigger = 'onIncrement' | 'onDecrement' | 'onInputChange' | 'onLazyChange'
 
 export interface CounterProps extends BasicAttributes {
   modelValue?: string | number
@@ -23,7 +22,7 @@ export interface CounterProps extends BasicAttributes {
   decrementButton?: boolean
   press?: boolean
   ripple?: boolean
-  validateTrigger?: Array<CounterValidateTriggers>
+  validateTrigger?: Array<CounterValidateTrigger>
   rules?: Array<(v: number) => any>
   onBeforeChange?: (value: number, change: (value: string | number) => void) => void
   onChange?: (value: number) => void

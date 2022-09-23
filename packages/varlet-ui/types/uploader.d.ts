@@ -1,16 +1,19 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes } from './varComponent'
+
+export type VarFileFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
+
+export type VarFileState = 'loading' | 'success' | 'error'
 
 export interface VarFile extends BasicAttributes {
   file?: File
   name?: string
   url?: string
   cover?: string
-  fit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
-  state?: 'loading' | 'success' | 'error'
+  fit?: VarFileFit
+  state?: VarFileState
 }
 
-export type UploaderValidateTriggers = 'onChange' | 'onRemove'
+export type UploaderValidateTrigger = 'onChange' | 'onRemove'
 
 export type UploaderVarFileUtils = {
   getLoading(): VarFile[]
@@ -18,10 +21,12 @@ export type UploaderVarFileUtils = {
   getError(): VarFile[]
 }
 
+export type UploaderCapture = boolean | 'user' | 'environment'
+
 interface UploaderProps {
   modelValue?: VarFile[]
   accept?: string
-  capture?: boolean | 'user' | 'environment'
+  capture?: UploaderCapture
   multiple?: boolean
   readonly?: boolean
   disabled?: boolean
@@ -31,7 +36,7 @@ interface UploaderProps {
   previewed?: boolean
   hideList?: boolean
   ripple?: boolean
-  validateTrigger?: Array<UploaderValidateTriggers>
+  validateTrigger?: Array<UploaderValidateTrigger>
   rules?: Array<(v: VarFile[], u: UploaderVarFileUtils) => any>
   onBeforeRead?: (file: VarFile) => Promise<boolean> | boolean
   onAfterRead?: (file: VarFile) => any

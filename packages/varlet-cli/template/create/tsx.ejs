@@ -1,0 +1,13 @@
+import { defineComponent } from 'vue'
+import { props } from './props'
+import './<%- kebabCaseName %>.less'
+
+export default defineComponent({
+  name: '<%- bigCamelizeNamespace + bigCamelizeName %>',
+  props,
+  setup(props, { slots }) {
+    return () => {
+      return <div>{ slots.default?.() }</div>
+    }
+  },
+})

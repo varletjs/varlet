@@ -23,7 +23,7 @@ async function startServer(force: boolean | undefined) {
   await buildSiteEntry()
   const varletConfig = getVarletConfig()
   const devConfig = getDevConfig(varletConfig)
-  const inlineConfig = merge(devConfig, force ? { server: { force: true } } : {})
+  const inlineConfig = merge(devConfig, force ? { optimizeDeps: { force: true } } : {})
 
   // create all instance
   server = await createServer(inlineConfig)
@@ -38,10 +38,14 @@ async function startServer(force: boolean | undefined) {
   logger.success(`\n${isRestart ? 'Res' : 'S'}tart successfully!!!`)
 }
 
-export async function dev(cmd: { force?: boolean }) {
+interface DevCommandOptions {
+  force?: boolean
+}
+
+export async function dev(options: DevCommandOptions) {
   process.env.NODE_ENV = 'development'
 
   ensureDirSync(SRC_DIR)
 
-  await startServer(cmd.force)
+  await startServer(options.force)
 }

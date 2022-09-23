@@ -1,9 +1,9 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, Type as ButtonType, Size as ButtonSize } from './varComponent'
+import { LoadingType, LoadingSize } from './loading'
 
 export interface ButtonProps extends BasicAttributes {
-  type?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
-  size?: 'normal' | 'mini' | 'small' | 'large'
+  type?: ButtonType
+  size?: ButtonSize
   loading?: boolean
   round?: boolean
   block?: boolean
@@ -15,8 +15,9 @@ export interface ButtonProps extends BasicAttributes {
   color?: string
   textColor?: string
   loadingRadius?: string | number
-  loadingType?: 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'
-  loadingSize?: 'normal' | 'mini' | 'small' | 'large'
+  loadingType?: LoadingType
+  loadingSize?: LoadingSize
+  loadingColor?: string
   onClick?: (e: Event) => void
   onTouchstart?: (e: Event) => void
 }

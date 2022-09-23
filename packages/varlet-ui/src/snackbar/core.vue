@@ -17,7 +17,13 @@
       </div>
       <div :class="n('action')">
         <var-icon v-if="iconName" :name="iconName" />
-        <var-loading v-if="type === 'loading'" :type="loadingType" :size="loadingSize" />
+        <var-loading
+          v-if="type === 'loading'"
+          :type="loadingType"
+          :size="loadingSize"
+          :color="loadingColor"
+          :radius="loadingRadius"
+        />
         <slot name="action" />
       </div>
     </div>

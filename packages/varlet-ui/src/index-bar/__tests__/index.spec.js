@@ -4,9 +4,33 @@ import VarIndexBar from '../IndexBar'
 import VarIndexAnchor from '../../index-anchor/IndexAnchor'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockScrollTo, mockIndexBarOwnTop } from '../../utils/jest'
+import { delay, mockScrollTo } from '../../utils/jest'
 
 mockScrollTo(HTMLElement)
+
+function mockIndexBarOwnTop() {
+  const originForEach = Array.prototype.forEach
+
+  Array.prototype.forEach = function (fn, thisArg) {
+    let changedArr = this
+
+    if (this && this.map) {
+      changedArr = this.map((value, index) => {
+        if (value.ownTop && !value.ownTop.value) value.ownTop.value = (index + 1) * 50
+
+        return value
+      })
+    }
+
+    originForEach.call(changedArr, fn, thisArg)
+  }
+
+  return {
+    mockRestore() {
+      Array.prototype.forEach = originForEach
+    },
+  }
+}
 
 const Wrapper = {
   components: {

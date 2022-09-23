@@ -69,6 +69,25 @@ describe('test image component event', () => {
     await lazyImage.trigger('load')
     wrapper.unmount()
   })
+
+  test('test image onClick', () => {
+    function expectOnClick(props = {}) {
+      const onClick = jest.fn()
+      const wrapper = mount(VarImage, {
+        props: {
+          onClick,
+          ...props,
+        },
+      })
+
+      wrapper.find('.var-image__image').trigger('click')
+      expect(onClick).toHaveBeenCalledTimes(1)
+      wrapper.unmount()
+    }
+
+    expectOnClick()
+    expectOnClick({ lazy: true })
+  })
 })
 
 describe('test image component props', () => {
@@ -191,12 +210,16 @@ describe('test image component props', () => {
     })
 
     await trigger(wrapper, 'touchstart')
-    await delay(500)
+    await delay(250)
     expect(wrapper.find('.var-ripple').exists()).toBe(true)
+
+    await trigger(document, 'touchend')
+    await delay(500)
+    expect(wrapper.find('.var-ripple').exists()).toBe(false)
 
     await wrapper.setProps({ ripple: false })
     await trigger(wrapper, 'touchstart')
-    await delay(500)
+    await delay(250)
     expect(wrapper.find('.var-ripple').exists()).toBe(false)
 
     wrapper.unmount()

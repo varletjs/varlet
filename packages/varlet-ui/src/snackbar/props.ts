@@ -41,10 +41,13 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  // 加载动画类型
   loadingType: pickProps(loadingProps, 'type'),
-  // 加载动画尺寸
   loadingSize: pickProps(loadingProps, 'size'),
+  loadingRadius: pickProps(loadingProps, 'radius'),
+  loadingColor: {
+    ...pickProps(loadingProps, 'color'),
+    default: 'currentColor',
+  },
   // 是否禁止滚动穿透
   lockScroll: {
     type: Boolean,

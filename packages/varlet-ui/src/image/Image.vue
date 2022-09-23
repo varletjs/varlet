@@ -40,8 +40,8 @@ import Lazy from '../lazy'
 import { defineComponent } from 'vue'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
-import type { LazyHTMLElement } from '../lazy'
 import { createNamespace, call } from '../utils/components'
+import type { LazyHTMLElement } from '../lazy'
 
 const { n, classes } = createNamespace('image')
 

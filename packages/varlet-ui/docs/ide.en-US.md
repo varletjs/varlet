@@ -3,7 +3,7 @@
 ### Intro
 
 The component library provides the ability to highlight the component syntax for `webstorm` and `vscode`. 
-the `Syntax highlight`,`Code completion`,`Documentation popup`, can be obtained through plugins and Settings.
+the `Syntax highlight`, `Code completion`, `Documentation popup`, can be obtained through plugins and Settings.
 The component library provides a separate helper plugin for `vscode`, which can be downloaded from the extension market
 
 ### Webstorm
@@ -15,7 +15,7 @@ Open the library properties documentation by setting `Editor -> General -> Code 
 
 ### VSCode
 
-Install the `Volar` plugin and configure `ts.config.json` as follows to get type hints in the template.
+Install the `Volar` plugin and configure `tsconfig.json` as follows to get type hints in the template.
 
 ```json
 // playground-ignore

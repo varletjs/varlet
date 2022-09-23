@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs-extra'
+import { readFileSync, removeSync, writeFileSync } from 'fs-extra'
 import { render } from 'less'
 import { replaceExt, smartAppendFileSync } from '../shared/fsUtils'
 import { parse, resolve } from 'path'
@@ -15,7 +15,7 @@ export const clearEmptyLine = (s: string) => s.replace(EMPTY_LINE_RE, '').replac
 
 export function normalizeStyleDependency(styleImport: string, reg: RegExp) {
   let relativePath = styleImport.replace(reg, '$1')
-  relativePath = relativePath.replace(/(.less)|(\.css)/, '')
+  relativePath = relativePath.replace(/(\.less)|(\.css)/, '')
 
   if (relativePath.startsWith('./')) {
     return '.' + relativePath
@@ -24,52 +24,26 @@ export function normalizeStyleDependency(styleImport: string, reg: RegExp) {
   return '../' + relativePath
 }
 
-export function extractStyleDependencies(
-  file: string,
-  code: string,
-  reg: RegExp,
-  expect: 'css' | 'less',
-  self: boolean
-) {
-  const { dir, base } = parse(file)
-  const styleImports = code.match(reg) ?? []
-  const cssFile = resolve(dir, './style/index.js')
-  const lessFile = resolve(dir, './style/less.js')
+export function extractStyleDependencies(file: string, code: string, styleReg: RegExp) {
+  const styleImports = code.match(styleReg) ?? []
+  const cssFile = resolve(parse(file).dir, './style/index.js')
   const modules = process.env.BABEL_MODULE
 
   styleImports.forEach((styleImport: string) => {
-    const normalizedPath = normalizeStyleDependency(styleImport, reg)
+    const normalizedPath = normalizeStyleDependency(styleImport, styleReg)
     smartAppendFileSync(
       cssFile,
       modules === 'commonjs' ? `require('${normalizedPath}.css')\n` : `import '${normalizedPath}.css'\n`
     )
-    smartAppendFileSync(
-      lessFile,
-      modules === 'commonjs' ? `require('${normalizedPath}.${expect}')\n` : `import '${normalizedPath}.${expect}'\n`
-    )
   })
 
-  if (self) {
-    smartAppendFileSync(
-      cssFile,
-      modules === 'commonjs'
-        ? `require('${normalizeStyleDependency(base, reg)}.css')\n`
-        : `import '${normalizeStyleDependency(base, reg)}.css'\n`
-    )
-    smartAppendFileSync(
-      lessFile,
-      modules === 'commonjs'
-        ? `require('${normalizeStyleDependency(base, reg)}.${expect}')\n`
-        : `import '${normalizeStyleDependency(base, reg)}.${expect}'\n`
-    )
-  }
-
-  return code.replace(reg, '')
+  return code.replace(styleReg, '')
 }
 
 export async function compileLess(file: string) {
   const source = readFileSync(file, 'utf-8')
   const { css } = await render(source, { filename: file })
 
+  removeSync(file)
   writeFileSync(replaceExt(file, '.css'), clearEmptyLine(css), 'utf-8')
 }

@@ -10,10 +10,11 @@
 import { defineComponent, ref, watch } from 'vue'
 import { props } from './props'
 import { requestAnimationFrame, cancelAnimationFrame } from '../utils/elements'
+import { call, createNamespace } from '../utils/components'
+import { padStart } from '../utils/shared'
 import { toNumber } from '@varlet/shared'
 import type { Ref } from 'vue'
 import type { TimeData } from './props'
-import { call, createNamespace } from '../utils/components'
 
 const { n } = createNamespace('countdown')
 
@@ -48,12 +49,12 @@ export default defineComponent({
         if (!format.includes(scannedFormat)) {
           scannedTimes[index + 1] += scannedTimes[index] * padValues[index]
         } else {
-          format = format.replace(scannedFormat, String(scannedTimes[index]).padStart(2, '0'))
+          format = format.replace(scannedFormat, padStart(`${scannedTimes[index]}`, 2, '0'))
         }
       })
 
       if (format.includes('S')) {
-        const ms = String(scannedTimes[scannedTimes.length - 1]).padStart(3, '0')
+        const ms = padStart(`${scannedTimes[scannedTimes.length - 1]}`, 3, '0')
 
         if (format.includes('SSS')) {
           format = format.replace('SSS', ms)

@@ -41,6 +41,7 @@ import { hoursAmpm, hours24, minSec } from './props'
 import { notConvert, convertHour, getIsDisableMinute, getIsDisableSecond, getNumberTime } from './utils'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
+import { padStart } from '../utils/shared'
 import type { ComputedRef, Ref, PropType } from 'vue'
 import type { Time, AmPm, Format, AllowedTime } from './props'
 
@@ -216,7 +217,7 @@ export default defineComponent({
       if (activeItemIndex.value === undefined) return undefined
       const hours = props.ampm === 'am' ? hoursAmpm : hours24
 
-      return hours[activeItemIndex.value].padStart(2, '0')
+      return padStart(hours[activeItemIndex.value], 2, '0')
     }
 
     watch([activeItemIndex, () => props.isInner], ([index, inner], [oldIndex, oldInner]) => {

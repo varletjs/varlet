@@ -9,4 +9,7 @@ export default {
   offsetBottom: '下偏移',
   offsetTop: '上偏移',
   events: '注册事件',
+  disabled: '禁用菜单',
+  placement: '菜单位置',
+  trigger: '触发方式',
 }

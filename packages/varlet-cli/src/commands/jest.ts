@@ -1,6 +1,7 @@
 import logger from '../shared/logger'
 import { runCLI } from 'jest'
 import { CWD, JEST_CONFIG } from '../shared/constant'
+import { buildSiteEntry } from '../compiler/compileSiteEntry'
 
 interface JestCommandOptions {
   watch?: boolean
@@ -20,6 +21,8 @@ export async function jest(cmd: JestCommandOptions) {
     config: JEST_CONFIG,
     testRegex: cmd.component && `${cmd.component}/__tests__/.*.spec.[jt]s?$`,
   }
+
+  await buildSiteEntry()
 
   try {
     const response = await runCLI(config as any, [CWD])

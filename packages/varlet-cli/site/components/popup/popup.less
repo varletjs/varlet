@@ -1,0 +1,125 @@
+@site-popup-overlay-background-color: rgba(0, 0, 0, 0.6);
+@site-popup-content-background-color: #fff;
+
+:root {
+  --site-popup-overlay-background-color: @site-popup-overlay-background-color;
+  --site-popup-content-background-color: @site-popup-content-background-color;
+}
+
+.var-site {
+  &-fade-enter-from,
+  &-fade-leave-to {
+    opacity: 0;
+  }
+  &-fade-enter-active,
+  &-fade-leave-active {
+    transition: opacity 0.25s;
+  }
+
+  &-pop-center-enter-from,
+  &-pop-center-leave-to {
+    transform: scale(0.3);
+  }
+  &-pop-center-enter-active,
+  &-pop-center-leave-active {
+    transition: all 0.25s;
+  }
+
+  &-pop-bottom-enter-from,
+  &-pop-bottom-leave-to {
+    transform: translateY(100%);
+  }
+  &-pop-bottom-enter-active,
+  &-pop-bottom-leave-active {
+    transition: all 0.25s;
+  }
+
+  &-pop-top-enter-from,
+  &-pop-top-leave-to {
+    transform: translateY(-100%);
+  }
+  &-pop-top-enter-active,
+  &-pop-top-leave-active {
+    transition: all 0.25s;
+  }
+
+  &-pop-left-enter-from,
+  &-pop-left-leave-to {
+    transform: translateX(-100%);
+  }
+  &-pop-left-enter-active,
+  &-pop-left-leave-active {
+    transition: all 0.25s;
+  }
+
+  &-pop-right-enter-from,
+  &-pop-right-leave-to {
+    transform: translateX(100%);
+  }
+  &-pop-right-enter-active,
+  &-pop-right-leave-active {
+    transition: all 0.25s;
+  }
+}
+
+.var-site-popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  &__overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--site-popup-overlay-background-color);
+    transition: all 0.25s;
+  }
+
+  &__content {
+    overflow: auto;
+    background-color: var(--site-popup-content-background-color);
+    transition: all 0.25s;
+  }
+
+  &--center {
+    position: relative;
+  }
+
+  &--bottom {
+    min-width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  &--top {
+    min-width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &--left {
+    min-height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &--right {
+    min-height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}

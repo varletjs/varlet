@@ -1,13 +1,8 @@
-@rate-disabled-color: var(--color-text-disabled);
-@rate-error-color: var(--color-danger);
-@rate-action-padding: 4px;
-@rate-primary-color: var(--color-primary);
-
 :root {
-  --rate-disabled-color: @rate-disabled-color;
-  --rate-error-color: @rate-error-color;
-  --rate-action-padding: @rate-action-padding;
-  --rate-primary-color: @rate-primary-color;
+  --rate-disabled-color: var(--color-text-disabled);
+  --rate-error-color: var(--color-danger);
+  --rate-action-padding: 4px;
+  --rate-primary-color: var(--color-primary);
 }
 
 .var-rate {
@@ -20,12 +15,8 @@
 
   &__content {
     padding: var(--rate-action-padding);
-    box-sizing: unset;
     cursor: pointer;
-    display: flex;
-    width: 24px;
-    height: 24px;
-    margin-right: 2px;
+    border-radius: 50%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
     &-icon[var-rate-cover] {

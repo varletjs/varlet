@@ -1,6 +1,5 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
-import type { App, TeleportProps } from 'vue'
+import { VarComponent, BasicAttributes } from './varComponent'
+import { App, TeleportProps } from 'vue'
 
 export interface ImagePreviewProps extends BasicAttributes {
   show?: boolean

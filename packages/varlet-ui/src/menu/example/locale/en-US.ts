@@ -9,4 +9,7 @@ export default {
   offsetBottom: 'Offset Bottom',
   offsetTop: 'Offset Top',
   events: 'Events',
+  disabled: 'Disabled',
+  placement: 'Placement',
+  trigger: 'Trigger',
 }

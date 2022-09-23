@@ -269,3 +269,33 @@ test('test uploader hide file list', async () => {
   wrapper.unmount()
   mockRestore()
 })
+
+test('test uploader file utils', async () => {
+  const modelValue = [
+    {
+      id: 1,
+      name: 'loading',
+      state: 'loading',
+    },
+    {
+      id: 2,
+      name: 'success',
+      state: 'success',
+    },
+    {
+      id: 3,
+      name: 'error',
+      state: 'error',
+    },
+  ]
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue,
+    },
+  })
+
+  expect(wrapper.vm.getLoading()).toStrictEqual([modelValue[0]])
+  expect(wrapper.vm.getSuccess()).toStrictEqual([modelValue[1]])
+  expect(wrapper.vm.getError()).toStrictEqual([modelValue[2]])
+})

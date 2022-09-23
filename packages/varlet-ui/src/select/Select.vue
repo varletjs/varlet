@@ -17,8 +17,16 @@
         <slot name="prepend-icon" />
       </div>
 
-      <var-menu :class="n('menu')" var-select-cover :offset-y="offsetY" v-model:show="isFocus" @close="handleBlur">
-        <div :class="classes(n('wrap'), [!hint, n('--non-hint')])" ref="wrapEl" @click="handleFocus">
+      <div :class="classes(n('wrap'), [!hint, n('--non-hint')])" ref="wrapEl" @click="handleFocus">
+        <var-menu
+          var-select-cover
+          :class="classes(n('menu'))"
+          :offset-y="offsetY"
+          :disabled="readonly || disabled"
+          :default-style="false"
+          v-model:show="isFocus"
+          @close="handleBlur"
+        >
           <div
             :class="classes(n('select'), [errorMessage, n('--error')], [formDisabled || disabled, n('--disabled')])"
             :style="{
@@ -74,14 +82,14 @@
           >
             {{ placeholder }}
           </label>
-        </div>
 
-        <template #menu>
-          <div ref="menuEl" :class="n('scroller')">
-            <slot />
-          </div>
-        </template>
-      </var-menu>
+          <template #menu>
+            <div ref="menuEl" :class="classes(n('scroller'), 'var-elevation--3')">
+              <slot />
+            </div>
+          </template>
+        </var-menu>
+      </div>
 
       <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
         <slot name="append-icon">
@@ -123,9 +131,9 @@ import { props } from './props'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useOptions } from './provide'
 import { useForm } from '../form/provide'
-import { getTop, toPxNum } from '../utils/elements'
+import { toPxNum } from '../utils/elements'
 import type { Ref, ComputedRef } from 'vue'
-import type { ValidateTriggers } from './props'
+import type { SelectValidateTrigger } from './props'
 import type { SelectProvider } from './provide'
 import type { OptionProvider } from '../option/provide'
 
@@ -174,7 +182,7 @@ export default defineComponent({
       }
     }
 
-    const validateWithTrigger = (trigger: ValidateTriggers) => {
+    const validateWithTrigger = (trigger: SelectValidateTrigger) => {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)
@@ -214,11 +222,6 @@ export default defineComponent({
       return (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).width) || '0px'
     }
 
-    const getOffsetY = () => {
-      const paddingTop = (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).paddingTop) || '0px'
-      return toPxNum(paddingTop) * 1.5
-    }
-
     const handleFocus = () => {
       const { disabled, readonly, onFocus } = props
 
@@ -227,13 +230,12 @@ export default defineComponent({
       }
 
       wrapWidth.value = getWrapWidth()
-      offsetY.value = getOffsetY() + toPxNum(props.offsetY)
+      offsetY.value = toPxNum(props.offsetY)
 
       isFocus.value = true
 
       call(onFocus)
       validateWithTrigger('onFocus')
-      detectBoundary()
     }
 
     const handleBlur = () => {
@@ -322,9 +324,8 @@ export default defineComponent({
     // expose
     const focus = () => {
       wrapWidth.value = getWrapWidth()
-      offsetY.value = getOffsetY() + toPxNum(props.offsetY)
+      offsetY.value = toPxNum(props.offsetY)
       isFocus.value = true
-      detectBoundary()
     }
 
     // expose
@@ -339,24 +340,6 @@ export default defineComponent({
     const reset = () => {
       call(props['onUpdate:modelValue'], props.multiple ? [] : undefined)
       resetValidation()
-    }
-
-    const detectBoundary = () => {
-      const { body } = document
-      const bodyScrollHeight = body.scrollHeight
-
-      nextTick(() => {
-        const { offsetHeight: menuOffsetHeight } = menuEl.value?.parentElement as HTMLElement
-        const wrapOffsetTop = getTop(wrapEl.value as HTMLElement)
-
-        if (wrapOffsetTop + offsetY.value < 0) {
-          offsetY.value = getOffsetY()
-        }
-
-        if (menuOffsetHeight + wrapOffsetTop + offsetY.value > bodyScrollHeight) {
-          offsetY.value -= menuOffsetHeight - getOffsetY()
-        }
-      })
     }
 
     watch(

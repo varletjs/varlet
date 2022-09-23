@@ -4,7 +4,9 @@ import VarSwipe from '../Swipe'
 import VarSwipeItem from '../../swipe-item/SwipeItem'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, triggerDrag } from '../../utils/jest'
+import { delay, mockOffset, triggerDrag } from '../../utils/jest'
+
+mockOffset()
 
 const Wrapper = {
   components: {

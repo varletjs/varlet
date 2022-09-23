@@ -135,7 +135,7 @@ export const props = {
   headerColor: {
     type: String,
   },
-  shadow: {
+  elevation: {
     type: Boolean,
     default: false,
   },

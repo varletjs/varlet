@@ -167,7 +167,7 @@ function updated(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>
 
   if (diff) {
     el._ripple = {
-      tasker: el._ripple?.tasker,
+      tasker: newBinding.disabled ? null : el._ripple?.tasker,
       removeRipple: el._ripple?.removeRipple,
       ...newBinding,
     }

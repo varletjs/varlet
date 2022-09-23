@@ -1,27 +1,15 @@
-@cell-color: var(--color-text);
-@cell-font-size: var(--font-size-md);
-@cell-desc-font-size: var(--font-size-sm);
-@cell-desc-color: rgba(0, 0, 0, 0.6);
-@cell-padding: 10px 12px;
-@cell-min-height: 40px;
-@cell-border-color: #bcc2cb;
-@cell-border-left: 12px;
-@cell-border-right: 12px;
-@cell-icon-right: 8px;
-@cell-extra-left: 8px;
-
 :root {
-  --cell-color: @cell-color;
-  --cell-font-size: @cell-font-size;
-  --cell-desc-font-size: @cell-desc-font-size;
-  --cell-desc-color: @cell-desc-color;
-  --cell-padding: @cell-padding;
-  --cell-min-height: @cell-min-height;
-  --cell-border-color: @cell-border-color;
-  --cell-border-left: @cell-border-left;
-  --cell-border-right: @cell-border-right;
-  --cell-icon-right: @cell-icon-right;
-  --cell-extra-left: @cell-extra-left;
+  --cell-color: var(--color-text);
+  --cell-font-size: var(--font-size-md);
+  --cell-description-font-size: var(--font-size-sm);
+  --cell-description-color: rgba(0, 0, 0, 0.6);
+  --cell-padding: 10px 12px;
+  --cell-min-height: 40px;
+  --cell-border-color: #bcc2cb;
+  --cell-border-left: 12px;
+  --cell-border-right: 12px;
+  --cell-icon-right: 8px;
+  --cell-extra-left: 8px;
 }
 
 .var-cell {
@@ -66,9 +54,9 @@
     white-space: nowrap;
   }
 
-  &__desc {
-    font-size: var(--cell-desc-font-size);
-    color: var(--cell-desc-color);
+  &__description {
+    font-size: var(--cell-description-font-size);
+    color: var(--cell-description-color);
   }
 
   &__extra {

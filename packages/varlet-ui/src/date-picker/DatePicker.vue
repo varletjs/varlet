@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), [shadow, 'var-elevation--2'])">
+  <div :class="classes(n(), [elevation, 'var-elevation--2'])">
     <div :class="n('title')" :style="{ background: headerColor || color }">
       <div :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])" @click="clickEl('year')">
         <slot name="year" :year="chooseYear">
@@ -82,6 +82,7 @@ import { props, MONTH_LIST, WEEK_HEADER } from './props'
 import { isArray, toNumber } from '@varlet/shared'
 import { nextTickFrame } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
+import { padStart } from '../utils/shared'
 import { pack } from '../locale'
 import type { Ref, ComputedRef, UnwrapRef, RendererNode } from 'vue'
 import type { MonthDict, Choose, Preview, WeekDict, ComponentProps, TouchDirection } from './props'
@@ -178,7 +179,7 @@ export default defineComponent({
       const weekName = pack.value.datePickerWeekDict?.[week.index].name ?? ''
 
       const monthName = pack.value.datePickerMonthDict?.[chooseMonth.value.index].name ?? ''
-      const showDay = chooseDay.value.padStart(2, '0')
+      const showDay = padStart(chooseDay.value, 2, '0')
 
       if (pack.value.lang === 'zh-CN') return `${chooseMonth.value.index}-${showDay} ${weekName.slice(0, 3)}`
       return `${weekName.slice(0, 3)}, ${monthName.slice(0, 3)} ${chooseDay.value}`
@@ -200,7 +201,7 @@ export default defineComponent({
 
     const slotProps: ComputedRef<Record<string, string>> = computed(() => {
       const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value?.index}-${chooseDay.value}`).day()
-      const date = chooseDay.value ? chooseDay.value?.padStart(2, '0') : ''
+      const date = chooseDay.value ? padStart(chooseDay.value, 2, '0') : ''
 
       return {
         week: `${weekIndex}`,

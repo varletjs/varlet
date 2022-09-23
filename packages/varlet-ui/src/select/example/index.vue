@@ -20,10 +20,8 @@ const values = reactive({
   value9: undefined,
   value10: [],
   value11: undefined,
-  value12: undefined,
 })
-const { value, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12 } =
-  toRefs(values)
+const { value, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11 } = toRefs(values)
 
 watchLang((lang) => {
   use(lang)
@@ -38,7 +36,6 @@ watchLang((lang) => {
   values.value9 = undefined
   values.value10 = []
   values.value11 = undefined
-  values.value12 = undefined
 })
 
 watchDarkMode(dark)
@@ -130,14 +127,6 @@ watchDarkMode(dark)
     <var-option :label="pack.sleep" />
     <var-option :label="pack.play" />
     <var-option :label="pack.coding" />
-  </var-select>
-
-  <app-type>{{ pack.offsetY }}</app-type>
-  <var-select :placeholder="pack.placeholder" v-model="value12" offset-y="-36.2vw">
-    <var-option :label="pack.emberSprit" />
-    <var-option :label="pack.stormSpirit" />
-    <var-option :label="pack.voidSpirit" />
-    <var-option :label="pack.earthSprit" />
   </var-select>
 
   <div class="space"></div>

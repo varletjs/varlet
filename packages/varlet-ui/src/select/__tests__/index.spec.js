@@ -116,7 +116,7 @@ test('test select onFocus & onBlur', async () => {
     { attachTo: document.body }
   )
 
-  await wrapper.find('.var-select__wrap').trigger('click')
+  await wrapper.find('.var-select__menu').trigger('click')
   expect(onFocus).toHaveBeenCalledTimes(1)
   await wrapper.find('.container').trigger('click')
   expect(onBlur).toHaveBeenCalledTimes(1)
@@ -383,7 +383,7 @@ test('test select offset-y', async () => {
         offsetY: 40,
       }),
       template: `
-      <var-select ref="select" :offsetY="40">
+      <var-select ref="select" offset-y="40">
         <var-option label="火猫" />
         <var-option label="土猫" />
         <var-option label="紫猫" />
@@ -398,9 +398,10 @@ test('test select offset-y', async () => {
 
   select.focus()
   await delay(1000)
-  const menuEl = document.querySelector('.var-menu__menu')
 
-  expect(menuEl.style.top.includes('+ 40')).toBe(true)
+  const menu = wrapper.findComponent({ name: 'var-menu' })
+
+  expect(menu.vm.offsetY).toBe(40)
 
   wrapper.unmount()
 })

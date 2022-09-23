@@ -1,14 +1,15 @@
-import { VarComponent } from './varComponent'
-import type { BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, Type as BadgeType } from './varComponent'
+
+export type BadgePosition = 'right-top' | 'right-bottom' | 'left-top' | 'left-bottom'
 
 export interface BadgeProps extends BasicAttributes {
-  type?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
+  type?: BadgeType
   hidden?: boolean
   dot?: boolean
   value?: string | number
   maxValue?: string | number
   color?: string
-  position?: 'right-top' | 'right-bottom' | 'left-top' | 'left-bottom'
+  position?: BadgePosition
   icon?: string
 }
 
