@@ -5,10 +5,6 @@
 <var-button>start</var-button>
 ```
 
-```vue
-import BasicUse from '../example/BasicUse'
-```
-
 ### Theme Color Button
 ```html
 <var-button color="#009688">start</var-button>
