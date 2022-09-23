@@ -4,14 +4,14 @@
 
 ```js
 import { createApp } from 'vue'
-import { Button } from 'basic-ui'
+import { Button } from '@varlet/ui'
 
 createApp().use(Button)
 ```
 
 ### 基本使用
 ```html
-<b-button>组件库从我开始</b-button>
+<var-button>组件库从我开始</var-button>
 ```
 
 ```vue
@@ -20,7 +20,7 @@ import BasicUse from '../example/BasicUse'
 
 ### 主题色按钮
 ```html
-<b-button color="#009688">组件库从我开始</b-button>
+<var-button color="#009688">组件库从我开始</var-button>
 ```
 
 ```vue

@@ -2,7 +2,7 @@ import { defineComponent, PropType } from 'vue'
 import './button.less'
 
 export default defineComponent({
-  name: 'BButton',
+  name: 'VarButton',
   props: {
     color: {
       type: String,

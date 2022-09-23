@@ -1,7 +1,7 @@
 <script setup>
-import BButton from '../Button'
+import VarButton from '../Button'
 </script>
 
 <template>
-  <b-button>起步</b-button>
+  <var-button>起步</var-button>
 </template>

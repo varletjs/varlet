@@ -5,7 +5,7 @@ import './button.less'
 // import { pack } from '../locale'
 
 export default defineComponent({
-  name: 'BButton',
+  name: 'VarButton',
   props: {
     color: {
       type: String,

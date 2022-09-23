@@ -12,7 +12,7 @@ import { defineComponent, PropType } from 'vue'
 // import { pack } from '../locale'
 
 export default defineComponent({
-  name: 'BButton',
+  name: 'VarButton',
   props: {
     color: {
       type: String,

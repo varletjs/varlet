@@ -2,12 +2,12 @@
 
 ### Basic Use
 ```html
-<b-button>start</b-button>
+<var-button>start</var-button>
 ```
 
 ### Theme Color Button
 ```html
-<b-button color="#009688">start</b-button>
+<var-button color="#009688">start</var-button>
 ```
 
 ```vue

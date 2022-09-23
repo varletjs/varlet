@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 export default defineComponent({
-  name: 'BButton',
+  name: 'VarButton',
   props: {
     color: {
       type: String,

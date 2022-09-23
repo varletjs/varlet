@@ -2,12 +2,12 @@
 
 ### 基本使用
 ```html
-<b-button>组件库从我开始</b-button>
+<var-button>组件库从我开始</var-button>
 ```
 
 ### 主题色按钮
 ```html
-<b-button color="#009688">组件库从我开始</b-button>
+<var-button color="#009688">组件库从我开始</var-button>
 ```
 
 ```vue
