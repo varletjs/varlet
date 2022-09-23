@@ -18,6 +18,10 @@
   "sideEffects": [
     "es/**/style/*",
     "lib/**/style/*",
+    "es/style.js",
+    "es/less.js",
+    "lib/style.js",
+    "lib/less.js",
     "*.css",
     "*.less"
   ],
@@ -33,7 +37,7 @@
     "test": "varlet-cli jest",
     "test:watch": "varlet-cli jest -w",
     "test:watchAll": "varlet-cli jest -wa",
-    "create": "varlet-cli create -d"
+    "create": "varlet-cli create"
   },
   "peerDependencies": {
     "vue": "^3.2.0"
@@ -45,7 +49,7 @@
     "@varlet/stylelint-config": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
     "@varlet/shared": "workspace:*",
-    "@vue/test-utils": "2.0.0-rc.6",
+    "@vue/test-utils": "^2.0.2",
     "clipboard": "^2.0.6",
     "eslint": "^7.30.0",
     "lint-staged": "^10.5.0",
@@ -76,6 +80,9 @@
       "site/**",
       "public/**",
       "src/*/__tests__/**",
+      "coverage/**",
+      "highlight/**",
+      "types/index.d.ts",
       ".varlet/**"
     ],
     "extends": [

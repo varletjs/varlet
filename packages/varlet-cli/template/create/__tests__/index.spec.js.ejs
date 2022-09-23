@@ -2,7 +2,12 @@ import <%- bigCamelizeName %> from '..'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 
-test('test <%- kebabCaseName %> use', () => {
+test('test <%- kebabCaseName %> plugin', () => {
   const app = createApp({}).use(<%- bigCamelizeName %>)
   expect(app.component(<%- bigCamelizeName %>.name)).toBeTruthy()
+})
+
+test('test <%- kebabCaseName %> snapshot', () => {
+  const wrapper = mount(<%- bigCamelizeName %>)
+  expect(wrapper.html()).toMatchSnapshot()
 })
