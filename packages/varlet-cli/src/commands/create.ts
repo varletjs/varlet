@@ -1,10 +1,10 @@
-import { bigCamelize, kebabCase } from '@varlet/shared'
-import { prompt } from 'inquirer'
 import ejs from 'ejs'
-import { removeSync, outputFileSync, readFileSync, copySync, pathExistsSync } from 'fs-extra'
-import { get } from 'lodash'
-import { resolve, parse } from 'path'
 import logger from '../shared/logger'
+import { bigCamelize, camelize, kebabCase } from '@varlet/shared'
+import { prompt } from 'inquirer'
+import { removeSync, readFileSync, copySync, pathExistsSync, writeFileSync } from 'fs-extra'
+import { get } from 'lodash'
+import { resolve } from 'path'
 import { glob } from '../shared/fsUtils'
 import { getVarletConfig } from '../config/varlet.config'
 import { SRC_DIR } from '../shared/constant'
@@ -18,67 +18,64 @@ interface CreateCommandOptions {
   tsx?: boolean
 }
 
-interface CreateOptions {
+interface RenderData {
   kebabCaseName: string
   bigCamelizeName: string
+  camelizeName: string
   locale?: boolean
   style: CodingStyle
   namespace: string
   bigCamelizeNamespace: string
 }
 
-const templateFiles = ['__tests__/index.spec.js', 'example/index.vue', `less.less`, 'index.ts']
-const namespace = get(getVarletConfig(), 'namespace')
+async function renderTemplates(componentFolder: string, componentFolderName: string, renderData: RenderData) {
+  const templates = await glob(`${componentFolder}/**/*.ejs`)
 
-const createOptions: CreateOptions = {
-  kebabCaseName: 'component-name',
-  bigCamelizeName: 'componentName',
-  style: 'vue',
-  namespace,
-  bigCamelizeNamespace: bigCamelize(namespace),
-}
+  templates.forEach((template) => {
+    const templateCode = readFileSync(template, { encoding: 'utf-8' })
+    const code = ejs.render(templateCode, renderData)
+    const file = template
+      .replace('[componentName]', camelize(componentFolderName))
+      .replace('[ComponentName]', bigCamelize(componentFolderName))
+      .replace('.ejs', '')
 
-const ejsRender = (filePath: string, options: CreateOptions) => {
-  const { dir, name, ext } = parse(filePath)
-
-  const componentPath = resolve(SRC_DIR, options.kebabCaseName)
-  const templatePath = resolve(componentPath, dir, `${name}.ejs`)
-
-  const templateCode = readFileSync(templatePath, { encoding: 'utf-8' })
-  const code = ejs.render(templateCode, options)
-
-  if (ext.endsWith(name)) {
-    filePath = `${name === 'less' ? createOptions.kebabCaseName : createOptions.bigCamelizeName}${ext}`
-  }
-
-  outputFileSync(resolve(componentPath, filePath), code)
-}
-
-const removeFiles = async (path: string) => {
-  !createOptions.locale && removeSync(`${path}/example/locale`)
-  ;(await glob(`${path}/**/*.ejs`)).forEach((file) => removeSync(file))
+    writeFileSync(file, code)
+    removeSync(template)
+  })
 }
 
 export async function create(options: CreateCommandOptions) {
-  logger.title('\n📦📦 Create a Component ! \n')
+  logger.title('\n📦📦 Create a component ! \n')
+
+  const namespace = get(getVarletConfig(), 'namespace')
+  const renderData: RenderData = {
+    namespace,
+    bigCamelizeNamespace: bigCamelize(namespace),
+    kebabCaseName: 'component-name',
+    bigCamelizeName: 'ComponentName',
+    camelizeName: 'componentName',
+    style: 'vue',
+  }
 
   const { name } = options.name
     ? options
     : await prompt({
         name: 'name',
         message: 'Name of the component created: ',
-        default: createOptions.kebabCaseName,
+        default: renderData.kebabCaseName,
       })
 
-  createOptions.kebabCaseName = kebabCase(name)
-  createOptions.bigCamelizeName = bigCamelize(name)
+  renderData.kebabCaseName = kebabCase(name)
+  renderData.camelizeName = camelize(name)
+  renderData.bigCamelizeName = bigCamelize(name)
+  const componentFolder = resolve(SRC_DIR, renderData.kebabCaseName)
+  const componentFolderName = renderData.kebabCaseName
 
-  if (pathExistsSync(resolve(SRC_DIR, createOptions.kebabCaseName))) {
-    logger.error(`${createOptions.kebabCaseName} already exist and cannot be recreated...`)
+  if (pathExistsSync(componentFolder)) {
+    logger.warning(`${componentFolderName} already exist and cannot be recreated...`)
     return
   }
 
-  // Determine whether the parameter carries internationalization.
   const { locale } = options.locale
     ? options
     : await prompt({
@@ -88,11 +85,11 @@ export async function create(options: CreateCommandOptions) {
         default: false,
       })
 
-  createOptions.locale = locale
+  renderData.locale = locale
 
   // Determine whether the parameter carries a component style
   if (options.sfc || options.tsx) {
-    createOptions.style = options.sfc ? 'vue' : 'tsx'
+    renderData.style = options.sfc ? 'vue' : 'tsx'
   } else {
     const { style } = await prompt({
       name: 'style',
@@ -105,17 +102,23 @@ export async function create(options: CreateCommandOptions) {
       default: 'vue',
     })
 
-    createOptions.style = style
+    renderData.style = style
   }
 
-  // Copy files to Current working directory
-  const componentPath = resolve(SRC_DIR, createOptions.kebabCaseName)
-  copySync(resolve(__dirname, '../../template/create'), componentPath)
+  copySync(resolve(__dirname, '../../template/create'), componentFolder)
+  await renderTemplates(componentFolder, componentFolderName, renderData)
 
-  // Compile ejs and change the file name
-  ;[...templateFiles, `${createOptions.style}.${createOptions.style}`].forEach((file) => ejsRender(file, createOptions))
+  if (!renderData.locale) {
+    removeSync(resolve(componentFolder, '/example/locale'))
+  }
 
-  await removeFiles(componentPath)
+  if (renderData.style !== 'vue') {
+    removeSync(resolve(componentFolder, `${renderData.bigCamelizeName}.vue`))
+  }
 
-  logger.success(`Create ${createOptions.kebabCaseName} component success!`)
+  if (renderData.style !== 'tsx') {
+    removeSync(resolve(componentFolder, `${renderData.bigCamelizeName}.tsx`))
+  }
+
+  logger.success(`Create ${componentFolderName} component success!`)
 }
