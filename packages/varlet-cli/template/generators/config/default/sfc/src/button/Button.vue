@@ -1,5 +1,5 @@
 <template>
-  <button class="basic-button" :style="{ background: color }">
+  <button class="var-button" :style="{ background: color }">
     <slot />
   </button>
 </template>

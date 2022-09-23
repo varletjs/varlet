@@ -19,7 +19,7 @@ export default defineComponent({
 
       return (
         <>
-          <button class="basic-button" style={{ background: color }} onClick={handleClick}>
+          <button class="var-button" style={{ background: color }} onClick={handleClick}>
             {slots.default?.()}
           </button>
         </>

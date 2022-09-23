@@ -1,9 +1,6 @@
 module.exports = {
   logo: './logo.svg',
   useMobile: true,
-  highlight: {
-    style: './highlight.css',
-  },
   pc: {
     header: {
       darkMode: null,

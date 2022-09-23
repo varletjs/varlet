@@ -1,7 +1,7 @@
 {
-  "name": "basic-ui",
+  "name": "@varlet/ui",
   "version": "0.0.0",
-  "description": "A basic components library",
+  "description": "A components library example",
   "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "types/index.d.ts",
