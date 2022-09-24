@@ -21,12 +21,10 @@ export default defineComponent({
       const { color } = props
 
       return (
-        <>
-          <button class="var-button" style={{ background: color }} onClick={handleClick}>
-            {pack.value.button} -{'> '}
-            {slots.default?.()}
-          </button>
-        </>
+        <button class="var-button" style={{ background: color }} onClick={handleClick}>
+          {pack.value.button} -{'> '}
+          {slots.default?.()}
+        </button>
       )
     }
   },
