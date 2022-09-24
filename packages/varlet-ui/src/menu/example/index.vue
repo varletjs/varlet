@@ -1,5 +1,6 @@
 <script setup>
 import VarMenu from '..'
+import VarSpace from '../../space'
 import VarButton from '../../button'
 import VarSelect from '../../select'
 import VarOption from '../../option'
@@ -19,12 +20,11 @@ const values = reactive({
   offsetY: false,
   offsetY1: false,
   event: false,
-  disabled: false,
-  placement: false,
+  placement: true,
   trigger: false,
 })
 const bgColor = ref('#fff')
-const { top, bottom, offsetX, offsetX1, offsetY, offsetY1, event, disabled, placement, trigger } = toRefs(values)
+const { placement } = toRefs(values)
 const placementValue = ref('cover-top-start')
 const placementOption = ref([
   'top',
@@ -48,11 +48,7 @@ const placementOption = ref([
   'cover-left',
   'cover-right',
 ])
-const triggerValue = ref('click')
-const scroll = ref(null)
-onMounted(() => {
-  scroll.value.scrollTo(0, 175)
-})
+const trigger = ref('click')
 
 watchLang(use)
 watchDarkMode(dark, (themes) => {
@@ -61,57 +57,65 @@ watchDarkMode(dark, (themes) => {
 </script>
 
 <template>
+  <app-type>{{ pack.basicUsage }}</app-type>
+  <var-menu>
+    <var-button type="primary">{{ pack.basicUsage }}</var-button>
+    <template #menu>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+    </template>
+  </var-menu>
+
   <app-type>{{ pack.placement }}</app-type>
-
-  <div class="scroll" ref="scroll">
-    <div class="scroll-child">
-      <div class="flex-box">
-        <var-menu v-model:show="placement" :placement="placementValue">
-          <var-button type="primary" @click="placement = true">{{ pack.placement }}</var-button>
-
-          <template #menu>
-            <div class="cell-list" :style="{ background: bgColor }">
-              <var-cell>{{ pack.menuOption }}</var-cell>
-              <var-cell>{{ pack.menuOption }}</var-cell>
-              <var-cell>{{ pack.menuOption }}</var-cell>
-            </div>
-          </template>
-        </var-menu>
-      </div>
-    </div>
-  </div>
-
-  <var-select :hint="false" :line="false" placeholder="请选择菜单显示方向" v-model="placementValue">
+  <var-select :hint="false" v-model="placementValue">
     <var-option v-for="(item, index) in placementOption" :key="index" :label="item" />
   </var-select>
+  <div class="flex-box">
+    <var-menu :placement="placementValue">
+      <var-button type="primary"><var-icon name="star" /></var-button>
+      <template #menu>
+        <var-cell>{{ pack.menuOption }}</var-cell>
+        <var-cell>{{ pack.menuOption }}</var-cell>
+        <var-cell>{{ pack.menuOption }}</var-cell>
+      </template>
+    </var-menu>
+  </div>
+
+  <app-type>{{ pack.offset }}</app-type>
+  <var-menu offset-x="36px" offset-y="18px">
+    <var-button type="primary">{{ pack.offset }}</var-button>
+    <template #menu>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+    </template>
+  </var-menu>
 
   <app-type>{{ pack.trigger }}</app-type>
-  <var-select :hint="false" :line="false" placeholder="请选择菜单显示方向" v-model="triggerValue">
+  <var-select :hint="false" v-model="trigger">
     <var-option label="click" />
     <var-option label="hover" />
   </var-select>
-  <var-menu v-model:show="trigger" :trigger="triggerValue">
-    <var-button type="primary" @click="trigger = true">{{ pack.trigger }}</var-button>
+  <div style="margin-bottom: 20px"></div>
+  <var-menu :trigger="trigger">
+    <var-button type="primary">{{ pack.trigger }}</var-button>
 
     <template #menu>
-      <div class="cell-list" :style="{ background: bgColor }">
-        <var-cell>{{ pack.menuOption }}</var-cell>
-        <var-cell>{{ pack.menuOption }}</var-cell>
-        <var-cell>{{ pack.menuOption }}</var-cell>
-      </div>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
     </template>
   </var-menu>
 
   <app-type>{{ pack.events }}</app-type>
   <var-menu
-    v-model:show="event"
     @open="() => Snackbar.info('open')"
     @opened="() => Snackbar.success('opened')"
     @close="() => Snackbar.warning('close')"
     @closed="() => Snackbar.error('closed')"
-    @update="(show) => console.log('show改变了')"
   >
-    <var-button type="primary" @click="event = true">{{ pack.events }}</var-button>
+    <var-button type="primary">{{ pack.events }}</var-button>
 
     <template #menu>
       <div class="cell-list" :style="{ background: bgColor }">
@@ -123,52 +127,29 @@ watchDarkMode(dark, (themes) => {
   </var-menu>
 
   <app-type>{{ pack.disabled }}</app-type>
-  <var-menu v-model:show="disabled" :disabled="disabled">
-    <var-button @click="disabled = true">{{ pack.disabled }}</var-button>
+  <var-space justify="space-between">
+    <var-menu disabled>
+      <var-button type="primary">{{ pack.disabled }}</var-button>
 
-    <template #menu>
-      <div class="cell-list" :style="{ background: bgColor }">
-        <var-cell>{{ pack.menuOption }}</var-cell>
-        <var-cell>{{ pack.menuOption }}</var-cell>
-        <var-cell>{{ pack.menuOption }}</var-cell>
-      </div>
-    </template>
-  </var-menu>
+      <template #menu>
+        <div class="cell-list" :style="{ background: bgColor }">
+          <var-cell>{{ pack.menuOption }}</var-cell>
+          <var-cell>{{ pack.menuOption }}</var-cell>
+          <var-cell>{{ pack.menuOption }}</var-cell>
+        </div>
+      </template>
+    </var-menu>
+  </var-space>
 
   <div style="margin-bottom: 100px"></div>
 </template>
 
 <style scoped lang="less">
-.scroll {
+.flex-box {
   height: 250px;
-  overflow-y: scroll;
-  &-child {
-    height: 600px;
-    .flex-box {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-}
-.cell-list {
-  // transition: background-color 0.25s;
-}
-
-.block {
-  margin-top: 130px;
-}
-
-.block-1 {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-}
-
-.block-2 {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 130px;
+  justify-content: center;
+  align-items: center;
 }
 </style>
