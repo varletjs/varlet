@@ -1,4 +1,5 @@
 <script setup>
+import VarButton from '..'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
 import { watchLang } from '@varlet/cli/site/utils'
 import { pack, use } from './locale'
