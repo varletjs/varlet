@@ -1,6 +1,6 @@
 <script setup>
+import VarButton from '..'
 import { watchLang } from '@varlet/cli/site/utils'
-import VarButton from '../Button'
 import { pack, use } from './locale'
 
 watchLang(use)

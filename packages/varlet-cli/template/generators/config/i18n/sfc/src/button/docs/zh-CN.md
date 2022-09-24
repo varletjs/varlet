@@ -5,6 +5,10 @@
 <var-button>组件库从我开始</var-button>
 ```
 
+```vue
+import BasicUse from '../example/BasicUse'
+```
+
 ### 主题色按钮
 ```html
 <var-button color="#009688">组件库从我开始</var-button>
