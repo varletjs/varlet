@@ -1,12 +1,13 @@
 <script setup>
 import VarMenu from '..'
+import VarSpace from '../../space'
 import VarButton from '../../button'
 import VarSelect from '../../select'
 import VarOption from '../../option'
 import VarCell from '../../cell'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { reactive, toRefs, ref } from 'vue'
+import { reactive, toRefs, ref, onMounted } from 'vue'
 import { pack, use } from './locale/index'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import dark from '../../themes/dark'
@@ -19,12 +20,11 @@ const values = reactive({
   offsetY: false,
   offsetY1: false,
   event: false,
-  disabled: false,
-  placement: false,
+  placement: true,
   trigger: false,
 })
 const bgColor = ref('#fff')
-const { top, bottom, offsetX, offsetX1, offsetY, offsetY1, event, disabled, placement, trigger } = toRefs(values)
+const { placement } = toRefs(values)
 const placementValue = ref('cover-top-start')
 const placementOption = ref([
   'top',
@@ -48,7 +48,7 @@ const placementOption = ref([
   'cover-left',
   'cover-right',
 ])
-const triggerValue = ref('click')
+const trigger = ref('click')
 
 watchLang(use)
 watchDarkMode(dark, (themes) => {
@@ -57,132 +57,65 @@ watchDarkMode(dark, (themes) => {
 </script>
 
 <template>
-  <app-type>{{ pack.alignmentMethods }}</app-type>
-  <div class="block-1">
-    <var-menu v-model:show="top">
-      <var-button type="primary" @click="top = true">{{ pack.topAlignment }}</var-button>
+  <app-type>{{ pack.basicUsage }}</app-type>
+  <var-menu>
+    <var-button type="primary">{{ pack.basicUsage }}</var-button>
+    <template #menu>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+    </template>
+  </var-menu>
 
+  <app-type>{{ pack.placement }}</app-type>
+  <var-select :hint="false" v-model="placementValue">
+    <var-option v-for="(item, index) in placementOption" :key="index" :label="item" />
+  </var-select>
+  <div class="flex-box">
+    <var-menu :placement="placementValue">
+      <var-button type="primary"><var-icon name="star" /></var-button>
       <template #menu>
-        <div class="cell-list" :style="{ background: bgColor }">
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
-
-  <div class="block">
-    <var-menu alignment="bottom" v-model:show="bottom">
-      <var-button type="primary" @click="bottom = true">{{ pack.bottomAlignment }}</var-button>
-
-      <template #menu>
-        <div class="cell-list" :style="{ background: bgColor }">
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-        </div>
+        <var-cell>{{ pack.menuOption }}</var-cell>
+        <var-cell>{{ pack.menuOption }}</var-cell>
+        <var-cell>{{ pack.menuOption }}</var-cell>
       </template>
     </var-menu>
   </div>
 
   <app-type>{{ pack.offset }}</app-type>
-
-  <div class="block-1">
-    <var-menu :offset-x="72" v-model:show="offsetX">
-      <var-button type="primary" @click="offsetX = true">{{ pack.offsetRight }}</var-button>
-
-      <template #menu>
-        <div class="cell-list" :style="{ background: bgColor }">
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-        </div>
-      </template>
-    </var-menu>
-
-    <var-menu :offset-x="-72" v-model:show="offsetX1">
-      <var-button type="primary" @click="offsetX1 = true">{{ pack.offsetLeft }}</var-button>
-
-      <template #menu>
-        <div class="cell-list" :style="{ background: bgColor }">
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
-
-  <div class="block-2">
-    <var-menu :offset-y="36" v-model:show="offsetY">
-      <var-button type="primary" @click="offsetY = true">{{ pack.offsetBottom }}</var-button>
-
-      <template #menu>
-        <div class="cell-list" :style="{ background: bgColor }">
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-        </div>
-      </template>
-    </var-menu>
-
-    <var-menu :offset-y="-36" v-model:show="offsetY1">
-      <var-button type="primary" @click="offsetY1 = true">{{ pack.offsetTop }}</var-button>
-
-      <template #menu>
-        <div class="cell-list" :style="{ background: bgColor }">
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-        </div>
-      </template>
-    </var-menu>
-  </div>
-
-  <app-type>{{ pack.events }}</app-type>
-  <var-menu
-    v-model:show="event"
-    @open="() => Snackbar.info('open')"
-    @opened="() => Snackbar.success('opened')"
-    @close="() => Snackbar.warning('close')"
-    @closed="() => Snackbar.error('closed')"
-    @update="(show) => console.log('show改变了')"
-  >
-    <var-button type="primary" @click="event = true">{{ pack.events }}</var-button>
-
+  <var-menu offset-x="36px" offset-y="18px">
+    <var-button type="primary">{{ pack.offset }}</var-button>
     <template #menu>
-      <div class="cell-list" :style="{ background: bgColor }">
-        <var-cell>{{ pack.menuOption }}</var-cell>
-        <var-cell>{{ pack.menuOption }}</var-cell>
-        <var-cell>{{ pack.menuOption }}</var-cell>
-      </div>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
     </template>
   </var-menu>
 
   <app-type>{{ pack.trigger }}</app-type>
-  <var-select :hint="false" :line="false" placeholder="请选择菜单显示方向" v-model="triggerValue">
+  <var-select :hint="false" v-model="trigger">
     <var-option label="click" />
     <var-option label="hover" />
   </var-select>
-  <var-menu v-model:show="trigger" :trigger="triggerValue">
-    <var-button type="primary" @click="trigger = true">{{ pack.trigger }}</var-button>
+  <div style="margin-bottom: 20px"></div>
+  <var-menu :trigger="trigger">
+    <var-button type="primary">{{ pack.trigger }}</var-button>
 
     <template #menu>
-      <div class="cell-list" :style="{ background: bgColor }">
-        <var-cell>{{ pack.menuOption }}</var-cell>
-        <var-cell>{{ pack.menuOption }}</var-cell>
-        <var-cell>{{ pack.menuOption }}</var-cell>
-      </div>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
     </template>
   </var-menu>
 
-  <app-type>{{ pack.placement }}</app-type>
-  <var-select :hint="false" :line="false" placeholder="请选择菜单显示方向" v-model="placementValue">
-    <var-option v-for="(item, index) in placementOption" :key="index" :label="item" />
-  </var-select>
-  <var-menu v-model:show="placement" :placement="placementValue">
-    <var-button type="primary" @click="placement = true">{{ pack.placement }}</var-button>
+  <app-type>{{ pack.events }}</app-type>
+  <var-menu
+    @open="() => Snackbar.info('open')"
+    @opened="() => Snackbar.success('opened')"
+    @close="() => Snackbar.warning('close')"
+    @closed="() => Snackbar.error('closed')"
+  >
+    <var-button type="primary">{{ pack.events }}</var-button>
 
     <template #menu>
       <div class="cell-list" :style="{ background: bgColor }">
@@ -194,38 +127,29 @@ watchDarkMode(dark, (themes) => {
   </var-menu>
 
   <app-type>{{ pack.disabled }}</app-type>
-  <var-menu v-model:show="disabled" :disabled="disabled">
-    <var-button @click="disabled = true">{{ pack.disabled }}</var-button>
+  <var-space justify="space-between">
+    <var-menu disabled>
+      <var-button type="primary">{{ pack.disabled }}</var-button>
 
-    <template #menu>
-      <div class="cell-list" :style="{ background: bgColor }">
-        <var-cell>{{ pack.menuOption }}</var-cell>
-        <var-cell>{{ pack.menuOption }}</var-cell>
-        <var-cell>{{ pack.menuOption }}</var-cell>
-      </div>
-    </template>
-  </var-menu>
+      <template #menu>
+        <div class="cell-list" :style="{ background: bgColor }">
+          <var-cell>{{ pack.menuOption }}</var-cell>
+          <var-cell>{{ pack.menuOption }}</var-cell>
+          <var-cell>{{ pack.menuOption }}</var-cell>
+        </div>
+      </template>
+    </var-menu>
+  </var-space>
 
   <div style="margin-bottom: 100px"></div>
 </template>
 
 <style scoped lang="less">
-.cell-list {
-  transition: background-color 0.25s;
-}
-
-.block {
-  margin-top: 130px;
-}
-
-.block-1 {
+.flex-box {
+  height: 250px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-}
-
-.block-2 {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 130px;
+  justify-content: center;
+  align-items: center;
 }
 </style>
