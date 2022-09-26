@@ -118,11 +118,9 @@ watchDarkMode(dark, (themes) => {
     <var-button type="primary">{{ pack.events }}</var-button>
 
     <template #menu>
-      <div class="cell-list" :style="{ background: bgColor }">
-        <var-cell>{{ pack.menuOption }}</var-cell>
-        <var-cell>{{ pack.menuOption }}</var-cell>
-        <var-cell>{{ pack.menuOption }}</var-cell>
-      </div>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
     </template>
   </var-menu>
 
@@ -132,11 +130,9 @@ watchDarkMode(dark, (themes) => {
       <var-button type="primary">{{ pack.disabled }}</var-button>
 
       <template #menu>
-        <div class="cell-list" :style="{ background: bgColor }">
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-          <var-cell>{{ pack.menuOption }}</var-cell>
-        </div>
+        <var-cell>{{ pack.menuOption }}</var-cell>
+        <var-cell>{{ pack.menuOption }}</var-cell>
+        <var-cell>{{ pack.menuOption }}</var-cell>
       </template>
     </var-menu>
   </var-space>

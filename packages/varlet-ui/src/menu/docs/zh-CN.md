@@ -98,7 +98,7 @@ const closed = () => Snackbar.info('closed')
 
 ### 禁用
 
-在 `disabled` 状态下，菜单将不再被打开, 如果动态更改 `disabled`, 即使菜单已经打开也会强制关闭。 
+在 `disabled` 状态下，菜单将不再被打开。 
 
 ```html
 <var-menu disabled>
@@ -113,7 +113,8 @@ const closed = () => Snackbar.info('closed')
 
 ### 受控方式
 
-也可以选择 `v-model:show` 的可受控方式来控制 Menu 的显示, 但是 Menu 在点击组件范围以外的区域自动关闭，所以不可以使用同一个状态绑定多个 Menu 的 `v-model:show`，否则在触发显示时也同时触发了其他 Menu 对 `v-model:show` 的修改，导致 Menu 无法显示。
+可以选择 `v-model:show` 的可受控方式来控制 Menu 的显示。 
+但是 Menu 在点击组件范围以外的区域自动关闭，所以不可以使用同一个状态绑定多个 Menu 的 `v-model:show`，否则在触发显示时也同时触发了其他 Menu 对 `v-model:show` 的修改，导致 Menu 无法显示。
 
 ```html
 <script setup>
@@ -146,8 +147,8 @@ const show = ref(false)
 | `offset-y` | y 轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |
 | `teleport` | 菜单挂载的位置 | _TeleportProps['to']_ | `body` |
 | `disabled` | 是否禁用菜单 | _boolean_ | `false` |
-| `trigger` | 菜单触发方式，可选值为`click` `hover`，`click`为点击时触发，`hover`为悬停时触发 | _string_ | `click` |
-| `defaultStyle` | 是否启用默认样式 | _boolean_ | `true` |
+| `trigger` | 菜单触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_ | `click` |
+| `default-style` | 是否启用默认样式 | _boolean_ | `true` |
 
 ### Placement
 
@@ -165,14 +166,14 @@ const show = ref(false)
 | `left` | 左侧中心位置 |
 | `left-start` | 左侧上方位置 |
 | `left-end` | 左侧下方位置 |
-| `cover-top` | 顶部下方中心位置 |
-| `cover-top-start` | 顶部下方左侧位置 |
-| `cover-top-end` | 顶部下方右侧位置 |
-| `cover-bottom` | 底部上方中心位置 |
-| `cover-bottom-start` | 底部上方左侧位置 |
-| `cover-bottom-end` | 底部上方右侧位置 |
-| `cover-left` | 左侧右方位置 |
-| `cover-right` | 右侧左方位置 |
+| `cover-top` | 顶部中心位置, 覆盖触发器 |
+| `cover-top-start` | 顶部左侧位置, 覆盖触发器 |
+| `cover-top-end` | 顶部右侧位置, 覆盖触发器 |
+| `cover-bottom` | 底部中心位置, 覆盖触发器 |
+| `cover-bottom-start` | 底部左侧位置, 覆盖触发器 |
+| `cover-bottom-end` | 底部右侧位置, 覆盖触发器 |
+| `cover-left` | 左侧位置, 覆盖触发器 |
+| `cover-right` | 右侧位置, 覆盖触发器 |
 
 ### 方法
 | 方法名 | 说明 | 参数 | 返回值 |
@@ -189,7 +190,6 @@ const show = ref(false)
 | `opened` | 打开菜单动画结束时触发 | `-` |
 | `close` | 关闭菜单时触发 | `-` |
 | `closed` | 关闭菜单动画结束时触发 | `-` |
-| `closed` | 关闭菜单动画结束时触发 | `-` |
 
 ### 插槽
 
@@ -197,3 +197,11 @@ const show = ref(false)
 | --- | --- | --- |
 | `default` | 菜单关联的触发元素 | `-` |
 | `menu` | 菜单内容 | `-` |
+
+### 样式变量
+
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `--menu-background-color` | `#fff` |
