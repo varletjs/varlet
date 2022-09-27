@@ -150,14 +150,15 @@ const floating = ref(false)
 
 ### Slots
 
-| Slot            | Description           | Arguments |
-|-----------------|-----------------------| --------- |
-| `image`         | Custom image          | `-`       |
-| `title`         | Custom title          | `-`       |
-| `subtitle`      | Custom subtitle       | `-`       |
-| `description`   | Custom description    | `-`       |
-| `extra`         | Custom bottom content | `-`       |
-| `close-button`  | Custom close button   | `-`  |
+| Slot            | Description                     | Arguments |
+|-----------------|---------------------------------| --------- |
+| `image`         | Custom image                    | `-`       |
+| `title`         | Custom title                    | `-`       |
+| `subtitle`      | Custom subtitle                 | `-`       |
+| `description`   | Custom description              | `-`       |
+| `floating-content`     | Content displayed when floating | `-`  |
+| `extra`         | Custom bottom content           | `-`       |
+| `close-button`  | Custom close button             | `-`  |
 
 ### Events
 

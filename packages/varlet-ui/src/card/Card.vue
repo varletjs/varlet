@@ -51,15 +51,15 @@
           <slot name="extra" />
         </div>
         <div
-          :class="n('content')"
+          :class="n('floating-content')"
           :style="{
             height: contentHeight,
             opacity,
             transition: `opacity ${floatingDuration * 2}ms`,
           }"
-          v-if="$slots.content && !isRow"
+          v-if="$slots['floating-content'] && !isRow"
         >
-          <slot name="content" />
+          <slot name="floating-content" />
         </div>
       </div>
 
