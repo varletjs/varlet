@@ -27,6 +27,7 @@
   ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "postinstall": "simple-git-hooks",
     "dev": "varlet-cli dev",
     "build": "varlet-cli build",
     "preview": "varlet-cli preview",
@@ -56,7 +57,7 @@
     "live-server": "^1.2.1",
     "lodash-es": "^4.17.21",
     "prettier": "^2.3.2",
-    "simple-git-hooks": "^2.7.0",
+    "simple-git-hooks": "^2.8.0",
     "stylelint": "^13.13.1",
     "typescript": "^4.4.4",
     "vue": "3.2.25",
