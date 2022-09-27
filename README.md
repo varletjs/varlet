@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://varlet.gitee.io/varlet-ui/#/en-US/home">
+  <a href="https://varlet.gitee.io/varlet-ui/#/en-US/index">
     <img src="https://varlet.gitee.io/varlet-ui/logo.svg" width="150">
   </a>
   <h1>VARLET</h1>
