@@ -7,26 +7,13 @@ import VarOption from '../../option'
 import VarCell from '../../cell'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { reactive, toRefs, ref, onMounted } from 'vue'
+import dark from '../../themes/dark'
+import { ref } from 'vue'
 import { pack, use } from './locale/index'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-import dark from '../../themes/dark'
 
-const values = reactive({
-  top: false,
-  bottom: false,
-  offsetX: false,
-  offsetX1: false,
-  offsetY: false,
-  offsetY1: false,
-  event: false,
-  placement: true,
-  trigger: false,
-})
-const bgColor = ref('#fff')
-const { placement } = toRefs(values)
 const placementValue = ref('cover-top-start')
-const placementOption = ref([
+const placementOptions = ref([
   'top',
   'top-start',
   'top-end',
@@ -51,9 +38,7 @@ const placementOption = ref([
 const trigger = ref('click')
 
 watchLang(use)
-watchDarkMode(dark, (themes) => {
-  bgColor.value = themes === 'darkThemes' ? '#272727' : '#fff'
-})
+watchDarkMode(dark)
 </script>
 
 <template>
@@ -69,7 +54,7 @@ watchDarkMode(dark, (themes) => {
 
   <app-type>{{ pack.placement }}</app-type>
   <var-select :hint="false" v-model="placementValue">
-    <var-option v-for="(item, index) in placementOption" :key="index" :label="item" />
+    <var-option v-for="(item, index) in placementOptions" :key="index" :label="item" />
   </var-select>
   <div class="flex-box">
     <var-menu :placement="placementValue">
