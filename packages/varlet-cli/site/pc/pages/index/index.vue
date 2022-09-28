@@ -4,7 +4,7 @@ import config from '@config'
 import { get } from 'lodash-es'
 import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getBrowserTheme, setTheme, Theme } from "../../../utils";
+import { getBrowserTheme, setTheme, Theme } from '../../../utils'
 import { getPCLocationInfo, watchTheme } from '@varlet/cli/site/utils'
 import type { Ref } from 'vue'
 
@@ -75,17 +75,17 @@ watch(() => route.path, setLocale, { immediate: true })
     <div class="varlet-doc-index__layout">
       <div class="varlet-doc-index__logo-container">
         <div class="varlet-doc-index__logo-background-mask"></div>
-        <animation-box class="varlet-doc-index__logo" />
+        <animation-box class="varlet-doc-index__logo"/>
       </div>
 
       <div class="varlet-doc-index__title">{{ title }}</div>
       <div class="varlet-doc-index__description">{{ indexPage.description[language] }}</div>
       <div class="varlet-doc-index__link-button-group">
         <var-button class="varlet-doc-index__link-button" text outline @click="goGithub">
-          <var-icon name="github" size="24px" />
+          <var-icon name="github" size="24px"/>
         </var-button>
         <var-button class="varlet-doc-index__link-button" text outline v-if="darkMode" @click="toggleTheme">
-          <var-icon size="24px" :name="currentTheme === 'lightTheme' ? 'white-balance-sunny' : 'weather-night'" />
+          <var-icon size="24px" :name="currentTheme === 'lightTheme' ? 'white-balance-sunny' : 'weather-night'"/>
         </var-button>
         <var-button
           class="varlet-doc-index__link-button"
@@ -94,11 +94,11 @@ watch(() => route.path, setLocale, { immediate: true })
           v-if="languages"
           @click="toggleLanguages"
         >
-          <var-icon name="translate" size="24px" />
+          <var-icon name="translate" size="24px"/>
         </var-button>
         <var-button class="varlet-doc-index__link-button" type="primary" style="line-height: 1.2" @click="getStar">
           <span class="varlet-doc-index__link-button-text">{{ indexPage.started[language] }}</span>
-          <var-icon style="transform: rotate(-90deg)" name="arrow-down" size="24px" />
+          <var-icon style="transform: rotate(-90deg)" name="arrow-down" size="24px"/>
         </var-button>
       </div>
 

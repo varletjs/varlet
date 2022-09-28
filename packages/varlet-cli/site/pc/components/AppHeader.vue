@@ -2,7 +2,7 @@
 import config from '@config'
 import { ref, computed, defineComponent } from 'vue'
 import { get } from 'lodash-es'
-import { getBrowserTheme, getPCLocationInfo, removeEmpty, setTheme, Theme, watchTheme } from "../../utils";
+import { getBrowserTheme, getPCLocationInfo, removeEmpty, setTheme, Theme, watchTheme } from '../../utils'
 import { useRouter } from 'vue-router'
 import AnimationBox from './AnimationBox.vue'
 import type { Ref, ComputedRef } from 'vue'
@@ -68,7 +68,7 @@ export default defineComponent({
     const open = (value: string) => {
       setTimeout(() => {
         window.location.href = value
-      }, 350);
+      }, 350)
     }
 
     watchTheme((theme, from) => {
@@ -111,8 +111,8 @@ export default defineComponent({
 <template>
   <div class="varlet-site-header">
     <div class="varlet-site-header__lead">
-      <animation-box class="varlet-site-header__logo"  @click="backRoot" />
-      <div class="varlet-site-header__title" v-if="title"  @click="backRoot">{{ title }}</div>
+      <animation-box class="varlet-site-header__logo" @click="backRoot"/>
+      <div class="varlet-site-header__title" v-if="title" @click="backRoot">{{ title }}</div>
     </div>
 
     <div class="varlet-site-header__tail">
@@ -123,7 +123,7 @@ export default defineComponent({
         v-if="versionItems"
       >
         <span style="font-size: 14px;">{{ currentVersion }}</span>
-        <var-icon name="chevron-down" />
+        <var-icon name="chevron-down"/>
         <transition name="fade">
           <div
             class="varlet-site-header__animation-list varlet-site-header__animation-versions var-site-elevation--5"
@@ -143,10 +143,10 @@ export default defineComponent({
       </div>
 
       <a class="varlet-site-header__link" target="_blank" :href="playground" v-ripple v-if="playground">
-        <var-icon name="code-json" :size="24" />
+        <var-icon name="code-json" :size="24"/>
       </a>
       <a class="varlet-site-header__link" target="_blank" :href="github" v-ripple v-if="github">
-        <var-icon name="github" :size="28" />
+        <var-icon name="github" :size="28"/>
       </a>
       <div class="varlet-site-header__theme" v-ripple v-if="darkMode" @click="toggleTheme">
         <var-icon
@@ -164,8 +164,8 @@ export default defineComponent({
         @mouseleave="isOpenLanguageMenu = false"
         v-if="languages"
       >
-        <var-icon name="translate" size="26px" />
-        <var-icon name="chevron-down" />
+        <var-icon name="translate" size="26px"/>
+        <var-icon name="chevron-down"/>
         <transition name="fade">
           <div
             class="varlet-site-header__animation-list var-site-elevation--5"
@@ -178,7 +178,7 @@ export default defineComponent({
               :key="key"
               :class="{ 'varlet-site-header__animation-list--active': language === key }"
               @click="handleLanguageChange(key)"
-              >{{ value }}
+            >{{ value }}
             </var-cell>
           </div>
         </transition>
@@ -361,7 +361,7 @@ export default defineComponent({
     }
   }
 
-   &__animation-versions {
+  &__animation-versions {
     left: -7px;
   }
 }

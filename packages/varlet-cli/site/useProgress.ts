@@ -1,7 +1,7 @@
 import Progress from './components/progress'
 import config from '@config'
 import { reactive } from 'vue'
-import { getBrowserTheme, mountInstance, Theme, watchTheme } from "./utils";
+import { getBrowserTheme, mountInstance, Theme, watchTheme } from './utils'
 import { get } from 'lodash-es'
 
 function getColor(theme?: Theme) {

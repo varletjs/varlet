@@ -2,7 +2,7 @@
   <div class="var-site-code-example">
     <div class="var-site-code-example__toolbar">
       <var-button text round @click="toggle" v-if="fold && !disabledFold">
-        <var-icon name="xml" size="18" />
+        <var-icon name="xml" size="18"/>
       </var-button>
 
       <var-button
@@ -12,11 +12,11 @@
         round
         v-if="clipboard"
       >
-        <var-icon name="content-copy" size="18" />
+        <var-icon name="content-copy" size="18"/>
       </var-button>
 
       <var-button text round @click="toPlayground" v-if="playground">
-        <var-icon name="code-json" size="18" />
+        <var-icon name="code-json" size="18"/>
       </var-button>
     </div>
     <div
@@ -27,7 +27,7 @@
       :style="{
         height: height >= 0 ? `${height}px` : undefined,
       }"
-      >
+    >
       <slot/>
     </div>
   </div>
@@ -43,7 +43,7 @@ import config from '@config'
 import { defineComponent, nextTick, ref, onMounted } from 'vue'
 import { doubleRaf } from '../utils/elements'
 import { get } from 'lodash-es'
-import { getBrowserTheme, getPCLocationInfo, utoa } from "../../utils";
+import { getBrowserTheme, getPCLocationInfo, utoa } from '../../utils'
 import type { Ref } from 'vue'
 
 let clipId = 0
@@ -68,7 +68,7 @@ export default defineComponent({
     const disabledFold: Ref<boolean> = ref(false)
     const clipboard: Ref = ref(get(config, 'pc.clipboard', {}))
     const height: Ref<number> = ref(-1)
-    const playground: Ref<string | undefined> = ref(!props.playgroundIgnore ? get(config, 'pc.header.playground') : undefined )
+    const playground: Ref<string | undefined> = ref(!props.playgroundIgnore ? get(config, 'pc.header.playground') : undefined)
     let timer: any = null
 
     const toggle = async () => {
