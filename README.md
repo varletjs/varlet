@@ -80,6 +80,9 @@ import '@varlet/ui/es/style.js'
 createApp(App).use(Varlet).mount('#app')
 ```
 
+### Contribution
+See [Contributing Guide](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md).
+
 ### Community
 
 We recommend that [issue](https://github.com/varletjs/varlet/issues) be used for problem feedback, or others:
