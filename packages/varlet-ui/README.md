@@ -79,19 +79,3 @@ import '@varlet/ui/es/style.js'
 
 createApp(App).use(Varlet).mount('#app')
 ```
-
-### Community
-
-We recommend that [issue](https://github.com/varletjs/varlet/issues) be used for problem feedback, or others:
-
-* Wechat group 
-
-<img style="width: 25%" src="https://github.com/varletjs/varlet/blob/dev/sponsor/community.png?raw=true" />
-
-* Join the [Discord](https://discord.gg/Dmb8ydBHkw)
-
-### Thanks to contributors
-
-<a href="https://github.com/varletjs/varlet/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=varletjs/varlet" />
-</a>
