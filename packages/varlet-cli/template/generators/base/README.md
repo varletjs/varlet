@@ -77,6 +77,6 @@ pnpm release
 #### Create component template files
 
 ```shell
-pnpm create <componentName>
+pnpm run create
 ```
 

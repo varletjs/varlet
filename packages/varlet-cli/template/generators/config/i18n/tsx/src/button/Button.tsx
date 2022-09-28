@@ -2,10 +2,10 @@ import { defineComponent, PropType } from 'vue'
 import './button.less'
 
 // i18n for component's internal
-// import { pack } from '../locale'
+import { pack } from '../locale'
 
 export default defineComponent({
-  name: 'BButton',
+  name: 'VarButton',
   props: {
     color: {
       type: String,
@@ -21,12 +21,10 @@ export default defineComponent({
       const { color } = props
 
       return (
-        <>
-          <button class="basic-button" style={{ background: color }} onClick={handleClick}>
-            {/* { pack.value.button } */}
-            {slots.default?.()}
-          </button>
-        </>
+        <button class="var-button" style={{ background: color }} onClick={handleClick}>
+          {pack.value.button} -{'> '}
+          {slots.default?.()}
+        </button>
       )
     }
   },

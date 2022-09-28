@@ -1,12 +1,12 @@
 <div align="center">
-  <a href="https://varlet.gitee.io/varlet-ui/#/en-US/home">
+  <a href="https://varlet.gitee.io/varlet-ui/#/en-US/index">
     <img src="https://varlet.gitee.io/varlet-ui/logo.svg" width="150">
   </a>
   <h1>VARLET</h1>
   <p>Material design mobile component library for Vue3</p>
   <p>
-    <a href="https://varlet-varletjs.vercel.app/#/en-US/home">Documentation(Vercel)</a> |
-    <a href="https://varlet.gitee.io/varlet-ui/#/en-US/home">Documentation(Gitee)</a> | 
+    <a href="https://varlet-varletjs.vercel.app/#/en-US/index">Documentation(Vercel)</a> |
+    <a href="https://varlet.gitee.io/varlet-ui/#/en-US/index">Documentation(Gitee)</a> | 
     <a href="https://github.com/varletjs/varlet/blob/dev/README.zh-CN.md">中文README</a>
   </p>
   <p>
@@ -79,6 +79,19 @@ import '@varlet/ui/es/style.js'
 
 createApp(App).use(Varlet).mount('#app')
 ```
+
+### Contribution
+See [Contributing Guide](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md).
+
+### Community
+
+We recommend that [issue](https://github.com/varletjs/varlet/issues) be used for problem feedback, or others:
+
+* Wechat group 
+
+<img style="width: 25%" src="https://github.com/varletjs/varlet/blob/dev/sponsor/community.png?raw=true" />
+
+* Join the [Discord](https://discord.gg/Dmb8ydBHkw)
 
 ### Thanks to contributors
 

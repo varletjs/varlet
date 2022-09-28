@@ -1,9 +1,9 @@
-import inquirer from 'inquirer'
 import ora from 'ora'
 import execa from 'execa'
 import logger from '../shared/logger'
 import semver from 'semver'
 import glob from 'glob'
+import { prompt } from 'inquirer'
 import { CWD } from '../shared/constant'
 import { resolve } from 'path'
 import { writeFileSync } from 'fs-extra'
@@ -58,7 +58,7 @@ function updateVersion(version: string) {
 async function confirmRegistry() {
   const registry = (await execa('npm', ['config', 'get', 'registry'])).stdout
   const name = 'Registry confirm'
-  const ret = await inquirer.prompt([
+  const ret = await prompt([
     {
       name,
       type: 'confirm',
@@ -71,7 +71,7 @@ async function confirmRegistry() {
 
 async function confirmVersion(currentVersion: string, expectVersion: string) {
   const name = 'Version confirm'
-  const ret = await inquirer.prompt([
+  const ret = await prompt([
     {
       name,
       type: 'confirm',
@@ -84,7 +84,7 @@ async function confirmVersion(currentVersion: string, expectVersion: string) {
 
 async function getReleaseType() {
   const name = 'Please select release type'
-  const ret = await inquirer.prompt([
+  const ret = await prompt([
     {
       name,
       type: 'list',

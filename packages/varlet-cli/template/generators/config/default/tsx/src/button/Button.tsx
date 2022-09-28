@@ -2,7 +2,7 @@ import { defineComponent, PropType } from 'vue'
 import './button.less'
 
 export default defineComponent({
-  name: 'BButton',
+  name: 'VarButton',
   props: {
     color: {
       type: String,
@@ -19,7 +19,7 @@ export default defineComponent({
 
       return (
         <>
-          <button class="basic-button" style={{ background: color }} onClick={handleClick}>
+          <button class="var-button" style={{ background: color }} onClick={handleClick}>
             {slots.default?.()}
           </button>
         </>

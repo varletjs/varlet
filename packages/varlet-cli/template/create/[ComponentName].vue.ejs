@@ -1,5 +1,5 @@
 <template>
-  <div class="var-<%- kebabCaseName %>"></div>
+  <div class="<%- namespace %>-<%- kebabCaseName %>"></div>
 </template>
 
 <script lang="ts">
@@ -13,5 +13,5 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import './<%- kebabCaseName %>.less';
+@import './<%- camelizeName %>.less';
 </style>

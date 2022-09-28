@@ -1,28 +1,16 @@
 import logger from '../shared/logger'
 import { prompt } from 'inquirer'
 import { resolve } from 'path'
-import { copy, pathExistsSync, readFileSync, writeFileSync } from 'fs-extra'
+import { copy, pathExistsSync, readFileSync, writeFileSync, rename } from 'fs-extra'
 import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant'
 
-type CodingStyle = 'tsx' | 'sfc'
+type CodeStyle = 'tsx' | 'sfc'
 
 interface GenCommandOptions {
   name?: string
   i18n?: boolean
   sfc?: boolean
   tsx?: boolean
-}
-
-interface GenOptions {
-  name: string
-  locale: boolean
-  style: CodingStyle
-}
-
-const genOptions: GenOptions = {
-  name: 'varlet-app',
-  locale: false,
-  style: 'sfc',
 }
 
 function syncVersion(name: string) {
@@ -43,13 +31,12 @@ function syncVersion(name: string) {
 export async function gen(options: GenCommandOptions) {
   logger.title('\n📦📦 Generate cli application ! \n')
 
-  // Determine projectName
   const { name } = options.name
     ? options
     : await prompt({
         name: 'name',
         message: 'Name of the generate application: ',
-        default: genOptions.name,
+        default: 'varlet-cli-app',
       })
   const dest = resolve(CWD, name)
 
@@ -58,9 +45,11 @@ export async function gen(options: GenCommandOptions) {
     return
   }
 
+  let codeStyle: CodeStyle
+
   // Determine whether the parameter carries a coding style
   if (options.sfc || options.tsx) {
-    genOptions.style = options.sfc ? 'sfc' : 'tsx'
+    codeStyle = options.sfc ? 'sfc' : 'tsx'
   } else {
     const { style } = await prompt({
       name: 'style',
@@ -69,10 +58,9 @@ export async function gen(options: GenCommandOptions) {
       choices: ['sfc', 'tsx'],
     })
 
-    genOptions.style = style
+    codeStyle = style
   }
 
-  // Determine whether the parameter carries internationalization.
   const { i18n } = options.i18n
     ? options
     : await prompt({
@@ -81,15 +69,16 @@ export async function gen(options: GenCommandOptions) {
         message: 'Whether to use i18n?',
         default: false,
       })
-  const dirName = i18n ? 'i18n' : 'default'
 
+  const dirName = i18n ? 'i18n' : 'default'
   const base = resolve(GENERATORS_DIR, 'base')
   const configBase = resolve(GENERATORS_DIR, 'config', dirName, 'base')
-  const code = resolve(GENERATORS_DIR, 'config', dirName, genOptions.style)
+  const code = resolve(GENERATORS_DIR, 'config', dirName, codeStyle)
 
   await copy(base, dest)
   await copy(configBase, dest)
   await copy(code, dest)
+  await rename(resolve(dest, '_gitignore'), resolve(dest, '.gitignore'))
   syncVersion(name)
 
   logger.success('✨ Application generated successfully!')

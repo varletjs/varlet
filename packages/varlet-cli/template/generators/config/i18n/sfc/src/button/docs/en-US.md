@@ -2,12 +2,16 @@
 
 ### Basic Use
 ```html
-<b-button>start</b-button>
+<var-button>start</var-button>
+```
+
+```vue
+import BasicUse from '../example/BasicUse'
 ```
 
 ### Theme Color Button
 ```html
-<b-button color="#009688">start</b-button>
+<var-button color="#009688">start</var-button>
 ```
 
 ```vue
@@ -20,7 +24,7 @@ import ModifyColor from '../example/ModifyColor'
 
 | Prop  | Description | Type | Default |
 | --- | --- | --- | --- | 
-| `color` | 按钮颜色 | _string_ | `default` |
+| `color` | Button background color | _string_ | `default` |
 
 ### Events
 

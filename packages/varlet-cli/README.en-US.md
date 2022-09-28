@@ -281,7 +281,7 @@ To configure `babel`, first specify the target browser in `package.json`
 ```json
 {
   "browserslist": [
-    "Chrome >= 51",
+    "Chrome >= 54",
     "iOS >= 10"
   ]
 }

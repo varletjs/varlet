@@ -1,7 +1,7 @@
 <script setup>
-import BButton from '../Button'
+import VarButton from '..'
 </script>
 
 <template>
-  <b-button color="#03A9F4">起步</b-button>
+  <var-button color="#03A9F4">起步</var-button>
 </template>

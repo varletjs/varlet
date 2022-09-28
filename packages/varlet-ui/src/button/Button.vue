@@ -60,9 +60,13 @@ export default defineComponent({
     const attemptAutoLoading = (result: any) => {
       if (props.autoLoading) {
         pending.value = true
-        Promise.resolve(result).finally(() => {
-          pending.value = false
-        })
+        Promise.resolve(result)
+          .then(() => {
+            pending.value = false
+          })
+          .catch(() => {
+            pending.value = false
+          })
       }
     }
 

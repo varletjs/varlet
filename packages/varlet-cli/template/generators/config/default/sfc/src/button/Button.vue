@@ -1,13 +1,14 @@
 <template>
-  <button class="basic-button" :style="{ background: color }">
+  <button class="var-button" :style="{ background: color }">
     <slot />
   </button>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
+
 export default defineComponent({
-  name: 'BButton',
+  name: 'VarButton',
   props: {
     color: {
       type: String,

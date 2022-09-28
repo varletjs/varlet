@@ -1,4 +1,5 @@
 import { isNumber, isString, kebabCase, toNumber } from '@varlet/shared'
+import { getGlobalThis } from './shared'
 import type { StyleVars } from '../style-provider'
 
 export function getLeft(element: HTMLElement): number {
@@ -154,10 +155,14 @@ export const multiplySizeUnit = (value: unknown, quantity = 1) => {
 }
 
 export function requestAnimationFrame(fn: FrameRequestCallback): number {
+  const globalThis = getGlobalThis()
+
   return globalThis.requestAnimationFrame ? globalThis.requestAnimationFrame(fn) : globalThis.setTimeout(fn, 16)
 }
 
 export function cancelAnimationFrame(handle: number): void {
+  const globalThis = getGlobalThis()
+
   globalThis.cancelAnimationFrame ? globalThis.cancelAnimationFrame(handle) : globalThis.clearTimeout(handle)
 }
 
