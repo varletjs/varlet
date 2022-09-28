@@ -216,7 +216,6 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--input-textarea-padding-top` | `8px` |
 | `--input-icon-padding` | `16px 0 0` |
 | `--input-icon-size` | `20px` |
-| `--input-input-text-color` | `#555` |
 | `--input-line-size` | `1px` |
 | `--input-line-spread-size` | `2px` |
 | `--input-disabled-color` | `var(--color-text-disabled)` |
