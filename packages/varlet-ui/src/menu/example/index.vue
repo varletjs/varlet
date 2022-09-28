@@ -82,7 +82,7 @@ watchDarkMode(dark)
     <var-option label="click" />
     <var-option label="hover" />
   </var-select>
-  <div style="margin-bottom: 20px"></div>
+  <div style="margin-bottom: 15px"></div>
   <var-menu :trigger="trigger">
     <var-button type="primary">{{ pack.trigger }}</var-button>
 
