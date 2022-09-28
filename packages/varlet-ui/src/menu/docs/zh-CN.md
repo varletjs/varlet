@@ -1,14 +1,9 @@
 # 菜单
 
 ### 介绍
-使元素点击时显示一个菜单，通过控制菜单的对齐方式和偏移量自由的控制菜单的显示位置。
-
-### 注意
-Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单，如果希望 Menu 独占一行推荐包裹一个 `block` 元素。
+当元素点击时显示一个菜单，通过控制对齐方式和偏移量改变菜单的显示位置。
 
 ### 基本使用
-
-Menu 现在默认使用非受控的方式控制, 内置了点击的弹出事件。
 
 ```html
 <var-menu>
@@ -36,10 +31,10 @@ Menu 现在默认使用非受控的方式控制, 内置了点击的弹出事件�
 
 ### 偏移量
 
-可以用 `offset-x` 和 `offset-y` 来设置 Menu 弹出的偏移量
+可以用 `offset-x` 和 `offset-y` 设置 Menu 弹出的偏移量
 
 ```html
-<var-menu offsetX="36px" offsetY="18px">
+<var-menu offset-x="36px" offset-y="18px">
   <var-button type="primary">偏移量</var-button>
   <template #menu>
     <var-cell>菜单项</var-cell>
@@ -51,7 +46,7 @@ Menu 现在默认使用非受控的方式控制, 内置了点击的弹出事件�
 
 ### 触发方式
 
-Menu 的 `trigger` 默认为 `click`, 但可以改为用 `hover` 触发
+通过 `trigger` 改变菜单显示的触发方式，可选值为 `click` 和 `hover`
 
 ```html
 <var-menu trigger="hover">
@@ -70,7 +65,6 @@ Menu 提供了四个在打开与关闭时的钩子
 
 ```html
 <script setup>
-import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const open = () => Snackbar.info('open')
@@ -111,10 +105,9 @@ const closed = () => Snackbar.info('closed')
 </var-menu>
 ```
 
-### 受控方式
+### 双向绑定
 
-可以选择 `v-model:show` 的可受控方式来控制 Menu 的显示。 
-但是 Menu 在点击组件范围以外的区域自动关闭，所以不可以使用同一个状态绑定多个 Menu 的 `v-model:show`，否则在触发显示时也同时触发了其他 Menu 对 `v-model:show` 的修改，导致 Menu 无法显示。
+通过 `v-model:show` 进行双向绑定控制菜单的显示和隐藏
 
 ```html
 <script setup>
@@ -134,6 +127,10 @@ const show = ref(false)
   </var-menu>
 </template>
 ```
+
+### 注意
+
+Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单，如果希望 Menu 独占一行推荐包裹一个 `block` 元素。
 
 ## API
 

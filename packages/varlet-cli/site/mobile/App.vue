@@ -4,7 +4,7 @@
       <var-app-bar class="app-bar" title-position="left" :title="bigCamelizeComponentName">
         <template #left>
           <var-button v-if="showBackIcon" text round @click="back" color="transparent" text-color="#fff">
-            <var-icon name="chevron-left" class="arrow-left" style="margin-top: 1px" />
+            <var-icon name="chevron-left" class="arrow-left" style="margin-top: 1px"/>
           </var-button>
           <var-button
             v-if="!showBackIcon && github"
@@ -15,7 +15,7 @@
             color="transparent"
             text-color="#fff"
           >
-            <var-icon name="github" class="github" style="margin-top: 1px" />
+            <var-icon name="github" class="github" style="margin-top: 1px"/>
           </var-button>
         </template>
         <template #right>
@@ -44,14 +44,14 @@
             @click.stop="showMenu = true"
             v-if="languages"
           >
-            <var-icon name="translate" class="i18n" />
-            <var-icon name="chevron-down" class="arrow-down" />
+            <var-icon name="translate" class="i18n"/>
+            <var-icon name="chevron-down" class="arrow-down"/>
           </var-button>
         </template>
       </var-app-bar>
     </header>
     <div class="router-view__block">
-      <router-view />
+      <router-view/>
     </div>
 
     <transition name="site-menu">
@@ -84,7 +84,7 @@ import {
   Theme,
   watchLang,
   watchTheme
-} from "../utils";
+} from '../utils'
 import { bigCamelize } from '@varlet/shared'
 import { get } from 'lodash-es'
 
@@ -220,6 +220,7 @@ body {
     transform: translateY(-10px);
     opacity: 0;
   }
+
   &-menu-enter-active,
   &-menu-leave-active {
     transition-property: opacity, transform;

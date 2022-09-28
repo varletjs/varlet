@@ -1,7 +1,7 @@
 import logger from '../shared/logger'
 import { prompt } from 'inquirer'
 import { resolve } from 'path'
-import { copy, pathExistsSync, readFileSync, writeFileSync } from 'fs-extra'
+import { copy, pathExistsSync, readFileSync, writeFileSync, rename } from 'fs-extra'
 import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant'
 
 type CodeStyle = 'tsx' | 'sfc'
@@ -78,6 +78,7 @@ export async function gen(options: GenCommandOptions) {
   await copy(base, dest)
   await copy(configBase, dest)
   await copy(code, dest)
+  await rename(resolve(dest, '_gitignore'), resolve(dest, '.gitignore'))
   syncVersion(name)
 
   logger.success('✨ Application generated successfully!')

@@ -27,9 +27,6 @@ It is convenient for you to directly enter the component library development.
 # playground-ignore
 pnpm add @varlet/cli -g
 varlet-cli gen
-cd project name
-pnpm install
-pnpm dev
 ```
 
 ## Advanced customization
@@ -61,7 +58,7 @@ Also refer to `@varlet/ui` [varlet.config.js](https://github.com/varletjs/varlet
 ### Custom pages
 
 If you want to insert other pages into the component library, you can create a `pages` folder in the project root directory to write a vue component to generate other pages.
-The directory structure is as follows...
+The directory structure is as follows:
 
 ```js
 // playground-ignore
@@ -83,7 +80,7 @@ The directory structure is as follows...
       
 ```
 
-The resulting route is as follows...
+The resulting route is as follows:
 
 ```text
 // playground-ignore

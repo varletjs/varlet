@@ -162,7 +162,7 @@ const floating = ref(false)
 | `title`       | 自定义标题   | `-`  |
 | `subtitle`    | 自定义副标题  | `-`  |
 | `description` | 自定义描述   | `-`  |
-| `content`     | 自定义正文   | `-`  |
+| `floating-content`     | 漂浮时显示的正文内容 | `-`  |
 | `extra`       | 自定义底部内容 | `-`  |
 | `close-button` | 自定义关闭   | `-`  |
 

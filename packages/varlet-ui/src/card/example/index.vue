@@ -75,7 +75,7 @@ watchDarkMode(dark)
       <var-button text type="warning">{{ pack.action2 }}</var-button>
     </template>
 
-    <template #content>
+    <template #floating-content>
       <var-divider dashed></var-divider>
       <div class="card-example-text">
         {{ pack.description }}

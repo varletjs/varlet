@@ -24,10 +24,9 @@
 </template>
 
 <script lang="ts">
-import { MenuTypes } from '../../utils'
+import { MenuTypes, type Menu } from '../../utils'
 import { reactive, defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import type { Menu } from '../Layout.vue'
 
 export default defineComponent({
   name: 'AppSidebar',

@@ -7,7 +7,8 @@
   <p>基于 Vue3 的 Material design 风格移动端组件库</p>
   <p>
     <a href="https://varlet-varletjs.vercel.app">文档(Vercel)</a> | 
-    <a href="https://varlet.gitee.io/varlet-ui">文档(Gitee)</a>
+    <a href="https://varlet.gitee.io/varlet-ui">文档(Gitee)</a> |
+    <a href="https://github.com/varletjs/varlet/blob/dev/README.md">ENGLISH README</a>
   </p>
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
@@ -27,7 +28,7 @@
 Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全面拥抱 `Vue3` 生态，由社区建立起来的组件库团队进行维护。
 
 ### 特性
-- 🚀 &nbsp; 提供50+个高质量通用组件
+- 🚀 &nbsp; 提供50+个高质量通用组件 
 - 🚀 &nbsp; 组件十分轻量
 - 💪 &nbsp; 由国人开发，完善的中英文文档和后勤保障
 - 🛠️ &nbsp; 支持按需引入
@@ -35,7 +36,7 @@ Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全�
 - 🌍 &nbsp; 支持国际化
 - 💡 &nbsp; 支持 webstorm，vscode 组件属性高亮
 - 💪 &nbsp; 支持 SSR
-- 💡 &nbsp; 支持 Typescript
+- 💡 &nbsp; 支持 Typescript 
 - 💪 &nbsp; 确保90%以上单元测试覆盖率，提供稳定性保证
 - 🛠️ &nbsp; 支持暗黑模式
 
@@ -78,15 +79,3 @@ import '@varlet/ui/es/style.js'
 
 createApp(App).use(Varlet).mount('#app')
 ```
-
-### 反馈和交流
-
-我们推荐使用`issue`列表进行最直接有效的反馈，也可以通过扫描下方二维码进入微信群进行交流
-
-<img style="width: 25%" src="https://github.com/varletjs/varlet/blob/dev/sponsor/community.png?raw=true" />
-
-### 感谢贡献者们做出的努力
-
-<a href="https://github.com/varletjs/varlet/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=varletjs/varlet" />
-</a>

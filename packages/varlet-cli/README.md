@@ -3,31 +3,27 @@
 开箱即用的 `Vue3组件库` 快速成型工具，提供了一系列命令和工具去解决组件库开发上的问题
 
 ### 特性
-
-- 1.开箱即用的组件库开发环境
-- 2.开箱即用的组件库编译工具，支持导出 `esm` 和 `umd` 两种模块代码
-- 3.基于配置文件的组件库文档站点,支持百度统计和主题定制
-- 4.支持 `单文件组件(sfc)` 和 `tsx,jsx` 两种风格的组件库编写风格
-- 5.开箱即用的代码检查工具
-- 6.开箱即用的单元测试工具
-- 7.开箱即用的代码发布工具,发布到 npm 和 github, 并自动生成更新日志
-- 8.支持 `Typescript`
-- 9.支持 `暗黑模式`
-- 10.基于 `pnpm`
+- 📦 &nbsp;开箱即用的组件库开发环境
+- 📦 &nbsp;开箱即用的组件库编译工具，支持导出 `esm`, `cjs`, `umd` 三种模块代码
+- 🛠️ &nbsp;基于配置文件的组件库文档站点，支持百度统计和主题定制
+- 🛠️ &nbsp;支持 `sfc` 和 `tsx` 两种风格的组件库编写风格
+- 📦 &nbsp;开箱即用的代码检查工具
+- 📦 &nbsp;开箱即用的单元测试工具
+- 📦 &nbsp;开箱即用的代码发布工具,同时发布到 `npm` 和 `github`, 并自动生成更新日志
+- 💪 &nbsp;支持 `Typescript`
+- 💪 &nbsp;支持 `暗黑模式`
+- 🌍 &nbsp;支持 `国际化`
+- 🚀 &nbsp;基于 `pnpm`
 
 ### 快速开始
 
-`@varlet/cli` 内置了 `单文件组件(sfc)` 和 `tsx, jsx` 两种风格的组件库项目模板，可以通过 `gen` 命令直接生成。
-帮助用户直接进入组件本身的开发，推荐使用 `pnpm` 作为包管理工具。
+`@varlet/cli` 内置了 `sfc` 和 `tsx` 两种风格的组件库项目模板，可以通过 `gen` 命令直接生成。
+方便您直接进入组件库开发。
 
 ```shell
 # 安装命令行工具
 pnpm add @varlet/cli -g
-# 使用 gen 命令生成项目
-varlet-cli gen 项目名
-cd 项目名
-pnpm install
-pnpm dev
+varlet-cli gen
 ```
 
 然后通过简单修改一些组件库模板的基础信息，就可以开始组件库的开发了
@@ -36,169 +32,59 @@ pnpm dev
 
 ### 配置文件
 
-项目根目录下的 `varlet.config.js` 用来管理整个组件库项目的具体细节
+项目根目录下的 `varlet.config.js` 用来管理整个组件库项目的具体细节。
+默认配置可查阅 [varlet.default.config.js](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/varlet.default.config.js)。
+也可以参考 `@varlet/ui` 的 [varlet.config.js](https://github.com/varletjs/varlet/blob/dev/packages/varlet-ui/varlet.config.js)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
+| `name` | 组件库全名，会作为包名 | _string_ | `Varlet` |
+| `namespace` | 组件库命名空间, 会作为组件前缀 | _string_ | `var` |
 | `host` | 开发服务器主机 | _number_ | `localhost` |
 | `port` | 开发服务器端口 | _number_ | `8080` |
-| `name` | 组件库全名	| _string_ | `Varlet` |
-| `namespace` | 组件库命名空间, 会作为组件前缀 | _string_ | `var` |
 | `title` | 文档中组件库的标题 | _string_ | `VARLET` |
 | `logo` | 文档中组件库的logo | _string_ | `-` |
 | `defaultLanguage` | 文档默认语言 | _string_ | `zh-CN` |
 | `useMobile` | 是否显示右侧手机预览 | _boolean_ | `false` |
-| `themes` | 文档主题 | _SiteThemes_ | `-` |
-| `darkThemes` | 暗黑模式文档主题 | _SiteThemes_ | `-` |
-| `highlight` | 文档代码片段样式相关 | _SiteHighlight_ | `-` |
-| `analysis` | 文档统计相关 | _SiteAnalysis_ | `-` |
-| `pc` | pc端文档结构配置 | _SitePC_ | `-` |
-| `mobile` | mobile端文档结构配置 | _SiteMobile_ | `-` |
+| `lightTheme` | 亮色模式文档主题 | _Record<string, any>_ | `-` |
+| `darkTheme` | 暗黑模式文档主题 | _Record<string, any>_ | `-` |
+| `highlight` | 文档代码片段样式相关 | _{ style: string }_ | `-` |
+| `analysis` | 文档统计相关 | _{ baidu: string }_ | `-` |
+| `pc` | pc端文档结构配置 | _Record<string, any>_ | `-` |
+| `mobile` | mobile端文档结构配置 | _Record<string, any>_ | `-` |
 | `moduleCompatible` | 模块兼容配置 | _Record<string, string>_ | `-` |
 
-#### 模块适配对象
+### 自定义页面
 
-一些外部依赖可能需要进行模块语法的适配，以达到可以正确编译到 `commonjs` 和 `esmodule` 的目的，例如 `dayjs` 的 `esmodule` 写法是
+如果想在组件库中插入其他页面，可以在项目根目录下的创建 `pages` 文件夹编写 vue 组件， 用来生成其他的页面。
+目录结构如下：
 
 ```js
-import dayjs from 'dayjs/esm'
+|-- varlet-ui
+  |-- src
+  |-- docs
+  |-- pages
+    |-- sponsor
+      |-- index.vue
+    |-- contributor
+      |-- locale
+        |-- en-US.ts
+      |-- index.vue
+    |-- changelog
+      |-- locale
+        |-- zh-CN.ts
+        |-- en-US.ts
+      |-- index.vue
+      
 ```
 
-而为了构建 `commonjs` 时的写法是
+生成的路由如下：
 
-```js
-import * as dayjs from 'dayjs'
-```
-
-在项目中我们拥抱 `esmodule` 模块使用第一种写法，并做如下配置进行适配
-
-```js
-// varlet.config.js
-module.exports = {
-  moduleCompatible: {
-    "import dayjs from 'dayjs/esm'\n": "import * as dayjs from 'dayjs'\n"
-  }
-}
-```
-
-#### SiteThemes
-
-主题变量相关，由于默认的主题变量可能时常修改，以 `varlet` 官方文档的主题为准
-
-| 参数 |
-| ----- |
-| `color-body` |
-| `color-bar` |
-| `color-sub-bar` |
-| `color-text` |
-| `color-sub-text` |
-| `color-border` |
-| `color-shadow` |
-| `color-introduce-border` |
-| `color-primary` |
-| `color-link` |
-| `color-type` |
-| `color-progress` |
-| `color-progress-track` |
-| `color-side-bar` |
-| `color-side-bar-active-background` |
-| `color-app-bar` |
-| `color-nav-button-hover-background` |
-| `color-mobile-cell-hover` |
-| `color-pc-language-active` |
-| `color-pc-language-active-background` |
-| `color-mobile-language-active` |
-| `color-mobile-language-active-background` |
-| `color-hl-background` |
-| `color-hl-code` |
-| `color-hl-border` |
-| `color-hl-group-a` |
-| `color-hl-group-b` |
-| `color-hl-group-c` |
-| `color-hl-group-d` |
-| `color-hl-group-e` |
-| `color-hl-group-f` |
-| `color-hl-group-g` |
-| `color-hl-group-h` |
-| `color-hl-group-i` |
-
-#### SiteHighlight
-
-代码片段高亮，基于[highlight.js](https://highlightjs.org/)
-
-| 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | ---------- |
-| `style` | highlight的css地址 | _string_ | `-` |
-
-#### SiteAnalysis
-
-统计埋点相关
-
-| 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | ---------- |
-| `baidu` | 百度统计脚本地址 | _string_ | `-` |
-
-#### SitePC, SiteMobile
-
-文档结构部分相关，示例配置如下
-
-```js
-module.exports = {
-  pc: {
-    redirect: '/home',
-    title: {
-      'zh-CN': '一个组件库',
-    },
-    header: {
-      darkMode: null,
-      i18n: null,
-      github: 'https://github.com/varletjs/varlet',
-    },
-    menu: [
-      {
-        text: {
-          'zh-CN': '开发指南',
-        },
-        // 侧边栏菜单目录
-        type: 1,
-      },
-      {
-        text: {
-          'zh-CN': '基本介绍',
-        },
-        doc: 'home',
-        // 索引项目根目录下的md文档
-        type: 3,
-      },
-      {
-        text: {
-          'zh-CN': '基础组件',
-        },
-        type: 1,
-      },
-      {
-        text: {
-          'zh-CN': 'Button 按钮',
-        },
-        doc: 'button',
-        // 索引组件根目录下的md文档
-        type: 2,
-      },
-    ],
-  },
-  mobile: {
-    redirect: '/home',
-    title: {
-      'zh-CN': '一个组件库',
-    },
-    header: {
-      darkMode: null,
-      i18n: null,
-      playground: null,
-      github: 'https://github.com/varletjs/varlet',
-    },
-  },
-}
+```text
+/zh-CN/sponsor
+/en-US/contributor
+/zh-CN/changelog
+/en-US/changelog
 ```
 
 ### 命令相关
@@ -266,132 +152,71 @@ varlet-cli release
 ```
 
 #### 生成一个项目模板
-```shell
-varlet-cli gen <projectName>
-```
-
-### babel
-
-对 `babel` 进行配置，首先在 `package.json` 中指定目标浏览器
-
-```json
-{
-  "browserslist": [
-    "Chrome >= 54",
-    "iOS >= 10"
-  ]
-}
-```
-
-创建 `babel.config,js`
-
-```js
-// babel.config.js
-module.exports = {
-  presets: [
-    [
-      '@varlet/cli/preset',
-      {
-        loose: process.env.NODE_ENV === 'compile',
-      },
-    ],
-  ],
-}
-```
-
-### git 和 npm
-
-#### git-hook
-
-`simple-git-hooks`，`lint-staged` 配合 `eslint`，`stylelint`，`varlet-cli commit-lint` 做commit前的检查，`package.json` 配置如下
-
-```json
-{
-  "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
-    "commit-msg": "npx --no-install varlet-cli commit-lint $1"
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js,vue,less}": "prettier --write",
-    "*.{ts,tsx,js,vue}": "eslint --fix",
-    "*.{vue,css,less}": "stylelint --fix"
-  },
-  "eslintConfig": {
-    "root": true,
-    "ignorePatterns": [
-      "es/**",
-      "umd/**",
-      "site/**",
-      "public/**",
-      "src/*/__tests__/**",
-      ".varlet/**"
-    ],
-    "extends": [
-      "@varlet"
-    ]
-  },
-  "stylelint": {
-    "extends": [
-      "@varlet/stylelint-config"
-    ],
-    "ignoreFiles": [
-      "es/**",
-      "umd/**",
-      "site/**",
-      "coverage/**",
-      "public/**",
-      "highlight/**"
-    ]
-  }
-}
-```
-
-挂载钩子
 
 ```shell
-npx simple-git-hooks
+varlet-cli gen
+
+# Options
+-n
+--name
+  项目名
+-s
+--sfc
+  生成 sfc 风格的项目模板
+-t
+--tsx
+  生成 tsx 格式项目
+-l
+--locale
+  需要支持国际化
 ```
 
-创建 `.prettierignore`
+#### 创建组件模板文件
 
-```text
-// .prettierignore
-coverage/**
-es/**
-umd/**
-site/**
-public/**
-src/*/__tests__/**
-*.md
+```shell
+varlet-cli create
+
+# Options
+-n
+--name
+  组件名
+-s
+--sfc
+  生成 sfc 风格的组件
+-t
+--tsx
+  生成 tsx 风格的文件
+-l
+--locale
+  需要支持国际化
 ```
 
-### typescript
-
-创建 `tsconfig.json`
-
-```json
-{
-  "compilerOptions": {
-    "strict": true,
-    "downlevelIteration": true,
-    "declaration": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowJs": true,
-    "lib": ["esnext", "dom"],
-    "allowSyntheticDefaultImports": true,
-    "jsx": "preserve"
-  }
-}
-```
-
-#### 发布前注意
+### 发布前注意
 
 1. `npm` 的仓库源必须指向 `npm` 官方镜像
 2. 执行 `npm login` 进行登录
 
-### Contributors
+### 模块适配对象
 
-<a href="https://github.com/varletjs/varlet/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=haoziqaq/varlet" />
-</a>
+一些外部依赖可能需要进行模块语法的适配，以达到可以正确编译到 `commonjs` 和 `esmodule` 的目的，例如 `dayjs` 的 `esmodule` 写法是
+
+```js
+import dayjs from 'dayjs/esm'
+```
+
+而为了构建 `commonjs` 时的写法是
+
+```js
+import * as dayjs from 'dayjs'
+```
+
+在项目中我们拥抱 `esmodule` 模块使用第一种写法，并做如下配置进行适配
+
+```js
+// varlet.config.js
+module.exports = {
+  moduleCompatible: {
+    "import dayjs from 'dayjs/esm'\n": "import * as dayjs from 'dayjs'\n"
+  }
+}
+```
