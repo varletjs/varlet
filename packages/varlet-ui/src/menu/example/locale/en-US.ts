@@ -9,4 +9,5 @@ export default {
   disabled: 'Disabled',
   placement: 'Placement',
   trigger: 'Trigger',
+  twoWayBinding: 'Two-way binding',
 }
