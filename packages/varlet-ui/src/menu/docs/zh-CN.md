@@ -10,9 +10,9 @@
   <var-menu>
     <var-button type="primary">基本使用</var-button>
     <template #menu>
-      <var-cell>火猫</var-cell>
-      <var-cell>土猫</var-cell>
-      <var-cell>蓝猫</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
     </template>
   </var-menu>
 </template>
@@ -57,9 +57,9 @@ const placementOptions = [
     <var-menu :placement="placement">
       <var-button type="primary">弹出位置</var-button>
       <template #menu>
-        <var-cell>火猫</var-cell>
-        <var-cell>土猫</var-cell>
-        <var-cell>蓝猫</var-cell>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
       </template>
     </var-menu>
   </div>
@@ -85,9 +85,9 @@ const placementOptions = [
   <var-menu offset-x="36px" offset-y="18px">
     <var-button type="primary">偏移量</var-button>
     <template #menu>
-      <var-cell>火猫</var-cell>
-      <var-cell>土猫</var-cell>
-      <var-cell>蓝猫</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
     </template>
   </var-menu>
 </template>
@@ -102,9 +102,9 @@ const placementOptions = [
   <var-menu trigger="hover">
     <var-button type="primary">触发方式</var-button>
     <template #menu>
-      <var-cell>火猫</var-cell>
-      <var-cell>土猫</var-cell>
-      <var-cell>蓝猫</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
     </template>
   </var-menu>
 </template>
@@ -133,9 +133,9 @@ const closed = () => Snackbar.info('closed')
   >
     <var-button type="primary">注册事件</var-button>
     <template #menu>
-      <var-cell>火猫</var-cell>
-      <var-cell>土猫</var-cell>
-      <var-cell>蓝猫</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
     </template>
   </var-menu>
 </template>
@@ -150,9 +150,9 @@ const closed = () => Snackbar.info('closed')
   <var-menu disabled>
     <var-button type="primary">禁用</var-button>
     <template #menu>
-      <var-cell>黄金体验</var-cell>
-      <var-cell>白金之星</var-cell>
-      <var-cell>疯狂钻石</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
     </template>
   </var-menu>
 </template>
@@ -173,9 +173,9 @@ const show = ref(false)
   <var-menu v-model:show="show">
     <var-button type="primary">受控方式</var-button>
     <template #menu>
-      <var-cell>空条承太郎</var-cell>
-      <var-cell>乔鲁诺乔巴纳</var-cell>
-      <var-cell>杰洛齐贝林</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
     </template>
   </var-menu>
 </template>
