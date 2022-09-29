@@ -6,27 +6,74 @@
 ### 基本使用
 
 ```html
-<var-menu>
-  <var-button type="primary">基本使用</var-button>
-  <template #menu>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-  </template>
-</var-menu>
+<template>
+  <var-menu>
+    <var-button type="primary">基本使用</var-button>
+    <template #menu>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+    </template>
+  </var-menu>
+</template>
 ```
 
 ### 弹出位置
 
 ```html
-<var-menu placement="top">
-  <var-button type="primary">弹出位置</var-button>
-  <template #menu>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-  </template>
-</var-menu>
+<script setup>
+import { ref } from 'vue'
+
+const placement = ref('cover-top-start')
+const placementOptions = [
+  'top',
+  'top-start',
+  'top-end',
+  'bottom',
+  'bottom-start',
+  'bottom-end',
+  'right',
+  'right-start',
+  'right-end',
+  'left',
+  'left-start',
+  'left-end',
+  'cover-top',
+  'cover-top-start',
+  'cover-top-end',
+  'cover-bottom',
+  'cover-bottom-start',
+  'cover-bottom-end',
+  'cover-left',
+  'cover-right',
+]
+</script>
+
+<template>
+  <var-select :hint="false" v-model="placement">
+    <var-option v-for="(item, index) in placementOptions" :key="index" :label="item" />
+  </var-select>
+  <div class="flex-box">
+    <var-menu :placement="placement">
+      <var-button type="primary">弹出位置</var-button>
+      <template #menu>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+      </template>
+    </var-menu>
+  </div>
+</template>
+
+<style>
+.flex-box {
+  height: 250px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
 ```
 
 ### 偏移量
@@ -34,14 +81,16 @@
 可以用 `offset-x` 和 `offset-y` 设置 Menu 弹出的偏移量
 
 ```html
-<var-menu offset-x="36px" offset-y="18px">
-  <var-button type="primary">偏移量</var-button>
-  <template #menu>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-  </template>
-</var-menu>
+<template>
+  <var-menu offset-x="36px" offset-y="18px">
+    <var-button type="primary">偏移量</var-button>
+    <template #menu>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+    </template>
+  </var-menu>
+</template>
 ```
 
 ### 触发方式
@@ -49,14 +98,16 @@
 通过 `trigger` 改变菜单显示的触发方式，可选值为 `click` 和 `hover`
 
 ```html
-<var-menu trigger="hover">
-  <var-button type="primary">触发方式</var-button>
-  <template #menu>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-  </template>
-</var-menu>
+<template>
+  <var-menu trigger="hover">
+    <var-button type="primary">触发方式</var-button>
+    <template #menu>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+    </template>
+  </var-menu>
+</template>
 ```
 
 ### 注册事件
@@ -95,14 +146,16 @@ const closed = () => Snackbar.info('closed')
 在 `disabled` 状态下，菜单将不再被打开。 
 
 ```html
-<var-menu disabled>
-  <var-button type="primary">禁用</var-button>
-  <template #menu>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-  </template>
-</var-menu>
+<template>
+  <var-menu disabled>
+    <var-button type="primary">禁用</var-button>
+    <template #menu>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+    </template>
+  </var-menu>
+</template>
 ```
 
 ### 双向绑定
