@@ -7,14 +7,8 @@ import context from '../components/context'
 import { nextTick, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { get } from 'lodash-es'
-import { getPCLocationInfo, MenuTypes } from "../utils";
+import { getPCLocationInfo, MenuTypes, type Menu } from '../utils'
 import type { Ref } from 'vue'
-
-export interface Menu {
-  doc: string
-  text: Record<string, string>
-  type: MenuTypes
-}
 
 const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))
 const useMobile = ref(get(config, 'useMobile'))
@@ -94,7 +88,7 @@ watch(
 
 <template>
   <div class="varlet-site">
-    <app-header :language="language" />
+    <app-header :language="language"/>
 
     <div class="varlet-site-content">
       <app-sidebar
@@ -109,7 +103,7 @@ watch(
         ref="doc"
         :class="[!useMobile && 'varlet-site-doc-container--pc-only']"
       >
-        <router-view />
+        <router-view/>
       </div>
 
       <app-mobile
@@ -127,7 +121,8 @@ watch(
     @click-overlay="confirmClose"
   >
     <div class="varlet-site-playground-container">
-      <iframe id="playground" class="varlet-site-playground-iframe" :src="context.playgroundURL" frameborder="0"></iframe>
+      <iframe id="playground" class="varlet-site-playground-iframe" :src="context.playgroundURL"
+              frameborder="0"></iframe>
     </div>
   </var-popup>
 </template>
@@ -413,7 +408,7 @@ iframe {
         margin-bottom: 30px;
         box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 
-        &:first-child{
+        &:first-child {
           margin-top: 30px;
         }
       }

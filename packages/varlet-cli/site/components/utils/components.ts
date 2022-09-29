@@ -1,6 +1,6 @@
-import { createApp, h, onActivated, onDeactivated, onMounted, onUnmounted, ref, Ref } from "vue";
+import { createApp, h, onActivated, onDeactivated, onMounted, onUnmounted, ref, Ref } from 'vue'
 import type { Component } from 'vue'
-import { isArray } from "@varlet/shared";
+import { isArray } from '@varlet/shared'
 
 export interface MountInstance {
   instance: any

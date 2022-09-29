@@ -39,6 +39,12 @@ export function isPhone() {
   return /Android|webOS|iPhone|iPod|BlackBerry|Pad/i.test(navigator.userAgent)
 }
 
+export interface Menu {
+  doc: string
+  text: Record<string, string>
+  type: MenuTypes
+}
+
 export enum MenuTypes {
   TITLE = 1,
   COMPONENT = 2,

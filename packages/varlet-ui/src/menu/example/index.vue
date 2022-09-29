@@ -7,26 +7,15 @@ import VarOption from '../../option'
 import VarCell from '../../cell'
 import Snackbar from '../../snackbar'
 import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { reactive, toRefs, ref, onMounted } from 'vue'
+import dark from '../../themes/dark'
+import { ref } from 'vue'
 import { pack, use } from './locale/index'
 import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-import dark from '../../themes/dark'
 
-const values = reactive({
-  top: false,
-  bottom: false,
-  offsetX: false,
-  offsetX1: false,
-  offsetY: false,
-  offsetY1: false,
-  event: false,
-  placement: true,
-  trigger: false,
-})
-const bgColor = ref('#fff')
-const { placement } = toRefs(values)
+const show = ref(false)
+const trigger = ref('click')
 const placementValue = ref('cover-top-start')
-const placementOption = ref([
+const placementOptions = ref([
   'top',
   'top-start',
   'top-end',
@@ -48,12 +37,13 @@ const placementOption = ref([
   'cover-left',
   'cover-right',
 ])
-const trigger = ref('click')
+
+const closeMenu = () => {
+  show.value = false
+}
 
 watchLang(use)
-watchDarkMode(dark, (themes) => {
-  bgColor.value = themes === 'darkThemes' ? '#272727' : '#fff'
-})
+watchDarkMode(dark)
 </script>
 
 <template>
@@ -69,11 +59,13 @@ watchDarkMode(dark, (themes) => {
 
   <app-type>{{ pack.placement }}</app-type>
   <var-select :hint="false" v-model="placementValue">
-    <var-option v-for="(item, index) in placementOption" :key="index" :label="item" />
+    <var-option v-for="(item, index) in placementOptions" :key="index" :label="item" />
   </var-select>
-  <div class="flex-box">
+  <div class="placement-container">
     <var-menu :placement="placementValue">
-      <var-button type="primary"><var-icon name="star" /></var-button>
+      <var-button type="primary">
+        <var-icon name="star" />
+      </var-button>
       <template #menu>
         <var-cell>{{ pack.menuOption }}</var-cell>
         <var-cell>{{ pack.menuOption }}</var-cell>
@@ -97,8 +89,7 @@ watchDarkMode(dark, (themes) => {
     <var-option label="click" />
     <var-option label="hover" />
   </var-select>
-  <div style="margin-bottom: 20px"></div>
-  <var-menu :trigger="trigger">
+  <var-menu style="margin-top: 15px" :trigger="trigger">
     <var-button type="primary">{{ pack.trigger }}</var-button>
 
     <template #menu>
@@ -137,13 +128,23 @@ watchDarkMode(dark, (themes) => {
     </var-menu>
   </var-space>
 
+  <app-type>{{ pack.twoWayBinding }}</app-type>
+  <var-menu v-model:show="show">
+    <var-button type="primary">{{ pack.twoWayBinding }}</var-button>
+
+    <template #menu>
+      <var-cell @click="closeMenu">{{ pack.menuOption }}</var-cell>
+      <var-cell @click="closeMenu">{{ pack.menuOption }}</var-cell>
+      <var-cell @click="closeMenu">{{ pack.menuOption }}</var-cell>
+    </template>
+  </var-menu>
+
   <div style="margin-bottom: 100px"></div>
 </template>
 
 <style scoped lang="less">
-.flex-box {
+.placement-container {
   height: 250px;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

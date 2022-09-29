@@ -27,9 +27,6 @@
 # playground-ignore
 pnpm add @varlet/cli -g
 varlet-cli gen
-cd 项目名
-pnpm install
-pnpm dev
 ```
 
 ## 高级定制
@@ -61,7 +58,7 @@ pnpm dev
 ### 自定义页面
 
 如果想在组件库中插入其他页面，可以在项目根目录下的创建 `pages` 文件夹编写 vue 组件， 用来生成其他的页面。
-目录结构如下...
+目录结构如下：
 
 ```js
 // playground-ignore
@@ -83,7 +80,7 @@ pnpm dev
       
 ```
 
-生成的路由如下...
+生成的路由如下：
 
 ```text
 // playground-ignore

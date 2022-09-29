@@ -1,76 +1,128 @@
 # 菜单
 
 ### 介绍
-使元素点击时显示一个菜单，通过控制菜单的对齐方式和偏移量自由的控制菜单的显示位置。
-
-### 注意
-Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单，如果希望 Menu 独占一行推荐包裹一个 `block` 元素。
+当元素点击时显示一个菜单，通过控制对齐方式和偏移量改变菜单的显示位置。
 
 ### 基本使用
 
-Menu 现在默认使用非受控的方式控制, 内置了点击的弹出事件。
-
 ```html
-<var-menu>
-  <var-button type="primary">基本使用</var-button>
-  <template #menu>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-  </template>
-</var-menu>
+<template>
+  <var-menu>
+    <var-button type="primary">基本使用</var-button>
+    
+    <template #menu>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+    </template>
+  </var-menu>
+</template>
 ```
 
 ### 弹出位置
 
 ```html
-<var-menu placement="top">
-  <var-button type="primary">弹出位置</var-button>
-  <template #menu>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-  </template>
-</var-menu>
+<script setup>
+import { ref } from 'vue'
+
+const placement = ref('cover-top-start')
+const placementOptions = [
+  'top',
+  'top-start',
+  'top-end',
+  'bottom',
+  'bottom-start',
+  'bottom-end',
+  'right',
+  'right-start',
+  'right-end',
+  'left',
+  'left-start',
+  'left-end',
+  'cover-top',
+  'cover-top-start',
+  'cover-top-end',
+  'cover-bottom',
+  'cover-bottom-start',
+  'cover-bottom-end',
+  'cover-left',
+  'cover-right',
+]
+</script>
+
+<template>
+  <var-select :hint="false" v-model="placement">
+    <var-option 
+      v-for="(item, index) in placementOptions" 
+      :key="index"
+      :label="item" 
+    />
+  </var-select>
+  
+  <div class="placement-container">
+    <var-menu :placement="placement">
+      <var-button type="primary">
+        <var-icon name="star" />
+      </var-button>
+      <template #menu>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+      </template>
+    </var-menu>
+  </div>
+</template>
+
+<style>
+.placement-container {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
 ```
 
 ### 偏移量
 
-可以用 `offset-x` 和 `offset-y` 来设置 Menu 弹出的偏移量
+可以用 `offset-x` 和 `offset-y` 设置 Menu 弹出的偏移量
 
 ```html
-<var-menu offsetX="36px" offsetY="18px">
-  <var-button type="primary">偏移量</var-button>
-  <template #menu>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-  </template>
-</var-menu>
+<template>
+  <var-menu offset-x="36px" offset-y="18px">
+    <var-button type="primary">偏移量</var-button>
+    
+    <template #menu>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+    </template>
+  </var-menu>
+</template>
 ```
 
 ### 触发方式
 
-Menu 的 `trigger` 默认为 `click`, 但可以改为用 `hover` 触发
+通过 `trigger` 改变菜单显示的触发方式，可选值为 `click` 和 `hover`
 
 ```html
-<var-menu trigger="hover">
-  <var-button type="primary">触发方式</var-button>
-  <template #menu>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-  </template>
-</var-menu>
+<template>
+  <var-menu trigger="hover">
+    <var-button type="primary">触发方式</var-button>
+    
+    <template #menu>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+    </template>
+  </var-menu>
+</template>
 ```
 
 ### 注册事件
 
-Menu 提供了四个在打开与关闭时的钩子
-
 ```html
 <script setup>
-import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const open = () => Snackbar.info('open')
@@ -87,6 +139,7 @@ const closed = () => Snackbar.info('closed')
     @closed="closed"
   >
     <var-button type="primary">注册事件</var-button>
+    
     <template #menu>
       <var-cell>菜单项</var-cell>
       <var-cell>菜单项</var-cell>
@@ -101,31 +154,10 @@ const closed = () => Snackbar.info('closed')
 在 `disabled` 状态下，菜单将不再被打开。 
 
 ```html
-<var-menu disabled>
-  <var-button type="primary">禁用</var-button>
-  <template #menu>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-    <var-cell>菜单项</var-cell>
-  </template>
-</var-menu>
-```
-
-### 受控方式
-
-可以选择 `v-model:show` 的可受控方式来控制 Menu 的显示。 
-但是 Menu 在点击组件范围以外的区域自动关闭，所以不可以使用同一个状态绑定多个 Menu 的 `v-model:show`，否则在触发显示时也同时触发了其他 Menu 对 `v-model:show` 的修改，导致 Menu 无法显示。
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const show = ref(false)
-</script>
-
 <template>
-  <var-menu v-model:show="show">
-    <var-button type="primary">受控方式</var-button>
+  <var-menu disabled>
+    <var-button type="primary">禁用</var-button>
+    
     <template #menu>
       <var-cell>菜单项</var-cell>
       <var-cell>菜单项</var-cell>
@@ -135,20 +167,49 @@ const show = ref(false)
 </template>
 ```
 
+### 双向绑定
+
+通过 `v-model:show` 进行双向绑定控制菜单的显示和隐藏
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(false)
+const closeMenu = () => { show.value = false }
+</script>
+
+<template>
+  <var-menu v-model:show="show">
+    <var-button type="primary">双向绑定</var-button>
+    
+    <template #menu>
+      <var-cell @click="closeMenu">菜单项</var-cell>
+      <var-cell @click="closeMenu">菜单项</var-cell>
+      <var-cell @click="closeMenu">菜单项</var-cell>
+    </template>
+  </var-menu>
+</template>
+```
+
+### 注意
+
+Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单，如果希望 Menu 独占一行推荐包裹一个 `block` 元素。
+
 ## API
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ------- | --- | --- | --- |
-| `v-model:show` | 是否显示菜单 | _string_ | `default` |
-| `placement` | 菜单弹出位置 | _options.placement_ | `cover-top-start` |
+| 参数 | 说明 | 类型                    | 默认值 |
+| ------- | --- |-----------------------| --- |
+| `v-model:show` | 是否显示菜单 | _string_              | `default` |
+| `placement` | 菜单弹出位置 | _Placement_           | `cover-top-start` |
 | `offset-x` | x 轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |
 | `offset-y` | y 轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |
 | `teleport` | 菜单挂载的位置 | _TeleportProps['to']_ | `body` |
-| `disabled` | 是否禁用菜单 | _boolean_ | `false` |
-| `trigger` | 菜单触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_ | `click` |
-| `default-style` | 是否启用默认样式 | _boolean_ | `true` |
+| `disabled` | 是否禁用菜单 | _boolean_             | `false` |
+| `trigger` | 菜单触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_              | `click` |
+| `default-style` | 是否启用默认样式 | _boolean_             | `true` |
 
 ### Placement
 
