@@ -2,6 +2,8 @@ import { VarComponent, BasicAttributes, Direction as RadioGroupDirection } from 
 
 export type RadioGroupValidateTrigger = 'onChange'
 
+export { RadioGroupDirection }
+
 export interface RadioGroupProps extends BasicAttributes {
   modelValue?: any
   direction?: RadioGroupDirection

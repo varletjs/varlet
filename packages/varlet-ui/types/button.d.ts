@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, Type as ButtonType, Size as ButtonSize } from './varComponent'
 import { LoadingType, LoadingSize } from './loading'
 
+export { ButtonType, ButtonSize }
+
 export interface ButtonProps extends BasicAttributes {
   type?: ButtonType
   size?: ButtonSize

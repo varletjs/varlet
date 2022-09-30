@@ -2,6 +2,8 @@ import { VarComponent, BasicAttributes, Direction as CheckboxGroupDirection } fr
 
 export type CheckboxGroupValidateTrigger = 'onChange'
 
+export { CheckboxGroupDirection }
+
 export interface CheckboxGroupProps extends BasicAttributes {
   modelValue?: any[]
   max?: string | number

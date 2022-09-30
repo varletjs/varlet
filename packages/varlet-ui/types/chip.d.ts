@@ -1,5 +1,7 @@
 import { VarComponent, BasicAttributes, Type as ChipType, Size as ChipSize } from './varComponent'
 
+export { ChipType, ChipSize }
+
 export interface ChipProps extends BasicAttributes {
   type?: ChipType
   size?: ChipSize
