@@ -1,5 +1,7 @@
 import { VarComponent, BasicAttributes, Direction as TabsDirection } from './varComponent'
 
+export { TabsDirection }
+
 export interface TabsProps extends BasicAttributes {
   active?: string | number
   layoutDirection?: TabsDirection

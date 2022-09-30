@@ -1,5 +1,7 @@
 import { VarComponent, BasicAttributes, Direction as StepsDirection } from './varComponent'
 
+export { StepsDirection }
+
 export interface StepsProps extends BasicAttributes {
   active?: string | number
   direction?: StepsDirection

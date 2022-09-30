@@ -10,13 +10,12 @@ The advantage of dark mode is that it has higher readability in low light enviro
 ```html
 <!-- playground-ignore -->
 <script setup>
-import dark from '@varlet/ui/es/themes/dark'
-import { StyleProvider } from '@varlet/ui'
+import { StyleProvider, Themes } from '@varlet/ui'
 
 let currentTheme = null
 
 const toggleTheme = () => {
-  currentTheme = currentTheme ? null : dark
+  currentTheme = currentTheme ? null : Themes.dark
   StyleProvider(currentTheme)
 }
 </script>

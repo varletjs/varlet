@@ -23,11 +23,11 @@ export interface ActionSheetProps extends BasicAttributes {
 
 export interface ActionItem {
   name: string
-  color: string
-  icon: string
-  iconSize: string | number
-  className: string
-  disabled: boolean
+  color?: string
+  icon?: string
+  iconSize?: string | number
+  className?: string
+  disabled?: boolean
 }
 
 export interface ActionSheetOptions {

@@ -1,5 +1,5 @@
-import { VarComponent, BasicAttributes, Size as LoadingSize } from './varComponent'
-import { LoadingType } from './loading'
+import { VarComponent, BasicAttributes } from './varComponent'
+import { LoadingType, LoadingSize } from './loading'
 import { App, TeleportProps } from 'vue'
 
 export type SnackbarPosition = 'top' | 'center' | 'bottom'

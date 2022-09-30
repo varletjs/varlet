@@ -1,3 +1,7 @@
 import dark from './dark'
 
-export default { dark }
+const Themes = { dark }
+
+export const _ThemesComponent = null
+
+export default Themes
