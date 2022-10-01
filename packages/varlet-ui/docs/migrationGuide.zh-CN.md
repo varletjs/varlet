@@ -20,6 +20,21 @@
 - TimePicker 组件 api 进行了部分重命名 `shadow` -> `elevation`
 - Card 组件 api 进行了部分重命名 `height` -> `image-height`，`content` -> `floating-content`
 
+### 组件样式变量变更
+
+- Menu 组件新增样式 
+  - `--menu-background-color`
+- Select 组件新增样式
+  - `--select-select-min-height`
+  - `--select-menu-margin-top`
+- Pagination 组件新增样式
+  - `--pagination-simple-padding`
+- Loading 组件新增样式
+  - `--loading-color`
+- Cell 组件重命名样式
+  - `--cell-desc-font-size` -> `--cell-description-font-size`
+  - `--cell-desc-color` -> `--cell-description-color`
+
 ### UMD 模块导出中英文语言包
 
 在 `1.x` 版本中，UMD 模块未对中英文语言包进行导出，在 `2.x` 版本中，我们将中英文语言包默认导出，
