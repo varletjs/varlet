@@ -7,7 +7,7 @@
 
 ### 组件重构
 
-- Menu 组件进行了重做，优化了 api 使起变得更易使用，在桌面端上也有更优秀的边界检测能力和性能。具体使用方式参考 [Menu 文档](./zh-CN/menu)， 
+- Menu 组件进行了重做，优化了 api 使其变得更易使用，在桌面端也有更优秀的边界检测能力和性能。具体使用方式参考 [Menu 文档](./zh-CN/menu)， 
 - Select 组件的下拉菜单替换成了新版 Menu 组件
 - Pagination 组件的下拉菜单替换成了新版 Menu 组件
 - Loading 组件的默认颜色从 `currentColor` 更改为 `var(--color-primary)`
@@ -15,10 +15,10 @@
 - Button 组件新增 `loadingColor` 属性
 - Snackbar 组件新增 `loadingColor` 属性
 - StyleProvider 组件新增 `tag` 属性，允许自定义容器标签
-- Cell 组件 api 进行了部分重命名：`desc` -> `description`， `descClass` -> `descriptionClass`
-- DatePicker 组件 api 进行了部分重命名 `shadow` -> `elevation`
-- TimePicker 组件 api 进行了部分重命名 `shadow` -> `elevation`
-- Card 组件 api 进行了部分重命名 `height` -> `image-height`，`content` -> `floating-content`
+- Cell 组件重命名了部分 api `desc` -> `description`， `descClass` -> `descriptionClass`
+- DatePicker 组件重命名了部分 api  `shadow` -> `elevation`
+- TimePicker 组件重命名了部分 api  `shadow` -> `elevation`
+- Card 组件重命名了部分 api  `height` -> `image-height`，`content` -> `floating-content`
 
 ### 组件样式变量变更
 
@@ -37,7 +37,7 @@
 
 ### UMD 模块导出中英文语言包
 
-在 `1.x` 版本中，UMD 模块未对中英文语言包进行导出，在 `2.x` 版本中，我们将中英文语言包默认导出，
+在 `1.x` 版本中，UMD 模块未对中英文语言包导出，在 `2.x` 版本中，我们将中英文语言包默认导出，
 非 UMD 模块也多了一种使用语言包的方式
 
 ```ts
@@ -57,7 +57,7 @@ Locale.add('en-US', Locale.enUS)
 
 ### UMD 模块导出暗黑模式主题
 
-在 `1.x` 版本中，UMD 模块未对暗黑模式主题包进行导出，在 `2.x` 版本中，我们将暗黑模式主题包导出，
+在 `1.x` 版本中，UMD 模块未对暗黑模式主题包导出，在 `2.x` 版本中，我们将暗黑模式主题包导出，
 非 UMD 模块也多了一种使用暗黑模式主题的方式
 
 ```ts
@@ -81,7 +81,7 @@ StyleProvider(Themes.dark)
 
 ### Typescript 类型优化
 
-我们对组件内部对类型进行了重构，抽象了更多的类型并且暴露了出来，组件的类型规范依照`组件名` + `类型名`的形式。使用方式如下所示
+我们对组件内部类型进行了重构，抽象了更多的类型并且暴露了出来，组件的类型规范依照`组件名` + `类型名`的形式。使用方式如下所示
 
 ```ts
 import type { ButtonProps, ButtonType, ButtonSize } from '@varlet/ui'
