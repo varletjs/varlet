@@ -1,6 +1,6 @@
 <template>
   <button class="var-button" :style="{ background: color }">
-    {{ pack.button }} -> 
+    {{ pack.button }}
     <slot />
   </button>
 </template>
