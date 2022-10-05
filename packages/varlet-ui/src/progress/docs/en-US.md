@@ -131,18 +131,19 @@ Use `track` prop to hide track.
 
 ### Props
 
-| prop | Description      | Type     | Default  |
-| --------- | ---------------- | -------- | -------- |
-| `mode` | Mode of Progress. Optional value is `linear, circle` | _string_ | `linear` |
-| `value` | Completion value   | _string \| number_ |  `0`  |
-| `line-width` | Width of the progress bar  | _string \| number_ | `4` |
-| `color` | Color of the progress bar  | _string_  | `#005CAF` |
-| `track-color`  | Color of the progress track | _string_   | `#d8d8d8` |
-| `label` | Whether the label is visible or not | _boolean_ | `false` |
-| `track` | Whether the progress track is visible or not | _boolean_ | `true` |
-| `ripple` | Loading style for progress (only supports linear progress) | _boolean_ | `false` |
-| `size` | Size of progress (only supports circle progress) | _string \| number_ | `40` |
-| `rotate` | Origin of progress (only supports circle progress) | _number_ | `0` |
+| prop          | Description                                                | Type     | Default   |
+|---------------|------------------------------------------------------------|----------|-----------|
+| `mode`        | Mode of Progress. Optional value is `linear, circle`       | _string_ | `linear`  |
+| `value`       | Completion value                                           | _string \| number_   |  `0`  |
+| `line-width`  | Width of the progress bar                                  | _string \| number_   | `4` |
+| `color`       | Color of the progress bar                                  | _string_ | `#005CAF` |
+| `track-color` | Color of the progress track                                | _string_ | `#d8d8d8` |
+| `label`       | Whether the label is visible or not                        | _boolean_ | `false`   |
+| `label-class` | Custom label class name                                    | _string_ | `-`       |
+| `track`       | Whether the progress track is visible or not               | _boolean_ | `true`    |
+| `ripple`      | Loading style for progress (only supports linear progress) | _boolean_ | `false`   |
+| `size`        | Size of progress (only supports circle progress)           | _string \| number_   | `40` |
+| `rotate`      | Origin of progress (only supports circle progress)         | _number_ | `0`       |
 
 ### Slots
 

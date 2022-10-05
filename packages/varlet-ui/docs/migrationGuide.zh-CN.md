@@ -14,6 +14,7 @@
 - Loading 组件暴露出 `var(--loading-color)`
 - Button 组件新增 `loadingColor` 属性
 - Snackbar 组件新增 `loadingColor` 属性
+- Progress 组件新增 `labelClass` 属性
 - StyleProvider 组件新增 `tag` 属性，允许自定义容器标签
 - Cell 组件重命名了部分 api `desc` -> `description`， `descClass` -> `descriptionClass`
 - DatePicker 组件重命名了部分 api  `shadow` -> `elevation`
