@@ -3,5 +3,4 @@ export default {
   offset: '偏移',
   alignment: '对齐',
   gutter: '列间距',
-  direction: '排列方向',
 }

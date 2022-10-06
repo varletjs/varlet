@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classes(n(), 'var--box', [direction, n(`--direction-${direction}`)])"
+    :class="classes(n(), 'var--box')"
     :style="{
       justifyContent: justify,
       alignItems: align,
@@ -28,7 +28,6 @@ export default defineComponent({
   props,
   setup(props) {
     const { cols, bindCols, length } = useCols()
-    const direction: ComputedRef<string> = computed(() => toString(props.direction))
     const average: ComputedRef<number> = computed(() => {
       const gutter: number = toPxNum(props.gutter)
       return gutter / 2

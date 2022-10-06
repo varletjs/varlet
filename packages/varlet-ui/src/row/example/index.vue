@@ -59,16 +59,6 @@ watchLang(use)
     <var-col :span="8">span: 8</var-col>
     <var-col :span="8">span: 8</var-col>
   </var-row>
-
-  <app-type>{{ pack.direction }}</app-type>
-  <var-row :gutter="10" direction="column">
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-  </var-row>
 </template>
 
 <style scoped lang="less">

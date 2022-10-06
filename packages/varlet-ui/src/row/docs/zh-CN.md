@@ -130,34 +130,6 @@
 </style>
 ```
 
-### 排列方向
-
-```html
-<template>
-  <var-row :gutter="10" direction="column">
-      <var-col :span="8">span: 8</var-col>
-      <var-col :span="8">span: 8</var-col>
-      <var-col :span="8">span: 8</var-col>
-      <var-col :span="8">span: 8</var-col>
-      <var-col :span="8">span: 8</var-col>
-      <var-col :span="8">span: 8</var-col>
-  </var-row>
-</template>
-
-<style>
-.var-col {   
-  justify-content: center;
-  align-items: center;
-  height: 36px;
-  margin-bottom: 10px;
-  color: #fff;
-  text-align: center;
-  background-clip: content-box !important;
-  background: #3a7afe;
-}
-</style>
-```
-
 ### 响应式布局
 
 #### 基本用法
@@ -263,7 +235,6 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 | `gutter` | 列间距 | _string \| number_ | `0` |
 | `justify` | 主轴对齐方式, 可选值为 `flex-start` `flex-end` `center` `space-between` `space-around` | _string_ | `flex-start` |
 | `align` | 交叉轴对齐方式, 可选值为 `flex-start` `flex-end` `center` | _string_ | `flex-start` |
-| `direction`| 列的排列方向                | _string_           | `row` |
 
 #### Col Props
 

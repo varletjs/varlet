@@ -6,6 +6,7 @@
 | --- | --- | --- | --- | 
 | `span` | 列占据的栅格数 | _number \| string_ | `24` |
 | `offset` | 列偏移的栅格数 | _number \| string_ | `0` |
+| `direction` | 列的主轴方向 |  _string_ | `row` |
 | `xs`     | `<768px` 响应式栅格数或者栅格属性对象  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-` |
 | `sm`     | `≥768px` 响应式栅格数或者栅格属性对象  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-` |
 | `md`     | `≥992px` 响应式栅格数或者栅格属性对象  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-` |

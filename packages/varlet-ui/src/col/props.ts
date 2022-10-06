@@ -10,6 +10,10 @@ export const props = {
     type: [String, Number],
     default: 0,
   },
+  direction: {
+    type: [String],
+    default: 'row',
+  },
   onClick: {
     type: Function as PropType<(e: Event) => void>,
   },
