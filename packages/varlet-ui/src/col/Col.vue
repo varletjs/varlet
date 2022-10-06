@@ -6,7 +6,6 @@
         'var--box',
         [span >= 0, n(`--span-${span}`)],
         [offset, n(`--offset-${offset}`)],
-        [direction, n(`--direction-${direction}`)],
         ...getSize('xs', xs),
         ...getSize('sm', sm),
         ...getSize('md', md),
@@ -15,6 +14,7 @@
       )
     "
     :style="{
+      flexDirection: direction,
       paddingLeft: toSizeUnit(padding.left),
       paddingRight: toSizeUnit(padding.right),
     }"
@@ -44,7 +44,6 @@ export default defineComponent({
     const span: ComputedRef<number> = computed(() => toNumber(props.span))
     const offset: ComputedRef<number> = computed(() => toNumber(props.offset))
     const { row, bindRow } = useRow()
-    const direction: ComputedRef<string> = computed(() => toString(props.direction))
     const colProvider: ColProvider = {
       setPadding(pad: ColPadding) {
         padding.value = pad
@@ -84,7 +83,6 @@ export default defineComponent({
       getSize,
       span,
       offset,
-      direction,
     }
   },
 })

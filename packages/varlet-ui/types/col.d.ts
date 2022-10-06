@@ -8,6 +8,7 @@ export type SizeDescriptor = {
 export interface ColProps extends BasicAttributes {
   span?: string | number
   offset?: string | number
+  direction?: string
   xs?: string | number | SizeDescriptor | undefined
   sm?: string | number | SizeDescriptor | undefined
   md?: string | number | SizeDescriptor | undefined
