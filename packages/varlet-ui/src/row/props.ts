@@ -26,4 +26,8 @@ export const props = {
   onClick: {
     type: Function as PropType<(e: Event) => void>,
   },
+  direction: {
+    type: [String],
+    default: 'row',
+  },
 }

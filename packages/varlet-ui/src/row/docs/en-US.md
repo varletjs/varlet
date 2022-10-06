@@ -245,6 +245,7 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 | `gutter`  | Col gutter                                                                                           | _string \| number_ | `0`          |
 | `justify` | Spindle alignment, optional value is `flex-start` `flex-end` `center` `space-between` `space-around` | _string_           | `flex-start` |
 | `align`   | Cross axis alignment, optional value is `flex-start` `flex-end` `center`                             | _string_           | `flex-start` |
+| `direction` | Direction of the main axis of the column         | _string_                                                                    | `row`   |
 
 #### Col Props
 

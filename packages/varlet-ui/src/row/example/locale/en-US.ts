@@ -3,4 +3,5 @@ export default {
   offset: 'Offset',
   alignment: 'Alignment',
   gutter: 'Gutter',
+  direction: 'Direction',
 }
