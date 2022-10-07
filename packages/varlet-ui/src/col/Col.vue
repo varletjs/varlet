@@ -14,6 +14,7 @@
       )
     "
     :style="{
+      flexDirection: direction,
       paddingLeft: toSizeUnit(padding.left),
       paddingRight: toSizeUnit(padding.right),
     }"
@@ -43,7 +44,6 @@ export default defineComponent({
     const span: ComputedRef<number> = computed(() => toNumber(props.span))
     const offset: ComputedRef<number> = computed(() => toNumber(props.offset))
     const { row, bindRow } = useRow()
-
     const colProvider: ColProvider = {
       setPadding(pad: ColPadding) {
         padding.value = pad

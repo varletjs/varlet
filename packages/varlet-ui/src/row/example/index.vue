@@ -17,12 +17,13 @@ watchLang(use)
     <var-col :span="8">span: 8</var-col>
     <var-col :span="8">span: 8</var-col>
     <var-col :span="8">span: 8</var-col>
+    <var-col :span="8">span: 8</var-col>
   </var-row>
 
   <app-type>{{ pack.offset }}</app-type>
   <var-row>
     <var-col :span="16" :offset="8">offset: 8 span: 16</var-col>
-    <var-col :span="8">span: 8</var-col>
+    <var-col :span="7">span: 7</var-col>
     <var-col :span="8">span: 8</var-col>
     <var-col :span="8">span: 8</var-col>
   </var-row>
