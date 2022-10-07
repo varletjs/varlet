@@ -1,15 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`test row and col component props test col direction 1`] = `
+"<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start;\\">
+  <div class=\\"var-col var--box var-col--span-12\\" style=\\"flex-direction: column; padding-left: 0px; padding-right: 0px;\\"></div>
+  <div class=\\"var-col var--box var-col--span-12\\" style=\\"flex-direction: column; padding-left: 0px; padding-right: 0px;\\"></div>
+</div>"
+`;
+
 exports[`test row and col component props test row and col gutter computed 1`] = `
 "<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px -10px;\\">
-  <div class=\\"var-col var--box var-col--span-12\\" style=\\"padding-left: 10px; padding-right: 10px;\\"></div>
-  <div class=\\"var-col var--box var-col--span-12\\" style=\\"padding-left: 10px; padding-right: 10px;\\"></div>
+  <div class=\\"var-col var--box var-col--span-12\\" style=\\"flex-direction: row; padding-left: 10px; padding-right: 10px;\\"></div>
+  <div class=\\"var-col var--box var-col--span-12\\" style=\\"flex-direction: row; padding-left: 10px; padding-right: 10px;\\"></div>
 </div>"
 `;
 
 exports[`test row and col component props test row and col gutter computed 2`] = `
 "<div class=\\"var-row var--box\\" style=\\"justify-content: flex-start; align-items: flex-start; margin: 0px -20px;\\">
-  <div class=\\"var-col var--box var-col--span-12\\" style=\\"padding-left: 20px; padding-right: 20px;\\"></div>
-  <div class=\\"var-col var--box var-col--span-12\\" style=\\"padding-left: 20px; padding-right: 20px;\\"></div>
+  <div class=\\"var-col var--box var-col--span-12\\" style=\\"flex-direction: row; padding-left: 20px; padding-right: 20px;\\"></div>
+  <div class=\\"var-col var--box var-col--span-12\\" style=\\"flex-direction: row; padding-left: 20px; padding-right: 20px;\\"></div>
 </div>"
 `;
