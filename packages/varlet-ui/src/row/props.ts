@@ -1,5 +1,7 @@
 import type { PropType } from 'vue'
 
+export type RowDirection = 'row' | 'column'
+
 function justifyValidator(justify: string) {
   return ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'].includes(justify)
 }
@@ -27,7 +29,7 @@ export const props = {
     type: Function as PropType<(e: Event) => void>,
   },
   direction: {
-    type: [String],
+    type: String as PropType<RowDirection>,
     default: 'row',
   },
 }

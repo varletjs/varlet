@@ -8,6 +8,7 @@ export interface RowProps extends BasicAttributes {
   gutter?: string | number
   justify?: RowJustify
   align?: RowAlign
+  direction?: string
   onClick?: (e: Event) => void
 }
 

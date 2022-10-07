@@ -1,7 +1,7 @@
 import type { PropType } from 'vue'
 import { SizeDescriptor } from './provide'
 
-export type SpaceDirection = 'row' | 'column'
+export type ColDirection = 'row' | 'column'
 
 export const props = {
   span: {
@@ -13,7 +13,7 @@ export const props = {
     default: 0,
   },
   direction: {
-    type: String as PropType<SpaceDirection>,
+    type: String as PropType<ColDirection>,
     default: 'row',
   },
   onClick: {
