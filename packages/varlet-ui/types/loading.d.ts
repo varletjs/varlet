@@ -2,6 +2,8 @@ import { VarComponent, BasicAttributes, Size as LoadingSize } from './varCompone
 
 export type LoadingType = 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'
 
+export { LoadingSize }
+
 export interface LoadingProps extends BasicAttributes {
   type?: LoadingType
   radius?: string | number

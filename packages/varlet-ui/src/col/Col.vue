@@ -14,6 +14,7 @@
       )
     "
     :style="{
+      flexDirection: direction,
       paddingLeft: toSizeUnit(padding.left),
       paddingRight: toSizeUnit(padding.right),
     }"
@@ -29,9 +30,9 @@ import { isPlainObject, toNumber } from '@varlet/shared'
 import { props } from './props'
 import { useRow } from './provide'
 import { toSizeUnit } from '../utils/elements'
-import type { Ref, ComputedRef } from 'vue'
-import type { ColPadding, ColProvider, SizeDescriptor } from './provide'
 import { createNamespace, call } from '../utils/components'
+import type { Ref, ComputedRef } from 'vue'
+import type { ColPadding, ColProvider, ColSizeDescriptor } from './provide'
 
 const { n, classes } = createNamespace('col')
 
@@ -43,14 +44,13 @@ export default defineComponent({
     const span: ComputedRef<number> = computed(() => toNumber(props.span))
     const offset: ComputedRef<number> = computed(() => toNumber(props.offset))
     const { row, bindRow } = useRow()
-
     const colProvider: ColProvider = {
       setPadding(pad: ColPadding) {
         padding.value = pad
       },
     }
 
-    const getSize = (mode: string, size: string | number | SizeDescriptor | undefined) => {
+    const getSize = (mode: string, size: string | number | ColSizeDescriptor | undefined) => {
       const classes: string[] = []
 
       if (size == null) {

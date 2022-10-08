@@ -1,14 +1,14 @@
 <template>
   <div :class="n()">
     <div :class="n('linear')" v-if="mode === 'linear'">
-      <div :class="n('linear-block')" :style="{ height: toSizeUnit(lineWidth) }" v-bind="$attrs">
+      <div :class="n('linear-block')" :style="{ height: toSizeUnit(lineWidth) }">
         <div :class="n('linear-background')" v-if="track" :style="{ background: trackColor }"></div>
         <div
           :class="classes(n('linear-certain'), [ripple, n('linear-ripple')])"
           :style="{ background: color, width: linearProps.width }"
         ></div>
       </div>
-      <div :class="n('linear-label')" v-bind="$attrs" v-if="label">
+      <div :class="classes(n('linear-label'), [labelClass, labelClass])" v-if="label">
         <slot>
           {{ linearProps.roundValue }}
         </slot>
@@ -44,7 +44,7 @@
         ></circle>
       </svg>
 
-      <div :class="n('circle-label')" v-if="label" v-bind="$attrs">
+      <div :class="classes(n('circle-label'), [labelClass, labelClass])" v-if="label">
         <slot>
           {{ circleProps.roundValue }}
         </slot>
@@ -64,7 +64,6 @@ const { n, classes } = createNamespace('progress')
 
 export default defineComponent({
   name: 'VarProgress',
-  inheritAttrs: false,
   props,
   setup(props) {
     const linearProps = computed(() => {

@@ -8,8 +8,9 @@ export interface ProgressProps extends BasicAttributes {
   color?: string
   trackColor?: string
   ripple?: boolean
-  showAction?: boolean
-  showTrack?: boolean
+  label?: boolean
+  labelClass?: string
+  track?: boolean
   value?: number | string
   size?: number
   rotate?: number

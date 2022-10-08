@@ -22,7 +22,7 @@ export default defineComponent({
 
       return (
         <button class="var-button" style={{ background: color }} onClick={handleClick}>
-          {pack.value.button} -{'> '}
+          {pack.value.button}
           {slots.default?.()}
         </button>
       )

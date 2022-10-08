@@ -9,6 +9,7 @@
 <template>
   <var-menu>
     <var-button type="primary">基本使用</var-button>
+    
     <template #menu>
       <var-cell>菜单项</var-cell>
       <var-cell>菜单项</var-cell>
@@ -51,11 +52,18 @@ const placementOptions = [
 
 <template>
   <var-select :hint="false" v-model="placement">
-    <var-option v-for="(item, index) in placementOptions" :key="index" :label="item" />
+    <var-option 
+      v-for="(item, index) in placementOptions" 
+      :key="index"
+      :label="item" 
+    />
   </var-select>
-  <div class="flex-box">
+  
+  <div class="placement-container">
     <var-menu :placement="placement">
-      <var-button type="primary">弹出位置</var-button>
+      <var-button type="primary">
+        <var-icon name="star" />
+      </var-button>
       <template #menu>
         <var-cell>菜单项</var-cell>
         <var-cell>菜单项</var-cell>
@@ -66,9 +74,8 @@ const placementOptions = [
 </template>
 
 <style>
-.flex-box {
+.placement-container {
   height: 250px;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,6 +91,7 @@ const placementOptions = [
 <template>
   <var-menu offset-x="36px" offset-y="18px">
     <var-button type="primary">偏移量</var-button>
+    
     <template #menu>
       <var-cell>菜单项</var-cell>
       <var-cell>菜单项</var-cell>
@@ -101,6 +109,7 @@ const placementOptions = [
 <template>
   <var-menu trigger="hover">
     <var-button type="primary">触发方式</var-button>
+    
     <template #menu>
       <var-cell>菜单项</var-cell>
       <var-cell>菜单项</var-cell>
@@ -111,8 +120,6 @@ const placementOptions = [
 ```
 
 ### 注册事件
-
-Menu 提供了四个在打开与关闭时的钩子
 
 ```html
 <script setup>
@@ -132,6 +139,7 @@ const closed = () => Snackbar.info('closed')
     @closed="closed"
   >
     <var-button type="primary">注册事件</var-button>
+    
     <template #menu>
       <var-cell>菜单项</var-cell>
       <var-cell>菜单项</var-cell>
@@ -149,6 +157,7 @@ const closed = () => Snackbar.info('closed')
 <template>
   <var-menu disabled>
     <var-button type="primary">禁用</var-button>
+    
     <template #menu>
       <var-cell>菜单项</var-cell>
       <var-cell>菜单项</var-cell>
@@ -167,15 +176,17 @@ const closed = () => Snackbar.info('closed')
 import { ref } from 'vue'
 
 const show = ref(false)
+const closeMenu = () => { show.value = false }
 </script>
 
 <template>
   <var-menu v-model:show="show">
-    <var-button type="primary">受控方式</var-button>
+    <var-button type="primary">双向绑定</var-button>
+    
     <template #menu>
-      <var-cell>菜单项</var-cell>
-      <var-cell>菜单项</var-cell>
-      <var-cell>菜单项</var-cell>
+      <var-cell @click="closeMenu">菜单项</var-cell>
+      <var-cell @click="closeMenu">菜单项</var-cell>
+      <var-cell @click="closeMenu">菜单项</var-cell>
     </template>
   </var-menu>
 </template>
@@ -189,16 +200,16 @@ Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单�
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ------- | --- | --- | --- |
-| `v-model:show` | 是否显示菜单 | _string_ | `default` |
-| `placement` | 菜单弹出位置 | _options.placement_ | `cover-top-start` |
+| 参数 | 说明 | 类型                    | 默认值 |
+| ------- | --- |-----------------------| --- |
+| `v-model:show` | 是否显示菜单 | _string_              | `default` |
+| `placement` | 菜单弹出位置 | _Placement_           | `cover-top-start` |
 | `offset-x` | x 轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |
 | `offset-y` | y 轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |
 | `teleport` | 菜单挂载的位置 | _TeleportProps['to']_ | `body` |
-| `disabled` | 是否禁用菜单 | _boolean_ | `false` |
-| `trigger` | 菜单触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_ | `click` |
-| `default-style` | 是否启用默认样式 | _boolean_ | `true` |
+| `disabled` | 是否禁用菜单 | _boolean_             | `false` |
+| `trigger` | 菜单触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_              | `click` |
+| `default-style` | 是否启用默认样式 | _boolean_             | `true` |
 
 ### Placement
 

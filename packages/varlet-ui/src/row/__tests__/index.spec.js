@@ -131,6 +131,17 @@ describe('test row and col component props', () => {
     expect(classNames).toContain('var-col--span-xl-2')
     wrapper.unmount()
   })
+
+  test('test col direction', () => {
+    const wrapper = mount(VarRow, {
+      slots: {
+        default: () => [12, 12].map((span) => h(VarCol, { span, direction: 'column' })),
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
 })
 
 test('test row and col responsive 0', () => {

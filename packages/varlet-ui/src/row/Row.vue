@@ -28,7 +28,6 @@ export default defineComponent({
   props,
   setup(props) {
     const { cols, bindCols, length } = useCols()
-
     const average: ComputedRef<number> = computed(() => {
       const gutter: number = toPxNum(props.gutter)
       return gutter / 2

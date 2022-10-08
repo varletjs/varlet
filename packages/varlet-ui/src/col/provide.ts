@@ -6,7 +6,7 @@ export interface ColPadding {
   right: number
 }
 
-export type SizeDescriptor = {
+export type ColSizeDescriptor = {
   span?: number | string
   offset?: number | string
 }
