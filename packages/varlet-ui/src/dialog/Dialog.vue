@@ -18,7 +18,7 @@
   >
     <div
       :class="classes('var--box', n(), dialogClass)"
-      :style="{ ...dialogStyle, width: toSizeUnit(dialogWidth) }"
+      :style="{ width: toSizeUnit(width), ...dialogStyle }"
       v-bind="$attrs"
     >
       <div :class="n('title')">

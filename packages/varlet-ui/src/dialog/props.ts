@@ -12,6 +12,9 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  width: {
+    type: [Number, String],
+  },
   title: {
     type: String,
   },
@@ -66,9 +69,6 @@ export const props = {
   },
   dialogStyle: {
     type: Object,
-  },
-  dialogWidth: {
-    type: [Number, String],
   },
   ...pickProps(popupProps, [
     'overlay',
