@@ -29,6 +29,7 @@ const actions = {
 const createBasic = () =>
   Dialog({
     message: pack.value.message,
+    dialogWidth: 220,
   })
 
 const createAction = async () => actions[await Dialog(pack.value.message)]()
@@ -82,6 +83,7 @@ watchDarkMode(dark)
     v-model:show="show"
     :title="pack.title"
     :message="pack.message"
+    dialog-width="220"
     @confirm="() => Snackbar.success('confirm')"
     @cancel="() => Snackbar.error('cancel')"
     @closed="() => Snackbar.info('closed')"
