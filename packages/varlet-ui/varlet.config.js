@@ -102,6 +102,14 @@ module.exports = {
       },
       {
         text: {
+          'zh-CN': '从 1.x 迁移',
+          'en-US': 'Migrating from 1.x',
+        },
+        doc: 'migrationGuide',
+        type: 3,
+      },
+      {
+        text: {
           'zh-CN': '基础组件',
           'en-US': 'Basic Components',
         },

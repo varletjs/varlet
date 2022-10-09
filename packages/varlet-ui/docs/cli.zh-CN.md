@@ -1,4 +1,4 @@
-# Varlet Cli
+# 组件库快速成型工具(@varlet/cli)
 
 ### 介绍
 
@@ -77,7 +77,6 @@ varlet-cli gen
         |-- zh-CN.ts
         |-- en-US.ts
       |-- index.vue
-      
 ```
 
 生成的路由如下：

@@ -3,7 +3,7 @@
 ### 介绍
 本节主要介绍 `2.x` 版本相对于 `1.x` 版本的主要变化以及迁移的注意事项
 
-## @varlet/ui
+## 组件库(@varlet/ui)
 
 ### 组件重构
 
@@ -20,26 +20,21 @@
 - DatePicker 组件重命名了部分 api  `shadow` -> `elevation`
 - TimePicker 组件重命名了部分 api  `shadow` -> `elevation`
 - Card 组件重命名了部分 api  `height` -> `image-height`，`content` -> `floating-content`
+- Col 组件新增 `direction` 属性
+- Dialog 组件新增 `width` 属性
 
 ### 组件样式变量变更
 
-- Menu 组件新增样式 
-  - `--menu-background-color`
-- Select 组件新增样式
-  - `--select-select-min-height`
-  - `--select-menu-margin-top`
-- Pagination 组件新增样式
-  - `--pagination-simple-padding`
-- Loading 组件新增样式
-  - `--loading-color`
-- Cell 组件重命名样式
-  - `--cell-desc-font-size` -> `--cell-description-font-size`
-  - `--cell-desc-color` -> `--cell-description-color`
+- Menu 组件变量新增 `--menu-background-color`
+- Select 组件变量新增 `--select-select-min-height`，`--select-menu-margin-top`
+- Pagination 组件变量新增 `--pagination-simple-padding`
+- Loading 组件变量新增 `--loading-color`
+- Cell 组件变量重命名 `--cell-desc-font-size` -> `--cell-description-font-size`，`--cell-desc-color` -> `--cell-description-color`
 
 ### UMD 模块导出中英文语言包
 
 在 `1.x` 版本中，UMD 模块未对中英文语言包导出，在 `2.x` 版本中，我们将中英文语言包默认导出，
-非 UMD 模块也多了一种使用语言包的方式
+非 UMD 模块现在有两种使用语言包的方式
 
 ```ts
 import { Locale } from '@varlet/ui'
@@ -59,7 +54,7 @@ Locale.add('en-US', Locale.enUS)
 ### UMD 模块导出暗黑模式主题
 
 在 `1.x` 版本中，UMD 模块未对暗黑模式主题包导出，在 `2.x` 版本中，我们将暗黑模式主题包导出，
-非 UMD 模块也多了一种使用暗黑模式主题的方式
+非 UMD 模块现在有两种使用暗黑模式主题的方式
 
 ```ts
 import { StyleProvider } from '@varlet/ui'
@@ -76,9 +71,10 @@ import { StyleProvider, Themes } from '@varlet/ui'
 StyleProvider(Themes.dark)
 ```
 
-### 移除 `less` 主题变量的支持
+### 移除 less 主题变量的支持
 
-在 `2.x` 版本中不再支持 `less` 主题变量，如果您使用了在构建时替换 `less` 主题变量的方案，需要替换成 `css variable` 方案
+如今 `css variable` 方案已经十分成熟，在 `2.x` 版本中不再支持 `less` 主题变量，这有利于减小包的发布体积。
+如果您使用了在构建时替换 `less` 主题变量的方案，需要替换成 `css variable` 方案
 
 ### Typescript 类型优化
 
@@ -88,7 +84,7 @@ StyleProvider(Themes.dark)
 import type { ButtonProps, ButtonType, ButtonSize } from '@varlet/ui'
 ```
 
-## @varlet/cli
+## 组件库快速成型工具(@varlet/cli)
 
 ### 命令重构
 
