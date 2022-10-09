@@ -67,6 +67,9 @@ export const props = {
   dialogStyle: {
     type: Object,
   },
+  dialogWidth: {
+    type: [Number, String],
+  },
   ...pickProps(popupProps, [
     'overlay',
     'overlayClass',
