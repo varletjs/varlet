@@ -27,7 +27,7 @@ import '@varlet/ui/es/button/style/index.js'
 </script>
 
 <template>
-  <var-button>Say hello</var-button>
+  <var-button>Say Hello</var-button>
 </template>
 ````
 
@@ -127,7 +127,7 @@ function handleClick() {
 </script>
 
 <template>
-  <var-button @click="handleClick">Say hello</var-button>
+  <var-button @click="handleClick">Say Hello</var-button>
 </template>
 ````
 
