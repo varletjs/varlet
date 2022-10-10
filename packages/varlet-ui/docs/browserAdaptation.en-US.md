@@ -48,6 +48,8 @@ It is recommended to use `@varlet/touch-emulator` to set `touch -> mouse` for de
 npm i @varlet/touch-emulator
 # yarn
 yarn add @varlet/touch-emulator
+# pnpm
+pnpm add @varlet/touch-emulator
 ```
 
 ```js
