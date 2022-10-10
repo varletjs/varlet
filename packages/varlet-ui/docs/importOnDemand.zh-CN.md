@@ -103,6 +103,7 @@ export default defineConfig({
 为了得到良好的 IDE 语法高亮，请确保上述两个插件生成的类型声明文件被 `typescript` 识别，可在 `tsconfig.json` 中进行如下配置
 
 ```json
+// playground-ignore
 {
   "include": ["auto-imports.d.ts", "components.d.ts"]
 }

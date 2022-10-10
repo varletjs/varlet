@@ -33,10 +33,11 @@
 
 ### UMD 模块导出中英文语言包
 
-在 `1.x` 版本中，UMD 模块未对中英文语言包导出，在 `2.x` 版本中，我们将中英文语言包默认导出，
+在 `1.x` 版本中，UMD 模块不导出中英文语言包，在 `2.x` 版本中，我们将中英文语言包进行了导出，
 非 UMD 模块现在有两种使用语言包的方式
 
 ```ts
+// playground-ignore
 import { Locale } from '@varlet/ui'
 import enUS from '@varlet/ui/es/locale/en-US'
 
@@ -46,6 +47,7 @@ Locale.add('en-US', enUS)
 或
 
 ```ts
+// playground-ignore
 import { Locale } from '@varlet/ui'
 
 Locale.add('en-US', Locale.enUS)
@@ -53,10 +55,11 @@ Locale.add('en-US', Locale.enUS)
 
 ### UMD 模块导出暗黑模式主题
 
-在 `1.x` 版本中，UMD 模块未对暗黑模式主题包导出，在 `2.x` 版本中，我们将暗黑模式主题包导出，
+在 `1.x` 版本中，UMD 模块不导出暗黑模式主题包，在 `2.x` 版本中，我们将暗黑模式主题包进行了导出，
 非 UMD 模块现在有两种使用暗黑模式主题的方式
 
 ```ts
+// playground-ignore
 import { StyleProvider } from '@varlet/ui'
 import dark from '@varlet/ui/es/themes/dark'
 
@@ -66,6 +69,7 @@ StyleProvider(dark)
 或
 
 ```ts
+// playground-ignore
 import { StyleProvider, Themes } from '@varlet/ui'
 
 StyleProvider(Themes.dark)
@@ -81,8 +85,15 @@ StyleProvider(Themes.dark)
 我们对组件内部类型进行了重构，抽象了更多的类型并且暴露了出来，组件的类型规范依照`组件名` + `类型名`的形式。使用方式如下所示
 
 ```ts
+// playground-ignore
 import type { ButtonProps, ButtonType, ButtonSize } from '@varlet/ui'
 ```
+
+### 支持自动引入函数组件
+
+在 1.x 中，组件库只支持自动引入在模板中的声明式组件，函数组件 `(例如: Snackbar)` 仍然需要手动引入样式文件。
+在 2.x 中，通过 [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) 插件支持了函数组件的自动引入。
+详情见[按需引入](#/zh-CN/importOnDemand)
 
 ## 组件库快速成型工具(@varlet/cli)
 

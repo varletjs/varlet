@@ -37,15 +37,17 @@ In the `1.x` version, the UMD module did not export the Chinese and English lang
 Non-UMD modules now have two ways to use language packs
 
 ```ts
+// playground-ignore
 import { Locale } from '@varlet/ui'
 import enUS from '@varlet/ui/es/locale/en-US'
 
 Locale.add('en-US', enUS)
 ````
 
-or
+OR
 
 ```ts
+// playground-ignore
 import { Locale } from '@varlet/ui'
 
 Locale.add('en-US', Locale.enUS)
@@ -57,15 +59,17 @@ In `1.x` version, UMD module is not exported for dark mode theme package, in `2.
 Non-UMD modules now have two ways to use the dark mode theme
 
 ```ts
+// playground-ignore
 import { StyleProvider } from '@varlet/ui'
 import dark from '@varlet/ui/es/themes/dark'
 
 StyleProvider(dark)
 ````
 
-or
+OR
 
 ```ts
+// playground-ignore
 import { StyleProvider, Themes } from '@varlet/ui'
 
 StyleProvider(Themes.dark)
@@ -81,8 +85,15 @@ If you use a scheme that replaces the `less` theme variable at build time, you n
 We refactored the internal types of components, abstracting more types and exposing them. The type specification of components is in the form of `component name` + `type name`. Use as follows
 
 ```ts
+// playground-ignore
 import type { ButtonProps, ButtonType, ButtonSize } from '@varlet/ui'
 ````
+
+### Supports automatic introduction of function components
+
+In 1.x, the component library only supports declarative components that are automatically imported into templates, and functional components `(eg: Snackbar)` still need to manually import style files.
+In 2.x, the automatic import of function components is supported through the [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) plugin.
+For details, see [Import On Demand](#/en-US/importOnDemand)
 
 ## Components Library Tools(@varlet/cli)
 
