@@ -50,10 +50,16 @@ const handleSidebarChange = (menu: Menu) => {
 }
 
 const confirmClose = () => {
-  if (!window.confirm('The code will no longer be saved after closing. Are you sure you want to close?')) {
+  const key = 'VARLET_UI_PLAYGROUND_HAS_BEEN_CLOSED'
+
+  if (
+    !localStorage.getItem(key) &&
+    !window.confirm('The code will no longer be saved after closing. Are you sure you want to close?')
+  ) {
     return
   }
 
+  localStorage.setItem(key, 'true')
   context.showPlayground = false
 }
 
