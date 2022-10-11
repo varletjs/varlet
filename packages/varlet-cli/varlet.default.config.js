@@ -152,7 +152,7 @@ module.exports = {
       },
       versions: null,
       github: 'https://github.com/varletjs/varlet',
-      playground: 'https://varlet-ui-playground-git-dev-varletjs.vercel.app',
+      playground: 'https://varlet.gitee.io/varlet-ui-playground',
       darkMode: true,
     },
     clipboard: {
