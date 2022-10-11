@@ -5,6 +5,7 @@ export type DialogTypeMessageAlign = 'left' | 'center' | 'right'
 
 export interface DialogProps extends BasicAttributes {
   show?: boolean
+  width?: string | number
   title?: string
   message?: string
   messageAlign?: DialogTypeMessageAlign
@@ -43,6 +44,7 @@ export type DialogActions = 'confirm' | 'cancel' | 'close'
 
 export interface DialogOptions {
   title?: string
+  width?: string | number
   message?: string
   messageAlign?: 'left' | 'center' | 'right'
   confirmButton?: boolean

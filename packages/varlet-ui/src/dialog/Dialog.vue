@@ -16,7 +16,11 @@
     @route-change="onRouteChange"
     @click-overlay="handleClickOverlay"
   >
-    <div :class="classes('var--box', n(), dialogClass)" :style="dialogStyle" v-bind="$attrs">
+    <div
+      :class="classes('var--box', n(), dialogClass)"
+      :style="{ width: toSizeUnit(width), ...dialogStyle }"
+      v-bind="$attrs"
+    >
       <div :class="n('title')">
         <slot name="title">{{ dt(title, pack.dialogTitle) }}</slot>
       </div>
@@ -62,6 +66,7 @@ import { dt } from '../utils/shared'
 import { pack } from '../locale'
 import type { Ref } from 'vue'
 import { call, createNamespace } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
 
 const { n, classes } = createNamespace('dialog')
 
@@ -153,6 +158,7 @@ export default defineComponent({
       handleClickOverlay,
       confirm,
       cancel,
+      toSizeUnit,
     }
   },
 })

@@ -50,10 +50,16 @@ const handleSidebarChange = (menu: Menu) => {
 }
 
 const confirmClose = () => {
-  if (!window.confirm('The code will no longer be saved after closing. Are you sure you want to close?')) {
+  const key = 'VARLET_UI_PLAYGROUND_HAS_BEEN_CLOSED'
+
+  if (
+    !localStorage.getItem(key) &&
+    !window.confirm('The code will no longer be saved after closing. Are you sure you want to close?')
+  ) {
     return
   }
 
+  localStorage.setItem(key, 'true')
   context.showPlayground = false
 }
 
@@ -305,7 +311,7 @@ iframe {
       }
 
       h2 {
-        margin: 30px 0 20px;
+        margin: 30px 0;
         font-size: 25px;
       }
 
@@ -327,9 +333,16 @@ iframe {
         line-height: 26px;
         border-radius: 4px;
         background: var(--site-config-color-bar);
-        list-style: none;
         margin: 14px 0 0;
         padding: 0;
+
+        li {
+          margin-bottom: 4px;
+        }
+      }
+
+      ul,ol {
+        padding: 0 0 0 18px;
       }
 
       pre {

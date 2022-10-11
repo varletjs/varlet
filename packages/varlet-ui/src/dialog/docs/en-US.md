@@ -123,7 +123,7 @@ const createAction = async () => {
 ### Basic Use
 
 ```html
-<script>
+<script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
    

@@ -12,6 +12,9 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  width: {
+    type: [Number, String],
+  },
   title: {
     type: String,
   },

@@ -6,6 +6,7 @@ import type { App, TeleportProps } from 'vue'
 
 interface DialogOptions {
   show?: boolean
+  width?: string | number
   title?: string
   message?: string
   messageAlign?: string

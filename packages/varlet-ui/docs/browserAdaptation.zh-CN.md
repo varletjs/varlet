@@ -46,6 +46,8 @@ module.exports = {
 npm i @varlet/touch-emulator
 # yarn
 yarn add @varlet/touch-emulator
+# pnpm
+pnpm add @varlet/touch-emulator
 ```
 
 ```js

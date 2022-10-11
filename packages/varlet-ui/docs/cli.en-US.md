@@ -1,10 +1,10 @@
-# Varlet Cli
+# Components Library Tools(@varlet/cli)
 
 ### Intro
 
 The out-of-the-box `Vue3 component library` rapid prototyping tool provides a series of commands and tools to solve the problem of component library development
 
-### 特性
+### Features
 
 - 📦 &nbsp;Out-of-the-box component library development environment
 - 📦 &nbsp;An out-of-the-box component library compilation tool that supports exporting `esm`, `cjs`, `umd` module codes
