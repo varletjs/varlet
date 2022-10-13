@@ -1,6 +1,6 @@
 {
   "name": "@varlet/cli",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "cli of varlet",
   "bin": {
     "varlet-cli": "./lib/bin.js"
