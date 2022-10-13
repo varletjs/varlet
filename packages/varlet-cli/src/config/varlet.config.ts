@@ -11,7 +11,7 @@ interface VarletConfig {
   name?: string
   /**
    * @default `var`
-   * Component class name preffix
+   * Component name prefix
    */
   namespace?: string
   /**
@@ -19,10 +19,9 @@ interface VarletConfig {
    * Local dev server host
    */
   host?: string
-
   /**
    * @default `8080`
-   * Local dev server protcol
+   * Local dev server port
    */
   port?: number
   logo?: string
