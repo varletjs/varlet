@@ -20,7 +20,7 @@ Varlet is a Material design mobile component library developed based on `Vue3`, 
 
 ### Official Ecosystem
 
-The following projects are maintained by the official team of the component library for a long time
+The following projects are maintained by the official team for a long time
 
 | Name | Description |
 |------------------------------------------------- -------------------------------------------------- ---|--------------------------------------|
