@@ -3,8 +3,10 @@
   "version": "2.0.0",
   "description": "cli of varlet",
   "bin": {
-    "varlet-cli": "./lib/index.js"
+    "varlet-cli": "./lib/bin.js"
   },
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
   "keywords": [
     "cli",
     "varlet"
