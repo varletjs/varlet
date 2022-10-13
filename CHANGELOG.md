@@ -1,3 +1,12 @@
+## [2.0.1](https://github.com/varletjs/varlet/compare/v2.0.0...v2.0.1) (2022-10-13)
+
+
+### Features
+
+* **cli:** add defineConfig for type helper ([#721](https://github.com/varletjs/varlet/issues/721)) ([84579f4](https://github.com/varletjs/varlet/commit/84579f488a7ca800e083c97019b6f6fd785b9fa3))
+
+
+
 # [2.0.0](https://github.com/varletjs/varlet/compare/v1.27.20...v2.0.0) (2022-10-11)
 
 

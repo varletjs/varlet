@@ -1,6 +1,6 @@
 {
   "name": "@varlet/shared",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "module": "es/index.js",
   "main": "lib/index.js",
   "description": "shared utils of varlet",
