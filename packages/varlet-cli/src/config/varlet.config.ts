@@ -13,7 +13,7 @@ interface VarletConfig {
    * @default `var`
    * Component class name preffix
    */
-  namesapce?: string
+  namespace?: string
   /**
    * @default `localhost`
    * Local dev server host
