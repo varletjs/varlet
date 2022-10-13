@@ -11,6 +11,7 @@
     <img
       :class="n('image')"
       :alt="alt"
+      :title="title"
       :lazy-error="error"
       :lazy-loading="loading"
       :style="{ objectFit: fit }"
@@ -24,6 +25,7 @@
     <img
       :class="n('image')"
       :alt="alt"
+      :title="title"
       :style="{ objectFit: fit }"
       :src="src"
       v-else

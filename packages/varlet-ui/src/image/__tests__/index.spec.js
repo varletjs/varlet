@@ -113,14 +113,16 @@ describe('test image component props', () => {
     })
   })
 
-  test('test image alt', () => {
+  test('test image alt and title', () => {
     const wrapper = mount(VarImage, {
       props: {
         alt: 'This is alt',
+        title: 'This is title',
       },
     })
 
     expect(wrapper.find('.var-image__image').attributes('alt')).toContain('This is alt')
+    expect(wrapper.find('.var-image__image').attributes('title')).toContain('This is title')
     wrapper.unmount()
   })
 

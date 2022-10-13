@@ -16,6 +16,9 @@ export const props = {
   alt: {
     type: String,
   },
+  title: {
+    type: String,
+  },
   width: {
     type: [String, Number],
   },

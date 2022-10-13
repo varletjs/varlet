@@ -154,19 +154,19 @@ import logo from '../../assets/logo.png'
 
 ### Props
 
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `src` | Image src | _string_ | `-` |
+| Prop | Description                                                                    | Type | Default |
+| --- |--------------------------------------------------------------------------------| --- | --- |
+| `src` | Image src                                                                      | _string_ | `-` |
 | `fit` | Image fit mode, optional value is `fill` `contain` `cover` `none` `scale-down` | _string_ | `fill` |
-| `alt` | Image alt text | _string_ | `-` |
-| `width` | Image width | _string \| number_ | `-` |
-| `height` | Image height | _string \| number_ | `-` |
-| `radius` | Image radius | _string \| number_ | `-` |
-| `lazy` | Whether to enable lazy loading | _boolean_ | `false` |
-| `loading` | When lazy loading is enabled, the image displayed in loading | _string_ | `-` |
-| `error` | When lazy loading is enabled, the image displayed in error | _string_ | `-` |
-| `ripple` | Whether to enable ripple | _boolean_ | `false` |
-| `block` | Whether it is a block element | _boolean_ | `true` |
+| `alt` | Image alt text, the same as the native attribute of the `img` tag              | _string_ | `-` |
+| `width` | Image title text, the same as the native attribute of the `img` tag            | _string \| number_ | `-` |
+| `height` | Image height                                                                   | _string \| number_ | `-` |
+| `radius` | Image radius                                                                   | _string \| number_ | `-` |
+| `lazy` | Whether to enable lazy loading                                                 | _boolean_ | `false` |
+| `loading` | When lazy loading is enabled, the image displayed in loading                   | _string_ | `-` |
+| `error` | When lazy loading is enabled, the image displayed in error                     | _string_ | `-` |
+| `ripple` | Whether to enable ripple                                                       | _boolean_ | `false` |
+| `block` | Whether it is a block element                                                  | _boolean_ | `true` |
 
 ### Events
 
