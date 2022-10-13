@@ -1,3 +1,46 @@
+# [2.0.0](https://github.com/varletjs/varlet/compare/v1.27.20...v2.0.0) (2022-10-11)
+
+
+### Bug Fixes
+
+* **button&snackbar:** add loading color prop ([d4353b5](https://github.com/varletjs/varlet/commit/d4353b5fad0d9309531bc12863ddb13e3f942305))
+* **cli/commitlint:** add ！for break change ([86ec583](https://github.com/varletjs/varlet/commit/86ec5839128077d668a76b910279626437ebc909))
+* **cli/gen:** rename gitignore ([a60ebd0](https://github.com/varletjs/varlet/commit/a60ebd045d1809416cbfd3aa9f756bc410bdca1c))
+* **jest:** ensure to generate config ([876ba35](https://github.com/varletjs/varlet/commit/876ba3531f57d08573b7a033c888c766870913db))
+* **loading & pagination:** expose loading color variable and optimize style of pagination ([1f36c80](https://github.com/varletjs/varlet/commit/1f36c809540e8b1f4c9eb4d60d10930da6d6cd19))
+* **playground:** remove import about vite and fix ts error ([cf261e6](https://github.com/varletjs/varlet/commit/cf261e6b6c27812bf154ed3c82734fb8289e27bd))
+* **rate:** fix wrong style in form component ([4cae7e0](https://github.com/varletjs/varlet/commit/4cae7e0bf4885ee7cf6f91c12c705629f76e2807))
+* **slider:** ignore slider track height ([2387b16](https://github.com/varletjs/varlet/commit/2387b16a809c9da83a8a49caa3badd4e9338f222))
+* **ui/button,chip:** remove line-height ([ec72772](https://github.com/varletjs/varlet/commit/ec72772122a0ae6b6f6805261599cde94663bb92))
+* **ui/card:** fix scroll lock err ([5f12819](https://github.com/varletjs/varlet/commit/5f128192582d383e2f6bd5c90db88cab9265db15))
+* **ui/card:** fix the problem of ripple accidental failure ([facd510](https://github.com/varletjs/varlet/commit/facd5101fe18ef98efb0df840c7de5ecdf2fc4e4))
+
+
+### Features
+
+* **cli:** replace jest with vitest ([7ddbade](https://github.com/varletjs/varlet/commit/7ddbade1840ad93a9dadfeb1ce2a2dd914a0143b))
+* export dark theme and playground support dark theme preview ([cede810](https://github.com/varletjs/varlet/commit/cede810856f756712c6bfe352d7d026c067330c6))
+* **gen:** add simple-git-hooks scripts ([c1c6cd1](https://github.com/varletjs/varlet/commit/c1c6cd1b5c61701bcc6e3fd6e5cad48fe99e7cc4))
+* **style-provider:** support custom tag ([ed653e6](https://github.com/varletjs/varlet/commit/ed653e6510f310265e1dad757ce008e9b587fef2))
+* **ui/col:** add a direction API for col ([#716](https://github.com/varletjs/varlet/issues/716)) ([6a30c8e](https://github.com/varletjs/varlet/commit/6a30c8ed9305d0d32e42439ec5cc8cc6fb37e82b))
+* **ui/dialog:** add width props ([#718](https://github.com/varletjs/varlet/issues/718)) ([916ee21](https://github.com/varletjs/varlet/commit/916ee21c6c01b12066e9126a62c50609790ed737))
+* **ui/locale:** export zh-CN en-US language ([e4eecf0](https://github.com/varletjs/varlet/commit/e4eecf0f3525f7f40abcd7caf7b2721a75584f45))
+* **ui/menu-v2:** new menu component to replace old menu component, temporarily named v2 ([a2d621a](https://github.com/varletjs/varlet/commit/a2d621a8885dd20626ebe3f3ab61a4fcc9c487fb))
+* **ui/menu:** replace menuV2 with menu ([#690](https://github.com/varletjs/varlet/issues/690)) ([cbf117d](https://github.com/varletjs/varlet/commit/cbf117d76924644845509da09e2aed39d380710b))
+* **ui/tabs-items:** support getSwipe method ([23ffad1](https://github.com/varletjs/varlet/commit/23ffad12f643e47ec1fdd8e42f669005fd4426ad))
+
+
+### Performance Improvements
+
+* Improved Menu performance and Flip bugs ([#680](https://github.com/varletjs/varlet/issues/680)) ([f582c78](https://github.com/varletjs/varlet/commit/f582c783ff1e4435f5d6f03d5ce8658df84a7f04))
+
+
+### Reverts
+
+* revert test case ([c1cf24d](https://github.com/varletjs/varlet/commit/c1cf24d5c87de2f6336b065778698d5d7651d62a))
+
+
+
 ## [1.27.20](https://github.com/varletjs/varlet/compare/v1.27.19...v1.27.20) (2022-08-11)
 
 

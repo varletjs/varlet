@@ -1,4 +1,6 @@
-module.exports = {
+const { defineConfig } = require('@varlet/cli')
+
+module.exports = defineConfig({
   useMobile: true,
   analysis: {
     baidu: 'https://hm.baidu.com/hm.js?5c628ce58967c90ff4dd9c8803d930fa',
@@ -562,4 +564,4 @@ module.exports = {
     "import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter'\n":
       "import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'\n",
   },
-}
+})

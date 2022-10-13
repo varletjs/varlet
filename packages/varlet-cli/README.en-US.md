@@ -42,7 +42,7 @@ Also refer to `@varlet/ui` [varlet.config.js](https://github.com/varletjs/varlet
 | -- | -------------- | -------- | ---------- |
 | `name` | The full name of the component library, which will be used as the package name | _string_ | `Varlet` |
 | `namespace` | Component library namespace, which will be used as a component prefix | _string_ | `var` |
-| `host` | Development server host | _number_ | `localhost` |
+| `host` | Development server host | _string_ | `localhost` |
 | `port` | Development server port | _number_ | `8080` |
 | `title` | The title of the component library in the documentation | _string_ | `VARLET` |
 | `logo` | The logo of the component library in the documentation | _string_ | `-` |
