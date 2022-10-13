@@ -40,7 +40,7 @@ varlet-cli gen
 | ----- | -------------- | -------- | ---------- |
 | `name` | 组件库全名，会作为包名 | _string_ | `Varlet` |
 | `namespace` | 组件库命名空间, 会作为组件前缀 | _string_ | `var` |
-| `host` | 开发服务器主机 | _number_ | `localhost` |
+| `host` | 开发服务器主机 | _string_ | `localhost` |
 | `port` | 开发服务器端口 | _number_ | `8080` |
 | `title` | 文档中组件库的标题 | _string_ | `VARLET` |
 | `logo` | 文档中组件库的logo | _string_ | `-` |
