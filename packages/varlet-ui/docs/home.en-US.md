@@ -23,7 +23,7 @@ Varlet is a Material design mobile component library developed based on `Vue3`, 
 The following projects are maintained by the official team for a long time
 
 | Name | Description |
-|------------------------------------------------- -------------------------------------------------- ---|--------------------------------------|
+|------------------------------------------------------------------------------------------------------|--------------------------------------|
 | [@varlet/cli](https://github.com/varletjs/varlet/tree/dev/packages/varlet-cli) | `Vue3 component library rapid prototyping tool` |
 | [@varlet/touch-emulator](https://github.com/varletjs/varlet/tree/dev/packages/varlet-touch-emulator) | `Desktop adapter, so that the mobile component library can run on the desktop ` |
 | [@varlet/ui-playground](https://github.com/varletjs/varlet/tree/dev/packages/varlet-ui-playground) | `Varlet component library online editing tool` |
@@ -34,7 +34,7 @@ The following projects are maintained by the official team for a long time
 The following projects are maintained by community personnel, welcome to add
 
 | Name | Description |
-|------------------------------------------------- ---------------|--------------------------------- --------|
+|----------------------------------------------------------------|-----------------------------------------|
 | [vue-h5-template](https://github.com/sunniejs/vue-h5-template) | `Vue-based mobile template scaffolding, providing mobile presets for Varlet component library` |
 | [create-vite-app](https://github.com/ErKeLost/create-vite-app) | `A desktop template scaffolding based on Vue3, providing desktop presets for Varlet component library` |
 
