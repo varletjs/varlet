@@ -1,5 +1,6 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { BadgeProps } from './badge'
+import { VNode } from 'vue'
 
 export interface BottomNavigationItemProps extends BasicAttributes {
   name?: string
@@ -10,8 +11,17 @@ export interface BottomNavigationItemProps extends BasicAttributes {
   onClick?: (active: string | number) => void
 }
 
+export interface BottomNavigationItemIcon {
+  active: boolean
+}
+
 export class BottomNavigationItem extends VarComponent {
   $props: BottomNavigationItemProps
+
+  $slots: {
+    default(): VNode[]
+    icon(data: BottomNavigationItemIcon): VNode[]
+  }
 }
 
 export class _BottomNavigationItemComponent extends BottomNavigationItem {}

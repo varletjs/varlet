@@ -1,6 +1,6 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { LoadingType, LoadingSize } from './loading'
-import { App, TeleportProps } from 'vue'
+import { App, TeleportProps, VNode } from 'vue'
 
 export type SnackbarPosition = 'top' | 'center' | 'bottom'
 
@@ -30,6 +30,11 @@ export interface SnackbarProps extends BasicAttributes {
 
 export class SnackbarComponent extends VarComponent {
   $props: SnackbarProps
+
+  $slots: {
+    default(): VNode[]
+    action(): VNode[]
+  }
 }
 
 export interface SnackbarHandel {

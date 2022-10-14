@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes, Type as ChipType, Size as ChipSize } from './varComponent'
+import { VNode } from 'vue'
 
 export { ChipType, ChipSize }
 
@@ -17,6 +18,12 @@ export interface ChipProps extends BasicAttributes {
 
 export class Chip extends VarComponent {
   $props: ChipProps
+
+  $slots: {
+    default(): VNode[]
+    left(): VNode[]
+    right(): VNode[]
+  }
 }
 
 export class _ChipComponent extends Chip {}

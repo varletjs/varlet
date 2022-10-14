@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export type SliderLabelVisible = 'always' | 'normal' | 'never'
 
@@ -23,8 +24,16 @@ export interface SliderProps extends BasicAttributes {
   'onUpdate:modelValue'?: (value: number | Array<number>) => void
 }
 
+export interface SliderButton {
+  currentValue: number | Array<number>
+}
+
 export class Slider extends VarComponent {
   $props: SliderProps
+
+  $slots: {
+    button(data: SliderButton): VNode[]
+  }
 }
 
 export class _SliderComponent extends Slider {}

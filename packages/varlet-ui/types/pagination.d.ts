@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 type Range = [number, number]
 
@@ -20,6 +21,11 @@ export interface PaginationProps extends BasicAttributes {
 
 export class Pagination extends VarComponent {
   $props: PaginationProps
+
+  $slots: {
+    prev(): VNode[]
+    next(): VNode[]
+  }
 }
 
 export class _PaginationComponent extends Pagination {}

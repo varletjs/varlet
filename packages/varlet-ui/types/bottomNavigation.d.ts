@@ -1,5 +1,6 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { ButtonProps } from './button'
+import { VNode } from 'vue'
 
 export interface BottomNavigationProps extends BasicAttributes {
   active?: number | string
@@ -18,6 +19,10 @@ export interface BottomNavigationProps extends BasicAttributes {
 
 export class BottomNavigation extends VarComponent {
   $props: BottomNavigationProps
+
+  $slots: {
+    fab(): VNode[]
+  }
 }
 
 export class _BottomNavigationComponent extends BottomNavigation {}

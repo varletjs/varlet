@@ -1,4 +1,6 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
+import { CountdownTimeData } from './countdown'
 
 export type DatePickerType = 'date' | 'month'
 
@@ -22,8 +24,37 @@ export interface DatePickerProps extends BasicAttributes {
   'onUpdate:modelValue'?: (value: string | string[]) => void
 }
 
+export interface DatePickerYear {
+  year: string
+}
+
+export interface DatePickerMonth extends DatePickerYear {
+  month: string
+}
+
+export interface DatePickerDate extends DatePickerMonth {
+  date: string
+  week: string
+}
+
+export interface DatePickerRange {
+  choose: [string, string]
+}
+
+export interface DatePickerMultiple {
+  choose: Array<string>
+}
+
 export class DatePicker extends VarComponent {
   $props: DatePickerProps
+
+  $slots: {
+    year(data: DatePickerYear): VNode[]
+    month(data: DatePickerMonth): VNode[]
+    date(data: DatePickerDate): VNode[]
+    range(data: DatePickerRange): VNode[]
+    multiple(data: DatePickerMultiple): VNode[]
+  }
 }
 
 export class _DatePickerComponent extends DatePicker {}

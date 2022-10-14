@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export interface CellProps extends BasicAttributes {
   title?: string | number
@@ -13,6 +14,13 @@ export interface CellProps extends BasicAttributes {
 
 export class Cell extends VarComponent {
   $props: CellProps
+
+  $slots: {
+    default(): VNode[]
+    icon(): VNode[]
+    description(): VNode[]
+    extra(): VNode[]
+  }
 }
 
 export class _CellComponent extends Cell {}

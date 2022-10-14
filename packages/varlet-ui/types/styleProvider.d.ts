@@ -1,5 +1,6 @@
 import type { App } from 'vue'
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export type StyleVars = Record<string, string>
 
@@ -10,6 +11,10 @@ export interface StyleProviderProps extends BasicAttributes {
 
 export class StyleProviderComponent extends VarComponent {
   $props: StyleProviderProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export interface IStyleProvider {

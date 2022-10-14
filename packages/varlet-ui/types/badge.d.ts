@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes, Type as BadgeType } from './varComponent'
+import { VNode } from 'vue'
 
 export type BadgePosition = 'right-top' | 'right-bottom' | 'left-top' | 'left-bottom'
 
@@ -17,6 +18,8 @@ export interface BadgeProps extends BasicAttributes {
 
 export class Badge extends VarComponent {
   $props: BadgeProps
+
+  default(): VNode[]
 }
 
 export class _BadgeComponent extends Badge {}
