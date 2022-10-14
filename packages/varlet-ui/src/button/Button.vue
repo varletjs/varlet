@@ -40,7 +40,7 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import VarLoading from '../loading'
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
 import type { Ref } from 'vue'
@@ -56,6 +56,7 @@ export default defineComponent({
   props,
   setup(props) {
     const pending: Ref<boolean> = ref(false)
+    const notAvailable = computed(() => props.loading || props.disabled || pending.value)
 
     const attemptAutoLoading = (result: any) => {
       if (props.autoLoading) {
@@ -71,9 +72,9 @@ export default defineComponent({
     }
 
     const handleClick = (e: Event) => {
-      const { loading, disabled, onClick } = props
+      const { onClick } = props
 
-      if (!onClick || loading || disabled || pending.value) {
+      if (!onClick || notAvailable.value) {
         return
       }
 
@@ -81,9 +82,9 @@ export default defineComponent({
     }
 
     const handleTouchstart = (e: Event) => {
-      const { loading, disabled, onTouchstart } = props
+      const { onTouchstart } = props
 
-      if (!onTouchstart || loading || disabled || pending.value) {
+      if (!onTouchstart || notAvailable.value) {
         return
       }
 
