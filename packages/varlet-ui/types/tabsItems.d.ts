@@ -1,5 +1,6 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import type { Swipe } from './swipe'
+import { VNode } from 'vue'
 
 export interface TabsItemsProps extends BasicAttributes {
   active?: string | number
@@ -8,6 +9,10 @@ export interface TabsItemsProps extends BasicAttributes {
 
 export class TabsItems extends VarComponent {
   $props: TabsItemsProps
+
+  $slots: {
+    default(): VNode[]
+  }
 
   getSwipe(): Swipe
 }

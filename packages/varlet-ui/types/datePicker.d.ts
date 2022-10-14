@@ -1,6 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { VNode } from 'vue'
-import { CountdownTimeData } from './countdown'
 
 export type DatePickerType = 'date' | 'month'
 

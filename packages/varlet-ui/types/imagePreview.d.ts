@@ -1,5 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
-import { App, TeleportProps } from 'vue'
+import { App, TeleportProps, VNode } from 'vue'
 
 export interface ImagePreviewProps extends BasicAttributes {
   show?: boolean
@@ -35,6 +35,12 @@ export interface ImagePreviewOptions {
 
 export class ImagePreviewComponent extends VarComponent {
   $props: ImagePreviewProps
+
+  $slots: {
+    indicator(): VNode[]
+    extra(): VNode[]
+    'close-icon'(): VNode[]
+  }
 }
 
 export interface IImagePreview {

@@ -19,7 +19,9 @@ export interface BadgeProps extends BasicAttributes {
 export class Badge extends VarComponent {
   $props: BadgeProps
 
-  default(): VNode[]
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _BadgeComponent extends Badge {}

@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export interface FormProps extends BasicAttributes {
   disabled?: boolean
@@ -7,6 +8,10 @@ export interface FormProps extends BasicAttributes {
 
 export class Form extends VarComponent {
   $props: FormProps
+
+  $slots: {
+    default(): VNode[]
+  }
 
   validate(): Promise<boolean>
 

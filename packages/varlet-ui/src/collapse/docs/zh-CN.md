@@ -149,6 +149,12 @@ const value = ref(['1'])
 
 ### 插槽
 
+#### Collapse Slots
+
+| 名称 | 说明      | 参数 |
+| ----- |---------| -------- |
+| `default` | 折叠面板的内容 | `-` |
+
 #### CollapseItem Slots
 
 | 名称 | 说明 | 参数 |

@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export type SpaceAlign = 'stretch' | 'center' | 'start' | 'end' | 'baseline' | 'initial' | 'inherit'
 
@@ -21,6 +22,10 @@ export interface SpaceProps extends BasicAttributes {
 
 export class Space extends VarComponent {
   $props: SpaceProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _SpaceComponent extends Space {}

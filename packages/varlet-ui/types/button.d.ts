@@ -1,5 +1,6 @@
 import { VarComponent, BasicAttributes, Type as ButtonType, Size as ButtonSize } from './varComponent'
 import { LoadingType, LoadingSize } from './loading'
+import { VNode } from 'vue'
 
 export { ButtonType, ButtonSize }
 
@@ -26,6 +27,10 @@ export interface ButtonProps extends BasicAttributes {
 
 export class Button extends VarComponent {
   $props: ButtonProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _ButtonComponent extends Button {}

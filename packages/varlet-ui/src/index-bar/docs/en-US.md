@@ -84,6 +84,12 @@ onMounted(() => {
 
 ### Slots
 
+#### IndexBar Slots
+
+| Name | Description          | SlotProps |
+| --- |----------------------| --- |
+| `default` | Content of index bar | `-` |
+
 #### IndexAnchor Slots
 
 | Name | Description | SlotProps |

@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export interface SkeletonProps extends BasicAttributes {
   loading?: boolean
@@ -16,6 +17,10 @@ export interface SkeletonProps extends BasicAttributes {
 
 export class Skeleton extends VarComponent {
   $props: SkeletonProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _SkeletonComponent extends Skeleton {}

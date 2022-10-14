@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export type CheckboxValidateTriggers = 'onChange'
 
@@ -21,6 +22,12 @@ export interface CheckboxProps extends BasicAttributes {
 
 export class Checkbox extends VarComponent {
   $props: CheckboxProps
+
+  $slots: {
+    default(): VNode[]
+    'checked-icon'(): VNode[]
+    'unchecked-icon'(): VNode[]
+  }
 
   validate(): Promise<boolean>
 

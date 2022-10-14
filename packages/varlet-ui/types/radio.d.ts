@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export type RadioValidateTrigger = 'onChange'
 
@@ -21,6 +22,12 @@ export interface RadioProps extends BasicAttributes {
 
 export class Radio extends VarComponent {
   $props: RadioProps
+
+  $slots: {
+    default(): VNode[]
+    'checked-icon'(): VNode[]
+    'unchecked-icon'(): VNode[]
+  }
 
   validate(): Promise<boolean>
 

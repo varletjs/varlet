@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export type InputValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
 
@@ -33,6 +34,11 @@ export interface InputProps extends BasicAttributes {
 
 export class Input extends VarComponent {
   $props: InputProps
+
+  $slots: {
+    'prepend-icon'(): VNode[]
+    'append-icon'(): VNode[]
+  }
 
   focus(): void
 

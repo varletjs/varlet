@@ -113,6 +113,12 @@ const active = ref(0)
 
 ### 插槽
 
+#### Steps Slots
+
+| 名称 | 说明        | 参数 |
+| ----- |-----------| -------- |
+| `default` | steps 的内容 | `-` |
+
 #### Step Slots
 
 | 名称 | 说明 | 参数 |

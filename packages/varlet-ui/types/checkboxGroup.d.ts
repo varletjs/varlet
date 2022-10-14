@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes, Direction as CheckboxGroupDirection } from './varComponent'
+import { VNode } from 'vue'
 
 export type CheckboxGroupValidateTrigger = 'onChange'
 
@@ -16,6 +17,10 @@ export interface CheckboxGroupProps extends BasicAttributes {
 
 export class CheckboxGroup extends VarComponent {
   $props: CheckboxGroupProps
+
+  $slots: {
+    default(): VNode[]
+  }
 
   validate(): Promise<boolean>
 

@@ -150,6 +150,12 @@ const value = ref(['1'])
 
 ### Slots
 
+#### Collapse Slots
+
+| Name | Description         | SlotProps |
+| ----- |---------------------| -------- |
+| `default` | Content of collapse | `-` |
+
 #### CollapseItem Slots
 
 | Name | Description | SlotProps |

@@ -114,6 +114,12 @@ const active = ref(0)
 
 ### Slots
 
+#### Steps Slots
+
+| Name | Description      | SlotProps |
+| ----- |------------------| -------- |
+| `default` | Content of steps | `-`|
+
 #### Step Slots
 
 | Name | Description | SlotProps |

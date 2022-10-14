@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export type VarFileFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
@@ -48,6 +49,10 @@ interface UploaderProps {
 
 export class Uploader extends VarComponent {
   $props: UploaderProps
+
+  $slots: {
+    default(): VNode[]
+  }
 
   getLoading(): VarFile[]
 

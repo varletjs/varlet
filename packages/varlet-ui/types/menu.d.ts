@@ -1,6 +1,6 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { Placement as PopperPlacement } from '@popperjs/core/lib/enums'
-import { TeleportProps } from 'vue'
+import { TeleportProps, VNode } from 'vue'
 
 type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
 
@@ -35,6 +35,11 @@ export interface MenuProps extends BasicAttributes {
 
 export class Menu extends VarComponent {
   $props: MenuProps
+
+  $slots: {
+    default(): VNode[]
+    menu(): VNode[]
+  }
 
   open(): void
 

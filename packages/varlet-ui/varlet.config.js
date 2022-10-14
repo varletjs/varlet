@@ -206,7 +206,7 @@ module.exports = defineConfig({
       },
       {
         text: {
-          'zh-CN': 'Collapse 拓展面板',
+          'zh-CN': 'Collapse 折叠面板',
           'en-US': 'Collapse',
         },
         doc: 'collapse',

@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export type CollapseModelValue = null | string | number | Array<string | number>
 
@@ -12,6 +13,10 @@ export interface CollapseProps extends BasicAttributes {
 
 export class Collapse extends VarComponent {
   $props: CollapseProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _CollapseComponent extends Collapse {}

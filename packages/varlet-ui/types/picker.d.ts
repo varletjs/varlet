@@ -1,5 +1,6 @@
 import type { App } from 'vue'
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export interface NormalColumn extends BasicAttributes {
   texts: Texts
@@ -34,6 +35,12 @@ export interface PickerProps {
 
 export class PickerComponent extends VarComponent {
   $props: PickerProps
+
+  $slots: {
+    cancel(): VNode[]
+    title(): VNode[]
+    confirm(): VNode[]
+  }
 
   confirm(): void
 
