@@ -148,7 +148,7 @@ Set Badge Icon through `icon` property.
 
 ### Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` |  Badge content | `-` |
 

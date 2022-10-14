@@ -111,7 +111,7 @@ const get = (current, size) => {
 
 ### Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | ----- | -------------- | -------- |
 | `default` | Content of `table` | `-` |
 | `footer` | Footer of `table` | `-` |

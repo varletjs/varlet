@@ -236,7 +236,7 @@ const actions = [
 
 ### Slot
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `indicator` | Paging indicator | `index: number` Image indexing <br> `length: number` Total number of image |
 | `close-icon` | Close button | `-` |

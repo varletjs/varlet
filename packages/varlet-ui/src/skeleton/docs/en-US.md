@@ -139,7 +139,7 @@ const fullscreen = () => {
 
 ### Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Content not loaded | `-` |
 

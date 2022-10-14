@@ -82,7 +82,7 @@ Used to separate parts of a list or layout.
 | `margin` | Set `margin` of divider | _string_ | `-` |
 
 ### Slots
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Custom content of divider | `-` |
 

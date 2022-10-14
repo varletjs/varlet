@@ -344,25 +344,25 @@ const active = ref(0)
 
 #### Tabs Slots
 
-| Slot      | Description  | Arguments |
+| Name | Description | SlotProps |
 | --------- | ------------ | --------- |
 | `default` | tabs content | `-`       |
 
 #### Tab Slots
 
-| Slot      | Description   | Arguments |
+| Name | Description | SlotProps |
 | --------- | ------------- | --------- |
 | `default` | tab's content | `-`       |
 
 #### TabsItems Slots
 
-| Slot      | Description       | Arguments |
+| Name | Description | SlotProps |
 | --------- | ----------------- | --------- |
 | `default` | TabsItems content | `-`       |
 
 #### TabItem Slots
 
-| Slot      | Description       | Arguments |
+| Name | Description | SlotProps |
 | --------- | ----------------- | --------- |
 | `default` | tabItem's content | `-`       |
 

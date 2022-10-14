@@ -301,25 +301,25 @@ The `clear` method on the instance can close the current instance, and the `clea
 
 #### Options passed in for a functional call
 
-| Prop | Description                                                                                     | Type | Default |
-| ----- |-------------------------------------------------------------------------------------------------| -------- | ---------- |
-| `show` | Whether to show `Snackbar`                                                                      | _boolean_ | `false` |
-| `type`| `Snackbar` type, Optional value is one of `success, warning, info, error, loading`              | _string_ | `-` |
-| `position`| `Snackbar` position, Optional value is one of `top, center, bottom`                             | _string_ | `top` |
-| `duration`| Display duration (Need to be closed manually when the `type` prop is `loading`)                 | _number_ | `3000` |
-| `content` | Custom content                                                                                  | _string_ | `-` |
-| `contentClass` | Class of custom content                                                                         | _string_ | `-` |
-| `vertical` | Whether to use multi-line                                                                       | _boolean_ | `false` |
-| `loadingType` | Loading type (see `Loading` component)                                                          | _string_ | `circle` |
-| `loadingSize` | Loading size (see `Loading` component)                                                          | _string_ | `normal` |
+| Option          | Description                                                                                     | Type | Default |
+|-----------------|-------------------------------------------------------------------------------------------------| -------- | ---------- |
+| `show`          | Whether to show `Snackbar`                                                                      | _boolean_ | `false` |
+| `type`          | `Snackbar` type, Optional value is one of `success, warning, info, error, loading`              | _string_ | `-` |
+| `position`      | `Snackbar` position, Optional value is one of `top, center, bottom`                             | _string_ | `top` |
+| `duration`      | Display duration (Need to be closed manually when the `type` prop is `loading`)                 | _number_ | `3000` |
+| `content`       | Custom content                                                                                  | _string_ | `-` |
+| `contentClass`  | Class of custom content                                                                         | _string_ | `-` |
+| `vertical`      | Whether to use multi-line                                                                       | _boolean_ | `false` |
+| `loadingType`   | Loading type (see `Loading` component)                                                          | _string_ | `circle` |
+| `loadingSize`   | Loading size (see `Loading` component)                                                          | _string_ | `normal` |
 | `loadingColor`  | Loading color (see `Loading` component)                                                         | _string_ | `currentColor` |
 | `loadingRadius` | Loading radius (see `Loading` component)                                                        | _string \| number_  | `-` |
-| `lockScroll`| Whether to disable rolling penetration                                                          | _boolean_  | `false` |
-| `forbidClick`| whether to penetrating clicks are forbidden (Value is `true` when the `type` prop is `loading`) | _boolean_  | `false` |
-| `onOpen` | Triggered when the `Snackbar` is open                                                           | _() => void_ | `-` |
-| `onOpened` | Triggered when the `Snackbar` open-animation ends                                               | _() => void_ | `-` |
-| `onClose` | Triggered when the `Snackbar` is close                                                          | _() => void_ | `-` |
-| `onClosed` | Triggered when the `Snackbar` close-animation ends                                              | _() => void_ | `-` |
+| `lockScroll`    | Whether to disable rolling penetration                                                          | _boolean_  | `false` |
+| `forbidClick`   | whether to penetrating clicks are forbidden (Value is `true` when the `type` prop is `loading`) | _boolean_  | `false` |
+| `onOpen`        | Triggered when the `Snackbar` is open                                                           | _() => void_ | `-` |
+| `onOpened`      | Triggered when the `Snackbar` open-animation ends                                               | _() => void_ | `-` |
+| `onClose`       | Triggered when the `Snackbar` is close                                                          | _() => void_ | `-` |
+| `onClosed`      | Triggered when the `Snackbar` close-animation ends                                              | _() => void_ | `-` |
 
 ### Style Variables
 

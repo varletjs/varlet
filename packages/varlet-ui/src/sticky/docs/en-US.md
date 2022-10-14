@@ -76,6 +76,6 @@ If necessary, you can switch to the `css sticky` layout mode to improve performa
 
 ### Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Sticky content | `-` |

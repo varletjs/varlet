@@ -433,7 +433,7 @@ const handleChange = (_, [i1, i2, i3]) => {
 
 ### Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `cancel` | cancel button content | `-` |
 | `title` | title content | `-` |

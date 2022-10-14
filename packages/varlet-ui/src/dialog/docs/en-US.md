@@ -246,7 +246,7 @@ const show = ref(false)
 
 #### Options passed in for a functional call
 
-| Prop                     | Description                                                                                                    | Type                                                           | Default |
+| Option                     | Description                                                                                                    | Type                                                           | Default |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ------- |
 | `title`                  | Dialog title                                                                                                   | _string_                                                       | `Hint`  |
 | `message`                | Dialog message content                                                                                         | _string_                                                       | `-`     |
@@ -277,7 +277,7 @@ const show = ref(false)
 
 ### Slots
 
-| Slot      | Description            | Arguments |
+| Name | Description | SlotProps |
 | --------- | ---------------------- | --------- |
 | `default` | Dialog content message | `-`       |
 | `title`   | Dialog title           | `-`       |

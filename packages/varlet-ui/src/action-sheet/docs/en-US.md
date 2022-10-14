@@ -414,7 +414,7 @@ const handleSelect = (action) => {
 
 #### Options passed in for a functional call
 
-| Prop                  | Description                                                                                                          | Type                       | Default      |
+| Option                  | Description                                                                                                          | Type                       | Default      |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------- | ------------ |
 | `title`               | Action sheet title                                                                                                   | _string_                   | `Select One` |
 | `overlay`             | Whether to display the overlay                                                                                       | _boolean_                  | `true`       |
@@ -442,7 +442,7 @@ const handleSelect = (action) => {
 
 ### Slots
 
-| Slot      | Description        | Arguments |
+| Name | Description | SlotProps |
 | --------- | ------------------ | --------- |
 | `actions` | Action list        | `-`       |
 | `title`   | Action sheet title | `-`       |

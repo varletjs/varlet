@@ -306,14 +306,14 @@ const value = ref([])
 
 #### Select Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `prepend-icon` | Prepend icon | `-` |
 | `append-icon` | Append icon | `-` |
 
 #### Option Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Options to display the content | `-` |
 
