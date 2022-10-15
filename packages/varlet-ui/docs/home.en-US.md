@@ -35,6 +35,7 @@ The following projects are maintained by community personnel, welcome to add
 
 | Name | Description |
 |----------------------------------------------------------------|-----------------------------------------|
+| [varlet-ute](https://github.com/varletjs/varlet-ute)           | `The theme editing tool developed based on Varlet provides theme configuration of Varlet component library` |
 | [vue-h5-template](https://github.com/sunniejs/vue-h5-template) | `Vue-based mobile template scaffolding, providing mobile presets for Varlet component library` |
 | [create-vite-app](https://github.com/ErKeLost/create-vite-app) | `A desktop template scaffolding based on Vue3, providing desktop presets for Varlet component library` |
 
