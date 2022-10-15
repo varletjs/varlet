@@ -7,10 +7,7 @@
 
 ```js
 // playground-ignore
-// css
 import '@varlet/ui/es/styles/elevation.css'
-// less
-import '@varlet/ui/es/styles/elevation.less'
 ```
 
 ### 基本使用
