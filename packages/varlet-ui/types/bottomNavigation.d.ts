@@ -21,6 +21,7 @@ export class BottomNavigation extends VarComponent {
   $props: BottomNavigationProps
 
   $slots: {
+    default(): VNode[]
     fab(): VNode[]
   }
 }

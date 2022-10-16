@@ -207,8 +207,9 @@ const isEven = ref(true)
 
 #### BottomNavigation Slots
 
-| Name | Description | SlotProps |
-| ---- | ---- | ----|
+| Name | Description                                                | SlotProps |
+| ---- |------------------------------------------------------------| ----|
+| `default` | Content of bottom navigation                               | `-` |
 | `fab` | Support for inserting a custom Fab button into a component | `-` |
 
 #### BottomNavigationItem Slots
