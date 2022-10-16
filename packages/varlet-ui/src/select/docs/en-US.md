@@ -11,7 +11,7 @@ The component uses the `value` of the option first as the value of the option, f
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -30,7 +30,7 @@ If you only need the basic functionality of the component, you can remove some s
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -52,7 +52,7 @@ const value = ref('')
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -69,7 +69,7 @@ const value = ref('')
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -90,7 +90,7 @@ const value = ref('')
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -111,7 +111,7 @@ const value = ref('')
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -132,7 +132,7 @@ const value = ref('')
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -157,7 +157,7 @@ const value = ref('')
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref([])
 </script>
@@ -180,7 +180,7 @@ const value = ref([])
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref([])
 </script>
@@ -204,7 +204,7 @@ const value = ref([])
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -226,7 +226,7 @@ const value = ref('')
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref([])
 </script>
