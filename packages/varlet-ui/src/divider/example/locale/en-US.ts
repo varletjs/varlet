@@ -7,4 +7,5 @@ export default {
   withDesc: 'The Divider with description',
   withDescText: 'Description',
   custom: 'Custom',
+  hairline: '0.5px Divider',
 }
