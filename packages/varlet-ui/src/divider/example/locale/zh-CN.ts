@@ -6,6 +6,6 @@ export default {
   text: '文字',
   withDesc: '带有文字描述的分割线',
   withDescText: '文字描述',
-  custom: '自定义',
+  custom: '自定义描述内容',
   hairline: '0.5px 分割线',
 }

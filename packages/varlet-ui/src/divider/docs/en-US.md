@@ -53,14 +53,14 @@ Used to separate parts of a list or layout.
 </style>
 ```
 
-### The Divider with description
+### Description Text
 ```html
 <template>
   <var-divider description="Description" />
 </template>
 ```
 
-### Custom
+### Custom Description
 ```html
 <template>
   <var-divider>
@@ -69,7 +69,7 @@ Used to separate parts of a list or layout.
 </template>
 ```
 
-### 0.5px Divider
+### Use 0.5px Divider
 ```html
 <template>
   <var-divider hairline />

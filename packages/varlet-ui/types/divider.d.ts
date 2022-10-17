@@ -7,6 +7,7 @@ export interface DividerProps extends BasicAttributes {
   description?: string
   margin?: string
   dashed?: boolean
+  hairline?: boolean
 }
 
 export class Divider extends VarComponent {
