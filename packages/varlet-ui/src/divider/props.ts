@@ -17,4 +17,8 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  hairline: {
+    type: Boolean,
+    default: false,
+  },
 }

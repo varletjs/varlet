@@ -37,6 +37,9 @@ watchDarkMode(dark)
   <var-divider>
     <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255)" />
   </var-divider>
+
+  <app-type>{{ pack.hairline }}</app-type>
+  <var-divider hairline />
 </template>
 
 <style lang="less" scoped>

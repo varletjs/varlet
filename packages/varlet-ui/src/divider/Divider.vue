@@ -7,7 +7,8 @@
         [vertical, n('--vertical')],
         [withText, n('--with-text')],
         [isInset, n('--inset')],
-        [dashed, n('--dashed')]
+        [dashed, n('--dashed')],
+        [hairline, n('--hairline')]
       )
     "
     :style="style"
