@@ -62,6 +62,10 @@ describe('test bottom-navigation events', () => {
     await trigger(wrapper.findAll('.var-bottom-navigation-item')[1], 'click')
     expect(handleChange).toHaveBeenCalledTimes(1)
     expect(dummy).toBe(1)
+
+    await trigger(wrapper.findAll('.var-bottom-navigation-item')[1], 'click')
+    expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(dummy).toBe(1)
     wrapper.unmount()
   })
 
@@ -128,6 +132,12 @@ describe('test bottom-navigation events', () => {
     await trigger(wrapper.findAll('.var-bottom-navigation-item')[1], 'click')
     expect(handleBeforeChange).toHaveBeenCalledTimes(1)
     expect(wrapper.vm.active).toBe(0)
+    await delay(200)
+    expect(wrapper.vm.active).toBe(1)
+
+    await trigger(wrapper.findAll('.var-bottom-navigation-item')[1], 'click')
+    expect(handleBeforeChange).toHaveBeenCalledTimes(1)
+    expect(wrapper.vm.active).toBe(1)
     await delay(200)
     expect(wrapper.vm.active).toBe(1)
 
