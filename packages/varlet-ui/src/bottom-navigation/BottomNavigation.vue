@@ -85,6 +85,10 @@ export default defineComponent({
     }
 
     const onToggle = (changedValue: number | string) => {
+      if (active.value === changedValue) {
+        return
+      }
+
       props.onBeforeChange ? handleBeforeChange(changedValue) : handleChange(changedValue)
     }
 
