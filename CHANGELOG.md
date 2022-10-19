@@ -1,3 +1,18 @@
+## [2.0.5](https://github.com/varletjs/varlet/compare/v2.0.4...v2.0.5) (2022-10-19)
+
+
+### Bug Fixes
+
+* **ui/BottomNavigation:** change repeat trigger ([#729](https://github.com/varletjs/varlet/issues/729)) ([a61147f](https://github.com/varletjs/varlet/commit/a61147fca6694196268278dd7b7f99691ca73b0b))
+* **ui/divider:**  0.5px affects text display ([3e51cec](https://github.com/varletjs/varlet/commit/3e51cec5ef1533ce38bbbd23f497afea8eb956b7))
+
+
+### Features
+
+* **ui/divider:** add hairline divider ([03102d4](https://github.com/varletjs/varlet/commit/03102d4047253cbdab11861d699a50e9b3919636))
+
+
+
 ## [2.0.4](https://github.com/varletjs/varlet/compare/v2.0.3...v2.0.4) (2022-10-19)
 
 
