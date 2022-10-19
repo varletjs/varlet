@@ -26,8 +26,7 @@
   },
   "scripts": {
     "dev": "tsc --watch",
-    "dev:cjs": "tsc -p tsconfig.cjs.json --watch",
-    "build": "tsc && tsc -p tsconfig.cjs.json"
+    "build": "tsc"
   },
   "devDependencies": {
     "typescript": "^4.4.4"
