@@ -82,6 +82,24 @@ async function confirmVersion(currentVersion: string, expectVersion: string) {
   return ret[name]
 }
 
+async function confirmBranch(remote = 'origin') {
+  const { stdout } = await execa('git', ['remote', '-v'])
+  const reg = new RegExp(`${remote}\t(.*) \\(push`)
+  const repo = stdout.match(reg)?.[1]
+  const { stdout: branch } = await execa('git', ['branch', '--show-current'])
+
+  const name = 'Branch confirm'
+  const ret = await prompt([
+    {
+      name,
+      type: 'confirm',
+      message: `Current branch ${repo}:refs/for/${branch}`,
+    },
+  ])
+
+  return ret[name]
+}
+
 async function getReleaseType() {
   const name = 'Please select release type'
   const ret = await prompt([
@@ -110,6 +128,10 @@ export async function release(options: ReleaseCommandOptions) {
 
     if (!(await isWorktreeEmpty())) {
       logger.error('Git worktree is not empty, please commit changed')
+      return
+    }
+
+    if (!(await confirmBranch(options.remote))) {
       return
     }
 
