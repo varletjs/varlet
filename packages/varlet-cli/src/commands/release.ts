@@ -82,18 +82,18 @@ async function confirmVersion(currentVersion: string, expectVersion: string) {
   return ret[name]
 }
 
-async function confirmBranch(remote = 'origin') {
+async function confirmRefs(remote = 'origin') {
   const { stdout } = await execa('git', ['remote', '-v'])
   const reg = new RegExp(`${remote}\t(.*) \\(push`)
   const repo = stdout.match(reg)?.[1]
   const { stdout: branch } = await execa('git', ['branch', '--show-current'])
 
-  const name = 'Branch confirm'
+  const name = 'Refs confirm'
   const ret = await prompt([
     {
       name,
       type: 'confirm',
-      message: `Current branch ${repo}:refs/for/${branch}`,
+      message: `Current refs ${repo}:refs/for/${branch}`,
     },
   ])
 
@@ -131,7 +131,7 @@ export async function release(options: ReleaseCommandOptions) {
       return
     }
 
-    if (!(await confirmBranch(options.remote))) {
+    if (!(await confirmRefs(options.remote))) {
       return
     }
 
