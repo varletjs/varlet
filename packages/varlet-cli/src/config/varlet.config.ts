@@ -1,7 +1,7 @@
 import { pathExistsSync } from 'fs-extra'
 import { mergeWith } from 'lodash'
-import { VARLET_CONFIG, SITE_CONFIG } from '../shared/constant'
-import { outputFileSyncOnChange } from '../shared/fsUtils'
+import { VARLET_CONFIG, SITE_CONFIG } from '../shared/constant.js'
+import { outputFileSyncOnChange } from '../shared/fsUtils.js'
 import { isArray } from '@varlet/shared'
 
 interface VarletConfig {

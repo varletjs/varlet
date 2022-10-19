@@ -2,7 +2,7 @@ import ora from 'ora'
 import conventionalChangelog from 'conventional-changelog'
 import { createWriteStream } from 'fs-extra'
 import { resolve as resolvePath } from 'path'
-import { CWD } from '../shared/constant'
+import { CWD } from '../shared/constant.js'
 
 interface ChangelogCommandOptions {
   file?: string

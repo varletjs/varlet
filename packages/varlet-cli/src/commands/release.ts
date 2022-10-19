@@ -1,13 +1,13 @@
 import ora from 'ora'
 import execa from 'execa'
-import logger from '../shared/logger'
+import logger from '../shared/logger.js'
 import semver from 'semver'
 import glob from 'glob'
 import { prompt } from 'inquirer'
-import { CWD } from '../shared/constant'
+import { CWD } from '../shared/constant.js'
 import { resolve } from 'path'
 import { writeFileSync } from 'fs-extra'
-import { changelog } from './changelog'
+import { changelog } from './changelog.js'
 
 const releaseTypes = ['premajor', 'preminor', 'prepatch', 'major', 'minor', 'patch']
 

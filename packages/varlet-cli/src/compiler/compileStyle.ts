@@ -1,6 +1,6 @@
 import { readFileSync, removeSync, writeFileSync } from 'fs-extra'
 import { render } from 'less'
-import { replaceExt, smartAppendFileSync } from '../shared/fsUtils'
+import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
 import { parse, resolve } from 'path'
 
 export const EMPTY_SPACE_RE = /[\s]+/g

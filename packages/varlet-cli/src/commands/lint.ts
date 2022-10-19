@@ -1,7 +1,7 @@
 import execa from 'execa'
 import ora from 'ora'
-import { CWD, ESLINT_EXTENSIONS } from '../shared/constant'
-import { isDir } from '../shared/fsUtils'
+import { CWD, ESLINT_EXTENSIONS } from '../shared/constant.js'
+import { isDir } from '../shared/fsUtils.js'
 import { resolve } from 'path'
 import type { Ora } from 'ora'
 

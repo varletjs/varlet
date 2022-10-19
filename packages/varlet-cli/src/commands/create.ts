@@ -1,13 +1,13 @@
 import ejs from 'ejs'
-import logger from '../shared/logger'
+import logger from '../shared/logger.js'
 import { bigCamelize, camelize, kebabCase } from '@varlet/shared'
 import { prompt } from 'inquirer'
 import { removeSync, readFileSync, copySync, pathExistsSync, writeFileSync } from 'fs-extra'
 import { get } from 'lodash'
 import { resolve } from 'path'
-import { glob } from '../shared/fsUtils'
-import { getVarletConfig } from '../config/varlet.config'
-import { SRC_DIR } from '../shared/constant'
+import { glob } from '../shared/fsUtils.js'
+import { getVarletConfig } from '../config/varlet.config.js'
+import { SRC_DIR } from '../shared/constant.js'
 
 type CodingStyle = 'tsx' | 'vue'
 

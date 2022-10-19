@@ -1,6 +1,6 @@
 import { transformAsync } from '@babel/core'
 import { bigCamelize } from '@varlet/shared'
-import { replaceExt } from '../shared/fsUtils'
+import { replaceExt } from '../shared/fsUtils.js'
 import { writeFileSync, readFileSync, removeSync, writeFile } from 'fs-extra'
 import {
   extractStyleDependencies,
@@ -8,11 +8,11 @@ import {
   IMPORT_LESS_RE,
   REQUIRE_CSS_RE,
   REQUIRE_LESS_RE,
-} from './compileStyle'
+} from './compileStyle.js'
 import { resolve } from 'path'
 import type { BabelFileResult } from '@babel/core'
 import { get } from 'lodash'
-import { getVarletConfig } from '../config/varlet.config'
+import { getVarletConfig } from '../config/varlet.config.js'
 
 export const IMPORT_VUE_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.vue(\s*['"`]);?(?!\s*['"`])/g
 export const IMPORT_TS_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.ts(\s*['"`]);?(?!\s*['"`])/g

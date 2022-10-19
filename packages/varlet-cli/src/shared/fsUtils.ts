@@ -8,7 +8,7 @@ import {
   readdir,
   readFileSync,
 } from 'fs-extra'
-import { PUBLIC_DIR_INDEXES, SCRIPTS_EXTENSIONS, SRC_DIR } from './constant'
+import { PUBLIC_DIR_INDEXES, SCRIPTS_EXTENSIONS, SRC_DIR } from './constant.js'
 import globSync from 'glob'
 
 export async function getPublicDirs(): Promise<string[]> {

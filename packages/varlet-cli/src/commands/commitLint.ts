@@ -1,4 +1,4 @@
-import logger from '../shared/logger'
+import logger from '../shared/logger.js'
 import semver from 'semver'
 
 function isVersion(message: string) {

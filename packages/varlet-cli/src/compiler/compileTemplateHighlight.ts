@@ -12,11 +12,11 @@ import {
   HL_TAGS_JSON,
   HL_ATTRIBUTES_JSON,
   CLI_PACKAGE_JSON,
-} from '../shared/constant'
+} from '../shared/constant.js'
 import { resolve } from 'path'
-import { isDir, isMD } from '../shared/fsUtils'
+import { isDir, isMD } from '../shared/fsUtils.js'
 import { get } from 'lodash'
-import { getVarletConfig } from '../config/varlet.config'
+import { getVarletConfig } from '../config/varlet.config.js'
 
 const TABLE_HEAD_RE = /\s*\|.*\|\s*\n\s*\|.*---+\s*\|\s*\n+/
 const TABLE_FOOT_RE = /(\|\s*$)|(\|\s*\n(?!\s*\|))/

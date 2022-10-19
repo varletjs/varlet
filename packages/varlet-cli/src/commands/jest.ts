@@ -1,7 +1,7 @@
-import logger from '../shared/logger'
+import logger from '../shared/logger.js'
 import { runCLI } from 'jest'
-import { CWD, JEST_CONFIG } from '../shared/constant'
-import { buildSiteEntry } from '../compiler/compileSiteEntry'
+import { CWD, JEST_CONFIG } from '../shared/constant.js'
+import { buildSiteEntry } from '../compiler/compileSiteEntry.js'
 
 interface JestCommandOptions {
   watch?: boolean

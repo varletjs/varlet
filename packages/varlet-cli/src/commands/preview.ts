@@ -1,6 +1,6 @@
-import logger from '../shared/logger'
+import logger from '../shared/logger.js'
 import execa from 'execa'
-import { SITE_OUTPUT_PATH } from '../shared/constant'
+import { SITE_OUTPUT_PATH } from '../shared/constant.js'
 import { pathExistsSync } from 'fs-extra'
 
 export async function preview() {

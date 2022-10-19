@@ -1,8 +1,8 @@
 import { ensureDir, readdir, writeFile, writeFileSync } from 'fs-extra'
-import { TYPES_DIR, UI_PACKAGE_JSON } from '../shared/constant'
+import { TYPES_DIR, UI_PACKAGE_JSON } from '../shared/constant.js'
 import { bigCamelize } from '@varlet/shared'
 import { resolve, relative } from 'path'
-import { getVarletConfig } from '../config/varlet.config'
+import { getVarletConfig } from '../config/varlet.config.js'
 import { get } from 'lodash'
 
 export function generateReference(moduleDir: string) {

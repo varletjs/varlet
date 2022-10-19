@@ -14,7 +14,7 @@ import {
   SITE_PUBLIC_PATH,
   UMD_DIR,
   VITE_RESOLVE_EXTENSIONS,
-} from '../shared/constant'
+} from '../shared/constant.js'
 import { InlineConfig, PluginOption } from 'vite'
 import { get } from 'lodash'
 import { kebabCase } from '@varlet/shared'

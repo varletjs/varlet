@@ -1,10 +1,10 @@
 import ora from 'ora'
-import logger from '../shared/logger'
+import logger from '../shared/logger.js'
 import { remove } from 'fs-extra'
-import { ES_DIR, HL_DIR, LIB_DIR, UMD_DIR } from '../shared/constant'
-import { compileModule } from '../compiler/compileModule'
-import { compileTemplateHighlight } from '../compiler/compileTemplateHighlight'
-import { compileTypes } from '../compiler/compileTypes'
+import { ES_DIR, HL_DIR, LIB_DIR, UMD_DIR } from '../shared/constant.js'
+import { compileModule } from '../compiler/compileModule.js'
+import { compileTemplateHighlight } from '../compiler/compileTemplateHighlight.js'
+import { compileTypes } from '../compiler/compileTypes.js'
 
 export function removeDir() {
   return Promise.all([remove(ES_DIR), remove(LIB_DIR), remove(HL_DIR), remove(UMD_DIR)])

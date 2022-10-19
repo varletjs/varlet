@@ -1,11 +1,11 @@
 import chokidar, { FSWatcher } from 'chokidar'
-import logger from '../shared/logger'
+import logger from '../shared/logger.js'
 import { createServer, ViteDevServer } from 'vite'
 import { ensureDirSync, pathExistsSync } from 'fs-extra'
-import { SRC_DIR, VARLET_CONFIG } from '../shared/constant'
-import { buildSiteEntry } from '../compiler/compileSiteEntry'
-import { getDevConfig } from '../config/vite.config'
-import { getVarletConfig } from '../config/varlet.config'
+import { SRC_DIR, VARLET_CONFIG } from '../shared/constant.js'
+import { buildSiteEntry } from '../compiler/compileSiteEntry.js'
+import { getDevConfig } from '../config/vite.config.js'
+import { getVarletConfig } from '../config/varlet.config.js'
 import { merge } from 'lodash'
 
 let server: ViteDevServer

@@ -1,18 +1,5 @@
 #!/usr/bin/env node
-import logger from './shared/logger'
 import { Command } from 'commander'
-import { dev } from './commands/dev'
-import { build } from './commands/build'
-import { vite } from './commands/vite'
-import { compile } from './commands/compile'
-import { create } from './commands/create'
-import { jest } from './commands/jest'
-import { lint } from './commands/lint'
-import { gen } from './commands/gen'
-import { preview } from './commands/preview'
-import { changelog } from './commands/changelog'
-import { release } from './commands/release'
-import { commitLint } from './commands/commitLint'
 
 const program = new Command()
 
@@ -22,29 +9,66 @@ program
   .command('dev')
   .option('-f --force', 'Force dep pre-optimization regardless of whether deps have changed')
   .description('Run varlet development environment')
-  .action(dev)
+  .action(async (options) => {
+    const { dev } = await import('./commands/dev.js')
 
-program.command('build').description('Build varlet site for production').action(build)
+    return dev(options)
+  })
+
+program
+  .command('build')
+  .description('Build varlet site for production')
+  .action(async () => {
+    const { build } = await import('./commands/build.js')
+
+    return build()
+  })
 
 program
   .command('build:vite')
   .description('Use vite build app for production')
-  .action(() => vite('build'))
+  .action(async () => {
+    const { vite } = await import('./commands/vite.js')
+
+    return vite('build')
+  })
 
 program
   .command('dev:vite')
   .description('Use vite start server for development')
-  .action(() => vite('dev'))
+  .action(async () => {
+    const { vite } = await import('./commands/vite.js')
 
-program.command('preview').description('Preview varlet site for production').action(preview)
+    return vite('dev')
+  })
+
+program
+  .command('preview')
+  .description('Preview varlet site for production')
+  .action(async () => {
+    const { preview } = await import('./commands/preview.js')
+
+    return preview()
+  })
 
 program
   .command('compile')
   .description('Compile varlet components library code')
   .option('-nu, --noUmd', 'Do not compile umd target code')
-  .action(compile)
+  .action(async (option) => {
+    const { compile } = await import('./commands/compile.js')
 
-program.command('lint').description('Lint code').action(lint)
+    return compile(option)
+  })
+
+program
+  .command('lint')
+  .description('Lint code')
+  .action(async () => {
+    const { lint } = await import('./commands/lint.js')
+
+    return lint()
+  })
 
 program
   .command('create')
@@ -53,7 +77,11 @@ program
   .option('-s, --sfc', 'Generate files in sfc format')
   .option('-t, --tsx', 'Generate files in tsx format')
   .option('-l, --locale', 'Generator internationalized files')
-  .action(create)
+  .action(async (option) => {
+    const { create } = await import('./commands/create.js')
+
+    return create(option)
+  })
 
 program
   .command('jest')
@@ -62,7 +90,11 @@ program
   .option('-wa, --watchAll', 'Watch files for changes and rerun all tests when something changes')
   .option('-c, --component <componentName>', 'Test a specific component')
   .option('-cc --clearCache', 'Clear test cache')
-  .action(jest)
+  .action(async (option) => {
+    const { jest } = await import('./commands/jest.js')
+
+    return jest(option)
+  })
 
 program
   .command('gen')
@@ -71,24 +103,45 @@ program
   .option('-s, --sfc', 'Generate files in sfc format')
   .option('-t, --tsx', 'Generate files in tsx format')
   .option('-l, --locale', 'Generator internationalized files')
-  .action(gen)
+  .action(async (option) => {
+    const { gen } = await import('./commands/gen.js')
+
+    return gen(option)
+  })
 
 program
   .command('changelog')
   .option('-rc --releaseCount <releaseCount>', 'Release count')
   .option('-f --file <file>', 'Changelog filename')
   .description('Generate changelog')
-  .action(changelog)
+  .action(async (option) => {
+    const { changelog } = await import('./commands/changelog.js')
+
+    return changelog(option)
+  })
 
 program
   .command('release')
   .option('-r --remote <remote>', 'Remote name')
   .description('Release all packages and generate changelogs')
-  .action(release)
+  .action(async (option) => {
+    const { release } = await import('./commands/release.js')
 
-program.command('commit-lint <gitParams>').description('Lint commit message').action(commitLint)
+    return release(option)
+  })
 
-program.on('command:*', ([cmd]) => {
+program
+  .command('commit-lint <gitParams>')
+  .description('Lint commit message')
+  .action(async (option) => {
+    const { commitLint } = await import('./commands/commitLint.js')
+
+    return commitLint(option)
+  })
+
+program.on('command:*', async ([cmd]) => {
+  const { default: logger } = await import('./shared/logger.js')
+
   program.outputHelp()
   logger.error(`\nUnknown command ${cmd}.\n`)
   process.exitCode = 1

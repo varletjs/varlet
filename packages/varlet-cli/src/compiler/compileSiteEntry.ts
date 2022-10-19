@@ -11,11 +11,11 @@ import {
   SITE_PC_DIR,
   SITE_PC_ROUTES,
   SRC_DIR,
-} from '../shared/constant'
+} from '../shared/constant.js'
 import { copy } from 'fs-extra'
 import slash from 'slash'
-import { glob, isDir, outputFileSyncOnChange } from '../shared/fsUtils'
-import { getVarletConfig } from '../config/varlet.config'
+import { glob, isDir, outputFileSyncOnChange } from '../shared/fsUtils.js'
+import { getVarletConfig } from '../config/varlet.config.js'
 import { get } from 'lodash'
 
 const EXAMPLE_COMPONENT_NAME_RE = /\/([-\w]+)\/example\/index.vue/

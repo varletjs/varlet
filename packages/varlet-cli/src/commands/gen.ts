@@ -1,8 +1,8 @@
-import logger from '../shared/logger'
+import logger from '../shared/logger.js'
 import { prompt } from 'inquirer'
 import { resolve } from 'path'
 import { copy, pathExistsSync, readFileSync, writeFileSync, rename } from 'fs-extra'
-import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant'
+import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant.js'
 
 type CodeStyle = 'tsx' | 'sfc'
 

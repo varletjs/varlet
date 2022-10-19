@@ -2,17 +2,17 @@ import hash from 'hash-sum'
 import { parse, resolve } from 'path'
 import { readFile, writeFileSync } from 'fs-extra'
 import { parse as parseSFC, compileTemplate, compileStyle } from '@vue/compiler-sfc'
-import { replaceExt, smartAppendFileSync } from '../shared/fsUtils'
-import { compileScript } from './compileScript'
+import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
+import { compileScript } from './compileScript.js'
 import {
   clearEmptyLine,
   compileLess,
   extractStyleDependencies,
   normalizeStyleDependency,
   STYLE_IMPORT_RE,
-} from './compileStyle'
+} from './compileStyle.js'
 import type { SFCStyleBlock } from '@vue/compiler-sfc'
-import logger from '../shared/logger'
+import logger from '../shared/logger.js'
 
 const NORMAL_EXPORT_START_RE = /export\s+default\s+{/
 const DEFINE_EXPORT_START_RE = /export\s+default\s+defineComponent\s*\(\s*{/
