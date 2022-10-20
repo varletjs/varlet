@@ -1,3 +1,17 @@
+## [2.0.6](https://github.com/varletjs/varlet/compare/v2.0.5...v2.0.6) (2022-10-20)
+
+
+### Bug Fixes
+
+* fix select disabled and readonly bug ([#731](https://github.com/varletjs/varlet/issues/731)) ([411d327](https://github.com/varletjs/varlet/commit/411d3272f29d0ed778f886485d2f925d56306842))
+
+
+### Features
+
+* **cli/release:** add branch confirm ([6f3c764](https://github.com/varletjs/varlet/commit/6f3c764f4b70e13b9930d1e6858dc75ada3d753b))
+
+
+
 ## [2.0.5](https://github.com/varletjs/varlet/compare/v2.0.4...v2.0.5) (2022-10-19)
 
 
