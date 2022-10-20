@@ -1,4 +1,6 @@
-export default {
+import { defineConfig } from './varlet.config'
+
+export default defineConfig({
   name: 'Varlet',
   namespace: 'var',
   host: 'localhost',
@@ -264,4 +266,4 @@ export default {
     'color-hl-group-h': '#14a6e9',
     'color-hl-group-i': '#ed4648',
   },
-}
+})

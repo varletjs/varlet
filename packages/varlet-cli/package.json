@@ -20,7 +20,6 @@
     "template",
     "site",
     "tsconfig.json",
-    "varlet.default.config.js",
     "preset.cjs",
     "CHANGELOG.md"
   ],
