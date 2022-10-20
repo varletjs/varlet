@@ -2,7 +2,7 @@ import globSync from 'glob'
 import fse from 'fs-extra'
 import { extname, resolve } from 'path'
 import { PUBLIC_DIR_INDEXES, SCRIPTS_EXTENSIONS, SRC_DIR } from './constant.js'
-import { fileURLToPath } from 'url'
+import { fileURLToPath, pathToFileURL } from 'url'
 
 const { appendFileSync, ensureFileSync, lstatSync, statSync, outputFileSync, pathExistsSync, readdir, readFileSync } =
   fse
@@ -65,7 +65,8 @@ export function getDirname(url: string) {
 
 export async function getCurrentFile(path: string): Promise<any> {
   const { mtimeMs } = statSync(path)
-  const file = await import(`${path}?_t=${mtimeMs}`)
+  const fileUrl = pathToFileURL(path).href
+  const file = await import(`${fileUrl}?_t=${mtimeMs}`)
 
   return file
 }

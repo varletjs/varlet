@@ -1,8 +1,9 @@
 import fse from 'fs-extra'
 import { mergeWith } from 'lodash-es'
-import { VARLET_CONFIG, SITE_CONFIG } from '../shared/constant.js'
+import { VARLET_CONFIG, SITE_CONFIG, dirname } from '../shared/constant.js'
 import { outputFileSyncOnChange, getCurrentFile } from '../shared/fsUtils.js'
 import { isArray } from '@varlet/shared'
+import { resolve } from 'path'
 
 const { pathExistsSync } = fse
 
@@ -54,7 +55,7 @@ export function mergeStrategy(value: any, srcValue: any, key: string) {
 }
 
 export async function getVarletConfig(emit = false): Promise<Required<VarletConfig>> {
-  const defaultConfig = (await getCurrentFile(`../../varlet.default.config.js`)).default
+  const defaultConfig = (await getCurrentFile(resolve(dirname, `../../varlet.default.config.js`))).default
   const config: any = pathExistsSync(VARLET_CONFIG) ? (await getCurrentFile(VARLET_CONFIG)).default : {}
   const mergedConfig = mergeWith(defaultConfig, config, mergeStrategy)
 
