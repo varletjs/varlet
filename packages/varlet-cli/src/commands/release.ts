@@ -1,4 +1,5 @@
 import ora from 'ora'
+import fse, { readJSONSync } from 'fs-extra'
 import execa from 'execa'
 import logger from '../shared/logger.js'
 import semver from 'semver'
@@ -6,8 +7,9 @@ import glob from 'glob'
 import { prompt } from 'inquirer'
 import { CWD } from '../shared/constant.js'
 import { resolve } from 'path'
-import { writeFileSync } from 'fs-extra'
 import { changelog } from './changelog.js'
+
+const { writeFileSync } = fse
 
 const releaseTypes = ['premajor', 'preminor', 'prepatch', 'major', 'minor', 'patch']
 
@@ -48,7 +50,7 @@ function updateVersion(version: string) {
 
   packageJsons.forEach((path: string) => {
     const file = resolve(CWD, path)
-    const config = require(file)
+    const config = readJSONSync(file)
 
     config.version = version
     writeFileSync(file, JSON.stringify(config, null, 2))
@@ -119,7 +121,7 @@ interface ReleaseCommandOptions {
 
 export async function release(options: ReleaseCommandOptions) {
   try {
-    const currentVersion = require(resolve(CWD, 'package.json')).version
+    const currentVersion = readJSONSync(resolve(CWD, 'package.json')).version
 
     if (!currentVersion) {
       logger.error('Your package is missing the version field')

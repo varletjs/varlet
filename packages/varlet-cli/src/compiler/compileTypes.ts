@@ -1,9 +1,11 @@
-import { ensureDir, readdir, writeFile, writeFileSync } from 'fs-extra'
+import fse from 'fs-extra'
 import { TYPES_DIR, UI_PACKAGE_JSON } from '../shared/constant.js'
 import { bigCamelize } from '@varlet/shared'
 import { resolve, relative } from 'path'
 import { getVarletConfig } from '../config/varlet.config.js'
-import { get } from 'lodash'
+import { get } from 'lodash-es'
+
+const { ensureDir, writeFileSync, readdir, writeFile, readJSONSync } = fse
 
 export function generateReference(moduleDir: string) {
   writeFileSync(
@@ -15,9 +17,9 @@ export * from '${relative(moduleDir, TYPES_DIR)}'
 }
 
 export async function compileTypes() {
-  const varletConfig = getVarletConfig()
+  const varletConfig = await getVarletConfig()
   const namespace = get(varletConfig, 'namespace')
-  const { name } = require(UI_PACKAGE_JSON)
+  const { name } = readJSONSync(UI_PACKAGE_JSON)
   await ensureDir(TYPES_DIR)
 
   const dir = await readdir(TYPES_DIR)

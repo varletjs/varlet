@@ -16,11 +16,12 @@
   "license": "MIT",
   "files": [
     "lib",
+    "cjs",
     "template",
     "site",
     "tsconfig.json",
     "varlet.default.config.js",
-    "preset.js",
+    "preset.cjs",
     "CHANGELOG.md"
   ],
   "repository": {
@@ -81,7 +82,6 @@
     "@types/glob": "^7.1.3",
     "@types/hash-sum": "^1.0.0",
     "@types/inquirer": "8.1.2",
-    "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.174",
     "@types/lodash-es": "^4.17.5",
     "@types/semver": "^7.3.9"

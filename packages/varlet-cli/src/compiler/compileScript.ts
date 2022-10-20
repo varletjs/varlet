@@ -1,7 +1,7 @@
+import fse from 'fs-extra'
 import { transformAsync } from '@babel/core'
 import { bigCamelize } from '@varlet/shared'
 import { replaceExt } from '../shared/fsUtils.js'
-import { writeFileSync, readFileSync, removeSync, writeFile } from 'fs-extra'
 import {
   extractStyleDependencies,
   IMPORT_CSS_RE,
@@ -11,8 +11,10 @@ import {
 } from './compileStyle.js'
 import { resolve } from 'path'
 import type { BabelFileResult } from '@babel/core'
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 import { getVarletConfig } from '../config/varlet.config.js'
+
+const { writeFileSync, readFileSync, removeSync, writeFile } = fse
 
 export const IMPORT_VUE_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.vue(\s*['"`]);?(?!\s*['"`])/g
 export const IMPORT_TS_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.ts(\s*['"`]);?(?!\s*['"`])/g
@@ -37,8 +39,9 @@ export const replaceJSXExt = (script: string): string =>
 export const replaceTSXExt = (script: string): string =>
   script.replace(IMPORT_TSX_PATH_RE, scriptReplacer).replace(REQUIRE_TSX_PATH_RE, scriptReplacer)
 
-export const moduleCompatible = (script: string): string => {
-  const moduleCompatible = get(getVarletConfig(), 'moduleCompatible', {})
+export const moduleCompatible = async (script: string): Promise<string> => {
+  const moduleCompatible = get(await getVarletConfig(), 'moduleCompatible', {} as Record<string, string>)
+
   Object.keys(moduleCompatible).forEach((esm) => {
     const commonjs = moduleCompatible[esm]
     script = script.replace(esm, commonjs)
@@ -51,7 +54,7 @@ export async function compileScript(script: string, file: string) {
   const modules = process.env.BABEL_MODULE
 
   if (modules === 'commonjs') {
-    script = moduleCompatible(script)
+    script = await moduleCompatible(script)
   }
 
   let { code } = (await transformAsync(script, {

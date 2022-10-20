@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   name: 'Varlet',
   namespace: 'var',
   host: 'localhost',

@@ -4,6 +4,12 @@ declare module 'less' {
   export { render }
 }
 
+declare module 'jest' {
+  declare const runCLI: any
+
+  export default { runCLI }
+}
+
 declare module '@babel/helper-plugin-utils'
 declare module '@varlet/markdown-vite-plugin'
 declare module 'conventional-changelog'

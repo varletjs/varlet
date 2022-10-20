@@ -1,8 +1,10 @@
 import logger from '../shared/logger.js'
+import fse from 'fs-extra'
 import { prompt } from 'inquirer'
 import { resolve } from 'path'
-import { copy, pathExistsSync, readFileSync, writeFileSync, rename } from 'fs-extra'
 import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant.js'
+
+const { copy, pathExistsSync, readFileSync, writeFileSync, rename } = fse
 
 type CodeStyle = 'tsx' | 'sfc'
 

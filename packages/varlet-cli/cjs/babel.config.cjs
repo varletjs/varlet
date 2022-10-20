@@ -1,11 +1,4 @@
-import type { ConfigAPI } from '@babel/core'
-
-type PresetOption = {
-  loose?: boolean
-  enableObjectSlots?: boolean
-}
-
-module.exports = (api?: ConfigAPI, options: PresetOption = {}) => {
+module.exports = (api, options) => {
   if (api) {
     api.cache.never()
   }
@@ -22,7 +15,7 @@ module.exports = (api?: ConfigAPI, options: PresetOption = {}) => {
         },
       ],
       require.resolve('@babel/preset-typescript'),
-      require('./babel.sfc.transform'),
+      require('./babel.sfc.transform.cjs'),
     ],
     plugins: [
       [
@@ -34,5 +27,3 @@ module.exports = (api?: ConfigAPI, options: PresetOption = {}) => {
     ],
   }
 }
-
-export default module.exports

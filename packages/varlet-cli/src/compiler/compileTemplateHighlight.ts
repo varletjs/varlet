@@ -1,4 +1,4 @@
-import { ensureDir, readdirSync, readFileSync, writeFile } from 'fs-extra'
+import fse from 'fs-extra'
 import {
   SRC_DIR,
   HL_MD,
@@ -15,8 +15,10 @@ import {
 } from '../shared/constant.js'
 import { resolve } from 'path'
 import { isDir, isMD } from '../shared/fsUtils.js'
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 import { getVarletConfig } from '../config/varlet.config.js'
+
+const { ensureDir, readdirSync, readFileSync, readJSONSync, writeFile } = fse
 
 const TABLE_HEAD_RE = /\s*\|.*\|\s*\n\s*\|.*---+\s*\|\s*\n+/
 const TABLE_FOOT_RE = /(\|\s*$)|(\|\s*\n(?!\s*\|))/
@@ -175,13 +177,13 @@ export function compileDir(
 export async function compileTemplateHighlight() {
   await ensureDir(HL_DIR)
 
-  const varletConfig = getVarletConfig()
+  const varletConfig = await getVarletConfig()
   const tags: Record<string, any> = {}
   const attributes: Record<string, any> = {}
   const webTypes: Record<string, any> = {
     $schema: 'https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json',
     framework: 'vue',
-    version: require(CLI_PACKAGE_JSON).version,
+    version: readJSONSync(CLI_PACKAGE_JSON).version,
     name: get(varletConfig, 'title'),
     contributions: {
       html: {

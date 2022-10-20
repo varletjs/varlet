@@ -1,5 +1,5 @@
 import logger from '../shared/logger.js'
-import { runCLI } from 'jest'
+import jestModule from 'jest'
 import { CWD, JEST_CONFIG } from '../shared/constant.js'
 import { buildSiteEntry } from '../compiler/compileSiteEntry.js'
 
@@ -9,6 +9,8 @@ interface JestCommandOptions {
   component?: string
   clearCache?: boolean
 }
+
+const { runCLI } = jestModule
 
 export async function jest(cmd: JestCommandOptions) {
   process.env.NODE_ENV = 'test'

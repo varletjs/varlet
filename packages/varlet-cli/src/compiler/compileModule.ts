@@ -1,6 +1,6 @@
+import fse from 'fs-extra'
 import { build } from 'vite'
 import { resolve } from 'path'
-import { copy, ensureFileSync, readdir, removeSync } from 'fs-extra'
 import {
   EXAMPLE_DIR_NAME,
   TESTS_DIR_NAME,
@@ -18,23 +18,25 @@ import { getESMBundleConfig, getUMDConfig } from '../config/vite.config.js'
 import { getVarletConfig } from '../config/varlet.config.js'
 import { generateReference } from './compileTypes.js'
 
+const { copy, ensureFileSync, readdir, removeSync } = fse
+
 export function compileUMD() {
   return new Promise<void>((resolve, reject) => {
-    const config = getUMDConfig(getVarletConfig())
-
-    build(config)
-      .then(() => resolve())
-      .catch(reject)
+    getVarletConfig().then((varletConfig) => {
+      build(getUMDConfig(varletConfig))
+        .then(() => resolve())
+        .catch(reject)
+    })
   })
 }
 
 export function compileESMBundle() {
   return new Promise<void>((resolve, reject) => {
-    const config = getESMBundleConfig(getVarletConfig())
-
-    build(config)
-      .then(() => resolve())
-      .catch(reject)
+    getVarletConfig().then((varletConfig) => {
+      build(getESMBundleConfig(varletConfig))
+        .then(() => resolve())
+        .catch(reject)
+    })
   })
 }
 

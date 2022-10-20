@@ -1,12 +1,15 @@
 import logger from '../shared/logger.js'
 import semver from 'semver'
+import fse from 'fs-extra'
+
+const { readFileSync } = fse
 
 function isVersion(message: string) {
   return message.startsWith('v') && semver.valid(message.slice(1))
 }
 
 export function commitLint(gitParams: string) {
-  const message = require('fs').readFileSync(gitParams, 'utf-8').trim()
+  const message = readFileSync(gitParams, 'utf-8').trim()
 
   const COMMIT_MESSAGE_RE =
     /^(revert|fix|feat|docs|perf|test|types|style|build|chore|release|refactor)(\(.+\))?!?: (.|\n)+/

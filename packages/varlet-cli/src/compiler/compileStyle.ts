@@ -1,7 +1,10 @@
-import { readFileSync, removeSync, writeFileSync } from 'fs-extra'
-import { render } from 'less'
+import fse from 'fs-extra'
+import less from 'less'
 import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
 import { parse, resolve } from 'path'
+
+const { render } = less
+const { readFileSync, removeSync, writeFileSync } = fse
 
 export const EMPTY_SPACE_RE = /[\s]+/g
 export const EMPTY_LINE_RE = /[\n\r]*/g

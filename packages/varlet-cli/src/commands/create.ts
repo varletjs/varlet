@@ -1,13 +1,15 @@
 import ejs from 'ejs'
+import fse from 'fs-extra'
 import logger from '../shared/logger.js'
 import { bigCamelize, camelize, kebabCase } from '@varlet/shared'
 import { prompt } from 'inquirer'
-import { removeSync, readFileSync, copySync, pathExistsSync, writeFileSync } from 'fs-extra'
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 import { resolve } from 'path'
 import { glob } from '../shared/fsUtils.js'
 import { getVarletConfig } from '../config/varlet.config.js'
 import { SRC_DIR } from '../shared/constant.js'
+
+const { removeSync, readFileSync, copySync, pathExistsSync, writeFileSync } = fse
 
 type CodingStyle = 'tsx' | 'vue'
 
@@ -47,7 +49,7 @@ async function renderTemplates(componentFolder: string, componentFolderName: str
 export async function create(options: CreateCommandOptions) {
   logger.title('\n📦📦 Create a component ! \n')
 
-  const namespace = get(getVarletConfig(), 'namespace')
+  const namespace = get(await getVarletConfig(), 'namespace')
   const renderData: RenderData = {
     namespace,
     bigCamelizeNamespace: bigCamelize(namespace),

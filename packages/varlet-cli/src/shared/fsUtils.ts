@@ -1,15 +1,10 @@
-import { extname, resolve } from 'path'
-import {
-  appendFileSync,
-  ensureFileSync,
-  lstatSync,
-  outputFileSync,
-  pathExistsSync,
-  readdir,
-  readFileSync,
-} from 'fs-extra'
-import { PUBLIC_DIR_INDEXES, SCRIPTS_EXTENSIONS, SRC_DIR } from './constant.js'
 import globSync from 'glob'
+import fse from 'fs-extra'
+import { extname, resolve } from 'path'
+import { PUBLIC_DIR_INDEXES, SCRIPTS_EXTENSIONS, SRC_DIR } from './constant.js'
+import { fileURLToPath } from 'url'
+
+const { appendFileSync, ensureFileSync, lstatSync, outputFileSync, pathExistsSync, readdir, readFileSync } = fse
 
 export async function getPublicDirs(): Promise<string[]> {
   const srcDir: string[] = await readdir(SRC_DIR)
@@ -61,4 +56,8 @@ export function glob(pattern: string): Promise<string[]> {
       }
     })
   })
+}
+
+export function getDirname(url: string) {
+  return fileURLToPath(new URL('.', url))
 }

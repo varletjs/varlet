@@ -1,16 +1,11 @@
-import {
-  JEST_MEDIA_MOCK,
-  JEST_STYLE_MOCK,
-  DOCS_DIR_NAME,
-  TESTS_DIR_NAME,
-  EXAMPLE_DIR_NAME,
-  CWD,
-} from '../shared/constant'
-import { resolve } from 'path'
-import { pathExistsSync } from 'fs-extra'
+const { resolve } = require('path')
+const { pathExistsSync } = require('fs-extra')
+
+const JEST_MEDIA_MOCK = resolve(__dirname, 'jest.media.mock.cjs')
+const JEST_STYLE_MOCK = resolve(__dirname, 'jest.style.mock.cjs')
 
 function getRootConfig() {
-  const file = resolve(CWD, 'jest.config.js')
+  const file = resolve(process.cwd(), 'jest.config.js')
 
   if (pathExistsSync(file)) {
     delete require.cache[require.resolve(file)]
@@ -31,12 +26,7 @@ module.exports = {
     '\\.(js|jsx|ts|tsx)$': 'babel-jest',
   },
   collectCoverage: true,
-  collectCoverageFrom: [
-    'src/**/*.{js,jsx,ts,tsx,vue}',
-    `!**/${EXAMPLE_DIR_NAME}/**`,
-    `!**/${DOCS_DIR_NAME}/**`,
-    `!**/${TESTS_DIR_NAME}/**`,
-  ],
+  collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx,vue}', `!**/example/**`, `!**/docs/**`, `!**/__tests__/**`],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'vue'],
   transformIgnorePatterns: [],
   ...getRootConfig(),

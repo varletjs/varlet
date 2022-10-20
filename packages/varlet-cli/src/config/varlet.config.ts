@@ -1,10 +1,12 @@
-import { pathExistsSync } from 'fs-extra'
-import { mergeWith } from 'lodash'
+import fse from 'fs-extra'
+import { mergeWith } from 'lodash-es'
 import { VARLET_CONFIG, SITE_CONFIG } from '../shared/constant.js'
 import { outputFileSyncOnChange } from '../shared/fsUtils.js'
 import { isArray } from '@varlet/shared'
 
-interface VarletConfig {
+const { pathExistsSync, statSync } = fse
+
+export interface VarletConfig {
   /**
    * @default `Varlet`
    * UI library name.
@@ -51,16 +53,13 @@ export function mergeStrategy(value: any, srcValue: any, key: string) {
   }
 }
 
-export function getVarletConfig(emit = false): any {
-  let config: any = {}
-
-  if (pathExistsSync(VARLET_CONFIG)) {
-    delete require.cache[require.resolve(VARLET_CONFIG)]
-    config = require(VARLET_CONFIG)
-  }
-  delete require.cache[require.resolve('../../varlet.default.config.js')]
-  const defaultConfig = require('../../varlet.default.config.js')
-
+export async function getVarletConfig(emit = false): Promise<Required<VarletConfig>> {
+  // @ts-ignore
+  const defaultConfig = (await import(`../../varlet.default.config.js`)).default
+  const config: any = pathExistsSync(VARLET_CONFIG)
+    ? (await import(`${VARLET_CONFIG}?_t=${statSync(VARLET_CONFIG).mtimeMs}`)).default
+    : {}
+  // @ts-ignore
   const mergedConfig = mergeWith(defaultConfig, config, mergeStrategy)
 
   if (emit) {

@@ -1,8 +1,15 @@
 {
   "name": "@varlet/shared",
   "version": "2.0.6",
-  "module": "es/index.js",
+  "type": "module",
   "main": "lib/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js"
+    }
+  },
   "description": "shared utils of varlet",
   "keywords": [
     "shared",
@@ -12,7 +19,6 @@
   "author": "haoziqaq <357229046@qq.com>",
   "license": "MIT",
   "files": [
-    "lib",
     "es",
     "tsconfig.json",
     "CHANGELOG.md"

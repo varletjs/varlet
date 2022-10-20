@@ -1,7 +1,10 @@
 {
   "name": "@varlet/markdown-vite-plugin",
   "version": "2.0.6",
+  "type": "module",
   "description": "markdown vite plugin of varlet",
+  "main": "index.js",
+  "module": "index.js",
   "keywords": [
     "vite",
     "plugin",
@@ -10,7 +13,6 @@
   "author": "haoziqaq <357229046@qq.com>",
   "homepage": "https://github.com/varletjs/varlet#readme",
   "license": "MIT",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/varletjs/varlet.git"

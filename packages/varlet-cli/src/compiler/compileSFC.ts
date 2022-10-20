@@ -1,6 +1,6 @@
+import fse from 'fs-extra'
 import hash from 'hash-sum'
 import { parse, resolve } from 'path'
-import { readFile, writeFileSync } from 'fs-extra'
 import { parse as parseSFC, compileTemplate, compileStyle } from '@vue/compiler-sfc'
 import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
 import { compileScript } from './compileScript.js'
@@ -13,6 +13,8 @@ import {
 } from './compileStyle.js'
 import type { SFCStyleBlock } from '@vue/compiler-sfc'
 import logger from '../shared/logger.js'
+
+const { readFile, writeFileSync } = fse
 
 const NORMAL_EXPORT_START_RE = /export\s+default\s+{/
 const DEFINE_EXPORT_START_RE = /export\s+default\s+defineComponent\s*\(\s*{/

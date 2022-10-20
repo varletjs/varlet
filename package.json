@@ -36,7 +36,7 @@
       "packages/varlet-ui/src/*/__tests__/**",
       "packages/varlet-ui/.varlet/**",
       "packages/varlet-ui-playground/public/**",
-      "packages/varlet-ui-playground/dist/**",
+      "packages/varlet-ui-playground/site/**",
       "packages/varlet-shared/lib/**",
       "packages/varlet-shared/es/**"
     ],
@@ -62,7 +62,7 @@
       "packages/varlet-ui/public/**",
       "packages/varlet-ui/.varlet/**",
       "packages/varlet-ui-playground/public/**",
-      "packages/varlet-ui-playground/dist/**"
+      "packages/varlet-ui-playground/site/**"
     ]
   },
   "devDependencies": {

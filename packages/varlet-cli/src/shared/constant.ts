@@ -1,7 +1,10 @@
 import { resolve } from 'path'
+import { getDirname } from './fsUtils.js'
+
+const dirname = getDirname(import.meta.url)
 
 export const CWD = process.cwd()
-export const VARLET_CONFIG = resolve(CWD, 'varlet.config.js')
+export const VARLET_CONFIG = resolve(CWD, 'varlet.config.mjs')
 export const SRC_DIR = resolve(CWD, 'src')
 export const ES_DIR = resolve(CWD, 'es')
 export const LIB_DIR = resolve(CWD, 'lib')
@@ -20,12 +23,12 @@ export const LOCALE_DIR_NAME = 'locale'
 export const DOCS_DIR_NAME = 'docs'
 export const DIR_INDEX = 'index.vue'
 export const TESTS_DIR_NAME = '__tests__'
-export const GENERATORS_DIR = resolve(__dirname, '../../template/generators')
+export const GENERATORS_DIR = resolve(dirname, '../../template/generators')
 export const UI_PACKAGE_JSON = resolve(CWD, 'package.json')
-export const CLI_PACKAGE_JSON = resolve(__dirname, '../../package.json')
+export const CLI_PACKAGE_JSON = resolve(dirname, '../../package.json')
 
 // site
-export const SITE = resolve(__dirname, '../../site')
+export const SITE = resolve(dirname, '../../site')
 export const SITE_OUTPUT_PATH = resolve(CWD, 'site')
 export const SITE_PUBLIC_PATH = resolve(CWD, 'public')
 export const SITE_DIR = resolve(CWD, '.varlet/site')
@@ -47,6 +50,4 @@ export const HL_ATTRIBUTES_JSON = resolve(HL_DIR, 'attributes.json')
 export const HL_WEB_TYPES_JSON = resolve(HL_DIR, 'web-types.json')
 
 // jest
-export const JEST_CONFIG = resolve(__dirname, '../config/jest.config.js')
-export const JEST_MEDIA_MOCK = resolve(__dirname, '../config/jest.media.mock.js')
-export const JEST_STYLE_MOCK = resolve(__dirname, '../config/jest.style.mock.js')
+export const JEST_CONFIG = resolve(dirname, '../../cjs/jest.config.cjs')

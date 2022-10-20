@@ -1,6 +1,7 @@
 import vue from '@vitejs/plugin-vue'
 import md from '@varlet/markdown-vite-plugin'
 import jsx from '@vitejs/plugin-vue-jsx'
+import fse from 'fs-extra'
 import { injectHtml } from 'vite-plugin-html'
 import {
   CWD,
@@ -16,12 +17,14 @@ import {
   VITE_RESOLVE_EXTENSIONS,
 } from '../shared/constant.js'
 import { InlineConfig, PluginOption } from 'vite'
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 import { kebabCase } from '@varlet/shared'
 import { resolve } from 'path'
-import { copyFileSync, pathExistsSync, readFileSync, removeSync, writeFileSync } from 'fs-extra'
+import { VarletConfig } from './varlet.config'
 
-export function getDevConfig(varletConfig: Record<string, any>): InlineConfig {
+const { copyFileSync, pathExistsSync, readFileSync, removeSync, writeFileSync } = fse
+
+export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig {
   const defaultLanguage = get(varletConfig, 'defaultLanguage')
   const host = get(varletConfig, 'host')
 
@@ -62,7 +65,7 @@ export function getDevConfig(varletConfig: Record<string, any>): InlineConfig {
   }
 }
 
-export function getBuildConfig(varletConfig: Record<string, any>): InlineConfig {
+export function getBuildConfig(varletConfig: Required<VarletConfig>): InlineConfig {
   const devConfig = getDevConfig(varletConfig)
 
   return {
@@ -118,7 +121,7 @@ function clear(): PluginOption {
   }
 }
 
-export function getESMBundleConfig(varletConfig: Record<string, any>): InlineConfig {
+export function getESMBundleConfig(varletConfig: Required<VarletConfig>): InlineConfig {
   const name = get(varletConfig, 'name')
   const fileName = `${kebabCase(name)}.esm.js`
 
@@ -149,7 +152,7 @@ export function getESMBundleConfig(varletConfig: Record<string, any>): InlineCon
   }
 }
 
-export function getUMDConfig(varletConfig: Record<string, any>): InlineConfig {
+export function getUMDConfig(varletConfig: Required<VarletConfig>): InlineConfig {
   const name = get(varletConfig, 'name')
   const fileName = `${kebabCase(name)}.js`
 

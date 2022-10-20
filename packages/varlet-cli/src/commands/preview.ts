@@ -1,7 +1,9 @@
+import fse from 'fs-extra'
 import logger from '../shared/logger.js'
 import execa from 'execa'
 import { SITE_OUTPUT_PATH } from '../shared/constant.js'
-import { pathExistsSync } from 'fs-extra'
+
+const { pathExistsSync } = fse
 
 export async function preview() {
   if (!pathExistsSync(SITE_OUTPUT_PATH)) {

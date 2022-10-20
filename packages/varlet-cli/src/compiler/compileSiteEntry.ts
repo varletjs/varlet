@@ -1,3 +1,5 @@
+import slash from 'slash'
+import fse from 'fs-extra'
 import {
   DOCS_DIR_NAME,
   DIR_INDEX,
@@ -12,11 +14,11 @@ import {
   SITE_PC_ROUTES,
   SRC_DIR,
 } from '../shared/constant.js'
-import { copy } from 'fs-extra'
-import slash from 'slash'
 import { glob, isDir, outputFileSyncOnChange } from '../shared/fsUtils.js'
 import { getVarletConfig } from '../config/varlet.config.js'
-import { get } from 'lodash'
+import { get } from 'lodash-es'
+
+const { copy } = fse
 
 const EXAMPLE_COMPONENT_NAME_RE = /\/([-\w]+)\/example\/index.vue/
 const COMPONENT_DOCS_RE = /\/([-\w]+)\/docs\/([-\w]+)\.md/
@@ -62,7 +64,7 @@ export function findRootDocs(): Promise<string[]> {
 }
 
 export async function findRootLocales(): Promise<string[]> {
-  const defaultLanguage = get(getVarletConfig(), 'defaultLanguage')
+  const defaultLanguage = get(await getVarletConfig(), 'defaultLanguage')
 
   const userPages = await glob(`${ROOT_PAGES_DIR}/*`)
   const baseLocales = await glob(`${SITE}/pc/pages/**/${LOCALE_DIR_NAME}/*.ts`)
@@ -171,6 +173,6 @@ export async function buildSiteSource() {
 }
 
 export async function buildSiteEntry() {
-  getVarletConfig(true)
+  await getVarletConfig(true)
   await Promise.all([buildMobileSiteRoutes(), buildPcSiteRoutes(), buildSiteSource()])
 }
