@@ -11,7 +11,7 @@
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -30,7 +30,7 @@ const value = ref('')
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -52,7 +52,7 @@ const value = ref('')
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -69,7 +69,7 @@ const value = ref('')
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -90,7 +90,7 @@ const value = ref('')
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -111,7 +111,7 @@ const value = ref('')
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -132,7 +132,7 @@ const value = ref('')
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -157,7 +157,7 @@ const value = ref('')
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref([])
 </script>
@@ -180,7 +180,7 @@ const value = ref([])
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref([])
 </script>
@@ -203,7 +203,7 @@ const value = ref([])
 ### 单选值校验
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('')
 </script>
@@ -224,7 +224,7 @@ const value = ref('')
 ### 多选值校验
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref([])
 </script>

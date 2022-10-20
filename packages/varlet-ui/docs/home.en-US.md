@@ -17,6 +17,28 @@ Varlet is a Material design mobile component library developed based on `Vue3`, 
 - 💪 &nbsp; Make sure more than 90 percent unit test coverage, providing stability assurance
 - 🛠️ &nbsp; Support dark mode
 
+
+### Official Ecosystem
+
+The following projects are maintained by the official team for a long time
+
+| Name | Description |
+|------------------------------------------------------------------------------------------------------|--------------------------------------|
+| [@varlet/cli](https://github.com/varletjs/varlet/tree/dev/packages/varlet-cli) | `Vue3 component library rapid prototyping tool` |
+| [@varlet/touch-emulator](https://github.com/varletjs/varlet/tree/dev/packages/varlet-touch-emulator) | `Desktop adapter, so that the mobile component library can run on the desktop` |
+| [@varlet/ui-playground](https://github.com/varletjs/varlet/tree/dev/packages/varlet-ui-playground) | `Varlet component library online editing tool` |
+| [varlet-vscode-extension](https://github.com/varletjs/varlet/tree/dev/packages/varlet-vscode-extension) | `Varlet Component Library VSCode Plugin` |
+
+### Community Ecosystem
+
+The following projects are maintained by community personnel, welcome to add
+
+| Name | Description |
+|----------------------------------------------------------------|-----------------------------------------|
+| [varlet-ute](https://github.com/varletjs/varlet-ute)           | `The theme editing tool developed based on Varlet provides theme configuration of Varlet component library` |
+| [vue-h5-template](https://github.com/sunniejs/vue-h5-template) | `Vue-based mobile template scaffolding, providing mobile presets for Varlet component library` |
+| [create-vite-app](https://github.com/ErKeLost/create-vite-app) | `A desktop template scaffolding based on Vue3, providing desktop presets for Varlet component library` |
+
 ### PR & Issue
 If you have any problems during use, you can [issue](https://github.com/varletjs/varlet/issues) them to us on [github](https://github.com/varletjs/varlet),
 we will deal with it as soon as possible. You can also give us [PR](https://github.com/varletjs/varlet/pulls).
@@ -28,14 +50,7 @@ Component library based on `MIT` licenses.
 Material Design, Is a new design language from Google that aims to provide a more consistent and broader 
 "look and feel" for phones, tablets, desktops and "other platforms".
 
-### Why Material
-In the early mobile devices, large color blocks and strong contrast colors had high requirements for display devices, 
-while non-linear animation and water ripples had certain requirements for GPU.
-As a result, Material style does not have a good experience in the mobile browser environment, and more flat and simple style is chosen to be put into the product.
-But as modern devices and new JS frameworks become more efficient at runtime processing, 
-browsers have more free time, and the ability to process animations, and Material Design will bring a better experience to applications.
-
 ### Special thanks
 
 Special thanks to `Yu Tiezhu-eddieyc@163.com` for the visual support of our component library documentation site, 
-so as to help us continue to evolve.
+to help us continue to evolve.

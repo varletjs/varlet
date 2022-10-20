@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export type RowJustify = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around'
 
@@ -13,6 +14,10 @@ export interface RowProps extends BasicAttributes {
 
 export class Row extends VarComponent {
   $props: RowProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _RowComponent extends Row {}

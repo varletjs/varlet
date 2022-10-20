@@ -61,12 +61,19 @@
 </template>
 ```
 
-### 自定义
+### 自定义描述内容
 ```html
 <template>
   <var-divider>
     <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
   </var-divider>
+</template>
+```
+
+### 使用 0.5px 分割线
+```html
+<template>
+  <var-divider hairline />
 </template>
 ```
 
@@ -78,6 +85,7 @@
 | `inset` | 设置缩进距离，正负号可控制缩进方向。当传递 `true` 时默认缩进为 `72px` | _boolean \| number \| string_ | `false` |
 | `vertical` | 是否垂直 | _boolean_ | `false` |
 | `dashed` | 虚线 | _boolean_ | `false` |
+| `hairline` | 0.5px 的分割线 | _boolean_ | `false` |
 | `description` | 分割线的文字描述 | _string_ | `-` |
 | `margin` | 设置分割线样式的 `margin` 属性 | _string_ | `-` |
 

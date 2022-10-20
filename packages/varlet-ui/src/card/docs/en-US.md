@@ -150,7 +150,7 @@ const floating = ref(false)
 
 ### Slots
 
-| Slot            | Description                     | Arguments |
+| Name | Description | SlotProps |
 |-----------------|---------------------------------| --------- |
 | `image`         | Custom image                    | `-`       |
 | `title`         | Custom title                    | `-`       |

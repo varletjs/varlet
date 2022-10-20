@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export interface BackTopProps extends BasicAttributes {
   visibilityHeight?: number | string
@@ -11,6 +12,10 @@ export interface BackTopProps extends BasicAttributes {
 
 export class BackTop extends VarComponent {
   $props: BackTopProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _BackTopComponent extends BackTop {}

@@ -277,12 +277,12 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 
 #### Row Slots
 
-| Slot      | Description | Arguments |
+| Name | Description | SlotProps |
 | --------- | ----------- | --------- |
 | `default` | Row content | `-`       |
 
 #### Col Slots
 
-| Slot      | Description | Arguments |
+| Name | Description | SlotProps |
 | --------- | ----------- | --------- |
 | `default` | Col content | `-`       |

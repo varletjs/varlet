@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export interface CollapseItemProps extends BasicAttributes {
   name?: string | number
@@ -9,6 +10,12 @@ export interface CollapseItemProps extends BasicAttributes {
 
 export class CollapseItem extends VarComponent {
   $props: CollapseItemProps
+
+  $slots: {
+    default(): VNode[]
+    title(): VNode[]
+    icon(): VNode[]
+  }
 }
 
 export class _CollapseItemComponent extends CollapseItem {}

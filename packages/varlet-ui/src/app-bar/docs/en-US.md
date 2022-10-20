@@ -193,7 +193,7 @@ const goBack = () => {
 
 ### Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Customize the title content to override the `title` content | `-` |
 | `left` | Insert the content to the left of the AppBar | `-` |

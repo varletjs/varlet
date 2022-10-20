@@ -53,14 +53,14 @@ Used to separate parts of a list or layout.
 </style>
 ```
 
-### The Divider with description
+### Description Text
 ```html
 <template>
   <var-divider description="Description" />
 </template>
 ```
 
-### Custom
+### Custom Description
 ```html
 <template>
   <var-divider>
@@ -69,6 +69,12 @@ Used to separate parts of a list or layout.
 </template>
 ```
 
+### Use 0.5px Divider
+```html
+<template>
+  <var-divider hairline />
+</template>
+```
 
 ## API
 
@@ -78,11 +84,12 @@ Used to separate parts of a list or layout.
 | `inset` | Set the indentation distance, and the number plus or minus sign controls the direction of indentation. The default indentation is `72px` when `true` is passed | _boolean \| number \| string_ | `false` |
 | `vertical` | Whether to set divider to display vertically | _boolean_ | `false` |
 | `dashed` | Whether divider is dashed | _boolean_ | `false` |
+| `hairline` | Whether divider is 0.5px | _boolean_ | `false` |
 | `description` | The text description of divider | _string_ | `-` |
 | `margin` | Set `margin` of divider | _string_ | `-` |
 
 ### Slots
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Custom content of divider | `-` |
 

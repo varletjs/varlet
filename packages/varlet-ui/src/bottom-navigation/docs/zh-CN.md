@@ -211,8 +211,9 @@ const isEven = ref(true)
 
 #### BottomNavigation Slots
 
-| 名称 | 说明 | 参数 |
-| ---- | ---- | ----|
+| 名称 | 说明                    | 参数 |
+| ---- |-----------------------| ----|
+| `default` | 底部导航栏内容               |`-` |
 | `fab` | 支持在组件中插入一个自定义的 fab 按钮 | `-` |
 
 #### BottomNavigationItem Slots

@@ -237,13 +237,13 @@ const value = ref([])
 
 #### CheckboxGroup Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Checkbox group content | `-` |
 
 #### Checkbox Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `checked-icon` | Checked icon | `-` |
 | `unchecked-icon` | Unchecked icon | `-` |

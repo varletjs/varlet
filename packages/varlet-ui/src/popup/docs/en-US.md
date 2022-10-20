@@ -213,7 +213,7 @@ const event = ref(false)
 
 ### Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Popup content | `-` |
 

@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export interface PullRefreshProps extends BasicAttributes {
   modelValue?: boolean
@@ -15,6 +16,10 @@ export interface PullRefreshProps extends BasicAttributes {
 
 export class PullRefresh extends VarComponent {
   $props: PullRefreshProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _PullRefreshComponent extends PullRefresh {}

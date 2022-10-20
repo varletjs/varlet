@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export type ProgressMode = 'linear' | 'circle'
 
@@ -18,6 +19,10 @@ export interface ProgressProps extends BasicAttributes {
 
 export class Progress extends VarComponent {
   $props: ProgressProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _ProgressComponent extends Progress {}

@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export interface ListProps extends BasicAttributes {
   loading?: boolean
@@ -16,6 +17,13 @@ export interface ListProps extends BasicAttributes {
 
 export class List extends VarComponent {
   $props: ListProps
+
+  $slots: {
+    default(): VNode[]
+    loading(): VNode[]
+    error(): VNode[]
+    finished(): VNode[]
+  }
 }
 
 export class _ListComponent extends List {}

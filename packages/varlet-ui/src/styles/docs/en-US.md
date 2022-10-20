@@ -8,10 +8,7 @@ specification to represent the dimensionality of an element.
 
 ```js
 // playground-ignore
-// css
 import '@varlet/ui/es/styles/elevation.css'
-// less
-import '@varlet/ui/es/styles/elevation.less'
 ```
 
 ### Basic Usage

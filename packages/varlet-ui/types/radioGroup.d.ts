@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes, Direction as RadioGroupDirection } from './varComponent'
+import { VNode } from 'vue'
 
 export type RadioGroupValidateTrigger = 'onChange'
 
@@ -15,6 +16,10 @@ export interface RadioGroupProps extends BasicAttributes {
 
 export class RadioGroup extends VarComponent {
   $props: RadioGroupProps
+
+  $slots: {
+    default(): VNode[]
+  }
 
   validate(): Promise<boolean>
 

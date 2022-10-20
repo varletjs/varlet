@@ -156,7 +156,7 @@ Set the chip color through the `color` and `text-color` attributes.
 
 ### Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Chip content | `-` |
 | `left` | The content inserted to the left of the chip | `-` |

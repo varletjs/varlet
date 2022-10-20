@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export type CardFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
@@ -24,6 +25,16 @@ export interface CardProps extends BasicAttributes {
 
 export class Card extends VarComponent {
   $props: CardProps
+
+  $slots: {
+    image(): VNode[]
+    title(): VNode[]
+    subtitle(): VNode[]
+    description(): VNode[]
+    extra(): VNode[]
+    'close-button'(): VNode[]
+    'floating-content'(): VNode[]
+  }
 }
 
 export class _CardComponent extends Card {}

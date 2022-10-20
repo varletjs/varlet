@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes, Direction as TabsDirection } from './varComponent'
+import { VNode } from 'vue'
 
 export { TabsDirection }
 
@@ -24,6 +25,10 @@ export interface TabsProps extends BasicAttributes {
 
 export class Tabs extends VarComponent {
   $props: TabsProps
+
+  $slots: {
+    default(): VNode[]
+  }
 
   resize(): void
 }

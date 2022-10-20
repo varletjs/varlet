@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export interface IndexBarProps extends BasicAttributes {
   sticky?: boolean
@@ -14,6 +15,10 @@ export interface IndexBarProps extends BasicAttributes {
 
 export class IndexBar extends VarComponent {
   $props: IndexBarProps
+
+  $slots: {
+    default(): VNode[]
+  }
 
   scrollTo: (index: number | string) => void
 }

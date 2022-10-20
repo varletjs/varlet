@@ -152,19 +152,20 @@ import logo from '../../assets/logo.png'
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `src` | 图片地址 | _string_ | `-` |
-| `fit` | 填充模式, 可选值为 `fill contain cover none scale-down` | _string_ | `fill` |
-| `alt` | 替代文本 | _string_ | `-` |
-| `width` | 图片宽度 | _string \| number_ | `-` |
-| `height` | 图片高度 | _string \| number_ | `-` |
-| `radius` | 图片圆角 | _string \| number_ | `-` |
-| `lazy` | 是否开启懒加载 | _boolean_ | `false` |
-| `loading` | 当开启懒加载时, 加载中显示的图片 | _string_ | `-` |
-| `error` | 当开启懒加载时, 加载失败显示的图片 | _string_ | `-` |
-| `ripple` | 是否开启水波 | _boolean_ | `false` |
-| `block` | 是否是块级元素 | _boolean_ | `true` |
+| 参数        | 说明                                              | 类型 | 默认值 |
+|-----------|-------------------------------------------------| --- | --- |
+| `src`     | 图片地址                                            | _string_ | `-` |
+| `fit`     | 填充模式, 可选值为 `fill contain cover none scale-down` | _string_ | `fill` |
+| `alt`     | 替代文本，和 `img` 标签原生属性一致                           | _string_ | `-` |
+| `title`   | 图片描述性文字，和 `img` 标签原生属性一致             | _string_ | `-` |
+| `width`   | 图片宽度                                            | _string \| number_ | `-` |
+| `height`  | 图片高度                                            | _string \| number_ | `-` |
+| `radius`  | 图片圆角                                            | _string \| number_ | `-` |
+| `lazy`    | 是否开启懒加载                                         | _boolean_ | `false` |
+| `loading` | 当开启懒加载时, 加载中显示的图片                               | _string_ | `-` |
+| `error`   | 当开启懒加载时, 加载失败显示的图片                              | _string_ | `-` |
+| `ripple`  | 是否开启水波                                          | _boolean_ | `false` |
+| `block`   | 是否是块级元素                                         | _boolean_ | `true` |
 
 ### 事件
 

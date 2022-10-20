@@ -241,10 +241,18 @@ import { Snackbar } from '@varlet/ui'
 
 ### Slots
 
-| Slot        | Description             | Arguments                             |
+#### Swipe Slots
+
+| Name | Description | SlotProps |
 | ----------- | ----------------------- | ------------------------------------- |
 | `default`   | Swipe content           | `-`                                   |
 | `indicator` | Swipe indicator content | `index: number` <br> `length: number` |
+
+#### SwipeItem Slots
+
+| Name | Description | SlotProps |
+| --- |--------------------| --- |
+| `default` | Swipe item content | `-` |
 
 ### Style Variables
 

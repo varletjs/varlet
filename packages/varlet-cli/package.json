@@ -1,6 +1,6 @@
 {
   "name": "@varlet/cli",
-  "version": "2.0.0",
+  "version": "2.0.5",
   "description": "cli of varlet",
   "bin": {
     "varlet-cli": "./lib/bin.js"
@@ -38,10 +38,8 @@
     "@babel/helper-plugin-utils": "^7.14.5",
     "@babel/preset-env": "^7.14.8",
     "@babel/preset-typescript": "^7.14.5",
-    "@varlet/icons": "workspace:*",
     "@varlet/markdown-vite-plugin": "workspace:*",
     "@varlet/shared": "workspace:*",
-    "@varlet/touch-emulator": "workspace:*",
     "@vitejs/plugin-vue": "3.0.1",
     "@vitejs/plugin-vue-jsx": "2.0.0",
     "@vue/babel-plugin-jsx": "1.1.1",
@@ -73,6 +71,8 @@
     "vue-jest": "^5.0.0-alpha.8"
   },
   "devDependencies": {
+    "@varlet/icons": "workspace:*",
+    "@varlet/touch-emulator": "workspace:*",
     "@types/node": "^18.7.20",
     "@types/babel__core": "^7.1.12",
     "@types/ejs": "^3.1.1",
@@ -86,6 +86,7 @@
     "@types/semver": "^7.3.9"
   },
   "peerDependencies": {
+    "@varlet/icons": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
     "@vue/runtime-core": "3.2.16",
     "@vue/test-utils": "^2.0.2",

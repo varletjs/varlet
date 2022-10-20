@@ -68,4 +68,20 @@
     border-top: none;
     border-left-style: dashed;
   }
+
+  &--hairline {
+    transform: scaleY(0.5);
+  }
+
+  &--hairline&--with-text {
+    transform: none;
+    &::before,
+    &::after {
+      transform: scaleY(0.5);
+    }
+  }
+
+  &--hairline&--vertical {
+    transform: scaleX(0.5);
+  }
 }

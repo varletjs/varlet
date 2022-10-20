@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export type ColSizeDescriptor = {
   span?: number | string
@@ -21,6 +22,10 @@ export interface ColProps extends BasicAttributes {
 
 export class Col extends VarComponent {
   $props: ColProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _ColComponent extends Col {}

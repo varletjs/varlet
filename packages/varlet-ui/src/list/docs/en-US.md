@@ -205,7 +205,7 @@ This can be mistaken for a scroll container, so avoid it.
 
 ### Slots
 
-| Slot       | Description      | Arguments |
+| Name | Description | SlotProps |
 | ---------- | ---------------- | --------- |
 | `default`  | List content     | `-`       |
 | `loading`  | Loading content  | `-`       |

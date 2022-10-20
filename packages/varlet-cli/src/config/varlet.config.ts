@@ -1,7 +1,8 @@
 import { pathExistsSync } from 'fs-extra'
-import { merge } from 'lodash'
+import { mergeWith } from 'lodash'
 import { VARLET_CONFIG, SITE_CONFIG } from '../shared/constant'
 import { outputFileSyncOnChange } from '../shared/fsUtils'
+import { isArray } from '@varlet/shared'
 
 interface VarletConfig {
   /**
@@ -11,18 +12,17 @@ interface VarletConfig {
   name?: string
   /**
    * @default `var`
-   * Component class name preffix
+   * Component name prefix
    */
-  namesapce?: string
+  namespace?: string
   /**
    * @default `localhost`
    * Local dev server host
    */
   host?: string
-
   /**
    * @default `8080`
-   * Local dev server protcol
+   * Local dev server port
    */
   port?: number
   logo?: string
@@ -41,7 +41,15 @@ interface VarletConfig {
   moduleCompatible?: Record<string, string>
 }
 
-export const defineConfig = (conf: VarletConfig) => conf
+export function defineConfig(conf: VarletConfig) {
+  return conf
+}
+
+export function mergeStrategy(value: any, srcValue: any, key: string) {
+  if (key === 'features' && isArray(srcValue)) {
+    return srcValue
+  }
+}
 
 export function getVarletConfig(emit = false): any {
   let config: any = {}
@@ -53,7 +61,7 @@ export function getVarletConfig(emit = false): any {
   delete require.cache[require.resolve('../../varlet.default.config.js')]
   const defaultConfig = require('../../varlet.default.config.js')
 
-  const mergedConfig = merge(defaultConfig, config)
+  const mergedConfig = mergeWith(defaultConfig, config, mergeStrategy)
 
   if (emit) {
     const source = JSON.stringify(mergedConfig, null, 2)

@@ -139,7 +139,7 @@ const readonly = ref(false)
 
 ### Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Form content | `-` |
 

@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export type SelectValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
 
@@ -33,6 +34,11 @@ export interface SelectProps extends BasicAttributes {
 
 export class Select extends VarComponent {
   $props: SelectProps
+
+  $slots: {
+    'prepend-icon'(): VNode[]
+    'append-icon'(): VNode[]
+  }
 
   focus(): void
 

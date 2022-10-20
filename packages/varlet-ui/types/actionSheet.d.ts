@@ -1,5 +1,6 @@
 import type { App, TeleportProps } from 'vue'
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export interface ActionSheetProps extends BasicAttributes {
   actions?: ActionItem[]
@@ -50,6 +51,12 @@ export interface ActionSheetOptions {
 
 export class ActionSheetComponent extends VarComponent {
   $props: ActionSheetProps
+
+  $slots: {
+    default(): VNode[]
+    title(): VNode[]
+    actions(): VNode[]
+  }
 }
 
 export type ActionSheetActions = ActionItem | 'close'

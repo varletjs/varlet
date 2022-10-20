@@ -247,7 +247,7 @@ const score = ref(3)
 
 | 事件名 | 说明 | 回调参数 |
 | ---- | ---- | ---- |
-| change | 评分改变时触发 | `value: string \| number` |
+| `change` | 评分改变时触发 | `value: string \| number` |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制

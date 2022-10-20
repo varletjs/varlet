@@ -1,5 +1,6 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import type { TeleportProps } from 'vue'
+import { VNode } from 'vue'
 
 export type PopupPosition = 'top' | 'bottom' | 'right' | 'left' | 'center'
 
@@ -22,6 +23,10 @@ export interface PopupProps extends BasicAttributes {
 
 export class Popup extends VarComponent {
   $props: PopupProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _PopupComponent extends Popup {}

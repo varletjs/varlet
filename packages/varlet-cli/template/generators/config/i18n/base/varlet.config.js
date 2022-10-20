@@ -1,4 +1,6 @@
-module.exports = {
+const { defineConfig } = require('@varlet/cli')
+
+module.exports = defineConfig({
   logo: './logo.svg',
   useMobile: true,
   pc: {
@@ -44,4 +46,4 @@ module.exports = {
       darkMode: null,
     },
   },
-}
+})

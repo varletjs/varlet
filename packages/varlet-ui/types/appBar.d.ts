@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export type AppBarTitlePosition = 'left' | 'center' | 'right'
 
@@ -12,6 +13,12 @@ export interface AppBarProps extends BasicAttributes {
 
 export class AppBar extends VarComponent {
   $props: AppBarProps
+
+  $slots: {
+    default(): VNode[]
+    left(): VNode[]
+    right(): VNode[]
+  }
 }
 
 export class _AppBarComponent extends AppBar {}

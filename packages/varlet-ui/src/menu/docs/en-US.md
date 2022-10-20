@@ -258,7 +258,7 @@ it is recommended to wrap a `block` element.
 
 ### Slots
 
-| Slot | Description          | Arguments |
+| Name | Description | SlotProps |
 | --- |----------------------| --- |
 | `default` | Menu trigger element | `-` |
 | `menu` | Menu content         | `-` |

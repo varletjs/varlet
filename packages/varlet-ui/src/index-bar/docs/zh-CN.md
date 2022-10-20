@@ -84,6 +84,12 @@ onMounted(() => {
 
 ### 插槽
 
+#### IndexBar Slots
+
+| 名称 | 说明 | 参数 |
+| --- | -- | --- |
+| `default` | 索引栏内容 |`-` |
+
 #### IndexAnchor Slots
 
 | 名称 | 说明 | 参数 |

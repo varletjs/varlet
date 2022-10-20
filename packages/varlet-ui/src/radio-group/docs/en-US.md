@@ -219,13 +219,13 @@ const value = ref(false)
 
 #### RadioGroup Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Radio group content | `-` |
 
 #### Radio Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `checked-icon` | Checked icon | `-` |
 | `unchecked-icon` | Unchecked icon | `-` |

@@ -1,6 +1,7 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
-export type TimeData = {
+export interface CountdownTimeData {
   days: number
   hours: number
   minutes: number
@@ -13,11 +14,15 @@ export interface CountdownProps extends BasicAttributes {
   format?: string
   autoStart?: boolean
   onEnd?: () => void
-  onChange?: (value: TimeData) => void
+  onChange?: (value: CountdownTimeData) => void
 }
 
 export class Countdown extends VarComponent {
   $props: CountdownProps
+
+  $slots: {
+    default(data: CountdownTimeData): VNode[]
+  }
 
   start(): void
 

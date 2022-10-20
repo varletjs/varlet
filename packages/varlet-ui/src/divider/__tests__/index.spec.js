@@ -69,4 +69,17 @@ describe('test divider components props', () => {
     expect(wrapper.find('.var-divider').attributes('style')).toContain('margin: 20px;')
     wrapper.unmount()
   })
+
+  test('test divider hairline', async () => {
+    const wrapper = mount(VarDivider, {
+      props: {
+        hairline: true,
+      },
+    })
+
+    expect(wrapper.find('.var-divider--hairline').exists()).toBe(true)
+    await wrapper.setProps({ hairline: false })
+    expect(wrapper.find('.var-divider--hairline').exists()).toBe(false)
+    wrapper.unmount()
+  })
 })

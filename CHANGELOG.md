@@ -1,3 +1,49 @@
+## [2.0.5](https://github.com/varletjs/varlet/compare/v2.0.4...v2.0.5) (2022-10-19)
+
+
+### Bug Fixes
+
+* **ui/BottomNavigation:** change repeat trigger ([#729](https://github.com/varletjs/varlet/issues/729)) ([a61147f](https://github.com/varletjs/varlet/commit/a61147fca6694196268278dd7b7f99691ca73b0b))
+* **ui/divider:**  0.5px affects text display ([3e51cec](https://github.com/varletjs/varlet/commit/3e51cec5ef1533ce38bbbd23f497afea8eb956b7))
+
+
+### Features
+
+* **ui/divider:** add hairline divider ([03102d4](https://github.com/varletjs/varlet/commit/03102d4047253cbdab11861d699a50e9b3919636))
+
+
+
+## [2.0.4](https://github.com/varletjs/varlet/compare/v2.0.3...v2.0.4) (2022-10-19)
+
+
+
+## [2.0.3](https://github.com/varletjs/varlet/compare/v2.0.2...v2.0.3) (2022-10-15)
+
+
+### Bug Fixes
+
+* **config:** fix features merge strategy ([c3a378f](https://github.com/varletjs/varlet/commit/c3a378f9b43085888f5610dc739f45b28795e7e1))
+
+
+
+## [2.0.2](https://github.com/varletjs/varlet/compare/v2.0.1...v2.0.2) (2022-10-13)
+
+
+### Features
+
+* **ui/image:** support title prop ([48462bb](https://github.com/varletjs/varlet/commit/48462bbf81d24e7558295e86ec543e6fed0a6d04))
+
+
+
+## [2.0.1](https://github.com/varletjs/varlet/compare/v2.0.0...v2.0.1) (2022-10-13)
+
+
+### Features
+
+* **cli:** add defineConfig for type helper ([#721](https://github.com/varletjs/varlet/issues/721)) ([84579f4](https://github.com/varletjs/varlet/commit/84579f488a7ca800e083c97019b6f6fd785b9fa3))
+
+
+
 # [2.0.0](https://github.com/varletjs/varlet/compare/v1.27.20...v2.0.0) (2022-10-11)
 
 

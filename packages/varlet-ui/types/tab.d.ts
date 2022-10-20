@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export interface TabProps extends BasicAttributes {
   name?: string | number
@@ -8,6 +9,10 @@ export interface TabProps extends BasicAttributes {
 
 export class Tab extends VarComponent {
   $props: TabProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _TabComponent extends Tab {}

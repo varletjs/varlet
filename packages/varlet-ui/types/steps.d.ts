@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes, Direction as StepsDirection } from './varComponent'
+import { VNode } from 'vue'
 
 export { StepsDirection }
 
@@ -12,6 +13,10 @@ export interface StepsProps extends BasicAttributes {
 
 export class Steps extends VarComponent {
   $props: StepsProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _StepsComponent extends Steps {}

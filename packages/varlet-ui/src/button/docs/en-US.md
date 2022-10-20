@@ -174,7 +174,7 @@ const handleAutoLoadingClick = () => {
 
 ### Slots
 
-| Slot      | Description    | Arguments |
+| Name | Description | SlotProps |
 | --------- | -------------- | --------- |
 | `default` | Button content | `-`       |
 

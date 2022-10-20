@@ -1,5 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
-import type { App, TeleportProps } from 'vue'
+import type { App, TeleportProps, VNode } from 'vue'
 
 export type DialogTypeMessageAlign = 'left' | 'center' | 'right'
 
@@ -38,6 +38,11 @@ export interface DialogProps extends BasicAttributes {
 
 export class DialogComponent extends VarComponent {
   $props: DialogProps
+
+  $slots: {
+    default(): VNode[]
+    title(): VNode[]
+  }
 }
 
 export type DialogActions = 'confirm' | 'cancel' | 'close'

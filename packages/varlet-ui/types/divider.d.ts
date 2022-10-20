@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export interface DividerProps extends BasicAttributes {
   inset?: boolean | number
@@ -6,10 +7,15 @@ export interface DividerProps extends BasicAttributes {
   description?: string
   margin?: string
   dashed?: boolean
+  hairline?: boolean
 }
 
 export class Divider extends VarComponent {
   $props: DividerProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _DividerComponent extends Divider {}

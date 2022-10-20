@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
+import { VNode } from 'vue'
 
 export interface StickyProps extends BasicAttributes {
   offsetTop?: string | number
@@ -10,6 +11,10 @@ export interface StickyProps extends BasicAttributes {
 
 export class Sticky extends VarComponent {
   $props: StickyProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _StickyComponent extends Sticky {}

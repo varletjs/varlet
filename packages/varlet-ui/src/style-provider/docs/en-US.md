@@ -120,6 +120,6 @@ const toggleRootTheme = () => {
 
 ### Slots
 
-| Slot | Description | Arguments |
+| Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Component content | `-` |

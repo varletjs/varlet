@@ -403,6 +403,10 @@ iframe {
             padding: 0;
             font-size: 13px;
           }
+
+          a {
+            font-size: 13px;
+          }
         }
 
         em {

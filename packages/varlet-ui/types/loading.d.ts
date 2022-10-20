@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes, Size as LoadingSize } from './varComponent'
+import { VNode } from 'vue'
 
 export type LoadingType = 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'
 
@@ -15,6 +16,11 @@ export interface LoadingProps extends BasicAttributes {
 
 export class Loading extends VarComponent {
   $props: LoadingProps
+
+  $slots: {
+    default(): VNode[]
+    description(): VNode[]
+  }
 }
 
 export class _LoadingComponent extends Loading {}
