@@ -4,7 +4,8 @@ import { extname, resolve } from 'path'
 import { PUBLIC_DIR_INDEXES, SCRIPTS_EXTENSIONS, SRC_DIR } from './constant.js'
 import { fileURLToPath } from 'url'
 
-const { appendFileSync, ensureFileSync, lstatSync, outputFileSync, pathExistsSync, readdir, readFileSync } = fse
+const { appendFileSync, ensureFileSync, lstatSync, statSync, outputFileSync, pathExistsSync, readdir, readFileSync } =
+  fse
 
 export async function getPublicDirs(): Promise<string[]> {
   const srcDir: string[] = await readdir(SRC_DIR)
@@ -60,4 +61,11 @@ export function glob(pattern: string): Promise<string[]> {
 
 export function getDirname(url: string) {
   return fileURLToPath(new URL('.', url))
+}
+
+export async function getCurrentFile(path: string): Promise<any> {
+  const { mtimeMs } = statSync(path)
+  const file = await import(`${path}?_t=${mtimeMs}`)
+
+  return file
 }

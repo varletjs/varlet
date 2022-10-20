@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 import { getDirname } from './fsUtils.js'
 
-const dirname = getDirname(import.meta.url)
+export const dirname = getDirname(import.meta.url)
 
 export const CWD = process.cwd()
 export const VARLET_CONFIG = resolve(CWD, 'varlet.config.mjs')

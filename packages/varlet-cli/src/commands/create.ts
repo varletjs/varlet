@@ -7,7 +7,7 @@ import { get } from 'lodash-es'
 import { resolve } from 'path'
 import { glob } from '../shared/fsUtils.js'
 import { getVarletConfig } from '../config/varlet.config.js'
-import { SRC_DIR } from '../shared/constant.js'
+import { SRC_DIR, dirname } from '../shared/constant.js'
 
 const { removeSync, readFileSync, copySync, pathExistsSync, writeFileSync } = fse
 
@@ -107,7 +107,7 @@ export async function create(options: CreateCommandOptions) {
     renderData.style = style
   }
 
-  copySync(resolve(__dirname, '../../template/create'), componentFolder)
+  copySync(resolve(dirname, '../../template/create'), componentFolder)
   await renderTemplates(componentFolder, componentFolderName, renderData)
 
   if (!renderData.locale) {
