@@ -1,4 +1,4 @@
-import { defineConfig } from './varlet.config'
+import { defineConfig } from './varlet.config.js'
 
 export default defineConfig({
   name: 'Varlet',
