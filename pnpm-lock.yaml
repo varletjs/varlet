@@ -89,10 +89,8 @@ importers:
       '@babel/helper-plugin-utils': 7.18.9
       '@babel/preset-env': 7.18.10_@babel+core@7.18.10
       '@babel/preset-typescript': 7.18.6_@babel+core@7.18.10
-      '@varlet/icons': link:../varlet-icons
       '@varlet/markdown-vite-plugin': link:../varlet-markdown-vite-plugin
       '@varlet/shared': link:../varlet-shared
-      '@varlet/touch-emulator': link:../varlet-touch-emulator
       '@vitejs/plugin-vue': 3.0.1_vite@3.0.4+vue@3.2.25
       '@vitejs/plugin-vue-jsx': 2.0.0_vite@3.0.4+vue@3.2.25
       '@vue/babel-plugin-jsx': 1.1.1_@babel+core@7.18.10
@@ -138,6 +136,8 @@ importers:
       '@types/lodash-es': 4.17.6
       '@types/node': 18.7.20
       '@types/semver': 7.3.12
+      '@varlet/icons': link:../varlet-icons
+      '@varlet/touch-emulator': link:../varlet-touch-emulator
 
   packages/varlet-eslint-config:
     specifiers:
