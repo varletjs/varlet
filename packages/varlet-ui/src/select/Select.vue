@@ -22,7 +22,7 @@
           var-select-cover
           :class="classes(n('menu'))"
           :offset-y="offsetY"
-          :disabled="readonly || disabled"
+          :disabled="formReadonly || readonly || formDisabled || disabled"
           :default-style="false"
           v-model:show="isFocus"
           @close="handleBlur"
@@ -375,6 +375,7 @@ export default defineComponent({
       isFocus,
       errorMessage,
       formDisabled: form?.disabled,
+      formReadonly: form?.readonly,
       label,
       labels,
       menuEl,
