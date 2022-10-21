@@ -1,23 +1,24 @@
 #!/usr/bin/env node
+import webfont from 'webfont'
+import commander from 'commander'
+import fse from 'fs-extra'
+import { resolve } from 'path'
+import { pathToFileURL } from 'url'
 
-const webfont = require('webfont').default
-const commander = require('commander')
-const { writeFile, ensureDir, removeSync, readdirSync } = require('fs-extra')
-const { resolve } = require('path')
-
-const CWD = process.cwd()
-const SVG_DIR = resolve(CWD, 'svg')
-const DIST_DIR = resolve(CWD, 'dist')
-const FONTS_DIR = resolve(DIST_DIR, 'fonts')
-const CSS_DIR = resolve(DIST_DIR, 'css')
-const formats = ['ttf', 'woff', 'woff2']
-
-const config = require(resolve(CWD, 'varlet-icons.config.js'))
+const { writeFile, ensureDir, removeSync, readdirSync } = fse
 
 async function build() {
+  const CWD = process.cwd()
+  const SVG_DIR = resolve(CWD, 'svg')
+  const DIST_DIR = resolve(CWD, 'dist')
+  const FONTS_DIR = resolve(DIST_DIR, 'fonts')
+  const CSS_DIR = resolve(DIST_DIR, 'css')
+  const formats = ['ttf', 'woff', 'woff2']
+  const { default: config } = await import(pathToFileURL(resolve(CWD, 'varlet-icons.config.js')))
+
   const { base64, publicPath, namespace, fontName, fileName, fontWeight = 'normal', fontStyle = 'normal' } = config
 
-  const { ttf, woff, woff2 } = await webfont({
+  const { ttf, woff, woff2 } = await webfont.default({
     files: `${SVG_DIR}/*.svg`,
     fontName,
     formats,
@@ -42,12 +43,6 @@ async function build() {
   const iconNames = icons.map((iconName) => `  "${iconName.name}"`)
 
   const indexTemplate = `\
-module.exports = [
-${iconNames.join(',\n')}
-]
-`
-
-  const indexESMTemplate = `\
 export default [
 ${iconNames.join(',\n')}
 ]
@@ -101,7 +96,6 @@ ${icons
     writeFile(resolve(CSS_DIR, `${fileName}.css`), cssTemplate),
     writeFile(resolve(CSS_DIR, `${fileName}.less`), cssTemplate),
     writeFile(resolve(DIST_DIR, 'index.js'), indexTemplate),
-    writeFile(resolve(DIST_DIR, 'index.esm.js'), indexESMTemplate),
   ])
 
   console.log('build success!')

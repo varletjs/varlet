@@ -2,8 +2,9 @@
   "name": "@varlet/icons",
   "version": "2.0.6",
   "description": "Icons of varlet",
+  "type": "module",
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "module": "dist/index.js",
   "bin": {
     "varlet-icons": "lib/index.js"
   },
@@ -33,5 +34,8 @@
     "commander": "^6.2.1",
     "fs-extra": "^9.0.1",
     "webfont": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.20"
   }
 }

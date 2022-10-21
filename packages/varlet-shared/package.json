@@ -19,7 +19,7 @@
   "author": "haoziqaq <357229046@qq.com>",
   "license": "MIT",
   "files": [
-    "es",
+    "lib",
     "tsconfig.json",
     "CHANGELOG.md"
   ],
