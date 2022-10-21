@@ -4,12 +4,13 @@ import execa from 'execa'
 import logger from '../shared/logger.js'
 import semver from 'semver'
 import glob from 'glob'
-import { prompt } from 'inquirer'
+import inquirer from 'inquirer'
 import { CWD } from '../shared/constant.js'
 import { resolve } from 'path'
 import { changelog } from './changelog.js'
 
 const { writeFileSync } = fse
+const { prompt } = inquirer
 
 const releaseTypes = ['premajor', 'preminor', 'prepatch', 'major', 'minor', 'patch']
 

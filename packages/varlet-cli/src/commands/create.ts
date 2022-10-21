@@ -2,7 +2,7 @@ import ejs from 'ejs'
 import fse from 'fs-extra'
 import logger from '../shared/logger.js'
 import { bigCamelize, camelize, kebabCase } from '@varlet/shared'
-import { prompt } from 'inquirer'
+import inquirer from 'inquirer'
 import { get } from 'lodash-es'
 import { resolve } from 'path'
 import { glob } from '../shared/fsUtils.js'
@@ -10,6 +10,7 @@ import { getVarletConfig } from '../config/varlet.config.js'
 import { SRC_DIR, dirname } from '../shared/constant.js'
 
 const { removeSync, readFileSync, copySync, pathExistsSync, writeFileSync } = fse
+const { prompt } = inquirer
 
 type CodingStyle = 'tsx' | 'vue'
 

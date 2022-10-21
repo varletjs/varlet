@@ -1,10 +1,11 @@
 import logger from '../shared/logger.js'
 import fse from 'fs-extra'
-import { prompt } from 'inquirer'
+import inquirer from 'inquirer'
 import { resolve } from 'path'
 import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant.js'
 
 const { copy, pathExistsSync, readFileSync, writeFileSync, rename } = fse
+const { prompt } = inquirer
 
 type CodeStyle = 'tsx' | 'sfc'
 
