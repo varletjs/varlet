@@ -46,8 +46,8 @@ export interface VarletConfig {
   moduleCompatible?: Record<string, string>
 }
 
-export function defineConfig(conf: VarletConfig) {
-  return conf
+export function defineConfig(config: VarletConfig) {
+  return config
 }
 
 export function mergeStrategy(value: any, srcValue: any, key: string) {
