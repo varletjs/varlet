@@ -71,7 +71,6 @@ importers:
       jest: ^26.6.3
       less: ^3.12.2
       live-server: ^1.2.1
-      lodash: ^4.17.21
       lodash-es: ^4.17.21
       ora: ^5.4.0
       semver: ^7.3.5
@@ -112,7 +111,6 @@ importers:
       jest: 26.6.3
       less: 3.13.1
       live-server: 1.2.2
-      lodash: 4.17.21
       lodash-es: 4.17.21
       ora: 5.4.1
       semver: 7.3.7
