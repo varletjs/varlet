@@ -4,10 +4,10 @@
   "type": "module",
   "description": "cli of varlet",
   "bin": {
-    "varlet-cli": "./lib/bin.js"
+    "varlet-cli": "./lib/node/bin.js"
   },
-  "main": "./lib/index.js",
-  "module": "./lib/index.js",
+  "main": "./lib/node/index.js",
+  "module": "./lib/node/index.js",
   "keywords": [
     "cli",
     "varlet"

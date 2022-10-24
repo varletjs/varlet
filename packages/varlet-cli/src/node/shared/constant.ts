@@ -23,12 +23,12 @@ export const LOCALE_DIR_NAME = 'locale'
 export const DOCS_DIR_NAME = 'docs'
 export const DIR_INDEX = 'index.vue'
 export const TESTS_DIR_NAME = '__tests__'
-export const GENERATORS_DIR = resolve(dirname, '../../template/generators')
+export const GENERATORS_DIR = resolve(dirname, '../../../template/generators')
 export const UI_PACKAGE_JSON = resolve(CWD, 'package.json')
-export const CLI_PACKAGE_JSON = resolve(dirname, '../../package.json')
+export const CLI_PACKAGE_JSON = resolve(dirname, '../../../package.json')
 
 // site
-export const SITE = resolve(dirname, '../../site')
+export const SITE = resolve(dirname, '../../../site')
 export const SITE_OUTPUT_PATH = resolve(CWD, 'site')
 export const SITE_PUBLIC_PATH = resolve(CWD, 'public')
 export const SITE_DIR = resolve(CWD, '.varlet/site')
@@ -50,4 +50,4 @@ export const HL_ATTRIBUTES_JSON = resolve(HL_DIR, 'attributes.json')
 export const HL_WEB_TYPES_JSON = resolve(HL_DIR, 'web-types.json')
 
 // jest
-export const JEST_CONFIG = resolve(dirname, '../../cjs/jest.config.cjs')
+export const JEST_CONFIG = resolve(dirname, '../../../cjs/jest.config.cjs')

@@ -1,0 +1,17 @@
+export declare const IMPORT_VUE_PATH_RE: RegExp;
+export declare const IMPORT_TS_PATH_RE: RegExp;
+export declare const IMPORT_JSX_PATH_RE: RegExp;
+export declare const IMPORT_TSX_PATH_RE: RegExp;
+export declare const REQUIRE_VUE_PATH_RE: RegExp;
+export declare const REQUIRE_TS_PATH_RE: RegExp;
+export declare const REQUIRE_JSX_PATH_RE: RegExp;
+export declare const REQUIRE_TSX_PATH_RE: RegExp;
+export declare const replaceVueExt: (script: string) => string;
+export declare const replaceTSExt: (script: string) => string;
+export declare const replaceJSXExt: (script: string) => string;
+export declare const replaceTSXExt: (script: string) => string;
+export declare const moduleCompatible: (script: string) => Promise<string>;
+export declare function compileScript(script: string, file: string): Promise<void>;
+export declare function compileScriptFile(file: string): Promise<void>;
+export declare function compileESEntry(dir: string, publicDirs: string[]): Promise<void>;
+export declare function compileCommonJSEntry(dir: string, publicDirs: string[]): Promise<void>;
