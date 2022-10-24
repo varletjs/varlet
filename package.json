@@ -22,9 +22,9 @@
     "root": true,
     "ignorePatterns": [
       "packages/varlet-cli/lib/**",
-      "packages/varlet-cli/client/**",
       "packages/varlet-cli/site/**",
       "packages/varlet-cli/template/**",
+      "packages/varlet-cli/client/**",
       "packages/varlet-vscode-extension/dist/**",
       "packages/varlet-ui/lib/**",
       "packages/varlet-ui/es/**",
@@ -53,6 +53,7 @@
       "packages/varlet-cli/lib/**",
       "packages/varlet-cli/site/**",
       "packages/varlet-cli/template/**",
+      "packages/varlet-cli/client/**",
       "packages/varlet-icons/dist/**",
       "packages/varlet-ui/lib/**",
       "packages/varlet-ui/es/**",

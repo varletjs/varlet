@@ -79,16 +79,14 @@ import {
   getBrowserTheme,
   inIframe,
   isPhone,
-  removeEmpty,
   setTheme,
   Theme,
   watchLang,
   watchTheme
 } from '@varlet/cli/client'
+import { removeEmpty } from '../utils'
 import { bigCamelize } from '@varlet/shared'
 import { get } from 'lodash-es'
-
-console.log(config)
 
 export default defineComponent({
   setup() {

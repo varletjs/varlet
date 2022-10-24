@@ -1,5 +1,5 @@
 import config from '@config';
-import AppType from './components/app-type';
+import AppType from './appType';
 import { onMounted, onUnmounted } from 'vue';
 import { kebabCase } from '@varlet/shared';
 import { get } from 'lodash-es';
@@ -30,22 +30,15 @@ export function getPCLocationInfo() {
 export function isPhone() {
     return /Android|webOS|iPhone|iPod|BlackBerry|Pad/i.test(navigator.userAgent);
 }
+export function inIframe() {
+    return window.self !== window.top;
+}
 export var MenuTypes;
 (function (MenuTypes) {
     MenuTypes[MenuTypes["TITLE"] = 1] = "TITLE";
     MenuTypes[MenuTypes["COMPONENT"] = 2] = "COMPONENT";
     MenuTypes[MenuTypes["DOCUMENTATION"] = 3] = "DOCUMENTATION";
 })(MenuTypes || (MenuTypes = {}));
-export function inIframe() {
-    return window.self !== window.top;
-}
-export function removeEmpty(object = {}) {
-    return Object.keys(object).reduce((record, key) => {
-        const value = object[key];
-        value && (record[key] = value);
-        return record;
-    }, {});
-}
 export function getHashSearch() {
     const { href } = window.location;
     const hashSearch = href.slice(href.indexOf('?'));
@@ -79,12 +72,14 @@ export function addRouteListener(cb) {
         window.removeEventListener('popstate', cb);
     });
 }
-export function setTheme(config, name) {
-    const themeConfig = get(config, name, {});
-    const styleVars = Object.entries(themeConfig).reduce((styleVars, [key, value]) => {
+export function withSiteConfigNamespace(styleVars) {
+    return Object.entries(styleVars).reduce((styleVars, [key, value]) => {
         styleVars[`--site-config-${key}`] = value;
         return styleVars;
     }, {});
+}
+export function setTheme(config, name) {
+    const styleVars = withSiteConfigNamespace(get(config, name, {}));
     StyleProvider(styleVars);
 }
 export function utoa(data) {
@@ -123,7 +118,8 @@ export function getBrowserTheme() {
 }
 export function watchDarkMode(dark, cb) {
     watchTheme((theme) => {
-        StyleProvider(theme === 'darkTheme' ? dark : null);
+        const siteStyleVars = withSiteConfigNamespace(get(config, theme, {}));
+        StyleProvider(theme === 'darkTheme' ? Object.assign(Object.assign({}, siteStyleVars), dark) : siteStyleVars);
         cb === null || cb === void 0 ? void 0 : cb(theme);
     });
 }

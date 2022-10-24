@@ -1,4 +1,4 @@
-import AppType from './components/app-type';
+import AppType from './appType';
 export declare type StyleVars = Record<string, string>;
 export declare function formatStyleVars(styleVars: StyleVars | null): StyleVars;
 export declare function StyleProvider(styleVars?: StyleVars | null): void;
@@ -8,6 +8,7 @@ export interface PCLocationInfo {
 }
 export declare function getPCLocationInfo(): PCLocationInfo;
 export declare function isPhone(): boolean;
+export declare function inIframe(): boolean;
 export interface Menu {
     doc: string;
     text: Record<string, string>;
@@ -18,13 +19,12 @@ export declare enum MenuTypes {
     COMPONENT = 2,
     DOCUMENTATION = 3
 }
-export declare function inIframe(): boolean;
-export declare function removeEmpty(object?: Record<string, string>): Record<string, string>;
 export declare function getHashSearch(): URLSearchParams;
 export declare function watchLang(cb: (lang: string) => void, platform?: 'pc' | 'mobile'): void;
 export declare function watchPlatform(cb: (platform: string) => void): void;
 export declare function addRouteListener(cb: () => void): void;
 export declare type Theme = 'lightTheme' | 'darkTheme';
+export declare function withSiteConfigNamespace(styleVars: Record<string, any>): StyleVars;
 export declare function setTheme(config: Record<string, any>, name: Theme): void;
 export declare function utoa(data: string): string;
 export { AppType };

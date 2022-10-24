@@ -1,5 +1,5 @@
 import config from '@config'
-import AppType from './components/app-type'
+import AppType from './appType'
 import { onMounted, onUnmounted } from 'vue'
 import { kebabCase } from '@varlet/shared'
 import { get } from 'lodash-es'
@@ -46,6 +46,10 @@ export function isPhone() {
   return /Android|webOS|iPhone|iPod|BlackBerry|Pad/i.test(navigator.userAgent)
 }
 
+export function inIframe() {
+  return window.self !== window.top
+}
+
 export interface Menu {
   doc: string
   text: Record<string, string>
@@ -56,18 +60,6 @@ export enum MenuTypes {
   TITLE = 1,
   COMPONENT = 2,
   DOCUMENTATION = 3,
-}
-
-export function inIframe() {
-  return window.self !== window.top
-}
-
-export function removeEmpty(object: Record<string, string> = {}) {
-  return Object.keys(object).reduce((record: Record<string, string>, key) => {
-    const value = object[key]
-    value && (record[key] = value)
-    return record
-  }, {})
 }
 
 export function getHashSearch() {
@@ -113,12 +105,15 @@ export function addRouteListener(cb: () => void) {
 
 export type Theme = 'lightTheme' | 'darkTheme'
 
-export function setTheme(config: Record<string, any>, name: Theme) {
-  const themeConfig = get(config, name, {})
-  const styleVars = Object.entries(themeConfig).reduce((styleVars, [key, value]) => {
+export function withSiteConfigNamespace(styleVars: Record<string, any>) {
+  return Object.entries(styleVars).reduce((styleVars, [key, value]) => {
     styleVars[`--site-config-${key}`] = value as string
     return styleVars
   }, {} as StyleVars)
+}
+
+export function setTheme(config: Record<string, any>, name: Theme) {
+  const styleVars = withSiteConfigNamespace(get(config, name, {}))
 
   StyleProvider(styleVars)
 }
@@ -173,7 +168,9 @@ export function getBrowserTheme(): Theme {
 
 export function watchDarkMode(dark: StyleVars, cb?: (theme: Theme) => void) {
   watchTheme((theme) => {
-    StyleProvider(theme === 'darkTheme' ? dark : null)
+    const siteStyleVars = withSiteConfigNamespace(get(config, theme, {}))
+
+    StyleProvider(theme === 'darkTheme' ? { ...siteStyleVars, ...dark } : siteStyleVars)
 
     cb?.(theme)
   })
