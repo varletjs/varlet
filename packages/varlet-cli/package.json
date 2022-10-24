@@ -17,7 +17,8 @@
   "files": [
     "lib",
     "cjs",
-    "client",
+    "client.js",
+    "client.d.ts",
     "template",
     "site",
     "tsconfig.json",
