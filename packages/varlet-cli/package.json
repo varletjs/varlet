@@ -8,16 +8,6 @@
   },
   "main": "./lib/index.js",
   "module": "./lib/index.js",
-  "exports": {
-    ".": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.js"
-    },
-    "./client": {
-      "types": "./client/index.d.ts",
-      "import": "./client/index.js"
-    }
-  },
   "keywords": [
     "cli",
     "varlet"
