@@ -51,17 +51,6 @@ function getHashSearch() {
   return new URLSearchParams(hashSearch)
 }
 
-function addRouteListener(cb: () => void) {
-  onMounted(() => {
-    window.addEventListener('hashchange', cb)
-    window.addEventListener('popstate', cb)
-  })
-  onUnmounted(() => {
-    window.removeEventListener('hashchange', cb)
-    window.removeEventListener('popstate', cb)
-  })
-}
-
 export function getBrowserTheme(): Theme {
   const themeKey = get(config, 'themeKey')
   const darkThemeConfig = get(config, 'darkTheme')
@@ -82,27 +71,35 @@ export function getBrowserTheme(): Theme {
   return storageTheme
 }
 
+export function watchLang(cb: (lang: string) => void, platform: 'pc' | 'mobile' = 'mobile') {
+  const handleHashchange = () => {
+    const language = platform === 'mobile' ? getHashSearch().get('language') ?? 'zh-CN' : getPCLocationInfo().language
+    cb(language)
+  }
+
+  useRouteListener(handleHashchange)
+  handleHashchange()
+}
+
 export function watchPlatform(cb: (platform: string) => void) {
   const handleHashchange = () => {
     const platform = getHashSearch().get('platform') ?? 'mobile'
     cb(platform)
   }
 
-  addRouteListener(handleHashchange)
-
+  useRouteListener(handleHashchange)
   handleHashchange()
 }
 
-export function watchLang(cb: (lang: string) => void, platform: 'pc' | 'mobile' = 'mobile') {
-  const handleHashchange = () => {
-    const language = platform === 'mobile' ? getHashSearch().get('language') ?? 'zh-CN' : getPCLocationInfo().language
-
-    cb(language)
-  }
-
-  addRouteListener(handleHashchange)
-
-  handleHashchange()
+export function useRouteListener(cb: () => void) {
+  onMounted(() => {
+    window.addEventListener('hashchange', cb)
+    window.addEventListener('popstate', cb)
+  })
+  onUnmounted(() => {
+    window.removeEventListener('hashchange', cb)
+    window.removeEventListener('popstate', cb)
+  })
 }
 
 export function watchDarkMode(dark: StyleVars, cb?: (theme: Theme) => void) {
