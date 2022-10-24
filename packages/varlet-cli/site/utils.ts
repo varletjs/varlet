@@ -1,5 +1,5 @@
 import { get } from 'lodash-es'
-import { StyleProvider, type Theme, type StyleVars } from '@varlet/cli/client'
+import { StyleProvider, type Theme, withSiteConfigNamespace } from '@varlet/cli/client'
 
 export interface Menu {
   doc: string
@@ -19,13 +19,6 @@ export function removeEmpty(object: Record<string, string> = {}) {
     value && (record[key] = value)
     return record
   }, {})
-}
-
-export function withSiteConfigNamespace(styleVars: Record<string, any>) {
-  return Object.entries(styleVars).reduce((styleVars, [key, value]) => {
-    styleVars[`--site-config-${key}`] = value as string
-    return styleVars
-  }, {} as StyleVars)
 }
 
 export function isPhone() {

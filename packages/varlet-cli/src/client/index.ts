@@ -81,6 +81,13 @@ export function watchLang(cb: (lang: string) => void, platform: 'pc' | 'mobile' 
   handleHashchange()
 }
 
+export function withSiteConfigNamespace(styleVars: Record<string, any>) {
+  return Object.entries(styleVars).reduce((styleVars, [key, value]) => {
+    styleVars[`--site-config-${key}`] = value as string
+    return styleVars
+  }, {} as StyleVars)
+}
+
 export function watchPlatform(cb: (platform: string) => void) {
   const handleHashchange = () => {
     const platform = getHashSearch().get('platform') ?? 'mobile'
@@ -104,7 +111,9 @@ export function useRouteListener(cb: () => void) {
 
 export function watchDarkMode(dark: StyleVars, cb?: (theme: Theme) => void) {
   watchTheme((theme) => {
-    StyleProvider(theme === 'darkTheme' ? dark : null)
+    const siteStyleVars = withSiteConfigNamespace(get(config, theme, {}))
+
+    StyleProvider(theme === 'darkTheme' ? { ...siteStyleVars, ...dark } : siteStyleVars)
 
     cb?.(theme)
   })
