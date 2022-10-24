@@ -2,11 +2,15 @@
 import AnimationBox from '../../components/AnimationBox.vue'
 import config from '@config'
 import { get } from 'lodash-es'
-import { ref, watch } from 'vue'
+import { ref, watch, type Ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getBrowserTheme, setTheme, Theme } from '../../../utils'
-import { getPCLocationInfo, watchTheme } from '@varlet/cli/site/utils'
-import type { Ref } from 'vue'
+import {
+  getPCLocationInfo,
+  watchTheme,
+  getBrowserTheme,
+  setTheme,
+  type Theme
+} from '@varlet/cli/client'
 
 const route = useRoute()
 const router = useRouter()

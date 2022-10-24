@@ -3,14 +3,13 @@ import { ref } from 'vue'
 import VarAppBar from '..'
 import VarIcon from '../../icon'
 import vRipple from '../../ripple'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
 import Snackbar from '../../snackbar'
 import VarMenu from '../../menu'
 import VarButton from '../../button'
 import VarCell from '../../cell'
 import dark from '../../themes/dark'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const offsetY = ref(false)
 const menuList = ref([])

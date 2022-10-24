@@ -2,11 +2,10 @@
 import VarSteps from '..'
 import VarStep from '../../step'
 import VarButton from '../../button'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { ref } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const active = ref(0)
 

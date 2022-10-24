@@ -84,9 +84,11 @@ import {
   Theme,
   watchLang,
   watchTheme
-} from '../utils'
+} from '@varlet/cli/client'
 import { bigCamelize } from '@varlet/shared'
 import { get } from 'lodash-es'
+
+console.log(config)
 
 export default defineComponent({
   setup() {
@@ -236,10 +238,6 @@ header {
   }
 }
 
-.app-bar {
-  background: var(--site-config-color-app-bar) !important;
-}
-
 .settings {
   position: fixed;
   z-index: 200;
@@ -250,13 +248,6 @@ header {
 
 .router-view__block {
   padding: 55px 15px 15px;
-}
-
-.app-type {
-  width: 100%;
-  padding: 15px 0;
-  color: var(--site-config-color-sub-text);
-  font-size: 14px;
 }
 
 .mobile-language-cell {
@@ -292,5 +283,16 @@ header {
 
 .i18n-button {
   padding-right: 6px !important;
+}
+
+.app-type {
+  width: 100%;
+  padding: 15px 0;
+  color: var(--site-config-color-sub-text);
+  font-size: 14px;
+}
+
+.app-bar {
+  background: var(--site-config-color-app-bar) !important;
 }
 </style>

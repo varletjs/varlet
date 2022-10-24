@@ -14,10 +14,9 @@ import VarUploader from '../../uploader'
 import VarCounter from '../../counter'
 import VarRate from '../../rate'
 import VarSpace from '../../space'
-import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
+import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { reactive, ref } from 'vue'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 const formData = reactive({

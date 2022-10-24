@@ -2,7 +2,7 @@
 import VarBackTop from '..'
 import VarCell from '../../cell'
 import dark from '../../themes/dark'
-import { watchDarkMode } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '@varlet/cli/client'
 
 const lists = [...Array(100).keys()]
 

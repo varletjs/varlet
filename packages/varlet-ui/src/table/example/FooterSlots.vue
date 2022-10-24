@@ -2,7 +2,7 @@
 import VarTable from '..'
 import VarPagination from '../../pagination'
 import dark from '../../themes/dark'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
 import { ref } from 'vue'
 

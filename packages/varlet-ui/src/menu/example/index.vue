@@ -6,11 +6,10 @@ import VarSelect from '../../select'
 import VarOption from '../../option'
 import VarCell from '../../cell'
 import Snackbar from '../../snackbar'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { ref } from 'vue'
 import { pack, use } from './locale/index'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const show = ref(false)
 const trigger = ref('click')

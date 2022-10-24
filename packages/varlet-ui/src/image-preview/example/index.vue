@@ -2,12 +2,11 @@
 import ImagePreview from '../index'
 import VarButton from '../../button'
 import ActionSheet from '../../action-sheet'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType , watchDarkMode, watchLang } from '@varlet/cli/client'
 import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
 import { ref, computed } from 'vue'
 import { pack, use } from './locale'
-import { watchDarkMode, watchLang } from '@varlet/cli/site/utils'
 import VarIcon from '../../icon'
 
 const VarImagePreview = ImagePreview.Component

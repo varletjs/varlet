@@ -1,11 +1,10 @@
 <script setup>
 import VarInput from '..'
 import VarIcon from '../../icon'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
 import { use, pack } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const values = reactive({
   value: '',

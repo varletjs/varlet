@@ -1,8 +1,7 @@
 <script setup>
 import VarImage from '..'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType , watchLang } from '@varlet/cli/client'
 import VarRow from '../../row'
-import { watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 watchLang(use)

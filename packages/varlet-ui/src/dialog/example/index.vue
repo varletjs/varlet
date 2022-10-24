@@ -4,11 +4,10 @@ import VarButton from '../../button'
 import VarIcon from '../../icon'
 import Snackbar from '../../snackbar'
 import VarCell from '../../cell'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const VarDialog = Dialog.Component
 

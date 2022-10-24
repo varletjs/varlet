@@ -2,13 +2,12 @@
 import VarIcon from '..'
 import vRipple from '../../ripple'
 import Snackbar from '../../snackbar'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
 import Clipboard from 'clipboard'
 import icons from '@varlet/icons'
 import dark from '../../themes/dark'
 import { reactive, onMounted, ref } from 'vue'
 import { use, pack } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const iconNames = reactive(icons)
 const iconName = ref('information')

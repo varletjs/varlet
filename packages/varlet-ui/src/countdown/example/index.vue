@@ -1,5 +1,5 @@
 <script setup>
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarCountdown from '..'
 import Snackbar from '../../snackbar'
 import VarButton from '../../button'
@@ -7,7 +7,6 @@ import VarRow from '../../row'
 import dark from '../../themes/dark'
 import { ref } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const countdown = ref(null)
 const time = ref(3000)

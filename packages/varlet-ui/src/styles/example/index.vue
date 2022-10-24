@@ -2,7 +2,7 @@
 import dark from '../../themes/dark'
 import { ref } from 'vue'
 import VarSpace from '../../space'
-import { watchDarkMode } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '@varlet/cli/client'
 
 const elevations = Array.from({ length: 25 }).map((_, index) => index)
 const background = ref(dark)

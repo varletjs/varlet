@@ -1,10 +1,9 @@
 <script setup>
 import VarSwipe from '..'
 import VarSwipeItem from '../../swipe-item'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType , watchLang } from '@varlet/cli/client'
 import Snackbar from '../../snackbar'
 import { use, pack } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
 
 watchLang(use)
 </script>

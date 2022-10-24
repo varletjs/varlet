@@ -1,5 +1,5 @@
 <script setup>
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarTabs from '..'
 import VarTab from '../../tab'
 import VarIcon from '../../icon'
@@ -8,7 +8,6 @@ import VarTabItem from '../../tab-item'
 import dark from '../../themes/dark'
 import { use, pack } from './locale'
 import { computed, reactive, ref, toRefs } from 'vue'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const actives = reactive({
   active: 0,

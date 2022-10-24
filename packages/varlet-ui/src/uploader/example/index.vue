@@ -5,10 +5,9 @@ import VarSpace from '../../space'
 import VarIcon from '../../icon'
 import Dialog from '../../dialog'
 import Snackbar from '../../snackbar'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { reactive } from 'vue'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 const values = reactive({
