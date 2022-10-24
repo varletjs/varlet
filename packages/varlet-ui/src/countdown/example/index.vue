@@ -1,5 +1,5 @@
 <script setup>
-import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarCountdown from '..'
 import Snackbar from '../../snackbar'
 import VarButton from '../../button'

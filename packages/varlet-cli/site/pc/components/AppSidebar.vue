@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { MenuTypes, type Menu } from '@varlet/cli/client'
+import { MenuTypes, type Menu } from '../../utils'
 import { reactive, defineComponent } from 'vue'
 import type { PropType } from 'vue'
 

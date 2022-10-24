@@ -1,5 +1,5 @@
 <script setup>
-import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarTabs from '..'
 import VarTab from '../../tab'
 import VarIcon from '../../icon'

@@ -1,5 +1,5 @@
 <script setup>
-import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarChip from '..'
 import VarIcon from '../../icon'
 import VarSpace from '../../space'

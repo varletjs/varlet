@@ -1,5 +1,5 @@
 <script setup>
-import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarCollapse from '..'
 import VarCollapseItem from '../../collapse-item'
 import VarButton from '../../button'

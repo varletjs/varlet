@@ -8,9 +8,9 @@ import {
   getPCLocationInfo,
   watchTheme,
   getBrowserTheme,
-  setTheme,
   type Theme
 } from '@varlet/cli/client'
+import { setTheme } from '../../../utils'
 
 const route = useRoute()
 const router = useRouter()

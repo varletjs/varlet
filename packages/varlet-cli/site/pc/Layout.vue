@@ -7,7 +7,8 @@ import context from '../components/context'
 import { nextTick, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { get } from 'lodash-es'
-import { getPCLocationInfo, MenuTypes, type Menu } from '@varlet/cli/client'
+import { getPCLocationInfo } from '@varlet/cli/client'
+import { MenuTypes, type Menu } from '../utils'
 import type { Ref } from 'vue'
 
 const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))

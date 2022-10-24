@@ -1,7 +1,7 @@
 <script setup>
 import VarTable from '..'
 import VarPagination from '../../pagination'
-import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { ref } from 'vue'
 import { use, pack } from './locale'

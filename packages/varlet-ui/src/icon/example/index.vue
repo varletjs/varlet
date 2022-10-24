@@ -2,7 +2,7 @@
 import VarIcon from '..'
 import vRipple from '../../ripple'
 import Snackbar from '../../snackbar'
-import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import Clipboard from 'clipboard'
 import icons from '@varlet/icons'
 import dark from '../../themes/dark'

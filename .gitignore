@@ -15,6 +15,7 @@ packages/varlet-cli/lib/node/config
 packages/varlet-cli/lib/node/shared
 packages/varlet-cli/lib/node/client
 packages/varlet-cli/lib/node/index.d.ts
+packages/varlet-cli/lib/client
 packages/varlet-cli/site/mobile/*.routes.ts
 packages/varlet-cli/site/mobile/routes.ts
 packages/varlet-cli/site/pc/*.routes.ts

@@ -1,7 +1,7 @@
 <script setup>
 import VarRate from '..'
 import VarSnackbar from '../../snackbar'
-import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { reactive } from 'vue'
 import { pack, use } from './locale'

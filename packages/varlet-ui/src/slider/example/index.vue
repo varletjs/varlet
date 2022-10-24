@@ -1,6 +1,6 @@
 <script setup>
 import { reactive } from 'vue'
-import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarSlider from '..'
 import dark from '../../themes/dark'
 import { pack, use } from './locale'

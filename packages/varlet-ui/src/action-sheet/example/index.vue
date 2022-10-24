@@ -1,6 +1,6 @@
 <script setup>
 import ActionSheet from '../index'
-import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarButton from '../../button'
 import VarSpace from '../../space'
 import Snackbar from '../../snackbar'

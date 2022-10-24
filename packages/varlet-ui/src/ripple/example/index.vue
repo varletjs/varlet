@@ -1,6 +1,6 @@
 <script setup>
 import vRipple from '..'
-import { AppType , watchLang } from '@varlet/cli/client'
+import { AppType, watchLang } from '@varlet/cli/client'
 import { pack, use } from './locale'
 
 watchLang(use)

@@ -77,14 +77,11 @@ import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import {
   getBrowserTheme,
-  inIframe,
-  isPhone,
-  setTheme,
-  Theme,
+  type Theme,
   watchLang,
   watchTheme
 } from '@varlet/cli/client'
-import { removeEmpty } from '../utils'
+import { removeEmpty, setTheme, inIframe, isPhone } from '../utils'
 import { bigCamelize } from '@varlet/shared'
 import { get } from 'lodash-es'
 
@@ -151,13 +148,13 @@ export default defineComponent({
     }
 
     const toggleTheme = () => {
-      setCurrentTheme(currentTheme.value === 'darkTheme' ? 'lightTheme' : 'darkTheme')
-      window.postMessage(getThemeMessage(), '*')
+        setCurrentTheme(currentTheme.value === 'darkTheme' ? 'lightTheme' : 'darkTheme')
+        window.postMessage(getThemeMessage(), '*')
 
-      if (!isPhone() && inIframe()) {
-        ;(window.top as any).postMessage(getThemeMessage(), '*')
+        if (!isPhone() && inIframe()) {
+          ;(window.top as any).postMessage(getThemeMessage(), '*')
+        }
       }
-    }
 
     ;(window as any).toggleTheme = toggleTheme
 

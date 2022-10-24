@@ -14,7 +14,7 @@ import '../components/styles/common.less'
 import '../components/styles/elevation.less'
 
 import { get } from 'lodash-es'
-import { inIframe, isPhone } from '@varlet/cli/client'
+import { inIframe, isPhone } from '../utils'
 
 const redirect = get(config, 'mobile.redirect')
 const defaultLanguage = get(config, 'defaultLanguage')

@@ -43,7 +43,8 @@ import config from '@config'
 import { defineComponent, nextTick, ref, onMounted } from 'vue'
 import { doubleRaf } from '../utils/elements'
 import { get } from 'lodash-es'
-import { getBrowserTheme, getPCLocationInfo, utoa } from '@varlet/cli/client'
+import { getBrowserTheme, getPCLocationInfo } from '@varlet/cli/client'
+import { utoa } from '../../utils'
 import type { Ref } from 'vue'
 
 let clipId = 0

@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { AppType , watchDarkMode, watchLang } from '@varlet/cli/client'
+import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
 import VarLoading from '..'
 import VarSpace from '../../space'
 import VarButton from '../../button'

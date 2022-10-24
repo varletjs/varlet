@@ -2,7 +2,7 @@
 import VarSelect from '..'
 import VarOption from '../../option'
 import VarIcon from '../../icon'
-import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
 import { use, pack } from './locale'

@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarBottomNavigation from '..'
 import VarBottomNavigationItem from '../../bottom-navigation-item'
 import VarIcon from '../../icon'

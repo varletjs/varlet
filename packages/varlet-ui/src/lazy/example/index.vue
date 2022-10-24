@@ -1,6 +1,6 @@
 <script setup>
 import vLazy from '..'
-import { AppType , watchLang } from '@varlet/cli/client'
+import { AppType, watchLang } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 watchLang(use)

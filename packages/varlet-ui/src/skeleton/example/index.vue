@@ -1,7 +1,7 @@
 <script setup>
 import VarSkeleton from '..'
 import VarButton from '../../button'
-import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { ref } from 'vue'
 import { use, pack } from './locale'

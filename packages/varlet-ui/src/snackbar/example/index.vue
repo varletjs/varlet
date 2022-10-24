@@ -2,7 +2,7 @@
 import Snackbar from '../index'
 import VarButton from '../../button'
 import VarSpace from '../../space'
-import { AppType , watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'

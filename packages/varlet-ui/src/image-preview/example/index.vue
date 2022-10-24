@@ -2,7 +2,7 @@
 import ImagePreview from '../index'
 import VarButton from '../../button'
 import ActionSheet from '../../action-sheet'
-import { AppType , watchDarkMode, watchLang } from '@varlet/cli/client'
+import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
 import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
 import { ref, computed } from 'vue'
