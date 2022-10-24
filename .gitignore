@@ -21,6 +21,7 @@ packages/varlet-cli/site/pc/routes.ts
 packages/varlet-cli/site/site.config.json
 packages/varlet-cli/site/*.site.config.json
 packages/varlet-cli/lib/bin.d.ts
+packages/varlet-cli/client
 
 packages/varlet-ui/site
 packages/varlet-ui/lib

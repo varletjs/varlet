@@ -194,6 +194,7 @@ export default defineComponent({
 <style lang="less">
 * {
   -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 }
 
 body {
@@ -206,6 +207,13 @@ body {
   background: var(--site-config-color-bar);
   color: var(--site-config-color-text);
   transition: background-color 0.25s, color 0.25s;
+}
+
+header {
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  font-weight: bold;
 }
 
 ::-webkit-scrollbar {
@@ -228,13 +236,6 @@ body {
   }
 }
 
-header {
-  position: fixed;
-  z-index: 99;
-  width: 100%;
-  font-weight: bold;
-}
-
 .app-bar {
   background: var(--site-config-color-app-bar) !important;
 }
@@ -251,8 +252,11 @@ header {
   padding: 55px 15px 15px;
 }
 
-* {
-  box-sizing: border-box;
+.app-type {
+  width: 100%;
+  padding: 15px 0;
+  color: var(--site-config-color-sub-text);
+  font-size: 14px;
 }
 
 .mobile-language-cell {

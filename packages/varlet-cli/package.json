@@ -16,6 +16,7 @@
   "license": "MIT",
   "files": [
     "lib",
+    "client",
     "cjs",
     "template",
     "site",
@@ -32,7 +33,8 @@
   },
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc"
+    "dev:client": "tsc -p ./src/client/tsconfig.json --watch",
+    "build": "tsc -p ./src/client/tsconfig.json && tsc"
   },
   "dependencies": {
     "@babel/core": "^7.14.8",

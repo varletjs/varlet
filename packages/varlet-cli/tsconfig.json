@@ -3,5 +3,6 @@
   "compilerOptions": {
     "outDir": "./lib"
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["src/client"]
 }
