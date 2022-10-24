@@ -27,12 +27,16 @@
   "files": [
     "lib",
     "cjs",
+    "client",
     "template",
     "site",
     "tsconfig.json",
     "preset.cjs",
     "CHANGELOG.md"
   ],
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/varletjs/varlet.git"
