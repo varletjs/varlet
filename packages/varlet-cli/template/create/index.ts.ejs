@@ -1,5 +1,5 @@
 // Component entry, the folder where the file exists will be exposed to the user
-import <%- bigCamelizeName %> from './<%- bigCamelizeName %>.vue'
+import <%- bigCamelizeName %> from './<%- bigCamelizeName %><%- style === 'vue' ? '.vue' : '' %>'
 import type { App } from 'vue'
 
 <%- bigCamelizeName %>.install = function(app: App) {
