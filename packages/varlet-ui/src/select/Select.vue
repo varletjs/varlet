@@ -57,12 +57,14 @@
 
             <span v-else>{{ label }}</span>
 
-            <var-icon
-              :class="classes(n('arrow'), [isFocus, n('--arrow-rotate')])"
-              var-select-cover
-              name="menu-down"
-              :transition="300"
-            />
+            <slot name="arrow-icon" :focus="isFocus">
+              <var-icon
+                :class="classes(n('arrow'), [isFocus, n('--arrow-rotate')])"
+                var-select-cover
+                name="menu-down"
+                :transition="300"
+              />
+            </slot>
           </div>
           <label
             :class="

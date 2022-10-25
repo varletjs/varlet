@@ -145,6 +145,9 @@ const value = ref('')
     <template #append-icon>
       <var-icon name="minus"/>
     </template>
+    <template #arrow-icon="{ focus }">
+      <var-icon :class="{ 'arrow-icon-rotate': focus }" class="arrow-icon" name="chevron-down" :transition="300" />
+    </template>
     <template #default>
       <var-option label="Eat" />
       <var-option label="Sleep" />
@@ -310,6 +313,7 @@ const value = ref([])
 | --- | --- | --- |
 | `prepend-icon` | Prepend icon | `-` |
 | `append-icon` | Append icon | `-` |
+| `arrow-icon` | Arrow icon | `focus: boolean` Whether to focus |
 
 #### Option Slots
 

@@ -87,6 +87,9 @@ watchDarkMode(dark)
     <template #append-icon>
       <var-icon class="append-icon" name="minus" />
     </template>
+    <template #arrow-icon="{ focus }">
+      <var-icon :class="{ 'arrow-icon-rotate': focus }" class="arrow-icon" name="chevron-down" :transition="300" />
+    </template>
     <template #default>
       <var-option :label="pack.eat" />
       <var-option :label="pack.sleep" />
@@ -147,5 +150,11 @@ watchDarkMode(dark)
 
 .append-icon {
   margin-left: 2px;
+}
+
+.arrow-icon {
+  &-rotate {
+    transform: rotate(180deg);
+  }
 }
 </style>
