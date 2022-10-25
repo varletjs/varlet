@@ -387,6 +387,14 @@ module.exports = defineConfig({
       },
       {
         text: {
+          'zh-CN': 'FloatingActionsButton 浮动动作按钮',
+          'en-US': 'FloatingActionsButton',
+        },
+        doc: 'floating-actions-button',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Dialog 对话框',
           'en-US': 'Dialog',
         },
