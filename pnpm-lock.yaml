@@ -191,7 +191,7 @@ importers:
     specifiers:
       '@popperjs/core': ^2.11.6
       '@types/jest': ^26.0.15
-      '@types/lodash-es': 4.17.6
+      '@types/lodash-es': ^4.17.6
       '@types/node': ^18.7.18
       '@varlet/cli': workspace:*
       '@varlet/icons': workspace:*
