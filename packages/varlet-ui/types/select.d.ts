@@ -32,7 +32,7 @@ export interface SelectProps extends BasicAttributes {
   'onUpdate:modelValue'?: (value: any) => void
 }
 
-export interface ArrowIconData {
+export interface SelectArrowIconData {
   focus: boolean
 }
 
@@ -42,7 +42,7 @@ export class Select extends VarComponent {
   $slots: {
     'prepend-icon'(): VNode[]
     'append-icon'(): VNode[]
-    'arrow-icon'(data: ArrowIconData): VNode[]
+    'arrow-icon'(data: SelectArrowIconData): VNode[]
   }
 
   focus(): void

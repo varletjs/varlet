@@ -4,7 +4,7 @@ export default {
   disabled: 'Disabled',
   readonly: 'Readonly',
   clearable: 'Clearable',
-  displayIcon: 'Display Icon',
+  customIcon: 'Custom Icon',
   validate: 'Validate',
   multipleValidate: 'Multiple Validate',
   placeholder: 'Please select one the options',

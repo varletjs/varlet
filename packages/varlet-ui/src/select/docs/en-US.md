@@ -128,7 +128,7 @@ const value = ref('')
 </template>
 ```
 
-### Display Icon
+### Custom Icon
 
 ```html
 <script setup>
@@ -139,6 +139,10 @@ const value = ref('')
 
 <template>
   <var-select placeholder="Please select one the options" v-model="value">
+    <template #default>
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </template>
     <template #prepend-icon>
       <var-icon name="plus"/>
     </template>
@@ -146,14 +150,16 @@ const value = ref('')
       <var-icon name="minus"/>
     </template>
     <template #arrow-icon="{ focus }">
-      <var-icon :class="{ 'arrow-icon-rotate': focus }" class="arrow-icon" name="chevron-down" :transition="300" />
-    </template>
-    <template #default>
-      <var-option label="Eat" />
-      <var-option label="Sleep" />
+      <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
     </template>
   </var-select>
 </template>
+
+<style>
+.arrow-icon-rotate {
+  transform: rotate(180deg);
+}
+</style>
 ```
 
 ### Multiple Selection

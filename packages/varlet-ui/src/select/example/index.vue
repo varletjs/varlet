@@ -79,8 +79,12 @@ watchDarkMode(dark)
     <var-option :label="pack.sleep" />
   </var-select>
 
-  <app-type>{{ pack.displayIcon }}</app-type>
+  <app-type>{{ pack.customIcon }}</app-type>
   <var-select :placeholder="pack.placeholder" v-model="value11">
+    <template #default>
+      <var-option :label="pack.eat" />
+      <var-option :label="pack.sleep" />
+    </template>
     <template #prepend-icon>
       <var-icon class="prepend-icon" name="plus" />
     </template>
@@ -88,11 +92,7 @@ watchDarkMode(dark)
       <var-icon class="append-icon" name="minus" />
     </template>
     <template #arrow-icon="{ focus }">
-      <var-icon :class="{ 'arrow-icon-rotate': focus }" class="arrow-icon" name="chevron-down" :transition="300" />
-    </template>
-    <template #default>
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
+      <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
     </template>
   </var-select>
 
@@ -152,9 +152,7 @@ watchDarkMode(dark)
   margin-left: 2px;
 }
 
-.arrow-icon {
-  &-rotate {
-    transform: rotate(180deg);
-  }
+.arrow-icon-rotate {
+  transform: rotate(180deg);
 }
 </style>

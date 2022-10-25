@@ -128,7 +128,7 @@ const value = ref('')
 </template>
 ```
 
-### 显示图标
+### 自定义图标
 
 ```html
 <script setup>
@@ -139,6 +139,10 @@ const value = ref('')
 
 <template>
   <var-select placeholder="请选择一个选项" v-model="value">
+    <template #default>
+      <var-option label="吃饭" />
+      <var-option label="睡觉" />
+    </template>
     <template #prepend-icon>
       <var-icon name="plus"/>
     </template>
@@ -146,14 +150,16 @@ const value = ref('')
       <var-icon name="minus"/>
     </template>
     <template #arrow-icon="{ focus }">
-      <var-icon :class="{ 'arrow-icon-rotate': focus }" class="arrow-icon" name="chevron-down" :transition="300" />
-    </template>
-    <template #default>
-      <var-option label="吃饭" />
-      <var-option label="睡觉" />
+      <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
     </template>
   </var-select>
 </template>
+
+<style>
+.arrow-icon-rotate {
+  transform: rotate(180deg);
+}
+</style>
 ```
 
 ### 多选

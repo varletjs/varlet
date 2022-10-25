@@ -4,7 +4,7 @@ export default {
   disabled: '禁用',
   readonly: '只读',
   clearable: '可清除',
-  displayIcon: '显示图标',
+  customIcon: '自定义图标',
   validate: '单选值校验',
   multipleValidate: '多选值校验',
   placeholder: '请选择一个选项',
