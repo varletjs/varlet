@@ -108,7 +108,7 @@ export async function create(options: CreateCommandOptions) {
     renderData.style = style
   }
 
-  copySync(resolve(dirname, '../../template/create'), componentFolder)
+  copySync(resolve(dirname, '../../../template/create'), componentFolder)
   await renderTemplates(componentFolder, componentFolderName, renderData)
 
   if (!renderData.locale) {
