@@ -1,46 +1,36 @@
 <template>
-  <div :class="n()">
-    <var-button :class="fabLocation" :disabled="disabled" round>
+  <var-menu :class="[n(), fabLocation]" :trigger="trigger" :placement="actionsLocation" :default-style="false">
+    <var-button type="primary" round>
       <var-icon :name="inactiveIcon" />
     </var-button>
-  </div>
+
+    <template #menu>
+      <var-button type="primary" round>
+        <var-icon v-for="(item, index) in actions" :name="item.icon" :key="index" />
+      </var-button>
+    </template>
+  </var-menu>
 </template>
 
 <script lang="ts">
-// import VarButton from "../button";
-// import VarIcon from "../icon";
+import VarButton from '../button'
+import VarIcon from '../icon'
+import VarMenu from '../menu'
 import { props } from './props'
-import { call, createNamespace } from '../utils/components'
-import { defineComponent, ref, Ref, watch } from 'vue'
+import { createNamespace } from '../utils/components'
+import { defineComponent } from 'vue'
 
 const { n } = createNamespace('floating-actions-button')
 
 export default defineComponent({
   name: 'VarFloatingActionsButton',
+  components: {
+    VarButton,
+    VarIcon,
+    VarMenu,
+  },
   props,
-  setup(props) {
-    const show: Ref<boolean> = ref(false)
-
-    // expose
-    // const open = () => {
-    //   const { disabled } = props;
-    //
-    //   if (disabled) {
-    //     return;
-    //   }
-    //
-    //   show.value = true;
-    //   call(props["onUpdate:show"], true);
-    // };
-
-    // expose
-    const close = () => {
-      show.value = false
-      call(props['onUpdate:show'], false)
-    }
-
-    watch(() => props.disabled, close)
-
+  setup() {
     return {
       n,
     }

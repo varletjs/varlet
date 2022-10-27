@@ -47,7 +47,7 @@ export const props = {
   // fab 尺寸
   fabIconSize: {
     type: String,
-    default: '',
+    default: '56px',
   },
   // actions 定位
   actionsLocation: {
