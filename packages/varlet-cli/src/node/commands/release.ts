@@ -1,5 +1,5 @@
 import ora from 'ora'
-import fse, { readJSONSync } from 'fs-extra'
+import fse from 'fs-extra'
 import execa from 'execa'
 import logger from '../shared/logger.js'
 import semver from 'semver'
@@ -9,7 +9,7 @@ import { CWD } from '../shared/constant.js'
 import { resolve } from 'path'
 import { changelog } from './changelog.js'
 
-const { writeFileSync } = fse
+const { writeFileSync, readJSONSync } = fse
 const { prompt } = inquirer
 
 const releaseTypes = ['premajor', 'preminor', 'prepatch', 'major', 'minor', 'patch']
