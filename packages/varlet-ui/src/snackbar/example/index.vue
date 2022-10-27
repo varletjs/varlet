@@ -26,10 +26,11 @@ const changeValue = (type) => {
 
 const create = (type) => {
   const text = type === 'loading' ? pack.value.wait : pack.value.text
-  Snackbar[type](text)
+  const snackbar = Snackbar[type](text)
 
   if (type === 'loading') {
     setTimeout(() => {
+      snackbar.clear()
       Snackbar.success(pack.value.loaded)
     }, 2000)
   }
