@@ -22,8 +22,7 @@
     "template",
     "site",
     "tsconfig.json",
-    "preset.cjs",
-    "CHANGELOG.md"
+    "preset.cjs"
   ],
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
