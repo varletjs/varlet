@@ -9,14 +9,14 @@ export async function lint() {
   let spinner: Ora
   try {
     spinner = ora('prettier starting...').start()
-    await execa('prettier', ['--write', '.'])
+    await execa('prettier', ['--write', '--cache', '.'])
     spinner.succeed('prettier success')
 
     spinner = ora('stylelint starting...').start()
     const stylelintPattern = ['./src/**/*.vue', './src/**/*.css', './src/**/*.less']
     const hasPackages = isDir(resolve(CWD, 'packages'))
     hasPackages && stylelintPattern.push('./packages/**/*.vue', './packages/**/*.css', './packages/**/*.less')
-    await execa('stylelint', [...stylelintPattern, '--fix'])
+    await execa('stylelint', [...stylelintPattern, '--fix', '--cache'])
     spinner.succeed('stylelint success')
 
     spinner = ora('eslint starting...').start()
@@ -30,10 +30,10 @@ export async function lint() {
       './packages/varlet-touch-emulator',
       './packages/varlet-vscode-extension/src',
     ]
-
     const { stdout } = await execa('eslint', [
       ...eslintPatterns.filter((pattern) => isDir(resolve(CWD, pattern))),
       '--fix',
+      '--cache',
       '--ext',
       ESLINT_EXTENSIONS.join(),
     ])
