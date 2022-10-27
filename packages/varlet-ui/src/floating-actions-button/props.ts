@@ -15,6 +15,14 @@ export type Action = {
   buttonSize?: string | number
 }
 
+function triggerValidator(trigger: string) {
+  return ['click', 'hover'].includes(trigger)
+}
+
+function fabLocationValidator(location: string) {
+  return ['top-left', 'top-right', 'bottom-left', 'bottom-right'].includes(location)
+}
+
 export const props = {
   // 是否显示面板
   show: {
@@ -33,11 +41,13 @@ export const props = {
   trigger: {
     type: String as PropType<Trigger>,
     default: 'click',
+    validator: triggerValidator,
   },
   // fab 定位
   fabLocation: {
     type: String as PropType<FabLocation>,
     default: 'bottom-right',
+    validator: fabLocationValidator,
   },
   // fab 颜色
   fabColor: {
