@@ -52,12 +52,17 @@ export const props = {
   // fab 颜色
   fabColor: {
     type: String,
-    default: '#3a7afe',
+    default: 'var(--color-primary)',
+  },
+  // fab icon 颜色
+  fabIconColor: {
+    type: String,
+    default: 'rgb(255, 255, 255)',
   },
   // fab 尺寸
   fabIconSize: {
     type: String,
-    default: '56px',
+    default: '24px',
   },
   // actions 定位
   actionsLocation: {

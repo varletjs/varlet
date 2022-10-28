@@ -1,19 +1,39 @@
 <template>
   <var-menu
     v-model:show="show"
-    :class="classes(n(), [true, `${n()}--${fabLocation}`])"
+    :class="classes(n(), [true, `${n()}--${fabLocation}`], [disabled, `${n()}--disabled`])"
     :trigger="trigger"
     :placement="actionsLocation"
     :default-style="false"
   >
-    <var-button :style="show ? getFabMargin() : { margin: 0 }" type="primary" round>
-      <var-icon :name="inactiveIcon" />
+    <var-button :class="`${n()}--fab`" :color="fabColor" var-floating-actions-button-cover round>
+      <var-icon :color="fabIconColor" :size="fabIconSize" :name="inactiveIcon" />
     </var-button>
 
     <template #menu>
-      <var-button v-for="(item, index) in actions" :key="index" type="primary" round>
-        <var-icon :name="item.icon" />
-      </var-button>
+      <div :class="`${n()}--actions`" :style="actionsStyle">
+        <var-button
+          :class="`${n()}--actions--action`"
+          :style="[
+            actionStyle,
+            {
+              width: toSizeUnit(item.buttonSize ?? actionDefaultStyle.buttonSize),
+              height: toSizeUnit(item.buttonSize ?? actionDefaultStyle.buttonSize),
+            },
+          ]"
+          :color="item.buttonColor ?? actionDefaultStyle.buttonColor"
+          v-for="(item, index) in actions"
+          :key="index"
+          round
+        >
+          <var-icon
+            :color="item.iconColor ?? actionDefaultStyle.iconColor"
+            :size="item.iconSize ?? actionDefaultStyle.iconSize"
+            :name="item.icon ?? actionDefaultStyle.icon"
+            :namespace="item.iconNamespace ?? actionDefaultStyle.iconNamespace"
+          />
+        </var-button>
+      </div>
     </template>
   </var-menu>
 </template>
@@ -24,9 +44,21 @@ import VarIcon from '../icon'
 import VarMenu from '../menu'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
-import { defineComponent, ref, Ref, watch } from 'vue'
+import { defineComponent, ref, Ref, watch, reactive } from 'vue'
+import { toSizeUnit } from '../utils/elements'
 
 const { n, classes } = createNamespace('floating-actions-button')
+
+const actionMargin = toSizeUnit('8px')
+const actionsMargin = toSizeUnit('16px')
+const actionDefaultStyle = {
+  icon: 'heart',
+  iconColor: 'rgb(255, 255, 255)',
+  iconSize: 24,
+  iconNamespace: 'var-icon',
+  buttonColor: 'var(--color-primary)',
+  buttonSize: 40,
+}
 
 export default defineComponent({
   name: 'VarFloatingActionsButton',
@@ -38,21 +70,43 @@ export default defineComponent({
   props,
   setup(props) {
     const show: Ref<boolean> = ref(false)
+    const actionStyle = reactive<{ margin: string }>({ margin: `${actionMargin} 0` })
+    const actionsStyle = reactive<{
+      marginTop?: string
+      marginBottom?: string
+      marginLeft?: string
+      marginRight?: string
+      flexDirection: string
+    }>({ flexDirection: 'column' })
 
-    const getFabMargin = () => {
-      const { actionsLocation } = props
-
-      switch (actionsLocation) {
-        case 'top':
-          return { marginTop: '16px' }
-        case 'bottom':
-          return { marginBottom: '16px' }
-        case 'left':
-          return { marginLeft: '16px' }
-        case 'right':
-          return { marginRight: '16px' }
-      }
-    }
+    watch(
+      () => props.actionsLocation,
+      (newValue) => {
+        switch (newValue) {
+          case 'top':
+            actionStyle.margin = `${actionMargin} 0`
+            actionsStyle.marginBottom = actionsMargin
+            actionsStyle.flexDirection = 'column'
+            break
+          case 'bottom':
+            actionStyle.margin = `${actionMargin} 0`
+            actionsStyle.marginTop = actionsMargin
+            actionsStyle.flexDirection = 'column'
+            break
+          case 'left':
+            actionStyle.margin = `0 ${actionMargin}`
+            actionsStyle.marginRight = actionsMargin
+            actionsStyle.flexDirection = 'row'
+            break
+          case 'right':
+            actionStyle.margin = `0 ${actionMargin}`
+            actionsStyle.marginLeft = actionsMargin
+            actionsStyle.flexDirection = 'row'
+            break
+        }
+      },
+      { immediate: true }
+    )
 
     watch(
       () => props.show,
@@ -75,7 +129,10 @@ export default defineComponent({
       n,
       classes,
       show,
-      getFabMargin,
+      actionDefaultStyle,
+      actionsStyle,
+      actionStyle,
+      toSizeUnit,
     }
   },
 })
