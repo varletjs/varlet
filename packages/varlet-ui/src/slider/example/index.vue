@@ -17,6 +17,7 @@ const values = reactive({
   value8: 20,
   value9: [5, 38],
   value10: [7, 64],
+  value11: 0,
 })
 
 const handleChange = (v) => {
@@ -37,6 +38,9 @@ watchDarkMode(dark)
   <app-type>{{ pack.dualThumb }}</app-type>
   <var-slider v-model="values.value1" range @change="handleChange" label-visible="always" />
 
+  <app-type>{{ pack.range }}</app-type>
+  <var-slider v-model="values.value11" max="210" min="-50" label-visible="always" />
+
   <app-type>{{ pack.disable }}</app-type>
   <var-slider v-model="values.value3" disabled />
 
@@ -44,7 +48,7 @@ watchDarkMode(dark)
   <var-slider v-model="values.value3" readonly />
 
   <app-type>{{ pack.sliderSize }}</app-type>
-  <var-slider v-model="values.value10" track-height="1vw" thumb-size="2.4vw" range />
+  <var-slider v-model="values.value10" track-height="1.5vw" range />
 
   <app-type>{{ pack.customStyle }}</app-type>
   <var-slider

@@ -322,6 +322,6 @@ export function createNamespace(name: string) {
   }
 }
 
-export function call<P extends any[], R>(fn?: (...arg: P) => R, ...arg: P): R | undefined {
+export function call<P extends any[], R>(fn?: ((...arg: P) => R) | null, ...arg: P): R | undefined {
   if (fn) return fn(...arg)
 }

@@ -54,6 +54,20 @@ const handleChange = (value) => {
 </template>
 ```
 
+### Range
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-slider v-model="value" max="210" min="-50" label-visible="always" />
+</template>
+```
+
 ### Disable
 
 ```html
@@ -197,18 +211,24 @@ const value = ref(20)
 
 ### Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
-| `v-model` | The value of slider | _number \| [number, number]_ | `0` |
-| `step`| Step size. The value is an integer between `1 ~ 100` | _string \| number_ | `1` |
-| `range`| Whether open the dual thumb mode | _boolean_ | `false` |
+| Prop | Description                                                      | Type | Default |
+| ----- |------------------------------------------------------------------| -------- | ---------- |
+| `v-model` | The value of slider                                              | _number \| [number, number]_ | `0` |
+| `step`| Step size. The value must greater than 0                         | _string \| number_ | `1` |
+| `range`| Whether open the dual thumb mode                                 | _boolean_ | `false` |
+| `max` | The maximum value the slider can slide to                        | _string \| number_ | `100`           |
+| `min` | The minimum value the slider can slide to                        | _string \| number_ | `0`           |
 | `label-visible` | Whether to display labels, the optional value is `always, normal, never` | _string_ | `normal` |
-| `label-text-color` | Color of label text | _string_ | `#fff` |
-| `track-height` | Height of slider | _string \| number_ | `2` |
-| `thumb-size` | Size of thumb | _string \| number_ | `12` |
-| `disabled`| 	Whether to disable slider  | _boolean_  | `false` |
-| `readonly`| 	Whether to readonly slider | _boolean_  | `false` |
-| `rules`| Validation rules | _array_  | `-` |
+| `label-text-color` | Color of label text                                              | _string_ | `#fff` |
+| `label-color`  | Background color of label                                        | _string_ | `-`               |
+| `active-color` | Background color of actived track                                | _string_ | `-`               |
+| `track-color`  | Background color of track                                        | _string_ | `-`               |
+| `track-height` | Height of track                                                  | _string \| number_ | `2` |
+| `thumb-size` | Size of thumb                                                    | _string \| number_ | `12` |
+| `thumb-color`   | Background color of thumb                           | _string_ | `-`               |
+| `disabled`| 	Whether to disable slider                                       | _boolean_  | `false` |
+| `readonly`| 	Whether to readonly slider                                      | _boolean_  | `false` |
+| `rules`| Validation rules                                                 | _array_  | `-` |
 
 
 ### Events

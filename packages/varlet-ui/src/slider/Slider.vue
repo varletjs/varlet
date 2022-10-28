@@ -2,10 +2,6 @@
   <div :class="n()">
     <div
       :class="classes(n('block'), [isDisabled, n('--disabled')], [errorMessage, n('--error')])"
-      :style="{
-        height: thumbSize === undefined ? thumbSize : multiplySizeUnit(thumbSize, 3),
-        margin: thumbSize === undefined ? thumbSize : `0 ${multiplySizeUnit(thumbSize, 0.5)}`,
-      }"
       ref="sliderEl"
       @click="click"
     >
@@ -37,15 +33,12 @@
             :class="n('thumb-block')"
             :style="{
               background: thumbColor,
-              height: multiplySizeUnit(thumbSize),
-              width: multiplySizeUnit(thumbSize),
             }"
           ></div>
           <div
             :class="classes(n('thumb-ripple'), [thumbsProps[item.enumValue].active, n('thumb-ripple--active')])"
             :style="{
               background: thumbColor,
-              ...getRippleSize(item),
             }"
           ></div>
           <div
@@ -57,7 +50,7 @@
               width: thumbSize === undefined ? thumbSize : multiplySizeUnit(thumbSize, 2),
             }"
           >
-            <span>{{ item.value }}</span>
+            <span>{{ item.text }}</span>
           </div>
         </slot>
       </div>
@@ -84,7 +77,7 @@ enum Thumbs {
   Second = '2',
 }
 
-type ThumbProps = {
+interface ThumbProps {
   startPosition: number
   currentLeft: number
   percentValue: number
@@ -96,9 +89,10 @@ type ThumbsProps = {
   [Thumbs.Second]: ThumbProps
 }
 
-type ThumbsListProps = {
+interface ThumbsListProps {
   value: number | number[]
   enumValue: Thumbs
+  text: number
 }
 
 export default defineComponent({
@@ -131,46 +125,39 @@ export default defineComponent({
       [Thumbs.Second]: getThumbProps(),
     })
 
-    const unitWidth: ComputedRef<number> = computed(() => (maxWidth.value / 100) * toNumber(props.step))
+    const scope: ComputedRef<number> = computed(() => toNumber(props.max) - toNumber(props.min))
+    const unitWidth: ComputedRef<number> = computed(() => (maxWidth.value / scope.value) * toNumber(props.step))
     const thumbList: ComputedRef<Array<ThumbsListProps>> = computed(() => {
-      let list = [{ value: props.modelValue, enumValue: Thumbs.First }]
+      const { modelValue, range } = props
+      let list: ThumbsListProps[] = []
 
-      if (props.range && isArray(props.modelValue)) {
+      if (range && isArray(modelValue)) {
         list = [
-          { value: props.modelValue[0], enumValue: Thumbs.First },
-          { value: props.modelValue[1], enumValue: Thumbs.Second },
+          { value: getValue(modelValue[0]), enumValue: Thumbs.First, text: toPrecision(modelValue[0]) },
+          { value: getValue(modelValue[1]), enumValue: Thumbs.Second, text: toPrecision(modelValue[1]) },
+        ]
+      } else if (isNumber(modelValue)) {
+        list = [
+          {
+            value: getValue(modelValue),
+            enumValue: Thumbs.First,
+            text: toPrecision(modelValue),
+          },
         ]
       }
 
       return list
     })
 
-    const getRippleSize = (item: ThumbsListProps) => {
-      let size: string | undefined
-
-      if (props.thumbSize !== undefined) {
-        size = thumbsProps[item.enumValue].active ? multiplySizeUnit(props.thumbSize, 3) : '0px'
-      }
-
-      return {
-        height: size,
-        width: size,
-      }
-    }
-
-    const showLabel = (type: keyof ThumbsProps): boolean => {
-      if (props.labelVisible === 'always') return true
-      if (props.labelVisible === 'never') return false
-
-      return thumbsProps[type].active
-    }
-
     const getFillStyle: ComputedRef<Record<string, string | undefined>> = computed(() => {
       const { activeColor, range, modelValue } = props
 
-      const width = range && isArray(modelValue) ? Math.abs(modelValue[0] - modelValue[1]) : modelValue
+      const left = range && isArray(modelValue) ? getValue(Math.min(modelValue[0], modelValue[1])) : 0
 
-      const left = range && isArray(modelValue) ? Math.min(modelValue[0], modelValue[1]) : 0
+      const width =
+        range && isArray(modelValue)
+          ? getValue(Math.max(modelValue[0], modelValue[1])) - left
+          : getValue(modelValue as number)
 
       return {
         width: `${width}%`,
@@ -183,21 +170,47 @@ export default defineComponent({
 
     const isReadonly: ComputedRef<boolean | undefined> = computed(() => props.readonly || form?.readonly.value)
 
+    const showLabel = (type: keyof ThumbsProps): boolean => {
+      if (props.labelVisible === 'always') return true
+      if (props.labelVisible === 'never') return false
+
+      return thumbsProps[type].active
+    }
+
+    const getValue = (value: number) => {
+      const { min, max } = props
+
+      if (value < toNumber(min)) return 0
+      if (value > toNumber(max)) return 100
+
+      return ((value - toNumber(min)) / scope.value) * 100
+    }
+
+    const toPrecision = (value: number) => {
+      let num = value
+      if (num < Number(props.min)) num = Number(props.min)
+      if (num > Number(props.max)) num = Number(props.max)
+
+      const isInteger = parseInt(`${num}`, 10) === num
+
+      return isInteger ? num : toNumber(num.toPrecision(5))
+    }
+
     const setPercent = (moveDistance: number, type: keyof ThumbsProps) => {
       let rangeValue: Array<number> = []
-      const { step, range, modelValue, onChange } = props
+      const { step, range, modelValue, onChange, min } = props
       const stepNumber = toNumber(step)
       const roundDistance = Math.round(moveDistance / unitWidth.value)
-      const curValue: number = roundDistance * stepNumber
-      const prevValue = thumbsProps[type].percentValue
+      const curValue = roundDistance * stepNumber + toNumber(min)
+      const prevValue = thumbsProps[type].percentValue * stepNumber + toNumber(min)
 
-      thumbsProps[type].percentValue = curValue / stepNumber
+      thumbsProps[type].percentValue = roundDistance
       if (range && isArray(modelValue)) {
         rangeValue = type === Thumbs.First ? [curValue, modelValue[1]] : [modelValue[0], curValue]
       }
 
       if (prevValue !== curValue) {
-        const value = range ? rangeValue : curValue
+        const value = range ? rangeValue.map((value) => toPrecision(value)) : toPrecision(curValue)
         call(onChange, value)
         call(props['onUpdate:modelValue'], value)
         validateWithTrigger()
@@ -234,14 +247,14 @@ export default defineComponent({
     }
 
     const end = (type: keyof ThumbsProps) => {
-      const { range, modelValue, onEnd } = props
+      const { range, modelValue, onEnd, step, min } = props
       if (isDisabled.value || isReadonly.value) return
       let rangeValue: Array<number> = []
 
       thumbsProps[type].currentLeft = thumbsProps[type].percentValue * unitWidth.value
       thumbsProps[type].active = false
 
-      const curValue: number = thumbsProps[type].percentValue
+      const curValue = thumbsProps[type].percentValue * toNumber(step) + toNumber(min)
 
       if (range && isArray(modelValue)) {
         rangeValue = type === Thumbs.First ? [curValue, modelValue[1]] : [modelValue[0], curValue]
@@ -266,12 +279,8 @@ export default defineComponent({
         console.warn('[Varlet] Slider: type of prop "step" should be Number')
         return false
       }
-      if (stepNumber < 1 || stepNumber > 100) {
-        console.warn('[Varlet] Slider: "step" should be >= 0 and <= 100')
-        return false
-      }
-      if (parseInt(`${props.step}`, 10) !== stepNumber) {
-        console.warn('[Varlet] Slider: "step" should be an Integer')
+      if (stepNumber < 0) {
+        console.warn('[Varlet] Slider: "step" should be > 0')
         return false
       }
       return true
@@ -295,29 +304,25 @@ export default defineComponent({
     }
 
     const setProps = (modelValue = props.modelValue, step = toNumber(props.step)) => {
+      const getPercent = (value: number) => {
+        const { min, max } = props
+
+        if (value < toNumber(min)) return 0
+        if (value > toNumber(max)) return scope.value / step
+
+        return (value - toNumber(min)) / step
+      }
+
       if (props.range && isArray(modelValue)) {
-        thumbsProps[Thumbs.First].percentValue = modelValue[0] / step
+        thumbsProps[Thumbs.First].percentValue = getPercent(modelValue[0])
         thumbsProps[Thumbs.First].currentLeft = thumbsProps[Thumbs.First].percentValue * unitWidth.value
 
-        thumbsProps[Thumbs.Second].percentValue = modelValue[1] / step
+        thumbsProps[Thumbs.Second].percentValue = getPercent(modelValue[1])
         thumbsProps[Thumbs.Second].currentLeft = thumbsProps[Thumbs.Second].percentValue * unitWidth.value
       } else if (isNumber(modelValue)) {
-        thumbsProps[Thumbs.First].currentLeft = (modelValue / step) * unitWidth.value
+        thumbsProps[Thumbs.First].currentLeft = getPercent(modelValue) * unitWidth.value
       }
     }
-
-    watch([() => props.modelValue, () => props.step], ([modelValue, step]) => {
-      if (!stepValidator() || !valueValidator() || isScroll.value) return
-      setProps(modelValue as number | number[], toNumber(step))
-    })
-
-    watch(maxWidth, () => setProps())
-
-    onMounted(() => {
-      if (!stepValidator() || !valueValidator()) return
-
-      maxWidth.value = (sliderEl.value as HTMLDivElement).offsetWidth
-    })
 
     const reset = () => {
       const resetValue = props.range ? [0, 0] : 0
@@ -333,6 +338,19 @@ export default defineComponent({
 
     call(bindForm, sliderProvider)
 
+    watch([() => props.modelValue, () => props.step], ([modelValue, step]) => {
+      if (!stepValidator() || !valueValidator() || isScroll.value) return
+      setProps(modelValue as number | number[], toNumber(step))
+    })
+
+    watch(maxWidth, () => setProps())
+
+    onMounted(() => {
+      if (!stepValidator() || !valueValidator()) return
+
+      maxWidth.value = (sliderEl.value as HTMLDivElement).offsetWidth
+    })
+
     return {
       n,
       classes,
@@ -345,7 +363,6 @@ export default defineComponent({
       thumbList,
       multiplySizeUnit,
       toNumber,
-      getRippleSize,
       showLabel,
       start,
       move,
