@@ -128,8 +128,8 @@ watch(
     @click-overlay="confirmClose"
   >
     <div class="varlet-site-playground-container">
-      <iframe id="playground" class="varlet-site-playground-iframe" :src="context.playgroundURL"
-              frameborder="0"></iframe>
+      <iframe id="playground" class="varlet-site-playground-iframe" :src="context.playgroundURL" allow="clipboard-write">
+      </iframe>
     </div>
   </var-popup>
 </template>
