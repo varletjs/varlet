@@ -187,6 +187,7 @@ export default defineComponent({
     }
 
     const toPrecision = (value: number) => {
+      if (!isNumber(value)) return 0
       let num = value
       if (num < Number(props.min)) num = Number(props.min)
       if (num > Number(props.max)) num = Number(props.max)
