@@ -12,3 +12,7 @@ es
 umd
 coverage
 highlight
+
+
+.eslintcache
+.stylelintcache
