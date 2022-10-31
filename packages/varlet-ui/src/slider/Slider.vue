@@ -28,7 +28,7 @@
         @touchend="end(item.enumValue)"
         @touchcancel="end(item.enumValue)"
       >
-        <slot name="button" :current-value="item.value">
+        <slot name="button" :current-value="item.text">
           <div
             :class="n('thumb-block')"
             :style="{
