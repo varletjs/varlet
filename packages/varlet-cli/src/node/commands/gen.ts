@@ -87,6 +87,7 @@ export async function gen(options: GenCommandOptions) {
   logger.success('✨ Application generated successfully!')
   logger.info(`\
   cd ${name}
+  git init (Generating .git folder to init git hooks)
   pnpm install
   pnpm dev`)
   logger.success(`\
