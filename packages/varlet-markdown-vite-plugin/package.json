@@ -1,6 +1,6 @@
 {
   "name": "@varlet/markdown-vite-plugin",
-  "version": "2.0.6",
+  "version": "2.1.0",
   "type": "module",
   "description": "markdown vite plugin of varlet",
   "main": "index.js",
