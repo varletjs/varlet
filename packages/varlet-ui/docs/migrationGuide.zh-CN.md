@@ -96,12 +96,20 @@ import type { ButtonProps, ButtonType, ButtonSize } from '@varlet/ui'
 详情见[按需引入](#/zh-CN/importOnDemand)
 
 ## 组件库快速成型工具(@varlet/cli)
+`Node.js` 所需版本为 `14.18+ / 16+`
 
 ### 命令重构
 
 - 重构了 `gen` 和 `create` 命令，增加了 `sfc` 和 `tsx` 两种风格的模板选择，增加了国际化的选项，优化了命令行交互体验
 - 重构了 `compile` 命令，编译后的包不再支持 `less` 变量
 - 新增 `vite:dev` 和 `vite:build` 命令，对 `vite` 进行了基本的封装
+
+### 其他改变 (v2.1生效)
+
+- 文档配置文件从 `varlet.config.js` -> `varlet.config.mjs`
+- `AppType` 引入方式 `import AppType from '@varlet/cli/site/mobile/components/AppType'` -> `import { AppType } from '@varlet/cli/client'`
+- `watchLang` 引入方式 `import { watchLang } from '@varlet/cli/site/utils'` -> `import { watchLang } from '@varlet/cli/client'`
+- `watchDarkMode` 引入方式 `import { watchDarkMode } from '@varlet/cli/site/utils'` -> `import { watchDarkMode } from '@varlet/cli/client'`
 
 ### 文档相关
 
