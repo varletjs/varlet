@@ -33,7 +33,7 @@ varlet-cli gen
 ### 配置文件
 
 项目根目录下的 `varlet.config.js` 用来管理整个组件库项目的具体细节。
-默认配置可查阅 [varlet.default.config.ts](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/config/varlet.default.config.ts)。
+默认配置可查阅 [varlet.default.config.ts](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.default.config.ts)。
 也可以参考 `@varlet/ui` 的 [varlet.config.mjs](https://github.com/varletjs/varlet/blob/dev/packages/varlet-ui/varlet.config.mjs)
 
 | 参数 | 说明 | 类型 | 默认值 |
