@@ -231,10 +231,12 @@ In the project, we embrace the first way of writing the `esmodule` module, and m
 
 ```js
 // playground-ignore
-// varlet.config.js
-module.exports = {
+// varlet.config.mjs
+import { defineConfig } from '@varlet/cli'
+
+export default defineConfig({
   moduleCompatible: {
     "import dayjs from 'dayjs/esm'\n": "import * as dayjs from 'dayjs'\n"
   }
-}
+})
 ```

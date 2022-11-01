@@ -213,10 +213,12 @@ import * as dayjs from 'dayjs'
 在项目中我们拥抱 `esmodule` 模块使用第一种写法，并做如下配置进行适配
 
 ```js
-// varlet.config.js
-module.exports = {
+// varlet.config.mjs
+import { defineConfig } from '@varlet/cli'
+
+export default defineConfig({
   moduleCompatible: {
     "import dayjs from 'dayjs/esm'\n": "import * as dayjs from 'dayjs'\n"
   }
-}
+})
 ```
