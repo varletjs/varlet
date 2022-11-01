@@ -1,6 +1,6 @@
 <script setup>
 import VarButton from '..'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType } from '@varlet/cli/client'
 </script>
 
 <template>

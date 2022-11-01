@@ -5,7 +5,7 @@ import VarCell from '../../cell'
 import dark from '../../themes/dark'
 import { ref, onMounted } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/client'
 
 const list = ref([])
 const bgColor = ref('#e7edf7')

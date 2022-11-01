@@ -9,18 +9,19 @@ node_modules
 *.vsix
 package-lock.json
 
-packages/varlet-cli/lib/commands
-packages/varlet-cli/lib/compiler
-packages/varlet-cli/lib/config
-packages/varlet-cli/lib/shared
-packages/varlet-cli/lib/index.d.ts
+packages/varlet-cli/lib/node/commands
+packages/varlet-cli/lib/node/compiler
+packages/varlet-cli/lib/node/config
+packages/varlet-cli/lib/node/shared
+packages/varlet-cli/lib/node/index.d.ts
+packages/varlet-cli/lib/client
 packages/varlet-cli/site/mobile/*.routes.ts
 packages/varlet-cli/site/mobile/routes.ts
 packages/varlet-cli/site/pc/*.routes.ts
 packages/varlet-cli/site/pc/routes.ts
 packages/varlet-cli/site/site.config.json
 packages/varlet-cli/site/*.site.config.json
-packages/varlet-cli/lib/bin.d.ts
+packages/varlet-cli/lib/node/bin.d.ts
 
 packages/varlet-ui/site
 packages/varlet-ui/lib

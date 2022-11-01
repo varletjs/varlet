@@ -2,7 +2,8 @@
 import config from '@config'
 import LogoAnimation from './components/LogoAnimation.vue'
 import { defineComponent, onMounted, ref } from 'vue'
-import { getPCLocationInfo, isPhone } from '../utils'
+import { getPCLocationInfo } from '@varlet/cli/client'
+import { isPhone } from '../utils'
 import { get } from 'lodash-es'
 
 export default defineComponent({

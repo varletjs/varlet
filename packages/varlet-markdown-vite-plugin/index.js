@@ -1,5 +1,5 @@
-const markdown = require('markdown-it')
-const hljs = require('highlight.js')
+import markdown from 'markdown-it'
+import hljs from 'highlight.js'
 
 function kebabCase(key) {
   const ret = key.replace(/([A-Z])/g, ' $1').trim()
@@ -108,7 +108,7 @@ export default {
   `
 }
 
-function VarletMarkdownVitePlugin(options) {
+export default function VarletMarkdownVitePlugin(options) {
   return {
     name: 'varlet-markdown-vite-plugin',
     enforce: 'pre',
@@ -134,5 +134,3 @@ function VarletMarkdownVitePlugin(options) {
     },
   }
 }
-
-module.exports = VarletMarkdownVitePlugin

@@ -4,6 +4,7 @@ export default {
   dualThumb: 'Dual thumb',
   disable: 'Disable',
   readonly: 'Readonly',
+  range: 'Range',
   sliderSize: 'Slider Size',
   customStyle: 'Custom Style',
   showLabel: 'Show Label',

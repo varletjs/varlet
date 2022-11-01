@@ -51,6 +51,16 @@ export const props = {
     type: [String, Number],
   },
 
+  max: {
+    type: [String, Number],
+    default: 100,
+  },
+
+  min: {
+    type: [String, Number],
+    default: 0,
+  },
+
   thumbSize: {
     type: [String, Number],
   },

@@ -1,14 +1,7 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./lib",
-    "target": "es5",
-    "strict": true,
-    "downlevelIteration": true,
-    "declaration": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "lib": ["esnext", "dom"]
+    "outDir": "./lib"
   },
   "include": ["src/**/*"]
 }

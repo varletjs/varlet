@@ -7,7 +7,8 @@ import context from '../components/context'
 import { nextTick, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { get } from 'lodash-es'
-import { getPCLocationInfo, MenuTypes, type Menu } from '../utils'
+import { getPCLocationInfo } from '@varlet/cli/client'
+import { MenuTypes, type Menu } from '../utils'
 import type { Ref } from 'vue'
 
 const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))
@@ -127,8 +128,8 @@ watch(
     @click-overlay="confirmClose"
   >
     <div class="varlet-site-playground-container">
-      <iframe id="playground" class="varlet-site-playground-iframe" :src="context.playgroundURL"
-              frameborder="0"></iframe>
+      <iframe id="playground" class="varlet-site-playground-iframe" :src="context.playgroundURL" allow="clipboard-write">
+      </iframe>
     </div>
   </var-popup>
 </template>

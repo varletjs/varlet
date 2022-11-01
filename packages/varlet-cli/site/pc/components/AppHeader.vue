@@ -1,10 +1,12 @@
 <script lang="ts">
 import config from '@config'
+import AnimationBox from './AnimationBox.vue'
 import { ref, computed, defineComponent } from 'vue'
 import { get } from 'lodash-es'
-import { getBrowserTheme, getPCLocationInfo, removeEmpty, setTheme, Theme, watchTheme } from '../../utils'
+import { getBrowserTheme, getPCLocationInfo, Theme, watchTheme } from '@varlet/cli/client'
+import { setTheme } from '../../utils'
+import { removeEmpty } from '../../utils'
 import { useRouter } from 'vue-router'
-import AnimationBox from './AnimationBox.vue'
 import type { Ref, ComputedRef } from 'vue'
 
 export default defineComponent({

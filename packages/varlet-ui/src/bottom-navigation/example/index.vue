@@ -1,13 +1,12 @@
 <script setup>
 import { ref } from 'vue'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarBottomNavigation from '..'
 import VarBottomNavigationItem from '../../bottom-navigation-item'
 import VarIcon from '../../icon'
 import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
 import { use, pack } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const basicUsage = ref(0)
 

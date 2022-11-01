@@ -54,6 +54,20 @@ const handleChange = (value) => {
 </template>
 ```
 
+### 选择范围
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-slider v-model="value" max="210" min="-50" label-visible="always" />
+</template>
+```
+
 ### 禁用
 
 ```html
@@ -197,18 +211,24 @@ const value = ref(20)
 
 ### 属性
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | ---------- |
-| `v-model` | 当前进度值 | _number \| [number, number]_ | `0` |
-| `step`| 步长，取值为 `1 ~ 100` 间的整数 | _string \| number_ | `1` |
-| `range`| 是否启用双滑块 | _boolean_ | `false` |
-| `label-visible` | 是否显示标签，可选值为 `always normal never` | _string_ | `normal` |
-| `label-text-color` | 标签文字颜色 | _string_ | `#fff` |
-| `track-height` | slider的高度 | _string \| number_ | `2` |
-| `thumb-size` | 滑块的大小 | _string \| number_ | `12` |
-| `disabled`| 是否禁用 | _boolean_  | `false` |
-| `readonly`| 是否只读 | _boolean_  | `false` |
-| `rules`| 校验规则 | _array_  | `-` |
+| 参数                 | 说明                               | 类型 | 默认值               |
+|--------------------|----------------------------------| ------ |-------------------|
+| `v-model`          | 当前进度值                            | _number \| [number, number]_ | `0` |
+| `step`             | 步长，取值必须大于 0                      | _string \| number_           | `1` |
+| `range`            | 是否启用双滑块                          | _boolean_ | `false`           |
+| `max`              | 最大值                              | _string \| number_ | `100`           |
+| `min`              | 最小值                              | _string \| number_ | `0`           |
+| `label-visible`    | 是否显示标签，可选值为 `always normal never` | _string_ | `normal`          |
+| `label-text-color` | 标签文字颜色                           | _string_ | `#fff`            |
+| `label-color`      | 标签颜色                             | _string_ | `-`               |
+| `active-color`     | 已激活的轨道背景颜色                       | _string_ | `-`               |
+| `track-color`      | 轨道背景颜色                           | _string_ | `-`               |
+| `track-height`     | 轨道的高度                            | _string \| number_           | `2` |
+| `thumb-size`       | 滑块的大小                            | _string \| number_           | `12` |
+| `thumb-color`      | 滑块的背景颜色                          | _string_ | `-`               |
+| `disabled`         | 是否禁用                             | _boolean_ | `false`           |
+| `readonly`         | 是否只读                             | _boolean_ | `false`           |
+| `rules`            | 校验规则                             | _array_ | `-`               |
 
 
 ### 事件

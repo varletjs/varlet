@@ -23,7 +23,8 @@
 import config from '@config'
 import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
-import { inIframe, isPhone, watchLang, watchPlatform } from '../../utils'
+import { watchLang, watchPlatform } from '@varlet/cli/client'
+import { inIframe, isPhone } from '../../utils'
 
 export default {
   name: 'AppHome',

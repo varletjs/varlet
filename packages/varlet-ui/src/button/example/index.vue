@@ -2,11 +2,10 @@
 import VarButton from '../index'
 import VarIcon from '../../icon'
 import VarSpace from '../../space'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
 import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
 
 const handleClick = () => {
   Snackbar.success(pack.value.clickSuccess)

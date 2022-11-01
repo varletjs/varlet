@@ -1,5 +1,5 @@
 import { isNumber, isString, toNumber, kebabCase } from '@varlet/shared'
-import type { StyleVars } from '../../utils'
+import type { StyleVars } from '@varlet/cli/client'
 
 export function getLeft(element: HTMLElement): number {
   const { left } = element.getBoundingClientRect()

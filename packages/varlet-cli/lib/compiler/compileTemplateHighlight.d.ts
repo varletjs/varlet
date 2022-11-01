@@ -1,0 +1,10 @@
+export declare const replaceDot: (s: string) => string;
+export declare const replaceUnderline: (s: string) => string;
+export declare function parseTable(table: string): string[][];
+export declare function compileTable(md: string, titleRe: RegExp): string;
+export declare function compileTags(table: Record<string, any>, tags: Record<string, any>, componentName: string, varletConfig: Record<string, any>): void;
+export declare function compileAttributes(table: Record<string, any>, attributes: Record<string, any>, componentName: string, varletConfig: Record<string, any>): void;
+export declare function compileWebTypes(table: Record<string, any>, webTypes: Record<string, any>, componentName: string, varletConfig: Record<string, any>): void;
+export declare function compileMD(path: string, tags: Record<string, any>, attributes: Record<string, any>, webTypes: Record<string, any>, varletConfig: Record<string, any>): void;
+export declare function compileDir(path: string, tags: Record<string, any>, attributes: Record<string, any>, webTypes: Record<string, any>, varletConfig: Record<string, any>): void;
+export declare function compileTemplateHighlight(): Promise<void>;

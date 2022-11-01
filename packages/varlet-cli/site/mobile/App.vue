@@ -77,14 +77,11 @@ import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import {
   getBrowserTheme,
-  inIframe,
-  isPhone,
-  removeEmpty,
-  setTheme,
-  Theme,
+  type Theme,
   watchLang,
   watchTheme
-} from '../utils'
+} from '@varlet/cli/client'
+import { removeEmpty, setTheme, inIframe, isPhone } from '../utils'
 import { bigCamelize } from '@varlet/shared'
 import { get } from 'lodash-es'
 
@@ -151,13 +148,13 @@ export default defineComponent({
     }
 
     const toggleTheme = () => {
-      setCurrentTheme(currentTheme.value === 'darkTheme' ? 'lightTheme' : 'darkTheme')
-      window.postMessage(getThemeMessage(), '*')
+        setCurrentTheme(currentTheme.value === 'darkTheme' ? 'lightTheme' : 'darkTheme')
+        window.postMessage(getThemeMessage(), '*')
 
-      if (!isPhone() && inIframe()) {
-        ;(window.top as any).postMessage(getThemeMessage(), '*')
+        if (!isPhone() && inIframe()) {
+          ;(window.top as any).postMessage(getThemeMessage(), '*')
+        }
       }
-    }
 
     ;(window as any).toggleTheme = toggleTheme
 
@@ -194,6 +191,7 @@ export default defineComponent({
 <style lang="less">
 * {
   -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 }
 
 body {
@@ -206,6 +204,13 @@ body {
   background: var(--site-config-color-bar);
   color: var(--site-config-color-text);
   transition: background-color 0.25s, color 0.25s;
+}
+
+header {
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  font-weight: bold;
 }
 
 ::-webkit-scrollbar {
@@ -228,17 +233,6 @@ body {
   }
 }
 
-header {
-  position: fixed;
-  z-index: 99;
-  width: 100%;
-  font-weight: bold;
-}
-
-.app-bar {
-  background: var(--site-config-color-app-bar) !important;
-}
-
 .settings {
   position: fixed;
   z-index: 200;
@@ -249,10 +243,6 @@ header {
 
 .router-view__block {
   padding: 55px 15px 15px;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 .mobile-language-cell {
@@ -288,5 +278,16 @@ header {
 
 .i18n-button {
   padding-right: 6px !important;
+}
+
+.app-type {
+  width: 100%;
+  padding: 15px 0;
+  color: var(--site-config-color-sub-text);
+  font-size: 14px;
+}
+
+.app-bar {
+  background: var(--site-config-color-app-bar) !important;
 }
 </style>

@@ -3,10 +3,9 @@ import StyleProvider from '../index'
 import VarRate from '../../rate'
 import VarSwitch from '../../switch'
 import VarButton from '../../button'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType, getBrowserTheme, watchLang } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { ref, reactive, onUnmounted } from 'vue'
-import { getBrowserTheme, watchLang } from '@varlet/cli/site/utils'
 import { use, pack } from './locale'
 
 const VarStyleProvider = StyleProvider.Component
