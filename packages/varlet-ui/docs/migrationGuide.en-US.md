@@ -96,7 +96,6 @@ In 2.x, the automatic import of function components is supported through the [un
 For details, see [Import On Demand](#/en-US/importOnDemand)
 
 ## Components Library Tools(@varlet/cli)
-Node.js 14.18+ / 16+ is now required.
 
 ### Command refactoring
 
@@ -104,15 +103,16 @@ Node.js 14.18+ / 16+ is now required.
 - Refactored `compile` command, compiled package no longer supports `less` variable
 - Added `vite:dev` and `vite:build` commands to basically encapsulate `vite`
 
-### Other changes (Effective v2.1)
-
-- Site config file `varlet.config.js` -> `varlet.config.mjs`
-- `AppType` import `import AppType from '@varlet/cli/site/mobile/components/AppType'` -> `import { AppType } from '@varlet/cli/client'`
-- `watchLang` import `import { watchLang } from '@varlet/cli/site/utils'` -> `import { watchLang } from '@varlet/cli/client'`
-- `watchDarkMode` import `import { watchDarkMode } from '@varlet/cli/site/utils'` -> `import { watchDarkMode } from '@varlet/cli/client'`
-
 ### Documentation related
 
 - New documentation home page
 - Optimized document visual
 - Some renaming of document style variables
+
+### Other changes (Since v2.1.0)
+
+- Node.js `^14.18.0 || >=16.0.0` is now required.
+- Site config file `varlet.config.js` -> `varlet.config.mjs`
+- `AppType` import `import AppType from '@varlet/cli/site/mobile/components/AppType'` -> `import { AppType } from '@varlet/cli/client'`
+- `watchLang` import `import { watchLang } from '@varlet/cli/site/utils'` -> `import { watchLang } from '@varlet/cli/client'`
+- `watchDarkMode` import `import { watchDarkMode } from '@varlet/cli/site/utils'` -> `import { watchDarkMode } from '@varlet/cli/client'`
