@@ -34,7 +34,7 @@ you can start the development of the component library
 
 ### Configuration file
 
-The `varlet.config.js` in the project root directory is used to manage the specific details of the entire component library project.
+The `varlet.config.mjs` in the project root directory is used to manage the specific details of the entire component library project.
 The default configuration can be viewed [varlet.default.config.ts](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.default.config.ts)。
 Also refer to `@varlet/ui` [varlet.config.mjs](https://github.com/varletjs/varlet/blob/dev/packages/varlet-ui/varlet.config.mjs)
 
@@ -215,10 +215,12 @@ import * as dayjs from 'dayjs'
 In the project, we embrace the first way of writing the `esmodule` module, and make the following configuration for adaptation
 
 ```js
-// varlet.config.js
-module.exports = {
+// varlet.config.mjs
+import { defineConfig } from '@varlet/cli'
+
+export default defineConfig({
   moduleCompatible: {
     "import dayjs from 'dayjs/esm'\n": "import * as dayjs from 'dayjs'\n"
   }
-}
+})
 ```
