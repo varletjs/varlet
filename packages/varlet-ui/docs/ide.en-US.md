@@ -21,7 +21,7 @@ Install the `Volar` plugin and configure `tsconfig.json` as follows to get type 
 // playground-ignore
 {
   "compilerOptions": {
-    "types": ["@varlet/ui/types/global"]
+    "types": ["@varlet/ui/types"]
   }
 }
 ```
