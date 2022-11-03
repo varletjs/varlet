@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import VarFloatingActionsButton from '../index'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import type { Action } from '../props'
 
 const actions: Action[] = [{}]
@@ -19,9 +19,10 @@ const reverseShow = () => {
     <var-floating-actions-button
       v-model:show="show"
       @click="reverseShow"
-      fab-location="bottom-right"
+      fab-location="top-left"
       actions-location="top"
       :actions="actions"
+      :use-teleport="false"
     />
   </div>
 </template>
