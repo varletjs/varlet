@@ -1,13 +1,12 @@
 <script setup>
 import ActionSheet from '../index'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarButton from '../../button'
 import VarSpace from '../../space'
 import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
 import { ref, reactive } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const VarActionSheet = ActionSheet.Component
 const rawActions = [

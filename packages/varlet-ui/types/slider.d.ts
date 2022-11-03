@@ -15,6 +15,8 @@ export interface SliderProps extends BasicAttributes {
   labelColor?: string
   trackHeight?: string | number
   thumbSize?: string | number
+  min?: string | number
+  max?: string | number
   disabled?: boolean
   readonly?: boolean
   rules?: Array<(value: any) => any>

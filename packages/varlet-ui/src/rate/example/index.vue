@@ -1,11 +1,10 @@
 <script setup>
 import VarRate from '..'
 import VarSnackbar from '../../snackbar'
-import AppType from '@varlet/cli/site/mobile/components/AppType.vue'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { reactive } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const scores = reactive({
   score: 3,

@@ -1,5 +1,5 @@
 <script setup>
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarCollapse from '..'
 import VarCollapseItem from '../../collapse-item'
 import VarButton from '../../button'
@@ -7,7 +7,6 @@ import VarSpace from '../../space'
 import dark from '../../themes/dark'
 import { reactive, ref } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const disabled = ref(false)
 

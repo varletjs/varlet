@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "2.0.6",
+  "version": "2.1.0",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
@@ -24,6 +24,8 @@
       "packages/varlet-cli/lib/**",
       "packages/varlet-cli/site/**",
       "packages/varlet-cli/template/**",
+      "packages/varlet-cli/client.js",
+      "packages/varlet-cli/client.d.ts",
       "packages/varlet-vscode-extension/dist/**",
       "packages/varlet-ui/lib/**",
       "packages/varlet-ui/es/**",
@@ -36,7 +38,7 @@
       "packages/varlet-ui/src/*/__tests__/**",
       "packages/varlet-ui/.varlet/**",
       "packages/varlet-ui-playground/public/**",
-      "packages/varlet-ui-playground/dist/**",
+      "packages/varlet-ui-playground/site/**",
       "packages/varlet-shared/lib/**",
       "packages/varlet-shared/es/**"
     ],
@@ -52,6 +54,8 @@
       "packages/varlet-cli/lib/**",
       "packages/varlet-cli/site/**",
       "packages/varlet-cli/template/**",
+      "packages/varlet-cli/client.js",
+      "packages/varlet-cli/client.d.ts",
       "packages/varlet-icons/dist/**",
       "packages/varlet-ui/lib/**",
       "packages/varlet-ui/es/**",
@@ -62,7 +66,7 @@
       "packages/varlet-ui/public/**",
       "packages/varlet-ui/.varlet/**",
       "packages/varlet-ui-playground/public/**",
-      "packages/varlet-ui-playground/dist/**"
+      "packages/varlet-ui-playground/site/**"
     ]
   },
   "devDependencies": {
@@ -74,7 +78,7 @@
     "execa": "^5.0.0",
     "lint-staged": "^10.5.0",
     "ora": "^5.4.0",
-    "prettier": "^2.3.2",
+    "prettier": "^2.7.1",
     "simple-git-hooks": "^2.8.0",
     "stylelint": "^13.13.1",
     "typescript": "^4.4.4"

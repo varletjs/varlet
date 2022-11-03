@@ -1,9 +1,8 @@
 <script setup>
 import VarRow from '..'
 import VarCol from '../../col'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType, watchLang } from '@varlet/cli/client'
 import { use, pack } from './locale'
-import { watchLang } from '@varlet/cli/site/utils'
 
 watchLang(use)
 </script>

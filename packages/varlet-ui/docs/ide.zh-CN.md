@@ -20,7 +20,7 @@
 // playground-ignore
 {
   "compilerOptions": {
-    "types": ["@varlet/ui/types/global"]
+    "types": ["@varlet/ui/types"]
   }
 }
 ```

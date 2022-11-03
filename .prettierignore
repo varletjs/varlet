@@ -6,6 +6,7 @@ packages/varlet-icons/dist/**
 
 packages/varlet-ui/es/**
 packages/varlet-ui/lib/**
+packages/varlet-cli/client/**
 packages/varlet-ui/umd/**
 packages/varlet-ui/site/**
 packages/varlet-ui/public/**

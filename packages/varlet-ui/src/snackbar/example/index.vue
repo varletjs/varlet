@@ -2,11 +2,10 @@
 import Snackbar from '../index'
 import VarButton from '../../button'
 import VarSpace from '../../space'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const shows = reactive({
   show1: false,
@@ -26,10 +25,11 @@ const changeValue = (type) => {
 
 const create = (type) => {
   const text = type === 'loading' ? pack.value.wait : pack.value.text
-  Snackbar[type](text)
+  const snackbar = Snackbar[type](text)
 
   if (type === 'loading') {
     setTimeout(() => {
+      snackbar.clear()
       Snackbar.success(pack.value.loaded)
     }, 2000)
   }

@@ -1,11 +1,10 @@
 <script setup>
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarSwitch from '..'
 import VarSpace from '../../space'
 import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const values = reactive({
   value: true,

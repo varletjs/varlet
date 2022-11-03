@@ -108,3 +108,11 @@ For details, see [Import On Demand](#/en-US/importOnDemand)
 - New documentation home page
 - Optimized document visual
 - Some renaming of document style variables
+
+### Other changes (Since v2.1.0)
+
+- Node.js `^14.18.0 || >=16.0.0` is now required.
+- Site config file `varlet.config.js` -> `varlet.config.mjs`
+- `AppType` import `import AppType from '@varlet/cli/site/mobile/components/AppType'` -> `import { AppType } from '@varlet/cli/client'`
+- `watchLang` import `import { watchLang } from '@varlet/cli/site/utils'` -> `import { watchLang } from '@varlet/cli/client'`
+- `watchDarkMode` import `import { watchDarkMode } from '@varlet/cli/site/utils'` -> `import { watchDarkMode } from '@varlet/cli/client'`

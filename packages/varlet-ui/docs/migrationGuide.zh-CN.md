@@ -108,3 +108,11 @@ import type { ButtonProps, ButtonType, ButtonSize } from '@varlet/ui'
 - 新的文档首页
 - 优化了文档视觉
 - 文档样式变量进行了一些重命名
+
+### 其他改变 (v2.1.0 生效)
+
+- `Node.js` 版本锁定为 `^14.18.0 || >=16.0.0`
+- 文档配置文件从 `varlet.config.js` -> `varlet.config.mjs`
+- `AppType` 引入方式 `import AppType from '@varlet/cli/site/mobile/components/AppType'` -> `import { AppType } from '@varlet/cli/client'`
+- `watchLang` 引入方式 `import { watchLang } from '@varlet/cli/site/utils'` -> `import { watchLang } from '@varlet/cli/client'`
+- `watchDarkMode` 引入方式 `import { watchDarkMode } from '@varlet/cli/site/utils'` -> `import { watchDarkMode } from '@varlet/cli/client'`

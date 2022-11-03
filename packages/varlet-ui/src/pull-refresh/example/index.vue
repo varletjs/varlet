@@ -3,7 +3,7 @@ import VarPullRefresh from '..'
 import VarCell from '../../cell'
 import dark from '../../themes/dark'
 import { onMounted, ref, onBeforeUnmount } from 'vue'
-import { watchDarkMode } from '@varlet/cli/site/utils'
+import { watchDarkMode } from '@varlet/cli/client'
 
 const data1 = Array(10).fill('List Item')
 const data2 = Array(10).fill('This is new List Item')

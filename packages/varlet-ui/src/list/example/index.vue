@@ -7,7 +7,7 @@ import VarTabsItems from '../../tabs-items'
 import VarTabItem from '../../tab-item'
 import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+import { watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 const values = reactive({

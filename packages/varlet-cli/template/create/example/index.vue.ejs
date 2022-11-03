@@ -1,8 +1,10 @@
 <script setup>
 import <%- bigCamelizeNamespace + bigCamelizeName %> from '../index'
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+<% if (!locale) { -%>
+import { AppType } from '@varlet/cli/client'
+<% } -%>
 <% if (locale) { -%>
-import { watchLang } from '@varlet/cli/site/utils'
+import { watchLang, AppType } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 watchLang(use)

@@ -1,12 +1,11 @@
 <script setup>
-import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarChip from '..'
 import VarIcon from '../../icon'
 import VarSpace from '../../space'
 import dark from '../../themes/dark'
 import { ref } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
 
 const show = ref(true)
 const show1 = ref(true)
