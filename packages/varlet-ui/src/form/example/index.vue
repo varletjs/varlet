@@ -14,6 +14,7 @@ import VarUploader from '../../uploader'
 import VarCounter from '../../counter'
 import VarRate from '../../rate'
 import VarSpace from '../../space'
+import VarCustomFormComponent from './CustomFormComponent'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { reactive, ref } from 'vue'
@@ -31,6 +32,7 @@ const formData = reactive({
   score: 0,
   like: [],
   files: [],
+  custom: false,
 })
 
 const form = ref(null)
@@ -94,6 +96,15 @@ watchDarkMode(dark)
       <var-slider :rules="[(v) => v > 10 || pack.rangeMessage]" v-model="formData.range" />
       <var-uploader :rules="[(v) => v.length >= 1 || pack.filesMessage]" v-model="formData.files" />
     </var-space>
+
+    <app-type>{{ pack.customFormComponent }}</app-type>
+    <var-custom-form-component
+      :extra-message="pack.customExtraMessage"
+      :rules="[(v) => !!v || pack.customErrorMessage]"
+      v-model="formData.custom"
+    >
+      {{ pack.customLabel }}
+    </var-custom-form-component>
   </var-form>
 
   <app-type>{{ pack.controller }}</app-type>

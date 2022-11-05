@@ -128,8 +128,16 @@ exports[`test uploader example 1`] = `
   </div>
   <transition-stub>
     <div class=\\"var-form-details\\">
-      <div class=\\"var-form-details__message\\"></div>
-      <div class=\\"var-form-details__length\\">0 / 1</div>
+      <div class=\\"var-form-details__error-message\\">
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div>
+      <div class=\\"var-form-details__extra-message\\">
+        <transition-stub>
+          <div>0 / 1</div>
+        </transition-stub>
+      </div>
     </div>
   </transition-stub>
   <transition-stub>
@@ -329,8 +337,16 @@ exports[`test uploader length over maxlength in multiple mode 1`] = `
   </div>
   <transition-stub>
     <div class=\\"var-form-details\\">
-      <div class=\\"var-form-details__message\\"></div>
-      <div class=\\"var-form-details__length\\">0 / 1</div>
+      <div class=\\"var-form-details__error-message\\">
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div>
+      <div class=\\"var-form-details__extra-message\\">
+        <transition-stub>
+          <div>0 / 1</div>
+        </transition-stub>
+      </div>
     </div>
   </transition-stub>
   <transition-stub>
@@ -351,8 +367,16 @@ exports[`test uploader validation 1`] = `
   </div>
   <transition-stub>
     <div class=\\"var-form-details\\">
-      <div class=\\"var-form-details__message\\">您至少上传一个</div>
-      <div class=\\"var-form-details__length\\"></div>
+      <div class=\\"var-form-details__error-message\\">
+        <transition-stub>
+          <div>您至少上传一个</div>
+        </transition-stub>
+      </div>
+      <div class=\\"var-form-details__extra-message\\">
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div>
     </div>
   </transition-stub>
   <transition-stub>

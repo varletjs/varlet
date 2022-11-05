@@ -91,7 +91,7 @@ test('test input maxlength', () => {
     },
   })
 
-  expect(wrapper.find('.var-form-details__length').text()).toBe('4/100')
+  expect(wrapper.find('.var-form-details__extra-message').text()).toBe('4/100')
   expect(wrapper.html()).toMatchSnapshot()
 })
 
@@ -214,7 +214,7 @@ test('test input validation', async () => {
   await wrapper.find('.var-input__input').setValue('1')
   await wrapper.find('.var-input__input').trigger('input')
   await delay(16)
-  expect(wrapper.find('.var-form-details__message').text()).toBe('长度必须大于3')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('长度必须大于3')
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.vm.reset()
@@ -225,7 +225,7 @@ test('test input validation', async () => {
   await wrapper.find('.var-input__input').setValue('1234')
   await wrapper.find('.var-input__input').trigger('input')
   await delay(16)
-  expect(wrapper.find('.var-form-details__message').exists()).toBeFalsy()
+  expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.unmount()

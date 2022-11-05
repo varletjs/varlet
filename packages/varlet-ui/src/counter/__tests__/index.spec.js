@@ -161,11 +161,11 @@ test('test counter validation', async () => {
   await delay(16)
 
   expect(wrapper.html()).toMatchSnapshot()
-  expect(wrapper.find('.var-form-details__message').text()).toBe('必须大于0')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('必须大于0')
 
   await wrapper.find('.var-counter__increment-button').trigger('click')
   await delay(16)
-  expect(wrapper.find('.var-form-details__message').exists()).toBeFalsy()
+  expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
 
   counter.reset()
   await delay(16)

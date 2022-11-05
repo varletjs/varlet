@@ -1,22 +1,9 @@
 :root {
-  --form-details-error-color: var(--color-danger);
-  --form-details-length-color: #888;
+  --form-details-error-message-color: var(--color-danger);
+  --form-details-extra-message-color: #888;
   --form-details-margin-top: 6px;
   --form-details-font-size: 12px;
   --form-details-message-margin-right: 4px;
-}
-
-.var {
-  &-form-details-enter-from,
-  &-form-details-leave-to {
-    opacity: 0;
-    margin-top: 2px !important;
-  }
-
-  &-form-details-enter-active,
-  &-form-details-leave-active {
-    transition: 0.2s all var(--cubic-bezier);
-  }
 }
 
 .var-form-details {
@@ -25,17 +12,38 @@
   font-size: var(--form-details-font-size);
   margin-top: var(--form-details-margin-top);
 
-  &__message {
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+    margin-top: 2px !important;
+  }
+
+  &-enter-active,
+  &-leave-active {
+    transition: 0.2s all var(--cubic-bezier);
+  }
+
+  &__message-enter-from,
+  &__message-leave-to {
+    opacity: 0;
+  }
+
+  &__message-enter-active,
+  &__message-leave-active {
+    transition: 0.2s all var(--cubic-bezier);
+  }
+
+  &__error-message {
     flex-grow: 1;
-    color: var(--form-details-error-color);
+    color: var(--form-details-error-message-color);
     margin-right: var(--form-details-message-margin-right);
     user-select: none;
     text-align: left;
   }
 
-  &__length {
+  &__extra-message {
     flex-shrink: 0;
-    color: var(--form-details-length-color);
+    color: var(--form-details-extra-message-color);
     user-select: none;
     text-align: right;
   }

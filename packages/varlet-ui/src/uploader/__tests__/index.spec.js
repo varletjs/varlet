@@ -169,13 +169,13 @@ test('test uploader validation', async () => {
   wrapper.vm.validate()
   await delay(16)
   expect(wrapper.html()).toMatchSnapshot()
-  expect(wrapper.find('.var-form-details__message').text()).toBe('您至少上传一个')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('您至少上传一个')
 
   await wrapper.vm.handleChange(createEvent('cat.png'))
   await delay(16)
   expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
   expect(wrapper.html()).toMatchSnapshot()
-  expect(wrapper.find('.var-form-details__message').exists()).toBeFalsy()
+  expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
 
   wrapper.vm.reset()
   await delay(16)

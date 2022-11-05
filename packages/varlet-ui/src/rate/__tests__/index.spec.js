@@ -43,10 +43,10 @@ test('test rate validation', async () => {
 
   wrapper.vm.validate()
   await delay(16)
-  expect(wrapper.find('.var-form-details__message').text()).toBe('至少选择一分')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('至少选择一分')
   await wrapper.find('.var-rate__content').trigger('click')
   await delay(16)
-  expect(wrapper.find('.var-form-details__message').exists()).toBeFalsy()
+  expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
   wrapper.vm.reset()
   await delay(16)
   expect(wrapper.props('modelValue')).toBe(0)

@@ -15,13 +15,27 @@
       <var-icon
         var-counter-cover
         name="minus"
-        :class="classes(n('decrement-button'), [!decrementButton, n('--hidden')])"
+        :class="
+          classes(
+            n('decrement-button'),
+            [!decrementButton, n('--hidden')],
+            [disabled || formDisabled, `${n('--text-disabled')} ${n('--not-allowed')}`]
+          )
+        "
         :style="{
           width: toSizeUnit(buttonSize),
           height: toSizeUnit(buttonSize),
         }"
         v-ripple="{
-          disabled: !ripple || disabled || readonly || disableDecrement || !decrementButton || isMin,
+          disabled:
+            !ripple ||
+            disabled ||
+            formDisabled ||
+            readonly ||
+            formReadonly ||
+            disableDecrement ||
+            !decrementButton ||
+            isMin,
         }"
         @click="decrement"
         @touchstart="pressDecrement"
@@ -29,7 +43,7 @@
         @touchcancel="releaseDecrement"
       />
       <input
-        :class="n('input')"
+        :class="classes(n('input'), [disabled || formDisabled, `${n('--text-disabled')} ${n('--not-allowed')}`])"
         :style="{
           width: toSizeUnit(inputWidth),
           fontSize: toSizeUnit(inputTextSize),
@@ -43,13 +57,27 @@
       <var-icon
         var-counter-cover
         name="plus"
-        :class="classes(n('increment-button'), [!incrementButton, n('--hidden')])"
+        :class="
+          classes(
+            n('increment-button'),
+            [!incrementButton, n('--hidden')],
+            [disabled || formDisabled, `${n('--text-disabled')} ${n('--not-allowed')}`]
+          )
+        "
         :style="{
           width: toSizeUnit(buttonSize),
           height: toSizeUnit(buttonSize),
         }"
         v-ripple="{
-          disabled: !ripple || disabled || readonly || disableIncrement || !incrementButton || isMax,
+          disabled:
+            !ripple ||
+            disabled ||
+            readonly ||
+            formDisabled ||
+            formReadonly ||
+            disableIncrement ||
+            !incrementButton ||
+            isMax,
         }"
         @click="increment"
         @touchstart="pressIncrement"

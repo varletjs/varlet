@@ -42,6 +42,11 @@
     align-items: center;
     padding: var(--radio-action-padding);
     border-radius: 50%;
+    transition: background-color 0.25s, color 0.25s;
+  }
+
+  &__text {
+    transition: background-color 0.25s, color 0.25s;
   }
 
   &__icon[var-radio-cover] {
@@ -63,6 +68,7 @@
 
   &--disabled {
     color: var(--radio-disabled-color);
+    cursor: not-allowed;
   }
 
   &--error {

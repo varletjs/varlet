@@ -17,6 +17,7 @@ module.exports = {
     es6: true,
     node: true,
     browser: true,
+    'vue/setup-compiler-macros': true,
   },
   rules: {
     'max-classes-per-file': 'off',
@@ -50,6 +51,7 @@ module.exports = {
     'vue/attributes-order': 'off',
     'vue/require-default-prop': 'off',
     'vue/require-explicit-emits': 'off',
+    'vue/multi-word-component-names': 'off',
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
