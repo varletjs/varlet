@@ -157,12 +157,7 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue'])
 
 const { useForm, useValidation } = Form
-const {
-  errorMessage,
-  validateWithTrigger: _validateWithTrigger,
-  validate: _validate,
-  resetValidation
-} = useValidation()
+const { errorMessage, validateWithTrigger: _validateWithTrigger, validate: _validate, resetValidation } = useValidation()
 const { bindForm, form } = useForm()
 
 const reset = () => {
@@ -294,10 +289,10 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 #### FormDetails Variables
 
-| Variable | Default |
-| --- | --- |
-| `--form-details-error-color` | `var(--color-danger)` |
-| `--form-details-length-color` | `#888` |
-| `--form-details-margin-top` | `6px` |
-| `--form-details-font-size` | `12px` |
+| Variable                              | Default |
+|---------------------------------------| --- |
+| `--form-details-error-message-color`  | `var(--color-danger)` |
+| `--form-details-extra-message-color`  | `#888` |
+| `--form-details-margin-top`           | `6px` |
+| `--form-details-font-size`            | `12px` |
 | `--form-details-message-margin-right` | `4px` |

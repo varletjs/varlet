@@ -157,12 +157,7 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue'])
 
 const { useForm, useValidation } = Form
-const {
-  errorMessage,
-  validateWithTrigger: _validateWithTrigger,
-  validate: _validate,
-  resetValidation
-} = useValidation()
+const { errorMessage, validateWithTrigger: _validateWithTrigger, validate: _validate, resetValidation } = useValidation()
 const { bindForm, form } = useForm()
 
 const reset = () => {
