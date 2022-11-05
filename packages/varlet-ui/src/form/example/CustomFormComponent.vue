@@ -94,7 +94,6 @@ bindForm?.(apis)
 
 <style scoped lang="less">
 .var-custom-form-component {
-  transition: all 0.25s;
   cursor: pointer;
 
   &__container {

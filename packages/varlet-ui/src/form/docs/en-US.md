@@ -220,10 +220,6 @@ bindForm?.(apis)
 
 <style>
 .var-custom-form-component {
-  transition: all .25s;
-}
-
-.var-custom-form-component:hover {
   cursor: pointer;
 }
 
