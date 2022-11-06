@@ -111,7 +111,7 @@ import type { ButtonProps, ButtonType, ButtonSize } from '@varlet/ui'
 - 优化了文档视觉
 - 文档样式变量进行了一些重命名
 
-### 其他改变 (v2.1.0 生效)
+### 其他改变
 
 - `Node.js` 版本锁定为 `^14.18.0 || >=16.0.0`
 - 文档配置文件从 `varlet.config.js` -> `varlet.config.mjs`

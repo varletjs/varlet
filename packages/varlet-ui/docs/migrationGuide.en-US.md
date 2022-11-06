@@ -110,7 +110,7 @@ For details, see [Import On Demand](#/en-US/importOnDemand)
 - Optimized document visual
 - Some renaming of document style variables
 
-### Other changes (Since v2.1.0)
+### Other changes
 
 - Node.js `^14.18.0 || >=16.0.0` is now required.
 - Site config file `varlet.config.js` -> `varlet.config.mjs`
