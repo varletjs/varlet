@@ -20,7 +20,7 @@ const formData = reactive({
   range: 10,
   count: 0,
   group: [],
-  score:0,
+  score: 0,
   like: [],
   files: []
 })
