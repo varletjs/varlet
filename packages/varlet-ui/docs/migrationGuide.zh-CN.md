@@ -32,6 +32,7 @@
 - Pagination 组件变量新增 `--pagination-simple-padding`
 - Loading 组件变量新增 `--loading-color`
 - Cell 组件变量重命名 `--cell-desc-font-size` -> `--cell-description-font-size`，`--cell-desc-color` -> `--cell-description-color`
+- Form 组件变量重命名 `--form-details-error-color` -> `--form-details-error-message-color`， `--form-details-length-color` -> `--form-details-extra-message-color`
 
 ### UMD 模块导出中英文语言包
 

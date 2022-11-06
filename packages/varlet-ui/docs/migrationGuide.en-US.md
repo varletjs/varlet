@@ -31,6 +31,7 @@ This section mainly introduces the main changes of the `2.x` version compared to
 - Pagination component variable added `--pagination-simple-padding`
 - Loading component variable added `--loading-color`
 - Cell component variable renamed `--cell-desc-font-size` -> `--cell-description-font-size`, `--cell-desc-color` -> `--cell-description-color`
+- Form component variable renamed `--form-details-error-color` -> `--form-details-error-message-color`， `--form-details-length-color` -> `--form-details-extra-message-color`
 
 ### UMD module exports Chinese and English language packages
 
