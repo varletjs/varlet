@@ -1,7 +1,14 @@
 <template>
   <div :class="classes(n(), 'var--box')">
     <div
-      :class="classes(n('controller'), 'var-elevation--2', [disabled || formDisabled, n('--disabled')])"
+      :class="
+        classes(
+          n('controller'),
+          'var-elevation--2',
+          [disabled || formDisabled, n('--disabled')],
+          [errorMessage, n('--error')]
+        )
+      "
       :style="{ background: color ? color : undefined }"
       v-bind="$attrs"
     >
@@ -12,7 +19,7 @@
           classes(
             n('decrement-button'),
             [!decrementButton, n('--hidden')],
-            [disabled || formDisabled, `${n('--text-disabled')} ${n('--not-allowed')}`]
+            [disabled || formDisabled, n('--not-allowed')]
           )
         "
         :style="{
@@ -36,7 +43,7 @@
         @touchcancel="releaseDecrement"
       />
       <input
-        :class="classes(n('input'), [disabled || formDisabled, `${n('--text-disabled')} ${n('--not-allowed')}`])"
+        :class="classes(n('input'), [disabled || formDisabled, n('--not-allowed')])"
         :style="{
           width: toSizeUnit(inputWidth),
           fontSize: toSizeUnit(inputTextSize),
@@ -54,7 +61,7 @@
           classes(
             n('increment-button'),
             [!incrementButton, n('--hidden')],
-            [disabled || formDisabled, `${n('--text-disabled')} ${n('--not-allowed')}`]
+            [disabled || formDisabled, n('--not-allowed')]
           )
         "
         :style="{

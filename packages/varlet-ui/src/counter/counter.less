@@ -8,7 +8,7 @@
   --counter-button-size: 28px;
   --counter-button-icon-size: 100%;
   --counter-disabled-color: var(--color-disabled);
-  --counter-disabled-text-color: var(--color-text-disabled);
+  --counter-error-color: var(--color-danger);
 }
 
 .var-counter {
@@ -23,7 +23,7 @@
     border-radius: var(--counter-button-size);
     padding: var(--counter-padding);
     background: var(--counter-background);
-    transition: color 0.25s, background-color 0.25s;
+    transition: color 0.25s, background-color 0.25s, opacity 0.25s;
   }
 
   &__decrement-button[var-counter-cover] {
@@ -65,13 +65,8 @@
   }
 
   &--disabled {
-    background: var(--counter-disabled-color);
+    opacity: 0.6;
     cursor: not-allowed;
-  }
-
-  &--text-disabled,
-  &--text-disabled[var-counter-cover] {
-    color: var(--counter-disabled-text-color);
   }
 
   &--not-allowed {
@@ -80,5 +75,9 @@
 
   &--hidden {
     opacity: 0;
+  }
+
+  &--error {
+    background: var(--counter-error-color);
   }
 }

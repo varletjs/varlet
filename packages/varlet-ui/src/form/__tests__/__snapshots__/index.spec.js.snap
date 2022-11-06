@@ -70,7 +70,7 @@ exports[`test form with checkbox 4`] = `
 exports[`test form with counter 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-counter var--box\\">
-    <div class=\\"var-counter__controller var-elevation--2 var-counter--disabled\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button var-counter--text-disabled var-counter--not-allowed\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input var-counter--text-disabled var-counter--not-allowed\\" inputmode=\\"numeric\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button var-counter--text-disabled var-counter--not-allowed\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
+    <div class=\\"var-counter__controller var-elevation--2 var-counter--disabled\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button var-counter--not-allowed\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input var-counter--not-allowed\\" inputmode=\\"numeric\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button var-counter--not-allowed\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
     <transition-stub>
       <!--v-if-->
     </transition-stub>
@@ -92,7 +92,7 @@ exports[`test form with counter 2`] = `
 exports[`test form with counter 3`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-counter var--box\\">
-    <div class=\\"var-counter__controller var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
+    <div class=\\"var-counter__controller var-elevation--2 var-counter--error\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
     <transition-stub>
       <div class=\\"var-form-details\\">
         <div class=\\"var-form-details__error-message\\">

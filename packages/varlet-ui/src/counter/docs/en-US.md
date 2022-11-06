@@ -208,4 +208,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--counter-button-size`         | `28px`                       |
 | `--counter-button-icon-size`    | `100%`                       |
 | `--counter-disabled-color`      | `var(--color-disabled)`      |
-| `--counter-disabled-text-color` | `var(--color-text-disabled)` |
+| `--counter-error-color`         | `var(--color-danger)`        |
