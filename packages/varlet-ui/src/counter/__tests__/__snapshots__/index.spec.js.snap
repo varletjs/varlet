@@ -69,7 +69,7 @@ exports[`test counter example 1`] = `
 
 exports[`test counter validation 1`] = `
 "<div class=\\"var-counter var--box\\">
-  <div class=\\"var-counter__controller var-elevation--2 var-counter--error\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
+  <div class=\\"var-counter__controller var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
   <transition-stub>
     <div class=\\"var-form-details\\">
       <div class=\\"var-form-details__error-message\\">

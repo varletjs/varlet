@@ -209,4 +209,3 @@ const value = ref(0)
 | `--counter-button-icon-size`    | `100%`                       |
 | `--counter-disabled-color`      | `var(--color-disabled)`      |
 | `--counter-disabled-text-color` | `var(--color-text-disabled)` |
-| `--counter-error-color`         | `var(--color-danger)`        |

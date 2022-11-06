@@ -1,14 +1,7 @@
 <template>
   <div :class="classes(n(), 'var--box')">
     <div
-      :class="
-        classes(
-          n('controller'),
-          'var-elevation--2',
-          [disabled || formDisabled, n('--disabled')],
-          [errorMessage, n('--error')]
-        )
-      "
+      :class="classes(n('controller'), 'var-elevation--2', [disabled || formDisabled, n('--disabled')])"
       :style="{ background: color ? color : undefined }"
       v-bind="$attrs"
     >
