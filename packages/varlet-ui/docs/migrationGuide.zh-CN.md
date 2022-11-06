@@ -1,6 +1,7 @@
 # 迁移指南
 
 ### 介绍
+
 本节主要介绍 `2.x` 版本相对于 `1.x` 版本的主要变化以及迁移的注意事项
 
 ## 组件库(@varlet/ui)
@@ -22,6 +23,7 @@
 - Card 组件重命名了部分 api  `height` -> `image-height`，`content` -> `floating-content`
 - Col 组件新增 `direction` 属性
 - Dialog 组件新增 `width` 属性
+- Form 组件新增 `useForm` 和 `useValidation` 静态方法以提供自定义表单组件的能力
 
 ### 组件样式变量变更
 
@@ -113,6 +115,15 @@ import type { ButtonProps, ButtonType, ButtonSize } from '@varlet/ui'
 
 - `Node.js` 版本锁定为 `^14.18.0 || >=16.0.0`
 - 文档配置文件从 `varlet.config.js` -> `varlet.config.mjs`
-- `AppType` 引入方式 `import AppType from '@varlet/cli/site/mobile/components/AppType'` -> `import { AppType } from '@varlet/cli/client'`
-- `watchLang` 引入方式 `import { watchLang } from '@varlet/cli/site/utils'` -> `import { watchLang } from '@varlet/cli/client'`
-- `watchDarkMode` 引入方式 `import { watchDarkMode } from '@varlet/cli/site/utils'` -> `import { watchDarkMode } from '@varlet/cli/client'`
+- 内置方法引入方式改变
+
+```js
+// 1.x
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+```
+
+```js
+// 2.x
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+```

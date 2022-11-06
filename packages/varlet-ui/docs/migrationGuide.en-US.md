@@ -22,6 +22,7 @@ This section mainly introduces the main changes of the `2.x` version compared to
 - Card component renamed parts of api `height` -> `image-height`, `content` -> `floating-content`
 - Added `direction` property to Col component
 - Added `width` property to Dialog component
+- Added `useForm` and `useValidation` static methods to the Form component to provide the ability to customize form components
 
 ### Component style variable changes
 
@@ -113,6 +114,15 @@ For details, see [Import On Demand](#/en-US/importOnDemand)
 
 - Node.js `^14.18.0 || >=16.0.0` is now required.
 - Site config file `varlet.config.js` -> `varlet.config.mjs`
-- `AppType` import `import AppType from '@varlet/cli/site/mobile/components/AppType'` -> `import { AppType } from '@varlet/cli/client'`
-- `watchLang` import `import { watchLang } from '@varlet/cli/site/utils'` -> `import { watchLang } from '@varlet/cli/client'`
-- `watchDarkMode` import `import { watchDarkMode } from '@varlet/cli/site/utils'` -> `import { watchDarkMode } from '@varlet/cli/client'`
+- Built-in method import method changed
+
+```js
+// 1.x
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+```
+
+```js
+// 2.x
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+```
