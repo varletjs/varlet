@@ -31,6 +31,7 @@
 - Select 组件变量新增 `--select-select-min-height`，`--select-menu-margin-top`
 - Pagination 组件变量新增 `--pagination-simple-padding`
 - Loading 组件变量新增 `--loading-color`
+- Rate 组件变量新增 `--rate-color`
 - Cell 组件变量重命名 `--cell-desc-font-size` -> `--cell-description-font-size`，`--cell-desc-color` -> `--cell-description-color`
 - Form 组件变量重命名 `--form-details-error-color` -> `--form-details-error-message-color`， `--form-details-length-color` -> `--form-details-extra-message-color`
 

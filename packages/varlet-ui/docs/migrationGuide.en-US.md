@@ -30,6 +30,7 @@ This section mainly introduces the main changes of the `2.x` version compared to
 - Select component variable added `--select-select-min-height`, `--select-menu-margin-top`
 - Pagination component variable added `--pagination-simple-padding`
 - Loading component variable added `--loading-color`
+- Rate component variable added `--rate-color`
 - Cell component variable renamed `--cell-desc-font-size` -> `--cell-description-font-size`, `--cell-desc-color` -> `--cell-description-color`
 - Form component variable renamed `--form-details-error-color` -> `--form-details-error-message-color`， `--form-details-length-color` -> `--form-details-extra-message-color`
 

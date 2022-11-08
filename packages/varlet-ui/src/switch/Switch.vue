@@ -96,7 +96,7 @@ export default defineComponent({
           height: multiplySizeUnit(size, 0.72),
           width: multiplySizeUnit(size, 1.9),
           borderRadius: multiplySizeUnit(size, 2 / 3),
-          filter: modelValue === activeValue || errorMessage?.value ? 'opacity(.6)' : 'brightness(.6)',
+          filter: modelValue === activeValue || errorMessage?.value ? undefined : 'brightness(.6)',
           backgroundColor: modelValue === activeValue ? color : closeColor,
         },
         switch: {

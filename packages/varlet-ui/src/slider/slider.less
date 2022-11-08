@@ -24,7 +24,7 @@
   }
 
   &--disabled {
-    filter: opacity(0.6);
+    filter: opacity(var(--disabled-opacity));
     cursor: not-allowed;
   }
 
@@ -115,7 +115,7 @@
     .var-slider__track {
       &-background {
         background-color: var(--slider-error-color) !important;
-        filter: opacity(0.5);
+        filter: opacity(0.6);
       }
 
       &-fill {
