@@ -31,6 +31,9 @@ This section mainly introduces the main changes of the `2.x` version compared to
 - Pagination component variable added `--pagination-simple-padding`
 - Loading component variable added `--loading-color`
 - Rate component variable added `--rate-color`
+- Counter component variable added `--counter-disabled-opacity`
+- Slider component variable added `--slider-disabled-opacity`
+- Switch component variable added `--switch-disabled-opacity`
 - Cell component variable renamed `--cell-desc-font-size` -> `--cell-description-font-size`, `--cell-desc-color` -> `--cell-description-color`
 - Form component variable renamed `--form-details-error-color` -> `--form-details-error-message-color`， `--form-details-length-color` -> `--form-details-extra-message-color`
 

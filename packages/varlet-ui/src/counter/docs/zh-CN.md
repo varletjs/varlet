@@ -208,4 +208,5 @@ const value = ref(0)
 | `--counter-button-size`         | `28px`                       |
 | `--counter-button-icon-size`    | `100%`                       |
 | `--counter-disabled-color`      | `var(--color-disabled)`      |
+| `--counter-disabled-opacity`    | `var(--opacity-disabled)`    |
 | `--counter-error-color`         | `var(--color-danger)`        |

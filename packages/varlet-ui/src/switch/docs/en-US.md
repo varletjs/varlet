@@ -138,3 +138,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--switch-handle-color` | `#fff` |
 | `--switch-handle-active-background` | `var(--color-primary)` |
 | `--switch-handle-error-background` | `var(--color-danger)` |
+| `--switch-disabled-opacity` | `var(--opacity-disabled)` |

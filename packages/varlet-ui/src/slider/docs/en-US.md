@@ -258,3 +258,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--slider-thumb-ripple-background` | `var(--color-primary)` |
 | `--slider-thumb-label-background` | `var(--color-primary)` |
 | `--slider-thumb-label-font-size` | `var(--font-size-sm)` |
+| `--slider-disabled-opacity` | `var(--opacity-disabled)` |

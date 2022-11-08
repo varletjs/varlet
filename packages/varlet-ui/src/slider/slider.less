@@ -6,6 +6,7 @@
   --slider-thumb-ripple-background: var(--color-primary);
   --slider-thumb-label-background: var(--color-primary);
   --slider-thumb-label-font-size: var(--font-size-sm);
+  --slider-disabled-opacity: var(--opacity-disabled);
 }
 
 .var-slider {
@@ -24,7 +25,7 @@
   }
 
   &--disabled {
-    filter: opacity(var(--disabled-opacity));
+    filter: opacity(var(--slider-disabled-opacity));
     cursor: not-allowed;
   }
 
