@@ -144,6 +144,10 @@ export const componentMap: Record<string, ComponentDescriptor> = {
   form: {
     site: '/form',
   },
+  'form-details': {
+    site: '/form',
+    closeSelf: true,
+  },
   'index-bar': {
     site: '/index-bar',
   },

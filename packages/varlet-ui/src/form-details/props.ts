@@ -3,7 +3,7 @@ export const props = {
     type: String,
     default: '',
   },
-  maxlengthText: {
+  extraMessage: {
     type: String,
     default: '',
   },

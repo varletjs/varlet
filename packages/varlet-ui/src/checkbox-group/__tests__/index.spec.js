@@ -190,13 +190,13 @@ test('test checkbox validation', async () => {
   wrapper.vm.validate()
   await delay(16)
 
-  expect(wrapper.find('.var-form-details__message').text()).toBe('您必须勾选')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('您必须勾选')
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.find('.var-checkbox').trigger('click')
   await delay(16)
 
-  expect(wrapper.find('.var-form-details__message').exists()).toBeFalsy()
+  expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.vm.reset()
@@ -255,7 +255,7 @@ test('test checkbox group validation', async () => {
 
   checkboxGroup.validate()
   await delay(16)
-  expect(wrapper.find('.var-form-details__message').text()).toBe('至少选一个')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('至少选一个')
   expect(wrapper.html()).toMatchSnapshot()
 
   checkboxGroup.reset()
@@ -265,7 +265,7 @@ test('test checkbox group validation', async () => {
   await wrapper.find('.var-checkbox').trigger('click')
   await delay(16)
 
-  expect(wrapper.find('.var-form-details__message').exists()).toBeFalsy()
+  expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.unmount()

@@ -2,8 +2,7 @@ import context from '../context'
 import './ripple.less'
 import '../styles/common.less'
 import { supportTouch } from '../utils/elements'
-import type { Directive, Plugin, App } from 'vue'
-import type { DirectiveBinding } from '@vue/runtime-core'
+import type { Directive, Plugin, App, DirectiveBinding } from 'vue'
 import { createNamespace } from '../utils/components'
 
 const { n } = createNamespace('ripple')

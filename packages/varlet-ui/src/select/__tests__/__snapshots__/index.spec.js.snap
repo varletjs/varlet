@@ -345,8 +345,16 @@ exports[`test select validation 1`] = `
   </div>
   <transition-stub>
     <div class=\\"var-form-details\\">
-      <div class=\\"var-form-details__message\\">您必须选择一个</div>
-      <div class=\\"var-form-details__length\\"></div>
+      <div class=\\"var-form-details__error-message\\">
+        <transition-stub>
+          <div>您必须选择一个</div>
+        </transition-stub>
+      </div>
+      <div class=\\"var-form-details__extra-message\\">
+        <transition-stub>
+          <!--v-if-->
+        </transition-stub>
+      </div>
     </div>
   </transition-stub>
 </div>"

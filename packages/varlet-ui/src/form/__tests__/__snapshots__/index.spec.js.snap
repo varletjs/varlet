@@ -37,8 +37,16 @@ exports[`test form with checkbox 3`] = `
     </div>
     <transition-stub>
       <div class=\\"var-form-details\\">
-        <div class=\\"var-form-details__message\\">必须勾选</div>
-        <div class=\\"var-form-details__length\\"></div>
+        <div class=\\"var-form-details__error-message\\">
+          <transition-stub>
+            <div>必须勾选</div>
+          </transition-stub>
+        </div>
+        <div class=\\"var-form-details__extra-message\\">
+          <transition-stub>
+            <!--v-if-->
+          </transition-stub>
+        </div>
       </div>
     </transition-stub>
   </div>
@@ -62,7 +70,7 @@ exports[`test form with checkbox 4`] = `
 exports[`test form with counter 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-counter var--box\\">
-    <div class=\\"var-counter__controller var-elevation--2 var-counter--disabled\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
+    <div class=\\"var-counter__controller var-elevation--2 var-counter--disabled\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button var-counter--not-allowed\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input var-counter--not-allowed\\" inputmode=\\"numeric\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button var-counter--not-allowed\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
     <transition-stub>
       <!--v-if-->
     </transition-stub>
@@ -87,8 +95,16 @@ exports[`test form with counter 3`] = `
     <div class=\\"var-counter__controller var-elevation--2 var-counter--error\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
     <transition-stub>
       <div class=\\"var-form-details\\">
-        <div class=\\"var-form-details__message\\">必须大于0</div>
-        <div class=\\"var-form-details__length\\"></div>
+        <div class=\\"var-form-details__error-message\\">
+          <transition-stub>
+            <div>必须大于0</div>
+          </transition-stub>
+        </div>
+        <div class=\\"var-form-details__extra-message\\">
+          <transition-stub>
+            <!--v-if-->
+          </transition-stub>
+        </div>
       </div>
     </transition-stub>
   </div>
@@ -112,7 +128,7 @@ exports[`test form with input 1`] = `
     <div class=\\"var-input__controller var-input--disabled\\">
       <div class=\\"var-input__icon\\"></div>
       <div class=\\"var-input__wrap\\">
-        <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-3\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-3\\"></label>
+        <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-3\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input--disabled var-input__placeholder\\" for=\\"var-input-3\\"></label>
       </div>
       <div class=\\"var-input__icon\\">
         <!--v-if-->
@@ -167,8 +183,16 @@ exports[`test form with input 3`] = `
     </div>
     <transition-stub>
       <div class=\\"var-form-details\\">
-        <div class=\\"var-form-details__message\\">不能为空</div>
-        <div class=\\"var-form-details__length\\"></div>
+        <div class=\\"var-form-details__error-message\\">
+          <transition-stub>
+            <div>不能为空</div>
+          </transition-stub>
+        </div>
+        <div class=\\"var-form-details__extra-message\\">
+          <transition-stub>
+            <!--v-if-->
+          </transition-stub>
+        </div>
       </div>
     </transition-stub>
   </div>
@@ -234,8 +258,16 @@ exports[`test form with radio 3`] = `
     </div>
     <transition-stub>
       <div class=\\"var-form-details\\">
-        <div class=\\"var-form-details__message\\">必须勾选</div>
-        <div class=\\"var-form-details__length\\"></div>
+        <div class=\\"var-form-details__error-message\\">
+          <transition-stub>
+            <div>必须勾选</div>
+          </transition-stub>
+        </div>
+        <div class=\\"var-form-details__extra-message\\">
+          <transition-stub>
+            <!--v-if-->
+          </transition-stub>
+        </div>
       </div>
     </transition-stub>
   </div>
@@ -285,8 +317,16 @@ exports[`test form with rate 2`] = `
     </div>
     <transition-stub>
       <div class=\\"var-form-details\\">
-        <div class=\\"var-form-details__message\\">必须大于0</div>
-        <div class=\\"var-form-details__length\\"></div>
+        <div class=\\"var-form-details__error-message\\">
+          <transition-stub>
+            <div>必须大于0</div>
+          </transition-stub>
+        </div>
+        <div class=\\"var-form-details__extra-message\\">
+          <transition-stub>
+            <!--v-if-->
+          </transition-stub>
+        </div>
       </div>
     </transition-stub>
   </div>
@@ -395,8 +435,16 @@ exports[`test form with select 3`] = `
     </div>
     <transition-stub>
       <div class=\\"var-form-details\\">
-        <div class=\\"var-form-details__message\\">选择必须多于1个</div>
-        <div class=\\"var-form-details__length\\"></div>
+        <div class=\\"var-form-details__error-message\\">
+          <transition-stub>
+            <div>选择必须多于1个</div>
+          </transition-stub>
+        </div>
+        <div class=\\"var-form-details__extra-message\\">
+          <transition-stub>
+            <!--v-if-->
+          </transition-stub>
+        </div>
       </div>
     </transition-stub>
   </div>
@@ -468,8 +516,16 @@ exports[`test form with slider 2`] = `
     </div>
     <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
       <div class=\\"var-form-details\\">
-        <div class=\\"var-form-details__message\\">必须大于10</div>
-        <div class=\\"var-form-details__length\\"></div>
+        <div class=\\"var-form-details__error-message\\">
+          <transition-stub>
+            <div>必须大于10</div>
+          </transition-stub>
+        </div>
+        <div class=\\"var-form-details__extra-message\\">
+          <transition-stub>
+            <!--v-if-->
+          </transition-stub>
+        </div>
       </div>
     </transition-stub>
   </div>
@@ -500,7 +556,7 @@ exports[`test form with slider 3`] = `
 exports[`test form with switch 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-switch\\">
-    <div class=\\"var-switch__block var-switch--disable\\">
+    <div class=\\"var-switch__block var-switch--disabled\\">
       <div style=\\"filter: brightness(.6);\\" class=\\"var-switch__track\\"></div>
       <div class=\\"var-switch__ripple\\" style=\\"color: rgb(153, 153, 153);\\">
         <div class=\\"var-switch__handle var-elevation--2\\">
@@ -519,7 +575,7 @@ exports[`test form with switch 2`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-switch\\">
     <div class=\\"var-switch__block\\">
-      <div style=\\"filter: opacity(.6);\\" class=\\"var-switch__track var-switch__track--error\\"></div>
+      <div style=\\"\\" class=\\"var-switch__track var-switch__track--error\\"></div>
       <div class=\\"var-switch__ripple\\" style=\\"color: rgb(153, 153, 153);\\">
         <div class=\\"var-switch__handle var-elevation--2 var-switch__handle--error\\">
           <!--v-if-->
@@ -528,8 +584,16 @@ exports[`test form with switch 2`] = `
     </div>
     <transition-stub>
       <div class=\\"var-form-details\\">
-        <div class=\\"var-form-details__message\\">您必须开启</div>
-        <div class=\\"var-form-details__length\\"></div>
+        <div class=\\"var-form-details__error-message\\">
+          <transition-stub>
+            <div>您必须开启</div>
+          </transition-stub>
+        </div>
+        <div class=\\"var-form-details__extra-message\\">
+          <transition-stub>
+            <!--v-if-->
+          </transition-stub>
+        </div>
       </div>
     </transition-stub>
   </div>
@@ -604,8 +668,16 @@ exports[`test form with uploader 3`] = `
     </div>
     <transition-stub>
       <div class=\\"var-form-details\\">
-        <div class=\\"var-form-details__message\\">至少上传一个</div>
-        <div class=\\"var-form-details__length\\"></div>
+        <div class=\\"var-form-details__error-message\\">
+          <transition-stub>
+            <div>至少上传一个</div>
+          </transition-stub>
+        </div>
+        <div class=\\"var-form-details__extra-message\\">
+          <transition-stub>
+            <!--v-if-->
+          </transition-stub>
+        </div>
       </div>
     </transition-stub>
     <transition-stub>

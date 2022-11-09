@@ -7,6 +7,7 @@
   --switch-handle-color: #fff;
   --switch-handle-active-background: var(--color-primary);
   --switch-handle-error-background: var(--color-danger);
+  --switch-disabled-opacity: var(--opacity-disabled);
 }
 
 .var-switch {
@@ -21,17 +22,18 @@
     justify-content: center;
     height: 24px;
     width: 40px;
+    transition: filter 0.25s;
   }
 
-  &--disable {
-    filter: opacity(0.6);
+  &--disabled {
+    filter: opacity(var(--switch-disabled-opacity));
     cursor: not-allowed;
   }
 
   &__track {
-    background: var(--switch-track-background);
+    background-color: var(--switch-track-background);
     transition: background-color 0.25s;
-    filter: opacity(0.6);
+    filter: opacity(var(--switch-disabled-opacity));
     height: 14.4px;
     width: 38px;
     border-radius: calc(20px * 2 / 3);

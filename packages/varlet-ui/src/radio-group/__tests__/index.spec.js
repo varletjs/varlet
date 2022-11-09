@@ -191,13 +191,13 @@ test('test radio validation', async () => {
   wrapper.vm.validate()
   await delay(16)
 
-  expect(wrapper.find('.var-form-details__message').text()).toBe('您必须勾选')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('您必须勾选')
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.find('.var-radio').trigger('click')
   await delay(16)
 
-  expect(wrapper.find('.var-form-details__message').exists()).toBeFalsy()
+  expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.vm.reset()
@@ -228,7 +228,7 @@ test('test radio group validation', async () => {
 
   radioGroup.validate()
   await delay(16)
-  expect(wrapper.find('.var-form-details__message').text()).toBe('必须选第一个')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('必须选第一个')
   expect(wrapper.html()).toMatchSnapshot()
 
   radioGroup.reset()
@@ -238,7 +238,7 @@ test('test radio group validation', async () => {
   await wrapper.find('.var-radio').trigger('click')
   await delay(16)
 
-  expect(wrapper.find('.var-form-details__message').exists()).toBeFalsy()
+  expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.unmount()

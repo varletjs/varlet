@@ -56,6 +56,7 @@
     padding: var(--select-scroller-padding);
     overflow-y: auto;
     margin: var(--select-scroller-margin);
+    transition: background-color 0.25s;
   }
 
   &__wrap {
@@ -79,8 +80,7 @@
     left: 0;
     width: 100%;
     transform-origin: left;
-    transition-property: top, transform, width;
-    transition-duration: 0.3s;
+    transition: top 0.3s, transform 0.3s, width 0.3s, color 0.25s;
     transform: translate(0, calc(-50% + var(--select-placeholder-size) / 2)) scale(1);
     font-size: var(--select-placeholder-size);
     color: var(--select-blur-color);
@@ -99,6 +99,7 @@
     color: var(--select-select-text-color);
     word-break: break-all;
     overflow-x: hidden;
+    transition: color 0.25s;
   }
 
   &__arrow[var-select-cover] {
@@ -110,6 +111,7 @@
     width: 100%;
     height: var(--select-line-size);
     background: var(--select-blur-color);
+    transition: background-color 0.25s;
   }
 
   &__dot {
@@ -118,7 +120,7 @@
     background: var(--select-focus-color);
     transform: scaleX(0);
     transform-origin: center;
-    transition: transform 0.3s var(--cubic-bezier);
+    transition: transform 0.3s var(--cubic-bezier), background-color 0.25s;
   }
 
   &--placeholder-hint {
@@ -150,6 +152,7 @@
 
   &--disabled {
     color: var(--select-disabled-color);
+    cursor: not-allowed;
   }
 
   &--error {

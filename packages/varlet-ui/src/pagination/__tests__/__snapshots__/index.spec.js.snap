@@ -128,7 +128,7 @@ exports[`simple mode disabled prop 1`] = `
       <div class=\\"var-input__controller var-input--disabled\\">
         <div class=\\"var-input__icon\\"></div>
         <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-68\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-68\\"></label>
+          <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-68\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input--disabled var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-68\\"></label>
         </div>
         <div class=\\"var-input__icon\\">
           <!--v-if-->
@@ -299,7 +299,7 @@ exports[`test pagination example 1`] = `
         <div class=\\"var-input__controller var-input--disabled\\">
           <div class=\\"var-input__icon\\"></div>
           <div class=\\"var-input__wrap\\">
-            <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-40\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-40\\"></label>
+            <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-40\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input--disabled var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-40\\"></label>
           </div>
           <div class=\\"var-input__icon\\">
             <!--v-if-->

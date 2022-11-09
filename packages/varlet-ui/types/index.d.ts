@@ -23,6 +23,7 @@ export * from './datePicker'
 export * from './dialog'
 export * from './divider'
 export * from './form'
+export * from './formDetails'
 export * from './icon'
 export * from './image'
 export * from './imagePreview'
@@ -91,6 +92,7 @@ declare module 'vue' {
     VarDialog: typeof import('@varlet/ui')['_DialogComponent']
     VarDivider: typeof import('@varlet/ui')['_DividerComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
+    VarFormDetails: typeof import('@varlet/ui')['_FormDetailsComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarImage: typeof import('@varlet/ui')['_ImageComponent']
     VarImagePreview: typeof import('@varlet/ui')['_ImagePreviewComponent']

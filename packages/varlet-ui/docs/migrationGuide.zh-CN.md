@@ -1,6 +1,7 @@
 # 迁移指南
 
 ### 介绍
+
 本节主要介绍 `2.x` 版本相对于 `1.x` 版本的主要变化以及迁移的注意事项
 
 ## 组件库(@varlet/ui)
@@ -22,6 +23,7 @@
 - Card 组件重命名了部分 api  `height` -> `image-height`，`content` -> `floating-content`
 - Col 组件新增 `direction` 属性
 - Dialog 组件新增 `width` 属性
+- Form 组件新增 `useForm` 和 `useValidation` 静态方法以提供自定义表单组件的能力
 
 ### 组件样式变量变更
 
@@ -29,7 +31,12 @@
 - Select 组件变量新增 `--select-select-min-height`，`--select-menu-margin-top`
 - Pagination 组件变量新增 `--pagination-simple-padding`
 - Loading 组件变量新增 `--loading-color`
+- Rate 组件变量新增 `--rate-color`
+- Counter 组件变量新增 `--counter-disabled-opacity`
+- Slider 组件变量新增 `--slider-disabled-opacity`
+- Switch 组件变量新增 `--switch-disabled-opacity`
 - Cell 组件变量重命名 `--cell-desc-font-size` -> `--cell-description-font-size`，`--cell-desc-color` -> `--cell-description-color`
+- Form 组件变量重命名 `--form-details-error-color` -> `--form-details-error-message-color`， `--form-details-length-color` -> `--form-details-extra-message-color`
 
 ### UMD 模块导出中英文语言包
 
@@ -109,10 +116,19 @@ import type { ButtonProps, ButtonType, ButtonSize } from '@varlet/ui'
 - 优化了文档视觉
 - 文档样式变量进行了一些重命名
 
-### 其他改变 (v2.1.0 生效)
+### 其他改变
 
 - `Node.js` 版本锁定为 `^14.18.0 || >=16.0.0`
 - 文档配置文件从 `varlet.config.js` -> `varlet.config.mjs`
-- `AppType` 引入方式 `import AppType from '@varlet/cli/site/mobile/components/AppType'` -> `import { AppType } from '@varlet/cli/client'`
-- `watchLang` 引入方式 `import { watchLang } from '@varlet/cli/site/utils'` -> `import { watchLang } from '@varlet/cli/client'`
-- `watchDarkMode` 引入方式 `import { watchDarkMode } from '@varlet/cli/site/utils'` -> `import { watchDarkMode } from '@varlet/cli/client'`
+- 内置方法引入方式改变
+
+```js
+// 1.x
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+```
+
+```js
+// 2.x
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+```

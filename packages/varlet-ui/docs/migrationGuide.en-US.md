@@ -22,6 +22,7 @@ This section mainly introduces the main changes of the `2.x` version compared to
 - Card component renamed parts of api `height` -> `image-height`, `content` -> `floating-content`
 - Added `direction` property to Col component
 - Added `width` property to Dialog component
+- Added `useForm` and `useValidation` static methods to the Form component to provide the ability to customize form components
 
 ### Component style variable changes
 
@@ -29,7 +30,12 @@ This section mainly introduces the main changes of the `2.x` version compared to
 - Select component variable added `--select-select-min-height`, `--select-menu-margin-top`
 - Pagination component variable added `--pagination-simple-padding`
 - Loading component variable added `--loading-color`
+- Rate component variable added `--rate-color`
+- Counter component variable added `--counter-disabled-opacity`
+- Slider component variable added `--slider-disabled-opacity`
+- Switch component variable added `--switch-disabled-opacity`
 - Cell component variable renamed `--cell-desc-font-size` -> `--cell-description-font-size`, `--cell-desc-color` -> `--cell-description-color`
+- Form component variable renamed `--form-details-error-color` -> `--form-details-error-message-color`， `--form-details-length-color` -> `--form-details-extra-message-color`
 
 ### UMD module exports Chinese and English language packages
 
@@ -109,10 +115,19 @@ For details, see [Import On Demand](#/en-US/importOnDemand)
 - Optimized document visual
 - Some renaming of document style variables
 
-### Other changes (Since v2.1.0)
+### Other changes
 
 - Node.js `^14.18.0 || >=16.0.0` is now required.
 - Site config file `varlet.config.js` -> `varlet.config.mjs`
-- `AppType` import `import AppType from '@varlet/cli/site/mobile/components/AppType'` -> `import { AppType } from '@varlet/cli/client'`
-- `watchLang` import `import { watchLang } from '@varlet/cli/site/utils'` -> `import { watchLang } from '@varlet/cli/client'`
-- `watchDarkMode` import `import { watchDarkMode } from '@varlet/cli/site/utils'` -> `import { watchDarkMode } from '@varlet/cli/client'`
+- Built-in method import method changed
+
+```js
+// 1.x
+import AppType from '@varlet/cli/site/mobile/components/AppType'
+import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
+```
+
+```js
+// 2.x
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+```

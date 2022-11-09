@@ -74,6 +74,7 @@
             classes(
               'var--ellipsis',
               [isFocus, n('--focus')],
+              [formDisabled || disabled, n('--disabled')],
               [errorMessage, n('--error')],
               [textarea, n('textarea-placeholder'), n('placeholder')],
               computePlaceholderState(),
@@ -121,7 +122,7 @@
       ></div>
     </div>
 
-    <var-form-details :error-message="errorMessage" :maxlength-text="maxlengthText" />
+    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
   </div>
 </template>
 
