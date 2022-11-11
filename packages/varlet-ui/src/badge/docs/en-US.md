@@ -83,9 +83,9 @@ Set the position of the badge through the `position` property.
 </template>
 ```
 
-### Whether To Display The Badge
+### Hidden Badge
 
-Set whether the badge is displayed through the `hidden` attribute.
+Control whether the badge is hidden or not via the `hidden` prop.
 
 ```html
 <script setup>

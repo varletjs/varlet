@@ -85,9 +85,9 @@ const maxValue = ref(99)
 </template>
 ```
 
-### 是否显示徽标
+### 隐藏徽标
 
-通过 `hidden` 属性设置是否显示徽标。
+通过 `hidden` 属性控制是否隐藏徽标。
 
 ```html
 <script setup>

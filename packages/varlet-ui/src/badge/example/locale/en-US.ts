@@ -8,7 +8,7 @@ export default {
   lowerRight: 'The Lower Right',
   upperLeft: 'The Upper Left',
   lowerLeft: 'The Lower Left',
-  whetherToDisplayTheBadge: 'Whether To Display The Badge',
+  hidden: 'Hidden Badge',
   clickToChangeTheState: 'Click To Change The State',
   badge: 'Badge',
   customBadgeColors: 'Custom Badge Colors',

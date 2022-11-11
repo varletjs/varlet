@@ -65,7 +65,7 @@ watchDarkMode(dark)
       </var-badge>
     </var-space>
 
-    <app-type>{{ pack.whetherToDisplayTheBadge }}</app-type>
+    <app-type>{{ pack.hidden }}</app-type>
     <var-space :size="['2.666vw', '6vw']">
       <var-badge type="danger" position="right-top" :hidden="hidden">
         <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
