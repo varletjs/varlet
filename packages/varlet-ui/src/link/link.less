@@ -1,0 +1,70 @@
+:root {
+  --link-primary-color: var(--color-primary);
+  --link-danger-color: var(--color-danger);
+  --link-success-color: var(--color-success);
+  --link-warning-color: var(--color-warning);
+  --link-info-color: var(--color-info);
+  --link-disabled-color: var(--color-disabled);
+}
+
+.var-link {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  color: inherit;
+  text-decoration: none;
+
+  &--underline-always {
+    text-decoration: underline;
+  }
+
+  &--underline-hover {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &--default {
+    color: inherit;
+  }
+
+  &--primary {
+    color: var(--link-primary-color);
+  }
+
+  &--info {
+    color: var(--link-info-color);
+  }
+
+  &--success {
+    color: var(--link-success-color);
+  }
+
+  &--warning {
+    color: var(--link-warning-color);
+  }
+
+  &--danger {
+    color: var(--link-danger-color);
+  }
+
+  &--disabled {
+    color: var(--link-disabled-color);
+    cursor: not-allowed;
+  }
+
+  &--rest {
+    color: inherit;
+    cursor: inherit;
+    display: inline-block !important;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
