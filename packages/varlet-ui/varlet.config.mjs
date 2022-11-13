@@ -135,6 +135,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Link 链接',
+          'en-US': 'Link',
+        },
+        doc: 'link',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Cell 单元格',
           'en-US': 'Cell',
         },
