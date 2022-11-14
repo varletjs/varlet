@@ -1,7 +1,7 @@
 <template>
   <component
     :is="tag"
-    v-bind="customAttrs"
+    v-bind="linkAttrs"
     :class="
       classes(
         n(),
@@ -45,44 +45,25 @@ export default defineComponent({
       return 'a'
     })
 
-    const customAttrs = computed(() => {
-      const attrs: {
-        href?: string
-        target?: string
-        to?: string
-        replace?: boolean
-      } = {}
+    const linkAttrs = computed(() => {
       const { disabled, href, target, to, replace } = props
 
       if (disabled) {
-        return attrs
+        return {}
       }
 
       if (href) {
-        attrs.href = href
-        if (target) {
-          attrs.target = target
-        }
-
-        return attrs
+        return { href, target }
       }
 
       if (to) {
-        attrs.to = to
-        if (target) {
-          attrs.target = target
-        }
-        if (replace) {
-          attrs.replace = replace
-        }
-
-        return attrs
+        return { to, target, replace }
       }
 
-      return attrs
+      return {}
     })
 
-    return { n, classes, tag, customAttrs }
+    return { n, classes, tag, linkAttrs }
   },
 })
 </script>
