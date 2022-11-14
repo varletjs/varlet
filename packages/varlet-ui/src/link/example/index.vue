@@ -24,7 +24,7 @@ watchDarkMode(dark)
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-space :size="['2.666vw', '2.666vw']">
     <var-link :href="pack.hrefLink" target="_blank" type="primary">{{ pack.withHref }}</var-link>
-    <var-link :to="toLink" type="primary">{{ pack.withRouterLink }}</var-link>
+    <var-link :to="pack.toLink" type="primary">{{ pack.withRouterLink }}</var-link>
   </var-space>
 
   <app-type>{{ pack.underline }}</app-type>
