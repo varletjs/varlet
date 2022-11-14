@@ -90,7 +90,7 @@ import { VarButton } from '@varlet/ui'
 | `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger`                 | _string_  | `default`      |
 | `underline`      | 下划线状态，可选值为 `always` `hover` `none`                                        | _string_  | `always`       |
 | `disabled`       | 禁用状态                                                                            | _boolean_ | `false`        |
-| `default-style`  | 默认状态，将会重置为一个 `inline-block` 的普通元素                                    | _boolean_ | `false`         |
+| `default-style`  | 将会重置为一个 `inline-flex` 的普通元素，用于包裹元素                                    | _boolean_ | `false`         |
 | `text-color`     | 文字颜色                                                                            | _string_  | `-`            |
 | `href`           | 原生 `href` 属性，优先级高于 `to`                                                   | _string_  | `-`            |
 | `target`         | 原生 `target` 属性                                                                       | _string_  | `-`            |
