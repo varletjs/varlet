@@ -93,4 +93,38 @@ export const props = {
     type: Object as PropType<Record<string, unknown>>,
     default: {},
   },
+  useTeleport: {
+    type: Boolean,
+    default: false,
+  },
+  teleport: {
+    type: String,
+    default: 'body',
+  },
+  offsetX: {
+    type: [Number, String],
+    default: 0,
+  },
+  offsetY: {
+    type: [Number, String],
+    default: 0,
+  },
+  onOpen: {
+    type: Function as PropType<() => void>,
+  },
+  onOpened: {
+    type: Function as PropType<() => void>,
+  },
+  onClose: {
+    type: Function as PropType<() => void>,
+  },
+  onClosed: {
+    type: Function as PropType<() => void>,
+  },
+  onOverlayClick: {
+    type: Function as PropType<() => void>,
+  },
+  onActionClick: {
+    type: Function as PropType<(action: Action) => void>,
+  },
 }
