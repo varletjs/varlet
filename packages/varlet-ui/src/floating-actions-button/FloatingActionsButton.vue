@@ -1,16 +1,34 @@
 <template>
   <Teleport :to="teleport" :disabled="!useTeleport">
+    <Transition name="var-floating-actions-button-fade">
+      <div
+        v-show="overlay && show"
+        :class="`${n()}__overlay ${overlayClass}`"
+        :style="overlayStyle"
+        @click="handleOverlayClick"
+      ></div>
+    </Transition>
+
     <var-menu
       v-model:show="show"
       ref="fabRef"
+      :disabled="disabled"
       :class="classes(n(), [true, `${n()}--${fabLocation}`], [disabled, `${n()}--disabled`])"
       :trigger="trigger"
       :placement="actionsLocation"
       :default-style="false"
       :style="fabStyle"
+      @open="open"
+      @opened="opened"
+      @close="close"
+      @closed="closed"
     >
-      <var-button :class="`${n()}--fab`" :color="fabColor" var-floating-actions-button-cover round>
-        <var-icon :color="fabIconColor" :size="fabIconSize" :name="inactiveIcon" />
+      <var-button :class="`${n()}--fab`" :disabled="disabled" :color="fabColor" var-floating-actions-button-cover round>
+        <Transition name="var-floating-actions-button-fade">
+          <slot :name="show ? 'active-icon' : 'inactive-icon'">
+            <var-icon :color="fabIconColor" :size="fabIconSize" :name="show ? activeIcon : inactiveIcon" />
+          </slot>
+        </Transition>
       </var-button>
 
       <template #menu>
@@ -20,20 +38,21 @@
             :style="[
               actionStyle,
               {
-                width: toSizeUnit(item.buttonSize ?? actionDefaultStyle.buttonSize),
-                height: toSizeUnit(item.buttonSize ?? actionDefaultStyle.buttonSize),
+                width: toSizeUnit(item?.buttonSize ?? actionDefault.buttonSize),
+                height: toSizeUnit(item?.buttonSize ?? actionDefault.buttonSize),
               },
             ]"
-            :color="item.buttonColor ?? actionDefaultStyle.buttonColor"
+            :color="item?.buttonColor ?? actionDefault.buttonColor"
             v-for="(item, index) in actions"
             :key="index"
+            @click="handleActionClick(item)"
             round
           >
             <var-icon
-              :color="item.iconColor ?? actionDefaultStyle.iconColor"
-              :size="item.iconSize ?? actionDefaultStyle.iconSize"
-              :name="item.icon ?? actionDefaultStyle.icon"
-              :namespace="item.iconNamespace ?? actionDefaultStyle.iconNamespace"
+              :color="item?.iconColor ?? actionDefault.iconColor"
+              :size="item?.iconSize ?? actionDefault.iconSize"
+              :name="item?.icon ?? actionDefault.icon"
+              :namespace="item?.iconNamespace ?? actionDefault.iconNamespace"
             />
           </var-button>
         </div>
@@ -46,16 +65,16 @@
 import VarButton from '../button'
 import VarIcon from '../icon'
 import VarMenu from '../menu'
-import { props } from './props'
+import { Action, props } from './props'
 import { call, createNamespace } from '../utils/components'
-import { defineComponent, ref, Ref, watch, reactive, Teleport } from 'vue'
+import { defineComponent, ref, Ref, watch, reactive } from 'vue'
 import { toSizeUnit } from '../utils/elements'
 
 const { n, classes } = createNamespace('floating-actions-button')
 
 const actionMargin = toSizeUnit('8px')
 const actionsMargin = toSizeUnit('16px')
-const actionDefaultStyle = {
+const actionDefault = {
   icon: 'heart',
   iconColor: 'rgb(255, 255, 255)',
   iconSize: 24,
@@ -72,6 +91,7 @@ export default defineComponent({
     VarMenu,
   },
   props,
+  emits: ['onUpdate:show', 'click', 'open', 'opened', 'close', 'closed', 'onOverlayClick', 'onActionClick'],
   setup(props) {
     const show: Ref<boolean> = ref(false)
     const fabRef: Ref<HTMLElement | null> = ref(null)
@@ -83,11 +103,37 @@ export default defineComponent({
     const actionStyle = reactive<{ margin: string }>({ margin: `${actionMargin} 0` })
     const actionsStyle = reactive<{
       marginTop?: string
+      marginRight?: string
       marginBottom?: string
       marginLeft?: string
-      marginRight?: string
       flexDirection: string
     }>({ flexDirection: 'column' })
+
+    function open() {
+      call(props.onOpen)
+    }
+
+    function opened() {
+      call(props.onOpened)
+    }
+
+    function close() {
+      call(props.onClose)
+    }
+
+    function closed() {
+      call(props.onClosed)
+    }
+
+    function handleActionClick(item: Action) {
+      call(props.onActionClick, item)
+      show.value = false
+    }
+
+    function handleOverlayClick() {
+      call(props.onOverlayClick)
+      show.value = false
+    }
 
     watch(
       () => props.actionsLocation,
@@ -136,14 +182,20 @@ export default defineComponent({
     )
 
     return {
-      n,
+      actionStyle,
+      actionsStyle,
+      actionDefault,
+      close,
+      closed,
       classes,
-      show,
       fabRef,
       fabStyle,
-      actionDefaultStyle,
-      actionsStyle,
-      actionStyle,
+      handleActionClick,
+      handleOverlayClick,
+      show,
+      n,
+      open,
+      opened,
       toSizeUnit,
     }
   },
