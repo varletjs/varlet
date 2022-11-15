@@ -16,6 +16,7 @@
     :style="{
       color: textColor,
     }"
+    @click="handleClick"
   >
     <slot />
   </component>
@@ -63,7 +64,19 @@ export default defineComponent({
       return {}
     })
 
-    return { n, classes, tag, linkAttrs }
+    const handleClick = (e: Event) => {
+      const { disabled, onClick } = props
+
+      if (!onClick || disabled) {
+        e.preventDefault()
+        e.stopPropagation()
+        return
+      }
+
+      onClick(e)
+    }
+
+    return { n, classes, tag, linkAttrs, handleClick }
   },
 })
 </script>

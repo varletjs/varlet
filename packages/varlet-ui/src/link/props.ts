@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import type { RouteLocationRaw } from 'vue-router'
 
 function typeValidator(type: string): boolean {
   return ['default', 'primary', 'info', 'success', 'warning', 'danger'].includes(type)
@@ -21,7 +22,7 @@ export const props = {
     type: String,
   },
   to: {
-    type: String,
+    type: [String, Object] as PropType<RouteLocationRaw>,
   },
   replace: {
     type: Boolean,
@@ -42,5 +43,8 @@ export const props = {
   defaultStyle: {
     type: Boolean,
     default: false,
+  },
+  onClick: {
+    type: Function as PropType<(e: Event) => void>,
   },
 }
