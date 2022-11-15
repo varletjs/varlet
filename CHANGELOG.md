@@ -1,3 +1,12 @@
+## [2.2.1](https://github.com/varletjs/varlet/compare/v2.2.0...v2.2.1) (2022-11-15)
+
+
+### Bug Fixes
+
+* **ui/tabs-items:** tabs-items cannot swipe to correct position when props.active initializes ([6ec8639](https://github.com/varletjs/varlet/commit/6ec8639086fd68d27df5bab1fa844645ceac59ea))
+
+
+
 # [2.2.0](https://github.com/varletjs/varlet/compare/v2.1.0...v2.2.0) (2022-11-11)
 
 
