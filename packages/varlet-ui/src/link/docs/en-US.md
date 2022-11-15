@@ -1,71 +1,69 @@
-# 链接
+# Link
 
-### 介绍
+### Intro
 
-链接组件，用于页面跳转
+Link component for hyperlink to web pages
 
-### 主题色链接
-
-```html
-<template>
-  <var-space :size="[10, 10]">
-    <var-button>默认链接</var-button>
-    <var-button type="primary">主要链接</var-button>
-    <var-button type="info">信息链接</var-button>
-    <var-button type="success">成功链接</var-button>
-    <var-button type="warning">警告链接</var-button>
-    <var-button type="danger">危险链接</var-button>
-  </var-space>
-</template>
-```
-
-### 基本使用
+### Theme Color Link
 
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-link href="https://varlet.gitee.io/varlet-ui" target="_blank" type="primary">href 跳转</var-link>
-    <var-link to="/button" type="primary">使用 router-linkvar-link>
+    <var-link>Default Link</var-link>
+    <var-link type="primary">Primary Link</var-link>
+    <var-link type="info">Info Link</var-link>
+    <var-link type="success">Success Link</var-link>
+    <var-link type="warning">Warning Link</var-link>
+    <var-link type="danger">Danger Link</var-link>
   </var-space>
 </template>
 ```
 
-### 下划线
+### Basic Usage
 
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-link underline="always" type="primary">显示下划线var-link>
-    <var-link underline="hover" type="primary">划过显示下划线var-link>
-    <var-link underline="none" type="primary">不显示下划线</var-link>
+    <var-link href="https://varlet.gitee.io/varlet-ui" target="_blank" type="primary">With Href</var-link>
+    <var-link to="/button" type="primary">Use Router Link</var-link>
   </var-space>
 </template>
 ```
 
-### 禁用状态
+### Underline
 
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-button disabled>禁用状态</var-button>
-    <var-button disabled text outline>禁用状态</var-button>
-    <var-button disabled text>禁用状态</var-button>
+    <var-link underline="always" type="primary">Underline</var-link>
+    <var-link underline="hover" type="primary">Hover</var-link>
+    <var-link underline="none" type="primary">Never</var-link>
   </var-space>
 </template>
 ```
 
-### 自定义颜色
+### Disabled Status
 
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-link text-color="#01847f">链接</var-link>
-    <var-link text-color="#f9d2e4">链接</var-link>
+    <var-link disabled>Disabled Status</var-link>
   </var-space>
 </template>
 ```
 
-### 使用默认样式包裹元素
+### Custom Color
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-link text-color="#01847f">Link</var-link>
+    <var-link text-color="#f9d2e4">Link</var-link>
+  </var-space>
+</template>
+```
+
+### Wrap Elements With Default Style
 
 ```html
 <script setup>
@@ -75,7 +73,7 @@ import { VarButton } from '@varlet/ui'
 <template>
   <var-space :size="[10, 10]">
     <var-link href="https://varlet.gitee.io/varlet-ui" target="_blank" default-style>
-      <var-button type="primary">跳转首页</var-button>
+      <var-button type="primary">To Home</var-button>
     </var-link>
   </var-space>
 </template>
@@ -83,30 +81,31 @@ import { VarButton } from '@varlet/ui'
 
 ## API
 
-### 属性
+### Props
 
-| 参数               | 说明                                                                              | 类型        | 默认值            |
+| Prop               | Description                                                                              | Type        | Default            |
 |------------------|---------------------------------------------------------------------------------|-----------|----------------|
-| `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger`                 | _string_  | `default`      |
-| `underline`      | 下划线状态，可选值为 `always` `hover` `none`                                        | _string_  | `always`       |
-| `disabled`       | 禁用状态                                                                            | _boolean_ | `false`        |
-| `default-style`  | 默认状态，将会重置为一个 `inline-block` 的普通元素                                    | _boolean_ | `false`         |
-| `text-color`     | 文字颜色                                                                            | _string_  | `-`            |
-| `href`           | 原生 `href` 属性，优先级高于 `to`                                                   | _string_  | `-`            |
-| `target`         | 原生 `target` 属性                                                                       | _string_  | `-`            |
-| `to`             | `router-link` `to` 属性，将会渲染为 `<router-link />`                             | _string_  | `-`            |
-| `replace`        | `router-link` `replace` 属性                                                     | _boolean_  | `false`            |
+| `type`           | Link type, Can be set to  `default` `primary` `info` `success` `warning` `danger`                 | _string_  | `default`      |
+| `underline`      | Underline，Can be set to `always` `hover` `none`                                        | _string_  | `always`       |
+| `disabled`       | Whether to disable link                                                                            | _boolean_ | `false`        |
+| `default-style`  | Will reset to an `inline-flex` normal element used to wrap the element                                    | _boolean_ | `false`         |
+| `text-color`     | Link Text color                                                                                                 | _string_  | `-`            |
+| `href`           | same as native hyperlink's `href`, Have higher priority than `to`                                                   | _string_  | `-`            |
+| `target`         | same as the native `target` attribute                                             | _string_  | `-`            |
+| `to`             | `router-link` `to`, Will render as `<router-link />`                             | _string_ \| _object_ | `-`        |
+| `replace`        | `router-link` `replace`            | _boolean_  | `false`            |
 
-### 插槽
+### Slots
 
-| 插槽名 | 说明 | 参数 |
+| Name | Description | SlotProps |
 | --- | --- | --- |
-| `default` | 链接内容 | `-` |
+| `default` | Link content | `-` |
 
-### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+### Style Variables
 
-| 变量名 | 默认值 |
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+
+| Variable                       | Default                      |
 | --- | --- |
 | `--link-primary-color` | `var(--color-primary)`|
 | `--link-danger-color` |  `var(--color-danger)`|
