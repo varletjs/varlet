@@ -9,12 +9,12 @@
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-button>默认链接</var-button>
-    <var-button type="primary">主要链接</var-button>
-    <var-button type="info">信息链接</var-button>
-    <var-button type="success">成功链接</var-button>
-    <var-button type="warning">警告链接</var-button>
-    <var-button type="danger">危险链接</var-button>
+    <var-link>默认链接</var-link>
+    <var-link type="primary">主要链接</var-link>
+    <var-link type="info">信息链接</var-link>
+    <var-link type="success">成功链接</var-link>
+    <var-link type="warning">警告链接</var-link>
+    <var-link type="danger">危险链接</var-link>
   </var-space>
 </template>
 ```
@@ -24,8 +24,8 @@
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-link :href="pack.hrefLink" target="_blank" type="primary">{{ pack.withHref }}</var-link>
-    <var-link :to="toLink" type="primary">{{ pack.withRouterLink }}</var-link>
+    <var-link href="https://varlet.gitee.io/varlet-ui" target="_blank" type="primary">href 跳转</var-link>
+    <var-link to="/button" type="primary">使用 router-link</var-link>
   </var-space>
 </template>
 ```
@@ -35,9 +35,9 @@
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-link underline="always" type="primary">{{ pack.useUnderlineAlways }}</var-link>
-    <var-link underline="hover" type="primary">{{ pack.useUnderlineHove }}</var-link>
-    <var-link underline="none" type="primary">{{ pack.notUseUnderline }}</var-link>
+    <var-link underline="always" type="primary">显示下划线</var-link>
+    <var-link underline="hover" type="primary">划过显示下划线</var-link>
+    <var-link underline="none" type="primary">不显示下划线</var-link>
   </var-space>
 </template>
 ```
@@ -47,9 +47,7 @@
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-button disabled>禁用状态</var-button>
-    <var-button disabled text outline>禁用状态</var-button>
-    <var-button disabled text>禁用状态</var-button>
+    <var-link disabled>禁用状态</var-link>
   </var-space>
 </template>
 ```
@@ -59,8 +57,8 @@
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-link text-color="#01847f">{{ pack.linkText }}</var-link>
-    <var-link text-color="#f9d2e4">{{ pack.linkText }}</var-link>
+    <var-link text-color="#01847f">链接</var-link>
+    <var-link text-color="#f9d2e4">链接</var-link>
   </var-space>
 </template>
 ```
@@ -74,8 +72,8 @@ import { VarButton } from '@varlet/ui'
 
 <template>
   <var-space :size="[10, 10]">
-    <var-link :href="pack.hrefLink" target="_blank" default-style>
-      <var-button type="primary">{{ pack.buttonText }}</var-button>
+    <var-link href="https://varlet.gitee.io/varlet-ui" target="_blank" default-style>
+      <var-button type="primary">跳转首页</var-button>
     </var-link>
   </var-space>
 </template>
@@ -94,7 +92,7 @@ import { VarButton } from '@varlet/ui'
 | `text-color`     | 文字颜色                                                                            | _string_  | `-`            |
 | `href`           | 原生 `href` 属性，优先级高于 `to`                                                   | _string_  | `-`            |
 | `target`         | 原生 `target` 属性                                                                       | _string_  | `-`            |
-| `to`             | `router-link` `to` 属性，将会渲染为 `<router-link />`                             | _string_  | `-`            |
+| `to`             | `router-link` `to` 属性，将会渲染为 `<router-link />`                             | _string_ \| _object_ | `-`        |
 | `replace`        | `router-link` `replace` 属性                                                     | _boolean_  | `false`            |
 
 ### 插槽
