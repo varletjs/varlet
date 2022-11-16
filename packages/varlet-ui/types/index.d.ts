@@ -31,6 +31,7 @@ export * from './indexAnchor'
 export * from './indexBar'
 export * from './input'
 export * from './lazy'
+export * from './link'
 export * from './list'
 export * from './loading'
 export * from './locale'
@@ -100,6 +101,7 @@ declare module 'vue' {
     VarIndexBar: typeof import('@varlet/ui')['_IndexBarComponent']
     VarInput: typeof import('@varlet/ui')['_InputComponent']
     VarLazy: typeof import('@varlet/ui')['_LazyComponent']
+    VarLink: typeof import('@varlet/ui')['_LinkComponent']
     VarList: typeof import('@varlet/ui')['_ListComponent']
     VarLoading: typeof import('@varlet/ui')['_LoadingComponent']
     VarLocale: typeof import('@varlet/ui')['_LocaleComponent']
