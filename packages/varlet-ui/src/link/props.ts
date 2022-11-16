@@ -5,8 +5,8 @@ function typeValidator(type: string): boolean {
   return ['default', 'primary', 'info', 'success', 'warning', 'danger'].includes(type)
 }
 
-function underlineValidator(size: string): boolean {
-  return ['always', 'hover', 'none'].includes(size)
+function underlineValidator(status: string): boolean {
+  return ['always', 'hover', 'none'].includes(status)
 }
 
 export const props = {
