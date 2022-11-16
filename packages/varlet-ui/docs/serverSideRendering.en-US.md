@@ -15,12 +15,12 @@ import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   build: {
-    transpile: ['@varlet/ui']
+    transpile: ['@varlet/ui', 'dayjs']
   }
 })
 ```
 
-### Fully import
+### Fully Import
 
 `Nuxt` will automatically read the files in your `plugins` directory and load them.
 So you can create a new `varlet.ts` in the `plugins` directory and write the following:
@@ -38,7 +38,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 The above imports `Varlet` entirely. Note that CSS file needs to be imported separately.
 
-### On demand
+### On Demand
 
 The on-demand import avoids the full import of components and can effectively reduce the size of the distribution package.
 Each component is a `Vue plugin` and is composed of `component logic` and `style files`.
@@ -55,4 +55,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 ```
 
-For more examples, see [varlet-nuxt3-example](https://github.com/varletjs/varlet-nuxt3-example).
+### Example Repo
+
+[varlet-nuxt3-example](https://github.com/varletjs/varlet-nuxt3-example)

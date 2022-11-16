@@ -2,7 +2,8 @@
 
 ### 介绍
 
-这里为您介绍在 `Nuxt` 中引入 `Varlet` 的基本方式。您可以引入整个 `Varlet`，或是根据需要仅引入部分组件。我们先介绍如何引入完整的 `Varlet`。
+这里为您介绍在 `Nuxt` 中引入 `Varlet` 的基本方式。您可以引入整个 `Varlet`，或是根据需要仅引入部分组件。
+我们先介绍如何引入完整的 `Varlet`。
 
 ### 创建 Nuxt 项目
 
@@ -15,7 +16,7 @@ import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   build: {
-    transpile: ['@varlet/ui']
+    transpile: ['@varlet/ui', 'dayjs']
   }
 })
 ```
@@ -54,4 +55,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 ```
 
-更多示例，可参考 [varlet-nuxt3-example](https://github.com/varletjs/varlet-nuxt3-example)。
+### 示例仓库
+
+[varlet-nuxt3-example](https://github.com/varletjs/varlet-nuxt3-example)
