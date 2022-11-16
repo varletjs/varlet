@@ -2,6 +2,8 @@ import { VarComponent, BasicAttributes, Type as LinkType, Underline } from './va
 import { VNode } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
 
+type Underline = 'always' | 'hover' | 'none'
+
 export { LinkType, Underline }
 
 export interface LinkProps extends BasicAttributes {
