@@ -43,6 +43,7 @@ export default defineComponent({
     }
 
     onUnmounted(() => {
+      domObserve.disconnect()
       varletLogoAnimationRef.value = undefined
       animationEl.value = undefined
       animationElClientRect.value = undefined
