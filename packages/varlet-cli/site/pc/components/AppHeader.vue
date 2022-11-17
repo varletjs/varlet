@@ -113,7 +113,7 @@ export default defineComponent({
 <template>
   <div class="varlet-site-header">
     <div class="varlet-site-header__lead">
-      <animation-box class="varlet-site-header__logo" @click="backRoot"/>
+      <animation-box class="varlet-site-header__logo" fixed @click="backRoot"/>
       <div class="varlet-site-header__title" v-if="title" @click="backRoot">{{ title }}</div>
     </div>
 

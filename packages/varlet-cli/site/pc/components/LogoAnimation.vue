@@ -1,22 +1,29 @@
 <script lang="ts">
 import config from '@config'
-import { get } from 'lodash-es'
+import { get, pick } from 'lodash-es'
 import { computed, defineComponent, onMounted, onBeforeUnmount, ref, watch, nextTick } from 'vue'
-import { animationBoxData, animationEl, animationElClientRect, isMountedCount } from '../floating'
+import { animationBoxData, animationEl, isMountedCount } from '../floating'
 import type { Ref, StyleValue } from 'vue'
+
+type Rect = Pick<DOMRect, 'width' | 'height' | 'top' | 'left'>
 
 export default defineComponent({
   name: 'LogoAnimation',
   setup() {
     const logo: Ref<string> = get(config, 'logo')
-    const proxyRect: Ref<DOMRect | undefined> = ref<DOMRect>()
+    const proxyRect: Ref<Rect | undefined> = ref()
     const floatingState: Ref<boolean> = ref<boolean>(false)
 
-    watch(animationElClientRect, async (newClientRect) => {
-      if (newClientRect) {
-        isMountedCount.value > 1 && (floatingState.value = true)
-
-        proxyRect.value = newClientRect
+    watch(animationEl, async (newEl) => {
+      if (!newEl) return
+      const newClientRect = newEl.getBoundingClientRect()
+      isMountedCount.value > 1 && (floatingState.value = true)
+      proxyRect.value = {
+        ...pick(newClientRect, 'width', 'height', 'left'),
+        // when routing changes, vue router `scrollBehavior` takes effect
+        // after the component is rendered,
+        // we need to correct to `top` when the page has a scroll distance.
+        top: newClientRect.top + (newEl.dataset.fixed === 'true' ? 0 : window.scrollY)
       }
     })
 
@@ -48,13 +55,10 @@ export default defineComponent({
         await nextTick()
       }
       clearTimeout(resetTimer)
-
-      const newBRect = animationEl.value?.getBoundingClientRect()
-      if (newBRect) {
-        resetTimer = window.setTimeout(() => {
-          proxyRect.value = newBRect
-        }, 200)
-      }
+      resetTimer = window.setTimeout(() => {
+        const newBRect = animationEl.value?.getBoundingClientRect()
+        if (newBRect) proxyRect.value = pick(newBRect, 'width', 'height', 'left', 'top')
+      }, 200)
     }
 
     return {
