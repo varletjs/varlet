@@ -68,8 +68,6 @@ export default defineComponent({
       const { disabled, onClick } = props
 
       if (!onClick || disabled) {
-        e.preventDefault()
-        e.stopPropagation()
         return
       }
 
@@ -82,6 +80,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '../styles/common.less';
-@import './link.less';
+@import '../styles/common';
+@import './link';
 </style>

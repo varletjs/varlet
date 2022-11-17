@@ -13,7 +13,7 @@ watchDarkMode(dark)
 <template>
   <app-type>{{ pack.themeColorLink }}</app-type>
   <var-space :size="['2.666vw', '2.666vw']">
-    <var-link :href="pack.hrefLink" target="_blank">{{ pack.defaultLink }}</var-link>
+    <var-link>{{ pack.defaultLink }}</var-link>
     <var-link type="primary">{{ pack.primaryLink }}</var-link>
     <var-link type="info">{{ pack.infoLink }}</var-link>
     <var-link type="success">{{ pack.successLink }}</var-link>
@@ -29,7 +29,7 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.underline }}</app-type>
   <var-space :size="['2.666vw', '2.666vw']">
-    <var-link underline="always" type="primary">{{ pack.useUnderlineAlways }}</var-link>
+    <var-link type="primary">{{ pack.useUnderlineAlways }}</var-link>
     <var-link underline="hover" type="primary">{{ pack.useUnderlineHove }}</var-link>
     <var-link underline="none" type="primary">{{ pack.notUseUnderline }}</var-link>
   </var-space>

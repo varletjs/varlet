@@ -16,12 +16,6 @@ test('test link plugin', () => {
 })
 
 describe('test link component event', () => {
-  test('test link onClick null callback', async () => {
-    const wrapper = mount(VarLink)
-    await trigger(wrapper, 'click')
-    wrapper.unmount()
-  })
-
   test('test link onClick', async () => {
     const onClick = jest.fn()
 

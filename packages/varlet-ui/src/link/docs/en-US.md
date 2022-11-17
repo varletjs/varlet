@@ -35,7 +35,7 @@ Link component for hyperlink to web pages
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-link underline="always" type="primary">Underline</var-link>
+    <var-link type="primary">Underline</var-link>
     <var-link underline="hover" type="primary">Hover</var-link>
     <var-link underline="none" type="primary">Never</var-link>
   </var-space>
@@ -83,17 +83,17 @@ import { VarButton } from '@varlet/ui'
 
 ### Props
 
-| Prop               | Description                                                                              | Type        | Default            |
-|------------------|---------------------------------------------------------------------------------|-----------|----------------|
-| `type`           | Link type, Can be set to  `default` `primary` `info` `success` `warning` `danger`                 | _string_  | `default`      |
-| `underline`      | Underline，Can be set to `always` `hover` `none`                                        | _string_  | `always`       |
-| `disabled`       | Whether to disable link                                                                            | _boolean_ | `false`        |
-| `default-style`  | Will reset to an `inline-flex` normal element used to wrap the element                                    | _boolean_ | `false`         |
-| `text-color`     | Link Text color                                                                                                 | _string_  | `-`            |
-| `href`           | same as native hyperlink's `href`, Have higher priority than `to`                                                   | _string_  | `-`            |
+| Prop               | Description                                                                       | Type        | Default            |
+|------------------|-----------------------------------------------------------------------------------|-----------|----------------|
+| `type`           | Link type, Can be set to  `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
+| `underline`      | Underline, Can be set to `always` `hover` `none`                                  | _string_  | `always`       |
+| `disabled`       | Whether to disable link                                                           | _boolean_ | `false`        |
+| `default-style`  | Will reset to an `inline-flex` normal element used to wrap the element            | _boolean_ | `false`         |
+| `text-color`     | Link Text color                                                                   | _string_  | `-`            |
+| `href`           | same as native hyperlink's `href`, Have higher priority than `to`                 | _string_  | `-`            |
 | `target`         | same as the native `target` attribute                                             | _string_  | `-`            |
-| `to`             | `router-link` `to`, Will render as `<router-link />`                             | _string_ \| _object_ | `-`        |
-| `replace`        | `router-link` `replace`            | _boolean_  | `false`            |
+| `to`             | `router-link` `to`, Will render as `<router-link />`                              | _string_ \| _object_ | `-`        |
+| `replace`        | `router-link` `replace`                                                           | _boolean_  | `false`            |
 
 ### Slots
 

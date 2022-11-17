@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, Type as LinkType, Underline } from './varComponent'
+import { VarComponent, BasicAttributes, Type as LinkType } from './varComponent'
 import { VNode } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
 

@@ -35,7 +35,7 @@
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-link underline="always" type="primary">显示下划线</var-link>
+    <var-link type="primary">显示下划线</var-link>
     <var-link underline="hover" type="primary">划过显示下划线</var-link>
     <var-link underline="none" type="primary">不显示下划线</var-link>
   </var-space>
