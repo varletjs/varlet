@@ -75,17 +75,17 @@ Link component for hyperlink to web pages
 
 ### Props
 
-| Prop         | Description                                                                       | Type       | Default   |
-|--------------|-----------------------------------------------------------------------------------|------------|-----------|
-| `type`       | Link type, Can be set to  `default` `primary` `info` `success` `warning` `danger` | _string_   | `default` |
-| `underline`  | Underline, Can be set to `always` `hover` `none`                                  | _string_   | `always`  |
-| `disabled`   | Whether to disable link                                                           | _boolean_  | `false`   |
-| `text-color` | Link text color                                                                   | _string_   | `-`       |
-| `text-size`  | Link font size                                                                    | _string \| number_   | `-`            |
-| `href`       | same as native hyperlink's `href`, Have higher priority than `to`                 | _string_   | `-`       |
-| `target`     | same as the native `target` attribute                                             | _string_   | `-`       |
-| `to`         | `router-link` `to`, Will render as `<router-link />`                              | _string_ \ | _object_  | `-`        |
-| `replace`    | `router-link` `replace`                                                           | _boolean_  | `false`   |
+| Prop         | Description                                                                       | Type     | Default  |
+|--------------|-----------------------------------------------------------------------------------|----------|----------|
+| `type`       | Link type, Can be set to  `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `underline`  | Underline, Can be set to `always` `hover` `none`                                  | _string_ | `always` |
+| `disabled`   | Whether to disable link                                                           | _boolean_ | `false`  |
+| `text-color` | Link text color                                                                   | _string_ | `-`      |
+| `text-size`  | Link font size                                                                    | _string \| number_  | `-`            |
+| `href`       | Same as native hyperlink's `href`, Have higher priority than `to`                 | _string_ | `-`      |
+| `target`     | Same as the native `target` attribute                                             | _string_ | `-`      |
+| `to`         | `router-link` `to`, will render as `<router-link />`                              | _string \| object_  | `-`        |
+| `replace`    | `router-link` `replace`                                                           | _boolean_ | `false`  |
 
 ### Slots
 
