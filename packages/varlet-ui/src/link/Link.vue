@@ -1,7 +1,7 @@
 <template>
   <component
     :is="tag"
-    v-bind="linkAttrs"
+    v-bind="linkProps"
     :class="
       classes(
         n(),
@@ -9,12 +9,12 @@
         'var--inline-flex',
         n(`--${type}`),
         [underline !== 'none', n(`--underline-${underline}`)],
-        [disabled, n('--disabled')],
-        [defaultStyle, n('--rest')]
+        [disabled, n('--disabled')]
       )
     "
     :style="{
       color: textColor,
+      fontSize: toSizeUnit(textSize),
     }"
     @click="handleClick"
   >
@@ -25,7 +25,8 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { props } from './props'
-import { createNamespace } from '../utils/components'
+import { call, createNamespace } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
 
 const { n, classes } = createNamespace('link')
 
@@ -37,16 +38,19 @@ export default defineComponent({
       if (props.disabled) {
         return 'span'
       }
+
       if (props.href) {
         return 'a'
       }
+
       if (props.to) {
         return 'router-link'
       }
+
       return 'a'
     })
 
-    const linkAttrs = computed(() => {
+    const linkProps = computed(() => {
       const { disabled, href, target, to, replace } = props
 
       if (disabled) {
@@ -67,14 +71,14 @@ export default defineComponent({
     const handleClick = (e: Event) => {
       const { disabled, onClick } = props
 
-      if (!onClick || disabled) {
+      if (disabled) {
         return
       }
 
-      onClick(e)
+      call(onClick, e)
     }
 
-    return { n, classes, tag, linkAttrs, handleClick }
+    return { n, classes, tag, linkProps, handleClick, toSizeUnit }
   },
 })
 </script>

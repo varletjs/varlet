@@ -222,3 +222,7 @@ const handleAutoLoadingClick = () => {
 | `--button-small-height` | `28px` |
 | `--button-normal-height` | `36px` |
 | `--button-large-height` | `44px` |
+| `--button-mini-font-size` | `var(--font-size-xs)` |
+| `--button-small-font-size` | `var(--font-size-sm)` |
+| `--button-normal-font-size` | `var(--font-size-md)` |
+| `--button-large-font-size` | `var(--font-size-lg)` |

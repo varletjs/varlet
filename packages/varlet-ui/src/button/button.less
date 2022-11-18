@@ -17,6 +17,10 @@
   --button-small-height: 28px;
   --button-normal-height: 36px;
   --button-large-height: 44px;
+  --button-mini-font-size: var(--font-size-xs);
+  --button-small-font-size: var(--font-size-sm);
+  --button-normal-font-size: var(--font-size-md);
+  --button-large-font-size: var(--font-size-lg);
 }
 
 .var-button {
@@ -132,25 +136,25 @@
   &--normal {
     height: var(--button-normal-height);
     padding: var(--button-normal-padding);
-    font-size: var(--font-size-md);
+    font-size: var(--button-normal-font-size);
   }
 
   &--large {
     height: var(--button-large-height);
     padding: var(--button-large-padding);
-    font-size: var(--font-size-lg);
+    font-size: var(--button-large-font-size);
   }
 
   &--small {
     height: var(--button-small-height);
     padding: var(--button-small-padding);
-    font-size: var(--font-size-sm);
+    font-size: var(--button-small-font-size);
   }
 
   &--mini {
     height: var(--button-mini-height);
     padding: var(--button-mini-padding);
-    font-size: var(--font-size-xs);
+    font-size: var(--button-mini-font-size);
   }
 
   &--round {

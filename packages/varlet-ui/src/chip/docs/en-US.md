@@ -193,3 +193,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--chip-text-normal-margin` | `0 5px` |
 | `--chip-text-small-margin` | `0 3px` |
 | `--chip-text-mini-margin` | `0 2px` |
+| `--chip-mini-font-size`     | `var(--font-size-xs)` |
+| `--chip-small-font-size`    | `var(--font-size-sm)` |
+| `--chip-normal-font-size`   | `var(--font-size-md)` |
+| `--chip-large-font-size`    | `var(--font-size-lg)` |

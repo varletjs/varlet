@@ -112,16 +112,6 @@ describe('test link component props', () => {
     wrapper.unmount()
   })
 
-  test('test link default style', () => {
-    const wrapper = mount(VarLink, {
-      props: {
-        defaultStyle: true,
-      },
-    })
-    expect(wrapper.classes()).toContain('var-link--rest')
-    wrapper.unmount()
-  })
-
   test('test link text color', () => {
     const wrapper = mount(VarLink, {
       props: {
