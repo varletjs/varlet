@@ -3,13 +3,15 @@ import config from '@config'
 import { get } from 'lodash-es'
 import { computed, defineComponent, onMounted, onBeforeUnmount, ref, watch, nextTick } from 'vue'
 import { animationBoxData, animationEl, animationElClientRect, isMountedCount } from '../floating'
+
 import type { Ref, StyleValue } from 'vue'
+import type { Rect } from '../floating'
 
 export default defineComponent({
   name: 'LogoAnimation',
   setup() {
     const logo: Ref<string> = get(config, 'logo')
-    const proxyRect: Ref<DOMRect | undefined> = ref<DOMRect>()
+    const proxyRect: Ref<Rect | undefined> = ref<Rect>()
     const floatingState: Ref<boolean> = ref<boolean>(false)
 
     watch(animationElClientRect, async (newClientRect) => {
