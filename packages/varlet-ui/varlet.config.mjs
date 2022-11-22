@@ -475,6 +475,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Result 结果',
+          'en-US': 'Result',
+        },
+        doc: 'result',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '表单组件',
           'en-US': 'Form Components',
         },
