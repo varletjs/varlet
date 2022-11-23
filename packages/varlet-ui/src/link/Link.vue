@@ -5,8 +5,8 @@
     :class="
       classes(
         n(),
-        'var--box',
-        'var--inline-flex',
+        n('$--box'),
+        n('$--inline-flex'),
         n(`--${type}`),
         [underline !== 'none', n(`--underline-${underline}`)],
         [disabled, n('--disabled')]

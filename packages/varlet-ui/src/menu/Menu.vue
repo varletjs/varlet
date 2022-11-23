@@ -7,7 +7,7 @@
         <div
           ref="menu"
           :style="{ zIndex }"
-          :class="classes(n('menu'), [defaultStyle, `${n('--menu-background-color')} var-elevation--3`])"
+          :class="classes(n('menu'), [defaultStyle, `${n('--menu-background-color')} ${n('$-elevation--3')}`])"
           v-show="show"
           @click.stop
           @mouseenter="handleMenuMouseenter"

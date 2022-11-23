@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classes(n(), 'var--box', computeColorClass(), n(`--${itemDirection}`))"
+    :class="classes(n(), n('$--box'), computeColorClass(), n(`--${itemDirection}`))"
     ref="tabEl"
     v-ripple="{ disabled }"
     :style="{
@@ -58,10 +58,10 @@ export default defineComponent({
       const { disabled, name } = props
 
       return disabled
-        ? 'var-tab--disabled'
+        ? n('$-tab--disabled')
         : active.value === name || active.value === index?.value
-        ? 'var-tab--active'
-        : 'var-tab--inactive'
+        ? n('$-tab--active')
+        : n('$-tab--inactive')
     }
 
     const handleClick = (event: Event) => {

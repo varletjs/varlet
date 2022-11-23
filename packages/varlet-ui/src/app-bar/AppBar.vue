@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classes(n(), [elevation, 'var-elevation--3'])"
+    :class="classes(n(), [elevation, n('$-elevation--3')])"
     :style="{
       background: color,
       color: textColor,

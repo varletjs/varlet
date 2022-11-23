@@ -63,7 +63,7 @@ export default defineComponent({
     const renderContent = () => {
       return (
         <div
-          class={classes(n('content'), 'var-elevation--3', n(`--${props.position}`))}
+          class={classes(n('content'), n('$-elevation--3'), n(`--${props.position}`))}
           style={{ zIndex: zIndex.value }}
           {...attrs}
         >
@@ -76,10 +76,10 @@ export default defineComponent({
       const { onOpened, onClosed, show, overlay, transition, position } = props
 
       return (
-        <Transition name="var-fade" onAfterEnter={onOpened} onAfterLeave={onClosed}>
-          <div class={classes('var--box', n())} style={{ zIndex: zIndex.value - 2 }} v-show={show}>
+        <Transition name={n('$-fade')} onAfterEnter={onOpened} onAfterLeave={onClosed}>
+          <div class={classes(n('$--box'), n())} style={{ zIndex: zIndex.value - 2 }} v-show={show}>
             {overlay && renderOverlay()}
-            <Transition name={transition || `var-pop-${position}`}>{show && renderContent()}</Transition>
+            <Transition name={transition || n(`$-pop-${position}`)}>{show && renderContent()}</Transition>
           </div>
         </Transition>
       )

@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classes(n(), 'var--box', [!block, 'var--inline-block'])"
+    :class="classes(n(), n('$--box'), [!block, n('$--inline-block')])"
     :style="{
       width: toSizeUnit(width),
       height: toSizeUnit(height),

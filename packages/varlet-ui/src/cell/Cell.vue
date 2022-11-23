@@ -2,7 +2,7 @@
   <div :class="classes(n(), [border, n('--border')])">
     <div :class="classes(n('icon'), [iconClass, iconClass])" v-if="$slots.icon || icon">
       <slot name="icon">
-        <var-icon class="var--flex" :name="icon" />
+        <var-icon :name="icon" />
       </slot>
     </div>
     <div :class="n('content')">
