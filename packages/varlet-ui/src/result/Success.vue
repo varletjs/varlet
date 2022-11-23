@@ -1,5 +1,11 @@
 <template>
-  <div :class="n()">
+  <div
+    :class="n()"
+    :style="{
+      width: toSizeUnit(imageSize),
+      height: toSizeUnit(imageSize),
+    }"
+  >
     <span :class="classes(n('--line'), n('--line-long'))" />
     <span :class="classes(n('--line'), n('--line-tip'))" />
     <span :class="n('--circle')" />
