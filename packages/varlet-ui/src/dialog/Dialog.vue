@@ -17,7 +17,7 @@
     @click-overlay="handleClickOverlay"
   >
     <div
-      :class="classes('var--box', n(), dialogClass)"
+      :class="classes(n('$--box'), n(), dialogClass)"
       :style="{ width: toSizeUnit(width), ...dialogStyle }"
       v-bind="$attrs"
     >

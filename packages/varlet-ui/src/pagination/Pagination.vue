@@ -7,7 +7,7 @@
           n('item'),
           n('prev'),
           [current <= 1 || disabled, n('item--disabled')],
-          [simple, n('item--simple'), 'var-elevation--2']
+          [simple, n('item--simple'), n('$-elevation--2')]
         )
       "
       @click="clickItem('prev')"
@@ -38,7 +38,7 @@
       :class="
         classes(
           n('item'),
-          'var-elevation--2',
+          n('$-elevation--2'),
           [item === current && !disabled, n('item--active')],
           [isHideEllipsis(item, index), n('item--hide')],
           [disabled, n('item--disabled')],
@@ -56,7 +56,7 @@
           n('item'),
           n('next'),
           [current >= pageCount || disabled, n('item--disabled')],
-          [simple, n('item--simple'), 'var-elevation--2']
+          [simple, n('item--simple'), n('$-elevation--2')]
         )
       "
       @click="clickItem('next')"

@@ -267,7 +267,7 @@ export default defineComponent({
 
     const click = (event: MouseEvent) => {
       if (isDisabled.value || isReadonly.value) return
-      if ((event.target as HTMLDivElement).closest('.var-slider__thumb')) return
+      if ((event.target as HTMLDivElement).closest(`.${n('thumb')}`)) return
       const offset = event.clientX - getLeft(event.currentTarget as HTMLDivElement)
       const type = getType(offset)
       setPercent(offset, type)

@@ -1,6 +1,6 @@
 <template>
-  <div :class="classes(n(), 'var--box')">
-    <transition name="var-badge-fade">
+  <div :class="classes(n(), n('$--box'))">
+    <transition :name="n('$-badge-fade')">
       <span
         v-bind="$attrs"
         v-show="!hidden"

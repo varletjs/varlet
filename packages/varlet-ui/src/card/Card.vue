@@ -1,7 +1,7 @@
 <template>
   <div
     ref="card"
-    :class="classes(n(), [isRow, n('--layout-row')], [elevation, `var-elevation--${elevation}`, 'var-elevation--1'])"
+    :class="classes(n(), [isRow, n('--layout-row')], [elevation, n(`$-elevation--${elevation}`), n('$-elevation--1')])"
     :style="{
       zIndex: floated ? zIndex : undefined,
     }"
@@ -64,7 +64,7 @@
       </div>
 
       <div
-        :class="classes(n('floating-buttons'), 'var--box')"
+        :class="classes(n('floating-buttons'), n('$--box'))"
         :style="{
           zIndex,
           opacity,
@@ -73,7 +73,7 @@
         v-if="showFloatingButtons"
       >
         <slot name="close-button">
-          <var-button var-card-cover round :class="classes(n('close-button'), 'var-elevation--6')" @click.stop="close">
+          <var-button var-card-cover round :class="classes(n('close-button'), n('$-elevation--6'))" @click.stop="close">
             <var-icon var-card-cover name="window-close" :class="n('close-button-icon')" />
           </var-button>
         </slot>

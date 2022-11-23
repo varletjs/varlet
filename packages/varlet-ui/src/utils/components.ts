@@ -297,12 +297,17 @@ type ClassName = string | undefined | null
 type Classes = (ClassName | [any, ClassName, ClassName?])[]
 
 export function createNamespace(name: string) {
-  const namespace = `var-${name}`
+  const namespace = `var`
+  const componentName = `${namespace}-${name}`
 
   const createBEM = (suffix?: string): string => {
-    if (!suffix) return namespace
+    if (!suffix) return componentName
 
-    return suffix.startsWith('--') ? `${namespace}${suffix}` : `${namespace}__${suffix}`
+    if (suffix[0] === '$') {
+      return suffix.replace('$', namespace)
+    }
+
+    return suffix.startsWith('--') ? `${componentName}${suffix}` : `${componentName}__${suffix}`
   }
 
   const classes = (...classes: Classes): any[] => {

@@ -4,7 +4,7 @@
       <slot />
       <div :class="n('content-mask')" v-if="loading"></div>
     </div>
-    <div :class="classes('var--box', n('body'), [$slots.default, n('inside')])" v-if="isShow">
+    <div :class="classes(n('$--box'), n('body'), [$slots.default, n('inside')])" v-if="isShow">
       <div :class="n('circle')" v-if="type === 'circle'">
         <span
           :class="classes(n('circle-block'), n(`circle-block--${size}`))"

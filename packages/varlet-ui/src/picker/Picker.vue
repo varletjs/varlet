@@ -1,6 +1,6 @@
 <template>
   <component
-    :is="dynamic ? 'var-popup' : Transition"
+    :is="dynamic ? n('$-popup') : Transition"
     v-bind="
       dynamic
         ? {

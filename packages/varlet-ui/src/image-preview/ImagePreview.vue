@@ -2,7 +2,7 @@
   <var-popup
     :class="n('popup')"
     var-image-preview-cover
-    transition="var-fade"
+    :transition="n('$-fade')"
     :show="popupShow"
     :overlay="false"
     :close-on-click-overlay="false"
@@ -193,7 +193,7 @@ export default defineComponent({
 
     const getZoom = (target: HTMLElement) => {
       const { offsetWidth, offsetHeight } = target
-      const { naturalWidth, naturalHeight } = target.querySelector('.var-image-preview__image') as HTMLImageElement
+      const { naturalWidth, naturalHeight } = target.querySelector(`.${n('image')}`) as HTMLImageElement
 
       return {
         width: offsetWidth,

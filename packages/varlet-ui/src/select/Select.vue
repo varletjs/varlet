@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), 'var--box', [formDisabled || disabled, n('--disabled')])" @click="handleClick">
+  <div :class="classes(n(), n('$--box'), [formDisabled || disabled, n('--disabled')])" @click="handleClick">
     <div
       :class="
         classes(
@@ -70,7 +70,7 @@
             :class="
               classes(
                 n('placeholder'),
-                'var--ellipsis',
+                n('$--ellipsis'),
                 [isFocus, n('--focus')],
                 [errorMessage, n('--error')],
                 [formDisabled || disabled, n('--disabled')],
@@ -86,7 +86,7 @@
           </label>
 
           <template #menu>
-            <div ref="menuEl" :class="classes(n('scroller'), 'var-elevation--3')">
+            <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
               <slot />
             </div>
           </template>

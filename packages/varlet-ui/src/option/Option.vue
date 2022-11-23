@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classes(n(), 'var--box', [optionSelected, n('--selected-color')])"
+    :class="classes(n(), n('$--box'), [optionSelected, n('--selected-color')])"
     :style="{
       width: wrapWidth,
       color: optionSelected ? focusColor : undefined,
@@ -23,7 +23,7 @@
       @change="handleSelect"
     />
 
-    <div :class="classes(n('text'), 'var--ellipsis')">
+    <div :class="classes(n('text'), n('$--ellipsis'))">
       <slot>
         {{ label }}
       </slot>

@@ -1,10 +1,10 @@
 <template>
-  <div :class="classes(n(), 'var--box')">
+  <div :class="classes(n(), n('$--box'))">
     <div
       :class="
         classes(
           n('controller'),
-          'var-elevation--2',
+          n('$-elevation--2'),
           [disabled || formDisabled, n('--disabled')],
           [errorMessage, n('--error')]
         )

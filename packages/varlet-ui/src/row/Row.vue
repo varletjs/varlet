@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classes(n(), 'var--box')"
+    :class="classes(n(), n('$--box'))"
     :style="{
       justifyContent: justify,
       alignItems: align,

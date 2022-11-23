@@ -1,6 +1,6 @@
 <template>
   <component
-    :is="sticky ? 'var-sticky' : Transition"
+    :is="sticky ? n('$-sticky') : Transition"
     :offset-top="sticky ? stickyOffsetTop : null"
     :z-index="sticky ? zIndex : null"
     :disabled="disabled && !cssMode"

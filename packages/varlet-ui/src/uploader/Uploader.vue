@@ -1,8 +1,8 @@
 <template>
-  <div :class="classes(n(), 'var--box')">
+  <div :class="classes(n(), n('$--box'))">
     <div :class="n('file-list')">
       <div
-        :class="classes(n('file'), 'var-elevation--2', [f.state === 'loading', n('--loading')])"
+        :class="classes(n('file'), n('$-elevation--2'), [f.state === 'loading', n('--loading')])"
         :key="f.id"
         v-for="f in files"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple }"
@@ -22,7 +22,10 @@
 
       <div
         :class="
-          classes([!$slots.default, `${n('action')} var-elevation--2`], [disabled || formDisabled, n('--disabled')])
+          classes(
+            [!$slots.default, `${n('action')} ${n('$-elevation--2')}`],
+            [disabled || formDisabled, n('--disabled')]
+          )
         "
         v-if="!maxlength || modelValue.length < maxlength"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple || $slots.default }"

@@ -93,7 +93,7 @@ export default defineComponent({
 
       return (
         <div
-          class={classes(n(), 'var--box', [inline, n('--inline')])}
+          class={classes(n(), n('$--box'), [inline, n('--inline')])}
           style={{
             flexDirection: direction,
             justifyContent: padStartFlex(justify),
