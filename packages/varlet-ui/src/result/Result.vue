@@ -1,7 +1,7 @@
 <template>
   <div :class="classes(n())">
     <slot name="image">
-      <var-icon v-if="status" :name="iconName" :size="imageSize" :class="n(`--${status}`)"></var-icon>
+      <component :is="status" v-if="status" :image-size="imageSize"></component>
     </slot>
     <slot name="title">
       <div v-if="title" :class="n('title')">{{ title }}</div>
@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import VarIcon from '../icon'
+import Success from './Success.vue'
 import { computed, ComputedRef, defineComponent } from 'vue'
 import { props } from './props'
 
@@ -34,7 +34,7 @@ const STATUS_ICON_MAP = {
 export default defineComponent({
   name: 'VarResult',
   components: {
-    VarIcon,
+    Success,
   },
   props,
   setup(props) {
