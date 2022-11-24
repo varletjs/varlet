@@ -128,16 +128,33 @@ the `Vue component` will not be automatically processed by the build tool like t
 so you need to import the image resources manually.
 Here's how the different build tools are used.
 
-#### Webpack
+#### Vite
+
+Automatic preprocessing with [plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#asset-url-handling)
+
+```ts
+// playground-ignore
+import vue from '@vitejs/plugin-vue'
+
+export default defineConfig({
+  plugins: [vue({
+    template:{
+      transformAssetUrls:{
+        'var-image': ['src']
+      }
+    }
+  })],
+})
+```
 
 ```html
 <!-- playground-ignore -->
 <template>
-  <var-image :src="require('../../assets/logo.png')"/>
+  <var-image src="../../assets/logo.png"/>
 </template>
 ```
 
-#### Vite
+Or import separately
 
 ```html
 <!-- playground-ignore -->
@@ -147,6 +164,15 @@ import logo from '../../assets/logo.png'
 
 <template>
   <var-image :src="logo"/>
+</template>
+```
+
+#### Webpack
+
+```html
+<!-- playground-ignore -->
+<template>
+  <var-image :src="require('../../assets/logo.png')"/>
 </template>
 ```
 
