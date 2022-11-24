@@ -23,10 +23,15 @@ watchLang(use)
     v-if="showSuccessResult"
     status="success"
     description="descriptiondescriptiondescriptiondescriptiondescriptiondescription"
-    title="title"
   >
     <template #footer>
       <var-button type="success" @click="handleClickSuccess">success</var-button>
     </template>
   </var-result>
+
+  <var-result status="error" />
+
+  <var-result status="warning" />
+
+  <var-result status="info" />
 </template>
