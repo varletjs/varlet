@@ -1,15 +1,12 @@
 <template>
   <div
-    :class="n()"
+    :class="classes(n(), n(`--${status}`))"
     :style="{
       width: toSizeUnit(imageSize),
       height: toSizeUnit(imageSize),
     }"
   >
-    <span :class="classes(n('--line'), n('--line-long'))" />
-    <span :class="classes(n('--line'), n('--line-tip'))" />
-    <span :class="n('--circle')" />
-    <span :class="n('--fix')" />
+    <component :is="status" :duration="duration" />
   </div>
 </template>
 
@@ -17,17 +14,21 @@
 import { defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
+import Info from './Info.vue'
+import Success from './Success.vue'
+import { props } from './props'
 
-const { n, classes } = createNamespace('result__success')
+const { n, classes } = createNamespace('result-item')
 
 export default defineComponent({
-  name: 'VarResult',
-  props: {
-    imageSize: {
-      type: [String, Number],
-    },
+  components: {
+    Info,
+    Success,
+    Warning: Info,
+    Error: Info,
   },
-  setup(props) {
+  props,
+  setup() {
     return {
       n,
       classes,
@@ -38,5 +39,5 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import './result.less';
+@import './resultItem.less';
 </style>

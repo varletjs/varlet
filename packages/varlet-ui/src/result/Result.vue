@@ -1,7 +1,13 @@
 <template>
-  <div :class="classes(n())">
+  <div
+    :class="classes(n())"
+    :style="{
+      opacity,
+      transition: `opacity ${toNumber(duration) * 2}ms`,
+    }"
+  >
     <slot name="image">
-      <component :is="status" v-if="status" :image-size="imageSize"></component>
+      <result-item v-if="status" :status="status" :duration="duration" :image-size="imageSize" />
     </slot>
     <slot name="title">
       <div v-if="title" :class="n('title')">{{ title }}</div>
@@ -16,43 +22,33 @@
 </template>
 
 <script lang="ts">
-import Success from './Success.vue'
-import { computed, ComputedRef, defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
+import type { Ref } from 'vue'
+import { toNumber } from '@varlet/shared'
 import { props } from './props'
-
 import { createNamespace } from '../utils/components'
+import ResultItem from '../result-item'
 
 const { n, classes } = createNamespace('result')
-
-const STATUS_ICON_MAP = {
-  info: 'information-outline',
-  success: 'check-circle-outline',
-  warning: 'warning',
-  error: 'close-circle-outline',
-}
 
 export default defineComponent({
   name: 'VarResult',
   components: {
-    Success,
+    ResultItem,
   },
   props,
-  setup(props) {
-    const iconName: ComputedRef<string> = computed(() => {
-      const { status } = props
+  setup() {
+    const opacity: Ref<number> = ref(0)
 
-      return status ? STATUS_ICON_MAP[status] : ''
-    })
-
-    const statusColor: ComputedRef<string> = computed(() => {
-      return ''
+    setTimeout(() => {
+      opacity.value = 1
     })
 
     return {
       n,
       classes,
-      iconName,
-      statusColor,
+      toNumber,
+      opacity,
     }
   },
 })

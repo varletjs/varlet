@@ -19,7 +19,8 @@ export const props = {
   description: {
     type: String,
   },
-  onClick: {
-    type: Function as PropType<(e: Event) => void>,
+  duration: {
+    type: [Number, String],
+    default: 300,
   },
 }
