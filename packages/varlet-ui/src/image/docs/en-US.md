@@ -130,20 +130,23 @@ Here's how the different build tools are used.
 
 #### Vite
 
-Automatic preprocessing with [plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#asset-url-handling)
+Automatic preprocessing with [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#asset-url-handling)
 
 ```ts
 // playground-ignore
+// vite.config.js
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
-  plugins: [vue({
-    template:{
-      transformAssetUrls:{
-        'var-image': ['src']
+  plugins: [
+    vue({
+      template: {
+        transformAssetUrls: {
+          'var-image': ['src']
+        }
       }
-    }
-  })],
+    })
+  ],
 })
 ```
 

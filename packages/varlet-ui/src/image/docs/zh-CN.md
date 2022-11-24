@@ -128,20 +128,23 @@
 
 #### Vite
 
-使用 [plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#asset-url-handling) 自动预处理
+推荐使用 [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#asset-url-handling) 进行路径预处理
 
 ```ts
 // playground-ignore
+// vite.config.js
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
-  plugins: [vue({
-    template:{
-      transformAssetUrls:{
-        'var-image': ['src']
+  plugins: [
+    vue({
+      template: {
+        transformAssetUrls: {
+          'var-image': ['src']
+        }
       }
-    }
-  })],
+    })
+  ],
 })
 ```
 
