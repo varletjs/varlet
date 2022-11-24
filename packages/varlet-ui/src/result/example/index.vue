@@ -34,4 +34,6 @@ watchLang(use)
   <var-result status="warning" />
 
   <var-result status="info" />
+
+  <var-result status="question" />
 </template>
