@@ -1,6 +1,8 @@
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="3 3 18 18">
-    <path d="M9,7H11L12,9.5L13,7H15L13,12L15,17H13L12,14.5L11,17H9L11,12L9,7M12,2" />
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="5 7 14 4">
+    <path
+      d="M2 17M14.12 5.46L15.54 6.88L13.41 9L15.54 11.12L14.12 12.54L12 10.41L9.88 12.54L8.46 11.12L10.59 9L8.46 6.88L9.88 5.46L12 7.59Z"
+    />
   </svg>
 </template>
 
