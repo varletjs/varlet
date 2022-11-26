@@ -1,4 +1,5 @@
-import { defineComponent, watch, Transition, Teleport } from 'vue'
+import { defineComponent, watch, Transition, Teleport, ref } from 'vue'
+import VarOverlay from '../overlay'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { useZIndex } from '../context/zIndex'
@@ -14,12 +15,12 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props, { slots, attrs }) {
+    const overlayVisible = ref(props.overlay)
     const { zIndex } = useZIndex(() => props.show, 3)
     const { disabled } = useTeleport()
 
     const hidePopup = () => {
       const { closeOnClickOverlay, onClickOverlay } = props
-
       onClickOverlay?.()
 
       if (!closeOnClickOverlay) {
@@ -38,27 +39,13 @@ export default defineComponent({
       () => props.show,
       (newValue: boolean) => {
         const { onOpen, onClose } = props
+        overlayVisible.value = newValue
         newValue ? onOpen?.() : onClose?.()
       }
     )
 
     // internal for Dialog
     useRouteListener(() => props.onRouteChange?.())
-
-    const renderOverlay = () => {
-      const { overlayClass = '', overlayStyle } = props
-
-      return (
-        <div
-          class={classes(n('overlay'), overlayClass)}
-          style={{
-            zIndex: zIndex.value - 1,
-            ...overlayStyle,
-          }}
-          onClick={hidePopup}
-        />
-      )
-    }
 
     const renderContent = () => {
       return (
@@ -78,12 +65,17 @@ export default defineComponent({
     }
 
     const renderPopup = () => {
-      const { onOpened, onClosed, show, overlay, transition, position } = props
+      const { onOpened, onClosed, show, transition, position, overlayClass = '', overlayStyle } = props
 
       return (
         <Transition name={n('$-fade')} onAfterEnter={onOpened} onAfterLeave={onClosed}>
           <div class={classes(n('$--box'), n())} style={{ zIndex: zIndex.value - 2 }} v-show={show}>
-            {overlay && renderOverlay()}
+            <VarOverlay
+              v-model={[overlayVisible.value, 'show']}
+              overlayClass={overlayClass}
+              overlayStyle={overlayStyle}
+              onClickOverlay={hidePopup}
+            />
             <Transition name={transition || n(`$-pop-${position}`)}>{show && renderContent()}</Transition>
           </div>
         </Transition>
