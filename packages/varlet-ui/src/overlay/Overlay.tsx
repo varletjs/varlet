@@ -1,4 +1,4 @@
-import { defineComponent, defineEmits } from 'vue'
+import { defineComponent } from 'vue'
 import { props } from './props'
 import { useZIndex } from '../context/zIndex'
 import { createNamespace } from '../utils/components'
@@ -15,6 +15,8 @@ export default defineComponent({
   setup(props, { slots }) {
     const { zIndex } = useZIndex(() => props.show, 3)
     const hideOverlay = () => {
+      const { onClickOverlay } = props
+      onClickOverlay?.()
       props['onUpdate:show']?.(false)
     }
 
