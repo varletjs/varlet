@@ -11,6 +11,9 @@ export const props = {
   overlayStyle: {
     type: Object,
   },
+  onClickOverlay: {
+    type: Function as PropType<() => void>,
+  },
   'onUpdate:show': {
     type: Function as PropType<(show: boolean) => void>,
   },
