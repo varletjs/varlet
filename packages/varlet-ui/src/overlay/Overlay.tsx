@@ -13,7 +13,7 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props, { slots }) {
-    const { zIndex } = useZIndex(() => props.show, 3)
+    const { zIndex } = useZIndex(() => props.show, 1)
     const hideOverlay = () => {
       const { onClickOverlay } = props
       onClickOverlay?.()
