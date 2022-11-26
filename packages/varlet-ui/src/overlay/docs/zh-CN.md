@@ -40,7 +40,10 @@ const contentOverlay = ref(false)
 
   <var-overlay v-model:show="contentOverlay">
     <div class="popup-example-block">
-      素胚勾勒出青花笔锋浓转淡, 瓶身描绘的牡丹一如你初妆, 冉冉檀香透过窗心事我了然, 宣纸上走笔至此搁一半。
+      素胚勾勒出青花笔锋浓转淡, 
+      瓶身描绘的牡丹一如你初妆, 
+      冉冉檀香透过窗心事我了然, 
+      宣纸上走笔至此搁一半。
     </div>
   </var-overlay>
 </template>
@@ -104,7 +107,7 @@ const overlayStyle = ref(false)
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const clickOverlay = ref(false)
+const event = ref(false)
 </script>
 
 <template>
