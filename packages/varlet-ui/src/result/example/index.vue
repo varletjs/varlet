@@ -2,7 +2,7 @@
 import VarResult from '../index'
 import VarButton from '../../button'
 import { AppType, watchLang } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { use } from './locale'
 import { ref } from 'vue'
 
 const showSuccessResult = ref(true)
@@ -19,7 +19,13 @@ watchLang(use)
 
 <template>
   <app-type>success</app-type>
-  <var-result v-if="showSuccessResult" status="success" title="Success" description="This is success description.">
+  <var-result
+    v-if="showSuccessResult"
+    status="success"
+    title="Success"
+    image-size="300"
+    description="This is success description."
+  >
     <template #footer>
       <var-button type="success" @click="handleClickSuccess">success</var-button>
     </template>
