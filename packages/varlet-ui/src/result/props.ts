@@ -1,7 +1,7 @@
 import type { PropType } from 'vue'
 
 function statusValidator(status: string) {
-  return ['info', 'success', 'warning', 'error', 'question'].includes(status)
+  return ['info', 'success', 'warning', 'error', 'question', 'empty'].includes(status)
 }
 
 export const props = {
@@ -10,7 +10,7 @@ export const props = {
     default: 80,
   },
   status: {
-    type: String as PropType<'info' | 'success' | 'warning' | 'error' | 'question'>,
+    type: String as PropType<'info' | 'success' | 'warning' | 'error' | 'question' | 'empty'>,
     validator: statusValidator,
   },
   title: {
