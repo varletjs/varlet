@@ -19,6 +19,7 @@ import Error from './Error.vue'
 import Warning from './Warning.vue'
 import Success from './Success.vue'
 import Question from './Question.vue'
+import Empty from './Empty.vue'
 import { props } from './props'
 
 const { n, classes } = createNamespace('result-item')
@@ -30,6 +31,7 @@ export default defineComponent({
     Warning,
     Error,
     Question,
+    Empty,
   },
   props,
   setup() {

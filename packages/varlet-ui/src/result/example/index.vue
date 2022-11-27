@@ -52,4 +52,11 @@ watchLang(use)
       <var-button color="#607d8b" text-color="#fff">question</var-button>
     </template>
   </var-result>
+
+  <app-type>empty</app-type>
+  <var-result status="empty" title="Empty" description="This is empty description.">
+    <template #footer>
+      <var-button color="#9E9E9E" text-color="#fff">empty</var-button>
+    </template>
+  </var-result>
 </template>

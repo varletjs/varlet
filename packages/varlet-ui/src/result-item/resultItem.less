@@ -9,6 +9,8 @@
   --result-item-warning-border-color: #ff9f004d;
   --result-item-question-color: #607d8b;
   --result-item-question-border-color: #eceff1;
+  --result-item-empty-color: #9e9e9e;
+  --result-item-empty-border-color: #9e9e9e4d;
 }
 
 .var-result-item {
@@ -30,6 +32,14 @@
 
     path {
       fill: var(--result-item-info-color);
+    }
+  }
+
+  &--empty {
+    border-color: var(--result-item-empty-border-color);
+
+    path {
+      fill: var(--result-item-empty-color);
     }
   }
 
