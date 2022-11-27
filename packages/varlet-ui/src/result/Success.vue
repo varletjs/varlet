@@ -26,7 +26,7 @@ import { defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
 import { toNumber } from '@varlet/shared'
 
-const { n, classes } = createNamespace('result-item--success')
+const { n, classes } = createNamespace('result__image--success')
 
 export default defineComponent({
   props: {
@@ -45,5 +45,5 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '../result/result.less';
+@import 'result.less';
 </style>
