@@ -7,7 +7,16 @@
     }"
   >
     <slot name="image">
-      <result-item v-if="status" :status="status" :duration="duration" :image-size="imageSize" />
+      <div
+        v-if="status"
+        :class="classes(n('image'), n(`image--${status}`))"
+        :style="{
+          width: toSizeUnit(imageSize),
+          height: toSizeUnit(imageSize),
+        }"
+      >
+        <component :is="status" :duration="duration" />
+      </div>
     </slot>
     <slot name="title">
       <div v-if="title" :class="n('title')">{{ title }}</div>
@@ -27,14 +36,25 @@ import type { Ref } from 'vue'
 import { toNumber } from '@varlet/shared'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
-import ResultItem from '../result-item'
+import { toSizeUnit } from '../utils/elements'
+import Info from './Info.vue'
+import Error from './Error.vue'
+import Warning from './Warning.vue'
+import Success from './Success.vue'
+import Question from './Question.vue'
+import Empty from './Empty.vue'
 
 const { n, classes } = createNamespace('result')
 
 export default defineComponent({
   name: 'VarResult',
   components: {
-    ResultItem,
+    Info,
+    Success,
+    Warning,
+    Error,
+    Question,
+    Empty,
   },
   props,
   setup() {
@@ -49,6 +69,7 @@ export default defineComponent({
       classes,
       toNumber,
       opacity,
+      toSizeUnit,
     }
   },
 })
