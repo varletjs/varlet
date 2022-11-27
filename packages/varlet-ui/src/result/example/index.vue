@@ -22,8 +22,8 @@ watchLang(use)
   <var-result
     v-if="showSuccessResult"
     status="success"
-    title="Success"
     image-size="300"
+    title="Success"
     description="This is success description."
   >
     <template #footer>

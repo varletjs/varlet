@@ -6,14 +6,14 @@
     }"
   />
   <span
-    :class="classes(n('--line'), n('--line-long'))"
+    :class="classes(n('--line'), n('--line-tip'))"
     :style="{
       animationDuration: `${2.5 * toNumber(duration)}ms`,
       borderRadius: `${borderSize * 0.625}px`,
     }"
   />
   <span
-    :class="classes(n('--line'), n('--line-tip'))"
+    :class="classes(n('--line'), n('--line-long'))"
     :style="{
       animationDuration: `${2.5 * toNumber(duration)}ms`,
       borderRadius: `${borderSize * 0.625}px`,
