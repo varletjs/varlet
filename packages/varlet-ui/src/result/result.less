@@ -27,7 +27,8 @@
     position: relative;
     border-radius: 50%;
     box-sizing: content-box;
-    border: 4px solid;
+    border-style: solid;
+    border-color: transparent;
 
     svg {
       margin: 0 auto;
@@ -86,129 +87,129 @@
       user-select: none;
       zoom: normal;
 
-      &::before {
-        content: ' ';
-        top: 3.75%;
-        left: 2.5%;
-        width: 37.5%;
-        transform-origin: 100% 50%;
-        border-radius: 125% 0 0 125%;
+      &--cover-left {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        top: -0.875%;
+        left: -41.27%;
+        width: 75%;
+        height: 150%;
+        border-radius: 150% 0 0 150%;
+        transform: rotate(-45deg);
+        background: #fff;
       }
 
       &--cover-right {
-        top: 0;
         display: block;
+        position: absolute;
+        top: -13.75%;
         left: 37.5%;
         width: 75%;
-        transform-origin: 0 50%;
+        height: 150%;
         border-radius: 0 125% 125% 0;
         animation-name: rotate-circle;
         animation-timing-function: ease-in;
-      }
-
-      &::before,
-      &--cover-right {
-        height: 125%;
-        position: absolute;
-        background: #fff;
+        transform-origin: 0 50%;
         transform: rotate(-45deg);
+        background: #fff;
       }
 
       &--line {
-        //height: 6.25%;
-        height: 8.8%;
+        height: 6.8%;
         background-color: var(--result-success-color);
         display: block;
-        border-radius: 2.5%;
         position: absolute;
         z-index: 10;
       }
 
       &--line-tip {
-        top: 57.5%;
-        left: 18.5%;
-        width: 31.25%;
         transform: rotate(45deg);
         animation-name: success-line-tip;
+        animation-fill-mode: forwards;
       }
 
       &--line-long {
-        top: 47.5%;
-        right: 10.4%;
-        width: 58.75%;
         transform: rotate(-45deg);
         animation-name: success-line-long;
+        animation-fill-mode: forwards;
       }
 
       @keyframes success-line-tip {
         0% {
-          width: 0;
+          top: 23.75%;
           left: 1.25%;
-          top: 25%;
+          width: 0;
         }
+
         54% {
+          top: 21.25%;
+          left: 2.5%;
           width: 0;
-          left: 1.25%;
-          top: 25%;
         }
+
         70% {
+          top: 43.75%;
+          left: -7.5%;
           width: 62.5%;
-          left: -10%;
-          top: 46.25%;
         }
+
         84% {
-          width: 21.25%;
-          left: 26.25%;
           top: 60%;
+          left: 26.25%;
+          width: 21.25%;
         }
+
         100% {
+          top: 56.25%;
+          left: 17.5%;
           width: 31.25%;
-          left: 18.5%;
-          top: 57.25%;
         }
       }
 
       @keyframes success-line-long {
         0% {
+          top: 67.5%;
+          right: 57.5%;
           width: 0;
-          right: 62%;
-          top: 72%;
         }
+
         65% {
+          top: 67.5%;
+          right: 57.5%;
           width: 0;
-          right: 62%;
-          top: 72%;
         }
+
         84% {
-          width: 68.75%;
+          top: 43.75%;
           right: 0;
-          top: 42.5%;
+          width: 68.75%;
         }
+
         100% {
-          width: 58.75%;
-          right: 10%;
           top: 47.5%;
+          right: 9.5%;
+          width: 58.75%;
         }
       }
 
       &--circle {
-        top: -5%;
-        left: -5%;
         z-index: 10;
         width: 100%;
         height: 100%;
         border-radius: 50%;
         position: absolute;
         box-sizing: content-box;
-        border: 4px solid var(--result-success-border-color);
+        border-style: solid;
+        border-color: var(--result-success-border-color);
       }
 
       &--fix {
         top: 10%;
-        width: 6.25%;
         left: 32.5%;
+        width: 8.75%;
+        height: 112.5%;
         z-index: 1;
-        height: 106.25%;
         position: absolute;
         transform: rotate(-45deg);
         background-color: #fff;
@@ -218,12 +219,15 @@
         0% {
           transform: rotate(-45deg);
         }
+
         5% {
           transform: rotate(-45deg);
         }
+
         12% {
           transform: rotate(-405deg);
         }
+
         100% {
           transform: rotate(-405deg);
         }
@@ -234,18 +238,21 @@
   &__title {
     font-size: var(--result-title-font-size);
     word-break: break-word;
-    position: relative;
     font-weight: var(--result-title-font-weight);
+    position: relative;
+    z-index: 1;
   }
 
   &__description {
     font-size: var(--result-description-font-size);
     word-break: break-word;
     position: relative;
+    z-index: 1;
     line-height: var(--result-description-line-height);
   }
 
   &__footer {
     position: relative;
+    z-index: 1;
   }
 }

@@ -8,14 +8,16 @@
   >
     <slot name="image">
       <div
+        ref="image"
         v-if="status"
         :class="classes(n('image'), n(`image--${status}`))"
         :style="{
           width: toSizeUnit(imageSize),
           height: toSizeUnit(imageSize),
+          borderWidth: `${borderSize}px`,
         }"
       >
-        <component :is="status" :duration="duration" />
+        <component :is="status" :duration="duration" :border-size="borderSize" />
       </div>
     </slot>
     <slot name="title">
@@ -31,12 +33,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { computed, defineComponent, onMounted, ref } from 'vue'
 import type { Ref } from 'vue'
 import { toNumber } from '@varlet/shared'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
-import { toSizeUnit } from '../utils/elements'
+import { toPxNum, toSizeUnit } from '../utils/elements'
 import Info from './Info.vue'
 import Error from './Error.vue'
 import Warning from './Warning.vue'
@@ -59,6 +61,13 @@ export default defineComponent({
   props,
   setup() {
     const opacity: Ref<number> = ref(0)
+    const image: Ref<null | HTMLElement> = ref(null)
+    const borderSize = ref()
+
+    onMounted(() => {
+      const height = image.value!.offsetHeight
+      borderSize.value = height * 0.05
+    })
 
     setTimeout(() => {
       opacity.value = 1
@@ -68,6 +77,8 @@ export default defineComponent({
       n,
       classes,
       toNumber,
+      image,
+      borderSize,
       opacity,
       toSizeUnit,
     }
