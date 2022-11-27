@@ -32,7 +32,7 @@ watchLang(use)
     </template>
   </var-result>
 
-  <app-type>error</app-type>
+  <app-type>warning</app-type>
   <var-result status="warning" title="Warning" description="This is warning description.">
     <template #footer>
       <var-button type="warning">warning</var-button>
