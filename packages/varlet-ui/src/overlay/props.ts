@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import { PropType, TeleportProps } from 'vue'
 
 export const props = {
   show: {
@@ -13,6 +13,9 @@ export const props = {
   },
   onClickOverlay: {
     type: Function as PropType<() => void>,
+  },
+  teleport: {
+    type: String as PropType<TeleportProps['to']>,
   },
   'onUpdate:show': {
     type: Function as PropType<(show: boolean) => void>,

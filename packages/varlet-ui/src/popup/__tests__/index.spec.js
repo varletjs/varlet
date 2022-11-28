@@ -24,6 +24,7 @@ const Wrapper = {
 }
 
 test('test popup show', async () => {
+  console.log(Wrapper, 222)
   const wrapper = mount(Wrapper)
   expect(wrapper.find('.var-popup').isVisible()).toBeFalsy()
   expect(wrapper.html()).toMatchSnapshot()

@@ -1,10 +1,11 @@
-import { defineComponent } from 'vue'
+import { defineComponent, Teleport } from 'vue'
 import { props } from './props'
 import { useZIndex } from '../context/zIndex'
-import { createNamespace } from '../utils/components'
+import { createNamespace, useTeleport } from '../utils/components'
 
 import '../styles/common.less'
 import './overlay.less'
+import { template } from 'lodash-es'
 
 const { n, classes } = createNamespace('overlay')
 
@@ -14,6 +15,7 @@ export default defineComponent({
   props,
   setup(props, { slots }) {
     const { zIndex } = useZIndex(() => props.show, 1)
+    const { disabled } = useTeleport()
     const hideOverlay = () => {
       const { onClickOverlay } = props
       onClickOverlay?.()
@@ -36,7 +38,14 @@ export default defineComponent({
       )
     }
     return () => {
-      const { show } = props
+      const { show, teleport } = props
+      if (teleport) {
+        return (
+          <Teleport to={teleport} disabled={disabled.value}>
+            {show && renderOverlay()}
+          </Teleport>
+        )
+      }
       return show && renderOverlay()
     }
   },
