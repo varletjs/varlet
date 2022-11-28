@@ -1,19 +1,13 @@
 <template>
   <Teleport :to="teleport" :disabled="!useTeleport">
     <Transition name="var-floating-actions-button-fade">
-      <div
-        v-show="overlay && show"
-        :class="`${n()}__overlay ${overlayClass}`"
-        :style="overlayStyle"
-        @click="handleOverlayClick"
-      ></div>
+      <div v-show="overlay && show" :class="n('overlay')" :style="overlayStyle" @click="handleOverlayClick"></div>
     </Transition>
-
     <var-menu
       v-model:show="show"
       ref="fabRef"
       :disabled="disabled"
-      :class="classes(n(), [true, `${n()}--${fabLocation}`], [disabled, `${n()}--disabled`])"
+      :class="classes(n(), n(`--${fabLocation}`), [disabled, n('--disabled')])"
       :trigger="trigger"
       :placement="actionsLocation"
       :default-style="false"
@@ -23,7 +17,7 @@
       @close="close"
       @closed="closed"
     >
-      <var-button :class="`${n()}--fab`" :disabled="disabled" :color="fabColor" var-floating-actions-button-cover round>
+      <var-button :class="n('--fab')" :disabled="disabled" :color="fabColor" var-floating-actions-button-cover round>
         <Transition name="var-floating-actions-button-fade">
           <slot :name="show ? 'active-icon' : 'inactive-icon'">
             <var-icon :color="fabIconColor" :size="fabIconSize" :name="show ? activeIcon : inactiveIcon" />
@@ -32,9 +26,9 @@
       </var-button>
 
       <template #menu>
-        <div :class="`${n()}--actions`" :style="actionsStyle">
+        <div :class="n('--actions')" :style="actionsStyle">
           <var-button
-            :class="`${n()}--actions--action`"
+            :class="n('--actions--action')"
             :style="[
               actionStyle,
               {
