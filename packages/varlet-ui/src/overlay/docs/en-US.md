@@ -39,7 +39,7 @@ const contentOverlay = ref(false)
   </var-space>
 
   <var-overlay v-model:show="contentOverlay">
-    <div class="popup-example-block">
+    <div class="popup-example-block" @click.stop>
       As he came into the window.
       It was the sound of a crescendo.
       He came into her apartment.
@@ -80,12 +80,12 @@ const overlayStyle = ref(false)
   
   <var-overlay 
     v-model:show="overlayClass"
-    overlay-class="popup-example-custom-overlay"
+    class="popup-example-custom-overlay"
   />
 
   <var-overlay
     v-model:show="overlayStyle"
-    :overlay-style="{backgroundColor: 'rgba(0, 0, 0, 0.3)'}"
+    :style="{backgroundColor: 'rgba(0, 0, 0, 0.3)'}"
   />
 </template>
 
@@ -127,12 +127,12 @@ const clickOverlay = ref(false)
 
 ### Props
 
-| Prop            | Description                    | 	Type     | Default |
-|-----------------|--------------------------------|-----------|---------|
-| `v-model:show`  | Whether to display the Overlay | _boolean_ | `false` |
-| `overlay-class` | Custom overlay class           | _string_  | `-`     |
-| `overlay-style` | Custom overlay style           | _object_  | `-`     |
-
+| Prop           | Description                        | 	Type                 | Default |
+|----------------|------------------------------------|-----------------------|---------|
+| `v-model:show` | Whether to display the Overlay     | _boolean_             | `false` |
+| `class`        | Custom class                       | _string_              | `-`     |
+| `style`        | Custom style                       | _object_              | `-`     |
+| `teleport`     | The location of the Popup to mount | _TeleportProps['to']_ | `-`     |
 ### Events
 
 | Event           | Description                         | Arguments |

@@ -39,7 +39,7 @@ const contentOverlay = ref(false)
   </var-space>
 
   <var-overlay v-model:show="contentOverlay">
-    <div class="popup-example-block">
+    <div class="popup-example-block" @click.stop>
       素胚勾勒出青花笔锋浓转淡, 
       瓶身描绘的牡丹一如你初妆, 
       冉冉檀香透过窗心事我了然, 
@@ -80,12 +80,12 @@ const overlayStyle = ref(false)
   
   <var-overlay 
     v-model:show="overlayClass"
-    overlay-class="popup-example-custom-overlay"
+    class="popup-example-custom-overlay"
   />
 
   <var-overlay
     v-model:show="overlayStyle"
-    :overlay-style="{backgroundColor: 'rgba(0, 0, 0, 0.3)'}"
+    :style="{backgroundColor: 'rgba(0, 0, 0, 0.3)'}"
   />
 </template>
 
@@ -127,12 +127,12 @@ const event = ref(false)
 
 ### 属性
 
-| 参数                       | 说明                                               | 类型                    | 默认值      |
-|--------------------------|--------------------------------------------------|-----------------------|----------|
-| `v-model:show`           | 是否显示遮罩层                                          | _boolean_             | `false`  |
-| `overlay-class`          | 自定义遮罩层的 class                                    | _string_              | `-`      |
-| `overlay-style`          | 自定义遮罩层的 style                                    | _object_              | `-`      |
-
+| 参数             | 说明       | 类型                    | 默认值     |
+|----------------|----------|-----------------------|---------|
+| `v-model:show` | 是否显示遮罩层  | _boolean_             | `false` |
+| `class`        | 自定义class | _string_              | `-`     |
+| `style`        | 自定义style | _object_              | `-`     |
+| `teleport`     | 弹出层挂载的位置 | _TeleportProps['to']_ | `-`     |
 ### 事件
 
 | 事件名             | 说明           | 参数  |

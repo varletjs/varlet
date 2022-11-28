@@ -5,7 +5,6 @@ import { createNamespace, useTeleport } from '../utils/components'
 
 import '../styles/common.less'
 import './overlay.less'
-import { template } from 'lodash-es'
 
 const { n, classes } = createNamespace('overlay')
 
@@ -23,13 +22,12 @@ export default defineComponent({
     }
 
     const renderOverlay = () => {
-      const { overlayClass = '', overlayStyle } = props
       return (
         <div
-          class={classes(n('overlay'), overlayClass)}
+          class={classes(n('overlay'), props.class)}
           style={{
             zIndex: zIndex.value - 1,
-            ...overlayStyle,
+            ...props.style,
           }}
           onClick={hideOverlay}
         >
