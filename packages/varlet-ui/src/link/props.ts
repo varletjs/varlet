@@ -43,10 +43,6 @@ export const props = {
   textColor: {
     type: String,
   },
-  defaultStyle: {
-    type: Boolean,
-    default: false,
-  },
   onClick: {
     type: Function as PropType<(e: Event) => void>,
   },

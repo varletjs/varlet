@@ -26,7 +26,7 @@ Link component for hyperlink to web pages
   <var-space :size="[10, 10]">
     <var-link 
       type="primary"
-      href="https://varlet.gitee.io/varlet-ui/#/en-US/index" 
+      href="https://varlet.gitee.io/varlet-ui/#/en-US/home"
       target="_blank"
     >
       Href
@@ -72,7 +72,7 @@ Link component for hyperlink to web pages
 ```html
 <template>
   <var-link 
-    href="https://varlet.gitee.io/varlet-ui" 
+    href="https://varlet.gitee.io/varlet-ui/#/en-US/home" 
     target="_blank" 
     underline="none"
   >

@@ -26,7 +26,7 @@
   <var-space :size="[10, 10]">
     <var-link 
       type="primary" 
-      href="https://varlet.gitee.io/varlet-ui/#/zh-CN/index" 
+      href="https://varlet.gitee.io/varlet-ui/#/zh-CN/home" 
       target="_blank"
     >
       href 链接
@@ -72,7 +72,7 @@
 ```html
 <template>
   <var-link
-    href="https://varlet.gitee.io/varlet-ui/#/zh-CN/index"
+    href="https://varlet.gitee.io/varlet-ui/#/zh-CN/home"
     target="_blank"
     underline="none"
   >
