@@ -38,7 +38,7 @@ import { defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
 import { toNumber } from '@varlet/shared'
 
-const { n, classes } = createNamespace('result__image--success')
+const { n, classes } = createNamespace('result__success')
 
 export default defineComponent({
   props: {

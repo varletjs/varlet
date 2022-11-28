@@ -7,17 +7,17 @@
     }"
   >
     <slot name="image">
-      <div
-        ref="image"
-        v-if="status"
-        :class="classes(n('image'), n(`image--${status}`))"
-        :style="{
-          width: toSizeUnit(imageSize),
-          height: toSizeUnit(imageSize),
-          borderWidth: `${borderSize}px`,
-        }"
-      >
-        <component :is="status" :duration="duration" :border-size="borderSize" />
+      <div :class="n('image-container')" v-if="status" ref="image">
+        <div
+          :class="classes(n('image'), n(status))"
+          :style="{
+            width: circleSize ? toSizeUnit(circleSize) : null,
+            height: circleSize ? toSizeUnit(circleSize) : null,
+            borderWidth: `${borderSize}px`,
+          }"
+        >
+          <component :is="status" :duration="duration" :border-size="borderSize" />
+        </div>
       </div>
     </slot>
     <slot name="title">
@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, ref } from 'vue'
+import { computed, defineComponent, onMounted, ref, onBeforeUnmount, ComputedRef } from 'vue'
 import type { Ref } from 'vue'
 import { toNumber } from '@varlet/shared'
 import { props } from './props'
@@ -59,18 +59,37 @@ export default defineComponent({
     Empty,
   },
   props,
-  setup() {
+  setup(props) {
     const opacity: Ref<number> = ref(0)
     const image: Ref<null | HTMLElement> = ref(null)
     const borderSize = ref()
 
+    const circleSize: ComputedRef<number | null> = computed(() => {
+      if (props.imageSize) {
+        return toPxNum(props.imageSize) - 2 * borderSize.value
+      }
+      if (image.value?.offsetHeight) {
+        return image.value!.offsetHeight - 2 * borderSize.value
+      }
+
+      return null
+    })
+
     onMounted(() => {
+      opacity.value = 1
       const height = image.value!.offsetHeight
       borderSize.value = height * 0.05
     })
 
-    setTimeout(() => {
-      opacity.value = 1
+    const setBorder = () => {
+      const height = image.value!.offsetHeight
+      borderSize.value = height * 0.05
+    }
+
+    window.addEventListener('resize', setBorder)
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('resize', setBorder)
     })
 
     return {
@@ -79,6 +98,7 @@ export default defineComponent({
       toNumber,
       image,
       borderSize,
+      circleSize,
       opacity,
       toSizeUnit,
     }

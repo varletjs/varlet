@@ -16,6 +16,7 @@ import picker from './picker'
 import popup from './popup'
 import pullRefresh from './pullRefresh'
 import radio from './radio'
+import result from './result'
 import select from './select'
 import skeleton from './skeleton'
 import steps from './steps'
@@ -72,4 +73,5 @@ export default {
   ...bottomNavigation,
   ...bottomNavigationItem,
   ...menu,
+  ...result,
 } as StyleVars
