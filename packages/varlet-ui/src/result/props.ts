@@ -7,7 +7,6 @@ function statusValidator(status: string) {
 export const props = {
   imageSize: {
     type: [String, Number],
-    default: 80,
   },
   status: {
     type: String as PropType<'info' | 'success' | 'warning' | 'error' | 'question' | 'empty'>,

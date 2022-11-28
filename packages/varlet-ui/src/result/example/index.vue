@@ -1,7 +1,8 @@
 <script setup>
 import VarResult from '../index'
 import VarButton from '../../button'
-import { AppType, watchLang } from '@varlet/cli/client'
+import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
+import dark from '../../themes/dark'
 import { use } from './locale'
 import { ref } from 'vue'
 
@@ -15,6 +16,7 @@ const handleClickSuccess = () => {
 }
 
 watchLang(use)
+watchDarkMode(dark)
 </script>
 
 <template>
@@ -22,9 +24,8 @@ watchLang(use)
   <var-result
     v-if="showSuccessResult"
     status="success"
-    image-size="300"
-    title="Success"
-    description="This is success description."
+    title="SuccessSuccessSuccess"
+    description="This is success description.This is success description.This is success description."
   >
     <template #footer>
       <var-button type="success" @click="handleClickSuccess">success</var-button>
