@@ -55,9 +55,9 @@ watchDarkMode(dark)
     </var-button>
   </var-space>
 
-  <var-overlay v-model:show="overlayClass" overlay-class="popup-example-custom-overlay" />
+  <var-overlay v-model:show="overlayClass" class="popup-example-custom-overlay" />
 
-  <var-overlay v-model:show="overlayStyle" :overlay-style="{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }" />
+  <var-overlay v-model:show="overlayStyle" :style="{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }" />
 
   <app-type>{{ pack.event }}</app-type>
   <var-space direction="column" :size="[10, 0]">

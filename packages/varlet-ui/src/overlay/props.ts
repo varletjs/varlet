@@ -5,10 +5,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  overlayClass: {
+  class: {
     type: String,
   },
-  overlayStyle: {
+  style: {
     type: Object,
   },
   onClickOverlay: {
