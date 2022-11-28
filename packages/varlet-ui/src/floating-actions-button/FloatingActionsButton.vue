@@ -28,25 +28,26 @@
       <template #menu>
         <div :class="n('--actions')" :style="actionsStyle">
           <var-button
+            v-for="(item, index) in actions"
             :class="n('--actions--action')"
             :style="[
               actionStyle,
               {
-                width: toSizeUnit(item?.buttonSize ?? actionDefault.buttonSize),
-                height: toSizeUnit(item?.buttonSize ?? actionDefault.buttonSize),
+                width: toSizeUnit(item.buttonSize),
+                height: toSizeUnit(item.buttonSize),
               },
             ]"
-            :color="item?.buttonColor ?? actionDefault.buttonColor"
-            v-for="(item, index) in actions"
+            :color="item.buttonColor"
             :key="index"
             @click="handleActionClick(item)"
             round
           >
             <var-icon
-              :color="item?.iconColor ?? actionDefault.iconColor"
-              :size="item?.iconSize ?? actionDefault.iconSize"
-              :name="item?.icon ?? actionDefault.icon"
-              :namespace="item?.iconNamespace ?? actionDefault.iconNamespace"
+              :class="n('--actions--action--icon')"
+              :name="item.icon || 'heart'"
+              :color="item.iconColor"
+              :size="item.iconSize"
+              :namespace="item.iconNamespace"
             />
           </var-button>
         </div>
@@ -68,14 +69,6 @@ const { n, classes } = createNamespace('floating-actions-button')
 
 const actionMargin = toSizeUnit('8px')
 const actionsMargin = toSizeUnit('16px')
-const actionDefault = {
-  icon: 'heart',
-  iconColor: 'rgb(255, 255, 255)',
-  iconSize: 24,
-  iconNamespace: 'var-icon',
-  buttonColor: 'var(--color-primary)',
-  buttonSize: 40,
-}
 
 export default defineComponent({
   name: 'VarFloatingActionsButton',
@@ -178,7 +171,6 @@ export default defineComponent({
     return {
       actionStyle,
       actionsStyle,
-      actionDefault,
       close,
       closed,
       classes,
