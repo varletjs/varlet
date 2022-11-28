@@ -24,7 +24,13 @@ Link component for hyperlink to web pages
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-link type="primary" href="https://varlet.gitee.io/varlet-ui/#/en-US/index" target="_blank">Href</var-link>
+    <var-link 
+      type="primary"
+      href="https://varlet.gitee.io/varlet-ui/#/en-US/index" 
+      target="_blank"
+    >
+      Href
+    </var-link>
     <var-link type="primary" to="/button">Router Link</var-link>
   </var-space>
 </template>
@@ -65,7 +71,11 @@ Link component for hyperlink to web pages
 
 ```html
 <template>
-  <var-link href="https://varlet.gitee.io/varlet-ui" target="_blank" underline="none">
+  <var-link 
+    href="https://varlet.gitee.io/varlet-ui" 
+    target="_blank" 
+    underline="none"
+  >
     <var-button type="primary">To Home</var-button>
   </var-link>
 </template>
@@ -86,6 +96,12 @@ Link component for hyperlink to web pages
 | `target`     | Same as the native `target` attribute                                             | _string_ | `-`      |
 | `to`         | `router-link` `to`, will render as `<router-link />`                              | _string \| object_  | `-`        |
 | `replace`    | `router-link` `replace`                                                           | _boolean_ | `false`  |
+
+### Events
+
+| Event        | Description                                                                                   | Arguments      |
+| ------------ |-----------------------------------------------------------------------------------------------| -------------- |
+| `click`      | Triggered when the link is clicked | `event: Event` |
 
 ### Slots
 
