@@ -40,7 +40,7 @@ watchDarkMode(dark)
   </var-space>
 
   <var-overlay v-model:show="contentOverlay">
-    <div class="popup-example-block">
+    <div class="popup-example-block" @click.stop>
       {{ pack.text }}
     </div>
   </var-overlay>
