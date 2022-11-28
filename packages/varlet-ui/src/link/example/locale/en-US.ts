@@ -8,7 +8,7 @@ export default {
   dangerLink: 'Danger Link',
   mode: 'Link Mode',
   hrefLink: '#/en-US/index',
-  toLink: '/button',
+  toLink: '/button?language=en-US&platform=mobile&replace=button',
   withHref: 'Href',
   withRouterLink: 'Router Link',
   underline: 'Underline',
