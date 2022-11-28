@@ -7,7 +7,7 @@ export default {
   warningLink: '警告链接',
   dangerLink: '危险链接',
   mode: '链接模式',
-  hrefLink: '/#/zh-CN/index',
+  hrefLink: '#/zh-CN/index',
   toLink: '/button',
   withHref: 'href 链接',
   withRouterLink: 'router-link 链接',
