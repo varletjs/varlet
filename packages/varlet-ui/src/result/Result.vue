@@ -1,19 +1,19 @@
 <template>
   <div
-    :class="classes(n())"
+    :class="classes(n(), n('$--box'))"
     :style="{
       opacity,
-      transition: `opacity ${toNumber(duration) * 2}ms`,
+      transition: `opacity ${duration * 2}ms`,
     }"
   >
     <slot name="image">
-      <div :class="n('image-container')" v-if="status" ref="image">
+      <div :class="n('image-container')" v-if="status">
         <div
           :class="classes(n('image'), n(status))"
           :style="{
-            width: circleSize ? toSizeUnit(circleSize) : null,
-            height: circleSize ? toSizeUnit(circleSize) : null,
-            borderWidth: `${borderSize}px`,
+            width: circleSize,
+            height: circleSize,
+            borderWidth: borderSize,
           }"
         >
           <component :is="status" :duration="duration" :border-size="borderSize" />
@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, ref, onBeforeUnmount, ComputedRef } from 'vue'
+import { computed, ComputedRef, defineComponent, onMounted, ref } from 'vue'
 import type { Ref } from 'vue'
 import { toNumber } from '@varlet/shared'
 import { props } from './props'
@@ -61,46 +61,32 @@ export default defineComponent({
   props,
   setup(props) {
     const opacity: Ref<number> = ref(0)
-    const image: Ref<null | HTMLElement> = ref(null)
-    const borderSize = ref()
-
-    const circleSize: ComputedRef<number | null> = computed(() => {
-      if (props.imageSize) {
-        return toPxNum(props.imageSize) - 2 * borderSize.value
-      }
-      if (image.value?.offsetHeight) {
-        return image.value!.offsetHeight - 2 * borderSize.value
-      }
-
-      return null
-    })
 
     onMounted(() => {
       opacity.value = 1
-      const height = image.value!.offsetHeight
-      borderSize.value = height * 0.05
     })
 
-    const setBorder = () => {
-      const height = image.value!.offsetHeight
-      borderSize.value = height * 0.05
-    }
+    const circleSize: ComputedRef<string> = computed(() => {
+      const { imageSize } = props
 
-    window.addEventListener('resize', setBorder)
+      return `calc(${imageSize ? toSizeUnit(imageSize) : 'var(--result-image-size)'} * 0.9)`
+    })
 
-    onBeforeUnmount(() => {
-      window.removeEventListener('resize', setBorder)
+    const borderSize: ComputedRef<string> = computed(() => {
+      const { imageSize } = props
+
+      return `calc(${imageSize ? toSizeUnit(imageSize) : 'var(--result-image-size)'} * 0.05)`
     })
 
     return {
       n,
       classes,
       toNumber,
-      image,
-      borderSize,
-      circleSize,
-      opacity,
+      toPxNum,
       toSizeUnit,
+      opacity,
+      circleSize,
+      borderSize,
     }
   },
 })

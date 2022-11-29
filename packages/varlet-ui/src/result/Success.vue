@@ -2,33 +2,33 @@
   <span
     :class="n('--cover-left')"
     :style="{
-      animationDuration: `${14 * toNumber(duration)}ms`,
+      animationDuration: `${14 * duration}ms`,
     }"
   />
   <span
     :class="classes(n('--line'), n('--line-tip'))"
     :style="{
-      animationDuration: `${2.5 * toNumber(duration)}ms`,
-      borderRadius: `${borderSize * 0.625}px`,
+      animationDuration: `${2.5 * duration}ms`,
+      borderRadius: `calc(${borderSize} * 0.625)`,
     }"
   />
   <span
     :class="classes(n('--line'), n('--line-long'))"
     :style="{
-      animationDuration: `${2.5 * toNumber(duration)}ms`,
-      borderRadius: `${borderSize * 0.625}px`,
+      animationDuration: `${2.5 * duration}ms`,
+      borderRadius: `calc(${borderSize} * 0.625)`,
     }"
   />
   <span
     ref="circle"
     :class="n('--circle')"
-    :style="{ left: `-${borderSize}px`, top: `-${borderSize}px`, borderWidth: `${borderSize}px` }"
+    :style="{ left: `-${borderSize}`, top: `-${borderSize}`, borderWidth: borderSize }"
   />
   <span :class="n('--fix')" />
   <span
     :class="n('--cover-right')"
     :style="{
-      animationDuration: `${14 * toNumber(duration)}ms`,
+      animationDuration: `${14 * duration}ms`,
     }"
   />
 </template>
@@ -43,7 +43,7 @@ const { n, classes } = createNamespace('result__success')
 export default defineComponent({
   props: {
     duration: {
-      type: [Number, String],
+      type: Number,
     },
     borderSize: {
       type: String,

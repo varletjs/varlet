@@ -1,3 +1,15 @@
 export default {
-  // Example locale
+  success: 'Success',
+  info: 'Info',
+  warning: 'Warning',
+  error: 'Error',
+  question: 'Question',
+  empty: 'Empty',
+  type: 'Result Type',
+  button: 'button',
+  successTitle: 'Success',
+  description: "Hi, I'm a result description.",
+  useSlot: 'Use Slots',
+  titleSlot: 'Title slot',
+  descriptionSlot: 'This is a slot for description.',
 }
