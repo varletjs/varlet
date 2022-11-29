@@ -19,7 +19,7 @@ export const props = {
     type: String,
   },
   duration: {
-    type: [Number, String],
+    type: Number,
     default: 300,
   },
 }
