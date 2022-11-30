@@ -48,7 +48,7 @@ watchDarkMode(dark)
   </var-result>
 
   <var-popup v-model:show="success">
-    <var-result status="success" :title="pack.success" :description="pack.description">
+    <var-result type="success" :title="pack.success" :description="pack.description">
       <template #footer>
         <var-button type="success" @click="success = false">{{ pack.button }}</var-button>
       </template>
@@ -56,7 +56,7 @@ watchDarkMode(dark)
   </var-popup>
 
   <var-popup v-model:show="error">
-    <var-result status="error" :title="pack.error" :description="pack.description">
+    <var-result type="error" :title="pack.error" :description="pack.description">
       <template #footer>
         <var-button type="danger" @click="error = false">{{ pack.button }}</var-button>
       </template>
@@ -64,7 +64,7 @@ watchDarkMode(dark)
   </var-popup>
 
   <var-popup v-model:show="warning">
-    <var-result status="warning" :title="pack.warning" :description="pack.description">
+    <var-result type="warning" :title="pack.warning" :description="pack.description">
       <template #footer>
         <var-button type="warning" @click="warning = false">{{ pack.button }}</var-button>
       </template>
@@ -72,7 +72,7 @@ watchDarkMode(dark)
   </var-popup>
 
   <var-popup v-model:show="info">
-    <var-result status="info" :title="pack.info" :description="pack.description">
+    <var-result type="info" :title="pack.info" :description="pack.description">
       <template #footer>
         <var-button type="info" @click="info = false">{{ pack.button }}</var-button>
       </template>
@@ -80,7 +80,7 @@ watchDarkMode(dark)
   </var-popup>
 
   <var-popup v-model:show="question">
-    <var-result status="question" :title="pack.question" :description="pack.description">
+    <var-result type="question" :title="pack.question" :description="pack.description">
       <template #footer>
         <var-button color="#607d8b" text-color="#fff" @click="question = false">{{ pack.button }}</var-button>
       </template>
@@ -88,7 +88,7 @@ watchDarkMode(dark)
   </var-popup>
 
   <var-popup v-model:show="empty">
-    <var-result status="empty" :title="pack.empty" :description="pack.description">
+    <var-result type="empty" :title="pack.empty" :description="pack.description">
       <template #footer>
         <var-button color="#9E9E9E" text-color="#fff" @click="empty = false">{{ pack.button }}</var-button>
       </template>

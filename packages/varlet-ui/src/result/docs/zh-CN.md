@@ -9,7 +9,7 @@
 ```html
 
 <template>
-  <var-result status="success" title="成功"/>
+  <var-result type="success" title="成功"/>
 </template>
 ```
 
@@ -18,7 +18,7 @@
 ```html
 
 <template>
-  <var-result status="success" title="成功" description="嗨~ 我是结果页的一段描述~"/>
+  <var-result type="success" title="成功" description="嗨~ 我是结果页的一段描述~"/>
 </template>
 ```
 
@@ -51,7 +51,7 @@
 | 参数          | 说明                                                              | 类型     | 默认值     |
 |-------------|-----------------------------------------------------------------|--------|---------|
 | `imageSize` | 图标尺寸                                                            | _string \| number_ | `-`  |
-| `status` | 图标状态，可选值为 `info` `success` `warning` `error` `question` `empty` | _string_  | `-`     |
+| `type` | 图标状态，可选值为 `info` `success` `warning` `error` `question` `empty` | _string_  | `-`     |
 |`title` | 标题                                                              | _string_  | `-`     |
 |`description` | 描述                                                              | _string_  | `-`     |
 |`duration`| 过度动画所需时间（ms）                                                    | _number_ | `300`   |
