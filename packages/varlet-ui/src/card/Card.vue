@@ -10,7 +10,7 @@
   >
     <div
       ref="cardFloater"
-      :class="classes(n('floater'))"
+      :class="n('floater')"
       :style="{
         width: floaterWidth,
         height: floaterHeight,
