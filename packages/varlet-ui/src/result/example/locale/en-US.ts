@@ -10,6 +10,7 @@ export default {
   successTitle: 'Success',
   description: "Hi, I'm a result description.",
   useSlot: 'Use Slots',
-  titleSlot: 'Title slot',
-  descriptionSlot: 'This is a slot for description.',
+  titleSlot: 'Looping',
+  descriptionSlot: '《You Are Not Alone》',
+  vme: 'More',
 }

@@ -29,16 +29,18 @@ It is used to show the results to users.
 <template>
   <var-result>
     <template #image>
-      <var-image src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+      <var-loading type="wave" color="#f44336" size="large" />
     </template>
     <template #title>
-      <h2>Title slot</h2>
+      <h2>Looping</h2>
     </template>
     <template #description>
-      <div>This is a slot for description.</div>
+      <div>《You Are Not Alone》</div>
+      <div>●━━━━━━━──5:45</div>
+      <div>⇆ ◁ ❚❚ ▷ ↻</div>
     </template>
     <template #footer>
-      <var-button type="success">Button</var-button>
+      <var-button type="success">More</var-button>
     </template>
   </var-result>
 </template>
