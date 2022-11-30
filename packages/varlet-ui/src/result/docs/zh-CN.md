@@ -73,6 +73,7 @@
 |------------------------------------|-------------------|
 |`--result-background`|`#fff`|
 |`--result-padding`|`24px`|
+|`--result-border-radius`|`3px`|
 |`--result-title-color`|`#333`|
 |`--result-title-font-size`|`32px`|
 |`--result-title-margin`|`15px 0 0 0`|

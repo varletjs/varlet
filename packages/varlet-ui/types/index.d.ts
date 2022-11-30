@@ -45,6 +45,7 @@ export * from './pullRefresh'
 export * from './radio'
 export * from './radioGroup'
 export * from './rate'
+export * from './result'
 export * from './ripple'
 export * from './row'
 export * from './select'
@@ -115,6 +116,7 @@ declare module 'vue' {
     VarRadio: typeof import('@varlet/ui')['_RadioComponent']
     VarRadioGroup: typeof import('@varlet/ui')['_RadioGroupComponent']
     VarRate: typeof import('@varlet/ui')['_RateComponent']
+    VarResult: typeof import('@varlet/ui')['_ResultComponent']
     VarRipple: typeof import('@varlet/ui')['_RippleComponent']
     VarRow: typeof import('@varlet/ui')['_RowComponent']
     VarSelect: typeof import('@varlet/ui')['_SelectComponent']

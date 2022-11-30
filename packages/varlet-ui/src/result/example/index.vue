@@ -47,7 +47,7 @@ watchDarkMode(dark)
     </template>
   </var-result>
 
-  <var-popup v-model:show="success">
+  <var-popup v-model:show="success" :close-on-click-overlay="false">
     <var-result type="success" :title="pack.success" :description="pack.description">
       <template #footer>
         <var-button type="success" @click="success = false">{{ pack.button }}</var-button>
@@ -55,7 +55,7 @@ watchDarkMode(dark)
     </var-result>
   </var-popup>
 
-  <var-popup v-model:show="error">
+  <var-popup v-model:show="error" :close-on-click-overlay="false">
     <var-result type="error" :title="pack.error" :description="pack.description">
       <template #footer>
         <var-button type="danger" @click="error = false">{{ pack.button }}</var-button>
@@ -63,7 +63,7 @@ watchDarkMode(dark)
     </var-result>
   </var-popup>
 
-  <var-popup v-model:show="warning">
+  <var-popup v-model:show="warning" :close-on-click-overlay="false">
     <var-result type="warning" :title="pack.warning" :description="pack.description">
       <template #footer>
         <var-button type="warning" @click="warning = false">{{ pack.button }}</var-button>
@@ -71,7 +71,7 @@ watchDarkMode(dark)
     </var-result>
   </var-popup>
 
-  <var-popup v-model:show="info">
+  <var-popup v-model:show="info" :close-on-click-overlay="false">
     <var-result type="info" :title="pack.info" :description="pack.description">
       <template #footer>
         <var-button type="info" @click="info = false">{{ pack.button }}</var-button>
@@ -79,7 +79,7 @@ watchDarkMode(dark)
     </var-result>
   </var-popup>
 
-  <var-popup v-model:show="question">
+  <var-popup v-model:show="question" :close-on-click-overlay="false">
     <var-result type="question" :title="pack.question" :description="pack.description">
       <template #footer>
         <var-button color="#607d8b" text-color="#fff" @click="question = false">{{ pack.button }}</var-button>
@@ -87,7 +87,7 @@ watchDarkMode(dark)
     </var-result>
   </var-popup>
 
-  <var-popup v-model:show="empty">
+  <var-popup v-model:show="empty" :close-on-click-overlay="false">
     <var-result type="empty" :title="pack.empty" :description="pack.description">
       <template #footer>
         <var-button color="#9E9E9E" text-color="#fff" @click="empty = false">{{ pack.button }}</var-button>
