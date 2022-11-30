@@ -4,12 +4,14 @@ function typeValidator(type: string) {
   return ['info', 'success', 'warning', 'error', 'question', 'empty'].includes(type)
 }
 
+export type ResultType = 'info' | 'success' | 'warning' | 'error' | 'question' | 'empty'
+
 export const props = {
   imageSize: {
     type: [String, Number],
   },
   type: {
-    type: String as PropType<'info' | 'success' | 'warning' | 'error' | 'question' | 'empty'>,
+    type: String as PropType<ResultType>,
     validator: typeValidator,
   },
   title: {
