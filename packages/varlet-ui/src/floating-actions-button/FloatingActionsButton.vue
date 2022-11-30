@@ -6,7 +6,6 @@
     <var-menu
       v-model:show="show"
       ref="fabRef"
-      :disabled="true"
       :class="classes(n(), n(`--${fabLocation}`), [disabled, n('--disabled')])"
       :trigger="trigger"
       :placement="actionsLocation"
@@ -23,7 +22,7 @@
         :color="fabColor"
         var-floating-actions-button-cover
         round
-        @click="handleMenuClick"
+        @click.stop="handleMenuClick"
       >
         <Transition name="var-floating-actions-button-fade">
           <slot :name="show ? 'active-icon' : 'inactive-icon'">
