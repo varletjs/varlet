@@ -27,18 +27,20 @@
 ```html
 
 <template>
-  <var-result>
+  <var-result class="var-elevation--1">
     <template #image>
-      <var-image src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+      <var-loading type="wave" color="#f44336" size="large" />
     </template>
     <template #title>
-      <h2>标题插槽</h2>
+      <h2>正在循环播放</h2>
     </template>
     <template #description>
-      <div>这是描述插槽</div>
+      <div>《耗子君不请我吃疯狂星期四》</div>
+      <div>●━━━━━━━──5:45</div>
+      <div>⇆ ◁ ❚❚ ▷ ↻</div>
     </template>
     <template #footer>
-      <var-button type="success">按钮</var-button>
+      <var-button type="success">v我50</var-button>
     </template>
   </var-result>
 </template>

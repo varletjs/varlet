@@ -3,7 +3,7 @@ import VarResult from '../index'
 import VarButton from '../../button'
 import VarPopup from '../../popup'
 import VarSpace from '../../space'
-import VarImage from '../../image'
+import VarLoading from '../../loading'
 import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { use, pack } from './locale'
@@ -34,16 +34,18 @@ watchDarkMode(dark)
   <app-type>{{ pack.useSlot }}</app-type>
   <var-result class="var-elevation--1">
     <template #image>
-      <var-image src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-loading type="wave" color="#f44336" size="large" />
     </template>
     <template #title>
       <h2>{{ pack.titleSlot }}</h2>
     </template>
     <template #description>
       <div>{{ pack.descriptionSlot }}</div>
+      <div>●━━━━━━━──5:45</div>
+      <div>⇆ ◁ ❚❚ ▷ ↻</div>
     </template>
     <template #footer>
-      <var-button type="success" @click="handleClickSuccess">success</var-button>
+      <var-button type="success">{{ pack.vme }}</var-button>
     </template>
   </var-result>
 

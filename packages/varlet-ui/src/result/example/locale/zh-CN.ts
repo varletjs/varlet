@@ -9,6 +9,7 @@ export default {
   button: '按钮',
   description: '嗨~ 我是结果页的一段描述~',
   useSlot: '使用插槽',
-  titleSlot: '标题插槽',
-  descriptionSlot: '这是描述插槽',
+  titleSlot: '正在循环播放',
+  descriptionSlot: '《耗子君不请我吃疯狂星期四》',
+  vme: 'v我50',
 }

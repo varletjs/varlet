@@ -294,6 +294,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Result 结果',
+          'en-US': 'Result',
+        },
+        doc: 'result',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Divider 分割线',
           'en-US': 'Divider',
         },
@@ -471,14 +479,6 @@ export default defineConfig({
           'en-US': 'TimePicker',
         },
         doc: 'time-picker',
-        type: 2,
-      },
-      {
-        text: {
-          'zh-CN': 'Result 结果',
-          'en-US': 'Result',
-        },
-        doc: 'result',
         type: 2,
       },
       {
