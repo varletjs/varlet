@@ -1,16 +1,16 @@
 import type { PropType } from 'vue'
 
-function statusValidator(status: string) {
-  return ['info', 'success', 'warning', 'error', 'question', 'empty'].includes(status)
+function typeValidator(type: string) {
+  return ['info', 'success', 'warning', 'error', 'question', 'empty'].includes(type)
 }
 
 export const props = {
   imageSize: {
     type: [String, Number],
   },
-  status: {
+  type: {
     type: String as PropType<'info' | 'success' | 'warning' | 'error' | 'question' | 'empty'>,
-    validator: statusValidator,
+    validator: typeValidator,
   },
   title: {
     type: String,

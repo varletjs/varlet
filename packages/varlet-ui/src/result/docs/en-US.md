@@ -9,7 +9,7 @@ It is used to show the results to users.
 ```html
 
 <template>
-  <var-result status="success" title="Success"/>
+  <var-result type="success" title="Success"/>
 </template>
 ```
 
@@ -18,7 +18,7 @@ It is used to show the results to users.
 ```html
 
 <template>
-  <var-result status="success" title="Success" description="Hi, I'm a result description."/>
+  <var-result type="success" title="Success" description="Hi, I'm a result description."/>
 </template>
 ```
 
@@ -48,13 +48,13 @@ It is used to show the results to users.
 
 ### Props
 
-| Prop          | Description                                                                         | Type     | Default     |
-|-------------|----------------------------------------------------------------------------|--------|---------|
-| `imageSize` | Image Size                                                                 | _string \| number_ | `-`  |
-| `status` | Image status，options `info` `success` `warning` `error` `question` `empty` | _string_  | `-`     |
-|`title` | The title of Result                                                        | _string_  | `-`     |
-|`description` | The description of Result                                                  | _string_  | `-`     |
-|`duration`| Time for animation（ms）                                                          | _number_ | `300`   |
+| Prop          | Description                                                              | Type     | Default     |
+|---------------|--------------------------------------------------------------------------|--------|---------|
+| `imageSize`   | Image Size                                                               | _string \| number_ | `-`  |
+| `type`        | Image type，options `info` `success` `warning` `error` `question` `empty` | _string_  | `-`     |
+| `title`       | The title of Result                                                      | _string_  | `-`     |
+| `description` | The description of Result                                                | _string_  | `-`     |
+| `duration`    | Time for animation（ms）                                                   | _number_ | `300`   |
 
 ### Slots
 

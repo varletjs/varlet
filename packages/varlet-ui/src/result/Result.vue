@@ -7,16 +7,16 @@
     }"
   >
     <slot name="image">
-      <div :class="n('image-container')" v-if="status">
+      <div :class="n('image-container')" v-if="type">
         <div
-          :class="classes(n('image'), n(status))"
+          :class="classes(n('image'), n(type))"
           :style="{
             width: circleSize,
             height: circleSize,
             borderWidth: borderSize,
           }"
         >
-          <component :is="status" :duration="duration" :border-size="borderSize" />
+          <component :is="type" :duration="duration" :border-size="borderSize" />
         </div>
       </div>
     </slot>
