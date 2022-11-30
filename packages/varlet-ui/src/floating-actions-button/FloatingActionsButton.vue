@@ -173,7 +173,6 @@ export default defineComponent({
     watch(
       () => show.value,
       (newValue) => {
-        console.log('show.value', newValue)
         call(props['onUpdate:show'], newValue)
       },
       { immediate: true }
