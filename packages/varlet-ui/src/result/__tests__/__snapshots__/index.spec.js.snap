@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test result snapshot 1`] = `
+"<div class=\\"var-result var--box\\" style=\\"opacity: 0; transition: opacity 600ms;\\">
+  <!--v-if-->
+  <!--v-if-->
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;
