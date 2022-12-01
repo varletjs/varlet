@@ -8,6 +8,7 @@ export default {
   type: 'Result 类型',
   button: '知道了',
   description: '嗨~ 我是结果页的一段描述~',
+  changeBackgroundColor: '修改背景色',
   useSlot: '使用插槽',
   titleSlot: '正在循环播放',
   descriptionSlot: '《疯狂星期四谁请我吃》',

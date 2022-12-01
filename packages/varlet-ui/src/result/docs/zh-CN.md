@@ -7,7 +7,6 @@
 ### 基本使用
 
 ```html
-
 <template>
   <var-result type="success" title="成功"/>
 </template>
@@ -22,12 +21,21 @@
 </template>
 ```
 
+### 修改背景色
+
+```html
+
+<template>
+  <var-result type="success" style="--result-background: #ffe3e3"></var-result>
+</template>
+```
+
 ### 使用插槽
 
 ```html
 
 <template>
-  <var-result class="var-elevation--1">
+  <var-result class="var-elevation--1" title="正在循环播放" description="《疯狂星期四谁请我吃》">
     <template #image>
       <svg class="music" viewBox="0 0 48 48">
         <circle cx="24" cy="24" fill="#37474f" r="19"/>
@@ -40,30 +48,24 @@
         <circle cx="24" cy="24" r="1"/>
       </svg>
     </template>
-    <template #title>
-      <h2>正在循环播放</h2>
-    </template>
-    <template #description>
-      <div>《耗子君不请我吃疯狂星期四》</div>
-    </template>
     <template #footer>
-      <var-button type="success">v我50</var-button>
+      <var-button type="danger">v我50</var-button>
     </template>
   </var-result>
 </template>
 
 <style>
   .music {
-    width: 200px;
+    width: 50vw;
     animation: rotate 6s linear infinite;
   }
 
   @keyframes rotate {
     from {
-      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
     }
     to {
-      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
     }
   }
 </style>
@@ -75,7 +77,7 @@
 
 | 参数          | 说明                                                              | 类型     | 默认值     |
 |-------------|-----------------------------------------------------------------|--------|---------|
-| `imageSize` | 图标尺寸                                                            | _string \| number_ | `-`  |
+| `image-size` | 图标尺寸                                                            | _string \| number_ | `-`  |
 | `type` | 图标状态，可选值为 `info` `success` `warning` `error` `question` `empty` | _string_  | `-`     |
 |`title` | 标题                                                              | _string_  | `-`     |
 |`description` | 描述                                                              | _string_  | `-`     |
@@ -94,30 +96,30 @@
 
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
-| 变量名                                | 默认值               |
-|------------------------------------|-------------------|
-|`--result-background`|`#fff`|
-|`--result-padding`|`24px`|
-|`--result-border-radius`|`3px`|
-|`--result-title-color`|`#333`|
-|`--result-title-font-size`|`32px`|
-|`--result-title-margin`|`15px 0 0 0`|
-|`--result-image-size`|`80px`|
-|`--result-title-font-weight`|`500`|
-|`--result-description-margin`|`10px 0 0 0`|
-|`--result-description-font-size`|`14px`|
-|`--result-description-color`|`#00000099`|
-|`--result-description-line-height`|`1.6`|
-|`--result-info-color`|`var(--color-info)`|
-|`--result-info-border-color`|`#00afef4c`|
-|`--result-success-color`|`var(--color-success)`|
-|`--result-success-border-color`|`#00c48f4c`|
-|`--result-error-color`|`var(--color-danger)`|
-|`--result-error-border-color`|`#f443364d`|
-|`--result-warning-color`|`var(--color-warning)`|
-|`--result-warning-border-color`|`#ff9f004d`|
-|`--result-question-color`|`#607d8`|
-|`--result-question-border-color`|`#607D8B4D`|
-|`--result-empty-color`|`#9e9e9e`|
-|`--result-empty-border-color`|`#9e9e9e4d`|
+| 变量名                                | 默认值                           |
+|------------------------------------|-------------------------------|
+| `--result-background`              | `#fff`                        |
+| `--result-padding`                 | `24px`                        |
+| `--result-border-radius`           | `3px`                         |
+| `--result-title-color`             | `#333`                        |
+| `--result-title-font-size`         | `32px`                        |
+| `--result-title-margin`            | `15px 0 0 0`                  |
+| `--result-image-size`              | `80px`                        |
+| `--result-title-font-weight`       | `500`                         |
+| `--result-description-margin`      | `10px 0 0 0`                  |
+| `--result-description-font-size`   | `14px`                        |
+| `--result-description-color`       | `rgba(0, 0, 0, 0.6)`          |
+| `--result-description-line-height` | `1.6`                         |
+| `--result-info-color`              | `var(--color-info)`           |
+| `--result-info-border-color`       | `rgba(0, 175, 239, 0.3)`      |
+| `--result-success-color`           | `var(--color-success)`        |
+| `--result-success-border-color`    | `rgba(0, 196, 143, 0.3)`      |
+| `--result-error-color`             | `var(--color-danger)`         |
+| `--result-error-border-color`      | `rgba(244, 67, 54, 0.3)`      |
+| `--result-warning-color`           | `var(--color-warning)`        |
+| `--result-warning-border-color`    | `rgba(255, 159, 0, 0.3)`      |
+| `--result-question-color`          | `#607d8`                      |
+| `--result-question-border-color`   | `rgba(96, 125, 139, 0.3)`     |
+| `--result-empty-color`             | `#9e9e9e`                     |
+| `--result-empty-border-color`      | `rgba(158, 158, 158, 0.3)`    |
 

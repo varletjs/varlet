@@ -24,7 +24,7 @@
     :class="n('--circle')"
     :style="{ left: `-${borderSize}`, top: `-${borderSize}`, borderWidth: borderSize }"
   />
-  <span :class="n('--fix')" />
+  <span :class="n('--line-fix')" />
   <span
     :class="n('--cover-right')"
     :style="{
