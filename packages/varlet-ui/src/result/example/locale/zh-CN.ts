@@ -6,10 +6,10 @@ export default {
   question: '疑问',
   empty: '空值',
   type: 'Result 类型',
-  button: '按钮',
+  button: '知道了',
   description: '嗨~ 我是结果页的一段描述~',
   useSlot: '使用插槽',
   titleSlot: '正在循环播放',
-  descriptionSlot: '《耗子君不请我吃疯狂星期四》',
-  vme: 'v我50',
+  descriptionSlot: '《疯狂星期四谁请我吃》',
+  vme: 'V我50',
 }
