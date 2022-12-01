@@ -54,6 +54,7 @@
 
 <style>
   .music {
+    width: 200px;
     animation: rotate 6s linear infinite;
   }
 
