@@ -1,19 +1,19 @@
 <template>
   <span
-    :class="n('--cover-left')"
+    :class="n('cover-left')"
     :style="{
       animationDuration: `${14 * duration}ms`,
     }"
   />
   <span
-    :class="classes(n('--line'), n('--line-tip'))"
+    :class="classes(n('line'), n('line-tip'))"
     :style="{
       animationDuration: `${2.5 * duration}ms`,
       borderRadius: `calc(${borderSize} * 0.625)`,
     }"
   />
   <span
-    :class="classes(n('--line'), n('--line-long'))"
+    :class="classes(n('line'), n('line-long'))"
     :style="{
       animationDuration: `${2.5 * duration}ms`,
       borderRadius: `calc(${borderSize} * 0.625)`,
@@ -21,12 +21,12 @@
   />
   <span
     ref="circle"
-    :class="n('--circle')"
+    :class="n('circle')"
     :style="{ left: `-${borderSize}`, top: `-${borderSize}`, borderWidth: borderSize }"
   />
-  <span :class="n('--line-fix')" />
+  <span :class="n('line-fix')" />
   <span
-    :class="n('--cover-right')"
+    :class="n('cover-right')"
     :style="{
       animationDuration: `${14 * duration}ms`,
     }"
