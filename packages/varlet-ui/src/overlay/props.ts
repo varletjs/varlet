@@ -5,12 +5,12 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  class: {
-    type: String,
-  },
-  style: {
-    type: Object,
-  },
+  // class: {
+  //   type: String,
+  // },
+  // style: {
+  //   type: Object,
+  // },
   onClickOverlay: {
     type: Function as PropType<() => void>,
   },
