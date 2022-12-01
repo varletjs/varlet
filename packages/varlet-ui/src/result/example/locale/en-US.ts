@@ -6,7 +6,7 @@ export default {
   question: 'Question',
   empty: 'Empty',
   type: 'Result Type',
-  button: 'button',
+  button: 'OK',
   successTitle: 'Success',
   description: "Hi, I'm a result description.",
   useSlot: 'Use Slots',
