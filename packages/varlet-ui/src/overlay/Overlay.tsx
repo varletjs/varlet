@@ -1,10 +1,15 @@
-import { defineComponent, Teleport } from 'vue'
+import { defineComponent, Teleport, useAttrs } from 'vue'
 import { props } from './props'
 import { useZIndex } from '../context/zIndex'
 import { createNamespace, useTeleport } from '../utils/components'
 
 import '../styles/common.less'
 import './overlay.less'
+
+interface attrsAttribute {
+  class?: string
+  style?: StyleSheet
+}
 
 const { n, classes } = createNamespace('overlay')
 
@@ -15,6 +20,7 @@ export default defineComponent({
   setup(props, { slots }) {
     const { zIndex } = useZIndex(() => props.show, 1)
     const { disabled } = useTeleport()
+    const attrs: attrsAttribute = useAttrs()
     const hideOverlay = () => {
       const { onClickOverlay } = props
       onClickOverlay?.()
@@ -22,29 +28,32 @@ export default defineComponent({
     }
 
     const renderOverlay = () => {
-      return (
-        <div
-          class={classes(n('overlay'), props.class)}
-          style={{
-            zIndex: zIndex.value - 1,
-            ...props.style,
-          }}
-          onClick={hideOverlay}
-        >
-          {slots.default?.()}
-        </div>
-      )
+      const { show } = props
+      if (show) {
+        return (
+          <div
+            class={classes(n(), attrs.class)}
+            style={{
+              zIndex: zIndex.value - 1,
+              ...attrs.style,
+            }}
+            onClick={hideOverlay}
+          >
+            {slots.default?.()}
+          </div>
+        )
+      }
     }
     return () => {
-      const { show, teleport } = props
+      const { teleport } = props
       if (teleport) {
         return (
           <Teleport to={teleport} disabled={disabled.value}>
-            {show && renderOverlay()}
+            {renderOverlay()}
           </Teleport>
         )
       }
-      return show && renderOverlay()
+      return renderOverlay()
     }
   },
 })
