@@ -9,6 +9,7 @@ export default {
   button: 'OK',
   successTitle: 'Success',
   description: "Hi, I'm a result description.",
+  changeBackgroundColor: 'Change BackGround Color',
   useSlot: 'Use Slots',
   titleSlot: 'Looping',
   descriptionSlot: '《You Are Not Alone》',

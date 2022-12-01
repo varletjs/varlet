@@ -26,13 +26,16 @@ watchDarkMode(dark)
     <var-button type="danger" block @click="error = true">{{ pack.error }}</var-button>
     <var-button type="info" block @click="info = true">{{ pack.info }}</var-button>
     <var-button type="warning" block @click="warning = true">{{ pack.warning }}</var-button>
-    <var-button color="var(--result-question-color)" text-color="#fff" block @click="question = true">{{
-      pack.question
-    }}</var-button>
-    <var-button color="var(--result-empty-color)" text-color="#fff" block @click="empty = true">{{
-      pack.empty
-    }}</var-button>
+    <var-button color="var(--result-question-color)" text-color="#fff" block @click="question = true"
+      >{{ pack.question }}
+    </var-button>
+    <var-button color="var(--result-empty-color)" text-color="#fff" block @click="empty = true"
+      >{{ pack.empty }}
+    </var-button>
   </var-space>
+
+  <app-type>{{ pack.changeBackgroundColor }}</app-type>
+  <var-result type="success" style="--result-background: #ffe3e3"></var-result>
 
   <app-type>{{ pack.useSlot }}</app-type>
   <var-result :title="pack.titleSlot" :description="pack.descriptionSlot">
@@ -44,12 +47,12 @@ watchDarkMode(dark)
           <path d="m41.022 29.815-17.022-5.815 5.815 17.022c5.257-1.796 9.41-5.95 11.207-11.207z" />
           <path d="m6.978 18.185 17.022 5.815-5.815-17.022c-5.257 1.797-9.41 5.95-11.207 11.207z" />
         </g>
-        <path d="m24 17c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z" fill="var(--color-warning)" />
+        <path d="m24 17c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z" fill="var(--color-danger)" />
         <circle cx="24" cy="24" r="1" />
       </svg>
     </template>
     <template #footer>
-      <var-button type="warning">{{ pack.vme }}</var-button>
+      <var-button type="danger">{{ pack.vme }}</var-button>
     </template>
   </var-result>
 
@@ -88,7 +91,9 @@ watchDarkMode(dark)
   <var-popup v-model:show="question">
     <var-result class="result" type="question" :title="pack.question" :description="pack.description">
       <template #footer>
-        <var-button color="#607d8b" text-color="#fff" @click="question = false">{{ pack.button }}</var-button>
+        <var-button color="var(--result-question-color)" text-color="#fff" @click="question = false"
+          >{{ pack.button }}
+        </var-button>
       </template>
     </var-result>
   </var-popup>
@@ -96,7 +101,9 @@ watchDarkMode(dark)
   <var-popup v-model:show="empty">
     <var-result class="result" type="empty" :title="pack.empty" :description="pack.description">
       <template #footer>
-        <var-button color="#9e9e9e" text-color="#fff" @click="empty = false">{{ pack.button }}</var-button>
+        <var-button color="var(--result-empty-color)" text-color="#fff" @click="empty = false"
+          >{{ pack.button }}
+        </var-button>
       </template>
     </var-result>
   </var-popup>
