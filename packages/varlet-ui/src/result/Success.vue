@@ -1,21 +1,16 @@
 <template>
-  <span
-    :class="n('success-cover-left')"
-    :style="{
-      animationDuration: animation ? `${14 * duration}ms` : '0ms',
-    }"
-  />
+  <span :class="n('success-cover-left')" />
   <span
     :class="classes(n('success-line'), n('success-line-tip'))"
     :style="{
-      animationDuration: animation ? `${2.5 * duration}ms` : '0ms',
+      animationDuration: animation ? `750ms` : '0ms',
       borderRadius: `calc(${borderSize} * 0.625)`,
     }"
   />
   <span
     :class="classes(n('success-line'), n('success-line-long'))"
     :style="{
-      animationDuration: animation ? `${2.5 * duration}ms` : '0ms',
+      animationDuration: animation ? `750ms` : '0ms',
       borderRadius: `calc(${borderSize} * 0.625)`,
     }"
   />
@@ -28,7 +23,7 @@
   <span
     :class="n('success-cover-right')"
     :style="{
-      animationDuration: animation ? `${14 * duration}ms` : '0ms',
+      animationDuration: animation ? `4250ms` : '0ms',
     }"
   />
 </template>
@@ -42,9 +37,6 @@ const { n, classes } = createNamespace('result')
 
 export default defineComponent({
   props: {
-    duration: {
-      type: Number,
-    },
     animation: {
       type: Boolean,
     },
