@@ -35,6 +35,10 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  defaultStyle: {
+    type: Boolean,
+    default: true,
+  },
   teleport: {
     type: String as PropType<TeleportProps['to']>,
   },

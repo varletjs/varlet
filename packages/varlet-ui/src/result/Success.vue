@@ -1,34 +1,34 @@
 <template>
   <span
-    :class="n('cover-left')"
+    :class="n('success-cover-left')"
     :style="{
-      animationDuration: `${14 * duration}ms`,
+      animationDuration: animation ? `${14 * duration}ms` : '0ms',
     }"
   />
   <span
-    :class="classes(n('line'), n('line-tip'))"
+    :class="classes(n('success-line'), n('success-line-tip'))"
     :style="{
-      animationDuration: `${2.5 * duration}ms`,
+      animationDuration: animation ? `${2.5 * duration}ms` : '0ms',
       borderRadius: `calc(${borderSize} * 0.625)`,
     }"
   />
   <span
-    :class="classes(n('line'), n('line-long'))"
+    :class="classes(n('success-line'), n('success-line-long'))"
     :style="{
-      animationDuration: `${2.5 * duration}ms`,
+      animationDuration: animation ? `${2.5 * duration}ms` : '0ms',
       borderRadius: `calc(${borderSize} * 0.625)`,
     }"
   />
   <span
     ref="circle"
-    :class="n('circle')"
+    :class="n('success-circle')"
     :style="{ left: `-${borderSize}`, top: `-${borderSize}`, borderWidth: borderSize }"
   />
-  <span :class="n('line-fix')" />
+  <span :class="n('success-line-fix')" />
   <span
-    :class="n('cover-right')"
+    :class="n('success-cover-right')"
     :style="{
-      animationDuration: `${14 * duration}ms`,
+      animationDuration: animation ? `${14 * duration}ms` : '0ms',
     }"
   />
 </template>
@@ -38,12 +38,15 @@ import { defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
 import { toNumber } from '@varlet/shared'
 
-const { n, classes } = createNamespace('result__success')
+const { n, classes } = createNamespace('result')
 
 export default defineComponent({
   props: {
     duration: {
       type: Number,
+    },
+    animation: {
+      type: Boolean,
     },
     borderSize: {
       type: String,
@@ -58,7 +61,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style lang="less">
-@import './result.less';
-</style>

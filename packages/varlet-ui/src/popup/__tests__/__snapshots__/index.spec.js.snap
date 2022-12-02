@@ -16,7 +16,7 @@ exports[`test popup show 2`] = `
   <div class=\\"var--box var-popup\\" style=\\"z-index: 2001;\\">
     <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
     <transition-stub>
-      <div class=\\"var-popup__content var-elevation--3 var-popup--center\\" style=\\"z-index: 2003;\\"> default slot content </div>
+      <div class=\\"var-popup__content var-popup--center var-popup--content-background-color var-elevation--3\\" style=\\"z-index: 2003;\\"> default slot content </div>
     </transition-stub>
   </div>
 </transition-stub>"

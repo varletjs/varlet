@@ -12,6 +12,7 @@ export const props = {
   },
   type: {
     type: String as PropType<ResultType>,
+    default: 'success',
     validator: typeValidator,
   },
   title: {
@@ -20,8 +21,8 @@ export const props = {
   description: {
     type: String,
   },
-  duration: {
-    type: Number,
-    default: 300,
+  animation: {
+    type: Boolean,
+    default: true,
   },
 }

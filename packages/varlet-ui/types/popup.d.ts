@@ -12,6 +12,7 @@ export interface PopupProps extends BasicAttributes {
   overlayStyle?: Record<string, any>
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
+  defaultStyle?: boolean
   teleport?: TeleportProps['to']
   onOpen?: () => void
   onOpened?: () => void

@@ -63,7 +63,12 @@ export default defineComponent({
     const renderContent = () => {
       return (
         <div
-          class={classes(n('content'), n('$-elevation--3'), n(`--${props.position}`))}
+          class={classes(
+            n('content'),
+            n(`--${props.position}`),
+            [props.defaultStyle, n('--content-background-color')],
+            [props.defaultStyle, n('$-elevation--3')]
+          )}
           style={{ zIndex: zIndex.value }}
           {...attrs}
         >
