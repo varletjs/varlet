@@ -81,16 +81,10 @@ const empty = ref(false)
 
 <template>
   <var-space direction="column" size="large">
-    <var-button type="success" block @click="success = true">
-      成功
-    </var-button>
-    <var-button type="danger" block @click="error = true">
-      错误
-    </var-button>
-    <var-button type="info" block @click="info = true">
-      信息
-    </var-button>
+    <var-button type="success" block @click="success = true">成功</var-button>
     <var-button type="warning" block @click="warning = true">警告</var-button>
+    <var-button type="info" block @click="info = true">信息</var-button>
+    <var-button type="danger" block @click="error = true">错误</var-button>
     <var-button 
       color="var(--result-question-color)"
       text-color="#fff"
@@ -117,16 +111,8 @@ const empty = ref(false)
     </var-result>
   </var-popup>
 
-  <var-popup :default-style="false" v-model:show="error">
-    <var-result class="result" type="error" title="成功" description="嗨~ 我是结果页的一段描述~">
-      <template #footer>
-        <var-button type="danger" @click="error = false">知道了</var-button>
-      </template>
-    </var-result>
-  </var-popup>
-
   <var-popup :default-style="false" v-model:show="warning">
-    <var-result class="result" type="warning" title="成功" description="嗨~ 我是结果页的一段描述~">
+    <var-result class="result" type="warning" title="警告" description="嗨~ 我是结果页的一段描述~">
       <template #footer>
         <var-button type="warning" @click="warning = false">知道了</var-button>
       </template>
@@ -134,15 +120,23 @@ const empty = ref(false)
   </var-popup>
 
   <var-popup :default-style="false" v-model:show="info">
-    <var-result class="result" type="info" title="成功" description="嗨~ 我是结果页的一段描述~">
+    <var-result class="result" type="info" title="信息" description="嗨~ 我是结果页的一段描述~">
       <template #footer>
         <var-button type="info" @click="info = false">知道了</var-button>
       </template>
     </var-result>
   </var-popup>
 
+  <var-popup :default-style="false" v-model:show="error">
+    <var-result class="result" type="error" title="错误" description="嗨~ 我是结果页的一段描述~">
+      <template #footer>
+        <var-button type="danger" @click="error = false">知道了</var-button>
+      </template>
+    </var-result>
+  </var-popup>
+
   <var-popup :default-style="false" v-model:show="question">
-    <var-result class="result" type="question" title="成功" description="嗨~ 我是结果页的一段描述~">
+    <var-result class="result" type="question" title="疑问" description="嗨~ 我是结果页的一段描述~">
       <template #footer>
         <var-button 
           color="var(--result-question-color)" 
@@ -156,7 +150,7 @@ const empty = ref(false)
   </var-popup>
 
   <var-popup :default-style="false" v-model:show="empty">
-    <var-result class="result" type="empty" title="成功" description="嗨~ 我是结果页的一段描述~">
+    <var-result class="result" type="empty" title="空值" description="嗨~ 我是结果页的一段描述~">
       <template #footer>
         <var-button 
           color="var(--result-empty-color)"

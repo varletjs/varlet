@@ -1,7 +1,7 @@
 export default {
   basicUsage: '基本使用',
   success: '成功',
-  info: '消息',
+  info: '信息',
   warning: '警告',
   error: '错误',
   question: '疑问',
