@@ -10,7 +10,7 @@
             borderWidth: borderSize,
           }"
         >
-          <component :is="type" :duration="300" :border-size="borderSize" :animation="animation" />
+          <component :is="type" :border-size="borderSize" :animation="animation" />
         </div>
       </div>
     </slot>
