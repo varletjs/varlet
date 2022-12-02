@@ -10,7 +10,7 @@
   <span
     :class="classes(n('success-line'), n('success-line-long'))"
     :style="{
-      animationDuration: animation ? `750ms` : '0ms',
+      animationDuration: animation ? `770ms` : '0ms',
       borderRadius: `calc(${borderSize} * 0.625)`,
     }"
   />
