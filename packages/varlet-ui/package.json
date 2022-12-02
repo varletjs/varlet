@@ -21,8 +21,7 @@
     "es",
     "umd",
     "highlight",
-    "types",
-    "CHANGELOG.md"
+    "types"
   ],
   "author": "haoziqaq <357229046@qq.com>",
   "license": "MIT",
