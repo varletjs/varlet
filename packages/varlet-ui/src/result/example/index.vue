@@ -37,21 +37,21 @@ watchDarkMode(dark)
           <path d="m41.022 29.815-17.022-5.815 5.815 17.022c5.257-1.796 9.41-5.95 11.207-11.207z" />
           <path d="m6.978 18.185 17.022 5.815-5.815-17.022c-5.257 1.797-9.41 5.95-11.207 11.207z" />
         </g>
-        <path d="m24 17c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z" fill="var(--color-danger)" />
+        <path d="m24 17c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z" fill="#fff" />
         <circle cx="24" cy="24" r="1" />
       </svg>
     </template>
     <template #footer>
-      <var-button type="danger">{{ pack.vme }}</var-button>
+      <var-button color="var(--result-question-color)" text-color="#fff">{{ pack.vme }}</var-button>
     </template>
   </var-result>
 
   <app-type>{{ pack.type }}</app-type>
   <var-space direction="column" size="large">
     <var-button type="success" block @click="success = true">{{ pack.success }}</var-button>
-    <var-button type="danger" block @click="error = true">{{ pack.error }}</var-button>
-    <var-button type="info" block @click="info = true">{{ pack.info }}</var-button>
     <var-button type="warning" block @click="warning = true">{{ pack.warning }}</var-button>
+    <var-button type="info" block @click="info = true">{{ pack.info }}</var-button>
+    <var-button type="danger" block @click="error = true">{{ pack.error }}</var-button>
     <var-button color="var(--result-question-color)" text-color="#fff" block @click="question = true">
       {{ pack.question }}
     </var-button>
