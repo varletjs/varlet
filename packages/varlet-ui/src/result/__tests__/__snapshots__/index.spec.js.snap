@@ -3,7 +3,7 @@
 exports[`test result snapshot 1`] = `
 "<div class=\\"var-result var--box\\">
   <div class=\\"var-result__image-container\\">
-    <div class=\\"var-result__image var-result__success\\"><span class=\\"var-result__success-cover-left\\"></span><span class=\\"var-result__success-line var-result__success-line-tip\\" style=\\"animation-duration: 750ms; border-radius: calc(calc(var(--result-image-size) * 0.05) * 0.625);\\"></span><span class=\\"var-result__success-line var-result__success-line-long\\" style=\\"animation-duration: 750ms; border-radius: calc(calc(var(--result-image-size) * 0.05) * 0.625);\\"></span><span class=\\"var-result__success-circle\\"></span><span class=\\"var-result__success-line-fix\\"></span><span class=\\"var-result__success-cover-right\\" style=\\"animation-duration: 4250ms;\\"></span></div>
+    <div class=\\"var-result__image var-result__success\\"><span class=\\"var-result__success-cover-left\\"></span><span class=\\"var-result__success-line var-result__success-line-tip\\" style=\\"animation-duration: 760ms; border-radius: calc(calc(var(--result-image-size) * 0.05) * 0.625);\\"></span><span class=\\"var-result__success-line var-result__success-line-long\\" style=\\"animation-duration: 750ms; border-radius: calc(calc(var(--result-image-size) * 0.05) * 0.625);\\"></span><span class=\\"var-result__success-circle\\"></span><span class=\\"var-result__success-line-fix\\"></span><span class=\\"var-result__success-cover-right\\" style=\\"animation-duration: 4250ms;\\"></span></div>
   </div>
   <!--v-if-->
   <!--v-if-->
