@@ -4,11 +4,11 @@ import { VNode } from 'vue'
 export type ResultType = 'info' | 'success' | 'warning' | 'error' | 'question' | 'empty'
 
 export interface ResultProps extends BasicAttributes {
-  imageSize?: string | number
   type?: ResultType
   title?: string
   description?: string
-  duration?: number
+  imageSize?: string | number
+  animation?: boolean
 }
 
 export class Result extends VarComponent {

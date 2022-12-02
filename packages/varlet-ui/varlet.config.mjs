@@ -13,6 +13,7 @@ export default defineConfig({
           'Vue 2': 'https://varlet.gitee.io/varlet-ui-vue2/',
         },
       },
+      playground: process.env.NODE_ENV === 'development' ? 'http://localhost:3000': 'https://varlet.gitee.io/varlet-ui-playground',
     },
     menu: [
       {

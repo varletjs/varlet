@@ -1,11 +1,5 @@
 <template>
-  <div
-    :class="classes(n(), n('$--box'))"
-    :style="{
-      opacity,
-      transition: `opacity ${duration * 2}ms`,
-    }"
-  >
+  <div :class="classes(n(), n('$--box'))">
     <slot name="image">
       <div :class="n('image-container')" v-if="type">
         <div
@@ -16,7 +10,7 @@
             borderWidth: borderSize,
           }"
         >
-          <component :is="type" :duration="duration" :border-size="borderSize" />
+          <component :is="type" :duration="300" :border-size="borderSize" :animation="animation" />
         </div>
       </div>
     </slot>
@@ -33,8 +27,7 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, onMounted, ref } from 'vue'
-import type { Ref } from 'vue'
+import { computed, ComputedRef, defineComponent } from 'vue'
 import { toNumber } from '@varlet/shared'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
@@ -60,12 +53,6 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const opacity: Ref<number> = ref(0)
-
-    onMounted(() => {
-      opacity.value = 1
-    })
-
     const circleSize: ComputedRef<string> = computed(() => {
       const { imageSize } = props
 
@@ -75,7 +62,7 @@ export default defineComponent({
     const borderSize: ComputedRef<string> = computed(() => {
       const { imageSize } = props
 
-      return `calc(${imageSize ? toSizeUnit(imageSize) : 'var(--result-image-size)'} * 0.05)`
+      return `calc(${imageSize ? toSizeUnit(props.imageSize) : 'var(--result-image-size)'} * 0.05)`
     })
 
     return {
@@ -84,7 +71,6 @@ export default defineComponent({
       toNumber,
       toPxNum,
       toSizeUnit,
-      opacity,
       circleSize,
       borderSize,
     }

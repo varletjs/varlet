@@ -12,7 +12,7 @@ const Wrapper = {
   components: {
     [VarPopup.name]: VarPopup,
   },
-  props: ['closeOnClickOverlay', 'onOpen', 'onClose', 'onClickOverlay'],
+  props: ['closeOnClickOverlay', 'onOpen', 'onClose', 'onClickOverlay', 'defaultStyle'],
   data: () => ({
     show: false,
   }),
@@ -98,6 +98,20 @@ test('test popup z-index', async () => {
   expect(window.getComputedStyle(wrapper.find('.var-popup__overlay').element).zIndex).toBe(
     String(+prevOverlayZIndex + 3)
   )
+
+  wrapper.unmount()
+})
+
+test('test popup default style', async () => {
+  const wrapper = mount(Wrapper, {
+    props: {
+      defaultStyle: false,
+    },
+  })
+
+  await wrapper.setData({ show: true })
+  expect(wrapper.find('.var-popup--content-background-color').exists()).toBeFalsy()
+  expect(wrapper.find('.var-elevation--3').exists()).toBeFalsy()
 
   wrapper.unmount()
 })
