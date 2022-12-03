@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`test overlay show 1`] = `"<div class=\\"var-overlay\\" style=\\"z-index: 2000;\\"> default slot content </div>"`;

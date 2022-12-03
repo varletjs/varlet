@@ -12,7 +12,7 @@ const Wrapper = {
   components: {
     [VarOverlay.name]: VarOverlay,
   },
-  props: ['onClickOverlay'],
+  props: ['onClick'],
   data: () => ({
     show: false,
   }),
@@ -38,23 +38,23 @@ test('test overlay show', async () => {
 })
 
 test('test overlay click on clickOverlay', async () => {
-  const onClickOverlay = jest.fn()
+  const onClick = jest.fn()
 
   const wrapper = mount(Wrapper, {
     props: {
-      onClickOverlay,
+      onClick,
     },
   })
 
   await wrapper.setData({ show: true })
 
   await wrapper.find('.var-overlay').trigger('click')
-  expect(onClickOverlay).toHaveBeenCalledTimes(1)
+  expect(onClick).toHaveBeenCalledTimes(1)
 
   await wrapper.setData({ show: true })
   await wrapper.setProps({ closeOnClickOverlay: false })
   await wrapper.find('.var-overlay').trigger('click')
-  expect(onClickOverlay).toHaveBeenCalledTimes(2)
+  expect(onClick).toHaveBeenCalledTimes(2)
 
   wrapper.unmount()
 })

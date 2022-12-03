@@ -58,49 +58,6 @@ const contentOverlay = ref(false)
 </style>
 ```
 
-### 遮罩层样式
-
-```html
-<script setup>
-import { ref } from 'vue'
-  
-const overlayClass = ref(false)
-const overlayStyle = ref(false)
-</script>
-
-<template>
-  <var-space direction="column" :size="[10, 0]">
-    <var-button type="primary" block @click="overlayClass = true">
-      遮罩层 class
-    </var-button>
-    <var-button type="primary" block @click="overlayStyle = true">
-      遮罩层 style
-    </var-button>
-  </var-space>
-  
-  <var-overlay 
-    v-model:show="overlayClass"
-    class="popup-example-custom-overlay"
-  />
-
-  <var-overlay
-    v-model:show="overlayStyle"
-    :style="{backgroundColor: 'rgba(0, 0, 0, 0.3)'}"
-  />
-</template>
-
-<style>
-.popup-example-custom-overlay {
-  background: rgba(0, 0, 0, 0.3) !important;
-}
-
-.popup-example-block {
-  padding: 20px 24px;
-  width: 250px;
-}
-</style>
-```
-
 ### 注册事件
 ```html
 <script setup>
@@ -117,7 +74,7 @@ const event = ref(false)
 
   <var-overlay
     v-model:show="event"
-    @click-overlay="()=> Snackbar.success('click')"
+    @click="()=> Snackbar.success('click')"
   />
 </template>
 
@@ -127,17 +84,18 @@ const event = ref(false)
 
 ### 属性
 
-| 参数             | 说明       | 类型                    | 默认值     |
-|----------------|----------|-----------------------|---------|
-| `v-model:show` | 是否显示遮罩层  | _boolean_             | `false` |
-| `class`        | 自定义class | _string_              | `-`     |
-| `style`        | 自定义style | _object_              | `-`     |
-| `teleport`     | 弹出层挂载的位置 | _TeleportProps['to']_ | `-`     |
+| 参数             | 说明                             | 类型                    | 默认值     |
+|----------------|--------------------------------|-----------------------|---------|
+| `v-model:show` | 是否显示遮罩层                        | _boolean_             | `false` |
+| `class`        | 自定义class                       | _string_              | `-`     |
+| `style`        | 自定义style                       | _object_              | `-`     |
+| `lock-scroll`  | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_             | `true`  |
+| `teleport`     | 弹出层挂载的位置                       | _TeleportProps['to']_ | `-`     |
 ### 事件
 
-| 事件名             | 说明           | 参数  |
-|-----------------|--------------|-----|
-| `click-overlay` | 点击遮罩层时触发     | `-` |
+| 事件名     | 说明       | 参数  |
+|---------|----------|-----|
+| `click` | 点击遮罩层时触发 | `-` |
 
 ### 插槽
 

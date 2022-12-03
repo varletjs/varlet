@@ -5,13 +5,11 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  // class: {
-  //   type: String,
-  // },
-  // style: {
-  //   type: Object,
-  // },
-  onClickOverlay: {
+  lockScroll: {
+    type: Boolean,
+    default: true,
+  },
+  onClick: {
     type: Function as PropType<() => void>,
   },
   teleport: {
