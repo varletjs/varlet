@@ -7,56 +7,49 @@ It is used to show the results to users.
 ### Basic Use
 
 ```html
+
 <template>
-  <var-result type="success" title="Success"/>
+  <var-result
+    type="success"
+    title="Success"
+    description="Hi, I'm a result description."
+  >
+    <template #footer>
+      <var-button type="success">OK</var-button>
+    </template>
+  </var-result>
 </template>
 ```
 
-### Show Description
+### Custom Image
 
-```html
-
-<template>
-  <var-result type="success" title="Success" description="Hi, I'm a result description."/>
-</template>
-```
-
-### Change BackGround Color
-
-```html
-
-<template>
-  <var-result type="success" style="--result-background: #ffe3e3"></var-result>
-</template>
-```
-
-### Use Slots
+Customize image through the `image` slot.
 
 ```html
 
 <template>
   <var-result title="Looping" description="《You Are Not Alone》">
     <template #image>
-      <svg class="music" viewBox="0 0 48 48">
+      <svg viewBox="0 0 48 48" class="music">
         <circle cx="24" cy="24" fill="#37474f" r="19"/>
         <circle cx="24" cy="24" fill="#263238" r="18"/>
         <g fill="#37474f">
           <path d="m41.022 29.815-17.022-5.815 5.815 17.022c5.257-1.796 9.41-5.95 11.207-11.207z"/>
           <path d="m6.978 18.185 17.022 5.815-5.815-17.022c-5.257 1.797-9.41 5.95-11.207 11.207z"/>
         </g>
-        <path d="m24 17c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z" fill="var(--color-danger)"/>
+        <path d="m24 17c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z" fill="#fff"/>
         <circle cx="24" cy="24" r="1"/>
       </svg>
     </template>
     <template #footer>
-      <var-button type="danger">More</var-button>
+      <var-button color="var(--result-question-color)" text-color="#fff">More</var-button>
     </template>
   </var-result>
 </template>
 
 <style>
   .music {
-    width: 50vw;
+    width: 40vw;
     animation: rotate 6s linear infinite;
   }
 
@@ -64,9 +57,118 @@ It is used to show the results to users.
     from {
       transform: rotate(0deg);
     }
+
     to {
       transform: rotate(360deg);
     }
+  }
+</style>
+```
+
+### Types
+
+Result type, optional values are `info`，`success`，`warning`，`error`，`question`，`empty`.
+
+```html
+
+<script setup>
+  import {ref} from 'vue'
+
+  const success = ref(false)
+  const error = ref(false)
+  const info = ref(false)
+  const warning = ref(false)
+  const question = ref(false)
+  const empty = ref(false)
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-button type="success" block @click="success = true">Success</var-button>
+    <var-button type="warning" block @click="warning = true">Warning</var-button>
+    <var-button type="info" block @click="info = true">Info</var-button>
+    <var-button type="danger" block @click="error = true">Error</var-button>
+    <var-button
+      color="var(--result-question-color)"
+      text-color="#fff"
+      block
+      @click="question = true"
+    >
+      Question
+    </var-button>
+    <var-button
+      color="var(--result-empty-color)"
+      text-color="#fff"
+      block
+      @click="empty = true"
+    >
+      Empty
+    </var-button>
+  </var-space>
+
+  <var-popup :default-style="false" v-model:show="success">
+    <var-result class="result" type="success" title="Success" description="Hi, I'm a result description.">
+      <template #footer>
+        <var-button type="success" @click="success = false">OK</var-button>
+      </template>
+    </var-result>
+  </var-popup>
+
+  <var-popup :default-style="false" v-model:show="warning">
+    <var-result class="result" type="warning" title="Warning" description="Hi, I'm a result description.">
+      <template #footer>
+        <var-button type="warning" @click="warning = false">OK</var-button>
+      </template>
+    </var-result>
+  </var-popup>
+
+  <var-popup :default-style="false" v-model:show="info">
+    <var-result class="result" type="info" title="Info" description="Hi, I'm a result description.">
+      <template #footer>
+        <var-button type="info" @click="info = false">OK</var-button>
+      </template>
+    </var-result>
+  </var-popup>
+
+  <var-popup :default-style="false" v-model:show="error">
+    <var-result class="result" type="error" title="Error" description="Hi, I'm a result description.">
+      <template #footer>
+        <var-button type="danger" @click="error = false">OK</var-button>
+      </template>
+    </var-result>
+  </var-popup>
+
+  <var-popup :default-style="false" v-model:show="question">
+    <var-result class="result" type="question" title="Question" description="Hi, I'm a result description.">
+      <template #footer>
+        <var-button
+          color="var(--result-question-color)"
+          text-color="#fff"
+          @click="question = false"
+        >
+          OK
+        </var-button>
+      </template>
+    </var-result>
+  </var-popup>
+
+  <var-popup :default-style="false" v-model:show="empty">
+    <var-result class="result" type="empty" title="Empty" description="Hi, I'm a result description.">
+      <template #footer>
+        <var-button
+          color="var(--result-empty-color)"
+          text-color="#fff"
+          @click="empty = false">
+          OK
+        </var-button>
+      </template>
+    </var-result>
+  </var-popup>
+</template>
+
+<style>
+  .result {
+    width: 75vw !important;
   }
 </style>
 ```
@@ -75,13 +177,13 @@ It is used to show the results to users.
 
 ### Props
 
-| Prop          | Description                                                              | Type     | Default     |
-|---------------|--------------------------------------------------------------------------|--------|---------|
-| `image-size`  | Image Size                                                               | _string \| number_ | `-`  |
-| `type`        | Image type，options `info` `success` `warning` `error` `question` `empty` | _string_  | `-`     |
-| `title`       | The title of Result                                                      | _string_  | `-`     |
-| `description` | The description of Result                                                | _string_  | `-`     |
-| `duration`    | Time for animation（ms）                                                   | _number_ | `300`   |
+| Prop          | Description                                                              | Type     | Default   |
+|---------------|--------------------------------------------------------------------------|----------|-----------|
+| `type`        | Image type，options `info` `success` `warning` `error` `question` `empty` | _string_ | `success` |
+| `title`       | The title of Result                                                      | _string_ | `-`       |
+| `description` | The description of Result                                                | _string_ | `-`       |
+| `image-size`  | Image Size                                                               | _string \| number_   | `-`  |
+| `animation`    | Whether to enable animation, valid for `success` type only               | _boolean_ | `true`    |
 
 ### Slots
 
