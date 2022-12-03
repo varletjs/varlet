@@ -35,12 +35,12 @@
           <path d="m41.022 29.815-17.022-5.815 5.815 17.022c5.257-1.796 9.41-5.95 11.207-11.207z" />
           <path d="m6.978 18.185 17.022 5.815-5.815-17.022c-5.257 1.797-9.41 5.95-11.207 11.207z" />
         </g>
-        <path d="m24 17c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z" fill="var(--color-danger)" />
-        <circle cx="24" cy="24" r="1" />
+        <path d="m24 17c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z" fill="#fff"/>
+        <circle cx="24" cy="24" r="1"/>
       </svg>
     </template>
     <template #footer>
-      <var-button type="danger">V我50</var-button>
+      <var-button color="var(--result-question-color)" text-color="#fff">V我50</var-button>
     </template>
   </var-result>
 </template>
@@ -174,13 +174,13 @@ const empty = ref(false)
 
 ### 属性
 
-| 参数            | 说明                                                              | 类型                | 默认值       |
-|---------------|-----------------------------------------------------------------|-------------------|-----------|
-| `type`        | 结果状态，可选值为 `info` `success` `warning` `error` `question` `empty` | _string_          | `success` |
-| `title`       | 标题                                                              | _string_          | `-`       |
-| `description` | 描述                                                              | _string_          | `-`       |
+| 参数            | 说明                                                              | 类型       | 默认值       |
+|---------------|-----------------------------------------------------------------|----------|-----------|
+| `type`        | 结果状态，可选值为 `info` `success` `warning` `error` `question` `empty` | _string_ | `success` |
+| `title`       | 标题                                                              | _string_ | `-`       |
+| `description` | 描述                                                              | _string_ | `-`       |
 | `image-size`  | 图片尺寸                                                            | _string \| number_   | `-`  |
-| `animation`   | 是否开启动画，仅对 `success` 状态有效                                  | _string \| number_   | `-`  |
+| `animation`   | 是否开启动画，仅对 `success` 状态有效                                  | _boolean_ | `true`    |
 
 ### 插槽
 
