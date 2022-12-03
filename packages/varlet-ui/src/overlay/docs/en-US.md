@@ -58,49 +58,6 @@ const contentOverlay = ref(false)
 </style>
 ```
 
-### Overlay Style
-
-```html
-<script setup>
-import { ref } from 'vue'
-  
-const overlayClass = ref(false)
-const overlayStyle = ref(false)
-</script>
-
-<template>
-  <var-space direction="column" :size="[10, 0]">
-    <var-button type="primary" block @click="overlayClass = true">
-      Overlay class
-    </var-button>
-    <var-button type="primary" block @click="overlayStyle = true">
-      Overlay style
-    </var-button>
-  </var-space>
-  
-  <var-overlay 
-    v-model:show="overlayClass"
-    class="popup-example-custom-overlay"
-  />
-
-  <var-overlay
-    v-model:show="overlayStyle"
-    :style="{backgroundColor: 'rgba(0, 0, 0, 0.3)'}"
-  />
-</template>
-
-<style>
-.popup-example-custom-overlay {
-  background: rgba(0, 0, 0, 0.3) !important;
-}
-
-.popup-example-block {
-  padding: 20px 24px;
-  width: 250px;
-}
-</style>
-```
-
 ### Event
 ```html
 <script setup>
@@ -117,7 +74,7 @@ const clickOverlay = ref(false)
 
   <var-overlay
     v-model:show="event"
-    @click-overlay="()=> Snackbar.success('click')"
+    @click="()=> Snackbar.success('click')"
   />
 </template>
 
@@ -135,9 +92,9 @@ const clickOverlay = ref(false)
 | `teleport`     | The location of the Popup to mount | _TeleportProps['to']_ | `-`     |
 ### Events
 
-| Event           | Description                         | Arguments |
-|-----------------|-------------------------------------|-----------|
-| `click-overlay` | Triggered when you click on overlay | `-`       |
+| Event   | Description                         | Arguments |
+|---------|-------------------------------------|-----------|
+| `click` | Triggered when you click on overlay | `-`       |
 
 ### Slots
 
