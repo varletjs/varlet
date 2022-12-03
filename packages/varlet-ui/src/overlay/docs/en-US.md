@@ -84,12 +84,13 @@ const clickOverlay = ref(false)
 
 ### Props
 
-| Prop           | Description                        | 	Type                 | Default |
-|----------------|------------------------------------|-----------------------|---------|
-| `v-model:show` | Whether to display the Overlay     | _boolean_             | `false` |
-| `class`        | Custom class                       | _string_              | `-`     |
-| `style`        | Custom style                       | _object_              | `-`     |
-| `teleport`     | The location of the Popup to mount | _TeleportProps['to']_ | `-`     |
+| Prop           | Description                                                                                                   | 	Type                 | Default |
+|----------------|---------------------------------------------------------------------------------------------------------------|-----------------------|---------|
+| `v-model:show` | Whether to display the Overlay                                                                                | _boolean_             | `false` |
+| `class`        | Custom class                                                                                                  | _string_              | `-`     |
+| `style`        | Custom style                                                                                                  | _object_              | `-`     |
+| `lock-scroll`  | Whether to disable scrolling penetration, scrolling the Popup when disabled will not cause the body to scroll | _boolean_             | `true`  |
+| `teleport`     | The location of the Popup to mount                                                                            | _TeleportProps['to']_ | `-`     |
 ### Events
 
 | Event   | Description                         | Arguments |
