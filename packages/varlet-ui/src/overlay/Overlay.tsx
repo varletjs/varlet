@@ -1,8 +1,8 @@
-import { defineComponent, Teleport, useAttrs, Transition } from 'vue'
+import { defineComponent, Teleport, Transition } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { useZIndex } from '../context/zIndex'
-import { createNamespace, useTeleport } from '../utils/components'
+import { createNamespace, useTeleport, call } from '../utils/components'
 
 import '../styles/common.less'
 import './overlay.less'
@@ -13,14 +13,12 @@ export default defineComponent({
   name: 'VarOverlay',
   inheritAttrs: false,
   props,
-  setup(props, { slots }) {
+  setup(props, { slots, attrs }) {
     const { zIndex } = useZIndex(() => props.show, 1)
     const { disabled } = useTeleport()
-    const attrs = useAttrs()
     const hideOverlay = () => {
-      const { onClick } = props
-      onClick?.()
-      props['onUpdate:show']?.(false)
+      call(props.onClick)
+      call(props['onUpdate:show'], false)
     }
 
     useLock(
@@ -38,7 +36,7 @@ export default defineComponent({
           {...attrs}
           onClick={hideOverlay}
         >
-          {slots.default?.()}
+          {call(slots.default)}
         </div>
       )
     }
