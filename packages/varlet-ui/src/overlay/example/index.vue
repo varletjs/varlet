@@ -11,12 +11,10 @@ import { pack, use } from './local'
 const values = reactive({
   baseOverlay: false,
   contentOverlay: false,
-  overlayClass: false,
-  overlayStyle: false,
   clickOverlay: false,
 })
 
-const { baseOverlay, contentOverlay, overlayClass, overlayStyle, clickOverlay } = toRefs(values)
+const { baseOverlay, contentOverlay, clickOverlay } = toRefs(values)
 
 watchLang(use)
 watchDarkMode(dark)
@@ -45,20 +43,6 @@ watchDarkMode(dark)
     </div>
   </var-overlay>
 
-  <app-type>{{ pack.overlayStyles }}</app-type>
-  <var-space direction="column" :size="[10, 0]">
-    <var-button type="primary" block @click="overlayClass = true">
-      {{ pack.overlayClass }}
-    </var-button>
-    <var-button type="primary" block @click="overlayStyle = true">
-      {{ pack.overlayStyle }}
-    </var-button>
-  </var-space>
-
-  <var-overlay v-model:show="overlayClass" class="popup-example-custom-overlay" />
-
-  <var-overlay v-model:show="overlayStyle" :style="{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }" />
-
   <app-type>{{ pack.event }}</app-type>
   <var-space direction="column" :size="[10, 0]">
     <var-button type="primary" block @click="clickOverlay = true">
@@ -66,7 +50,7 @@ watchDarkMode(dark)
     </var-button>
   </var-space>
 
-  <var-overlay v-model:show="clickOverlay" @click-overlay="() => Snackbar.success('click')" />
+  <var-overlay v-model:show="clickOverlay" @click="() => Snackbar.success('click')" />
 </template>
 
 <style>

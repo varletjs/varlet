@@ -1,6 +1,5 @@
 import { VarComponent, BasicAttributes } from './varComponent'
-import type { TeleportProps } from 'vue'
-import { VNode } from 'vue'
+import { VNode, TeleportProps } from 'vue'
 
 export type PopupPosition = 'top' | 'bottom' | 'right' | 'left' | 'center'
 
