@@ -7,7 +7,6 @@ It is used to show the results to users.
 ### Basic Use
 
 ```html
-
 <template>
   <var-result
     type="success"
@@ -48,20 +47,20 @@ Customize image through the `image` slot.
 </template>
 
 <style>
-  .music {
-    width: 40vw;
-    animation: rotate 6s linear infinite;
+.music {
+  width: 40vw;
+  animation: rotate 6s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
   }
 
-  @keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-
-    to {
-      transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
   }
+}
 </style>
 ```
 
@@ -70,16 +69,15 @@ Customize image through the `image` slot.
 Result type, optional values are `info`，`success`，`warning`，`error`，`question`，`empty`.
 
 ```html
-
 <script setup>
-  import {ref} from 'vue'
+import {ref} from 'vue'
 
-  const success = ref(false)
-  const error = ref(false)
-  const info = ref(false)
-  const warning = ref(false)
-  const question = ref(false)
-  const empty = ref(false)
+const success = ref(false)
+const error = ref(false)
+const info = ref(false)
+const warning = ref(false)
+const question = ref(false)
+const empty = ref(false)
 </script>
 
 <template>
@@ -167,11 +165,15 @@ Result type, optional values are `info`，`success`，`warning`，`error`，`que
 </template>
 
 <style>
-  .result {
-    width: 75vw !important;
-  }
+.result {
+  width: 75vw !important;
+}
 </style>
 ```
+
+### Note when modifying the background color
+
+Please try not to modify the background color to be transparent or translucent, which may affect the animation effect of the success type.
 
 ## API
 
