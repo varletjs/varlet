@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "2.2.1",
+  "version": "2.3.1",
   "description": "A material like components library",
   "module": "es/index.js",
   "main": "lib/index.js",
@@ -21,8 +21,7 @@
     "es",
     "umd",
     "highlight",
-    "types",
-    "CHANGELOG.md"
+    "types"
   ],
   "author": "haoziqaq <357229046@qq.com>",
   "license": "MIT",

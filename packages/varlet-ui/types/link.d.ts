@@ -16,7 +16,6 @@ export interface LinkProps extends BasicAttributes {
   disabled?: boolean
   textColor?: string
   textSize?: string | number
-  defaultStyle?: boolean
   onClick?: (e: Event) => void
 }
 

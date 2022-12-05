@@ -61,7 +61,6 @@ export const props = {
   },
   loadingRadius: {
     type: [Number, String],
-    default: 12,
   },
   loadingType: pickProps(loadingProps, 'type'),
   loadingSize: pickProps(loadingProps, 'size'),

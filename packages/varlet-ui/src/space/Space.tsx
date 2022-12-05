@@ -61,7 +61,6 @@ export default defineComponent({
 
       const lastIndex = children.length - 1
       const spacers = children.map((child, index) => {
-        const width = direction === 'row' ? undefined : '100%'
         let margin = '0'
 
         if (direction === 'row') {
@@ -88,7 +87,7 @@ export default defineComponent({
           margin = `0 0 ${y}px 0`
         }
 
-        return <div style={{ margin, width }}>{child}</div>
+        return <div style={{ margin }}>{child}</div>
       })
 
       return (
