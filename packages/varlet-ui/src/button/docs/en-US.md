@@ -202,3 +202,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--button-small-height`        | `28px`                       |
 | `--button-normal-height`       | `36px`                       |
 | `--button-large-height`        | `44px`                       |
+| `--button-mini-font-size` | `var(--font-size-xs)` |
+| `--button-small-font-size` | `var(--font-size-sm)` |
+| `--button-normal-font-size` | `var(--font-size-md)` |
+| `--button-large-font-size` | `var(--font-size-lg)` |

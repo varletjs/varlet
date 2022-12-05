@@ -57,11 +57,11 @@
     left: 0;
     width: 100%;
     transform-origin: left;
-    transition-property: top, transform, width;
-    transition-duration: 0.3s;
+    transition: top 0.3s, transform 0.3s, width 0.3s, color 0.25s;
     transform: translate(0, calc(-50% + var(--input-placeholder-size) / 2)) scale(1);
     font-size: var(--input-placeholder-size);
     color: var(--input-blur-color);
+    cursor: inherit;
   }
 
   &__textarea-placeholder {
@@ -70,11 +70,11 @@
     left: 0;
     width: 100%;
     transform-origin: left;
-    transition-property: transform, width;
-    transition-duration: 0.3s;
+    transition: transform 0.3s, width 0.3s, color 0.25s;
     transform: translate(0, calc(var(--input-textarea-padding-top) + var(--input-placeholder-size))) scale(1);
     font-size: var(--input-placeholder-size);
     color: var(--input-blur-color);
+    cursor: inherit;
   }
 
   &__autocomplete {
@@ -95,6 +95,7 @@
     background: transparent;
     color: var(--input-input-text-color);
     caret-color: var(--input-focus-color);
+    transition: color 0.25s;
     font: inherit;
   }
 
@@ -102,6 +103,7 @@
     width: 100%;
     height: var(--input-line-size);
     background: var(--input-blur-color);
+    transition: background-color 0.25s;
   }
 
   &__dot {
@@ -110,7 +112,7 @@
     background: var(--input-focus-color);
     transform: scaleX(0);
     transform-origin: center;
-    transition: transform 0.3s var(--cubic-bezier);
+    transition: transform 0.3s var(--cubic-bezier), background-color 0.25s;
   }
 
   &__clear-icon[var-input-cover] {
@@ -151,9 +153,8 @@
   }
 
   &--disabled {
-    -webkit-text-fill-color: var(--input-disabled-color);
-    opacity: 1;
     color: var(--input-disabled-color);
+    cursor: not-allowed;
   }
 
   &--error {

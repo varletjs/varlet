@@ -1,6 +1,6 @@
 {
   "name": "@varlet/eslint-config",
-  "version": "2.1.0",
+  "version": "2.2.1",
   "description": "eslint config of varlet",
   "keywords": [
     "eslint",
@@ -24,6 +24,6 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-vue": "^7.1.0"
+    "eslint-plugin-vue": "^9.7.0"
   }
 }

@@ -22,14 +22,14 @@ test('test form plugin', () => {
 const expectValidate = async (form, wrapper, message) => {
   form.validate()
   await delay(16)
-  expect(wrapper.find('.var-form-details__message').text()).toBe(message)
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe(message)
   expect(wrapper.html()).toMatchSnapshot()
 }
 
 const expectReset = async (form, wrapper) => {
   form.reset()
   await delay(16)
-  expect(wrapper.find('.var-form-details__message').exists()).toBeFalsy()
+  expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
   expect(wrapper.html()).toMatchSnapshot()
 }
 

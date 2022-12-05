@@ -23,6 +23,7 @@ export * from './datePicker'
 export * from './dialog'
 export * from './divider'
 export * from './form'
+export * from './formDetails'
 export * from './icon'
 export * from './image'
 export * from './imagePreview'
@@ -30,6 +31,7 @@ export * from './indexAnchor'
 export * from './indexBar'
 export * from './input'
 export * from './lazy'
+export * from './link'
 export * from './list'
 export * from './loading'
 export * from './locale'
@@ -91,6 +93,7 @@ declare module 'vue' {
     VarDialog: typeof import('@varlet/ui')['_DialogComponent']
     VarDivider: typeof import('@varlet/ui')['_DividerComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
+    VarFormDetails: typeof import('@varlet/ui')['_FormDetailsComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarImage: typeof import('@varlet/ui')['_ImageComponent']
     VarImagePreview: typeof import('@varlet/ui')['_ImagePreviewComponent']
@@ -98,6 +101,7 @@ declare module 'vue' {
     VarIndexBar: typeof import('@varlet/ui')['_IndexBarComponent']
     VarInput: typeof import('@varlet/ui')['_InputComponent']
     VarLazy: typeof import('@varlet/ui')['_LazyComponent']
+    VarLink: typeof import('@varlet/ui')['_LinkComponent']
     VarList: typeof import('@varlet/ui')['_ListComponent']
     VarLoading: typeof import('@varlet/ui')['_LoadingComponent']
     VarLocale: typeof import('@varlet/ui')['_LocaleComponent']

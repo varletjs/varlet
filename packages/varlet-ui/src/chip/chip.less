@@ -19,6 +19,10 @@
   --chip-text-large-margin: 0 5px;
   --chip-text-small-margin: 0 3px;
   --chip-text-mini-margin: 0 2px;
+  --chip-mini-font-size: var(--font-size-xs);
+  --chip-small-font-size: var(--font-size-sm);
+  --chip-normal-font-size: var(--font-size-md);
+  --chip-large-font-size: var(--font-size-lg);
 }
 
 .var {
@@ -114,26 +118,26 @@
   }
 
   &--normal {
-    font-size: var(--font-size-md);
+    font-size: var(--chip-normal-font-size);
     padding: var(--chip-normal-padding);
     height: var(--chip-normal-height);
   }
 
   &--large {
     padding: var(--chip-large-padding);
-    font-size: var(--font-size-lg);
+    font-size: var(--chip-large-font-size);
     height: var(--chip-large-height);
   }
 
   &--small {
     padding: var(--chip-small-padding);
-    font-size: var(--font-size-sm);
+    font-size: var(--chip-small-font-size);
     height: var(--chip-small-height);
   }
 
   &--mini {
     padding: var(--chip-mini-padding);
-    font-size: var(--font-size-xs);
+    font-size: var(--chip-mini-font-size);
     height: var(--chip-mini-height);
   }
 

@@ -85,9 +85,9 @@ const maxValue = ref(99)
 </template>
 ```
 
-### 是否显示徽标
+### 隐藏徽标
 
-通过 `hidden` 属性设置是否显示徽标。
+通过 `hidden` 属性控制是否隐藏徽标。
 
 ```html
 <script setup>
@@ -138,15 +138,16 @@ const handleChange = () => {
 
 ### 属性
 
-|参数 | 说明 | 类型 | 默认值 |
-| ---- | ---- | ---- | ---- |
-| `type` | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
-| `dot` | 徽标是否为小圆点 | _boolean_ | `false` |
-| `value` | 徽标中显示的值（当 `dot` 为 `false` 时生效）| _string \| number_ | `0` |
+| 参数          | 说明 | 类型 | 默认值 |
+|-------------| ---- | ---- | ---- |
+| `type`      | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `hidden`    | 是否隐藏徽标 | _boolean_ | `false` |
+| `dot`       | 徽标是否为小圆点 | _boolean_ | `false` |
+| `value`     | 徽标中显示的值（当 `dot` 为 `false` 时生效）| _string \| number_ | `0` |
 | `max-value` | 徽标中显示的最大值，当 `value` 大于 `max-value` 时会显示 `max-value+` (当 `value` 与 `max-value` 都存在时生效)| _number_ | `-` |
-| `position` | 徽标标签中有其他标签时定义徽标在其他标签上的位置，可选值 `right-top` `right-bottom` `left-top` `left-bottom` | _string_ | `right-top` |
-| `color` | 自定义徽标颜色 | _string_ | `-` |
-| `icon` | 自定义徽标中图标的内容（优先级高于 `value`） | _string_ | `-` |
+| `position`  | 徽标标签中有其他标签时定义徽标在其他标签上的位置，可选值 `right-top` `right-bottom` `left-top` `left-bottom` | _string_ | `right-top` |
+| `color`     | 自定义徽标颜色 | _string_ | `-` |
+| `icon`      | 自定义徽标中图标的内容（优先级高于 `value`） | _string_ | `-` |
 
 ### 插槽
 

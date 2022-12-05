@@ -10,6 +10,10 @@ export const componentMap: Record<string, ComponentDescriptor> = {
     site: '/button',
     attrs: ['type="primary"'],
   },
+  link: {
+    site: '/link',
+    attrs: ['type="primary"'],
+  },
   cell: {
     site: '/cell',
   },
@@ -143,6 +147,10 @@ export const componentMap: Record<string, ComponentDescriptor> = {
   },
   form: {
     site: '/form',
+  },
+  'form-details': {
+    site: '/form',
+    closeSelf: true,
   },
   'index-bar': {
     site: '/index-bar',

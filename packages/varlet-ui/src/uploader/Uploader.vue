@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <var-form-details :error-message="errorMessage" :maxlength-text="maxlengthText" />
+    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
 
     <var-popup
       :class="n('preview')"

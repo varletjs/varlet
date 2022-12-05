@@ -13,6 +13,7 @@ import { props } from './props'
 import type { Ref } from 'vue'
 import type { TabsItemsProvider } from './provide'
 import type { TabItemProvider } from '../tab-item/provide'
+import { doubleRaf } from '../utils/elements'
 
 const { n } = createNamespace('tabs-items')
 
@@ -44,7 +45,6 @@ export default defineComponent({
 
       tabItemList.forEach(({ setCurrent }) => setCurrent(false))
       newActiveTabItemProvider.setCurrent(true)
-
       swipe.value?.to(newActiveTabItemProvider.index.value)
     }
 
@@ -67,7 +67,10 @@ export default defineComponent({
 
     watch(
       () => length.value,
-      () => handleActiveChange(props.active)
+      async () => {
+        await doubleRaf()
+        handleActiveChange(props.active)
+      }
     )
 
     return {

@@ -328,13 +328,13 @@ test('test select validation', async () => {
 
   select.validate()
   await delay(16)
-  expect(wrapper.find('.var-form-details__message').text()).toBe('您必须选择一个')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('您必须选择一个')
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.find('.var-select__wrap').trigger('click')
   await trigger(document.querySelector('.var-option'), 'click')
   await delay(16)
-  expect(wrapper.find('.var-form-details__message').exists()).toBeFalsy()
+  expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
 
   select.reset()
   expect(wrapper.vm.value).toBe(undefined)

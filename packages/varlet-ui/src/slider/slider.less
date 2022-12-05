@@ -6,6 +6,7 @@
   --slider-thumb-ripple-background: var(--color-primary);
   --slider-thumb-label-background: var(--color-primary);
   --slider-thumb-label-font-size: var(--font-size-sm);
+  --slider-disabled-opacity: var(--opacity-disabled);
 }
 
 .var-slider {
@@ -20,10 +21,12 @@
     user-select: none;
     height: 36px;
     margin: 0 6px;
+    transition: filter 0.25s;
   }
 
   &--disabled {
-    filter: opacity(0.6);
+    filter: opacity(var(--slider-disabled-opacity));
+    cursor: not-allowed;
   }
 
   &__track {
@@ -35,6 +38,7 @@
       width: 100%;
       height: 2px;
       background: var(--slider-track-background);
+      transition: filter, background-color, 0.25s;
     }
 
     &-fill {
@@ -42,6 +46,7 @@
       height: 100%;
       left: 0;
       top: 0;
+      transition: background-color 0.25s;
       background-color: var(--slider-track-fill-background);
     }
   }
@@ -55,6 +60,7 @@
       height: 12px;
       border-radius: 50%;
       transform: translate(-50%, -50%);
+      transition: background-color 0.25s;
       background-color: var(--slider-thumb-block-background);
     }
 
@@ -110,7 +116,7 @@
     .var-slider__track {
       &-background {
         background-color: var(--slider-error-color) !important;
-        filter: opacity(0.5);
+        filter: opacity(0.6);
       }
 
       &-fill {
