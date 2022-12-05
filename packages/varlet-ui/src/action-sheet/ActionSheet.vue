@@ -18,7 +18,7 @@
     @opened="onOpened"
     @route-change="onRouteChange"
   >
-    <div :class="classes(n(), 'var--box')" v-bind="$attrs">
+    <div :class="classes(n(), n('$--box'))" v-bind="$attrs">
       <slot name="title">
         <div :class="n('title')">{{ dt(title, pack.actionSheetTitle) }}</div>
       </slot>

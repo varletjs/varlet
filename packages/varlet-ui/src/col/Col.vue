@@ -3,7 +3,7 @@
     :class="
       classes(
         n(),
-        'var--box',
+        n('$--box'),
         [span >= 0, n(`--span-${span}`)],
         [offset, n(`--offset-${offset}`)],
         ...getSize('xs', xs),

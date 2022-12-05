@@ -4,11 +4,11 @@
     :class="
       classes(
         n(),
-        'var--box',
+        n('$--box'),
         n(`--${size}`),
-        [block, `var--flex ${n('--block')}`, 'var--inline-flex'],
+        [block, `${n('$--flex')} ${n('--block')}`, n('$--inline-flex')],
         [disabled, n('--disabled')],
-        [text, `${n(`--text-${type}`)} ${n('--text')}`, `${n(`--${type}`)} var-elevation--2`],
+        [text, `${n(`--text-${type}`)} ${n('--text')}`, `${n(`--${type}`)} ${n('$-elevation--2')}`],
         [text && disabled, n('--text-disabled')],
         [round, n('--round')],
         [outline, n('--outline')]

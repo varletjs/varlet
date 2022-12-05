@@ -1,6 +1,6 @@
 <template>
-  <transition name="var-fade">
-    <span :class="classes(n(), 'var--box', ...contentClass)" :style="chipStyles" v-bind="$attrs">
+  <transition :name="n('$-fade')">
+    <span :class="classes(n(), n('$--box'), ...contentClass)" :style="chipStyles" v-bind="$attrs">
       <slot name="left" />
 
       <span :class="n(`text-${size}`)">
@@ -52,7 +52,7 @@ export default defineComponent({
     const contentClass: ComputedRef<Array<string | null | undefined>> = computed(() => {
       const { size, block, type, plain, round } = props
 
-      const blockClass = block ? 'var--flex' : 'var--inline-flex'
+      const blockClass = block ? n('$--flex') : n('$--inline-flex')
       const plainTypeClass = plain ? `${n('plain')} ${n(`plain-${type}`)}` : n(`--${type}`)
       const roundClass = round ? n('--round') : null
 

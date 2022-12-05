@@ -1,3 +1,23 @@
+## [2.3.1](https://github.com/varletjs/varlet/compare/v2.3.0...v2.3.1) (2022-11-28)
+
+
+
+# [2.3.0](https://github.com/varletjs/varlet/compare/v2.2.1...v2.3.0) (2022-11-28)
+
+
+### Bug Fixes
+
+* **button:** remove default value of circle and close [#761](https://github.com/varletjs/varlet/issues/761) ([aafdb12](https://github.com/varletjs/varlet/commit/aafdb123ee87a7dff1d32b63c900ecfc110dd268))
+* some unusual behavior of LOGO animation ([99d3846](https://github.com/varletjs/varlet/commit/99d38462e6dcfe8dff28aa7476dba6527cd3cc70))
+* **space:** remove width ([cb92a53](https://github.com/varletjs/varlet/commit/cb92a536f2de2b44e9f28cab1f493669a526ef7c))
+
+
+### Features
+
+* **ui/link:** support link component ([c6c8b8d](https://github.com/varletjs/varlet/commit/c6c8b8d4a4a85cbe5d05442f5fe6ad3cc5e2277d))
+
+
+
 ## [2.2.1](https://github.com/varletjs/varlet/compare/v2.2.0...v2.2.1) (2022-11-15)
 
 

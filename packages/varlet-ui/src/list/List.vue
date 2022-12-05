@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), 'var--box')" ref="listEl">
+  <div :class="classes(n(), n('$--box'))" ref="listEl">
     <slot />
 
     <slot name="loading" v-if="loading">

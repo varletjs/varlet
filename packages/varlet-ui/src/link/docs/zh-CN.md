@@ -24,7 +24,13 @@
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-link type="primary" href="https://varlet.gitee.io/varlet-ui/#/zh-CN/index" target="_blank">href 链接</var-link>
+    <var-link 
+      type="primary" 
+      href="https://varlet.gitee.io/varlet-ui/#/zh-CN/home" 
+      target="_blank"
+    >
+      href 链接
+    </var-link>
     <var-link type="primary" to="/button">router-link 链接</var-link>
   </var-space>
 </template>
@@ -65,7 +71,11 @@
 
 ```html
 <template>
-  <var-link href="https://varlet.gitee.io/varlet-ui/#/zh-CN/index" target="_blank" underline="none">
+  <var-link
+    href="https://varlet.gitee.io/varlet-ui/#/zh-CN/home"
+    target="_blank"
+    underline="none"
+  >
     <var-button type="primary">跳转首页</var-button>
   </var-link>
 </template>
@@ -86,6 +96,12 @@
 | `target`     | 原生 `target` 属性                                                  | _string_ | `-`      |
 | `to`         | `router-link` `to` 属性，将会渲染为 `<router-link />`                   | _string \| object_  | `-`        |
 | `replace`    | `router-link` `replace` 属性                                      | _boolean_ | `false`  |
+
+### 事件
+
+| 事件名 | 说明                                              | 参数 |
+| --- |-------------------------------------------------| --- |
+| `click` | 点击链接时触发 | `event: Event` |
 
 ### 插槽
 

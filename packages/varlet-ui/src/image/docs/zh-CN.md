@@ -126,16 +126,36 @@
 在 `.vue` 文件中，`Vue组件` 不会如同原生 img 一样被构建工具自动处理模块请求，所以需要手动导入图片资源。
 下面是不同构建工具的使用方式。
 
-#### Webpack
+#### Vite
+
+推荐使用 [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#asset-url-handling) 进行路径预处理
+
+```ts
+// playground-ignore
+// vite.config.js
+import vue from '@vitejs/plugin-vue'
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        transformAssetUrls: {
+          'var-image': ['src']
+        }
+      }
+    })
+  ],
+})
+```
 
 ```html
 <!-- playground-ignore -->
 <template>
-  <var-image :src="require('../../assets/logo.png')"/>
+  <var-image src="../../assets/logo.png"/>
 </template>
 ```
 
-#### Vite
+或者单独导入
 
 ```html
 <!-- playground-ignore -->
@@ -145,6 +165,15 @@ import logo from '../../assets/logo.png'
 
 <template>
   <var-image :src="logo"/>
+</template>
+```
+
+#### Webpack
+
+```html
+<!-- playground-ignore -->
+<template>
+  <var-image :src="require('../../assets/logo.png')"/>
 </template>
 ```
 

@@ -23,7 +23,7 @@
           :class="
             classes(
               n('handle'),
-              'var-elevation--2',
+              n('$-elevation--2'),
               [modelValue === activeValue, n('handle--active')],
               [errorMessage, n('handle--error')]
             )

@@ -5,7 +5,7 @@
         classes(
           n('wrapper'),
           n(`wrapper-${position}`),
-          'var-elevation--4',
+          n('$-elevation--4'),
           [vertical, n('vertical')],
           [type && SNACKBAR_TYPE.includes(type), n(`wrapper-${type}`)]
         )

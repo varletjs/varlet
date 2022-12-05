@@ -3,7 +3,7 @@
     :class="
       classes(
         n(),
-        'var--box',
+        n('$--box'),
         [vertical, n('--vertical')],
         [withText, n('--with-text')],
         [isInset, n('--inset')],

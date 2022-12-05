@@ -1,13 +1,13 @@
 <template>
-  <component :is="sticky ? 'var-sticky' : Transition" :offset-top="sticky ? offsetTop : null">
+  <component :is="sticky ? n('$-sticky') : Transition" :offset-top="sticky ? offsetTop : null">
     <div
       :class="
         classes(
           n(),
-          'var--box',
+          n('$--box'),
           n(`--item-${itemDirection}`),
           n(`--layout-${layoutDirection}-padding`),
-          [elevation, 'var-elevation--4'],
+          [elevation, n('$-elevation--4')],
           [fixedBottom, n('--fixed-bottom')],
           [safeArea, n('--safe-area')]
         )

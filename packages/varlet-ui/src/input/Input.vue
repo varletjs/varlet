@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), 'var--box', [disabled, n('--disabled')])" @click="handleClick">
+  <div :class="classes(n(), n('$--box'), [disabled, n('--disabled')])" @click="handleClick">
     <div
       :class="
         classes(
@@ -72,7 +72,7 @@
         <label
           :class="
             classes(
-              'var--ellipsis',
+              n('$--ellipsis'),
               [isFocus, n('--focus')],
               [formDisabled || disabled, n('--disabled')],
               [errorMessage, n('--error')],

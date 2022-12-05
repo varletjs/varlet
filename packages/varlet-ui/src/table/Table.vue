@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), 'var-elevation--1 var--box')">
+  <div :class="classes(n(), n('$-elevation--1'), n('$--box'))">
     <div :class="n('main')">
       <table :class="n('table')" :style="{ width: toSizeUnit(fullWidth) }">
         <slot />
