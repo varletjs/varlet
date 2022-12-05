@@ -33,6 +33,7 @@
   width: 100%;
   padding: var(--result-padding);
   background-color: var(--result-background);
+  transition: background-color 0.25s;
 
   &__image-container {
     overflow: hidden;
@@ -61,6 +62,7 @@
 
   &__info {
     border-color: var(--result-info-border-color);
+    transition: border 0.25s;
 
     path {
       fill: var(--result-info-color);
@@ -69,6 +71,7 @@
 
   &__empty {
     border-color: var(--result-empty-border-color);
+    transition: border 0.25s;
 
     path {
       fill: var(--result-empty-color);
@@ -77,6 +80,7 @@
 
   &__question {
     border-color: var(--result-question-border-color);
+    transition: border 0.25s;
 
     path {
       fill: var(--result-question-color);
@@ -85,6 +89,7 @@
 
   &__error {
     border-color: var(--result-error-border-color);
+    transition: border 0.25s;
 
     path {
       fill: var(--result-error-color);
@@ -93,6 +98,7 @@
 
   &__warning {
     border-color: var(--result-warning-border-color);
+    transition: border 0.25s;
 
     path {
       fill: var(--result-warning-color);
@@ -101,6 +107,7 @@
 
   &__success {
     border-color: var(--result-success-color);
+    transition: border 0.25s;
 
     &-cover-left {
       display: block;
@@ -113,6 +120,7 @@
       border-radius: 150% 0 0 150%;
       transform: rotate(-45deg);
       background: var(--result-background);
+      transition: background-color 0.25s;
     }
 
     &-cover-right {
@@ -128,6 +136,7 @@
       transform-origin: 0 50%;
       transform: rotate(-45deg);
       background: var(--result-background);
+      transition: background-color 0.25s;
     }
 
     &-line {
@@ -136,6 +145,7 @@
       display: block;
       position: absolute;
       z-index: 10;
+      transition: background-color 0.25s;
     }
 
     &-line-tip {
@@ -159,6 +169,7 @@
       box-sizing: content-box !important;
       border-style: solid;
       border-color: var(--result-success-border-color);
+      transition: border 0.25s;
     }
 
     &-line-fix {
@@ -170,6 +181,7 @@
       position: absolute;
       transform: rotate(-45deg);
       background: var(--result-background);
+      transition: background-color 0.25s;
     }
 
     @keyframes success-line-tip {
@@ -224,7 +236,7 @@
       }
 
       100% {
-        top: 47.5%;
+        top: 47%;
         right: 9%;
         width: 58.75%;
       }

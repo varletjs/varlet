@@ -191,6 +191,10 @@ const empty = ref(false)
 | `description`      | 自定义描述   | `-`  |
 | `footer`           | 自定义底部内容 | `-`  |
 
+### 修改背景颜色时注意
+
+请尽可能不要修改背景色为透明或半透明，可能会影响成功状态的动画效果。
+
 ### 样式变量
 
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
