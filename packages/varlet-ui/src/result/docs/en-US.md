@@ -200,30 +200,30 @@ Please try not to modify the background color to be transparent or translucent, 
 
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
-| Variable                           | Default                        |
-|------------------------------------|--------------------------------|
-| `--result-background`              | `#fff`                         |
-| `--result-padding`                 | `24px`                         |
-| `--result-border-radius`           | `3px`                          |
-| `--result-title-color`             | `#333`                         |
-| `--result-title-font-size`         | `32px`                         |
-| `--result-title-margin`            | `15px 0 0 0`                   |
-| `--result-image-size`              | `80px`                         |
-| `--result-title-font-weight`       | `500`                          |
-| `--result-description-margin`      | `10px 0 0 0`                   |
-| `--result-description-font-size`   | `14px`                         |
-| `--result-description-color`       | `rgba(0, 0, 0, 0.6)`           |
-| `--result-description-line-height` | `1.6`                          |
-| `--result-info-color`              | `var(--color-info)`            |
-| `--result-info-border-color`       | `rgba(0, 175, 239, 0.3)`       |
-| `--result-success-color`           | `var(--color-success)`         |
-| `--result-success-border-color`    | `rgba(0, 196, 143, 0.3)`       |
-| `--result-error-color`             | `var(--color-danger)`          |
-| `--result-error-border-color`      | `rgba(244, 67, 54, 0.3)`       |
-| `--result-warning-color`           | `var(--color-warning)`         |
-| `--result-warning-border-color`    | `rgba(255, 159, 0, 0.3)`       |
-| `--result-question-color`          | `#607d8`                       |
-| `--result-question-border-color`   | `rgba(96, 125, 139, 0.3)`      |
-| `--result-empty-color`             | `#9e9e9e`                      |
-| `--result-empty-border-color`      | `rgba(158, 158, 158, 0.3)`     |
+| Variable                           | Default                    |
+|------------------------------------|----------------------------|
+| `--result-background`              | `#fff`                     |
+| `--result-info-color`              | `var(--color-info)`        |
+| `--result-info-border-color`       | `rgba(0, 175, 239, 0.3)`   |
+| `--result-success-color`           | `var(--color-success)`     |
+| `--result-success-border-color`    | `rgba(0, 196, 143, 0.3)`   |
+| `--result-error-color`             | `var(--color-danger)`      |
+| `--result-error-border-color`      | `rgba(244, 67, 54, 0.3)`   |
+| `--result-warning-color`           | `var(--color-warning)`     |
+| `--result-warning-border-color`    | `rgba(255, 159, 0, 0.3)`   |
+| `--result-question-color`          | `#607d8b`                  |
+| `--result-question-border-color`   | `rgba(96, 125, 139, 0.3)`  |
+| `--result-empty-color`             | `#9e9e9e`                  |
+| `--result-empty-border-color`      | `rgba(158, 158, 158, 0.3)` |
+| `--result-padding`                 | `24px`                     |
+| `--result-border-radius`           | `3px`                      |
+| `--result-title-color`             | `#444`                     |
+| `--result-title-font-size`         | `32px`                     |
+| `--result-title-margin`            | `15px 0 0 0`               |
+| `--result-image-size`              | `80px`                     |
+| `--result-title-font-weight`       | `500`                      |
+| `--result-description-margin`      | `10px 0 0 0`               |
+| `--result-description-font-size`   | `14px`                     |
+| `--result-description-color`       | `rgba(0, 0, 0, 0.6)`       |
+| `--result-description-line-height` | `1.6`                      |
 
