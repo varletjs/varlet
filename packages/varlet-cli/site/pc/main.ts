@@ -65,11 +65,11 @@ router.afterEach(() => {
 Object.defineProperty(window, 'onMobileRouteChange', {
   value: (path: string, language: string, replace: string) => {
     if (path === mobileRedirect) {
-      router.replace(`/${language}/${replace}`)
+      window.location.replace(`#/${language}/${replace}`)
       return
     }
 
-    router.replace(`/${language}${path}`)
+    window.location.replace(`#/${language}${path}`)
   }
 })
 
