@@ -40,10 +40,6 @@ Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全�
 - 💪 &nbsp; 确保90%以上单元测试覆盖率，提供稳定性保证
 - 🛠️ &nbsp; 支持暗黑模式
 
-### 在 Cloud IDE 中预览
-
-[https://idegithub.com/varletjs/varlet](https://idegithub.com/varletjs/varlet)
-
 ### 安装
 
 ### CDN
@@ -85,7 +81,12 @@ createApp(App).use(Varlet).mount('#app')
 ```
 
 ### 贡献
+
 请参考 [Contributing Guide](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md)。
+
+### 在 Cloud IDE 中进行在线开发和调试
+
+[https://idegithub.com/varletjs/varlet](https://idegithub.com/varletjs/varlet)
 
 
 ### 反馈和交流
