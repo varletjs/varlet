@@ -1,6 +1,6 @@
 apps:
   - port: 8080
-    run: pnpm bootstrap && cd packages/varlet-ui && pnpm dev
+    run: pnpm bootstrap && cd packages/varlet-ui && pnpm dev --
     root: ./
     name: varlet
     description: Varlet is a Material design mobile component library developed based on Vue3, developed and maintained by partners in the community.
