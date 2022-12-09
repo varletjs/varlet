@@ -20,4 +20,7 @@ export const props = {
   height: {
     type: [Number, String],
   },
+  top: {
+    type: [Number, String],
+  },
 }

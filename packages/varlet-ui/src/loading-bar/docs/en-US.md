@@ -13,11 +13,15 @@ import { LoadingBar, Snackbar } from '@varlet/ui'
 
 const isClear = ref(false)
 
+LoadingBar({
+  top: '48px'
+})
+
 const setStyle = () => {
   LoadingBar({
     errorColor: isClear.value ? undefined : '#ff8800',
     color: isClear.value ? undefined : '#10afef',
-    height: isClear.value ? undefined : '5px'
+    height: isClear.value ? undefined : '5px',
   })
 
   isClear.value = !isClear.value
@@ -60,6 +64,7 @@ const setStyle = () => {
 | `color`      | LoadingBar color       | _string_  | `-`    |
 | `errorColor` | LoadingBar error color | _string_  | `-`    |
 | `height`     | LoadingBar height      | _string\|number_ | `-` |
+| `top`        | LoadingBar top         | _string\|number_ | `-` |
 
 ### Style Variables
 

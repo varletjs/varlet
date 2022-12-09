@@ -9,6 +9,10 @@ import dark from '../../themes/dark'
 
 const isClear = ref(false)
 
+LoadingBar({
+  top: '48px',
+})
+
 const setStyle = () => {
   LoadingBar({
     errorColor: isClear.value ? undefined : '#ff8800',

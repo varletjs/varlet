@@ -13,6 +13,10 @@ import { LoadingBar, Snackbar } from '@varlet/ui'
 
 const isClear = ref(false)
 
+LoadingBar({
+  top: '48px'
+})
+
 const setStyle = () => {
   LoadingBar({
     errorColor: isClear.value ? undefined : '#ff8800',
@@ -55,11 +59,12 @@ const setStyle = () => {
 
 ### LoadingBar Options
 
-| 参数           | 说明       | 类型        | 默认值    |
-|--------------|----------|-----------|--------|
-| `color`      | 加载条颜色    | _string_  | `-`    |
-| `errorColor` | 加载失败时的颜色 | _string_  | `-`    |
-| `height`     | 加载调的高度   | _string\|number_ | `-` |
+| 参数           | 说明          | 类型        | 默认值    |
+|--------------|-------------|-----------|--------|
+| `color`      | 加载条颜色       | _string_  | `-`    |
+| `errorColor` | 加载失败时的颜色    | _string_  | `-`    |
+| `height`     | 加载条的高度      | _string\|number_ | `-` |
+| `top`        | 加载距离页面顶部的距离 | _string\|number_ | `-` |
 
 ### 样式变量
 

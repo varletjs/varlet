@@ -26,6 +26,7 @@ test('test loading-bar custom style', async () => {
     color: 'white',
     errorColor: 'black',
     height: '10px',
+    top: '20px',
   })
 
   LoadingBar.start()
@@ -35,6 +36,7 @@ test('test loading-bar custom style', async () => {
 
   expect(el.style.backgroundColor).toBe('white')
   expect(el.style.height).toBe('10px')
+  expect(el.style.top).toBe('20px')
 
   LoadingBar.error()
   await delay(200)

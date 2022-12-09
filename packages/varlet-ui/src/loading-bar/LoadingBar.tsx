@@ -22,6 +22,7 @@ export default defineComponent({
             opacity: props.opacity,
             height: toSizeUnit(props.height),
             backgroundColor: props.error ? props.errorColor : props.color,
+            top: toSizeUnit(props.top),
           }}
         ></div>
       )
