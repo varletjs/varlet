@@ -31,7 +31,7 @@ const setStyle = () => {
   <var-button type="primary" block @click="LoadingBar.finish()">Finish</var-button>
   <var-button type="primary" block @click="LoadingBar.error()">Error</var-button>
   <var-button type="primary" block @click="setStyle">
-    {{ isClear ? Clear Style : Custom Style }}
+    {{ isClear ? 'Clear Style' : 'Custom Style' }}
   </var-button>
 </template>
 
@@ -57,7 +57,7 @@ const setStyle = () => {
 
 | Option       | Description            | Type | Default |
 |--------------|------------------------|-----------|--------|
-| `clor`       | LoadingBar color       | _string_  | `-`    |
+| `color`      | LoadingBar color       | _string_  | `-`    |
 | `errorColor` | LoadingBar error color | _string_  | `-`    |
 | `height`     | LoadingBar height      | _string\|number_ | `-` |
 

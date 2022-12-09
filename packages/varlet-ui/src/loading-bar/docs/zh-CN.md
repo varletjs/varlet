@@ -31,7 +31,7 @@ const setStyle = () => {
   <var-button type="primary" block @click="LoadingBar.finish()">结束</var-button>
   <var-button type="primary" block @click="LoadingBar.error()">错误</var-button>
   <var-button type="primary" block @click="setStyle">
-    {{ isClear ? 清除样式 : 设置样式 }}
+    {{ isClear ? '清除样式' : '设置样式' }}
   </var-button>
 </template>
 
@@ -57,7 +57,7 @@ const setStyle = () => {
 
 | 参数           | 说明       | 类型        | 默认值    |
 |--------------|----------|-----------|--------|
-| `clor`       | 加载条颜色    | _string_  | `-`    |
+| `color`      | 加载条颜色    | _string_  | `-`    |
 | `errorColor` | 加载失败时的颜色 | _string_  | `-`    |
 | `height`     | 加载调的高度   | _string\|number_ | `-` |
 
