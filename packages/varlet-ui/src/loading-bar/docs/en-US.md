@@ -13,12 +13,12 @@ import { LoadingBar, Snackbar } from '@varlet/ui'
 
 const isClear = ref(false)
 
-LoadingBar({
+LoadingBar.mergeConfig({
   top: '48px'
 })
 
 const setStyle = () => {
-  LoadingBar({
+  LoadingBar.mergeConfig({
     errorColor: isClear.value ? undefined : '#ff8800',
     color: isClear.value ? undefined : '#10afef',
     height: isClear.value ? undefined : '5px',
@@ -52,7 +52,7 @@ const setStyle = () => {
 
 | Method | Description | Arguments | Return value |
 |---------------------|----------|--|---------|
-| `LoadingBar`        | Set style | _options: Options_ | `-`  |
+| `LoadingBar.mergeConfig` | Set config of loading bar | _options: Options_ | `-`  |
 | `LoadingBar.start`  | Start loading  | `-` | `-` |
 | `LoadingBar.finish` | Finish loading  | `-` | `-` |
 | `LoadingBar.error`  | Loading error  | `-` | `-` |

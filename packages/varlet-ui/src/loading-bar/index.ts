@@ -16,7 +16,7 @@ interface InternalProps {
 }
 
 interface LoadingBar {
-  (options: LoadingBarOptions): void
+  mergeConfig(options: LoadingBarOptions): void
 
   start(): void
 
@@ -33,7 +33,7 @@ const props: LoadingBarOptions & InternalProps = reactive({
   error: false,
 })
 
-const LoadingBar: LoadingBar = (options: LoadingBarOptions) => {
+const mergeConfig = (options: LoadingBarOptions) => {
   Object.assign(props, options)
 }
 
@@ -49,7 +49,7 @@ const changeValue = () => {
   }, 200)
 }
 
-LoadingBar.start = () => {
+const start = () => {
   if (!isMount) {
     isMount = true
     mountInstance(LoadingBarComponent, props)
@@ -65,7 +65,7 @@ LoadingBar.start = () => {
   changeValue()
 }
 
-LoadingBar.finish = () => {
+const finish = () => {
   props.value = 100
 
   setTimeout(() => {
@@ -79,12 +79,19 @@ LoadingBar.finish = () => {
   window.clearTimeout(timer)
 }
 
-LoadingBar.error = () => {
+const error = () => {
   props.error = true
 
   LoadingBar.start()
 
   setTimeout(LoadingBar.finish, 300)
+}
+
+const LoadingBar: LoadingBar = {
+  start,
+  finish,
+  error,
+  mergeConfig,
 }
 
 export const _LoadingBarComponent = LoadingBar

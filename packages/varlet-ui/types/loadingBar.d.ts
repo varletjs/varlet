@@ -6,7 +6,7 @@ export interface LoadingBarOptions {
 }
 
 export interface ILoadingBar {
-  (options: LoadingBarOptions): void
+  mergeConfig(options: LoadingBarOptions): void
 
   start(): void
 

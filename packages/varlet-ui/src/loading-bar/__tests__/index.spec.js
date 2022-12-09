@@ -22,7 +22,7 @@ test('test loading-bar methods', async () => {
 })
 
 test('test loading-bar custom style', async () => {
-  LoadingBar({
+  LoadingBar.mergeConfig({
     color: 'white',
     errorColor: 'black',
     height: '10px',

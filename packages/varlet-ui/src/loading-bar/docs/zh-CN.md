@@ -13,12 +13,12 @@ import { LoadingBar, Snackbar } from '@varlet/ui'
 
 const isClear = ref(false)
 
-LoadingBar({
+LoadingBar.mergeConfig({
   top: '48px'
 })
 
 const setStyle = () => {
-  LoadingBar({
+  LoadingBar.mergeConfig({
     errorColor: isClear.value ? undefined : '#ff8800',
     color: isClear.value ? undefined : '#10afef',
     height: isClear.value ? undefined : '5px'
@@ -52,19 +52,19 @@ const setStyle = () => {
 
 | 方法名                 | 说明       | 参数 | 返回值     |
 |---------------------|----------|--|---------|
-| `LoadingBar`        | 设置加载条的样式 | _options: Options_ | `-`  |
+| `LoadingBar.mergeConfig` | 设置加载条的样式 | _options: Options_ | `-`  |
 | `LoadingBar.start`  | 开始加载  | `-` | `-` |
 | `LoadingBar.finish` | 结束加载  | `-` | `-` |
 | `LoadingBar.error`  | 加载失败  | `-` | `-` |
 
 ### LoadingBar Options
 
-| 参数           | 说明          | 类型        | 默认值    |
-|--------------|-------------|-----------|--------|
-| `color`      | 加载条颜色       | _string_  | `-`    |
-| `errorColor` | 加载失败时的颜色    | _string_  | `-`    |
-| `height`     | 加载条的高度      | _string\|number_ | `-` |
-| `top`        | 加载距离页面顶部的距离 | _string\|number_ | `-` |
+| 参数           | 说明           | 类型        | 默认值    |
+|--------------|--------------|-----------|--------|
+| `color`      | 加载条颜色        | _string_  | `-`    |
+| `errorColor` | 加载失败时的颜色     | _string_  | `-`    |
+| `height`     | 加载条的高度       | _string\|number_ | `-` |
+| `top`        | 加载条距离页面顶部的距离 | _string\|number_ | `-` |
 
 ### 样式变量
 

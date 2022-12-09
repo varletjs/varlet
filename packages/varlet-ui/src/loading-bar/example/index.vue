@@ -9,12 +9,12 @@ import dark from '../../themes/dark'
 
 const isClear = ref(false)
 
-LoadingBar({
-  top: '48px',
+LoadingBar.mergeConfig({
+  top: '14.5vw',
 })
 
 const setStyle = () => {
-  LoadingBar({
+  LoadingBar.mergeConfig({
     errorColor: isClear.value ? undefined : '#ff8800',
     color: isClear.value ? undefined : '#10afef',
     height: isClear.value ? undefined : '5px',
