@@ -5,6 +5,7 @@
   --app-bar-height: 54px;
   --app-bar-left-gap: 6px;
   --app-bar-right-gap: 6px;
+  --app-bar-border-radius: 4px;
 }
 
 .var-app-bar {
@@ -46,5 +47,9 @@
     position: absolute;
     top: 0;
     right: var(--app-bar-right-gap);
+  }
+
+  &--round {
+    border-radius: var(--app-bar-border-radius);
   }
 }

@@ -3,13 +3,13 @@ import VarAppBar from '../AppBar'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 
-test('test appbar use', () => {
+test('test app bar use', () => {
   const app = createApp({}).use(AppBar)
   expect(app.component(AppBar.name)).toBeTruthy()
 })
 
-describe('test appbar component props', () => {
-  test('test appbar color', () => {
+describe('test app bar component props', () => {
+  test('test app bar color', () => {
     const wrapper = mount(VarAppBar, {
       props: {
         color: 'red',
@@ -20,7 +20,18 @@ describe('test appbar component props', () => {
     wrapper.unmount()
   })
 
-  test('test appbar textColor', () => {
+  test('test app bar round', () => {
+    const wrapper = mount(VarAppBar, {
+      props: {
+        round: true,
+      },
+    })
+
+    expect(wrapper.find('.var-app-bar').classes('var-app-bar--round')).toBeTruthy()
+    wrapper.unmount()
+  })
+
+  test('test app bar textColor', () => {
     const wrapper = mount(VarAppBar, {
       props: {
         textColor: 'red',
@@ -31,7 +42,7 @@ describe('test appbar component props', () => {
     wrapper.unmount()
   })
 
-  test('test appbar title', () => {
+  test('test app bar title', () => {
     const wrapper = mount(VarAppBar, {
       props: {
         title: 'text',
@@ -42,7 +53,7 @@ describe('test appbar component props', () => {
     wrapper.unmount()
   })
 
-  test('test appbar titlePosition', async () => {
+  test('test app bar titlePosition', async () => {
     const wrapper = mount(VarAppBar, {
       props: {
         titlePosition: 'left',
@@ -65,7 +76,7 @@ describe('test appbar component props', () => {
     wrapper.unmount()
   })
 
-  test('test appbar elevation', async () => {
+  test('test app bar elevation', async () => {
     const wrapper = mount(VarAppBar, {
       props: {
         elevation: true,
@@ -83,8 +94,8 @@ describe('test appbar component props', () => {
   })
 })
 
-describe('test appbar slots', () => {
-  test('test appbar default slot', () => {
+describe('test app bar slots', () => {
+  test('test app bar default slot', () => {
     const wrapper = mount(VarAppBar, {
       slots: {
         default: () => 'This is default slot',
@@ -96,7 +107,7 @@ describe('test appbar slots', () => {
     wrapper.unmount()
   })
 
-  test('test appbar left slot', () => {
+  test('test app bar left slot', () => {
     const wrapper = mount(VarAppBar, {
       slots: {
         left: () => 'This is left slot',
@@ -108,7 +119,7 @@ describe('test appbar slots', () => {
     wrapper.unmount()
   })
 
-  test('test appbar right slot', () => {
+  test('test app bar right slot', () => {
     const wrapper = mount(VarAppBar, {
       slots: {
         right: () => 'This is right slot',

@@ -83,20 +83,26 @@ export function getAllParentScroller(el: HTMLElement): Array<HTMLElement | Windo
 // example 1rem
 export const isRem = (value: unknown): value is string => isString(value) && value.endsWith('rem')
 
-// example 1 || 1px
+// e.g. 1 || 1px
 export const isPx = (value: unknown): value is string | number =>
   (isString(value) && value.endsWith('px')) || isNumber(value)
 
-// example 1%
+// e.g. 1%
 export const isPercent = (value: unknown): value is string => isString(value) && value.endsWith('%')
 
-// example 1vw
+// e.g. 1vw
 export const isVw = (value: unknown): value is string => isString(value) && value.endsWith('vw')
 
-// example 1vh
+// e.g. 1vh
 export const isVh = (value: unknown): value is string => isString(value) && value.endsWith('vh')
 
-// example return 1
+// e.g. calc(1px + 1px)
+export const isCalc = (value: unknown): value is string => isString(value) && value.startsWith('calc(')
+
+// e.g. var(--color-primary)
+export const isVar = (value: unknown): value is string => isString(value) && value.startsWith('var(')
+
+// e.g. return 1
 export const toPxNum = (value: unknown): number => {
   if (isNumber(value)) {
     return value
@@ -129,13 +135,13 @@ export const toPxNum = (value: unknown): number => {
   return 0
 }
 
-// example return 1px 1% 1vw 1vh 1rem null
+// e.g. return 1px 1% 1vw 1vh 1rem null var(--color-primary) calc(1px + 1px)
 export const toSizeUnit = (value: unknown) => {
   if (value == null) {
     return undefined
   }
 
-  if (isPercent(value) || isVw(value) || isVh(value) || isRem(value)) {
+  if (isPercent(value) || isVw(value) || isVh(value) || isRem(value) || isCalc(value) || isVar(value)) {
     return value
   }
 

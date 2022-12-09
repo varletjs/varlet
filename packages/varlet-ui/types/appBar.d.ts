@@ -9,6 +9,7 @@ export interface AppBarProps extends BasicAttributes {
   title?: string
   titlePosition?: AppBarTitlePosition
   elevation?: boolean
+  round?: boolean
 }
 
 export class AppBar extends VarComponent {

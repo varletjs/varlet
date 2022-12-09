@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classes(n(), [elevation, n('$-elevation--3')])"
+    :class="classes(n(), [round, n('--round')], [elevation, n('$-elevation--3')])"
     :style="{
       background: color,
       color: textColor,
