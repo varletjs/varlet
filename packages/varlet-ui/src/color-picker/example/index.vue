@@ -7,6 +7,6 @@ watchLang(use)
 </script>
 
 <template>
-  <app-type>Mobile phone example code</app-type>
+  <app-type>我是color picker</app-type>
   <var-color-picker />
 </template>

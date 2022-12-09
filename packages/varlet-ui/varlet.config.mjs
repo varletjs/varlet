@@ -460,6 +460,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'ColorPicker 颜色选择器',
+          'en-US': 'ColorPicker',
+        },
+        doc: 'color-picker',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Picker 多列选择器',
           'en-US': 'Picker',
         },
