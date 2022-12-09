@@ -452,6 +452,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'LoadingBar 加载条',
+          'en-US': 'LoadingBar',
+        },
+        doc: 'loading-bar',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Countdown 倒计时',
           'en-US': 'Countdown',
         },

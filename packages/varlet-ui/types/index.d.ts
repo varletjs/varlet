@@ -34,6 +34,7 @@ export * from './lazy'
 export * from './link'
 export * from './list'
 export * from './loading'
+export * from './loadingBar'
 export * from './locale'
 export * from './menu'
 export * from './option'
@@ -105,6 +106,7 @@ declare module 'vue' {
     VarLink: typeof import('@varlet/ui')['_LinkComponent']
     VarList: typeof import('@varlet/ui')['_ListComponent']
     VarLoading: typeof import('@varlet/ui')['_LoadingComponent']
+    VarLoadingBar: typeof import('@varlet/ui')['_LoadingBarComponent']
     VarLocale: typeof import('@varlet/ui')['_LocaleComponent']
     VarMenu: typeof import('@varlet/ui')['_MenuComponent']
     VarOption: typeof import('@varlet/ui')['_OptionComponent']
