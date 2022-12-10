@@ -11,8 +11,4 @@ export default {
   successTitle: 'Success',
   description: "Hi, I'm a result description.",
   changeBackgroundColor: 'Change BackGround Color',
-  customImage: 'Custom Image',
-  looping: 'Looping',
-  kfc: '《You Are Not Alone》',
-  vme: 'More',
 }

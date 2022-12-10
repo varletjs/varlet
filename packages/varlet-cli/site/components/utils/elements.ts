@@ -7,19 +7,21 @@ export function getLeft(element: HTMLElement): number {
   return left + (document.body.scrollLeft || document.documentElement.scrollLeft)
 }
 
-export const isRem = (value: unknown) => isString(value) && value.endsWith('rem')
+// example 1rem
+export const isRem = (value: unknown): value is string => isString(value) && value.endsWith('rem')
 
 // example 1 || 1px
-export const isPx = (value: unknown) => (isString(value) && value.endsWith('px')) || isNumber(value)
+export const isPx = (value: unknown): value is string | number =>
+  (isString(value) && value.endsWith('px')) || isNumber(value)
 
 // example 1%
-export const isPercent = (value: unknown) => isString(value) && value.endsWith('%')
+export const isPercent = (value: unknown): value is string => isString(value) && value.endsWith('%')
 
 // example 1vw
-export const isVw = (value: unknown) => isString(value) && value.endsWith('vw')
+export const isVw = (value: unknown): value is string => isString(value) && value.endsWith('vw')
 
 // example 1vh
-export const isVh = (value: unknown) => isString(value) && value.endsWith('vh')
+export const isVh = (value: unknown): value is string => isString(value) && value.endsWith('vh')
 
 // example return 1
 export const toPxNum = (value: unknown): number => {
@@ -57,7 +59,7 @@ export const toPxNum = (value: unknown): number => {
 // example return 1px 1% 1vw 1vh 1rem null
 export const toSizeUnit = (value: unknown) => {
   if (value == null) {
-    return null
+    return undefined
   }
 
   if (isPercent(value) || isVw(value) || isVh(value) || isRem(value)) {

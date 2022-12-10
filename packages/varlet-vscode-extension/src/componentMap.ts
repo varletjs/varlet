@@ -186,6 +186,9 @@ export const componentMap: Record<string, ComponentDescriptor> = {
     closeSelf: true,
     characterDelta: -3,
   },
+  overlay: {
+    site: '/overlay',
+  },
   popup: {
     site: '/popup',
   },

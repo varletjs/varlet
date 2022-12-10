@@ -1,0 +1,18 @@
+:root {
+  --loading-bar-color: var(--color-primary);
+  --loading-bar-error-color: var(--color-danger);
+  --loading-bar-height: 3px;
+}
+
+.var-site-loading-bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all 0.25s;
+  height: var(--loading-bar-height);
+  background-color: var(--loading-bar-color);
+
+  &--error {
+    background-color: var(--loading-bar-error-color);
+  }
+}

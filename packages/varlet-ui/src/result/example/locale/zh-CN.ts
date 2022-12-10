@@ -10,8 +10,4 @@ export default {
   button: '知道了',
   description: '嗨~ 我是结果页的一段描述~',
   changeBackgroundColor: '修改背景色',
-  customImage: '自定义图片',
-  looping: '正在循环播放',
-  kfc: '《疯狂星期四谁请我吃》',
-  vme: 'V我50',
 }

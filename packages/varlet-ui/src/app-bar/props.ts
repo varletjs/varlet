@@ -22,4 +22,8 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  round: {
+    type: Boolean,
+    default: false,
+  },
 }

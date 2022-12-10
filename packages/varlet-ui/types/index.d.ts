@@ -34,12 +34,14 @@ export * from './lazy'
 export * from './link'
 export * from './list'
 export * from './loading'
+export * from './loadingBar'
 export * from './locale'
 export * from './menu'
 export * from './option'
 export * from './pagination'
 export * from './picker'
 export * from './popup'
+export * from './overlay'
 export * from './progress'
 export * from './pullRefresh'
 export * from './radio'
@@ -105,12 +107,14 @@ declare module 'vue' {
     VarLink: typeof import('@varlet/ui')['_LinkComponent']
     VarList: typeof import('@varlet/ui')['_ListComponent']
     VarLoading: typeof import('@varlet/ui')['_LoadingComponent']
+    VarLoadingBar: typeof import('@varlet/ui')['_LoadingBarComponent']
     VarLocale: typeof import('@varlet/ui')['_LocaleComponent']
     VarMenu: typeof import('@varlet/ui')['_MenuComponent']
     VarOption: typeof import('@varlet/ui')['_OptionComponent']
     VarPagination: typeof import('@varlet/ui')['_PaginationComponent']
     VarPicker: typeof import('@varlet/ui')['_PickerComponent']
     VarPopup: typeof import('@varlet/ui')['_PopupComponent']
+    VarOverlay: typeof import('@varlet/ui')['_OverlayComponent']
     VarProgress: typeof import('@varlet/ui')['_ProgressComponent']
     VarPullRefresh: typeof import('@varlet/ui')['_PullRefreshComponent']
     VarRadio: typeof import('@varlet/ui')['_RadioComponent']
