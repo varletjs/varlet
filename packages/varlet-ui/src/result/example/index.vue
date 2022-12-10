@@ -27,25 +27,6 @@ watchDarkMode(dark)
     </template>
   </var-result>
 
-  <app-type>{{ pack.customImage }}</app-type>
-  <var-result :title="pack.looping" :description="pack.kfc">
-    <template #image>
-      <svg viewBox="0 0 48 48" class="music">
-        <circle cx="24" cy="24" fill="#37474f" r="19" />
-        <circle cx="24" cy="24" fill="#263238" r="18" />
-        <g fill="#37474f">
-          <path d="m41.022 29.815-17.022-5.815 5.815 17.022c5.257-1.796 9.41-5.95 11.207-11.207z" />
-          <path d="m6.978 18.185 17.022 5.815-5.815-17.022c-5.257 1.797-9.41 5.95-11.207 11.207z" />
-        </g>
-        <path d="m24 17c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z" fill="#eee" />
-        <circle cx="24" cy="24" r="1" />
-      </svg>
-    </template>
-    <template #footer>
-      <var-button color="var(--result-question-color)" text-color="#fff">{{ pack.vme }}</var-button>
-    </template>
-  </var-result>
-
   <app-type>{{ pack.type }}</app-type>
   <var-space direction="column" size="large">
     <var-button type="success" block @click="success = true">{{ pack.success }}</var-button>

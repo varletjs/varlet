@@ -8,42 +8,37 @@
 
 ```html
 <script setup>
-import ref from 'vue'
-import { LoadingBar, Snackbar } from '@varlet/ui'
+import { ref } from 'vue'
+import { LoadingBar } from '@varlet/ui'
 
-const isClear = ref(false)
-
-LoadingBar.mergeConfig({
-  top: '48px'
-})
+const hasCustomStyle = ref(false)
 
 const setStyle = () => {
   LoadingBar.mergeConfig({
-    errorColor: isClear.value ? undefined : '#ff8800',
-    color: isClear.value ? undefined : '#10afef',
-    height: isClear.value ? undefined : '5px'
+    errorColor: hasCustomStyle.value ? undefined : '#ff8800',
+    color: hasCustomStyle.value ? undefined : '#10afef',
+    height: hasCustomStyle.value ? undefined : '5px'
   })
 
-  isClear.value = !isClear.value
-
-  Snackbar.success('success')
+  hasCustomStyle.value = !hasCustomStyle.value
 }
+
+// 移动端案例设置了偏移
+// LoadingBar.mergeConfig({
+//   top: '48px'
+// })
 </script>
 
 <template>
-  <var-button type="primary" block @click="LoadingBar.start()">开始</var-button>
-  <var-button type="primary" block @click="LoadingBar.finish()">结束</var-button>
-  <var-button type="primary" block @click="LoadingBar.error()">错误</var-button>
-  <var-button type="primary" block @click="setStyle">
-    {{ isClear ? '清除样式' : '设置样式' }}
-  </var-button>
+  <var-space direction="column" size="large">
+    <var-button type="primary" block @click="LoadingBar.start()">开始</var-button>
+    <var-button type="primary" block @click="LoadingBar.finish()">结束</var-button>
+    <var-button type="primary" block @click="LoadingBar.error()">错误</var-button>
+    <var-button type="primary" block @click="setStyle">
+      {{ hasCustomStyle ? '清除样式' : '设置样式' }}
+    </var-button>
+  </var-space>
 </template>
-
-<style scoped lang="less">
-  .var-button {
-    margin-bottom: 11px;
-  }
-</style>
 ```
 
 ## API
@@ -52,7 +47,7 @@ const setStyle = () => {
 
 | 方法名                 | 说明       | 参数 | 返回值     |
 |---------------------|----------|--|---------|
-| `LoadingBar.mergeConfig` | 设置加载条的样式 | _options: Options_ | `-`  |
+| `LoadingBar.mergeConfig` | 合并覆盖加载条的默认样式 | _options: Options_ | `-`  |
 | `LoadingBar.start`  | 开始加载  | `-` | `-` |
 | `LoadingBar.finish` | 结束加载  | `-` | `-` |
 | `LoadingBar.error`  | 加载失败  | `-` | `-` |

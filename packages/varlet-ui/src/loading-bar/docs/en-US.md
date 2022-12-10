@@ -8,42 +8,37 @@ Display loading progress at the top of the page.
 
 ```html
 <script setup>
-import ref from 'vue'
-import { LoadingBar, Snackbar } from '@varlet/ui'
+import { ref } from 'vue'
+import { LoadingBar } from '@varlet/ui'
 
-const isClear = ref(false)
-
-LoadingBar.mergeConfig({
-  top: '48px'
-})
+const hasCustomStyle = ref(false)
 
 const setStyle = () => {
   LoadingBar.mergeConfig({
-    errorColor: isClear.value ? undefined : '#ff8800',
-    color: isClear.value ? undefined : '#10afef',
-    height: isClear.value ? undefined : '5px',
+    errorColor: hasCustomStyle.value ? undefined : '#ff8800',
+    color: hasCustomStyle.value ? undefined : '#10afef',
+    height: hasCustomStyle.value ? undefined : '5px'
   })
 
-  isClear.value = !isClear.value
-
-  Snackbar.success('success')
+  hasCustomStyle.value = !hasCustomStyle.value
 }
+
+// mobile only
+// LoadingBar.mergeConfig({
+//   top: '48px'
+// })
 </script>
 
 <template>
-  <var-button type="primary" block @click="LoadingBar.start()">Start</var-button>
-  <var-button type="primary" block @click="LoadingBar.finish()">Finish</var-button>
-  <var-button type="primary" block @click="LoadingBar.error()">Error</var-button>
-  <var-button type="primary" block @click="setStyle">
-    {{ isClear ? 'Clear Style' : 'Custom Style' }}
-  </var-button>
+  <var-space direction="column" size="large">
+    <var-button type="primary" block @click="LoadingBar.start()">Start</var-button>
+    <var-button type="primary" block @click="LoadingBar.finish()">Finish</var-button>
+    <var-button type="primary" block @click="LoadingBar.error()">Error</var-button>
+    <var-button type="primary" block @click="setStyle">
+      {{ hasCustomStyle ? 'Clear Style' : 'Custom Style' }}
+    </var-button>
+  </var-space>
 </template>
-
-<style scoped lang="less">
-  .var-button {
-    margin-bottom: 11px;
-  }
-</style>
 ```
 
 ## API
@@ -52,7 +47,7 @@ const setStyle = () => {
 
 | Method | Description | Arguments | Return value |
 |---------------------|----------|--|---------|
-| `LoadingBar.mergeConfig` | Set config of loading bar | _options: Options_ | `-`  |
+| `LoadingBar.mergeConfig` | Merge config of loading bar | _options: Options_ | `-`  |
 | `LoadingBar.start`  | Start loading  | `-` | `-` |
 | `LoadingBar.finish` | Finish loading  | `-` | `-` |
 | `LoadingBar.error`  | Loading error  | `-` | `-` |
