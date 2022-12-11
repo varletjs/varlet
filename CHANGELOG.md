@@ -1,3 +1,27 @@
+# [2.4.0](https://github.com/varletjs/varlet/compare/v2.3.1...v2.4.0) (2022-12-11)
+
+
+### Bug Fixes
+
+* change overlay test className ([093cbaa](https://github.com/varletjs/varlet/commit/093cbaaaf375c771c260e0f6a9f39f691f749288))
+* recover popup root style ([61bdede](https://github.com/varletjs/varlet/commit/61bdede3e5bcff80a6d1fba8c069a271fba27201))
+* replace popup overlay ([d9a7e8d](https://github.com/varletjs/varlet/commit/d9a7e8dd43b112496cff1bd8fd319521598b17b6))
+* reset popup ([5b710e7](https://github.com/varletjs/varlet/commit/5b710e70fcf1037a65179516a3b4a2801ab54ec0))
+* **site:** replace progress to loading-bar ([d5a9b0e](https://github.com/varletjs/varlet/commit/d5a9b0e6f0c78036290fa8164e75e39dc8e8e9cf))
+
+
+### Features
+
+* add overlay click event ([4853339](https://github.com/varletjs/varlet/commit/4853339d8a29942110c58eb279b956d81d878db0))
+* **extension:** support result ([d71bd13](https://github.com/varletjs/varlet/commit/d71bd1324e12e39f46f14061139b6174db46ba11))
+* init overlay component ([5847685](https://github.com/varletjs/varlet/commit/58476856b5bcf3ff07a082192fcb3a214b947e02))
+* loading-bar ([8290395](https://github.com/varletjs/varlet/commit/82903955a40524ccd7ce91d1b0fb8d9d443dca20))
+* overlay test spec ([835b33e](https://github.com/varletjs/varlet/commit/835b33eae86e508eb011b758d05f65f20cf11e9e))
+* **ui/app-bar:** support round prop ([21557ea](https://github.com/varletjs/varlet/commit/21557ea69814b5456dac806f9e98fa764b83d5f1))
+* **ui/popup:** add defaultStyle prop ([7ae22f3](https://github.com/varletjs/varlet/commit/7ae22f37318ec4c4bc54b6c868dd6433224aa0ac))
+
+
+
 ## [2.3.1](https://github.com/varletjs/varlet/compare/v2.3.0...v2.3.1) (2022-11-28)
 
 
