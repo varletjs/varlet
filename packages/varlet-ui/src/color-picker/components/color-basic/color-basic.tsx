@@ -2,7 +2,7 @@ import { defineComponent, ref, inject } from 'vue'
 import { colorPickerBasicColorProps, ColorPickerBasicColorProps } from './color-basic-types'
 import { ProvideColorOptions, ColorPickerColor } from '../../utils/color-utils-types'
 import { fromHex } from '../../utils/color-utils'
-import './color-basic.scss'
+import './color-basic.less'
 import { color } from '../../utils/color'
 export default defineComponent({
   name: 'ColorBasic',

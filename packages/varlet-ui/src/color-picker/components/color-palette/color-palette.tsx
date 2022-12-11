@@ -4,7 +4,7 @@ import { fromHSVA } from '../../utils/color-utils'
 import { clamp } from '../../utils/helpers'
 import { colorPickerPaletteProps, ColorPickerPaletteProps } from './color-picker-palette-types'
 import { ProvideColorOptions } from '../../utils/color-utils-types'
-import './color-palette.scss'
+import './color-palette.less'
 
 type DefaultTransition = { transition: string }
 export default defineComponent({

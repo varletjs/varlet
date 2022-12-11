@@ -2,7 +2,7 @@ import { computed, defineComponent, ref, onMounted } from 'vue'
 import { colorPickerAlphaSliderProps } from './color-picker-alpha-slider-types'
 import { DOMUtils } from '../../utils/dom-dragger'
 import { RGBtoCSS, fromHSVA } from '../../utils/color-utils'
-import './color-alpha-slider.scss'
+import './color-alpha-slider.less'
 export default defineComponent({
   name: 'ColorAlphaSlider',
   props: colorPickerAlphaSliderProps,

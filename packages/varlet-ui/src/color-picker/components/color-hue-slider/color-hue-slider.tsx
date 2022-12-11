@@ -2,7 +2,7 @@ import { computed, defineComponent, ref, onMounted } from 'vue'
 import { colorPickerHueSliderProps, ColorPickerHueSliderProps } from './color-picker-hue-slider-types'
 import { DOMUtils } from '../../utils/dom-dragger'
 import { fromHSVA } from '../../utils/color-utils'
-import './color-hue-slider.scss'
+import './color-hue-slider.less'
 type ColorPickerColor = NonNullable<ColorPickerHueSliderProps['modelValue']>
 type DefaultTransition = { transition: string }
 export default defineComponent({

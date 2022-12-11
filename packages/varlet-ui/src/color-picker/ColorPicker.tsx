@@ -3,10 +3,9 @@ import type { StyleValue } from 'vue'
 import { useReactive, changeColorValue } from './utils/composable'
 import { colorPickerProps, ColorPickerProps } from './color-picker-types'
 import colorPanel from './components/color-picker-panel/color-picker-panel'
-import './color-picker.scss'
+import './colorPicker.less'
 import { parseColor, extractColor, RGBAtoCSS } from './utils/color-utils'
 import { ColorPickerColor } from './utils/color-utils-types'
-import DPopoverRefactor from '../../popover-refactor/src/popover'
 export default defineComponent({
   name: 'DColorPicker',
   components: {
@@ -86,41 +85,32 @@ export default defineComponent({
     return () => {
       return (
         <>
-          <d-popover-refactor
-            placement="bottom-start"
-            animateName="color-picker-transition"
-            v-slots={{
-              content: () => (
-                <div ref={pickerRef} class={['devui-color-picker-position']}>
-                  <color-panel
-                    v-model={initialColor.value}
-                    ref={containerRef}
-                    mode={mode.value}
-                    onChangeTextColor={changeTextColor}
-                    onChangePaletteColor={changePaletteColor}
-                    onChangeTextModeType={changeTextModeType}
-                  ></color-panel>
-                </div>
-              ),
-            }}
-          >
-            <div class="devui-color-picker" ref={colorCubeRef}>
-              <div class="devui-color-picker-container">
-                <div class="devui-color-picker-container-wrap">
-                  <div class="devui-color-picker-container-wrap-current-color" style={triggerColor.value}></div>
-                  <div
-                    class={[
-                      'devui-color-picker-container-wrap-transparent',
-                      'devui-color-picker-container-wrap-current-color-transparent',
-                    ]}
-                  ></div>
-                  <div class="devui-color-picker-color-value">
-                    <p style={textColor.value as StyleValue}>{formItemValue.value}</p>
-                  </div>
+          <div ref={pickerRef} class={['devui-color-picker-position']}>
+            <color-panel
+              v-model={initialColor.value}
+              ref={containerRef}
+              mode={mode.value}
+              onChangeTextColor={changeTextColor}
+              onChangePaletteColor={changePaletteColor}
+              onChangeTextModeType={changeTextModeType}
+            ></color-panel>
+          </div>
+          <div class="devui-color-picker" ref={colorCubeRef}>
+            <div class="devui-color-picker-container">
+              <div class="devui-color-picker-container-wrap">
+                <div class="devui-color-picker-container-wrap-current-color" style={triggerColor.value}></div>
+                <div
+                  class={[
+                    'devui-color-picker-container-wrap-transparent',
+                    'devui-color-picker-container-wrap-current-color-transparent',
+                  ]}
+                ></div>
+                <div class="devui-color-picker-color-value">
+                  <p style={textColor.value as StyleValue}>{formItemValue.value}</p>
                 </div>
               </div>
             </div>
-          </d-popover-refactor>
+          </div>
         </>
       )
     }
