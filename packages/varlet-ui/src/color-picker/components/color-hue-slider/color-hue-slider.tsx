@@ -81,10 +81,10 @@ export default defineComponent({
     })
     return () => {
       return (
-        <div class="devui-color-picker-hue-slider">
-          <div ref={barElement} class="devui-color-picker-hue-slider__bar" onClick={onClickSider}>
-            <div class="devui-color-picker-hue-slider__bar-pointer" ref={cursorElement} style={getCursorStyle.value}>
-              <div class="devui-color-picker-hue-slider__bar-handle"></div>
+        <div class="var-color-picker-hue-slider">
+          <div ref={barElement} class="var-color-picker-hue-slider__bar" onClick={onClickSider}>
+            <div class="var-color-picker-hue-slider__bar-pointer" ref={cursorElement} style={getCursorStyle.value}>
+              <div class="var-color-picker-hue-slider__bar-handle"></div>
             </div>
           </div>
         </div>

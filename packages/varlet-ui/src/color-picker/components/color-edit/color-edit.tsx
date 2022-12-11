@@ -130,9 +130,9 @@
 //       }
 
 //       return (
-//         <div class="devui-color-picker-edit-input string-input flex">
-//           <div class="devui-color-picker-edit-input-wrapper">
-//             <input value={value} onChange={updateValue} class="devui-color-picker-edit-input-value" />
+//         <div class="var-color-picker-edit-input string-input flex">
+//           <div class="var-color-picker-edit-input-wrapper">
+//             <input value={value} onChange={updateValue} class="var-color-picker-edit-input-value" />
 //           </div>
 //         </div>
 //       )
@@ -241,12 +241,12 @@
 //       }
 
 //       return (
-//         <div class="devui-color-picker-edit-input number-input flex">
+//         <div class="var-color-picker-edit-input number-input flex">
 //           {key.split('').map((k: string) => (
-//             <div class="devui-color-picker-edit-input-wrapper">
+//             <div class="var-color-picker-edit-input-wrapper">
 //               <input
 //                 onKeydown={onKeyChangeValue()}
-//                 class="devui-color-picker-edit-input-value"
+//                 class="var-color-picker-edit-input-value"
 //                 value={formatValue(k as keyof IModel, (value as { [key: string]: number })[k])}
 //                 onChange={updateValue(k as keyof IModel)}
 //               />
@@ -270,8 +270,8 @@
 //     }
 
 //     return () => (
-//       <div class="devui-color-picker-edit flex">
-//         <div class="devui-color-picker-edit-name" onClick={onChangeModel}>
+//       <div class="var-color-picker-edit flex">
+//         <div class="var-color-picker-edit-name" onClick={onChangeModel}>
 //           {modelValue.value.toUpperCase()}
 //         </div>
 //         {renderValueInput()}

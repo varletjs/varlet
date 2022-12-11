@@ -79,11 +79,11 @@
 //     }
 
 //     return () => (
-//       <div class="devui-color-picker-history flex flex-wrap">
+//       <div class="var-color-picker-history flex flex-wrap">
 //         {history.value.map((hexa: string) => (
 //           <div
 //             onClick={() => onChangeColor(hexa)}
-//             class={['devui-color-picker-history_color-box', hexa.endsWith('00') ? 'transparent' : '']}
+//             class={['var-color-picker-history_color-box', hexa.endsWith('00') ? 'transparent' : '']}
 //             style={{ backgroundColor: hexa }}
 //           ></div>
 //         ))}

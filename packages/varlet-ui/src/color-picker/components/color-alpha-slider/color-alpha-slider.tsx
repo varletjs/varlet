@@ -73,23 +73,23 @@ export default defineComponent({
       }
     })
     const alphaClass = computed(() => {
-      return ['devui-color-picker-alpha-slider', 'transparent']
+      return ['var-color-picker-alpha-slider', 'transparent']
     })
     return () => {
       return (
         <div class={alphaClass.value}>
           <div
             ref={barElement}
-            class="devui-color-picker-alpha-slider__bar"
+            class="var-color-picker-alpha-slider__bar"
             style={getBackgroundStyle.value}
             onClick={onClickSider}
           >
             <div
-              class={['devui-color-picker-alpha-slider__bar-pointer']}
+              class={['var-color-picker-alpha-slider__bar-pointer']}
               ref={cursorElement}
               style={getCursorStyle.value}
             >
-              <div class="devui-color-picker-alpha-slider__bar-handle"></div>
+              <div class="var-color-picker-alpha-slider__bar-handle"></div>
             </div>
           </div>
         </div>

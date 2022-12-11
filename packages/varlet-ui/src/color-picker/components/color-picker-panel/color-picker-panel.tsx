@@ -52,7 +52,7 @@ export default defineComponent({
     )
     return () => {
       return (
-        <div class="devui-color-picker-panel">
+        <div class="var-color-picker-panel">
           {/* <d-tabs type="tabs" v-model={tab.value}> */}
           {/* <d-tab id="basic" title={('foundationPanel')} tabId="basic"> */}
           <color-basic color={paletteColorMap}></color-basic>

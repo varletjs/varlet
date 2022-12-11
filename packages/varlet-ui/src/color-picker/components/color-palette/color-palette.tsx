@@ -127,9 +127,9 @@ export default defineComponent({
     ctx.expose({ renderCanvas })
     return () => {
       return (
-        <div class="devui-color-picker-palette" ref={paletteElement} onClick={clickPalette}>
+        <div class="var-color-picker-palette" ref={paletteElement} onClick={clickPalette}>
           <canvas ref={canvasElement}></canvas>
-          <div class="devui-color-picker-palette-handler" style={getCursorStyle.value}>
+          <div class="var-color-picker-palette-handler" style={getCursorStyle.value}>
             <div ref={handlerElement} style={getDotStyle.value}></div>
           </div>
         </div>

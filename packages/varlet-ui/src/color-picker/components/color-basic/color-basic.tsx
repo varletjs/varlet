@@ -19,11 +19,11 @@ export default defineComponent({
     const swatches = ref(Object.values(swatchesInject?.swatches ?? []))
     return () => {
       return (
-        <div class="devui-color-picker-basic flex">
+        <div class="var-color-picker-basic flex">
           {(swatches.value.length !== 0 ? swatches.value : color).map((hex: string) => (
             <div
               onClick={() => changeBasicColor(hex)}
-              class={['devui-color-picker-basic-div']}
+              class={['var-color-picker-basic-div']}
               style={{ backgroundColor: hex }}
             ></div>
           ))}

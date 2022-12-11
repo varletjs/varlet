@@ -85,7 +85,7 @@ export default defineComponent({
     return () => {
       return (
         <>
-          <div ref={pickerRef} class={['devui-color-picker-position']}>
+          <div ref={pickerRef} class={['var-color-picker-position']}>
             <color-panel
               v-model={initialColor.value}
               ref={containerRef}
@@ -95,17 +95,17 @@ export default defineComponent({
               onChangeTextModeType={changeTextModeType}
             ></color-panel>
           </div>
-          <div class="devui-color-picker" ref={colorCubeRef}>
-            <div class="devui-color-picker-container">
-              <div class="devui-color-picker-container-wrap">
-                <div class="devui-color-picker-container-wrap-current-color" style={triggerColor.value}></div>
+          <div class="var-color-picker" ref={colorCubeRef}>
+            <div class="var-color-picker-container">
+              <div class="var-color-picker-container-wrap">
+                <div class="var-color-picker-container-wrap-current-color" style={triggerColor.value}></div>
                 <div
                   class={[
-                    'devui-color-picker-container-wrap-transparent',
-                    'devui-color-picker-container-wrap-current-color-transparent',
+                    'var-color-picker-container-wrap-transparent',
+                    'var-color-picker-container-wrap-current-color-transparent',
                   ]}
                 ></div>
-                <div class="devui-color-picker-color-value">
+                <div class="var-color-picker-color-value">
                   <p style={textColor.value as StyleValue}>{formItemValue.value}</p>
                 </div>
               </div>
