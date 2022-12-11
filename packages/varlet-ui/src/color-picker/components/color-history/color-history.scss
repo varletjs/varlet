@@ -1,0 +1,25 @@
+@import '../../../../styles-var/devui-var.scss';
+
+.#{$devui-prefix}-color-picker-history {
+  margin-top: 10px;
+
+  &_color-box {
+    cursor: pointer;
+    margin: 5px;
+    height: 20px;
+    width: 20px;
+    border: solid 1px #e7e7e7;
+
+    &.transparent {
+      background:
+        linear-gradient(
+          to bottom right,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0) calc(50% - 1.5px),
+          #f18887 50%,
+          rgba(0, 0, 0, 0) calc(50% + 1.5px),
+          rgba(0, 0, 0, 0) 100%
+        );
+    }
+  }
+}

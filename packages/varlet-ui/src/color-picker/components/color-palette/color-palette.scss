@@ -1,0 +1,36 @@
+@import '../../../../styles-var/devui-var.scss';
+
+.#{$devui-prefix}-color-picker-palette {
+  position: relative;
+  width: 100%;
+
+  &__white,
+  &__black {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__black {
+    background: linear-gradient(0deg, #000000, transparent);
+  }
+
+  &__white {
+    background: linear-gradient(90deg, #ffffff, hsla(0, 0%, 100%, 0));
+  }
+
+  &-handler {
+    position: absolute;
+    // z-index: 999;
+    div {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+      cursor: pointer;
+    }
+  }
+}
