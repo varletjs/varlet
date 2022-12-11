@@ -7,7 +7,11 @@
     @touchend="touchEnd"
     @touchcancel="touchEnd"
   >
-    <div :class="classes(n('control'), n('$-elevation--2'), [isSuccess, n('control-success')])" :style="controlStyle">
+    <div
+      ref="controlNode"
+      :class="classes(n('control'), n('$-elevation--2'), [isSuccess, n('control-success')])"
+      :style="controlStyle"
+    >
       <var-icon
         :name="iconName"
         :transition="ICON_TRANSITION"
@@ -31,8 +35,6 @@ import type { RefreshStatus } from './props'
 
 const { n, classes } = createNamespace('pull-refresh')
 
-const MAX_DISTANCE = 100
-const CONTROL_POSITION = -50
 const ICON_TRANSITION = 150
 
 export default defineComponent({
@@ -45,9 +47,11 @@ export default defineComponent({
     let scroller: HTMLElement | Window
     let changing: Promise<void>
 
+    const controlPosition: Ref<number> = ref(0)
     const freshNode: Ref<HTMLElement | null> = ref(null)
+    const controlNode: Ref<HTMLElement | null> = ref(null)
     const startPosition: Ref<number> = ref(0)
-    const distance: Ref<number> = ref(CONTROL_POSITION)
+    const distance: Ref<number> = ref(-999)
     const iconName: Ref<string> = ref('arrow-down')
     const refreshStatus: Ref<RefreshStatus> = ref('default')
     const isEnd: Ref<boolean> = ref(false)
@@ -65,6 +69,8 @@ export default defineComponent({
       background: isSuccess.value ? props.successBgColor : props.bgColor,
       color: isSuccess.value ? props.successColor : props.color,
     }))
+
+    const maxDistance = computed(() => Math.abs(2 * controlPosition.value))
 
     const isSuccess = computed(() => refreshStatus.value === 'success')
 
@@ -88,13 +94,13 @@ export default defineComponent({
       const scrollTop = getScrollTop(scroller)
       if (scrollTop > 0 || !isTouchable.value) return
 
-      if (scrollTop === 0 && distance.value > CONTROL_POSITION) event.cancelable && event.preventDefault()
+      if (scrollTop === 0 && distance.value > controlPosition.value) event.cancelable && event.preventDefault()
 
-      const moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + CONTROL_POSITION
+      const moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + controlPosition.value
 
-      distance.value = moveDistance >= MAX_DISTANCE ? MAX_DISTANCE : moveDistance
+      distance.value = moveDistance >= maxDistance.value ? maxDistance.value : moveDistance
 
-      if (distance.value >= MAX_DISTANCE * 0.2) {
+      if (distance.value >= maxDistance.value * 0.2) {
         iconHasChanged.value = false
         iconName.value = 'refresh'
         changing = changeIcon()
@@ -108,22 +114,29 @@ export default defineComponent({
 
       isEnd.value = true
 
-      if (distance.value >= MAX_DISTANCE * 0.2) {
+      if (distance.value >= maxDistance.value * 0.2) {
         await changing
         refreshStatus.value = 'loading'
-        distance.value = MAX_DISTANCE * 0.3
+        distance.value = maxDistance.value * 0.3
 
         props['onUpdate:modelValue']?.(true)
         props.onRefresh?.()
       } else {
         refreshStatus.value = 'loosing'
         iconName.value = 'arrow-down'
-        distance.value = CONTROL_POSITION
+        distance.value = controlPosition.value
 
         setTimeout(() => {
           isEnd.value = false
         }, toNumber(props.animationDuration))
       }
+    }
+
+    const setPosition = () => {
+      const { width } = (controlNode.value as HTMLElement).getBoundingClientRect()
+
+      distance.value = -(width + width * 0.25)
+      controlPosition.value = -(width + width * 0.25)
     }
 
     const reset = () => {
@@ -142,7 +155,7 @@ export default defineComponent({
           refreshStatus.value = 'success'
           iconName.value = 'checkbox-marked-circle'
           setTimeout(() => {
-            distance.value = CONTROL_POSITION
+            distance.value = controlPosition.value
             reset()
           }, toNumber(props.successDuration))
         }
@@ -151,6 +164,8 @@ export default defineComponent({
 
     onMounted(() => {
       scroller = getParentScroller(freshNode.value as HTMLElement)
+
+      setPosition()
     })
 
     return {
@@ -160,6 +175,7 @@ export default defineComponent({
       ICON_TRANSITION,
       refreshStatus,
       freshNode,
+      controlNode,
       touchStart,
       touchMove,
       touchEnd,

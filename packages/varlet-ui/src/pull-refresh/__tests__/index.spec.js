@@ -74,7 +74,7 @@ describe('test pull-refresh props', () => {
     await trigger(el, 'touchstart', 0, 0)
     await trigger(el, 'touchmove', 0, 50)
 
-    expect(control.attributes('style').includes('translate3d(0px, -50px, 0px)')).toBe(true)
+    expect(control.attributes('style').includes('translate3d(0px, 0px, 0px)')).toBe(true)
 
     wrapper.unmount()
   })
@@ -113,5 +113,5 @@ test('test pull-refresh success state', async () => {
 
   await delay(300)
 
-  expect(control.attributes('style').includes('translate3d(0px, -50px, 0px)')).toBe(true)
+  expect(control.attributes('style').includes('translate3d(0px, 0px, 0px)')).toBe(true)
 })
