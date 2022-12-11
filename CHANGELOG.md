@@ -1,3 +1,12 @@
+## [2.4.1](https://github.com/varletjs/varlet/compare/v2.4.0...v2.4.1) (2022-12-11)
+
+
+### Bug Fixes
+
+* **pull-refresh:** fix contorl position and close [#774](https://github.com/varletjs/varlet/issues/774) ([9dc871c](https://github.com/varletjs/varlet/commit/9dc871cc8b586751dcbe17e42dfd266e9a057cab))
+
+
+
 # [2.4.0](https://github.com/varletjs/varlet/compare/v2.3.1...v2.4.0) (2022-12-11)
 
 
