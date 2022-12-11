@@ -85,6 +85,7 @@ export default defineComponent({
     return () => {
       return (
         <>
+          {formItemValue.value}
           <div ref={pickerRef} class={['var-color-picker-position']}>
             <color-panel
               v-model={initialColor.value}
@@ -95,7 +96,7 @@ export default defineComponent({
               onChangeTextModeType={changeTextModeType}
             ></color-panel>
           </div>
-          <div class="var-color-picker" ref={colorCubeRef}>
+          {/* <div class="var-color-picker" ref={colorCubeRef}>
             <div class="var-color-picker-container">
               <div class="var-color-picker-container-wrap">
                 <div class="var-color-picker-container-wrap-current-color" style={triggerColor.value}></div>
@@ -110,7 +111,7 @@ export default defineComponent({
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </>
       )
     }

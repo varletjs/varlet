@@ -24,10 +24,16 @@ export default defineComponent({
     const cursorTop = ref(0)
     const cursorLeft = ref(0)
     const getDotStyle = computed(() => {
+      console.log({
+        width: `${dotSizeInject.dotSize}px`,
+        height: `${dotSizeInject.dotSize}px`,
+        transform: `translate(-${dotSizeInject?.dotSize / 2}px,  -${dotSizeInject?.dotSize / 2}px)`,
+      })
+
       return {
         width: `${dotSizeInject.dotSize}px`,
         height: `${dotSizeInject.dotSize}px`,
-        transform: `translate(-${dotSizeInject?.dotSize || 0 / 2}px,  -${dotSizeInject?.dotSize || 0 / 2}px)`,
+        transform: `translate(-${dotSizeInject?.dotSize / 2}px,  -${dotSizeInject?.dotSize / 2}px)`,
       }
     })
     const getCursorStyle = computed(() => {

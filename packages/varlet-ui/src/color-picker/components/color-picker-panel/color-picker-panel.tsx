@@ -55,7 +55,7 @@ export default defineComponent({
         <div class="var-color-picker-panel">
           {/* <d-tabs type="tabs" v-model={tab.value}> */}
           {/* <d-tab id="basic" title={('foundationPanel')} tabId="basic"> */}
-          <color-basic color={paletteColorMap}></color-basic>
+          {/* <color-basic color={paletteColorMap}></color-basic> */}
           {/* </d-tab> */}
           {/* <d-tab id="palette" title={('advancedPanel')} tabId="palette"> */}
           <color-palette
@@ -65,8 +65,8 @@ export default defineComponent({
           ></color-palette>
           {/* </d-tab> */}
           {/* </d-tabs> */}
-          <color-hue-slider v-model={paletteColorMap.value}></color-hue-slider>
-          {showAlpha ? <color-alpha-slider v-model={paletteColorMap.value}></color-alpha-slider> : null}
+          {/* <color-hue-slider v-model={paletteColorMap.value}></color-hue-slider> */}
+          {/* {showAlpha ? <color-alpha-slider v-model={paletteColorMap.value}></color-alpha-slider> : null} */}
           {/* <colorEdit
             show-alpha={props.showAlpha}
             mode={props.mode}

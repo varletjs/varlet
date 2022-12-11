@@ -9,7 +9,7 @@ export const colorPickerPaletteProps = {
   },
   height: {
     type: Number,
-    default: 200,
+    default: 150,
   },
 } as const
 
