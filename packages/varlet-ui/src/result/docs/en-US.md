@@ -1,10 +1,10 @@
-# result
+# Result
 
 ### Intro
 
 It is used to show the results to users.
 
-### Basic Use
+### Basic Usage
 
 ```html
 <template>
