@@ -7,21 +7,19 @@
 
 ### 基本使用
 
+通过 `show` 控制遮罩层显示，点击遮罩时自动将 `show` 设置为 `false` 以关闭遮罩层。
+
 ```html
 <script setup>
 import { ref } from 'vue'
   
-const baseOverlay = ref(false)
+const show = ref(false)
 </script>
 
 <template>
-  <var-space>
-    <var-button @click="baseOverlay = true">基础用法</var-button>
-  </var-space>
-
-  <var-overlay v-model:show="baseOverlay" />
+  <var-button type="primary" block @click="show = true">显示遮罩层</var-button>
+  <var-overlay v-model:show="show" />
 </template>
-
 ```
 
 ### 嵌入内容
@@ -30,16 +28,13 @@ const baseOverlay = ref(false)
 <script setup>
 import { ref } from 'vue'
 
-const contentOverlay = ref(false)
+const show = ref(false)
 </script>
 
 <template>
-  <var-space>
-    <var-button @click="contentOverlay = true">嵌入内容</var-button>
-  </var-space>
-
-  <var-overlay v-model:show="contentOverlay">
-    <div class="popup-example-block" @click.stop>
+  <var-button type="primary" block @click="show = true">嵌入内容</var-button>
+  <var-overlay v-model:show="show">
+    <div class="overlay-content" @click.stop>
       素胚勾勒出青花笔锋浓转淡, 
       瓶身描绘的牡丹一如你初妆, 
       冉冉檀香透过窗心事我了然, 
@@ -49,11 +44,10 @@ const contentOverlay = ref(false)
 </template>
 
 <style>
-.popup-example-block {
+.overlay-content {
   padding: 20px 24px;
   width: 250px;
-  background: #fff;
-  border-radius: 5px;
+  background: var(--button-default-color);
 }
 </style>
 ```
@@ -64,31 +58,28 @@ const contentOverlay = ref(false)
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
-const event = ref(false)
+const show = ref(false)
 </script>
 
 <template>
-  <var-button type="primary" block @click="event = true">
-    注册事件
-  </var-button>
-
+  <var-button type="primary" block @click="show = true">点击遮罩层</var-button>
   <var-overlay
-    v-model:show="event"
-    @click="()=> Snackbar.success('click')"
+    v-model:show="show"
+    @click="Snackbar.success('click')"
   />
 </template>
-
 ```
 
 ## API
 
 ### 属性
 
-| 参数             | 说明                             | 类型                    | 默认值     |
-|----------------|--------------------------------|-----------------------|---------|
-| `v-model:show` | 是否显示遮罩层                        | _boolean_             | `false` |
-| `lock-scroll`  | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_             | `true`  |
-| `teleport`     | 弹出层挂载的位置                       | _TeleportProps['to']_ | `-`     |
+| 参数             | 说明                            | 类型                    | 默认值     |
+|----------------|-------------------------------|-----------------------|---------|
+| `v-model:show` | 是否显示遮罩层                       | _boolean_             | `false` |
+| `lock-scroll`  | 是否禁止滚动穿透，禁止时滚动遮罩层不会引发 body 的滚动 | _boolean_             | `true`  |
+| `teleport`     | 遮罩层挂载的位置                      | _TeleportProps['to']_ | `-`     |
+
 ### 事件
 
 | 事件名     | 说明       | 参数  |
@@ -102,8 +93,9 @@ const event = ref(false)
 | `default` | 遮罩层内容 | `-` |
 
 ### 样式变量
+
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
-| 变量名                                | 默认值                 |
-|------------------------------------|---------------------|
-| `--popup-overlay-background-color` | `rgba(0, 0, 0, .6)` |
+| 变量名                               | 默认值                 |
+|-----------------------------------|---------------------|
+| `--overlay-background-color` | `rgba(0, 0, 0, .6)` |
