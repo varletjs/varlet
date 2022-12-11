@@ -26,7 +26,7 @@ Result type, optional values are `info`，`success`，`warning`，`error`，`que
 
 ```html
 <script setup>
-import {ref} from 'vue'
+import { ref } from 'vue'
 
 const success = ref(false)
 const error = ref(false)
