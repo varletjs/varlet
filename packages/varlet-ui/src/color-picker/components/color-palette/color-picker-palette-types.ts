@@ -11,6 +11,10 @@ export const colorPickerPaletteProps = {
     type: Number,
     default: 150,
   },
+  width: {
+    type: Number,
+    default: 300,
+  },
 } as const
 
 export type ColorPickerPaletteProps = ExtractPropTypes<typeof colorPickerPaletteProps>

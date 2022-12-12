@@ -4,8 +4,10 @@ import { useReactive, changeColorValue } from './utils/composable'
 import { colorPickerProps, ColorPickerProps } from './color-picker-types'
 import colorPanel from './components/color-picker-panel/color-picker-panel'
 import './colorPicker.less'
+import '../styles/elevation.less'
 import { parseColor, extractColor, RGBAtoCSS } from './utils/color-utils'
 import { ColorPickerColor } from './utils/color-utils-types'
+
 export default defineComponent({
   name: 'DColorPicker',
   components: {
@@ -85,18 +87,18 @@ export default defineComponent({
     return () => {
       return (
         <>
-          {formItemValue.value}
-          <div ref={pickerRef} class={['var-color-picker-position']}>
-            <color-panel
-              v-model={initialColor.value}
-              ref={containerRef}
-              mode={mode.value}
-              onChangeTextColor={changeTextColor}
-              onChangePaletteColor={changePaletteColor}
-              onChangeTextModeType={changeTextModeType}
-            ></color-panel>
-          </div>
-          {/* <div class="var-color-picker" ref={colorCubeRef}>
+          <div class="var-color-picker var-elevation--3">
+            <div ref={pickerRef} class={['var-color-picker-position']}>
+              <color-panel
+                v-model={initialColor.value}
+                ref={containerRef}
+                mode={mode.value}
+                onChangeTextColor={changeTextColor}
+                onChangePaletteColor={changePaletteColor}
+                onChangeTextModeType={changeTextModeType}
+              ></color-panel>
+            </div>
+            {/* <div class="var-color-picker" ref={colorCubeRef}>
             <div class="var-color-picker-container">
               <div class="var-color-picker-container-wrap">
                 <div class="var-color-picker-container-wrap-current-color" style={triggerColor.value}></div>
@@ -112,6 +114,8 @@ export default defineComponent({
               </div>
             </div>
           </div> */}
+          </div>
+          {formItemValue.value}
         </>
       )
     }

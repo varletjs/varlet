@@ -3,20 +3,21 @@ import { colorPickerProps, ColorPickerProps } from './color-picker-panel-types'
 import { ProvideColorOptions } from '../../utils/color-utils-types'
 import colorPalette from '../color-palette/color-palette'
 import colorHueSlider from '../color-hue-slider/color-hue-slider'
+import colorBall from '../color-ball/color-ball'
 import colorAlphaSlider from '../color-alpha-slider/color-alpha-slider'
-// import colorEdit from '../color-edit/color-edit'
+import colorEdit from '../color-edit/color-edit'
 import colorBasic from '../color-basic/color-basic'
 import './color-picker-panel.less'
 // import colorHistory from '../color-history/color-history'
-import { createI18nTranslate } from '../../../../locale/create'
 export default defineComponent({
   name: 'ColorPanel',
   components: {
     colorPalette,
     colorHueSlider,
     colorAlphaSlider,
-    // colorEdit,
+    colorEdit,
     colorBasic,
+    colorBall,
     // Tabs,
     // colorHistory,
   },
@@ -58,15 +59,27 @@ export default defineComponent({
           {/* <color-basic color={paletteColorMap}></color-basic> */}
           {/* </d-tab> */}
           {/* <d-tab id="palette" title={('advancedPanel')} tabId="palette"> */}
-          <color-palette
-            ref={paletteElement}
-            v-model={paletteColorMap.value}
-            onChangeTextColor={changeTextColor}
-          ></color-palette>
+          <div class="var-color-picker-canvas">
+            <color-palette
+              ref={paletteElement}
+              v-model={paletteColorMap.value}
+              onChangeTextColor={changeTextColor}
+            ></color-palette>
+          </div>
+          <div class="var-color-picker-control">
+            <div class="var-color-picker-preview">
+              <div class="var-color-picker-preview__dots">
+                <colorBall v-model={paletteColorMap.value} />
+              </div>
+              <div class="var-color-picker-preview__sliders">
+                <color-hue-slider v-model={paletteColorMap.value}></color-hue-slider>
+                {showAlpha ? <color-alpha-slider v-model={paletteColorMap.value}></color-alpha-slider> : null}
+              </div>
+            </div>
+          </div>
           {/* </d-tab> */}
           {/* </d-tabs> */}
-          {/* <color-hue-slider v-model={paletteColorMap.value}></color-hue-slider> */}
-          {/* {showAlpha ? <color-alpha-slider v-model={paletteColorMap.value}></color-alpha-slider> : null} */}
+
           {/* <colorEdit
             show-alpha={props.showAlpha}
             mode={props.mode}

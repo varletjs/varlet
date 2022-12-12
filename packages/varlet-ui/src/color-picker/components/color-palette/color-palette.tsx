@@ -24,16 +24,10 @@ export default defineComponent({
     const cursorTop = ref(0)
     const cursorLeft = ref(0)
     const getDotStyle = computed(() => {
-      console.log({
-        width: `${dotSizeInject.dotSize}px`,
-        height: `${dotSizeInject.dotSize}px`,
-        transform: `translate(-${dotSizeInject?.dotSize / 2}px,  -${dotSizeInject?.dotSize / 2}px)`,
-      })
-
       return {
         width: `${dotSizeInject.dotSize}px`,
         height: `${dotSizeInject.dotSize}px`,
-        transform: `translate(-${dotSizeInject?.dotSize / 2}px,  -${dotSizeInject?.dotSize / 2}px)`,
+        transform: `translate(-${(dotSizeInject?.dotSize || 0) / 2}px,  -${(dotSizeInject?.dotSize || 0) / 2}px)`,
       }
     })
     const getCursorStyle = computed(() => {
@@ -48,7 +42,7 @@ export default defineComponent({
         const canvas = canvasElement.value.getContext('2d')
         if (canvas) {
           const parentWidth = paletteElement.value?.offsetWidth || 0
-          canvasElement.value.width = parentWidth
+          canvasElement.value.width = props.width
           canvasElement.value.height = props.height
           const saturationGradient = canvas.createLinearGradient(0, 0, parentWidth as number, 0)
           saturationGradient.addColorStop(0, 'hsla(0, 0%, 100%, 1)') // white
@@ -78,9 +72,8 @@ export default defineComponent({
         const isChangeTextColor = computed(() => {
           if (left > rect.width / 2 || top > rect.height / 2) {
             return true
-          } else {
-            return false
           }
+          return false
         })
         ctx.emit(
           'update:modelValue',
@@ -96,8 +89,7 @@ export default defineComponent({
     }
 
     function clickPalette(event: Event) {
-      const target = event.target
-      if (target !== paletteElement.value) {
+      if (event.target !== paletteElement.value) {
         handleDrag(event as MouseEvent)
       }
     }
@@ -133,10 +125,10 @@ export default defineComponent({
     ctx.expose({ renderCanvas })
     return () => {
       return (
-        <div class="var-color-picker-palette" ref={paletteElement} onClick={clickPalette}>
+        <div class="var-color-picker-palette var-elevation--5" ref={paletteElement} onClick={clickPalette}>
           <canvas ref={canvasElement}></canvas>
-          <div class="var-color-picker-palette-handler" style={getCursorStyle.value}>
-            <div ref={handlerElement} style={getDotStyle.value}></div>
+          <div style={getDotStyle.value} class="var-color-picker-palette-handler" ref={handlerElement}>
+            {/* <div ref={handlerElement} style={getDotStyle.value}></div> */}
           </div>
         </div>
       )
