@@ -6,7 +6,7 @@ import colorHueSlider from '../color-hue-slider/color-hue-slider'
 import colorBall from '../color-ball/color-ball'
 import colorAlphaSlider from '../color-alpha-slider/color-alpha-slider'
 import colorEdit from '../color-edit/color-edit'
-import colorBasic from '../color-basic/color-basic'
+import colorSwatches from '../color-swatches/color-swatches'
 import './color-picker-panel.less'
 // import colorHistory from '../color-history/color-history'
 export default defineComponent({
@@ -16,7 +16,7 @@ export default defineComponent({
     colorHueSlider,
     colorAlphaSlider,
     colorEdit,
-    colorBasic,
+    colorSwatches,
     colorBall,
     // Tabs,
     // colorHistory,
@@ -77,6 +77,7 @@ export default defineComponent({
               </div>
             </div>
           </div>
+          <colorSwatches color={paletteColorMap}></colorSwatches>
           {/* </d-tab> */}
           {/* </d-tabs> */}
 

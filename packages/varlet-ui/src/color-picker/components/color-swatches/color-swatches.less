@@ -1,0 +1,38 @@
+.var-color-picker-basic {
+  flex-wrap: wrap;
+  // justify-content: space-between;
+  align-items: center;
+
+  &-div {
+    box-sizing: content-box;
+    margin: 4px;
+    width: 20px;
+    height: 20px;
+    border: solid 1px #e7e7e7;
+    cursor: pointer;
+    border-radius: 1px;
+  }
+}
+
+.var-color-picker-swatches {
+  padding: 8px;
+  height: 150px;
+  display: flex;
+  overflow-y: scroll;
+}
+.var-color-picker-swatches__swatch {
+  margin-bottom: 10px;
+}
+.var-color-picker-swatches__color {
+  margin: 4px 4px;
+  div {
+    height: 18px;
+    width: 45px;
+    border-radius: 2px;
+  }
+}
+.var-color-picker-swatches__colorful {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
