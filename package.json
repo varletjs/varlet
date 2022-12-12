@@ -14,9 +14,7 @@
     "commit-msg": "pnpm exec varlet-cli commit-lint $1"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,vue,less}": "prettier --write",
-    "*.{ts,tsx,js,vue}": "eslint --fix",
-    "*.{vue,css,less}": "stylelint --fix"
+    "*.{ts,tsx,js,vue,less}": "prettier --write"
   },
   "eslintConfig": {
     "root": true,
