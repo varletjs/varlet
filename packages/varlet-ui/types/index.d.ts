@@ -38,10 +38,10 @@ export * from './loadingBar'
 export * from './locale'
 export * from './menu'
 export * from './option'
+export * from './overlay'
 export * from './pagination'
 export * from './picker'
 export * from './popup'
-export * from './overlay'
 export * from './progress'
 export * from './pullRefresh'
 export * from './radio'
@@ -111,10 +111,10 @@ declare module 'vue' {
     VarLocale: typeof import('@varlet/ui')['_LocaleComponent']
     VarMenu: typeof import('@varlet/ui')['_MenuComponent']
     VarOption: typeof import('@varlet/ui')['_OptionComponent']
+    VarOverlay: typeof import('@varlet/ui')['_OverlayComponent']
     VarPagination: typeof import('@varlet/ui')['_PaginationComponent']
     VarPicker: typeof import('@varlet/ui')['_PickerComponent']
     VarPopup: typeof import('@varlet/ui')['_PopupComponent']
-    VarOverlay: typeof import('@varlet/ui')['_OverlayComponent']
     VarProgress: typeof import('@varlet/ui')['_ProgressComponent']
     VarPullRefresh: typeof import('@varlet/ui')['_PullRefreshComponent']
     VarRadio: typeof import('@varlet/ui')['_RadioComponent']
