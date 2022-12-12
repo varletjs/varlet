@@ -1,34 +1,91 @@
-import { defineComponent, ref, inject } from 'vue'
-import { colorPickerBasicColorProps, ColorPickerBasicColorProps } from './color-basic-types'
-import { ProvideColorOptions, ColorPickerColor } from '../../utils/color-utils-types'
-import { fromHex } from '../../utils/color-utils'
-import './color-basic.less'
-import { color } from '../../utils/color'
-export default defineComponent({
-  name: 'ColorBasic',
-  props: colorPickerBasicColorProps,
-  setup(props: ColorPickerBasicColorProps) {
-    const swatchesInject = inject<ProvideColorOptions>('provideData')
+// // Styles
+// import './VColorPickerSwatches.sass'
 
-    const currentColor = ref<Partial<ColorPickerColor> | undefined>(props.color)
-    function changeBasicColor(hex: string) {
-      if (currentColor.value) {
-        currentColor.value = fromHex(hex)
-      }
-    }
-    const swatches = ref(Object.values(swatchesInject?.swatches ?? []))
-    return () => {
-      return (
-        <div class="var-color-picker-basic flex">
-          {(swatches.value.length !== 0 ? swatches.value : color).map((hex: string) => (
-            <div
-              onClick={() => changeBasicColor(hex)}
-              class={['var-color-picker-basic-div']}
-              style={{ backgroundColor: hex }}
-            ></div>
-          ))}
-        </div>
-      )
-    }
-  },
-})
+// // Components
+// import { VIcon } from '@/components/VIcon'
+
+// // Utilities
+// import { convertToUnit, deepEqual, defineComponent, getContrast, useRender } from '@/util'
+// import { parseColor } from './util'
+// import colors from '@/util/colors'
+
+// // Types
+// import type { HSV } from '@/util'
+// import type { PropType } from 'vue'
+
+// function parseDefaultColors(colors: Record<string, Record<string, string>>) {
+//   return Object.keys(colors).map((key) => {
+//     const color = colors[key]
+//     return color.base
+//       ? [
+//           color.base,
+//           color.darken4,
+//           color.darken3,
+//           color.darken2,
+//           color.darken1,
+//           color.lighten1,
+//           color.lighten2,
+//           color.lighten3,
+//           color.lighten4,
+//           color.lighten5,
+//         ]
+//       : [color.black, color.white, color.transparent]
+//   })
+// }
+
+// export const VColorPickerSwatches = defineComponent({
+//   name: 'VColorPickerSwatches',
+
+//   props: {
+//     swatches: {
+//       type: Array as PropType<string[][]>,
+//       default: () => parseDefaultColors(colors),
+//     },
+//     disabled: Boolean,
+//     color: Object as PropType<HSV | null>,
+//     maxHeight: [Number, String],
+//   },
+
+//   emits: {
+//     'update:color': (color: HSV) => true,
+//   },
+
+//   setup(props, { emit }) {
+//     useRender(() => (
+//       <div
+//         class="v-color-picker-swatches"
+//         style={{
+//           maxHeight: convertToUnit(props.maxHeight),
+//         }}
+//       >
+//         <div>
+//           {props.swatches.map((swatch) => (
+//             <div class="v-color-picker-swatches__swatch">
+//               {swatch.map((color) => {
+//                 const hsva = parseColor(color)
+
+//                 return (
+//                   <div class="v-color-picker-swatches__color" onClick={() => hsva && emit('update:color', hsva)}>
+//                     <div style={{ background: color }}>
+//                       {props.color && deepEqual(props.color, hsva) ? (
+//                         <VIcon
+//                           size="x-small"
+//                           icon="$success"
+//                           color={getContrast(color, '#FFFFFF') > 2 ? 'white' : 'black'}
+//                         />
+//                       ) : undefined}
+//                     </div>
+//                   </div>
+//                 )
+//               })}
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     ))
+
+//     return {}
+//   },
+// })
+
+// export type VColorPickerSwatches = InstanceType<typeof VColorPickerSwatches>
