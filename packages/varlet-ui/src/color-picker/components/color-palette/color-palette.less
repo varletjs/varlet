@@ -1,30 +1,11 @@
-.var-color-picker__canvas {
-  position: relative;
-}
-
-.var-color-picker-palette {
+.var-color-picker {
   position: relative;
   width: 100%;
   height: 100%;
-
-  &__white,
-  &__black {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  &__canvas {
+    position: relative;
   }
-
-  &__black {
-    background: linear-gradient(0deg, #000000, transparent);
-  }
-
-  &__white {
-    background: linear-gradient(90deg, #ffffff, hsla(0, 0%, 100%, 0));
-  }
-
-  &-handler {
+  &__dot {
     position: absolute;
     top: 0;
     left: 0;

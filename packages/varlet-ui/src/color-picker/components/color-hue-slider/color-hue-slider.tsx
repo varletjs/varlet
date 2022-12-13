@@ -3,6 +3,7 @@ import { colorPickerHueSliderProps, ColorPickerHueSliderProps } from './color-pi
 import { DOMUtils } from '../../utils/dom-dragger'
 import { fromHSVA } from '../../utils/color-utils'
 import './color-hue-slider.less'
+
 type ColorPickerColor = NonNullable<ColorPickerHueSliderProps['modelValue']>
 type DefaultTransition = { transition: string }
 export default defineComponent({
@@ -17,7 +18,7 @@ export default defineComponent({
     const getCursorLeft = () => {
       if (barElement.value && cursorElement.value) {
         const rect = barElement.value.getBoundingClientRect()
-        const offsetWidth = cursorElement.value.offsetWidth
+        const { offsetWidth } = cursorElement.value
         if (props.modelValue?.hue === 360) {
           return rect.width - offsetWidth / 2
         }

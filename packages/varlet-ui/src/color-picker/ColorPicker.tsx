@@ -6,11 +6,13 @@ import './colorPicker.less'
 import '../styles/elevation.less'
 import { parseColor, extractColor, RGBAtoCSS } from './utils/color-utils'
 import { ColorPickerColor } from './utils/color-utils-types'
+import VarColorPickerPreview from './components/color-picker-preview/color-picker-preview'
 
 export default defineComponent({
   name: 'DColorPicker',
   components: {
     colorPanel,
+    VarColorPickerPreview,
   },
   props: colorPickerProps,
   emits: ['update:modelValue'],

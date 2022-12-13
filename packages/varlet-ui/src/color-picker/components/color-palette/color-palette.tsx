@@ -114,6 +114,9 @@ export default defineComponent({
         })
         updatePosition()
       }
+      // window.addEventListener('resize', () => {
+      //   renderCanvas()
+      // })
     })
     watch(
       () => props.modelValue,
@@ -134,9 +137,7 @@ export default defineComponent({
           onClick={clickPalette}
         >
           <canvas ref={canvasElement}></canvas>
-          <div style={getDotStyle.value} class="var-color-picker-palette-handler" ref={handlerElement}>
-            {/* <div ref={handlerElement} style={getDotStyle.value}></div> */}
-          </div>
+          <div style={getDotStyle.value} class={n('dot')} ref={handlerElement}></div>
         </div>
       )
     }

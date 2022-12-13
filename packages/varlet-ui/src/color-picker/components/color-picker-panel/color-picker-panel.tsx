@@ -3,10 +3,11 @@ import { colorPickerProps, ColorPickerProps } from './color-picker-panel-types'
 import { ProvideColorOptions } from '../../utils/color-utils-types'
 import colorPalette from '../color-palette/color-palette'
 import colorHueSlider from '../color-hue-slider/color-hue-slider'
-import colorBall from '../color-ball/color-ball'
+import colorBall from '../color-preview-dots/color-preview-dots'
 import colorAlphaSlider from '../color-alpha-slider/color-alpha-slider'
-import colorEdit from '../color-edit/color-edit'
-import colorSwatches from '../color-picker-swatches/color-picker-swatches'
+import VarColorPickerPreview from '../color-picker-preview/color-picker-preview'
+import VarColorPickerEdit from '../color-picker-edit/color-picker-edit'
+import VarColorPickerSwatches from '../color-picker-swatches/color-picker-swatches'
 import './color-picker-panel.less'
 // import colorHistory from '../color-history/color-history'
 export default defineComponent({
@@ -15,8 +16,8 @@ export default defineComponent({
     colorPalette,
     colorHueSlider,
     colorAlphaSlider,
-    colorEdit,
-    colorSwatches,
+    VarColorPickerSwatches,
+    VarColorPickerEdit,
     colorBall,
     // Tabs,
     // colorHistory,
@@ -65,18 +66,16 @@ export default defineComponent({
             ></color-palette>
           </div>
           <div class="var-color-picker-control">
-            <div class="var-color-picker-preview">
-              <div class="var-color-picker-preview__dots">
-                <colorBall v-model={paletteColorMap.value} />
-              </div>
-              <div class="var-color-picker-preview__sliders">
-                <color-hue-slider v-model={paletteColorMap.value}></color-hue-slider>
-                {showAlpha ? <color-alpha-slider v-model={paletteColorMap.value}></color-alpha-slider> : null}
-              </div>
-            </div>
+            <VarColorPickerPreview />
+            <VarColorPickerSwatches onUpdate:color={updateSwatchesColor}></VarColorPickerSwatches>
+            <VarColorPickerEdit
+              show-alpha={props.showAlpha}
+              mode={props.mode}
+              color={paletteColorMap}
+              onChangeTextModeColor={changeTextModeColor}
+            ></VarColorPickerEdit>
           </div>
-          {/* <colorSwatches onUpdate:color={updateSwatchesColor}></colorSwatches>
-          <colorEdit
+          {/* <colorEdit
             show-alpha={props.showAlpha}
             mode={props.mode}
             color={paletteColorMap}
