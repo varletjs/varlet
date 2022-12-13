@@ -60,7 +60,9 @@ export default defineComponent({
                 {swatch.map((color) => {
                   return (
                     <div class="var-color-picker-swatches__color" onClick={() => emit('update:color', color)}>
-                      <div style={{ background: color }}></div>
+                      <div style={{ background: color }}>
+                        <var-icon size="15" name="checkbox-marked-circle" />
+                      </div>
                     </div>
                   )
                 })}
