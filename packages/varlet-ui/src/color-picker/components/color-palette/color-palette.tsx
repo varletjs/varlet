@@ -41,6 +41,7 @@ export default defineComponent({
       if (canvasElement.value) {
         const canvas = canvasElement.value.getContext('2d')
         if (canvas) {
+          console.log(props.modelValue, '我被刷新了')
           const parentWidth = paletteElement.value?.offsetWidth || 0
           canvasElement.value.width = props.width
           canvasElement.value.height = props.height
@@ -118,7 +119,9 @@ export default defineComponent({
     })
     watch(
       () => props.modelValue,
-      () => {
+      (n) => {
+        console.log(n)
+
         updatePosition()
       }
     )

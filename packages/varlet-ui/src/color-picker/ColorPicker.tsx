@@ -1,5 +1,4 @@
 import { defineComponent, ref, computed, watch, provide, unref, readonly } from 'vue'
-import type { StyleValue } from 'vue'
 import { useReactive, changeColorValue } from './utils/composable'
 import { colorPickerProps, ColorPickerProps } from './color-picker-types'
 import colorPanel from './components/color-picker-panel/color-picker-panel'
@@ -83,6 +82,13 @@ export default defineComponent({
         updateUserColor(parseColor(newValue, initialColor.value))
       },
       { immediate: true }
+    )
+    watch(
+      () => initialColor.value,
+      (n) => {
+        // console.log(n)
+      },
+      { deep: true }
     )
     return () => {
       return (

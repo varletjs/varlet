@@ -2,7 +2,7 @@
 import './color-swatches.less'
 
 import colors from '../../utils/color'
-
+import { parseColor } from '../../utils/color-utils'
 // Types
 import { defineComponent, PropType } from 'vue'
 
@@ -39,9 +39,7 @@ export default defineComponent({
     maxHeight: [Number, String],
   },
 
-  emits: {
-    'update:color': (color) => true,
-  },
+  emits: ['update:color'],
 
   setup(props, { emit }) {
     return () => {
@@ -58,8 +56,9 @@ export default defineComponent({
             {props.swatches.map((swatch) => (
               <div class="var-color-picker-swatches__swatch">
                 {swatch.map((color) => {
+                  const hsv = parseColor(color)
                   return (
-                    <div class="var-color-picker-swatches__color" onClick={() => emit('update:color', color)}>
+                    <div class="var-color-picker-swatches__color" onClick={() => emit('update:color', hsv)}>
                       <div style={{ background: color }}>
                         <var-icon size="15" name="checkbox-marked-circle" />
                       </div>

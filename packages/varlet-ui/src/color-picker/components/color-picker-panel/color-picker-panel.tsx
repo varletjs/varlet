@@ -37,6 +37,9 @@ export default defineComponent({
     function changeTextModeColor(currentType: string) {
       emit('changeTextModeType', currentType)
     }
+    function updateSwatchesColor(color: string) {
+      paletteColorMap.value = color
+    }
 
     // 画板值
     const paletteColorMap = ref(props.modelValue)
@@ -44,6 +47,7 @@ export default defineComponent({
     watch(
       () => paletteColorMap.value,
       (newValue) => {
+        console.log(newValue)
         emit('update:modelValue', newValue)
         emit('changePaletteColor', newValue)
         nextTick(() => {
@@ -77,7 +81,7 @@ export default defineComponent({
               </div>
             </div>
           </div>
-          <colorSwatches color={paletteColorMap}></colorSwatches>
+          <colorSwatches onUpdate:color={updateSwatchesColor}></colorSwatches>
           {/* </d-tab> */}
           {/* </d-tabs> */}
 
