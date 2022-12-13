@@ -1,5 +1,5 @@
 // Styles
-import './color-swatches.less'
+import './color-picker-swatches.less'
 
 import colors from '../../utils/color'
 import { parseColor } from '../../utils/color-utils'
@@ -28,8 +28,7 @@ function parseDefaultColors(colors: Record<string, Record<string, string>>) {
 }
 
 export default defineComponent({
-  name: 'ColorSwatches',
-
+  name: 'VarColorPickerSwatches',
   props: {
     swatches: {
       type: Array as PropType<string[][]>,
@@ -39,9 +38,7 @@ export default defineComponent({
     color: Object as PropType<null>,
     maxHeight: [Number, String],
   },
-
   emits: ['update:color'],
-
   setup(props, { emit }) {
     return () => {
       return (
