@@ -6,7 +6,7 @@ import colorHueSlider from '../color-hue-slider/color-hue-slider'
 import colorBall from '../color-ball/color-ball'
 import colorAlphaSlider from '../color-alpha-slider/color-alpha-slider'
 import colorEdit from '../color-edit/color-edit'
-import colorSwatches from '../color-swatches/color-swatches'
+import colorSwatches from '../color-picker-swatches/color-picker-swatches'
 import './color-picker-panel.less'
 // import colorHistory from '../color-history/color-history'
 export default defineComponent({
@@ -47,7 +47,6 @@ export default defineComponent({
     watch(
       () => paletteColorMap.value,
       (newValue) => {
-        console.log(newValue)
         emit('update:modelValue', newValue)
         emit('changePaletteColor', newValue)
         nextTick(() => {
@@ -57,13 +56,8 @@ export default defineComponent({
     )
     return () => {
       return (
-        <div class="var-color-picker-panel">
-          {/* <d-tabs type="tabs" v-model={tab.value}> */}
-          {/* <d-tab id="basic" title={('foundationPanel')} tabId="basic"> */}
-          {/* <color-basic color={paletteColorMap}></color-basic> */}
-          {/* </d-tab> */}
-          {/* <d-tab id="palette" title={('advancedPanel')} tabId="palette"> */}
-          <div class="var-color-picker-canvas">
+        <>
+          <div class="var-color-picker-canvas" style={{ maxWidth: '300px' }}>
             <color-palette
               ref={paletteElement}
               v-model={paletteColorMap.value}
@@ -81,18 +75,14 @@ export default defineComponent({
               </div>
             </div>
           </div>
-          <colorSwatches onUpdate:color={updateSwatchesColor}></colorSwatches>
-          {/* </d-tab> */}
-          {/* </d-tabs> */}
-
-          {/* <colorEdit
+          {/* <colorSwatches onUpdate:color={updateSwatchesColor}></colorSwatches>
+          <colorEdit
             show-alpha={props.showAlpha}
             mode={props.mode}
             color={paletteColorMap}
             onChangeTextModeColor={changeTextModeColor}
           ></colorEdit> */}
-          {/* {injectData.showHistory ? <colorHistory color={paletteColorMap}></colorHistory> : null} */}
-        </div>
+        </>
       )
     }
   },

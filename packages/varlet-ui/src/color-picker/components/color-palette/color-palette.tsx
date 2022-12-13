@@ -1,10 +1,11 @@
 import { defineComponent, ref, onMounted, computed, getCurrentInstance, watch, inject } from 'vue'
 import { DOMUtils } from '../../utils/dom-dragger'
 import { fromHSVA } from '../../utils/color-utils'
-import { clamp } from '../../utils/helpers'
+import { clamp, convertToUnit } from '../../utils/helpers'
 import { colorPickerPaletteProps, ColorPickerPaletteProps } from './color-picker-palette-types'
 import { ProvideColorOptions } from '../../utils/color-utils-types'
 import './color-palette.less'
+import { createNamespace, useTeleport, call } from '../../../utils/components'
 
 type DefaultTransition = { transition: string }
 export default defineComponent({
@@ -12,6 +13,7 @@ export default defineComponent({
   props: colorPickerPaletteProps,
   emits: ['update:modelValue', 'changeTextColor'],
   setup(props: ColorPickerPaletteProps, ctx) {
+    const { n, classes } = createNamespace('color-picker')
     const DEFAULT_TRANSITION: DefaultTransition = { transition: 'all 0.3s ease' }
     const dotSizeInject = inject('provideData') as ProvideColorOptions
 
@@ -27,21 +29,16 @@ export default defineComponent({
       return {
         width: `${dotSizeInject.dotSize}px`,
         height: `${dotSizeInject.dotSize}px`,
-        transform: `translate(-${(dotSizeInject?.dotSize || 0) / 2}px,  -${(dotSizeInject?.dotSize || 0) / 2}px)`,
-      }
-    })
-    const getCursorStyle = computed(() => {
-      return {
         top: cursorTop.value + 'px',
         left: cursorLeft.value + 'px',
-        ...clickTransform.value,
+        // ...clickTransform.value,
+        transform: `translate(-${(dotSizeInject?.dotSize || 0) / 2}px,  -${(dotSizeInject?.dotSize || 0) / 2}px)`,
       }
     })
     function renderCanvas() {
       if (canvasElement.value) {
         const canvas = canvasElement.value.getContext('2d')
         if (canvas) {
-          console.log(props.modelValue, '我被刷新了')
           const parentWidth = paletteElement.value?.offsetWidth || 0
           canvasElement.value.width = props.width
           canvasElement.value.height = props.height
@@ -91,6 +88,7 @@ export default defineComponent({
 
     function clickPalette(event: Event) {
       if (event.target !== paletteElement.value) {
+        console.log('我是点击事件触发的')
         handleDrag(event as MouseEvent)
       }
     }
@@ -119,16 +117,22 @@ export default defineComponent({
     })
     watch(
       () => props.modelValue,
-      (n) => {
-        console.log(n)
-
+      () => {
         updatePosition()
       }
     )
     ctx.expose({ renderCanvas })
     return () => {
       return (
-        <div class="var-color-picker-palette var-elevation--5" ref={paletteElement} onClick={clickPalette}>
+        <div
+          class={[n('canvas')]}
+          style={{
+            width: convertToUnit(props.width),
+            height: convertToUnit(props.height),
+          }}
+          ref={paletteElement}
+          onClick={clickPalette}
+        >
           <canvas ref={canvasElement}></canvas>
           <div style={getDotStyle.value} class="var-color-picker-palette-handler" ref={handlerElement}>
             {/* <div ref={handlerElement} style={getDotStyle.value}></div> */}

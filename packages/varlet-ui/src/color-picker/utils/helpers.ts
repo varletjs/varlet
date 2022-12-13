@@ -10,6 +10,20 @@ export function chunk(str: string, size = 1): string[] {
   }
   return chunked
 }
+export function convertToUnit(str: number, unit?: string): string
+export function convertToUnit(str: string | number | null | undefined, unit?: string): string | undefined
+export function convertToUnit(str: string | number | null | undefined, unit = 'px'): string | undefined {
+  if (str == null || str === '') {
+    return undefined
+  }
+  if (isNaN(+str!)) {
+    return String(str)
+  }
+  if (!isFinite(+str!)) {
+    return undefined
+  }
+  return `${Number(str)}${unit}`
+}
 export function mergeObjects<T extends Record<string, unknown>, K extends Record<string, unknown>>(
   source: T,
   target: K

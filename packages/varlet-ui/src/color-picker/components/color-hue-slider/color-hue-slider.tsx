@@ -39,7 +39,7 @@ export default defineComponent({
       event.stopPropagation()
       if (barElement.value && cursorElement.value) {
         const rect = barElement.value.getBoundingClientRect()
-        const offsetWidth = cursorElement.value.offsetWidth
+        const { offsetWidth } = cursorElement.value
         let left = event.clientX - rect.left
         left = Math.min(left, rect.width - offsetWidth / 2)
         left = Math.max(offsetWidth / 2, left)
@@ -56,9 +56,8 @@ export default defineComponent({
       }
     }
 
-    const onClickSider = (event: Event) => {
-      const target = event.target
-      if (target !== barElement.value) {
+    const onClickSlider = (event: Event) => {
+      if (event.target !== barElement.value) {
         onMoveBar(event as MouseEvent)
       }
     }
@@ -82,7 +81,7 @@ export default defineComponent({
     return () => {
       return (
         <div class="var-color-picker-hue-slider">
-          <div ref={barElement} class="var-color-picker-hue-slider__bar" onClick={onClickSider}>
+          <div ref={barElement} class="var-color-picker-hue-slider__bar" onClick={onClickSlider}>
             <div class="var-color-picker-hue-slider__bar-pointer" ref={cursorElement} style={getCursorStyle.value}>
               <div class="var-color-picker-hue-slider__bar-handle"></div>
             </div>

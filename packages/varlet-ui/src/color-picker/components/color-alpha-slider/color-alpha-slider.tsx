@@ -3,6 +3,7 @@ import { colorPickerAlphaSliderProps } from './color-picker-alpha-slider-types'
 import { DOMUtils } from '../../utils/dom-dragger'
 import { RGBtoCSS, fromHSVA } from '../../utils/color-utils'
 import './color-alpha-slider.less'
+
 export default defineComponent({
   name: 'ColorAlphaSlider',
   props: colorPickerAlphaSliderProps,
@@ -17,7 +18,7 @@ export default defineComponent({
       event.stopPropagation()
       if (barElement.value && cursorElement.value) {
         const rect = barElement.value.getBoundingClientRect()
-        const offsetWidth = cursorElement.value.offsetWidth
+        const { offsetWidth } = cursorElement.value
         let left = event.clientX - rect.left
         left = Math.max(offsetWidth / 2, left)
         left = Math.min(left, rect.width - offsetWidth / 2)
@@ -27,8 +28,7 @@ export default defineComponent({
     }
 
     const onClickSider = (event: Event) => {
-      const target = event.target
-      if (target !== barElement.value) {
+      if (event.target !== barElement.value) {
         onMoveBar(event as MouseEvent)
       }
     }
@@ -43,7 +43,7 @@ export default defineComponent({
       if (barElement.value && cursorElement.value) {
         const alpha = props.modelValue.rgba.a
         const rect = barElement.value.getBoundingClientRect()
-        const offsetWidth = cursorElement.value.offsetWidth
+        const { offsetWidth } = cursorElement.value
         return Math.round(alpha * (rect.width - offsetWidth) + offsetWidth / 2)
       }
       return 0

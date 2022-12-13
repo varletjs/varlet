@@ -83,13 +83,6 @@ export default defineComponent({
       },
       { immediate: true }
     )
-    watch(
-      () => initialColor.value,
-      (n) => {
-        // console.log(n)
-      },
-      { deep: true }
-    )
     return () => {
       return (
         <>
