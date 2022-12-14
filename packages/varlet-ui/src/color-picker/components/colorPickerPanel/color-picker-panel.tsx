@@ -1,0 +1,88 @@
+import { defineComponent, ref, watch, nextTick, inject, getCurrentInstance } from 'vue'
+import { colorPickerProps, ColorPickerProps } from './color-picker-panel-types'
+import { ProvideColorOptions } from '../../utils/color-utils-types'
+import colorPalette from '../color-picker-canvas/color-picker-canvas'
+import colorHueSlider from '../color-picker-hue-slider/color-hue-slider'
+import colorBall from '../color-picker-preview-dots/color-picker-preview-dots'
+import colorAlphaSlider from '../color-picker-alpha-slider/color-picker-alpha-slider'
+import VarColorPickerPreview from '../color-picker-preview/color-picker-preview'
+import VarColorPickerEdit from '../color-picker-edit/color-picker-edit'
+import VarColorPickerSwatches from '../color-picker-swatches/color-picker-swatches'
+import './color-picker-panel.less'
+// import colorHistory from '../color-history/color-history'
+export default defineComponent({
+  name: 'ColorPanel',
+  components: {
+    colorPalette,
+    colorHueSlider,
+    colorAlphaSlider,
+    VarColorPickerSwatches,
+    VarColorPickerEdit,
+    colorBall,
+    // Tabs,
+    // colorHistory,
+  },
+  props: colorPickerProps,
+  emits: ['update:modelValue', 'changeTextColor', 'changeTriggerColor', 'changePaletteColor', 'changeTextModeType'],
+  setup(props: ColorPickerProps, { emit }) {
+    const app = getCurrentInstance()
+    // const t = createI18nTranslate('DColorPicker', app)
+
+    const injectData = inject('provideData') as ProvideColorOptions
+    const paletteElement = ref<(HTMLElement & { renderCanvas: () => void }) | null>(null)
+    const { showAlpha } = injectData
+    const tab = ref('basic')
+    function changeTextColor(isChange: boolean) {
+      emit('changeTextColor', isChange)
+    }
+    function changeTextModeColor(currentType: string) {
+      emit('changeTextModeType', currentType)
+    }
+    function updateSwatchesColor(color: string) {
+      paletteColorMap.value = color
+    }
+
+    // 画板值
+    const paletteColorMap = ref(props.modelValue)
+    // hue slider 值
+    watch(
+      () => paletteColorMap.value,
+      (newValue) => {
+        emit('update:modelValue', newValue)
+        emit('changePaletteColor', newValue)
+        nextTick(() => {
+          paletteElement.value && paletteElement.value.renderCanvas()
+        })
+      }
+    )
+    return () => {
+      return (
+        <>
+          <div class="var-color-picker-canvas" style={{ maxWidth: '300px' }}>
+            <color-palette
+              ref={paletteElement}
+              v-model={paletteColorMap.value}
+              onChangeTextColor={changeTextColor}
+            ></color-palette>
+          </div>
+          <div class="var-color-picker-control">
+            <VarColorPickerPreview />
+            <VarColorPickerSwatches onUpdate:color={updateSwatchesColor}></VarColorPickerSwatches>
+            <VarColorPickerEdit
+              show-alpha={props.showAlpha}
+              mode={props.mode}
+              color={paletteColorMap}
+              onChangeTextModeColor={changeTextModeColor}
+            ></VarColorPickerEdit>
+          </div>
+          {/* <colorEdit
+            show-alpha={props.showAlpha}
+            mode={props.mode}
+            color={paletteColorMap}
+            onChangeTextModeColor={changeTextModeColor}
+          ></colorEdit> */}
+        </>
+      )
+    }
+  },
+})
