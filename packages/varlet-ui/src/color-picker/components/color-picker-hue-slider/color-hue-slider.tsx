@@ -4,12 +4,12 @@ import { DOMUtils } from '../../utils/dom-dragger'
 import { fromHSVA } from '../../utils/color-utils'
 import './color-hue-slider.less'
 
-type ColorPickerColor = NonNullable<ColorPickerHueSliderProps['modelValue']>
+type ColorPickerColor = NonNullable<ColorPickerHueSliderProps['color']>
 type DefaultTransition = { transition: string }
 export default defineComponent({
   name: 'ColorHueSlider',
   props: colorPickerHueSliderProps,
-  emits: ['update:modelValue'],
+  emits: ['update:color'],
   setup(props: ColorPickerHueSliderProps, ctx) {
     const DEFAULT_TRANSITION: DefaultTransition = { transition: 'all 0.3s ease' }
     const barElement = ref<HTMLElement | null>(null)
@@ -19,10 +19,10 @@ export default defineComponent({
       if (barElement.value && cursorElement.value) {
         const rect = barElement.value.getBoundingClientRect()
         const { offsetWidth } = cursorElement.value
-        if (props.modelValue?.hue === 360) {
+        if (props.color?.hue === 360) {
           return rect.width - offsetWidth / 2
         }
-        return (((props.modelValue as ColorPickerColor).hue % 360) * (rect.width - offsetWidth)) / 360 + offsetWidth / 2
+        return (((props.color as ColorPickerColor).hue % 360) * (rect.width - offsetWidth)) / 360 + offsetWidth / 2
       }
       return 0
     }
@@ -46,12 +46,12 @@ export default defineComponent({
         left = Math.max(offsetWidth / 2, left)
         const hue = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 360)
         ctx.emit(
-          'update:modelValue',
+          'update:color',
           fromHSVA({
             h: hue,
-            s: (props.modelValue as ColorPickerColor).hsva.s,
-            v: (props.modelValue as ColorPickerColor).hsva.v,
-            a: (props.modelValue as ColorPickerColor).hsva.a,
+            s: (props.color as ColorPickerColor).hsva.s,
+            v: (props.color as ColorPickerColor).hsva.v,
+            a: (props.color as ColorPickerColor).hsva.a,
           })
         )
       }

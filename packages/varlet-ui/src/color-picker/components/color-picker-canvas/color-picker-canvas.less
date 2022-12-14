@@ -1,3 +1,7 @@
+:root {
+  --color-picker-canvas-dot-size: 15px;
+}
+
 .var-color-picker {
   position: relative;
   width: 100%;
@@ -9,10 +13,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 15px;
-    height: 15px;
+    width: var(--color-picker-canvas-dot-size);
+    height: var(--color-picker-canvas-dot-size);
     background: transparent;
     border-radius: 50%;
+    transform: translate(-50%, -50%);
     box-shadow: 0 0 0 1.5px #fff, inset 0 0 1px 1.5px #0000004d;
   }
 }

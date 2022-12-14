@@ -11,11 +11,11 @@ type DefaultTransition = { transition: string }
 export default defineComponent({
   name: 'ColorPalette',
   props: colorPickerPaletteProps,
-  emits: ['update:modelValue', 'changeTextColor'],
+  emits: ['update:color', 'changeTextColor'],
   setup(props: ColorPickerPaletteProps, ctx) {
     const { n, classes } = createNamespace('color-picker')
     const DEFAULT_TRANSITION: DefaultTransition = { transition: 'all 0.3s ease' }
-    const dotSizeInject = inject('provideData') as ProvideColorOptions
+    // const dotSizeInject = inject('provideData') as ProvideColorOptions
 
     const clickTransform = ref<DefaultTransition | null>(DEFAULT_TRANSITION)
     const paletteElement = ref<HTMLElement | null>(null)
@@ -27,12 +27,8 @@ export default defineComponent({
     const cursorLeft = ref(0)
     const getDotStyle = computed(() => {
       return {
-        width: `${dotSizeInject.dotSize}px`,
-        height: `${dotSizeInject.dotSize}px`,
         top: cursorTop.value + 'px',
         left: cursorLeft.value + 'px',
-        // ...clickTransform.value,
-        transform: `translate(-${(dotSizeInject?.dotSize || 0) / 2}px,  -${(dotSizeInject?.dotSize || 0) / 2}px)`,
       }
     })
     function renderCanvas() {
@@ -44,7 +40,7 @@ export default defineComponent({
           canvasElement.value.height = props.height
           const saturationGradient = canvas.createLinearGradient(0, 0, parentWidth as number, 0)
           saturationGradient.addColorStop(0, 'hsla(0, 0%, 100%, 1)') // white
-          saturationGradient.addColorStop(1, `hsla(${props.modelValue.hue}, 100%, 50%, 1)`)
+          saturationGradient.addColorStop(1, `hsla(${props.color.hue}, 100%, 50%, 1)`)
           canvas.fillStyle = saturationGradient
           canvas.fillRect(0, 0, parentWidth, props.height)
           const valueGradient = canvas.createLinearGradient(0, 0, 0, props.height)
@@ -74,12 +70,12 @@ export default defineComponent({
           return false
         })
         ctx.emit(
-          'update:modelValue',
+          'update:color',
           fromHSVA({
-            h: props.modelValue.hue,
+            h: props.color.hue,
             s: clamp(event.clientX - rect.left, 0, rect.width) / rect.width,
             v: 1 - clamp(event.clientY - rect.top, 0, rect.height) / rect.height,
-            a: props.modelValue.alpha,
+            a: props.color.alpha,
           })
         )
         ctx.emit('changeTextColor', isChangeTextColor.value)
@@ -88,15 +84,14 @@ export default defineComponent({
 
     function clickPalette(event: Event) {
       if (event.target !== paletteElement.value) {
-        console.log('我是点击事件触发的')
         handleDrag(event as MouseEvent)
       }
     }
     function updatePosition() {
       if (paletteInstance) {
         const parentWidth = paletteElement.value?.offsetWidth || 0
-        cursorLeft.value = Number(props.modelValue?.hsva.s) * parentWidth
-        cursorTop.value = (1 - Number(props.modelValue?.hsva.v)) * props.height
+        cursorLeft.value = Number(props.color?.hsva.s) * parentWidth
+        cursorTop.value = (1 - Number(props.color?.hsva.v)) * props.height
       }
     }
     onMounted(() => {
@@ -119,8 +114,9 @@ export default defineComponent({
       // })
     })
     watch(
-      () => props.modelValue,
+      () => props.color,
       () => {
+        renderCanvas()
         updatePosition()
       }
     )

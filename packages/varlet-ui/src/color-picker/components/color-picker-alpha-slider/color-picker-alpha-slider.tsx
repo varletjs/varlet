@@ -7,7 +7,7 @@ import './color-picker-alpha-slider.less'
 export default defineComponent({
   name: 'ColorAlphaSlider',
   props: colorPickerAlphaSliderProps,
-  emits: ['update:modelValue'],
+  emits: ['update:color'],
   setup(props: colorPickerAlphaSliderProps, ctx) {
     const DEFAULT_TRANSITION = { transition: 'all 0.3s ease' }
     const clickTransform = ref<{ transition: string } | null>(DEFAULT_TRANSITION)
@@ -23,7 +23,7 @@ export default defineComponent({
         left = Math.max(offsetWidth / 2, left)
         left = Math.min(left, rect.width - offsetWidth / 2)
         const alpha = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 100)
-        ctx.emit('update:modelValue', fromHSVA({ ...props.modelValue.hsva, a: alpha / 100 }))
+        ctx.emit('update:color', fromHSVA({ ...props.color.hsva, a: alpha / 100 }))
       }
     }
 
@@ -35,13 +35,13 @@ export default defineComponent({
 
     const getBackgroundStyle = computed(() => {
       return {
-        background: `linear-gradient(to right, transparent , ${RGBtoCSS(props.modelValue.rgba)})`,
+        background: `linear-gradient(to right, transparent , ${RGBtoCSS(props.color.rgba)})`,
       }
     })
 
     const getCursorLeft = computed(() => {
       if (barElement.value && cursorElement.value) {
-        const alpha = props.modelValue.rgba.a
+        const alpha = props.color.rgba.a
         const rect = barElement.value.getBoundingClientRect()
         const { offsetWidth } = cursorElement.value
         return Math.round(alpha * (rect.width - offsetWidth) + offsetWidth / 2)
