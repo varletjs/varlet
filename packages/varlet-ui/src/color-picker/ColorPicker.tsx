@@ -110,7 +110,7 @@ export default defineComponent({
                   <div class={classes(n('preview'))}>
                     <div
                       class={classes(n('preview__dots'))}
-                      style={{ backgroundColor: initialColor.value!.hexa }}
+                      style={{ '--var-color-picker-preview-dots': initialColor.value!.hexa }}
                     ></div>
                     <div class={classes(n('preview__slider'))}>
                       <VarColorPickerHueSlider color={initialColor.value} onUpdate:color={updateColor} />

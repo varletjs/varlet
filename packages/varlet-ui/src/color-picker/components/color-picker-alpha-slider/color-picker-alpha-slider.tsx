@@ -1,4 +1,4 @@
-import { computed, defineComponent, ref, onMounted } from 'vue'
+import { computed, defineComponent, ref, onMounted, toRefs } from 'vue'
 import { colorPickerAlphaSliderProps } from './color-picker-alpha-slider-types'
 import { DOMUtils } from '../../utils/dom-dragger'
 import { RGBtoCSS, fromHSVA } from '../../utils/color-utils'
@@ -13,7 +13,7 @@ export default defineComponent({
     const clickTransform = ref<{ transition: string } | null>(DEFAULT_TRANSITION)
     const barElement = ref<HTMLElement | null>(null)
     const cursorElement = ref<HTMLElement | null>(null)
-
+    const { color } = toRefs(props)
     const onMoveBar = (event: MouseEvent) => {
       event.stopPropagation()
       if (barElement.value && cursorElement.value) {
@@ -23,7 +23,7 @@ export default defineComponent({
         left = Math.max(offsetWidth / 2, left)
         left = Math.min(left, rect.width - offsetWidth / 2)
         const alpha = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 100)
-        ctx.emit('update:color', fromHSVA({ ...props.color.hsva, a: alpha / 100 }))
+        ctx.emit('update:color', fromHSVA({ ...color.value.hsva, a: alpha / 100 }))
       }
     }
 
@@ -33,15 +33,9 @@ export default defineComponent({
       }
     }
 
-    const getBackgroundStyle = computed(() => {
-      return {
-        background: `linear-gradient(to right, transparent , ${RGBtoCSS(props.color.rgba)})`,
-      }
-    })
-
     const getCursorLeft = computed(() => {
       if (barElement.value && cursorElement.value) {
-        const alpha = props.color.rgba.a
+        const alpha = color.value.rgba.a
         const rect = barElement.value.getBoundingClientRect()
         const { offsetWidth } = cursorElement.value
         return Math.round(alpha * (rect.width - offsetWidth) + offsetWidth / 2)
@@ -81,7 +75,7 @@ export default defineComponent({
           <div
             ref={barElement}
             class="var-color-picker-alpha-slider__bar"
-            style={getBackgroundStyle.value}
+            style={{ '--var-color-picker-alpha-slider': RGBtoCSS(color.value.rgba) }}
             onClick={onClickSlider}
           >
             <div
