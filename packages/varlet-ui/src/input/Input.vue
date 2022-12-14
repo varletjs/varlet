@@ -131,7 +131,7 @@ import VarFormDetails from '../form-details'
 import VarIcon from '../icon'
 import { defineComponent, getCurrentInstance, ref, computed, nextTick, onMounted } from 'vue'
 import { props } from './props'
-import { isEmpty } from '@varlet/shared'
+import { isEmpty, toNumber } from '@varlet/shared'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import type { Ref, ComputedRef } from 'vue'
@@ -205,9 +205,11 @@ export default defineComponent({
     }
 
     const handleInput = (e: Event) => {
-      let { value } = e.target as HTMLInputElement
+      const target = e.target as HTMLInputElement
+      let { value } = target
 
-      value = withTrim(value)
+      value = withMaxlength(withTrim(value))
+      target.value = value
 
       call(props['onUpdate:modelValue'], value)
       call(props.onInput, value, e)
@@ -215,9 +217,13 @@ export default defineComponent({
     }
 
     const handleChange = (e: Event) => {
-      const { value } = e.target as HTMLInputElement
+      const target = e.target as HTMLInputElement
+      let { value } = target
 
-      call(props.onChange, withTrim(value), e)
+      value = withMaxlength(withTrim(value))
+      target.value = value
+
+      call(props.onChange, value, e)
       validateWithTrigger('onChange')
     }
 
@@ -245,6 +251,8 @@ export default defineComponent({
     }
 
     const withTrim = (value: string) => (props.modelModifiers.trim ? value.trim() : value)
+
+    const withMaxlength = (value: string) => (props.maxlength ? value.slice(0, toNumber(props.maxlength)) : value)
 
     const handleTouchstart = (e: Event) => {
       const { disabled, readonly } = props
