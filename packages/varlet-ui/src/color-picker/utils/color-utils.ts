@@ -160,7 +160,8 @@ export function RGBtoCSS(rgba: RGBA): string {
 export function RGBAtoHex(rgba: RGBA): Hex {
   const toHex = (v: number) => {
     const h = Math.round(v).toString(16)
-    return ('00'.substring(0, 2 - h.length) + h).toUpperCase()
+    // return ('00'.substring(0, 2 - h.length) + h).toUpperCase()
+    return '00'.substring(0, 2 - h.length) + h
   }
 
   return `#${[toHex(rgba.r), toHex(rgba.g), toHex(rgba.b), toHex(Math.round(rgba.a * 255))].join('')}`
@@ -206,7 +207,8 @@ export function parseHex(hex: string): Hex {
     hex = padEnd(padEnd(hex, 6), 8, 'F')
   }
 
-  return `#${hex}`.toUpperCase().substring(0, 9)
+  // return `#${hex}`.toUpperCase().substring(0, 9)
+  return `#${hex}`.substring(0, 9)
 }
 
 export function RGBtoInt(rgba: RGBA): ColorInt {

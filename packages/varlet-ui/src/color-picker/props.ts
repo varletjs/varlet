@@ -14,7 +14,8 @@ export const colorPickerProps = {
     default: true,
   },
   swatchesLayout: {
-    type: Array as PropType<string[]>,
+    type: Boolean,
+    default: true,
   },
   canvasLayout: {
     type: Boolean,

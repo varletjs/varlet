@@ -105,11 +105,14 @@ export default defineComponent({
             </div> */}
             {props.canvasLayout && <VarColorPickerCanvas color={initialColor.value} onUpdate:color={updateColor} />}
             {(props.sliderLayout || props.inputLayout) && (
-              <div class="control">
+              <div class={classes(n('control'))}>
                 {props.sliderLayout && (
-                  <div class={classes(n())}>
-                    {/* <div class={classes(n('dots'))} style={{ backgroundColor: initialColor.value.hexa }}></div> */}
-                    <div class={classes(n('slider'))}>
+                  <div class={classes(n('preview'))}>
+                    <div
+                      class={classes(n('preview__dots'))}
+                      style={{ backgroundColor: initialColor.value!.hexa }}
+                    ></div>
+                    <div class={classes(n('preview__slider'))}>
                       <VarColorPickerHueSlider color={initialColor.value} onUpdate:color={updateColor} />
                       <VarColorPickerAlphaSlider color={initialColor.value} onUpdate:color={updateColor} />
                     </div>
@@ -118,7 +121,7 @@ export default defineComponent({
                 {/* {props.inputLayout && <VarColorPickerEdit />} */}
               </div>
             )}
-            {/* {props.swatchesLayout && <VarColorPickerSwatches />} */}
+            {props.swatchesLayout && <VarColorPickerSwatches color={initialColor.value} onUpdate:color={updateColor} />}
           </div>
           {/* {formItemValue.value} */}
         </>

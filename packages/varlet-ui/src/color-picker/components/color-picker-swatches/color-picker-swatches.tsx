@@ -4,7 +4,7 @@ import './color-picker-swatches.less'
 import colors from '../../utils/color'
 import { parseColor } from '../../utils/color-utils'
 // Types
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, PropType, toRefs } from 'vue'
 import { convertToUnit } from '../../utils/helpers'
 
 function parseDefaultColors(colors: Record<string, Record<string, string>>) {
@@ -40,6 +40,7 @@ export default defineComponent({
   },
   emits: ['update:color'],
   setup(props, { emit }) {
+    const { color } = toRefs(props)
     return () => {
       return (
         <div
@@ -51,12 +52,14 @@ export default defineComponent({
           <div class="var-color-picker-swatches__colorful">
             {props.swatches.map((swatch) => (
               <div class="var-color-picker-swatches__swatch">
-                {swatch.map((color) => {
-                  const hsv = parseColor(color)
+                {swatch.map((colorItem) => {
+                  const hsv = parseColor(colorItem)
                   return (
                     <div class="var-color-picker-swatches__color" onClick={() => emit('update:color', hsv)}>
-                      <div style={{ background: color }}>
-                        <var-icon size="15" name="checkbox-marked-circle" />
+                      <div style={{ background: colorItem }}>
+                        {color.value && color.value.hex === colorItem ? (
+                          <var-icon size="15" name="checkbox-marked-circle" />
+                        ) : undefined}
                       </div>
                     </div>
                   )
@@ -70,4 +73,4 @@ export default defineComponent({
   },
 })
 
-export type VColorPickerSwatches = InstanceType<typeof VColorPickerSwatches>
+export type VarColorPickerSwatches = InstanceType<typeof VarColorPickerSwatches>
