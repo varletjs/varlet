@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import VarColorPickerHueSlider from '../color-hue-slider/color-hue-slider'
-import VarColorPickerAlphaSlider from '../color-alpha-slider/color-alpha-slider'
+import VarColorPickerHueSlider from '../color-picker-hue-slider/color-hue-slider'
+import VarColorPickerAlphaSlider from '../color-picker-alpha-slider/color-picker-alpha-slider'
 import { createNamespace } from '../../../utils/components'
 import { ColorPickerPreviewProps, colorPickerPreviewProps } from './color-picker-preview-type'
 import './color-picker-preview.less'
@@ -31,7 +31,7 @@ export default defineComponent({
               hideDetails
             /> */}
             <VarColorPickerHueSlider />
-            {props.alpha && <VarColorPickerAlphaSlider />}
+            {/* {props.alpha && <VarColorPickerAlphaSlider />} */}
             {/* {!props.hideAlpha && (
               <VSlider
                 class="v-color-picker-preview__track v-color-picker-preview__alpha"

@@ -1,12 +1,16 @@
-import { defineComponent, ref, computed, watch, provide, unref, readonly } from 'vue'
+import { defineComponent, ref, computed, watch, provide, unref, readonly, toRefs } from 'vue'
 import { useReactive, changeColorValue } from './utils/composable'
-import { colorPickerProps, ColorPickerProps } from './color-picker-types'
-import colorPanel from './components/color-picker-panel/color-picker-panel'
+import { colorPickerProps, ColorPickerProps } from './props'
+import colorPanel from './components/colorPickerPanel/color-picker-panel'
 import './colorPicker.less'
 import '../styles/elevation.less'
+import { createNamespace } from '../utils/components'
 import { parseColor, extractColor, RGBAtoCSS } from './utils/color-utils'
 import { ColorPickerColor } from './utils/color-utils-types'
 import VarColorPickerPreview from './components/color-picker-preview/color-picker-preview'
+import VarColorPickerCanvas from './components/color-picker-canvas/color-picker-canvas'
+import VarColorPickerEdit from './components/color-picker-edit/color-picker-edit'
+import VarColorPickerSwatches from './components/color-picker-swatches/color-picker-swatches'
 
 export default defineComponent({
   name: 'DColorPicker',
@@ -17,12 +21,12 @@ export default defineComponent({
   props: colorPickerProps,
   emits: ['update:modelValue'],
   setup(props: ColorPickerProps, { emit }) {
+    const { moduleValue } = toRefs(props)
+    const { n, classes } = createNamespace('color-picker')
     const DEFAULT_MODE = 'rgb'
     const provideData = {
       showAlpha: useReactive(() => props.showAlpha),
       swatches: useReactive(() => props.swatches),
-      dotSize: useReactive(() => props.dotSize),
-      showHistory: useReactive(() => props.showHistory),
     }
     provide('provideData', readonly(provideData))
     const initialColor = ref<Partial<ColorPickerColor>>()
@@ -78,7 +82,7 @@ export default defineComponent({
     }
     // 监听用户输入
     watch(
-      () => props.modelValue,
+      moduleValue,
       (newValue) => {
         // 全部转换成对象
         updateUserColor(parseColor(newValue, initialColor.value))
@@ -88,8 +92,8 @@ export default defineComponent({
     return () => {
       return (
         <>
-          <div class="var-color-picker var-elevation--3">
-            <div ref={pickerRef} class={['var-color-picker-position']}>
+          <div class={[classes(n()), 'var-elevation--3']}>
+            {/* <div ref={pickerRef} class={['var-color-picker-position']}>
               <color-panel
                 v-model={initialColor.value}
                 ref={containerRef}
@@ -98,23 +102,15 @@ export default defineComponent({
                 onChangePaletteColor={changePaletteColor}
                 onChangeTextModeType={changeTextModeType}
               ></color-panel>
-            </div>
-            {/* <div class="var-color-picker" ref={colorCubeRef}>
-            <div class="var-color-picker-container">
-              <div class="var-color-picker-container-wrap">
-                <div class="var-color-picker-container-wrap-current-color" style={triggerColor.value}></div>
-                <div
-                  class={[
-                    'var-color-picker-container-wrap-transparent',
-                    'var-color-picker-container-wrap-current-color-transparent',
-                  ]}
-                ></div>
-                <div class="var-color-picker-color-value">
-                  <p style={textColor.value as StyleValue}>{formItemValue.value}</p>
-                </div>
+            </div> */}
+            {props.canvasLayout && <VarColorPickerCanvas />}
+            {(props.sliderLayout || props.inputLayout) && (
+              <div class="control">
+                {props.sliderLayout && <VarColorPickerPreview />}
+                {/* {props.inputLayout && <VarColorPickerEdit />} */}
               </div>
-            </div>
-          </div> */}
+            )}
+            {/* {props.swatchesLayout && <VarColorPickerSwatches />} */}
           </div>
           {formItemValue.value}
         </>
