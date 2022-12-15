@@ -11,14 +11,14 @@ export type SpaceInternalSize = 'mini' | 'small' | 'normal' | 'large'
 
 export type SpaceSize = SpaceInternalSize | number | string | [number | string, number | string]
 
+export type SpacePluginOptionsSize = number | string | [number | string, number | string]
+
 export interface SpacePluginOptions {
   mini?: SpacePluginOptionsSize
   small?: SpacePluginOptionsSize
   normal?: SpacePluginOptionsSize
   large?: SpacePluginOptionsSize
 }
-
-export type SpacePluginOptionsSize = number | string | [number | string, number | string]
 
 export interface SpaceProps extends BasicAttributes {
   align?: SpaceAlign
