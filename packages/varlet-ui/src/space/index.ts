@@ -1,9 +1,10 @@
 import type { App } from 'vue'
 import Space from './Space'
-import { SpaceOptions, mergeSpaceOptions } from './context'
+import { mergeSpacePluginOptions, type SpacePluginOptions } from './context'
 
-Space.install = function (app: App, spaceOptions: SpaceOptions) {
-  mergeSpaceOptions(spaceOptions)
+Space.install = function (app: App, spacePluginOptions: SpacePluginOptions) {
+  mergeSpacePluginOptions(spacePluginOptions)
+
   app.component(Space.name, Space)
 }
 
