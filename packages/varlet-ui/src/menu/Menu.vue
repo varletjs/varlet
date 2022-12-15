@@ -62,7 +62,7 @@ export default defineComponent({
     let hostSize: HostSize = { width: 0, height: 0 }
 
     const computeHostSize = () => {
-      const { width, height } = getComputedStyle(host.value!)
+      const { width, height } = window.getComputedStyle(host.value!)
 
       hostSize = {
         width: toPxNum(width),
