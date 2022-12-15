@@ -13,7 +13,7 @@ import {
 import { getPublicDirs, isDir, isDTS, isLess, isScript, isSFC } from '../shared/fsUtils.js'
 import { compileSFC } from './compileSFC.js'
 import { compileESEntry, compileCommonJSEntry, compileScriptFile } from './compileScript.js'
-import { compileLess } from './compileStyle.js'
+import { clearLessFiles, compileLess } from './compileStyle.js'
 import { getESMBundleConfig, getUMDConfig } from '../config/vite.config.js'
 import { getVarletConfig } from '../config/varlet.config.js'
 import { generateReference } from './compileTypes.js'
@@ -100,5 +100,6 @@ export async function compileModule(modules: 'umd' | 'commonjs' | 'esm-bundle' |
     await compileESEntry(dest, publicDirs)
   }
 
+  clearLessFiles(dest)
   generateReference(dest)
 }
