@@ -1,10 +1,11 @@
 import fse from 'fs-extra'
 import less from 'less'
+import glob from 'glob'
 import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
 import { parse, resolve } from 'path'
 
 const { render } = less
-const { readFileSync, removeSync, writeFileSync } = fse
+const { readFileSync, writeFileSync, unlinkSync } = fse
 
 export const EMPTY_SPACE_RE = /[\s]+/g
 export const EMPTY_LINE_RE = /[\n\r]*/g
@@ -47,6 +48,11 @@ export async function compileLess(file: string) {
   const source = readFileSync(file, 'utf-8')
   const { css } = await render(source, { filename: file })
 
-  removeSync(file)
   writeFileSync(replaceExt(file, '.css'), clearEmptyLine(css), 'utf-8')
+}
+
+export function clearLessFiles(dir: string) {
+  const files = glob.sync(`${dir}/**/*.less`)
+
+  files.forEach(unlinkSync)
 }
