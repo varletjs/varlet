@@ -1,12 +1,11 @@
 import { defineComponent, VNodeChild, Fragment, VNode, Comment } from 'vue'
-import { internalSizeValidator, props } from './props'
-import type { SpaceInternalSize, SpaceSize } from './props'
+import { internalSizeValidator, props, type SpaceInternalSize, type SpaceSize } from './props'
 import { toPxNum } from '../utils/elements'
-import { isArray } from '@varlet/shared'
-import '../styles/common.less'
-import './space.less'
+import { inBrowser, isArray } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
 import { spacePluginOptions } from './context'
+import '../styles/common.less'
+import './space.less'
 
 const { n, classes } = createNamespace('space')
 
@@ -14,12 +13,18 @@ export default defineComponent({
   name: 'VarSpace',
   props,
   setup(props, { slots }) {
-    const internalSizes: Record<string, number[]> = {}
+    const internalSizes: Record<string, number[]> = {
+      mini: [0, 0],
+      small: [0, 0],
+      normal: [0, 0],
+      large: [0, 0],
+    }
 
-    Object.keys(spacePluginOptions).forEach((key) => {
-      const size = spacePluginOptions[key as SpaceInternalSize]
-      internalSizes[key] = isArray(size) ? size.map(toPxNum) : [toPxNum(size), toPxNum(size)]
-    })
+    const computeInternalSizes = () => {
+      Object.entries(spacePluginOptions).forEach(([key, size]) => {
+        internalSizes[key] = isArray(size) ? size.map(toPxNum) : [toPxNum(size), toPxNum(size)]
+      })
+    }
 
     const getSize = (size: SpaceSize, isInternalSize: boolean) => {
       return isInternalSize
@@ -31,6 +36,10 @@ export default defineComponent({
 
     const padStartFlex = (style: string | undefined) => {
       return style === 'start' || style === 'end' ? `flex-${style}` : style
+    }
+
+    if (inBrowser()) {
+      computeInternalSizes()
     }
 
     return () => {
