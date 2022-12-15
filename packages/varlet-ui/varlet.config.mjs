@@ -452,6 +452,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Tooltip 菜单',
+          'en-US': 'Tooltip',
+        },
+        doc: 'tooltip',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'BackTop 回到顶部',
           'en-US': 'BackTop',
         },
