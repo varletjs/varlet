@@ -27,6 +27,10 @@ export default defineComponent({
     }
 
     const getSize = (size: SpaceSize, isInternalSize: boolean) => {
+      if (!inBrowser()) {
+        return [0, 0]
+      }
+
       return isInternalSize
         ? internalSizes[size as SpaceInternalSize]
         : isArray(size)
