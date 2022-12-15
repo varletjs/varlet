@@ -354,6 +354,6 @@ export default defineComponent({
 
 <style lang="less">
 @import './menu';
-@import '../styles/elevation.less';
-@import '../styles/common.less';
+@import '../styles/elevation';
+@import '../styles/common';
 </style>
