@@ -2,10 +2,10 @@ import { defineComponent, VNodeChild, Fragment, VNode, Comment } from 'vue'
 import { internalSizeValidator, props, type SpaceSize } from './props'
 import { isArray } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
-import { context, type SpaceContext } from './context'
+import { toSizeUnit } from '../utils/elements'
+import { computeMargin } from './margin'
 import '../styles/common.less'
 import './space.less'
-import { toSizeUnit } from '../utils/elements'
 
 const { n, classes } = createNamespace('space')
 
@@ -15,10 +15,10 @@ export default defineComponent({
   setup(props, { slots }) {
     const getSize = (size: SpaceSize, isInternalSize: boolean): string[] => {
       return isInternalSize
-        ? (context[size as keyof SpaceContext] as string[])
+        ? [`var(--space-size-${size}-y)`, `var(--space-size-${size}-x)`]
         : isArray(size)
         ? (size.map(toSizeUnit) as string[])
-        : ([size, size] as string[])
+        : ([toSizeUnit(size), toSizeUnit(size)] as string[])
     }
 
     const padStartFlex = (style: string | undefined) => {
@@ -54,31 +54,12 @@ export default defineComponent({
 
       const lastIndex = children.length - 1
       const spacers = children.map((child, index) => {
-        let margin = '0'
-
-        if (direction === 'row') {
-          if (justify === 'start' || justify === 'center' || justify === 'end') {
-            if (index !== lastIndex) {
-              margin = `calc(${y} / 2) ${x} calc(${y} / 2) 0`
-            } else {
-              margin = `calc(${y} / 2) 0`
-            }
-          } else if (justify === 'space-around') {
-            margin = `calc(${y} / 2) calc(${x} / 2)`
-          } else if (justify === 'space-between') {
-            if (index === 0) {
-              margin = `calc(${y} / 2) calc(${x} / 2) calc(${y} / 2) 0`
-            } else if (index === lastIndex) {
-              margin = `calc(${y} / 2) 0 calc(${y} / 2) calc(${x} / 2)`
-            } else {
-              margin = `calc(${y} / 2) calc(${x} / 2)`
-            }
-          }
-        }
-
-        if (direction === 'column' && index !== lastIndex) {
-          margin = `0 0 ${y} 0`
-        }
+        const margin = computeMargin(y, x, {
+          direction,
+          justify,
+          index,
+          lastIndex,
+        })
 
         return <div style={{ margin }}>{child}</div>
       })

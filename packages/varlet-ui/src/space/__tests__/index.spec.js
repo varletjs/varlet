@@ -34,23 +34,6 @@ describe('test space component props', () => {
       expect(wrapper.find('.var-space').attributes('style')).toContain(
         'justify-content: ' + (justify === 'start' || justify === 'end' ? `flex-${justify}` : justify)
       )
-      expect(wrapper.html()).toMatchSnapshot()
-      wrapper.unmount()
-    })
-  })
-
-  test('test space size', () => {
-    ;[
-      { sizeType: 'mini', sizeVal: -2 },
-      { sizeType: 'small', sizeVal: -3 },
-      { sizeType: 'normal', sizeVal: -4 },
-      { sizeType: 'large', sizeVal: -6 },
-    ].forEach((size) => {
-      const wrapper = mount(VarSpace, {
-        props: { size: size.sizeType },
-      })
-
-      expect(wrapper.find('.var-space').attributes('style')).toContain(`margin: ${size.sizeVal}px 0px;`)
       wrapper.unmount()
     })
   })
@@ -104,26 +87,4 @@ test('test space default slots', () => {
 
   expect(wrapper.find('.var-space').html()).toContain('This is default slots')
   wrapper.unmount()
-})
-
-test('test space plugin options size', () => {
-  Space.install(createApp({}), {
-    mini: '6px',
-    small: '8px',
-    normal: '8px',
-    large: '12px',
-  })
-  ;[
-    { sizeType: 'mini', sizeVal: -3 },
-    { sizeType: 'small', sizeVal: -4 },
-    { sizeType: 'normal', sizeVal: -4 },
-    { sizeType: 'large', sizeVal: -6 },
-  ].forEach((size) => {
-    const wrapper = mount(Space, {
-      props: { size: size.sizeType },
-    })
-
-    expect(wrapper.find('.var-space').attributes('style')).toContain(`margin: ${size.sizeVal}px 0px;`)
-    wrapper.unmount()
-  })
 })
