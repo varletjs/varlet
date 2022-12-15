@@ -6,7 +6,7 @@ import { isArray } from '@varlet/shared'
 import '../styles/common.less'
 import './space.less'
 import { call, createNamespace } from '../utils/components'
-import { spaceOptions } from './context'
+import { spacePluginOptions } from './context'
 
 const { n, classes } = createNamespace('space')
 
@@ -16,8 +16,8 @@ export default defineComponent({
   setup(props, { slots }) {
     const internalSizes: Record<string, number[]> = {}
 
-    Object.keys(spaceOptions).forEach((key) => {
-      const size = spaceOptions[key as SpaceInternalSize]
+    Object.keys(spacePluginOptions).forEach((key) => {
+      const size = spacePluginOptions[key as SpaceInternalSize]
       internalSizes[key] = isArray(size) ? size.map(toPxNum) : [toPxNum(size), toPxNum(size)]
     })
 
