@@ -15,7 +15,8 @@ import {
   Hexa,
   Color,
 } from './color-utils-types'
-function omit<T extends Record<string, unknown>, K extends keyof T>(obj: T, fields: K[]): Omit<T, K> {
+
+export function omit<T extends Record<string, unknown>, K extends keyof T>(obj: T, fields: K[]): Omit<T, K> {
   const shallowCopy = Object.assign({}, obj)
   for (let i = 0; i < fields.length; i += 1) {
     const key = fields[i]
@@ -380,7 +381,6 @@ function stripAlpha(color: Record<string, unknown>, curStripAlpha: boolean) {
 
   return color
 }
-
 export function extractColor(
   color: ColorPickerColor,
   input: Color,
@@ -515,4 +515,178 @@ export function HSVtoHSL(hsv: HSV): HSL {
   const sprime = l === 1 || l === 0 ? 0 : (v - l) / Math.min(l, 1 - l)
 
   return { h, s: Number(sprime.toFixed(2)), l }
+}
+export type ColorPickerMode = {
+  inputProps: Record<string, unknown>
+  inputs: {
+    [key: string]: any
+    getValue: (color: any) => number | string
+    getColor: (color: any, v: string) => any
+  }[]
+  from: (color: any) => HSV
+  to: (color: HSV) => any
+}
+
+const rgba: ColorPickerMode = {
+  inputProps: {
+    type: 'number',
+    min: 0,
+  },
+  inputs: [
+    {
+      label: 'R',
+      max: 255,
+      step: 1,
+      getValue: (c: RGB) => Math.round(c.r),
+      getColor: (c: RGB, v: string): RGB => ({ ...c, r: Number(v) }),
+    },
+    {
+      label: 'G',
+      max: 255,
+      step: 1,
+      getValue: (c: RGB) => Math.round(c.g),
+      getColor: (c: RGB, v: string): RGB => ({ ...c, g: Number(v) }),
+    },
+    {
+      label: 'B',
+      max: 255,
+      step: 1,
+      getValue: (c: RGB) => Math.round(c.b),
+      getColor: (c: RGB, v: string): RGB => ({ ...c, b: Number(v) }),
+    },
+    {
+      label: 'A',
+      max: 1,
+      step: 0.01,
+      getValue: ({ a }: RGB) => (a ? Math.round(a * 100) / 100 : 1),
+      getColor: (c: RGB, v: string): RGB => ({ ...c, a: Number(v) }),
+    },
+  ],
+  to: HSVtoRGB,
+  from: RGBtoHSV,
+}
+
+const rgb = {
+  ...rgba,
+  inputs: rgba.inputs?.slice(0, 3),
+}
+
+const hsla: ColorPickerMode = {
+  inputProps: {
+    type: 'number',
+    min: 0,
+  },
+  inputs: [
+    {
+      label: 'H',
+      max: 360,
+      step: 1,
+      getValue: (c: HSL) => Math.round(c.h),
+      getColor: (c: HSL, v: string): HSL => ({ ...c, h: Number(v) }),
+    },
+    {
+      label: 'S',
+      max: 1,
+      step: 0.01,
+      getValue: (c: HSL) => Math.round(c.s * 100) / 100,
+      getColor: (c: HSL, v: string): HSL => ({ ...c, s: Number(v) }),
+    },
+    {
+      label: 'L',
+      max: 1,
+      step: 0.01,
+      getValue: (c: HSL) => Math.round(c.l * 100) / 100,
+      getColor: (c: HSL, v: string): HSL => ({ ...c, l: Number(v) }),
+    },
+    {
+      label: 'A',
+      max: 1,
+      step: 0.01,
+      getValue: ({ a }: HSL) => (a ? Math.round(a * 100) / 100 : 1),
+      getColor: (c: HSL, v: string): HSL => ({ ...c, a: Number(v) }),
+    },
+  ],
+  to: HSVtoHSL,
+  from: HSLtoHSV,
+}
+
+const hsl = {
+  ...hsla,
+  inputs: hsla.inputs.slice(0, 3),
+}
+
+const hexa: ColorPickerMode = {
+  inputProps: {
+    type: 'text',
+  },
+  inputs: [
+    {
+      label: 'HEXA',
+      getValue: (c: string) => c,
+      getColor: (c: string, v: string) => v,
+    },
+  ],
+  to: HSVtoHex,
+  from: HexToHSV,
+}
+
+const hex = {
+  ...hexa,
+  inputs: [
+    {
+      label: 'HEX',
+      getValue: (c: string) => c.slice(0, 7),
+      getColor: (c: string, v: string) => v,
+    },
+  ],
+}
+
+export const modes: Record<string, ColorPickerMode> = {
+  rgb,
+  rgba,
+  hsl,
+  hsla,
+  hex,
+  hexa,
+}
+export function HexToHSV(hex: Hex): HSV {
+  const rgb = HexToRGB(hex)
+  return RGBtoHSV(rgb)
+}
+
+export function HSVtoHex(hsva: HSV): Hex {
+  return RGBtoHex(HSVtoRGB(hsva))
+}
+export function HexToRGB(hex: Hex): RGB {
+  let [r, g, b, a] = chunk(hex, 2).map((c: string) => parseInt(c, 16))
+  a = a === undefined ? a : Math.round((a / 255) * 100) / 100
+
+  return { r, g, b, a }
+}
+export function RGBtoHex({ r, g, b, a }: RGB): Hex {
+  return `#${[toHex(r), toHex(g), toHex(b), a !== undefined ? toHex(Math.round(a * 255)) : 'FF'].join('')}` as Hex
+}
+function toHex(v: number) {
+  const h = Math.round(v).toString(16)
+  return ('00'.substr(0, 2 - h.length) + h).toUpperCase()
+}
+export function HSVtoRGB(hsva: HSV): RGB {
+  const { h, s, v, a } = hsva
+  const f = (n: number) => {
+    const k = (n + h / 60) % 6
+    return v - v * s * Math.max(Math.min(k, 4 - k, 1), 0)
+  }
+
+  const rgb = [f(5), f(3), f(1)].map((v) => Math.round(v * 255))
+
+  return { r: rgb[0], g: rgb[1], b: rgb[2], a }
+}
+export function HSLtoHSV(hsl: HSL): HSV {
+  const { h, s, l, a } = hsl
+
+  const v = l + s * Math.min(l, 1 - l)
+
+  const sprime = v === 0 ? 0 : 2 - (2 * l) / v
+
+  return { h, s: sprime, v, a }
 }

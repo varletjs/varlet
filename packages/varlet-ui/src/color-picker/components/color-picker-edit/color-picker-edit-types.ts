@@ -1,18 +1,19 @@
 import type { PropType, ExtractPropTypes } from 'vue'
+import { modes } from '../../utils/color-utils'
 import { ColorPickerColor } from '../../utils/color-utils-types'
+
 export const colorPickerEditProps = {
-  /* test: {
-    type: Object as PropType<{ xxx: xxx }>
-  } */
-  /**
-   * 选择器圆点大小
-   */
-  showAlpha: {
-    type: Boolean,
-    default: false,
-  },
   mode: {
     type: String,
+  },
+  modes: {
+    type: Array as PropType<string[]>,
+    default: () => Object.keys(modes),
+    // validator: (v: any) => Array.isArray(v) && v.every(m => Object.keys(modes).includes(m)),
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
   },
   color: {
     type: Object as PropType<ColorPickerColor>,

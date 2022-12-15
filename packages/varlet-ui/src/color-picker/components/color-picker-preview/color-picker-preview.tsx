@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import VarColorPickerHueSlider from '../color-picker-hue-slider/color-hue-slider'
+import VarColorPickerHueSlider from '../color-picker-hue-slider/color-picker-hue-slider'
 import VarColorPickerAlphaSlider from '../color-picker-alpha-slider/color-picker-alpha-slider'
 import { createNamespace } from '../../../utils/components'
 import { ColorPickerPreviewProps, colorPickerPreviewProps } from './color-picker-preview-type'

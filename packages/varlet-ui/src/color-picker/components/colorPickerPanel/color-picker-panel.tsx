@@ -2,7 +2,7 @@ import { defineComponent, ref, watch, nextTick, inject, getCurrentInstance } fro
 import { colorPickerProps, ColorPickerProps } from './color-picker-panel-types'
 import { ProvideColorOptions } from '../../utils/color-utils-types'
 import colorPalette from '../color-picker-canvas/color-picker-canvas'
-import colorHueSlider from '../color-picker-hue-slider/color-hue-slider'
+import colorHueSlider from '../color-picker-hue-slider/color-picker-hue-slider'
 import colorBall from '../color-picker-preview-dots/color-picker-preview-dots'
 import colorAlphaSlider from '../color-picker-alpha-slider/color-picker-alpha-slider'
 import VarColorPickerPreview from '../color-picker-preview/color-picker-preview'

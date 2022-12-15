@@ -1,4 +1,4 @@
-import { defineComponent, ref, computed, watch, provide, unref, readonly, toRefs } from 'vue'
+import { defineComponent, ref, computed, watch, provide, unref, readonly, toRefs, onMounted } from 'vue'
 import { useReactive, changeColorValue } from './utils/composable'
 import { colorPickerProps, ColorPickerProps } from './props'
 import colorPanel from './components/colorPickerPanel/color-picker-panel'
@@ -11,7 +11,7 @@ import VarColorPickerPreview from './components/color-picker-preview/color-picke
 import VarColorPickerCanvas from './components/color-picker-canvas/color-picker-canvas'
 import VarColorPickerEdit from './components/color-picker-edit/color-picker-edit'
 import VarColorPickerSwatches from './components/color-picker-swatches/color-picker-swatches'
-import VarColorPickerHueSlider from './components/color-picker-hue-slider/color-hue-slider'
+import VarColorPickerHueSlider from './components/color-picker-hue-slider/color-picker-hue-slider'
 import VarColorPickerAlphaSlider from './components/color-picker-alpha-slider/color-picker-alpha-slider'
 
 export default defineComponent({
@@ -23,13 +23,14 @@ export default defineComponent({
   props: colorPickerProps,
   emits: ['update:modelValue'],
   setup(props: ColorPickerProps, { emit }) {
-    const { modelValue, mode } = toRefs(props)
+    const { modelValue, mode, disabled, modes } = toRefs(props)
     const { n, classes } = createNamespace('color-picker')
     // const DEFAULT_MODE = 'rgb'
     // const provideData = {
     //   showAlpha: useReactive(() => props.showAlpha),
     //   swatches: useReactive(() => props.swatches),
     // }
+
     // provide('provideData', readonly(provideData))
     const initialColor = ref<Partial<ColorPickerColor>>()
     // const colorCubeRef = ref<HTMLElement | null>(null)
@@ -82,6 +83,9 @@ export default defineComponent({
       // emit('update:modelValue', hsva)
       updateModelValueColor(hsva)
     }
+    onMounted(() => {
+      // if (!props.modes.includes(mode.value)) mode.value = props.modes[0]
+    })
     watch(
       modelValue,
       (newValue) => {
@@ -118,12 +122,20 @@ export default defineComponent({
                     </div>
                   </div>
                 )}
-                {/* {props.inputLayout && <VarColorPickerEdit />} */}
+                {props.inputLayout && (
+                  <VarColorPickerEdit
+                    color={initialColor.value}
+                    onUpdate:color={updateColor}
+                    disabled={disabled.value}
+                    modes={modes.value}
+                    mode={mode.value}
+                    onUpdate:mode={(m) => (mode.value = m)}
+                  />
+                )}
               </div>
             )}
             {props.swatchesLayout && <VarColorPickerSwatches color={initialColor.value} onUpdate:color={updateColor} />}
           </div>
-          {/* {formItemValue.value} */}
         </>
       )
     }

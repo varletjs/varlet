@@ -1,13 +1,20 @@
 import type { PropType, ExtractPropTypes } from 'vue'
+import { modes } from './utils/color-utils'
 
 export const colorPickerProps = {
   modelValue: {
     type: [Object, String] as PropType<string | number>,
     default: {},
   },
+  modes: {
+    type: Array as PropType<string[]>,
+    default: () => Object.keys(modes),
+    // validator: (v: any) => Array.isArray(v) && v.every((m) => modes.includes(m)),
+  },
   mode: {
     type: String,
-    default: 'hex',
+    default: 'rgba',
+    // validator: (v: string) => modes.includes(v),
   },
   sliderLayout: {
     type: Boolean,
@@ -24,6 +31,10 @@ export const colorPickerProps = {
   inputLayout: {
     type: Boolean,
     default: true,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
   },
 } as const
 
