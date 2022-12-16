@@ -5,11 +5,8 @@
       classes(
         n(),
         [isRow, n('--layout-row')],
-        [
-          elevation,
-          classes(n(`$-elevation--${elevation}`), [outline, n('--outline')]),
-          classes([outline, n('--outline'), n('$-elevation--1')]),
-        ]
+        [outline, n('--outline')],
+        [elevation, n(`$-elevation--${elevation}`), n('$-elevation--1')]
       )
     "
     :style="{
