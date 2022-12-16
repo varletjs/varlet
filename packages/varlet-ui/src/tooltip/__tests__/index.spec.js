@@ -1,12 +1,13 @@
-import VarTooltip from '..'
-import { createApp, h } from 'vue'
+import Tooltip from '..'
+import VarTooltip from '../Tooltip.vue'
+import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay, mockStubs, trigger } from '../../utils/jest'
 import { doubleRaf } from '../../utils/elements'
 
 test('test tooltip plugin', () => {
-  const app = createApp({}).use(VarTooltip)
-  expect(app.component(VarTooltip.name)).toBeTruthy()
+  const app = createApp({}).use(Tooltip)
+  expect(app.component(Tooltip.name)).toBeTruthy()
 })
 
 test('test tooltip placement', async () => {
@@ -25,14 +26,6 @@ test('test tooltip placement', async () => {
     'left',
     'left-start',
     'left-end',
-    'cover-top',
-    'cover-top-start',
-    'cover-top-end',
-    'cover-bottom',
-    'cover-bottom-start',
-    'cover-bottom-end',
-    'cover-left',
-    'cover-right',
   ]) {
     const root = document.createElement('div')
 

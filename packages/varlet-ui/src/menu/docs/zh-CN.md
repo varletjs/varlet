@@ -156,7 +156,7 @@ const closed = () => Snackbar.info('closed')
 ```html
 <template>
   <var-menu disabled>
-    <var-button type="primary">禁用</var-button>
+    <var-button type="primary" disabled>禁用</var-button>
     
     <template #menu>
       <var-cell>菜单项</var-cell>

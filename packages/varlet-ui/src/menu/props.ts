@@ -1,19 +1,6 @@
 import type { PropType } from 'vue'
-import type { Placement as PopperPlacement } from '@popperjs/core'
+import type { Placement } from './usePopover'
 import { TeleportProps } from 'vue'
-
-export type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
-
-export type Placement =
-  | NeededPopperPlacement
-  | 'cover-top'
-  | 'cover-top-start'
-  | 'cover-top-end'
-  | 'cover-bottom'
-  | 'cover-bottom-start'
-  | 'cover-bottom-end'
-  | 'cover-left'
-  | 'cover-right'
 
 function triggerValidator(trigger: string) {
   return ['click', 'hover'].includes(trigger)

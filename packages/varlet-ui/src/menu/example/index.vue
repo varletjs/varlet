@@ -117,7 +117,7 @@ watchDarkMode(dark)
   <app-type>{{ pack.disabled }}</app-type>
   <var-space justify="space-between">
     <var-menu disabled>
-      <var-button type="primary">{{ pack.disabled }}</var-button>
+      <var-button type="primary" disabled>{{ pack.disabled }}</var-button>
 
       <template #menu>
         <var-cell>{{ pack.menuOption }}</var-cell>

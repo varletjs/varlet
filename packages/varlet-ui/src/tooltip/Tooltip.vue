@@ -10,9 +10,8 @@
           :class="
             classes(
               n('tooltip'),
-              [defaultStyle, `${n('--tooltip-background-color')} var-elevation--3`],
-              `${n(`--${type}`)}`,
-              `${n(`--margin-${placement}`)}`
+              n(`--${type}`),
+              n(`--margin-${placement}`)[(defaultStyle, `${n('--tooltip-background-color')} ${n('$-elevation--3')}`)]
             )
           "
           v-show="show"
@@ -304,7 +303,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../styles/elevation';
+@import '../styles/common';
 @import './tooltip';
-@import '../styles/elevation.less';
-@import '../styles/common.less';
 </style>

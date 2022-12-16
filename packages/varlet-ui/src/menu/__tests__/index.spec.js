@@ -1,12 +1,13 @@
-import VarMenu from '..'
-import { createApp, h } from 'vue'
+import Menu from '..'
+import VarMenu from '../Menu'
+import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay, mockStubs, trigger } from '../../utils/jest'
 import { doubleRaf } from '../../utils/elements'
 
 test('test menu plugin', () => {
-  const app = createApp({}).use(VarMenu)
-  expect(app.component(VarMenu.name)).toBeTruthy()
+  const app = createApp({}).use(Menu)
+  expect(app.component(Menu.name)).toBeTruthy()
 })
 
 test('test menu placement', async () => {
