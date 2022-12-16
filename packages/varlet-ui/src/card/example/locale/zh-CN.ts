@@ -2,7 +2,7 @@ export default {
   basicUsage: '基本使用',
   title: '本草纲目',
   showSubtitle: '显示副标题',
-  outline: '轮廓',
+  outline: '外边框',
   subtitle: '我表情悠哉 跳个大概',
   horizontal: '横向显示',
   description:
