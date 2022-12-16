@@ -92,10 +92,54 @@ test('test space default slots', () => {
 
 test('test computeMargin func returns', () => {
   expect(
+    computeMargin('var(--space-size-mini-y)', 'var(--space-size-mini-x)', {
+      direction: 'row',
+      justify: 'center',
+      index: 0,
+      lastIndex: 1,
+    })
+  ).toBe('calc(var(--space-size-mini-y) / 2) var(--space-size-mini-x) calc(var(--space-size-mini-y) / 2) 0')
+
+  expect(
+    computeMargin('var(--space-size-mini-y)', 'var(--space-size-mini-x)', {
+      direction: 'row',
+      justify: 'center',
+      index: 1,
+      lastIndex: 1,
+    })
+  ).toBe('calc(var(--space-size-mini-y) / 2) 0')
+
+  expect(
+    computeMargin('20px', '20px', {
+      direction: 'row',
+      justify: 'center',
+      index: 1,
+      lastIndex: 1,
+    })
+  ).toBe('calc(20px / 2) 0')
+
+  expect(
+    computeMargin('20px', '20px', {
+      direction: 'row',
+      justify: 'center',
+      index: 0,
+      lastIndex: 1,
+    })
+  ).toBe('calc(20px / 2) 20px calc(20px / 2) 0')
+
+  expect(
     computeMargin('20px', '20px', {
       direction: 'column',
       index: 0,
       lastIndex: 1,
     })
   ).toBe('0 0 20px 0')
+
+  expect(
+    computeMargin('20px', '20px', {
+      direction: 'column',
+      index: 1,
+      lastIndex: 1,
+    })
+  ).toBe('0')
 })

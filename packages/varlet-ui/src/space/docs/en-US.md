@@ -93,17 +93,32 @@ so that you can do flex layout more efficiently.
 
 ### Props
 
-|     Prop      |      Description     |     Type   |    Default  |
-| ------------- | ------------ | --------- | --------- |
-|    `align`   |   Vertical arrangement, Can be set to `stretch` `center` `start` `end` `baseline` | _string_  |   `-`|
-|`justify`|Horizontal arrangement, Can be set to `start` `end` `center` `space-around` `space-between`|_string_|`start`|
-|     `size`   |   spacing, Can be set to `mini` `small` `normal` `large` or `[Vertical, Horizontal]`(Support length unit)| _string \|number \| [string \| number, string \| number]_ |`normal`|
-|`wrap`|Whether to exceed the line break|_boolean_|`true`|
-|`direction`|Layout direction, Can be set to `row` `column`|_string_|`row`|
-|`inline`|Is it an inline element|_boolean_|`false`|
+| Prop        | Description                                                                                             | Type      | Default  |
+|-------------|---------------------------------------------------------------------------------------------------------|-----------|----------|
+| `align`     | Vertical arrangement, Can be set to `stretch` `center` `start` `end` `baseline`                         | _string_  | `-`      |
+| `justify`   | Horizontal arrangement, Can be set to `start` `end` `center` `space-around` `space-between`             | _string_  | `start`  |
+| `size`      | spacing, Can be set to `mini` `small` `normal` `large` or `[Vertical, Horizontal]`(Support length unit) | _string \ | number \ | [string \| number, string \| number]_ |`normal`|
+| `wrap`      | Whether to exceed the line break                                                                        | _boolean_ | `true`   |
+| `direction` | Layout direction, Can be set to `row` `column`                                                          | _string_  | `row`    |
+| `inline`    | Is it an inline element                                                                                 | _boolean_ | `false`  |
 
 ### Slots
 
-| Name | Description      | SlotProps |
-| --- |------------------| --- |
-| `default` | Content of space | `-` |
+| Name      | Description      | SlotProps |
+|-----------|------------------|-----------|
+| `default` | Content of space | `-`       |
+
+### Style Variables
+
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+
+| Variable | Default |
+| --- | --- |
+| `--space-size-mini-y`  | `4px`        |
+| `--space-size-mini-x`  | `4px`        |
+| `--space-size-small-y` | `6px`        |
+| `--space-size-small-x` | `6px`        |
+| `--space-size-normal-y` | `8px`        |
+| `--space-size-normal-x` | `12px`       |
+| `--space-size-large-y` | `12px`       |
+| `--space-size-large-x` | `20px`       |
