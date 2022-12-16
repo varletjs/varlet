@@ -14,7 +14,6 @@
 ### Show Subtitle
 
 ```html
-
 <template>
   <var-card
     title="Dangerous"
@@ -27,11 +26,10 @@
 ### Outline
 
 ```html
-
 <template>
   <var-card
     outline
-    elevation="0"
+    :elevation="0"
     title="Dangerous"
     subtitle="The girl was dangerous"
     description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
@@ -42,7 +40,6 @@
 ### Show Image
 
 ```html
-
 <template>
   <var-card title="Dangerous" subtitle="The girl was dangerous" src="https://varlet.gitee.io/varlet-ui/cat.jpg"/>
 </template>
