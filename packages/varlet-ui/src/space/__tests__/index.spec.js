@@ -1,5 +1,6 @@
 import VarSpace from '../Space'
 import Space from '..'
+import { computeMargin } from '../margin'
 import { mount } from '@vue/test-utils'
 import { createApp, Fragment, h } from 'vue'
 
@@ -87,4 +88,14 @@ test('test space default slots', () => {
 
   expect(wrapper.find('.var-space').html()).toContain('This is default slots')
   wrapper.unmount()
+})
+
+test('test computeMargin func returns', () => {
+  expect(
+    computeMargin('20px', '20px', {
+      direction: 'column',
+      index: 0,
+      lastIndex: 1,
+    })
+  ).toBe('0 0 20px 0')
 })
