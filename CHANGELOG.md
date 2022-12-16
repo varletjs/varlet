@@ -1,3 +1,12 @@
+## [2.4.2](https://github.com/varletjs/varlet/compare/v2.4.1...v2.4.2) (2022-12-14)
+
+
+### Bug Fixes
+
+* **ui/input:** fix maxlength invalid with number type and close [#775](https://github.com/varletjs/varlet/issues/775) ([edf4a2e](https://github.com/varletjs/varlet/commit/edf4a2efeb0d75f1f818c0e8b986cb2dcc2ac2be))
+
+
+
 ## [2.4.1](https://github.com/varletjs/varlet/compare/v2.4.0...v2.4.1) (2022-12-11)
 
 

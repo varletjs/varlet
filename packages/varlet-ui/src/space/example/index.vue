@@ -11,7 +11,7 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.baseUse }}</app-type>
-  <var-space :size="['2.666vw', '2.666vw']">
+  <var-space>
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
     <var-button>Button3</var-button>

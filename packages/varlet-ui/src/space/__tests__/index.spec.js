@@ -1,5 +1,6 @@
 import VarSpace from '../Space'
 import Space from '..'
+import { computeMargin } from '../margin'
 import { mount } from '@vue/test-utils'
 import { createApp, Fragment, h } from 'vue'
 
@@ -34,23 +35,6 @@ describe('test space component props', () => {
       expect(wrapper.find('.var-space').attributes('style')).toContain(
         'justify-content: ' + (justify === 'start' || justify === 'end' ? `flex-${justify}` : justify)
       )
-      expect(wrapper.html()).toMatchSnapshot()
-      wrapper.unmount()
-    })
-  })
-
-  test('test space size', () => {
-    ;[
-      { sizeType: 'mini', sizeVal: -2 },
-      { sizeType: 'small', sizeVal: -3 },
-      { sizeType: 'normal', sizeVal: -4 },
-      { sizeType: 'large', sizeVal: -6 },
-    ].forEach((size) => {
-      const wrapper = mount(VarSpace, {
-        props: { size: size.sizeType },
-      })
-
-      expect(wrapper.find('.var-space').attributes('style')).toContain(`margin: ${size.sizeVal}px 0px;`)
       wrapper.unmount()
     })
   })
@@ -104,4 +88,58 @@ test('test space default slots', () => {
 
   expect(wrapper.find('.var-space').html()).toContain('This is default slots')
   wrapper.unmount()
+})
+
+test('test computeMargin func returns', () => {
+  expect(
+    computeMargin('var(--space-size-mini-y)', 'var(--space-size-mini-x)', {
+      direction: 'row',
+      justify: 'center',
+      index: 0,
+      lastIndex: 1,
+    })
+  ).toBe('calc(var(--space-size-mini-y) / 2) var(--space-size-mini-x) calc(var(--space-size-mini-y) / 2) 0')
+
+  expect(
+    computeMargin('var(--space-size-mini-y)', 'var(--space-size-mini-x)', {
+      direction: 'row',
+      justify: 'center',
+      index: 1,
+      lastIndex: 1,
+    })
+  ).toBe('calc(var(--space-size-mini-y) / 2) 0')
+
+  expect(
+    computeMargin('20px', '20px', {
+      direction: 'row',
+      justify: 'center',
+      index: 1,
+      lastIndex: 1,
+    })
+  ).toBe('calc(20px / 2) 0')
+
+  expect(
+    computeMargin('20px', '20px', {
+      direction: 'row',
+      justify: 'center',
+      index: 0,
+      lastIndex: 1,
+    })
+  ).toBe('calc(20px / 2) 20px calc(20px / 2) 0')
+
+  expect(
+    computeMargin('20px', '20px', {
+      direction: 'column',
+      index: 0,
+      lastIndex: 1,
+    })
+  ).toBe('0 0 20px 0')
+
+  expect(
+    computeMargin('20px', '20px', {
+      direction: 'column',
+      index: 1,
+      lastIndex: 1,
+    })
+  ).toBe('0')
 })
