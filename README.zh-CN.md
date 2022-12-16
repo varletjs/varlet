@@ -80,13 +80,17 @@ import '@varlet/ui/es/style.js'
 createApp(App).use(Varlet).mount('#app')
 ```
 
+### 游乐场
+
+在 [Varlet UI Playground](https://varlet.gitee.io/varlet-ui-playground) 对组件进行在线编辑。
+
 ### 贡献
 
 请参考 [Contributing Guide](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md)。
 
 ### 在 Cloud IDE 中进行在线开发和调试
 
-[https://idegithub.com/varletjs/varlet](https://idegithub.com/varletjs/varlet)
+在 [Cloud IDE](https://idegithub.com/varletjs/varlet) 对源码进行在线调试。
 
 
 ### 反馈和交流
