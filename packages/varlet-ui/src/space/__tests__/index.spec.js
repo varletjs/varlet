@@ -112,20 +112,38 @@ test('test computeMargin func returns', () => {
   expect(
     computeMargin('20px', '20px', {
       direction: 'row',
-      justify: 'center',
-      index: 1,
+      justify: 'space-around',
+      index: 0,
       lastIndex: 1,
     })
-  ).toBe('calc(20px / 2) 0')
+  ).toBe('calc(20px / 2) calc(20px / 2)')
 
   expect(
     computeMargin('20px', '20px', {
       direction: 'row',
-      justify: 'center',
+      justify: 'space-between',
       index: 0,
-      lastIndex: 1,
+      lastIndex: 2,
     })
-  ).toBe('calc(20px / 2) 20px calc(20px / 2) 0')
+  ).toBe('calc(20px / 2) calc(20px / 2) calc(20px / 2) 0')
+
+  expect(
+    computeMargin('20px', '20px', {
+      direction: 'row',
+      justify: 'space-between',
+      index: 2,
+      lastIndex: 2,
+    })
+  ).toBe('calc(20px / 2) 0 calc(20px / 2) calc(20px / 2)')
+
+  expect(
+    computeMargin('20px', '20px', {
+      direction: 'row',
+      justify: 'space-between',
+      index: 1,
+      lastIndex: 2,
+    })
+  ).toBe('calc(20px / 2) calc(20px / 2)')
 
   expect(
     computeMargin('20px', '20px', {
