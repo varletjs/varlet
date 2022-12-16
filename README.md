@@ -83,7 +83,7 @@ createApp(App).use(Varlet).mount('#app')
 
 ### Playground
 
-See [Varlet UI Playground](https://varlet.gitee.io/varlet-ui-playground)
+See [Varlet UI Playground](https://varlet.gitee.io/varlet-ui-playground).
 
 ### Contribution
 
