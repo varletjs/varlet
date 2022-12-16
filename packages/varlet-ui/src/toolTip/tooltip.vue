@@ -11,7 +11,8 @@
             classes(
               n('tooltip'),
               [defaultStyle, `${n('--tooltip-background-color')} var-elevation--3`],
-              `${n(`--${type}`)}`
+              `${n(`--${type}`)}`,
+              `${n(`--margin-${placement}`)}`
             )
           "
           v-show="show"
@@ -150,62 +151,6 @@ export default defineComponent({
       }
 
       switch (props.placement) {
-        case 'cover-top':
-          return {
-            placement: 'bottom',
-            skidding: offset.x,
-            distance: offset.y - hostSize.height,
-          }
-
-        case 'cover-top-start':
-          return {
-            placement: 'bottom-start',
-            skidding: offset.x,
-            distance: offset.y - hostSize.height,
-          }
-
-        case 'cover-top-end':
-          return {
-            placement: 'bottom-end',
-            skidding: offset.x,
-            distance: offset.y - hostSize.height,
-          }
-
-        case 'cover-bottom':
-          return {
-            placement: 'top',
-            skidding: offset.x,
-            distance: -offset.y - hostSize.height,
-          }
-
-        case 'cover-bottom-start':
-          return {
-            placement: 'top-start',
-            skidding: offset.x,
-            distance: -offset.y - hostSize.height,
-          }
-
-        case 'cover-bottom-end':
-          return {
-            placement: 'top-end',
-            skidding: offset.x,
-            distance: -offset.y - hostSize.height,
-          }
-
-        case 'cover-left':
-          return {
-            placement: 'right',
-            skidding: offset.y,
-            distance: offset.x - hostSize.width,
-          }
-
-        case 'cover-right':
-          return {
-            placement: 'left',
-            skidding: offset.y,
-            distance: -offset.x - hostSize.width,
-          }
-
         case 'left':
         case 'left-start':
         case 'left-end':

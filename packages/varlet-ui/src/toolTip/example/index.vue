@@ -13,7 +13,7 @@ import { pack, use } from './locale/index'
 
 const show = ref(false)
 const trigger = ref('click')
-const placementValue = ref('cover-top-start')
+const placementValue = ref('top')
 const placementOptions = ref([
   'top',
   'top-start',
@@ -27,14 +27,6 @@ const placementOptions = ref([
   'left',
   'left-start',
   'left-end',
-  'cover-top',
-  'cover-top-start',
-  'cover-top-end',
-  'cover-bottom',
-  'cover-bottom-start',
-  'cover-bottom-end',
-  'cover-left',
-  'cover-right',
 ])
 
 const closeTootipVarTooltip = () => {

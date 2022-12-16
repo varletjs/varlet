@@ -17,7 +17,6 @@
 
 .var-tooltip {
   display: inline-block;
-
   &--tooltip-background-color {
     transition: opacity 0.25s, background-color 0.25s;
     border-radius: 4px;
@@ -58,5 +57,29 @@
   &--danger {
     color: #fff;
     background-color: var(--button-danger-color);
+  }
+
+  &--margin-top,
+  &--margin-top-start,
+  &--margin-top-end {
+    margin-bottom: 10px !important;
+  }
+
+  &--margin-bottom,
+  &--margin-bottom-start,
+  &--margin-bottom-end {
+    margin-top: 10px !important;
+  }
+
+  &--margin-right,
+  &--margin-right-start,
+  &--margin-right-end {
+    margin-left: 10px !important;
+  }
+
+  &--margin-left,
+  &--margin-left-start,
+  &--margin-left-end {
+    margin-right: 10px !important;
   }
 }
