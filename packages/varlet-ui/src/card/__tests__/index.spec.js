@@ -75,6 +75,17 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
+  test('test card outline', () => {
+    const wrapper = mount(VarCard, {
+      props: {
+        outline: true,
+      },
+    })
+
+    expect(wrapper.find('.var-card--outline').exists()).toBe(true)
+    wrapper.unmount()
+  })
+
   test('test card src', () => {
     const wrapper = mount(VarCard, {
       props: {
