@@ -32,7 +32,7 @@
 <script setup>
 import { ref } from 'vue'
 
-const placement = ref('cover-top-start')
+const placement = ref('top')
 const placementOptions = [
   'top',
   'top-start',
@@ -46,14 +46,6 @@ const placementOptions = [
   'left',
   'left-start',
   'left-end',
-  'cover-top',
-  'cover-top-start',
-  'cover-top-end',
-  'cover-bottom',
-  'cover-bottom-start',
-  'cover-bottom-end',
-  'cover-left',
-  'cover-right',
 ]
 </script>
 
@@ -212,7 +204,7 @@ const closeTooltip = () => { show.value = false }
 | `content` | 显示的内容，也可被  `slot#tooltip` 覆盖 | _string_              ||
 | `color` | 背景颜色 | _string_              | |
 | `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
-| `placement` | Tooltip弹出位置 | _Placement_           | `cover-top-start` |
+| `placement` | Tooltip弹出位置 | _Placement_           | `top` |
 | `offset-x` | x 轴偏移量， 相对于Tooltip对齐后的位置 | _number \| string_ | `0` |
 | `offset-y` | y 轴偏移量， 相对于Tooltip对齐后的位置 | _number \| string_ | `0` |
 | `teleport` | Tooltip挂载的位置 | _TeleportProps['to']_ | `body` |
@@ -236,14 +228,6 @@ const closeTooltip = () => { show.value = false }
 | `left` | 左侧中心位置 |
 | `left-start` | 左侧上方位置 |
 | `left-end` | 左侧下方位置 |
-| `cover-top` | 顶部中心位置, 覆盖触发器 |
-| `cover-top-start` | 顶部左侧位置, 覆盖触发器 |
-| `cover-top-end` | 顶部右侧位置, 覆盖触发器 |
-| `cover-bottom` | 底部中心位置, 覆盖触发器 |
-| `cover-bottom-start` | 底部左侧位置, 覆盖触发器 |
-| `cover-bottom-end` | 底部右侧位置, 覆盖触发器 |
-| `cover-left` | 左侧位置, 覆盖触发器 |
-| `cover-right` | 右侧位置, 覆盖触发器 |
 
 ### 方法
 | 方法名 | 说明 | 参数 | 返回值 |

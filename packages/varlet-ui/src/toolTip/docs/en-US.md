@@ -33,7 +33,7 @@ and changes the display position of the tooltip by controlling the placement and
 <script setup>
 import { ref } from 'vue'
 
-const placement = ref('cover-top-start')
+const placement = ref('top')
 const placementOptions = [
   'top',
   'top-start',
@@ -47,14 +47,6 @@ const placementOptions = [
   'left',
   'left-start',
   'left-end',
-  'cover-top',
-  'cover-top-start',
-  'cover-top-end',
-  'cover-bottom',
-  'cover-bottom-start',
-  'cover-bottom-end',
-  'cover-left',
-  'cover-right',
 ]
 </script>
 
@@ -213,7 +205,7 @@ const closeTooltip = () => { show.value = false }
 | `content` | display content, can be overridden by `slot#tooltip` | _string_              | `-` |
 | `color`          | Tooltip background color                                                            | _string_  | `-`            |
 | `type`           | Tooltip type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
-| `placement` | tooltip popup placement                                        | _Placement_          | `cover-top-start` |
+| `placement` | tooltip popup placement                                        | _Placement_          | `top` |
 | `offset-x` | The x-axis offset, relative to the tooltip-aligned position    | _number \| string_ | `0` |
 | `offset-y` | The y-axis offset, relative to the tooltip-aligned position    | _number \| string_ | `0` |
 | `teleport` | The location of the tooltip mount                                                     | _TeleportProps['to']_ | `body` |
@@ -237,14 +229,6 @@ const closeTooltip = () => { show.value = false }
 | `left` | left center position                    |
 | `left-start` | top left position                       |
 | `left-end` | bottom left position                    |
-| `cover-top` | top center position, overlay trigger    |
-| `cover-top-start` | top left position, overlay trigger      |
-| `cover-top-end` | top right position, overlay trigger     |
-| `cover-bottom` | bottom center position, overlay trigger |
-| `cover-bottom-start` | bottom left position, overlay trigger   |
-| `cover-bottom-end` | bottom right position, overlay trigger  |
-| `cover-left` | left center position, overlay trigger   |
-| `cover-right` | right center position, overlay trigger |
 
 ### Methods
 | Method   | Description                     | Arguments | Return |
