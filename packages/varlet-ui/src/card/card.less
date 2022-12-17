@@ -1,6 +1,7 @@
 :root {
   --card-padding: 0 0 15px 0;
   --card-background: #fff;
+  --card-outline-color: rgba(0, 0, 0, 0.12);
   --card-border-radius: 4px;
   --card-image-width: 100%;
   --card-row-image-width: 140px;
@@ -38,6 +39,10 @@
   border-radius: var(--card-border-radius);
   overflow: hidden;
   width: 100%;
+
+  &--outline {
+    border: thin solid var(--card-outline-color);
+  }
 
   &__floater {
     display: flex;

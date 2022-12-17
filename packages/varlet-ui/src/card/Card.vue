@@ -1,7 +1,14 @@
 <template>
   <div
     ref="card"
-    :class="classes(n(), [isRow, n('--layout-row')], [elevation, n(`$-elevation--${elevation}`), n('$-elevation--1')])"
+    :class="
+      classes(
+        n(),
+        [isRow, n('--layout-row')],
+        [outline, n('--outline')],
+        [elevation, n(`$-elevation--${elevation}`), n('$-elevation--1')]
+      )
+    "
     :style="{
       zIndex: floated ? zIndex : undefined,
     }"

@@ -23,11 +23,25 @@
 </template>
 ```
 
+### Outline
+
+```html
+<template>
+  <var-card
+    outline
+    :elevation="0"
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
+  />
+</template>
+```
+
 ### Show Image
 
 ```html
 <template>
-  <var-card title="Dangerous" subtitle="The girl was dangerous" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+  <var-card title="Dangerous" subtitle="The girl was dangerous" src="https://varlet.gitee.io/varlet-ui/cat.jpg"/>
 </template>
 ```
 
@@ -132,21 +146,22 @@ const floating = ref(false)
 
 ### Props
 
-| Prop               | Description                                                     | Type               | Default |
-|--------------------|-----------------------------------------------------------------| ------------------ | ------- |
-| `title`            | The title of Card                                               | _string_           | `-`     |
-| `subtitle`         | The subtitle of Card                                            | _string_           | `-`     |
-| `description`      | The description of Card                                         | _string_           | `-`     |
-| `elevation`        | The shadow level of Card                                        | _string \| number_ | `2`     |
-| `src`              | The src of Image                                                | _string_           | `-`     |
-| `layout`           | Arrangement mode, options `row` `column`                        | _string_           | `column` |
-| `fit`              | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_           | `cover` |
-| `alt`              | Alt text                                                        | _string_           | `-`     |
-| `image-height`       | height of Image                                                 | _string \| number_ | `-`     |
-| `image-width`        | width of Image                                                  | _string \| number_ | `-`     |
-| `ripple`           | Whether to enable ripple                                        | _boolean_          | `false` |
-| `floating`         | Whether to full screen                                          |_boolean_          | `false`  |
-| `floating-duration` | Time to full screen(ms)                                         |_number_          | `250`    |
+| Prop                | Description                                                     | Type      | Default  |
+|---------------------|-----------------------------------------------------------------|-----------|----------|
+| `title`             | The title of Card                                               | _string_  | `-`      |
+| `subtitle`          | The subtitle of Card                                            | _string_  | `-`      |
+| `description`       | The description of Card                                         | _string_  | `-`      |
+| `elevation`         | The shadow level of Card                                        | _string \ | number_  | `2`     |
+| `src`               | The src of Image                                                | _string_  | `-`      |
+| `layout`            | Arrangement mode, options `row` `column`                        | _string_  | `column` |
+| `fit`               | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_  | `cover`  |
+| `outline`           | Whether to be outline card                                      | _boolean_ | `false`  |
+| `alt`               | Alt text                                                        | _string_  | `-`      |
+| `image-height`      | height of Image                                                 | _string \ | number_  | `-`     |
+| `image-width`       | width of Image                                                  | _string \ | number_  | `-`     |
+| `ripple`            | Whether to enable ripple                                        | _boolean_ | `false`  |
+| `floating`          | Whether to full screen                                          | _boolean_ | `false`  |
+| `floating-duration` | Time to full screen(ms)                                         | _number_  | `250`    |
 
 ### Slots
 
@@ -170,38 +185,39 @@ const floating = ref(false)
 
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
-| Variable                            | Default              |
-|-------------------------------------|----------------------|
-| `--card-background`                 | `#fff`               |
-| `--card-padding`                    | `0px 0 15px 0`       |
-| `--card-border-radius`              | `4px`                |
-| `--card-image-width`                | `100%`               |
-| `--card-row-image-width`            | `140px`              |
-| `--card-image-height`               | `200px`              |
-| `--card-row-image-height`           | `140px`              |
-| `--card-title-color`                | `#333`               |
-| `--card-title-font-size`            | `20px`               |
-| `--card-title-padding`              | `0 12px`             |
-| `--card-title-margin`               | `15px 0 0 0`         |
-| `--card-title-row-margin`           | `12px 0`             |
-| `--card-subtitle-color`             | `rgba(0, 0, 0, 0.6)` |
-| `--card-subtitle-font-size`         | `14px`               |
-| `--card-subtitle-padding`           | `0 13px`             |
-| `--card-subtitle-margin`            | `10px 0 0 0`         |
-| `--card-subtitle-row-margin`        | `-8px 0 0 0`         |
-| `--card-description-color`          | `rgba(0, 0, 0, 0.6)` |
-| `--card-description-font-size`      | `14px`               |
-| `--card-description-margin`         | `20px 0 0 0`         |
-| `--card-description-padding`        | `0 13px`             |
-| `--card-footer-padding`             | `0 12px`             |
-| `--card-footer-margin`              | `30px 0 0px 0`       |
-| `--card-footer-right`               | `13px`               |
-| `--card-footer-bottom`              | `9px`                |
-| `--card-line-height`                | `22px`               |
-| `--card-row-line-height`            | `1.5`                |
-| `--card-floating-buttons-bottom`    | `16px`               |
-| `--card-floating-buttons-right`     | `16px`               |
-| `--card-floating-buttons-color`     | `#fff`               |
-| `--card-close-button-icon-size`     | `24px`               |
-| `--card-close-button-size`          | `56px`               |
-| `--card-close-button-primary-color` | `#212121`            |
+| Variable                            | Default               |
+|-------------------------------------|-----------------------|
+| `--card-background`                 | `#fff`                |
+| `--card-padding`                    | `0px 0 15px 0`        |
+| `--card-border-radius`              | `4px`                 |
+| `--card-outline-color`              | `rgba(0, 0, 0, 0.12)` |
+| `--card-image-width`                | `100%`                |
+| `--card-row-image-width`            | `140px`               |
+| `--card-image-height`               | `200px`               |
+| `--card-row-image-height`           | `140px`               |
+| `--card-title-color`                | `#333`                |
+| `--card-title-font-size`            | `20px`                |
+| `--card-title-padding`              | `0 12px`              |
+| `--card-title-margin`               | `15px 0 0 0`          |
+| `--card-title-row-margin`           | `12px 0`              |
+| `--card-subtitle-color`             | `rgba(0, 0, 0, 0.6)`  |
+| `--card-subtitle-font-size`         | `14px`                |
+| `--card-subtitle-padding`           | `0 13px`              |
+| `--card-subtitle-margin`            | `10px 0 0 0`          |
+| `--card-subtitle-row-margin`        | `-8px 0 0 0`          |
+| `--card-description-color`          | `rgba(0, 0, 0, 0.6)`  |
+| `--card-description-font-size`      | `14px`                |
+| `--card-description-margin`         | `20px 0 0 0`          |
+| `--card-description-padding`        | `0 13px`              |
+| `--card-footer-padding`             | `0 12px`              |
+| `--card-footer-margin`              | `30px 0 0px 0`        |
+| `--card-footer-right`               | `13px`                |
+| `--card-footer-bottom`              | `9px`                 |
+| `--card-line-height`                | `22px`                |
+| `--card-row-line-height`            | `1.5`                 |
+| `--card-floating-buttons-bottom`    | `16px`                |
+| `--card-floating-buttons-right`     | `16px`                |
+| `--card-floating-buttons-color`     | `#fff`                |
+| `--card-close-button-icon-size`     | `24px`                |
+| `--card-close-button-size`          | `56px`                |
+| `--card-close-button-primary-color` | `#212121`             |

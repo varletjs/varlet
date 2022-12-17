@@ -1,6 +1,10 @@
 import type { PropType } from 'vue'
-import type { Placement } from './usePopover'
+import type { Placement as PopperPlacement } from '@popperjs/core'
 import { TeleportProps } from 'vue'
+
+export type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
+
+export type Placement = NeededPopperPlacement
 
 function triggerValidator(trigger: string) {
   return ['click', 'hover'].includes(trigger)
@@ -20,18 +24,26 @@ function placementValidator(alignment: string) {
     'left',
     'left-start',
     'left-end',
-    'cover-top',
-    'cover-top-start',
-    'cover-top-end',
-    'cover-bottom',
-    'cover-bottom-start',
-    'cover-bottom-end',
-    'cover-left',
-    'cover-right',
   ].includes(alignment)
 }
 
+function typeValidator(type: string): boolean {
+  return ['default', 'primary', 'info', 'success', 'warning', 'danger'].includes(type)
+}
+
 export const props = {
+  type: {
+    type: String as PropType<'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'>,
+    default: 'default',
+    validator: typeValidator,
+  },
+  color: {
+    type: String,
+  },
+  content: {
+    type: String,
+    default: 'Tooltip',
+  },
   show: {
     type: Boolean,
     default: false,
@@ -42,12 +54,12 @@ export const props = {
   },
   trigger: {
     type: String as PropType<'click' | 'hover'>,
-    default: 'click',
+    default: 'hover',
     validator: triggerValidator,
   },
   placement: {
     type: String as PropType<Placement>,
-    default: 'cover-top-start',
+    default: 'bottom',
     validator: placementValidator,
   },
   offsetX: {

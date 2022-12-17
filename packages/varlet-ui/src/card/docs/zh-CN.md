@@ -23,6 +23,20 @@
 </template>
 ```
 
+### 外边框
+
+```html
+<template>
+  <var-card
+    outline
+    :elevation="0"
+    title="本草纲目"
+    subtitle="我表情悠哉 跳个大概"
+    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
+  />
+</template>
+```
+
 ### 显示图片
 
 ```html
@@ -45,7 +59,7 @@
     subtitle="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     layout="row"
-  \>
+  >
     <template #extra>
       <var-button text round>
         <var-icon name="star" />
@@ -137,21 +151,22 @@ const floating = ref(false)
 
 ### 属性
 
-| 参数                 | 说明                                                     | 类型               | 默认值      |
-|--------------------|--------------------------------------------------------| ------------------ |----------|
-| `title`            | 卡片标题                                                   | _string_           | `-`      |
-| `subtitle`         | 卡片副标题                                                  | _string_           | `-`      |
-| `description`      | 卡片描述                                                   | _string_           | `-`      |
-| `elevation`        | 卡片阴影程度等级                                               | _string \| number_  | `2`     |
-| `src`              | 图片地址                                                   | _string_           | `-`      |
-| `layout`           | 排列方式，可选值为 `row` `column`                               | _string_           | `column` |
-| `fit`              | 填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_           | `cover`  |
-| `alt`              | 替代文本                                                   | _string_           | `-`      |
-| `image-height`     | 图片高度                                                   | _string \| number_  | `-`     |
-| `image-width`        | 图片宽度                                                   | _string \| number_  | `-`     |
-| `ripple`           | 是否开启水波                                                 | _boolean_          | `false`  |
-| `floating`         | 是否开启全屏                                                 |_boolean_          | `false`  |
-| `floating-duration` | 开关全屏所需时间（ms）                                           |_number_          | `250`    |
+| 参数                  | 说明                                                     | 类型        | 默认值      |
+|---------------------|--------------------------------------------------------|-----------|----------|
+| `title`             | 卡片标题                                                   | _string_  | `-`      |
+| `subtitle`          | 卡片副标题                                                  | _string_  | `-`      |
+| `description`       | 卡片描述                                                   | _string_  | `-`      |
+| `elevation`         | 卡片阴影程度等级                                               | _string \ | number_  | `2`     |
+| `src`               | 图片地址                                                   | _string_  | `-`      |
+| `layout`            | 排列方式，可选值为 `row` `column`                               | _string_  | `column` |
+| `fit`               | 填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_  | `cover`  |
+| `outline`           | 是否使用外边框                                                | _boolean_ | `false`  |
+| `alt`               | 替代文本                                                   | _string_  | `-`      |
+| `image-height`      | 图片高度                                                   | _string \ | number_  | `-`     |
+| `image-width`       | 图片宽度                                                   | _string \ | number_  | `-`     |
+| `ripple`            | 是否开启水波                                                 | _boolean_ | `false`  |
+| `floating`          | 是否开启全屏                                                 | _boolean_ | `false`  |
+| `floating-duration` | 开关全屏所需时间（ms）                                           | _number_  | `250`    |
 
 
 ### 插槽
@@ -177,11 +192,12 @@ const floating = ref(false)
 
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
-| 变量名                                   | 默认值                  |
-|---------------------------------------|----------------------|
+| 变量名                                 | 默认值                  |
+|-------------------------------------|----------------------|
 | `--card-background`                 | `#fff`               |
 | `--card-padding`                    | `0px 0 15px 0`       |
 | `--card-border-radius`              | `4px`                |
+| `--card-outline-color`              | `rgba(0, 0, 0, 0.12)` |
 | `--card-image-width`                | `100%`               |
 | `--card-row-image-width`            | `140px`              |
 | `--card-image-height`               | `200px`              |

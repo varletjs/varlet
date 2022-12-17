@@ -19,6 +19,10 @@ export const props = {
   imageWidth: {
     type: [String, Number],
   },
+  outline: {
+    type: Boolean,
+    default: false,
+  },
   layout: {
     type: String as PropType<'row' | 'column'>,
     default: 'column',
