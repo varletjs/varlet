@@ -12,15 +12,15 @@
 <template>
   <var-space direction="column" size="large">
     <var-breadcrumb>
-      <var-breadcrumb-item>一级</var-breadcrumb-item>
-      <var-breadcrumb-item>二级</var-breadcrumb-item>
-      <var-breadcrumb-item>三级</var-breadcrumb-item>
+      <var-breadcrumbs>一级</var-breadcrumbs>
+      <var-breadcrumbs>二级</var-breadcrumbs>
+      <var-breadcrumbs>三级</var-breadcrumbs>
     </var-breadcrumb>
 
     <var-breadcrumb separator="\">
-      <var-breadcrumb-item>一级</var-breadcrumb-item>
-      <var-breadcrumb-item>二级</var-breadcrumb-item>
-      <var-breadcrumb-item>三级</var-breadcrumb-item>
+      <var-breadcrumbs>一级</var-breadcrumbs>
+      <var-breadcrumbs>二级</var-breadcrumbs>
+      <var-breadcrumbs>三级</var-breadcrumbs>
     </var-breadcrumb>
   </var-space>
 </template>
@@ -33,9 +33,9 @@
 ```html
 <template>
   <var-breadcrumb separator="\">
-    <var-breadcrumb-item>一级</var-breadcrumb-item>
-    <var-breadcrumb-item separator="~">二级</var-breadcrumb-item>
-    <var-breadcrumb-item>三级</var-breadcrumb-item>
+    <var-breadcrumbs>一级</var-breadcrumbs>
+    <var-breadcrumbs separator="~">二级</var-breadcrumbs>
+    <var-breadcrumbs>三级</var-breadcrumbs>
 </template>
 ```
 
@@ -45,24 +45,24 @@
 
 ```html
 <var-breadcrumb>
-  <var-breadcrumb-item>
+  <var-breadcrumbs>
     <template #separator>
       <var-icon name="chevron-right" />
     </template>
     一级
-  </var-breadcrumb-item>
-  <var-breadcrumb-item>
+  </var-breadcrumbs>
+  <var-breadcrumbs>
     <template #separator>
       <var-icon name="chevron-right" />
     </template>
     二级
-  </var-breadcrumb-item>
-  <var-breadcrumb-item>
+  </var-breadcrumbs>
+  <var-breadcrumbs>
     <template #separator>
       <var-icon name="chevron-right" />
     </template>
     三级
-  </var-breadcrumb-item>
+  </var-breadcrumbs>
 </var-breadcrumb>
 ```
 
@@ -76,7 +76,7 @@
 | ----------- | ------ | -------- | ------ |
 | `separator` | 分隔符 | _string_ | `/`    |
 
-#### BreadcrumbItem Props
+#### breadcrumbs Props
 
 | 参数        | 说明   | 类型     | 默认值 |
 | ----------- | ------ | -------- | ------ |
@@ -90,7 +90,7 @@
 | --------- | ---------- | ---- |
 | `default` | 面包屑内容 | `-`  |
 
-#### BreadcrumbItem Slots
+#### breadcrumbs Slots
 
 | 参数      | 说明                     | 参数 |
 | --------- | ------------------------ | ---- |
@@ -101,12 +101,12 @@
 
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
 
-#### BreadcrumbItem Variables
+#### breadcrumbs Variables
 
 | 变量名                                   | 默认值                 |
 | ---------------------------------------- | ---------------------- |
-| `--breadcrumb-item-active-color`         | `var(--color-primary)` |
-| `--breadcrumb-item-active-hover-color`   | `#233dd2`              |
-| `--breadcrumb-item-text-color`           | `#888`                 |
-| `--breadcrumb-item-separator-margin`     | `0 6px`                |
-| `---breadcrumb-item-separator-font-size` | `14px`                 |
+| `--breadcrumbs-active-color`         | `var(--color-primary)` |
+| `--breadcrumbs-active-hover-color`   | `#233dd2`              |
+| `--breadcrumbs-text-color`           | `#888`                 |
+| `--breadcrumbs-separator-margin`     | `0 6px`                |
+| `---breadcrumbs-separator-font-size` | `14px`                 |

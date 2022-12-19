@@ -1,6 +1,6 @@
 import type { ComputedRef } from 'vue'
 import { useAtChildrenCounter, useChildren } from '../utils/components'
-import type { BreadcrumbItemProvider } from '../breadcrumb-item/provide'
+import type { BreadcrumbsProvider } from '../breadcrumbs/provide'
 
 export interface BreadcrumbProvider {
   length: ComputedRef<number>
@@ -11,7 +11,7 @@ export const BREADCRUMB_BIND_BREADCRUMB_ITEM_KEY = Symbol('BREADCRUMB_BIND_BREAD
 export const BREADCRUMB_COUNT_BREADCRUMB_ITEM_KEY = Symbol('BREADCRUMB_COUNT_BREADCRUMB_ITEM_KEY')
 
 export function useBreadcrumbList() {
-  const { childProviders, bindChildren } = useChildren<BreadcrumbProvider, BreadcrumbItemProvider>(
+  const { childProviders, bindChildren } = useChildren<BreadcrumbProvider, BreadcrumbsProvider>(
     BREADCRUMB_BIND_BREADCRUMB_ITEM_KEY
   )
   const { length } = useAtChildrenCounter(BREADCRUMB_COUNT_BREADCRUMB_ITEM_KEY)

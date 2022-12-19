@@ -2,37 +2,36 @@
   <div :class="classes(n())">
     <div :class="classes(n('content'), !isLast ? n('--active') : null)">
       <slot />
-      <template v-if="!isLast">
-        <slot name="separator" />
-        <div v-if="!isSlot" :class="classes(n('separator'))">
+      <slot v-if="!isLast" name="separator">
+        <div :class="classes(n('separator'))">
           {{ separator ?? parentSeparator }}
         </div>
-      </template>
+      </slot>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent , computed } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { props } from './props'
-import { useBreadcrumbItem } from './provide'
+import { useBreadcrumbs } from './provide'
 import { createNamespace } from '../utils/components'
-import type { BreadcrumbItemProvider } from './provide'
+import type { BreadcrumbsProvider } from './provide'
 
-const { n, classes } = createNamespace('breadcrumb-item')
+const { n, classes } = createNamespace('breadcrumbs')
 
 export default defineComponent({
-  name: 'VarBreadcrumbItem',
+  name: 'VarBreadcrumbs',
   props,
   setup(_, { slots }) {
-    const { index, breadcrumb, bindBreadcrumb } = useBreadcrumbItem()
+    const { index, breadcrumb, bindBreadcrumb } = useBreadcrumbs()
     const isLast = computed(() => index.value === breadcrumb.length.value - 1)
     const isSlot = computed(() => slots.separator)
     const parentSeparator = computed(() => breadcrumb.separator.value)
 
-    const breadcrumbItemProvider: BreadcrumbItemProvider = {}
+    const breadcrumbsProvider: BreadcrumbsProvider = {}
 
-    bindBreadcrumb(breadcrumbItemProvider)
+    bindBreadcrumb(breadcrumbsProvider)
 
     return {
       n,
@@ -47,5 +46,5 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
-@import './BreadcrumbItem';
+@import './breadcrumbs';
 </style>

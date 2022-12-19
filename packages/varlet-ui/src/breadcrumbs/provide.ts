@@ -5,16 +5,16 @@ import {
   BreadcrumbProvider,
 } from '../breadcrumb/provide'
 
-export interface BreadcrumbItemProvider {}
+export interface BreadcrumbsProvider {}
 
-export function useBreadcrumbItem() {
-  const { parentProvider, bindParent } = useParent<BreadcrumbProvider, BreadcrumbItemProvider>(
+export function useBreadcrumbs() {
+  const { parentProvider, bindParent } = useParent<BreadcrumbProvider, BreadcrumbsProvider>(
     BREADCRUMB_BIND_BREADCRUMB_ITEM_KEY
   )
   const { index } = useAtParentIndex(BREADCRUMB_COUNT_BREADCRUMB_ITEM_KEY)
 
   if (!parentProvider || !bindParent || !index) {
-    throw Error('<var-breadcrumb-item/> must in <var-breadcrumb/>')
+    throw Error('<var-breadcrumbs/> must in <var-breadcrumb/>')
   }
 
   return {
