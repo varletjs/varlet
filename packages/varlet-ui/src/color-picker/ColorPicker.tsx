@@ -79,6 +79,7 @@ export default defineComponent({
     //   formItemText.value = type
     // }
     // 监听用户输入
+    const currentMode = ref('rgba')
     function updateColor(hsva) {
       // emit('update:modelValue', hsva)
       updateModelValueColor(hsva)
@@ -89,6 +90,7 @@ export default defineComponent({
     watch(
       modelValue,
       (newValue) => {
+        console.log(parseColor(newValue, initialColor.value))
         updateModelValueColor(parseColor(newValue, initialColor.value))
       },
       { immediate: true }
@@ -107,6 +109,7 @@ export default defineComponent({
                 onChangeTextModeType={changeTextModeType}
               ></color-panel>
             </div> */}
+            {initialColor.value?.hue}
             {props.canvasLayout && <VarColorPickerCanvas color={initialColor.value} onUpdate:color={updateColor} />}
             {(props.sliderLayout || props.inputLayout) && (
               <div class={classes(n('control'))}>
@@ -122,19 +125,19 @@ export default defineComponent({
                     </div>
                   </div>
                 )}
-                {props.inputLayout && (
+                {/* {props.inputLayout && (
                   <VarColorPickerEdit
                     color={initialColor.value}
                     onUpdate:color={updateColor}
                     disabled={disabled.value}
                     modes={modes.value}
-                    mode={mode.value}
-                    onUpdate:mode={(m) => (mode.value = m)}
+                    mode={currentMode.value}
+                    onUpdate:mode={(m) => (currentMode.value = m)}
                   />
-                )}
+                )} */}
               </div>
             )}
-            {props.swatchesLayout && <VarColorPickerSwatches color={initialColor.value} onUpdate:color={updateColor} />}
+            {/* {props.swatchesLayout && <VarColorPickerSwatches color={initialColor.value} onUpdate:color={updateColor} />} */}
           </div>
         </>
       )

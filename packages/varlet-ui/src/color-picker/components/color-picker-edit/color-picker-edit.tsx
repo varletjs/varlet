@@ -3,12 +3,13 @@ import { colorPickerEditProps, ColorPickerEditProps } from './color-picker-edit-
 import { createNamespace } from '../../../utils/components'
 import { modes as defaultModes } from '../../utils/color-utils'
 import './color-picker-edit.less'
+import VarButton from '../../../button/index'
 
 const { n, classes } = createNamespace('color-picker-edit')
 export default defineComponent({
   name: 'VarColorPickerEdit',
   props: colorPickerEditProps,
-  emit: ['update:color'],
+  emit: ['update:color', 'update:mode'],
   setup(props: ColorPickerEditProps, { emit }) {
     const { color, mode, alpha, modes } = toRefs(props)
     const enabledModes = computed(() => {
@@ -17,7 +18,7 @@ export default defineComponent({
 
     const inputs = computed(() => {
       const mode = enabledModes.value.find((m) => m.name === props.mode)
-      console.log(mode)
+      // console.log(mode)
       if (!mode) return []
 
       const convertColor = color.value ? mode.to(color.value) : {}
@@ -38,7 +39,7 @@ export default defineComponent({
         }
       })
     })
-    console.log(inputs.value)
+    // console.log(inputs.value)
 
     return () => {
       return (
@@ -46,6 +47,22 @@ export default defineComponent({
           {inputs.value?.map((props) => (
             <VColorPickerInput {...props} />
           ))}
+          {enabledModes.value.length > 1 && (
+            <VarButton
+              text
+              round
+              onClick={() => {
+                // console.log(enabledModes)
+                // console.log(props.mode);
+                const mi = enabledModes.value.findIndex((m) => m.name === props.mode)
+                // console.log(mi)
+
+                emit('update:mode', enabledModes.value[(mi + 1) % enabledModes.value.length].name)
+              }}
+            >
+              <var-icon name="checkbox-marked-circle" color="#fff" />
+            </VarButton>
+          )}
         </div>
       )
     }

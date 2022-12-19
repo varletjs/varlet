@@ -6,7 +6,7 @@ import { color } from '../utils/color'
 import { ref } from 'vue'
 
 watchLang(use)
-console.log(Math.random() * 10)
+// console.log(Math.random() * 10)
 function Rand() {
   const min = 0
   const max = 43
@@ -22,5 +22,6 @@ function changeColor() {
   <var-button type="primary" @click="changeColor">切换按钮</var-button>
   <app-type>我是color picker</app-type>
   {{ colorDemo }}
-  <var-color-picker v-model="colorDemo" />
+  <!-- <var-color-picker v-model="colorDemo" /> -->
+  <var-color-picker />
 </template>

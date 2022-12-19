@@ -40,7 +40,8 @@ export default defineComponent({
           canvasElement.value.height = props.height
           const saturationGradient = canvas.createLinearGradient(0, 0, parentWidth as number, 0)
           saturationGradient.addColorStop(0, 'hsla(0, 0%, 100%, 1)') // white
-          saturationGradient.addColorStop(1, `hsla(${props.color.hue}, 100%, 50%, 1)`)
+          saturationGradient.addColorStop(1, `hsla(${props.color.hue ?? 0}, 100%, 50%, 1)`)
+
           canvas.fillStyle = saturationGradient
           canvas.fillRect(0, 0, parentWidth, props.height)
           const valueGradient = canvas.createLinearGradient(0, 0, 0, props.height)
@@ -69,12 +70,13 @@ export default defineComponent({
           }
           return false
         })
+
         ctx.emit(
           'update:color',
           fromHSVA({
             h: props.color.hue,
-            s: clamp(event.clientX - rect.left, 0, rect.width) / rect.width,
-            v: 1 - clamp(event.clientY - rect.top, 0, rect.height) / rect.height,
+            s: clamp(event.clientX - rect.left, 0, props.width) / props.width,
+            v: 1 - clamp(event.clientY - rect.top, 0, props.height) / props.height,
             a: props.color.alpha,
           })
         )
@@ -107,20 +109,17 @@ export default defineComponent({
             handleDrag(event as MouseEvent)
           },
         })
-        updatePosition()
+        // updatePosition()
       }
-      // window.addEventListener('resize', () => {
-      //   renderCanvas()
-      // })
     })
-    watch(
-      () => props.color,
-      () => {
-        renderCanvas()
-        updatePosition()
-      }
-    )
-    ctx.expose({ renderCanvas })
+    // watch(
+    //   () => props.color,
+    //   () => {
+    //     updatePosition()
+    //   }
+    // )
+    watch(getDotStyle, () => {})
+    watch(() => props.color?.hue, renderCanvas, { immediate: true })
     return () => {
       return (
         <div
