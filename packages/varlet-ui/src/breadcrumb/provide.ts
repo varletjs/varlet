@@ -1,24 +1,25 @@
-import type { ComputedRef } from 'vue'
-import { useAtChildrenCounter, useChildren } from '../utils/components'
-import type { BreadcrumbItemProvider } from '../breadcrumb-item/provide'
+import { useAtParentIndex, useParent } from '../utils/components'
+import {
+  BREADCRUMBS_BIND_BREADCRUMB_ITEM_KEY,
+  BREADCRUMBS_COUNT_BREADCRUMB_ITEM_KEY,
+  BreadcrumbsProvider,
+} from '../breadcrumbs/provide'
 
-export interface BreadcrumbProvider {
-  length: ComputedRef<number>
-  separator: ComputedRef<string>
-}
+export interface BreadcrumbProvider {}
 
-export const BREADCRUMB_BIND_BREADCRUMB_ITEM_KEY = Symbol('BREADCRUMB_BIND_BREADCRUMB_ITEM_KEY')
-export const BREADCRUMB_COUNT_BREADCRUMB_ITEM_KEY = Symbol('BREADCRUMB_COUNT_BREADCRUMB_ITEM_KEY')
-
-export function useBreadcrumbList() {
-  const { childProviders, bindChildren } = useChildren<BreadcrumbProvider, BreadcrumbItemProvider>(
-    BREADCRUMB_BIND_BREADCRUMB_ITEM_KEY
+export function useBreadcrumb() {
+  const { parentProvider, bindParent } = useParent<BreadcrumbsProvider, BreadcrumbProvider>(
+    BREADCRUMBS_BIND_BREADCRUMB_ITEM_KEY
   )
-  const { length } = useAtChildrenCounter(BREADCRUMB_COUNT_BREADCRUMB_ITEM_KEY)
+  const { index } = useAtParentIndex(BREADCRUMBS_COUNT_BREADCRUMB_ITEM_KEY)
+
+  if (!parentProvider || !bindParent || !index) {
+    throw Error('<var-breadcrumb/> must in <var-breadcrumbs/>')
+  }
 
   return {
-    length,
-    breadcrumbList: childProviders,
-    bindBreadcrumbList: bindChildren,
+    index,
+    breadcrumb: parentProvider,
+    bindBreadcrumb: bindParent,
   }
 }
