@@ -323,9 +323,9 @@ export default defineConfig({
       {
         text: {
           'zh-CN': 'Breadcrumb 面包屑',
-          'en-US': 'Breadcrumb',
+          'en-US': 'Breadcrumbs',
         },
-        doc: 'breadcrumb',
+        doc: 'breadcrumbs',
         type: 2,
       },
       {

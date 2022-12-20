@@ -1,4 +1,33 @@
+:root {
+  --breadcrumb-active-color: var(--color-primary);
+  --breadcrumb-active-hover-color: #233dd2;
+  --breadcrumb-text-color: #888;
+  --breadcrumb-separator-margin: 0 6px;
+  --breadcrumb-separator-font-size: 14px;
+}
+
 .var-breadcrumb {
   display: flex;
   align-items: center;
+  color: var(--breadcrumb-text-color);
+
+  &__separator {
+    margin: var(--breadcrumb-separator-margin);
+    font-size: var(--breadcrumb-separator-font-size);
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &--active {
+    color: var(--breadcrumb-active-color);
+    transition: 0.1s color;
+
+    &:hover {
+      cursor: pointer;
+      color: var(--breadcrumb-active-hover-color);
+    }
+  }
 }

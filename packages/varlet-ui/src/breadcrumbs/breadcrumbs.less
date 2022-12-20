@@ -1,33 +1,4 @@
-:root {
-  --breadcrumbs-active-color: var(--color-primary);
-  --breadcrumbs-active-hover-color: #233dd2;
-  --breadcrumbs-text-color: #888;
-  --breadcrumbs-separator-margin: 0 6px;
-  --breadcrumbs-separator-font-size: 14px;
-}
-
 .var-breadcrumbs {
   display: flex;
   align-items: center;
-  color: var(--breadcrumbs-text-color);
-
-  &__separator {
-    margin: var(--breadcrumbs-separator-margin);
-    font-size: var(--breadcrumbs-separator-font-size);
-  }
-
-  &__content {
-    display: flex;
-    align-items: center;
-  }
-
-  &--active {
-    color: var(--breadcrumbs-active-color);
-    transition: 0.1s color;
-
-    &:hover {
-      cursor: pointer;
-      color: var(--breadcrumbs-active-hover-color);
-    }
-  }
 }

@@ -1,11 +1,11 @@
 // Component entry, the folder where the file exists will be exposed to the user
-import breadcrumbs from './breadcrumbs.vue'
 import type { App } from 'vue'
+import Breadcrumbs from './Breadcrumbs.vue'
 
-breadcrumbs.install = function (app: App) {
-  app.component(breadcrumbs.name, breadcrumbs)
+Breadcrumbs.install = function (app: App) {
+  app.component(Breadcrumbs.name, Breadcrumbs)
 }
 
-export const _breadcrumbsComponent = breadcrumbs
+export const _BreadcrumbsComponent = Breadcrumbs
 
-export default breadcrumbs
+export default Breadcrumbs
