@@ -2,7 +2,7 @@
 
 ### Introduce
 
-Displays the location of the current page.
+Displays the location of the current page, making it easier to browser back.
 
 ### Basic Usage
 
@@ -11,7 +11,7 @@ In `var-breadcrumbs` , each `var-breadcrumb` is a tag that stands for every leve
 ```html
 <template>
   <var-breadcrumbs>
-    <var-breadcrumb>First Level</var-breadcrumb>
+    <var-breadcrumb :to="{ path: '/'}">Homepage</var-breadcrumb>
     <var-breadcrumb>Second Level</var-breadcrumb>
     <var-breadcrumb>Third Level</var-breadcrumb>
   </var-breadcrumbs>
@@ -25,7 +25,7 @@ This component has a `String` attribute `separator`, and it determines the separ
 ```html
 <template>
   <var-breadcrumbs separator="\">
-    <var-breadcrumb>First Level</var-breadcrumb>
+    <var-breadcrumb :to="{ path: '/' }">Homepage</var-breadcrumb>
     <var-breadcrumb>Second Level</var-breadcrumb>
     <var-breadcrumb>Third Level</var-breadcrumb>
   </var-breadcrumbs>
@@ -39,7 +39,7 @@ Each level separator can be set separately，`var-breadcrumb` has a `String` att
 ```html
 <template>
   <var-breadcrumbs separator="\">
-    <var-breadcrumb>First Level</var-breadcrumb>
+    <var-breadcrumb :to="{ path: '/' }">Homepage</var-breadcrumb>
     <var-breadcrumb separator="~">Second Level</var-breadcrumb>
     <var-breadcrumb>Third Level</var-breadcrumb>
   </var-breadcrumbs>
@@ -52,11 +52,11 @@ Set the slot to use custom content as the separator, it will cover `separator`.
 
 ```html
 <var-breadcrumbs>
-  <var-breadcrumb>
+  <var-breadcrumb :to="{ path: '/' }">
     <template #separator>
       <var-icon name="chevron-right" />
     </template>
-    First Level
+    Homepage
   </var-breadcrumb>
   <var-breadcrumb>
     <template #separator>
@@ -85,9 +85,10 @@ Set the slot to use custom content as the separator, it will cover `separator`.
 
 #### breadcrumb Props
 
-| Prop        | Description         | Type     | Default |
-| ----------- | ------------------- | -------- | ------- |
-| `separator` | separator character | _string_ | `/`     |
+| Prop        | Description                                            | Type                          | Default |
+| ----------- | ------------------------------------------------------ | ----------------------------- | ------- |
+| `separator` | separator character                                    | _string_                      | `/`     |
+| `to`        | target route of the link, same as `to` of `vue-router` | _string_ / _RouteLocationRow_ | `''`    |
 
 ### Slots
 
