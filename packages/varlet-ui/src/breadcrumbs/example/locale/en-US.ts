@@ -1,8 +1,9 @@
 export default {
-  separator: '分隔符',
-  level1: '一级',
-  level2: '二级',
-  level3: '三级',
-  levelSeparator: '每一级分隔符',
-  slotSeparator: '分隔符插槽',
+  basicUsage: 'Basic Usage',
+  separator: 'Separator',
+  eachLevelSeparator: 'Each Level Separator',
+  separatorSlot: 'Separator Slot',
+  level1: 'First Level',
+  level2: 'Second Level',
+  level3: 'Third Level',
 }
