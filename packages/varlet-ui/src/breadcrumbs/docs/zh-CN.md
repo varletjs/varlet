@@ -2,7 +2,7 @@
 
 ### 介绍
 
-显示当前页面的路径
+显示当前页面的路径，快速返回之前的任意页面。
 
 ### 基本用法
 
@@ -11,7 +11,7 @@
 ```html
 <template>
   <var-breadcrumbs>
-    <var-breadcrumb>一级</var-breadcrumb>
+    <var-breadcrumb :to="{ path: '/' }">首页</var-breadcrumb>
     <var-breadcrumb>二级</var-breadcrumb>
     <var-breadcrumb>三级</var-breadcrumb>
   </var-breadcrumbs>
@@ -25,7 +25,7 @@
 ```html
 <template>
   <var-breadcrumbs separator="\">
-    <var-breadcrumb>一级</var-breadcrumb>
+    <var-breadcrumb :to="{ path: '/' }">首页</var-breadcrumb>
     <var-breadcrumb>二级</var-breadcrumb>
     <var-breadcrumb>三级</var-breadcrumb>
   </var-breadcrumbs>
@@ -39,7 +39,7 @@
 ```html
 <template>
   <var-breadcrumbs separator="\">
-    <var-breadcrumb>一级</var-breadcrumb>
+    <var-breadcrumb :to="{ path: '/' }">首页</var-breadcrumb>
     <var-breadcrumb separator="~">二级</var-breadcrumb>
     <var-breadcrumb>三级</var-breadcrumb>
   </var-breadcrumbs>
@@ -52,11 +52,11 @@
 
 ```html
 <var-breadcrumbs>
-  <var-breadcrumb>
+  <var-breadcrumb :to="{ path: '/' }">
     <template #separator>
       <var-icon name="chevron-right" />
     </template>
-    一级
+    首页
   </var-breadcrumb>
   <var-breadcrumb>
     <template #separator>
@@ -85,9 +85,10 @@
 
 #### breadcrumb Props
 
-| 参数        | 说明   | 类型     | 默认值 |
-| ----------- | ------ | -------- | ------ |
-| `separator` | 分隔符 | _string_ | `/`    |
+| 参数        | 说明                                       | 类型                          | 默认值 |
+| ----------- | ------------------------------------------ | ----------------------------- | ------ |
+| `separator` | 分隔符                                     | _string_                      | `/`    |
+| `to`        | 路由跳转目标，同 `vue-router` 的 `to` 属性 | _string_ / _RouteLocationRow_ | `''`   |
 
 ### 插槽
 
