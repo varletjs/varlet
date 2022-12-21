@@ -2,33 +2,39 @@
 
 ### 介绍
 
-一级一级的展示一些信息
+显示当前页面的路径
 
-### 分隔符
+### 基础用法
 
-通过`separator`设置分隔符
+在 `var-breadcrumbs` 中使用 `var-breadcrumb` 标签表示从首页开始的每一级。
 
 ```html
 <template>
-  <var-space direction="column" size="large">
-    <var-breadcrumbs>
-      <var-breadcrumb>一级</var-breadcrumb>
-      <var-breadcrumb>二级</var-breadcrumb>
-      <var-breadcrumb>三级</var-breadcrumb>
-    </var-breadcrumbs>
+  <var-breadcrumbs>
+    <var-breadcrumb>一级</var-breadcrumb>
+    <var-breadcrumb>二级</var-breadcrumb>
+    <var-breadcrumb>三级</var-breadcrumb>
+  </var-breadcrumbs>
+</template>
+```
 
-    <var-breadcrumbs separator="\">
-      <var-breadcrumb>一级</var-breadcrumb>
-      <var-breadcrumb>二级</var-breadcrumb>
-      <var-breadcrumb>三级</var-breadcrumb>
-    </var-breadcrumbs>
-  </var-space>
+### 分隔符
+
+该组件接收一个 `String` 类型的参数 `separator` 来作为分隔符。默认值为 `/`
+
+```html
+<template>
+  <var-breadcrumbs separator="\">
+    <var-breadcrumb>一级</var-breadcrumb>
+    <var-breadcrumb>二级</var-breadcrumb>
+    <var-breadcrumb>三级</var-breadcrumb>
+  </var-breadcrumbs>
 </template>
 ```
 
 ### 每一级分隔符
 
-每一级的分隔符可以单独设置
+每一级的分隔符可以单独设置，`var-breadcrumb` 接收一个 `String` 类型的参数 `separator` 来作为分隔符。默认值为 `var-breadcrumbs` 组件的 `separator` 。
 
 ```html
 <template>
@@ -42,7 +48,7 @@
 
 ### 分隔符插槽
 
-分隔符也支持插槽，可以深度定制
+通过设置插槽可以使用自定义内容作为分隔符，注意这将使 `separator` 失效。
 
 ```html
 <var-breadcrumbs>
@@ -87,16 +93,16 @@
 
 #### Breadcrumbs Slots
 
-| 参数      | 说明       | 参数 |
-| --------- | ---------- | ---- |
-| `default` | 面包屑内容 | `-`  |
+| 参数      | 说明           | 参数 |
+| --------- | -------------- | ---- |
+| `default` | 自定义默认内容 | `-`  |
 
 #### breadcrumb Slots
 
-| 参数      | 说明                     | 参数 |
-| --------- | ------------------------ | ---- |
-| `default` | 面包屑每一级的内容       | `-`  |
-| `default` | 面包屑每一级的分隔符内容 | `-`  |
+| 参数        | 说明             | 参数 |
+| ----------- | ---------------- | ---- |
+| `default`   | 自定义默认内容   | `-`  |
+| `separator` | 自定义分隔符内容 | `-`  |
 
 ### 样式变量
 
