@@ -3,7 +3,7 @@ export default {
   separator: '分隔符',
   eachLevelSeparator: '每一级分隔符',
   separatorSlot: '分隔符插槽',
-  level1: '一级',
+  level1: '首页',
   level2: '二级',
   level3: '三级',
 }

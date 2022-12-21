@@ -12,7 +12,7 @@ watchLang(use)
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-breadcrumbs>
-    <var-breadcrumb>{{ pack.level1 }}</var-breadcrumb>
+    <var-breadcrumb :to="{ path: '/' }">{{ pack.level1 }}</var-breadcrumb>
     <var-breadcrumb>{{ pack.level2 }}</var-breadcrumb>
     <var-breadcrumb>{{ pack.level3 }}</var-breadcrumb>
   </var-breadcrumbs>
