@@ -4,7 +4,7 @@
 
 显示当前页面的路径
 
-### 基础用法
+### 基本用法
 
 在 `var-breadcrumbs` 中使用 `var-breadcrumb` 标签表示从首页开始的每一级。
 
