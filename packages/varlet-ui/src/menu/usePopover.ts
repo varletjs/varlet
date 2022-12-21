@@ -34,6 +34,9 @@ export type Placement =
 
 export interface UsePopoverOptions {
   show: boolean
+  content: string
+  color: string | unknown
+  type: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
   trigger: 'hover' | 'click'
   placement: Placement
   disabled: boolean
@@ -48,13 +51,18 @@ export function usePopover(options: UsePopoverOptions) {
   const host: Ref<null | HTMLElement> = ref(null)
   const popover: Ref<null | HTMLElement> = ref(null)
   const show: Ref<boolean> = ref(false)
+  const content: Ref<string> = ref('')
+  const type: Ref<string> = ref('default')
+  const color: Ref<string | unknown> = ref('')
   let popoverInstance: Instance | null = null
   let clickSelf = false
   let enterPopover = false
   let enterHost = false
   let hostSize: HostSize = { width: 0, height: 0 }
   const { zIndex } = useZIndex(() => show.value, 1)
-
+  content.value = options.content
+  type.value = options.type
+  color.value = options.color
   const computeHostSize = () => {
     const { width, height } = window.getComputedStyle(host.value!)
 
@@ -325,6 +333,9 @@ export function usePopover(options: UsePopoverOptions) {
   })
 
   return {
+    type,
+    color,
+    content,
     show,
     popover,
     zIndex,

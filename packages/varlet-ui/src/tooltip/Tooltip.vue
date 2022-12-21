@@ -37,7 +37,7 @@
 import { createNamespace } from '../utils/components'
 import { defineComponent } from 'vue'
 import { props } from './props'
-import { usePopover } from './usePopover'
+import { usePopover } from '../menu/usePopover'
 
 const { n, classes } = createNamespace('tooltip')
 
