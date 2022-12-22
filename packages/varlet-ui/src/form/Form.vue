@@ -26,7 +26,12 @@ export default defineComponent({
     const validate = async () => {
       const res = await Promise.all(formItems.map(({ validate }) => validate()))
 
-      return res.every((r) => r === true)
+      const index = res.findIndex((r) => r === false)
+      if (props.scrollToFirstError && index !== -1) {
+        formItems[index].instance.proxy?.$el.scrollIntoView()
+      }
+
+      return index === -1
     }
 
     // expose
