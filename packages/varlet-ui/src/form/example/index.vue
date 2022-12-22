@@ -49,7 +49,7 @@ watchDarkMode(dark)
 <template>
   <app-type>{{ pack.example }}</app-type>
 
-  <var-form ref="form" :disabled="disabled" :readonly="readonly">
+  <var-form ref="form" :disabled="disabled" :readonly="readonly" scroll-to-first-error>
     <var-space direction="column" :size="['4vw', 0]">
       <var-input
         :placeholder="pack.username"

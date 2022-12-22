@@ -254,6 +254,7 @@ bindForm?.(apis)
 | --- | --- | --- | --- |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
+| `scroll-to-first-error` | 是否在效验不通过时滚动到第一个错误的表单项 | _boolean_ | `false` |
 
 #### FormDetails Props
 

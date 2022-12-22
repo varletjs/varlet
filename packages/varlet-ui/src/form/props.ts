@@ -7,4 +7,8 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  scrollToFirstError: {
+    type: Boolean,
+    default: false,
+  },
 }
