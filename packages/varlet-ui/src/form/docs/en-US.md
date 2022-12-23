@@ -254,7 +254,7 @@ bindForm?.(apis)
 | --- | --- | --- | --- | 
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
-| `scroll-to-first-error` | Whether to scroll to the first error field when validation failed | _boolean_ | `false` |
+| `scroll-to-error` | Whether to scroll to the first or last error field when validation failed, Can be set to `start` `end` `none` | _string_ | `none` |
 
 #### FormDetails Props
 

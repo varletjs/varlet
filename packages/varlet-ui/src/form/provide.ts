@@ -21,10 +21,10 @@ export function useForm<C = Validation>() {
   const instance = getCurrentInstance()!
 
   const bindForm = bindParent
-    ? function (binds: C) {
-        bindParent!({ ...binds, instance })
+    ? (formItemProvider: C) => {
+        bindParent({ ...formItemProvider, instance })
       }
-    : bindParent
+    : null
 
   return {
     bindForm,
