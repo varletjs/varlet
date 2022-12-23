@@ -30,7 +30,12 @@ const readonly = ref(false)
 </script>
 
 <template>
-  <var-form ref="form" :disabled="disabled" :readonly="readonly">
+  <var-form
+    ref="form"
+    :disabled="disabled"
+    :readonly="readonly"
+    scroll-to-error="start"
+  >
     <var-space direction="column" :size="[14, 0]">
       <var-input
         placeholder="Please input username"
@@ -254,7 +259,8 @@ bindForm?.(apis)
 | --- | --- | --- | --- | 
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
-| `scroll-to-error` | Whether to scroll to the first or last error field when validation failed, Can be set to `start` `end` `none` | _string_ | `none` |
+| `scroll-to-error` | Whether to scroll to the failed form item when the validation fails, the optional value is `start` `end` | _string_ | `-` |
+| `scroll-to-error-offset-y` | Scroll to the position offset of the form item that fails validation | _number \| string_ | `0` |
 
 #### FormDetails Props
 

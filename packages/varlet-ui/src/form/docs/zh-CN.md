@@ -30,7 +30,12 @@ const readonly = ref(false)
 </script>
 
 <template>
-  <var-form ref="form" :disabled="disabled" :readonly="readonly">
+  <var-form 
+    ref="form" 
+    :disabled="disabled"
+    :readonly="readonly" 
+    scroll-to-error="start"
+  >
     <var-space direction="column" :size="[14, 0]">
       <var-input
         placeholder="请输入用户名"
@@ -250,11 +255,12 @@ bindForm?.(apis)
 
 #### Form Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `readonly` | 是否只读 | _boolean_ | `false` |
-| `disabled` | 是否禁用 | _boolean_ | `false` |
-| `scroll-to-error` | 是否在效验不通过时滚动到第一个或最后一个错误的表单项，可选值为 `start` `end` `none` | _string_ | `none` |
+| 参数 | 说明                                        | 类型 | 默认值 |
+| --- |-------------------------------------------| --- | -- |
+| `readonly` | 是否只读                                      | _boolean_ | `false` |
+| `disabled` | 是否禁用                                      | _boolean_ | `false` |
+| `scroll-to-error` | 是否在效验不通过时滚动到不通过的表单项，可选值为 `start` `end` | _string_ | `-` |
+| `scroll-to-error-offset-y` | 滚动到校验不通过的表单项的位置偏移量 | _number \| string_ | `0` |
 
 #### FormDetails Props
 

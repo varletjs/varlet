@@ -1,7 +1,7 @@
 import type { PropType } from 'vue'
 
 function scrollToErrorValidator(status: string): boolean {
-  return ['start', 'end', 'none'].includes(status)
+  return ['start', 'end'].includes(status)
 }
 
 export const props = {
@@ -14,8 +14,11 @@ export const props = {
     default: false,
   },
   scrollToError: {
-    type: String as PropType<'start' | 'end' | 'none'>,
-    default: 'none',
+    type: String as PropType<'start' | 'end'>,
     validator: scrollToErrorValidator,
+  },
+  scrollToErrorOffsetY: {
+    type: [String, Number],
+    default: 0,
   },
 }

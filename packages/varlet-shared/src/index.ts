@@ -88,3 +88,23 @@ export const kebabCase = (s: string): string => {
   const ret = s.replace(/([A-Z])/g, ' $1').trim()
   return ret.split(' ').join('-').toLowerCase()
 }
+
+export const find = <T>(
+  arr: Array<T>,
+  callback: (item: T, index: number, array: Array<T>) => any,
+  from: 'start' | 'end' = 'start'
+): [T, number] | [null, -1] => {
+  let i = from === 'start' ? 0 : arr.length - 1
+
+  while (arr.length > 0 && i >= 0 && i <= arr.length - 1) {
+    const flag = callback(arr[i], i, arr)
+
+    if (flag) {
+      return [arr[i], i]
+    }
+
+    from === 'start' ? i++ : i--
+  }
+
+  return [null, -1]
+}
