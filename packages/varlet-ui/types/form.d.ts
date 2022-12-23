@@ -7,9 +7,12 @@ export interface FormValidation {
   reset(): void
 }
 
+export type FormScrollToError = 'start' | 'end' | 'none'
+
 export interface FormProvider {
   disabled: ComputedRef<boolean>
   readonly: ComputedRef<boolean>
+  scrollToError: FormScrollToError
 }
 
 export interface FormProps extends BasicAttributes {
