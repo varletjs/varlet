@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export type ValidateTriggers = 'onChange'
 
@@ -43,13 +44,7 @@ export const props = {
   rules: {
     type: Array as PropType<Array<(value: any) => any>>,
   },
-  onClick: {
-    type: Function as PropType<(e: Event) => void>,
-  },
-  onChange: {
-    type: Function as PropType<(value: any) => void>,
-  },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: any) => void>,
-  },
+  onClick: defineListenerProp<(e: Event) => void>(),
+  onChange: defineListenerProp<(value: any) => void>(),
+  'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),
 }

@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, Direction as CheckboxGroupDirection } from './varComponent'
+import { VarComponent, BasicAttributes, Direction as CheckboxGroupDirection, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export type CheckboxGroupValidateTrigger = 'onChange'
@@ -11,8 +11,8 @@ export interface CheckboxGroupProps extends BasicAttributes {
   direction?: CheckboxGroupDirection
   validateTrigger?: Array<CheckboxGroupValidateTrigger>
   rules?: Array<(value: any) => any>
-  onChange?: (value: Array<any>) => void
-  'onUpdate:modelValue'?: (value: Array<any>) => void
+  onChange?: ListenerProp<(value: Array<any>) => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: Array<any>) => void>
 }
 
 export class CheckboxGroup extends VarComponent {

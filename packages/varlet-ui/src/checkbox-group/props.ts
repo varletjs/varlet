@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export type CheckBoxGroupValidateTrigger = 'onChange'
 
@@ -26,10 +27,6 @@ export const props = {
   rules: {
     type: Array as PropType<Array<(value: any) => any>>,
   },
-  onChange: {
-    type: Function as PropType<(value: Array<any>) => void>,
-  },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: Array<any>) => void>,
-  },
+  onChange: defineListenerProp<(value: Array<any>) => void>(),
+  'onUpdate:modelValue': defineListenerProp<(value: Array<any>) => void>(),
 }
