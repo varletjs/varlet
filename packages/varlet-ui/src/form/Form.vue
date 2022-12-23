@@ -24,18 +24,20 @@ export default defineComponent({
     const { formItems, bindFormItems } = useFormItems()
 
     const scroll = (errorIndex: number, formItemElement: HTMLElement) => {
-      if (errorIndex !== -1 && formItemElement) {
-        // wait form-details animation end
-        setTimeout(() => {
-          const scroller = getParentScroller(formItemElement)
-          const scrollerTop = scroller === window ? 0 : getTop(scroller as HTMLElement)
-          const top = getTop(formItemElement) - scrollerTop - toPxNum(props.scrollToErrorOffsetY)
-          scrollTo(scroller, {
-            top,
-            animation: linear,
-          })
-        }, 300)
+      if (errorIndex === -1 || !props.scrollToError) {
+        return
       }
+
+      // wait form-details animation end
+      setTimeout(() => {
+        const scroller = getParentScroller(formItemElement)
+        const scrollerTop = scroller === window ? 0 : getTop(scroller as HTMLElement)
+        const top = getTop(formItemElement) - scrollerTop - toPxNum(props.scrollToErrorOffsetY)
+        scrollTo(scroller, {
+          top,
+          animation: linear,
+        })
+      }, 300)
     }
 
     // expose
