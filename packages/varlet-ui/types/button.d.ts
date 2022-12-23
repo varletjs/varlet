@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, Type as ButtonType, Size as ButtonSize } from './varComponent'
+import { VarComponent, BasicAttributes, Type as ButtonType, Size as ButtonSize, ListenerProp } from './varComponent'
 import { LoadingType, LoadingSize } from './loading'
 import { VNode } from 'vue'
 
@@ -21,8 +21,8 @@ export interface ButtonProps extends BasicAttributes {
   loadingType?: LoadingType
   loadingSize?: LoadingSize
   loadingColor?: string
-  onClick?: (e: Event) => void
-  onTouchstart?: (e: Event) => void
+  onClick?: ListenerProp<(e: Event) => void>
+  onTouchstart?: ListenerProp<(e: Event) => void>
 }
 
 export class Button extends VarComponent {

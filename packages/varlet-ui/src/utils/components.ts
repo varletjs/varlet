@@ -14,6 +14,7 @@ import {
   ref,
   onActivated,
   onDeactivated,
+  PropType,
 } from 'vue'
 import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref, ComponentPublicInstance } from 'vue'
 import { isArray, removeItem } from '@varlet/shared'
@@ -337,5 +338,12 @@ export function call<P extends any[], R>(
 
   if (fn) {
     return fn(...args)
+  }
+}
+
+export function defineListenerProp<F>(fallback?: any) {
+  return {
+    type: [Function, Array] as PropType<F | F[]>,
+    default: fallback,
   }
 }

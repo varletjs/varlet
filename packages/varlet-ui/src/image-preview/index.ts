@@ -1,7 +1,7 @@
 import VarImagePreview from './ImagePreview.vue'
 import { nextTick, reactive } from 'vue'
 import { inBrowser, isArray, isString } from '@varlet/shared'
-import { mountInstance } from '../utils/components'
+import { call, mountInstance } from '../utils/components'
 import type { App, TeleportProps } from 'vue'
 
 interface ImagePreviewOptions {
@@ -40,9 +40,9 @@ function ImagePreview(options: string | string[] | ImagePreviewOptions) {
   singletonOptions = reactiveImagePreviewOptions
 
   const { unmountInstance } = mountInstance(VarImagePreview, reactiveImagePreviewOptions, {
-    onClose: () => reactiveImagePreviewOptions.onClose?.(),
+    onClose: () => call(reactiveImagePreviewOptions.onClose),
     onClosed: () => {
-      reactiveImagePreviewOptions.onClosed?.()
+      call(reactiveImagePreviewOptions.onClosed)
       unmountInstance()
       singletonOptions === reactiveImagePreviewOptions && (singletonOptions = null)
     },

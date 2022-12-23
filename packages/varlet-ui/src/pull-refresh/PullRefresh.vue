@@ -29,7 +29,7 @@ import { defineComponent, ref, computed, watch, onMounted } from 'vue'
 import { getParentScroller, getScrollTop } from '../utils/elements'
 import { props } from './props'
 import { toNumber } from '@varlet/shared'
-import { createNamespace } from '../utils/components'
+import { call, createNamespace } from '../utils/components'
 import type { Ref } from 'vue'
 import type { RefreshStatus } from './props'
 
@@ -119,8 +119,8 @@ export default defineComponent({
         refreshStatus.value = 'loading'
         distance.value = maxDistance.value * 0.3
 
-        props['onUpdate:modelValue']?.(true)
-        props.onRefresh?.()
+        call(props['onUpdate:modelValue'], true)
+        call(props.onRefresh)
       } else {
         refreshStatus.value = 'loosing'
         iconName.value = 'arrow-down'

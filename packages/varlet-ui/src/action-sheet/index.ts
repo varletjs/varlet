@@ -2,7 +2,7 @@ import VarActionSheet from './ActionSheet.vue'
 import type { App, TeleportProps } from 'vue'
 import { nextTick, reactive } from 'vue'
 import { inBrowser } from '@varlet/shared'
-import { mountInstance } from '../utils/components'
+import { call, mountInstance } from '../utils/components'
 
 export type ActionSheetActions = ActionItem | 'close'
 
@@ -51,15 +51,15 @@ function ActionSheet(options: ActionSheetOptions): Promise<ActionSheetActions | 
 
     const { unmountInstance } = mountInstance(VarActionSheet, reactiveActionSheetOptions, {
       onSelect: (action: ActionItem) => {
-        reactiveActionSheetOptions.onSelect?.(action)
+        call(reactiveActionSheetOptions.onSelect, action)
         resolve(action)
       },
       onClose: () => {
-        reactiveActionSheetOptions.onClose?.()
+        call(reactiveActionSheetOptions.onClose)
         resolve('close')
       },
       onClosed: () => {
-        reactiveActionSheetOptions.onClosed?.()
+        call(reactiveActionSheetOptions.onClosed)
         unmountInstance()
         singletonOptions === reactiveActionSheetOptions && (singletonOptions = null)
       },

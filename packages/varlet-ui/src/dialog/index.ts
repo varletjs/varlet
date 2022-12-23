@@ -1,7 +1,7 @@
 import VarDialog from './Dialog.vue'
 import { reactive, nextTick } from 'vue'
 import { inBrowser, isNumber, isString } from '@varlet/shared'
-import { mountInstance } from '../utils/components'
+import { call, mountInstance } from '../utils/components'
 import type { App, TeleportProps } from 'vue'
 
 interface DialogOptions {
@@ -56,19 +56,19 @@ function Dialog(options: DialogOptions | string | number): Promise<DialogActions
 
     const { unmountInstance } = mountInstance(VarDialog, reactiveDialogOptions, {
       onConfirm: () => {
-        reactiveDialogOptions.onConfirm?.()
+        call(reactiveDialogOptions.onConfirm)
         resolve('confirm')
       },
       onCancel: () => {
-        reactiveDialogOptions.onCancel?.()
+        call(reactiveDialogOptions.onCancel)
         resolve('cancel')
       },
       onClose: () => {
-        reactiveDialogOptions.onClose?.()
+        call(reactiveDialogOptions.onClose)
         resolve('close')
       },
       onClosed: () => {
-        reactiveDialogOptions.onClosed?.()
+        call(reactiveDialogOptions.onClosed)
         unmountInstance()
         singletonOptions === reactiveDialogOptions && (singletonOptions = null)
       },

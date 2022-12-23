@@ -115,7 +115,7 @@ import { isNumber, toNumber } from '@varlet/shared'
 import { pack } from '../locale'
 import type { ComputedRef, Ref } from 'vue'
 import type { Range } from './porps'
-import { createNamespace } from '../utils/components'
+import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('pagination')
 
@@ -279,9 +279,12 @@ export default defineComponent({
 
         pageList.value = list
 
-        if (oldCurrent !== undefined && pageCount.value > 0) onChange?.(newCurrent, newSize)
-        props['onUpdate:current']?.(newCurrent)
-        props['onUpdate:size']?.(newSize)
+        if (oldCurrent !== undefined && pageCount.value > 0) {
+          call(onChange, newCurrent, newSize)
+        }
+
+        call(props['onUpdate:current'], newCurrent)
+        call(props['onUpdate:size'], newSize)
       },
       {
         immediate: true,

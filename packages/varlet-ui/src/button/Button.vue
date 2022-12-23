@@ -40,10 +40,10 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import VarLoading from '../loading'
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, type Ref } from 'vue'
 import { props } from './props'
-import { createNamespace } from '../utils/components'
-import type { Ref } from 'vue'
+import { call, createNamespace } from '../utils/components'
+import { isArray } from '@varlet/shared'
 
 const { n, classes } = createNamespace('button')
 
@@ -60,7 +60,10 @@ export default defineComponent({
     const attemptAutoLoading = (result: any) => {
       if (props.autoLoading) {
         pending.value = true
-        Promise.resolve(result)
+
+        result = isArray(result) ? result : [result]
+
+        Promise.all(result)
           .then(() => {
             pending.value = false
           })
@@ -77,7 +80,7 @@ export default defineComponent({
         return
       }
 
-      attemptAutoLoading(onClick(e))
+      attemptAutoLoading(call(onClick, e))
     }
 
     const handleTouchstart = (e: Event) => {
@@ -87,7 +90,7 @@ export default defineComponent({
         return
       }
 
-      attemptAutoLoading(onTouchstart(e))
+      attemptAutoLoading(call(onTouchstart, e))
     }
 
     return {

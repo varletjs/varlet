@@ -2,7 +2,7 @@ import { defineComponent, watch, Transition, Teleport } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { useZIndex } from '../context/zIndex'
-import { useRouteListener, useTeleport, createNamespace } from '../utils/components'
+import { useRouteListener, useTeleport, createNamespace, call } from '../utils/components'
 
 import '../styles/common.less'
 import './popup.less'
@@ -20,13 +20,13 @@ export default defineComponent({
     const hidePopup = () => {
       const { closeOnClickOverlay, onClickOverlay } = props
 
-      onClickOverlay?.()
+      call(onClickOverlay)
 
       if (!closeOnClickOverlay) {
         return
       }
 
-      props['onUpdate:show']?.(false)
+      call(props['onUpdate:show'], false)
     }
 
     useLock(
@@ -37,13 +37,12 @@ export default defineComponent({
     watch(
       () => props.show,
       (newValue: boolean) => {
-        const { onOpen, onClose } = props
-        newValue ? onOpen?.() : onClose?.()
+        newValue ? call(props.onOpen) : call(props.onClose)
       }
     )
 
     // internal for Dialog
-    useRouteListener(() => props.onRouteChange?.())
+    useRouteListener(() => call(props.onRouteChange))
 
     const renderOverlay = () => {
       const { overlayClass = '', overlayStyle } = props
@@ -72,7 +71,7 @@ export default defineComponent({
           style={{ zIndex: zIndex.value }}
           {...attrs}
         >
-          {slots.default?.()}
+          {call(slots.default)}
         </div>
       )
     }

@@ -2,7 +2,7 @@ import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
 import context from '../context'
 import { reactive, TransitionGroup } from 'vue'
-import { mountInstance } from '../utils/components'
+import { call, mountInstance } from '../utils/components'
 import { isNumber, isPlainObject, isString, toNumber } from '@varlet/shared'
 import type { LoadingType, LoadingSize } from '../loading/props'
 import type { App, Component, TeleportProps } from 'vue'
@@ -218,7 +218,9 @@ Snackbar.Component = VarSnackbar
 function opened(element: HTMLElement): void {
   const id = element.getAttribute('data-id')
   const option = uniqSnackbarOptions.find((option) => option.id === toNumber(id))
-  if (option) option.reactiveSnackOptions.onOpened?.()
+  if (option) {
+    call(option.reactiveSnackOptions.onOpened)
+  }
 }
 
 function removeUniqOption(element: HTMLElement): void {
@@ -228,13 +230,13 @@ function removeUniqOption(element: HTMLElement): void {
   const option = uniqSnackbarOptions.find((option) => option.id === toNumber(id))
   if (option) {
     option.animationEnd = true
-    option.reactiveSnackOptions.onClosed?.()
+    call(option.reactiveSnackOptions.onClosed)
   }
 
   const isAllAnimationEnd = uniqSnackbarOptions.every((option) => option.animationEnd)
 
   if (isAllAnimationEnd) {
-    unmount?.()
+    call(unmount)
     uniqSnackbarOptions = reactive<UniqSnackbarOptions[]>([])
     isMount = false
   }

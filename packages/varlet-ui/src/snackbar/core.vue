@@ -40,7 +40,7 @@ import { useLock } from '../context/lock'
 import { SNACKBAR_TYPE } from './index'
 import type { Ref, ComputedRef } from 'vue'
 import type { SnackbarType } from './index'
-import { createNamespace } from '../utils/components'
+import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('snackbar')
 
@@ -78,7 +78,7 @@ export default defineComponent({
 
     const updateAfterDuration = () => {
       timer.value = setTimeout(() => {
-        props.type !== 'loading' && props['onUpdate:show']?.(false)
+        props.type !== 'loading' && call(props['onUpdate:show'], false)
       }, props.duration)
     }
 
@@ -86,11 +86,11 @@ export default defineComponent({
       () => props.show,
       (show) => {
         if (show) {
-          props.onOpen?.()
+          call(props.onOpen)
           updateAfterDuration()
         } else if (show === false) {
           clearTimeout(timer.value)
-          props.onClose?.()
+          call(props.onClose)
         }
       }
     )
@@ -105,7 +105,7 @@ export default defineComponent({
 
     onMounted(() => {
       if (props.show) {
-        props.onOpen?.()
+        call(props.onOpen)
         updateAfterDuration()
       }
     })

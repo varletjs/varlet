@@ -1,5 +1,5 @@
 import { props as loadingProps } from '../loading/props'
-import { pickProps } from '../utils/components'
+import { defineListenerProp, pickProps } from '../utils/components'
 import type { PropType } from 'vue'
 
 function typeValidator(type: string): boolean {
@@ -68,10 +68,6 @@ export const props = {
     ...pickProps(loadingProps, 'color'),
     default: 'currentColor',
   },
-  onClick: {
-    type: Function as PropType<(e: Event) => void | Promise<any>>,
-  },
-  onTouchstart: {
-    type: Function as PropType<(e: Event) => void | Promise<any>>,
-  },
+  onClick: defineListenerProp<(e: Event) => void | Promise<any>>(),
+  onTouchstart: defineListenerProp<(e: Event) => void | Promise<any>>(),
 }
