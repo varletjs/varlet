@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export type ValidateTrigger = 'onIncrement' | 'onDecrement' | 'onInputChange' | 'onLazyChange'
 
@@ -80,18 +81,18 @@ export const props = {
     type: Array as PropType<Array<(v: number) => any>>,
   },
   onBeforeChange: {
-    type: Function as PropType<(value: number, change: (value: string | number) => void) => void>,
+    type: defineListenerProp<(value: number, change: (value: string | number) => void) => void>(),
   },
   onChange: {
-    type: Function as PropType<(value: number) => void>,
+    type: defineListenerProp<(value: number) => void>(),
   },
   onIncrement: {
-    type: Function as PropType<(value: number) => void>,
+    type: defineListenerProp<(value: number) => void>(),
   },
   onDecrement: {
-    type: Function as PropType<(value: number) => void>,
+    type: defineListenerProp<(value: number) => void>(),
   },
   'onUpdate:modelValue': {
-    type: Function as PropType<(value: number) => void>,
+    type: defineListenerProp<(value: number) => void>(),
   },
 }
