@@ -80,19 +80,9 @@ export const props = {
   rules: {
     type: Array as PropType<Array<(v: number) => any>>,
   },
-  onBeforeChange: {
-    type: defineListenerProp<(value: number, change: (value: string | number) => void) => void>(),
-  },
-  onChange: {
-    type: defineListenerProp<(value: number) => void>(),
-  },
-  onIncrement: {
-    type: defineListenerProp<(value: number) => void>(),
-  },
-  onDecrement: {
-    type: defineListenerProp<(value: number) => void>(),
-  },
-  'onUpdate:modelValue': {
-    type: defineListenerProp<(value: number) => void>(),
-  },
+  onBeforeChange: defineListenerProp<(value: number, change: (value: string | number) => void) => void>(),
+  onChange: defineListenerProp<(value: number) => void>(),
+  onIncrement: defineListenerProp<(value: number) => void>(),
+  onDecrement: defineListenerProp<(value: number) => void>(),
+  'onUpdate:modelValue': defineListenerProp<(value: number) => void>(),
 }

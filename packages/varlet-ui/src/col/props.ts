@@ -37,7 +37,5 @@ export const props = {
   xl: {
     type: [Object as ColSizeDescriptor, Number, String] as PropType<string | number | ColSizeDescriptor | undefined>,
   },
-  onClick: {
-    type: defineListenerProp<(e: Event) => void>(),
-  },
+  onClick: defineListenerProp<(e: Event) => void>(),
 }
