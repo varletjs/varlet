@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { Placement as PopperPlacement } from '@popperjs/core/lib/enums'
 import { TeleportProps, VNode } from 'vue'
 
@@ -26,11 +26,11 @@ export interface MenuProps extends BasicAttributes {
   offsetY?: string | number
   teleport?: TeleportProps['to']
   defaultStyle?: boolean
-  onOpen?: () => void
-  onOpened?: () => void
-  onClose?: () => void
-  onClosed?: () => void
-  'onUpdate:show'?: (show: boolean) => void
+  onOpen?: ListenerProp<() => void>
+  onOpened?: ListenerProp<() => void>
+  onClose?: ListenerProp<() => void>
+  onClosed?: ListenerProp<() => void>
+  'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
 export class Menu extends VarComponent {
