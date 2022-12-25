@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode, TeleportProps } from 'vue'
 
 export type PopupPosition = 'top' | 'bottom' | 'right' | 'left' | 'center'
@@ -13,12 +13,12 @@ export interface PopupProps extends BasicAttributes {
   closeOnClickOverlay?: boolean
   defaultStyle?: boolean
   teleport?: TeleportProps['to']
-  onOpen?: () => void
-  onOpened?: () => void
-  onClose?: () => void
-  onClosed?: () => void
-  onClickOverlay?: () => void
-  'onUpdate:show'?: (show: boolean) => void
+  onOpen?: ListenerProp<() => void>
+  onOpened?: ListenerProp<() => void>
+  onClose?: ListenerProp<() => void>
+  onClosed?: ListenerProp<() => void>
+  onClickOverlay?: ListenerProp<() => void>
+  'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
 export class Popup extends VarComponent {
