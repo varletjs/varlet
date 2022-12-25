@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, Direction as TabsDirection } from './varComponent'
+import { VarComponent, BasicAttributes, Direction as TabsDirection, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export { TabsDirection }
@@ -18,9 +18,9 @@ export interface TabsProps extends BasicAttributes {
   sticky?: boolean
   safeArea?: boolean
   offsetTop?: string | number
-  onClick?: (active: string | number) => void
-  onChange?: (active: string | number) => void
-  'onUpdate:active'?: (active: string | number) => void
+  onClick?: ListenerProp<(active: string | number) => void>
+  onChange?: ListenerProp<(active: string | number) => void>
+  'onUpdate:active'?: ListenerProp<(active: string | number) => void>
 }
 
 export class Tabs extends VarComponent {

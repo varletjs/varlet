@@ -1,4 +1,4 @@
-import { pickProps } from '../utils/components'
+import { defineListenerProp, pickProps } from '../utils/components'
 import { props as stickyProps } from '../sticky/props'
 import type { PropType } from 'vue'
 
@@ -56,13 +56,7 @@ export const props = {
     default: false,
   },
   offsetTop: pickProps(stickyProps, 'offsetTop'),
-  onClick: {
-    type: Function as PropType<(active: string | number) => void>,
-  },
-  onChange: {
-    type: Function as PropType<(active: string | number) => void>,
-  },
-  'onUpdate:active': {
-    type: Function as PropType<(active: string | number) => void>,
-  },
+  onClick: defineListenerProp<(active: string | number) => void>(),
+  onChange: defineListenerProp<(active: string | number) => void>(),
+  'onUpdate:active': defineListenerProp<(active: string | number) => void>(),
 }

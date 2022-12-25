@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export const props = {
   loop: {
@@ -31,7 +32,5 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  onChange: {
-    type: Function as PropType<(index: number) => void>,
-  },
+  onChange: defineListenerProp<(index: number) => void>(),
 }

@@ -1,10 +1,10 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export interface TabProps extends BasicAttributes {
   name?: string | number
   disabled?: boolean
-  onClick?: (active: string | number, e: Event) => void
+  onClick?: ListenerProp<(active: string | number, e: Event) => void>
 }
 
 export class Tab extends VarComponent {

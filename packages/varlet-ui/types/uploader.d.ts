@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export type VarFileFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
@@ -24,7 +24,7 @@ export type UploaderVarFileUtils = {
 
 export type UploaderCapture = boolean | 'user' | 'environment'
 
-interface UploaderProps {
+export interface UploaderProps {
   modelValue?: VarFile[]
   accept?: string
   capture?: UploaderCapture
@@ -39,12 +39,12 @@ interface UploaderProps {
   ripple?: boolean
   validateTrigger?: Array<UploaderValidateTrigger>
   rules?: Array<(v: VarFile[], u: UploaderVarFileUtils) => any>
-  onBeforeRead?: (file: VarFile) => Promise<boolean> | boolean
-  onAfterRead?: (file: VarFile) => any
-  onOversize?: (file: VarFile) => any
-  onBeforeRemove?: (file: VarFile) => any
-  onRemove?: (file: VarFile) => any
-  'onUpdate:modelValue'?: (files: VarFile[]) => any
+  onBeforeRead?: ListenerProp<(file: VarFile) => Promise<boolean> | boolean>
+  onAfterRead?: ListenerProp<(file: VarFile) => any>
+  onOversize?: ListenerProp<(file: VarFile) => any>
+  onBeforeRemove?: ListenerProp<(file: VarFile) => any>
+  onRemove?: ListenerProp<(file: VarFile) => any>
+  'onUpdate:modelValue'?: ListenerProp<(files: VarFile[]) => any>
 }
 
 export class Uploader extends VarComponent {

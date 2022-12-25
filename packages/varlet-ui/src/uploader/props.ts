@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export interface VarFile {
   id: number
@@ -66,22 +67,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  onBeforeRead: {
-    type: Function as PropType<(file: VarFile) => Promise<boolean> | boolean>,
-  },
-  onAfterRead: {
-    type: Function as PropType<(file: VarFile) => any>,
-  },
-  onBeforeRemove: {
-    type: Function as PropType<(file: VarFile) => any>,
-  },
-  onRemove: {
-    type: Function as PropType<(file: VarFile) => any>,
-  },
-  onOversize: {
-    type: Function as PropType<(file: VarFile) => any>,
-  },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(files: VarFile[]) => any>,
-  },
+  onBeforeRead: defineListenerProp<(file: VarFile) => Promise<boolean> | boolean>(),
+  onAfterRead: defineListenerProp<(file: VarFile) => any>(),
+  onBeforeRemove: defineListenerProp<(file: VarFile) => any>(),
+  onRemove: defineListenerProp<(file: VarFile) => any>(),
+  onOversize: defineListenerProp<(file: VarFile) => any>(),
+  'onUpdate:modelValue': defineListenerProp<(files: VarFile[]) => any>(),
 }
