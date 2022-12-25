@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 function justifyValidator(justify: string) {
   return ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'].includes(justify)
@@ -23,7 +24,5 @@ export const props = {
     default: 'flex-start',
     validator: alignValidator,
   },
-  onClick: {
-    type: Function as PropType<(e: Event) => void>,
-  },
+  onClick: defineListenerProp<(e: Event) => void>(),
 }
