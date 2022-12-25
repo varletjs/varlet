@@ -1,7 +1,7 @@
 import { defineListenerProp, pickProps } from '../utils/components'
 import { props as popupProps } from '../popup/props'
-import type { PropType } from 'vue'
 import { DialogActions } from './index'
+import type { PropType } from 'vue'
 
 function messageAlignValidator(messageAlign: string): boolean {
   return ['left', 'center', 'right'].includes(messageAlign)

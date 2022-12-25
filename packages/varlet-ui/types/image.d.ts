@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 
 type ImageFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
@@ -15,9 +15,9 @@ export interface ImageProps extends BasicAttributes {
   lazy?: boolean
   ripple?: boolean
   block?: boolean
-  onClick?: (e: Event) => void
-  onLoad?: (e: Event) => void
-  onError?: (e: Event) => void
+  onClick?: ListenerProp<(e: Event) => void>
+  onLoad?: ListenerProp<(e: Event) => void>
+  onError?: ListenerProp<(e: Event) => void>
 }
 
 export class Image extends VarComponent {
