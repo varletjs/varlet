@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import { pickProps } from '../utils/components'
+import { defineListenerProp, pickProps } from '../utils/components'
 import { props as swipeProps } from '../swipe/props'
 import { props as popupProps } from '../popup/props'
 
@@ -23,9 +23,7 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  'onUpdate:show': {
-    type: Function as PropType<(show: boolean) => void>,
-  },
+  'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
   ...pickProps(swipeProps, ['loop', 'indicator', 'onChange']),
   ...pickProps(popupProps, [
     'lockScroll',

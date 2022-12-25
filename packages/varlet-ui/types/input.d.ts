@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export type InputValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
@@ -23,13 +23,13 @@ export interface InputProps extends BasicAttributes {
   autofocus?: boolean
   validateTrigger?: InputValidateTrigger[]
   rules?: Array<(v: string) => any>
-  onFocus?: (e: Event) => void
-  onBlur?: (e: Event) => void
-  onClick?: (e: Event) => void
-  onClear?: (value: string) => void
-  onInput?: (value: string, e: Event) => void
-  onChange?: (value: string, e: Event) => void
-  'onUpdate:modelValue'?: (value: string) => void
+  onFocus?: ListenerProp<(e: Event) => void>
+  onBlur?: ListenerProp<(e: Event) => void>
+  onClick?: ListenerProp<(e: Event) => void>
+  onClear?: ListenerProp<(value: string) => void>
+  onInput?: ListenerProp<(value: string, e: Event) => void>
+  onChange?: ListenerProp<(value: string, e: Event) => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: string) => void>
 }
 
 export class Input extends VarComponent {
