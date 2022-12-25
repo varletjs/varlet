@@ -292,7 +292,9 @@ export default defineComponent({
     call(bindForm, inputProvider)
 
     onMounted(() => {
-      if (props.autofocus) focus()
+      if (props.autofocus) {
+        focus()
+      }
     })
 
     return {
