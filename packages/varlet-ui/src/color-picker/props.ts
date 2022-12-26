@@ -13,7 +13,7 @@ export const colorPickerProps = {
   },
   mode: {
     type: String,
-    default: 'rgba',
+    default: 'hsl',
     // validator: (v: string) => modes.includes(v),
   },
   sliderLayout: {

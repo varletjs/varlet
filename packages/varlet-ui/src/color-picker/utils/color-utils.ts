@@ -164,7 +164,6 @@ export function RGBAtoHex(rgba: RGBA): Hex {
     // return ('00'.substring(0, 2 - h.length) + h).toUpperCase()
     return '00'.substring(0, 2 - h.length) + h
   }
-  console.log(`#${[toHex(rgba.r), toHex(rgba.g), toHex(rgba.b), toHex(Math.round(rgba.a * 255))].join('')}`)
   return `#${[toHex(rgba.r), toHex(rgba.g), toHex(rgba.b), toHex(Math.round(rgba.a * 255))].join('')}`
 }
 
@@ -339,8 +338,6 @@ export function parseColor(color: Color, oldColor?: Partial<ColorPickerColor>): 
     if (oldColor && hex === oldColor.hexa) {
       return oldColor
     }
-    console.log('我走这里来了')
-    console.log(hex)
 
     return fromHexa(hex)
   }
@@ -391,7 +388,6 @@ export function extractColor(
 ): string | ColorPickerColor | Record<string, unknown> | undefined {
   // 色相
   const hue = keepDecimal(color.hsla.h, 2)
-  console.log(hue)
   // 饱和度
   const hslSaturation = keepDecimal(color.hsla.s, 2)
   // 亮度

@@ -30,6 +30,7 @@ export default defineComponent({
     //   showAlpha: useReactive(() => props.showAlpha),
     //   swatches: useReactive(() => props.swatches),
     // }
+    const testValue = ref('')
 
     // provide('provideData', readonly(provideData))
     const initialColor = ref<Partial<ColorPickerColor>>()
@@ -42,11 +43,11 @@ export default defineComponent({
 
     // 更新用户输入颜色 2021.12.10
     function updateModelValueColor(color: Partial<ColorPickerColor>) {
-      console.log(color)
       initialColor.value = color
       // 提取颜色 2021.12.10
       const value = extractColor(initialColor.value as ColorPickerColor, modelValue.value, mode.value as string, true)
       emit('update:modelValue', value)
+      testValue.value = value
     }
     // // 交互触发item 颜色 面板  动态修改alpha后要还原 alpha 2021.12.18
     // const triggerColor = computed(() => {
@@ -91,8 +92,6 @@ export default defineComponent({
     watch(
       modelValue,
       (newValue) => {
-        console.log(newValue)
-        console.log(initialColor.value)
         updateModelValueColor(parseColor(newValue, initialColor.value))
       },
       { immediate: true }
@@ -111,6 +110,8 @@ export default defineComponent({
                 onChangeTextModeType={changeTextModeType}
               ></color-panel>
             </div> */}
+            {testValue.value}
+            <div></div>
             {initialColor.value?.hue}
             {props.canvasLayout && <VarColorPickerCanvas color={initialColor.value} onUpdate:color={updateColor} />}
             {(props.sliderLayout || props.inputLayout) && (
