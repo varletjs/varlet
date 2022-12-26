@@ -6,15 +6,15 @@ export const colorPickerProps = {
     type: [Object, String] as PropType<string | number>,
     default: {},
   },
+  mode: {
+    type: String,
+    default: 'hex',
+    validator: (v: string) => Object.keys(modes).includes(v),
+  },
   modes: {
     type: Array as PropType<string[]>,
     default: () => Object.keys(modes),
-    // validator: (v: any) => Array.isArray(v) && v.every((m) => modes.includes(m)),
-  },
-  mode: {
-    type: String,
-    default: 'hsl',
-    // validator: (v: string) => modes.includes(v),
+    validator: (v: any) => Array.isArray(v) && v.every((m) => Object.keys(modes).includes(m)),
   },
   sliderLayout: {
     type: Boolean,

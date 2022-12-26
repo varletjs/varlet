@@ -41,7 +41,6 @@ export default defineComponent({
           const saturationGradient = canvas.createLinearGradient(0, 0, parentWidth as number, 0)
           saturationGradient.addColorStop(0, 'hsla(0, 0%, 100%, 1)') // white
           saturationGradient.addColorStop(1, `hsla(${props.color.hue ?? 0}, 100%, 50%, 1)`)
-
           canvas.fillStyle = saturationGradient
           canvas.fillRect(0, 0, parentWidth, props.height)
           const valueGradient = canvas.createLinearGradient(0, 0, 0, props.height)
@@ -118,7 +117,14 @@ export default defineComponent({
     //     updatePosition()
     //   }
     // )
-    watch(getDotStyle, () => {})
+    watch(
+      () => props.color,
+      () => {
+        cursorLeft.value = props.color?.hsva.s * parseInt(props.width, 10)
+        cursorTop.value = (1 - props.color?.hsva.v) * parseInt(props.height, 10)
+      },
+      { immediate: true, deep: true }
+    )
     watch(() => props.color?.hue, renderCanvas, { immediate: true })
     return () => {
       return (
