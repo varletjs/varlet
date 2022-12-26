@@ -1,4 +1,3 @@
-// Component entry, the folder where the file exists will be exposed to the user
 import type { App } from 'vue'
 import Breadcrumbs from './Breadcrumbs.vue'
 
