@@ -4,7 +4,7 @@
     :class="
       classes(
         n(),
-        namespace,
+        [namespace !== n(), namespace],
         `${namespace}--set`,
         [isURL(name), n('image'), `${namespace}-${nextName}`],
         [shrinking, n('--shrinking')]

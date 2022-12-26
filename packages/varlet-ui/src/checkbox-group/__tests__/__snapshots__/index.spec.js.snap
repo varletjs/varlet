@@ -4,7 +4,7 @@ exports[`test checkbox example 1`] = `
 "<div class=\\"app-type\\">基本使用</div>
 <div class=\\"var-checkbox__wrap\\">
   <div class=\\"var-checkbox\\">
-    <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+    <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
     <div class=\\"var-checkbox__text\\">当前的值: false</div>
   </div>
   <transition-stub>
@@ -14,7 +14,7 @@ exports[`test checkbox example 1`] = `
 <div class=\\"app-type\\">设置状态值</div>
 <div class=\\"var-checkbox__wrap\\">
   <div class=\\"var-checkbox\\">
-    <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+    <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
     <div class=\\"var-checkbox__text\\">当前的值: 0</div>
   </div>
   <transition-stub>
@@ -24,7 +24,7 @@ exports[`test checkbox example 1`] = `
 <div class=\\"app-type\\">修改图标和颜色</div>
 <div class=\\"var-checkbox__wrap\\">
   <div class=\\"var-checkbox\\">
-    <div class=\\"var-checkbox__action var-checkbox--unchecked\\" style=\\"color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon var-icon--set var-icon-heart-half-full\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
+    <div class=\\"var-checkbox__action var-checkbox--unchecked\\" style=\\"color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
     <div class=\\"var-checkbox__text\\">当前的值: false</div>
   </div>
   <transition-stub>
@@ -34,7 +34,7 @@ exports[`test checkbox example 1`] = `
 <div class=\\"app-type\\">禁用</div>
 <div class=\\"var-checkbox__wrap\\">
   <div class=\\"var-checkbox\\">
-    <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--disabled\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+    <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--disabled\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
     <div class=\\"var-checkbox__text var-checkbox--disabled\\">当前的值: false</div>
   </div>
   <transition-stub>
@@ -44,7 +44,7 @@ exports[`test checkbox example 1`] = `
 <div class=\\"app-type\\">只读</div>
 <div class=\\"var-checkbox__wrap\\">
   <div class=\\"var-checkbox\\">
-    <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+    <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
     <div class=\\"var-checkbox__text\\">当前的值: false</div>
   </div>
   <transition-stub>
@@ -56,7 +56,7 @@ exports[`test checkbox example 1`] = `
   <div class=\\"var-checkbox-group var-checkbox-group--horizontal\\">
     <div class=\\"var-checkbox__wrap\\">
       <div class=\\"var-checkbox\\">
-        <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+        <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
         <div class=\\"var-checkbox__text\\">吃饭</div>
       </div>
       <transition-stub>
@@ -65,7 +65,7 @@ exports[`test checkbox example 1`] = `
     </div>
     <div class=\\"var-checkbox__wrap\\">
       <div class=\\"var-checkbox\\">
-        <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+        <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
         <div class=\\"var-checkbox__text\\">睡觉</div>
       </div>
       <transition-stub>
@@ -87,7 +87,7 @@ exports[`test checkbox example 1`] = `
 <div class=\\"app-type\\">复选框字段校验</div>
 <div class=\\"var-checkbox__wrap\\">
   <div class=\\"var-checkbox\\">
-    <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+    <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
     <div class=\\"var-checkbox__text\\">当前的值: false</div>
   </div>
   <transition-stub>
@@ -99,7 +99,7 @@ exports[`test checkbox example 1`] = `
   <div class=\\"var-checkbox-group var-checkbox-group--horizontal\\">
     <div class=\\"var-checkbox__wrap\\">
       <div class=\\"var-checkbox\\">
-        <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+        <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
         <div class=\\"var-checkbox__text\\">吃饭</div>
       </div>
       <transition-stub>
@@ -108,7 +108,7 @@ exports[`test checkbox example 1`] = `
     </div>
     <div class=\\"var-checkbox__wrap\\">
       <div class=\\"var-checkbox\\">
-        <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+        <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
         <div class=\\"var-checkbox__text\\">睡觉</div>
       </div>
       <transition-stub>
@@ -129,7 +129,7 @@ exports[`test checkbox group layout direction 1`] = `
   <div class=\\"var-checkbox-group var-checkbox-group--vertical\\">
     <div class=\\"var-checkbox__wrap\\">
       <div class=\\"var-checkbox\\">
-        <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+        <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
         <div class=\\"var-checkbox__text\\"></div>
       </div>
       <transition-stub>
@@ -138,7 +138,7 @@ exports[`test checkbox group layout direction 1`] = `
     </div>
     <div class=\\"var-checkbox__wrap\\">
       <div class=\\"var-checkbox\\">
-        <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+        <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
         <div class=\\"var-checkbox__text\\"></div>
       </div>
       <transition-stub>
@@ -157,7 +157,7 @@ exports[`test checkbox group validation 1`] = `
   <div class=\\"var-checkbox-group var-checkbox-group--horizontal\\">
     <div class=\\"var-checkbox__wrap\\">
       <div class=\\"var-checkbox\\">
-        <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--error\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+        <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--error\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
         <div class=\\"var-checkbox__text var-checkbox--error\\"></div>
       </div>
       <transition-stub>
@@ -166,7 +166,7 @@ exports[`test checkbox group validation 1`] = `
     </div>
     <div class=\\"var-checkbox__wrap\\">
       <div class=\\"var-checkbox\\">
-        <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--error\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+        <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--error\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
         <div class=\\"var-checkbox__text var-checkbox--error\\"></div>
       </div>
       <transition-stub>
@@ -196,7 +196,7 @@ exports[`test checkbox group validation 2`] = `
   <div class=\\"var-checkbox-group var-checkbox-group--horizontal\\">
     <div class=\\"var-checkbox__wrap\\">
       <div class=\\"var-checkbox\\">
-        <div class=\\"var-checkbox__action var-checkbox--checked\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon var-checkbox--with-animation\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+        <div class=\\"var-checkbox__action var-checkbox--checked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon var-checkbox--with-animation\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
         <div class=\\"var-checkbox__text\\"></div>
       </div>
       <transition-stub>
@@ -205,7 +205,7 @@ exports[`test checkbox group validation 2`] = `
     </div>
     <div class=\\"var-checkbox__wrap\\">
       <div class=\\"var-checkbox\\">
-        <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+        <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
         <div class=\\"var-checkbox__text\\"></div>
       </div>
       <transition-stub>
@@ -222,7 +222,7 @@ exports[`test checkbox group validation 2`] = `
 exports[`test checkbox validation 1`] = `
 "<div class=\\"var-checkbox__wrap\\">
   <div class=\\"var-checkbox\\">
-    <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--error\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+    <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--error\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
     <div class=\\"var-checkbox__text var-checkbox--error\\"></div>
   </div>
   <transition-stub>
@@ -245,7 +245,7 @@ exports[`test checkbox validation 1`] = `
 exports[`test checkbox validation 2`] = `
 "<div class=\\"var-checkbox__wrap\\">
   <div class=\\"var-checkbox\\">
-    <div class=\\"var-checkbox__action var-checkbox--checked\\"><i class=\\"var-icon var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon var-checkbox--with-animation\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+    <div class=\\"var-checkbox__action var-checkbox--checked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon var-checkbox--with-animation\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
     <div class=\\"var-checkbox__text\\"></div>
   </div>
   <transition-stub>
