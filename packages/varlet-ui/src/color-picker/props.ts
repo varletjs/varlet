@@ -8,7 +8,7 @@ export const colorPickerProps = {
   },
   mode: {
     type: String,
-    default: 'hex',
+    default: 'rgb',
     validator: (v: string) => Object.keys(modes).includes(v),
   },
   modes: {

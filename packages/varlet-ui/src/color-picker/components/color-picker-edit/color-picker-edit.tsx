@@ -18,10 +18,12 @@ export default defineComponent({
 
     const inputs = computed(() => {
       const mode = enabledModes.value.find((m) => m.name === props.mode)
-      // console.log(mode)
+      console.log(mode)
       if (!mode) return []
+      console.log(color.value)
 
-      const convertColor = color.value ? mode.to(color.value) : {}
+      const convertColor = color.value ? mode.to(color.value.hsva) : {}
+      console.log(convertColor)
 
       return mode.inputs?.map(({ getValue, getColor, ...inputProps }) => {
         return {
@@ -31,15 +33,13 @@ export default defineComponent({
           value: getValue(convertColor),
           onChange: (e: InputEvent) => {
             const target = e.target as HTMLInputElement | null
-
             if (!target) return
-
             emit('update:color', mode.from(getColor(convertColor, target.value)))
           },
         }
       })
     })
-    // console.log(inputs.value)
+    console.log(inputs.value)
 
     return () => {
       return (
@@ -52,11 +52,7 @@ export default defineComponent({
               text
               round
               onClick={() => {
-                // console.log(enabledModes)
-                // console.log(props.mode);
                 const mi = enabledModes.value.findIndex((m) => m.name === props.mode)
-                // console.log(mi)
-
                 emit('update:mode', enabledModes.value[(mi + 1) % enabledModes.value.length].name)
               }}
             >

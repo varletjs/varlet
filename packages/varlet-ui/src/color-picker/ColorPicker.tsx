@@ -128,7 +128,7 @@ export default defineComponent({
                     </div>
                   </div>
                 )}
-                {/* {props.inputLayout && (
+                {props.inputLayout && (
                   <VarColorPickerEdit
                     color={initialColor.value}
                     onUpdate:color={updateColor}
@@ -137,10 +137,10 @@ export default defineComponent({
                     mode={currentMode.value}
                     onUpdate:mode={(m) => (currentMode.value = m)}
                   />
-                )} */}
+                )}
               </div>
             )}
-            {/* {props.swatchesLayout && <VarColorPickerSwatches color={initialColor.value} onUpdate:color={updateColor} />} */}
+            {props.swatchesLayout && <VarColorPickerSwatches color={initialColor.value} onUpdate:color={updateColor} />}
           </div>
         </>
       )
