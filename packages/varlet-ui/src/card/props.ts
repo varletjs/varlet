@@ -32,7 +32,6 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  'onUpdate:floating': defineListenerProp<(value: boolean) => void>(),
   floatingDuration: {
     type: Number,
     default: 250,
@@ -57,4 +56,5 @@ export const props = {
     default: false,
   },
   onClick: defineListenerProp<(e: Event) => void>(),
+  'onUpdate:floating': defineListenerProp<(value: boolean) => void>(),
 }
