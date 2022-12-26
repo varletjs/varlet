@@ -45,21 +45,41 @@ Used to display information hierarchically.
 Custom content can be used as separator by setting slot.
 
 ```html
-<var-breadcrumbs>
-   <var-breadcrumb>
-     Home
-     <template #separator>
-       <var-icon name="menu-right" style="margin: 0 4px" />
-     </template>
-   </var-breadcrumb>
-   <var-breadcrumb>
-     Link 1
-     <template #separator>
-       <var-icon name="menu-right" style="margin: 0 4px" />
-     </template>
-   </var-breadcrumb>
-   <var-breadcrumb>Link 2</var-breadcrumb>
-</var-breadcrumbs>
+<template>
+  <var-breadcrumbs>
+    <var-breadcrumb>
+      Home
+      <template #separator>
+        <var-icon name="menu-right" style="margin: 1px 4px 0" />
+      </template>
+    </var-breadcrumb>
+    <var-breadcrumb>
+      Link 1
+      <template #separator>
+        <var-icon name="menu-right" style="margin: 1px 4px 0" />
+      </template>
+    </var-breadcrumb>
+    <var-breadcrumb>Link 2</var-breadcrumb>
+  </var-breadcrumbs>
+</template>
+```
+
+### Events
+
+Register the click event of the breadcrumb through `@click`, the last breadcrumb will not trigger the click event.
+
+```html
+<script setup>
+import { Snackbar } from '@varlet/ui'
+</script>
+
+<template>
+  <var-breadcrumbs>
+    <var-breadcrumb @click="Snackbar('Home')">Home</var-breadcrumb>
+    <var-breadcrumb @click="Snackbar('Link 1')">Link 1</var-breadcrumb>
+    <var-breadcrumb @click="Snackbar('Link 2')">Link 2</var-breadcrumb>
+  </var-breadcrumbs>
+</template>
 ```
 
 ## API

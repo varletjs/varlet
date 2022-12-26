@@ -45,21 +45,41 @@
 通过设置插槽可以使用自定义内容作为分隔符。
 
 ```html
-<var-breadcrumbs>
-  <var-breadcrumb>
-    首页
-    <template #separator>
-      <var-icon name="menu-right" style="margin: 0 4px" />
-    </template>
-  </var-breadcrumb>
-  <var-breadcrumb>
-    一级
-    <template #separator>
-      <var-icon name="menu-right" style="margin: 0 4px" />
-    </template>
-  </var-breadcrumb>
-  <var-breadcrumb>二级</var-breadcrumb>
-</var-breadcrumbs>
+<template>
+  <var-breadcrumbs>
+    <var-breadcrumb>
+      首页
+      <template #separator>
+        <var-icon name="menu-right" style="margin: 1px 4px 0" />
+      </template>
+    </var-breadcrumb>
+    <var-breadcrumb>
+      一级
+      <template #separator>
+        <var-icon name="menu-right" style="margin: 1px 4px 0" />
+      </template>
+    </var-breadcrumb>
+    <var-breadcrumb>二级</var-breadcrumb>
+  </var-breadcrumbs>
+</template>
+```
+
+### 注册事件
+
+通过 `@click` 注册面包屑的点击事件，最后一个面包屑不会触发点击事件。
+
+```html
+<script setup>
+import { Snackbar } from '@varlet/ui'
+</script>
+
+<template>
+  <var-breadcrumbs>
+    <var-breadcrumb @click="Snackbar('首页')">首页</var-breadcrumb>
+    <var-breadcrumb @click="Snackbar('一级')">一级</var-breadcrumb>
+    <var-breadcrumb @click="Snackbar('二级')">二级</var-breadcrumb>
+  </var-breadcrumbs>
+</template>
 ```
 
 ## API

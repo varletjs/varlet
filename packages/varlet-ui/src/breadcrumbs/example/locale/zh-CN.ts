@@ -6,4 +6,5 @@ export default {
   level1: '首页',
   level2: '一级',
   level3: '二级',
+  events: '注册事件',
 }

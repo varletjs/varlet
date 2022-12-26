@@ -8,6 +8,8 @@ export * from './backTop'
 export * from './badge'
 export * from './bottomNavigation'
 export * from './bottomNavigationItem'
+export * from './breadcrumb'
+export * from './breadcrumbs'
 export * from './button'
 export * from './card'
 export * from './cell'
@@ -81,6 +83,8 @@ declare module 'vue' {
     VarBadge: typeof import('@varlet/ui')['_BadgeComponent']
     VarBottomNavigation: typeof import('@varlet/ui')['_BottomNavigationComponent']
     VarBottomNavigationItem: typeof import('@varlet/ui')['_BottomNavigationItemComponent']
+    VarBreadcrumb: typeof import('@varlet/ui')['_BreadcrumbComponent']
+    VarBreadcrumbs: typeof import('@varlet/ui')['_BreadcrumbsComponent']
     VarButton: typeof import('@varlet/ui')['_ButtonComponent']
     VarCard: typeof import('@varlet/ui')['_CardComponent']
     VarCell: typeof import('@varlet/ui')['_CellComponent']

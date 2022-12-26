@@ -1,6 +1,8 @@
 <template>
-  <div :class="classes(n(), [!isLast, n('--active')])" @click="onClick">
-    <slot />
+  <div :class="n()">
+    <div :class="classes(n('content'), [!isLast, n('--active')])" @click="handleClick">
+      <slot />
+    </div>
     <slot v-if="!isLast" name="separator">
       <div :class="n('separator')">
         {{ separator ?? parentSeparator }}
@@ -13,17 +15,25 @@
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { useBreadcrumb } from './provide'
-import { createNamespace } from '../utils/components'
+import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('breadcrumb')
 
 export default defineComponent({
   name: 'VarBreadcrumb',
   props,
-  setup() {
+  setup(props) {
     const { index, breadcrumb, bindBreadcrumb } = useBreadcrumb()
     const isLast = computed(() => index.value === breadcrumb.length.value - 1)
     const parentSeparator = computed(() => breadcrumb.separator.value)
+
+    const handleClick = (e: Event) => {
+      if (isLast.value) {
+        return
+      }
+
+      call(props.onClick, e)
+    }
 
     bindBreadcrumb(null)
 
@@ -32,6 +42,7 @@ export default defineComponent({
       classes,
       isLast,
       parentSeparator,
+      handleClick,
     }
   },
 })

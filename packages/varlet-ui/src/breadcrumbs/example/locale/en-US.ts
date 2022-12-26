@@ -6,4 +6,5 @@ export default {
   level1: 'Home',
   level2: 'Link 1',
   level3: 'Link 2',
+  events: 'Events',
 }

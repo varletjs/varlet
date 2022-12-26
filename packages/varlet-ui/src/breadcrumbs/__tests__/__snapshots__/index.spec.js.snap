@@ -2,11 +2,16 @@
 
 exports[`test breadcrumbs basic usage 1`] = `
 "<div class=\\"var-breadcrumbs\\">
-  <div class=\\"var-breadcrumb var-breadcrumb--active\\">HOME<div class=\\"var-breadcrumb__separator\\">/</div>
+  <div class=\\"var-breadcrumb\\">
+    <div class=\\"var-breadcrumb__content var-breadcrumb--active\\">HOME</div>
+    <div class=\\"var-breadcrumb__separator\\">/</div>
   </div>
-  <div class=\\"var-breadcrumb var-breadcrumb--active\\">LINK 1<div class=\\"var-breadcrumb__separator\\">/</div>
+  <div class=\\"var-breadcrumb\\">
+    <div class=\\"var-breadcrumb__content var-breadcrumb--active\\">LINK 1</div>
+    <div class=\\"var-breadcrumb__separator\\">/</div>
   </div>
-  <div class=\\"var-breadcrumb\\">LINK 2
+  <div class=\\"var-breadcrumb\\">
+    <div class=\\"var-breadcrumb__content\\">LINK 2</div>
     <!--v-if-->
   </div>
 </div>"
@@ -14,11 +19,16 @@ exports[`test breadcrumbs basic usage 1`] = `
 
 exports[`test breadcrumbs parent and child separator 1`] = `
 "<div class=\\"var-breadcrumbs\\">
-  <div class=\\"var-breadcrumb var-breadcrumb--active\\">HOME<div class=\\"var-breadcrumb__separator\\">-</div>
+  <div class=\\"var-breadcrumb\\">
+    <div class=\\"var-breadcrumb__content var-breadcrumb--active\\">HOME</div>
+    <div class=\\"var-breadcrumb__separator\\">-</div>
   </div>
-  <div class=\\"var-breadcrumb var-breadcrumb--active\\">LINK 1<div class=\\"var-breadcrumb__separator\\">-</div>
+  <div class=\\"var-breadcrumb\\">
+    <div class=\\"var-breadcrumb__content var-breadcrumb--active\\">LINK 1</div>
+    <div class=\\"var-breadcrumb__separator\\">-</div>
   </div>
-  <div class=\\"var-breadcrumb\\">LINK 2
+  <div class=\\"var-breadcrumb\\">
+    <div class=\\"var-breadcrumb__content\\">LINK 2</div>
     <!--v-if-->
   </div>
 </div>"
@@ -26,11 +36,16 @@ exports[`test breadcrumbs parent and child separator 1`] = `
 
 exports[`test breadcrumbs parent separator 1`] = `
 "<div class=\\"var-breadcrumbs\\">
-  <div class=\\"var-breadcrumb var-breadcrumb--active\\">HOME<div class=\\"var-breadcrumb__separator\\">+</div>
+  <div class=\\"var-breadcrumb\\">
+    <div class=\\"var-breadcrumb__content var-breadcrumb--active\\">HOME</div>
+    <div class=\\"var-breadcrumb__separator\\">+</div>
   </div>
-  <div class=\\"var-breadcrumb var-breadcrumb--active\\">LINK 1<div class=\\"var-breadcrumb__separator\\">+</div>
+  <div class=\\"var-breadcrumb\\">
+    <div class=\\"var-breadcrumb__content var-breadcrumb--active\\">LINK 1</div>
+    <div class=\\"var-breadcrumb__separator\\">+</div>
   </div>
-  <div class=\\"var-breadcrumb\\">LINK 2
+  <div class=\\"var-breadcrumb\\">
+    <div class=\\"var-breadcrumb__content\\">LINK 2</div>
     <!--v-if-->
   </div>
 </div>"
@@ -38,9 +53,14 @@ exports[`test breadcrumbs parent separator 1`] = `
 
 exports[`test breadcrumbs slots 1`] = `
 "<div class=\\"var-breadcrumbs\\">
-  <div class=\\"var-breadcrumb var-breadcrumb--active\\">HOME<span>*</span></div>
-  <div class=\\"var-breadcrumb var-breadcrumb--active\\">LINK 1<span>*</span></div>
-  <div class=\\"var-breadcrumb\\">LINK 2
+  <div class=\\"var-breadcrumb\\">
+    <div class=\\"var-breadcrumb__content var-breadcrumb--active\\">HOME</div><span>*</span>
+  </div>
+  <div class=\\"var-breadcrumb\\">
+    <div class=\\"var-breadcrumb__content var-breadcrumb--active\\">LINK 1</div><span>*</span>
+  </div>
+  <div class=\\"var-breadcrumb\\">
+    <div class=\\"var-breadcrumb__content\\">LINK 2</div>
     <!--v-if-->
   </div>
 </div>"
