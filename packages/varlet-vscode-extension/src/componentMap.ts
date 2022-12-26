@@ -283,4 +283,10 @@ export const componentMap: Record<string, ComponentDescriptor> = {
   result: {
     site: '/result',
   },
+  breadcrumbs: {
+    site: '/breadcrumbs',
+  },
+  breadcrumb: {
+    site: '/breadcrumbs',
+  },
 }

@@ -139,6 +139,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Breadcrumbs 面包屑',
+          'en-US': 'Breadcrumbs',
+        },
+        doc: 'breadcrumbs',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Link 链接',
           'en-US': 'Link',
         },
@@ -318,14 +326,6 @@ export default defineConfig({
           'en-US': 'Table',
         },
         doc: 'table',
-        type: 2,
-      },
-      {
-        text: {
-          'zh-CN': 'Breadcrumb 面包屑',
-          'en-US': 'Breadcrumb',
-        },
-        doc: 'breadcrumbs',
         type: 2,
       },
       {

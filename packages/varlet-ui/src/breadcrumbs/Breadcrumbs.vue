@@ -1,38 +1,32 @@
 <template>
-  <div :class="classes(n())">
+  <div :class="n()">
     <slot />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, type ComputedRef } from 'vue'
 import { props } from './props'
-import { useBreadcrumbsList } from './provide'
+import { useBreadcrumbsList, type BreadcrumbsProvider } from './provide'
 import { createNamespace } from '../utils/components'
-import type { BreadcrumbsProvider } from './provide'
-import type { ComputedRef } from 'vue'
 
-const { n, classes } = createNamespace('breadcrumbs')
+const { n } = createNamespace('breadcrumbs')
 
 export default defineComponent({
   name: 'VarBreadcrumbs',
-  inheritAttrs: false,
   props,
   setup(props) {
     const separator: ComputedRef<string> = computed(() => props.separator)
     const { bindBreadcrumbList, length } = useBreadcrumbsList()
 
-    const breadcrumbsProvide: BreadcrumbsProvider = {
+    const breadcrumbsProvider: BreadcrumbsProvider = {
       length,
       separator,
     }
 
-    bindBreadcrumbList(breadcrumbsProvide)
+    bindBreadcrumbList(breadcrumbsProvider)
 
-    return {
-      n,
-      classes,
-    }
+    return { n }
   },
 })
 </script>

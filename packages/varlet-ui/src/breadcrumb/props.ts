@@ -1,12 +1,8 @@
-import { PropType } from 'vue'
-import type { RouteLocationRaw } from 'vue-router'
+import { defineListenerProp } from '../utils/components'
 
 export const props = {
   separator: {
     type: String,
   },
-  to: {
-    type: [String, Object] as PropType<RouteLocationRaw>,
-    default: '',
-  },
+  onClick: defineListenerProp<(e: Event) => void>(),
 }

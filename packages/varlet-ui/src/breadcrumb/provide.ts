@@ -5,12 +5,8 @@ import {
   BreadcrumbsProvider,
 } from '../breadcrumbs/provide'
 
-export interface BreadcrumbProvider {}
-
 export function useBreadcrumb() {
-  const { parentProvider, bindParent } = useParent<BreadcrumbsProvider, BreadcrumbProvider>(
-    BREADCRUMBS_BIND_BREADCRUMB_ITEM_KEY
-  )
+  const { parentProvider, bindParent } = useParent<BreadcrumbsProvider, null>(BREADCRUMBS_BIND_BREADCRUMB_ITEM_KEY)
   const { index } = useAtParentIndex(BREADCRUMBS_COUNT_BREADCRUMB_ITEM_KEY)
 
   if (!parentProvider || !bindParent || !index) {

@@ -1,9 +1,9 @@
 export default {
   basicUsage: 'Basic Usage',
   separator: 'Separator',
-  eachLevelSeparator: 'Each Level Separator',
+  childSeparator: 'Child Separator',
   separatorSlot: 'Separator Slot',
-  level1: 'homepage',
-  level2: 'Second Level',
-  level3: 'Third Level',
+  level1: 'Home',
+  level2: 'Link 1',
+  level3: 'Link 2',
 }

@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test breadcrumbs basic usage 1`] = `
+"<div class=\\"var-breadcrumbs\\">
+  <div class=\\"var-breadcrumb var-breadcrumb--active\\">HOME<div class=\\"var-breadcrumb__separator\\">/</div>
+  </div>
+  <div class=\\"var-breadcrumb var-breadcrumb--active\\">LINK 1<div class=\\"var-breadcrumb__separator\\">/</div>
+  </div>
+  <div class=\\"var-breadcrumb\\">LINK 2
+    <!--v-if-->
+  </div>
+</div>"
+`;
+
+exports[`test breadcrumbs parent and child separator 1`] = `
+"<div class=\\"var-breadcrumbs\\">
+  <div class=\\"var-breadcrumb var-breadcrumb--active\\">HOME<div class=\\"var-breadcrumb__separator\\">-</div>
+  </div>
+  <div class=\\"var-breadcrumb var-breadcrumb--active\\">LINK 1<div class=\\"var-breadcrumb__separator\\">-</div>
+  </div>
+  <div class=\\"var-breadcrumb\\">LINK 2
+    <!--v-if-->
+  </div>
+</div>"
+`;
+
+exports[`test breadcrumbs parent separator 1`] = `
+"<div class=\\"var-breadcrumbs\\">
+  <div class=\\"var-breadcrumb var-breadcrumb--active\\">HOME<div class=\\"var-breadcrumb__separator\\">+</div>
+  </div>
+  <div class=\\"var-breadcrumb var-breadcrumb--active\\">LINK 1<div class=\\"var-breadcrumb__separator\\">+</div>
+  </div>
+  <div class=\\"var-breadcrumb\\">LINK 2
+    <!--v-if-->
+  </div>
+</div>"
+`;
+
+exports[`test breadcrumbs slots 1`] = `
+"<div class=\\"var-breadcrumbs\\">
+  <div class=\\"var-breadcrumb var-breadcrumb--active\\">HOME<span>*</span></div>
+  <div class=\\"var-breadcrumb var-breadcrumb--active\\">LINK 1<span>*</span></div>
+  <div class=\\"var-breadcrumb\\">LINK 2
+    <!--v-if-->
+  </div>
+</div>"
+`;
