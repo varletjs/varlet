@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export type RefreshStatus = 'default' | 'pulling' | 'loosing' | 'loading' | 'success'
 
@@ -37,10 +38,6 @@ export const props = {
   successColor: {
     type: String,
   },
-  onRefresh: {
-    type: Function as PropType<() => void>,
-  },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: boolean) => void>,
-  },
+  onRefresh: defineListenerProp<() => void>(),
+  'onUpdate:modelValue': defineListenerProp<(value: boolean) => void>(),
 }

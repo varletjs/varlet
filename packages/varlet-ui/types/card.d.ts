@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export type CardFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
@@ -16,11 +16,11 @@ export interface CardProps extends BasicAttributes {
   description?: string
   elevation?: string | number
   ripple?: boolean
-  onClick?: (e: Event) => void
+  onClick?: ListenerProp<(e: Event) => void>
   layout?: CardLayout
   floating?: boolean
   floatingDuration?: number
-  'onUpdate:floating'?: (value: boolean) => void
+  'onUpdate:floating'?: ListenerProp<(value: boolean) => void>
 }
 
 export class Card extends VarComponent {

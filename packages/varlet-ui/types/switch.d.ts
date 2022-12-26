@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 
 export interface SwitchProps extends BasicAttributes {
   modelValue?: any
@@ -13,9 +13,9 @@ export interface SwitchProps extends BasicAttributes {
   closeColor?: string
   size?: string | number
   rules?: Array<(value: any) => any>
-  onClick?: (event: MouseEvent) => void
-  onChange?: (value: boolean) => void
-  'onUpdate:modelValue'?: (value: boolean) => void
+  onClick?: ListenerProp<(event: MouseEvent) => void>
+  onChange?: ListenerProp<(value: boolean) => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: boolean) => void>
 }
 
 export class Switch extends VarComponent {

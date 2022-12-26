@@ -1,4 +1,5 @@
 import { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export type Range = [number, number]
 
@@ -41,13 +42,7 @@ export const props = {
   showTotal: {
     type: Function as PropType<(total: number, range: Range) => string>,
   },
-  onChange: {
-    type: Function as PropType<(current: number, size: number) => void>,
-  },
-  'onUpdate:current': {
-    type: Function as PropType<(current: number) => void>,
-  },
-  'onUpdate:size': {
-    type: Function as PropType<(size: number) => void>,
-  },
+  onChange: defineListenerProp<(current: number, size: number) => void>(),
+  'onUpdate:current': defineListenerProp<(current: number) => void>(),
+  'onUpdate:size': defineListenerProp<(size: number) => void>(),
 }

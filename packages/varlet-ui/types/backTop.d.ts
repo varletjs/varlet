@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export interface BackTopProps extends BasicAttributes {
@@ -7,7 +7,7 @@ export interface BackTopProps extends BasicAttributes {
   target?: string | HTMLElement
   right?: number | string
   bottom?: number | string
-  onClick?: (e: MouseEvent) => void
+  onClick?: ListenerProp<(e: MouseEvent) => void>
 }
 
 export class BackTop extends VarComponent {

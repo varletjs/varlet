@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export type Format = 'ampm' | '24hr'
 export type AmPm = 'am' | 'pm'
@@ -58,10 +59,6 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: string) => void>,
-  },
-  onChange: {
-    type: Function as PropType<(value: string) => void>,
-  },
+  'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
+  onChange: defineListenerProp<(value: string) => void>(),
 }

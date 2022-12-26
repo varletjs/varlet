@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 
 export type AllowedTime = {
   hours?: (hour: number) => boolean
@@ -19,8 +19,8 @@ export interface TimePickerProps extends BasicAttributes {
   max?: string
   useSeconds?: boolean
   readonly?: boolean
-  onChange?: (value: string) => void
-  'onUpdate:modelValue'?: (value: string) => void
+  onChange?: ListenerProp<(value: string) => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: string) => void>
 }
 
 export class TimePicker extends VarComponent {

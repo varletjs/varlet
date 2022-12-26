@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export interface IndexBarProps extends BasicAttributes {
@@ -9,8 +9,8 @@ export interface IndexBarProps extends BasicAttributes {
   zIndex?: number | string
   highlightColor?: string
   duration?: number | string
-  onClick?: (value: string | number) => void
-  onChange?: (value: string | number) => void
+  onClick?: ListenerProp<(value: string | number) => void>
+  onChange?: ListenerProp<(value: string | number) => void>
 }
 
 export class IndexBar extends VarComponent {

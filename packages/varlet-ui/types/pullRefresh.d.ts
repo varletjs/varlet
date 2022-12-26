@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export interface PullRefreshProps extends BasicAttributes {
@@ -10,8 +10,8 @@ export interface PullRefreshProps extends BasicAttributes {
   successBgColor?: string
   color?: string
   successColor?: string
-  onRefresh?: () => void
-  'onUpdate:modelValue'?: (value: boolean) => void
+  onRefresh?: ListenerProp<() => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: boolean) => void>
 }
 
 export class PullRefresh extends VarComponent {
