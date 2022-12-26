@@ -22,6 +22,6 @@ function changeColor() {
   <var-button type="primary" @click="changeColor">切换按钮</var-button>
   <app-type>我是color picker</app-type>
   {{ colorDemo }}
-  <!-- <var-color-picker v-model="colorDemo" /> -->
-  <var-color-picker />
+  <var-color-picker v-model="colorDemo" />
+  <!-- <var-color-picker /> -->
 </template>

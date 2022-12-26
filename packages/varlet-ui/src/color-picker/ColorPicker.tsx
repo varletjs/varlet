@@ -42,6 +42,7 @@ export default defineComponent({
 
     // 更新用户输入颜色 2021.12.10
     function updateModelValueColor(color: Partial<ColorPickerColor>) {
+      console.log(color)
       initialColor.value = color
       // 提取颜色 2021.12.10
       const value = extractColor(initialColor.value as ColorPickerColor, modelValue.value, mode.value as string, true)
@@ -90,7 +91,8 @@ export default defineComponent({
     watch(
       modelValue,
       (newValue) => {
-        console.log(parseColor(newValue, initialColor.value))
+        console.log(newValue)
+        console.log(initialColor.value)
         updateModelValueColor(parseColor(newValue, initialColor.value))
       },
       { immediate: true }

@@ -164,7 +164,7 @@ export function RGBAtoHex(rgba: RGBA): Hex {
     // return ('00'.substring(0, 2 - h.length) + h).toUpperCase()
     return '00'.substring(0, 2 - h.length) + h
   }
-
+  console.log(`#${[toHex(rgba.r), toHex(rgba.g), toHex(rgba.b), toHex(Math.round(rgba.a * 255))].join('')}`)
   return `#${[toHex(rgba.r), toHex(rgba.g), toHex(rgba.b), toHex(Math.round(rgba.a * 255))].join('')}`
 }
 
@@ -193,7 +193,7 @@ export function parseHex(hex: string): Hex {
     hex = hex.slice(1)
   }
 
-  hex = hex.replace(/([^0-9a-f])/gi, 'F')
+  hex = hex.replace(/([^0-9a-f])/gi, 'f')
 
   if (hex.length === 3 || hex.length === 4) {
     hex = hex
@@ -203,9 +203,9 @@ export function parseHex(hex: string): Hex {
   }
 
   if (hex.length === 6) {
-    hex = padEnd(hex, 8, 'F')
+    hex = padEnd(hex, 8, 'f')
   } else {
-    hex = padEnd(padEnd(hex, 6), 8, 'F')
+    hex = padEnd(padEnd(hex, 6), 8, 'f')
   }
 
   // return `#${hex}`.toUpperCase().substring(0, 9)
@@ -338,9 +338,11 @@ export function parseColor(color: Color, oldColor?: Partial<ColorPickerColor>): 
     const hex = parseHex(color)
     if (oldColor && hex === oldColor.hexa) {
       return oldColor
-    } else {
-      return fromHexa(hex)
     }
+    console.log('我走这里来了')
+    console.log(hex)
+
+    return fromHexa(hex)
   }
 
   if (typeof color === 'object') {
@@ -389,6 +391,7 @@ export function extractColor(
 ): string | ColorPickerColor | Record<string, unknown> | undefined {
   // 色相
   const hue = keepDecimal(color.hsla.h, 2)
+  console.log(hue)
   // 饱和度
   const hslSaturation = keepDecimal(color.hsla.s, 2)
   // 亮度
@@ -412,11 +415,14 @@ export function extractColor(
   if (typeof input === 'string') {
     if (mode === 'hex') {
       return showAlpha ? color.hexa : color.hex
-    } else if (mode === 'hsl') {
+    }
+    if (mode === 'hsl') {
       return `${isShowAlpha(mode)}(${hue}, ${hslSaturation}, ${lightness}${showAlpha ? ', ' + color.alpha : ''})`
-    } else if (mode === 'rgb') {
+    }
+    if (mode === 'rgb') {
       return `${isShowAlpha(mode)}(${red}, ${green}, ${blue}${showAlpha ? ', ' + color.alpha : ''})`
-    } else if (mode === 'hsv') {
+    }
+    if (mode === 'hsv') {
       return `${isShowAlpha(mode)}(${hue}, ${hsvSaturation}, ${value}${showAlpha ? ', ' + color.alpha : ''})`
     }
     return input.length === 7 ? color.hex : color.hexa
