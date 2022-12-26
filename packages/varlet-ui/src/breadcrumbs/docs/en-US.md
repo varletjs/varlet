@@ -4,7 +4,7 @@
 
 Used to display information hierarchically.
 
-### Basic usage
+### Basic Usage
 
 ```html
 <template>
