@@ -25,7 +25,7 @@ import { defineComponent, ref, computed, onMounted, onUpdated, watch } from 'vue
 import { props } from './props'
 import { useBottomNavigationItems } from './provide'
 import { createNamespace, call } from '../utils/components'
-import { isNumber } from '@varlet/shared'
+import { isNumber, isArray } from '@varlet/shared'
 import type { BottomNavigationProvider } from './provide'
 import type { BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 import type { Ref, ComputedRef } from 'vue'
@@ -93,7 +93,13 @@ export default defineComponent({
     }
 
     const handleBeforeChange = (changedValue: number | string) => {
-      Promise.resolve(call(props.onBeforeChange, changedValue)).then((res) => res && handleChange(changedValue))
+      let results = call(props.onBeforeChange, changedValue)
+      results = isArray(results) ? results : [results]
+      Promise.all(results).then((results) => {
+        if (!results.some((result) => !result)) {
+          handleChange(changedValue)
+        }
+      })
     }
 
     const handleChange = (changedValue: number | string) => {

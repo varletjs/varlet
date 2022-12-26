@@ -1,4 +1,3 @@
-import type { PropType } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
 import { props as iconProps } from '../icon/props'
 
