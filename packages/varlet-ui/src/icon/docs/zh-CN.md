@@ -87,25 +87,18 @@ const toggle = () => {
 /* 设置字体 */
 @font-face {
   font-family: "my-icons";
-  src: url("https://xxx.my-icons.eot");
-  src: url("https://xxx.my-icons.eot") format("embedded-opentype"),
-    url("https://xxx.my-icons.woff2") format("woff2"),
-    url("https://xxx.my-icons.woff") format("woff"),
-    url("https://xxx.my-icons.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+  src: url("https://xxx.my-icons.ttf") format("truetype");
 }
 
-/* 字体样式 */
-.my-icon--set,
-.my-icon--set::before {
-  position: relative;
-  display: inline-block;
-  font: normal normal normal 14px/1 "my-icons";
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
+/* 设置命名空间 */
+.my-icon {
+  font-family: "my-icons";
 }
+/* 或 */
+.my-icon--set {
+  font-family: "my-icons";
+}
+/* 设置命名空间结束 */
 
 /* 字体名称映射码点 */
 .my-icon-hot::before {

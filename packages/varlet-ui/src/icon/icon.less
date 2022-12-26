@@ -5,12 +5,23 @@
 }
 
 .var-icon {
+  position: relative;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-size: var(--icon-size);
-  color: inherit;
   vertical-align: bottom;
+  color: inherit;
+  font-size: var(--icon-size);
+
+  &::before {
+    position: relative;
+    display: inline-block;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-weight: normal;
+    font-style: normal;
+  }
 
   &--shrinking {
     transform: scale(0);

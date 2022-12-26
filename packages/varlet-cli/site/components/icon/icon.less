@@ -7,12 +7,23 @@
 }
 
 .var-site-icon {
+  position: relative;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   font-size: var(--site-icon-size);
   color: inherit;
   vertical-align: bottom;
+
+  &::before {
+    position: relative;
+    display: inline-block;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-weight: normal;
+    font-style: normal;
+  }
 
   &--shrinking {
     transform: scale(0);

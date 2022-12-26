@@ -16,7 +16,7 @@ exports[`test allowedDates prop 1`] = `
         <div class=\\"var-day-picker__content\\">
           <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\">
               <!--v-if-->
-              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></div>
+              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></div>
             </button>
             <div class=\\"var-picker-header__value\\">
               <transition-stub>
@@ -24,7 +24,7 @@ exports[`test allowedDates prop 1`] = `
               </transition-stub>
             </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\">
               <!--v-if-->
-              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></div>
+              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></div>
             </button>
           </div>
           <transition-stub>
@@ -64,7 +64,7 @@ exports[`test datePicker style and type 1`] = `
         <div class=\\"var-month-picker__content\\">
           <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\">
               <!--v-if-->
-              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></div>
+              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></div>
             </button>
             <div class=\\"var-picker-header__value\\">
               <transition-stub>
@@ -72,7 +72,7 @@ exports[`test datePicker style and type 1`] = `
               </transition-stub>
             </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\">
               <!--v-if-->
-              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></div>
+              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></div>
             </button>
           </div>
           <transition-stub>
@@ -150,7 +150,7 @@ exports[`test datePicker style and type 2`] = `
         <div class=\\"var-day-picker__content\\">
           <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\">
               <!--v-if-->
-              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></div>
+              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></div>
             </button>
             <div class=\\"var-picker-header__value\\">
               <transition-stub>
@@ -158,7 +158,7 @@ exports[`test datePicker style and type 2`] = `
               </transition-stub>
             </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\">
               <!--v-if-->
-              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></div>
+              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></div>
             </button>
           </div>
           <transition-stub>
@@ -347,7 +347,7 @@ exports[`test datePicker style and type test datePicker style and date 1`] = `
         <div class=\\"var-day-picker__content\\">
           <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\">
               <!--v-if-->
-              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></div>
+              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></div>
             </button>
             <div class=\\"var-picker-header__value\\">
               <transition-stub>
@@ -355,7 +355,7 @@ exports[`test datePicker style and type test datePicker style and date 1`] = `
               </transition-stub>
             </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\">
               <!--v-if-->
-              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></div>
+              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></div>
             </button>
           </div>
           <transition-stub>
@@ -532,7 +532,7 @@ exports[`test datePicker style and type test datePicker style and month 1`] = `
         <div class=\\"var-month-picker__content\\">
           <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\">
               <!--v-if-->
-              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></div>
+              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></div>
             </button>
             <div class=\\"var-picker-header__value\\">
               <transition-stub>
@@ -540,7 +540,7 @@ exports[`test datePicker style and type test datePicker style and month 1`] = `
               </transition-stub>
             </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\">
               <!--v-if-->
-              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></div>
+              <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon var-icon--set var-icon-chevron-right\\" style=\\"transition: transform 0ms;\\"></i></div>
             </button>
           </div>
           <transition-stub>
