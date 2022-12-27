@@ -2,7 +2,7 @@
   <component
     :is="sticky ? n('$-sticky') : Transition"
     :ref="sticky ? 'stickyComponent' : undefined"
-    :css-mode="stickyCssMode"
+    :css-mode="sticky ? stickyCssMode : undefined"
     :offset-top="sticky ? offsetTop : undefined"
     :z-index="sticky ? stickyZIndex : undefined"
   >
@@ -49,7 +49,7 @@
 
 <script lang="ts">
 import VarSticky from '../sticky'
-import { defineComponent, watch, ref, computed, Transition, onMounted, onUnmounted, nextTick } from 'vue'
+import { defineComponent, watch, ref, computed, Transition, onMounted, onUnmounted } from 'vue'
 import { props } from './props'
 import { useTabList } from './provide'
 import { isNumber } from '@varlet/shared'
@@ -187,7 +187,7 @@ export default defineComponent({
       () => length.value,
       async () => {
         await doubleRaf()
-        await resize()
+        resize()
       }
     )
 
