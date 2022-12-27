@@ -70,9 +70,9 @@ If necessary, you can switch to the `css sticky` layout mode to improve performa
 
 ### Methods
 
-| Method | Description | Arguments | Return                                    |
-|----------|----------|------|-------------------------------------------|
-| `resize` | trigger sticky layout redraw | `-`  | `{ offsetTop: number, isFixed: boolean }` |
+| Method | Description | Arguments | Return          |
+|----------|----------|------|-----------------|
+| `resize` | trigger sticky layout redraw | `-`  | `Promise<void>` |
 
 ### Events
 

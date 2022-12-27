@@ -186,6 +186,12 @@ export function doubleRaf() {
   })
 }
 
+export function raf() {
+  return new Promise((resolve) => {
+    requestAnimationFrame(resolve)
+  })
+}
+
 interface ScrollToOptions {
   top?: number
   left?: number

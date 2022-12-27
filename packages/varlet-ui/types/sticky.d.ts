@@ -9,11 +9,6 @@ export interface StickyProps extends BasicAttributes {
   onScroll?: ListenerProp<(offsetTop: number, isFixed: boolean) => void>
 }
 
-export interface StickyResizeParams {
-  offsetTop: number
-  isFixed: boolean
-}
-
 export class Sticky extends VarComponent {
   $props: StickyProps
 
@@ -21,7 +16,7 @@ export class Sticky extends VarComponent {
     default(): VNode[]
   }
 
-  resize(): StickyResizeParams | undefined
+  resize(): Promise<void>
 }
 
 export class _StickyComponent extends Sticky {}
