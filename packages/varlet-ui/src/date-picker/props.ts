@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 type AllowedDates = (val: string) => boolean
 
@@ -169,13 +170,7 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  onPreview: {
-    type: Function as PropType<(year: number, month: number) => void>,
-  },
-  onChange: {
-    type: Function as PropType<(value: string | string[]) => void>,
-  },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: string | string[]) => void>,
-  },
+  onPreview: defineListenerProp<(year: number, month: number) => void>(),
+  onChange: defineListenerProp<(value: string | string[]) => void>(),
+  'onUpdate:modelValue': defineListenerProp<(value: string | string[]) => void>(),
 }

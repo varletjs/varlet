@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { App, TeleportProps, VNode } from 'vue'
 
 export interface ImagePreviewProps extends BasicAttributes {
@@ -10,12 +10,12 @@ export interface ImagePreviewProps extends BasicAttributes {
   indicator?: boolean
   closeable?: boolean
   teleport?: TeleportProps['to']
-  onOpen?: () => void
-  onOpened?: () => void
-  onClose?: () => void
-  onClosed?: () => void
-  onChange?: (index: number) => void
-  'onUpdate:show'?: (show: boolean) => void
+  onOpen?: ListenerProp<() => void>
+  onOpened?: ListenerProp<() => void>
+  onClose?: ListenerProp<() => void>
+  onClosed?: ListenerProp<() => void>
+  onChange?: ListenerProp<(index: number) => void>
+  'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
 export interface ImagePreviewOptions {

@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export function typeValidator(type: string) {
   return ['text', 'password', 'number'].includes(type)
@@ -77,25 +78,11 @@ export const props = {
   rules: {
     type: Array as PropType<Array<(v: string) => any>>,
   },
-  onFocus: {
-    type: Function as PropType<(e: FocusEvent) => void>,
-  },
-  onBlur: {
-    type: Function as PropType<(e: FocusEvent) => void>,
-  },
-  onClick: {
-    type: Function as PropType<(e: Event) => void>,
-  },
-  onClear: {
-    type: Function as PropType<(value: string) => void>,
-  },
-  onInput: {
-    type: Function as PropType<(value: string, e: Event) => void>,
-  },
-  onChange: {
-    type: Function as PropType<(value: string, e: Event) => void>,
-  },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: string) => void>,
-  },
+  onFocus: defineListenerProp<(e: FocusEvent) => void>(),
+  onBlur: defineListenerProp<(e: FocusEvent) => void>(),
+  onClick: defineListenerProp<(e: Event) => void>(),
+  onClear: defineListenerProp<(value: string) => void>(),
+  onInput: defineListenerProp<(value: string, e: Event) => void>(),
+  onChange: defineListenerProp<(value: string, e: Event) => void>(),
+  'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
 }

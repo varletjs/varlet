@@ -88,25 +88,18 @@ Let's assume that we extend a font named `my-icons`.
 /* Set the font */
 @font-face {
   font-family: "my-icons";
-  src: url("https://xxx.my-icons.eot");
-  src: url("https://xxx.my-icons.eot") format("embedded-opentype"), 
-    url("https://xxx.my-icons.woff2") format("woff2"), 
-    url("https://xxx.my-icons.woff") format("woff"), 
-    url("https://xxx.my-icons.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+  src: url("https://xxx.my-icons.ttf") format("truetype");
 }
 
-/* Font style */
-.my-icon--set,
-.my-icon--set::before {
-  position: relative;
-  display: inline-block;
-  font: normal normal normal 14px/1 "my-icons";
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
+/* Set namespace */
+.my-icon {
+  font-family: "my-icons";
 }
+/* OR */
+.my-icon--set {
+  font-family: "my-icons";
+}
+/* Set namespace end */
 
 /* Font names map code points */
 .my-icon-hot::before {

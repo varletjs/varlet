@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, Type as LinkType } from './varComponent'
+import { VarComponent, BasicAttributes, Type as LinkType, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
 
@@ -16,7 +16,7 @@ export interface LinkProps extends BasicAttributes {
   disabled?: boolean
   textColor?: string
   textSize?: string | number
-  onClick?: (e: Event) => void
+  onClick?: ListenerProp<(e: Event) => void>
 }
 
 export class Link extends VarComponent {

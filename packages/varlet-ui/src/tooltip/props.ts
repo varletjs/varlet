@@ -1,6 +1,7 @@
 import type { PropType } from 'vue'
 import type { Placement as PopperPlacement } from '@popperjs/core'
 import { TeleportProps } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
 
@@ -78,19 +79,9 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  onOpen: {
-    type: Function as PropType<() => void>,
-  },
-  onOpened: {
-    type: Function as PropType<() => void>,
-  },
-  onClose: {
-    type: Function as PropType<() => void>,
-  },
-  onClosed: {
-    type: Function as PropType<() => void>,
-  },
-  'onUpdate:show': {
-    type: Function as PropType<(show: boolean) => void>,
-  },
+  onOpen: defineListenerProp<() => void>(),
+  onOpened: defineListenerProp<() => void>(),
+  onClose: defineListenerProp<() => void>(),
+  onClosed: defineListenerProp<() => void>(),
+  'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
 }

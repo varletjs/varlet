@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { LoadingType, LoadingSize } from './loading'
 import { App, TeleportProps, VNode } from 'vue'
 
@@ -21,11 +21,11 @@ export interface SnackbarProps extends BasicAttributes {
   vertical?: boolean
   show?: boolean
   forbidClick?: boolean
-  onOpen?: () => void
-  onClose?: () => void
-  onOpened?: () => void
-  onClosed?: () => void
-  'onUpdate:show'?: (show: boolean) => void
+  onOpen?: ListenerProp<() => void>
+  onClose?: ListenerProp<() => void>
+  onOpened?: ListenerProp<() => void>
+  onClosed?: ListenerProp<() => void>
+  'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
 export class SnackbarComponent extends VarComponent {

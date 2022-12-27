@@ -81,13 +81,17 @@ import '@varlet/ui/es/style.js'
 createApp(App).use(Varlet).mount('#app')
 ```
 
+### Playground
+
+See [Varlet UI Playground](https://varlet.gitee.io/varlet-ui-playground).
+
 ### Contribution
 
 See [Contributing Guide](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md).
 
 ### Start On Cloud IDE
 
-[https://idegithub.com/varletjs/varlet](https://idegithub.com/varletjs/varlet)
+See [Cloud IDE](https://idegithub.com/varletjs/varlet).
 
 ### Community
 

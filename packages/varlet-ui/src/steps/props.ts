@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 function directionValidator(direction: string): boolean {
   return ['horizontal', 'vertical'].includes(direction)
@@ -20,7 +21,5 @@ export const props = {
   inactiveColor: {
     type: String,
   },
-  onClickStep: {
-    type: Function as PropType<(index: number) => void>,
-  },
+  onClickStep: defineListenerProp<(index: number) => void>(),
 }

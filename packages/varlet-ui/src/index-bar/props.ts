@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export const props = {
   sticky: {
@@ -28,10 +29,6 @@ export const props = {
     type: [Number, String],
     default: 0,
   },
-  onClick: {
-    type: Function as PropType<(value: string | number) => void>,
-  },
-  onChange: {
-    type: Function as PropType<(value: string | number) => void>,
-  },
+  onClick: defineListenerProp<(value: string | number) => void>(),
+  onChange: defineListenerProp<(value: string | number) => void>(),
 }

@@ -1,5 +1,6 @@
 import type { PropType } from 'vue'
 import type { ButtonProps } from '../../types'
+import { defineListenerProp } from '../utils/components'
 
 export const props = {
   active: {
@@ -28,18 +29,10 @@ export const props = {
   inactiveColor: {
     type: String,
   },
-  onChange: {
-    type: Function as PropType<(active: number | string) => void>,
-  },
-  'onUpdate:active': {
-    type: Function as PropType<(active: string | number) => void>,
-  },
-  onBeforeChange: {
-    type: Function as PropType<(active: number | string) => boolean | Promise<any>>,
-  },
-  onFabClick: {
-    type: Function as PropType<() => void>,
-  },
+  onChange: defineListenerProp<(active: number | string) => void>(),
+  'onUpdate:active': defineListenerProp<(active: string | number) => void>(),
+  onBeforeChange: defineListenerProp<(active: number | string) => boolean | Promise<any>>(),
+  onFabClick: defineListenerProp<() => void>(),
   fabProps: {
     type: Object as PropType<Partial<ButtonProps>>,
   },

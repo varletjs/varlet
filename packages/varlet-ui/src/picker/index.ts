@@ -2,7 +2,7 @@ import VarPicker from './Picker.vue'
 import { nextTick, reactive } from 'vue'
 import { NormalColumn, CascadeColumn } from './props'
 import { isArray } from '@varlet/shared'
-import { mountInstance } from '../utils/components'
+import { call, mountInstance } from '../utils/components'
 import type { App, Component, TeleportProps } from 'vue'
 
 export type Texts = any[]
@@ -56,7 +56,7 @@ function Picker(options: PickerOptions | Texts): Promise<PickerResolvedData> {
 
     const { unmountInstance } = mountInstance(VarPicker, reactivePickerOptions, {
       onConfirm: (texts: Texts, indexes: number[]) => {
-        reactivePickerOptions.onConfirm?.(texts, indexes)
+        call(reactivePickerOptions.onConfirm, texts, indexes)
         resolve({
           state: 'confirm',
           texts,
@@ -66,7 +66,7 @@ function Picker(options: PickerOptions | Texts): Promise<PickerResolvedData> {
         singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },
       onCancel: (texts: Texts, indexes: number[]) => {
-        reactivePickerOptions.onCancel?.(texts, indexes)
+        call(reactivePickerOptions.onCancel, texts, indexes)
         resolve({
           state: 'cancel',
           texts,
@@ -76,14 +76,14 @@ function Picker(options: PickerOptions | Texts): Promise<PickerResolvedData> {
         singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },
       onClose: () => {
-        reactivePickerOptions.onClose?.()
+        call(reactivePickerOptions.onClose)
         resolve({
           state: 'close',
         })
         singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },
       onClosed: () => {
-        reactivePickerOptions.onClosed?.()
+        call(reactivePickerOptions.onClosed)
         unmountInstance()
         singletonOptions === reactivePickerOptions && (singletonOptions = null)
       },

@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export type ColSizeDescriptor = {
@@ -17,7 +17,7 @@ export interface ColProps extends BasicAttributes {
   md?: string | number | ColSizeDescriptor | undefined
   lg?: string | number | ColSizeDescriptor | undefined
   xl?: string | number | ColSizeDescriptor | undefined
-  onClick?: (e: Event) => void
+  onClick?: ListenerProp<(e: Event) => void>
 }
 
 export class Col extends VarComponent {

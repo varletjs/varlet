@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export type SelectValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
@@ -23,13 +23,13 @@ export interface SelectProps extends BasicAttributes {
   textAlign?: SelectTextAlign
   validateTrigger?: Array<SelectValidateTrigger>
   rules?: Array<(v: any) => any>
-  onFocus?: (e: Event) => void
-  onBlur?: (e: Event) => void
-  onClick?: (e: Event) => void
-  onClear?: (value: any) => void
-  onClose?: (value: any) => void
-  onChange?: (value: any) => void
-  'onUpdate:modelValue'?: (value: any) => void
+  onFocus?: ListenerProp<(e: Event) => void>
+  onBlur?: ListenerProp<(e: Event) => void>
+  onClick?: ListenerProp<(e: Event) => void>
+  onClear?: ListenerProp<(value: any) => void>
+  onClose?: ListenerProp<(value: any) => void>
+  onChange?: ListenerProp<(value: any) => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: any) => void>
 }
 
 export interface SelectArrowIconData {

@@ -80,7 +80,7 @@ import ImagePreview from '../image-preview'
 import Ripple from '../ripple'
 import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
 import { props } from './props'
-import { isNumber, toNumber, isString } from '@varlet/shared'
+import { isNumber, toNumber, isString, isArray } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
 import { call, useValidation, createNamespace } from '../utils/components'
 import { useForm } from '../form/provide'
@@ -209,13 +209,21 @@ export default defineComponent({
 
       return varFiles.map((varFile) => {
         return new Promise((resolve) => {
-          const valid = onBeforeRead ? onBeforeRead(reactive(varFile)) : true
-          Promise.resolve(valid).then((valid) =>
+          if (!onBeforeRead) {
             resolve({
-              valid,
+              valid: true,
               varFile,
             })
-          )
+          }
+
+          let results = call(onBeforeRead, reactive(varFile))
+          results = isArray(results) ? results : [results]
+          Promise.all(results).then((values) => {
+            resolve({
+              valid: !values.some((value) => !value),
+              varFile,
+            })
+          })
         })
       })
     }
@@ -266,8 +274,13 @@ export default defineComponent({
         return
       }
 
-      if (onBeforeRemove && !(await onBeforeRemove(removedVarFile))) {
-        return
+      if (onBeforeRemove) {
+        let results = call(onBeforeRemove)
+        results = isArray(results) ? results : [results]
+
+        if ((await Promise.all(results)).some((result) => !result)) {
+          return
+        }
       }
 
       const expectedFiles: VarFile[] = modelValue.filter((varFile) => varFile !== removedVarFile)

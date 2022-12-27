@@ -30,6 +30,7 @@ import appBar from './appBar'
 import bottomNavigation from './bottomNavigation'
 import bottomNavigationItem from './bottomNavigationItem'
 import menu from './menu'
+import breadcrumb from './breadcrumb'
 
 export default {
   // common
@@ -74,4 +75,5 @@ export default {
   ...bottomNavigationItem,
   ...menu,
   ...result,
+  ...breadcrumb,
 } as StyleVars

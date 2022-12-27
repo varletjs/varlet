@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export const props = {
   name: {
@@ -18,7 +18,5 @@ export const props = {
     type: [Number, String],
     default: 0,
   },
-  onClick: {
-    type: Function as PropType<(event: Event) => void>,
-  },
+  onClick: defineListenerProp<(event: Event) => void>(),
 }

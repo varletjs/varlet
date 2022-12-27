@@ -6,7 +6,7 @@ export default {
   bottomAlignment: '底部对齐',
   offset: '偏移量',
   events: '注册事件',
-  disabled: '禁用菜单',
+  disabled: '禁用提示',
   placement: '弹出位置',
   trigger: '触发方式',
   twoWayBinding: '双向绑定',

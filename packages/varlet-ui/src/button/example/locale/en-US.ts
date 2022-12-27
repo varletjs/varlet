@@ -22,7 +22,7 @@ export default {
   backgroundTextColor: 'Background/Text Color',
   linearGradientColor: 'LinearGradient Color',
   roundButton: 'Round Button',
-  event: 'Event',
+  event: 'Events',
   click: 'Click',
   touchstart: 'Touchstart',
   autoLoading: 'Auto Loading',

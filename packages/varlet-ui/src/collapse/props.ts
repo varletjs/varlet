@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export type CollapseModelValue = null | string | number | Array<string | number>
 
@@ -14,10 +15,6 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  onChange: {
-    type: Function as PropType<(value: CollapseModelValue) => void>,
-  },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: CollapseModelValue) => void>,
-  },
+  onChange: defineListenerProp<(value: CollapseModelValue) => void>(),
+  'onUpdate:modelValue': defineListenerProp<(value: CollapseModelValue) => void>(),
 }

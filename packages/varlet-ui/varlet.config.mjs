@@ -13,7 +13,10 @@ export default defineConfig({
           'Vue 2': 'https://varlet.gitee.io/varlet-ui-vue2/',
         },
       },
-      playground: process.env.NODE_ENV === 'development' ? 'http://localhost:3000': 'https://varlet.gitee.io/varlet-ui-playground',
+      playground:
+        process.env.NODE_ENV === 'development'
+          ? 'http://localhost:3000'
+          : 'https://varlet.gitee.io/varlet-ui-playground',
     },
     menu: [
       {
@@ -132,6 +135,14 @@ export default defineConfig({
           'en-US': 'Button',
         },
         doc: 'button',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'Breadcrumbs 面包屑',
+          'en-US': 'Breadcrumbs',
+        },
+        doc: 'breadcrumbs',
         type: 2,
       },
       {
@@ -421,7 +432,7 @@ export default defineConfig({
       {
         text: {
           'zh-CN': 'Overlay 遮罩层',
-          'en-US': 'Overlay'
+          'en-US': 'Overlay',
         },
         doc: 'overlay',
         type: 2,
@@ -452,7 +463,7 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': 'Tooltip 菜单',
+          'zh-CN': 'Tooltip 提示',
           'en-US': 'Tooltip',
         },
         doc: 'tooltip',

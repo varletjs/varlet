@@ -7,6 +7,8 @@ export interface FormValidation {
   reset(): void
 }
 
+export type FormScrollToError = 'start' | 'end'
+
 export interface FormProvider {
   disabled: ComputedRef<boolean>
   readonly: ComputedRef<boolean>
@@ -15,6 +17,8 @@ export interface FormProvider {
 export interface FormProps extends BasicAttributes {
   disabled?: boolean
   readonly?: boolean
+  scrollToError?: FormScrollToError
+  scrollToErrorOffsetY?: number | string
 }
 
 export class Form extends VarComponent {

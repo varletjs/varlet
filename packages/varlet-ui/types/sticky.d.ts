@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export interface StickyProps extends BasicAttributes {
@@ -6,7 +6,7 @@ export interface StickyProps extends BasicAttributes {
   zIndex?: string | number
   cssMode?: boolean
   disabled?: boolean
-  onScroll?: (offsetTop: number, isFixed: boolean) => void
+  onScroll?: ListenerProp<(offsetTop: number, isFixed: boolean) => void>
 }
 
 export class Sticky extends VarComponent {

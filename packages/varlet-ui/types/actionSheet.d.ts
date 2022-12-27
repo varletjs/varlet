@@ -1,6 +1,5 @@
-import type { App, TeleportProps } from 'vue'
-import { VarComponent, BasicAttributes } from './varComponent'
-import { VNode } from 'vue'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VNode, App, TeleportProps } from 'vue'
 
 export interface ActionSheetProps extends BasicAttributes {
   actions?: ActionItem[]
@@ -13,13 +12,13 @@ export interface ActionSheetProps extends BasicAttributes {
   closeOnClickAction?: boolean
   closeOnClickOverlay?: boolean
   teleport?: TeleportProps['to']
-  onOpen?: () => void
-  onOpened?: () => void
-  onClose?: () => void
-  onClosed?: () => void
-  onSelect?: (action: ActionItem) => void
-  onClickOverlay?: () => void
-  'onUpdate:show'?: (show: boolean) => void
+  onOpen?: ListenerProp<() => void>
+  onOpened?: ListenerProp<() => void>
+  onClose?: ListenerProp<() => void>
+  onClosed?: ListenerProp<() => void>
+  onSelect?: ListenerProp<(action: ActionItem) => void>
+  onClickOverlay?: ListenerProp<() => void>
+  'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
 export interface ActionItem {

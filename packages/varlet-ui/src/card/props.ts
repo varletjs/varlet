@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 function fitValidator(fit: string) {
   return ['fill', 'contain', 'cover', 'none', 'scale-down'].includes(fit)
@@ -31,9 +32,6 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  'onUpdate:floating': {
-    type: Function as PropType<(value: boolean) => void>,
-  },
   floatingDuration: {
     type: Number,
     default: 250,
@@ -57,7 +55,6 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  onClick: {
-    type: Function as PropType<(e: Event) => void>,
-  },
+  onClick: defineListenerProp<(e: Event) => void>(),
+  'onUpdate:floating': defineListenerProp<(value: boolean) => void>(),
 }

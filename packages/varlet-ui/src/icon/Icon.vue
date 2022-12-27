@@ -4,6 +4,7 @@
     :class="
       classes(
         n(),
+        [namespace !== n(), namespace],
         `${namespace}--set`,
         [isURL(name), n('image'), `${namespace}-${nextName}`],
         [shrinking, n('--shrinking')]
@@ -22,11 +23,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref, nextTick } from 'vue'
+import { defineComponent, watch, ref, nextTick, type Ref } from 'vue'
 import { isURL, toNumber } from '@varlet/shared'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
-import type { Ref } from 'vue'
 import { createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('icon')

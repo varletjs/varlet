@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export function textAlignValidator(textAlign: string) {
   return ['left', 'right', 'center'].includes(textAlign)
@@ -70,25 +71,11 @@ export const props = {
   rules: {
     type: Array as PropType<Array<(v: any) => any>>,
   },
-  onFocus: {
-    type: Function as PropType<() => void>,
-  },
-  onBlur: {
-    type: Function as PropType<() => void>,
-  },
-  onClick: {
-    type: Function as PropType<(e: Event) => void>,
-  },
-  onClear: {
-    type: Function as PropType<(value: any) => void>,
-  },
-  onClose: {
-    type: Function as PropType<(value: any) => void>,
-  },
-  onChange: {
-    type: Function as PropType<(value: any) => void>,
-  },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: any) => void>,
-  },
+  onFocus: defineListenerProp<() => void>(),
+  onBlur: defineListenerProp<() => void>(),
+  onClick: defineListenerProp<(e: Event) => void>(),
+  onClear: defineListenerProp<(value: any) => void>(),
+  onClose: defineListenerProp<(value: any) => void>(),
+  onChange: defineListenerProp<(value: any) => void>(),
+  'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),
 }

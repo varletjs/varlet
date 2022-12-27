@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export interface ListProps extends BasicAttributes {
@@ -10,9 +10,9 @@ export interface ListProps extends BasicAttributes {
   loadingText?: string
   finishedText?: string
   errorText?: string
-  onLoad?: () => void
-  'onUpdate:loading'?: (loading: boolean) => void
-  'onUpdate:error'?: (error: boolean) => void
+  onLoad?: ListenerProp<() => void>
+  'onUpdate:loading'?: ListenerProp<(loading: boolean) => void>
+  'onUpdate:error'?: ListenerProp<(error: boolean) => void>
 }
 
 export class List extends VarComponent {

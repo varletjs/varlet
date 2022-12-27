@@ -1,5 +1,5 @@
 import type { App } from 'vue'
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export interface NormalColumn extends BasicAttributes {
@@ -28,9 +28,9 @@ export interface PickerProps {
   cancelButtonText?: string
   confirmButtonTextColor?: string
   cancelButtonTextColor?: string
-  onChange?: (texts: Texts, indexes: number[]) => void
-  onConfirm?: (texts: Texts, indexes: number[]) => void
-  onCancel?: (texts: Texts, indexes: number[]) => void
+  onChange?: ListenerProp<(texts: Texts, indexes: number[]) => void>
+  onConfirm?: ListenerProp<(texts: Texts, indexes: number[]) => void>
+  onCancel?: ListenerProp<(texts: Texts, indexes: number[]) => void>
 }
 
 export class PickerComponent extends VarComponent {

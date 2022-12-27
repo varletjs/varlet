@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export type CollapseModelValue = null | string | number | Array<string | number>
@@ -7,8 +7,8 @@ export interface CollapseProps extends BasicAttributes {
   modelValue?: CollapseModelValue
   accordion?: boolean
   offset?: boolean
-  onChange?: (value: CollapseModelValue) => void
-  'onUpdate:modelValue'?: (value: CollapseModelValue) => void
+  onChange?: ListenerProp<(value: CollapseModelValue) => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: CollapseModelValue) => void>
 }
 
 export class Collapse extends VarComponent {

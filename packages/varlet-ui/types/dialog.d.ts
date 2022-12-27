@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import type { App, TeleportProps, VNode } from 'vue'
 
 export type DialogTypeMessageAlign = 'left' | 'center' | 'right'
@@ -25,15 +25,15 @@ export interface DialogProps extends BasicAttributes {
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
   teleport?: TeleportProps['to']
-  onOpen?: () => void
-  onOpened?: () => void
-  onBeforeClose?: (action: DialogActions, done: () => void) => void
-  onClose?: () => void
-  onClosed?: () => void
-  onConfirm?: () => void
-  onCancel?: () => void
-  onClickOverlay?: () => void
-  'onUpdate:show'?: (show: boolean) => void
+  onOpen?: ListenerProp<() => void>
+  onOpened?: ListenerProp<() => void>
+  onBeforeClose?: ListenerProp<(action: DialogActions, done: () => void) => void>
+  onClose?: ListenerProp<() => void>
+  onClosed?: ListenerProp<() => void>
+  onConfirm?: ListenerProp<() => void>
+  onCancel?: ListenerProp<() => void>
+  onClickOverlay?: ListenerProp<() => void>
+  'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
 export class DialogComponent extends VarComponent {

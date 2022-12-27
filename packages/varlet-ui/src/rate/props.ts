@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export const props = {
   modelValue: {
@@ -58,10 +59,6 @@ export const props = {
   rules: {
     type: Array as PropType<Array<(value: any) => any>>,
   },
-  onChange: {
-    type: Function as PropType<(score: number) => void>,
-  },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(score: number) => void>,
-  },
+  onChange: defineListenerProp<(score: number) => void>(),
+  'onUpdate:modelValue': defineListenerProp<(score: number) => void>(),
 }

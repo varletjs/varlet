@@ -14,6 +14,7 @@ import {
   ref,
   onActivated,
   onDeactivated,
+  PropType,
 } from 'vue'
 import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref, ComponentPublicInstance } from 'vue'
 import { isArray, removeItem } from '@varlet/shared'
@@ -327,6 +328,22 @@ export function createNamespace(name: string) {
   }
 }
 
-export function call<P extends any[], R>(fn?: ((...arg: P) => R) | null, ...arg: P): R | undefined {
-  if (fn) return fn(...arg)
+export function call<P extends any[], R>(
+  fn?: ((...arg: P) => R) | ((...arg: P) => R)[] | null,
+  ...args: P
+): R | R[] | undefined {
+  if (isArray(fn)) {
+    return fn.map((f) => f(...args))
+  }
+
+  if (fn) {
+    return fn(...args)
+  }
+}
+
+export function defineListenerProp<F>(fallback?: any) {
+  return {
+    type: [Function, Array] as PropType<F | F[]>,
+    default: fallback,
+  }
 }

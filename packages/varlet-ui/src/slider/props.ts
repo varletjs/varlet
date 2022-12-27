@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 function labelValidator(label: string) {
   return ['always', 'normal', 'never'].includes(label)
@@ -79,19 +80,11 @@ export const props = {
     type: Array as PropType<Array<(v: any) => any>>,
   },
 
-  onChange: {
-    type: Function as PropType<(value: number | Array<number>) => void>,
-  },
+  onChange: defineListenerProp<(value: number | Array<number>) => void>(),
 
-  onStart: {
-    type: Function as PropType<() => void>,
-  },
+  onStart: defineListenerProp<() => void>(),
 
-  onEnd: {
-    type: Function as PropType<(value: number | Array<number>) => void>,
-  },
+  onEnd: defineListenerProp<(value: number | Array<number>) => void>(),
 
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: number | Array<number>) => void>,
-  },
+  'onUpdate:modelValue': defineListenerProp<(value: number | Array<number>) => void>(),
 }

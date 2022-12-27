@@ -16,7 +16,7 @@
 import Ripple from '../ripple'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
-import { createNamespace } from '../utils/components'
+import { call, createNamespace } from '../utils/components'
 import { useTabs } from './provide'
 import type { Ref, ComputedRef } from 'vue'
 import type { TabProvider } from './provide'
@@ -71,7 +71,7 @@ export default defineComponent({
         return
       }
 
-      onClick?.(name ?? index.value, event)
+      call(onClick, name ?? index.value, event)
       onTabClick(tabProvider)
     }
 

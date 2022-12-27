@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export type RadioValidateTrigger = 'onChange'
@@ -15,9 +15,9 @@ export interface RadioProps extends BasicAttributes {
   ripple?: boolean
   validateTrigger?: Array<RadioValidateTrigger>
   rules?: Array<(value: any) => any>
-  onClick?: (e: Event) => void
-  onChange?: (value: any) => void
-  'onUpdate:modelValue'?: (value: any) => void
+  onClick?: ListenerProp<(e: Event) => void>
+  onChange?: ListenerProp<(value: any) => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: any) => void>
 }
 
 export class Radio extends VarComponent {
