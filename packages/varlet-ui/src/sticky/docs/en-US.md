@@ -68,6 +68,12 @@ If necessary, you can switch to the `css sticky` layout mode to improve performa
 | `css-mode` | Enable native `css sticky` mode | _boolean_ | `false` |
 | `disabled` | Disable sticky, when set to `true`, the element will return to the document flow | _boolean_ | `false` |
 
+### Methods
+
+| Method | Description | Arguments | Return                                    |
+|----------|----------|------|-------------------------------------------|
+| `resize` | trigger sticky layout redraw | `-`  | `{ offsetTop: number, isFixed: boolean }` |
+
 ### Events
 
 | Event | Description | Arguments |

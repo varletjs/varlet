@@ -36,6 +36,11 @@ import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('sticky')
 
+interface StickyResizeParams {
+  offsetTop: number
+  isFixed: boolean
+}
+
 export default defineComponent({
   name: 'VarSticky',
   props,
@@ -57,8 +62,9 @@ export default defineComponent({
 
     let scroller: HTMLElement | Window
 
-    const handleScroll = () => {
-      const { onScroll, cssMode, disabled } = props
+    // expose
+    const resize = (): StickyResizeParams | undefined => {
+      const { cssMode, disabled } = props
 
       if (disabled) {
         return
@@ -86,10 +92,27 @@ export default defineComponent({
           fixedWrapperHeight.value = `${wrapper.offsetHeight}px`
           isFixed.value = true
         }
-        call(onScroll, offsetTop.value, true)
-      } else {
-        isFixed.value = false
-        call(onScroll, currentOffsetTop, false)
+
+        return {
+          offsetTop: offsetTop.value,
+          isFixed: true,
+        }
+      }
+
+      isFixed.value = false
+
+      return {
+        offsetTop: currentOffsetTop,
+        isFixed: false,
+      }
+    }
+
+    const handleScroll = () => {
+      // returns undefined when disabled = true
+      const resizeParams = resize()
+
+      if (resizeParams) {
+        call(props.onScroll, resizeParams.offsetTop, resizeParams.isFixed)
       }
     }
 
@@ -106,7 +129,7 @@ export default defineComponent({
       window.removeEventListener('scroll', handleScroll)
     }
 
-    watch(() => props.disabled, handleScroll)
+    watch(() => props.disabled, resize)
 
     onActivated(addScrollListener)
 
@@ -119,6 +142,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      resize,
       stickyEl,
       wrapperEl,
       isFixed,
