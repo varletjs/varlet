@@ -18,18 +18,6 @@ exports[`test tooltip hover trigger and events 2`] = `"<div style=\\"z-index: 20
 
 exports[`test tooltip offset 1`] = `"<div style=\\"z-index: 2002; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(100px, 100px);\\" class=\\"var-tooltip__tooltip var-tooltip--tooltip-background-color var-elevation--3 var-tooltip--default var-tooltip--margin-bottom\\" data-popper-placement=\\"bottom\\">Tooltip</div>"`;
 
-exports[`test tooltip offset 2`] = `"<div style=\\"z-index: 2002; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-tooltip__tooltip var-tooltip--tooltip-background-color var-elevation--3 var-tooltip--primary var-tooltip--margin-bottom\\" data-popper-placement=\\"bottom\\">Tooltip</div>"`;
-
-exports[`test tooltip offset 3`] = `"<div style=\\"z-index: 2002; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-tooltip__tooltip var-tooltip--tooltip-background-color var-elevation--3 var-tooltip--info var-tooltip--margin-bottom\\" data-popper-placement=\\"bottom\\">Tooltip</div>"`;
-
-exports[`test tooltip offset 4`] = `"<div style=\\"z-index: 2002; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-tooltip__tooltip var-tooltip--tooltip-background-color var-elevation--3 var-tooltip--success var-tooltip--margin-bottom\\" data-popper-placement=\\"bottom\\">Tooltip</div>"`;
-
-exports[`test tooltip offset 5`] = `"<div style=\\"z-index: 2002; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-tooltip__tooltip var-tooltip--tooltip-background-color var-elevation--3 var-tooltip--warning var-tooltip--margin-bottom\\" data-popper-placement=\\"bottom\\">Tooltip</div>"`;
-
-exports[`test tooltip offset 6`] = `"<div style=\\"z-index: 2002; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-tooltip__tooltip var-tooltip--tooltip-background-color var-elevation--3 var-tooltip--danger var-tooltip--margin-bottom\\" data-popper-placement=\\"bottom\\">Tooltip</div>"`;
-
-exports[`test tooltip offset 7`] = `"<div style=\\"z-index: 2002; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(100px, 100px);\\" class=\\"var-tooltip__tooltip var-tooltip--tooltip-background-color var-elevation--3 var-tooltip--default var-tooltip--margin-bottom\\" data-popper-placement=\\"bottom\\">Tooltip</div>"`;
-
 exports[`test tooltip placement 1`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, 0px);\\" class=\\"var-tooltip__tooltip var-tooltip--tooltip-background-color var-elevation--3 var-tooltip--default var-tooltip--margin-top\\" data-popper-placement=\\"top\\">Tooltip</div>"`;
 
 exports[`test tooltip placement 2`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, 0px);\\" class=\\"var-tooltip__tooltip var-tooltip--tooltip-background-color var-elevation--3 var-tooltip--default var-tooltip--margin-top-start\\" data-popper-placement=\\"top-start\\">Tooltip</div>"`;
