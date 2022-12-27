@@ -12,7 +12,7 @@
       <transition :name="n()" @after-enter="onOpened" @after-leave="onClosed">
         <div
           ref="popover"
-          :style="{ zIndex, backgroundColor: color }"
+          :style="{ zIndex, background: color }"
           :class="
             classes(
               n('tooltip'),
