@@ -73,7 +73,7 @@ export default defineComponent({
         ctx.emit(
           'update:color',
           fromHSVA({
-            h: props.color.hue,
+            h: props.color.hue ?? 0,
             s: clamp(event.clientX - rect.left, 0, props.width) / props.width,
             v: 1 - clamp(event.clientY - rect.top, 0, props.height) / props.height,
             a: props.color.alpha,

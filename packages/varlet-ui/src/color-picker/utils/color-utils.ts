@@ -109,7 +109,8 @@ export function RGBAtoHSVA(rgba: RGBA): HSVA {
   const min = Math.min(r, g, b)
 
   let h = 0
-
+  console.log(max)
+  console.log(r)
   if (max !== min) {
     if (max === r) {
       h = 60 * (0 + (g - b) / (max - min))
@@ -121,7 +122,7 @@ export function RGBAtoHSVA(rgba: RGBA): HSVA {
   }
 
   if (h < 0) {
-    h = h + 360
+    h += 360
   }
 
   const s = max === 0 ? 0 : (max - min) / max
@@ -231,9 +232,10 @@ export function fromHSVA(hsva: HSVA): Partial<ColorPickerColor> {
   }
 }
 export function fromRGBA(rgba: RGBA): Partial<ColorPickerColor> {
-  const hsva = RGBAtoHSVA(rgba)
+  const hsva = RGBtoHSV(rgba)
+
   const hexa = RGBAtoHex(rgba)
-  const hsla = HSVAtoHSLA(hsva)
+  const hsla = HSVtoHSL(hsva)
   const hsv = { h: hsva.h, s: hsva.s, v: hsva.v }
   const hsl = { h: hsla.h, s: hsla.s, l: hsla.l }
   return {
@@ -284,12 +286,12 @@ export function parseColor(color: Color, oldColor?: Partial<ColorPickerColor>): 
   if (!color) {
     return fromRGBA({ r: 0, g: 0, b: 0, a: 1 })
   }
-
   if (typeof color === 'string') {
     if (color.indexOf('#') !== -1) {
-      // const hex = color.replace('#', '').trim()
-      // return fromHexa(hex)
-    } else if (color.indexOf('hsl') !== -1) {
+      const hex = color.replace('#', '').trim()
+      return fromHexa(hex)
+    }
+    if (color.indexOf('hsl') !== -1) {
       let alpha = 0
       const parts = color
         .replace(/hsla|hsl|\(|\)/gm, '')
@@ -302,7 +304,8 @@ export function parseColor(color: Color, oldColor?: Partial<ColorPickerColor>): 
         alpha = 1
       }
       return fromHSLA({ h: parts[0], s: parts[1], l: parts[2], a: alpha })
-    } else if (color.indexOf('rgb') !== -1) {
+    }
+    if (color.indexOf('rgb') !== -1) {
       let alpha = 0
       const parts = color
         .replace(/rgba|rgb|\(|\)/gm, '')
@@ -316,7 +319,8 @@ export function parseColor(color: Color, oldColor?: Partial<ColorPickerColor>): 
         alpha = 1
       }
       return fromRGBA({ r: parts[0], g: parts[1], b: parts[2], a: alpha })
-    } else if (color.indexOf('hsv') !== -1) {
+    }
+    if (color.indexOf('hsv') !== -1) {
       let alpha = 0
       const parts = color
         .replace(/hsva|hsv|\(|\)/gm, '')
@@ -338,41 +342,40 @@ export function parseColor(color: Color, oldColor?: Partial<ColorPickerColor>): 
     if (oldColor && hex === oldColor.hexa) {
       return oldColor
     }
-
     return fromHexa(hex)
   }
 
   if (typeof color === 'object') {
+    // eslint-disable-next-line no-prototype-builtins
     if (color.hasOwnProperty('alpha')) {
       return color
     }
 
+    // eslint-disable-next-line no-prototype-builtins
     const a = color.hasOwnProperty('a') ? parseFloat((color as { a: string }).a) : 1
 
     if (has(color, ['r', 'g', 'b'])) {
       if (oldColor && color === oldColor.rgba) {
         return oldColor
-      } else {
-        return fromRGBA({ ...color, a } as RGBA)
       }
-    } else if (has(color, ['h', 's', 'l'])) {
+      return fromRGBA({ ...color, a } as RGBA)
+    }
+    if (has(color, ['h', 's', 'l'])) {
       if (oldColor && color === oldColor.hsla) {
         return oldColor
-      } else {
-        return fromHSLA({ ...color, a } as HSLA)
       }
-    } else if (has(color, ['h', 's', 'v'])) {
+      return fromHSLA({ ...color, a } as HSLA)
+    }
+    if (has(color, ['h', 's', 'v'])) {
       if (oldColor && color === oldColor.hsva) {
         return oldColor
-      } else {
-        return fromHSVA({ ...color, a } as HSVA)
       }
+      return fromHSVA({ ...color, a } as HSVA)
     }
   }
 
   return fromRGBA({ r: 255, g: 0, b: 0, a: 1 })
 }
-
 function stripAlpha(color: Record<string, unknown>, curStripAlpha: boolean) {
   if (curStripAlpha) {
     return omit(color, ['a'])
@@ -388,6 +391,7 @@ export function extractColor(
 ): string | ColorPickerColor | Record<string, unknown> | undefined {
   // 色相
   const hue = keepDecimal(color.hsla.h, 2)
+
   // 饱和度
   const hslSaturation = keepDecimal(color.hsla.s, 2)
   // 亮度
@@ -410,16 +414,28 @@ export function extractColor(
   }
   if (typeof input === 'string') {
     if (mode === 'hex') {
-      return showAlpha ? color.hexa : color.hex
+      return color.hex
+    }
+    if (mode === 'hexa') {
+      return color.hexa
     }
     if (mode === 'hsl') {
-      return `${isShowAlpha(mode)}(${hue}, ${hslSaturation}, ${lightness}${showAlpha ? ', ' + color.alpha : ''})`
+      return `${mode}(${hue}, ${hslSaturation}, ${lightness})`
+    }
+    if (mode === 'hsla') {
+      return `${mode}(${hue}, ${hslSaturation}, ${lightness}, ${color.alpha})`
     }
     if (mode === 'rgb') {
-      return `${isShowAlpha(mode)}(${red}, ${green}, ${blue}${showAlpha ? ', ' + color.alpha : ''})`
+      return `${mode}(${red}, ${green}, ${blue})`
+    }
+    if (mode === 'rgba') {
+      return `${mode}(${red}, ${green}, ${blue}, ${color.alpha})`
     }
     if (mode === 'hsv') {
-      return `${isShowAlpha(mode)}(${hue}, ${hsvSaturation}, ${value}${showAlpha ? ', ' + color.alpha : ''})`
+      return `${mode}(${hue}, ${hsvSaturation}, ${value})`
+    }
+    if (mode === 'hsva') {
+      return `${mode}(${hue}, ${hsvSaturation}, ${value}, ${color.alpha})`
     }
     return input.length === 7 ? color.hex : color.hexa
   }
@@ -428,9 +444,11 @@ export function extractColor(
     const shouldStrip = typeof input.a === 'number' && input.a === 0 ? !!input.a : !input.a
     if (has(input, ['r', 'g', 'b'])) {
       return stripAlpha(color.rgba, shouldStrip)
-    } else if (has(input, ['h', 's', 'l'])) {
+    }
+    if (has(input, ['h', 's', 'l'])) {
       return stripAlpha(color.hsla, shouldStrip)
-    } else if (has(input, ['h', 's', 'v'])) {
+    }
+    if (has(input, ['h', 's', 'v'])) {
       return stripAlpha(color.hsva, shouldStrip)
     }
   }
@@ -473,9 +491,8 @@ export function RGBtoRGBA(rgba: RGBA): RGBA {
       b: Number(strRgba[2]) || 0,
       a: Number(strRgba[3] ? strRgba[3] : 1), // Avoid the case of 0
     }
-  } else {
-    return rgba
   }
+  return rgba
 }
 export function RGBtoHSV(rgb: RGB): HSV {
   if (!rgb) {
@@ -501,7 +518,7 @@ export function RGBtoHSV(rgb: RGB): HSV {
   }
 
   if (h < 0) {
-    h = h + 360
+    h += 360
   }
 
   const s = max === 0 ? 0 : (max - min) / max
@@ -546,7 +563,7 @@ const rgba: ColorPickerMode = {
       label: 'G',
       max: 255,
       step: 1,
-      getValue: (c: RGB) => Math.round(c.g),
+      getValue: (c: RGBtoHSVRGB) => Math.round(c.g),
       getColor: (c: RGB, v: string): RGB => ({ ...c, g: Number(v) }),
     },
     {

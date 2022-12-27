@@ -5,7 +5,7 @@ import colorPanel from './components/colorPickerPanel/color-picker-panel'
 import './colorPicker.less'
 import '../styles/elevation.less'
 import { createNamespace } from '../utils/components'
-import { parseColor, extractColor, RGBAtoCSS } from './utils/color-utils'
+import { parseColor, extractColor } from './utils/color-utils'
 import { ColorPickerColor } from './utils/color-utils-types'
 import VarColorPickerPreview from './components/color-picker-preview/color-picker-preview'
 import VarColorPickerCanvas from './components/color-picker-canvas/color-picker-canvas'
@@ -30,8 +30,6 @@ export default defineComponent({
     //   showAlpha: useReactive(() => props.showAlpha),
     //   swatches: useReactive(() => props.swatches),
     // }
-    const testValue = ref('')
-
     // provide('provideData', readonly(provideData))
     const initialColor = ref<Partial<ColorPickerColor>>()
     // const colorCubeRef = ref<HTMLElement | null>(null)
@@ -47,7 +45,6 @@ export default defineComponent({
       // 提取颜色 2021.12.10
       const value = extractColor(initialColor.value as ColorPickerColor, modelValue.value, mode.value as string, true)
       emit('update:modelValue', value)
-      testValue.value = value
     }
     // // 交互触发item 颜色 面板  动态修改alpha后要还原 alpha 2021.12.18
     // const triggerColor = computed(() => {
@@ -93,6 +90,7 @@ export default defineComponent({
       modelValue,
       (newValue) => {
         updateModelValueColor(parseColor(newValue, initialColor.value))
+        console.log(parseColor(newValue, initialColor.value))
       },
       { immediate: true }
     )
@@ -110,7 +108,6 @@ export default defineComponent({
                 onChangeTextModeType={changeTextModeType}
               ></color-panel>
             </div> */}
-            {testValue.value}
             <div></div>
             {initialColor.value?.hue}
             {props.canvasLayout && <VarColorPickerCanvas color={initialColor.value} onUpdate:color={updateColor} />}
