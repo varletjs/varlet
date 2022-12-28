@@ -1,7 +1,7 @@
 # Tooltip
 
 ### 介绍
-当元素点击时显示一个Tooltip，通过控制对齐方式和偏移量改变Tooltip的显示位置。
+当元素点击时显示一个 Tooltip，通过控制对齐方式和偏移量改变Tooltip的显示位置。
 
 ### 基本使用
 
@@ -10,17 +10,10 @@
   <var-tooltip content="基本使用">
     <var-button type="primary">基本使用</var-button>
   </var-tooltip>
-</template>
-```
-
-### 内容插槽
-
-```html
-<template>
   <var-tooltip>
     <var-button type="primary">内容插槽</var-button>
     <template #tooltip>
-      <var-cell>内容插槽</var-cell>
+      <var-icon name="star" />
     </template>
   </var-tooltip>
 </template>
@@ -128,7 +121,7 @@ const placementOptions = [
 
 ### 触发方式
 
-通过 `trigger` 改变Tooltip显示的触发方式，可选值为 `click` 和 `hover`
+通过 `trigger` 改变 Tooltip 显示的触发方式，可选值为 `click` 和 `hover`
 
 ```html
 <template>
@@ -165,30 +158,30 @@ const closed = () => Snackbar.info('closed')
 
 ### 禁用
 
-在 `disabled` 状态下，Tooltip将不再被打开。 
+在 `disabled` 状态下，Tooltip 将不再被打开。 
 
 ```html
 <template>
   <var-tooltip content="Tooltip" disabled>
-    <var-button type="primary">禁用</var-button>
+    <var-button type="primary" disabled>禁用</var-button>
   </var-tooltip>
 </template>
 ```
 
 ### 双向绑定
 
-通过 `v-model:show` 进行双向绑定控制Tooltip的显示和隐藏
+通过 `v-model:show` 进行双向绑定控制 Tooltip 的显示和隐藏
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const show = ref(false)
-const closeTooltip = () => { show.value = false }
+const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
 </script>
 
 <template>
-  <var-tooltip v-model:show="show" content="Tooltip">
+  <var-tooltip v-model:show="show" content="Tooltip" @opened="() => closeTooltip()">
     <var-button type="primary">双向绑定</var-button>
   </var-tooltip>
 </template>
@@ -200,16 +193,16 @@ const closeTooltip = () => { show.value = false }
 
 | 参数 | 说明 | 类型                    | 默认值 |
 | ------- | --- |-----------------------| --- |
-| `v-model:show` | 是否显示Tooltip | _string_              | `default` |
+| `v-model:show` | 是否显示 Tooltip | _string_              | `default` |
 | `content` | 显示的内容，也可被  `slot#tooltip` 覆盖 | _string_              ||
 | `color` | 背景颜色 | _string_              | |
 | `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
-| `placement` | Tooltip弹出位置 | _Placement_           | `top` |
-| `offset-x` | x 轴偏移量， 相对于Tooltip对齐后的位置 | _number \| string_ | `0` |
-| `offset-y` | y 轴偏移量， 相对于Tooltip对齐后的位置 | _number \| string_ | `0` |
-| `teleport` | Tooltip挂载的位置 | _TeleportProps['to']_ | `body` |
-| `disabled` | 是否禁用Tooltip | _boolean_             | `false` |
-| `trigger` | Tooltip触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_              | `click` |
+| `placement` | Tooltip 弹出位置 | _Placement_           | `top` |
+| `offset-x` | x 轴偏移量， 相对于 Tooltip 对齐后的位置 | _number \| string_ | `0` |
+| `offset-y` | y 轴偏移量， 相对于 Tooltip 对齐后的位置 | _number \| string_ | `0` |
+| `teleport` | Tooltip 挂载的位置 | _TeleportProps['to']_ | `body` |
+| `disabled` | 是否禁用 Tooltip | _boolean_             | `false` |
+| `trigger` | Tooltip 触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_              | `click` |
 | `default-style` | 是否启用默认样式 | _boolean_             | `true` |
 
 ### Placement
@@ -240,17 +233,17 @@ const closeTooltip = () => { show.value = false }
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `open` | 打开Tooltip时触发 | `-` |
-| `opened` | 打开Tooltip动画结束时触发 | `-` |
-| `close` | 关闭Tooltip时触发 | `-` |
-| `closed` | 关闭Tooltip动画结束时触发 | `-` |
+| `open` | 打开 Tooltip 时触发 | `-` |
+| `opened` | 打开 Tooltip 动画结束时触发 | `-` |
+| `close` | 关闭 Tooltip 时触发 | `-` |
+| `closed` | 关闭 Tooltip 动画结束时触发 | `-` |
 
 ### 插槽
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `default` | Tooltip关联的触发元素 | `-` |
-| `content` | Tooltip内容 | `-` |
+| `default` | Tooltip 关联的触发元素 | `-` |
+| `content` | Tooltip 内容 | `-` |
 
 ### 样式变量
 

@@ -19,4 +19,5 @@ export default {
   dangerTooltip: 'Danger',
   customColor: 'Custom Color',
   slotTooltip: 'Slot Tooltip',
+  countDown: 's closed',
 }

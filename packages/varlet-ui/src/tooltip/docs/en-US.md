@@ -11,17 +11,10 @@ and changes the display position of the tooltip by controlling the placement and
   <var-tooltip content="Basic Usage">
     <var-button type="primary">Basic Usage</var-button>
   </var-tooltip>
-</template>
-```
-
-### Content Slot
-
-```html
-<template>
   <var-tooltip>
-    <var-button type="primary">Content Slot</var-button>
+    <var-button type="primary">Slot Tooltip</var-button>
     <template #tooltip>
-      <var-cell>Content Slot</var-cell>
+      <var-icon name="star" />
     </template>
   </var-tooltip>
 </template>
@@ -171,7 +164,7 @@ In the `disabled` state, the tooltip will no longer be opened.
 ```html
 <template>
   <var-tooltip disabled content="Tooltip">
-    <var-button type="primary">Disabled</var-button>
+    <var-button type="primary" disabled>Disabled</var-button>
   </var-tooltip>
 </template>
 ```
@@ -185,11 +178,11 @@ Two-way binding control tooltip show and hide via `v-model:show`
 import { ref } from 'vue'
 
 const show = ref(false)
-const closeTooltip = () => { show.value = false }
+const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
 </script>
 
 <template>
-  <var-tooltip v-model:show="show" content="Tooltip">
+  <var-tooltip v-model:show="show" content="Tooltip" @opened="() => closeTooltip()">
     <var-button type="primary">Two-way binding</var-button>
   </var-tooltip>
 </template>
@@ -205,7 +198,7 @@ const closeTooltip = () => { show.value = false }
 | `content` | display content, can be overridden by `slot#tooltip` | _string_              | `-` |
 | `color`          | Tooltip background color                                                            | _string_  | `-`            |
 | `type`           | Tooltip type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
-| `placement` | tooltip popup placement                                        | _Placement_          | `top` |
+| `placement` | Tooltip popup placement                                        | _Placement_          | `top` |
 | `offset-x` | The x-axis offset, relative to the tooltip-aligned position    | _number \| string_ | `0` |
 | `offset-y` | The y-axis offset, relative to the tooltip-aligned position    | _number \| string_ | `0` |
 | `teleport` | The location of the tooltip mount                                                     | _TeleportProps['to']_ | `body` |

@@ -29,8 +29,16 @@ const placementOptions = ref([
   'left-end',
 ])
 
-const closeTootipVarTooltip = () => {
-  show.value = false
+const closeTooltip = () => {
+  let timeNumber = 4
+  const interval = setInterval(() => {
+    timeNumber -= 1
+    Snackbar.info(`${timeNumber}${pack.value.countDown}`)
+  }, 1000)
+  setTimeout(() => {
+    clearInterval(interval)
+    show.value = false
+  }, 4000)
 }
 
 watchLang(use)
@@ -39,17 +47,17 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-tooltip :content="pack.basicUsage">
-    <var-button type="primary">{{ pack.basicUsage }}</var-button>
-  </var-tooltip>
-
-  <app-type>{{ pack.slotTooltip }}</app-type>
-  <var-tooltip>
-    <var-button type="primary">{{ pack.slotTooltip }}</var-button>
-    <template #tooltip>
-      <var-icon name="star" />
-    </template>
-  </var-tooltip>
+  <var-space :size="['2.666vw', '2.666vw']">
+    <var-tooltip :content="pack.basicUsage">
+      <var-button type="primary">{{ pack.basicUsage }}</var-button>
+    </var-tooltip>
+    <var-tooltip>
+      <var-button type="primary">{{ pack.slotTooltip }}</var-button>
+      <template #tooltip>
+        <var-icon name="star" />
+      </template>
+    </var-tooltip>
+  </var-space>
 
   <app-type>{{ pack.placement }}</app-type>
   <var-select :hint="false" v-model="placementValue">
@@ -117,12 +125,12 @@ watchDarkMode(dark)
   <app-type>{{ pack.disabled }}</app-type>
   <var-space justify="space-between">
     <var-tooltip disabled>
-      <var-button type="primary">{{ pack.disabled }}</var-button>
+      <var-button type="primary" disabled>{{ pack.disabled }}</var-button>
     </var-tooltip>
   </var-space>
 
   <app-type>{{ pack.twoWayBinding }}</app-type>
-  <var-tooltip v-model:show="show">
+  <var-tooltip v-model:show="show" @opened="() => closeTooltip()">
     <var-button type="primary">{{ pack.twoWayBinding }}</var-button>
   </var-tooltip>
 
