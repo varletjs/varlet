@@ -204,7 +204,6 @@ const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
 | `teleport` | The location of the tooltip mount                                                     | _TeleportProps['to']_ | `body` |
 | `disabled` | whether to disable the tooltip                                                      | _boolean_            | `false` |
 | `trigger` | Tooltip trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `click` |
-| `default-style` | Whether to enable default styles  | _boolean_ | `true` |
 
 ### Placement
 
@@ -252,7 +251,12 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--tooltip-background-color` | `rgba(97, 97, 97, 0.9)` |
+| `--tooltip-opacity` | `0.9` |
+| `--tooltip-border-radius` | `4px` |
+| `--tooltip-font-size` | `14px` |
+| `--tooltip-padding` | `8px 16px` |
+| `--tooltip-default-color` | `#616161` |
+| `--tooltip-offset` | `10px` |
 | `--tooltip-primary-color` | `var(--color-primary)` |
 | `--tooltip-info-color` | `var(--color-info)` |
 | `--tooltip-success-color` | `var(--color-success)` |

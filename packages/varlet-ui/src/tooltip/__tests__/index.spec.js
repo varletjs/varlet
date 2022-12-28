@@ -105,21 +105,6 @@ test('test tooltip hover trigger and events', async () => {
   mockRestore()
 })
 
-test('test tooltip default style', async () => {
-  const root = document.createElement('div')
-
-  mount(VarTooltip, {
-    props: {
-      defaultStyle: false,
-      teleport: root,
-    },
-  })
-
-  await doubleRaf()
-
-  expect(root.innerHTML).toMatchSnapshot()
-})
-
 test('test tooltip type', async () => {
   const { mockRestore } = mockStubs()
 

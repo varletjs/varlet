@@ -1,5 +1,10 @@
 :root {
-  --tooltip-background-color: rgba(97, 97, 97, 0.9);
+  --tooltip-opacity: 0.9;
+  --tooltip-border-radius: 4px;
+  --tooltip-font-size: 14px;
+  --tooltip-padding: 8px 16px;
+  --tooltip-default-color: #616161;
+  --tooltip-offset: 10px;
   --tooltip-primary-color: var(--color-primary);
   --tooltip-info-color: var(--color-info);
   --tooltip-success-color: var(--color-success);
@@ -23,21 +28,18 @@
 .var-tooltip {
   display: inline-block;
 
-  &--tooltip-background-color {
-    transition: opacity 0.25s, background-color 0.25s;
-    border-radius: 4px;
-    font-size: 14px;
-    line-height: 22px;
+  &__content-container {
     display: inline-block;
-    padding: 5px 16px;
-    text-transform: none;
-    width: auto;
-    pointer-events: none;
+    border-radius: var(--tooltip-border-radius);
+    font-size: var(--tooltip-font-size);
+    padding: var(--tooltip-padding);
+    opacity: var(--tooltip-opacity);
+    transition: opacity 0.25s, background-color 0.25s;
   }
 
   &--default {
     color: #fff;
-    background: var(--tooltip-background-color);
+    background: var(--tooltip-default-color);
   }
 
   &--primary {
@@ -68,24 +70,24 @@
   &--margin-top,
   &--margin-top-start,
   &--margin-top-end {
-    margin-bottom: 10px !important;
+    margin-bottom: var(--tooltip-offset);
   }
 
   &--margin-bottom,
   &--margin-bottom-start,
   &--margin-bottom-end {
-    margin-top: 10px !important;
+    margin-top: var(--tooltip-offset);
   }
 
   &--margin-right,
   &--margin-right-start,
   &--margin-right-end {
-    margin-left: 10px !important;
+    margin-left: var(--tooltip-offset);
   }
 
   &--margin-left,
   &--margin-left-start,
   &--margin-left-end {
-    margin-right: 10px !important;
+    margin-right: var(--tooltip-offset);
   }
 }

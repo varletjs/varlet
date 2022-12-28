@@ -71,6 +71,7 @@ export * from './tabs'
 export * from './tabsItems'
 export * from './themes'
 export * from './timePicker'
+export * from './tooltip'
 export * from './uploader'
 export * from './varComponent'
 export * from './varDirective'
@@ -146,6 +147,7 @@ declare module 'vue' {
     VarTabsItems: typeof import('@varlet/ui')['_TabsItemsComponent']
     VarThemes: typeof import('@varlet/ui')['_ThemesComponent']
     VarTimePicker: typeof import('@varlet/ui')['_TimePickerComponent']
+    VarTooltip: typeof import('@varlet/ui')['_TooltipComponent']
     VarUploader: typeof import('@varlet/ui')['_UploaderComponent']
   }
 }

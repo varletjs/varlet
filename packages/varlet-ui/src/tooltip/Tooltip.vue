@@ -12,21 +12,18 @@
       <transition :name="n()" @after-enter="onOpened" @after-leave="onClosed">
         <div
           ref="popover"
-          :style="{ zIndex, background: color }"
-          :class="
-            classes(
-              n('tooltip'),
-              [defaultStyle, `${n('--tooltip-background-color')}`],
-              `${n(`--${type}`)}`,
-              `${n(`--margin-${placement}`)}`
-            )
-          "
+          :class="n('tooltip')"
           v-show="show"
           @click.stop
           @mouseenter="handlePopoverMouseenter"
           @mouseleave="handlePopoverMouseleave"
         >
-          <slot name="content"> {{ content }} </slot>
+          <div
+            :style="{ zIndex, background: color }"
+            :class="classes(n('content-container'), n(`--${type}`), n(`--margin-${placement}`))"
+          >
+            <slot name="content">{{ content }}</slot>
+          </div>
         </div>
       </transition>
     </teleport>
@@ -36,8 +33,8 @@
 <script lang="ts">
 import { createNamespace } from '../utils/components'
 import { defineComponent } from 'vue'
-import { props } from './props'
 import { usePopover } from '../menu/usePopover'
+import { props } from './props'
 
 const { n, classes } = createNamespace('tooltip')
 
@@ -46,9 +43,6 @@ export default defineComponent({
   props,
   setup(props) {
     const {
-      content,
-      type,
-      color,
       popover,
       host,
       hostSize,
@@ -66,9 +60,6 @@ export default defineComponent({
     } = usePopover(props)
 
     return {
-      content,
-      type,
-      color,
       popover,
       host,
       hostSize,

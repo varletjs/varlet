@@ -40,7 +40,6 @@ export const props = {
   },
   content: {
     type: String,
-    default: 'Tooltip',
   },
   show: {
     type: Boolean,
@@ -71,10 +70,6 @@ export const props = {
   teleport: {
     type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body',
-  },
-  defaultStyle: {
-    type: Boolean,
-    default: true,
   },
   onOpen: defineListenerProp<() => void>(),
   onOpened: defineListenerProp<() => void>(),

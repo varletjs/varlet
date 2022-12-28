@@ -21,7 +21,6 @@ export interface TooltipProps extends BasicAttributes {
   offsetX?: string | number
   offsetY?: string | number
   teleport?: TeleportProps['to']
-  defaultStyle?: boolean
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>
   onClose?: ListenerProp<() => void>

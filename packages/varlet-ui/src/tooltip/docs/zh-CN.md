@@ -203,7 +203,6 @@ const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
 | `teleport` | Tooltip 挂载的位置 | _TeleportProps['to']_ | `body` |
 | `disabled` | 是否禁用 Tooltip | _boolean_             | `false` |
 | `trigger` | Tooltip 触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_              | `click` |
-| `default-style` | 是否启用默认样式 | _boolean_             | `true` |
 
 ### Placement
 
@@ -251,7 +250,12 @@ const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--tooltip-background-color` | `rgba(97, 97, 97, 0.9)` |
+| `--tooltip-opacity` | `0.9` |
+| `--tooltip-border-radius` | `4px` |
+| `--tooltip-font-size` | `14px` |
+| `--tooltip-padding` | `8px 16px` |
+| `--tooltip-default-color` | `#616161` |
+| `--tooltip-offset` | `10px` |
 | `--tooltip-primary-color` | `var(--color-primary)` |
 | `--tooltip-info-color` | `var(--color-info)` |
 | `--tooltip-success-color` | `var(--color-success)` |
