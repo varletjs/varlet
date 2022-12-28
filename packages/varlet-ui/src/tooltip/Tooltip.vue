@@ -26,7 +26,7 @@
           @mouseenter="handlePopoverMouseenter"
           @mouseleave="handlePopoverMouseleave"
         >
-          <slot name="tooltip"> {{ content }} </slot>
+          <slot name="content"> {{ content }} </slot>
         </div>
       </transition>
     </teleport>
