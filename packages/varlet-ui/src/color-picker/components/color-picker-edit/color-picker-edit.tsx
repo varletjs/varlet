@@ -19,7 +19,7 @@ export default defineComponent({
     const inputs = computed(() => {
       const mode = enabledModes.value.find((m) => m.name === props.mode)
       if (!mode) return []
-      const convertColor = color.value ? mode.to(color.value.hsva) : {}
+      const convertColor = color.value ? mode.to(color.value) : {}
       return mode.inputs?.map(({ getValue, getColor, ...inputProps }) => {
         return {
           ...mode.inputProps,

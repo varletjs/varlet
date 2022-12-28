@@ -19,10 +19,10 @@ export default defineComponent({
       if (barElement.value && cursorElement.value) {
         const rect = barElement.value.getBoundingClientRect()
         const { offsetWidth } = cursorElement.value
-        if (props.color?.hue === 360) {
+        if (props.color?.h === 360) {
           return rect.width - offsetWidth / 2
         }
-        return (((props.color as ColorPickerColor).hue % 360) * (rect.width - offsetWidth)) / 360 + offsetWidth / 2
+        return (((props.color as ColorPickerColor).h % 360) * (rect.width - offsetWidth)) / 360 + offsetWidth / 2
       }
       return 0
     }
@@ -47,12 +47,18 @@ export default defineComponent({
         const hue = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 360)
         ctx.emit(
           'update:color',
-          fromHSVA({
+          // fromHSVA({
+          //   h: hue,
+          //   s: (props.color as ColorPickerColor).s,
+          //   v: (props.color as ColorPickerColor).v,
+          //   a: (props.color as ColorPickerColor).a,
+          // })
+          {
             h: hue,
-            s: (props.color as ColorPickerColor).hsva.s,
-            v: (props.color as ColorPickerColor).hsva.v,
-            a: (props.color as ColorPickerColor).hsva.a,
-          })
+            s: (props.color as ColorPickerColor).s,
+            v: (props.color as ColorPickerColor).v,
+            a: (props.color as ColorPickerColor).a,
+          }
         )
       }
     }

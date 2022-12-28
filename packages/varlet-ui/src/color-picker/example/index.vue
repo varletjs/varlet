@@ -16,19 +16,18 @@ const colorDemo = ref(color[Rand()])
 function changeColor() {
   colorDemo.value = color[Rand()]
 }
-const color1 = ref(null)
+const color1 = ref('#ff00ff')
 </script>
 
 <template>
   <var-button type="primary" @click="changeColor">切换按钮</var-button>
-  <var-button type="primary" block @click="color1 = null">null</var-button>
-  <var-button type="primary" block @click="color1 = '#ff00ff'">hex</var-button>
-  <var-button type="primary" block @click="color1 = '#ff00ffff'">hexa</var-button>
-  <var-button type="primary" block @click="color1 = { r: 255, g: 0, b: 255, a: 1 }">rgba</var-button>
-  <var-button type="primary" block @click="color1 = { h: 300, s: 1, l: 0.5, a: 1 }">hsla</var-button>
-  <var-button type="primary" block @click="color1 = { h: 300, s: 1, v: 1, a: 1 }">hsva</var-button>
+  <var-button type="primary" @click="color1 = null">null</var-button>
+  <var-button type="primary" @click="color1 = '#ff00ff'">hex</var-button>
+  <var-button type="primary" @click="color1 = '#ff00ffff'">hexa</var-button>
+  <var-button type="primary" @click="color1 = { r: 255, g: 0, b: 255, a: 1 }">rgba</var-button>
+  <var-button type="primary" @click="color1 = { h: 300, s: 1, l: 0.5, a: 1 }">hsla</var-button>
+  <var-button type="primary" @click="color1 = { h: 300, s: 1, v: 1, a: 1 }">hsva</var-button>
   <app-type>我是color picker</app-type>
   {{ color1 }}
   <var-color-picker v-model="color1" />
-  <!-- <var-color-picker /> -->
 </template>

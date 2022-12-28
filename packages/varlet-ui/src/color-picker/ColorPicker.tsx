@@ -5,7 +5,7 @@ import colorPanel from './components/colorPickerPanel/color-picker-panel'
 import './colorPicker.less'
 import '../styles/elevation.less'
 import { createNamespace } from '../utils/components'
-import { parseColor, extractColor } from './utils/color-utils'
+import { parseColor, extractColor, parseBaseColor, extractBaseColor, HSVAtoHex } from './utils/color-utils'
 import { ColorPickerColor } from './utils/color-utils-types'
 import VarColorPickerPreview from './components/color-picker-preview/color-picker-preview'
 import VarColorPickerCanvas from './components/color-picker-canvas/color-picker-canvas'
@@ -13,9 +13,10 @@ import VarColorPickerEdit from './components/color-picker-edit/color-picker-edit
 import VarColorPickerSwatches from './components/color-picker-swatches/color-picker-swatches'
 import VarColorPickerHueSlider from './components/color-picker-hue-slider/color-picker-hue-slider'
 import VarColorPickerAlphaSlider from './components/color-picker-alpha-slider/color-picker-alpha-slider'
+import { useProxiedModel } from './utils/proxiedModel'
 
 export default defineComponent({
-  name: 'DColorPicker',
+  name: 'VarColorPicker',
   components: {
     colorPanel,
     VarColorPickerPreview,
@@ -38,12 +39,19 @@ export default defineComponent({
     // const isChangeTextColor = ref(true)
     // const formItemText = ref(`${props.mode ?? DEFAULT_MODE}`)
     // const mode = ref(unref(props.mode))
+    const hsva = computed(() => parseBaseColor(modelValue.value))
+    const hex = computed(() => HSVAtoHex(hsva.value))
+    console.log(hex.value)
 
     // 更新用户输入颜色 2021.12.10
     function updateModelValueColor(color: Partial<ColorPickerColor>) {
+      console.log(color)
       initialColor.value = color
       // 提取颜色 2021.12.10
-      const value = extractColor(initialColor.value as ColorPickerColor, modelValue.value, mode.value as string, true)
+      const value = extractBaseColor(initialColor.value, props.modelValue)
+      console.log(value)
+
+      // const value = extractColor(initialColor.value as ColorPickerColor, modelValue.value, mode.value as string, true)
       emit('update:modelValue', value)
     }
     // // 交互触发item 颜色 面板  动态修改alpha后要还原 alpha 2021.12.18
@@ -89,8 +97,7 @@ export default defineComponent({
     watch(
       modelValue,
       (newValue) => {
-        updateModelValueColor(parseColor(newValue, initialColor.value))
-        console.log(parseColor(newValue, initialColor.value))
+        updateModelValueColor(parseBaseColor(modelValue.value))
       },
       { immediate: true }
     )
@@ -109,7 +116,7 @@ export default defineComponent({
               ></color-panel>
             </div> */}
             <div></div>
-            {initialColor.value?.hue}
+            {JSON.stringify(initialColor.value)}
             {props.canvasLayout && <VarColorPickerCanvas color={initialColor.value} onUpdate:color={updateColor} />}
             {(props.sliderLayout || props.inputLayout) && (
               <div class={classes(n('control'))}>
@@ -117,7 +124,7 @@ export default defineComponent({
                   <div class={classes(n('preview'))}>
                     <div
                       class={classes(n('preview__dots'))}
-                      style={{ '--var-color-picker-preview-dots': initialColor.value!.hexa }}
+                      style={{ '--var-color-picker-preview-dots': hex.value }}
                     ></div>
                     <div class={classes(n('preview__slider'))}>
                       <VarColorPickerHueSlider color={initialColor.value} onUpdate:color={updateColor} />

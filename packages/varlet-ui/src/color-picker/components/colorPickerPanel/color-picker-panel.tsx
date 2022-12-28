@@ -26,8 +26,7 @@ export default defineComponent({
   emits: ['update:modelValue', 'changeTextColor', 'changeTriggerColor', 'changePaletteColor', 'changeTextModeType'],
   setup(props: ColorPickerProps, { emit }) {
     const app = getCurrentInstance()
-    // const t = createI18nTranslate('DColorPicker', app)
-
+    // const t = createI18nTranslate('VarColorPicker', app)
     const injectData = inject('provideData') as ProvideColorOptions
     const paletteElement = ref<(HTMLElement & { renderCanvas: () => void }) | null>(null)
     const { showAlpha } = injectData

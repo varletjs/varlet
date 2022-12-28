@@ -193,7 +193,7 @@ export function parseHex(hex: string): Hex {
     hex = hex.slice(1)
   }
 
-  hex = hex.replace(/([^0-9a-f])/gi, 'f')
+  hex = hex.replace(/([^0-9a-f])/gi, 'F')
 
   if (hex.length === 3 || hex.length === 4) {
     hex = hex
@@ -203,13 +203,12 @@ export function parseHex(hex: string): Hex {
   }
 
   if (hex.length === 6) {
-    hex = padEnd(hex, 8, 'f')
+    hex = padEnd(hex, 8, 'F')
   } else {
-    hex = padEnd(padEnd(hex, 6), 8, 'f')
+    hex = padEnd(padEnd(hex, 6), 8, 'F')
   }
 
-  // return `#${hex}`.toUpperCase().substring(0, 9)
-  return `#${hex}`.substring(0, 9)
+  return hex as Hex
 }
 
 export function RGBtoInt(rgba: RGBA): ColorInt {
@@ -481,7 +480,50 @@ export const elementResize = (parentElement: HTMLElement): position => {
     top,
   }
 }
+export function extractBaseColor(color: HSV, input: any) {
+  if (input == null || typeof input === 'string') {
+    const hex = HSVtoHex(color)
 
+    if (color.a === 1) return hex.slice(0, 7)
+    return hex
+  }
+
+  if (typeof input === 'object') {
+    let converted
+
+    if (has(input, ['r', 'g', 'b'])) converted = HSVtoRGB(color)
+    else if (has(input, ['h', 's', 'l'])) converted = HSVtoHSL(color)
+    else if (has(input, ['h', 's', 'v'])) converted = color
+
+    return stripAlpha(converted, !has(input, ['a']))
+  }
+
+  return color
+}
+export function parseBaseColor(color: any): HSV | null {
+  if (!color) return null
+
+  let hsva: HSV | null = null
+
+  if (typeof color === 'string') {
+    const hex = parseHex(color)
+    console.log(hex)
+
+    hsva = HexToHSV(hex)
+  }
+
+  if (typeof color === 'object') {
+    if (has(color, ['r', 'g', 'b'])) {
+      hsva = RGBtoHSV(color)
+    } else if (has(color, ['h', 's', 'l'])) {
+      hsva = HSLtoHSV(color)
+    } else if (has(color, ['h', 's', 'v'])) {
+      hsva = color
+    }
+  }
+
+  return hsva != null ? { ...hsva, a: hsva.a ?? 1 } : null
+}
 export function RGBtoRGBA(rgba: RGBA): RGBA {
   if (typeof rgba === 'string') {
     const strRgba = (/rgba?\((.*?)\)/.exec(rgba) || ['', '0,0,0,1'])[1].split(',')
