@@ -45,7 +45,7 @@ const setStyle = () => {
 
 ### Methods
 
-| Method | Description | Arguments | Return value |
+| Method | Description | Arguments | Return |
 |---------------------|----------|--|---------|
 | `LoadingBar.mergeConfig` | Merge config of loading bar | _options: Options_ | `-`  |
 | `LoadingBar.start`  | Start loading  | `-` | `-` |

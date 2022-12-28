@@ -175,8 +175,8 @@ const change = () => {
 
 Use ref to get CountDown instance and call instance methods.
 
-| Method  | Description     | arguments |
-| ------- | --------------- | --------- |
-| `start` | Start countdown | `-`       |
-| `pause` | Pause countdown | `-`       |
-| `reset` | Reset countdown | `-`       |
+| Method | Description	 | arguments | Return |
+| ---- | ------- | -------- |--------|
+| `start` | Start countdown | `-`       | `-` |
+| `pause` | Pause countdown | `-`       | `-` |
+| `reset` | Reset countdown | `-`       | `-` |
