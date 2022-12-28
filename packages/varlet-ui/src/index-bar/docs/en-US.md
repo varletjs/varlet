@@ -99,9 +99,9 @@ onMounted(() => {
 ### Methods
 Use ref to get IndexBar instance and call instance methods.
 
-| Method | Description	 | arguments |
-| ---- | ------- | -------- |
-| `scrollTo` | scroll to target element	 | `index: number \| string` |
+| Method | Description	 | arguments | Return |
+| ---- | ------- | -------- |---- |
+| `scrollTo` | scroll to target element	 | `index: number \| string` | `-` |
 
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)

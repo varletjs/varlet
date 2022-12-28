@@ -1,5 +1,11 @@
 <template>
-  <component :is="sticky ? n('$-sticky') : Transition" :offset-top="sticky ? offsetTop : null">
+  <component
+    :is="sticky ? n('$-sticky') : Transition"
+    :ref="sticky ? 'stickyComponent' : undefined"
+    :css-mode="sticky ? stickyCssMode : undefined"
+    :offset-top="sticky ? offsetTop : undefined"
+    :z-index="sticky ? stickyZIndex : undefined"
+  >
     <div
       :class="
         classes(
@@ -73,6 +79,7 @@ export default defineComponent({
     const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
     const disabledColor: ComputedRef<string | undefined> = computed(() => props.disabledColor)
     const itemDirection: ComputedRef<string> = computed(() => props.itemDirection)
+    const stickyComponent: Ref<null | typeof VarSticky> = ref(null)
     const { tabList, bindTabList, length } = useTabList()
 
     const onTabClick = (tab: TabProvider) => {
@@ -157,6 +164,13 @@ export default defineComponent({
       scrollToCenter(tab)
     }
 
+    // expose
+    const resizeSticky = async () => {
+      if (props.sticky && stickyComponent.value) {
+        await stickyComponent.value.resize()
+      }
+    }
+
     const tabsProvider: TabsProvider = {
       active,
       activeColor,
@@ -183,6 +197,7 @@ export default defineComponent({
     onUnmounted(() => window.removeEventListener('resize', resize))
 
     return {
+      stickyComponent,
       indicatorWidth,
       indicatorHeight,
       indicatorX,
@@ -194,6 +209,7 @@ export default defineComponent({
       n,
       classes,
       resize,
+      resizeSticky,
     }
   },
 })

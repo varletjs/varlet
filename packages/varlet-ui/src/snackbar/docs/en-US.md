@@ -286,7 +286,7 @@ const openMultiple = () => {
 
 The `clear` method on the instance can close the current instance, and the `clear` method on the Snackbar can close all message bars.
 
-| Method | Description | Arguments | Return value |
+| Method | Description | Arguments | Return |
 | ---- | ---- | ---- | ---- |
 | `Snackbar` | Show snackbar | _options \| string_ | `snackbar instance` |
 | `Snackbar.success` | Show success snackbar | _options \| string_ | `snackbar instance` |

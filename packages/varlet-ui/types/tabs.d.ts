@@ -16,8 +16,10 @@ export interface TabsProps extends BasicAttributes {
   indicatorSize?: string | number
   elevation?: boolean
   sticky?: boolean
-  safeArea?: boolean
+  stickyCssMode?: boolean
+  stickyZIndex?: number
   offsetTop?: string | number
+  safeArea?: boolean
   onClick?: ListenerProp<(active: string | number) => void>
   onChange?: ListenerProp<(active: string | number) => void>
   'onUpdate:active'?: ListenerProp<(active: string | number) => void>
@@ -31,6 +33,8 @@ export class Tabs extends VarComponent {
   }
 
   resize(): void
+
+  resizeSticky(): Promise<void>
 }
 
 export class _TabsComponent extends Tabs {}

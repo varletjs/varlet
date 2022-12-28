@@ -193,9 +193,9 @@ This can be mistaken for a scroll container, so avoid it.
 
 ### Methods
 
-| Method  | Description                                             | Arguments |
-| ------- | ------------------------------------------------------- | --------- |
-| `check` | Trigger position check, touch bottom trigger load event | `-`       |
+| Method  | Description                                             | Arguments | Return |
+| ------- | ------------------------------------------------------- | --------- | --- |
+| `check` | Trigger position check, touch bottom trigger load event | `-`       | `-` |
 
 ### Events
 

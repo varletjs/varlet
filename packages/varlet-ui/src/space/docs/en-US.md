@@ -93,14 +93,14 @@ so that you can do flex layout more efficiently.
 
 ### Props
 
-| Prop        | Description                                                                                             | Type      | Default  |
-|-------------|---------------------------------------------------------------------------------------------------------|-----------|----------|
-| `align`     | Vertical arrangement, Can be set to `stretch` `center` `start` `end` `baseline`                         | _string_  | `-`      |
-| `justify`   | Horizontal arrangement, Can be set to `start` `end` `center` `space-around` `space-between`             | _string_  | `start`  |
-| `size`      | spacing, Can be set to `mini` `small` `normal` `large` or `[Vertical, Horizontal]`(Support length unit) | _string \ | number \ | [string \| number, string \| number]_ |`normal`|
-| `wrap`      | Whether to exceed the line break                                                                        | _boolean_ | `true`   |
-| `direction` | Layout direction, Can be set to `row` `column`                                                          | _string_  | `row`    |
-| `inline`    | Is it an inline element                                                                                 | _boolean_ | `false`  |
+| Prop        | Description                                                                                             | Type     | Default |
+|-------------|---------------------------------------------------------------------------------------------------------|----------|---------|
+| `align`     | Vertical arrangement, Can be set to `stretch` `center` `start` `end` `baseline`                         | _string_ | `-`     |
+| `justify`   | Horizontal arrangement, Can be set to `start` `end` `center` `space-around` `space-between`             | _string_ | `start` |
+| `size`      | spacing, Can be set to `mini` `small` `normal` `large` or `[Vertical, Horizontal]`(Support length unit) | _string \| number \| [string \| number, string \| number]_ |`normal`|
+| `wrap`      | Whether to exceed the line break                                                                        | _boolean_ | `true`  |
+| `direction` | Layout direction, Can be set to `row` `column`                                                          | _string_ | `row`   |
+| `inline`    | Is it an inline element                                                                                 | _boolean_ | `false` |
 
 ### Slots
 

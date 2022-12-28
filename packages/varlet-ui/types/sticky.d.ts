@@ -15,6 +15,8 @@ export class Sticky extends VarComponent {
   $slots: {
     default(): VNode[]
   }
+
+  resize(): Promise<void>
 }
 
 export class _StickyComponent extends Sticky {}

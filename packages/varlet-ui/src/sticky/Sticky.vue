@@ -27,14 +27,29 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted, onActivated, onDeactivated, computed, watch } from 'vue'
+import {
+  defineComponent,
+  ref,
+  onMounted,
+  onUnmounted,
+  onActivated,
+  onDeactivated,
+  computed,
+  watch,
+  type Ref,
+  type ComputedRef,
+} from 'vue'
 import { props } from './props'
-import { doubleRaf, getParentScroller, toPxNum } from '../utils/elements'
+import { doubleRaf, getParentScroller, raf, toPxNum } from '../utils/elements'
 import { toNumber } from '@varlet/shared'
-import type { Ref, ComputedRef } from 'vue'
 import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('sticky')
+
+export interface StickyFixedParams {
+  offsetTop: number
+  isFixed: boolean
+}
 
 export default defineComponent({
   name: 'VarSticky',
@@ -52,13 +67,13 @@ export default defineComponent({
     const fixedWrapperHeight: Ref<string> = ref('auto')
 
     const enableCSSMode: ComputedRef<boolean> = computed(() => !props.disabled && props.cssMode)
-    const enableFixedMode: ComputedRef<boolean> = computed(() => !props.disabled && isFixed.value)
+    const enableFixedMode: ComputedRef<boolean> = computed(() => !props.disabled && !props.cssMode && isFixed.value)
     const offsetTop: ComputedRef<number> = computed(() => toPxNum(props.offsetTop))
 
     let scroller: HTMLElement | Window
 
-    const handleScroll = () => {
-      const { onScroll, cssMode, disabled } = props
+    const computeFixedParams = (): StickyFixedParams | undefined => {
+      const { cssMode, disabled } = props
 
       if (disabled) {
         return
@@ -86,11 +101,35 @@ export default defineComponent({
           fixedWrapperHeight.value = `${wrapper.offsetHeight}px`
           isFixed.value = true
         }
-        call(onScroll, offsetTop.value, true)
-      } else {
-        isFixed.value = false
-        call(onScroll, currentOffsetTop, false)
+
+        return {
+          offsetTop: offsetTop.value,
+          isFixed: true,
+        }
       }
+
+      isFixed.value = false
+
+      return {
+        offsetTop: currentOffsetTop,
+        isFixed: false,
+      }
+    }
+
+    const handleScroll = () => {
+      // returns undefined when disabled = true
+      const fixedParams = computeFixedParams()
+
+      if (fixedParams) {
+        call(props.onScroll, fixedParams.offsetTop, fixedParams.isFixed)
+      }
+    }
+
+    // expose
+    const resize = async () => {
+      isFixed.value = false
+      await raf()
+      computeFixedParams()
     }
 
     const addScrollListener = async () => {
@@ -106,7 +145,7 @@ export default defineComponent({
       window.removeEventListener('scroll', handleScroll)
     }
 
-    watch(() => props.disabled, handleScroll)
+    watch(() => props.disabled, resize)
 
     onActivated(addScrollListener)
 
@@ -119,6 +158,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      resize,
       stickyEl,
       wrapperEl,
       isFixed,
