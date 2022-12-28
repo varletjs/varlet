@@ -1,5 +1,10 @@
 :root {
   --tooltip-background-color: rgba(97, 97, 97, 0.9);
+  --tooltip-primary-color: var(--color-primary);
+  --tooltip-info-color: var(--color-info);
+  --tooltip-success-color: var(--color-success);
+  --tooltip-warning-color: var(--color-warning);
+  --tooltip-danger-color: var(--color-danger);
 }
 
 .var {
@@ -17,6 +22,7 @@
 
 .var-tooltip {
   display: inline-block;
+
   &--tooltip-background-color {
     transition: opacity 0.25s, background-color 0.25s;
     border-radius: 4px;
@@ -36,27 +42,27 @@
 
   &--primary {
     color: #fff;
-    background-color: var(--button-primary-color);
+    background-color: var(--tooltip-primary-color);
   }
 
   &--info {
     color: #fff;
-    background-color: var(--button-info-color);
+    background-color: var(--tooltip-info-color);
   }
 
   &--success {
     color: #fff;
-    background-color: var(--button-success-color);
+    background-color: var(--tooltip-success-color);
   }
 
   &--warning {
     color: #fff;
-    background-color: var(--button-warning-color);
+    background-color: var(--tooltip-warning-color);
   }
 
   &--danger {
     color: #fff;
-    background-color: var(--button-danger-color);
+    background-color: var(--tooltip-danger-color);
   }
 
   &--margin-top,
