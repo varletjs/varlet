@@ -19,4 +19,5 @@ export default {
   dangerTooltip: '危险',
   customColor: '自定义颜色',
   slotTooltip: '内容插槽',
+  countDown: '秒后关闭',
 }
