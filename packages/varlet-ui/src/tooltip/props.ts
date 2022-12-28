@@ -1,9 +1,6 @@
-import type { PropType } from 'vue'
-import type { Placement as PopperPlacement } from '@popperjs/core'
-import { TeleportProps } from 'vue'
 import { defineListenerProp } from '../utils/components'
-
-export type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
+import type { PropType, TeleportProps } from 'vue'
+import type { NeededPopperPlacement } from '../menu/usePopover'
 
 export type Placement = NeededPopperPlacement
 
