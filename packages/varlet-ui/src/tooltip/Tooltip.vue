@@ -12,14 +12,21 @@
       <transition :name="n()" @after-enter="onOpened" @after-leave="onClosed">
         <div
           ref="popover"
-          :style="{ zIndex }"
-          :class="classes(n('menu'), [defaultStyle, `${n('--menu-background-color')} ${n('$-elevation--3')}`])"
+          :style="{ zIndex, background: color }"
+          :class="
+            classes(
+              n('tooltip'),
+              [defaultStyle, `${n('--tooltip-background-color')} var-elevation--3`],
+              `${n(`--${type}`)}`,
+              `${n(`--margin-${placement}`)}`
+            )
+          "
           v-show="show"
           @click.stop
           @mouseenter="handlePopoverMouseenter"
           @mouseleave="handlePopoverMouseleave"
         >
-          <slot name="menu" />
+          <slot name="tooltip"> {{ content }} </slot>
         </div>
       </transition>
     </teleport>
@@ -30,15 +37,18 @@
 import { createNamespace } from '../utils/components'
 import { defineComponent } from 'vue'
 import { props } from './props'
-import { usePopover } from './usePopover'
+import { usePopover } from '../menu/usePopover'
 
-const { n, classes } = createNamespace('menu')
+const { n, classes } = createNamespace('tooltip')
 
 export default defineComponent({
-  name: 'VarMenu',
+  name: 'VarTooltip',
   props,
   setup(props) {
     const {
+      content,
+      type,
+      color,
       popover,
       host,
       hostSize,
@@ -56,6 +66,9 @@ export default defineComponent({
     } = usePopover(props)
 
     return {
+      content,
+      type,
+      color,
       popover,
       host,
       hostSize,
@@ -64,11 +77,11 @@ export default defineComponent({
       n,
       classes,
       handleHostClick,
+      handlePopoverClose,
       handleHostMouseenter,
       handleHostMouseleave,
       handlePopoverMouseenter,
       handlePopoverMouseleave,
-      handlePopoverClose,
       resize,
       open,
       close,
@@ -78,7 +91,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import './menu';
-@import '../styles/elevation';
-@import '../styles/common';
+@import './tooltip';
+@import '../styles/elevation.less';
+@import '../styles/common.less';
 </style>

@@ -1,16 +1,15 @@
-import Menu from '..'
-import VarMenu from '../Menu'
-import { createApp } from 'vue'
+import VarTooltip from '..'
+import { createApp, h } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay, mockStubs, trigger } from '../../utils/jest'
 import { doubleRaf } from '../../utils/elements'
 
-test('test menu plugin', () => {
-  const app = createApp({}).use(Menu)
-  expect(app.component(Menu.name)).toBeTruthy()
+test('test tooltip plugin', () => {
+  const app = createApp({}).use(VarTooltip)
+  expect(app.component(VarTooltip.name)).toBeTruthy()
 })
 
-test('test menu placement', async () => {
+test('test tooltip placement', async () => {
   const { mockRestore } = mockStubs()
 
   for (const placement of [
@@ -26,18 +25,10 @@ test('test menu placement', async () => {
     'left',
     'left-start',
     'left-end',
-    'cover-top',
-    'cover-top-start',
-    'cover-top-end',
-    'cover-bottom',
-    'cover-bottom-start',
-    'cover-bottom-end',
-    'cover-left',
-    'cover-right',
   ]) {
     const root = document.createElement('div')
 
-    mount(VarMenu, {
+    mount(VarTooltip, {
       props: {
         placement,
         teleport: root,
@@ -52,10 +43,10 @@ test('test menu placement', async () => {
   mockRestore()
 })
 
-test('test menu click trigger', async () => {
+test('test tooltip click trigger', async () => {
   const { mockRestore } = mockStubs()
 
-  const wrapper = mount(VarMenu, {
+  const wrapper = mount(VarTooltip, {
     attachTo: document.body,
   })
 
@@ -72,7 +63,7 @@ test('test menu click trigger', async () => {
   mockRestore()
 })
 
-test('test menu hover trigger and events', async () => {
+test('test tooltip hover trigger and events', async () => {
   const { mockRestore } = mockStubs()
 
   const onOpen = jest.fn()
@@ -82,7 +73,7 @@ test('test menu hover trigger and events', async () => {
 
   const root = document.createElement('div')
 
-  const wrapper = mount(VarMenu, {
+  const wrapper = mount(VarTooltip, {
     props: {
       trigger: 'hover',
       teleport: root,
@@ -92,7 +83,6 @@ test('test menu hover trigger and events', async () => {
       onClosed,
     },
   })
-
   await wrapper.trigger('mouseenter')
   expect(onOpen).toHaveBeenCalledTimes(1)
 
@@ -115,10 +105,10 @@ test('test menu hover trigger and events', async () => {
   mockRestore()
 })
 
-test('test menu default style', async () => {
+test('test tooltip default style', async () => {
   const root = document.createElement('div')
 
-  mount(VarMenu, {
+  mount(VarTooltip, {
     props: {
       defaultStyle: false,
       teleport: root,
@@ -130,12 +120,71 @@ test('test menu default style', async () => {
   expect(root.innerHTML).toMatchSnapshot()
 })
 
-test('test menu offset', async () => {
+test('test tooltip type', async () => {
+  const { mockRestore } = mockStubs()
+
+  for (const type of ['default', 'primary', 'info', 'success', 'warning', 'danger']) {
+    const root = document.createElement('div')
+
+    mount(VarTooltip, {
+      props: {
+        type,
+        teleport: root,
+      },
+    })
+
+    await doubleRaf()
+
+    expect(root.innerHTML).toMatchSnapshot()
+  }
+
+  mockRestore()
+})
+
+test('test tooltip content', async () => {
   const { mockRestore } = mockStubs()
 
   const root = document.createElement('div')
 
-  mount(VarMenu, {
+  mount(VarTooltip, {
+    props: {
+      content: 'test tooltip',
+      teleport: root,
+    },
+  })
+
+  await doubleRaf()
+
+  expect(root.innerHTML).toMatchSnapshot()
+
+  mockRestore()
+})
+
+test('test tooltip color', async () => {
+  const { mockRestore } = mockStubs()
+
+  const root = document.createElement('div')
+
+  mount(VarTooltip, {
+    props: {
+      color: '#000',
+      teleport: root,
+    },
+  })
+
+  await doubleRaf()
+
+  expect(root.innerHTML).toMatchSnapshot()
+
+  mockRestore()
+})
+
+test('test tooltip offset', async () => {
+  const { mockRestore } = mockStubs()
+
+  const root = document.createElement('div')
+
+  mount(VarTooltip, {
     props: {
       offsetX: 100,
       offsetY: 100,
@@ -150,12 +199,12 @@ test('test menu offset', async () => {
   mockRestore()
 })
 
-test('test menu hover the menu list', async () => {
+test('test tooltip hover the tooltip list', async () => {
   const { mockRestore } = mockStubs()
 
   const root = document.createElement('div')
 
-  mount(VarMenu, {
+  mount(VarTooltip, {
     props: {
       show: true,
       trigger: 'hover',
@@ -164,8 +213,8 @@ test('test menu hover the menu list', async () => {
   })
 
   await doubleRaf()
-  await trigger(root.querySelector('.var-menu__menu'), 'mouseenter')
-  await trigger(root.querySelector('.var-menu__menu'), 'mouseleave')
+  await trigger(root.querySelector('.var-tooltip__tooltip'), 'mouseenter')
+  await trigger(root.querySelector('.var-tooltip__tooltip'), 'mouseleave')
   await delay(300)
   expect(root.innerHTML).toMatchSnapshot()
 
