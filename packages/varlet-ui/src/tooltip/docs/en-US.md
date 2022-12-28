@@ -244,7 +244,7 @@ const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
 | Name | Description | SlotProps |
 | --- |----------------------| --- |
 | `default` | Tooltip trigger element | `-` |
-| `tooltip` | Tooltip content         | `-` |
+| `content` | Tooltip content         | `-` |
 
 ### Style Variables
 
