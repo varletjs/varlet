@@ -194,7 +194,7 @@ const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
 | 参数 | 说明 | 类型                    | 默认值 |
 | ------- | --- |-----------------------| --- |
 | `v-model:show` | 是否显示 Tooltip | _string_              | `default` |
-| `content` | 显示的内容，也可被  `slot#tooltip` 覆盖 | _string_              ||
+| `content` | 显示的内容 | _string_              ||
 | `color` | 背景颜色 | _string_              | |
 | `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
 | `placement` | Tooltip 弹出位置 | _Placement_           | `top` |
@@ -251,4 +251,9 @@ const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--tooltip-background-color` | `#fff` |
+| `--tooltip-background-color` | `rgba(97, 97, 97, 0.9)` |
+| `--tooltip-primary-color` | `var(--color-primary)` |
+| `--tooltip-info-color` | `var(--color-info)` |
+| `--tooltip-success-color` | `var(--color-success)` |
+| `--tooltip-warning-color` | `var(--color-warning)` |
+| `--tooltip-danger-color` | `var(--color-danger)` |
