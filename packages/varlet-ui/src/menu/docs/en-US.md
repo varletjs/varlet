@@ -158,7 +158,7 @@ In the `disabled` state, the menu will no longer be opened.
 ```html
 <template>
   <var-menu disabled>
-    <var-button type="primary">Disabled</var-button>
+    <var-button type="primary" disabled>Disabled</var-button>
     
     <template #menu>
       <var-cell>Menu Option</var-cell>
