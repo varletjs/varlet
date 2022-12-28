@@ -11,7 +11,7 @@ export interface LoadingProps extends BasicAttributes {
   size?: LoadingSize
   color?: string
   description?: string
-  show?: boolean
+  loading?: boolean
 }
 
 export class Loading extends VarComponent {
