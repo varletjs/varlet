@@ -289,4 +289,7 @@ export const componentMap: Record<string, ComponentDescriptor> = {
   breadcrumb: {
     site: '/breadcrumbs',
   },
+  tooltip: {
+    site: '/tooltip',
+  },
 }
