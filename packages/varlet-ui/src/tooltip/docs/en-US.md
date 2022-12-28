@@ -195,7 +195,7 @@ const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
 | Prop              | Description                                                 | Type              | Default |
 | ------- |-------------------------------------------------------------|----------------------| --- |
 | `v-model:show` | whether to show the tooltip                                    | _string_             | `default` |
-| `content` | display content, can be overridden by `slot#tooltip` | _string_              | `-` |
+| `content` | display content | _string_              | `-` |
 | `color`          | Tooltip background color                                                            | _string_  | `-`            |
 | `type`           | Tooltip type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
 | `placement` | Tooltip popup placement                                        | _Placement_          | `top` |
@@ -252,4 +252,9 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--tooltip-background-color` | `#fff` |
+| `--tooltip-background-color` | `rgba(97, 97, 97, 0.9)` |
+| `--tooltip-primary-color` | `var(--color-primary)` |
+| `--tooltip-info-color` | `var(--color-info)` |
+| `--tooltip-success-color` | `var(--color-success)` |
+| `--tooltip-warning-color` | `var(--color-warning)` |
+| `--tooltip-danger-color` | `var(--color-danger)` |
