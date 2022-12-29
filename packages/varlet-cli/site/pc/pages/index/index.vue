@@ -21,7 +21,7 @@ const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
 const title: Ref<string> = ref(get(config, 'title'))
 const language: Ref<string> = ref(get(config, 'defaultLanguage'))
 const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
-const indexPage: Ref<Record<string, any>> = get(config, 'pc.indexPage')
+const indexPage: Ref<Record<string, any>> = ref(get(config, 'pc.indexPage'))
 
 const goGithub = () => {
   window.open(github)
