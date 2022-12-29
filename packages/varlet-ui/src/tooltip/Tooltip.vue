@@ -13,13 +13,14 @@
         <div
           ref="popover"
           :class="n('tooltip')"
+          :style="{ zIndex }"
           v-show="show"
           @click.stop
           @mouseenter="handlePopoverMouseenter"
           @mouseleave="handlePopoverMouseleave"
         >
           <div
-            :style="{ zIndex, background: color }"
+            :style="{ background: color }"
             :class="classes(n('content-container'), n(`--${type}`), n(`--margin-${placement}`))"
           >
             <slot name="content">{{ content }}</slot>
