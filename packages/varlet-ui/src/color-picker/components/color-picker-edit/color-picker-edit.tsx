@@ -41,16 +41,26 @@ export default defineComponent({
             <VColorPickerInput {...props} />
           ))}
           {enabledModes.value.length > 1 && (
-            <VarButton
-              text
+            // <VarButton
+            //   text
+            //   round
+            //   onClick={() => {
+            //     const mi = enabledModes.value.findIndex((m) => m.name === props.mode)
+            //     emit('update:mode', enabledModes.value[(mi + 1) % enabledModes.value.length].name)
+            //   }}
+            // >
+            //   <var-icon name="checkbox-marked-circle" color="#fff" />
+            // </VarButton>
+            <var-button
+              type="primary"
               round
               onClick={() => {
-                const mi = enabledModes.value.findIndex((m) => m.name === props.mode)
-                emit('update:mode', enabledModes.value[(mi + 1) % enabledModes.value.length].name)
+                const index = enabledModes.value.findIndex((m) => m.name === props.mode)
+                emit('update:mode', enabledModes.value[(index + 1) % enabledModes.value.length].name)
               }}
             >
-              <var-icon name="checkbox-marked-circle" color="#fff" />
-            </VarButton>
+              <var-icon name="plus" />
+            </var-button>
           )}
         </div>
       )

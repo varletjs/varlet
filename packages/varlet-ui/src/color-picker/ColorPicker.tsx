@@ -54,7 +54,6 @@ export default defineComponent({
       emit('update:modelValue', value)
     }
     updateModelValueColor(modelValue.value)
-
     // // 交互触发item 颜色 面板  动态修改alpha后要还原 alpha 2021.12.18
     // const triggerColor = computed(() => {
     //   const currentColor = (initialColor.value as ColorPickerColor).rgba
@@ -130,7 +129,10 @@ export default defineComponent({
                     ></div>
                     <div class={classes(n('preview__slider'))}>
                       <VarColorPickerHueSlider color={initialColor.value} onUpdate:color={updateColor} />
-                      <VarColorPickerAlphaSlider color={initialColor.value} onUpdate:color={updateColor} />
+
+                      {currentMode.value.endsWith('a') ? (
+                        <VarColorPickerAlphaSlider color={initialColor.value} onUpdate:color={updateColor} />
+                      ) : null}
                     </div>
                   </div>
                 )}
