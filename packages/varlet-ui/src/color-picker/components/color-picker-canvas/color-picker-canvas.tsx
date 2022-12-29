@@ -9,7 +9,7 @@ import { createNamespace } from '../../../utils/components'
 
 type DefaultTransition = { transition: string }
 export default defineComponent({
-  name: 'ColorPalette',
+  name: 'VarColorCanvas',
   props: colorPickerPaletteProps,
   emits: ['update:color', 'changeTextColor'],
   setup(props: ColorPickerPaletteProps, ctx) {

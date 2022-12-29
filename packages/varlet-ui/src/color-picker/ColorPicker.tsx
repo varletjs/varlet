@@ -41,19 +41,20 @@ export default defineComponent({
     // const mode = ref(unref(props.mode))
     const hsva = computed(() => parseBaseColor(modelValue.value))
     const hex = computed(() => HSVAtoHex(hsva.value))
-    console.log(hex.value)
 
     // 更新用户输入颜色 2021.12.10
     function updateModelValueColor(color: Partial<ColorPickerColor>) {
-      console.log(color)
-      initialColor.value = color
+      initialColor.value = parseBaseColor(color)
+      console.log(initialColor.value)
+
       // 提取颜色 2021.12.10
       const value = extractBaseColor(initialColor.value, props.modelValue)
       console.log(value)
-
       // const value = extractColor(initialColor.value as ColorPickerColor, modelValue.value, mode.value as string, true)
       emit('update:modelValue', value)
     }
+    updateModelValueColor(modelValue.value)
+
     // // 交互触发item 颜色 面板  动态修改alpha后要还原 alpha 2021.12.18
     // const triggerColor = computed(() => {
     //   const currentColor = (initialColor.value as ColorPickerColor).rgba
@@ -94,13 +95,14 @@ export default defineComponent({
     onMounted(() => {
       // if (!props.modes.includes(mode.value)) mode.value = props.modes[0]
     })
-    watch(
-      modelValue,
-      (newValue) => {
-        updateModelValueColor(parseBaseColor(modelValue.value))
-      },
-      { immediate: true }
-    )
+    // watch(
+    //   modelValue,
+    //   (newValue) => {
+    //     console.log(newValue);
+    //     updateModelValueColor(parseBaseColor(newValue))
+    //   },
+    //   { immediate: true }
+    // )
     return () => {
       return (
         <>
