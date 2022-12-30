@@ -4,7 +4,7 @@
 
 The component library provides the ability to highlight the component syntax for `webstorm` and `vscode`. 
 the `Syntax highlight`, `Code completion`, `Documentation popup`, can be obtained through plugins and Settings.
-The component library provides a separate helper plugin for `vscode`, which can be downloaded from the extension market
+The component library provides a separate helper plugin for `vscode`, which can be downloaded from the extension market.
 
 ### Webstorm
 
@@ -31,7 +31,7 @@ Install the `Volar` plugin and configure `tsconfig.json` as follows to get type 
 
 ### VSCode Extension
 
-Search the `varlet-vscode-extension` installation in the `vscode` plugin market. When you hover over the component name, you can go directly to the component's document address via a link
+Search the `varlet-vscode-extension` installation in the `vscode` plugin market. When you hover over the component name, you can go directly to the component's document address via a link.
 
 <img style="width: 50%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/ext_vsc.png" alt="vscode ext" />
 <img style="width: 78%; margin-top: 10px; border-radius: 5px" src="https://varlet.gitee.io/varlet-ui/ext_vsc_link.png" alt="vscode ext link" />

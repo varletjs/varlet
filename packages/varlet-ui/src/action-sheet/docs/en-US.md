@@ -77,7 +77,7 @@ const handleSelect = async () => {
 
 ### Action Disabled
 
-The option is passed `disabled` to leave the action in the disabled state
+The option is passed `disabled` to leave the action in the disabled state.
 
 ```html
 <script setup>
@@ -113,7 +113,7 @@ const handleSelect = async () => {
 
 ### Disable Close On Click Action
 
-Passing in `CloseOnClickAction` disallows the action of `ActionSheet` closing automatically when the option is selected. The user can select the action multiple times. Because `Promise` is only resolved once, it is recommended to use `onSelect` to listen for the action of the user
+Passing in `CloseOnClickAction` disallows the action of `ActionSheet` closing automatically when the option is selected. The user can select the action multiple times. Because `Promise` is only resolved once, it is recommended to use `onSelect` to listen for the action of the user.
 
 ```html
 <script setup>
@@ -148,7 +148,7 @@ const handleSelect = async () => {
 
 ### Custom Action Styles
 
-Options provide parameters to configure the style. See the `Action` data structure for options
+Options provide parameters to configure the style. See the `Action` data structure for options.
 
 ```html
 <script setup>
@@ -449,7 +449,7 @@ const handleSelect = (action) => {
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider) .
 
 | Variable                                    | Default                      |
 | ------------------------------------------- | ---------------------------- |

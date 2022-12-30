@@ -2,7 +2,7 @@
 
 ### 介绍
 
-开箱即用的 `Vue3组件库` 快速成型工具，提供了一系列命令和工具去解决组件库开发上的问题
+开箱即用的 `Vue3组件库` 快速成型工具，提供了一系列命令和工具去解决组件库开发上的问题。 
 
 ### 特性
 
@@ -51,8 +51,8 @@ varlet-cli gen
 | `darkTheme` | 暗黑模式文档主题 | _Record<string, any>_ | `-` |
 | `highlight` | 文档代码片段样式相关 | _{ style: string }_ | `-` |
 | `analysis` | 文档统计相关 | _{ baidu: string }_ | `-` |
-| `pc` | pc端文档结构配置 | _Record<string, any>_ | `-` |
-| `mobile` | mobile端文档结构配置 | _Record<string, any>_ | `-` |
+| `pc` | pc 端文档结构配置 | _Record<string, any>_ | `-` |
+| `mobile` | mobile 端文档结构配置 | _Record<string, any>_ | `-` |
 | `moduleCompatible` | 模块兼容配置 | _Record<string, string>_ | `-` |
 
 ### 自定义页面

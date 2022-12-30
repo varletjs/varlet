@@ -85,7 +85,7 @@ const placementOptions = [
 
 ### 偏移量
 
-可以用 `offset-x` 和 `offset-y` 设置 Menu 弹出的偏移量
+可以用 `offset-x` 和 `offset-y` 设置 Menu 弹出的偏移量。
 
 ```html
 <template>
@@ -103,7 +103,7 @@ const placementOptions = [
 
 ### 触发方式
 
-通过 `trigger` 改变菜单显示的触发方式，可选值为 `click` 和 `hover`
+通过 `trigger` 改变菜单显示的触发方式，可选值为 `click` 和 `hover` 。
 
 ```html
 <template>

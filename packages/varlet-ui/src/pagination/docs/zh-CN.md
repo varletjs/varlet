@@ -68,7 +68,7 @@
 
 ### 开启页码快速跳转
 
-使用 `show-quick-jumper` 属性开启页面快速跳转
+使用 `show-quick-jumper` 属性开启页面快速跳转。
 
 ```html
 <template>
@@ -168,7 +168,7 @@
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |

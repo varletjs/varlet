@@ -224,7 +224,7 @@ const isEven = ref(true)
 | `icon` | 自定义图标 | `active: boolean` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。 
 
 #### BottomNavigation Variables
 

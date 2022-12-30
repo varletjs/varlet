@@ -20,7 +20,7 @@ const date = ref('2021-04-08')
 
 ### 月份选择器
 
-使用 `type` 属性切换选择器的类型，`type` 默认值为 `date`
+使用 `type` 属性切换选择器的类型，`type` 默认值为 `date`。
 
 ```html
 <script setup>
@@ -157,7 +157,7 @@ const change = (date) => {
 | `change`  | 日期改变时触发 | `value: string \| string[]` |
 
 ### 插槽
-`weekIndex` 表示一周的第 `n` 天，从周末的 `0` 开始
+`weekIndex` 表示一周的第 `n` 天，从周末的 `0` 开始。
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
@@ -168,7 +168,7 @@ const change = (date) => {
 | `multiple` | 自定义标题中的多选 | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |

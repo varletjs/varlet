@@ -122,7 +122,7 @@ The offset of the Tooltip popup can be set with `offset-x` and `offset-y`
 ### Trigger
 
 Use `trigger` to change the trigger method of tooltip display, 
-the optional values are `click` and `hover`
+the optional values are `click` and `hover`.
 
 ```html
 <template>
@@ -171,7 +171,7 @@ In the `disabled` state, the tooltip will no longer be opened.
 
 ### Two-way binding
 
-Two-way binding control tooltip show and hide via `v-model:show`
+Two-way binding control tooltip show and hide via `v-model:show`.
 
 ```html
 <script setup>
@@ -247,7 +247,7 @@ const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

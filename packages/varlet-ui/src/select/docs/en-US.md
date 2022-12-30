@@ -2,7 +2,7 @@
 
 ### Intro
 
-Display and select the content through the drop-down menu
+Display and select the content through the drop-down menu.
 
 ### Basic Usage
 
