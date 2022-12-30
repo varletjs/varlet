@@ -140,8 +140,20 @@ const value = ref('')
 <template>
   <var-select placeholder="Please select one the options" v-model="value">
     <template #default>
-      <var-option label="Eat" />
-      <var-option label="Sleep" />
+      <var-option label="Eat">
+        <var-icon name="cake-variant" />
+        <span>Eat</span>
+      </var-option>
+      <var-option label="Sleep">
+        <var-icon name="weather-night" />
+        <span>Sleep</span>
+      </var-option>
+    </template>
+    <template #selected>
+      <div v-if="value">
+        <var-icon :name="value === 'Eat' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value }}</span>
+      </div>
     </template>
     <template #prepend-icon>
       <var-icon name="plus"/>
@@ -317,6 +329,7 @@ const value = ref([])
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
+| `selected` | Override default selected | `-` |
 | `prepend-icon` | Prepend icon | `-` |
 | `append-icon` | Append icon | `-` |
 | `arrow-icon` | Arrow icon | `focus: boolean` Whether to focus |

@@ -140,8 +140,20 @@ const value = ref('')
 <template>
   <var-select placeholder="请选择一个选项" v-model="value">
     <template #default>
-      <var-option label="吃饭" />
-      <var-option label="睡觉" />
+      <var-option label="吃饭">
+        <var-icon name="cake-variant" />
+        <span>吃饭</span>
+      </var-option>
+      <var-option label="睡觉">
+        <var-icon name="weather-night" />
+        <span>睡觉</span>
+      </var-option>
+    </template>
+    <template #selected>
+      <div v-if="value">
+        <var-icon :name="value === '吃饭' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value }}</span>
+      </div>
     </template>
     <template #prepend-icon>
       <var-icon name="plus"/>
@@ -315,6 +327,7 @@ const value = ref([])
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
+| `selected` | 覆盖已选项 | `-` |
 | `prepend-icon` | 前置图标 | `-` |
 | `append-icon` | 后置图标 | `-` |
 | `arrow-icon` | 箭头图标 | `focus: boolean` 是否处于聚焦状态 |
