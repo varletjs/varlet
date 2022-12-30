@@ -2,7 +2,7 @@
 
 ### 介绍
 
-按钮组件，用于触发操作
+按钮组件，用于触发操作。
 
 ### 主题色按钮
 
@@ -200,17 +200,17 @@ const handleAutoLoadingClick = () => {
 | `default` | 按钮内容 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |
 | `--button-default-color` | `#f5f5f5` |
-| `--button-primary-color` | `var(--color-primary)`|
-| `--button-danger-color` |  `var(--color-danger)`|
-| `--button-success-color` | `var(--color-success)`|
-| `--button-warning-color` |  `var(--color-warning)`|
-| `--button-info-color` | `var(--color-info)`|
-| `--button-disabled-color` | `var(--color-disabled)`|
+| `--button-primary-color` | `var(--color-primary)` |
+| `--button-danger-color` |  `var(--color-danger)` |
+| `--button-success-color` | `var(--color-success)` |
+| `--button-warning-color` |  `var(--color-warning)` |
+| `--button-info-color` | `var(--color-info)` |
+| `--button-disabled-color` | `var(--color-disabled)` |
 | `--button-disabled-text-color` | `var(--color-text-disabled)` |
 | `--button-border-radius` | `4px` |
 | `--button-mini-padding` | `0 9px` |

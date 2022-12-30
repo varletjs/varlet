@@ -2,7 +2,7 @@
 
 ### Intro
 
-Loading component for performing animations when data is loaded
+Loading component for performing animations when data is loaded.
 
 ### Type
 
@@ -88,7 +88,7 @@ const loading = ref(false)
 | `description`    | Description of the loading | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

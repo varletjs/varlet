@@ -97,14 +97,14 @@ onMounted(() => {
 | `default` | 自定义索引字符 |`-` |
 
 ### 方法
-通过 ref 可以获取到 IndexBar 实例并调用实例方法
+通过 ref 可以获取到 IndexBar 实例并调用实例方法。
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
 | `scrollTo` | 滚动到指定锚点	 | `index: number \| string` | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |

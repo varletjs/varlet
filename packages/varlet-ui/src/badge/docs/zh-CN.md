@@ -144,7 +144,7 @@ const handleChange = () => {
 | `hidden`    | 是否隐藏徽标 | _boolean_ | `false` |
 | `dot`       | 徽标是否为小圆点 | _boolean_ | `false` |
 | `value`     | 徽标中显示的值（当 `dot` 为 `false` 时生效）| _string \| number_ | `0` |
-| `max-value` | 徽标中显示的最大值，当 `value` 大于 `max-value` 时会显示 `max-value+` (当 `value` 与 `max-value` 都存在时生效)| _number_ | `-` |
+| `max-value` | 徽标中显示的最大值，当 `value` 大于 `max-value` 时会显示 `max-value+` (当 `value` 与 `max-value` 都存在时生效) | _number_ | `-` |
 | `position`  | 徽标标签中有其他标签时定义徽标在其他标签上的位置，可选值 `right-top` `right-bottom` `left-top` `left-bottom` | _string_ | `right-top` |
 | `color`     | 自定义徽标颜色 | _string_ | `-` |
 | `icon`      | 自定义徽标中图标的内容（优先级高于 `value`） | _string_ | `-` |
@@ -156,14 +156,14 @@ const handleChange = () => {
 | `default` |  徽标内容 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |
 | `--badge-content-padding` | `2px 6px` |
 | `--badge-default-color` | `#e0e0e0` |
-| `--badge-primary-color` | `var(--color-primary)`|
-| `--badge-danger-color` |  `var(--color-danger)`|
-| `--badge-success-color` | `var(--color-success)`|
-| `--badge-warning-color` |  `var(--color-warning)`|
-| `--badge-info-color` | `var(--color-info)`|
+| `--badge-primary-color` | `var(--color-primary)` |
+| `--badge-danger-color` |  `var(--color-danger)` |
+| `--badge-success-color` | `var(--color-success)` |
+| `--badge-warning-color` |  `var(--color-warning)` |
+| `--badge-info-color` | `var(--color-info)` |

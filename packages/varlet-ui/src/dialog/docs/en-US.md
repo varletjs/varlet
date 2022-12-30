@@ -2,7 +2,7 @@
 
 ### Intro
 
-A dialog pops up to display the content and handle the user interaction
+A dialog pops up to display the content and handle the user interaction.
 `Dialog` have provided functional and component usage, and there is no essential difference between the two usage effects and parameters.
 
 ## Functional
@@ -284,7 +284,7 @@ const show = ref(false)
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                        | Default                |
 | ------------------------------- | ---------------------- |

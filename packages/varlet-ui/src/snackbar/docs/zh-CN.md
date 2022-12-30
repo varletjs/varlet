@@ -220,7 +220,7 @@ const createSnackbar = (type) => {
 
 ### 多例模式
 
-使用函数式调用时，Snackbar 默认采用单例模式，即同一时间只会存在一个 Snackbar，如果需要在同一时间弹出多个 Snackbar，可以参考下面的示例
+使用函数式调用时，Snackbar 默认采用单例模式，即同一时间只会存在一个 Snackbar，如果需要在同一时间弹出多个 Snackbar，可以参考下面的示例。
 
 ```html
 <script setup>
@@ -258,7 +258,7 @@ const openMultiple = () => {
 | `vertical`       | 是否启用竖直排列方式                                              | _boolean_ | `false` |
 | `loading-type`   | Loading类型(见 `Loading` 组件)                               | _string_ | `circle`       |
 | `loading-size`   | Loading大小(见 `Loading` 组件)                               | _string_ | `normal`       |
-| `loading-color`  | loading颜色(见`_loading`组件)                                |_string_|`current_color`|
+| `loading-color`  | loading颜色(见 `_loading` 组件)                                |_string_|`current_color`|
 | `loading-radius` | Loading半径大小(见 `Loading` 组件)                             | _string \| number_  | `-` |
 | `lock-scroll`    | 是否禁止滚动穿透                                                | _boolean_  | `false` |
 | `forbid-click`   | 是否禁止穿透点击                                                | _boolean_  | `false` |
@@ -321,7 +321,7 @@ const openMultiple = () => {
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |

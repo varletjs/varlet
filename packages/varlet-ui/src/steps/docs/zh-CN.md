@@ -109,7 +109,7 @@ const active = ref(0)
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------------- | -------- |
-| `click-step` | 点击步骤的标题或图标时触发| `index: number` |
+| `click-step` | 点击步骤的标题或图标时触发 | `index: number` |
 
 ### 插槽
 
@@ -127,7 +127,7 @@ const active = ref(0)
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |

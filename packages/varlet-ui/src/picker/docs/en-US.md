@@ -76,7 +76,7 @@ const picker = async () => {
 Picker passes in a `textFormatter` attribute to customize the text.
 `textFormatter` accepts two parameters. The first parameter `text` is the current text, and the second parameter
 `columnIndex` is the subscript of the column where the current text is located.
-The following is the case of year month day selection
+The following is the case of year month day selection.
 
 ```html
 <script setup>
@@ -441,7 +441,7 @@ const handleChange = (_, [i1, i2, i3]) => {
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

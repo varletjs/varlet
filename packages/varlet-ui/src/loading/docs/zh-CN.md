@@ -2,7 +2,7 @@
 
 ### 介绍
 
-加载组件，用于数据加载时执行动画
+加载组件，用于数据加载时执行动画。
 
 ### Loading 类型
 
@@ -88,7 +88,7 @@ const loading = ref(false)
 | `description`    | `loading` 的描述文字 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名                     | 默认值 |
 |-------------------------| -- |
