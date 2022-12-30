@@ -130,7 +130,7 @@ const load = () => {
 
 ### 组合
 
-与 `PullRefresh` 组件结合使用即可实现上拉加载和下拉刷新的功能，需保证 `PullRefresh` 容器高度不为 `0` 。
+与 `PullRefresh` 组件结合使用即可实现上拉加载和下拉刷新的功能，需保证 `PullRefresh` 容器高度不为 `0`。
 
 ```html
 <script setup>

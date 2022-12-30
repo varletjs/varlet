@@ -158,7 +158,7 @@ const closed = () => Snackbar.info('closed')
 
 ### 禁用
 
-在 `disabled` 状态下，Tooltip 将不再被打开。 
+在 `disabled` 状态下，Tooltip 将不再被打开。
 
 ```html
 <template>
