@@ -34,28 +34,30 @@
               color: textColor,
             }"
           >
-            <div v-if="multiple">
-              <div :class="n('chips')" v-if="chip">
-                <var-chip
-                  :class="n('chip')"
-                  var-select-cover
-                  closable
-                  size="small"
-                  :type="errorMessage ? 'danger' : undefined"
-                  v-for="l in labels"
-                  :key="l"
-                  @click.stop
-                  @close="() => handleClose(l)"
-                >
-                  {{ l }}
-                </var-chip>
+            <slot name="selected">
+              <div v-if="multiple">
+                <div :class="n('chips')" v-if="chip">
+                  <var-chip
+                    :class="n('chip')"
+                    var-select-cover
+                    closable
+                    size="small"
+                    :type="errorMessage ? 'danger' : undefined"
+                    v-for="l in labels"
+                    :key="l"
+                    @click.stop
+                    @close="() => handleClose(l)"
+                  >
+                    {{ l }}
+                  </var-chip>
+                </div>
+                <div :class="n('values')" v-else>
+                  {{ labels.join(separator) }}
+                </div>
               </div>
-              <div :class="n('values')" v-else>
-                {{ labels.join(separator) }}
-              </div>
-            </div>
 
-            <span v-else>{{ label }}</span>
+              <span v-else>{{ label }}</span>
+            </slot>
 
             <slot name="arrow-icon" :focus="isFocus">
               <var-icon
