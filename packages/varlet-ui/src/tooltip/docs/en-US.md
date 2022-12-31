@@ -8,7 +8,7 @@ and changes the display position of the tooltip by controlling the placement and
 
 ```html
 <template>
-  <var-tooltip content="Basic Usage">
+  <var-tooltip content="Tooltip">
     <var-button type="primary">Basic Usage</var-button>
   </var-tooltip>
 </template>
