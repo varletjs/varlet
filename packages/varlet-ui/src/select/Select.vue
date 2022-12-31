@@ -34,8 +34,8 @@
               color: textColor,
             }"
           >
-            <div :class="classes(n('label'))">
-              <slot name="selected" v-if="isHasValue">
+            <div :class="n('label')">
+              <slot name="selected" v-if="!isEmptyModelValue">
                 <template v-if="multiple">
                   <div :class="n('chips')" v-if="chip">
                     <var-chip
@@ -160,7 +160,7 @@ export default defineComponent({
     const focusColor: ComputedRef<string | undefined> = computed(() => props.focusColor)
     const label: Ref<string | number> = ref('')
     const labels: Ref<(string | number)[]> = ref([])
-    const isHasValue: ComputedRef<boolean> = computed(() => !(isEmpty(label.value) && isEmpty(labels.value)))
+    const isEmptyModelValue: ComputedRef<boolean> = computed(() => isEmpty(props.modelValue))
     const wrapWidth = ref<string>('0px')
     const offsetY = ref(0)
     const { bindForm, form } = useForm()
@@ -385,7 +385,7 @@ export default defineComponent({
       formReadonly: form?.readonly,
       label,
       labels,
-      isHasValue,
+      isEmptyModelValue,
       menuEl,
       n,
       classes,

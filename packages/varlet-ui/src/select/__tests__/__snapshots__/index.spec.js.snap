@@ -348,9 +348,7 @@ exports[`test select hint to be false 1`] = `
     <div class=\\"var-select__wrap var-select--non-hint\\">
       <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
         <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
-          <div class=\\"var-select__label\\">
-            <!--v-if-->
-          </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
+          <div class=\\"var-select__label\\"><span></span></div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
         </div><label class=\\"var-select__placeholder var--ellipsis var-select--placeholder-hidden var-select--placeholder-non-hint\\"></label>
         <!--teleport start-->
         <!--teleport end-->

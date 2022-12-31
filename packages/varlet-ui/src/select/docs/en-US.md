@@ -139,18 +139,17 @@ const value = ref('')
 
 <template>
   <var-select placeholder="Please select one the options" v-model="value">
-    <template #default>
-      <var-option label="Eat">
-        <var-icon class="selected" name="cake-variant" />
-        <span>Eat</span>
-      </var-option>
-      <var-option label="Sleep">
-        <var-icon class="selected" name="weather-night" />
-        <span>Sleep</span>
-      </var-option>
-    </template>
+    <var-option label="Eat">
+      <var-icon class="selected-icon" name="cake-variant" />
+      <span>Eat</span>
+    </var-option>
+    <var-option label="Sleep">
+      <var-icon class="selected-icon" name="weather-night" />
+      <span>Sleep</span>
+    </var-option>
+    
     <template #selected>
-      <var-icon class="selected" :name="value === 'Eat' ? 'cake-variant' : 'weather-night'" />
+      <var-icon class="selected-icon" :name="value === 'Eat' ? 'cake-variant' : 'weather-night'" />
       <span>{{ value }}</span>
     </template>
     <template #prepend-icon>
@@ -166,8 +165,8 @@ const value = ref('')
 </template>
 
 <style>
-.selected {
-  margin-right: 2px;
+.selected-icon {
+  margin-right: 6px;
 }
 
 .prepend-icon {
@@ -177,6 +176,7 @@ const value = ref('')
 .append-icon {
   margin-left: 2px;
 }
+
 .arrow-icon-rotate {
   transform: rotate(180deg);
 }
