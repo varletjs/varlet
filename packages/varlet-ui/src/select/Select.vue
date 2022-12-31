@@ -34,30 +34,32 @@
               color: textColor,
             }"
           >
-            <slot name="selected">
-              <div v-if="multiple">
-                <div :class="n('chips')" v-if="chip">
-                  <var-chip
-                    :class="n('chip')"
-                    var-select-cover
-                    closable
-                    size="small"
-                    :type="errorMessage ? 'danger' : undefined"
-                    v-for="l in labels"
-                    :key="l"
-                    @click.stop
-                    @close="() => handleClose(l)"
-                  >
-                    {{ l }}
-                  </var-chip>
-                </div>
-                <div :class="n('values')" v-else>
-                  {{ labels.join(separator) }}
-                </div>
-              </div>
+            <div :class="classes(n('label'))">
+              <slot name="selected" v-if="isHasValue">
+                <template v-if="multiple">
+                  <div :class="n('chips')" v-if="chip">
+                    <var-chip
+                      :class="n('chip')"
+                      var-select-cover
+                      closable
+                      size="small"
+                      :type="errorMessage ? 'danger' : undefined"
+                      v-for="l in labels"
+                      :key="l"
+                      @click.stop
+                      @close="() => handleClose(l)"
+                    >
+                      {{ l }}
+                    </var-chip>
+                  </div>
+                  <div :class="n('values')" v-else>
+                    {{ labels.join(separator) }}
+                  </div>
+                </template>
 
-              <span v-else>{{ label }}</span>
-            </slot>
+                <span v-else>{{ label }}</span>
+              </slot>
+            </div>
 
             <slot name="arrow-icon" :focus="isFocus">
               <var-icon
@@ -158,6 +160,7 @@ export default defineComponent({
     const focusColor: ComputedRef<string | undefined> = computed(() => props.focusColor)
     const label: Ref<string | number> = ref('')
     const labels: Ref<(string | number)[]> = ref([])
+    const isHasValue: ComputedRef<boolean> = computed(() => !(isEmpty(label.value) && isEmpty(labels.value)))
     const wrapWidth = ref<string>('0px')
     const offsetY = ref(0)
     const { bindForm, form } = useForm()
@@ -382,6 +385,7 @@ export default defineComponent({
       formReadonly: form?.readonly,
       label,
       labels,
+      isHasValue,
       menuEl,
       n,
       classes,
