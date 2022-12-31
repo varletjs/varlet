@@ -50,8 +50,11 @@ export default defineComponent({
       handlePopoverMouseenter,
       handlePopoverMouseleave,
       handlePopoverClose,
+      // expose
       open,
+      // expose
       close,
+      // expose
       resize,
     } = usePopover(props)
 
