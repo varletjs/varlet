@@ -141,25 +141,23 @@ const value = ref('')
   <var-select placeholder="Please select one the options" v-model="value">
     <template #default>
       <var-option label="Eat">
-        <var-icon name="cake-variant" />
+        <var-icon class="selected" name="cake-variant" />
         <span>Eat</span>
       </var-option>
       <var-option label="Sleep">
-        <var-icon name="weather-night" />
+        <var-icon class="selected" name="weather-night" />
         <span>Sleep</span>
       </var-option>
     </template>
     <template #selected>
-      <div v-if="value">
-        <var-icon :name="value === 'Eat' ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value }}</span>
-      </div>
+      <var-icon class="selected" :name="value === 'Eat' ? 'cake-variant' : 'weather-night'" />
+      <span>{{ value }}</span>
     </template>
     <template #prepend-icon>
-      <var-icon name="plus"/>
+      <var-icon class="prepend-icon" name="plus"/>
     </template>
     <template #append-icon>
-      <var-icon name="minus"/>
+      <var-icon class="append-icon" name="minus"/>
     </template>
     <template #arrow-icon="{ focus }">
       <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
@@ -168,6 +166,17 @@ const value = ref('')
 </template>
 
 <style>
+.selected {
+  margin-right: 2px;
+}
+
+.prepend-icon {
+  margin-right: 2px;
+}
+
+.append-icon {
+  margin-left: 2px;
+}
 .arrow-icon-rotate {
   transform: rotate(180deg);
 }
@@ -329,7 +338,7 @@ const value = ref([])
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
-| `selected` | Override default selected | `-` |
+| `selected` | Select the contents of the area | `-` |
 | `prepend-icon` | Prepend icon | `-` |
 | `append-icon` | Append icon | `-` |
 | `arrow-icon` | Arrow icon | `focus: boolean` Whether to focus |

@@ -141,24 +141,22 @@ const value = ref('')
   <var-select placeholder="请选择一个选项" v-model="value">
     <template #default>
       <var-option label="吃饭">
-        <var-icon name="cake-variant" />
+        <var-icon class="selected" name="cake-variant" />
         <span>吃饭</span>
       </var-option>
       <var-option label="睡觉">
-        <var-icon name="weather-night" />
+        <var-icon class="selected" name="weather-night" />
         <span>睡觉</span>
       </var-option>
     </template>
     <template #selected>
-      <div v-if="value">
-        <var-icon :name="value === '吃饭' ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value }}</span>
-      </div>
+      <var-icon class="selected" :name="value === '吃饭' ? 'cake-variant' : 'weather-night'" />
+      <span>{{ value }}</span>
     </template>
-    <template #prepend-icon>
+    <template class="prepend-icon" #prepend-icon>
       <var-icon name="plus"/>
     </template>
-     <template #append-icon>
+     <template class="append-icon" #append-icon>
       <var-icon name="minus"/>
     </template>
     <template #arrow-icon="{ focus }">
@@ -168,6 +166,17 @@ const value = ref('')
 </template>
 
 <style>
+.selected {
+  margin-right: 2px;
+}
+
+.prepend-icon {
+  margin-right: 2px;
+}
+
+.append-icon {
+  margin-left: 2px;
+}
 .arrow-icon-rotate {
   transform: rotate(180deg);
 }
@@ -327,7 +336,7 @@ const value = ref([])
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `selected` | 覆盖已选项 | `-` |
+| `selected` | 选择区域的内容 | `-` |
 | `prepend-icon` | 前置图标 | `-` |
 | `append-icon` | 后置图标 | `-` |
 | `arrow-icon` | 箭头图标 | `focus: boolean` 是否处于聚焦状态 |

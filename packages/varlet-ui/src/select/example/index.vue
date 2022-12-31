@@ -82,19 +82,17 @@ watchDarkMode(dark)
   <var-select :placeholder="pack.placeholder" v-model="value11">
     <template #default>
       <var-option :label="pack.eat">
-        <var-icon name="cake-variant" />
+        <var-icon class="selected" name="cake-variant" />
         <span>{{ pack.eat }}</span>
       </var-option>
       <var-option :label="pack.sleep">
-        <var-icon name="weather-night" />
+        <var-icon class="selected" name="weather-night" />
         <span>{{ pack.sleep }}</span>
       </var-option>
     </template>
     <template #selected>
-      <div v-if="value11">
-        <var-icon :name="value11 === pack.eat ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value11 }}</span>
-      </div>
+      <var-icon class="selected" :name="value11 === pack.eat ? 'cake-variant' : 'weather-night'" />
+      <span>{{ value11 }}</span>
     </template>
     <template #prepend-icon>
       <var-icon class="prepend-icon" name="plus" />
@@ -153,6 +151,10 @@ watchDarkMode(dark)
 
 .space {
   height: 160px;
+}
+
+.selected {
+  margin-right: 2px;
 }
 
 .prepend-icon {
