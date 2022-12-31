@@ -128,9 +128,9 @@ the optional values are `click` and `hover`
 import { Snackbar } from '@varlet/ui'
 
 const open = () => Snackbar.info('open')
-const opened = () => Snackbar.info('opened')
-const close = () => Snackbar.info('close')
-const closed = () => Snackbar.info('closed')
+const opened = () => Snackbar.success('opened')
+const close = () => Snackbar.warning('close')
+const closed = () => Snackbar.error('closed')
 </script>
 
 <template>
