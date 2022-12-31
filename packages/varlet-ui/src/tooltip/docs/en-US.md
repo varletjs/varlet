@@ -1,7 +1,7 @@
 # Tooltip
 
 ### Intro
-Displays a tooltip when the element is clicked, 
+Displays a tooltip when the element is clicked or hovered, 
 and changes the display position of the tooltip by controlling the placement and offset.
 
 ### Basic Usage
@@ -11,9 +11,17 @@ and changes the display position of the tooltip by controlling the placement and
   <var-tooltip content="Basic Usage">
     <var-button type="primary">Basic Usage</var-button>
   </var-tooltip>
+</template>
+```
+
+### Content Slot
+
+```html
+<template>
   <var-tooltip>
-    <var-button type="primary">Slot Tooltip</var-button>
-    <template #tooltip>
+    <var-button type="primary">Content Slot</var-button>
+    
+    <template #content>
       <var-icon name="star" />
     </template>
   </var-tooltip>
@@ -75,23 +83,23 @@ const placementOptions = [
 
 ```html
 <template>
-  <var-space :size="[10, 10]">
-    <var-tooltip content="Tooltip" type="default">
+  <var-space :size="[54, 10]">
+    <var-tooltip type="default" content="Tooltip">
       <var-button type="default">Default</var-button>
     </var-tooltip>
-    <var-tooltip content="Tooltip" type="primary">
+    <var-tooltip type="primary" content="Tooltip">
       <var-button type="primary">Primary</var-button>
     </var-tooltip>
-    <var-tooltip content="Tooltip" type="info">
+    <var-tooltip type="info" content="Tooltip">
       <var-button type="info">Info</var-button>
     </var-tooltip>
-    <var-tooltip content="Tooltip" type="success">
+    <var-tooltip type="success" content="Tooltip">
       <var-button type="success">Success</var-button>
     </var-tooltip>
-    <var-tooltip content="Tooltip" type="warning">
+    <var-tooltip type="warning" content="Tooltip">
       <var-button type="warning">Warning</var-button>
     </var-tooltip>
-    <var-tooltip content="Tooltip" type="danger">
+    <var-tooltip type="danger" content="Tooltip">
       <var-button type="danger">Danger</var-button>
     </var-tooltip>
   </var-space>
@@ -101,7 +109,7 @@ const placementOptions = [
 
 ```html
 <template>
-  <var-tooltip content="Tooltip" color="#69dbaa">
+  <var-tooltip content="Tooltip" color="#d81b60">
     <var-button type="primary">Custom Color</var-button>
   </var-tooltip>
 </template>
@@ -109,11 +117,11 @@ const placementOptions = [
 
 ### Offset
 
-The offset of the Tooltip popup can be set with `offset-x` and `offset-y`
+The offset of the Tooltip can be set with `offset-x` and `offset-y`
 
 ```html
 <template>
-  <var-tooltip content="Tooltip" offset-x="36px" offset-y="18px">
+  <var-tooltip content="Tooltip" :offset-x="64" :offset-y="-10">
     <var-button type="primary">Offset</var-button>
   </var-tooltip>
 </template>
@@ -163,27 +171,8 @@ In the `disabled` state, the tooltip will no longer be opened.
 
 ```html
 <template>
-  <var-tooltip disabled content="Tooltip">
+  <var-tooltip content="Tooltip" disabled>
     <var-button type="primary" disabled>Disabled</var-button>
-  </var-tooltip>
-</template>
-```
-
-### Two-way binding
-
-Two-way binding control tooltip show and hide via `v-model:show`
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const show = ref(false)
-const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
-</script>
-
-<template>
-  <var-tooltip v-model:show="show" content="Tooltip" @opened="() => closeTooltip()">
-    <var-button type="primary">Two-way binding</var-button>
   </var-tooltip>
 </template>
 ```
@@ -192,18 +181,18 @@ const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
 
 ### Props
 
-| Prop              | Description                                                 | Type              | Default |
-| ------- |-------------------------------------------------------------|----------------------| --- |
-| `v-model:show` | whether to show the tooltip                                    | _string_             | `default` |
-| `content` | display content | _string_              | `-` |
-| `color`          | Tooltip background color                                                            | _string_  | `-`            |
-| `type`           | Tooltip type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
-| `placement` | Tooltip popup placement                                        | _Placement_          | `top` |
-| `offset-x` | The x-axis offset, relative to the tooltip-aligned position    | _number \| string_ | `0` |
-| `offset-y` | The y-axis offset, relative to the tooltip-aligned position    | _number \| string_ | `0` |
-| `teleport` | The location of the tooltip mount                                                     | _TeleportProps['to']_ | `body` |
-| `disabled` | whether to disable the tooltip                                                      | _boolean_            | `false` |
-| `trigger` | Tooltip trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `click` |
+| Prop              | Description                                                 | Type              | Default   |
+| ------- |-------------------------------------------------------------|----------------------|-----------|
+| `v-model:show` | whether to show the tooltip                                    | _string_             | `false`   |
+| `content` | display content | _string_              | `-`       |
+| `color`          | Tooltip background color                                                            | _string_  | `-`       |
+| `type`           | Tooltip type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
+| `placement` | Tooltip popup placement                                        | _Placement_          | `top`     |
+| `offset-x` | The x-axis offset, relative to the tooltip-aligned position    | _number \| string_   | `0` |
+| `offset-y` | The y-axis offset, relative to the tooltip-aligned position    | _number \| string_   | `0` |
+| `teleport` | The location of the tooltip mount                                                     | _TeleportProps['to']_ | `body`    |
+| `disabled` | whether to disable the tooltip                                                      | _boolean_            | `false`   |
+| `trigger` | Tooltip trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `hover`   |
 
 ### Placement
 
@@ -225,18 +214,18 @@ const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
 ### Methods
 | Method   | Description                     | Arguments | Return |
 | --- |---------------------------------| --- | --- |
-| `open` | Open Tooltip                       | `-` | `-` |
-| `close` | Close Tooltip                      | `-` | `-` |
-| `resize` | This method can be called to redraw when the default slot element of Tooltip changes its position and size | `-` | `-` |
+| `open` | Open `Tooltip`                       | `-` | `-` |
+| `close` | Close `Tooltip`                      | `-` | `-` |
+| `resize` | This method can be called to redraw when the default slot element of `Tooltip` changes its position and size | `-` | `-` |
 
 ### Events
 
-| Event    | Description | Arguments |
-| --- | --- | --- |
-| `open` | Triggered when the tooltip is opened | `-` |
-| `opened` | Triggered when the open tooltip animation ends | `-` |
-| `close` | Triggered when the tooltip is closed | `-` |
-| `closed` | Triggered when the closing tooltip animation ends | `-` |
+| Event    | Description                                         | Arguments |
+| --- |-----------------------------------------------------| --- |
+| `open` | Triggered when the `Tooltip` is opened              | `-` |
+| `opened` | Triggered when the open `Tooltip` animation ends    | `-` |
+| `close` | Triggered when the `Tooltip` is closed              | `-` |
+| `closed` | Triggered when the closing `Tooltip` animation ends | `-` |
 
 ### Slots
 

@@ -1,18 +1,27 @@
-# Tooltip
+# 提示
 
 ### 介绍
-当元素点击时显示一个 Tooltip，通过控制对齐方式和偏移量改变Tooltip的显示位置。
+
+当元素点击或悬停时显示一个提示，通过控制弹出位置和偏移量改变提示的显示位置。
 
 ### 基本使用
 
 ```html
 <template>
-  <var-tooltip content="基本使用">
+  <var-tooltip content="Tooltip">
     <var-button type="primary">基本使用</var-button>
   </var-tooltip>
+</template>
+```
+
+### 内容插槽
+
+```html
+<template>
   <var-tooltip>
     <var-button type="primary">内容插槽</var-button>
-    <template #tooltip>
+    
+    <template #content>
       <var-icon name="star" />
     </template>
   </var-tooltip>
@@ -74,23 +83,23 @@ const placementOptions = [
 
 ```html
 <template>
-  <var-space :size="[10, 10]">
-    <var-tooltip content="Tooltip" type="default">
+  <var-space :size="[54, 10]">
+    <var-tooltip type="default" content="Tooltip">
       <var-button type="default">默认</var-button>
     </var-tooltip>
-    <var-tooltip content="Tooltip" type="primary">
+    <var-tooltip type="primary" content="Tooltip">
       <var-button type="primary">主要</var-button>
     </var-tooltip>
-    <var-tooltip content="Tooltip" type="info">
+    <var-tooltip type="info" content="Tooltip">
       <var-button type="info">信息</var-button>
     </var-tooltip>
-    <var-tooltip content="Tooltip" type="success">
+    <var-tooltip type="success" content="Tooltip">
       <var-button type="success">成功</var-button>
     </var-tooltip>
-    <var-tooltip content="Tooltip" type="warning">
+    <var-tooltip type="warning" content="Tooltip">
       <var-button type="warning">警告</var-button>
     </var-tooltip>
-    <var-tooltip content="Tooltip" type="danger">
+    <var-tooltip type="danger" content="Tooltip">
       <var-button type="danger">危险</var-button>
     </var-tooltip>
   </var-space>
@@ -101,7 +110,7 @@ const placementOptions = [
 
 ```html
 <template>
-  <var-tooltip content="Tooltip" color="#69dbaa">
+  <var-tooltip content="Tooltip" color="#d81b60">
     <var-button type="primary">自定义颜色</var-button>
   </var-tooltip>
 </template>
@@ -109,11 +118,11 @@ const placementOptions = [
 
 ### 偏移量
 
-可以用 `offset-x` 和 `offset-y` 设置 Tooltip 弹出的偏移量
+通过 `offset-x` 和 `offset-y` 设置 `Tooltip` 弹出的偏移量
 
 ```html
 <template>
-  <var-tooltip content="Tooltip" offset-x="36px" offset-y="18px">
+  <var-tooltip content="Tooltip" :offset-x="64" :offset-y="-10">
     <var-button type="primary">偏移量</var-button>
   </var-tooltip>
 </template>
@@ -121,7 +130,7 @@ const placementOptions = [
 
 ### 触发方式
 
-通过 `trigger` 改变 Tooltip 显示的触发方式，可选值为 `click` 和 `hover`
+通过 `trigger` 改变 `Tooltip` 显示的触发方式，可选值为 `click` 和 `hover`
 
 ```html
 <template>
@@ -158,7 +167,7 @@ const closed = () => Snackbar.info('closed')
 
 ### 禁用
 
-在 `disabled` 状态下，Tooltip 将不再被打开。 
+在 `disabled` 状态下，`Tooltip` 将不再被打开。 
 
 ```html
 <template>
@@ -168,41 +177,22 @@ const closed = () => Snackbar.info('closed')
 </template>
 ```
 
-### 双向绑定
-
-通过 `v-model:show` 进行双向绑定控制 Tooltip 的显示和隐藏
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const show = ref(false)
-const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
-</script>
-
-<template>
-  <var-tooltip v-model:show="show" content="Tooltip" @opened="() => closeTooltip()">
-    <var-button type="primary">双向绑定</var-button>
-  </var-tooltip>
-</template>
-```
-
 ## API
 
 ### 属性
 
-| 参数 | 说明 | 类型                    | 默认值 |
-| ------- | --- |-----------------------| --- |
-| `v-model:show` | 是否显示 Tooltip | _string_              | `default` |
-| `content` | 显示的内容 | _string_              ||
-| `color` | 背景颜色 | _string_              | |
-| `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
-| `placement` | Tooltip 弹出位置 | _Placement_           | `top` |
-| `offset-x` | x 轴偏移量， 相对于 Tooltip 对齐后的位置 | _number \| string_ | `0` |
-| `offset-y` | y 轴偏移量， 相对于 Tooltip 对齐后的位置 | _number \| string_ | `0` |
-| `teleport` | Tooltip 挂载的位置 | _TeleportProps['to']_ | `body` |
-| `disabled` | 是否禁用 Tooltip | _boolean_             | `false` |
-| `trigger` | Tooltip 触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_              | `click` |
+| 参数 | 说明 | 类型             | 默认值       |
+| ------- | --- |----------------|-----------|
+| `v-model:show` | 是否显示 | _string_       | `false`   |
+| `content` | 显示的内容 | _string_    | `-`       |
+| `color` | 背景颜色 | _string_       | `-`       |
+| `type`  | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
+| `placement` | 弹出位置 | _Placement_    | `top`     |
+| `offset-x` | x 轴偏移量， 相对于 `Tooltip` 对齐后的位置 | _number \| string_   | `0` |
+| `offset-y` | y 轴偏移量， 相对于 `Tooltip` 对齐后的位置 | _number \| string_   | `0` |
+| `teleport` | 挂载的位置 | _TeleportProps['to']_ | `body`    |
+| `disabled` | 是否禁用 Tooltip | _boolean_      | `false`   |
+| `trigger` | 触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_       | `hover`   |
 
 ### Placement
 
@@ -224,25 +214,25 @@ const closeTooltip = () => { setTimeout(() => { show.value = false }, 4000) }
 ### 方法
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
-| `open` | 打开 Tooltip | `-` | `-` |
-| `close` | 关闭 Tooltip | `-` | `-` |
-| `resize` | Tooltip 默认插槽元素产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
+| `open` | 打开 `Tooltip` | `-` | `-` |
+| `close` | 关闭 `Tooltip` | `-` | `-` |
+| `resize` | `Tooltip` 默认插槽元素产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
 
 ### 事件
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `open` | 打开 Tooltip 时触发 | `-` |
-| `opened` | 打开 Tooltip 动画结束时触发 | `-` |
-| `close` | 关闭 Tooltip 时触发 | `-` |
-| `closed` | 关闭 Tooltip 动画结束时触发 | `-` |
+| `open` | 打开 `Tooltip` 时触发 | `-` |
+| `opened` | 打开 `Tooltip` 动画结束时触发 | `-` |
+| `close` | 关闭 `Tooltip` 时触发 | `-` |
+| `closed` | 关闭 `Tooltip` 动画结束时触发 | `-` |
 
 ### 插槽
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `default` | Tooltip 关联的触发元素 | `-` |
-| `content` | Tooltip 内容 | `-` |
+| `default` | `Tooltip` 关联的触发元素 | `-` |
+| `content` | `Tooltip` 内容 | `-` |
 
 ### 样式变量
 

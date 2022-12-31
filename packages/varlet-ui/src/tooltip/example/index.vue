@@ -10,7 +10,6 @@ import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { pack, use } from './locale/index'
 
-const show = ref(false)
 const trigger = ref('click')
 const placementValue = ref('top')
 const placementOptions = ref([
@@ -28,42 +27,31 @@ const placementOptions = ref([
   'left-end',
 ])
 
-const closeTooltip = () => {
-  let timeNumber = 4
-  const interval = setInterval(() => {
-    timeNumber -= 1
-    Snackbar.info(`${timeNumber}${pack.value.countDown}`)
-  }, 1000)
-  setTimeout(() => {
-    clearInterval(interval)
-    show.value = false
-  }, 4000)
-}
-
 watchLang(use)
 watchDarkMode(dark)
 </script>
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-space :size="['2.666vw', '2.666vw']">
-    <var-tooltip :content="pack.basicUsage">
-      <var-button type="primary">{{ pack.basicUsage }}</var-button>
-    </var-tooltip>
-    <var-tooltip>
-      <var-button type="primary">{{ pack.slotTooltip }}</var-button>
-      <template #content>
-        <var-icon name="star" />
-      </template>
-    </var-tooltip>
-  </var-space>
+  <var-tooltip content="Tooltip">
+    <var-button type="primary">{{ pack.basicUsage }}</var-button>
+  </var-tooltip>
+
+  <app-type>{{ pack.contentSlot }}</app-type>
+  <var-tooltip>
+    <var-button type="primary">{{ pack.contentSlot }}</var-button>
+
+    <template #content>
+      <var-icon name="star" />
+    </template>
+  </var-tooltip>
 
   <app-type>{{ pack.placement }}</app-type>
   <var-select :hint="false" v-model="placementValue">
     <var-option v-for="(item, index) in placementOptions" :key="index" :label="item" />
   </var-select>
   <div class="placement-container">
-    <var-tooltip :placement="placementValue">
+    <var-tooltip content="Tooltip" :placement="placementValue">
       <var-button type="primary">
         <var-icon name="star" />
       </var-button>
@@ -71,34 +59,34 @@ watchDarkMode(dark)
   </div>
 
   <app-type>{{ pack.themeColorTooltip }}</app-type>
-  <var-space :size="['2.666vw', '2.666vw']">
-    <var-tooltip type="default">
+  <var-space :size="['14vw', '2.666vw']">
+    <var-tooltip type="default" content="Tooltip">
       <var-button type="default">{{ pack.defaultTooltip }}</var-button>
     </var-tooltip>
-    <var-tooltip type="primary">
+    <var-tooltip type="primary" content="Tooltip">
       <var-button type="primary">{{ pack.primaryTooltip }}</var-button>
     </var-tooltip>
-    <var-tooltip type="info">
+    <var-tooltip type="info" content="Tooltip">
       <var-button type="info">{{ pack.infoTooltip }}</var-button>
     </var-tooltip>
-    <var-tooltip type="success">
+    <var-tooltip type="success" content="Tooltip">
       <var-button type="success">{{ pack.successTooltip }}</var-button>
     </var-tooltip>
-    <var-tooltip type="warning">
+    <var-tooltip type="warning" content="Tooltip">
       <var-button type="warning">{{ pack.warningTooltip }}</var-button>
     </var-tooltip>
-    <var-tooltip type="danger">
+    <var-tooltip type="danger" content="Tooltip">
       <var-button type="danger">{{ pack.dangerTooltip }}</var-button>
     </var-tooltip>
   </var-space>
 
   <app-type>{{ pack.customColor }}</app-type>
-  <var-tooltip color="#69dbaa">
+  <var-tooltip content="Tooltip" color="#d81b60">
     <var-button type="primary">{{ pack.customColor }}</var-button>
   </var-tooltip>
 
   <app-type>{{ pack.offset }}</app-type>
-  <var-tooltip offset-x="36px" offset-y="18px">
+  <var-tooltip content="Tooltip" :offset-x="64" :offset-y="-10">
     <var-button type="primary">{{ pack.offset }}</var-button>
   </var-tooltip>
 
@@ -107,12 +95,13 @@ watchDarkMode(dark)
     <var-option label="click" />
     <var-option label="hover" />
   </var-select>
-  <var-tooltip style="margin-top: 15px" :trigger="trigger">
+  <var-tooltip content="Tooltip" style="margin-top: 15px" :trigger="trigger">
     <var-button type="primary">{{ pack.trigger }}</var-button>
   </var-tooltip>
 
   <app-type>{{ pack.events }}</app-type>
   <var-tooltip
+    content="Tooltip"
     @open="() => Snackbar.info('open')"
     @opened="() => Snackbar.success('opened')"
     @close="() => Snackbar.warning('close')"
@@ -122,15 +111,8 @@ watchDarkMode(dark)
   </var-tooltip>
 
   <app-type>{{ pack.disabled }}</app-type>
-  <var-space justify="space-between">
-    <var-tooltip disabled>
-      <var-button type="primary" disabled>{{ pack.disabled }}</var-button>
-    </var-tooltip>
-  </var-space>
-
-  <app-type>{{ pack.twoWayBinding }}</app-type>
-  <var-tooltip v-model:show="show" @opened="() => closeTooltip()">
-    <var-button type="primary">{{ pack.twoWayBinding }}</var-button>
+  <var-tooltip content="Tooltip" disabled>
+    <var-button type="primary" disabled>{{ pack.disabled }}</var-button>
   </var-tooltip>
 
   <div style="margin-bottom: 100px"></div>

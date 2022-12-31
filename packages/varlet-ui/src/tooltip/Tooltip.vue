@@ -19,10 +19,7 @@
           @mouseenter="handlePopoverMouseenter"
           @mouseleave="handlePopoverMouseleave"
         >
-          <div
-            :style="{ background: color }"
-            :class="classes(n('content-container'), n(`--${type}`), n(`--margin-${placement}`))"
-          >
+          <div :style="{ background: color }" :class="classes(n('content-container'), n(`--${type}`))">
             <slot name="content">{{ content }}</slot>
           </div>
         </div>

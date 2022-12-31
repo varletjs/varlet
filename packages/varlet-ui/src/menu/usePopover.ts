@@ -1,6 +1,6 @@
 import flip from '@popperjs/core/lib/modifiers/flip'
 import offset from '@popperjs/core/lib/modifiers/offset'
-import { Instance } from '@popperjs/core/lib/types'
+import { Instance, Modifier } from '@popperjs/core/lib/types'
 import { doubleRaf, toPxNum } from '../utils/elements'
 import { call } from '../utils/components'
 import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
@@ -235,21 +235,22 @@ export function usePopover(options: UsePopoverOptions) {
 
   const getPopperOptions = () => {
     const { placement, skidding, distance } = getPosition()
+    const modifiers: Modifier<any, any>[] = [
+      {
+        ...flip,
+        enabled: show.value,
+      },
+      {
+        ...offset,
+        options: {
+          offset: [skidding, distance],
+        },
+      },
+    ]
 
     return {
       placement,
-      modifiers: [
-        {
-          ...flip,
-          enabled: show.value,
-        },
-        {
-          ...offset,
-          options: {
-            offset: [skidding, distance],
-          },
-        },
-      ],
+      modifiers,
     }
   }
 

@@ -1,5 +1,6 @@
 export default {
   basicUsage: 'Basic Usage',
+  contentSlot: 'Content Slot',
   alignmentMethods: 'Alignment Methods',
   topAlignment: 'Top Alignment',
   tooltip: 'Tooltip',
@@ -18,6 +19,5 @@ export default {
   warningTooltip: 'Warning',
   dangerTooltip: 'Danger',
   customColor: 'Custom Color',
-  slotTooltip: 'Slot Tooltip',
   countDown: 's closed',
 }

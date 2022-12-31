@@ -1,5 +1,6 @@
 export default {
   basicUsage: '基本使用',
+  contentSlot: '内容插槽',
   alignmentMethods: '对齐方式',
   topAlignment: '顶部对齐',
   tooltip: 'tooltip',
@@ -18,6 +19,5 @@ export default {
   warningTooltip: '警告',
   dangerTooltip: '危险',
   customColor: '自定义颜色',
-  slotTooltip: '内容插槽',
   countDown: '秒后关闭',
 }
