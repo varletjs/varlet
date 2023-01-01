@@ -43,7 +43,7 @@ watchDarkMode(dark, (mode) => {
   <app-type>{{ pack.modifyStyle }}</app-type>
   <var-tabs
     elevation
-    color="#2979ff"
+    color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="active2"
@@ -56,7 +56,7 @@ watchDarkMode(dark, (mode) => {
   <app-type>{{ pack.disabled }}</app-type>
   <var-tabs
     elevation
-    color="#2979ff"
+    color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
     disabled-color="#aaa"
@@ -70,7 +70,7 @@ watchDarkMode(dark, (mode) => {
   <app-type>{{ pack.enableScroll }}</app-type>
   <var-tabs
     elevation
-    color="#2979ff"
+    color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="active4"
@@ -89,7 +89,7 @@ watchDarkMode(dark, (mode) => {
   <var-tabs
     elevation
     item-direction="vertical"
-    color="#2979ff"
+    color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="active5"
@@ -113,7 +113,7 @@ watchDarkMode(dark, (mode) => {
     class="vertical-tabs"
     elevation
     layout-direction="vertical"
-    color="#2979ff"
+    color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="active6"
@@ -126,7 +126,7 @@ watchDarkMode(dark, (mode) => {
   <app-type>{{ pack.viewRelation }}</app-type>
   <var-tabs
     elevation
-    color="#2979ff"
+    color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="activeRelation"
@@ -153,7 +153,7 @@ watchDarkMode(dark, (mode) => {
   <var-tabs
     sticky
     elevation
-    color="#2979ff"
+    color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
     offset-top="14.4vw"

@@ -55,7 +55,7 @@ const active = ref(0)
 <template>
   <var-tabs
     elevation
-    color="#2979ff"
+    color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="active"
@@ -79,7 +79,7 @@ const active = ref(0)
 <template>
   <var-tabs
     elevation
-    color="#2979ff"
+    color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
     disabled-color="#aaa"
@@ -106,7 +106,7 @@ const active = ref(0)
 <template>
   <var-tabs
     elevation
-    color="#2979ff"
+    color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="active"
@@ -136,7 +136,7 @@ const active = ref(0)
   <var-tabs
     elevation
     item-direction="vertical"
-    color="#2979ff"
+    color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="active"
@@ -177,7 +177,7 @@ const active = ref(0)
     class="tabs-example-vertical"
     elevation
     layout-direction="vertical"
-    color="#2979ff"
+    color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="active"
@@ -208,7 +208,7 @@ const active = ref(0)
 <template>
   <var-tabs
     elevation
-    color="#2979ff"
+    color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
     v-model:active="active"
@@ -248,7 +248,7 @@ const active = ref(0)
     <var-tabs
       sticky
       elevation
-      color="#2979ff"
+      color="var(--color-primary)"
       active-color="#fff"
       inactive-color="hsla(0, 0%, 100%, .6)"
       v-model:active="active"
