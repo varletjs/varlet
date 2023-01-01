@@ -13,6 +13,7 @@ export type HSLA = HSL & { a: number }
 export type Hex = string
 export type Hexa = string
 export type Color = string | number | { [key: string]: unknown }
+export type InitialColor = HSV | HSVA | RGB | RGBA | HSLA | HSL | Color | Hex | Hexa | null
 export interface ProvideColorOptions {
   mode?: ColorModeType
   showAlpha?: boolean

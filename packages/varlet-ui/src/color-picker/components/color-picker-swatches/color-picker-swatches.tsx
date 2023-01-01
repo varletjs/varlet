@@ -2,10 +2,11 @@
 import './color-picker-swatches.less'
 
 import colors from '../../utils/color'
-import { parseColor } from '../../utils/color-utils'
+import { fromHSVA, HSVAtoHex, parseBaseColor, parseColor } from '../../utils/color-utils'
 // Types
 import { defineComponent, PropType, toRefs } from 'vue'
-import { convertToUnit } from '../../utils/helpers'
+import { convertToUnit, deepEqual } from '../../utils/helpers'
+import { changeColorValue } from '../../utils/composable'
 
 function parseDefaultColors(colors: Record<string, Record<string, string>>) {
   return Object.keys(colors).map((key) => {
@@ -53,12 +54,13 @@ export default defineComponent({
             {props.swatches.map((swatch) => (
               <div class="var-color-picker-swatches__swatch">
                 {swatch.map((colorItem) => {
-                  const hsv = parseColor(colorItem)
+                  const hsv = parseBaseColor(colorItem)
+                  const iconColor = changeColorValue(fromHSVA(hsv), 0.5)
                   return (
                     <div class="var-color-picker-swatches__color" onClick={() => emit('update:color', hsv)}>
                       <div style={{ background: colorItem }}>
-                        {color.value && color.value.hex === colorItem ? (
-                          <var-icon size="15" name="checkbox-marked-circle" />
+                        {props.color && deepEqual(props.color, hsv) ? (
+                          <var-icon size="15" name="checkbox-marked-circle" color={iconColor.color} />
                         ) : undefined}
                       </div>
                     </div>

@@ -1,6 +1,6 @@
 import type { PropType, ExtractPropTypes } from 'vue'
 import { modes } from '../../utils/color-utils'
-import { ColorPickerColor } from '../../utils/color-utils-types'
+import type { HSV, HSVA, InitialColor } from '../../utils/color-utils-types'
 
 export const colorPickerEditProps = {
   mode: {
@@ -16,7 +16,7 @@ export const colorPickerEditProps = {
     default: false,
   },
   color: {
-    type: Object as PropType<ColorPickerColor>,
+    type: Object as PropType<HSVA | null>,
   },
 } as const
 

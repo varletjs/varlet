@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { chunk, padEnd, has, keepDecimal } from './helpers'
 import {
   ColorPickerColor,
+  InitialColor,
   position,
   ColorInt,
   HSV,
@@ -109,8 +110,6 @@ export function RGBAtoHSVA(rgba: RGBA): HSVA {
   const min = Math.min(r, g, b)
 
   let h = 0
-  console.log(max)
-  console.log(r)
   if (max !== min) {
     if (max === r) {
       h = 60 * (0 + (g - b) / (max - min))
@@ -184,8 +183,8 @@ export function HexToHSVA(hex: Hex): HSVA {
   return RGBAtoHSVA(rgb)
 }
 
-export function HSVAtoHex(hsva: HSVA): Hex {
-  return RGBAtoHex(HSVAtoRGBA(hsva))
+export function HSVAtoHex(hsva: HSVA | null): Hex {
+  return RGBAtoHex(HSVAtoRGBA(hsva!))
 }
 
 export function parseHex(hex: string): Hex {
@@ -480,7 +479,7 @@ export const elementResize = (parentElement: HTMLElement): position => {
     top,
   }
 }
-export function extractBaseColor(color: HSV, input: any) {
+export function extractBaseColor(color: InitialColor, input: any) {
   if (input == null || typeof input === 'string') {
     const hex = HSVtoHex(color)
 
@@ -500,15 +499,13 @@ export function extractBaseColor(color: HSV, input: any) {
 
   return color
 }
-export function parseBaseColor(color: any): HSV | null {
+export function parseBaseColor(color: InitialColor): HSVA | null {
   if (!color) return null
 
   let hsva: HSV | null = null
 
   if (typeof color === 'string') {
     const hex = parseHex(color)
-    console.log(hex)
-
     hsva = HexToHSV(hex)
   }
 

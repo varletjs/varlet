@@ -1,5 +1,5 @@
 import type { PropType, ExtractPropTypes } from 'vue'
-import type { ColorPickerColor } from '../../utils/color-utils-types'
+import type { HSV, HSVA } from '../../utils/color-utils-types'
 
 export const colorPickerHueSliderProps = {
   /* test: {
@@ -9,10 +9,10 @@ export const colorPickerHueSliderProps = {
    * 选择器圆点大小
    */
   color: {
-    type: Object,
+    type: Object as PropType<HSVA | null>,
   },
   modelValue: {
-    type: Object as PropType<ColorPickerColor>,
+    type: Object as PropType<HSV>,
   },
   width: {
     type: Number,

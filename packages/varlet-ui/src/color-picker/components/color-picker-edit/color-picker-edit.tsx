@@ -11,7 +11,7 @@ export default defineComponent({
   props: colorPickerEditProps,
   emit: ['update:color', 'update:mode'],
   setup(props: ColorPickerEditProps, { emit }) {
-    const { color, mode, alpha, modes } = toRefs(props)
+    const { color, modes } = toRefs(props)
     const enabledModes = computed(() => {
       return modes.value.map((key) => ({ ...defaultModes[key], name: key }))
     })
@@ -19,7 +19,7 @@ export default defineComponent({
     const inputs = computed(() => {
       const mode = enabledModes.value.find((m) => m.name === props.mode)
       if (!mode) return []
-      const convertColor = color.value ? mode.to(color.value) : {}
+      const convertColor = color!.value ? mode.to(color!.value) : {}
       return mode.inputs?.map(({ getValue, getColor, ...inputProps }) => {
         return {
           ...mode.inputProps,

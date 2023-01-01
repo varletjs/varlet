@@ -22,7 +22,7 @@ export const colorPickerProps = {
   },
   swatchesLayout: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   canvasLayout: {
     type: Boolean,

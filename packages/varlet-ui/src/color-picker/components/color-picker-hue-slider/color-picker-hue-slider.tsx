@@ -1,8 +1,8 @@
 import { computed, defineComponent, ref, onMounted } from 'vue'
 import { colorPickerHueSliderProps, ColorPickerHueSliderProps } from './color-picker-hue-slider-types'
 import { DOMUtils } from '../../utils/dom-dragger'
-import { fromHSVA } from '../../utils/color-utils'
 import './color-picker-hue-slider.less'
+import { HSVA } from '../../utils/color-utils-types'
 
 type ColorPickerColor = NonNullable<ColorPickerHueSliderProps['color']>
 type DefaultTransition = { transition: string }
@@ -22,7 +22,7 @@ export default defineComponent({
         if (props.color?.h === 360) {
           return rect.width - offsetWidth / 2
         }
-        return (((props.color as ColorPickerColor).h % 360) * (rect.width - offsetWidth)) / 360 + offsetWidth / 2
+        return (((props.color as HSVA).h % 360) * (rect.width - offsetWidth)) / 360 + offsetWidth / 2
       }
       return 0
     }
@@ -45,21 +45,12 @@ export default defineComponent({
         left = Math.min(left, rect.width - offsetWidth / 2)
         left = Math.max(offsetWidth / 2, left)
         const hue = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 360)
-        ctx.emit(
-          'update:color',
-          // fromHSVA({
-          //   h: hue,
-          //   s: (props.color as ColorPickerColor).s,
-          //   v: (props.color as ColorPickerColor).v,
-          //   a: (props.color as ColorPickerColor).a,
-          // })
-          {
-            h: hue,
-            s: (props.color as ColorPickerColor).s,
-            v: (props.color as ColorPickerColor).v,
-            a: (props.color as ColorPickerColor).a,
-          }
-        )
+        ctx.emit('update:color', {
+          h: hue,
+          s: (props.color as HSVA).s,
+          v: (props.color as HSVA).v,
+          a: (props.color as HSVA).a,
+        })
       }
     }
 

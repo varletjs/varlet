@@ -1,11 +1,9 @@
-import { defineComponent, ref, onMounted, computed, getCurrentInstance, watch, inject } from 'vue'
+import { defineComponent, ref, onMounted, computed, getCurrentInstance, watch } from 'vue'
+import { createNamespace } from '../../../utils/components'
 import { DOMUtils } from '../../utils/dom-dragger'
-import { fromHSVA } from '../../utils/color-utils'
 import { clamp, convertToUnit } from '../../utils/helpers'
 import { colorPickerPaletteProps, ColorPickerPaletteProps } from './color-picker-canvas-types'
-import { ProvideColorOptions } from '../../utils/color-utils-types'
 import './color-picker-canvas.less'
-import { createNamespace } from '../../../utils/components'
 
 type DefaultTransition = { transition: string }
 export default defineComponent({
@@ -15,8 +13,6 @@ export default defineComponent({
   setup(props: ColorPickerPaletteProps, ctx) {
     const { n, classes } = createNamespace('color-picker')
     const DEFAULT_TRANSITION: DefaultTransition = { transition: 'all 0.3s ease' }
-    // const dotSizeInject = inject('provideData') as ProvideColorOptions
-
     const clickTransform = ref<DefaultTransition | null>(DEFAULT_TRANSITION)
     const paletteElement = ref<HTMLElement | null>(null)
     const canvasElement = ref<HTMLCanvasElement | null>(null)
@@ -40,7 +36,7 @@ export default defineComponent({
           canvasElement.value.height = props.height
           const saturationGradient = canvas.createLinearGradient(0, 0, parentWidth as number, 0)
           saturationGradient.addColorStop(0, 'hsla(0, 0%, 100%, 1)') // white
-          saturationGradient.addColorStop(1, `hsla(${props.color.h ?? 0}, 100%, 50%, 1)`)
+          saturationGradient.addColorStop(1, `hsla(${props.color?.h ?? 0}, 100%, 50%, 1)`)
           canvas.fillStyle = saturationGradient
           canvas.fillRect(0, 0, parentWidth, props.height)
           const valueGradient = canvas.createLinearGradient(0, 0, 0, props.height)
@@ -70,21 +66,12 @@ export default defineComponent({
           return false
         })
 
-        ctx.emit(
-          'update:color',
-          // fromHSVA({
-          //   h: props.color.h ?? 0,
-          //   s: clamp(event.clientX - rect.left, 0, props.width) / props.width,
-          //   v: 1 - clamp(event.clientY - rect.top, 0, props.height) / props.height,
-          //   a: props.color.a,
-          // })
-          {
-            h: props.color.h ?? 0,
-            s: clamp(event.clientX - rect.left, 0, props.width) / props.width,
-            v: 1 - clamp(event.clientY - rect.top, 0, props.height) / props.height,
-            a: props.color.a,
-          }
-        )
+        ctx.emit('update:color', {
+          h: props.color?.h ?? 0,
+          s: clamp(event.clientX - rect.left, 0, props.width) / props.width,
+          v: 1 - clamp(event.clientY - rect.top, 0, props.height) / props.height,
+          a: props.color?.a,
+        })
         ctx.emit('changeTextColor', isChangeTextColor.value)
       }
     }
@@ -94,13 +81,13 @@ export default defineComponent({
         handleDrag(event as MouseEvent)
       }
     }
-    function updatePosition() {
-      if (paletteInstance) {
-        const parentWidth = paletteElement.value?.offsetWidth || 0
-        cursorLeft.value = Number(props.color?.s) * parentWidth
-        cursorTop.value = (1 - Number(props.color?.v)) * props.height
-      }
-    }
+    // function updatePosition() {
+    //   if (paletteInstance) {
+    //     const parentWidth = paletteElement.value?.offsetWidth || 0
+    //     cursorLeft.value = Number(props.color?.s) * parentWidth
+    //     cursorTop.value = (1 - Number(props.color?.v)) * props.height
+    //   }
+    // }
     onMounted(() => {
       renderCanvas()
       if (paletteInstance && paletteInstance.vnode.el && handlerElement.value) {
@@ -126,8 +113,8 @@ export default defineComponent({
     watch(
       () => props.color,
       () => {
-        cursorLeft.value = props.color?.s * parseInt(props.width, 10)
-        cursorTop.value = (1 - props.color?.v) * parseInt(props.height, 10)
+        cursorLeft.value = props.color!.s * parseInt(`${props.width}`, 10)
+        cursorTop.value = (1 - props.color!.v) * parseInt(`${props.height}`, 10)
       },
       { immediate: true, deep: true }
     )

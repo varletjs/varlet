@@ -1,8 +1,9 @@
 import { computed, defineComponent, ref, onMounted, toRefs } from 'vue'
 import { colorPickerAlphaSliderProps } from './color-picker-alpha-slider-types'
 import { DOMUtils } from '../../utils/dom-dragger'
-import { RGBtoCSS, fromHSVA, HSVAtoHex } from '../../utils/color-utils'
+import { HSVAtoHex } from '../../utils/color-utils'
 import './color-picker-alpha-slider.less'
+import { HSVA } from '../../utils/color-utils-types'
 
 export default defineComponent({
   name: 'ColorAlphaSlider',
@@ -23,11 +24,10 @@ export default defineComponent({
         left = Math.max(offsetWidth / 2, left)
         left = Math.min(left, rect.width - offsetWidth / 2)
         const alpha = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 100)
-        // ctx.emit('update:color', fromHSVA({ h: color.value.h, s: color.value.s, v: color.value.v, a: alpha / 100 }))
         ctx.emit('update:color', {
-          h: props.color.h,
-          s: (props.color as ColorPickerColor).s,
-          v: (props.color as ColorPickerColor).v,
+          h: props.color?.h,
+          s: (props.color as HSVA).s,
+          v: (props.color as HSVA).v,
           a: alpha / 100,
         })
       }
@@ -41,7 +41,7 @@ export default defineComponent({
 
     const getCursorLeft = computed(() => {
       if (barElement.value && cursorElement.value) {
-        const alpha = color.value.a
+        const alpha = props.color?.a
         const rect = barElement.value.getBoundingClientRect()
         const { offsetWidth } = cursorElement.value
         return Math.round(alpha * (rect.width - offsetWidth) + offsetWidth / 2)
@@ -75,13 +75,16 @@ export default defineComponent({
     const alphaClass = computed(() => {
       return ['var-color-picker-alpha-slider', 'transparent']
     })
+    const barStyle: any = computed(() => {
+      return { '--var-color-picker-alpha-slider': HSVAtoHex(color.value) }
+    })
     return () => {
       return (
         <div class={alphaClass.value}>
           <div
             ref={barElement}
             class="var-color-picker-alpha-slider__bar"
-            style={{ '--var-color-picker-alpha-slider': HSVAtoHex(color.value) }}
+            style={barStyle.value}
             onClick={onClickSlider}
           >
             <div
