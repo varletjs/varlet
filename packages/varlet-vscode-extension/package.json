@@ -5,7 +5,7 @@
   "icon": "src/icon.png",
   "description": "varlet extension for vscode",
   "publisher": "haoziqaq",
-  "version": "2.4.2",
+  "version": "2.5.0",
   "engines": {
     "vscode": "^1.56.0"
   },
