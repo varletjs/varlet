@@ -24,10 +24,6 @@ export default defineComponent({
     const { formItems, bindFormItems } = useFormItems()
 
     const scroll = (errorIndex: number, formItemElement: HTMLElement) => {
-      if (errorIndex === -1 || !props.scrollToError) {
-        return
-      }
-
       // wait form-details animation end
       setTimeout(() => {
         const scroller = getParentScroller(formItemElement)
