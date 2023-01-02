@@ -44,12 +44,19 @@ export default defineComponent({
     const validate = async () => {
       const res = await Promise.all(formItems.map(({ validate }) => validate()))
 
-      const [error, errorIndex] = find(res, (r) => r === false, props.scrollToError)
-      const formItemElement = formItems[errorIndex].instance.proxy?.$el
+      if (props.scrollToError) {
+        const [_, errorIndex] = find(res, (r) => r === false, props.scrollToError)
+        const hasError = errorIndex > -1
 
-      scroll(errorIndex, formItemElement)
+        if (hasError) {
+          const formItemElement = formItems[errorIndex].instance.proxy?.$el
+          scroll(errorIndex, formItemElement)
+        }
 
-      return !!error
+        return !hasError
+      }
+
+      return res.every((result) => result === true)
     }
 
     // expose
