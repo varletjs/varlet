@@ -1,3 +1,12 @@
+## [2.5.1](https://github.com/varletjs/varlet/compare/v2.5.0...v2.5.1) (2023-01-02)
+
+
+### Bug Fixes
+
+* fix scroll form item error and close [#807](https://github.com/varletjs/varlet/issues/807) ([6f44de4](https://github.com/varletjs/varlet/commit/6f44de4c36b8798b141433b5f59611493cd9d6c7))
+
+
+
 # [2.5.0](https://github.com/varletjs/varlet/compare/v2.4.2...v2.5.0) (2023-01-01)
 
 
