@@ -76,8 +76,8 @@ test('test breadcrumbs events', async () => {
   })
 
   await delay(0)
-  await wrapper.findAll('.var-breadcrumb__content').at(0).trigger('click')
-  await wrapper.findAll('.var-breadcrumb__content').at(2).trigger('click')
+  await wrapper.findAll('.var-breadcrumb__content')[0].trigger('click')
+  await wrapper.findAll('.var-breadcrumb__content')[2].trigger('click')
   expect(onClick).toHaveBeenCalledTimes(1)
   wrapper.unmount()
 })

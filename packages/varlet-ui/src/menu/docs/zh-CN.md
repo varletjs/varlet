@@ -85,7 +85,7 @@ const placementOptions = [
 
 ### 偏移量
 
-可以用 `offset-x` 和 `offset-y` 设置 Menu 弹出的偏移量
+可以用 `offset-x` 和 `offset-y` 设置 Menu 弹出的偏移量。
 
 ```html
 <template>
@@ -103,7 +103,7 @@ const placementOptions = [
 
 ### 触发方式
 
-通过 `trigger` 改变菜单显示的触发方式，可选值为 `click` 和 `hover`
+通过 `trigger` 改变菜单显示的触发方式，可选值为 `click` 和 `hover`。
 
 ```html
 <template>
@@ -169,7 +169,7 @@ const closed = () => Snackbar.error('closed')
 
 ### 双向绑定
 
-通过 `v-model:show` 进行双向绑定控制菜单的显示和隐藏
+通过 `v-model:show` 进行双向绑定控制菜单的显示和隐藏。
 
 ```html
 <script setup>
@@ -261,7 +261,7 @@ Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单�
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |

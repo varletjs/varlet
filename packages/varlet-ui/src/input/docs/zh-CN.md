@@ -2,7 +2,7 @@
 
 ### 基本使用
 
-输入框的行为和基本原生一致，用户输入时始终获得一个符合 `type` 规则的字符串
+输入框的行为和基本原生一致，用户输入时始终获得一个符合 `type` 规则的字符串。
 
 ```html
 <script setup>
@@ -204,7 +204,7 @@ const value = ref('')
 | `append-icon` | 后置图标 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |

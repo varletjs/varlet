@@ -9,7 +9,7 @@ scheme `varlet-touch-emulator` is used for mobile terminal adaptation.
 
 The component library design is based on the `375px` width design draft. 
 It is recommended to use PostCSS plugin to convert `px` units into `vw` units to achieve mobile terminal adaptation.
-Create `postcss.config.js` under the `Webpack/Vite` project root path And do the following configuration `375px -> 100vw`
+Create `postcss.config.js` under the `Webpack/Vite` project root path And do the following configuration `375px -> 100vw`.
 
 ```shell
 # playground-ignore

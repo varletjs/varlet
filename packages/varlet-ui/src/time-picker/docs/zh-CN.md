@@ -36,7 +36,7 @@ const date = ref('15:20')
 
 ### 显示秒
 
-使用 `use-seconds` 属性显示秒
+使用 `use-seconds` 属性显示秒。
 
 ```html
 <script setup>
@@ -150,7 +150,7 @@ const change = (time) => {
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | -- |

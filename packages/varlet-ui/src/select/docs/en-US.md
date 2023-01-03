@@ -2,7 +2,7 @@
 
 ### Intro
 
-Display and select the content through the drop-down menu
+Display and select the content through the drop-down menu.
 
 ### Basic Usage
 
@@ -350,7 +350,7 @@ const value = ref([])
 | `default` | Options to display the content | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### Select Variables
 
