@@ -2,7 +2,7 @@
 
 ### 介绍
 
-开箱即用的 `Vue3组件库` 快速成型工具，提供了一系列命令和工具去解决组件库开发上的问题
+开箱即用的 `Vue3组件库` 快速成型工具，提供了一系列命令和工具去解决组件库开发上的问题。
 
 ### 特性
 
@@ -20,7 +20,7 @@
 
 ### 快速开始
 
-`@varlet/cli` 内置了 `sfc` 和 `tsx` 两种风格的组件库项目模板，可以通过 `gen` 命令直接生成。 
+`@varlet/cli` 内置了 `sfc` 和 `tsx` 两种风格的组件库项目模板，可以通过 `gen` 命令直接生成。
 方便您直接进入组件库开发。
 
 ```shell
@@ -35,7 +35,7 @@ varlet-cli gen
 
 项目根目录下的 `varlet.config.mjs` 用来管理整个组件库项目的具体细节。
 默认配置可查阅 [varlet.default.config.ts](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.default.config.ts)。
-也可以参考 `@varlet/ui` 的 [varlet.config.mjs](https://github.com/varletjs/varlet/blob/dev/packages/varlet-ui/varlet.config.mjs)
+也可以参考 `@varlet/ui` 的 [varlet.config.mjs](https://github.com/varletjs/varlet/blob/dev/packages/varlet-ui/varlet.config.mjs)。
 
 | 参数 | 说明 | 类型 | 默认值 |
 | -- | -------------- | -------- | ---------- |
@@ -51,8 +51,8 @@ varlet-cli gen
 | `darkTheme` | 暗黑模式文档主题 | _Record<string, any>_ | `-` |
 | `highlight` | 文档代码片段样式相关 | _{ style: string }_ | `-` |
 | `analysis` | 文档统计相关 | _{ baidu: string }_ | `-` |
-| `pc` | pc端文档结构配置 | _Record<string, any>_ | `-` |
-| `mobile` | mobile端文档结构配置 | _Record<string, any>_ | `-` |
+| `pc` | pc 端文档结构配置 | _Record<string, any>_ | `-` |
+| `mobile` | mobile 端文档结构配置 | _Record<string, any>_ | `-` |
 | `moduleCompatible` | 模块兼容配置 | _Record<string, string>_ | `-` |
 
 ### 自定义页面
@@ -212,21 +212,21 @@ varlet-cli create
 
 ### 模块适配对象
 
-一些外部依赖可能需要进行模块语法的适配，以达到可以正确编译到 `commonjs` 和 `esmodule` 的目的，例如 `dayjs` 的 `esmodule` 写法是
+一些外部依赖可能需要进行模块语法的适配，以达到可以正确编译到 `commonjs` 和 `esmodule` 的目的，例如 `dayjs` 的 `esmodule` 写法是:
 
 ```js
 // playground-ignore
 import dayjs from 'dayjs/esm'
 ```
 
-而为了构建 `commonjs` 时的写法是
+而为了构建 `commonjs` 时的写法是:
 
 ```js
 // playground-ignore
 import * as dayjs from 'dayjs'
 ```
 
-在项目中我们拥抱 `esmodule` 模块使用第一种写法，并做如下配置进行适配
+在项目中我们拥抱 `esmodule` 模块使用第一种写法，并做如下配置进行适配:
 
 ```js
 // playground-ignore

@@ -2,7 +2,7 @@
 
 ### Intro
 
-Loading component for performing animations when data is loaded
+Loading component for performing animations when data is loaded.
 
 ### Type
 

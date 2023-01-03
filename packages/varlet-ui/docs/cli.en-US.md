@@ -2,7 +2,7 @@
 
 ### Intro
 
-The out-of-the-box `Vue3 component library` rapid prototyping tool provides a series of commands and tools to solve the problem of component library development
+The out-of-the-box `Vue3 component library` rapid prototyping tool provides a series of commands and tools to solve the problem of component library development.
 
 ### Features
 
@@ -34,8 +34,8 @@ varlet-cli gen
 ### Configuration file
 
 The `varlet.config.mjs` in the project root directory is used to manage the specific details of the entire component library project.
-The default configuration can be viewed [varlet.default.config.ts](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.default.config.ts)。
-Also refer to `@varlet/ui` [varlet.config.mjs](https://github.com/varletjs/varlet/blob/dev/packages/varlet-ui/varlet.config.mjs)
+The default configuration can be viewed [varlet.default.config.ts](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.default.config.ts).
+Also refer to `@varlet/ui` [varlet.config.mjs](https://github.com/varletjs/varlet/blob/dev/packages/varlet-ui/varlet.config.mjs).
 
 | Parameter | Description | Type | Default |
 | -- | -------------- | -------- | ---------- |
@@ -213,21 +213,21 @@ varlet-cli create
 
 ### Module Compatible
 
-Some external dependencies may need to be compatible with module syntax to achieve the purpose of compiling correctly to `commonjs` and `esmodule`. For example, the wording of `esmodule` of `dayjs` is
+Some external dependencies may need to be compatible with module syntax to achieve the purpose of compiling correctly to `commonjs` and `esmodule`. For example, the wording of `esmodule` of `dayjs` is:
 
 ```js
 // playground-ignore
 import dayjs from 'dayjs/esm'
 ```
 
-In order to build `commonjs`, the writing method is
+In order to build `commonjs`, the writing method is:
 
 ```js
 // playground-ignore
 import * as dayjs from 'dayjs'
 ```
 
-In the project, we embrace the first way of writing the `esmodule` module, and make the following configuration for adaptation
+In the project, we embrace the first way of writing the `esmodule` module, and make the following configuration for adaptation:
 
 ```js
 // playground-ignore

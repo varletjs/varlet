@@ -130,7 +130,7 @@ Here's how the different build tools are used.
 
 #### Vite
 
-Automatic preprocessing with [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#asset-url-handling)
+Automatic preprocessing with [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#asset-url-handling).
 
 ```ts
 // playground-ignore

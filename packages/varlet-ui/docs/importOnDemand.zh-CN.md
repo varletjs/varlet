@@ -36,7 +36,7 @@ import '@varlet/ui/es/button/style/index.js'
 通过插件
 [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) 和 
 [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)
-实现组件自动按需导入
+实现组件自动按需导入。
 
 ```shell
 # playground-ignore
@@ -100,7 +100,7 @@ export default defineConfig({
 
 #### Typescript 配置注意
 
-为了得到良好的 IDE 语法高亮，请确保上述两个插件生成的类型声明文件被 `typescript` 识别，可在 `tsconfig.json` 中进行如下配置
+为了得到良好的 IDE 语法高亮，请确保上述两个插件生成的类型声明文件被 `typescript` 识别，可在 `tsconfig.json` 中进行如下配置:
 
 ```json
 // playground-ignore
@@ -111,7 +111,7 @@ export default defineConfig({
 
 ### 手动引入和自动引入对比
 
-手动引入
+手动引入。
 
 ```html
 // playground-ignore
@@ -130,7 +130,7 @@ function handleClick() {
 </template>
 ```
 
-自动引入
+自动引入。
 
 ```html
 // playground-ignore

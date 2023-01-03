@@ -117,7 +117,7 @@ const placementOptions = [
 
 ### Offset
 
-The offset of the Tooltip can be set with `offset-x` and `offset-y`
+The offset of the Tooltip can be set with `offset-x` and `offset-y`.
 
 ```html
 <template>
@@ -129,8 +129,8 @@ The offset of the Tooltip can be set with `offset-x` and `offset-y`
 
 ### Trigger
 
-Use `trigger` to change the trigger method of tooltip display, 
-the optional values are `click` and `hover`
+Use `trigger` to change the trigger method of tooltip display,
+the optional values are `click` and `hover`.
 
 ```html
 <template>
@@ -236,7 +236,7 @@ In the `disabled` state, the tooltip will no longer be opened.
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

@@ -2,7 +2,7 @@
 
 ### 介绍
 
-本节主要介绍 `2.x` 版本相对于 `1.x` 版本的主要变化以及迁移的注意事项
+本节主要介绍 `2.x` 版本相对于 `1.x` 版本的主要变化以及迁移的注意事项。
 
 ## 组件库(@varlet/ui)
 
@@ -17,9 +17,9 @@
 - Snackbar 组件新增 `loadingColor` 属性
 - Progress 组件新增 `labelClass` 属性
 - StyleProvider 组件新增 `tag` 属性，允许自定义容器标签
-- Cell 组件重命名了部分 api `desc` -> `description`， `descClass` -> `descriptionClass`
-- DatePicker 组件重命名了部分 api  `shadow` -> `elevation`
-- TimePicker 组件重命名了部分 api  `shadow` -> `elevation`
+- Cell 组件重命名了部分 api `desc` -> `description`，`descClass` -> `descriptionClass`
+- DatePicker 组件重命名了部分 api `shadow` -> `elevation`
+- TimePicker 组件重命名了部分 api `shadow` -> `elevation`
 - Card 组件重命名了部分 api  `height` -> `image-height`，`content` -> `floating-content`
 - Col 组件新增 `direction` 属性
 - Dialog 组件新增 `width` 属性
@@ -41,7 +41,7 @@
 ### UMD 模块导出中英文语言包
 
 在 `1.x` 版本中，UMD 模块不导出中英文语言包，在 `2.x` 版本中，我们将中英文语言包进行了导出，
-非 UMD 模块现在有两种使用语言包的方式
+非 UMD 模块现在有两种使用语言包的方式。
 
 ```ts
 // playground-ignore
@@ -63,7 +63,7 @@ Locale.add('en-US', Locale.enUS)
 ### UMD 模块导出暗黑模式主题
 
 在 `1.x` 版本中，UMD 模块不导出暗黑模式主题包，在 `2.x` 版本中，我们将暗黑模式主题包进行了导出，
-非 UMD 模块现在有两种使用暗黑模式主题的方式
+非 UMD 模块现在有两种使用暗黑模式主题的方式。
 
 ```ts
 // playground-ignore
@@ -85,11 +85,11 @@ StyleProvider(Themes.dark)
 ### 移除 less 主题变量的支持
 
 如今 `css variable` 方案已经十分成熟，在 `2.x` 版本中不再支持 `less` 主题变量，这有利于减小包的发布体积。
-如果您使用了在构建时替换 `less` 主题变量的方案，需要替换成 `css variable` 方案
+如果您使用了在构建时替换 `less` 主题变量的方案，需要替换成 `css variable` 方案。
 
 ### Typescript 类型优化
 
-我们对组件内部类型进行了重构，抽象了更多的类型并且暴露了出来，组件的类型规范依照`组件名` + `类型名`的形式。使用方式如下所示
+我们对组件内部类型进行了重构，抽象了更多的类型并且暴露了出来，组件的类型规范依照`组件名` + `类型名`的形式。使用方式如下所示:
 
 ```ts
 // playground-ignore
@@ -100,7 +100,7 @@ import type { ButtonProps, ButtonType, ButtonSize } from '@varlet/ui'
 
 在 1.x 中，组件库只支持自动引入在模板中的声明式组件，函数组件 `(例如: Snackbar)` 仍然需要手动引入样式文件。
 在 2.x 中，通过 [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) 插件支持了函数组件的自动引入。
-详情见[按需引入](#/zh-CN/importOnDemand)
+详情见[按需引入](#/zh-CN/importOnDemand)。
 
 ## 组件库快速成型工具(@varlet/cli)
 

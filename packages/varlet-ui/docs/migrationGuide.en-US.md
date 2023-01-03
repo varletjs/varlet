@@ -1,7 +1,7 @@
 # Migration Guide
 
 ### Introduce
-This section mainly introduces the main changes of the `2.x` version compared to the `1.x` version and the considerations for migration
+This section mainly introduces the main changes of the `2.x` version compared to the `1.x` version and the considerations for migration.
 
 ## Components Library(@varlet/ui)
 
@@ -40,7 +40,7 @@ This section mainly introduces the main changes of the `2.x` version compared to
 ### UMD module exports Chinese and English language packages
 
 In the `1.x` version, the UMD module did not export the Chinese and English language packs. In the `2.x` version, we exported the Chinese and English language packs by default.
-Non-UMD modules now have two ways to use language packs
+Non-UMD modules now have two ways to use language packs.
 
 ```ts
 // playground-ignore
@@ -84,11 +84,11 @@ StyleProvider(Themes.dark)
 ### Remove less theme variable support
 
 Now that the `css variable` solution is very mature, the `less` theme variable is no longer supported in the `2.x` version, which is conducive to reducing the release size of the package.
-If you use a scheme that replaces the `less` theme variable at build time, you need to replace it with the `css variable` scheme
+If you use a scheme that replaces the `less` theme variable at build time, you need to replace it with the `css variable` scheme.
 
 ### Typescript type optimization
 
-We refactored the internal types of components, abstracting more types and exposing them. The type specification of components is in the form of `component name` + `type name`. Use as follows
+We refactored the internal types of components, abstracting more types and exposing them. The type specification of components is in the form of `component name` + `type name`. Use as follows:
 
 ```ts
 // playground-ignore
@@ -99,7 +99,7 @@ import type { ButtonProps, ButtonType, ButtonSize } from '@varlet/ui'
 
 In 1.x, the component library only supports declarative components that are automatically imported into templates, and functional components `(eg: Snackbar)` still need to manually import style files.
 In 2.x, the automatic import of function components is supported through the [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) plugin.
-For details, see [Import On Demand](#/en-US/importOnDemand)
+For details, see [Import On Demand](#/en-US/importOnDemand).
 
 ## Components Library Tools(@varlet/cli)
 

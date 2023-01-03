@@ -35,7 +35,7 @@ const date = ref('15:20')
 
 ### Show Seconds
 
-use `use-seconds` prop to show seconds
+use `use-seconds` prop to show seconds.
 
 ```html
 <script setup>
@@ -149,7 +149,7 @@ const change = (time) => {
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | -- |

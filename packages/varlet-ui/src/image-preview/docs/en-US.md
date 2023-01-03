@@ -260,7 +260,7 @@ const actions = [
 | `onClosed` | Callback at the end of the animation that closes the image-preview |  _() => void_ | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | ------ | -------- |

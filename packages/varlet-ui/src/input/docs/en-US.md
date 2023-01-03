@@ -2,7 +2,7 @@
 
 ### Basic Usage
 
-The behavior of the input box is consistent with the basic content, and the user can always get a string that conforms to the `type rule when inputting
+The behavior of the input box is consistent with the basic content, and the user can always get a string that conforms to the `type rule when inputting.
 
 ```html
 <script setup>
@@ -203,7 +203,7 @@ const value = ref('')
 | `append-icon` | Append Icon | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

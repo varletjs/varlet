@@ -132,7 +132,7 @@ const load = () => {
 
 ### Combine
 
-Combined with the `PullRefresh` component to implement the function of pull-up loading and pull-down refresh, ensuring the height of the `PullRefresh` is not `0` .
+Combined with the `PullRefresh` component to implement the function of pull-up loading and pull-down refresh, ensuring the height of the `PullRefresh` is not `0`.
 
 ```html
 <script setup>
@@ -214,7 +214,7 @@ This can be mistaken for a scroll container, so avoid it.
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                    | Default               |
 | --------------------------- | --------------------- |

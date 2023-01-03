@@ -25,7 +25,7 @@ const toggleTheme = () => {
 </template>
 ```
 
-Inject the `text color` and `background color` variables recommended by the component library to control the overall color
+Inject the `text color` and `background color` variables recommended by the component library to control the overall color.
 
 ```css
 /* playground-ignore */

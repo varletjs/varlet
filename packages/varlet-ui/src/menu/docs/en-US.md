@@ -86,7 +86,7 @@ const placementOptions = [
 
 ### Offset
 
-The offset of the Menu popup can be set with `offset-x` and `offset-y`
+The offset of the Menu popup can be set with `offset-x` and `offset-y`.
 
 ```html
 <template>
@@ -171,7 +171,7 @@ In the `disabled` state, the menu will no longer be opened.
 
 ### Two-way binding
 
-Two-way binding control menu show and hide via `v-model:show`
+Two-way binding control menu show and hide via `v-model:show`.
 
 ```html
 <script setup>
@@ -265,7 +265,7 @@ it is recommended to wrap a `block` element.
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |
