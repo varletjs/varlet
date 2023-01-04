@@ -52,7 +52,14 @@ export default defineComponent({
         <>
           <div class={[classes(n()), 'var-elevation--3']}>
             <div></div>
-            {props.canvasLayout && <VarColorPickerCanvas color={initialColor.value} onUpdate:color={updateColor} />}
+            {props.canvasLayout && (
+              <VarColorPickerCanvas
+                width={props.width}
+                height={props.canvasHeight}
+                color={initialColor.value}
+                onUpdate:color={updateColor}
+              />
+            )}
             {(props.sliderLayout || props.inputLayout) && (
               <div class={classes(n('control'))}>
                 {props.sliderLayout && (

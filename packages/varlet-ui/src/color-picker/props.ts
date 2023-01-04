@@ -16,6 +16,14 @@ export const colorPickerProps = {
     default: () => Object.keys(modes),
     validator: (v: any) => Array.isArray(v) && v.every((m) => Object.keys(modes).includes(m)),
   },
+  width: {
+    type: [Number, String],
+    default: 300,
+  },
+  canvasHeight: {
+    type: [String, Number],
+    default: 150,
+  },
   sliderLayout: {
     type: Boolean,
     default: true,

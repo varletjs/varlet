@@ -8,11 +8,11 @@ export const colorPickerPaletteProps = {
     default: () => fromRGBA({ r: 255, g: 0, b: 0, a: 1 }),
   },
   height: {
-    type: Number,
+    type: [Number, String],
     default: 150,
   },
   width: {
-    type: Number,
+    type: [Number, String],
     default: 300,
   },
 } as const
