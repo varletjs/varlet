@@ -1,3 +1,12 @@
+## [2.5.3](https://github.com/varletjs/varlet/compare/v2.5.2...v2.5.3) (2023-01-04)
+
+
+### Bug Fixes
+
+* **ui/menu:** fix elevation display error ([91a83c4](https://github.com/varletjs/varlet/commit/91a83c4b674a790f089b514167d892f1725bd01c))
+
+
+
 ## [2.5.2](https://github.com/varletjs/varlet/compare/v2.5.1...v2.5.2) (2023-01-04)
 
 
