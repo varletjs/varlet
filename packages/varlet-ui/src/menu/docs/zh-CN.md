@@ -103,7 +103,7 @@ const placementOptions = [
 
 ### 与触发元素同宽
 
-通过 `same-width` 使弹出菜单和触发器的宽度相同。
+通过 `same-width` 使弹出的菜单和触发元素的宽度相同。
 
 ```html
 <template>
