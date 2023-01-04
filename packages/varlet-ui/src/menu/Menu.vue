@@ -12,7 +12,10 @@
       <transition :name="n()" @after-enter="onOpened" @after-leave="onClosed">
         <div
           ref="popover"
-          :style="{ zIndex }"
+          :style="{
+            zIndex,
+            width: sameWidth ? toSizeUnit(Math.ceil(hostSize.width)) : undefined,
+          }"
           :class="classes(n('menu'), [defaultStyle, `${n('--menu-background-color')} ${n('$-elevation--3')}`])"
           v-show="show"
           @click.stop
@@ -31,6 +34,7 @@ import { createNamespace } from '../utils/components'
 import { defineComponent } from 'vue'
 import { props } from './props'
 import { usePopover } from './usePopover'
+import { toSizeUnit } from '../utils/elements'
 
 const { n, classes } = createNamespace('menu')
 
@@ -64,6 +68,7 @@ export default defineComponent({
       hostSize,
       show,
       zIndex,
+      toSizeUnit,
       n,
       classes,
       handleHostClick,

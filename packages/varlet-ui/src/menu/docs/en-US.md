@@ -204,16 +204,17 @@ it is recommended to wrap a `block` element.
 
 ### Props
 
-| Prop              | Description                                                 | Type              | Default |
-| ------- |-------------------------------------------------------------|----------------------| --- |
-| `v-model:show` | whether to show the menu                                    | _string_             | `default` |
-| `placement` | menu popup placement                                        | _Placement_          | `cover-top-start` |
-| `offset-x` | The x-axis offset, relative to the menu-aligned position    | _number \| string_ | `0` |
-| `offset-y` | The y-axis offset, relative to the menu-aligned position    | _number \| string_ | `0` |
-| `teleport` | The location of the menu mount                                                     | _TeleportProps['to']_ | `body` |
-| `disabled` | whether to disable the menu                                                      | _boolean_            | `false` |
-| `trigger` | Menu trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `click` |
-| `default-style` | Whether to enable default styles  | _boolean_ | `true` |
+| Prop            | Description                                                                                                                  | Type              | Default           |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------|----------------------|-------------------|
+| `v-model:show`  | whether to show the menu                                                                                                     | _string_             | `default`         |
+| `placement`     | menu popup placement                                                                                                         | _Placement_          | `cover-top-start` |
+| `offset-x`      | The x-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
+| `offset-y`      | The y-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
+| `teleport`      | The location of the menu mount                                                                                               | _TeleportProps['to']_ | `body`            |
+| `disabled`      | whether to disable the menu                                                                                                  | _boolean_            | `false`           |
+| `trigger`       | Menu trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `click`           |
+| `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
+| `default-style` | Whether to enable default styles                                                                                             | _boolean_ | `true`            |
 
 ### Placement
 

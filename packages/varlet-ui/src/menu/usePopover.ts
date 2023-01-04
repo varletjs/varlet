@@ -48,18 +48,18 @@ export function usePopover(options: UsePopoverOptions) {
   const host: Ref<null | HTMLElement> = ref(null)
   const popover: Ref<null | HTMLElement> = ref(null)
   const show: Ref<boolean> = ref(false)
+  const hostSize: Ref<HostSize> = ref({ width: 0, height: 0 })
   const { zIndex } = useZIndex(() => show.value, 1)
 
   let popoverInstance: Instance | null = null
   let clickSelf = false
   let enterPopover = false
   let enterHost = false
-  let hostSize: HostSize = { width: 0, height: 0 }
 
   const computeHostSize = () => {
     const { width, height } = window.getComputedStyle(host.value!)
 
-    hostSize = {
+    hostSize.value = {
       width: toPxNum(width),
       height: toPxNum(height),
     }
@@ -143,56 +143,56 @@ export function usePopover(options: UsePopoverOptions) {
         return {
           placement: 'bottom',
           skidding: offset.x,
-          distance: offset.y - hostSize.height,
+          distance: offset.y - hostSize.value.height,
         }
 
       case 'cover-top-start':
         return {
           placement: 'bottom-start',
           skidding: offset.x,
-          distance: offset.y - hostSize.height,
+          distance: offset.y - hostSize.value.height,
         }
 
       case 'cover-top-end':
         return {
           placement: 'bottom-end',
           skidding: offset.x,
-          distance: offset.y - hostSize.height,
+          distance: offset.y - hostSize.value.height,
         }
 
       case 'cover-bottom':
         return {
           placement: 'top',
           skidding: offset.x,
-          distance: -offset.y - hostSize.height,
+          distance: -offset.y - hostSize.value.height,
         }
 
       case 'cover-bottom-start':
         return {
           placement: 'top-start',
           skidding: offset.x,
-          distance: -offset.y - hostSize.height,
+          distance: -offset.y - hostSize.value.height,
         }
 
       case 'cover-bottom-end':
         return {
           placement: 'top-end',
           skidding: offset.x,
-          distance: -offset.y - hostSize.height,
+          distance: -offset.y - hostSize.value.height,
         }
 
       case 'cover-left':
         return {
           placement: 'right',
           skidding: offset.y,
-          distance: offset.x - hostSize.width,
+          distance: offset.x - hostSize.value.width,
         }
 
       case 'cover-right':
         return {
           placement: 'left',
           skidding: offset.y,
-          distance: -offset.x - hostSize.width,
+          distance: -offset.x - hostSize.value.width,
         }
 
       case 'left':

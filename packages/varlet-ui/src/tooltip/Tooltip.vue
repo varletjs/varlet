@@ -43,7 +43,6 @@ export default defineComponent({
     const {
       popover,
       host,
-      hostSize,
       show,
       zIndex,
       handleHostClick,
@@ -63,7 +62,6 @@ export default defineComponent({
     return {
       popover,
       host,
-      hostSize,
       show,
       zIndex,
       n,

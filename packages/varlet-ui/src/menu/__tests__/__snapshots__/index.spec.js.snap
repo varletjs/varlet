@@ -53,3 +53,5 @@ exports[`test menu placement 18`] = `"<div style=\\"z-index: 2000; display: none
 exports[`test menu placement 19`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"right\\"></div>"`;
 
 exports[`test menu placement 20`] = `"<div style=\\"z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; right: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"left\\"></div>"`;
+
+exports[`test menu same width 1`] = `"<div style=\\"z-index: 2004; width: 0px; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom-start\\"></div>"`;

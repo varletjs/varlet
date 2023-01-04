@@ -62,6 +62,10 @@ export const props = {
     type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body',
   },
+  sameWidth: {
+    type: Boolean,
+    default: false,
+  },
   defaultStyle: {
     type: Boolean,
     default: true,

@@ -200,16 +200,17 @@ Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单�
 
 ### 属性
 
-| 参数 | 说明 | 类型                    | 默认值 |
-| ------- | --- |-----------------------| --- |
-| `v-model:show` | 是否显示菜单 | _string_              | `default` |
-| `placement` | 菜单弹出位置 | _Placement_           | `cover-top-start` |
-| `offset-x` | x 轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |
-| `offset-y` | y 轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |
-| `teleport` | 菜单挂载的位置 | _TeleportProps['to']_ | `body` |
-| `disabled` | 是否禁用菜单 | _boolean_             | `false` |
-| `trigger` | 菜单触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_              | `click` |
-| `default-style` | 是否启用默认样式 | _boolean_             | `true` |
+| 参数              | 说明                                                          | 类型                    | 默认值               |
+|-----------------|-------------------------------------------------------------|-----------------------|-------------------|
+| `v-model:show`  | 是否显示菜单                                                      | _string_              | `default`         |
+| `placement`     | 菜单弹出位置                                                      | _Placement_           | `cover-top-start` |
+| `offset-x`      | x 轴偏移量， 相对于菜单对齐后的位置                                         | _number \| string_           | `0` |
+| `offset-y`      | y 轴偏移量， 相对于菜单对齐后的位置                                         | _number \| string_           | `0` |
+| `teleport`      | 菜单挂载的位置                                                     | _TeleportProps['to']_ | `body`            |
+| `disabled`      | 是否禁用菜单                                                      | _boolean_             | `false`           |
+| `trigger`       | 菜单触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_              | `click`           |
+| `same-width`    | 是否与触发元素同宽                                                   | _boolean_             | `false`           |
+| `default-style` | 是否启用默认样式                                                    | _boolean_             | `true`            |
 
 ### Placement
 

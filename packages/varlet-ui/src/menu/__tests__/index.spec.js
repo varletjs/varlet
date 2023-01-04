@@ -1,6 +1,6 @@
 import Menu from '..'
 import VarMenu from '../Menu'
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay, mockStubs, trigger } from '../../utils/jest'
 import { doubleRaf } from '../../utils/elements'
@@ -167,6 +167,26 @@ test('test menu hover the menu list', async () => {
   await trigger(root.querySelector('.var-menu__menu'), 'mouseenter')
   await trigger(root.querySelector('.var-menu__menu'), 'mouseleave')
   await delay(300)
+  expect(root.innerHTML).toMatchSnapshot()
+
+  mockRestore()
+})
+
+test('test menu same width', async () => {
+  const { mockRestore } = mockStubs()
+
+  const root = document.createElement('div')
+
+  mount(VarMenu, {
+    props: {
+      show: true,
+      sameWidth: true,
+      trigger: 'hover',
+      teleport: root,
+    },
+  })
+
+  await doubleRaf()
   expect(root.innerHTML).toMatchSnapshot()
 
   mockRestore()
