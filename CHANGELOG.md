@@ -1,3 +1,12 @@
+## [2.5.2](https://github.com/varletjs/varlet/compare/v2.5.1...v2.5.2) (2023-01-04)
+
+
+### Features
+
+* **ui/menu:** support sameWidth prop ([5fda8b7](https://github.com/varletjs/varlet/commit/5fda8b7cb487b6aea442e3cc6f8d27660ef98ff3))
+
+
+
 ## [2.5.1](https://github.com/varletjs/varlet/compare/v2.5.0...v2.5.1) (2023-01-02)
 
 
