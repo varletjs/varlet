@@ -102,6 +102,24 @@ The offset of the Menu popup can be set with `offset-x` and `offset-y`.
 </template>
 ```
 
+### Same width as trigger element
+
+Use `same-width` to make the popup menu and trigger the same width.
+
+```html
+<template>
+  <var-menu same-width>
+    <var-button type="primary">Same width as trigger element</var-button>
+    
+    <template #menu>
+      <var-cell>Menu Option</var-cell>
+      <var-cell>Menu Option</var-cell>
+      <var-cell>Menu Option</var-cell>
+    </template>
+  </var-menu>
+</template>
+```
+
 ### Trigger
 
 Use `trigger` to change the trigger method of menu display, 

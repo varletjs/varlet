@@ -85,12 +85,30 @@ const placementOptions = [
 
 ### 偏移量
 
-可以用 `offset-x` 和 `offset-y` 设置 Menu 弹出的偏移量。
+通过 `offset-x` 和 `offset-y` 设置 Menu 弹出的偏移量。
 
 ```html
 <template>
   <var-menu offset-x="36px" offset-y="18px">
     <var-button type="primary">偏移量</var-button>
+    
+    <template #menu>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+    </template>
+  </var-menu>
+</template>
+```
+
+### 与触发元素同宽
+
+通过 `same-width` 使弹出菜单和触发器的宽度相同。
+
+```html
+<template>
+  <var-menu same-width>
+    <var-button type="primary">与触发元素同宽</var-button>
     
     <template #menu>
       <var-cell>菜单项</var-cell>
