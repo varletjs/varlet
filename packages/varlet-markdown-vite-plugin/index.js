@@ -86,7 +86,6 @@ function markdownToVue(source, options) {
   const { source: vueSource, imports, components } = extractComponents(source)
   const md = markdown({
     html: true,
-    typographer: true,
     highlight: (str, lang) => highlight(str, lang, options.style),
   })
   let templateString = htmlWrapper(md.render(vueSource))

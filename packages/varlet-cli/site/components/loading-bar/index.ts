@@ -49,7 +49,6 @@ const changeValue = () => {
 }
 
 LoadingBar.start = () => {
-  console.log(isMount)
   if (!isMount) {
     isMount = true
     mountInstance(LoadingBarComponent, props)
