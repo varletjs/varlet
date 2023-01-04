@@ -165,14 +165,14 @@ const closed = () => Snackbar.error('closed')
 </template>
 ```
 
-### 禁用
+### 禁用提示
 
 在 `disabled` 状态下，`Tooltip` 将不再被打开。 
 
 ```html
 <template>
   <var-tooltip content="Tooltip" disabled>
-    <var-button type="primary" disabled>禁用</var-button>
+    <var-button type="primary" disabled>禁用提示</var-button>
   </var-tooltip>
 </template>
 ```

@@ -167,7 +167,7 @@ const closed = () => Snackbar.error('closed')
 
 ### Disabled
 
-In the `disabled` state, the tooltip will no longer be opened.
+In the `disabled` state, the tooltip will not be opened.
 
 ```html
 <template>
