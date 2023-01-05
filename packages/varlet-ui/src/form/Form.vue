@@ -41,7 +41,7 @@ export default defineComponent({
       const res = await Promise.all(formItems.map(({ validate }) => validate()))
 
       if (props.scrollToError) {
-        const [_, errorIndex] = find(res, (r) => r === false, props.scrollToError)
+        const [, errorIndex] = find(res, (r) => r === false, props.scrollToError)
         const hasError = errorIndex > -1
 
         if (hasError) {
