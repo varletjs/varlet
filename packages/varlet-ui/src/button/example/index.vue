@@ -7,15 +7,15 @@ import dark from '../../themes/dark'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
 
-const handleClick = () => {
+function handleClick() {
   Snackbar.success(pack.value.clickSuccess)
 }
 
-const handleTouchstart = () => {
+function handleTouchstart() {
   Snackbar.success(pack.value.touchstartSuccess)
 }
 
-const handleAutoLoadingClick = () => {
+function handleAutoLoadingClick() {
   return new Promise((resolve) => {
     setTimeout(resolve, 2000)
   })
