@@ -17,6 +17,7 @@ packages/varlet-ui/types/index.d.ts
 
 packages/varlet-ui-playground/dist/**
 packages/varlet-ui-playground/public/**
+packages/varlet-ui-playground/*.d.ts
 packages/varlet-shared/lib/**
 packages/varlet-shared/es/**
 
