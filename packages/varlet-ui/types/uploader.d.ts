@@ -5,7 +5,7 @@ export type VarFileFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
 export type VarFileState = 'loading' | 'success' | 'error'
 
-export interface VarFile extends BasicAttributes {
+export interface VarFile {
   file?: File
   name?: string
   url?: string
@@ -24,7 +24,7 @@ export type UploaderVarFileUtils = {
 
 export type UploaderCapture = boolean | 'user' | 'environment'
 
-export interface UploaderProps {
+export interface UploaderProps extends BasicAttributes {
   modelValue?: VarFile[]
   accept?: string
   capture?: UploaderCapture
