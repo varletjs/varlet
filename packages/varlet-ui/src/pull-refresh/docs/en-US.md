@@ -13,8 +13,8 @@ indicates that loading is under way, and setting `v-model` to `false` after comp
 <script setup>
 import { ref } from 'vue'
 
-const data1 = Array(10).fill('List Item')
-const data2 = Array(10).fill('This is new List Item')
+const data1 = Array(30).fill('List Item')
+const data2 = Array(30).fill('This is new List Item')
 
 const isRefresh = ref(false)
 const data = ref(data1)

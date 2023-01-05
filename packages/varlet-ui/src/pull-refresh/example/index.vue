@@ -2,11 +2,11 @@
 import VarPullRefresh from '..'
 import VarCell from '../../cell'
 import dark from '../../themes/dark'
-import { onMounted, ref, onBeforeUnmount } from 'vue'
+import { ref } from 'vue'
 import { watchDarkMode } from '@varlet/cli/client'
 
-const data1 = Array(10).fill('List Item')
-const data2 = Array(10).fill('This is new List Item')
+const data1 = Array(30).fill('List Item')
+const data2 = Array(30).fill('This is new List Item')
 
 const isRefresh = ref(false)
 const data = ref(data1)
@@ -17,18 +17,6 @@ const refresh = () => {
     isRefresh.value = false
   }, 2000)
 }
-
-const prevent = (event) => {
-  event.preventDefault()
-}
-
-onMounted(() => {
-  document.body.addEventListener('touchmove', prevent, { passive: false })
-})
-
-onBeforeUnmount(() => {
-  document.body.removeEventListener('touchmove', prevent)
-})
 
 watchDarkMode(dark)
 </script>
