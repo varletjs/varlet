@@ -1,4 +1,24 @@
-## [2.5.4](https://github.com/varletjs/varlet/compare/v2.5.1...v2.5.4) (2023-01-05)
+## [2.5.5](https://github.com/varletjs/varlet/compare/v2.5.4...v2.5.5) (2023-01-05)
+
+
+### Bug Fixes
+
+* **back-top:** add default z-index ([f9f45fb](https://github.com/varletjs/varlet/commit/f9f45fb379a67b9a4ad671a928815ce8705a85bb))
+* **pull-refresh:** add lock and close [#814](https://github.com/varletjs/varlet/issues/814) ([08b04e3](https://github.com/varletjs/varlet/commit/08b04e36d8d7e19d161034bc2c3cff4115b0d9f9))
+* **ui/uploader:** before-remove event mission file params ([db0870e](https://github.com/varletjs/varlet/commit/db0870ef6e38dff59e2050e5cbf8d467ed0a7027))
+
+
+
+## [2.5.4](https://github.com/varletjs/varlet/compare/v2.5.3...v2.5.4) (2023-01-05)
+
+
+### Features
+
+* **pull-refresh:** add target prop and close [#811](https://github.com/varletjs/varlet/issues/811) ([47537b6](https://github.com/varletjs/varlet/commit/47537b690b48ed71e69587eac2449a0dfe636788))
+
+
+
+## [2.5.3](https://github.com/varletjs/varlet/compare/v2.5.2...v2.5.3) (2023-01-04)
 
 
 ### Bug Fixes
@@ -6,9 +26,12 @@
 * **ui/menu:** fix elevation display error ([91a83c4](https://github.com/varletjs/varlet/commit/91a83c4b674a790f089b514167d892f1725bd01c))
 
 
+
+## [2.5.2](https://github.com/varletjs/varlet/compare/v2.5.1...v2.5.2) (2023-01-04)
+
+
 ### Features
 
-* **pull-refresh:** add target prop and close [#811](https://github.com/varletjs/varlet/issues/811) ([47537b6](https://github.com/varletjs/varlet/commit/47537b690b48ed71e69587eac2449a0dfe636788))
 * **ui/menu:** support sameWidth prop ([5fda8b7](https://github.com/varletjs/varlet/commit/5fda8b7cb487b6aea442e3cc6f8d27660ef98ff3))
 
 
