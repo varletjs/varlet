@@ -189,7 +189,7 @@ export class ReplStore implements Store {
     Dialog(`Are you sure you want to delete ${filename}?`).then((action) => {
       if (action === 'confirm') {
         if (this.state.activeFile.filename === filename) {
-          this.state.activeFile = this.state.files[this.state.mainFile]
+          this.state.activeFile = this.state.files[defaultMainFile]
         }
         delete this.state.files[filename]
       }
