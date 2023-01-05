@@ -115,7 +115,7 @@ import { ref } from 'vue'
 
 const value = ref(0)
 
-const handleBeforeChange = (value, change) => {
+function handleBeforeChange(value, change) {
   setTimeout(() => change(value), 500)
 }
 </script>
