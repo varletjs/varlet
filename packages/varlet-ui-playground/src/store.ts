@@ -1,9 +1,8 @@
 import { reactive, watchEffect, version } from 'vue'
-import * as defaultCompiler from 'vue/compiler-sfc'
-import type { Store, SFCOptions, StoreState, OutputModes } from '@vue/repl'
 import { compileFile, File } from '@vue/repl'
 import { utoa, atou } from './utils/encode'
-import { Snackbar } from '@varlet/ui'
+import * as defaultCompiler from 'vue/compiler-sfc'
+import type { Store, SFCOptions, StoreState, OutputModes } from '@vue/repl'
 
 const publicPath = './'
 const defaultMainFile = 'App.vue'
@@ -150,6 +149,7 @@ export class ReplStore implements Store {
       activeFile: files[mainFile],
       errors: [],
       vueRuntimeURL: this.defaultVueRuntimeURL,
+      vueServerRendererURL: '',
     })
 
     this.initImportMap()
@@ -168,6 +168,8 @@ export class ReplStore implements Store {
     }
   }
 
+  init() {}
+
   setActive(filename: string) {
     this.state.activeFile = this.state.files[filename]
   }
@@ -184,13 +186,14 @@ export class ReplStore implements Store {
       return
     }
 
-    // eslint-disable-next-line no-alert
-    if (confirm(`Are you sure you want to delete ${filename}?`)) {
-      if (this.state.activeFile.filename === filename) {
-        this.state.activeFile = this.state.files[this.state.mainFile]
+    Dialog(`Are you sure you want to delete ${filename}?`).then((action) => {
+      if (action === 'confirm') {
+        if (this.state.activeFile.filename === filename) {
+          this.state.activeFile = this.state.files[this.state.mainFile]
+        }
+        delete this.state.files[filename]
       }
-      delete this.state.files[filename]
-    }
+    })
   }
 
   serialize() {

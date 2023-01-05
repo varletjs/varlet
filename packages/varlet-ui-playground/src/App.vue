@@ -13,6 +13,7 @@ setVH()
 
 const store = new ReplStore({
   serializedState: location.hash.slice(1),
+  // @ts-ignore
   defaultVueRuntimeURL: import.meta.env.PROD ? undefined : `${location.origin}/src/vue-dev-proxy`,
 })
 
@@ -53,6 +54,8 @@ body {
 
   --base: #444;
   --nav-height: 50px;
+
+  color: var(--color-text);
 }
 
 .vue-repl {

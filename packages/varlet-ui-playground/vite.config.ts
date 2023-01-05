@@ -1,5 +1,8 @@
 import fs from 'fs'
+import components from 'unplugin-vue-components/vite'
+import autoImport from 'unplugin-auto-import/vite'
 import { resolve } from 'path'
+import { VarletUIResolver } from 'unplugin-vue-components/resolvers'
 
 const varletESMBundleFile = resolve(__dirname, '../varlet-ui/es/varlet.esm.js')
 const varletTouchEmulatorFile = resolve(__dirname, '../varlet-touch-emulator/index.js')
@@ -20,7 +23,15 @@ function copyVarletDependencies() {
 
 export default {
   base: './',
-  plugins: [copyVarletDependencies()],
+  plugins: [
+    copyVarletDependencies(),
+    components({
+      resolvers: [VarletUIResolver()],
+    }),
+    autoImport({
+      resolvers: [VarletUIResolver({ autoImport: true })],
+    }),
+  ],
   server: {
     host: '0.0.0.0',
     port: 3000,

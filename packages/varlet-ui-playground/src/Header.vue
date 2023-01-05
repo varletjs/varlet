@@ -6,8 +6,8 @@ import Share from './icons/Share.vue'
 import Download from './icons/Download.vue'
 import Close from './icons/Close.vue'
 import { downloadProject } from './download/download'
-import { Snackbar } from '@varlet/ui'
 import { onMounted, ref } from 'vue'
+import { Themes } from '@varlet/ui'
 
 const inIframe = ref(Boolean(window.parent))
 
@@ -22,7 +22,10 @@ async function copyLink() {
 function toggleDark() {
   const cls = document.documentElement.classList
   cls.toggle('dark')
-  localStorage.setItem('varlet-ui-playground-prefer-dark', String(cls.contains('dark')))
+  const saved = String(cls.contains('dark'))
+  localStorage.setItem('varlet-ui-playground-prefer-dark', saved)
+
+  StyleProvider(saved === 'true' ? Themes.dark : null)
 
   notifyEmulatorThemeChange()
   notifyParentThemeChange()
@@ -75,6 +78,7 @@ onMounted(() => {
   const saved = localStorage.getItem('varlet-ui-playground-prefer-dark')
   if (saved !== 'false') {
     cls.add('dark')
+    StyleProvider(Themes.dark)
   }
 
   notifyEmulatorThemeChange()
