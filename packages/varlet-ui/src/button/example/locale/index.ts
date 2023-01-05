@@ -8,7 +8,7 @@ import { useLocale, add as _add, use as _use } from '../../../locale'
 
 const { add, use: exampleUse, pack, packs, merge } = useLocale()
 
-function use(lang: string) {
+const use = (lang: string) => {
   _use(lang)
   exampleUse(lang)
 }
