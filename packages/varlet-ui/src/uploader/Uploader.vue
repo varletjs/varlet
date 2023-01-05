@@ -275,7 +275,7 @@ export default defineComponent({
       }
 
       if (onBeforeRemove) {
-        let results = call(onBeforeRemove)
+        let results = call(onBeforeRemove, reactive(removedVarFile))
         results = isArray(results) ? results : [results]
 
         if ((await Promise.all(results)).some((result) => !result)) {
@@ -284,7 +284,7 @@ export default defineComponent({
       }
 
       const expectedFiles: VarFile[] = modelValue.filter((varFile) => varFile !== removedVarFile)
-      call(onRemove, removedVarFile)
+      call(onRemove, reactive(removedVarFile))
       validateWithTrigger('onRemove')
       call(props['onUpdate:modelValue'], expectedFiles)
     }
