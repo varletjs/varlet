@@ -1,4 +1,5 @@
 import { defineListenerProp } from '../utils/components'
+import { PropType } from 'vue'
 
 export type RefreshStatus = 'default' | 'pulling' | 'loosing' | 'loading' | 'success'
 
@@ -36,6 +37,9 @@ export const props = {
   // 成功状态下 control 的颜色
   successColor: {
     type: String,
+  },
+  target: {
+    type: [String, Object] as PropType<string | HTMLElement>,
   },
   onRefresh: defineListenerProp<() => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: boolean) => void>(),

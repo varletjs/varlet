@@ -23,9 +23,17 @@ import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
 import VarButton from '../button'
 import VarIcon from '../icon'
 import { props } from './props'
-import { isString, throttle, isObject } from '@varlet/shared'
+import { throttle } from '@varlet/shared'
 import { easeInOutCubic } from '../utils/shared'
-import { getScrollTop, getScrollLeft, scrollTo, getParentScroller, toPxNum, toSizeUnit } from '../utils/elements'
+import {
+  getScrollTop,
+  getScrollLeft,
+  scrollTo,
+  getParentScroller,
+  toPxNum,
+  toSizeUnit,
+  getTarget,
+} from '../utils/elements'
 import { call, createNamespace } from '../utils/components'
 import type { Ref, TeleportProps } from 'vue'
 
@@ -63,26 +71,8 @@ export default defineComponent({
 
     const throttleScroll = throttle(scroll, 200)
 
-    const getTarget = () => {
-      const { target } = props
-
-      if (isString(target)) {
-        const el = document.querySelector(props.target as string)
-
-        if (!el) {
-          throw Error('[Varlet] BackTop: target element cannot found')
-        }
-
-        return el as HTMLElement
-      }
-
-      if (isObject(target)) return target
-
-      throw Error('[Varlet] BackTop: type of prop "target" should be a selector or an element object')
-    }
-
     onMounted(() => {
-      target = props.target ? getTarget() : getParentScroller(backTopEl.value!)
+      target = props.target ? getTarget(props.target, 'BackTop') : getParentScroller(backTopEl.value!)
       target.addEventListener('scroll', throttleScroll)
       disabled.value = false
     })

@@ -105,6 +105,7 @@ const load = () => {
 | ----- | -------------- | -------- | ---------- |
 | `v-model` | 是否处于加载中状态| _boolean_ | `-` |
 | `disabled` | 是否禁用下拉刷新 | _boolean_ | `false` |
+| `target`  | 触发滚动的对象，如果为 undefined 会监听距离最近的一个可滚动的祖先节点	 | _string \| HTMLElement_ | `-` |
 | `animation-duration` | 加载结束后回到初始位置的动画时长（ms） | _string \| number_ | `300` |
 | `success-duration` | 成功提示展示时长（ms） | _string \| number_ | `2000` |
 | `bg-color` | control 的背景颜色 | _string_ | `#005CAF` |

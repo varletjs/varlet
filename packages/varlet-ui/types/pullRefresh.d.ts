@@ -10,6 +10,7 @@ export interface PullRefreshProps extends BasicAttributes {
   successBgColor?: string
   color?: string
   successColor?: string
+  target?: string | HTMLElement
   onRefresh?: ListenerProp<() => void>
   'onUpdate:modelValue'?: ListenerProp<(value: boolean) => void>
 }

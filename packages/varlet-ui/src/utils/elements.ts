@@ -1,4 +1,4 @@
-import { isNumber, isString, kebabCase, toNumber } from '@varlet/shared'
+import { isNumber, isObject, isString, kebabCase, toNumber } from '@varlet/shared'
 import { getGlobalThis } from './shared'
 import type { StyleVars } from '../style-provider'
 
@@ -78,6 +78,22 @@ export function getAllParentScroller(el: HTMLElement): Array<HTMLElement | Windo
   }
 
   return allParentScroller
+}
+
+export function getTarget(target: string | HTMLElement, componentName: string) {
+  if (isString(target)) {
+    const el = document.querySelector(target)
+
+    if (!el) {
+      throw Error(`[Varlet] ${componentName}: target element cannot found`)
+    }
+
+    return el as HTMLElement
+  }
+
+  if (isObject(target)) return target
+
+  throw Error(`[Varlet] ${componentName}: type of prop "target" should be a selector or an element object`)
 }
 
 // example 1rem

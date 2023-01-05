@@ -106,6 +106,7 @@ When the height of the `PullRefresh` is `0`, it will be unavailable, so you need
 | ----- | -------------- | -------- | ---------- |
 | `v-model` | Loading status | _boolean_ | `-` |
 | `disabled` | Whether to disable pull refresh | _boolean_ | `false` |
+| `target` | The target to trigger scroll, If it is undefined back top will listen to the nearest scrollable parent. | _string \| HTMLElement_     | `-` |
 | `animation-duration` | The duration of the animation to return to the initial position after loading(ms) | _string \| number_ | `300` |
 | `success-duration` | Success text display duration(ms) | _string \| number_ | `2000` |
 | `bg-color` | BackgroundColor of control | _string_ | `#005CAF` |

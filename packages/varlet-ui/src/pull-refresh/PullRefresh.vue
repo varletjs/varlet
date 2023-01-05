@@ -26,7 +26,7 @@
 <script lang="ts">
 import VarIcon from '../icon'
 import { defineComponent, ref, computed, watch, onMounted } from 'vue'
-import { getParentScroller, getScrollTop } from '../utils/elements'
+import { getParentScroller, getScrollTop, getTarget } from '../utils/elements'
 import { props } from './props'
 import { toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
@@ -163,7 +163,7 @@ export default defineComponent({
     )
 
     onMounted(() => {
-      scroller = getParentScroller(freshNode.value as HTMLElement)
+      scroller = props.target ? getTarget(props.target, 'PullRefresh') : getParentScroller(freshNode.value!)
 
       setPosition()
     })
