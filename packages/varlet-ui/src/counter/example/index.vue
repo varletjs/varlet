@@ -1,9 +1,9 @@
 <script setup>
 import VarCounter from '..'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 import { reactive } from 'vue'
 import { use, pack } from './locale'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 
 const values = reactive({
   value: 0,
