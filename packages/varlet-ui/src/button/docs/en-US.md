@@ -118,15 +118,15 @@ Button component for triggering actions.
 <script setup>
 import { Snackbar } from '@varlet/ui'
 
-const handleClick = () => {
+function handleClick() {
   Snackbar.success('Click Success')
 }
 
-const handleTouchstart = () => {
+function handleTouchstart() {
   Snackbar.success('Touchstart Success')
 }
 
-const handleAutoLoadingClick = () => {
+function handleAutoLoadingClick() {
   return new Promise((resolve) => {
     setTimeout(resolve, 2000)
   })

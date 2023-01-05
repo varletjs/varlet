@@ -133,15 +133,15 @@
 <script setup>
 import { Snackbar } from '@varlet/ui'
 
-const handleClick = () => {
+function handleClick() {
   Snackbar.success('点击成功')
 }
 
-const handleTouchstart = () => {
+function handleTouchstart() {
   Snackbar.success('触摸成功')
 }
 
-const handleAutoLoadingClick = () => {   
+function handleAutoLoadingClick() {   
   return new Promise((resolve) => {
     setTimeout(resolve, 2000)
   })
