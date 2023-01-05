@@ -11,11 +11,11 @@ import { pack, use } from './locale'
 const countdown = ref(null)
 const time = ref(3000)
 
-const end = () => {
+function end() {
   Snackbar.info('end!')
 }
 
-const change = () => {
+function change() {
   console.log('change')
 }
 

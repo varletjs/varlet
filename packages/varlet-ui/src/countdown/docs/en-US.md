@@ -100,11 +100,11 @@ import { Snackbar } from '@varlet/ui'
 
 const countdown = ref(null)
 
-const end = () => {
+function end() {
   Snackbar.info('end!')
 }
 
-const change = () => {
+function change() {
   console.log('change')
 }
 </script>
