@@ -17,7 +17,7 @@ const values = reactive({
   value9: 0,
 })
 
-const handleBeforeChange = (value, change) => {
+function handleBeforeChange(value, change) {
   setTimeout(() => {
     change(value)
   }, 500)
