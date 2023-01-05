@@ -92,7 +92,7 @@
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-button color="#69dbaa" text-color="#eee">背景/文字</var-button>
+    <var-button color="#66bb6a" text-color="#fff">背景/文字</var-button>
     <var-button
       color="linear-gradient(to right, #69dbaa, #3a7afe)"
       text-color="#fff"

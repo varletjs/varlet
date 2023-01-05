@@ -71,7 +71,7 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.customColor }}</app-type>
   <var-space :size="['2.666vw', '2.666vw']">
-    <var-button color="#69dbaa" text-color="#eee">{{ pack.backgroundTextColor }}</var-button>
+    <var-button color="#66bb6a" text-color="#fff">{{ pack.backgroundTextColor }}</var-button>
     <var-button color="linear-gradient(to right, #69dbaa, #3a7afe)" text-color="#fff">
       {{ pack.linearGradientColor }}
     </var-button>

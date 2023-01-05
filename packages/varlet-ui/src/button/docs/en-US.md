@@ -82,7 +82,7 @@ Button component for triggering actions.
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-button color="#e91e63" text-color="#fff">Background/Text Color</var-button>
+    <var-button color="#66bb6a" text-color="#fff">Background/Text Color</var-button>
     <var-button color="linear-gradient(to right, #69dbaa, #3a7afe)" text-color="#fff"> Linear Gradient Color </var-button>
   </var-space>
 </template>
