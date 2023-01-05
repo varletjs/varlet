@@ -1,12 +1,5 @@
 <template>
-  <div
-    ref="freshNode"
-    :class="n()"
-    @touchstart="touchStart"
-    @touchmove="touchMove"
-    @touchend="touchEnd"
-    @touchcancel="touchEnd"
-  >
+  <div ref="freshNode" :class="n()" @touchmove="touchMove" @touchend="touchEnd" @touchcancel="touchEnd">
     <div
       ref="controlNode"
       :class="classes(n('control'), n('$-elevation--2'), [isSuccess, n('control-success')])"
@@ -83,18 +76,22 @@ export default defineComponent({
       })
     }
 
-    const touchStart = (event: TouchEvent) => {
-      if (!isTouchable.value) return
+    const lockEvent = (action: 'add' | 'remove') => {
+      const el = 'classList' in scroller ? scroller : document.body
 
-      refreshStatus.value = 'pulling'
-      startPosition.value = event.touches[0].clientY
+      el.classList[action](`${n()}--lock`)
     }
 
     const touchMove = (event: TouchEvent) => {
       const scrollTop = getScrollTop(scroller)
       if (scrollTop > 0 || !isTouchable.value) return
 
-      if (scrollTop === 0 && distance.value > controlPosition.value) event.cancelable && event.preventDefault()
+      if (refreshStatus.value !== 'pulling') {
+        refreshStatus.value = 'pulling'
+        startPosition.value = event.touches[0].clientY
+      }
+
+      if (scrollTop === 0 && distance.value > controlPosition.value) lockEvent('add')
 
       const moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + controlPosition.value
 
@@ -121,6 +118,7 @@ export default defineComponent({
 
         call(props['onUpdate:modelValue'], true)
         call(props.onRefresh)
+        lockEvent('remove')
       } else {
         refreshStatus.value = 'loosing'
         iconName.value = 'arrow-down'
@@ -128,6 +126,7 @@ export default defineComponent({
 
         setTimeout(() => {
           isEnd.value = false
+          lockEvent('remove')
         }, toNumber(props.animationDuration))
       }
     }
@@ -176,7 +175,6 @@ export default defineComponent({
       refreshStatus,
       freshNode,
       controlNode,
-      touchStart,
       touchMove,
       touchEnd,
       iconName,
