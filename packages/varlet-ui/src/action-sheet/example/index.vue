@@ -64,22 +64,21 @@ const show2 = ref(false)
 const show3 = ref(false)
 const show4 = ref(false)
 
-const createBasic = async () => {
+async function createBasic() {
   const action = await ActionSheet({ actions: rawActions })
 
   action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
 }
 
-const modifyTitle = async () => {
+async function modifyTitle() {
   const action = await ActionSheet({
     actions: rawActions,
     title: pack.value.customTitle,
   })
-
   action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
 }
 
-const disableAction = async () => {
+async function disableAction() {
   const action = await ActionSheet({
     actions: rawDisabledActions,
   })
@@ -87,7 +86,7 @@ const disableAction = async () => {
   action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
 }
 
-const customActionStyles = async () => {
+async function customActionStyles() {
   const action = await ActionSheet({
     actions: rawCustomStyleActions,
   })
@@ -95,7 +94,7 @@ const customActionStyles = async () => {
   action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
 }
 
-const disableCloseOnClickAction = () => {
+function disableCloseOnClickAction() {
   ActionSheet({
     actions: [
       {
@@ -116,7 +115,7 @@ const disableCloseOnClickAction = () => {
   })
 }
 
-const handleSelect = (action) => {
+function handleSelect(action) {
   Snackbar(`${pack.value.yourSelected}${action.name}`)
 }
 

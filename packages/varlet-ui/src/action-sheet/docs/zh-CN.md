@@ -14,7 +14,8 @@
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const createBasic = async () => {
+
+async function createBasic() {
   const action = await ActionSheet({ 
     actions: [
       {
@@ -47,7 +48,7 @@ const createBasic = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
+async function handleSelect(){
   const action = await ActionSheet({ 
     actions: [
       {
@@ -83,7 +84,8 @@ const handleSelect = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
+
+async function handleSelect() {
   const action = await ActionSheet({ 
     actions: [
       {
@@ -120,8 +122,8 @@ const handleSelect = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
-  await ActionSheet({ 
+async function handleSelect(){
+   await ActionSheet({ 
     actions: [
       {
         name: 'Item 01',
@@ -155,8 +157,8 @@ const handleSelect = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
-  const action = await ActionSheet({ 
+async function handleSelect() {
+     const action = await ActionSheet({ 
     actions: [
       {
         name: 'Item 01',
@@ -210,7 +212,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect(action){
   Snackbar(`${action.name}`)
 }
 </script>
@@ -248,7 +250,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect(action){
   Snackbar(`${action.name}`)
 }
 </script>
@@ -288,7 +290,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -326,7 +328,8 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+
+function handleSelect() {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -368,7 +371,8 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+
+function handleSelect() {
   Snackbar(`${action.name}`)
 }
 </script>
