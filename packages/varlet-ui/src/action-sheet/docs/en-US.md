@@ -209,7 +209,7 @@ const actions = ref([
   },
 ])
 
-function handleSelect() {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -247,7 +247,7 @@ const actions = ref([
   },
 ])
 
-function handleSelect() {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -287,7 +287,7 @@ const actions = ref([
   },
 ])
 
-function handleSelect() {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -325,7 +325,7 @@ const actions = ref([
   },
 ])
 
-function handleSelect() {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -367,7 +367,7 @@ const actions = ref([
   },
 ])
 
-function handleSelect() {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>

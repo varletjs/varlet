@@ -137,7 +137,7 @@ async function handleSelect(){
       },
     ], 
     closeOnClickAction: false,
-    onSelect: action => Snackbar(`Your selected is:${action.name}`), 
+    onSelect: action => Snackbar(`您选择的是:${action.name}`), 
   })
 }
 </script>
@@ -326,7 +326,7 @@ const actions = ref([
   },
 ])
 
-function handleSelect() {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -368,7 +368,7 @@ const actions = ref([
   },
 ])
 
-function handleSelect() {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
