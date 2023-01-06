@@ -47,9 +47,7 @@ async function createBasic() {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-
-
-async function() {
+async function handleSelect() {
   const action = await ActionSheet({ 
     actions: [
       {
