@@ -14,7 +14,7 @@ The function returns a `Promise`，on selection return `action`，Click modal cl
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const createBasic = async () => {
+async function createBasic() {
   const action = await ActionSheet({ 
     actions: [
       {
@@ -47,7 +47,7 @@ const createBasic = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
+async function handleSelect() {
   const action = await ActionSheet({ 
     actions: [
       {
@@ -83,7 +83,7 @@ The option is passed `disabled` to leave the action in the disabled state.
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
+async function handleSelect() {
   const action = await ActionSheet({
     actions: [
       {
@@ -119,7 +119,7 @@ Passing in `CloseOnClickAction` disallows the action of `ActionSheet` closing au
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
+async function handleSelect() {
   await ActionSheet({ 
     actions: [
       {
@@ -154,7 +154,7 @@ Options provide parameters to configure the style. See the `Action` data structu
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
+async function handleSelect() {
   const action = await ActionSheet({ 
     actions: [
       {
@@ -209,7 +209,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect() {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -247,7 +247,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect() {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -287,7 +287,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect() {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -325,7 +325,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect() {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -367,7 +367,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect() {
   Snackbar(`${action.name}`)
 }
 </script>
