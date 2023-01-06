@@ -14,7 +14,6 @@
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-
 async function createBasic() {
   const action = await ActionSheet({ 
     actions: [
@@ -84,7 +83,6 @@ async function handleSelect(){
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-
 async function handleSelect() {
   const action = await ActionSheet({ 
     actions: [
@@ -123,7 +121,7 @@ async function handleSelect() {
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
 async function handleSelect(){
-   await ActionSheet({ 
+  await ActionSheet({ 
     actions: [
       {
         name: 'Item 01',
@@ -158,7 +156,7 @@ async function handleSelect(){
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
 async function handleSelect() {
-     const action = await ActionSheet({ 
+  const action = await ActionSheet({ 
     actions: [
       {
         name: 'Item 01',
@@ -328,7 +326,6 @@ const actions = ref([
   },
 ])
 
-
 function handleSelect() {
   Snackbar(`${action.name}`)
 }
@@ -370,7 +367,6 @@ const actions = ref([
     color: '#00afef',
   },
 ])
-
 
 function handleSelect() {
   Snackbar(`${action.name}`)

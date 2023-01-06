@@ -209,8 +209,7 @@ const actions = ref([
   },
 ])
 
-
- function handleSelect() {
+function handleSelect() {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -248,8 +247,7 @@ const actions = ref([
   },
 ])
 
-
- function handleSelect() {
+function handleSelect() {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -289,7 +287,7 @@ const actions = ref([
   },
 ])
 
- function handleSelect() {
+function handleSelect() {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -326,7 +324,6 @@ const actions = ref([
     icon: 'wifi',
   },
 ])
-
 
 function handleSelect() {
   Snackbar(`${action.name}`)
