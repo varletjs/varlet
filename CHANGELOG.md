@@ -1,3 +1,12 @@
+## [2.5.6](https://github.com/varletjs/varlet/compare/v2.5.5...v2.5.6) (2023-01-07)
+
+
+### Bug Fixes
+
+* **pagination:** watch page-count and close [#820](https://github.com/varletjs/varlet/issues/820) ([a4bb395](https://github.com/varletjs/varlet/commit/a4bb3952f2a7a7cddf2eb48ae8a6f44e0a120623))
+
+
+
 ## [2.5.5](https://github.com/varletjs/varlet/compare/v2.5.4...v2.5.5) (2023-01-05)
 
 
