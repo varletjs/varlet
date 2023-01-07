@@ -219,21 +219,16 @@ export default defineComponent({
     })
 
     watch(
-      [current, size],
-      ([newCurrent, newSize], [oldCurrent, oldSize]) => {
-        if (newCurrent > pageCount.value) {
-          current.value = pageCount.value
-          return
-        }
-
+      [current, size, pageCount],
+      ([newCurrent, newSize, newCount], [oldCurrent, oldSize]) => {
         let list = []
         const { maxPagerCount, total, onChange } = props
         const oldCount = Math.ceil(toNumber(total) / toNumber(oldSize))
-        const rEllipseSign = pageCount.value - (maxPagerCount - activePosition.value) - 1
+        const rEllipseSign = newCount - (maxPagerCount - activePosition.value) - 1
         simpleValue.value = `${newCurrent}`
 
-        if (pageCount.value - 2 > maxPagerCount) {
-          if (oldCurrent === undefined || pageCount.value !== oldCount) {
+        if (newCount - 2 > maxPagerCount) {
+          if (oldCurrent === undefined || newCount !== oldCount) {
             for (let i = 2; i < maxPagerCount + 2; i++) list.push(i)
           }
 
@@ -265,21 +260,21 @@ export default defineComponent({
             list = []
 
             for (let i = 1; i < maxPagerCount + 1; i++) {
-              list.push(pageCount.value - (maxPagerCount - i) - 1)
+              list.push(newCount - (maxPagerCount - i) - 1)
             }
 
             isHideEllipsisHead.value = false
             isHideEllipsisTail.value = true
           }
 
-          list = [1, '...', ...list, '...', pageCount.value]
+          list = [1, '...', ...list, '...', newCount]
         } else {
-          for (let i = 1; i <= pageCount.value; i++) list.push(i)
+          for (let i = 1; i <= newCount; i++) list.push(i)
         }
 
         pageList.value = list
 
-        if (oldCurrent !== undefined && pageCount.value > 0) {
+        if (oldCurrent !== undefined && newCount > 0) {
           call(onChange, newCurrent, newSize)
         }
 
